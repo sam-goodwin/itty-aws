@@ -188,8 +188,7 @@ export type DeploymentStatus =
   | "UPDATE_COMPLETED"
   | "UPDATE_FAILED"
   | "UPDATE_ROLLBACK_COMPLETED"
-  | "UPDATE_ROLLBACK_FAILED"
-  | (string & {});
+  | "UPDATE_ROLLBACK_FAILED";
 export const DeploymentStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteDeploymentOutput {
@@ -328,12 +327,7 @@ export const GetWorkloadInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkloadInput",
 }) as any as S.Schema<GetWorkloadInput>;
-export type WorkloadStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | "DISABLED"
-  | "DELETED"
-  | (string & {});
+export type WorkloadStatus = "ACTIVE" | "INACTIVE" | "DISABLED" | "DELETED";
 export const WorkloadStatus = /*@__PURE__*/ S.String;
 
 export interface WorkloadData {
@@ -387,8 +381,7 @@ export type WorkloadDeploymentPatternStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "DISABLED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const WorkloadDeploymentPatternStatus = /*@__PURE__*/ S.String;
 
 export type AllowedValues = string[];
@@ -502,8 +495,7 @@ export type EventStatus =
   | "FAILED"
   | "IN_PROGRESS"
   | "PENDING"
-  | "TIMED_OUT"
-  | (string & {});
+  | "TIMED_OUT";
 export const EventStatus = /*@__PURE__*/ S.String;
 
 export interface DeploymentEventDataSummary {
@@ -541,9 +533,7 @@ export const ListDeploymentEventsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDeploymentEventsOutput",
 }) as any as S.Schema<ListDeploymentEventsOutput>;
 export type MaxWorkloadResults = number;
-export type DeploymentPatternVersionFilterKey =
-  | "updateFromVersion"
-  | (string & {});
+export type DeploymentPatternVersionFilterKey = "updateFromVersion";
 export const DeploymentPatternVersionFilterKey = /*@__PURE__*/ S.String;
 
 export type DeploymentPatternVersionFilterValue = string;
@@ -552,7 +542,7 @@ export const DeploymentPatternVersionFilterValues = /*@__PURE__*/ S.Array(
   S.String,
 );
 export interface DeploymentPatternVersionFilter {
-  name: DeploymentPatternVersionFilterKey;
+  name: DeploymentPatternVersionFilterKey | (string & {});
   values: string[];
 }
 export const DeploymentPatternVersionFilter = /*@__PURE__*/ S.suspend(() =>
@@ -611,17 +601,14 @@ export const ListDeploymentPatternVersionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDeploymentPatternVersionsOutput",
 }) as any as S.Schema<ListDeploymentPatternVersionsOutput>;
-export type DeploymentFilterKey =
-  | "WORKLOAD_NAME"
-  | "DEPLOYMENT_STATUS"
-  | (string & {});
+export type DeploymentFilterKey = "WORKLOAD_NAME" | "DEPLOYMENT_STATUS";
 export const DeploymentFilterKey = /*@__PURE__*/ S.String;
 
 export type DeploymentFilterValue = string;
 export type DeploymentFilterValues = string[];
 export const DeploymentFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface DeploymentFilter {
-  name?: DeploymentFilterKey;
+  name?: DeploymentFilterKey | (string & {});
   values?: string[];
 }
 export const DeploymentFilter = /*@__PURE__*/ S.suspend(() =>

@@ -207,7 +207,7 @@ export const AssociateWebACLResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateWebACLResponse",
 }) as any as S.Schema<AssociateWebACLResponse>;
-export type Scope = "CLOUDFRONT" | "REGIONAL" | (string & {});
+export type Scope = "CLOUDFRONT" | "REGIONAL";
 export const Scope = /*@__PURE__*/ S.String;
 
 export type EntityName = string;
@@ -242,11 +242,7 @@ export interface QueryString {}
 export const QueryString = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
   { identifier: "QueryString" },
 ) as any as S.Schema<QueryString>;
-export type OversizeHandling =
-  | "CONTINUE"
-  | "MATCH"
-  | "NO_MATCH"
-  | (string & {});
+export type OversizeHandling = "CONTINUE" | "MATCH" | "NO_MATCH";
 export const OversizeHandling = /*@__PURE__*/ S.String;
 
 export interface Body {
@@ -278,14 +274,13 @@ export const JsonMatchPattern = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JsonMatchPattern",
 }) as any as S.Schema<JsonMatchPattern>;
-export type JsonMatchScope = "ALL" | "KEY" | "VALUE" | (string & {});
+export type JsonMatchScope = "ALL" | "KEY" | "VALUE";
 export const JsonMatchScope = /*@__PURE__*/ S.String;
 
 export type BodyParsingFallbackBehavior =
   | "MATCH"
   | "NO_MATCH"
-  | "EVALUATE_AS_STRING"
-  | (string & {});
+  | "EVALUATE_AS_STRING";
 export const BodyParsingFallbackBehavior = /*@__PURE__*/ S.String;
 
 export interface JsonBody {
@@ -318,7 +313,7 @@ export const HeaderMatchPattern = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HeaderMatchPattern",
 }) as any as S.Schema<HeaderMatchPattern>;
-export type MapMatchScope = "ALL" | "KEY" | "VALUE" | (string & {});
+export type MapMatchScope = "ALL" | "KEY" | "VALUE";
 export const MapMatchScope = /*@__PURE__*/ S.String;
 
 export interface Headers {
@@ -368,7 +363,7 @@ export interface HeaderOrder {
 export const HeaderOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OversizeHandling: OversizeHandling }),
 ).annotate({ identifier: "HeaderOrder" }) as any as S.Schema<HeaderOrder>;
-export type FallbackBehavior = "MATCH" | "NO_MATCH" | (string & {});
+export type FallbackBehavior = "MATCH" | "NO_MATCH";
 export const FallbackBehavior = /*@__PURE__*/ S.String;
 
 export interface JA3Fingerprint {
@@ -445,8 +440,7 @@ export type TextTransformationType =
   | "REPLACE_NULLS"
   | "BASE64_DECODE_EXT"
   | "URL_DECODE_UNI"
-  | "UTF8_TO_UNICODE"
-  | (string & {});
+  | "UTF8_TO_UNICODE";
 export const TextTransformationType = /*@__PURE__*/ S.String;
 
 export interface TextTransformation {
@@ -465,8 +459,7 @@ export type PositionalConstraint =
   | "STARTS_WITH"
   | "ENDS_WITH"
   | "CONTAINS"
-  | "CONTAINS_WORD"
-  | (string & {});
+  | "CONTAINS_WORD";
 export const PositionalConstraint = /*@__PURE__*/ S.String;
 
 export interface ByteMatchStatement {
@@ -485,7 +478,7 @@ export const ByteMatchStatement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ByteMatchStatement",
 }) as any as S.Schema<ByteMatchStatement>;
-export type SensitivityLevel = "LOW" | "HIGH" | (string & {});
+export type SensitivityLevel = "LOW" | "HIGH";
 export const SensitivityLevel = /*@__PURE__*/ S.String;
 
 export interface SqliMatchStatement {
@@ -514,14 +507,7 @@ export const XssMatchStatement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "XssMatchStatement",
 }) as any as S.Schema<XssMatchStatement>;
-export type ComparisonOperator =
-  | "EQ"
-  | "NE"
-  | "LE"
-  | "LT"
-  | "GE"
-  | "GT"
-  | (string & {});
+export type ComparisonOperator = "EQ" | "NE" | "LE" | "LT" | "GE" | "GT";
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type Size = number;
@@ -791,8 +777,7 @@ export type CountryCode =
   | "YE"
   | "ZM"
   | "ZW"
-  | "XK"
-  | (string & {});
+  | "XK";
 export const CountryCode = /*@__PURE__*/ S.String;
 
 export type CountryCodes = CountryCode[];
@@ -943,7 +928,7 @@ export const RuleGroupReferenceStatement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RuleGroupReferenceStatement",
 }) as any as S.Schema<RuleGroupReferenceStatement>;
-export type ForwardedIPPosition = "FIRST" | "LAST" | "ANY" | (string & {});
+export type ForwardedIPPosition = "FIRST" | "LAST" | "ANY";
 export const ForwardedIPPosition = /*@__PURE__*/ S.String;
 
 export interface IPSetForwardedIPConfig {
@@ -992,8 +977,7 @@ export type RateBasedStatementAggregateKeyType =
   | "IP"
   | "FORWARDED_IP"
   | "CUSTOM_KEYS"
-  | "CONSTANT"
-  | (string & {});
+  | "CONSTANT";
 export const RateBasedStatementAggregateKeyType = /*@__PURE__*/ S.String;
 
 export interface RateLimitHeader {
@@ -1183,7 +1167,7 @@ export const NotStatement = /*@__PURE__*/ S.suspend(() =>
 export type VendorName = string;
 export type VersionKeyString = string;
 export type LoginPathString = string;
-export type PayloadType = "JSON" | "FORM_ENCODED" | (string & {});
+export type PayloadType = "JSON" | "FORM_ENCODED";
 export const PayloadType = /*@__PURE__*/ S.String;
 
 export type FieldIdentifier = string;
@@ -1199,7 +1183,7 @@ export interface PasswordField {
 export const PasswordField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String }),
 ).annotate({ identifier: "PasswordField" }) as any as S.Schema<PasswordField>;
-export type InspectionLevel = "COMMON" | "TARGETED" | (string & {});
+export type InspectionLevel = "COMMON" | "TARGETED";
 export const InspectionLevel = /*@__PURE__*/ S.String;
 
 export type EnableMachineLearning = boolean;
@@ -1412,10 +1396,10 @@ export const AWSManagedRulesACFPRuleSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AWSManagedRulesACFPRuleSet",
 }) as any as S.Schema<AWSManagedRulesACFPRuleSet>;
-export type UsageOfAction = "ENABLED" | "DISABLED" | (string & {});
+export type UsageOfAction = "ENABLED" | "DISABLED";
 export const UsageOfAction = /*@__PURE__*/ S.String;
 
-export type SensitivityToAct = "LOW" | "MEDIUM" | "HIGH" | (string & {});
+export type SensitivityToAct = "LOW" | "MEDIUM" | "HIGH";
 export const SensitivityToAct = /*@__PURE__*/ S.String;
 
 export type RegexPatternString = string;
@@ -1517,7 +1501,7 @@ export const ManagedRuleGroupStatement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ManagedRuleGroupStatement",
 }) as any as S.Schema<ManagedRuleGroupStatement>;
-export type LabelMatchScope = "LABEL" | "NAMESPACE" | (string & {});
+export type LabelMatchScope = "LABEL" | "NAMESPACE";
 export const LabelMatchScope = /*@__PURE__*/ S.String;
 
 export type LabelMatchKey = string;
@@ -1704,7 +1688,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 export type Rules = Rule[];
 export const Rules = /*@__PURE__*/ S.Array(Rule);
 export interface CheckCapacityRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Rules: Rule[];
 }
 export const CheckCapacityRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1735,7 +1719,7 @@ export type TokenDomain = string;
 export type APIKeyTokenDomains = string[];
 export const APIKeyTokenDomains = /*@__PURE__*/ S.Array(S.String);
 export interface CreateAPIKeyRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   TokenDomains: string[];
 }
 export const CreateAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1763,7 +1747,7 @@ export const CreateAPIKeyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAPIKeyResponse",
 }) as any as S.Schema<CreateAPIKeyResponse>;
 export type EntityDescription = string;
-export type IPAddressVersion = "IPV4" | "IPV6" | (string & {});
+export type IPAddressVersion = "IPV4" | "IPV6";
 export const IPAddressVersion = /*@__PURE__*/ S.String;
 
 export type IPAddress = string;
@@ -1782,9 +1766,9 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateIPSetRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Description?: string;
-  IPAddressVersion: IPAddressVersion;
+  IPAddressVersion: IPAddressVersion | (string & {});
   Addresses: string[];
   Tags?: Tag[];
 }
@@ -1838,7 +1822,7 @@ export const CreateIPSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIPSetResponse>;
 export interface CreateRegexPatternSetRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Description?: string;
   RegularExpressionList: Regex[];
   Tags?: Tag[];
@@ -1894,8 +1878,7 @@ export type CapacityUnit = number;
 export type ResponseContentType =
   | "TEXT_PLAIN"
   | "TEXT_HTML"
-  | "APPLICATION_JSON"
-  | (string & {});
+  | "APPLICATION_JSON";
 export const ResponseContentType = /*@__PURE__*/ S.String;
 
 export type ResponseContent = string;
@@ -1919,13 +1902,12 @@ export type BlockchainChain =
   | "BASE"
   | "SOLANA"
   | "BASE_SEPOLIA"
-  | "SOLANA_DEVNET"
-  | (string & {});
+  | "SOLANA_DEVNET";
 export const BlockchainChain = /*@__PURE__*/ S.String;
 
 export type WalletAddress = string;
 export type PriceAmount = string;
-export type CryptoCurrency = "USDC" | (string & {});
+export type CryptoCurrency = "USDC";
 export const CryptoCurrency = /*@__PURE__*/ S.String;
 
 export interface Price {
@@ -1953,7 +1935,7 @@ export interface CryptoConfig {
 export const CryptoConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PaymentNetworks: PaymentNetworks }),
 ).annotate({ identifier: "CryptoConfig" }) as any as S.Schema<CryptoConfig>;
-export type CurrencyMode = "REAL" | "TEST" | (string & {});
+export type CurrencyMode = "REAL" | "TEST";
 export const CurrencyMode = /*@__PURE__*/ S.String;
 
 export interface MonetizationConfig {
@@ -1970,7 +1952,7 @@ export const MonetizationConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonetizationConfig>;
 export interface CreateRuleGroupRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Capacity: number;
   Description?: string;
   Rules?: Rule[];
@@ -2042,8 +2024,7 @@ export type FieldToProtectType =
   | "SINGLE_COOKIE"
   | "SINGLE_QUERY_ARGUMENT"
   | "QUERY_STRING"
-  | "BODY"
-  | (string & {});
+  | "BODY";
 export const FieldToProtectType = /*@__PURE__*/ S.String;
 
 export type FieldToProtectKeyName = string;
@@ -2059,7 +2040,7 @@ export const FieldToProtect = /*@__PURE__*/ S.suspend(() =>
     FieldKeys: S.optional(FieldToProtectKeys),
   }),
 ).annotate({ identifier: "FieldToProtect" }) as any as S.Schema<FieldToProtect>;
-export type DataProtectionAction = "SUBSTITUTION" | "HASH" | (string & {});
+export type DataProtectionAction = "SUBSTITUTION" | "HASH";
 export const DataProtectionAction = /*@__PURE__*/ S.String;
 
 export interface DataProtection {
@@ -2094,16 +2075,10 @@ export type AssociatedResourceType =
   | "COGNITO_USER_POOL"
   | "APP_RUNNER_SERVICE"
   | "VERIFIED_ACCESS_INSTANCE"
-  | "AGENTCORE_GATEWAY"
-  | (string & {});
+  | "AGENTCORE_GATEWAY";
 export const AssociatedResourceType = /*@__PURE__*/ S.String;
 
-export type SizeInspectionLimit =
-  | "KB_16"
-  | "KB_32"
-  | "KB_48"
-  | "KB_64"
-  | (string & {});
+export type SizeInspectionLimit = "KB_16" | "KB_32" | "KB_48" | "KB_64";
 export const SizeInspectionLimit = /*@__PURE__*/ S.String;
 
 export interface RequestBodyAssociatedResourceTypeConfig {
@@ -2131,10 +2106,7 @@ export const AssociationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociationConfig",
 }) as any as S.Schema<AssociationConfig>;
-export type LowReputationMode =
-  | "ACTIVE_UNDER_DDOS"
-  | "ALWAYS_ON"
-  | (string & {});
+export type LowReputationMode = "ACTIVE_UNDER_DDOS" | "ALWAYS_ON";
 export const LowReputationMode = /*@__PURE__*/ S.String;
 
 export interface OnSourceDDoSProtectionConfig {
@@ -2171,7 +2143,7 @@ export const ApplicationConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationConfig>;
 export interface CreateWebACLRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   DefaultAction: DefaultAction;
   Description?: string;
   Rules?: Rule[];
@@ -2244,7 +2216,7 @@ export const CreateWebACLResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateWebACLResponse",
 }) as any as S.Schema<CreateWebACLResponse>;
 export interface DeleteAPIKeyRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   APIKey: string;
 }
 export const DeleteAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2298,7 +2270,7 @@ export const DeleteFirewallManagerRuleGroupsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteFirewallManagerRuleGroupsResponse>;
 export interface DeleteIPSetRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
   LockToken: string;
 }
@@ -2328,20 +2300,19 @@ export const DeleteIPSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteIPSetResponse",
 }) as any as S.Schema<DeleteIPSetResponse>;
-export type LogType = "WAF_LOGS" | (string & {});
+export type LogType = "WAF_LOGS";
 export const LogType = /*@__PURE__*/ S.String;
 
 export type LogScope =
   | "CUSTOMER"
   | "SECURITY_LAKE"
-  | "CLOUDWATCH_TELEMETRY_RULE_MANAGED"
-  | (string & {});
+  | "CLOUDWATCH_TELEMETRY_RULE_MANAGED";
 export const LogScope = /*@__PURE__*/ S.String;
 
 export interface DeleteLoggingConfigurationRequest {
   ResourceArn: string;
-  LogType?: LogType;
-  LogScope?: LogScope;
+  LogType?: LogType | (string & {});
+  LogScope?: LogScope | (string & {});
 }
 export const DeleteLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2394,7 +2365,7 @@ export const DeletePermissionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePermissionPolicyResponse>;
 export interface DeleteRegexPatternSetRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
   LockToken: string;
 }
@@ -2426,7 +2397,7 @@ export const DeleteRegexPatternSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegexPatternSetResponse>;
 export interface DeleteRuleGroupRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
   LockToken: string;
 }
@@ -2458,7 +2429,7 @@ export const DeleteRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRuleGroupResponse>;
 export interface DeleteWebACLRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
   LockToken: string;
 }
@@ -2489,7 +2460,7 @@ export const DeleteWebACLResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebACLResponse",
 }) as any as S.Schema<DeleteWebACLResponse>;
 export interface DescribeAllManagedProductsRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
 }
 export const DescribeAllManagedProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Scope: Scope }).pipe(
@@ -2550,7 +2521,7 @@ export const DescribeAllManagedProductsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAllManagedProductsResponse>;
 export interface DescribeManagedProductsByVendorRequest {
   VendorName: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
 }
 export const DescribeManagedProductsByVendorRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2582,7 +2553,7 @@ export const DescribeManagedProductsByVendorResponse = /*@__PURE__*/ S.suspend(
 export interface DescribeManagedRuleGroupRequest {
   VendorName: string;
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   VersionName?: string;
 }
 export const DescribeManagedRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2668,11 +2639,11 @@ export const DisassociateWebACLResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateWebACLResponse",
 }) as any as S.Schema<DisassociateWebACLResponse>;
-export type Platform = "IOS" | "ANDROID" | (string & {});
+export type Platform = "IOS" | "ANDROID";
 export const Platform = /*@__PURE__*/ S.String;
 
 export interface GenerateMobileSdkReleaseUrlRequest {
-  Platform: Platform;
+  Platform: Platform | (string & {});
   ReleaseVersion: string;
 }
 export const GenerateMobileSdkReleaseUrlRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2700,7 +2671,7 @@ export const GenerateMobileSdkReleaseUrlResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerateMobileSdkReleaseUrlResponse",
 }) as any as S.Schema<GenerateMobileSdkReleaseUrlResponse>;
 export interface GetDecryptedAPIKeyRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   APIKey: string;
 }
 export const GetDecryptedAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2734,7 +2705,7 @@ export const GetDecryptedAPIKeyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDecryptedAPIKeyResponse>;
 export interface GetIPSetRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
 }
 export const GetIPSetRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2783,8 +2754,8 @@ export const GetIPSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIPSetResponse>;
 export interface GetLoggingConfigurationRequest {
   ResourceArn: string;
-  LogType?: LogType;
-  LogScope?: LogScope;
+  LogType?: LogType | (string & {});
+  LogScope?: LogScope | (string & {});
 }
 export const GetLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2809,10 +2780,10 @@ export type LogDestinationConfigs = string[];
 export const LogDestinationConfigs = /*@__PURE__*/ S.Array(S.String);
 export type RedactedFields = FieldToMatch[];
 export const RedactedFields = /*@__PURE__*/ S.Array(FieldToMatch);
-export type FilterBehavior = "KEEP" | "DROP" | (string & {});
+export type FilterBehavior = "KEEP" | "DROP";
 export const FilterBehavior = /*@__PURE__*/ S.String;
 
-export type FilterRequirement = "MEETS_ALL" | "MEETS_ANY" | (string & {});
+export type FilterRequirement = "MEETS_ALL" | "MEETS_ANY";
 export const FilterRequirement = /*@__PURE__*/ S.String;
 
 export type ActionValue =
@@ -2822,8 +2793,7 @@ export type ActionValue =
   | "CAPTCHA"
   | "CHALLENGE"
   | "MONETIZE"
-  | "EXCLUDED_AS_COUNT"
-  | (string & {});
+  | "EXCLUDED_AS_COUNT";
 export const ActionValue = /*@__PURE__*/ S.String;
 
 export interface ActionCondition {
@@ -2907,7 +2877,7 @@ export const GetLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLoggingConfigurationResponse>;
 export interface GetManagedRuleSetRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
 }
 export const GetManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2992,7 +2962,7 @@ export const GetManagedRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetManagedRuleSetResponse",
 }) as any as S.Schema<GetManagedRuleSetResponse>;
 export interface GetMobileSdkReleaseRequest {
-  Platform: Platform;
+  Platform: Platform | (string & {});
   ReleaseVersion: string;
 }
 export const GetMobileSdkReleaseRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3063,7 +3033,7 @@ export const GetPermissionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPermissionPolicyResponse",
 }) as any as S.Schema<GetPermissionPolicyResponse>;
 export interface GetRateBasedStatementManagedKeysRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   WebACLName: string;
   WebACLId: string;
   RuleGroupRuleName?: string;
@@ -3118,7 +3088,7 @@ export const GetRateBasedStatementManagedKeysResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetRateBasedStatementManagedKeysResponse>;
 export interface GetRegexPatternSetRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
 }
 export const GetRegexPatternSetRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3168,8 +3138,7 @@ export const GetRegexPatternSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRegexPatternSetResponse>;
 export type RankingStatisticType =
   | "TOP_SOURCES_BY_REVENUE"
-  | "TOP_PATHS_BY_REVENUE"
-  | (string & {});
+  | "TOP_PATHS_BY_REVENUE";
 export const RankingStatisticType = /*@__PURE__*/ S.String;
 
 export interface TimeWindow {
@@ -3182,7 +3151,7 @@ export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
     EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
   }),
 ).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
-export type Currency = "USDC" | (string & {});
+export type Currency = "USDC";
 export const Currency = /*@__PURE__*/ S.String;
 
 export type GroupByType =
@@ -3190,8 +3159,7 @@ export type GroupByType =
   | "CATEGORY"
   | "INTENT"
   | "ORGANIZATION"
-  | "WEBACL"
-  | (string & {});
+  | "WEBACL";
 export const GroupByType = /*@__PURE__*/ S.String;
 
 export type MonetizationFilterName = string;
@@ -3211,23 +3179,23 @@ export type MonetizationFilterList = MonetizationFilter[];
 export const MonetizationFilterList = /*@__PURE__*/ S.Array(MonetizationFilter);
 export type NextMarker = string;
 export type PathStatisticsLimit = number;
-export type RankingSortBy = "REVENUE" | "PERCENTAGE" | "NAME" | (string & {});
+export type RankingSortBy = "REVENUE" | "PERCENTAGE" | "NAME";
 export const RankingSortBy = /*@__PURE__*/ S.String;
 
-export type SortOrder = "ASC" | "DESC" | (string & {});
+export type SortOrder = "ASC" | "DESC";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface GetRevenueStatisticsRequest {
-  StatisticType: RankingStatisticType;
+  StatisticType: RankingStatisticType | (string & {});
   TimeWindow: TimeWindow;
-  Scope: Scope;
-  Currency: Currency;
-  GroupBy?: GroupByType;
+  Scope: Scope | (string & {});
+  Currency: Currency | (string & {});
+  GroupBy?: GroupByType | (string & {});
   Filters?: MonetizationFilter[];
   NextMarker?: string;
   Limit?: number;
-  SortBy?: RankingSortBy;
-  SortOrder?: SortOrder;
+  SortBy?: RankingSortBy | (string & {});
+  SortOrder?: SortOrder | (string & {});
 }
 export const GetRevenueStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3325,8 +3293,8 @@ export const GetRevenueStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRevenueStatisticsResponse>;
 export interface GetRevenueStatisticsSummaryRequest {
   TimeWindow: TimeWindow;
-  Scope: Scope;
-  Currency: Currency;
+  Scope: Scope | (string & {});
+  Currency: Currency | (string & {});
   Filters?: MonetizationFilter[];
 }
 export const GetRevenueStatisticsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3377,28 +3345,20 @@ export const GetRevenueStatisticsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRevenueStatisticsSummaryResponse",
 }) as any as S.Schema<GetRevenueStatisticsSummaryResponse>;
-export type TimeSeriesStatisticType =
-  | "DATE_HISTOGRAM"
-  | "PAYMENT_TRAFFIC"
-  | (string & {});
+export type TimeSeriesStatisticType = "DATE_HISTOGRAM" | "PAYMENT_TRAFFIC";
 export const TimeSeriesStatisticType = /*@__PURE__*/ S.String;
 
-export type IntervalType =
-  | "MINUTELY"
-  | "FIVE_MINUTELY"
-  | "HOURLY"
-  | "DAILY"
-  | (string & {});
+export type IntervalType = "MINUTELY" | "FIVE_MINUTELY" | "HOURLY" | "DAILY";
 export const IntervalType = /*@__PURE__*/ S.String;
 
 export type MaxDataPoints = number;
 export interface GetRevenueStatisticsTimeSeriesRequest {
-  StatisticType: TimeSeriesStatisticType;
+  StatisticType: TimeSeriesStatisticType | (string & {});
   TimeWindow: TimeWindow;
-  Scope: Scope;
-  Interval: IntervalType;
-  Currency: Currency;
-  GroupBy?: GroupByType;
+  Scope: Scope | (string & {});
+  Interval: IntervalType | (string & {});
+  Currency: Currency | (string & {});
+  GroupBy?: GroupByType | (string & {});
   Filters?: MonetizationFilter[];
   Limit?: number;
   NextMarker?: string;
@@ -3466,7 +3426,7 @@ export const GetRevenueStatisticsTimeSeriesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetRevenueStatisticsTimeSeriesResponse>;
 export interface GetRuleGroupRequest {
   Name?: string;
-  Scope?: Scope;
+  Scope?: Scope | (string & {});
   Id?: string;
   ARN?: string;
 }
@@ -3536,7 +3496,7 @@ export type ListMaxItems = number;
 export interface GetSampledRequestsRequest {
   WebAclArn: string;
   RuleMetricName: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   TimeWindow: TimeWindow;
   MaxItems: number;
 }
@@ -3603,8 +3563,7 @@ export type FailureReason =
   | "TOKEN_MISSING"
   | "TOKEN_EXPIRED"
   | "TOKEN_INVALID"
-  | "TOKEN_DOMAIN_MISMATCH"
-  | (string & {});
+  | "TOKEN_DOMAIN_MISMATCH";
 export const FailureReason = /*@__PURE__*/ S.String;
 
 export interface CaptchaResponse {
@@ -3686,7 +3645,7 @@ export type UriPathPrefixString = string;
 export type NumberOfTopTrafficBotsPerPath = number;
 export interface GetTopPathStatisticsByTrafficRequest {
   WebAclArn: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   UriPathPrefix?: string;
   TimeWindow: TimeWindow;
   BotCategory?: string;
@@ -3782,7 +3741,7 @@ export const GetTopPathStatisticsByTrafficResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetTopPathStatisticsByTrafficResponse>;
 export interface GetWebACLRequest {
   Name?: string;
-  Scope?: Scope;
+  Scope?: Scope | (string & {});
   Id?: string;
   ARN?: string;
 }
@@ -3933,7 +3892,7 @@ export const GetWebACLForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebACLForResourceResponse>;
 export type PaginationLimit = number;
 export interface ListAPIKeysRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   NextMarker?: string;
   Limit?: number;
 }
@@ -3990,7 +3949,7 @@ export const ListAPIKeysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAPIKeysResponse",
 }) as any as S.Schema<ListAPIKeysResponse>;
 export interface ListAvailableManagedRuleGroupsRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   NextMarker?: string;
   Limit?: number;
 }
@@ -4050,7 +4009,7 @@ export const ListAvailableManagedRuleGroupsResponse = /*@__PURE__*/ S.suspend(
 export interface ListAvailableManagedRuleGroupVersionsRequest {
   VendorName: string;
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   NextMarker?: string;
   Limit?: number;
 }
@@ -4110,7 +4069,7 @@ export const ListAvailableManagedRuleGroupVersionsResponse =
     identifier: "ListAvailableManagedRuleGroupVersionsResponse",
   }) as any as S.Schema<ListAvailableManagedRuleGroupVersionsResponse>;
 export interface ListIPSetsRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   NextMarker?: string;
   Limit?: number;
 }
@@ -4148,10 +4107,10 @@ export const ListIPSetsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListIPSetsResponse",
 }) as any as S.Schema<ListIPSetsResponse>;
 export interface ListLoggingConfigurationsRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   NextMarker?: string;
   Limit?: number;
-  LogScope?: LogScope;
+  LogScope?: LogScope | (string & {});
 }
 export const ListLoggingConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4189,7 +4148,7 @@ export const ListLoggingConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLoggingConfigurationsResponse",
 }) as any as S.Schema<ListLoggingConfigurationsResponse>;
 export interface ListManagedRuleSetsRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   NextMarker?: string;
   Limit?: number;
 }
@@ -4249,7 +4208,7 @@ export const ListManagedRuleSetsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManagedRuleSetsResponse",
 }) as any as S.Schema<ListManagedRuleSetsResponse>;
 export interface ListMobileSdkReleasesRequest {
-  Platform: Platform;
+  Platform: Platform | (string & {});
   NextMarker?: string;
   Limit?: number;
 }
@@ -4297,7 +4256,7 @@ export const ListMobileSdkReleasesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMobileSdkReleasesResponse",
 }) as any as S.Schema<ListMobileSdkReleasesResponse>;
 export interface ListRegexPatternSetsRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   NextMarker?: string;
   Limit?: number;
 }
@@ -4344,13 +4303,12 @@ export type ResourceType =
   | "APP_RUNNER_SERVICE"
   | "VERIFIED_ACCESS_INSTANCE"
   | "AMPLIFY"
-  | "AGENTCORE_GATEWAY"
-  | (string & {});
+  | "AGENTCORE_GATEWAY";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface ListResourcesForWebACLRequest {
   WebACLArn: string;
-  ResourceType?: ResourceType;
+  ResourceType?: ResourceType | (string & {});
 }
 export const ListResourcesForWebACLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4381,7 +4339,7 @@ export const ListResourcesForWebACLResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResourcesForWebACLResponse",
 }) as any as S.Schema<ListResourcesForWebACLResponse>;
 export interface ListRuleGroupsRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   NextMarker?: string;
   Limit?: number;
 }
@@ -4418,22 +4376,17 @@ export const ListRuleGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRuleGroupsResponse",
 }) as any as S.Schema<ListRuleGroupsResponse>;
-export type SettlementSortBy =
-  | "TIMESTAMP"
-  | "AMOUNT"
-  | "NAME"
-  | "STATUS"
-  | (string & {});
+export type SettlementSortBy = "TIMESTAMP" | "AMOUNT" | "NAME" | "STATUS";
 export const SettlementSortBy = /*@__PURE__*/ S.String;
 
 export type SettlementRecordLimit = number;
 export interface ListSettlementRecordsRequest {
   TimeWindow: TimeWindow;
-  Scope: Scope;
-  Currency: Currency;
+  Scope: Scope | (string & {});
+  Currency: Currency | (string & {});
   Filters?: MonetizationFilter[];
-  SortBy?: SettlementSortBy;
-  SortOrder?: SortOrder;
+  SortBy?: SettlementSortBy | (string & {});
+  SortOrder?: SortOrder | (string & {});
   Limit?: number;
   NextMarker?: string;
 }
@@ -4468,8 +4421,7 @@ export type SettlementStatus =
   | "FAILED"
   | "SERVICE_ERROR"
   | "SKIPPED_ORIGIN_ERROR"
-  | "DUPLICATE"
-  | (string & {});
+  | "DUPLICATE";
 export const SettlementStatus = /*@__PURE__*/ S.String;
 
 export type SettlementIdString = string;
@@ -4577,7 +4529,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWebACLsRequest {
-  Scope: Scope;
+  Scope: Scope | (string & {});
   NextMarker?: string;
   Limit?: number;
 }
@@ -4659,7 +4611,7 @@ export const VersionsToPublish = /*@__PURE__*/ S.Record(
 );
 export interface PutManagedRuleSetVersionsRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
   LockToken: string;
   RecommendedVersion?: string;
@@ -4774,7 +4726,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export interface UpdateIPSetRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
   Description?: string;
   Addresses: string[];
@@ -4812,7 +4764,7 @@ export const UpdateIPSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateIPSetResponse>;
 export interface UpdateManagedRuleSetVersionExpiryDateRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
   LockToken: string;
   VersionToExpire: string;
@@ -4860,7 +4812,7 @@ export const UpdateManagedRuleSetVersionExpiryDateResponse =
   }) as any as S.Schema<UpdateManagedRuleSetVersionExpiryDateResponse>;
 export interface UpdateRegexPatternSetRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
   Description?: string;
   RegularExpressionList: Regex[];
@@ -4898,7 +4850,7 @@ export const UpdateRegexPatternSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRegexPatternSetResponse>;
 export interface UpdateRuleGroupRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
   Description?: string;
   Rules?: Rule[];
@@ -4942,7 +4894,7 @@ export const UpdateRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRuleGroupResponse>;
 export interface UpdateWebACLRequest {
   Name: string;
-  Scope: Scope;
+  Scope: Scope | (string & {});
   Id: string;
   DefaultAction: DefaultAction;
   Description?: string;
@@ -5093,8 +5045,7 @@ export type ParameterExceptionField =
   | "MONETIZATION_CONFIG"
   | "WALLET_ADDRESS"
   | "PRICE_AMOUNT"
-  | "PAYMENT_NETWORK"
-  | (string & {});
+  | "PAYMENT_NETWORK";
 export const ParameterExceptionField = /*@__PURE__*/ S.String;
 
 export type ParameterExceptionParameter = string;

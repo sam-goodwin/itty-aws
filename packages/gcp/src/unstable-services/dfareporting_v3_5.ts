@@ -13,144 +13,63 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type CreativeAssetMetadataDetectedFeaturesItemEnum =
-  | "CSS_FONT_FACE"
-  | "CSS_BACKGROUND_SIZE"
-  | "CSS_BORDER_IMAGE"
-  | "CSS_BORDER_RADIUS"
-  | "CSS_BOX_SHADOW"
-  | "CSS_FLEX_BOX"
-  | "CSS_HSLA"
-  | "CSS_MULTIPLE_BGS"
-  | "CSS_OPACITY"
-  | "CSS_RGBA"
-  | "CSS_TEXT_SHADOW"
-  | "CSS_ANIMATIONS"
-  | "CSS_COLUMNS"
-  | "CSS_GENERATED_CONTENT"
-  | "CSS_GRADIENTS"
-  | "CSS_REFLECTIONS"
-  | "CSS_TRANSFORMS"
-  | "CSS_TRANSFORMS3D"
-  | "CSS_TRANSITIONS"
-  | "APPLICATION_CACHE"
-  | "CANVAS"
-  | "CANVAS_TEXT"
-  | "DRAG_AND_DROP"
-  | "HASH_CHANGE"
-  | "HISTORY"
-  | "AUDIO"
-  | "VIDEO"
-  | "INDEXED_DB"
-  | "INPUT_ATTR_AUTOCOMPLETE"
-  | "INPUT_ATTR_AUTOFOCUS"
-  | "INPUT_ATTR_LIST"
-  | "INPUT_ATTR_PLACEHOLDER"
-  | "INPUT_ATTR_MAX"
-  | "INPUT_ATTR_MIN"
-  | "INPUT_ATTR_MULTIPLE"
-  | "INPUT_ATTR_PATTERN"
-  | "INPUT_ATTR_REQUIRED"
-  | "INPUT_ATTR_STEP"
-  | "INPUT_TYPE_SEARCH"
-  | "INPUT_TYPE_TEL"
-  | "INPUT_TYPE_URL"
-  | "INPUT_TYPE_EMAIL"
-  | "INPUT_TYPE_DATETIME"
-  | "INPUT_TYPE_DATE"
-  | "INPUT_TYPE_MONTH"
-  | "INPUT_TYPE_WEEK"
-  | "INPUT_TYPE_TIME"
-  | "INPUT_TYPE_DATETIME_LOCAL"
-  | "INPUT_TYPE_NUMBER"
-  | "INPUT_TYPE_RANGE"
-  | "INPUT_TYPE_COLOR"
-  | "LOCAL_STORAGE"
-  | "POST_MESSAGE"
-  | "SESSION_STORAGE"
-  | "WEB_SOCKETS"
-  | "WEB_SQL_DATABASE"
-  | "WEB_WORKERS"
-  | "GEO_LOCATION"
-  | "INLINE_SVG"
-  | "SMIL"
-  | "SVG_HREF"
-  | "SVG_CLIP_PATHS"
-  | "TOUCH"
-  | "WEBGL"
-  | "SVG_FILTERS"
-  | "SVG_FE_IMAGE"
-  | (string & {});
-export const CreativeAssetMetadataDetectedFeaturesItemEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeAssetMetadataDetectedFeaturesItemEnum = "CSS_FONT_FACE" | "CSS_BACKGROUND_SIZE" | "CSS_BORDER_IMAGE" | "CSS_BORDER_RADIUS" | "CSS_BOX_SHADOW" | "CSS_FLEX_BOX" | "CSS_HSLA" | "CSS_MULTIPLE_BGS" | "CSS_OPACITY" | "CSS_RGBA" | "CSS_TEXT_SHADOW" | "CSS_ANIMATIONS" | "CSS_COLUMNS" | "CSS_GENERATED_CONTENT" | "CSS_GRADIENTS" | "CSS_REFLECTIONS" | "CSS_TRANSFORMS" | "CSS_TRANSFORMS3D" | "CSS_TRANSITIONS" | "APPLICATION_CACHE" | "CANVAS" | "CANVAS_TEXT" | "DRAG_AND_DROP" | "HASH_CHANGE" | "HISTORY" | "AUDIO" | "VIDEO" | "INDEXED_DB" | "INPUT_ATTR_AUTOCOMPLETE" | "INPUT_ATTR_AUTOFOCUS" | "INPUT_ATTR_LIST" | "INPUT_ATTR_PLACEHOLDER" | "INPUT_ATTR_MAX" | "INPUT_ATTR_MIN" | "INPUT_ATTR_MULTIPLE" | "INPUT_ATTR_PATTERN" | "INPUT_ATTR_REQUIRED" | "INPUT_ATTR_STEP" | "INPUT_TYPE_SEARCH" | "INPUT_TYPE_TEL" | "INPUT_TYPE_URL" | "INPUT_TYPE_EMAIL" | "INPUT_TYPE_DATETIME" | "INPUT_TYPE_DATE" | "INPUT_TYPE_MONTH" | "INPUT_TYPE_WEEK" | "INPUT_TYPE_TIME" | "INPUT_TYPE_DATETIME_LOCAL" | "INPUT_TYPE_NUMBER" | "INPUT_TYPE_RANGE" | "INPUT_TYPE_COLOR" | "LOCAL_STORAGE" | "POST_MESSAGE" | "SESSION_STORAGE" | "WEB_SOCKETS" | "WEB_SQL_DATABASE" | "WEB_WORKERS" | "GEO_LOCATION" | "INLINE_SVG" | "SMIL" | "SVG_HREF" | "SVG_CLIP_PATHS" | "TOUCH" | "WEBGL" | "SVG_FILTERS" | "SVG_FE_IMAGE";
+export const CreativeAssetMetadataDetectedFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetMetadataDetectedFeaturesItemEnumList =
-  ReadonlyArray<CreativeAssetMetadataDetectedFeaturesItemEnum>;
-export const CreativeAssetMetadataDetectedFeaturesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    CreativeAssetMetadataDetectedFeaturesItemEnum,
-  ) as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
+export type CreativeAssetMetadataDetectedFeaturesItemEnumList = ReadonlyArray<CreativeAssetMetadataDetectedFeaturesItemEnum>;
+export const CreativeAssetMetadataDetectedFeaturesItemEnumList = /*@__PURE__*/ S.Array(CreativeAssetMetadataDetectedFeaturesItemEnum) as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
 
-export type CreativeCustomEventTargetTypeEnum =
-  | "TARGET_BLANK"
-  | "TARGET_TOP"
-  | "TARGET_SELF"
-  | "TARGET_PARENT"
-  | "TARGET_POPUP"
-  | (string & {});
+export type CreativeCustomEventTargetTypeEnum = "TARGET_BLANK" | "TARGET_TOP" | "TARGET_SELF" | "TARGET_PARENT" | "TARGET_POPUP";
 export const CreativeCustomEventTargetTypeEnum = /*@__PURE__*/ S.String;
 
-export type PopupWindowPropertiesPositionTypeEnum =
-  | "CENTER"
-  | "COORDINATES"
-  | (string & {});
+export type PopupWindowPropertiesPositionTypeEnum = "CENTER" | "COORDINATES";
 export const PopupWindowPropertiesPositionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Offset Position. */
@@ -161,10 +80,10 @@ export interface OffsetPosition {
   top?: number;
 }
 export const OffsetPosition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    left: S.optional(S.Number),
-    top: S.optional(S.Number),
-  }),
+S.Struct({
+  "left": S.optional(S.Number),
+  "top": S.optional(S.Number),
+}),
 ).annotate({ identifier: "OffsetPosition" }) as any as S.Schema<OffsetPosition>;
 
 /** Represents the dimensions of ads, placements, creatives, or creative assets. */
@@ -181,13 +100,13 @@ export interface Size {
   height?: number;
 }
 export const Size = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    iab: S.optional(S.Boolean),
-    width: S.optional(S.Number),
-    kind: S.optional(S.String),
-    height: S.optional(S.Number),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "iab": S.optional(S.Boolean),
+  "width": S.optional(S.Number),
+  "kind": S.optional(S.String),
+  "height": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
 
 /** Popup Window Properties. */
@@ -212,35 +131,23 @@ export interface PopupWindowProperties {
   dimension?: Size;
 }
 export const PopupWindowProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    showStatusBar: S.optional(S.Boolean),
-    title: S.optional(S.String),
-    showScrollBar: S.optional(S.Boolean),
-    showToolBar: S.optional(S.Boolean),
-    positionType: S.optional(PopupWindowPropertiesPositionTypeEnum),
-    showMenuBar: S.optional(S.Boolean),
-    showAddressBar: S.optional(S.Boolean),
-    offset: S.optional(OffsetPosition),
-    dimension: S.optional(Size),
-  }),
-).annotate({
-  identifier: "PopupWindowProperties",
-}) as any as S.Schema<PopupWindowProperties>;
+S.Struct({
+  "showStatusBar": S.optional(S.Boolean),
+  "title": S.optional(S.String),
+  "showScrollBar": S.optional(S.Boolean),
+  "showToolBar": S.optional(S.Boolean),
+  "positionType": S.optional(PopupWindowPropertiesPositionTypeEnum),
+  "showMenuBar": S.optional(S.Boolean),
+  "showAddressBar": S.optional(S.Boolean),
+  "offset": S.optional(OffsetPosition),
+  "dimension": S.optional(Size),
+}),
+).annotate({ identifier: "PopupWindowProperties" }) as any as S.Schema<PopupWindowProperties>;
 
-export type CreativeCustomEventAdvertiserCustomEventTypeEnum =
-  | "ADVERTISER_EVENT_TIMER"
-  | "ADVERTISER_EVENT_EXIT"
-  | "ADVERTISER_EVENT_COUNTER"
-  | (string & {});
-export const CreativeCustomEventAdvertiserCustomEventTypeEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeCustomEventAdvertiserCustomEventTypeEnum = "ADVERTISER_EVENT_TIMER" | "ADVERTISER_EVENT_EXIT" | "ADVERTISER_EVENT_COUNTER";
+export const CreativeCustomEventAdvertiserCustomEventTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeCustomEventArtworkTypeEnum =
-  | "ARTWORK_TYPE_FLASH"
-  | "ARTWORK_TYPE_HTML5"
-  | "ARTWORK_TYPE_MIXED"
-  | "ARTWORK_TYPE_IMAGE"
-  | (string & {});
+export type CreativeCustomEventArtworkTypeEnum = "ARTWORK_TYPE_FLASH" | "ARTWORK_TYPE_HTML5" | "ARTWORK_TYPE_MIXED" | "ARTWORK_TYPE_IMAGE";
 export const CreativeCustomEventArtworkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Click-through URL */
@@ -253,14 +160,12 @@ export interface CreativeClickThroughUrl {
   customClickThroughUrl?: string;
 }
 export const CreativeClickThroughUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    landingPageId: S.optional(S.String),
-    computedClickThroughUrl: S.optional(S.String),
-    customClickThroughUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeClickThroughUrl",
-}) as any as S.Schema<CreativeClickThroughUrl>;
+S.Struct({
+  "landingPageId": S.optional(S.String),
+  "computedClickThroughUrl": S.optional(S.String),
+  "customClickThroughUrl": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeClickThroughUrl" }) as any as S.Schema<CreativeClickThroughUrl>;
 
 /** Creative Custom Event. */
 export interface CreativeCustomEvent {
@@ -286,28 +191,22 @@ export interface CreativeCustomEvent {
   exitClickThroughUrl?: CreativeClickThroughUrl;
 }
 export const CreativeCustomEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    videoReportingId: S.optional(S.String),
-    targetType: S.optional(CreativeCustomEventTargetTypeEnum),
-    advertiserCustomEventName: S.optional(S.String),
-    popupWindowProperties: S.optional(PopupWindowProperties),
-    advertiserCustomEventId: S.optional(S.String),
-    artworkLabel: S.optional(S.String),
-    advertiserCustomEventType: S.optional(
-      CreativeCustomEventAdvertiserCustomEventTypeEnum,
-    ),
-    artworkType: S.optional(CreativeCustomEventArtworkTypeEnum),
-    id: S.optional(S.String),
-    exitClickThroughUrl: S.optional(CreativeClickThroughUrl),
-  }),
-).annotate({
-  identifier: "CreativeCustomEvent",
-}) as any as S.Schema<CreativeCustomEvent>;
+S.Struct({
+  "videoReportingId": S.optional(S.String),
+  "targetType": S.optional(CreativeCustomEventTargetTypeEnum),
+  "advertiserCustomEventName": S.optional(S.String),
+  "popupWindowProperties": S.optional(PopupWindowProperties),
+  "advertiserCustomEventId": S.optional(S.String),
+  "artworkLabel": S.optional(S.String),
+  "advertiserCustomEventType": S.optional(CreativeCustomEventAdvertiserCustomEventTypeEnum),
+  "artworkType": S.optional(CreativeCustomEventArtworkTypeEnum),
+  "id": S.optional(S.String),
+  "exitClickThroughUrl": S.optional(CreativeClickThroughUrl),
+}),
+).annotate({ identifier: "CreativeCustomEvent" }) as any as S.Schema<CreativeCustomEvent>;
 
 export type CreativeCustomEventList = ReadonlyArray<CreativeCustomEvent>;
-export const CreativeCustomEventList = /*@__PURE__*/ S.Array(
-  CreativeCustomEvent,
-) as any as S.Schema<CreativeCustomEventList>;
+export const CreativeCustomEventList = /*@__PURE__*/ S.Array(CreativeCustomEvent) as any as S.Schema<CreativeCustomEventList>;
 
 /** Creative Click Tag. */
 export interface ClickTag {
@@ -319,26 +218,17 @@ export interface ClickTag {
   name?: string;
 }
 export const ClickTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventName: S.optional(S.String),
-    clickThroughUrl: S.optional(CreativeClickThroughUrl),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "eventName": S.optional(S.String),
+  "clickThroughUrl": S.optional(CreativeClickThroughUrl),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "ClickTag" }) as any as S.Schema<ClickTag>;
 
 export type ClickTagList = ReadonlyArray<ClickTag>;
-export const ClickTagList = /*@__PURE__*/ S.Array(
-  ClickTag,
-) as any as S.Schema<ClickTagList>;
+export const ClickTagList = /*@__PURE__*/ S.Array(ClickTag) as any as S.Schema<ClickTagList>;
 
-export type CreativeAssetIdTypeEnum =
-  | "IMAGE"
-  | "FLASH"
-  | "VIDEO"
-  | "HTML"
-  | "HTML_IMAGE"
-  | "AUDIO"
-  | (string & {});
+export type CreativeAssetIdTypeEnum = "IMAGE" | "FLASH" | "VIDEO" | "HTML" | "HTML_IMAGE" | "AUDIO";
 export const CreativeAssetIdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative Asset ID. */
@@ -349,20 +239,13 @@ export interface CreativeAssetId {
   type?: CreativeAssetIdTypeEnum;
 }
 export const CreativeAssetId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(CreativeAssetIdTypeEnum),
-  }),
-).annotate({
-  identifier: "CreativeAssetId",
-}) as any as S.Schema<CreativeAssetId>;
+S.Struct({
+  "name": S.optional(S.String),
+  "type": S.optional(CreativeAssetIdTypeEnum),
+}),
+).annotate({ identifier: "CreativeAssetId" }) as any as S.Schema<CreativeAssetId>;
 
-export type DimensionValueMatchTypeEnum =
-  | "EXACT"
-  | "BEGINS_WITH"
-  | "CONTAINS"
-  | "WILDCARD_EXPRESSION"
-  | (string & {});
+export type DimensionValueMatchTypeEnum = "EXACT" | "BEGINS_WITH" | "CONTAINS" | "WILDCARD_EXPRESSION";
 export const DimensionValueMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a DimensionValue resource. */
@@ -381,53 +264,21 @@ export interface DimensionValue {
   id?: string;
 }
 export const DimensionValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    value: S.optional(S.String),
-    dimensionName: S.optional(S.String),
-    matchType: S.optional(DimensionValueMatchTypeEnum),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "value": S.optional(S.String),
+  "dimensionName": S.optional(S.String),
+  "matchType": S.optional(DimensionValueMatchTypeEnum),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "DimensionValue" }) as any as S.Schema<DimensionValue>;
 
-export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
-  | "CLICK_TAG_NON_TOP_LEVEL"
-  | "CLICK_TAG_MISSING"
-  | "CLICK_TAG_MORE_THAN_ONE"
-  | "CLICK_TAG_INVALID"
-  | "ORPHANED_ASSET"
-  | "PRIMARY_HTML_MISSING"
-  | "EXTERNAL_FILE_REFERENCED"
-  | "MRAID_REFERENCED"
-  | "ADMOB_REFERENCED"
-  | "FILE_TYPE_INVALID"
-  | "ZIP_INVALID"
-  | "LINKED_FILE_NOT_FOUND"
-  | "MAX_FLASH_VERSION_11"
-  | "NOT_SSL_COMPLIANT"
-  | "FILE_DETAIL_EMPTY"
-  | "ASSET_INVALID"
-  | "GWD_PROPERTIES_INVALID"
-  | "ENABLER_UNSUPPORTED_METHOD_DCM"
-  | "ASSET_FORMAT_UNSUPPORTED_DCM"
-  | "COMPONENT_UNSUPPORTED_DCM"
-  | "HTML5_FEATURE_UNSUPPORTED"
-  | "CLICK_TAG_IN_GWD"
-  | "CLICK_TAG_HARD_CODED"
-  | "SVG_INVALID"
-  | "CLICK_TAG_IN_RICH_MEDIA"
-  | "MISSING_ENABLER_REFERENCE"
-  | (string & {});
-export const CreativeAssetMetadataWarnedValidationRulesItemEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeAssetMetadataWarnedValidationRulesItemEnum = "CLICK_TAG_NON_TOP_LEVEL" | "CLICK_TAG_MISSING" | "CLICK_TAG_MORE_THAN_ONE" | "CLICK_TAG_INVALID" | "ORPHANED_ASSET" | "PRIMARY_HTML_MISSING" | "EXTERNAL_FILE_REFERENCED" | "MRAID_REFERENCED" | "ADMOB_REFERENCED" | "FILE_TYPE_INVALID" | "ZIP_INVALID" | "LINKED_FILE_NOT_FOUND" | "MAX_FLASH_VERSION_11" | "NOT_SSL_COMPLIANT" | "FILE_DETAIL_EMPTY" | "ASSET_INVALID" | "GWD_PROPERTIES_INVALID" | "ENABLER_UNSUPPORTED_METHOD_DCM" | "ASSET_FORMAT_UNSUPPORTED_DCM" | "COMPONENT_UNSUPPORTED_DCM" | "HTML5_FEATURE_UNSUPPORTED" | "CLICK_TAG_IN_GWD" | "CLICK_TAG_HARD_CODED" | "SVG_INVALID" | "CLICK_TAG_IN_RICH_MEDIA" | "MISSING_ENABLER_REFERENCE";
+export const CreativeAssetMetadataWarnedValidationRulesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetMetadataWarnedValidationRulesItemEnumList =
-  ReadonlyArray<CreativeAssetMetadataWarnedValidationRulesItemEnum>;
-export const CreativeAssetMetadataWarnedValidationRulesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    CreativeAssetMetadataWarnedValidationRulesItemEnum,
-  ) as any as S.Schema<CreativeAssetMetadataWarnedValidationRulesItemEnumList>;
+export type CreativeAssetMetadataWarnedValidationRulesItemEnumList = ReadonlyArray<CreativeAssetMetadataWarnedValidationRulesItemEnum>;
+export const CreativeAssetMetadataWarnedValidationRulesItemEnumList = /*@__PURE__*/ S.Array(CreativeAssetMetadataWarnedValidationRulesItemEnum) as any as S.Schema<CreativeAssetMetadataWarnedValidationRulesItemEnumList>;
 
 /** CreativeAssets contains properties of a creative asset file which will be uploaded or has already been uploaded. Refer to the creative sample code for how to upload assets and insert a creative. */
 export interface CreativeAssetMetadata {
@@ -455,26 +306,20 @@ export interface CreativeAssetMetadata {
   kind?: string;
 }
 export const CreativeAssetMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    detectedFeatures: S.optional(
-      CreativeAssetMetadataDetectedFeaturesItemEnumList,
-    ),
-    timerCustomEvents: S.optional(CreativeCustomEventList),
-    clickTags: S.optional(ClickTagList),
-    richMedia: S.optional(S.Boolean),
-    assetIdentifier: S.optional(CreativeAssetId),
-    idDimensionValue: S.optional(DimensionValue),
-    counterCustomEvents: S.optional(CreativeCustomEventList),
-    warnedValidationRules: S.optional(
-      CreativeAssetMetadataWarnedValidationRulesItemEnumList,
-    ),
-    exitCustomEvents: S.optional(CreativeCustomEventList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeAssetMetadata",
-}) as any as S.Schema<CreativeAssetMetadata>;
+S.Struct({
+  "id": S.optional(S.String),
+  "detectedFeatures": S.optional(CreativeAssetMetadataDetectedFeaturesItemEnumList),
+  "timerCustomEvents": S.optional(CreativeCustomEventList),
+  "clickTags": S.optional(ClickTagList),
+  "richMedia": S.optional(S.Boolean),
+  "assetIdentifier": S.optional(CreativeAssetId),
+  "idDimensionValue": S.optional(DimensionValue),
+  "counterCustomEvents": S.optional(CreativeCustomEventList),
+  "warnedValidationRules": S.optional(CreativeAssetMetadataWarnedValidationRulesItemEnumList),
+  "exitCustomEvents": S.optional(CreativeCustomEventList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeAssetMetadata" }) as any as S.Schema<CreativeAssetMetadata>;
 
 export interface UploadMediaRequest {
   /** User profile ID associated with this request. */
@@ -485,27 +330,14 @@ export interface UploadMediaRequest {
   body?: CreativeAssetMetadata;
 }
 export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    advertiserId: S.String.pipe(T.Label()),
-    body: S.optional(CreativeAssetMetadata.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/creativeAssets/{+advertiserId}/creativeAssets",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v3.5/",
-    }),
-  ),
-).annotate({
-  identifier: "UploadMediaRequest",
-}) as any as S.Schema<UploadMediaRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "advertiserId": S.String.pipe(T.Label()),
+  "body": S.optional(CreativeAssetMetadata.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/creativeAssets/{+advertiserId}/creativeAssets","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v3.5/"})),
+).annotate({ identifier: "UploadMediaRequest" }) as any as S.Schema<UploadMediaRequest>;
 
-export type UploadMediaError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadMediaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new creative asset. */
 export const uploadMedia: API.OperationMethod<
   UploadMediaRequest,
@@ -519,3 +351,4 @@ export const uploadMedia: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

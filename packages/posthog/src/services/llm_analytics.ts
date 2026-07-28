@@ -102,18 +102,14 @@ export const LlmAnalyticsClusteringConfigSetEventFiltersCreateRequest =
   }) as any as S.Schema<LlmAnalyticsClusteringConfigSetEventFiltersCreateRequest>;
 
 /** * `trace` - trace * `generation` - generation * `evaluation` - evaluation */
-export type AnalysisLevelEnum =
-  | "trace"
-  | "generation"
-  | "evaluation"
-  | (string & {});
+export type AnalysisLevelEnum = "trace" | "generation" | "evaluation";
 export const AnalysisLevelEnum = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsClusteringJobsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name?: string;
-  analysis_level?: AnalysisLevelEnum;
+  analysis_level?: AnalysisLevelEnum | (string & {});
   event_filters?: unknown;
   enabled?: boolean;
 }
@@ -239,7 +235,7 @@ export interface LlmAnalyticsClusteringJobsPartialUpdateRequest {
   /** A UUID string identifying this clustering job. */
   id: string;
   name?: string;
-  analysis_level?: AnalysisLevelEnum;
+  analysis_level?: AnalysisLevelEnum | (string & {});
   event_filters?: unknown;
   enabled?: boolean;
 }
@@ -291,7 +287,7 @@ export interface LlmAnalyticsClusteringJobsUpdateRequest {
   /** A UUID string identifying this clustering job. */
   id: string;
   name?: string;
-  analysis_level?: AnalysisLevelEnum;
+  analysis_level?: AnalysisLevelEnum | (string & {});
   event_filters?: unknown;
   enabled?: boolean;
 }
@@ -316,23 +312,19 @@ export const LlmAnalyticsClusteringJobsUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmAnalyticsClusteringJobsUpdateRequest>;
 
 /** * `none` - none * `l2` - l2 */
-export type EmbeddingNormalizationEnum = "none" | "l2" | (string & {});
+export type EmbeddingNormalizationEnum = "none" | "l2";
 export const EmbeddingNormalizationEnum = /*@__PURE__*/ S.String;
 
 /** * `none` - none * `umap` - umap * `pca` - pca */
-export type DimensionalityReductionMethodEnum =
-  | "none"
-  | "umap"
-  | "pca"
-  | (string & {});
+export type DimensionalityReductionMethodEnum = "none" | "umap" | "pca";
 export const DimensionalityReductionMethodEnum = /*@__PURE__*/ S.String;
 
 /** * `hdbscan` - hdbscan * `kmeans` - kmeans */
-export type ClusteringMethodEnum = "hdbscan" | "kmeans" | (string & {});
+export type ClusteringMethodEnum = "hdbscan" | "kmeans";
 export const ClusteringMethodEnum = /*@__PURE__*/ S.String;
 
 /** * `umap` - umap * `pca` - pca * `tsne` - tsne */
-export type VisualizationMethodEnum = "umap" | "pca" | "tsne" | (string & {});
+export type VisualizationMethodEnum = "umap" | "pca" | "tsne";
 export const VisualizationMethodEnum = /*@__PURE__*/ S.String;
 
 export type LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap = {
@@ -360,13 +352,15 @@ export interface LlmAnalyticsClusteringRunsCreateRequest {
   /** Maximum number of traces to sample for clustering */
   max_samples?: number;
   /** Embedding normalization method: 'none' (raw embeddings) or 'l2' (L2 normalize before clustering) * `none` - none * `l2` - l2 */
-  embedding_normalization?: EmbeddingNormalizationEnum;
+  embedding_normalization?: EmbeddingNormalizationEnum | (string & {});
   /** Dimensionality reduction method: 'none' (cluster on raw), 'umap', or 'pca' * `none` - none * `umap` - umap * `pca` - pca */
-  dimensionality_reduction_method?: DimensionalityReductionMethodEnum;
+  dimensionality_reduction_method?:
+    | DimensionalityReductionMethodEnum
+    | (string & {});
   /** Target dimensions for dimensionality reduction (ignored if method is 'none') */
   dimensionality_reduction_ndims?: number;
   /** Clustering algorithm: 'hdbscan' (density-based, auto-determines k) or 'kmeans' (centroid-based) * `hdbscan` - hdbscan * `kmeans` - kmeans */
-  clustering_method?: ClusteringMethodEnum;
+  clustering_method?: ClusteringMethodEnum | (string & {});
   /** Minimum cluster size as fraction of total samples (e.g., 0.02 = 2%) */
   min_cluster_size_fraction?: number;
   /** HDBSCAN min_samples parameter (higher = more conservative clustering) */
@@ -378,7 +372,7 @@ export interface LlmAnalyticsClusteringRunsCreateRequest {
   /** Optional label/tag for the clustering run (used as suffix in run_id for tracking experiments) */
   run_label?: string;
   /** Method for 2D scatter plot visualization: 'umap', 'pca', or 'tsne' * `umap` - umap * `pca` - pca * `tsne` - tsne */
-  visualization_method?: VisualizationMethodEnum;
+  visualization_method?: VisualizationMethodEnum | (string & {});
   /** Property filters to scope which traces are included in clustering (PostHog standard format) */
   event_filters?: LlmAnalyticsClusteringRunsCreateRequestEventFiltersList;
   /** If provided, use this clustering job's analysis_level and event_filters instead of request params */
@@ -515,17 +509,11 @@ export type LLMProviderEnum =
   | "azure_openai"
   | "together_ai"
   | "minimax"
-  | "zeabur"
-  | (string & {});
+  | "zeabur";
 export const LLMProviderEnum = /*@__PURE__*/ S.String;
 
 /** * `unknown` - Unknown * `ok` - Ok * `invalid` - Invalid * `error` - Error */
-export type LLMProviderKeyStateEnum =
-  | "unknown"
-  | "ok"
-  | "invalid"
-  | "error"
-  | (string & {});
+export type LLMProviderKeyStateEnum = "unknown" | "ok" | "invalid" | "error";
 export const LLMProviderKeyStateEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -543,11 +531,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -653,10 +640,7 @@ export const LlmAnalyticsEvaluationConfigSetActiveKeyCreateRequest =
   }) as any as S.Schema<LlmAnalyticsEvaluationConfigSetActiveKeyCreateRequest>;
 
 /** * `scheduled` - Scheduled * `every_n` - Every N */
-export type EvaluationReportFrequencyEnum =
-  | "scheduled"
-  | "every_n"
-  | (string & {});
+export type EvaluationReportFrequencyEnum = "scheduled" | "every_n";
 export const EvaluationReportFrequencyEnum = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsEvaluationReportsCreateRequest {
@@ -665,7 +649,7 @@ export interface LlmAnalyticsEvaluationReportsCreateRequest {
   /** UUID of the evaluation this report config belongs to. */
   evaluation?: string;
   /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
-  frequency?: EvaluationReportFrequencyEnum;
+  frequency?: EvaluationReportFrequencyEnum | (string & {});
   /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
   rrule?: string;
   /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
@@ -879,7 +863,7 @@ export interface LlmAnalyticsEvaluationReportsPartialUpdateRequest {
   /** A UUID string identifying this evaluation report. */
   id: string;
   /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
-  frequency?: EvaluationReportFrequencyEnum;
+  frequency?: EvaluationReportFrequencyEnum | (string & {});
   /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
   rrule?: string;
   /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
@@ -1031,7 +1015,7 @@ export const LlmAnalyticsEvaluationReportsRunsListRequest =
   }) as any as S.Schema<LlmAnalyticsEvaluationReportsRunsListRequest>;
 
 /** * `generation` - Generation * `trace` - Trace */
-export type EvaluationTargetEnum = "generation" | "trace" | (string & {});
+export type EvaluationTargetEnum = "generation" | "trace";
 export const EvaluationTargetEnum = /*@__PURE__*/ S.String;
 
 export interface EvaluationReportSection {
@@ -1082,7 +1066,7 @@ export const EvaluationReportRunContentCitationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EvaluationReportRunContentCitationsList>;
 
 /** * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
-export type OutputTypeEnum = "boolean" | "sentiment" | (string & {});
+export type OutputTypeEnum = "boolean" | "sentiment";
 export const OutputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Count by output-specific result label, such as pass/fail/N/A or positive/neutral/negative. */
@@ -1199,8 +1183,7 @@ export type DeliveryStatusEnum =
   | "generated"
   | "delivered"
   | "partial_failure"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const DeliveryStatusEnum = /*@__PURE__*/ S.String;
 
 /** Delivery error messages. Empty when all configured deliveries succeeded. */
@@ -1275,7 +1258,7 @@ export interface LlmAnalyticsEvaluationReportsUpdateRequest {
   /** A UUID string identifying this evaluation report. */
   id: string;
   /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
-  frequency?: EvaluationReportFrequencyEnum;
+  frequency?: EvaluationReportFrequencyEnum | (string & {});
   /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
   rrule?: string;
   /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
@@ -1327,8 +1310,7 @@ export type LlmAnalyticsModelsRetrieveRequestProvider =
   | "openai"
   | "openrouter"
   | "together_ai"
-  | "zeabur"
-  | (string & {});
+  | "zeabur";
 export const LlmAnalyticsModelsRetrieveRequestProvider = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsModelsRetrieveRequest {
@@ -1337,7 +1319,7 @@ export interface LlmAnalyticsModelsRetrieveRequest {
   /** Optional provider key UUID. When supplied, models reachable with that specific key are returned (useful for Azure OpenAI, where the deployment list depends on the configured endpoint). Must belong to the same provider as the `provider` parameter. */
   key_id?: string;
   /** LLM provider to list models for. Must be one of the supported providers. */
-  provider: LlmAnalyticsModelsRetrieveRequestProvider;
+  provider: LlmAnalyticsModelsRetrieveRequestProvider | (string & {});
 }
 export const LlmAnalyticsModelsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1559,7 +1541,7 @@ export const LlmAnalyticsParserRecipesRetrieveRequest = /*@__PURE__*/ S.suspend(
 export interface LlmAnalyticsProviderKeysCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  provider?: LLMProviderEnum;
+  provider?: LLMProviderEnum | (string & {});
   name?: string;
   api_key?: string | Redacted.Redacted<string>;
   /** Azure OpenAI endpoint URL */
@@ -1693,7 +1675,7 @@ export interface LlmAnalyticsProviderKeysPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this llm provider key. */
   id: string;
-  provider?: LLMProviderEnum;
+  provider?: LLMProviderEnum | (string & {});
   name?: string;
   api_key?: string | Redacted.Redacted<string>;
   /** Azure OpenAI endpoint URL */
@@ -1751,7 +1733,7 @@ export interface LlmAnalyticsProviderKeysUpdateRequest {
   project_id: string;
   /** A UUID string identifying this llm provider key. */
   id: string;
-  provider?: LLMProviderEnum;
+  provider?: LLMProviderEnum | (string & {});
   name?: string;
   api_key?: string | Redacted.Redacted<string>;
   /** Azure OpenAI endpoint URL */
@@ -1787,7 +1769,7 @@ export interface LlmAnalyticsProviderKeysValidateCreateRequest {
   project_id: string;
   /** A UUID string identifying this llm provider key. */
   id: string;
-  provider?: LLMProviderEnum;
+  provider?: LLMProviderEnum | (string & {});
   name?: string;
   api_key?: string | Redacted.Redacted<string>;
   /** Azure OpenAI endpoint URL */
@@ -2226,11 +2208,7 @@ export const LlmAnalyticsReviewQueuesRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmAnalyticsReviewQueuesRetrieveRequest>;
 
 /** * `categorical` - categorical * `numeric` - numeric * `boolean` - boolean */
-export type ExperimentMetricKindEnum =
-  | "categorical"
-  | "numeric"
-  | "boolean"
-  | (string & {});
+export type ExperimentMetricKindEnum = "categorical" | "numeric" | "boolean";
 export const ExperimentMetricKindEnum = /*@__PURE__*/ S.String;
 
 export interface CategoricalScoreOption {
@@ -2257,7 +2235,7 @@ export const CategoricalScoreDefinitionConfigOptionsList =
   ) as any as S.Schema<CategoricalScoreDefinitionConfigOptionsList>;
 
 /** * `single` - single * `multiple` - multiple */
-export type SelectionModeEnum = "single" | "multiple" | (string & {});
+export type SelectionModeEnum = "single" | "multiple";
 export const SelectionModeEnum = /*@__PURE__*/ S.String;
 
 export interface CategoricalScoreDefinitionConfig {
@@ -2329,7 +2307,7 @@ export interface LlmAnalyticsScoreDefinitionsCreateRequest {
   /** Optional human-readable description. */
   description?: string | null;
   /** Scorer kind. This cannot be changed after creation. * `categorical` - categorical * `numeric` - numeric * `boolean` - boolean */
-  kind?: ExperimentMetricKindEnum;
+  kind?: ExperimentMetricKindEnum | (string & {});
   /** New scorers are always created as active. */
   archived?: boolean;
   /** Initial immutable scorer configuration. */

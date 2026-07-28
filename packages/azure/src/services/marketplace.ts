@@ -192,12 +192,7 @@ export const PrivateStoreAdminRequestApprovalsListRequest =
   }) as any as S.Schema<PrivateStoreAdminRequestApprovalsListRequest>;
 
 /** The type of identity that creates/modifies resources */
-export type IdentityType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+export type IdentityType = "User" | "Application" | "ManagedIdentity" | "Key";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Read only system data */
@@ -227,7 +222,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Gets or sets admin action */
-export type AdminAction = "Approved" | "Rejected" | (string & {});
+export type AdminAction = "Approved" | "Rejected";
 export const AdminAction = /*@__PURE__*/ S.String;
 
 /** Gets or sets Approved plans ids, empty in case of rejected */
@@ -583,7 +578,7 @@ export const CollectionPropertiesSubscriptionsListList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CollectionPropertiesSubscriptionsListList>;
 
 /** Rule type */
-export type RuleType = "PrivateProducts" | "TermsAndCondition" | (string & {});
+export type RuleType = "PrivateProducts" | "TermsAndCondition";
 export const RuleType = /*@__PURE__*/ S.String;
 
 export type RuleValueList = ReadonlyArray<string>;
@@ -1019,8 +1014,7 @@ export type Accessibility =
   | "Unknown"
   | "Public"
   | "PrivateTenantOnLevel"
-  | "PrivateSubscriptionOnLevel"
-  | (string & {});
+  | "PrivateSubscriptionOnLevel";
 export const Accessibility = /*@__PURE__*/ S.String;
 
 export interface Plan {
@@ -1148,7 +1142,7 @@ export const OfferPropertiesInputIconFileUrisMap = /*@__PURE__*/ S.Record(
 
 export interface PlanInput {
   /** Plan accessibility */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility | (string & {});
 }
 export const PlanInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1479,8 +1473,7 @@ export type Operation =
   | "DeletePrivateStoreOffer"
   | "DeletePrivateStoreCollection"
   | "DeletePrivateStoreCollectionOffer"
-  | "Ping"
-  | (string & {});
+  | "Ping";
 export const Operation = /*@__PURE__*/ S.String;
 
 export interface PrivateStoreCollectionOfferPostRequest {
@@ -1490,7 +1483,7 @@ export interface PrivateStoreCollectionOfferPostRequest {
   collectionId: string;
   /** The offer ID to update or delete */
   offerId: string;
-  body?: Operation;
+  body?: Operation | (string & {});
 }
 export const PrivateStoreCollectionOfferPostRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1625,7 +1618,7 @@ export interface PrivateStoreCollectionPostRequest {
   privateStoreId: string;
   /** The collection ID */
   collectionId: string;
-  body?: Operation;
+  body?: Operation | (string & {});
 }
 export const PrivateStoreCollectionPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1915,12 +1908,7 @@ export const PrivateStoreCreateApprovalRequestRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateStoreCreateApprovalRequestRequest>;
 
 /** Gets the plan status */
-export type Status =
-  | "Pending"
-  | "Rejected"
-  | "Approved"
-  | "None"
-  | (string & {});
+export type Status = "Pending" | "Rejected" | "Approved" | "None";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Return plan with request details */
@@ -2010,7 +1998,7 @@ export const PrivateStoreCreateApprovalRequestResponse =
   }) as any as S.Schema<PrivateStoreCreateApprovalRequestResponse>;
 
 /** Indicates private store availability */
-export type Availability = "enabled" | "disabled" | (string & {});
+export type Availability = "enabled" | "disabled";
 export const Availability = /*@__PURE__*/ S.String;
 
 /** Gets or sets list of branding characteristics */
@@ -2063,7 +2051,7 @@ export const NotificationsSettingsPropertiesInput = /*@__PURE__*/ S.suspend(
 /** Describes the json payload on whether or not the private store is enabled for a given tenant */
 export interface PrivateStorePropertiesInput {
   /** Indicates private store availability */
-  availability?: Availability;
+  availability?: Availability | (string & {});
   /** Identifier for purposes of race condition */
   eTag?: string;
   /** Private Store Name */
@@ -2172,8 +2160,7 @@ export type SubscriptionState =
   | "Warned"
   | "PastDue"
   | "Disabled"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const SubscriptionState = /*@__PURE__*/ S.String;
 
 /** Subscription information. */
@@ -3248,7 +3235,7 @@ export interface AdminRequestApprovalPropertiesInput {
   /** Gets or sets publisher Id */
   publisherId?: string;
   /** Gets or sets admin action */
-  adminAction?: AdminAction;
+  adminAction?: AdminAction | (string & {});
   /** Gets or sets Approved plans ids, empty in case of rejected */
   approvedPlans?: AdminRequestApprovalPropertiesInputApprovedPlansList;
   /** Gets or sets admin comment */

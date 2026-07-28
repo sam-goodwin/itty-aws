@@ -422,8 +422,7 @@ export type AnalyticsReportsBytimesGetRequestTimeDelta =
   | "day"
   | "hour"
   | "dekaminute"
-  | "minute"
-  | (string & {});
+  | "minute";
 export const AnalyticsReportsBytimesGetRequestTimeDelta =
   /*@__PURE__*/ S.String;
 
@@ -445,7 +444,7 @@ export interface GetAnalyticReportBytimeRequest {
   /** A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: string;
   /** Unit of time to group data by. */
-  timeDelta?: AnalyticsReportsBytimesGetRequestTimeDelta;
+  timeDelta?: AnalyticsReportsBytimesGetRequestTimeDelta | (string & {});
   /** End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
@@ -543,8 +542,7 @@ export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   | "day"
   | "hour"
   | "dekaminute"
-  | "minute"
-  | (string & {});
+  | "minute";
 export const AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   /*@__PURE__*/ S.String;
 

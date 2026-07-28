@@ -169,8 +169,7 @@ export type EventType =
   | "COMPLETED_CALL"
   | "BUSY"
   | "FAILED"
-  | "NO_ANSWER"
-  | (string & {});
+  | "NO_ANSWER";
 export const EventType = /*@__PURE__*/ S.String;
 
 export type EventTypes = EventType[];

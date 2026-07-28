@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `llm` - LLM * `hog` - Hog */
-export type TaggerTypeEnum = "llm" | "hog" | (string & {});
+export type TaggerTypeEnum = "llm" | "hog";
 export const TaggerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface TagDefinition {
@@ -129,13 +129,12 @@ export type LLMProviderEnum =
   | "azure_openai"
   | "together_ai"
   | "minimax"
-  | "zeabur"
-  | (string & {});
+  | "zeabur";
 export const LLMProviderEnum = /*@__PURE__*/ S.String;
 
 export interface TaggerModelConfigurationWrite {
   /** LLM provider to use for this tagger. * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub */
-  provider: LLMProviderEnum;
+  provider: LLMProviderEnum | (string & {});
   /** Provider model identifier to use for this tagger. */
   model: string;
   /** Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by PostHog, or omit/null when no provider key should be pinned. */
@@ -157,7 +156,7 @@ export interface TaggersCreateRequest {
   name: string;
   description?: string;
   enabled?: boolean;
-  tagger_type?: TaggerTypeEnum;
+  tagger_type?: TaggerTypeEnum | (string & {});
   /** Tagger configuration. For tagger_type 'llm': {prompt, tags, min_tags?, max_tags?}. For tagger_type 'hog': {source, tags?}. */
   tagger_config: TaggerConfig;
   /** Conditions that scope when the tagger runs */
@@ -227,11 +226,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -335,12 +333,12 @@ export type TaggersListRequestOrderByItem =
   | "-updated_at"
   | "created_at"
   | "name"
-  | "updated_at"
-  | (string & {});
+  | "updated_at";
 export const TaggersListRequestOrderByItem = /*@__PURE__*/ S.String;
 
-export type TaggersListRequestOrderByList =
-  ReadonlyArray<TaggersListRequestOrderByItem>;
+export type TaggersListRequestOrderByList = ReadonlyArray<
+  TaggersListRequestOrderByItem | (string & {})
+>;
 export const TaggersListRequestOrderByList = /*@__PURE__*/ S.Array(
   TaggersListRequestOrderByItem,
 ) as any as S.Schema<TaggersListRequestOrderByList>;
@@ -418,7 +416,7 @@ export interface TaggersPartialUpdateRequest {
   name?: string;
   description?: string;
   enabled?: boolean;
-  tagger_type?: TaggerTypeEnum;
+  tagger_type?: TaggerTypeEnum | (string & {});
   /** Tagger configuration. For tagger_type 'llm': {prompt, tags, min_tags?, max_tags?}. For tagger_type 'hog': {source, tags?}. */
   tagger_config?: TaggerConfig;
   /** Conditions that scope when the tagger runs */
@@ -591,7 +589,7 @@ export interface TaggersUpdateRequest {
   name: string;
   description?: string;
   enabled?: boolean;
-  tagger_type?: TaggerTypeEnum;
+  tagger_type?: TaggerTypeEnum | (string & {});
   /** Tagger configuration. For tagger_type 'llm': {prompt, tags, min_tags?, max_tags?}. For tagger_type 'hog': {source, tags?}. */
   tagger_config: TaggerConfig;
   /** Conditions that scope when the tagger runs */

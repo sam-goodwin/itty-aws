@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request definition for the account close rpc. */
 export interface CloseAccountRequest {}
 export const CloseAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CloseAccountRequest",
-}) as any as S.Schema<CloseAccountRequest>;
+S.Struct({}),
+).annotate({ identifier: "CloseAccountRequest" }) as any as S.Schema<CloseAccountRequest>;
 
 export interface ClosePlatformsAccountsRequest {
   /** Required. Account to close. Format: platforms/{platform}/accounts/{account_id} */
@@ -75,27 +73,17 @@ export interface ClosePlatformsAccountsRequest {
   body?: CloseAccountRequest;
 }
 export const ClosePlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CloseAccountRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:close",
-      baseUrl: "https://adsenseplatform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ClosePlatformsAccountsRequest",
-}) as any as S.Schema<ClosePlatformsAccountsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CloseAccountRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:close","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "ClosePlatformsAccountsRequest" }) as any as S.Schema<ClosePlatformsAccountsRequest>;
 
 /** Response definition for the account close rpc. */
 export interface CloseAccountResponse {}
 export const CloseAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CloseAccountResponse",
-}) as any as S.Schema<CloseAccountResponse>;
+S.Struct({}),
+).annotate({ identifier: "CloseAccountResponse" }) as any as S.Schema<CloseAccountResponse>;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
@@ -105,18 +93,13 @@ export interface TimeZone {
   version?: string;
 }
 export const TimeZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 
-export type AccountStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "UNCHECKED"
-  | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+export type AccountStateEnum = "STATE_UNSPECIFIED" | "UNCHECKED" | "APPROVED" | "DISAPPROVED";
 export const AccountStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an Account. */
@@ -137,15 +120,15 @@ export interface Account {
   regionCode?: string;
 }
 export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeZone: S.optional(TimeZone),
-    createTime: S.optional(S.String),
-    state: S.optional(AccountStateEnum),
-    creationRequestId: S.optional(S.String),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    regionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "timeZone": S.optional(TimeZone),
+  "createTime": S.optional(S.String),
+  "state": S.optional(AccountStateEnum),
+  "creationRequestId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 export interface CreatePlatformsAccountsRequest {
@@ -155,19 +138,11 @@ export interface CreatePlatformsAccountsRequest {
   body?: Account;
 }
 export const CreatePlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Account.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/accounts",
-      baseUrl: "https://adsenseplatform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreatePlatformsAccountsRequest",
-}) as any as S.Schema<CreatePlatformsAccountsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Account.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/accounts","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "CreatePlatformsAccountsRequest" }) as any as S.Schema<CreatePlatformsAccountsRequest>;
 
 /** Address data. */
 export interface Address {
@@ -193,18 +168,18 @@ export interface Address {
   regionCode?: string;
 }
 export const Address = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(S.String),
-    contact: S.optional(S.String),
-    fax: S.optional(S.String),
-    phone: S.optional(S.String),
-    company: S.optional(S.String),
-    address1: S.optional(S.String),
-    zip: S.optional(S.String),
-    address2: S.optional(S.String),
-    city: S.optional(S.String),
-    regionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "state": S.optional(S.String),
+  "contact": S.optional(S.String),
+  "fax": S.optional(S.String),
+  "phone": S.optional(S.String),
+  "company": S.optional(S.String),
+  "address1": S.optional(S.String),
+  "zip": S.optional(S.String),
+  "address2": S.optional(S.String),
+  "city": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
 /** Private information for partner recorded events (PII). */
@@ -215,17 +190,13 @@ export interface EventInfo {
   email?: string;
 }
 export const EventInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAddress: S.optional(Address),
-    email: S.optional(S.String),
-  }),
+S.Struct({
+  "billingAddress": S.optional(Address),
+  "email": S.optional(S.String),
+}),
 ).annotate({ identifier: "EventInfo" }) as any as S.Schema<EventInfo>;
 
-export type EventEventTypeEnum =
-  | "EVENT_TYPE_UNSPECIFIED"
-  | "LOG_IN_VIA_PLATFORM"
-  | "SIGN_UP_VIA_PLATFORM"
-  | (string & {});
+export type EventEventTypeEnum = "EVENT_TYPE_UNSPECIFIED" | "LOG_IN_VIA_PLATFORM" | "SIGN_UP_VIA_PLATFORM";
 export const EventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** A platform sub-account event to record spam signals. */
@@ -238,11 +209,11 @@ export interface Event {
   eventType?: EventEventTypeEnum;
 }
 export const Event = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventInfo: S.optional(EventInfo),
-    eventTime: S.optional(S.String),
-    eventType: S.optional(EventEventTypeEnum),
-  }),
+S.Struct({
+  "eventInfo": S.optional(EventInfo),
+  "eventTime": S.optional(S.String),
+  "eventType": S.optional(EventEventTypeEnum),
+}),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 export interface CreatePlatformsAccountsEventsRequest {
@@ -251,29 +222,14 @@ export interface CreatePlatformsAccountsEventsRequest {
   /** Request body */
   body?: Event;
 }
-export const CreatePlatformsAccountsEventsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Event.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/events",
-        baseUrl: "https://adsenseplatform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreatePlatformsAccountsEventsRequest",
-}) as any as S.Schema<CreatePlatformsAccountsEventsRequest>;
+export const CreatePlatformsAccountsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Event.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/events","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "CreatePlatformsAccountsEventsRequest" }) as any as S.Schema<CreatePlatformsAccountsEventsRequest>;
 
-export type SiteStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "REQUIRES_REVIEW"
-  | "GETTING_READY"
-  | "READY"
-  | "NEEDS_ATTENTION"
-  | (string & {});
+export type SiteStateEnum = "STATE_UNSPECIFIED" | "REQUIRES_REVIEW" | "GETTING_READY" | "READY" | "NEEDS_ATTENTION";
 export const SiteStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of a Site. */
@@ -286,11 +242,11 @@ export interface Site {
   name?: string;
 }
 export const Site = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(SiteStateEnum),
-    domain: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "state": S.optional(SiteStateEnum),
+  "domain": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 export interface CreatePlatformsAccountsSitesRequest {
@@ -300,79 +256,47 @@ export interface CreatePlatformsAccountsSitesRequest {
   body?: Site;
 }
 export const CreatePlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Site.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/sites",
-      baseUrl: "https://adsenseplatform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreatePlatformsAccountsSitesRequest",
-}) as any as S.Schema<CreatePlatformsAccountsSitesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Site.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/sites","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "CreatePlatformsAccountsSitesRequest" }) as any as S.Schema<CreatePlatformsAccountsSitesRequest>;
 
 export interface DeletePlatformsAccountsSitesRequest {
   /** Required. The name of the site to delete. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
 export const DeletePlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://adsenseplatform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeletePlatformsAccountsSitesRequest",
-}) as any as S.Schema<DeletePlatformsAccountsSitesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "DeletePlatformsAccountsSitesRequest" }) as any as S.Schema<DeletePlatformsAccountsSitesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface GetPlatformsAccountsRequest {
   /** Required. Account to get information about. Format: platforms/{platform}/accounts/{account_id} */
   name: string;
 }
 export const GetPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://adsenseplatform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPlatformsAccountsRequest",
-}) as any as S.Schema<GetPlatformsAccountsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "GetPlatformsAccountsRequest" }) as any as S.Schema<GetPlatformsAccountsRequest>;
 
 export interface GetPlatformsAccountsSitesRequest {
   /** Required. The name of the site to retrieve. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
 export const GetPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://adsenseplatform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPlatformsAccountsSitesRequest",
-}) as any as S.Schema<GetPlatformsAccountsSitesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "GetPlatformsAccountsSitesRequest" }) as any as S.Schema<GetPlatformsAccountsSitesRequest>;
 
 export interface ListPlatformsAccountsRequest {
   /** Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. */
@@ -383,25 +307,15 @@ export interface ListPlatformsAccountsRequest {
   parent: string;
 }
 export const ListPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/accounts",
-      baseUrl: "https://adsenseplatform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListPlatformsAccountsRequest",
-}) as any as S.Schema<ListPlatformsAccountsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/accounts","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "ListPlatformsAccountsRequest" }) as any as S.Schema<ListPlatformsAccountsRequest>;
 
 export type AccountList = ReadonlyArray<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(
-  Account,
-) as any as S.Schema<AccountList>;
+export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 /** Response definition for the list accounts rpc. */
 export interface ListAccountsResponse {
@@ -411,13 +325,11 @@ export interface ListAccountsResponse {
   accounts?: AccountList;
 }
 export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    accounts: S.optional(AccountList),
-  }),
-).annotate({
-  identifier: "ListAccountsResponse",
-}) as any as S.Schema<ListAccountsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "accounts": S.optional(AccountList),
+}),
+).annotate({ identifier: "ListAccountsResponse" }) as any as S.Schema<ListAccountsResponse>;
 
 export interface ListPlatformsAccountsSitesRequest {
   /** Required. The account which owns the sites. Format: platforms/{platform}/accounts/{account} */
@@ -428,25 +340,15 @@ export interface ListPlatformsAccountsSitesRequest {
   pageSize?: number;
 }
 export const ListPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/sites",
-      baseUrl: "https://adsenseplatform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListPlatformsAccountsSitesRequest",
-}) as any as S.Schema<ListPlatformsAccountsSitesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/sites","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "ListPlatformsAccountsSitesRequest" }) as any as S.Schema<ListPlatformsAccountsSitesRequest>;
 
 export type SiteList = ReadonlyArray<Site>;
-export const SiteList = /*@__PURE__*/ S.Array(
-  Site,
-) as any as S.Schema<SiteList>;
+export const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
 
 /** Response definition for the site list rpc. */
 export interface ListSitesResponse {
@@ -456,13 +358,11 @@ export interface ListSitesResponse {
   sites?: SiteList;
 }
 export const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    sites: S.optional(SiteList),
-  }),
-).annotate({
-  identifier: "ListSitesResponse",
-}) as any as S.Schema<ListSitesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "sites": S.optional(SiteList),
+}),
+).annotate({ identifier: "ListSitesResponse" }) as any as S.Schema<ListSitesResponse>;
 
 export interface LookupPlatformsAccountsRequest {
   /** Required. Platform who parents the account. Format: platforms/{platform} */
@@ -471,19 +371,11 @@ export interface LookupPlatformsAccountsRequest {
   creationRequestId?: string;
 }
 export const LookupPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    creationRequestId: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/accounts:lookup",
-      baseUrl: "https://adsenseplatform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "LookupPlatformsAccountsRequest",
-}) as any as S.Schema<LookupPlatformsAccountsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "creationRequestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/accounts:lookup","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "LookupPlatformsAccountsRequest" }) as any as S.Schema<LookupPlatformsAccountsRequest>;
 
 /** Response definition for the lookup account rpc. */
 export interface LookupAccountResponse {
@@ -491,46 +383,28 @@ export interface LookupAccountResponse {
   name?: string;
 }
 export const LookupAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LookupAccountResponse",
-}) as any as S.Schema<LookupAccountResponse>;
+S.Struct({
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "LookupAccountResponse" }) as any as S.Schema<LookupAccountResponse>;
 
 export interface RequestReviewPlatformsAccountsSitesRequest {
   /** Required. The name of the site to submit for review. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
-export const RequestReviewPlatformsAccountsSitesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:requestReview",
-        baseUrl: "https://adsenseplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RequestReviewPlatformsAccountsSitesRequest",
-  }) as any as S.Schema<RequestReviewPlatformsAccountsSitesRequest>;
+export const RequestReviewPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:requestReview","baseUrl":"https://adsenseplatform.googleapis.com/"})),
+).annotate({ identifier: "RequestReviewPlatformsAccountsSitesRequest" }) as any as S.Schema<RequestReviewPlatformsAccountsSitesRequest>;
 
 /** Response definition for the site request review rpc. */
 export interface RequestSiteReviewResponse {}
 export const RequestSiteReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RequestSiteReviewResponse",
-}) as any as S.Schema<RequestSiteReviewResponse>;
+S.Struct({}),
+).annotate({ identifier: "RequestSiteReviewResponse" }) as any as S.Schema<RequestSiteReviewResponse>;
 
-export type ClosePlatformsAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ClosePlatformsAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Closes a sub-account. */
 export const closePlatformsAccounts: API.OperationMethod<
   ClosePlatformsAccountsRequest,
@@ -545,12 +419,7 @@ export const closePlatformsAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreatePlatformsAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreatePlatformsAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a sub-account. */
 export const createPlatformsAccounts: API.OperationMethod<
   CreatePlatformsAccountsRequest,
@@ -565,12 +434,7 @@ export const createPlatformsAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreatePlatformsAccountsEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreatePlatformsAccountsEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an account event. */
 export const createPlatformsAccountsEvents: API.OperationMethod<
   CreatePlatformsAccountsEventsRequest,
@@ -585,12 +449,7 @@ export const createPlatformsAccountsEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreatePlatformsAccountsSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreatePlatformsAccountsSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a site for a specified account. */
 export const createPlatformsAccountsSites: API.OperationMethod<
   CreatePlatformsAccountsSitesRequest,
@@ -605,12 +464,7 @@ export const createPlatformsAccountsSites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeletePlatformsAccountsSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeletePlatformsAccountsSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a site from a specified account. */
 export const deletePlatformsAccountsSites: API.OperationMethod<
   DeletePlatformsAccountsSitesRequest,
@@ -668,10 +522,7 @@ export const listPlatformsAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListPlatformsAccountsSitesError = NotFound | Forbidden | GcpOpError;
@@ -687,10 +538,7 @@ export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type LookupPlatformsAccountsError = NotFound | Forbidden | GcpOpError;
@@ -708,12 +556,7 @@ export const lookupPlatformsAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RequestReviewPlatformsAccountsSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RequestReviewPlatformsAccountsSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Requests the review of a site. The site should be in REQUIRES_REVIEW or NEEDS_ATTENTION state. Note: Make sure you place an [ad tag](https://developers.google.com/adsense/platforms/direct/ad-tags) on your site before requesting a review. */
 export const requestReviewPlatformsAccountsSites: API.OperationMethod<
   RequestReviewPlatformsAccountsSitesRequest,
@@ -727,3 +570,4 @@ export const requestReviewPlatformsAccountsSites: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

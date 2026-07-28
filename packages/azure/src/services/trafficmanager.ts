@@ -15,13 +15,12 @@ export type { AzureOpError, AzureOpContext };
 export type EndpointsCreateOrUpdateRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
-  | "NestedEndpoints"
-  | (string & {});
+  | "NestedEndpoints";
 export const EndpointsCreateOrUpdateRequestEndpointType =
   /*@__PURE__*/ S.String;
 
 /** The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method. */
-export type EndpointStatus = "Enabled" | "Disabled" | (string & {});
+export type EndpointStatus = "Enabled" | "Disabled";
 export const EndpointStatus = /*@__PURE__*/ S.String;
 
 /** The monitoring status of the endpoint. */
@@ -32,8 +31,7 @@ export type EndpointMonitorStatus =
   | "Disabled"
   | "Inactive"
   | "Stopped"
-  | "Unmonitored"
-  | (string & {});
+  | "Unmonitored";
 export const EndpointMonitorStatus = /*@__PURE__*/ S.String;
 
 /** The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager Geographic documentation for a full list of accepted values. */
@@ -92,7 +90,7 @@ export const EndpointPropertiesCustomHeadersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EndpointPropertiesCustomHeadersList>;
 
 /** If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. */
-export type AlwaysServe = "Enabled" | "Disabled" | (string & {});
+export type AlwaysServe = "Enabled" | "Disabled";
 export const AlwaysServe = /*@__PURE__*/ S.String;
 
 /** Class representing a Traffic Manager endpoint properties. */
@@ -155,7 +153,7 @@ export interface EndpointsCreateOrUpdateRequest {
   /** The name of the Traffic Manager profile. */
   profileName: string;
   /** The type of the Traffic Manager endpoint. */
-  endpointType: EndpointsCreateOrUpdateRequestEndpointType;
+  endpointType: EndpointsCreateOrUpdateRequestEndpointType | (string & {});
   /** The name of the Traffic Manager endpoint. */
   endpointName: string;
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
@@ -214,8 +212,7 @@ export const EndpointsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type EndpointsDeleteRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
-  | "NestedEndpoints"
-  | (string & {});
+  | "NestedEndpoints";
 export const EndpointsDeleteRequestEndpointType = /*@__PURE__*/ S.String;
 
 export interface EndpointsDeleteRequest {
@@ -226,7 +223,7 @@ export interface EndpointsDeleteRequest {
   /** The name of the Traffic Manager profile. */
   profileName: string;
   /** The type of the Traffic Manager endpoint. */
-  endpointType: EndpointsDeleteRequestEndpointType;
+  endpointType: EndpointsDeleteRequestEndpointType | (string & {});
   /** The name of the Traffic Manager endpoint. */
   endpointName: string;
 }
@@ -265,8 +262,7 @@ export const DeleteOperationResult = /*@__PURE__*/ S.suspend(() =>
 export type EndpointsGetRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
-  | "NestedEndpoints"
-  | (string & {});
+  | "NestedEndpoints";
 export const EndpointsGetRequestEndpointType = /*@__PURE__*/ S.String;
 
 export interface EndpointsGetRequest {
@@ -277,7 +273,7 @@ export interface EndpointsGetRequest {
   /** The name of the Traffic Manager profile. */
   profileName: string;
   /** The type of the Traffic Manager endpoint. */
-  endpointType: EndpointsGetRequestEndpointType;
+  endpointType: EndpointsGetRequestEndpointType | (string & {});
   /** The name of the Traffic Manager endpoint. */
   endpointName: string;
 }
@@ -324,8 +320,7 @@ export const EndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type EndpointsUpdateRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
-  | "NestedEndpoints"
-  | (string & {});
+  | "NestedEndpoints";
 export const EndpointsUpdateRequestEndpointType = /*@__PURE__*/ S.String;
 
 export interface EndpointsUpdateRequest {
@@ -336,7 +331,7 @@ export interface EndpointsUpdateRequest {
   /** The name of the Traffic Manager profile. */
   profileName: string;
   /** The type of the Traffic Manager endpoint. */
-  endpointType: EndpointsUpdateRequestEndpointType;
+  endpointType: EndpointsUpdateRequestEndpointType | (string & {});
   /** The name of the Traffic Manager endpoint. */
   endpointName: string;
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
@@ -465,7 +460,7 @@ export const GeographicHierarchiesGetDefaultResponse = /*@__PURE__*/ S.suspend(
   identifier: "GeographicHierarchiesGetDefaultResponse",
 }) as any as S.Schema<GeographicHierarchiesGetDefaultResponse>;
 
-export type HeatMapGetRequestHeatMapType = "default" | (string & {});
+export type HeatMapGetRequestHeatMapType = "default";
 export const HeatMapGetRequestHeatMapType = /*@__PURE__*/ S.String;
 
 export type HeatMapGetRequestTopLeftList = ReadonlyArray<number>;
@@ -486,7 +481,7 @@ export interface HeatMapGetRequest {
   /** The name of the Traffic Manager profile. */
   profileName: string;
   /** The type of the heatmap. */
-  heatMapType: HeatMapGetRequestHeatMapType;
+  heatMapType: HeatMapGetRequestHeatMapType | (string & {});
   /** The top left latitude,longitude pair of the rectangular viewport to query for. */
   topLeft?: HeatMapGetRequestTopLeftList;
   /** The bottom right latitude,longitude pair of the rectangular viewport to query for. */
@@ -712,7 +707,7 @@ export const ProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProfilesCreateOrUpdateRequestTagsMap>;
 
 /** The status of the Traffic Manager profile. */
-export type ProfileStatus = "Enabled" | "Disabled" | (string & {});
+export type ProfileStatus = "Enabled" | "Disabled";
 export const ProfileStatus = /*@__PURE__*/ S.String;
 
 /** The traffic routing method of the Traffic Manager profile. */
@@ -722,8 +717,7 @@ export type TrafficRoutingMethod =
   | "Weighted"
   | "Geographic"
   | "MultiValue"
-  | "Subnet"
-  | (string & {});
+  | "Subnet";
 export const TrafficRoutingMethod = /*@__PURE__*/ S.String;
 
 /** Class containing DNS settings in a Traffic Manager profile. */
@@ -746,12 +740,11 @@ export type ProfileMonitorStatus =
   | "Online"
   | "Degraded"
   | "Disabled"
-  | "Inactive"
-  | (string & {});
+  | "Inactive";
 export const ProfileMonitorStatus = /*@__PURE__*/ S.String;
 
 /** The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health. */
-export type MonitorProtocol = "HTTP" | "HTTPS" | "TCP" | (string & {});
+export type MonitorProtocol = "HTTP" | "HTTPS" | "TCP";
 export const MonitorProtocol = /*@__PURE__*/ S.String;
 
 /** Custom header name and value. */
@@ -865,10 +858,7 @@ export const ProfilePropertiesInputEndpointsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProfilePropertiesInputEndpointsList>;
 
 /** Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile. */
-export type TrafficViewEnrollmentStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type TrafficViewEnrollmentStatus = "Enabled" | "Disabled";
 export const TrafficViewEnrollmentStatus = /*@__PURE__*/ S.String;
 
 /** The allowed type DNS record types for this profile. */
@@ -876,13 +866,12 @@ export type AllowedEndpointRecordType =
   | "DomainName"
   | "IPv4Address"
   | "IPv6Address"
-  | "Any"
-  | (string & {});
+  | "Any";
 export const AllowedEndpointRecordType = /*@__PURE__*/ S.String;
 
 /** The list of allowed endpoint record types. */
 export type ProfilePropertiesInputAllowedEndpointRecordTypesList =
-  ReadonlyArray<AllowedEndpointRecordType>;
+  ReadonlyArray<AllowedEndpointRecordType | (string & {})>;
 export const ProfilePropertiesInputAllowedEndpointRecordTypesList =
   /*@__PURE__*/ S.Array(
     AllowedEndpointRecordType,
@@ -891,9 +880,9 @@ export const ProfilePropertiesInputAllowedEndpointRecordTypesList =
 /** Class representing the Traffic Manager profile properties. */
 export interface ProfilePropertiesInput {
   /** The status of the Traffic Manager profile. */
-  profileStatus?: ProfileStatus;
+  profileStatus?: ProfileStatus | (string & {});
   /** The traffic routing method of the Traffic Manager profile. */
-  trafficRoutingMethod?: TrafficRoutingMethod;
+  trafficRoutingMethod?: TrafficRoutingMethod | (string & {});
   /** The DNS settings of the Traffic Manager profile. */
   dnsConfig?: DnsConfigInput;
   /** The endpoint monitoring settings of the Traffic Manager profile. */
@@ -901,7 +890,7 @@ export interface ProfilePropertiesInput {
   /** The list of endpoints in the Traffic Manager profile. */
   endpoints?: ProfilePropertiesInputEndpointsList;
   /** Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile. */
-  trafficViewEnrollmentStatus?: TrafficViewEnrollmentStatus;
+  trafficViewEnrollmentStatus?: TrafficViewEnrollmentStatus | (string & {});
   /** The list of allowed endpoint record types. */
   allowedEndpointRecordTypes?: ProfilePropertiesInputAllowedEndpointRecordTypesList;
   /** Maximum number of endpoints to be returned for MultiValue routing type. */

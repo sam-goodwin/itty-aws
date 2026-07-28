@@ -12,19 +12,14 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `trends` - trends * `funnel` - funnel * `retention` - retention * `sql` - sql */
-export type InsightTypeEnum =
-  | "trends"
-  | "funnel"
-  | "retention"
-  | "sql"
-  | (string & {});
+export type InsightTypeEnum = "trends" | "funnel" | "retention" | "sql";
 export const InsightTypeEnum = /*@__PURE__*/ S.String;
 
 export interface MaxToolsCreateAndQueryInsightCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   query?: string;
-  insight_type?: InsightTypeEnum;
+  insight_type?: InsightTypeEnum | (string & {});
 }
 export const MaxToolsCreateAndQueryInsightCreateRequest =
   /*@__PURE__*/ S.suspend(() =>

@@ -36,11 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `trusted` - Trusted * `full` - Full * `custom` - Custom */
-export type NetworkAccessLevelEnum =
-  | "trusted"
-  | "full"
-  | "custom"
-  | (string & {});
+export type NetworkAccessLevelEnum = "trusted" | "full" | "custom";
 export const NetworkAccessLevelEnum = /*@__PURE__*/ S.String;
 
 /** Allowed domains for custom network access. */
@@ -61,7 +57,7 @@ export interface SandboxCreateRequest {
   /** Display name for the environment. */
   name: string;
   /** Network access policy: trusted (default allowlist), full (unrestricted), or custom. * `trusted` - Trusted * `full` - Full * `custom` - Custom */
-  network_access_level?: NetworkAccessLevelEnum;
+  network_access_level?: NetworkAccessLevelEnum | (string & {});
   /** Allowed domains for custom network access. */
   allowed_domains?: SandboxCreateRequestAllowedDomainsList;
   /** Whether to include default trusted domains (GitHub, npm, PyPI). */
@@ -276,7 +272,7 @@ export interface SandboxPartialUpdateRequest {
   /** Display name for the environment. */
   name?: string;
   /** Network access policy: trusted (default allowlist), full (unrestricted), or custom. * `trusted` - Trusted * `full` - Full * `custom` - Custom */
-  network_access_level?: NetworkAccessLevelEnum;
+  network_access_level?: NetworkAccessLevelEnum | (string & {});
   /** Allowed domains for custom network access. */
   allowed_domains?: SandboxPartialUpdateRequestAllowedDomainsList;
   /** Whether to include default trusted domains (GitHub, npm, PyPI). */

@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface ClearCalendarsRequest {
@@ -65,25 +65,15 @@ export interface ClearCalendarsRequest {
   calendarId: string;
 }
 export const ClearCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "calendars/{calendarId}/clear",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "ClearCalendarsRequest",
-}) as any as S.Schema<ClearCalendarsRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"calendars/{calendarId}/clear","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "ClearCalendarsRequest" }) as any as S.Schema<ClearCalendarsRequest>;
 
 export interface ClearCalendarsResponse {}
 export const ClearCalendarsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ClearCalendarsResponse",
-}) as any as S.Schema<ClearCalendarsResponse>;
+S.Struct({}),
+).annotate({ identifier: "ClearCalendarsResponse" }) as any as S.Schema<ClearCalendarsResponse>;
 
 export interface DeleteAclRequest {
   /** ACL rule identifier. */
@@ -92,117 +82,73 @@ export interface DeleteAclRequest {
   calendarId: string;
 }
 export const DeleteAclRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleId: S.String.pipe(T.Label()),
-    calendarId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "calendars/{calendarId}/acl/{ruleId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAclRequest",
-}) as any as S.Schema<DeleteAclRequest>;
+S.Struct({
+  "ruleId": S.String.pipe(T.Label()),
+  "calendarId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"calendars/{calendarId}/acl/{ruleId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "DeleteAclRequest" }) as any as S.Schema<DeleteAclRequest>;
 
 export interface DeleteAclResponse {}
 export const DeleteAclResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAclResponse",
-}) as any as S.Schema<DeleteAclResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteAclResponse" }) as any as S.Schema<DeleteAclResponse>;
 
 export interface DeleteCalendarListRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
 export const DeleteCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "users/me/calendarList/{calendarId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteCalendarListRequest",
-}) as any as S.Schema<DeleteCalendarListRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"users/me/calendarList/{calendarId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "DeleteCalendarListRequest" }) as any as S.Schema<DeleteCalendarListRequest>;
 
 export interface DeleteCalendarListResponse {}
 export const DeleteCalendarListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCalendarListResponse",
-}) as any as S.Schema<DeleteCalendarListResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteCalendarListResponse" }) as any as S.Schema<DeleteCalendarListResponse>;
 
 export interface DeleteCalendarsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
 export const DeleteCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "calendars/{calendarId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteCalendarsRequest",
-}) as any as S.Schema<DeleteCalendarsRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"calendars/{calendarId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "DeleteCalendarsRequest" }) as any as S.Schema<DeleteCalendarsRequest>;
 
 export interface DeleteCalendarsResponse {}
 export const DeleteCalendarsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCalendarsResponse",
-}) as any as S.Schema<DeleteCalendarsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteCalendarsResponse" }) as any as S.Schema<DeleteCalendarsResponse>;
 
-export type DeleteEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type DeleteEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const DeleteEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteEventsRequest {
   /** Deprecated. Please use sendUpdates instead. Whether to send notifications about the deletion of the event. Note that some emails might still be sent even if you set the value to false. The default is false. */
   sendNotifications?: boolean;
   /** Guests who should receive notifications about the deletion of the event. */
-  sendUpdates?: DeleteEventsSendUpdatesEnum;
+  sendUpdates?: DeleteEventsSendUpdatesEnum | (string & {});
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
   /** Event identifier. */
   eventId: string;
 }
 export const DeleteEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-    sendUpdates: S.optional(DeleteEventsSendUpdatesEnum.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    eventId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "calendars/{calendarId}/events/{eventId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteEventsRequest",
-}) as any as S.Schema<DeleteEventsRequest>;
+S.Struct({
+  "sendNotifications": S.optional(S.Boolean.pipe(T.Query())),
+  "sendUpdates": S.optional(DeleteEventsSendUpdatesEnum.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "eventId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"calendars/{calendarId}/events/{eventId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "DeleteEventsRequest" }) as any as S.Schema<DeleteEventsRequest>;
 
 export interface DeleteEventsResponse {}
 export const DeleteEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEventsResponse",
-}) as any as S.Schema<DeleteEventsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteEventsResponse" }) as any as S.Schema<DeleteEventsResponse>;
 
 export interface GetAclRequest {
   /** ACL rule identifier. */
@@ -211,16 +157,10 @@ export interface GetAclRequest {
   calendarId: string;
 }
 export const GetAclRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleId: S.String.pipe(T.Label()),
-    calendarId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "calendars/{calendarId}/acl/{ruleId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
+S.Struct({
+  "ruleId": S.String.pipe(T.Label()),
+  "calendarId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"calendars/{calendarId}/acl/{ruleId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
 ).annotate({ identifier: "GetAclRequest" }) as any as S.Schema<GetAclRequest>;
 
 export interface AclRuleScope {
@@ -230,10 +170,10 @@ export interface AclRuleScope {
   value?: string;
 }
 export const AclRuleScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "AclRuleScope" }) as any as S.Schema<AclRuleScope>;
 
 export interface AclRule {
@@ -249,13 +189,13 @@ export interface AclRule {
   role?: string;
 }
 export const AclRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    scope: S.optional(AclRuleScope),
-    etag: S.optional(S.String),
-    id: S.optional(S.String),
-    role: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "scope": S.optional(AclRuleScope),
+  "etag": S.optional(S.String),
+  "id": S.optional(S.String),
+  "role": S.optional(S.String),
+}),
 ).annotate({ identifier: "AclRule" }) as any as S.Schema<AclRule>;
 
 export interface GetCalendarListRequest {
@@ -263,35 +203,23 @@ export interface GetCalendarListRequest {
   calendarId: string;
 }
 export const GetCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "users/me/calendarList/{calendarId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCalendarListRequest",
-}) as any as S.Schema<GetCalendarListRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"users/me/calendarList/{calendarId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "GetCalendarListRequest" }) as any as S.Schema<GetCalendarListRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ConferenceProperties {
   /** The types of conference solutions that are supported for this calendar. The possible values are: - "eventHangout" - "eventNamedHangout" - "hangoutsMeet" Optional. */
   allowedConferenceSolutionTypes?: StringList;
 }
 export const ConferenceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedConferenceSolutionTypes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ConferenceProperties",
-}) as any as S.Schema<ConferenceProperties>;
+S.Struct({
+  "allowedConferenceSolutionTypes": S.optional(StringList),
+}),
+).annotate({ identifier: "ConferenceProperties" }) as any as S.Schema<ConferenceProperties>;
 
 export interface EventReminder {
   /** The method used by this reminder. Possible values are: - "email" - Reminders are sent via email. - "popup" - Reminders are sent via a UI popup. Required when adding a reminder. */
@@ -300,16 +228,14 @@ export interface EventReminder {
   minutes?: number;
 }
 export const EventReminder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.String),
-    minutes: S.optional(S.Number),
-  }),
+S.Struct({
+  "method": S.optional(S.String),
+  "minutes": S.optional(S.Number),
+}),
 ).annotate({ identifier: "EventReminder" }) as any as S.Schema<EventReminder>;
 
 export type EventReminderList = ReadonlyArray<EventReminder>;
-export const EventReminderList = /*@__PURE__*/ S.Array(
-  EventReminder,
-) as any as S.Schema<EventReminderList>;
+export const EventReminderList = /*@__PURE__*/ S.Array(EventReminder) as any as S.Schema<EventReminderList>;
 
 export interface CalendarNotification {
   /** The method used to deliver the notification. The possible value is: - "email" - Notifications are sent via email. Required when adding a notification. */
@@ -318,31 +244,24 @@ export interface CalendarNotification {
   type?: string;
 }
 export const CalendarNotification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CalendarNotification",
-}) as any as S.Schema<CalendarNotification>;
+S.Struct({
+  "method": S.optional(S.String),
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "CalendarNotification" }) as any as S.Schema<CalendarNotification>;
 
 export type CalendarNotificationList = ReadonlyArray<CalendarNotification>;
-export const CalendarNotificationList = /*@__PURE__*/ S.Array(
-  CalendarNotification,
-) as any as S.Schema<CalendarNotificationList>;
+export const CalendarNotificationList = /*@__PURE__*/ S.Array(CalendarNotification) as any as S.Schema<CalendarNotificationList>;
 
 export interface CalendarListEntryNotificationSettings {
   /** The list of notifications set for this calendar. */
   notifications?: CalendarNotificationList;
 }
-export const CalendarListEntryNotificationSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      notifications: S.optional(CalendarNotificationList),
-    }),
-).annotate({
-  identifier: "CalendarListEntryNotificationSettings",
-}) as any as S.Schema<CalendarListEntryNotificationSettings>;
+export const CalendarListEntryNotificationSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "notifications": S.optional(CalendarNotificationList),
+}),
+).annotate({ identifier: "CalendarListEntryNotificationSettings" }) as any as S.Schema<CalendarListEntryNotificationSettings>;
 
 export interface CalendarListEntry {
   /** Whether this calendar list entry has been deleted from the calendar list. Read-only. Optional. The default is False. */
@@ -389,50 +308,40 @@ export interface CalendarListEntry {
   accessRole?: string;
 }
 export const CalendarListEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleted: S.optional(S.Boolean),
-    summary: S.optional(S.String),
-    backgroundColor: S.optional(S.String),
-    conferenceProperties: S.optional(ConferenceProperties),
-    colorId: S.optional(S.String),
-    kind: S.optional(S.String),
-    selected: S.optional(S.Boolean),
-    autoAcceptInvitations: S.optional(S.Boolean),
-    hidden: S.optional(S.Boolean),
-    summaryOverride: S.optional(S.String),
-    primary: S.optional(S.Boolean),
-    foregroundColor: S.optional(S.String),
-    defaultReminders: S.optional(EventReminderList),
-    id: S.optional(S.String),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    dataOwner: S.optional(S.String),
-    description: S.optional(S.String),
-    notificationSettings: S.optional(CalendarListEntryNotificationSettings),
-    timeZone: S.optional(S.String),
-    accessRole: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CalendarListEntry",
-}) as any as S.Schema<CalendarListEntry>;
+S.Struct({
+  "deleted": S.optional(S.Boolean),
+  "summary": S.optional(S.String),
+  "backgroundColor": S.optional(S.String),
+  "conferenceProperties": S.optional(ConferenceProperties),
+  "colorId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "selected": S.optional(S.Boolean),
+  "autoAcceptInvitations": S.optional(S.Boolean),
+  "hidden": S.optional(S.Boolean),
+  "summaryOverride": S.optional(S.String),
+  "primary": S.optional(S.Boolean),
+  "foregroundColor": S.optional(S.String),
+  "defaultReminders": S.optional(EventReminderList),
+  "id": S.optional(S.String),
+  "location": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "dataOwner": S.optional(S.String),
+  "description": S.optional(S.String),
+  "notificationSettings": S.optional(CalendarListEntryNotificationSettings),
+  "timeZone": S.optional(S.String),
+  "accessRole": S.optional(S.String),
+}),
+).annotate({ identifier: "CalendarListEntry" }) as any as S.Schema<CalendarListEntry>;
 
 export interface GetCalendarsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
 export const GetCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "calendars/{calendarId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCalendarsRequest",
-}) as any as S.Schema<GetCalendarsRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"calendars/{calendarId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "GetCalendarsRequest" }) as any as S.Schema<GetCalendarsRequest>;
 
 export interface EventLabel {
   /** Name of the label. Optional. If provided this must have at most 50 characters. */
@@ -443,29 +352,25 @@ export interface EventLabel {
   id?: string;
 }
 export const EventLabel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    backgroundColor: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "backgroundColor": S.optional(S.String),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "EventLabel" }) as any as S.Schema<EventLabel>;
 
 export type EventLabelList = ReadonlyArray<EventLabel>;
-export const EventLabelList = /*@__PURE__*/ S.Array(
-  EventLabel,
-) as any as S.Schema<EventLabelList>;
+export const EventLabelList = /*@__PURE__*/ S.Array(EventLabel) as any as S.Schema<EventLabelList>;
 
 export interface LabelProperties {
   /** Event labels defined on this calendar. If this is present when updating the calendar, it will replace the existing event labels. Extend the list to add a new event label, and remove entities from the list to delete a label from calendar. Each calendar can have a maximum of 200 labels. */
   eventLabels?: EventLabelList;
 }
 export const LabelProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventLabels: S.optional(EventLabelList),
-  }),
-).annotate({
-  identifier: "LabelProperties",
-}) as any as S.Schema<LabelProperties>;
+S.Struct({
+  "eventLabels": S.optional(EventLabelList),
+}),
+).annotate({ identifier: "LabelProperties" }) as any as S.Schema<LabelProperties>;
 
 export interface Calendar {
   /** Identifier of the calendar. To retrieve IDs call the calendarList.list() method. */
@@ -492,33 +397,25 @@ export interface Calendar {
   conferenceProperties?: ConferenceProperties;
 }
 export const Calendar = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    location: S.optional(S.String),
-    autoAcceptInvitations: S.optional(S.Boolean),
-    etag: S.optional(S.String),
-    labelProperties: S.optional(LabelProperties),
-    dataOwner: S.optional(S.String),
-    description: S.optional(S.String),
-    timeZone: S.optional(S.String),
-    summary: S.optional(S.String),
-    kind: S.optional(S.String),
-    conferenceProperties: S.optional(ConferenceProperties),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "location": S.optional(S.String),
+  "autoAcceptInvitations": S.optional(S.Boolean),
+  "etag": S.optional(S.String),
+  "labelProperties": S.optional(LabelProperties),
+  "dataOwner": S.optional(S.String),
+  "description": S.optional(S.String),
+  "timeZone": S.optional(S.String),
+  "summary": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "conferenceProperties": S.optional(ConferenceProperties),
+}),
 ).annotate({ identifier: "Calendar" }) as any as S.Schema<Calendar>;
 
 export interface GetColorsRequest {}
 export const GetColorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "colors",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "GetColorsRequest",
-}) as any as S.Schema<GetColorsRequest>;
+S.Struct({}).pipe(T.Http({"method":"GET","uri":"colors","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "GetColorsRequest" }) as any as S.Schema<GetColorsRequest>;
 
 export interface ColorDefinition {
   /** The background color associated with this color definition. */
@@ -527,19 +424,14 @@ export interface ColorDefinition {
   foreground?: string;
 }
 export const ColorDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    background: S.optional(S.String),
-    foreground: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ColorDefinition",
-}) as any as S.Schema<ColorDefinition>;
+S.Struct({
+  "background": S.optional(S.String),
+  "foreground": S.optional(S.String),
+}),
+).annotate({ identifier: "ColorDefinition" }) as any as S.Schema<ColorDefinition>;
 
 export type ColorDefinitionMap = { [key: string]: ColorDefinition | undefined };
-export const ColorDefinitionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ColorDefinition,
-) as any as S.Schema<ColorDefinitionMap>;
+export const ColorDefinitionMap = /*@__PURE__*/ S.Record(S.String, ColorDefinition) as any as S.Schema<ColorDefinitionMap>;
 
 export interface Colors {
   /** Last modification time of the color palette (as a RFC3339 timestamp). Read-only. */
@@ -552,12 +444,12 @@ export interface Colors {
   event?: ColorDefinitionMap;
 }
 export const Colors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updated: S.optional(S.String),
-    kind: S.optional(S.String),
-    calendar: S.optional(ColorDefinitionMap),
-    event: S.optional(ColorDefinitionMap),
-  }),
+S.Struct({
+  "updated": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "calendar": S.optional(ColorDefinitionMap),
+  "event": S.optional(ColorDefinitionMap),
+}),
 ).annotate({ identifier: "Colors" }) as any as S.Schema<Colors>;
 
 export interface GetEventsRequest {
@@ -573,22 +465,14 @@ export interface GetEventsRequest {
   eventId: string;
 }
 export const GetEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
-    timeZone: S.optional(S.String.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    maxAttendees: S.optional(S.Number.pipe(T.Query())),
-    eventId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "calendars/{calendarId}/events/{eventId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEventsRequest",
-}) as any as S.Schema<GetEventsRequest>;
+S.Struct({
+  "alwaysIncludeEmail": S.optional(S.Boolean.pipe(T.Query())),
+  "timeZone": S.optional(S.String.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "maxAttendees": S.optional(S.Number.pipe(T.Query())),
+  "eventId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"calendars/{calendarId}/events/{eventId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "GetEventsRequest" }) as any as S.Schema<GetEventsRequest>;
 
 export interface EventAttachment {
   /** Internet media type (MIME type) of the attachment. */
@@ -603,34 +487,27 @@ export interface EventAttachment {
   fileId?: string;
 }
 export const EventAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mimeType: S.optional(S.String),
-    fileUrl: S.optional(S.String),
-    iconLink: S.optional(S.String),
-    title: S.optional(S.String),
-    fileId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventAttachment",
-}) as any as S.Schema<EventAttachment>;
+S.Struct({
+  "mimeType": S.optional(S.String),
+  "fileUrl": S.optional(S.String),
+  "iconLink": S.optional(S.String),
+  "title": S.optional(S.String),
+  "fileId": S.optional(S.String),
+}),
+).annotate({ identifier: "EventAttachment" }) as any as S.Schema<EventAttachment>;
 
 export type EventAttachmentList = ReadonlyArray<EventAttachment>;
-export const EventAttachmentList = /*@__PURE__*/ S.Array(
-  EventAttachment,
-) as any as S.Schema<EventAttachmentList>;
+export const EventAttachmentList = /*@__PURE__*/ S.Array(EventAttachment) as any as S.Schema<EventAttachmentList>;
 
 export interface EventWorkingLocationPropertiesCustomLocation {
   /** An optional extra label for additional information. */
   label?: string;
 }
-export const EventWorkingLocationPropertiesCustomLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      label: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EventWorkingLocationPropertiesCustomLocation",
-  }) as any as S.Schema<EventWorkingLocationPropertiesCustomLocation>;
+export const EventWorkingLocationPropertiesCustomLocation = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "label": S.optional(S.String),
+}),
+).annotate({ identifier: "EventWorkingLocationPropertiesCustomLocation" }) as any as S.Schema<EventWorkingLocationPropertiesCustomLocation>;
 
 export interface EventWorkingLocationPropertiesOfficeLocation {
   /** The office name that's displayed in Calendar Web and Mobile clients. We recommend you reference a building name in the organization's Resources database. */
@@ -644,18 +521,15 @@ export interface EventWorkingLocationPropertiesOfficeLocation {
   /** An optional floor section identifier. */
   floorSectionId?: string;
 }
-export const EventWorkingLocationPropertiesOfficeLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      label: S.optional(S.String),
-      buildingId: S.optional(S.String),
-      deskId: S.optional(S.String),
-      floorId: S.optional(S.String),
-      floorSectionId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EventWorkingLocationPropertiesOfficeLocation",
-  }) as any as S.Schema<EventWorkingLocationPropertiesOfficeLocation>;
+export const EventWorkingLocationPropertiesOfficeLocation = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "label": S.optional(S.String),
+  "buildingId": S.optional(S.String),
+  "deskId": S.optional(S.String),
+  "floorId": S.optional(S.String),
+  "floorSectionId": S.optional(S.String),
+}),
+).annotate({ identifier: "EventWorkingLocationPropertiesOfficeLocation" }) as any as S.Schema<EventWorkingLocationPropertiesOfficeLocation>;
 
 export interface EventWorkingLocationProperties {
   /** If present, specifies that the user is working at home. */
@@ -668,15 +542,13 @@ export interface EventWorkingLocationProperties {
   officeLocation?: EventWorkingLocationPropertiesOfficeLocation;
 }
 export const EventWorkingLocationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    homeOffice: S.optional(S.Unknown),
-    customLocation: S.optional(EventWorkingLocationPropertiesCustomLocation),
-    type: S.optional(S.String),
-    officeLocation: S.optional(EventWorkingLocationPropertiesOfficeLocation),
-  }),
-).annotate({
-  identifier: "EventWorkingLocationProperties",
-}) as any as S.Schema<EventWorkingLocationProperties>;
+S.Struct({
+  "homeOffice": S.optional(S.Unknown),
+  "customLocation": S.optional(EventWorkingLocationPropertiesCustomLocation),
+  "type": S.optional(S.String),
+  "officeLocation": S.optional(EventWorkingLocationPropertiesOfficeLocation),
+}),
+).annotate({ identifier: "EventWorkingLocationProperties" }) as any as S.Schema<EventWorkingLocationProperties>;
 
 export interface EventSource {
   /** Title of the source; for example a title of a web page or an email subject. */
@@ -685,64 +557,53 @@ export interface EventSource {
   url?: string;
 }
 export const EventSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "url": S.optional(S.String),
+}),
 ).annotate({ identifier: "EventSource" }) as any as S.Schema<EventSource>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface ConferenceParametersAddOnParameters {
   parameters?: StringMap;
 }
 export const ConferenceParametersAddOnParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameters: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "ConferenceParametersAddOnParameters",
-}) as any as S.Schema<ConferenceParametersAddOnParameters>;
+S.Struct({
+  "parameters": S.optional(StringMap),
+}),
+).annotate({ identifier: "ConferenceParametersAddOnParameters" }) as any as S.Schema<ConferenceParametersAddOnParameters>;
 
 export interface ConferenceParameters {
   /** Additional add-on specific data. */
   addOnParameters?: ConferenceParametersAddOnParameters;
 }
 export const ConferenceParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addOnParameters: S.optional(ConferenceParametersAddOnParameters),
-  }),
-).annotate({
-  identifier: "ConferenceParameters",
-}) as any as S.Schema<ConferenceParameters>;
+S.Struct({
+  "addOnParameters": S.optional(ConferenceParametersAddOnParameters),
+}),
+).annotate({ identifier: "ConferenceParameters" }) as any as S.Schema<ConferenceParameters>;
 
 export interface ConferenceSolutionKey {
   /** The conference solution type. If a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications. The possible values are: - "eventHangout" for Hangouts for consumers (deprecated; existing events may show this conference solution type but new conferences cannot be created) - "eventNamedHangout" for classic Hangouts for Google Workspace users (deprecated; existing events may show this conference solution type but new conferences cannot be created) - "hangoutsMeet" for Google Meet (http://meet.google.com) - "addOn" for 3P conference providers */
   type?: string;
 }
 export const ConferenceSolutionKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConferenceSolutionKey",
-}) as any as S.Schema<ConferenceSolutionKey>;
+S.Struct({
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "ConferenceSolutionKey" }) as any as S.Schema<ConferenceSolutionKey>;
 
 export interface ConferenceRequestStatus {
   /** The current status of the conference create request. Read-only. The possible values are: - "pending": the conference create request is still being processed. - "success": the conference create request succeeded, the entry points are populated. - "failure": the conference create request failed, there are no entry points. */
   statusCode?: string;
 }
 export const ConferenceRequestStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statusCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConferenceRequestStatus",
-}) as any as S.Schema<ConferenceRequestStatus>;
+S.Struct({
+  "statusCode": S.optional(S.String),
+}),
+).annotate({ identifier: "ConferenceRequestStatus" }) as any as S.Schema<ConferenceRequestStatus>;
 
 export interface CreateConferenceRequest {
   /** The conference solution, such as Hangouts or Google Meet. */
@@ -753,14 +614,12 @@ export interface CreateConferenceRequest {
   status?: ConferenceRequestStatus;
 }
 export const CreateConferenceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conferenceSolutionKey: S.optional(ConferenceSolutionKey),
-    requestId: S.optional(S.String),
-    status: S.optional(ConferenceRequestStatus),
-  }),
-).annotate({
-  identifier: "CreateConferenceRequest",
-}) as any as S.Schema<CreateConferenceRequest>;
+S.Struct({
+  "conferenceSolutionKey": S.optional(ConferenceSolutionKey),
+  "requestId": S.optional(S.String),
+  "status": S.optional(ConferenceRequestStatus),
+}),
+).annotate({ identifier: "CreateConferenceRequest" }) as any as S.Schema<CreateConferenceRequest>;
 
 export interface EntryPoint {
   /** The meeting code to access the conference. The maximum length is 128 characters. When creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed. Optional. */
@@ -785,24 +644,22 @@ export interface EntryPoint {
   label?: string;
 }
 export const EntryPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meetingCode: S.optional(S.String),
-    passcode: S.optional(S.String),
-    pin: S.optional(S.String),
-    regionCode: S.optional(S.String),
-    entryPointType: S.optional(S.String),
-    password: S.optional(S.String),
-    entryPointFeatures: S.optional(StringList),
-    uri: S.optional(S.String),
-    accessCode: S.optional(S.String),
-    label: S.optional(S.String),
-  }),
+S.Struct({
+  "meetingCode": S.optional(S.String),
+  "passcode": S.optional(S.String),
+  "pin": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+  "entryPointType": S.optional(S.String),
+  "password": S.optional(S.String),
+  "entryPointFeatures": S.optional(StringList),
+  "uri": S.optional(S.String),
+  "accessCode": S.optional(S.String),
+  "label": S.optional(S.String),
+}),
 ).annotate({ identifier: "EntryPoint" }) as any as S.Schema<EntryPoint>;
 
 export type EntryPointList = ReadonlyArray<EntryPoint>;
-export const EntryPointList = /*@__PURE__*/ S.Array(
-  EntryPoint,
-) as any as S.Schema<EntryPointList>;
+export const EntryPointList = /*@__PURE__*/ S.Array(EntryPoint) as any as S.Schema<EntryPointList>;
 
 export interface ConferenceSolution {
   /** The user-visible icon for this solution. */
@@ -813,14 +670,12 @@ export interface ConferenceSolution {
   name?: string;
 }
 export const ConferenceSolution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iconUri: S.optional(S.String),
-    key: S.optional(ConferenceSolutionKey),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConferenceSolution",
-}) as any as S.Schema<ConferenceSolution>;
+S.Struct({
+  "iconUri": S.optional(S.String),
+  "key": S.optional(ConferenceSolutionKey),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "ConferenceSolution" }) as any as S.Schema<ConferenceSolution>;
 
 export interface ConferenceData {
   /** Additional properties related to a conference. An example would be a solution-specific setting for enabling video streaming. */
@@ -839,15 +694,15 @@ export interface ConferenceData {
   signature?: string;
 }
 export const ConferenceData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameters: S.optional(ConferenceParameters),
-    notes: S.optional(S.String),
-    createRequest: S.optional(CreateConferenceRequest),
-    conferenceId: S.optional(S.String),
-    entryPoints: S.optional(EntryPointList),
-    conferenceSolution: S.optional(ConferenceSolution),
-    signature: S.optional(S.String),
-  }),
+S.Struct({
+  "parameters": S.optional(ConferenceParameters),
+  "notes": S.optional(S.String),
+  "createRequest": S.optional(CreateConferenceRequest),
+  "conferenceId": S.optional(S.String),
+  "entryPoints": S.optional(EntryPointList),
+  "conferenceSolution": S.optional(ConferenceSolution),
+  "signature": S.optional(S.String),
+}),
 ).annotate({ identifier: "ConferenceData" }) as any as S.Schema<ConferenceData>;
 
 export interface EventGadget {
@@ -869,16 +724,16 @@ export interface EventGadget {
   title?: string;
 }
 export const EventGadget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    link: S.optional(S.String),
-    height: S.optional(S.Number),
-    preferences: S.optional(StringMap),
-    width: S.optional(S.Number),
-    iconLink: S.optional(S.String),
-    display: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(S.String),
+  "link": S.optional(S.String),
+  "height": S.optional(S.Number),
+  "preferences": S.optional(StringMap),
+  "width": S.optional(S.Number),
+  "iconLink": S.optional(S.String),
+  "display": S.optional(S.String),
+  "title": S.optional(S.String),
+}),
 ).annotate({ identifier: "EventGadget" }) as any as S.Schema<EventGadget>;
 
 export interface EventDateTime {
@@ -890,11 +745,11 @@ export interface EventDateTime {
   timeZone?: string;
 }
 export const EventDateTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date: S.optional(S.String),
-    dateTime: S.optional(S.String),
-    timeZone: S.optional(S.String),
-  }),
+S.Struct({
+  "date": S.optional(S.String),
+  "dateTime": S.optional(S.String),
+  "timeZone": S.optional(S.String),
+}),
 ).annotate({ identifier: "EventDateTime" }) as any as S.Schema<EventDateTime>;
 
 export interface EventOutOfOfficeProperties {
@@ -904,13 +759,11 @@ export interface EventOutOfOfficeProperties {
   declineMessage?: string;
 }
 export const EventOutOfOfficeProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoDeclineMode: S.optional(S.String),
-    declineMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventOutOfOfficeProperties",
-}) as any as S.Schema<EventOutOfOfficeProperties>;
+S.Struct({
+  "autoDeclineMode": S.optional(S.String),
+  "declineMessage": S.optional(S.String),
+}),
+).annotate({ identifier: "EventOutOfOfficeProperties" }) as any as S.Schema<EventOutOfOfficeProperties>;
 
 export interface EventReminders {
   /** Whether the default reminders of the calendar apply to the event. */
@@ -919,10 +772,10 @@ export interface EventReminders {
   overrides?: EventReminderList;
 }
 export const EventReminders = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    useDefault: S.optional(S.Boolean),
-    overrides: S.optional(EventReminderList),
-  }),
+S.Struct({
+  "useDefault": S.optional(S.Boolean),
+  "overrides": S.optional(EventReminderList),
+}),
 ).annotate({ identifier: "EventReminders" }) as any as S.Schema<EventReminders>;
 
 export interface EventBirthdayProperties {
@@ -934,14 +787,12 @@ export interface EventBirthdayProperties {
   type?: string;
 }
 export const EventBirthdayProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contact: S.optional(S.String),
-    customTypeName: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventBirthdayProperties",
-}) as any as S.Schema<EventBirthdayProperties>;
+S.Struct({
+  "contact": S.optional(S.String),
+  "customTypeName": S.optional(S.String),
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "EventBirthdayProperties" }) as any as S.Schema<EventBirthdayProperties>;
 
 export interface EventOrganizer {
   /** The organizer's Profile ID, if available. */
@@ -954,12 +805,12 @@ export interface EventOrganizer {
   self?: boolean;
 }
 export const EventOrganizer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    displayName: S.optional(S.String),
-    email: S.optional(S.String),
-    self: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "email": S.optional(S.String),
+  "self": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "EventOrganizer" }) as any as S.Schema<EventOrganizer>;
 
 export interface EventAttendee {
@@ -987,25 +838,23 @@ export interface EventAttendee {
   optional?: boolean;
 }
 export const EventAttendee = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalGuests: S.optional(S.Number),
-    id: S.optional(S.String),
-    displayName: S.optional(S.String),
-    responseStatus: S.optional(S.String),
-    self: S.optional(S.Boolean),
-    asyncOperation: S.optional(S.String),
-    email: S.optional(S.String),
-    comment: S.optional(S.String),
-    resource: S.optional(S.Boolean),
-    organizer: S.optional(S.Boolean),
-    optional: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "additionalGuests": S.optional(S.Number),
+  "id": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "responseStatus": S.optional(S.String),
+  "self": S.optional(S.Boolean),
+  "asyncOperation": S.optional(S.String),
+  "email": S.optional(S.String),
+  "comment": S.optional(S.String),
+  "resource": S.optional(S.Boolean),
+  "organizer": S.optional(S.Boolean),
+  "optional": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "EventAttendee" }) as any as S.Schema<EventAttendee>;
 
 export type EventAttendeeList = ReadonlyArray<EventAttendee>;
-export const EventAttendeeList = /*@__PURE__*/ S.Array(
-  EventAttendee,
-) as any as S.Schema<EventAttendeeList>;
+export const EventAttendeeList = /*@__PURE__*/ S.Array(EventAttendee) as any as S.Schema<EventAttendeeList>;
 
 export interface EventFocusTimeProperties {
   /** Whether to decline meeting invitations which overlap Focus Time events. Valid values are declineNone, meaning that no meeting invitations are declined; declineAllConflictingInvitations, meaning that all conflicting meeting invitations that conflict with the event are declined; and declineOnlyNewConflictingInvitations, meaning that only new conflicting meeting invitations which arrive while the Focus Time event is present are to be declined. */
@@ -1016,14 +865,12 @@ export interface EventFocusTimeProperties {
   declineMessage?: string;
 }
 export const EventFocusTimeProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoDeclineMode: S.optional(S.String),
-    chatStatus: S.optional(S.String),
-    declineMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventFocusTimeProperties",
-}) as any as S.Schema<EventFocusTimeProperties>;
+S.Struct({
+  "autoDeclineMode": S.optional(S.String),
+  "chatStatus": S.optional(S.String),
+  "declineMessage": S.optional(S.String),
+}),
+).annotate({ identifier: "EventFocusTimeProperties" }) as any as S.Schema<EventFocusTimeProperties>;
 
 export interface EventExtendedProperties {
   /** Properties that are private to the copy of the event that appears on this calendar. */
@@ -1032,13 +879,11 @@ export interface EventExtendedProperties {
   shared?: StringMap;
 }
 export const EventExtendedProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    private: S.optional(StringMap),
-    shared: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "EventExtendedProperties",
-}) as any as S.Schema<EventExtendedProperties>;
+S.Struct({
+  "private": S.optional(StringMap),
+  "shared": S.optional(StringMap),
+}),
+).annotate({ identifier: "EventExtendedProperties" }) as any as S.Schema<EventExtendedProperties>;
 
 export interface EventCreator {
   /** The creator's name, if available. */
@@ -1051,12 +896,12 @@ export interface EventCreator {
   id?: string;
 }
 export const EventCreator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    email: S.optional(S.String),
-    self: S.optional(S.Boolean),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "email": S.optional(S.String),
+  "self": S.optional(S.Boolean),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "EventCreator" }) as any as S.Schema<EventCreator>;
 
 export interface Event {
@@ -1150,52 +995,52 @@ export interface Event {
   updated?: string;
 }
 export const Event = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attachments: S.optional(EventAttachmentList),
-    visibility: S.optional(S.String),
-    workingLocationProperties: S.optional(EventWorkingLocationProperties),
-    guestsCanInviteOthers: S.optional(S.Boolean),
-    source: S.optional(EventSource),
-    conferenceData: S.optional(ConferenceData),
-    recurrence: S.optional(StringList),
-    recurringEventId: S.optional(S.String),
-    guestsCanModify: S.optional(S.Boolean),
-    gadget: S.optional(EventGadget),
-    anyoneCanAddSelf: S.optional(S.Boolean),
-    originalStartTime: S.optional(EventDateTime),
-    summary: S.optional(S.String),
-    eventLabelId: S.optional(S.String),
-    attendeesOmitted: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    hangoutLink: S.optional(S.String),
-    etag: S.optional(S.String),
-    outOfOfficeProperties: S.optional(EventOutOfOfficeProperties),
-    eventType: S.optional(S.String),
-    location: S.optional(S.String),
-    created: S.optional(S.String),
-    reminders: S.optional(EventReminders),
-    transparency: S.optional(S.String),
-    htmlLink: S.optional(S.String),
-    locked: S.optional(S.Boolean),
-    birthdayProperties: S.optional(EventBirthdayProperties),
-    kind: S.optional(S.String),
-    endTimeUnspecified: S.optional(S.Boolean),
-    colorId: S.optional(S.String),
-    end: S.optional(EventDateTime),
-    organizer: S.optional(EventOrganizer),
-    attendees: S.optional(EventAttendeeList),
-    iCalUID: S.optional(S.String),
-    focusTimeProperties: S.optional(EventFocusTimeProperties),
-    start: S.optional(EventDateTime),
-    id: S.optional(S.String),
-    status: S.optional(S.String),
-    privateCopy: S.optional(S.Boolean),
-    guestsCanSeeOtherGuests: S.optional(S.Boolean),
-    extendedProperties: S.optional(EventExtendedProperties),
-    sequence: S.optional(S.Number),
-    creator: S.optional(EventCreator),
-    updated: S.optional(S.String),
-  }),
+S.Struct({
+  "attachments": S.optional(EventAttachmentList),
+  "visibility": S.optional(S.String),
+  "workingLocationProperties": S.optional(EventWorkingLocationProperties),
+  "guestsCanInviteOthers": S.optional(S.Boolean),
+  "source": S.optional(EventSource),
+  "conferenceData": S.optional(ConferenceData),
+  "recurrence": S.optional(StringList),
+  "recurringEventId": S.optional(S.String),
+  "guestsCanModify": S.optional(S.Boolean),
+  "gadget": S.optional(EventGadget),
+  "anyoneCanAddSelf": S.optional(S.Boolean),
+  "originalStartTime": S.optional(EventDateTime),
+  "summary": S.optional(S.String),
+  "eventLabelId": S.optional(S.String),
+  "attendeesOmitted": S.optional(S.Boolean),
+  "description": S.optional(S.String),
+  "hangoutLink": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "outOfOfficeProperties": S.optional(EventOutOfOfficeProperties),
+  "eventType": S.optional(S.String),
+  "location": S.optional(S.String),
+  "created": S.optional(S.String),
+  "reminders": S.optional(EventReminders),
+  "transparency": S.optional(S.String),
+  "htmlLink": S.optional(S.String),
+  "locked": S.optional(S.Boolean),
+  "birthdayProperties": S.optional(EventBirthdayProperties),
+  "kind": S.optional(S.String),
+  "endTimeUnspecified": S.optional(S.Boolean),
+  "colorId": S.optional(S.String),
+  "end": S.optional(EventDateTime),
+  "organizer": S.optional(EventOrganizer),
+  "attendees": S.optional(EventAttendeeList),
+  "iCalUID": S.optional(S.String),
+  "focusTimeProperties": S.optional(EventFocusTimeProperties),
+  "start": S.optional(EventDateTime),
+  "id": S.optional(S.String),
+  "status": S.optional(S.String),
+  "privateCopy": S.optional(S.Boolean),
+  "guestsCanSeeOtherGuests": S.optional(S.Boolean),
+  "extendedProperties": S.optional(EventExtendedProperties),
+  "sequence": S.optional(S.Number),
+  "creator": S.optional(EventCreator),
+  "updated": S.optional(S.String),
+}),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 export interface GetSettingsRequest {
@@ -1203,18 +1048,10 @@ export interface GetSettingsRequest {
   setting: string;
 }
 export const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    setting: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "users/me/settings/{setting}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSettingsRequest",
-}) as any as S.Schema<GetSettingsRequest>;
+S.Struct({
+  "setting": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"users/me/settings/{setting}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "GetSettingsRequest" }) as any as S.Schema<GetSettingsRequest>;
 
 export interface Setting {
   /** ETag of the resource. */
@@ -1227,12 +1064,12 @@ export interface Setting {
   value?: string;
 }
 export const Setting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
 
 export interface ImportEventsRequest {
@@ -1248,22 +1085,14 @@ export interface ImportEventsRequest {
   body?: Event;
 }
 export const ImportEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventLabelVersion: S.optional(S.Number.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    conferenceDataVersion: S.optional(S.Number.pipe(T.Query())),
-    supportsAttachments: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(Event.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "calendars/{calendarId}/events/import",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "ImportEventsRequest",
-}) as any as S.Schema<ImportEventsRequest>;
+S.Struct({
+  "eventLabelVersion": S.optional(S.Number.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "conferenceDataVersion": S.optional(S.Number.pipe(T.Query())),
+  "supportsAttachments": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Event.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"calendars/{calendarId}/events/import","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "ImportEventsRequest" }) as any as S.Schema<ImportEventsRequest>;
 
 export interface InsertAclRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -1274,20 +1103,12 @@ export interface InsertAclRequest {
   body?: AclRule;
 }
 export const InsertAclRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-    sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(AclRule.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "calendars/{calendarId}/acl",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertAclRequest",
-}) as any as S.Schema<InsertAclRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+  "sendNotifications": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(AclRule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"calendars/{calendarId}/acl","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "InsertAclRequest" }) as any as S.Schema<InsertAclRequest>;
 
 export interface InsertCalendarListRequest {
   /** Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False. */
@@ -1296,48 +1117,28 @@ export interface InsertCalendarListRequest {
   body?: CalendarListEntry;
 }
 export const InsertCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(CalendarListEntry.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "users/me/calendarList",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertCalendarListRequest",
-}) as any as S.Schema<InsertCalendarListRequest>;
+S.Struct({
+  "colorRgbFormat": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(CalendarListEntry.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"users/me/calendarList","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "InsertCalendarListRequest" }) as any as S.Schema<InsertCalendarListRequest>;
 
 export interface InsertCalendarsRequest {
   /** Request body */
   body?: Calendar;
 }
 export const InsertCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(Calendar.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "calendars",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertCalendarsRequest",
-}) as any as S.Schema<InsertCalendarsRequest>;
+S.Struct({
+  "body": S.optional(Calendar.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"calendars","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "InsertCalendarsRequest" }) as any as S.Schema<InsertCalendarsRequest>;
 
-export type InsertEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type InsertEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const InsertEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface InsertEventsRequest {
   /** Whether to send notifications about the creation of the new event. Note that some emails might still be sent. The default is false. */
-  sendUpdates?: InsertEventsSendUpdatesEnum;
+  sendUpdates?: InsertEventsSendUpdatesEnum | (string & {});
   /** Whether API client performing operation supports event attachments. Optional. The default is False. */
   supportsAttachments?: boolean;
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -1354,25 +1155,17 @@ export interface InsertEventsRequest {
   body?: Event;
 }
 export const InsertEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sendUpdates: S.optional(InsertEventsSendUpdatesEnum.pipe(T.Query())),
-    supportsAttachments: S.optional(S.Boolean.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    conferenceDataVersion: S.optional(S.Number.pipe(T.Query())),
-    eventLabelVersion: S.optional(S.Number.pipe(T.Query())),
-    sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-    maxAttendees: S.optional(S.Number.pipe(T.Query())),
-    body: S.optional(Event.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "calendars/{calendarId}/events",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertEventsRequest",
-}) as any as S.Schema<InsertEventsRequest>;
+S.Struct({
+  "sendUpdates": S.optional(InsertEventsSendUpdatesEnum.pipe(T.Query())),
+  "supportsAttachments": S.optional(S.Boolean.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "conferenceDataVersion": S.optional(S.Number.pipe(T.Query())),
+  "eventLabelVersion": S.optional(S.Number.pipe(T.Query())),
+  "sendNotifications": S.optional(S.Boolean.pipe(T.Query())),
+  "maxAttendees": S.optional(S.Number.pipe(T.Query())),
+  "body": S.optional(Event.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"calendars/{calendarId}/events","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "InsertEventsRequest" }) as any as S.Schema<InsertEventsRequest>;
 
 export interface InstancesEventsRequest {
   /** Recurring event identifier. */
@@ -1399,33 +1192,23 @@ export interface InstancesEventsRequest {
   alwaysIncludeEmail?: boolean;
 }
 export const InstancesEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventId: S.String.pipe(T.Label()),
-    timeMin: S.optional(S.String.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    originalStart: S.optional(S.String.pipe(T.Query())),
-    timeZone: S.optional(S.String.pipe(T.Query())),
-    timeMax: S.optional(S.String.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    maxAttendees: S.optional(S.Number.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "calendars/{calendarId}/events/{eventId}/instances",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "InstancesEventsRequest",
-}) as any as S.Schema<InstancesEventsRequest>;
+S.Struct({
+  "eventId": S.String.pipe(T.Label()),
+  "timeMin": S.optional(S.String.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "originalStart": S.optional(S.String.pipe(T.Query())),
+  "timeZone": S.optional(S.String.pipe(T.Query())),
+  "timeMax": S.optional(S.String.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "maxAttendees": S.optional(S.Number.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "alwaysIncludeEmail": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"calendars/{calendarId}/events/{eventId}/instances","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "InstancesEventsRequest" }) as any as S.Schema<InstancesEventsRequest>;
 
 export type EventList = ReadonlyArray<Event>;
-export const EventList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<EventList>;
+export const EventList = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventList>;
 
 export interface Events {
   /** The user's access role for this calendar. Read-only. Possible values are: - "none" - The user has no access. - "freeBusyReader" - The user has read access to free/busy information. - "reader" - The user has read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. - "writerWithoutPrivateAccess" - The user has read and write access to the calendar. Private events will appear to users with writerWithoutPrivateAccess access, but event details will be hidden. - "writer" - The user has read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. - "owner" - The user has manager access to the calendar. This role has all of the permissions of the writer role with the additional ability to see and modify access levels of other users. Important: the owner role is different from the calendar's data owner. A calendar has a single data owner, but can have multiple users with owner role. */
@@ -1452,19 +1235,19 @@ export interface Events {
   updated?: string;
 }
 export const Events = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessRole: S.optional(S.String),
-    description: S.optional(S.String),
-    nextSyncToken: S.optional(S.String),
-    timeZone: S.optional(S.String),
-    items: EventList,
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    defaultReminders: S.optional(EventReminderList),
-    summary: S.optional(S.String),
-    updated: S.optional(S.String),
-  }),
+S.Struct({
+  "accessRole": S.optional(S.String),
+  "description": S.optional(S.String),
+  "nextSyncToken": S.optional(S.String),
+  "timeZone": S.optional(S.String),
+  "items": EventList,
+  "etag": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "defaultReminders": S.optional(EventReminderList),
+  "summary": S.optional(S.String),
+  "updated": S.optional(S.String),
+}),
 ).annotate({ identifier: "Events" }) as any as S.Schema<Events>;
 
 export interface ListAclRequest {
@@ -1480,25 +1263,17 @@ export interface ListAclRequest {
   showDeleted?: boolean;
 }
 export const ListAclRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    syncToken: S.optional(S.String.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "calendars/{calendarId}/acl",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
+S.Struct({
+  "syncToken": S.optional(S.String.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"calendars/{calendarId}/acl","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
 ).annotate({ identifier: "ListAclRequest" }) as any as S.Schema<ListAclRequest>;
 
 export type AclRuleList = ReadonlyArray<AclRule>;
-export const AclRuleList = /*@__PURE__*/ S.Array(
-  AclRule,
-) as any as S.Schema<AclRuleList>;
+export const AclRuleList = /*@__PURE__*/ S.Array(AclRule) as any as S.Schema<AclRuleList>;
 
 export interface Acl {
   /** ETag of the collection. */
@@ -1513,22 +1288,16 @@ export interface Acl {
   nextPageToken?: string;
 }
 export const Acl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    items: AclRuleList,
-    nextSyncToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "items": AclRuleList,
+  "nextSyncToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+}),
 ).annotate({ identifier: "Acl" }) as any as S.Schema<Acl>;
 
-export type ListCalendarListMinAccessRoleEnum =
-  | "freeBusyReader"
-  | "owner"
-  | "reader"
-  | "writer"
-  | "writerWithoutPrivateAccess"
-  | (string & {});
+export type ListCalendarListMinAccessRoleEnum = "freeBusyReader" | "owner" | "reader" | "writer" | "writerWithoutPrivateAccess";
 export const ListCalendarListMinAccessRoleEnum = /*@__PURE__*/ S.String;
 
 export interface ListCalendarListRequest {
@@ -1539,7 +1308,7 @@ export interface ListCalendarListRequest {
   /** Whether to include deleted calendar list entries in the result. Optional. The default is False. */
   showDeleted?: boolean;
   /** The minimum access role for the user in the returned entries. Optional. The default is no restriction. */
-  minAccessRole?: ListCalendarListMinAccessRoleEnum;
+  minAccessRole?: ListCalendarListMinAccessRoleEnum | (string & {});
   /** Whether to show hidden entries. Optional. The default is False. */
   showHidden?: boolean;
   /** Whether to show only entries for calendars from the organization. This parameter is only applicable to Google Workspace users. Optional. The default is False. */
@@ -1548,31 +1317,19 @@ export interface ListCalendarListRequest {
   syncToken?: string;
 }
 export const ListCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    minAccessRole: S.optional(
-      ListCalendarListMinAccessRoleEnum.pipe(T.Query()),
-    ),
-    showHidden: S.optional(S.Boolean.pipe(T.Query())),
-    showOwnOrganizationOnly: S.optional(S.Boolean.pipe(T.Query())),
-    syncToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "users/me/calendarList",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCalendarListRequest",
-}) as any as S.Schema<ListCalendarListRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "minAccessRole": S.optional(ListCalendarListMinAccessRoleEnum.pipe(T.Query())),
+  "showHidden": S.optional(S.Boolean.pipe(T.Query())),
+  "showOwnOrganizationOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "syncToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"users/me/calendarList","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "ListCalendarListRequest" }) as any as S.Schema<ListCalendarListRequest>;
 
 export type CalendarListEntryList = ReadonlyArray<CalendarListEntry>;
-export const CalendarListEntryList = /*@__PURE__*/ S.Array(
-  CalendarListEntry,
-) as any as S.Schema<CalendarListEntryList>;
+export const CalendarListEntryList = /*@__PURE__*/ S.Array(CalendarListEntry) as any as S.Schema<CalendarListEntryList>;
 
 export interface CalendarList {
   /** Calendars that are present on the user's calendar list. */
@@ -1587,32 +1344,22 @@ export interface CalendarList {
   nextSyncToken?: string;
 }
 export const CalendarList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: CalendarListEntryList,
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    nextSyncToken: S.optional(S.String),
-  }),
+S.Struct({
+  "items": CalendarListEntryList,
+  "etag": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "nextSyncToken": S.optional(S.String),
+}),
 ).annotate({ identifier: "CalendarList" }) as any as S.Schema<CalendarList>;
 
-export type ListEventsEventTypesEnum =
-  | "birthday"
-  | "default"
-  | "focusTime"
-  | "fromGmail"
-  | "outOfOffice"
-  | "workingLocation"
-  | (string & {});
+export type ListEventsEventTypesEnum = "birthday" | "default" | "focusTime" | "fromGmail" | "outOfOffice" | "workingLocation";
 export const ListEventsEventTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListEventsEventTypesEnumList =
-  ReadonlyArray<ListEventsEventTypesEnum>;
-export const ListEventsEventTypesEnumList = /*@__PURE__*/ S.Array(
-  ListEventsEventTypesEnum,
-) as any as S.Schema<ListEventsEventTypesEnumList>;
+export type ListEventsEventTypesEnumList = ReadonlyArray<ListEventsEventTypesEnum | (string & {})>;
+export const ListEventsEventTypesEnumList = /*@__PURE__*/ S.Array(ListEventsEventTypesEnum) as any as S.Schema<ListEventsEventTypesEnumList>;
 
-export type ListEventsOrderByEnum = "startTime" | "updated" | (string & {});
+export type ListEventsOrderByEnum = "startTime" | "updated";
 export const ListEventsOrderByEnum = /*@__PURE__*/ S.String;
 
 export interface ListEventsRequest {
@@ -1645,7 +1392,7 @@ export interface ListEventsRequest {
   /** Lower bound for an event's last modification time (as a RFC3339 timestamp) to filter by. When specified, entries deleted since this time will always be included regardless of showDeleted. Optional. The default is not to filter by last modification time. */
   updatedMin?: string;
   /** The order of the events returned in the result. Optional. The default is an unspecified, stable order. */
-  orderBy?: ListEventsOrderByEnum;
+  orderBy?: ListEventsOrderByEnum | (string & {});
   /** Token specifying which result page to return. Optional. */
   pageToken?: string;
   /** Whether to expand recurring events into instances and only return single one-off events and instances of recurring events, but not the underlying recurring events themselves. Optional. The default is False. */
@@ -1656,36 +1403,28 @@ export interface ListEventsRequest {
   maxResults?: number;
 }
 export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateExtendedProperty: S.optional(StringList.pipe(T.Query())),
-    syncToken: S.optional(S.String.pipe(T.Query())),
-    sharedExtendedProperty: S.optional(StringList.pipe(T.Query())),
-    eventTypes: S.optional(ListEventsEventTypesEnumList.pipe(T.Query())),
-    q: S.optional(S.String.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    showHiddenInvitations: S.optional(S.Boolean.pipe(T.Query())),
-    iCalUID: S.optional(S.String.pipe(T.Query())),
-    timeMax: S.optional(S.String.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    timeZone: S.optional(S.String.pipe(T.Query())),
-    timeMin: S.optional(S.String.pipe(T.Query())),
-    alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
-    updatedMin: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(ListEventsOrderByEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    singleEvents: S.optional(S.Boolean.pipe(T.Query())),
-    maxAttendees: S.optional(S.Number.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "calendars/{calendarId}/events",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "ListEventsRequest",
-}) as any as S.Schema<ListEventsRequest>;
+S.Struct({
+  "privateExtendedProperty": S.optional(StringList.pipe(T.Query())),
+  "syncToken": S.optional(S.String.pipe(T.Query())),
+  "sharedExtendedProperty": S.optional(StringList.pipe(T.Query())),
+  "eventTypes": S.optional(ListEventsEventTypesEnumList.pipe(T.Query())),
+  "q": S.optional(S.String.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "showHiddenInvitations": S.optional(S.Boolean.pipe(T.Query())),
+  "iCalUID": S.optional(S.String.pipe(T.Query())),
+  "timeMax": S.optional(S.String.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "timeZone": S.optional(S.String.pipe(T.Query())),
+  "timeMin": S.optional(S.String.pipe(T.Query())),
+  "alwaysIncludeEmail": S.optional(S.Boolean.pipe(T.Query())),
+  "updatedMin": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(ListEventsOrderByEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "singleEvents": S.optional(S.Boolean.pipe(T.Query())),
+  "maxAttendees": S.optional(S.Number.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"calendars/{calendarId}/events","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "ListEventsRequest" }) as any as S.Schema<ListEventsRequest>;
 
 export interface ListSettingsRequest {
   /** Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional. */
@@ -1696,25 +1435,15 @@ export interface ListSettingsRequest {
   pageToken?: string;
 }
 export const ListSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    syncToken: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "users/me/settings",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSettingsRequest",
-}) as any as S.Schema<ListSettingsRequest>;
+S.Struct({
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "syncToken": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"users/me/settings","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "ListSettingsRequest" }) as any as S.Schema<ListSettingsRequest>;
 
 export type SettingList = ReadonlyArray<Setting>;
-export const SettingList = /*@__PURE__*/ S.Array(
-  Setting,
-) as any as S.Schema<SettingList>;
+export const SettingList = /*@__PURE__*/ S.Array(Setting) as any as S.Schema<SettingList>;
 
 export interface Settings {
   /** List of user settings. */
@@ -1729,27 +1458,23 @@ export interface Settings {
   nextPageToken?: string;
 }
 export const Settings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: SettingList,
-    etag: S.optional(S.String),
-    nextSyncToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-  }),
+S.Struct({
+  "items": SettingList,
+  "etag": S.optional(S.String),
+  "nextSyncToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+}),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
-export type MoveEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type MoveEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const MoveEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface MoveEventsRequest {
   /** Calendar identifier of the source calendar where the event currently is on. */
   calendarId: string;
   /** Guests who should receive notifications about the change of the event's organizer. */
-  sendUpdates?: MoveEventsSendUpdatesEnum;
+  sendUpdates?: MoveEventsSendUpdatesEnum | (string & {});
   /** Deprecated. Please use sendUpdates instead. Whether to send notifications about the change of the event's organizer. Note that some emails might still be sent even if you set the value to false. The default is false. */
   sendNotifications?: boolean;
   /** Event identifier. */
@@ -1758,22 +1483,14 @@ export interface MoveEventsRequest {
   destination: string;
 }
 export const MoveEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-    sendUpdates: S.optional(MoveEventsSendUpdatesEnum.pipe(T.Query())),
-    sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-    eventId: S.String.pipe(T.Label()),
-    destination: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "calendars/{calendarId}/events/{eventId}/move",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "MoveEventsRequest",
-}) as any as S.Schema<MoveEventsRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+  "sendUpdates": S.optional(MoveEventsSendUpdatesEnum.pipe(T.Query())),
+  "sendNotifications": S.optional(S.Boolean.pipe(T.Query())),
+  "eventId": S.String.pipe(T.Label()),
+  "destination": S.String.pipe(T.Query()),
+}).pipe(T.Http({"method":"POST","uri":"calendars/{calendarId}/events/{eventId}/move","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "MoveEventsRequest" }) as any as S.Schema<MoveEventsRequest>;
 
 export interface PatchAclRequest {
   /** ACL rule identifier. */
@@ -1786,21 +1503,13 @@ export interface PatchAclRequest {
   body?: AclRule;
 }
 export const PatchAclRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleId: S.String.pipe(T.Label()),
-    sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    body: S.optional(AclRule.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "calendars/{calendarId}/acl/{ruleId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAclRequest",
-}) as any as S.Schema<PatchAclRequest>;
+S.Struct({
+  "ruleId": S.String.pipe(T.Label()),
+  "sendNotifications": S.optional(S.Boolean.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "body": S.optional(AclRule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"calendars/{calendarId}/acl/{ruleId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "PatchAclRequest" }) as any as S.Schema<PatchAclRequest>;
 
 export interface PatchCalendarListRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -1811,20 +1520,12 @@ export interface PatchCalendarListRequest {
   body?: CalendarListEntry;
 }
 export const PatchCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-    colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(CalendarListEntry.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "users/me/calendarList/{calendarId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchCalendarListRequest",
-}) as any as S.Schema<PatchCalendarListRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+  "colorRgbFormat": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(CalendarListEntry.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"users/me/calendarList/{calendarId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "PatchCalendarListRequest" }) as any as S.Schema<PatchCalendarListRequest>;
 
 export interface PatchCalendarsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -1833,25 +1534,13 @@ export interface PatchCalendarsRequest {
   body?: Calendar;
 }
 export const PatchCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-    body: S.optional(Calendar.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "calendars/{calendarId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchCalendarsRequest",
-}) as any as S.Schema<PatchCalendarsRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+  "body": S.optional(Calendar.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"calendars/{calendarId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "PatchCalendarsRequest" }) as any as S.Schema<PatchCalendarsRequest>;
 
-export type PatchEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type PatchEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const PatchEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface PatchEventsRequest {
@@ -1870,51 +1559,39 @@ export interface PatchEventsRequest {
   /** Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0. */
   conferenceDataVersion?: number;
   /** Guests who should receive notifications about the event update (for example, title changes, etc.). */
-  sendUpdates?: PatchEventsSendUpdatesEnum;
+  sendUpdates?: PatchEventsSendUpdatesEnum | (string & {});
   /** Whether API client performing operation supports event attachments. Optional. The default is False. */
   supportsAttachments?: boolean;
   /** Request body */
   body?: Event;
 }
 export const PatchEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxAttendees: S.optional(S.Number.pipe(T.Query())),
-    alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
-    eventId: S.String.pipe(T.Label()),
-    sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-    eventLabelVersion: S.optional(S.Number.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    conferenceDataVersion: S.optional(S.Number.pipe(T.Query())),
-    sendUpdates: S.optional(PatchEventsSendUpdatesEnum.pipe(T.Query())),
-    supportsAttachments: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(Event.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "calendars/{calendarId}/events/{eventId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchEventsRequest",
-}) as any as S.Schema<PatchEventsRequest>;
+S.Struct({
+  "maxAttendees": S.optional(S.Number.pipe(T.Query())),
+  "alwaysIncludeEmail": S.optional(S.Boolean.pipe(T.Query())),
+  "eventId": S.String.pipe(T.Label()),
+  "sendNotifications": S.optional(S.Boolean.pipe(T.Query())),
+  "eventLabelVersion": S.optional(S.Number.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "conferenceDataVersion": S.optional(S.Number.pipe(T.Query())),
+  "sendUpdates": S.optional(PatchEventsSendUpdatesEnum.pipe(T.Query())),
+  "supportsAttachments": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Event.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"calendars/{calendarId}/events/{eventId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "PatchEventsRequest" }) as any as S.Schema<PatchEventsRequest>;
 
 export interface FreeBusyRequestItem {
   /** The identifier of a calendar or a group. */
   id?: string;
 }
 export const FreeBusyRequestItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FreeBusyRequestItem",
-}) as any as S.Schema<FreeBusyRequestItem>;
+S.Struct({
+  "id": S.optional(S.String),
+}),
+).annotate({ identifier: "FreeBusyRequestItem" }) as any as S.Schema<FreeBusyRequestItem>;
 
 export type FreeBusyRequestItemList = ReadonlyArray<FreeBusyRequestItem>;
-export const FreeBusyRequestItemList = /*@__PURE__*/ S.Array(
-  FreeBusyRequestItem,
-) as any as S.Schema<FreeBusyRequestItemList>;
+export const FreeBusyRequestItemList = /*@__PURE__*/ S.Array(FreeBusyRequestItem) as any as S.Schema<FreeBusyRequestItemList>;
 
 export interface FreeBusyRequest {
   /** Maximal number of calendars for which FreeBusy information is to be provided. Optional. Maximum value is 50. */
@@ -1931,35 +1608,25 @@ export interface FreeBusyRequest {
   items?: FreeBusyRequestItemList;
 }
 export const FreeBusyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarExpansionMax: S.optional(S.Number),
-    timeZone: S.optional(S.String),
-    timeMax: S.optional(S.String),
-    groupExpansionMax: S.optional(S.Number),
-    timeMin: S.optional(S.String),
-    items: S.optional(FreeBusyRequestItemList),
-  }),
-).annotate({
-  identifier: "FreeBusyRequest",
-}) as any as S.Schema<FreeBusyRequest>;
+S.Struct({
+  "calendarExpansionMax": S.optional(S.Number),
+  "timeZone": S.optional(S.String),
+  "timeMax": S.optional(S.String),
+  "groupExpansionMax": S.optional(S.Number),
+  "timeMin": S.optional(S.String),
+  "items": S.optional(FreeBusyRequestItemList),
+}),
+).annotate({ identifier: "FreeBusyRequest" }) as any as S.Schema<FreeBusyRequest>;
 
 export interface QueryFreebusyRequest {
   /** Request body */
   body?: FreeBusyRequest;
 }
 export const QueryFreebusyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(FreeBusyRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "freeBusy",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "QueryFreebusyRequest",
-}) as any as S.Schema<QueryFreebusyRequest>;
+S.Struct({
+  "body": S.optional(FreeBusyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"freeBusy","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "QueryFreebusyRequest" }) as any as S.Schema<QueryFreebusyRequest>;
 
 export interface Calendar_Error {
   /** Domain, or broad category, of the error. */
@@ -1968,16 +1635,14 @@ export interface Calendar_Error {
   reason?: string;
 }
 export const Calendar_Error = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-    reason: S.optional(S.String),
-  }),
+S.Struct({
+  "domain": S.optional(S.String),
+  "reason": S.optional(S.String),
+}),
 ).annotate({ identifier: "Calendar_Error" }) as any as S.Schema<Calendar_Error>;
 
 export type Calendar_ErrorList = ReadonlyArray<Calendar_Error>;
-export const Calendar_ErrorList = /*@__PURE__*/ S.Array(
-  Calendar_Error,
-) as any as S.Schema<Calendar_ErrorList>;
+export const Calendar_ErrorList = /*@__PURE__*/ S.Array(Calendar_Error) as any as S.Schema<Calendar_ErrorList>;
 
 export interface FreeBusyGroup {
   /** List of calendars' identifiers within a group. */
@@ -1986,17 +1651,14 @@ export interface FreeBusyGroup {
   errors?: Calendar_ErrorList;
 }
 export const FreeBusyGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendars: S.optional(StringList),
-    errors: S.optional(Calendar_ErrorList),
-  }),
+S.Struct({
+  "calendars": S.optional(StringList),
+  "errors": S.optional(Calendar_ErrorList),
+}),
 ).annotate({ identifier: "FreeBusyGroup" }) as any as S.Schema<FreeBusyGroup>;
 
 export type FreeBusyGroupMap = { [key: string]: FreeBusyGroup | undefined };
-export const FreeBusyGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  FreeBusyGroup,
-) as any as S.Schema<FreeBusyGroupMap>;
+export const FreeBusyGroupMap = /*@__PURE__*/ S.Record(S.String, FreeBusyGroup) as any as S.Schema<FreeBusyGroupMap>;
 
 export interface TimePeriod {
   /** The (exclusive) end of the time period. */
@@ -2005,16 +1667,14 @@ export interface TimePeriod {
   start?: string;
 }
 export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end: S.optional(S.String),
-    start: S.optional(S.String),
-  }),
+S.Struct({
+  "end": S.optional(S.String),
+  "start": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 
 export type TimePeriodList = ReadonlyArray<TimePeriod>;
-export const TimePeriodList = /*@__PURE__*/ S.Array(
-  TimePeriod,
-) as any as S.Schema<TimePeriodList>;
+export const TimePeriodList = /*@__PURE__*/ S.Array(TimePeriod) as any as S.Schema<TimePeriodList>;
 
 export interface FreeBusyCalendar {
   /** List of time ranges during which this calendar should be regarded as busy. */
@@ -2023,21 +1683,14 @@ export interface FreeBusyCalendar {
   errors?: Calendar_ErrorList;
 }
 export const FreeBusyCalendar = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    busy: S.optional(TimePeriodList),
-    errors: S.optional(Calendar_ErrorList),
-  }),
-).annotate({
-  identifier: "FreeBusyCalendar",
-}) as any as S.Schema<FreeBusyCalendar>;
+S.Struct({
+  "busy": S.optional(TimePeriodList),
+  "errors": S.optional(Calendar_ErrorList),
+}),
+).annotate({ identifier: "FreeBusyCalendar" }) as any as S.Schema<FreeBusyCalendar>;
 
-export type FreeBusyCalendarMap = {
-  [key: string]: FreeBusyCalendar | undefined;
-};
-export const FreeBusyCalendarMap = /*@__PURE__*/ S.Record(
-  S.String,
-  FreeBusyCalendar,
-) as any as S.Schema<FreeBusyCalendarMap>;
+export type FreeBusyCalendarMap = { [key: string]: FreeBusyCalendar | undefined };
+export const FreeBusyCalendarMap = /*@__PURE__*/ S.Record(S.String, FreeBusyCalendar) as any as S.Schema<FreeBusyCalendarMap>;
 
 export interface FreeBusyResponse {
   /** Expansion of groups. */
@@ -2052,27 +1705,21 @@ export interface FreeBusyResponse {
   calendars?: FreeBusyCalendarMap;
 }
 export const FreeBusyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groups: S.optional(FreeBusyGroupMap),
-    kind: S.optional(S.String),
-    timeMax: S.optional(S.String),
-    timeMin: S.optional(S.String),
-    calendars: S.optional(FreeBusyCalendarMap),
-  }),
-).annotate({
-  identifier: "FreeBusyResponse",
-}) as any as S.Schema<FreeBusyResponse>;
+S.Struct({
+  "groups": S.optional(FreeBusyGroupMap),
+  "kind": S.optional(S.String),
+  "timeMax": S.optional(S.String),
+  "timeMin": S.optional(S.String),
+  "calendars": S.optional(FreeBusyCalendarMap),
+}),
+).annotate({ identifier: "FreeBusyResponse" }) as any as S.Schema<FreeBusyResponse>;
 
-export type QuickAddEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type QuickAddEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const QuickAddEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface QuickAddEventsRequest {
   /** Guests who should receive notifications about the creation of the new event. */
-  sendUpdates?: QuickAddEventsSendUpdatesEnum;
+  sendUpdates?: QuickAddEventsSendUpdatesEnum | (string & {});
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
   /** The text describing the event to be created. */
@@ -2081,21 +1728,13 @@ export interface QuickAddEventsRequest {
   sendNotifications?: boolean;
 }
 export const QuickAddEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sendUpdates: S.optional(QuickAddEventsSendUpdatesEnum.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    text: S.String.pipe(T.Query()),
-    sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "calendars/{calendarId}/events/quickAdd",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "QuickAddEventsRequest",
-}) as any as S.Schema<QuickAddEventsRequest>;
+S.Struct({
+  "sendUpdates": S.optional(QuickAddEventsSendUpdatesEnum.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "text": S.String.pipe(T.Query()),
+  "sendNotifications": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"calendars/{calendarId}/events/quickAdd","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "QuickAddEventsRequest" }) as any as S.Schema<QuickAddEventsRequest>;
 
 export interface Channel {
   /** The address where notifications are delivered for this channel. */
@@ -2120,18 +1759,18 @@ export interface Channel {
   token?: string;
 }
 export const Channel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    resourceUri: S.optional(S.String),
-    kind: S.optional(S.String),
-    payload: S.optional(S.Boolean),
-    type: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    expiration: S.optional(S.String),
-    id: S.optional(S.String),
-    params: S.optional(StringMap),
-    token: S.optional(S.String),
-  }),
+S.Struct({
+  "address": S.optional(S.String),
+  "resourceUri": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "payload": S.optional(S.Boolean),
+  "type": S.optional(S.String),
+  "resourceId": S.optional(S.String),
+  "expiration": S.optional(S.String),
+  "id": S.optional(S.String),
+  "params": S.optional(StringMap),
+  "token": S.optional(S.String),
+}),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
 export interface StopChannelsRequest {
@@ -2139,25 +1778,15 @@ export interface StopChannelsRequest {
   body?: Channel;
 }
 export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "channels/stop",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "StopChannelsRequest",
-}) as any as S.Schema<StopChannelsRequest>;
+S.Struct({
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"channels/stop","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
 export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopChannelsResponse",
-}) as any as S.Schema<StopChannelsResponse>;
+S.Struct({}),
+).annotate({ identifier: "StopChannelsResponse" }) as any as S.Schema<StopChannelsResponse>;
 
 export interface TransferOwnershipCalendarsRequest {
   /** Calendar identifier. To retrieve calendar IDs, call the calendarList.list method. */
@@ -2168,27 +1797,17 @@ export interface TransferOwnershipCalendarsRequest {
   useAdminAccess: boolean;
 }
 export const TransferOwnershipCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-    newDataOwner: S.String.pipe(T.Query()),
-    useAdminAccess: S.Boolean.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "calendars/{calendarId}/transferOwnership",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "TransferOwnershipCalendarsRequest",
-}) as any as S.Schema<TransferOwnershipCalendarsRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+  "newDataOwner": S.String.pipe(T.Query()),
+  "useAdminAccess": S.Boolean.pipe(T.Query()),
+}).pipe(T.Http({"method":"POST","uri":"calendars/{calendarId}/transferOwnership","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "TransferOwnershipCalendarsRequest" }) as any as S.Schema<TransferOwnershipCalendarsRequest>;
 
 export interface TransferOwnershipCalendarsResponse {}
 export const TransferOwnershipCalendarsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TransferOwnershipCalendarsResponse",
-}) as any as S.Schema<TransferOwnershipCalendarsResponse>;
+S.Struct({}),
+).annotate({ identifier: "TransferOwnershipCalendarsResponse" }) as any as S.Schema<TransferOwnershipCalendarsResponse>;
 
 export interface UpdateAclRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -2201,21 +1820,13 @@ export interface UpdateAclRequest {
   body?: AclRule;
 }
 export const UpdateAclRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-    sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-    ruleId: S.String.pipe(T.Label()),
-    body: S.optional(AclRule.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "calendars/{calendarId}/acl/{ruleId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAclRequest",
-}) as any as S.Schema<UpdateAclRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+  "sendNotifications": S.optional(S.Boolean.pipe(T.Query())),
+  "ruleId": S.String.pipe(T.Label()),
+  "body": S.optional(AclRule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"calendars/{calendarId}/acl/{ruleId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "UpdateAclRequest" }) as any as S.Schema<UpdateAclRequest>;
 
 export interface UpdateCalendarListRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -2226,20 +1837,12 @@ export interface UpdateCalendarListRequest {
   body?: CalendarListEntry;
 }
 export const UpdateCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-    colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(CalendarListEntry.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "users/me/calendarList/{calendarId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateCalendarListRequest",
-}) as any as S.Schema<UpdateCalendarListRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+  "colorRgbFormat": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(CalendarListEntry.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"users/me/calendarList/{calendarId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "UpdateCalendarListRequest" }) as any as S.Schema<UpdateCalendarListRequest>;
 
 export interface UpdateCalendarsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -2248,25 +1851,13 @@ export interface UpdateCalendarsRequest {
   body?: Calendar;
 }
 export const UpdateCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-    body: S.optional(Calendar.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "calendars/{calendarId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateCalendarsRequest",
-}) as any as S.Schema<UpdateCalendarsRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+  "body": S.optional(Calendar.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"calendars/{calendarId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "UpdateCalendarsRequest" }) as any as S.Schema<UpdateCalendarsRequest>;
 
-export type UpdateEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type UpdateEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const UpdateEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateEventsRequest {
@@ -2275,7 +1866,7 @@ export interface UpdateEventsRequest {
   /** The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional. */
   maxAttendees?: number;
   /** Guests who should receive notifications about the event update (for example, title changes, etc.). */
-  sendUpdates?: UpdateEventsSendUpdatesEnum;
+  sendUpdates?: UpdateEventsSendUpdatesEnum | (string & {});
   /** Whether API client performing operation supports event attachments. Optional. The default is False. */
   supportsAttachments?: boolean;
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -2292,27 +1883,19 @@ export interface UpdateEventsRequest {
   body?: Event;
 }
 export const UpdateEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
-    maxAttendees: S.optional(S.Number.pipe(T.Query())),
-    sendUpdates: S.optional(UpdateEventsSendUpdatesEnum.pipe(T.Query())),
-    supportsAttachments: S.optional(S.Boolean.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    conferenceDataVersion: S.optional(S.Number.pipe(T.Query())),
-    eventLabelVersion: S.optional(S.Number.pipe(T.Query())),
-    sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
-    eventId: S.String.pipe(T.Label()),
-    body: S.optional(Event.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "calendars/{calendarId}/events/{eventId}",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateEventsRequest",
-}) as any as S.Schema<UpdateEventsRequest>;
+S.Struct({
+  "alwaysIncludeEmail": S.optional(S.Boolean.pipe(T.Query())),
+  "maxAttendees": S.optional(S.Number.pipe(T.Query())),
+  "sendUpdates": S.optional(UpdateEventsSendUpdatesEnum.pipe(T.Query())),
+  "supportsAttachments": S.optional(S.Boolean.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "conferenceDataVersion": S.optional(S.Number.pipe(T.Query())),
+  "eventLabelVersion": S.optional(S.Number.pipe(T.Query())),
+  "sendNotifications": S.optional(S.Boolean.pipe(T.Query())),
+  "eventId": S.String.pipe(T.Label()),
+  "body": S.optional(Event.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"calendars/{calendarId}/events/{eventId}","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "UpdateEventsRequest" }) as any as S.Schema<UpdateEventsRequest>;
 
 export interface WatchAclRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -2329,31 +1912,17 @@ export interface WatchAclRequest {
   body?: Channel;
 }
 export const WatchAclRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarId: S.String.pipe(T.Label()),
-    syncToken: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "calendars/{calendarId}/acl/watch",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "WatchAclRequest",
-}) as any as S.Schema<WatchAclRequest>;
+S.Struct({
+  "calendarId": S.String.pipe(T.Label()),
+  "syncToken": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"calendars/{calendarId}/acl/watch","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "WatchAclRequest" }) as any as S.Schema<WatchAclRequest>;
 
-export type WatchCalendarListMinAccessRoleEnum =
-  | "freeBusyReader"
-  | "owner"
-  | "reader"
-  | "writer"
-  | "writerWithoutPrivateAccess"
-  | (string & {});
+export type WatchCalendarListMinAccessRoleEnum = "freeBusyReader" | "owner" | "reader" | "writer" | "writerWithoutPrivateAccess";
 export const WatchCalendarListMinAccessRoleEnum = /*@__PURE__*/ S.String;
 
 export interface WatchCalendarListRequest {
@@ -2368,59 +1937,39 @@ export interface WatchCalendarListRequest {
   /** Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. If only read-only fields such as calendar properties or ACLs have changed, the entry won't be returned. All entries deleted and hidden since the previous list request will always be in the result set and it is not allowed to set showDeleted neither showHidden to False. To ensure client state consistency minAccessRole and showOwnOrganizationOnly query parameters cannot be specified together with nextSyncToken. If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken. Learn more about incremental synchronization. Optional. The default is to return all entries. */
   syncToken?: string;
   /** The minimum access role for the user in the returned entries. Optional. The default is no restriction. */
-  minAccessRole?: WatchCalendarListMinAccessRoleEnum;
+  minAccessRole?: WatchCalendarListMinAccessRoleEnum | (string & {});
   /** Whether to show hidden entries. Optional. The default is False. */
   showHidden?: boolean;
   /** Request body */
   body?: Channel;
 }
 export const WatchCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    showOwnOrganizationOnly: S.optional(S.Boolean.pipe(T.Query())),
-    syncToken: S.optional(S.String.pipe(T.Query())),
-    minAccessRole: S.optional(
-      WatchCalendarListMinAccessRoleEnum.pipe(T.Query()),
-    ),
-    showHidden: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "users/me/calendarList/watch",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "WatchCalendarListRequest",
-}) as any as S.Schema<WatchCalendarListRequest>;
+S.Struct({
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "showOwnOrganizationOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "syncToken": S.optional(S.String.pipe(T.Query())),
+  "minAccessRole": S.optional(WatchCalendarListMinAccessRoleEnum.pipe(T.Query())),
+  "showHidden": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"users/me/calendarList/watch","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "WatchCalendarListRequest" }) as any as S.Schema<WatchCalendarListRequest>;
 
-export type WatchEventsOrderByEnum = "startTime" | "updated" | (string & {});
+export type WatchEventsOrderByEnum = "startTime" | "updated";
 export const WatchEventsOrderByEnum = /*@__PURE__*/ S.String;
 
-export type WatchEventsEventTypesEnum =
-  | "birthday"
-  | "default"
-  | "focusTime"
-  | "fromGmail"
-  | "outOfOffice"
-  | "workingLocation"
-  | (string & {});
+export type WatchEventsEventTypesEnum = "birthday" | "default" | "focusTime" | "fromGmail" | "outOfOffice" | "workingLocation";
 export const WatchEventsEventTypesEnum = /*@__PURE__*/ S.String;
 
-export type WatchEventsEventTypesEnumList =
-  ReadonlyArray<WatchEventsEventTypesEnum>;
-export const WatchEventsEventTypesEnumList = /*@__PURE__*/ S.Array(
-  WatchEventsEventTypesEnum,
-) as any as S.Schema<WatchEventsEventTypesEnumList>;
+export type WatchEventsEventTypesEnumList = ReadonlyArray<WatchEventsEventTypesEnum | (string & {})>;
+export const WatchEventsEventTypesEnumList = /*@__PURE__*/ S.Array(WatchEventsEventTypesEnum) as any as S.Schema<WatchEventsEventTypesEnumList>;
 
 export interface WatchEventsRequest {
   /** Lower bound for an event's last modification time (as a RFC3339 timestamp) to filter by. When specified, entries deleted since this time will always be included regardless of showDeleted. Optional. The default is not to filter by last modification time. */
   updatedMin?: string;
   /** The order of the events returned in the result. Optional. The default is an unspecified, stable order. */
-  orderBy?: WatchEventsOrderByEnum;
+  orderBy?: WatchEventsOrderByEnum | (string & {});
   /** Token specifying which result page to return. Optional. */
   pageToken?: string;
   /** Whether to expand recurring events into instances and only return single one-off events and instances of recurring events, but not the underlying recurring events themselves. Optional. The default is False. */
@@ -2459,37 +2008,29 @@ export interface WatchEventsRequest {
   body?: Channel;
 }
 export const WatchEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updatedMin: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(WatchEventsOrderByEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    singleEvents: S.optional(S.Boolean.pipe(T.Query())),
-    maxAttendees: S.optional(S.Number.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
-    timeMin: S.optional(S.String.pipe(T.Query())),
-    iCalUID: S.optional(S.String.pipe(T.Query())),
-    timeMax: S.optional(S.String.pipe(T.Query())),
-    calendarId: S.String.pipe(T.Label()),
-    timeZone: S.optional(S.String.pipe(T.Query())),
-    q: S.optional(S.String.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    showHiddenInvitations: S.optional(S.Boolean.pipe(T.Query())),
-    sharedExtendedProperty: S.optional(StringList.pipe(T.Query())),
-    eventTypes: S.optional(WatchEventsEventTypesEnumList.pipe(T.Query())),
-    privateExtendedProperty: S.optional(StringList.pipe(T.Query())),
-    syncToken: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "calendars/{calendarId}/events/watch",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "WatchEventsRequest",
-}) as any as S.Schema<WatchEventsRequest>;
+S.Struct({
+  "updatedMin": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(WatchEventsOrderByEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "singleEvents": S.optional(S.Boolean.pipe(T.Query())),
+  "maxAttendees": S.optional(S.Number.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "alwaysIncludeEmail": S.optional(S.Boolean.pipe(T.Query())),
+  "timeMin": S.optional(S.String.pipe(T.Query())),
+  "iCalUID": S.optional(S.String.pipe(T.Query())),
+  "timeMax": S.optional(S.String.pipe(T.Query())),
+  "calendarId": S.String.pipe(T.Label()),
+  "timeZone": S.optional(S.String.pipe(T.Query())),
+  "q": S.optional(S.String.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "showHiddenInvitations": S.optional(S.Boolean.pipe(T.Query())),
+  "sharedExtendedProperty": S.optional(StringList.pipe(T.Query())),
+  "eventTypes": S.optional(WatchEventsEventTypesEnumList.pipe(T.Query())),
+  "privateExtendedProperty": S.optional(StringList.pipe(T.Query())),
+  "syncToken": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"calendars/{calendarId}/events/watch","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "WatchEventsRequest" }) as any as S.Schema<WatchEventsRequest>;
 
 export interface WatchSettingsRequest {
   /** Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional. */
@@ -2502,28 +2043,15 @@ export interface WatchSettingsRequest {
   body?: Channel;
 }
 export const WatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    syncToken: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "users/me/settings/watch",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "WatchSettingsRequest",
-}) as any as S.Schema<WatchSettingsRequest>;
+S.Struct({
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "syncToken": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"users/me/settings/watch","baseUrl":"https://www.googleapis.com/calendar/v3/"})),
+).annotate({ identifier: "WatchSettingsRequest" }) as any as S.Schema<WatchSettingsRequest>;
 
-export type ClearCalendarsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ClearCalendarsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Clears a primary calendar. This operation deletes all events associated with the primary calendar of an account. */
 export const clearCalendars: API.OperationMethod<
   ClearCalendarsRequest,
@@ -2538,12 +2066,7 @@ export const clearCalendars: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAclError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAclError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an access control rule. */
 export const deleteAcl: API.OperationMethod<
   DeleteAclRequest,
@@ -2558,12 +2081,7 @@ export const deleteAcl: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCalendarListError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteCalendarListError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes a calendar from the user's calendar list. */
 export const deleteCalendarList: API.OperationMethod<
   DeleteCalendarListRequest,
@@ -2578,12 +2096,7 @@ export const deleteCalendarList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCalendarsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteCalendarsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a secondary calendar. Use calendars.clear for clearing all events on primary calendars. */
 export const deleteCalendars: API.OperationMethod<
   DeleteCalendarsRequest,
@@ -2598,12 +2111,7 @@ export const deleteCalendars: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an event. */
 export const deleteEvents: API.OperationMethod<
   DeleteEventsRequest,
@@ -2708,12 +2216,7 @@ export const getSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Imports an event. This operation is used to add a private copy of an existing event to a calendar. Only events with an eventType of default may be imported. Deprecated behavior: If a non-default event is imported, its type will be changed to default and any event-type-specific properties it may have will be dropped. */
 export const importEvents: API.OperationMethod<
   ImportEventsRequest,
@@ -2728,12 +2231,7 @@ export const importEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAclError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAclError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an access control rule. */
 export const insertAcl: API.OperationMethod<
   InsertAclRequest,
@@ -2748,12 +2246,7 @@ export const insertAcl: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCalendarListError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertCalendarListError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts an existing calendar into the user's calendar list. */
 export const insertCalendarList: API.OperationMethod<
   InsertCalendarListRequest,
@@ -2768,12 +2261,7 @@ export const insertCalendarList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCalendarsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertCalendarsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a secondary calendar. The authenticated user for the request is made the data owner of the new calendar. Note: We recommend to authenticate as the intended data owner of the calendar. You can use domain-wide delegation of authority to allow applications to act on behalf of a specific user. Don't use a service account for authentication. If you use a service account for authentication, the service account is the data owner, which can lead to unexpected behavior. For example, if a service account is the data owner, data ownership cannot be transferred. */
 export const insertCalendars: API.OperationMethod<
   InsertCalendarsRequest,
@@ -2788,12 +2276,7 @@ export const insertCalendars: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an event. */
 export const insertEvents: API.OperationMethod<
   InsertEventsRequest,
@@ -2821,11 +2304,7 @@ export const instancesEvents: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListAclError = NotFound | Forbidden | GcpOpError;
@@ -2841,11 +2320,7 @@ export const listAcl: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListCalendarListError = NotFound | Forbidden | GcpOpError;
@@ -2861,11 +2336,7 @@ export const listCalendarList: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListEventsError = NotFound | Forbidden | GcpOpError;
@@ -2881,11 +2352,7 @@ export const listEvents: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListSettingsError = NotFound | Forbidden | GcpOpError;
@@ -2901,19 +2368,10 @@ export const listSettings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
-export type MoveEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MoveEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be moved; birthday, focusTime, fromGmail, outOfOffice and workingLocation events cannot be moved. */
 export const moveEvents: API.OperationMethod<
   MoveEventsRequest,
@@ -2928,12 +2386,7 @@ export const moveEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAclError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAclError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an access control rule. This method supports patch semantics. */
 export const patchAcl: API.OperationMethod<
   PatchAclRequest,
@@ -2948,12 +2401,7 @@ export const patchAcl: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCalendarListError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchCalendarListError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing calendar on the user's calendar list. This method supports patch semantics. */
 export const patchCalendarList: API.OperationMethod<
   PatchCalendarListRequest,
@@ -2968,12 +2416,7 @@ export const patchCalendarList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCalendarsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchCalendarsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates metadata for a calendar. This method supports patch semantics. */
 export const patchCalendars: API.OperationMethod<
   PatchCalendarsRequest,
@@ -2988,12 +2431,7 @@ export const patchCalendars: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an event. This method supports patch semantics. */
 export const patchEvents: API.OperationMethod<
   PatchEventsRequest,
@@ -3008,12 +2446,7 @@ export const patchEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryFreebusyError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type QueryFreebusyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns free/busy information for a set of calendars. */
 export const queryFreebusy: API.OperationMethod<
   QueryFreebusyRequest,
@@ -3028,12 +2461,7 @@ export const queryFreebusy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QuickAddEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type QuickAddEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an event based on a simple text string. */
 export const quickAddEvents: API.OperationMethod<
   QuickAddEventsRequest,
@@ -3048,12 +2476,7 @@ export const quickAddEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StopChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Stop watching resources through this channel */
 export const stopChannels: API.OperationMethod<
   StopChannelsRequest,
@@ -3068,12 +2491,7 @@ export const stopChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TransferOwnershipCalendarsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TransferOwnershipCalendarsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Transfers a secondary calendar between users within a Google Workspace organization. Requires user authentication with Manage Calendars administrator privilege, and one of the following authorization scopes: - https://www.googleapis.com/auth/calendar - https://www.googleapis.com/auth/calendar.calendars In the request, set useAdminAccess to true. The secondary calendar must be active to be transferred. Transferring disabled or deleted calendars isn't supported. */
 export const transferOwnershipCalendars: API.OperationMethod<
   TransferOwnershipCalendarsRequest,
@@ -3088,12 +2506,7 @@ export const transferOwnershipCalendars: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAclError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAclError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an access control rule. */
 export const updateAcl: API.OperationMethod<
   UpdateAclRequest,
@@ -3108,12 +2521,7 @@ export const updateAcl: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCalendarListError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCalendarListError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing calendar on the user's calendar list. */
 export const updateCalendarList: API.OperationMethod<
   UpdateCalendarListRequest,
@@ -3128,12 +2536,7 @@ export const updateCalendarList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCalendarsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCalendarsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates metadata for a calendar. */
 export const updateCalendars: API.OperationMethod<
   UpdateCalendarsRequest,
@@ -3148,12 +2551,7 @@ export const updateCalendars: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an event. */
 export const updateEvents: API.OperationMethod<
   UpdateEventsRequest,
@@ -3168,12 +2566,7 @@ export const updateEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WatchAclError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WatchAclError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Watch for changes to ACL resources. */
 export const watchAcl: API.OperationMethod<
   WatchAclRequest,
@@ -3188,12 +2581,7 @@ export const watchAcl: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WatchCalendarListError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WatchCalendarListError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Watch for changes to CalendarList resources. */
 export const watchCalendarList: API.OperationMethod<
   WatchCalendarListRequest,
@@ -3208,12 +2596,7 @@ export const watchCalendarList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WatchEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WatchEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Watch for changes to Events resources. */
 export const watchEvents: API.OperationMethod<
   WatchEventsRequest,
@@ -3228,12 +2611,7 @@ export const watchEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WatchSettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WatchSettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Watch for changes to Settings resources. */
 export const watchSettings: API.OperationMethod<
   WatchSettingsRequest,
@@ -3247,3 +2625,4 @@ export const watchSettings: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

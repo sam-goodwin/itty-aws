@@ -13,57 +13,55 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A representation of filter path. */
 export interface PathFilter {
@@ -71,9 +69,9 @@ export interface PathFilter {
   regexes?: StringList;
 }
 export const PathFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regexes: S.optional(StringList),
-  }),
+S.Struct({
+  "regexes": S.optional(StringList),
+}),
 ).annotate({ identifier: "PathFilter" }) as any as S.Schema<PathFilter>;
 
 export interface CloneVersionRequest {
@@ -87,15 +85,13 @@ export interface CloneVersionRequest {
   finalize?: boolean;
 }
 export const CloneVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceVersion: S.optional(S.String),
-    include: S.optional(PathFilter),
-    exclude: S.optional(PathFilter),
-    finalize: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CloneVersionRequest",
-}) as any as S.Schema<CloneVersionRequest>;
+S.Struct({
+  "sourceVersion": S.optional(S.String),
+  "include": S.optional(PathFilter),
+  "exclude": S.optional(PathFilter),
+  "finalize": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CloneVersionRequest" }) as any as S.Schema<CloneVersionRequest>;
 
 export interface CloneProjectsSitesVersionsRequest {
   /** Required. The target site for the cloned version, in the format: sites/ SITE_ID */
@@ -104,30 +100,17 @@ export interface CloneProjectsSitesVersionsRequest {
   body?: CloneVersionRequest;
 }
 export const CloneProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(CloneVersionRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/versions:clone",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CloneProjectsSitesVersionsRequest",
-}) as any as S.Schema<CloneProjectsSitesVersionsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CloneVersionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/versions:clone","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CloneProjectsSitesVersionsRequest" }) as any as S.Schema<CloneProjectsSitesVersionsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -139,11 +122,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -160,13 +143,13 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    error: S.optional(Status),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "error": S.optional(Status),
+  "metadata": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface CloneSitesVersionsRequest {
@@ -176,31 +159,16 @@ export interface CloneSitesVersionsRequest {
   body?: CloneVersionRequest;
 }
 export const CloneSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(CloneVersionRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/versions:clone",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CloneSitesVersionsRequest",
-}) as any as S.Schema<CloneSitesVersionsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CloneVersionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/versions:clone","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CloneSitesVersionsRequest" }) as any as S.Schema<CloneSitesVersionsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
-export type SiteTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "DEFAULT_SITE"
-  | "USER_SITE"
-  | (string & {});
+export type SiteTypeEnum = "TYPE_UNSPECIFIED" | "DEFAULT_SITE" | "USER_SITE";
 export const SiteTypeEnum = /*@__PURE__*/ S.String;
 
 /** A `Site` represents a Firebase Hosting site. */
@@ -217,13 +185,13 @@ export interface Site {
   type?: SiteTypeEnum;
 }
 export const Site = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultUrl: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    appId: S.optional(S.String),
-    type: S.optional(SiteTypeEnum),
-  }),
+S.Struct({
+  "defaultUrl": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "appId": S.optional(S.String),
+  "type": S.optional(SiteTypeEnum),
+}),
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 export interface CreateProjectsSitesRequest {
@@ -237,21 +205,13 @@ export interface CreateProjectsSitesRequest {
   body?: Site;
 }
 export const CreateProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    siteId: S.optional(S.String.pipe(T.Query())),
-    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(Site.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/sites",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsSitesRequest",
-}) as any as S.Schema<CreateProjectsSitesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "siteId": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Site.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/sites","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsSitesRequest" }) as any as S.Schema<CreateProjectsSitesRequest>;
 
 /** Contains metadata about the user who performed an action, such as creating a release or finalizing a version. */
 export interface ActingUser {
@@ -261,18 +221,13 @@ export interface ActingUser {
   imageUrl?: string;
 }
 export const ActingUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    imageUrl: S.optional(S.String),
-  }),
+S.Struct({
+  "email": S.optional(S.String),
+  "imageUrl": S.optional(S.String),
+}),
 ).annotate({ identifier: "ActingUser" }) as any as S.Schema<ActingUser>;
 
-export type ReleaseTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "DEPLOY"
-  | "ROLLBACK"
-  | "SITE_DISABLE"
-  | (string & {});
+export type ReleaseTypeEnum = "TYPE_UNSPECIFIED" | "DEPLOY" | "ROLLBACK" | "SITE_DISABLE";
 export const ReleaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers. */
@@ -285,17 +240,15 @@ export interface Header {
   glob?: string;
 }
 export const Header = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regex: S.optional(S.String),
-    headers: S.optional(StringMap),
-    glob: S.optional(S.String),
-  }),
+S.Struct({
+  "regex": S.optional(S.String),
+  "headers": S.optional(StringMap),
+  "glob": S.optional(S.String),
+}),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
 export type HeaderList = ReadonlyArray<Header>;
-export const HeaderList = /*@__PURE__*/ S.Array(
-  Header,
-) as any as S.Schema<HeaderList>;
+export const HeaderList = /*@__PURE__*/ S.Array(Header) as any as S.Schema<HeaderList>;
 
 /** A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error). */
 export interface CloudRunRewrite {
@@ -307,14 +260,12 @@ export interface CloudRunRewrite {
   tag?: string;
 }
 export const CloudRunRewrite = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceId: S.optional(S.String),
-    region: S.optional(S.String),
-    tag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudRunRewrite",
-}) as any as S.Schema<CloudRunRewrite>;
+S.Struct({
+  "serviceId": S.optional(S.String),
+  "region": S.optional(S.String),
+  "tag": S.optional(S.String),
+}),
+).annotate({ identifier: "CloudRunRewrite" }) as any as S.Schema<CloudRunRewrite>;
 
 /** A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL. */
 export interface Rewrite {
@@ -334,30 +285,24 @@ export interface Rewrite {
   function?: string;
 }
 export const Rewrite = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dynamicLinks: S.optional(S.Boolean),
-    functionRegion: S.optional(S.String),
-    regex: S.optional(S.String),
-    run: S.optional(CloudRunRewrite),
-    glob: S.optional(S.String),
-    path: S.optional(S.String),
-    function: S.optional(S.String),
-  }),
+S.Struct({
+  "dynamicLinks": S.optional(S.Boolean),
+  "functionRegion": S.optional(S.String),
+  "regex": S.optional(S.String),
+  "run": S.optional(CloudRunRewrite),
+  "glob": S.optional(S.String),
+  "path": S.optional(S.String),
+  "function": S.optional(S.String),
+}),
 ).annotate({ identifier: "Rewrite" }) as any as S.Schema<Rewrite>;
 
 export type RewriteList = ReadonlyArray<Rewrite>;
-export const RewriteList = /*@__PURE__*/ S.Array(
-  Rewrite,
-) as any as S.Schema<RewriteList>;
+export const RewriteList = /*@__PURE__*/ S.Array(Rewrite) as any as S.Schema<RewriteList>;
 
-export type ServingConfigTrailingSlashBehaviorEnum =
-  | "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED"
-  | "ADD"
-  | "REMOVE"
-  | (string & {});
+export type ServingConfigTrailingSlashBehaviorEnum = "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED" | "ADD" | "REMOVE";
 export const ServingConfigTrailingSlashBehaviorEnum = /*@__PURE__*/ S.String;
 
-export type ServingConfigAppAssociationEnum = "AUTO" | "NONE" | (string & {});
+export type ServingConfigAppAssociationEnum = "AUTO" | "NONE";
 export const ServingConfigAppAssociationEnum = /*@__PURE__*/ S.String;
 
 /** If provided, i18n rewrites are enabled. */
@@ -366,9 +311,9 @@ export interface I18nConfig {
   root?: string;
 }
 export const I18nConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    root: S.optional(S.String),
-  }),
+S.Struct({
+  "root": S.optional(S.String),
+}),
 ).annotate({ identifier: "I18nConfig" }) as any as S.Schema<I18nConfig>;
 
 /** A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path. */
@@ -383,18 +328,16 @@ export interface Redirect {
   glob?: string;
 }
 export const Redirect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statusCode: S.optional(S.Number),
-    regex: S.optional(S.String),
-    location: S.optional(S.String),
-    glob: S.optional(S.String),
-  }),
+S.Struct({
+  "statusCode": S.optional(S.Number),
+  "regex": S.optional(S.String),
+  "location": S.optional(S.String),
+  "glob": S.optional(S.String),
+}),
 ).annotate({ identifier: "Redirect" }) as any as S.Schema<Redirect>;
 
 export type RedirectList = ReadonlyArray<Redirect>;
-export const RedirectList = /*@__PURE__*/ S.Array(
-  Redirect,
-) as any as S.Schema<RedirectList>;
+export const RedirectList = /*@__PURE__*/ S.Array(Redirect) as any as S.Schema<RedirectList>;
 
 /** The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order). */
 export interface ServingConfig {
@@ -414,26 +357,18 @@ export interface ServingConfig {
   redirects?: RedirectList;
 }
 export const ServingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.optional(HeaderList),
-    cleanUrls: S.optional(S.Boolean),
-    rewrites: S.optional(RewriteList),
-    trailingSlashBehavior: S.optional(ServingConfigTrailingSlashBehaviorEnum),
-    appAssociation: S.optional(ServingConfigAppAssociationEnum),
-    i18n: S.optional(I18nConfig),
-    redirects: S.optional(RedirectList),
-  }),
+S.Struct({
+  "headers": S.optional(HeaderList),
+  "cleanUrls": S.optional(S.Boolean),
+  "rewrites": S.optional(RewriteList),
+  "trailingSlashBehavior": S.optional(ServingConfigTrailingSlashBehaviorEnum),
+  "appAssociation": S.optional(ServingConfigAppAssociationEnum),
+  "i18n": S.optional(I18nConfig),
+  "redirects": S.optional(RedirectList),
+}),
 ).annotate({ identifier: "ServingConfig" }) as any as S.Schema<ServingConfig>;
 
-export type VersionStatusEnum =
-  | "VERSION_STATUS_UNSPECIFIED"
-  | "CREATED"
-  | "FINALIZED"
-  | "DELETED"
-  | "ABANDONED"
-  | "EXPIRED"
-  | "CLONING"
-  | (string & {});
+export type VersionStatusEnum = "VERSION_STATUS_UNSPECIFIED" | "CREATED" | "FINALIZED" | "DELETED" | "ABANDONED" | "EXPIRED" | "CLONING";
 export const VersionStatusEnum = /*@__PURE__*/ S.String;
 
 /** A `Version` is a configuration and a collection of static files which determine how a site is displayed. */
@@ -464,20 +399,20 @@ export interface Version {
   labels?: StringMap;
 }
 export const Version = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionBytes: S.optional(S.String),
-    fileCount: S.optional(S.String),
-    config: S.optional(ServingConfig),
-    finalizeUser: S.optional(ActingUser),
-    createTime: S.optional(S.String),
-    createUser: S.optional(ActingUser),
-    deleteUser: S.optional(ActingUser),
-    finalizeTime: S.optional(S.String),
-    status: S.optional(VersionStatusEnum),
-    deleteTime: S.optional(S.String),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "versionBytes": S.optional(S.String),
+  "fileCount": S.optional(S.String),
+  "config": S.optional(ServingConfig),
+  "finalizeUser": S.optional(ActingUser),
+  "createTime": S.optional(S.String),
+  "createUser": S.optional(ActingUser),
+  "deleteUser": S.optional(ActingUser),
+  "finalizeTime": S.optional(S.String),
+  "status": S.optional(VersionStatusEnum),
+  "deleteTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
 /** A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time. */
@@ -496,14 +431,14 @@ export interface Release {
   version?: Version;
 }
 export const Release = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    releaseTime: S.optional(S.String),
-    releaseUser: S.optional(ActingUser),
-    type: S.optional(ReleaseTypeEnum),
-    message: S.optional(S.String),
-    name: S.optional(S.String),
-    version: S.optional(Version),
-  }),
+S.Struct({
+  "releaseTime": S.optional(S.String),
+  "releaseUser": S.optional(ActingUser),
+  "type": S.optional(ReleaseTypeEnum),
+  "message": S.optional(S.String),
+  "name": S.optional(S.String),
+  "version": S.optional(Version),
+}),
 ).annotate({ identifier: "Release" }) as any as S.Schema<Release>;
 
 /** A `Channel` represents a stream of releases for a site. All sites have a default `live` channel that serves content to the Firebase-provided subdomains and any connected custom domains. */
@@ -528,17 +463,17 @@ export interface Channel {
   ttl?: string;
 }
 export const Channel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    release: S.optional(Release),
-    retainedReleaseCount: S.optional(S.Number),
-    labels: S.optional(StringMap),
-    expireTime: S.optional(S.String),
-    name: S.optional(S.String),
-    ttl: S.optional(S.String),
-  }),
+S.Struct({
+  "url": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "release": S.optional(Release),
+  "retainedReleaseCount": S.optional(S.Number),
+  "labels": S.optional(StringMap),
+  "expireTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "ttl": S.optional(S.String),
+}),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
 export interface CreateProjectsSitesChannelsRequest {
@@ -550,20 +485,12 @@ export interface CreateProjectsSitesChannelsRequest {
   body?: Channel;
 }
 export const CreateProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channelId: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/channels",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsSitesChannelsRequest",
-}) as any as S.Schema<CreateProjectsSitesChannelsRequest>;
+S.Struct({
+  "channelId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/channels","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsSitesChannelsRequest" }) as any as S.Schema<CreateProjectsSitesChannelsRequest>;
 
 export interface CreateProjectsSitesChannelsReleasesRequest {
   /** Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
@@ -573,35 +500,18 @@ export interface CreateProjectsSitesChannelsReleasesRequest {
   /** Request body */
   body?: Release;
 }
-export const CreateProjectsSitesChannelsReleasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      versionName: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Release.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/releases",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsSitesChannelsReleasesRequest",
-  }) as any as S.Schema<CreateProjectsSitesChannelsReleasesRequest>;
+export const CreateProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "versionName": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Release.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/releases","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsSitesChannelsReleasesRequest" }) as any as S.Schema<CreateProjectsSitesChannelsReleasesRequest>;
 
 export type StatusList = ReadonlyArray<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(
-  Status,
-) as any as S.Schema<StatusList>;
+export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
-export type CertificateTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "TEMPORARY"
-  | "GROUPED"
-  | "PROJECT_GROUPED"
-  | "DEDICATED"
-  | (string & {});
+export type CertificateTypeEnum = "TYPE_UNSPECIFIED" | "TEMPORARY" | "GROUPED" | "PROJECT_GROUPED" | "DEDICATED";
 export const CertificateTypeEnum = /*@__PURE__*/ S.String;
 
 /** A file you can add to your existing, non-Hosting hosting service that confirms your intent to allow Hosting's Certificate Authorities to create an SSL certificate for your domain. */
@@ -618,30 +528,19 @@ export interface HttpUpdate {
   checkError?: Status;
 }
 export const HttpUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discovered: S.optional(S.String),
-    lastCheckTime: S.optional(S.String),
-    path: S.optional(S.String),
-    desired: S.optional(S.String),
-    checkError: S.optional(Status),
-  }),
+S.Struct({
+  "discovered": S.optional(S.String),
+  "lastCheckTime": S.optional(S.String),
+  "path": S.optional(S.String),
+  "desired": S.optional(S.String),
+  "checkError": S.optional(Status),
+}),
 ).annotate({ identifier: "HttpUpdate" }) as any as S.Schema<HttpUpdate>;
 
-export type DnsRecordTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "A"
-  | "CNAME"
-  | "TXT"
-  | "AAAA"
-  | "CAA"
-  | (string & {});
+export type DnsRecordTypeEnum = "TYPE_UNSPECIFIED" | "A" | "CNAME" | "TXT" | "AAAA" | "CAA";
 export const DnsRecordTypeEnum = /*@__PURE__*/ S.String;
 
-export type DnsRecordRequiredActionEnum =
-  | "NONE"
-  | "ADD"
-  | "REMOVE"
-  | (string & {});
+export type DnsRecordRequiredActionEnum = "NONE" | "ADD" | "REMOVE";
 export const DnsRecordRequiredActionEnum = /*@__PURE__*/ S.String;
 
 /** DNS records are resource records that define how systems and services should behave when handling requests for a domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain name (such as your Hosting site files). */
@@ -656,18 +555,16 @@ export interface DnsRecord {
   requiredAction?: DnsRecordRequiredActionEnum;
 }
 export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainName: S.optional(S.String),
-    rdata: S.optional(S.String),
-    type: S.optional(DnsRecordTypeEnum),
-    requiredAction: S.optional(DnsRecordRequiredActionEnum),
-  }),
+S.Struct({
+  "domainName": S.optional(S.String),
+  "rdata": S.optional(S.String),
+  "type": S.optional(DnsRecordTypeEnum),
+  "requiredAction": S.optional(DnsRecordRequiredActionEnum),
+}),
 ).annotate({ identifier: "DnsRecord" }) as any as S.Schema<DnsRecord>;
 
 export type DnsRecordList = ReadonlyArray<DnsRecord>;
-export const DnsRecordList = /*@__PURE__*/ S.Array(
-  DnsRecord,
-) as any as S.Schema<DnsRecordList>;
+export const DnsRecordList = /*@__PURE__*/ S.Array(DnsRecord) as any as S.Schema<DnsRecordList>;
 
 /** A set of DNS records relevant to the setup and maintenance of a custom domain in Firebase Hosting. */
 export interface DnsRecordSet {
@@ -679,17 +576,15 @@ export interface DnsRecordSet {
   checkError?: Status;
 }
 export const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    records: S.optional(DnsRecordList),
-    domainName: S.optional(S.String),
-    checkError: S.optional(Status),
-  }),
+S.Struct({
+  "records": S.optional(DnsRecordList),
+  "domainName": S.optional(S.String),
+  "checkError": S.optional(Status),
+}),
 ).annotate({ identifier: "DnsRecordSet" }) as any as S.Schema<DnsRecordSet>;
 
 export type DnsRecordSetList = ReadonlyArray<DnsRecordSet>;
-export const DnsRecordSetList = /*@__PURE__*/ S.Array(
-  DnsRecordSet,
-) as any as S.Schema<DnsRecordSetList>;
+export const DnsRecordSetList = /*@__PURE__*/ S.Array(DnsRecordSet) as any as S.Schema<DnsRecordSetList>;
 
 /** A set of DNS record updates that you should make to allow Hosting to serve secure content in response to requests against your domain name. These updates present the current state of your domain name's DNS records when Hosting last queried them, and the desired set of records that Hosting needs to see before your custom domain can be fully active. */
 export interface DnsUpdates {
@@ -701,11 +596,11 @@ export interface DnsUpdates {
   desired?: DnsRecordSetList;
 }
 export const DnsUpdates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkTime: S.optional(S.String),
-    discovered: S.optional(DnsRecordSetList),
-    desired: S.optional(DnsRecordSetList),
-  }),
+S.Struct({
+  "checkTime": S.optional(S.String),
+  "discovered": S.optional(DnsRecordSetList),
+  "desired": S.optional(DnsRecordSetList),
+}),
 ).annotate({ identifier: "DnsUpdates" }) as any as S.Schema<DnsUpdates>;
 
 /** A set of ACME challenges you can use to allow Hosting to create an SSL certificate for your domain name before directing traffic to Hosting servers. Use either the DNS or HTTP challenge; it's not necessary to provide both. */
@@ -716,23 +611,13 @@ export interface CertVerification {
   dns?: DnsUpdates;
 }
 export const CertVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    http: S.optional(HttpUpdate),
-    dns: S.optional(DnsUpdates),
-  }),
-).annotate({
-  identifier: "CertVerification",
-}) as any as S.Schema<CertVerification>;
+S.Struct({
+  "http": S.optional(HttpUpdate),
+  "dns": S.optional(DnsUpdates),
+}),
+).annotate({ identifier: "CertVerification" }) as any as S.Schema<CertVerification>;
 
-export type CertificateStateEnum =
-  | "CERT_STATE_UNSPECIFIED"
-  | "CERT_PREPARING"
-  | "CERT_VALIDATING"
-  | "CERT_PROPAGATING"
-  | "CERT_ACTIVE"
-  | "CERT_EXPIRING_SOON"
-  | "CERT_EXPIRED"
-  | (string & {});
+export type CertificateStateEnum = "CERT_STATE_UNSPECIFIED" | "CERT_PREPARING" | "CERT_VALIDATING" | "CERT_PROPAGATING" | "CERT_ACTIVE" | "CERT_EXPIRING_SOON" | "CERT_EXPIRED";
 export const CertificateStateEnum = /*@__PURE__*/ S.String;
 
 /** An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate` can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one. */
@@ -751,44 +636,23 @@ export interface Certificate {
   createTime?: string;
 }
 export const Certificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issues: S.optional(StatusList),
-    type: S.optional(CertificateTypeEnum),
-    verification: S.optional(CertVerification),
-    state: S.optional(CertificateStateEnum),
-    expireTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "issues": S.optional(StatusList),
+  "type": S.optional(CertificateTypeEnum),
+  "verification": S.optional(CertVerification),
+  "state": S.optional(CertificateStateEnum),
+  "expireTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
-export type CustomDomainCertPreferenceEnum =
-  | "TYPE_UNSPECIFIED"
-  | "TEMPORARY"
-  | "GROUPED"
-  | "PROJECT_GROUPED"
-  | "DEDICATED"
-  | (string & {});
+export type CustomDomainCertPreferenceEnum = "TYPE_UNSPECIFIED" | "TEMPORARY" | "GROUPED" | "PROJECT_GROUPED" | "DEDICATED";
 export const CustomDomainCertPreferenceEnum = /*@__PURE__*/ S.String;
 
-export type CustomDomainHostStateEnum =
-  | "HOST_STATE_UNSPECIFIED"
-  | "HOST_UNHOSTED"
-  | "HOST_UNREACHABLE"
-  | "HOST_MISMATCH"
-  | "HOST_CONFLICT"
-  | "HOST_ACTIVE"
-  | (string & {});
+export type CustomDomainHostStateEnum = "HOST_STATE_UNSPECIFIED" | "HOST_UNHOSTED" | "HOST_UNREACHABLE" | "HOST_MISMATCH" | "HOST_CONFLICT" | "HOST_ACTIVE";
 export const CustomDomainHostStateEnum = /*@__PURE__*/ S.String;
 
-export type CustomDomainOwnershipStateEnum =
-  | "OWNERSHIP_STATE_UNSPECIFIED"
-  | "OWNERSHIP_MISSING"
-  | "OWNERSHIP_UNREACHABLE"
-  | "OWNERSHIP_MISMATCH"
-  | "OWNERSHIP_CONFLICT"
-  | "OWNERSHIP_PENDING"
-  | "OWNERSHIP_ACTIVE"
-  | (string & {});
+export type CustomDomainOwnershipStateEnum = "OWNERSHIP_STATE_UNSPECIFIED" | "OWNERSHIP_MISSING" | "OWNERSHIP_UNREACHABLE" | "OWNERSHIP_MISMATCH" | "OWNERSHIP_CONFLICT" | "OWNERSHIP_PENDING" | "OWNERSHIP_ACTIVE";
 export const CustomDomainOwnershipStateEnum = /*@__PURE__*/ S.String;
 
 /** A `CustomDomain` is an entity that links a domain name to a Firebase Hosting site. Add a `CustomDomain` to your site to allow Hosting to serve the site's content in response to requests against your domain name. */
@@ -827,24 +691,24 @@ export interface CustomDomain {
   issues?: StatusList;
 }
 export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cert: S.optional(Certificate),
-    certPreference: S.optional(CustomDomainCertPreferenceEnum),
-    hostState: S.optional(CustomDomainHostStateEnum),
-    reconciling: S.optional(S.Boolean),
-    expireTime: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    ownershipState: S.optional(CustomDomainOwnershipStateEnum),
-    annotations: S.optional(StringMap),
-    updateTime: S.optional(S.String),
-    etag: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    requiredDnsUpdates: S.optional(DnsUpdates),
-    redirectTarget: S.optional(S.String),
-    issues: S.optional(StatusList),
-  }),
+S.Struct({
+  "cert": S.optional(Certificate),
+  "certPreference": S.optional(CustomDomainCertPreferenceEnum),
+  "hostState": S.optional(CustomDomainHostStateEnum),
+  "reconciling": S.optional(S.Boolean),
+  "expireTime": S.optional(S.String),
+  "deleteTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "ownershipState": S.optional(CustomDomainOwnershipStateEnum),
+  "annotations": S.optional(StringMap),
+  "updateTime": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "requiredDnsUpdates": S.optional(DnsUpdates),
+  "redirectTarget": S.optional(S.String),
+  "issues": S.optional(StatusList),
+}),
 ).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
 
 export interface CreateProjectsSitesCustomDomainsRequest {
@@ -857,28 +721,16 @@ export interface CreateProjectsSitesCustomDomainsRequest {
   /** Request body */
   body?: CustomDomain;
 }
-export const CreateProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customDomainId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(CustomDomain.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/customDomains",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsSitesCustomDomainsRequest",
-}) as any as S.Schema<CreateProjectsSitesCustomDomainsRequest>;
+export const CreateProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "customDomainId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(CustomDomain.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/customDomains","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsSitesCustomDomainsRequest" }) as any as S.Schema<CreateProjectsSitesCustomDomainsRequest>;
 
-export type DomainRedirectTypeEnum =
-  | "REDIRECT_TYPE_UNSPECIFIED"
-  | "MOVED_PERMANENTLY"
-  | (string & {});
+export type DomainRedirectTypeEnum = "REDIRECT_TYPE_UNSPECIFIED" | "MOVED_PERMANENTLY";
 export const DomainRedirectTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration. */
@@ -889,21 +741,13 @@ export interface DomainRedirect {
   type?: DomainRedirectTypeEnum;
 }
 export const DomainRedirect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainName: S.optional(S.String),
-    type: S.optional(DomainRedirectTypeEnum),
-  }),
+S.Struct({
+  "domainName": S.optional(S.String),
+  "type": S.optional(DomainRedirectTypeEnum),
+}),
 ).annotate({ identifier: "DomainRedirect" }) as any as S.Schema<DomainRedirect>;
 
-export type DomainProvisioningCertStatusEnum =
-  | "CERT_STATUS_UNSPECIFIED"
-  | "CERT_PENDING"
-  | "CERT_MISSING"
-  | "CERT_PROCESSING"
-  | "CERT_PROPAGATING"
-  | "CERT_ACTIVE"
-  | "CERT_ERROR"
-  | (string & {});
+export type DomainProvisioningCertStatusEnum = "CERT_STATUS_UNSPECIFIED" | "CERT_PENDING" | "CERT_MISSING" | "CERT_PROCESSING" | "CERT_PROPAGATING" | "CERT_ACTIVE" | "CERT_ERROR";
 export const DomainProvisioningCertStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a DNS certificate challenge. */
@@ -914,13 +758,11 @@ export interface CertDnsChallenge {
   token?: string;
 }
 export const CertDnsChallenge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainName: S.optional(S.String),
-    token: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertDnsChallenge",
-}) as any as S.Schema<CertDnsChallenge>;
+S.Struct({
+  "domainName": S.optional(S.String),
+  "token": S.optional(S.String),
+}),
+).annotate({ identifier: "CertDnsChallenge" }) as any as S.Schema<CertDnsChallenge>;
 
 /** Represents an HTTP certificate challenge. */
 export interface CertHttpChallenge {
@@ -930,22 +772,13 @@ export interface CertHttpChallenge {
   token?: string;
 }
 export const CertHttpChallenge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    token: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertHttpChallenge",
-}) as any as S.Schema<CertHttpChallenge>;
+S.Struct({
+  "path": S.optional(S.String),
+  "token": S.optional(S.String),
+}),
+).annotate({ identifier: "CertHttpChallenge" }) as any as S.Schema<CertHttpChallenge>;
 
-export type DomainProvisioningDnsStatusEnum =
-  | "DNS_STATUS_UNSPECIFIED"
-  | "DNS_PENDING"
-  | "DNS_MISSING"
-  | "DNS_PARTIAL_MATCH"
-  | "DNS_MATCH"
-  | "DNS_EXTRANEOUS_MATCH"
-  | (string & {});
+export type DomainProvisioningDnsStatusEnum = "DNS_STATUS_UNSPECIFIED" | "DNS_PENDING" | "DNS_MISSING" | "DNS_PARTIAL_MATCH" | "DNS_MATCH" | "DNS_EXTRANEOUS_MATCH";
 export const DomainProvisioningDnsStatusEnum = /*@__PURE__*/ S.String;
 
 /** The current certificate provisioning status information for a domain. */
@@ -968,27 +801,19 @@ export interface DomainProvisioning {
   dnsFetchTime?: string;
 }
 export const DomainProvisioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certStatus: S.optional(DomainProvisioningCertStatusEnum),
-    discoveredIps: S.optional(StringList),
-    certChallengeDns: S.optional(CertDnsChallenge),
-    expectedIps: S.optional(StringList),
-    certChallengeHttp: S.optional(CertHttpChallenge),
-    certChallengeDiscoveredTxt: S.optional(StringList),
-    dnsStatus: S.optional(DomainProvisioningDnsStatusEnum),
-    dnsFetchTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DomainProvisioning",
-}) as any as S.Schema<DomainProvisioning>;
+S.Struct({
+  "certStatus": S.optional(DomainProvisioningCertStatusEnum),
+  "discoveredIps": S.optional(StringList),
+  "certChallengeDns": S.optional(CertDnsChallenge),
+  "expectedIps": S.optional(StringList),
+  "certChallengeHttp": S.optional(CertHttpChallenge),
+  "certChallengeDiscoveredTxt": S.optional(StringList),
+  "dnsStatus": S.optional(DomainProvisioningDnsStatusEnum),
+  "dnsFetchTime": S.optional(S.String),
+}),
+).annotate({ identifier: "DomainProvisioning" }) as any as S.Schema<DomainProvisioning>;
 
-export type DomainStatusEnum =
-  | "DOMAIN_STATUS_UNSPECIFIED"
-  | "DOMAIN_CHANGE_PENDING"
-  | "DOMAIN_ACTIVE"
-  | "DOMAIN_VERIFICATION_REQUIRED"
-  | "DOMAIN_VERIFICATION_LOST"
-  | (string & {});
+export type DomainStatusEnum = "DOMAIN_STATUS_UNSPECIFIED" | "DOMAIN_CHANGE_PENDING" | "DOMAIN_ACTIVE" | "DOMAIN_VERIFICATION_REQUIRED" | "DOMAIN_VERIFICATION_LOST";
 export const DomainStatusEnum = /*@__PURE__*/ S.String;
 
 /** The intended behavior and status information of a domain. */
@@ -1007,14 +832,14 @@ export interface Domain {
   status?: DomainStatusEnum;
 }
 export const Domain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    site: S.optional(S.String),
-    domainName: S.optional(S.String),
-    domainRedirect: S.optional(DomainRedirect),
-    provisioning: S.optional(DomainProvisioning),
-    updateTime: S.optional(S.String),
-    status: S.optional(DomainStatusEnum),
-  }),
+S.Struct({
+  "site": S.optional(S.String),
+  "domainName": S.optional(S.String),
+  "domainRedirect": S.optional(DomainRedirect),
+  "provisioning": S.optional(DomainProvisioning),
+  "updateTime": S.optional(S.String),
+  "status": S.optional(DomainStatusEnum),
+}),
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 
 export interface CreateProjectsSitesDomainsRequest {
@@ -1024,19 +849,11 @@ export interface CreateProjectsSitesDomainsRequest {
   body?: Domain;
 }
 export const CreateProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Domain.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/domains",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsSitesDomainsRequest",
-}) as any as S.Schema<CreateProjectsSitesDomainsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Domain.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/domains","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsSitesDomainsRequest" }) as any as S.Schema<CreateProjectsSitesDomainsRequest>;
 
 export interface CreateProjectsSitesReleasesRequest {
   /** Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
@@ -1047,20 +864,12 @@ export interface CreateProjectsSitesReleasesRequest {
   body?: Release;
 }
 export const CreateProjectsSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    versionName: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Release.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/releases",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsSitesReleasesRequest",
-}) as any as S.Schema<CreateProjectsSitesReleasesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "versionName": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Release.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/releases","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsSitesReleasesRequest" }) as any as S.Schema<CreateProjectsSitesReleasesRequest>;
 
 export interface CreateProjectsSitesVersionsRequest {
   /** Required. The site in which to create the version, in the format: sites/ SITE_ID */
@@ -1073,21 +882,13 @@ export interface CreateProjectsSitesVersionsRequest {
   body?: Version;
 }
 export const CreateProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    sizeBytes: S.optional(S.String.pipe(T.Query())),
-    versionId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Version.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/versions",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsSitesVersionsRequest",
-}) as any as S.Schema<CreateProjectsSitesVersionsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "sizeBytes": S.optional(S.String.pipe(T.Query())),
+  "versionId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Version.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/versions","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsSitesVersionsRequest" }) as any as S.Schema<CreateProjectsSitesVersionsRequest>;
 
 export interface CreateSitesChannelsRequest {
   /** Required. The site in which to create this channel, in the format: sites/ SITE_ID */
@@ -1098,20 +899,12 @@ export interface CreateSitesChannelsRequest {
   body?: Channel;
 }
 export const CreateSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    channelId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/channels",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateSitesChannelsRequest",
-}) as any as S.Schema<CreateSitesChannelsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "channelId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/channels","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateSitesChannelsRequest" }) as any as S.Schema<CreateSitesChannelsRequest>;
 
 export interface CreateSitesChannelsReleasesRequest {
   /** Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
@@ -1122,20 +915,12 @@ export interface CreateSitesChannelsReleasesRequest {
   body?: Release;
 }
 export const CreateSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    versionName: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Release.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/releases",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateSitesChannelsReleasesRequest",
-}) as any as S.Schema<CreateSitesChannelsReleasesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "versionName": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Release.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/releases","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateSitesChannelsReleasesRequest" }) as any as S.Schema<CreateSitesChannelsReleasesRequest>;
 
 export interface CreateSitesDomainsRequest {
   /** Required. The parent to create the domain association for, in the format: sites/site-name */
@@ -1144,19 +929,11 @@ export interface CreateSitesDomainsRequest {
   body?: Domain;
 }
 export const CreateSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Domain.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/domains",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateSitesDomainsRequest",
-}) as any as S.Schema<CreateSitesDomainsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Domain.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/domains","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateSitesDomainsRequest" }) as any as S.Schema<CreateSitesDomainsRequest>;
 
 export interface CreateSitesReleasesRequest {
   /** Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
@@ -1167,20 +944,12 @@ export interface CreateSitesReleasesRequest {
   body?: Release;
 }
 export const CreateSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    versionName: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Release.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/releases",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateSitesReleasesRequest",
-}) as any as S.Schema<CreateSitesReleasesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "versionName": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Release.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/releases","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateSitesReleasesRequest" }) as any as S.Schema<CreateSitesReleasesRequest>;
 
 export interface CreateSitesVersionsRequest {
   /** Required. The site in which to create the version, in the format: sites/ SITE_ID */
@@ -1193,63 +962,39 @@ export interface CreateSitesVersionsRequest {
   body?: Version;
 }
 export const CreateSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    sizeBytes: S.optional(S.String.pipe(T.Query())),
-    versionId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Version.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/versions",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateSitesVersionsRequest",
-}) as any as S.Schema<CreateSitesVersionsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "sizeBytes": S.optional(S.String.pipe(T.Query())),
+  "versionId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Version.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/versions","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "CreateSitesVersionsRequest" }) as any as S.Schema<CreateSitesVersionsRequest>;
 
 export interface DeleteProjectsSitesRequest {
   /** Required. The fully-qualified resource name for the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](../projects#Site.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   name: string;
 }
 export const DeleteProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsSitesRequest",
-}) as any as S.Schema<DeleteProjectsSitesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsSitesRequest" }) as any as S.Schema<DeleteProjectsSitesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
 export const DeleteProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsSitesChannelsRequest",
-}) as any as S.Schema<DeleteProjectsSitesChannelsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsSitesChannelsRequest" }) as any as S.Schema<DeleteProjectsSitesChannelsRequest>;
 
 export interface DeleteProjectsSitesCustomDomainsRequest {
   /** If true, the request succeeds even if the `CustomDomain` doesn't exist. */
@@ -1261,131 +1006,74 @@ export interface DeleteProjectsSitesCustomDomainsRequest {
   /** Required. The name of the `CustomDomain` to delete. */
   name: string;
 }
-export const DeleteProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      etag: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsSitesCustomDomainsRequest",
-}) as any as S.Schema<DeleteProjectsSitesCustomDomainsRequest>;
+export const DeleteProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsSitesCustomDomainsRequest" }) as any as S.Schema<DeleteProjectsSitesCustomDomainsRequest>;
 
 export interface DeleteProjectsSitesDomainsRequest {
   /** Required. The name of the domain association to delete. */
   name: string;
 }
 export const DeleteProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsSitesDomainsRequest",
-}) as any as S.Schema<DeleteProjectsSitesDomainsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsSitesDomainsRequest" }) as any as S.Schema<DeleteProjectsSitesDomainsRequest>;
 
 export interface DeleteProjectsSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
 export const DeleteProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsSitesVersionsRequest",
-}) as any as S.Schema<DeleteProjectsSitesVersionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsSitesVersionsRequest" }) as any as S.Schema<DeleteProjectsSitesVersionsRequest>;
 
 export interface DeleteSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
 export const DeleteSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteSitesChannelsRequest",
-}) as any as S.Schema<DeleteSitesChannelsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteSitesChannelsRequest" }) as any as S.Schema<DeleteSitesChannelsRequest>;
 
 export interface DeleteSitesDomainsRequest {
   /** Required. The name of the domain association to delete. */
   name: string;
 }
 export const DeleteSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteSitesDomainsRequest",
-}) as any as S.Schema<DeleteSitesDomainsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteSitesDomainsRequest" }) as any as S.Schema<DeleteSitesDomainsRequest>;
 
 export interface DeleteSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
 export const DeleteSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteSitesVersionsRequest",
-}) as any as S.Schema<DeleteSitesVersionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteSitesVersionsRequest" }) as any as S.Schema<DeleteSitesVersionsRequest>;
 
 export interface GetConfigProjectsSitesRequest {
   /** Required. The site for which to get the SiteConfig, in the format: sites/ site-name/config */
   name: string;
 }
 export const GetConfigProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetConfigProjectsSitesRequest",
-}) as any as S.Schema<GetConfigProjectsSitesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetConfigProjectsSitesRequest" }) as any as S.Schema<GetConfigProjectsSitesRequest>;
 
 /** A `SiteConfig` contains metadata associated with a specific site that controls Firebase Hosting serving behavior */
 export interface SiteConfig {
@@ -1395,10 +1083,10 @@ export interface SiteConfig {
   cloudLoggingEnabled?: boolean;
 }
 export const SiteConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxVersions: S.optional(S.String),
-    cloudLoggingEnabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "maxVersions": S.optional(S.String),
+  "cloudLoggingEnabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "SiteConfig" }) as any as S.Schema<SiteConfig>;
 
 export interface GetConfigSitesRequest {
@@ -1406,273 +1094,150 @@ export interface GetConfigSitesRequest {
   name: string;
 }
 export const GetConfigSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetConfigSitesRequest",
-}) as any as S.Schema<GetConfigSitesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetConfigSitesRequest" }) as any as S.Schema<GetConfigSitesRequest>;
 
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsOperationsRequest",
-}) as any as S.Schema<GetProjectsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsOperationsRequest" }) as any as S.Schema<GetProjectsOperationsRequest>;
 
 export interface GetProjectsSitesRequest {
   /** Required. The fully-qualified resource name for the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](../projects#Site.FIELDS.name) field for details about PROJECT_IDENTIFIER values. Since a SITE_ID is a globally unique identifier, you can also use the unique sub-collection resource access pattern, in the format: projects/-/sites/SITE_ID */
   name: string;
 }
 export const GetProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsSitesRequest",
-}) as any as S.Schema<GetProjectsSitesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsSitesRequest" }) as any as S.Schema<GetProjectsSitesRequest>;
 
 export interface GetProjectsSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
 export const GetProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsSitesChannelsRequest",
-}) as any as S.Schema<GetProjectsSitesChannelsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsSitesChannelsRequest" }) as any as S.Schema<GetProjectsSitesChannelsRequest>;
 
 export interface GetProjectsSitesChannelsReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
-export const GetProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsSitesChannelsReleasesRequest",
-}) as any as S.Schema<GetProjectsSitesChannelsReleasesRequest>;
+export const GetProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsSitesChannelsReleasesRequest" }) as any as S.Schema<GetProjectsSitesChannelsReleasesRequest>;
 
 export interface GetProjectsSitesCustomDomainsRequest {
   /** Required. The name of the `CustomDomain` to get. */
   name: string;
 }
-export const GetProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsSitesCustomDomainsRequest",
-}) as any as S.Schema<GetProjectsSitesCustomDomainsRequest>;
+export const GetProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsSitesCustomDomainsRequest" }) as any as S.Schema<GetProjectsSitesCustomDomainsRequest>;
 
 export interface GetProjectsSitesCustomDomainsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsSitesCustomDomainsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsSitesCustomDomainsOperationsRequest",
-  }) as any as S.Schema<GetProjectsSitesCustomDomainsOperationsRequest>;
+export const GetProjectsSitesCustomDomainsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsSitesCustomDomainsOperationsRequest" }) as any as S.Schema<GetProjectsSitesCustomDomainsOperationsRequest>;
 
 export interface GetProjectsSitesDomainsRequest {
   /** Required. The name of the domain configuration to get. */
   name: string;
 }
 export const GetProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsSitesDomainsRequest",
-}) as any as S.Schema<GetProjectsSitesDomainsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsSitesDomainsRequest" }) as any as S.Schema<GetProjectsSitesDomainsRequest>;
 
 export interface GetProjectsSitesReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
 export const GetProjectsSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsSitesReleasesRequest",
-}) as any as S.Schema<GetProjectsSitesReleasesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsSitesReleasesRequest" }) as any as S.Schema<GetProjectsSitesReleasesRequest>;
 
 export interface GetProjectsSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
 export const GetProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsSitesVersionsRequest",
-}) as any as S.Schema<GetProjectsSitesVersionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsSitesVersionsRequest" }) as any as S.Schema<GetProjectsSitesVersionsRequest>;
 
 export interface GetSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
 export const GetSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSitesChannelsRequest",
-}) as any as S.Schema<GetSitesChannelsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetSitesChannelsRequest" }) as any as S.Schema<GetSitesChannelsRequest>;
 
 export interface GetSitesChannelsReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
 export const GetSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSitesChannelsReleasesRequest",
-}) as any as S.Schema<GetSitesChannelsReleasesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetSitesChannelsReleasesRequest" }) as any as S.Schema<GetSitesChannelsReleasesRequest>;
 
 export interface GetSitesDomainsRequest {
   /** Required. The name of the domain configuration to get. */
   name: string;
 }
 export const GetSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSitesDomainsRequest",
-}) as any as S.Schema<GetSitesDomainsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetSitesDomainsRequest" }) as any as S.Schema<GetSitesDomainsRequest>;
 
 export interface GetSitesReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
 export const GetSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSitesReleasesRequest",
-}) as any as S.Schema<GetSitesReleasesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetSitesReleasesRequest" }) as any as S.Schema<GetSitesReleasesRequest>;
 
 export interface GetSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
 export const GetSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSitesVersionsRequest",
-}) as any as S.Schema<GetSitesVersionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "GetSitesVersionsRequest" }) as any as S.Schema<GetSitesVersionsRequest>;
 
 export interface ListProjectsSitesRequest {
   /** Optional. The maximum number of sites to return. The service may return a lower number if fewer sites exist than this maximum number. If unspecified, defaults to 40. */
@@ -1683,25 +1248,15 @@ export interface ListProjectsSitesRequest {
   pageToken?: string;
 }
 export const ListProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/sites",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsSitesRequest",
-}) as any as S.Schema<ListProjectsSitesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/sites","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsSitesRequest" }) as any as S.Schema<ListProjectsSitesRequest>;
 
 export type SiteList = ReadonlyArray<Site>;
-export const SiteList = /*@__PURE__*/ S.Array(
-  Site,
-) as any as S.Schema<SiteList>;
+export const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
 
 export interface ListSitesResponse {
   /** A list of Site objects associated with the specified Firebase project. */
@@ -1710,13 +1265,11 @@ export interface ListSitesResponse {
   nextPageToken?: string;
 }
 export const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sites: S.optional(SiteList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSitesResponse",
-}) as any as S.Schema<ListSitesResponse>;
+S.Struct({
+  "sites": S.optional(SiteList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListSitesResponse" }) as any as S.Schema<ListSitesResponse>;
 
 export interface ListProjectsSitesChannelsRequest {
   /** Required. The site for which to list channels, in the format: sites/SITE_ID */
@@ -1727,25 +1280,15 @@ export interface ListProjectsSitesChannelsRequest {
   pageSize?: number;
 }
 export const ListProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/channels",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsSitesChannelsRequest",
-}) as any as S.Schema<ListProjectsSitesChannelsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/channels","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsSitesChannelsRequest" }) as any as S.Schema<ListProjectsSitesChannelsRequest>;
 
 export type ChannelList = ReadonlyArray<Channel>;
-export const ChannelList = /*@__PURE__*/ S.Array(
-  Channel,
-) as any as S.Schema<ChannelList>;
+export const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
 
 export interface ListChannelsResponse {
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListChannels`. Page tokens are short-lived and should not be stored. */
@@ -1754,13 +1297,11 @@ export interface ListChannelsResponse {
   channels?: ChannelList;
 }
 export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    channels: S.optional(ChannelList),
-  }),
-).annotate({
-  identifier: "ListChannelsResponse",
-}) as any as S.Schema<ListChannelsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "channels": S.optional(ChannelList),
+}),
+).annotate({ identifier: "ListChannelsResponse" }) as any as S.Schema<ListChannelsResponse>;
 
 export interface ListProjectsSitesChannelsReleasesRequest {
   /** The maximum number of releases to return. The service may return a lower number if fewer releases exist than this maximum number. If unspecified, defaults to 100. */
@@ -1770,27 +1311,16 @@ export interface ListProjectsSitesChannelsReleasesRequest {
   /** A token from a previous call to `releases.list` or `channels.releases.list` that tells the server where to resume listing. */
   pageToken?: string;
 }
-export const ListProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/releases",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsSitesChannelsReleasesRequest",
-}) as any as S.Schema<ListProjectsSitesChannelsReleasesRequest>;
+export const ListProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/releases","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsSitesChannelsReleasesRequest" }) as any as S.Schema<ListProjectsSitesChannelsReleasesRequest>;
 
 export type ReleaseList = ReadonlyArray<Release>;
-export const ReleaseList = /*@__PURE__*/ S.Array(
-  Release,
-) as any as S.Schema<ReleaseList>;
+export const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
 
 export interface ListReleasesResponse {
   /** The list of hashes of files that still need to be uploaded, if any exist. */
@@ -1799,13 +1329,11 @@ export interface ListReleasesResponse {
   nextPageToken?: string;
 }
 export const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    releases: S.optional(ReleaseList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListReleasesResponse",
-}) as any as S.Schema<ListReleasesResponse>;
+S.Struct({
+  "releases": S.optional(ReleaseList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListReleasesResponse" }) as any as S.Schema<ListReleasesResponse>;
 
 export interface ListProjectsSitesCustomDomainsRequest {
   /** The max number of `CustomDomain` entities to return in a request. Defaults to 10. */
@@ -1817,28 +1345,17 @@ export interface ListProjectsSitesCustomDomainsRequest {
   /** If true, the request returns soft-deleted `CustomDomain`s that haven't been fully-deleted yet. To restore deleted `CustomDomain`s, make an `UndeleteCustomDomain` request. */
   showDeleted?: boolean;
 }
-export const ListProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/customDomains",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsSitesCustomDomainsRequest",
-}) as any as S.Schema<ListProjectsSitesCustomDomainsRequest>;
+export const ListProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/customDomains","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsSitesCustomDomainsRequest" }) as any as S.Schema<ListProjectsSitesCustomDomainsRequest>;
 
 export type CustomDomainList = ReadonlyArray<CustomDomain>;
-export const CustomDomainList = /*@__PURE__*/ S.Array(
-  CustomDomain,
-) as any as S.Schema<CustomDomainList>;
+export const CustomDomainList = /*@__PURE__*/ S.Array(CustomDomain) as any as S.Schema<CustomDomainList>;
 
 /** The response from `ListCustomDomains`. */
 export interface ListCustomDomainsResponse {
@@ -1848,13 +1365,11 @@ export interface ListCustomDomainsResponse {
   nextPageToken?: string;
 }
 export const ListCustomDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customDomains: S.optional(CustomDomainList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCustomDomainsResponse",
-}) as any as S.Schema<ListCustomDomainsResponse>;
+S.Struct({
+  "customDomains": S.optional(CustomDomainList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCustomDomainsResponse" }) as any as S.Schema<ListCustomDomainsResponse>;
 
 export interface ListProjectsSitesCustomDomainsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -1868,29 +1383,18 @@ export interface ListProjectsSitesCustomDomainsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsSitesCustomDomainsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}/operations",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsSitesCustomDomainsOperationsRequest",
-  }) as any as S.Schema<ListProjectsSitesCustomDomainsOperationsRequest>;
+export const ListProjectsSitesCustomDomainsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/operations","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsSitesCustomDomainsOperationsRequest" }) as any as S.Schema<ListProjectsSitesCustomDomainsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1902,14 +1406,12 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsSitesDomainsRequest {
   /** Required. The parent for which to list domains, in the format: sites/ site-name */
@@ -1920,25 +1422,15 @@ export interface ListProjectsSitesDomainsRequest {
   pageSize?: number;
 }
 export const ListProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/domains",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsSitesDomainsRequest",
-}) as any as S.Schema<ListProjectsSitesDomainsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/domains","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsSitesDomainsRequest" }) as any as S.Schema<ListProjectsSitesDomainsRequest>;
 
 export type DomainList = ReadonlyArray<Domain>;
-export const DomainList = /*@__PURE__*/ S.Array(
-  Domain,
-) as any as S.Schema<DomainList>;
+export const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
 
 /** The response to listing Domains. */
 export interface ListDomainsResponse {
@@ -1948,13 +1440,11 @@ export interface ListDomainsResponse {
   nextPageToken?: string;
 }
 export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domains: S.optional(DomainList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDomainsResponse",
-}) as any as S.Schema<ListDomainsResponse>;
+S.Struct({
+  "domains": S.optional(DomainList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDomainsResponse" }) as any as S.Schema<ListDomainsResponse>;
 
 export interface ListProjectsSitesReleasesRequest {
   /** Required. The site or channel for which to list releases, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
@@ -1965,20 +1455,12 @@ export interface ListProjectsSitesReleasesRequest {
   pageSize?: number;
 }
 export const ListProjectsSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/releases",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsSitesReleasesRequest",
-}) as any as S.Schema<ListProjectsSitesReleasesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/releases","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsSitesReleasesRequest" }) as any as S.Schema<ListProjectsSitesReleasesRequest>;
 
 export interface ListProjectsSitesVersionsRequest {
   /** A filter string used to return a subset of versions in the response. The currently supported fields for filtering are: `name`, `status`, and `create_time`. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160). */
@@ -1991,26 +1473,16 @@ export interface ListProjectsSitesVersionsRequest {
   pageToken?: string;
 }
 export const ListProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/versions",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsSitesVersionsRequest",
-}) as any as S.Schema<ListProjectsSitesVersionsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/versions","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsSitesVersionsRequest" }) as any as S.Schema<ListProjectsSitesVersionsRequest>;
 
 export type VersionList = ReadonlyArray<Version>;
-export const VersionList = /*@__PURE__*/ S.Array(
-  Version,
-) as any as S.Schema<VersionList>;
+export const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
 
 export interface ListVersionsResponse {
   /** The list of versions, if any exist. */
@@ -2019,19 +1491,13 @@ export interface ListVersionsResponse {
   nextPageToken?: string;
 }
 export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versions: S.optional(VersionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListVersionsResponse",
-}) as any as S.Schema<ListVersionsResponse>;
+S.Struct({
+  "versions": S.optional(VersionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListVersionsResponse" }) as any as S.Schema<ListVersionsResponse>;
 
-export type ListProjectsSitesVersionsFilesStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "EXPECTED"
-  | "ACTIVE"
-  | (string & {});
+export type ListProjectsSitesVersionsFilesStatusEnum = "STATUS_UNSPECIFIED" | "EXPECTED" | "ACTIVE";
 export const ListProjectsSitesVersionsFilesStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsSitesVersionsFilesRequest {
@@ -2042,33 +1508,18 @@ export interface ListProjectsSitesVersionsFilesRequest {
   /** The maximum number of version files to return. The service may return a lower number if fewer version files exist than this maximum number. If unspecified, defaults to 1000. */
   pageSize?: number;
   /** The type of files that should be listed for the specified version. */
-  status?: ListProjectsSitesVersionsFilesStatusEnum;
+  status?: ListProjectsSitesVersionsFilesStatusEnum | (string & {});
 }
-export const ListProjectsSitesVersionsFilesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      status: S.optional(
-        ListProjectsSitesVersionsFilesStatusEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/files",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsSitesVersionsFilesRequest",
-}) as any as S.Schema<ListProjectsSitesVersionsFilesRequest>;
+export const ListProjectsSitesVersionsFilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "status": S.optional(ListProjectsSitesVersionsFilesStatusEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/files","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsSitesVersionsFilesRequest" }) as any as S.Schema<ListProjectsSitesVersionsFilesRequest>;
 
-export type VersionFileStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "EXPECTED"
-  | "ACTIVE"
-  | (string & {});
+export type VersionFileStatusEnum = "STATUS_UNSPECIFIED" | "EXPECTED" | "ACTIVE";
 export const VersionFileStatusEnum = /*@__PURE__*/ S.String;
 
 /** A static content file that is part of a version. */
@@ -2081,17 +1532,15 @@ export interface VersionFile {
   hash?: string;
 }
 export const VersionFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(VersionFileStatusEnum),
-    path: S.optional(S.String),
-    hash: S.optional(S.String),
-  }),
+S.Struct({
+  "status": S.optional(VersionFileStatusEnum),
+  "path": S.optional(S.String),
+  "hash": S.optional(S.String),
+}),
 ).annotate({ identifier: "VersionFile" }) as any as S.Schema<VersionFile>;
 
 export type VersionFileList = ReadonlyArray<VersionFile>;
-export const VersionFileList = /*@__PURE__*/ S.Array(
-  VersionFile,
-) as any as S.Schema<VersionFileList>;
+export const VersionFileList = /*@__PURE__*/ S.Array(VersionFile) as any as S.Schema<VersionFileList>;
 
 export interface ListVersionFilesResponse {
   /** The list of paths to the hashes of the files in the specified version. */
@@ -2100,13 +1549,11 @@ export interface ListVersionFilesResponse {
   nextPageToken?: string;
 }
 export const ListVersionFilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    files: S.optional(VersionFileList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListVersionFilesResponse",
-}) as any as S.Schema<ListVersionFilesResponse>;
+S.Struct({
+  "files": S.optional(VersionFileList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListVersionFilesResponse" }) as any as S.Schema<ListVersionFilesResponse>;
 
 export interface ListSitesChannelsRequest {
   /** The maximum number of channels to return. The service may return a lower number if fewer channels exist than this maximum number. If unspecified, defaults to 10. The maximum value is 100; values above 100 will be coerced to 100. */
@@ -2117,20 +1564,12 @@ export interface ListSitesChannelsRequest {
   pageToken?: string;
 }
 export const ListSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/channels",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSitesChannelsRequest",
-}) as any as S.Schema<ListSitesChannelsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/channels","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListSitesChannelsRequest" }) as any as S.Schema<ListSitesChannelsRequest>;
 
 export interface ListSitesChannelsReleasesRequest {
   /** The maximum number of releases to return. The service may return a lower number if fewer releases exist than this maximum number. If unspecified, defaults to 100. */
@@ -2141,20 +1580,12 @@ export interface ListSitesChannelsReleasesRequest {
   pageToken?: string;
 }
 export const ListSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/releases",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSitesChannelsReleasesRequest",
-}) as any as S.Schema<ListSitesChannelsReleasesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/releases","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListSitesChannelsReleasesRequest" }) as any as S.Schema<ListSitesChannelsReleasesRequest>;
 
 export interface ListSitesDomainsRequest {
   /** Required. The parent for which to list domains, in the format: sites/ site-name */
@@ -2165,20 +1596,12 @@ export interface ListSitesDomainsRequest {
   pageSize?: number;
 }
 export const ListSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/domains",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSitesDomainsRequest",
-}) as any as S.Schema<ListSitesDomainsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/domains","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListSitesDomainsRequest" }) as any as S.Schema<ListSitesDomainsRequest>;
 
 export interface ListSitesReleasesRequest {
   /** Required. The site or channel for which to list releases, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
@@ -2189,20 +1612,12 @@ export interface ListSitesReleasesRequest {
   pageSize?: number;
 }
 export const ListSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/releases",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSitesReleasesRequest",
-}) as any as S.Schema<ListSitesReleasesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/releases","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListSitesReleasesRequest" }) as any as S.Schema<ListSitesReleasesRequest>;
 
 export interface ListSitesVersionsRequest {
   /** Required. The site or channel for which to list versions, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
@@ -2215,27 +1630,15 @@ export interface ListSitesVersionsRequest {
   filter?: string;
 }
 export const ListSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/versions",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSitesVersionsRequest",
-}) as any as S.Schema<ListSitesVersionsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/versions","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListSitesVersionsRequest" }) as any as S.Schema<ListSitesVersionsRequest>;
 
-export type ListSitesVersionsFilesStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "EXPECTED"
-  | "ACTIVE"
-  | (string & {});
+export type ListSitesVersionsFilesStatusEnum = "STATUS_UNSPECIFIED" | "EXPECTED" | "ACTIVE";
 export const ListSitesVersionsFilesStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ListSitesVersionsFilesRequest {
@@ -2246,24 +1649,16 @@ export interface ListSitesVersionsFilesRequest {
   /** A token from a previous call to `ListVersionFiles` that tells the server where to resume listing. */
   pageToken?: string;
   /** The type of files that should be listed for the specified version. */
-  status?: ListSitesVersionsFilesStatusEnum;
+  status?: ListSitesVersionsFilesStatusEnum | (string & {});
 }
 export const ListSitesVersionsFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    status: S.optional(ListSitesVersionsFilesStatusEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/files",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSitesVersionsFilesRequest",
-}) as any as S.Schema<ListSitesVersionsFilesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "status": S.optional(ListSitesVersionsFilesStatusEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/files","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "ListSitesVersionsFilesRequest" }) as any as S.Schema<ListSitesVersionsFilesRequest>;
 
 export interface PatchProjectsSitesRequest {
   /** Output only. The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). */
@@ -2274,20 +1669,12 @@ export interface PatchProjectsSitesRequest {
   body?: Site;
 }
 export const PatchProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Site.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsSitesRequest",
-}) as any as S.Schema<PatchProjectsSitesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Site.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsSitesRequest" }) as any as S.Schema<PatchProjectsSitesRequest>;
 
 export interface PatchProjectsSitesChannelsRequest {
   /** The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID */
@@ -2298,20 +1685,12 @@ export interface PatchProjectsSitesChannelsRequest {
   body?: Channel;
 }
 export const PatchProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsSitesChannelsRequest",
-}) as any as S.Schema<PatchProjectsSitesChannelsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsSitesChannelsRequest" }) as any as S.Schema<PatchProjectsSitesChannelsRequest>;
 
 export interface PatchProjectsSitesCustomDomainsRequest {
   /** Output only. The fully-qualified name of the `CustomDomain`. */
@@ -2325,24 +1704,15 @@ export interface PatchProjectsSitesCustomDomainsRequest {
   /** Request body */
   body?: CustomDomain;
 }
-export const PatchProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(CustomDomain.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsSitesCustomDomainsRequest",
-}) as any as S.Schema<PatchProjectsSitesCustomDomainsRequest>;
+export const PatchProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(CustomDomain.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsSitesCustomDomainsRequest" }) as any as S.Schema<PatchProjectsSitesCustomDomainsRequest>;
 
 export interface PatchProjectsSitesVersionsRequest {
   /** The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create). */
@@ -2353,20 +1723,12 @@ export interface PatchProjectsSitesVersionsRequest {
   body?: Version;
 }
 export const PatchProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Version.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsSitesVersionsRequest",
-}) as any as S.Schema<PatchProjectsSitesVersionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Version.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsSitesVersionsRequest" }) as any as S.Schema<PatchProjectsSitesVersionsRequest>;
 
 export interface PatchSitesChannelsRequest {
   /** The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID */
@@ -2377,20 +1739,12 @@ export interface PatchSitesChannelsRequest {
   body?: Channel;
 }
 export const PatchSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchSitesChannelsRequest",
-}) as any as S.Schema<PatchSitesChannelsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "PatchSitesChannelsRequest" }) as any as S.Schema<PatchSitesChannelsRequest>;
 
 export interface PatchSitesVersionsRequest {
   /** The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create). */
@@ -2401,32 +1755,22 @@ export interface PatchSitesVersionsRequest {
   body?: Version;
 }
 export const PatchSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Version.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchSitesVersionsRequest",
-}) as any as S.Schema<PatchSitesVersionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Version.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "PatchSitesVersionsRequest" }) as any as S.Schema<PatchSitesVersionsRequest>;
 
 export interface PopulateVersionFilesRequest {
   /** A set of file paths to the hashes corresponding to assets that should be added to the version. A file path to an empty hash will remove the path from the version. Calculate a hash by Gzipping the file then taking the SHA256 hash of the newly compressed file. */
   files?: StringMap;
 }
 export const PopulateVersionFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    files: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "PopulateVersionFilesRequest",
-}) as any as S.Schema<PopulateVersionFilesRequest>;
+S.Struct({
+  "files": S.optional(StringMap),
+}),
+).annotate({ identifier: "PopulateVersionFilesRequest" }) as any as S.Schema<PopulateVersionFilesRequest>;
 
 export interface PopulateFilesProjectsSitesVersionsRequest {
   /** Required. The version to which to add files, in the format: sites/SITE_ID /versions/VERSION_ID */
@@ -2434,21 +1778,12 @@ export interface PopulateFilesProjectsSitesVersionsRequest {
   /** Request body */
   body?: PopulateVersionFilesRequest;
 }
-export const PopulateFilesProjectsSitesVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(PopulateVersionFilesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}:populateFiles",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PopulateFilesProjectsSitesVersionsRequest",
-  }) as any as S.Schema<PopulateFilesProjectsSitesVersionsRequest>;
+export const PopulateFilesProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(PopulateVersionFilesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}:populateFiles","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "PopulateFilesProjectsSitesVersionsRequest" }) as any as S.Schema<PopulateFilesProjectsSitesVersionsRequest>;
 
 export interface PopulateVersionFilesResponse {
   /** The URL to which the files should be uploaded, in the format: "https://upload-firebasehosting.googleapis.com/upload/sites/SITE_ID /versions/VERSION_ID/files" Perform a multipart `POST` of the Gzipped file contents to the URL using a forward slash and the hash of the file appended to the end. */
@@ -2457,13 +1792,11 @@ export interface PopulateVersionFilesResponse {
   uploadRequiredHashes?: StringList;
 }
 export const PopulateVersionFilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uploadUrl: S.optional(S.String),
-    uploadRequiredHashes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "PopulateVersionFilesResponse",
-}) as any as S.Schema<PopulateVersionFilesResponse>;
+S.Struct({
+  "uploadUrl": S.optional(S.String),
+  "uploadRequiredHashes": S.optional(StringList),
+}),
+).annotate({ identifier: "PopulateVersionFilesResponse" }) as any as S.Schema<PopulateVersionFilesResponse>;
 
 export interface PopulateFilesSitesVersionsRequest {
   /** Required. The version to which to add files, in the format: sites/SITE_ID /versions/VERSION_ID */
@@ -2472,19 +1805,11 @@ export interface PopulateFilesSitesVersionsRequest {
   body?: PopulateVersionFilesRequest;
 }
 export const PopulateFilesSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(PopulateVersionFilesRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}:populateFiles",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PopulateFilesSitesVersionsRequest",
-}) as any as S.Schema<PopulateFilesSitesVersionsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(PopulateVersionFilesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}:populateFiles","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "PopulateFilesSitesVersionsRequest" }) as any as S.Schema<PopulateFilesSitesVersionsRequest>;
 
 /** The request sent to `UndeleteCustomDomain`. */
 export interface UndeleteCustomDomainRequest {
@@ -2494,13 +1819,11 @@ export interface UndeleteCustomDomainRequest {
   etag?: string;
 }
 export const UndeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validateOnly: S.optional(S.Boolean),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UndeleteCustomDomainRequest",
-}) as any as S.Schema<UndeleteCustomDomainRequest>;
+S.Struct({
+  "validateOnly": S.optional(S.Boolean),
+  "etag": S.optional(S.String),
+}),
+).annotate({ identifier: "UndeleteCustomDomainRequest" }) as any as S.Schema<UndeleteCustomDomainRequest>;
 
 export interface UndeleteProjectsSitesCustomDomainsRequest {
   /** Required. The name of the `CustomDomain` to delete. */
@@ -2508,21 +1831,12 @@ export interface UndeleteProjectsSitesCustomDomainsRequest {
   /** Request body */
   body?: UndeleteCustomDomainRequest;
 }
-export const UndeleteProjectsSitesCustomDomainsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UndeleteCustomDomainRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:undelete",
-        baseUrl: "https://firebasehosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UndeleteProjectsSitesCustomDomainsRequest",
-  }) as any as S.Schema<UndeleteProjectsSitesCustomDomainsRequest>;
+export const UndeleteProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UndeleteCustomDomainRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:undelete","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "UndeleteProjectsSitesCustomDomainsRequest" }) as any as S.Schema<UndeleteProjectsSitesCustomDomainsRequest>;
 
 export interface UpdateConfigProjectsSitesRequest {
   /** Required. The site for which to update the SiteConfig, in the format: sites/ site-name/config */
@@ -2533,20 +1847,12 @@ export interface UpdateConfigProjectsSitesRequest {
   body?: SiteConfig;
 }
 export const UpdateConfigProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(SiteConfig.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateConfigProjectsSitesRequest",
-}) as any as S.Schema<UpdateConfigProjectsSitesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(SiteConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "UpdateConfigProjectsSitesRequest" }) as any as S.Schema<UpdateConfigProjectsSitesRequest>;
 
 export interface UpdateConfigSitesRequest {
   /** Required. The site for which to update the SiteConfig, in the format: sites/ site-name/config */
@@ -2557,20 +1863,12 @@ export interface UpdateConfigSitesRequest {
   body?: SiteConfig;
 }
 export const UpdateConfigSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(SiteConfig.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateConfigSitesRequest",
-}) as any as S.Schema<UpdateConfigSitesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(SiteConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "UpdateConfigSitesRequest" }) as any as S.Schema<UpdateConfigSitesRequest>;
 
 export interface UpdateProjectsSitesDomainsRequest {
   /** Required. The name of the domain association to update or create, if an association doesn't already exist. */
@@ -2579,19 +1877,11 @@ export interface UpdateProjectsSitesDomainsRequest {
   body?: Domain;
 }
 export const UpdateProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(Domain.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateProjectsSitesDomainsRequest",
-}) as any as S.Schema<UpdateProjectsSitesDomainsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Domain.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsSitesDomainsRequest" }) as any as S.Schema<UpdateProjectsSitesDomainsRequest>;
 
 export interface UpdateSitesDomainsRequest {
   /** Required. The name of the domain association to update or create, if an association doesn't already exist. */
@@ -2600,26 +1890,13 @@ export interface UpdateSitesDomainsRequest {
   body?: Domain;
 }
 export const UpdateSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(Domain.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://firebasehosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateSitesDomainsRequest",
-}) as any as S.Schema<UpdateSitesDomainsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Domain.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1beta1/{+name}","baseUrl":"https://firebasehosting.googleapis.com/"})),
+).annotate({ identifier: "UpdateSitesDomainsRequest" }) as any as S.Schema<UpdateSitesDomainsRequest>;
 
-export type CloneProjectsSitesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CloneProjectsSitesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new version on the specified target site using the content of the specified version. */
 export const cloneProjectsSitesVersions: API.OperationMethod<
   CloneProjectsSitesVersionsRequest,
@@ -2634,12 +1911,7 @@ export const cloneProjectsSitesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CloneSitesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CloneSitesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new version on the specified target site using the content of the specified version. */
 export const cloneSitesVersions: API.OperationMethod<
   CloneSitesVersionsRequest,
@@ -2654,12 +1926,7 @@ export const cloneSitesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Hosting Site in the specified parent Firebase project. Note that Hosting sites can take several minutes to propagate through Firebase systems. */
 export const createProjectsSites: API.OperationMethod<
   CreateProjectsSitesRequest,
@@ -2674,12 +1941,7 @@ export const createProjectsSites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSitesChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsSitesChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new channel in the specified site. */
 export const createProjectsSitesChannels: API.OperationMethod<
   CreateProjectsSitesChannelsRequest,
@@ -2694,12 +1956,7 @@ export const createProjectsSitesChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSitesChannelsReleasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsSitesChannelsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s). */
 export const createProjectsSitesChannelsReleases: API.OperationMethod<
   CreateProjectsSitesChannelsReleasesRequest,
@@ -2714,12 +1971,7 @@ export const createProjectsSitesChannelsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSitesCustomDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsSitesCustomDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a `CustomDomain`. */
 export const createProjectsSitesCustomDomains: API.OperationMethod<
   CreateProjectsSitesCustomDomainsRequest,
@@ -2734,12 +1986,7 @@ export const createProjectsSitesCustomDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSitesDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsSitesDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a domain mapping on the specified site. */
 export const createProjectsSitesDomains: API.OperationMethod<
   CreateProjectsSitesDomainsRequest,
@@ -2754,12 +2001,7 @@ export const createProjectsSitesDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSitesReleasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsSitesReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s). */
 export const createProjectsSitesReleases: API.OperationMethod<
   CreateProjectsSitesReleasesRequest,
@@ -2774,12 +2016,7 @@ export const createProjectsSitesReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSitesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsSitesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new version for the specified site. */
 export const createProjectsSitesVersions: API.OperationMethod<
   CreateProjectsSitesVersionsRequest,
@@ -2794,12 +2031,7 @@ export const createProjectsSitesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSitesChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateSitesChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new channel in the specified site. */
 export const createSitesChannels: API.OperationMethod<
   CreateSitesChannelsRequest,
@@ -2814,12 +2046,7 @@ export const createSitesChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSitesChannelsReleasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateSitesChannelsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s). */
 export const createSitesChannelsReleases: API.OperationMethod<
   CreateSitesChannelsReleasesRequest,
@@ -2834,12 +2061,7 @@ export const createSitesChannelsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSitesDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateSitesDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a domain mapping on the specified site. */
 export const createSitesDomains: API.OperationMethod<
   CreateSitesDomainsRequest,
@@ -2854,12 +2076,7 @@ export const createSitesDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSitesReleasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateSitesReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s). */
 export const createSitesReleases: API.OperationMethod<
   CreateSitesReleasesRequest,
@@ -2874,12 +2091,7 @@ export const createSitesReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSitesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateSitesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new version for the specified site. */
 export const createSitesVersions: API.OperationMethod<
   CreateSitesVersionsRequest,
@@ -2894,12 +2106,7 @@ export const createSitesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified Hosting Site from the specified parent Firebase project. */
 export const deleteProjectsSites: API.OperationMethod<
   DeleteProjectsSitesRequest,
@@ -2914,12 +2121,7 @@ export const deleteProjectsSites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsSitesChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsSitesChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified channel of the specified site. The `live` channel cannot be deleted. */
 export const deleteProjectsSitesChannels: API.OperationMethod<
   DeleteProjectsSitesChannelsRequest,
@@ -2934,12 +2136,7 @@ export const deleteProjectsSitesChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsSitesCustomDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsSitesCustomDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified `CustomDomain`. */
 export const deleteProjectsSitesCustomDomains: API.OperationMethod<
   DeleteProjectsSitesCustomDomainsRequest,
@@ -2954,12 +2151,7 @@ export const deleteProjectsSitesCustomDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsSitesDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsSitesDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the existing domain mapping on the specified site. */
 export const deleteProjectsSitesDomains: API.OperationMethod<
   DeleteProjectsSitesDomainsRequest,
@@ -2974,12 +2166,7 @@ export const deleteProjectsSitesDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsSitesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsSitesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified version. */
 export const deleteProjectsSitesVersions: API.OperationMethod<
   DeleteProjectsSitesVersionsRequest,
@@ -2994,12 +2181,7 @@ export const deleteProjectsSitesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSitesChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteSitesChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified channel of the specified site. The `live` channel cannot be deleted. */
 export const deleteSitesChannels: API.OperationMethod<
   DeleteSitesChannelsRequest,
@@ -3014,12 +2196,7 @@ export const deleteSitesChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSitesDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteSitesDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the existing domain mapping on the specified site. */
 export const deleteSitesDomains: API.OperationMethod<
   DeleteSitesDomainsRequest,
@@ -3034,12 +2211,7 @@ export const deleteSitesDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSitesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteSitesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified version. */
 export const deleteSitesVersions: API.OperationMethod<
   DeleteSitesVersionsRequest,
@@ -3129,10 +2301,7 @@ export const getProjectsSitesChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsSitesChannelsReleasesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsSitesChannelsReleasesError = NotFound | Forbidden | GcpOpError;
 /** Gets the specified release for a site or channel. When used to get a release for a site, this can get releases for both the default `live` channel and any active preview channels for the specified site. */
 export const getProjectsSitesChannelsReleases: API.OperationMethod<
   GetProjectsSitesChannelsReleasesRequest,
@@ -3147,10 +2316,7 @@ export const getProjectsSitesChannelsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsSitesCustomDomainsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsSitesCustomDomainsError = NotFound | Forbidden | GcpOpError;
 /** Gets the specified `CustomDomain`. */
 export const getProjectsSitesCustomDomains: API.OperationMethod<
   GetProjectsSitesCustomDomainsRequest,
@@ -3165,10 +2331,7 @@ export const getProjectsSitesCustomDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsSitesCustomDomainsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsSitesCustomDomainsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsSitesCustomDomainsOperations: API.OperationMethod<
   GetProjectsSitesCustomDomainsOperationsRequest,
@@ -3316,10 +2479,7 @@ export const listProjectsSites: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsSitesChannelsError = NotFound | Forbidden | GcpOpError;
@@ -3335,16 +2495,10 @@ export const listProjectsSitesChannels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsSitesChannelsReleasesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsSitesChannelsReleasesError = NotFound | Forbidden | GcpOpError;
 /** Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site. */
 export const listProjectsSitesChannelsReleases: API.PaginatedOperationMethod<
   ListProjectsSitesChannelsReleasesRequest,
@@ -3357,16 +2511,10 @@ export const listProjectsSitesChannelsReleases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsSitesCustomDomainsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsSitesCustomDomainsError = NotFound | Forbidden | GcpOpError;
 /** Lists each `CustomDomain` associated with the specified parent Hosting site. Returns `CustomDomain`s in a consistent, but undefined, order to facilitate pagination. */
 export const listProjectsSitesCustomDomains: API.PaginatedOperationMethod<
   ListProjectsSitesCustomDomainsRequest,
@@ -3379,16 +2527,10 @@ export const listProjectsSitesCustomDomains: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsSitesCustomDomainsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsSitesCustomDomainsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. */
 export const listProjectsSitesCustomDomainsOperations: API.PaginatedOperationMethod<
   ListProjectsSitesCustomDomainsOperationsRequest,
@@ -3401,10 +2543,7 @@ export const listProjectsSitesCustomDomainsOperations: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsSitesDomainsError = NotFound | Forbidden | GcpOpError;
@@ -3420,10 +2559,7 @@ export const listProjectsSitesDomains: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsSitesReleasesError = NotFound | Forbidden | GcpOpError;
@@ -3439,10 +2575,7 @@ export const listProjectsSitesReleases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsSitesVersionsError = NotFound | Forbidden | GcpOpError;
@@ -3458,16 +2591,10 @@ export const listProjectsSitesVersions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsSitesVersionsFilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsSitesVersionsFilesError = NotFound | Forbidden | GcpOpError;
 /** Lists the remaining files to be uploaded for the specified version. */
 export const listProjectsSitesVersionsFiles: API.PaginatedOperationMethod<
   ListProjectsSitesVersionsFilesRequest,
@@ -3480,10 +2607,7 @@ export const listProjectsSitesVersionsFiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListSitesChannelsError = NotFound | Forbidden | GcpOpError;
@@ -3499,10 +2623,7 @@ export const listSitesChannels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListSitesChannelsReleasesError = NotFound | Forbidden | GcpOpError;
@@ -3518,10 +2639,7 @@ export const listSitesChannelsReleases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListSitesDomainsError = NotFound | Forbidden | GcpOpError;
@@ -3537,10 +2655,7 @@ export const listSitesDomains: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListSitesReleasesError = NotFound | Forbidden | GcpOpError;
@@ -3556,10 +2671,7 @@ export const listSitesReleases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListSitesVersionsError = NotFound | Forbidden | GcpOpError;
@@ -3575,10 +2687,7 @@ export const listSitesVersions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListSitesVersionsFilesError = NotFound | Forbidden | GcpOpError;
@@ -3594,18 +2703,10 @@ export const listSitesVersionsFiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates attributes of the specified Hosting Site. */
 export const patchProjectsSites: API.OperationMethod<
   PatchProjectsSitesRequest,
@@ -3620,12 +2721,7 @@ export const patchProjectsSites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsSitesChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsSitesChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates information for the specified channel of the specified site. Implicitly creates the channel if it doesn't already exist. */
 export const patchProjectsSitesChannels: API.OperationMethod<
   PatchProjectsSitesChannelsRequest,
@@ -3640,12 +2736,7 @@ export const patchProjectsSitesChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsSitesCustomDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsSitesCustomDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the specified `CustomDomain`. */
 export const patchProjectsSitesCustomDomains: API.OperationMethod<
   PatchProjectsSitesCustomDomainsRequest,
@@ -3660,12 +2751,7 @@ export const patchProjectsSitesCustomDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsSitesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsSitesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the specified metadata for the specified version. This method will fail with `FAILED_PRECONDITION` in the event of an invalid state transition. The supported [state](../sites.versions#versionstatus) transitions for a version are from `CREATED` to `FINALIZED`. Use [`DeleteVersion`](delete) to set the status of a version to `DELETED`. */
 export const patchProjectsSitesVersions: API.OperationMethod<
   PatchProjectsSitesVersionsRequest,
@@ -3680,12 +2766,7 @@ export const patchProjectsSitesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchSitesChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchSitesChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates information for the specified channel of the specified site. Implicitly creates the channel if it doesn't already exist. */
 export const patchSitesChannels: API.OperationMethod<
   PatchSitesChannelsRequest,
@@ -3700,12 +2781,7 @@ export const patchSitesChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchSitesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchSitesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the specified metadata for the specified version. This method will fail with `FAILED_PRECONDITION` in the event of an invalid state transition. The supported [state](../sites.versions#versionstatus) transitions for a version are from `CREATED` to `FINALIZED`. Use [`DeleteVersion`](delete) to set the status of a version to `DELETED`. */
 export const patchSitesVersions: API.OperationMethod<
   PatchSitesVersionsRequest,
@@ -3720,12 +2796,7 @@ export const patchSitesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PopulateFilesProjectsSitesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PopulateFilesProjectsSitesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds content files to the specified version. Each file must be under 2 GB. */
 export const populateFilesProjectsSitesVersions: API.OperationMethod<
   PopulateFilesProjectsSitesVersionsRequest,
@@ -3740,12 +2811,7 @@ export const populateFilesProjectsSitesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PopulateFilesSitesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PopulateFilesSitesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds content files to the specified version. Each file must be under 2 GB. */
 export const populateFilesSitesVersions: API.OperationMethod<
   PopulateFilesSitesVersionsRequest,
@@ -3760,12 +2826,7 @@ export const populateFilesSitesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteProjectsSitesCustomDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UndeleteProjectsSitesCustomDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Undeletes the specified `CustomDomain` if it has been soft-deleted. Hosting retains soft-deleted custom domains for around 30 days before permanently deleting them. */
 export const undeleteProjectsSitesCustomDomains: API.OperationMethod<
   UndeleteProjectsSitesCustomDomainsRequest,
@@ -3780,12 +2841,7 @@ export const undeleteProjectsSitesCustomDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateConfigProjectsSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateConfigProjectsSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the Hosting metadata for a specific site. */
 export const updateConfigProjectsSites: API.OperationMethod<
   UpdateConfigProjectsSitesRequest,
@@ -3800,12 +2856,7 @@ export const updateConfigProjectsSites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateConfigSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateConfigSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the Hosting metadata for a specific site. */
 export const updateConfigSites: API.OperationMethod<
   UpdateConfigSitesRequest,
@@ -3820,12 +2871,7 @@ export const updateConfigSites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsSitesDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsSitesDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the specified domain mapping, creating the mapping as if it does not exist. */
 export const updateProjectsSitesDomains: API.OperationMethod<
   UpdateProjectsSitesDomainsRequest,
@@ -3840,12 +2886,7 @@ export const updateProjectsSitesDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSitesDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateSitesDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the specified domain mapping, creating the mapping as if it does not exist. */
 export const updateSitesDomains: API.OperationMethod<
   UpdateSitesDomainsRequest,
@@ -3859,3 +2900,4 @@ export const updateSitesDomains: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

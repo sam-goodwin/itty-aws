@@ -215,7 +215,7 @@ export const CreateAgentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAgentResponse",
 }) as any as S.Schema<CreateAgentResponse>;
 export type AzureBlobContainerUrl = string;
-export type AzureBlobAuthenticationType = "SAS" | "NONE" | (string & {});
+export type AzureBlobAuthenticationType = "SAS" | "NONE";
 export const AzureBlobAuthenticationType = /*@__PURE__*/ S.String;
 
 export type AzureBlobSasToken = string | redacted.Redacted<string>;
@@ -227,10 +227,10 @@ export const AzureBlobSasConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AzureBlobSasConfiguration",
 }) as any as S.Schema<AzureBlobSasConfiguration>;
-export type AzureBlobType = "BLOCK" | (string & {});
+export type AzureBlobType = "BLOCK";
 export const AzureBlobType = /*@__PURE__*/ S.String;
 
-export type AzureAccessTier = "HOT" | "COOL" | "ARCHIVE" | (string & {});
+export type AzureAccessTier = "HOT" | "COOL" | "ARCHIVE";
 export const AzureAccessTier = /*@__PURE__*/ S.String;
 
 export type AzureBlobSubdirectory = string;
@@ -265,10 +265,10 @@ export const CustomSecretConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomSecretConfig>;
 export interface CreateLocationAzureBlobRequest {
   ContainerUrl: string;
-  AuthenticationType: AzureBlobAuthenticationType;
+  AuthenticationType: AzureBlobAuthenticationType | (string & {});
   SasConfiguration?: AzureBlobSasConfiguration;
-  BlobType?: AzureBlobType;
-  AccessTier?: AzureAccessTier;
+  BlobType?: AzureBlobType | (string & {});
+  AccessTier?: AzureAccessTier | (string & {});
   Subdirectory?: string;
   AgentArns?: string[];
   Tags?: TagListEntry[];
@@ -315,7 +315,7 @@ export const Ec2Config = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Config" }) as any as S.Schema<Ec2Config>;
 export type EfsAccessPointArn = string;
 export type IamRoleArn = string;
-export type EfsInTransitEncryption = "NONE" | "TLS1_2" | (string & {});
+export type EfsInTransitEncryption = "NONE" | "TLS1_2";
 export const EfsInTransitEncryption = /*@__PURE__*/ S.String;
 
 export interface CreateLocationEfsRequest {
@@ -325,7 +325,7 @@ export interface CreateLocationEfsRequest {
   Tags?: TagListEntry[];
   AccessPointArn?: string;
   FileSystemAccessRoleArn?: string;
-  InTransitEncryption?: EfsInTransitEncryption;
+  InTransitEncryption?: EfsInTransitEncryption | (string & {});
 }
 export const CreateLocationEfsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -378,12 +378,7 @@ export const CreateLocationFsxLustreResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationFsxLustreResponse",
 }) as any as S.Schema<CreateLocationFsxLustreResponse>;
-export type NfsVersion =
-  | "AUTOMATIC"
-  | "NFS3"
-  | "NFS4_0"
-  | "NFS4_1"
-  | (string & {});
+export type NfsVersion = "AUTOMATIC" | "NFS3" | "NFS4_0" | "NFS4_1";
 export const NfsVersion = /*@__PURE__*/ S.String;
 
 export interface NfsMountOptions {
@@ -401,13 +396,7 @@ export const FsxProtocolNfs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MountOptions: S.optional(NfsMountOptions) }),
 ).annotate({ identifier: "FsxProtocolNfs" }) as any as S.Schema<FsxProtocolNfs>;
 export type SmbDomain = string;
-export type SmbVersion =
-  | "AUTOMATIC"
-  | "SMB2"
-  | "SMB3"
-  | "SMB1"
-  | "SMB2_0"
-  | (string & {});
+export type SmbVersion = "AUTOMATIC" | "SMB2" | "SMB3" | "SMB1" | "SMB2_0";
 export const SmbVersion = /*@__PURE__*/ S.String;
 
 export interface SmbMountOptions {
@@ -573,16 +562,14 @@ export type HdfsRpcProtection =
   | "DISABLED"
   | "AUTHENTICATION"
   | "INTEGRITY"
-  | "PRIVACY"
-  | (string & {});
+  | "PRIVACY";
 export const HdfsRpcProtection = /*@__PURE__*/ S.String;
 
 export type HdfsDataTransferProtection =
   | "DISABLED"
   | "AUTHENTICATION"
   | "INTEGRITY"
-  | "PRIVACY"
-  | (string & {});
+  | "PRIVACY";
 export const HdfsDataTransferProtection = /*@__PURE__*/ S.String;
 
 export interface QopConfiguration {
@@ -597,7 +584,7 @@ export const QopConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QopConfiguration",
 }) as any as S.Schema<QopConfiguration>;
-export type HdfsAuthenticationType = "SIMPLE" | "KERBEROS" | (string & {});
+export type HdfsAuthenticationType = "SIMPLE" | "KERBEROS";
 export const HdfsAuthenticationType = /*@__PURE__*/ S.String;
 
 export type HdfsUser = string;
@@ -611,7 +598,7 @@ export interface CreateLocationHdfsRequest {
   ReplicationFactor?: number;
   KmsKeyProviderUri?: string;
   QopConfiguration?: QopConfiguration;
-  AuthenticationType: HdfsAuthenticationType;
+  AuthenticationType: HdfsAuthenticationType | (string & {});
   SimpleUser?: string;
   KerberosPrincipal?: string;
   KerberosKeytab?: Uint8Array;
@@ -689,7 +676,7 @@ export const CreateLocationNfsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLocationNfsResponse",
 }) as any as S.Schema<CreateLocationNfsResponse>;
 export type ObjectStorageServerPort = number;
-export type ObjectStorageServerProtocol = "HTTPS" | "HTTP" | (string & {});
+export type ObjectStorageServerProtocol = "HTTPS" | "HTTP";
 export const ObjectStorageServerProtocol = /*@__PURE__*/ S.String;
 
 export type S3Subdirectory = string;
@@ -700,7 +687,7 @@ export type ObjectStorageCertificate = Uint8Array;
 export interface CreateLocationObjectStorageRequest {
   ServerHostname: string;
   ServerPort?: number;
-  ServerProtocol?: ObjectStorageServerProtocol;
+  ServerProtocol?: ObjectStorageServerProtocol | (string & {});
   Subdirectory?: string;
   BucketName: string;
   AccessKey?: string;
@@ -748,8 +735,7 @@ export type S3StorageClass =
   | "GLACIER"
   | "DEEP_ARCHIVE"
   | "OUTPOSTS"
-  | "GLACIER_INSTANT_RETRIEVAL"
-  | (string & {});
+  | "GLACIER_INSTANT_RETRIEVAL";
 export const S3StorageClass = /*@__PURE__*/ S.String;
 
 export interface S3Config {
@@ -761,7 +747,7 @@ export const S3Config = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLocationS3Request {
   Subdirectory?: string;
   S3BucketArn: string;
-  S3StorageClass?: S3StorageClass;
+  S3StorageClass?: S3StorageClass | (string & {});
   S3Config: S3Config;
   AgentArns?: string[];
   Tags?: TagListEntry[];
@@ -789,7 +775,7 @@ export const CreateLocationS3Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLocationS3Response",
 }) as any as S.Schema<CreateLocationS3Response>;
 export type SmbSubdirectory = string;
-export type SmbAuthenticationType = "NTLM" | "KERBEROS" | (string & {});
+export type SmbAuthenticationType = "NTLM" | "KERBEROS";
 export const SmbAuthenticationType = /*@__PURE__*/ S.String;
 
 export type ServerIpAddress = string;
@@ -806,7 +792,7 @@ export interface CreateLocationSmbRequest {
   AgentArns: string[];
   MountOptions?: SmbMountOptions;
   Tags?: TagListEntry[];
-  AuthenticationType?: SmbAuthenticationType;
+  AuthenticationType?: SmbAuthenticationType | (string & {});
   DnsIpAddresses?: string[];
   KerberosPrincipal?: string;
   KerberosKeytab?: Uint8Array;
@@ -847,52 +833,50 @@ export type LogGroupArn = string;
 export type VerifyMode =
   | "POINT_IN_TIME_CONSISTENT"
   | "ONLY_FILES_TRANSFERRED"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const VerifyMode = /*@__PURE__*/ S.String;
 
-export type OverwriteMode = "ALWAYS" | "NEVER" | (string & {});
+export type OverwriteMode = "ALWAYS" | "NEVER";
 export const OverwriteMode = /*@__PURE__*/ S.String;
 
-export type Atime = "NONE" | "BEST_EFFORT" | (string & {});
+export type Atime = "NONE" | "BEST_EFFORT";
 export const Atime = /*@__PURE__*/ S.String;
 
-export type Mtime = "NONE" | "PRESERVE" | (string & {});
+export type Mtime = "NONE" | "PRESERVE";
 export const Mtime = /*@__PURE__*/ S.String;
 
-export type Uid = "NONE" | "INT_VALUE" | "NAME" | "BOTH" | (string & {});
+export type Uid = "NONE" | "INT_VALUE" | "NAME" | "BOTH";
 export const Uid = /*@__PURE__*/ S.String;
 
-export type Gid = "NONE" | "INT_VALUE" | "NAME" | "BOTH" | (string & {});
+export type Gid = "NONE" | "INT_VALUE" | "NAME" | "BOTH";
 export const Gid = /*@__PURE__*/ S.String;
 
-export type PreserveDeletedFiles = "PRESERVE" | "REMOVE" | (string & {});
+export type PreserveDeletedFiles = "PRESERVE" | "REMOVE";
 export const PreserveDeletedFiles = /*@__PURE__*/ S.String;
 
-export type PreserveDevices = "NONE" | "PRESERVE" | (string & {});
+export type PreserveDevices = "NONE" | "PRESERVE";
 export const PreserveDevices = /*@__PURE__*/ S.String;
 
-export type PosixPermissions = "NONE" | "PRESERVE" | (string & {});
+export type PosixPermissions = "NONE" | "PRESERVE";
 export const PosixPermissions = /*@__PURE__*/ S.String;
 
 export type BytesPerSecond = number;
-export type TaskQueueing = "ENABLED" | "DISABLED" | (string & {});
+export type TaskQueueing = "ENABLED" | "DISABLED";
 export const TaskQueueing = /*@__PURE__*/ S.String;
 
-export type LogLevel = "OFF" | "BASIC" | "TRANSFER" | (string & {});
+export type LogLevel = "OFF" | "BASIC" | "TRANSFER";
 export const LogLevel = /*@__PURE__*/ S.String;
 
-export type TransferMode = "CHANGED" | "ALL" | (string & {});
+export type TransferMode = "CHANGED" | "ALL";
 export const TransferMode = /*@__PURE__*/ S.String;
 
 export type SmbSecurityDescriptorCopyFlags =
   | "NONE"
   | "OWNER_DACL"
-  | "OWNER_DACL_SACL"
-  | (string & {});
+  | "OWNER_DACL_SACL";
 export const SmbSecurityDescriptorCopyFlags = /*@__PURE__*/ S.String;
 
-export type ObjectTags = "PRESERVE" | "NONE" | (string & {});
+export type ObjectTags = "PRESERVE" | "NONE";
 export const ObjectTags = /*@__PURE__*/ S.String;
 
 export interface Options {
@@ -931,7 +915,7 @@ export const Options = /*@__PURE__*/ S.suspend(() =>
     ObjectTags: S.optional(ObjectTags),
   }),
 ).annotate({ identifier: "Options" }) as any as S.Schema<Options>;
-export type FilterType = "SIMPLE_PATTERN" | (string & {});
+export type FilterType = "SIMPLE_PATTERN";
 export const FilterType = /*@__PURE__*/ S.String;
 
 export type FilterValue = string;
@@ -945,7 +929,7 @@ export const FilterRule = /*@__PURE__*/ S.suspend(() =>
 export type FilterList = FilterRule[];
 export const FilterList = /*@__PURE__*/ S.Array(FilterRule);
 export type ScheduleExpressionCron = string;
-export type ScheduleStatus = "ENABLED" | "DISABLED" | (string & {});
+export type ScheduleStatus = "ENABLED" | "DISABLED";
 export const ScheduleStatus = /*@__PURE__*/ S.String;
 
 export interface TaskSchedule {
@@ -958,10 +942,10 @@ export const TaskSchedule = /*@__PURE__*/ S.suspend(() =>
     Status: S.optional(ScheduleStatus),
   }),
 ).annotate({ identifier: "TaskSchedule" }) as any as S.Schema<TaskSchedule>;
-export type ManifestAction = "TRANSFER" | (string & {});
+export type ManifestAction = "TRANSFER";
 export const ManifestAction = /*@__PURE__*/ S.String;
 
-export type ManifestFormat = "CSV" | (string & {});
+export type ManifestFormat = "CSV";
 export const ManifestFormat = /*@__PURE__*/ S.String;
 
 export type S3ObjectVersionId = string;
@@ -1023,16 +1007,13 @@ export const ReportDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReportDestination",
 }) as any as S.Schema<ReportDestination>;
-export type ReportOutputType = "SUMMARY_ONLY" | "STANDARD" | (string & {});
+export type ReportOutputType = "SUMMARY_ONLY" | "STANDARD";
 export const ReportOutputType = /*@__PURE__*/ S.String;
 
-export type ReportLevel =
-  | "ERRORS_ONLY"
-  | "SUCCESSES_AND_ERRORS"
-  | (string & {});
+export type ReportLevel = "ERRORS_ONLY" | "SUCCESSES_AND_ERRORS";
 export const ReportLevel = /*@__PURE__*/ S.String;
 
-export type ObjectVersionIds = "INCLUDE" | "NONE" | (string & {});
+export type ObjectVersionIds = "INCLUDE" | "NONE";
 export const ObjectVersionIds = /*@__PURE__*/ S.String;
 
 export interface ReportOverride {
@@ -1075,7 +1056,7 @@ export const TaskReportConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TaskReportConfig",
 }) as any as S.Schema<TaskReportConfig>;
-export type TaskMode = "BASIC" | "ENHANCED" | (string & {});
+export type TaskMode = "BASIC" | "ENHANCED";
 export const TaskMode = /*@__PURE__*/ S.String;
 
 export interface CreateTaskRequest {
@@ -1090,7 +1071,7 @@ export interface CreateTaskRequest {
   Includes?: FilterRule[];
   ManifestConfig?: ManifestConfig;
   TaskReportConfig?: TaskReportConfig;
-  TaskMode?: TaskMode;
+  TaskMode?: TaskMode | (string & {});
 }
 export const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1179,15 +1160,14 @@ export const DescribeAgentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAgentRequest",
 }) as any as S.Schema<DescribeAgentRequest>;
-export type AgentStatus = "ONLINE" | "OFFLINE" | (string & {});
+export type AgentStatus = "ONLINE" | "OFFLINE";
 export const AgentStatus = /*@__PURE__*/ S.String;
 
 export type EndpointType =
   | "PUBLIC"
   | "PRIVATE_LINK"
   | "FIPS"
-  | "FIPS_PRIVATE_LINK"
-  | (string & {});
+  | "FIPS_PRIVATE_LINK";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 export type Endpoint = string;
@@ -1640,8 +1620,7 @@ export type TaskStatus =
   | "CREATING"
   | "QUEUED"
   | "RUNNING"
-  | "UNAVAILABLE"
-  | (string & {});
+  | "UNAVAILABLE";
 export const TaskStatus = /*@__PURE__*/ S.String;
 
 export type NetworkInterfaceArn = string;
@@ -1650,7 +1629,7 @@ export const SourceNetworkInterfaceArns = /*@__PURE__*/ S.Array(S.String);
 export type DestinationNetworkInterfaceArns = string[];
 export const DestinationNetworkInterfaceArns = /*@__PURE__*/ S.Array(S.String);
 export type ScheduleDisabledReason = string;
-export type ScheduleDisabledBy = "USER" | "SERVICE" | (string & {});
+export type ScheduleDisabledBy = "USER" | "SERVICE";
 export const ScheduleDisabledBy = /*@__PURE__*/ S.String;
 
 export interface TaskScheduleDetails {
@@ -1737,12 +1716,11 @@ export type TaskExecutionStatus =
   | "TRANSFERRING"
   | "VERIFYING"
   | "SUCCESS"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const TaskExecutionStatus = /*@__PURE__*/ S.String;
 
 export type Duration = number;
-export type PhaseStatus = "PENDING" | "SUCCESS" | "ERROR" | (string & {});
+export type PhaseStatus = "PENDING" | "SUCCESS" | "ERROR";
 export const PhaseStatus = /*@__PURE__*/ S.String;
 
 export interface TaskExecutionResultDetail {
@@ -1964,8 +1942,7 @@ export const ListAgentsResponse = /*@__PURE__*/ S.suspend(() =>
 export type LocationFilterName =
   | "LocationUri"
   | "LocationType"
-  | "CreationTime"
-  | (string & {});
+  | "CreationTime";
 export const LocationFilterName = /*@__PURE__*/ S.String;
 
 export type FilterAttributeValue = string;
@@ -1981,14 +1958,13 @@ export type Operator =
   | "GreaterThan"
   | "Contains"
   | "NotContains"
-  | "BeginsWith"
-  | (string & {});
+  | "BeginsWith";
 export const Operator = /*@__PURE__*/ S.String;
 
 export interface LocationFilter {
-  Name: LocationFilterName;
+  Name: LocationFilterName | (string & {});
   Values: string[];
-  Operator: Operator;
+  Operator: Operator | (string & {});
 }
 export const LocationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2116,13 +2092,13 @@ export const ListTaskExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTaskExecutionsResponse",
 }) as any as S.Schema<ListTaskExecutionsResponse>;
-export type TaskFilterName = "LocationId" | "CreationTime" | (string & {});
+export type TaskFilterName = "LocationId" | "CreationTime";
 export const TaskFilterName = /*@__PURE__*/ S.String;
 
 export interface TaskFilter {
-  Name: TaskFilterName;
+  Name: TaskFilterName | (string & {});
   Values: string[];
-  Operator: Operator;
+  Operator: Operator | (string & {});
 }
 export const TaskFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: TaskFilterName, Values: FilterValues, Operator: Operator }),
@@ -2258,10 +2234,10 @@ export const UpdateAgentResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLocationAzureBlobRequest {
   LocationArn: string;
   Subdirectory?: string;
-  AuthenticationType?: AzureBlobAuthenticationType;
+  AuthenticationType?: AzureBlobAuthenticationType | (string & {});
   SasConfiguration?: AzureBlobSasConfiguration;
-  BlobType?: AzureBlobType;
-  AccessTier?: AzureAccessTier;
+  BlobType?: AzureBlobType | (string & {});
+  AccessTier?: AzureAccessTier | (string & {});
   AgentArns?: string[];
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
@@ -2296,7 +2272,7 @@ export interface UpdateLocationEfsRequest {
   Subdirectory?: string;
   AccessPointArn?: string;
   FileSystemAccessRoleArn?: string;
-  InTransitEncryption?: EfsInTransitEncryption;
+  InTransitEncryption?: EfsInTransitEncryption | (string & {});
 }
 export const UpdateLocationEfsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2449,7 +2425,7 @@ export interface UpdateLocationHdfsRequest {
   ReplicationFactor?: number;
   KmsKeyProviderUri?: string;
   QopConfiguration?: QopConfiguration;
-  AuthenticationType?: HdfsAuthenticationType;
+  AuthenticationType?: HdfsAuthenticationType | (string & {});
   SimpleUser?: string;
   KerberosPrincipal?: string;
   KerberosKeytab?: Uint8Array;
@@ -2516,7 +2492,7 @@ export const UpdateLocationNfsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLocationObjectStorageRequest {
   LocationArn: string;
   ServerPort?: number;
-  ServerProtocol?: ObjectStorageServerProtocol;
+  ServerProtocol?: ObjectStorageServerProtocol | (string & {});
   Subdirectory?: string;
   ServerHostname?: string;
   AccessKey?: string;
@@ -2554,7 +2530,7 @@ export const UpdateLocationObjectStorageResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLocationS3Request {
   LocationArn: string;
   Subdirectory?: string;
-  S3StorageClass?: S3StorageClass;
+  S3StorageClass?: S3StorageClass | (string & {});
   S3Config?: S3Config;
 }
 export const UpdateLocationS3Request = /*@__PURE__*/ S.suspend(() =>
@@ -2586,7 +2562,7 @@ export interface UpdateLocationSmbRequest {
   CustomSecretConfig?: CustomSecretConfig;
   AgentArns?: string[];
   MountOptions?: SmbMountOptions;
-  AuthenticationType?: SmbAuthenticationType;
+  AuthenticationType?: SmbAuthenticationType | (string & {});
   DnsIpAddresses?: string[];
   KerberosPrincipal?: string;
   KerberosKeytab?: Uint8Array;

@@ -95,16 +95,14 @@ export type AgentRegistrationStatus =
   | "unverified"
   | "verified"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const AgentRegistrationStatus = /*@__PURE__*/ S.String;
 
 /** The kind of agent registration. */
 export type AgentRegistrationKind =
   | "anonymous"
   | "service_auth"
-  | "identity_assertion"
-  | (string & {});
+  | "identity_assertion";
 export const AgentRegistrationKind = /*@__PURE__*/ S.String;
 
 export interface AgentRegistrationClaimClaimCompletion {
@@ -235,8 +233,7 @@ export type ClaimViewResponseStatus =
   | "unverified"
   | "verified"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const ClaimViewResponseStatus = /*@__PURE__*/ S.String;
 
 export interface ClaimViewResponseOrganizationsItem {
@@ -959,18 +956,19 @@ export const ApplicationsControllerFindResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsControllerFindResponse",
 }) as any as S.Schema<ApplicationsControllerFindResponse>;
 
-export type PaginationOrder = "normal" | "desc" | "asc" | (string & {});
+export type PaginationOrder = "normal" | "desc" | "asc";
 export const PaginationOrder = /*@__PURE__*/ S.String;
 
 export type ApplicationsControllerListRequestRegistrationTypesItem =
   | "dynamic"
-  | "authenticated"
-  | (string & {});
+  | "authenticated";
 export const ApplicationsControllerListRequestRegistrationTypesItem =
   /*@__PURE__*/ S.String;
 
 export type ApplicationsControllerListRequestRegistrationTypesList =
-  ReadonlyArray<ApplicationsControllerListRequestRegistrationTypesItem>;
+  ReadonlyArray<
+    ApplicationsControllerListRequestRegistrationTypesItem | (string & {})
+  >;
 export const ApplicationsControllerListRequestRegistrationTypesList =
   /*@__PURE__*/ S.Array(
     ApplicationsControllerListRequestRegistrationTypesItem,
@@ -984,7 +982,7 @@ export interface ApplicationsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Filter Connect Applications by registration type. Specify multiple as a comma-separated list (e.g. `registration_types=dynamic,authenticated`). Defaults to `authenticated` only when not specified. */
   registration_types?: ApplicationsControllerListRequestRegistrationTypesList;
   /** Filter Connect Applications by organization ID. */
@@ -1395,12 +1393,7 @@ export const AuditLogExportsControllerExportRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuditLogExportsControllerExportRequest>;
 
 /** The state of the export. Possible values: pending, ready, error, expired. */
-export type AuditLogExportJsonState =
-  | "pending"
-  | "ready"
-  | "error"
-  | "expired"
-  | (string & {});
+export type AuditLogExportJsonState = "pending" | "ready" | "error" | "expired";
 export const AuditLogExportJsonState = /*@__PURE__*/ S.String;
 
 export interface AuditLogExportJson {
@@ -1569,7 +1562,7 @@ export interface AuditLogValidatorsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const AuditLogValidatorsControllerListRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1817,7 +1810,7 @@ export interface AuditLogValidatorVersionsControllerSchemasRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const AuditLogValidatorVersionsControllerSchemasRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1981,14 +1974,13 @@ export const AuthenticationFactorsControllerChallengeRequest =
 export type AuthenticationFactorsControllerCreateRequestType =
   | "generic_otp"
   | "sms"
-  | "totp"
-  | (string & {});
+  | "totp";
 export const AuthenticationFactorsControllerCreateRequestType =
   /*@__PURE__*/ S.String;
 
 export interface AuthenticationFactorsControllerCreateRequest {
   /** The type of factor to enroll. */
-  type: AuthenticationFactorsControllerCreateRequestType;
+  type: AuthenticationFactorsControllerCreateRequestType | (string & {});
   /** Required when type is 'sms'. */
   phone_number?: string;
   /** Required when type is 'totp'. */
@@ -2016,8 +2008,7 @@ export type AuthenticationFactorEnrolledType =
   | "generic_otp"
   | "sms"
   | "totp"
-  | "webauthn"
-  | (string & {});
+  | "webauthn";
 export const AuthenticationFactorEnrolledType = /*@__PURE__*/ S.String;
 
 /** SMS-based authentication factor details. */
@@ -2128,8 +2119,7 @@ export type AuthenticationFactorType =
   | "generic_otp"
   | "sms"
   | "totp"
-  | "webauthn"
-  | (string & {});
+  | "webauthn";
 export const AuthenticationFactorType = /*@__PURE__*/ S.String;
 
 /** SMS-based authentication factor details. */
@@ -2248,7 +2238,7 @@ export interface AuthorizationControllerListEffectivePermissionsRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const AuthorizationControllerListEffectivePermissionsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2362,7 +2352,7 @@ export interface AuthorizationControllerListEffectivePermissionsByExternalIdRequ
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const AuthorizationControllerListEffectivePermissionsByExternalIdRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2396,7 +2386,7 @@ export interface AuthorizationControllerListResourcesForMembershipRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** The permission slug to filter by. Only child resources where the organization membership has this permission are returned. */
   permission_slug: string;
   /** The WorkOS ID of the parent resource. Provide this or both `parent_resource_external_id` and `parent_resource_type_slug`, but not both. Mutually exclusive with `parent_resource_type_slug` and `parent_resource_external_id`. */
@@ -2633,7 +2623,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const AuthorizationGroupRoleAssignmentsControllerListRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2842,7 +2832,7 @@ export const AuthorizationOrganizationRolePermissionsControllerAddPermissionRequ
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolePermissionsControllerAddPermissionResponseType =
-  "EnvironmentRole" | "OrganizationRole" | (string & {});
+  "EnvironmentRole" | "OrganizationRole";
 export const AuthorizationOrganizationRolePermissionsControllerAddPermissionResponseType =
   /*@__PURE__*/ S.String;
 
@@ -2923,7 +2913,7 @@ export const AuthorizationOrganizationRolePermissionsControllerRemovePermissionR
   }) as any as S.Schema<AuthorizationOrganizationRolePermissionsControllerRemovePermissionRequest>;
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
-export type RoleType = "EnvironmentRole" | "OrganizationRole" | (string & {});
+export type RoleType = "EnvironmentRole" | "OrganizationRole";
 export const RoleType = /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
@@ -3007,7 +2997,7 @@ export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsReq
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponseType =
-  "EnvironmentRole" | "OrganizationRole" | (string & {});
+  "EnvironmentRole" | "OrganizationRole";
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponseType =
   /*@__PURE__*/ S.String;
 
@@ -3095,8 +3085,7 @@ export const AuthorizationOrganizationRolesControllerCreateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolesControllerCreateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationOrganizationRolesControllerCreateResponseType =
   /*@__PURE__*/ S.String;
 
@@ -3202,8 +3191,7 @@ export const AuthorizationOrganizationRolesControllerGetRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolesControllerGetResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationOrganizationRolesControllerGetResponseType =
   /*@__PURE__*/ S.String;
 
@@ -3324,8 +3312,7 @@ export const AuthorizationOrganizationRolesControllerUpdateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolesControllerUpdateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationOrganizationRolesControllerUpdateResponseType =
   /*@__PURE__*/ S.String;
 
@@ -3491,7 +3478,7 @@ export interface AuthorizationPermissionsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const AuthorizationPermissionsControllerListRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3595,7 +3582,7 @@ export const AuthorizationResourcesByExternalIdControllerGetByExternalIdRequest 
   }) as any as S.Schema<AuthorizationResourcesByExternalIdControllerGetByExternalIdRequest>;
 
 export type AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequestAssignment =
-  "direct" | "indirect" | (string & {});
+  "direct" | "indirect";
 export const AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequestAssignment =
   /*@__PURE__*/ S.String;
 
@@ -3613,11 +3600,13 @@ export interface AuthorizationResourcesByExternalIdControllerListOrganizationMem
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** The permission slug to filter by. Only users with this permission on the resource are returned. */
   permission_slug: string;
   /** Filter by assignment type. Use "direct" for direct assignments only, or "indirect" to include inherited assignments. */
-  assignment?: AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequestAssignment;
+  assignment?:
+    | AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequestAssignment
+    | (string & {});
 }
 export const AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3651,8 +3640,7 @@ export const AuthorizationResourcesByExternalIdControllerListOrganizationMembers
 export type UserlandUserOrganizationMembershipBaseWithUserStatus =
   | "active"
   | "inactive"
-  | "pending"
-  | (string & {});
+  | "pending";
 export const UserlandUserOrganizationMembershipBaseWithUserStatus =
   /*@__PURE__*/ S.String;
 
@@ -4026,7 +4014,7 @@ export interface AuthorizationResourcesControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Filter resources by organization ID. */
   organization_id?: string;
   /** Filter resources by resource type slug. */
@@ -4061,7 +4049,7 @@ export const AuthorizationResourcesControllerListRequest =
   }) as any as S.Schema<AuthorizationResourcesControllerListRequest>;
 
 export type AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequestAssignment =
-  "direct" | "indirect" | (string & {});
+  "direct" | "indirect";
 export const AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequestAssignment =
   /*@__PURE__*/ S.String;
 
@@ -4075,11 +4063,13 @@ export interface AuthorizationResourcesControllerListOrganizationMembershipsForR
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** The permission slug to filter by. Only users with this permission on the resource are returned. */
   permission_slug: string;
   /** Filter by assignment type. Use `direct` for direct assignments only, or `indirect` to include inherited assignments. */
-  assignment?: AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequestAssignment;
+  assignment?:
+    | AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequestAssignment
+    | (string & {});
 }
 export const AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4232,7 +4222,7 @@ export const UserRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserRoleAssignmentResource>;
 
 /** Whether the role was assigned directly or derived from a group. */
-export type UserRoleAssignmentSourceType = "direct" | "group" | (string & {});
+export type UserRoleAssignmentSourceType = "direct" | "group";
 export const UserRoleAssignmentSourceType = /*@__PURE__*/ S.String;
 
 /** The origin of the role assignment. */
@@ -4294,7 +4284,7 @@ export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsReques
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Filter assignments by the ID of the resource. */
   resource_id?: string;
   /** Filter assignments by the external ID of the resource. */
@@ -4375,7 +4365,7 @@ export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsForRes
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Filter assignments by the slug of the role. */
   role_slug?: string;
 }
@@ -4414,7 +4404,7 @@ export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsForRes
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Filter assignments by the slug of the role. */
   role_slug?: string;
 }
@@ -4530,8 +4520,7 @@ export const AuthorizationRolePermissionsControllerAddPermissionRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolePermissionsControllerAddPermissionResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationRolePermissionsControllerAddPermissionResponseType =
   /*@__PURE__*/ S.String;
 
@@ -4619,8 +4608,7 @@ export const AuthorizationRolePermissionsControllerSetPermissionsRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolePermissionsControllerSetPermissionsResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationRolePermissionsControllerSetPermissionsResponseType =
   /*@__PURE__*/ S.String;
 
@@ -4698,8 +4686,7 @@ export const AuthorizationRolesControllerCreateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolesControllerCreateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationRolesControllerCreateResponseType =
   /*@__PURE__*/ S.String;
 
@@ -4804,8 +4791,7 @@ export const AuthorizationRolesControllerUpdateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolesControllerUpdateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationRolesControllerUpdateResponseType =
   /*@__PURE__*/ S.String;
 
@@ -4895,7 +4881,7 @@ export interface AuthorizedApplicationsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const AuthorizedApplicationsControllerListRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5101,8 +5087,7 @@ export type ConnectionConnectionType =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "VMwareSAML"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const ConnectionConnectionType = /*@__PURE__*/ S.String;
 
 /** Indicates whether a Connection is able to authenticate users. */
@@ -5112,12 +5097,11 @@ export type ConnectionState =
   | "active"
   | "validating"
   | "inactive"
-  | "deleting"
-  | (string & {});
+  | "deleting";
 export const ConnectionState = /*@__PURE__*/ S.String;
 
 /** Deprecated. Use `state` instead. */
-export type ConnectionStatus = "linked" | "unlinked" | (string & {});
+export type ConnectionStatus = "linked" | "unlinked";
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface ConnectionDomainsItem {
@@ -5232,8 +5216,7 @@ export type ConnectionsControllerListRequestConnectionType =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "VMwareSAML"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const ConnectionsControllerListRequestConnectionType =
   /*@__PURE__*/ S.String;
 
@@ -5245,9 +5228,11 @@ export interface ConnectionsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Filter Connections by their type. */
-  connection_type?: ConnectionsControllerListRequestConnectionType;
+  connection_type?:
+    | ConnectionsControllerListRequestConnectionType
+    | (string & {});
   /** Filter Connections by their associated domain. */
   domain?: string;
   /** Filter Connections by their associated organization. */
@@ -5361,7 +5346,7 @@ export interface CorsOriginsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const CorsOriginsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5546,8 +5531,7 @@ export const DataIntegrationAccessTokenResponseCase0 = /*@__PURE__*/ S.suspend(
 /** - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
 export type DataIntegrationAccessTokenResponseCase1Error =
   | "needs_reauthorization"
-  | "not_installed"
-  | (string & {});
+  | "not_installed";
 export const DataIntegrationAccessTokenResponseCase1Error =
   /*@__PURE__*/ S.String;
 
@@ -5617,15 +5601,14 @@ export const ConnectedAccountScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConnectedAccountScopesList>;
 
 /** The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent. */
-export type ConnectedAccountAuthMethod = "oauth" | "api_key" | (string & {});
+export type ConnectedAccountAuthMethod = "oauth" | "api_key";
 export const ConnectedAccountAuthMethod = /*@__PURE__*/ S.String;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type ConnectedAccountState =
   | "connected"
   | "needs_reauthorization"
-  | "disconnected"
-  | (string & {});
+  | "disconnected";
 export const ConnectedAccountState = /*@__PURE__*/ S.String;
 
 export interface ConnectedAccount {
@@ -5793,8 +5776,7 @@ export const DataIntegrationCredentialsResponseCase1 = /*@__PURE__*/ S.suspend(
 /** The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully. - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
 export type DataIntegrationCredentialsResponseCase2Error =
   | "not_installed"
-  | "needs_reauthorization"
-  | (string & {});
+  | "needs_reauthorization";
 export const DataIntegrationCredentialsResponseCase2Error =
   /*@__PURE__*/ S.String;
 
@@ -5839,13 +5821,16 @@ export const DataIntegrationsManagementControllerCreateDataIntegrationRequestSco
   ) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList>;
 
 export type DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem =
-  "oauth" | "api_key" | (string & {});
+  "oauth" | "api_key";
 export const DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem =
   /*@__PURE__*/ S.String;
 
 /** How accounts authenticate with the provider. Defaults to `["oauth"]`. Use `["api_key"]` to declare an API key integration; `credentials` is then not required and keys are supplied per-tenant (optionally via `api_key` on this request). */
 export type DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsList =
-  ReadonlyArray<DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem>;
+  ReadonlyArray<
+    | DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem
+    | (string & {})
+  >;
 export const DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsList =
   /*@__PURE__*/ S.Array(
     DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem,
@@ -5861,15 +5846,12 @@ export const DataIntegrationsManagementControllerCreateDataIntegrationRequestCon
   ) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequestConfigMap>;
 
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
-export type DataIntegrationCredentialsDtoType =
-  | "custom"
-  | "organization"
-  | (string & {});
+export type DataIntegrationCredentialsDtoType = "custom" | "organization";
 export const DataIntegrationCredentialsDtoType = /*@__PURE__*/ S.String;
 
 export interface DataIntegrationCredentialsDto {
   /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
-  type: DataIntegrationCredentialsDtoType;
+  type: DataIntegrationCredentialsDtoType | (string & {});
   /** OAuth client ID for the provider app. Required when `type` is `custom`; omit for `organization`. */
   client_id?: string;
   /** OAuth client secret for the provider app. Required when `type` is `custom`; omit for `organization`. */
@@ -5916,8 +5898,7 @@ export const CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type CustomProviderDefinitionDtoAuthenticateVia =
   | "request_body"
-  | "basic_auth_header"
-  | (string & {});
+  | "basic_auth_header";
 export const CustomProviderDefinitionDtoAuthenticateVia =
   /*@__PURE__*/ S.String;
 
@@ -5943,7 +5924,7 @@ export interface CustomProviderDefinitionDto {
   /** The Content-Type used when exchanging the token request. */
   token_body_content_type?: string;
   /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
-  authenticate_via?: CustomProviderDefinitionDtoAuthenticateVia;
+  authenticate_via?: CustomProviderDefinitionDtoAuthenticateVia | (string & {});
 }
 export const CustomProviderDefinitionDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6012,11 +5993,7 @@ export const DataIntegrationsManagementControllerCreateDataIntegrationRequest =
   }) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequest>;
 
 /** The state of the Data Integration. */
-export type DataIntegrationState =
-  | "valid"
-  | "invalid"
-  | "requested"
-  | (string & {});
+export type DataIntegrationState = "valid" | "invalid" | "requested";
 export const DataIntegrationState = /*@__PURE__*/ S.String;
 
 export type DataIntegrationScopesList = ReadonlyArray<string>;
@@ -6024,10 +6001,7 @@ export const DataIntegrationScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataIntegrationScopesList>;
 
-export type DataIntegrationAuthMethodsItem =
-  | "oauth"
-  | "api_key"
-  | (string & {});
+export type DataIntegrationAuthMethodsItem = "oauth" | "api_key";
 export const DataIntegrationAuthMethodsItem = /*@__PURE__*/ S.String;
 
 /** How accounts authenticate with the provider for this Data Integration. */
@@ -6038,10 +6012,7 @@ export const DataIntegrationAuthMethodsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DataIntegrationAuthMethodsList>;
 
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (so `client_id`/`redacted_client_secret` are null on the integration itself). */
-export type DataIntegrationCredentialsType =
-  | "custom"
-  | "organization"
-  | (string & {});
+export type DataIntegrationCredentialsType = "custom" | "organization";
 export const DataIntegrationCredentialsType = /*@__PURE__*/ S.String;
 
 /** The credentials configured for the Data Integration. */
@@ -6103,8 +6074,7 @@ export const DataIntegrationCustomProviderAdditionalAuthorizationParametersMap =
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type DataIntegrationCustomProviderAuthenticateVia =
   | "request_body"
-  | "basic_auth_header"
-  | (string & {});
+  | "basic_auth_header";
 export const DataIntegrationCustomProviderAuthenticateVia =
   /*@__PURE__*/ S.String;
 
@@ -6254,7 +6224,7 @@ export interface DataIntegrationsManagementControllerListDataIntegrationsRequest
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const DataIntegrationsManagementControllerListDataIntegrationsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6329,8 +6299,7 @@ export const UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersM
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type UpdateCustomProviderDefinitionDtoAuthenticateVia =
   | "request_body"
-  | "basic_auth_header"
-  | (string & {});
+  | "basic_auth_header";
 export const UpdateCustomProviderDefinitionDtoAuthenticateVia =
   /*@__PURE__*/ S.String;
 
@@ -6356,7 +6325,9 @@ export interface UpdateCustomProviderDefinitionDto {
   /** The Content-Type used when exchanging the token request. */
   token_body_content_type?: string;
   /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
-  authenticate_via?: UpdateCustomProviderDefinitionDtoAuthenticateVia;
+  authenticate_via?:
+    | UpdateCustomProviderDefinitionDtoAuthenticateVia
+    | (string & {});
 }
 export const UpdateCustomProviderDefinitionDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6428,7 +6399,7 @@ export const DataIntegrationsUserManagementControllerCreateUserDataInstallationR
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState =
-  "connected" | "needs_reauthorization" | (string & {});
+  "connected" | "needs_reauthorization";
 export const DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState =
   /*@__PURE__*/ S.String;
 
@@ -6448,7 +6419,9 @@ export interface DataIntegrationsUserManagementControllerCreateUserDataInstallat
   /** The OAuth scopes granted for this connection. */
   scopes?: DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestScopesList;
   /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
-  state?: DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState;
+  state?:
+    | DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState
+    | (string & {});
 }
 export const DataIntegrationsUserManagementControllerCreateUserDataInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6568,8 +6541,7 @@ export const DataIntegrationsListResponseDataItemScopesList =
 
 export type DataIntegrationsListResponseDataItemAuthMethodsItem =
   | "oauth"
-  | "api_key"
-  | (string & {});
+  | "api_key";
 export const DataIntegrationsListResponseDataItemAuthMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -6584,8 +6556,7 @@ export const DataIntegrationsListResponseDataItemAuthMethodsList =
 /** Whether the provider is owned by a user or organization. */
 export type DataIntegrationsListResponseDataItemOwnership =
   | "userland_user"
-  | "organization"
-  | (string & {});
+  | "organization";
 export const DataIntegrationsListResponseDataItemOwnership =
   /*@__PURE__*/ S.String;
 
@@ -6600,8 +6571,7 @@ export const DataIntegrationsListResponseDataItemConnectedAccountScopesList =
 /** The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent. */
 export type DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
   | "oauth"
-  | "api_key"
-  | (string & {});
+  | "api_key";
 export const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -6609,8 +6579,7 @@ export const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
 export type DataIntegrationsListResponseDataItemConnectedAccountState =
   | "connected"
   | "needs_reauthorization"
-  | "disconnected"
-  | (string & {});
+  | "disconnected";
 export const DataIntegrationsListResponseDataItemConnectedAccountState =
   /*@__PURE__*/ S.String;
 
@@ -6765,7 +6734,7 @@ export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationR
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState =
-  "connected" | "needs_reauthorization" | (string & {});
+  "connected" | "needs_reauthorization";
 export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState =
   /*@__PURE__*/ S.String;
 
@@ -6785,7 +6754,9 @@ export interface DataIntegrationsUserManagementControllerUpdateUserDataInstallat
   /** The OAuth scopes granted for this connection. */
   scopes?: DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestScopesList;
   /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
-  state?: DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState;
+  state?:
+    | DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState
+    | (string & {});
 }
 export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6867,8 +6838,7 @@ export type DirectoryType =
   | "s3"
   | "sftp"
   | "sftp workday"
-  | "workday"
-  | (string & {});
+  | "workday";
 export const DirectoryType = /*@__PURE__*/ S.String;
 
 /** Describes whether the Directory has been successfully connected to an external provider. */
@@ -6877,8 +6847,7 @@ export type DirectoryState =
   | "validating"
   | "invalid_credentials"
   | "unlinked"
-  | "deleting"
-  | (string & {});
+  | "deleting";
 export const DirectoryState = /*@__PURE__*/ S.String;
 
 /** Counts of active and inactive directory users. */
@@ -6961,7 +6930,7 @@ export interface DirectoriesControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Filter Directories by their associated organization. */
   organization_id?: string;
   /** Searchable text to match against Directory names. */
@@ -7087,7 +7056,7 @@ export interface DirectoryGroupsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Unique identifier of the WorkOS Directory. This value can be obtained from the WorkOS dashboard or from the WorkOS API. */
   directory?: string;
   /** Unique identifier of the WorkOS Directory User. This value can be obtained from the WorkOS API. */
@@ -7185,11 +7154,7 @@ export const DirectoryUserWithGroupsEmailsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DirectoryUserWithGroupsEmailsList>;
 
 /** The state of the user. */
-export type DirectoryUserWithGroupsState =
-  | "active"
-  | "suspended"
-  | "inactive"
-  | (string & {});
+export type DirectoryUserWithGroupsState = "active" | "suspended" | "inactive";
 export const DirectoryUserWithGroupsState = /*@__PURE__*/ S.String;
 
 /** The raw attributes received from the directory provider. */
@@ -7299,7 +7264,7 @@ export interface DirectoryUsersControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Unique identifier of the WorkOS Directory. This value can be obtained from the WorkOS dashboard or from the WorkOS API. */
   directory?: string;
   /** Unique identifier of the WorkOS Directory Group. This value can be obtained from the WorkOS API. */
@@ -7377,7 +7342,7 @@ export interface EventsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Filter events by one or more event types (e.g. `dsync.user.created`). */
   events?: EventsControllerListRequestEventsList;
   /** ISO-8601 date string to filter events created after this date. */
@@ -7852,7 +7817,7 @@ export interface FeatureFlagsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const FeatureFlagsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8024,7 +7989,7 @@ export interface GroupMembershipsControllerListMembersRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const GroupMembershipsControllerListMembersRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8050,8 +8015,7 @@ export const GroupMembershipsControllerListMembersRequest =
 export type UserlandUserOrganizationMembershipBaseListDataItemStatus =
   | "active"
   | "inactive"
-  | "pending"
-  | (string & {});
+  | "pending";
 export const UserlandUserOrganizationMembershipBaseListDataItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -8266,7 +8230,7 @@ export interface GroupsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const GroupsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8493,10 +8457,7 @@ export const ObjectWithoutValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectWithoutValue",
 }) as any as S.Schema<ObjectWithoutValue>;
 
-export type JumpWireWebDataVaultControllerIndexRequestOrder =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type JumpWireWebDataVaultControllerIndexRequestOrder = "asc" | "desc";
 export const JumpWireWebDataVaultControllerIndexRequestOrder =
   /*@__PURE__*/ S.String;
 
@@ -8508,7 +8469,7 @@ export interface JumpWireWebDataVaultControllerIndexRequest {
   /** Cursor for the next page of results. */
   after?: string;
   /** Sort direction for results. */
-  order?: JumpWireWebDataVaultControllerIndexRequestOrder;
+  order?: JumpWireWebDataVaultControllerIndexRequestOrder | (string & {});
   /** Filter results by name or structured search JSON. */
   search?: string;
   /** ISO 8601 timestamp to filter by last modified time. */
@@ -8980,7 +8941,7 @@ export interface OrganizationApiKeysControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const OrganizationApiKeysControllerListRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -9112,7 +9073,7 @@ export interface OrganizationAuthorizedApplicationsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const OrganizationAuthorizedApplicationsControllerListRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9237,16 +9198,14 @@ export type OrganizationDomainsControllerCreateResponseState =
   | "legacy_verified"
   | "pending"
   | "unverified"
-  | "verified"
-  | (string & {});
+  | "verified";
 export const OrganizationDomainsControllerCreateResponseState =
   /*@__PURE__*/ S.String;
 
 /** Strategy used to verify the domain. */
 export type OrganizationDomainsControllerCreateResponseVerificationStrategy =
   | "dns"
-  | "manual"
-  | (string & {});
+  | "manual";
 export const OrganizationDomainsControllerCreateResponseVerificationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -9338,15 +9297,11 @@ export type OrganizationDomainStandAloneState =
   | "legacy_verified"
   | "pending"
   | "unverified"
-  | "verified"
-  | (string & {});
+  | "verified";
 export const OrganizationDomainStandAloneState = /*@__PURE__*/ S.String;
 
 /** Strategy used to verify the domain. */
-export type OrganizationDomainStandAloneVerificationStrategy =
-  | "dns"
-  | "manual"
-  | (string & {});
+export type OrganizationDomainStandAloneVerificationStrategy = "dns" | "manual";
 export const OrganizationDomainStandAloneVerificationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -9420,7 +9375,7 @@ export interface OrganizationFeatureFlagsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const OrganizationFeatureFlagsControllerListRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9451,7 +9406,7 @@ export interface OrganizationMembershipGroupsControllerListGroupsRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const OrganizationMembershipGroupsControllerListGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9481,17 +9436,14 @@ export const OrganizationsControllerCreateRequestDomainsList =
   ) as any as S.Schema<OrganizationsControllerCreateRequestDomainsList>;
 
 /** The verification state of the domain. */
-export type OrganizationDomainDataDtoState =
-  | "pending"
-  | "verified"
-  | (string & {});
+export type OrganizationDomainDataDtoState = "pending" | "verified";
 export const OrganizationDomainDataDtoState = /*@__PURE__*/ S.String;
 
 export interface OrganizationDomainDataDto {
   /** The domain value. */
   domain?: string;
   /** The verification state of the domain. */
-  state?: OrganizationDomainDataDtoState;
+  state?: OrganizationDomainDataDtoState | (string & {});
 }
 export const OrganizationDomainDataDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9558,15 +9510,11 @@ export type OrganizationDomainsItemState =
   | "legacy_verified"
   | "pending"
   | "unverified"
-  | "verified"
-  | (string & {});
+  | "verified";
 export const OrganizationDomainsItemState = /*@__PURE__*/ S.String;
 
 /** Strategy used to verify the domain. */
-export type OrganizationDomainsItemVerificationStrategy =
-  | "dns"
-  | "manual"
-  | (string & {});
+export type OrganizationDomainsItemVerificationStrategy = "dns" | "manual";
 export const OrganizationDomainsItemVerificationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -9714,11 +9662,7 @@ export const OrganizationsControllerGetAuditLogConfigurationRequest =
   }) as any as S.Schema<OrganizationsControllerGetAuditLogConfigurationRequest>;
 
 /** The current state of the audit log configuration for the organization. */
-export type AuditLogConfigurationState =
-  | "active"
-  | "inactive"
-  | "disabled"
-  | (string & {});
+export type AuditLogConfigurationState = "active" | "inactive" | "disabled";
 export const AuditLogConfigurationState = /*@__PURE__*/ S.String;
 
 /** The type of the Audit Log Stream destination. */
@@ -9729,8 +9673,7 @@ export type AuditLogConfigurationLogStreamType =
   | "GoogleCloudStorage"
   | "S3"
   | "Snowflake"
-  | "Splunk"
-  | (string & {});
+  | "Splunk";
 export const AuditLogConfigurationLogStreamType = /*@__PURE__*/ S.String;
 
 /** The current state of the Audit Log Stream. */
@@ -9738,8 +9681,7 @@ export type AuditLogConfigurationLogStreamState =
   | "active"
   | "inactive"
   | "error"
-  | "invalid"
-  | (string & {});
+  | "invalid";
 export const AuditLogConfigurationLogStreamState = /*@__PURE__*/ S.String;
 
 /** The Audit Log Stream currently configured for the organization, if any. */
@@ -9822,7 +9764,7 @@ export interface OrganizationsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** The domains of an Organization. Any Organization with a matching domain will be returned. */
   domains?: OrganizationsControllerListRequestDomainsList;
   /** Searchable text for an Organization. Matches against the organization name. */
@@ -9957,8 +9899,7 @@ export type PortalSessionsControllerCreateRequestIntent =
   | "log_streams"
   | "domain_verification"
   | "certificate_renewal"
-  | "bring_your_own_key"
-  | (string & {});
+  | "bring_your_own_key";
 export const PortalSessionsControllerCreateRequestIntent =
   /*@__PURE__*/ S.String;
 
@@ -9978,7 +9919,7 @@ export interface PortalSessionsControllerCreateRequest {
   /** An [Organization](/reference/organization) identifier. */
   organization?: string;
   /** The intent of the Admin Portal. - `sso` - Launch Admin Portal for creating SSO connections - `dsync` - Launch Admin Portal for creating Directory Sync connections - `audit_logs` - Launch Admin Portal for viewing Audit Logs - `log_streams` - Launch Admin Portal for creating Log Streams - `domain_verification` - Launch Admin Portal for Domain Verification - `certificate_renewal` - Launch Admin Portal for renewing SAML Certificates - `bring_your_own_key` - Launch Admin Portal for configuring Bring Your Own Key */
-  intent?: PortalSessionsControllerCreateRequestIntent;
+  intent?: PortalSessionsControllerCreateRequestIntent | (string & {});
   /** The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails. */
   it_contact_emails?: PortalSessionsControllerCreateRequestItContactEmailsList;
 }
@@ -10062,8 +10003,7 @@ export const DataIntegrationConfigurationResponseScopesList =
 export type DataIntegrationCredentialsCredentialsType =
   | "shared"
   | "custom"
-  | "organization"
-  | (string & {});
+  | "organization";
 export const DataIntegrationCredentialsCredentialsType = /*@__PURE__*/ S.String;
 
 /** Organization-managed OAuth credential configuration. Present only for integrations whose credentials are supplied by the organization; absent otherwise. */
@@ -10281,16 +10221,14 @@ export type RadarStandaloneControllerAssessRequestAuthMethod =
   | "Email_OTP"
   | "Social"
   | "SSO"
-  | "Other"
-  | (string & {});
+  | "Other";
 export const RadarStandaloneControllerAssessRequestAuthMethod =
   /*@__PURE__*/ S.String;
 
 /** The action being performed. */
 export type RadarStandaloneControllerAssessRequestAction =
   | "sign-up"
-  | "sign-in"
-  | (string & {});
+  | "sign-in";
 export const RadarStandaloneControllerAssessRequestAction =
   /*@__PURE__*/ S.String;
 
@@ -10302,9 +10240,9 @@ export interface RadarStandaloneControllerAssessRequest {
   /** The email address of the user making the request. */
   email: string;
   /** The authentication method being used. */
-  auth_method: RadarStandaloneControllerAssessRequestAuthMethod;
+  auth_method: RadarStandaloneControllerAssessRequestAuthMethod | (string & {});
   /** The action being performed. */
-  action: RadarStandaloneControllerAssessRequestAction;
+  action: RadarStandaloneControllerAssessRequestAction | (string & {});
   /** An optional Radar signals ID for the request. */
   signals_id?: string;
 }
@@ -10323,11 +10261,7 @@ export const RadarStandaloneControllerAssessRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RadarStandaloneControllerAssessRequest>;
 
 /** The verdict of the risk assessment. */
-export type RadarStandaloneResponseVerdict =
-  | "allow"
-  | "block"
-  | "challenge"
-  | (string & {});
+export type RadarStandaloneResponseVerdict = "allow" | "block" | "challenge";
 export const RadarStandaloneResponseVerdict = /*@__PURE__*/ S.String;
 
 /** The Radar control that triggered the verdict. Only present if the verdict is `block` or `challenge`. */
@@ -10338,8 +10272,7 @@ export type RadarStandaloneResponseControl =
   | "repeat_sign_up"
   | "stale_account"
   | "unrecognized_device"
-  | "restriction"
-  | (string & {});
+  | "restriction";
 export const RadarStandaloneResponseControl = /*@__PURE__*/ S.String;
 
 /** The type of blocklist entry that triggered the verdict. Only present if the control is `restriction`. */
@@ -10350,8 +10283,7 @@ export type RadarStandaloneResponseBlocklistType =
   | "device"
   | "user_agent"
   | "device_fingerprint"
-  | "country"
-  | (string & {});
+  | "country";
 export const RadarStandaloneResponseBlocklistType = /*@__PURE__*/ S.String;
 
 export interface RadarStandaloneResponse {
@@ -10385,23 +10317,25 @@ export type RadarStandaloneControllerDeleteRadarListEntryRequestType =
   | "device"
   | "user_agent"
   | "device_fingerprint"
-  | "country"
-  | (string & {});
+  | "country";
 export const RadarStandaloneControllerDeleteRadarListEntryRequestType =
   /*@__PURE__*/ S.String;
 
 export type RadarStandaloneControllerDeleteRadarListEntryRequestAction =
   | "block"
-  | "allow"
-  | (string & {});
+  | "allow";
 export const RadarStandaloneControllerDeleteRadarListEntryRequestAction =
   /*@__PURE__*/ S.String;
 
 export interface RadarStandaloneControllerDeleteRadarListEntryRequest {
   /** The type of the Radar list (e.g. ip_address, domain, email). */
-  type: RadarStandaloneControllerDeleteRadarListEntryRequestType;
+  type:
+    | RadarStandaloneControllerDeleteRadarListEntryRequestType
+    | (string & {});
   /** The list action indicating whether to remove the entry from the allow or block list. */
-  action: RadarStandaloneControllerDeleteRadarListEntryRequestAction;
+  action:
+    | RadarStandaloneControllerDeleteRadarListEntryRequestAction
+    | (string & {});
   /** The value to remove from the list. Must match an existing entry. */
   entry: string;
 }
@@ -10464,23 +10398,21 @@ export type RadarStandaloneControllerUpdateRadarListRequestType =
   | "device"
   | "user_agent"
   | "device_fingerprint"
-  | "country"
-  | (string & {});
+  | "country";
 export const RadarStandaloneControllerUpdateRadarListRequestType =
   /*@__PURE__*/ S.String;
 
 export type RadarStandaloneControllerUpdateRadarListRequestAction =
   | "block"
-  | "allow"
-  | (string & {});
+  | "allow";
 export const RadarStandaloneControllerUpdateRadarListRequestAction =
   /*@__PURE__*/ S.String;
 
 export interface RadarStandaloneControllerUpdateRadarListRequest {
   /** The type of the Radar list (e.g. ip_address, domain, email). */
-  type: RadarStandaloneControllerUpdateRadarListRequestType;
+  type: RadarStandaloneControllerUpdateRadarListRequestType | (string & {});
   /** The list action indicating whether to add the entry to the allow or block list. */
-  action: RadarStandaloneControllerUpdateRadarListRequestAction;
+  action: RadarStandaloneControllerUpdateRadarListRequestAction | (string & {});
   /** The value to add to the list. Must match the format of the list type (e.g. a valid IP address for `ip_address`, a valid email for `email`). */
   entry: string;
 }
@@ -10592,7 +10524,7 @@ export interface RedirectUrisControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const RedirectUrisControllerListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10678,8 +10610,7 @@ export type SsoControllerAuthorizeRequestProvider =
   | "SlackOAuth"
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const SsoControllerAuthorizeRequestProvider = /*@__PURE__*/ S.String;
 
 export interface SsoControllerAuthorizeRequest {
@@ -10692,7 +10623,7 @@ export interface SsoControllerAuthorizeRequest {
   /** Deprecated. Use `connection` or `organization` instead. Used to initiate SSO for a connection by domain. The domain must be associated with a connection in your WorkOS environment. */
   domain?: string;
   /** Used to initiate OAuth authentication with various providers. */
-  provider?: SsoControllerAuthorizeRequestProvider;
+  provider?: SsoControllerAuthorizeRequestProvider | (string & {});
   /** Where to redirect the user after they complete the authentication process. You must use one of the redirect URIs configured via the [Redirects](https://dashboard.workos.com/redirects) page on the dashboard. */
   redirect_uri: string;
   /** The only valid option for the response type parameter is `"code"`. The `"code"` parameter value initiates an [authorization code grant type](https://tools.ietf.org/html/rfc6749#section-4.1). This grant type allows you to exchange an authorization code for an access token during the redirect that takes place after a user has authenticated with an identity provider. */
@@ -10808,8 +10739,7 @@ export type ProfileConnectionType =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "VMwareSAML"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const ProfileConnectionType = /*@__PURE__*/ S.String;
 
 export type ProfileRolesList = ReadonlyArray<SlimRole>;
@@ -11193,7 +11123,7 @@ export interface UserApiKeysControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** The ID of the organization to filter user API keys by. When provided, only API keys created against that organization membership are returned. */
   organization_id?: string;
 }
@@ -11847,8 +11777,7 @@ export type UserlandAuthenticateResponseAuthenticationMethod =
   | "XeroOAuth"
   | "MagicAuth"
   | "Impersonation"
-  | "MigratedSession"
-  | (string & {});
+  | "MigratedSession";
 export const UserlandAuthenticateResponseAuthenticationMethod =
   /*@__PURE__*/ S.String;
 
@@ -12010,8 +11939,7 @@ export const UserlandSsoControllerAuthorizeRequestProviderScopesList =
 
 export type UserlandSsoControllerAuthorizeRequestScreenHint =
   | "sign-up"
-  | "sign-in"
-  | (string & {});
+  | "sign-in";
 export const UserlandSsoControllerAuthorizeRequestScreenHint =
   /*@__PURE__*/ S.String;
 
@@ -12029,8 +11957,7 @@ export type UserlandSsoControllerAuthorizeRequestProvider =
   | "SlackOAuth"
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const UserlandSsoControllerAuthorizeRequestProvider =
   /*@__PURE__*/ S.String;
 
@@ -12052,11 +11979,11 @@ export interface UserlandSsoControllerAuthorizeRequest {
   /** Maximum allowable elapsed time, in seconds, since the user last actively authenticated. If the last authentication is older than this value, the user is prompted to re-authenticate; a value of `0` forces re-authentication. Only supported when the provider is `authkit`. */
   max_age?: number;
   /** Used to specify which screen to display when the provider is `authkit`. */
-  screen_hint?: UserlandSsoControllerAuthorizeRequestScreenHint;
+  screen_hint?: UserlandSsoControllerAuthorizeRequestScreenHint | (string & {});
   /** A hint to the authorization server about the login identifier the user might use. */
   login_hint?: string;
   /** The OAuth provider to authenticate with (e.g., GoogleOAuth, MicrosoftOAuth, GitHubOAuth). */
-  provider?: UserlandSsoControllerAuthorizeRequestProvider;
+  provider?: UserlandSsoControllerAuthorizeRequestProvider | (string & {});
   /** Controls the authentication flow behavior for the user. */
   prompt?: string;
   /** An opaque value used to maintain state between the request and the callback. */
@@ -12217,7 +12144,7 @@ export interface UserlandUserAuthenticationFactorsControllerList0Request {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const UserlandUserAuthenticationFactorsControllerList0Request =
   /*@__PURE__*/ S.suspend(() =>
@@ -12294,7 +12221,7 @@ export interface UserlandUserFeatureFlagsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const UserlandUserFeatureFlagsControllerListRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12349,8 +12276,7 @@ export type UserlandUserIdentitiesControllerGetResponseBodyItemProvider =
   | "SlackOAuth"
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const UserlandUserIdentitiesControllerGetResponseBodyItemProvider =
   /*@__PURE__*/ S.String;
 
@@ -12415,8 +12341,7 @@ export type UserlandUserInvitesControllerAcceptResponseState =
   | "pending"
   | "accepted"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const UserlandUserInvitesControllerAcceptResponseState =
   /*@__PURE__*/ S.String;
 
@@ -12566,8 +12491,7 @@ export type UserlandUserInvitesControllerCreateRequestLocale =
   | "zh-CN"
   | "zh-HK"
   | "zh-TW"
-  | "zu"
-  | (string & {});
+  | "zu";
 export const UserlandUserInvitesControllerCreateRequestLocale =
   /*@__PURE__*/ S.String;
 
@@ -12583,7 +12507,7 @@ export interface UserlandUserInvitesControllerCreateRequest {
   /** The ID of the [user](/reference/authkit/user) who invites the recipient. The invitation email will mention the name of this user. */
   inviter_user_id?: string;
   /** The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization). */
-  locale?: UserlandUserInvitesControllerCreateRequestLocale;
+  locale?: UserlandUserInvitesControllerCreateRequestLocale | (string & {});
 }
 export const UserlandUserInvitesControllerCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12610,8 +12534,7 @@ export type UserlandUserInviteState =
   | "pending"
   | "accepted"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const UserlandUserInviteState = /*@__PURE__*/ S.String;
 
 export interface UserlandUserInvite {
@@ -12714,7 +12637,7 @@ export interface UserlandUserInvitesControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** The ID of the [organization](/reference/organization) that the recipient will join. */
   organization_id?: string;
   /** The email address of the recipient. */
@@ -12867,8 +12790,7 @@ export type UserlandUserInvitesControllerResendRequestLocale =
   | "zh-CN"
   | "zh-HK"
   | "zh-TW"
-  | "zu"
-  | (string & {});
+  | "zu";
 export const UserlandUserInvitesControllerResendRequestLocale =
   /*@__PURE__*/ S.String;
 
@@ -12876,7 +12798,7 @@ export interface UserlandUserInvitesControllerResendRequest {
   /** The unique ID of the invitation. */
   id: string;
   /** The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization). */
-  locale?: UserlandUserInvitesControllerResendRequestLocale;
+  locale?: UserlandUserInvitesControllerResendRequestLocale | (string & {});
 }
 export const UserlandUserInvitesControllerResendRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12918,8 +12840,7 @@ export type UserlandUserInvitesControllerRevokeResponseState =
   | "pending"
   | "accepted"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const UserlandUserInvitesControllerRevokeResponseState =
   /*@__PURE__*/ S.String;
 
@@ -13020,8 +12941,7 @@ export const UserlandUserOrganizationMembershipsControllerCreateRequest =
 export type UserlandUserOrganizationMembershipsControllerCreateResponseStatus =
   | "active"
   | "inactive"
-  | "pending"
-  | (string & {});
+  | "pending";
 export const UserlandUserOrganizationMembershipsControllerCreateResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -13116,7 +13036,7 @@ export const UserlandUserOrganizationMembershipsControllerDeactivateRequest =
 
 /** The status of the organization membership. One of `active`, `inactive`, or `pending`. */
 export type UserlandUserOrganizationMembershipsControllerDeactivateResponseStatus =
-  "active" | "inactive" | "pending" | (string & {});
+  "active" | "inactive" | "pending";
 export const UserlandUserOrganizationMembershipsControllerDeactivateResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -13239,8 +13159,7 @@ export const UserlandUserOrganizationMembershipsControllerGetRequest =
 export type UserlandUserOrganizationMembershipStatus =
   | "active"
   | "inactive"
-  | "pending"
-  | (string & {});
+  | "pending";
 export const UserlandUserOrganizationMembershipStatus = /*@__PURE__*/ S.String;
 
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
@@ -13312,12 +13231,15 @@ export const UserlandUserOrganizationMembership = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserlandUserOrganizationMembership>;
 
 export type UserlandUserOrganizationMembershipsControllerListRequestStatusesItem =
-  "active" | "inactive" | "pending" | (string & {});
+  "active" | "inactive" | "pending";
 export const UserlandUserOrganizationMembershipsControllerListRequestStatusesItem =
   /*@__PURE__*/ S.String;
 
 export type UserlandUserOrganizationMembershipsControllerListRequestStatusesList =
-  ReadonlyArray<UserlandUserOrganizationMembershipsControllerListRequestStatusesItem>;
+  ReadonlyArray<
+    | UserlandUserOrganizationMembershipsControllerListRequestStatusesItem
+    | (string & {})
+  >;
 export const UserlandUserOrganizationMembershipsControllerListRequestStatusesList =
   /*@__PURE__*/ S.Array(
     UserlandUserOrganizationMembershipsControllerListRequestStatusesItem,
@@ -13331,7 +13253,7 @@ export interface UserlandUserOrganizationMembershipsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** The ID of the [organization](/reference/organization) which the user belongs to. */
   organization_id?: string;
   /** Filter by the status of the organization membership. Array including any of `active`, `inactive`, or `pending`. */
@@ -13611,8 +13533,7 @@ export type UserlandUsersControllerCreate0RequestPasswordHashType =
   | "ssha256"
   | "scrypt"
   | "pbkdf2"
-  | "argon2"
-  | (string & {});
+  | "argon2";
 export const UserlandUsersControllerCreate0RequestPasswordHashType =
   /*@__PURE__*/ S.String;
 
@@ -13642,7 +13563,9 @@ export interface UserlandUsersControllerCreate0Request {
   /** The hashed password to set for the user. Required with `password_hash_type`. Mutually exclusive with `password`. */
   password_hash?: string | Redacted.Redacted<string>;
   /** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
-  password_hash_type?: UserlandUsersControllerCreate0RequestPasswordHashType;
+  password_hash_type?:
+    | UserlandUsersControllerCreate0RequestPasswordHashType
+    | (string & {});
 }
 export const UserlandUsersControllerCreate0Request = /*@__PURE__*/ S.suspend(
   () =>
@@ -13958,7 +13881,7 @@ export interface UserlandUsersControllerList0Request {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
   /** Filter users by the organization they are a member of. Deprecated in favor of `organization_id`. */
   organization?: string;
   /** Filter users by the organization they are a member of. */
@@ -14146,8 +14069,7 @@ export type UserlandUsersControllerUpdate0RequestPasswordHashType =
   | "ssha256"
   | "scrypt"
   | "pbkdf2"
-  | "argon2"
-  | (string & {});
+  | "argon2";
 export const UserlandUsersControllerUpdate0RequestPasswordHashType =
   /*@__PURE__*/ S.String;
 
@@ -14175,7 +14097,9 @@ export interface UserlandUsersControllerUpdate0Request {
   /** The hashed password to set for the user. Required with `password_hash_type`. Mutually exclusive with `password`. */
   password_hash?: string | Redacted.Redacted<string>;
   /** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
-  password_hash_type?: UserlandUsersControllerUpdate0RequestPasswordHashType;
+  password_hash_type?:
+    | UserlandUsersControllerUpdate0RequestPasswordHashType
+    | (string & {});
 }
 export const UserlandUsersControllerUpdate0Request = /*@__PURE__*/ S.suspend(
   () =>
@@ -14213,7 +14137,7 @@ export interface UserlandUserSessionsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const UserlandUserSessionsControllerListRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -14280,8 +14204,7 @@ export type UserlandUserSessionsControllerListResponseDataItemAuthMethod =
   | "passkey"
   | "password"
   | "sso"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const UserlandUserSessionsControllerListResponseDataItemAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -14289,8 +14212,7 @@ export const UserlandUserSessionsControllerListResponseDataItemAuthMethod =
 export type UserlandUserSessionsControllerListResponseDataItemStatus =
   | "active"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const UserlandUserSessionsControllerListResponseDataItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -14466,14 +14388,14 @@ export type WebhookEndpointsControllerCreateRequestEventsItem =
   | "session.revoked"
   | "waitlist_user.approved"
   | "waitlist_user.created"
-  | "waitlist_user.denied"
-  | (string & {});
+  | "waitlist_user.denied";
 export const WebhookEndpointsControllerCreateRequestEventsItem =
   /*@__PURE__*/ S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
-export type WebhookEndpointsControllerCreateRequestEventsList =
-  ReadonlyArray<WebhookEndpointsControllerCreateRequestEventsItem>;
+export type WebhookEndpointsControllerCreateRequestEventsList = ReadonlyArray<
+  WebhookEndpointsControllerCreateRequestEventsItem | (string & {})
+>;
 export const WebhookEndpointsControllerCreateRequestEventsList =
   /*@__PURE__*/ S.Array(
     WebhookEndpointsControllerCreateRequestEventsItem,
@@ -14496,7 +14418,7 @@ export const WebhookEndpointsControllerCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebhookEndpointsControllerCreateRequest>;
 
 /** Whether the Webhook Endpoint is enabled or disabled. */
-export type WebhookEndpointJsonStatus = "enabled" | "disabled" | (string & {});
+export type WebhookEndpointJsonStatus = "enabled" | "disabled";
 export const WebhookEndpointJsonStatus = /*@__PURE__*/ S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
@@ -14568,7 +14490,7 @@ export interface WebhookEndpointsControllerListRequest {
   /** Upper limit on the number of objects to return, between `1` and `100`. */
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder;
+  order?: PaginationOrder | (string & {});
 }
 export const WebhookEndpointsControllerListRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -14625,8 +14547,7 @@ export const WebhookEndpointList = /*@__PURE__*/ S.suspend(() =>
 /** Whether the Webhook Endpoint is enabled or disabled. */
 export type WebhookEndpointsControllerUpdateRequestStatus =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const WebhookEndpointsControllerUpdateRequestStatus =
   /*@__PURE__*/ S.String;
 
@@ -14722,14 +14643,14 @@ export type WebhookEndpointsControllerUpdateRequestEventsItem =
   | "session.revoked"
   | "waitlist_user.approved"
   | "waitlist_user.created"
-  | "waitlist_user.denied"
-  | (string & {});
+  | "waitlist_user.denied";
 export const WebhookEndpointsControllerUpdateRequestEventsItem =
   /*@__PURE__*/ S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
-export type WebhookEndpointsControllerUpdateRequestEventsList =
-  ReadonlyArray<WebhookEndpointsControllerUpdateRequestEventsItem>;
+export type WebhookEndpointsControllerUpdateRequestEventsList = ReadonlyArray<
+  WebhookEndpointsControllerUpdateRequestEventsItem | (string & {})
+>;
 export const WebhookEndpointsControllerUpdateRequestEventsList =
   /*@__PURE__*/ S.Array(
     WebhookEndpointsControllerUpdateRequestEventsItem,
@@ -14741,7 +14662,7 @@ export interface WebhookEndpointsControllerUpdateRequest {
   /** The HTTPS URL where webhooks will be sent. */
   endpoint_url?: string;
   /** Whether the Webhook Endpoint is enabled or disabled. */
-  status?: WebhookEndpointsControllerUpdateRequestStatus;
+  status?: WebhookEndpointsControllerUpdateRequestStatus | (string & {});
   /** The events that the Webhook Endpoint is subscribed to. */
   events?: WebhookEndpointsControllerUpdateRequestEventsList;
 }
@@ -14766,14 +14687,16 @@ export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem =
   | "widgets:api-keys:manage"
   | "widgets:dsync:manage"
   | "widgets:audit-log-streaming:manage"
-  | "widgets:pipes:manage"
-  | (string & {});
+  | "widgets:pipes:manage";
 export const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem =
   /*@__PURE__*/ S.String;
 
 /** The scopes to grant the widget session. */
 export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList =
-  ReadonlyArray<WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem>;
+  ReadonlyArray<
+    | WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem
+    | (string & {})
+  >;
 export const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList =
   /*@__PURE__*/ S.Array(
     WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem,

@@ -201,11 +201,10 @@ export type PackageFormat =
   | "generic"
   | "ruby"
   | "swift"
-  | "cargo"
-  | (string & {});
+  | "cargo";
 export const PackageFormat = /*@__PURE__*/ S.String;
 
-export type ExternalConnectionStatus = "Available" | (string & {});
+export type ExternalConnectionStatus = "Available";
 export const ExternalConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface RepositoryExternalConnectionInfo {
@@ -277,7 +276,7 @@ export interface CopyPackageVersionsRequest {
   domainOwner?: string;
   sourceRepository: string;
   destinationRepository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   versions?: string[];
@@ -317,8 +316,7 @@ export type PackageVersionStatus =
   | "Unlisted"
   | "Archived"
   | "Disposed"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const PackageVersionStatus = /*@__PURE__*/ S.String;
 
 export interface SuccessfulPackageVersionInfo {
@@ -346,8 +344,7 @@ export type PackageVersionErrorCode =
   | "MISMATCHED_STATUS"
   | "NOT_ALLOWED"
   | "NOT_FOUND"
-  | "SKIPPED"
-  | (string & {});
+  | "SKIPPED";
 export const PackageVersionErrorCode = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;
@@ -418,7 +415,7 @@ export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainRequest",
 }) as any as S.Schema<CreateDomainRequest>;
-export type DomainStatus = "Active" | "Deleted" | (string & {});
+export type DomainStatus = "Active" | "Deleted";
 export const DomainStatus = /*@__PURE__*/ S.String;
 
 export interface DomainDescription {
@@ -489,16 +486,14 @@ export const CreatePackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export type PackageGroupOriginRestrictionType =
   | "EXTERNAL_UPSTREAM"
   | "INTERNAL_UPSTREAM"
-  | "PUBLISH"
-  | (string & {});
+  | "PUBLISH";
 export const PackageGroupOriginRestrictionType = /*@__PURE__*/ S.String;
 
 export type PackageGroupOriginRestrictionMode =
   | "ALLOW"
   | "ALLOW_SPECIFIC_REPOSITORIES"
   | "BLOCK"
-  | "INHERIT"
-  | (string & {});
+  | "INHERIT";
 export const PackageGroupOriginRestrictionMode = /*@__PURE__*/ S.String;
 
 export interface PackageGroupReference {
@@ -701,7 +696,7 @@ export interface DeletePackageRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
 }
@@ -726,10 +721,10 @@ export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeletePackageRequest",
 }) as any as S.Schema<DeletePackageRequest>;
-export type AllowPublish = "ALLOW" | "BLOCK" | (string & {});
+export type AllowPublish = "ALLOW" | "BLOCK";
 export const AllowPublish = /*@__PURE__*/ S.String;
 
-export type AllowUpstream = "ALLOW" | "BLOCK" | (string & {});
+export type AllowUpstream = "ALLOW" | "BLOCK";
 export const AllowUpstream = /*@__PURE__*/ S.String;
 
 export interface PackageOriginRestrictions {
@@ -806,11 +801,11 @@ export interface DeletePackageVersionsRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   versions: string[];
-  expectedStatus?: PackageVersionStatus;
+  expectedStatus?: PackageVersionStatus | (string & {});
 }
 export const DeletePackageVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -950,7 +945,7 @@ export interface DescribePackageRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
 }
@@ -1034,7 +1029,7 @@ export interface DescribePackageVersionRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   packageVersion: string;
@@ -1083,11 +1078,7 @@ export const DomainEntryPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DomainEntryPoint",
 }) as any as S.Schema<DomainEntryPoint>;
-export type PackageVersionOriginType =
-  | "INTERNAL"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | (string & {});
+export type PackageVersionOriginType = "INTERNAL" | "EXTERNAL" | "UNKNOWN";
 export const PackageVersionOriginType = /*@__PURE__*/ S.String;
 
 export interface PackageVersionOrigin {
@@ -1213,12 +1204,12 @@ export interface DisposePackageVersionsRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   versions: string[];
   versionRevisions?: { [key: string]: string | undefined };
-  expectedStatus?: PackageVersionStatus;
+  expectedStatus?: PackageVersionStatus | (string & {});
 }
 export const DisposePackageVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1261,7 +1252,7 @@ export const DisposePackageVersionsResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetAssociatedPackageGroupRequest {
   domain: string;
   domainOwner?: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
 }
@@ -1285,7 +1276,7 @@ export const GetAssociatedPackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssociatedPackageGroupRequest",
 }) as any as S.Schema<GetAssociatedPackageGroupRequest>;
-export type PackageGroupAssociationType = "STRONG" | "WEAK" | (string & {});
+export type PackageGroupAssociationType = "STRONG" | "WEAK";
 export const PackageGroupAssociationType = /*@__PURE__*/ S.String;
 
 export interface GetAssociatedPackageGroupResult {
@@ -1370,7 +1361,7 @@ export interface GetPackageVersionAssetRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   packageVersion: string;
@@ -1423,7 +1414,7 @@ export interface GetPackageVersionReadmeRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   packageVersion: string;
@@ -1470,15 +1461,15 @@ export const GetPackageVersionReadmeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPackageVersionReadmeResult",
 }) as any as S.Schema<GetPackageVersionReadmeResult>;
-export type EndpointType = "dualstack" | "ipv4" | (string & {});
+export type EndpointType = "dualstack" | "ipv4";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 export interface GetRepositoryEndpointRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
-  endpointType?: EndpointType;
+  format: PackageFormat | (string & {});
+  endpointType?: EndpointType | (string & {});
 }
 export const GetRepositoryEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1546,7 +1537,7 @@ export interface ListAllowedRepositoriesForGroupRequest {
   domain: string;
   domainOwner?: string;
   packageGroup: string;
-  originRestrictionType: PackageGroupOriginRestrictionType;
+  originRestrictionType: PackageGroupOriginRestrictionType | (string & {});
   maxResults?: number;
   nextToken?: string;
 }
@@ -1780,13 +1771,13 @@ export interface ListPackagesRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format?: PackageFormat;
+  format?: PackageFormat | (string & {});
   namespace?: string;
   packagePrefix?: string;
   maxResults?: number;
   nextToken?: string;
-  publish?: AllowPublish;
-  upstream?: AllowUpstream;
+  publish?: AllowPublish | (string & {});
+  upstream?: AllowUpstream | (string & {});
 }
 export const ListPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1832,7 +1823,7 @@ export interface ListPackageVersionAssetsRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   packageVersion: string;
@@ -1863,12 +1854,7 @@ export const ListPackageVersionAssetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPackageVersionAssetsRequest",
 }) as any as S.Schema<ListPackageVersionAssetsRequest>;
-export type HashAlgorithm =
-  | "MD5"
-  | "SHA-1"
-  | "SHA-256"
-  | "SHA-512"
-  | (string & {});
+export type HashAlgorithm = "MD5" | "SHA-1" | "SHA-256" | "SHA-512";
 export const HashAlgorithm = /*@__PURE__*/ S.String;
 
 export type HashValue = string;
@@ -1917,7 +1903,7 @@ export interface ListPackageVersionDependenciesRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   packageVersion: string;
@@ -1988,7 +1974,7 @@ export const ListPackageVersionDependenciesResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListPackageVersionDependenciesResult",
 }) as any as S.Schema<ListPackageVersionDependenciesResult>;
-export type PackageVersionSortType = "PUBLISHED_TIME" | (string & {});
+export type PackageVersionSortType = "PUBLISHED_TIME";
 export const PackageVersionSortType = /*@__PURE__*/ S.String;
 
 export type ListPackageVersionsMaxResults = number;
@@ -1996,14 +1982,14 @@ export interface ListPackageVersionsRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
-  status?: PackageVersionStatus;
-  sortBy?: PackageVersionSortType;
+  status?: PackageVersionStatus | (string & {});
+  sortBy?: PackageVersionSortType | (string & {});
   maxResults?: number;
   nextToken?: string;
-  originType?: PackageVersionOriginType;
+  originType?: PackageVersionOriginType | (string & {});
 }
 export const ListPackageVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2250,7 +2236,7 @@ export interface PublishPackageVersionRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   packageVersion: string;
@@ -2344,7 +2330,7 @@ export interface PutPackageOriginConfigurationRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   restrictions: PackageOriginRestrictions;
@@ -2508,7 +2494,9 @@ export const UpdatePackageGroupResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePackageGroupResult",
 }) as any as S.Schema<UpdatePackageGroupResult>;
 export type OriginRestrictions = {
-  [key in PackageGroupOriginRestrictionType]?: PackageGroupOriginRestrictionMode;
+  [key in PackageGroupOriginRestrictionType | (string & {})]?:
+    | PackageGroupOriginRestrictionMode
+    | (string & {});
 };
 export const OriginRestrictions = /*@__PURE__*/ S.Record(
   PackageGroupOriginRestrictionType,
@@ -2516,7 +2504,7 @@ export const OriginRestrictions = /*@__PURE__*/ S.Record(
 );
 export interface PackageGroupAllowedRepository {
   repositoryName?: string;
-  originRestrictionType?: PackageGroupOriginRestrictionType;
+  originRestrictionType?: PackageGroupOriginRestrictionType | (string & {});
 }
 export const PackageGroupAllowedRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2565,10 +2553,7 @@ export const UpdatePackageGroupOriginConfigurationRequest =
   ).annotate({
     identifier: "UpdatePackageGroupOriginConfigurationRequest",
   }) as any as S.Schema<UpdatePackageGroupOriginConfigurationRequest>;
-export type PackageGroupAllowedRepositoryUpdateType =
-  | "ADDED"
-  | "REMOVED"
-  | (string & {});
+export type PackageGroupAllowedRepositoryUpdateType = "ADDED" | "REMOVED";
 export const PackageGroupAllowedRepositoryUpdateType = /*@__PURE__*/ S.String;
 
 export type PackageGroupAllowedRepositoryUpdate = {
@@ -2608,13 +2593,13 @@ export interface UpdatePackageVersionsStatusRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
-  format: PackageFormat;
+  format: PackageFormat | (string & {});
   namespace?: string;
   package: string;
   versions: string[];
   versionRevisions?: { [key: string]: string | undefined };
-  expectedStatus?: PackageVersionStatus;
-  targetStatus: PackageVersionStatus;
+  expectedStatus?: PackageVersionStatus | (string & {});
+  targetStatus: PackageVersionStatus | (string & {});
 }
 export const UpdatePackageVersionsStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2695,8 +2680,7 @@ export type ResourceType =
   | "repository"
   | "package"
   | "package-version"
-  | "asset"
-  | (string & {});
+  | "asset";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type RetryAfterSeconds = number;
@@ -2705,8 +2689,7 @@ export type ValidationExceptionReason =
   | "ENCRYPTION_KEY_ERROR"
   | "FIELD_VALIDATION_FAILED"
   | "UNKNOWN_OPERATION"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type AssociateExternalConnectionError =

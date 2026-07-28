@@ -13,33 +13,31 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface SearchEntitiesRequest {
   /** The literal query string for search. */
@@ -58,29 +56,19 @@ export interface SearchEntitiesRequest {
   types?: StringList;
 }
 export const SearchEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(S.String.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    languages: S.optional(StringList.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    indent: S.optional(S.Boolean.pipe(T.Query())),
-    prefix: S.optional(S.Boolean.pipe(T.Query())),
-    types: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/entities:search",
-      baseUrl: "https://kgsearch.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SearchEntitiesRequest",
-}) as any as S.Schema<SearchEntitiesRequest>;
+S.Struct({
+  "query": S.optional(S.String.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "languages": S.optional(StringList.pipe(T.Query())),
+  "limit": S.optional(S.Number.pipe(T.Query())),
+  "indent": S.optional(S.Boolean.pipe(T.Query())),
+  "prefix": S.optional(S.Boolean.pipe(T.Query())),
+  "types": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/entities:search","baseUrl":"https://kgsearch.googleapis.com/"})),
+).annotate({ identifier: "SearchEntitiesRequest" }) as any as S.Schema<SearchEntitiesRequest>;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 /** Response message includes the context and a list of matching results which contain the detail of associated entities. */
 export interface SearchResponse {
@@ -92,11 +80,11 @@ export interface SearchResponse {
   "@type"?: unknown;
 }
 export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "@context": S.optional(S.Unknown),
-    itemListElement: S.optional(DocumentList),
-    "@type": S.optional(S.Unknown),
-  }),
+S.Struct({
+  "@context": S.optional(S.Unknown),
+  "itemListElement": S.optional(DocumentList),
+  "@type": S.optional(S.Unknown),
+}),
 ).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
 
 export type SearchEntitiesError = NotFound | Forbidden | GcpOpError;
@@ -113,3 +101,4 @@ export const searchEntities: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -147,7 +147,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type FederationMode = "FEDERATED" | "LOCAL" | (string & {});
+export type FederationMode = "FEDERATED" | "LOCAL";
 export const FederationMode = /*@__PURE__*/ S.String;
 
 export type SamlMetadataDocument = string;
@@ -205,7 +205,7 @@ export interface CreateEnvironmentRequest {
   description?: string;
   kmsKeyId?: string;
   tags?: { [key: string]: string | undefined };
-  federationMode?: FederationMode;
+  federationMode?: FederationMode | (string & {});
   federationParameters?: FederationParameters;
   superuserParameters?: SuperuserParameters;
   dataBundles?: string[];
@@ -251,7 +251,7 @@ export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEnvironmentResponse>;
 export type EnvironmentId = string;
 export type DatabaseName = string;
-export type ChangeType = "PUT" | "DELETE" | (string & {});
+export type ChangeType = "PUT" | "DELETE";
 export const ChangeType = /*@__PURE__*/ S.String;
 
 export type S3Path = string;
@@ -300,12 +300,7 @@ export const CreateKxChangesetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKxChangesetRequest",
 }) as any as S.Schema<CreateKxChangesetRequest>;
 export type ChangesetId = string;
-export type ChangesetStatus =
-  | "PENDING"
-  | "PROCESSING"
-  | "FAILED"
-  | "COMPLETED"
-  | (string & {});
+export type ChangesetStatus = "PENDING" | "PROCESSING" | "FAILED" | "COMPLETED";
 export const ChangesetStatus = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;
@@ -317,8 +312,7 @@ export type ErrorDetails =
   | "The system temporarily lacks sufficient resources to process the request."
   | "An internal error has occurred."
   | "Cancelled"
-  | "A user recoverable error has occurred"
-  | (string & {});
+  | "A user recoverable error has occurred";
 export const ErrorDetails = /*@__PURE__*/ S.String;
 
 export interface ErrorInfo {
@@ -362,13 +356,7 @@ export const CreateKxChangesetResponse = /*@__PURE__*/ S.suspend(() =>
 export type ClientToken = string;
 export type KxEnvironmentId = string;
 export type KxClusterName = string;
-export type KxClusterType =
-  | "HDB"
-  | "RDB"
-  | "GATEWAY"
-  | "GP"
-  | "TICKERPLANT"
-  | (string & {});
+export type KxClusterType = "HDB" | "RDB" | "GATEWAY" | "GP" | "TICKERPLANT";
 export const KxClusterType = /*@__PURE__*/ S.String;
 
 export type VolumeName = string;
@@ -480,7 +468,7 @@ export const KxCacheStorageConfigurations = /*@__PURE__*/ S.Array(
   KxCacheStorageConfiguration,
 );
 export type NodeCount = number;
-export type AutoScalingMetric = "CPU_UTILIZATION_PERCENTAGE" | (string & {});
+export type AutoScalingMetric = "CPU_UTILIZATION_PERCENTAGE";
 export const AutoScalingMetric = /*@__PURE__*/ S.String;
 
 export type AutoScalingMetricTarget = number;
@@ -524,7 +512,7 @@ export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export type SubnetIdString = string;
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
-export type IPAddressType = "IP_V4" | (string & {});
+export type IPAddressType = "IP_V4";
 export const IPAddressType = /*@__PURE__*/ S.String;
 
 export interface VpcConfiguration {
@@ -577,7 +565,7 @@ export const CodeConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "CodeConfiguration",
 }) as any as S.Schema<CodeConfiguration>;
 export type ExecutionRoleArn = string;
-export type KxSavedownStorageType = "SDS01" | (string & {});
+export type KxSavedownStorageType = "SDS01";
 export const KxSavedownStorageType = /*@__PURE__*/ S.String;
 
 export type KxSavedownStorageSize = number;
@@ -595,7 +583,7 @@ export const KxSavedownStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KxSavedownStorageConfiguration",
 }) as any as S.Schema<KxSavedownStorageConfiguration>;
-export type KxAzMode = "SINGLE" | "MULTI" | (string & {});
+export type KxAzMode = "SINGLE" | "MULTI";
 export const KxAzMode = /*@__PURE__*/ S.String;
 
 export type AvailabilityZoneId = string;
@@ -625,7 +613,7 @@ export interface CreateKxClusterRequest {
   clientToken?: string;
   environmentId: string;
   clusterName: string;
-  clusterType: KxClusterType;
+  clusterType: KxClusterType | (string & {});
   tickerplantLogConfiguration?: TickerplantLogConfiguration;
   databases?: KxDatabaseConfiguration[];
   cacheStorageConfigurations?: KxCacheStorageConfiguration[];
@@ -639,7 +627,7 @@ export interface CreateKxClusterRequest {
   code?: CodeConfiguration;
   executionRole?: string;
   savedownStorageConfiguration?: KxSavedownStorageConfiguration;
-  azMode: KxAzMode;
+  azMode: KxAzMode | (string & {});
   availabilityZoneId?: string;
   tags?: { [key: string]: string | undefined };
   scalingGroupConfiguration?: KxScalingGroupConfiguration;
@@ -691,12 +679,11 @@ export type KxClusterStatus =
   | "UPDATING"
   | "DELETING"
   | "DELETED"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const KxClusterStatus = /*@__PURE__*/ S.String;
 
 export type KxClusterStatusReason = string;
-export type VolumeType = "NAS_1" | (string & {});
+export type VolumeType = "NAS_1";
 export const VolumeType = /*@__PURE__*/ S.String;
 
 export interface Volume {
@@ -830,7 +817,7 @@ export interface CreateKxDataviewRequest {
   environmentId: string;
   databaseName: string;
   dataviewName: string;
-  azMode: KxAzMode;
+  azMode: KxAzMode | (string & {});
   availabilityZoneId?: string;
   changesetId?: string;
   segmentConfigurations?: KxDataviewSegmentConfiguration[];
@@ -875,8 +862,7 @@ export type KxDataviewStatus =
   | "ACTIVE"
   | "UPDATING"
   | "FAILED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const KxDataviewStatus = /*@__PURE__*/ S.String;
 
 export interface CreateKxDataviewResponse {
@@ -959,8 +945,7 @@ export type EnvironmentStatus =
   | "UPDATE_NETWORK_REQUESTED"
   | "UPDATING_NETWORK"
   | "FAILED_UPDATING_NETWORK"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const EnvironmentStatus = /*@__PURE__*/ S.String;
 
 export interface CreateKxEnvironmentResponse {
@@ -1026,8 +1011,7 @@ export type KxScalingGroupStatus =
   | "ACTIVE"
   | "DELETING"
   | "DELETED"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const KxScalingGroupStatus = /*@__PURE__*/ S.String;
 
 export interface CreateKxScalingGroupResponse {
@@ -1102,10 +1086,10 @@ export const CreateKxUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKxUserResponse",
 }) as any as S.Schema<CreateKxUserResponse>;
-export type KxVolumeType = "NAS_1" | (string & {});
+export type KxVolumeType = "NAS_1";
 export const KxVolumeType = /*@__PURE__*/ S.String;
 
-export type KxNAS1Type = "SSD_1000" | "SSD_250" | "HDD_12" | (string & {});
+export type KxNAS1Type = "SSD_1000" | "SSD_250" | "HDD_12";
 export const KxNAS1Type = /*@__PURE__*/ S.String;
 
 export type KxNAS1Size = number;
@@ -1123,11 +1107,11 @@ export const AvailabilityZoneIds = /*@__PURE__*/ S.Array(S.String);
 export interface CreateKxVolumeRequest {
   clientToken?: string;
   environmentId: string;
-  volumeType: KxVolumeType;
+  volumeType: KxVolumeType | (string & {});
   volumeName: string;
   description?: string;
   nas1Configuration?: KxNAS1Configuration;
-  azMode: KxAzMode;
+  azMode: KxAzMode | (string & {});
   availabilityZoneIds: string[];
   tags?: { [key: string]: string | undefined };
 }
@@ -1168,8 +1152,7 @@ export type KxVolumeStatus =
   | "UPDATE_FAILED"
   | "DELETING"
   | "DELETED"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const KxVolumeStatus = /*@__PURE__*/ S.String;
 
 export type KxVolumeStatusReason = string;
@@ -1910,8 +1893,7 @@ export type TgwStatus =
   | "UPDATE_REQUESTED"
   | "UPDATING"
   | "FAILED_UPDATE"
-  | "SUCCESSFULLY_UPDATED"
-  | (string & {});
+  | "SUCCESSFULLY_UPDATED";
 export const TgwStatus = /*@__PURE__*/ S.String;
 
 export type DnsStatus =
@@ -1919,8 +1901,7 @@ export type DnsStatus =
   | "UPDATE_REQUESTED"
   | "UPDATING"
   | "FAILED_UPDATE"
-  | "SUCCESSFULLY_UPDATED"
-  | (string & {});
+  | "SUCCESSFULLY_UPDATED";
 export const DnsStatus = /*@__PURE__*/ S.String;
 
 export type EnvironmentErrorMessage = string;
@@ -1928,7 +1909,7 @@ export type TransitGatewayID = string;
 export type ValidCIDRSpace = string;
 export type RuleNumber = number;
 export type Protocol = string;
-export type RuleAction = "allow" | "deny" | (string & {});
+export type RuleAction = "allow" | "deny";
 export const RuleAction = /*@__PURE__*/ S.String;
 
 export type Port = number;
@@ -2351,7 +2332,7 @@ export const ListKxClusterNodesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListKxClusterNodesRequest",
 }) as any as S.Schema<ListKxClusterNodesRequest>;
-export type KxNodeStatus = "RUNNING" | "PROVISIONING" | (string & {});
+export type KxNodeStatus = "RUNNING" | "PROVISIONING";
 export const KxNodeStatus = /*@__PURE__*/ S.String;
 
 export interface KxNode {
@@ -2384,7 +2365,7 @@ export const ListKxClusterNodesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKxClusterNodesResponse>;
 export interface ListKxClustersRequest {
   environmentId: string;
-  clusterType?: KxClusterType;
+  clusterType?: KxClusterType | (string & {});
   maxResults?: number;
   nextToken?: string;
 }
@@ -2806,7 +2787,7 @@ export interface ListKxVolumesRequest {
   environmentId: string;
   maxResults?: number;
   nextToken?: string;
-  volumeType?: KxVolumeType;
+  volumeType?: KxVolumeType | (string & {});
 }
 export const ListKxVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2958,7 +2939,7 @@ export interface UpdateEnvironmentRequest {
   environmentId: string;
   name?: string;
   description?: string;
-  federationMode?: FederationMode;
+  federationMode?: FederationMode | (string & {});
   federationParameters?: FederationParameters;
 }
 export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2992,12 +2973,11 @@ export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 export type KxClusterCodeDeploymentStrategy =
   | "NO_RESTART"
   | "ROLLING"
-  | "FORCE"
-  | (string & {});
+  | "FORCE";
 export const KxClusterCodeDeploymentStrategy = /*@__PURE__*/ S.String;
 
 export interface KxClusterCodeDeploymentConfiguration {
-  deploymentStrategy: KxClusterCodeDeploymentStrategy;
+  deploymentStrategy: KxClusterCodeDeploymentStrategy | (string & {});
 }
 export const KxClusterCodeDeploymentConfiguration = /*@__PURE__*/ S.suspend(
   () => S.Struct({ deploymentStrategy: KxClusterCodeDeploymentStrategy }),
@@ -3045,11 +3025,11 @@ export const UpdateKxClusterCodeConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateKxClusterCodeConfigurationResponse",
 }) as any as S.Schema<UpdateKxClusterCodeConfigurationResponse>;
-export type KxDeploymentStrategy = "NO_RESTART" | "ROLLING" | (string & {});
+export type KxDeploymentStrategy = "NO_RESTART" | "ROLLING";
 export const KxDeploymentStrategy = /*@__PURE__*/ S.String;
 
 export interface KxDeploymentConfiguration {
-  deploymentStrategy: KxDeploymentStrategy;
+  deploymentStrategy: KxDeploymentStrategy | (string & {});
 }
 export const KxDeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ deploymentStrategy: KxDeploymentStrategy }),

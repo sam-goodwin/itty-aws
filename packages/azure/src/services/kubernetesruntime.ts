@@ -62,8 +62,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -71,8 +70,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -109,8 +107,7 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Details of the BgpPeer. */
@@ -315,7 +312,7 @@ export const LoadBalancerPropertiesInputServiceSelectorMap =
   ) as any as S.Schema<LoadBalancerPropertiesInputServiceSelectorMap>;
 
 /** Enum of advertise mode */
-export type AdvertiseMode = "ARP" | "BGP" | "Both" | (string & {});
+export type AdvertiseMode = "ARP" | "BGP" | "Both";
 export const AdvertiseMode = /*@__PURE__*/ S.String;
 
 /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
@@ -331,7 +328,7 @@ export interface LoadBalancerPropertiesInput {
   /** A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field. */
   serviceSelector?: LoadBalancerPropertiesInputServiceSelectorMap;
   /** Advertise Mode */
-  advertiseMode: AdvertiseMode;
+  advertiseMode: AdvertiseMode | (string & {});
   /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
   bgpPeers?: LoadBalancerPropertiesInputBgpPeersList;
 }
@@ -617,11 +614,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -883,7 +880,7 @@ export const ServiceResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceResourceListResult>;
 
 /** Ability to expand volumes of a storage class */
-export type VolumeExpansion = "Allow" | "Disallow" | (string & {});
+export type VolumeExpansion = "Allow" | "Disallow";
 export const VolumeExpansion = /*@__PURE__*/ S.String;
 
 /** Additional mount options */
@@ -894,37 +891,27 @@ export const StorageClassPropertiesInputMountOptionsList =
   ) as any as S.Schema<StorageClassPropertiesInputMountOptionsList>;
 
 /** Storage class volume binding mode */
-export type VolumeBindingMode =
-  | "Immediate"
-  | "WaitForFirstConsumer"
-  | (string & {});
+export type VolumeBindingMode = "Immediate" | "WaitForFirstConsumer";
 export const VolumeBindingMode = /*@__PURE__*/ S.String;
 
 /** Storage Class Access Mode */
-export type AccessMode = "ReadWriteOnce" | "ReadWriteMany" | (string & {});
+export type AccessMode = "ReadWriteOnce" | "ReadWriteMany";
 export const AccessMode = /*@__PURE__*/ S.String;
 
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
-export type StorageClassPropertiesInputAccessModesList =
-  ReadonlyArray<AccessMode>;
+export type StorageClassPropertiesInputAccessModesList = ReadonlyArray<
+  AccessMode | (string & {})
+>;
 export const StorageClassPropertiesInputAccessModesList = /*@__PURE__*/ S.Array(
   AccessMode,
 ) as any as S.Schema<StorageClassPropertiesInputAccessModesList>;
 
 /** Data resilience tier of a storage class */
-export type DataResilienceTier =
-  | "NotDataResilient"
-  | "DataResilient"
-  | (string & {});
+export type DataResilienceTier = "NotDataResilient" | "DataResilient";
 export const DataResilienceTier = /*@__PURE__*/ S.String;
 
 /** Failover tier of a storage class */
-export type FailoverTier =
-  | "NotAvailable"
-  | "Slow"
-  | "Fast"
-  | "Super"
-  | (string & {});
+export type FailoverTier = "NotAvailable" | "Slow" | "Fast" | "Super";
 export const FailoverTier = /*@__PURE__*/ S.String;
 
 /** Limitations of the storage class */
@@ -939,12 +926,11 @@ export type PerformanceTier =
   | "Basic"
   | "Standard"
   | "Premium"
-  | "Ultra"
-  | (string & {});
+  | "Ultra";
 export const PerformanceTier = /*@__PURE__*/ S.String;
 
 /** Type of a storage class */
-export type SCType = "Native" | "RWX" | "Blob" | "NFS" | "SMB" | (string & {});
+export type SCType = "Native" | "RWX" | "Blob" | "NFS" | "SMB";
 export const SCType = /*@__PURE__*/ S.String;
 
 /** The properties of storage class of the StorageClass */
@@ -963,23 +949,23 @@ export const StorageClassTypeProperties = /*@__PURE__*/ S.suspend(() =>
 /** Details of the StorageClass StorageClass. */
 export interface StorageClassPropertiesInput {
   /** Volume can be expanded or not */
-  allowVolumeExpansion?: VolumeExpansion;
+  allowVolumeExpansion?: VolumeExpansion | (string & {});
   /** Additional mount options */
   mountOptions?: StorageClassPropertiesInputMountOptionsList;
   /** Provisioner name */
   provisioner?: string;
   /** Binding mode of volumes: Immediate, WaitForFirstConsumer */
-  volumeBindingMode?: VolumeBindingMode;
+  volumeBindingMode?: VolumeBindingMode | (string & {});
   /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
   accessModes?: StorageClassPropertiesInputAccessModesList;
   /** Allow single data node failure */
-  dataResilience?: DataResilienceTier;
+  dataResilience?: DataResilienceTier | (string & {});
   /** Failover speed: NA, Slow, Fast */
-  failoverSpeed?: FailoverTier;
+  failoverSpeed?: FailoverTier | (string & {});
   /** Limitations of the storage class */
   limitations?: StorageClassPropertiesInputLimitationsList;
   /** Performance tier */
-  performance?: PerformanceTier;
+  performance?: PerformanceTier | (string & {});
   /** Selection priority when multiple storage classes meet the criteria. 0: Highest, -1: Never use */
   priority?: number;
   /** Properties of the StorageClass */
@@ -1267,8 +1253,9 @@ export const StorageClassPropertiesUpdateMountOptionsList =
   ) as any as S.Schema<StorageClassPropertiesUpdateMountOptionsList>;
 
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
-export type StorageClassPropertiesUpdateAccessModesList =
-  ReadonlyArray<AccessMode>;
+export type StorageClassPropertiesUpdateAccessModesList = ReadonlyArray<
+  AccessMode | (string & {})
+>;
 export const StorageClassPropertiesUpdateAccessModesList =
   /*@__PURE__*/ S.Array(
     AccessMode,
@@ -1282,10 +1269,7 @@ export const StorageClassPropertiesUpdateLimitationsList =
   ) as any as S.Schema<StorageClassPropertiesUpdateLimitationsList>;
 
 /** The action to take when a NFS volume is deleted */
-export type NfsDirectoryActionOnVolumeDeletion =
-  | "Delete"
-  | "Retain"
-  | (string & {});
+export type NfsDirectoryActionOnVolumeDeletion = "Delete" | "Retain";
 export const NfsDirectoryActionOnVolumeDeletion = /*@__PURE__*/ S.String;
 
 /** The model for update a storageClass */
@@ -1305,7 +1289,7 @@ export interface StorageClassTypePropertiesUpdate {
   /** Mounted folder permissions. Default is 0. If set as non-zero, driver will perform `chmod` after mount */
   mountPermissions?: string;
   /** The action to take when a NFS volume is deleted. Default is Delete */
-  onDelete?: NfsDirectoryActionOnVolumeDeletion;
+  onDelete?: NfsDirectoryActionOnVolumeDeletion | (string & {});
   /** SMB Source */
   source?: string;
   /** Server username */
@@ -1337,19 +1321,19 @@ export const StorageClassTypePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
 /** The model for updating storageClass properties */
 export interface StorageClassPropertiesUpdate {
   /** Volume can be expanded or not */
-  allowVolumeExpansion?: VolumeExpansion;
+  allowVolumeExpansion?: VolumeExpansion | (string & {});
   /** Additional mount options */
   mountOptions?: StorageClassPropertiesUpdateMountOptionsList;
   /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
   accessModes?: StorageClassPropertiesUpdateAccessModesList;
   /** Allow single data node failure */
-  dataResilience?: DataResilienceTier;
+  dataResilience?: DataResilienceTier | (string & {});
   /** Failover speed: NA, Slow, Fast */
-  failoverSpeed?: FailoverTier;
+  failoverSpeed?: FailoverTier | (string & {});
   /** Limitations of the storage class */
   limitations?: StorageClassPropertiesUpdateLimitationsList;
   /** Performance tier */
-  performance?: PerformanceTier;
+  performance?: PerformanceTier | (string & {});
   /** Selection priority when multiple storage classes meet the criteria. 0: Highest, -1: Never use */
   priority?: number;
   /** New storage class type of storageClass */

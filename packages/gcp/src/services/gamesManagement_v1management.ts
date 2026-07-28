@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface HidePlayersRequest {
@@ -67,26 +67,16 @@ export interface HidePlayersRequest {
   playerId: string;
 }
 export const HidePlayersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationId: S.String.pipe(T.Label()),
-    playerId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "HidePlayersRequest",
-}) as any as S.Schema<HidePlayersRequest>;
+S.Struct({
+  "applicationId": S.String.pipe(T.Label()),
+  "playerId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"games/v1management/applications/{applicationId}/players/hidden/{playerId}","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "HidePlayersRequest" }) as any as S.Schema<HidePlayersRequest>;
 
 export interface HidePlayersResponse {}
 export const HidePlayersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "HidePlayersResponse",
-}) as any as S.Schema<HidePlayersResponse>;
+S.Struct({}),
+).annotate({ identifier: "HidePlayersResponse" }) as any as S.Schema<HidePlayersResponse>;
 
 export interface ListHiddenApplicationsRequest {
   /** The application ID from the Google Play developer console. */
@@ -97,20 +87,12 @@ export interface ListHiddenApplicationsRequest {
   pageToken?: string;
 }
 export const ListHiddenApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationId: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "games/v1management/applications/{applicationId}/players/hidden",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListHiddenApplicationsRequest",
-}) as any as S.Schema<ListHiddenApplicationsRequest>;
+S.Struct({
+  "applicationId": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"games/v1management/applications/{applicationId}/players/hidden","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListHiddenApplicationsRequest" }) as any as S.Schema<ListHiddenApplicationsRequest>;
 
 export interface PlayerName {
   /** The given name of this player. In some places, this is known as the first name. */
@@ -119,10 +101,10 @@ export interface PlayerName {
   familyName?: string;
 }
 export const PlayerName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    givenName: S.optional(S.String),
-    familyName: S.optional(S.String),
-  }),
+S.Struct({
+  "givenName": S.optional(S.String),
+  "familyName": S.optional(S.String),
+}),
 ).annotate({ identifier: "PlayerName" }) as any as S.Schema<PlayerName>;
 
 /** 1P/3P metadata about a user's level. */
@@ -135,14 +117,12 @@ export interface GamesPlayerLevelResource {
   maxExperiencePoints?: string;
 }
 export const GamesPlayerLevelResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minExperiencePoints: S.optional(S.String),
-    level: S.optional(S.Number),
-    maxExperiencePoints: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GamesPlayerLevelResource",
-}) as any as S.Schema<GamesPlayerLevelResource>;
+S.Struct({
+  "minExperiencePoints": S.optional(S.String),
+  "level": S.optional(S.Number),
+  "maxExperiencePoints": S.optional(S.String),
+}),
+).annotate({ identifier: "GamesPlayerLevelResource" }) as any as S.Schema<GamesPlayerLevelResource>;
 
 /** 1P/3P metadata about the player's experience. */
 export interface GamesPlayerExperienceInfoResource {
@@ -156,15 +136,13 @@ export interface GamesPlayerExperienceInfoResource {
   nextLevel?: GamesPlayerLevelResource;
 }
 export const GamesPlayerExperienceInfoResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentExperiencePoints: S.optional(S.String),
-    lastLevelUpTimestampMillis: S.optional(S.String),
-    currentLevel: S.optional(GamesPlayerLevelResource),
-    nextLevel: S.optional(GamesPlayerLevelResource),
-  }),
-).annotate({
-  identifier: "GamesPlayerExperienceInfoResource",
-}) as any as S.Schema<GamesPlayerExperienceInfoResource>;
+S.Struct({
+  "currentExperiencePoints": S.optional(S.String),
+  "lastLevelUpTimestampMillis": S.optional(S.String),
+  "currentLevel": S.optional(GamesPlayerLevelResource),
+  "nextLevel": S.optional(GamesPlayerLevelResource),
+}),
+).annotate({ identifier: "GamesPlayerExperienceInfoResource" }) as any as S.Schema<GamesPlayerExperienceInfoResource>;
 
 /** Profile settings */
 export interface ProfileSettings {
@@ -173,13 +151,11 @@ export interface ProfileSettings {
   kind?: string;
 }
 export const ProfileSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileVisible: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProfileSettings",
-}) as any as S.Schema<ProfileSettings>;
+S.Struct({
+  "profileVisible": S.optional(S.Boolean),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ProfileSettings" }) as any as S.Schema<ProfileSettings>;
 
 /** A Player resource. */
 export interface Player {
@@ -207,19 +183,19 @@ export interface Player {
   profileSettings?: ProfileSettings;
 }
 export const Player = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originalPlayerId: S.optional(S.String),
-    kind: S.optional(S.String),
-    bannerUrlLandscape: S.optional(S.String),
-    name: S.optional(PlayerName),
-    playerId: S.optional(S.String),
-    title: S.optional(S.String),
-    avatarImageUrl: S.optional(S.String),
-    bannerUrlPortrait: S.optional(S.String),
-    experienceInfo: S.optional(GamesPlayerExperienceInfoResource),
-    displayName: S.optional(S.String),
-    profileSettings: S.optional(ProfileSettings),
-  }),
+S.Struct({
+  "originalPlayerId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "bannerUrlLandscape": S.optional(S.String),
+  "name": S.optional(PlayerName),
+  "playerId": S.optional(S.String),
+  "title": S.optional(S.String),
+  "avatarImageUrl": S.optional(S.String),
+  "bannerUrlPortrait": S.optional(S.String),
+  "experienceInfo": S.optional(GamesPlayerExperienceInfoResource),
+  "displayName": S.optional(S.String),
+  "profileSettings": S.optional(ProfileSettings),
+}),
 ).annotate({ identifier: "Player" }) as any as S.Schema<Player>;
 
 /** The HiddenPlayer resource. */
@@ -232,17 +208,15 @@ export interface HiddenPlayer {
   hiddenTimeMillis?: string;
 }
 export const HiddenPlayer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    player: S.optional(Player),
-    hiddenTimeMillis: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "player": S.optional(Player),
+  "hiddenTimeMillis": S.optional(S.String),
+}),
 ).annotate({ identifier: "HiddenPlayer" }) as any as S.Schema<HiddenPlayer>;
 
 export type HiddenPlayerList_ = ReadonlyArray<HiddenPlayer>;
-export const HiddenPlayerList_ = /*@__PURE__*/ S.Array(
-  HiddenPlayer,
-) as any as S.Schema<HiddenPlayerList_>;
+export const HiddenPlayerList_ = /*@__PURE__*/ S.Array(HiddenPlayer) as any as S.Schema<HiddenPlayerList_>;
 
 /** A list of hidden players. */
 export interface HiddenPlayerList {
@@ -254,32 +228,22 @@ export interface HiddenPlayerList {
   kind?: string;
 }
 export const HiddenPlayerList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: HiddenPlayerList_,
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HiddenPlayerList",
-}) as any as S.Schema<HiddenPlayerList>;
+S.Struct({
+  "items": HiddenPlayerList_,
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "HiddenPlayerList" }) as any as S.Schema<HiddenPlayerList>;
 
 export interface ResetAchievementsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
 export const ResetAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    achievementId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/achievements/{achievementId}/reset",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetAchievementsRequest",
-}) as any as S.Schema<ResetAchievementsRequest>;
+S.Struct({
+  "achievementId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"games/v1management/achievements/{achievementId}/reset","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetAchievementsRequest" }) as any as S.Schema<ResetAchievementsRequest>;
 
 /** An achievement reset response. */
 export interface AchievementResetResponse {
@@ -293,34 +257,21 @@ export interface AchievementResetResponse {
   updateOccurred?: boolean;
 }
 export const AchievementResetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    definitionId: S.optional(S.String),
-    currentState: S.optional(S.String),
-    updateOccurred: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AchievementResetResponse",
-}) as any as S.Schema<AchievementResetResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "definitionId": S.optional(S.String),
+  "currentState": S.optional(S.String),
+  "updateOccurred": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AchievementResetResponse" }) as any as S.Schema<AchievementResetResponse>;
 
 export interface ResetAllAchievementsRequest {}
 export const ResetAllAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/achievements/reset",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetAllAchievementsRequest",
-}) as any as S.Schema<ResetAllAchievementsRequest>;
+S.Struct({}).pipe(T.Http({"method":"POST","uri":"games/v1management/achievements/reset","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetAllAchievementsRequest" }) as any as S.Schema<ResetAllAchievementsRequest>;
 
-export type AchievementResetResponseList =
-  ReadonlyArray<AchievementResetResponse>;
-export const AchievementResetResponseList = /*@__PURE__*/ S.Array(
-  AchievementResetResponse,
-) as any as S.Schema<AchievementResetResponseList>;
+export type AchievementResetResponseList = ReadonlyArray<AchievementResetResponse>;
+export const AchievementResetResponseList = /*@__PURE__*/ S.Array(AchievementResetResponse) as any as S.Schema<AchievementResetResponseList>;
 
 /** Achievement reset all response. */
 export interface AchievementResetAllResponse {
@@ -330,111 +281,59 @@ export interface AchievementResetAllResponse {
   results?: AchievementResetResponseList;
 }
 export const AchievementResetAllResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    results: S.optional(AchievementResetResponseList),
-  }),
-).annotate({
-  identifier: "AchievementResetAllResponse",
-}) as any as S.Schema<AchievementResetAllResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "results": S.optional(AchievementResetResponseList),
+}),
+).annotate({ identifier: "AchievementResetAllResponse" }) as any as S.Schema<AchievementResetAllResponse>;
 
 export interface ResetAllEventsRequest {}
 export const ResetAllEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/events/reset",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetAllEventsRequest",
-}) as any as S.Schema<ResetAllEventsRequest>;
+S.Struct({}).pipe(T.Http({"method":"POST","uri":"games/v1management/events/reset","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetAllEventsRequest" }) as any as S.Schema<ResetAllEventsRequest>;
 
 export interface ResetAllEventsResponse {}
 export const ResetAllEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetAllEventsResponse",
-}) as any as S.Schema<ResetAllEventsResponse>;
+S.Struct({}),
+).annotate({ identifier: "ResetAllEventsResponse" }) as any as S.Schema<ResetAllEventsResponse>;
 
 export interface ResetAllForAllPlayersAchievementsRequest {}
-export const ResetAllForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.Http({
-        method: "POST",
-        uri: "games/v1management/achievements/resetAllForAllPlayers",
-        baseUrl: "https://gamesmanagement.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ResetAllForAllPlayersAchievementsRequest",
-}) as any as S.Schema<ResetAllForAllPlayersAchievementsRequest>;
+export const ResetAllForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}).pipe(T.Http({"method":"POST","uri":"games/v1management/achievements/resetAllForAllPlayers","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetAllForAllPlayersAchievementsRequest" }) as any as S.Schema<ResetAllForAllPlayersAchievementsRequest>;
 
 export interface ResetAllForAllPlayersAchievementsResponse {}
-export const ResetAllForAllPlayersAchievementsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ResetAllForAllPlayersAchievementsResponse",
-  }) as any as S.Schema<ResetAllForAllPlayersAchievementsResponse>;
+export const ResetAllForAllPlayersAchievementsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "ResetAllForAllPlayersAchievementsResponse" }) as any as S.Schema<ResetAllForAllPlayersAchievementsResponse>;
 
 export interface ResetAllForAllPlayersEventsRequest {}
 export const ResetAllForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/events/resetAllForAllPlayers",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetAllForAllPlayersEventsRequest",
-}) as any as S.Schema<ResetAllForAllPlayersEventsRequest>;
+S.Struct({}).pipe(T.Http({"method":"POST","uri":"games/v1management/events/resetAllForAllPlayers","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetAllForAllPlayersEventsRequest" }) as any as S.Schema<ResetAllForAllPlayersEventsRequest>;
 
 export interface ResetAllForAllPlayersEventsResponse {}
 export const ResetAllForAllPlayersEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetAllForAllPlayersEventsResponse",
-}) as any as S.Schema<ResetAllForAllPlayersEventsResponse>;
+S.Struct({}),
+).annotate({ identifier: "ResetAllForAllPlayersEventsResponse" }) as any as S.Schema<ResetAllForAllPlayersEventsResponse>;
 
 export interface ResetAllForAllPlayersScoresRequest {}
 export const ResetAllForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/scores/resetAllForAllPlayers",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetAllForAllPlayersScoresRequest",
-}) as any as S.Schema<ResetAllForAllPlayersScoresRequest>;
+S.Struct({}).pipe(T.Http({"method":"POST","uri":"games/v1management/scores/resetAllForAllPlayers","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetAllForAllPlayersScoresRequest" }) as any as S.Schema<ResetAllForAllPlayersScoresRequest>;
 
 export interface ResetAllForAllPlayersScoresResponse {}
 export const ResetAllForAllPlayersScoresResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetAllForAllPlayersScoresResponse",
-}) as any as S.Schema<ResetAllForAllPlayersScoresResponse>;
+S.Struct({}),
+).annotate({ identifier: "ResetAllForAllPlayersScoresResponse" }) as any as S.Schema<ResetAllForAllPlayersScoresResponse>;
 
 export interface ResetAllScoresRequest {}
 export const ResetAllScoresRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/scores/reset",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetAllScoresRequest",
-}) as any as S.Schema<ResetAllScoresRequest>;
+S.Struct({}).pipe(T.Http({"method":"POST","uri":"games/v1management/scores/reset","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetAllScoresRequest" }) as any as S.Schema<ResetAllScoresRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A list of reset leaderboard entry resources. */
 export interface PlayerScoreResetResponse {
@@ -446,20 +345,15 @@ export interface PlayerScoreResetResponse {
   resetScoreTimeSpans?: StringList;
 }
 export const PlayerScoreResetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    definitionId: S.optional(S.String),
-    resetScoreTimeSpans: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "PlayerScoreResetResponse",
-}) as any as S.Schema<PlayerScoreResetResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "definitionId": S.optional(S.String),
+  "resetScoreTimeSpans": S.optional(StringList),
+}),
+).annotate({ identifier: "PlayerScoreResetResponse" }) as any as S.Schema<PlayerScoreResetResponse>;
 
-export type PlayerScoreResetResponseList =
-  ReadonlyArray<PlayerScoreResetResponse>;
-export const PlayerScoreResetResponseList = /*@__PURE__*/ S.Array(
-  PlayerScoreResetResponse,
-) as any as S.Schema<PlayerScoreResetResponseList>;
+export type PlayerScoreResetResponseList = ReadonlyArray<PlayerScoreResetResponse>;
+export const PlayerScoreResetResponseList = /*@__PURE__*/ S.Array(PlayerScoreResetResponse) as any as S.Schema<PlayerScoreResetResponseList>;
 
 /** A list of leaderboard reset resources. */
 export interface PlayerScoreResetAllResponse {
@@ -469,114 +363,71 @@ export interface PlayerScoreResetAllResponse {
   results?: PlayerScoreResetResponseList;
 }
 export const PlayerScoreResetAllResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    results: S.optional(PlayerScoreResetResponseList),
-  }),
-).annotate({
-  identifier: "PlayerScoreResetAllResponse",
-}) as any as S.Schema<PlayerScoreResetAllResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "results": S.optional(PlayerScoreResetResponseList),
+}),
+).annotate({ identifier: "PlayerScoreResetAllResponse" }) as any as S.Schema<PlayerScoreResetAllResponse>;
 
 export interface ResetEventsRequest {
   /** The ID of the event. */
   eventId: string;
 }
 export const ResetEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/events/{eventId}/reset",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetEventsRequest",
-}) as any as S.Schema<ResetEventsRequest>;
+S.Struct({
+  "eventId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"games/v1management/events/{eventId}/reset","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetEventsRequest" }) as any as S.Schema<ResetEventsRequest>;
 
 export interface ResetEventsResponse {}
 export const ResetEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetEventsResponse",
-}) as any as S.Schema<ResetEventsResponse>;
+S.Struct({}),
+).annotate({ identifier: "ResetEventsResponse" }) as any as S.Schema<ResetEventsResponse>;
 
 export interface ResetForAllPlayersAchievementsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
-export const ResetForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      achievementId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "games/v1management/achievements/{achievementId}/resetForAllPlayers",
-        baseUrl: "https://gamesmanagement.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ResetForAllPlayersAchievementsRequest",
-}) as any as S.Schema<ResetForAllPlayersAchievementsRequest>;
+export const ResetForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "achievementId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"games/v1management/achievements/{achievementId}/resetForAllPlayers","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetForAllPlayersAchievementsRequest" }) as any as S.Schema<ResetForAllPlayersAchievementsRequest>;
 
 export interface ResetForAllPlayersAchievementsResponse {}
-export const ResetForAllPlayersAchievementsResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ResetForAllPlayersAchievementsResponse",
-}) as any as S.Schema<ResetForAllPlayersAchievementsResponse>;
+export const ResetForAllPlayersAchievementsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "ResetForAllPlayersAchievementsResponse" }) as any as S.Schema<ResetForAllPlayersAchievementsResponse>;
 
 export interface ResetForAllPlayersEventsRequest {
   /** The ID of the event. */
   eventId: string;
 }
 export const ResetForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/events/{eventId}/resetForAllPlayers",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetForAllPlayersEventsRequest",
-}) as any as S.Schema<ResetForAllPlayersEventsRequest>;
+S.Struct({
+  "eventId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"games/v1management/events/{eventId}/resetForAllPlayers","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetForAllPlayersEventsRequest" }) as any as S.Schema<ResetForAllPlayersEventsRequest>;
 
 export interface ResetForAllPlayersEventsResponse {}
 export const ResetForAllPlayersEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetForAllPlayersEventsResponse",
-}) as any as S.Schema<ResetForAllPlayersEventsResponse>;
+S.Struct({}),
+).annotate({ identifier: "ResetForAllPlayersEventsResponse" }) as any as S.Schema<ResetForAllPlayersEventsResponse>;
 
 export interface ResetForAllPlayersScoresRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
 export const ResetForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    leaderboardId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetForAllPlayersScoresRequest",
-}) as any as S.Schema<ResetForAllPlayersScoresRequest>;
+S.Struct({
+  "leaderboardId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetForAllPlayersScoresRequest" }) as any as S.Schema<ResetForAllPlayersScoresRequest>;
 
 export interface ResetForAllPlayersScoresResponse {}
 export const ResetForAllPlayersScoresResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetForAllPlayersScoresResponse",
-}) as any as S.Schema<ResetForAllPlayersScoresResponse>;
+S.Struct({}),
+).annotate({ identifier: "ResetForAllPlayersScoresResponse" }) as any as S.Schema<ResetForAllPlayersScoresResponse>;
 
 export interface AchievementResetMultipleForAllRequest {
   /** The IDs of achievements to reset. */
@@ -584,42 +435,27 @@ export interface AchievementResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetMultipleForAllRequest`. */
   kind?: string;
 }
-export const AchievementResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      achievement_ids: S.optional(StringList),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AchievementResetMultipleForAllRequest",
-}) as any as S.Schema<AchievementResetMultipleForAllRequest>;
+export const AchievementResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "achievement_ids": S.optional(StringList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AchievementResetMultipleForAllRequest" }) as any as S.Schema<AchievementResetMultipleForAllRequest>;
 
 export interface ResetMultipleForAllPlayersAchievementsRequest {
   /** Request body */
   body?: AchievementResetMultipleForAllRequest;
 }
-export const ResetMultipleForAllPlayersAchievementsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      body: S.optional(
-        AchievementResetMultipleForAllRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "games/v1management/achievements/resetMultipleForAllPlayers",
-        baseUrl: "https://gamesmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ResetMultipleForAllPlayersAchievementsRequest",
-  }) as any as S.Schema<ResetMultipleForAllPlayersAchievementsRequest>;
+export const ResetMultipleForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "body": S.optional(AchievementResetMultipleForAllRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"games/v1management/achievements/resetMultipleForAllPlayers","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetMultipleForAllPlayersAchievementsRequest" }) as any as S.Schema<ResetMultipleForAllPlayersAchievementsRequest>;
 
 export interface ResetMultipleForAllPlayersAchievementsResponse {}
-export const ResetMultipleForAllPlayersAchievementsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ResetMultipleForAllPlayersAchievementsResponse",
-  }) as any as S.Schema<ResetMultipleForAllPlayersAchievementsResponse>;
+export const ResetMultipleForAllPlayersAchievementsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "ResetMultipleForAllPlayersAchievementsResponse" }) as any as S.Schema<ResetMultipleForAllPlayersAchievementsResponse>;
 
 /** Multiple events reset all request. */
 export interface EventsResetMultipleForAllRequest {
@@ -629,39 +465,26 @@ export interface EventsResetMultipleForAllRequest {
   event_ids?: StringList;
 }
 export const EventsResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    event_ids: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "EventsResetMultipleForAllRequest",
-}) as any as S.Schema<EventsResetMultipleForAllRequest>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "event_ids": S.optional(StringList),
+}),
+).annotate({ identifier: "EventsResetMultipleForAllRequest" }) as any as S.Schema<EventsResetMultipleForAllRequest>;
 
 export interface ResetMultipleForAllPlayersEventsRequest {
   /** Request body */
   body?: EventsResetMultipleForAllRequest;
 }
-export const ResetMultipleForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      body: S.optional(EventsResetMultipleForAllRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "games/v1management/events/resetMultipleForAllPlayers",
-        baseUrl: "https://gamesmanagement.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ResetMultipleForAllPlayersEventsRequest",
-}) as any as S.Schema<ResetMultipleForAllPlayersEventsRequest>;
+export const ResetMultipleForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "body": S.optional(EventsResetMultipleForAllRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"games/v1management/events/resetMultipleForAllPlayers","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetMultipleForAllPlayersEventsRequest" }) as any as S.Schema<ResetMultipleForAllPlayersEventsRequest>;
 
 export interface ResetMultipleForAllPlayersEventsResponse {}
-export const ResetMultipleForAllPlayersEventsResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ResetMultipleForAllPlayersEventsResponse",
-}) as any as S.Schema<ResetMultipleForAllPlayersEventsResponse>;
+export const ResetMultipleForAllPlayersEventsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "ResetMultipleForAllPlayersEventsResponse" }) as any as S.Schema<ResetMultipleForAllPlayersEventsResponse>;
 
 export interface ScoresResetMultipleForAllRequest {
   /** The IDs of leaderboards to reset. */
@@ -670,57 +493,36 @@ export interface ScoresResetMultipleForAllRequest {
   kind?: string;
 }
 export const ScoresResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    leaderboard_ids: S.optional(StringList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScoresResetMultipleForAllRequest",
-}) as any as S.Schema<ScoresResetMultipleForAllRequest>;
+S.Struct({
+  "leaderboard_ids": S.optional(StringList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ScoresResetMultipleForAllRequest" }) as any as S.Schema<ScoresResetMultipleForAllRequest>;
 
 export interface ResetMultipleForAllPlayersScoresRequest {
   /** Request body */
   body?: ScoresResetMultipleForAllRequest;
 }
-export const ResetMultipleForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      body: S.optional(ScoresResetMultipleForAllRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "games/v1management/scores/resetMultipleForAllPlayers",
-        baseUrl: "https://gamesmanagement.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ResetMultipleForAllPlayersScoresRequest",
-}) as any as S.Schema<ResetMultipleForAllPlayersScoresRequest>;
+export const ResetMultipleForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "body": S.optional(ScoresResetMultipleForAllRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"games/v1management/scores/resetMultipleForAllPlayers","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetMultipleForAllPlayersScoresRequest" }) as any as S.Schema<ResetMultipleForAllPlayersScoresRequest>;
 
 export interface ResetMultipleForAllPlayersScoresResponse {}
-export const ResetMultipleForAllPlayersScoresResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ResetMultipleForAllPlayersScoresResponse",
-}) as any as S.Schema<ResetMultipleForAllPlayersScoresResponse>;
+export const ResetMultipleForAllPlayersScoresResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "ResetMultipleForAllPlayersScoresResponse" }) as any as S.Schema<ResetMultipleForAllPlayersScoresResponse>;
 
 export interface ResetScoresRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
 export const ResetScoresRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    leaderboardId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "games/v1management/leaderboards/{leaderboardId}/scores/reset",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetScoresRequest",
-}) as any as S.Schema<ResetScoresRequest>;
+S.Struct({
+  "leaderboardId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"games/v1management/leaderboards/{leaderboardId}/scores/reset","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "ResetScoresRequest" }) as any as S.Schema<ResetScoresRequest>;
 
 export interface UnhidePlayersRequest {
   /** The application ID from the Google Play developer console. */
@@ -729,33 +531,18 @@ export interface UnhidePlayersRequest {
   playerId: string;
 }
 export const UnhidePlayersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationId: S.String.pipe(T.Label()),
-    playerId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
-      baseUrl: "https://gamesmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UnhidePlayersRequest",
-}) as any as S.Schema<UnhidePlayersRequest>;
+S.Struct({
+  "applicationId": S.String.pipe(T.Label()),
+  "playerId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"games/v1management/applications/{applicationId}/players/hidden/{playerId}","baseUrl":"https://gamesmanagement.googleapis.com/"})),
+).annotate({ identifier: "UnhidePlayersRequest" }) as any as S.Schema<UnhidePlayersRequest>;
 
 export interface UnhidePlayersResponse {}
 export const UnhidePlayersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnhidePlayersResponse",
-}) as any as S.Schema<UnhidePlayersResponse>;
+S.Struct({}),
+).annotate({ identifier: "UnhidePlayersResponse" }) as any as S.Schema<UnhidePlayersResponse>;
 
-export type HidePlayersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type HidePlayersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console. */
 export const hidePlayers: API.OperationMethod<
   HidePlayersRequest,
@@ -783,19 +570,10 @@ export const listHiddenApplications: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
-export type ResetAchievementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetAchievementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets the achievement with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetAchievements: API.OperationMethod<
   ResetAchievementsRequest,
@@ -810,12 +588,7 @@ export const resetAchievements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetAllAchievementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetAllAchievementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets all achievements for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetAllAchievements: API.OperationMethod<
   ResetAllAchievementsRequest,
@@ -830,12 +603,7 @@ export const resetAllAchievements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetAllEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetAllEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetAllEvents: API.OperationMethod<
   ResetAllEventsRequest,
@@ -850,12 +618,7 @@ export const resetAllEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetAllForAllPlayersAchievementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetAllForAllPlayersAchievementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets all draft achievements for all players. This method is only available to user accounts for your developer console. */
 export const resetAllForAllPlayersAchievements: API.OperationMethod<
   ResetAllForAllPlayersAchievementsRequest,
@@ -870,12 +633,7 @@ export const resetAllForAllPlayersAchievements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetAllForAllPlayersEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetAllForAllPlayersEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets all draft events for all players. This method is only available to user accounts for your developer console. */
 export const resetAllForAllPlayersEvents: API.OperationMethod<
   ResetAllForAllPlayersEventsRequest,
@@ -890,12 +648,7 @@ export const resetAllForAllPlayersEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetAllForAllPlayersScoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetAllForAllPlayersScoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets scores for all draft leaderboards for all players. This method is only available to user accounts for your developer console. */
 export const resetAllForAllPlayersScores: API.OperationMethod<
   ResetAllForAllPlayersScoresRequest,
@@ -910,12 +663,7 @@ export const resetAllForAllPlayersScores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetAllScoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetAllScoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets all scores for all leaderboards for the currently authenticated players. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetAllScores: API.OperationMethod<
   ResetAllScoresRequest,
@@ -930,12 +678,7 @@ export const resetAllScores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetEvents: API.OperationMethod<
   ResetEventsRequest,
@@ -950,12 +693,7 @@ export const resetEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetForAllPlayersAchievementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetForAllPlayersAchievementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets the achievement with the given ID for all players. This method is only available to user accounts for your developer console. Only draft achievements can be reset. */
 export const resetForAllPlayersAchievements: API.OperationMethod<
   ResetForAllPlayersAchievementsRequest,
@@ -970,12 +708,7 @@ export const resetForAllPlayersAchievements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetForAllPlayersEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetForAllPlayersEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset. */
 export const resetForAllPlayersEvents: API.OperationMethod<
   ResetForAllPlayersEventsRequest,
@@ -990,12 +723,7 @@ export const resetForAllPlayersEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetForAllPlayersScoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetForAllPlayersScoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets scores for the leaderboard with the given ID for all players. This method is only available to user accounts for your developer console. Only draft leaderboards can be reset. */
 export const resetForAllPlayersScores: API.OperationMethod<
   ResetForAllPlayersScoresRequest,
@@ -1010,12 +738,7 @@ export const resetForAllPlayersScores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetMultipleForAllPlayersAchievementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetMultipleForAllPlayersAchievementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets achievements with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft achievements may be reset. */
 export const resetMultipleForAllPlayersAchievements: API.OperationMethod<
   ResetMultipleForAllPlayersAchievementsRequest,
@@ -1030,12 +753,7 @@ export const resetMultipleForAllPlayersAchievements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetMultipleForAllPlayersEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetMultipleForAllPlayersEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset. */
 export const resetMultipleForAllPlayersEvents: API.OperationMethod<
   ResetMultipleForAllPlayersEventsRequest,
@@ -1050,12 +768,7 @@ export const resetMultipleForAllPlayersEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetMultipleForAllPlayersScoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetMultipleForAllPlayersScoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets scores for the leaderboards with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft leaderboards may be reset. */
 export const resetMultipleForAllPlayersScores: API.OperationMethod<
   ResetMultipleForAllPlayersScoresRequest,
@@ -1070,12 +783,7 @@ export const resetMultipleForAllPlayersScores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetScoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetScoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets scores for the leaderboard with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetScores: API.OperationMethod<
   ResetScoresRequest,
@@ -1090,12 +798,7 @@ export const resetScores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnhidePlayersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnhidePlayersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unhide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console. */
 export const unhidePlayers: API.OperationMethod<
   UnhidePlayersRequest,
@@ -1109,3 +812,4 @@ export const unhidePlayers: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

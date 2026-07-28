@@ -937,26 +937,21 @@ export type CommitName = string;
 export type MergeOptionTypeEnum =
   | "FAST_FORWARD_MERGE"
   | "SQUASH_MERGE"
-  | "THREE_WAY_MERGE"
-  | (string & {});
+  | "THREE_WAY_MERGE";
 export const MergeOptionTypeEnum = /*@__PURE__*/ S.String;
 
 export type MaxResults = number;
 export type Path = string;
 export type FilePaths = string[];
 export const FilePaths = /*@__PURE__*/ S.Array(S.String);
-export type ConflictDetailLevelTypeEnum =
-  | "FILE_LEVEL"
-  | "LINE_LEVEL"
-  | (string & {});
+export type ConflictDetailLevelTypeEnum = "FILE_LEVEL" | "LINE_LEVEL";
 export const ConflictDetailLevelTypeEnum = /*@__PURE__*/ S.String;
 
 export type ConflictResolutionStrategyTypeEnum =
   | "NONE"
   | "ACCEPT_SOURCE"
   | "ACCEPT_DESTINATION"
-  | "AUTOMERGE"
-  | (string & {});
+  | "AUTOMERGE";
 export const ConflictResolutionStrategyTypeEnum = /*@__PURE__*/ S.String;
 
 export type NextToken = string;
@@ -964,12 +959,14 @@ export interface BatchDescribeMergeConflictsInput {
   repositoryName: string;
   destinationCommitSpecifier: string;
   sourceCommitSpecifier: string;
-  mergeOption: MergeOptionTypeEnum;
+  mergeOption: MergeOptionTypeEnum | (string & {});
   maxMergeHunks?: number;
   maxConflictFiles?: number;
   filePaths?: string[];
-  conflictDetailLevel?: ConflictDetailLevelTypeEnum;
-  conflictResolutionStrategy?: ConflictResolutionStrategyTypeEnum;
+  conflictDetailLevel?: ConflictDetailLevelTypeEnum | (string & {});
+  conflictResolutionStrategy?:
+    | ConflictResolutionStrategyTypeEnum
+    | (string & {});
   nextToken?: string;
 }
 export const BatchDescribeMergeConflictsInput = /*@__PURE__*/ S.suspend(() =>
@@ -1011,11 +1008,7 @@ export const FileSizes = /*@__PURE__*/ S.suspend(() =>
     base: S.optional(S.Number),
   }),
 ).annotate({ identifier: "FileSizes" }) as any as S.Schema<FileSizes>;
-export type FileModeTypeEnum =
-  | "EXECUTABLE"
-  | "NORMAL"
-  | "SYMLINK"
-  | (string & {});
+export type FileModeTypeEnum = "EXECUTABLE" | "NORMAL" | "SYMLINK";
 export const FileModeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface FileModes {
@@ -1034,8 +1027,7 @@ export type ObjectTypeEnum =
   | "FILE"
   | "DIRECTORY"
   | "GIT_LINK"
-  | "SYMBOLIC_LINK"
-  | (string & {});
+  | "SYMBOLIC_LINK";
 export const ObjectTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ObjectTypes {
@@ -1067,7 +1059,7 @@ export const IsBinaryFile = /*@__PURE__*/ S.suspend(() =>
 export type IsContentConflict = boolean;
 export type IsFileModeConflict = boolean;
 export type IsObjectTypeConflict = boolean;
-export type ChangeTypeEnum = "A" | "M" | "D" | (string & {});
+export type ChangeTypeEnum = "A" | "M" | "D";
 export const ChangeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface MergeOperations {
@@ -1410,8 +1402,7 @@ export type BatchGetRepositoriesErrorCodeEnum =
   | "EncryptionKeyDisabledException"
   | "EncryptionKeyNotFoundException"
   | "EncryptionKeyUnavailableException"
-  | "RepositoryDoesNotExistException"
-  | (string & {});
+  | "RepositoryDoesNotExistException";
 export const BatchGetRepositoriesErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export interface BatchGetRepositoriesError_ {
@@ -1555,7 +1546,7 @@ export const SourceFileSpecifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceFileSpecifier>;
 export interface PutFileEntry {
   filePath: string;
-  fileMode?: FileModeTypeEnum;
+  fileMode?: FileModeTypeEnum | (string & {});
   fileContent?: Uint8Array;
   sourceFile?: SourceFileSpecifier;
 }
@@ -1581,7 +1572,7 @@ export type DeleteFileEntries = DeleteFileEntry[];
 export const DeleteFileEntries = /*@__PURE__*/ S.Array(DeleteFileEntry);
 export interface SetFileModeEntry {
   filePath: string;
-  fileMode: FileModeTypeEnum;
+  fileMode: FileModeTypeEnum | (string & {});
 }
 export const SetFileModeEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ filePath: S.String, fileMode: FileModeTypeEnum }),
@@ -1705,7 +1696,7 @@ export const CreatePullRequestInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePullRequestInput",
 }) as any as S.Schema<CreatePullRequestInput>;
 export type PullRequestId = string;
-export type PullRequestStatusEnum = "OPEN" | "CLOSED" | (string & {});
+export type PullRequestStatusEnum = "OPEN" | "CLOSED";
 export const PullRequestStatusEnum = /*@__PURE__*/ S.String;
 
 export type IsMerged = boolean;
@@ -1904,15 +1895,14 @@ export type ReplacementTypeEnum =
   | "KEEP_BASE"
   | "KEEP_SOURCE"
   | "KEEP_DESTINATION"
-  | "USE_NEW_CONTENT"
-  | (string & {});
+  | "USE_NEW_CONTENT";
 export const ReplacementTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ReplaceContentEntry {
   filePath: string;
-  replacementType: ReplacementTypeEnum;
+  replacementType: ReplacementTypeEnum | (string & {});
   content?: Uint8Array;
-  fileMode?: FileModeTypeEnum;
+  fileMode?: FileModeTypeEnum | (string & {});
 }
 export const ReplaceContentEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1944,9 +1934,11 @@ export interface CreateUnreferencedMergeCommitInput {
   repositoryName: string;
   sourceCommitSpecifier: string;
   destinationCommitSpecifier: string;
-  mergeOption: MergeOptionTypeEnum;
-  conflictDetailLevel?: ConflictDetailLevelTypeEnum;
-  conflictResolutionStrategy?: ConflictResolutionStrategyTypeEnum;
+  mergeOption: MergeOptionTypeEnum | (string & {});
+  conflictDetailLevel?: ConflictDetailLevelTypeEnum | (string & {});
+  conflictResolutionStrategy?:
+    | ConflictResolutionStrategyTypeEnum
+    | (string & {});
   authorName?: string;
   email?: string;
   commitMessage?: string;
@@ -2228,11 +2220,13 @@ export interface DescribeMergeConflictsInput {
   repositoryName: string;
   destinationCommitSpecifier: string;
   sourceCommitSpecifier: string;
-  mergeOption: MergeOptionTypeEnum;
+  mergeOption: MergeOptionTypeEnum | (string & {});
   maxMergeHunks?: number;
   filePath: string;
-  conflictDetailLevel?: ConflictDetailLevelTypeEnum;
-  conflictResolutionStrategy?: ConflictResolutionStrategyTypeEnum;
+  conflictDetailLevel?: ConflictDetailLevelTypeEnum | (string & {});
+  conflictResolutionStrategy?:
+    | ConflictResolutionStrategyTypeEnum
+    | (string & {});
   nextToken?: string;
 }
 export const DescribeMergeConflictsInput = /*@__PURE__*/ S.suspend(() =>
@@ -2289,13 +2283,12 @@ export type PullRequestEventType =
   | "PULL_REQUEST_APPROVAL_RULE_UPDATED"
   | "PULL_REQUEST_APPROVAL_RULE_DELETED"
   | "PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN"
-  | "PULL_REQUEST_APPROVAL_STATE_CHANGED"
-  | (string & {});
+  | "PULL_REQUEST_APPROVAL_STATE_CHANGED";
 export const PullRequestEventType = /*@__PURE__*/ S.String;
 
 export interface DescribePullRequestEventsInput {
   pullRequestId: string;
-  pullRequestEventType?: PullRequestEventType;
+  pullRequestEventType?: PullRequestEventType | (string & {});
   actorArn?: string;
   nextToken?: string;
   maxResults?: number;
@@ -2392,7 +2385,7 @@ export const ApprovalRuleEventMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApprovalRuleEventMetadata",
 }) as any as S.Schema<ApprovalRuleEventMetadata>;
-export type ApprovalState = "APPROVE" | "REVOKE" | (string & {});
+export type ApprovalState = "APPROVE" | "REVOKE";
 export const ApprovalState = /*@__PURE__*/ S.String;
 
 export interface ApprovalStateChangedEventMetadata {
@@ -2407,7 +2400,7 @@ export const ApprovalStateChangedEventMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApprovalStateChangedEventMetadata",
 }) as any as S.Schema<ApprovalStateChangedEventMetadata>;
-export type OverrideStatus = "OVERRIDE" | "REVOKE" | (string & {});
+export type OverrideStatus = "OVERRIDE" | "REVOKE";
 export const OverrideStatus = /*@__PURE__*/ S.String;
 
 export interface ApprovalRuleOverriddenEventMetadata {
@@ -2760,7 +2753,7 @@ export const GetCommentsForComparedCommitInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCommentsForComparedCommitInput",
 }) as any as S.Schema<GetCommentsForComparedCommitInput>;
 export type Position = number;
-export type RelativeFileVersionEnum = "BEFORE" | "AFTER" | (string & {});
+export type RelativeFileVersionEnum = "BEFORE" | "AFTER";
 export const RelativeFileVersionEnum = /*@__PURE__*/ S.String;
 
 export interface Location {
@@ -3131,8 +3124,10 @@ export interface GetMergeCommitInput {
   repositoryName: string;
   sourceCommitSpecifier: string;
   destinationCommitSpecifier: string;
-  conflictDetailLevel?: ConflictDetailLevelTypeEnum;
-  conflictResolutionStrategy?: ConflictResolutionStrategyTypeEnum;
+  conflictDetailLevel?: ConflictDetailLevelTypeEnum | (string & {});
+  conflictResolutionStrategy?:
+    | ConflictResolutionStrategyTypeEnum
+    | (string & {});
 }
 export const GetMergeCommitInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3175,10 +3170,12 @@ export interface GetMergeConflictsInput {
   repositoryName: string;
   destinationCommitSpecifier: string;
   sourceCommitSpecifier: string;
-  mergeOption: MergeOptionTypeEnum;
-  conflictDetailLevel?: ConflictDetailLevelTypeEnum;
+  mergeOption: MergeOptionTypeEnum | (string & {});
+  conflictDetailLevel?: ConflictDetailLevelTypeEnum | (string & {});
   maxConflictFiles?: number;
-  conflictResolutionStrategy?: ConflictResolutionStrategyTypeEnum;
+  conflictResolutionStrategy?:
+    | ConflictResolutionStrategyTypeEnum
+    | (string & {});
   nextToken?: string;
 }
 export const GetMergeConflictsInput = /*@__PURE__*/ S.suspend(() =>
@@ -3232,8 +3229,10 @@ export interface GetMergeOptionsInput {
   repositoryName: string;
   sourceCommitSpecifier: string;
   destinationCommitSpecifier: string;
-  conflictDetailLevel?: ConflictDetailLevelTypeEnum;
-  conflictResolutionStrategy?: ConflictResolutionStrategyTypeEnum;
+  conflictDetailLevel?: ConflictDetailLevelTypeEnum | (string & {});
+  conflictResolutionStrategy?:
+    | ConflictResolutionStrategyTypeEnum
+    | (string & {});
 }
 export const GetMergeOptionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3423,8 +3422,7 @@ export type RepositoryTriggerEventEnum =
   | "all"
   | "updateReference"
   | "createReference"
-  | "deleteReference"
-  | (string & {});
+  | "deleteReference";
 export const RepositoryTriggerEventEnum = /*@__PURE__*/ S.String;
 
 export type RepositoryTriggerEventList = RepositoryTriggerEventEnum[];
@@ -3628,7 +3626,7 @@ export const ListFileCommitHistoryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListPullRequestsInput {
   repositoryName: string;
   authorArn?: string;
-  pullRequestStatus?: PullRequestStatusEnum;
+  pullRequestStatus?: PullRequestStatusEnum | (string & {});
   nextToken?: string;
   maxResults?: number;
 }
@@ -3667,16 +3665,16 @@ export const ListPullRequestsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPullRequestsOutput",
 }) as any as S.Schema<ListPullRequestsOutput>;
-export type SortByEnum = "repositoryName" | "lastModifiedDate" | (string & {});
+export type SortByEnum = "repositoryName" | "lastModifiedDate";
 export const SortByEnum = /*@__PURE__*/ S.String;
 
-export type OrderEnum = "ascending" | "descending" | (string & {});
+export type OrderEnum = "ascending" | "descending";
 export const OrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListRepositoriesInput {
   nextToken?: string;
-  sortBy?: SortByEnum;
-  order?: OrderEnum;
+  sortBy?: SortByEnum | (string & {});
+  order?: OrderEnum | (string & {});
 }
 export const ListRepositoriesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3836,8 +3834,10 @@ export interface MergeBranchesBySquashInput {
   sourceCommitSpecifier: string;
   destinationCommitSpecifier: string;
   targetBranch?: string;
-  conflictDetailLevel?: ConflictDetailLevelTypeEnum;
-  conflictResolutionStrategy?: ConflictResolutionStrategyTypeEnum;
+  conflictDetailLevel?: ConflictDetailLevelTypeEnum | (string & {});
+  conflictResolutionStrategy?:
+    | ConflictResolutionStrategyTypeEnum
+    | (string & {});
   authorName?: string;
   email?: string;
   commitMessage?: string;
@@ -3888,8 +3888,10 @@ export interface MergeBranchesByThreeWayInput {
   sourceCommitSpecifier: string;
   destinationCommitSpecifier: string;
   targetBranch?: string;
-  conflictDetailLevel?: ConflictDetailLevelTypeEnum;
-  conflictResolutionStrategy?: ConflictResolutionStrategyTypeEnum;
+  conflictDetailLevel?: ConflictDetailLevelTypeEnum | (string & {});
+  conflictResolutionStrategy?:
+    | ConflictResolutionStrategyTypeEnum
+    | (string & {});
   authorName?: string;
   email?: string;
   commitMessage?: string;
@@ -3971,8 +3973,10 @@ export interface MergePullRequestBySquashInput {
   pullRequestId: string;
   repositoryName: string;
   sourceCommitId?: string;
-  conflictDetailLevel?: ConflictDetailLevelTypeEnum;
-  conflictResolutionStrategy?: ConflictResolutionStrategyTypeEnum;
+  conflictDetailLevel?: ConflictDetailLevelTypeEnum | (string & {});
+  conflictResolutionStrategy?:
+    | ConflictResolutionStrategyTypeEnum
+    | (string & {});
   commitMessage?: string;
   authorName?: string;
   email?: string;
@@ -4017,8 +4021,10 @@ export interface MergePullRequestByThreeWayInput {
   pullRequestId: string;
   repositoryName: string;
   sourceCommitId?: string;
-  conflictDetailLevel?: ConflictDetailLevelTypeEnum;
-  conflictResolutionStrategy?: ConflictResolutionStrategyTypeEnum;
+  conflictDetailLevel?: ConflictDetailLevelTypeEnum | (string & {});
+  conflictResolutionStrategy?:
+    | ConflictResolutionStrategyTypeEnum
+    | (string & {});
   commitMessage?: string;
   authorName?: string;
   email?: string;
@@ -4062,7 +4068,7 @@ export const MergePullRequestByThreeWayOutput = /*@__PURE__*/ S.suspend(() =>
 export interface OverridePullRequestApprovalRulesInput {
   pullRequestId: string;
   revisionId: string;
-  overrideStatus: OverrideStatus;
+  overrideStatus: OverrideStatus | (string & {});
 }
 export const OverridePullRequestApprovalRulesInput = /*@__PURE__*/ S.suspend(
   () =>
@@ -4260,7 +4266,7 @@ export interface PutFileInput {
   branchName: string;
   fileContent: Uint8Array;
   filePath: string;
-  fileMode?: FileModeTypeEnum;
+  fileMode?: FileModeTypeEnum | (string & {});
   parentCommitId?: string;
   commitMessage?: string;
   name?: string;
@@ -4613,7 +4619,7 @@ export const UpdatePullRequestApprovalRuleContentOutput =
 export interface UpdatePullRequestApprovalStateInput {
   pullRequestId: string;
   revisionId: string;
-  approvalState: ApprovalState;
+  approvalState: ApprovalState | (string & {});
 }
 export const UpdatePullRequestApprovalStateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4669,7 +4675,7 @@ export const UpdatePullRequestDescriptionOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePullRequestDescriptionOutput>;
 export interface UpdatePullRequestStatusInput {
   pullRequestId: string;
-  pullRequestStatus: PullRequestStatusEnum;
+  pullRequestStatus: PullRequestStatusEnum | (string & {});
 }
 export const UpdatePullRequestStatusInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

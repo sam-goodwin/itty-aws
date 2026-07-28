@@ -27,8 +27,7 @@ export const AssetEndpointProfilesCreateOrReplaceRequestTagsMap =
 export type AuthenticationMethod =
   | "Anonymous"
   | "Certificate"
-  | "UsernamePassword"
-  | (string & {});
+  | "UsernamePassword";
 export const AuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** The credentials for authentication mode UsernamePassword. */
@@ -161,8 +160,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -170,8 +168,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -252,8 +249,7 @@ export type ProvisioningState =
   | "Failed"
   | "Canceled"
   | "Accepted"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Defines the Asset Endpoint Profile properties. */
@@ -543,8 +539,7 @@ export const AssetEndpointProfilesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type AuthenticationUpdateMethod =
   | "Anonymous"
   | "Certificate"
-  | "UsernamePassword"
-  | (string & {});
+  | "UsernamePassword";
 export const AuthenticationUpdateMethod = /*@__PURE__*/ S.String;
 
 /** The credentials for authentication mode UsernamePassword. */
@@ -579,7 +574,7 @@ export const X509CredentialsUpdate = /*@__PURE__*/ S.suspend(() =>
 /** Definition of the client authentication mechanism to the server. */
 export interface AuthenticationUpdate {
   /** Defines the method to authenticate the user of the client at the server. */
-  method?: AuthenticationUpdateMethod;
+  method?: AuthenticationUpdateMethod | (string & {});
   /** Defines the username and password references when UsernamePassword user authentication mode is selected. */
   usernamePasswordCredentials?: UsernamePasswordCredentialsUpdate;
   /** Defines the certificate reference when Certificate user authentication mode is selected. */
@@ -718,7 +713,7 @@ export const AssetPropertiesInputDiscoveredAssetRefsList =
   ) as any as S.Schema<AssetPropertiesInputDiscoveredAssetRefsList>;
 
 /** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
-export type TopicRetain = "Keep" | "Never" | (string & {});
+export type TopicRetain = "Keep" | "Never";
 export const TopicRetain = /*@__PURE__*/ S.String;
 
 /** Object that describes the topic information. */
@@ -741,8 +736,7 @@ export type DataPointObservabilityMode =
   | "Counter"
   | "Gauge"
   | "Histogram"
-  | "Log"
-  | (string & {});
+  | "Log";
 export const DataPointObservabilityMode = /*@__PURE__*/ S.String;
 
 /** Defines the data point properties. */
@@ -798,7 +792,7 @@ export const AssetPropertiesInputDatasetsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AssetPropertiesInputDatasetsList>;
 
 /** An indication of how the event should be mapped to OpenTelemetry. */
-export type EventObservabilityMode = "None" | "Log" | (string & {});
+export type EventObservabilityMode = "None" | "Log";
 export const EventObservabilityMode = /*@__PURE__*/ S.String;
 
 /** Defines the event properties. */
@@ -1411,7 +1405,7 @@ export const AssetUpdatePropertiesAttributesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AssetUpdatePropertiesAttributesMap>;
 
 /** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
-export type TopicUpdateRetain = "Keep" | "Never" | (string & {});
+export type TopicUpdateRetain = "Keep" | "Never";
 export const TopicUpdateRetain = /*@__PURE__*/ S.String;
 
 /** Object that describes the topic information. */
@@ -1419,7 +1413,7 @@ export interface TopicUpdate {
   /** The topic path for messages published to an MQTT broker. */
   path?: string;
   /** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
-  retain?: TopicUpdateRetain;
+  retain?: TopicUpdateRetain | (string & {});
 }
 export const TopicUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1756,11 +1750,7 @@ export const NamespaceAssetPropertiesInputDiscoveredAssetRefsList =
   ) as any as S.Schema<NamespaceAssetPropertiesInputDiscoveredAssetRefsList>;
 
 /** The set of supported dataset destinations for an asset. */
-export type DatasetDestinationTarget =
-  | "Mqtt"
-  | "BrokerStateStore"
-  | "Storage"
-  | (string & {});
+export type DatasetDestinationTarget = "Mqtt" | "BrokerStateStore" | "Storage";
 export const DatasetDestinationTarget = /*@__PURE__*/ S.String;
 
 /** The type of the destination. */
@@ -1785,7 +1775,7 @@ export const NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList =
   ) as any as S.Schema<NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList>;
 
 /** The set of supported event destinations for an asset. */
-export type EventDestinationTarget = "Mqtt" | "Storage" | (string & {});
+export type EventDestinationTarget = "Mqtt" | "Storage";
 export const EventDestinationTarget = /*@__PURE__*/ S.String;
 
 /** The type of the destination. */
@@ -1810,7 +1800,7 @@ export const NamespaceAssetPropertiesInputDefaultEventsDestinationsList =
   ) as any as S.Schema<NamespaceAssetPropertiesInputDefaultEventsDestinationsList>;
 
 /** The set of supported stream destinations for an asset. */
-export type StreamDestinationTarget = "Mqtt" | "Storage" | (string & {});
+export type StreamDestinationTarget = "Mqtt" | "Storage";
 export const StreamDestinationTarget = /*@__PURE__*/ S.String;
 
 /** The type of the destination. */
@@ -2019,11 +2009,7 @@ export const NamespaceAssetPropertiesInputStreamsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NamespaceAssetPropertiesInputStreamsList>;
 
 /** The type of the action. */
-export type ManagementActionActionType =
-  | "Call"
-  | "Read"
-  | "Write"
-  | (string & {});
+export type ManagementActionActionType = "Call" | "Read" | "Write";
 export const ManagementActionActionType = /*@__PURE__*/ S.String;
 
 /** Defines the action properties. */
@@ -2569,12 +2555,7 @@ export const NamespaceAssetStatusManagementGroupsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NamespaceAssetStatusManagementGroupsList>;
 
 /** Defines the health state of the resource. */
-export type HealthStatus =
-  | "Unknown"
-  | "Available"
-  | "Degraded"
-  | "Unavailable"
-  | (string & {});
+export type HealthStatus = "Unknown" | "Available" | "Degraded" | "Unavailable";
 export const HealthStatus = /*@__PURE__*/ S.String;
 
 /** Represents the health state of a resource. */
@@ -2863,8 +2844,7 @@ export type ManagementActionExecutionStatus =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const ManagementActionExecutionStatus = /*@__PURE__*/ S.String;
 
 /** Array of error details that describe the status of each error. */
@@ -3336,8 +3316,7 @@ export const NamespaceDevicesCreateOrReplaceRequestTagsMap =
 export type HostAuthenticationMethod =
   | "Anonymous"
   | "Certificate"
-  | "UsernamePassword"
-  | (string & {});
+  | "UsernamePassword";
 export const HostAuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** The x509 certificate for authentication mode Certificate. */
@@ -3953,8 +3932,7 @@ export const NamespaceDevicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type HostAuthenticationUpdateMethod =
   | "Anonymous"
   | "Certificate"
-  | "UsernamePassword"
-  | (string & {});
+  | "UsernamePassword";
 export const HostAuthenticationUpdateMethod = /*@__PURE__*/ S.String;
 
 /** The x509 certificate for authentication mode Certificate. */
@@ -3979,7 +3957,7 @@ export const X509CertificateCredentialsUpdate = /*@__PURE__*/ S.suspend(() =>
 /** Definition of the client authentication mechanism to the host. */
 export interface HostAuthenticationUpdate {
   /** Defines the method to authenticate the user of the client at the server. */
-  method?: HostAuthenticationUpdateMethod;
+  method?: HostAuthenticationUpdateMethod | (string & {});
   /** Defines the username and password references when UsernamePassword user authentication mode is selected. */
   usernamePasswordCredentials?: UsernamePasswordCredentialsUpdate;
   /** Defines the certificate reference when Certificate user authentication mode is selected. */
@@ -4471,8 +4449,7 @@ export const NamespaceDiscoveredAssetPropertiesInputStreamsList =
 export type NamespaceDiscoveredManagementActionActionType =
   | "Call"
   | "Read"
-  | "Write"
-  | (string & {});
+  | "Write";
 export const NamespaceDiscoveredManagementActionActionType =
   /*@__PURE__*/ S.String;
 
@@ -5428,8 +5405,7 @@ export const NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap =
 export type AuthenticationMethod2 =
   | "Anonymous"
   | "Certificate"
-  | "UsernamePassword"
-  | (string & {});
+  | "UsernamePassword";
 export const AuthenticationMethod2 = /*@__PURE__*/ S.String;
 
 /** List of supported authentication methods supported by device for Inbound connections. */
@@ -5918,7 +5894,7 @@ export const NamespaceDiscoveredDevicesUpdateRequestTagsMap =
 
 /** List of supported authentication methods supported by device for Inbound connections. */
 export type DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList =
-  ReadonlyArray<AuthenticationMethod2>;
+  ReadonlyArray<AuthenticationMethod2 | (string & {})>;
 export const DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList =
   /*@__PURE__*/ S.Array(
     AuthenticationMethod2,
@@ -6230,15 +6206,12 @@ export const NamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacePropertiesInput>;
 
 /** Type of managed service identity (either system assigned, or none). */
-export type SystemAssignedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | (string & {});
+export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
 export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface NamespacesCreateOrReplaceRequestIdentity {
-  type: SystemAssignedServiceIdentityType;
+  type: SystemAssignedServiceIdentityType | (string & {});
 }
 export const NamespacesCreateOrReplaceRequestIdentity = /*@__PURE__*/ S.suspend(
   () =>
@@ -6608,7 +6581,7 @@ export const NamespacesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesListBySubscriptionRequest>;
 
 /** Scope of the migrate resources operation. */
-export type Scope = "Resources" | (string & {});
+export type Scope = "Resources";
 export const Scope = /*@__PURE__*/ S.String;
 
 /** List of asset resources to be migrated. */
@@ -6625,7 +6598,7 @@ export interface NamespacesMigrateRequest {
   /** The name of the namespace. */
   namespaceName: string;
   /** Scope of the migrate resources operation. */
-  scope?: Scope;
+  scope?: Scope | (string & {});
   /** List of asset resources to be migrated. */
   resourceIds?: NamespacesMigrateRequestResourceIdsList;
 }
@@ -6649,7 +6622,7 @@ export const NamespacesMigrateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesMigrateRequest>;
 
 /** Result Type of Migrate Operation. */
-export type MigrateResultType = "Succeeded" | "Failed" | (string & {});
+export type MigrateResultType = "Succeeded" | "Failed";
 export const MigrateResultType = /*@__PURE__*/ S.String;
 
 /** Result of Migrate operation of asset resource into Namespace resource. */
@@ -6691,7 +6664,7 @@ export const NamespaceMigrateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (either system assigned, or none) */
 export interface NamespacesUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType;
+  type: SystemAssignedServiceIdentityType | (string & {});
 }
 export const NamespacesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6857,11 +6830,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -7105,7 +7078,7 @@ export const SchemaRegistryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (either system assigned, or none) */
 export interface SchemaRegistriesCreateOrReplaceRequestIdentity {
-  type: SystemAssignedServiceIdentityType;
+  type: SystemAssignedServiceIdentityType | (string & {});
 }
 export const SchemaRegistriesCreateOrReplaceRequestIdentity =
   /*@__PURE__*/ S.suspend(() =>
@@ -7486,7 +7459,7 @@ export const SchemaRegistriesListBySubscriptionRequest =
 
 /** Managed service identity (either system assigned, or none) */
 export interface SchemaRegistriesUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType;
+  type: SystemAssignedServiceIdentityType | (string & {});
 }
 export const SchemaRegistriesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
   () =>
@@ -7618,11 +7591,11 @@ export const SchemaRegistriesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaRegistriesUpdateResponse>;
 
 /** Defines the schema format. */
-export type Format = "JsonSchema/draft-07" | "Delta/1.0" | (string & {});
+export type Format = "JsonSchema/draft-07" | "Delta/1.0";
 export const Format = /*@__PURE__*/ S.String;
 
 /** Defines the schema type. */
-export type SchemaType = "MessageSchema" | (string & {});
+export type SchemaType = "MessageSchema";
 export const SchemaType = /*@__PURE__*/ S.String;
 
 /** Schema tags. */
@@ -7641,9 +7614,9 @@ export interface SchemaPropertiesInput {
   /** Human-readable description of the schema. */
   description?: string;
   /** Format of the schema. */
-  format: Format;
+  format: Format | (string & {});
   /** Type of the schema. */
-  schemaType: SchemaType;
+  schemaType: SchemaType | (string & {});
   /** Schema tags. */
   tags?: SchemaPropertiesInputTagsMap;
 }

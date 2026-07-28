@@ -13,85 +13,68 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface CalculateFoldersContainerThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateFoldersContainerThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateFoldersContainerThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateFoldersContainerThreatDetectionSettingsRequest>;
+export const CalculateFoldersContainerThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateFoldersContainerThreatDetectionSettingsRequest" }) as any as S.Schema<CalculateFoldersContainerThreatDetectionSettingsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
-export type ConfigModuleEnablementStateEnum =
-  | "ENABLEMENT_STATE_UNSPECIFIED"
-  | "INHERITED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type ConfigModuleEnablementStateEnum = "ENABLEMENT_STATE_UNSPECIFIED" | "INHERITED" | "ENABLED" | "DISABLED";
 export const ConfigModuleEnablementStateEnum = /*@__PURE__*/ S.String;
 
 export interface Config {
@@ -99,26 +82,17 @@ export interface Config {
   moduleEnablementState?: ConfigModuleEnablementStateEnum;
 }
 export const Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DocumentMap),
-    moduleEnablementState: S.optional(ConfigModuleEnablementStateEnum),
-  }),
+S.Struct({
+  "value": S.optional(DocumentMap),
+  "moduleEnablementState": S.optional(ConfigModuleEnablementStateEnum),
+}),
 ).annotate({ identifier: "Config" }) as any as S.Schema<Config>;
 
 export type ConfigMap = { [key: string]: Config | undefined };
-export const ConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Config,
-) as any as S.Schema<ConfigMap>;
+export const ConfigMap = /*@__PURE__*/ S.Record(S.String, Config) as any as S.Schema<ConfigMap>;
 
-export type ContainerThreatDetectionSettingsServiceEnablementStateEnum =
-  | "ENABLEMENT_STATE_UNSPECIFIED"
-  | "INHERITED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
-export const ContainerThreatDetectionSettingsServiceEnablementStateEnum =
-  /*@__PURE__*/ S.String;
+export type ContainerThreatDetectionSettingsServiceEnablementStateEnum = "ENABLEMENT_STATE_UNSPECIFIED" | "INHERITED" | "ENABLED" | "DISABLED";
+export const ContainerThreatDetectionSettingsServiceEnablementStateEnum = /*@__PURE__*/ S.String;
 
 export interface ContainerThreatDetectionSettings {
   name?: string;
@@ -128,47 +102,28 @@ export interface ContainerThreatDetectionSettings {
   serviceEnablementState?: ContainerThreatDetectionSettingsServiceEnablementStateEnum;
 }
 export const ContainerThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    modules: S.optional(ConfigMap),
-    serviceEnablementState: S.optional(
-      ContainerThreatDetectionSettingsServiceEnablementStateEnum,
-    ),
-  }),
-).annotate({
-  identifier: "ContainerThreatDetectionSettings",
-}) as any as S.Schema<ContainerThreatDetectionSettings>;
+S.Struct({
+  "name": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "modules": S.optional(ConfigMap),
+  "serviceEnablementState": S.optional(ContainerThreatDetectionSettingsServiceEnablementStateEnum),
+}),
+).annotate({ identifier: "ContainerThreatDetectionSettings" }) as any as S.Schema<ContainerThreatDetectionSettings>;
 
 export interface CalculateFoldersEventThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateFoldersEventThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateFoldersEventThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateFoldersEventThreatDetectionSettingsRequest>;
+export const CalculateFoldersEventThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateFoldersEventThreatDetectionSettingsRequest" }) as any as S.Schema<CalculateFoldersEventThreatDetectionSettingsRequest>;
 
-export type EventThreatDetectionSettingsServiceEnablementStateEnum =
-  | "ENABLEMENT_STATE_UNSPECIFIED"
-  | "INHERITED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
-export const EventThreatDetectionSettingsServiceEnablementStateEnum =
-  /*@__PURE__*/ S.String;
+export type EventThreatDetectionSettingsServiceEnablementStateEnum = "ENABLEMENT_STATE_UNSPECIFIED" | "INHERITED" | "ENABLED" | "DISABLED";
+export const EventThreatDetectionSettingsServiceEnablementStateEnum = /*@__PURE__*/ S.String;
 
 export interface EventThreatDetectionSettings {
   updateTime?: string;
@@ -177,44 +132,25 @@ export interface EventThreatDetectionSettings {
   modules?: ConfigMap;
 }
 export const EventThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    serviceEnablementState: S.optional(
-      EventThreatDetectionSettingsServiceEnablementStateEnum,
-    ),
-    modules: S.optional(ConfigMap),
-  }),
-).annotate({
-  identifier: "EventThreatDetectionSettings",
-}) as any as S.Schema<EventThreatDetectionSettings>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "serviceEnablementState": S.optional(EventThreatDetectionSettingsServiceEnablementStateEnum),
+  "modules": S.optional(ConfigMap),
+}),
+).annotate({ identifier: "EventThreatDetectionSettings" }) as any as S.Schema<EventThreatDetectionSettings>;
 
 export interface CalculateFoldersRapidVulnerabilityDetectionSettingsRequest {
   name: string;
 }
-export const CalculateFoldersRapidVulnerabilityDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateFoldersRapidVulnerabilityDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateFoldersRapidVulnerabilityDetectionSettingsRequest>;
+export const CalculateFoldersRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateFoldersRapidVulnerabilityDetectionSettingsRequest" }) as any as S.Schema<CalculateFoldersRapidVulnerabilityDetectionSettingsRequest>;
 
-export type RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum =
-  | "ENABLEMENT_STATE_UNSPECIFIED"
-  | "INHERITED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
-export const RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum =
-  /*@__PURE__*/ S.String;
+export type RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum = "ENABLEMENT_STATE_UNSPECIFIED" | "INHERITED" | "ENABLED" | "DISABLED";
+export const RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum = /*@__PURE__*/ S.String;
 
 export interface RapidVulnerabilityDetectionSettings {
   serviceEnablementState?: RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum;
@@ -223,46 +159,27 @@ export interface RapidVulnerabilityDetectionSettings {
   name?: string;
 }
 export const RapidVulnerabilityDetectionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceEnablementState: S.optional(
-      RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum,
-    ),
-    modules: S.optional(ConfigMap),
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RapidVulnerabilityDetectionSettings",
-}) as any as S.Schema<RapidVulnerabilityDetectionSettings>;
+S.Struct({
+  "serviceEnablementState": S.optional(RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum),
+  "modules": S.optional(ConfigMap),
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "RapidVulnerabilityDetectionSettings" }) as any as S.Schema<RapidVulnerabilityDetectionSettings>;
 
 export interface CalculateFoldersSecurityHealthAnalyticsSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateFoldersSecurityHealthAnalyticsSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateFoldersSecurityHealthAnalyticsSettingsRequest",
-  }) as any as S.Schema<CalculateFoldersSecurityHealthAnalyticsSettingsRequest>;
+export const CalculateFoldersSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateFoldersSecurityHealthAnalyticsSettingsRequest" }) as any as S.Schema<CalculateFoldersSecurityHealthAnalyticsSettingsRequest>;
 
-export type SecurityHealthAnalyticsSettingsServiceEnablementStateEnum =
-  | "ENABLEMENT_STATE_UNSPECIFIED"
-  | "INHERITED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
-export const SecurityHealthAnalyticsSettingsServiceEnablementStateEnum =
-  /*@__PURE__*/ S.String;
+export type SecurityHealthAnalyticsSettingsServiceEnablementStateEnum = "ENABLEMENT_STATE_UNSPECIFIED" | "INHERITED" | "ENABLED" | "DISABLED";
+export const SecurityHealthAnalyticsSettingsServiceEnablementStateEnum = /*@__PURE__*/ S.String;
 
 export interface SecurityHealthAnalyticsSettings {
   updateTime?: string;
@@ -272,47 +189,28 @@ export interface SecurityHealthAnalyticsSettings {
   modules?: ConfigMap;
 }
 export const SecurityHealthAnalyticsSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    serviceEnablementState: S.optional(
-      SecurityHealthAnalyticsSettingsServiceEnablementStateEnum,
-    ),
-    modules: S.optional(ConfigMap),
-  }),
-).annotate({
-  identifier: "SecurityHealthAnalyticsSettings",
-}) as any as S.Schema<SecurityHealthAnalyticsSettings>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "serviceEnablementState": S.optional(SecurityHealthAnalyticsSettingsServiceEnablementStateEnum),
+  "modules": S.optional(ConfigMap),
+}),
+).annotate({ identifier: "SecurityHealthAnalyticsSettings" }) as any as S.Schema<SecurityHealthAnalyticsSettings>;
 
 export interface CalculateFoldersVirtualMachineThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateFoldersVirtualMachineThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateFoldersVirtualMachineThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateFoldersVirtualMachineThreatDetectionSettingsRequest>;
+export const CalculateFoldersVirtualMachineThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateFoldersVirtualMachineThreatDetectionSettingsRequest" }) as any as S.Schema<CalculateFoldersVirtualMachineThreatDetectionSettingsRequest>;
 
-export type VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum =
-  | "ENABLEMENT_STATE_UNSPECIFIED"
-  | "INHERITED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
-export const VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum =
-  /*@__PURE__*/ S.String;
+export type VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum = "ENABLEMENT_STATE_UNSPECIFIED" | "INHERITED" | "ENABLED" | "DISABLED";
+export const VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum = /*@__PURE__*/ S.String;
 
 export interface VirtualMachineThreatDetectionSettings {
   updateTime?: string;
@@ -321,49 +219,29 @@ export interface VirtualMachineThreatDetectionSettings {
   serviceEnablementState?: VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum;
   modules?: ConfigMap;
 }
-export const VirtualMachineThreatDetectionSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateTime: S.optional(S.String),
-      name: S.optional(S.String),
-      serviceAccount: S.optional(S.String),
-      serviceEnablementState: S.optional(
-        VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum,
-      ),
-      modules: S.optional(ConfigMap),
-    }),
-).annotate({
-  identifier: "VirtualMachineThreatDetectionSettings",
-}) as any as S.Schema<VirtualMachineThreatDetectionSettings>;
+export const VirtualMachineThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "serviceEnablementState": S.optional(VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum),
+  "modules": S.optional(ConfigMap),
+}),
+).annotate({ identifier: "VirtualMachineThreatDetectionSettings" }) as any as S.Schema<VirtualMachineThreatDetectionSettings>;
 
 export interface CalculateFoldersWebSecurityScannerSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateFoldersWebSecurityScannerSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateFoldersWebSecurityScannerSettingsRequest",
-  }) as any as S.Schema<CalculateFoldersWebSecurityScannerSettingsRequest>;
+export const CalculateFoldersWebSecurityScannerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateFoldersWebSecurityScannerSettingsRequest" }) as any as S.Schema<CalculateFoldersWebSecurityScannerSettingsRequest>;
 
-export type WebSecurityScannerSettingsServiceEnablementStateEnum =
-  | "ENABLEMENT_STATE_UNSPECIFIED"
-  | "INHERITED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
-export const WebSecurityScannerSettingsServiceEnablementStateEnum =
-  /*@__PURE__*/ S.String;
+export type WebSecurityScannerSettingsServiceEnablementStateEnum = "ENABLEMENT_STATE_UNSPECIFIED" | "INHERITED" | "ENABLED" | "DISABLED";
+export const WebSecurityScannerSettingsServiceEnablementStateEnum = /*@__PURE__*/ S.String;
 
 export interface WebSecurityScannerSettings {
   modules?: ConfigMap;
@@ -372,475 +250,251 @@ export interface WebSecurityScannerSettings {
   updateTime?: string;
 }
 export const WebSecurityScannerSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modules: S.optional(ConfigMap),
-    serviceEnablementState: S.optional(
-      WebSecurityScannerSettingsServiceEnablementStateEnum,
-    ),
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebSecurityScannerSettings",
-}) as any as S.Schema<WebSecurityScannerSettings>;
+S.Struct({
+  "modules": S.optional(ConfigMap),
+  "serviceEnablementState": S.optional(WebSecurityScannerSettingsServiceEnablementStateEnum),
+  "name": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
+).annotate({ identifier: "WebSecurityScannerSettings" }) as any as S.Schema<WebSecurityScannerSettings>;
 
 export interface CalculateOrganizationsContainerThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateOrganizationsContainerThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateOrganizationsContainerThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateOrganizationsContainerThreatDetectionSettingsRequest>;
+export const CalculateOrganizationsContainerThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateOrganizationsContainerThreatDetectionSettingsRequest" }) as any as S.Schema<CalculateOrganizationsContainerThreatDetectionSettingsRequest>;
 
 export interface CalculateOrganizationsEventThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateOrganizationsEventThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateOrganizationsEventThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateOrganizationsEventThreatDetectionSettingsRequest>;
+export const CalculateOrganizationsEventThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateOrganizationsEventThreatDetectionSettingsRequest" }) as any as S.Schema<CalculateOrganizationsEventThreatDetectionSettingsRequest>;
 
 export interface CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest {
   name: string;
 }
-export const CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest>;
+export const CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest" }) as any as S.Schema<CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest>;
 
 export interface CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest",
-  }) as any as S.Schema<CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest>;
+export const CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest" }) as any as S.Schema<CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest>;
 
 export interface CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest>;
+export const CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest" }) as any as S.Schema<CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest>;
 
 export interface CalculateOrganizationsWebSecurityScannerSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateOrganizationsWebSecurityScannerSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateOrganizationsWebSecurityScannerSettingsRequest",
-  }) as any as S.Schema<CalculateOrganizationsWebSecurityScannerSettingsRequest>;
+export const CalculateOrganizationsWebSecurityScannerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateOrganizationsWebSecurityScannerSettingsRequest" }) as any as S.Schema<CalculateOrganizationsWebSecurityScannerSettingsRequest>;
 
 export interface CalculateProjectsContainerThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateProjectsContainerThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateProjectsContainerThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateProjectsContainerThreatDetectionSettingsRequest>;
+export const CalculateProjectsContainerThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateProjectsContainerThreatDetectionSettingsRequest" }) as any as S.Schema<CalculateProjectsContainerThreatDetectionSettingsRequest>;
 
 export interface CalculateProjectsEventThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateProjectsEventThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateProjectsEventThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateProjectsEventThreatDetectionSettingsRequest>;
+export const CalculateProjectsEventThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateProjectsEventThreatDetectionSettingsRequest" }) as any as S.Schema<CalculateProjectsEventThreatDetectionSettingsRequest>;
 
 export interface CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest>;
+export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest" }) as any as S.Schema<CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest>;
 
 export interface CalculateProjectsRapidVulnerabilityDetectionSettingsRequest {
   name: string;
 }
-export const CalculateProjectsRapidVulnerabilityDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateProjectsRapidVulnerabilityDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateProjectsRapidVulnerabilityDetectionSettingsRequest>;
+export const CalculateProjectsRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateProjectsRapidVulnerabilityDetectionSettingsRequest" }) as any as S.Schema<CalculateProjectsRapidVulnerabilityDetectionSettingsRequest>;
 
 export interface CalculateProjectsSecurityHealthAnalyticsSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateProjectsSecurityHealthAnalyticsSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateProjectsSecurityHealthAnalyticsSettingsRequest",
-  }) as any as S.Schema<CalculateProjectsSecurityHealthAnalyticsSettingsRequest>;
+export const CalculateProjectsSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateProjectsSecurityHealthAnalyticsSettingsRequest" }) as any as S.Schema<CalculateProjectsSecurityHealthAnalyticsSettingsRequest>;
 
 export interface CalculateProjectsVirtualMachineThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateProjectsVirtualMachineThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateProjectsVirtualMachineThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateProjectsVirtualMachineThreatDetectionSettingsRequest>;
+export const CalculateProjectsVirtualMachineThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateProjectsVirtualMachineThreatDetectionSettingsRequest" }) as any as S.Schema<CalculateProjectsVirtualMachineThreatDetectionSettingsRequest>;
 
 export interface CalculateProjectsWebSecurityScannerSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateProjectsWebSecurityScannerSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateProjectsWebSecurityScannerSettingsRequest",
-  }) as any as S.Schema<CalculateProjectsWebSecurityScannerSettingsRequest>;
+export const CalculateProjectsWebSecurityScannerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "showEligibleModulesOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:calculate","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "CalculateProjectsWebSecurityScannerSettingsRequest" }) as any as S.Schema<CalculateProjectsWebSecurityScannerSettingsRequest>;
 
 export interface GetContainerThreatDetectionSettingsFoldersRequest {
   name: string;
 }
-export const GetContainerThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetContainerThreatDetectionSettingsFoldersRequest",
-  }) as any as S.Schema<GetContainerThreatDetectionSettingsFoldersRequest>;
+export const GetContainerThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetContainerThreatDetectionSettingsFoldersRequest" }) as any as S.Schema<GetContainerThreatDetectionSettingsFoldersRequest>;
 
 export interface GetContainerThreatDetectionSettingsOrganizationsRequest {
   name: string;
 }
-export const GetContainerThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetContainerThreatDetectionSettingsOrganizationsRequest",
-  }) as any as S.Schema<GetContainerThreatDetectionSettingsOrganizationsRequest>;
+export const GetContainerThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetContainerThreatDetectionSettingsOrganizationsRequest" }) as any as S.Schema<GetContainerThreatDetectionSettingsOrganizationsRequest>;
 
 export interface GetContainerThreatDetectionSettingsProjectsRequest {
   name: string;
 }
-export const GetContainerThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetContainerThreatDetectionSettingsProjectsRequest",
-  }) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsRequest>;
+export const GetContainerThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetContainerThreatDetectionSettingsProjectsRequest" }) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsRequest>;
 
 export interface GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest {
   name: string;
 }
-export const GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest",
-  }) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest>;
+export const GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest" }) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest>;
 
 export interface GetEventThreatDetectionSettingsFoldersRequest {
   name: string;
 }
-export const GetEventThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetEventThreatDetectionSettingsFoldersRequest",
-  }) as any as S.Schema<GetEventThreatDetectionSettingsFoldersRequest>;
+export const GetEventThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetEventThreatDetectionSettingsFoldersRequest" }) as any as S.Schema<GetEventThreatDetectionSettingsFoldersRequest>;
 
 export interface GetEventThreatDetectionSettingsOrganizationsRequest {
   name: string;
 }
-export const GetEventThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetEventThreatDetectionSettingsOrganizationsRequest",
-  }) as any as S.Schema<GetEventThreatDetectionSettingsOrganizationsRequest>;
+export const GetEventThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetEventThreatDetectionSettingsOrganizationsRequest" }) as any as S.Schema<GetEventThreatDetectionSettingsOrganizationsRequest>;
 
 export interface GetEventThreatDetectionSettingsProjectsRequest {
   name: string;
 }
-export const GetEventThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetEventThreatDetectionSettingsProjectsRequest",
-  }) as any as S.Schema<GetEventThreatDetectionSettingsProjectsRequest>;
+export const GetEventThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetEventThreatDetectionSettingsProjectsRequest" }) as any as S.Schema<GetEventThreatDetectionSettingsProjectsRequest>;
 
 export interface GetRapidVulnerabilityDetectionSettingsFoldersRequest {
   name: string;
 }
-export const GetRapidVulnerabilityDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetRapidVulnerabilityDetectionSettingsFoldersRequest",
-  }) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsFoldersRequest>;
+export const GetRapidVulnerabilityDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetRapidVulnerabilityDetectionSettingsFoldersRequest" }) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsFoldersRequest>;
 
 export interface GetRapidVulnerabilityDetectionSettingsOrganizationsRequest {
   name: string;
 }
-export const GetRapidVulnerabilityDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetRapidVulnerabilityDetectionSettingsOrganizationsRequest",
-  }) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
+export const GetRapidVulnerabilityDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetRapidVulnerabilityDetectionSettingsOrganizationsRequest" }) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
 
 export interface GetRapidVulnerabilityDetectionSettingsProjectsRequest {
   name: string;
 }
-export const GetRapidVulnerabilityDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetRapidVulnerabilityDetectionSettingsProjectsRequest",
-  }) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsProjectsRequest>;
+export const GetRapidVulnerabilityDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetRapidVulnerabilityDetectionSettingsProjectsRequest" }) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsProjectsRequest>;
 
 export interface GetSecurityCenterSettingsFoldersRequest {
   name: string;
 }
-export const GetSecurityCenterSettingsFoldersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetSecurityCenterSettingsFoldersRequest",
-}) as any as S.Schema<GetSecurityCenterSettingsFoldersRequest>;
+export const GetSecurityCenterSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetSecurityCenterSettingsFoldersRequest" }) as any as S.Schema<GetSecurityCenterSettingsFoldersRequest>;
 
 export interface SecurityCenterSettings {
   cryptoKeyName?: string;
@@ -850,144 +504,73 @@ export interface SecurityCenterSettings {
   logSinkProject?: string;
 }
 export const SecurityCenterSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cryptoKeyName: S.optional(S.String),
-    orgServiceAccount: S.optional(S.String),
-    name: S.optional(S.String),
-    onboardingTime: S.optional(S.String),
-    logSinkProject: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecurityCenterSettings",
-}) as any as S.Schema<SecurityCenterSettings>;
+S.Struct({
+  "cryptoKeyName": S.optional(S.String),
+  "orgServiceAccount": S.optional(S.String),
+  "name": S.optional(S.String),
+  "onboardingTime": S.optional(S.String),
+  "logSinkProject": S.optional(S.String),
+}),
+).annotate({ identifier: "SecurityCenterSettings" }) as any as S.Schema<SecurityCenterSettings>;
 
 export interface GetSecurityCenterSettingsOrganizationsRequest {
   name: string;
 }
-export const GetSecurityCenterSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetSecurityCenterSettingsOrganizationsRequest",
-  }) as any as S.Schema<GetSecurityCenterSettingsOrganizationsRequest>;
+export const GetSecurityCenterSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetSecurityCenterSettingsOrganizationsRequest" }) as any as S.Schema<GetSecurityCenterSettingsOrganizationsRequest>;
 
 export interface GetSecurityCenterSettingsProjectsRequest {
   name: string;
 }
-export const GetSecurityCenterSettingsProjectsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetSecurityCenterSettingsProjectsRequest",
-}) as any as S.Schema<GetSecurityCenterSettingsProjectsRequest>;
+export const GetSecurityCenterSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetSecurityCenterSettingsProjectsRequest" }) as any as S.Schema<GetSecurityCenterSettingsProjectsRequest>;
 
 export interface GetSecurityHealthAnalyticsSettingsFoldersRequest {
   name: string;
 }
-export const GetSecurityHealthAnalyticsSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetSecurityHealthAnalyticsSettingsFoldersRequest",
-  }) as any as S.Schema<GetSecurityHealthAnalyticsSettingsFoldersRequest>;
+export const GetSecurityHealthAnalyticsSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetSecurityHealthAnalyticsSettingsFoldersRequest" }) as any as S.Schema<GetSecurityHealthAnalyticsSettingsFoldersRequest>;
 
 export interface GetSecurityHealthAnalyticsSettingsOrganizationsRequest {
   name: string;
 }
-export const GetSecurityHealthAnalyticsSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetSecurityHealthAnalyticsSettingsOrganizationsRequest",
-  }) as any as S.Schema<GetSecurityHealthAnalyticsSettingsOrganizationsRequest>;
+export const GetSecurityHealthAnalyticsSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetSecurityHealthAnalyticsSettingsOrganizationsRequest" }) as any as S.Schema<GetSecurityHealthAnalyticsSettingsOrganizationsRequest>;
 
 export interface GetSecurityHealthAnalyticsSettingsProjectsRequest {
   name: string;
 }
-export const GetSecurityHealthAnalyticsSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetSecurityHealthAnalyticsSettingsProjectsRequest",
-  }) as any as S.Schema<GetSecurityHealthAnalyticsSettingsProjectsRequest>;
+export const GetSecurityHealthAnalyticsSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetSecurityHealthAnalyticsSettingsProjectsRequest" }) as any as S.Schema<GetSecurityHealthAnalyticsSettingsProjectsRequest>;
 
 export interface GetSubscriptionOrganizationsRequest {
   name: string;
 }
 export const GetSubscriptionOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta2/{+name}",
-      baseUrl: "https://securitycenter.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSubscriptionOrganizationsRequest",
-}) as any as S.Schema<GetSubscriptionOrganizationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetSubscriptionOrganizationsRequest" }) as any as S.Schema<GetSubscriptionOrganizationsRequest>;
 
-export type SubscriptionTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "STANDARD"
-  | "PREMIUM"
-  | "ENTERPRISE"
-  | "ENTERPRISE_MC"
-  | (string & {});
+export type SubscriptionTierEnum = "TIER_UNSPECIFIED" | "STANDARD" | "PREMIUM" | "ENTERPRISE" | "ENTERPRISE_MC";
 export const SubscriptionTierEnum = /*@__PURE__*/ S.String;
 
-export type DetailsTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "STANDARD"
-  | "TRIAL"
-  | "ALPHA"
-  | "DEMO"
-  | "PAY_AS_YOU_GO"
-  | "SUBSCRIPTION"
-  | "SUB_FIXED"
-  | "SUB_BASE_OVERAGE"
-  | (string & {});
+export type DetailsTypeEnum = "TYPE_UNSPECIFIED" | "STANDARD" | "TRIAL" | "ALPHA" | "DEMO" | "PAY_AS_YOU_GO" | "SUBSCRIPTION" | "SUB_FIXED" | "SUB_BASE_OVERAGE";
 export const DetailsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Details {
@@ -996,11 +579,11 @@ export interface Details {
   type?: DetailsTypeEnum;
 }
 export const Details = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    type: S.optional(DetailsTypeEnum),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "type": S.optional(DetailsTypeEnum),
+}),
 ).annotate({ identifier: "Details" }) as any as S.Schema<Details>;
 
 export interface Subscription {
@@ -1009,120 +592,66 @@ export interface Subscription {
   name?: string;
 }
 export const Subscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tier: S.optional(SubscriptionTierEnum),
-    details: S.optional(Details),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "tier": S.optional(SubscriptionTierEnum),
+  "details": S.optional(Details),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 export interface GetVirtualMachineThreatDetectionSettingsFoldersRequest {
   name: string;
 }
-export const GetVirtualMachineThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetVirtualMachineThreatDetectionSettingsFoldersRequest",
-  }) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsFoldersRequest>;
+export const GetVirtualMachineThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetVirtualMachineThreatDetectionSettingsFoldersRequest" }) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsFoldersRequest>;
 
 export interface GetVirtualMachineThreatDetectionSettingsOrganizationsRequest {
   name: string;
 }
-export const GetVirtualMachineThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetVirtualMachineThreatDetectionSettingsOrganizationsRequest",
-  }) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
+export const GetVirtualMachineThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetVirtualMachineThreatDetectionSettingsOrganizationsRequest" }) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
 
 export interface GetVirtualMachineThreatDetectionSettingsProjectsRequest {
   name: string;
 }
-export const GetVirtualMachineThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetVirtualMachineThreatDetectionSettingsProjectsRequest",
-  }) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsProjectsRequest>;
+export const GetVirtualMachineThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetVirtualMachineThreatDetectionSettingsProjectsRequest" }) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsProjectsRequest>;
 
 export interface GetWebSecurityScannerSettingsFoldersRequest {
   name: string;
 }
-export const GetWebSecurityScannerSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetWebSecurityScannerSettingsFoldersRequest",
-  }) as any as S.Schema<GetWebSecurityScannerSettingsFoldersRequest>;
+export const GetWebSecurityScannerSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetWebSecurityScannerSettingsFoldersRequest" }) as any as S.Schema<GetWebSecurityScannerSettingsFoldersRequest>;
 
 export interface GetWebSecurityScannerSettingsOrganizationsRequest {
   name: string;
 }
-export const GetWebSecurityScannerSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetWebSecurityScannerSettingsOrganizationsRequest",
-  }) as any as S.Schema<GetWebSecurityScannerSettingsOrganizationsRequest>;
+export const GetWebSecurityScannerSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetWebSecurityScannerSettingsOrganizationsRequest" }) as any as S.Schema<GetWebSecurityScannerSettingsOrganizationsRequest>;
 
 export interface GetWebSecurityScannerSettingsProjectsRequest {
   name: string;
 }
-export const GetWebSecurityScannerSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetWebSecurityScannerSettingsProjectsRequest",
-  }) as any as S.Schema<GetWebSecurityScannerSettingsProjectsRequest>;
+export const GetWebSecurityScannerSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "GetWebSecurityScannerSettingsProjectsRequest" }) as any as S.Schema<GetWebSecurityScannerSettingsProjectsRequest>;
 
 export interface UpdateContainerThreatDetectionSettingsFoldersRequest {
   name: string;
@@ -1130,22 +659,13 @@ export interface UpdateContainerThreatDetectionSettingsFoldersRequest {
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
-export const UpdateContainerThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateContainerThreatDetectionSettingsFoldersRequest",
-  }) as any as S.Schema<UpdateContainerThreatDetectionSettingsFoldersRequest>;
+export const UpdateContainerThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateContainerThreatDetectionSettingsFoldersRequest" }) as any as S.Schema<UpdateContainerThreatDetectionSettingsFoldersRequest>;
 
 export interface UpdateContainerThreatDetectionSettingsOrganizationsRequest {
   name: string;
@@ -1153,22 +673,13 @@ export interface UpdateContainerThreatDetectionSettingsOrganizationsRequest {
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
-export const UpdateContainerThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateContainerThreatDetectionSettingsOrganizationsRequest",
-  }) as any as S.Schema<UpdateContainerThreatDetectionSettingsOrganizationsRequest>;
+export const UpdateContainerThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateContainerThreatDetectionSettingsOrganizationsRequest" }) as any as S.Schema<UpdateContainerThreatDetectionSettingsOrganizationsRequest>;
 
 export interface UpdateContainerThreatDetectionSettingsProjectsRequest {
   name: string;
@@ -1176,22 +687,13 @@ export interface UpdateContainerThreatDetectionSettingsProjectsRequest {
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
-export const UpdateContainerThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateContainerThreatDetectionSettingsProjectsRequest",
-  }) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsRequest>;
+export const UpdateContainerThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateContainerThreatDetectionSettingsProjectsRequest" }) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsRequest>;
 
 export interface UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest {
   name: string;
@@ -1199,23 +701,13 @@ export interface UpdateContainerThreatDetectionSettingsProjectsLocationsClusters
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
-export const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest",
-  }) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest>;
+export const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest" }) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest>;
 
 export interface UpdateEventThreatDetectionSettingsFoldersRequest {
   name: string;
@@ -1223,22 +715,13 @@ export interface UpdateEventThreatDetectionSettingsFoldersRequest {
   /** Request body */
   body?: EventThreatDetectionSettings;
 }
-export const UpdateEventThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(EventThreatDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateEventThreatDetectionSettingsFoldersRequest",
-  }) as any as S.Schema<UpdateEventThreatDetectionSettingsFoldersRequest>;
+export const UpdateEventThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(EventThreatDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateEventThreatDetectionSettingsFoldersRequest" }) as any as S.Schema<UpdateEventThreatDetectionSettingsFoldersRequest>;
 
 export interface UpdateEventThreatDetectionSettingsOrganizationsRequest {
   name: string;
@@ -1246,22 +729,13 @@ export interface UpdateEventThreatDetectionSettingsOrganizationsRequest {
   /** Request body */
   body?: EventThreatDetectionSettings;
 }
-export const UpdateEventThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(EventThreatDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateEventThreatDetectionSettingsOrganizationsRequest",
-  }) as any as S.Schema<UpdateEventThreatDetectionSettingsOrganizationsRequest>;
+export const UpdateEventThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(EventThreatDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateEventThreatDetectionSettingsOrganizationsRequest" }) as any as S.Schema<UpdateEventThreatDetectionSettingsOrganizationsRequest>;
 
 export interface UpdateEventThreatDetectionSettingsProjectsRequest {
   name: string;
@@ -1269,22 +743,13 @@ export interface UpdateEventThreatDetectionSettingsProjectsRequest {
   /** Request body */
   body?: EventThreatDetectionSettings;
 }
-export const UpdateEventThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(EventThreatDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateEventThreatDetectionSettingsProjectsRequest",
-  }) as any as S.Schema<UpdateEventThreatDetectionSettingsProjectsRequest>;
+export const UpdateEventThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(EventThreatDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateEventThreatDetectionSettingsProjectsRequest" }) as any as S.Schema<UpdateEventThreatDetectionSettingsProjectsRequest>;
 
 export interface UpdateRapidVulnerabilityDetectionSettingsFoldersRequest {
   name: string;
@@ -1292,22 +757,13 @@ export interface UpdateRapidVulnerabilityDetectionSettingsFoldersRequest {
   /** Request body */
   body?: RapidVulnerabilityDetectionSettings;
 }
-export const UpdateRapidVulnerabilityDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateRapidVulnerabilityDetectionSettingsFoldersRequest",
-  }) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsFoldersRequest>;
+export const UpdateRapidVulnerabilityDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateRapidVulnerabilityDetectionSettingsFoldersRequest" }) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsFoldersRequest>;
 
 export interface UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest {
   name: string;
@@ -1315,22 +771,13 @@ export interface UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest {
   /** Request body */
   body?: RapidVulnerabilityDetectionSettings;
 }
-export const UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest",
-  }) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
+export const UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest" }) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
 
 export interface UpdateRapidVulnerabilityDetectionSettingsProjectsRequest {
   name: string;
@@ -1338,22 +785,13 @@ export interface UpdateRapidVulnerabilityDetectionSettingsProjectsRequest {
   /** Request body */
   body?: RapidVulnerabilityDetectionSettings;
 }
-export const UpdateRapidVulnerabilityDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateRapidVulnerabilityDetectionSettingsProjectsRequest",
-  }) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsProjectsRequest>;
+export const UpdateRapidVulnerabilityDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateRapidVulnerabilityDetectionSettingsProjectsRequest" }) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsProjectsRequest>;
 
 export interface UpdateSecurityHealthAnalyticsSettingsFoldersRequest {
   name: string;
@@ -1361,22 +799,13 @@ export interface UpdateSecurityHealthAnalyticsSettingsFoldersRequest {
   /** Request body */
   body?: SecurityHealthAnalyticsSettings;
 }
-export const UpdateSecurityHealthAnalyticsSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateSecurityHealthAnalyticsSettingsFoldersRequest",
-  }) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsFoldersRequest>;
+export const UpdateSecurityHealthAnalyticsSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateSecurityHealthAnalyticsSettingsFoldersRequest" }) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsFoldersRequest>;
 
 export interface UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest {
   name: string;
@@ -1384,22 +813,13 @@ export interface UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest {
   /** Request body */
   body?: SecurityHealthAnalyticsSettings;
 }
-export const UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest",
-  }) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest>;
+export const UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest" }) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest>;
 
 export interface UpdateSecurityHealthAnalyticsSettingsProjectsRequest {
   name: string;
@@ -1407,22 +827,13 @@ export interface UpdateSecurityHealthAnalyticsSettingsProjectsRequest {
   /** Request body */
   body?: SecurityHealthAnalyticsSettings;
 }
-export const UpdateSecurityHealthAnalyticsSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateSecurityHealthAnalyticsSettingsProjectsRequest",
-  }) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsProjectsRequest>;
+export const UpdateSecurityHealthAnalyticsSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateSecurityHealthAnalyticsSettingsProjectsRequest" }) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsProjectsRequest>;
 
 export interface UpdateVirtualMachineThreatDetectionSettingsFoldersRequest {
   name: string;
@@ -1430,24 +841,13 @@ export interface UpdateVirtualMachineThreatDetectionSettingsFoldersRequest {
   /** Request body */
   body?: VirtualMachineThreatDetectionSettings;
 }
-export const UpdateVirtualMachineThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(
-        VirtualMachineThreatDetectionSettings.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateVirtualMachineThreatDetectionSettingsFoldersRequest",
-  }) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsFoldersRequest>;
+export const UpdateVirtualMachineThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(VirtualMachineThreatDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateVirtualMachineThreatDetectionSettingsFoldersRequest" }) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsFoldersRequest>;
 
 export interface UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest {
   name: string;
@@ -1455,25 +855,13 @@ export interface UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest
   /** Request body */
   body?: VirtualMachineThreatDetectionSettings;
 }
-export const UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(
-        VirtualMachineThreatDetectionSettings.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest",
-  }) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
+export const UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(VirtualMachineThreatDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest" }) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
 
 export interface UpdateVirtualMachineThreatDetectionSettingsProjectsRequest {
   name: string;
@@ -1481,24 +869,13 @@ export interface UpdateVirtualMachineThreatDetectionSettingsProjectsRequest {
   /** Request body */
   body?: VirtualMachineThreatDetectionSettings;
 }
-export const UpdateVirtualMachineThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(
-        VirtualMachineThreatDetectionSettings.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateVirtualMachineThreatDetectionSettingsProjectsRequest",
-  }) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsProjectsRequest>;
+export const UpdateVirtualMachineThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(VirtualMachineThreatDetectionSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateVirtualMachineThreatDetectionSettingsProjectsRequest" }) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsProjectsRequest>;
 
 export interface UpdateWebSecurityScannerSettingsFoldersRequest {
   name: string;
@@ -1506,22 +883,13 @@ export interface UpdateWebSecurityScannerSettingsFoldersRequest {
   /** Request body */
   body?: WebSecurityScannerSettings;
 }
-export const UpdateWebSecurityScannerSettingsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WebSecurityScannerSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateWebSecurityScannerSettingsFoldersRequest",
-  }) as any as S.Schema<UpdateWebSecurityScannerSettingsFoldersRequest>;
+export const UpdateWebSecurityScannerSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(WebSecurityScannerSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateWebSecurityScannerSettingsFoldersRequest" }) as any as S.Schema<UpdateWebSecurityScannerSettingsFoldersRequest>;
 
 export interface UpdateWebSecurityScannerSettingsOrganizationsRequest {
   name: string;
@@ -1529,22 +897,13 @@ export interface UpdateWebSecurityScannerSettingsOrganizationsRequest {
   /** Request body */
   body?: WebSecurityScannerSettings;
 }
-export const UpdateWebSecurityScannerSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WebSecurityScannerSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateWebSecurityScannerSettingsOrganizationsRequest",
-  }) as any as S.Schema<UpdateWebSecurityScannerSettingsOrganizationsRequest>;
+export const UpdateWebSecurityScannerSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(WebSecurityScannerSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateWebSecurityScannerSettingsOrganizationsRequest" }) as any as S.Schema<UpdateWebSecurityScannerSettingsOrganizationsRequest>;
 
 export interface UpdateWebSecurityScannerSettingsProjectsRequest {
   name: string;
@@ -1552,27 +911,15 @@ export interface UpdateWebSecurityScannerSettingsProjectsRequest {
   /** Request body */
   body?: WebSecurityScannerSettings;
 }
-export const UpdateWebSecurityScannerSettingsProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WebSecurityScannerSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateWebSecurityScannerSettingsProjectsRequest",
-  }) as any as S.Schema<UpdateWebSecurityScannerSettingsProjectsRequest>;
+export const UpdateWebSecurityScannerSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(WebSecurityScannerSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://securitycenter.googleapis.com/"})),
+).annotate({ identifier: "UpdateWebSecurityScannerSettingsProjectsRequest" }) as any as S.Schema<UpdateWebSecurityScannerSettingsProjectsRequest>;
 
-export type CalculateFoldersContainerThreatDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateFoldersContainerThreatDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateFoldersContainerThreatDetectionSettings: API.OperationMethod<
   CalculateFoldersContainerThreatDetectionSettingsRequest,
   ContainerThreatDetectionSettings,
@@ -1586,10 +933,7 @@ export const calculateFoldersContainerThreatDetectionSettings: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type CalculateFoldersEventThreatDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateFoldersEventThreatDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateFoldersEventThreatDetectionSettings: API.OperationMethod<
   CalculateFoldersEventThreatDetectionSettingsRequest,
   EventThreatDetectionSettings,
@@ -1603,10 +947,7 @@ export const calculateFoldersEventThreatDetectionSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CalculateFoldersRapidVulnerabilityDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateFoldersRapidVulnerabilityDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateFoldersRapidVulnerabilityDetectionSettings: API.OperationMethod<
   CalculateFoldersRapidVulnerabilityDetectionSettingsRequest,
   RapidVulnerabilityDetectionSettings,
@@ -1620,10 +961,7 @@ export const calculateFoldersRapidVulnerabilityDetectionSettings: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type CalculateFoldersSecurityHealthAnalyticsSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateFoldersSecurityHealthAnalyticsSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateFoldersSecurityHealthAnalyticsSettings: API.OperationMethod<
   CalculateFoldersSecurityHealthAnalyticsSettingsRequest,
   SecurityHealthAnalyticsSettings,
@@ -1637,10 +975,7 @@ export const calculateFoldersSecurityHealthAnalyticsSettings: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type CalculateFoldersVirtualMachineThreatDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateFoldersVirtualMachineThreatDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateFoldersVirtualMachineThreatDetectionSettings: API.OperationMethod<
   CalculateFoldersVirtualMachineThreatDetectionSettingsRequest,
   VirtualMachineThreatDetectionSettings,
@@ -1654,10 +989,7 @@ export const calculateFoldersVirtualMachineThreatDetectionSettings: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type CalculateFoldersWebSecurityScannerSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateFoldersWebSecurityScannerSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateFoldersWebSecurityScannerSettings: API.OperationMethod<
   CalculateFoldersWebSecurityScannerSettingsRequest,
   WebSecurityScannerSettings,
@@ -1671,10 +1003,7 @@ export const calculateFoldersWebSecurityScannerSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CalculateOrganizationsContainerThreatDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateOrganizationsContainerThreatDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateOrganizationsContainerThreatDetectionSettings: API.OperationMethod<
   CalculateOrganizationsContainerThreatDetectionSettingsRequest,
   ContainerThreatDetectionSettings,
@@ -1688,10 +1017,7 @@ export const calculateOrganizationsContainerThreatDetectionSettings: API.Operati
   retry: Retry.Retry,
 }));
 
-export type CalculateOrganizationsEventThreatDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateOrganizationsEventThreatDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateOrganizationsEventThreatDetectionSettings: API.OperationMethod<
   CalculateOrganizationsEventThreatDetectionSettingsRequest,
   EventThreatDetectionSettings,
@@ -1705,10 +1031,7 @@ export const calculateOrganizationsEventThreatDetectionSettings: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type CalculateOrganizationsRapidVulnerabilityDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateOrganizationsRapidVulnerabilityDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateOrganizationsRapidVulnerabilityDetectionSettings: API.OperationMethod<
   CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest,
   RapidVulnerabilityDetectionSettings,
@@ -1722,10 +1045,7 @@ export const calculateOrganizationsRapidVulnerabilityDetectionSettings: API.Oper
   retry: Retry.Retry,
 }));
 
-export type CalculateOrganizationsSecurityHealthAnalyticsSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateOrganizationsSecurityHealthAnalyticsSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateOrganizationsSecurityHealthAnalyticsSettings: API.OperationMethod<
   CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest,
   SecurityHealthAnalyticsSettings,
@@ -1739,10 +1059,7 @@ export const calculateOrganizationsSecurityHealthAnalyticsSettings: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type CalculateOrganizationsVirtualMachineThreatDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateOrganizationsVirtualMachineThreatDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateOrganizationsVirtualMachineThreatDetectionSettings: API.OperationMethod<
   CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest,
   VirtualMachineThreatDetectionSettings,
@@ -1756,10 +1073,7 @@ export const calculateOrganizationsVirtualMachineThreatDetectionSettings: API.Op
   retry: Retry.Retry,
 }));
 
-export type CalculateOrganizationsWebSecurityScannerSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateOrganizationsWebSecurityScannerSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateOrganizationsWebSecurityScannerSettings: API.OperationMethod<
   CalculateOrganizationsWebSecurityScannerSettingsRequest,
   WebSecurityScannerSettings,
@@ -1773,10 +1087,7 @@ export const calculateOrganizationsWebSecurityScannerSettings: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type CalculateProjectsContainerThreatDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateProjectsContainerThreatDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateProjectsContainerThreatDetectionSettings: API.OperationMethod<
   CalculateProjectsContainerThreatDetectionSettingsRequest,
   ContainerThreatDetectionSettings,
@@ -1790,10 +1101,7 @@ export const calculateProjectsContainerThreatDetectionSettings: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type CalculateProjectsEventThreatDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateProjectsEventThreatDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateProjectsEventThreatDetectionSettings: API.OperationMethod<
   CalculateProjectsEventThreatDetectionSettingsRequest,
   EventThreatDetectionSettings,
@@ -1807,26 +1115,21 @@ export const calculateProjectsEventThreatDetectionSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CalculateProjectsLocationsClustersContainerThreatDetectionSettingsError =
-  NotFound | Forbidden | GcpOpError;
+export type CalculateProjectsLocationsClustersContainerThreatDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateProjectsLocationsClustersContainerThreatDetectionSettings: API.OperationMethod<
   CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest,
   ContainerThreatDetectionSettings,
   CalculateProjectsLocationsClustersContainerThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest,
+  input: CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest,
   output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type CalculateProjectsRapidVulnerabilityDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateProjectsRapidVulnerabilityDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateProjectsRapidVulnerabilityDetectionSettings: API.OperationMethod<
   CalculateProjectsRapidVulnerabilityDetectionSettingsRequest,
   RapidVulnerabilityDetectionSettings,
@@ -1840,10 +1143,7 @@ export const calculateProjectsRapidVulnerabilityDetectionSettings: API.Operation
   retry: Retry.Retry,
 }));
 
-export type CalculateProjectsSecurityHealthAnalyticsSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateProjectsSecurityHealthAnalyticsSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateProjectsSecurityHealthAnalyticsSettings: API.OperationMethod<
   CalculateProjectsSecurityHealthAnalyticsSettingsRequest,
   SecurityHealthAnalyticsSettings,
@@ -1857,10 +1157,7 @@ export const calculateProjectsSecurityHealthAnalyticsSettings: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type CalculateProjectsVirtualMachineThreatDetectionSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateProjectsVirtualMachineThreatDetectionSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateProjectsVirtualMachineThreatDetectionSettings: API.OperationMethod<
   CalculateProjectsVirtualMachineThreatDetectionSettingsRequest,
   VirtualMachineThreatDetectionSettings,
@@ -1874,10 +1171,7 @@ export const calculateProjectsVirtualMachineThreatDetectionSettings: API.Operati
   retry: Retry.Retry,
 }));
 
-export type CalculateProjectsWebSecurityScannerSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CalculateProjectsWebSecurityScannerSettingsError = NotFound | Forbidden | GcpOpError;
 export const calculateProjectsWebSecurityScannerSettings: API.OperationMethod<
   CalculateProjectsWebSecurityScannerSettingsRequest,
   WebSecurityScannerSettings,
@@ -1891,10 +1185,7 @@ export const calculateProjectsWebSecurityScannerSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetContainerThreatDetectionSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetContainerThreatDetectionSettingsFoldersError = NotFound | Forbidden | GcpOpError;
 export const getContainerThreatDetectionSettingsFolders: API.OperationMethod<
   GetContainerThreatDetectionSettingsFoldersRequest,
   ContainerThreatDetectionSettings,
@@ -1908,10 +1199,7 @@ export const getContainerThreatDetectionSettingsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetContainerThreatDetectionSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetContainerThreatDetectionSettingsOrganizationsError = NotFound | Forbidden | GcpOpError;
 export const getContainerThreatDetectionSettingsOrganizations: API.OperationMethod<
   GetContainerThreatDetectionSettingsOrganizationsRequest,
   ContainerThreatDetectionSettings,
@@ -1925,10 +1213,7 @@ export const getContainerThreatDetectionSettingsOrganizations: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type GetContainerThreatDetectionSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetContainerThreatDetectionSettingsProjectsError = NotFound | Forbidden | GcpOpError;
 export const getContainerThreatDetectionSettingsProjects: API.OperationMethod<
   GetContainerThreatDetectionSettingsProjectsRequest,
   ContainerThreatDetectionSettings,
@@ -1942,10 +1227,7 @@ export const getContainerThreatDetectionSettingsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetContainerThreatDetectionSettingsProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetContainerThreatDetectionSettingsProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
 export const getContainerThreatDetectionSettingsProjectsLocationsClusters: API.OperationMethod<
   GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest,
   ContainerThreatDetectionSettings,
@@ -1959,10 +1241,7 @@ export const getContainerThreatDetectionSettingsProjectsLocationsClusters: API.O
   retry: Retry.Retry,
 }));
 
-export type GetEventThreatDetectionSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetEventThreatDetectionSettingsFoldersError = NotFound | Forbidden | GcpOpError;
 export const getEventThreatDetectionSettingsFolders: API.OperationMethod<
   GetEventThreatDetectionSettingsFoldersRequest,
   EventThreatDetectionSettings,
@@ -1976,10 +1255,7 @@ export const getEventThreatDetectionSettingsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetEventThreatDetectionSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetEventThreatDetectionSettingsOrganizationsError = NotFound | Forbidden | GcpOpError;
 export const getEventThreatDetectionSettingsOrganizations: API.OperationMethod<
   GetEventThreatDetectionSettingsOrganizationsRequest,
   EventThreatDetectionSettings,
@@ -1993,10 +1269,7 @@ export const getEventThreatDetectionSettingsOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetEventThreatDetectionSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetEventThreatDetectionSettingsProjectsError = NotFound | Forbidden | GcpOpError;
 export const getEventThreatDetectionSettingsProjects: API.OperationMethod<
   GetEventThreatDetectionSettingsProjectsRequest,
   EventThreatDetectionSettings,
@@ -2010,10 +1283,7 @@ export const getEventThreatDetectionSettingsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetRapidVulnerabilityDetectionSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetRapidVulnerabilityDetectionSettingsFoldersError = NotFound | Forbidden | GcpOpError;
 export const getRapidVulnerabilityDetectionSettingsFolders: API.OperationMethod<
   GetRapidVulnerabilityDetectionSettingsFoldersRequest,
   RapidVulnerabilityDetectionSettings,
@@ -2027,10 +1297,7 @@ export const getRapidVulnerabilityDetectionSettingsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetRapidVulnerabilityDetectionSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetRapidVulnerabilityDetectionSettingsOrganizationsError = NotFound | Forbidden | GcpOpError;
 export const getRapidVulnerabilityDetectionSettingsOrganizations: API.OperationMethod<
   GetRapidVulnerabilityDetectionSettingsOrganizationsRequest,
   RapidVulnerabilityDetectionSettings,
@@ -2044,10 +1311,7 @@ export const getRapidVulnerabilityDetectionSettingsOrganizations: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetRapidVulnerabilityDetectionSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetRapidVulnerabilityDetectionSettingsProjectsError = NotFound | Forbidden | GcpOpError;
 export const getRapidVulnerabilityDetectionSettingsProjects: API.OperationMethod<
   GetRapidVulnerabilityDetectionSettingsProjectsRequest,
   RapidVulnerabilityDetectionSettings,
@@ -2061,10 +1325,7 @@ export const getRapidVulnerabilityDetectionSettingsProjects: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetSecurityCenterSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetSecurityCenterSettingsFoldersError = NotFound | Forbidden | GcpOpError;
 export const getSecurityCenterSettingsFolders: API.OperationMethod<
   GetSecurityCenterSettingsFoldersRequest,
   SecurityCenterSettings,
@@ -2078,10 +1339,7 @@ export const getSecurityCenterSettingsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSecurityCenterSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetSecurityCenterSettingsOrganizationsError = NotFound | Forbidden | GcpOpError;
 export const getSecurityCenterSettingsOrganizations: API.OperationMethod<
   GetSecurityCenterSettingsOrganizationsRequest,
   SecurityCenterSettings,
@@ -2095,10 +1353,7 @@ export const getSecurityCenterSettingsOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSecurityCenterSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetSecurityCenterSettingsProjectsError = NotFound | Forbidden | GcpOpError;
 export const getSecurityCenterSettingsProjects: API.OperationMethod<
   GetSecurityCenterSettingsProjectsRequest,
   SecurityCenterSettings,
@@ -2112,10 +1367,7 @@ export const getSecurityCenterSettingsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSecurityHealthAnalyticsSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetSecurityHealthAnalyticsSettingsFoldersError = NotFound | Forbidden | GcpOpError;
 export const getSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
   GetSecurityHealthAnalyticsSettingsFoldersRequest,
   SecurityHealthAnalyticsSettings,
@@ -2129,10 +1381,7 @@ export const getSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSecurityHealthAnalyticsSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetSecurityHealthAnalyticsSettingsOrganizationsError = NotFound | Forbidden | GcpOpError;
 export const getSecurityHealthAnalyticsSettingsOrganizations: API.OperationMethod<
   GetSecurityHealthAnalyticsSettingsOrganizationsRequest,
   SecurityHealthAnalyticsSettings,
@@ -2146,10 +1395,7 @@ export const getSecurityHealthAnalyticsSettingsOrganizations: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetSecurityHealthAnalyticsSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetSecurityHealthAnalyticsSettingsProjectsError = NotFound | Forbidden | GcpOpError;
 export const getSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
   GetSecurityHealthAnalyticsSettingsProjectsRequest,
   SecurityHealthAnalyticsSettings,
@@ -2163,10 +1409,7 @@ export const getSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSubscriptionOrganizationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetSubscriptionOrganizationsError = NotFound | Forbidden | GcpOpError;
 export const getSubscriptionOrganizations: API.OperationMethod<
   GetSubscriptionOrganizationsRequest,
   Subscription,
@@ -2180,10 +1423,7 @@ export const getSubscriptionOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetVirtualMachineThreatDetectionSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetVirtualMachineThreatDetectionSettingsFoldersError = NotFound | Forbidden | GcpOpError;
 export const getVirtualMachineThreatDetectionSettingsFolders: API.OperationMethod<
   GetVirtualMachineThreatDetectionSettingsFoldersRequest,
   VirtualMachineThreatDetectionSettings,
@@ -2197,10 +1437,7 @@ export const getVirtualMachineThreatDetectionSettingsFolders: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetVirtualMachineThreatDetectionSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetVirtualMachineThreatDetectionSettingsOrganizationsError = NotFound | Forbidden | GcpOpError;
 export const getVirtualMachineThreatDetectionSettingsOrganizations: API.OperationMethod<
   GetVirtualMachineThreatDetectionSettingsOrganizationsRequest,
   VirtualMachineThreatDetectionSettings,
@@ -2214,10 +1451,7 @@ export const getVirtualMachineThreatDetectionSettingsOrganizations: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type GetVirtualMachineThreatDetectionSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetVirtualMachineThreatDetectionSettingsProjectsError = NotFound | Forbidden | GcpOpError;
 export const getVirtualMachineThreatDetectionSettingsProjects: API.OperationMethod<
   GetVirtualMachineThreatDetectionSettingsProjectsRequest,
   VirtualMachineThreatDetectionSettings,
@@ -2231,10 +1465,7 @@ export const getVirtualMachineThreatDetectionSettingsProjects: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type GetWebSecurityScannerSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetWebSecurityScannerSettingsFoldersError = NotFound | Forbidden | GcpOpError;
 export const getWebSecurityScannerSettingsFolders: API.OperationMethod<
   GetWebSecurityScannerSettingsFoldersRequest,
   WebSecurityScannerSettings,
@@ -2248,10 +1479,7 @@ export const getWebSecurityScannerSettingsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetWebSecurityScannerSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetWebSecurityScannerSettingsOrganizationsError = NotFound | Forbidden | GcpOpError;
 export const getWebSecurityScannerSettingsOrganizations: API.OperationMethod<
   GetWebSecurityScannerSettingsOrganizationsRequest,
   WebSecurityScannerSettings,
@@ -2265,10 +1493,7 @@ export const getWebSecurityScannerSettingsOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetWebSecurityScannerSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetWebSecurityScannerSettingsProjectsError = NotFound | Forbidden | GcpOpError;
 export const getWebSecurityScannerSettingsProjects: API.OperationMethod<
   GetWebSecurityScannerSettingsProjectsRequest,
   WebSecurityScannerSettings,
@@ -2282,12 +1507,7 @@ export const getWebSecurityScannerSettingsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateContainerThreatDetectionSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateContainerThreatDetectionSettingsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateContainerThreatDetectionSettingsFolders: API.OperationMethod<
   UpdateContainerThreatDetectionSettingsFoldersRequest,
   ContainerThreatDetectionSettings,
@@ -2301,12 +1521,7 @@ export const updateContainerThreatDetectionSettingsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateContainerThreatDetectionSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateContainerThreatDetectionSettingsOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateContainerThreatDetectionSettingsOrganizations: API.OperationMethod<
   UpdateContainerThreatDetectionSettingsOrganizationsRequest,
   ContainerThreatDetectionSettings,
@@ -2320,12 +1535,7 @@ export const updateContainerThreatDetectionSettingsOrganizations: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type UpdateContainerThreatDetectionSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateContainerThreatDetectionSettingsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateContainerThreatDetectionSettingsProjects: API.OperationMethod<
   UpdateContainerThreatDetectionSettingsProjectsRequest,
   ContainerThreatDetectionSettings,
@@ -2339,8 +1549,7 @@ export const updateContainerThreatDetectionSettingsProjects: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type UpdateContainerThreatDetectionSettingsProjectsLocationsClustersError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateContainerThreatDetectionSettingsProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateContainerThreatDetectionSettingsProjectsLocationsClusters: API.OperationMethod<
   UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest,
   ContainerThreatDetectionSettings,
@@ -2354,12 +1563,7 @@ export const updateContainerThreatDetectionSettingsProjectsLocationsClusters: AP
   retry: Retry.Retry,
 }));
 
-export type UpdateEventThreatDetectionSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEventThreatDetectionSettingsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateEventThreatDetectionSettingsFolders: API.OperationMethod<
   UpdateEventThreatDetectionSettingsFoldersRequest,
   EventThreatDetectionSettings,
@@ -2373,12 +1577,7 @@ export const updateEventThreatDetectionSettingsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateEventThreatDetectionSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEventThreatDetectionSettingsOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateEventThreatDetectionSettingsOrganizations: API.OperationMethod<
   UpdateEventThreatDetectionSettingsOrganizationsRequest,
   EventThreatDetectionSettings,
@@ -2392,12 +1591,7 @@ export const updateEventThreatDetectionSettingsOrganizations: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UpdateEventThreatDetectionSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEventThreatDetectionSettingsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateEventThreatDetectionSettingsProjects: API.OperationMethod<
   UpdateEventThreatDetectionSettingsProjectsRequest,
   EventThreatDetectionSettings,
@@ -2411,12 +1605,7 @@ export const updateEventThreatDetectionSettingsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateRapidVulnerabilityDetectionSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateRapidVulnerabilityDetectionSettingsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateRapidVulnerabilityDetectionSettingsFolders: API.OperationMethod<
   UpdateRapidVulnerabilityDetectionSettingsFoldersRequest,
   RapidVulnerabilityDetectionSettings,
@@ -2430,12 +1619,7 @@ export const updateRapidVulnerabilityDetectionSettingsFolders: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type UpdateRapidVulnerabilityDetectionSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateRapidVulnerabilityDetectionSettingsOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateRapidVulnerabilityDetectionSettingsOrganizations: API.OperationMethod<
   UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest,
   RapidVulnerabilityDetectionSettings,
@@ -2449,12 +1633,7 @@ export const updateRapidVulnerabilityDetectionSettingsOrganizations: API.Operati
   retry: Retry.Retry,
 }));
 
-export type UpdateRapidVulnerabilityDetectionSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateRapidVulnerabilityDetectionSettingsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateRapidVulnerabilityDetectionSettingsProjects: API.OperationMethod<
   UpdateRapidVulnerabilityDetectionSettingsProjectsRequest,
   RapidVulnerabilityDetectionSettings,
@@ -2468,12 +1647,7 @@ export const updateRapidVulnerabilityDetectionSettingsProjects: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type UpdateSecurityHealthAnalyticsSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateSecurityHealthAnalyticsSettingsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
   UpdateSecurityHealthAnalyticsSettingsFoldersRequest,
   SecurityHealthAnalyticsSettings,
@@ -2487,12 +1661,7 @@ export const updateSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSecurityHealthAnalyticsSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateSecurityHealthAnalyticsSettingsOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateSecurityHealthAnalyticsSettingsOrganizations: API.OperationMethod<
   UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest,
   SecurityHealthAnalyticsSettings,
@@ -2506,12 +1675,7 @@ export const updateSecurityHealthAnalyticsSettingsOrganizations: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type UpdateSecurityHealthAnalyticsSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateSecurityHealthAnalyticsSettingsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
   UpdateSecurityHealthAnalyticsSettingsProjectsRequest,
   SecurityHealthAnalyticsSettings,
@@ -2525,12 +1689,7 @@ export const updateSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateVirtualMachineThreatDetectionSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateVirtualMachineThreatDetectionSettingsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateVirtualMachineThreatDetectionSettingsFolders: API.OperationMethod<
   UpdateVirtualMachineThreatDetectionSettingsFoldersRequest,
   VirtualMachineThreatDetectionSettings,
@@ -2544,12 +1703,7 @@ export const updateVirtualMachineThreatDetectionSettingsFolders: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type UpdateVirtualMachineThreatDetectionSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateVirtualMachineThreatDetectionSettingsOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateVirtualMachineThreatDetectionSettingsOrganizations: API.OperationMethod<
   UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest,
   VirtualMachineThreatDetectionSettings,
@@ -2563,12 +1717,7 @@ export const updateVirtualMachineThreatDetectionSettingsOrganizations: API.Opera
   retry: Retry.Retry,
 }));
 
-export type UpdateVirtualMachineThreatDetectionSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateVirtualMachineThreatDetectionSettingsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateVirtualMachineThreatDetectionSettingsProjects: API.OperationMethod<
   UpdateVirtualMachineThreatDetectionSettingsProjectsRequest,
   VirtualMachineThreatDetectionSettings,
@@ -2582,12 +1731,7 @@ export const updateVirtualMachineThreatDetectionSettingsProjects: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type UpdateWebSecurityScannerSettingsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateWebSecurityScannerSettingsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateWebSecurityScannerSettingsFolders: API.OperationMethod<
   UpdateWebSecurityScannerSettingsFoldersRequest,
   WebSecurityScannerSettings,
@@ -2601,12 +1745,7 @@ export const updateWebSecurityScannerSettingsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateWebSecurityScannerSettingsOrganizationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateWebSecurityScannerSettingsOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateWebSecurityScannerSettingsOrganizations: API.OperationMethod<
   UpdateWebSecurityScannerSettingsOrganizationsRequest,
   WebSecurityScannerSettings,
@@ -2620,12 +1759,7 @@ export const updateWebSecurityScannerSettingsOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateWebSecurityScannerSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateWebSecurityScannerSettingsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const updateWebSecurityScannerSettingsProjects: API.OperationMethod<
   UpdateWebSecurityScannerSettingsProjectsRequest,
   WebSecurityScannerSettings,
@@ -2638,3 +1772,4 @@ export const updateWebSecurityScannerSettingsProjects: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

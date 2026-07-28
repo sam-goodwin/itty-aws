@@ -9,7 +9,7 @@
  *     .annotate({ identifier: "X" })
  *     as any as S.Schema<X>;                      // no inference needed
  *
- * plus open-string-union enums, `S.TaggedErrorClass` error classes, and
+ * plus closed-alias string-union enums, `S.TaggedErrorClass` error classes, and
  * `API.make(() => ({ … }))` operation consts. The helpers here own those
  * shared skeletons; providers own the content strings (member pipes, trait
  * calls, config fields). Emitted output is normalized by oxfmt afterwards,
@@ -89,16 +89,17 @@ export interface EnumDeclOptions {
 }
 
 /**
- * Open string-union enum: the spec's documented values as a literal union
- * plus an open `(string & {})` arm, so a provider adding a new value never
- * breaks compilation (autocomplete still offers the documented literals).
+ * String-union enum ALIAS: the spec's documented values as a CLOSED literal
+ * union (`type X = "a" | "b"`), so response readers can exhaustively match
+ * the documented values. Openness is direction-aware and lives at the
+ * REFERENCE site: request-side members re-open the alias inline
+ * (`X | (string & {})`) so consumers can send tomorrow's values without an
+ * SDK update, while response-side members reference the closed alias plain.
  * The schema stays `S.String` (the protocols never validate enum
  * membership, so undocumented wire values still pass through at runtime).
  */
 export const enumDecl = (o: EnumDeclOptions): string[] => {
-  const union = o.values.length
-    ? `${o.values.map(q).join(" | ")} | (string & {})`
-    : "string";
+  const union = o.values.length ? o.values.map(q).join(" | ") : "string";
   return [
     `export type ${o.name} = ${union};`,
     `export const ${o.name} = ${o.pure ?? ""}${o.schemaExpr ?? "S.String"};\n`,

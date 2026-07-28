@@ -157,7 +157,7 @@ export const CohortsCalculationHistoryRetrieveResponse =
     identifier: "CohortsCalculationHistoryRetrieveResponse",
   }) as any as S.Schema<CohortsCalculationHistoryRetrieveResponse>;
 
-export type PropertyGroupOperator = "AND" | "OR" | (string & {});
+export type PropertyGroupOperator = "AND" | "OR";
 export const PropertyGroupOperator = /*@__PURE__*/ S.String;
 
 export type BehavioralFilterBytecodeList = ReadonlyArray<unknown>;
@@ -173,7 +173,7 @@ export type BehavioralFilterSeqEvent = string | number;
 export const BehavioralFilterSeqEvent =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BehavioralFilterSeqEvent>;
 
-export type EventPropFilterTypeEnum = "event" | "element" | (string & {});
+export type EventPropFilterTypeEnum = "event" | "element";
 export const EventPropFilterTypeEnum = /*@__PURE__*/ S.String;
 
 export interface EventPropFilter {
@@ -396,11 +396,10 @@ export type CohortTypeEnum =
   | "person_property"
   | "behavioral"
   | "realtime"
-  | "analytical"
-  | (string & {});
+  | "analytical";
 export const CohortTypeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Type of cohort based on filter complexity * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
@@ -471,8 +470,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -535,7 +533,7 @@ export const CohortOutputExperimentSetList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CohortOutputExperimentSetList>;
 
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
+export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface CohortOutput {
@@ -731,10 +729,7 @@ export const CohortsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortsPartialUpdateRequest",
 }) as any as S.Schema<CohortsPartialUpdateRequest>;
 
-export type CohortsPersonsRetrieveRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type CohortsPersonsRetrieveRequestFormat = "csv" | "json";
 export const CohortsPersonsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface CohortsPersonsRetrieveRequest {
@@ -742,7 +737,7 @@ export interface CohortsPersonsRetrieveRequest {
   project_id: string;
   /** A unique integer value identifying this cohort. */
   id: number;
-  format?: CohortsPersonsRetrieveRequestFormat;
+  format?: CohortsPersonsRetrieveRequestFormat | (string & {});
   /** Maximum number of persons to return per page (defaults to 100). */
   limit?: number;
   /** Number of persons to skip before starting to return results. */
@@ -767,7 +762,7 @@ export const CohortsPersonsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CohortsPersonsRetrieveRequest>;
 
 /** * `person` - person */
-export type CohortPersonResultTypeEnum = "person" | (string & {});
+export type CohortPersonResultTypeEnum = "person";
 export const CohortPersonResultTypeEnum = /*@__PURE__*/ S.String;
 
 export type CohortPersonResultDistinctIdsList = ReadonlyArray<string>;

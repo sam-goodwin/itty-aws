@@ -144,11 +144,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -525,8 +524,7 @@ export type LLMSkillMarketplaceCommandStatusEnum =
   | "absent"
   | "exists"
   | "created"
-  | "rotated"
-  | (string & {});
+  | "rotated";
 export const LLMSkillMarketplaceCommandStatusEnum = /*@__PURE__*/ S.String;
 
 export interface LLMSkillMarketplaceCommand {
@@ -1063,8 +1061,7 @@ export type MatchedFieldEnum =
   | "description"
   | "body"
   | "file_path"
-  | "file_content"
-  | (string & {});
+  | "file_content";
 export const MatchedFieldEnum = /*@__PURE__*/ S.String;
 
 export interface LLMSkillSearchMatch {

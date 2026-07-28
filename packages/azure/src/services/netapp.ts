@@ -212,8 +212,7 @@ export const AccountPropertiesInputActiveDirectoriesList =
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault */
 export type AccountEncryptionInputKeySource =
   | "Microsoft.NetApp"
-  | "Microsoft.KeyVault"
-  | (string & {});
+  | "Microsoft.KeyVault";
 export const AccountEncryptionInputKeySource = /*@__PURE__*/ S.String;
 
 /** Properties of key vault. */
@@ -254,7 +253,7 @@ export const EncryptionIdentityInput = /*@__PURE__*/ S.suspend(() =>
 /** Encryption settings */
 export interface AccountEncryptionInput {
   /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault */
-  keySource?: AccountEncryptionInputKeySource;
+  keySource?: AccountEncryptionInputKeySource | (string & {});
   /** Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'. */
   keyVaultProperties?: KeyVaultPropertiesInput;
   /** Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'. */
@@ -294,8 +293,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -318,7 +316,7 @@ export const AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AccountsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -376,8 +374,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -385,8 +382,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -430,8 +426,7 @@ export type ActiveDirectoryStatus =
   | "InUse"
   | "Deleted"
   | "Error"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ActiveDirectoryStatus = /*@__PURE__*/ S.String;
 
 /** Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier */
@@ -541,8 +536,7 @@ export const AccountPropertiesActiveDirectoriesList = /*@__PURE__*/ S.Array(
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault */
 export type AccountEncryptionKeySource =
   | "Microsoft.NetApp"
-  | "Microsoft.KeyVault"
-  | (string & {});
+  | "Microsoft.KeyVault";
 export const AccountEncryptionKeySource = /*@__PURE__*/ S.String;
 
 /** Status of the KeyVault connection. */
@@ -551,8 +545,7 @@ export type KeyVaultStatus =
   | "InUse"
   | "Deleted"
   | "Error"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const KeyVaultStatus = /*@__PURE__*/ S.String;
 
 /** Properties of key vault. */
@@ -619,7 +612,7 @@ export const AccountEncryption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountEncryption>;
 
 /** MultiAD Status for the account */
-export type MultiAdStatus = "Disabled" | "Enabled" | (string & {});
+export type MultiAdStatus = "Disabled" | "Enabled";
 export const MultiAdStatus = /*@__PURE__*/ S.String;
 
 /** NetApp account properties */
@@ -1169,7 +1162,7 @@ export const AccountsUpdateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AccountsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: AccountsUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -1806,7 +1799,7 @@ export const BackupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupsCreateRequest>;
 
 /** Type of backup Manual or Scheduled */
-export type BackupType = "Manual" | "Scheduled" | (string & {});
+export type BackupType = "Manual" | "Scheduled";
 export const BackupType = /*@__PURE__*/ S.String;
 
 /** Backup properties */
@@ -2014,16 +2007,11 @@ export type VolumeBackupRelationshipStatus =
   | "Idle"
   | "Transferring"
   | "Failed"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const VolumeBackupRelationshipStatus = /*@__PURE__*/ S.String;
 
 /** The status of the replication */
-export type MirrorState =
-  | "Uninitialized"
-  | "Mirrored"
-  | "Broken"
-  | (string & {});
+export type MirrorState = "Uninitialized" | "Mirrored" | "Broken";
 export const MirrorState = /*@__PURE__*/ S.String;
 
 /** Backup status */
@@ -2098,8 +2086,7 @@ export type VolumeRestoreRelationshipStatus =
   | "Idle"
   | "Transferring"
   | "Failed"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const VolumeRestoreRelationshipStatus = /*@__PURE__*/ S.String;
 
 /** Restore status */
@@ -2816,7 +2803,7 @@ export const FileSystemUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileSystemUser" }) as any as S.Schema<FileSystemUser>;
 
 /** This action is triggered when a certificate conflict occurs. A conflict arises if you try to create a new bucket while one or more already exist on the server, or if you update a bucket when multiple buckets are present. This happens because a single certificate is shared among all buckets on the same server. Note: This applies both to certificates provided directly via the certificateObject property and to those retrieved from Azure Key Vault. Details for the latter case are specified in the akvDetails.certificateAkvDetails section. */
-export type OnCertificateConflictAction = "Update" | "Fail" | (string & {});
+export type OnCertificateConflictAction = "Update" | "Fail";
 export const OnCertificateConflictAction = /*@__PURE__*/ S.String;
 
 /** Properties of the server managing the lifecycle of volume buckets */
@@ -2826,7 +2813,7 @@ export interface BucketServerPropertiesInput {
   /** The base64-encoded contents of a PEM file, which includes both the bucket server's certificate and private key. It is generated by the end user and allows the user to access volume data in a read-only manner. Note: This is only used when Azure Key Vault is not configured. This property is mutually exclusive with the Azure Key Vault 'akv' properties. */
   certificateObject?: string;
   /** Action to take when there is a certificate conflict. Possible values include: 'Update', 'Fail' */
-  onCertificateConflictAction?: OnCertificateConflictAction;
+  onCertificateConflictAction?: OnCertificateConflictAction | (string & {});
 }
 export const BucketServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2839,10 +2826,7 @@ export const BucketServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketServerPropertiesInput>;
 
 /** Access permissions for the bucket. Either ReadOnly or ReadWrite. The default is ReadOnly if no value is provided during bucket creation. */
-export type BucketPropertiesInputPermissions =
-  | "ReadOnly"
-  | "ReadWrite"
-  | (string & {});
+export type BucketPropertiesInputPermissions = "ReadOnly" | "ReadWrite";
 export const BucketPropertiesInputPermissions = /*@__PURE__*/ S.String;
 
 /** Specifies the Azure Key Vault settings for retrieving the bucket server certificate. */
@@ -2902,7 +2886,7 @@ export interface BucketPropertiesInput {
   /** Properties of the server managing the lifecycle of volume buckets */
   server?: BucketServerPropertiesInput;
   /** Access permissions for the bucket. Either ReadOnly or ReadWrite. The default is ReadOnly if no value is provided during bucket creation. */
-  permissions?: BucketPropertiesInputPermissions;
+  permissions?: BucketPropertiesInputPermissions | (string & {});
   /** Specifies the Azure Key Vault settings. These are used when a) retrieving the bucket server certificate, and b) storing the bucket credentials Notes: 1. If a bucket certificate was previously provided directly using the certificateObject property, it is possible to subsequently use the Azure Key Vault for certificate management by using these 'akvDetails' properties. However, once Azure Key Vault is configured, it is no longer possible to provide the certificate directly via the certificateObject property. 2. These properties are mutually exclusive with the server.certificateObject property. */
   akvDetails?: AzureKeyVaultDetails;
 }
@@ -2964,16 +2948,14 @@ export type NetAppProvisioningState =
   | "Deleting"
   | "Moving"
   | "Failed"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const NetAppProvisioningState = /*@__PURE__*/ S.String;
 
 /** The bucket credentials status. There states: "NoCredentialsSet": Access and Secret key pair have not been generated. "CredentialsExpired": Access and Secret key pair have expired. "Active": The certificate has been installed and credentials are unexpired. */
 export type CredentialsStatus =
   | "NoCredentialsSet"
   | "CredentialsExpired"
-  | "Active"
-  | (string & {});
+  | "Active";
 export const CredentialsStatus = /*@__PURE__*/ S.String;
 
 /** Properties of the server managing the lifecycle of volume buckets */
@@ -3005,10 +2987,7 @@ export const BucketServerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketServerProperties>;
 
 /** Access permissions for the bucket. Either ReadOnly or ReadWrite. The default is ReadOnly if no value is provided during bucket creation. */
-export type BucketPropertiesPermissions =
-  | "ReadOnly"
-  | "ReadWrite"
-  | (string & {});
+export type BucketPropertiesPermissions = "ReadOnly" | "ReadWrite";
 export const BucketPropertiesPermissions = /*@__PURE__*/ S.String;
 
 /** Bucket resource properties */
@@ -3388,7 +3367,7 @@ export interface BucketServerPatchProperties {
   /** The base64-encoded contents of a PEM file, which includes both the bucket server's certificate and private key. It is generated by the end user and allows the user to access volume data in a read-only manner. Note: This is only used when Azure Key Vault is not configured. This property is mutually exclusive with the Azure Key Vault 'akv' properties. */
   certificateObject?: string;
   /** Action to take when there is a certificate conflict. Possible values include: 'Update', 'Fail' */
-  onCertificateConflictAction?: OnCertificateConflictAction;
+  onCertificateConflictAction?: OnCertificateConflictAction | (string & {});
 }
 export const BucketServerPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3401,7 +3380,7 @@ export const BucketServerPatchProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketServerPatchProperties>;
 
 /** Access permissions for the bucket. Either ReadOnly or ReadWrite. */
-export type BucketPatchPermissions = "ReadOnly" | "ReadWrite" | (string & {});
+export type BucketPatchPermissions = "ReadOnly" | "ReadWrite";
 export const BucketPatchPermissions = /*@__PURE__*/ S.String;
 
 /** Bucket resource properties for a Patch operation */
@@ -3411,7 +3390,7 @@ export interface BucketPatchPropertiesInput {
   /** Properties of the server managing the lifecycle of volume buckets */
   server?: BucketServerPatchProperties;
   /** Access permissions for the bucket. Either ReadOnly or ReadWrite. */
-  permissions?: BucketPatchPermissions;
+  permissions?: BucketPatchPermissions | (string & {});
   /** Specifies the Azure Key Vault settings. These are used when a) retrieving the bucket server certificate, and b) storing the bucket credentials Notes: 1. If a bucket certificate was previously provided directly using the certificateObject property, it is possible to subsequently use the Azure Key Vault for certificate management by using these 'akvDetails' properties. However, once Azure Key Vault is configured, it is no longer possible to provide the certificate directly via the certificateObject property. 2. These properties are mutually exclusive with the server.certificateObject property. */
   akvDetails?: AzureKeyVaultDetails;
 }
@@ -3497,10 +3476,7 @@ export const CachesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CachesCreateOrUpdateRequestTagsMap>;
 
 /** This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own. */
-export type ExportPolicyRuleChownMode =
-  | "Restricted"
-  | "Unrestricted"
-  | (string & {});
+export type ExportPolicyRuleChownMode = "Restricted" | "Unrestricted";
 export const ExportPolicyRuleChownMode = /*@__PURE__*/ S.String;
 
 /** Volume Export Policy Rule */
@@ -3579,30 +3555,31 @@ export const CachePropertiesExportPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CachePropertiesExportPolicy>;
 
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
-export type ProtocolTypes = "NFSv3" | "NFSv4" | "SMB" | (string & {});
+export type ProtocolTypes = "NFSv3" | "NFSv4" | "SMB";
 export const ProtocolTypes = /*@__PURE__*/ S.String;
 
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
-export type CachePropertiesInputProtocolTypesList =
-  ReadonlyArray<ProtocolTypes>;
+export type CachePropertiesInputProtocolTypesList = ReadonlyArray<
+  ProtocolTypes | (string & {})
+>;
 export const CachePropertiesInputProtocolTypesList = /*@__PURE__*/ S.Array(
   ProtocolTypes,
 ) as any as S.Schema<CachePropertiesInputProtocolTypesList>;
 
 /** Describe if a cache is Kerberos enabled. */
-export type KerberosState = "Disabled" | "Enabled" | (string & {});
+export type KerberosState = "Disabled" | "Enabled";
 export const KerberosState = /*@__PURE__*/ S.String;
 
 /** Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache */
-export type SmbEncryptionState = "Disabled" | "Enabled" | (string & {});
+export type SmbEncryptionState = "Disabled" | "Enabled";
 export const SmbEncryptionState = /*@__PURE__*/ S.String;
 
 /** Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume */
-export type SmbAccessBasedEnumeration = "Disabled" | "Enabled" | (string & {});
+export type SmbAccessBasedEnumeration = "Disabled" | "Enabled";
 export const SmbAccessBasedEnumeration = /*@__PURE__*/ S.String;
 
 /** Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume */
-export type SmbNonBrowsable = "Disabled" | "Enabled" | (string & {});
+export type SmbNonBrowsable = "Disabled" | "Enabled";
 export const SmbNonBrowsable = /*@__PURE__*/ S.String;
 
 /** SMB settings for the cache */
@@ -3623,18 +3600,15 @@ export const SmbSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SmbSettings" }) as any as S.Schema<SmbSettings>;
 
 /** Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault' */
-export type EncryptionKeySource =
-  | "Microsoft.NetApp"
-  | "Microsoft.KeyVault"
-  | (string & {});
+export type EncryptionKeySource = "Microsoft.NetApp" | "Microsoft.KeyVault";
 export const EncryptionKeySource = /*@__PURE__*/ S.String;
 
 /** Specifies whether LDAP is enabled or not. */
-export type LdapState = "Disabled" | "Enabled" | (string & {});
+export type LdapState = "Disabled" | "Enabled";
 export const LdapState = /*@__PURE__*/ S.String;
 
 /** The type of the LDAP server */
-export type LdapServerType = "ActiveDirectory" | "OpenLDAP" | (string & {});
+export type LdapServerType = "ActiveDirectory" | "OpenLDAP";
 export const LdapServerType = /*@__PURE__*/ S.String;
 
 /** ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required */
@@ -3666,15 +3640,15 @@ export const OriginClusterInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OriginClusterInformation>;
 
 /** Flag indicating whether a CIFS change notification is enabled for the cache. */
-export type CifsChangeNotifyState = "Disabled" | "Enabled" | (string & {});
+export type CifsChangeNotifyState = "Disabled" | "Enabled";
 export const CifsChangeNotifyState = /*@__PURE__*/ S.String;
 
 /** Flag indicating whether the global file lock is enabled for the cache. */
-export type GlobalFileLockingState = "Disabled" | "Enabled" | (string & {});
+export type GlobalFileLockingState = "Disabled" | "Enabled";
 export const GlobalFileLockingState = /*@__PURE__*/ S.String;
 
 /** Flag indicating whether writeback is enabled for the cache. */
-export type EnableWriteBackState = "Disabled" | "Enabled" | (string & {});
+export type EnableWriteBackState = "Disabled" | "Enabled";
 export const EnableWriteBackState = /*@__PURE__*/ S.String;
 
 /** Cache resource properties */
@@ -3692,27 +3666,27 @@ export interface CachePropertiesInput {
   /** The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses. */
   peeringSubnetResourceId: string;
   /** Describe if a cache is Kerberos enabled. */
-  kerberos?: KerberosState;
+  kerberos?: KerberosState | (string & {});
   /** SMB information for the cache */
   smbSettings?: SmbSettings;
   /** Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache */
   throughputMibps?: number;
   /** Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault' */
-  encryptionKeySource: EncryptionKeySource;
+  encryptionKeySource: EncryptionKeySource | (string & {});
   /** The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'. */
   keyVaultPrivateEndpointResourceId?: string;
   /** Specifies whether LDAP is enabled or not for flexcache volume. */
-  ldap?: LdapState;
+  ldap?: LdapState | (string & {});
   /** Specifies the type of LDAP server for flexcache volume. */
-  ldapServerType?: LdapServerType;
+  ldapServerType?: LdapServerType | (string & {});
   /** Origin cluster information */
   originClusterInformation: OriginClusterInformation;
   /** Flag indicating whether a CIFS change notification is enabled for the cache. */
-  cifsChangeNotifications?: CifsChangeNotifyState;
+  cifsChangeNotifications?: CifsChangeNotifyState | (string & {});
   /** Flag indicating whether the global file lock is enabled for the cache. */
-  globalFileLocking?: GlobalFileLockingState;
+  globalFileLocking?: GlobalFileLockingState | (string & {});
   /** Flag indicating whether writeback is enabled for the cache. */
-  writeBack?: EnableWriteBackState;
+  writeBack?: EnableWriteBackState | (string & {});
 }
 export const CachePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3809,8 +3783,7 @@ export type CacheProvisioningState =
   | "Deleting"
   | "Failed"
   | "Succeeded"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const CacheProvisioningState = /*@__PURE__*/ S.String;
 
 /** Azure NetApp Files Cache lifecycle management */
@@ -3819,8 +3792,7 @@ export type CacheLifeCycleState =
   | "VserverPeeringOfferSent"
   | "Creating"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const CacheLifeCycleState = /*@__PURE__*/ S.String;
 
 /** Contains all the information needed to mount a cache */
@@ -3850,7 +3822,7 @@ export const CachePropertiesMountTargetsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CachePropertiesMountTargetsList>;
 
 /** Specifies if the cache is encryption or not. */
-export type EncryptionState = "Disabled" | "Enabled" | (string & {});
+export type EncryptionState = "Disabled" | "Enabled";
 export const EncryptionState = /*@__PURE__*/ S.String;
 
 /** Language supported for volume. */
@@ -3923,12 +3895,11 @@ export type VolumeLanguage =
   | "tr"
   | "tr.utf-8"
   | "en-us"
-  | "en-us.utf-8"
-  | (string & {});
+  | "en-us.utf-8";
 export const VolumeLanguage = /*@__PURE__*/ S.String;
 
 /** Flag indicating whether file access logs are enabled for the Cache, based on active diagnostic settings present on the Cache. */
-export type CacheFileAccessLogs = "Enabled" | "Disabled" | (string & {});
+export type CacheFileAccessLogs = "Enabled" | "Disabled";
 export const CacheFileAccessLogs = /*@__PURE__*/ S.String;
 
 /** Cache resource properties */
@@ -4500,8 +4471,9 @@ export const CachesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CachesUpdateRequestTagsMap>;
 
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
-export type CacheUpdatePropertiesProtocolTypesList =
-  ReadonlyArray<ProtocolTypes>;
+export type CacheUpdatePropertiesProtocolTypesList = ReadonlyArray<
+  ProtocolTypes | (string & {})
+>;
 export const CacheUpdatePropertiesProtocolTypesList = /*@__PURE__*/ S.Array(
   ProtocolTypes,
 ) as any as S.Schema<CacheUpdatePropertiesProtocolTypesList>;
@@ -4521,9 +4493,9 @@ export interface CacheUpdateProperties {
   /** The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'. */
   keyVaultPrivateEndpointResourceId?: string;
   /** Flag indicating whether a CIFS change notification is enabled for the cache. */
-  cifsChangeNotifications?: CifsChangeNotifyState;
+  cifsChangeNotifications?: CifsChangeNotifyState | (string & {});
   /** Flag indicating whether writeback is enabled for the cache. */
-  writeBack?: EnableWriteBackState;
+  writeBack?: EnableWriteBackState | (string & {});
 }
 export const CacheUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4659,10 +4631,7 @@ export const NetAppResourceCheckFilePathAvailabilityRequest =
   }) as any as S.Schema<NetAppResourceCheckFilePathAvailabilityRequest>;
 
 /** <code>Invalid</code> indicates the name provided does not match Azure App Service naming requirements. <code>AlreadyExists</code> indicates that the name is already in use and is therefore unavailable. */
-export type InAvailabilityReasonType =
-  | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+export type InAvailabilityReasonType = "Invalid" | "AlreadyExists";
 export const InAvailabilityReasonType = /*@__PURE__*/ S.String;
 
 /** Information regarding availability of a resource. */
@@ -4691,8 +4660,7 @@ export type CheckNameResourceTypes =
   | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes"
   | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots"
   | "Microsoft.NetApp/netAppAccounts/backupVaults/backups"
-  | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups"
-  | (string & {});
+  | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups";
 export const CheckNameResourceTypes = /*@__PURE__*/ S.String;
 
 export interface NetAppResourceCheckNameAvailabilityRequest {
@@ -4703,7 +4671,7 @@ export interface NetAppResourceCheckNameAvailabilityRequest {
   /** Resource name to verify. */
   name: string;
   /** Resource type used for verification. */
-  type: CheckNameResourceTypes;
+  type: CheckNameResourceTypes | (string & {});
   /** Resource group name. */
   resourceGroup: string;
 }
@@ -4734,8 +4702,7 @@ export type CheckQuotaNameResourceTypes =
   | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes"
   | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots"
   | "Microsoft.NetApp/netAppAccounts/backupVaults/backups"
-  | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups"
-  | (string & {});
+  | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups";
 export const CheckQuotaNameResourceTypes = /*@__PURE__*/ S.String;
 
 export interface NetAppResourceCheckQuotaAvailabilityRequest {
@@ -4746,7 +4713,7 @@ export interface NetAppResourceCheckQuotaAvailabilityRequest {
   /** Name of the resource to verify. */
   name: string;
   /** Resource type used for verification. */
-  type: CheckQuotaNameResourceTypes;
+  type: CheckQuotaNameResourceTypes | (string & {});
   /** Resource group name. */
   resourceGroup: string;
 }
@@ -4804,8 +4771,7 @@ export type NetworkSiblingSetNetworkFeatures =
   | "Basic"
   | "Standard"
   | "Basic_Standard"
-  | "Standard_Basic"
-  | (string & {});
+  | "Standard_Basic";
 export const NetworkSiblingSetNetworkFeatures = /*@__PURE__*/ S.String;
 
 /** Gets the status of the NetworkSiblingSet at the time the operation was called. */
@@ -4813,8 +4779,7 @@ export type NetworkSiblingSetProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const NetworkSiblingSetProvisioningState = /*@__PURE__*/ S.String;
 
 /** Volume resource Ids */
@@ -4903,8 +4868,7 @@ export type RegionStorageToNetworkProximity =
   | "T1AndT2"
   | "T1AndAcrossT2"
   | "T2AndAcrossT2"
-  | "T1AndT2AndAcrossT2"
-  | (string & {});
+  | "T1AndT2AndAcrossT2";
 export const RegionStorageToNetworkProximity = /*@__PURE__*/ S.String;
 
 export interface RegionInfoAvailabilityZoneMappingsItem {
@@ -5283,8 +5247,7 @@ export type NetAppResourceUpdateNetworkSiblingSetRequestNetworkFeatures =
   | "Basic"
   | "Standard"
   | "Basic_Standard"
-  | "Standard_Basic"
-  | (string & {});
+  | "Standard_Basic";
 export const NetAppResourceUpdateNetworkSiblingSetRequestNetworkFeatures =
   /*@__PURE__*/ S.String;
 
@@ -5300,7 +5263,9 @@ export interface NetAppResourceUpdateNetworkSiblingSetRequest {
   /** Network sibling set state Id identifying the current state of the sibling set. */
   networkSiblingSetStateId: string;
   /** Network features available to the volume. */
-  networkFeatures: NetAppResourceUpdateNetworkSiblingSetRequestNetworkFeatures;
+  networkFeatures:
+    | NetAppResourceUpdateNetworkSiblingSetRequestNetworkFeatures
+    | (string & {});
 }
 export const NetAppResourceUpdateNetworkSiblingSetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5479,7 +5444,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationDisplay",
 }) as any as S.Schema<OperationDisplay>;
 
-export type MetricAggregationType = "Average" | (string & {});
+export type MetricAggregationType = "Average";
 export const MetricAggregationType = /*@__PURE__*/ S.String;
 
 /** Support metric aggregation type. */
@@ -5699,19 +5664,15 @@ export type PoolPropertiesInputServiceLevel =
   | "Premium"
   | "Ultra"
   | "StandardZRS"
-  | "Flexible"
-  | (string & {});
+  | "Flexible";
 export const PoolPropertiesInputServiceLevel = /*@__PURE__*/ S.String;
 
 /** The qos type of the pool */
-export type PoolPropertiesInputQosType = "Auto" | "Manual" | (string & {});
+export type PoolPropertiesInputQosType = "Auto" | "Manual";
 export const PoolPropertiesInputQosType = /*@__PURE__*/ S.String;
 
 /** Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool. */
-export type PoolPropertiesInputEncryptionType =
-  | "Single"
-  | "Double"
-  | (string & {});
+export type PoolPropertiesInputEncryptionType = "Single" | "Double";
 export const PoolPropertiesInputEncryptionType = /*@__PURE__*/ S.String;
 
 /** Pool properties */
@@ -5719,15 +5680,15 @@ export interface PoolPropertiesInput {
   /** Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiple of 1099511627776). */
   size: number;
   /** The service level of the file system */
-  serviceLevel: PoolPropertiesInputServiceLevel;
+  serviceLevel: PoolPropertiesInputServiceLevel | (string & {});
   /** Maximum throughput in MiB/s that can be achieved by this pool and this will be accepted as input only for manual qosType pool with Flexible service level */
   customThroughputMibps?: number | null;
   /** The qos type of the pool */
-  qosType?: PoolPropertiesInputQosType;
+  qosType?: PoolPropertiesInputQosType | (string & {});
   /** If enabled (true) the pool can contain cool Access enabled volumes. */
   coolAccess?: boolean;
   /** Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool. */
-  encryptionType?: PoolPropertiesInputEncryptionType | null;
+  encryptionType?: PoolPropertiesInputEncryptionType | (string & {}) | null;
 }
 export const PoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5794,16 +5755,15 @@ export type PoolPropertiesServiceLevel =
   | "Premium"
   | "Ultra"
   | "StandardZRS"
-  | "Flexible"
-  | (string & {});
+  | "Flexible";
 export const PoolPropertiesServiceLevel = /*@__PURE__*/ S.String;
 
 /** The qos type of the pool */
-export type PoolPropertiesQosType = "Auto" | "Manual" | (string & {});
+export type PoolPropertiesQosType = "Auto" | "Manual";
 export const PoolPropertiesQosType = /*@__PURE__*/ S.String;
 
 /** Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool. */
-export type PoolPropertiesEncryptionType = "Single" | "Double" | (string & {});
+export type PoolPropertiesEncryptionType = "Single" | "Double";
 export const PoolPropertiesEncryptionType = /*@__PURE__*/ S.String;
 
 /** Pool properties */
@@ -6074,7 +6034,7 @@ export const PoolsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PoolsUpdateRequestTagsMap>;
 
 /** The qos type of the pool */
-export type QosType = "Auto" | "Manual" | (string & {});
+export type QosType = "Auto" | "Manual";
 export const QosType = /*@__PURE__*/ S.String;
 
 /** Patchable pool properties */
@@ -6082,7 +6042,7 @@ export interface PoolPatchProperties {
   /** Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiple of 1099511627776). */
   size?: number;
   /** The qos type of the pool */
-  qosType?: QosType;
+  qosType?: QosType | (string & {});
   /** If enabled (true) the pool can contain cool Access enabled volumes. */
   coolAccess?: boolean;
   /** Maximum throughput in MiB/s that can be achieved by this pool and this will be accepted as input only for manual qosType pool with Flexible service level */
@@ -6177,10 +6137,7 @@ export const PoolsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolsUpdateResponse>;
 
 /** ARP report suspect resolution */
-export type RansomwareSuspectResolution =
-  | "PotentialThreat"
-  | "FalsePositive"
-  | (string & {});
+export type RansomwareSuspectResolution = "PotentialThreat" | "FalsePositive";
 export const RansomwareSuspectResolution = /*@__PURE__*/ S.String;
 
 /** List of file extensions resolved (PotentialThreat or FalsePositive) */
@@ -6205,7 +6162,7 @@ export interface RansomwareReportsClearSuspectsRequest {
   /** The name of the ransomware report */
   ransomwareReportName: string;
   /** ARP report suspect resolution */
-  resolution: RansomwareSuspectResolution;
+  resolution: RansomwareSuspectResolution | (string & {});
   /** List of file extensions resolved (PotentialThreat or FalsePositive) */
   extensions: RansomwareReportsClearSuspectsRequestExtensionsList;
 }
@@ -6274,16 +6231,11 @@ export const RansomwareReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RansomwareReportsGetRequest>;
 
 /** State of the Advanced Ransomware Protection (ARP) report */
-export type RansomwareReportState = "Active" | "Resolved" | (string & {});
+export type RansomwareReportState = "Active" | "Resolved";
 export const RansomwareReportState = /*@__PURE__*/ S.String;
 
 /** Severity of the Advanced Ransomware Protection (ARP) report */
-export type RansomwareReportSeverity =
-  | "None"
-  | "Low"
-  | "Moderate"
-  | "High"
-  | (string & {});
+export type RansomwareReportSeverity = "None" | "Low" | "Moderate" | "High";
 export const RansomwareReportSeverity = /*@__PURE__*/ S.String;
 
 /** Suspect file information */
@@ -6926,8 +6878,7 @@ export type VolumePropertiesServiceLevel =
   | "Premium"
   | "Ultra"
   | "StandardZRS"
-  | "Flexible"
-  | (string & {});
+  | "Flexible";
 export const VolumePropertiesServiceLevel = /*@__PURE__*/ S.String;
 
 /** Export policy rule */
@@ -6961,8 +6912,7 @@ export type VolumePropertiesNetworkFeatures =
   | "Basic"
   | "Standard"
   | "Basic_Standard"
-  | "Standard_Basic"
-  | (string & {});
+  | "Standard_Basic";
 export const VolumePropertiesNetworkFeatures = /*@__PURE__*/ S.String;
 
 /** The effective value of the network features type available to the volume, or current effective state of update. */
@@ -6970,8 +6920,7 @@ export type VolumePropertiesEffectiveNetworkFeatures =
   | "Basic"
   | "Standard"
   | "Basic_Standard"
-  | "Standard_Basic"
-  | (string & {});
+  | "Standard_Basic";
 export const VolumePropertiesEffectiveNetworkFeatures = /*@__PURE__*/ S.String;
 
 /** Provides storage to network proximity information for the volume. */
@@ -6979,8 +6928,7 @@ export type VolumeStorageToNetworkProximity =
   | "Default"
   | "T1"
   | "T2"
-  | "AcrossT2"
-  | (string & {});
+  | "AcrossT2";
 export const VolumeStorageToNetworkProximity = /*@__PURE__*/ S.String;
 
 /** Mount target properties */
@@ -7032,15 +6980,11 @@ export const VolumeBackupProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeBackupProperties>;
 
 /** Indicates whether the local volume is the source or destination for the Volume Replication */
-export type EndpointType = "src" | "dst" | (string & {});
+export type EndpointType = "src" | "dst";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 /** Schedule */
-export type ReplicationSchedule =
-  | "_10minutely"
-  | "hourly"
-  | "daily"
-  | (string & {});
+export type ReplicationSchedule = "_10minutely" | "hourly" | "daily";
 export const ReplicationSchedule = /*@__PURE__*/ S.String;
 
 /** The full path to a volume that is to be migrated into ANF. Required for Migration volumes */
@@ -7061,10 +7005,7 @@ export const RemotePath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemotePath" }) as any as S.Schema<RemotePath>;
 
 /** Indicates whether the replication is cross zone or cross region. */
-export type ReplicationType =
-  | "CrossRegionReplication"
-  | "CrossZoneReplication"
-  | (string & {});
+export type ReplicationType = "CrossRegionReplication" | "CrossZoneReplication";
 export const ReplicationType = /*@__PURE__*/ S.String;
 
 /** Destination replication properties */
@@ -7103,15 +7044,11 @@ export type ExternalReplicationSetupStatus =
   | "ClusterPeerPending"
   | "VServerPeerRequired"
   | "ReplicationCreateRequired"
-  | "NoActionRequired"
-  | (string & {});
+  | "NoActionRequired";
 export const ExternalReplicationSetupStatus = /*@__PURE__*/ S.String;
 
 /** Status of the volume replication relationship */
-export type VolumeReplicationRelationshipStatus =
-  | "Idle"
-  | "Transferring"
-  | (string & {});
+export type VolumeReplicationRelationshipStatus = "Idle" | "Transferring";
 export const VolumeReplicationRelationshipStatus = /*@__PURE__*/ S.String;
 
 /** Replication properties */
@@ -7189,10 +7126,7 @@ export const VolumeRelocationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeRelocationProperties>;
 
 /** The desired state of the Advanced Ransomware Protection feature */
-export type DesiredRansomwareProtectionState =
-  | "Disabled"
-  | "Enabled"
-  | (string & {});
+export type DesiredRansomwareProtectionState = "Disabled" | "Enabled";
 export const DesiredRansomwareProtectionState = /*@__PURE__*/ S.String;
 
 /** The actual state of the Advanced Ransomware Protection feature */
@@ -7200,8 +7134,7 @@ export type ActualRansomwareProtectionState =
   | "Disabled"
   | "Enabled"
   | "Learning"
-  | "Paused"
-  | (string & {});
+  | "Paused";
 export const ActualRansomwareProtectionState = /*@__PURE__*/ S.String;
 
 /** Advanced Ransomware Protection reports (ARP) settings */
@@ -7252,46 +7185,34 @@ export const VolumePropertiesDataProtection = /*@__PURE__*/ S.suspend(() =>
 /** While auto splitting the short term clone volume, if the parent pool does not have enough space to accommodate the volume after split, it will be automatically resized, which will lead to increased billing. To accept capacity pool size auto grow and create a short term clone volume, set the property as accepted. */
 export type AcceptGrowCapacityPoolForShortTermCloneSplit =
   | "Accepted"
-  | "Declined"
-  | (string & {});
+  | "Declined";
 export const AcceptGrowCapacityPoolForShortTermCloneSplit =
   /*@__PURE__*/ S.String;
 
 /** The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol */
-export type VolumePropertiesSecurityStyle = "ntfs" | "unix" | (string & {});
+export type VolumePropertiesSecurityStyle = "ntfs" | "unix";
 export const VolumePropertiesSecurityStyle = /*@__PURE__*/ S.String;
 
 /** Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault' */
 export type VolumePropertiesEncryptionKeySource =
   | "Microsoft.NetApp"
-  | "Microsoft.KeyVault"
-  | (string & {});
+  | "Microsoft.KeyVault";
 export const VolumePropertiesEncryptionKeySource = /*@__PURE__*/ S.String;
 
 /** coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default. OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads. Never - No client-driven data is pulled from cool tier to standard storage. */
-export type CoolAccessRetrievalPolicy =
-  | "Default"
-  | "OnRead"
-  | "Never"
-  | (string & {});
+export type CoolAccessRetrievalPolicy = "Default" | "OnRead" | "Never";
 export const CoolAccessRetrievalPolicy = /*@__PURE__*/ S.String;
 
 /** coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier. */
-export type CoolAccessTieringPolicy = "Auto" | "SnapshotOnly" | (string & {});
+export type CoolAccessTieringPolicy = "Auto" | "SnapshotOnly";
 export const CoolAccessTieringPolicy = /*@__PURE__*/ S.String;
 
 /** Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume. */
-export type VolumePropertiesFileAccessLogs =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type VolumePropertiesFileAccessLogs = "Enabled" | "Disabled";
 export const VolumePropertiesFileAccessLogs = /*@__PURE__*/ S.String;
 
 /** Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose */
-export type VolumePropertiesAvsDataStore =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type VolumePropertiesAvsDataStore = "Enabled" | "Disabled";
 export const VolumePropertiesAvsDataStore = /*@__PURE__*/ S.String;
 
 /** Data store resource unique identifier */
@@ -7324,14 +7245,11 @@ export const VolumePropertiesPlacementRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VolumePropertiesPlacementRulesList>;
 
 /** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
-export type VolumePropertiesEnableSubvolumes =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type VolumePropertiesEnableSubvolumes = "Enabled" | "Disabled";
 export const VolumePropertiesEnableSubvolumes = /*@__PURE__*/ S.String;
 
 /** Specifies whether the volume operates in Breakthrough Mode. When set to 'Enabled', the volume runs on the resources configured for this mode, delivering improved performance and higher throughput. If set to 'Disabled' or omitted, the volume uses the basic configuration. This feature is available only in regions where it’s been configured and first-time users must finish onboarding prior to using Breakthrough Mode. */
-export type BreakthroughMode = "Enabled" | "Disabled" | (string & {});
+export type BreakthroughMode = "Enabled" | "Disabled";
 export const BreakthroughMode = /*@__PURE__*/ S.String;
 
 /** Volume properties */
@@ -8510,7 +8428,7 @@ export const SubvolumesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubvolumesUpdateResponse>;
 
 /** Application Type */
-export type ApplicationType = "SAP-HANA" | "ORACLE" | (string & {});
+export type ApplicationType = "SAP-HANA" | "ORACLE";
 export const ApplicationType = /*@__PURE__*/ S.String;
 
 /** Application specific placement rules for the volume group */
@@ -8526,7 +8444,7 @@ export interface VolumeGroupMetaDataInput {
   /** Group Description */
   groupDescription?: string;
   /** Application Type */
-  applicationType?: ApplicationType;
+  applicationType?: ApplicationType | (string & {});
   /** Application specific identifier */
   applicationIdentifier?: string;
   /** Application specific placement rules for the volume group */
@@ -8566,8 +8484,7 @@ export type VolumePropertiesInputServiceLevel =
   | "Premium"
   | "Ultra"
   | "StandardZRS"
-  | "Flexible"
-  | (string & {});
+  | "Flexible";
 export const VolumePropertiesInputServiceLevel = /*@__PURE__*/ S.String;
 
 /** Set of protocol types, default NFSv3, CIFS for SMB protocol */
@@ -8581,14 +8498,13 @@ export type VolumePropertiesInputNetworkFeatures =
   | "Basic"
   | "Standard"
   | "Basic_Standard"
-  | "Standard_Basic"
-  | (string & {});
+  | "Standard_Basic";
 export const VolumePropertiesInputNetworkFeatures = /*@__PURE__*/ S.String;
 
 /** Replication properties */
 export interface ReplicationObjectInput {
   /** Schedule */
-  replicationSchedule?: ReplicationSchedule;
+  replicationSchedule?: ReplicationSchedule | (string & {});
   /** The resource ID of the remote volume. Required for cross region and cross zone replication */
   remoteVolumeResourceId?: string;
   /** The full path to a volume that is to be migrated into ANF. Required for Migration volumes */
@@ -8646,24 +8562,17 @@ export const VolumePropertiesDataProtectionInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumePropertiesDataProtectionInput>;
 
 /** The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol */
-export type VolumePropertiesInputSecurityStyle =
-  | "ntfs"
-  | "unix"
-  | (string & {});
+export type VolumePropertiesInputSecurityStyle = "ntfs" | "unix";
 export const VolumePropertiesInputSecurityStyle = /*@__PURE__*/ S.String;
 
 /** Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault' */
 export type VolumePropertiesInputEncryptionKeySource =
   | "Microsoft.NetApp"
-  | "Microsoft.KeyVault"
-  | (string & {});
+  | "Microsoft.KeyVault";
 export const VolumePropertiesInputEncryptionKeySource = /*@__PURE__*/ S.String;
 
 /** Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose */
-export type VolumePropertiesInputAvsDataStore =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type VolumePropertiesInputAvsDataStore = "Enabled" | "Disabled";
 export const VolumePropertiesInputAvsDataStore = /*@__PURE__*/ S.String;
 
 /** Application specific placement rules for the particular volume */
@@ -8674,10 +8583,7 @@ export const VolumePropertiesInputPlacementRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VolumePropertiesInputPlacementRulesList>;
 
 /** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
-export type VolumePropertiesInputEnableSubvolumes =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type VolumePropertiesInputEnableSubvolumes = "Enabled" | "Disabled";
 export const VolumePropertiesInputEnableSubvolumes = /*@__PURE__*/ S.String;
 
 /** Volume properties */
@@ -8685,7 +8591,7 @@ export interface VolumePropertiesInput {
   /** A unique file path for the volume. Used when creating mount targets */
   creationToken: string;
   /** The service level of the file system */
-  serviceLevel?: VolumePropertiesInputServiceLevel;
+  serviceLevel?: VolumePropertiesInputServiceLevel | (string & {});
   /** Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB. */
   usageThreshold: number;
   /** Set of export policy rules */
@@ -8701,31 +8607,35 @@ export interface VolumePropertiesInput {
   /** The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes */
   subnetId: string;
   /** The original value of the network features type available to the volume at the time it was created. */
-  networkFeatures?: VolumePropertiesInputNetworkFeatures;
+  networkFeatures?: VolumePropertiesInputNetworkFeatures | (string & {});
   /** What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection. For creating clone volume, set type to ShortTermClone */
   volumeType?: string;
   /** DataProtection type volumes include an object containing details of the replication */
   dataProtection?: VolumePropertiesDataProtectionInput;
   /** While auto splitting the short term clone volume, if the parent pool does not have enough space to accommodate the volume after split, it will be automatically resized, which will lead to increased billing. To accept capacity pool size auto grow and create a short term clone volume, set the property as accepted. */
-  acceptGrowCapacityPoolForShortTermCloneSplit?: AcceptGrowCapacityPoolForShortTermCloneSplit;
+  acceptGrowCapacityPoolForShortTermCloneSplit?:
+    | AcceptGrowCapacityPoolForShortTermCloneSplit
+    | (string & {});
   /** If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (defaults to true). */
   snapshotDirectoryVisible?: boolean;
   /** Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later */
   kerberosEnabled?: boolean;
   /** The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol */
-  securityStyle?: VolumePropertiesInputSecurityStyle;
+  securityStyle?: VolumePropertiesInputSecurityStyle | (string & {});
   /** Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later */
   smbEncryption?: boolean;
   /** Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume */
-  smbAccessBasedEnumeration?: SmbAccessBasedEnumeration | null;
+  smbAccessBasedEnumeration?: SmbAccessBasedEnumeration | (string & {}) | null;
   /** Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume */
-  smbNonBrowsable?: SmbNonBrowsable;
+  smbNonBrowsable?: SmbNonBrowsable | (string & {});
   /** Enables continuously available share property for smb volume. Only applicable for SMB volume */
   smbContinuouslyAvailable?: boolean;
   /** Maximum throughput in MiB/s that can be achieved by this volume and this will be accepted as input only for manual qosType volume */
   throughputMibps?: number | null;
   /** Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault' */
-  encryptionKeySource?: VolumePropertiesInputEncryptionKeySource;
+  encryptionKeySource?:
+    | VolumePropertiesInputEncryptionKeySource
+    | (string & {});
   /** The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'. */
   keyVaultPrivateEndpointResourceId?: string;
   /** Specifies whether LDAP is enabled or not for a given NFS volume. */
@@ -8735,13 +8645,13 @@ export interface VolumePropertiesInput {
   /** Specifies the number of days after which data that is not accessed by clients will be tiered. */
   coolnessPeriod?: number;
   /** coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default. OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads. Never - No client-driven data is pulled from cool tier to standard storage. */
-  coolAccessRetrievalPolicy?: CoolAccessRetrievalPolicy;
+  coolAccessRetrievalPolicy?: CoolAccessRetrievalPolicy | (string & {});
   /** coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier. */
-  coolAccessTieringPolicy?: CoolAccessTieringPolicy;
+  coolAccessTieringPolicy?: CoolAccessTieringPolicy | (string & {});
   /** UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users. */
   unixPermissions?: string | null;
   /** Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose */
-  avsDataStore?: VolumePropertiesInputAvsDataStore;
+  avsDataStore?: VolumePropertiesInputAvsDataStore | (string & {});
   /** Specifies if default quota is enabled for the volume. */
   isDefaultQuotaEnabled?: boolean;
   /** Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies . */
@@ -8757,11 +8667,11 @@ export interface VolumePropertiesInput {
   /** Application specific placement rules for the particular volume */
   placementRules?: VolumePropertiesInputPlacementRulesList;
   /** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
-  enableSubvolumes?: VolumePropertiesInputEnableSubvolumes;
+  enableSubvolumes?: VolumePropertiesInputEnableSubvolumes | (string & {});
   /** Specifies whether volume is a Large Volume or Regular Volume. */
   isLargeVolume?: boolean;
   /** Specifies whether the volume operates in Breakthrough Mode. */
-  breakthroughMode?: BreakthroughMode;
+  breakthroughMode?: BreakthroughMode | (string & {});
 }
 export const VolumePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9213,8 +9123,7 @@ export type QuotaType =
   | "DefaultUserQuota"
   | "DefaultGroupQuota"
   | "IndividualUserQuota"
-  | "IndividualGroupQuota"
-  | (string & {});
+  | "IndividualGroupQuota";
 export const QuotaType = /*@__PURE__*/ S.String;
 
 /** Volume Quota Rule properties */
@@ -9222,7 +9131,7 @@ export interface VolumeQuotaRulesPropertiesInput {
   /** Size of quota */
   quotaSizeInKiBs?: number;
   /** Type of quota */
-  quotaType?: QuotaType;
+  quotaType?: QuotaType | (string & {});
   /** UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid> */
   quotaTarget?: string;
 }
@@ -10279,7 +10188,7 @@ export interface VolumesListQuotaReportRequest {
   /** The name of the volume */
   volumeName: string;
   /** Type of quota. If provided, quotaTarget must also be specified. The quotaType and quotaTarget properties are optional, but when filtering by quota type, quotaType and quotaTarget must be supplied together. Service/API will return an error if only one is provided. */
-  quotaType?: QuotaType;
+  quotaType?: QuotaType | (string & {});
   /** UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running 'id' or 'getent' command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid>. If provided, quotaType must also be specified. The quotaType and quotaTarget properties are optional, but when filtering by quota target, quotaType and quotaTarget must be supplied together. Service/API will return an error if only one is provided. */
   quotaTarget?: string;
   /** The usageThresholdPercentage filter takes the usage threshold percentage and returns records where the usage is greater than or equal to the input value. This is an optional property. */
@@ -10370,10 +10279,7 @@ export const ListQuotaReportResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListQuotaReportResult>;
 
 /** Exclude Replications filter. 'None' returns all replications, 'Deleted' excludes deleted replications. Default is 'None' */
-export type VolumesListReplicationsRequestExclude =
-  | "None"
-  | "Deleted"
-  | (string & {});
+export type VolumesListReplicationsRequestExclude = "None" | "Deleted";
 export const VolumesListReplicationsRequestExclude = /*@__PURE__*/ S.String;
 
 export interface VolumesListReplicationsRequest {
@@ -10388,7 +10294,7 @@ export interface VolumesListReplicationsRequest {
   /** The name of the volume */
   volumeName: string;
   /** Exclude Replications filter. 'None' returns all replications, 'Deleted' excludes deleted replications. Default is 'None' */
-  exclude?: VolumesListReplicationsRequestExclude;
+  exclude?: VolumesListReplicationsRequestExclude | (string & {});
 }
 export const VolumesListReplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10411,11 +10317,7 @@ export const VolumesListReplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumesListReplicationsRequest>;
 
 /** The status of the replication */
-export type ReplicationMirrorState =
-  | "Uninitialized"
-  | "Mirrored"
-  | "Broken"
-  | (string & {});
+export type ReplicationMirrorState = "Uninitialized" | "Mirrored" | "Broken";
 export const ReplicationMirrorState = /*@__PURE__*/ S.String;
 
 /** Replication properties */
@@ -11141,8 +11043,7 @@ export type ServiceLevel =
   | "Premium"
   | "Ultra"
   | "StandardZRS"
-  | "Flexible"
-  | (string & {});
+  | "Flexible";
 export const ServiceLevel = /*@__PURE__*/ S.String;
 
 /** Export policy rule */
@@ -11174,7 +11075,9 @@ export const VolumePatchPropertiesProtocolTypesList = /*@__PURE__*/ S.Array(
 /** Advanced Ransomware Protection reports (ARP) updatable settings */
 export interface RansomwareProtectionPatchSettings {
   /** The desired value of the ARP feature state available to the volume */
-  desiredRansomwareProtectionState?: DesiredRansomwareProtectionState;
+  desiredRansomwareProtectionState?:
+    | DesiredRansomwareProtectionState
+    | (string & {});
 }
 export const RansomwareProtectionPatchSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11208,7 +11111,7 @@ export const VolumePatchPropertiesDataProtection = /*@__PURE__*/ S.suspend(() =>
 /** Patchable volume properties */
 export interface VolumePatchProperties {
   /** The service level of the file system */
-  serviceLevel?: ServiceLevel;
+  serviceLevel?: ServiceLevel | (string & {});
   /** Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB. */
   usageThreshold?: number;
   /** Set of export policy rules */
@@ -11232,15 +11135,15 @@ export interface VolumePatchProperties {
   /** Specifies the number of days after which data that is not accessed by clients will be tiered. */
   coolnessPeriod?: number;
   /** coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default. OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads. Never - No client-driven data is pulled from cool tier to standard storage. */
-  coolAccessRetrievalPolicy?: CoolAccessRetrievalPolicy;
+  coolAccessRetrievalPolicy?: CoolAccessRetrievalPolicy | (string & {});
   /** coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier. */
-  coolAccessTieringPolicy?: CoolAccessTieringPolicy;
+  coolAccessTieringPolicy?: CoolAccessTieringPolicy | (string & {});
   /** If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots. */
   snapshotDirectoryVisible?: boolean;
   /** Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume */
-  smbAccessBasedEnumeration?: SmbAccessBasedEnumeration | null;
+  smbAccessBasedEnumeration?: SmbAccessBasedEnumeration | (string & {}) | null;
   /** Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume */
-  smbNonBrowsable?: SmbNonBrowsable;
+  smbNonBrowsable?: SmbNonBrowsable | (string & {});
 }
 export const VolumePatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -14,14 +14,13 @@ export type { PosthogOpError, PosthogOpContext };
 /** * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
 export type ManagedViewsetsRetrieveRequestKind =
   | "revenue_analytics"
-  | "engineering_analytics"
-  | (string & {});
+  | "engineering_analytics";
 export const ManagedViewsetsRetrieveRequestKind = /*@__PURE__*/ S.String;
 
 export interface ManagedViewsetsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  kind: ManagedViewsetsRetrieveRequestKind;
+  kind: ManagedViewsetsRetrieveRequestKind | (string & {});
 }
 export const ManagedViewsetsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -48,14 +47,13 @@ export const ManagedViewsetsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
 /** * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
 export type ManagedViewsetsUpdateRequestKind =
   | "revenue_analytics"
-  | "engineering_analytics"
-  | (string & {});
+  | "engineering_analytics";
 export const ManagedViewsetsUpdateRequestKind = /*@__PURE__*/ S.String;
 
 export interface ManagedViewsetsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  kind: ManagedViewsetsUpdateRequestKind;
+  kind: ManagedViewsetsUpdateRequestKind | (string & {});
 }
 export const ManagedViewsetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

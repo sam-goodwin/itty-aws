@@ -668,12 +668,12 @@ export const CreateDataRetentionBotChallengeResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDataRetentionBotChallengeResponse",
 }) as any as S.Schema<CreateDataRetentionBotChallengeResponse>;
-export type AccessLevel = "STANDARD" | "PREMIUM" | (string & {});
+export type AccessLevel = "STANDARD" | "PREMIUM";
 export const AccessLevel = /*@__PURE__*/ S.String;
 
 export interface CreateNetworkRequest {
   networkName: string;
-  accessLevel: AccessLevel;
+  accessLevel: AccessLevel | (string & {});
   enablePremiumFreeTrial?: boolean;
   encryptionKeyArn?: string;
 }
@@ -1095,7 +1095,7 @@ export const GetBotRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetBotRequest" }) as any as S.Schema<GetBotRequest>;
-export type BotStatus = 1 | 2 | (number & {});
+export type BotStatus = 1 | 2;
 export const BotStatus = /*@__PURE__*/ S.Literals([1, 2]);
 export interface GetBotResponse {
   botId?: string;
@@ -1562,13 +1562,13 @@ export const GetUsersCountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUsersCountResponse",
 }) as any as S.Schema<GetUsersCountResponse>;
-export type SortDirection = "ASC" | "DESC" | (string & {});
+export type SortDirection = "ASC" | "DESC";
 export const SortDirection = /*@__PURE__*/ S.String;
 
 export interface ListBlockedGuestUsersRequest {
   networkId: string;
   maxResults?: number;
-  sortDirection?: SortDirection;
+  sortDirection?: SortDirection | (string & {});
   sortFields?: string;
   username?: string;
   admin?: string;
@@ -1634,10 +1634,10 @@ export interface ListBotsRequest {
   nextToken?: string;
   maxResults?: number;
   sortFields?: string;
-  sortDirection?: SortDirection;
+  sortDirection?: SortDirection | (string & {});
   displayName?: string;
   username?: string;
-  status?: BotStatus;
+  status?: BotStatus | (number & {});
   groupId?: string;
 }
 export const ListBotsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1707,7 +1707,7 @@ export interface ListDevicesForUserRequest {
   nextToken?: string;
   maxResults?: number;
   sortFields?: string;
-  sortDirection?: SortDirection;
+  sortDirection?: SortDirection | (string & {});
 }
 export const ListDevicesForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1767,7 +1767,7 @@ export const ListDevicesForUserResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListGuestUsersRequest {
   networkId: string;
   maxResults?: number;
-  sortDirection?: SortDirection;
+  sortDirection?: SortDirection | (string & {});
   sortFields?: string;
   username?: string;
   billingPeriod?: string;
@@ -1821,7 +1821,7 @@ export const ListGuestUsersResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListNetworksRequest {
   maxResults?: number;
   sortFields?: string;
-  sortDirection?: SortDirection;
+  sortDirection?: SortDirection | (string & {});
   nextToken?: string;
 }
 export const ListNetworksRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1883,7 +1883,7 @@ export interface ListSecurityGroupsRequest {
   nextToken?: string;
   maxResults?: number;
   sortFields?: string;
-  sortDirection?: SortDirection;
+  sortDirection?: SortDirection | (string & {});
 }
 export const ListSecurityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1925,7 +1925,7 @@ export interface ListSecurityGroupUsersRequest {
   nextToken?: string;
   maxResults?: number;
   sortFields?: string;
-  sortDirection?: SortDirection;
+  sortDirection?: SortDirection | (string & {});
 }
 export const ListSecurityGroupUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1960,18 +1960,18 @@ export const ListSecurityGroupUsersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSecurityGroupUsersResponse",
 }) as any as S.Schema<ListSecurityGroupUsersResponse>;
-export type UserStatus = 1 | 2 | (number & {});
+export type UserStatus = 1 | 2;
 export const UserStatus = /*@__PURE__*/ S.Literals([1, 2]);
 export interface ListUsersRequest {
   networkId: string;
   nextToken?: string;
   maxResults?: number;
   sortFields?: string;
-  sortDirection?: SortDirection;
+  sortDirection?: SortDirection | (string & {});
   firstName?: string | redacted.Redacted<string>;
   lastName?: string | redacted.Redacted<string>;
   username?: string;
-  status?: UserStatus;
+  status?: UserStatus | (number & {});
   groupId?: string;
 }
 export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2222,16 +2222,12 @@ export const UpdateBotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateBotResponse",
 }) as any as S.Schema<UpdateBotResponse>;
-export type DataRetentionActionType =
-  | "ENABLE"
-  | "DISABLE"
-  | "PUBKEY_MSG_ACK"
-  | (string & {});
+export type DataRetentionActionType = "ENABLE" | "DISABLE" | "PUBKEY_MSG_ACK";
 export const DataRetentionActionType = /*@__PURE__*/ S.String;
 
 export interface UpdateDataRetentionRequest {
   networkId: string;
-  actionType: DataRetentionActionType;
+  actionType: DataRetentionActionType | (string & {});
 }
 export const UpdateDataRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2331,11 +2327,11 @@ export const UpdateNetworkResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateNetworkResponse",
 }) as any as S.Schema<UpdateNetworkResponse>;
-export type Status = "DISABLED" | "ENABLED" | "FORCE_ENABLED" | (string & {});
+export type Status = "DISABLED" | "ENABLED" | "FORCE_ENABLED";
 export const Status = /*@__PURE__*/ S.String;
 
 export interface ReadReceiptConfig {
-  status?: Status;
+  status?: Status | (string & {});
 }
 export const ReadReceiptConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(Status) }),

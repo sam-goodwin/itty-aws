@@ -15,8 +15,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** The type of resource, Microsoft.VideoIndexer/accounts */
 export type AccountsCheckNameAvailabilityRequestType =
-  | "Microsoft.VideoIndexer/accounts"
-  | (string & {});
+  "Microsoft.VideoIndexer/accounts";
 export const AccountsCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
 
 export interface AccountsCheckNameAvailabilityRequest {
@@ -25,7 +24,7 @@ export interface AccountsCheckNameAvailabilityRequest {
   /** The VideoIndexer account name. */
   name: string;
   /** The type of resource, Microsoft.VideoIndexer/accounts */
-  type: AccountsCheckNameAvailabilityRequestType;
+  type: AccountsCheckNameAvailabilityRequestType | (string & {});
 }
 export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -46,7 +45,7 @@ export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountsCheckNameAvailabilityRequest>;
 
 /** Gets the reason that a Video Indexer account name could not be used. The Reason element is only returned if NameAvailable is false. */
-export type CheckNameAvailabilityResultReason = "AlreadyExists" | (string & {});
+export type CheckNameAvailabilityResultReason = "AlreadyExists";
 export const CheckNameAvailabilityResultReason = /*@__PURE__*/ S.String;
 
 /** The CheckNameAvailability operation response. */
@@ -112,8 +111,7 @@ export const OpenAiServicesForPutRequest = /*@__PURE__*/ S.suspend(() =>
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPutRequestInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const AccountPropertiesForPutRequestInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -129,8 +127,7 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -201,7 +198,9 @@ export interface AccountPropertiesForPutRequestInput {
   /** The openAi services details */
   openAiServices?: OpenAiServicesForPutRequest;
   /** Whether or not public network access is allowed for the account. */
-  publicNetworkAccess?: AccountPropertiesForPutRequestInputPublicNetworkAccess;
+  publicNetworkAccess?:
+    | AccountPropertiesForPutRequestInputPublicNetworkAccess
+    | (string & {});
   /** List of private endpoint connections associated with the account. */
   privateEndpointConnections?: AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList;
 }
@@ -226,8 +225,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -249,7 +247,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AccountsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
 export const AccountsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -304,8 +302,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -313,8 +310,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -355,8 +351,7 @@ export const AccountsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPutRequestPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const AccountPropertiesForPutRequestPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -386,8 +381,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -454,8 +448,7 @@ export type AccountPropertiesForPutRequestProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Provisioning"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const AccountPropertiesForPutRequestProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -862,8 +855,7 @@ export const OpenAiServicesForPatchRequest = /*@__PURE__*/ S.suspend(() =>
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPatchRequestInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const AccountPropertiesForPatchRequestInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -897,7 +889,9 @@ export interface AccountPropertiesForPatchRequestInput {
   /** The openAi services details */
   openAiServices?: OpenAiServicesForPatchRequest;
   /** Whether or not public network access is allowed for the account. */
-  publicNetworkAccess?: AccountPropertiesForPatchRequestInputPublicNetworkAccess;
+  publicNetworkAccess?:
+    | AccountPropertiesForPatchRequestInputPublicNetworkAccess
+    | (string & {});
   /** List of private endpoint connections associated with the account. */
   privateEndpointConnections?: AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList;
 }
@@ -919,7 +913,7 @@ export const AccountPropertiesForPatchRequestInput = /*@__PURE__*/ S.suspend(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AccountsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
 export const AccountsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -1028,18 +1022,11 @@ export const AccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsUpdateResponse>;
 
 /** The requested permission */
-export type GenerateAccessTokenRequestPermissionType =
-  | "Contributor"
-  | "Reader"
-  | (string & {});
+export type GenerateAccessTokenRequestPermissionType = "Contributor" | "Reader";
 export const GenerateAccessTokenRequestPermissionType = /*@__PURE__*/ S.String;
 
 /** The requested media type */
-export type GenerateAccessTokenRequestScope =
-  | "Video"
-  | "Account"
-  | "Project"
-  | (string & {});
+export type GenerateAccessTokenRequestScope = "Video" | "Account" | "Project";
 export const GenerateAccessTokenRequestScope = /*@__PURE__*/ S.String;
 
 export interface GenerateAccessTokenRequest {
@@ -1050,9 +1037,9 @@ export interface GenerateAccessTokenRequest {
   /** The name of the Azure Video Indexer account. */
   accountName: string;
   /** The requested permission */
-  permissionType: GenerateAccessTokenRequestPermissionType;
+  permissionType: GenerateAccessTokenRequestPermissionType | (string & {});
   /** The requested media type */
-  scope: GenerateAccessTokenRequestScope;
+  scope: GenerateAccessTokenRequestScope | (string & {});
   /** The video ID */
   videoId?: string;
   /** The project ID */
@@ -1093,8 +1080,7 @@ export const AccessToken = /*@__PURE__*/ S.suspend(() =>
 /** The requested permission */
 export type GenerateExtensionAccessTokenRequestPermissionType =
   | "Contributor"
-  | "Reader"
-  | (string & {});
+  | "Reader";
 export const GenerateExtensionAccessTokenRequestPermissionType =
   /*@__PURE__*/ S.String;
 
@@ -1102,8 +1088,7 @@ export const GenerateExtensionAccessTokenRequestPermissionType =
 export type GenerateExtensionAccessTokenRequestScope =
   | "Video"
   | "Account"
-  | "Project"
-  | (string & {});
+  | "Project";
 export const GenerateExtensionAccessTokenRequestScope = /*@__PURE__*/ S.String;
 
 export interface GenerateExtensionAccessTokenRequest {
@@ -1114,9 +1099,11 @@ export interface GenerateExtensionAccessTokenRequest {
   /** The name of the Azure Video Indexer account. */
   accountName: string;
   /** The requested permission */
-  permissionType: GenerateExtensionAccessTokenRequestPermissionType;
+  permissionType:
+    | GenerateExtensionAccessTokenRequestPermissionType
+    | (string & {});
   /** The requested media type */
-  scope: GenerateExtensionAccessTokenRequestScope;
+  scope: GenerateExtensionAccessTokenRequestScope | (string & {});
   /** The extension's resource ID */
   extensionId: string;
   /** The video ID */
@@ -1150,8 +1137,7 @@ export const GenerateExtensionAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export type GenerateExtensionRestrictedViewerAccessTokenRequestScope =
   | "Video"
   | "Account"
-  | "Project"
-  | (string & {});
+  | "Project";
 export const GenerateExtensionRestrictedViewerAccessTokenRequestScope =
   /*@__PURE__*/ S.String;
 
@@ -1163,7 +1149,9 @@ export interface GenerateExtensionRestrictedViewerAccessTokenRequest {
   /** The name of the Azure Video Indexer account. */
   accountName: string;
   /** The requested media type */
-  scope: GenerateExtensionRestrictedViewerAccessTokenRequestScope;
+  scope:
+    | GenerateExtensionRestrictedViewerAccessTokenRequestScope
+    | (string & {});
   /** The extension's resource ID */
   extensionId: string;
   /** The video ID */
@@ -1197,8 +1185,7 @@ export const GenerateExtensionRestrictedViewerAccessTokenRequest =
 export type GenerateRestrictedViewerAccessTokenRequestScope =
   | "Video"
   | "Account"
-  | "Project"
-  | (string & {});
+  | "Project";
 export const GenerateRestrictedViewerAccessTokenRequestScope =
   /*@__PURE__*/ S.String;
 
@@ -1210,7 +1197,7 @@ export interface GenerateRestrictedViewerAccessTokenRequest {
   /** The name of the Azure Video Indexer account. */
   accountName: string;
   /** The requested media type */
-  scope: GenerateRestrictedViewerAccessTokenRequestScope;
+  scope: GenerateRestrictedViewerAccessTokenRequestScope | (string & {});
   /** The video ID */
   videoId?: string;
   /** The project ID */

@@ -11,17 +11,13 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export type IngestionWarningsV2ListRequestOrderBy =
-  | "count"
-  | "last_seen"
-  | (string & {});
+export type IngestionWarningsV2ListRequestOrderBy = "count" | "last_seen";
 export const IngestionWarningsV2ListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export type IngestionWarningsV2ListRequestSeverity =
   | "info"
   | "warning"
-  | "error"
-  | (string & {});
+  | "error";
 export const IngestionWarningsV2ListRequestSeverity = /*@__PURE__*/ S.String;
 
 export interface IngestionWarningsV2ListRequest {
@@ -32,13 +28,13 @@ export interface IngestionWarningsV2ListRequest {
   /** Maximum number of warning types to return (default 100). */
   limit?: number;
   /** Sort order for warning types: 'count' (most frequent first, the default) or 'last_seen' (most recent first). * `count` - count * `last_seen` - last_seen */
-  order_by?: IngestionWarningsV2ListRequestOrderBy;
+  order_by?: IngestionWarningsV2ListRequestOrderBy | (string & {});
   /** Only return warnings whose type or details contain this substring (case-sensitive). Useful for finding warnings about a specific distinct ID, event or property. */
   q?: string;
   /** Maximum number of recent sample warnings to return per warning type (default 5). */
   samples?: number;
   /** Only return warnings with this severity. Warnings from producers that don't yet emit a severity have severity 'warning'. * `info` - info * `warning` - warning * `error` - error */
-  severity?: IngestionWarningsV2ListRequestSeverity;
+  severity?: IngestionWarningsV2ListRequestSeverity | (string & {});
   /** Start of the time range, as an ISO 8601 datetime (e.g. '2026-07-01T00:00:00Z') or a relative duration (e.g. '-24h', '-7d'). Defaults to 24 hours ago. Warnings are retained for 90 days. */
   since?: string;
   /** Only return warnings of this type (e.g. 'message_size_too_large', 'cannot_merge_already_identified'). */

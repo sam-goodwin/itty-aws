@@ -13,57 +13,55 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface BatchGetProjectsAppsEventsRequest {
   /** Required. The firebase application. Format: "projects/{project}/apps/{app_id}". */
@@ -74,36 +72,17 @@ export interface BatchGetProjectsAppsEventsRequest {
   readMask?: string;
 }
 export const BatchGetProjectsAppsEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    names: S.optional(StringList.pipe(T.Query())),
-    readMask: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+parent}/events:batchGet",
-      baseUrl: "https://firebasecrashlytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchGetProjectsAppsEventsRequest",
-}) as any as S.Schema<BatchGetProjectsAppsEventsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "names": S.optional(StringList.pipe(T.Query())),
+  "readMask": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/events:batchGet","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "BatchGetProjectsAppsEventsRequest" }) as any as S.Schema<BatchGetProjectsAppsEventsRequest>;
 
-export type IssueStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "OPEN"
-  | "CLOSED"
-  | "MUTED"
-  | (string & {});
+export type IssueStateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | "MUTED";
 export const IssueStateEnum = /*@__PURE__*/ S.String;
 
-export type IssueSignalsSignalEnum =
-  | "SIGNAL_UNSPECIFIED"
-  | "SIGNAL_EARLY"
-  | "SIGNAL_FRESH"
-  | "SIGNAL_REGRESSED"
-  | "SIGNAL_REPETITIVE"
-  | (string & {});
+export type IssueSignalsSignalEnum = "SIGNAL_UNSPECIFIED" | "SIGNAL_EARLY" | "SIGNAL_FRESH" | "SIGNAL_REGRESSED" | "SIGNAL_REPETITIVE";
 export const IssueSignalsSignalEnum = /*@__PURE__*/ S.String;
 
 /** Distinctive characteristics assigned by the Crashlytics analyzer. */
@@ -114,16 +93,14 @@ export interface IssueSignals {
   description?: string;
 }
 export const IssueSignals = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signal: S.optional(IssueSignalsSignalEnum),
-    description: S.optional(S.String),
-  }),
+S.Struct({
+  "signal": S.optional(IssueSignalsSignalEnum),
+  "description": S.optional(S.String),
+}),
 ).annotate({ identifier: "IssueSignals" }) as any as S.Schema<IssueSignals>;
 
 export type IssueSignalsList = ReadonlyArray<IssueSignals>;
-export const IssueSignalsList = /*@__PURE__*/ S.Array(
-  IssueSignals,
-) as any as S.Schema<IssueSignalsList>;
+export const IssueSignalsList = /*@__PURE__*/ S.Array(IssueSignals) as any as S.Schema<IssueSignalsList>;
 
 /** A variant is a subgroup of an issue where all events have very similar stack traces. Issues may contain one or more variants. */
 export interface IssueVariant {
@@ -135,24 +112,17 @@ export interface IssueVariant {
   sampleEvent?: string;
 }
 export const IssueVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    id: S.optional(S.String),
-    sampleEvent: S.optional(S.String),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "id": S.optional(S.String),
+  "sampleEvent": S.optional(S.String),
+}),
 ).annotate({ identifier: "IssueVariant" }) as any as S.Schema<IssueVariant>;
 
 export type IssueVariantList = ReadonlyArray<IssueVariant>;
-export const IssueVariantList = /*@__PURE__*/ S.Array(
-  IssueVariant,
-) as any as S.Schema<IssueVariantList>;
+export const IssueVariantList = /*@__PURE__*/ S.Array(IssueVariant) as any as S.Schema<IssueVariantList>;
 
-export type IssueErrorTypeEnum =
-  | "ERROR_TYPE_UNSPECIFIED"
-  | "FATAL"
-  | "NON_FATAL"
-  | "ANR"
-  | (string & {});
+export type IssueErrorTypeEnum = "ERROR_TYPE_UNSPECIFIED" | "FATAL" | "NON_FATAL" | "ANR";
 export const IssueErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** An issue describes a set of similar events that have been analyzed by Crashlytics and grouped together. All events within an issue will be of the same error_type: crash, non-fatal exception or ANR. All events within an issue will contain similar stack traces in their blamed thread. */
@@ -191,24 +161,24 @@ export interface Issue {
   firstSeenVersion?: string;
 }
 export const Issue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastSeenVersion: S.optional(S.String),
-    notesCount: S.optional(S.String),
-    name: S.optional(S.String),
-    state: S.optional(IssueStateEnum),
-    stateUpdateTime: S.optional(S.String),
-    sampleEvent: S.optional(S.String),
-    firstSeenTime: S.optional(S.String),
-    id: S.optional(S.String),
-    signals: S.optional(IssueSignalsList),
-    variants: S.optional(IssueVariantList),
-    lastSeenTime: S.optional(S.String),
-    uri: S.optional(S.String),
-    subtitle: S.optional(S.String),
-    errorType: S.optional(IssueErrorTypeEnum),
-    title: S.optional(S.String),
-    firstSeenVersion: S.optional(S.String),
-  }),
+S.Struct({
+  "lastSeenVersion": S.optional(S.String),
+  "notesCount": S.optional(S.String),
+  "name": S.optional(S.String),
+  "state": S.optional(IssueStateEnum),
+  "stateUpdateTime": S.optional(S.String),
+  "sampleEvent": S.optional(S.String),
+  "firstSeenTime": S.optional(S.String),
+  "id": S.optional(S.String),
+  "signals": S.optional(IssueSignalsList),
+  "variants": S.optional(IssueVariantList),
+  "lastSeenTime": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "subtitle": S.optional(S.String),
+  "errorType": S.optional(IssueErrorTypeEnum),
+  "title": S.optional(S.String),
+  "firstSeenVersion": S.optional(S.String),
+}),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
 /** Mobile device memory usage. */
@@ -219,10 +189,10 @@ export interface Memory {
   free?: string;
 }
 export const Memory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    used: S.optional(S.String),
-    free: S.optional(S.String),
-  }),
+S.Struct({
+  "used": S.optional(S.String),
+  "free": S.optional(S.String),
+}),
 ).annotate({ identifier: "Memory" }) as any as S.Schema<Memory>;
 
 /** Developer-provided end user identifiers. */
@@ -231,9 +201,9 @@ export interface User {
   id?: string;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 /** A frame in a stacktrace. */
@@ -258,35 +228,23 @@ export interface Frame {
   file?: string;
 }
 export const Frame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    library: S.optional(S.String),
-    address: S.optional(S.String),
-    line: S.optional(S.String),
-    column: S.optional(S.String),
-    offset: S.optional(S.String),
-    owner: S.optional(S.String),
-    symbol: S.optional(S.String),
-    blamed: S.optional(S.Boolean),
-    file: S.optional(S.String),
-  }),
+S.Struct({
+  "library": S.optional(S.String),
+  "address": S.optional(S.String),
+  "line": S.optional(S.String),
+  "column": S.optional(S.String),
+  "offset": S.optional(S.String),
+  "owner": S.optional(S.String),
+  "symbol": S.optional(S.String),
+  "blamed": S.optional(S.Boolean),
+  "file": S.optional(S.String),
+}),
 ).annotate({ identifier: "Frame" }) as any as S.Schema<Frame>;
 
 export type FrameList = ReadonlyArray<Frame>;
-export const FrameList = /*@__PURE__*/ S.Array(
-  Frame,
-) as any as S.Schema<FrameList>;
+export const FrameList = /*@__PURE__*/ S.Array(Frame) as any as S.Schema<FrameList>;
 
-export type ThreadThreadStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "THREAD_STATE_TERMINATED"
-  | "THREAD_STATE_RUNNABLE"
-  | "THREAD_STATE_TIMED_WAITING"
-  | "THREAD_STATE_BLOCKED"
-  | "THREAD_STATE_WAITING"
-  | "THREAD_STATE_NEW"
-  | "THREAD_STATE_NATIVE_RUNNABLE"
-  | "THREAD_STATE_NATIVE_WAITING"
-  | (string & {});
+export type ThreadThreadStateEnum = "STATE_UNSPECIFIED" | "THREAD_STATE_TERMINATED" | "THREAD_STATE_RUNNABLE" | "THREAD_STATE_TIMED_WAITING" | "THREAD_STATE_BLOCKED" | "THREAD_STATE_WAITING" | "THREAD_STATE_NEW" | "THREAD_STATE_NATIVE_RUNNABLE" | "THREAD_STATE_NATIVE_WAITING";
 export const ThreadThreadStateEnum = /*@__PURE__*/ S.String;
 
 /** An application thread. */
@@ -319,33 +277,28 @@ export interface Thread {
   crashed?: boolean;
 }
 export const Thread = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queue: S.optional(S.String),
-    blamed: S.optional(S.Boolean),
-    sysThreadId: S.optional(S.String),
-    frames: S.optional(FrameList),
-    title: S.optional(S.String),
-    threadState: S.optional(ThreadThreadStateEnum),
-    subtitle: S.optional(S.String),
-    crashAddress: S.optional(S.String),
-    name: S.optional(S.String),
-    signalCode: S.optional(S.String),
-    signal: S.optional(S.String),
-    threadId: S.optional(S.String),
-    crashed: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "queue": S.optional(S.String),
+  "blamed": S.optional(S.Boolean),
+  "sysThreadId": S.optional(S.String),
+  "frames": S.optional(FrameList),
+  "title": S.optional(S.String),
+  "threadState": S.optional(ThreadThreadStateEnum),
+  "subtitle": S.optional(S.String),
+  "crashAddress": S.optional(S.String),
+  "name": S.optional(S.String),
+  "signalCode": S.optional(S.String),
+  "signal": S.optional(S.String),
+  "threadId": S.optional(S.String),
+  "crashed": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Thread" }) as any as S.Schema<Thread>;
 
 export type ThreadList = ReadonlyArray<Thread>;
-export const ThreadList = /*@__PURE__*/ S.Array(
-  Thread,
-) as any as S.Schema<ThreadList>;
+export const ThreadList = /*@__PURE__*/ S.Array(Thread) as any as S.Schema<ThreadList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Mobile device operating system metadata. */
 export interface OperatingSystem {
@@ -363,26 +316,17 @@ export interface OperatingSystem {
   displayName?: string;
 }
 export const OperatingSystem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayVersion: S.optional(S.String),
-    os: S.optional(S.String),
-    type: S.optional(S.String),
-    deviceType: S.optional(S.String),
-    modificationState: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperatingSystem",
-}) as any as S.Schema<OperatingSystem>;
+S.Struct({
+  "displayVersion": S.optional(S.String),
+  "os": S.optional(S.String),
+  "type": S.optional(S.String),
+  "deviceType": S.optional(S.String),
+  "modificationState": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
+).annotate({ identifier: "OperatingSystem" }) as any as S.Schema<OperatingSystem>;
 
-export type PlayTrackTypeEnum =
-  | "TRACK_TYPE_UNSPECIFIED"
-  | "TRACK_TYPE_PROD"
-  | "TRACK_TYPE_INTERNAL"
-  | "TRACK_TYPE_OPEN_TESTING"
-  | "TRACK_TYPE_CLOSED_TESTING"
-  | "TRACK_TYPE_EARLY_ACCESS"
-  | (string & {});
+export type PlayTrackTypeEnum = "TRACK_TYPE_UNSPECIFIED" | "TRACK_TYPE_PROD" | "TRACK_TYPE_INTERNAL" | "TRACK_TYPE_OPEN_TESTING" | "TRACK_TYPE_CLOSED_TESTING" | "TRACK_TYPE_EARLY_ACCESS";
 export const PlayTrackTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes a release track in the Play Developer Console. */
@@ -393,16 +337,14 @@ export interface PlayTrack {
   type?: PlayTrackTypeEnum;
 }
 export const PlayTrack = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    type: S.optional(PlayTrackTypeEnum),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "type": S.optional(PlayTrackTypeEnum),
+}),
 ).annotate({ identifier: "PlayTrack" }) as any as S.Schema<PlayTrack>;
 
 export type PlayTrackList = ReadonlyArray<PlayTrack>;
-export const PlayTrackList = /*@__PURE__*/ S.Array(
-  PlayTrack,
-) as any as S.Schema<PlayTrackList>;
+export const PlayTrackList = /*@__PURE__*/ S.Array(PlayTrack) as any as S.Schema<PlayTrackList>;
 
 /** Application software version. */
 export interface Version {
@@ -416,12 +358,12 @@ export interface Version {
   displayName?: string;
 }
 export const Version = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildVersion: S.optional(S.String),
-    tracks: S.optional(PlayTrackList),
-    displayVersion: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "buildVersion": S.optional(S.String),
+  "tracks": S.optional(PlayTrackList),
+  "displayVersion": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
 /** A non-fatal error and its stacktrace, only from Apple apps. */
@@ -440,23 +382,18 @@ export interface Firebasecrashlytics_Error {
   blamed?: boolean;
 }
 export const Firebasecrashlytics_Error = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subtitle: S.optional(S.String),
-    frames: S.optional(FrameList),
-    title: S.optional(S.String),
-    code: S.optional(S.String),
-    queue: S.optional(S.String),
-    blamed: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "Firebasecrashlytics_Error",
-}) as any as S.Schema<Firebasecrashlytics_Error>;
+S.Struct({
+  "subtitle": S.optional(S.String),
+  "frames": S.optional(FrameList),
+  "title": S.optional(S.String),
+  "code": S.optional(S.String),
+  "queue": S.optional(S.String),
+  "blamed": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "Firebasecrashlytics_Error" }) as any as S.Schema<Firebasecrashlytics_Error>;
 
-export type Firebasecrashlytics_ErrorList =
-  ReadonlyArray<Firebasecrashlytics_Error>;
-export const Firebasecrashlytics_ErrorList = /*@__PURE__*/ S.Array(
-  Firebasecrashlytics_Error,
-) as any as S.Schema<Firebasecrashlytics_ErrorList>;
+export type Firebasecrashlytics_ErrorList = ReadonlyArray<Firebasecrashlytics_Error>;
+export const Firebasecrashlytics_ErrorList = /*@__PURE__*/ S.Array(Firebasecrashlytics_Error) as any as S.Schema<Firebasecrashlytics_ErrorList>;
 
 /** Web browser metadata. */
 export interface Browser {
@@ -468,11 +405,11 @@ export interface Browser {
   browser?: string;
 }
 export const Browser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayVersion: S.optional(S.String),
-    displayName: S.optional(S.String),
-    browser: S.optional(S.String),
-  }),
+S.Struct({
+  "displayVersion": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "browser": S.optional(S.String),
+}),
 ).annotate({ identifier: "Browser" }) as any as S.Schema<Browser>;
 
 /** Analytics events recorded during the session. */
@@ -485,17 +422,15 @@ export interface Breadcrumb {
   params?: StringMap;
 }
 export const Breadcrumb = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventTime: S.optional(S.String),
-    title: S.optional(S.String),
-    params: S.optional(StringMap),
-  }),
+S.Struct({
+  "eventTime": S.optional(S.String),
+  "title": S.optional(S.String),
+  "params": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Breadcrumb" }) as any as S.Schema<Breadcrumb>;
 
 export type BreadcrumbList = ReadonlyArray<Breadcrumb>;
-export const BreadcrumbList = /*@__PURE__*/ S.Array(
-  Breadcrumb,
-) as any as S.Schema<BreadcrumbList>;
+export const BreadcrumbList = /*@__PURE__*/ S.Array(Breadcrumb) as any as S.Schema<BreadcrumbList>;
 
 /** A Java or Javascript exception and its stacktrace. Only from Android or web apps. */
 export interface Exception {
@@ -515,30 +450,21 @@ export interface Exception {
   title?: string;
 }
 export const Exception = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exceptionMessage: S.optional(S.String),
-    frames: S.optional(FrameList),
-    nested: S.optional(S.Boolean),
-    type: S.optional(S.String),
-    subtitle: S.optional(S.String),
-    blamed: S.optional(S.Boolean),
-    title: S.optional(S.String),
-  }),
+S.Struct({
+  "exceptionMessage": S.optional(S.String),
+  "frames": S.optional(FrameList),
+  "nested": S.optional(S.Boolean),
+  "type": S.optional(S.String),
+  "subtitle": S.optional(S.String),
+  "blamed": S.optional(S.Boolean),
+  "title": S.optional(S.String),
+}),
 ).annotate({ identifier: "Exception" }) as any as S.Schema<Exception>;
 
 export type ExceptionList = ReadonlyArray<Exception>;
-export const ExceptionList = /*@__PURE__*/ S.Array(
-  Exception,
-) as any as S.Schema<ExceptionList>;
+export const ExceptionList = /*@__PURE__*/ S.Array(Exception) as any as S.Schema<ExceptionList>;
 
-export type DeviceFormFactorEnum =
-  | "FORM_FACTOR_UNSPECIFIED"
-  | "PHONE"
-  | "TABLET"
-  | "DESKTOP"
-  | "TV"
-  | "WATCH"
-  | (string & {});
+export type DeviceFormFactorEnum = "FORM_FACTOR_UNSPECIFIED" | "PHONE" | "TABLET" | "DESKTOP" | "TV" | "WATCH";
 export const DeviceFormFactorEnum = /*@__PURE__*/ S.String;
 
 /** Mobile device metadata. */
@@ -559,15 +485,15 @@ export interface Device {
   marketingName?: string;
 }
 export const Device = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    companyName: S.optional(S.String),
-    manufacturer: S.optional(S.String),
-    formFactor: S.optional(DeviceFormFactorEnum),
-    architecture: S.optional(S.String),
-    model: S.optional(S.String),
-    marketingName: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "companyName": S.optional(S.String),
+  "manufacturer": S.optional(S.String),
+  "formFactor": S.optional(DeviceFormFactorEnum),
+  "architecture": S.optional(S.String),
+  "model": S.optional(S.String),
+  "marketingName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
 /** Developer-provided log lines recorded during the session. */
@@ -578,10 +504,10 @@ export interface Log {
   message?: string;
 }
 export const Log = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logTime: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "logTime": S.optional(S.String),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Log" }) as any as S.Schema<Log>;
 
 export type LogList = ReadonlyArray<Log>;
@@ -595,10 +521,10 @@ export interface Storage {
   free?: string;
 }
 export const Storage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    used: S.optional(S.String),
-    free: S.optional(S.String),
-  }),
+S.Struct({
+  "used": S.optional(S.String),
+  "free": S.optional(S.String),
+}),
 ).annotate({ identifier: "Storage" }) as any as S.Schema<Storage>;
 
 /** The message describing a single Crashlytics event. Related to BigQuery export schema, which can be found at [Export Crashlytics data to BigQuery](https://firebase.google.com/docs/crashlytics/bigquery-export#dataset-schema-crashlytics) */
@@ -669,46 +595,44 @@ export interface Event {
   receivedTime?: string;
 }
 export const Event = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issue: S.optional(Issue),
-    appOrientation: S.optional(S.String),
-    memory: S.optional(Memory),
-    sessionId: S.optional(S.String),
-    buildStamp: S.optional(S.String),
-    user: S.optional(User),
-    processState: S.optional(S.String),
-    threads: S.optional(ThreadList),
-    customKeys: S.optional(StringMap),
-    operatingSystem: S.optional(OperatingSystem),
-    eventTime: S.optional(S.String),
-    version: S.optional(Version),
-    name: S.optional(S.String),
-    errors: S.optional(Firebasecrashlytics_ErrorList),
-    eventId: S.optional(S.String),
-    issueTitle: S.optional(S.String),
-    blameFrame: S.optional(Frame),
-    crashlyticsSdkVersion: S.optional(S.String),
-    browser: S.optional(Browser),
-    issueVariant: S.optional(IssueVariant),
-    breadcrumbs: S.optional(BreadcrumbList),
-    installationUuid: S.optional(S.String),
-    routePath: S.optional(S.String),
-    issueSubtitle: S.optional(S.String),
-    exceptions: S.optional(ExceptionList),
-    platform: S.optional(S.String),
-    bundleOrPackage: S.optional(S.String),
-    device: S.optional(Device),
-    logs: S.optional(LogList),
-    deviceOrientation: S.optional(S.String),
-    storage: S.optional(Storage),
-    receivedTime: S.optional(S.String),
-  }),
+S.Struct({
+  "issue": S.optional(Issue),
+  "appOrientation": S.optional(S.String),
+  "memory": S.optional(Memory),
+  "sessionId": S.optional(S.String),
+  "buildStamp": S.optional(S.String),
+  "user": S.optional(User),
+  "processState": S.optional(S.String),
+  "threads": S.optional(ThreadList),
+  "customKeys": S.optional(StringMap),
+  "operatingSystem": S.optional(OperatingSystem),
+  "eventTime": S.optional(S.String),
+  "version": S.optional(Version),
+  "name": S.optional(S.String),
+  "errors": S.optional(Firebasecrashlytics_ErrorList),
+  "eventId": S.optional(S.String),
+  "issueTitle": S.optional(S.String),
+  "blameFrame": S.optional(Frame),
+  "crashlyticsSdkVersion": S.optional(S.String),
+  "browser": S.optional(Browser),
+  "issueVariant": S.optional(IssueVariant),
+  "breadcrumbs": S.optional(BreadcrumbList),
+  "installationUuid": S.optional(S.String),
+  "routePath": S.optional(S.String),
+  "issueSubtitle": S.optional(S.String),
+  "exceptions": S.optional(ExceptionList),
+  "platform": S.optional(S.String),
+  "bundleOrPackage": S.optional(S.String),
+  "device": S.optional(Device),
+  "logs": S.optional(LogList),
+  "deviceOrientation": S.optional(S.String),
+  "storage": S.optional(Storage),
+  "receivedTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 export type EventList = ReadonlyArray<Event>;
-export const EventList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<EventList>;
+export const EventList = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventList>;
 
 /** Response message for the BatchGetEvents method. */
 export interface BatchGetEventsResponse {
@@ -716,12 +640,10 @@ export interface BatchGetEventsResponse {
   events?: EventList;
 }
 export const BatchGetEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    events: S.optional(EventList),
-  }),
-).annotate({
-  identifier: "BatchGetEventsResponse",
-}) as any as S.Schema<BatchGetEventsResponse>;
+S.Struct({
+  "events": S.optional(EventList),
+}),
+).annotate({ identifier: "BatchGetEventsResponse" }) as any as S.Schema<BatchGetEventsResponse>;
 
 /** Request message for the UpdateIssue method. */
 export interface UpdateIssueRequest {
@@ -731,18 +653,14 @@ export interface UpdateIssueRequest {
   updateMask?: string;
 }
 export const UpdateIssueRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issue: S.optional(Issue),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateIssueRequest",
-}) as any as S.Schema<UpdateIssueRequest>;
+S.Struct({
+  "issue": S.optional(Issue),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateIssueRequest" }) as any as S.Schema<UpdateIssueRequest>;
 
 export type UpdateIssueRequestList = ReadonlyArray<UpdateIssueRequest>;
-export const UpdateIssueRequestList = /*@__PURE__*/ S.Array(
-  UpdateIssueRequest,
-) as any as S.Schema<UpdateIssueRequestList>;
+export const UpdateIssueRequestList = /*@__PURE__*/ S.Array(UpdateIssueRequest) as any as S.Schema<UpdateIssueRequestList>;
 
 /** Request message for the BatchUpdateIssues method. */
 export interface BatchUpdateIssuesRequest {
@@ -752,13 +670,11 @@ export interface BatchUpdateIssuesRequest {
   updateMask?: string;
 }
 export const BatchUpdateIssuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(UpdateIssueRequestList),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchUpdateIssuesRequest",
-}) as any as S.Schema<BatchUpdateIssuesRequest>;
+S.Struct({
+  "requests": S.optional(UpdateIssueRequestList),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "BatchUpdateIssuesRequest" }) as any as S.Schema<BatchUpdateIssuesRequest>;
 
 export interface BatchUpdateProjectsAppsIssuesRequest {
   /** Required. The parent resource shared by all issues being updated. Format: projects/{project}/apps/{app}. If this is set, the parent field in the UpdateIssueRequest messages must either be empty or match this field. */
@@ -766,26 +682,15 @@ export interface BatchUpdateProjectsAppsIssuesRequest {
   /** Request body */
   body?: BatchUpdateIssuesRequest;
 }
-export const BatchUpdateProjectsAppsIssuesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateIssuesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/issues:batchUpdate",
-        baseUrl: "https://firebasecrashlytics.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "BatchUpdateProjectsAppsIssuesRequest",
-}) as any as S.Schema<BatchUpdateProjectsAppsIssuesRequest>;
+export const BatchUpdateProjectsAppsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdateIssuesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/issues:batchUpdate","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateProjectsAppsIssuesRequest" }) as any as S.Schema<BatchUpdateProjectsAppsIssuesRequest>;
 
 export type IssueList = ReadonlyArray<Issue>;
-export const IssueList = /*@__PURE__*/ S.Array(
-  Issue,
-) as any as S.Schema<IssueList>;
+export const IssueList = /*@__PURE__*/ S.Array(Issue) as any as S.Schema<IssueList>;
 
 /** Response message for the BatchUpdateIssues method. */
 export interface BatchUpdateIssuesResponse {
@@ -793,12 +698,10 @@ export interface BatchUpdateIssuesResponse {
   issues?: IssueList;
 }
 export const BatchUpdateIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issues: S.optional(IssueList),
-  }),
-).annotate({
-  identifier: "BatchUpdateIssuesResponse",
-}) as any as S.Schema<BatchUpdateIssuesResponse>;
+S.Struct({
+  "issues": S.optional(IssueList),
+}),
+).annotate({ identifier: "BatchUpdateIssuesResponse" }) as any as S.Schema<BatchUpdateIssuesResponse>;
 
 /** Developer notes for an issue. */
 export interface Note {
@@ -812,12 +715,12 @@ export interface Note {
   author?: string;
 }
 export const Note = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    body: S.optional(S.String),
-    createTime: S.optional(S.String),
-    author: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "body": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "author": S.optional(S.String),
+}),
 ).annotate({ identifier: "Note" }) as any as S.Schema<Note>;
 
 export interface CreateProjectsAppsIssuesNotesRequest {
@@ -826,40 +729,22 @@ export interface CreateProjectsAppsIssuesNotesRequest {
   /** Request body */
   body?: Note;
 }
-export const CreateProjectsAppsIssuesNotesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Note.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/notes",
-        baseUrl: "https://firebasecrashlytics.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsAppsIssuesNotesRequest",
-}) as any as S.Schema<CreateProjectsAppsIssuesNotesRequest>;
+export const CreateProjectsAppsIssuesNotesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Note.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/notes","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsAppsIssuesNotesRequest" }) as any as S.Schema<CreateProjectsAppsIssuesNotesRequest>;
 
 export interface DeleteCrashReportsProjectsAppsUsersRequest {
   /** Required. Resource name for user reports, in the format: projects/ PROJECT_IDENTIFIER/apps/APP_ID/users/USER_ID/crashReports - PROJECT_IDENTIFIER: The Firebase project's project number (recommended) or its project ID. Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). - APP_ID: The globally unique, Firebase-assigned identifier for the Firebase App. This is not your package name or bundle ID. Learn how to [find your app ID](https://firebase.google.com/support/faq/#find-app-id). - USER_ID: The user ID set using the Crashlytics SDK. Learn how to [set user identifiers](https://firebase.google.com/docs/crashlytics/customize-crash-reports#set-user-ids). */
   name: string;
 }
-export const DeleteCrashReportsProjectsAppsUsersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://firebasecrashlytics.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteCrashReportsProjectsAppsUsersRequest",
-  }) as any as S.Schema<DeleteCrashReportsProjectsAppsUsersRequest>;
+export const DeleteCrashReportsProjectsAppsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "DeleteCrashReportsProjectsAppsUsersRequest" }) as any as S.Schema<DeleteCrashReportsProjectsAppsUsersRequest>;
 
 /** Response message for the DeleteUserCrashReports method. All crash reports associated with the specified user will be deleted typically within 24 hours of receiving the crash report. */
 export interface DeleteUserCrashReportsResponse {
@@ -867,138 +752,65 @@ export interface DeleteUserCrashReportsResponse {
   targetCompleteTime?: string;
 }
 export const DeleteUserCrashReportsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetCompleteTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteUserCrashReportsResponse",
-}) as any as S.Schema<DeleteUserCrashReportsResponse>;
+S.Struct({
+  "targetCompleteTime": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteUserCrashReportsResponse" }) as any as S.Schema<DeleteUserCrashReportsResponse>;
 
 export interface DeleteProjectsAppsIssuesNotesRequest {
   /** Required. The name of the note to delete. Format: projects/{project}/apps/{app}/issues/{issue}/notes/{note}. */
   name: string;
 }
-export const DeleteProjectsAppsIssuesNotesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://firebasecrashlytics.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsAppsIssuesNotesRequest",
-}) as any as S.Schema<DeleteProjectsAppsIssuesNotesRequest>;
+export const DeleteProjectsAppsIssuesNotesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsAppsIssuesNotesRequest" }) as any as S.Schema<DeleteProjectsAppsIssuesNotesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface GetProjectsAppsIssuesRequest {
   /** Required. The name of the issue to retrieve. Format: "projects/{project}/apps/{app}/issues/{issue}". */
   name: string;
 }
 export const GetProjectsAppsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://firebasecrashlytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsAppsIssuesRequest",
-}) as any as S.Schema<GetProjectsAppsIssuesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsAppsIssuesRequest" }) as any as S.Schema<GetProjectsAppsIssuesRequest>;
 
-export type GetProjectsAppsReportsFilter_issue_statesEnum =
-  | "STATE_UNSPECIFIED"
-  | "OPEN"
-  | "CLOSED"
-  | "MUTED"
-  | (string & {});
-export const GetProjectsAppsReportsFilter_issue_statesEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsAppsReportsFilter_issue_statesEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | "MUTED";
+export const GetProjectsAppsReportsFilter_issue_statesEnum = /*@__PURE__*/ S.String;
 
-export type GetProjectsAppsReportsFilter_issue_statesEnumList =
-  ReadonlyArray<GetProjectsAppsReportsFilter_issue_statesEnum>;
-export const GetProjectsAppsReportsFilter_issue_statesEnumList =
-  /*@__PURE__*/ S.Array(
-    GetProjectsAppsReportsFilter_issue_statesEnum,
-  ) as any as S.Schema<GetProjectsAppsReportsFilter_issue_statesEnumList>;
+export type GetProjectsAppsReportsFilter_issue_statesEnumList = ReadonlyArray<GetProjectsAppsReportsFilter_issue_statesEnum | (string & {})>;
+export const GetProjectsAppsReportsFilter_issue_statesEnumList = /*@__PURE__*/ S.Array(GetProjectsAppsReportsFilter_issue_statesEnum) as any as S.Schema<GetProjectsAppsReportsFilter_issue_statesEnumList>;
 
-export type GetProjectsAppsReportsFilter_issue_errorTypesEnum =
-  | "ERROR_TYPE_UNSPECIFIED"
-  | "FATAL"
-  | "NON_FATAL"
-  | "ANR"
-  | (string & {});
-export const GetProjectsAppsReportsFilter_issue_errorTypesEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsAppsReportsFilter_issue_errorTypesEnum = "ERROR_TYPE_UNSPECIFIED" | "FATAL" | "NON_FATAL" | "ANR";
+export const GetProjectsAppsReportsFilter_issue_errorTypesEnum = /*@__PURE__*/ S.String;
 
-export type GetProjectsAppsReportsFilter_issue_errorTypesEnumList =
-  ReadonlyArray<GetProjectsAppsReportsFilter_issue_errorTypesEnum>;
-export const GetProjectsAppsReportsFilter_issue_errorTypesEnumList =
-  /*@__PURE__*/ S.Array(
-    GetProjectsAppsReportsFilter_issue_errorTypesEnum,
-  ) as any as S.Schema<GetProjectsAppsReportsFilter_issue_errorTypesEnumList>;
+export type GetProjectsAppsReportsFilter_issue_errorTypesEnumList = ReadonlyArray<GetProjectsAppsReportsFilter_issue_errorTypesEnum | (string & {})>;
+export const GetProjectsAppsReportsFilter_issue_errorTypesEnumList = /*@__PURE__*/ S.Array(GetProjectsAppsReportsFilter_issue_errorTypesEnum) as any as S.Schema<GetProjectsAppsReportsFilter_issue_errorTypesEnumList>;
 
-export type GetProjectsAppsReportsFilter_device_formFactorsEnum =
-  | "FORM_FACTOR_UNSPECIFIED"
-  | "PHONE"
-  | "TABLET"
-  | "DESKTOP"
-  | "TV"
-  | "WATCH"
-  | (string & {});
-export const GetProjectsAppsReportsFilter_device_formFactorsEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsAppsReportsFilter_device_formFactorsEnum = "FORM_FACTOR_UNSPECIFIED" | "PHONE" | "TABLET" | "DESKTOP" | "TV" | "WATCH";
+export const GetProjectsAppsReportsFilter_device_formFactorsEnum = /*@__PURE__*/ S.String;
 
-export type GetProjectsAppsReportsFilter_device_formFactorsEnumList =
-  ReadonlyArray<GetProjectsAppsReportsFilter_device_formFactorsEnum>;
-export const GetProjectsAppsReportsFilter_device_formFactorsEnumList =
-  /*@__PURE__*/ S.Array(
-    GetProjectsAppsReportsFilter_device_formFactorsEnum,
-  ) as any as S.Schema<GetProjectsAppsReportsFilter_device_formFactorsEnumList>;
+export type GetProjectsAppsReportsFilter_device_formFactorsEnumList = ReadonlyArray<GetProjectsAppsReportsFilter_device_formFactorsEnum | (string & {})>;
+export const GetProjectsAppsReportsFilter_device_formFactorsEnumList = /*@__PURE__*/ S.Array(GetProjectsAppsReportsFilter_device_formFactorsEnum) as any as S.Schema<GetProjectsAppsReportsFilter_device_formFactorsEnumList>;
 
-export type GetProjectsAppsReportsFilter_issue_signalsEnum =
-  | "SIGNAL_UNSPECIFIED"
-  | "SIGNAL_EARLY"
-  | "SIGNAL_FRESH"
-  | "SIGNAL_REGRESSED"
-  | "SIGNAL_REPETITIVE"
-  | (string & {});
-export const GetProjectsAppsReportsFilter_issue_signalsEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsAppsReportsFilter_issue_signalsEnum = "SIGNAL_UNSPECIFIED" | "SIGNAL_EARLY" | "SIGNAL_FRESH" | "SIGNAL_REGRESSED" | "SIGNAL_REPETITIVE";
+export const GetProjectsAppsReportsFilter_issue_signalsEnum = /*@__PURE__*/ S.String;
 
-export type GetProjectsAppsReportsFilter_issue_signalsEnumList =
-  ReadonlyArray<GetProjectsAppsReportsFilter_issue_signalsEnum>;
-export const GetProjectsAppsReportsFilter_issue_signalsEnumList =
-  /*@__PURE__*/ S.Array(
-    GetProjectsAppsReportsFilter_issue_signalsEnum,
-  ) as any as S.Schema<GetProjectsAppsReportsFilter_issue_signalsEnumList>;
+export type GetProjectsAppsReportsFilter_issue_signalsEnumList = ReadonlyArray<GetProjectsAppsReportsFilter_issue_signalsEnum | (string & {})>;
+export const GetProjectsAppsReportsFilter_issue_signalsEnumList = /*@__PURE__*/ S.Array(GetProjectsAppsReportsFilter_issue_signalsEnum) as any as S.Schema<GetProjectsAppsReportsFilter_issue_signalsEnumList>;
 
-export type GetProjectsAppsReportsFilter_issue_stateEnum =
-  | "STATE_UNSPECIFIED"
-  | "OPEN"
-  | "CLOSED"
-  | "MUTED"
-  | (string & {});
-export const GetProjectsAppsReportsFilter_issue_stateEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsAppsReportsFilter_issue_stateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | "MUTED";
+export const GetProjectsAppsReportsFilter_issue_stateEnum = /*@__PURE__*/ S.String;
 
-export type GetProjectsAppsReportsGranularityEnum =
-  | "TIME_GRANULARITY_UNSPECIFIED"
-  | "TIME_GRANULARITY_NONE"
-  | "TIME_GRANULARITY_HOUR"
-  | "TIME_GRANULARITY_DAY"
-  | (string & {});
+export type GetProjectsAppsReportsGranularityEnum = "TIME_GRANULARITY_UNSPECIFIED" | "TIME_GRANULARITY_NONE" | "TIME_GRANULARITY_HOUR" | "TIME_GRANULARITY_DAY";
 export const GetProjectsAppsReportsGranularityEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsAppsReportsRequest {
@@ -1029,60 +841,38 @@ export interface GetProjectsAppsReportsRequest {
   /** Optional. Only counts events in the given issue ID. This field matches [Issue.id]. */
   "filter.issue.id"?: string;
   /** Optional. Deprecated: Prefer `states` field. Only includes events for issues with the given issue state. Only available for `topIssues` reports. */
-  "filter.issue.state"?: GetProjectsAppsReportsFilter_issue_stateEnum;
+  "filter.issue.state"?: GetProjectsAppsReportsFilter_issue_stateEnum | (string & {});
   /** Only counts events in the given operating system and version. This string matches OperatingSystem.display_name. Format: "osName (osVersion)" e.g. "Android (11)". or just "osName" for all versions, e.g. simply "iPadOS". */
   "filter.operatingSystem.displayNames"?: StringList;
   /** Optional. The report response will contain one data point per time grain. If omitted, the report will contain a single data point for the complete interval. */
-  granularity?: GetProjectsAppsReportsGranularityEnum;
+  granularity?: GetProjectsAppsReportsGranularityEnum | (string & {});
   /** Required. The report name. Format: "projects/{project}/apps/{app_id}/reports/{report}". */
   name: string;
   /** Optional. A page token, received from a previous call. The page token is only valid for the exact same set of filters, which must also be sent in subsequent requests. This token is valid for 10 minutes after the first request. */
   pageToken?: string;
 }
 export const GetProjectsAppsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "filter.device.displayNames": S.optional(StringList.pipe(T.Query())),
-    "filter.issue.content": S.optional(S.String.pipe(T.Query())),
-    "filter.issue.states": S.optional(
-      GetProjectsAppsReportsFilter_issue_statesEnumList.pipe(T.Query()),
-    ),
-    "filter.issue.errorTypes": S.optional(
-      GetProjectsAppsReportsFilter_issue_errorTypesEnumList.pipe(T.Query()),
-    ),
-    "filter.interval.startTime": S.optional(S.String.pipe(T.Query())),
-    "filter.issue.variantId": S.optional(S.String.pipe(T.Query())),
-    "filter.browser.displayNames": S.optional(StringList.pipe(T.Query())),
-    "filter.version.displayNames": S.optional(StringList.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    "filter.interval.endTime": S.optional(S.String.pipe(T.Query())),
-    "filter.device.formFactors": S.optional(
-      GetProjectsAppsReportsFilter_device_formFactorsEnumList.pipe(T.Query()),
-    ),
-    "filter.issue.signals": S.optional(
-      GetProjectsAppsReportsFilter_issue_signalsEnumList.pipe(T.Query()),
-    ),
-    "filter.issue.id": S.optional(S.String.pipe(T.Query())),
-    "filter.issue.state": S.optional(
-      GetProjectsAppsReportsFilter_issue_stateEnum.pipe(T.Query()),
-    ),
-    "filter.operatingSystem.displayNames": S.optional(
-      StringList.pipe(T.Query()),
-    ),
-    granularity: S.optional(
-      GetProjectsAppsReportsGranularityEnum.pipe(T.Query()),
-    ),
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://firebasecrashlytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsAppsReportsRequest",
-}) as any as S.Schema<GetProjectsAppsReportsRequest>;
+S.Struct({
+  "filter.device.displayNames": S.optional(StringList.pipe(T.Query())),
+  "filter.issue.content": S.optional(S.String.pipe(T.Query())),
+  "filter.issue.states": S.optional(GetProjectsAppsReportsFilter_issue_statesEnumList.pipe(T.Query())),
+  "filter.issue.errorTypes": S.optional(GetProjectsAppsReportsFilter_issue_errorTypesEnumList.pipe(T.Query())),
+  "filter.interval.startTime": S.optional(S.String.pipe(T.Query())),
+  "filter.issue.variantId": S.optional(S.String.pipe(T.Query())),
+  "filter.browser.displayNames": S.optional(StringList.pipe(T.Query())),
+  "filter.version.displayNames": S.optional(StringList.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter.interval.endTime": S.optional(S.String.pipe(T.Query())),
+  "filter.device.formFactors": S.optional(GetProjectsAppsReportsFilter_device_formFactorsEnumList.pipe(T.Query())),
+  "filter.issue.signals": S.optional(GetProjectsAppsReportsFilter_issue_signalsEnumList.pipe(T.Query())),
+  "filter.issue.id": S.optional(S.String.pipe(T.Query())),
+  "filter.issue.state": S.optional(GetProjectsAppsReportsFilter_issue_stateEnum.pipe(T.Query())),
+  "filter.operatingSystem.displayNames": S.optional(StringList.pipe(T.Query())),
+  "granularity": S.optional(GetProjectsAppsReportsGranularityEnum.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsAppsReportsRequest" }) as any as S.Schema<GetProjectsAppsReportsRequest>;
 
 /** A set of computed metric values for a time interval */
 export interface IntervalMetrics {
@@ -1098,21 +888,17 @@ export interface IntervalMetrics {
   eventsCount?: string;
 }
 export const IntervalMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    impactedUsersCount: S.optional(S.String),
-    sessionsCount: S.optional(S.String),
-    endTime: S.optional(S.String),
-    eventsCount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IntervalMetrics",
-}) as any as S.Schema<IntervalMetrics>;
+S.Struct({
+  "startTime": S.optional(S.String),
+  "impactedUsersCount": S.optional(S.String),
+  "sessionsCount": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "eventsCount": S.optional(S.String),
+}),
+).annotate({ identifier: "IntervalMetrics" }) as any as S.Schema<IntervalMetrics>;
 
 export type IntervalMetricsList = ReadonlyArray<IntervalMetrics>;
-export const IntervalMetricsList = /*@__PURE__*/ S.Array(
-  IntervalMetrics,
-) as any as S.Schema<IntervalMetricsList>;
+export const IntervalMetricsList = /*@__PURE__*/ S.Array(IntervalMetrics) as any as S.Schema<IntervalMetricsList>;
 
 /** Represents a grouping for metrics specific to web applications. */
 export interface WebMetricsGroup {
@@ -1120,12 +906,10 @@ export interface WebMetricsGroup {
   id?: string;
 }
 export const WebMetricsGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebMetricsGroup",
-}) as any as S.Schema<WebMetricsGroup>;
+S.Struct({
+  "id": S.optional(S.String),
+}),
+).annotate({ identifier: "WebMetricsGroup" }) as any as S.Schema<WebMetricsGroup>;
 
 /** A group of results in an EventReport. In any report, the group_parent field is strictly the same type for all of the groups in any collection. */
 export interface ReportGroup {
@@ -1149,23 +933,21 @@ export interface ReportGroup {
   browser?: Browser;
 }
 export const ReportGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metrics: S.optional(IntervalMetricsList),
-    device: S.optional(Device),
-    webMetricsGroup: S.optional(WebMetricsGroup),
-    subgroups: S.optional(S.suspend(() => ReportGroupList)),
-    issue: S.optional(Issue),
-    variant: S.optional(IssueVariant),
-    version: S.optional(Version),
-    operatingSystem: S.optional(OperatingSystem),
-    browser: S.optional(Browser),
-  }),
+S.Struct({
+  "metrics": S.optional(IntervalMetricsList),
+  "device": S.optional(Device),
+  "webMetricsGroup": S.optional(WebMetricsGroup),
+  "subgroups": S.optional(S.suspend(() => ReportGroupList)),
+  "issue": S.optional(Issue),
+  "variant": S.optional(IssueVariant),
+  "version": S.optional(Version),
+  "operatingSystem": S.optional(OperatingSystem),
+  "browser": S.optional(Browser),
+}),
 ).annotate({ identifier: "ReportGroup" }) as any as S.Schema<ReportGroup>;
 
 export type ReportGroupList = ReadonlyArray<ReportGroup>;
-export const ReportGroupList = /*@__PURE__*/ S.Array(
-  ReportGroup,
-) as any as S.Schema<ReportGroupList>;
+export const ReportGroupList = /*@__PURE__*/ S.Array(ReportGroup) as any as S.Schema<ReportGroupList>;
 
 /** Response message for the GetReport method. A report consists of the results of a query over an application's events. The events may be filtered by various criteria defined in the filters proto. The result will consist of a number of paginated groups, of a type relevant to the report such as issues or device models. */
 export interface Report {
@@ -1183,91 +965,42 @@ export interface Report {
   usage?: string;
 }
 export const Report = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groups: S.optional(ReportGroupList),
-    nextPageToken: S.optional(S.String),
-    name: S.optional(S.String),
-    totalSize: S.optional(S.Number),
-    displayName: S.optional(S.String),
-    usage: S.optional(S.String),
-  }),
+S.Struct({
+  "groups": S.optional(ReportGroupList),
+  "nextPageToken": S.optional(S.String),
+  "name": S.optional(S.String),
+  "totalSize": S.optional(S.Number),
+  "displayName": S.optional(S.String),
+  "usage": S.optional(S.String),
+}),
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
-export type ListProjectsAppsEventsFilter_issue_stateEnum =
-  | "STATE_UNSPECIFIED"
-  | "OPEN"
-  | "CLOSED"
-  | "MUTED"
-  | (string & {});
-export const ListProjectsAppsEventsFilter_issue_stateEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsAppsEventsFilter_issue_stateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | "MUTED";
+export const ListProjectsAppsEventsFilter_issue_stateEnum = /*@__PURE__*/ S.String;
 
-export type ListProjectsAppsEventsFilter_device_formFactorsEnum =
-  | "FORM_FACTOR_UNSPECIFIED"
-  | "PHONE"
-  | "TABLET"
-  | "DESKTOP"
-  | "TV"
-  | "WATCH"
-  | (string & {});
-export const ListProjectsAppsEventsFilter_device_formFactorsEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsAppsEventsFilter_device_formFactorsEnum = "FORM_FACTOR_UNSPECIFIED" | "PHONE" | "TABLET" | "DESKTOP" | "TV" | "WATCH";
+export const ListProjectsAppsEventsFilter_device_formFactorsEnum = /*@__PURE__*/ S.String;
 
-export type ListProjectsAppsEventsFilter_device_formFactorsEnumList =
-  ReadonlyArray<ListProjectsAppsEventsFilter_device_formFactorsEnum>;
-export const ListProjectsAppsEventsFilter_device_formFactorsEnumList =
-  /*@__PURE__*/ S.Array(
-    ListProjectsAppsEventsFilter_device_formFactorsEnum,
-  ) as any as S.Schema<ListProjectsAppsEventsFilter_device_formFactorsEnumList>;
+export type ListProjectsAppsEventsFilter_device_formFactorsEnumList = ReadonlyArray<ListProjectsAppsEventsFilter_device_formFactorsEnum | (string & {})>;
+export const ListProjectsAppsEventsFilter_device_formFactorsEnumList = /*@__PURE__*/ S.Array(ListProjectsAppsEventsFilter_device_formFactorsEnum) as any as S.Schema<ListProjectsAppsEventsFilter_device_formFactorsEnumList>;
 
-export type ListProjectsAppsEventsFilter_issue_signalsEnum =
-  | "SIGNAL_UNSPECIFIED"
-  | "SIGNAL_EARLY"
-  | "SIGNAL_FRESH"
-  | "SIGNAL_REGRESSED"
-  | "SIGNAL_REPETITIVE"
-  | (string & {});
-export const ListProjectsAppsEventsFilter_issue_signalsEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsAppsEventsFilter_issue_signalsEnum = "SIGNAL_UNSPECIFIED" | "SIGNAL_EARLY" | "SIGNAL_FRESH" | "SIGNAL_REGRESSED" | "SIGNAL_REPETITIVE";
+export const ListProjectsAppsEventsFilter_issue_signalsEnum = /*@__PURE__*/ S.String;
 
-export type ListProjectsAppsEventsFilter_issue_signalsEnumList =
-  ReadonlyArray<ListProjectsAppsEventsFilter_issue_signalsEnum>;
-export const ListProjectsAppsEventsFilter_issue_signalsEnumList =
-  /*@__PURE__*/ S.Array(
-    ListProjectsAppsEventsFilter_issue_signalsEnum,
-  ) as any as S.Schema<ListProjectsAppsEventsFilter_issue_signalsEnumList>;
+export type ListProjectsAppsEventsFilter_issue_signalsEnumList = ReadonlyArray<ListProjectsAppsEventsFilter_issue_signalsEnum | (string & {})>;
+export const ListProjectsAppsEventsFilter_issue_signalsEnumList = /*@__PURE__*/ S.Array(ListProjectsAppsEventsFilter_issue_signalsEnum) as any as S.Schema<ListProjectsAppsEventsFilter_issue_signalsEnumList>;
 
-export type ListProjectsAppsEventsFilter_issue_statesEnum =
-  | "STATE_UNSPECIFIED"
-  | "OPEN"
-  | "CLOSED"
-  | "MUTED"
-  | (string & {});
-export const ListProjectsAppsEventsFilter_issue_statesEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsAppsEventsFilter_issue_statesEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | "MUTED";
+export const ListProjectsAppsEventsFilter_issue_statesEnum = /*@__PURE__*/ S.String;
 
-export type ListProjectsAppsEventsFilter_issue_statesEnumList =
-  ReadonlyArray<ListProjectsAppsEventsFilter_issue_statesEnum>;
-export const ListProjectsAppsEventsFilter_issue_statesEnumList =
-  /*@__PURE__*/ S.Array(
-    ListProjectsAppsEventsFilter_issue_statesEnum,
-  ) as any as S.Schema<ListProjectsAppsEventsFilter_issue_statesEnumList>;
+export type ListProjectsAppsEventsFilter_issue_statesEnumList = ReadonlyArray<ListProjectsAppsEventsFilter_issue_statesEnum | (string & {})>;
+export const ListProjectsAppsEventsFilter_issue_statesEnumList = /*@__PURE__*/ S.Array(ListProjectsAppsEventsFilter_issue_statesEnum) as any as S.Schema<ListProjectsAppsEventsFilter_issue_statesEnumList>;
 
-export type ListProjectsAppsEventsFilter_issue_errorTypesEnum =
-  | "ERROR_TYPE_UNSPECIFIED"
-  | "FATAL"
-  | "NON_FATAL"
-  | "ANR"
-  | (string & {});
-export const ListProjectsAppsEventsFilter_issue_errorTypesEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsAppsEventsFilter_issue_errorTypesEnum = "ERROR_TYPE_UNSPECIFIED" | "FATAL" | "NON_FATAL" | "ANR";
+export const ListProjectsAppsEventsFilter_issue_errorTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListProjectsAppsEventsFilter_issue_errorTypesEnumList =
-  ReadonlyArray<ListProjectsAppsEventsFilter_issue_errorTypesEnum>;
-export const ListProjectsAppsEventsFilter_issue_errorTypesEnumList =
-  /*@__PURE__*/ S.Array(
-    ListProjectsAppsEventsFilter_issue_errorTypesEnum,
-  ) as any as S.Schema<ListProjectsAppsEventsFilter_issue_errorTypesEnumList>;
+export type ListProjectsAppsEventsFilter_issue_errorTypesEnumList = ReadonlyArray<ListProjectsAppsEventsFilter_issue_errorTypesEnum | (string & {})>;
+export const ListProjectsAppsEventsFilter_issue_errorTypesEnumList = /*@__PURE__*/ S.Array(ListProjectsAppsEventsFilter_issue_errorTypesEnum) as any as S.Schema<ListProjectsAppsEventsFilter_issue_errorTypesEnumList>;
 
 export interface ListProjectsAppsEventsRequest {
   /** Optional. A page token, received from a previous calls. */
@@ -1275,7 +1008,7 @@ export interface ListProjectsAppsEventsRequest {
   /** Optional. Only counts events in the given issue ID. This field matches [Issue.id]. */
   "filter.issue.id"?: string;
   /** Optional. Deprecated: Prefer `states` field. Only includes events for issues with the given issue state. Only available for `topIssues` reports. */
-  "filter.issue.state"?: ListProjectsAppsEventsFilter_issue_stateEnum;
+  "filter.issue.state"?: ListProjectsAppsEventsFilter_issue_stateEnum | (string & {});
   /** Only counts events in the given operating system and version. This string matches OperatingSystem.display_name. Format: "osName (osVersion)" e.g. "Android (11)". or just "osName" for all versions, e.g. simply "iPadOS". */
   "filter.operatingSystem.displayNames"?: StringList;
   /** Only counts events from devices with the given form factor (e.g. phone or tablet). */
@@ -1308,47 +1041,27 @@ export interface ListProjectsAppsEventsRequest {
   parent: string;
 }
 export const ListProjectsAppsEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    "filter.issue.id": S.optional(S.String.pipe(T.Query())),
-    "filter.issue.state": S.optional(
-      ListProjectsAppsEventsFilter_issue_stateEnum.pipe(T.Query()),
-    ),
-    "filter.operatingSystem.displayNames": S.optional(
-      StringList.pipe(T.Query()),
-    ),
-    "filter.device.formFactors": S.optional(
-      ListProjectsAppsEventsFilter_device_formFactorsEnumList.pipe(T.Query()),
-    ),
-    "filter.issue.signals": S.optional(
-      ListProjectsAppsEventsFilter_issue_signalsEnumList.pipe(T.Query()),
-    ),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    "filter.version.displayNames": S.optional(StringList.pipe(T.Query())),
-    "filter.interval.endTime": S.optional(S.String.pipe(T.Query())),
-    "filter.interval.startTime": S.optional(S.String.pipe(T.Query())),
-    "filter.issue.variantId": S.optional(S.String.pipe(T.Query())),
-    "filter.browser.displayNames": S.optional(StringList.pipe(T.Query())),
-    "filter.issue.states": S.optional(
-      ListProjectsAppsEventsFilter_issue_statesEnumList.pipe(T.Query()),
-    ),
-    "filter.issue.errorTypes": S.optional(
-      ListProjectsAppsEventsFilter_issue_errorTypesEnumList.pipe(T.Query()),
-    ),
-    readMask: S.optional(S.String.pipe(T.Query())),
-    "filter.issue.content": S.optional(S.String.pipe(T.Query())),
-    "filter.device.displayNames": S.optional(StringList.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+parent}/events",
-      baseUrl: "https://firebasecrashlytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsAppsEventsRequest",
-}) as any as S.Schema<ListProjectsAppsEventsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter.issue.id": S.optional(S.String.pipe(T.Query())),
+  "filter.issue.state": S.optional(ListProjectsAppsEventsFilter_issue_stateEnum.pipe(T.Query())),
+  "filter.operatingSystem.displayNames": S.optional(StringList.pipe(T.Query())),
+  "filter.device.formFactors": S.optional(ListProjectsAppsEventsFilter_device_formFactorsEnumList.pipe(T.Query())),
+  "filter.issue.signals": S.optional(ListProjectsAppsEventsFilter_issue_signalsEnumList.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter.version.displayNames": S.optional(StringList.pipe(T.Query())),
+  "filter.interval.endTime": S.optional(S.String.pipe(T.Query())),
+  "filter.interval.startTime": S.optional(S.String.pipe(T.Query())),
+  "filter.issue.variantId": S.optional(S.String.pipe(T.Query())),
+  "filter.browser.displayNames": S.optional(StringList.pipe(T.Query())),
+  "filter.issue.states": S.optional(ListProjectsAppsEventsFilter_issue_statesEnumList.pipe(T.Query())),
+  "filter.issue.errorTypes": S.optional(ListProjectsAppsEventsFilter_issue_errorTypesEnumList.pipe(T.Query())),
+  "readMask": S.optional(S.String.pipe(T.Query())),
+  "filter.issue.content": S.optional(S.String.pipe(T.Query())),
+  "filter.device.displayNames": S.optional(StringList.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/events","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsAppsEventsRequest" }) as any as S.Schema<ListProjectsAppsEventsRequest>;
 
 /** Response message for the ListEvents method. */
 export interface ListEventsResponse {
@@ -1358,13 +1071,11 @@ export interface ListEventsResponse {
   nextPageToken?: string;
 }
 export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    events: S.optional(EventList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEventsResponse",
-}) as any as S.Schema<ListEventsResponse>;
+S.Struct({
+  "events": S.optional(EventList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListEventsResponse" }) as any as S.Schema<ListEventsResponse>;
 
 export interface ListProjectsAppsIssuesNotesRequest {
   /** Optional. The maximum number of notes per page. If omitted, defaults to 10. */
@@ -1375,25 +1086,15 @@ export interface ListProjectsAppsIssuesNotesRequest {
   pageToken?: string;
 }
 export const ListProjectsAppsIssuesNotesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+parent}/notes",
-      baseUrl: "https://firebasecrashlytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsAppsIssuesNotesRequest",
-}) as any as S.Schema<ListProjectsAppsIssuesNotesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/notes","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsAppsIssuesNotesRequest" }) as any as S.Schema<ListProjectsAppsIssuesNotesRequest>;
 
 export type NoteList = ReadonlyArray<Note>;
-export const NoteList = /*@__PURE__*/ S.Array(
-  Note,
-) as any as S.Schema<NoteList>;
+export const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
 
 /** Response message for the ListNotes method. */
 export interface ListNotesResponse {
@@ -1403,36 +1104,24 @@ export interface ListNotesResponse {
   nextPageToken?: string;
 }
 export const ListNotesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notes: S.optional(NoteList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListNotesResponse",
-}) as any as S.Schema<ListNotesResponse>;
+S.Struct({
+  "notes": S.optional(NoteList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListNotesResponse" }) as any as S.Schema<ListNotesResponse>;
 
 export interface ListProjectsAppsReportsRequest {
   /** Required. The firebase application. Format: "projects/{project}/apps/{app_id}". */
   parent: string;
 }
 export const ListProjectsAppsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+parent}/reports",
-      baseUrl: "https://firebasecrashlytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsAppsReportsRequest",
-}) as any as S.Schema<ListProjectsAppsReportsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/reports","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsAppsReportsRequest" }) as any as S.Schema<ListProjectsAppsReportsRequest>;
 
 export type ReportList = ReadonlyArray<Report>;
-export const ReportList = /*@__PURE__*/ S.Array(
-  Report,
-) as any as S.Schema<ReportList>;
+export const ReportList = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportList>;
 
 /** Response method for the ListReports method. The response will always include all of the available reports. */
 export interface ListReportsResponse {
@@ -1440,12 +1129,10 @@ export interface ListReportsResponse {
   reports?: ReportList;
 }
 export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reports: S.optional(ReportList),
-  }),
-).annotate({
-  identifier: "ListReportsResponse",
-}) as any as S.Schema<ListReportsResponse>;
+S.Struct({
+  "reports": S.optional(ReportList),
+}),
+).annotate({ identifier: "ListReportsResponse" }) as any as S.Schema<ListReportsResponse>;
 
 export interface PatchProjectsAppsIssuesRequest {
   /** Required. Output only. Immutable. Identifier. The name of the issue resource. Format: "projects/{project}/apps/{app}/issues/{issue}". */
@@ -1456,20 +1143,12 @@ export interface PatchProjectsAppsIssuesRequest {
   body?: Issue;
 }
 export const PatchProjectsAppsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Issue.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://firebasecrashlytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsAppsIssuesRequest",
-}) as any as S.Schema<PatchProjectsAppsIssuesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Issue.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/{+name}","baseUrl":"https://firebasecrashlytics.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsAppsIssuesRequest" }) as any as S.Schema<PatchProjectsAppsIssuesRequest>;
 
 export type BatchGetProjectsAppsEventsError = NotFound | Forbidden | GcpOpError;
 /** Fetch a batch of up to 100 events by name. */
@@ -1486,12 +1165,7 @@ export const batchGetProjectsAppsEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateProjectsAppsIssuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateProjectsAppsIssuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Change the state of a group of issues. This method is not atomic, so partial failures can occur. In the event of a partial failure, the request will fail and you will need to call `GetIssue` to see which issues were not updated. */
 export const batchUpdateProjectsAppsIssues: API.OperationMethod<
   BatchUpdateProjectsAppsIssuesRequest,
@@ -1506,12 +1180,7 @@ export const batchUpdateProjectsAppsIssues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsAppsIssuesNotesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsAppsIssuesNotesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a new note for an issue. */
 export const createProjectsAppsIssuesNotes: API.OperationMethod<
   CreateProjectsAppsIssuesNotesRequest,
@@ -1526,12 +1195,7 @@ export const createProjectsAppsIssuesNotes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCrashReportsProjectsAppsUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteCrashReportsProjectsAppsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enqueues a request to permanently remove crash reports associated with the specified user. All reports belonging to the specified user will be deleted typically within 24 hours of receiving the crash report. */
 export const deleteCrashReportsProjectsAppsUsers: API.OperationMethod<
   DeleteCrashReportsProjectsAppsUsersRequest,
@@ -1546,12 +1210,7 @@ export const deleteCrashReportsProjectsAppsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsAppsIssuesNotesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsAppsIssuesNotesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete a note by its name. */
 export const deleteProjectsAppsIssuesNotes: API.OperationMethod<
   DeleteProjectsAppsIssuesNotesRequest,
@@ -1594,10 +1253,7 @@ export const getProjectsAppsReports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsAppsEventsError = NotFound | Forbidden | GcpOpError;
@@ -1613,16 +1269,10 @@ export const listProjectsAppsEvents: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsAppsIssuesNotesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsAppsIssuesNotesError = NotFound | Forbidden | GcpOpError;
 /** List all notes for a certain issue, sorted in descending order by timestamp. */
 export const listProjectsAppsIssuesNotes: API.PaginatedOperationMethod<
   ListProjectsAppsIssuesNotesRequest,
@@ -1635,10 +1285,7 @@ export const listProjectsAppsIssuesNotes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsAppsReportsError = NotFound | Forbidden | GcpOpError;
@@ -1656,12 +1303,7 @@ export const listProjectsAppsReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsAppsIssuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsAppsIssuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Change the state of an issue. */
 export const patchProjectsAppsIssues: API.OperationMethod<
   PatchProjectsAppsIssuesRequest,
@@ -1675,3 +1317,4 @@ export const patchProjectsAppsIssues: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

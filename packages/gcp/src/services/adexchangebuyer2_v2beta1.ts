@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request to accept a proposal. */
@@ -66,12 +66,10 @@ export interface AcceptProposalRequest {
   proposalRevision?: string;
 }
 export const AcceptProposalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proposalRevision: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AcceptProposalRequest",
-}) as any as S.Schema<AcceptProposalRequest>;
+S.Struct({
+  "proposalRevision": S.optional(S.String),
+}),
+).annotate({ identifier: "AcceptProposalRequest" }) as any as S.Schema<AcceptProposalRequest>;
 
 export interface AcceptAccountsProposalsRequest {
   /** Account ID of the buyer. */
@@ -82,20 +80,12 @@ export interface AcceptAccountsProposalsRequest {
   body?: AcceptProposalRequest;
 }
 export const AcceptAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    proposalId: S.String.pipe(T.Label()),
-    body: S.optional(AcceptProposalRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:accept",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AcceptAccountsProposalsRequest",
-}) as any as S.Schema<AcceptAccountsProposalsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "proposalId": S.String.pipe(T.Label()),
+  "body": S.optional(AcceptProposalRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/proposals/{proposalId}:accept","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "AcceptAccountsProposalsRequest" }) as any as S.Schema<AcceptAccountsProposalsRequest>;
 
 /** Represents a buyer of inventory. Each buyer is identified by a unique Authorized Buyers account ID. */
 export interface Buyer {
@@ -103,16 +93,12 @@ export interface Buyer {
   accountId?: string;
 }
 export const Buyer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-  }),
+S.Struct({
+  "accountId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Buyer" }) as any as S.Schema<Buyer>;
 
-export type NoteCreatorRoleEnum =
-  | "BUYER_SELLER_ROLE_UNSPECIFIED"
-  | "BUYER"
-  | "SELLER"
-  | (string & {});
+export type NoteCreatorRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
 export const NoteCreatorRoleEnum = /*@__PURE__*/ S.String;
 
 /** A proposal may be associated to several notes. */
@@ -129,25 +115,19 @@ export interface Note {
   createTime?: string;
 }
 export const Note = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proposalRevision: S.optional(S.String),
-    creatorRole: S.optional(NoteCreatorRoleEnum),
-    note: S.optional(S.String),
-    noteId: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "proposalRevision": S.optional(S.String),
+  "creatorRole": S.optional(NoteCreatorRoleEnum),
+  "note": S.optional(S.String),
+  "noteId": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Note" }) as any as S.Schema<Note>;
 
 export type NoteList = ReadonlyArray<Note>;
-export const NoteList = /*@__PURE__*/ S.Array(
-  Note,
-) as any as S.Schema<NoteList>;
+export const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
 
-export type ProposalLastUpdaterOrCommentorRoleEnum =
-  | "BUYER_SELLER_ROLE_UNSPECIFIED"
-  | "BUYER"
-  | "SELLER"
-  | (string & {});
+export type ProposalLastUpdaterOrCommentorRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
 export const ProposalLastUpdaterOrCommentorRoleEnum = /*@__PURE__*/ S.String;
 
 /** Buyers are allowed to store certain types of private data in a proposal/deal. */
@@ -156,9 +136,9 @@ export interface PrivateData {
   referenceId?: string;
 }
 export const PrivateData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceId: S.optional(S.String),
-  }),
+S.Struct({
+  "referenceId": S.optional(S.String),
+}),
 ).annotate({ identifier: "PrivateData" }) as any as S.Schema<PrivateData>;
 
 /** Represents a seller of inventory. Each seller is identified by a unique Ad Manager account ID. */
@@ -169,10 +149,10 @@ export interface Seller {
   accountId?: string;
 }
 export const Seller = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subAccountId: S.optional(S.String),
-    accountId: S.optional(S.String),
-  }),
+S.Struct({
+  "subAccountId": S.optional(S.String),
+  "accountId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Seller" }) as any as S.Schema<Seller>;
 
 /** Contains information on how a buyer or seller can be reached. */
@@ -183,24 +163,16 @@ export interface ContactInformation {
   name?: string;
 }
 export const ContactInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContactInformation",
-}) as any as S.Schema<ContactInformation>;
+S.Struct({
+  "email": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "ContactInformation" }) as any as S.Schema<ContactInformation>;
 
 export type ContactInformationList = ReadonlyArray<ContactInformation>;
-export const ContactInformationList = /*@__PURE__*/ S.Array(
-  ContactInformation,
-) as any as S.Schema<ContactInformationList>;
+export const ContactInformationList = /*@__PURE__*/ S.Array(ContactInformation) as any as S.Schema<ContactInformationList>;
 
-export type DealTermsBrandingTypeEnum =
-  | "BRANDING_TYPE_UNSPECIFIED"
-  | "BRANDED"
-  | "SEMI_TRANSPARENT"
-  | (string & {});
+export type DealTermsBrandingTypeEnum = "BRANDING_TYPE_UNSPECIFIED" | "BRANDED" | "SEMI_TRANSPARENT";
 export const DealTermsBrandingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an amount of money with its currency type. */
@@ -213,18 +185,14 @@ export interface Money {
   nanos?: number;
 }
 export const Money = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    units: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-    nanos: S.optional(S.Number),
-  }),
+S.Struct({
+  "units": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+  "nanos": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
-export type PricePricingTypeEnum =
-  | "PRICING_TYPE_UNSPECIFIED"
-  | "COST_PER_MILLE"
-  | "COST_PER_DAY"
-  | (string & {});
+export type PricePricingTypeEnum = "PRICING_TYPE_UNSPECIFIED" | "COST_PER_MILLE" | "COST_PER_DAY";
 export const PricePricingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a price and a pricing type for a product / deal. */
@@ -235,24 +203,17 @@ export interface Price {
   pricingType?: PricePricingTypeEnum;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(Money),
-    pricingType: S.optional(PricePricingTypeEnum),
-  }),
+S.Struct({
+  "amount": S.optional(Money),
+  "pricingType": S.optional(PricePricingTypeEnum),
+}),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
-export type GuaranteedFixedPriceTermsReservationTypeEnum =
-  | "RESERVATION_TYPE_UNSPECIFIED"
-  | "STANDARD"
-  | "SPONSORSHIP"
-  | (string & {});
-export const GuaranteedFixedPriceTermsReservationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GuaranteedFixedPriceTermsReservationTypeEnum = "RESERVATION_TYPE_UNSPECIFIED" | "STANDARD" | "SPONSORSHIP";
+export const GuaranteedFixedPriceTermsReservationTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in a product can become 0 or 1 deals. To check if there is a PricePerBuyer for a particular buyer or buyer/advertiser pair, we look for the most specific matching rule - we first look for a rule matching the buyer and advertiser, next a rule with the buyer but an empty advertiser list, and otherwise look for a matching rule where no buyer is set. */
 export interface PricePerBuyer {
@@ -264,17 +225,15 @@ export interface PricePerBuyer {
   advertiserIds?: StringList;
 }
 export const PricePerBuyer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    price: S.optional(Price),
-    buyer: S.optional(Buyer),
-    advertiserIds: S.optional(StringList),
-  }),
+S.Struct({
+  "price": S.optional(Price),
+  "buyer": S.optional(Buyer),
+  "advertiserIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "PricePerBuyer" }) as any as S.Schema<PricePerBuyer>;
 
 export type PricePerBuyerList = ReadonlyArray<PricePerBuyer>;
-export const PricePerBuyerList = /*@__PURE__*/ S.Array(
-  PricePerBuyer,
-) as any as S.Schema<PricePerBuyerList>;
+export const PricePerBuyerList = /*@__PURE__*/ S.Array(PricePerBuyer) as any as S.Schema<PricePerBuyerList>;
 
 /** Terms for Programmatic Guaranteed Deals. */
 export interface GuaranteedFixedPriceTerms {
@@ -294,18 +253,16 @@ export interface GuaranteedFixedPriceTerms {
   minimumDailyLooks?: string;
 }
 export const GuaranteedFixedPriceTerms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guaranteedImpressions: S.optional(S.String),
-    percentShareOfVoice: S.optional(S.String),
-    reservationType: S.optional(GuaranteedFixedPriceTermsReservationTypeEnum),
-    fixedPrices: S.optional(PricePerBuyerList),
-    impressionCap: S.optional(S.String),
-    guaranteedLooks: S.optional(S.String),
-    minimumDailyLooks: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GuaranteedFixedPriceTerms",
-}) as any as S.Schema<GuaranteedFixedPriceTerms>;
+S.Struct({
+  "guaranteedImpressions": S.optional(S.String),
+  "percentShareOfVoice": S.optional(S.String),
+  "reservationType": S.optional(GuaranteedFixedPriceTermsReservationTypeEnum),
+  "fixedPrices": S.optional(PricePerBuyerList),
+  "impressionCap": S.optional(S.String),
+  "guaranteedLooks": S.optional(S.String),
+  "minimumDailyLooks": S.optional(S.String),
+}),
+).annotate({ identifier: "GuaranteedFixedPriceTerms" }) as any as S.Schema<GuaranteedFixedPriceTerms>;
 
 /** Terms for Preferred Deals. */
 export interface NonGuaranteedFixedPriceTerms {
@@ -313,12 +270,10 @@ export interface NonGuaranteedFixedPriceTerms {
   fixedPrices?: PricePerBuyerList;
 }
 export const NonGuaranteedFixedPriceTerms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixedPrices: S.optional(PricePerBuyerList),
-  }),
-).annotate({
-  identifier: "NonGuaranteedFixedPriceTerms",
-}) as any as S.Schema<NonGuaranteedFixedPriceTerms>;
+S.Struct({
+  "fixedPrices": S.optional(PricePerBuyerList),
+}),
+).annotate({ identifier: "NonGuaranteedFixedPriceTerms" }) as any as S.Schema<NonGuaranteedFixedPriceTerms>;
 
 /** Terms for Private Auctions. Note that Private Auctions can be created only by the seller, but they can be returned in a get or list request. */
 export interface NonGuaranteedAuctionTerms {
@@ -328,13 +283,11 @@ export interface NonGuaranteedAuctionTerms {
   reservePricesPerBuyer?: PricePerBuyerList;
 }
 export const NonGuaranteedAuctionTerms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoOptimizePrivateAuction: S.optional(S.Boolean),
-    reservePricesPerBuyer: S.optional(PricePerBuyerList),
-  }),
-).annotate({
-  identifier: "NonGuaranteedAuctionTerms",
-}) as any as S.Schema<NonGuaranteedAuctionTerms>;
+S.Struct({
+  "autoOptimizePrivateAuction": S.optional(S.Boolean),
+  "reservePricesPerBuyer": S.optional(PricePerBuyerList),
+}),
+).annotate({ identifier: "NonGuaranteedAuctionTerms" }) as any as S.Schema<NonGuaranteedAuctionTerms>;
 
 /** The deal terms specify the details of a Product/deal. They specify things like price per buyer, the type of pricing model (for example, fixed price, auction) and expected impressions from the publisher. */
 export interface DealTerms {
@@ -356,41 +309,25 @@ export interface DealTerms {
   estimatedImpressionsPerDay?: string;
 }
 export const DealTerms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sellerTimeZone: S.optional(S.String),
-    brandingType: S.optional(DealTermsBrandingTypeEnum),
-    estimatedGrossSpend: S.optional(Price),
-    guaranteedFixedPriceTerms: S.optional(GuaranteedFixedPriceTerms),
-    nonGuaranteedFixedPriceTerms: S.optional(NonGuaranteedFixedPriceTerms),
-    nonGuaranteedAuctionTerms: S.optional(NonGuaranteedAuctionTerms),
-    description: S.optional(S.String),
-    estimatedImpressionsPerDay: S.optional(S.String),
-  }),
+S.Struct({
+  "sellerTimeZone": S.optional(S.String),
+  "brandingType": S.optional(DealTermsBrandingTypeEnum),
+  "estimatedGrossSpend": S.optional(Price),
+  "guaranteedFixedPriceTerms": S.optional(GuaranteedFixedPriceTerms),
+  "nonGuaranteedFixedPriceTerms": S.optional(NonGuaranteedFixedPriceTerms),
+  "nonGuaranteedAuctionTerms": S.optional(NonGuaranteedAuctionTerms),
+  "description": S.optional(S.String),
+  "estimatedImpressionsPerDay": S.optional(S.String),
+}),
 ).annotate({ identifier: "DealTerms" }) as any as S.Schema<DealTerms>;
 
-export type DealSyndicationProductEnum =
-  | "SYNDICATION_PRODUCT_UNSPECIFIED"
-  | "CONTENT"
-  | "MOBILE"
-  | "VIDEO"
-  | "GAMES"
-  | (string & {});
+export type DealSyndicationProductEnum = "SYNDICATION_PRODUCT_UNSPECIFIED" | "CONTENT" | "MOBILE" | "VIDEO" | "GAMES";
 export const DealSyndicationProductEnum = /*@__PURE__*/ S.String;
 
-export type CreativeRestrictionsCreativeFormatEnum =
-  | "CREATIVE_FORMAT_UNSPECIFIED"
-  | "DISPLAY"
-  | "VIDEO"
-  | (string & {});
+export type CreativeRestrictionsCreativeFormatEnum = "CREATIVE_FORMAT_UNSPECIFIED" | "DISPLAY" | "VIDEO";
 export const CreativeRestrictionsCreativeFormatEnum = /*@__PURE__*/ S.String;
 
-export type AdSizeSizeTypeEnum =
-  | "SIZE_TYPE_UNSPECIFIED"
-  | "PIXEL"
-  | "INTERSTITIAL"
-  | "NATIVE"
-  | "FLUID"
-  | (string & {});
+export type AdSizeSizeTypeEnum = "SIZE_TYPE_UNSPECIFIED" | "PIXEL" | "INTERSTITIAL" | "NATIVE" | "FLUID";
 export const AdSizeSizeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents size of a single ad slot, or a creative. */
@@ -403,17 +340,15 @@ export interface AdSize {
   height?: string;
 }
 export const AdSize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sizeType: S.optional(AdSizeSizeTypeEnum),
-    width: S.optional(S.String),
-    height: S.optional(S.String),
-  }),
+S.Struct({
+  "sizeType": S.optional(AdSizeSizeTypeEnum),
+  "width": S.optional(S.String),
+  "height": S.optional(S.String),
+}),
 ).annotate({ identifier: "AdSize" }) as any as S.Schema<AdSize>;
 
 export type AdSizeList = ReadonlyArray<AdSize>;
-export const AdSizeList = /*@__PURE__*/ S.Array(
-  AdSize,
-) as any as S.Schema<AdSizeList>;
+export const AdSizeList = /*@__PURE__*/ S.Array(AdSize) as any as S.Schema<AdSizeList>;
 
 /** Represents information for a creative that is associated with a Programmatic Guaranteed/Preferred Deal in Ad Manager. */
 export interface CreativeSpecification {
@@ -423,25 +358,16 @@ export interface CreativeSpecification {
   creativeCompanionSizes?: AdSizeList;
 }
 export const CreativeSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeSize: S.optional(AdSize),
-    creativeCompanionSizes: S.optional(AdSizeList),
-  }),
-).annotate({
-  identifier: "CreativeSpecification",
-}) as any as S.Schema<CreativeSpecification>;
+S.Struct({
+  "creativeSize": S.optional(AdSize),
+  "creativeCompanionSizes": S.optional(AdSizeList),
+}),
+).annotate({ identifier: "CreativeSpecification" }) as any as S.Schema<CreativeSpecification>;
 
 export type CreativeSpecificationList = ReadonlyArray<CreativeSpecification>;
-export const CreativeSpecificationList = /*@__PURE__*/ S.Array(
-  CreativeSpecification,
-) as any as S.Schema<CreativeSpecificationList>;
+export const CreativeSpecificationList = /*@__PURE__*/ S.Array(CreativeSpecification) as any as S.Schema<CreativeSpecificationList>;
 
-export type CreativeRestrictionsSkippableAdTypeEnum =
-  | "SKIPPABLE_AD_TYPE_UNSPECIFIED"
-  | "SKIPPABLE"
-  | "INSTREAM_SELECT"
-  | "NOT_SKIPPABLE"
-  | (string & {});
+export type CreativeRestrictionsSkippableAdTypeEnum = "SKIPPABLE_AD_TYPE_UNSPECIFIED" | "SKIPPABLE" | "INSTREAM_SELECT" | "NOT_SKIPPABLE";
 export const CreativeRestrictionsSkippableAdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents creative restrictions associated to Programmatic Guaranteed/ Preferred Deal in Ad Manager. This doesn't apply to Private Auction and AdX Preferred Deals. */
@@ -453,34 +379,17 @@ export interface CreativeRestrictions {
   skippableAdType?: CreativeRestrictionsSkippableAdTypeEnum;
 }
 export const CreativeRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeFormat: S.optional(CreativeRestrictionsCreativeFormatEnum),
-    creativeSpecifications: S.optional(CreativeSpecificationList),
-    skippableAdType: S.optional(CreativeRestrictionsSkippableAdTypeEnum),
-  }),
-).annotate({
-  identifier: "CreativeRestrictions",
-}) as any as S.Schema<CreativeRestrictions>;
+S.Struct({
+  "creativeFormat": S.optional(CreativeRestrictionsCreativeFormatEnum),
+  "creativeSpecifications": S.optional(CreativeSpecificationList),
+  "skippableAdType": S.optional(CreativeRestrictionsSkippableAdTypeEnum),
+}),
+).annotate({ identifier: "CreativeRestrictions" }) as any as S.Schema<CreativeRestrictions>;
 
-export type DeliveryControlDeliveryRateTypeEnum =
-  | "DELIVERY_RATE_TYPE_UNSPECIFIED"
-  | "EVENLY"
-  | "FRONT_LOADED"
-  | "AS_FAST_AS_POSSIBLE"
-  | (string & {});
+export type DeliveryControlDeliveryRateTypeEnum = "DELIVERY_RATE_TYPE_UNSPECIFIED" | "EVENLY" | "FRONT_LOADED" | "AS_FAST_AS_POSSIBLE";
 export const DeliveryControlDeliveryRateTypeEnum = /*@__PURE__*/ S.String;
 
-export type FrequencyCapTimeUnitTypeEnum =
-  | "TIME_UNIT_TYPE_UNSPECIFIED"
-  | "MINUTE"
-  | "HOUR"
-  | "DAY"
-  | "WEEK"
-  | "MONTH"
-  | "LIFETIME"
-  | "POD"
-  | "STREAM"
-  | (string & {});
+export type FrequencyCapTimeUnitTypeEnum = "TIME_UNIT_TYPE_UNSPECIFIED" | "MINUTE" | "HOUR" | "DAY" | "WEEK" | "MONTH" | "LIFETIME" | "POD" | "STREAM";
 export const FrequencyCapTimeUnitTypeEnum = /*@__PURE__*/ S.String;
 
 /** Frequency cap. */
@@ -493,23 +402,17 @@ export interface FrequencyCap {
   timeUnitType?: FrequencyCapTimeUnitTypeEnum;
 }
 export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxImpressions: S.optional(S.Number),
-    numTimeUnits: S.optional(S.Number),
-    timeUnitType: S.optional(FrequencyCapTimeUnitTypeEnum),
-  }),
+S.Struct({
+  "maxImpressions": S.optional(S.Number),
+  "numTimeUnits": S.optional(S.Number),
+  "timeUnitType": S.optional(FrequencyCapTimeUnitTypeEnum),
+}),
 ).annotate({ identifier: "FrequencyCap" }) as any as S.Schema<FrequencyCap>;
 
 export type FrequencyCapList = ReadonlyArray<FrequencyCap>;
-export const FrequencyCapList = /*@__PURE__*/ S.Array(
-  FrequencyCap,
-) as any as S.Schema<FrequencyCapList>;
+export const FrequencyCapList = /*@__PURE__*/ S.Array(FrequencyCap) as any as S.Schema<FrequencyCapList>;
 
-export type DeliveryControlCreativeBlockingLevelEnum =
-  | "CREATIVE_BLOCKING_LEVEL_UNSPECIFIED"
-  | "PUBLISHER_BLOCKING_RULES"
-  | "ADX_POLICY_BLOCKING_ONLY"
-  | (string & {});
+export type DeliveryControlCreativeBlockingLevelEnum = "CREATIVE_BLOCKING_LEVEL_UNSPECIFIED" | "PUBLISHER_BLOCKING_RULES" | "ADX_POLICY_BLOCKING_ONLY";
 export const DeliveryControlCreativeBlockingLevelEnum = /*@__PURE__*/ S.String;
 
 /** Message contains details about how the deals will be paced. */
@@ -522,34 +425,20 @@ export interface DeliveryControl {
   creativeBlockingLevel?: DeliveryControlCreativeBlockingLevelEnum;
 }
 export const DeliveryControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryRateType: S.optional(DeliveryControlDeliveryRateTypeEnum),
-    frequencyCaps: S.optional(FrequencyCapList),
-    creativeBlockingLevel: S.optional(DeliveryControlCreativeBlockingLevelEnum),
-  }),
-).annotate({
-  identifier: "DeliveryControl",
-}) as any as S.Schema<DeliveryControl>;
+S.Struct({
+  "deliveryRateType": S.optional(DeliveryControlDeliveryRateTypeEnum),
+  "frequencyCaps": S.optional(FrequencyCapList),
+  "creativeBlockingLevel": S.optional(DeliveryControlCreativeBlockingLevelEnum),
+}),
+).annotate({ identifier: "DeliveryControl" }) as any as S.Schema<DeliveryControl>;
 
-export type DealCreativeSafeFrameCompatibilityEnum =
-  | "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED"
-  | "COMPATIBLE"
-  | "INCOMPATIBLE"
-  | (string & {});
+export type DealCreativeSafeFrameCompatibilityEnum = "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED" | "COMPATIBLE" | "INCOMPATIBLE";
 export const DealCreativeSafeFrameCompatibilityEnum = /*@__PURE__*/ S.String;
 
-export type DealCreativePreApprovalPolicyEnum =
-  | "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED"
-  | "SELLER_PRE_APPROVAL_REQUIRED"
-  | "SELLER_PRE_APPROVAL_NOT_REQUIRED"
-  | (string & {});
+export type DealCreativePreApprovalPolicyEnum = "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED" | "SELLER_PRE_APPROVAL_REQUIRED" | "SELLER_PRE_APPROVAL_NOT_REQUIRED";
 export const DealCreativePreApprovalPolicyEnum = /*@__PURE__*/ S.String;
 
-export type DealPauseStatusFirstPausedByEnum =
-  | "BUYER_SELLER_ROLE_UNSPECIFIED"
-  | "BUYER"
-  | "SELLER"
-  | (string & {});
+export type DealPauseStatusFirstPausedByEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
 export const DealPauseStatusFirstPausedByEnum = /*@__PURE__*/ S.String;
 
 /** Tracks which parties (if any) have paused a deal. The deal is considered paused if either hasBuyerPaused or hasSellPaused is true. */
@@ -566,16 +455,14 @@ export interface DealPauseStatus {
   hasSellerPaused?: boolean;
 }
 export const DealPauseStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstPausedBy: S.optional(DealPauseStatusFirstPausedByEnum),
-    buyerPauseReason: S.optional(S.String),
-    sellerPauseReason: S.optional(S.String),
-    hasBuyerPaused: S.optional(S.Boolean),
-    hasSellerPaused: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DealPauseStatus",
-}) as any as S.Schema<DealPauseStatus>;
+S.Struct({
+  "firstPausedBy": S.optional(DealPauseStatusFirstPausedByEnum),
+  "buyerPauseReason": S.optional(S.String),
+  "sellerPauseReason": S.optional(S.String),
+  "hasBuyerPaused": S.optional(S.Boolean),
+  "hasSellerPaused": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DealPauseStatus" }) as any as S.Schema<DealPauseStatus>;
 
 /** Message captures metadata about the serving status of a deal. */
 export interface DealServingMetadata {
@@ -583,12 +470,10 @@ export interface DealServingMetadata {
   dealPauseStatus?: DealPauseStatus;
 }
 export const DealServingMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dealPauseStatus: S.optional(DealPauseStatus),
-  }),
-).annotate({
-  identifier: "DealServingMetadata",
-}) as any as S.Schema<DealServingMetadata>;
+S.Struct({
+  "dealPauseStatus": S.optional(DealPauseStatus),
+}),
+).annotate({ identifier: "DealServingMetadata" }) as any as S.Schema<DealServingMetadata>;
 
 /** Generic targeting used for targeting dimensions that contains a list of included and excluded numeric IDs. */
 export interface CriteriaTargeting {
@@ -598,13 +483,11 @@ export interface CriteriaTargeting {
   excludedCriteriaIds?: StringList;
 }
 export const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetedCriteriaIds: S.optional(StringList),
-    excludedCriteriaIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CriteriaTargeting",
-}) as any as S.Schema<CriteriaTargeting>;
+S.Struct({
+  "targetedCriteriaIds": S.optional(StringList),
+  "excludedCriteriaIds": S.optional(StringList),
+}),
+).annotate({ identifier: "CriteriaTargeting" }) as any as S.Schema<CriteriaTargeting>;
 
 /** Represents targeting information for operating systems. */
 export interface OperatingSystemTargeting {
@@ -614,13 +497,11 @@ export interface OperatingSystemTargeting {
   operatingSystemCriteria?: CriteriaTargeting;
 }
 export const OperatingSystemTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatingSystemVersionCriteria: S.optional(CriteriaTargeting),
-    operatingSystemCriteria: S.optional(CriteriaTargeting),
-  }),
-).annotate({
-  identifier: "OperatingSystemTargeting",
-}) as any as S.Schema<OperatingSystemTargeting>;
+S.Struct({
+  "operatingSystemVersionCriteria": S.optional(CriteriaTargeting),
+  "operatingSystemCriteria": S.optional(CriteriaTargeting),
+}),
+).annotate({ identifier: "OperatingSystemTargeting" }) as any as S.Schema<OperatingSystemTargeting>;
 
 /** Represents targeting about various types of technology. */
 export interface TechnologyTargeting {
@@ -632,14 +513,12 @@ export interface TechnologyTargeting {
   deviceCapabilityTargeting?: CriteriaTargeting;
 }
 export const TechnologyTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatingSystemTargeting: S.optional(OperatingSystemTargeting),
-    deviceCategoryTargeting: S.optional(CriteriaTargeting),
-    deviceCapabilityTargeting: S.optional(CriteriaTargeting),
-  }),
-).annotate({
-  identifier: "TechnologyTargeting",
-}) as any as S.Schema<TechnologyTargeting>;
+S.Struct({
+  "operatingSystemTargeting": S.optional(OperatingSystemTargeting),
+  "deviceCategoryTargeting": S.optional(CriteriaTargeting),
+  "deviceCapabilityTargeting": S.optional(CriteriaTargeting),
+}),
+).annotate({ identifier: "TechnologyTargeting" }) as any as S.Schema<TechnologyTargeting>;
 
 /** Represents a list of targeted and excluded URLs (for example, google.com). For Private Auction and AdX Preferred Deals, URLs are either included or excluded. For Programmatic Guaranteed and Preferred Deals, this doesn't apply. */
 export interface UrlTargeting {
@@ -649,10 +528,10 @@ export interface UrlTargeting {
   excludedUrls?: StringList;
 }
 export const UrlTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetedUrls: S.optional(StringList),
-    excludedUrls: S.optional(StringList),
-  }),
+S.Struct({
+  "targetedUrls": S.optional(StringList),
+  "excludedUrls": S.optional(StringList),
+}),
 ).annotate({ identifier: "UrlTargeting" }) as any as S.Schema<UrlTargeting>;
 
 /** Represents a list of targeted and excluded mobile application IDs that publishers own. Mobile application IDs are from App Store and Google Play Store. Android App ID, for example, com.google.android.apps.maps, can be found in Google Play Store URL. iOS App ID (which is a number) can be found at the end of iTunes store URL. First party mobile applications is either included or excluded. */
@@ -662,15 +541,12 @@ export interface FirstPartyMobileApplicationTargeting {
   /** A list of application IDs to be excluded. */
   excludedAppIds?: StringList;
 }
-export const FirstPartyMobileApplicationTargeting = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetedAppIds: S.optional(StringList),
-      excludedAppIds: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "FirstPartyMobileApplicationTargeting",
-}) as any as S.Schema<FirstPartyMobileApplicationTargeting>;
+export const FirstPartyMobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "targetedAppIds": S.optional(StringList),
+  "excludedAppIds": S.optional(StringList),
+}),
+).annotate({ identifier: "FirstPartyMobileApplicationTargeting" }) as any as S.Schema<FirstPartyMobileApplicationTargeting>;
 
 /** Mobile application targeting settings. */
 export interface MobileApplicationTargeting {
@@ -678,12 +554,10 @@ export interface MobileApplicationTargeting {
   firstPartyTargeting?: FirstPartyMobileApplicationTargeting;
 }
 export const MobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstPartyTargeting: S.optional(FirstPartyMobileApplicationTargeting),
-  }),
-).annotate({
-  identifier: "MobileApplicationTargeting",
-}) as any as S.Schema<MobileApplicationTargeting>;
+S.Struct({
+  "firstPartyTargeting": S.optional(FirstPartyMobileApplicationTargeting),
+}),
+).annotate({ identifier: "MobileApplicationTargeting" }) as any as S.Schema<MobileApplicationTargeting>;
 
 /** Represents targeting about where the ads can appear, for example, certain sites or mobile applications. Different placement targeting types will be logically OR'ed. */
 export interface PlacementTargeting {
@@ -693,45 +567,23 @@ export interface PlacementTargeting {
   mobileApplicationTargeting?: MobileApplicationTargeting;
 }
 export const PlacementTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    urlTargeting: S.optional(UrlTargeting),
-    mobileApplicationTargeting: S.optional(MobileApplicationTargeting),
-  }),
-).annotate({
-  identifier: "PlacementTargeting",
-}) as any as S.Schema<PlacementTargeting>;
+S.Struct({
+  "urlTargeting": S.optional(UrlTargeting),
+  "mobileApplicationTargeting": S.optional(MobileApplicationTargeting),
+}),
+).annotate({ identifier: "PlacementTargeting" }) as any as S.Schema<PlacementTargeting>;
 
-export type VideoTargetingTargetedPositionTypesItemEnum =
-  | "POSITION_TYPE_UNSPECIFIED"
-  | "PREROLL"
-  | "MIDROLL"
-  | "POSTROLL"
-  | (string & {});
-export const VideoTargetingTargetedPositionTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type VideoTargetingTargetedPositionTypesItemEnum = "POSITION_TYPE_UNSPECIFIED" | "PREROLL" | "MIDROLL" | "POSTROLL";
+export const VideoTargetingTargetedPositionTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type VideoTargetingTargetedPositionTypesItemEnumList =
-  ReadonlyArray<VideoTargetingTargetedPositionTypesItemEnum>;
-export const VideoTargetingTargetedPositionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    VideoTargetingTargetedPositionTypesItemEnum,
-  ) as any as S.Schema<VideoTargetingTargetedPositionTypesItemEnumList>;
+export type VideoTargetingTargetedPositionTypesItemEnumList = ReadonlyArray<VideoTargetingTargetedPositionTypesItemEnum>;
+export const VideoTargetingTargetedPositionTypesItemEnumList = /*@__PURE__*/ S.Array(VideoTargetingTargetedPositionTypesItemEnum) as any as S.Schema<VideoTargetingTargetedPositionTypesItemEnumList>;
 
-export type VideoTargetingExcludedPositionTypesItemEnum =
-  | "POSITION_TYPE_UNSPECIFIED"
-  | "PREROLL"
-  | "MIDROLL"
-  | "POSTROLL"
-  | (string & {});
-export const VideoTargetingExcludedPositionTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type VideoTargetingExcludedPositionTypesItemEnum = "POSITION_TYPE_UNSPECIFIED" | "PREROLL" | "MIDROLL" | "POSTROLL";
+export const VideoTargetingExcludedPositionTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type VideoTargetingExcludedPositionTypesItemEnumList =
-  ReadonlyArray<VideoTargetingExcludedPositionTypesItemEnum>;
-export const VideoTargetingExcludedPositionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    VideoTargetingExcludedPositionTypesItemEnum,
-  ) as any as S.Schema<VideoTargetingExcludedPositionTypesItemEnumList>;
+export type VideoTargetingExcludedPositionTypesItemEnumList = ReadonlyArray<VideoTargetingExcludedPositionTypesItemEnum>;
+export const VideoTargetingExcludedPositionTypesItemEnumList = /*@__PURE__*/ S.Array(VideoTargetingExcludedPositionTypesItemEnum) as any as S.Schema<VideoTargetingExcludedPositionTypesItemEnumList>;
 
 /** Represents targeting information about video. */
 export interface VideoTargeting {
@@ -741,14 +593,10 @@ export interface VideoTargeting {
   excludedPositionTypes?: VideoTargetingExcludedPositionTypesItemEnumList;
 }
 export const VideoTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetedPositionTypes: S.optional(
-      VideoTargetingTargetedPositionTypesItemEnumList,
-    ),
-    excludedPositionTypes: S.optional(
-      VideoTargetingExcludedPositionTypesItemEnumList,
-    ),
-  }),
+S.Struct({
+  "targetedPositionTypes": S.optional(VideoTargetingTargetedPositionTypesItemEnumList),
+  "excludedPositionTypes": S.optional(VideoTargetingExcludedPositionTypesItemEnumList),
+}),
 ).annotate({ identifier: "VideoTargeting" }) as any as S.Schema<VideoTargeting>;
 
 /** Represents the size of an ad unit that can be targeted on an ad request. It only applies to Private Auction, AdX Preferred Deals and Auction Packages. This targeting does not apply to Programmatic Guaranteed and Preferred Deals in Ad Manager. */
@@ -759,13 +607,11 @@ export interface InventorySizeTargeting {
   targetedInventorySizes?: AdSizeList;
 }
 export const InventorySizeTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    excludedInventorySizes: S.optional(AdSizeList),
-    targetedInventorySizes: S.optional(AdSizeList),
-  }),
-).annotate({
-  identifier: "InventorySizeTargeting",
-}) as any as S.Schema<InventorySizeTargeting>;
+S.Struct({
+  "excludedInventorySizes": S.optional(AdSizeList),
+  "targetedInventorySizes": S.optional(AdSizeList),
+}),
+).annotate({ identifier: "InventorySizeTargeting" }) as any as S.Schema<InventorySizeTargeting>;
 
 /** Targeting represents different criteria that can be used by advertisers to target ad inventory. For example, they can choose to target ad requests only if the user is in the US. Multiple types of targeting are always applied as a logical AND, unless noted otherwise. */
 export interface MarketplaceTargeting {
@@ -781,31 +627,19 @@ export interface MarketplaceTargeting {
   inventorySizeTargeting?: InventorySizeTargeting;
 }
 export const MarketplaceTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geoTargeting: S.optional(CriteriaTargeting),
-    technologyTargeting: S.optional(TechnologyTargeting),
-    placementTargeting: S.optional(PlacementTargeting),
-    videoTargeting: S.optional(VideoTargeting),
-    inventorySizeTargeting: S.optional(InventorySizeTargeting),
-  }),
-).annotate({
-  identifier: "MarketplaceTargeting",
-}) as any as S.Schema<MarketplaceTargeting>;
+S.Struct({
+  "geoTargeting": S.optional(CriteriaTargeting),
+  "technologyTargeting": S.optional(TechnologyTargeting),
+  "placementTargeting": S.optional(PlacementTargeting),
+  "videoTargeting": S.optional(VideoTargeting),
+  "inventorySizeTargeting": S.optional(InventorySizeTargeting),
+}),
+).annotate({ identifier: "MarketplaceTargeting" }) as any as S.Schema<MarketplaceTargeting>;
 
-export type DealProgrammaticCreativeSourceEnum =
-  | "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED"
-  | "ADVERTISER"
-  | "PUBLISHER"
-  | (string & {});
+export type DealProgrammaticCreativeSourceEnum = "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED" | "ADVERTISER" | "PUBLISHER";
 export const DealProgrammaticCreativeSourceEnum = /*@__PURE__*/ S.String;
 
-export type CreativeSizeCreativeSizeTypeEnum =
-  | "CREATIVE_SIZE_TYPE_UNSPECIFIED"
-  | "REGULAR"
-  | "INTERSTITIAL"
-  | "VIDEO"
-  | "NATIVE"
-  | (string & {});
+export type CreativeSizeCreativeSizeTypeEnum = "CREATIVE_SIZE_TYPE_UNSPECIFIED" | "REGULAR" | "INTERSTITIAL" | "VIDEO" | "NATIVE";
 export const CreativeSizeCreativeSizeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message depicting the size of the creative. The units of width and height depend on the type of the targeting. */
@@ -816,44 +650,25 @@ export interface Size {
   height?: number;
 }
 export const Size = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(S.Number),
-    height: S.optional(S.Number),
-  }),
+S.Struct({
+  "width": S.optional(S.Number),
+  "height": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
 
 export type SizeList = ReadonlyArray<Size>;
-export const SizeList = /*@__PURE__*/ S.Array(
-  Size,
-) as any as S.Schema<SizeList>;
+export const SizeList = /*@__PURE__*/ S.Array(Size) as any as S.Schema<SizeList>;
 
-export type CreativeSizeAllowedFormatsItemEnum =
-  | "UNKNOWN"
-  | "AUDIO"
-  | (string & {});
+export type CreativeSizeAllowedFormatsItemEnum = "UNKNOWN" | "AUDIO";
 export const CreativeSizeAllowedFormatsItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeSizeAllowedFormatsItemEnumList =
-  ReadonlyArray<CreativeSizeAllowedFormatsItemEnum>;
-export const CreativeSizeAllowedFormatsItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeSizeAllowedFormatsItemEnum,
-) as any as S.Schema<CreativeSizeAllowedFormatsItemEnumList>;
+export type CreativeSizeAllowedFormatsItemEnumList = ReadonlyArray<CreativeSizeAllowedFormatsItemEnum>;
+export const CreativeSizeAllowedFormatsItemEnumList = /*@__PURE__*/ S.Array(CreativeSizeAllowedFormatsItemEnum) as any as S.Schema<CreativeSizeAllowedFormatsItemEnumList>;
 
-export type CreativeSizeSkippableAdTypeEnum =
-  | "SKIPPABLE_AD_TYPE_UNSPECIFIED"
-  | "GENERIC"
-  | "INSTREAM_SELECT"
-  | "NOT_SKIPPABLE"
-  | (string & {});
+export type CreativeSizeSkippableAdTypeEnum = "SKIPPABLE_AD_TYPE_UNSPECIFIED" | "GENERIC" | "INSTREAM_SELECT" | "NOT_SKIPPABLE";
 export const CreativeSizeSkippableAdTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeSizeNativeTemplateEnum =
-  | "UNKNOWN_NATIVE_TEMPLATE"
-  | "NATIVE_CONTENT_AD"
-  | "NATIVE_APP_INSTALL_AD"
-  | "NATIVE_VIDEO_CONTENT_AD"
-  | "NATIVE_VIDEO_APP_INSTALL_AD"
-  | (string & {});
+export type CreativeSizeNativeTemplateEnum = "UNKNOWN_NATIVE_TEMPLATE" | "NATIVE_CONTENT_AD" | "NATIVE_APP_INSTALL_AD" | "NATIVE_VIDEO_CONTENT_AD" | "NATIVE_VIDEO_APP_INSTALL_AD";
 export const CreativeSizeNativeTemplateEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the size of the creative. */
@@ -872,14 +687,14 @@ export interface CreativeSize {
   nativeTemplate?: CreativeSizeNativeTemplateEnum;
 }
 export const CreativeSize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeSizeType: S.optional(CreativeSizeCreativeSizeTypeEnum),
-    size: S.optional(Size),
-    companionSizes: S.optional(SizeList),
-    allowedFormats: S.optional(CreativeSizeAllowedFormatsItemEnumList),
-    skippableAdType: S.optional(CreativeSizeSkippableAdTypeEnum),
-    nativeTemplate: S.optional(CreativeSizeNativeTemplateEnum),
-  }),
+S.Struct({
+  "creativeSizeType": S.optional(CreativeSizeCreativeSizeTypeEnum),
+  "size": S.optional(Size),
+  "companionSizes": S.optional(SizeList),
+  "allowedFormats": S.optional(CreativeSizeAllowedFormatsItemEnumList),
+  "skippableAdType": S.optional(CreativeSizeSkippableAdTypeEnum),
+  "nativeTemplate": S.optional(CreativeSizeNativeTemplateEnum),
+}),
 ).annotate({ identifier: "CreativeSize" }) as any as S.Schema<CreativeSize>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -894,24 +709,15 @@ export interface TimeOfDay {
   minutes?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nanos: S.optional(S.Number),
-    seconds: S.optional(S.Number),
-    hours: S.optional(S.Number),
-    minutes: S.optional(S.Number),
-  }),
+S.Struct({
+  "nanos": S.optional(S.Number),
+  "seconds": S.optional(S.Number),
+  "hours": S.optional(S.Number),
+  "minutes": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
-export type DayPartDayOfWeekEnum =
-  | "DAY_OF_WEEK_UNSPECIFIED"
-  | "MONDAY"
-  | "TUESDAY"
-  | "WEDNESDAY"
-  | "THURSDAY"
-  | "FRIDAY"
-  | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+export type DayPartDayOfWeekEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
 export const DayPartDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Daypart targeting message that specifies if the ad can be shown only during certain parts of a day/week. */
@@ -924,23 +730,17 @@ export interface DayPart {
   endTime?: TimeOfDay;
 }
 export const DayPart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(TimeOfDay),
-    dayOfWeek: S.optional(DayPartDayOfWeekEnum),
-    endTime: S.optional(TimeOfDay),
-  }),
+S.Struct({
+  "startTime": S.optional(TimeOfDay),
+  "dayOfWeek": S.optional(DayPartDayOfWeekEnum),
+  "endTime": S.optional(TimeOfDay),
+}),
 ).annotate({ identifier: "DayPart" }) as any as S.Schema<DayPart>;
 
 export type DayPartList = ReadonlyArray<DayPart>;
-export const DayPartList = /*@__PURE__*/ S.Array(
-  DayPart,
-) as any as S.Schema<DayPartList>;
+export const DayPartList = /*@__PURE__*/ S.Array(DayPart) as any as S.Schema<DayPartList>;
 
-export type DayPartTargetingTimeZoneTypeEnum =
-  | "TIME_ZONE_SOURCE_UNSPECIFIED"
-  | "PUBLISHER"
-  | "USER"
-  | (string & {});
+export type DayPartTargetingTimeZoneTypeEnum = "TIME_ZONE_SOURCE_UNSPECIFIED" | "PUBLISHER" | "USER";
 export const DayPartTargetingTimeZoneTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the day part targeting criteria. */
@@ -951,13 +751,11 @@ export interface DayPartTargeting {
   timeZoneType?: DayPartTargetingTimeZoneTypeEnum;
 }
 export const DayPartTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dayParts: S.optional(DayPartList),
-    timeZoneType: S.optional(DayPartTargetingTimeZoneTypeEnum),
-  }),
-).annotate({
-  identifier: "DayPartTargeting",
-}) as any as S.Schema<DayPartTargeting>;
+S.Struct({
+  "dayParts": S.optional(DayPartList),
+  "timeZoneType": S.optional(DayPartTargetingTimeZoneTypeEnum),
+}),
+).annotate({ identifier: "DayPartTargeting" }) as any as S.Schema<DayPartTargeting>;
 
 /** A polymorphic targeting value used as part of Shared Targeting. */
 export interface TargetingValue {
@@ -971,18 +769,16 @@ export interface TargetingValue {
   dayPartTargetingValue?: DayPartTargeting;
 }
 export const TargetingValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    longValue: S.optional(S.String),
-    stringValue: S.optional(S.String),
-    creativeSizeValue: S.optional(CreativeSize),
-    dayPartTargetingValue: S.optional(DayPartTargeting),
-  }),
+S.Struct({
+  "longValue": S.optional(S.String),
+  "stringValue": S.optional(S.String),
+  "creativeSizeValue": S.optional(CreativeSize),
+  "dayPartTargetingValue": S.optional(DayPartTargeting),
+}),
 ).annotate({ identifier: "TargetingValue" }) as any as S.Schema<TargetingValue>;
 
 export type TargetingValueList = ReadonlyArray<TargetingValue>;
-export const TargetingValueList = /*@__PURE__*/ S.Array(
-  TargetingValue,
-) as any as S.Schema<TargetingValueList>;
+export const TargetingValueList = /*@__PURE__*/ S.Array(TargetingValue) as any as S.Schema<TargetingValueList>;
 
 /** Advertisers can target different attributes of an ad slot. For example, they can choose to show ads only if the user is in the U.S. Such targeting criteria can be specified as part of Shared Targeting. */
 export interface TargetingCriteria {
@@ -994,19 +790,15 @@ export interface TargetingCriteria {
   inclusions?: TargetingValueList;
 }
 export const TargetingCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    exclusions: S.optional(TargetingValueList),
-    inclusions: S.optional(TargetingValueList),
-  }),
-).annotate({
-  identifier: "TargetingCriteria",
-}) as any as S.Schema<TargetingCriteria>;
+S.Struct({
+  "key": S.optional(S.String),
+  "exclusions": S.optional(TargetingValueList),
+  "inclusions": S.optional(TargetingValueList),
+}),
+).annotate({ identifier: "TargetingCriteria" }) as any as S.Schema<TargetingCriteria>;
 
 export type TargetingCriteriaList = ReadonlyArray<TargetingCriteria>;
-export const TargetingCriteriaList = /*@__PURE__*/ S.Array(
-  TargetingCriteria,
-) as any as S.Schema<TargetingCriteriaList>;
+export const TargetingCriteriaList = /*@__PURE__*/ S.Array(TargetingCriteria) as any as S.Schema<TargetingCriteriaList>;
 
 /** A deal represents a segment of inventory for displaying ads on. A proposal can contain multiple deals. A deal contains the terms and targeting information that is used for serving. */
 export interface Deal {
@@ -1062,57 +854,42 @@ export interface Deal {
   targetingCriterion?: TargetingCriteriaList;
 }
 export const Deal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createProductId: S.optional(S.String),
-    createTime: S.optional(S.String),
-    dealTerms: S.optional(DealTerms),
-    isSetupComplete: S.optional(S.Boolean),
-    syndicationProduct: S.optional(DealSyndicationProductEnum),
-    availableStartTime: S.optional(S.String),
-    creativeRestrictions: S.optional(CreativeRestrictions),
-    sellerContacts: S.optional(ContactInformationList),
-    deliveryControl: S.optional(DeliveryControl),
-    creativeSafeFrameCompatibility: S.optional(
-      DealCreativeSafeFrameCompatibilityEnum,
-    ),
-    proposalId: S.optional(S.String),
-    webPropertyCode: S.optional(S.String),
-    creativePreApprovalPolicy: S.optional(DealCreativePreApprovalPolicyEnum),
-    createProductRevision: S.optional(S.String),
-    availableEndTime: S.optional(S.String),
-    description: S.optional(S.String),
-    dealServingMetadata: S.optional(DealServingMetadata),
-    targeting: S.optional(MarketplaceTargeting),
-    updateTime: S.optional(S.String),
-    dealId: S.optional(S.String),
-    externalDealId: S.optional(S.String),
-    buyerPrivateData: S.optional(PrivateData),
-    displayName: S.optional(S.String),
-    programmaticCreativeSource: S.optional(DealProgrammaticCreativeSourceEnum),
-    targetingCriterion: S.optional(TargetingCriteriaList),
-  }),
+S.Struct({
+  "createProductId": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "dealTerms": S.optional(DealTerms),
+  "isSetupComplete": S.optional(S.Boolean),
+  "syndicationProduct": S.optional(DealSyndicationProductEnum),
+  "availableStartTime": S.optional(S.String),
+  "creativeRestrictions": S.optional(CreativeRestrictions),
+  "sellerContacts": S.optional(ContactInformationList),
+  "deliveryControl": S.optional(DeliveryControl),
+  "creativeSafeFrameCompatibility": S.optional(DealCreativeSafeFrameCompatibilityEnum),
+  "proposalId": S.optional(S.String),
+  "webPropertyCode": S.optional(S.String),
+  "creativePreApprovalPolicy": S.optional(DealCreativePreApprovalPolicyEnum),
+  "createProductRevision": S.optional(S.String),
+  "availableEndTime": S.optional(S.String),
+  "description": S.optional(S.String),
+  "dealServingMetadata": S.optional(DealServingMetadata),
+  "targeting": S.optional(MarketplaceTargeting),
+  "updateTime": S.optional(S.String),
+  "dealId": S.optional(S.String),
+  "externalDealId": S.optional(S.String),
+  "buyerPrivateData": S.optional(PrivateData),
+  "displayName": S.optional(S.String),
+  "programmaticCreativeSource": S.optional(DealProgrammaticCreativeSourceEnum),
+  "targetingCriterion": S.optional(TargetingCriteriaList),
+}),
 ).annotate({ identifier: "Deal" }) as any as S.Schema<Deal>;
 
 export type DealList = ReadonlyArray<Deal>;
-export const DealList = /*@__PURE__*/ S.Array(
-  Deal,
-) as any as S.Schema<DealList>;
+export const DealList = /*@__PURE__*/ S.Array(Deal) as any as S.Schema<DealList>;
 
-export type ProposalProposalStateEnum =
-  | "PROPOSAL_STATE_UNSPECIFIED"
-  | "PROPOSED"
-  | "BUYER_ACCEPTED"
-  | "SELLER_ACCEPTED"
-  | "CANCELED"
-  | "FINALIZED"
-  | (string & {});
+export type ProposalProposalStateEnum = "PROPOSAL_STATE_UNSPECIFIED" | "PROPOSED" | "BUYER_ACCEPTED" | "SELLER_ACCEPTED" | "CANCELED" | "FINALIZED";
 export const ProposalProposalStateEnum = /*@__PURE__*/ S.String;
 
-export type ProposalOriginatorRoleEnum =
-  | "BUYER_SELLER_ROLE_UNSPECIFIED"
-  | "BUYER"
-  | "SELLER"
-  | (string & {});
+export type ProposalOriginatorRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
 export const ProposalOriginatorRoleEnum = /*@__PURE__*/ S.String;
 
 /** Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a seller and a buyer and contains deals which are served. Note: You can't update, create, or otherwise modify Private Auction deals through the API. Fields are updatable unless noted otherwise. */
@@ -1157,29 +934,27 @@ export interface Proposal {
   displayName?: string;
 }
 export const Proposal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proposalId: S.optional(S.String),
-    isSetupComplete: S.optional(S.Boolean),
-    billedBuyer: S.optional(Buyer),
-    proposalRevision: S.optional(S.String),
-    notes: S.optional(NoteList),
-    termsAndConditions: S.optional(S.String),
-    lastUpdaterOrCommentorRole: S.optional(
-      ProposalLastUpdaterOrCommentorRoleEnum,
-    ),
-    buyerPrivateData: S.optional(PrivateData),
-    seller: S.optional(Seller),
-    updateTime: S.optional(S.String),
-    privateAuctionId: S.optional(S.String),
-    buyerContacts: S.optional(ContactInformationList),
-    buyer: S.optional(Buyer),
-    deals: S.optional(DealList),
-    proposalState: S.optional(ProposalProposalStateEnum),
-    isRenegotiating: S.optional(S.Boolean),
-    originatorRole: S.optional(ProposalOriginatorRoleEnum),
-    sellerContacts: S.optional(ContactInformationList),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "proposalId": S.optional(S.String),
+  "isSetupComplete": S.optional(S.Boolean),
+  "billedBuyer": S.optional(Buyer),
+  "proposalRevision": S.optional(S.String),
+  "notes": S.optional(NoteList),
+  "termsAndConditions": S.optional(S.String),
+  "lastUpdaterOrCommentorRole": S.optional(ProposalLastUpdaterOrCommentorRoleEnum),
+  "buyerPrivateData": S.optional(PrivateData),
+  "seller": S.optional(Seller),
+  "updateTime": S.optional(S.String),
+  "privateAuctionId": S.optional(S.String),
+  "buyerContacts": S.optional(ContactInformationList),
+  "buyer": S.optional(Buyer),
+  "deals": S.optional(DealList),
+  "proposalState": S.optional(ProposalProposalStateEnum),
+  "isRenegotiating": S.optional(S.Boolean),
+  "originatorRole": S.optional(ProposalOriginatorRoleEnum),
+  "sellerContacts": S.optional(ContactInformationList),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Proposal" }) as any as S.Schema<Proposal>;
 
 /** The association between a creative and a deal. */
@@ -1192,14 +967,12 @@ export interface CreativeDealAssociation {
   creativeId?: string;
 }
 export const CreativeDealAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    dealsId: S.optional(S.String),
-    creativeId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeDealAssociation",
-}) as any as S.Schema<CreativeDealAssociation>;
+S.Struct({
+  "accountId": S.optional(S.String),
+  "dealsId": S.optional(S.String),
+  "creativeId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeDealAssociation" }) as any as S.Schema<CreativeDealAssociation>;
 
 /** A request for associating a deal and a creative. */
 export interface AddDealAssociationRequest {
@@ -1207,12 +980,10 @@ export interface AddDealAssociationRequest {
   association?: CreativeDealAssociation;
 }
 export const AddDealAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    association: S.optional(CreativeDealAssociation),
-  }),
-).annotate({
-  identifier: "AddDealAssociationRequest",
-}) as any as S.Schema<AddDealAssociationRequest>;
+S.Struct({
+  "association": S.optional(CreativeDealAssociation),
+}),
+).annotate({ identifier: "AddDealAssociationRequest" }) as any as S.Schema<AddDealAssociationRequest>;
 
 export interface AddAccountsCreativesDealAssociationsRequest {
   /** The ID of the creative associated with the deal. */
@@ -1222,28 +993,19 @@ export interface AddAccountsCreativesDealAssociationsRequest {
   /** Request body */
   body?: AddDealAssociationRequest;
 }
-export const AddAccountsCreativesDealAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      creativeId: S.String.pipe(T.Label()),
-      accountId: S.String.pipe(T.Label()),
-      body: S.optional(AddDealAssociationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AddAccountsCreativesDealAssociationsRequest",
-  }) as any as S.Schema<AddAccountsCreativesDealAssociationsRequest>;
+export const AddAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "creativeId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(AddDealAssociationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "AddAccountsCreativesDealAssociationsRequest" }) as any as S.Schema<AddAccountsCreativesDealAssociationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** Request message for adding a note to a given proposal. */
 export interface AddNoteRequest {
@@ -1251,9 +1013,9 @@ export interface AddNoteRequest {
   note?: Note;
 }
 export const AddNoteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    note: S.optional(Note),
-  }),
+S.Struct({
+  "note": S.optional(Note),
+}),
 ).annotate({ identifier: "AddNoteRequest" }) as any as S.Schema<AddNoteRequest>;
 
 export interface AddNoteAccountsProposalsRequest {
@@ -1265,28 +1027,18 @@ export interface AddNoteAccountsProposalsRequest {
   body?: AddNoteRequest;
 }
 export const AddNoteAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    proposalId: S.String.pipe(T.Label()),
-    body: S.optional(AddNoteRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AddNoteAccountsProposalsRequest",
-}) as any as S.Schema<AddNoteAccountsProposalsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "proposalId": S.String.pipe(T.Label()),
+  "body": S.optional(AddNoteRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "AddNoteAccountsProposalsRequest" }) as any as S.Schema<AddNoteAccountsProposalsRequest>;
 
 /** Request to cancel an ongoing negotiation. */
 export interface CancelNegotiationRequest {}
 export const CancelNegotiationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelNegotiationRequest",
-}) as any as S.Schema<CancelNegotiationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelNegotiationRequest" }) as any as S.Schema<CancelNegotiationRequest>;
 
 export interface CancelNegotiationAccountsProposalsRequest {
   /** Account ID of the buyer. */
@@ -1296,22 +1048,13 @@ export interface CancelNegotiationAccountsProposalsRequest {
   /** Request body */
   body?: CancelNegotiationRequest;
 }
-export const CancelNegotiationAccountsProposalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label()),
-      proposalId: S.String.pipe(T.Label()),
-      body: S.optional(CancelNegotiationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelNegotiationAccountsProposalsRequest",
-  }) as any as S.Schema<CancelNegotiationAccountsProposalsRequest>;
+export const CancelNegotiationAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "proposalId": S.String.pipe(T.Label()),
+  "body": S.optional(CancelNegotiationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "CancelNegotiationAccountsProposalsRequest" }) as any as S.Schema<CancelNegotiationAccountsProposalsRequest>;
 
 /** Request message for indicating that the proposal's setup step is complete. */
 export interface CompleteSetupRequest {
@@ -1319,12 +1062,10 @@ export interface CompleteSetupRequest {
   externalDealIds?: StringList;
 }
 export const CompleteSetupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalDealIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CompleteSetupRequest",
-}) as any as S.Schema<CompleteSetupRequest>;
+S.Struct({
+  "externalDealIds": S.optional(StringList),
+}),
+).annotate({ identifier: "CompleteSetupRequest" }) as any as S.Schema<CompleteSetupRequest>;
 
 export interface CompleteSetupAccountsProposalsRequest {
   /** Account ID of the buyer. */
@@ -1334,45 +1075,21 @@ export interface CompleteSetupAccountsProposalsRequest {
   /** Request body */
   body?: CompleteSetupRequest;
 }
-export const CompleteSetupAccountsProposalsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label()),
-      proposalId: S.String.pipe(T.Label()),
-      body: S.optional(CompleteSetupRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CompleteSetupAccountsProposalsRequest",
-}) as any as S.Schema<CompleteSetupAccountsProposalsRequest>;
+export const CompleteSetupAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "proposalId": S.String.pipe(T.Label()),
+  "body": S.optional(CompleteSetupRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "CompleteSetupAccountsProposalsRequest" }) as any as S.Schema<CompleteSetupAccountsProposalsRequest>;
 
-export type ClientStatusEnum =
-  | "CLIENT_STATUS_UNSPECIFIED"
-  | "DISABLED"
-  | "ACTIVE"
-  | (string & {});
+export type ClientStatusEnum = "CLIENT_STATUS_UNSPECIFIED" | "DISABLED" | "ACTIVE";
 export const ClientStatusEnum = /*@__PURE__*/ S.String;
 
-export type ClientRoleEnum =
-  | "CLIENT_ROLE_UNSPECIFIED"
-  | "CLIENT_DEAL_VIEWER"
-  | "CLIENT_DEAL_NEGOTIATOR"
-  | "CLIENT_DEAL_APPROVER"
-  | (string & {});
+export type ClientRoleEnum = "CLIENT_ROLE_UNSPECIFIED" | "CLIENT_DEAL_VIEWER" | "CLIENT_DEAL_NEGOTIATOR" | "CLIENT_DEAL_APPROVER";
 export const ClientRoleEnum = /*@__PURE__*/ S.String;
 
-export type ClientEntityTypeEnum =
-  | "ENTITY_TYPE_UNSPECIFIED"
-  | "ADVERTISER"
-  | "BRAND"
-  | "AGENCY"
-  | "ENTITY_TYPE_UNCLASSIFIED"
-  | (string & {});
+export type ClientEntityTypeEnum = "ENTITY_TYPE_UNSPECIFIED" | "ADVERTISER" | "BRAND" | "AGENCY" | "ENTITY_TYPE_UNCLASSIFIED";
 export const ClientEntityTypeEnum = /*@__PURE__*/ S.String;
 
 /** A client resource represents a client buyer—an agency, a brand, or an advertiser customer of the sponsor buyer. Users associated with the client buyer have restricted access to the Marketplace and certain other sections of the Authorized Buyers UI based on the role granted to the client buyer. All fields are required unless otherwise specified. */
@@ -1397,17 +1114,17 @@ export interface Client {
   entityType?: ClientEntityTypeEnum;
 }
 export const Client = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityId: S.optional(S.String),
-    status: S.optional(ClientStatusEnum),
-    clientName: S.optional(S.String),
-    clientAccountId: S.optional(S.String),
-    partnerClientId: S.optional(S.String),
-    role: S.optional(ClientRoleEnum),
-    entityName: S.optional(S.String),
-    visibleToSeller: S.optional(S.Boolean),
-    entityType: S.optional(ClientEntityTypeEnum),
-  }),
+S.Struct({
+  "entityId": S.optional(S.String),
+  "status": S.optional(ClientStatusEnum),
+  "clientName": S.optional(S.String),
+  "clientAccountId": S.optional(S.String),
+  "partnerClientId": S.optional(S.String),
+  "role": S.optional(ClientRoleEnum),
+  "entityName": S.optional(S.String),
+  "visibleToSeller": S.optional(S.Boolean),
+  "entityType": S.optional(ClientEntityTypeEnum),
+}),
 ).annotate({ identifier: "Client" }) as any as S.Schema<Client>;
 
 export interface CreateAccountsClientsRequest {
@@ -1417,19 +1134,11 @@ export interface CreateAccountsClientsRequest {
   body?: Client;
 }
 export const CreateAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(Client.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2beta1/accounts/{accountId}/clients",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateAccountsClientsRequest",
-}) as any as S.Schema<CreateAccountsClientsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(Client.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/clients","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsClientsRequest" }) as any as S.Schema<CreateAccountsClientsRequest>;
 
 /** An invitation for a new client user to get access to the Authorized Buyers UI. All fields are required unless otherwise specified. */
 export interface ClientUserInvitation {
@@ -1441,14 +1150,12 @@ export interface ClientUserInvitation {
   clientAccountId?: string;
 }
 export const ClientUserInvitation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invitationId: S.optional(S.String),
-    email: S.optional(S.String),
-    clientAccountId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ClientUserInvitation",
-}) as any as S.Schema<ClientUserInvitation>;
+S.Struct({
+  "invitationId": S.optional(S.String),
+  "email": S.optional(S.String),
+  "clientAccountId": S.optional(S.String),
+}),
+).annotate({ identifier: "ClientUserInvitation" }) as any as S.Schema<ClientUserInvitation>;
 
 export interface CreateAccountsClientsInvitationsRequest {
   /** Numerical account ID of the client's sponsor buyer. (required) */
@@ -1458,29 +1165,16 @@ export interface CreateAccountsClientsInvitationsRequest {
   /** Request body */
   body?: ClientUserInvitation;
 }
-export const CreateAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label()),
-      clientAccountId: S.String.pipe(T.Label()),
-      body: S.optional(ClientUserInvitation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateAccountsClientsInvitationsRequest",
-}) as any as S.Schema<CreateAccountsClientsInvitationsRequest>;
+export const CreateAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "clientAccountId": S.String.pipe(T.Label()),
+  "body": S.optional(ClientUserInvitation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsClientsInvitationsRequest" }) as any as S.Schema<CreateAccountsClientsInvitationsRequest>;
 
-export type CreateAccountsCreativesDuplicateIdModeEnum =
-  | "NO_DUPLICATES"
-  | "FORCE_ENABLE_DUPLICATE_IDS"
-  | (string & {});
-export const CreateAccountsCreativesDuplicateIdModeEnum =
-  /*@__PURE__*/ S.String;
+export type CreateAccountsCreativesDuplicateIdModeEnum = "NO_DUPLICATES" | "FORCE_ENABLE_DUPLICATE_IDS";
+export const CreateAccountsCreativesDuplicateIdModeEnum = /*@__PURE__*/ S.String;
 
 /** An image resource. You may provide a larger image than was requested, so long as the aspect ratio is preserved. */
 export interface Image {
@@ -1492,11 +1186,11 @@ export interface Image {
   height?: number;
 }
 export const Image = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    width: S.optional(S.Number),
-    height: S.optional(S.Number),
-  }),
+S.Struct({
+  "url": S.optional(S.String),
+  "width": S.optional(S.Number),
+  "height": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 /** Native content for a creative. */
@@ -1529,32 +1223,24 @@ export interface NativeContent {
   callToAction?: string;
 }
 export const NativeContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeUrl: S.optional(S.String),
-    appIcon: S.optional(Image),
-    image: S.optional(Image),
-    body: S.optional(S.String),
-    clickLinkUrl: S.optional(S.String),
-    starRating: S.optional(S.Number),
-    headline: S.optional(S.String),
-    advertiserName: S.optional(S.String),
-    videoUrl: S.optional(S.String),
-    priceDisplayText: S.optional(S.String),
-    logo: S.optional(Image),
-    clickTrackingUrl: S.optional(S.String),
-    callToAction: S.optional(S.String),
-  }),
+S.Struct({
+  "storeUrl": S.optional(S.String),
+  "appIcon": S.optional(Image),
+  "image": S.optional(Image),
+  "body": S.optional(S.String),
+  "clickLinkUrl": S.optional(S.String),
+  "starRating": S.optional(S.Number),
+  "headline": S.optional(S.String),
+  "advertiserName": S.optional(S.String),
+  "videoUrl": S.optional(S.String),
+  "priceDisplayText": S.optional(S.String),
+  "logo": S.optional(Image),
+  "clickTrackingUrl": S.optional(S.String),
+  "callToAction": S.optional(S.String),
+}),
 ).annotate({ identifier: "NativeContent" }) as any as S.Schema<NativeContent>;
 
-export type CreativeDealsStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "NOT_CHECKED"
-  | "CONDITIONALLY_APPROVED"
-  | "APPROVED"
-  | "DISAPPROVED"
-  | "PENDING_REVIEW"
-  | "STATUS_TYPE_UNSPECIFIED"
-  | (string & {});
+export type CreativeDealsStatusEnum = "STATUS_UNSPECIFIED" | "NOT_CHECKED" | "CONDITIONALLY_APPROVED" | "APPROVED" | "DISAPPROVED" | "PENDING_REVIEW" | "STATUS_TYPE_UNSPECIFIED";
 export const CreativeDealsStatusEnum = /*@__PURE__*/ S.String;
 
 /** Video content for a creative. */
@@ -1565,88 +1251,29 @@ export interface VideoContent {
   videoVastXml?: string;
 }
 export const VideoContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    videoUrl: S.optional(S.String),
-    videoVastXml: S.optional(S.String),
-  }),
+S.Struct({
+  "videoUrl": S.optional(S.String),
+  "videoVastXml": S.optional(S.String),
+}),
 ).annotate({ identifier: "VideoContent" }) as any as S.Schema<VideoContent>;
 
-export type CreativeOpenAuctionStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "NOT_CHECKED"
-  | "CONDITIONALLY_APPROVED"
-  | "APPROVED"
-  | "DISAPPROVED"
-  | "PENDING_REVIEW"
-  | "STATUS_TYPE_UNSPECIFIED"
-  | (string & {});
+export type CreativeOpenAuctionStatusEnum = "STATUS_UNSPECIFIED" | "NOT_CHECKED" | "CONDITIONALLY_APPROVED" | "APPROVED" | "DISAPPROVED" | "PENDING_REVIEW" | "STATUS_TYPE_UNSPECIFIED";
 export const CreativeOpenAuctionStatusEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAttributesItemEnum =
-  | "ATTRIBUTE_UNSPECIFIED"
-  | "IMAGE_RICH_MEDIA"
-  | "ADOBE_FLASH_FLV"
-  | "IS_TAGGED"
-  | "IS_COOKIE_TARGETED"
-  | "IS_USER_INTEREST_TARGETED"
-  | "EXPANDING_DIRECTION_NONE"
-  | "EXPANDING_DIRECTION_UP"
-  | "EXPANDING_DIRECTION_DOWN"
-  | "EXPANDING_DIRECTION_LEFT"
-  | "EXPANDING_DIRECTION_RIGHT"
-  | "EXPANDING_DIRECTION_UP_LEFT"
-  | "EXPANDING_DIRECTION_UP_RIGHT"
-  | "EXPANDING_DIRECTION_DOWN_LEFT"
-  | "EXPANDING_DIRECTION_DOWN_RIGHT"
-  | "CREATIVE_TYPE_HTML"
-  | "CREATIVE_TYPE_VAST_VIDEO"
-  | "EXPANDING_DIRECTION_UP_OR_DOWN"
-  | "EXPANDING_DIRECTION_LEFT_OR_RIGHT"
-  | "EXPANDING_DIRECTION_ANY_DIAGONAL"
-  | "EXPANDING_ACTION_ROLLOVER_TO_EXPAND"
-  | "INSTREAM_VAST_VIDEO_TYPE_VPAID_FLASH"
-  | "RICH_MEDIA_CAPABILITY_TYPE_MRAID"
-  | "RICH_MEDIA_CAPABILITY_TYPE_FLASH"
-  | "RICH_MEDIA_CAPABILITY_TYPE_HTML5"
-  | "SKIPPABLE_INSTREAM_VIDEO"
-  | "RICH_MEDIA_CAPABILITY_TYPE_SSL"
-  | "RICH_MEDIA_CAPABILITY_TYPE_NON_SSL"
-  | "RICH_MEDIA_CAPABILITY_TYPE_INTERSTITIAL"
-  | "NON_SKIPPABLE_INSTREAM_VIDEO"
-  | "NATIVE_ELIGIBILITY_ELIGIBLE"
-  | "NON_VPAID"
-  | "NATIVE_ELIGIBILITY_NOT_ELIGIBLE"
-  | "ANY_INTERSTITIAL"
-  | "NON_INTERSTITIAL"
-  | "IN_BANNER_VIDEO"
-  | "RENDERING_SIZELESS_ADX"
-  | "OMSDK_1_0"
-  | "RENDERING_PLAYABLE"
-  | (string & {});
+export type CreativeAttributesItemEnum = "ATTRIBUTE_UNSPECIFIED" | "IMAGE_RICH_MEDIA" | "ADOBE_FLASH_FLV" | "IS_TAGGED" | "IS_COOKIE_TARGETED" | "IS_USER_INTEREST_TARGETED" | "EXPANDING_DIRECTION_NONE" | "EXPANDING_DIRECTION_UP" | "EXPANDING_DIRECTION_DOWN" | "EXPANDING_DIRECTION_LEFT" | "EXPANDING_DIRECTION_RIGHT" | "EXPANDING_DIRECTION_UP_LEFT" | "EXPANDING_DIRECTION_UP_RIGHT" | "EXPANDING_DIRECTION_DOWN_LEFT" | "EXPANDING_DIRECTION_DOWN_RIGHT" | "CREATIVE_TYPE_HTML" | "CREATIVE_TYPE_VAST_VIDEO" | "EXPANDING_DIRECTION_UP_OR_DOWN" | "EXPANDING_DIRECTION_LEFT_OR_RIGHT" | "EXPANDING_DIRECTION_ANY_DIAGONAL" | "EXPANDING_ACTION_ROLLOVER_TO_EXPAND" | "INSTREAM_VAST_VIDEO_TYPE_VPAID_FLASH" | "RICH_MEDIA_CAPABILITY_TYPE_MRAID" | "RICH_MEDIA_CAPABILITY_TYPE_FLASH" | "RICH_MEDIA_CAPABILITY_TYPE_HTML5" | "SKIPPABLE_INSTREAM_VIDEO" | "RICH_MEDIA_CAPABILITY_TYPE_SSL" | "RICH_MEDIA_CAPABILITY_TYPE_NON_SSL" | "RICH_MEDIA_CAPABILITY_TYPE_INTERSTITIAL" | "NON_SKIPPABLE_INSTREAM_VIDEO" | "NATIVE_ELIGIBILITY_ELIGIBLE" | "NON_VPAID" | "NATIVE_ELIGIBILITY_NOT_ELIGIBLE" | "ANY_INTERSTITIAL" | "NON_INTERSTITIAL" | "IN_BANNER_VIDEO" | "RENDERING_SIZELESS_ADX" | "OMSDK_1_0" | "RENDERING_PLAYABLE";
 export const CreativeAttributesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAttributesItemEnumList =
-  ReadonlyArray<CreativeAttributesItemEnum>;
-export const CreativeAttributesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeAttributesItemEnum,
-) as any as S.Schema<CreativeAttributesItemEnumList>;
+export type CreativeAttributesItemEnumList = ReadonlyArray<CreativeAttributesItemEnum>;
+export const CreativeAttributesItemEnumList = /*@__PURE__*/ S.Array(CreativeAttributesItemEnum) as any as S.Schema<CreativeAttributesItemEnumList>;
 
-export type CreativeRestrictedCategoriesItemEnum =
-  | "NO_RESTRICTED_CATEGORIES"
-  | "ALCOHOL"
-  | (string & {});
+export type CreativeRestrictedCategoriesItemEnum = "NO_RESTRICTED_CATEGORIES" | "ALCOHOL";
 export const CreativeRestrictedCategoriesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeRestrictedCategoriesItemEnumList =
-  ReadonlyArray<CreativeRestrictedCategoriesItemEnum>;
-export const CreativeRestrictedCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeRestrictedCategoriesItemEnum,
-) as any as S.Schema<CreativeRestrictedCategoriesItemEnumList>;
+export type CreativeRestrictedCategoriesItemEnumList = ReadonlyArray<CreativeRestrictedCategoriesItemEnum>;
+export const CreativeRestrictedCategoriesItemEnumList = /*@__PURE__*/ S.Array(CreativeRestrictedCategoriesItemEnum) as any as S.Schema<CreativeRestrictedCategoriesItemEnumList>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** HTML content for a creative. */
 export interface HtmlContent {
@@ -1658,11 +1285,11 @@ export interface HtmlContent {
   snippet?: string;
 }
 export const HtmlContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    height: S.optional(S.Number),
-    width: S.optional(S.Number),
-    snippet: S.optional(S.String),
-  }),
+S.Struct({
+  "height": S.optional(S.Number),
+  "width": S.optional(S.Number),
+  "snippet": S.optional(S.String),
+}),
 ).annotate({ identifier: "HtmlContent" }) as any as S.Schema<HtmlContent>;
 
 /** Detected ad technology provider information. */
@@ -1673,25 +1300,20 @@ export interface AdTechnologyProviders {
   hasUnidentifiedProvider?: boolean;
 }
 export const AdTechnologyProviders = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detectedProviderIds: S.optional(StringList),
-    hasUnidentifiedProvider: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdTechnologyProviders",
-}) as any as S.Schema<AdTechnologyProviders>;
+S.Struct({
+  "detectedProviderIds": S.optional(StringList),
+  "hasUnidentifiedProvider": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AdTechnologyProviders" }) as any as S.Schema<AdTechnologyProviders>;
 
-export type ServingContextAllEnum = "SIMPLE_CONTEXT" | (string & {});
+export type ServingContextAllEnum = "SIMPLE_CONTEXT";
 export const ServingContextAllEnum = /*@__PURE__*/ S.String;
 
-export type AppContextAppTypesItemEnum = "NATIVE" | "WEB" | (string & {});
+export type AppContextAppTypesItemEnum = "NATIVE" | "WEB";
 export const AppContextAppTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type AppContextAppTypesItemEnumList =
-  ReadonlyArray<AppContextAppTypesItemEnum>;
-export const AppContextAppTypesItemEnumList = /*@__PURE__*/ S.Array(
-  AppContextAppTypesItemEnum,
-) as any as S.Schema<AppContextAppTypesItemEnumList>;
+export type AppContextAppTypesItemEnumList = ReadonlyArray<AppContextAppTypesItemEnum>;
+export const AppContextAppTypesItemEnumList = /*@__PURE__*/ S.Array(AppContextAppTypesItemEnum) as any as S.Schema<AppContextAppTypesItemEnumList>;
 
 /** Output only. The app type the restriction applies to for mobile device. */
 export interface AppContext {
@@ -1699,22 +1321,16 @@ export interface AppContext {
   appTypes?: AppContextAppTypesItemEnumList;
 }
 export const AppContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appTypes: S.optional(AppContextAppTypesItemEnumList),
-  }),
+S.Struct({
+  "appTypes": S.optional(AppContextAppTypesItemEnumList),
+}),
 ).annotate({ identifier: "AppContext" }) as any as S.Schema<AppContext>;
 
-export type AuctionContextAuctionTypesItemEnum =
-  | "OPEN_AUCTION"
-  | "DIRECT_DEALS"
-  | (string & {});
+export type AuctionContextAuctionTypesItemEnum = "OPEN_AUCTION" | "DIRECT_DEALS";
 export const AuctionContextAuctionTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type AuctionContextAuctionTypesItemEnumList =
-  ReadonlyArray<AuctionContextAuctionTypesItemEnum>;
-export const AuctionContextAuctionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  AuctionContextAuctionTypesItemEnum,
-) as any as S.Schema<AuctionContextAuctionTypesItemEnumList>;
+export type AuctionContextAuctionTypesItemEnumList = ReadonlyArray<AuctionContextAuctionTypesItemEnum>;
+export const AuctionContextAuctionTypesItemEnumList = /*@__PURE__*/ S.Array(AuctionContextAuctionTypesItemEnum) as any as S.Schema<AuctionContextAuctionTypesItemEnumList>;
 
 /** Output only. The auction type the restriction applies to. */
 export interface AuctionContext {
@@ -1722,22 +1338,16 @@ export interface AuctionContext {
   auctionTypes?: AuctionContextAuctionTypesItemEnumList;
 }
 export const AuctionContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auctionTypes: S.optional(AuctionContextAuctionTypesItemEnumList),
-  }),
+S.Struct({
+  "auctionTypes": S.optional(AuctionContextAuctionTypesItemEnumList),
+}),
 ).annotate({ identifier: "AuctionContext" }) as any as S.Schema<AuctionContext>;
 
-export type SecurityContextSecuritiesItemEnum =
-  | "INSECURE"
-  | "SSL"
-  | (string & {});
+export type SecurityContextSecuritiesItemEnum = "INSECURE" | "SSL";
 export const SecurityContextSecuritiesItemEnum = /*@__PURE__*/ S.String;
 
-export type SecurityContextSecuritiesItemEnumList =
-  ReadonlyArray<SecurityContextSecuritiesItemEnum>;
-export const SecurityContextSecuritiesItemEnumList = /*@__PURE__*/ S.Array(
-  SecurityContextSecuritiesItemEnum,
-) as any as S.Schema<SecurityContextSecuritiesItemEnumList>;
+export type SecurityContextSecuritiesItemEnumList = ReadonlyArray<SecurityContextSecuritiesItemEnum>;
+export const SecurityContextSecuritiesItemEnumList = /*@__PURE__*/ S.Array(SecurityContextSecuritiesItemEnum) as any as S.Schema<SecurityContextSecuritiesItemEnumList>;
 
 /** Output only. A security context. */
 export interface SecurityContext {
@@ -1745,25 +1355,16 @@ export interface SecurityContext {
   securities?: SecurityContextSecuritiesItemEnumList;
 }
 export const SecurityContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    securities: S.optional(SecurityContextSecuritiesItemEnumList),
-  }),
-).annotate({
-  identifier: "SecurityContext",
-}) as any as S.Schema<SecurityContext>;
+S.Struct({
+  "securities": S.optional(SecurityContextSecuritiesItemEnumList),
+}),
+).annotate({ identifier: "SecurityContext" }) as any as S.Schema<SecurityContext>;
 
-export type PlatformContextPlatformsItemEnum =
-  | "DESKTOP"
-  | "ANDROID"
-  | "IOS"
-  | (string & {});
+export type PlatformContextPlatformsItemEnum = "DESKTOP" | "ANDROID" | "IOS";
 export const PlatformContextPlatformsItemEnum = /*@__PURE__*/ S.String;
 
-export type PlatformContextPlatformsItemEnumList =
-  ReadonlyArray<PlatformContextPlatformsItemEnum>;
-export const PlatformContextPlatformsItemEnumList = /*@__PURE__*/ S.Array(
-  PlatformContextPlatformsItemEnum,
-) as any as S.Schema<PlatformContextPlatformsItemEnumList>;
+export type PlatformContextPlatformsItemEnumList = ReadonlyArray<PlatformContextPlatformsItemEnum>;
+export const PlatformContextPlatformsItemEnumList = /*@__PURE__*/ S.Array(PlatformContextPlatformsItemEnum) as any as S.Schema<PlatformContextPlatformsItemEnumList>;
 
 /** Output only. The type of platform the restriction applies to. */
 export interface PlatformContext {
@@ -1771,12 +1372,10 @@ export interface PlatformContext {
   platforms?: PlatformContextPlatformsItemEnumList;
 }
 export const PlatformContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    platforms: S.optional(PlatformContextPlatformsItemEnumList),
-  }),
-).annotate({
-  identifier: "PlatformContext",
-}) as any as S.Schema<PlatformContext>;
+S.Struct({
+  "platforms": S.optional(PlatformContextPlatformsItemEnumList),
+}),
+).annotate({ identifier: "PlatformContext" }) as any as S.Schema<PlatformContext>;
 
 /** Output only. The Geo criteria the restriction applies to. */
 export interface LocationContext {
@@ -1784,12 +1383,10 @@ export interface LocationContext {
   geoCriteriaIds?: IntegerList;
 }
 export const LocationContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geoCriteriaIds: S.optional(IntegerList),
-  }),
-).annotate({
-  identifier: "LocationContext",
-}) as any as S.Schema<LocationContext>;
+S.Struct({
+  "geoCriteriaIds": S.optional(IntegerList),
+}),
+).annotate({ identifier: "LocationContext" }) as any as S.Schema<LocationContext>;
 
 /** The serving context for this restriction. */
 export interface ServingContext {
@@ -1807,132 +1404,23 @@ export interface ServingContext {
   location?: LocationContext;
 }
 export const ServingContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    all: S.optional(ServingContextAllEnum),
-    appType: S.optional(AppContext),
-    auctionType: S.optional(AuctionContext),
-    securityType: S.optional(SecurityContext),
-    platform: S.optional(PlatformContext),
-    location: S.optional(LocationContext),
-  }),
+S.Struct({
+  "all": S.optional(ServingContextAllEnum),
+  "appType": S.optional(AppContext),
+  "auctionType": S.optional(AuctionContext),
+  "securityType": S.optional(SecurityContext),
+  "platform": S.optional(PlatformContext),
+  "location": S.optional(LocationContext),
+}),
 ).annotate({ identifier: "ServingContext" }) as any as S.Schema<ServingContext>;
 
 export type ServingContextList = ReadonlyArray<ServingContext>;
-export const ServingContextList = /*@__PURE__*/ S.Array(
-  ServingContext,
-) as any as S.Schema<ServingContextList>;
+export const ServingContextList = /*@__PURE__*/ S.Array(ServingContext) as any as S.Schema<ServingContextList>;
 
-export type ServingRestrictionStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "DISAPPROVAL"
-  | "PENDING_REVIEW"
-  | (string & {});
+export type ServingRestrictionStatusEnum = "STATUS_UNSPECIFIED" | "DISAPPROVAL" | "PENDING_REVIEW";
 export const ServingRestrictionStatusEnum = /*@__PURE__*/ S.String;
 
-export type DisapprovalReasonEnum =
-  | "LENGTH_OF_IMAGE_ANIMATION"
-  | "BROKEN_URL"
-  | "MEDIA_NOT_FUNCTIONAL"
-  | "INVALID_FOURTH_PARTY_CALL"
-  | "INCORRECT_REMARKETING_DECLARATION"
-  | "LANDING_PAGE_ERROR"
-  | "AD_SIZE_DOES_NOT_MATCH_AD_SLOT"
-  | "NO_BORDER"
-  | "FOURTH_PARTY_BROWSER_COOKIES"
-  | "LSO_OBJECTS"
-  | "BLANK_CREATIVE"
-  | "DESTINATION_URLS_UNDECLARED"
-  | "PROBLEM_WITH_CLICK_MACRO"
-  | "INCORRECT_AD_TECHNOLOGY_DECLARATION"
-  | "INCORRECT_DESTINATION_URL_DECLARATION"
-  | "EXPANDABLE_INCORRECT_DIRECTION"
-  | "EXPANDABLE_DIRECTION_NOT_SUPPORTED"
-  | "EXPANDABLE_INVALID_VENDOR"
-  | "EXPANDABLE_FUNCTIONALITY"
-  | "VIDEO_INVALID_VENDOR"
-  | "VIDEO_UNSUPPORTED_LENGTH"
-  | "VIDEO_UNSUPPORTED_FORMAT"
-  | "VIDEO_FUNCTIONALITY"
-  | "LANDING_PAGE_DISABLED"
-  | "MALWARE_SUSPECTED"
-  | "ADULT_IMAGE_OR_VIDEO"
-  | "INACCURATE_AD_TEXT"
-  | "COUNTERFEIT_DESIGNER_GOODS"
-  | "POP_UP"
-  | "INVALID_RTB_PROTOCOL_USAGE"
-  | "RAW_IP_ADDRESS_IN_SNIPPET"
-  | "UNACCEPTABLE_CONTENT_SOFTWARE"
-  | "UNAUTHORIZED_COOKIE_ON_GOOGLE_DOMAIN"
-  | "UNDECLARED_FLASH_OBJECTS"
-  | "INVALID_SSL_DECLARATION"
-  | "DIRECT_DOWNLOAD_IN_AD"
-  | "MAXIMUM_DOWNLOAD_SIZE_EXCEEDED"
-  | "DESTINATION_URL_SITE_NOT_CRAWLABLE"
-  | "BAD_URL_LEGAL_DISAPPROVAL"
-  | "PHARMA_GAMBLING_ALCOHOL_NOT_ALLOWED"
-  | "DYNAMIC_DNS_AT_DESTINATION_URL"
-  | "POOR_IMAGE_OR_VIDEO_QUALITY"
-  | "UNACCEPTABLE_IMAGE_CONTENT"
-  | "INCORRECT_IMAGE_LAYOUT"
-  | "IRRELEVANT_IMAGE_OR_VIDEO"
-  | "DESTINATION_SITE_DOES_NOT_ALLOW_GOING_BACK"
-  | "MISLEADING_CLAIMS_IN_AD"
-  | "RESTRICTED_PRODUCTS"
-  | "UNACCEPTABLE_CONTENT"
-  | "AUTOMATED_AD_CLICKING"
-  | "INVALID_URL_PROTOCOL"
-  | "UNDECLARED_RESTRICTED_CONTENT"
-  | "INVALID_REMARKETING_LIST_USAGE"
-  | "DESTINATION_SITE_NOT_CRAWLABLE_ROBOTS_TXT"
-  | "CLICK_TO_DOWNLOAD_NOT_AN_APP"
-  | "INACCURATE_REVIEW_EXTENSION"
-  | "SEXUALLY_EXPLICIT_CONTENT"
-  | "GAINING_AN_UNFAIR_ADVANTAGE"
-  | "GAMING_THE_GOOGLE_NETWORK"
-  | "DANGEROUS_PRODUCTS_KNIVES"
-  | "DANGEROUS_PRODUCTS_EXPLOSIVES"
-  | "DANGEROUS_PRODUCTS_GUNS"
-  | "DANGEROUS_PRODUCTS_DRUGS"
-  | "DANGEROUS_PRODUCTS_TOBACCO"
-  | "DANGEROUS_PRODUCTS_WEAPONS"
-  | "UNCLEAR_OR_IRRELEVANT_AD"
-  | "PROFESSIONAL_STANDARDS"
-  | "DYSFUNCTIONAL_PROMOTION"
-  | "INVALID_INTEREST_BASED_AD"
-  | "MISUSE_OF_PERSONAL_INFORMATION"
-  | "OMISSION_OF_RELEVANT_INFORMATION"
-  | "UNAVAILABLE_PROMOTIONS"
-  | "MISLEADING_PROMOTIONS"
-  | "INAPPROPRIATE_CONTENT"
-  | "SENSITIVE_EVENTS"
-  | "SHOCKING_CONTENT"
-  | "ENABLING_DISHONEST_BEHAVIOR"
-  | "TECHNICAL_REQUIREMENTS"
-  | "RESTRICTED_POLITICAL_CONTENT"
-  | "UNSUPPORTED_CONTENT"
-  | "INVALID_BIDDING_METHOD"
-  | "VIDEO_TOO_LONG"
-  | "VIOLATES_JAPANESE_PHARMACY_LAW"
-  | "UNACCREDITED_PET_PHARMACY"
-  | "ABORTION"
-  | "CONTRACEPTIVES"
-  | "NEED_CERTIFICATES_TO_ADVERTISE_IN_CHINA"
-  | "KCDSP_REGISTRATION"
-  | "NOT_FAMILY_SAFE"
-  | "CLINICAL_TRIAL_RECRUITMENT"
-  | "MAXIMUM_NUMBER_OF_HTTP_CALLS_EXCEEDED"
-  | "MAXIMUM_NUMBER_OF_COOKIES_EXCEEDED"
-  | "PERSONAL_LOANS"
-  | "UNSUPPORTED_FLASH_CONTENT"
-  | "MISUSE_BY_OMID_SCRIPT"
-  | "NON_WHITELISTED_OMID_VENDOR"
-  | "DESTINATION_EXPERIENCE"
-  | "UNSUPPORTED_LANGUAGE"
-  | "NON_SSL_COMPLIANT"
-  | "TEMPORARY_PAUSE"
-  | "BAIL_BONDS"
-  | "EXPERIMENTAL_MEDICAL_TREATMENT"
-  | (string & {});
+export type DisapprovalReasonEnum = "LENGTH_OF_IMAGE_ANIMATION" | "BROKEN_URL" | "MEDIA_NOT_FUNCTIONAL" | "INVALID_FOURTH_PARTY_CALL" | "INCORRECT_REMARKETING_DECLARATION" | "LANDING_PAGE_ERROR" | "AD_SIZE_DOES_NOT_MATCH_AD_SLOT" | "NO_BORDER" | "FOURTH_PARTY_BROWSER_COOKIES" | "LSO_OBJECTS" | "BLANK_CREATIVE" | "DESTINATION_URLS_UNDECLARED" | "PROBLEM_WITH_CLICK_MACRO" | "INCORRECT_AD_TECHNOLOGY_DECLARATION" | "INCORRECT_DESTINATION_URL_DECLARATION" | "EXPANDABLE_INCORRECT_DIRECTION" | "EXPANDABLE_DIRECTION_NOT_SUPPORTED" | "EXPANDABLE_INVALID_VENDOR" | "EXPANDABLE_FUNCTIONALITY" | "VIDEO_INVALID_VENDOR" | "VIDEO_UNSUPPORTED_LENGTH" | "VIDEO_UNSUPPORTED_FORMAT" | "VIDEO_FUNCTIONALITY" | "LANDING_PAGE_DISABLED" | "MALWARE_SUSPECTED" | "ADULT_IMAGE_OR_VIDEO" | "INACCURATE_AD_TEXT" | "COUNTERFEIT_DESIGNER_GOODS" | "POP_UP" | "INVALID_RTB_PROTOCOL_USAGE" | "RAW_IP_ADDRESS_IN_SNIPPET" | "UNACCEPTABLE_CONTENT_SOFTWARE" | "UNAUTHORIZED_COOKIE_ON_GOOGLE_DOMAIN" | "UNDECLARED_FLASH_OBJECTS" | "INVALID_SSL_DECLARATION" | "DIRECT_DOWNLOAD_IN_AD" | "MAXIMUM_DOWNLOAD_SIZE_EXCEEDED" | "DESTINATION_URL_SITE_NOT_CRAWLABLE" | "BAD_URL_LEGAL_DISAPPROVAL" | "PHARMA_GAMBLING_ALCOHOL_NOT_ALLOWED" | "DYNAMIC_DNS_AT_DESTINATION_URL" | "POOR_IMAGE_OR_VIDEO_QUALITY" | "UNACCEPTABLE_IMAGE_CONTENT" | "INCORRECT_IMAGE_LAYOUT" | "IRRELEVANT_IMAGE_OR_VIDEO" | "DESTINATION_SITE_DOES_NOT_ALLOW_GOING_BACK" | "MISLEADING_CLAIMS_IN_AD" | "RESTRICTED_PRODUCTS" | "UNACCEPTABLE_CONTENT" | "AUTOMATED_AD_CLICKING" | "INVALID_URL_PROTOCOL" | "UNDECLARED_RESTRICTED_CONTENT" | "INVALID_REMARKETING_LIST_USAGE" | "DESTINATION_SITE_NOT_CRAWLABLE_ROBOTS_TXT" | "CLICK_TO_DOWNLOAD_NOT_AN_APP" | "INACCURATE_REVIEW_EXTENSION" | "SEXUALLY_EXPLICIT_CONTENT" | "GAINING_AN_UNFAIR_ADVANTAGE" | "GAMING_THE_GOOGLE_NETWORK" | "DANGEROUS_PRODUCTS_KNIVES" | "DANGEROUS_PRODUCTS_EXPLOSIVES" | "DANGEROUS_PRODUCTS_GUNS" | "DANGEROUS_PRODUCTS_DRUGS" | "DANGEROUS_PRODUCTS_TOBACCO" | "DANGEROUS_PRODUCTS_WEAPONS" | "UNCLEAR_OR_IRRELEVANT_AD" | "PROFESSIONAL_STANDARDS" | "DYSFUNCTIONAL_PROMOTION" | "INVALID_INTEREST_BASED_AD" | "MISUSE_OF_PERSONAL_INFORMATION" | "OMISSION_OF_RELEVANT_INFORMATION" | "UNAVAILABLE_PROMOTIONS" | "MISLEADING_PROMOTIONS" | "INAPPROPRIATE_CONTENT" | "SENSITIVE_EVENTS" | "SHOCKING_CONTENT" | "ENABLING_DISHONEST_BEHAVIOR" | "TECHNICAL_REQUIREMENTS" | "RESTRICTED_POLITICAL_CONTENT" | "UNSUPPORTED_CONTENT" | "INVALID_BIDDING_METHOD" | "VIDEO_TOO_LONG" | "VIOLATES_JAPANESE_PHARMACY_LAW" | "UNACCREDITED_PET_PHARMACY" | "ABORTION" | "CONTRACEPTIVES" | "NEED_CERTIFICATES_TO_ADVERTISE_IN_CHINA" | "KCDSP_REGISTRATION" | "NOT_FAMILY_SAFE" | "CLINICAL_TRIAL_RECRUITMENT" | "MAXIMUM_NUMBER_OF_HTTP_CALLS_EXCEEDED" | "MAXIMUM_NUMBER_OF_COOKIES_EXCEEDED" | "PERSONAL_LOANS" | "UNSUPPORTED_FLASH_CONTENT" | "MISUSE_BY_OMID_SCRIPT" | "NON_WHITELISTED_OMID_VENDOR" | "DESTINATION_EXPERIENCE" | "UNSUPPORTED_LANGUAGE" | "NON_SSL_COMPLIANT" | "TEMPORARY_PAUSE" | "BAIL_BONDS" | "EXPERIMENTAL_MEDICAL_TREATMENT";
 export const DisapprovalReasonEnum = /*@__PURE__*/ S.String;
 
 /** Output only. The reason and details for a disapproval. */
@@ -1943,16 +1431,14 @@ export interface Disapproval {
   details?: StringList;
 }
 export const Disapproval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(DisapprovalReasonEnum),
-    details: S.optional(StringList),
-  }),
+S.Struct({
+  "reason": S.optional(DisapprovalReasonEnum),
+  "details": S.optional(StringList),
+}),
 ).annotate({ identifier: "Disapproval" }) as any as S.Schema<Disapproval>;
 
 export type DisapprovalList = ReadonlyArray<Disapproval>;
-export const DisapprovalList = /*@__PURE__*/ S.Array(
-  Disapproval,
-) as any as S.Schema<DisapprovalList>;
+export const DisapprovalList = /*@__PURE__*/ S.Array(Disapproval) as any as S.Schema<DisapprovalList>;
 
 /** Output only. A representation of the status of an ad in a specific context. A context here relates to where something ultimately serves (for example, a user or publisher geo, a platform, an HTTPS versus HTTP request, or the type of auction). */
 export interface ServingRestriction {
@@ -1966,35 +1452,18 @@ export interface ServingRestriction {
   disapprovalReasons?: DisapprovalList;
 }
 export const ServingRestriction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contexts: S.optional(ServingContextList),
-    status: S.optional(ServingRestrictionStatusEnum),
-    disapproval: S.optional(Disapproval),
-    disapprovalReasons: S.optional(DisapprovalList),
-  }),
-).annotate({
-  identifier: "ServingRestriction",
-}) as any as S.Schema<ServingRestriction>;
+S.Struct({
+  "contexts": S.optional(ServingContextList),
+  "status": S.optional(ServingRestrictionStatusEnum),
+  "disapproval": S.optional(Disapproval),
+  "disapprovalReasons": S.optional(DisapprovalList),
+}),
+).annotate({ identifier: "ServingRestriction" }) as any as S.Schema<ServingRestriction>;
 
 export type ServingRestrictionList = ReadonlyArray<ServingRestriction>;
-export const ServingRestrictionList = /*@__PURE__*/ S.Array(
-  ServingRestriction,
-) as any as S.Schema<ServingRestrictionList>;
+export const ServingRestrictionList = /*@__PURE__*/ S.Array(ServingRestriction) as any as S.Schema<ServingRestrictionList>;
 
-export type CorrectionTypeEnum =
-  | "CORRECTION_TYPE_UNSPECIFIED"
-  | "VENDOR_IDS_ADDED"
-  | "SSL_ATTRIBUTE_REMOVED"
-  | "FLASH_FREE_ATTRIBUTE_REMOVED"
-  | "FLASH_FREE_ATTRIBUTE_ADDED"
-  | "REQUIRED_ATTRIBUTE_ADDED"
-  | "REQUIRED_VENDOR_ADDED"
-  | "SSL_ATTRIBUTE_ADDED"
-  | "IN_BANNER_VIDEO_ATTRIBUTE_ADDED"
-  | "MRAID_ATTRIBUTE_ADDED"
-  | "FLASH_ATTRIBUTE_REMOVED"
-  | "VIDEO_IN_SNIPPET_ATTRIBUTE_ADDED"
-  | (string & {});
+export type CorrectionTypeEnum = "CORRECTION_TYPE_UNSPECIFIED" | "VENDOR_IDS_ADDED" | "SSL_ATTRIBUTE_REMOVED" | "FLASH_FREE_ATTRIBUTE_REMOVED" | "FLASH_FREE_ATTRIBUTE_ADDED" | "REQUIRED_ATTRIBUTE_ADDED" | "REQUIRED_VENDOR_ADDED" | "SSL_ATTRIBUTE_ADDED" | "IN_BANNER_VIDEO_ATTRIBUTE_ADDED" | "MRAID_ATTRIBUTE_ADDED" | "FLASH_ATTRIBUTE_REMOVED" | "VIDEO_IN_SNIPPET_ATTRIBUTE_ADDED";
 export const CorrectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output only. Shows any corrections that were applied to this creative. */
@@ -2007,17 +1476,15 @@ export interface Correction {
   details?: StringList;
 }
 export const Correction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contexts: S.optional(ServingContextList),
-    type: S.optional(CorrectionTypeEnum),
-    details: S.optional(StringList),
-  }),
+S.Struct({
+  "contexts": S.optional(ServingContextList),
+  "type": S.optional(CorrectionTypeEnum),
+  "details": S.optional(StringList),
+}),
 ).annotate({ identifier: "Correction" }) as any as S.Schema<Correction>;
 
 export type CorrectionList = ReadonlyArray<Correction>;
-export const CorrectionList = /*@__PURE__*/ S.Array(
-  Correction,
-) as any as S.Schema<CorrectionList>;
+export const CorrectionList = /*@__PURE__*/ S.Array(Correction) as any as S.Schema<CorrectionList>;
 
 /** A creative and its classification data. */
 export interface Creative {
@@ -2075,61 +1542,51 @@ export interface Creative {
   corrections?: CorrectionList;
 }
 export const Creative = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    impressionTrackingUrls: S.optional(StringList),
-    declaredClickThroughUrls: S.optional(StringList),
-    native: S.optional(NativeContent),
-    dealsStatus: S.optional(CreativeDealsStatusEnum),
-    adChoicesDestinationUrl: S.optional(S.String),
-    video: S.optional(VideoContent),
-    creativeId: S.optional(S.String),
-    openAuctionStatus: S.optional(CreativeOpenAuctionStatusEnum),
-    detectedLanguages: S.optional(StringList),
-    attributes: S.optional(CreativeAttributesItemEnumList),
-    restrictedCategories: S.optional(CreativeRestrictedCategoriesItemEnumList),
-    detectedSensitiveCategories: S.optional(IntegerList),
-    clickThroughUrls: S.optional(StringList),
-    html: S.optional(HtmlContent),
-    detectedProductCategories: S.optional(IntegerList),
-    detectedDomains: S.optional(StringList),
-    vendorIds: S.optional(IntegerList),
-    adTechnologyProviders: S.optional(AdTechnologyProviders),
-    detectedAdvertiserIds: S.optional(StringList),
-    apiUpdateTime: S.optional(S.String),
-    version: S.optional(S.Number),
-    servingRestrictions: S.optional(ServingRestrictionList),
-    agencyId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    advertiserName: S.optional(S.String),
-    corrections: S.optional(CorrectionList),
-  }),
+S.Struct({
+  "impressionTrackingUrls": S.optional(StringList),
+  "declaredClickThroughUrls": S.optional(StringList),
+  "native": S.optional(NativeContent),
+  "dealsStatus": S.optional(CreativeDealsStatusEnum),
+  "adChoicesDestinationUrl": S.optional(S.String),
+  "video": S.optional(VideoContent),
+  "creativeId": S.optional(S.String),
+  "openAuctionStatus": S.optional(CreativeOpenAuctionStatusEnum),
+  "detectedLanguages": S.optional(StringList),
+  "attributes": S.optional(CreativeAttributesItemEnumList),
+  "restrictedCategories": S.optional(CreativeRestrictedCategoriesItemEnumList),
+  "detectedSensitiveCategories": S.optional(IntegerList),
+  "clickThroughUrls": S.optional(StringList),
+  "html": S.optional(HtmlContent),
+  "detectedProductCategories": S.optional(IntegerList),
+  "detectedDomains": S.optional(StringList),
+  "vendorIds": S.optional(IntegerList),
+  "adTechnologyProviders": S.optional(AdTechnologyProviders),
+  "detectedAdvertiserIds": S.optional(StringList),
+  "apiUpdateTime": S.optional(S.String),
+  "version": S.optional(S.Number),
+  "servingRestrictions": S.optional(ServingRestrictionList),
+  "agencyId": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "advertiserName": S.optional(S.String),
+  "corrections": S.optional(CorrectionList),
+}),
 ).annotate({ identifier: "Creative" }) as any as S.Schema<Creative>;
 
 export interface CreateAccountsCreativesRequest {
   /** The account that this creative belongs to. Can be used to filter the response of the creatives.list method. */
   accountId: string;
   /** Indicates if multiple creatives can share an ID or not. Default is NO_DUPLICATES (one ID per creative). */
-  duplicateIdMode?: CreateAccountsCreativesDuplicateIdModeEnum;
+  duplicateIdMode?: CreateAccountsCreativesDuplicateIdModeEnum | (string & {});
   /** Request body */
   body?: Creative;
 }
 export const CreateAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    duplicateIdMode: S.optional(
-      CreateAccountsCreativesDuplicateIdModeEnum.pipe(T.Query()),
-    ),
-    body: S.optional(Creative.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2beta1/accounts/{accountId}/creatives",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateAccountsCreativesRequest",
-}) as any as S.Schema<CreateAccountsCreativesRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "duplicateIdMode": S.optional(CreateAccountsCreativesDuplicateIdModeEnum.pipe(T.Query())),
+  "body": S.optional(Creative.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/creatives","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsCreativesRequest" }) as any as S.Schema<CreateAccountsCreativesRequest>;
 
 export interface CreateAccountsProposalsRequest {
   /** Account ID of the buyer. */
@@ -2138,19 +1595,11 @@ export interface CreateAccountsProposalsRequest {
   body?: Proposal;
 }
 export const CreateAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(Proposal.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2beta1/accounts/{accountId}/proposals",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateAccountsProposalsRequest",
-}) as any as S.Schema<CreateAccountsProposalsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(Proposal.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/proposals","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsProposalsRequest" }) as any as S.Schema<CreateAccountsProposalsRequest>;
 
 /** A relative date range, specified by an offset and a duration. The supported range of dates begins 30 days before today and ends today, for example, the limits for these values are: offset_days >= 0 duration_days >= 1 offset_days + duration_days <= 30 */
 export interface RelativeDateRange {
@@ -2160,13 +1609,11 @@ export interface RelativeDateRange {
   durationDays?: number;
 }
 export const RelativeDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offsetDays: S.optional(S.Number),
-    durationDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RelativeDateRange",
-}) as any as S.Schema<RelativeDateRange>;
+S.Struct({
+  "offsetDays": S.optional(S.Number),
+  "durationDays": S.optional(S.Number),
+}),
+).annotate({ identifier: "RelativeDateRange" }) as any as S.Schema<RelativeDateRange>;
 
 /** An open-ended realtime time range specified by the start timestamp. For filter sets that specify a realtime time range RTB metrics continue to be aggregated throughout the lifetime of the filter set. */
 export interface RealtimeTimeRange {
@@ -2174,48 +1621,24 @@ export interface RealtimeTimeRange {
   startTimestamp?: string;
 }
 export const RealtimeTimeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTimestamp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RealtimeTimeRange",
-}) as any as S.Schema<RealtimeTimeRange>;
+S.Struct({
+  "startTimestamp": S.optional(S.String),
+}),
+).annotate({ identifier: "RealtimeTimeRange" }) as any as S.Schema<RealtimeTimeRange>;
 
-export type FilterSetEnvironmentEnum =
-  | "ENVIRONMENT_UNSPECIFIED"
-  | "WEB"
-  | "APP"
-  | (string & {});
+export type FilterSetEnvironmentEnum = "ENVIRONMENT_UNSPECIFIED" | "WEB" | "APP";
 export const FilterSetEnvironmentEnum = /*@__PURE__*/ S.String;
 
-export type FilterSetPlatformsItemEnum =
-  | "PLATFORM_UNSPECIFIED"
-  | "DESKTOP"
-  | "TABLET"
-  | "MOBILE"
-  | (string & {});
+export type FilterSetPlatformsItemEnum = "PLATFORM_UNSPECIFIED" | "DESKTOP" | "TABLET" | "MOBILE";
 export const FilterSetPlatformsItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterSetPlatformsItemEnumList =
-  ReadonlyArray<FilterSetPlatformsItemEnum>;
-export const FilterSetPlatformsItemEnumList = /*@__PURE__*/ S.Array(
-  FilterSetPlatformsItemEnum,
-) as any as S.Schema<FilterSetPlatformsItemEnumList>;
+export type FilterSetPlatformsItemEnumList = ReadonlyArray<FilterSetPlatformsItemEnum>;
+export const FilterSetPlatformsItemEnumList = /*@__PURE__*/ S.Array(FilterSetPlatformsItemEnum) as any as S.Schema<FilterSetPlatformsItemEnumList>;
 
-export type FilterSetTimeSeriesGranularityEnum =
-  | "TIME_SERIES_GRANULARITY_UNSPECIFIED"
-  | "HOURLY"
-  | "DAILY"
-  | (string & {});
+export type FilterSetTimeSeriesGranularityEnum = "TIME_SERIES_GRANULARITY_UNSPECIFIED" | "HOURLY" | "DAILY";
 export const FilterSetTimeSeriesGranularityEnum = /*@__PURE__*/ S.String;
 
-export type FilterSetFormatEnum =
-  | "FORMAT_UNSPECIFIED"
-  | "NATIVE_DISPLAY"
-  | "NATIVE_VIDEO"
-  | "NON_NATIVE_DISPLAY"
-  | "NON_NATIVE_VIDEO"
-  | (string & {});
+export type FilterSetFormatEnum = "FORMAT_UNSPECIFIED" | "NATIVE_DISPLAY" | "NATIVE_VIDEO" | "NON_NATIVE_DISPLAY" | "NON_NATIVE_VIDEO";
 export const FilterSetFormatEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -2228,14 +1651,12 @@ export interface Adexchangebuyer2_Date {
   day?: number;
 }
 export const Adexchangebuyer2_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    year: S.optional(S.Number),
-    month: S.optional(S.Number),
-    day: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "Adexchangebuyer2_Date",
-}) as any as S.Schema<Adexchangebuyer2_Date>;
+S.Struct({
+  "year": S.optional(S.Number),
+  "month": S.optional(S.Number),
+  "day": S.optional(S.Number),
+}),
+).annotate({ identifier: "Adexchangebuyer2_Date" }) as any as S.Schema<Adexchangebuyer2_Date>;
 
 /** An absolute date range, specified by its start date and end date. The supported range of dates begins 30 days before today and ends today. Validity checked upon filter set creation. If a filter set with an absolute date range is run at a later date more than 30 days after start_date, it will fail. */
 export interface AbsoluteDateRange {
@@ -2245,40 +1666,23 @@ export interface AbsoluteDateRange {
   endDate?: Adexchangebuyer2_Date;
 }
 export const AbsoluteDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startDate: S.optional(Adexchangebuyer2_Date),
-    endDate: S.optional(Adexchangebuyer2_Date),
-  }),
-).annotate({
-  identifier: "AbsoluteDateRange",
-}) as any as S.Schema<AbsoluteDateRange>;
+S.Struct({
+  "startDate": S.optional(Adexchangebuyer2_Date),
+  "endDate": S.optional(Adexchangebuyer2_Date),
+}),
+).annotate({ identifier: "AbsoluteDateRange" }) as any as S.Schema<AbsoluteDateRange>;
 
-export type FilterSetBreakdownDimensionsItemEnum =
-  | "BREAKDOWN_DIMENSION_UNSPECIFIED"
-  | "PUBLISHER_IDENTIFIER"
-  | (string & {});
+export type FilterSetBreakdownDimensionsItemEnum = "BREAKDOWN_DIMENSION_UNSPECIFIED" | "PUBLISHER_IDENTIFIER";
 export const FilterSetBreakdownDimensionsItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterSetBreakdownDimensionsItemEnumList =
-  ReadonlyArray<FilterSetBreakdownDimensionsItemEnum>;
-export const FilterSetBreakdownDimensionsItemEnumList = /*@__PURE__*/ S.Array(
-  FilterSetBreakdownDimensionsItemEnum,
-) as any as S.Schema<FilterSetBreakdownDimensionsItemEnumList>;
+export type FilterSetBreakdownDimensionsItemEnumList = ReadonlyArray<FilterSetBreakdownDimensionsItemEnum>;
+export const FilterSetBreakdownDimensionsItemEnumList = /*@__PURE__*/ S.Array(FilterSetBreakdownDimensionsItemEnum) as any as S.Schema<FilterSetBreakdownDimensionsItemEnumList>;
 
-export type FilterSetFormatsItemEnum =
-  | "FORMAT_UNSPECIFIED"
-  | "NATIVE_DISPLAY"
-  | "NATIVE_VIDEO"
-  | "NON_NATIVE_DISPLAY"
-  | "NON_NATIVE_VIDEO"
-  | (string & {});
+export type FilterSetFormatsItemEnum = "FORMAT_UNSPECIFIED" | "NATIVE_DISPLAY" | "NATIVE_VIDEO" | "NON_NATIVE_DISPLAY" | "NON_NATIVE_VIDEO";
 export const FilterSetFormatsItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterSetFormatsItemEnumList =
-  ReadonlyArray<FilterSetFormatsItemEnum>;
-export const FilterSetFormatsItemEnumList = /*@__PURE__*/ S.Array(
-  FilterSetFormatsItemEnum,
-) as any as S.Schema<FilterSetFormatsItemEnumList>;
+export type FilterSetFormatsItemEnumList = ReadonlyArray<FilterSetFormatsItemEnum>;
+export const FilterSetFormatsItemEnumList = /*@__PURE__*/ S.Array(FilterSetFormatsItemEnum) as any as S.Schema<FilterSetFormatsItemEnumList>;
 
 /** A set of filters that is applied to a request for data. Within a filter set, an AND operation is performed across the filters represented by each field. An OR operation is performed across the filters represented by the multiple values of a repeated field, for example, "format=VIDEO AND deal_id=12 AND (seller_network_id=34 OR seller_network_id=56)". */
 export interface FilterSet {
@@ -2312,22 +1716,22 @@ export interface FilterSet {
   formats?: FilterSetFormatsItemEnumList;
 }
 export const FilterSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relativeDateRange: S.optional(RelativeDateRange),
-    realtimeTimeRange: S.optional(RealtimeTimeRange),
-    environment: S.optional(FilterSetEnvironmentEnum),
-    platforms: S.optional(FilterSetPlatformsItemEnumList),
-    creativeId: S.optional(S.String),
-    sellerNetworkIds: S.optional(IntegerList),
-    timeSeriesGranularity: S.optional(FilterSetTimeSeriesGranularityEnum),
-    format: S.optional(FilterSetFormatEnum),
-    publisherIdentifiers: S.optional(StringList),
-    absoluteDateRange: S.optional(AbsoluteDateRange),
-    dealId: S.optional(S.String),
-    breakdownDimensions: S.optional(FilterSetBreakdownDimensionsItemEnumList),
-    name: S.optional(S.String),
-    formats: S.optional(FilterSetFormatsItemEnumList),
-  }),
+S.Struct({
+  "relativeDateRange": S.optional(RelativeDateRange),
+  "realtimeTimeRange": S.optional(RealtimeTimeRange),
+  "environment": S.optional(FilterSetEnvironmentEnum),
+  "platforms": S.optional(FilterSetPlatformsItemEnumList),
+  "creativeId": S.optional(S.String),
+  "sellerNetworkIds": S.optional(IntegerList),
+  "timeSeriesGranularity": S.optional(FilterSetTimeSeriesGranularityEnum),
+  "format": S.optional(FilterSetFormatEnum),
+  "publisherIdentifiers": S.optional(StringList),
+  "absoluteDateRange": S.optional(AbsoluteDateRange),
+  "dealId": S.optional(S.String),
+  "breakdownDimensions": S.optional(FilterSetBreakdownDimensionsItemEnumList),
+  "name": S.optional(S.String),
+  "formats": S.optional(FilterSetFormatsItemEnumList),
+}),
 ).annotate({ identifier: "FilterSet" }) as any as S.Schema<FilterSet>;
 
 export interface CreateBiddersAccountsFilterSetsRequest {
@@ -2338,22 +1742,13 @@ export interface CreateBiddersAccountsFilterSetsRequest {
   /** Request body */
   body?: FilterSet;
 }
-export const CreateBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ownerName: S.String.pipe(T.Label()),
-      isTransient: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(FilterSet.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta1/{+ownerName}/filterSets",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateBiddersAccountsFilterSetsRequest",
-}) as any as S.Schema<CreateBiddersAccountsFilterSetsRequest>;
+export const CreateBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ownerName": S.String.pipe(T.Label()),
+  "isTransient": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(FilterSet.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/{+ownerName}/filterSets","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "CreateBiddersAccountsFilterSetsRequest" }) as any as S.Schema<CreateBiddersAccountsFilterSetsRequest>;
 
 export interface CreateBiddersFilterSetsRequest {
   /** Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` */
@@ -2364,20 +1759,12 @@ export interface CreateBiddersFilterSetsRequest {
   body?: FilterSet;
 }
 export const CreateBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String.pipe(T.Label()),
-    isTransient: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(FilterSet.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2beta1/{+ownerName}/filterSets",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateBiddersFilterSetsRequest",
-}) as any as S.Schema<CreateBiddersFilterSetsRequest>;
+S.Struct({
+  "ownerName": S.String.pipe(T.Label()),
+  "isTransient": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(FilterSet.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/{+ownerName}/filterSets","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "CreateBiddersFilterSetsRequest" }) as any as S.Schema<CreateBiddersFilterSetsRequest>;
 
 export interface CreateBuyersFilterSetsRequest {
   /** Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` */
@@ -2388,75 +1775,42 @@ export interface CreateBuyersFilterSetsRequest {
   body?: FilterSet;
 }
 export const CreateBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String.pipe(T.Label()),
-    isTransient: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(FilterSet.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2beta1/{+ownerName}/filterSets",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateBuyersFilterSetsRequest",
-}) as any as S.Schema<CreateBuyersFilterSetsRequest>;
+S.Struct({
+  "ownerName": S.String.pipe(T.Label()),
+  "isTransient": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(FilterSet.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/{+ownerName}/filterSets","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "CreateBuyersFilterSetsRequest" }) as any as S.Schema<CreateBuyersFilterSetsRequest>;
 
 export interface DeleteBiddersAccountsFilterSetsRequest {
   /** Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
-export const DeleteBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2beta1/{+name}",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteBiddersAccountsFilterSetsRequest",
-}) as any as S.Schema<DeleteBiddersAccountsFilterSetsRequest>;
+export const DeleteBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2beta1/{+name}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "DeleteBiddersAccountsFilterSetsRequest" }) as any as S.Schema<DeleteBiddersAccountsFilterSetsRequest>;
 
 export interface DeleteBiddersFilterSetsRequest {
   /** Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
 export const DeleteBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v2beta1/{+name}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteBiddersFilterSetsRequest",
-}) as any as S.Schema<DeleteBiddersFilterSetsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2beta1/{+name}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "DeleteBiddersFilterSetsRequest" }) as any as S.Schema<DeleteBiddersFilterSetsRequest>;
 
 export interface DeleteBuyersFilterSetsRequest {
   /** Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
 export const DeleteBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v2beta1/{+name}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteBuyersFilterSetsRequest",
-}) as any as S.Schema<DeleteBuyersFilterSetsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2beta1/{+name}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "DeleteBuyersFilterSetsRequest" }) as any as S.Schema<DeleteBuyersFilterSetsRequest>;
 
 export interface GetAccountsClientsRequest {
   /** Numerical account ID of the client buyer to retrieve. (required) */
@@ -2465,19 +1819,11 @@ export interface GetAccountsClientsRequest {
   accountId: string;
 }
 export const GetAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientAccountId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/clients/{clientAccountId}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsClientsRequest",
-}) as any as S.Schema<GetAccountsClientsRequest>;
+S.Struct({
+  "clientAccountId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/clients/{clientAccountId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsClientsRequest" }) as any as S.Schema<GetAccountsClientsRequest>;
 
 export interface GetAccountsClientsInvitationsRequest {
   /** Numerical account ID of the client buyer that the user invitation to be retrieved is associated with. (required) */
@@ -2487,22 +1833,13 @@ export interface GetAccountsClientsInvitationsRequest {
   /** Numerical identifier of the user invitation to retrieve. (required) */
   invitationId: string;
 }
-export const GetAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientAccountId: S.String.pipe(T.Label()),
-      accountId: S.String.pipe(T.Label()),
-      invitationId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetAccountsClientsInvitationsRequest",
-}) as any as S.Schema<GetAccountsClientsInvitationsRequest>;
+export const GetAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "clientAccountId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "invitationId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsClientsInvitationsRequest" }) as any as S.Schema<GetAccountsClientsInvitationsRequest>;
 
 export interface GetAccountsClientsUsersRequest {
   /** Numerical account ID of the client's sponsor buyer. (required) */
@@ -2513,27 +1850,14 @@ export interface GetAccountsClientsUsersRequest {
   clientAccountId: string;
 }
 export const GetAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    userId: S.String.pipe(T.Label()),
-    clientAccountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsClientsUsersRequest",
-}) as any as S.Schema<GetAccountsClientsUsersRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "userId": S.String.pipe(T.Label()),
+  "clientAccountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsClientsUsersRequest" }) as any as S.Schema<GetAccountsClientsUsersRequest>;
 
-export type ClientUserStatusEnum =
-  | "USER_STATUS_UNSPECIFIED"
-  | "PENDING"
-  | "ACTIVE"
-  | "DISABLED"
-  | (string & {});
+export type ClientUserStatusEnum = "USER_STATUS_UNSPECIFIED" | "PENDING" | "ACTIVE" | "DISABLED";
 export const ClientUserStatusEnum = /*@__PURE__*/ S.String;
 
 /** A client user is created under a client buyer and has restricted access to the Marketplace and certain other sections of the Authorized Buyers UI based on the role granted to the associated client buyer. The only way a new client user can be created is through accepting an email invitation (see the accounts.clients.invitations.create method). All fields are required unless otherwise specified. */
@@ -2548,12 +1872,12 @@ export interface ClientUser {
   email?: string;
 }
 export const ClientUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientAccountId: S.optional(S.String),
-    status: S.optional(ClientUserStatusEnum),
-    userId: S.optional(S.String),
-    email: S.optional(S.String),
-  }),
+S.Struct({
+  "clientAccountId": S.optional(S.String),
+  "status": S.optional(ClientUserStatusEnum),
+  "userId": S.optional(S.String),
+  "email": S.optional(S.String),
+}),
 ).annotate({ identifier: "ClientUser" }) as any as S.Schema<ClientUser>;
 
 export interface GetAccountsCreativesRequest {
@@ -2563,19 +1887,11 @@ export interface GetAccountsCreativesRequest {
   accountId: string;
 }
 export const GetAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/creatives/{creativeId}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsCreativesRequest",
-}) as any as S.Schema<GetAccountsCreativesRequest>;
+S.Struct({
+  "creativeId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/creatives/{creativeId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsCreativesRequest" }) as any as S.Schema<GetAccountsCreativesRequest>;
 
 export interface GetAccountsProductsRequest {
   /** Account ID of the buyer. */
@@ -2584,27 +1900,13 @@ export interface GetAccountsProductsRequest {
   productId: string;
 }
 export const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/products/{productId}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsProductsRequest",
-}) as any as S.Schema<GetAccountsProductsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/products/{productId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsProductsRequest" }) as any as S.Schema<GetAccountsProductsRequest>;
 
-export type ProductSyndicationProductEnum =
-  | "SYNDICATION_PRODUCT_UNSPECIFIED"
-  | "CONTENT"
-  | "MOBILE"
-  | "VIDEO"
-  | "GAMES"
-  | (string & {});
+export type ProductSyndicationProductEnum = "SYNDICATION_PRODUCT_UNSPECIFIED" | "CONTENT" | "MOBILE" | "VIDEO" | "GAMES";
 export const ProductSyndicationProductEnum = /*@__PURE__*/ S.String;
 
 /** A product is a segment of inventory that a seller wants to sell. It is associated with certain terms and targeting information which helps the buyer know more about the inventory. */
@@ -2641,23 +1943,23 @@ export interface Product {
   createTime?: string;
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    targetingCriterion: S.optional(TargetingCriteriaList),
-    productId: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    seller: S.optional(Seller),
-    terms: S.optional(DealTerms),
-    syndicationProduct: S.optional(ProductSyndicationProductEnum),
-    publisherProfileId: S.optional(S.String),
-    creatorContacts: S.optional(ContactInformationList),
-    availableStartTime: S.optional(S.String),
-    productRevision: S.optional(S.String),
-    availableEndTime: S.optional(S.String),
-    hasCreatorSignedOff: S.optional(S.Boolean),
-    webPropertyCode: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "targetingCriterion": S.optional(TargetingCriteriaList),
+  "productId": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "seller": S.optional(Seller),
+  "terms": S.optional(DealTerms),
+  "syndicationProduct": S.optional(ProductSyndicationProductEnum),
+  "publisherProfileId": S.optional(S.String),
+  "creatorContacts": S.optional(ContactInformationList),
+  "availableStartTime": S.optional(S.String),
+  "productRevision": S.optional(S.String),
+  "availableEndTime": S.optional(S.String),
+  "hasCreatorSignedOff": S.optional(S.Boolean),
+  "webPropertyCode": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 export interface GetAccountsProposalsRequest {
@@ -2667,19 +1969,11 @@ export interface GetAccountsProposalsRequest {
   proposalId: string;
 }
 export const GetAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    proposalId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsProposalsRequest",
-}) as any as S.Schema<GetAccountsProposalsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "proposalId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/proposals/{proposalId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsProposalsRequest" }) as any as S.Schema<GetAccountsProposalsRequest>;
 
 export interface GetAccountsPublisherProfilesRequest {
   /** Account ID of the buyer. */
@@ -2688,38 +1982,14 @@ export interface GetAccountsPublisherProfilesRequest {
   publisherProfileId: string;
 }
 export const GetAccountsPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    publisherProfileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/publisherProfiles/{publisherProfileId}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsPublisherProfilesRequest",
-}) as any as S.Schema<GetAccountsPublisherProfilesRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "publisherProfileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/publisherProfiles/{publisherProfileId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsPublisherProfilesRequest" }) as any as S.Schema<GetAccountsPublisherProfilesRequest>;
 
-export type PublisherProfileMobileApplicationAppStoreEnum =
-  | "APP_STORE_TYPE_UNSPECIFIED"
-  | "APPLE_ITUNES"
-  | "GOOGLE_PLAY"
-  | "ROKU"
-  | "AMAZON_FIRETV"
-  | "PLAYSTATION"
-  | "XBOX"
-  | "SAMSUNG_TV"
-  | "AMAZON"
-  | "OPPO"
-  | "SAMSUNG"
-  | "VIVO"
-  | "XIAOMI"
-  | "LG_TV"
-  | (string & {});
-export const PublisherProfileMobileApplicationAppStoreEnum =
-  /*@__PURE__*/ S.String;
+export type PublisherProfileMobileApplicationAppStoreEnum = "APP_STORE_TYPE_UNSPECIFIED" | "APPLE_ITUNES" | "GOOGLE_PLAY" | "ROKU" | "AMAZON_FIRETV" | "PLAYSTATION" | "XBOX" | "SAMSUNG_TV" | "AMAZON" | "OPPO" | "SAMSUNG" | "VIVO" | "XIAOMI" | "LG_TV";
+export const PublisherProfileMobileApplicationAppStoreEnum = /*@__PURE__*/ S.String;
 
 /** A mobile application that contains a external app ID, name, and app store. */
 export interface PublisherProfileMobileApplication {
@@ -2731,20 +2001,15 @@ export interface PublisherProfileMobileApplication {
   name?: string;
 }
 export const PublisherProfileMobileApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalAppId: S.optional(S.String),
-    appStore: S.optional(PublisherProfileMobileApplicationAppStoreEnum),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublisherProfileMobileApplication",
-}) as any as S.Schema<PublisherProfileMobileApplication>;
+S.Struct({
+  "externalAppId": S.optional(S.String),
+  "appStore": S.optional(PublisherProfileMobileApplicationAppStoreEnum),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "PublisherProfileMobileApplication" }) as any as S.Schema<PublisherProfileMobileApplication>;
 
-export type PublisherProfileMobileApplicationList =
-  ReadonlyArray<PublisherProfileMobileApplication>;
-export const PublisherProfileMobileApplicationList = /*@__PURE__*/ S.Array(
-  PublisherProfileMobileApplication,
-) as any as S.Schema<PublisherProfileMobileApplicationList>;
+export type PublisherProfileMobileApplicationList = ReadonlyArray<PublisherProfileMobileApplication>;
+export const PublisherProfileMobileApplicationList = /*@__PURE__*/ S.Array(PublisherProfileMobileApplication) as any as S.Schema<PublisherProfileMobileApplicationList>;
 
 /** Represents a publisher profile (https://support.google.com/admanager/answer/6035806) in Marketplace. All fields are read only. All string fields are free-form text entered by the publisher unless noted otherwise. */
 export interface PublisherProfile {
@@ -2784,82 +2049,56 @@ export interface PublisherProfile {
   audienceDescription?: string;
 }
 export const PublisherProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    domains: S.optional(StringList),
-    seller: S.optional(Seller),
-    topHeadlines: S.optional(StringList),
-    programmaticDealsContact: S.optional(S.String),
-    publisherProfileId: S.optional(S.String),
-    googlePlusUrl: S.optional(S.String),
-    directDealsContact: S.optional(S.String),
-    mediaKitUrl: S.optional(S.String),
-    mobileApps: S.optional(PublisherProfileMobileApplicationList),
-    samplePageUrl: S.optional(S.String),
-    overview: S.optional(S.String),
-    buyerPitchStatement: S.optional(S.String),
-    isParent: S.optional(S.Boolean),
-    logoUrl: S.optional(S.String),
-    rateCardInfoUrl: S.optional(S.String),
-    audienceDescription: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublisherProfile",
-}) as any as S.Schema<PublisherProfile>;
+S.Struct({
+  "displayName": S.optional(S.String),
+  "domains": S.optional(StringList),
+  "seller": S.optional(Seller),
+  "topHeadlines": S.optional(StringList),
+  "programmaticDealsContact": S.optional(S.String),
+  "publisherProfileId": S.optional(S.String),
+  "googlePlusUrl": S.optional(S.String),
+  "directDealsContact": S.optional(S.String),
+  "mediaKitUrl": S.optional(S.String),
+  "mobileApps": S.optional(PublisherProfileMobileApplicationList),
+  "samplePageUrl": S.optional(S.String),
+  "overview": S.optional(S.String),
+  "buyerPitchStatement": S.optional(S.String),
+  "isParent": S.optional(S.Boolean),
+  "logoUrl": S.optional(S.String),
+  "rateCardInfoUrl": S.optional(S.String),
+  "audienceDescription": S.optional(S.String),
+}),
+).annotate({ identifier: "PublisherProfile" }) as any as S.Schema<PublisherProfile>;
 
 export interface GetBiddersAccountsFilterSetsRequest {
   /** Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
 export const GetBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/{+name}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBiddersAccountsFilterSetsRequest",
-}) as any as S.Schema<GetBiddersAccountsFilterSetsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+name}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "GetBiddersAccountsFilterSetsRequest" }) as any as S.Schema<GetBiddersAccountsFilterSetsRequest>;
 
 export interface GetBiddersFilterSetsRequest {
   /** Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
 export const GetBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/{+name}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBiddersFilterSetsRequest",
-}) as any as S.Schema<GetBiddersFilterSetsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+name}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "GetBiddersFilterSetsRequest" }) as any as S.Schema<GetBiddersFilterSetsRequest>;
 
 export interface GetBuyersFilterSetsRequest {
   /** Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
 export const GetBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/{+name}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBuyersFilterSetsRequest",
-}) as any as S.Schema<GetBuyersFilterSetsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+name}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "GetBuyersFilterSetsRequest" }) as any as S.Schema<GetBuyersFilterSetsRequest>;
 
 export interface ListAccountsClientsRequest {
   /** Unique numerical account ID of the sponsor buyer to list the clients for. */
@@ -2872,26 +2111,16 @@ export interface ListAccountsClientsRequest {
   pageToken?: string;
 }
 export const ListAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    partnerClientId: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/clients",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsClientsRequest",
-}) as any as S.Schema<ListAccountsClientsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "partnerClientId": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/clients","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsClientsRequest" }) as any as S.Schema<ListAccountsClientsRequest>;
 
 export type ClientList = ReadonlyArray<Client>;
-export const ClientList = /*@__PURE__*/ S.Array(
-  Client,
-) as any as S.Schema<ClientList>;
+export const ClientList = /*@__PURE__*/ S.Array(Client) as any as S.Schema<ClientList>;
 
 export interface ListClientsResponse {
   /** The returned list of clients. */
@@ -2900,13 +2129,11 @@ export interface ListClientsResponse {
   nextPageToken?: string;
 }
 export const ListClientsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clients: S.optional(ClientList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListClientsResponse",
-}) as any as S.Schema<ListClientsResponse>;
+S.Struct({
+  "clients": S.optional(ClientList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListClientsResponse" }) as any as S.Schema<ListClientsResponse>;
 
 export interface ListAccountsClientsInvitationsRequest {
   /** Numerical account ID of the client buyer to list invitations for. (required) You must either specify a string representation of a numerical account identifier or the `-` character to list all the invitations for all the clients of a given sponsor buyer. */
@@ -2918,28 +2145,17 @@ export interface ListAccountsClientsInvitationsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListClientUserInvitationsResponse.nextPageToken returned from the previous call to the clients.invitations.list method. */
   pageToken?: string;
 }
-export const ListAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientAccountId: S.String.pipe(T.Label()),
-      accountId: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListAccountsClientsInvitationsRequest",
-}) as any as S.Schema<ListAccountsClientsInvitationsRequest>;
+export const ListAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "clientAccountId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsClientsInvitationsRequest" }) as any as S.Schema<ListAccountsClientsInvitationsRequest>;
 
 export type ClientUserInvitationList = ReadonlyArray<ClientUserInvitation>;
-export const ClientUserInvitationList = /*@__PURE__*/ S.Array(
-  ClientUserInvitation,
-) as any as S.Schema<ClientUserInvitationList>;
+export const ClientUserInvitationList = /*@__PURE__*/ S.Array(ClientUserInvitation) as any as S.Schema<ClientUserInvitationList>;
 
 export interface ListClientUserInvitationsResponse {
   /** The returned list of client users. */
@@ -2948,13 +2164,11 @@ export interface ListClientUserInvitationsResponse {
   nextPageToken?: string;
 }
 export const ListClientUserInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invitations: S.optional(ClientUserInvitationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListClientUserInvitationsResponse",
-}) as any as S.Schema<ListClientUserInvitationsResponse>;
+S.Struct({
+  "invitations": S.optional(ClientUserInvitationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListClientUserInvitationsResponse" }) as any as S.Schema<ListClientUserInvitationsResponse>;
 
 export interface ListAccountsClientsUsersRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListClientUsersResponse.nextPageToken returned from the previous call to the accounts.clients.users.list method. */
@@ -2967,26 +2181,16 @@ export interface ListAccountsClientsUsersRequest {
   clientAccountId: string;
 }
 export const ListAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    accountId: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    clientAccountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsClientsUsersRequest",
-}) as any as S.Schema<ListAccountsClientsUsersRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "accountId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "clientAccountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/clients/{clientAccountId}/users","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsClientsUsersRequest" }) as any as S.Schema<ListAccountsClientsUsersRequest>;
 
 export type ClientUserList = ReadonlyArray<ClientUser>;
-export const ClientUserList = /*@__PURE__*/ S.Array(
-  ClientUser,
-) as any as S.Schema<ClientUserList>;
+export const ClientUserList = /*@__PURE__*/ S.Array(ClientUser) as any as S.Schema<ClientUserList>;
 
 export interface ListClientUsersResponse {
   /** The returned list of client users. */
@@ -2995,13 +2199,11 @@ export interface ListClientUsersResponse {
   nextPageToken?: string;
 }
 export const ListClientUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    users: S.optional(ClientUserList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListClientUsersResponse",
-}) as any as S.Schema<ListClientUsersResponse>;
+S.Struct({
+  "users": S.optional(ClientUserList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListClientUsersResponse" }) as any as S.Schema<ListClientUsersResponse>;
 
 export interface ListAccountsCreativesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListCreativesResponse.next_page_token returned from the previous call to 'ListCreatives' method. */
@@ -3014,26 +2216,16 @@ export interface ListAccountsCreativesRequest {
   pageSize?: number;
 }
 export const ListAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
-    accountId: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/creatives",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsCreativesRequest",
-}) as any as S.Schema<ListAccountsCreativesRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+  "accountId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/creatives","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsCreativesRequest" }) as any as S.Schema<ListAccountsCreativesRequest>;
 
 export type CreativeList = ReadonlyArray<Creative>;
-export const CreativeList = /*@__PURE__*/ S.Array(
-  Creative,
-) as any as S.Schema<CreativeList>;
+export const CreativeList = /*@__PURE__*/ S.Array(Creative) as any as S.Schema<CreativeList>;
 
 /** A response for listing creatives. */
 export interface ListCreativesResponse {
@@ -3043,13 +2235,11 @@ export interface ListCreativesResponse {
   creatives?: CreativeList;
 }
 export const ListCreativesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    creatives: S.optional(CreativeList),
-  }),
-).annotate({
-  identifier: "ListCreativesResponse",
-}) as any as S.Schema<ListCreativesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "creatives": S.optional(CreativeList),
+}),
+).annotate({ identifier: "ListCreativesResponse" }) as any as S.Schema<ListCreativesResponse>;
 
 export interface ListAccountsCreativesDealAssociationsRequest {
   /** An optional query string to filter deal associations. If no filter is specified, all associations will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsId=*deals_id_string* - dealsStatus:{approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked} Example: 'dealsId=12345 AND dealsStatus:disapproved' */
@@ -3063,30 +2253,18 @@ export interface ListAccountsCreativesDealAssociationsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListDealAssociationsResponse.next_page_token returned from the previous call to 'ListDealAssociations' method. */
   pageToken?: string;
 }
-export const ListAccountsCreativesDealAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      query: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      creativeId: S.String.pipe(T.Label()),
-      accountId: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAccountsCreativesDealAssociationsRequest",
-  }) as any as S.Schema<ListAccountsCreativesDealAssociationsRequest>;
+export const ListAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "query": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "creativeId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsCreativesDealAssociationsRequest" }) as any as S.Schema<ListAccountsCreativesDealAssociationsRequest>;
 
-export type CreativeDealAssociationList =
-  ReadonlyArray<CreativeDealAssociation>;
-export const CreativeDealAssociationList = /*@__PURE__*/ S.Array(
-  CreativeDealAssociation,
-) as any as S.Schema<CreativeDealAssociationList>;
+export type CreativeDealAssociationList = ReadonlyArray<CreativeDealAssociation>;
+export const CreativeDealAssociationList = /*@__PURE__*/ S.Array(CreativeDealAssociation) as any as S.Schema<CreativeDealAssociationList>;
 
 /** A response for listing creative and deal associations */
 export interface ListDealAssociationsResponse {
@@ -3096,21 +2274,14 @@ export interface ListDealAssociationsResponse {
   nextPageToken?: string;
 }
 export const ListDealAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    associations: S.optional(CreativeDealAssociationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDealAssociationsResponse",
-}) as any as S.Schema<ListDealAssociationsResponse>;
+S.Struct({
+  "associations": S.optional(CreativeDealAssociationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDealAssociationsResponse" }) as any as S.Schema<ListDealAssociationsResponse>;
 
-export type ListAccountsFinalizedProposalsFilterSyntaxEnum =
-  | "FILTER_SYNTAX_UNSPECIFIED"
-  | "PQL"
-  | "LIST_FILTER"
-  | (string & {});
-export const ListAccountsFinalizedProposalsFilterSyntaxEnum =
-  /*@__PURE__*/ S.String;
+export type ListAccountsFinalizedProposalsFilterSyntaxEnum = "FILTER_SYNTAX_UNSPECIFIED" | "PQL" | "LIST_FILTER";
+export const ListAccountsFinalizedProposalsFilterSyntaxEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountsFinalizedProposalsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
@@ -3118,37 +2289,24 @@ export interface ListAccountsFinalizedProposalsRequest {
   /** The page token as returned from ListProposalsResponse. */
   pageToken?: string;
   /** Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER. */
-  filterSyntax?: ListAccountsFinalizedProposalsFilterSyntaxEnum;
+  filterSyntax?: ListAccountsFinalizedProposalsFilterSyntaxEnum | (string & {});
   /** Account ID of the buyer. */
   accountId: string;
   /** An optional PQL filter query used to query for proposals. Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered. */
   filter?: string;
 }
-export const ListAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filterSyntax: S.optional(
-        ListAccountsFinalizedProposalsFilterSyntaxEnum.pipe(T.Query()),
-      ),
-      accountId: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/accounts/{accountId}/finalizedProposals",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListAccountsFinalizedProposalsRequest",
-}) as any as S.Schema<ListAccountsFinalizedProposalsRequest>;
+export const ListAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filterSyntax": S.optional(ListAccountsFinalizedProposalsFilterSyntaxEnum.pipe(T.Query())),
+  "accountId": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/finalizedProposals","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsFinalizedProposalsRequest" }) as any as S.Schema<ListAccountsFinalizedProposalsRequest>;
 
 export type ProposalList = ReadonlyArray<Proposal>;
-export const ProposalList = /*@__PURE__*/ S.Array(
-  Proposal,
-) as any as S.Schema<ProposalList>;
+export const ProposalList = /*@__PURE__*/ S.Array(Proposal) as any as S.Schema<ProposalList>;
 
 /** Response message for listing proposals. */
 export interface ListProposalsResponse {
@@ -3158,13 +2316,11 @@ export interface ListProposalsResponse {
   nextPageToken?: string;
 }
 export const ListProposalsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proposals: S.optional(ProposalList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProposalsResponse",
-}) as any as S.Schema<ListProposalsResponse>;
+S.Struct({
+  "proposals": S.optional(ProposalList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListProposalsResponse" }) as any as S.Schema<ListProposalsResponse>;
 
 export interface ListAccountsProductsRequest {
   /** The page token as returned from ListProductsResponse. */
@@ -3177,26 +2333,16 @@ export interface ListAccountsProductsRequest {
   pageSize?: number;
 }
 export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    accountId: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/products",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsProductsRequest",
-}) as any as S.Schema<ListAccountsProductsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "accountId": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/products","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsProductsRequest" }) as any as S.Schema<ListAccountsProductsRequest>;
 
 export type ProductList = ReadonlyArray<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(
-  Product,
-) as any as S.Schema<ProductList>;
+export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 /** Response message for listing products visible to the buyer. */
 export interface ListProductsResponse {
@@ -3206,19 +2352,13 @@ export interface ListProductsResponse {
   products?: ProductList;
 }
 export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    products: S.optional(ProductList),
-  }),
-).annotate({
-  identifier: "ListProductsResponse",
-}) as any as S.Schema<ListProductsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "products": S.optional(ProductList),
+}),
+).annotate({ identifier: "ListProductsResponse" }) as any as S.Schema<ListProductsResponse>;
 
-export type ListAccountsProposalsFilterSyntaxEnum =
-  | "FILTER_SYNTAX_UNSPECIFIED"
-  | "PQL"
-  | "LIST_FILTER"
-  | (string & {});
+export type ListAccountsProposalsFilterSyntaxEnum = "FILTER_SYNTAX_UNSPECIFIED" | "PQL" | "LIST_FILTER";
 export const ListAccountsProposalsFilterSyntaxEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountsProposalsRequest {
@@ -3229,29 +2369,19 @@ export interface ListAccountsProposalsRequest {
   /** The page token as returned from ListProposalsResponse. */
   pageToken?: string;
   /** Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER. */
-  filterSyntax?: ListAccountsProposalsFilterSyntaxEnum;
+  filterSyntax?: ListAccountsProposalsFilterSyntaxEnum | (string & {});
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
 export const ListAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filterSyntax: S.optional(
-      ListAccountsProposalsFilterSyntaxEnum.pipe(T.Query()),
-    ),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/accounts/{accountId}/proposals",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsProposalsRequest",
-}) as any as S.Schema<ListAccountsProposalsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filterSyntax": S.optional(ListAccountsProposalsFilterSyntaxEnum.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/proposals","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsProposalsRequest" }) as any as S.Schema<ListAccountsProposalsRequest>;
 
 export interface ListAccountsPublisherProfilesRequest {
   /** The page token as return from ListPublisherProfilesResponse. */
@@ -3261,27 +2391,16 @@ export interface ListAccountsPublisherProfilesRequest {
   /** Specify the number of results to include per page. */
   pageSize?: number;
 }
-export const ListAccountsPublisherProfilesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      accountId: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/accounts/{accountId}/publisherProfiles",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListAccountsPublisherProfilesRequest",
-}) as any as S.Schema<ListAccountsPublisherProfilesRequest>;
+export const ListAccountsPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "accountId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/accounts/{accountId}/publisherProfiles","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsPublisherProfilesRequest" }) as any as S.Schema<ListAccountsPublisherProfilesRequest>;
 
 export type PublisherProfileList = ReadonlyArray<PublisherProfile>;
-export const PublisherProfileList = /*@__PURE__*/ S.Array(
-  PublisherProfile,
-) as any as S.Schema<PublisherProfileList>;
+export const PublisherProfileList = /*@__PURE__*/ S.Array(PublisherProfile) as any as S.Schema<PublisherProfileList>;
 
 /** Response message for profiles visible to the buyer. */
 export interface ListPublisherProfilesResponse {
@@ -3291,13 +2410,11 @@ export interface ListPublisherProfilesResponse {
   nextPageToken?: string;
 }
 export const ListPublisherProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publisherProfiles: S.optional(PublisherProfileList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPublisherProfilesResponse",
-}) as any as S.Schema<ListPublisherProfilesResponse>;
+S.Struct({
+  "publisherProfiles": S.optional(PublisherProfileList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPublisherProfilesResponse" }) as any as S.Schema<ListPublisherProfilesResponse>;
 
 export interface ListBiddersAccountsFilterSetsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
@@ -3307,27 +2424,16 @@ export interface ListBiddersAccountsFilterSetsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method. */
   pageToken?: string;
 }
-export const ListBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      ownerName: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+ownerName}/filterSets",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListBiddersAccountsFilterSetsRequest",
-}) as any as S.Schema<ListBiddersAccountsFilterSetsRequest>;
+export const ListBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "ownerName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+ownerName}/filterSets","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsRequest>;
 
 export type FilterSetList = ReadonlyArray<FilterSet>;
-export const FilterSetList = /*@__PURE__*/ S.Array(
-  FilterSet,
-) as any as S.Schema<FilterSetList>;
+export const FilterSetList = /*@__PURE__*/ S.Array(FilterSet) as any as S.Schema<FilterSetList>;
 
 /** Response message for listing filter sets. */
 export interface ListFilterSetsResponse {
@@ -3337,13 +2443,11 @@ export interface ListFilterSetsResponse {
   nextPageToken?: string;
 }
 export const ListFilterSetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filterSets: S.optional(FilterSetList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListFilterSetsResponse",
-}) as any as S.Schema<ListFilterSetsResponse>;
+S.Struct({
+  "filterSets": S.optional(FilterSetList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListFilterSetsResponse" }) as any as S.Schema<ListFilterSetsResponse>;
 
 export interface ListBiddersAccountsFilterSetsBidMetricsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method. */
@@ -3353,22 +2457,13 @@ export interface ListBiddersAccountsFilterSetsBidMetricsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBiddersAccountsFilterSetsBidMetricsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/bidMetrics",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersAccountsFilterSetsBidMetricsRequest",
-  }) as any as S.Schema<ListBiddersAccountsFilterSetsBidMetricsRequest>;
+export const ListBiddersAccountsFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/bidMetrics","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsBidMetricsRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsBidMetricsRequest>;
 
 /** A metric value, with an expected value and a variance; represents a count that may be either exact or estimated (for example, when sampled). */
 export interface MetricValue {
@@ -3378,10 +2473,10 @@ export interface MetricValue {
   variance?: string;
 }
 export const MetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    variance: S.optional(S.String),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+  "variance": S.optional(S.String),
+}),
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
 /** An interval of time, with an absolute start and end. */
@@ -3392,10 +2487,10 @@ export interface TimeInterval {
   endTime?: string;
 }
 export const TimeInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeInterval" }) as any as S.Schema<TimeInterval>;
 
 /** A response may include multiple rows, breaking down along various dimensions. Encapsulates the values of all dimensions for a given row. */
@@ -3406,10 +2501,10 @@ export interface RowDimensions {
   publisherIdentifier?: string;
 }
 export const RowDimensions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeInterval: S.optional(TimeInterval),
-    publisherIdentifier: S.optional(S.String),
-  }),
+S.Struct({
+  "timeInterval": S.optional(TimeInterval),
+  "publisherIdentifier": S.optional(S.String),
+}),
 ).annotate({ identifier: "RowDimensions" }) as any as S.Schema<RowDimensions>;
 
 /** The set of metrics that are measured in numbers of bids, representing how many bids with the specified dimension values were considered eligible at each stage of the bidding funnel; */
@@ -3432,22 +2527,20 @@ export interface BidMetricsRow {
   viewableImpressions?: MetricValue;
 }
 export const BidMetricsRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bidsInAuction: S.optional(MetricValue),
-    reachedQueries: S.optional(MetricValue),
-    impressionsWon: S.optional(MetricValue),
-    billedImpressions: S.optional(MetricValue),
-    rowDimensions: S.optional(RowDimensions),
-    bids: S.optional(MetricValue),
-    measurableImpressions: S.optional(MetricValue),
-    viewableImpressions: S.optional(MetricValue),
-  }),
+S.Struct({
+  "bidsInAuction": S.optional(MetricValue),
+  "reachedQueries": S.optional(MetricValue),
+  "impressionsWon": S.optional(MetricValue),
+  "billedImpressions": S.optional(MetricValue),
+  "rowDimensions": S.optional(RowDimensions),
+  "bids": S.optional(MetricValue),
+  "measurableImpressions": S.optional(MetricValue),
+  "viewableImpressions": S.optional(MetricValue),
+}),
 ).annotate({ identifier: "BidMetricsRow" }) as any as S.Schema<BidMetricsRow>;
 
 export type BidMetricsRowList = ReadonlyArray<BidMetricsRow>;
-export const BidMetricsRowList = /*@__PURE__*/ S.Array(
-  BidMetricsRow,
-) as any as S.Schema<BidMetricsRowList>;
+export const BidMetricsRowList = /*@__PURE__*/ S.Array(BidMetricsRow) as any as S.Schema<BidMetricsRowList>;
 
 /** Response message for listing the metrics that are measured in number of bids. */
 export interface ListBidMetricsResponse {
@@ -3457,13 +2550,11 @@ export interface ListBidMetricsResponse {
   nextPageToken?: string;
 }
 export const ListBidMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bidMetricsRows: S.optional(BidMetricsRowList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBidMetricsResponse",
-}) as any as S.Schema<ListBidMetricsResponse>;
+S.Struct({
+  "bidMetricsRows": S.optional(BidMetricsRowList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBidMetricsResponse" }) as any as S.Schema<ListBidMetricsResponse>;
 
 export interface ListBiddersAccountsFilterSetsBidResponseErrorsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method. */
@@ -3473,22 +2564,13 @@ export interface ListBiddersAccountsFilterSetsBidResponseErrorsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersAccountsFilterSetsBidResponseErrorsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/bidResponseErrors",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersAccountsFilterSetsBidResponseErrorsRequest",
-  }) as any as S.Schema<ListBiddersAccountsFilterSetsBidResponseErrorsRequest>;
+export const ListBiddersAccountsFilterSetsBidResponseErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/bidResponseErrors","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsBidResponseErrorsRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsBidResponseErrorsRequest>;
 
 /** The number of impressions with the specified dimension values where the corresponding bid request or bid response was not successful, as described by the specified callout status. */
 export interface CalloutStatusRow {
@@ -3500,19 +2582,15 @@ export interface CalloutStatusRow {
   rowDimensions?: RowDimensions;
 }
 export const CalloutStatusRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    impressionCount: S.optional(MetricValue),
-    calloutStatusId: S.optional(S.Number),
-    rowDimensions: S.optional(RowDimensions),
-  }),
-).annotate({
-  identifier: "CalloutStatusRow",
-}) as any as S.Schema<CalloutStatusRow>;
+S.Struct({
+  "impressionCount": S.optional(MetricValue),
+  "calloutStatusId": S.optional(S.Number),
+  "rowDimensions": S.optional(RowDimensions),
+}),
+).annotate({ identifier: "CalloutStatusRow" }) as any as S.Schema<CalloutStatusRow>;
 
 export type CalloutStatusRowList = ReadonlyArray<CalloutStatusRow>;
-export const CalloutStatusRowList = /*@__PURE__*/ S.Array(
-  CalloutStatusRow,
-) as any as S.Schema<CalloutStatusRowList>;
+export const CalloutStatusRowList = /*@__PURE__*/ S.Array(CalloutStatusRow) as any as S.Schema<CalloutStatusRowList>;
 
 /** Response message for listing all reasons that bid responses resulted in an error. */
 export interface ListBidResponseErrorsResponse {
@@ -3522,13 +2600,11 @@ export interface ListBidResponseErrorsResponse {
   nextPageToken?: string;
 }
 export const ListBidResponseErrorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calloutStatusRows: S.optional(CalloutStatusRowList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBidResponseErrorsResponse",
-}) as any as S.Schema<ListBidResponseErrorsResponse>;
+S.Struct({
+  "calloutStatusRows": S.optional(CalloutStatusRowList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBidResponseErrorsResponse" }) as any as S.Schema<ListBidResponseErrorsResponse>;
 
 export interface ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method. */
@@ -3538,29 +2614,15 @@ export interface ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest",
-  }) as any as S.Schema<ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest>;
+export const ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/bidResponsesWithoutBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest>;
 
-export type BidResponseWithoutBidsStatusRowStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "RESPONSES_WITHOUT_BIDS"
-  | "RESPONSES_WITHOUT_BIDS_FOR_ACCOUNT"
-  | "RESPONSES_WITHOUT_BIDS_FOR_DEAL"
-  | (string & {});
+export type BidResponseWithoutBidsStatusRowStatusEnum = "STATUS_UNSPECIFIED" | "RESPONSES_WITHOUT_BIDS" | "RESPONSES_WITHOUT_BIDS_FOR_ACCOUNT" | "RESPONSES_WITHOUT_BIDS_FOR_DEAL";
 export const BidResponseWithoutBidsStatusRowStatusEnum = /*@__PURE__*/ S.String;
 
 /** The number of impressions with the specified dimension values that were considered to have no applicable bids, as described by the specified status. */
@@ -3573,20 +2635,15 @@ export interface BidResponseWithoutBidsStatusRow {
   rowDimensions?: RowDimensions;
 }
 export const BidResponseWithoutBidsStatusRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    impressionCount: S.optional(MetricValue),
-    status: S.optional(BidResponseWithoutBidsStatusRowStatusEnum),
-    rowDimensions: S.optional(RowDimensions),
-  }),
-).annotate({
-  identifier: "BidResponseWithoutBidsStatusRow",
-}) as any as S.Schema<BidResponseWithoutBidsStatusRow>;
+S.Struct({
+  "impressionCount": S.optional(MetricValue),
+  "status": S.optional(BidResponseWithoutBidsStatusRowStatusEnum),
+  "rowDimensions": S.optional(RowDimensions),
+}),
+).annotate({ identifier: "BidResponseWithoutBidsStatusRow" }) as any as S.Schema<BidResponseWithoutBidsStatusRow>;
 
-export type BidResponseWithoutBidsStatusRowList =
-  ReadonlyArray<BidResponseWithoutBidsStatusRow>;
-export const BidResponseWithoutBidsStatusRowList = /*@__PURE__*/ S.Array(
-  BidResponseWithoutBidsStatusRow,
-) as any as S.Schema<BidResponseWithoutBidsStatusRowList>;
+export type BidResponseWithoutBidsStatusRowList = ReadonlyArray<BidResponseWithoutBidsStatusRow>;
+export const BidResponseWithoutBidsStatusRowList = /*@__PURE__*/ S.Array(BidResponseWithoutBidsStatusRow) as any as S.Schema<BidResponseWithoutBidsStatusRowList>;
 
 /** Response message for listing all reasons that bid responses were considered to have no applicable bids. */
 export interface ListBidResponsesWithoutBidsResponse {
@@ -3596,15 +2653,11 @@ export interface ListBidResponsesWithoutBidsResponse {
   nextPageToken?: string;
 }
 export const ListBidResponsesWithoutBidsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bidResponseWithoutBidsStatusRows: S.optional(
-      BidResponseWithoutBidsStatusRowList,
-    ),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBidResponsesWithoutBidsResponse",
-}) as any as S.Schema<ListBidResponsesWithoutBidsResponse>;
+S.Struct({
+  "bidResponseWithoutBidsStatusRows": S.optional(BidResponseWithoutBidsStatusRowList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBidResponsesWithoutBidsResponse" }) as any as S.Schema<ListBidResponsesWithoutBidsResponse>;
 
 export interface ListBiddersAccountsFilterSetsFilteredBidRequestsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method. */
@@ -3614,22 +2667,13 @@ export interface ListBiddersAccountsFilterSetsFilteredBidRequestsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersAccountsFilterSetsFilteredBidRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBidRequests",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersAccountsFilterSetsFilteredBidRequestsRequest",
-  }) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidRequestsRequest>;
+export const ListBiddersAccountsFilterSetsFilteredBidRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBidRequests","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsFilteredBidRequestsRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidRequestsRequest>;
 
 /** Response message for listing all reasons that bid requests were filtered and not sent to the buyer. */
 export interface ListFilteredBidRequestsResponse {
@@ -3639,13 +2683,11 @@ export interface ListFilteredBidRequestsResponse {
   calloutStatusRows?: CalloutStatusRowList;
 }
 export const ListFilteredBidRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    calloutStatusRows: S.optional(CalloutStatusRowList),
-  }),
-).annotate({
-  identifier: "ListFilteredBidRequestsResponse",
-}) as any as S.Schema<ListFilteredBidRequestsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "calloutStatusRows": S.optional(CalloutStatusRowList),
+}),
+).annotate({ identifier: "ListFilteredBidRequestsResponse" }) as any as S.Schema<ListFilteredBidRequestsResponse>;
 
 export interface ListBiddersAccountsFilterSetsFilteredBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method. */
@@ -3655,22 +2697,13 @@ export interface ListBiddersAccountsFilterSetsFilteredBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersAccountsFilterSetsFilteredBidsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersAccountsFilterSetsFilteredBidsRequest",
-  }) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsRequest>;
+export const ListBiddersAccountsFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsFilteredBidsRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsRequest>;
 
 /** The number of bids with the specified dimension values that did not win the auction (either were filtered pre-auction or lost the auction), as described by the specified creative status. */
 export interface CreativeStatusRow {
@@ -3682,19 +2715,15 @@ export interface CreativeStatusRow {
   rowDimensions?: RowDimensions;
 }
 export const CreativeStatusRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bidCount: S.optional(MetricValue),
-    creativeStatusId: S.optional(S.Number),
-    rowDimensions: S.optional(RowDimensions),
-  }),
-).annotate({
-  identifier: "CreativeStatusRow",
-}) as any as S.Schema<CreativeStatusRow>;
+S.Struct({
+  "bidCount": S.optional(MetricValue),
+  "creativeStatusId": S.optional(S.Number),
+  "rowDimensions": S.optional(RowDimensions),
+}),
+).annotate({ identifier: "CreativeStatusRow" }) as any as S.Schema<CreativeStatusRow>;
 
 export type CreativeStatusRowList = ReadonlyArray<CreativeStatusRow>;
-export const CreativeStatusRowList = /*@__PURE__*/ S.Array(
-  CreativeStatusRow,
-) as any as S.Schema<CreativeStatusRowList>;
+export const CreativeStatusRowList = /*@__PURE__*/ S.Array(CreativeStatusRow) as any as S.Schema<CreativeStatusRowList>;
 
 /** Response message for listing all reasons that bids were filtered from the auction. */
 export interface ListFilteredBidsResponse {
@@ -3704,13 +2733,11 @@ export interface ListFilteredBidsResponse {
   nextPageToken?: string;
 }
 export const ListFilteredBidsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeStatusRows: S.optional(CreativeStatusRowList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListFilteredBidsResponse",
-}) as any as S.Schema<ListFilteredBidsResponse>;
+S.Struct({
+  "creativeStatusRows": S.optional(CreativeStatusRowList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListFilteredBidsResponse" }) as any as S.Schema<ListFilteredBidsResponse>;
 
 export interface ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method. */
@@ -3722,23 +2749,14 @@ export interface ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      creativeStatusId: S.Number.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest",
-  }) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest>;
+export const ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "creativeStatusId": S.Number.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest>;
 
 /** The number of filtered bids with the specified dimension values that have the specified creative. */
 export interface FilteredBidCreativeRow {
@@ -3750,19 +2768,15 @@ export interface FilteredBidCreativeRow {
   rowDimensions?: RowDimensions;
 }
 export const FilteredBidCreativeRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bidCount: S.optional(MetricValue),
-    creativeId: S.optional(S.String),
-    rowDimensions: S.optional(RowDimensions),
-  }),
-).annotate({
-  identifier: "FilteredBidCreativeRow",
-}) as any as S.Schema<FilteredBidCreativeRow>;
+S.Struct({
+  "bidCount": S.optional(MetricValue),
+  "creativeId": S.optional(S.String),
+  "rowDimensions": S.optional(RowDimensions),
+}),
+).annotate({ identifier: "FilteredBidCreativeRow" }) as any as S.Schema<FilteredBidCreativeRow>;
 
 export type FilteredBidCreativeRowList = ReadonlyArray<FilteredBidCreativeRow>;
-export const FilteredBidCreativeRowList = /*@__PURE__*/ S.Array(
-  FilteredBidCreativeRow,
-) as any as S.Schema<FilteredBidCreativeRowList>;
+export const FilteredBidCreativeRowList = /*@__PURE__*/ S.Array(FilteredBidCreativeRow) as any as S.Schema<FilteredBidCreativeRowList>;
 
 /** Response message for listing all creatives associated with a given filtered bid reason. */
 export interface ListCreativeStatusBreakdownByCreativeResponse {
@@ -3771,15 +2785,12 @@ export interface ListCreativeStatusBreakdownByCreativeResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListCreativeStatusBreakdownByCreativeRequest.pageToken field in the subsequent call to the filteredBids.creatives.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListCreativeStatusBreakdownByCreativeResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filteredBidCreativeRows: S.optional(FilteredBidCreativeRowList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListCreativeStatusBreakdownByCreativeResponse",
-  }) as any as S.Schema<ListCreativeStatusBreakdownByCreativeResponse>;
+export const ListCreativeStatusBreakdownByCreativeResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filteredBidCreativeRows": S.optional(FilteredBidCreativeRowList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCreativeStatusBreakdownByCreativeResponse" }) as any as S.Schema<ListCreativeStatusBreakdownByCreativeResponse>;
 
 export interface ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest {
   /** The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87. */
@@ -3791,38 +2802,17 @@ export interface ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method. */
   pageToken?: string;
 }
-export const ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      creativeStatusId: S.Number.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest",
-  }) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest>;
+export const ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "creativeStatusId": S.Number.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest>;
 
-export type ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum =
-  | "DETAIL_TYPE_UNSPECIFIED"
-  | "CREATIVE_ATTRIBUTE"
-  | "VENDOR"
-  | "SENSITIVE_CATEGORY"
-  | "PRODUCT_CATEGORY"
-  | "DISAPPROVAL_REASON"
-  | "POLICY_TOPIC"
-  | "ATP_VENDOR"
-  | "VENDOR_DOMAIN"
-  | "GVL_ID"
-  | (string & {});
-export const ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum = "DETAIL_TYPE_UNSPECIFIED" | "CREATIVE_ATTRIBUTE" | "VENDOR" | "SENSITIVE_CATEGORY" | "PRODUCT_CATEGORY" | "DISAPPROVAL_REASON" | "POLICY_TOPIC" | "ATP_VENDOR" | "VENDOR_DOMAIN" | "GVL_ID";
+export const ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum = /*@__PURE__*/ S.String;
 
 /** The number of filtered bids with the specified dimension values, among those filtered due to the requested filtering reason (for example, creative status), that have the specified detail. */
 export interface FilteredBidDetailRow {
@@ -3836,20 +2826,16 @@ export interface FilteredBidDetailRow {
   rowDimensions?: RowDimensions;
 }
 export const FilteredBidDetailRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bidCount: S.optional(MetricValue),
-    detail: S.optional(S.String),
-    detailId: S.optional(S.Number),
-    rowDimensions: S.optional(RowDimensions),
-  }),
-).annotate({
-  identifier: "FilteredBidDetailRow",
-}) as any as S.Schema<FilteredBidDetailRow>;
+S.Struct({
+  "bidCount": S.optional(MetricValue),
+  "detail": S.optional(S.String),
+  "detailId": S.optional(S.Number),
+  "rowDimensions": S.optional(RowDimensions),
+}),
+).annotate({ identifier: "FilteredBidDetailRow" }) as any as S.Schema<FilteredBidDetailRow>;
 
 export type FilteredBidDetailRowList = ReadonlyArray<FilteredBidDetailRow>;
-export const FilteredBidDetailRowList = /*@__PURE__*/ S.Array(
-  FilteredBidDetailRow,
-) as any as S.Schema<FilteredBidDetailRowList>;
+export const FilteredBidDetailRowList = /*@__PURE__*/ S.Array(FilteredBidDetailRow) as any as S.Schema<FilteredBidDetailRowList>;
 
 /** Response message for listing all details associated with a given filtered bid reason. */
 export interface ListCreativeStatusBreakdownByDetailResponse {
@@ -3860,18 +2846,13 @@ export interface ListCreativeStatusBreakdownByDetailResponse {
   /** List of rows, with counts of bids with a given creative status aggregated by detail. */
   filteredBidDetailRows?: FilteredBidDetailRowList;
 }
-export const ListCreativeStatusBreakdownByDetailResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detailType: S.optional(
-        ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum,
-      ),
-      nextPageToken: S.optional(S.String),
-      filteredBidDetailRows: S.optional(FilteredBidDetailRowList),
-    }),
-  ).annotate({
-    identifier: "ListCreativeStatusBreakdownByDetailResponse",
-  }) as any as S.Schema<ListCreativeStatusBreakdownByDetailResponse>;
+export const ListCreativeStatusBreakdownByDetailResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "detailType": S.optional(ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum),
+  "nextPageToken": S.optional(S.String),
+  "filteredBidDetailRows": S.optional(FilteredBidDetailRowList),
+}),
+).annotate({ identifier: "ListCreativeStatusBreakdownByDetailResponse" }) as any as S.Schema<ListCreativeStatusBreakdownByDetailResponse>;
 
 export interface ListBiddersAccountsFilterSetsImpressionMetricsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method. */
@@ -3881,22 +2862,13 @@ export interface ListBiddersAccountsFilterSetsImpressionMetricsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBiddersAccountsFilterSetsImpressionMetricsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/impressionMetrics",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersAccountsFilterSetsImpressionMetricsRequest",
-  }) as any as S.Schema<ListBiddersAccountsFilterSetsImpressionMetricsRequest>;
+export const ListBiddersAccountsFilterSetsImpressionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/impressionMetrics","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsImpressionMetricsRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsImpressionMetricsRequest>;
 
 /** The set of metrics that are measured in numbers of impressions, representing how many impressions with the specified dimension values were considered eligible at each stage of the bidding funnel. */
 export interface ImpressionMetricsRow {
@@ -3914,22 +2886,18 @@ export interface ImpressionMetricsRow {
   inventoryMatches?: MetricValue;
 }
 export const ImpressionMetricsRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responsesWithBids: S.optional(MetricValue),
-    availableImpressions: S.optional(MetricValue),
-    bidRequests: S.optional(MetricValue),
-    successfulResponses: S.optional(MetricValue),
-    rowDimensions: S.optional(RowDimensions),
-    inventoryMatches: S.optional(MetricValue),
-  }),
-).annotate({
-  identifier: "ImpressionMetricsRow",
-}) as any as S.Schema<ImpressionMetricsRow>;
+S.Struct({
+  "responsesWithBids": S.optional(MetricValue),
+  "availableImpressions": S.optional(MetricValue),
+  "bidRequests": S.optional(MetricValue),
+  "successfulResponses": S.optional(MetricValue),
+  "rowDimensions": S.optional(RowDimensions),
+  "inventoryMatches": S.optional(MetricValue),
+}),
+).annotate({ identifier: "ImpressionMetricsRow" }) as any as S.Schema<ImpressionMetricsRow>;
 
 export type ImpressionMetricsRowList = ReadonlyArray<ImpressionMetricsRow>;
-export const ImpressionMetricsRowList = /*@__PURE__*/ S.Array(
-  ImpressionMetricsRow,
-) as any as S.Schema<ImpressionMetricsRowList>;
+export const ImpressionMetricsRowList = /*@__PURE__*/ S.Array(ImpressionMetricsRow) as any as S.Schema<ImpressionMetricsRowList>;
 
 /** Response message for listing the metrics that are measured in number of impressions. */
 export interface ListImpressionMetricsResponse {
@@ -3939,13 +2907,11 @@ export interface ListImpressionMetricsResponse {
   nextPageToken?: string;
 }
 export const ListImpressionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    impressionMetricsRows: S.optional(ImpressionMetricsRowList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListImpressionMetricsResponse",
-}) as any as S.Schema<ListImpressionMetricsResponse>;
+S.Struct({
+  "impressionMetricsRows": S.optional(ImpressionMetricsRowList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListImpressionMetricsResponse" }) as any as S.Schema<ListImpressionMetricsResponse>;
 
 export interface ListBiddersAccountsFilterSetsLosingBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
@@ -3955,22 +2921,13 @@ export interface ListBiddersAccountsFilterSetsLosingBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. */
   pageToken?: string;
 }
-export const ListBiddersAccountsFilterSetsLosingBidsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/losingBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersAccountsFilterSetsLosingBidsRequest",
-  }) as any as S.Schema<ListBiddersAccountsFilterSetsLosingBidsRequest>;
+export const ListBiddersAccountsFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/losingBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsLosingBidsRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsLosingBidsRequest>;
 
 /** Response message for listing all reasons that bids lost in the auction. */
 export interface ListLosingBidsResponse {
@@ -3980,13 +2937,11 @@ export interface ListLosingBidsResponse {
   nextPageToken?: string;
 }
 export const ListLosingBidsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeStatusRows: S.optional(CreativeStatusRowList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLosingBidsResponse",
-}) as any as S.Schema<ListLosingBidsResponse>;
+S.Struct({
+  "creativeStatusRows": S.optional(CreativeStatusRowList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLosingBidsResponse" }) as any as S.Schema<ListLosingBidsResponse>;
 
 export interface ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method. */
@@ -3996,31 +2951,15 @@ export interface ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/nonBillableWinningBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest",
-  }) as any as S.Schema<ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest>;
+export const ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/nonBillableWinningBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest" }) as any as S.Schema<ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest>;
 
-export type NonBillableWinningBidStatusRowStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "AD_NOT_RENDERED"
-  | "INVALID_IMPRESSION"
-  | "FATAL_VAST_ERROR"
-  | "LOST_IN_MEDIATION"
-  | "OVERDELIVERED_IMPRESSION"
-  | (string & {});
+export type NonBillableWinningBidStatusRowStatusEnum = "STATUS_UNSPECIFIED" | "AD_NOT_RENDERED" | "INVALID_IMPRESSION" | "FATAL_VAST_ERROR" | "LOST_IN_MEDIATION" | "OVERDELIVERED_IMPRESSION";
 export const NonBillableWinningBidStatusRowStatusEnum = /*@__PURE__*/ S.String;
 
 /** The number of winning bids with the specified dimension values for which the buyer was not billed, as described by the specified status. */
@@ -4033,20 +2972,15 @@ export interface NonBillableWinningBidStatusRow {
   rowDimensions?: RowDimensions;
 }
 export const NonBillableWinningBidStatusRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bidCount: S.optional(MetricValue),
-    status: S.optional(NonBillableWinningBidStatusRowStatusEnum),
-    rowDimensions: S.optional(RowDimensions),
-  }),
-).annotate({
-  identifier: "NonBillableWinningBidStatusRow",
-}) as any as S.Schema<NonBillableWinningBidStatusRow>;
+S.Struct({
+  "bidCount": S.optional(MetricValue),
+  "status": S.optional(NonBillableWinningBidStatusRowStatusEnum),
+  "rowDimensions": S.optional(RowDimensions),
+}),
+).annotate({ identifier: "NonBillableWinningBidStatusRow" }) as any as S.Schema<NonBillableWinningBidStatusRow>;
 
-export type NonBillableWinningBidStatusRowList =
-  ReadonlyArray<NonBillableWinningBidStatusRow>;
-export const NonBillableWinningBidStatusRowList = /*@__PURE__*/ S.Array(
-  NonBillableWinningBidStatusRow,
-) as any as S.Schema<NonBillableWinningBidStatusRowList>;
+export type NonBillableWinningBidStatusRowList = ReadonlyArray<NonBillableWinningBidStatusRow>;
+export const NonBillableWinningBidStatusRowList = /*@__PURE__*/ S.Array(NonBillableWinningBidStatusRow) as any as S.Schema<NonBillableWinningBidStatusRowList>;
 
 /** Response message for listing all reasons for which a buyer was not billed for a winning bid. */
 export interface ListNonBillableWinningBidsResponse {
@@ -4056,15 +2990,11 @@ export interface ListNonBillableWinningBidsResponse {
   nextPageToken?: string;
 }
 export const ListNonBillableWinningBidsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nonBillableWinningBidStatusRows: S.optional(
-      NonBillableWinningBidStatusRowList,
-    ),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListNonBillableWinningBidsResponse",
-}) as any as S.Schema<ListNonBillableWinningBidsResponse>;
+S.Struct({
+  "nonBillableWinningBidStatusRows": S.optional(NonBillableWinningBidStatusRowList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListNonBillableWinningBidsResponse" }) as any as S.Schema<ListNonBillableWinningBidsResponse>;
 
 export interface ListBiddersFilterSetsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
@@ -4075,20 +3005,12 @@ export interface ListBiddersFilterSetsRequest {
   pageToken?: string;
 }
 export const ListBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    ownerName: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/{+ownerName}/filterSets",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBiddersFilterSetsRequest",
-}) as any as S.Schema<ListBiddersFilterSetsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "ownerName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+ownerName}/filterSets","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsRequest" }) as any as S.Schema<ListBiddersFilterSetsRequest>;
 
 export interface ListBiddersFilterSetsBidMetricsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method. */
@@ -4098,22 +3020,13 @@ export interface ListBiddersFilterSetsBidMetricsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/bidMetrics",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListBiddersFilterSetsBidMetricsRequest",
-}) as any as S.Schema<ListBiddersFilterSetsBidMetricsRequest>;
+export const ListBiddersFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/bidMetrics","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsBidMetricsRequest" }) as any as S.Schema<ListBiddersFilterSetsBidMetricsRequest>;
 
 export interface ListBiddersFilterSetsBidResponseErrorsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
@@ -4123,22 +3036,13 @@ export interface ListBiddersFilterSetsBidResponseErrorsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsBidResponseErrorsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/bidResponseErrors",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersFilterSetsBidResponseErrorsRequest",
-  }) as any as S.Schema<ListBiddersFilterSetsBidResponseErrorsRequest>;
+export const ListBiddersFilterSetsBidResponseErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/bidResponseErrors","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsBidResponseErrorsRequest" }) as any as S.Schema<ListBiddersFilterSetsBidResponseErrorsRequest>;
 
 export interface ListBiddersFilterSetsBidResponsesWithoutBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method. */
@@ -4148,22 +3052,13 @@ export interface ListBiddersFilterSetsBidResponsesWithoutBidsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBiddersFilterSetsBidResponsesWithoutBidsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersFilterSetsBidResponsesWithoutBidsRequest",
-  }) as any as S.Schema<ListBiddersFilterSetsBidResponsesWithoutBidsRequest>;
+export const ListBiddersFilterSetsBidResponsesWithoutBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/bidResponsesWithoutBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsBidResponsesWithoutBidsRequest" }) as any as S.Schema<ListBiddersFilterSetsBidResponsesWithoutBidsRequest>;
 
 export interface ListBiddersFilterSetsFilteredBidRequestsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
@@ -4173,22 +3068,13 @@ export interface ListBiddersFilterSetsFilteredBidRequestsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsFilteredBidRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBidRequests",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersFilterSetsFilteredBidRequestsRequest",
-  }) as any as S.Schema<ListBiddersFilterSetsFilteredBidRequestsRequest>;
+export const ListBiddersFilterSetsFilteredBidRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBidRequests","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsFilteredBidRequestsRequest" }) as any as S.Schema<ListBiddersFilterSetsFilteredBidRequestsRequest>;
 
 export interface ListBiddersFilterSetsFilteredBidsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
@@ -4198,22 +3084,13 @@ export interface ListBiddersFilterSetsFilteredBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListBiddersFilterSetsFilteredBidsRequest",
-}) as any as S.Schema<ListBiddersFilterSetsFilteredBidsRequest>;
+export const ListBiddersFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsFilteredBidsRequest" }) as any as S.Schema<ListBiddersFilterSetsFilteredBidsRequest>;
 
 export interface ListBiddersFilterSetsFilteredBidsCreativesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method. */
@@ -4225,23 +3102,14 @@ export interface ListBiddersFilterSetsFilteredBidsCreativesRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersFilterSetsFilteredBidsCreativesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      creativeStatusId: S.Number.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersFilterSetsFilteredBidsCreativesRequest",
-  }) as any as S.Schema<ListBiddersFilterSetsFilteredBidsCreativesRequest>;
+export const ListBiddersFilterSetsFilteredBidsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "creativeStatusId": S.Number.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsFilteredBidsCreativesRequest" }) as any as S.Schema<ListBiddersFilterSetsFilteredBidsCreativesRequest>;
 
 export interface ListBiddersFilterSetsFilteredBidsDetailsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
@@ -4253,23 +3121,14 @@ export interface ListBiddersFilterSetsFilteredBidsDetailsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsFilteredBidsDetailsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterSetName: S.String.pipe(T.Label()),
-      creativeStatusId: S.Number.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersFilterSetsFilteredBidsDetailsRequest",
-  }) as any as S.Schema<ListBiddersFilterSetsFilteredBidsDetailsRequest>;
+export const ListBiddersFilterSetsFilteredBidsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filterSetName": S.String.pipe(T.Label()),
+  "creativeStatusId": S.Number.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsFilteredBidsDetailsRequest" }) as any as S.Schema<ListBiddersFilterSetsFilteredBidsDetailsRequest>;
 
 export interface ListBiddersFilterSetsImpressionMetricsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
@@ -4279,22 +3138,13 @@ export interface ListBiddersFilterSetsImpressionMetricsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsImpressionMetricsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/impressionMetrics",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersFilterSetsImpressionMetricsRequest",
-  }) as any as S.Schema<ListBiddersFilterSetsImpressionMetricsRequest>;
+export const ListBiddersFilterSetsImpressionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/impressionMetrics","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsImpressionMetricsRequest" }) as any as S.Schema<ListBiddersFilterSetsImpressionMetricsRequest>;
 
 export interface ListBiddersFilterSetsLosingBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
@@ -4304,22 +3154,13 @@ export interface ListBiddersFilterSetsLosingBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/losingBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListBiddersFilterSetsLosingBidsRequest",
-}) as any as S.Schema<ListBiddersFilterSetsLosingBidsRequest>;
+export const ListBiddersFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/losingBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsLosingBidsRequest" }) as any as S.Schema<ListBiddersFilterSetsLosingBidsRequest>;
 
 export interface ListBiddersFilterSetsNonBillableWinningBidsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
@@ -4329,22 +3170,13 @@ export interface ListBiddersFilterSetsNonBillableWinningBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsNonBillableWinningBidsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/nonBillableWinningBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBiddersFilterSetsNonBillableWinningBidsRequest",
-  }) as any as S.Schema<ListBiddersFilterSetsNonBillableWinningBidsRequest>;
+export const ListBiddersFilterSetsNonBillableWinningBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/nonBillableWinningBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFilterSetsNonBillableWinningBidsRequest" }) as any as S.Schema<ListBiddersFilterSetsNonBillableWinningBidsRequest>;
 
 export interface ListBuyersFilterSetsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
@@ -4355,20 +3187,12 @@ export interface ListBuyersFilterSetsRequest {
   pageToken?: string;
 }
 export const ListBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    ownerName: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta1/{+ownerName}/filterSets",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBuyersFilterSetsRequest",
-}) as any as S.Schema<ListBuyersFilterSetsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "ownerName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+ownerName}/filterSets","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsRequest" }) as any as S.Schema<ListBuyersFilterSetsRequest>;
 
 export interface ListBuyersFilterSetsBidMetricsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method. */
@@ -4378,22 +3202,13 @@ export interface ListBuyersFilterSetsBidMetricsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBuyersFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/bidMetrics",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListBuyersFilterSetsBidMetricsRequest",
-}) as any as S.Schema<ListBuyersFilterSetsBidMetricsRequest>;
+export const ListBuyersFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/bidMetrics","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsBidMetricsRequest" }) as any as S.Schema<ListBuyersFilterSetsBidMetricsRequest>;
 
 export interface ListBuyersFilterSetsBidResponseErrorsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
@@ -4403,22 +3218,13 @@ export interface ListBuyersFilterSetsBidResponseErrorsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method. */
   pageToken?: string;
 }
-export const ListBuyersFilterSetsBidResponseErrorsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/bidResponseErrors",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBuyersFilterSetsBidResponseErrorsRequest",
-  }) as any as S.Schema<ListBuyersFilterSetsBidResponseErrorsRequest>;
+export const ListBuyersFilterSetsBidResponseErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/bidResponseErrors","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsBidResponseErrorsRequest" }) as any as S.Schema<ListBuyersFilterSetsBidResponseErrorsRequest>;
 
 export interface ListBuyersFilterSetsBidResponsesWithoutBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
@@ -4428,22 +3234,13 @@ export interface ListBuyersFilterSetsBidResponsesWithoutBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method. */
   pageToken?: string;
 }
-export const ListBuyersFilterSetsBidResponsesWithoutBidsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBuyersFilterSetsBidResponsesWithoutBidsRequest",
-  }) as any as S.Schema<ListBuyersFilterSetsBidResponsesWithoutBidsRequest>;
+export const ListBuyersFilterSetsBidResponsesWithoutBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/bidResponsesWithoutBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsBidResponsesWithoutBidsRequest" }) as any as S.Schema<ListBuyersFilterSetsBidResponsesWithoutBidsRequest>;
 
 export interface ListBuyersFilterSetsFilteredBidRequestsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
@@ -4453,22 +3250,13 @@ export interface ListBuyersFilterSetsFilteredBidRequestsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method. */
   pageToken?: string;
 }
-export const ListBuyersFilterSetsFilteredBidRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBidRequests",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBuyersFilterSetsFilteredBidRequestsRequest",
-  }) as any as S.Schema<ListBuyersFilterSetsFilteredBidRequestsRequest>;
+export const ListBuyersFilterSetsFilteredBidRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBidRequests","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsFilteredBidRequestsRequest" }) as any as S.Schema<ListBuyersFilterSetsFilteredBidRequestsRequest>;
 
 export interface ListBuyersFilterSetsFilteredBidsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
@@ -4478,22 +3266,13 @@ export interface ListBuyersFilterSetsFilteredBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method. */
   pageToken?: string;
 }
-export const ListBuyersFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListBuyersFilterSetsFilteredBidsRequest",
-}) as any as S.Schema<ListBuyersFilterSetsFilteredBidsRequest>;
+export const ListBuyersFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsFilteredBidsRequest" }) as any as S.Schema<ListBuyersFilterSetsFilteredBidsRequest>;
 
 export interface ListBuyersFilterSetsFilteredBidsCreativesRequest {
   /** The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). */
@@ -4505,23 +3284,14 @@ export interface ListBuyersFilterSetsFilteredBidsCreativesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method. */
   pageToken?: string;
 }
-export const ListBuyersFilterSetsFilteredBidsCreativesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      creativeStatusId: S.Number.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBuyersFilterSetsFilteredBidsCreativesRequest",
-  }) as any as S.Schema<ListBuyersFilterSetsFilteredBidsCreativesRequest>;
+export const ListBuyersFilterSetsFilteredBidsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "creativeStatusId": S.Number.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsFilteredBidsCreativesRequest" }) as any as S.Schema<ListBuyersFilterSetsFilteredBidsCreativesRequest>;
 
 export interface ListBuyersFilterSetsFilteredBidsDetailsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method. */
@@ -4533,23 +3303,14 @@ export interface ListBuyersFilterSetsFilteredBidsDetailsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBuyersFilterSetsFilteredBidsDetailsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      creativeStatusId: S.Number.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBuyersFilterSetsFilteredBidsDetailsRequest",
-  }) as any as S.Schema<ListBuyersFilterSetsFilteredBidsDetailsRequest>;
+export const ListBuyersFilterSetsFilteredBidsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "creativeStatusId": S.Number.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsFilteredBidsDetailsRequest" }) as any as S.Schema<ListBuyersFilterSetsFilteredBidsDetailsRequest>;
 
 export interface ListBuyersFilterSetsImpressionMetricsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
@@ -4559,22 +3320,13 @@ export interface ListBuyersFilterSetsImpressionMetricsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method. */
   pageToken?: string;
 }
-export const ListBuyersFilterSetsImpressionMetricsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/impressionMetrics",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBuyersFilterSetsImpressionMetricsRequest",
-  }) as any as S.Schema<ListBuyersFilterSetsImpressionMetricsRequest>;
+export const ListBuyersFilterSetsImpressionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/impressionMetrics","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsImpressionMetricsRequest" }) as any as S.Schema<ListBuyersFilterSetsImpressionMetricsRequest>;
 
 export interface ListBuyersFilterSetsLosingBidsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
@@ -4584,22 +3336,13 @@ export interface ListBuyersFilterSetsLosingBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. */
   pageToken?: string;
 }
-export const ListBuyersFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/losingBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListBuyersFilterSetsLosingBidsRequest",
-}) as any as S.Schema<ListBuyersFilterSetsLosingBidsRequest>;
+export const ListBuyersFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/losingBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsLosingBidsRequest" }) as any as S.Schema<ListBuyersFilterSetsLosingBidsRequest>;
 
 export interface ListBuyersFilterSetsNonBillableWinningBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method. */
@@ -4609,22 +3352,13 @@ export interface ListBuyersFilterSetsNonBillableWinningBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBuyersFilterSetsNonBillableWinningBidsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/nonBillableWinningBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBuyersFilterSetsNonBillableWinningBidsRequest",
-  }) as any as S.Schema<ListBuyersFilterSetsNonBillableWinningBidsRequest>;
+export const ListBuyersFilterSetsNonBillableWinningBidsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filterSetName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+filterSetName}/nonBillableWinningBids","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFilterSetsNonBillableWinningBidsRequest" }) as any as S.Schema<ListBuyersFilterSetsNonBillableWinningBidsRequest>;
 
 /** Request message to pause serving for finalized deals. */
 export interface PauseProposalDealsRequest {
@@ -4634,13 +3368,11 @@ export interface PauseProposalDealsRequest {
   externalDealIds?: StringList;
 }
 export const PauseProposalDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(S.String),
-    externalDealIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "PauseProposalDealsRequest",
-}) as any as S.Schema<PauseProposalDealsRequest>;
+S.Struct({
+  "reason": S.optional(S.String),
+  "externalDealIds": S.optional(StringList),
+}),
+).annotate({ identifier: "PauseProposalDealsRequest" }) as any as S.Schema<PauseProposalDealsRequest>;
 
 export interface PauseAccountsFinalizedProposalsRequest {
   /** Account ID of the buyer. */
@@ -4650,22 +3382,13 @@ export interface PauseAccountsFinalizedProposalsRequest {
   /** Request body */
   body?: PauseProposalDealsRequest;
 }
-export const PauseAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label()),
-      proposalId: S.String.pipe(T.Label()),
-      body: S.optional(PauseProposalDealsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:pause",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PauseAccountsFinalizedProposalsRequest",
-}) as any as S.Schema<PauseAccountsFinalizedProposalsRequest>;
+export const PauseAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "proposalId": S.String.pipe(T.Label()),
+  "body": S.optional(PauseProposalDealsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:pause","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "PauseAccountsFinalizedProposalsRequest" }) as any as S.Schema<PauseAccountsFinalizedProposalsRequest>;
 
 /** Request message to pause serving for an already-finalized proposal. */
 export interface PauseProposalRequest {
@@ -4673,12 +3396,10 @@ export interface PauseProposalRequest {
   reason?: string;
 }
 export const PauseProposalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PauseProposalRequest",
-}) as any as S.Schema<PauseProposalRequest>;
+S.Struct({
+  "reason": S.optional(S.String),
+}),
+).annotate({ identifier: "PauseProposalRequest" }) as any as S.Schema<PauseProposalRequest>;
 
 export interface PauseAccountsProposalsRequest {
   /** Account ID of the buyer. */
@@ -4689,20 +3410,12 @@ export interface PauseAccountsProposalsRequest {
   body?: PauseProposalRequest;
 }
 export const PauseAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    proposalId: S.String.pipe(T.Label()),
-    body: S.optional(PauseProposalRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:pause",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PauseAccountsProposalsRequest",
-}) as any as S.Schema<PauseAccountsProposalsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "proposalId": S.String.pipe(T.Label()),
+  "body": S.optional(PauseProposalRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/proposals/{proposalId}:pause","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "PauseAccountsProposalsRequest" }) as any as S.Schema<PauseAccountsProposalsRequest>;
 
 /** A request for removing the association between a deal and a creative. */
 export interface RemoveDealAssociationRequest {
@@ -4710,12 +3423,10 @@ export interface RemoveDealAssociationRequest {
   association?: CreativeDealAssociation;
 }
 export const RemoveDealAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    association: S.optional(CreativeDealAssociation),
-  }),
-).annotate({
-  identifier: "RemoveDealAssociationRequest",
-}) as any as S.Schema<RemoveDealAssociationRequest>;
+S.Struct({
+  "association": S.optional(CreativeDealAssociation),
+}),
+).annotate({ identifier: "RemoveDealAssociationRequest" }) as any as S.Schema<RemoveDealAssociationRequest>;
 
 export interface RemoveAccountsCreativesDealAssociationsRequest {
   /** The account the creative belongs to. */
@@ -4725,22 +3436,13 @@ export interface RemoveAccountsCreativesDealAssociationsRequest {
   /** Request body */
   body?: RemoveDealAssociationRequest;
 }
-export const RemoveAccountsCreativesDealAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label()),
-      creativeId: S.String.pipe(T.Label()),
-      body: S.optional(RemoveDealAssociationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:remove",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemoveAccountsCreativesDealAssociationsRequest",
-  }) as any as S.Schema<RemoveAccountsCreativesDealAssociationsRequest>;
+export const RemoveAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "creativeId": S.String.pipe(T.Label()),
+  "body": S.optional(RemoveDealAssociationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:remove","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "RemoveAccountsCreativesDealAssociationsRequest" }) as any as S.Schema<RemoveAccountsCreativesDealAssociationsRequest>;
 
 /** Request message to resume (unpause) serving for already-finalized deals. */
 export interface ResumeProposalDealsRequest {
@@ -4748,12 +3450,10 @@ export interface ResumeProposalDealsRequest {
   externalDealIds?: StringList;
 }
 export const ResumeProposalDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalDealIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ResumeProposalDealsRequest",
-}) as any as S.Schema<ResumeProposalDealsRequest>;
+S.Struct({
+  "externalDealIds": S.optional(StringList),
+}),
+).annotate({ identifier: "ResumeProposalDealsRequest" }) as any as S.Schema<ResumeProposalDealsRequest>;
 
 export interface ResumeAccountsFinalizedProposalsRequest {
   /** Account ID of the buyer. */
@@ -4763,30 +3463,19 @@ export interface ResumeAccountsFinalizedProposalsRequest {
   /** Request body */
   body?: ResumeProposalDealsRequest;
 }
-export const ResumeAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label()),
-      proposalId: S.String.pipe(T.Label()),
-      body: S.optional(ResumeProposalDealsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:resume",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ResumeAccountsFinalizedProposalsRequest",
-}) as any as S.Schema<ResumeAccountsFinalizedProposalsRequest>;
+export const ResumeAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "proposalId": S.String.pipe(T.Label()),
+  "body": S.optional(ResumeProposalDealsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:resume","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ResumeAccountsFinalizedProposalsRequest" }) as any as S.Schema<ResumeAccountsFinalizedProposalsRequest>;
 
 /** Request message to resume (unpause) serving for an already-finalized proposal. */
 export interface ResumeProposalRequest {}
 export const ResumeProposalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResumeProposalRequest",
-}) as any as S.Schema<ResumeProposalRequest>;
+S.Struct({}),
+).annotate({ identifier: "ResumeProposalRequest" }) as any as S.Schema<ResumeProposalRequest>;
 
 export interface ResumeAccountsProposalsRequest {
   /** Account ID of the buyer. */
@@ -4797,28 +3486,18 @@ export interface ResumeAccountsProposalsRequest {
   body?: ResumeProposalRequest;
 }
 export const ResumeAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    proposalId: S.String.pipe(T.Label()),
-    body: S.optional(ResumeProposalRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}:resume",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResumeAccountsProposalsRequest",
-}) as any as S.Schema<ResumeAccountsProposalsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "proposalId": S.String.pipe(T.Label()),
+  "body": S.optional(ResumeProposalRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/proposals/{proposalId}:resume","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "ResumeAccountsProposalsRequest" }) as any as S.Schema<ResumeAccountsProposalsRequest>;
 
 /** A request for stopping notifications for changes to creative Status. */
 export interface StopWatchingCreativeRequest {}
 export const StopWatchingCreativeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopWatchingCreativeRequest",
-}) as any as S.Schema<StopWatchingCreativeRequest>;
+S.Struct({}),
+).annotate({ identifier: "StopWatchingCreativeRequest" }) as any as S.Schema<StopWatchingCreativeRequest>;
 
 export interface StopWatchingAccountsCreativesRequest {
   /** The creative ID of the creative to stop notifications for. Specify "-" to specify stopping account level notifications. */
@@ -4828,22 +3507,13 @@ export interface StopWatchingAccountsCreativesRequest {
   /** Request body */
   body?: StopWatchingCreativeRequest;
 }
-export const StopWatchingAccountsCreativesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      creativeId: S.String.pipe(T.Label()),
-      accountId: S.String.pipe(T.Label()),
-      body: S.optional(StopWatchingCreativeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "StopWatchingAccountsCreativesRequest",
-}) as any as S.Schema<StopWatchingAccountsCreativesRequest>;
+export const StopWatchingAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "creativeId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(StopWatchingCreativeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "StopWatchingAccountsCreativesRequest" }) as any as S.Schema<StopWatchingAccountsCreativesRequest>;
 
 export interface UpdateAccountsClientsRequest {
   /** Unique numerical account ID of the client to update. (required) */
@@ -4854,20 +3524,12 @@ export interface UpdateAccountsClientsRequest {
   body?: Client;
 }
 export const UpdateAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientAccountId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(Client.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v2beta1/accounts/{accountId}/clients/{clientAccountId}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAccountsClientsRequest",
-}) as any as S.Schema<UpdateAccountsClientsRequest>;
+S.Struct({
+  "clientAccountId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(Client.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v2beta1/accounts/{accountId}/clients/{clientAccountId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "UpdateAccountsClientsRequest" }) as any as S.Schema<UpdateAccountsClientsRequest>;
 
 export interface UpdateAccountsClientsUsersRequest {
   /** Numerical account ID of the client's sponsor buyer. (required) */
@@ -4880,21 +3542,13 @@ export interface UpdateAccountsClientsUsersRequest {
   body?: ClientUser;
 }
 export const UpdateAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    userId: S.String.pipe(T.Label()),
-    clientAccountId: S.String.pipe(T.Label()),
-    body: S.optional(ClientUser.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAccountsClientsUsersRequest",
-}) as any as S.Schema<UpdateAccountsClientsUsersRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "userId": S.String.pipe(T.Label()),
+  "clientAccountId": S.String.pipe(T.Label()),
+  "body": S.optional(ClientUser.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "UpdateAccountsClientsUsersRequest" }) as any as S.Schema<UpdateAccountsClientsUsersRequest>;
 
 export interface UpdateAccountsCreativesRequest {
   /** The buyer-defined creative ID of this creative. Can be used to filter the response of the creatives.list method. */
@@ -4905,20 +3559,12 @@ export interface UpdateAccountsCreativesRequest {
   body?: Creative;
 }
 export const UpdateAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(Creative.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v2beta1/accounts/{accountId}/creatives/{creativeId}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAccountsCreativesRequest",
-}) as any as S.Schema<UpdateAccountsCreativesRequest>;
+S.Struct({
+  "creativeId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(Creative.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v2beta1/accounts/{accountId}/creatives/{creativeId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "UpdateAccountsCreativesRequest" }) as any as S.Schema<UpdateAccountsCreativesRequest>;
 
 export interface UpdateAccountsProposalsRequest {
   /** Account ID of the buyer. */
@@ -4929,20 +3575,12 @@ export interface UpdateAccountsProposalsRequest {
   body?: Proposal;
 }
 export const UpdateAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    proposalId: S.String.pipe(T.Label()),
-    body: S.optional(Proposal.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v2beta1/accounts/{accountId}/proposals/{proposalId}",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAccountsProposalsRequest",
-}) as any as S.Schema<UpdateAccountsProposalsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "proposalId": S.String.pipe(T.Label()),
+  "body": S.optional(Proposal.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v2beta1/accounts/{accountId}/proposals/{proposalId}","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "UpdateAccountsProposalsRequest" }) as any as S.Schema<UpdateAccountsProposalsRequest>;
 
 /** A request for watching changes to creative Status. */
 export interface WatchCreativeRequest {
@@ -4950,12 +3588,10 @@ export interface WatchCreativeRequest {
   topic?: string;
 }
 export const WatchCreativeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WatchCreativeRequest",
-}) as any as S.Schema<WatchCreativeRequest>;
+S.Struct({
+  "topic": S.optional(S.String),
+}),
+).annotate({ identifier: "WatchCreativeRequest" }) as any as S.Schema<WatchCreativeRequest>;
 
 export interface WatchAccountsCreativesRequest {
   /** The creative ID to watch for status changes. Specify "-" to watch all creatives under the above account. If both creative-level and account-level notifications are sent, only a single notification will be sent to the creative-level notification topic. */
@@ -4966,27 +3602,14 @@ export interface WatchAccountsCreativesRequest {
   body?: WatchCreativeRequest;
 }
 export const WatchAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(WatchCreativeRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2beta1/accounts/{accountId}/creatives/{creativeId}:watch",
-      baseUrl: "https://adexchangebuyer.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "WatchAccountsCreativesRequest",
-}) as any as S.Schema<WatchAccountsCreativesRequest>;
+S.Struct({
+  "creativeId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(WatchCreativeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta1/accounts/{accountId}/creatives/{creativeId}:watch","baseUrl":"https://adexchangebuyer.googleapis.com/"})),
+).annotate({ identifier: "WatchAccountsCreativesRequest" }) as any as S.Schema<WatchAccountsCreativesRequest>;
 
-export type AcceptAccountsProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AcceptAccountsProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Mark the proposal as accepted at the given revision number. If the number does not match the server's revision number an `ABORTED` error message will be returned. This call updates the proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon calling this endpoint, the buyer implicitly agrees to the terms and conditions optionally set within the proposal by the publisher. */
 export const acceptAccountsProposals: API.OperationMethod<
   AcceptAccountsProposalsRequest,
@@ -5001,12 +3624,7 @@ export const acceptAccountsProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddAccountsCreativesDealAssociationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddAccountsCreativesDealAssociationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Associate an existing deal with a creative. */
 export const addAccountsCreativesDealAssociations: API.OperationMethod<
   AddAccountsCreativesDealAssociationsRequest,
@@ -5021,12 +3639,7 @@ export const addAccountsCreativesDealAssociations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddNoteAccountsProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddNoteAccountsProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a new note and attach it to the proposal. The note is assigned a unique ID by the server. The proposal revision number will not increase when associated with a new note. */
 export const addNoteAccountsProposals: API.OperationMethod<
   AddNoteAccountsProposalsRequest,
@@ -5041,12 +3654,7 @@ export const addNoteAccountsProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelNegotiationAccountsProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelNegotiationAccountsProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized, but only cancels a negotiation unilaterally. */
 export const cancelNegotiationAccountsProposals: API.OperationMethod<
   CancelNegotiationAccountsProposalsRequest,
@@ -5061,12 +3669,7 @@ export const cancelNegotiationAccountsProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CompleteSetupAccountsProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CompleteSetupAccountsProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** You can opt-in to manually update proposals to indicate that setup is complete. By default, proposal setup is automatically completed after their deals are finalized. Contact your Technical Account Manager to opt in. Buyers can call this method when the proposal has been finalized, and all the required creatives have been uploaded using the Creatives API. This call updates the `is_setup_completed` field on the deals in the proposal, and notifies the seller. The server then advances the revision number of the most recent proposal. To mark an individual deal as ready to serve, call `buyers.finalizedDeals.setReadyToServe` in the Marketplace API. */
 export const completeSetupAccountsProposals: API.OperationMethod<
   CompleteSetupAccountsProposalsRequest,
@@ -5081,12 +3684,7 @@ export const completeSetupAccountsProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsClientsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new client buyer. */
 export const createAccountsClients: API.OperationMethod<
   CreateAccountsClientsRequest,
@@ -5101,12 +3699,7 @@ export const createAccountsClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsClientsInvitationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsClientsInvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates and sends out an email invitation to access an Ad Exchange client buyer account. */
 export const createAccountsClientsInvitations: API.OperationMethod<
   CreateAccountsClientsInvitationsRequest,
@@ -5121,12 +3714,7 @@ export const createAccountsClientsInvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsCreativesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsCreativesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a creative. */
 export const createAccountsCreatives: API.OperationMethod<
   CreateAccountsCreativesRequest,
@@ -5141,12 +3729,7 @@ export const createAccountsCreatives: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create the given proposal. Each created proposal and any deals it contains are assigned a unique ID by the server. */
 export const createAccountsProposals: API.OperationMethod<
   CreateAccountsProposalsRequest,
@@ -5161,12 +3744,7 @@ export const createAccountsProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateBiddersAccountsFilterSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateBiddersAccountsFilterSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates the specified filter set for the account with the given account ID. */
 export const createBiddersAccountsFilterSets: API.OperationMethod<
   CreateBiddersAccountsFilterSetsRequest,
@@ -5181,12 +3759,7 @@ export const createBiddersAccountsFilterSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateBiddersFilterSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateBiddersFilterSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates the specified filter set for the account with the given account ID. */
 export const createBiddersFilterSets: API.OperationMethod<
   CreateBiddersFilterSetsRequest,
@@ -5201,12 +3774,7 @@ export const createBiddersFilterSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateBuyersFilterSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateBuyersFilterSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates the specified filter set for the account with the given account ID. */
 export const createBuyersFilterSets: API.OperationMethod<
   CreateBuyersFilterSetsRequest,
@@ -5221,12 +3789,7 @@ export const createBuyersFilterSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteBiddersAccountsFilterSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteBiddersAccountsFilterSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the requested filter set from the account with the given account ID. */
 export const deleteBiddersAccountsFilterSets: API.OperationMethod<
   DeleteBiddersAccountsFilterSetsRequest,
@@ -5241,12 +3804,7 @@ export const deleteBiddersAccountsFilterSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteBiddersFilterSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteBiddersFilterSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the requested filter set from the account with the given account ID. */
 export const deleteBiddersFilterSets: API.OperationMethod<
   DeleteBiddersFilterSetsRequest,
@@ -5261,12 +3819,7 @@ export const deleteBiddersFilterSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteBuyersFilterSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteBuyersFilterSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the requested filter set from the account with the given account ID. */
 export const deleteBuyersFilterSets: API.OperationMethod<
   DeleteBuyersFilterSetsRequest,
@@ -5296,10 +3849,7 @@ export const getAccountsClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsClientsInvitationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsClientsInvitationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves an existing client user invitation. */
 export const getAccountsClientsInvitations: API.OperationMethod<
   GetAccountsClientsInvitationsRequest,
@@ -5374,10 +3924,7 @@ export const getAccountsProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsPublisherProfilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsPublisherProfilesError = NotFound | Forbidden | GcpOpError;
 /** Gets the requested publisher profile by id. */
 export const getAccountsPublisherProfiles: API.OperationMethod<
   GetAccountsPublisherProfilesRequest,
@@ -5392,10 +3939,7 @@ export const getAccountsPublisherProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetBiddersAccountsFilterSetsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetBiddersAccountsFilterSetsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the requested filter set for the account with the given account ID. */
 export const getBiddersAccountsFilterSets: API.OperationMethod<
   GetBiddersAccountsFilterSetsRequest,
@@ -5453,16 +3997,10 @@ export const listAccountsClients: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAccountsClientsInvitationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsClientsInvitationsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the client users invitations for a client with a given account ID. */
 export const listAccountsClientsInvitations: API.PaginatedOperationMethod<
   ListAccountsClientsInvitationsRequest,
@@ -5475,10 +4013,7 @@ export const listAccountsClientsInvitations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsClientsUsersError = NotFound | Forbidden | GcpOpError;
@@ -5494,10 +4029,7 @@ export const listAccountsClientsUsers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsCreativesError = NotFound | Forbidden | GcpOpError;
@@ -5513,16 +4045,10 @@ export const listAccountsCreatives: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAccountsCreativesDealAssociationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsCreativesDealAssociationsError = NotFound | Forbidden | GcpOpError;
 /** List all creative-deal associations. */
 export const listAccountsCreativesDealAssociations: API.PaginatedOperationMethod<
   ListAccountsCreativesDealAssociationsRequest,
@@ -5535,16 +4061,10 @@ export const listAccountsCreativesDealAssociations: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAccountsFinalizedProposalsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsFinalizedProposalsError = NotFound | Forbidden | GcpOpError;
 /** List finalized proposals, regardless if a proposal is being renegotiated. A filter expression (PQL query) may be specified to filter the results. The notes will not be returned. */
 export const listAccountsFinalizedProposals: API.PaginatedOperationMethod<
   ListAccountsFinalizedProposalsRequest,
@@ -5557,10 +4077,7 @@ export const listAccountsFinalizedProposals: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsProductsError = NotFound | Forbidden | GcpOpError;
@@ -5576,10 +4093,7 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsProposalsError = NotFound | Forbidden | GcpOpError;
@@ -5595,16 +4109,10 @@ export const listAccountsProposals: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAccountsPublisherProfilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsPublisherProfilesError = NotFound | Forbidden | GcpOpError;
 /** List all publisher profiles visible to the buyer */
 export const listAccountsPublisherProfiles: API.PaginatedOperationMethod<
   ListAccountsPublisherProfilesRequest,
@@ -5617,16 +4125,10 @@ export const listAccountsPublisherProfiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsError = NotFound | Forbidden | GcpOpError;
 /** Lists all filter sets for the account with the given account ID. */
 export const listBiddersAccountsFilterSets: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsRequest,
@@ -5639,16 +4141,10 @@ export const listBiddersAccountsFilterSets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsBidMetricsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsBidMetricsError = NotFound | Forbidden | GcpOpError;
 /** Lists all metrics that are measured in terms of number of bids. */
 export const listBiddersAccountsFilterSetsBidMetrics: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsBidMetricsRequest,
@@ -5661,16 +4157,10 @@ export const listBiddersAccountsFilterSetsBidMetrics: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsBidResponseErrorsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsBidResponseErrorsError = NotFound | Forbidden | GcpOpError;
 /** List all errors that occurred in bid responses, with the number of bid responses affected for each reason. */
 export const listBiddersAccountsFilterSetsBidResponseErrors: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsBidResponseErrorsRequest,
@@ -5683,16 +4173,10 @@ export const listBiddersAccountsFilterSetsBidResponseErrors: API.PaginatedOperat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsBidResponsesWithoutBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsBidResponsesWithoutBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason. */
 export const listBiddersAccountsFilterSetsBidResponsesWithoutBids: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest,
@@ -5705,16 +4189,10 @@ export const listBiddersAccountsFilterSetsBidResponsesWithoutBids: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsFilteredBidRequestsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsFilteredBidRequestsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason. */
 export const listBiddersAccountsFilterSetsFilteredBidRequests: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsFilteredBidRequestsRequest,
@@ -5727,16 +4205,10 @@ export const listBiddersAccountsFilterSetsFilteredBidRequests: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsFilteredBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsFilteredBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which bids were filtered, with the number of bids filtered for each reason. */
 export const listBiddersAccountsFilterSetsFilteredBids: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsFilteredBidsRequest,
@@ -5749,16 +4221,10 @@ export const listBiddersAccountsFilterSetsFilteredBids: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsFilteredBidsCreativesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsFilteredBidsCreativesError = NotFound | Forbidden | GcpOpError;
 /** List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative. */
 export const listBiddersAccountsFilterSetsFilteredBidsCreatives: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest,
@@ -5771,16 +4237,10 @@ export const listBiddersAccountsFilterSetsFilteredBidsCreatives: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsFilteredBidsDetailsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsFilteredBidsDetailsError = NotFound | Forbidden | GcpOpError;
 /** List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail. */
 export const listBiddersAccountsFilterSetsFilteredBidsDetails: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest,
@@ -5793,16 +4253,10 @@ export const listBiddersAccountsFilterSetsFilteredBidsDetails: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsImpressionMetricsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsImpressionMetricsError = NotFound | Forbidden | GcpOpError;
 /** Lists all metrics that are measured in terms of number of impressions. */
 export const listBiddersAccountsFilterSetsImpressionMetrics: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsImpressionMetricsRequest,
@@ -5815,16 +4269,10 @@ export const listBiddersAccountsFilterSetsImpressionMetrics: API.PaginatedOperat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsLosingBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsLosingBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which bids lost in the auction, with the number of bids that lost for each reason. */
 export const listBiddersAccountsFilterSetsLosingBids: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsLosingBidsRequest,
@@ -5837,16 +4285,10 @@ export const listBiddersAccountsFilterSetsLosingBids: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersAccountsFilterSetsNonBillableWinningBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersAccountsFilterSetsNonBillableWinningBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which winning bids were not billable, with the number of bids not billed for each reason. */
 export const listBiddersAccountsFilterSetsNonBillableWinningBids: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest,
@@ -5859,10 +4301,7 @@ export const listBiddersAccountsFilterSetsNonBillableWinningBids: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBiddersFilterSetsError = NotFound | Forbidden | GcpOpError;
@@ -5878,16 +4317,10 @@ export const listBiddersFilterSets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersFilterSetsBidMetricsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersFilterSetsBidMetricsError = NotFound | Forbidden | GcpOpError;
 /** Lists all metrics that are measured in terms of number of bids. */
 export const listBiddersFilterSetsBidMetrics: API.PaginatedOperationMethod<
   ListBiddersFilterSetsBidMetricsRequest,
@@ -5900,16 +4333,10 @@ export const listBiddersFilterSetsBidMetrics: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersFilterSetsBidResponseErrorsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersFilterSetsBidResponseErrorsError = NotFound | Forbidden | GcpOpError;
 /** List all errors that occurred in bid responses, with the number of bid responses affected for each reason. */
 export const listBiddersFilterSetsBidResponseErrors: API.PaginatedOperationMethod<
   ListBiddersFilterSetsBidResponseErrorsRequest,
@@ -5922,16 +4349,10 @@ export const listBiddersFilterSetsBidResponseErrors: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersFilterSetsBidResponsesWithoutBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersFilterSetsBidResponsesWithoutBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason. */
 export const listBiddersFilterSetsBidResponsesWithoutBids: API.PaginatedOperationMethod<
   ListBiddersFilterSetsBidResponsesWithoutBidsRequest,
@@ -5944,16 +4365,10 @@ export const listBiddersFilterSetsBidResponsesWithoutBids: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersFilterSetsFilteredBidRequestsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersFilterSetsFilteredBidRequestsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason. */
 export const listBiddersFilterSetsFilteredBidRequests: API.PaginatedOperationMethod<
   ListBiddersFilterSetsFilteredBidRequestsRequest,
@@ -5966,16 +4381,10 @@ export const listBiddersFilterSetsFilteredBidRequests: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersFilterSetsFilteredBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersFilterSetsFilteredBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which bids were filtered, with the number of bids filtered for each reason. */
 export const listBiddersFilterSetsFilteredBids: API.PaginatedOperationMethod<
   ListBiddersFilterSetsFilteredBidsRequest,
@@ -5988,16 +4397,10 @@ export const listBiddersFilterSetsFilteredBids: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersFilterSetsFilteredBidsCreativesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersFilterSetsFilteredBidsCreativesError = NotFound | Forbidden | GcpOpError;
 /** List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative. */
 export const listBiddersFilterSetsFilteredBidsCreatives: API.PaginatedOperationMethod<
   ListBiddersFilterSetsFilteredBidsCreativesRequest,
@@ -6010,16 +4413,10 @@ export const listBiddersFilterSetsFilteredBidsCreatives: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersFilterSetsFilteredBidsDetailsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersFilterSetsFilteredBidsDetailsError = NotFound | Forbidden | GcpOpError;
 /** List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail. */
 export const listBiddersFilterSetsFilteredBidsDetails: API.PaginatedOperationMethod<
   ListBiddersFilterSetsFilteredBidsDetailsRequest,
@@ -6032,16 +4429,10 @@ export const listBiddersFilterSetsFilteredBidsDetails: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersFilterSetsImpressionMetricsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersFilterSetsImpressionMetricsError = NotFound | Forbidden | GcpOpError;
 /** Lists all metrics that are measured in terms of number of impressions. */
 export const listBiddersFilterSetsImpressionMetrics: API.PaginatedOperationMethod<
   ListBiddersFilterSetsImpressionMetricsRequest,
@@ -6054,16 +4445,10 @@ export const listBiddersFilterSetsImpressionMetrics: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersFilterSetsLosingBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersFilterSetsLosingBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which bids lost in the auction, with the number of bids that lost for each reason. */
 export const listBiddersFilterSetsLosingBids: API.PaginatedOperationMethod<
   ListBiddersFilterSetsLosingBidsRequest,
@@ -6076,16 +4461,10 @@ export const listBiddersFilterSetsLosingBids: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBiddersFilterSetsNonBillableWinningBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBiddersFilterSetsNonBillableWinningBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which winning bids were not billable, with the number of bids not billed for each reason. */
 export const listBiddersFilterSetsNonBillableWinningBids: API.PaginatedOperationMethod<
   ListBiddersFilterSetsNonBillableWinningBidsRequest,
@@ -6098,10 +4477,7 @@ export const listBiddersFilterSetsNonBillableWinningBids: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBuyersFilterSetsError = NotFound | Forbidden | GcpOpError;
@@ -6117,16 +4493,10 @@ export const listBuyersFilterSets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersFilterSetsBidMetricsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersFilterSetsBidMetricsError = NotFound | Forbidden | GcpOpError;
 /** Lists all metrics that are measured in terms of number of bids. */
 export const listBuyersFilterSetsBidMetrics: API.PaginatedOperationMethod<
   ListBuyersFilterSetsBidMetricsRequest,
@@ -6139,16 +4509,10 @@ export const listBuyersFilterSetsBidMetrics: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersFilterSetsBidResponseErrorsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersFilterSetsBidResponseErrorsError = NotFound | Forbidden | GcpOpError;
 /** List all errors that occurred in bid responses, with the number of bid responses affected for each reason. */
 export const listBuyersFilterSetsBidResponseErrors: API.PaginatedOperationMethod<
   ListBuyersFilterSetsBidResponseErrorsRequest,
@@ -6161,16 +4525,10 @@ export const listBuyersFilterSetsBidResponseErrors: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersFilterSetsBidResponsesWithoutBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersFilterSetsBidResponsesWithoutBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason. */
 export const listBuyersFilterSetsBidResponsesWithoutBids: API.PaginatedOperationMethod<
   ListBuyersFilterSetsBidResponsesWithoutBidsRequest,
@@ -6183,16 +4541,10 @@ export const listBuyersFilterSetsBidResponsesWithoutBids: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersFilterSetsFilteredBidRequestsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersFilterSetsFilteredBidRequestsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason. */
 export const listBuyersFilterSetsFilteredBidRequests: API.PaginatedOperationMethod<
   ListBuyersFilterSetsFilteredBidRequestsRequest,
@@ -6205,16 +4557,10 @@ export const listBuyersFilterSetsFilteredBidRequests: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersFilterSetsFilteredBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersFilterSetsFilteredBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which bids were filtered, with the number of bids filtered for each reason. */
 export const listBuyersFilterSetsFilteredBids: API.PaginatedOperationMethod<
   ListBuyersFilterSetsFilteredBidsRequest,
@@ -6227,16 +4573,10 @@ export const listBuyersFilterSetsFilteredBids: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersFilterSetsFilteredBidsCreativesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersFilterSetsFilteredBidsCreativesError = NotFound | Forbidden | GcpOpError;
 /** List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative. */
 export const listBuyersFilterSetsFilteredBidsCreatives: API.PaginatedOperationMethod<
   ListBuyersFilterSetsFilteredBidsCreativesRequest,
@@ -6249,16 +4589,10 @@ export const listBuyersFilterSetsFilteredBidsCreatives: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersFilterSetsFilteredBidsDetailsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersFilterSetsFilteredBidsDetailsError = NotFound | Forbidden | GcpOpError;
 /** List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail. */
 export const listBuyersFilterSetsFilteredBidsDetails: API.PaginatedOperationMethod<
   ListBuyersFilterSetsFilteredBidsDetailsRequest,
@@ -6271,16 +4605,10 @@ export const listBuyersFilterSetsFilteredBidsDetails: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersFilterSetsImpressionMetricsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersFilterSetsImpressionMetricsError = NotFound | Forbidden | GcpOpError;
 /** Lists all metrics that are measured in terms of number of impressions. */
 export const listBuyersFilterSetsImpressionMetrics: API.PaginatedOperationMethod<
   ListBuyersFilterSetsImpressionMetricsRequest,
@@ -6293,16 +4621,10 @@ export const listBuyersFilterSetsImpressionMetrics: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersFilterSetsLosingBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersFilterSetsLosingBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which bids lost in the auction, with the number of bids that lost for each reason. */
 export const listBuyersFilterSetsLosingBids: API.PaginatedOperationMethod<
   ListBuyersFilterSetsLosingBidsRequest,
@@ -6315,16 +4637,10 @@ export const listBuyersFilterSetsLosingBids: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersFilterSetsNonBillableWinningBidsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersFilterSetsNonBillableWinningBidsError = NotFound | Forbidden | GcpOpError;
 /** List all reasons for which winning bids were not billable, with the number of bids not billed for each reason. */
 export const listBuyersFilterSetsNonBillableWinningBids: API.PaginatedOperationMethod<
   ListBuyersFilterSetsNonBillableWinningBidsRequest,
@@ -6337,18 +4653,10 @@ export const listBuyersFilterSetsNonBillableWinningBids: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PauseAccountsFinalizedProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PauseAccountsFinalizedProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update given deals to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating. */
 export const pauseAccountsFinalizedProposals: API.OperationMethod<
   PauseAccountsFinalizedProposalsRequest,
@@ -6363,12 +4671,7 @@ export const pauseAccountsFinalizedProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PauseAccountsProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PauseAccountsProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update the given proposal to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all deals in the proposal. It is a no-op to pause an already-paused proposal. It is an error to call PauseProposal for a proposal that is not finalized or renegotiating. */
 export const pauseAccountsProposals: API.OperationMethod<
   PauseAccountsProposalsRequest,
@@ -6383,12 +4686,7 @@ export const pauseAccountsProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveAccountsCreativesDealAssociationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemoveAccountsCreativesDealAssociationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Remove the association between a deal and a creative. */
 export const removeAccountsCreativesDealAssociations: API.OperationMethod<
   RemoveAccountsCreativesDealAssociationsRequest,
@@ -6403,12 +4701,7 @@ export const removeAccountsCreativesDealAssociations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResumeAccountsFinalizedProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResumeAccountsFinalizedProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update given deals to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.resume endpoint. It is a no-op to resume running deals or deals paused by the other party. It is an error to call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating. */
 export const resumeAccountsFinalizedProposals: API.OperationMethod<
   ResumeAccountsFinalizedProposalsRequest,
@@ -6423,12 +4716,7 @@ export const resumeAccountsFinalizedProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResumeAccountsProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResumeAccountsProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update the given proposal to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all deals in the proposal. Note that if the `has_seller_paused` bit is also set, serving will not resume until the seller also resumes. It is a no-op to resume an already-running proposal. It is an error to call ResumeProposal for a proposal that is not finalized or renegotiating. */
 export const resumeAccountsProposals: API.OperationMethod<
   ResumeAccountsProposalsRequest,
@@ -6443,12 +4731,7 @@ export const resumeAccountsProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopWatchingAccountsCreativesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StopWatchingAccountsCreativesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Stops watching a creative. Will stop push notifications being sent to the topics when the creative changes status. */
 export const stopWatchingAccountsCreatives: API.OperationMethod<
   StopWatchingAccountsCreativesRequest,
@@ -6463,12 +4746,7 @@ export const stopWatchingAccountsCreatives: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsClientsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAccountsClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing client buyer. */
 export const updateAccountsClients: API.OperationMethod<
   UpdateAccountsClientsRequest,
@@ -6483,12 +4761,7 @@ export const updateAccountsClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsClientsUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAccountsClientsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing client user. Only the user status can be changed on update. */
 export const updateAccountsClientsUsers: API.OperationMethod<
   UpdateAccountsClientsUsersRequest,
@@ -6503,12 +4776,7 @@ export const updateAccountsClientsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsCreativesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAccountsCreativesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a creative. */
 export const updateAccountsCreatives: API.OperationMethod<
   UpdateAccountsCreativesRequest,
@@ -6523,12 +4791,7 @@ export const updateAccountsCreatives: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAccountsProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update the given proposal at the client known revision number. If the server revision has advanced since the passed-in `proposal.proposal_revision`, an `ABORTED` error message will be returned. Only the buyer-modifiable fields of the proposal will be updated. Note that the deals in the proposal will be updated to match the passed-in copy. If a passed-in deal does not have a `deal_id`, the server will assign a new unique ID and create the deal. If passed-in deal has a `deal_id`, it will be updated to match the passed-in copy. Any existing deals not present in the passed-in proposal will be deleted. It is an error to pass in a deal with a `deal_id` not present at head. */
 export const updateAccountsProposals: API.OperationMethod<
   UpdateAccountsProposalsRequest,
@@ -6543,12 +4806,7 @@ export const updateAccountsProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WatchAccountsCreativesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WatchAccountsCreativesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Watches a creative. Will result in push notifications being sent to the topic when the creative changes status. */
 export const watchAccountsCreatives: API.OperationMethod<
   WatchAccountsCreativesRequest,
@@ -6562,3 +4820,4 @@ export const watchAccountsCreatives: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

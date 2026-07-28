@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,35 +72,21 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://hypercomputecluster.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
-export type NewSpotInstancesConfigTerminationActionEnum =
-  | "TERMINATION_ACTION_UNSPECIFIED"
-  | "STOP"
-  | "DELETE"
-  | (string & {});
-export const NewSpotInstancesConfigTerminationActionEnum =
-  /*@__PURE__*/ S.String;
+export type NewSpotInstancesConfigTerminationActionEnum = "TERMINATION_ACTION_UNSPECIFIED" | "STOP" | "DELETE";
+export const NewSpotInstancesConfigTerminationActionEnum = /*@__PURE__*/ S.String;
 
 /** When set in a ComputeResourceConfig, indicates that [spot VM](https://cloud.google.com/compute/docs/instances/spot) instances should be created. */
 export interface NewSpotInstancesConfig {
@@ -114,14 +98,12 @@ export interface NewSpotInstancesConfig {
   terminationAction?: NewSpotInstancesConfigTerminationActionEnum;
 }
 export const NewSpotInstancesConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.String),
-    machineType: S.optional(S.String),
-    terminationAction: S.optional(NewSpotInstancesConfigTerminationActionEnum),
-  }),
-).annotate({
-  identifier: "NewSpotInstancesConfig",
-}) as any as S.Schema<NewSpotInstancesConfig>;
+S.Struct({
+  "zone": S.optional(S.String),
+  "machineType": S.optional(S.String),
+  "terminationAction": S.optional(NewSpotInstancesConfigTerminationActionEnum),
+}),
+).annotate({ identifier: "NewSpotInstancesConfig" }) as any as S.Schema<NewSpotInstancesConfig>;
 
 /** When set in a ComputeResourceConfig, indicates that on-demand (i.e., using the standard provisioning model) VM instances should be created. */
 export interface NewOnDemandInstancesConfig {
@@ -131,13 +113,11 @@ export interface NewOnDemandInstancesConfig {
   machineType?: string;
 }
 export const NewOnDemandInstancesConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.String),
-    machineType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NewOnDemandInstancesConfig",
-}) as any as S.Schema<NewOnDemandInstancesConfig>;
+S.Struct({
+  "zone": S.optional(S.String),
+  "machineType": S.optional(S.String),
+}),
+).annotate({ identifier: "NewOnDemandInstancesConfig" }) as any as S.Schema<NewOnDemandInstancesConfig>;
 
 /** When set in a ComputeResourceConfig, indicates that VM instances should be created using [Flex Start](https://cloud.google.com/compute/docs/instances/provisioning-models). */
 export interface NewFlexStartInstancesConfig {
@@ -149,14 +129,12 @@ export interface NewFlexStartInstancesConfig {
   maxDuration?: string;
 }
 export const NewFlexStartInstancesConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.String),
-    machineType: S.optional(S.String),
-    maxDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NewFlexStartInstancesConfig",
-}) as any as S.Schema<NewFlexStartInstancesConfig>;
+S.Struct({
+  "zone": S.optional(S.String),
+  "machineType": S.optional(S.String),
+  "maxDuration": S.optional(S.String),
+}),
+).annotate({ identifier: "NewFlexStartInstancesConfig" }) as any as S.Schema<NewFlexStartInstancesConfig>;
 
 /** When set in a ComputeResourceConfig, indicates that VM instances should be created from a [reservation](https://cloud.google.com/compute/docs/instances/reservations-overview). */
 export interface NewReservedInstancesConfig {
@@ -164,12 +142,10 @@ export interface NewReservedInstancesConfig {
   reservation?: string;
 }
 export const NewReservedInstancesConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reservation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NewReservedInstancesConfig",
-}) as any as S.Schema<NewReservedInstancesConfig>;
+S.Struct({
+  "reservation": S.optional(S.String),
+}),
+).annotate({ identifier: "NewReservedInstancesConfig" }) as any as S.Schema<NewReservedInstancesConfig>;
 
 /** Describes how a compute resource should be created at runtime. */
 export interface ComputeResourceConfig {
@@ -183,15 +159,13 @@ export interface ComputeResourceConfig {
   newReservedInstances?: NewReservedInstancesConfig;
 }
 export const ComputeResourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newSpotInstances: S.optional(NewSpotInstancesConfig),
-    newOnDemandInstances: S.optional(NewOnDemandInstancesConfig),
-    newFlexStartInstances: S.optional(NewFlexStartInstancesConfig),
-    newReservedInstances: S.optional(NewReservedInstancesConfig),
-  }),
-).annotate({
-  identifier: "ComputeResourceConfig",
-}) as any as S.Schema<ComputeResourceConfig>;
+S.Struct({
+  "newSpotInstances": S.optional(NewSpotInstancesConfig),
+  "newOnDemandInstances": S.optional(NewOnDemandInstancesConfig),
+  "newFlexStartInstances": S.optional(NewFlexStartInstancesConfig),
+  "newReservedInstances": S.optional(NewReservedInstancesConfig),
+}),
+).annotate({ identifier: "ComputeResourceConfig" }) as any as S.Schema<ComputeResourceConfig>;
 
 /** A resource defining how virtual machines and accelerators should be provisioned for the cluster. */
 export interface ComputeResource {
@@ -199,18 +173,13 @@ export interface ComputeResource {
   config?: ComputeResourceConfig;
 }
 export const ComputeResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(ComputeResourceConfig),
-  }),
-).annotate({
-  identifier: "ComputeResource",
-}) as any as S.Schema<ComputeResource>;
+S.Struct({
+  "config": S.optional(ComputeResourceConfig),
+}),
+).annotate({ identifier: "ComputeResource" }) as any as S.Schema<ComputeResource>;
 
 export type ComputeResourceMap = { [key: string]: ComputeResource | undefined };
-export const ComputeResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ComputeResource,
-) as any as S.Schema<ComputeResourceMap>;
+export const ComputeResourceMap = /*@__PURE__*/ S.Record(S.String, ComputeResource) as any as S.Schema<ComputeResourceMap>;
 
 /** When set in a NetworkResourceConfig, indicates that a new network should be created. */
 export interface NewNetworkConfig {
@@ -220,13 +189,11 @@ export interface NewNetworkConfig {
   description?: string;
 }
 export const NewNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NewNetworkConfig",
-}) as any as S.Schema<NewNetworkConfig>;
+S.Struct({
+  "network": S.optional(S.String),
+  "description": S.optional(S.String),
+}),
+).annotate({ identifier: "NewNetworkConfig" }) as any as S.Schema<NewNetworkConfig>;
 
 /** When set in a NetworkResourceConfig, indicates that an existing network should be imported. */
 export interface ExistingNetworkConfig {
@@ -236,13 +203,11 @@ export interface ExistingNetworkConfig {
   subnetwork?: string;
 }
 export const ExistingNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.optional(S.String),
-    subnetwork: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExistingNetworkConfig",
-}) as any as S.Schema<ExistingNetworkConfig>;
+S.Struct({
+  "network": S.optional(S.String),
+  "subnetwork": S.optional(S.String),
+}),
+).annotate({ identifier: "ExistingNetworkConfig" }) as any as S.Schema<ExistingNetworkConfig>;
 
 /** Describes how a network resource should be initialized. Each network resource can either be imported from an existing Google Cloud resource or initialized when the cluster is created. */
 export interface NetworkResourceConfig {
@@ -252,13 +217,11 @@ export interface NetworkResourceConfig {
   existingNetwork?: ExistingNetworkConfig;
 }
 export const NetworkResourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newNetwork: S.optional(NewNetworkConfig),
-    existingNetwork: S.optional(ExistingNetworkConfig),
-  }),
-).annotate({
-  identifier: "NetworkResourceConfig",
-}) as any as S.Schema<NetworkResourceConfig>;
+S.Struct({
+  "newNetwork": S.optional(NewNetworkConfig),
+  "existingNetwork": S.optional(ExistingNetworkConfig),
+}),
+).annotate({ identifier: "NetworkResourceConfig" }) as any as S.Schema<NetworkResourceConfig>;
 
 /** A reference to a [VPC network](https://cloud.google.com/vpc/docs/vpc) in Google Compute Engine. */
 export interface NetworkReference {
@@ -268,13 +231,11 @@ export interface NetworkReference {
   subnetwork?: string;
 }
 export const NetworkReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.optional(S.String),
-    subnetwork: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkReference",
-}) as any as S.Schema<NetworkReference>;
+S.Struct({
+  "network": S.optional(S.String),
+  "subnetwork": S.optional(S.String),
+}),
+).annotate({ identifier: "NetworkReference" }) as any as S.Schema<NetworkReference>;
 
 /** A resource representing a network that connects the various components of a cluster together. */
 export interface NetworkResource {
@@ -284,19 +245,14 @@ export interface NetworkResource {
   network?: NetworkReference;
 }
 export const NetworkResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(NetworkResourceConfig),
-    network: S.optional(NetworkReference),
-  }),
-).annotate({
-  identifier: "NetworkResource",
-}) as any as S.Schema<NetworkResource>;
+S.Struct({
+  "config": S.optional(NetworkResourceConfig),
+  "network": S.optional(NetworkReference),
+}),
+).annotate({ identifier: "NetworkResource" }) as any as S.Schema<NetworkResource>;
 
 export type NetworkResourceMap = { [key: string]: NetworkResource | undefined };
-export const NetworkResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  NetworkResource,
-) as any as S.Schema<NetworkResourceMap>;
+export const NetworkResourceMap = /*@__PURE__*/ S.Record(S.String, NetworkResource) as any as S.Schema<NetworkResourceMap>;
 
 /** A reference to a [Filestore](https://cloud.google.com/filestore) instance. */
 export interface FilestoreReference {
@@ -304,12 +260,10 @@ export interface FilestoreReference {
   filestore?: string;
 }
 export const FilestoreReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filestore: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FilestoreReference",
-}) as any as S.Schema<FilestoreReference>;
+S.Struct({
+  "filestore": S.optional(S.String),
+}),
+).annotate({ identifier: "FilestoreReference" }) as any as S.Schema<FilestoreReference>;
 
 /** A reference to a [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance. */
 export interface LustreReference {
@@ -317,29 +271,16 @@ export interface LustreReference {
   lustre?: string;
 }
 export const LustreReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lustre: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LustreReference",
-}) as any as S.Schema<LustreReference>;
+S.Struct({
+  "lustre": S.optional(S.String),
+}),
+).annotate({ identifier: "LustreReference" }) as any as S.Schema<LustreReference>;
 
-export type NewBucketConfigStorageClassEnum =
-  | "STORAGE_CLASS_UNSPECIFIED"
-  | "STANDARD"
-  | "NEARLINE"
-  | "COLDLINE"
-  | "ARCHIVE"
-  | (string & {});
+export type NewBucketConfigStorageClassEnum = "STORAGE_CLASS_UNSPECIFIED" | "STANDARD" | "NEARLINE" | "COLDLINE" | "ARCHIVE";
 export const NewBucketConfigStorageClassEnum = /*@__PURE__*/ S.String;
 
-export type GcsAutoclassConfigTerminalStorageClassEnum =
-  | "TERMINAL_STORAGE_CLASS_UNSPECIFIED"
-  | "NEARLINE"
-  | "ARCHIVE"
-  | (string & {});
-export const GcsAutoclassConfigTerminalStorageClassEnum =
-  /*@__PURE__*/ S.String;
+export type GcsAutoclassConfigTerminalStorageClassEnum = "TERMINAL_STORAGE_CLASS_UNSPECIFIED" | "NEARLINE" | "ARCHIVE";
+export const GcsAutoclassConfigTerminalStorageClassEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Google Cloud Storage autoclass configuration */
 export interface GcsAutoclassConfig {
@@ -349,15 +290,11 @@ export interface GcsAutoclassConfig {
   terminalStorageClass?: GcsAutoclassConfigTerminalStorageClassEnum;
 }
 export const GcsAutoclassConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    terminalStorageClass: S.optional(
-      GcsAutoclassConfigTerminalStorageClassEnum,
-    ),
-  }),
-).annotate({
-  identifier: "GcsAutoclassConfig",
-}) as any as S.Schema<GcsAutoclassConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "terminalStorageClass": S.optional(GcsAutoclassConfigTerminalStorageClassEnum),
+}),
+).annotate({ identifier: "GcsAutoclassConfig" }) as any as S.Schema<GcsAutoclassConfig>;
 
 /** Message describing Google Cloud Storage hierarchical namespace configuration */
 export interface GcsHierarchicalNamespaceConfig {
@@ -365,12 +302,10 @@ export interface GcsHierarchicalNamespaceConfig {
   enabled?: boolean;
 }
 export const GcsHierarchicalNamespaceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GcsHierarchicalNamespaceConfig",
-}) as any as S.Schema<GcsHierarchicalNamespaceConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GcsHierarchicalNamespaceConfig" }) as any as S.Schema<GcsHierarchicalNamespaceConfig>;
 
 /** When set in a StorageResourceConfig, indicates that a new [Google Cloud Storage](https://cloud.google.com/storage) bucket should be created. */
 export interface NewBucketConfig {
@@ -384,15 +319,13 @@ export interface NewBucketConfig {
   hierarchicalNamespace?: GcsHierarchicalNamespaceConfig;
 }
 export const NewBucketConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storageClass: S.optional(NewBucketConfigStorageClassEnum),
-    bucket: S.optional(S.String),
-    autoclass: S.optional(GcsAutoclassConfig),
-    hierarchicalNamespace: S.optional(GcsHierarchicalNamespaceConfig),
-  }),
-).annotate({
-  identifier: "NewBucketConfig",
-}) as any as S.Schema<NewBucketConfig>;
+S.Struct({
+  "storageClass": S.optional(NewBucketConfigStorageClassEnum),
+  "bucket": S.optional(S.String),
+  "autoclass": S.optional(GcsAutoclassConfig),
+  "hierarchicalNamespace": S.optional(GcsHierarchicalNamespaceConfig),
+}),
+).annotate({ identifier: "NewBucketConfig" }) as any as S.Schema<NewBucketConfig>;
 
 /** When set in a StorageResourceConfig, indicates that an existing [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance should be imported. */
 export interface ExistingLustreConfig {
@@ -400,12 +333,10 @@ export interface ExistingLustreConfig {
   lustre?: string;
 }
 export const ExistingLustreConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lustre: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExistingLustreConfig",
-}) as any as S.Schema<ExistingLustreConfig>;
+S.Struct({
+  "lustre": S.optional(S.String),
+}),
+).annotate({ identifier: "ExistingLustreConfig" }) as any as S.Schema<ExistingLustreConfig>;
 
 /** When set in a StorageResourceConfig, indicates that an existing [Filestore](https://cloud.google.com/filestore) instance should be imported. */
 export interface ExistingFilestoreConfig {
@@ -413,12 +344,10 @@ export interface ExistingFilestoreConfig {
   filestore?: string;
 }
 export const ExistingFilestoreConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filestore: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExistingFilestoreConfig",
-}) as any as S.Schema<ExistingFilestoreConfig>;
+S.Struct({
+  "filestore": S.optional(S.String),
+}),
+).annotate({ identifier: "ExistingFilestoreConfig" }) as any as S.Schema<ExistingFilestoreConfig>;
 
 /** When set in a StorageResourceConfig, indicates that an existing [Google Cloud Storage](https://cloud.google.com/storage) bucket should be imported. */
 export interface ExistingBucketConfig {
@@ -426,12 +355,10 @@ export interface ExistingBucketConfig {
   bucket?: string;
 }
 export const ExistingBucketConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExistingBucketConfig",
-}) as any as S.Schema<ExistingBucketConfig>;
+S.Struct({
+  "bucket": S.optional(S.String),
+}),
+).annotate({ identifier: "ExistingBucketConfig" }) as any as S.Schema<ExistingBucketConfig>;
 
 /** When set in a StorageResourceConfig, indicates that a new [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance should be created. */
 export interface NewLustreConfig {
@@ -447,22 +374,16 @@ export interface NewLustreConfig {
   capacityGb?: string;
 }
 export const NewLustreConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    lustre: S.optional(S.String),
-    filesystem: S.optional(S.String),
-    perUnitStorageThroughput: S.optional(S.String),
-    capacityGb: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NewLustreConfig",
-}) as any as S.Schema<NewLustreConfig>;
+S.Struct({
+  "description": S.optional(S.String),
+  "lustre": S.optional(S.String),
+  "filesystem": S.optional(S.String),
+  "perUnitStorageThroughput": S.optional(S.String),
+  "capacityGb": S.optional(S.String),
+}),
+).annotate({ identifier: "NewLustreConfig" }) as any as S.Schema<NewLustreConfig>;
 
-export type NewFilestoreConfigTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "ZONAL"
-  | "REGIONAL"
-  | (string & {});
+export type NewFilestoreConfigTierEnum = "TIER_UNSPECIFIED" | "ZONAL" | "REGIONAL";
 export const NewFilestoreConfigTierEnum = /*@__PURE__*/ S.String;
 
 /** Message describing filestore configuration */
@@ -473,24 +394,16 @@ export interface FileShareConfig {
   fileShare?: string;
 }
 export const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacityGb: S.optional(S.String),
-    fileShare: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FileShareConfig",
-}) as any as S.Schema<FileShareConfig>;
+S.Struct({
+  "capacityGb": S.optional(S.String),
+  "fileShare": S.optional(S.String),
+}),
+).annotate({ identifier: "FileShareConfig" }) as any as S.Schema<FileShareConfig>;
 
 export type FileShareConfigList = ReadonlyArray<FileShareConfig>;
-export const FileShareConfigList = /*@__PURE__*/ S.Array(
-  FileShareConfig,
-) as any as S.Schema<FileShareConfigList>;
+export const FileShareConfigList = /*@__PURE__*/ S.Array(FileShareConfig) as any as S.Schema<FileShareConfigList>;
 
-export type NewFilestoreConfigProtocolEnum =
-  | "PROTOCOL_UNSPECIFIED"
-  | "NFSV3"
-  | "NFSV41"
-  | (string & {});
+export type NewFilestoreConfigProtocolEnum = "PROTOCOL_UNSPECIFIED" | "NFSV3" | "NFSV41";
 export const NewFilestoreConfigProtocolEnum = /*@__PURE__*/ S.String;
 
 /** When set in a StorageResourceConfig, indicates that a new [Filestore](https://cloud.google.com/filestore) instance should be created. */
@@ -507,16 +420,14 @@ export interface NewFilestoreConfig {
   protocol?: NewFilestoreConfigProtocolEnum;
 }
 export const NewFilestoreConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    tier: S.optional(NewFilestoreConfigTierEnum),
-    filestore: S.optional(S.String),
-    fileShares: S.optional(FileShareConfigList),
-    protocol: S.optional(NewFilestoreConfigProtocolEnum),
-  }),
-).annotate({
-  identifier: "NewFilestoreConfig",
-}) as any as S.Schema<NewFilestoreConfig>;
+S.Struct({
+  "description": S.optional(S.String),
+  "tier": S.optional(NewFilestoreConfigTierEnum),
+  "filestore": S.optional(S.String),
+  "fileShares": S.optional(FileShareConfigList),
+  "protocol": S.optional(NewFilestoreConfigProtocolEnum),
+}),
+).annotate({ identifier: "NewFilestoreConfig" }) as any as S.Schema<NewFilestoreConfig>;
 
 /** Describes how a storage resource should be initialized. Each storage resource can either be imported from an existing Google Cloud resource or initialized when the cluster is created. */
 export interface StorageResourceConfig {
@@ -534,17 +445,15 @@ export interface StorageResourceConfig {
   newFilestore?: NewFilestoreConfig;
 }
 export const StorageResourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newBucket: S.optional(NewBucketConfig),
-    existingLustre: S.optional(ExistingLustreConfig),
-    existingFilestore: S.optional(ExistingFilestoreConfig),
-    existingBucket: S.optional(ExistingBucketConfig),
-    newLustre: S.optional(NewLustreConfig),
-    newFilestore: S.optional(NewFilestoreConfig),
-  }),
-).annotate({
-  identifier: "StorageResourceConfig",
-}) as any as S.Schema<StorageResourceConfig>;
+S.Struct({
+  "newBucket": S.optional(NewBucketConfig),
+  "existingLustre": S.optional(ExistingLustreConfig),
+  "existingFilestore": S.optional(ExistingFilestoreConfig),
+  "existingBucket": S.optional(ExistingBucketConfig),
+  "newLustre": S.optional(NewLustreConfig),
+  "newFilestore": S.optional(NewFilestoreConfig),
+}),
+).annotate({ identifier: "StorageResourceConfig" }) as any as S.Schema<StorageResourceConfig>;
 
 /** A reference to a [Google Cloud Storage](https://cloud.google.com/storage) bucket. */
 export interface BucketReference {
@@ -552,12 +461,10 @@ export interface BucketReference {
   bucket?: string;
 }
 export const BucketReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BucketReference",
-}) as any as S.Schema<BucketReference>;
+S.Struct({
+  "bucket": S.optional(S.String),
+}),
+).annotate({ identifier: "BucketReference" }) as any as S.Schema<BucketReference>;
 
 /** Represents a form of persistent storage that you can mount onto compute resources in the cluster. */
 export interface StorageResource {
@@ -571,27 +478,19 @@ export interface StorageResource {
   bucket?: BucketReference;
 }
 export const StorageResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filestore: S.optional(FilestoreReference),
-    lustre: S.optional(LustreReference),
-    config: S.optional(StorageResourceConfig),
-    bucket: S.optional(BucketReference),
-  }),
-).annotate({
-  identifier: "StorageResource",
-}) as any as S.Schema<StorageResource>;
+S.Struct({
+  "filestore": S.optional(FilestoreReference),
+  "lustre": S.optional(LustreReference),
+  "config": S.optional(StorageResourceConfig),
+  "bucket": S.optional(BucketReference),
+}),
+).annotate({ identifier: "StorageResource" }) as any as S.Schema<StorageResource>;
 
 export type StorageResourceMap = { [key: string]: StorageResource | undefined };
-export const StorageResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  StorageResource,
-) as any as S.Schema<StorageResourceMap>;
+export const StorageResourceMap = /*@__PURE__*/ S.Record(S.String, StorageResource) as any as S.Schema<StorageResourceMap>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Description of how a storage resource should be mounted on a VM instance. */
 export interface StorageConfig {
@@ -601,16 +500,14 @@ export interface StorageConfig {
   localMount?: string;
 }
 export const StorageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    localMount: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "localMount": S.optional(S.String),
+}),
 ).annotate({ identifier: "StorageConfig" }) as any as S.Schema<StorageConfig>;
 
 export type StorageConfigList = ReadonlyArray<StorageConfig>;
-export const StorageConfigList = /*@__PURE__*/ S.Array(
-  StorageConfig,
-) as any as S.Schema<StorageConfigList>;
+export const StorageConfigList = /*@__PURE__*/ S.Array(StorageConfig) as any as S.Schema<StorageConfigList>;
 
 /** A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the boot disk for a Compute Engine VM instance. */
 export interface BootDisk {
@@ -620,10 +517,10 @@ export interface BootDisk {
   sizeGb?: string;
 }
 export const BootDisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    sizeGb: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(S.String),
+  "sizeGb": S.optional(S.String),
+}),
 ).annotate({ identifier: "BootDisk" }) as any as S.Schema<BootDisk>;
 
 /** Details about a Compute Engine [instance](https://cloud.google.com/compute/docs/instances). */
@@ -632,17 +529,13 @@ export interface ComputeInstance {
   instance?: string;
 }
 export const ComputeInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instance: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ComputeInstance",
-}) as any as S.Schema<ComputeInstance>;
+S.Struct({
+  "instance": S.optional(S.String),
+}),
+).annotate({ identifier: "ComputeInstance" }) as any as S.Schema<ComputeInstance>;
 
 export type ComputeInstanceList = ReadonlyArray<ComputeInstance>;
-export const ComputeInstanceList = /*@__PURE__*/ S.Array(
-  ComputeInstance,
-) as any as S.Schema<ComputeInstanceList>;
+export const ComputeInstanceList = /*@__PURE__*/ S.Array(ComputeInstance) as any as S.Schema<ComputeInstanceList>;
 
 /** Configuration for Slurm [login nodes](https://slurm.schedmd.com/quickstart_admin.html#login) in the cluster. Login nodes are Compute Engine VM instances that allow users to access the cluster over SSH. */
 export interface SlurmLoginNodes {
@@ -668,26 +561,22 @@ export interface SlurmLoginNodes {
   enableOsLogin?: boolean;
 }
 export const SlurmLoginNodes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machineType: S.optional(S.String),
-    enablePublicIps: S.optional(S.Boolean),
-    storageConfigs: S.optional(StorageConfigList),
-    zone: S.optional(S.String),
-    labels: S.optional(StringMap),
-    bootDisk: S.optional(BootDisk),
-    startupScript: S.optional(S.String),
-    instances: S.optional(ComputeInstanceList),
-    count: S.optional(S.String),
-    enableOsLogin: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SlurmLoginNodes",
-}) as any as S.Schema<SlurmLoginNodes>;
+S.Struct({
+  "machineType": S.optional(S.String),
+  "enablePublicIps": S.optional(S.Boolean),
+  "storageConfigs": S.optional(StorageConfigList),
+  "zone": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "bootDisk": S.optional(BootDisk),
+  "startupScript": S.optional(S.String),
+  "instances": S.optional(ComputeInstanceList),
+  "count": S.optional(S.String),
+  "enableOsLogin": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SlurmLoginNodes" }) as any as S.Schema<SlurmLoginNodes>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Configuration for Slurm partitions in the cluster. Partitions are groups of nodesets, and are how clients specify where their workloads should be run. */
 export interface SlurmPartition {
@@ -697,16 +586,14 @@ export interface SlurmPartition {
   id?: string;
 }
 export const SlurmPartition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeSetIds: S.optional(StringList),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "nodeSetIds": S.optional(StringList),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "SlurmPartition" }) as any as S.Schema<SlurmPartition>;
 
 export type SlurmPartitionList = ReadonlyArray<SlurmPartition>;
-export const SlurmPartitionList = /*@__PURE__*/ S.Array(
-  SlurmPartition,
-) as any as S.Schema<SlurmPartitionList>;
+export const SlurmPartitionList = /*@__PURE__*/ S.Array(SlurmPartition) as any as S.Schema<SlurmPartitionList>;
 
 /** When set in a SlurmNodeSet, indicates that the nodeset should be backed by Compute Engine VM instances. */
 export interface ComputeInstanceSlurmNodeSet {
@@ -718,14 +605,12 @@ export interface ComputeInstanceSlurmNodeSet {
   bootDisk?: BootDisk;
 }
 export const ComputeInstanceSlurmNodeSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startupScript: S.optional(S.String),
-    labels: S.optional(StringMap),
-    bootDisk: S.optional(BootDisk),
-  }),
-).annotate({
-  identifier: "ComputeInstanceSlurmNodeSet",
-}) as any as S.Schema<ComputeInstanceSlurmNodeSet>;
+S.Struct({
+  "startupScript": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "bootDisk": S.optional(BootDisk),
+}),
+).annotate({ identifier: "ComputeInstanceSlurmNodeSet" }) as any as S.Schema<ComputeInstanceSlurmNodeSet>;
 
 /** Configuration for Slurm nodesets in the cluster. Nodesets are groups of compute nodes used by Slurm that are responsible for running workloads submitted to the cluster. */
 export interface SlurmNodeSet {
@@ -743,20 +628,18 @@ export interface SlurmNodeSet {
   id?: string;
 }
 export const SlurmNodeSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storageConfigs: S.optional(StorageConfigList),
-    computeId: S.optional(S.String),
-    computeInstance: S.optional(ComputeInstanceSlurmNodeSet),
-    staticNodeCount: S.optional(S.String),
-    maxDynamicNodeCount: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "storageConfigs": S.optional(StorageConfigList),
+  "computeId": S.optional(S.String),
+  "computeInstance": S.optional(ComputeInstanceSlurmNodeSet),
+  "staticNodeCount": S.optional(S.String),
+  "maxDynamicNodeCount": S.optional(S.String),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "SlurmNodeSet" }) as any as S.Schema<SlurmNodeSet>;
 
 export type SlurmNodeSetList = ReadonlyArray<SlurmNodeSet>;
-export const SlurmNodeSetList = /*@__PURE__*/ S.Array(
-  SlurmNodeSet,
-) as any as S.Schema<SlurmNodeSetList>;
+export const SlurmNodeSetList = /*@__PURE__*/ S.Array(SlurmNodeSet) as any as S.Schema<SlurmNodeSetList>;
 
 /** When set in Orchestrator, indicates that the cluster should use [Slurm](https://slurm.schedmd.com/) as the orchestrator. */
 export interface SlurmOrchestrator {
@@ -774,17 +657,15 @@ export interface SlurmOrchestrator {
   nodeSets?: SlurmNodeSetList;
 }
 export const SlurmOrchestrator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loginNodes: S.optional(SlurmLoginNodes),
-    epilogBashScripts: S.optional(StringList),
-    partitions: S.optional(SlurmPartitionList),
-    prologBashScripts: S.optional(StringList),
-    defaultPartition: S.optional(S.String),
-    nodeSets: S.optional(SlurmNodeSetList),
-  }),
-).annotate({
-  identifier: "SlurmOrchestrator",
-}) as any as S.Schema<SlurmOrchestrator>;
+S.Struct({
+  "loginNodes": S.optional(SlurmLoginNodes),
+  "epilogBashScripts": S.optional(StringList),
+  "partitions": S.optional(SlurmPartitionList),
+  "prologBashScripts": S.optional(StringList),
+  "defaultPartition": S.optional(S.String),
+  "nodeSets": S.optional(SlurmNodeSetList),
+}),
+).annotate({ identifier: "SlurmOrchestrator" }) as any as S.Schema<SlurmOrchestrator>;
 
 /** The component responsible for scheduling and running workloads on the cluster as well as providing the user interface for interacting with the cluster at runtime. */
 export interface Orchestrator {
@@ -792,9 +673,9 @@ export interface Orchestrator {
   slurm?: SlurmOrchestrator;
 }
 export const Orchestrator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slurm: S.optional(SlurmOrchestrator),
-  }),
+S.Struct({
+  "slurm": S.optional(SlurmOrchestrator),
+}),
 ).annotate({ identifier: "Orchestrator" }) as any as S.Schema<Orchestrator>;
 
 /** A collection of virtual machines and connected resources forming a high-performance computing cluster capable of running large-scale, tightly coupled workloads. A cluster combines a set a compute resources that perform computations, storage resources that contain inputs and store outputs, an orchestrator that is responsible for assigning jobs to compute resources, and network resources that connect everything together. */
@@ -821,18 +702,18 @@ export interface Cluster {
   reconciling?: boolean;
 }
 export const Cluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    computeResources: S.optional(ComputeResourceMap),
-    createTime: S.optional(S.String),
-    networkResources: S.optional(NetworkResourceMap),
-    storageResources: S.optional(StorageResourceMap),
-    description: S.optional(S.String),
-    labels: S.optional(StringMap),
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    orchestrator: S.optional(Orchestrator),
-    reconciling: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "computeResources": S.optional(ComputeResourceMap),
+  "createTime": S.optional(S.String),
+  "networkResources": S.optional(NetworkResourceMap),
+  "storageResources": S.optional(StorageResourceMap),
+  "description": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "orchestrator": S.optional(Orchestrator),
+  "reconciling": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 export interface CreateProjectsLocationsClustersRequest {
@@ -845,34 +726,20 @@ export interface CreateProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      clusterId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Cluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/clusters",
-        baseUrl: "https://hypercomputecluster.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsClustersRequest",
-}) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
+export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "clusterId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Cluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/clusters","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsClustersRequest" }) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -884,11 +751,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -905,13 +772,13 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
-  }),
+S.Struct({
+  "response": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "error": S.optional(Status),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsClustersRequest {
@@ -920,58 +787,32 @@ export interface DeleteProjectsLocationsClustersRequest {
   /** Optional. A unique identifier for this request. A random UUID is recommended. This request is idempotent if and only if `request_id` is provided. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://hypercomputecluster.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsClustersRequest",
-}) as any as S.Schema<DeleteProjectsLocationsClustersRequest>;
+export const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsClustersRequest" }) as any as S.Schema<DeleteProjectsLocationsClustersRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://hypercomputecluster.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://hypercomputecluster.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -987,13 +828,13 @@ export interface Location {
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    locationId: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "locationId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsClustersRequest {
@@ -1001,37 +842,20 @@ export interface GetProjectsLocationsClustersRequest {
   name: string;
 }
 export const GetProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://hypercomputecluster.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsClustersRequest",
-}) as any as S.Schema<GetProjectsLocationsClustersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsClustersRequest" }) as any as S.Schema<GetProjectsLocationsClustersRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://hypercomputecluster.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -1046,27 +870,17 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://hypercomputecluster.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1076,13 +890,11 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    locations: S.optional(LocationList),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "locations": S.optional(LocationList),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsClustersRequest {
   /** Optional. [Filter](https://google.aip.dev/160) to apply to the returned results. */
@@ -1096,29 +908,18 @@ export interface ListProjectsLocationsClustersRequest {
   /** Optional. How to order the resulting clusters. Must be one of the following strings: * `name` * `name desc` * `create_time` * `create_time desc` If not specified, clusters will be returned in an arbitrary order. */
   orderBy?: string;
 }
-export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/clusters",
-        baseUrl: "https://hypercomputecluster.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsClustersRequest",
-}) as any as S.Schema<ListProjectsLocationsClustersRequest>;
+export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/clusters","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsClustersRequest" }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
 export type ClusterList = ReadonlyArray<Cluster>;
-export const ClusterList = /*@__PURE__*/ S.Array(
-  Cluster,
-) as any as S.Schema<ClusterList>;
+export const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
 
 /** Response message for ListClusters. */
 export interface ListClustersResponse {
@@ -1130,14 +931,12 @@ export interface ListClustersResponse {
   unreachable?: StringList;
 }
 export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusters: S.optional(ClusterList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListClustersResponse",
-}) as any as S.Schema<ListClustersResponse>;
+S.Struct({
+  "clusters": S.optional(ClusterList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListClustersResponse" }) as any as S.Schema<ListClustersResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -1151,29 +950,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://hypercomputecluster.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1185,14 +973,12 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsClustersRequest {
   /** Identifier. [Relative resource name](https://google.aip.dev/122) of the cluster, in the format `projects/{project}/locations/{location}/clusters/{cluster}`. */
@@ -1204,30 +990,16 @@ export interface PatchProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const PatchProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Cluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://hypercomputecluster.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsClustersRequest",
-}) as any as S.Schema<PatchProjectsLocationsClustersRequest>;
+export const PatchProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Cluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://hypercomputecluster.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsClustersRequest" }) as any as S.Schema<PatchProjectsLocationsClustersRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1242,12 +1014,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Cluster in a given project and location. */
 export const createProjectsLocationsClusters: API.OperationMethod<
   CreateProjectsLocationsClustersRequest,
@@ -1262,12 +1029,7 @@ export const createProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Cluster. */
 export const deleteProjectsLocationsClusters: API.OperationMethod<
   DeleteProjectsLocationsClustersRequest,
@@ -1282,12 +1044,7 @@ export const deleteProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1317,10 +1074,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Cluster. */
 export const getProjectsLocationsClusters: API.OperationMethod<
   GetProjectsLocationsClustersRequest,
@@ -1335,10 +1089,7 @@ export const getProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1366,16 +1117,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
 /** Lists Clusters in a given project and location. */
 export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
   ListProjectsLocationsClustersRequest,
@@ -1388,16 +1133,10 @@ export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1410,18 +1149,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single Cluster. */
 export const patchProjectsLocationsClusters: API.OperationMethod<
   PatchProjectsLocationsClustersRequest,
@@ -1435,3 +1166,4 @@ export const patchProjectsLocationsClusters: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -41,14 +41,14 @@ export class Forbidden extends T.applyErrorMatchers(
   [{ status: 403 }],
 ) {}
 
-export type CreateRequestValue = "enabled" | "disabled" | (string & {});
+export type CreateRequestValue = "enabled" | "disabled";
 export const CreateRequestValue = /*@__PURE__*/ S.String;
 
 export interface CreateContentScanningRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The status value for Content Scanning. */
-  value: CreateRequestValue;
+  value: CreateRequestValue | (string & {});
 }
 export const CreateContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -381,14 +381,14 @@ export const SettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsGetResponse",
 }) as any as S.Schema<SettingsGetResponse>;
 
-export type UpdateRequestValue = "enabled" | "disabled" | (string & {});
+export type UpdateRequestValue = "enabled" | "disabled";
 export const UpdateRequestValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The status value for Content Scanning. */
-  value: UpdateRequestValue;
+  value: UpdateRequestValue | (string & {});
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -165,10 +165,7 @@ export const BulkCreateLabelUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkCreateLabelUsersRequest",
 }) as any as S.Schema<BulkCreateLabelUsersRequest>;
 
-export type LabelsUserBulkCreateResultItemSource =
-  | "user"
-  | "managed"
-  | (string & {});
+export type LabelsUserBulkCreateResultItemSource = "user" | "managed";
 export const LabelsUserBulkCreateResultItemSource = /*@__PURE__*/ S.String;
 
 export interface LabelsUserBulkCreateResultItem {
@@ -327,15 +324,13 @@ export type OperationsLabelsBulkCreateResultItemMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsLabelsBulkCreateResultItemMethod =
   /*@__PURE__*/ S.String;
 
 export type OperationsLabelsBulkCreateResultItemLabelsItemSource =
   | "user"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const OperationsLabelsBulkCreateResultItemLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -428,8 +423,7 @@ export type OperationsBulkCreateRequestBodyItemMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsBulkCreateRequestBodyItemMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsBulkCreateRequestBodyItem {
@@ -438,7 +432,7 @@ export interface OperationsBulkCreateRequestBodyItem {
   /** RFC3986-compliant host. */
   host: string;
   /** The HTTP method used to access the endpoint. */
-  method: OperationsBulkCreateRequestBodyItemMethod;
+  method: OperationsBulkCreateRequestBodyItemMethod | (string & {});
 }
 export const OperationsBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -487,8 +481,7 @@ export type OperationsBulkCreateResultItemMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsBulkCreateResultItemMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
@@ -797,7 +790,7 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSche
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
 export type OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -929,10 +922,7 @@ export const BulkDeleteLabelUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkDeleteLabelUsersRequest",
 }) as any as S.Schema<BulkDeleteLabelUsersRequest>;
 
-export type LabelsUserBulkDeleteResultItemSource =
-  | "user"
-  | "managed"
-  | (string & {});
+export type LabelsUserBulkDeleteResultItemSource = "user" | "managed";
 export const LabelsUserBulkDeleteResultItemSource = /*@__PURE__*/ S.String;
 
 export interface LabelsUserBulkDeleteResultItem {
@@ -1010,15 +1000,13 @@ export type OperationsLabelsBulkDeleteResultItemMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsLabelsBulkDeleteResultItemMethod =
   /*@__PURE__*/ S.String;
 
 export type OperationsLabelsBulkDeleteResultItemLabelsItemSource =
   | "user"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const OperationsLabelsBulkDeleteResultItemLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -1131,14 +1119,13 @@ export const BulkDeleteOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type DiscoveryOperationsBulkEditRequestBodyValueState =
   | "review"
-  | "ignored"
-  | (string & {});
+  | "ignored";
 export const DiscoveryOperationsBulkEditRequestBodyValueState =
   /*@__PURE__*/ S.String;
 
 export interface DiscoveryOperationsBulkEditRequestBodyValue {
   /** Mark state of operation in API Discovery */
-  state?: DiscoveryOperationsBulkEditRequestBodyValueState;
+  state?: DiscoveryOperationsBulkEditRequestBodyValueState | (string & {});
 }
 export const DiscoveryOperationsBulkEditRequestBodyValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -1179,10 +1166,7 @@ export const BulkPatchDiscoveryOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPatchDiscoveryOperationsRequest",
 }) as any as S.Schema<BulkPatchDiscoveryOperationsRequest>;
 
-export type DiscoveryOperationsBulkEditResultValueState =
-  | "review"
-  | "ignored"
-  | (string & {});
+export type DiscoveryOperationsBulkEditResultValueState = "review" | "ignored";
 export const DiscoveryOperationsBulkEditResultValueState =
   /*@__PURE__*/ S.String;
 
@@ -1327,15 +1311,13 @@ export type OperationsLabelsBulkUpdateResultItemMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsLabelsBulkUpdateResultItemMethod =
   /*@__PURE__*/ S.String;
 
 export type OperationsLabelsBulkUpdateResultItemLabelsItemSource =
   | "user"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const OperationsLabelsBulkUpdateResultItemLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -1476,8 +1458,7 @@ export type OperationsCreateRequestMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsCreateRequestMethod = /*@__PURE__*/ S.String;
 
 export interface CreateOperationRequest {
@@ -1488,7 +1469,7 @@ export interface CreateOperationRequest {
   /** RFC3986-compliant host. */
   host: string;
   /** The HTTP method used to access the endpoint. */
-  method: OperationsCreateRequestMethod;
+  method: OperationsCreateRequestMethod | (string & {});
 }
 export const CreateOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1518,8 +1499,7 @@ export type OperationsCreateResponseMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsCreateResponseMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds {
@@ -1828,7 +1808,7 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
 export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -2075,14 +2055,10 @@ export type OperationsLabelsCreateResponseMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsLabelsCreateResponseMethod = /*@__PURE__*/ S.String;
 
-export type OperationsLabelsCreateResponseLabelsItemSource =
-  | "user"
-  | "managed"
-  | (string & {});
+export type OperationsLabelsCreateResponseLabelsItemSource = "user" | "managed";
 export const OperationsLabelsCreateResponseLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -2177,7 +2153,7 @@ export const CreateUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateUserSchemaRequest",
 }) as any as S.Schema<CreateUserSchemaRequest>;
 
-export type UserSchemasCreateResponseSchemaKind = "openapi_v3" | (string & {});
+export type UserSchemasCreateResponseSchemaKind = "openapi_v3";
 export const UserSchemasCreateResponseSchemaKind = /*@__PURE__*/ S.String;
 
 export interface UserSchemasCreateResponseSchema {
@@ -2293,7 +2269,7 @@ export const DeleteLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLabelUserRequest",
 }) as any as S.Schema<DeleteLabelUserRequest>;
 
-export type LabelsUserDeleteResponseSource = "user" | "managed" | (string & {});
+export type LabelsUserDeleteResponseSource = "user" | "managed";
 export const LabelsUserDeleteResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2384,14 +2360,10 @@ export type OperationsLabelsDeleteResponseMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsLabelsDeleteResponseMethod = /*@__PURE__*/ S.String;
 
-export type OperationsLabelsDeleteResponseLabelsItemSource =
-  | "user"
-  | "managed"
-  | (string & {});
+export type OperationsLabelsDeleteResponseLabelsItemSource = "user" | "managed";
 export const OperationsLabelsDeleteResponseLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -2506,7 +2478,7 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConfigurationRequest>;
 
 export type ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
-  "header" | "cookie" | (string & {});
+  "header" | "cookie";
 export const ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   /*@__PURE__*/ S.String;
 
@@ -2528,7 +2500,7 @@ export const ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCh
   }) as any as S.Schema<ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic>;
 
 export type ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
-  "jwt" | (string & {});
+  "jwt";
 export const ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
   /*@__PURE__*/ S.String;
 
@@ -2649,7 +2621,7 @@ export const GetLabelManagedRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLabelManagedRequest",
 }) as any as S.Schema<GetLabelManagedRequest>;
 
-export type LabelsManagedGetResponseSource = "user" | "managed" | (string & {});
+export type LabelsManagedGetResponseSource = "user" | "managed";
 export const LabelsManagedGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2709,7 +2681,7 @@ export const GetLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLabelUserRequest",
 }) as any as S.Schema<GetLabelUserRequest>;
 
-export type LabelsUserGetResponseSource = "user" | "managed" | (string & {});
+export type LabelsUserGetResponseSource = "user" | "managed";
 export const LabelsUserGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2744,12 +2716,12 @@ export const GetLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
 export type OperationsGetRequestFeature =
   | "thresholds"
   | "parameter_schemas"
-  | "schema_info"
-  | (string & {});
+  | "schema_info";
 export const OperationsGetRequestFeature = /*@__PURE__*/ S.String;
 
-export type OperationsGetRequestFeatureList =
-  ReadonlyArray<OperationsGetRequestFeature>;
+export type OperationsGetRequestFeatureList = ReadonlyArray<
+  OperationsGetRequestFeature | (string & {})
+>;
 export const OperationsGetRequestFeatureList = /*@__PURE__*/ S.Array(
   OperationsGetRequestFeature,
 ) as any as S.Schema<OperationsGetRequestFeatureList>;
@@ -2792,8 +2764,7 @@ export type OperationsGetResponseMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsGetResponseMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds {
@@ -3102,7 +3073,7 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSch
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
 export type OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -3322,8 +3293,7 @@ export const GetOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
 export type OperationsSchemaValidationGetResponseMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const OperationsSchemaValidationGetResponseMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -3401,7 +3371,7 @@ export const GetUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserSchemaRequest",
 }) as any as S.Schema<GetUserSchemaRequest>;
 
-export type UserSchemasGetResponseKind = "openapi_v3" | (string & {});
+export type UserSchemasGetResponseKind = "openapi_v3";
 export const UserSchemasGetResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3431,10 +3401,7 @@ export const GetUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserSchemaResponse",
 }) as any as S.Schema<GetUserSchemaResponse>;
 
-export type DiscoveryOperationsListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type DiscoveryOperationsListRequestDirection = "asc" | "desc";
 export const DiscoveryOperationsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type DiscoveryOperationsListRequestHostList = ReadonlyArray<string>;
@@ -3452,22 +3419,19 @@ export type DiscoveryOperationsListRequestOrder =
   | "method"
   | "endpoint"
   | "traffic_stats.requests"
-  | "traffic_stats.last_updated"
-  | (string & {});
+  | "traffic_stats.last_updated";
 export const DiscoveryOperationsListRequestOrder = /*@__PURE__*/ S.String;
 
 export type DiscoveryOperationsListRequestOrigin =
   | "ML"
   | "SessionIdentifier"
-  | "LabelDiscovery"
-  | (string & {});
+  | "LabelDiscovery";
 export const DiscoveryOperationsListRequestOrigin = /*@__PURE__*/ S.String;
 
 export type DiscoveryOperationsListRequestState =
   | "review"
   | "saved"
-  | "ignored"
-  | (string & {});
+  | "ignored";
 export const DiscoveryOperationsListRequestState = /*@__PURE__*/ S.String;
 
 export interface ListDiscoveryOperationsRequest {
@@ -3476,7 +3440,7 @@ export interface ListDiscoveryOperationsRequest {
   /** When `true`, only return API Discovery results that are not saved into API Shield Endpoint Management */
   diff?: boolean;
   /** Direction to order results. */
-  direction?: DiscoveryOperationsListRequestDirection;
+  direction?: DiscoveryOperationsListRequestDirection | (string & {});
   /** Filter results to only include endpoints containing this pattern. */
   endpoint?: string;
   /** Filter results to only include the specified hosts. */
@@ -3484,15 +3448,15 @@ export interface ListDiscoveryOperationsRequest {
   /** Filter results to only include the specified HTTP methods. */
   method?: DiscoveryOperationsListRequestMethodList;
   /** Field to order by */
-  order?: DiscoveryOperationsListRequestOrder;
+  order?: DiscoveryOperationsListRequestOrder | (string & {});
   /** Filter results to only include discovery results sourced from a particular discovery engine */
-  origin?: DiscoveryOperationsListRequestOrigin;
+  origin?: DiscoveryOperationsListRequestOrigin | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Maximum number of results per page. */
   perPage?: number;
   /** Filter results to only include discovery results in a particular state. States are as follows */
-  state?: DiscoveryOperationsListRequestState;
+  state?: DiscoveryOperationsListRequestState | (string & {});
 }
 export const ListDiscoveryOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3533,15 +3497,13 @@ export type DiscoveryOperationsListResultItemMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const DiscoveryOperationsListResultItemMethod = /*@__PURE__*/ S.String;
 
 export type DiscoveryOperationsListResultItemOriginItem =
   | "ML"
   | "SessionIdentifier"
-  | "LabelDiscovery"
-  | (string & {});
+  | "LabelDiscovery";
 export const DiscoveryOperationsListResultItemOriginItem =
   /*@__PURE__*/ S.String;
 
@@ -3555,8 +3517,7 @@ export const DiscoveryOperationsListResultItemOriginList =
 export type DiscoveryOperationsListResultItemState =
   | "review"
   | "saved"
-  | "ignored"
-  | (string & {});
+  | "ignored";
 export const DiscoveryOperationsListResultItemState = /*@__PURE__*/ S.String;
 
 export interface DiscoveryOperationsListResultItemFeaturesTrafficStats {
@@ -3645,7 +3606,7 @@ export const ListDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDiscoveryOperationsResponse",
 }) as any as S.Schema<ListDiscoveryOperationsResponse>;
 
-export type LabelsListRequestDirection = "asc" | "desc" | (string & {});
+export type LabelsListRequestDirection = "asc" | "desc";
 export const LabelsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type LabelsListRequestOrder =
@@ -3653,28 +3614,27 @@ export type LabelsListRequestOrder =
   | "description"
   | "created_at"
   | "last_updated"
-  | "mapped_resources.operations"
-  | (string & {});
+  | "mapped_resources.operations";
 export const LabelsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type LabelsListRequestSource = "user" | "managed" | (string & {});
+export type LabelsListRequestSource = "user" | "managed";
 export const LabelsListRequestSource = /*@__PURE__*/ S.String;
 
 export interface ListLabelsRequest {
   /** Identifier. */
   zoneId: string;
   /** Direction to order results. */
-  direction?: LabelsListRequestDirection;
+  direction?: LabelsListRequestDirection | (string & {});
   /** Filter for labels where the name or description matches using substring match */
   filter?: string;
   /** Field to order by */
-  order?: LabelsListRequestOrder;
+  order?: LabelsListRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Maximum number of results per page. */
   perPage?: number;
   /** Filter for labels with source */
-  source?: LabelsListRequestSource;
+  source?: LabelsListRequestSource | (string & {});
   /** Include `mapped_resources` for each label */
   withMappedResourceCounts?: boolean;
 }
@@ -3703,7 +3663,7 @@ export const ListLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLabelsRequest",
 }) as any as S.Schema<ListLabelsRequest>;
 
-export type LabelsListResultItemSource = "user" | "managed" | (string & {});
+export type LabelsListResultItemSource = "user" | "managed";
 export const LabelsListResultItemSource = /*@__PURE__*/ S.String;
 
 export interface LabelsListResultItem {
@@ -3754,18 +3714,18 @@ export const ListLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLabelsResponse",
 }) as any as S.Schema<ListLabelsResponse>;
 
-export type OperationsListRequestDirection = "asc" | "desc" | (string & {});
+export type OperationsListRequestDirection = "asc" | "desc";
 export const OperationsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type OperationsListRequestFeature =
   | "thresholds"
   | "parameter_schemas"
-  | "schema_info"
-  | (string & {});
+  | "schema_info";
 export const OperationsListRequestFeature = /*@__PURE__*/ S.String;
 
-export type OperationsListRequestFeatureList =
-  ReadonlyArray<OperationsListRequestFeature>;
+export type OperationsListRequestFeatureList = ReadonlyArray<
+  OperationsListRequestFeature | (string & {})
+>;
 export const OperationsListRequestFeatureList = /*@__PURE__*/ S.Array(
   OperationsListRequestFeature,
 ) as any as S.Schema<OperationsListRequestFeatureList>;
@@ -3784,15 +3744,14 @@ export type OperationsListRequestOrder =
   | "method"
   | "host"
   | "endpoint"
-  | "thresholds.$key"
-  | (string & {});
+  | "thresholds.$key";
 export const OperationsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListOperationsRequest {
   /** Identifier. */
   zoneId: string;
   /** Direction to order results. */
-  direction?: OperationsListRequestDirection;
+  direction?: OperationsListRequestDirection | (string & {});
   /** Filter results to only include endpoints containing this pattern. */
   endpoint?: string;
   /** Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning. */
@@ -3802,7 +3761,7 @@ export interface ListOperationsRequest {
   /** Filter results to only include the specified HTTP methods. */
   method?: OperationsListRequestMethodList;
   /** Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`. */
-  order?: OperationsListRequestOrder;
+  order?: OperationsListRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Maximum number of results per page. */
@@ -3841,8 +3800,7 @@ export type OperationsListResultItemMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsListResultItemMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
@@ -4151,7 +4109,7 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
 export type OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -4264,12 +4222,12 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SchemasListRequestFeature =
   | "thresholds"
   | "parameter_schemas"
-  | "schema_info"
-  | (string & {});
+  | "schema_info";
 export const SchemasListRequestFeature = /*@__PURE__*/ S.String;
 
-export type SchemasListRequestFeatureList =
-  ReadonlyArray<SchemasListRequestFeature>;
+export type SchemasListRequestFeatureList = ReadonlyArray<
+  SchemasListRequestFeature | (string & {})
+>;
 export const SchemasListRequestFeatureList = /*@__PURE__*/ S.Array(
   SchemasListRequestFeature,
 ) as any as S.Schema<SchemasListRequestFeatureList>;
@@ -4399,12 +4357,12 @@ export const ListUserSchemaHostsResponse = /*@__PURE__*/ S.suspend(() =>
 export type UserSchemasOperationsListRequestFeature =
   | "thresholds"
   | "parameter_schemas"
-  | "schema_info"
-  | (string & {});
+  | "schema_info";
 export const UserSchemasOperationsListRequestFeature = /*@__PURE__*/ S.String;
 
-export type UserSchemasOperationsListRequestFeatureList =
-  ReadonlyArray<UserSchemasOperationsListRequestFeature>;
+export type UserSchemasOperationsListRequestFeatureList = ReadonlyArray<
+  UserSchemasOperationsListRequestFeature | (string & {})
+>;
 export const UserSchemasOperationsListRequestFeatureList =
   /*@__PURE__*/ S.Array(
     UserSchemasOperationsListRequestFeature,
@@ -4422,8 +4380,7 @@ export const UserSchemasOperationsListRequestMethodList = /*@__PURE__*/ S.Array(
 
 export type UserSchemasOperationsListRequestOperationStatus =
   | "new"
-  | "existing"
-  | (string & {});
+  | "existing";
 export const UserSchemasOperationsListRequestOperationStatus =
   /*@__PURE__*/ S.String;
 
@@ -4440,7 +4397,9 @@ export interface ListUserSchemaOperationsRequest {
   /** Filter results to only include the specified HTTP methods. */
   method?: UserSchemasOperationsListRequestMethodList;
   /** Filter results by whether operations exist in API Shield Endpoint Management or not. `new` will just return operations from the schema that do not exist in API Shield Endpoint Management. `existing` will just return operations from the schema that already exist in API Shield Endpoint Management. */
-  operationStatus?: UserSchemasOperationsListRequestOperationStatus;
+  operationStatus?:
+    | UserSchemasOperationsListRequestOperationStatus
+    | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Maximum number of results per page. */
@@ -4487,8 +4446,7 @@ export type UserSchemasOperationsListResultItemAPIShieldOperationMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const UserSchemasOperationsListResultItemAPIShieldOperationMethod =
   /*@__PURE__*/ S.String;
 
@@ -4798,7 +4756,7 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
 export type UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -4901,8 +4859,7 @@ export type UserSchemasOperationsListResultItemAPIShieldBasicOperationMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const UserSchemasOperationsListResultItemAPIShieldBasicOperationMethod =
   /*@__PURE__*/ S.String;
 
@@ -4990,7 +4947,7 @@ export const ListUserSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserSchemasRequest",
 }) as any as S.Schema<ListUserSchemasRequest>;
 
-export type UserSchemasListResultItemKind = "openapi_v3" | (string & {});
+export type UserSchemasListResultItemKind = "openapi_v3";
 export const UserSchemasListResultItemKind = /*@__PURE__*/ S.String;
 
 export interface UserSchemasListResultItem {
@@ -5069,7 +5026,7 @@ export const PatchLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchLabelUserRequest",
 }) as any as S.Schema<PatchLabelUserRequest>;
 
-export type LabelsUserEditResponseSource = "user" | "managed" | (string & {});
+export type LabelsUserEditResponseSource = "user" | "managed";
 export const LabelsUserEditResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5099,13 +5056,15 @@ export const PatchLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchLabelUserResponse>;
 
 export type OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction =
-  "log" | "block" | "none" | (string & {});
+  "log" | "block" | "none";
 export const OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction =
   /*@__PURE__*/ S.String;
 
 export interface OperationsSchemaValidationEditRequestSettingsMultipleRequest {
   /** When set, this applies a mitigation action to this operation */
-  mitigationAction?: OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction;
+  mitigationAction?:
+    | OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction
+    | (string & {});
 }
 export const OperationsSchemaValidationEditRequestSettingsMultipleRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5149,8 +5108,7 @@ export const PatchOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(
 export type OperationsSchemaValidationEditResponseMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const OperationsSchemaValidationEditResponseMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -5173,12 +5131,12 @@ export const PatchOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchOperationSchemaValidationResponse>;
 
 export type SettingsSchemaValidationEditRequestValidationDefaultMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const SettingsSchemaValidationEditRequestValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
 export type SettingsSchemaValidationEditRequestValidationOverrideMitigationAction =
-  "none" | "disable_override" | (string & {});
+  "none" | "disable_override";
 export const SettingsSchemaValidationEditRequestValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -5186,9 +5144,13 @@ export interface PatchSettingSchemaValidationRequest {
   /** Identifier. */
   zoneId: string;
   /** The default mitigation action used when there is no mitigation action defined on the operation */
-  validationDefaultMitigationAction?: SettingsSchemaValidationEditRequestValidationDefaultMitigationAction;
+  validationDefaultMitigationAction?:
+    | SettingsSchemaValidationEditRequestValidationDefaultMitigationAction
+    | (string & {});
   /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?: SettingsSchemaValidationEditRequestValidationOverrideMitigationAction;
+  validationOverrideMitigationAction?:
+    | SettingsSchemaValidationEditRequestValidationOverrideMitigationAction
+    | (string & {});
 }
 export const PatchSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5249,7 +5211,7 @@ export const PatchUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchUserSchemaRequest",
 }) as any as S.Schema<PatchUserSchemaRequest>;
 
-export type UserSchemasEditResponseKind = "openapi_v3" | (string & {});
+export type UserSchemasEditResponseKind = "openapi_v3";
 export const UserSchemasEditResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5280,7 +5242,7 @@ export const PatchUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchUserSchemaResponse>;
 
 export type ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
-  "header" | "cookie" | (string & {});
+  "header" | "cookie";
 export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   /*@__PURE__*/ S.String;
 
@@ -5288,7 +5250,9 @@ export interface ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAu
   /** The name of the characteristic field, i.e., the header or cookie name. */
   name: string;
   /** The type of characteristic. */
-  type: ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType;
+  type:
+    | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType
+    | (string & {});
 }
 export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic =
   /*@__PURE__*/ S.suspend(() =>
@@ -5302,7 +5266,7 @@ export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthID
   }) as any as S.Schema<ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic>;
 
 export type ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
-  "jwt" | (string & {});
+  "jwt";
 export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
   /*@__PURE__*/ S.String;
 
@@ -5310,7 +5274,9 @@ export interface ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAu
   /** Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` */
   name: string;
   /** The type of characteristic. */
-  type: ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType;
+  type:
+    | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType
+    | (string & {});
 }
 export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim =
   /*@__PURE__*/ S.suspend(() =>
@@ -5370,7 +5336,7 @@ export const PutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutConfigurationRequest>;
 
 export type ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
-  "header" | "cookie" | (string & {});
+  "header" | "cookie";
 export const ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   /*@__PURE__*/ S.String;
 
@@ -5392,7 +5358,7 @@ export const ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthI
   }) as any as S.Schema<ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic>;
 
 export type ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
-  "jwt" | (string & {});
+  "jwt";
 export const ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
   /*@__PURE__*/ S.String;
 
@@ -5509,8 +5475,7 @@ export const PutLabelManagedResourceOperationRequest = /*@__PURE__*/ S.suspend(
 
 export type LabelsManagedResourcesOperationUpdateResponseSource =
   | "user"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const LabelsManagedResourcesOperationUpdateResponseSource =
   /*@__PURE__*/ S.String;
 
@@ -5573,7 +5538,7 @@ export const PutLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutLabelUserRequest",
 }) as any as S.Schema<PutLabelUserRequest>;
 
-export type LabelsUserUpdateResponseSource = "user" | "managed" | (string & {});
+export type LabelsUserUpdateResponseSource = "user" | "managed";
 export const LabelsUserUpdateResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5665,8 +5630,7 @@ export const PutLabelUserResourceOperationRequest = /*@__PURE__*/ S.suspend(
 
 export type LabelsUserResourcesOperationUpdateResponseSource =
   | "user"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const LabelsUserResourcesOperationUpdateResponseSource =
   /*@__PURE__*/ S.String;
 
@@ -5703,8 +5667,7 @@ export const PutLabelUserResourceOperationResponse = /*@__PURE__*/ S.suspend(
 export type OperationsSchemaValidationUpdateRequestMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const OperationsSchemaValidationUpdateRequestMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -5714,7 +5677,9 @@ export interface PutOperationSchemaValidationRequest {
   /** UUID. */
   operationId: string;
   /** When set, this applies a mitigation action to this operation */
-  mitigationAction?: OperationsSchemaValidationUpdateRequestMitigationAction;
+  mitigationAction?:
+    | OperationsSchemaValidationUpdateRequestMitigationAction
+    | (string & {});
 }
 export const PutOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5741,8 +5706,7 @@ export const PutOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
 export type OperationsSchemaValidationUpdateResponseMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const OperationsSchemaValidationUpdateResponseMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -5768,12 +5732,12 @@ export const PutOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutOperationSchemaValidationResponse>;
 
 export type SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
 export type SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction =
-  "none" | "disable_override" | (string & {});
+  "none" | "disable_override";
 export const SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -5781,9 +5745,13 @@ export interface PutSettingSchemaValidationRequest {
   /** Identifier. */
   zoneId: string;
   /** The default mitigation action used when there is no mitigation action defined on the operation */
-  validationDefaultMitigationAction: SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction;
+  validationDefaultMitigationAction:
+    | SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction
+    | (string & {});
   /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?: SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction;
+  validationOverrideMitigationAction?:
+    | SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction
+    | (string & {});
 }
 export const PutSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5866,14 +5834,10 @@ export type OperationsLabelsUpdateResponseMethod =
   | "DELETE"
   | "CONNECT"
   | "PATCH"
-  | "TRACE"
-  | (string & {});
+  | "TRACE";
 export const OperationsLabelsUpdateResponseMethod = /*@__PURE__*/ S.String;
 
-export type OperationsLabelsUpdateResponseLabelsItemSource =
-  | "user"
-  | "managed"
-  | (string & {});
+export type OperationsLabelsUpdateResponseLabelsItemSource = "user" | "managed";
 export const OperationsLabelsUpdateResponseLabelsItemSource =
   /*@__PURE__*/ S.String;
 

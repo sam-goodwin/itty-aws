@@ -442,8 +442,7 @@ export type BulkPublishStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
   | "FAILED"
-  | "SUCCEEDED"
-  | (string & {});
+  | "SUCCEEDED";
 export const BulkPublishStatus = /*@__PURE__*/ S.String;
 
 export interface GetBulkPublishDetailsResponse {
@@ -541,7 +540,7 @@ export const PushSync = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PushSync" }) as any as S.Schema<PushSync>;
 export type StreamName = string;
-export type StreamingStatus = "ENABLED" | "DISABLED" | (string & {});
+export type StreamingStatus = "ENABLED" | "DISABLED";
 export const StreamingStatus = /*@__PURE__*/ S.String;
 
 export interface CognitoStreams {
@@ -749,14 +748,14 @@ export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecordsResponse",
 }) as any as S.Schema<ListRecordsResponse>;
-export type Platform = "APNS" | "APNS_SANDBOX" | "GCM" | "ADM" | (string & {});
+export type Platform = "APNS" | "APNS_SANDBOX" | "GCM" | "ADM";
 export const Platform = /*@__PURE__*/ S.String;
 
 export type PushToken = string;
 export interface RegisterDeviceRequest {
   IdentityPoolId: string;
   IdentityId: string;
-  Platform: Platform;
+  Platform: Platform | (string & {});
   Token: string;
 }
 export const RegisterDeviceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -931,11 +930,11 @@ export const UnsubscribeFromDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UnsubscribeFromDatasetResponse",
 }) as any as S.Schema<UnsubscribeFromDatasetResponse>;
-export type Operation = "replace" | "remove" | (string & {});
+export type Operation = "replace" | "remove";
 export const Operation = /*@__PURE__*/ S.String;
 
 export interface RecordPatch {
-  Op: Operation;
+  Op: Operation | (string & {});
   Key: string;
   Value?: string;
   SyncCount: number;

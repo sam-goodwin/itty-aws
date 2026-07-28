@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,36 +72,20 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:cancel",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:cancel","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
-export type MembershipStateCodeEnum =
-  | "CODE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | "DELETING"
-  | "UPDATING"
-  | "SERVICE_UPDATING"
-  | (string & {});
+export type MembershipStateCodeEnum = "CODE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING" | "UPDATING" | "SERVICE_UPDATING";
 export const MembershipStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** State of the Membership resource. */
@@ -116,14 +98,12 @@ export interface MembershipState {
   code?: MembershipStateCodeEnum;
 }
 export const MembershipState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    code: S.optional(MembershipStateCodeEnum),
-  }),
-).annotate({
-  identifier: "MembershipState",
-}) as any as S.Schema<MembershipState>;
+S.Struct({
+  "description": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "code": S.optional(MembershipStateCodeEnum),
+}),
+).annotate({ identifier: "MembershipState" }) as any as S.Schema<MembershipState>;
 
 /** MonitoringConfig informs Fleet-based applications/services/UIs how the metrics for the underlying cluster is reported to cloud monitoring services. It can be set from empty to non-empty, but can't be mutated directly to prevent accidentally breaking the constinousty of metrics. */
 export interface MonitoringConfig {
@@ -139,28 +119,20 @@ export interface MonitoringConfig {
   kubernetesMetricsPrefix?: string;
 }
 export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    cluster: S.optional(S.String),
-    clusterHash: S.optional(S.String),
-    location: S.optional(S.String),
-    kubernetesMetricsPrefix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MonitoringConfig",
-}) as any as S.Schema<MonitoringConfig>;
+S.Struct({
+  "projectId": S.optional(S.String),
+  "cluster": S.optional(S.String),
+  "clusterHash": S.optional(S.String),
+  "location": S.optional(S.String),
+  "kubernetesMetricsPrefix": S.optional(S.String),
+}),
+).annotate({ identifier: "MonitoringConfig" }) as any as S.Schema<MonitoringConfig>;
 
-export type MembershipMembershipTypeEnum =
-  | "MEMBERSHIP_TYPE_UNSPECIFIED"
-  | "LIGHTWEIGHT"
-  | (string & {});
+export type MembershipMembershipTypeEnum = "MEMBERSHIP_TYPE_UNSPECIFIED" | "LIGHTWEIGHT";
 export const MembershipMembershipTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** EdgeCluster contains information specific to Google Edge Clusters. */
 export interface EdgeCluster {
@@ -168,9 +140,9 @@ export interface EdgeCluster {
   resourceLink?: string;
 }
 export const EdgeCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceLink: S.optional(S.String),
-  }),
+S.Struct({
+  "resourceLink": S.optional(S.String),
+}),
 ).annotate({ identifier: "EdgeCluster" }) as any as S.Schema<EdgeCluster>;
 
 /** ApplianceCluster contains information specific to GDC Edge Appliance Clusters. */
@@ -179,12 +151,10 @@ export interface ApplianceCluster {
   resourceLink?: string;
 }
 export const ApplianceCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplianceCluster",
-}) as any as S.Schema<ApplianceCluster>;
+S.Struct({
+  "resourceLink": S.optional(S.String),
+}),
+).annotate({ identifier: "ApplianceCluster" }) as any as S.Schema<ApplianceCluster>;
 
 /** ResourceOptions represent options for Kubernetes resource generation. */
 export interface ResourceOptions {
@@ -198,15 +168,13 @@ export interface ResourceOptions {
   k8sGitVersion?: string;
 }
 export const ResourceOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    v1beta1Crd: S.optional(S.Boolean),
-    k8sVersion: S.optional(S.String),
-    connectVersion: S.optional(S.String),
-    k8sGitVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceOptions",
-}) as any as S.Schema<ResourceOptions>;
+S.Struct({
+  "v1beta1Crd": S.optional(S.Boolean),
+  "k8sVersion": S.optional(S.String),
+  "connectVersion": S.optional(S.String),
+  "k8sGitVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "ResourceOptions" }) as any as S.Schema<ResourceOptions>;
 
 /** ResourceManifest represents a single Kubernetes resource to be applied to the cluster. */
 export interface ResourceManifest {
@@ -216,18 +184,14 @@ export interface ResourceManifest {
   clusterScoped?: boolean;
 }
 export const ResourceManifest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manifest: S.optional(S.String),
-    clusterScoped: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ResourceManifest",
-}) as any as S.Schema<ResourceManifest>;
+S.Struct({
+  "manifest": S.optional(S.String),
+  "clusterScoped": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ResourceManifest" }) as any as S.Schema<ResourceManifest>;
 
 export type ResourceManifestList = ReadonlyArray<ResourceManifest>;
-export const ResourceManifestList = /*@__PURE__*/ S.Array(
-  ResourceManifest,
-) as any as S.Schema<ResourceManifestList>;
+export const ResourceManifestList = /*@__PURE__*/ S.Array(ResourceManifest) as any as S.Schema<ResourceManifestList>;
 
 /** KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster. */
 export interface KubernetesResource {
@@ -241,15 +205,13 @@ export interface KubernetesResource {
   connectResources?: ResourceManifestList;
 }
 export const KubernetesResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    membershipCrManifest: S.optional(S.String),
-    resourceOptions: S.optional(ResourceOptions),
-    membershipResources: S.optional(ResourceManifestList),
-    connectResources: S.optional(ResourceManifestList),
-  }),
-).annotate({
-  identifier: "KubernetesResource",
-}) as any as S.Schema<KubernetesResource>;
+S.Struct({
+  "membershipCrManifest": S.optional(S.String),
+  "resourceOptions": S.optional(ResourceOptions),
+  "membershipResources": S.optional(ResourceManifestList),
+  "connectResources": S.optional(ResourceManifestList),
+}),
+).annotate({ identifier: "KubernetesResource" }) as any as S.Schema<KubernetesResource>;
 
 /** GkeCluster contains information specific to GKE clusters. */
 export interface GkeCluster {
@@ -259,19 +221,13 @@ export interface GkeCluster {
   resourceLink?: string;
 }
 export const GkeCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterMissing: S.optional(S.Boolean),
-    resourceLink: S.optional(S.String),
-  }),
+S.Struct({
+  "clusterMissing": S.optional(S.Boolean),
+  "resourceLink": S.optional(S.String),
+}),
 ).annotate({ identifier: "GkeCluster" }) as any as S.Schema<GkeCluster>;
 
-export type OnPremClusterClusterTypeEnum =
-  | "CLUSTERTYPE_UNSPECIFIED"
-  | "BOOTSTRAP"
-  | "HYBRID"
-  | "STANDALONE"
-  | "USER"
-  | (string & {});
+export type OnPremClusterClusterTypeEnum = "CLUSTERTYPE_UNSPECIFIED" | "BOOTSTRAP" | "HYBRID" | "STANDALONE" | "USER";
 export const OnPremClusterClusterTypeEnum = /*@__PURE__*/ S.String;
 
 /** OnPremCluster contains information specific to GKE On-Prem clusters. */
@@ -286,12 +242,12 @@ export interface OnPremCluster {
   clusterType?: OnPremClusterClusterTypeEnum;
 }
 export const OnPremCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminCluster: S.optional(S.Boolean),
-    clusterMissing: S.optional(S.Boolean),
-    resourceLink: S.optional(S.String),
-    clusterType: S.optional(OnPremClusterClusterTypeEnum),
-  }),
+S.Struct({
+  "adminCluster": S.optional(S.Boolean),
+  "clusterMissing": S.optional(S.Boolean),
+  "resourceLink": S.optional(S.String),
+  "clusterType": S.optional(OnPremClusterClusterTypeEnum),
+}),
 ).annotate({ identifier: "OnPremCluster" }) as any as S.Schema<OnPremCluster>;
 
 /** MultiCloudCluster contains information specific to GKE Multi-Cloud clusters. */
@@ -302,13 +258,11 @@ export interface MultiCloudCluster {
   resourceLink?: string;
 }
 export const MultiCloudCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterMissing: S.optional(S.Boolean),
-    resourceLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MultiCloudCluster",
-}) as any as S.Schema<MultiCloudCluster>;
+S.Struct({
+  "clusterMissing": S.optional(S.Boolean),
+  "resourceLink": S.optional(S.String),
+}),
+).annotate({ identifier: "MultiCloudCluster" }) as any as S.Schema<MultiCloudCluster>;
 
 /** KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters. */
 export interface KubernetesMetadata {
@@ -326,17 +280,15 @@ export interface KubernetesMetadata {
   nodeCount?: number;
 }
 export const KubernetesMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryMb: S.optional(S.Number),
-    vcpuCount: S.optional(S.Number),
-    kubernetesApiServerVersion: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    nodeProviderId: S.optional(S.String),
-    nodeCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "KubernetesMetadata",
-}) as any as S.Schema<KubernetesMetadata>;
+S.Struct({
+  "memoryMb": S.optional(S.Number),
+  "vcpuCount": S.optional(S.Number),
+  "kubernetesApiServerVersion": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "nodeProviderId": S.optional(S.String),
+  "nodeCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "KubernetesMetadata" }) as any as S.Schema<KubernetesMetadata>;
 
 /** MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata. */
 export interface MembershipEndpoint {
@@ -356,18 +308,16 @@ export interface MembershipEndpoint {
   kubernetesMetadata?: KubernetesMetadata;
 }
 export const MembershipEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    edgeCluster: S.optional(EdgeCluster),
-    applianceCluster: S.optional(ApplianceCluster),
-    kubernetesResource: S.optional(KubernetesResource),
-    gkeCluster: S.optional(GkeCluster),
-    onPremCluster: S.optional(OnPremCluster),
-    multiCloudCluster: S.optional(MultiCloudCluster),
-    kubernetesMetadata: S.optional(KubernetesMetadata),
-  }),
-).annotate({
-  identifier: "MembershipEndpoint",
-}) as any as S.Schema<MembershipEndpoint>;
+S.Struct({
+  "edgeCluster": S.optional(EdgeCluster),
+  "applianceCluster": S.optional(ApplianceCluster),
+  "kubernetesResource": S.optional(KubernetesResource),
+  "gkeCluster": S.optional(GkeCluster),
+  "onPremCluster": S.optional(OnPremCluster),
+  "multiCloudCluster": S.optional(MultiCloudCluster),
+  "kubernetesMetadata": S.optional(KubernetesMetadata),
+}),
+).annotate({ identifier: "MembershipEndpoint" }) as any as S.Schema<MembershipEndpoint>;
 
 /** Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity */
 export interface Authority {
@@ -385,21 +335,17 @@ export interface Authority {
   workloadIdentityPool?: string;
 }
 export const Authority = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuer: S.optional(S.String),
-    identityProvider: S.optional(S.String),
-    oidcJwks: S.optional(S.String),
-    scopeTenancyWorkloadIdentityPool: S.optional(S.String),
-    scopeTenancyIdentityProvider: S.optional(S.String),
-    workloadIdentityPool: S.optional(S.String),
-  }),
+S.Struct({
+  "issuer": S.optional(S.String),
+  "identityProvider": S.optional(S.String),
+  "oidcJwks": S.optional(S.String),
+  "scopeTenancyWorkloadIdentityPool": S.optional(S.String),
+  "scopeTenancyIdentityProvider": S.optional(S.String),
+  "workloadIdentityPool": S.optional(S.String),
+}),
 ).annotate({ identifier: "Authority" }) as any as S.Schema<Authority>;
 
-export type MembershipInfrastructureTypeEnum =
-  | "INFRASTRUCTURE_TYPE_UNSPECIFIED"
-  | "ON_PREM"
-  | "MULTI_CLOUD"
-  | (string & {});
+export type MembershipInfrastructureTypeEnum = "INFRASTRUCTURE_TYPE_UNSPECIFIED" | "ON_PREM" | "MULTI_CLOUD";
 export const MembershipInfrastructureTypeEnum = /*@__PURE__*/ S.String;
 
 /** Membership contains information about a member cluster. */
@@ -436,23 +382,23 @@ export interface Membership {
   infrastructureType?: MembershipInfrastructureTypeEnum;
 }
 export const Membership = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    state: S.optional(MembershipState),
-    monitoringConfig: S.optional(MonitoringConfig),
-    deleteTime: S.optional(S.String),
-    lastConnectionTime: S.optional(S.String),
-    membershipType: S.optional(MembershipMembershipTypeEnum),
-    labels: S.optional(StringMap),
-    externalId: S.optional(S.String),
-    description: S.optional(S.String),
-    endpoint: S.optional(MembershipEndpoint),
-    updateTime: S.optional(S.String),
-    authority: S.optional(Authority),
-    uniqueId: S.optional(S.String),
-    infrastructureType: S.optional(MembershipInfrastructureTypeEnum),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "state": S.optional(MembershipState),
+  "monitoringConfig": S.optional(MonitoringConfig),
+  "deleteTime": S.optional(S.String),
+  "lastConnectionTime": S.optional(S.String),
+  "membershipType": S.optional(MembershipMembershipTypeEnum),
+  "labels": S.optional(StringMap),
+  "externalId": S.optional(S.String),
+  "description": S.optional(S.String),
+  "endpoint": S.optional(MembershipEndpoint),
+  "updateTime": S.optional(S.String),
+  "authority": S.optional(Authority),
+  "uniqueId": S.optional(S.String),
+  "infrastructureType": S.optional(MembershipInfrastructureTypeEnum),
+}),
 ).annotate({ identifier: "Membership" }) as any as S.Schema<Membership>;
 
 export interface CreateProjectsLocationsMembershipsRequest {
@@ -465,34 +411,20 @@ export interface CreateProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: Membership;
 }
-export const CreateProjectsLocationsMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      membershipId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Membership.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/memberships",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsMembershipsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsMembershipsRequest>;
+export const CreateProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "membershipId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Membership.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/memberships","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsMembershipsRequest" }) as any as S.Schema<CreateProjectsLocationsMembershipsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -504,14 +436,12 @@ export interface GoogleRpcStatus {
   details?: DocumentMapList;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-  }),
-).annotate({
-  identifier: "GoogleRpcStatus",
-}) as any as S.Schema<GoogleRpcStatus>;
+S.Struct({
+  "message": S.optional(S.String),
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+}),
+).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
@@ -527,13 +457,13 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMap),
-    error: S.optional(GoogleRpcStatus),
-    done: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(GoogleRpcStatus),
+  "done": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsMembershipsRequest {
@@ -544,41 +474,23 @@ export interface DeleteProjectsLocationsMembershipsRequest {
   /** Optional. If set to true, any subresource from this Membership will also be deleted. Otherwise, the request will only work if the Membership has no subresource. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsMembershipsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsMembershipsRequest>;
+export const DeleteProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsMembershipsRequest" }) as any as S.Schema<DeleteProjectsLocationsMembershipsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GenerateConnectManifestProjectsLocationsMembershipsRequest {
   /** Required. The Membership resource name the Agent will associate with, in the format `projects/*\/locations/*\/memberships/*`. */
@@ -598,27 +510,18 @@ export interface GenerateConnectManifestProjectsLocationsMembershipsRequest {
   /** Optional. URI of a proxy if connectivity from the agent to gkeconnect.googleapis.com requires the use of a proxy. Format must be in the form `http(s)://{proxy_address}`, depending on the HTTP/HTTPS protocol supported by the proxy. This will direct the connect agent's outbound traffic through a HTTP(S) proxy. */
   "connectAgent.proxy"?: string;
 }
-export const GenerateConnectManifestProjectsLocationsMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      "connectAgent.name": S.optional(S.String.pipe(T.Query())),
-      "connectAgent.namespace": S.optional(S.String.pipe(T.Query())),
-      isUpgrade: S.optional(S.Boolean.pipe(T.Query())),
-      registry: S.optional(S.String.pipe(T.Query())),
-      version: S.optional(S.String.pipe(T.Query())),
-      imagePullSecretContent: S.optional(S.String.pipe(T.Query())),
-      "connectAgent.proxy": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:generateConnectManifest",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GenerateConnectManifestProjectsLocationsMembershipsRequest",
-  }) as any as S.Schema<GenerateConnectManifestProjectsLocationsMembershipsRequest>;
+export const GenerateConnectManifestProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "connectAgent.name": S.optional(S.String.pipe(T.Query())),
+  "connectAgent.namespace": S.optional(S.String.pipe(T.Query())),
+  "isUpgrade": S.optional(S.Boolean.pipe(T.Query())),
+  "registry": S.optional(S.String.pipe(T.Query())),
+  "version": S.optional(S.String.pipe(T.Query())),
+  "imagePullSecretContent": S.optional(S.String.pipe(T.Query())),
+  "connectAgent.proxy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:generateConnectManifest","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "GenerateConnectManifestProjectsLocationsMembershipsRequest" }) as any as S.Schema<GenerateConnectManifestProjectsLocationsMembershipsRequest>;
 
 /** TypeMeta is the type information needed for content unmarshalling of Kubernetes resources in the manifest. */
 export interface TypeMeta {
@@ -628,10 +531,10 @@ export interface TypeMeta {
   apiVersion?: string;
 }
 export const TypeMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    apiVersion: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "apiVersion": S.optional(S.String),
+}),
 ).annotate({ identifier: "TypeMeta" }) as any as S.Schema<TypeMeta>;
 
 /** ConnectAgentResource represents a Kubernetes resource manifest for Connect Agent deployment. */
@@ -642,18 +545,14 @@ export interface ConnectAgentResource {
   manifest?: string;
 }
 export const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(TypeMeta),
-    manifest: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectAgentResource",
-}) as any as S.Schema<ConnectAgentResource>;
+S.Struct({
+  "type": S.optional(TypeMeta),
+  "manifest": S.optional(S.String),
+}),
+).annotate({ identifier: "ConnectAgentResource" }) as any as S.Schema<ConnectAgentResource>;
 
 export type ConnectAgentResourceList = ReadonlyArray<ConnectAgentResource>;
-export const ConnectAgentResourceList = /*@__PURE__*/ S.Array(
-  ConnectAgentResource,
-) as any as S.Schema<ConnectAgentResourceList>;
+export const ConnectAgentResourceList = /*@__PURE__*/ S.Array(ConnectAgentResource) as any as S.Schema<ConnectAgentResourceList>;
 
 /** GenerateConnectManifestResponse contains manifest information for installing/upgrading a Connect agent. */
 export interface GenerateConnectManifestResponse {
@@ -661,12 +560,10 @@ export interface GenerateConnectManifestResponse {
   manifest?: ConnectAgentResourceList;
 }
 export const GenerateConnectManifestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manifest: S.optional(ConnectAgentResourceList),
-  }),
-).annotate({
-  identifier: "GenerateConnectManifestResponse",
-}) as any as S.Schema<GenerateConnectManifestResponse>;
+S.Struct({
+  "manifest": S.optional(ConnectAgentResourceList),
+}),
+).annotate({ identifier: "GenerateConnectManifestResponse" }) as any as S.Schema<GenerateConnectManifestResponse>;
 
 export interface GenerateExclusivityManifestProjectsLocationsMembershipsRequest {
   /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
@@ -676,23 +573,13 @@ export interface GenerateExclusivityManifestProjectsLocationsMembershipsRequest 
   /** Optional. The YAML manifest of the membership CR retrieved by `kubectl get memberships membership`. Leave empty if the resource does not exist. */
   crManifest?: string;
 }
-export const GenerateExclusivityManifestProjectsLocationsMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      crdManifest: S.optional(S.String.pipe(T.Query())),
-      crManifest: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:generateExclusivityManifest",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GenerateExclusivityManifestProjectsLocationsMembershipsRequest",
-  }) as any as S.Schema<GenerateExclusivityManifestProjectsLocationsMembershipsRequest>;
+export const GenerateExclusivityManifestProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "crdManifest": S.optional(S.String.pipe(T.Query())),
+  "crManifest": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:generateExclusivityManifest","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "GenerateExclusivityManifestProjectsLocationsMembershipsRequest" }) as any as S.Schema<GenerateExclusivityManifestProjectsLocationsMembershipsRequest>;
 
 /** The response of the exclusivity artifacts manifests for the client to apply. */
 export interface GenerateExclusivityManifestResponse {
@@ -702,13 +589,11 @@ export interface GenerateExclusivityManifestResponse {
   crManifest?: string;
 }
 export const GenerateExclusivityManifestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    crdManifest: S.optional(S.String),
-    crManifest: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenerateExclusivityManifestResponse",
-}) as any as S.Schema<GenerateExclusivityManifestResponse>;
+S.Struct({
+  "crdManifest": S.optional(S.String),
+  "crManifest": S.optional(S.String),
+}),
+).annotate({ identifier: "GenerateExclusivityManifestResponse" }) as any as S.Schema<GenerateExclusivityManifestResponse>;
 
 export interface GetIamPolicyProjectsLocationsMembershipsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -716,26 +601,15 @@ export interface GetIamPolicyProjectsLocationsMembershipsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsMembershipsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsMembershipsRequest>;
+export const GetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsMembershipsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsMembershipsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -749,12 +623,12 @@ export interface Expr {
   expression?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-    expression: S.optional(S.String),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "location": S.optional(S.String),
+  "expression": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -767,24 +641,17 @@ export interface Binding {
   role?: string;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    members: S.optional(StringList),
-    condition: S.optional(Expr),
-    role: S.optional(S.String),
-  }),
+S.Struct({
+  "members": S.optional(StringList),
+  "condition": S.optional(Expr),
+  "role": S.optional(S.String),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -795,16 +662,14 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-    exemptedMembers: S.optional(StringList),
-  }),
+S.Struct({
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+  "exemptedMembers": S.optional(StringList),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -814,16 +679,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -837,12 +700,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-    auditConfigs: S.optional(AuditConfigList),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+  "auditConfigs": S.optional(AuditConfigList),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetProjectsLocationsRequest {
@@ -850,18 +713,10 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://gkehub.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -877,52 +732,34 @@ export interface Location {
   labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationId: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "locationId": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsMembershipsRequest {
   /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
   name: string;
 }
-export const GetProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsMembershipsRequest",
-}) as any as S.Schema<GetProjectsLocationsMembershipsRequest>;
+export const GetProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsMembershipsRequest" }) as any as S.Schema<GetProjectsLocationsMembershipsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -937,27 +774,17 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}/locations",
-      baseUrl: "https://gkehub.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -967,13 +794,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsMembershipsRequest {
   /** Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Name is `bar` in project `foo-proj` and location `global`: name = "projects/foo-proj/locations/global/membership/bar" - Memberships that have a label called `foo`: labels.foo:* - Memberships that have a label called `foo` whose value is `bar`: labels.foo = bar - Memberships in the CREATING state: state = CREATING */
@@ -987,29 +812,18 @@ export interface ListProjectsLocationsMembershipsRequest {
   /** Required. The parent (project and location) where the Memberships will be listed. Specified in the format `projects/*\/locations/*`. `projects/*\/locations/-` list memberships in all the regions. */
   parent: string;
 }
-export const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/memberships",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsMembershipsRequest",
-}) as any as S.Schema<ListProjectsLocationsMembershipsRequest>;
+export const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/memberships","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsMembershipsRequest" }) as any as S.Schema<ListProjectsLocationsMembershipsRequest>;
 
 export type MembershipList = ReadonlyArray<Membership>;
-export const MembershipList = /*@__PURE__*/ S.Array(
-  Membership,
-) as any as S.Schema<MembershipList>;
+export const MembershipList = /*@__PURE__*/ S.Array(Membership) as any as S.Schema<MembershipList>;
 
 /** Response message for the `GkeHubMembershipService.ListMemberships` method. */
 export interface ListMembershipsResponse {
@@ -1021,14 +835,12 @@ export interface ListMembershipsResponse {
   unreachable?: StringList;
 }
 export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: S.optional(MembershipList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListMembershipsResponse",
-}) as any as S.Schema<ListMembershipsResponse>;
+S.Struct({
+  "resources": S.optional(MembershipList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListMembershipsResponse" }) as any as S.Schema<ListMembershipsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
@@ -1042,29 +854,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}/operations",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/operations","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1076,14 +877,12 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsMembershipsRequest {
   /** Required. The membership resource name in the format: `projects/[project_id]/locations/global/memberships/[membership_id]` */
@@ -1095,23 +894,14 @@ export interface PatchProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: Membership;
 }
-export const PatchProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Membership.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsMembershipsRequest",
-}) as any as S.Schema<PatchProjectsLocationsMembershipsRequest>;
+export const PatchProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Membership.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsMembershipsRequest" }) as any as S.Schema<PatchProjectsLocationsMembershipsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -1121,13 +911,11 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsMembershipsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1135,21 +923,12 @@ export interface SetIamPolicyProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsMembershipsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsMembershipsRequest>;
+export const SetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsMembershipsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsMembershipsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -1157,12 +936,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsMembershipsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1170,21 +947,12 @@ export interface TestIamPermissionsProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsMembershipsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsMembershipsRequest>;
+export const TestIamPermissionsProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsMembershipsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsMembershipsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -1192,12 +960,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface ValidateExclusivityProjectsLocationsMembershipsRequest {
   /** Optional. The YAML of the membership CR in the cluster. Empty if the membership CR does not exist. */
@@ -1207,22 +973,13 @@ export interface ValidateExclusivityProjectsLocationsMembershipsRequest {
   /** Required. The intended membership name under the `parent`. This method only does validation in anticipation of a CreateMembership call with the same name. */
   intendedMembership?: string;
 }
-export const ValidateExclusivityProjectsLocationsMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      crManifest: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      intendedMembership: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/memberships:validateExclusivity",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ValidateExclusivityProjectsLocationsMembershipsRequest",
-  }) as any as S.Schema<ValidateExclusivityProjectsLocationsMembershipsRequest>;
+export const ValidateExclusivityProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "crManifest": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "intendedMembership": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/memberships:validateExclusivity","baseUrl":"https://gkehub.googleapis.com/"})),
+).annotate({ identifier: "ValidateExclusivityProjectsLocationsMembershipsRequest" }) as any as S.Schema<ValidateExclusivityProjectsLocationsMembershipsRequest>;
 
 /** The response of exclusivity artifacts validation result status. */
 export interface ValidateExclusivityResponse {
@@ -1230,19 +987,12 @@ export interface ValidateExclusivityResponse {
   status?: GoogleRpcStatus;
 }
 export const ValidateExclusivityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(GoogleRpcStatus),
-  }),
-).annotate({
-  identifier: "ValidateExclusivityResponse",
-}) as any as S.Schema<ValidateExclusivityResponse>;
+S.Struct({
+  "status": S.optional(GoogleRpcStatus),
+}),
+).annotate({ identifier: "ValidateExclusivityResponse" }) as any as S.Schema<ValidateExclusivityResponse>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1257,12 +1007,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To register other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster. */
 export const createProjectsLocationsMemberships: API.OperationMethod<
   CreateProjectsLocationsMembershipsRequest,
@@ -1277,12 +1022,7 @@ export const createProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes a Membership. **This is currently only supported for GKE clusters on Google Cloud**. To unregister other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/unregistering-a-cluster. */
 export const deleteProjectsLocationsMemberships: API.OperationMethod<
   DeleteProjectsLocationsMembershipsRequest,
@@ -1297,12 +1037,7 @@ export const deleteProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1317,10 +1052,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateConnectManifestProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GenerateConnectManifestProjectsLocationsMembershipsError = NotFound | Forbidden | GcpOpError;
 /** Generates the manifest for deployment of the GKE connect agent. **This method is used internally by Google-provided libraries.** Most clients should not need to call this method directly. */
 export const generateConnectManifestProjectsLocationsMemberships: API.OperationMethod<
   GenerateConnectManifestProjectsLocationsMembershipsRequest,
@@ -1335,10 +1067,7 @@ export const generateConnectManifestProjectsLocationsMemberships: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GenerateExclusivityManifestProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GenerateExclusivityManifestProjectsLocationsMembershipsError = NotFound | Forbidden | GcpOpError;
 /** GenerateExclusivityManifest generates the manifests to update the exclusivity artifacts in the cluster if needed. Exclusivity artifacts include the Membership custom resource definition (CRD) and the singleton Membership custom resource (CR). Combined with ValidateExclusivity, exclusivity artifacts guarantee that a Kubernetes cluster is only registered to a single GKE Hub. The Membership CRD is versioned, and may require conversion when the GKE Hub API server begins serving a newer version of the CRD and corresponding CR. The response will be the converted CRD and CR if there are any differences between the versions. */
 export const generateExclusivityManifestProjectsLocationsMemberships: API.OperationMethod<
   GenerateExclusivityManifestProjectsLocationsMembershipsRequest,
@@ -1353,10 +1082,7 @@ export const generateExclusivityManifestProjectsLocationsMemberships: API.Operat
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsMembershipsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsMemberships: API.OperationMethod<
   GetIamPolicyProjectsLocationsMembershipsRequest,
@@ -1386,10 +1112,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsMembershipsError = NotFound | Forbidden | GcpOpError;
 /** Gets the details of a Membership. */
 export const getProjectsLocationsMemberships: API.OperationMethod<
   GetProjectsLocationsMembershipsRequest,
@@ -1404,10 +1127,7 @@ export const getProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1435,16 +1155,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsMembershipsError = NotFound | Forbidden | GcpOpError;
 /** Lists Memberships in a given project and location. */
 export const listProjectsLocationsMemberships: API.PaginatedOperationMethod<
   ListProjectsLocationsMembershipsRequest,
@@ -1457,16 +1171,10 @@ export const listProjectsLocationsMemberships: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1479,18 +1187,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing Membership. */
 export const patchProjectsLocationsMemberships: API.OperationMethod<
   PatchProjectsLocationsMembershipsRequest,
@@ -1505,12 +1205,7 @@ export const patchProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsMemberships: API.OperationMethod<
   SetIamPolicyProjectsLocationsMembershipsRequest,
@@ -1525,12 +1220,7 @@ export const setIamPolicyProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsMemberships: API.OperationMethod<
   TestIamPermissionsProjectsLocationsMembershipsRequest,
@@ -1545,10 +1235,7 @@ export const testIamPermissionsProjectsLocationsMemberships: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type ValidateExclusivityProjectsLocationsMembershipsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ValidateExclusivityProjectsLocationsMembershipsError = NotFound | Forbidden | GcpOpError;
 /** ValidateExclusivity validates the state of exclusivity in the cluster. The validation does not depend on an existing Hub membership resource. */
 export const validateExclusivityProjectsLocationsMemberships: API.OperationMethod<
   ValidateExclusivityProjectsLocationsMembershipsRequest,
@@ -1562,3 +1249,4 @@ export const validateExclusivityProjectsLocationsMemberships: API.OperationMetho
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

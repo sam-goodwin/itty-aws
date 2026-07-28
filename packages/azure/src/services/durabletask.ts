@@ -49,11 +49,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -105,8 +105,7 @@ export type PurgeableOrchestrationState =
   | "Completed"
   | "Failed"
   | "Terminated"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const PurgeableOrchestrationState = /*@__PURE__*/ S.String;
 
 /** The properties of a retention policy */
@@ -182,8 +181,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -191,8 +189,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -229,8 +226,7 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The orchestration retention policies */
@@ -506,11 +502,11 @@ export const SchedulerPropertiesInputIpAllowlistList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SchedulerPropertiesInputIpAllowlistList>;
 
 /** The name of the Stock Keeping Unit (SKU) of a Durable Task Scheduler */
-export type SchedulerSkuName = "Dedicated" | "Consumption" | (string & {});
+export type SchedulerSkuName = "Dedicated" | "Consumption";
 export const SchedulerSkuName = /*@__PURE__*/ S.String;
 
 /** The state of the resource redundancy */
-export type RedundancyState = "None" | "Zone" | (string & {});
+export type RedundancyState = "None" | "Zone";
 export const RedundancyState = /*@__PURE__*/ S.String;
 
 /** The SKU (Stock Keeping Unit) assigned to this durable task scheduler */
@@ -531,7 +527,7 @@ export const SchedulerSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchedulerSku" }) as any as S.Schema<SchedulerSku>;
 
 /** State of the public network access. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Details of the Scheduler */
@@ -541,7 +537,7 @@ export interface SchedulerPropertiesInput {
   /** SKU of the durable task scheduler */
   sku: SchedulerSku;
   /** Allow or disallow public network access to durable task scheduler */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
 export const SchedulerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -627,8 +623,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -655,8 +650,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1397,7 +1391,7 @@ export const SchedulerPropertiesUpdateInputIpAllowlistList =
 /** The SKU (Stock Keeping Unit) properties to be updated */
 export interface SchedulerSkuUpdate {
   /** The name of the SKU */
-  name?: SchedulerSkuName;
+  name?: SchedulerSkuName | (string & {});
   /** The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy */
   capacity?: number;
 }
@@ -1417,7 +1411,7 @@ export interface SchedulerPropertiesUpdateInput {
   /** SKU of the durable task scheduler */
   sku?: SchedulerSkuUpdate;
   /** Allow or disallow public network access to durable task scheduler */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
 export const SchedulerPropertiesUpdateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1519,7 +1513,7 @@ export const SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateEn
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */

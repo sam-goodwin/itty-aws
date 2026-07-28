@@ -43,7 +43,7 @@ export class WidgetNotFound extends T.applyErrorMatchers(
   [{ code: 10404 }, { code: 10407 }],
 ) {}
 
-export type WidgetsCreateRequestDirection = "asc" | "desc" | (string & {});
+export type WidgetsCreateRequestDirection = "asc" | "desc";
 export const WidgetsCreateRequestDirection = /*@__PURE__*/ S.String;
 
 export type WidgetsCreateRequestOrder =
@@ -51,8 +51,7 @@ export type WidgetsCreateRequestOrder =
   | "sitekey"
   | "name"
   | "created_on"
-  | "modified_on"
-  | (string & {});
+  | "modified_on";
 export const WidgetsCreateRequestOrder = /*@__PURE__*/ S.String;
 
 export type WidgetsCreateRequestDomainsList = ReadonlyArray<string>;
@@ -63,49 +62,47 @@ export const WidgetsCreateRequestDomainsList = /*@__PURE__*/ S.Array(
 export type WidgetsCreateRequestMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsCreateRequestMode = /*@__PURE__*/ S.String;
 
 export type WidgetsCreateRequestClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsCreateRequestClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsCreateRequestRegion = "world" | "china" | (string & {});
+export type WidgetsCreateRequestRegion = "world" | "china";
 export const WidgetsCreateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface CreateWidgetRequest {
   /** Identifier */
   accountId: string;
   /** Direction to order widgets. */
-  direction?: WidgetsCreateRequestDirection;
+  direction?: WidgetsCreateRequestDirection | (string & {});
   /** Filter widgets by field using case-insensitive substring matching. */
   filter?: string;
   /** Field to order widgets by. */
-  order?: WidgetsCreateRequestOrder;
+  order?: WidgetsCreateRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Number of items per page. */
   perPage?: number;
   domains: WidgetsCreateRequestDomainsList;
   /** Widget Mode */
-  mode: WidgetsCreateRequestMode;
+  mode: WidgetsCreateRequestMode | (string & {});
   /** Human readable widget name. Not unique. Cloudflare suggests that you */
   name: string;
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
   botFightMode?: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
-  clearanceLevel?: WidgetsCreateRequestClearanceLevel;
+  clearanceLevel?: WidgetsCreateRequestClearanceLevel | (string & {});
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId?: boolean;
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel?: boolean;
   /** Region where this widget can be used. This cannot be changed after creation. */
-  region?: WidgetsCreateRequestRegion;
+  region?: WidgetsCreateRequestRegion | (string & {});
 }
 export const CreateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -142,8 +139,7 @@ export type WidgetsCreateResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsCreateResponseClearanceLevel = /*@__PURE__*/ S.String;
 
 export type WidgetsCreateResponseDomainsList = ReadonlyArray<string>;
@@ -154,11 +150,10 @@ export const WidgetsCreateResponseDomainsList = /*@__PURE__*/ S.Array(
 export type WidgetsCreateResponseMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsCreateResponseMode = /*@__PURE__*/ S.String;
 
-export type WidgetsCreateResponseRegion = "world" | "china" | (string & {});
+export type WidgetsCreateResponseRegion = "world" | "china";
 export const WidgetsCreateResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -235,8 +230,7 @@ export type WidgetsDeleteResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsDeleteResponseClearanceLevel = /*@__PURE__*/ S.String;
 
 export type WidgetsDeleteResponseDomainsList = ReadonlyArray<string>;
@@ -247,11 +241,10 @@ export const WidgetsDeleteResponseDomainsList = /*@__PURE__*/ S.Array(
 export type WidgetsDeleteResponseMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsDeleteResponseMode = /*@__PURE__*/ S.String;
 
-export type WidgetsDeleteResponseRegion = "world" | "china" | (string & {});
+export type WidgetsDeleteResponseRegion = "world" | "china";
 export const WidgetsDeleteResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -328,8 +321,7 @@ export type WidgetsGetResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsGetResponseClearanceLevel = /*@__PURE__*/ S.String;
 
 export type WidgetsGetResponseDomainsList = ReadonlyArray<string>;
@@ -340,11 +332,10 @@ export const WidgetsGetResponseDomainsList = /*@__PURE__*/ S.Array(
 export type WidgetsGetResponseMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsGetResponseMode = /*@__PURE__*/ S.String;
 
-export type WidgetsGetResponseRegion = "world" | "china" | (string & {});
+export type WidgetsGetResponseRegion = "world" | "china";
 export const WidgetsGetResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -394,7 +385,7 @@ export const GetWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWidgetResponse",
 }) as any as S.Schema<GetWidgetResponse>;
 
-export type WidgetsListRequestDirection = "asc" | "desc" | (string & {});
+export type WidgetsListRequestDirection = "asc" | "desc";
 export const WidgetsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type WidgetsListRequestOrder =
@@ -402,19 +393,18 @@ export type WidgetsListRequestOrder =
   | "sitekey"
   | "name"
   | "created_on"
-  | "modified_on"
-  | (string & {});
+  | "modified_on";
 export const WidgetsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListWidgetsRequest {
   /** Identifier */
   accountId: string;
   /** Direction to order widgets. */
-  direction?: WidgetsListRequestDirection;
+  direction?: WidgetsListRequestDirection | (string & {});
   /** Filter widgets by field using case-insensitive substring matching. */
   filter?: string;
   /** Field to order widgets by. */
-  order?: WidgetsListRequestOrder;
+  order?: WidgetsListRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Number of items per page. */
@@ -445,8 +435,7 @@ export type WidgetsListResultItemClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsListResultItemClearanceLevel = /*@__PURE__*/ S.String;
 
 export type WidgetsListResultItemDomainsList = ReadonlyArray<string>;
@@ -457,11 +446,10 @@ export const WidgetsListResultItemDomainsList = /*@__PURE__*/ S.Array(
 export type WidgetsListResultItemMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsListResultItemMode = /*@__PURE__*/ S.String;
 
-export type WidgetsListResultItemRegion = "world" | "china" | (string & {});
+export type WidgetsListResultItemRegion = "world" | "china";
 export const WidgetsListResultItemRegion = /*@__PURE__*/ S.String;
 
 export interface WidgetsListResultItem {
@@ -559,8 +547,7 @@ export type WidgetsRotateSecretResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsRotateSecretResponseClearanceLevel = /*@__PURE__*/ S.String;
 
 export type WidgetsRotateSecretResponseDomainsList = ReadonlyArray<string>;
@@ -571,14 +558,10 @@ export const WidgetsRotateSecretResponseDomainsList = /*@__PURE__*/ S.Array(
 export type WidgetsRotateSecretResponseMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsRotateSecretResponseMode = /*@__PURE__*/ S.String;
 
-export type WidgetsRotateSecretResponseRegion =
-  | "world"
-  | "china"
-  | (string & {});
+export type WidgetsRotateSecretResponseRegion = "world" | "china";
 export const WidgetsRotateSecretResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -636,19 +619,17 @@ export const WidgetsUpdateRequestDomainsList = /*@__PURE__*/ S.Array(
 export type WidgetsUpdateRequestMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsUpdateRequestMode = /*@__PURE__*/ S.String;
 
 export type WidgetsUpdateRequestClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsUpdateRequestClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsUpdateRequestRegion = "world" | "china" | (string & {});
+export type WidgetsUpdateRequestRegion = "world" | "china";
 export const WidgetsUpdateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface UpdateWidgetRequest {
@@ -658,19 +639,19 @@ export interface UpdateWidgetRequest {
   sitekey: string;
   domains: WidgetsUpdateRequestDomainsList;
   /** Widget Mode */
-  mode: WidgetsUpdateRequestMode;
+  mode: WidgetsUpdateRequestMode | (string & {});
   /** Human readable widget name. Not unique. Cloudflare suggests that you */
   name: string;
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
   botFightMode?: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
-  clearanceLevel?: WidgetsUpdateRequestClearanceLevel;
+  clearanceLevel?: WidgetsUpdateRequestClearanceLevel | (string & {});
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId?: boolean;
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel?: boolean;
   /** Region where this widget can be used. This cannot be changed after creation. */
-  region?: WidgetsUpdateRequestRegion;
+  region?: WidgetsUpdateRequestRegion | (string & {});
 }
 export const UpdateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -703,8 +684,7 @@ export type WidgetsUpdateResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsUpdateResponseClearanceLevel = /*@__PURE__*/ S.String;
 
 export type WidgetsUpdateResponseDomainsList = ReadonlyArray<string>;
@@ -715,11 +695,10 @@ export const WidgetsUpdateResponseDomainsList = /*@__PURE__*/ S.Array(
 export type WidgetsUpdateResponseMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsUpdateResponseMode = /*@__PURE__*/ S.String;
 
-export type WidgetsUpdateResponseRegion = "world" | "china" | (string & {});
+export type WidgetsUpdateResponseRegion = "world" | "china";
 export const WidgetsUpdateResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

@@ -278,7 +278,7 @@ export const ListRegionalServicePrefixBindingsResponse =
     identifier: "ListRegionalServicePrefixBindingsResponse",
   }) as any as S.Schema<ListRegionalServicePrefixBindingsResponse>;
 
-export type RegionsListRequestType = "managed" | "custom" | (string & {});
+export type RegionsListRequestType = "managed" | "custom";
 export const RegionsListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListRegionsRequest {
@@ -288,7 +288,7 @@ export interface ListRegionsRequest {
   cursor?: string;
   perPage?: number;
   /** Filter regions by type. Omit to return all regions. */
-  type?: RegionsListRequestType;
+  type?: RegionsListRequestType | (string & {});
 }
 export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

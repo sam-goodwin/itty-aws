@@ -102,8 +102,7 @@ export type CreateResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -214,8 +213,7 @@ export type DeleteResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const DeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -326,8 +324,7 @@ export type GetResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -403,8 +400,7 @@ export type ListRequestStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListClientCertificatesRequest {
@@ -419,7 +415,7 @@ export interface ListClientCertificatesRequest {
   /** Number of records per page. */
   perPage?: number;
   /** Client Certitifcate Status to filter results by. */
-  status?: ListRequestStatus;
+  status?: ListRequestStatus | (string & {});
 }
 export const ListClientCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -459,8 +455,7 @@ export type ListResultItemStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
@@ -590,8 +585,7 @@ export type EditResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

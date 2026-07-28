@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The position of the code comment. */
@@ -68,10 +68,10 @@ export interface Position {
   path?: string;
 }
 export const Position = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    line: S.optional(S.String),
-    path: S.optional(S.String),
-  }),
+S.Struct({
+  "line": S.optional(S.String),
+  "path": S.optional(S.String),
+}),
 ).annotate({ identifier: "Position" }) as any as S.Schema<Position>;
 
 /** The comment on a code line. */
@@ -90,22 +90,17 @@ export interface Code {
   effectiveCommitSha?: string;
 }
 export const Code = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reply: S.optional(S.String),
-    resolved: S.optional(S.Boolean),
-    effectiveRootComment: S.optional(S.String),
-    body: S.optional(S.String),
-    position: S.optional(Position),
-    effectiveCommitSha: S.optional(S.String),
-  }),
+S.Struct({
+  "reply": S.optional(S.String),
+  "resolved": S.optional(S.Boolean),
+  "effectiveRootComment": S.optional(S.String),
+  "body": S.optional(S.String),
+  "position": S.optional(Position),
+  "effectiveCommitSha": S.optional(S.String),
+}),
 ).annotate({ identifier: "Code" }) as any as S.Schema<Code>;
 
-export type ReviewActionTypeEnum =
-  | "ACTION_TYPE_UNSPECIFIED"
-  | "COMMENT"
-  | "CHANGE_REQUESTED"
-  | "APPROVED"
-  | (string & {});
+export type ReviewActionTypeEnum = "ACTION_TYPE_UNSPECIFIED" | "COMMENT" | "CHANGE_REQUESTED" | "APPROVED";
 export const ReviewActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** The review summary comment. */
@@ -118,11 +113,11 @@ export interface Review {
   actionType?: ReviewActionTypeEnum;
 }
 export const Review = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    effectiveCommitSha: S.optional(S.String),
-    actionType: S.optional(ReviewActionTypeEnum),
-  }),
+S.Struct({
+  "body": S.optional(S.String),
+  "effectiveCommitSha": S.optional(S.String),
+  "actionType": S.optional(ReviewActionTypeEnum),
+}),
 ).annotate({ identifier: "Review" }) as any as S.Schema<Review>;
 
 /** The general pull request comment. */
@@ -131,9 +126,9 @@ export interface Comment {
   body?: string;
 }
 export const Comment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-  }),
+S.Struct({
+  "body": S.optional(S.String),
+}),
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
 
 /** PullRequestComment represents a comment on a pull request. */
@@ -152,17 +147,15 @@ export interface PullRequestComment {
   createTime?: string;
 }
 export const PullRequestComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    code: S.optional(Code),
-    review: S.optional(Review),
-    comment: S.optional(Comment),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PullRequestComment",
-}) as any as S.Schema<PullRequestComment>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "code": S.optional(Code),
+  "review": S.optional(Review),
+  "comment": S.optional(Comment),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
+).annotate({ identifier: "PullRequestComment" }) as any as S.Schema<PullRequestComment>;
 
 /** The request to create a pull request comment. */
 export interface CreatePullRequestCommentRequest {
@@ -172,33 +165,25 @@ export interface CreatePullRequestCommentRequest {
   pullRequestComment?: PullRequestComment;
 }
 export const CreatePullRequestCommentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(S.String),
-    pullRequestComment: S.optional(PullRequestComment),
-  }),
-).annotate({
-  identifier: "CreatePullRequestCommentRequest",
-}) as any as S.Schema<CreatePullRequestCommentRequest>;
+S.Struct({
+  "parent": S.optional(S.String),
+  "pullRequestComment": S.optional(PullRequestComment),
+}),
+).annotate({ identifier: "CreatePullRequestCommentRequest" }) as any as S.Schema<CreatePullRequestCommentRequest>;
 
-export type CreatePullRequestCommentRequestList =
-  ReadonlyArray<CreatePullRequestCommentRequest>;
-export const CreatePullRequestCommentRequestList = /*@__PURE__*/ S.Array(
-  CreatePullRequestCommentRequest,
-) as any as S.Schema<CreatePullRequestCommentRequestList>;
+export type CreatePullRequestCommentRequestList = ReadonlyArray<CreatePullRequestCommentRequest>;
+export const CreatePullRequestCommentRequestList = /*@__PURE__*/ S.Array(CreatePullRequestCommentRequest) as any as S.Schema<CreatePullRequestCommentRequestList>;
 
 /** The request to batch create pull request comments. */
 export interface BatchCreatePullRequestCommentsRequest {
   /** Required. The request message specifying the resources to create. There should be exactly one CreatePullRequestCommentRequest with CommentDetail being REVIEW in the list, and no more than 100 CreatePullRequestCommentRequests with CommentDetail being CODE in the list */
   requests?: CreatePullRequestCommentRequestList;
 }
-export const BatchCreatePullRequestCommentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requests: S.optional(CreatePullRequestCommentRequestList),
-    }),
-).annotate({
-  identifier: "BatchCreatePullRequestCommentsRequest",
-}) as any as S.Schema<BatchCreatePullRequestCommentsRequest>;
+export const BatchCreatePullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requests": S.optional(CreatePullRequestCommentRequestList),
+}),
+).annotate({ identifier: "BatchCreatePullRequestCommentsRequest" }) as any as S.Schema<BatchCreatePullRequestCommentsRequest>;
 
 export interface BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
   /** Required. The pull request in which to create the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
@@ -206,35 +191,18 @@ export interface BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequest
   /** Request body */
   body?: BatchCreatePullRequestCommentsRequest;
 }
-export const BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        BatchCreatePullRequestCommentsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/pullRequestComments:batchCreate",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
+export const BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchCreatePullRequestCommentsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/pullRequestComments:batchCreate","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest" }) as any as S.Schema<BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -246,11 +214,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -267,22 +235,20 @@ export interface Operation {
   metadata?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
-    metadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "response": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+  "error": S.optional(Status),
+  "metadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -290,27 +256,18 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** The request to close an issue. */
 export interface CloseIssueRequest {
@@ -318,12 +275,10 @@ export interface CloseIssueRequest {
   etag?: string;
 }
 export const CloseIssueRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloseIssueRequest",
-}) as any as S.Schema<CloseIssueRequest>;
+S.Struct({
+  "etag": S.optional(S.String),
+}),
+).annotate({ identifier: "CloseIssueRequest" }) as any as S.Schema<CloseIssueRequest>;
 
 export interface CloseProjectsLocationsRepositoriesIssuesRequest {
   /** Required. Name of the issue to close. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}`. */
@@ -331,29 +286,18 @@ export interface CloseProjectsLocationsRepositoriesIssuesRequest {
   /** Request body */
   body?: CloseIssueRequest;
 }
-export const CloseProjectsLocationsRepositoriesIssuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CloseIssueRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:close",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CloseProjectsLocationsRepositoriesIssuesRequest",
-  }) as any as S.Schema<CloseProjectsLocationsRepositoriesIssuesRequest>;
+export const CloseProjectsLocationsRepositoriesIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CloseIssueRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:close","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CloseProjectsLocationsRepositoriesIssuesRequest" }) as any as S.Schema<CloseProjectsLocationsRepositoriesIssuesRequest>;
 
 /** ClosePullRequestRequest is the request to close a pull request. */
 export interface ClosePullRequestRequest {}
 export const ClosePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ClosePullRequestRequest",
-}) as any as S.Schema<ClosePullRequestRequest>;
+S.Struct({}),
+).annotate({ identifier: "ClosePullRequestRequest" }) as any as S.Schema<ClosePullRequestRequest>;
 
 export interface CloseProjectsLocationsRepositoriesPullRequestsRequest {
   /** Required. The pull request to close. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
@@ -361,21 +305,12 @@ export interface CloseProjectsLocationsRepositoriesPullRequestsRequest {
   /** Request body */
   body?: ClosePullRequestRequest;
 }
-export const CloseProjectsLocationsRepositoriesPullRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ClosePullRequestRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:close",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CloseProjectsLocationsRepositoriesPullRequestsRequest",
-  }) as any as S.Schema<CloseProjectsLocationsRepositoriesPullRequestsRequest>;
+export const CloseProjectsLocationsRepositoriesPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ClosePullRequestRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:close","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CloseProjectsLocationsRepositoriesPullRequestsRequest" }) as any as S.Schema<CloseProjectsLocationsRepositoriesPullRequestsRequest>;
 
 /** WorkforceIdentityFederationConfig allows this instance to support users from external identity providers. */
 export interface WorkforceIdentityFederationConfig {
@@ -383,12 +318,10 @@ export interface WorkforceIdentityFederationConfig {
   enabled?: boolean;
 }
 export const WorkforceIdentityFederationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "WorkforceIdentityFederationConfig",
-}) as any as S.Schema<WorkforceIdentityFederationConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "WorkforceIdentityFederationConfig" }) as any as S.Schema<WorkforceIdentityFederationConfig>;
 
 /** HostConfig has different instance endpoints. */
 export interface HostConfig {
@@ -402,35 +335,22 @@ export interface HostConfig {
   html?: string;
 }
 export const HostConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api: S.optional(S.String),
-    gitHttp: S.optional(S.String),
-    gitSsh: S.optional(S.String),
-    html: S.optional(S.String),
-  }),
+S.Struct({
+  "api": S.optional(S.String),
+  "gitHttp": S.optional(S.String),
+  "gitSsh": S.optional(S.String),
+  "html": S.optional(S.String),
+}),
 ).annotate({ identifier: "HostConfig" }) as any as S.Schema<HostConfig>;
 
-export type InstanceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | "PAUSED"
-  | "UNKNOWN"
-  | (string & {});
+export type InstanceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING" | "PAUSED" | "UNKNOWN";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
-export type InstanceStateNoteEnum =
-  | "STATE_NOTE_UNSPECIFIED"
-  | "PAUSED_CMEK_UNAVAILABLE"
-  | "INSTANCE_RESUMING"
-  | (string & {});
+export type InstanceStateNoteEnum = "STATE_NOTE_UNSPECIFIED" | "PAUSED_CMEK_UNAVAILABLE" | "INSTANCE_RESUMING";
 export const InstanceStateNoteEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Custom host config for the instance. */
 export interface CustomHostConfig {
@@ -444,15 +364,13 @@ export interface CustomHostConfig {
   gitSsh?: string;
 }
 export const CustomHostConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api: S.optional(S.String),
-    gitHttp: S.optional(S.String),
-    html: S.optional(S.String),
-    gitSsh: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomHostConfig",
-}) as any as S.Schema<CustomHostConfig>;
+S.Struct({
+  "api": S.optional(S.String),
+  "gitHttp": S.optional(S.String),
+  "html": S.optional(S.String),
+  "gitSsh": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomHostConfig" }) as any as S.Schema<CustomHostConfig>;
 
 /** PrivateConfig includes settings for private instance. */
 export interface PrivateConfig {
@@ -470,21 +388,18 @@ export interface PrivateConfig {
   httpServiceAttachment?: string;
 }
 export const PrivateConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caPool: S.optional(S.String),
-    sshServiceAttachment: S.optional(S.String),
-    pscAllowedProjects: S.optional(StringList),
-    customHostConfig: S.optional(CustomHostConfig),
-    isPrivate: S.optional(S.Boolean),
-    httpServiceAttachment: S.optional(S.String),
-  }),
+S.Struct({
+  "caPool": S.optional(S.String),
+  "sshServiceAttachment": S.optional(S.String),
+  "pscAllowedProjects": S.optional(StringList),
+  "customHostConfig": S.optional(CustomHostConfig),
+  "isPrivate": S.optional(S.Boolean),
+  "httpServiceAttachment": S.optional(S.String),
+}),
 ).annotate({ identifier: "PrivateConfig" }) as any as S.Schema<PrivateConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Secure Source Manager instance. */
 export interface Instance {
@@ -510,20 +425,18 @@ export interface Instance {
   createTime?: string;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workforceIdentityFederationConfig: S.optional(
-      WorkforceIdentityFederationConfig,
-    ),
-    hostConfig: S.optional(HostConfig),
-    state: S.optional(InstanceStateEnum),
-    updateTime: S.optional(S.String),
-    stateNote: S.optional(InstanceStateNoteEnum),
-    name: S.optional(S.String),
-    privateConfig: S.optional(PrivateConfig),
-    labels: S.optional(StringMap),
-    kmsKey: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "workforceIdentityFederationConfig": S.optional(WorkforceIdentityFederationConfig),
+  "hostConfig": S.optional(HostConfig),
+  "state": S.optional(InstanceStateEnum),
+  "updateTime": S.optional(S.String),
+  "stateNote": S.optional(InstanceStateNoteEnum),
+  "name": S.optional(S.String),
+  "privateConfig": S.optional(PrivateConfig),
+  "labels": S.optional(StringMap),
+  "kmsKey": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface CreateProjectsLocationsInstancesRequest {
@@ -536,23 +449,14 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      instanceId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Instance.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/instances",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsInstancesRequest",
-}) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
+export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "instanceId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Instance.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/instances","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsInstancesRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 /** Configuration for secret scanning. */
 export interface SecretScanConfig {
@@ -562,13 +466,11 @@ export interface SecretScanConfig {
   enabled?: boolean;
 }
 export const SecretScanConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inspectTemplate: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SecretScanConfig",
-}) as any as S.Schema<SecretScanConfig>;
+S.Struct({
+  "inspectTemplate": S.optional(S.String),
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SecretScanConfig" }) as any as S.Schema<SecretScanConfig>;
 
 /** Configuration for scanning. */
 export interface ScanConfig {
@@ -576,9 +478,9 @@ export interface ScanConfig {
   secretScanConfig?: SecretScanConfig;
 }
 export const ScanConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secretScanConfig: S.optional(SecretScanConfig),
-  }),
+S.Struct({
+  "secretScanConfig": S.optional(SecretScanConfig),
+}),
 ).annotate({ identifier: "ScanConfig" }) as any as S.Schema<ScanConfig>;
 
 /** Repository initialization configuration. */
@@ -593,12 +495,12 @@ export interface InitialConfig {
   readme?: string;
 }
 export const InitialConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.optional(S.String),
-    gitignores: S.optional(StringList),
-    license: S.optional(S.String),
-    readme: S.optional(S.String),
-  }),
+S.Struct({
+  "defaultBranch": S.optional(S.String),
+  "gitignores": S.optional(StringList),
+  "license": S.optional(S.String),
+  "readme": S.optional(S.String),
+}),
 ).annotate({ identifier: "InitialConfig" }) as any as S.Schema<InitialConfig>;
 
 /** URIs for the repository. */
@@ -611,11 +513,11 @@ export interface URIs {
   html?: string;
 }
 export const URIs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api: S.optional(S.String),
-    gitHttps: S.optional(S.String),
-    html: S.optional(S.String),
-  }),
+S.Struct({
+  "api": S.optional(S.String),
+  "gitHttps": S.optional(S.String),
+  "html": S.optional(S.String),
+}),
 ).annotate({ identifier: "URIs" }) as any as S.Schema<URIs>;
 
 /** Metadata of a Secure Source Manager repository. */
@@ -644,19 +546,19 @@ export interface Repository {
   uris?: URIs;
 }
 export const Repository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    uid: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    scanConfig: S.optional(ScanConfig),
-    initialConfig: S.optional(InitialConfig),
-    etag: S.optional(S.String),
-    name: S.optional(S.String),
-    instance: S.optional(S.String),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    uris: S.optional(URIs),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "scanConfig": S.optional(ScanConfig),
+  "initialConfig": S.optional(InitialConfig),
+  "etag": S.optional(S.String),
+  "name": S.optional(S.String),
+  "instance": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "uris": S.optional(URIs),
+}),
 ).annotate({ identifier: "Repository" }) as any as S.Schema<Repository>;
 
 export interface CreateProjectsLocationsRepositoriesRequest {
@@ -667,22 +569,13 @@ export interface CreateProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const CreateProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repositoryId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Repository.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/repositories",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>;
+export const CreateProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repositoryId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Repository.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/repositories","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>;
 
 /** Check is a type for status check. */
 export interface Check {
@@ -690,15 +583,13 @@ export interface Check {
   context?: string;
 }
 export const Check = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    context: S.optional(S.String),
-  }),
+S.Struct({
+  "context": S.optional(S.String),
+}),
 ).annotate({ identifier: "Check" }) as any as S.Schema<Check>;
 
 export type CheckList = ReadonlyArray<Check>;
-export const CheckList = /*@__PURE__*/ S.Array(
-  Check,
-) as any as S.Schema<CheckList>;
+export const CheckList = /*@__PURE__*/ S.Array(Check) as any as S.Schema<CheckList>;
 
 /** Metadata of a BranchRule. BranchRule is the protection rule to enforce pre-defined rules on designated branches within a repository. */
 export interface BranchRule {
@@ -736,24 +627,24 @@ export interface BranchRule {
   allowStaleReviews?: boolean;
 }
 export const BranchRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requiredStatusChecks: S.optional(CheckList),
-    requireCommentsResolved: S.optional(S.Boolean),
-    updateTime: S.optional(S.String),
-    requireCodeOwnerApproval: S.optional(S.Boolean),
-    disabled: S.optional(S.Boolean),
-    annotations: S.optional(StringMap),
-    requirePullRequest: S.optional(S.Boolean),
-    requireLinearHistory: S.optional(S.Boolean),
-    etag: S.optional(S.String),
-    name: S.optional(S.String),
-    includePattern: S.optional(S.String),
-    createTime: S.optional(S.String),
-    minimumApprovalsCount: S.optional(S.Number),
-    uid: S.optional(S.String),
-    minimumReviewsCount: S.optional(S.Number),
-    allowStaleReviews: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "requiredStatusChecks": S.optional(CheckList),
+  "requireCommentsResolved": S.optional(S.Boolean),
+  "updateTime": S.optional(S.String),
+  "requireCodeOwnerApproval": S.optional(S.Boolean),
+  "disabled": S.optional(S.Boolean),
+  "annotations": S.optional(StringMap),
+  "requirePullRequest": S.optional(S.Boolean),
+  "requireLinearHistory": S.optional(S.Boolean),
+  "etag": S.optional(S.String),
+  "name": S.optional(S.String),
+  "includePattern": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "minimumApprovalsCount": S.optional(S.Number),
+  "uid": S.optional(S.String),
+  "minimumReviewsCount": S.optional(S.Number),
+  "allowStaleReviews": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "BranchRule" }) as any as S.Schema<BranchRule>;
 
 export interface CreateProjectsLocationsRepositoriesBranchRulesRequest {
@@ -762,44 +653,29 @@ export interface CreateProjectsLocationsRepositoriesBranchRulesRequest {
   /** Request body */
   body?: BranchRule;
 }
-export const CreateProjectsLocationsRepositoriesBranchRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      branchRuleId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BranchRule.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/branchRules",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesBranchRulesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesBranchRulesRequest>;
+export const CreateProjectsLocationsRepositoriesBranchRulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "branchRuleId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BranchRule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/branchRules","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesBranchRulesRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesBranchRulesRequest>;
 
 export interface PushOption {
   /** Optional. Trigger hook for matching branches only. Specified as glob pattern. If empty or *, events for all branches are reported. Examples: main, {main,release*}. See https://pkg.go.dev/github.com/gobwas/glob documentation. */
   branchFilter?: string;
 }
 export const PushOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchFilter: S.optional(S.String),
-  }),
+S.Struct({
+  "branchFilter": S.optional(S.String),
+}),
 ).annotate({ identifier: "PushOption" }) as any as S.Schema<PushOption>;
 
-export type HookEventsItemEnum =
-  | "UNSPECIFIED"
-  | "PUSH"
-  | "PULL_REQUEST"
-  | (string & {});
+export type HookEventsItemEnum = "UNSPECIFIED" | "PUSH" | "PULL_REQUEST";
 export const HookEventsItemEnum = /*@__PURE__*/ S.String;
 
 export type HookEventsItemEnumList = ReadonlyArray<HookEventsItemEnum>;
-export const HookEventsItemEnumList = /*@__PURE__*/ S.Array(
-  HookEventsItemEnum,
-) as any as S.Schema<HookEventsItemEnumList>;
+export const HookEventsItemEnumList = /*@__PURE__*/ S.Array(HookEventsItemEnum) as any as S.Schema<HookEventsItemEnumList>;
 
 /** Metadata of a Secure Source Manager Hook. */
 export interface Hook {
@@ -823,17 +699,17 @@ export interface Hook {
   updateTime?: string;
 }
 export const Hook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-    uid: S.optional(S.String),
-    targetUri: S.optional(S.String),
-    pushOption: S.optional(PushOption),
-    sensitiveQueryString: S.optional(S.String),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    events: S.optional(HookEventsItemEnumList),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "disabled": S.optional(S.Boolean),
+  "uid": S.optional(S.String),
+  "targetUri": S.optional(S.String),
+  "pushOption": S.optional(PushOption),
+  "sensitiveQueryString": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "events": S.optional(HookEventsItemEnumList),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Hook" }) as any as S.Schema<Hook>;
 
 export interface CreateProjectsLocationsRepositoriesHooksRequest {
@@ -844,28 +720,15 @@ export interface CreateProjectsLocationsRepositoriesHooksRequest {
   /** Request body */
   body?: Hook;
 }
-export const CreateProjectsLocationsRepositoriesHooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hookId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Hook.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/hooks",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesHooksRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesHooksRequest>;
+export const CreateProjectsLocationsRepositoriesHooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "hookId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Hook.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/hooks","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesHooksRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesHooksRequest>;
 
-export type IssueStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "OPEN"
-  | "CLOSED"
-  | (string & {});
+export type IssueStateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED";
 export const IssueStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of an Issue. */
@@ -888,16 +751,16 @@ export interface Issue {
   etag?: string;
 }
 export const Issue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    title: S.optional(S.String),
-    state: S.optional(IssueStateEnum),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    closeTime: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "body": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "title": S.optional(S.String),
+  "state": S.optional(IssueStateEnum),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "closeTime": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
 export interface CreateProjectsLocationsRepositoriesIssuesRequest {
@@ -906,21 +769,12 @@ export interface CreateProjectsLocationsRepositoriesIssuesRequest {
   /** Request body */
   body?: Issue;
 }
-export const CreateProjectsLocationsRepositoriesIssuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Issue.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/issues",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesIssuesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesIssuesRequest>;
+export const CreateProjectsLocationsRepositoriesIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Issue.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/issues","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesIssuesRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesIssuesRequest>;
 
 /** IssueComment represents a comment on an issue. */
 export interface IssueComment {
@@ -934,12 +788,12 @@ export interface IssueComment {
   updateTime?: string;
 }
 export const IssueComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "body": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "IssueComment" }) as any as S.Schema<IssueComment>;
 
 export interface CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
@@ -948,21 +802,12 @@ export interface CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
   /** Request body */
   body?: IssueComment;
 }
-export const CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(IssueComment.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/issueComments",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
+export const CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(IssueComment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/issueComments","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
 
 /** Branch represents a branch involved in a pull request. */
 export interface Branch {
@@ -972,18 +817,13 @@ export interface Branch {
   sha?: string;
 }
 export const Branch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref: S.optional(S.String),
-    sha: S.optional(S.String),
-  }),
+S.Struct({
+  "ref": S.optional(S.String),
+  "sha": S.optional(S.String),
+}),
 ).annotate({ identifier: "Branch" }) as any as S.Schema<Branch>;
 
-export type PullRequestStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "OPEN"
-  | "CLOSED"
-  | "MERGED"
-  | (string & {});
+export type PullRequestStateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | "MERGED";
 export const PullRequestStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of a PullRequest. PullRequest is the request from a user to merge a branch (head) into another branch (base). */
@@ -1008,17 +848,17 @@ export interface PullRequest {
   state?: PullRequestStateEnum;
 }
 export const PullRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    closeTime: S.optional(S.String),
-    name: S.optional(S.String),
-    title: S.optional(S.String),
-    createTime: S.optional(S.String),
-    body: S.optional(S.String),
-    head: S.optional(Branch),
-    base: S.optional(Branch),
-    state: S.optional(PullRequestStateEnum),
-  }),
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "closeTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "title": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "body": S.optional(S.String),
+  "head": S.optional(Branch),
+  "base": S.optional(Branch),
+  "state": S.optional(PullRequestStateEnum),
+}),
 ).annotate({ identifier: "PullRequest" }) as any as S.Schema<PullRequest>;
 
 export interface CreateProjectsLocationsRepositoriesPullRequestsRequest {
@@ -1027,21 +867,12 @@ export interface CreateProjectsLocationsRepositoriesPullRequestsRequest {
   /** Request body */
   body?: PullRequest;
 }
-export const CreateProjectsLocationsRepositoriesPullRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(PullRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/pullRequests",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesPullRequestsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesPullRequestsRequest>;
+export const CreateProjectsLocationsRepositoriesPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(PullRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/pullRequests","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesPullRequestsRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesPullRequestsRequest>;
 
 export interface CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
   /** Required. The pull request in which to create the pull request comment. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
@@ -1049,22 +880,12 @@ export interface CreateProjectsLocationsRepositoriesPullRequestsPullRequestComme
   /** Request body */
   body?: PullRequestComment;
 }
-export const CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(PullRequestComment.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/pullRequestComments",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
+export const CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(PullRequestComment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/pullRequestComments","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
 
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
@@ -1074,41 +895,23 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Optional. If set to true, will force the deletion of the instance. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsInstancesRequest",
-}) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
+export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsInstancesRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesRequest {
   /** Required. Name of the repository to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}`. */
@@ -1116,61 +919,34 @@ export interface DeleteProjectsLocationsRepositoriesRequest {
   /** Optional. If set to true, and the repository is not found, the request will succeed but no action will be taken on the server. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>;
+export const DeleteProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesBranchRulesRequest {
   name: string;
   /** Optional. If set to true, and the branch rule is not found, the request will succeed but no action will be taken on the server. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsRepositoriesBranchRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesBranchRulesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesBranchRulesRequest>;
+export const DeleteProjectsLocationsRepositoriesBranchRulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesBranchRulesRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesBranchRulesRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesHooksRequest {
   /** Required. Name of the hook to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}`. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesHooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesHooksRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesHooksRequest>;
+export const DeleteProjectsLocationsRepositoriesHooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesHooksRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesHooksRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesIssuesRequest {
   /** Optional. The current etag of the issue. If the etag is provided and does not match the current etag of the issue, deletion will be blocked and an ABORTED error will be returned. */
@@ -1178,60 +954,32 @@ export interface DeleteProjectsLocationsRepositoriesIssuesRequest {
   /** Required. Name of the issue to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}`. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesIssuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      etag: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesIssuesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesIssuesRequest>;
+export const DeleteProjectsLocationsRepositoriesIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesIssuesRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesIssuesRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
   /** Required. Name of the issue comment to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}/issueComments/{comment_id}`. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
+export const DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
   /** Required. Name of the pull request comment to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}/pullRequestComments/{comment_id}`. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
+export const DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
 
 export interface FetchBlobProjectsLocationsRepositoriesRequest {
   /** Required. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}`. Specifies the repository containing the blob. */
@@ -1239,21 +987,12 @@ export interface FetchBlobProjectsLocationsRepositoriesRequest {
   /** Required. The SHA-1 hash of the blob to retrieve. */
   sha?: string;
 }
-export const FetchBlobProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repository: S.String.pipe(T.Label()),
-      sha: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+repository}:fetchBlob",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchBlobProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<FetchBlobProjectsLocationsRepositoriesRequest>;
+export const FetchBlobProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repository": S.String.pipe(T.Label()),
+  "sha": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+repository}:fetchBlob","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "FetchBlobProjectsLocationsRepositoriesRequest" }) as any as S.Schema<FetchBlobProjectsLocationsRepositoriesRequest>;
 
 /** Response message containing the content of a blob. */
 export interface FetchBlobResponse {
@@ -1263,57 +1002,35 @@ export interface FetchBlobResponse {
   sha?: string;
 }
 export const FetchBlobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    sha: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FetchBlobResponse",
-}) as any as S.Schema<FetchBlobResponse>;
+S.Struct({
+  "content": S.optional(S.String),
+  "sha": S.optional(S.String),
+}),
+).annotate({ identifier: "FetchBlobResponse" }) as any as S.Schema<FetchBlobResponse>;
 
-export type FetchRefsProjectsLocationsRepositoriesTypeEnum =
-  | "REF_TYPE_UNSPECIFIED"
-  | "REF_TYPE_BRANCH"
-  | "REF_TYPE_TAG"
-  | (string & {});
-export const FetchRefsProjectsLocationsRepositoriesTypeEnum =
-  /*@__PURE__*/ S.String;
+export type FetchRefsProjectsLocationsRepositoriesTypeEnum = "REF_TYPE_UNSPECIFIED" | "REF_TYPE_BRANCH" | "REF_TYPE_TAG";
+export const FetchRefsProjectsLocationsRepositoriesTypeEnum = /*@__PURE__*/ S.String;
 
 export interface FetchRefsProjectsLocationsRepositoriesRequest {
   /** Required. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}`. Specifies the repository to fetch the references from. */
   repository: string;
   /** Optional. The type of reference to fetch (eg. branch, tag). By default, all references are returned. */
-  type?: FetchRefsProjectsLocationsRepositoriesTypeEnum;
+  type?: FetchRefsProjectsLocationsRepositoriesTypeEnum | (string & {});
   /** Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const FetchRefsProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repository: S.String.pipe(T.Label()),
-      type: S.optional(
-        FetchRefsProjectsLocationsRepositoriesTypeEnum.pipe(T.Query()),
-      ),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+repository}:fetchRefs",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchRefsProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<FetchRefsProjectsLocationsRepositoriesRequest>;
+export const FetchRefsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repository": S.String.pipe(T.Label()),
+  "type": S.optional(FetchRefsProjectsLocationsRepositoriesTypeEnum.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+repository}:fetchRefs","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "FetchRefsProjectsLocationsRepositoriesRequest" }) as any as S.Schema<FetchRefsProjectsLocationsRepositoriesRequest>;
 
-export type RefTypeEnum =
-  | "REF_TYPE_UNSPECIFIED"
-  | "REF_TYPE_BRANCH"
-  | "REF_TYPE_TAG"
-  | (string & {});
+export type RefTypeEnum = "REF_TYPE_UNSPECIFIED" | "REF_TYPE_BRANCH" | "REF_TYPE_TAG";
 export const RefTypeEnum = /*@__PURE__*/ S.String;
 
 /** Ref represents a git reference within a repository. */
@@ -1326,11 +1043,11 @@ export interface Ref {
   name?: string;
 }
 export const Ref = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.String),
-    type: S.optional(RefTypeEnum),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "target": S.optional(S.String),
+  "type": S.optional(RefTypeEnum),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Ref" }) as any as S.Schema<Ref>;
 
 export type RefList = ReadonlyArray<Ref>;
@@ -1344,13 +1061,11 @@ export interface FetchRefsResponse {
   nextPageToken?: string;
 }
 export const FetchRefsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    refs: S.optional(RefList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FetchRefsResponse",
-}) as any as S.Schema<FetchRefsResponse>;
+S.Struct({
+  "refs": S.optional(RefList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "FetchRefsResponse" }) as any as S.Schema<FetchRefsResponse>;
 
 export interface FetchTreeProjectsLocationsRepositoriesRequest {
   /** Optional. `ref` can be a SHA-1 hash, a branch name, or a tag. Specifies which tree to fetch. If not specified, the default branch will be used. */
@@ -1364,31 +1079,17 @@ export interface FetchTreeProjectsLocationsRepositoriesRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const FetchTreeProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ref: S.optional(S.String.pipe(T.Query())),
-      recursive: S.optional(S.Boolean.pipe(T.Query())),
-      repository: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+repository}:fetchTree",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchTreeProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<FetchTreeProjectsLocationsRepositoriesRequest>;
+export const FetchTreeProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ref": S.optional(S.String.pipe(T.Query())),
+  "recursive": S.optional(S.Boolean.pipe(T.Query())),
+  "repository": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+repository}:fetchTree","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "FetchTreeProjectsLocationsRepositoriesRequest" }) as any as S.Schema<FetchTreeProjectsLocationsRepositoriesRequest>;
 
-export type TreeEntryTypeEnum =
-  | "OBJECT_TYPE_UNSPECIFIED"
-  | "TREE"
-  | "BLOB"
-  | "COMMIT"
-  | (string & {});
+export type TreeEntryTypeEnum = "OBJECT_TYPE_UNSPECIFIED" | "TREE" | "BLOB" | "COMMIT";
 export const TreeEntryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an entry within a tree structure (like a Git tree). */
@@ -1405,19 +1106,17 @@ export interface TreeEntry {
   path?: string;
 }
 export const TreeEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    size: S.optional(S.String),
-    mode: S.optional(S.String),
-    type: S.optional(TreeEntryTypeEnum),
-    sha: S.optional(S.String),
-    path: S.optional(S.String),
-  }),
+S.Struct({
+  "size": S.optional(S.String),
+  "mode": S.optional(S.String),
+  "type": S.optional(TreeEntryTypeEnum),
+  "sha": S.optional(S.String),
+  "path": S.optional(S.String),
+}),
 ).annotate({ identifier: "TreeEntry" }) as any as S.Schema<TreeEntry>;
 
 export type TreeEntryList = ReadonlyArray<TreeEntry>;
-export const TreeEntryList = /*@__PURE__*/ S.Array(
-  TreeEntry,
-) as any as S.Schema<TreeEntryList>;
+export const TreeEntryList = /*@__PURE__*/ S.Array(TreeEntry) as any as S.Schema<TreeEntryList>;
 
 /** Response message containing a list of TreeEntry objects. */
 export interface FetchTreeResponse {
@@ -1427,13 +1126,11 @@ export interface FetchTreeResponse {
   nextPageToken?: string;
 }
 export const FetchTreeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    treeEntries: S.optional(TreeEntryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FetchTreeResponse",
-}) as any as S.Schema<FetchTreeResponse>;
+S.Struct({
+  "treeEntries": S.optional(TreeEntryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "FetchTreeResponse" }) as any as S.Schema<FetchTreeResponse>;
 
 export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1441,21 +1138,12 @@ export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsInstancesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
+export const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsInstancesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -1469,12 +1157,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -1487,24 +1175,17 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    members: S.optional(StringList),
-    condition: S.optional(Expr),
-  }),
+S.Struct({
+  "role": S.optional(S.String),
+  "members": S.optional(StringList),
+  "condition": S.optional(Expr),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1515,16 +1196,14 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-    exemptedMembers: S.optional(StringList),
-  }),
+S.Struct({
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+  "exemptedMembers": S.optional(StringList),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -1534,16 +1213,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1557,12 +1234,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-    auditConfigs: S.optional(AuditConfigList),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+  "auditConfigs": S.optional(AuditConfigList),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
@@ -1571,39 +1248,22 @@ export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
+export const GetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsRepositoriesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://securesourcemanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1619,186 +1279,104 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    locationId: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "locationId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsInstancesRequest",
-}) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
+export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsInstancesRequest" }) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRepositoriesRequest {
   /** Required. Name of the repository to retrieve. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}`. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsRepositoriesRequest",
-}) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>;
+export const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>;
 
 export interface GetProjectsLocationsRepositoriesBranchRulesRequest {
   /** Required. Name of the repository to retrieve. The format is `projects/{project}/locations/{location}/repositories/{repository}/branchRules/{branch_rule}`. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesBranchRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesBranchRulesRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesBranchRulesRequest>;
+export const GetProjectsLocationsRepositoriesBranchRulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesBranchRulesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesBranchRulesRequest>;
 
 export interface GetProjectsLocationsRepositoriesHooksRequest {
   /** Required. Name of the hook to retrieve. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}`. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesHooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesHooksRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesHooksRequest>;
+export const GetProjectsLocationsRepositoriesHooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesHooksRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesHooksRequest>;
 
 export interface GetProjectsLocationsRepositoriesIssuesRequest {
   /** Required. Name of the issue to retrieve. The format is `projects/{project}/locations/{location}/repositories/{repository}/issues/{issue_id}`. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesIssuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesIssuesRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesIssuesRequest>;
+export const GetProjectsLocationsRepositoriesIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesIssuesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesIssuesRequest>;
 
 export interface GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
   /** Required. Name of the issue comment to retrieve. The format is `projects/{project}/locations/{location}/repositories/{repository}/issues/{issue_id}/issueComments/{comment_id}`. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
+export const GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
 
 export interface GetProjectsLocationsRepositoriesPullRequestsRequest {
   /** Required. Name of the pull request to retrieve. The format is `projects/{project}/locations/{location}/repositories/{repository}/pullRequests/{pull_request}`. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesPullRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesPullRequestsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesPullRequestsRequest>;
+export const GetProjectsLocationsRepositoriesPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesPullRequestsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesPullRequestsRequest>;
 
 export interface GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
   /** Required. Name of the pull request comment to retrieve. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}/pullRequestComments/{comment_id}`. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
+export const GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
 
 export interface ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest {
   /** Required. The pull request to list file diffs for. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
@@ -1808,29 +1386,15 @@ export interface ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:listFileDiffs",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest",
-  }) as any as S.Schema<ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest>;
+export const ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:listFileDiffs","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest" }) as any as S.Schema<ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest>;
 
-export type FileDiffActionEnum =
-  | "ACTION_UNSPECIFIED"
-  | "ADDED"
-  | "MODIFIED"
-  | "DELETED"
-  | (string & {});
+export type FileDiffActionEnum = "ACTION_UNSPECIFIED" | "ADDED" | "MODIFIED" | "DELETED";
 export const FileDiffActionEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of a FileDiff. FileDiff represents a single file diff in a pull request. */
@@ -1845,18 +1409,16 @@ export interface FileDiff {
   patch?: string;
 }
 export const FileDiff = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    action: S.optional(FileDiffActionEnum),
-    sha: S.optional(S.String),
-    patch: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "action": S.optional(FileDiffActionEnum),
+  "sha": S.optional(S.String),
+  "patch": S.optional(S.String),
+}),
 ).annotate({ identifier: "FileDiff" }) as any as S.Schema<FileDiff>;
 
 export type FileDiffList = ReadonlyArray<FileDiff>;
-export const FileDiffList = /*@__PURE__*/ S.Array(
-  FileDiff,
-) as any as S.Schema<FileDiffList>;
+export const FileDiffList = /*@__PURE__*/ S.Array(FileDiff) as any as S.Schema<FileDiffList>;
 
 /** ListPullRequestFileDiffsResponse is the response containing file diffs returned from ListPullRequestFileDiffs. */
 export interface ListPullRequestFileDiffsResponse {
@@ -1866,13 +1428,11 @@ export interface ListPullRequestFileDiffsResponse {
   nextPageToken?: string;
 }
 export const ListPullRequestFileDiffsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileDiffs: S.optional(FileDiffList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPullRequestFileDiffsResponse",
-}) as any as S.Schema<ListPullRequestFileDiffsResponse>;
+S.Struct({
+  "fileDiffs": S.optional(FileDiffList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPullRequestFileDiffsResponse" }) as any as S.Schema<ListPullRequestFileDiffsResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -1887,27 +1447,17 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://securesourcemanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1917,13 +1467,11 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    locations: S.optional(LocationList),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "locations": S.optional(LocationList),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsInstancesRequest {
   /** Required. Parent value for ListInstancesRequest. */
@@ -1937,29 +1485,18 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/instances",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsInstancesRequest",
-}) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
+export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/instances","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsInstancesRequest" }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(
-  Instance,
-) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 export interface ListInstancesResponse {
   /** A token identifying a page of results the server should return. */
@@ -1970,14 +1507,12 @@ export interface ListInstancesResponse {
   instances?: InstanceList;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    instances: S.optional(InstanceList),
-  }),
-).annotate({
-  identifier: "ListInstancesResponse",
-}) as any as S.Schema<ListInstancesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "instances": S.optional(InstanceList),
+}),
+).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -1991,29 +1526,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2025,14 +1549,12 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsRepositoriesRequest {
   /** Required. Parent value for ListRepositoriesRequest. */
@@ -2046,29 +1568,18 @@ export interface ListProjectsLocationsRepositoriesRequest {
   /** Optional. Filter results. */
   filter?: string;
 }
-export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      instance: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/repositories",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsRepositoriesRequest",
-}) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
+export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "instance": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/repositories","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
 
 export type RepositoryList = ReadonlyArray<Repository>;
-export const RepositoryList = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<RepositoryList>;
+export const RepositoryList = /*@__PURE__*/ S.Array(Repository) as any as S.Schema<RepositoryList>;
 
 export interface ListRepositoriesResponse {
   /** The list of repositories. */
@@ -2077,13 +1588,11 @@ export interface ListRepositoriesResponse {
   nextPageToken?: string;
 }
 export const ListRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repositories: S.optional(RepositoryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRepositoriesResponse",
-}) as any as S.Schema<ListRepositoriesResponse>;
+S.Struct({
+  "repositories": S.optional(RepositoryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListRepositoriesResponse" }) as any as S.Schema<ListRepositoriesResponse>;
 
 export interface ListProjectsLocationsRepositoriesBranchRulesRequest {
   /** Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. */
@@ -2092,27 +1601,16 @@ export interface ListProjectsLocationsRepositoriesBranchRulesRequest {
   pageToken?: string;
   parent: string;
 }
-export const ListProjectsLocationsRepositoriesBranchRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/branchRules",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesBranchRulesRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesBranchRulesRequest>;
+export const ListProjectsLocationsRepositoriesBranchRulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/branchRules","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesBranchRulesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesBranchRulesRequest>;
 
 export type BranchRuleList = ReadonlyArray<BranchRule>;
-export const BranchRuleList = /*@__PURE__*/ S.Array(
-  BranchRule,
-) as any as S.Schema<BranchRuleList>;
+export const BranchRuleList = /*@__PURE__*/ S.Array(BranchRule) as any as S.Schema<BranchRuleList>;
 
 /** ListBranchRulesResponse is the response to listing branchRules. */
 export interface ListBranchRulesResponse {
@@ -2122,13 +1620,11 @@ export interface ListBranchRulesResponse {
   nextPageToken?: string;
 }
 export const ListBranchRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchRules: S.optional(BranchRuleList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBranchRulesResponse",
-}) as any as S.Schema<ListBranchRulesResponse>;
+S.Struct({
+  "branchRules": S.optional(BranchRuleList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBranchRulesResponse" }) as any as S.Schema<ListBranchRulesResponse>;
 
 export interface ListProjectsLocationsRepositoriesHooksRequest {
   /** Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. */
@@ -2138,27 +1634,16 @@ export interface ListProjectsLocationsRepositoriesHooksRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRepositoriesHooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/hooks",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesHooksRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesHooksRequest>;
+export const ListProjectsLocationsRepositoriesHooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/hooks","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesHooksRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesHooksRequest>;
 
 export type HookList = ReadonlyArray<Hook>;
-export const HookList = /*@__PURE__*/ S.Array(
-  Hook,
-) as any as S.Schema<HookList>;
+export const HookList = /*@__PURE__*/ S.Array(Hook) as any as S.Schema<HookList>;
 
 /** ListHooksResponse is response to list hooks. */
 export interface ListHooksResponse {
@@ -2168,13 +1653,11 @@ export interface ListHooksResponse {
   nextPageToken?: string;
 }
 export const ListHooksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hooks: S.optional(HookList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListHooksResponse",
-}) as any as S.Schema<ListHooksResponse>;
+S.Struct({
+  "hooks": S.optional(HookList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListHooksResponse" }) as any as S.Schema<ListHooksResponse>;
 
 export interface ListProjectsLocationsRepositoriesIssuesRequest {
   /** Required. The repository in which to list issues. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` */
@@ -2186,28 +1669,17 @@ export interface ListProjectsLocationsRepositoriesIssuesRequest {
   /** Optional. Used to filter the resulting issues list. */
   filter?: string;
 }
-export const ListProjectsLocationsRepositoriesIssuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/issues",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesIssuesRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesIssuesRequest>;
+export const ListProjectsLocationsRepositoriesIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/issues","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesIssuesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesIssuesRequest>;
 
 export type IssueList = ReadonlyArray<Issue>;
-export const IssueList = /*@__PURE__*/ S.Array(
-  Issue,
-) as any as S.Schema<IssueList>;
+export const IssueList = /*@__PURE__*/ S.Array(Issue) as any as S.Schema<IssueList>;
 
 /** The response to list issues. */
 export interface ListIssuesResponse {
@@ -2217,13 +1689,11 @@ export interface ListIssuesResponse {
   nextPageToken?: string;
 }
 export const ListIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issues: S.optional(IssueList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListIssuesResponse",
-}) as any as S.Schema<ListIssuesResponse>;
+S.Struct({
+  "issues": S.optional(IssueList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListIssuesResponse" }) as any as S.Schema<ListIssuesResponse>;
 
 export interface ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
   /** Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. */
@@ -2233,27 +1703,16 @@ export interface ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/issueComments",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
+export const ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/issueComments","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
 
 export type IssueCommentList = ReadonlyArray<IssueComment>;
-export const IssueCommentList = /*@__PURE__*/ S.Array(
-  IssueComment,
-) as any as S.Schema<IssueCommentList>;
+export const IssueCommentList = /*@__PURE__*/ S.Array(IssueComment) as any as S.Schema<IssueCommentList>;
 
 /** The response to list issue comments. */
 export interface ListIssueCommentsResponse {
@@ -2263,13 +1722,11 @@ export interface ListIssueCommentsResponse {
   issueComments?: IssueCommentList;
 }
 export const ListIssueCommentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    issueComments: S.optional(IssueCommentList),
-  }),
-).annotate({
-  identifier: "ListIssueCommentsResponse",
-}) as any as S.Schema<ListIssueCommentsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "issueComments": S.optional(IssueCommentList),
+}),
+).annotate({ identifier: "ListIssueCommentsResponse" }) as any as S.Schema<ListIssueCommentsResponse>;
 
 export interface ListProjectsLocationsRepositoriesPullRequestsRequest {
   /** Required. The repository in which to list pull requests. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` */
@@ -2279,27 +1736,16 @@ export interface ListProjectsLocationsRepositoriesPullRequestsRequest {
   /** Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesPullRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/pullRequests",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesPullRequestsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesPullRequestsRequest>;
+export const ListProjectsLocationsRepositoriesPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/pullRequests","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesPullRequestsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesPullRequestsRequest>;
 
 export type PullRequestList = ReadonlyArray<PullRequest>;
-export const PullRequestList = /*@__PURE__*/ S.Array(
-  PullRequest,
-) as any as S.Schema<PullRequestList>;
+export const PullRequestList = /*@__PURE__*/ S.Array(PullRequest) as any as S.Schema<PullRequestList>;
 
 /** ListPullRequestsResponse is the response to list pull requests. */
 export interface ListPullRequestsResponse {
@@ -2309,13 +1755,11 @@ export interface ListPullRequestsResponse {
   nextPageToken?: string;
 }
 export const ListPullRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pullRequests: S.optional(PullRequestList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPullRequestsResponse",
-}) as any as S.Schema<ListPullRequestsResponse>;
+S.Struct({
+  "pullRequests": S.optional(PullRequestList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPullRequestsResponse" }) as any as S.Schema<ListPullRequestsResponse>;
 
 export interface ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -2325,28 +1769,16 @@ export interface ListProjectsLocationsRepositoriesPullRequestsPullRequestComment
   /** Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/pullRequestComments",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
+export const ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/pullRequestComments","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
 
 export type PullRequestCommentList = ReadonlyArray<PullRequestComment>;
-export const PullRequestCommentList = /*@__PURE__*/ S.Array(
-  PullRequestComment,
-) as any as S.Schema<PullRequestCommentList>;
+export const PullRequestCommentList = /*@__PURE__*/ S.Array(PullRequestComment) as any as S.Schema<PullRequestCommentList>;
 
 /** The response to list pull request comments. */
 export interface ListPullRequestCommentsResponse {
@@ -2356,21 +1788,17 @@ export interface ListPullRequestCommentsResponse {
   pullRequestComments?: PullRequestCommentList;
 }
 export const ListPullRequestCommentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    pullRequestComments: S.optional(PullRequestCommentList),
-  }),
-).annotate({
-  identifier: "ListPullRequestCommentsResponse",
-}) as any as S.Schema<ListPullRequestCommentsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "pullRequestComments": S.optional(PullRequestCommentList),
+}),
+).annotate({ identifier: "ListPullRequestCommentsResponse" }) as any as S.Schema<ListPullRequestCommentsResponse>;
 
 /** MergePullRequestRequest is the request to merge a pull request. */
 export interface MergePullRequestRequest {}
 export const MergePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MergePullRequestRequest",
-}) as any as S.Schema<MergePullRequestRequest>;
+S.Struct({}),
+).annotate({ identifier: "MergePullRequestRequest" }) as any as S.Schema<MergePullRequestRequest>;
 
 export interface MergeProjectsLocationsRepositoriesPullRequestsRequest {
   /** Required. The pull request to merge. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
@@ -2378,21 +1806,12 @@ export interface MergeProjectsLocationsRepositoriesPullRequestsRequest {
   /** Request body */
   body?: MergePullRequestRequest;
 }
-export const MergeProjectsLocationsRepositoriesPullRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(MergePullRequestRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:merge",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "MergeProjectsLocationsRepositoriesPullRequestsRequest",
-  }) as any as S.Schema<MergeProjectsLocationsRepositoriesPullRequestsRequest>;
+export const MergeProjectsLocationsRepositoriesPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MergePullRequestRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:merge","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "MergeProjectsLocationsRepositoriesPullRequestsRequest" }) as any as S.Schema<MergeProjectsLocationsRepositoriesPullRequestsRequest>;
 
 /** The request to open an issue. */
 export interface OpenIssueRequest {
@@ -2400,12 +1819,10 @@ export interface OpenIssueRequest {
   etag?: string;
 }
 export const OpenIssueRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OpenIssueRequest",
-}) as any as S.Schema<OpenIssueRequest>;
+S.Struct({
+  "etag": S.optional(S.String),
+}),
+).annotate({ identifier: "OpenIssueRequest" }) as any as S.Schema<OpenIssueRequest>;
 
 export interface OpenProjectsLocationsRepositoriesIssuesRequest {
   /** Required. Name of the issue to open. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}`. */
@@ -2413,29 +1830,18 @@ export interface OpenProjectsLocationsRepositoriesIssuesRequest {
   /** Request body */
   body?: OpenIssueRequest;
 }
-export const OpenProjectsLocationsRepositoriesIssuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(OpenIssueRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:open",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "OpenProjectsLocationsRepositoriesIssuesRequest",
-  }) as any as S.Schema<OpenProjectsLocationsRepositoriesIssuesRequest>;
+export const OpenProjectsLocationsRepositoriesIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(OpenIssueRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:open","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "OpenProjectsLocationsRepositoriesIssuesRequest" }) as any as S.Schema<OpenProjectsLocationsRepositoriesIssuesRequest>;
 
 /** OpenPullRequestRequest is the request to open a pull request. */
 export interface OpenPullRequestRequest {}
 export const OpenPullRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OpenPullRequestRequest",
-}) as any as S.Schema<OpenPullRequestRequest>;
+S.Struct({}),
+).annotate({ identifier: "OpenPullRequestRequest" }) as any as S.Schema<OpenPullRequestRequest>;
 
 export interface OpenProjectsLocationsRepositoriesPullRequestsRequest {
   /** Required. The pull request to open. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
@@ -2443,21 +1849,12 @@ export interface OpenProjectsLocationsRepositoriesPullRequestsRequest {
   /** Request body */
   body?: OpenPullRequestRequest;
 }
-export const OpenProjectsLocationsRepositoriesPullRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(OpenPullRequestRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:open",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "OpenProjectsLocationsRepositoriesPullRequestsRequest",
-  }) as any as S.Schema<OpenProjectsLocationsRepositoriesPullRequestsRequest>;
+export const OpenProjectsLocationsRepositoriesPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(OpenPullRequestRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:open","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "OpenProjectsLocationsRepositoriesPullRequestsRequest" }) as any as S.Schema<OpenProjectsLocationsRepositoriesPullRequestsRequest>;
 
 export interface PatchProjectsLocationsRepositoriesRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the repository resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -2469,23 +1866,14 @@ export interface PatchProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const PatchProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(Repository.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>;
+export const PatchProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Repository.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>;
 
 export interface PatchProjectsLocationsRepositoriesBranchRulesRequest {
   /** Identifier. A unique identifier for a BranchRule. The name should be of the format: `projects/{project}/locations/{location}/repositories/{repository}/branchRules/{branch_rule}` */
@@ -2497,23 +1885,14 @@ export interface PatchProjectsLocationsRepositoriesBranchRulesRequest {
   /** Request body */
   body?: BranchRule;
 }
-export const PatchProjectsLocationsRepositoriesBranchRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BranchRule.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesBranchRulesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesBranchRulesRequest>;
+export const PatchProjectsLocationsRepositoriesBranchRulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BranchRule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesBranchRulesRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesBranchRulesRequest>;
 
 export interface PatchProjectsLocationsRepositoriesHooksRequest {
   /** Identifier. A unique identifier for a Hook. The name should be of the format: `projects/{project}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}` */
@@ -2523,22 +1902,13 @@ export interface PatchProjectsLocationsRepositoriesHooksRequest {
   /** Request body */
   body?: Hook;
 }
-export const PatchProjectsLocationsRepositoriesHooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Hook.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesHooksRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesHooksRequest>;
+export const PatchProjectsLocationsRepositoriesHooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Hook.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesHooksRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesHooksRequest>;
 
 export interface PatchProjectsLocationsRepositoriesIssuesRequest {
   /** Identifier. Unique identifier for an issue. The issue id is generated by the server. Format: `projects/{project}/locations/{location}/repositories/{repository}/issues/{issue_id}` */
@@ -2548,22 +1918,13 @@ export interface PatchProjectsLocationsRepositoriesIssuesRequest {
   /** Request body */
   body?: Issue;
 }
-export const PatchProjectsLocationsRepositoriesIssuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Issue.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesIssuesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesIssuesRequest>;
+export const PatchProjectsLocationsRepositoriesIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Issue.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesIssuesRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesIssuesRequest>;
 
 export interface PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
   /** Identifier. Unique identifier for an issue comment. The comment id is generated by the server. Format: `projects/{project}/locations/{location}/repositories/{repository}/issues/{issue}/issueComments/{comment_id}` */
@@ -2573,22 +1934,13 @@ export interface PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
   /** Request body */
   body?: IssueComment;
 }
-export const PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(IssueComment.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
+export const PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(IssueComment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
 
 export interface PatchProjectsLocationsRepositoriesPullRequestsRequest {
   /** Output only. Identifier. A unique identifier for a PullRequest. The number appended at the end is generated by the server. Format: `projects/{project}/locations/{location}/repositories/{repository}/pullRequests/{pull_request_id}` */
@@ -2598,22 +1950,13 @@ export interface PatchProjectsLocationsRepositoriesPullRequestsRequest {
   /** Request body */
   body?: PullRequest;
 }
-export const PatchProjectsLocationsRepositoriesPullRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(PullRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesPullRequestsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesPullRequestsRequest>;
+export const PatchProjectsLocationsRepositoriesPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(PullRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesPullRequestsRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesPullRequestsRequest>;
 
 export interface PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
   /** Identifier. Unique identifier for the pull request comment. The comment id is generated by the server. Format: `projects/{project}/locations/{location}/repositories/{repository}/pullRequests/{pull_request}/pullRequestComments/{comment_id}` */
@@ -2623,23 +1966,13 @@ export interface PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommen
   /** Request body */
   body?: PullRequestComment;
 }
-export const PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(PullRequestComment.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
+export const PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(PullRequestComment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
 
 /** The request to resolve multiple pull request comments. */
 export interface ResolvePullRequestCommentsRequest {
@@ -2649,13 +1982,11 @@ export interface ResolvePullRequestCommentsRequest {
   autoFill?: boolean;
 }
 export const ResolvePullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-    autoFill: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ResolvePullRequestCommentsRequest",
-}) as any as S.Schema<ResolvePullRequestCommentsRequest>;
+S.Struct({
+  "names": S.optional(StringList),
+  "autoFill": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ResolvePullRequestCommentsRequest" }) as any as S.Schema<ResolvePullRequestCommentsRequest>;
 
 export interface ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
   /** Required. The pull request in which to resolve the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
@@ -2663,22 +1994,12 @@ export interface ResolveProjectsLocationsRepositoriesPullRequestsPullRequestComm
   /** Request body */
   body?: ResolvePullRequestCommentsRequest;
 }
-export const ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ResolvePullRequestCommentsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/pullRequestComments:resolve",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-  }) as any as S.Schema<ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
+export const ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ResolvePullRequestCommentsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/pullRequestComments:resolve","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest" }) as any as S.Schema<ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -2688,13 +2009,11 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String),
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String),
+  "policy": S.optional(Policy),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2702,21 +2021,12 @@ export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsInstancesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
+export const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsInstancesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
 
 export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2724,21 +2034,12 @@ export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
+export const SetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsRepositoriesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -2746,12 +2047,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2759,21 +2058,12 @@ export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsInstancesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
+export const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsInstancesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -2781,12 +2071,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2794,21 +2082,12 @@ export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
+export const TestIamPermissionsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsRepositoriesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
 
 /** The request to unresolve multiple pull request comments. */
 export interface UnresolvePullRequestCommentsRequest {
@@ -2818,13 +2097,11 @@ export interface UnresolvePullRequestCommentsRequest {
   autoFill?: boolean;
 }
 export const UnresolvePullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-    autoFill: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UnresolvePullRequestCommentsRequest",
-}) as any as S.Schema<UnresolvePullRequestCommentsRequest>;
+S.Struct({
+  "names": S.optional(StringList),
+  "autoFill": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "UnresolvePullRequestCommentsRequest" }) as any as S.Schema<UnresolvePullRequestCommentsRequest>;
 
 export interface UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
   /** Required. The pull request in which to resolve the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
@@ -2832,25 +2109,14 @@ export interface UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCo
   /** Request body */
   body?: UnresolvePullRequestCommentsRequest;
 }
-export const UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(UnresolvePullRequestCommentsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/pullRequestComments:unresolve",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-  }) as any as S.Schema<UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
+export const UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(UnresolvePullRequestCommentsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/pullRequestComments:unresolve","baseUrl":"https://securesourcemanager.googleapis.com/"})),
+).annotate({ identifier: "UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest" }) as any as S.Schema<UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
 
-export type BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Batch creates pull request comments. This function is used to create multiple PullRequestComments for code review. There needs to be exactly one PullRequestComment of type Review, and at most 100 PullRequestComments of type Code per request. The Position of the code comments must be unique within the request. */
 export const batchCreateProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
   BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
@@ -2858,20 +2124,14 @@ export const batchCreateProjectsLocationsRepositoriesPullRequestsPullRequestComm
   BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
+  input: BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -2886,12 +2146,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CloseProjectsLocationsRepositoriesIssuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CloseProjectsLocationsRepositoriesIssuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Closes an issue. */
 export const closeProjectsLocationsRepositoriesIssues: API.OperationMethod<
   CloseProjectsLocationsRepositoriesIssuesRequest,
@@ -2906,12 +2161,7 @@ export const closeProjectsLocationsRepositoriesIssues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CloseProjectsLocationsRepositoriesPullRequestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CloseProjectsLocationsRepositoriesPullRequestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Closes a pull request without merging. */
 export const closeProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
   CloseProjectsLocationsRepositoriesPullRequestsRequest,
@@ -2926,12 +2176,7 @@ export const closeProjectsLocationsRepositoriesPullRequests: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new instance in a given project and location. */
 export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesRequest,
@@ -2946,12 +2191,7 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new repository in a given project and location. The Repository.Instance field is required in the request body for requests using the securesourcemanager.googleapis.com endpoint. */
 export const createProjectsLocationsRepositories: API.OperationMethod<
   CreateProjectsLocationsRepositoriesRequest,
@@ -2966,12 +2206,7 @@ export const createProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesBranchRulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesBranchRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** CreateBranchRule creates a branch rule in a given repository. */
 export const createProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
   CreateProjectsLocationsRepositoriesBranchRulesRequest,
@@ -2986,12 +2221,7 @@ export const createProjectsLocationsRepositoriesBranchRules: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesHooksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesHooksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new hook in a given repository. */
 export const createProjectsLocationsRepositoriesHooks: API.OperationMethod<
   CreateProjectsLocationsRepositoriesHooksRequest,
@@ -3006,12 +2236,7 @@ export const createProjectsLocationsRepositoriesHooks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesIssuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesIssuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an issue. */
 export const createProjectsLocationsRepositoriesIssues: API.OperationMethod<
   CreateProjectsLocationsRepositoriesIssuesRequest,
@@ -3026,12 +2251,7 @@ export const createProjectsLocationsRepositoriesIssues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesIssuesIssueCommentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesIssuesIssueCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an issue comment. */
 export const createProjectsLocationsRepositoriesIssuesIssueComments: API.OperationMethod<
   CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest,
@@ -3046,12 +2266,7 @@ export const createProjectsLocationsRepositoriesIssuesIssueComments: API.Operati
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesPullRequestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesPullRequestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a pull request. */
 export const createProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
   CreateProjectsLocationsRepositoriesPullRequestsRequest,
@@ -3066,8 +2281,7 @@ export const createProjectsLocationsRepositoriesPullRequests: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a pull request comment. This function is used to create a single PullRequestComment of type Comment, or a single PullRequestComment of type Code that's replying to another PullRequestComment of type Code. Use BatchCreatePullRequestComments to create multiple PullRequestComments for code reviews. */
 export const createProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
   CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
@@ -3075,20 +2289,14 @@ export const createProjectsLocationsRepositoriesPullRequestsPullRequestComments:
   CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
+  input: CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single instance. */
 export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesRequest,
@@ -3103,12 +2311,7 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -3123,12 +2326,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a Repository. */
 export const deleteProjectsLocationsRepositories: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesRequest,
@@ -3143,12 +2341,7 @@ export const deleteProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesBranchRulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesBranchRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** DeleteBranchRule deletes a branch rule. */
 export const deleteProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesBranchRulesRequest,
@@ -3163,12 +2356,7 @@ export const deleteProjectsLocationsRepositoriesBranchRules: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesHooksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesHooksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a Hook. */
 export const deleteProjectsLocationsRepositoriesHooks: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesHooksRequest,
@@ -3183,12 +2371,7 @@ export const deleteProjectsLocationsRepositoriesHooks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesIssuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesIssuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an issue. */
 export const deleteProjectsLocationsRepositoriesIssues: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesIssuesRequest,
@@ -3203,12 +2386,7 @@ export const deleteProjectsLocationsRepositoriesIssues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesIssuesIssueCommentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesIssuesIssueCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an issue comment. */
 export const deleteProjectsLocationsRepositoriesIssuesIssueComments: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest,
@@ -3223,8 +2401,7 @@ export const deleteProjectsLocationsRepositoriesIssuesIssueComments: API.Operati
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a pull request comment. */
 export const deleteProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
@@ -3232,18 +2409,14 @@ export const deleteProjectsLocationsRepositoriesPullRequestsPullRequestComments:
   DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
+  input: DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type FetchBlobProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchBlobProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Fetches a blob from a repository. */
 export const fetchBlobProjectsLocationsRepositories: API.OperationMethod<
   FetchBlobProjectsLocationsRepositoriesRequest,
@@ -3258,10 +2431,7 @@ export const fetchBlobProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FetchRefsProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchRefsProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Fetches git references from a repository. */
 export const fetchRefsProjectsLocationsRepositories: API.PaginatedOperationMethod<
   FetchRefsProjectsLocationsRepositoriesRequest,
@@ -3274,16 +2444,10 @@ export const fetchRefsProjectsLocationsRepositories: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type FetchTreeProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchTreeProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Fetches a tree from a repository. */
 export const fetchTreeProjectsLocationsRepositories: API.PaginatedOperationMethod<
   FetchTreeProjectsLocationsRepositoriesRequest,
@@ -3296,16 +2460,10 @@ export const fetchTreeProjectsLocationsRepositories: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type GetIamPolicyProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesRequest,
@@ -3320,10 +2478,7 @@ export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Get IAM policy for a repository. */
 export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   GetIamPolicyProjectsLocationsRepositoriesRequest,
@@ -3353,10 +2508,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single instance. */
 export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesRequest,
@@ -3371,10 +2523,7 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -3389,10 +2538,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Gets metadata of a repository. */
 export const getProjectsLocationsRepositories: API.OperationMethod<
   GetProjectsLocationsRepositoriesRequest,
@@ -3407,10 +2553,7 @@ export const getProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesBranchRulesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesBranchRulesError = NotFound | Forbidden | GcpOpError;
 /** GetBranchRule gets a branch rule. */
 export const getProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
   GetProjectsLocationsRepositoriesBranchRulesRequest,
@@ -3425,10 +2568,7 @@ export const getProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesHooksError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesHooksError = NotFound | Forbidden | GcpOpError;
 /** Gets metadata of a hook. */
 export const getProjectsLocationsRepositoriesHooks: API.OperationMethod<
   GetProjectsLocationsRepositoriesHooksRequest,
@@ -3443,10 +2583,7 @@ export const getProjectsLocationsRepositoriesHooks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesIssuesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesIssuesError = NotFound | Forbidden | GcpOpError;
 /** Gets an issue. */
 export const getProjectsLocationsRepositoriesIssues: API.OperationMethod<
   GetProjectsLocationsRepositoriesIssuesRequest,
@@ -3461,10 +2598,7 @@ export const getProjectsLocationsRepositoriesIssues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesIssuesIssueCommentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesIssuesIssueCommentsError = NotFound | Forbidden | GcpOpError;
 /** Gets an issue comment. */
 export const getProjectsLocationsRepositoriesIssuesIssueComments: API.OperationMethod<
   GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest,
@@ -3479,10 +2613,7 @@ export const getProjectsLocationsRepositoriesIssuesIssueComments: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesPullRequestsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesPullRequestsError = NotFound | Forbidden | GcpOpError;
 /** Gets a pull request. */
 export const getProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
   GetProjectsLocationsRepositoriesPullRequestsRequest,
@@ -3497,8 +2628,7 @@ export const getProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError = NotFound | Forbidden | GcpOpError;
 /** Gets a pull request comment. */
 export const getProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
   GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
@@ -3513,10 +2643,7 @@ export const getProjectsLocationsRepositoriesPullRequestsPullRequestComments: AP
   retry: Retry.Retry,
 }));
 
-export type ListFileDiffsProjectsLocationsRepositoriesPullRequestsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListFileDiffsProjectsLocationsRepositoriesPullRequestsError = NotFound | Forbidden | GcpOpError;
 /** Lists a pull request's file diffs. */
 export const listFileDiffsProjectsLocationsRepositoriesPullRequests: API.PaginatedOperationMethod<
   ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest,
@@ -3529,10 +2656,7 @@ export const listFileDiffsProjectsLocationsRepositoriesPullRequests: API.Paginat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -3548,16 +2672,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Lists Instances in a given project and location. */
 export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesRequest,
@@ -3570,16 +2688,10 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -3592,16 +2704,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Lists Repositories in a given project and location. The instance field is required in the query parameter for requests using the securesourcemanager.googleapis.com endpoint. */
 export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesRequest,
@@ -3614,16 +2720,10 @@ export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesBranchRulesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesBranchRulesError = NotFound | Forbidden | GcpOpError;
 /** ListBranchRules lists branch rules in a given repository. */
 export const listProjectsLocationsRepositoriesBranchRules: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesBranchRulesRequest,
@@ -3636,16 +2736,10 @@ export const listProjectsLocationsRepositoriesBranchRules: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesHooksError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesHooksError = NotFound | Forbidden | GcpOpError;
 /** Lists hooks in a given repository. */
 export const listProjectsLocationsRepositoriesHooks: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesHooksRequest,
@@ -3658,16 +2752,10 @@ export const listProjectsLocationsRepositoriesHooks: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesIssuesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesIssuesError = NotFound | Forbidden | GcpOpError;
 /** Lists issues in a repository. */
 export const listProjectsLocationsRepositoriesIssues: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesIssuesRequest,
@@ -3680,16 +2768,10 @@ export const listProjectsLocationsRepositoriesIssues: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesIssuesIssueCommentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesIssuesIssueCommentsError = NotFound | Forbidden | GcpOpError;
 /** Lists comments in an issue. */
 export const listProjectsLocationsRepositoriesIssuesIssueComments: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest,
@@ -3702,16 +2784,10 @@ export const listProjectsLocationsRepositoriesIssuesIssueComments: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesPullRequestsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesPullRequestsError = NotFound | Forbidden | GcpOpError;
 /** Lists pull requests in a repository. */
 export const listProjectsLocationsRepositoriesPullRequests: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesPullRequestsRequest,
@@ -3724,14 +2800,10 @@ export const listProjectsLocationsRepositoriesPullRequests: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError = NotFound | Forbidden | GcpOpError;
 /** Lists pull request comments. */
 export const listProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
@@ -3739,24 +2811,15 @@ export const listProjectsLocationsRepositoriesPullRequestsPullRequestComments: A
   ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
+  input: ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output: ListPullRequestCommentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type MergeProjectsLocationsRepositoriesPullRequestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MergeProjectsLocationsRepositoriesPullRequestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Merges a pull request. */
 export const mergeProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
   MergeProjectsLocationsRepositoriesPullRequestsRequest,
@@ -3771,12 +2834,7 @@ export const mergeProjectsLocationsRepositoriesPullRequests: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type OpenProjectsLocationsRepositoriesIssuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type OpenProjectsLocationsRepositoriesIssuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Opens an issue. */
 export const openProjectsLocationsRepositoriesIssues: API.OperationMethod<
   OpenProjectsLocationsRepositoriesIssuesRequest,
@@ -3791,12 +2849,7 @@ export const openProjectsLocationsRepositoriesIssues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type OpenProjectsLocationsRepositoriesPullRequestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type OpenProjectsLocationsRepositoriesPullRequestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Opens a pull request. */
 export const openProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
   OpenProjectsLocationsRepositoriesPullRequestsRequest,
@@ -3811,12 +2864,7 @@ export const openProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the metadata of a repository. */
 export const patchProjectsLocationsRepositories: API.OperationMethod<
   PatchProjectsLocationsRepositoriesRequest,
@@ -3831,12 +2879,7 @@ export const patchProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesBranchRulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesBranchRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** UpdateBranchRule updates a branch rule. */
 export const patchProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
   PatchProjectsLocationsRepositoriesBranchRulesRequest,
@@ -3851,12 +2894,7 @@ export const patchProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesHooksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesHooksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the metadata of a hook. */
 export const patchProjectsLocationsRepositoriesHooks: API.OperationMethod<
   PatchProjectsLocationsRepositoriesHooksRequest,
@@ -3871,12 +2909,7 @@ export const patchProjectsLocationsRepositoriesHooks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesIssuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesIssuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a issue. */
 export const patchProjectsLocationsRepositoriesIssues: API.OperationMethod<
   PatchProjectsLocationsRepositoriesIssuesRequest,
@@ -3891,12 +2924,7 @@ export const patchProjectsLocationsRepositoriesIssues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesIssuesIssueCommentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesIssuesIssueCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an issue comment. */
 export const patchProjectsLocationsRepositoriesIssuesIssueComments: API.OperationMethod<
   PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest,
@@ -3911,12 +2939,7 @@ export const patchProjectsLocationsRepositoriesIssuesIssueComments: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesPullRequestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesPullRequestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a pull request. */
 export const patchProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
   PatchProjectsLocationsRepositoriesPullRequestsRequest,
@@ -3931,8 +2954,7 @@ export const patchProjectsLocationsRepositoriesPullRequests: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a pull request comment. */
 export const patchProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
   PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
@@ -3940,16 +2962,14 @@ export const patchProjectsLocationsRepositoriesPullRequestsPullRequestComments: 
   PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
+  input: PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be resolved. */
 export const resolveProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
   ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
@@ -3957,20 +2977,14 @@ export const resolveProjectsLocationsRepositoriesPullRequestsPullRequestComments
   ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
+  input: ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesRequest,
@@ -3985,12 +2999,7 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Set IAM policy on a repository. */
 export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   SetIamPolicyProjectsLocationsRepositoriesRequest,
@@ -4005,12 +3014,7 @@ export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesRequest,
@@ -4025,12 +3029,7 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Test IAM permissions on a repository. IAM permission checks are not required on this method. */
 export const testIamPermissionsProjectsLocationsRepositories: API.OperationMethod<
   TestIamPermissionsProjectsLocationsRepositoriesRequest,
@@ -4045,8 +3044,7 @@ export const testIamPermissionsProjectsLocationsRepositories: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unresolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be unresolved. */
 export const unresolveProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
   UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
@@ -4054,10 +3052,10 @@ export const unresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommen
   UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
+  input: UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

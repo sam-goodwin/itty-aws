@@ -106,8 +106,7 @@ export type CustomTrustStoreCreateResponseStatus =
   | "active"
   | "pending_deletion"
   | "deleted"
-  | "expired"
-  | (string & {});
+  | "expired";
 export const CustomTrustStoreCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -213,8 +212,7 @@ export type CustomTrustStoreGetResponseStatus =
   | "active"
   | "pending_deletion"
   | "deleted"
-  | "expired"
-  | (string & {});
+  | "expired";
 export const CustomTrustStoreGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -274,11 +272,10 @@ export const GetTotalTlRequest = /*@__PURE__*/ S.suspend(() =>
 export type TotalTlsGetResponseCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com"
-  | (string & {});
+  | "ssl_com";
 export const TotalTlsGetResponseCertificateAuthority = /*@__PURE__*/ S.String;
 
-export type TotalTlsGetResponseValidityPeriod = 90 | (number & {});
+export type TotalTlsGetResponseValidityPeriod = 90;
 export const TotalTlsGetResponseValidityPeriod = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -344,8 +341,7 @@ export type CustomTrustStoreListResultItemStatus =
   | "active"
   | "pending_deletion"
   | "deleted"
-  | "expired"
-  | (string & {});
+  | "expired";
 export const CustomTrustStoreListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface CustomTrustStoreListResultItem {
@@ -405,8 +401,7 @@ export const ListCustomTrustStoresResponse = /*@__PURE__*/ S.suspend(() =>
 export type TotalTlsUpdateRequestCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com"
-  | (string & {});
+  | "ssl_com";
 export const TotalTlsUpdateRequestCertificateAuthority = /*@__PURE__*/ S.String;
 
 export interface TotalTlsUpdateRequest {
@@ -415,7 +410,9 @@ export interface TotalTlsUpdateRequest {
   /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled: boolean;
   /** The Certificate Authority that Total TLS certificates will be issued through. */
-  certificateAuthority?: TotalTlsUpdateRequestCertificateAuthority;
+  certificateAuthority?:
+    | TotalTlsUpdateRequestCertificateAuthority
+    | (string & {});
 }
 export const TotalTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -442,12 +439,11 @@ export const TotalTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export type TotalTlsUpdateResponseCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com"
-  | (string & {});
+  | "ssl_com";
 export const TotalTlsUpdateResponseCertificateAuthority =
   /*@__PURE__*/ S.String;
 
-export type TotalTlsUpdateResponseValidityPeriod = 90 | (number & {});
+export type TotalTlsUpdateResponseValidityPeriod = 90;
 export const TotalTlsUpdateResponseValidityPeriod = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -478,8 +474,7 @@ export const TotalTlsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type TotalTlsEditRequestCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com"
-  | (string & {});
+  | "ssl_com";
 export const TotalTlsEditRequestCertificateAuthority = /*@__PURE__*/ S.String;
 
 export interface UpdateTotalTlRequest {
@@ -488,7 +483,9 @@ export interface UpdateTotalTlRequest {
   /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled: boolean;
   /** The Certificate Authority that Total TLS certificates will be issued through. */
-  certificateAuthority?: TotalTlsEditRequestCertificateAuthority;
+  certificateAuthority?:
+    | TotalTlsEditRequestCertificateAuthority
+    | (string & {});
 }
 export const UpdateTotalTlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -515,11 +512,10 @@ export const UpdateTotalTlRequest = /*@__PURE__*/ S.suspend(() =>
 export type TotalTlsEditResponseCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com"
-  | (string & {});
+  | "ssl_com";
 export const TotalTlsEditResponseCertificateAuthority = /*@__PURE__*/ S.String;
 
-export type TotalTlsEditResponseValidityPeriod = 90 | (number & {});
+export type TotalTlsEditResponseValidityPeriod = 90;
 export const TotalTlsEditResponseValidityPeriod = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

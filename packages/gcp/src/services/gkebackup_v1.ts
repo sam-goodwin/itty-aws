@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleLongrunningCancelOperationRequest",
-}) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
+export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleLongrunningCancelOperationRequest" }) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,35 +72,21 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A BackupChannel imposes constraints on where clusters can be backed up. The BackupChannel should be in the same project and region as the cluster being backed up. The backup can be created only in destination_project. */
 export interface BackupChannel {
@@ -126,17 +110,17 @@ export interface BackupChannel {
   labels?: StringMap;
 }
 export const BackupChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    destinationProjectId: S.optional(S.String),
-    destinationProject: S.optional(S.String),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-    etag: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "destinationProjectId": S.optional(S.String),
+  "destinationProject": S.optional(S.String),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "BackupChannel" }) as any as S.Schema<BackupChannel>;
 
 export interface CreateProjectsLocationsBackupChannelsRequest {
@@ -147,33 +131,19 @@ export interface CreateProjectsLocationsBackupChannelsRequest {
   /** Request body */
   body?: BackupChannel;
 }
-export const CreateProjectsLocationsBackupChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      backupChannelId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BackupChannel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/backupChannels",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsBackupChannelsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsBackupChannelsRequest>;
+export const CreateProjectsLocationsBackupChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "backupChannelId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BackupChannel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/backupChannels","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBackupChannelsRequest" }) as any as S.Schema<CreateProjectsLocationsBackupChannelsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -185,14 +155,12 @@ export interface GoogleRpcStatus {
   details?: DocumentMapList;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-  }),
-).annotate({
-  identifier: "GoogleRpcStatus",
-}) as any as S.Schema<GoogleRpcStatus>;
+S.Struct({
+  "message": S.optional(S.String),
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+}),
+).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
@@ -208,26 +176,16 @@ export interface GoogleLongrunningOperation {
   metadata?: DocumentMap;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(GoogleRpcStatus),
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-    metadata: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "GoogleLongrunningOperation",
-}) as any as S.Schema<GoogleLongrunningOperation>;
+S.Struct({
+  "error": S.optional(GoogleRpcStatus),
+  "response": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+  "metadata": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "GoogleLongrunningOperation" }) as any as S.Schema<GoogleLongrunningOperation>;
 
-export type BackupPlanStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CLUSTER_PENDING"
-  | "PROVISIONING"
-  | "READY"
-  | "FAILED"
-  | "DEACTIVATED"
-  | "DELETING"
-  | (string & {});
+export type BackupPlanStateEnum = "STATE_UNSPECIFIED" | "CLUSTER_PENDING" | "PROVISIONING" | "READY" | "FAILED" | "DEACTIVATED" | "DELETING";
 export const BackupPlanStateEnum = /*@__PURE__*/ S.String;
 
 /** Defined a customer managed encryption key that will be used to encrypt Backup artifacts. */
@@ -236,15 +194,13 @@ export interface EncryptionKey {
   gcpKmsEncryptionKey?: string;
 }
 export const EncryptionKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcpKmsEncryptionKey: S.optional(S.String),
-  }),
+S.Struct({
+  "gcpKmsEncryptionKey": S.optional(S.String),
+}),
 ).annotate({ identifier: "EncryptionKey" }) as any as S.Schema<EncryptionKey>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A list of Kubernetes Namespaces. */
 export interface Namespaces {
@@ -252,9 +208,9 @@ export interface Namespaces {
   namespaces?: StringList;
 }
 export const Namespaces = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespaces: S.optional(StringList),
-  }),
+S.Struct({
+  "namespaces": S.optional(StringList),
+}),
 ).annotate({ identifier: "Namespaces" }) as any as S.Schema<Namespaces>;
 
 /** A reference to a namespaced resource in Kubernetes. */
@@ -265,16 +221,14 @@ export interface NamespacedName {
   name?: string;
 }
 export const NamespacedName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "namespace": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "NamespacedName" }) as any as S.Schema<NamespacedName>;
 
 export type NamespacedNameList = ReadonlyArray<NamespacedName>;
-export const NamespacedNameList = /*@__PURE__*/ S.Array(
-  NamespacedName,
-) as any as S.Schema<NamespacedNameList>;
+export const NamespacedNameList = /*@__PURE__*/ S.Array(NamespacedName) as any as S.Schema<NamespacedNameList>;
 
 /** A list of namespaced Kubernetes resources. */
 export interface NamespacedNames {
@@ -282,12 +236,10 @@ export interface NamespacedNames {
   namespacedNames?: NamespacedNameList;
 }
 export const NamespacedNames = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespacedNames: S.optional(NamespacedNameList),
-  }),
-).annotate({
-  identifier: "NamespacedNames",
-}) as any as S.Schema<NamespacedNames>;
+S.Struct({
+  "namespacedNames": S.optional(NamespacedNameList),
+}),
+).annotate({ identifier: "NamespacedNames" }) as any as S.Schema<NamespacedNames>;
 
 /** A single Kubernetes label-value pair. */
 export interface Label {
@@ -297,16 +249,14 @@ export interface Label {
   value?: string;
 }
 export const Label = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type LabelList = ReadonlyArray<Label>;
-export const LabelList = /*@__PURE__*/ S.Array(
-  Label,
-) as any as S.Schema<LabelList>;
+export const LabelList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList>;
 
 /** A list of Kubernetes labels. */
 export interface ResourceLabels {
@@ -314,9 +264,9 @@ export interface ResourceLabels {
   resourceLabels?: LabelList;
 }
 export const ResourceLabels = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceLabels: S.optional(LabelList),
-  }),
+S.Struct({
+  "resourceLabels": S.optional(LabelList),
+}),
 ).annotate({ identifier: "ResourceLabels" }) as any as S.Schema<ResourceLabels>;
 
 /** BackupConfig defines the configuration of Backups created via this BackupPlan. */
@@ -339,16 +289,16 @@ export interface BackupConfig {
   permissiveMode?: boolean;
 }
 export const BackupConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeVolumeData: S.optional(S.Boolean),
-    encryptionKey: S.optional(EncryptionKey),
-    selectedNamespaces: S.optional(Namespaces),
-    includeSecrets: S.optional(S.Boolean),
-    allNamespaces: S.optional(S.Boolean),
-    selectedApplications: S.optional(NamespacedNames),
-    selectedNamespaceLabels: S.optional(ResourceLabels),
-    permissiveMode: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "includeVolumeData": S.optional(S.Boolean),
+  "encryptionKey": S.optional(EncryptionKey),
+  "selectedNamespaces": S.optional(Namespaces),
+  "includeSecrets": S.optional(S.Boolean),
+  "allNamespaces": S.optional(S.Boolean),
+  "selectedApplications": S.optional(NamespacedNames),
+  "selectedNamespaceLabels": S.optional(ResourceLabels),
+  "permissiveMode": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "BackupConfig" }) as any as S.Schema<BackupConfig>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -361,11 +311,11 @@ export interface Gkebackup_Date {
   year?: number;
 }
 export const Gkebackup_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    month: S.optional(S.Number),
-    day: S.optional(S.Number),
-    year: S.optional(S.Number),
-  }),
+S.Struct({
+  "month": S.optional(S.Number),
+  "day": S.optional(S.Number),
+  "year": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Gkebackup_Date" }) as any as S.Schema<Gkebackup_Date>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -380,31 +330,19 @@ export interface TimeOfDay {
   nanos?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    seconds: S.optional(S.Number),
-    hours: S.optional(S.Number),
-    minutes: S.optional(S.Number),
-    nanos: S.optional(S.Number),
-  }),
+S.Struct({
+  "seconds": S.optional(S.Number),
+  "hours": S.optional(S.Number),
+  "minutes": S.optional(S.Number),
+  "nanos": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
-export type DayOfWeekListDaysOfWeekItemEnum =
-  | "DAY_OF_WEEK_UNSPECIFIED"
-  | "MONDAY"
-  | "TUESDAY"
-  | "WEDNESDAY"
-  | "THURSDAY"
-  | "FRIDAY"
-  | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+export type DayOfWeekListDaysOfWeekItemEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
 export const DayOfWeekListDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
-export type DayOfWeekListDaysOfWeekItemEnumList =
-  ReadonlyArray<DayOfWeekListDaysOfWeekItemEnum>;
-export const DayOfWeekListDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
-  DayOfWeekListDaysOfWeekItemEnum,
-) as any as S.Schema<DayOfWeekListDaysOfWeekItemEnumList>;
+export type DayOfWeekListDaysOfWeekItemEnumList = ReadonlyArray<DayOfWeekListDaysOfWeekItemEnum>;
+export const DayOfWeekListDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(DayOfWeekListDaysOfWeekItemEnum) as any as S.Schema<DayOfWeekListDaysOfWeekItemEnumList>;
 
 /** Holds repeated DaysOfWeek values as a container. */
 export interface DayOfWeekList {
@@ -412,9 +350,9 @@ export interface DayOfWeekList {
   daysOfWeek?: DayOfWeekListDaysOfWeekItemEnumList;
 }
 export const DayOfWeekList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daysOfWeek: S.optional(DayOfWeekListDaysOfWeekItemEnumList),
-  }),
+S.Struct({
+  "daysOfWeek": S.optional(DayOfWeekListDaysOfWeekItemEnumList),
+}),
 ).annotate({ identifier: "DayOfWeekList" }) as any as S.Schema<DayOfWeekList>;
 
 /** Defines a time window during which no backup should happen. All time and date are in UTC. */
@@ -431,21 +369,17 @@ export interface ExclusionWindow {
   daysOfWeek?: DayOfWeekList;
 }
 export const ExclusionWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    singleOccurrenceDate: S.optional(Gkebackup_Date),
-    startTime: S.optional(TimeOfDay),
-    duration: S.optional(S.String),
-    daily: S.optional(S.Boolean),
-    daysOfWeek: S.optional(DayOfWeekList),
-  }),
-).annotate({
-  identifier: "ExclusionWindow",
-}) as any as S.Schema<ExclusionWindow>;
+S.Struct({
+  "singleOccurrenceDate": S.optional(Gkebackup_Date),
+  "startTime": S.optional(TimeOfDay),
+  "duration": S.optional(S.String),
+  "daily": S.optional(S.Boolean),
+  "daysOfWeek": S.optional(DayOfWeekList),
+}),
+).annotate({ identifier: "ExclusionWindow" }) as any as S.Schema<ExclusionWindow>;
 
 export type ExclusionWindowList = ReadonlyArray<ExclusionWindow>;
-export const ExclusionWindowList = /*@__PURE__*/ S.Array(
-  ExclusionWindow,
-) as any as S.Schema<ExclusionWindowList>;
+export const ExclusionWindowList = /*@__PURE__*/ S.Array(ExclusionWindow) as any as S.Schema<ExclusionWindowList>;
 
 /** Defines RPO scheduling configuration for automatically creating Backups via this BackupPlan. */
 export interface RpoConfig {
@@ -455,10 +389,10 @@ export interface RpoConfig {
   exclusionWindows?: ExclusionWindowList;
 }
 export const RpoConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetRpoMinutes: S.optional(S.Number),
-    exclusionWindows: S.optional(ExclusionWindowList),
-  }),
+S.Struct({
+  "targetRpoMinutes": S.optional(S.Number),
+  "exclusionWindows": S.optional(ExclusionWindowList),
+}),
 ).annotate({ identifier: "RpoConfig" }) as any as S.Schema<RpoConfig>;
 
 /** Defines scheduling parameters for automatically creating Backups via this BackupPlan. */
@@ -473,12 +407,12 @@ export interface Schedule {
   rpoConfig?: RpoConfig;
 }
 export const Schedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextScheduledBackupTime: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    cronSchedule: S.optional(S.String),
-    rpoConfig: S.optional(RpoConfig),
-  }),
+S.Struct({
+  "nextScheduledBackupTime": S.optional(S.String),
+  "paused": S.optional(S.Boolean),
+  "cronSchedule": S.optional(S.String),
+  "rpoConfig": S.optional(RpoConfig),
+}),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 /** RetentionPolicy defines a Backup retention policy for a BackupPlan. */
@@ -491,14 +425,12 @@ export interface RetentionPolicy {
   backupDeleteLockDays?: number;
 }
 export const RetentionPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backupRetainDays: S.optional(S.Number),
-    locked: S.optional(S.Boolean),
-    backupDeleteLockDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RetentionPolicy",
-}) as any as S.Schema<RetentionPolicy>;
+S.Struct({
+  "backupRetainDays": S.optional(S.Number),
+  "locked": S.optional(S.Boolean),
+  "backupDeleteLockDays": S.optional(S.Number),
+}),
+).annotate({ identifier: "RetentionPolicy" }) as any as S.Schema<RetentionPolicy>;
 
 /** Defines the configuration and scheduling for a "line" of Backups. */
 export interface BackupPlan {
@@ -544,28 +476,28 @@ export interface BackupPlan {
   protectedPodCount?: number;
 }
 export const BackupPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-    state: S.optional(BackupPlanStateEnum),
-    etag: S.optional(S.String),
-    backupConfig: S.optional(BackupConfig),
-    protectedNamespaceCount: S.optional(S.Number),
-    backupSchedule: S.optional(Schedule),
-    description: S.optional(S.String),
-    stateReason: S.optional(S.String),
-    name: S.optional(S.String),
-    cluster: S.optional(S.String),
-    uid: S.optional(S.String),
-    backupChannel: S.optional(S.String),
-    lastSuccessfulBackupTime: S.optional(S.String),
-    rpoRiskReason: S.optional(S.String),
-    retentionPolicy: S.optional(RetentionPolicy),
-    rpoRiskLevel: S.optional(S.Number),
-    updateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    deactivated: S.optional(S.Boolean),
-    protectedPodCount: S.optional(S.Number),
-  }),
+S.Struct({
+  "labels": S.optional(StringMap),
+  "state": S.optional(BackupPlanStateEnum),
+  "etag": S.optional(S.String),
+  "backupConfig": S.optional(BackupConfig),
+  "protectedNamespaceCount": S.optional(S.Number),
+  "backupSchedule": S.optional(Schedule),
+  "description": S.optional(S.String),
+  "stateReason": S.optional(S.String),
+  "name": S.optional(S.String),
+  "cluster": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "backupChannel": S.optional(S.String),
+  "lastSuccessfulBackupTime": S.optional(S.String),
+  "rpoRiskReason": S.optional(S.String),
+  "retentionPolicy": S.optional(RetentionPolicy),
+  "rpoRiskLevel": S.optional(S.Number),
+  "updateTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "deactivated": S.optional(S.Boolean),
+  "protectedPodCount": S.optional(S.Number),
+}),
 ).annotate({ identifier: "BackupPlan" }) as any as S.Schema<BackupPlan>;
 
 export interface CreateProjectsLocationsBackupPlansRequest {
@@ -576,31 +508,15 @@ export interface CreateProjectsLocationsBackupPlansRequest {
   /** Request body */
   body?: BackupPlan;
 }
-export const CreateProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      backupPlanId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BackupPlan.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/backupPlans",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsBackupPlansRequest",
-  }) as any as S.Schema<CreateProjectsLocationsBackupPlansRequest>;
+export const CreateProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "backupPlanId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BackupPlan.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/backupPlans","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBackupPlansRequest" }) as any as S.Schema<CreateProjectsLocationsBackupPlansRequest>;
 
-export type BackupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "IN_PROGRESS"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "DELETING"
-  | (string & {});
+export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | "DELETING";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about the GKE cluster from which this Backup was created. */
@@ -617,16 +533,14 @@ export interface ClusterMetadata {
   cluster?: string;
 }
 export const ClusterMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gkeVersion: S.optional(S.String),
-    k8sVersion: S.optional(S.String),
-    backupCrdVersions: S.optional(StringMap),
-    anthosVersion: S.optional(S.String),
-    cluster: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ClusterMetadata",
-}) as any as S.Schema<ClusterMetadata>;
+S.Struct({
+  "gkeVersion": S.optional(S.String),
+  "k8sVersion": S.optional(S.String),
+  "backupCrdVersions": S.optional(StringMap),
+  "anthosVersion": S.optional(S.String),
+  "cluster": S.optional(S.String),
+}),
+).annotate({ identifier: "ClusterMetadata" }) as any as S.Schema<ClusterMetadata>;
 
 /** Stores information about troubleshooting doc for debugging a particular state of an operation (eg - backup/restore). This will be used by the end user to debug their operation failure scenario easily. */
 export interface TroubleshootingInfo {
@@ -636,13 +550,11 @@ export interface TroubleshootingInfo {
   stateReasonCode?: string;
 }
 export const TroubleshootingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateReasonUri: S.optional(S.String),
-    stateReasonCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TroubleshootingInfo",
-}) as any as S.Schema<TroubleshootingInfo>;
+S.Struct({
+  "stateReasonUri": S.optional(S.String),
+  "stateReasonCode": S.optional(S.String),
+}),
+).annotate({ identifier: "TroubleshootingInfo" }) as any as S.Schema<TroubleshootingInfo>;
 
 /** Represents a request to perform a single point-in-time capture of some portion of the state of a GKE cluster, the record of the backup operation itself, and an anchor for the underlying artifacts that comprise the Backup (the config backup and VolumeBackups). */
 export interface Backup {
@@ -714,41 +626,41 @@ export interface Backup {
   retainExpireTime?: string;
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uid: S.optional(S.String),
-    permissiveMode: S.optional(S.Boolean),
-    selectedNamespaces: S.optional(Namespaces),
-    updateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    selectedNamespaceLabels: S.optional(ResourceLabels),
-    deleteLockExpireTime: S.optional(S.String),
-    podCount: S.optional(S.Number),
-    sizeBytes: S.optional(S.String),
-    state: S.optional(BackupStateEnum),
-    configBackupSizeBytes: S.optional(S.String),
-    allNamespaces: S.optional(S.Boolean),
-    selectedApplications: S.optional(NamespacedNames),
-    namespaceCount: S.optional(S.Number),
-    satisfiesPzi: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    containsVolumeData: S.optional(S.Boolean),
-    clusterMetadata: S.optional(ClusterMetadata),
-    completeTime: S.optional(S.String),
-    manual: S.optional(S.Boolean),
-    retainDays: S.optional(S.Number),
-    containsSecrets: S.optional(S.Boolean),
-    labels: S.optional(StringMap),
-    etag: S.optional(S.String),
-    satisfiesPzs: S.optional(S.Boolean),
-    encryptionKey: S.optional(EncryptionKey),
-    resourceCount: S.optional(S.Number),
-    volumeCount: S.optional(S.Number),
-    deleteLockDays: S.optional(S.Number),
-    troubleshootingInfo: S.optional(TroubleshootingInfo),
-    description: S.optional(S.String),
-    stateReason: S.optional(S.String),
-    retainExpireTime: S.optional(S.String),
-  }),
+S.Struct({
+  "uid": S.optional(S.String),
+  "permissiveMode": S.optional(S.Boolean),
+  "selectedNamespaces": S.optional(Namespaces),
+  "updateTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "selectedNamespaceLabels": S.optional(ResourceLabels),
+  "deleteLockExpireTime": S.optional(S.String),
+  "podCount": S.optional(S.Number),
+  "sizeBytes": S.optional(S.String),
+  "state": S.optional(BackupStateEnum),
+  "configBackupSizeBytes": S.optional(S.String),
+  "allNamespaces": S.optional(S.Boolean),
+  "selectedApplications": S.optional(NamespacedNames),
+  "namespaceCount": S.optional(S.Number),
+  "satisfiesPzi": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "containsVolumeData": S.optional(S.Boolean),
+  "clusterMetadata": S.optional(ClusterMetadata),
+  "completeTime": S.optional(S.String),
+  "manual": S.optional(S.Boolean),
+  "retainDays": S.optional(S.Number),
+  "containsSecrets": S.optional(S.Boolean),
+  "labels": S.optional(StringMap),
+  "etag": S.optional(S.String),
+  "satisfiesPzs": S.optional(S.Boolean),
+  "encryptionKey": S.optional(EncryptionKey),
+  "resourceCount": S.optional(S.Number),
+  "volumeCount": S.optional(S.Number),
+  "deleteLockDays": S.optional(S.Number),
+  "troubleshootingInfo": S.optional(TroubleshootingInfo),
+  "description": S.optional(S.String),
+  "stateReason": S.optional(S.String),
+  "retainExpireTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 export interface CreateProjectsLocationsBackupPlansBackupsRequest {
@@ -759,22 +671,13 @@ export interface CreateProjectsLocationsBackupPlansBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const CreateProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      backupId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Backup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/backups",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsBackupPlansBackupsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsBackupPlansBackupsRequest>;
+export const CreateProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "backupId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Backup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/backups","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBackupPlansBackupsRequest" }) as any as S.Schema<CreateProjectsLocationsBackupPlansBackupsRequest>;
 
 /** A RestoreChannel imposes constraints on where backups can be restored. The RestoreChannel should be in the same project and region as the backups. The backups can only be restored in the `destination_project`. */
 export interface RestoreChannel {
@@ -798,17 +701,17 @@ export interface RestoreChannel {
   createTime?: string;
 }
 export const RestoreChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    labels: S.optional(StringMap),
-    description: S.optional(S.String),
-    destinationProjectId: S.optional(S.String),
-    destinationProject: S.optional(S.String),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "description": S.optional(S.String),
+  "destinationProjectId": S.optional(S.String),
+  "destinationProject": S.optional(S.String),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "RestoreChannel" }) as any as S.Schema<RestoreChannel>;
 
 export interface CreateProjectsLocationsRestoreChannelsRequest {
@@ -819,41 +722,19 @@ export interface CreateProjectsLocationsRestoreChannelsRequest {
   /** Request body */
   body?: RestoreChannel;
 }
-export const CreateProjectsLocationsRestoreChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      restoreChannelId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RestoreChannel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/restoreChannels",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRestoreChannelsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRestoreChannelsRequest>;
+export const CreateProjectsLocationsRestoreChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "restoreChannelId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(RestoreChannel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/restoreChannels","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRestoreChannelsRequest" }) as any as S.Schema<CreateProjectsLocationsRestoreChannelsRequest>;
 
-export type RestoreConfigNamespacedResourceRestoreModeEnum =
-  | "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED"
-  | "DELETE_AND_RESTORE"
-  | "FAIL_ON_CONFLICT"
-  | "MERGE_SKIP_ON_CONFLICT"
-  | "MERGE_REPLACE_VOLUME_ON_CONFLICT"
-  | "MERGE_REPLACE_ON_CONFLICT"
-  | (string & {});
-export const RestoreConfigNamespacedResourceRestoreModeEnum =
-  /*@__PURE__*/ S.String;
+export type RestoreConfigNamespacedResourceRestoreModeEnum = "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED" | "DELETE_AND_RESTORE" | "FAIL_ON_CONFLICT" | "MERGE_SKIP_ON_CONFLICT" | "MERGE_REPLACE_VOLUME_ON_CONFLICT" | "MERGE_REPLACE_ON_CONFLICT";
+export const RestoreConfigNamespacedResourceRestoreModeEnum = /*@__PURE__*/ S.String;
 
-export type RestoreConfigClusterResourceConflictPolicyEnum =
-  | "CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED"
-  | "USE_EXISTING_VERSION"
-  | "USE_BACKUP_VERSION"
-  | (string & {});
-export const RestoreConfigClusterResourceConflictPolicyEnum =
-  /*@__PURE__*/ S.String;
+export type RestoreConfigClusterResourceConflictPolicyEnum = "CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED" | "USE_EXISTING_VERSION" | "USE_BACKUP_VERSION";
+export const RestoreConfigClusterResourceConflictPolicyEnum = /*@__PURE__*/ S.String;
 
 /** This is a direct map to the Kubernetes GroupKind type [GroupKind](https://godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind) and is used for identifying specific "types" of resources to restore. */
 export interface GroupKind {
@@ -863,16 +744,14 @@ export interface GroupKind {
   resourceKind?: string;
 }
 export const GroupKind = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceGroup: S.optional(S.String),
-    resourceKind: S.optional(S.String),
-  }),
+S.Struct({
+  "resourceGroup": S.optional(S.String),
+  "resourceKind": S.optional(S.String),
+}),
 ).annotate({ identifier: "GroupKind" }) as any as S.Schema<GroupKind>;
 
 export type GroupKindList = ReadonlyArray<GroupKind>;
-export const GroupKindList = /*@__PURE__*/ S.Array(
-  GroupKind,
-) as any as S.Schema<GroupKindList>;
+export const GroupKindList = /*@__PURE__*/ S.Array(GroupKind) as any as S.Schema<GroupKindList>;
 
 /** Defines the scope of cluster-scoped resources to restore. Some group kinds are not reasonable choices for a restore, and will cause an error if selected here. Any scope selection that would restore "all valid" resources automatically excludes these group kinds. - Node - ComponentStatus - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob - metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState - migration.k8s.io/StorageVersionMigration - snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode - storage.k8s.io/VolumeAttachment Some group kinds are driven by restore configuration elsewhere, and will cause an error if selected here. - Namespace - PersistentVolume */
 export interface ClusterResourceRestoreScope {
@@ -886,15 +765,13 @@ export interface ClusterResourceRestoreScope {
   allGroupKinds?: boolean;
 }
 export const ClusterResourceRestoreScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selectedGroupKinds: S.optional(GroupKindList),
-    noGroupKinds: S.optional(S.Boolean),
-    excludedGroupKinds: S.optional(GroupKindList),
-    allGroupKinds: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClusterResourceRestoreScope",
-}) as any as S.Schema<ClusterResourceRestoreScope>;
+S.Struct({
+  "selectedGroupKinds": S.optional(GroupKindList),
+  "noGroupKinds": S.optional(S.Boolean),
+  "excludedGroupKinds": S.optional(GroupKindList),
+  "allGroupKinds": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ClusterResourceRestoreScope" }) as any as S.Schema<ClusterResourceRestoreScope>;
 
 /** A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to substitution) and substitution logic. */
 export interface SubstitutionRule {
@@ -910,21 +787,17 @@ export interface SubstitutionRule {
   newValue?: string;
 }
 export const SubstitutionRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetGroupKinds: S.optional(GroupKindList),
-    targetJsonPath: S.optional(S.String),
-    originalValuePattern: S.optional(S.String),
-    targetNamespaces: S.optional(StringList),
-    newValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubstitutionRule",
-}) as any as S.Schema<SubstitutionRule>;
+S.Struct({
+  "targetGroupKinds": S.optional(GroupKindList),
+  "targetJsonPath": S.optional(S.String),
+  "originalValuePattern": S.optional(S.String),
+  "targetNamespaces": S.optional(StringList),
+  "newValue": S.optional(S.String),
+}),
+).annotate({ identifier: "SubstitutionRule" }) as any as S.Schema<SubstitutionRule>;
 
 export type SubstitutionRuleList = ReadonlyArray<SubstitutionRule>;
-export const SubstitutionRuleList = /*@__PURE__*/ S.Array(
-  SubstitutionRule,
-) as any as S.Schema<SubstitutionRuleList>;
+export const SubstitutionRuleList = /*@__PURE__*/ S.Array(SubstitutionRule) as any as S.Schema<SubstitutionRuleList>;
 
 /** ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup. */
 export interface ResourceFilter {
@@ -936,22 +809,14 @@ export interface ResourceFilter {
   groupKinds?: GroupKindList;
 }
 export const ResourceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespaces: S.optional(StringList),
-    jsonPath: S.optional(S.String),
-    groupKinds: S.optional(GroupKindList),
-  }),
+S.Struct({
+  "namespaces": S.optional(StringList),
+  "jsonPath": S.optional(S.String),
+  "groupKinds": S.optional(GroupKindList),
+}),
 ).annotate({ identifier: "ResourceFilter" }) as any as S.Schema<ResourceFilter>;
 
-export type TransformationRuleActionOpEnum =
-  | "OP_UNSPECIFIED"
-  | "REMOVE"
-  | "MOVE"
-  | "COPY"
-  | "ADD"
-  | "TEST"
-  | "REPLACE"
-  | (string & {});
+export type TransformationRuleActionOpEnum = "OP_UNSPECIFIED" | "REMOVE" | "MOVE" | "COPY" | "ADD" | "TEST" | "REPLACE";
 export const TransformationRuleActionOpEnum = /*@__PURE__*/ S.String;
 
 /** TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902) */
@@ -966,21 +831,16 @@ export interface TransformationRuleAction {
   value?: string;
 }
 export const TransformationRuleAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    op: S.optional(TransformationRuleActionOpEnum),
-    path: S.optional(S.String),
-    fromPath: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TransformationRuleAction",
-}) as any as S.Schema<TransformationRuleAction>;
+S.Struct({
+  "op": S.optional(TransformationRuleActionOpEnum),
+  "path": S.optional(S.String),
+  "fromPath": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "TransformationRuleAction" }) as any as S.Schema<TransformationRuleAction>;
 
-export type TransformationRuleActionList =
-  ReadonlyArray<TransformationRuleAction>;
-export const TransformationRuleActionList = /*@__PURE__*/ S.Array(
-  TransformationRuleAction,
-) as any as S.Schema<TransformationRuleActionList>;
+export type TransformationRuleActionList = ReadonlyArray<TransformationRuleAction>;
+export const TransformationRuleActionList = /*@__PURE__*/ S.Array(TransformationRuleAction) as any as S.Schema<TransformationRuleActionList>;
 
 /** A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic. */
 export interface TransformationRule {
@@ -992,19 +852,15 @@ export interface TransformationRule {
   fieldActions?: TransformationRuleActionList;
 }
 export const TransformationRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    resourceFilter: S.optional(ResourceFilter),
-    fieldActions: S.optional(TransformationRuleActionList),
-  }),
-).annotate({
-  identifier: "TransformationRule",
-}) as any as S.Schema<TransformationRule>;
+S.Struct({
+  "description": S.optional(S.String),
+  "resourceFilter": S.optional(ResourceFilter),
+  "fieldActions": S.optional(TransformationRuleActionList),
+}),
+).annotate({ identifier: "TransformationRule" }) as any as S.Schema<TransformationRule>;
 
 export type TransformationRuleList = ReadonlyArray<TransformationRule>;
-export const TransformationRuleList = /*@__PURE__*/ S.Array(
-  TransformationRule,
-) as any as S.Schema<TransformationRuleList>;
+export const TransformationRuleList = /*@__PURE__*/ S.Array(TransformationRule) as any as S.Schema<TransformationRuleList>;
 
 /** Defines a dependency between two group kinds. */
 export interface GroupKindDependency {
@@ -1014,18 +870,14 @@ export interface GroupKindDependency {
   requiring?: GroupKind;
 }
 export const GroupKindDependency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    satisfying: S.optional(GroupKind),
-    requiring: S.optional(GroupKind),
-  }),
-).annotate({
-  identifier: "GroupKindDependency",
-}) as any as S.Schema<GroupKindDependency>;
+S.Struct({
+  "satisfying": S.optional(GroupKind),
+  "requiring": S.optional(GroupKind),
+}),
+).annotate({ identifier: "GroupKindDependency" }) as any as S.Schema<GroupKindDependency>;
 
 export type GroupKindDependencyList = ReadonlyArray<GroupKindDependency>;
-export const GroupKindDependencyList = /*@__PURE__*/ S.Array(
-  GroupKindDependency,
-) as any as S.Schema<GroupKindDependencyList>;
+export const GroupKindDependencyList = /*@__PURE__*/ S.Array(GroupKindDependency) as any as S.Schema<GroupKindDependencyList>;
 
 /** Allows customers to specify dependencies between resources that Backup for GKE can use to compute a resasonable restore order. */
 export interface RestoreOrder {
@@ -1033,33 +885,19 @@ export interface RestoreOrder {
   groupKindDependencies?: GroupKindDependencyList;
 }
 export const RestoreOrder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKindDependencies: S.optional(GroupKindDependencyList),
-  }),
+S.Struct({
+  "groupKindDependencies": S.optional(GroupKindDependencyList),
+}),
 ).annotate({ identifier: "RestoreOrder" }) as any as S.Schema<RestoreOrder>;
 
-export type RestoreConfigVolumeDataRestorePolicyEnum =
-  | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
-  | "RESTORE_VOLUME_DATA_FROM_BACKUP"
-  | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
-  | "NO_VOLUME_DATA_RESTORATION"
-  | (string & {});
+export type RestoreConfigVolumeDataRestorePolicyEnum = "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED" | "RESTORE_VOLUME_DATA_FROM_BACKUP" | "REUSE_VOLUME_HANDLE_FROM_BACKUP" | "NO_VOLUME_DATA_RESTORATION";
 export const RestoreConfigVolumeDataRestorePolicyEnum = /*@__PURE__*/ S.String;
 
-export type VolumeDataRestorePolicyBindingPolicyEnum =
-  | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
-  | "RESTORE_VOLUME_DATA_FROM_BACKUP"
-  | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
-  | "NO_VOLUME_DATA_RESTORATION"
-  | (string & {});
+export type VolumeDataRestorePolicyBindingPolicyEnum = "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED" | "RESTORE_VOLUME_DATA_FROM_BACKUP" | "REUSE_VOLUME_HANDLE_FROM_BACKUP" | "NO_VOLUME_DATA_RESTORATION";
 export const VolumeDataRestorePolicyBindingPolicyEnum = /*@__PURE__*/ S.String;
 
-export type VolumeDataRestorePolicyBindingVolumeTypeEnum =
-  | "VOLUME_TYPE_UNSPECIFIED"
-  | "GCE_PERSISTENT_DISK"
-  | (string & {});
-export const VolumeDataRestorePolicyBindingVolumeTypeEnum =
-  /*@__PURE__*/ S.String;
+export type VolumeDataRestorePolicyBindingVolumeTypeEnum = "VOLUME_TYPE_UNSPECIFIED" | "GCE_PERSISTENT_DISK";
+export const VolumeDataRestorePolicyBindingVolumeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Binds resources in the scope to the given VolumeDataRestorePolicy. */
 export interface VolumeDataRestorePolicyBinding {
@@ -1069,19 +907,14 @@ export interface VolumeDataRestorePolicyBinding {
   volumeType?: VolumeDataRestorePolicyBindingVolumeTypeEnum;
 }
 export const VolumeDataRestorePolicyBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(VolumeDataRestorePolicyBindingPolicyEnum),
-    volumeType: S.optional(VolumeDataRestorePolicyBindingVolumeTypeEnum),
-  }),
-).annotate({
-  identifier: "VolumeDataRestorePolicyBinding",
-}) as any as S.Schema<VolumeDataRestorePolicyBinding>;
+S.Struct({
+  "policy": S.optional(VolumeDataRestorePolicyBindingPolicyEnum),
+  "volumeType": S.optional(VolumeDataRestorePolicyBindingVolumeTypeEnum),
+}),
+).annotate({ identifier: "VolumeDataRestorePolicyBinding" }) as any as S.Schema<VolumeDataRestorePolicyBinding>;
 
-export type VolumeDataRestorePolicyBindingList =
-  ReadonlyArray<VolumeDataRestorePolicyBinding>;
-export const VolumeDataRestorePolicyBindingList = /*@__PURE__*/ S.Array(
-  VolumeDataRestorePolicyBinding,
-) as any as S.Schema<VolumeDataRestorePolicyBindingList>;
+export type VolumeDataRestorePolicyBindingList = ReadonlyArray<VolumeDataRestorePolicyBinding>;
+export const VolumeDataRestorePolicyBindingList = /*@__PURE__*/ S.Array(VolumeDataRestorePolicyBinding) as any as S.Schema<VolumeDataRestorePolicyBindingList>;
 
 /** Configuration of a restore. */
 export interface RestoreConfig {
@@ -1113,38 +946,24 @@ export interface RestoreConfig {
   selectedApplications?: NamespacedNames;
 }
 export const RestoreConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespacedResourceRestoreMode: S.optional(
-      RestoreConfigNamespacedResourceRestoreModeEnum,
-    ),
-    selectedNamespaces: S.optional(Namespaces),
-    clusterResourceConflictPolicy: S.optional(
-      RestoreConfigClusterResourceConflictPolicyEnum,
-    ),
-    clusterResourceRestoreScope: S.optional(ClusterResourceRestoreScope),
-    substitutionRules: S.optional(SubstitutionRuleList),
-    transformationRules: S.optional(TransformationRuleList),
-    restoreOrder: S.optional(RestoreOrder),
-    noNamespaces: S.optional(S.Boolean),
-    volumeDataRestorePolicy: S.optional(
-      RestoreConfigVolumeDataRestorePolicyEnum,
-    ),
-    excludedNamespaces: S.optional(Namespaces),
-    volumeDataRestorePolicyBindings: S.optional(
-      VolumeDataRestorePolicyBindingList,
-    ),
-    allNamespaces: S.optional(S.Boolean),
-    selectedApplications: S.optional(NamespacedNames),
-  }),
+S.Struct({
+  "namespacedResourceRestoreMode": S.optional(RestoreConfigNamespacedResourceRestoreModeEnum),
+  "selectedNamespaces": S.optional(Namespaces),
+  "clusterResourceConflictPolicy": S.optional(RestoreConfigClusterResourceConflictPolicyEnum),
+  "clusterResourceRestoreScope": S.optional(ClusterResourceRestoreScope),
+  "substitutionRules": S.optional(SubstitutionRuleList),
+  "transformationRules": S.optional(TransformationRuleList),
+  "restoreOrder": S.optional(RestoreOrder),
+  "noNamespaces": S.optional(S.Boolean),
+  "volumeDataRestorePolicy": S.optional(RestoreConfigVolumeDataRestorePolicyEnum),
+  "excludedNamespaces": S.optional(Namespaces),
+  "volumeDataRestorePolicyBindings": S.optional(VolumeDataRestorePolicyBindingList),
+  "allNamespaces": S.optional(S.Boolean),
+  "selectedApplications": S.optional(NamespacedNames),
+}),
 ).annotate({ identifier: "RestoreConfig" }) as any as S.Schema<RestoreConfig>;
 
-export type RestorePlanStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CLUSTER_PENDING"
-  | "READY"
-  | "FAILED"
-  | "DELETING"
-  | (string & {});
+export type RestorePlanStateEnum = "STATE_UNSPECIFIED" | "CLUSTER_PENDING" | "READY" | "FAILED" | "DELETING";
 export const RestorePlanStateEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of a potential series of Restore operations to be performed against Backups belong to a particular BackupPlan. */
@@ -1177,21 +996,21 @@ export interface RestorePlan {
   state?: RestorePlanStateEnum;
 }
 export const RestorePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    restoreChannel: S.optional(S.String),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    stateReason: S.optional(S.String),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    cluster: S.optional(S.String),
-    backupPlan: S.optional(S.String),
-    restoreConfig: S.optional(RestoreConfig),
-    etag: S.optional(S.String),
-    labels: S.optional(StringMap),
-    state: S.optional(RestorePlanStateEnum),
-  }),
+S.Struct({
+  "restoreChannel": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "stateReason": S.optional(S.String),
+  "description": S.optional(S.String),
+  "name": S.optional(S.String),
+  "cluster": S.optional(S.String),
+  "backupPlan": S.optional(S.String),
+  "restoreConfig": S.optional(RestoreConfig),
+  "etag": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "state": S.optional(RestorePlanStateEnum),
+}),
 ).annotate({ identifier: "RestorePlan" }) as any as S.Schema<RestorePlan>;
 
 export interface CreateProjectsLocationsRestorePlansRequest {
@@ -1202,40 +1021,18 @@ export interface CreateProjectsLocationsRestorePlansRequest {
   /** Request body */
   body?: RestorePlan;
 }
-export const CreateProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      restorePlanId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RestorePlan.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/restorePlans",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRestorePlansRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRestorePlansRequest>;
+export const CreateProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "restorePlanId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(RestorePlan.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/restorePlans","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRestorePlansRequest" }) as any as S.Schema<CreateProjectsLocationsRestorePlansRequest>;
 
-export type RestoreStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "IN_PROGRESS"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "DELETING"
-  | "VALIDATING"
-  | (string & {});
+export type RestoreStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | "DELETING" | "VALIDATING";
 export const RestoreStateEnum = /*@__PURE__*/ S.String;
 
-export type VolumeDataRestorePolicyOverridePolicyEnum =
-  | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
-  | "RESTORE_VOLUME_DATA_FROM_BACKUP"
-  | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
-  | "NO_VOLUME_DATA_RESTORATION"
-  | (string & {});
+export type VolumeDataRestorePolicyOverridePolicyEnum = "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED" | "RESTORE_VOLUME_DATA_FROM_BACKUP" | "REUSE_VOLUME_HANDLE_FROM_BACKUP" | "NO_VOLUME_DATA_RESTORATION";
 export const VolumeDataRestorePolicyOverridePolicyEnum = /*@__PURE__*/ S.String;
 
 /** Defines an override to apply a VolumeDataRestorePolicy for scoped resources. */
@@ -1246,19 +1043,14 @@ export interface VolumeDataRestorePolicyOverride {
   selectedPvcs?: NamespacedNames;
 }
 export const VolumeDataRestorePolicyOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(VolumeDataRestorePolicyOverridePolicyEnum),
-    selectedPvcs: S.optional(NamespacedNames),
-  }),
-).annotate({
-  identifier: "VolumeDataRestorePolicyOverride",
-}) as any as S.Schema<VolumeDataRestorePolicyOverride>;
+S.Struct({
+  "policy": S.optional(VolumeDataRestorePolicyOverridePolicyEnum),
+  "selectedPvcs": S.optional(NamespacedNames),
+}),
+).annotate({ identifier: "VolumeDataRestorePolicyOverride" }) as any as S.Schema<VolumeDataRestorePolicyOverride>;
 
-export type VolumeDataRestorePolicyOverrideList =
-  ReadonlyArray<VolumeDataRestorePolicyOverride>;
-export const VolumeDataRestorePolicyOverrideList = /*@__PURE__*/ S.Array(
-  VolumeDataRestorePolicyOverride,
-) as any as S.Schema<VolumeDataRestorePolicyOverrideList>;
+export type VolumeDataRestorePolicyOverrideList = ReadonlyArray<VolumeDataRestorePolicyOverride>;
+export const VolumeDataRestorePolicyOverrideList = /*@__PURE__*/ S.Array(VolumeDataRestorePolicyOverride) as any as S.Schema<VolumeDataRestorePolicyOverrideList>;
 
 /** Defines a selector to identify a single or a group of resources. Conditions in the selector are optional, but at least one field should be set to a non-empty value. If a condition is not specified, no restrictions will be applied on that dimension. If more than one condition is specified, a resource will be selected if and only if all conditions are met. */
 export interface ResourceSelector {
@@ -1272,20 +1064,16 @@ export interface ResourceSelector {
   labels?: StringMap;
 }
 export const ResourceSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKind: S.optional(GroupKind),
-    namespace: S.optional(S.String),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "ResourceSelector",
-}) as any as S.Schema<ResourceSelector>;
+S.Struct({
+  "groupKind": S.optional(GroupKind),
+  "namespace": S.optional(S.String),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
+).annotate({ identifier: "ResourceSelector" }) as any as S.Schema<ResourceSelector>;
 
 export type ResourceSelectorList = ReadonlyArray<ResourceSelector>;
-export const ResourceSelectorList = /*@__PURE__*/ S.Array(
-  ResourceSelector,
-) as any as S.Schema<ResourceSelectorList>;
+export const ResourceSelectorList = /*@__PURE__*/ S.Array(ResourceSelector) as any as S.Schema<ResourceSelectorList>;
 
 /** Defines the filter for `Restore`. This filter can be used to further refine the resource selection of the `Restore` beyond the coarse-grained scope defined in the `RestorePlan`. `exclusion_filters` take precedence over `inclusion_filters`. If a resource matches both `inclusion_filters` and `exclusion_filters`, it will not be restored. */
 export interface Filter {
@@ -1295,10 +1083,10 @@ export interface Filter {
   exclusionFilters?: ResourceSelectorList;
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inclusionFilters: S.optional(ResourceSelectorList),
-    exclusionFilters: S.optional(ResourceSelectorList),
-  }),
+S.Struct({
+  "inclusionFilters": S.optional(ResourceSelectorList),
+  "exclusionFilters": S.optional(ResourceSelectorList),
+}),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 /** Represents both a request to Restore some portion of a Backup into a target GKE cluster and a record of the restore operation itself. */
@@ -1345,30 +1133,28 @@ export interface Restore {
   resourcesFailedCount?: number;
 }
 export const Restore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourcesExcludedCount: S.optional(S.Number),
-    etag: S.optional(S.String),
-    labels: S.optional(StringMap),
-    state: S.optional(RestoreStateEnum),
-    name: S.optional(S.String),
-    cluster: S.optional(S.String),
-    restoreConfig: S.optional(RestoreConfig),
-    stateReason: S.optional(S.String),
-    description: S.optional(S.String),
-    troubleshootingInfo: S.optional(TroubleshootingInfo),
-    updateTime: S.optional(S.String),
-    volumeDataRestorePolicyOverrides: S.optional(
-      VolumeDataRestorePolicyOverrideList,
-    ),
-    completeTime: S.optional(S.String),
-    volumesRestoredCount: S.optional(S.Number),
-    uid: S.optional(S.String),
-    backup: S.optional(S.String),
-    filter: S.optional(Filter),
-    resourcesRestoredCount: S.optional(S.Number),
-    createTime: S.optional(S.String),
-    resourcesFailedCount: S.optional(S.Number),
-  }),
+S.Struct({
+  "resourcesExcludedCount": S.optional(S.Number),
+  "etag": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "state": S.optional(RestoreStateEnum),
+  "name": S.optional(S.String),
+  "cluster": S.optional(S.String),
+  "restoreConfig": S.optional(RestoreConfig),
+  "stateReason": S.optional(S.String),
+  "description": S.optional(S.String),
+  "troubleshootingInfo": S.optional(TroubleshootingInfo),
+  "updateTime": S.optional(S.String),
+  "volumeDataRestorePolicyOverrides": S.optional(VolumeDataRestorePolicyOverrideList),
+  "completeTime": S.optional(S.String),
+  "volumesRestoredCount": S.optional(S.Number),
+  "uid": S.optional(S.String),
+  "backup": S.optional(S.String),
+  "filter": S.optional(Filter),
+  "resourcesRestoredCount": S.optional(S.Number),
+  "createTime": S.optional(S.String),
+  "resourcesFailedCount": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Restore" }) as any as S.Schema<Restore>;
 
 export interface CreateProjectsLocationsRestorePlansRestoresRequest {
@@ -1379,22 +1165,13 @@ export interface CreateProjectsLocationsRestorePlansRestoresRequest {
   /** Request body */
   body?: Restore;
 }
-export const CreateProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      restoreId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Restore.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/restores",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRestorePlansRestoresRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRestorePlansRestoresRequest>;
+export const CreateProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "restoreId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Restore.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/restores","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRestorePlansRestoresRequest" }) as any as S.Schema<CreateProjectsLocationsRestorePlansRestoresRequest>;
 
 export interface DeleteProjectsLocationsBackupChannelsRequest {
   /** Required. Fully qualified BackupChannel name. Format: `projects/*\/locations/*\/backupChannels/*` */
@@ -1404,22 +1181,13 @@ export interface DeleteProjectsLocationsBackupChannelsRequest {
   /** Optional. If set to true, any BackupPlanAssociations below this BackupChannel will also be deleted. Otherwise, the request will only succeed if the BackupChannel has no BackupPlanAssociations. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsBackupChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsBackupChannelsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsBackupChannelsRequest>;
+export const DeleteProjectsLocationsBackupChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBackupChannelsRequest" }) as any as S.Schema<DeleteProjectsLocationsBackupChannelsRequest>;
 
 export interface DeleteProjectsLocationsBackupPlansRequest {
   /** Required. Fully qualified BackupPlan name. Format: `projects/*\/locations/*\/backupPlans/*` */
@@ -1427,21 +1195,12 @@ export interface DeleteProjectsLocationsBackupPlansRequest {
   /** Optional. If provided, this value must match the current value of the target BackupPlan's etag field or the request is rejected. */
   etag?: string;
 }
-export const DeleteProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsBackupPlansRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsBackupPlansRequest>;
+export const DeleteProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBackupPlansRequest" }) as any as S.Schema<DeleteProjectsLocationsBackupPlansRequest>;
 
 export interface DeleteProjectsLocationsBackupPlansBackupsRequest {
   /** Required. Name of the Backup resource. Format: `projects/*\/locations/*\/backupPlans/*\/backups/*` */
@@ -1451,41 +1210,23 @@ export interface DeleteProjectsLocationsBackupPlansBackupsRequest {
   /** Optional. If set to true, any VolumeBackups below this Backup will also be deleted. Otherwise, the request will only succeed if the Backup has no VolumeBackups. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsBackupPlansBackupsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsBackupPlansBackupsRequest>;
+export const DeleteProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBackupPlansBackupsRequest" }) as any as S.Schema<DeleteProjectsLocationsBackupPlansBackupsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsRestoreChannelsRequest {
   /** Required. Fully qualified RestoreChannel name. Format: `projects/*\/locations/*\/restoreChannels/*` */
@@ -1493,21 +1234,12 @@ export interface DeleteProjectsLocationsRestoreChannelsRequest {
   /** Optional. If provided, this value must match the current value of the target RestoreChannel's etag field or the request is rejected. */
   etag?: string;
 }
-export const DeleteProjectsLocationsRestoreChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRestoreChannelsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRestoreChannelsRequest>;
+export const DeleteProjectsLocationsRestoreChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRestoreChannelsRequest" }) as any as S.Schema<DeleteProjectsLocationsRestoreChannelsRequest>;
 
 export interface DeleteProjectsLocationsRestorePlansRequest {
   /** Optional. If provided, this value must match the current value of the target RestorePlan's etag field or the request is rejected. */
@@ -1517,22 +1249,13 @@ export interface DeleteProjectsLocationsRestorePlansRequest {
   /** Required. Fully qualified RestorePlan name. Format: `projects/*\/locations/*\/restorePlans/*` */
   name: string;
 }
-export const DeleteProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      etag: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRestorePlansRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRestorePlansRequest>;
+export const DeleteProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRestorePlansRequest" }) as any as S.Schema<DeleteProjectsLocationsRestorePlansRequest>;
 
 export interface DeleteProjectsLocationsRestorePlansRestoresRequest {
   /** Required. Full name of the Restore Format: `projects/*\/locations/*\/restorePlans/*\/restores/*` */
@@ -1542,42 +1265,23 @@ export interface DeleteProjectsLocationsRestorePlansRestoresRequest {
   /** Optional. If set to true, any VolumeRestores below this restore will also be deleted. Otherwise, the request will only succeed if the restore has no VolumeRestores. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRestorePlansRestoresRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRestorePlansRestoresRequest>;
+export const DeleteProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRestorePlansRestoresRequest" }) as any as S.Schema<DeleteProjectsLocationsRestorePlansRestoresRequest>;
 
 export interface GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest {
   /** Required. Full name of Backup resource. Format: projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup} */
   backup: string;
 }
-export const GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      backup: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+backup}:getBackupIndexDownloadUrl",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest",
-  }) as any as S.Schema<GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest>;
+export const GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "backup": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+backup}:getBackupIndexDownloadUrl","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest" }) as any as S.Schema<GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest>;
 
 /** Response message for GetBackupIndexDownloadUrl. */
 export interface GetBackupIndexDownloadUrlResponse {
@@ -1585,12 +1289,10 @@ export interface GetBackupIndexDownloadUrlResponse {
   signedUrl?: string;
 }
 export const GetBackupIndexDownloadUrlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signedUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetBackupIndexDownloadUrlResponse",
-}) as any as S.Schema<GetBackupIndexDownloadUrlResponse>;
+S.Struct({
+  "signedUrl": S.optional(S.String),
+}),
+).annotate({ identifier: "GetBackupIndexDownloadUrlResponse" }) as any as S.Schema<GetBackupIndexDownloadUrlResponse>;
 
 export interface GetIamPolicyProjectsLocationsBackupPlansRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1598,21 +1300,12 @@ export interface GetIamPolicyProjectsLocationsBackupPlansRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsBackupPlansRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansRequest>;
+export const GetIamPolicyProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsBackupPlansRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -1626,12 +1319,12 @@ export interface Expr {
   expression?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-    expression: S.optional(S.String),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "location": S.optional(S.String),
+  "expression": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -1644,24 +1337,17 @@ export interface Binding {
   members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(Expr),
-    role: S.optional(S.String),
-    members: S.optional(StringList),
-  }),
+S.Struct({
+  "condition": S.optional(Expr),
+  "role": S.optional(S.String),
+  "members": S.optional(StringList),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1672,16 +1358,14 @@ export interface AuditLogConfig {
   logType?: AuditLogConfigLogTypeEnum;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exemptedMembers: S.optional(StringList),
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-  }),
+S.Struct({
+  "exemptedMembers": S.optional(StringList),
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -1691,16 +1375,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1714,12 +1396,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bindings: S.optional(BindingList),
-    version: S.optional(S.Number),
-    auditConfigs: S.optional(AuditConfigList),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "bindings": S.optional(BindingList),
+  "version": S.optional(S.Number),
+  "auditConfigs": S.optional(AuditConfigList),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsBackupPlansBackupsRequest {
@@ -1728,21 +1410,12 @@ export interface GetIamPolicyProjectsLocationsBackupPlansBackupsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsBackupPlansBackupsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansBackupsRequest>;
+export const GetIamPolicyProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsBackupPlansBackupsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansBackupsRequest>;
 
 export interface GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1750,22 +1423,12 @@ export interface GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsReq
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
+export const GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
 
 export interface GetIamPolicyProjectsLocationsRestorePlansRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1773,21 +1436,12 @@ export interface GetIamPolicyProjectsLocationsRestorePlansRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsRestorePlansRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRequest>;
+export const GetIamPolicyProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsRestorePlansRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRequest>;
 
 export interface GetIamPolicyProjectsLocationsRestorePlansRestoresRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1795,21 +1449,12 @@ export interface GetIamPolicyProjectsLocationsRestorePlansRestoresRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsRestorePlansRestoresRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresRequest>;
+export const GetIamPolicyProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsRestorePlansRestoresRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresRequest>;
 
 export interface GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1817,40 +1462,22 @@ export interface GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
+export const GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://gkebackup.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1866,62 +1493,36 @@ export interface Location {
   name?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationId: S.optional(S.String),
-    labels: S.optional(StringMap),
-    metadata: S.optional(DocumentMap),
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "locationId": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "metadata": S.optional(DocumentMap),
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsBackupChannelsRequest {
   /** Required. Fully qualified BackupChannel name. Format: `projects/*\/locations/*\/backupChannels/*` */
   name: string;
 }
-export const GetProjectsLocationsBackupChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBackupChannelsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBackupChannelsRequest>;
+export const GetProjectsLocationsBackupChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackupChannelsRequest" }) as any as S.Schema<GetProjectsLocationsBackupChannelsRequest>;
 
 export interface GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest {
   /** Required. Fully qualified BackupPlanBinding name. Format: `projects/*\/locations/*\/backupChannels/*\/backupPlanBindings/*` */
   name: string;
 }
-export const GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest>;
+export const GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest" }) as any as S.Schema<GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest>;
 
-export type BackupPlanDetailsStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CLUSTER_PENDING"
-  | "PROVISIONING"
-  | "READY"
-  | "FAILED"
-  | "DEACTIVATED"
-  | "DELETING"
-  | (string & {});
+export type BackupPlanDetailsStateEnum = "STATE_UNSPECIFIED" | "CLUSTER_PENDING" | "PROVISIONING" | "READY" | "FAILED" | "DEACTIVATED" | "DELETING";
 export const BackupPlanDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** BackupConfigDetails defines the configuration of Backups created via this BackupPlan. */
@@ -1940,17 +1541,15 @@ export interface BackupConfigDetails {
   selectedApplications?: NamespacedNames;
 }
 export const BackupConfigDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selectedNamespaces: S.optional(Namespaces),
-    includeVolumeData: S.optional(S.Boolean),
-    encryptionKey: S.optional(EncryptionKey),
-    includeSecrets: S.optional(S.Boolean),
-    allNamespaces: S.optional(S.Boolean),
-    selectedApplications: S.optional(NamespacedNames),
-  }),
-).annotate({
-  identifier: "BackupConfigDetails",
-}) as any as S.Schema<BackupConfigDetails>;
+S.Struct({
+  "selectedNamespaces": S.optional(Namespaces),
+  "includeVolumeData": S.optional(S.Boolean),
+  "encryptionKey": S.optional(EncryptionKey),
+  "includeSecrets": S.optional(S.Boolean),
+  "allNamespaces": S.optional(S.Boolean),
+  "selectedApplications": S.optional(NamespacedNames),
+}),
+).annotate({ identifier: "BackupConfigDetails" }) as any as S.Schema<BackupConfigDetails>;
 
 /** RetentionPolicyDetails defines a Backup retention policy for a BackupPlan. */
 export interface RetentionPolicyDetails {
@@ -1960,13 +1559,11 @@ export interface RetentionPolicyDetails {
   backupRetainDays?: number;
 }
 export const RetentionPolicyDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backupDeleteLockDays: S.optional(S.Number),
-    backupRetainDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RetentionPolicyDetails",
-}) as any as S.Schema<RetentionPolicyDetails>;
+S.Struct({
+  "backupDeleteLockDays": S.optional(S.Number),
+  "backupRetainDays": S.optional(S.Number),
+}),
+).annotate({ identifier: "RetentionPolicyDetails" }) as any as S.Schema<RetentionPolicyDetails>;
 
 /** Contains metadata about the backup plan/backup. */
 export interface BackupPlanDetails {
@@ -1988,19 +1585,17 @@ export interface BackupPlanDetails {
   retentionPolicyDetails?: RetentionPolicyDetails;
 }
 export const BackupPlanDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rpoRiskLevel: S.optional(S.Number),
-    protectedPodCount: S.optional(S.Number),
-    nextScheduledBackupTime: S.optional(S.String),
-    lastSuccessfulBackup: S.optional(S.String),
-    state: S.optional(BackupPlanDetailsStateEnum),
-    lastSuccessfulBackupTime: S.optional(S.String),
-    backupConfigDetails: S.optional(BackupConfigDetails),
-    retentionPolicyDetails: S.optional(RetentionPolicyDetails),
-  }),
-).annotate({
-  identifier: "BackupPlanDetails",
-}) as any as S.Schema<BackupPlanDetails>;
+S.Struct({
+  "rpoRiskLevel": S.optional(S.Number),
+  "protectedPodCount": S.optional(S.Number),
+  "nextScheduledBackupTime": S.optional(S.String),
+  "lastSuccessfulBackup": S.optional(S.String),
+  "state": S.optional(BackupPlanDetailsStateEnum),
+  "lastSuccessfulBackupTime": S.optional(S.String),
+  "backupConfigDetails": S.optional(BackupConfigDetails),
+  "retentionPolicyDetails": S.optional(RetentionPolicyDetails),
+}),
+).annotate({ identifier: "BackupPlanDetails" }) as any as S.Schema<BackupPlanDetails>;
 
 /** A BackupPlanBinding binds a BackupPlan with a BackupChannel. This resource is created automatically when a BackupPlan is created using a BackupChannel. This also serves as a holder for cross-project fields that need to be displayed in the current project. */
 export interface BackupPlanBinding {
@@ -2022,93 +1617,52 @@ export interface BackupPlanBinding {
   uid?: string;
 }
 export const BackupPlanBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backupPlan: S.optional(S.String),
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    cluster: S.optional(S.String),
-    backupPlanDetails: S.optional(BackupPlanDetails),
-    etag: S.optional(S.String),
-    createTime: S.optional(S.String),
-    uid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BackupPlanBinding",
-}) as any as S.Schema<BackupPlanBinding>;
+S.Struct({
+  "backupPlan": S.optional(S.String),
+  "name": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "cluster": S.optional(S.String),
+  "backupPlanDetails": S.optional(BackupPlanDetails),
+  "etag": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+}),
+).annotate({ identifier: "BackupPlanBinding" }) as any as S.Schema<BackupPlanBinding>;
 
 export interface GetProjectsLocationsBackupPlansRequest {
   /** Required. Fully qualified BackupPlan name. Format: `projects/*\/locations/*\/backupPlans/*` */
   name: string;
 }
-export const GetProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsBackupPlansRequest",
-}) as any as S.Schema<GetProjectsLocationsBackupPlansRequest>;
+export const GetProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackupPlansRequest" }) as any as S.Schema<GetProjectsLocationsBackupPlansRequest>;
 
 export interface GetProjectsLocationsBackupPlansBackupsRequest {
   /** Required. Full name of the Backup resource. Format: `projects/*\/locations/*\/backupPlans/*\/backups/*` */
   name: string;
 }
-export const GetProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBackupPlansBackupsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBackupPlansBackupsRequest>;
+export const GetProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackupPlansBackupsRequest" }) as any as S.Schema<GetProjectsLocationsBackupPlansBackupsRequest>;
 
 export interface GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** Required. Full name of the VolumeBackup resource. Format: `projects/*\/locations/*\/backupPlans/*\/backups/*\/volumeBackups/*` */
   name: string;
 }
-export const GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
+export const GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest" }) as any as S.Schema<GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
 
-export type VolumeBackupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "SNAPSHOTTING"
-  | "UPLOADING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "DELETING"
-  | "CLEANED_UP"
-  | (string & {});
+export type VolumeBackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "SNAPSHOTTING" | "UPLOADING" | "SUCCEEDED" | "FAILED" | "DELETING" | "CLEANED_UP";
 export const VolumeBackupStateEnum = /*@__PURE__*/ S.String;
 
-export type VolumeBackupFormatEnum =
-  | "VOLUME_BACKUP_FORMAT_UNSPECIFIED"
-  | "GCE_PERSISTENT_DISK"
-  | (string & {});
+export type VolumeBackupFormatEnum = "VOLUME_BACKUP_FORMAT_UNSPECIFIED" | "GCE_PERSISTENT_DISK";
 export const VolumeBackupFormatEnum = /*@__PURE__*/ S.String;
 
 /** Represents the backup of a specific persistent volume as a component of a Backup - both the record of the operation and a pointer to the underlying storage-specific artifacts. */
@@ -2145,81 +1699,54 @@ export interface VolumeBackup {
   updateTime?: string;
 }
 export const VolumeBackup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMessage: S.optional(S.String),
-    volumeBackupHandle: S.optional(S.String),
-    satisfiesPzi: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    storageBytes: S.optional(S.String),
-    state: S.optional(VolumeBackupStateEnum),
-    sourcePvc: S.optional(NamespacedName),
-    etag: S.optional(S.String),
-    satisfiesPzs: S.optional(S.Boolean),
-    format: S.optional(VolumeBackupFormatEnum),
-    createTime: S.optional(S.String),
-    diskSizeBytes: S.optional(S.String),
-    uid: S.optional(S.String),
-    completeTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "stateMessage": S.optional(S.String),
+  "volumeBackupHandle": S.optional(S.String),
+  "satisfiesPzi": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "storageBytes": S.optional(S.String),
+  "state": S.optional(VolumeBackupStateEnum),
+  "sourcePvc": S.optional(NamespacedName),
+  "etag": S.optional(S.String),
+  "satisfiesPzs": S.optional(S.Boolean),
+  "format": S.optional(VolumeBackupFormatEnum),
+  "createTime": S.optional(S.String),
+  "diskSizeBytes": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "completeTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "VolumeBackup" }) as any as S.Schema<VolumeBackup>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRestoreChannelsRequest {
   /** Required. Fully qualified RestoreChannel name. Format: `projects/*\/locations/*\/restoreChannels/*` */
   name: string;
 }
-export const GetProjectsLocationsRestoreChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRestoreChannelsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRestoreChannelsRequest>;
+export const GetProjectsLocationsRestoreChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRestoreChannelsRequest" }) as any as S.Schema<GetProjectsLocationsRestoreChannelsRequest>;
 
 export interface GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest {
   /** Required. Fully qualified RestorePlanBinding name. Format: `projects/*\/locations/*\/restoreChannels/*\/restorePlanBindings/*` */
   name: string;
 }
-export const GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
+export const GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest" }) as any as S.Schema<GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
 
 /** A RestorePlanBinding binds a RestorePlan with a RestoreChannel. This resource is created automatically when a RestorePlan is created using a RestoreChannel. This also serves as a holder for cross-project fields that need to be displayed in the current project. */
 export interface RestorePlanBinding {
@@ -2239,90 +1766,51 @@ export interface RestorePlanBinding {
   backupPlan?: string;
 }
 export const RestorePlanBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uid: S.optional(S.String),
-    createTime: S.optional(S.String),
-    restorePlan: S.optional(S.String),
-    etag: S.optional(S.String),
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    backupPlan: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestorePlanBinding",
-}) as any as S.Schema<RestorePlanBinding>;
+S.Struct({
+  "uid": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "restorePlan": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "name": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "backupPlan": S.optional(S.String),
+}),
+).annotate({ identifier: "RestorePlanBinding" }) as any as S.Schema<RestorePlanBinding>;
 
 export interface GetProjectsLocationsRestorePlansRequest {
   /** Required. Fully qualified RestorePlan name. Format: `projects/*\/locations/*\/restorePlans/*` */
   name: string;
 }
-export const GetProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsRestorePlansRequest",
-}) as any as S.Schema<GetProjectsLocationsRestorePlansRequest>;
+export const GetProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRestorePlansRequest" }) as any as S.Schema<GetProjectsLocationsRestorePlansRequest>;
 
 export interface GetProjectsLocationsRestorePlansRestoresRequest {
   /** Required. Name of the restore resource. Format: `projects/*\/locations/*\/restorePlans/*\/restores/*` */
   name: string;
 }
-export const GetProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRestorePlansRestoresRequest",
-  }) as any as S.Schema<GetProjectsLocationsRestorePlansRestoresRequest>;
+export const GetProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRestorePlansRestoresRequest" }) as any as S.Schema<GetProjectsLocationsRestorePlansRestoresRequest>;
 
 export interface GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
   /** Required. Full name of the VolumeRestore resource. Format: `projects/*\/locations/*\/restorePlans/*\/restores/*\/volumeRestores/*` */
   name: string;
 }
-export const GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest",
-  }) as any as S.Schema<GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
+export const GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest" }) as any as S.Schema<GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
 
-export type VolumeRestoreVolumeTypeEnum =
-  | "VOLUME_TYPE_UNSPECIFIED"
-  | "GCE_PERSISTENT_DISK"
-  | (string & {});
+export type VolumeRestoreVolumeTypeEnum = "VOLUME_TYPE_UNSPECIFIED" | "GCE_PERSISTENT_DISK";
 export const VolumeRestoreVolumeTypeEnum = /*@__PURE__*/ S.String;
 
-export type VolumeRestoreStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "RESTORING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "DELETING"
-  | (string & {});
+export type VolumeRestoreStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "RESTORING" | "SUCCEEDED" | "FAILED" | "DELETING";
 export const VolumeRestoreStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the operation of restoring a volume from a VolumeBackup. */
@@ -2353,40 +1841,31 @@ export interface VolumeRestore {
   state?: VolumeRestoreStateEnum;
 }
 export const VolumeRestore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMessage: S.optional(S.String),
-    name: S.optional(S.String),
-    volumeType: S.optional(VolumeRestoreVolumeTypeEnum),
-    createTime: S.optional(S.String),
-    volumeBackup: S.optional(S.String),
-    etag: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    volumeHandle: S.optional(S.String),
-    completeTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    targetPvc: S.optional(NamespacedName),
-    state: S.optional(VolumeRestoreStateEnum),
-  }),
+S.Struct({
+  "stateMessage": S.optional(S.String),
+  "name": S.optional(S.String),
+  "volumeType": S.optional(VolumeRestoreVolumeTypeEnum),
+  "createTime": S.optional(S.String),
+  "volumeBackup": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "volumeHandle": S.optional(S.String),
+  "completeTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "targetPvc": S.optional(NamespacedName),
+  "state": S.optional(VolumeRestoreStateEnum),
+}),
 ).annotate({ identifier: "VolumeRestore" }) as any as S.Schema<VolumeRestore>;
 
 export interface GetTagsProjectsLocationsBackupPlansRequest {
   /** Required. The full resource name of the service resource. */
   name: string;
 }
-export const GetTagsProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:getTags",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetTagsProjectsLocationsBackupPlansRequest",
-  }) as any as S.Schema<GetTagsProjectsLocationsBackupPlansRequest>;
+export const GetTagsProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:getTags","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetTagsProjectsLocationsBackupPlansRequest" }) as any as S.Schema<GetTagsProjectsLocationsBackupPlansRequest>;
 
 /** Response message for GetTags. */
 export interface GetTagsResponse {
@@ -2398,33 +1877,22 @@ export interface GetTagsResponse {
   name?: string;
 }
 export const GetTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(StringMap),
-    etag: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTagsResponse",
-}) as any as S.Schema<GetTagsResponse>;
+S.Struct({
+  "tags": S.optional(StringMap),
+  "etag": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GetTagsResponse" }) as any as S.Schema<GetTagsResponse>;
 
 export interface GetTagsProjectsLocationsRestorePlansRequest {
   /** Required. The full resource name of the service resource. */
   name: string;
 }
-export const GetTagsProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:getTags",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetTagsProjectsLocationsRestorePlansRequest",
-  }) as any as S.Schema<GetTagsProjectsLocationsRestorePlansRequest>;
+export const GetTagsProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:getTags","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "GetTagsProjectsLocationsRestorePlansRequest" }) as any as S.Schema<GetTagsProjectsLocationsRestorePlansRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -2439,27 +1907,17 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://gkebackup.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2469,13 +1927,11 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    locations: S.optional(LocationList),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "locations": S.optional(LocationList),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsBackupChannelsRequest {
   /** Required. The location that contains the BackupChannels to list. Format: `projects/*\/locations/*` */
@@ -2489,29 +1945,18 @@ export interface ListProjectsLocationsBackupChannelsRequest {
   /** Optional. Field by which to sort the results. */
   orderBy?: string;
 }
-export const ListProjectsLocationsBackupChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/backupChannels",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBackupChannelsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBackupChannelsRequest>;
+export const ListProjectsLocationsBackupChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backupChannels","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBackupChannelsRequest" }) as any as S.Schema<ListProjectsLocationsBackupChannelsRequest>;
 
 export type BackupChannelList = ReadonlyArray<BackupChannel>;
-export const BackupChannelList = /*@__PURE__*/ S.Array(
-  BackupChannel,
-) as any as S.Schema<BackupChannelList>;
+export const BackupChannelList = /*@__PURE__*/ S.Array(BackupChannel) as any as S.Schema<BackupChannelList>;
 
 /** Response message for ListBackupChannels. */
 export interface ListBackupChannelsResponse {
@@ -2523,14 +1968,12 @@ export interface ListBackupChannelsResponse {
   unreachable?: StringList;
 }
 export const ListBackupChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backupChannels: S.optional(BackupChannelList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListBackupChannelsResponse",
-}) as any as S.Schema<ListBackupChannelsResponse>;
+S.Struct({
+  "backupChannels": S.optional(BackupChannelList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListBackupChannelsResponse" }) as any as S.Schema<ListBackupChannelsResponse>;
 
 export interface ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest {
   /** Optional. The value of next_page_token received from a previous `ListBackupPlanBindings` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListBackupPlanBindings` must match the call that provided the page token. */
@@ -2544,29 +1987,18 @@ export interface ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest {
   /** Required. The BackupChannel that contains the BackupPlanBindings to list. Format: `projects/*\/locations/*\/backupChannels/*` */
   parent: string;
 }
-export const ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/backupPlanBindings",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest>;
+export const ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backupPlanBindings","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest" }) as any as S.Schema<ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest>;
 
 export type BackupPlanBindingList = ReadonlyArray<BackupPlanBinding>;
-export const BackupPlanBindingList = /*@__PURE__*/ S.Array(
-  BackupPlanBinding,
-) as any as S.Schema<BackupPlanBindingList>;
+export const BackupPlanBindingList = /*@__PURE__*/ S.Array(BackupPlanBinding) as any as S.Schema<BackupPlanBindingList>;
 
 /** Response message for ListBackupPlanBindings. */
 export interface ListBackupPlanBindingsResponse {
@@ -2578,14 +2010,12 @@ export interface ListBackupPlanBindingsResponse {
   unreachable?: StringList;
 }
 export const ListBackupPlanBindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backupPlanBindings: S.optional(BackupPlanBindingList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListBackupPlanBindingsResponse",
-}) as any as S.Schema<ListBackupPlanBindingsResponse>;
+S.Struct({
+  "backupPlanBindings": S.optional(BackupPlanBindingList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListBackupPlanBindingsResponse" }) as any as S.Schema<ListBackupPlanBindingsResponse>;
 
 export interface ListProjectsLocationsBackupPlansRequest {
   /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
@@ -2599,29 +2029,18 @@ export interface ListProjectsLocationsBackupPlansRequest {
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/backupPlans",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsBackupPlansRequest",
-}) as any as S.Schema<ListProjectsLocationsBackupPlansRequest>;
+export const ListProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backupPlans","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBackupPlansRequest" }) as any as S.Schema<ListProjectsLocationsBackupPlansRequest>;
 
 export type BackupPlanList = ReadonlyArray<BackupPlan>;
-export const BackupPlanList = /*@__PURE__*/ S.Array(
-  BackupPlan,
-) as any as S.Schema<BackupPlanList>;
+export const BackupPlanList = /*@__PURE__*/ S.Array(BackupPlan) as any as S.Schema<BackupPlanList>;
 
 /** Response message for ListBackupPlans. */
 export interface ListBackupPlansResponse {
@@ -2633,14 +2052,12 @@ export interface ListBackupPlansResponse {
   nextPageToken?: string;
 }
 export const ListBackupPlansResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    backupPlans: S.optional(BackupPlanList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBackupPlansResponse",
-}) as any as S.Schema<ListBackupPlansResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "backupPlans": S.optional(BackupPlanList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBackupPlansResponse" }) as any as S.Schema<ListBackupPlansResponse>;
 
 export interface ListProjectsLocationsBackupPlansBackupsRequest {
   /** Optional. The value of next_page_token received from a previous `ListBackups` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListBackups` must match the call that provided the page token. */
@@ -2656,30 +2073,19 @@ export interface ListProjectsLocationsBackupPlansBackupsRequest {
   /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
 }
-export const ListProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/backups",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBackupPlansBackupsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBackupPlansBackupsRequest>;
+export const ListProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backups","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBackupPlansBackupsRequest" }) as any as S.Schema<ListProjectsLocationsBackupPlansBackupsRequest>;
 
 export type BackupList = ReadonlyArray<Backup>;
-export const BackupList = /*@__PURE__*/ S.Array(
-  Backup,
-) as any as S.Schema<BackupList>;
+export const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
 
 /** Response message for ListBackups. */
 export interface ListBackupsResponse {
@@ -2691,14 +2097,12 @@ export interface ListBackupsResponse {
   backups?: BackupList;
 }
 export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-    backups: S.optional(BackupList),
-  }),
-).annotate({
-  identifier: "ListBackupsResponse",
-}) as any as S.Schema<ListBackupsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "backups": S.optional(BackupList),
+}),
+).annotate({ identifier: "ListBackupsResponse" }) as any as S.Schema<ListBackupsResponse>;
 
 export interface ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** Required. The Backup that contains the VolumeBackups to list. Format: `projects/*\/locations/*\/backupPlans/*\/backups/*` */
@@ -2712,29 +2116,18 @@ export interface ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/volumeBackups",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
+export const ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/volumeBackups","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest" }) as any as S.Schema<ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
 
 export type VolumeBackupList = ReadonlyArray<VolumeBackup>;
-export const VolumeBackupList = /*@__PURE__*/ S.Array(
-  VolumeBackup,
-) as any as S.Schema<VolumeBackupList>;
+export const VolumeBackupList = /*@__PURE__*/ S.Array(VolumeBackup) as any as S.Schema<VolumeBackupList>;
 
 /** Response message for ListVolumeBackups. */
 export interface ListVolumeBackupsResponse {
@@ -2744,13 +2137,11 @@ export interface ListVolumeBackupsResponse {
   nextPageToken?: string;
 }
 export const ListVolumeBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    volumeBackups: S.optional(VolumeBackupList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListVolumeBackupsResponse",
-}) as any as S.Schema<ListVolumeBackupsResponse>;
+S.Struct({
+  "volumeBackups": S.optional(VolumeBackupList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListVolumeBackupsResponse" }) as any as S.Schema<ListVolumeBackupsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -2764,30 +2155,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
-  GoogleLongrunningOperation,
-) as any as S.Schema<GoogleLongrunningOperationList>;
+export type GoogleLongrunningOperationList = ReadonlyArray<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(GoogleLongrunningOperation) as any as S.Schema<GoogleLongrunningOperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
@@ -2798,16 +2177,13 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operations: S.optional(GoogleLongrunningOperationList),
-      unreachable: S.optional(StringList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleLongrunningListOperationsResponse",
-}) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "operations": S.optional(GoogleLongrunningOperationList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleLongrunningListOperationsResponse" }) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
 
 export interface ListProjectsLocationsRestoreChannelsRequest {
   /** Optional. The value of next_page_token received from a previous `ListRestoreChannels` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestoreChannels` must match the call that provided the page token. */
@@ -2821,29 +2197,18 @@ export interface ListProjectsLocationsRestoreChannelsRequest {
   /** Required. The location that contains the RestoreChannels to list. Format: `projects/*\/locations/*` */
   parent: string;
 }
-export const ListProjectsLocationsRestoreChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/restoreChannels",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRestoreChannelsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRestoreChannelsRequest>;
+export const ListProjectsLocationsRestoreChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/restoreChannels","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRestoreChannelsRequest" }) as any as S.Schema<ListProjectsLocationsRestoreChannelsRequest>;
 
 export type RestoreChannelList = ReadonlyArray<RestoreChannel>;
-export const RestoreChannelList = /*@__PURE__*/ S.Array(
-  RestoreChannel,
-) as any as S.Schema<RestoreChannelList>;
+export const RestoreChannelList = /*@__PURE__*/ S.Array(RestoreChannel) as any as S.Schema<RestoreChannelList>;
 
 /** Response message for ListRestoreChannels. */
 export interface ListRestoreChannelsResponse {
@@ -2855,14 +2220,12 @@ export interface ListRestoreChannelsResponse {
   unreachable?: StringList;
 }
 export const ListRestoreChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    restoreChannels: S.optional(RestoreChannelList),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListRestoreChannelsResponse",
-}) as any as S.Schema<ListRestoreChannelsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "restoreChannels": S.optional(RestoreChannelList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListRestoreChannelsResponse" }) as any as S.Schema<ListRestoreChannelsResponse>;
 
 export interface ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest {
   /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
@@ -2876,30 +2239,18 @@ export interface ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest 
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/restorePlanBindings",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
+export const ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/restorePlanBindings","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest" }) as any as S.Schema<ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
 
 export type RestorePlanBindingList = ReadonlyArray<RestorePlanBinding>;
-export const RestorePlanBindingList = /*@__PURE__*/ S.Array(
-  RestorePlanBinding,
-) as any as S.Schema<RestorePlanBindingList>;
+export const RestorePlanBindingList = /*@__PURE__*/ S.Array(RestorePlanBinding) as any as S.Schema<RestorePlanBindingList>;
 
 /** Response message for ListRestorePlanBindings. */
 export interface ListRestorePlanBindingsResponse {
@@ -2911,14 +2262,12 @@ export interface ListRestorePlanBindingsResponse {
   nextPageToken?: string;
 }
 export const ListRestorePlanBindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    restorePlanBindings: S.optional(RestorePlanBindingList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRestorePlanBindingsResponse",
-}) as any as S.Schema<ListRestorePlanBindingsResponse>;
+S.Struct({
+  "restorePlanBindings": S.optional(RestorePlanBindingList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListRestorePlanBindingsResponse" }) as any as S.Schema<ListRestorePlanBindingsResponse>;
 
 export interface ListProjectsLocationsRestorePlansRequest {
   /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
@@ -2932,29 +2281,18 @@ export interface ListProjectsLocationsRestorePlansRequest {
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/restorePlans",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsRestorePlansRequest",
-}) as any as S.Schema<ListProjectsLocationsRestorePlansRequest>;
+export const ListProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/restorePlans","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRestorePlansRequest" }) as any as S.Schema<ListProjectsLocationsRestorePlansRequest>;
 
 export type RestorePlanList = ReadonlyArray<RestorePlan>;
-export const RestorePlanList = /*@__PURE__*/ S.Array(
-  RestorePlan,
-) as any as S.Schema<RestorePlanList>;
+export const RestorePlanList = /*@__PURE__*/ S.Array(RestorePlan) as any as S.Schema<RestorePlanList>;
 
 /** Response message for ListRestorePlans. */
 export interface ListRestorePlansResponse {
@@ -2966,14 +2304,12 @@ export interface ListRestorePlansResponse {
   nextPageToken?: string;
 }
 export const ListRestorePlansResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    restorePlans: S.optional(RestorePlanList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRestorePlansResponse",
-}) as any as S.Schema<ListRestorePlansResponse>;
+S.Struct({
+  "restorePlans": S.optional(RestorePlanList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListRestorePlansResponse" }) as any as S.Schema<ListRestorePlansResponse>;
 
 export interface ListProjectsLocationsRestorePlansRestoresRequest {
   /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
@@ -2987,29 +2323,18 @@ export interface ListProjectsLocationsRestorePlansRestoresRequest {
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/restores",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRestorePlansRestoresRequest",
-  }) as any as S.Schema<ListProjectsLocationsRestorePlansRestoresRequest>;
+export const ListProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/restores","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRestorePlansRestoresRequest" }) as any as S.Schema<ListProjectsLocationsRestorePlansRestoresRequest>;
 
 export type RestoreList = ReadonlyArray<Restore>;
-export const RestoreList = /*@__PURE__*/ S.Array(
-  Restore,
-) as any as S.Schema<RestoreList>;
+export const RestoreList = /*@__PURE__*/ S.Array(Restore) as any as S.Schema<RestoreList>;
 
 /** Response message for ListRestores. */
 export interface ListRestoresResponse {
@@ -3021,14 +2346,12 @@ export interface ListRestoresResponse {
   nextPageToken?: string;
 }
 export const ListRestoresResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    restores: S.optional(RestoreList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRestoresResponse",
-}) as any as S.Schema<ListRestoresResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "restores": S.optional(RestoreList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListRestoresResponse" }) as any as S.Schema<ListRestoresResponse>;
 
 export interface ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
   /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
@@ -3042,30 +2365,18 @@ export interface ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest 
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/volumeRestores",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest",
-  }) as any as S.Schema<ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
+export const ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/volumeRestores","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest" }) as any as S.Schema<ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
 
 export type VolumeRestoreList = ReadonlyArray<VolumeRestore>;
-export const VolumeRestoreList = /*@__PURE__*/ S.Array(
-  VolumeRestore,
-) as any as S.Schema<VolumeRestoreList>;
+export const VolumeRestoreList = /*@__PURE__*/ S.Array(VolumeRestore) as any as S.Schema<VolumeRestoreList>;
 
 /** Response message for ListVolumeRestores. */
 export interface ListVolumeRestoresResponse {
@@ -3075,13 +2386,11 @@ export interface ListVolumeRestoresResponse {
   nextPageToken?: string;
 }
 export const ListVolumeRestoresResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    volumeRestores: S.optional(VolumeRestoreList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListVolumeRestoresResponse",
-}) as any as S.Schema<ListVolumeRestoresResponse>;
+S.Struct({
+  "volumeRestores": S.optional(VolumeRestoreList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListVolumeRestoresResponse" }) as any as S.Schema<ListVolumeRestoresResponse>;
 
 export interface PatchProjectsLocationsBackupChannelsRequest {
   /** Optional. This is used to specify the fields to be overwritten in the BackupChannel targeted for update. The values for each of these updated fields will be taken from the `backup_channel` provided with this request. Field names are relative to the root of the resource (e.g., `description`, `labels`, etc.) If no `update_mask` is provided, all fields in `backup_channel` will be written to the target BackupChannel resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `backup_channel` are ignored and are not used to update the target BackupChannel. */
@@ -3091,22 +2400,13 @@ export interface PatchProjectsLocationsBackupChannelsRequest {
   /** Request body */
   body?: BackupChannel;
 }
-export const PatchProjectsLocationsBackupChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(BackupChannel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsBackupChannelsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsBackupChannelsRequest>;
+export const PatchProjectsLocationsBackupChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(BackupChannel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBackupChannelsRequest" }) as any as S.Schema<PatchProjectsLocationsBackupChannelsRequest>;
 
 export interface PatchProjectsLocationsBackupPlansRequest {
   /** Optional. This is used to specify the fields to be overwritten in the BackupPlan targeted for update. The values for each of these updated fields will be taken from the `backup_plan` provided with this request. Field names are relative to the root of the resource (e.g., `description`, `backup_config.include_volume_data`, etc.) If no `update_mask` is provided, all fields in `backup_plan` will be written to the target BackupPlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `backup_plan` are ignored and are not used to update the target BackupPlan. */
@@ -3116,22 +2416,13 @@ export interface PatchProjectsLocationsBackupPlansRequest {
   /** Request body */
   body?: BackupPlan;
 }
-export const PatchProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(BackupPlan.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsBackupPlansRequest",
-}) as any as S.Schema<PatchProjectsLocationsBackupPlansRequest>;
+export const PatchProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(BackupPlan.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBackupPlansRequest" }) as any as S.Schema<PatchProjectsLocationsBackupPlansRequest>;
 
 export interface PatchProjectsLocationsBackupPlansBackupsRequest {
   /** Output only. Identifier. The fully qualified name of the Backup. `projects/*\/locations/*\/backupPlans/*\/backups/*` */
@@ -3141,22 +2432,13 @@ export interface PatchProjectsLocationsBackupPlansBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const PatchProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Backup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsBackupPlansBackupsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsBackupPlansBackupsRequest>;
+export const PatchProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Backup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBackupPlansBackupsRequest" }) as any as S.Schema<PatchProjectsLocationsBackupPlansBackupsRequest>;
 
 export interface PatchProjectsLocationsRestoreChannelsRequest {
   /** Identifier. The fully qualified name of the RestoreChannel. `projects/*\/locations/*\/restoreChannels/*` */
@@ -3166,22 +2448,13 @@ export interface PatchProjectsLocationsRestoreChannelsRequest {
   /** Request body */
   body?: RestoreChannel;
 }
-export const PatchProjectsLocationsRestoreChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RestoreChannel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRestoreChannelsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRestoreChannelsRequest>;
+export const PatchProjectsLocationsRestoreChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(RestoreChannel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRestoreChannelsRequest" }) as any as S.Schema<PatchProjectsLocationsRestoreChannelsRequest>;
 
 export interface PatchProjectsLocationsRestorePlansRequest {
   /** Output only. Identifier. The full name of the RestorePlan resource. Format: `projects/*\/locations/*\/restorePlans/*`. */
@@ -3191,22 +2464,13 @@ export interface PatchProjectsLocationsRestorePlansRequest {
   /** Request body */
   body?: RestorePlan;
 }
-export const PatchProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RestorePlan.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRestorePlansRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRestorePlansRequest>;
+export const PatchProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(RestorePlan.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRestorePlansRequest" }) as any as S.Schema<PatchProjectsLocationsRestorePlansRequest>;
 
 export interface PatchProjectsLocationsRestorePlansRestoresRequest {
   /** Output only. Identifier. The full name of the Restore resource. Format: `projects/*\/locations/*\/restorePlans/*\/restores/*` */
@@ -3216,22 +2480,13 @@ export interface PatchProjectsLocationsRestorePlansRestoresRequest {
   /** Request body */
   body?: Restore;
 }
-export const PatchProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Restore.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRestorePlansRestoresRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRestorePlansRestoresRequest>;
+export const PatchProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Restore.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRestorePlansRestoresRequest" }) as any as S.Schema<PatchProjectsLocationsRestorePlansRestoresRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -3241,13 +2496,11 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String),
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String),
+  "policy": S.optional(Policy),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsBackupPlansRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3255,21 +2508,12 @@ export interface SetIamPolicyProjectsLocationsBackupPlansRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsBackupPlansRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansRequest>;
+export const SetIamPolicyProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsBackupPlansRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansRequest>;
 
 export interface SetIamPolicyProjectsLocationsBackupPlansBackupsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3277,21 +2521,12 @@ export interface SetIamPolicyProjectsLocationsBackupPlansBackupsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsBackupPlansBackupsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsRequest>;
+export const SetIamPolicyProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsBackupPlansBackupsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsRequest>;
 
 export interface SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3299,22 +2534,12 @@ export interface SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsReq
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
+export const SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
 
 export interface SetIamPolicyProjectsLocationsRestorePlansRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3322,21 +2547,12 @@ export interface SetIamPolicyProjectsLocationsRestorePlansRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsRestorePlansRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRequest>;
+export const SetIamPolicyProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsRestorePlansRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRequest>;
 
 export interface SetIamPolicyProjectsLocationsRestorePlansRestoresRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3344,21 +2560,12 @@ export interface SetIamPolicyProjectsLocationsRestorePlansRestoresRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsRestorePlansRestoresRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresRequest>;
+export const SetIamPolicyProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsRestorePlansRestoresRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresRequest>;
 
 export interface SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3366,22 +2573,12 @@ export interface SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
+export const SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
 
 /** Request message for SetTags. */
 export interface SetTagsRequest {
@@ -3395,12 +2592,12 @@ export interface SetTagsRequest {
   tags?: StringMap;
 }
 export const SetTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    requestId: S.optional(S.String),
-    etag: S.optional(S.String),
-    tags: S.optional(StringMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "requestId": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "tags": S.optional(StringMap),
+}),
 ).annotate({ identifier: "SetTagsRequest" }) as any as S.Schema<SetTagsRequest>;
 
 export interface SetTagsProjectsLocationsBackupPlansRequest {
@@ -3409,21 +2606,12 @@ export interface SetTagsProjectsLocationsBackupPlansRequest {
   /** Request body */
   body?: SetTagsRequest;
 }
-export const SetTagsProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetTagsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:setTags",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetTagsProjectsLocationsBackupPlansRequest",
-  }) as any as S.Schema<SetTagsProjectsLocationsBackupPlansRequest>;
+export const SetTagsProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetTagsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:setTags","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "SetTagsProjectsLocationsBackupPlansRequest" }) as any as S.Schema<SetTagsProjectsLocationsBackupPlansRequest>;
 
 /** Response message for SetTags. */
 export interface SetTagsResponse {
@@ -3435,14 +2623,12 @@ export interface SetTagsResponse {
   tags?: StringMap;
 }
 export const SetTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    etag: S.optional(S.String),
-    tags: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "SetTagsResponse",
-}) as any as S.Schema<SetTagsResponse>;
+S.Struct({
+  "name": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "tags": S.optional(StringMap),
+}),
+).annotate({ identifier: "SetTagsResponse" }) as any as S.Schema<SetTagsResponse>;
 
 export interface SetTagsProjectsLocationsRestorePlansRequest {
   /** Required. The full resource name of the service resource. */
@@ -3450,21 +2636,12 @@ export interface SetTagsProjectsLocationsRestorePlansRequest {
   /** Request body */
   body?: SetTagsRequest;
 }
-export const SetTagsProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetTagsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:setTags",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetTagsProjectsLocationsRestorePlansRequest",
-  }) as any as S.Schema<SetTagsProjectsLocationsRestorePlansRequest>;
+export const SetTagsProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetTagsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:setTags","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "SetTagsProjectsLocationsRestorePlansRequest" }) as any as S.Schema<SetTagsProjectsLocationsRestorePlansRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -3472,12 +2649,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsBackupPlansRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3485,21 +2660,12 @@ export interface TestIamPermissionsProjectsLocationsBackupPlansRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsBackupPlansRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansRequest>;
+export const TestIamPermissionsProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsBackupPlansRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -3507,12 +2673,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3520,21 +2684,12 @@ export interface TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest>;
+export const TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3542,22 +2697,12 @@ export interface TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBack
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
+export const TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsRestorePlansRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3565,21 +2710,12 @@ export interface TestIamPermissionsProjectsLocationsRestorePlansRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsRestorePlansRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRequest>;
+export const TestIamPermissionsProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsRestorePlansRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRequest>;
 
 export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3587,22 +2723,12 @@ export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest 
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest>;
+export const TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest>;
 
 export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3610,29 +2736,14 @@ export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRe
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
+export const TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkebackup.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -3647,12 +2758,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBackupChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBackupChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new BackupChannel in a given location. */
 export const createProjectsLocationsBackupChannels: API.OperationMethod<
   CreateProjectsLocationsBackupChannelsRequest,
@@ -3667,12 +2773,7 @@ export const createProjectsLocationsBackupChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBackupPlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBackupPlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new BackupPlan in a given location. */
 export const createProjectsLocationsBackupPlans: API.OperationMethod<
   CreateProjectsLocationsBackupPlansRequest,
@@ -3687,12 +2788,7 @@ export const createProjectsLocationsBackupPlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBackupPlansBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBackupPlansBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Backup for the given BackupPlan. */
 export const createProjectsLocationsBackupPlansBackups: API.OperationMethod<
   CreateProjectsLocationsBackupPlansBackupsRequest,
@@ -3707,12 +2803,7 @@ export const createProjectsLocationsBackupPlansBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRestoreChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRestoreChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new RestoreChannel in a given location. */
 export const createProjectsLocationsRestoreChannels: API.OperationMethod<
   CreateProjectsLocationsRestoreChannelsRequest,
@@ -3727,12 +2818,7 @@ export const createProjectsLocationsRestoreChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRestorePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new RestorePlan in a given location. */
 export const createProjectsLocationsRestorePlans: API.OperationMethod<
   CreateProjectsLocationsRestorePlansRequest,
@@ -3747,12 +2833,7 @@ export const createProjectsLocationsRestorePlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRestorePlansRestoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRestorePlansRestoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Restore for the given RestorePlan. */
 export const createProjectsLocationsRestorePlansRestores: API.OperationMethod<
   CreateProjectsLocationsRestorePlansRestoresRequest,
@@ -3767,12 +2848,7 @@ export const createProjectsLocationsRestorePlansRestores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBackupChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBackupChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing BackupChannel. */
 export const deleteProjectsLocationsBackupChannels: API.OperationMethod<
   DeleteProjectsLocationsBackupChannelsRequest,
@@ -3787,12 +2863,7 @@ export const deleteProjectsLocationsBackupChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBackupPlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBackupPlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing BackupPlan. */
 export const deleteProjectsLocationsBackupPlans: API.OperationMethod<
   DeleteProjectsLocationsBackupPlansRequest,
@@ -3807,12 +2878,7 @@ export const deleteProjectsLocationsBackupPlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBackupPlansBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBackupPlansBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing Backup. */
 export const deleteProjectsLocationsBackupPlansBackups: API.OperationMethod<
   DeleteProjectsLocationsBackupPlansBackupsRequest,
@@ -3827,12 +2893,7 @@ export const deleteProjectsLocationsBackupPlansBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -3847,12 +2908,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRestoreChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRestoreChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing RestoreChannel. */
 export const deleteProjectsLocationsRestoreChannels: API.OperationMethod<
   DeleteProjectsLocationsRestoreChannelsRequest,
@@ -3867,12 +2923,7 @@ export const deleteProjectsLocationsRestoreChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRestorePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing RestorePlan. */
 export const deleteProjectsLocationsRestorePlans: API.OperationMethod<
   DeleteProjectsLocationsRestorePlansRequest,
@@ -3887,12 +2938,7 @@ export const deleteProjectsLocationsRestorePlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRestorePlansRestoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRestorePlansRestoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing Restore. */
 export const deleteProjectsLocationsRestorePlansRestores: API.OperationMethod<
   DeleteProjectsLocationsRestorePlansRestoresRequest,
@@ -3907,10 +2953,7 @@ export const deleteProjectsLocationsRestorePlansRestores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the link to the backupIndex. */
 export const getBackupIndexDownloadUrlProjectsLocationsBackupPlansBackups: API.OperationMethod<
   GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest,
@@ -3925,10 +2968,7 @@ export const getBackupIndexDownloadUrlProjectsLocationsBackupPlansBackups: API.O
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsBackupPlansError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsBackupPlansError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBackupPlans: API.OperationMethod<
   GetIamPolicyProjectsLocationsBackupPlansRequest,
@@ -3943,10 +2983,7 @@ export const getIamPolicyProjectsLocationsBackupPlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsBackupPlansBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsBackupPlansBackupsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBackupPlansBackups: API.OperationMethod<
   GetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
@@ -3961,10 +2998,7 @@ export const getIamPolicyProjectsLocationsBackupPlansBackups: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationMethod<
   GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
@@ -3979,10 +3013,7 @@ export const getIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackups: API.O
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsRestorePlansError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsRestorePlans: API.OperationMethod<
   GetIamPolicyProjectsLocationsRestorePlansRequest,
@@ -3997,10 +3028,7 @@ export const getIamPolicyProjectsLocationsRestorePlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsRestorePlansRestoresError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsRestorePlansRestoresError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsRestorePlansRestores: API.OperationMethod<
   GetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
@@ -4015,8 +3043,7 @@ export const getIamPolicyProjectsLocationsRestorePlansRestores: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
   GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
@@ -4046,10 +3073,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackupChannelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackupChannelsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the details of a single BackupChannel. */
 export const getProjectsLocationsBackupChannels: API.OperationMethod<
   GetProjectsLocationsBackupChannelsRequest,
@@ -4064,10 +3088,7 @@ export const getProjectsLocationsBackupChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackupChannelsBackupPlanBindingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackupChannelsBackupPlanBindingsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the details of a single BackupPlanBinding. */
 export const getProjectsLocationsBackupChannelsBackupPlanBindings: API.OperationMethod<
   GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest,
@@ -4082,10 +3103,7 @@ export const getProjectsLocationsBackupChannelsBackupPlanBindings: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackupPlansError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackupPlansError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the details of a single BackupPlan. */
 export const getProjectsLocationsBackupPlans: API.OperationMethod<
   GetProjectsLocationsBackupPlansRequest,
@@ -4100,10 +3118,7 @@ export const getProjectsLocationsBackupPlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackupPlansBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackupPlansBackupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the details of a single Backup. */
 export const getProjectsLocationsBackupPlansBackups: API.OperationMethod<
   GetProjectsLocationsBackupPlansBackupsRequest,
@@ -4118,10 +3133,7 @@ export const getProjectsLocationsBackupPlansBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackupPlansBackupsVolumeBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackupPlansBackupsVolumeBackupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the details of a single VolumeBackup. */
 export const getProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationMethod<
   GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
@@ -4136,10 +3148,7 @@ export const getProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -4154,10 +3163,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRestoreChannelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRestoreChannelsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the details of a single RestoreChannel. */
 export const getProjectsLocationsRestoreChannels: API.OperationMethod<
   GetProjectsLocationsRestoreChannelsRequest,
@@ -4172,10 +3178,7 @@ export const getProjectsLocationsRestoreChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRestoreChannelsRestorePlanBindingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRestoreChannelsRestorePlanBindingsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the details of a single RestorePlanBinding. */
 export const getProjectsLocationsRestoreChannelsRestorePlanBindings: API.OperationMethod<
   GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
@@ -4190,10 +3193,7 @@ export const getProjectsLocationsRestoreChannelsRestorePlanBindings: API.Operati
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRestorePlansError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the details of a single RestorePlan. */
 export const getProjectsLocationsRestorePlans: API.OperationMethod<
   GetProjectsLocationsRestorePlansRequest,
@@ -4208,10 +3208,7 @@ export const getProjectsLocationsRestorePlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRestorePlansRestoresError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRestorePlansRestoresError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the details of a single Restore. */
 export const getProjectsLocationsRestorePlansRestores: API.OperationMethod<
   GetProjectsLocationsRestorePlansRestoresRequest,
@@ -4226,10 +3223,7 @@ export const getProjectsLocationsRestorePlansRestores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRestorePlansRestoresVolumeRestoresError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the details of a single VolumeRestore. */
 export const getProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
   GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
@@ -4244,10 +3238,7 @@ export const getProjectsLocationsRestorePlansRestoresVolumeRestores: API.Operati
   retry: Retry.Retry,
 }));
 
-export type GetTagsProjectsLocationsBackupPlansError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetTagsProjectsLocationsBackupPlansError = NotFound | Forbidden | GcpOpError;
 /** Returns tags directly bound to a GCP resource. */
 export const getTagsProjectsLocationsBackupPlans: API.OperationMethod<
   GetTagsProjectsLocationsBackupPlansRequest,
@@ -4262,10 +3253,7 @@ export const getTagsProjectsLocationsBackupPlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetTagsProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetTagsProjectsLocationsRestorePlansError = NotFound | Forbidden | GcpOpError;
 /** Returns tags directly bound to a GCP resource. */
 export const getTagsProjectsLocationsRestorePlans: API.OperationMethod<
   GetTagsProjectsLocationsRestorePlansRequest,
@@ -4293,16 +3281,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBackupChannelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBackupChannelsError = NotFound | Forbidden | GcpOpError;
 /** Lists BackupChannels in a given location. */
 export const listProjectsLocationsBackupChannels: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupChannelsRequest,
@@ -4315,16 +3297,10 @@ export const listProjectsLocationsBackupChannels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBackupChannelsBackupPlanBindingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBackupChannelsBackupPlanBindingsError = NotFound | Forbidden | GcpOpError;
 /** Lists BackupPlanBindings in a given location. */
 export const listProjectsLocationsBackupChannelsBackupPlanBindings: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest,
@@ -4337,16 +3313,10 @@ export const listProjectsLocationsBackupChannelsBackupPlanBindings: API.Paginate
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBackupPlansError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBackupPlansError = NotFound | Forbidden | GcpOpError;
 /** Lists BackupPlans in a given location. */
 export const listProjectsLocationsBackupPlans: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupPlansRequest,
@@ -4359,16 +3329,10 @@ export const listProjectsLocationsBackupPlans: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBackupPlansBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBackupPlansBackupsError = NotFound | Forbidden | GcpOpError;
 /** Lists the Backups for a given BackupPlan. */
 export const listProjectsLocationsBackupPlansBackups: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupPlansBackupsRequest,
@@ -4381,16 +3345,10 @@ export const listProjectsLocationsBackupPlansBackups: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBackupPlansBackupsVolumeBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBackupPlansBackupsVolumeBackupsError = NotFound | Forbidden | GcpOpError;
 /** Lists the VolumeBackups for a given Backup. */
 export const listProjectsLocationsBackupPlansBackupsVolumeBackups: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
@@ -4403,16 +3361,10 @@ export const listProjectsLocationsBackupPlansBackupsVolumeBackups: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -4425,16 +3377,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRestoreChannelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRestoreChannelsError = NotFound | Forbidden | GcpOpError;
 /** Lists RestoreChannels in a given location. */
 export const listProjectsLocationsRestoreChannels: API.PaginatedOperationMethod<
   ListProjectsLocationsRestoreChannelsRequest,
@@ -4447,16 +3393,10 @@ export const listProjectsLocationsRestoreChannels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRestoreChannelsRestorePlanBindingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRestoreChannelsRestorePlanBindingsError = NotFound | Forbidden | GcpOpError;
 /** Lists RestorePlanBindings in a given location. */
 export const listProjectsLocationsRestoreChannelsRestorePlanBindings: API.PaginatedOperationMethod<
   ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
@@ -4469,16 +3409,10 @@ export const listProjectsLocationsRestoreChannelsRestorePlanBindings: API.Pagina
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRestorePlansError = NotFound | Forbidden | GcpOpError;
 /** Lists RestorePlans in a given location. */
 export const listProjectsLocationsRestorePlans: API.PaginatedOperationMethod<
   ListProjectsLocationsRestorePlansRequest,
@@ -4491,16 +3425,10 @@ export const listProjectsLocationsRestorePlans: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRestorePlansRestoresError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRestorePlansRestoresError = NotFound | Forbidden | GcpOpError;
 /** Lists the Restores for a given RestorePlan. */
 export const listProjectsLocationsRestorePlansRestores: API.PaginatedOperationMethod<
   ListProjectsLocationsRestorePlansRestoresRequest,
@@ -4513,16 +3441,10 @@ export const listProjectsLocationsRestorePlansRestores: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRestorePlansRestoresVolumeRestoresError = NotFound | Forbidden | GcpOpError;
 /** Lists the VolumeRestores for a given Restore. */
 export const listProjectsLocationsRestorePlansRestoresVolumeRestores: API.PaginatedOperationMethod<
   ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
@@ -4535,18 +3457,10 @@ export const listProjectsLocationsRestorePlansRestoresVolumeRestores: API.Pagina
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsBackupChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBackupChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a BackupChannel. */
 export const patchProjectsLocationsBackupChannels: API.OperationMethod<
   PatchProjectsLocationsBackupChannelsRequest,
@@ -4561,12 +3475,7 @@ export const patchProjectsLocationsBackupChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsBackupPlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBackupPlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a BackupPlan. */
 export const patchProjectsLocationsBackupPlans: API.OperationMethod<
   PatchProjectsLocationsBackupPlansRequest,
@@ -4581,12 +3490,7 @@ export const patchProjectsLocationsBackupPlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsBackupPlansBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBackupPlansBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a Backup. */
 export const patchProjectsLocationsBackupPlansBackups: API.OperationMethod<
   PatchProjectsLocationsBackupPlansBackupsRequest,
@@ -4601,12 +3505,7 @@ export const patchProjectsLocationsBackupPlansBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRestoreChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRestoreChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a RestoreChannel. */
 export const patchProjectsLocationsRestoreChannels: API.OperationMethod<
   PatchProjectsLocationsRestoreChannelsRequest,
@@ -4621,12 +3520,7 @@ export const patchProjectsLocationsRestoreChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRestorePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a RestorePlan. */
 export const patchProjectsLocationsRestorePlans: API.OperationMethod<
   PatchProjectsLocationsRestorePlansRequest,
@@ -4641,12 +3535,7 @@ export const patchProjectsLocationsRestorePlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRestorePlansRestoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRestorePlansRestoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a Restore. */
 export const patchProjectsLocationsRestorePlansRestores: API.OperationMethod<
   PatchProjectsLocationsRestorePlansRestoresRequest,
@@ -4661,12 +3550,7 @@ export const patchProjectsLocationsRestorePlansRestores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsBackupPlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsBackupPlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsBackupPlans: API.OperationMethod<
   SetIamPolicyProjectsLocationsBackupPlansRequest,
@@ -4681,12 +3565,7 @@ export const setIamPolicyProjectsLocationsBackupPlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsBackupPlansBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsBackupPlansBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsBackupPlansBackups: API.OperationMethod<
   SetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
@@ -4701,12 +3580,7 @@ export const setIamPolicyProjectsLocationsBackupPlansBackups: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationMethod<
   SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
@@ -4721,12 +3595,7 @@ export const setIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackups: API.O
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsRestorePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsRestorePlans: API.OperationMethod<
   SetIamPolicyProjectsLocationsRestorePlansRequest,
@@ -4741,12 +3610,7 @@ export const setIamPolicyProjectsLocationsRestorePlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsRestorePlansRestoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsRestorePlansRestoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsRestorePlansRestores: API.OperationMethod<
   SetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
@@ -4761,8 +3625,7 @@ export const setIamPolicyProjectsLocationsRestorePlansRestores: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
   SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
@@ -4777,12 +3640,7 @@ export const setIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores: AP
   retry: Retry.Retry,
 }));
 
-export type SetTagsProjectsLocationsBackupPlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetTagsProjectsLocationsBackupPlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates tags directly bound to a GCP resource. */
 export const setTagsProjectsLocationsBackupPlans: API.OperationMethod<
   SetTagsProjectsLocationsBackupPlansRequest,
@@ -4797,12 +3655,7 @@ export const setTagsProjectsLocationsBackupPlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetTagsProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetTagsProjectsLocationsRestorePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates tags directly bound to a GCP resource. */
 export const setTagsProjectsLocationsRestorePlans: API.OperationMethod<
   SetTagsProjectsLocationsRestorePlansRequest,
@@ -4817,12 +3670,7 @@ export const setTagsProjectsLocationsRestorePlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsBackupPlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsBackupPlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBackupPlans: API.OperationMethod<
   TestIamPermissionsProjectsLocationsBackupPlansRequest,
@@ -4837,12 +3685,7 @@ export const testIamPermissionsProjectsLocationsBackupPlans: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsBackupPlansBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsBackupPlansBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBackupPlansBackups: API.OperationMethod<
   TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest,
@@ -4857,8 +3700,7 @@ export const testIamPermissionsProjectsLocationsBackupPlansBackups: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationMethod<
   TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
@@ -4866,20 +3708,14 @@ export const testIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackups:
   TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
+  input: TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
   output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsRestorePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsRestorePlans: API.OperationMethod<
   TestIamPermissionsProjectsLocationsRestorePlansRequest,
@@ -4894,12 +3730,7 @@ export const testIamPermissionsProjectsLocationsRestorePlans: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsRestorePlansRestoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsRestorePlansRestoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsRestorePlansRestores: API.OperationMethod<
   TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest,
@@ -4914,8 +3745,7 @@ export const testIamPermissionsProjectsLocationsRestorePlansRestores: API.Operat
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
   TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
@@ -4923,10 +3753,10 @@ export const testIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestor
   TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  input: TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
   output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

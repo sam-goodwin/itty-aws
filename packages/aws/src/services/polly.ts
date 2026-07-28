@@ -256,12 +256,7 @@ export const DeleteLexiconOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteLexiconOutput",
 }) as any as S.Schema<DeleteLexiconOutput>;
-export type Engine =
-  | "standard"
-  | "neural"
-  | "long-form"
-  | "generative"
-  | (string & {});
+export type Engine = "standard" | "neural" | "long-form" | "generative";
 export const Engine = /*@__PURE__*/ S.String;
 
 export type LanguageCode =
@@ -306,15 +301,14 @@ export type LanguageCode =
   | "fr-BE"
   | "cs-CZ"
   | "de-CH"
-  | "en-SG"
-  | (string & {});
+  | "en-SG";
 export const LanguageCode = /*@__PURE__*/ S.String;
 
 export type IncludeAdditionalLanguageCodes = boolean;
 export type NextToken = string;
 export interface DescribeVoicesInput {
-  Engine?: Engine;
-  LanguageCode?: LanguageCode;
+  Engine?: Engine | (string & {});
+  LanguageCode?: LanguageCode | (string & {});
   IncludeAdditionalLanguageCodes?: boolean;
   NextToken?: string;
 }
@@ -340,7 +334,7 @@ export const DescribeVoicesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeVoicesInput",
 }) as any as S.Schema<DescribeVoicesInput>;
-export type Gender = "Female" | "Male" | (string & {});
+export type Gender = "Female" | "Male";
 export const Gender = /*@__PURE__*/ S.String;
 
 export type VoiceId =
@@ -449,8 +443,7 @@ export type VoiceId =
   | "Florian"
   | "Lennart"
   | "Lorenzo"
-  | "Tiffany"
-  | (string & {});
+  | "Tiffany";
 export const VoiceId = /*@__PURE__*/ S.String;
 
 export type LanguageName = string;
@@ -578,12 +571,7 @@ export const GetSpeechSynthesisTaskInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSpeechSynthesisTaskInput",
 }) as any as S.Schema<GetSpeechSynthesisTaskInput>;
-export type TaskStatus =
-  | "scheduled"
-  | "inProgress"
-  | "completed"
-  | "failed"
-  | (string & {});
+export type TaskStatus = "scheduled" | "inProgress" | "completed" | "failed";
 export const TaskStatus = /*@__PURE__*/ S.String;
 
 export type TaskStatusReason = string;
@@ -599,22 +587,16 @@ export type OutputFormat =
   | "ogg_vorbis"
   | "pcm"
   | "mulaw"
-  | "alaw"
-  | (string & {});
+  | "alaw";
 export const OutputFormat = /*@__PURE__*/ S.String;
 
 export type SampleRate = string;
-export type SpeechMarkType =
-  | "sentence"
-  | "ssml"
-  | "viseme"
-  | "word"
-  | (string & {});
+export type SpeechMarkType = "sentence" | "ssml" | "viseme" | "word";
 export const SpeechMarkType = /*@__PURE__*/ S.String;
 
 export type SpeechMarkTypeList = SpeechMarkType[];
 export const SpeechMarkTypeList = /*@__PURE__*/ S.Array(SpeechMarkType);
-export type TextType = "ssml" | "text" | (string & {});
+export type TextType = "ssml" | "text";
 export const TextType = /*@__PURE__*/ S.String;
 
 export interface SynthesisTask {
@@ -711,7 +693,7 @@ export type MaxResults = number;
 export interface ListSpeechSynthesisTasksInput {
   MaxResults?: number;
   NextToken?: string;
-  Status?: TaskStatus;
+  Status?: TaskStatus | (string & {});
 }
 export const ListSpeechSynthesisTasksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -786,7 +768,7 @@ export const FlushStreamConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlushStreamConfiguration>;
 export interface TextEvent {
   Text: string;
-  TextType?: TextType;
+  TextType?: TextType | (string & {});
   FlushStreamConfiguration?: FlushStreamConfiguration;
 }
 export const TextEvent = /*@__PURE__*/ S.suspend(() =>
@@ -815,12 +797,12 @@ export const StartSpeechSynthesisStreamActionStream =
     stream.Stream<StartSpeechSynthesisStreamActionStream, Error, never>
   >;
 export interface StartSpeechSynthesisStreamInput {
-  Engine: Engine;
-  LanguageCode?: LanguageCode;
+  Engine: Engine | (string & {});
+  LanguageCode?: LanguageCode | (string & {});
   LexiconNames?: string[];
-  OutputFormat: OutputFormat;
+  OutputFormat: OutputFormat | (string & {});
   SampleRate?: string;
-  VoiceId: VoiceId;
+  VoiceId: VoiceId | (string & {});
   ActionStream?: stream.Stream<
     StartSpeechSynthesisStreamActionStream,
     Error,
@@ -876,8 +858,7 @@ export type ValidationExceptionReason =
   | "unsupportedOperation"
   | "fieldValidationFailed"
   | "other"
-  | "invalidInboundEvent"
-  | (string & {});
+  | "invalidInboundEvent";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionFieldName = string;
@@ -897,11 +878,10 @@ export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
 );
 export type QuotaCode =
   | "input-stream-inbound-event-timeout"
-  | "input-stream-timeout"
-  | (string & {});
+  | "input-stream-timeout";
 export const QuotaCode = /*@__PURE__*/ S.String;
 
-export type ServiceCode = "polly" | (string & {});
+export type ServiceCode = "polly";
 export const ServiceCode = /*@__PURE__*/ S.String;
 
 export type AvailabilityErrorMessage = string;
@@ -1015,18 +995,18 @@ export const StartSpeechSynthesisStreamOutput = /*@__PURE__*/ S.suspend(() =>
 export type OutputS3BucketName = string;
 export type OutputS3KeyPrefix = string;
 export interface StartSpeechSynthesisTaskInput {
-  Engine?: Engine;
-  LanguageCode?: LanguageCode;
+  Engine?: Engine | (string & {});
+  LanguageCode?: LanguageCode | (string & {});
   LexiconNames?: string[];
-  OutputFormat: OutputFormat;
+  OutputFormat: OutputFormat | (string & {});
   OutputS3BucketName: string;
   OutputS3KeyPrefix?: string;
   SampleRate?: string;
   SnsTopicArn?: string;
   SpeechMarkTypes?: SpeechMarkType[];
   Text: string;
-  TextType?: TextType;
-  VoiceId: VoiceId;
+  TextType?: TextType | (string & {});
+  VoiceId: VoiceId | (string & {});
 }
 export const StartSpeechSynthesisTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1065,15 +1045,15 @@ export const StartSpeechSynthesisTaskOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartSpeechSynthesisTaskOutput",
 }) as any as S.Schema<StartSpeechSynthesisTaskOutput>;
 export interface SynthesizeSpeechInput {
-  Engine?: Engine;
-  LanguageCode?: LanguageCode;
+  Engine?: Engine | (string & {});
+  LanguageCode?: LanguageCode | (string & {});
   LexiconNames?: string[];
-  OutputFormat: OutputFormat;
+  OutputFormat: OutputFormat | (string & {});
   SampleRate?: string;
   SpeechMarkTypes?: SpeechMarkType[];
   Text: string;
-  TextType?: TextType;
-  VoiceId: VoiceId;
+  TextType?: TextType | (string & {});
+  VoiceId: VoiceId | (string & {});
 }
 export const SynthesizeSpeechInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

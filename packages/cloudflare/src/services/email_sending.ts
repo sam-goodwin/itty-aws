@@ -238,8 +238,7 @@ export type SubdomainsDnsGetResultItemType =
   | "SSHFP"
   | "SVCB"
   | "TLSA"
-  | "URI"
-  | (string & {});
+  | "URI";
 export const SubdomainsDnsGetResultItemType = /*@__PURE__*/ S.String;
 
 export interface SubdomainsDnsGetResultItem {
@@ -383,9 +382,7 @@ export const SendRequestFrom = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
 
-export type SendRequestAttachmentsItemInlineDisposition =
-  | "inline"
-  | (string & {});
+export type SendRequestAttachmentsItemInlineDisposition = "inline";
 export const SendRequestAttachmentsItemInlineDisposition =
   /*@__PURE__*/ S.String;
 
@@ -395,7 +392,7 @@ export interface SendRequestAttachmentsItemInline {
   /** Content ID used to reference this attachment in HTML via cid: URI (e.g., <img src="cid:logo">). */
   contentId: string;
   /** Must be 'inline'. Indicates the attachment is embedded in the email body. */
-  disposition: SendRequestAttachmentsItemInlineDisposition;
+  disposition: SendRequestAttachmentsItemInlineDisposition | (string & {});
   /** Filename for the attachment. */
   filename: string;
   /** MIME type of the attachment (e.g., 'image/png', 'text/plain'). */
@@ -413,9 +410,7 @@ export const SendRequestAttachmentsItemInline = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendRequestAttachmentsItemInline",
 }) as any as S.Schema<SendRequestAttachmentsItemInline>;
 
-export type SendRequestAttachmentsItemAttachmentDisposition =
-  | "attachment"
-  | (string & {});
+export type SendRequestAttachmentsItemAttachmentDisposition = "attachment";
 export const SendRequestAttachmentsItemAttachmentDisposition =
   /*@__PURE__*/ S.String;
 
@@ -423,7 +418,7 @@ export interface SendRequestAttachmentsItemAttachment {
   /** Base64-encoded content of the attachment. */
   content: string;
   /** Must be 'attachment'. Indicates a standard file attachment. */
-  disposition: SendRequestAttachmentsItemAttachmentDisposition;
+  disposition: SendRequestAttachmentsItemAttachmentDisposition | (string & {});
   /** Filename for the attachment. */
   filename: string;
   /** MIME type of the attachment (e.g., 'application/pdf', 'text/plain'). */

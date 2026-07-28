@@ -123,7 +123,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 export type OutpostId = string;
 export type SubnetId = string;
 export type SecurityGroupId = string;
-export type EndpointAccessType = "Private" | "CustomerOwnedIp" | (string & {});
+export type EndpointAccessType = "Private" | "CustomerOwnedIp";
 export const EndpointAccessType = /*@__PURE__*/ S.String;
 
 export type CustomerOwnedIpv4Pool = string;
@@ -131,7 +131,7 @@ export interface CreateEndpointRequest {
   OutpostId: string;
   SubnetId: string;
   SecurityGroupId: string;
-  AccessType?: EndpointAccessType;
+  AccessType?: EndpointAccessType | (string & {});
   CustomerOwnedIpv4Pool?: string;
 }
 export const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
@@ -220,8 +220,7 @@ export type EndpointStatus =
   | "Available"
   | "Deleting"
   | "Create_Failed"
-  | "Delete_Failed"
-  | (string & {});
+  | "Delete_Failed";
 export const EndpointStatus = /*@__PURE__*/ S.String;
 
 export type CreationTime = Date;

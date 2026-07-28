@@ -143,8 +143,7 @@ export type TranscriptionLanguage =
   | "ita"
   | "deu"
   | "spa"
-  | "por"
-  | (string & {});
+  | "por";
 export const TranscriptionLanguage = /*@__PURE__*/ S.String;
 
 export interface AspectRatio {
@@ -155,11 +154,7 @@ export const AspectRatio = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ width: S.Number, height: S.Number }),
 ).annotate({ identifier: "AspectRatio" }) as any as S.Schema<AspectRatio>;
 export type DictionaryId = string;
-export type ProfanityFilterMode =
-  | "DISABLED"
-  | "CENSOR"
-  | "DROP"
-  | (string & {});
+export type ProfanityFilterMode = "DISABLED" | "CENSOR" | "DROP";
 export const ProfanityFilterMode = /*@__PURE__*/ S.String;
 
 export interface SubtitlingConfig {
@@ -187,13 +182,13 @@ export const OutputConfig = /*@__PURE__*/ S.Union([
   S.Struct({ clipping: ClippingConfig }),
   S.Struct({ subtitling: SubtitlingConfig }),
 ]);
-export type OutputStatus = "ENABLED" | "DISABLED" | (string & {});
+export type OutputStatus = "ENABLED" | "DISABLED";
 export const OutputStatus = /*@__PURE__*/ S.String;
 
 export interface CreateOutput {
   name: string;
   outputConfig: OutputConfig;
-  status: OutputStatus;
+  status: OutputStatus | (string & {});
   description?: string;
 }
 export const CreateOutput = /*@__PURE__*/ S.suspend(() =>
@@ -241,14 +236,7 @@ export const AssociateFeedResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateFeedResponse",
 }) as any as S.Schema<AssociateFeedResponse>;
-export type DictionaryLanguage =
-  | "eng"
-  | "fra"
-  | "ita"
-  | "deu"
-  | "spa"
-  | "por"
-  | (string & {});
+export type DictionaryLanguage = "eng" | "fra" | "ita" | "deu" | "spa" | "por";
 export const DictionaryLanguage = /*@__PURE__*/ S.String;
 
 export type DictionaryEntriesPayload = string;
@@ -261,7 +249,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
 );
 export interface CreateDictionaryRequest {
   name: string;
-  language: DictionaryLanguage;
+  language: DictionaryLanguage | (string & {});
   entries?: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -290,8 +278,7 @@ export type DictionaryStatus =
   | "AVAILABLE"
   | "REFERENCED"
   | "DELETING"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const DictionaryStatus = /*@__PURE__*/ S.String;
 
 export type FeedReferences = string[];
@@ -368,8 +355,7 @@ export type FeedStatus =
   | "UPDATING"
   | "DELETING"
   | "DELETED"
-  | "ARCHIVED"
-  | (string & {});
+  | "ARCHIVED";
 export const FeedStatus = /*@__PURE__*/ S.String;
 
 export interface FeedAssociation {
@@ -779,7 +765,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDictionaryRequest {
   id: string;
   name?: string;
-  language?: DictionaryLanguage;
+  language?: DictionaryLanguage | (string & {});
   entries?: string;
 }
 export const UpdateDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
@@ -826,7 +812,7 @@ export const UpdateDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateOutput {
   name: string;
   outputConfig: OutputConfig;
-  status: OutputStatus;
+  status: OutputStatus | (string & {});
   description?: string;
   fromAssociation?: boolean;
 }

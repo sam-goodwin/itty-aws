@@ -64,7 +64,7 @@ export class InvalidHealthcheckEndpoint extends T.applyErrorMatchers(
   [{ code: 1002 }],
 ) {}
 
-export type EndpointHealthchecksCreateRequestCheckType = "icmp" | (string & {});
+export type EndpointHealthchecksCreateRequestCheckType = "icmp";
 export const EndpointHealthchecksCreateRequestCheckType =
   /*@__PURE__*/ S.String;
 
@@ -72,7 +72,7 @@ export interface CreateEndpointHealthcheckRequest {
   /** Identifier */
   accountId: string;
   /** type of check to perform */
-  checkType: EndpointHealthchecksCreateRequestCheckType;
+  checkType: EndpointHealthchecksCreateRequestCheckType | (string & {});
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** Optional name associated with this check */
@@ -99,9 +99,7 @@ export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEndpointHealthcheckRequest",
 }) as any as S.Schema<CreateEndpointHealthcheckRequest>;
 
-export type EndpointHealthchecksCreateResponseCheckType =
-  | "icmp"
-  | (string & {});
+export type EndpointHealthchecksCreateResponseCheckType = "icmp";
 export const EndpointHealthchecksCreateResponseCheckType =
   /*@__PURE__*/ S.String;
 
@@ -144,15 +142,14 @@ export type TraceroutesCreateRequestOptionsPacketType =
   | "tcp"
   | "udp"
   | "gre"
-  | "gre+icmp"
-  | (string & {});
+  | "gre+icmp";
 export const TraceroutesCreateRequestOptionsPacketType = /*@__PURE__*/ S.String;
 
 export interface TraceroutesCreateRequestOptions {
   /** Max TTL. */
   maxTtl?: number;
   /** Type of packet sent. */
-  packetType?: TraceroutesCreateRequestOptionsPacketType;
+  packetType?: TraceroutesCreateRequestOptionsPacketType | (string & {});
   /** Number of packets sent at each TTL. */
   packetsPerTtl?: number;
   /** For UDP and TCP, specifies the destination port. For ICMP, specifies the initial ICMP sequence value. Default value 0 will choose the best value to use for each protocol. */
@@ -222,8 +219,7 @@ export type TraceroutesCreateResultItemColosItemError =
   | "Could not gather traceroute data: Code 1"
   | "Could not gather traceroute data: Code 2"
   | "Could not gather traceroute data: Code 3"
-  | "Could not gather traceroute data: Code 4"
-  | (string & {});
+  | "Could not gather traceroute data: Code 4";
 export const TraceroutesCreateResultItemColosItemError = /*@__PURE__*/ S.String;
 
 export type TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList =
@@ -425,7 +421,7 @@ export const GetEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEndpointHealthcheckRequest",
 }) as any as S.Schema<GetEndpointHealthcheckRequest>;
 
-export type EndpointHealthchecksGetResponseCheckType = "icmp" | (string & {});
+export type EndpointHealthchecksGetResponseCheckType = "icmp";
 export const EndpointHealthchecksGetResponseCheckType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -472,7 +468,7 @@ export const ListEndpointHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEndpointHealthchecksRequest",
 }) as any as S.Schema<ListEndpointHealthchecksRequest>;
 
-export type EndpointHealthchecksListResponseCheckType = "icmp" | (string & {});
+export type EndpointHealthchecksListResponseCheckType = "icmp";
 export const EndpointHealthchecksListResponseCheckType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -513,7 +509,7 @@ export const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEndpointHealthchecksResponse",
 }) as any as S.Schema<ListEndpointHealthchecksResponse>;
 
-export type EndpointHealthchecksUpdateRequestCheckType = "icmp" | (string & {});
+export type EndpointHealthchecksUpdateRequestCheckType = "icmp";
 export const EndpointHealthchecksUpdateRequestCheckType =
   /*@__PURE__*/ S.String;
 
@@ -523,7 +519,7 @@ export interface UpdateEndpointHealthcheckRequest {
   /** UUID. */
   id: string;
   /** type of check to perform */
-  checkType: EndpointHealthchecksUpdateRequestCheckType;
+  checkType: EndpointHealthchecksUpdateRequestCheckType | (string & {});
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** Optional name associated with this check */
@@ -551,9 +547,7 @@ export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEndpointHealthcheckRequest",
 }) as any as S.Schema<UpdateEndpointHealthcheckRequest>;
 
-export type EndpointHealthchecksUpdateResponseCheckType =
-  | "icmp"
-  | (string & {});
+export type EndpointHealthchecksUpdateResponseCheckType = "icmp";
 export const EndpointHealthchecksUpdateResponseCheckType =
   /*@__PURE__*/ S.String;
 

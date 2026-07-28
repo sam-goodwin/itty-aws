@@ -82,14 +82,15 @@ export class ZonePurged extends T.applyErrorMatchers(
 export type SettingsOperationsBulkEditRequestBodyValueMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsOperationsBulkEditRequestBodyValueMitigationAction =
   /*@__PURE__*/ S.String;
 
 export interface SettingsOperationsBulkEditRequestBodyValue {
   /** Mitigation actions are as follows: */
-  mitigationAction?: SettingsOperationsBulkEditRequestBodyValueMitigationAction;
+  mitigationAction?:
+    | SettingsOperationsBulkEditRequestBodyValueMitigationAction
+    | (string & {});
 }
 export const SettingsOperationsBulkEditRequestBodyValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -137,8 +138,7 @@ export const BulkPatchSettingOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsOperationsBulkEditResultValueMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const SettingsOperationsBulkEditResultValueMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -177,14 +177,14 @@ export const BulkPatchSettingOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPatchSettingOperationsResponse",
 }) as any as S.Schema<BulkPatchSettingOperationsResponse>;
 
-export type SchemasCreateRequestKind = "openapi_v3" | (string & {});
+export type SchemasCreateRequestKind = "openapi_v3";
 export const SchemasCreateRequestKind = /*@__PURE__*/ S.String;
 
 export interface CreateSchemaRequest {
   /** Identifier. */
   zoneId: string;
   /** The kind of the schema */
-  kind: SchemasCreateRequestKind;
+  kind: SchemasCreateRequestKind | (string & {});
   /** A human-readable name for the schema */
   name: string;
   /** The raw schema, e.g., the OpenAPI schema, either as JSON or YAML */
@@ -212,7 +212,7 @@ export const CreateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSchemaRequest",
 }) as any as S.Schema<CreateSchemaRequest>;
 
-export type SchemasCreateResponseKind = "openapi_v3" | (string & {});
+export type SchemasCreateResponseKind = "openapi_v3";
 export const SchemasCreateResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -340,7 +340,7 @@ export const GetSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSchemaRequest",
 }) as any as S.Schema<GetSchemaRequest>;
 
-export type SchemasGetResponseKind = "openapi_v3" | (string & {});
+export type SchemasGetResponseKind = "openapi_v3";
 export const SchemasGetResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -393,14 +393,11 @@ export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsGetResponseValidationDefaultMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsGetResponseValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
-export type SettingsGetResponseValidationOverrideMitigationAction =
-  | "none"
-  | (string & {});
+export type SettingsGetResponseValidationOverrideMitigationAction = "none";
 export const SettingsGetResponseValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -453,8 +450,7 @@ export const GetSettingOperationRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsOperationsGetResponseMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const SettingsOperationsGetResponseMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -510,7 +506,7 @@ export const ListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSchemasRequest",
 }) as any as S.Schema<ListSchemasRequest>;
 
-export type SchemasListResultItemKind = "openapi_v3" | (string & {});
+export type SchemasListResultItemKind = "openapi_v3";
 export const SchemasListResultItemKind = /*@__PURE__*/ S.String;
 
 export interface SchemasListResultItem {
@@ -588,8 +584,7 @@ export const ListSettingOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsOperationsListResultItemMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const SettingsOperationsListResultItemMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -657,7 +652,7 @@ export const PatchSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSchemaRequest",
 }) as any as S.Schema<PatchSchemaRequest>;
 
-export type SchemasEditResponseKind = "openapi_v3" | (string & {});
+export type SchemasEditResponseKind = "openapi_v3";
 export const SchemasEditResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -690,14 +685,11 @@ export const PatchSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsEditRequestValidationDefaultMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsEditRequestValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
-export type SettingsEditRequestValidationOverrideMitigationAction =
-  | "none"
-  | (string & {});
+export type SettingsEditRequestValidationOverrideMitigationAction = "none";
 export const SettingsEditRequestValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -705,9 +697,14 @@ export interface PatchSettingRequest {
   /** Identifier. */
   zoneId: string;
   /** The default mitigation action used */
-  validationDefaultMitigationAction?: SettingsEditRequestValidationDefaultMitigationAction;
+  validationDefaultMitigationAction?:
+    | SettingsEditRequestValidationDefaultMitigationAction
+    | (string & {});
   /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?: SettingsEditRequestValidationOverrideMitigationAction | null;
+  validationOverrideMitigationAction?:
+    | SettingsEditRequestValidationOverrideMitigationAction
+    | (string & {})
+    | null;
 }
 export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -738,14 +735,11 @@ export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsEditResponseValidationDefaultMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsEditResponseValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
-export type SettingsEditResponseValidationOverrideMitigationAction =
-  | "none"
-  | (string & {});
+export type SettingsEditResponseValidationOverrideMitigationAction = "none";
 export const SettingsEditResponseValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -775,14 +769,11 @@ export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsUpdateRequestValidationDefaultMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsUpdateRequestValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
-export type SettingsUpdateRequestValidationOverrideMitigationAction =
-  | "none"
-  | (string & {});
+export type SettingsUpdateRequestValidationOverrideMitigationAction = "none";
 export const SettingsUpdateRequestValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -790,9 +781,14 @@ export interface PutSettingRequest {
   /** Identifier. */
   zoneId: string;
   /** The default mitigation action used */
-  validationDefaultMitigationAction: SettingsUpdateRequestValidationDefaultMitigationAction;
+  validationDefaultMitigationAction:
+    | SettingsUpdateRequestValidationDefaultMitigationAction
+    | (string & {});
   /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?: SettingsUpdateRequestValidationOverrideMitigationAction | null;
+  validationOverrideMitigationAction?:
+    | SettingsUpdateRequestValidationOverrideMitigationAction
+    | (string & {})
+    | null;
 }
 export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -822,14 +818,11 @@ export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsUpdateResponseValidationDefaultMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsUpdateResponseValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
-export type SettingsUpdateResponseValidationOverrideMitigationAction =
-  | "none"
-  | (string & {});
+export type SettingsUpdateResponseValidationOverrideMitigationAction = "none";
 export const SettingsUpdateResponseValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -859,8 +852,7 @@ export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsOperationsUpdateRequestMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const SettingsOperationsUpdateRequestMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -870,7 +862,9 @@ export interface PutSettingOperationRequest {
   /** UUID. */
   operationId: string;
   /** When set, this applies a mitigation action to this operation */
-  mitigationAction: SettingsOperationsUpdateRequestMitigationAction;
+  mitigationAction:
+    | SettingsOperationsUpdateRequestMitigationAction
+    | (string & {});
 }
 export const PutSettingOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -895,8 +889,7 @@ export const PutSettingOperationRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsOperationsUpdateResponseMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const SettingsOperationsUpdateResponseMitigationAction =
   /*@__PURE__*/ S.String;
 

@@ -197,8 +197,7 @@ export type HostnameCertificatesCreateResponseStatus =
   | "active"
   | "deleted"
   | "deployment_timed_out"
-  | "deletion_timed_out"
-  | (string & {});
+  | "deletion_timed_out";
 export const HostnameCertificatesCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -323,8 +322,7 @@ export type HostnameCertificatesDeleteResponseStatus =
   | "active"
   | "deleted"
   | "deployment_timed_out"
-  | "deletion_timed_out"
-  | (string & {});
+  | "deletion_timed_out";
 export const HostnameCertificatesDeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -436,8 +434,7 @@ export type HostnamesGetResponseCertStatus =
   | "active"
   | "deleted"
   | "deployment_timed_out"
-  | "deletion_timed_out"
-  | (string & {});
+  | "deletion_timed_out";
 export const HostnamesGetResponseCertStatus = /*@__PURE__*/ S.String;
 
 export type HostnamesGetResponseStatus =
@@ -447,8 +444,7 @@ export type HostnamesGetResponseStatus =
   | "active"
   | "deleted"
   | "deployment_timed_out"
-  | "deletion_timed_out"
-  | (string & {});
+  | "deletion_timed_out";
 export const HostnamesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -535,8 +531,7 @@ export type HostnameCertificatesGetResponseStatus =
   | "active"
   | "deleted"
   | "deployment_timed_out"
-  | "deletion_timed_out"
-  | (string & {});
+  | "deletion_timed_out";
 export const HostnameCertificatesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -688,8 +683,7 @@ export type HostnameCertificatesListResultItemStatus =
   | "active"
   | "deleted"
   | "deployment_timed_out"
-  | "deletion_timed_out"
-  | (string & {});
+  | "deletion_timed_out";
 export const HostnameCertificatesListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface HostnameCertificatesListResultItem {

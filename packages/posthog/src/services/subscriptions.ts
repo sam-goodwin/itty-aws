@@ -47,8 +47,7 @@ export const SubscriptionsCreateRequestDashboardExportInsightsList =
 export type AIWindowConfigModeEnum =
   | "since_last_sent"
   | "last_n_days"
-  | "days_ago_range"
-  | (string & {});
+  | "days_ago_range";
 export const AIWindowConfigModeEnum = /*@__PURE__*/ S.String;
 
 export interface AIWindowConfig {
@@ -78,16 +77,11 @@ export const AIPromptConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AIPromptConfig" }) as any as S.Schema<AIPromptConfig>;
 
 /** * `email` - Email * `slack` - Slack */
-export type TargetTypeEnum = "email" | "slack" | (string & {});
+export type TargetTypeEnum = "email" | "slack";
 export const TargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
-export type RecurrenceIntervalEnum =
-  | "daily"
-  | "weekly"
-  | "monthly"
-  | "yearly"
-  | (string & {});
+export type RecurrenceIntervalEnum = "daily" | "weekly" | "monthly" | "yearly";
 export const RecurrenceIntervalEnum = /*@__PURE__*/ S.String;
 
 /** * `monday` - Monday * `tuesday` - Tuesday * `wednesday` - Wednesday * `thursday` - Thursday * `friday` - Friday * `saturday` - Saturday * `sunday` - Sunday */
@@ -98,13 +92,13 @@ export type SubscriptionsCreateRequestByweekdayItem =
   | "thursday"
   | "friday"
   | "saturday"
-  | "sunday"
-  | (string & {});
+  | "sunday";
 export const SubscriptionsCreateRequestByweekdayItem = /*@__PURE__*/ S.String;
 
 /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-export type SubscriptionsCreateRequestByweekdayList =
-  ReadonlyArray<SubscriptionsCreateRequestByweekdayItem>;
+export type SubscriptionsCreateRequestByweekdayList = ReadonlyArray<
+  SubscriptionsCreateRequestByweekdayItem | (string & {})
+>;
 export const SubscriptionsCreateRequestByweekdayList = /*@__PURE__*/ S.Array(
   SubscriptionsCreateRequestByweekdayItem,
 ) as any as S.Schema<SubscriptionsCreateRequestByweekdayList>;
@@ -123,11 +117,11 @@ export interface SubscriptionsCreateRequest {
   /** Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes. */
   ai_prompt_config?: AIPromptConfig;
   /** Delivery channel: email or slack. * `email` - Email * `slack` - Slack */
-  target_type?: TargetTypeEnum;
+  target_type?: TargetTypeEnum | (string & {});
   /** Recipient(s): comma-separated email addresses for email, or Slack channel name/ID for slack. */
   target_value?: string;
   /** How often to deliver: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
-  frequency?: RecurrenceIntervalEnum;
+  frequency?: RecurrenceIntervalEnum | (string & {});
   /** Interval multiplier (e.g. 2 with weekly frequency means every 2 weeks). Required on create; must be 1 or greater. */
   interval?: number;
   /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
@@ -196,11 +190,7 @@ export const SubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsCreateRequest>;
 
 /** * `insight` - Insight * `dashboard` - Dashboard * `ai_prompt` - AI prompt */
-export type ResourceTypeEnum =
-  | "insight"
-  | "dashboard"
-  | "ai_prompt"
-  | (string & {});
+export type ResourceTypeEnum = "insight" | "dashboard" | "ai_prompt";
 export const ResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
@@ -219,8 +209,7 @@ export type SubscriptionOutputByweekdayItem =
   | "thursday"
   | "friday"
   | "saturday"
-  | "sunday"
-  | (string & {});
+  | "sunday";
 export const SubscriptionOutputByweekdayItem = /*@__PURE__*/ S.String;
 
 /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
@@ -245,11 +234,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -378,8 +366,7 @@ export type SubscriptionsDeliveriesListRequestStatus =
   | "completed"
   | "failed"
   | "skipped"
-  | "starting"
-  | (string & {});
+  | "starting";
 export const SubscriptionsDeliveriesListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsDeliveriesListRequest {
@@ -389,7 +376,7 @@ export interface SubscriptionsDeliveriesListRequest {
   /** The pagination cursor value. */
   cursor?: string;
   /** Return only deliveries in this run status (starting, completed, failed, or skipped). */
-  status?: SubscriptionsDeliveriesListRequestStatus;
+  status?: SubscriptionsDeliveriesListRequestStatus | (string & {});
 }
 export const SubscriptionsDeliveriesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -421,8 +408,7 @@ export type SubscriptionDeliveryStatusEnum =
   | "starting"
   | "completed"
   | "failed"
-  | "skipped"
-  | (string & {});
+  | "skipped";
 export const SubscriptionDeliveryStatusEnum = /*@__PURE__*/ S.String;
 
 export interface AIReportQueryDiagnostic {
@@ -605,14 +591,10 @@ export const SubscriptionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 export type SubscriptionsListRequestResourceType =
   | "ai_prompt"
   | "dashboard"
-  | "insight"
-  | (string & {});
+  | "insight";
 export const SubscriptionsListRequestResourceType = /*@__PURE__*/ S.String;
 
-export type SubscriptionsListRequestTargetType =
-  | "email"
-  | "slack"
-  | (string & {});
+export type SubscriptionsListRequestTargetType = "email" | "slack";
 export const SubscriptionsListRequestTargetType = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsListRequest {
@@ -635,11 +617,11 @@ export interface SubscriptionsListRequest {
   /** Which field to use when ordering the results. */
   ordering?: string;
   /** Filter by subscription resource: insight, dashboard export, or AI report. */
-  resource_type?: SubscriptionsListRequestResourceType;
+  resource_type?: SubscriptionsListRequestResourceType | (string & {});
   /** A search term. */
   search?: string;
   /** Filter by delivery channel (email or Slack). */
-  target_type?: SubscriptionsListRequestTargetType;
+  target_type?: SubscriptionsListRequestTargetType | (string & {});
 }
 export const SubscriptionsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -707,14 +689,14 @@ export type SubscriptionsPartialUpdateRequestByweekdayItem =
   | "thursday"
   | "friday"
   | "saturday"
-  | "sunday"
-  | (string & {});
+  | "sunday";
 export const SubscriptionsPartialUpdateRequestByweekdayItem =
   /*@__PURE__*/ S.String;
 
 /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-export type SubscriptionsPartialUpdateRequestByweekdayList =
-  ReadonlyArray<SubscriptionsPartialUpdateRequestByweekdayItem>;
+export type SubscriptionsPartialUpdateRequestByweekdayList = ReadonlyArray<
+  SubscriptionsPartialUpdateRequestByweekdayItem | (string & {})
+>;
 export const SubscriptionsPartialUpdateRequestByweekdayList =
   /*@__PURE__*/ S.Array(
     SubscriptionsPartialUpdateRequestByweekdayItem,
@@ -736,11 +718,11 @@ export interface SubscriptionsPartialUpdateRequest {
   /** Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes. */
   ai_prompt_config?: AIPromptConfig;
   /** Delivery channel: email or slack. * `email` - Email * `slack` - Slack */
-  target_type?: TargetTypeEnum;
+  target_type?: TargetTypeEnum | (string & {});
   /** Recipient(s): comma-separated email addresses for email, or Slack channel name/ID for slack. */
   target_value?: string;
   /** How often to deliver: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
-  frequency?: RecurrenceIntervalEnum;
+  frequency?: RecurrenceIntervalEnum | (string & {});
   /** Interval multiplier (e.g. 2 with weekly frequency means every 2 weeks). Required on create; must be 1 or greater. */
   interval?: number;
   /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
@@ -912,13 +894,13 @@ export type SubscriptionsUpdateRequestByweekdayItem =
   | "thursday"
   | "friday"
   | "saturday"
-  | "sunday"
-  | (string & {});
+  | "sunday";
 export const SubscriptionsUpdateRequestByweekdayItem = /*@__PURE__*/ S.String;
 
 /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-export type SubscriptionsUpdateRequestByweekdayList =
-  ReadonlyArray<SubscriptionsUpdateRequestByweekdayItem>;
+export type SubscriptionsUpdateRequestByweekdayList = ReadonlyArray<
+  SubscriptionsUpdateRequestByweekdayItem | (string & {})
+>;
 export const SubscriptionsUpdateRequestByweekdayList = /*@__PURE__*/ S.Array(
   SubscriptionsUpdateRequestByweekdayItem,
 ) as any as S.Schema<SubscriptionsUpdateRequestByweekdayList>;
@@ -939,11 +921,11 @@ export interface SubscriptionsUpdateRequest {
   /** Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes. */
   ai_prompt_config?: AIPromptConfig;
   /** Delivery channel: email or slack. * `email` - Email * `slack` - Slack */
-  target_type?: TargetTypeEnum;
+  target_type?: TargetTypeEnum | (string & {});
   /** Recipient(s): comma-separated email addresses for email, or Slack channel name/ID for slack. */
   target_value?: string;
   /** How often to deliver: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
-  frequency?: RecurrenceIntervalEnum;
+  frequency?: RecurrenceIntervalEnum | (string & {});
   /** Interval multiplier (e.g. 2 with weekly frequency means every 2 weeks). Required on create; must be 1 or greater. */
   interval?: number;
   /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */

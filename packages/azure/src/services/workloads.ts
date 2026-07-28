@@ -22,10 +22,7 @@ export const MonitorsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MonitorsCreateRequestTagsMap>;
 
 /** Type of managed service identity (only None, UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "UserAssigned"
-  | (string & {});
+export type ManagedServiceIdentityType = "None" | "UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -49,7 +46,7 @@ export const MonitorsCreateRequestIdentityUserAssignedIdentitiesMap =
 /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
 export interface MonitorsCreateRequestIdentity {
   /** Type of manage identity */
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MonitorsCreateRequestIdentityUserAssignedIdentitiesMap | null;
 }
@@ -65,10 +62,7 @@ export const MonitorsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorsCreateRequestIdentity>;
 
 /** Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET. */
-export type MonitorPropertiesInputRoutingPreference =
-  | "Default"
-  | "RouteAll"
-  | (string & {});
+export type MonitorPropertiesInputRoutingPreference = "Default" | "RouteAll";
 export const MonitorPropertiesInputRoutingPreference = /*@__PURE__*/ S.String;
 
 /** Managed resource group configuration */
@@ -89,7 +83,7 @@ export interface MonitorPropertiesInput {
   /** The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region. */
   appLocation?: string;
   /** Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET. */
-  routingPreference?: MonitorPropertiesInputRoutingPreference;
+  routingPreference?: MonitorPropertiesInputRoutingPreference | (string & {});
   /** Sets the preference for zone redundancy on resources created for the SAP monitor. By default resources will be created which do not support zone redundancy. */
   zoneRedundancyPreference?: string;
   /** Managed resource group configuration */
@@ -154,8 +148,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -163,8 +156,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -254,8 +246,7 @@ export type MonitorPropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Deleting"
-  | "Migrating"
-  | (string & {});
+  | "Migrating";
 export const MonitorPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Array of details about specific errors that led to this reported error. */
@@ -300,10 +291,7 @@ export const Error = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Error" }) as any as S.Schema<Error>;
 
 /** Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET. */
-export type MonitorPropertiesRoutingPreference =
-  | "Default"
-  | "RouteAll"
-  | (string & {});
+export type MonitorPropertiesRoutingPreference = "Default" | "RouteAll";
 export const MonitorPropertiesRoutingPreference = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a SAP monitor. */
@@ -780,7 +768,7 @@ export const MonitorsUpdateRequestIdentityUserAssignedIdentitiesMap =
 /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
 export interface MonitorsUpdateRequestIdentity {
   /** Type of manage identity */
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MonitorsUpdateRequestIdentityUserAssignedIdentitiesMap | null;
 }
@@ -933,11 +921,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -997,7 +985,7 @@ export const ProviderInstancesCreateRequestIdentityUserAssignedIdentitiesMap =
 /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
 export interface ProviderInstancesCreateRequestIdentity {
   /** Type of manage identity */
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ProviderInstancesCreateRequestIdentityUserAssignedIdentitiesMap | null;
 }
@@ -1114,8 +1102,7 @@ export type ProviderInstancePropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Deleting"
-  | "Migrating"
-  | (string & {});
+  | "Migrating";
 export const ProviderInstancePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1505,8 +1492,7 @@ export const LoadBalancerDetails_2 = /*@__PURE__*/ S.suspend(() =>
 export type ApplicationServerVirtualMachineType =
   | "Active"
   | "Standby"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const ApplicationServerVirtualMachineType = /*@__PURE__*/ S.String;
 
 /** Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage. */
@@ -1565,17 +1551,11 @@ export type SAPVirtualInstanceStatus =
   | "Offline"
   | "PartiallyRunning"
   | "Unavailable"
-  | "SoftShutdown"
-  | (string & {});
+  | "SoftShutdown";
 export const SAPVirtualInstanceStatus = /*@__PURE__*/ S.String;
 
 /** Defines the health of SAP Instances. */
-export type SAPHealthState =
-  | "Unknown"
-  | "Healthy"
-  | "Unhealthy"
-  | "Degraded"
-  | (string & {});
+export type SAPHealthState = "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
 export const SAPHealthState = /*@__PURE__*/ S.String;
 
 /** Defines the provisioning states. */
@@ -1585,8 +1565,7 @@ export type SapVirtualInstanceProvisioningState =
   | "Creating"
   | "Failed"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const SapVirtualInstanceProvisioningState = /*@__PURE__*/ S.String;
 
 /** Internal error details. */
@@ -1831,12 +1810,7 @@ export const SAPApplicationServerPropertiesVmDetailsList =
   ) as any as S.Schema<SAPApplicationServerPropertiesVmDetailsList>;
 
 /** Defines the health of SAP Instances. */
-export type HealthState =
-  | "Unknown"
-  | "Healthy"
-  | "Unhealthy"
-  | "Degraded"
-  | (string & {});
+export type HealthState = "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
 export const HealthState = /*@__PURE__*/ S.String;
 
 /** Defines the provisioning states. */
@@ -1845,8 +1819,7 @@ export type ProvisioningState =
   | "Updating"
   | "Creating"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Defines the SAP Application Server instance properties. */
@@ -2868,11 +2841,11 @@ export const SAPApplicationServerInstancesUpdateResponse =
   }) as any as S.Schema<SAPApplicationServerInstancesUpdateResponse>;
 
 /** Defines the SAP Product type. */
-export type SAPProductType = "ECC" | "S4HANA" | "Other" | (string & {});
+export type SAPProductType = "ECC" | "S4HANA" | "Other";
 export const SAPProductType = /*@__PURE__*/ S.String;
 
 /** Defines the supported SAP Database types. */
-export type SAPDatabaseType = "HANA" | "DB2" | (string & {});
+export type SAPDatabaseType = "HANA" | "DB2";
 export const SAPDatabaseType = /*@__PURE__*/ S.String;
 
 export interface SAPAvailabilityZoneDetailsRequest {
@@ -2882,9 +2855,9 @@ export interface SAPAvailabilityZoneDetailsRequest {
   location: string;
   /** The geo-location where the SAP resources will be created. */
   appLocation: string;
-  sapProduct: SAPProductType;
+  sapProduct: SAPProductType | (string & {});
   /** The database type. Eg: HANA, DB2, etc */
-  databaseType: SAPDatabaseType;
+  databaseType: SAPDatabaseType | (string & {});
 }
 export const SAPAvailabilityZoneDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3119,8 +3092,7 @@ export const GatewayServerProperties = /*@__PURE__*/ S.suspend(() =>
 /** Defines the type of Enqueue Replication Server. */
 export type EnqueueReplicationServerType =
   | "EnqueueReplicator1"
-  | "EnqueueReplicator2"
-  | (string & {});
+  | "EnqueueReplicator2";
 export const EnqueueReplicationServerType = /*@__PURE__*/ S.String;
 
 /** Defines the SAP Enqueue Replication Server (ERS) properties. */
@@ -3160,8 +3132,7 @@ export type CentralServerVirtualMachineType =
   | "ASCS"
   | "ERSInactive"
   | "ERS"
-  | "Standby"
-  | (string & {});
+  | "Standby";
 export const CentralServerVirtualMachineType = /*@__PURE__*/ S.String;
 
 /** Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage. */
@@ -5632,11 +5603,11 @@ export const SAPDatabaseInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SAPDatabaseInstancesUpdateResponse>;
 
 /** Defines the environment type - Production/Non Production. */
-export type EnvironmentType = "NonProd" | "Prod" | (string & {});
+export type EnvironmentType = "NonProd" | "Prod";
 export const EnvironmentType = /*@__PURE__*/ S.String;
 
 /** The type of SAP deployment, single server or Three tier. */
-export type DeploymentType = "SingleServer" | "ThreeTier" | (string & {});
+export type DeploymentType = "SingleServer" | "ThreeTier";
 export const DeploymentType = /*@__PURE__*/ S.String;
 
 export interface SAPDiskConfigurationsRequest {
@@ -5646,12 +5617,12 @@ export interface SAPDiskConfigurationsRequest {
   location: string;
   /** The geo-location where the SAP resources will be created. */
   appLocation: string;
-  environment: EnvironmentType;
-  sapProduct: SAPProductType;
+  environment: EnvironmentType | (string & {});
+  sapProduct: SAPProductType | (string & {});
   /** The database type. Eg: HANA, DB2, etc */
-  databaseType: SAPDatabaseType;
+  databaseType: SAPDatabaseType | (string & {});
   /** The deployment type. Eg: SingleServer/ThreeTier */
-  deploymentType: DeploymentType;
+  deploymentType: DeploymentType | (string & {});
   /** The VM SKU for database instance. */
   dbVmSku: string;
 }
@@ -5685,8 +5656,7 @@ export type DiskSkuName =
   | "UltraSSD_LRS"
   | "Premium_ZRS"
   | "StandardSSD_ZRS"
-  | "PremiumV2_LRS"
-  | (string & {});
+  | "PremiumV2_LRS";
 export const DiskSkuName = /*@__PURE__*/ S.String;
 
 /** The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS. */
@@ -5938,8 +5908,7 @@ export type SapLandscapeMonitorPropertiesProvisioningState =
   | "Created"
   | "Failed"
   | "Succeeded"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const SapLandscapeMonitorPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -6240,14 +6209,11 @@ export const SapLandscapeMonitorUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SapLandscapeMonitorUpdateResponse>;
 
 /** The database scale method. */
-export type DatabaseScaleMethod = "ScaleUp" | (string & {});
+export type DatabaseScaleMethod = "ScaleUp";
 export const DatabaseScaleMethod = /*@__PURE__*/ S.String;
 
 /** The high availability type (AvailabilitySet or AvailabilityZone). */
-export type HighAvailabilityType =
-  | "AvailabilitySet"
-  | "AvailabilityZone"
-  | (string & {});
+export type HighAvailabilityType = "AvailabilitySet" | "AvailabilityZone";
 export const HighAvailabilityType = /*@__PURE__*/ S.String;
 
 export interface SAPSizingRecommendationsRequest {
@@ -6257,20 +6223,20 @@ export interface SAPSizingRecommendationsRequest {
   location: string;
   /** The geo-location where the resource is to be created. */
   appLocation: string;
-  environment: EnvironmentType;
-  sapProduct: SAPProductType;
+  environment: EnvironmentType | (string & {});
+  sapProduct: SAPProductType | (string & {});
   /** The deployment type. Eg: SingleServer/ThreeTier */
-  deploymentType: DeploymentType;
+  deploymentType: DeploymentType | (string & {});
   /** The SAP Application Performance Standard measurement. */
   saps: number;
   /** The database memory configuration. */
   dbMemory: number;
   /** The database type. */
-  databaseType: SAPDatabaseType;
+  databaseType: SAPDatabaseType | (string & {});
   /** The DB scale method. */
-  dbScaleMethod?: DatabaseScaleMethod;
+  dbScaleMethod?: DatabaseScaleMethod | (string & {});
   /** The high availability type. */
-  highAvailabilityType?: HighAvailabilityType;
+  highAvailabilityType?: HighAvailabilityType | (string & {});
 }
 export const SAPSizingRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6316,14 +6282,14 @@ export interface SAPSupportedSkuRequest {
   location: string;
   /** The geo-location where the resource is to be created. */
   appLocation: string;
-  environment: EnvironmentType;
-  sapProduct: SAPProductType;
+  environment: EnvironmentType | (string & {});
+  sapProduct: SAPProductType | (string & {});
   /** The deployment type. Eg: SingleServer/ThreeTier */
-  deploymentType: DeploymentType;
+  deploymentType: DeploymentType | (string & {});
   /** The database type. Eg: HANA, DB2, etc */
-  databaseType: SAPDatabaseType;
+  databaseType: SAPDatabaseType | (string & {});
   /** The high availability type. */
-  highAvailabilityType?: HighAvailabilityType;
+  highAvailabilityType?: HighAvailabilityType | (string & {});
 }
 export const SAPSupportedSkuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6397,22 +6363,18 @@ export const SapVirtualInstancesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SapVirtualInstancesCreateRequestTagsMap>;
 
 /** Defines the environment type - Production/Non Production. */
-export type SAPEnvironmentType = "NonProd" | "Prod" | (string & {});
+export type SAPEnvironmentType = "NonProd" | "Prod";
 export const SAPEnvironmentType = /*@__PURE__*/ S.String;
 
 /** Defines the network access type for managed resources. */
-export type ManagedResourcesNetworkAccessType =
-  | "Public"
-  | "Private"
-  | (string & {});
+export type ManagedResourcesNetworkAccessType = "Public" | "Private";
 export const ManagedResourcesNetworkAccessType = /*@__PURE__*/ S.String;
 
 /** The configuration Type. */
 export type SAPConfigurationType =
   | "Deployment"
   | "Discovery"
-  | "DeploymentWithOSConfig"
-  | (string & {});
+  | "DeploymentWithOSConfig";
 export const SAPConfigurationType = /*@__PURE__*/ S.String;
 
 /** The SAP Configuration. */
@@ -6431,11 +6393,13 @@ export const SAPConfiguration_2 = /*@__PURE__*/ S.suspend(() =>
 /** Defines the Virtual Instance for SAP solutions resource properties. */
 export interface SAPVirtualInstancePropertiesInput_2 {
   /** Defines the environment type - Production/Non Production. */
-  environment: SAPEnvironmentType;
+  environment: SAPEnvironmentType | (string & {});
   /** Defines the SAP Product type. */
-  sapProduct: SAPProductType;
+  sapProduct: SAPProductType | (string & {});
   /** Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group. The options to choose from are Public and Private. If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist. This is required for establishing connectivity between VM extensions and the managed resource group storage account. This setting is currently applicable only to Storage Account. Learn more here https://go.microsoft.com/fwlink/?linkid=2247228 */
-  managedResourcesNetworkAccessType?: ManagedResourcesNetworkAccessType;
+  managedResourcesNetworkAccessType?:
+    | ManagedResourcesNetworkAccessType
+    | (string & {});
   /** Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS */
   configuration: SAPConfiguration_2;
   /** Managed resource group configuration */
@@ -6456,10 +6420,7 @@ export const SAPVirtualInstancePropertiesInput_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SAPVirtualInstancePropertiesInput_2>;
 
 /** Type of managed service identity (where only None and UserAssigned types are allowed). */
-export type SAPVirtualInstanceIdentityType =
-  | "None"
-  | "UserAssigned"
-  | (string & {});
+export type SAPVirtualInstanceIdentityType = "None" | "UserAssigned";
 export const SAPVirtualInstanceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -6484,7 +6445,7 @@ export const SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap =
 /** Managed service identity (user assigned identities) */
 export interface SAPVirtualInstanceIdentityInput {
   /** The type of managed identity assigned to this resource. */
-  type: SAPVirtualInstanceIdentityType;
+  type: SAPVirtualInstanceIdentityType | (string & {});
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap;
 }
@@ -6559,8 +6520,7 @@ export type SAPVirtualInstanceState_2 =
   | "DiscoveryInProgress"
   | "DiscoveryFailed"
   | "RegistrationComplete"
-  | "ACSSInstallationBlocked"
-  | (string & {});
+  | "ACSSInstallationBlocked";
 export const SAPVirtualInstanceState_2 = /*@__PURE__*/ S.String;
 
 /** Defines the Virtual Instance for SAP solutions resource properties. */
@@ -6706,7 +6666,7 @@ export const SAPVirtualInstancesCreateRequestIdentityUserAssignedIdentitiesMap =
 /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
 export interface SAPVirtualInstancesCreateRequestIdentity {
   /** Type of manage identity */
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: SAPVirtualInstancesCreateRequestIdentityUserAssignedIdentitiesMap | null;
 }
@@ -6728,8 +6688,7 @@ export const SAPVirtualInstancesCreateRequestIdentity = /*@__PURE__*/ S.suspend(
 export type ConfigurationType =
   | "Deployment"
   | "Discovery"
-  | "DeploymentWithOSConfig"
-  | (string & {});
+  | "DeploymentWithOSConfig";
 export const ConfigurationType = /*@__PURE__*/ S.String;
 
 /** The SAP Configuration. */
@@ -6746,8 +6705,8 @@ export const SAPConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the Virtual Instance for SAP solutions resource properties. */
 export interface SAPVirtualInstancePropertiesInput {
-  environment: EnvironmentType;
-  sapProduct: SAPProductType;
+  environment: EnvironmentType | (string & {});
+  sapProduct: SAPProductType | (string & {});
   /** Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS */
   configuration: SAPConfiguration;
   /** Managed resource group configuration */
@@ -6852,8 +6811,7 @@ export type SAPVirtualInstanceState =
   | "DiscoveryPending"
   | "DiscoveryInProgress"
   | "DiscoveryFailed"
-  | "RegistrationComplete"
-  | (string & {});
+  | "RegistrationComplete";
 export const SAPVirtualInstanceState = /*@__PURE__*/ S.String;
 
 /** Defines the Virtual Instance for SAP solutions resource properties. */
@@ -7189,9 +7147,9 @@ export interface SapVirtualInstancesInvokeAvailabilityZoneDetailsRequest {
   /** The geo-location where the SAP resources will be created. */
   appLocation: string;
   /** Defines the SAP Product type. */
-  sapProduct: SAPProductType;
+  sapProduct: SAPProductType | (string & {});
   /** The database type. Eg: HANA, DB2, etc */
-  databaseType: SAPDatabaseType;
+  databaseType: SAPDatabaseType | (string & {});
 }
 export const SapVirtualInstancesInvokeAvailabilityZoneDetailsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7214,7 +7172,7 @@ export const SapVirtualInstancesInvokeAvailabilityZoneDetailsRequest =
   }) as any as S.Schema<SapVirtualInstancesInvokeAvailabilityZoneDetailsRequest>;
 
 /** The type of SAP deployment, single server or Three tier. */
-export type SAPDeploymentType = "SingleServer" | "ThreeTier" | (string & {});
+export type SAPDeploymentType = "SingleServer" | "ThreeTier";
 export const SAPDeploymentType = /*@__PURE__*/ S.String;
 
 export interface SapVirtualInstancesInvokeDiskConfigurationsRequest {
@@ -7225,13 +7183,13 @@ export interface SapVirtualInstancesInvokeDiskConfigurationsRequest {
   /** The geo-location where the SAP resources will be created. */
   appLocation: string;
   /** Defines the environment type - Production/Non Production. */
-  environment: SAPEnvironmentType;
+  environment: SAPEnvironmentType | (string & {});
   /** Defines the SAP Product type. */
-  sapProduct: SAPProductType;
+  sapProduct: SAPProductType | (string & {});
   /** The database type. Eg: HANA, DB2, etc */
-  databaseType: SAPDatabaseType;
+  databaseType: SAPDatabaseType | (string & {});
   /** The deployment type. Eg: SingleServer/ThreeTier */
-  deploymentType: SAPDeploymentType;
+  deploymentType: SAPDeploymentType | (string & {});
   /** The VM SKU for database instance. */
   dbVmSku: string;
 }
@@ -7369,10 +7327,7 @@ export const SAPDiskConfigurationsResult_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SAPDiskConfigurationsResult_2>;
 
 /** The high availability type (AvailabilitySet or AvailabilityZone). */
-export type SAPHighAvailabilityType =
-  | "AvailabilitySet"
-  | "AvailabilityZone"
-  | (string & {});
+export type SAPHighAvailabilityType = "AvailabilitySet" | "AvailabilityZone";
 export const SAPHighAvailabilityType = /*@__PURE__*/ S.String;
 
 export interface SapVirtualInstancesInvokeSapSupportedSkuRequest {
@@ -7383,15 +7338,15 @@ export interface SapVirtualInstancesInvokeSapSupportedSkuRequest {
   /** The geo-location where the resource is to be created. */
   appLocation: string;
   /** Defines the environment type - Production/Non Production. */
-  environment: SAPEnvironmentType;
+  environment: SAPEnvironmentType | (string & {});
   /** Defines the SAP Product type. */
-  sapProduct: SAPProductType;
+  sapProduct: SAPProductType | (string & {});
   /** The deployment type. Eg: SingleServer/ThreeTier */
-  deploymentType: SAPDeploymentType;
+  deploymentType: SAPDeploymentType | (string & {});
   /** The database type. Eg: HANA, DB2, etc */
-  databaseType: SAPDatabaseType;
+  databaseType: SAPDatabaseType | (string & {});
   /** The high availability type. */
-  highAvailabilityType?: SAPHighAvailabilityType;
+  highAvailabilityType?: SAPHighAvailabilityType | (string & {});
 }
 export const SapVirtualInstancesInvokeSapSupportedSkuRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7417,7 +7372,7 @@ export const SapVirtualInstancesInvokeSapSupportedSkuRequest =
   }) as any as S.Schema<SapVirtualInstancesInvokeSapSupportedSkuRequest>;
 
 /** The database scale method. */
-export type SAPDatabaseScaleMethod = "ScaleUp" | (string & {});
+export type SAPDatabaseScaleMethod = "ScaleUp";
 export const SAPDatabaseScaleMethod = /*@__PURE__*/ S.String;
 
 export interface SapVirtualInstancesInvokeSizingRecommendationsRequest {
@@ -7428,21 +7383,21 @@ export interface SapVirtualInstancesInvokeSizingRecommendationsRequest {
   /** The geo-location where the resource is to be created. */
   appLocation: string;
   /** Defines the environment type - Production/Non Production. */
-  environment: SAPEnvironmentType;
+  environment: SAPEnvironmentType | (string & {});
   /** Defines the SAP Product type. */
-  sapProduct: SAPProductType;
+  sapProduct: SAPProductType | (string & {});
   /** The deployment type. Eg: SingleServer/ThreeTier */
-  deploymentType: SAPDeploymentType;
+  deploymentType: SAPDeploymentType | (string & {});
   /** The SAP Application Performance Standard measurement. */
   saps: number;
   /** The database memory configuration. */
   dbMemory: number;
   /** The database type. */
-  databaseType: SAPDatabaseType;
+  databaseType: SAPDatabaseType | (string & {});
   /** The DB scale method. */
-  dbScaleMethod?: SAPDatabaseScaleMethod;
+  dbScaleMethod?: SAPDatabaseScaleMethod | (string & {});
   /** The high availability type. */
-  highAvailabilityType?: SAPHighAvailabilityType;
+  highAvailabilityType?: SAPHighAvailabilityType | (string & {});
 }
 export const SapVirtualInstancesInvokeSizingRecommendationsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8010,7 +7965,9 @@ export const SapVirtualInstancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Defines the update request body properties for updating Virtual Instance for SAP. */
 export interface UpdateSAPVirtualInstanceProperties {
   /** Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group. The options to choose from are Public and Private. If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist. This is required for establishing connectivity between VM extensions and the managed resource group storage account. This setting is currently applicable only to Storage Account. Learn more here https://go.microsoft.com/fwlink/?linkid=2247228 */
-  managedResourcesNetworkAccessType?: ManagedResourcesNetworkAccessType;
+  managedResourcesNetworkAccessType?:
+    | ManagedResourcesNetworkAccessType
+    | (string & {});
 }
 export const UpdateSAPVirtualInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8119,7 +8076,7 @@ export const SAPVirtualInstancesUpdateRequestIdentityUserAssignedIdentitiesMap =
 /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
 export interface SAPVirtualInstancesUpdateRequestIdentity {
   /** Type of manage identity */
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: SAPVirtualInstancesUpdateRequestIdentityUserAssignedIdentitiesMap | null;
 }

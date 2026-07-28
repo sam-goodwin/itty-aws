@@ -209,8 +209,7 @@ export type MessageContentType =
   | "CustomPayload"
   | "ImageResponseCard"
   | "PlainText"
-  | "SSML"
-  | (string & {});
+  | "SSML";
 export const MessageContentType = /*@__PURE__*/ S.String;
 
 export type AttachmentTitle = string;
@@ -264,12 +263,7 @@ export const ConfidenceScore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfidenceScore",
 }) as any as S.Schema<ConfidenceScore>;
-export type SentimentType =
-  | "MIXED"
-  | "NEGATIVE"
-  | "NEUTRAL"
-  | "POSITIVE"
-  | (string & {});
+export type SentimentType = "MIXED" | "NEGATIVE" | "NEUTRAL" | "POSITIVE";
 export const SentimentType = /*@__PURE__*/ S.String;
 
 export interface SentimentScore {
@@ -312,7 +306,7 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
     resolvedValues: S.optional(StringList),
   }),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
-export type Shape = "Scalar" | "List" | "Composite" | (string & {});
+export type Shape = "Scalar" | "List" | "Composite";
 export const Shape = /*@__PURE__*/ S.String;
 
 export type Values = Slot[];
@@ -350,11 +344,10 @@ export type IntentState =
   | "InProgress"
   | "ReadyForFulfillment"
   | "Waiting"
-  | "FulfillmentInProgress"
-  | (string & {});
+  | "FulfillmentInProgress";
 export const IntentState = /*@__PURE__*/ S.String;
 
-export type ConfirmationState = "Confirmed" | "Denied" | "None" | (string & {});
+export type ConfirmationState = "Confirmed" | "Denied" | "None";
 export const ConfirmationState = /*@__PURE__*/ S.String;
 
 export interface Intent {
@@ -371,7 +364,7 @@ export const Intent = /*@__PURE__*/ S.suspend(() =>
     confirmationState: S.optional(ConfirmationState),
   }),
 ).annotate({ identifier: "Intent" }) as any as S.Schema<Intent>;
-export type InterpretationSource = "Bedrock" | "Lex" | (string & {});
+export type InterpretationSource = "Bedrock" | "Lex";
 export const InterpretationSource = /*@__PURE__*/ S.String;
 
 export interface Interpretation {
@@ -396,15 +389,10 @@ export type DialogActionType =
   | "Delegate"
   | "ElicitIntent"
   | "ElicitSlot"
-  | "None"
-  | (string & {});
+  | "None";
 export const DialogActionType = /*@__PURE__*/ S.String;
 
-export type StyleType =
-  | "Default"
-  | "SpellByLetter"
-  | "SpellByWord"
-  | (string & {});
+export type StyleType = "Default" | "SpellByLetter" | "SpellByWord";
 export const StyleType = /*@__PURE__*/ S.String;
 
 export interface ElicitSubSlot {
@@ -774,7 +762,7 @@ export const RecognizeUtteranceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecognizeUtteranceResponse",
 }) as any as S.Schema<RecognizeUtteranceResponse>;
-export type ConversationMode = "AUDIO" | "TEXT" | (string & {});
+export type ConversationMode = "AUDIO" | "TEXT";
 export const ConversationMode = /*@__PURE__*/ S.String;
 
 export type EventId = string;
@@ -934,7 +922,7 @@ export interface StartConversationRequest {
   botAliasId: string;
   localeId: string;
   sessionId: string;
-  conversationMode?: ConversationMode;
+  conversationMode?: ConversationMode | (string & {});
   requestEventStream: stream.Stream<
     StartConversationRequestEventStream,
     Error,
@@ -972,8 +960,7 @@ export const StartConversationRequest = /*@__PURE__*/ S.suspend(() =>
 export type PlaybackInterruptionReason =
   | "DTMF_START_DETECTED"
   | "TEXT_DETECTED"
-  | "VOICE_START_DETECTED"
-  | (string & {});
+  | "VOICE_START_DETECTED";
 export const PlaybackInterruptionReason = /*@__PURE__*/ S.String;
 
 export interface PlaybackInterruptionEvent {
@@ -999,7 +986,7 @@ export const TranscriptEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TranscriptEvent",
 }) as any as S.Schema<TranscriptEvent>;
-export type InputMode = "Text" | "Speech" | "DTMF" | (string & {});
+export type InputMode = "Text" | "Speech" | "DTMF";
 export const InputMode = /*@__PURE__*/ S.String;
 
 export interface IntentResultEvent {

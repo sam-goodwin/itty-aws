@@ -76,8 +76,7 @@ export const CreateRequestHostnamesList = /*@__PURE__*/ S.Array(
 export type CreateRequestRequestType =
   | "origin-rsa"
   | "origin-ecc"
-  | "keyless-certificate"
-  | (string & {});
+  | "keyless-certificate";
 export const CreateRequestRequestType = /*@__PURE__*/ S.String;
 
 export type CreateRequestRequestedValidity =
@@ -87,8 +86,7 @@ export type CreateRequestRequestedValidity =
   | 365
   | 730
   | 1095
-  | 5475
-  | (number & {});
+  | 5475;
 export const CreateRequestRequestedValidity = /*@__PURE__*/ S.Number;
 
 export interface CreateOriginCaCertificateRequest {
@@ -97,9 +95,9 @@ export interface CreateOriginCaCertificateRequest {
   /** Array of hostnames or wildcard names bound to the certificate. */
   hostnames: CreateRequestHostnamesList;
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
-  requestType: CreateRequestRequestType;
+  requestType: CreateRequestRequestType | (string & {});
   /** The number of days for which the certificate should be valid. */
-  requestedValidity?: CreateRequestRequestedValidity;
+  requestedValidity?: CreateRequestRequestedValidity | (number & {});
 }
 export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -124,8 +122,7 @@ export const CreateResponseHostnamesList = /*@__PURE__*/ S.Array(
 export type CreateResponseRequestType =
   | "origin-rsa"
   | "origin-ecc"
-  | "keyless-certificate"
-  | (string & {});
+  | "keyless-certificate";
 export const CreateResponseRequestType = /*@__PURE__*/ S.String;
 
 export type CreateResponseRequestedValidity =
@@ -135,8 +132,7 @@ export type CreateResponseRequestedValidity =
   | 365
   | 730
   | 1095
-  | 5475
-  | (number & {});
+  | 5475;
 export const CreateResponseRequestedValidity = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -239,8 +235,7 @@ export const GetResponseHostnamesList = /*@__PURE__*/ S.Array(
 export type GetResponseRequestType =
   | "origin-rsa"
   | "origin-ecc"
-  | "keyless-certificate"
-  | (string & {});
+  | "keyless-certificate";
 export const GetResponseRequestType = /*@__PURE__*/ S.String;
 
 export type GetResponseRequestedValidity =
@@ -250,8 +245,7 @@ export type GetResponseRequestedValidity =
   | 365
   | 730
   | 1095
-  | 5475
-  | (number & {});
+  | 5475;
 export const GetResponseRequestedValidity = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -324,8 +318,7 @@ export const ListResultItemHostnamesList = /*@__PURE__*/ S.Array(
 export type ListResultItemRequestType =
   | "origin-rsa"
   | "origin-ecc"
-  | "keyless-certificate"
-  | (string & {});
+  | "keyless-certificate";
 export const ListResultItemRequestType = /*@__PURE__*/ S.String;
 
 export type ListResultItemRequestedValidity =
@@ -335,8 +328,7 @@ export type ListResultItemRequestedValidity =
   | 365
   | 730
   | 1095
-  | 5475
-  | (number & {});
+  | 5475;
 export const ListResultItemRequestedValidity = /*@__PURE__*/ S.Number;
 
 export interface ListResultItem {

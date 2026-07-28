@@ -42,8 +42,7 @@ export const CommunicationServicesCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type CommunicationServicesCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const CommunicationServicesCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -88,8 +87,7 @@ export const DomainsResourceList = /*@__PURE__*/ S.Array(
 export type CommunicationServicePropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const CommunicationServicePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -100,7 +98,9 @@ export interface CommunicationServicePropertiesInput {
   /** List of email Domain resource Ids. */
   linkedDomains?: DomainsResourceList;
   /** Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
-  publicNetworkAccess?: CommunicationServicePropertiesInputPublicNetworkAccess;
+  publicNetworkAccess?:
+    | CommunicationServicePropertiesInputPublicNetworkAccess
+    | (string & {});
   /** Disable local authentication for the CommunicationService. */
   disableLocalAuth?: boolean;
 }
@@ -122,8 +122,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -145,7 +144,7 @@ export const CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdent
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CommunicationServicesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -204,8 +203,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -213,8 +211,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -263,16 +260,14 @@ export type CommunicationServicesProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting"
-  | "Moving"
-  | (string & {});
+  | "Moving";
 export const CommunicationServicesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
 export type CommunicationServicePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const CommunicationServicePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -767,7 +762,7 @@ export const CommunicationServiceKeys = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunicationServiceKeys>;
 
 /** The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive). */
-export type KeyType = "Primary" | "Secondary" | (string & {});
+export type KeyType = "Primary" | "Secondary";
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface CommunicationServicesRegenerateKeyRequest {
@@ -778,7 +773,7 @@ export interface CommunicationServicesRegenerateKeyRequest {
   /** The name of the CommunicationService resource. */
   communicationServiceName: string;
   /** The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive). */
-  keyType?: KeyType;
+  keyType?: KeyType | (string & {});
 }
 export const CommunicationServicesRegenerateKeyRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -812,8 +807,7 @@ export const CommunicationServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type CommunicationServiceUpdatePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const CommunicationServiceUpdatePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -822,7 +816,9 @@ export interface CommunicationServiceUpdateProperties {
   /** List of email Domain resource Ids. */
   linkedDomains?: DomainsResourceList;
   /** Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
-  publicNetworkAccess?: CommunicationServiceUpdatePropertiesPublicNetworkAccess;
+  publicNetworkAccess?:
+    | CommunicationServiceUpdatePropertiesPublicNetworkAccess
+    | (string & {});
   /** Disable local authentication for the CommunicationService. */
   disableLocalAuth?: boolean;
 }
@@ -850,7 +846,7 @@ export const CommunicationServicesUpdateRequestIdentityUserAssignedIdentitiesMap
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CommunicationServicesUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CommunicationServicesUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -977,13 +973,7 @@ export const CommunicationServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunicationServicesUpdateResponse>;
 
 /** Type of verification. */
-export type VerificationType =
-  | "Domain"
-  | "SPF"
-  | "DKIM"
-  | "DKIM2"
-  | "DMARC"
-  | (string & {});
+export type VerificationType = "Domain" | "SPF" | "DKIM" | "DKIM2" | "DMARC";
 export const VerificationType = /*@__PURE__*/ S.String;
 
 export interface DomainsCancelVerificationRequest {
@@ -996,7 +986,7 @@ export interface DomainsCancelVerificationRequest {
   /** The name of the Domains resource. */
   domainName: string;
   /** Type of verification. */
-  verificationType: VerificationType;
+  verificationType: VerificationType | (string & {});
 }
 export const DomainsCancelVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1037,20 +1027,19 @@ export const DomainsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type DomainManagement =
   | "AzureManaged"
   | "CustomerManaged"
-  | "CustomerManagedInExchangeOnline"
-  | (string & {});
+  | "CustomerManagedInExchangeOnline";
 export const DomainManagement = /*@__PURE__*/ S.String;
 
 /** Describes whether user engagement tracking is enabled or disabled. */
-export type UserEngagementTracking = "Disabled" | "Enabled" | (string & {});
+export type UserEngagementTracking = "Disabled" | "Enabled";
 export const UserEngagementTracking = /*@__PURE__*/ S.String;
 
 /** A class that describes the properties of a Domains resource. */
 export interface DomainPropertiesInput {
   /** Describes how a Domains resource is being managed. */
-  domainManagement: DomainManagement;
+  domainManagement: DomainManagement | (string & {});
   /** Describes whether user engagement tracking is enabled or disabled. */
-  userEngagementTracking?: UserEngagementTracking;
+  userEngagementTracking?: UserEngagementTracking | (string & {});
 }
 export const DomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1117,8 +1106,7 @@ export type DomainsProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting"
-  | "Moving"
-  | (string & {});
+  | "Moving";
 export const DomainsProvisioningState = /*@__PURE__*/ S.String;
 
 /** Status of the verification operation. */
@@ -1128,8 +1116,7 @@ export type VerificationStatus =
   | "VerificationInProgress"
   | "VerificationFailed"
   | "Verified"
-  | "CancellationRequested"
-  | (string & {});
+  | "CancellationRequested";
 export const VerificationStatus = /*@__PURE__*/ S.String;
 
 /** A class that represents a VerificationStatus record. */
@@ -1392,7 +1379,7 @@ export interface DomainsInitiateVerificationRequest {
   /** The name of the Domains resource. */
   domainName: string;
   /** Type of verification. */
-  verificationType: VerificationType;
+  verificationType: VerificationType | (string & {});
 }
 export const DomainsInitiateVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1514,7 +1501,7 @@ export const DomainsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** A class that describes the updatable properties of a Domains resource. */
 export interface UpdateDomainProperties {
   /** Describes whether user engagement tracking is enabled or disabled. */
-  userEngagementTracking?: UserEngagementTracking;
+  userEngagementTracking?: UserEngagementTracking | (string & {});
 }
 export const UpdateDomainProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1616,8 +1603,7 @@ export type EmailServicesProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting"
-  | "Moving"
-  | (string & {});
+  | "Moving";
 export const EmailServicesProvisioningState = /*@__PURE__*/ S.String;
 
 /** A class that describes the properties of the EmailService. */
@@ -2058,11 +2044,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2170,8 +2156,7 @@ export type ProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting"
-  | "Moving"
-  | (string & {});
+  | "Moving";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** A class that describes the properties of a SenderUsername resource. */

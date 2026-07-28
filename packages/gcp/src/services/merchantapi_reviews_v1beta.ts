@@ -13,122 +13,91 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface DeleteAccountsMerchantReviewsRequest {
   /** Required. The ID of the merchant review. Format: accounts/{account}/merchantReviews/{merchantReview} */
   name: string;
 }
-export const DeleteAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "reviews/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteAccountsMerchantReviewsRequest",
-}) as any as S.Schema<DeleteAccountsMerchantReviewsRequest>;
+export const DeleteAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"reviews/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsMerchantReviewsRequest" }) as any as S.Schema<DeleteAccountsMerchantReviewsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteAccountsProductReviewsRequest {
   /** Required. The ID of the Product review. Format: accounts/{account}/productReviews/{productReview} */
   name: string;
 }
 export const DeleteAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "reviews/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAccountsProductReviewsRequest",
-}) as any as S.Schema<DeleteAccountsProductReviewsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"reviews/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsProductReviewsRequest" }) as any as S.Schema<DeleteAccountsProductReviewsRequest>;
 
 export interface GetAccountsMerchantReviewsRequest {
   /** Required. The ID of the merchant review. Format: accounts/{account}/merchantReviews/{merchantReview} */
   name: string;
 }
 export const GetAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "reviews/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsMerchantReviewsRequest",
-}) as any as S.Schema<GetAccountsMerchantReviewsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"reviews/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsMerchantReviewsRequest" }) as any as S.Schema<GetAccountsMerchantReviewsRequest>;
 
-export type MerchantReviewAttributesCollectionMethodEnum =
-  | "COLLECTION_METHOD_UNSPECIFIED"
-  | "MERCHANT_UNSOLICITED"
-  | "POINT_OF_SALE"
-  | "AFTER_FULFILLMENT"
-  | (string & {});
-export const MerchantReviewAttributesCollectionMethodEnum =
-  /*@__PURE__*/ S.String;
+export type MerchantReviewAttributesCollectionMethodEnum = "COLLECTION_METHOD_UNSPECIFIED" | "MERCHANT_UNSOLICITED" | "POINT_OF_SALE" | "AFTER_FULFILLMENT";
+export const MerchantReviewAttributesCollectionMethodEnum = /*@__PURE__*/ S.String;
 
 /** Attributes. */
 export interface MerchantReviewAttributes {
@@ -166,52 +135,28 @@ export interface MerchantReviewAttributes {
   rating?: number;
 }
 export const MerchantReviewAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isAnonymous: S.optional(S.Boolean),
-    reviewLanguage: S.optional(S.String),
-    merchantDisplayName: S.optional(S.String),
-    minRating: S.optional(S.String),
-    title: S.optional(S.String),
-    merchantId: S.optional(S.String),
-    content: S.optional(S.String),
-    collectionMethod: S.optional(MerchantReviewAttributesCollectionMethodEnum),
-    reviewTime: S.optional(S.String),
-    reviewCountry: S.optional(S.String),
-    maxRating: S.optional(S.String),
-    merchantLink: S.optional(S.String),
-    merchantRatingLink: S.optional(S.String),
-    reviewerUsername: S.optional(S.String),
-    reviewerId: S.optional(S.String),
-    rating: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MerchantReviewAttributes",
-}) as any as S.Schema<MerchantReviewAttributes>;
+S.Struct({
+  "isAnonymous": S.optional(S.Boolean),
+  "reviewLanguage": S.optional(S.String),
+  "merchantDisplayName": S.optional(S.String),
+  "minRating": S.optional(S.String),
+  "title": S.optional(S.String),
+  "merchantId": S.optional(S.String),
+  "content": S.optional(S.String),
+  "collectionMethod": S.optional(MerchantReviewAttributesCollectionMethodEnum),
+  "reviewTime": S.optional(S.String),
+  "reviewCountry": S.optional(S.String),
+  "maxRating": S.optional(S.String),
+  "merchantLink": S.optional(S.String),
+  "merchantRatingLink": S.optional(S.String),
+  "reviewerUsername": S.optional(S.String),
+  "reviewerId": S.optional(S.String),
+  "rating": S.optional(S.Number),
+}),
+).annotate({ identifier: "MerchantReviewAttributes" }) as any as S.Schema<MerchantReviewAttributes>;
 
-export type MerchantReviewDestinationStatusReportingContextEnum =
-  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISCOVERY_ADS"
-  | "DEMAND_GEN_ADS"
-  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-  | "VIDEO_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "VEHICLE_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LISTINGS_UCP_CHECKOUT"
-  | "FREE_LOCAL_LISTINGS"
-  | "FREE_LOCAL_VEHICLE_LISTINGS"
-  | "YOUTUBE_AFFILIATE"
-  | "YOUTUBE_SHOPPING"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | "PRODUCT_REVIEWS"
-  | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
-export const MerchantReviewDestinationStatusReportingContextEnum =
-  /*@__PURE__*/ S.String;
+export type MerchantReviewDestinationStatusReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
+export const MerchantReviewDestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The destination status of the merchant review status. */
 export interface MerchantReviewDestinationStatus {
@@ -219,51 +164,18 @@ export interface MerchantReviewDestinationStatus {
   reportingContext?: MerchantReviewDestinationStatusReportingContextEnum;
 }
 export const MerchantReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportingContext: S.optional(
-      MerchantReviewDestinationStatusReportingContextEnum,
-    ),
-  }),
-).annotate({
-  identifier: "MerchantReviewDestinationStatus",
-}) as any as S.Schema<MerchantReviewDestinationStatus>;
+S.Struct({
+  "reportingContext": S.optional(MerchantReviewDestinationStatusReportingContextEnum),
+}),
+).annotate({ identifier: "MerchantReviewDestinationStatus" }) as any as S.Schema<MerchantReviewDestinationStatus>;
 
-export type MerchantReviewDestinationStatusList =
-  ReadonlyArray<MerchantReviewDestinationStatus>;
-export const MerchantReviewDestinationStatusList = /*@__PURE__*/ S.Array(
-  MerchantReviewDestinationStatus,
-) as any as S.Schema<MerchantReviewDestinationStatusList>;
+export type MerchantReviewDestinationStatusList = ReadonlyArray<MerchantReviewDestinationStatus>;
+export const MerchantReviewDestinationStatusList = /*@__PURE__*/ S.Array(MerchantReviewDestinationStatus) as any as S.Schema<MerchantReviewDestinationStatusList>;
 
-export type MerchantReviewItemLevelIssueReportingContextEnum =
-  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISCOVERY_ADS"
-  | "DEMAND_GEN_ADS"
-  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-  | "VIDEO_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "VEHICLE_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LISTINGS_UCP_CHECKOUT"
-  | "FREE_LOCAL_LISTINGS"
-  | "FREE_LOCAL_VEHICLE_LISTINGS"
-  | "YOUTUBE_AFFILIATE"
-  | "YOUTUBE_SHOPPING"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | "PRODUCT_REVIEWS"
-  | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
-export const MerchantReviewItemLevelIssueReportingContextEnum =
-  /*@__PURE__*/ S.String;
+export type MerchantReviewItemLevelIssueReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
+export const MerchantReviewItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
-export type MerchantReviewItemLevelIssueSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "NOT_IMPACTED"
-  | "DISAPPROVED"
-  | (string & {});
+export type MerchantReviewItemLevelIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "NOT_IMPACTED" | "DISAPPROVED";
 export const MerchantReviewItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the merchant review status. */
@@ -286,27 +198,20 @@ export interface MerchantReviewItemLevelIssue {
   attribute?: string;
 }
 export const MerchantReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    reportingContext: S.optional(
-      MerchantReviewItemLevelIssueReportingContextEnum,
-    ),
-    description: S.optional(S.String),
-    severity: S.optional(MerchantReviewItemLevelIssueSeverityEnum),
-    detail: S.optional(S.String),
-    documentation: S.optional(S.String),
-    resolution: S.optional(S.String),
-    attribute: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MerchantReviewItemLevelIssue",
-}) as any as S.Schema<MerchantReviewItemLevelIssue>;
+S.Struct({
+  "code": S.optional(S.String),
+  "reportingContext": S.optional(MerchantReviewItemLevelIssueReportingContextEnum),
+  "description": S.optional(S.String),
+  "severity": S.optional(MerchantReviewItemLevelIssueSeverityEnum),
+  "detail": S.optional(S.String),
+  "documentation": S.optional(S.String),
+  "resolution": S.optional(S.String),
+  "attribute": S.optional(S.String),
+}),
+).annotate({ identifier: "MerchantReviewItemLevelIssue" }) as any as S.Schema<MerchantReviewItemLevelIssue>;
 
-export type MerchantReviewItemLevelIssueList =
-  ReadonlyArray<MerchantReviewItemLevelIssue>;
-export const MerchantReviewItemLevelIssueList = /*@__PURE__*/ S.Array(
-  MerchantReviewItemLevelIssue,
-) as any as S.Schema<MerchantReviewItemLevelIssueList>;
+export type MerchantReviewItemLevelIssueList = ReadonlyArray<MerchantReviewItemLevelIssue>;
+export const MerchantReviewItemLevelIssueList = /*@__PURE__*/ S.Array(MerchantReviewItemLevelIssue) as any as S.Schema<MerchantReviewItemLevelIssueList>;
 
 /** The status of a merchant review, data validation issues, that is, information about a merchant review computed asynchronously. */
 export interface MerchantReviewStatus {
@@ -320,15 +225,13 @@ export interface MerchantReviewStatus {
   createTime?: string;
 }
 export const MerchantReviewStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationStatuses: S.optional(MerchantReviewDestinationStatusList),
-    itemLevelIssues: S.optional(MerchantReviewItemLevelIssueList),
-    lastUpdateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MerchantReviewStatus",
-}) as any as S.Schema<MerchantReviewStatus>;
+S.Struct({
+  "destinationStatuses": S.optional(MerchantReviewDestinationStatusList),
+  "itemLevelIssues": S.optional(MerchantReviewItemLevelIssueList),
+  "lastUpdateTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
+).annotate({ identifier: "MerchantReviewStatus" }) as any as S.Schema<MerchantReviewStatus>;
 
 /** A message that represents custom attributes. Exactly one of `value` or `group_values` must not be empty. */
 export interface CustomAttribute {
@@ -340,19 +243,15 @@ export interface CustomAttribute {
   name?: string;
 }
 export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    groupValues: S.optional(S.suspend(() => CustomAttributeList)),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomAttribute",
-}) as any as S.Schema<CustomAttribute>;
+S.Struct({
+  "value": S.optional(S.String),
+  "groupValues": S.optional(S.suspend(() => CustomAttributeList)),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(
-  CustomAttribute,
-) as any as S.Schema<CustomAttributeList>;
+export const CustomAttributeList = /*@__PURE__*/ S.Array(CustomAttribute) as any as S.Schema<CustomAttributeList>;
 
 /** A review for a merchant. For more information, see [Introduction to Merchant Review Feeds](https://developers.google.com/merchant-review-feeds) */
 export interface MerchantReview {
@@ -370,14 +269,14 @@ export interface MerchantReview {
   customAttributes?: CustomAttributeList;
 }
 export const MerchantReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantReviewAttributes: S.optional(MerchantReviewAttributes),
-    merchantReviewStatus: S.optional(MerchantReviewStatus),
-    name: S.optional(S.String),
-    merchantReviewId: S.optional(S.String),
-    dataSource: S.optional(S.String),
-    customAttributes: S.optional(CustomAttributeList),
-  }),
+S.Struct({
+  "merchantReviewAttributes": S.optional(MerchantReviewAttributes),
+  "merchantReviewStatus": S.optional(MerchantReviewStatus),
+  "name": S.optional(S.String),
+  "merchantReviewId": S.optional(S.String),
+  "dataSource": S.optional(S.String),
+  "customAttributes": S.optional(CustomAttributeList),
+}),
 ).annotate({ identifier: "MerchantReview" }) as any as S.Schema<MerchantReview>;
 
 export interface GetAccountsProductReviewsRequest {
@@ -385,24 +284,12 @@ export interface GetAccountsProductReviewsRequest {
   name: string;
 }
 export const GetAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "reviews/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsProductReviewsRequest",
-}) as any as S.Schema<GetAccountsProductReviewsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"reviews/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsProductReviewsRequest" }) as any as S.Schema<GetAccountsProductReviewsRequest>;
 
-export type ReviewLinkTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "SINGLETON"
-  | "GROUP"
-  | (string & {});
+export type ReviewLinkTypeEnum = "TYPE_UNSPECIFIED" | "SINGLETON" | "GROUP";
 export const ReviewLinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** The URI of the review landing page. */
@@ -413,24 +300,17 @@ export interface ReviewLink {
   type?: ReviewLinkTypeEnum;
 }
 export const ReviewLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    link: S.optional(S.String),
-    type: S.optional(ReviewLinkTypeEnum),
-  }),
+S.Struct({
+  "link": S.optional(S.String),
+  "type": S.optional(ReviewLinkTypeEnum),
+}),
 ).annotate({ identifier: "ReviewLink" }) as any as S.Schema<ReviewLink>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type ProductReviewAttributesCollectionMethodEnum =
-  | "COLLECTION_METHOD_UNSPECIFIED"
-  | "UNSOLICITED"
-  | "POST_FULFILLMENT"
-  | (string & {});
-export const ProductReviewAttributesCollectionMethodEnum =
-  /*@__PURE__*/ S.String;
+export type ProductReviewAttributesCollectionMethodEnum = "COLLECTION_METHOD_UNSPECIFIED" | "UNSOLICITED" | "POST_FULFILLMENT";
+export const ProductReviewAttributesCollectionMethodEnum = /*@__PURE__*/ S.String;
 
 /** Attributes. */
 export interface ProductReviewAttributes {
@@ -498,67 +378,43 @@ export interface ProductReviewAttributes {
   minRating?: string;
 }
 export const ProductReviewAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reviewLink: S.optional(ReviewLink),
-    pros: S.optional(StringList),
-    maxRating: S.optional(S.String),
-    reviewerUsername: S.optional(S.String),
-    subclientName: S.optional(S.String),
-    gtins: S.optional(StringList),
-    reviewerId: S.optional(S.String),
-    reviewerImageLinks: S.optional(StringList),
-    reviewCountry: S.optional(S.String),
-    aggregatorName: S.optional(S.String),
-    content: S.optional(S.String),
-    isIncentivizedReview: S.optional(S.Boolean),
-    collectionMethod: S.optional(ProductReviewAttributesCollectionMethodEnum),
-    productNames: S.optional(StringList),
-    reviewerIsAnonymous: S.optional(S.Boolean),
-    title: S.optional(S.String),
-    publisherName: S.optional(S.String),
-    mpns: S.optional(StringList),
-    skus: S.optional(StringList),
-    isVerifiedPurchase: S.optional(S.Boolean),
-    rating: S.optional(S.Number),
-    cons: S.optional(StringList),
-    reviewTime: S.optional(S.String),
-    asins: S.optional(StringList),
-    productLinks: S.optional(StringList),
-    transactionId: S.optional(S.String),
-    publisherFavicon: S.optional(S.String),
-    isSpam: S.optional(S.Boolean),
-    reviewLanguage: S.optional(S.String),
-    brands: S.optional(StringList),
-    minRating: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductReviewAttributes",
-}) as any as S.Schema<ProductReviewAttributes>;
+S.Struct({
+  "reviewLink": S.optional(ReviewLink),
+  "pros": S.optional(StringList),
+  "maxRating": S.optional(S.String),
+  "reviewerUsername": S.optional(S.String),
+  "subclientName": S.optional(S.String),
+  "gtins": S.optional(StringList),
+  "reviewerId": S.optional(S.String),
+  "reviewerImageLinks": S.optional(StringList),
+  "reviewCountry": S.optional(S.String),
+  "aggregatorName": S.optional(S.String),
+  "content": S.optional(S.String),
+  "isIncentivizedReview": S.optional(S.Boolean),
+  "collectionMethod": S.optional(ProductReviewAttributesCollectionMethodEnum),
+  "productNames": S.optional(StringList),
+  "reviewerIsAnonymous": S.optional(S.Boolean),
+  "title": S.optional(S.String),
+  "publisherName": S.optional(S.String),
+  "mpns": S.optional(StringList),
+  "skus": S.optional(StringList),
+  "isVerifiedPurchase": S.optional(S.Boolean),
+  "rating": S.optional(S.Number),
+  "cons": S.optional(StringList),
+  "reviewTime": S.optional(S.String),
+  "asins": S.optional(StringList),
+  "productLinks": S.optional(StringList),
+  "transactionId": S.optional(S.String),
+  "publisherFavicon": S.optional(S.String),
+  "isSpam": S.optional(S.Boolean),
+  "reviewLanguage": S.optional(S.String),
+  "brands": S.optional(StringList),
+  "minRating": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductReviewAttributes" }) as any as S.Schema<ProductReviewAttributes>;
 
-export type ProductReviewDestinationStatusReportingContextEnum =
-  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISCOVERY_ADS"
-  | "DEMAND_GEN_ADS"
-  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-  | "VIDEO_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "VEHICLE_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LISTINGS_UCP_CHECKOUT"
-  | "FREE_LOCAL_LISTINGS"
-  | "FREE_LOCAL_VEHICLE_LISTINGS"
-  | "YOUTUBE_AFFILIATE"
-  | "YOUTUBE_SHOPPING"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | "PRODUCT_REVIEWS"
-  | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
-export const ProductReviewDestinationStatusReportingContextEnum =
-  /*@__PURE__*/ S.String;
+export type ProductReviewDestinationStatusReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
+export const ProductReviewDestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The destination status of the product review status. */
 export interface ProductReviewDestinationStatus {
@@ -566,51 +422,18 @@ export interface ProductReviewDestinationStatus {
   reportingContext?: ProductReviewDestinationStatusReportingContextEnum;
 }
 export const ProductReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportingContext: S.optional(
-      ProductReviewDestinationStatusReportingContextEnum,
-    ),
-  }),
-).annotate({
-  identifier: "ProductReviewDestinationStatus",
-}) as any as S.Schema<ProductReviewDestinationStatus>;
+S.Struct({
+  "reportingContext": S.optional(ProductReviewDestinationStatusReportingContextEnum),
+}),
+).annotate({ identifier: "ProductReviewDestinationStatus" }) as any as S.Schema<ProductReviewDestinationStatus>;
 
-export type ProductReviewDestinationStatusList =
-  ReadonlyArray<ProductReviewDestinationStatus>;
-export const ProductReviewDestinationStatusList = /*@__PURE__*/ S.Array(
-  ProductReviewDestinationStatus,
-) as any as S.Schema<ProductReviewDestinationStatusList>;
+export type ProductReviewDestinationStatusList = ReadonlyArray<ProductReviewDestinationStatus>;
+export const ProductReviewDestinationStatusList = /*@__PURE__*/ S.Array(ProductReviewDestinationStatus) as any as S.Schema<ProductReviewDestinationStatusList>;
 
-export type ProductReviewItemLevelIssueReportingContextEnum =
-  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISCOVERY_ADS"
-  | "DEMAND_GEN_ADS"
-  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-  | "VIDEO_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "VEHICLE_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LISTINGS_UCP_CHECKOUT"
-  | "FREE_LOCAL_LISTINGS"
-  | "FREE_LOCAL_VEHICLE_LISTINGS"
-  | "YOUTUBE_AFFILIATE"
-  | "YOUTUBE_SHOPPING"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | "PRODUCT_REVIEWS"
-  | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
-export const ProductReviewItemLevelIssueReportingContextEnum =
-  /*@__PURE__*/ S.String;
+export type ProductReviewItemLevelIssueReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
+export const ProductReviewItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
-export type ProductReviewItemLevelIssueSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "NOT_IMPACTED"
-  | "DISAPPROVED"
-  | (string & {});
+export type ProductReviewItemLevelIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "NOT_IMPACTED" | "DISAPPROVED";
 export const ProductReviewItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product review status. */
@@ -633,27 +456,20 @@ export interface ProductReviewItemLevelIssue {
   attribute?: string;
 }
 export const ProductReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    reportingContext: S.optional(
-      ProductReviewItemLevelIssueReportingContextEnum,
-    ),
-    description: S.optional(S.String),
-    severity: S.optional(ProductReviewItemLevelIssueSeverityEnum),
-    detail: S.optional(S.String),
-    documentation: S.optional(S.String),
-    resolution: S.optional(S.String),
-    attribute: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductReviewItemLevelIssue",
-}) as any as S.Schema<ProductReviewItemLevelIssue>;
+S.Struct({
+  "code": S.optional(S.String),
+  "reportingContext": S.optional(ProductReviewItemLevelIssueReportingContextEnum),
+  "description": S.optional(S.String),
+  "severity": S.optional(ProductReviewItemLevelIssueSeverityEnum),
+  "detail": S.optional(S.String),
+  "documentation": S.optional(S.String),
+  "resolution": S.optional(S.String),
+  "attribute": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductReviewItemLevelIssue" }) as any as S.Schema<ProductReviewItemLevelIssue>;
 
-export type ProductReviewItemLevelIssueList =
-  ReadonlyArray<ProductReviewItemLevelIssue>;
-export const ProductReviewItemLevelIssueList = /*@__PURE__*/ S.Array(
-  ProductReviewItemLevelIssue,
-) as any as S.Schema<ProductReviewItemLevelIssueList>;
+export type ProductReviewItemLevelIssueList = ReadonlyArray<ProductReviewItemLevelIssue>;
+export const ProductReviewItemLevelIssueList = /*@__PURE__*/ S.Array(ProductReviewItemLevelIssue) as any as S.Schema<ProductReviewItemLevelIssueList>;
 
 /** Product review status. */
 export interface ProductReviewStatus {
@@ -667,15 +483,13 @@ export interface ProductReviewStatus {
   createTime?: string;
 }
 export const ProductReviewStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationStatuses: S.optional(ProductReviewDestinationStatusList),
-    itemLevelIssues: S.optional(ProductReviewItemLevelIssueList),
-    lastUpdateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductReviewStatus",
-}) as any as S.Schema<ProductReviewStatus>;
+S.Struct({
+  "destinationStatuses": S.optional(ProductReviewDestinationStatusList),
+  "itemLevelIssues": S.optional(ProductReviewItemLevelIssueList),
+  "lastUpdateTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductReviewStatus" }) as any as S.Schema<ProductReviewStatus>;
 
 /** A review for a product. For more information, see [Introduction to Product Review Feeds](https://developers.google.com/product-review-feeds) */
 export interface ProductReview {
@@ -693,14 +507,14 @@ export interface ProductReview {
   dataSource?: string;
 }
 export const ProductReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productReviewId: S.optional(S.String),
-    customAttributes: S.optional(CustomAttributeList),
-    productReviewAttributes: S.optional(ProductReviewAttributes),
-    productReviewStatus: S.optional(ProductReviewStatus),
-    name: S.optional(S.String),
-    dataSource: S.optional(S.String),
-  }),
+S.Struct({
+  "productReviewId": S.optional(S.String),
+  "customAttributes": S.optional(CustomAttributeList),
+  "productReviewAttributes": S.optional(ProductReviewAttributes),
+  "productReviewStatus": S.optional(ProductReviewStatus),
+  "name": S.optional(S.String),
+  "dataSource": S.optional(S.String),
+}),
 ).annotate({ identifier: "ProductReview" }) as any as S.Schema<ProductReview>;
 
 export interface InsertAccountsMerchantReviewsRequest {
@@ -711,22 +525,13 @@ export interface InsertAccountsMerchantReviewsRequest {
   /** Request body */
   body?: MerchantReview;
 }
-export const InsertAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      dataSource: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(MerchantReview.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "reviews/v1beta/{+parent}/merchantReviews:insert",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "InsertAccountsMerchantReviewsRequest",
-}) as any as S.Schema<InsertAccountsMerchantReviewsRequest>;
+export const InsertAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "dataSource": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(MerchantReview.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"reviews/v1beta/{+parent}/merchantReviews:insert","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "InsertAccountsMerchantReviewsRequest" }) as any as S.Schema<InsertAccountsMerchantReviewsRequest>;
 
 export interface InsertAccountsProductReviewsRequest {
   /** Required. The account where the product review will be inserted. Format: accounts/{account} */
@@ -737,20 +542,12 @@ export interface InsertAccountsProductReviewsRequest {
   body?: ProductReview;
 }
 export const InsertAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    dataSource: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(ProductReview.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "reviews/v1beta/{+parent}/productReviews:insert",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertAccountsProductReviewsRequest",
-}) as any as S.Schema<InsertAccountsProductReviewsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "dataSource": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ProductReview.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"reviews/v1beta/{+parent}/productReviews:insert","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "InsertAccountsProductReviewsRequest" }) as any as S.Schema<InsertAccountsProductReviewsRequest>;
 
 export interface ListAccountsMerchantReviewsRequest {
   /** Optional. The maximum number of merchant reviews to return. The service can return fewer than this value. The maximum value is 1000; values above 1000 are coerced to 1000. If unspecified, the maximum number of reviews is returned. */
@@ -761,25 +558,15 @@ export interface ListAccountsMerchantReviewsRequest {
   pageToken?: string;
 }
 export const ListAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "reviews/v1beta/{+parent}/merchantReviews",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsMerchantReviewsRequest",
-}) as any as S.Schema<ListAccountsMerchantReviewsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"reviews/v1beta/{+parent}/merchantReviews","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsMerchantReviewsRequest" }) as any as S.Schema<ListAccountsMerchantReviewsRequest>;
 
 export type MerchantReviewList = ReadonlyArray<MerchantReview>;
-export const MerchantReviewList = /*@__PURE__*/ S.Array(
-  MerchantReview,
-) as any as S.Schema<MerchantReviewList>;
+export const MerchantReviewList = /*@__PURE__*/ S.Array(MerchantReview) as any as S.Schema<MerchantReviewList>;
 
 /** Response message for the `ListMerchantsReview` method. */
 export interface ListMerchantReviewsResponse {
@@ -789,13 +576,11 @@ export interface ListMerchantReviewsResponse {
   nextPageToken?: string;
 }
 export const ListMerchantReviewsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantReviews: S.optional(MerchantReviewList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListMerchantReviewsResponse",
-}) as any as S.Schema<ListMerchantReviewsResponse>;
+S.Struct({
+  "merchantReviews": S.optional(MerchantReviewList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListMerchantReviewsResponse" }) as any as S.Schema<ListMerchantReviewsResponse>;
 
 export interface ListAccountsProductReviewsRequest {
   /** Required. The account to list product reviews for. Format: accounts/{account} */
@@ -806,25 +591,15 @@ export interface ListAccountsProductReviewsRequest {
   pageSize?: number;
 }
 export const ListAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "reviews/v1beta/{+parent}/productReviews",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsProductReviewsRequest",
-}) as any as S.Schema<ListAccountsProductReviewsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"reviews/v1beta/{+parent}/productReviews","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsProductReviewsRequest" }) as any as S.Schema<ListAccountsProductReviewsRequest>;
 
 export type ProductReviewList = ReadonlyArray<ProductReview>;
-export const ProductReviewList = /*@__PURE__*/ S.Array(
-  ProductReview,
-) as any as S.Schema<ProductReviewList>;
+export const ProductReviewList = /*@__PURE__*/ S.Array(ProductReview) as any as S.Schema<ProductReviewList>;
 
 /** response message for the ListProductReviews method. */
 export interface ListProductReviewsResponse {
@@ -834,20 +609,13 @@ export interface ListProductReviewsResponse {
   productReviews?: ProductReviewList;
 }
 export const ListProductReviewsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    productReviews: S.optional(ProductReviewList),
-  }),
-).annotate({
-  identifier: "ListProductReviewsResponse",
-}) as any as S.Schema<ListProductReviewsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "productReviews": S.optional(ProductReviewList),
+}),
+).annotate({ identifier: "ListProductReviewsResponse" }) as any as S.Schema<ListProductReviewsResponse>;
 
-export type DeleteAccountsMerchantReviewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsMerchantReviewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes merchant review. */
 export const deleteAccountsMerchantReviews: API.OperationMethod<
   DeleteAccountsMerchantReviewsRequest,
@@ -862,12 +630,7 @@ export const deleteAccountsMerchantReviews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsProductReviewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsProductReviewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a product review. */
 export const deleteAccountsProductReviews: API.OperationMethod<
   DeleteAccountsProductReviewsRequest,
@@ -912,12 +675,7 @@ export const getAccountsProductReviews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountsMerchantReviewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAccountsMerchantReviewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a review for your Merchant Center account. If the review already exists, then the review is replaced with the new instance. */
 export const insertAccountsMerchantReviews: API.OperationMethod<
   InsertAccountsMerchantReviewsRequest,
@@ -932,12 +690,7 @@ export const insertAccountsMerchantReviews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountsProductReviewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAccountsProductReviewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a product review. */
 export const insertAccountsProductReviews: API.OperationMethod<
   InsertAccountsProductReviewsRequest,
@@ -952,10 +705,7 @@ export const insertAccountsProductReviews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAccountsMerchantReviewsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsMerchantReviewsError = NotFound | Forbidden | GcpOpError;
 /** Lists merchant reviews. */
 export const listAccountsMerchantReviews: API.PaginatedOperationMethod<
   ListAccountsMerchantReviewsRequest,
@@ -968,10 +718,7 @@ export const listAccountsMerchantReviews: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsProductReviewsError = NotFound | Forbidden | GcpOpError;
@@ -987,8 +734,6 @@ export const listAccountsProductReviews: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
+

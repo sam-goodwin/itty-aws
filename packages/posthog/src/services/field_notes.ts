@@ -16,8 +16,7 @@ export type FieldNoteStatusEnum =
   | "pending"
   | "acknowledged"
   | "resolved"
-  | "dismissed"
-  | (string & {});
+  | "dismissed";
 export const FieldNoteStatusEnum = /*@__PURE__*/ S.String;
 
 /** Structured element metadata (inferred selectors, attributes, component hints). */
@@ -51,7 +50,7 @@ export interface FieldNotesCreateRequest {
   /** The note the user wrote about the element. */
   comment: string;
   /** Lifecycle of the field note: pending, acknowledged, resolved, or dismissed. Ignored on create. * `pending` - Pending * `acknowledged` - Acknowledged * `resolved` - Resolved * `dismissed` - Dismissed */
-  field_note_status?: FieldNoteStatusEnum;
+  field_note_status?: FieldNoteStatusEnum | (string & {});
   /** Optional note left by the agent when acknowledging, resolving, or dismissing the field note. */
   resolution?: string | null;
   /** Full URL of the page the field note was made on. */
@@ -137,11 +136,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -256,15 +254,14 @@ export type FieldNotesListRequestFieldNoteStatus =
   | "acknowledged"
   | "dismissed"
   | "pending"
-  | "resolved"
-  | (string & {});
+  | "resolved";
 export const FieldNotesListRequestFieldNoteStatus = /*@__PURE__*/ S.String;
 
 export interface FieldNotesListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Filter to field notes in this lifecycle state (e.g. `pending` for unaddressed feedback). */
-  field_note_status?: FieldNotesListRequestFieldNoteStatus;
+  field_note_status?: FieldNotesListRequestFieldNoteStatus | (string & {});
   /** Filter to field notes made on this hostname (e.g. `app.example.com`). */
   host?: string;
   /** Number of results to return per page. */
@@ -349,7 +346,7 @@ export interface FieldNotesPartialUpdateRequest {
   /** The note the user wrote about the element. */
   comment?: string;
   /** Lifecycle of the field note: pending, acknowledged, resolved, or dismissed. Ignored on create. * `pending` - Pending * `acknowledged` - Acknowledged * `resolved` - Resolved * `dismissed` - Dismissed */
-  field_note_status?: FieldNoteStatusEnum;
+  field_note_status?: FieldNoteStatusEnum | (string & {});
   /** Optional note left by the agent when acknowledging, resolving, or dismissing the field note. */
   resolution?: string | null;
   /** Full URL of the page the field note was made on. */
@@ -454,7 +451,7 @@ export interface FieldNotesUpdateRequest {
   /** The note the user wrote about the element. */
   comment: string;
   /** Lifecycle of the field note: pending, acknowledged, resolved, or dismissed. Ignored on create. * `pending` - Pending * `acknowledged` - Acknowledged * `resolved` - Resolved * `dismissed` - Dismissed */
-  field_note_status?: FieldNoteStatusEnum;
+  field_note_status?: FieldNoteStatusEnum | (string & {});
   /** Optional note left by the agent when acknowledging, resolving, or dismissing the field note. */
   resolution?: string | null;
   /** Full URL of the page the field note was made on. */

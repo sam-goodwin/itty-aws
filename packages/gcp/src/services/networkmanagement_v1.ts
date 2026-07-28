@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelOrganizationsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,27 +72,18 @@ export interface CancelOrganizationsLocationsGlobalOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelOrganizationsLocationsGlobalOperationsRequest",
-  }) as any as S.Schema<CancelOrganizationsLocationsGlobalOperationsRequest>;
+export const CancelOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "CancelOrganizationsLocationsGlobalOperationsRequest" }) as any as S.Schema<CancelOrganizationsLocationsGlobalOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface CancelProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -102,72 +91,33 @@ export interface CancelProjectsLocationsGlobalOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelProjectsLocationsGlobalOperationsRequest",
-  }) as any as S.Schema<CancelProjectsLocationsGlobalOperationsRequest>;
+export const CancelProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsGlobalOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsGlobalOperationsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type VpcFlowLogsConfigAggregationIntervalEnum =
-  | "AGGREGATION_INTERVAL_UNSPECIFIED"
-  | "INTERVAL_5_SEC"
-  | "INTERVAL_30_SEC"
-  | "INTERVAL_1_MIN"
-  | "INTERVAL_5_MIN"
-  | "INTERVAL_10_MIN"
-  | "INTERVAL_15_MIN"
-  | (string & {});
+export type VpcFlowLogsConfigAggregationIntervalEnum = "AGGREGATION_INTERVAL_UNSPECIFIED" | "INTERVAL_5_SEC" | "INTERVAL_30_SEC" | "INTERVAL_1_MIN" | "INTERVAL_5_MIN" | "INTERVAL_10_MIN" | "INTERVAL_15_MIN";
 export const VpcFlowLogsConfigAggregationIntervalEnum = /*@__PURE__*/ S.String;
 
-export type VpcFlowLogsConfigCrossProjectMetadataEnum =
-  | "CROSS_PROJECT_METADATA_UNSPECIFIED"
-  | "CROSS_PROJECT_METADATA_ENABLED"
-  | "CROSS_PROJECT_METADATA_DISABLED"
-  | (string & {});
+export type VpcFlowLogsConfigCrossProjectMetadataEnum = "CROSS_PROJECT_METADATA_UNSPECIFIED" | "CROSS_PROJECT_METADATA_ENABLED" | "CROSS_PROJECT_METADATA_DISABLED";
 export const VpcFlowLogsConfigCrossProjectMetadataEnum = /*@__PURE__*/ S.String;
 
-export type VpcFlowLogsConfigStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type VpcFlowLogsConfigStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
 export const VpcFlowLogsConfigStateEnum = /*@__PURE__*/ S.String;
 
-export type VpcFlowLogsConfigMetadataEnum =
-  | "METADATA_UNSPECIFIED"
-  | "INCLUDE_ALL_METADATA"
-  | "EXCLUDE_ALL_METADATA"
-  | "CUSTOM_METADATA"
-  | (string & {});
+export type VpcFlowLogsConfigMetadataEnum = "METADATA_UNSPECIFIED" | "INCLUDE_ALL_METADATA" | "EXCLUDE_ALL_METADATA" | "CUSTOM_METADATA";
 export const VpcFlowLogsConfigMetadataEnum = /*@__PURE__*/ S.String;
 
-export type VpcFlowLogsConfigTargetResourceStateEnum =
-  | "TARGET_RESOURCE_STATE_UNSPECIFIED"
-  | "TARGET_RESOURCE_EXISTS"
-  | "TARGET_RESOURCE_DOES_NOT_EXIST"
-  | (string & {});
+export type VpcFlowLogsConfigTargetResourceStateEnum = "TARGET_RESOURCE_STATE_UNSPECIFIED" | "TARGET_RESOURCE_EXISTS" | "TARGET_RESOURCE_DOES_NOT_EXIST";
 export const VpcFlowLogsConfigTargetResourceStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A configuration to generate VPC Flow Logs. */
 export interface VpcFlowLogsConfig {
@@ -207,28 +157,26 @@ export interface VpcFlowLogsConfig {
   labels?: StringMap;
 }
 export const VpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadataFields: S.optional(StringList),
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    aggregationInterval: S.optional(VpcFlowLogsConfigAggregationIntervalEnum),
-    interconnectAttachment: S.optional(S.String),
-    filterExpr: S.optional(S.String),
-    subnet: S.optional(S.String),
-    crossProjectMetadata: S.optional(VpcFlowLogsConfigCrossProjectMetadataEnum),
-    vpnTunnel: S.optional(S.String),
-    state: S.optional(VpcFlowLogsConfigStateEnum),
-    flowSampling: S.optional(S.Number),
-    metadata: S.optional(VpcFlowLogsConfigMetadataEnum),
-    createTime: S.optional(S.String),
-    network: S.optional(S.String),
-    description: S.optional(S.String),
-    targetResourceState: S.optional(VpcFlowLogsConfigTargetResourceStateEnum),
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "VpcFlowLogsConfig",
-}) as any as S.Schema<VpcFlowLogsConfig>;
+S.Struct({
+  "metadataFields": S.optional(StringList),
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "aggregationInterval": S.optional(VpcFlowLogsConfigAggregationIntervalEnum),
+  "interconnectAttachment": S.optional(S.String),
+  "filterExpr": S.optional(S.String),
+  "subnet": S.optional(S.String),
+  "crossProjectMetadata": S.optional(VpcFlowLogsConfigCrossProjectMetadataEnum),
+  "vpnTunnel": S.optional(S.String),
+  "state": S.optional(VpcFlowLogsConfigStateEnum),
+  "flowSampling": S.optional(S.Number),
+  "metadata": S.optional(VpcFlowLogsConfigMetadataEnum),
+  "createTime": S.optional(S.String),
+  "network": S.optional(S.String),
+  "description": S.optional(S.String),
+  "targetResourceState": S.optional(VpcFlowLogsConfigTargetResourceStateEnum),
+  "labels": S.optional(StringMap),
+}),
+).annotate({ identifier: "VpcFlowLogsConfig" }) as any as S.Schema<VpcFlowLogsConfig>;
 
 export interface CreateOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The parent resource of the VpcFlowLogsConfig to create, in one of the following formats: - For project-level resources: `projects/{project_id}/locations/global` - For organization-level resources: `organizations/{organization_id}/locations/global` */
@@ -238,33 +186,19 @@ export interface CreateOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Request body */
   body?: VpcFlowLogsConfig;
 }
-export const CreateOrganizationsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      vpcFlowLogsConfigId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(VpcFlowLogsConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/vpcFlowLogsConfigs",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateOrganizationsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<CreateOrganizationsLocationsVpcFlowLogsConfigsRequest>;
+export const CreateOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "vpcFlowLogsConfigId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(VpcFlowLogsConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/vpcFlowLogsConfigs","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "CreateOrganizationsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<CreateOrganizationsLocationsVpcFlowLogsConfigsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -276,11 +210,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -297,13 +231,13 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    error: S.optional(Status),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "response": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "error": S.optional(Status),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Latency percentile rank and value. */
@@ -314,18 +248,14 @@ export interface LatencyPercentile {
   latencyMicros?: string;
 }
 export const LatencyPercentile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    percent: S.optional(S.Number),
-    latencyMicros: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LatencyPercentile",
-}) as any as S.Schema<LatencyPercentile>;
+S.Struct({
+  "percent": S.optional(S.Number),
+  "latencyMicros": S.optional(S.String),
+}),
+).annotate({ identifier: "LatencyPercentile" }) as any as S.Schema<LatencyPercentile>;
 
 export type LatencyPercentileList = ReadonlyArray<LatencyPercentile>;
-export const LatencyPercentileList = /*@__PURE__*/ S.Array(
-  LatencyPercentile,
-) as any as S.Schema<LatencyPercentileList>;
+export const LatencyPercentileList = /*@__PURE__*/ S.Array(LatencyPercentile) as any as S.Schema<LatencyPercentileList>;
 
 /** Describes measured latency distribution. */
 export interface LatencyDistribution {
@@ -333,12 +263,10 @@ export interface LatencyDistribution {
   latencyPercentiles?: LatencyPercentileList;
 }
 export const LatencyDistribution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latencyPercentiles: S.optional(LatencyPercentileList),
-  }),
-).annotate({
-  identifier: "LatencyDistribution",
-}) as any as S.Schema<LatencyDistribution>;
+S.Struct({
+  "latencyPercentiles": S.optional(LatencyPercentileList),
+}),
+).annotate({ identifier: "LatencyDistribution" }) as any as S.Schema<LatencyDistribution>;
 
 /** Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations. */
 export interface EdgeLocation {
@@ -346,25 +274,15 @@ export interface EdgeLocation {
   metropolitanArea?: string;
 }
 export const EdgeLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metropolitanArea: S.optional(S.String),
-  }),
+S.Struct({
+  "metropolitanArea": S.optional(S.String),
+}),
 ).annotate({ identifier: "EdgeLocation" }) as any as S.Schema<EdgeLocation>;
 
-export type ProbingDetailsAbortCauseEnum =
-  | "PROBING_ABORT_CAUSE_UNSPECIFIED"
-  | "PERMISSION_DENIED"
-  | "NO_SOURCE_LOCATION"
-  | (string & {});
+export type ProbingDetailsAbortCauseEnum = "PROBING_ABORT_CAUSE_UNSPECIFIED" | "PERMISSION_DENIED" | "NO_SOURCE_LOCATION";
 export const ProbingDetailsAbortCauseEnum = /*@__PURE__*/ S.String;
 
-export type ProbingDetailsResultEnum =
-  | "PROBING_RESULT_UNSPECIFIED"
-  | "REACHABLE"
-  | "UNREACHABLE"
-  | "REACHABILITY_INCONSISTENT"
-  | "UNDETERMINED"
-  | (string & {});
+export type ProbingDetailsResultEnum = "PROBING_RESULT_UNSPECIFIED" | "REACHABLE" | "UNREACHABLE" | "REACHABILITY_INCONSISTENT" | "UNDETERMINED";
 export const ProbingDetailsResultEnum = /*@__PURE__*/ S.String;
 
 /** For display only. The specification of the endpoints for the test. EndpointInfo is derived from source and destination Endpoint and validated by the backend data plane model. */
@@ -387,25 +305,19 @@ export interface EndpointInfo {
   sourceAgentUri?: string;
 }
 export const EndpointInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourcePort: S.optional(S.Number),
-    destinationIp: S.optional(S.String),
-    sourceIp: S.optional(S.String),
-    protocol: S.optional(S.String),
-    sourceNetworkUri: S.optional(S.String),
-    destinationPort: S.optional(S.Number),
-    destinationNetworkUri: S.optional(S.String),
-    sourceAgentUri: S.optional(S.String),
-  }),
+S.Struct({
+  "sourcePort": S.optional(S.Number),
+  "destinationIp": S.optional(S.String),
+  "sourceIp": S.optional(S.String),
+  "protocol": S.optional(S.String),
+  "sourceNetworkUri": S.optional(S.String),
+  "destinationPort": S.optional(S.Number),
+  "destinationNetworkUri": S.optional(S.String),
+  "sourceAgentUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "EndpointInfo" }) as any as S.Schema<EndpointInfo>;
 
-export type SingleEdgeResponseResultEnum =
-  | "PROBING_RESULT_UNSPECIFIED"
-  | "REACHABLE"
-  | "UNREACHABLE"
-  | "REACHABILITY_INCONSISTENT"
-  | "UNDETERMINED"
-  | (string & {});
+export type SingleEdgeResponseResultEnum = "PROBING_RESULT_UNSPECIFIED" | "REACHABLE" | "UNREACHABLE" | "REACHABILITY_INCONSISTENT" | "UNDETERMINED";
 export const SingleEdgeResponseResultEnum = /*@__PURE__*/ S.String;
 
 /** Probing results for a single edge device. */
@@ -424,22 +336,18 @@ export interface SingleEdgeResponse {
   destinationEgressLocation?: EdgeLocation;
 }
 export const SingleEdgeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SingleEdgeResponseResultEnum),
-    sentProbeCount: S.optional(S.Number),
-    destinationRouter: S.optional(S.String),
-    successfulProbeCount: S.optional(S.Number),
-    probingLatency: S.optional(LatencyDistribution),
-    destinationEgressLocation: S.optional(EdgeLocation),
-  }),
-).annotate({
-  identifier: "SingleEdgeResponse",
-}) as any as S.Schema<SingleEdgeResponse>;
+S.Struct({
+  "result": S.optional(SingleEdgeResponseResultEnum),
+  "sentProbeCount": S.optional(S.Number),
+  "destinationRouter": S.optional(S.String),
+  "successfulProbeCount": S.optional(S.Number),
+  "probingLatency": S.optional(LatencyDistribution),
+  "destinationEgressLocation": S.optional(EdgeLocation),
+}),
+).annotate({ identifier: "SingleEdgeResponse" }) as any as S.Schema<SingleEdgeResponse>;
 
 export type SingleEdgeResponseList = ReadonlyArray<SingleEdgeResponse>;
-export const SingleEdgeResponseList = /*@__PURE__*/ S.Array(
-  SingleEdgeResponse,
-) as any as S.Schema<SingleEdgeResponseList>;
+export const SingleEdgeResponseList = /*@__PURE__*/ S.Array(SingleEdgeResponse) as any as S.Schema<SingleEdgeResponseList>;
 
 /** Results of active probing from the last run of the test. */
 export interface ProbingDetails {
@@ -467,19 +375,19 @@ export interface ProbingDetails {
   error?: Status;
 }
 export const ProbingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    probedAllDevices: S.optional(S.Boolean),
-    probingLatency: S.optional(LatencyDistribution),
-    destinationEgressLocation: S.optional(EdgeLocation),
-    verifyTime: S.optional(S.String),
-    abortCause: S.optional(ProbingDetailsAbortCauseEnum),
-    result: S.optional(ProbingDetailsResultEnum),
-    endpointInfo: S.optional(EndpointInfo),
-    successfulProbeCount: S.optional(S.Number),
-    sentProbeCount: S.optional(S.Number),
-    edgeResponses: S.optional(SingleEdgeResponseList),
-    error: S.optional(Status),
-  }),
+S.Struct({
+  "probedAllDevices": S.optional(S.Boolean),
+  "probingLatency": S.optional(LatencyDistribution),
+  "destinationEgressLocation": S.optional(EdgeLocation),
+  "verifyTime": S.optional(S.String),
+  "abortCause": S.optional(ProbingDetailsAbortCauseEnum),
+  "result": S.optional(ProbingDetailsResultEnum),
+  "endpointInfo": S.optional(EndpointInfo),
+  "successfulProbeCount": S.optional(S.Number),
+  "sentProbeCount": S.optional(S.Number),
+  "edgeResponses": S.optional(SingleEdgeResponseList),
+  "error": S.optional(Status),
+}),
 ).annotate({ identifier: "ProbingDetails" }) as any as S.Schema<ProbingDetails>;
 
 /** For display only. Metadata associated with a Compute Engine forwarding rule. */
@@ -508,22 +416,20 @@ export interface ForwardingRuleInfo {
   uri?: string;
 }
 export const ForwardingRuleInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pscGoogleApiTarget: S.optional(S.String),
-    matchedPortRange: S.optional(S.String),
-    vip: S.optional(S.String),
-    pscServiceAttachmentUri: S.optional(S.String),
-    networkUri: S.optional(S.String),
-    target: S.optional(S.String),
-    loadBalancerName: S.optional(S.String),
-    matchedProtocol: S.optional(S.String),
-    region: S.optional(S.String),
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ForwardingRuleInfo",
-}) as any as S.Schema<ForwardingRuleInfo>;
+S.Struct({
+  "pscGoogleApiTarget": S.optional(S.String),
+  "matchedPortRange": S.optional(S.String),
+  "vip": S.optional(S.String),
+  "pscServiceAttachmentUri": S.optional(S.String),
+  "networkUri": S.optional(S.String),
+  "target": S.optional(S.String),
+  "loadBalancerName": S.optional(S.String),
+  "matchedProtocol": S.optional(S.String),
+  "region": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "ForwardingRuleInfo" }) as any as S.Schema<ForwardingRuleInfo>;
 
 /** For display only. Metadata associated with the serverless network endpoint group backend. */
 export interface ServerlessNegInfo {
@@ -531,19 +437,12 @@ export interface ServerlessNegInfo {
   negUri?: string;
 }
 export const ServerlessNegInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    negUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServerlessNegInfo",
-}) as any as S.Schema<ServerlessNegInfo>;
+S.Struct({
+  "negUri": S.optional(S.String),
+}),
+).annotate({ identifier: "ServerlessNegInfo" }) as any as S.Schema<ServerlessNegInfo>;
 
-export type VpnTunnelInfoRoutingTypeEnum =
-  | "ROUTING_TYPE_UNSPECIFIED"
-  | "ROUTE_BASED"
-  | "POLICY_BASED"
-  | "DYNAMIC"
-  | (string & {});
+export type VpnTunnelInfoRoutingTypeEnum = "ROUTING_TYPE_UNSPECIFIED" | "ROUTE_BASED" | "POLICY_BASED" | "DYNAMIC";
 export const VpnTunnelInfoRoutingTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a Compute Engine VPN tunnel. */
@@ -568,17 +467,17 @@ export interface VpnTunnelInfo {
   routingType?: VpnTunnelInfoRoutingTypeEnum;
 }
 export const VpnTunnelInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceGatewayIp: S.optional(S.String),
-    remoteGateway: S.optional(S.String),
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    sourceGateway: S.optional(S.String),
-    remoteGatewayIp: S.optional(S.String),
-    region: S.optional(S.String),
-    networkUri: S.optional(S.String),
-    routingType: S.optional(VpnTunnelInfoRoutingTypeEnum),
-  }),
+S.Struct({
+  "sourceGatewayIp": S.optional(S.String),
+  "remoteGateway": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "sourceGateway": S.optional(S.String),
+  "remoteGatewayIp": S.optional(S.String),
+  "region": S.optional(S.String),
+  "networkUri": S.optional(S.String),
+  "routingType": S.optional(VpnTunnelInfoRoutingTypeEnum),
+}),
 ).annotate({ identifier: "VpnTunnelInfo" }) as any as S.Schema<VpnTunnelInfo>;
 
 /** For display only. Metadata associated with a layer 7 packet inspection by the firewall. */
@@ -587,12 +486,10 @@ export interface NgfwPacketInspectionInfo {
   securityProfileGroupUri?: string;
 }
 export const NgfwPacketInspectionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    securityProfileGroupUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NgfwPacketInspectionInfo",
-}) as any as S.Schema<NgfwPacketInspectionInfo>;
+S.Struct({
+  "securityProfileGroupUri": S.optional(S.String),
+}),
+).annotate({ identifier: "NgfwPacketInspectionInfo" }) as any as S.Schema<NgfwPacketInspectionInfo>;
 
 /** For display only. Metadata associated with a Cloud Run revision. */
 export interface CloudRunRevisionInfo {
@@ -606,24 +503,15 @@ export interface CloudRunRevisionInfo {
   location?: string;
 }
 export const CloudRunRevisionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    displayName: S.optional(S.String),
-    serviceUri: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudRunRevisionInfo",
-}) as any as S.Schema<CloudRunRevisionInfo>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "serviceUri": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
+).annotate({ identifier: "CloudRunRevisionInfo" }) as any as S.Schema<CloudRunRevisionInfo>;
 
-export type GkeNetworkPolicySkippedInfoReasonEnum =
-  | "REASON_UNSPECIFIED"
-  | "NETWORK_POLICY_DISABLED"
-  | "INGRESS_SOURCE_ON_SAME_NODE"
-  | "EGRESS_FROM_NODE_NETWORK_NAMESPACE_POD"
-  | "NETWORK_POLICY_NOT_APPLIED_TO_RESPONSE_TRAFFIC"
-  | "NETWORK_POLICY_ANALYSIS_UNSUPPORTED"
-  | (string & {});
+export type GkeNetworkPolicySkippedInfoReasonEnum = "REASON_UNSPECIFIED" | "NETWORK_POLICY_DISABLED" | "INGRESS_SOURCE_ON_SAME_NODE" | "EGRESS_FROM_NODE_NETWORK_NAMESPACE_POD" | "NETWORK_POLICY_NOT_APPLIED_TO_RESPONSE_TRAFFIC" | "NETWORK_POLICY_ANALYSIS_UNSUPPORTED";
 export const GkeNetworkPolicySkippedInfoReasonEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Contains information about why GKE Network Policy evaluation was skipped. */
@@ -632,60 +520,12 @@ export interface GkeNetworkPolicySkippedInfo {
   reason?: GkeNetworkPolicySkippedInfoReasonEnum;
 }
 export const GkeNetworkPolicySkippedInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(GkeNetworkPolicySkippedInfoReasonEnum),
-  }),
-).annotate({
-  identifier: "GkeNetworkPolicySkippedInfo",
-}) as any as S.Schema<GkeNetworkPolicySkippedInfo>;
+S.Struct({
+  "reason": S.optional(GkeNetworkPolicySkippedInfoReasonEnum),
+}),
+).annotate({ identifier: "GkeNetworkPolicySkippedInfo" }) as any as S.Schema<GkeNetworkPolicySkippedInfo>;
 
-export type AbortInfoCauseEnum =
-  | "CAUSE_UNSPECIFIED"
-  | "UNKNOWN_NETWORK"
-  | "UNKNOWN_PROJECT"
-  | "NO_EXTERNAL_IP"
-  | "UNINTENDED_DESTINATION"
-  | "SOURCE_ENDPOINT_NOT_FOUND"
-  | "MISMATCHED_SOURCE_NETWORK"
-  | "DESTINATION_ENDPOINT_NOT_FOUND"
-  | "MISMATCHED_DESTINATION_NETWORK"
-  | "UNKNOWN_IP"
-  | "GOOGLE_MANAGED_SERVICE_UNKNOWN_IP"
-  | "SOURCE_IP_ADDRESS_NOT_IN_SOURCE_NETWORK"
-  | "PERMISSION_DENIED"
-  | "PERMISSION_DENIED_NO_CLOUD_NAT_CONFIGS"
-  | "PERMISSION_DENIED_NO_NEG_ENDPOINT_CONFIGS"
-  | "PERMISSION_DENIED_NO_CLOUD_ROUTER_CONFIGS"
-  | "NO_SOURCE_LOCATION"
-  | "NO_SOURCE_GCP_NETWORK_LOCATION"
-  | "NO_SOURCE_NON_GCP_NETWORK_LOCATION"
-  | "NO_SOURCE_INTERNET_LOCATION"
-  | "INVALID_ARGUMENT"
-  | "TRACE_TOO_LONG"
-  | "INTERNAL_ERROR"
-  | "UNSUPPORTED"
-  | "MISMATCHED_IP_VERSION"
-  | "GKE_KONNECTIVITY_PROXY_UNSUPPORTED"
-  | "RESOURCE_CONFIG_NOT_FOUND"
-  | "VM_INSTANCE_CONFIG_NOT_FOUND"
-  | "NETWORK_CONFIG_NOT_FOUND"
-  | "FIREWALL_CONFIG_NOT_FOUND"
-  | "ROUTE_CONFIG_NOT_FOUND"
-  | "GOOGLE_MANAGED_SERVICE_AMBIGUOUS_PSC_ENDPOINT"
-  | "GOOGLE_MANAGED_SERVICE_AMBIGUOUS_ENDPOINT"
-  | "SOURCE_PSC_CLOUD_SQL_UNSUPPORTED"
-  | "SOURCE_EXTERNAL_CLOUD_SQL_UNSUPPORTED"
-  | "SOURCE_REDIS_CLUSTER_UNSUPPORTED"
-  | "SOURCE_REDIS_INSTANCE_UNSUPPORTED"
-  | "SOURCE_FORWARDING_RULE_UNSUPPORTED"
-  | "NON_ROUTABLE_IP_ADDRESS"
-  | "UNKNOWN_ISSUE_IN_GOOGLE_MANAGED_PROJECT"
-  | "UNSUPPORTED_GOOGLE_MANAGED_PROJECT_CONFIG"
-  | "NO_SERVERLESS_IP_RANGES"
-  | "IP_VERSION_PROTOCOL_MISMATCH"
-  | "GKE_POD_UNKNOWN_ENDPOINT_LOCATION"
-  | "RESPONSE_TOO_LARGE"
-  | (string & {});
+export type AbortInfoCauseEnum = "CAUSE_UNSPECIFIED" | "UNKNOWN_NETWORK" | "UNKNOWN_PROJECT" | "NO_EXTERNAL_IP" | "UNINTENDED_DESTINATION" | "SOURCE_ENDPOINT_NOT_FOUND" | "MISMATCHED_SOURCE_NETWORK" | "DESTINATION_ENDPOINT_NOT_FOUND" | "MISMATCHED_DESTINATION_NETWORK" | "UNKNOWN_IP" | "GOOGLE_MANAGED_SERVICE_UNKNOWN_IP" | "SOURCE_IP_ADDRESS_NOT_IN_SOURCE_NETWORK" | "PERMISSION_DENIED" | "PERMISSION_DENIED_NO_CLOUD_NAT_CONFIGS" | "PERMISSION_DENIED_NO_NEG_ENDPOINT_CONFIGS" | "PERMISSION_DENIED_NO_CLOUD_ROUTER_CONFIGS" | "NO_SOURCE_LOCATION" | "NO_SOURCE_GCP_NETWORK_LOCATION" | "NO_SOURCE_NON_GCP_NETWORK_LOCATION" | "NO_SOURCE_INTERNET_LOCATION" | "INVALID_ARGUMENT" | "TRACE_TOO_LONG" | "INTERNAL_ERROR" | "UNSUPPORTED" | "MISMATCHED_IP_VERSION" | "GKE_KONNECTIVITY_PROXY_UNSUPPORTED" | "RESOURCE_CONFIG_NOT_FOUND" | "VM_INSTANCE_CONFIG_NOT_FOUND" | "NETWORK_CONFIG_NOT_FOUND" | "FIREWALL_CONFIG_NOT_FOUND" | "ROUTE_CONFIG_NOT_FOUND" | "GOOGLE_MANAGED_SERVICE_AMBIGUOUS_PSC_ENDPOINT" | "GOOGLE_MANAGED_SERVICE_AMBIGUOUS_ENDPOINT" | "SOURCE_PSC_CLOUD_SQL_UNSUPPORTED" | "SOURCE_EXTERNAL_CLOUD_SQL_UNSUPPORTED" | "SOURCE_REDIS_CLUSTER_UNSUPPORTED" | "SOURCE_REDIS_INSTANCE_UNSUPPORTED" | "SOURCE_FORWARDING_RULE_UNSUPPORTED" | "NON_ROUTABLE_IP_ADDRESS" | "UNKNOWN_ISSUE_IN_GOOGLE_MANAGED_PROJECT" | "UNSUPPORTED_GOOGLE_MANAGED_PROJECT_CONFIG" | "NO_SERVERLESS_IP_RANGES" | "IP_VERSION_PROTOCOL_MISMATCH" | "GKE_POD_UNKNOWN_ENDPOINT_LOCATION" | "RESPONSE_TOO_LARGE";
 export const AbortInfoCauseEnum = /*@__PURE__*/ S.String;
 
 /** Details of the final state "abort" and associated resource. */
@@ -700,12 +540,12 @@ export interface AbortInfo {
   projectsMissingPermission?: StringList;
 }
 export const AbortInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cause: S.optional(AbortInfoCauseEnum),
-    resourceUri: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    projectsMissingPermission: S.optional(StringList),
-  }),
+S.Struct({
+  "cause": S.optional(AbortInfoCauseEnum),
+  "resourceUri": S.optional(S.String),
+  "ipAddress": S.optional(S.String),
+  "projectsMissingPermission": S.optional(StringList),
+}),
 ).annotate({ identifier: "AbortInfo" }) as any as S.Schema<AbortInfo>;
 
 /** For display only. Metadata associated with a Cloud Function. */
@@ -720,15 +560,13 @@ export interface CloudFunctionInfo {
   location?: string;
 }
 export const CloudFunctionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    versionId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudFunctionInfo",
-}) as any as S.Schema<CloudFunctionInfo>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "versionId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
+).annotate({ identifier: "CloudFunctionInfo" }) as any as S.Schema<CloudFunctionInfo>;
 
 /** For display only. Metadata associated with a Google Kubernetes Engine (GKE) Pod. */
 export interface GkePodInfo {
@@ -740,11 +578,11 @@ export interface GkePodInfo {
   podUri?: string;
 }
 export const GkePodInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipAddress: S.optional(S.String),
-    networkUri: S.optional(S.String),
-    podUri: S.optional(S.String),
-  }),
+S.Struct({
+  "ipAddress": S.optional(S.String),
+  "networkUri": S.optional(S.String),
+  "podUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "GkePodInfo" }) as any as S.Schema<GkePodInfo>;
 
 /** For display only. Metadata associated with a Private Connection. */
@@ -753,22 +591,13 @@ export interface PrivateConnectionInfo {
   uri?: string;
 }
 export const PrivateConnectionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateConnectionInfo",
-}) as any as S.Schema<PrivateConnectionInfo>;
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "PrivateConnectionInfo" }) as any as S.Schema<PrivateConnectionInfo>;
 
-export type LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum =
-  | "HEALTH_CHECK_FIREWALLS_CONFIG_STATE_UNSPECIFIED"
-  | "FIREWALLS_CONFIGURED"
-  | "FIREWALLS_PARTIALLY_CONFIGURED"
-  | "FIREWALLS_NOT_CONFIGURED"
-  | "FIREWALLS_UNSUPPORTED"
-  | (string & {});
-export const LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum =
-  /*@__PURE__*/ S.String;
+export type LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum = "HEALTH_CHECK_FIREWALLS_CONFIG_STATE_UNSPECIFIED" | "FIREWALLS_CONFIGURED" | "FIREWALLS_PARTIALLY_CONFIGURED" | "FIREWALLS_NOT_CONFIGURED" | "FIREWALLS_UNSUPPORTED";
+export const LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with the load balancer backend. */
 export interface LoadBalancerBackendInfo {
@@ -794,23 +623,19 @@ export interface LoadBalancerBackendInfo {
   name?: string;
 }
 export const LoadBalancerBackendInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    healthCheckUri: S.optional(S.String),
-    instanceUri: S.optional(S.String),
-    pscServiceAttachmentUri: S.optional(S.String),
-    healthCheckFirewallsConfigState: S.optional(
-      LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum,
-    ),
-    backendServiceUri: S.optional(S.String),
-    networkEndpointGroupUri: S.optional(S.String),
-    pscGoogleApiTarget: S.optional(S.String),
-    instanceGroupUri: S.optional(S.String),
-    backendBucketUri: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LoadBalancerBackendInfo",
-}) as any as S.Schema<LoadBalancerBackendInfo>;
+S.Struct({
+  "healthCheckUri": S.optional(S.String),
+  "instanceUri": S.optional(S.String),
+  "pscServiceAttachmentUri": S.optional(S.String),
+  "healthCheckFirewallsConfigState": S.optional(LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum),
+  "backendServiceUri": S.optional(S.String),
+  "networkEndpointGroupUri": S.optional(S.String),
+  "pscGoogleApiTarget": S.optional(S.String),
+  "instanceGroupUri": S.optional(S.String),
+  "backendBucketUri": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "LoadBalancerBackendInfo" }) as any as S.Schema<LoadBalancerBackendInfo>;
 
 /** For display only. Metadata associated with a serverless direct VPC egress connection. */
 export interface DirectVpcEgressConnectionInfo {
@@ -826,16 +651,14 @@ export interface DirectVpcEgressConnectionInfo {
   region?: string;
 }
 export const DirectVpcEgressConnectionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subnetworkUri: S.optional(S.String),
-    selectedIpAddress: S.optional(S.String),
-    selectedIpRange: S.optional(S.String),
-    networkUri: S.optional(S.String),
-    region: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DirectVpcEgressConnectionInfo",
-}) as any as S.Schema<DirectVpcEgressConnectionInfo>;
+S.Struct({
+  "subnetworkUri": S.optional(S.String),
+  "selectedIpAddress": S.optional(S.String),
+  "selectedIpRange": S.optional(S.String),
+  "networkUri": S.optional(S.String),
+  "region": S.optional(S.String),
+}),
+).annotate({ identifier: "DirectVpcEgressConnectionInfo" }) as any as S.Schema<DirectVpcEgressConnectionInfo>;
 
 /** For display only. Metadata associated with a VPC connector. */
 export interface VpcConnectorInfo {
@@ -847,25 +670,14 @@ export interface VpcConnectorInfo {
   location?: string;
 }
 export const VpcConnectorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VpcConnectorInfo",
-}) as any as S.Schema<VpcConnectorInfo>;
+S.Struct({
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
+).annotate({ identifier: "VpcConnectorInfo" }) as any as S.Schema<VpcConnectorInfo>;
 
-export type IpMasqueradingSkippedInfoReasonEnum =
-  | "REASON_UNSPECIFIED"
-  | "DESTINATION_IP_IN_CONFIGURED_NON_MASQUERADE_RANGE"
-  | "DESTINATION_IP_IN_DEFAULT_NON_MASQUERADE_RANGE"
-  | "DESTINATION_ON_SAME_NODE"
-  | "DEFAULT_SNAT_DISABLED"
-  | "NO_MASQUERADING_FOR_IPV6"
-  | "POD_USES_NODE_NETWORK_NAMESPACE"
-  | "NO_MASQUERADING_FOR_RETURN_PACKET"
-  | (string & {});
+export type IpMasqueradingSkippedInfoReasonEnum = "REASON_UNSPECIFIED" | "DESTINATION_IP_IN_CONFIGURED_NON_MASQUERADE_RANGE" | "DESTINATION_IP_IN_DEFAULT_NON_MASQUERADE_RANGE" | "DESTINATION_ON_SAME_NODE" | "DEFAULT_SNAT_DISABLED" | "NO_MASQUERADING_FOR_IPV6" | "POD_USES_NODE_NETWORK_NAMESPACE" | "NO_MASQUERADING_FOR_RETURN_PACKET";
 export const IpMasqueradingSkippedInfoReasonEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Contains information about why IP masquerading was skipped for the packet. */
@@ -876,13 +688,11 @@ export interface IpMasqueradingSkippedInfo {
   reason?: IpMasqueradingSkippedInfoReasonEnum;
 }
 export const IpMasqueradingSkippedInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nonMasqueradeRange: S.optional(S.String),
-    reason: S.optional(IpMasqueradingSkippedInfoReasonEnum),
-  }),
-).annotate({
-  identifier: "IpMasqueradingSkippedInfo",
-}) as any as S.Schema<IpMasqueradingSkippedInfo>;
+S.Struct({
+  "nonMasqueradeRange": S.optional(S.String),
+  "reason": S.optional(IpMasqueradingSkippedInfoReasonEnum),
+}),
+).annotate({ identifier: "IpMasqueradingSkippedInfo" }) as any as S.Schema<IpMasqueradingSkippedInfo>;
 
 /** For display only. Metadata associated with a Cloud SQL instance. */
 export interface CloudSQLInstanceInfo {
@@ -900,52 +710,20 @@ export interface CloudSQLInstanceInfo {
   externalIp?: string;
 }
 export const CloudSQLInstanceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    displayName: S.optional(S.String),
-    networkUri: S.optional(S.String),
-    internalIp: S.optional(S.String),
-    region: S.optional(S.String),
-    externalIp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudSQLInstanceInfo",
-}) as any as S.Schema<CloudSQLInstanceInfo>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "networkUri": S.optional(S.String),
+  "internalIp": S.optional(S.String),
+  "region": S.optional(S.String),
+  "externalIp": S.optional(S.String),
+}),
+).annotate({ identifier: "CloudSQLInstanceInfo" }) as any as S.Schema<CloudSQLInstanceInfo>;
 
-export type DeliverInfoTargetEnum =
-  | "TARGET_UNSPECIFIED"
-  | "INSTANCE"
-  | "INTERNET"
-  | "GOOGLE_API"
-  | "GKE_MASTER"
-  | "CLOUD_SQL_INSTANCE"
-  | "PSC_PUBLISHED_SERVICE"
-  | "PSC_GOOGLE_API"
-  | "PSC_VPC_SC"
-  | "SERVERLESS_NEG"
-  | "STORAGE_BUCKET"
-  | "PRIVATE_NETWORK"
-  | "CLOUD_FUNCTION"
-  | "APP_ENGINE_VERSION"
-  | "CLOUD_RUN_REVISION"
-  | "GOOGLE_MANAGED_SERVICE"
-  | "REDIS_INSTANCE"
-  | "REDIS_CLUSTER"
-  | "GKE_POD"
-  | "CLOUD_RUN_JOB"
-  | "DMS_PRIVATE_CONNECTION"
-  | "DATASTREAM_PRIVATE_CONNECTION"
-  | (string & {});
+export type DeliverInfoTargetEnum = "TARGET_UNSPECIFIED" | "INSTANCE" | "INTERNET" | "GOOGLE_API" | "GKE_MASTER" | "CLOUD_SQL_INSTANCE" | "PSC_PUBLISHED_SERVICE" | "PSC_GOOGLE_API" | "PSC_VPC_SC" | "SERVERLESS_NEG" | "STORAGE_BUCKET" | "PRIVATE_NETWORK" | "CLOUD_FUNCTION" | "APP_ENGINE_VERSION" | "CLOUD_RUN_REVISION" | "GOOGLE_MANAGED_SERVICE" | "REDIS_INSTANCE" | "REDIS_CLUSTER" | "GKE_POD" | "CLOUD_RUN_JOB" | "DMS_PRIVATE_CONNECTION" | "DATASTREAM_PRIVATE_CONNECTION";
 export const DeliverInfoTargetEnum = /*@__PURE__*/ S.String;
 
-export type DeliverInfoGoogleServiceTypeEnum =
-  | "GOOGLE_SERVICE_TYPE_UNSPECIFIED"
-  | "IAP"
-  | "GFE_PROXY_OR_HEALTH_CHECK_PROBER"
-  | "CLOUD_DNS"
-  | "PRIVATE_GOOGLE_ACCESS"
-  | "SERVERLESS_VPC_ACCESS"
-  | (string & {});
+export type DeliverInfoGoogleServiceTypeEnum = "GOOGLE_SERVICE_TYPE_UNSPECIFIED" | "IAP" | "GFE_PROXY_OR_HEALTH_CHECK_PROBER" | "CLOUD_DNS" | "PRIVATE_GOOGLE_ACCESS" | "SERVERLESS_VPC_ACCESS";
 export const DeliverInfoGoogleServiceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of the final state "deliver" and associated resource. */
@@ -964,14 +742,14 @@ export interface DeliverInfo {
   ipAddress?: string;
 }
 export const DeliverInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(DeliverInfoTargetEnum),
-    storageBucket: S.optional(S.String),
-    pscGoogleApiTarget: S.optional(S.String),
-    resourceUri: S.optional(S.String),
-    googleServiceType: S.optional(DeliverInfoGoogleServiceTypeEnum),
-    ipAddress: S.optional(S.String),
-  }),
+S.Struct({
+  "target": S.optional(DeliverInfoTargetEnum),
+  "storageBucket": S.optional(S.String),
+  "pscGoogleApiTarget": S.optional(S.String),
+  "resourceUri": S.optional(S.String),
+  "googleServiceType": S.optional(DeliverInfoGoogleServiceTypeEnum),
+  "ipAddress": S.optional(S.String),
+}),
 ).annotate({ identifier: "DeliverInfo" }) as any as S.Schema<DeliverInfo>;
 
 /** For display only. Metadata associated with ProxyConnection. */
@@ -1000,22 +778,20 @@ export interface ProxyConnectionInfo {
   subnetUri?: string;
 }
 export const ProxyConnectionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: S.optional(S.String),
-    oldDestinationPort: S.optional(S.Number),
-    newDestinationIp: S.optional(S.String),
-    newSourcePort: S.optional(S.Number),
-    newSourceIp: S.optional(S.String),
-    oldSourceIp: S.optional(S.String),
-    networkUri: S.optional(S.String),
-    newDestinationPort: S.optional(S.Number),
-    oldDestinationIp: S.optional(S.String),
-    oldSourcePort: S.optional(S.Number),
-    subnetUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProxyConnectionInfo",
-}) as any as S.Schema<ProxyConnectionInfo>;
+S.Struct({
+  "protocol": S.optional(S.String),
+  "oldDestinationPort": S.optional(S.Number),
+  "newDestinationIp": S.optional(S.String),
+  "newSourcePort": S.optional(S.Number),
+  "newSourceIp": S.optional(S.String),
+  "oldSourceIp": S.optional(S.String),
+  "networkUri": S.optional(S.String),
+  "newDestinationPort": S.optional(S.Number),
+  "oldDestinationIp": S.optional(S.String),
+  "oldSourcePort": S.optional(S.Number),
+  "subnetUri": S.optional(S.String),
+}),
+).annotate({ identifier: "ProxyConnectionInfo" }) as any as S.Schema<ProxyConnectionInfo>;
 
 /** For display only. Metadata associated with an App Engine version. */
 export interface AppEngineVersionInfo {
@@ -1029,34 +805,18 @@ export interface AppEngineVersionInfo {
   environment?: string;
 }
 export const AppEngineVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    runtime: S.optional(S.String),
-    environment: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppEngineVersionInfo",
-}) as any as S.Schema<AppEngineVersionInfo>;
+S.Struct({
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "runtime": S.optional(S.String),
+  "environment": S.optional(S.String),
+}),
+).annotate({ identifier: "AppEngineVersionInfo" }) as any as S.Schema<AppEngineVersionInfo>;
 
-export type NatInfoTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "INTERNAL_TO_EXTERNAL"
-  | "EXTERNAL_TO_INTERNAL"
-  | "CLOUD_NAT"
-  | "PRIVATE_SERVICE_CONNECT"
-  | "GKE_POD_IP_MASQUERADING"
-  | (string & {});
+export type NatInfoTypeEnum = "TYPE_UNSPECIFIED" | "INTERNAL_TO_EXTERNAL" | "EXTERNAL_TO_INTERNAL" | "CLOUD_NAT" | "PRIVATE_SERVICE_CONNECT" | "GKE_POD_IP_MASQUERADING";
 export const NatInfoTypeEnum = /*@__PURE__*/ S.String;
 
-export type NatInfoCloudNatGatewayTypeEnum =
-  | "CLOUD_NAT_GATEWAY_TYPE_UNSPECIFIED"
-  | "PUBLIC_NAT44"
-  | "PUBLIC_NAT64"
-  | "PRIVATE_NAT_NCC"
-  | "PRIVATE_NAT_HYBRID"
-  | "PRIVATE_NAT64"
-  | (string & {});
+export type NatInfoCloudNatGatewayTypeEnum = "CLOUD_NAT_GATEWAY_TYPE_UNSPECIFIED" | "PUBLIC_NAT44" | "PUBLIC_NAT64" | "PRIVATE_NAT_NCC" | "PRIVATE_NAT_HYBRID" | "PRIVATE_NAT64";
 export const NatInfoCloudNatGatewayTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with NAT. */
@@ -1091,45 +851,28 @@ export interface NatInfo {
   oldDestinationPort?: number;
 }
 export const NatInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    routerUri: S.optional(S.String),
-    newDestinationPort: S.optional(S.Number),
-    networkUri: S.optional(S.String),
-    oldSourceIp: S.optional(S.String),
-    newDestinationIp: S.optional(S.String),
-    oldDestinationIp: S.optional(S.String),
-    oldSourcePort: S.optional(S.Number),
-    type: S.optional(NatInfoTypeEnum),
-    newSourcePort: S.optional(S.Number),
-    cloudNatGatewayType: S.optional(NatInfoCloudNatGatewayTypeEnum),
-    newSourceIp: S.optional(S.String),
-    protocol: S.optional(S.String),
-    natGatewayName: S.optional(S.String),
-    oldDestinationPort: S.optional(S.Number),
-  }),
+S.Struct({
+  "routerUri": S.optional(S.String),
+  "newDestinationPort": S.optional(S.Number),
+  "networkUri": S.optional(S.String),
+  "oldSourceIp": S.optional(S.String),
+  "newDestinationIp": S.optional(S.String),
+  "oldDestinationIp": S.optional(S.String),
+  "oldSourcePort": S.optional(S.Number),
+  "type": S.optional(NatInfoTypeEnum),
+  "newSourcePort": S.optional(S.Number),
+  "cloudNatGatewayType": S.optional(NatInfoCloudNatGatewayTypeEnum),
+  "newSourceIp": S.optional(S.String),
+  "protocol": S.optional(S.String),
+  "natGatewayName": S.optional(S.String),
+  "oldDestinationPort": S.optional(S.Number),
+}),
 ).annotate({ identifier: "NatInfo" }) as any as S.Schema<NatInfo>;
 
-export type FirewallInfoTargetTypeEnum =
-  | "TARGET_TYPE_UNSPECIFIED"
-  | "INSTANCES"
-  | "INTERNAL_MANAGED_LB"
-  | (string & {});
+export type FirewallInfoTargetTypeEnum = "TARGET_TYPE_UNSPECIFIED" | "INSTANCES" | "INTERNAL_MANAGED_LB";
 export const FirewallInfoTargetTypeEnum = /*@__PURE__*/ S.String;
 
-export type FirewallInfoFirewallRuleTypeEnum =
-  | "FIREWALL_RULE_TYPE_UNSPECIFIED"
-  | "HIERARCHICAL_FIREWALL_POLICY_RULE"
-  | "VPC_FIREWALL_RULE"
-  | "IMPLIED_VPC_FIREWALL_RULE"
-  | "SERVERLESS_VPC_ACCESS_MANAGED_FIREWALL_RULE"
-  | "NETWORK_FIREWALL_POLICY_RULE"
-  | "NETWORK_REGIONAL_FIREWALL_POLICY_RULE"
-  | "SYSTEM_NETWORK_FIREWALL_POLICY_RULE"
-  | "SYSTEM_REGIONAL_NETWORK_FIREWALL_POLICY_RULE"
-  | "UNSUPPORTED_FIREWALL_POLICY_RULE"
-  | "TRACKING_STATE"
-  | "ANALYSIS_SKIPPED"
-  | (string & {});
+export type FirewallInfoFirewallRuleTypeEnum = "FIREWALL_RULE_TYPE_UNSPECIFIED" | "HIERARCHICAL_FIREWALL_POLICY_RULE" | "VPC_FIREWALL_RULE" | "IMPLIED_VPC_FIREWALL_RULE" | "SERVERLESS_VPC_ACCESS_MANAGED_FIREWALL_RULE" | "NETWORK_FIREWALL_POLICY_RULE" | "NETWORK_REGIONAL_FIREWALL_POLICY_RULE" | "SYSTEM_NETWORK_FIREWALL_POLICY_RULE" | "SYSTEM_REGIONAL_NETWORK_FIREWALL_POLICY_RULE" | "UNSUPPORTED_FIREWALL_POLICY_RULE" | "TRACKING_STATE" | "ANALYSIS_SKIPPED";
 export const FirewallInfoFirewallRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a firewall policy rule. */
@@ -1162,21 +905,21 @@ export interface FirewallInfo {
   firewallRuleType?: FirewallInfoFirewallRuleTypeEnum;
 }
 export const FirewallInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetType: S.optional(FirewallInfoTargetTypeEnum),
-    direction: S.optional(S.String),
-    targetServiceAccounts: S.optional(StringList),
-    priority: S.optional(S.Number),
-    networkUri: S.optional(S.String),
-    policyUri: S.optional(S.String),
-    policy: S.optional(S.String),
-    action: S.optional(S.String),
-    targetTags: S.optional(StringList),
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    policyPriority: S.optional(S.Number),
-    firewallRuleType: S.optional(FirewallInfoFirewallRuleTypeEnum),
-  }),
+S.Struct({
+  "targetType": S.optional(FirewallInfoTargetTypeEnum),
+  "direction": S.optional(S.String),
+  "targetServiceAccounts": S.optional(StringList),
+  "priority": S.optional(S.Number),
+  "networkUri": S.optional(S.String),
+  "policyUri": S.optional(S.String),
+  "policy": S.optional(S.String),
+  "action": S.optional(S.String),
+  "targetTags": S.optional(StringList),
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "policyPriority": S.optional(S.Number),
+  "firewallRuleType": S.optional(FirewallInfoFirewallRuleTypeEnum),
+}),
 ).annotate({ identifier: "FirewallInfo" }) as any as S.Schema<FirewallInfo>;
 
 /** For display only. Metadata associated with a serverless public connection. */
@@ -1185,180 +928,15 @@ export interface ServerlessExternalConnectionInfo {
   selectedIpAddress?: string;
 }
 export const ServerlessExternalConnectionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selectedIpAddress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServerlessExternalConnectionInfo",
-}) as any as S.Schema<ServerlessExternalConnectionInfo>;
+S.Struct({
+  "selectedIpAddress": S.optional(S.String),
+}),
+).annotate({ identifier: "ServerlessExternalConnectionInfo" }) as any as S.Schema<ServerlessExternalConnectionInfo>;
 
-export type StepStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "START_FROM_INSTANCE"
-  | "START_FROM_INTERNET"
-  | "START_FROM_GOOGLE_SERVICE"
-  | "START_FROM_PRIVATE_NETWORK"
-  | "START_FROM_GKE_MASTER"
-  | "START_FROM_CLOUD_SQL_INSTANCE"
-  | "START_FROM_GKE_POD"
-  | "START_FROM_REDIS_INSTANCE"
-  | "START_FROM_REDIS_CLUSTER"
-  | "START_FROM_CLOUD_FUNCTION"
-  | "START_FROM_APP_ENGINE_VERSION"
-  | "START_FROM_CLOUD_RUN_REVISION"
-  | "START_FROM_CLOUD_RUN_JOB"
-  | "START_FROM_STORAGE_BUCKET"
-  | "START_FROM_PSC_PUBLISHED_SERVICE"
-  | "START_FROM_SERVERLESS_NEG"
-  | "START_FROM_DMS_PRIVATE_CONNECTION"
-  | "START_FROM_DATASTREAM_PRIVATE_CONNECTION"
-  | "APPLY_INGRESS_FIREWALL_RULE"
-  | "APPLY_EGRESS_FIREWALL_RULE"
-  | "APPLY_ROUTE"
-  | "APPLY_FORWARDING_RULE"
-  | "ANALYZE_LOAD_BALANCER_BACKEND"
-  | "SPOOFING_APPROVED"
-  | "ARRIVE_AT_INSTANCE"
-  | "ARRIVE_AT_INTERNAL_LOAD_BALANCER"
-  | "ARRIVE_AT_EXTERNAL_LOAD_BALANCER"
-  | "ARRIVE_AT_HYBRID_SUBNET"
-  | "ARRIVE_AT_VPN_GATEWAY"
-  | "ARRIVE_AT_VPN_TUNNEL"
-  | "ARRIVE_AT_INTERCONNECT_ATTACHMENT"
-  | "ARRIVE_AT_VPC_CONNECTOR"
-  | "ARRIVE_AT_GKE_POD"
-  | "DIRECT_VPC_EGRESS_CONNECTION"
-  | "SERVERLESS_EXTERNAL_CONNECTION"
-  | "NGFW_PACKET_INSPECTION"
-  | "NAT"
-  | "SKIP_GKE_POD_IP_MASQUERADING"
-  | "SKIP_GKE_INGRESS_NETWORK_POLICY"
-  | "SKIP_GKE_EGRESS_NETWORK_POLICY"
-  | "APPLY_INGRESS_GKE_NETWORK_POLICY"
-  | "APPLY_EGRESS_GKE_NETWORK_POLICY"
-  | "PROXY_CONNECTION"
-  | "DELIVER"
-  | "DROP"
-  | "FORWARD"
-  | "ABORT"
-  | "VIEWER_PERMISSION_MISSING"
-  | (string & {});
+export type StepStateEnum = "STATE_UNSPECIFIED" | "START_FROM_INSTANCE" | "START_FROM_INTERNET" | "START_FROM_GOOGLE_SERVICE" | "START_FROM_PRIVATE_NETWORK" | "START_FROM_GKE_MASTER" | "START_FROM_CLOUD_SQL_INSTANCE" | "START_FROM_GKE_POD" | "START_FROM_REDIS_INSTANCE" | "START_FROM_REDIS_CLUSTER" | "START_FROM_CLOUD_FUNCTION" | "START_FROM_APP_ENGINE_VERSION" | "START_FROM_CLOUD_RUN_REVISION" | "START_FROM_CLOUD_RUN_JOB" | "START_FROM_STORAGE_BUCKET" | "START_FROM_PSC_PUBLISHED_SERVICE" | "START_FROM_SERVERLESS_NEG" | "START_FROM_DMS_PRIVATE_CONNECTION" | "START_FROM_DATASTREAM_PRIVATE_CONNECTION" | "APPLY_INGRESS_FIREWALL_RULE" | "APPLY_EGRESS_FIREWALL_RULE" | "APPLY_ROUTE" | "APPLY_FORWARDING_RULE" | "ANALYZE_LOAD_BALANCER_BACKEND" | "SPOOFING_APPROVED" | "ARRIVE_AT_INSTANCE" | "ARRIVE_AT_INTERNAL_LOAD_BALANCER" | "ARRIVE_AT_EXTERNAL_LOAD_BALANCER" | "ARRIVE_AT_HYBRID_SUBNET" | "ARRIVE_AT_VPN_GATEWAY" | "ARRIVE_AT_VPN_TUNNEL" | "ARRIVE_AT_INTERCONNECT_ATTACHMENT" | "ARRIVE_AT_VPC_CONNECTOR" | "ARRIVE_AT_GKE_POD" | "DIRECT_VPC_EGRESS_CONNECTION" | "SERVERLESS_EXTERNAL_CONNECTION" | "NGFW_PACKET_INSPECTION" | "NAT" | "SKIP_GKE_POD_IP_MASQUERADING" | "SKIP_GKE_INGRESS_NETWORK_POLICY" | "SKIP_GKE_EGRESS_NETWORK_POLICY" | "APPLY_INGRESS_GKE_NETWORK_POLICY" | "APPLY_EGRESS_GKE_NETWORK_POLICY" | "PROXY_CONNECTION" | "DELIVER" | "DROP" | "FORWARD" | "ABORT" | "VIEWER_PERMISSION_MISSING";
 export const StepStateEnum = /*@__PURE__*/ S.String;
 
-export type DropInfoCauseEnum =
-  | "CAUSE_UNSPECIFIED"
-  | "UNKNOWN_EXTERNAL_ADDRESS"
-  | "FOREIGN_IP_DISALLOWED"
-  | "FIREWALL_RULE"
-  | "NO_ROUTE"
-  | "ROUTE_BLACKHOLE"
-  | "ROUTE_WRONG_NETWORK"
-  | "ROUTE_NEXT_HOP_IP_ADDRESS_NOT_RESOLVED"
-  | "ROUTE_NEXT_HOP_RESOURCE_NOT_FOUND"
-  | "ROUTE_NEXT_HOP_INSTANCE_WRONG_NETWORK"
-  | "ROUTE_NEXT_HOP_INSTANCE_NON_PRIMARY_IP"
-  | "ROUTE_NEXT_HOP_FORWARDING_RULE_IP_MISMATCH"
-  | "ROUTE_NEXT_HOP_VPN_TUNNEL_NOT_ESTABLISHED"
-  | "ROUTE_NEXT_HOP_FORWARDING_RULE_TYPE_INVALID"
-  | "NO_ROUTE_FROM_INTERNET_TO_PRIVATE_IPV6_ADDRESS"
-  | "NO_ROUTE_FROM_INTERNET_TO_PRIVATE_IPV4_ADDRESS"
-  | "NO_ROUTE_FROM_EXTERNAL_IPV6_SOURCE_TO_PRIVATE_IPV6_ADDRESS"
-  | "VPN_TUNNEL_LOCAL_SELECTOR_MISMATCH"
-  | "VPN_TUNNEL_REMOTE_SELECTOR_MISMATCH"
-  | "PRIVATE_TRAFFIC_TO_INTERNET"
-  | "PRIVATE_GOOGLE_ACCESS_DISALLOWED"
-  | "PRIVATE_GOOGLE_ACCESS_VIA_VPN_TUNNEL_UNSUPPORTED"
-  | "NO_EXTERNAL_ADDRESS"
-  | "UNKNOWN_INTERNAL_ADDRESS"
-  | "FORWARDING_RULE_MISMATCH"
-  | "FORWARDING_RULE_NO_INSTANCES"
-  | "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK"
-  | "FIREWALL_BLOCKING_LOAD_BALANCER_ENVOY_PROXY_HEALTH_CHECK"
-  | "INGRESS_FIREWALL_TAGS_UNSUPPORTED_BY_DIRECT_VPC_EGRESS"
-  | "INSTANCE_NOT_RUNNING"
-  | "GKE_CLUSTER_NOT_RUNNING"
-  | "GKE_POD_NOT_RUNNING"
-  | "CLOUD_SQL_INSTANCE_NOT_RUNNING"
-  | "REDIS_INSTANCE_NOT_RUNNING"
-  | "REDIS_CLUSTER_NOT_RUNNING"
-  | "TRAFFIC_TYPE_BLOCKED"
-  | "GKE_MASTER_UNAUTHORIZED_ACCESS"
-  | "CLOUD_SQL_INSTANCE_UNAUTHORIZED_ACCESS"
-  | "DROPPED_INSIDE_GKE_SERVICE"
-  | "DROPPED_INSIDE_CLOUD_SQL_SERVICE"
-  | "DROPPED_INSIDE_DMS_PRIVATE_CONNECTION"
-  | "DROPPED_INSIDE_DATASTREAM_PRIVATE_CONNECTION"
-  | "GOOGLE_MANAGED_SERVICE_NO_PEERING"
-  | "GOOGLE_MANAGED_SERVICE_NO_PSC_ENDPOINT"
-  | "GKE_PSC_ENDPOINT_MISSING"
-  | "CLOUD_SQL_INSTANCE_NO_IP_ADDRESS"
-  | "GKE_CONTROL_PLANE_REGION_MISMATCH"
-  | "PUBLIC_GKE_CONTROL_PLANE_TO_PRIVATE_DESTINATION"
-  | "GKE_CONTROL_PLANE_NO_ROUTE"
-  | "CLOUD_SQL_INSTANCE_NOT_CONFIGURED_FOR_EXTERNAL_TRAFFIC"
-  | "PUBLIC_CLOUD_SQL_INSTANCE_TO_PRIVATE_DESTINATION"
-  | "CLOUD_SQL_INSTANCE_NO_ROUTE"
-  | "CLOUD_SQL_CONNECTOR_REQUIRED"
-  | "CLOUD_FUNCTION_NOT_ACTIVE"
-  | "VPC_CONNECTOR_NOT_SET"
-  | "VPC_CONNECTOR_NOT_RUNNING"
-  | "VPC_CONNECTOR_SERVERLESS_TRAFFIC_BLOCKED"
-  | "VPC_CONNECTOR_HEALTH_CHECK_TRAFFIC_BLOCKED"
-  | "FORWARDING_RULE_REGION_MISMATCH"
-  | "PSC_CONNECTION_NOT_ACCEPTED"
-  | "PSC_ENDPOINT_ACCESSED_FROM_PEERED_NETWORK"
-  | "PSC_NEG_PRODUCER_ENDPOINT_NO_GLOBAL_ACCESS"
-  | "PSC_NEG_PRODUCER_FORWARDING_RULE_MULTIPLE_PORTS"
-  | "CLOUD_SQL_PSC_NEG_UNSUPPORTED"
-  | "NO_NAT_SUBNETS_FOR_PSC_SERVICE_ATTACHMENT"
-  | "PSC_TRANSITIVITY_NOT_PROPAGATED"
-  | "HYBRID_NEG_NON_DYNAMIC_ROUTE_MATCHED"
-  | "HYBRID_NEG_NON_LOCAL_DYNAMIC_ROUTE_MATCHED"
-  | "CLOUD_RUN_REVISION_NOT_READY"
-  | "CLOUD_RUN_JOB_NOT_READY"
-  | "DROPPED_INSIDE_PSC_SERVICE_PRODUCER"
-  | "LOAD_BALANCER_HAS_NO_PROXY_SUBNET"
-  | "CLOUD_NAT_NO_ADDRESSES"
-  | "ROUTING_LOOP"
-  | "DROPPED_INSIDE_GOOGLE_MANAGED_SERVICE"
-  | "LOAD_BALANCER_BACKEND_INVALID_NETWORK"
-  | "BACKEND_SERVICE_NAMED_PORT_NOT_DEFINED"
-  | "DESTINATION_IS_PRIVATE_NAT_IP_RANGE"
-  | "DROPPED_INSIDE_REDIS_INSTANCE_SERVICE"
-  | "REDIS_INSTANCE_UNSUPPORTED_PORT"
-  | "REDIS_INSTANCE_CONNECTING_FROM_PUPI_ADDRESS"
-  | "REDIS_INSTANCE_NO_ROUTE_TO_DESTINATION_NETWORK"
-  | "REDIS_INSTANCE_NO_EXTERNAL_IP"
-  | "REDIS_INSTANCE_UNSUPPORTED_PROTOCOL"
-  | "DROPPED_INSIDE_REDIS_CLUSTER_SERVICE"
-  | "REDIS_CLUSTER_UNSUPPORTED_PORT"
-  | "REDIS_CLUSTER_NO_EXTERNAL_IP"
-  | "REDIS_CLUSTER_UNSUPPORTED_PROTOCOL"
-  | "NO_ADVERTISED_ROUTE_TO_GCP_DESTINATION"
-  | "NO_TRAFFIC_SELECTOR_TO_GCP_DESTINATION"
-  | "NO_KNOWN_ROUTE_FROM_PEERED_NETWORK_TO_DESTINATION"
-  | "PRIVATE_NAT_TO_PSC_ENDPOINT_UNSUPPORTED"
-  | "PRIVATE_NAT_SOURCE_IP_IN_EXCLUDED_RANGE"
-  | "PRIVATE_NAT_SOURCE_IP_IS_A_LINK_LOCAL_IP_IN_GKE"
-  | "PSC_PORT_MAPPING_PORT_MISMATCH"
-  | "PSC_PORT_MAPPING_WITHOUT_PSC_CONNECTION_UNSUPPORTED"
-  | "UNSUPPORTED_ROUTE_MATCHED_FOR_NAT64_DESTINATION"
-  | "TRAFFIC_FROM_HYBRID_ENDPOINT_TO_INTERNET_DISALLOWED"
-  | "NO_MATCHING_NAT64_GATEWAY"
-  | "NO_CONFIGURED_PRIVATE_NAT64_RULE"
-  | "LOAD_BALANCER_BACKEND_IP_VERSION_MISMATCH"
-  | "NO_KNOWN_ROUTE_FROM_NCC_NETWORK_TO_DESTINATION"
-  | "CLOUD_NAT_PROTOCOL_UNSUPPORTED"
-  | "L2_INTERCONNECT_UNSUPPORTED_PROTOCOL"
-  | "L2_INTERCONNECT_UNSUPPORTED_PORT"
-  | "L2_INTERCONNECT_DESTINATION_IP_MISMATCH"
-  | "NCC_ROUTE_WITHIN_HYBRID_SUBNET_UNSUPPORTED"
-  | "HYBRID_SUBNET_REGION_MISMATCH"
-  | "HYBRID_SUBNET_NO_ROUTE"
-  | "GKE_NETWORK_POLICY"
-  | "NO_VALID_ROUTE_FROM_GOOGLE_MANAGED_NETWORK_TO_DESTINATION"
-  | "PRIVATE_CONNECTION_NO_RUNNING_INSTANCE"
-  | (string & {});
+export type DropInfoCauseEnum = "CAUSE_UNSPECIFIED" | "UNKNOWN_EXTERNAL_ADDRESS" | "FOREIGN_IP_DISALLOWED" | "FIREWALL_RULE" | "NO_ROUTE" | "ROUTE_BLACKHOLE" | "ROUTE_WRONG_NETWORK" | "ROUTE_NEXT_HOP_IP_ADDRESS_NOT_RESOLVED" | "ROUTE_NEXT_HOP_RESOURCE_NOT_FOUND" | "ROUTE_NEXT_HOP_INSTANCE_WRONG_NETWORK" | "ROUTE_NEXT_HOP_INSTANCE_NON_PRIMARY_IP" | "ROUTE_NEXT_HOP_FORWARDING_RULE_IP_MISMATCH" | "ROUTE_NEXT_HOP_VPN_TUNNEL_NOT_ESTABLISHED" | "ROUTE_NEXT_HOP_FORWARDING_RULE_TYPE_INVALID" | "NO_ROUTE_FROM_INTERNET_TO_PRIVATE_IPV6_ADDRESS" | "NO_ROUTE_FROM_INTERNET_TO_PRIVATE_IPV4_ADDRESS" | "NO_ROUTE_FROM_EXTERNAL_IPV6_SOURCE_TO_PRIVATE_IPV6_ADDRESS" | "VPN_TUNNEL_LOCAL_SELECTOR_MISMATCH" | "VPN_TUNNEL_REMOTE_SELECTOR_MISMATCH" | "PRIVATE_TRAFFIC_TO_INTERNET" | "PRIVATE_GOOGLE_ACCESS_DISALLOWED" | "PRIVATE_GOOGLE_ACCESS_VIA_VPN_TUNNEL_UNSUPPORTED" | "NO_EXTERNAL_ADDRESS" | "UNKNOWN_INTERNAL_ADDRESS" | "FORWARDING_RULE_MISMATCH" | "FORWARDING_RULE_NO_INSTANCES" | "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK" | "FIREWALL_BLOCKING_LOAD_BALANCER_ENVOY_PROXY_HEALTH_CHECK" | "INGRESS_FIREWALL_TAGS_UNSUPPORTED_BY_DIRECT_VPC_EGRESS" | "INSTANCE_NOT_RUNNING" | "GKE_CLUSTER_NOT_RUNNING" | "GKE_POD_NOT_RUNNING" | "CLOUD_SQL_INSTANCE_NOT_RUNNING" | "REDIS_INSTANCE_NOT_RUNNING" | "REDIS_CLUSTER_NOT_RUNNING" | "TRAFFIC_TYPE_BLOCKED" | "GKE_MASTER_UNAUTHORIZED_ACCESS" | "CLOUD_SQL_INSTANCE_UNAUTHORIZED_ACCESS" | "DROPPED_INSIDE_GKE_SERVICE" | "DROPPED_INSIDE_CLOUD_SQL_SERVICE" | "DROPPED_INSIDE_DMS_PRIVATE_CONNECTION" | "DROPPED_INSIDE_DATASTREAM_PRIVATE_CONNECTION" | "GOOGLE_MANAGED_SERVICE_NO_PEERING" | "GOOGLE_MANAGED_SERVICE_NO_PSC_ENDPOINT" | "GKE_PSC_ENDPOINT_MISSING" | "CLOUD_SQL_INSTANCE_NO_IP_ADDRESS" | "GKE_CONTROL_PLANE_REGION_MISMATCH" | "PUBLIC_GKE_CONTROL_PLANE_TO_PRIVATE_DESTINATION" | "GKE_CONTROL_PLANE_NO_ROUTE" | "CLOUD_SQL_INSTANCE_NOT_CONFIGURED_FOR_EXTERNAL_TRAFFIC" | "PUBLIC_CLOUD_SQL_INSTANCE_TO_PRIVATE_DESTINATION" | "CLOUD_SQL_INSTANCE_NO_ROUTE" | "CLOUD_SQL_CONNECTOR_REQUIRED" | "CLOUD_FUNCTION_NOT_ACTIVE" | "VPC_CONNECTOR_NOT_SET" | "VPC_CONNECTOR_NOT_RUNNING" | "VPC_CONNECTOR_SERVERLESS_TRAFFIC_BLOCKED" | "VPC_CONNECTOR_HEALTH_CHECK_TRAFFIC_BLOCKED" | "FORWARDING_RULE_REGION_MISMATCH" | "PSC_CONNECTION_NOT_ACCEPTED" | "PSC_ENDPOINT_ACCESSED_FROM_PEERED_NETWORK" | "PSC_NEG_PRODUCER_ENDPOINT_NO_GLOBAL_ACCESS" | "PSC_NEG_PRODUCER_FORWARDING_RULE_MULTIPLE_PORTS" | "CLOUD_SQL_PSC_NEG_UNSUPPORTED" | "NO_NAT_SUBNETS_FOR_PSC_SERVICE_ATTACHMENT" | "PSC_TRANSITIVITY_NOT_PROPAGATED" | "HYBRID_NEG_NON_DYNAMIC_ROUTE_MATCHED" | "HYBRID_NEG_NON_LOCAL_DYNAMIC_ROUTE_MATCHED" | "CLOUD_RUN_REVISION_NOT_READY" | "CLOUD_RUN_JOB_NOT_READY" | "DROPPED_INSIDE_PSC_SERVICE_PRODUCER" | "LOAD_BALANCER_HAS_NO_PROXY_SUBNET" | "CLOUD_NAT_NO_ADDRESSES" | "ROUTING_LOOP" | "DROPPED_INSIDE_GOOGLE_MANAGED_SERVICE" | "LOAD_BALANCER_BACKEND_INVALID_NETWORK" | "BACKEND_SERVICE_NAMED_PORT_NOT_DEFINED" | "DESTINATION_IS_PRIVATE_NAT_IP_RANGE" | "DROPPED_INSIDE_REDIS_INSTANCE_SERVICE" | "REDIS_INSTANCE_UNSUPPORTED_PORT" | "REDIS_INSTANCE_CONNECTING_FROM_PUPI_ADDRESS" | "REDIS_INSTANCE_NO_ROUTE_TO_DESTINATION_NETWORK" | "REDIS_INSTANCE_NO_EXTERNAL_IP" | "REDIS_INSTANCE_UNSUPPORTED_PROTOCOL" | "DROPPED_INSIDE_REDIS_CLUSTER_SERVICE" | "REDIS_CLUSTER_UNSUPPORTED_PORT" | "REDIS_CLUSTER_NO_EXTERNAL_IP" | "REDIS_CLUSTER_UNSUPPORTED_PROTOCOL" | "NO_ADVERTISED_ROUTE_TO_GCP_DESTINATION" | "NO_TRAFFIC_SELECTOR_TO_GCP_DESTINATION" | "NO_KNOWN_ROUTE_FROM_PEERED_NETWORK_TO_DESTINATION" | "PRIVATE_NAT_TO_PSC_ENDPOINT_UNSUPPORTED" | "PRIVATE_NAT_SOURCE_IP_IN_EXCLUDED_RANGE" | "PRIVATE_NAT_SOURCE_IP_IS_A_LINK_LOCAL_IP_IN_GKE" | "PSC_PORT_MAPPING_PORT_MISMATCH" | "PSC_PORT_MAPPING_WITHOUT_PSC_CONNECTION_UNSUPPORTED" | "UNSUPPORTED_ROUTE_MATCHED_FOR_NAT64_DESTINATION" | "TRAFFIC_FROM_HYBRID_ENDPOINT_TO_INTERNET_DISALLOWED" | "NO_MATCHING_NAT64_GATEWAY" | "NO_CONFIGURED_PRIVATE_NAT64_RULE" | "LOAD_BALANCER_BACKEND_IP_VERSION_MISMATCH" | "NO_KNOWN_ROUTE_FROM_NCC_NETWORK_TO_DESTINATION" | "CLOUD_NAT_PROTOCOL_UNSUPPORTED" | "L2_INTERCONNECT_UNSUPPORTED_PROTOCOL" | "L2_INTERCONNECT_UNSUPPORTED_PORT" | "L2_INTERCONNECT_DESTINATION_IP_MISMATCH" | "NCC_ROUTE_WITHIN_HYBRID_SUBNET_UNSUPPORTED" | "HYBRID_SUBNET_REGION_MISMATCH" | "HYBRID_SUBNET_NO_ROUTE" | "GKE_NETWORK_POLICY" | "NO_VALID_ROUTE_FROM_GOOGLE_MANAGED_NETWORK_TO_DESTINATION" | "PRIVATE_CONNECTION_NO_RUNNING_INSTANCE";
 export const DropInfoCauseEnum = /*@__PURE__*/ S.String;
 
 /** Details of the final state "drop" and associated resource. */
@@ -1379,34 +957,22 @@ export interface DropInfo {
   destinationIp?: string;
 }
 export const DropInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceGeolocationCode: S.optional(S.String),
-    region: S.optional(S.String),
-    cause: S.optional(DropInfoCauseEnum),
-    destinationGeolocationCode: S.optional(S.String),
-    sourceIp: S.optional(S.String),
-    resourceUri: S.optional(S.String),
-    destinationIp: S.optional(S.String),
-  }),
+S.Struct({
+  "sourceGeolocationCode": S.optional(S.String),
+  "region": S.optional(S.String),
+  "cause": S.optional(DropInfoCauseEnum),
+  "destinationGeolocationCode": S.optional(S.String),
+  "sourceIp": S.optional(S.String),
+  "resourceUri": S.optional(S.String),
+  "destinationIp": S.optional(S.String),
+}),
 ).annotate({ identifier: "DropInfo" }) as any as S.Schema<DropInfo>;
 
-export type LoadBalancerInfoLoadBalancerTypeEnum =
-  | "LOAD_BALANCER_TYPE_UNSPECIFIED"
-  | "INTERNAL_TCP_UDP"
-  | "NETWORK_TCP_UDP"
-  | "HTTP_PROXY"
-  | "TCP_PROXY"
-  | "SSL_PROXY"
-  | (string & {});
+export type LoadBalancerInfoLoadBalancerTypeEnum = "LOAD_BALANCER_TYPE_UNSPECIFIED" | "INTERNAL_TCP_UDP" | "NETWORK_TCP_UDP" | "HTTP_PROXY" | "TCP_PROXY" | "SSL_PROXY";
 export const LoadBalancerInfoLoadBalancerTypeEnum = /*@__PURE__*/ S.String;
 
-export type LoadBalancerBackendHealthCheckFirewallStateEnum =
-  | "HEALTH_CHECK_FIREWALL_STATE_UNSPECIFIED"
-  | "CONFIGURED"
-  | "MISCONFIGURED"
-  | (string & {});
-export const LoadBalancerBackendHealthCheckFirewallStateEnum =
-  /*@__PURE__*/ S.String;
+export type LoadBalancerBackendHealthCheckFirewallStateEnum = "HEALTH_CHECK_FIREWALL_STATE_UNSPECIFIED" | "CONFIGURED" | "MISCONFIGURED";
+export const LoadBalancerBackendHealthCheckFirewallStateEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a specific load balancer backend. */
 export interface LoadBalancerBackend {
@@ -1422,30 +988,19 @@ export interface LoadBalancerBackend {
   healthCheckFirewallState?: LoadBalancerBackendHealthCheckFirewallStateEnum;
 }
 export const LoadBalancerBackend = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    healthCheckAllowingFirewallRules: S.optional(StringList),
-    healthCheckBlockingFirewallRules: S.optional(StringList),
-    healthCheckFirewallState: S.optional(
-      LoadBalancerBackendHealthCheckFirewallStateEnum,
-    ),
-  }),
-).annotate({
-  identifier: "LoadBalancerBackend",
-}) as any as S.Schema<LoadBalancerBackend>;
+S.Struct({
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "healthCheckAllowingFirewallRules": S.optional(StringList),
+  "healthCheckBlockingFirewallRules": S.optional(StringList),
+  "healthCheckFirewallState": S.optional(LoadBalancerBackendHealthCheckFirewallStateEnum),
+}),
+).annotate({ identifier: "LoadBalancerBackend" }) as any as S.Schema<LoadBalancerBackend>;
 
 export type LoadBalancerBackendList = ReadonlyArray<LoadBalancerBackend>;
-export const LoadBalancerBackendList = /*@__PURE__*/ S.Array(
-  LoadBalancerBackend,
-) as any as S.Schema<LoadBalancerBackendList>;
+export const LoadBalancerBackendList = /*@__PURE__*/ S.Array(LoadBalancerBackend) as any as S.Schema<LoadBalancerBackendList>;
 
-export type LoadBalancerInfoBackendTypeEnum =
-  | "BACKEND_TYPE_UNSPECIFIED"
-  | "BACKEND_SERVICE"
-  | "TARGET_POOL"
-  | "TARGET_INSTANCE"
-  | (string & {});
+export type LoadBalancerInfoBackendTypeEnum = "BACKEND_TYPE_UNSPECIFIED" | "BACKEND_SERVICE" | "TARGET_POOL" | "TARGET_INSTANCE";
 export const LoadBalancerInfoBackendTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a load balancer. */
@@ -1462,24 +1017,16 @@ export interface LoadBalancerInfo {
   healthCheckUri?: string;
 }
 export const LoadBalancerInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backendUri: S.optional(S.String),
-    loadBalancerType: S.optional(LoadBalancerInfoLoadBalancerTypeEnum),
-    backends: S.optional(LoadBalancerBackendList),
-    backendType: S.optional(LoadBalancerInfoBackendTypeEnum),
-    healthCheckUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LoadBalancerInfo",
-}) as any as S.Schema<LoadBalancerInfo>;
+S.Struct({
+  "backendUri": S.optional(S.String),
+  "loadBalancerType": S.optional(LoadBalancerInfoLoadBalancerTypeEnum),
+  "backends": S.optional(LoadBalancerBackendList),
+  "backendType": S.optional(LoadBalancerInfoBackendTypeEnum),
+  "healthCheckUri": S.optional(S.String),
+}),
+).annotate({ identifier: "LoadBalancerInfo" }) as any as S.Schema<LoadBalancerInfo>;
 
-export type InterconnectAttachmentInfoTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "DEDICATED"
-  | "PARTNER"
-  | "PARTNER_PROVIDER"
-  | "L2_DEDICATED"
-  | (string & {});
+export type InterconnectAttachmentInfoTypeEnum = "TYPE_UNSPECIFIED" | "DEDICATED" | "PARTNER" | "PARTNER_PROVIDER" | "L2_DEDICATED";
 export const InterconnectAttachmentInfoTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with an Interconnect attachment. */
@@ -1500,18 +1047,16 @@ export interface InterconnectAttachmentInfo {
   l2AttachmentMatchedIpAddress?: string;
 }
 export const InterconnectAttachmentInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    displayName: S.optional(S.String),
-    region: S.optional(S.String),
-    cloudRouterUri: S.optional(S.String),
-    interconnectUri: S.optional(S.String),
-    type: S.optional(InterconnectAttachmentInfoTypeEnum),
-    l2AttachmentMatchedIpAddress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InterconnectAttachmentInfo",
-}) as any as S.Schema<InterconnectAttachmentInfo>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "region": S.optional(S.String),
+  "cloudRouterUri": S.optional(S.String),
+  "interconnectUri": S.optional(S.String),
+  "type": S.optional(InterconnectAttachmentInfoTypeEnum),
+  "l2AttachmentMatchedIpAddress": S.optional(S.String),
+}),
+).annotate({ identifier: "InterconnectAttachmentInfo" }) as any as S.Schema<InterconnectAttachmentInfo>;
 
 /** For display only. Metadata associated with a Google Kubernetes Engine (GKE) cluster master. */
 export interface GKEMasterInfo {
@@ -1527,28 +1072,16 @@ export interface GKEMasterInfo {
   internalIp?: string;
 }
 export const GKEMasterInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterNetworkUri: S.optional(S.String),
-    externalIp: S.optional(S.String),
-    dnsEndpoint: S.optional(S.String),
-    clusterUri: S.optional(S.String),
-    internalIp: S.optional(S.String),
-  }),
+S.Struct({
+  "clusterNetworkUri": S.optional(S.String),
+  "externalIp": S.optional(S.String),
+  "dnsEndpoint": S.optional(S.String),
+  "clusterUri": S.optional(S.String),
+  "internalIp": S.optional(S.String),
+}),
 ).annotate({ identifier: "GKEMasterInfo" }) as any as S.Schema<GKEMasterInfo>;
 
-export type ForwardInfoTargetEnum =
-  | "TARGET_UNSPECIFIED"
-  | "PEERING_VPC"
-  | "VPN_GATEWAY"
-  | "INTERCONNECT"
-  | "GKE_MASTER"
-  | "IMPORTED_CUSTOM_ROUTE_NEXT_HOP"
-  | "CLOUD_SQL_INSTANCE"
-  | "ANOTHER_PROJECT"
-  | "NCC_HUB"
-  | "ROUTER_APPLIANCE"
-  | "SECURE_WEB_PROXY_GATEWAY"
-  | (string & {});
+export type ForwardInfoTargetEnum = "TARGET_UNSPECIFIED" | "PEERING_VPC" | "VPN_GATEWAY" | "INTERCONNECT" | "GKE_MASTER" | "IMPORTED_CUSTOM_ROUTE_NEXT_HOP" | "CLOUD_SQL_INSTANCE" | "ANOTHER_PROJECT" | "NCC_HUB" | "ROUTER_APPLIANCE" | "SECURE_WEB_PROXY_GATEWAY";
 export const ForwardInfoTargetEnum = /*@__PURE__*/ S.String;
 
 /** Details of the final state "forward" and associated resource. */
@@ -1561,18 +1094,14 @@ export interface ForwardInfo {
   target?: ForwardInfoTargetEnum;
 }
 export const ForwardInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUri: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    target: S.optional(ForwardInfoTargetEnum),
-  }),
+S.Struct({
+  "resourceUri": S.optional(S.String),
+  "ipAddress": S.optional(S.String),
+  "target": S.optional(ForwardInfoTargetEnum),
+}),
 ).annotate({ identifier: "ForwardInfo" }) as any as S.Schema<ForwardInfo>;
 
-export type InstanceInfoStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "RUNNING"
-  | "NOT_RUNNING"
-  | (string & {});
+export type InstanceInfoStatusEnum = "STATUS_UNSPECIFIED" | "RUNNING" | "NOT_RUNNING";
 export const InstanceInfoStatusEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a Compute Engine instance. */
@@ -1601,19 +1130,19 @@ export interface InstanceInfo {
   pscNetworkAttachmentUri?: string;
 }
 export const InstanceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkTags: S.optional(StringList),
-    networkUri: S.optional(S.String),
-    internalIp: S.optional(S.String),
-    status: S.optional(InstanceInfoStatusEnum),
-    running: S.optional(S.Boolean),
-    serviceAccount: S.optional(S.String),
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    externalIp: S.optional(S.String),
-    interface: S.optional(S.String),
-    pscNetworkAttachmentUri: S.optional(S.String),
-  }),
+S.Struct({
+  "networkTags": S.optional(StringList),
+  "networkUri": S.optional(S.String),
+  "internalIp": S.optional(S.String),
+  "status": S.optional(InstanceInfoStatusEnum),
+  "running": S.optional(S.Boolean),
+  "serviceAccount": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "externalIp": S.optional(S.String),
+  "interface": S.optional(S.String),
+  "pscNetworkAttachmentUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "InstanceInfo" }) as any as S.Schema<InstanceInfo>;
 
 /** For display only. Metadata associated with a hybrid subnet. */
@@ -1626,51 +1155,20 @@ export interface HybridSubnetInfo {
   region?: string;
 }
 export const HybridSubnetInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    displayName: S.optional(S.String),
-    region: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HybridSubnetInfo",
-}) as any as S.Schema<HybridSubnetInfo>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "region": S.optional(S.String),
+}),
+).annotate({ identifier: "HybridSubnetInfo" }) as any as S.Schema<HybridSubnetInfo>;
 
-export type RouteInfoRouteTypeEnum =
-  | "ROUTE_TYPE_UNSPECIFIED"
-  | "SUBNET"
-  | "STATIC"
-  | "DYNAMIC"
-  | "PEERING_SUBNET"
-  | "PEERING_STATIC"
-  | "PEERING_DYNAMIC"
-  | "POLICY_BASED"
-  | "ADVERTISED"
-  | (string & {});
+export type RouteInfoRouteTypeEnum = "ROUTE_TYPE_UNSPECIFIED" | "SUBNET" | "STATIC" | "DYNAMIC" | "PEERING_SUBNET" | "PEERING_STATIC" | "PEERING_DYNAMIC" | "POLICY_BASED" | "ADVERTISED";
 export const RouteInfoRouteTypeEnum = /*@__PURE__*/ S.String;
 
-export type RouteInfoRouteScopeEnum =
-  | "ROUTE_SCOPE_UNSPECIFIED"
-  | "NETWORK"
-  | "NCC_HUB"
-  | (string & {});
+export type RouteInfoRouteScopeEnum = "ROUTE_SCOPE_UNSPECIFIED" | "NETWORK" | "NCC_HUB";
 export const RouteInfoRouteScopeEnum = /*@__PURE__*/ S.String;
 
-export type RouteInfoNextHopTypeEnum =
-  | "NEXT_HOP_TYPE_UNSPECIFIED"
-  | "NEXT_HOP_IP"
-  | "NEXT_HOP_INSTANCE"
-  | "NEXT_HOP_NETWORK"
-  | "NEXT_HOP_PEERING"
-  | "NEXT_HOP_INTERCONNECT"
-  | "NEXT_HOP_VPN_TUNNEL"
-  | "NEXT_HOP_VPN_GATEWAY"
-  | "NEXT_HOP_INTERNET_GATEWAY"
-  | "NEXT_HOP_BLACKHOLE"
-  | "NEXT_HOP_ILB"
-  | "NEXT_HOP_ROUTER_APPLIANCE"
-  | "NEXT_HOP_NCC_HUB"
-  | "SECURE_WEB_PROXY_GATEWAY"
-  | (string & {});
+export type RouteInfoNextHopTypeEnum = "NEXT_HOP_TYPE_UNSPECIFIED" | "NEXT_HOP_IP" | "NEXT_HOP_INSTANCE" | "NEXT_HOP_NETWORK" | "NEXT_HOP_PEERING" | "NEXT_HOP_INTERCONNECT" | "NEXT_HOP_VPN_TUNNEL" | "NEXT_HOP_VPN_GATEWAY" | "NEXT_HOP_INTERNET_GATEWAY" | "NEXT_HOP_BLACKHOLE" | "NEXT_HOP_ILB" | "NEXT_HOP_ROUTER_APPLIANCE" | "NEXT_HOP_NCC_HUB" | "SECURE_WEB_PROXY_GATEWAY";
 export const RouteInfoNextHopTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a Compute Engine route. */
@@ -1725,32 +1223,32 @@ export interface RouteInfo {
   srcIpRange?: string;
 }
 export const RouteInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originatingRouteUri: S.optional(S.String),
-    destPortRanges: S.optional(StringList),
-    uri: S.optional(S.String),
-    instanceTags: S.optional(StringList),
-    displayName: S.optional(S.String),
-    routeType: S.optional(RouteInfoRouteTypeEnum),
-    region: S.optional(S.String),
-    nccSpokeUri: S.optional(S.String),
-    routeScope: S.optional(RouteInfoRouteScopeEnum),
-    nccHubUri: S.optional(S.String),
-    originatingRouteDisplayName: S.optional(S.String),
-    networkUri: S.optional(S.String),
-    priority: S.optional(S.Number),
-    advertisedRouteNextHopUri: S.optional(S.String),
-    nextHopNetworkUri: S.optional(S.String),
-    advertisedRouteSourceRouterUri: S.optional(S.String),
-    nextHopType: S.optional(RouteInfoNextHopTypeEnum),
-    nextHop: S.optional(S.String),
-    nextHopUri: S.optional(S.String),
-    nccHubRouteUri: S.optional(S.String),
-    srcPortRanges: S.optional(StringList),
-    protocols: S.optional(StringList),
-    destIpRange: S.optional(S.String),
-    srcIpRange: S.optional(S.String),
-  }),
+S.Struct({
+  "originatingRouteUri": S.optional(S.String),
+  "destPortRanges": S.optional(StringList),
+  "uri": S.optional(S.String),
+  "instanceTags": S.optional(StringList),
+  "displayName": S.optional(S.String),
+  "routeType": S.optional(RouteInfoRouteTypeEnum),
+  "region": S.optional(S.String),
+  "nccSpokeUri": S.optional(S.String),
+  "routeScope": S.optional(RouteInfoRouteScopeEnum),
+  "nccHubUri": S.optional(S.String),
+  "originatingRouteDisplayName": S.optional(S.String),
+  "networkUri": S.optional(S.String),
+  "priority": S.optional(S.Number),
+  "advertisedRouteNextHopUri": S.optional(S.String),
+  "nextHopNetworkUri": S.optional(S.String),
+  "advertisedRouteSourceRouterUri": S.optional(S.String),
+  "nextHopType": S.optional(RouteInfoNextHopTypeEnum),
+  "nextHop": S.optional(S.String),
+  "nextHopUri": S.optional(S.String),
+  "nccHubRouteUri": S.optional(S.String),
+  "srcPortRanges": S.optional(StringList),
+  "protocols": S.optional(StringList),
+  "destIpRange": S.optional(S.String),
+  "srcIpRange": S.optional(S.String),
+}),
 ).annotate({ identifier: "RouteInfo" }) as any as S.Schema<RouteInfo>;
 
 /** For display only. Metadata associated with a Compute Engine network. */
@@ -1767,13 +1265,13 @@ export interface NetworkInfo {
   region?: string;
 }
 export const NetworkInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matchedIpRange: S.optional(S.String),
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    matchedSubnetUri: S.optional(S.String),
-    region: S.optional(S.String),
-  }),
+S.Struct({
+  "matchedIpRange": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "matchedSubnetUri": S.optional(S.String),
+  "region": S.optional(S.String),
+}),
 ).annotate({ identifier: "NetworkInfo" }) as any as S.Schema<NetworkInfo>;
 
 /** For display only. Metadata associated with a Cloud Redis Instance. */
@@ -1792,17 +1290,15 @@ export interface RedisInstanceInfo {
   readEndpointIp?: string;
 }
 export const RedisInstanceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkUri: S.optional(S.String),
-    region: S.optional(S.String),
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    primaryEndpointIp: S.optional(S.String),
-    readEndpointIp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RedisInstanceInfo",
-}) as any as S.Schema<RedisInstanceInfo>;
+S.Struct({
+  "networkUri": S.optional(S.String),
+  "region": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "primaryEndpointIp": S.optional(S.String),
+  "readEndpointIp": S.optional(S.String),
+}),
+).annotate({ identifier: "RedisInstanceInfo" }) as any as S.Schema<RedisInstanceInfo>;
 
 /** For display only. Metadata associated with a Cloud Run job. */
 export interface CloudRunJobInfo {
@@ -1814,14 +1310,12 @@ export interface CloudRunJobInfo {
   displayName?: string;
 }
 export const CloudRunJobInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    uri: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudRunJobInfo",
-}) as any as S.Schema<CloudRunJobInfo>;
+S.Struct({
+  "location": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
+).annotate({ identifier: "CloudRunJobInfo" }) as any as S.Schema<CloudRunJobInfo>;
 
 /** For display only. Metadata associated with a Redis Cluster. */
 export interface RedisClusterInfo {
@@ -1839,28 +1333,17 @@ export interface RedisClusterInfo {
   secondaryEndpointIpAddress?: string;
 }
 export const RedisClusterInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    networkUri: S.optional(S.String),
-    displayName: S.optional(S.String),
-    discoveryEndpointIpAddress: S.optional(S.String),
-    uri: S.optional(S.String),
-    secondaryEndpointIpAddress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RedisClusterInfo",
-}) as any as S.Schema<RedisClusterInfo>;
+S.Struct({
+  "location": S.optional(S.String),
+  "networkUri": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "discoveryEndpointIpAddress": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "secondaryEndpointIpAddress": S.optional(S.String),
+}),
+).annotate({ identifier: "RedisClusterInfo" }) as any as S.Schema<RedisClusterInfo>;
 
-export type GoogleServiceInfoGoogleServiceTypeEnum =
-  | "GOOGLE_SERVICE_TYPE_UNSPECIFIED"
-  | "IAP"
-  | "GFE_PROXY_OR_HEALTH_CHECK_PROBER"
-  | "CLOUD_DNS"
-  | "GOOGLE_API"
-  | "GOOGLE_API_PSC"
-  | "GOOGLE_API_VPC_SC"
-  | "SERVERLESS_VPC_ACCESS"
-  | (string & {});
+export type GoogleServiceInfoGoogleServiceTypeEnum = "GOOGLE_SERVICE_TYPE_UNSPECIFIED" | "IAP" | "GFE_PROXY_OR_HEALTH_CHECK_PROBER" | "CLOUD_DNS" | "GOOGLE_API" | "GOOGLE_API_PSC" | "GOOGLE_API_VPC_SC" | "SERVERLESS_VPC_ACCESS";
 export const GoogleServiceInfoGoogleServiceTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be a publicly routable address, some Google Services use special routes within Google production infrastructure to reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths */
@@ -1871,13 +1354,11 @@ export interface GoogleServiceInfo {
   sourceIp?: string;
 }
 export const GoogleServiceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    googleServiceType: S.optional(GoogleServiceInfoGoogleServiceTypeEnum),
-    sourceIp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleServiceInfo",
-}) as any as S.Schema<GoogleServiceInfo>;
+S.Struct({
+  "googleServiceType": S.optional(GoogleServiceInfoGoogleServiceTypeEnum),
+  "sourceIp": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleServiceInfo" }) as any as S.Schema<GoogleServiceInfo>;
 
 /** For display only. Metadata associated with Storage Bucket. */
 export interface StorageBucketInfo {
@@ -1885,12 +1366,10 @@ export interface StorageBucketInfo {
   bucket?: string;
 }
 export const StorageBucketInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StorageBucketInfo",
-}) as any as S.Schema<StorageBucketInfo>;
+S.Struct({
+  "bucket": S.optional(S.String),
+}),
+).annotate({ identifier: "StorageBucketInfo" }) as any as S.Schema<StorageBucketInfo>;
 
 /** For display only. Metadata associated with a GKE Network Policy. */
 export interface GkeNetworkPolicyInfo {
@@ -1904,15 +1383,13 @@ export interface GkeNetworkPolicyInfo {
   direction?: string;
 }
 export const GkeNetworkPolicyInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    action: S.optional(S.String),
-    uri: S.optional(S.String),
-    direction: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GkeNetworkPolicyInfo",
-}) as any as S.Schema<GkeNetworkPolicyInfo>;
+S.Struct({
+  "displayName": S.optional(S.String),
+  "action": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "direction": S.optional(S.String),
+}),
+).annotate({ identifier: "GkeNetworkPolicyInfo" }) as any as S.Schema<GkeNetworkPolicyInfo>;
 
 /** For display only. Metadata associated with a Compute Engine VPN gateway. */
 export interface VpnGatewayInfo {
@@ -1930,14 +1407,14 @@ export interface VpnGatewayInfo {
   vpnTunnelUri?: string;
 }
 export const VpnGatewayInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    displayName: S.optional(S.String),
-    networkUri: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    region: S.optional(S.String),
-    vpnTunnelUri: S.optional(S.String),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "networkUri": S.optional(S.String),
+  "ipAddress": S.optional(S.String),
+  "region": S.optional(S.String),
+  "vpnTunnelUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "VpnGatewayInfo" }) as any as S.Schema<VpnGatewayInfo>;
 
 /** A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration. */
@@ -2030,57 +1507,55 @@ export interface Step {
   dmsPrivateConnection?: PrivateConnectionInfo;
 }
 export const Step = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    forwardingRule: S.optional(ForwardingRuleInfo),
-    serverlessNeg: S.optional(ServerlessNegInfo),
-    causesDrop: S.optional(S.Boolean),
-    vpnTunnel: S.optional(VpnTunnelInfo),
-    ngfwPacketInspection: S.optional(NgfwPacketInspectionInfo),
-    endpoint: S.optional(EndpointInfo),
-    cloudRunRevision: S.optional(CloudRunRevisionInfo),
-    gkeNetworkPolicySkipped: S.optional(GkeNetworkPolicySkippedInfo),
-    abort: S.optional(AbortInfo),
-    cloudFunction: S.optional(CloudFunctionInfo),
-    gkePod: S.optional(GkePodInfo),
-    datastreamPrivateConnection: S.optional(PrivateConnectionInfo),
-    loadBalancerBackendInfo: S.optional(LoadBalancerBackendInfo),
-    directVpcEgressConnection: S.optional(DirectVpcEgressConnectionInfo),
-    vpcConnector: S.optional(VpcConnectorInfo),
-    description: S.optional(S.String),
-    ipMasqueradingSkipped: S.optional(IpMasqueradingSkippedInfo),
-    cloudSqlInstance: S.optional(CloudSQLInstanceInfo),
-    deliver: S.optional(DeliverInfo),
-    projectId: S.optional(S.String),
-    proxyConnection: S.optional(ProxyConnectionInfo),
-    appEngineVersion: S.optional(AppEngineVersionInfo),
-    nat: S.optional(NatInfo),
-    firewall: S.optional(FirewallInfo),
-    serverlessExternalConnection: S.optional(ServerlessExternalConnectionInfo),
-    state: S.optional(StepStateEnum),
-    drop: S.optional(DropInfo),
-    loadBalancer: S.optional(LoadBalancerInfo),
-    interconnectAttachment: S.optional(InterconnectAttachmentInfo),
-    gkeMaster: S.optional(GKEMasterInfo),
-    forward: S.optional(ForwardInfo),
-    instance: S.optional(InstanceInfo),
-    hybridSubnet: S.optional(HybridSubnetInfo),
-    route: S.optional(RouteInfo),
-    network: S.optional(NetworkInfo),
-    redisInstance: S.optional(RedisInstanceInfo),
-    cloudRunJob: S.optional(CloudRunJobInfo),
-    redisCluster: S.optional(RedisClusterInfo),
-    googleService: S.optional(GoogleServiceInfo),
-    storageBucket: S.optional(StorageBucketInfo),
-    gkeNetworkPolicy: S.optional(GkeNetworkPolicyInfo),
-    vpnGateway: S.optional(VpnGatewayInfo),
-    dmsPrivateConnection: S.optional(PrivateConnectionInfo),
-  }),
+S.Struct({
+  "forwardingRule": S.optional(ForwardingRuleInfo),
+  "serverlessNeg": S.optional(ServerlessNegInfo),
+  "causesDrop": S.optional(S.Boolean),
+  "vpnTunnel": S.optional(VpnTunnelInfo),
+  "ngfwPacketInspection": S.optional(NgfwPacketInspectionInfo),
+  "endpoint": S.optional(EndpointInfo),
+  "cloudRunRevision": S.optional(CloudRunRevisionInfo),
+  "gkeNetworkPolicySkipped": S.optional(GkeNetworkPolicySkippedInfo),
+  "abort": S.optional(AbortInfo),
+  "cloudFunction": S.optional(CloudFunctionInfo),
+  "gkePod": S.optional(GkePodInfo),
+  "datastreamPrivateConnection": S.optional(PrivateConnectionInfo),
+  "loadBalancerBackendInfo": S.optional(LoadBalancerBackendInfo),
+  "directVpcEgressConnection": S.optional(DirectVpcEgressConnectionInfo),
+  "vpcConnector": S.optional(VpcConnectorInfo),
+  "description": S.optional(S.String),
+  "ipMasqueradingSkipped": S.optional(IpMasqueradingSkippedInfo),
+  "cloudSqlInstance": S.optional(CloudSQLInstanceInfo),
+  "deliver": S.optional(DeliverInfo),
+  "projectId": S.optional(S.String),
+  "proxyConnection": S.optional(ProxyConnectionInfo),
+  "appEngineVersion": S.optional(AppEngineVersionInfo),
+  "nat": S.optional(NatInfo),
+  "firewall": S.optional(FirewallInfo),
+  "serverlessExternalConnection": S.optional(ServerlessExternalConnectionInfo),
+  "state": S.optional(StepStateEnum),
+  "drop": S.optional(DropInfo),
+  "loadBalancer": S.optional(LoadBalancerInfo),
+  "interconnectAttachment": S.optional(InterconnectAttachmentInfo),
+  "gkeMaster": S.optional(GKEMasterInfo),
+  "forward": S.optional(ForwardInfo),
+  "instance": S.optional(InstanceInfo),
+  "hybridSubnet": S.optional(HybridSubnetInfo),
+  "route": S.optional(RouteInfo),
+  "network": S.optional(NetworkInfo),
+  "redisInstance": S.optional(RedisInstanceInfo),
+  "cloudRunJob": S.optional(CloudRunJobInfo),
+  "redisCluster": S.optional(RedisClusterInfo),
+  "googleService": S.optional(GoogleServiceInfo),
+  "storageBucket": S.optional(StorageBucketInfo),
+  "gkeNetworkPolicy": S.optional(GkeNetworkPolicyInfo),
+  "vpnGateway": S.optional(VpnGatewayInfo),
+  "dmsPrivateConnection": S.optional(PrivateConnectionInfo),
+}),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
 export type StepList = ReadonlyArray<Step>;
-export const StepList = /*@__PURE__*/ S.Array(
-  Step,
-) as any as S.Schema<StepList>;
+export const StepList = /*@__PURE__*/ S.Array(Step) as any as S.Schema<StepList>;
 
 /** Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ``` */
 export interface Trace {
@@ -2092,25 +1567,17 @@ export interface Trace {
   steps?: StepList;
 }
 export const Trace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    forwardTraceId: S.optional(S.Number),
-    endpointInfo: S.optional(EndpointInfo),
-    steps: S.optional(StepList),
-  }),
+S.Struct({
+  "forwardTraceId": S.optional(S.Number),
+  "endpointInfo": S.optional(EndpointInfo),
+  "steps": S.optional(StepList),
+}),
 ).annotate({ identifier: "Trace" }) as any as S.Schema<Trace>;
 
 export type TraceList = ReadonlyArray<Trace>;
-export const TraceList = /*@__PURE__*/ S.Array(
-  Trace,
-) as any as S.Schema<TraceList>;
+export const TraceList = /*@__PURE__*/ S.Array(Trace) as any as S.Schema<TraceList>;
 
-export type ReachabilityDetailsResultEnum =
-  | "RESULT_UNSPECIFIED"
-  | "REACHABLE"
-  | "UNREACHABLE"
-  | "AMBIGUOUS"
-  | "UNDETERMINED"
-  | (string & {});
+export type ReachabilityDetailsResultEnum = "RESULT_UNSPECIFIED" | "REACHABLE" | "UNREACHABLE" | "AMBIGUOUS" | "UNDETERMINED";
 export const ReachabilityDetailsResultEnum = /*@__PURE__*/ S.String;
 
 /** Results of the configuration analysis from the last run of the test. */
@@ -2125,29 +1592,15 @@ export interface ReachabilityDetails {
   error?: Status;
 }
 export const ReachabilityDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traces: S.optional(TraceList),
-    verifyTime: S.optional(S.String),
-    result: S.optional(ReachabilityDetailsResultEnum),
-    error: S.optional(Status),
-  }),
-).annotate({
-  identifier: "ReachabilityDetails",
-}) as any as S.Schema<ReachabilityDetails>;
+S.Struct({
+  "traces": S.optional(TraceList),
+  "verifyTime": S.optional(S.String),
+  "result": S.optional(ReachabilityDetailsResultEnum),
+  "error": S.optional(Status),
+}),
+).annotate({ identifier: "ReachabilityDetails" }) as any as S.Schema<ReachabilityDetails>;
 
-export type EndpointLoadBalancerTypeEnum =
-  | "LOAD_BALANCER_TYPE_UNSPECIFIED"
-  | "HTTPS_ADVANCED_LOAD_BALANCER"
-  | "HTTPS_LOAD_BALANCER"
-  | "REGIONAL_HTTPS_LOAD_BALANCER"
-  | "INTERNAL_HTTPS_LOAD_BALANCER"
-  | "SSL_PROXY_LOAD_BALANCER"
-  | "TCP_PROXY_LOAD_BALANCER"
-  | "INTERNAL_TCP_PROXY_LOAD_BALANCER"
-  | "NETWORK_LOAD_BALANCER"
-  | "LEGACY_NETWORK_LOAD_BALANCER"
-  | "TCP_UDP_INTERNAL_LOAD_BALANCER"
-  | (string & {});
+export type EndpointLoadBalancerTypeEnum = "LOAD_BALANCER_TYPE_UNSPECIFIED" | "HTTPS_ADVANCED_LOAD_BALANCER" | "HTTPS_LOAD_BALANCER" | "REGIONAL_HTTPS_LOAD_BALANCER" | "INTERNAL_HTTPS_LOAD_BALANCER" | "SSL_PROXY_LOAD_BALANCER" | "TCP_PROXY_LOAD_BALANCER" | "INTERNAL_TCP_PROXY_LOAD_BALANCER" | "NETWORK_LOAD_BALANCER" | "LEGACY_NETWORK_LOAD_BALANCER" | "TCP_UDP_INTERNAL_LOAD_BALANCER";
 export const EndpointLoadBalancerTypeEnum = /*@__PURE__*/ S.String;
 
 /** Wrapper for the App Engine service version attributes. */
@@ -2156,19 +1609,12 @@ export interface AppEngineVersionEndpoint {
   uri?: string;
 }
 export const AppEngineVersionEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppEngineVersionEndpoint",
-}) as any as S.Schema<AppEngineVersionEndpoint>;
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "AppEngineVersionEndpoint" }) as any as S.Schema<AppEngineVersionEndpoint>;
 
-export type EndpointNetworkTypeEnum =
-  | "NETWORK_TYPE_UNSPECIFIED"
-  | "GCP_NETWORK"
-  | "NON_GCP_NETWORK"
-  | "INTERNET"
-  | (string & {});
+export type EndpointNetworkTypeEnum = "NETWORK_TYPE_UNSPECIFIED" | "GCP_NETWORK" | "NON_GCP_NETWORK" | "INTERNET";
 export const EndpointNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Wrapper for Cloud Function attributes. */
@@ -2177,20 +1623,12 @@ export interface CloudFunctionEndpoint {
   uri?: string;
 }
 export const CloudFunctionEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudFunctionEndpoint",
-}) as any as S.Schema<CloudFunctionEndpoint>;
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "CloudFunctionEndpoint" }) as any as S.Schema<CloudFunctionEndpoint>;
 
-export type EndpointForwardingRuleTargetEnum =
-  | "FORWARDING_RULE_TARGET_UNSPECIFIED"
-  | "INSTANCE"
-  | "LOAD_BALANCER"
-  | "VPN_GATEWAY"
-  | "PSC"
-  | (string & {});
+export type EndpointForwardingRuleTargetEnum = "FORWARDING_RULE_TARGET_UNSPECIFIED" | "INSTANCE" | "LOAD_BALANCER" | "VPN_GATEWAY" | "PSC";
 export const EndpointForwardingRuleTargetEnum = /*@__PURE__*/ S.String;
 
 /** Wrapper for Cloud Run revision attributes. */
@@ -2201,13 +1639,11 @@ export interface CloudRunRevisionEndpoint {
   serviceUri?: string;
 }
 export const CloudRunRevisionEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    serviceUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudRunRevisionEndpoint",
-}) as any as S.Schema<CloudRunRevisionEndpoint>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "serviceUri": S.optional(S.String),
+}),
+).annotate({ identifier: "CloudRunRevisionEndpoint" }) as any as S.Schema<CloudRunRevisionEndpoint>;
 
 /** Source or destination of the Connectivity Test. */
 export interface Endpoint {
@@ -2255,29 +1691,29 @@ export interface Endpoint {
   forwardingRule?: string;
 }
 export const Endpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loadBalancerType: S.optional(EndpointLoadBalancerTypeEnum),
-    gkeMasterCluster: S.optional(S.String),
-    dmsPrivateConnection: S.optional(S.String),
-    appEngineVersion: S.optional(AppEngineVersionEndpoint),
-    ipAddress: S.optional(S.String),
-    projectId: S.optional(S.String),
-    loadBalancerId: S.optional(S.String),
-    networkType: S.optional(EndpointNetworkTypeEnum),
-    cloudSqlInstance: S.optional(S.String),
-    redisCluster: S.optional(S.String),
-    redisInstance: S.optional(S.String),
-    cloudRunJob: S.optional(S.String),
-    network: S.optional(S.String),
-    instance: S.optional(S.String),
-    port: S.optional(S.Number),
-    fqdn: S.optional(S.String),
-    gkePod: S.optional(S.String),
-    cloudFunction: S.optional(CloudFunctionEndpoint),
-    forwardingRuleTarget: S.optional(EndpointForwardingRuleTargetEnum),
-    cloudRunRevision: S.optional(CloudRunRevisionEndpoint),
-    forwardingRule: S.optional(S.String),
-  }),
+S.Struct({
+  "loadBalancerType": S.optional(EndpointLoadBalancerTypeEnum),
+  "gkeMasterCluster": S.optional(S.String),
+  "dmsPrivateConnection": S.optional(S.String),
+  "appEngineVersion": S.optional(AppEngineVersionEndpoint),
+  "ipAddress": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "loadBalancerId": S.optional(S.String),
+  "networkType": S.optional(EndpointNetworkTypeEnum),
+  "cloudSqlInstance": S.optional(S.String),
+  "redisCluster": S.optional(S.String),
+  "redisInstance": S.optional(S.String),
+  "cloudRunJob": S.optional(S.String),
+  "network": S.optional(S.String),
+  "instance": S.optional(S.String),
+  "port": S.optional(S.Number),
+  "fqdn": S.optional(S.String),
+  "gkePod": S.optional(S.String),
+  "cloudFunction": S.optional(CloudFunctionEndpoint),
+  "forwardingRuleTarget": S.optional(EndpointForwardingRuleTargetEnum),
+  "cloudRunRevision": S.optional(CloudRunRevisionEndpoint),
+  "forwardingRule": S.optional(S.String),
+}),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 /** A Connectivity Test for a network reachability analysis. */
@@ -2314,26 +1750,24 @@ export interface ConnectivityTest {
   labels?: StringMap;
 }
 export const ConnectivityTest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    probingDetails: S.optional(ProbingDetails),
-    protocol: S.optional(S.String),
-    reachabilityDetails: S.optional(ReachabilityDetails),
-    createTime: S.optional(S.String),
-    roundTrip: S.optional(S.Boolean),
-    displayName: S.optional(S.String),
-    returnReachabilityDetails: S.optional(ReachabilityDetails),
-    destination: S.optional(Endpoint),
-    source: S.optional(Endpoint),
-    relatedProjects: S.optional(StringList),
-    bypassFirewallChecks: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "ConnectivityTest",
-}) as any as S.Schema<ConnectivityTest>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "probingDetails": S.optional(ProbingDetails),
+  "protocol": S.optional(S.String),
+  "reachabilityDetails": S.optional(ReachabilityDetails),
+  "createTime": S.optional(S.String),
+  "roundTrip": S.optional(S.Boolean),
+  "displayName": S.optional(S.String),
+  "returnReachabilityDetails": S.optional(ReachabilityDetails),
+  "destination": S.optional(Endpoint),
+  "source": S.optional(Endpoint),
+  "relatedProjects": S.optional(StringList),
+  "bypassFirewallChecks": S.optional(S.Boolean),
+  "description": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
+).annotate({ identifier: "ConnectivityTest" }) as any as S.Schema<ConnectivityTest>;
 
 export interface CreateProjectsLocationsGlobalConnectivityTestsRequest {
   /** Required. The parent resource of the Connectivity Test to create: `projects/{project_id}/locations/global` */
@@ -2343,38 +1777,18 @@ export interface CreateProjectsLocationsGlobalConnectivityTestsRequest {
   /** Request body */
   body?: ConnectivityTest;
 }
-export const CreateProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      testId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ConnectivityTest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/connectivityTests",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsGlobalConnectivityTestsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsGlobalConnectivityTestsRequest>;
+export const CreateProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "testId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ConnectivityTest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/connectivityTests","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsGlobalConnectivityTestsRequest" }) as any as S.Schema<CreateProjectsLocationsGlobalConnectivityTestsRequest>;
 
-export type NetworkMonitoringProviderProviderTypeEnum =
-  | "PROVIDER_TYPE_UNSPECIFIED"
-  | "EXTERNAL"
-  | (string & {});
+export type NetworkMonitoringProviderProviderTypeEnum = "PROVIDER_TYPE_UNSPECIFIED" | "EXTERNAL";
 export const NetworkMonitoringProviderProviderTypeEnum = /*@__PURE__*/ S.String;
 
-export type NetworkMonitoringProviderStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVATING"
-  | "ACTIVE"
-  | "SUSPENDING"
-  | "SUSPENDED"
-  | "DELETING"
-  | "DELETED"
-  | (string & {});
+export type NetworkMonitoringProviderStateEnum = "STATE_UNSPECIFIED" | "ACTIVATING" | "ACTIVE" | "SUSPENDING" | "SUSPENDED" | "DELETING" | "DELETED";
 export const NetworkMonitoringProviderStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing NetworkMonitoringProvider resource. */
@@ -2395,18 +1809,16 @@ export interface NetworkMonitoringProvider {
   providerUri?: string;
 }
 export const NetworkMonitoringProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    providerType: S.optional(NetworkMonitoringProviderProviderTypeEnum),
-    state: S.optional(NetworkMonitoringProviderStateEnum),
-    errors: S.optional(StringList),
-    providerUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkMonitoringProvider",
-}) as any as S.Schema<NetworkMonitoringProvider>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "providerType": S.optional(NetworkMonitoringProviderProviderTypeEnum),
+  "state": S.optional(NetworkMonitoringProviderStateEnum),
+  "errors": S.optional(StringList),
+  "providerUri": S.optional(S.String),
+}),
+).annotate({ identifier: "NetworkMonitoringProvider" }) as any as S.Schema<NetworkMonitoringProvider>;
 
 export interface CreateProjectsLocationsNetworkMonitoringProvidersRequest {
   /** Required. The ID to use for the NetworkMonitoringProvider resource, which will become the final component of the NetworkMonitoringProvider resource's name. */
@@ -2416,22 +1828,13 @@ export interface CreateProjectsLocationsNetworkMonitoringProvidersRequest {
   /** Request body */
   body?: NetworkMonitoringProvider;
 }
-export const CreateProjectsLocationsNetworkMonitoringProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      networkMonitoringProviderId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(NetworkMonitoringProvider.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/networkMonitoringProviders",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsNetworkMonitoringProvidersRequest",
-  }) as any as S.Schema<CreateProjectsLocationsNetworkMonitoringProvidersRequest>;
+export const CreateProjectsLocationsNetworkMonitoringProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "networkMonitoringProviderId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(NetworkMonitoringProvider.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/networkMonitoringProviders","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsNetworkMonitoringProvidersRequest" }) as any as S.Schema<CreateProjectsLocationsNetworkMonitoringProvidersRequest>;
 
 export interface CreateProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The parent resource of the VpcFlowLogsConfig to create, in one of the following formats: - For project-level resources: `projects/{project_id}/locations/global` - For organization-level resources: `organizations/{organization_id}/locations/global` */
@@ -2441,98 +1844,53 @@ export interface CreateProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Request body */
   body?: VpcFlowLogsConfig;
 }
-export const CreateProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      vpcFlowLogsConfigId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(VpcFlowLogsConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/vpcFlowLogsConfigs",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsVpcFlowLogsConfigsRequest>;
+export const CreateProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "vpcFlowLogsConfigId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(VpcFlowLogsConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/vpcFlowLogsConfigs","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsVpcFlowLogsConfigsRequest>;
 
 export interface DeleteOrganizationsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOrganizationsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteOrganizationsLocationsGlobalOperationsRequest",
-  }) as any as S.Schema<DeleteOrganizationsLocationsGlobalOperationsRequest>;
+export const DeleteOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "DeleteOrganizationsLocationsGlobalOperationsRequest" }) as any as S.Schema<DeleteOrganizationsLocationsGlobalOperationsRequest>;
 
 export interface DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For a project-level resource: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For an organization-level resource: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` */
   name: string;
 }
-export const DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest>;
+export const DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest>;
 
 export interface DeleteProjectsLocationsGlobalConnectivityTestsRequest {
   /** Required. Connectivity Test resource name using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsGlobalConnectivityTestsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsGlobalConnectivityTestsRequest>;
+export const DeleteProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsGlobalConnectivityTestsRequest" }) as any as S.Schema<DeleteProjectsLocationsGlobalConnectivityTestsRequest>;
 
 export interface DeleteProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsGlobalOperationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsGlobalOperationsRequest>;
+export const DeleteProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsGlobalOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsGlobalOperationsRequest>;
 
 export interface DeleteProjectsLocationsNetworkMonitoringProvidersRequest {
   /** Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
@@ -2540,53 +1898,25 @@ export interface DeleteProjectsLocationsNetworkMonitoringProvidersRequest {
   /** Optional. If set to true, any nested MonitoringPoints, NetworkPaths and WebPaths resources from this NetworkMonitoringProvider will also be deleted. Otherwise, the request will only work if there are no nested resources. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsNetworkMonitoringProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsNetworkMonitoringProvidersRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsNetworkMonitoringProvidersRequest>;
+export const DeleteProjectsLocationsNetworkMonitoringProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsNetworkMonitoringProvidersRequest" }) as any as S.Schema<DeleteProjectsLocationsNetworkMonitoringProvidersRequest>;
 
 export interface DeleteProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For a project-level resource: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For an organization-level resource: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsVpcFlowLogsConfigsRequest>;
+export const DeleteProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsVpcFlowLogsConfigsRequest>;
 
-export type DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsMonitoringPointTypeEnum =
-    | "MONITORING_POINT_TYPE_UNSPECIFIED"
-    | "CONTAINER"
-    | "KVM"
-    | "VMWARE"
-    | "HELM"
-    | "GCE_VM"
-    | "AZURE_VM"
-    | "AWS_EC2"
-    | (string & {});
-export const DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsMonitoringPointTypeEnum =
-  /*@__PURE__*/ S.String;
+export type DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsMonitoringPointTypeEnum = "MONITORING_POINT_TYPE_UNSPECIFIED" | "CONTAINER" | "KVM" | "VMWARE" | "HELM" | "GCE_VM" | "AZURE_VM" | "AWS_EC2";
+export const DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsMonitoringPointTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest {
   /** Required. Parent value for DownloadInstallScriptRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
@@ -2618,46 +1948,30 @@ export interface DownloadInstallScriptProjectsLocationsNetworkMonitoringProvider
   /** Optional. For Google Cloud MPs, this field indicates whether the Monitoring Point is deployed in a Private Service Connect deployment. Not used for non-Google Cloud MPs. */
   privateConnectivityEnabled?: boolean;
   /** Required. The type of the monitoring point. */
-  monitoringPointType?: DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsMonitoringPointTypeEnum;
+  monitoringPointType?: DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsMonitoringPointTypeEnum | (string & {});
   /** Optional. Dynamic Host Configuration Protocol, is a network management protocol that automatically assigns IP addresses and other network configuration parameters to devices connecting to a network. */
   useDhcp?: boolean;
 }
-export const DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      "timeZone.id": S.optional(S.String.pipe(T.Query())),
-      "staticIpAddress.dnsServerSecondaryAddress": S.optional(
-        S.String.pipe(T.Query()),
-      ),
-      "timeZone.version": S.optional(S.String.pipe(T.Query())),
-      "staticIpAddress.dnsServerAddress": S.optional(S.String.pipe(T.Query())),
-      "staticIpAddress.domain": S.optional(S.String.pipe(T.Query())),
-      hostname: S.optional(S.String.pipe(T.Query())),
-      "staticIpAddress.gatewayAddress": S.optional(S.String.pipe(T.Query())),
-      ntpServerAddress: S.optional(S.String.pipe(T.Query())),
-      "staticIpAddress.netmask": S.optional(S.String.pipe(T.Query())),
-      _password: S.optional(S.String.pipe(T.Query())),
-      "staticIpAddress.ipAddress": S.optional(S.String.pipe(T.Query())),
-      ntpServerSecondaryAddress: S.optional(S.String.pipe(T.Query())),
-      privateConnectivityEnabled: S.optional(S.Boolean.pipe(T.Query())),
-      monitoringPointType: S.optional(
-        DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsMonitoringPointTypeEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      useDhcp: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/monitoringPoints:downloadInstallScript",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest",
-  }) as any as S.Schema<DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
+export const DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "timeZone.id": S.optional(S.String.pipe(T.Query())),
+  "staticIpAddress.dnsServerSecondaryAddress": S.optional(S.String.pipe(T.Query())),
+  "timeZone.version": S.optional(S.String.pipe(T.Query())),
+  "staticIpAddress.dnsServerAddress": S.optional(S.String.pipe(T.Query())),
+  "staticIpAddress.domain": S.optional(S.String.pipe(T.Query())),
+  "hostname": S.optional(S.String.pipe(T.Query())),
+  "staticIpAddress.gatewayAddress": S.optional(S.String.pipe(T.Query())),
+  "ntpServerAddress": S.optional(S.String.pipe(T.Query())),
+  "staticIpAddress.netmask": S.optional(S.String.pipe(T.Query())),
+  "_password": S.optional(S.String.pipe(T.Query())),
+  "staticIpAddress.ipAddress": S.optional(S.String.pipe(T.Query())),
+  "ntpServerSecondaryAddress": S.optional(S.String.pipe(T.Query())),
+  "privateConnectivityEnabled": S.optional(S.Boolean.pipe(T.Query())),
+  "monitoringPointType": S.optional(DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsMonitoringPointTypeEnum.pipe(T.Query())),
+  "useDhcp": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/monitoringPoints:downloadInstallScript","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest" }) as any as S.Schema<DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
@@ -2669,11 +1983,11 @@ export interface HttpBody {
   extensions?: DocumentMapList;
 }
 export const HttpBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String),
-    data: S.optional(S.String),
-    extensions: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "contentType": S.optional(S.String),
+  "data": S.optional(S.String),
+  "extensions": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "HttpBody" }) as any as S.Schema<HttpBody>;
 
 export interface DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest {
@@ -2682,42 +1996,22 @@ export interface DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoring
   /** Optional. The hostname of the MonitoringPoint, e.g. "test-vm" */
   hostname?: string;
 }
-export const DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      hostname: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:downloadRecreateInstallScript",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest",
-  }) as any as S.Schema<DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
+export const DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "hostname": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:downloadRecreateInstallScript","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest" }) as any as S.Schema<DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
 
 export interface DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest {
   /** Required. Parent value for DownloadServerConnectConfigRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
   parent: string;
 }
-export const DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/monitoringPoints:downloadServerConnectConfig",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest",
-  }) as any as S.Schema<DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
+export const DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/monitoringPoints:downloadServerConnectConfig","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest" }) as any as S.Schema<DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
 
 export interface GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest {
   /** Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
@@ -2725,36 +2019,23 @@ export interface GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoring
   /** Optional. For Google Cloud MPs, this field indicates whether the Monitoring Point is deployed in a Private Service Connect deployment. Not used for non-Google Cloud MPs. */
   privateConnectivityEnabled?: boolean;
 }
-export const GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      privateConnectivityEnabled: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:generateMonitoringPointConfig",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest",
-  }) as any as S.Schema<GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest>;
+export const GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "privateConnectivityEnabled": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:generateMonitoringPointConfig","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest" }) as any as S.Schema<GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest>;
 
 /** Message for response for getting Monitoring Point configuration of a NetworkMonitoringProvider resource. */
 export interface GenerateMonitoringPointConfigResponse {
   /** The Monitoring Point configuration of the provider in JSON format. */
   config?: DocumentMap;
 }
-export const GenerateMonitoringPointConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      config: S.optional(DocumentMap),
-    }),
-).annotate({
-  identifier: "GenerateMonitoringPointConfigResponse",
-}) as any as S.Schema<GenerateMonitoringPointConfigResponse>;
+export const GenerateMonitoringPointConfigResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "config": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "GenerateMonitoringPointConfigResponse" }) as any as S.Schema<GenerateMonitoringPointConfigResponse>;
 
 export interface GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest {
   /** Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
@@ -2762,22 +2043,12 @@ export interface GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringPr
   /** Required. Google access token. */
   gcpAccessToken?: string;
 }
-export const GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      gcpAccessToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:generateProviderAccessToken",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest",
-  }) as any as S.Schema<GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest>;
+export const GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "gcpAccessToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:generateProviderAccessToken","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest" }) as any as S.Schema<GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest>;
 
 /** Message for response for generating an access token for a NetworkMonitoringProvider resource. */
 export interface GenerateProviderAccessTokenResponse {
@@ -2785,12 +2056,10 @@ export interface GenerateProviderAccessTokenResponse {
   providerAccessToken?: string;
 }
 export const GenerateProviderAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerAccessToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenerateProviderAccessTokenResponse",
-}) as any as S.Schema<GenerateProviderAccessTokenResponse>;
+S.Struct({
+  "providerAccessToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GenerateProviderAccessTokenResponse" }) as any as S.Schema<GenerateProviderAccessTokenResponse>;
 
 export interface GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2798,21 +2067,12 @@ export interface GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest>;
+export const GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -2826,12 +2086,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    expression: S.optional(S.String),
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "expression": S.optional(S.String),
+  "description": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -2844,24 +2104,17 @@ export interface Binding {
   role?: string;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    members: S.optional(StringList),
-    condition: S.optional(Expr),
-    role: S.optional(S.String),
-  }),
+S.Struct({
+  "members": S.optional(StringList),
+  "condition": S.optional(Expr),
+  "role": S.optional(S.String),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2872,16 +2125,14 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-    exemptedMembers: S.optional(StringList),
-  }),
+S.Struct({
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+  "exemptedMembers": S.optional(StringList),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -2891,16 +2142,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -2914,12 +2163,12 @@ export interface Policy {
   auditConfigs?: AuditConfigList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-    auditConfigs: S.optional(AuditConfigList),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+  "auditConfigs": S.optional(AuditConfigList),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetOrganizationsLocationsRequest {
@@ -2927,18 +2176,10 @@ export interface GetOrganizationsLocationsRequest {
   name: string;
 }
 export const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://networkmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOrganizationsLocationsRequest",
-}) as any as S.Schema<GetOrganizationsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsRequest" }) as any as S.Schema<GetOrganizationsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -2954,157 +2195,86 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    locationId: S.optional(S.String),
-    labels: S.optional(StringMap),
-    metadata: S.optional(DocumentMap),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "locationId": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "metadata": S.optional(DocumentMap),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetOrganizationsLocationsGlobalOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetOrganizationsLocationsGlobalOperationsRequest",
-  }) as any as S.Schema<GetOrganizationsLocationsGlobalOperationsRequest>;
+export const GetOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsGlobalOperationsRequest" }) as any as S.Schema<GetOrganizationsLocationsGlobalOperationsRequest>;
 
 export interface GetOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For project-level resources: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level resources: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` */
   name: string;
 }
-export const GetOrganizationsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetOrganizationsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<GetOrganizationsLocationsVpcFlowLogsConfigsRequest>;
+export const GetOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<GetOrganizationsLocationsVpcFlowLogsConfigsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://networkmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export interface GetProjectsLocationsGlobalConnectivityTestsRequest {
   /** Required. `ConnectivityTest` resource name using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}` */
   name: string;
 }
-export const GetProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsGlobalConnectivityTestsRequest",
-  }) as any as S.Schema<GetProjectsLocationsGlobalConnectivityTestsRequest>;
+export const GetProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsGlobalConnectivityTestsRequest" }) as any as S.Schema<GetProjectsLocationsGlobalConnectivityTestsRequest>;
 
 export interface GetProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsGlobalOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsGlobalOperationsRequest>;
+export const GetProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsGlobalOperationsRequest" }) as any as S.Schema<GetProjectsLocationsGlobalOperationsRequest>;
 
 export interface GetProjectsLocationsNetworkMonitoringProvidersRequest {
   /** Required. Name of the resource. Format: `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}` */
   name: string;
 }
-export const GetProjectsLocationsNetworkMonitoringProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsNetworkMonitoringProvidersRequest",
-  }) as any as S.Schema<GetProjectsLocationsNetworkMonitoringProvidersRequest>;
+export const GetProjectsLocationsNetworkMonitoringProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsNetworkMonitoringProvidersRequest" }) as any as S.Schema<GetProjectsLocationsNetworkMonitoringProvidersRequest>;
 
 export interface GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest {
   /** Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point} */
   name: string;
 }
-export const GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest",
-  }) as any as S.Schema<GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
+export const GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest" }) as any as S.Schema<GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
 
-export type ProviderTagResourceTypeEnum =
-  | "RESOURCE_TYPE_UNSPECIFIED"
-  | "NETWORK_PATH"
-  | "WEB_PATH"
-  | "MONITORING_POLICY"
-  | "MONITORING_POINT"
-  | "MONITORING_POINT_RULE"
-  | "MONITORING_POINT_RULE_AUTO"
-  | (string & {});
+export type ProviderTagResourceTypeEnum = "RESOURCE_TYPE_UNSPECIFIED" | "NETWORK_PATH" | "WEB_PATH" | "MONITORING_POLICY" | "MONITORING_POINT" | "MONITORING_POINT_RULE" | "MONITORING_POINT_RULE_AUTO";
 export const ProviderTagResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing the provider tag. */
@@ -3117,24 +2287,17 @@ export interface ProviderTag {
   resourceType?: ProviderTagResourceTypeEnum;
 }
 export const ProviderTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    category: S.optional(S.String),
-    resourceType: S.optional(ProviderTagResourceTypeEnum),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+  "category": S.optional(S.String),
+  "resourceType": S.optional(ProviderTagResourceTypeEnum),
+}),
 ).annotate({ identifier: "ProviderTag" }) as any as S.Schema<ProviderTag>;
 
 export type ProviderTagList = ReadonlyArray<ProviderTag>;
-export const ProviderTagList = /*@__PURE__*/ S.Array(
-  ProviderTag,
-) as any as S.Schema<ProviderTagList>;
+export const ProviderTagList = /*@__PURE__*/ S.Array(ProviderTag) as any as S.Schema<ProviderTagList>;
 
-export type MonitoringPointDeploymentTypeEnum =
-  | "DEPLOYMENT_TYPE_UNSPECIFIED"
-  | "DOCKER"
-  | "PODMAN"
-  | "HELM"
-  | (string & {});
+export type MonitoringPointDeploymentTypeEnum = "DEPLOYMENT_TYPE_UNSPECIFIED" | "DOCKER" | "PODMAN" | "HELM";
 export const MonitoringPointDeploymentTypeEnum = /*@__PURE__*/ S.String;
 
 /** The geographical location of the MonitoringPoint. */
@@ -3145,25 +2308,17 @@ export interface GeoLocation {
   regionCode?: string;
 }
 export const GeoLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formattedAddress: S.optional(S.String),
-    regionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "formattedAddress": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "GeoLocation" }) as any as S.Schema<GeoLocation>;
 
-export type MonitoringPointErrorsItemEnum =
-  | "ERROR_CODE_UNSPECIFIED"
-  | "NTP_ERROR"
-  | "UPGRADE_ERROR"
-  | "DOWNLOAD_FAILED"
-  | (string & {});
+export type MonitoringPointErrorsItemEnum = "ERROR_CODE_UNSPECIFIED" | "NTP_ERROR" | "UPGRADE_ERROR" | "DOWNLOAD_FAILED";
 export const MonitoringPointErrorsItemEnum = /*@__PURE__*/ S.String;
 
-export type MonitoringPointErrorsItemEnumList =
-  ReadonlyArray<MonitoringPointErrorsItemEnum>;
-export const MonitoringPointErrorsItemEnumList = /*@__PURE__*/ S.Array(
-  MonitoringPointErrorsItemEnum,
-) as any as S.Schema<MonitoringPointErrorsItemEnumList>;
+export type MonitoringPointErrorsItemEnumList = ReadonlyArray<MonitoringPointErrorsItemEnum>;
+export const MonitoringPointErrorsItemEnumList = /*@__PURE__*/ S.Array(MonitoringPointErrorsItemEnum) as any as S.Schema<MonitoringPointErrorsItemEnumList>;
 
 /** Message describing information about the host. */
 export interface Host {
@@ -3183,25 +2338,18 @@ export interface Host {
   cloudProvider?: string;
 }
 export const Host = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudZone: S.optional(S.String),
-    cloudVirtualNetworkIds: S.optional(StringList),
-    cloudRegion: S.optional(S.String),
-    cloudInstanceId: S.optional(S.String),
-    cloudProjectId: S.optional(S.String),
-    os: S.optional(S.String),
-    cloudProvider: S.optional(S.String),
-  }),
+S.Struct({
+  "cloudZone": S.optional(S.String),
+  "cloudVirtualNetworkIds": S.optional(StringList),
+  "cloudRegion": S.optional(S.String),
+  "cloudInstanceId": S.optional(S.String),
+  "cloudProjectId": S.optional(S.String),
+  "os": S.optional(S.String),
+  "cloudProvider": S.optional(S.String),
+}),
 ).annotate({ identifier: "Host" }) as any as S.Schema<Host>;
 
-export type MonitoringPointUpgradeTypeEnum =
-  | "UPGRADE_TYPE_UNSPECIFIED"
-  | "MANUAL"
-  | "MANAGED"
-  | "SCHEDULED"
-  | "AUTO"
-  | "EXTERNAL"
-  | (string & {});
+export type MonitoringPointUpgradeTypeEnum = "UPGRADE_TYPE_UNSPECIFIED" | "MANUAL" | "MANAGED" | "SCHEDULED" | "AUTO" | "EXTERNAL";
 export const MonitoringPointUpgradeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing network interfaces. */
@@ -3222,29 +2370,21 @@ export interface NetworkInterface {
   cidr?: string;
 }
 export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vlanId: S.optional(S.String),
-    speed: S.optional(S.String),
-    adapterDescription: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    interfaceName: S.optional(S.String),
-    macAddress: S.optional(S.String),
-    cidr: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkInterface",
-}) as any as S.Schema<NetworkInterface>;
+S.Struct({
+  "vlanId": S.optional(S.String),
+  "speed": S.optional(S.String),
+  "adapterDescription": S.optional(S.String),
+  "ipAddress": S.optional(S.String),
+  "interfaceName": S.optional(S.String),
+  "macAddress": S.optional(S.String),
+  "cidr": S.optional(S.String),
+}),
+).annotate({ identifier: "NetworkInterface" }) as any as S.Schema<NetworkInterface>;
 
 export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
-export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
-  NetworkInterface,
-) as any as S.Schema<NetworkInterfaceList>;
+export const NetworkInterfaceList = /*@__PURE__*/ S.Array(NetworkInterface) as any as S.Schema<NetworkInterfaceList>;
 
-export type MonitoringPointConnectionStatusEnum =
-  | "CONNECTION_STATUS_UNSPECIFIED"
-  | "ONLINE"
-  | "OFFLINE"
-  | (string & {});
+export type MonitoringPointConnectionStatusEnum = "CONNECTION_STATUS_UNSPECIFIED" | "ONLINE" | "OFFLINE";
 export const MonitoringPointConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Message describing MonitoringPoint resource. */
@@ -3289,66 +2429,43 @@ export interface MonitoringPoint {
   createTime?: string;
 }
 export const MonitoringPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guid: S.optional(S.String),
-    providerTags: S.optional(ProviderTagList),
-    deploymentType: S.optional(MonitoringPointDeploymentTypeEnum),
-    updateTime: S.optional(S.String),
-    geoLocation: S.optional(GeoLocation),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    autoGeoLocationEnabled: S.optional(S.Boolean),
-    version: S.optional(S.String),
-    errors: S.optional(MonitoringPointErrorsItemEnumList),
-    displayName: S.optional(S.String),
-    originatingIp: S.optional(S.String),
-    upgradeAvailable: S.optional(S.Boolean),
-    host: S.optional(Host),
-    upgradeType: S.optional(MonitoringPointUpgradeTypeEnum),
-    hostname: S.optional(S.String),
-    networkInterfaces: S.optional(NetworkInterfaceList),
-    connectionStatus: S.optional(MonitoringPointConnectionStatusEnum),
-    createTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MonitoringPoint",
-}) as any as S.Schema<MonitoringPoint>;
+S.Struct({
+  "guid": S.optional(S.String),
+  "providerTags": S.optional(ProviderTagList),
+  "deploymentType": S.optional(MonitoringPointDeploymentTypeEnum),
+  "updateTime": S.optional(S.String),
+  "geoLocation": S.optional(GeoLocation),
+  "name": S.optional(S.String),
+  "type": S.optional(S.String),
+  "autoGeoLocationEnabled": S.optional(S.Boolean),
+  "version": S.optional(S.String),
+  "errors": S.optional(MonitoringPointErrorsItemEnumList),
+  "displayName": S.optional(S.String),
+  "originatingIp": S.optional(S.String),
+  "upgradeAvailable": S.optional(S.Boolean),
+  "host": S.optional(Host),
+  "upgradeType": S.optional(MonitoringPointUpgradeTypeEnum),
+  "hostname": S.optional(S.String),
+  "networkInterfaces": S.optional(NetworkInterfaceList),
+  "connectionStatus": S.optional(MonitoringPointConnectionStatusEnum),
+  "createTime": S.optional(S.String),
+}),
+).annotate({ identifier: "MonitoringPoint" }) as any as S.Schema<MonitoringPoint>;
 
 export interface GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest {
   /** Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/networkPaths/{network_path} */
   name: string;
 }
-export const GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest",
-  }) as any as S.Schema<GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest>;
+export const GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest" }) as any as S.Schema<GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest>;
 
-export type NetworkPathMonitoringStatusEnum =
-  | "MONITORING_STATUS_UNSPECIFIED"
-  | "MONITORING"
-  | "POLICY_MISMATCH"
-  | "MONITORING_POINT_OFFLINE"
-  | "DISABLED"
-  | (string & {});
+export type NetworkPathMonitoringStatusEnum = "MONITORING_STATUS_UNSPECIFIED" | "MONITORING" | "POLICY_MISMATCH" | "MONITORING_POINT_OFFLINE" | "DISABLED";
 export const NetworkPathMonitoringStatusEnum = /*@__PURE__*/ S.String;
 
-export type NetworkPathNetworkProtocolEnum =
-  | "NETWORK_PROTOCOL_UNSPECIFIED"
-  | "ICMP"
-  | "UDP"
-  | "TCP"
-  | (string & {});
+export type NetworkPathNetworkProtocolEnum = "NETWORK_PROTOCOL_UNSPECIFIED" | "ICMP" | "UDP" | "TCP";
 export const NetworkPathNetworkProtocolEnum = /*@__PURE__*/ S.String;
 
 /** Message describing NetworkPath resource. */
@@ -3387,59 +2504,40 @@ export interface NetworkPath {
   createTime?: string;
 }
 export const NetworkPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationGeoLocation: S.optional(GeoLocation),
-    providerTags: S.optional(ProviderTagList),
-    providerUiUri: S.optional(S.String),
-    monitoringPolicyId: S.optional(S.String),
-    destinationMonitoringPointId: S.optional(S.String),
-    monitoringEnabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    monitoringStatus: S.optional(NetworkPathMonitoringStatusEnum),
-    dualEnded: S.optional(S.Boolean),
-    destination: S.optional(S.String),
-    networkProtocol: S.optional(NetworkPathNetworkProtocolEnum),
-    monitoringPolicyDisplayName: S.optional(S.String),
-    sourceMonitoringPointId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "destinationGeoLocation": S.optional(GeoLocation),
+  "providerTags": S.optional(ProviderTagList),
+  "providerUiUri": S.optional(S.String),
+  "monitoringPolicyId": S.optional(S.String),
+  "destinationMonitoringPointId": S.optional(S.String),
+  "monitoringEnabled": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "monitoringStatus": S.optional(NetworkPathMonitoringStatusEnum),
+  "dualEnded": S.optional(S.Boolean),
+  "destination": S.optional(S.String),
+  "networkProtocol": S.optional(NetworkPathNetworkProtocolEnum),
+  "monitoringPolicyDisplayName": S.optional(S.String),
+  "sourceMonitoringPointId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "NetworkPath" }) as any as S.Schema<NetworkPath>;
 
 export interface GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest {
   /** Required. Name of the resource.. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/webPaths/{web_path} */
   name: string;
 }
-export const GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest",
-  }) as any as S.Schema<GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest>;
+export const GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest" }) as any as S.Schema<GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest>;
 
-export type WebPathWorkflowTypeEnum =
-  | "WORKFLOW_TYPE_UNSPECIFIED"
-  | "BROWSER"
-  | "HTTP"
-  | (string & {});
+export type WebPathWorkflowTypeEnum = "WORKFLOW_TYPE_UNSPECIFIED" | "BROWSER" | "HTTP";
 export const WebPathWorkflowTypeEnum = /*@__PURE__*/ S.String;
 
-export type WebPathMonitoringStatusEnum =
-  | "MONITORING_STATUS_UNSPECIFIED"
-  | "MONITORING"
-  | "POLICY_MISMATCH"
-  | "MONITORING_POINT_OFFLINE"
-  | "DISABLED"
-  | (string & {});
+export type WebPathMonitoringStatusEnum = "MONITORING_STATUS_UNSPECIFIED" | "MONITORING" | "POLICY_MISMATCH" | "MONITORING_POINT_OFFLINE" | "DISABLED";
 export const WebPathMonitoringStatusEnum = /*@__PURE__*/ S.String;
 
 /** Message describing WebPath resource. */
@@ -3478,44 +2576,35 @@ export interface WebPath {
   interval?: string;
 }
 export const WebPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    monitoringEnabled: S.optional(S.Boolean),
-    relatedNetworkPathId: S.optional(S.String),
-    monitoringPolicyId: S.optional(S.String),
-    providerTags: S.optional(ProviderTagList),
-    providerUiUri: S.optional(S.String),
-    destinationGeoLocation: S.optional(GeoLocation),
-    workflowType: S.optional(WebPathWorkflowTypeEnum),
-    createTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    sourceMonitoringPointId: S.optional(S.String),
-    destination: S.optional(S.String),
-    monitoringPolicyDisplayName: S.optional(S.String),
-    monitoringStatus: S.optional(WebPathMonitoringStatusEnum),
-    interval: S.optional(S.String),
-  }),
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "monitoringEnabled": S.optional(S.Boolean),
+  "relatedNetworkPathId": S.optional(S.String),
+  "monitoringPolicyId": S.optional(S.String),
+  "providerTags": S.optional(ProviderTagList),
+  "providerUiUri": S.optional(S.String),
+  "destinationGeoLocation": S.optional(GeoLocation),
+  "workflowType": S.optional(WebPathWorkflowTypeEnum),
+  "createTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "sourceMonitoringPointId": S.optional(S.String),
+  "destination": S.optional(S.String),
+  "monitoringPolicyDisplayName": S.optional(S.String),
+  "monitoringStatus": S.optional(WebPathMonitoringStatusEnum),
+  "interval": S.optional(S.String),
+}),
 ).annotate({ identifier: "WebPath" }) as any as S.Schema<WebPath>;
 
 export interface GetProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For project-level resources: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level resources: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` */
   name: string;
 }
-export const GetProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<GetProjectsLocationsVpcFlowLogsConfigsRequest>;
+export const GetProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<GetProjectsLocationsVpcFlowLogsConfigsRequest>;
 
 export interface ListOrganizationsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -3530,27 +2619,17 @@ export interface ListOrganizationsLocationsRequest {
   pageSize?: number;
 }
 export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://networkmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListOrganizationsLocationsRequest",
-}) as any as S.Schema<ListOrganizationsLocationsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsRequest" }) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -3560,13 +2639,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListOrganizationsLocationsGlobalOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -3580,29 +2657,18 @@ export interface ListOrganizationsLocationsGlobalOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListOrganizationsLocationsGlobalOperationsRequest",
-  }) as any as S.Schema<ListOrganizationsLocationsGlobalOperationsRequest>;
+export const ListOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsGlobalOperationsRequest" }) as any as S.Schema<ListOrganizationsLocationsGlobalOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -3614,14 +2680,12 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Optional. Field to use to sort the list. */
@@ -3635,29 +2699,18 @@ export interface ListOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A filter expression must use the supported [CEL logic operators] (https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators). */
   filter?: string;
 }
-export const ListOrganizationsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/vpcFlowLogsConfigs",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListOrganizationsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<ListOrganizationsLocationsVpcFlowLogsConfigsRequest>;
+export const ListOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/vpcFlowLogsConfigs","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<ListOrganizationsLocationsVpcFlowLogsConfigsRequest>;
 
 export type VpcFlowLogsConfigList = ReadonlyArray<VpcFlowLogsConfig>;
-export const VpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
-  VpcFlowLogsConfig,
-) as any as S.Schema<VpcFlowLogsConfigList>;
+export const VpcFlowLogsConfigList = /*@__PURE__*/ S.Array(VpcFlowLogsConfig) as any as S.Schema<VpcFlowLogsConfigList>;
 
 /** Response for the `ListVpcFlowLogsConfigs` method. */
 export interface ListVpcFlowLogsConfigsResponse {
@@ -3669,14 +2722,12 @@ export interface ListVpcFlowLogsConfigsResponse {
   vpcFlowLogsConfigs?: VpcFlowLogsConfigList;
 }
 export const ListVpcFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-    vpcFlowLogsConfigs: S.optional(VpcFlowLogsConfigList),
-  }),
-).annotate({
-  identifier: "ListVpcFlowLogsConfigsResponse",
-}) as any as S.Schema<ListVpcFlowLogsConfigsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "vpcFlowLogsConfigs": S.optional(VpcFlowLogsConfigList),
+}),
+).annotate({ identifier: "ListVpcFlowLogsConfigsResponse" }) as any as S.Schema<ListVpcFlowLogsConfigsResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -3691,22 +2742,14 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://networkmanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export interface ListProjectsLocationsGlobalConnectivityTestsRequest {
   /** Number of `ConnectivityTests` to return. */
@@ -3720,29 +2763,18 @@ export interface ListProjectsLocationsGlobalConnectivityTestsRequest {
   /** Lists the `ConnectivityTests` that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form ` ` where operators: `<`, `>`, `<=`, `>=`, `!=`, `=`, `:` are supported (colon `:` represents a HAS operator which is roughly synonymous with equality). can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/proj-1/locations/global/connectivityTests/test-1 - Filter by labels: - Resources that have a key called `foo` labels.foo:* - Resources that have a key called `foo` whose value is `bar` labels.foo = bar */
   filter?: string;
 }
-export const ListProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/connectivityTests",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsGlobalConnectivityTestsRequest",
-  }) as any as S.Schema<ListProjectsLocationsGlobalConnectivityTestsRequest>;
+export const ListProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/connectivityTests","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsGlobalConnectivityTestsRequest" }) as any as S.Schema<ListProjectsLocationsGlobalConnectivityTestsRequest>;
 
 export type ConnectivityTestList = ReadonlyArray<ConnectivityTest>;
-export const ConnectivityTestList = /*@__PURE__*/ S.Array(
-  ConnectivityTest,
-) as any as S.Schema<ConnectivityTestList>;
+export const ConnectivityTestList = /*@__PURE__*/ S.Array(ConnectivityTest) as any as S.Schema<ConnectivityTestList>;
 
 /** Response for the `ListConnectivityTests` method. */
 export interface ListConnectivityTestsResponse {
@@ -3754,14 +2786,12 @@ export interface ListConnectivityTestsResponse {
   unreachable?: StringList;
 }
 export const ListConnectivityTestsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    resources: S.optional(ConnectivityTestList),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListConnectivityTestsResponse",
-}) as any as S.Schema<ListConnectivityTestsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "resources": S.optional(ConnectivityTestList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListConnectivityTestsResponse" }) as any as S.Schema<ListConnectivityTestsResponse>;
 
 export interface ListProjectsLocationsGlobalOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -3775,24 +2805,15 @@ export interface ListProjectsLocationsGlobalOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsGlobalOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsGlobalOperationsRequest>;
+export const ListProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsGlobalOperationsRequest" }) as any as S.Schema<ListProjectsLocationsGlobalOperationsRequest>;
 
 export interface ListProjectsLocationsNetworkMonitoringProvidersRequest {
   /** Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMonitoringPoints` must match the call that provided the page token. */
@@ -3802,28 +2823,16 @@ export interface ListProjectsLocationsNetworkMonitoringProvidersRequest {
   /** Required. Parent value for ListNetworkMonitoringProvidersRequest. Format: `projects/{project}/locations/{location}` */
   parent: string;
 }
-export const ListProjectsLocationsNetworkMonitoringProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/networkMonitoringProviders",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsNetworkMonitoringProvidersRequest",
-  }) as any as S.Schema<ListProjectsLocationsNetworkMonitoringProvidersRequest>;
+export const ListProjectsLocationsNetworkMonitoringProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/networkMonitoringProviders","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsNetworkMonitoringProvidersRequest" }) as any as S.Schema<ListProjectsLocationsNetworkMonitoringProvidersRequest>;
 
-export type NetworkMonitoringProviderList =
-  ReadonlyArray<NetworkMonitoringProvider>;
-export const NetworkMonitoringProviderList = /*@__PURE__*/ S.Array(
-  NetworkMonitoringProvider,
-) as any as S.Schema<NetworkMonitoringProviderList>;
+export type NetworkMonitoringProviderList = ReadonlyArray<NetworkMonitoringProvider>;
+export const NetworkMonitoringProviderList = /*@__PURE__*/ S.Array(NetworkMonitoringProvider) as any as S.Schema<NetworkMonitoringProviderList>;
 
 /** Message for response to listing NetworkMonitoringProviders */
 export interface ListNetworkMonitoringProvidersResponse {
@@ -3832,15 +2841,12 @@ export interface ListNetworkMonitoringProvidersResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListNetworkMonitoringProvidersResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      networkMonitoringProviders: S.optional(NetworkMonitoringProviderList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListNetworkMonitoringProvidersResponse",
-}) as any as S.Schema<ListNetworkMonitoringProvidersResponse>;
+export const ListNetworkMonitoringProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "networkMonitoringProviders": S.optional(NetworkMonitoringProviderList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListNetworkMonitoringProvidersResponse" }) as any as S.Schema<ListNetworkMonitoringProvidersResponse>;
 
 export interface ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest {
   /** Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMonitoringPoints` must match the call that provided the page token. */
@@ -3850,28 +2856,16 @@ export interface ListProjectsLocationsNetworkMonitoringProvidersMonitoringPoints
   /** Required. Parent value for ListMonitoringPointsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
   parent: string;
 }
-export const ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/monitoringPoints",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest",
-  }) as any as S.Schema<ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
+export const ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/monitoringPoints","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest" }) as any as S.Schema<ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
 
 export type MonitoringPointList = ReadonlyArray<MonitoringPoint>;
-export const MonitoringPointList = /*@__PURE__*/ S.Array(
-  MonitoringPoint,
-) as any as S.Schema<MonitoringPointList>;
+export const MonitoringPointList = /*@__PURE__*/ S.Array(MonitoringPoint) as any as S.Schema<MonitoringPointList>;
 
 /** Message for response to listing MonitoringPoints */
 export interface ListMonitoringPointsResponse {
@@ -3881,13 +2875,11 @@ export interface ListMonitoringPointsResponse {
   nextPageToken?: string;
 }
 export const ListMonitoringPointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    monitoringPoints: S.optional(MonitoringPointList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListMonitoringPointsResponse",
-}) as any as S.Schema<ListMonitoringPointsResponse>;
+S.Struct({
+  "monitoringPoints": S.optional(MonitoringPointList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListMonitoringPointsResponse" }) as any as S.Schema<ListMonitoringPointsResponse>;
 
 export interface ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest {
   /** Optional. The maximum number of network paths to return. The service may return fewer than this value. If unspecified, at most 20 network pathswill be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -3897,28 +2889,16 @@ export interface ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequ
   /** Required. Parent value for ListNetworkPathsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
   parent: string;
 }
-export const ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/networkPaths",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest",
-  }) as any as S.Schema<ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest>;
+export const ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/networkPaths","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest" }) as any as S.Schema<ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest>;
 
 export type NetworkPathList = ReadonlyArray<NetworkPath>;
-export const NetworkPathList = /*@__PURE__*/ S.Array(
-  NetworkPath,
-) as any as S.Schema<NetworkPathList>;
+export const NetworkPathList = /*@__PURE__*/ S.Array(NetworkPath) as any as S.Schema<NetworkPathList>;
 
 /** Message for response to listing NetworkPaths */
 export interface ListNetworkPathsResponse {
@@ -3928,13 +2908,11 @@ export interface ListNetworkPathsResponse {
   networkPaths?: NetworkPathList;
 }
 export const ListNetworkPathsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    networkPaths: S.optional(NetworkPathList),
-  }),
-).annotate({
-  identifier: "ListNetworkPathsResponse",
-}) as any as S.Schema<ListNetworkPathsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "networkPaths": S.optional(NetworkPathList),
+}),
+).annotate({ identifier: "ListNetworkPathsResponse" }) as any as S.Schema<ListNetworkPathsResponse>;
 
 export interface ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest {
   /** Required. Parent value for ListWebPathsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
@@ -3944,28 +2922,16 @@ export interface ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest 
   /** Optional. The maximum number of web paths to return. The service may return fewer than this value. If unspecified, at most 20 web paths will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/webPaths",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest",
-  }) as any as S.Schema<ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest>;
+export const ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/webPaths","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest" }) as any as S.Schema<ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest>;
 
 export type WebPathList = ReadonlyArray<WebPath>;
-export const WebPathList = /*@__PURE__*/ S.Array(
-  WebPath,
-) as any as S.Schema<WebPathList>;
+export const WebPathList = /*@__PURE__*/ S.Array(WebPath) as any as S.Schema<WebPathList>;
 
 /** Message for response to listing WebPaths */
 export interface ListWebPathsResponse {
@@ -3975,13 +2941,11 @@ export interface ListWebPathsResponse {
   webPaths?: WebPathList;
 }
 export const ListWebPathsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    webPaths: S.optional(WebPathList),
-  }),
-).annotate({
-  identifier: "ListWebPathsResponse",
-}) as any as S.Schema<ListWebPathsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "webPaths": S.optional(WebPathList),
+}),
+).annotate({ identifier: "ListWebPathsResponse" }) as any as S.Schema<ListWebPathsResponse>;
 
 export interface ListProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Optional. Page token from an earlier query, as returned in `next_page_token`. */
@@ -3995,24 +2959,15 @@ export interface ListProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Optional. Field to use to sort the list. */
   orderBy?: string;
 }
-export const ListProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/vpcFlowLogsConfigs",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<ListProjectsLocationsVpcFlowLogsConfigsRequest>;
+export const ListProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/vpcFlowLogsConfigs","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<ListProjectsLocationsVpcFlowLogsConfigsRequest>;
 
 export interface PatchOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Identifier. Unique name of the configuration. The name can have one of the following forms: - For project-level configurations: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level configurations: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` */
@@ -4022,22 +2977,13 @@ export interface PatchOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Request body */
   body?: VpcFlowLogsConfig;
 }
-export const PatchOrganizationsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(VpcFlowLogsConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchOrganizationsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<PatchOrganizationsLocationsVpcFlowLogsConfigsRequest>;
+export const PatchOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(VpcFlowLogsConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "PatchOrganizationsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<PatchOrganizationsLocationsVpcFlowLogsConfigsRequest>;
 
 export interface PatchProjectsLocationsGlobalConnectivityTestsRequest {
   /** Identifier. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}` */
@@ -4047,22 +2993,13 @@ export interface PatchProjectsLocationsGlobalConnectivityTestsRequest {
   /** Request body */
   body?: ConnectivityTest;
 }
-export const PatchProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ConnectivityTest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsGlobalConnectivityTestsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsGlobalConnectivityTestsRequest>;
+export const PatchProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ConnectivityTest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsGlobalConnectivityTestsRequest" }) as any as S.Schema<PatchProjectsLocationsGlobalConnectivityTestsRequest>;
 
 export interface PatchProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Identifier. Unique name of the configuration. The name can have one of the following forms: - For project-level configurations: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level configurations: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` */
@@ -4072,22 +3009,13 @@ export interface PatchProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Request body */
   body?: VpcFlowLogsConfig;
 }
-export const PatchProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(VpcFlowLogsConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsVpcFlowLogsConfigsRequest>;
+export const PatchProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(VpcFlowLogsConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsVpcFlowLogsConfigsRequest>;
 
 export interface QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The parent resource of the VpcFlowLogsConfig, specified in the following format: `projects/{project_id}/locations/global` */
@@ -4099,24 +3027,14 @@ export interface QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRe
   /** Optional. Number of `VpcFlowLogsConfigs` to return. */
   pageSize?: number;
 }
-export const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest>;
+export const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest>;
 
 /** Response for the `QueryVpcFlowLogsConfigs` method. */
 export interface QueryOrgVpcFlowLogsConfigsResponse {
@@ -4128,22 +3046,18 @@ export interface QueryOrgVpcFlowLogsConfigsResponse {
   vpcFlowLogsConfigs?: VpcFlowLogsConfigList;
 }
 export const QueryOrgVpcFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    vpcFlowLogsConfigs: S.optional(VpcFlowLogsConfigList),
-  }),
-).annotate({
-  identifier: "QueryOrgVpcFlowLogsConfigsResponse",
-}) as any as S.Schema<QueryOrgVpcFlowLogsConfigsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "vpcFlowLogsConfigs": S.optional(VpcFlowLogsConfigList),
+}),
+).annotate({ identifier: "QueryOrgVpcFlowLogsConfigsResponse" }) as any as S.Schema<QueryOrgVpcFlowLogsConfigsResponse>;
 
 /** Request for the `RerunConnectivityTest` method. */
 export interface RerunConnectivityTestRequest {}
 export const RerunConnectivityTestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RerunConnectivityTestRequest",
-}) as any as S.Schema<RerunConnectivityTestRequest>;
+S.Struct({}),
+).annotate({ identifier: "RerunConnectivityTestRequest" }) as any as S.Schema<RerunConnectivityTestRequest>;
 
 export interface RerunProjectsLocationsGlobalConnectivityTestsRequest {
   /** Required. Connectivity Test resource name using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}` */
@@ -4151,21 +3065,12 @@ export interface RerunProjectsLocationsGlobalConnectivityTestsRequest {
   /** Request body */
   body?: RerunConnectivityTestRequest;
 }
-export const RerunProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RerunConnectivityTestRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:rerun",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RerunProjectsLocationsGlobalConnectivityTestsRequest",
-  }) as any as S.Schema<RerunProjectsLocationsGlobalConnectivityTestsRequest>;
+export const RerunProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RerunConnectivityTestRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:rerun","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "RerunProjectsLocationsGlobalConnectivityTestsRequest" }) as any as S.Schema<RerunProjectsLocationsGlobalConnectivityTestsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -4175,13 +3080,11 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4189,21 +3092,12 @@ export interface SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest>;
+export const SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest>;
 
 export interface ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Optional. Page token from an earlier query, as returned in `next_page_token`. */
@@ -4217,70 +3111,29 @@ export interface ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs
   /** Required. The parent resource of the VpcFlowLogsConfig, specified in the following format: `projects/{project_id}/locations/global` */
   parent: string;
 }
-export const ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      resource: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest>;
+export const ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "resource": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest" }) as any as S.Schema<ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest>;
 
-export type EffectiveVpcFlowLogsConfigScopeEnum =
-  | "SCOPE_UNSPECIFIED"
-  | "SUBNET"
-  | "COMPUTE_API_SUBNET"
-  | "NETWORK"
-  | "VPN_TUNNEL"
-  | "INTERCONNECT_ATTACHMENT"
-  | "ORGANIZATION"
-  | (string & {});
+export type EffectiveVpcFlowLogsConfigScopeEnum = "SCOPE_UNSPECIFIED" | "SUBNET" | "COMPUTE_API_SUBNET" | "NETWORK" | "VPN_TUNNEL" | "INTERCONNECT_ATTACHMENT" | "ORGANIZATION";
 export const EffectiveVpcFlowLogsConfigScopeEnum = /*@__PURE__*/ S.String;
 
-export type EffectiveVpcFlowLogsConfigAggregationIntervalEnum =
-  | "AGGREGATION_INTERVAL_UNSPECIFIED"
-  | "INTERVAL_5_SEC"
-  | "INTERVAL_30_SEC"
-  | "INTERVAL_1_MIN"
-  | "INTERVAL_5_MIN"
-  | "INTERVAL_10_MIN"
-  | "INTERVAL_15_MIN"
-  | (string & {});
-export const EffectiveVpcFlowLogsConfigAggregationIntervalEnum =
-  /*@__PURE__*/ S.String;
+export type EffectiveVpcFlowLogsConfigAggregationIntervalEnum = "AGGREGATION_INTERVAL_UNSPECIFIED" | "INTERVAL_5_SEC" | "INTERVAL_30_SEC" | "INTERVAL_1_MIN" | "INTERVAL_5_MIN" | "INTERVAL_10_MIN" | "INTERVAL_15_MIN";
+export const EffectiveVpcFlowLogsConfigAggregationIntervalEnum = /*@__PURE__*/ S.String;
 
-export type EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum =
-  | "CROSS_PROJECT_METADATA_UNSPECIFIED"
-  | "CROSS_PROJECT_METADATA_ENABLED"
-  | "CROSS_PROJECT_METADATA_DISABLED"
-  | (string & {});
-export const EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum =
-  /*@__PURE__*/ S.String;
+export type EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum = "CROSS_PROJECT_METADATA_UNSPECIFIED" | "CROSS_PROJECT_METADATA_ENABLED" | "CROSS_PROJECT_METADATA_DISABLED";
+export const EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum = /*@__PURE__*/ S.String;
 
-export type EffectiveVpcFlowLogsConfigStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type EffectiveVpcFlowLogsConfigStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
 export const EffectiveVpcFlowLogsConfigStateEnum = /*@__PURE__*/ S.String;
 
-export type EffectiveVpcFlowLogsConfigMetadataEnum =
-  | "METADATA_UNSPECIFIED"
-  | "INCLUDE_ALL_METADATA"
-  | "EXCLUDE_ALL_METADATA"
-  | "CUSTOM_METADATA"
-  | (string & {});
+export type EffectiveVpcFlowLogsConfigMetadataEnum = "METADATA_UNSPECIFIED" | "INCLUDE_ALL_METADATA" | "EXCLUDE_ALL_METADATA" | "CUSTOM_METADATA";
 export const EffectiveVpcFlowLogsConfigMetadataEnum = /*@__PURE__*/ S.String;
 
 /** A configuration to generate a response for GetEffectiveVpcFlowLogsConfig request. */
@@ -4313,34 +3166,25 @@ export interface EffectiveVpcFlowLogsConfig {
   metadata?: EffectiveVpcFlowLogsConfigMetadataEnum;
 }
 export const EffectiveVpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.optional(EffectiveVpcFlowLogsConfigScopeEnum),
-    network: S.optional(S.String),
-    metadataFields: S.optional(StringList),
-    name: S.optional(S.String),
-    aggregationInterval: S.optional(
-      EffectiveVpcFlowLogsConfigAggregationIntervalEnum,
-    ),
-    interconnectAttachment: S.optional(S.String),
-    filterExpr: S.optional(S.String),
-    subnet: S.optional(S.String),
-    crossProjectMetadata: S.optional(
-      EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum,
-    ),
-    vpnTunnel: S.optional(S.String),
-    state: S.optional(EffectiveVpcFlowLogsConfigStateEnum),
-    flowSampling: S.optional(S.Number),
-    metadata: S.optional(EffectiveVpcFlowLogsConfigMetadataEnum),
-  }),
-).annotate({
-  identifier: "EffectiveVpcFlowLogsConfig",
-}) as any as S.Schema<EffectiveVpcFlowLogsConfig>;
+S.Struct({
+  "scope": S.optional(EffectiveVpcFlowLogsConfigScopeEnum),
+  "network": S.optional(S.String),
+  "metadataFields": S.optional(StringList),
+  "name": S.optional(S.String),
+  "aggregationInterval": S.optional(EffectiveVpcFlowLogsConfigAggregationIntervalEnum),
+  "interconnectAttachment": S.optional(S.String),
+  "filterExpr": S.optional(S.String),
+  "subnet": S.optional(S.String),
+  "crossProjectMetadata": S.optional(EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum),
+  "vpnTunnel": S.optional(S.String),
+  "state": S.optional(EffectiveVpcFlowLogsConfigStateEnum),
+  "flowSampling": S.optional(S.Number),
+  "metadata": S.optional(EffectiveVpcFlowLogsConfigMetadataEnum),
+}),
+).annotate({ identifier: "EffectiveVpcFlowLogsConfig" }) as any as S.Schema<EffectiveVpcFlowLogsConfig>;
 
-export type EffectiveVpcFlowLogsConfigList =
-  ReadonlyArray<EffectiveVpcFlowLogsConfig>;
-export const EffectiveVpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
-  EffectiveVpcFlowLogsConfig,
-) as any as S.Schema<EffectiveVpcFlowLogsConfigList>;
+export type EffectiveVpcFlowLogsConfigList = ReadonlyArray<EffectiveVpcFlowLogsConfig>;
+export const EffectiveVpcFlowLogsConfigList = /*@__PURE__*/ S.Array(EffectiveVpcFlowLogsConfig) as any as S.Schema<EffectiveVpcFlowLogsConfigList>;
 
 /** Response for the `ShowEffectiveFlowLogsConfigs` method. */
 export interface ShowEffectiveFlowLogsConfigsResponse {
@@ -4351,16 +3195,13 @@ export interface ShowEffectiveFlowLogsConfigsResponse {
   /** Locations that could not be reached (when querying all locations with `-`). */
   unreachable?: StringList;
 }
-export const ShowEffectiveFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      effectiveFlowLogsConfigs: S.optional(EffectiveVpcFlowLogsConfigList),
-      nextPageToken: S.optional(S.String),
-      unreachable: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "ShowEffectiveFlowLogsConfigsResponse",
-}) as any as S.Schema<ShowEffectiveFlowLogsConfigsResponse>;
+export const ShowEffectiveFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "effectiveFlowLogsConfigs": S.optional(EffectiveVpcFlowLogsConfigList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ShowEffectiveFlowLogsConfigsResponse" }) as any as S.Schema<ShowEffectiveFlowLogsConfigsResponse>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -4368,12 +3209,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4381,22 +3220,12 @@ export interface TestIamPermissionsProjectsLocationsGlobalConnectivityTestsReque
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest>;
+export const TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://networkmanagement.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -4404,19 +3233,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
-export type CancelOrganizationsLocationsGlobalOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelOrganizationsLocationsGlobalOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOrganizationsLocationsGlobalOperations: API.OperationMethod<
   CancelOrganizationsLocationsGlobalOperationsRequest,
@@ -4431,12 +3253,7 @@ export const cancelOrganizationsLocationsGlobalOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsGlobalOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsGlobalOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsGlobalOperations: API.OperationMethod<
   CancelProjectsLocationsGlobalOperationsRequest,
@@ -4451,12 +3268,7 @@ export const cancelProjectsLocationsGlobalOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateOrganizationsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateOrganizationsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of the check mentioned above, therefore - creating another configuration with the same fields but different values for the following fields will fail as well: * name * create_time * update_time * labels * description */
 export const createOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   CreateOrganizationsLocationsVpcFlowLogsConfigsRequest,
@@ -4471,12 +3283,7 @@ export const createOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGlobalConnectivityTestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsGlobalConnectivityTestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of AMBIGUOUS. For more information, see the Connectivity Test documentation. */
 export const createProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   CreateProjectsLocationsGlobalConnectivityTestsRequest,
@@ -4491,12 +3298,7 @@ export const createProjectsLocationsGlobalConnectivityTests: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsNetworkMonitoringProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsNetworkMonitoringProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a NetworkMonitoringProvider resource. */
 export const createProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
   CreateProjectsLocationsNetworkMonitoringProvidersRequest,
@@ -4511,12 +3313,7 @@ export const createProjectsLocationsNetworkMonitoringProviders: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of the check mentioned above, therefore - creating another configuration with the same fields but different values for the following fields will fail as well: * name * create_time * update_time * labels * description */
 export const createProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   CreateProjectsLocationsVpcFlowLogsConfigsRequest,
@@ -4531,12 +3328,7 @@ export const createProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOrganizationsLocationsGlobalOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteOrganizationsLocationsGlobalOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOrganizationsLocationsGlobalOperations: API.OperationMethod<
   DeleteOrganizationsLocationsGlobalOperationsRequest,
@@ -4551,12 +3343,7 @@ export const deleteOrganizationsLocationsGlobalOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOrganizationsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteOrganizationsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a specific `VpcFlowLogsConfig`. */
 export const deleteOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest,
@@ -4571,12 +3358,7 @@ export const deleteOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGlobalConnectivityTestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsGlobalConnectivityTestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a specific `ConnectivityTest`. */
 export const deleteProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   DeleteProjectsLocationsGlobalConnectivityTestsRequest,
@@ -4591,12 +3373,7 @@ export const deleteProjectsLocationsGlobalConnectivityTests: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGlobalOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsGlobalOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsGlobalOperations: API.OperationMethod<
   DeleteProjectsLocationsGlobalOperationsRequest,
@@ -4611,12 +3388,7 @@ export const deleteProjectsLocationsGlobalOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsNetworkMonitoringProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsNetworkMonitoringProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a NetworkMonitoringProvider resource and all of its child resources. */
 export const deleteProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
   DeleteProjectsLocationsNetworkMonitoringProvidersRequest,
@@ -4631,12 +3403,7 @@ export const deleteProjectsLocationsNetworkMonitoringProviders: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a specific `VpcFlowLogsConfig`. */
 export const deleteProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   DeleteProjectsLocationsVpcFlowLogsConfigsRequest,
@@ -4651,8 +3418,7 @@ export const deleteProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
-  NotFound | Forbidden | GcpOpError;
+export type DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError = NotFound | Forbidden | GcpOpError;
 /** Downloads an install script for MonitoringPoints for a given network monitoring provider. */
 export const downloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
   DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
@@ -4660,16 +3426,14 @@ export const downloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMon
   DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  input: DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
   output: HttpBody,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
-  NotFound | Forbidden | GcpOpError;
+export type DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError = NotFound | Forbidden | GcpOpError;
 /** Downloads an install script for a specific Container MonitoringPoint. */
 export const downloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
   DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
@@ -4677,16 +3441,14 @@ export const downloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProv
   DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  input: DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
   output: HttpBody,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
-  NotFound | Forbidden | GcpOpError;
+export type DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError = NotFound | Forbidden | GcpOpError;
 /** Downloads the server connect configuration for a given network monitoring provider. */
 export const downloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
   DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
@@ -4694,16 +3456,14 @@ export const downloadServerConnectConfigProjectsLocationsNetworkMonitoringProvid
   DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  input: DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
   output: HttpBody,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersError =
-  NotFound | Forbidden | GcpOpError;
+export type GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersError = NotFound | Forbidden | GcpOpError;
 /** Generates Monitoring Point configuration of a NetworkMonitoringProvider resource. */
 export const generateMonitoringPointConfigProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
   GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest,
@@ -4711,16 +3471,14 @@ export const generateMonitoringPointConfigProjectsLocationsNetworkMonitoringProv
   GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest,
+  input: GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest,
   output: GenerateMonitoringPointConfigResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersError =
-  NotFound | Forbidden | GcpOpError;
+export type GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersError = NotFound | Forbidden | GcpOpError;
 /** Generates a provider access token for a given Google access token. Provider access token is a short-lived token that is used to access resources in the provider's platform. */
 export const generateProviderAccessTokenProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
   GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest,
@@ -4728,18 +3486,14 @@ export const generateProviderAccessTokenProjectsLocationsNetworkMonitoringProvid
   GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest,
+  input: GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest,
   output: GenerateProviderAccessTokenResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsGlobalConnectivityTestsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsGlobalConnectivityTestsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest,
@@ -4769,10 +3523,7 @@ export const getOrganizationsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsGlobalOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOrganizationsLocationsGlobalOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsGlobalOperations: API.OperationMethod<
   GetOrganizationsLocationsGlobalOperationsRequest,
@@ -4787,10 +3538,7 @@ export const getOrganizationsLocationsGlobalOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOrganizationsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | GcpOpError;
 /** Gets the details of a specific `VpcFlowLogsConfig`. */
 export const getOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   GetOrganizationsLocationsVpcFlowLogsConfigsRequest,
@@ -4820,10 +3568,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGlobalConnectivityTestsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsGlobalConnectivityTestsError = NotFound | Forbidden | GcpOpError;
 /** Gets the details of a specific Connectivity Test. */
 export const getProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   GetProjectsLocationsGlobalConnectivityTestsRequest,
@@ -4838,10 +3583,7 @@ export const getProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGlobalOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsGlobalOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsGlobalOperations: API.OperationMethod<
   GetProjectsLocationsGlobalOperationsRequest,
@@ -4856,10 +3598,7 @@ export const getProjectsLocationsGlobalOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsNetworkMonitoringProvidersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsNetworkMonitoringProvidersError = NotFound | Forbidden | GcpOpError;
 /** Gets the NetworkMonitoringProvider resource. */
 export const getProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
   GetProjectsLocationsNetworkMonitoringProvidersRequest,
@@ -4874,8 +3613,7 @@ export const getProjectsLocationsNetworkMonitoringProviders: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError = NotFound | Forbidden | GcpOpError;
 /** Gets the MonitoringPoint resource. */
 export const getProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
   GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
@@ -4890,10 +3628,7 @@ export const getProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsError = NotFound | Forbidden | GcpOpError;
 /** Gets the NetworkPath resource. */
 export const getProjectsLocationsNetworkMonitoringProvidersNetworkPaths: API.OperationMethod<
   GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest,
@@ -4908,10 +3643,7 @@ export const getProjectsLocationsNetworkMonitoringProvidersNetworkPaths: API.Ope
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsNetworkMonitoringProvidersWebPathsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsNetworkMonitoringProvidersWebPathsError = NotFound | Forbidden | GcpOpError;
 /** Gets the WebPath resource. */
 export const getProjectsLocationsNetworkMonitoringProvidersWebPaths: API.OperationMethod<
   GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest,
@@ -4926,10 +3658,7 @@ export const getProjectsLocationsNetworkMonitoringProvidersWebPaths: API.Operati
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | GcpOpError;
 /** Gets the details of a specific `VpcFlowLogsConfig`. */
 export const getProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   GetProjectsLocationsVpcFlowLogsConfigsRequest,
@@ -4957,16 +3686,10 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsLocationsGlobalOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOrganizationsLocationsGlobalOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsLocationsGlobalOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsGlobalOperationsRequest,
@@ -4979,16 +3702,10 @@ export const listOrganizationsLocationsGlobalOperations: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOrganizationsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | GcpOpError;
 /** Lists all `VpcFlowLogsConfigs` in a given organization. */
 export const listOrganizationsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
   ListOrganizationsLocationsVpcFlowLogsConfigsRequest,
@@ -5001,10 +3718,7 @@ export const listOrganizationsLocationsVpcFlowLogsConfigs: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -5020,16 +3734,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsGlobalConnectivityTestsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsGlobalConnectivityTestsError = NotFound | Forbidden | GcpOpError;
 /** Lists all Connectivity Tests owned by a project. */
 export const listProjectsLocationsGlobalConnectivityTests: API.PaginatedOperationMethod<
   ListProjectsLocationsGlobalConnectivityTestsRequest,
@@ -5042,16 +3750,10 @@ export const listProjectsLocationsGlobalConnectivityTests: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsGlobalOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsGlobalOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsGlobalOperationsRequest,
@@ -5064,16 +3766,10 @@ export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsNetworkMonitoringProvidersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsNetworkMonitoringProvidersError = NotFound | Forbidden | GcpOpError;
 /** Lists NetworkMonitoringProviders for a given project and location. */
 export const listProjectsLocationsNetworkMonitoringProviders: API.PaginatedOperationMethod<
   ListProjectsLocationsNetworkMonitoringProvidersRequest,
@@ -5086,14 +3782,10 @@ export const listProjectsLocationsNetworkMonitoringProviders: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
-  NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError = NotFound | Forbidden | GcpOpError;
 /** Lists MonitoringPoints for a given network monitoring provider. */
 export const listProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.PaginatedOperationMethod<
   ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
@@ -5106,16 +3798,10 @@ export const listProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: AP
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsError = NotFound | Forbidden | GcpOpError;
 /** Lists NetworkPaths for a given network monitoring provider. */
 export const listProjectsLocationsNetworkMonitoringProvidersNetworkPaths: API.PaginatedOperationMethod<
   ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest,
@@ -5128,16 +3814,10 @@ export const listProjectsLocationsNetworkMonitoringProvidersNetworkPaths: API.Pa
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsNetworkMonitoringProvidersWebPathsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsNetworkMonitoringProvidersWebPathsError = NotFound | Forbidden | GcpOpError;
 /** Lists WebPaths for a given network monitoring provider. */
 export const listProjectsLocationsNetworkMonitoringProvidersWebPaths: API.PaginatedOperationMethod<
   ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest,
@@ -5150,16 +3830,10 @@ export const listProjectsLocationsNetworkMonitoringProvidersWebPaths: API.Pagina
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | GcpOpError;
 /** Lists all `VpcFlowLogsConfigs` in a given project. */
 export const listProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsVpcFlowLogsConfigsRequest,
@@ -5172,18 +3846,10 @@ export const listProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchOrganizationsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchOrganizationsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of the check mentioned above, therefore - updating another configuration with the same fields but different values for the following fields will fail as well: * name * create_time * update_time * labels * description */
 export const patchOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   PatchOrganizationsLocationsVpcFlowLogsConfigsRequest,
@@ -5198,12 +3864,7 @@ export const patchOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsGlobalConnectivityTestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsGlobalConnectivityTestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the configuration of an existing `ConnectivityTest`. After you update a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. The Reachability state in the test resource is updated with the new result. If the endpoint specifications in `ConnectivityTest` are invalid (for example, they contain non-existent resources in the network, or the user does not have read permissions to the network configurations of listed projects), then the reachability result returns a value of UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more details. */
 export const patchProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   PatchProjectsLocationsGlobalConnectivityTestsRequest,
@@ -5218,12 +3879,7 @@ export const patchProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with `state=DISABLED` will fail. 2. The following fields are not considered as settings for the purpose of the check mentioned above, therefore - updating another configuration with the same fields but different values for the following fields will fail as well: * name * create_time * update_time * labels * description */
 export const patchProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   PatchProjectsLocationsVpcFlowLogsConfigsRequest,
@@ -5238,8 +3894,7 @@ export const patchProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  NotFound | Forbidden | GcpOpError;
+export type QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | GcpOpError;
 /** QueryOrgVpcFlowLogsConfigs returns a list of all organization-level VPC Flow Logs configurations applicable to the specified project. */
 export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
   QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
@@ -5252,18 +3907,10 @@ export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type RerunProjectsLocationsGlobalConnectivityTestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RerunProjectsLocationsGlobalConnectivityTestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Rerun an existing `ConnectivityTest`. After the user triggers the rerun, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. Even though the test configuration remains the same, the reachability result may change due to underlying network configuration changes. If the endpoint specifications in `ConnectivityTest` become invalid (for example, specified resources are deleted in the network, or you lost read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. */
 export const rerunProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   RerunProjectsLocationsGlobalConnectivityTestsRequest,
@@ -5278,12 +3925,7 @@ export const rerunProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsGlobalConnectivityTestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsGlobalConnectivityTestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest,
@@ -5298,8 +3940,7 @@ export const setIamPolicyProjectsLocationsGlobalConnectivityTests: API.Operation
   retry: Retry.Retry,
 }));
 
-export type ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  NotFound | Forbidden | GcpOpError;
+export type ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError = NotFound | Forbidden | GcpOpError;
 /** ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations applicable to a specified resource. */
 export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
   ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
@@ -5312,18 +3953,10 @@ export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: AP
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type TestIamPermissionsProjectsLocationsGlobalConnectivityTestsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsGlobalConnectivityTestsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest,
@@ -5337,3 +3970,4 @@ export const testIamPermissionsProjectsLocationsGlobalConnectivityTests: API.Ope
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

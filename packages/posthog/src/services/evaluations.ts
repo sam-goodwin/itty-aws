@@ -12,11 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `llm_judge` - LLM as a judge * `hog` - Hog * `sentiment` - Sentiment analysis */
-export type EvaluationTypeEnum =
-  | "llm_judge"
-  | "hog"
-  | "sentiment"
-  | (string & {});
+export type EvaluationTypeEnum = "llm_judge" | "hog" | "sentiment";
 export const EvaluationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface EvaluationsCreateRequestEvaluationConfigCase0 {
@@ -47,14 +43,13 @@ export const EvaluationsCreateRequestEvaluationConfigCase1 =
 
 /** Classify sentiment from user messages in the generation input. */
 export type EvaluationsCreateRequestEvaluationConfigCase2Source =
-  | "user_messages"
-  | (string & {});
+  "user_messages";
 export const EvaluationsCreateRequestEvaluationConfigCase2Source =
   /*@__PURE__*/ S.String;
 
 export interface EvaluationsCreateRequestEvaluationConfigCase2 {
   /** Classify sentiment from user messages in the generation input. */
-  source?: EvaluationsCreateRequestEvaluationConfigCase2Source;
+  source?: EvaluationsCreateRequestEvaluationConfigCase2Source | (string & {});
 }
 export const EvaluationsCreateRequestEvaluationConfigCase2 =
   /*@__PURE__*/ S.suspend(() =>
@@ -74,7 +69,7 @@ export const EvaluationsCreateRequestEvaluationConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsCreateRequestEvaluationConfig>;
 
 /** * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
-export type OutputTypeEnum = "boolean" | "sentiment" | (string & {});
+export type OutputTypeEnum = "boolean" | "sentiment";
 export const OutputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
@@ -133,7 +128,7 @@ export const EvaluationsCreateRequestConditionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EvaluationsCreateRequestConditionsList>;
 
 /** * `generation` - Generation * `trace` - Trace */
-export type EvaluationTargetEnum = "generation" | "trace" | (string & {});
+export type EvaluationTargetEnum = "generation" | "trace";
 export const EvaluationTargetEnum = /*@__PURE__*/ S.String;
 
 /** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
@@ -160,13 +155,12 @@ export type LLMProviderEnum =
   | "azure_openai"
   | "together_ai"
   | "minimax"
-  | "zeabur"
-  | (string & {});
+  | "zeabur";
 export const LLMProviderEnum = /*@__PURE__*/ S.String;
 
 /** Nested serializer for model configuration. */
 export interface ModelConfigurationInput {
-  provider?: LLMProviderEnum;
+  provider?: LLMProviderEnum | (string & {});
   model?: string;
   /** Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed. */
   provider_key_id?: string | null;
@@ -191,17 +185,17 @@ export interface EvaluationsCreateRequest {
   /** Whether the evaluation runs automatically on new $ai_generation events. */
   enabled?: boolean;
   /** 'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment. * `llm_judge` - LLM as a judge * `hog` - Hog * `sentiment` - Sentiment analysis */
-  evaluation_type?: EvaluationTypeEnum;
+  evaluation_type?: EvaluationTypeEnum | (string & {});
   /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
   evaluation_config?: EvaluationsCreateRequestEvaluationConfig;
   /** Output format. Use 'boolean' for pass/fail evaluations and 'sentiment' for sentiment analysis. * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
-  output_type?: OutputTypeEnum;
+  output_type?: OutputTypeEnum | (string & {});
   /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
   output_config?: EvaluationsCreateRequestOutputConfig;
   /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationsCreateRequestConditionsList;
   /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace. * `generation` - Generation * `trace` - Trace */
-  target?: EvaluationTargetEnum;
+  target?: EvaluationTargetEnum | (string & {});
   /** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
   target_config?: EvaluationsCreateRequestTargetConfig;
   /** Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null. */
@@ -236,11 +230,7 @@ export const EvaluationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationsCreateRequest>;
 
 /** * `active` - Active * `paused` - Paused * `error` - Error */
-export type EvaluationStatusEnum =
-  | "active"
-  | "paused"
-  | "error"
-  | (string & {});
+export type EvaluationStatusEnum = "active" | "paused" | "error";
 export const EvaluationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `provider_key_required` - No provider API key configured * `provider_key_deleted` - Provider API key was deleted * `no_default_model` - No default model available for the selected provider * `provider_key_invalid` - Provider API key is invalid * `provider_key_permission_denied` - Provider API key lacks model access * `provider_key_quota_exceeded` - Provider API key quota exceeded * `provider_key_rate_limited` - Provider API key is rate limited * `model_not_found` - Model not found * `hog_error` - Hog evaluation code failed */
@@ -253,8 +243,7 @@ export type StatusReasonEnum =
   | "provider_key_quota_exceeded"
   | "provider_key_rate_limited"
   | "model_not_found"
-  | "hog_error"
-  | (string & {});
+  | "hog_error";
 export const StatusReasonEnum = /*@__PURE__*/ S.String;
 
 export interface EvaluationEvaluationConfigCase0 {
@@ -282,9 +271,7 @@ export const EvaluationEvaluationConfigCase1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationEvaluationConfigCase1>;
 
 /** Classify sentiment from user messages in the generation input. */
-export type EvaluationEvaluationConfigCase2Source =
-  | "user_messages"
-  | (string & {});
+export type EvaluationEvaluationConfigCase2Source = "user_messages";
 export const EvaluationEvaluationConfigCase2Source = /*@__PURE__*/ S.String;
 
 export interface EvaluationEvaluationConfigCase2 {
@@ -373,11 +360,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -498,8 +484,7 @@ export const EvaluationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 export type EvaluationsListRequestEvaluationType =
   | "hog"
   | "llm_judge"
-  | "sentiment"
-  | (string & {});
+  | "sentiment";
 export const EvaluationsListRequestEvaluationType = /*@__PURE__*/ S.String;
 
 export type EvaluationsListRequestIdInList = ReadonlyArray<string>;
@@ -513,12 +498,12 @@ export type EvaluationsListRequestOrderByItem =
   | "-updated_at"
   | "created_at"
   | "name"
-  | "updated_at"
-  | (string & {});
+  | "updated_at";
 export const EvaluationsListRequestOrderByItem = /*@__PURE__*/ S.String;
 
-export type EvaluationsListRequestOrderByList =
-  ReadonlyArray<EvaluationsListRequestOrderByItem>;
+export type EvaluationsListRequestOrderByList = ReadonlyArray<
+  EvaluationsListRequestOrderByItem | (string & {})
+>;
 export const EvaluationsListRequestOrderByList = /*@__PURE__*/ S.Array(
   EvaluationsListRequestOrderByItem,
 ) as any as S.Schema<EvaluationsListRequestOrderByList>;
@@ -529,7 +514,7 @@ export interface EvaluationsListRequest {
   /** Filter by enabled status */
   enabled?: boolean;
   /** Filter by evaluation type * `llm_judge` - LLM as a judge * `hog` - Hog * `sentiment` - Sentiment analysis */
-  evaluation_type?: EvaluationsListRequestEvaluationType;
+  evaluation_type?: EvaluationsListRequestEvaluationType | (string & {});
   /** Multiple values may be separated by commas. */
   id__in?: EvaluationsListRequestIdInList;
   /** Number of results to return per page. */
@@ -614,14 +599,15 @@ export const EvaluationsPartialUpdateRequestEvaluationConfigCase1 =
 
 /** Classify sentiment from user messages in the generation input. */
 export type EvaluationsPartialUpdateRequestEvaluationConfigCase2Source =
-  | "user_messages"
-  | (string & {});
+  "user_messages";
 export const EvaluationsPartialUpdateRequestEvaluationConfigCase2Source =
   /*@__PURE__*/ S.String;
 
 export interface EvaluationsPartialUpdateRequestEvaluationConfigCase2 {
   /** Classify sentiment from user messages in the generation input. */
-  source?: EvaluationsPartialUpdateRequestEvaluationConfigCase2Source;
+  source?:
+    | EvaluationsPartialUpdateRequestEvaluationConfigCase2Source
+    | (string & {});
 }
 export const EvaluationsPartialUpdateRequestEvaluationConfigCase2 =
   /*@__PURE__*/ S.suspend(() =>
@@ -690,17 +676,17 @@ export interface EvaluationsPartialUpdateRequest {
   /** Whether the evaluation runs automatically on new $ai_generation events. */
   enabled?: boolean;
   /** 'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment. * `llm_judge` - LLM as a judge * `hog` - Hog * `sentiment` - Sentiment analysis */
-  evaluation_type?: EvaluationTypeEnum;
+  evaluation_type?: EvaluationTypeEnum | (string & {});
   /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
   evaluation_config?: EvaluationsPartialUpdateRequestEvaluationConfig;
   /** Output format. Use 'boolean' for pass/fail evaluations and 'sentiment' for sentiment analysis. * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
-  output_type?: OutputTypeEnum;
+  output_type?: OutputTypeEnum | (string & {});
   /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
   output_config?: EvaluationsPartialUpdateRequestOutputConfig;
   /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationsPartialUpdateRequestConditionsList;
   /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace. * `generation` - Generation * `trace` - Trace */
-  target?: EvaluationTargetEnum;
+  target?: EvaluationTargetEnum | (string & {});
   /** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
   target_config?: EvaluationsPartialUpdateRequestTargetConfig;
   /** Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null. */
@@ -882,14 +868,13 @@ export const EvaluationsUpdateRequestEvaluationConfigCase1 =
 
 /** Classify sentiment from user messages in the generation input. */
 export type EvaluationsUpdateRequestEvaluationConfigCase2Source =
-  | "user_messages"
-  | (string & {});
+  "user_messages";
 export const EvaluationsUpdateRequestEvaluationConfigCase2Source =
   /*@__PURE__*/ S.String;
 
 export interface EvaluationsUpdateRequestEvaluationConfigCase2 {
   /** Classify sentiment from user messages in the generation input. */
-  source?: EvaluationsUpdateRequestEvaluationConfigCase2Source;
+  source?: EvaluationsUpdateRequestEvaluationConfigCase2Source | (string & {});
 }
 export const EvaluationsUpdateRequestEvaluationConfigCase2 =
   /*@__PURE__*/ S.suspend(() =>
@@ -955,17 +940,17 @@ export interface EvaluationsUpdateRequest {
   /** Whether the evaluation runs automatically on new $ai_generation events. */
   enabled?: boolean;
   /** 'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment. * `llm_judge` - LLM as a judge * `hog` - Hog * `sentiment` - Sentiment analysis */
-  evaluation_type?: EvaluationTypeEnum;
+  evaluation_type?: EvaluationTypeEnum | (string & {});
   /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
   evaluation_config?: EvaluationsUpdateRequestEvaluationConfig;
   /** Output format. Use 'boolean' for pass/fail evaluations and 'sentiment' for sentiment analysis. * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
-  output_type?: OutputTypeEnum;
+  output_type?: OutputTypeEnum | (string & {});
   /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
   output_config?: EvaluationsUpdateRequestOutputConfig;
   /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationsUpdateRequestConditionsList;
   /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace. * `generation` - Generation * `trace` - Trace */
-  target?: EvaluationTargetEnum;
+  target?: EvaluationTargetEnum | (string & {});
   /** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
   target_config?: EvaluationsUpdateRequestTargetConfig;
   /** Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null. */

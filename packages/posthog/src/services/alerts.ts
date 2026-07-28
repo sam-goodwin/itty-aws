@@ -56,7 +56,7 @@ export const InsightsThresholdBounds = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsThresholdBounds",
 }) as any as S.Schema<InsightsThresholdBounds>;
 
-export type InsightThresholdType = "absolute" | "percentage" | (string & {});
+export type InsightThresholdType = "absolute" | "percentage";
 export const InsightThresholdType = /*@__PURE__*/ S.String;
 
 export interface InsightThreshold {
@@ -89,8 +89,7 @@ export const ThresholdInput = /*@__PURE__*/ S.suspend(() =>
 export type AlertConditionType =
   | "absolute_value"
   | "relative_increase"
-  | "relative_decrease"
-  | (string & {});
+  | "relative_decrease";
 export const AlertConditionType = /*@__PURE__*/ S.String;
 
 export interface AlertCondition {
@@ -119,11 +118,7 @@ export const TrendsAlertConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendsAlertConfig",
 }) as any as S.Schema<TrendsAlertConfig>;
 
-export type HogQLAlertEvaluation =
-  | "last_row"
-  | "first_row"
-  | "any_row"
-  | (string & {});
+export type HogQLAlertEvaluation = "last_row" | "first_row" | "any_row";
 export const HogQLAlertEvaluation = /*@__PURE__*/ S.String;
 
 export interface HogQLAlertConfig {
@@ -148,8 +143,7 @@ export const HogQLAlertConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type FunnelConversionMetric =
   | "conversion_from_start"
-  | "conversion_from_previous"
-  | (string & {});
+  | "conversion_from_previous";
 export const FunnelConversionMetric = /*@__PURE__*/ S.String;
 
 export interface FunnelsAlertConfig {
@@ -355,7 +349,7 @@ export const IsolationForestDetectorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "IsolationForestDetectorConfig",
 }) as any as S.Schema<IsolationForestDetectorConfig>;
 
-export type Method = "largest" | "mean" | "median" | (string & {});
+export type Method = "largest" | "mean" | "median";
 export const Method = /*@__PURE__*/ S.String;
 
 export interface KNNDetectorConfig {
@@ -499,7 +493,7 @@ export const EnsembleDetectorConfigDetectorsList = /*@__PURE__*/ S.Array(
   EnsembleDetectorConfigDetectorsItem,
 ) as any as S.Schema<EnsembleDetectorConfigDetectorsList>;
 
-export type EnsembleOperator = "and" | "or" | (string & {});
+export type EnsembleOperator = "and" | "or";
 export const EnsembleOperator = /*@__PURE__*/ S.String;
 
 export interface EnsembleDetectorConfig {
@@ -544,8 +538,7 @@ export type CalculationIntervalEnum =
   | "hourly"
   | "daily"
   | "weekly"
-  | "monthly"
-  | (string & {});
+  | "monthly";
 export const CalculationIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface AlertScheduleRestrictionWindow {
@@ -583,10 +576,7 @@ export const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertScheduleRestriction>;
 
 /** * `notify` - Notify * `suppress` - Suppress */
-export type InvestigationInconclusiveActionEnum =
-  | "notify"
-  | "suppress"
-  | (string & {});
+export type InvestigationInconclusiveActionEnum = "notify" | "suppress";
 export const InvestigationInconclusiveActionEnum = /*@__PURE__*/ S.String;
 
 export interface AlertsCreateRequest {
@@ -608,7 +598,7 @@ export interface AlertsCreateRequest {
   config?: AlertConfigUnion | null;
   detector_config?: DetectorConfig | null;
   /** How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
-  calculation_interval?: CalculationIntervalEnum;
+  calculation_interval?: CalculationIntervalEnum | (string & {});
   /** Snooze the alert until this time. Pass a relative date string (e.g. '2h', '1d') or null to unsnooze. */
   snoozed_until?: string | null;
   /** Skip alert evaluation on weekends (Saturday and Sunday, local to project timezone). */
@@ -620,7 +610,9 @@ export interface AlertsCreateRequest {
   /** When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
-  investigation_inconclusive_action?: InvestigationInconclusiveActionEnum;
+  investigation_inconclusive_action?:
+    | InvestigationInconclusiveActionEnum
+    | (string & {});
 }
 export const AlertsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -668,11 +660,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -732,8 +723,7 @@ export type AlertCheckStateEnum =
   | "Firing"
   | "Not firing"
   | "Errored"
-  | "Snoozed"
-  | (string & {});
+  | "Snoozed";
 export const AlertCheckStateEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - pending * `running` - running * `done` - done * `failed` - failed * `skipped` - skipped */
@@ -742,16 +732,14 @@ export type InvestigationStatusEnum =
   | "running"
   | "done"
   | "failed"
-  | "skipped"
-  | (string & {});
+  | "skipped";
 export const InvestigationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
 export type InvestigationVerdictEnum =
   | "true_positive"
   | "false_positive"
-  | "inconclusive"
-  | (string & {});
+  | "inconclusive";
 export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
 
 export interface AlertCheck {
@@ -800,7 +788,7 @@ export const AlertChecksList = /*@__PURE__*/ S.Array(
   AlertCheck,
 ) as any as S.Schema<AlertChecksList>;
 
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
+export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Alert {
@@ -995,7 +983,7 @@ export interface AlertsPartialUpdateRequest {
   config?: AlertConfigUnion | null;
   detector_config?: DetectorConfig | null;
   /** How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
-  calculation_interval?: CalculationIntervalEnum;
+  calculation_interval?: CalculationIntervalEnum | (string & {});
   /** Snooze the alert until this time. Pass a relative date string (e.g. '2h', '1d') or null to unsnooze. */
   snoozed_until?: string | null;
   /** Skip alert evaluation on weekends (Saturday and Sunday, local to project timezone). */
@@ -1007,7 +995,9 @@ export interface AlertsPartialUpdateRequest {
   /** When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
-  investigation_inconclusive_action?: InvestigationInconclusiveActionEnum;
+  investigation_inconclusive_action?:
+    | InvestigationInconclusiveActionEnum
+    | (string & {});
 }
 export const AlertsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1316,7 +1306,7 @@ export interface AlertsUpdateRequest {
   config?: AlertConfigUnion | null;
   detector_config?: DetectorConfig | null;
   /** How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
-  calculation_interval?: CalculationIntervalEnum;
+  calculation_interval?: CalculationIntervalEnum | (string & {});
   /** Snooze the alert until this time. Pass a relative date string (e.g. '2h', '1d') or null to unsnooze. */
   snoozed_until?: string | null;
   /** Skip alert evaluation on weekends (Saturday and Sunday, local to project timezone). */
@@ -1328,7 +1318,9 @@ export interface AlertsUpdateRequest {
   /** When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
-  investigation_inconclusive_action?: InvestigationInconclusiveActionEnum;
+  investigation_inconclusive_action?:
+    | InvestigationInconclusiveActionEnum
+    | (string & {});
 }
 export const AlertsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

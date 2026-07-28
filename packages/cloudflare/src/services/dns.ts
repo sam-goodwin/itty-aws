@@ -263,9 +263,7 @@ export const RecordsBatchRequestPatchesItemNSRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPatchesItemNSRecord",
 }) as any as S.Schema<RecordsBatchRequestPatchesItemNSRecord>;
 
-export type RecordsBatchRequestPatchesItemOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+export type RecordsBatchRequestPatchesItemOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsBatchRequestPatchesItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -300,7 +298,7 @@ export interface RecordsBatchRequestPatchesItemOpenpgpkeyRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPatchesItemOpenpgpkeyRecordType;
+  type: RecordsBatchRequestPatchesItemOpenpgpkeyRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
@@ -590,7 +588,7 @@ export const RecordsBatchRequestPatchesList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestPatchesItem,
 ) as any as S.Schema<RecordsBatchRequestPatchesList>;
 
-export type RecordsBatchRequestPostsItemARecordType = "A" | (string & {});
+export type RecordsBatchRequestPostsItemARecordType = "A";
 export const RecordsBatchRequestPostsItemARecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemARecordSettings {
@@ -622,7 +620,7 @@ export interface RecordsBatchRequestPostsItemARecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemARecordType;
+  type: RecordsBatchRequestPostsItemARecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid IPv4 address. */
@@ -652,7 +650,7 @@ export const RecordsBatchRequestPostsItemARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsBatchRequestPostsItemARecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemARecord>;
 
-export type RecordsBatchRequestPostsItemAAAARecordType = "AAAA" | (string & {});
+export type RecordsBatchRequestPostsItemAAAARecordType = "AAAA";
 export const RecordsBatchRequestPostsItemAAAARecordType =
   /*@__PURE__*/ S.String;
 
@@ -685,7 +683,7 @@ export interface RecordsBatchRequestPostsItemAAAARecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemAAAARecordType;
+  type: RecordsBatchRequestPostsItemAAAARecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid IPv6 address. */
@@ -716,9 +714,7 @@ export const RecordsBatchRequestPostsItemAAAARecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemAAAARecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemAAAARecord>;
 
-export type RecordsBatchRequestPostsItemCNAMERecordType =
-  | "CNAME"
-  | (string & {});
+export type RecordsBatchRequestPostsItemCNAMERecordType = "CNAME";
 export const RecordsBatchRequestPostsItemCNAMERecordType =
   /*@__PURE__*/ S.String;
 
@@ -754,7 +750,7 @@ export interface RecordsBatchRequestPostsItemCNAMERecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemCNAMERecordType;
+  type: RecordsBatchRequestPostsItemCNAMERecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid hostname. Must not match the record's name. */
@@ -782,7 +778,7 @@ export const RecordsBatchRequestPostsItemCNAMERecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemCNAMERecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemCNAMERecord>;
 
-export type RecordsBatchRequestPostsItemMXRecordType = "MX" | (string & {});
+export type RecordsBatchRequestPostsItemMXRecordType = "MX";
 export const RecordsBatchRequestPostsItemMXRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemMXRecordSettings {
@@ -814,7 +810,7 @@ export interface RecordsBatchRequestPostsItemMXRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemMXRecordType;
+  type: RecordsBatchRequestPostsItemMXRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid mail server hostname. */
@@ -845,7 +841,7 @@ export const RecordsBatchRequestPostsItemMXRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemMXRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemMXRecord>;
 
-export type RecordsBatchRequestPostsItemNSRecordType = "NS" | (string & {});
+export type RecordsBatchRequestPostsItemNSRecordType = "NS";
 export const RecordsBatchRequestPostsItemNSRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemNSRecordSettings {
@@ -877,7 +873,7 @@ export interface RecordsBatchRequestPostsItemNSRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemNSRecordType;
+  type: RecordsBatchRequestPostsItemNSRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid name server host name. */
@@ -906,8 +902,7 @@ export const RecordsBatchRequestPostsItemNSRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchRequestPostsItemNSRecord>;
 
 export type RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+  "OPENPGPKEY";
 export const RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -941,7 +936,9 @@ export interface RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordType;
+  type:
+    | RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordType
+    | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
@@ -973,7 +970,7 @@ export const RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord =
     identifier: "RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord>;
 
-export type RecordsBatchRequestPostsItemPTRRecordType = "PTR" | (string & {});
+export type RecordsBatchRequestPostsItemPTRRecordType = "PTR";
 export const RecordsBatchRequestPostsItemPTRRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemPTRRecordSettings {
@@ -1005,7 +1002,7 @@ export interface RecordsBatchRequestPostsItemPTRRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemPTRRecordType;
+  type: RecordsBatchRequestPostsItemPTRRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Domain name pointing to the address. */
@@ -1033,7 +1030,7 @@ export const RecordsBatchRequestPostsItemPTRRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemPTRRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemPTRRecord>;
 
-export type RecordsBatchRequestPostsItemTXTRecordType = "TXT" | (string & {});
+export type RecordsBatchRequestPostsItemTXTRecordType = "TXT";
 export const RecordsBatchRequestPostsItemTXTRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemTXTRecordSettings {
@@ -1065,7 +1062,7 @@ export interface RecordsBatchRequestPostsItemTXTRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemTXTRecordType;
+  type: RecordsBatchRequestPostsItemTXTRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Text content for the record. The content must consist of quoted "character strings" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split. */
@@ -1093,7 +1090,7 @@ export const RecordsBatchRequestPostsItemTXTRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemTXTRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemTXTRecord>;
 
-export type RecordsBatchRequestPostsItemCAARecordType = "CAA" | (string & {});
+export type RecordsBatchRequestPostsItemCAARecordType = "CAA";
 export const RecordsBatchRequestPostsItemCAARecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemCAARecordData {
@@ -1144,7 +1141,7 @@ export interface RecordsBatchRequestPostsItemCAARecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemCAARecordType;
+  type: RecordsBatchRequestPostsItemCAARecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted CAA content. See 'data' to set CAA properties. */
@@ -1175,7 +1172,7 @@ export const RecordsBatchRequestPostsItemCAARecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemCAARecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemCAARecord>;
 
-export type RecordsBatchRequestPostsItemCERTRecordType = "CERT" | (string & {});
+export type RecordsBatchRequestPostsItemCERTRecordType = "CERT";
 export const RecordsBatchRequestPostsItemCERTRecordType =
   /*@__PURE__*/ S.String;
 
@@ -1230,7 +1227,7 @@ export interface RecordsBatchRequestPostsItemCERTRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemCERTRecordType;
+  type: RecordsBatchRequestPostsItemCERTRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted CERT content. See 'data' to set CERT properties. */
@@ -1261,9 +1258,7 @@ export const RecordsBatchRequestPostsItemCERTRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemCERTRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemCERTRecord>;
 
-export type RecordsBatchRequestPostsItemDNSKEYRecordType =
-  | "DNSKEY"
-  | (string & {});
+export type RecordsBatchRequestPostsItemDNSKEYRecordType = "DNSKEY";
 export const RecordsBatchRequestPostsItemDNSKEYRecordType =
   /*@__PURE__*/ S.String;
 
@@ -1318,7 +1313,7 @@ export interface RecordsBatchRequestPostsItemDNSKEYRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemDNSKEYRecordType;
+  type: RecordsBatchRequestPostsItemDNSKEYRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted DNSKEY content. See 'data' to set DNSKEY properties. */
@@ -1349,7 +1344,7 @@ export const RecordsBatchRequestPostsItemDNSKEYRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemDNSKEYRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemDNSKEYRecord>;
 
-export type RecordsBatchRequestPostsItemDSRecordType = "DS" | (string & {});
+export type RecordsBatchRequestPostsItemDSRecordType = "DS";
 export const RecordsBatchRequestPostsItemDSRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemDSRecordData {
@@ -1403,7 +1398,7 @@ export interface RecordsBatchRequestPostsItemDSRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemDSRecordType;
+  type: RecordsBatchRequestPostsItemDSRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted DS content. See 'data' to set DS properties. */
@@ -1434,9 +1429,7 @@ export const RecordsBatchRequestPostsItemDSRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemDSRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemDSRecord>;
 
-export type RecordsBatchRequestPostsItemHTTPSRecordType =
-  | "HTTPS"
-  | (string & {});
+export type RecordsBatchRequestPostsItemHTTPSRecordType = "HTTPS";
 export const RecordsBatchRequestPostsItemHTTPSRecordType =
   /*@__PURE__*/ S.String;
 
@@ -1488,7 +1481,7 @@ export interface RecordsBatchRequestPostsItemHTTPSRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemHTTPSRecordType;
+  type: RecordsBatchRequestPostsItemHTTPSRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted HTTPS content. See 'data' to set HTTPS properties. */
@@ -1519,20 +1512,14 @@ export const RecordsBatchRequestPostsItemHTTPSRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemHTTPSRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemHTTPSRecord>;
 
-export type RecordsBatchRequestPostsItemLOCRecordType = "LOC" | (string & {});
+export type RecordsBatchRequestPostsItemLOCRecordType = "LOC";
 export const RecordsBatchRequestPostsItemLOCRecordType = /*@__PURE__*/ S.String;
 
-export type RecordsBatchRequestPostsItemLOCRecordDataLatDirection =
-  | "N"
-  | "S"
-  | (string & {});
+export type RecordsBatchRequestPostsItemLOCRecordDataLatDirection = "N" | "S";
 export const RecordsBatchRequestPostsItemLOCRecordDataLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsBatchRequestPostsItemLOCRecordDataLongDirection =
-  | "E"
-  | "W"
-  | (string & {});
+export type RecordsBatchRequestPostsItemLOCRecordDataLongDirection = "E" | "W";
 export const RecordsBatchRequestPostsItemLOCRecordDataLongDirection =
   /*@__PURE__*/ S.String;
 
@@ -1542,7 +1529,9 @@ export interface RecordsBatchRequestPostsItemLOCRecordData {
   /** Degrees of latitude. */
   latDegrees?: number;
   /** Latitude direction. */
-  latDirection?: RecordsBatchRequestPostsItemLOCRecordDataLatDirection;
+  latDirection?:
+    | RecordsBatchRequestPostsItemLOCRecordDataLatDirection
+    | (string & {});
   /** Minutes of latitude. */
   latMinutes?: number;
   /** Seconds of latitude. */
@@ -1550,7 +1539,9 @@ export interface RecordsBatchRequestPostsItemLOCRecordData {
   /** Degrees of longitude. */
   longDegrees?: number;
   /** Longitude direction. */
-  longDirection?: RecordsBatchRequestPostsItemLOCRecordDataLongDirection;
+  longDirection?:
+    | RecordsBatchRequestPostsItemLOCRecordDataLongDirection
+    | (string & {});
   /** Minutes of longitude. */
   longMinutes?: number;
   /** Seconds of longitude. */
@@ -1619,7 +1610,7 @@ export interface RecordsBatchRequestPostsItemLOCRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemLOCRecordType;
+  type: RecordsBatchRequestPostsItemLOCRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted LOC content. See 'data' to set LOC properties. */
@@ -1650,9 +1641,7 @@ export const RecordsBatchRequestPostsItemLOCRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemLOCRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemLOCRecord>;
 
-export type RecordsBatchRequestPostsItemNAPTRRecordType =
-  | "NAPTR"
-  | (string & {});
+export type RecordsBatchRequestPostsItemNAPTRRecordType = "NAPTR";
 export const RecordsBatchRequestPostsItemNAPTRRecordType =
   /*@__PURE__*/ S.String;
 
@@ -1713,7 +1702,7 @@ export interface RecordsBatchRequestPostsItemNAPTRRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemNAPTRRecordType;
+  type: RecordsBatchRequestPostsItemNAPTRRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted NAPTR content. See 'data' to set NAPTR properties. */
@@ -1744,9 +1733,7 @@ export const RecordsBatchRequestPostsItemNAPTRRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemNAPTRRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemNAPTRRecord>;
 
-export type RecordsBatchRequestPostsItemSMIMEARecordType =
-  | "SMIMEA"
-  | (string & {});
+export type RecordsBatchRequestPostsItemSMIMEARecordType = "SMIMEA";
 export const RecordsBatchRequestPostsItemSMIMEARecordType =
   /*@__PURE__*/ S.String;
 
@@ -1801,7 +1788,7 @@ export interface RecordsBatchRequestPostsItemSMIMEARecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemSMIMEARecordType;
+  type: RecordsBatchRequestPostsItemSMIMEARecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted SMIMEA content. See 'data' to set SMIMEA properties. */
@@ -1832,7 +1819,7 @@ export const RecordsBatchRequestPostsItemSMIMEARecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemSMIMEARecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemSMIMEARecord>;
 
-export type RecordsBatchRequestPostsItemSRVRecordType = "SRV" | (string & {});
+export type RecordsBatchRequestPostsItemSRVRecordType = "SRV";
 export const RecordsBatchRequestPostsItemSRVRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemSRVRecordData {
@@ -1886,7 +1873,7 @@ export interface RecordsBatchRequestPostsItemSRVRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemSRVRecordType;
+  type: RecordsBatchRequestPostsItemSRVRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Priority, weight, port, and SRV target. See 'data' for setting the individual component values. */
@@ -1917,9 +1904,7 @@ export const RecordsBatchRequestPostsItemSRVRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemSRVRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemSRVRecord>;
 
-export type RecordsBatchRequestPostsItemSSHFPRecordType =
-  | "SSHFP"
-  | (string & {});
+export type RecordsBatchRequestPostsItemSSHFPRecordType = "SSHFP";
 export const RecordsBatchRequestPostsItemSSHFPRecordType =
   /*@__PURE__*/ S.String;
 
@@ -1971,7 +1956,7 @@ export interface RecordsBatchRequestPostsItemSSHFPRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemSSHFPRecordType;
+  type: RecordsBatchRequestPostsItemSSHFPRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted SSHFP content. See 'data' to set SSHFP properties. */
@@ -2002,7 +1987,7 @@ export const RecordsBatchRequestPostsItemSSHFPRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemSSHFPRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemSSHFPRecord>;
 
-export type RecordsBatchRequestPostsItemSVCBRecordType = "SVCB" | (string & {});
+export type RecordsBatchRequestPostsItemSVCBRecordType = "SVCB";
 export const RecordsBatchRequestPostsItemSVCBRecordType =
   /*@__PURE__*/ S.String;
 
@@ -2054,7 +2039,7 @@ export interface RecordsBatchRequestPostsItemSVCBRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemSVCBRecordType;
+  type: RecordsBatchRequestPostsItemSVCBRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted SVCB content. See 'data' to set SVCB properties. */
@@ -2085,7 +2070,7 @@ export const RecordsBatchRequestPostsItemSVCBRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemSVCBRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemSVCBRecord>;
 
-export type RecordsBatchRequestPostsItemTLSARecordType = "TLSA" | (string & {});
+export type RecordsBatchRequestPostsItemTLSARecordType = "TLSA";
 export const RecordsBatchRequestPostsItemTLSARecordType =
   /*@__PURE__*/ S.String;
 
@@ -2140,7 +2125,7 @@ export interface RecordsBatchRequestPostsItemTLSARecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemTLSARecordType;
+  type: RecordsBatchRequestPostsItemTLSARecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted TLSA content. See 'data' to set TLSA properties. */
@@ -2171,7 +2156,7 @@ export const RecordsBatchRequestPostsItemTLSARecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemTLSARecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemTLSARecord>;
 
-export type RecordsBatchRequestPostsItemURIRecordType = "URI" | (string & {});
+export type RecordsBatchRequestPostsItemURIRecordType = "URI";
 export const RecordsBatchRequestPostsItemURIRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemURIRecordData {
@@ -2219,7 +2204,7 @@ export interface RecordsBatchRequestPostsItemURIRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPostsItemURIRecordType;
+  type: RecordsBatchRequestPostsItemURIRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted URI content. See 'data' to set URI properties. */
@@ -2575,9 +2560,7 @@ export const RecordsBatchRequestPutsItemNSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsBatchRequestPutsItemNSRecord",
 }) as any as S.Schema<RecordsBatchRequestPutsItemNSRecord>;
 
-export type RecordsBatchRequestPutsItemOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+export type RecordsBatchRequestPutsItemOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsBatchRequestPutsItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -2612,7 +2595,7 @@ export interface RecordsBatchRequestPutsItemOpenpgpkeyRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsBatchRequestPutsItemOpenpgpkeyRecordType;
+  type: RecordsBatchRequestPutsItemOpenpgpkeyRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
@@ -3330,9 +3313,7 @@ export const RecordsBatchResponseDeletesItemOpenpgpkeyRecordTagsList =
     S.Unknown,
   ) as any as S.Schema<RecordsBatchResponseDeletesItemOpenpgpkeyRecordTagsList>;
 
-export type RecordsBatchResponseDeletesItemOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+export type RecordsBatchResponseDeletesItemOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsBatchResponseDeletesItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -5342,8 +5323,7 @@ export type RecordsCreateRequestType =
   | "SSHFP"
   | "SVCB"
   | "TLSA"
-  | "URI"
-  | (string & {});
+  | "URI";
 export const RecordsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface RecordsCreateRequestSettingsARecord {
@@ -5495,17 +5475,11 @@ export const RecordsCreateRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateRequestDataHTTPSRecord",
 }) as any as S.Schema<RecordsCreateRequestDataHTTPSRecord>;
 
-export type RecordsCreateRequestDataLOCRecordLatDirection =
-  | "N"
-  | "S"
-  | (string & {});
+export type RecordsCreateRequestDataLOCRecordLatDirection = "N" | "S";
 export const RecordsCreateRequestDataLOCRecordLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsCreateRequestDataLOCRecordLongDirection =
-  | "E"
-  | "W"
-  | (string & {});
+export type RecordsCreateRequestDataLOCRecordLongDirection = "E" | "W";
 export const RecordsCreateRequestDataLOCRecordLongDirection =
   /*@__PURE__*/ S.String;
 
@@ -5515,7 +5489,7 @@ export interface RecordsCreateRequestDataLOCRecord {
   /** Degrees of latitude. */
   latDegrees?: number;
   /** Latitude direction. */
-  latDirection?: RecordsCreateRequestDataLOCRecordLatDirection;
+  latDirection?: RecordsCreateRequestDataLOCRecordLatDirection | (string & {});
   /** Minutes of latitude. */
   latMinutes?: number;
   /** Seconds of latitude. */
@@ -5523,7 +5497,9 @@ export interface RecordsCreateRequestDataLOCRecord {
   /** Degrees of longitude. */
   longDegrees?: number;
   /** Longitude direction. */
-  longDirection?: RecordsCreateRequestDataLOCRecordLongDirection;
+  longDirection?:
+    | RecordsCreateRequestDataLOCRecordLongDirection
+    | (string & {});
   /** Minutes of longitude. */
   longMinutes?: number;
   /** Seconds of longitude. */
@@ -5716,7 +5692,7 @@ export interface CreateRecordRequest {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsCreateRequestType;
+  type: RecordsCreateRequestType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid IPv4 address. */
@@ -6136,9 +6112,7 @@ export const RecordsCreateResultOpenpgpkeyRecordTagsList =
     S.Unknown,
   ) as any as S.Schema<RecordsCreateResultOpenpgpkeyRecordTagsList>;
 
-export type RecordsCreateResultOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+export type RecordsCreateResultOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsCreateResultOpenpgpkeyRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsCreateResultOpenpgpkeyRecord {
@@ -8285,8 +8259,7 @@ export type AnalyticsReportsBytimesGetRequestTimeDelta =
   | "day"
   | "hour"
   | "dekaminute"
-  | "minute"
-  | (string & {});
+  | "minute";
 export const AnalyticsReportsBytimesGetRequestTimeDelta =
   /*@__PURE__*/ S.String;
 
@@ -8306,7 +8279,7 @@ export interface GetAnalyticReportBytimeRequest {
   /** A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: string;
   /** Unit of time to group data by. */
-  timeDelta?: AnalyticsReportsBytimesGetRequestTimeDelta;
+  timeDelta?: AnalyticsReportsBytimesGetRequestTimeDelta | (string & {});
   /** End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
@@ -8403,8 +8376,7 @@ export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   | "day"
   | "hour"
   | "dekaminute"
-  | "minute"
-  | (string & {});
+  | "minute";
 export const AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   /*@__PURE__*/ S.String;
 
@@ -8519,8 +8491,7 @@ export type DnssecGetResponseStatus =
   | "pending"
   | "disabled"
   | "pending-disabled"
-  | "error"
-  | (string & {});
+  | "error";
 export const DnssecGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -8965,7 +8936,7 @@ export const RecordsGetResultOpenpgpkeyRecordTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsGetResultOpenpgpkeyRecordTagsList>;
 
-export type RecordsGetResultOpenpgpkeyRecordType = "OPENPGPKEY" | (string & {});
+export type RecordsGetResultOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsGetResultOpenpgpkeyRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsGetResultOpenpgpkeyRecord {
@@ -10216,8 +10187,7 @@ export type SettingsAccountGetResponseZoneDefaultsNameserversType =
   | "cloudflare.standard"
   | "cloudflare.standard.random"
   | "custom.account"
-  | "custom.tenant"
-  | (string & {});
+  | "custom.tenant";
 export const SettingsAccountGetResponseZoneDefaultsNameserversType =
   /*@__PURE__*/ S.String;
 
@@ -10268,8 +10238,7 @@ export const SettingsAccountGetResponseZoneDefaultsSoa =
 export type SettingsAccountGetResponseZoneDefaultsZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only"
-  | (string & {});
+  | "dns_only";
 export const SettingsAccountGetResponseZoneDefaultsZoneMode =
   /*@__PURE__*/ S.String;
 
@@ -10420,8 +10389,7 @@ export type SettingsZoneGetResponseNameserversType =
   | "cloudflare.standard"
   | "custom.account"
   | "custom.tenant"
-  | "custom.zone"
-  | (string & {});
+  | "custom.zone";
 export const SettingsZoneGetResponseNameserversType = /*@__PURE__*/ S.String;
 
 export interface SettingsZoneGetResponseNameservers {
@@ -10472,8 +10440,7 @@ export const SettingsZoneGetResponseSoa = /*@__PURE__*/ S.suspend(() =>
 export type SettingsZoneGetResponseZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only"
-  | (string & {});
+  | "dns_only";
 export const SettingsZoneGetResponseZoneMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -10906,19 +10873,114 @@ export const ImportRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportRecordResponse",
 }) as any as S.Schema<ImportRecordResponse>;
 
-export type RecordsListRequestMatch = "any" | "all" | (string & {});
+export interface RecordsListRequestComment {
+  /** If this parameter is present, only records *without* a comment are returned. */
+  absent?: string;
+  /** Substring of the DNS record comment. Comment filters are case-insensitive. */
+  contains?: string;
+  /** Suffix of the DNS record comment. Comment filters are case-insensitive. */
+  endswith?: string;
+  /** Exact value of the DNS record comment. Comment filters are case-insensitive. */
+  exact?: string;
+  /** If this parameter is present, only records *with* a comment are returned. */
+  present?: string;
+  /** Prefix of the DNS record comment. Comment filters are case-insensitive. */
+  startswith?: string;
+}
+export const RecordsListRequestComment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    absent: S.optional(S.String),
+    contains: S.optional(S.String),
+    endswith: S.optional(S.String),
+    exact: S.optional(S.String),
+    present: S.optional(S.String),
+    startswith: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsListRequestComment",
+}) as any as S.Schema<RecordsListRequestComment>;
+
+export interface RecordsListRequestContent {
+  /** Substring of the DNS record content. Content filters are case-insensitive. */
+  contains?: string;
+  /** Suffix of the DNS record content. Content filters are case-insensitive. */
+  endswith?: string;
+  /** Exact value of the DNS record content. Content filters are case-insensitive. */
+  exact?: string;
+  /** Prefix of the DNS record content. Content filters are case-insensitive. */
+  startswith?: string;
+}
+export const RecordsListRequestContent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contains: S.optional(S.String),
+    endswith: S.optional(S.String),
+    exact: S.optional(S.String),
+    startswith: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsListRequestContent",
+}) as any as S.Schema<RecordsListRequestContent>;
+
+export type RecordsListRequestMatch = "any" | "all";
 export const RecordsListRequestMatch = /*@__PURE__*/ S.String;
+
+export interface RecordsListRequestName {
+  /** Substring of the DNS record name. Name filters are case-insensitive. */
+  contains?: string;
+  /** Suffix of the DNS record name. Name filters are case-insensitive. */
+  endswith?: string;
+  /** Exact value of the DNS record name. Name filters are case-insensitive. */
+  exact?: string;
+  /** Prefix of the DNS record name. Name filters are case-insensitive. */
+  startswith?: string;
+}
+export const RecordsListRequestName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contains: S.optional(S.String),
+    endswith: S.optional(S.String),
+    exact: S.optional(S.String),
+    startswith: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsListRequestName",
+}) as any as S.Schema<RecordsListRequestName>;
 
 export type RecordsListRequestOrder =
   | "type"
   | "name"
   | "content"
   | "ttl"
-  | "proxied"
-  | (string & {});
+  | "proxied";
 export const RecordsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type RecordsListRequestTagMatch = "any" | "all" | (string & {});
+export interface RecordsListRequestTag {
+  /** Name of a tag which must *not* be present on the DNS record. Tag filters are case-insensitive. */
+  absent?: string;
+  /** A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value contains `<tag-value>`. Tag filters are case-insensitive. */
+  contains?: string;
+  /** A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value ends with `<tag-value>`. Tag filters are case-insensitive. */
+  endswith?: string;
+  /** A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value is `<tag-value>`. Tag filters are case-insensitive. */
+  exact?: string;
+  /** Name of a tag which must be present on the DNS record. Tag filters are case-insensitive. */
+  present?: string;
+  /** A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value starts with `<tag-value>`. Tag filters are case-insensitive. */
+  startswith?: string;
+}
+export const RecordsListRequestTag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    absent: S.optional(S.String),
+    contains: S.optional(S.String),
+    endswith: S.optional(S.String),
+    exact: S.optional(S.String),
+    present: S.optional(S.String),
+    startswith: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsListRequestTag",
+}) as any as S.Schema<RecordsListRequestTag>;
+
+export type RecordsListRequestTagMatch = "any" | "all";
 export const RecordsListRequestTagMatch = /*@__PURE__*/ S.String;
 
 export type RecordsListRequestType =
@@ -10942,49 +11004,23 @@ export type RecordsListRequestType =
   | "SVCB"
   | "TLSA"
   | "TXT"
-  | "URI"
-  | (string & {});
+  | "URI";
 export const RecordsListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListRecordsRequest {
   /** Identifier. */
   zoneId: string;
-  /** If this parameter is present, only records *without* a comment are returned. */
-  commentAbsent?: string;
-  /** Substring of the DNS record comment. Comment filters are case-insensitive. */
-  commentContains?: string;
-  /** Suffix of the DNS record comment. Comment filters are case-insensitive. */
-  commentEndswith?: string;
-  /** Exact value of the DNS record comment. Comment filters are case-insensitive. */
-  commentExact?: string;
-  /** If this parameter is present, only records *with* a comment are returned. */
-  commentPresent?: string;
-  /** Prefix of the DNS record comment. Comment filters are case-insensitive. */
-  commentStartswith?: string;
-  /** Substring of the DNS record content. Content filters are case-insensitive. */
-  contentContains?: string;
-  /** Suffix of the DNS record content. Content filters are case-insensitive. */
-  contentEndswith?: string;
-  /** Exact value of the DNS record content. Content filters are case-insensitive. */
-  contentExact?: string;
-  /** Prefix of the DNS record content. Content filters are case-insensitive. */
-  contentStartswith?: string;
+  comment?: RecordsListRequestComment;
+  content?: RecordsListRequestContent;
   /** Direction to order DNS records in. */
   direction?: string;
   /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
   includeShadowMetadata?: boolean;
   /** Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead. */
-  match?: RecordsListRequestMatch;
-  /** Substring of the DNS record name. Name filters are case-insensitive. */
-  nameContains?: string;
-  /** Suffix of the DNS record name. Name filters are case-insensitive. */
-  nameEndswith?: string;
-  /** Exact value of the DNS record name. Name filters are case-insensitive. */
-  nameExact?: string;
-  /** Prefix of the DNS record name. Name filters are case-insensitive. */
-  nameStartswith?: string;
+  match?: RecordsListRequestMatch | (string & {});
+  name?: RecordsListRequestName;
   /** Field to order DNS records by. */
-  order?: RecordsListRequestOrder;
+  order?: RecordsListRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Number of DNS records per page. */
@@ -10997,45 +11033,23 @@ export interface ListRecordsRequest {
   shadowedByName?: string;
   /** Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
   shadowingName?: string;
-  /** Name of a tag which must *not* be present on the DNS record. Tag filters are case-insensitive. */
-  tagAbsent?: string;
-  /** A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value contains `<tag-value>`. Tag filters are case-insensitive. */
-  tagContains?: string;
-  /** A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value ends with `<tag-value>`. Tag filters are case-insensitive. */
-  tagEndswith?: string;
-  /** A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value is `<tag-value>`. Tag filters are case-insensitive. */
-  tagExact?: string;
-  /** Name of a tag which must be present on the DNS record. Tag filters are case-insensitive. */
-  tagPresent?: string;
-  /** A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value starts with `<tag-value>`. Tag filters are case-insensitive. */
-  tagStartswith?: string;
+  tag?: RecordsListRequestTag;
   /** Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags. */
-  tagMatch?: RecordsListRequestTagMatch;
+  tagMatch?: RecordsListRequestTagMatch | (string & {});
   /** Record type. */
-  type?: RecordsListRequestType;
+  type?: RecordsListRequestType | (string & {});
 }
 export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    commentAbsent: S.optional(S.String.pipe(T.Query("comment.absent"))),
-    commentContains: S.optional(S.String.pipe(T.Query("comment.contains"))),
-    commentEndswith: S.optional(S.String.pipe(T.Query("comment.endswith"))),
-    commentExact: S.optional(S.String.pipe(T.Query("comment.exact"))),
-    commentPresent: S.optional(S.String.pipe(T.Query("comment.present"))),
-    commentStartswith: S.optional(S.String.pipe(T.Query("comment.startswith"))),
-    contentContains: S.optional(S.String.pipe(T.Query("content.contains"))),
-    contentEndswith: S.optional(S.String.pipe(T.Query("content.endswith"))),
-    contentExact: S.optional(S.String.pipe(T.Query("content.exact"))),
-    contentStartswith: S.optional(S.String.pipe(T.Query("content.startswith"))),
+    comment: S.optional(RecordsListRequestComment.pipe(T.DeepQuery("comment"))),
+    content: S.optional(RecordsListRequestContent.pipe(T.DeepQuery("content"))),
     direction: S.optional(S.String.pipe(T.Query())),
     includeShadowMetadata: S.optional(
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
     match: S.optional(RecordsListRequestMatch.pipe(T.Query())),
-    nameContains: S.optional(S.String.pipe(T.Query("name.contains"))),
-    nameEndswith: S.optional(S.String.pipe(T.Query("name.endswith"))),
-    nameExact: S.optional(S.String.pipe(T.Query("name.exact"))),
-    nameStartswith: S.optional(S.String.pipe(T.Query("name.startswith"))),
+    name: S.optional(RecordsListRequestName.pipe(T.DeepQuery("name"))),
     order: S.optional(RecordsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -11043,12 +11057,7 @@ export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
     search: S.optional(S.String.pipe(T.Query())),
     shadowedByName: S.optional(S.String.pipe(T.Query("shadowed_by_name"))),
     shadowingName: S.optional(S.String.pipe(T.Query("shadowing_name"))),
-    tagAbsent: S.optional(S.String.pipe(T.Query("tag.absent"))),
-    tagContains: S.optional(S.String.pipe(T.Query("tag.contains"))),
-    tagEndswith: S.optional(S.String.pipe(T.Query("tag.endswith"))),
-    tagExact: S.optional(S.String.pipe(T.Query("tag.exact"))),
-    tagPresent: S.optional(S.String.pipe(T.Query("tag.present"))),
-    tagStartswith: S.optional(S.String.pipe(T.Query("tag.startswith"))),
+    tag: S.optional(RecordsListRequestTag.pipe(T.DeepQuery("tag"))),
     tagMatch: S.optional(RecordsListRequestTagMatch.pipe(T.Query("tag_match"))),
     type: S.optional(RecordsListRequestType.pipe(T.Query())),
   })
@@ -11094,7 +11103,7 @@ export const RecordsListResultItemARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemARecordMeta",
 }) as any as S.Schema<RecordsListResultItemARecordMeta>;
 
-export type RecordsListResultItemARecordType = "A" | (string & {});
+export type RecordsListResultItemARecordType = "A";
 export const RecordsListResultItemARecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemARecord {
@@ -11167,7 +11176,7 @@ export const RecordsListResultItemAAAARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemAAAARecordMeta",
 }) as any as S.Schema<RecordsListResultItemAAAARecordMeta>;
 
-export type RecordsListResultItemAAAARecordType = "AAAA" | (string & {});
+export type RecordsListResultItemAAAARecordType = "AAAA";
 export const RecordsListResultItemAAAARecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemAAAARecord {
@@ -11241,7 +11250,7 @@ export const RecordsListResultItemCNAMERecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemCNAMERecordMeta",
 }) as any as S.Schema<RecordsListResultItemCNAMERecordMeta>;
 
-export type RecordsListResultItemCNAMERecordType = "CNAME" | (string & {});
+export type RecordsListResultItemCNAMERecordType = "CNAME";
 export const RecordsListResultItemCNAMERecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemCNAMERecord {
@@ -11314,7 +11323,7 @@ export const RecordsListResultItemMXRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemMXRecordMeta",
 }) as any as S.Schema<RecordsListResultItemMXRecordMeta>;
 
-export type RecordsListResultItemMXRecordType = "MX" | (string & {});
+export type RecordsListResultItemMXRecordType = "MX";
 export const RecordsListResultItemMXRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemMXRecord {
@@ -11387,7 +11396,7 @@ export const RecordsListResultItemNSRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemNSRecordMeta",
 }) as any as S.Schema<RecordsListResultItemNSRecordMeta>;
 
-export type RecordsListResultItemNSRecordType = "NS" | (string & {});
+export type RecordsListResultItemNSRecordType = "NS";
 export const RecordsListResultItemNSRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemNSRecord {
@@ -11484,9 +11493,7 @@ export const RecordsListResultItemOpenpgpkeyRecordTagsList =
     S.Unknown,
   ) as any as S.Schema<RecordsListResultItemOpenpgpkeyRecordTagsList>;
 
-export type RecordsListResultItemOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+export type RecordsListResultItemOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsListResultItemOpenpgpkeyRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemOpenpgpkeyRecord {
@@ -11580,7 +11587,7 @@ export const RecordsListResultItemPTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemPTRRecordMeta",
 }) as any as S.Schema<RecordsListResultItemPTRRecordMeta>;
 
-export type RecordsListResultItemPTRRecordType = "PTR" | (string & {});
+export type RecordsListResultItemPTRRecordType = "PTR";
 export const RecordsListResultItemPTRRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemPTRRecord {
@@ -11653,7 +11660,7 @@ export const RecordsListResultItemTXTRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemTXTRecordMeta",
 }) as any as S.Schema<RecordsListResultItemTXTRecordMeta>;
 
-export type RecordsListResultItemTXTRecordType = "TXT" | (string & {});
+export type RecordsListResultItemTXTRecordType = "TXT";
 export const RecordsListResultItemTXTRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemTXTRecord {
@@ -11726,7 +11733,7 @@ export const RecordsListResultItemCAARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemCAARecordMeta",
 }) as any as S.Schema<RecordsListResultItemCAARecordMeta>;
 
-export type RecordsListResultItemCAARecordType = "CAA" | (string & {});
+export type RecordsListResultItemCAARecordType = "CAA";
 export const RecordsListResultItemCAARecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemCAARecord {
@@ -11799,7 +11806,7 @@ export const RecordsListResultItemCERTRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemCERTRecordMeta",
 }) as any as S.Schema<RecordsListResultItemCERTRecordMeta>;
 
-export type RecordsListResultItemCERTRecordType = "CERT" | (string & {});
+export type RecordsListResultItemCERTRecordType = "CERT";
 export const RecordsListResultItemCERTRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemCERTRecord {
@@ -11873,7 +11880,7 @@ export const RecordsListResultItemDNSKEYRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemDNSKEYRecordMeta",
 }) as any as S.Schema<RecordsListResultItemDNSKEYRecordMeta>;
 
-export type RecordsListResultItemDNSKEYRecordType = "DNSKEY" | (string & {});
+export type RecordsListResultItemDNSKEYRecordType = "DNSKEY";
 export const RecordsListResultItemDNSKEYRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemDNSKEYRecord {
@@ -11946,7 +11953,7 @@ export const RecordsListResultItemDSRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemDSRecordMeta",
 }) as any as S.Schema<RecordsListResultItemDSRecordMeta>;
 
-export type RecordsListResultItemDSRecordType = "DS" | (string & {});
+export type RecordsListResultItemDSRecordType = "DS";
 export const RecordsListResultItemDSRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemDSRecord {
@@ -12020,7 +12027,7 @@ export const RecordsListResultItemHTTPSRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemHTTPSRecordMeta",
 }) as any as S.Schema<RecordsListResultItemHTTPSRecordMeta>;
 
-export type RecordsListResultItemHTTPSRecordType = "HTTPS" | (string & {});
+export type RecordsListResultItemHTTPSRecordType = "HTTPS";
 export const RecordsListResultItemHTTPSRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemHTTPSRecord {
@@ -12093,7 +12100,7 @@ export const RecordsListResultItemLOCRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemLOCRecordMeta",
 }) as any as S.Schema<RecordsListResultItemLOCRecordMeta>;
 
-export type RecordsListResultItemLOCRecordType = "LOC" | (string & {});
+export type RecordsListResultItemLOCRecordType = "LOC";
 export const RecordsListResultItemLOCRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemLOCRecord {
@@ -12167,7 +12174,7 @@ export const RecordsListResultItemNAPTRRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemNAPTRRecordMeta",
 }) as any as S.Schema<RecordsListResultItemNAPTRRecordMeta>;
 
-export type RecordsListResultItemNAPTRRecordType = "NAPTR" | (string & {});
+export type RecordsListResultItemNAPTRRecordType = "NAPTR";
 export const RecordsListResultItemNAPTRRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemNAPTRRecord {
@@ -12241,7 +12248,7 @@ export const RecordsListResultItemSMIMEARecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemSMIMEARecordMeta",
 }) as any as S.Schema<RecordsListResultItemSMIMEARecordMeta>;
 
-export type RecordsListResultItemSMIMEARecordType = "SMIMEA" | (string & {});
+export type RecordsListResultItemSMIMEARecordType = "SMIMEA";
 export const RecordsListResultItemSMIMEARecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemSMIMEARecord {
@@ -12314,7 +12321,7 @@ export const RecordsListResultItemSRVRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemSRVRecordMeta",
 }) as any as S.Schema<RecordsListResultItemSRVRecordMeta>;
 
-export type RecordsListResultItemSRVRecordType = "SRV" | (string & {});
+export type RecordsListResultItemSRVRecordType = "SRV";
 export const RecordsListResultItemSRVRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemSRVRecord {
@@ -12388,7 +12395,7 @@ export const RecordsListResultItemSSHFPRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemSSHFPRecordMeta",
 }) as any as S.Schema<RecordsListResultItemSSHFPRecordMeta>;
 
-export type RecordsListResultItemSSHFPRecordType = "SSHFP" | (string & {});
+export type RecordsListResultItemSSHFPRecordType = "SSHFP";
 export const RecordsListResultItemSSHFPRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemSSHFPRecord {
@@ -12461,7 +12468,7 @@ export const RecordsListResultItemSVCBRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemSVCBRecordMeta",
 }) as any as S.Schema<RecordsListResultItemSVCBRecordMeta>;
 
-export type RecordsListResultItemSVCBRecordType = "SVCB" | (string & {});
+export type RecordsListResultItemSVCBRecordType = "SVCB";
 export const RecordsListResultItemSVCBRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemSVCBRecord {
@@ -12534,7 +12541,7 @@ export const RecordsListResultItemTLSARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemTLSARecordMeta",
 }) as any as S.Schema<RecordsListResultItemTLSARecordMeta>;
 
-export type RecordsListResultItemTLSARecordType = "TLSA" | (string & {});
+export type RecordsListResultItemTLSARecordType = "TLSA";
 export const RecordsListResultItemTLSARecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemTLSARecord {
@@ -12607,7 +12614,7 @@ export const RecordsListResultItemURIRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemURIRecordMeta",
 }) as any as S.Schema<RecordsListResultItemURIRecordMeta>;
 
-export type RecordsListResultItemURIRecordType = "URI" | (string & {});
+export type RecordsListResultItemURIRecordType = "URI";
 export const RecordsListResultItemURIRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemURIRecord {
@@ -12930,42 +12937,49 @@ export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRecordsResponse",
 }) as any as S.Schema<ListRecordsResponse>;
 
-export type SettingsAccountViewsListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type SettingsAccountViewsListRequestDirection = "asc" | "desc";
 export const SettingsAccountViewsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type SettingsAccountViewsListRequestMatch =
-  | "any"
-  | "all"
-  | (string & {});
+export type SettingsAccountViewsListRequestMatch = "any" | "all";
 export const SettingsAccountViewsListRequestMatch = /*@__PURE__*/ S.String;
+
+export interface SettingsAccountViewsListRequestName {
+  /** Substring of the DNS view name. */
+  contains?: string;
+  /** Suffix of the DNS view name. */
+  endswith?: string;
+  /** Exact value of the DNS view name. */
+  exact?: string;
+  /** Prefix of the DNS view name. */
+  startswith?: string;
+}
+export const SettingsAccountViewsListRequestName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contains: S.optional(S.String),
+    endswith: S.optional(S.String),
+    exact: S.optional(S.String),
+    startswith: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SettingsAccountViewsListRequestName",
+}) as any as S.Schema<SettingsAccountViewsListRequestName>;
 
 export type SettingsAccountViewsListRequestOrder =
   | "name"
   | "created_on"
-  | "modified_on"
-  | (string & {});
+  | "modified_on";
 export const SettingsAccountViewsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListSettingAccountViewsRequest {
   /** Identifier. */
   accountId: string;
   /** Direction to order DNS views in. */
-  direction?: SettingsAccountViewsListRequestDirection;
+  direction?: SettingsAccountViewsListRequestDirection | (string & {});
   /** Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. */
-  match?: SettingsAccountViewsListRequestMatch;
-  /** Substring of the DNS view name. */
-  nameContains?: string;
-  /** Suffix of the DNS view name. */
-  nameEndswith?: string;
-  /** Exact value of the DNS view name. */
-  nameExact?: string;
-  /** Prefix of the DNS view name. */
-  nameStartswith?: string;
+  match?: SettingsAccountViewsListRequestMatch | (string & {});
+  name?: SettingsAccountViewsListRequestName;
   /** Field to order DNS views by. */
-  order?: SettingsAccountViewsListRequestOrder;
+  order?: SettingsAccountViewsListRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Number of DNS views per page. */
@@ -12982,10 +12996,9 @@ export const ListSettingAccountViewsRequest = /*@__PURE__*/ S.suspend(() =>
       SettingsAccountViewsListRequestDirection.pipe(T.Query()),
     ),
     match: S.optional(SettingsAccountViewsListRequestMatch.pipe(T.Query())),
-    nameContains: S.optional(S.String.pipe(T.Query("name.contains"))),
-    nameEndswith: S.optional(S.String.pipe(T.Query("name.endswith"))),
-    nameExact: S.optional(S.String.pipe(T.Query("name.exact"))),
-    nameStartswith: S.optional(S.String.pipe(T.Query("name.startswith"))),
+    name: S.optional(
+      SettingsAccountViewsListRequestName.pipe(T.DeepQuery("name")),
+    ),
     order: S.optional(SettingsAccountViewsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -13238,7 +13251,7 @@ export const ListZoneTransferTsigsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListZoneTransferTsigsResponse",
 }) as any as S.Schema<ListZoneTransferTsigsResponse>;
 
-export type DnssecEditRequestStatus = "active" | "disabled" | (string & {});
+export type DnssecEditRequestStatus = "active" | "disabled";
 export const DnssecEditRequestStatus = /*@__PURE__*/ S.String;
 
 export interface PatchDnssecRequest {
@@ -13251,7 +13264,7 @@ export interface PatchDnssecRequest {
   /** If true, enables the use of NSEC3 together with DNSSEC on the zone. */
   dnssecUseNsec3?: boolean;
   /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
-  status?: DnssecEditRequestStatus;
+  status?: DnssecEditRequestStatus | (string & {});
 }
 export const PatchDnssecRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13276,8 +13289,7 @@ export type DnssecEditResponseStatus =
   | "pending"
   | "disabled"
   | "pending-disabled"
-  | "error"
-  | (string & {});
+  | "error";
 export const DnssecEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -13355,8 +13367,7 @@ export type RecordsEditRequestType =
   | "SSHFP"
   | "SVCB"
   | "TLSA"
-  | "URI"
-  | (string & {});
+  | "URI";
 export const RecordsEditRequestType = /*@__PURE__*/ S.String;
 
 export interface RecordsEditRequestSettingsARecord {
@@ -13507,17 +13518,11 @@ export const RecordsEditRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditRequestDataHTTPSRecord",
 }) as any as S.Schema<RecordsEditRequestDataHTTPSRecord>;
 
-export type RecordsEditRequestDataLOCRecordLatDirection =
-  | "N"
-  | "S"
-  | (string & {});
+export type RecordsEditRequestDataLOCRecordLatDirection = "N" | "S";
 export const RecordsEditRequestDataLOCRecordLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsEditRequestDataLOCRecordLongDirection =
-  | "E"
-  | "W"
-  | (string & {});
+export type RecordsEditRequestDataLOCRecordLongDirection = "E" | "W";
 export const RecordsEditRequestDataLOCRecordLongDirection =
   /*@__PURE__*/ S.String;
 
@@ -13527,7 +13532,7 @@ export interface RecordsEditRequestDataLOCRecord {
   /** Degrees of latitude. */
   latDegrees?: number;
   /** Latitude direction. */
-  latDirection?: RecordsEditRequestDataLOCRecordLatDirection;
+  latDirection?: RecordsEditRequestDataLOCRecordLatDirection | (string & {});
   /** Minutes of latitude. */
   latMinutes?: number;
   /** Seconds of latitude. */
@@ -13535,7 +13540,7 @@ export interface RecordsEditRequestDataLOCRecord {
   /** Degrees of longitude. */
   longDegrees?: number;
   /** Longitude direction. */
-  longDirection?: RecordsEditRequestDataLOCRecordLongDirection;
+  longDirection?: RecordsEditRequestDataLOCRecordLongDirection | (string & {});
   /** Minutes of longitude. */
   longMinutes?: number;
   /** Seconds of longitude. */
@@ -13727,7 +13732,7 @@ export interface PatchRecordRequest {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsEditRequestType;
+  type: RecordsEditRequestType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid IPv4 address. */
@@ -14140,9 +14145,7 @@ export const RecordsEditResultOpenpgpkeyRecordTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsEditResultOpenpgpkeyRecordTagsList>;
 
-export type RecordsEditResultOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+export type RecordsEditResultOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsEditResultOpenpgpkeyRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsEditResultOpenpgpkeyRecord {
@@ -15386,14 +15389,13 @@ export type SettingsAccountEditRequestZoneDefaultsNameserversType =
   | "cloudflare.standard"
   | "cloudflare.standard.random"
   | "custom.account"
-  | "custom.tenant"
-  | (string & {});
+  | "custom.tenant";
 export const SettingsAccountEditRequestZoneDefaultsNameserversType =
   /*@__PURE__*/ S.String;
 
 export interface SettingsAccountEditRequestZoneDefaultsNameservers {
   /** Nameserver type */
-  type?: SettingsAccountEditRequestZoneDefaultsNameserversType;
+  type?: SettingsAccountEditRequestZoneDefaultsNameserversType | (string & {});
 }
 export const SettingsAccountEditRequestZoneDefaultsNameservers =
   /*@__PURE__*/ S.suspend(() =>
@@ -15438,8 +15440,7 @@ export const SettingsAccountEditRequestZoneDefaultsSoa =
 export type SettingsAccountEditRequestZoneDefaultsZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only"
-  | (string & {});
+  | "dns_only";
 export const SettingsAccountEditRequestZoneDefaultsZoneMode =
   /*@__PURE__*/ S.String;
 
@@ -15461,7 +15462,7 @@ export interface SettingsAccountEditRequestZoneDefaults {
   /** Components of the zone's SOA record. */
   soa?: SettingsAccountEditRequestZoneDefaultsSoa;
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode?: SettingsAccountEditRequestZoneDefaultsZoneMode;
+  zoneMode?: SettingsAccountEditRequestZoneDefaultsZoneMode | (string & {});
 }
 export const SettingsAccountEditRequestZoneDefaults = /*@__PURE__*/ S.suspend(
   () =>
@@ -15538,8 +15539,7 @@ export type SettingsAccountEditResponseZoneDefaultsNameserversType =
   | "cloudflare.standard"
   | "cloudflare.standard.random"
   | "custom.account"
-  | "custom.tenant"
-  | (string & {});
+  | "custom.tenant";
 export const SettingsAccountEditResponseZoneDefaultsNameserversType =
   /*@__PURE__*/ S.String;
 
@@ -15590,8 +15590,7 @@ export const SettingsAccountEditResponseZoneDefaultsSoa =
 export type SettingsAccountEditResponseZoneDefaultsZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only"
-  | (string & {});
+  | "dns_only";
 export const SettingsAccountEditResponseZoneDefaultsZoneMode =
   /*@__PURE__*/ S.String;
 
@@ -15733,15 +15732,14 @@ export type SettingsZoneEditRequestNameserversType =
   | "cloudflare.standard"
   | "custom.account"
   | "custom.tenant"
-  | "custom.zone"
-  | (string & {});
+  | "custom.zone";
 export const SettingsZoneEditRequestNameserversType = /*@__PURE__*/ S.String;
 
 export interface SettingsZoneEditRequestNameservers {
   /** Configured nameserver set to be used for this zone */
   nsSet?: number;
   /** Nameserver type */
-  type?: SettingsZoneEditRequestNameserversType;
+  type?: SettingsZoneEditRequestNameserversType | (string & {});
 }
 export const SettingsZoneEditRequestNameservers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15785,8 +15783,7 @@ export const SettingsZoneEditRequestSoa = /*@__PURE__*/ S.suspend(() =>
 export type SettingsZoneEditRequestZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only"
-  | (string & {});
+  | "dns_only";
 export const SettingsZoneEditRequestZoneMode = /*@__PURE__*/ S.String;
 
 export interface PatchSettingZoneRequest {
@@ -15809,7 +15806,7 @@ export interface PatchSettingZoneRequest {
   /** Components of the zone's SOA record. */
   soa?: SettingsZoneEditRequestSoa;
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode?: SettingsZoneEditRequestZoneMode;
+  zoneMode?: SettingsZoneEditRequestZoneMode | (string & {});
 }
 export const PatchSettingZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15858,8 +15855,7 @@ export type SettingsZoneEditResponseNameserversType =
   | "cloudflare.standard"
   | "custom.account"
   | "custom.tenant"
-  | "custom.zone"
-  | (string & {});
+  | "custom.zone";
 export const SettingsZoneEditResponseNameserversType = /*@__PURE__*/ S.String;
 
 export interface SettingsZoneEditResponseNameservers {
@@ -15910,8 +15906,7 @@ export const SettingsZoneEditResponseSoa = /*@__PURE__*/ S.suspend(() =>
 export type SettingsZoneEditResponseZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only"
-  | (string & {});
+  | "dns_only";
 export const SettingsZoneEditResponseZoneMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -16359,9 +16354,7 @@ export const RecordsScanListResultItemOpenpgpkeyRecordTagsList =
     S.Unknown,
   ) as any as S.Schema<RecordsScanListResultItemOpenpgpkeyRecordTagsList>;
 
-export type RecordsScanListResultItemOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+export type RecordsScanListResultItemOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsScanListResultItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -17695,9 +17688,7 @@ export const ScanRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScanRecordResponse",
 }) as any as S.Schema<ScanRecordResponse>;
 
-export type RecordsScanReviewRequestAcceptsItemARecordType =
-  | "A"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemARecordType = "A";
 export const RecordsScanReviewRequestAcceptsItemARecordType =
   /*@__PURE__*/ S.String;
 
@@ -17730,7 +17721,7 @@ export interface RecordsScanReviewRequestAcceptsItemARecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemARecordType;
+  type: RecordsScanReviewRequestAcceptsItemARecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid IPv4 address. */
@@ -17761,9 +17752,7 @@ export const RecordsScanReviewRequestAcceptsItemARecord =
     identifier: "RecordsScanReviewRequestAcceptsItemARecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemARecord>;
 
-export type RecordsScanReviewRequestAcceptsItemAAAARecordType =
-  | "AAAA"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemAAAARecordType = "AAAA";
 export const RecordsScanReviewRequestAcceptsItemAAAARecordType =
   /*@__PURE__*/ S.String;
 
@@ -17796,7 +17785,7 @@ export interface RecordsScanReviewRequestAcceptsItemAAAARecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemAAAARecordType;
+  type: RecordsScanReviewRequestAcceptsItemAAAARecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid IPv6 address. */
@@ -17829,9 +17818,7 @@ export const RecordsScanReviewRequestAcceptsItemAAAARecord =
     identifier: "RecordsScanReviewRequestAcceptsItemAAAARecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemAAAARecord>;
 
-export type RecordsScanReviewRequestAcceptsItemCNAMERecordType =
-  | "CNAME"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemCNAMERecordType = "CNAME";
 export const RecordsScanReviewRequestAcceptsItemCNAMERecordType =
   /*@__PURE__*/ S.String;
 
@@ -17867,7 +17854,7 @@ export interface RecordsScanReviewRequestAcceptsItemCNAMERecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemCNAMERecordType;
+  type: RecordsScanReviewRequestAcceptsItemCNAMERecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid hostname. Must not match the record's name. */
@@ -17897,9 +17884,7 @@ export const RecordsScanReviewRequestAcceptsItemCNAMERecord =
     identifier: "RecordsScanReviewRequestAcceptsItemCNAMERecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCNAMERecord>;
 
-export type RecordsScanReviewRequestAcceptsItemMXRecordType =
-  | "MX"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemMXRecordType = "MX";
 export const RecordsScanReviewRequestAcceptsItemMXRecordType =
   /*@__PURE__*/ S.String;
 
@@ -17932,7 +17917,7 @@ export interface RecordsScanReviewRequestAcceptsItemMXRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemMXRecordType;
+  type: RecordsScanReviewRequestAcceptsItemMXRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid mail server hostname. */
@@ -17963,9 +17948,7 @@ export const RecordsScanReviewRequestAcceptsItemMXRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemMXRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemMXRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemNSRecordType =
-  | "NS"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemNSRecordType = "NS";
 export const RecordsScanReviewRequestAcceptsItemNSRecordType =
   /*@__PURE__*/ S.String;
 
@@ -17998,7 +17981,7 @@ export interface RecordsScanReviewRequestAcceptsItemNSRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemNSRecordType;
+  type: RecordsScanReviewRequestAcceptsItemNSRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid name server host name. */
@@ -18027,8 +18010,7 @@ export const RecordsScanReviewRequestAcceptsItemNSRecord =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemNSRecord>;
 
 export type RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+  "OPENPGPKEY";
 export const RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18062,7 +18044,9 @@ export interface RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordType;
+  type:
+    | RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordType
+    | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
@@ -18094,9 +18078,7 @@ export const RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemPTRRecordType =
-  | "PTR"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemPTRRecordType = "PTR";
 export const RecordsScanReviewRequestAcceptsItemPTRRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18129,7 +18111,7 @@ export interface RecordsScanReviewRequestAcceptsItemPTRRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemPTRRecordType;
+  type: RecordsScanReviewRequestAcceptsItemPTRRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Domain name pointing to the address. */
@@ -18159,9 +18141,7 @@ export const RecordsScanReviewRequestAcceptsItemPTRRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemPTRRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemPTRRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemTXTRecordType =
-  | "TXT"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemTXTRecordType = "TXT";
 export const RecordsScanReviewRequestAcceptsItemTXTRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18194,7 +18174,7 @@ export interface RecordsScanReviewRequestAcceptsItemTXTRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemTXTRecordType;
+  type: RecordsScanReviewRequestAcceptsItemTXTRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Text content for the record. The content must consist of quoted "character strings" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split. */
@@ -18224,9 +18204,7 @@ export const RecordsScanReviewRequestAcceptsItemTXTRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemTXTRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTXTRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemCAARecordType =
-  | "CAA"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemCAARecordType = "CAA";
 export const RecordsScanReviewRequestAcceptsItemCAARecordType =
   /*@__PURE__*/ S.String;
 
@@ -18278,7 +18256,7 @@ export interface RecordsScanReviewRequestAcceptsItemCAARecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemCAARecordType;
+  type: RecordsScanReviewRequestAcceptsItemCAARecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted CAA content. See 'data' to set CAA properties. */
@@ -18311,9 +18289,7 @@ export const RecordsScanReviewRequestAcceptsItemCAARecord =
     identifier: "RecordsScanReviewRequestAcceptsItemCAARecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCAARecord>;
 
-export type RecordsScanReviewRequestAcceptsItemCERTRecordType =
-  | "CERT"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemCERTRecordType = "CERT";
 export const RecordsScanReviewRequestAcceptsItemCERTRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18368,7 +18344,7 @@ export interface RecordsScanReviewRequestAcceptsItemCERTRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemCERTRecordType;
+  type: RecordsScanReviewRequestAcceptsItemCERTRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted CERT content. See 'data' to set CERT properties. */
@@ -18401,9 +18377,7 @@ export const RecordsScanReviewRequestAcceptsItemCERTRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemCERTRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCERTRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemDNSKEYRecordType =
-  | "DNSKEY"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemDNSKEYRecordType = "DNSKEY";
 export const RecordsScanReviewRequestAcceptsItemDNSKEYRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18458,7 +18432,7 @@ export interface RecordsScanReviewRequestAcceptsItemDNSKEYRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemDNSKEYRecordType;
+  type: RecordsScanReviewRequestAcceptsItemDNSKEYRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted DNSKEY content. See 'data' to set DNSKEY properties. */
@@ -18491,9 +18465,7 @@ export const RecordsScanReviewRequestAcceptsItemDNSKEYRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemDNSKEYRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDNSKEYRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemDSRecordType =
-  | "DS"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemDSRecordType = "DS";
 export const RecordsScanReviewRequestAcceptsItemDSRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18548,7 +18520,7 @@ export interface RecordsScanReviewRequestAcceptsItemDSRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemDSRecordType;
+  type: RecordsScanReviewRequestAcceptsItemDSRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted DS content. See 'data' to set DS properties. */
@@ -18579,9 +18551,7 @@ export const RecordsScanReviewRequestAcceptsItemDSRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemDSRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDSRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemHTTPSRecordType =
-  | "HTTPS"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemHTTPSRecordType = "HTTPS";
 export const RecordsScanReviewRequestAcceptsItemHTTPSRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18633,7 +18603,7 @@ export interface RecordsScanReviewRequestAcceptsItemHTTPSRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemHTTPSRecordType;
+  type: RecordsScanReviewRequestAcceptsItemHTTPSRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted HTTPS content. See 'data' to set HTTPS properties. */
@@ -18666,23 +18636,19 @@ export const RecordsScanReviewRequestAcceptsItemHTTPSRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemHTTPSRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemHTTPSRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemLOCRecordType =
-  | "LOC"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemLOCRecordType = "LOC";
 export const RecordsScanReviewRequestAcceptsItemLOCRecordType =
   /*@__PURE__*/ S.String;
 
 export type RecordsScanReviewRequestAcceptsItemLOCRecordDataLatDirection =
   | "N"
-  | "S"
-  | (string & {});
+  | "S";
 export const RecordsScanReviewRequestAcceptsItemLOCRecordDataLatDirection =
   /*@__PURE__*/ S.String;
 
 export type RecordsScanReviewRequestAcceptsItemLOCRecordDataLongDirection =
   | "E"
-  | "W"
-  | (string & {});
+  | "W";
 export const RecordsScanReviewRequestAcceptsItemLOCRecordDataLongDirection =
   /*@__PURE__*/ S.String;
 
@@ -18692,7 +18658,9 @@ export interface RecordsScanReviewRequestAcceptsItemLOCRecordData {
   /** Degrees of latitude. */
   latDegrees?: number;
   /** Latitude direction. */
-  latDirection?: RecordsScanReviewRequestAcceptsItemLOCRecordDataLatDirection;
+  latDirection?:
+    | RecordsScanReviewRequestAcceptsItemLOCRecordDataLatDirection
+    | (string & {});
   /** Minutes of latitude. */
   latMinutes?: number;
   /** Seconds of latitude. */
@@ -18700,7 +18668,9 @@ export interface RecordsScanReviewRequestAcceptsItemLOCRecordData {
   /** Degrees of longitude. */
   longDegrees?: number;
   /** Longitude direction. */
-  longDirection?: RecordsScanReviewRequestAcceptsItemLOCRecordDataLongDirection;
+  longDirection?:
+    | RecordsScanReviewRequestAcceptsItemLOCRecordDataLongDirection
+    | (string & {});
   /** Minutes of longitude. */
   longMinutes?: number;
   /** Seconds of longitude. */
@@ -18769,7 +18739,7 @@ export interface RecordsScanReviewRequestAcceptsItemLOCRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemLOCRecordType;
+  type: RecordsScanReviewRequestAcceptsItemLOCRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted LOC content. See 'data' to set LOC properties. */
@@ -18802,9 +18772,7 @@ export const RecordsScanReviewRequestAcceptsItemLOCRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemLOCRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemLOCRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemNAPTRRecordType =
-  | "NAPTR"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemNAPTRRecordType = "NAPTR";
 export const RecordsScanReviewRequestAcceptsItemNAPTRRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18865,7 +18833,7 @@ export interface RecordsScanReviewRequestAcceptsItemNAPTRRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemNAPTRRecordType;
+  type: RecordsScanReviewRequestAcceptsItemNAPTRRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted NAPTR content. See 'data' to set NAPTR properties. */
@@ -18898,9 +18866,7 @@ export const RecordsScanReviewRequestAcceptsItemNAPTRRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemNAPTRRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemNAPTRRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemSMIMEARecordType =
-  | "SMIMEA"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemSMIMEARecordType = "SMIMEA";
 export const RecordsScanReviewRequestAcceptsItemSMIMEARecordType =
   /*@__PURE__*/ S.String;
 
@@ -18955,7 +18921,7 @@ export interface RecordsScanReviewRequestAcceptsItemSMIMEARecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemSMIMEARecordType;
+  type: RecordsScanReviewRequestAcceptsItemSMIMEARecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted SMIMEA content. See 'data' to set SMIMEA properties. */
@@ -18988,9 +18954,7 @@ export const RecordsScanReviewRequestAcceptsItemSMIMEARecord =
     identifier: "RecordsScanReviewRequestAcceptsItemSMIMEARecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSMIMEARecord>;
 
-export type RecordsScanReviewRequestAcceptsItemSRVRecordType =
-  | "SRV"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemSRVRecordType = "SRV";
 export const RecordsScanReviewRequestAcceptsItemSRVRecordType =
   /*@__PURE__*/ S.String;
 
@@ -19045,7 +19009,7 @@ export interface RecordsScanReviewRequestAcceptsItemSRVRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemSRVRecordType;
+  type: RecordsScanReviewRequestAcceptsItemSRVRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Priority, weight, port, and SRV target. See 'data' for setting the individual component values. */
@@ -19078,9 +19042,7 @@ export const RecordsScanReviewRequestAcceptsItemSRVRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemSRVRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSRVRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemSSHFPRecordType =
-  | "SSHFP"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemSSHFPRecordType = "SSHFP";
 export const RecordsScanReviewRequestAcceptsItemSSHFPRecordType =
   /*@__PURE__*/ S.String;
 
@@ -19132,7 +19094,7 @@ export interface RecordsScanReviewRequestAcceptsItemSSHFPRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemSSHFPRecordType;
+  type: RecordsScanReviewRequestAcceptsItemSSHFPRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted SSHFP content. See 'data' to set SSHFP properties. */
@@ -19165,9 +19127,7 @@ export const RecordsScanReviewRequestAcceptsItemSSHFPRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemSSHFPRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSSHFPRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemSVCBRecordType =
-  | "SVCB"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemSVCBRecordType = "SVCB";
 export const RecordsScanReviewRequestAcceptsItemSVCBRecordType =
   /*@__PURE__*/ S.String;
 
@@ -19219,7 +19179,7 @@ export interface RecordsScanReviewRequestAcceptsItemSVCBRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemSVCBRecordType;
+  type: RecordsScanReviewRequestAcceptsItemSVCBRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted SVCB content. See 'data' to set SVCB properties. */
@@ -19252,9 +19212,7 @@ export const RecordsScanReviewRequestAcceptsItemSVCBRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemSVCBRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSVCBRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemTLSARecordType =
-  | "TLSA"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemTLSARecordType = "TLSA";
 export const RecordsScanReviewRequestAcceptsItemTLSARecordType =
   /*@__PURE__*/ S.String;
 
@@ -19309,7 +19267,7 @@ export interface RecordsScanReviewRequestAcceptsItemTLSARecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemTLSARecordType;
+  type: RecordsScanReviewRequestAcceptsItemTLSARecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted TLSA content. See 'data' to set TLSA properties. */
@@ -19342,9 +19300,7 @@ export const RecordsScanReviewRequestAcceptsItemTLSARecord =
     identifier: "RecordsScanReviewRequestAcceptsItemTLSARecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTLSARecord>;
 
-export type RecordsScanReviewRequestAcceptsItemURIRecordType =
-  | "URI"
-  | (string & {});
+export type RecordsScanReviewRequestAcceptsItemURIRecordType = "URI";
 export const RecordsScanReviewRequestAcceptsItemURIRecordType =
   /*@__PURE__*/ S.String;
 
@@ -19393,7 +19349,7 @@ export interface RecordsScanReviewRequestAcceptsItemURIRecord {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsScanReviewRequestAcceptsItemURIRecordType;
+  type: RecordsScanReviewRequestAcceptsItemURIRecordType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Formatted URI content. See 'data' to set URI properties. */
@@ -20130,8 +20086,7 @@ export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList =
   ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList>;
 
 export type RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+  "OPENPGPKEY";
 export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -21510,8 +21465,7 @@ export type RecordsUpdateRequestType =
   | "SSHFP"
   | "SVCB"
   | "TLSA"
-  | "URI"
-  | (string & {});
+  | "URI";
 export const RecordsUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface RecordsUpdateRequestSettingsARecord {
@@ -21663,17 +21617,11 @@ export const RecordsUpdateRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateRequestDataHTTPSRecord",
 }) as any as S.Schema<RecordsUpdateRequestDataHTTPSRecord>;
 
-export type RecordsUpdateRequestDataLOCRecordLatDirection =
-  | "N"
-  | "S"
-  | (string & {});
+export type RecordsUpdateRequestDataLOCRecordLatDirection = "N" | "S";
 export const RecordsUpdateRequestDataLOCRecordLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsUpdateRequestDataLOCRecordLongDirection =
-  | "E"
-  | "W"
-  | (string & {});
+export type RecordsUpdateRequestDataLOCRecordLongDirection = "E" | "W";
 export const RecordsUpdateRequestDataLOCRecordLongDirection =
   /*@__PURE__*/ S.String;
 
@@ -21683,7 +21631,7 @@ export interface RecordsUpdateRequestDataLOCRecord {
   /** Degrees of latitude. */
   latDegrees?: number;
   /** Latitude direction. */
-  latDirection?: RecordsUpdateRequestDataLOCRecordLatDirection;
+  latDirection?: RecordsUpdateRequestDataLOCRecordLatDirection | (string & {});
   /** Minutes of latitude. */
   latMinutes?: number;
   /** Seconds of latitude. */
@@ -21691,7 +21639,9 @@ export interface RecordsUpdateRequestDataLOCRecord {
   /** Degrees of longitude. */
   longDegrees?: number;
   /** Longitude direction. */
-  longDirection?: RecordsUpdateRequestDataLOCRecordLongDirection;
+  longDirection?:
+    | RecordsUpdateRequestDataLOCRecordLongDirection
+    | (string & {});
   /** Minutes of longitude. */
   longMinutes?: number;
   /** Seconds of longitude. */
@@ -21886,7 +21836,7 @@ export interface UpdateRecordRequest {
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number;
   /** Record type. */
-  type: RecordsUpdateRequestType;
+  type: RecordsUpdateRequestType | (string & {});
   /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** A valid IPv4 address. */
@@ -22307,9 +22257,7 @@ export const RecordsUpdateResultOpenpgpkeyRecordTagsList =
     S.Unknown,
   ) as any as S.Schema<RecordsUpdateResultOpenpgpkeyRecordTagsList>;
 
-export type RecordsUpdateResultOpenpgpkeyRecordType =
-  | "OPENPGPKEY"
-  | (string & {});
+export type RecordsUpdateResultOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsUpdateResultOpenpgpkeyRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsUpdateResultOpenpgpkeyRecord {

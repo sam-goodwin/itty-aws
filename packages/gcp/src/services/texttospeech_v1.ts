@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -75,73 +73,43 @@ export interface CancelOperationsRequest {
   body?: CancelOperationRequest;
 }
 export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:cancel",
-      baseUrl: "https://texttospeech.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelOperationsRequest",
-}) as any as S.Schema<CancelOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://texttospeech.googleapis.com/"})),
+).annotate({ identifier: "CancelOperationsRequest" }) as any as S.Schema<CancelOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
 export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://texttospeech.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteOperationsRequest",
-}) as any as S.Schema<DeleteOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://texttospeech.googleapis.com/"})),
+).annotate({ identifier: "DeleteOperationsRequest" }) as any as S.Schema<DeleteOperationsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://texttospeech.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://texttospeech.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -153,11 +121,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -174,13 +142,13 @@ export interface Operation {
   metadata?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    error: S.optional(Status),
-    done: S.optional(S.Boolean),
-    metadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "done": S.optional(S.Boolean),
+  "metadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -195,34 +163,21 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://texttospeech.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://texttospeech.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -234,39 +189,24 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListVoicesRequest {
   /** Optional. Recommended. [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If not specified, the API will return all supported voices. If specified, the ListVoices call will only return voices that can be used to synthesize this language_code. For example, if you specify `"en-NZ"`, all `"en-NZ"` voices will be returned. If you specify `"no"`, both `"no-\*"` (Norwegian) and `"nb-\*"` (Norwegian Bokmal) voices will be returned. */
   languageCode?: string;
 }
 export const ListVoicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageCode: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/voices",
-      baseUrl: "https://texttospeech.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListVoicesRequest",
-}) as any as S.Schema<ListVoicesRequest>;
+S.Struct({
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/voices","baseUrl":"https://texttospeech.googleapis.com/"})),
+).annotate({ identifier: "ListVoicesRequest" }) as any as S.Schema<ListVoicesRequest>;
 
-export type VoiceSsmlGenderEnum =
-  | "SSML_VOICE_GENDER_UNSPECIFIED"
-  | "MALE"
-  | "FEMALE"
-  | "NEUTRAL"
-  | (string & {});
+export type VoiceSsmlGenderEnum = "SSML_VOICE_GENDER_UNSPECIFIED" | "MALE" | "FEMALE" | "NEUTRAL";
 export const VoiceSsmlGenderEnum = /*@__PURE__*/ S.String;
 
 /** Description of a voice supported by the TTS service. */
@@ -281,18 +221,16 @@ export interface Voice {
   naturalSampleRateHertz?: number;
 }
 export const Voice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageCodes: S.optional(StringList),
-    ssmlGender: S.optional(VoiceSsmlGenderEnum),
-    name: S.optional(S.String),
-    naturalSampleRateHertz: S.optional(S.Number),
-  }),
+S.Struct({
+  "languageCodes": S.optional(StringList),
+  "ssmlGender": S.optional(VoiceSsmlGenderEnum),
+  "name": S.optional(S.String),
+  "naturalSampleRateHertz": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Voice" }) as any as S.Schema<Voice>;
 
 export type VoiceList = ReadonlyArray<Voice>;
-export const VoiceList = /*@__PURE__*/ S.Array(
-  Voice,
-) as any as S.Schema<VoiceList>;
+export const VoiceList = /*@__PURE__*/ S.Array(Voice) as any as S.Schema<VoiceList>;
 
 /** The message returned to the client by the `ListVoices` method. */
 export interface ListVoicesResponse {
@@ -300,12 +238,10 @@ export interface ListVoicesResponse {
   voices?: VoiceList;
 }
 export const ListVoicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    voices: S.optional(VoiceList),
-  }),
-).annotate({
-  identifier: "ListVoicesResponse",
-}) as any as S.Schema<ListVoicesResponse>;
+S.Struct({
+  "voices": S.optional(VoiceList),
+}),
+).annotate({ identifier: "ListVoicesResponse" }) as any as S.Schema<ListVoicesResponse>;
 
 /** Configuration for a single speaker in a Gemini TTS multi-speaker setup. Enables dialogue between two speakers. */
 export interface MultispeakerPrebuiltVoice {
@@ -315,19 +251,14 @@ export interface MultispeakerPrebuiltVoice {
   speakerAlias?: string;
 }
 export const MultispeakerPrebuiltVoice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    speakerId: S.optional(S.String),
-    speakerAlias: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MultispeakerPrebuiltVoice",
-}) as any as S.Schema<MultispeakerPrebuiltVoice>;
+S.Struct({
+  "speakerId": S.optional(S.String),
+  "speakerAlias": S.optional(S.String),
+}),
+).annotate({ identifier: "MultispeakerPrebuiltVoice" }) as any as S.Schema<MultispeakerPrebuiltVoice>;
 
-export type MultispeakerPrebuiltVoiceList =
-  ReadonlyArray<MultispeakerPrebuiltVoice>;
-export const MultispeakerPrebuiltVoiceList = /*@__PURE__*/ S.Array(
-  MultispeakerPrebuiltVoice,
-) as any as S.Schema<MultispeakerPrebuiltVoiceList>;
+export type MultispeakerPrebuiltVoiceList = ReadonlyArray<MultispeakerPrebuiltVoice>;
+export const MultispeakerPrebuiltVoiceList = /*@__PURE__*/ S.Array(MultispeakerPrebuiltVoice) as any as S.Schema<MultispeakerPrebuiltVoiceList>;
 
 /** Configuration for a multi-speaker text-to-speech setup. Enables the use of up to two distinct voices in a single synthesis request. */
 export interface MultiSpeakerVoiceConfig {
@@ -335,18 +266,12 @@ export interface MultiSpeakerVoiceConfig {
   speakerVoiceConfigs?: MultispeakerPrebuiltVoiceList;
 }
 export const MultiSpeakerVoiceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    speakerVoiceConfigs: S.optional(MultispeakerPrebuiltVoiceList),
-  }),
-).annotate({
-  identifier: "MultiSpeakerVoiceConfig",
-}) as any as S.Schema<MultiSpeakerVoiceConfig>;
+S.Struct({
+  "speakerVoiceConfigs": S.optional(MultispeakerPrebuiltVoiceList),
+}),
+).annotate({ identifier: "MultiSpeakerVoiceConfig" }) as any as S.Schema<MultiSpeakerVoiceConfig>;
 
-export type CustomVoiceParamsReportedUsageEnum =
-  | "REPORTED_USAGE_UNSPECIFIED"
-  | "REALTIME"
-  | "OFFLINE"
-  | (string & {});
+export type CustomVoiceParamsReportedUsageEnum = "REPORTED_USAGE_UNSPECIFIED" | "REALTIME" | "OFFLINE";
 export const CustomVoiceParamsReportedUsageEnum = /*@__PURE__*/ S.String;
 
 /** Description of the custom voice to be synthesized. */
@@ -354,23 +279,16 @@ export interface CustomVoiceParams {
   /** Required. The name of the AutoML model that synthesizes the custom voice. */
   model?: string;
   /** Optional. Deprecated. The usage of the synthesized audio to be reported. */
-  reportedUsage?: CustomVoiceParamsReportedUsageEnum;
+  reportedUsage?: CustomVoiceParamsReportedUsageEnum | (string & {});
 }
 export const CustomVoiceParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    model: S.optional(S.String),
-    reportedUsage: S.optional(CustomVoiceParamsReportedUsageEnum),
-  }),
-).annotate({
-  identifier: "CustomVoiceParams",
-}) as any as S.Schema<CustomVoiceParams>;
+S.Struct({
+  "model": S.optional(S.String),
+  "reportedUsage": S.optional(CustomVoiceParamsReportedUsageEnum),
+}),
+).annotate({ identifier: "CustomVoiceParams" }) as any as S.Schema<CustomVoiceParams>;
 
-export type VoiceSelectionParamsSsmlGenderEnum =
-  | "SSML_VOICE_GENDER_UNSPECIFIED"
-  | "MALE"
-  | "FEMALE"
-  | "NEUTRAL"
-  | (string & {});
+export type VoiceSelectionParamsSsmlGenderEnum = "SSML_VOICE_GENDER_UNSPECIFIED" | "MALE" | "FEMALE" | "NEUTRAL";
 export const VoiceSelectionParamsSsmlGenderEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of Voice Clone feature. */
@@ -379,12 +297,10 @@ export interface VoiceCloneParams {
   voiceCloningKey?: string;
 }
 export const VoiceCloneParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    voiceCloningKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VoiceCloneParams",
-}) as any as S.Schema<VoiceCloneParams>;
+S.Struct({
+  "voiceCloningKey": S.optional(S.String),
+}),
+).annotate({ identifier: "VoiceCloneParams" }) as any as S.Schema<VoiceCloneParams>;
 
 /** Description of which voice to use for a synthesis request. */
 export interface VoiceSelectionParams {
@@ -399,23 +315,21 @@ export interface VoiceSelectionParams {
   /** The configuration for a custom voice. If [CustomVoiceParams.model] is set, the service will choose the custom voice matching the specified configuration. */
   customVoice?: CustomVoiceParams;
   /** The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement; if a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request. */
-  ssmlGender?: VoiceSelectionParamsSsmlGenderEnum;
+  ssmlGender?: VoiceSelectionParamsSsmlGenderEnum | (string & {});
   /** Optional. The configuration for a voice clone. If [VoiceCloneParams.voice_clone_key] is set, the service chooses the voice clone matching the specified configuration. */
   voiceClone?: VoiceCloneParams;
 }
 export const VoiceSelectionParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    modelName: S.optional(S.String),
-    multiSpeakerVoiceConfig: S.optional(MultiSpeakerVoiceConfig),
-    languageCode: S.optional(S.String),
-    customVoice: S.optional(CustomVoiceParams),
-    ssmlGender: S.optional(VoiceSelectionParamsSsmlGenderEnum),
-    voiceClone: S.optional(VoiceCloneParams),
-  }),
-).annotate({
-  identifier: "VoiceSelectionParams",
-}) as any as S.Schema<VoiceSelectionParams>;
+S.Struct({
+  "name": S.optional(S.String),
+  "modelName": S.optional(S.String),
+  "multiSpeakerVoiceConfig": S.optional(MultiSpeakerVoiceConfig),
+  "languageCode": S.optional(S.String),
+  "customVoice": S.optional(CustomVoiceParams),
+  "ssmlGender": S.optional(VoiceSelectionParamsSsmlGenderEnum),
+  "voiceClone": S.optional(VoiceCloneParams),
+}),
+).annotate({ identifier: "VoiceSelectionParams" }) as any as S.Schema<VoiceSelectionParams>;
 
 /** A multi-speaker turn. */
 export interface Turn {
@@ -425,16 +339,14 @@ export interface Turn {
   text?: string;
 }
 export const Turn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    speaker: S.optional(S.String),
-    text: S.optional(S.String),
-  }),
+S.Struct({
+  "speaker": S.optional(S.String),
+  "text": S.optional(S.String),
+}),
 ).annotate({ identifier: "Turn" }) as any as S.Schema<Turn>;
 
 export type TurnList = ReadonlyArray<Turn>;
-export const TurnList = /*@__PURE__*/ S.Array(
-  Turn,
-) as any as S.Schema<TurnList>;
+export const TurnList = /*@__PURE__*/ S.Array(Turn) as any as S.Schema<TurnList>;
 
 /** A collection of turns for multi-speaker synthesis. */
 export interface MultiSpeakerMarkup {
@@ -442,22 +354,13 @@ export interface MultiSpeakerMarkup {
   turns?: TurnList;
 }
 export const MultiSpeakerMarkup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    turns: S.optional(TurnList),
-  }),
-).annotate({
-  identifier: "MultiSpeakerMarkup",
-}) as any as S.Schema<MultiSpeakerMarkup>;
+S.Struct({
+  "turns": S.optional(TurnList),
+}),
+).annotate({ identifier: "MultiSpeakerMarkup" }) as any as S.Schema<MultiSpeakerMarkup>;
 
-export type CustomPronunciationParamsPhoneticEncodingEnum =
-  | "PHONETIC_ENCODING_UNSPECIFIED"
-  | "PHONETIC_ENCODING_IPA"
-  | "PHONETIC_ENCODING_X_SAMPA"
-  | "PHONETIC_ENCODING_JAPANESE_YOMIGANA"
-  | "PHONETIC_ENCODING_PINYIN"
-  | (string & {});
-export const CustomPronunciationParamsPhoneticEncodingEnum =
-  /*@__PURE__*/ S.String;
+export type CustomPronunciationParamsPhoneticEncodingEnum = "PHONETIC_ENCODING_UNSPECIFIED" | "PHONETIC_ENCODING_IPA" | "PHONETIC_ENCODING_X_SAMPA" | "PHONETIC_ENCODING_JAPANESE_YOMIGANA" | "PHONETIC_ENCODING_PINYIN";
+export const CustomPronunciationParamsPhoneticEncodingEnum = /*@__PURE__*/ S.String;
 
 /** Pronunciation customization for a phrase. */
 export interface CustomPronunciationParams {
@@ -466,23 +369,18 @@ export interface CustomPronunciationParams {
   /** The phrase to which the customization is applied. The phrase can be multiple words, such as proper nouns, but shouldn't span the length of the sentence. */
   phrase?: string;
   /** The phonetic encoding of the phrase. */
-  phoneticEncoding?: CustomPronunciationParamsPhoneticEncodingEnum;
+  phoneticEncoding?: CustomPronunciationParamsPhoneticEncodingEnum | (string & {});
 }
 export const CustomPronunciationParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pronunciation: S.optional(S.String),
-    phrase: S.optional(S.String),
-    phoneticEncoding: S.optional(CustomPronunciationParamsPhoneticEncodingEnum),
-  }),
-).annotate({
-  identifier: "CustomPronunciationParams",
-}) as any as S.Schema<CustomPronunciationParams>;
+S.Struct({
+  "pronunciation": S.optional(S.String),
+  "phrase": S.optional(S.String),
+  "phoneticEncoding": S.optional(CustomPronunciationParamsPhoneticEncodingEnum),
+}),
+).annotate({ identifier: "CustomPronunciationParams" }) as any as S.Schema<CustomPronunciationParams>;
 
-export type CustomPronunciationParamsList =
-  ReadonlyArray<CustomPronunciationParams>;
-export const CustomPronunciationParamsList = /*@__PURE__*/ S.Array(
-  CustomPronunciationParams,
-) as any as S.Schema<CustomPronunciationParamsList>;
+export type CustomPronunciationParamsList = ReadonlyArray<CustomPronunciationParams>;
+export const CustomPronunciationParamsList = /*@__PURE__*/ S.Array(CustomPronunciationParams) as any as S.Schema<CustomPronunciationParamsList>;
 
 /** A collection of pronunciation customizations. */
 export interface CustomPronunciations {
@@ -490,12 +388,10 @@ export interface CustomPronunciations {
   pronunciations?: CustomPronunciationParamsList;
 }
 export const CustomPronunciations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pronunciations: S.optional(CustomPronunciationParamsList),
-  }),
-).annotate({
-  identifier: "CustomPronunciations",
-}) as any as S.Schema<CustomPronunciations>;
+S.Struct({
+  "pronunciations": S.optional(CustomPronunciationParamsList),
+}),
+).annotate({ identifier: "CustomPronunciations" }) as any as S.Schema<CustomPronunciations>;
 
 /** Contains text input to be synthesized. Either `text` or `ssml` must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 bytes. */
 export interface SynthesisInput {
@@ -513,32 +409,23 @@ export interface SynthesisInput {
   ssml?: string;
 }
 export const SynthesisInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-    prompt: S.optional(S.String),
-    markup: S.optional(S.String),
-    multiSpeakerMarkup: S.optional(MultiSpeakerMarkup),
-    customPronunciations: S.optional(CustomPronunciations),
-    ssml: S.optional(S.String),
-  }),
+S.Struct({
+  "text": S.optional(S.String),
+  "prompt": S.optional(S.String),
+  "markup": S.optional(S.String),
+  "multiSpeakerMarkup": S.optional(MultiSpeakerMarkup),
+  "customPronunciations": S.optional(CustomPronunciations),
+  "ssml": S.optional(S.String),
+}),
 ).annotate({ identifier: "SynthesisInput" }) as any as S.Schema<SynthesisInput>;
 
-export type AudioConfigAudioEncodingEnum =
-  | "AUDIO_ENCODING_UNSPECIFIED"
-  | "LINEAR16"
-  | "MP3"
-  | "OGG_OPUS"
-  | "MULAW"
-  | "ALAW"
-  | "PCM"
-  | "M4A"
-  | (string & {});
+export type AudioConfigAudioEncodingEnum = "AUDIO_ENCODING_UNSPECIFIED" | "LINEAR16" | "MP3" | "OGG_OPUS" | "MULAW" | "ALAW" | "PCM" | "M4A";
 export const AudioConfigAudioEncodingEnum = /*@__PURE__*/ S.String;
 
 /** Description of audio data to be synthesized. */
 export interface AudioConfig {
   /** Required. The format of the audio byte stream. */
-  audioEncoding?: AudioConfigAudioEncodingEnum;
+  audioEncoding?: AudioConfigAudioEncodingEnum | (string & {});
   /** Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See [audio profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile ids. */
   effectsProfileId?: StringList;
   /** Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch. */
@@ -551,14 +438,14 @@ export interface AudioConfig {
   sampleRateHertz?: number;
 }
 export const AudioConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audioEncoding: S.optional(AudioConfigAudioEncodingEnum),
-    effectsProfileId: S.optional(StringList),
-    pitch: S.optional(S.Number),
-    speakingRate: S.optional(S.Number),
-    volumeGainDb: S.optional(S.Number),
-    sampleRateHertz: S.optional(S.Number),
-  }),
+S.Struct({
+  "audioEncoding": S.optional(AudioConfigAudioEncodingEnum),
+  "effectsProfileId": S.optional(StringList),
+  "pitch": S.optional(S.Number),
+  "speakingRate": S.optional(S.Number),
+  "volumeGainDb": S.optional(S.Number),
+  "sampleRateHertz": S.optional(S.Number),
+}),
 ).annotate({ identifier: "AudioConfig" }) as any as S.Schema<AudioConfig>;
 
 /** The top-level message sent by the client for the `SynthesizeLongAudio` method. */
@@ -573,15 +460,13 @@ export interface SynthesizeLongAudioRequest {
   audioConfig?: AudioConfig;
 }
 export const SynthesizeLongAudioRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outputGcsUri: S.optional(S.String),
-    voice: S.optional(VoiceSelectionParams),
-    input: S.optional(SynthesisInput),
-    audioConfig: S.optional(AudioConfig),
-  }),
-).annotate({
-  identifier: "SynthesizeLongAudioRequest",
-}) as any as S.Schema<SynthesizeLongAudioRequest>;
+S.Struct({
+  "outputGcsUri": S.optional(S.String),
+  "voice": S.optional(VoiceSelectionParams),
+  "input": S.optional(SynthesisInput),
+  "audioConfig": S.optional(AudioConfig),
+}),
+).annotate({ identifier: "SynthesizeLongAudioRequest" }) as any as S.Schema<SynthesizeLongAudioRequest>;
 
 export interface SynthesizeLongAudioProjectsLocationsRequest {
   /** The resource states of the request in the form of `projects/*\/locations/*`. */
@@ -589,59 +474,35 @@ export interface SynthesizeLongAudioProjectsLocationsRequest {
   /** Request body */
   body?: SynthesizeLongAudioRequest;
 }
-export const SynthesizeLongAudioProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(SynthesizeLongAudioRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:synthesizeLongAudio",
-        baseUrl: "https://texttospeech.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SynthesizeLongAudioProjectsLocationsRequest",
-  }) as any as S.Schema<SynthesizeLongAudioProjectsLocationsRequest>;
+export const SynthesizeLongAudioProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(SynthesizeLongAudioRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:synthesizeLongAudio","baseUrl":"https://texttospeech.googleapis.com/"})),
+).annotate({ identifier: "SynthesizeLongAudioProjectsLocationsRequest" }) as any as S.Schema<SynthesizeLongAudioProjectsLocationsRequest>;
 
-export type SafetySettingCategoryEnum =
-  | "HARM_CATEGORY_UNSPECIFIED"
-  | "HARM_CATEGORY_HATE_SPEECH"
-  | "HARM_CATEGORY_DANGEROUS_CONTENT"
-  | "HARM_CATEGORY_HARASSMENT"
-  | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
-  | (string & {});
+export type SafetySettingCategoryEnum = "HARM_CATEGORY_UNSPECIFIED" | "HARM_CATEGORY_HATE_SPEECH" | "HARM_CATEGORY_DANGEROUS_CONTENT" | "HARM_CATEGORY_HARASSMENT" | "HARM_CATEGORY_SEXUALLY_EXPLICIT";
 export const SafetySettingCategoryEnum = /*@__PURE__*/ S.String;
 
-export type SafetySettingThresholdEnum =
-  | "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
-  | "BLOCK_LOW_AND_ABOVE"
-  | "BLOCK_MEDIUM_AND_ABOVE"
-  | "BLOCK_ONLY_HIGH"
-  | "BLOCK_NONE"
-  | "OFF"
-  | (string & {});
+export type SafetySettingThresholdEnum = "HARM_BLOCK_THRESHOLD_UNSPECIFIED" | "BLOCK_LOW_AND_ABOVE" | "BLOCK_MEDIUM_AND_ABOVE" | "BLOCK_ONLY_HIGH" | "BLOCK_NONE" | "OFF";
 export const SafetySettingThresholdEnum = /*@__PURE__*/ S.String;
 
 /** Safety setting for a single harm category. */
 export interface SafetySetting {
   /** The harm category to apply the safety setting to. */
-  category?: SafetySettingCategoryEnum;
+  category?: SafetySettingCategoryEnum | (string & {});
   /** The harm block threshold for the safety setting. */
-  threshold?: SafetySettingThresholdEnum;
+  threshold?: SafetySettingThresholdEnum | (string & {});
 }
 export const SafetySetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    category: S.optional(SafetySettingCategoryEnum),
-    threshold: S.optional(SafetySettingThresholdEnum),
-  }),
+S.Struct({
+  "category": S.optional(SafetySettingCategoryEnum),
+  "threshold": S.optional(SafetySettingThresholdEnum),
+}),
 ).annotate({ identifier: "SafetySetting" }) as any as S.Schema<SafetySetting>;
 
 export type SafetySettingList = ReadonlyArray<SafetySetting>;
-export const SafetySettingList = /*@__PURE__*/ S.Array(
-  SafetySetting,
-) as any as S.Schema<SafetySettingList>;
+export const SafetySettingList = /*@__PURE__*/ S.Array(SafetySetting) as any as S.Schema<SafetySettingList>;
 
 /** Safety settings for the request. */
 export interface SafetySettings {
@@ -649,9 +510,9 @@ export interface SafetySettings {
   settings?: SafetySettingList;
 }
 export const SafetySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    settings: S.optional(SafetySettingList),
-  }),
+S.Struct({
+  "settings": S.optional(SafetySettingList),
+}),
 ).annotate({ identifier: "SafetySettings" }) as any as S.Schema<SafetySettings>;
 
 /** Used for advanced voice options. */
@@ -666,15 +527,13 @@ export interface AdvancedVoiceOptions {
   relaxSafetyFilters?: boolean;
 }
 export const AdvancedVoiceOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    safetySettings: S.optional(SafetySettings),
-    enableTextnorm: S.optional(S.Boolean),
-    lowLatencyJourneySynthesis: S.optional(S.Boolean),
-    relaxSafetyFilters: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdvancedVoiceOptions",
-}) as any as S.Schema<AdvancedVoiceOptions>;
+S.Struct({
+  "safetySettings": S.optional(SafetySettings),
+  "enableTextnorm": S.optional(S.Boolean),
+  "lowLatencyJourneySynthesis": S.optional(S.Boolean),
+  "relaxSafetyFilters": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AdvancedVoiceOptions" }) as any as S.Schema<AdvancedVoiceOptions>;
 
 /** The top-level message sent by the client for the `SynthesizeSpeech` method. */
 export interface SynthesizeSpeechRequest {
@@ -688,33 +547,23 @@ export interface SynthesizeSpeechRequest {
   audioConfig?: AudioConfig;
 }
 export const SynthesizeSpeechRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    advancedVoiceOptions: S.optional(AdvancedVoiceOptions),
-    voice: S.optional(VoiceSelectionParams),
-    input: S.optional(SynthesisInput),
-    audioConfig: S.optional(AudioConfig),
-  }),
-).annotate({
-  identifier: "SynthesizeSpeechRequest",
-}) as any as S.Schema<SynthesizeSpeechRequest>;
+S.Struct({
+  "advancedVoiceOptions": S.optional(AdvancedVoiceOptions),
+  "voice": S.optional(VoiceSelectionParams),
+  "input": S.optional(SynthesisInput),
+  "audioConfig": S.optional(AudioConfig),
+}),
+).annotate({ identifier: "SynthesizeSpeechRequest" }) as any as S.Schema<SynthesizeSpeechRequest>;
 
 export interface SynthesizeTextRequest {
   /** Request body */
   body?: SynthesizeSpeechRequest;
 }
 export const SynthesizeTextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(SynthesizeSpeechRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/text:synthesize",
-      baseUrl: "https://texttospeech.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SynthesizeTextRequest",
-}) as any as S.Schema<SynthesizeTextRequest>;
+S.Struct({
+  "body": S.optional(SynthesizeSpeechRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/text:synthesize","baseUrl":"https://texttospeech.googleapis.com/"})),
+).annotate({ identifier: "SynthesizeTextRequest" }) as any as S.Schema<SynthesizeTextRequest>;
 
 /** The message returned to the client by the `SynthesizeSpeech` method. */
 export interface SynthesizeSpeechResponse {
@@ -722,19 +571,12 @@ export interface SynthesizeSpeechResponse {
   audioContent?: string;
 }
 export const SynthesizeSpeechResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audioContent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SynthesizeSpeechResponse",
-}) as any as S.Schema<SynthesizeSpeechResponse>;
+S.Struct({
+  "audioContent": S.optional(S.String),
+}),
+).annotate({ identifier: "SynthesizeSpeechResponse" }) as any as S.Schema<SynthesizeSpeechResponse>;
 
-export type CancelOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
   CancelOperationsRequest,
@@ -749,12 +591,7 @@ export const cancelOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
   DeleteOperationsRequest,
@@ -769,10 +606,7 @@ export const deleteOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -787,10 +621,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -803,10 +634,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListVoicesError = NotFound | Forbidden | GcpOpError;
@@ -824,12 +652,7 @@ export const listVoices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SynthesizeLongAudioProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SynthesizeLongAudioProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Synthesizes long form text asynchronously. */
 export const synthesizeLongAudioProjectsLocations: API.OperationMethod<
   SynthesizeLongAudioProjectsLocationsRequest,
@@ -844,12 +667,7 @@ export const synthesizeLongAudioProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SynthesizeTextError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SynthesizeTextError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Synthesizes speech synchronously: receive results after all text input has been processed. */
 export const synthesizeText: API.OperationMethod<
   SynthesizeTextRequest,
@@ -863,3 +681,4 @@ export const synthesizeText: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -213,20 +213,18 @@ export const GetMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type MaintenanceConfigsGetResponseCredentialStatus =
   | "present"
-  | "absent"
-  | (string & {});
+  | "absent";
 export const MaintenanceConfigsGetResponseCredentialStatus =
   /*@__PURE__*/ S.String;
 
 export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
   /*@__PURE__*/ S.String;
 
 export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512" | (string & {});
+  "64" | "128" | "256" | "512";
 export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -250,7 +248,7 @@ export const MaintenanceConfigsGetResponseMaintenanceConfigCompaction =
   }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
 
 export type MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -346,12 +344,12 @@ export const GetNamespaceTableMaintenanceConfigRequest =
   }) as any as S.Schema<GetNamespaceTableMaintenanceConfigRequest>;
 
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
   /*@__PURE__*/ S.String;
 
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512" | (string & {});
+  "64" | "128" | "256" | "512";
 export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -377,7 +375,7 @@ export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompa
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
 
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -465,16 +463,15 @@ export const GetR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetR2DataCatalogRequest",
 }) as any as S.Schema<GetR2DataCatalogRequest>;
 
-export type GetResponseStatus = "active" | "inactive" | (string & {});
+export type GetResponseStatus = "active" | "inactive";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
-export type GetResponseCredentialStatus = "present" | "absent" | (string & {});
+export type GetResponseCredentialStatus = "present" | "absent";
 export const GetResponseCredentialStatus = /*@__PURE__*/ S.String;
 
 export type GetResponseMaintenanceConfigCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const GetResponseMaintenanceConfigCompactionState =
   /*@__PURE__*/ S.String;
 
@@ -482,8 +479,7 @@ export type GetResponseMaintenanceConfigCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
-  | "512"
-  | (string & {});
+  | "512";
 export const GetResponseMaintenanceConfigCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -507,8 +503,7 @@ export const GetResponseMaintenanceConfigCompaction = /*@__PURE__*/ S.suspend(
 
 export type GetResponseMaintenanceConfigSnapshotExpirationState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const GetResponseMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -867,23 +862,16 @@ export const ListR2DataCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListR2DataCatalogsRequest",
 }) as any as S.Schema<ListR2DataCatalogsRequest>;
 
-export type ListResponseWarehousesItemStatus =
-  | "active"
-  | "inactive"
-  | (string & {});
+export type ListResponseWarehousesItemStatus = "active" | "inactive";
 export const ListResponseWarehousesItemStatus = /*@__PURE__*/ S.String;
 
-export type ListResponseWarehousesItemCredentialStatus =
-  | "present"
-  | "absent"
-  | (string & {});
+export type ListResponseWarehousesItemCredentialStatus = "present" | "absent";
 export const ListResponseWarehousesItemCredentialStatus =
   /*@__PURE__*/ S.String;
 
 export type ListResponseWarehousesItemMaintenanceConfigCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const ListResponseWarehousesItemMaintenanceConfigCompactionState =
   /*@__PURE__*/ S.String;
 
@@ -891,8 +879,7 @@ export type ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
-  | "512"
-  | (string & {});
+  | "512";
 export const ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -916,7 +903,7 @@ export const ListResponseWarehousesItemMaintenanceConfigCompaction =
   }) as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigCompaction>;
 
 export type ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -1017,8 +1004,7 @@ export const ListR2DataCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type MaintenanceConfigsUpdateRequestCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaintenanceConfigsUpdateRequestCompactionState =
   /*@__PURE__*/ S.String;
 
@@ -1026,16 +1012,17 @@ export type MaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
-  | "512"
-  | (string & {});
+  | "512";
 export const MaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
 export interface MaintenanceConfigsUpdateRequestCompaction {
   /** Updates the state optionally. */
-  state?: MaintenanceConfigsUpdateRequestCompactionState;
+  state?: MaintenanceConfigsUpdateRequestCompactionState | (string & {});
   /** Updates the target file size optionally. */
-  targetSizeMb?: MaintenanceConfigsUpdateRequestCompactionTargetSizeMb;
+  targetSizeMb?:
+    | MaintenanceConfigsUpdateRequestCompactionTargetSizeMb
+    | (string & {});
 }
 export const MaintenanceConfigsUpdateRequestCompaction =
   /*@__PURE__*/ S.suspend(() =>
@@ -1053,8 +1040,7 @@ export const MaintenanceConfigsUpdateRequestCompaction =
 
 export type MaintenanceConfigsUpdateRequestSnapshotExpirationState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaintenanceConfigsUpdateRequestSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -1064,7 +1050,9 @@ export interface MaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Updates the minimum number of snapshots to retain optionally. */
   minSnapshotsToKeep?: number;
   /** Updates the state optionally. */
-  state?: MaintenanceConfigsUpdateRequestSnapshotExpirationState;
+  state?:
+    | MaintenanceConfigsUpdateRequestSnapshotExpirationState
+    | (string & {});
 }
 export const MaintenanceConfigsUpdateRequestSnapshotExpiration =
   /*@__PURE__*/ S.suspend(() =>
@@ -1114,8 +1102,7 @@ export const UpdateMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type MaintenanceConfigsUpdateResponseCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaintenanceConfigsUpdateResponseCompactionState =
   /*@__PURE__*/ S.String;
 
@@ -1123,8 +1110,7 @@ export type MaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
-  | "512"
-  | (string & {});
+  | "512";
 export const MaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -1148,8 +1134,7 @@ export const MaintenanceConfigsUpdateResponseCompaction =
 
 export type MaintenanceConfigsUpdateResponseSnapshotExpirationState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaintenanceConfigsUpdateResponseSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -1194,21 +1179,24 @@ export const UpdateMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState =
   /*@__PURE__*/ S.String;
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512" | (string & {});
+  "64" | "128" | "256" | "512";
 export const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesTablesMaintenanceConfigsUpdateRequestCompaction {
   /** Updates the state optionally. */
-  state?: NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState;
+  state?:
+    | NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState
+    | (string & {});
   /** Updates the target file size optionally. */
-  targetSizeMb?: NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb;
+  targetSizeMb?:
+    | NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb
+    | (string & {});
 }
 export const NamespacesTablesMaintenanceConfigsUpdateRequestCompaction =
   /*@__PURE__*/ S.suspend(() =>
@@ -1227,7 +1215,7 @@ export const NamespacesTablesMaintenanceConfigsUpdateRequestCompaction =
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateRequestCompaction>;
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -1237,7 +1225,9 @@ export interface NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirati
   /** Updates the minimum number of snapshots to retain optionally. */
   minSnapshotsToKeep?: number;
   /** Updates the state optionally. */
-  state?: NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState;
+  state?:
+    | NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState
+    | (string & {});
 }
 export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration =
   /*@__PURE__*/ S.suspend(() =>
@@ -1297,13 +1287,12 @@ export const UpdateNamespaceTableMaintenanceConfigRequest =
 
 export type NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState =
   /*@__PURE__*/ S.String;
 
 export type NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512" | (string & {});
+  "64" | "128" | "256" | "512";
 export const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -1327,7 +1316,7 @@ export const NamespacesTablesMaintenanceConfigsUpdateResponseCompaction =
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponseCompaction>;
 
 export type NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 

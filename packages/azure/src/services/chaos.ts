@@ -65,8 +65,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -74,8 +73,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -596,8 +594,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -619,7 +616,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ExperimentsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ExperimentsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -633,11 +630,7 @@ export const ExperimentsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExperimentsCreateOrUpdateRequestIdentity>;
 
 /** Enum union of Chaos experiment action types. */
-export type ExperimentActionType =
-  | "delay"
-  | "discrete"
-  | "continuous"
-  | (string & {});
+export type ExperimentActionType = "delay" | "discrete" | "continuous";
 export const ExperimentActionType = /*@__PURE__*/ S.String;
 
 /** Model that represents the base action model. 9 total per experiment. */
@@ -710,11 +703,11 @@ export const ExperimentPropertiesInputStepsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ExperimentPropertiesInputStepsList>;
 
 /** Enum of the selector type. */
-export type SelectorType = "List" | "Query" | (string & {});
+export type SelectorType = "List" | "Query";
 export const SelectorType = /*@__PURE__*/ S.String;
 
 /** Enum that discriminates between filter types. Currently only `Simple` type is supported. */
-export type FilterType = "Simple" | (string & {});
+export type FilterType = "Simple";
 export const FilterType = /*@__PURE__*/ S.String;
 
 /** Model that represents available filter types that can be applied to a targets list. */
@@ -871,8 +864,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of steps. */
@@ -1613,7 +1605,7 @@ export const ExperimentsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ExperimentsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ExperimentsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -1755,11 +1747,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

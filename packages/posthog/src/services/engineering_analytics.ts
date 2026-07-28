@@ -135,8 +135,7 @@ export type BrokenTestRowStateEnum =
   | "novel_burst"
   | "potentially_resolved"
   | "flaky"
-  | "pr_only"
-  | (string & {});
+  | "pr_only";
 export const BrokenTestRowStateEnum = /*@__PURE__*/ S.String;
 
 /** Hourly failure counts over the last 24 hours, oldest first (fixed 24-slot array), for the row sparkline. All zeros when nothing failed in the last day. */
@@ -422,7 +421,7 @@ export const EngineeringAnalyticsCiSignalsConfigRetrieveRequest =
   }) as any as S.Schema<EngineeringAnalyticsCiSignalsConfigRetrieveRequest>;
 
 /** * `running` - RUNNING * `completed` - COMPLETED * `failed` - FAILED */
-export type SyncStatusEnum = "running" | "completed" | "failed" | (string & {});
+export type SyncStatusEnum = "running" | "completed" | "failed";
 export const SyncStatusEnum = /*@__PURE__*/ S.String;
 
 export interface CISignalsConfig {
@@ -559,8 +558,7 @@ export const EngineeringAnalyticsFlakyTestsRequest = /*@__PURE__*/ S.suspend(
 export type FlakyTestItemClassificationEnum =
   | "confirmed_flake"
   | "suspected_regression"
-  | "quarantined"
-  | (string & {});
+  | "quarantined";
 export const FlakyTestItemClassificationEnum = /*@__PURE__*/ S.String;
 
 export interface FlakyTestItem {
@@ -958,11 +956,7 @@ export const Author = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Author" }) as any as S.Schema<Author>;
 
 /** * `open` - OPEN * `closed` - CLOSED * `merged` - MERGED */
-export type EngineeringAnalyticsPRStateEnum =
-  | "open"
-  | "closed"
-  | "merged"
-  | (string & {});
+export type EngineeringAnalyticsPRStateEnum = "open" | "closed" | "merged";
 export const EngineeringAnalyticsPRStateEnum = /*@__PURE__*/ S.String;
 
 export interface PullRequest {
@@ -1008,8 +1002,7 @@ export type PRLifecycleEventKindEnum =
   | "ci_started"
   | "ci_finished"
   | "merged"
-  | "closed"
-  | (string & {});
+  | "closed";
 export const PRLifecycleEventKindEnum = /*@__PURE__*/ S.String;
 
 export interface PRLifecycleEvent {
@@ -1040,11 +1033,7 @@ export const PRLifecycleEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PRLifecycleEventsList>;
 
 /** * `precise` - PRECISE * `coarse` - COARSE * `partial` - PARTIAL */
-export type MetricQualityEnum =
-  | "precise"
-  | "coarse"
-  | "partial"
-  | (string & {});
+export type MetricQualityEnum = "precise" | "coarse" | "partial";
 export const MetricQualityEnum = /*@__PURE__*/ S.String;
 
 export interface PRLifecycle {
@@ -1349,25 +1338,15 @@ export const EngineeringAnalyticsQuarantineRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EngineeringAnalyticsQuarantineRequest>;
 
 /** * `run` - RUN * `skip` - SKIP */
-export type QuarantineModeEnum = "run" | "skip" | (string & {});
+export type QuarantineModeEnum = "run" | "skip";
 export const QuarantineModeEnum = /*@__PURE__*/ S.String;
 
 /** * `active` - ACTIVE * `expiring_soon` - EXPIRING_SOON * `in_grace` - IN_GRACE * `overdue` - OVERDUE */
-export type LifecycleEnum =
-  | "active"
-  | "expiring_soon"
-  | "in_grace"
-  | "overdue"
-  | (string & {});
+export type LifecycleEnum = "active" | "expiring_soon" | "in_grace" | "overdue";
 export const LifecycleEnum = /*@__PURE__*/ S.String;
 
 /** * `product` - PRODUCT * `file` - FILE * `directory` - DIRECTORY * `test` - TEST */
-export type SelectorKindEnum =
-  | "product"
-  | "file"
-  | "directory"
-  | "test"
-  | (string & {});
+export type SelectorKindEnum = "product" | "file" | "directory" | "test";
 export const SelectorKindEnum = /*@__PURE__*/ S.String;
 
 export interface QuarantineEntry {
@@ -1459,14 +1438,14 @@ export const QuarantineFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuarantineFile" }) as any as S.Schema<QuarantineFile>;
 
 /** * `quarantine` - QUARANTINE * `extend` - EXTEND * `remove` - REMOVE */
-export type OperationEnum = "quarantine" | "extend" | "remove" | (string & {});
+export type OperationEnum = "quarantine" | "extend" | "remove";
 export const OperationEnum = /*@__PURE__*/ S.String;
 
 export interface EngineeringAnalyticsQuarantineRequestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** What to do: 'quarantine' (add or replace an entry and file a tracking issue), 'extend' (re-stamp an existing entry's expiry, reusing its issue), or 'remove' (delete the entry). All three open a pull request. * `quarantine` - QUARANTINE * `extend` - EXTEND * `remove` - REMOVE */
-  operation: OperationEnum;
+  operation: OperationEnum | (string & {});
   /** Test selector to act on: an exact test id, a file, a directory, a class prefix, or 'product:<dashed-name>'. */
   selector: string;
   /** Optional 'owner/name' repository override; defaults to the team's most active repo. */
@@ -1480,7 +1459,7 @@ export interface EngineeringAnalyticsQuarantineRequestRequest {
   /** ISO date the quarantine expires (at most 30 days out). Defaults to 14 days from today. Ignored by remove. */
   expires?: string | null;
   /** 'run' (the test still executes but cannot fail the suite) or 'skip' (not run at all). Defaults to 'run'. * `run` - RUN * `skip` - SKIP */
-  mode?: QuarantineModeEnum;
+  mode?: QuarantineModeEnum | (string & {});
 }
 export const EngineeringAnalyticsQuarantineRequestRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2243,8 +2222,7 @@ export const TeamMergeTrend = /*@__PURE__*/ S.suspend(() =>
 
 export type EngineeringAnalyticsWorkflowHealthRequestRunScope =
   | "all"
-  | "pull_request"
-  | (string & {});
+  | "pull_request";
 export const EngineeringAnalyticsWorkflowHealthRequestRunScope =
   /*@__PURE__*/ S.String;
 
@@ -2260,7 +2238,7 @@ export interface EngineeringAnalyticsWorkflowHealthRequest {
   /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
   repo?: string;
   /** Run scope for workflow health: 'all' (default) includes every run; 'pull_request' includes runs attributed to pull requests, excluding default-branch (master/main) runs. Fork PRs carry no PR attribution (a GitHub limitation), so 'pull_request' covers same-repo PRs only. Any other value is a 400. */
-  run_scope?: EngineeringAnalyticsWorkflowHealthRequestRunScope;
+  run_scope?: EngineeringAnalyticsWorkflowHealthRequestRunScope | (string & {});
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }

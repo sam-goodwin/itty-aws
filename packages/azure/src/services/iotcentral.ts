@@ -111,7 +111,7 @@ export const AppPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppPropertiesInput>;
 
 /** The name of the SKU. */
-export type AppSkuInfoName = "ST0" | "ST1" | "ST2" | (string & {});
+export type AppSkuInfoName = "ST0" | "ST1" | "ST2";
 export const AppSkuInfoName = /*@__PURE__*/ S.String;
 
 /** Information about the SKU of the IoT Central application. */
@@ -126,15 +126,12 @@ export const AppSkuInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppSkuInfo" }) as any as S.Schema<AppSkuInfo>;
 
 /** Type of managed service identity (either system assigned, or none). */
-export type SystemAssignedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | (string & {});
+export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
 export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface AppsCreateOrUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType;
+  type: SystemAssignedServiceIdentityType | (string & {});
 }
 export const AppsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -194,7 +191,7 @@ export const AppsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AppsCreateOrUpdateResponseTagsMap>;
 
 /** The current state of the application. */
-export type AppState = "created" | "suspended" | (string & {});
+export type AppState = "created" | "suspended";
 export const AppState = /*@__PURE__*/ S.String;
 
 /** The properties of an IoT Central application. */
@@ -604,7 +601,7 @@ export const AppsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (either system assigned, or none) */
 export interface AppsUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType;
+  type: SystemAssignedServiceIdentityType | (string & {});
 }
 export const AppsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

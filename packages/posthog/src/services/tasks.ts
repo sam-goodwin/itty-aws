@@ -94,22 +94,15 @@ export type OriginProductEnum =
   | "review_hog"
   | "image_builder"
   | "loop"
-  | "mcp_analytics"
-  | (string & {});
+  | "mcp_analytics";
 export const OriginProductEnum = /*@__PURE__*/ S.String;
 
 /** * `claude` - claude * `codex` - codex */
-export type RuntimeAdapterEnum = "claude" | "codex" | (string & {});
+export type RuntimeAdapterEnum = "claude" | "codex";
 export const RuntimeAdapterEnum = /*@__PURE__*/ S.String;
 
 /** * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-export type ReasoningEffortEnum =
-  | "low"
-  | "medium"
-  | "high"
-  | "xhigh"
-  | "max"
-  | (string & {});
+export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max";
 export const ReasoningEffortEnum = /*@__PURE__*/ S.String;
 
 /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. */
@@ -121,7 +114,7 @@ export const TasksCreateRequestPendingUserArtifactIdsList =
   ) as any as S.Schema<TasksCreateRequestPendingUserArtifactIdsList>;
 
 /** * `acp` - ACP * `pi` - Pi */
-export type RuntimeEnum = "acp" | "pi" | (string & {});
+export type RuntimeEnum = "acp" | "pi";
 export const RuntimeEnum = /*@__PURE__*/ S.String;
 
 export interface TasksCreateRequest {
@@ -134,7 +127,7 @@ export interface TasksCreateRequest {
   /** Free-form description of the work to be done. Used as the prompt passed to the agent. */
   description?: string;
   /** PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). * `onboarding` - Onboarding * `error_tracking` - Error Tracking * `eval_clusters` - Eval Clusters * `user_created` - User Created * `automation` - Automation * `slack` - Slack * `support_queue` - Support Queue * `session_summaries` - Session Summaries * `posthog_ai` - PostHog AI * `experiments` - Experiments * `signal_report` - Signal Report * `signals_scout` - Signals Scout * `support_reply` - Support Reply * `hogdesk` - HogDesk * `review_hog` - ReviewHog * `image_builder` - Image Builder * `loop` - Loop * `mcp_analytics` - MCP Analytics */
-  origin_product?: OriginProductEnum;
+  origin_product?: OriginProductEnum | (string & {});
   /** Target GitHub repository in `organization/repo` format (e.g. `posthog/posthog-js`). */
   repository?: string | null;
   /** GitHub integration for this task. */
@@ -156,11 +149,11 @@ export interface TasksCreateRequest {
   /** Branch the user has selected for this cloud task. Write-only and not persisted on the task itself: used only to reuse a matching pre-warmed sandbox Run on creation (the branch is otherwise carried on the run). Omit to match a warm Run on the default branch. */
   branch?: string | null;
   /** Selected runtime adapter ('claude' or 'codex'). Write-only and not persisted on the task: used only to reuse a pre-warmed Run started on the same runtime. A value differing from the warm Run's runtime skips reuse so the task isn't silently run on the wrong runtime. * `claude` - claude * `codex` - codex */
-  runtime_adapter?: RuntimeAdapterEnum | null;
+  runtime_adapter?: RuntimeAdapterEnum | (string & {}) | null;
   /** Selected LLM model identifier. Write-only; used only to reuse a warm Run started on the same model. */
   model?: string | null;
   /** Selected reasoning effort. Write-only; used only to reuse a warm Run started on the same effort. * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-  reasoning_effort?: ReasoningEffortEnum | null;
+  reasoning_effort?: ReasoningEffortEnum | (string & {}) | null;
   /** First user message to forward when creation reuses a pre-warmed Run. Write-only and not persisted on the task: lets clients deliver a message that differs from `description` (e.g. a resolved skill invocation with channel context folded in). Ignored when no warm Run is reused — cold creation takes the first message via the run start endpoint instead. */
   pending_user_message?: string | null;
   /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. */
@@ -174,7 +167,7 @@ export interface TasksCreateRequest {
   /** Custom image selected for matching a pre-warmed cloud run. Not persisted on the task. */
   custom_image_id?: string | null;
   /** Agent protocol and harness used for this task's runs. Defaults to ACP when omitted. * `acp` - ACP * `pi` - Pi */
-  runtime?: RuntimeEnum;
+  runtime?: RuntimeEnum | (string & {});
 }
 export const TasksCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -223,10 +216,7 @@ export const TaskDetailDTOJsonSchemaMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TaskDetailDTOJsonSchemaMap>;
 
 /** * `anthropic` - anthropic * `openai` - openai */
-export type TaskRunDetailDTOProviderEnum =
-  | "anthropic"
-  | "openai"
-  | (string & {});
+export type TaskRunDetailDTOProviderEnum = "anthropic" | "openai";
 export const TaskRunDetailDTOProviderEnum = /*@__PURE__*/ S.String;
 
 export type TaskRunDetailDTOOutputMap = { [key: string]: unknown | undefined };
@@ -242,16 +232,11 @@ export const TaskRunDetailDTOStateMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TaskRunDetailDTOStateMap>;
 
 /** * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
-export type SkillSourceEnum =
-  | "user"
-  | "repo"
-  | "marketplace"
-  | "codex"
-  | (string & {});
+export type SkillSourceEnum = "user" | "repo" | "marketplace" | "codex";
 export const SkillSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `zip` - zip */
-export type BundleFormatEnum = "zip" | (string & {});
+export type BundleFormatEnum = "zip";
 export const BundleFormatEnum = /*@__PURE__*/ S.String;
 
 export interface TaskRunArtifactMetadata {
@@ -489,10 +474,10 @@ export const TasksDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TasksDestroyResponse",
 }) as any as S.Schema<TasksDestroyResponse>;
 
-export type TasksListRequestArchived = "true" | "false" | "all" | (string & {});
+export type TasksListRequestArchived = "true" | "false" | "all";
 export const TasksListRequestArchived = /*@__PURE__*/ S.String;
 
-export type TasksListRequestInternal = "true" | "false" | "all" | (string & {});
+export type TasksListRequestInternal = "true" | "false" | "all";
 export const TasksListRequestInternal = /*@__PURE__*/ S.String;
 
 export type TasksListRequestStatus =
@@ -501,8 +486,7 @@ export type TasksListRequestStatus =
   | "in_progress"
   | "completed"
   | "failed"
-  | "cancelled"
-  | (string & {});
+  | "cancelled";
 export const TasksListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface TasksListRequest {
@@ -511,13 +495,13 @@ export interface TasksListRequest {
   /** Staff-only. When true, list every task on the team regardless of creator or channel, bypassing the per-user visibility filter. Ignored for non-staff users. */
   all_team_tasks?: boolean;
   /** Filter by archived state. Defaults to excluding archived tasks. Use 'true' to list only archived tasks, 'false' for the default, or 'all' to include both. * `true` - true * `false` - false * `all` - all */
-  archived?: TasksListRequestArchived;
+  archived?: TasksListRequestArchived | (string & {});
   /** Filter tasks to a channel's feed. */
   channel?: string;
   /** Filter by creator user ID */
   created_by?: number;
   /** Filter by the internal flag, which controls whether a task is shown by default, not whether it is accessible. Defaults to excluding internal tasks. Use 'all' to include both internal and user-facing tasks, or 'true' to list only internal tasks. All values are available to any team member; access stays governed by task visibility. * `true` - true * `false` - false * `all` - all */
-  internal?: TasksListRequestInternal;
+  internal?: TasksListRequestInternal | (string & {});
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
@@ -533,7 +517,7 @@ export interface TasksListRequest {
   /** Filter by task run stage */
   stage?: string;
   /** Filter tasks by the status of their most recent run. * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
-  status?: TasksListRequestStatus;
+  status?: TasksListRequestStatus | (string & {});
 }
 export const TasksListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -604,7 +588,7 @@ export interface TasksPartialUpdateRequest {
   /** Free-form description of the work to be done. Used as the prompt passed to the agent. */
   description?: string;
   /** PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). * `onboarding` - Onboarding * `error_tracking` - Error Tracking * `eval_clusters` - Eval Clusters * `user_created` - User Created * `automation` - Automation * `slack` - Slack * `support_queue` - Support Queue * `session_summaries` - Session Summaries * `posthog_ai` - PostHog AI * `experiments` - Experiments * `signal_report` - Signal Report * `signals_scout` - Signals Scout * `support_reply` - Support Reply * `hogdesk` - HogDesk * `review_hog` - ReviewHog * `image_builder` - Image Builder * `loop` - Loop * `mcp_analytics` - MCP Analytics */
-  origin_product?: OriginProductEnum;
+  origin_product?: OriginProductEnum | (string & {});
   /** Target GitHub repository in `organization/repo` format (e.g. `posthog/posthog-js`). */
   repository?: string | null;
   /** GitHub integration for this task. */
@@ -626,11 +610,11 @@ export interface TasksPartialUpdateRequest {
   /** Branch the user has selected for this cloud task. Write-only and not persisted on the task itself: used only to reuse a matching pre-warmed sandbox Run on creation (the branch is otherwise carried on the run). Omit to match a warm Run on the default branch. */
   branch?: string | null;
   /** Selected runtime adapter ('claude' or 'codex'). Write-only and not persisted on the task: used only to reuse a pre-warmed Run started on the same runtime. A value differing from the warm Run's runtime skips reuse so the task isn't silently run on the wrong runtime. * `claude` - claude * `codex` - codex */
-  runtime_adapter?: RuntimeAdapterEnum | null;
+  runtime_adapter?: RuntimeAdapterEnum | (string & {}) | null;
   /** Selected LLM model identifier. Write-only; used only to reuse a warm Run started on the same model. */
   model?: string | null;
   /** Selected reasoning effort. Write-only; used only to reuse a warm Run started on the same effort. * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-  reasoning_effort?: ReasoningEffortEnum | null;
+  reasoning_effort?: ReasoningEffortEnum | (string & {}) | null;
   /** First user message to forward when creation reuses a pre-warmed Run. Write-only and not persisted on the task: lets clients deliver a message that differs from `description` (e.g. a resolved skill invocation with channel context folded in). Ignored when no warm Run is reused — cold creation takes the first message via the run start endpoint instead. */
   pending_user_message?: string | null;
   /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. */
@@ -804,8 +788,7 @@ export type CapabilityStateStateEnum =
   | "waiting_for_data"
   | "ready"
   | "not_applicable"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const CapabilityStateStateEnum = /*@__PURE__*/ S.String;
 
 /** Supporting evidence */
@@ -927,7 +910,7 @@ export const TasksRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRetrieveRequest>;
 
 /** * `http` - http * `sse` - sse */
-export type ImportedMcpServerTypeEnum = "http" | "sse" | (string & {});
+export type ImportedMcpServerTypeEnum = "http" | "sse";
 export const ImportedMcpServerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ImportedMcpServerHeader {
@@ -951,7 +934,7 @@ export const ImportedMcpServerHeadersList = /*@__PURE__*/ S.Array(
 
 /** One client-imported MCP server, in the agent server's --mcpServers entry shape. */
 export interface ImportedMcpServer {
-  type: ImportedMcpServerTypeEnum;
+  type: ImportedMcpServerTypeEnum | (string & {});
   name: string;
   url: string;
   headers?: ImportedMcpServerHeadersList;
@@ -996,10 +979,7 @@ export const ClaudeTaskRunCreateSchemaRelayedMcpServersList =
   ) as any as S.Schema<ClaudeTaskRunCreateSchemaRelayedMcpServersList>;
 
 /** * `interactive` - interactive * `background` - background */
-export type TaskExecutionModeEnum =
-  | "interactive"
-  | "background"
-  | (string & {});
+export type TaskExecutionModeEnum = "interactive" | "background";
 export const TaskExecutionModeEnum = /*@__PURE__*/ S.String;
 
 /** Identifiers for staged task artifacts that should be attached to the initial run prompt. */
@@ -1011,15 +991,15 @@ export const ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList =
   ) as any as S.Schema<ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList>;
 
 /** * `user` - user * `bot` - bot */
-export type PrAuthorshipModeEnum = "user" | "bot" | (string & {});
+export type PrAuthorshipModeEnum = "user" | "bot";
 export const PrAuthorshipModeEnum = /*@__PURE__*/ S.String;
 
 /** * `manual` - manual * `signal_report` - signal_report */
-export type RunSourceEnum = "manual" | "signal_report" | (string & {});
+export type RunSourceEnum = "manual" | "signal_report";
 export const RunSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `claude` - claude */
-export type ClaudeRuntimeAdapterEnum = "claude" | (string & {});
+export type ClaudeRuntimeAdapterEnum = "claude";
 export const ClaudeRuntimeAdapterEnum = /*@__PURE__*/ S.String;
 
 /** * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto */
@@ -1028,8 +1008,7 @@ export type InitialPermissionModeEnum =
   | "acceptEdits"
   | "plan"
   | "bypassPermissions"
-  | "auto"
-  | (string & {});
+  | "auto";
 export const InitialPermissionModeEnum = /*@__PURE__*/ S.String;
 
 /** Request body for creating a new task run */
@@ -1039,7 +1018,7 @@ export interface ClaudeTaskRunCreateSchema {
   /** Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
   relayed_mcp_servers?: ClaudeTaskRunCreateSchemaRelayedMcpServersList | null;
   /** Execution mode: 'interactive' for user-connected runs, 'background' for autonomous runs * `interactive` - interactive * `background` - background */
-  mode?: TaskExecutionModeEnum;
+  mode?: TaskExecutionModeEnum | (string & {});
   /** Git branch to checkout in the sandbox */
   branch?: string | null;
   /** ID of a previous run to resume from. Must belong to the same task. */
@@ -1053,23 +1032,23 @@ export interface ClaudeTaskRunCreateSchema {
   /** Optional custom base image for this cloud run's sandbox (Modal VM runtime only); takes precedence over the environment's image. */
   custom_image_id?: string;
   /** Whether pull requests for this run should be authored by the user or the bot. * `user` - user * `bot` - bot */
-  pr_authorship_mode?: PrAuthorshipModeEnum;
+  pr_authorship_mode?: PrAuthorshipModeEnum | (string & {});
   /** When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask. */
   auto_publish?: boolean | null;
   /** High-level source that triggered this run, used to distinguish manual and signal-based cloud runs. * `manual` - manual * `signal_report` - signal_report */
-  run_source?: RunSourceEnum;
+  run_source?: RunSourceEnum | (string & {});
   /** Optional signal report identifier when this run was started from Inbox. */
   signal_report_id?: string;
   /** Agent runtime adapter to launch for this run. Must be 'claude' for Claude runtimes. * `claude` - claude */
-  runtime_adapter?: ClaudeRuntimeAdapterEnum;
+  runtime_adapter?: ClaudeRuntimeAdapterEnum | (string & {});
   /** LLM model identifier to run in the Claude runtime. */
   model?: string;
   /** Reasoning effort to request for models that expose an effort control. * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-  reasoning_effort?: ReasoningEffortEnum;
+  reasoning_effort?: ReasoningEffortEnum | (string & {});
   /** Optional GitHub user token from PostHog Code for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
   github_user_token?: string;
   /** Initial permission mode for Claude runtimes. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto */
-  initial_permission_mode?: InitialPermissionModeEnum;
+  initial_permission_mode?: InitialPermissionModeEnum | (string & {});
   /** Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out. */
   rtk_enabled?: boolean | null;
 }
@@ -1130,7 +1109,7 @@ export const CodexTaskRunCreateSchemaPendingUserArtifactIdsList =
   ) as any as S.Schema<CodexTaskRunCreateSchemaPendingUserArtifactIdsList>;
 
 /** * `codex` - codex */
-export type CodexRuntimeAdapterEnum = "codex" | (string & {});
+export type CodexRuntimeAdapterEnum = "codex";
 export const CodexRuntimeAdapterEnum = /*@__PURE__*/ S.String;
 
 /** * `plan` - plan * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
@@ -1138,8 +1117,7 @@ export type CodexTaskRunCreateSchemaInitialPermissionModeEnum =
   | "plan"
   | "auto"
   | "read-only"
-  | "full-access"
-  | (string & {});
+  | "full-access";
 export const CodexTaskRunCreateSchemaInitialPermissionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1150,7 +1128,7 @@ export interface CodexTaskRunCreateSchema {
   /** Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
   relayed_mcp_servers?: CodexTaskRunCreateSchemaRelayedMcpServersList | null;
   /** Execution mode: 'interactive' for user-connected runs, 'background' for autonomous runs * `interactive` - interactive * `background` - background */
-  mode?: TaskExecutionModeEnum;
+  mode?: TaskExecutionModeEnum | (string & {});
   /** Git branch to checkout in the sandbox */
   branch?: string | null;
   /** ID of a previous run to resume from. Must belong to the same task. */
@@ -1164,23 +1142,25 @@ export interface CodexTaskRunCreateSchema {
   /** Optional custom base image for this cloud run's sandbox (Modal VM runtime only); takes precedence over the environment's image. */
   custom_image_id?: string;
   /** Whether pull requests for this run should be authored by the user or the bot. * `user` - user * `bot` - bot */
-  pr_authorship_mode?: PrAuthorshipModeEnum;
+  pr_authorship_mode?: PrAuthorshipModeEnum | (string & {});
   /** When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask. */
   auto_publish?: boolean | null;
   /** High-level source that triggered this run, used to distinguish manual and signal-based cloud runs. * `manual` - manual * `signal_report` - signal_report */
-  run_source?: RunSourceEnum;
+  run_source?: RunSourceEnum | (string & {});
   /** Optional signal report identifier when this run was started from Inbox. */
   signal_report_id?: string;
   /** Agent runtime adapter to launch for this run. Must be 'codex' for Codex runtimes. * `codex` - codex */
-  runtime_adapter?: CodexRuntimeAdapterEnum;
+  runtime_adapter?: CodexRuntimeAdapterEnum | (string & {});
   /** LLM model identifier to run in the Codex runtime. */
   model?: string;
   /** Reasoning effort to request for models that expose an effort control. * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-  reasoning_effort?: ReasoningEffortEnum;
+  reasoning_effort?: ReasoningEffortEnum | (string & {});
   /** Optional GitHub user token from PostHog Code for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
   github_user_token?: string;
   /** Initial permission mode for Codex runtimes. * `plan` - plan * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
-  initial_permission_mode?: CodexTaskRunCreateSchemaInitialPermissionModeEnum;
+  initial_permission_mode?:
+    | CodexTaskRunCreateSchemaInitialPermissionModeEnum
+    | (string & {});
   /** Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out. */
   rtk_enabled?: boolean | null;
 }
@@ -1220,7 +1200,7 @@ export const CodexTaskRunCreateSchema = /*@__PURE__*/ S.suspend(() =>
 
 export interface TaskRunResumeRequestSchema {
   /** Execution mode: 'interactive' for user-connected runs, 'background' for autonomous runs * `interactive` - interactive * `background` - background */
-  mode?: TaskExecutionModeEnum;
+  mode?: TaskExecutionModeEnum | (string & {});
   /** Git branch to checkout in the sandbox */
   branch?: string | null;
   /** ID of a previous run to resume from. Must belong to the same task. */
@@ -1232,9 +1212,9 @@ export interface TaskRunResumeRequestSchema {
   /** Optional custom base image for this cloud run's sandbox (Modal VM runtime only); takes precedence over the environment's image. */
   custom_image_id?: string;
   /** Whether pull requests for this run should be authored by the user or the bot. * `user` - user * `bot` - bot */
-  pr_authorship_mode?: PrAuthorshipModeEnum;
+  pr_authorship_mode?: PrAuthorshipModeEnum | (string & {});
   /** High-level source that triggered this run, used to distinguish manual and signal-based cloud runs. * `manual` - manual * `signal_report` - signal_report */
-  run_source?: RunSourceEnum;
+  run_source?: RunSourceEnum | (string & {});
   /** Optional signal report identifier when this run was started from Inbox. */
   signal_report_id?: string;
   /** Optional GitHub user token from PostHog Code for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
@@ -1294,8 +1274,7 @@ export type ArtifactTypeEnum =
   | "spreadsheet"
   | "dashboard"
   | "file"
-  | "github_pr"
-  | (string & {});
+  | "github_pr";
 export const ArtifactTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `slack_message` - slack_message * `slack_canvas` - slack_canvas * `slack_file` - slack_file * `document_connector` - document_connector * `github_pr` - github_pr */
@@ -1304,8 +1283,7 @@ export type AdapterEnum =
   | "slack_canvas"
   | "slack_file"
   | "document_connector"
-  | "github_pr"
-  | (string & {});
+  | "github_pr";
 export const AdapterEnum = /*@__PURE__*/ S.String;
 
 /** Optional metadata to persist with the living artifact. */
@@ -1326,9 +1304,9 @@ export interface TasksRunsLivingArtifactsCreateRequest {
   /** Human-readable artifact name, used as the title. */
   name: string;
   /** Artifact format or delivery surface to create, such as document, spreadsheet, slack_canvas, or file. * `slack_message` - slack_message * `slack_canvas` - slack_canvas * `document` - document * `spreadsheet` - spreadsheet * `dashboard` - dashboard * `file` - file * `github_pr` - github_pr */
-  artifact_type?: ArtifactTypeEnum;
+  artifact_type?: ArtifactTypeEnum | (string & {});
   /** Optional preferred external storage or delivery adapter. Slack adapters deliver into the mapped Slack thread; omitted Slack-run documents use Slack canvas, omitted Slack-run files and spreadsheets use Slack file upload, and document_connector uses a connected external document provider. * `slack_message` - slack_message * `slack_canvas` - slack_canvas * `slack_file` - slack_file * `document_connector` - document_connector * `github_pr` - github_pr */
-  adapter?: AdapterEnum;
+  adapter?: AdapterEnum | (string & {});
   /** Markdown or text content for the initial artifact version. */
   content?: string;
   /** Base64-encoded binary content for Slack file uploads or other external adapters. Prefer source_artifact_id or source_storage_path for large files that were already uploaded as run output artifacts. */
@@ -1369,7 +1347,7 @@ export const TasksRunsLivingArtifactsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TasksRunsLivingArtifactsCreateRequest>;
 
 /** * `active` - active * `failed` - failed */
-export type TaskArtifactStatusEnum = "active" | "failed" | (string & {});
+export type TaskArtifactStatusEnum = "active" | "failed";
 export const TaskArtifactStatusEnum = /*@__PURE__*/ S.String;
 
 export type TaskRunLivingArtifactResponseVersionsItemMap = {
@@ -1845,8 +1823,7 @@ export type TaskRunArtifactTypeEnum =
   | "artifact"
   | "tree_snapshot"
   | "user_attachment"
-  | "skill_bundle"
-  | (string & {});
+  | "skill_bundle";
 export const TaskRunArtifactTypeEnum = /*@__PURE__*/ S.String;
 
 export interface TaskStagedArtifactFinalizeUpload {
@@ -1855,7 +1832,7 @@ export interface TaskStagedArtifactFinalizeUpload {
   /** File name associated with the staged artifact */
   name?: string;
   /** Classification for the artifact * `plan` - plan * `context` - context * `reference` - reference * `output` - output * `artifact` - artifact * `tree_snapshot` - tree_snapshot * `user_attachment` - user_attachment * `skill_bundle` - skill_bundle */
-  type?: TaskRunArtifactTypeEnum;
+  type?: TaskRunArtifactTypeEnum | (string & {});
   /** Optional source label for the artifact, such as agent_output or user_attachment */
   source?: string;
   /** S3 object key returned by the prepare step */
@@ -1940,7 +1917,7 @@ export interface TaskStagedArtifactPrepareUpload {
   /** File name to associate with the staged artifact */
   name?: string;
   /** Classification for the artifact * `plan` - plan * `context` - context * `reference` - reference * `output` - output * `artifact` - artifact * `tree_snapshot` - tree_snapshot * `user_attachment` - user_attachment * `skill_bundle` - skill_bundle */
-  type?: TaskRunArtifactTypeEnum;
+  type?: TaskRunArtifactTypeEnum | (string & {});
   /** Optional source label for the artifact, such as agent_output or user_attachment */
   source?: string;
   /** Expected upload size in bytes (max 31457280 bytes) */
@@ -2122,12 +2099,11 @@ export type TaskRunStatusEnum =
   | "in_progress"
   | "completed"
   | "failed"
-  | "cancelled"
-  | (string & {});
+  | "cancelled";
 export const TaskRunStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `local` - Local * `cloud` - Cloud */
-export type TaskRunEnvironmentEnum = "local" | "cloud" | (string & {});
+export type TaskRunEnvironmentEnum = "local" | "cloud";
 export const TaskRunEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export interface TaskRunSummary {
@@ -2395,7 +2371,7 @@ export interface TasksUpdateRequest {
   /** Free-form description of the work to be done. Used as the prompt passed to the agent. */
   description?: string;
   /** PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). * `onboarding` - Onboarding * `error_tracking` - Error Tracking * `eval_clusters` - Eval Clusters * `user_created` - User Created * `automation` - Automation * `slack` - Slack * `support_queue` - Support Queue * `session_summaries` - Session Summaries * `posthog_ai` - PostHog AI * `experiments` - Experiments * `signal_report` - Signal Report * `signals_scout` - Signals Scout * `support_reply` - Support Reply * `hogdesk` - HogDesk * `review_hog` - ReviewHog * `image_builder` - Image Builder * `loop` - Loop * `mcp_analytics` - MCP Analytics */
-  origin_product?: OriginProductEnum;
+  origin_product?: OriginProductEnum | (string & {});
   /** Target GitHub repository in `organization/repo` format (e.g. `posthog/posthog-js`). */
   repository?: string | null;
   /** GitHub integration for this task. */
@@ -2417,11 +2393,11 @@ export interface TasksUpdateRequest {
   /** Branch the user has selected for this cloud task. Write-only and not persisted on the task itself: used only to reuse a matching pre-warmed sandbox Run on creation (the branch is otherwise carried on the run). Omit to match a warm Run on the default branch. */
   branch?: string | null;
   /** Selected runtime adapter ('claude' or 'codex'). Write-only and not persisted on the task: used only to reuse a pre-warmed Run started on the same runtime. A value differing from the warm Run's runtime skips reuse so the task isn't silently run on the wrong runtime. * `claude` - claude * `codex` - codex */
-  runtime_adapter?: RuntimeAdapterEnum | null;
+  runtime_adapter?: RuntimeAdapterEnum | (string & {}) | null;
   /** Selected LLM model identifier. Write-only; used only to reuse a warm Run started on the same model. */
   model?: string | null;
   /** Selected reasoning effort. Write-only; used only to reuse a warm Run started on the same effort. * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-  reasoning_effort?: ReasoningEffortEnum | null;
+  reasoning_effort?: ReasoningEffortEnum | (string & {}) | null;
   /** First user message to forward when creation reuses a pre-warmed Run. Write-only and not persisted on the task: lets clients deliver a message that differs from `description` (e.g. a resolved skill invocation with channel context folded in). Ignored when no warm Run is reused — cold creation takes the first message via the run start endpoint instead. */
   pending_user_message?: string | null;
   /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. */
@@ -2479,11 +2455,11 @@ export interface TasksWarmCreateRequest {
   /** Branch to check out in the warm sandbox. Defaults to the repository's default branch when omitted. */
   branch?: string | null;
   /** Agent runtime adapter to warm the sandbox on ('claude' or 'codex'). The warm Run starts the agent on this runtime so a matching submit reuses it; a submit selecting a different runtime falls through to a cold Run instead of reusing a mismatched warm session. * `claude` - claude * `codex` - codex */
-  runtime_adapter?: RuntimeAdapterEnum | null;
+  runtime_adapter?: RuntimeAdapterEnum | (string & {}) | null;
   /** LLM model identifier to warm the sandbox on. A submit selecting a different model won't reuse this warm Run. */
   model?: string | null;
   /** Reasoning effort to warm the sandbox on for models that expose an effort control. * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-  reasoning_effort?: ReasoningEffortEnum | null;
+  reasoning_effort?: ReasoningEffortEnum | (string & {}) | null;
   /** Optional sandbox environment to provision before the task is submitted. */
   sandbox_environment_id?: string | null;
   /** Optional custom base image to provision before the task is submitted; takes precedence over the environment's image. */

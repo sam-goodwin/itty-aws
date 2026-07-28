@@ -119,14 +119,10 @@ export type CheckResponseDomainsItemReason =
   | "extension_not_supported"
   | "extension_disallows_registration"
   | "domain_premium"
-  | "domain_unavailable"
-  | (string & {});
+  | "domain_unavailable";
 export const CheckResponseDomainsItemReason = /*@__PURE__*/ S.String;
 
-export type CheckResponseDomainsItemTier =
-  | "standard"
-  | "premium"
-  | (string & {});
+export type CheckResponseDomainsItemTier = "standard" | "premium";
 export const CheckResponseDomainsItemTier = /*@__PURE__*/ S.String;
 
 export interface CheckResponseDomainsItem {
@@ -245,8 +241,7 @@ export type RegistrationStatusGetResponseState =
   | "action_required"
   | "blocked"
   | "succeeded"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const RegistrationStatusGetResponseState = /*@__PURE__*/ S.String;
 
 export type RegistrationStatusGetResponseContextMap = {
@@ -344,8 +339,7 @@ export type UpdateStatusGetResponseState =
   | "action_required"
   | "blocked"
   | "succeeded"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const UpdateStatusGetResponseState = /*@__PURE__*/ S.String;
 
 export type UpdateStatusGetResponseContextMap = {
@@ -468,10 +462,7 @@ export const DomainsListResultItemRegistrantContact = /*@__PURE__*/ S.suspend(
   identifier: "DomainsListResultItemRegistrantContact",
 }) as any as S.Schema<DomainsListResultItemRegistrantContact>;
 
-export type DomainsListResultItemTransferInAcceptFoa =
-  | "needed"
-  | "ok"
-  | (string & {});
+export type DomainsListResultItemTransferInAcceptFoa = "needed" | "ok";
 export const DomainsListResultItemTransferInAcceptFoa = /*@__PURE__*/ S.String;
 
 export type DomainsListResultItemTransferInApproveTransfer =
@@ -480,16 +471,14 @@ export type DomainsListResultItemTransferInApproveTransfer =
   | "pending"
   | "trying"
   | "rejected"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const DomainsListResultItemTransferInApproveTransfer =
   /*@__PURE__*/ S.String;
 
 export type DomainsListResultItemTransferInDisablePrivacy =
   | "needed"
   | "ok"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const DomainsListResultItemTransferInDisablePrivacy =
   /*@__PURE__*/ S.String;
 
@@ -498,8 +487,7 @@ export type DomainsListResultItemTransferInEnterAuthCode =
   | "ok"
   | "pending"
   | "trying"
-  | "rejected"
-  | (string & {});
+  | "rejected";
 export const DomainsListResultItemTransferInEnterAuthCode =
   /*@__PURE__*/ S.String;
 
@@ -508,8 +496,7 @@ export type DomainsListResultItemTransferInUnlockDomain =
   | "ok"
   | "pending"
   | "trying"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const DomainsListResultItemTransferInUnlockDomain =
   /*@__PURE__*/ S.String;
 
@@ -755,7 +742,7 @@ export const RegistrationsCreateRequestContacts = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsCreateRequestContacts",
 }) as any as S.Schema<RegistrationsCreateRequestContacts>;
 
-export type RegistrationsCreateRequestPrivacyMode = "redaction" | (string & {});
+export type RegistrationsCreateRequestPrivacyMode = "redaction";
 export const RegistrationsCreateRequestPrivacyMode = /*@__PURE__*/ S.String;
 
 export interface RegistrationsCreateRequest {
@@ -769,7 +756,7 @@ export interface RegistrationsCreateRequest {
   /** Contact data for the registration request. */
   contacts?: RegistrationsCreateRequestContacts;
   /** WHOIS privacy mode for the registration. Defaults to `redaction`. */
-  privacyMode?: RegistrationsCreateRequestPrivacyMode;
+  privacyMode?: RegistrationsCreateRequestPrivacyMode | (string & {});
   /** Number of years to register (1–10). If omitted, defaults to the */
   years?: number;
 }
@@ -818,8 +805,7 @@ export type RegistrationsCreateResponseState =
   | "action_required"
   | "blocked"
   | "succeeded"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const RegistrationsCreateResponseState = /*@__PURE__*/ S.String;
 
 export type RegistrationsCreateResponseContextMap = {
@@ -873,7 +859,7 @@ export const RegistrationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsCreateResponse",
 }) as any as S.Schema<RegistrationsCreateResponse>;
 
-export type RegistrationsEditRequestPrefer = "respond-async" | (string & {});
+export type RegistrationsEditRequestPrefer = "respond-async";
 export const RegistrationsEditRequestPrefer = /*@__PURE__*/ S.String;
 
 export interface RegistrationsEditRequest {
@@ -881,7 +867,7 @@ export interface RegistrationsEditRequest {
   accountId: string;
   /** Fully qualified domain name (FQDN) including the extension */
   domainName: string;
-  Prefer?: RegistrationsEditRequestPrefer;
+  Prefer?: RegistrationsEditRequestPrefer | (string & {});
   /** Enable or disable automatic renewal. */
   autoRenew?: boolean;
 }
@@ -925,8 +911,7 @@ export type RegistrationsEditResponseState =
   | "action_required"
   | "blocked"
   | "succeeded"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const RegistrationsEditResponseState = /*@__PURE__*/ S.String;
 
 export type RegistrationsEditResponseContextMap = {
@@ -1003,7 +988,7 @@ export const RegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsGetRequest",
 }) as any as S.Schema<RegistrationsGetRequest>;
 
-export type RegistrationsGetResponsePrivacyMode = "redaction" | (string & {});
+export type RegistrationsGetResponsePrivacyMode = "redaction";
 export const RegistrationsGetResponsePrivacyMode = /*@__PURE__*/ S.String;
 
 export type RegistrationsGetResponseStatus =
@@ -1012,8 +997,7 @@ export type RegistrationsGetResponseStatus =
   | "expired"
   | "suspended"
   | "redemption_period"
-  | "pending_delete"
-  | (string & {});
+  | "pending_delete";
 export const RegistrationsGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1049,14 +1033,13 @@ export const RegistrationsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsGetResponse",
 }) as any as S.Schema<RegistrationsGetResponse>;
 
-export type RegistrationsListRequestDirection = "asc" | "desc" | (string & {});
+export type RegistrationsListRequestDirection = "asc" | "desc";
 export const RegistrationsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type RegistrationsListRequestSortBy =
   | "registry_created_at"
   | "registry_expires_at"
-  | "name"
-  | (string & {});
+  | "name";
 export const RegistrationsListRequestSortBy = /*@__PURE__*/ S.String;
 
 export interface RegistrationsListRequest {
@@ -1065,11 +1048,11 @@ export interface RegistrationsListRequest {
   /** Opaque token from a previous response's `result_info.cursor`. */
   cursor?: string;
   /** Sort direction for results. Defaults to ascending order. */
-  direction?: RegistrationsListRequestDirection;
+  direction?: RegistrationsListRequestDirection | (string & {});
   /** Number of items to return per page. */
   perPage?: number;
   /** Column to sort results by. Defaults to registration date */
-  sortBy?: RegistrationsListRequestSortBy;
+  sortBy?: RegistrationsListRequestSortBy | (string & {});
 }
 export const RegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1091,9 +1074,7 @@ export const RegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsListRequest",
 }) as any as S.Schema<RegistrationsListRequest>;
 
-export type RegistrationsListResultItemPrivacyMode =
-  | "redaction"
-  | (string & {});
+export type RegistrationsListResultItemPrivacyMode = "redaction";
 export const RegistrationsListResultItemPrivacyMode = /*@__PURE__*/ S.String;
 
 export type RegistrationsListResultItemStatus =
@@ -1102,8 +1083,7 @@ export type RegistrationsListResultItemStatus =
   | "expired"
   | "suspended"
   | "redemption_period"
-  | "pending_delete"
-  | (string & {});
+  | "pending_delete";
 export const RegistrationsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface RegistrationsListResultItem {
@@ -1208,14 +1188,10 @@ export type SearchResponseDomainsItemReason =
   | "extension_not_supported"
   | "extension_disallows_registration"
   | "domain_premium"
-  | "domain_unavailable"
-  | (string & {});
+  | "domain_unavailable";
 export const SearchResponseDomainsItemReason = /*@__PURE__*/ S.String;
 
-export type SearchResponseDomainsItemTier =
-  | "standard"
-  | "premium"
-  | (string & {});
+export type SearchResponseDomainsItemTier = "standard" | "premium";
 export const SearchResponseDomainsItemTier = /*@__PURE__*/ S.String;
 
 export interface SearchResponseDomainsItem {

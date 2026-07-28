@@ -90,8 +90,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type IndexesCreateRequestConfigIndexDimensionConfigurationMetric =
   | "cosine"
   | "euclidean"
-  | "dot-product"
-  | (string & {});
+  | "dot-product";
 export const IndexesCreateRequestConfigIndexDimensionConfigurationMetric =
   /*@__PURE__*/ S.String;
 
@@ -99,7 +98,9 @@ export interface IndexesCreateRequestConfigIndexDimensionConfiguration {
   /** Specifies the number of dimensions for the index */
   dimensions: number;
   /** Specifies the type of metric to use calculating distance. */
-  metric: IndexesCreateRequestConfigIndexDimensionConfigurationMetric;
+  metric:
+    | IndexesCreateRequestConfigIndexDimensionConfigurationMetric
+    | (string & {});
 }
 export const IndexesCreateRequestConfigIndexDimensionConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -116,14 +117,15 @@ export type IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset =
   | "@cf/baai/bge-base-en-v1.5"
   | "@cf/baai/bge-large-en-v1.5"
   | "openai/text-embedding-ada-002"
-  | "cohere/embed-multilingual-v2.0"
-  | (string & {});
+  | "cohere/embed-multilingual-v2.0";
 export const IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset =
   /*@__PURE__*/ S.String;
 
 export interface IndexesCreateRequestConfigVectorizeIndexPresetConfiguration {
   /** Specifies the preset to use for the index. */
-  preset: IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset;
+  preset:
+    | IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset
+    | (string & {});
 }
 export const IndexesCreateRequestConfigVectorizeIndexPresetConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -172,8 +174,7 @@ export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
 export type IndexesCreateResponseConfigMetric =
   | "cosine"
   | "euclidean"
-  | "dot-product"
-  | (string & {});
+  | "dot-product";
 export const IndexesCreateResponseConfigMetric = /*@__PURE__*/ S.String;
 
 export interface IndexesCreateResponseConfig {
@@ -217,8 +218,7 @@ export const CreateIndexResponse = /*@__PURE__*/ S.suspend(() =>
 export type IndexesMetadataIndexCreateRequestIndexType =
   | "string"
   | "number"
-  | "boolean"
-  | (string & {});
+  | "boolean";
 export const IndexesMetadataIndexCreateRequestIndexType =
   /*@__PURE__*/ S.String;
 
@@ -227,7 +227,7 @@ export interface CreateIndexMetadataIndexRequest {
   accountId: string;
   indexName: string;
   /** Specifies the type of metadata property to index. */
-  indexType: IndexesMetadataIndexCreateRequestIndexType;
+  indexType: IndexesMetadataIndexCreateRequestIndexType | (string & {});
   /** Specifies the metadata property to index. */
   propertyName: string;
 }
@@ -435,8 +435,7 @@ export const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
 export type IndexesGetResponseConfigMetric =
   | "cosine"
   | "euclidean"
-  | "dot-product"
-  | (string & {});
+  | "dot-product";
 export const IndexesGetResponseConfigMetric = /*@__PURE__*/ S.String;
 
 export interface IndexesGetResponseConfig {
@@ -521,10 +520,7 @@ export const InfoIndexResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InfoIndexResponse",
 }) as any as S.Schema<InfoIndexResponse>;
 
-export type IndexesInsertRequestUnparsableBehavior =
-  | "error"
-  | "discard"
-  | (string & {});
+export type IndexesInsertRequestUnparsableBehavior = "error" | "discard";
 export const IndexesInsertRequestUnparsableBehavior = /*@__PURE__*/ S.String;
 
 export interface InsertIndexRequest {
@@ -532,7 +528,7 @@ export interface InsertIndexRequest {
   accountId: string;
   indexName: string;
   /** Behavior for ndjson parse failures. */
-  unparsableBehavior?: IndexesInsertRequestUnparsableBehavior;
+  unparsableBehavior?: IndexesInsertRequestUnparsableBehavior | (string & {});
   /** Vectors as newline-delimited JSON (application/x-ndjson), one vector object per line. */
   body: string;
 }
@@ -596,8 +592,7 @@ export const ListIndexesRequest = /*@__PURE__*/ S.suspend(() =>
 export type IndexesListResultItemConfigMetric =
   | "cosine"
   | "euclidean"
-  | "dot-product"
-  | (string & {});
+  | "dot-product";
 export const IndexesListResultItemConfigMetric = /*@__PURE__*/ S.String;
 
 export interface IndexesListResultItemConfig {
@@ -682,8 +677,7 @@ export const ListIndexMetadataIndexesRequest = /*@__PURE__*/ S.suspend(() =>
 export type IndexesMetadataIndexListResponseMetadataIndexesItemIndexType =
   | "string"
   | "number"
-  | "boolean"
-  | (string & {});
+  | "boolean";
 export const IndexesMetadataIndexListResponseMetadataIndexesItemIndexType =
   /*@__PURE__*/ S.String;
 
@@ -807,11 +801,7 @@ export const IndexesQueryRequestVectorList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IndexesQueryRequestVectorList>;
 
-export type IndexesQueryRequestReturnMetadata =
-  | "none"
-  | "indexed"
-  | "all"
-  | (string & {});
+export type IndexesQueryRequestReturnMetadata = "none" | "indexed" | "all";
 export const IndexesQueryRequestReturnMetadata = /*@__PURE__*/ S.String;
 
 export interface QueryIndexRequest {
@@ -823,7 +813,7 @@ export interface QueryIndexRequest {
   /** A metadata filter expression used to limit nearest neighbor results. */
   filter?: unknown;
   /** Whether to return no metadata, indexed metadata or all metadata associated with the closest vectors. */
-  returnMetadata?: IndexesQueryRequestReturnMetadata;
+  returnMetadata?: IndexesQueryRequestReturnMetadata | (string & {});
   /** Whether to return the values associated with the closest vectors. */
   returnValues?: boolean;
   /** The number of nearest neighbors to find. */
@@ -899,10 +889,7 @@ export const QueryIndexResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryIndexResponse",
 }) as any as S.Schema<QueryIndexResponse>;
 
-export type IndexesUpsertRequestUnparsableBehavior =
-  | "error"
-  | "discard"
-  | (string & {});
+export type IndexesUpsertRequestUnparsableBehavior = "error" | "discard";
 export const IndexesUpsertRequestUnparsableBehavior = /*@__PURE__*/ S.String;
 
 export interface UpsertIndexRequest {
@@ -910,7 +897,7 @@ export interface UpsertIndexRequest {
   accountId: string;
   indexName: string;
   /** Behavior for ndjson parse failures. */
-  unparsableBehavior?: IndexesUpsertRequestUnparsableBehavior;
+  unparsableBehavior?: IndexesUpsertRequestUnparsableBehavior | (string & {});
   /** Vectors as newline-delimited JSON (application/x-ndjson), one vector object per line. */
   body: string;
 }

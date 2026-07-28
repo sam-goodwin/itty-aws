@@ -124,7 +124,7 @@ export type ResourceName = string;
 export type Arn = string;
 export type Destination = string;
 export type Port = number;
-export type Protocol = "TCP" | "ICMP" | (string & {});
+export type Protocol = "TCP" | "ICMP";
 export const Protocol = /*@__PURE__*/ S.String;
 
 export type PacketSize = number;
@@ -139,7 +139,7 @@ export interface CreateMonitorProbeInput {
   sourceArn: string;
   destination: string;
   destinationPort?: number;
-  protocol: Protocol;
+  protocol: Protocol | (string & {});
   packetSize?: number;
   probeTags?: { [key: string]: string | undefined };
 }
@@ -193,8 +193,7 @@ export type MonitorState =
   | "ACTIVE"
   | "INACTIVE"
   | "ERROR"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const MonitorState = /*@__PURE__*/ S.String;
 
 export interface CreateMonitorOutput {
@@ -219,7 +218,7 @@ export interface ProbeInput {
   sourceArn: string;
   destination: string;
   destinationPort?: number;
-  protocol: Protocol;
+  protocol: Protocol | (string & {});
   packetSize?: number;
   tags?: { [key: string]: string | undefined };
 }
@@ -259,7 +258,7 @@ export const CreateProbeInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProbeInput",
 }) as any as S.Schema<CreateProbeInput>;
 export type ProbeId = string;
-export type AddressFamily = "IPV4" | "IPV6" | (string & {});
+export type AddressFamily = "IPV4" | "IPV6";
 export const AddressFamily = /*@__PURE__*/ S.String;
 
 export type VpcId = string;
@@ -269,8 +268,7 @@ export type ProbeState =
   | "INACTIVE"
   | "ERROR"
   | "DELETING"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const ProbeState = /*@__PURE__*/ S.String;
 
 export type Iso8601Timestamp = Date;
@@ -665,10 +663,10 @@ export const UpdateMonitorOutput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProbeInput {
   monitorName: string;
   probeId: string;
-  state?: ProbeState;
+  state?: ProbeState | (string & {});
   destination?: string;
   destinationPort?: number;
-  protocol?: Protocol;
+  protocol?: Protocol | (string & {});
   packetSize?: number;
 }
 export const UpdateProbeInput = /*@__PURE__*/ S.suspend(() =>

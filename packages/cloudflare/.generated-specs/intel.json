@@ -1215,6 +1215,23 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.intel#DnsListRequestStartEndParams": {
+      "type": "structure",
+      "members": {
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defaults to the current date."
+          }
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defaults to 30 days before the end parameter value."
+          }
+        }
+      }
+    },
     "com.cloudflare.intel#DnsListRequest": {
       "type": "structure",
       "members": {
@@ -1246,18 +1263,10 @@
             "smithy.api#httpQuery": "per_page"
           }
         },
-        "start_end_params_end": {
-          "target": "smithy.api#String",
+        "start_end_params": {
+          "target": "com.cloudflare.intel#DnsListRequestStartEndParams",
           "traits": {
-            "smithy.api#documentation": "Defaults to the current date.",
-            "smithy.api#httpQuery": "start_end_params.end"
-          }
-        },
-        "start_end_params_start": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Defaults to 30 days before the end parameter value.",
-            "smithy.api#httpQuery": "start_end_params.start"
+            "com.cloudflare.protocols#deepQuery": "start_end_params"
           }
         }
       },

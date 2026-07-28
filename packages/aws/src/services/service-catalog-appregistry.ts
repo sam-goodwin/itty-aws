@@ -160,21 +160,20 @@ export const AssociateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateAttributeGroupResponse",
 }) as any as S.Schema<AssociateAttributeGroupResponse>;
-export type ResourceType = "CFN_STACK" | "RESOURCE_TAG_VALUE" | (string & {});
+export type ResourceType = "CFN_STACK" | "RESOURCE_TAG_VALUE";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type ResourceSpecifier = string;
 export type AssociationOption =
   | "APPLY_APPLICATION_TAG"
-  | "SKIP_APPLICATION_TAG"
-  | (string & {});
+  | "SKIP_APPLICATION_TAG";
 export const AssociationOption = /*@__PURE__*/ S.String;
 
 export type Options = AssociationOption[];
 export const Options = /*@__PURE__*/ S.Array(AssociationOption);
 export interface AssociateResourceRequest {
   application: string;
-  resourceType: ResourceType;
+  resourceType: ResourceType | (string & {});
   resource: string;
   options?: AssociationOption[];
 }
@@ -489,7 +488,7 @@ export const DisassociateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisassociateAttributeGroupResponse>;
 export interface DisassociateResourceRequest {
   application: string;
-  resourceType: ResourceType;
+  resourceType: ResourceType | (string & {});
   resource: string;
 }
 export const DisassociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -549,8 +548,7 @@ export type ResourceGroupState =
   | "CREATE_FAILED"
   | "UPDATING"
   | "UPDATE_COMPLETE"
-  | "UPDATE_FAILED"
-  | (string & {});
+  | "UPDATE_FAILED";
 export const ResourceGroupState = /*@__PURE__*/ S.String;
 
 export interface ResourceGroup {
@@ -612,17 +610,19 @@ export type ResourceItemStatus =
   | "SUCCESS"
   | "FAILED"
   | "IN_PROGRESS"
-  | "SKIPPED"
-  | (string & {});
+  | "SKIPPED";
 export const ResourceItemStatus = /*@__PURE__*/ S.String;
 
-export type GetAssociatedResourceFilter = ResourceItemStatus[];
+export type GetAssociatedResourceFilter = (
+  | ResourceItemStatus
+  | (string & {})
+)[];
 export const GetAssociatedResourceFilter =
   /*@__PURE__*/ S.Array(ResourceItemStatus);
 export type MaxResults = number;
 export interface GetAssociatedResourceRequest {
   application: string;
-  resourceType: ResourceType;
+  resourceType: ResourceType | (string & {});
   resource: string;
   nextToken?: string;
   resourceTagStatus?: ResourceItemStatus[];
@@ -678,11 +678,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
     integrations: S.optional(ResourceIntegrations),
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
-export type ApplicationTagStatus =
-  | "IN_PROGRESS"
-  | "SUCCESS"
-  | "FAILURE"
-  | (string & {});
+export type ApplicationTagStatus = "IN_PROGRESS" | "SUCCESS" | "FAILURE";
 export const ApplicationTagStatus = /*@__PURE__*/ S.String;
 
 export type ResourcesListItemErrorMessage = string;
@@ -1108,7 +1104,7 @@ export const PutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutConfigurationResponse",
 }) as any as S.Schema<PutConfigurationResponse>;
 export interface SyncResourceRequest {
-  resourceType: ResourceType;
+  resourceType: ResourceType | (string & {});
   resource: string;
 }
 export const SyncResourceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1128,7 +1124,7 @@ export const SyncResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SyncResourceRequest",
 }) as any as S.Schema<SyncResourceRequest>;
-export type SyncAction = "START_SYNC" | "NO_ACTION" | (string & {});
+export type SyncAction = "START_SYNC" | "NO_ACTION";
 export const SyncAction = /*@__PURE__*/ S.String;
 
 export interface SyncResourceResponse {

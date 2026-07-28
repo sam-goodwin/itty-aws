@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface GetAccountsPromotionsRequest {
@@ -65,18 +65,10 @@ export interface GetAccountsPromotionsRequest {
   name: string;
 }
 export const GetAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "promotions/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsPromotionsRequest",
-}) as any as S.Schema<GetAccountsPromotionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"promotions/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsPromotionsRequest" }) as any as S.Schema<GetAccountsPromotionsRequest>;
 
 /** A message that represents custom attributes. Exactly one of `value` or `group_values` must not be empty. */
 export interface CustomAttribute {
@@ -88,53 +80,20 @@ export interface CustomAttribute {
   value?: string;
 }
 export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupValues: S.optional(S.suspend(() => CustomAttributeList)),
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomAttribute",
-}) as any as S.Schema<CustomAttribute>;
+S.Struct({
+  "groupValues": S.optional(S.suspend(() => CustomAttributeList)),
+  "name": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(
-  CustomAttribute,
-) as any as S.Schema<CustomAttributeList>;
+export const CustomAttributeList = /*@__PURE__*/ S.Array(CustomAttribute) as any as S.Schema<CustomAttributeList>;
 
-export type DestinationStatusReportingContextEnum =
-  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISCOVERY_ADS"
-  | "DEMAND_GEN_ADS"
-  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-  | "VIDEO_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "VEHICLE_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LISTINGS_UCP_CHECKOUT"
-  | "FREE_LOCAL_LISTINGS"
-  | "FREE_LOCAL_VEHICLE_LISTINGS"
-  | "YOUTUBE_AFFILIATE"
-  | "YOUTUBE_SHOPPING"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | "PRODUCT_REVIEWS"
-  | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+export type DestinationStatusReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
 export const DestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
-export type DestinationStatusStatusEnum =
-  | "STATE_UNSPECIFIED"
-  | "IN_REVIEW"
-  | "REJECTED"
-  | "LIVE"
-  | "STOPPED"
-  | "EXPIRED"
-  | "PENDING"
-  | (string & {});
+export type DestinationStatusStatusEnum = "STATE_UNSPECIFIED" | "IN_REVIEW" | "REJECTED" | "LIVE" | "STOPPED" | "EXPIRED" | "PENDING";
 export const DestinationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The status for the specified destination. */
@@ -145,55 +104,23 @@ export interface DestinationStatus {
   status?: DestinationStatusStatusEnum;
 }
 export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportingContext: S.optional(DestinationStatusReportingContextEnum),
-    status: S.optional(DestinationStatusStatusEnum),
-  }),
-).annotate({
-  identifier: "DestinationStatus",
-}) as any as S.Schema<DestinationStatus>;
+S.Struct({
+  "reportingContext": S.optional(DestinationStatusReportingContextEnum),
+  "status": S.optional(DestinationStatusStatusEnum),
+}),
+).annotate({ identifier: "DestinationStatus" }) as any as S.Schema<DestinationStatus>;
 
 export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
-export const DestinationStatusList = /*@__PURE__*/ S.Array(
-  DestinationStatus,
-) as any as S.Schema<DestinationStatusList>;
+export const DestinationStatusList = /*@__PURE__*/ S.Array(DestinationStatus) as any as S.Schema<DestinationStatusList>;
 
-export type ItemLevelIssueSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "NOT_IMPACTED"
-  | "DEMOTED"
-  | "DISAPPROVED"
-  | (string & {});
+export type ItemLevelIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "NOT_IMPACTED" | "DEMOTED" | "DISAPPROVED";
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
-export type ItemLevelIssueReportingContextEnum =
-  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISCOVERY_ADS"
-  | "DEMAND_GEN_ADS"
-  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-  | "VIDEO_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "VEHICLE_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LISTINGS_UCP_CHECKOUT"
-  | "FREE_LOCAL_LISTINGS"
-  | "FREE_LOCAL_VEHICLE_LISTINGS"
-  | "YOUTUBE_AFFILIATE"
-  | "YOUTUBE_SHOPPING"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | "PRODUCT_REVIEWS"
-  | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+export type ItemLevelIssueReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
 export const ItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The issue associated with the promotion. */
 export interface ItemLevelIssue {
@@ -217,23 +144,21 @@ export interface ItemLevelIssue {
   detail?: string;
 }
 export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.optional(ItemLevelIssueSeverityEnum),
-    reportingContext: S.optional(ItemLevelIssueReportingContextEnum),
-    documentation: S.optional(S.String),
-    resolution: S.optional(S.String),
-    description: S.optional(S.String),
-    applicableCountries: S.optional(StringList),
-    attribute: S.optional(S.String),
-    code: S.optional(S.String),
-    detail: S.optional(S.String),
-  }),
+S.Struct({
+  "severity": S.optional(ItemLevelIssueSeverityEnum),
+  "reportingContext": S.optional(ItemLevelIssueReportingContextEnum),
+  "documentation": S.optional(S.String),
+  "resolution": S.optional(S.String),
+  "description": S.optional(S.String),
+  "applicableCountries": S.optional(StringList),
+  "attribute": S.optional(S.String),
+  "code": S.optional(S.String),
+  "detail": S.optional(S.String),
+}),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
 export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
-export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
-  ItemLevelIssue,
-) as any as S.Schema<ItemLevelIssueList>;
+export const ItemLevelIssueList = /*@__PURE__*/ S.Array(ItemLevelIssue) as any as S.Schema<ItemLevelIssueList>;
 
 /** The status of the promotion. */
 export interface PromotionStatus {
@@ -247,52 +172,25 @@ export interface PromotionStatus {
   itemLevelIssues?: ItemLevelIssueList;
 }
 export const PromotionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastUpdateDate: S.optional(S.String),
-    creationDate: S.optional(S.String),
-    destinationStatuses: S.optional(DestinationStatusList),
-    itemLevelIssues: S.optional(ItemLevelIssueList),
-  }),
-).annotate({
-  identifier: "PromotionStatus",
-}) as any as S.Schema<PromotionStatus>;
+S.Struct({
+  "lastUpdateDate": S.optional(S.String),
+  "creationDate": S.optional(S.String),
+  "destinationStatuses": S.optional(DestinationStatusList),
+  "itemLevelIssues": S.optional(ItemLevelIssueList),
+}),
+).annotate({ identifier: "PromotionStatus" }) as any as S.Schema<PromotionStatus>;
 
-export type PromotionRedemptionChannelItemEnum =
-  | "REDEMPTION_CHANNEL_UNSPECIFIED"
-  | "IN_STORE"
-  | "ONLINE"
-  | (string & {});
+export type PromotionRedemptionChannelItemEnum = "REDEMPTION_CHANNEL_UNSPECIFIED" | "IN_STORE" | "ONLINE";
 export const PromotionRedemptionChannelItemEnum = /*@__PURE__*/ S.String;
 
-export type PromotionRedemptionChannelItemEnumList =
-  ReadonlyArray<PromotionRedemptionChannelItemEnum>;
-export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
-  PromotionRedemptionChannelItemEnum,
-) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
+export type PromotionRedemptionChannelItemEnumList = ReadonlyArray<PromotionRedemptionChannelItemEnum>;
+export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(PromotionRedemptionChannelItemEnum) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
 
-export type AttributesPromotionDestinationsItemEnum =
-  | "DESTINATION_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LOCAL_LISTINGS"
-  | "YOUTUBE_SHOPPING"
-  | "YOUTUBE_SHOPPING_CHECKOUT"
-  | "YOUTUBE_AFFILIATE"
-  | "FREE_VEHICLE_LISTINGS"
-  | "VEHICLE_ADS"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | (string & {});
+export type AttributesPromotionDestinationsItemEnum = "DESTINATION_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LOCAL_LISTINGS" | "YOUTUBE_SHOPPING" | "YOUTUBE_SHOPPING_CHECKOUT" | "YOUTUBE_AFFILIATE" | "FREE_VEHICLE_LISTINGS" | "VEHICLE_ADS" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL";
 export const AttributesPromotionDestinationsItemEnum = /*@__PURE__*/ S.String;
 
-export type AttributesPromotionDestinationsItemEnumList =
-  ReadonlyArray<AttributesPromotionDestinationsItemEnum>;
-export const AttributesPromotionDestinationsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    AttributesPromotionDestinationsItemEnum,
-  ) as any as S.Schema<AttributesPromotionDestinationsItemEnumList>;
+export type AttributesPromotionDestinationsItemEnumList = ReadonlyArray<AttributesPromotionDestinationsItemEnum>;
+export const AttributesPromotionDestinationsItemEnumList = /*@__PURE__*/ S.Array(AttributesPromotionDestinationsItemEnum) as any as S.Schema<AttributesPromotionDestinationsItemEnumList>;
 
 /** The price represented as a number and currency. */
 export interface Price {
@@ -302,17 +200,13 @@ export interface Price {
   amountMicros?: string;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyCode: S.optional(S.String),
-    amountMicros: S.optional(S.String),
-  }),
+S.Struct({
+  "currencyCode": S.optional(S.String),
+  "amountMicros": S.optional(S.String),
+}),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
-export type AttributesEventApplicabilityEnum =
-  | "EVENT_APPLICABILITY_UNSPECIFIED"
-  | "SITEWIDE"
-  | "SPECIFIC_CATEGORIES"
-  | (string & {});
+export type AttributesEventApplicabilityEnum = "EVENT_APPLICABILITY_UNSPECIFIED" | "SITEWIDE" | "SPECIFIC_CATEGORIES";
 export const AttributesEventApplicabilityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
@@ -323,67 +217,28 @@ export interface Interval {
   endTime?: string;
 }
 export const Interval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
-export type AttributesRedemptionRestrictionEnum =
-  | "REDEMPTION_RESTRICTION_UNSPECIFIED"
-  | "SUBSCRIBE"
-  | "FIRST_ORDER"
-  | "SIGNUP_FOR_EMAIL"
-  | "SIGNUP_FOR_TEXT"
-  | "CUSTOM"
-  | (string & {});
+export type AttributesRedemptionRestrictionEnum = "REDEMPTION_RESTRICTION_UNSPECIFIED" | "SUBSCRIBE" | "FIRST_ORDER" | "SIGNUP_FOR_EMAIL" | "SIGNUP_FOR_TEXT" | "CUSTOM";
 export const AttributesRedemptionRestrictionEnum = /*@__PURE__*/ S.String;
 
-export type AttributesOfferTypeEnum =
-  | "OFFER_TYPE_UNSPECIFIED"
-  | "NO_CODE"
-  | "GENERIC_CODE"
-  | (string & {});
+export type AttributesOfferTypeEnum = "OFFER_TYPE_UNSPECIFIED" | "NO_CODE" | "GENERIC_CODE";
 export const AttributesOfferTypeEnum = /*@__PURE__*/ S.String;
 
-export type AttributesCouponValueTypeEnum =
-  | "COUPON_VALUE_TYPE_UNSPECIFIED"
-  | "MONEY_OFF"
-  | "PERCENT_OFF"
-  | "BUY_M_GET_N_MONEY_OFF"
-  | "BUY_M_GET_N_PERCENT_OFF"
-  | "BUY_M_GET_MONEY_OFF"
-  | "BUY_M_GET_PERCENT_OFF"
-  | "FREE_GIFT"
-  | "FREE_GIFT_WITH_VALUE"
-  | "FREE_GIFT_WITH_ITEM_ID"
-  | "FREE_SHIPPING_STANDARD"
-  | "FREE_SHIPPING_OVERNIGHT"
-  | "FREE_SHIPPING_TWO_DAY"
-  | "MONEY_OFF_RANGE"
-  | "PERCENT_OFF_RANGE"
-  | (string & {});
+export type AttributesCouponValueTypeEnum = "COUPON_VALUE_TYPE_UNSPECIFIED" | "MONEY_OFF" | "PERCENT_OFF" | "BUY_M_GET_N_MONEY_OFF" | "BUY_M_GET_N_PERCENT_OFF" | "BUY_M_GET_MONEY_OFF" | "BUY_M_GET_PERCENT_OFF" | "FREE_GIFT" | "FREE_GIFT_WITH_VALUE" | "FREE_GIFT_WITH_ITEM_ID" | "FREE_SHIPPING_STANDARD" | "FREE_SHIPPING_OVERNIGHT" | "FREE_SHIPPING_TWO_DAY" | "MONEY_OFF_RANGE" | "PERCENT_OFF_RANGE";
 export const AttributesCouponValueTypeEnum = /*@__PURE__*/ S.String;
 
-export type AttributesStoreApplicabilityEnum =
-  | "STORE_APPLICABILITY_UNSPECIFIED"
-  | "ALL_STORES"
-  | "SPECIFIC_STORES"
-  | (string & {});
+export type AttributesStoreApplicabilityEnum = "STORE_APPLICABILITY_UNSPECIFIED" | "ALL_STORES" | "SPECIFIC_STORES";
 export const AttributesStoreApplicabilityEnum = /*@__PURE__*/ S.String;
 
-export type AttributesAudienceEnum =
-  | "AUDIENCE_UNSPECIFIED"
-  | "NEW_CUSTOMERS"
-  | "LOCATION"
-  | (string & {});
+export type AttributesAudienceEnum = "AUDIENCE_UNSPECIFIED" | "NEW_CUSTOMERS" | "LOCATION";
 export const AttributesAudienceEnum = /*@__PURE__*/ S.String;
 
-export type AttributesProductApplicabilityEnum =
-  | "PRODUCT_APPLICABILITY_UNSPECIFIED"
-  | "ALL_PRODUCTS"
-  | "SPECIFIC_PRODUCTS"
-  | (string & {});
+export type AttributesProductApplicabilityEnum = "PRODUCT_APPLICABILITY_UNSPECIFIED" | "ALL_PRODUCTS" | "SPECIFIC_PRODUCTS";
 export const AttributesProductApplicabilityEnum = /*@__PURE__*/ S.String;
 
 /** Attributes. */
@@ -471,51 +326,49 @@ export interface Attributes {
   freeGiftDescription?: string;
 }
 export const Attributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    longTitle: S.optional(S.String),
-    maxPercentOff: S.optional(S.String),
-    getThisQuantityDiscounted: S.optional(S.String),
-    brandInclusion: S.optional(StringList),
-    brandExclusion: S.optional(StringList),
-    itemGroupIdExclusion: S.optional(StringList),
-    promotionDestinations: S.optional(
-      AttributesPromotionDestinationsItemEnumList,
-    ),
-    minimumPurchaseQuantity: S.optional(S.String),
-    itemGroupIdInclusion: S.optional(StringList),
-    limitQuantity: S.optional(S.String),
-    freeGiftItemId: S.optional(S.String),
-    promotionUrl: S.optional(S.String),
-    limitValue: S.optional(Price),
-    eventApplicability: S.optional(AttributesEventApplicabilityEnum),
-    itemIdInclusion: S.optional(StringList),
-    promotionDisplayTimePeriod: S.optional(Interval),
-    regionIdInclusion: S.optional(StringList),
-    minPercentOff: S.optional(S.String),
-    storeCodesInclusion: S.optional(StringList),
-    googleProductCategories: S.optional(StringList),
-    productTypeInclusion: S.optional(StringList),
-    redemptionRestriction: S.optional(AttributesRedemptionRestrictionEnum),
-    offerType: S.optional(AttributesOfferTypeEnum),
-    itemIdExclusion: S.optional(StringList),
-    moneyOffAmount: S.optional(Price),
-    minimumPurchaseAmount: S.optional(Price),
-    storeCodesExclusion: S.optional(StringList),
-    couponValueType: S.optional(AttributesCouponValueTypeEnum),
-    storeApplicability: S.optional(AttributesStoreApplicabilityEnum),
-    genericRedemptionCode: S.optional(S.String),
-    freeGiftValue: S.optional(Price),
-    promotionEffectiveTimePeriod: S.optional(Interval),
-    maxMoneyOffAmount: S.optional(Price),
-    audience: S.optional(AttributesAudienceEnum),
-    productApplicability: S.optional(AttributesProductApplicabilityEnum),
-    productTypeExclusion: S.optional(StringList),
-    percentOff: S.optional(S.String),
-    customRedemptionRestriction: S.optional(S.String),
-    minMoneyOffAmount: S.optional(Price),
-    maxDiscountAmount: S.optional(Price),
-    freeGiftDescription: S.optional(S.String),
-  }),
+S.Struct({
+  "longTitle": S.optional(S.String),
+  "maxPercentOff": S.optional(S.String),
+  "getThisQuantityDiscounted": S.optional(S.String),
+  "brandInclusion": S.optional(StringList),
+  "brandExclusion": S.optional(StringList),
+  "itemGroupIdExclusion": S.optional(StringList),
+  "promotionDestinations": S.optional(AttributesPromotionDestinationsItemEnumList),
+  "minimumPurchaseQuantity": S.optional(S.String),
+  "itemGroupIdInclusion": S.optional(StringList),
+  "limitQuantity": S.optional(S.String),
+  "freeGiftItemId": S.optional(S.String),
+  "promotionUrl": S.optional(S.String),
+  "limitValue": S.optional(Price),
+  "eventApplicability": S.optional(AttributesEventApplicabilityEnum),
+  "itemIdInclusion": S.optional(StringList),
+  "promotionDisplayTimePeriod": S.optional(Interval),
+  "regionIdInclusion": S.optional(StringList),
+  "minPercentOff": S.optional(S.String),
+  "storeCodesInclusion": S.optional(StringList),
+  "googleProductCategories": S.optional(StringList),
+  "productTypeInclusion": S.optional(StringList),
+  "redemptionRestriction": S.optional(AttributesRedemptionRestrictionEnum),
+  "offerType": S.optional(AttributesOfferTypeEnum),
+  "itemIdExclusion": S.optional(StringList),
+  "moneyOffAmount": S.optional(Price),
+  "minimumPurchaseAmount": S.optional(Price),
+  "storeCodesExclusion": S.optional(StringList),
+  "couponValueType": S.optional(AttributesCouponValueTypeEnum),
+  "storeApplicability": S.optional(AttributesStoreApplicabilityEnum),
+  "genericRedemptionCode": S.optional(S.String),
+  "freeGiftValue": S.optional(Price),
+  "promotionEffectiveTimePeriod": S.optional(Interval),
+  "maxMoneyOffAmount": S.optional(Price),
+  "audience": S.optional(AttributesAudienceEnum),
+  "productApplicability": S.optional(AttributesProductApplicabilityEnum),
+  "productTypeExclusion": S.optional(StringList),
+  "percentOff": S.optional(S.String),
+  "customRedemptionRestriction": S.optional(S.String),
+  "minMoneyOffAmount": S.optional(Price),
+  "maxDiscountAmount": S.optional(Price),
+  "freeGiftDescription": S.optional(S.String),
+}),
 ).annotate({ identifier: "Attributes" }) as any as S.Schema<Attributes>;
 
 /** Represents a promotion. See the following articles for more details. Required promotion input attributes to pass data validation checks are primarily defined below: * [Promotions data specification](https://support.google.com/merchants/answer/2906014) * [Local promotions data specification](https://support.google.com/merchants/answer/10146130) After inserting, updating a promotion input, it may take several minutes before the final promotion can be retrieved. */
@@ -542,18 +395,18 @@ export interface Promotion {
   attributes?: Attributes;
 }
 export const Promotion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customAttributes: S.optional(CustomAttributeList),
-    contentLanguage: S.optional(S.String),
-    promotionStatus: S.optional(PromotionStatus),
-    dataSource: S.optional(S.String),
-    targetCountry: S.optional(S.String),
-    versionNumber: S.optional(S.String),
-    promotionId: S.optional(S.String),
-    redemptionChannel: S.optional(PromotionRedemptionChannelItemEnumList),
-    name: S.optional(S.String),
-    attributes: S.optional(Attributes),
-  }),
+S.Struct({
+  "customAttributes": S.optional(CustomAttributeList),
+  "contentLanguage": S.optional(S.String),
+  "promotionStatus": S.optional(PromotionStatus),
+  "dataSource": S.optional(S.String),
+  "targetCountry": S.optional(S.String),
+  "versionNumber": S.optional(S.String),
+  "promotionId": S.optional(S.String),
+  "redemptionChannel": S.optional(PromotionRedemptionChannelItemEnumList),
+  "name": S.optional(S.String),
+  "attributes": S.optional(Attributes),
+}),
 ).annotate({ identifier: "Promotion" }) as any as S.Schema<Promotion>;
 
 /** Request message for the `InsertPromotion` method. */
@@ -564,13 +417,11 @@ export interface InsertPromotionRequest {
   dataSource?: string;
 }
 export const InsertPromotionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    promotion: S.optional(Promotion),
-    dataSource: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsertPromotionRequest",
-}) as any as S.Schema<InsertPromotionRequest>;
+S.Struct({
+  "promotion": S.optional(Promotion),
+  "dataSource": S.optional(S.String),
+}),
+).annotate({ identifier: "InsertPromotionRequest" }) as any as S.Schema<InsertPromotionRequest>;
 
 export interface InsertAccountsPromotionsRequest {
   /** Required. The account where the promotion will be inserted. Format: accounts/{account} */
@@ -579,19 +430,11 @@ export interface InsertAccountsPromotionsRequest {
   body?: InsertPromotionRequest;
 }
 export const InsertAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(InsertPromotionRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "promotions/v1beta/{+parent}/promotions:insert",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertAccountsPromotionsRequest",
-}) as any as S.Schema<InsertAccountsPromotionsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(InsertPromotionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"promotions/v1beta/{+parent}/promotions:insert","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "InsertAccountsPromotionsRequest" }) as any as S.Schema<InsertAccountsPromotionsRequest>;
 
 export interface ListAccountsPromotionsRequest {
   /** Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token. */
@@ -602,25 +445,15 @@ export interface ListAccountsPromotionsRequest {
   pageSize?: number;
 }
 export const ListAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "promotions/v1beta/{+parent}/promotions",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsPromotionsRequest",
-}) as any as S.Schema<ListAccountsPromotionsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"promotions/v1beta/{+parent}/promotions","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsPromotionsRequest" }) as any as S.Schema<ListAccountsPromotionsRequest>;
 
 export type PromotionList = ReadonlyArray<Promotion>;
-export const PromotionList = /*@__PURE__*/ S.Array(
-  Promotion,
-) as any as S.Schema<PromotionList>;
+export const PromotionList = /*@__PURE__*/ S.Array(Promotion) as any as S.Schema<PromotionList>;
 
 /** Response message for the `ListPromotions` method. */
 export interface ListPromotionsResponse {
@@ -630,13 +463,11 @@ export interface ListPromotionsResponse {
   nextPageToken?: string;
 }
 export const ListPromotionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    promotions: S.optional(PromotionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPromotionsResponse",
-}) as any as S.Schema<ListPromotionsResponse>;
+S.Struct({
+  "promotions": S.optional(PromotionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPromotionsResponse" }) as any as S.Schema<ListPromotionsResponse>;
 
 export type GetAccountsPromotionsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the promotion from your Merchant Center account. After inserting or updating a promotion input, it may take several minutes before the updated promotion can be retrieved. */
@@ -653,12 +484,7 @@ export const getAccountsPromotions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountsPromotionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAccountsPromotionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a promotion for your Merchant Center account. If the promotion already exists, then it updates the promotion instead. */
 export const insertAccountsPromotions: API.OperationMethod<
   InsertAccountsPromotionsRequest,
@@ -686,8 +512,6 @@ export const listAccountsPromotions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
+

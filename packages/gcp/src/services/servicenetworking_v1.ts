@@ -13,57 +13,55 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a DNS record set resource. */
 export interface DnsRecordSet {
@@ -77,12 +75,12 @@ export interface DnsRecordSet {
   data?: StringList;
 }
 export const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ttl: S.optional(S.String),
-    domain: S.optional(S.String),
-    type: S.optional(S.String),
-    data: S.optional(StringList),
-  }),
+S.Struct({
+  "ttl": S.optional(S.String),
+  "domain": S.optional(S.String),
+  "type": S.optional(S.String),
+  "data": S.optional(StringList),
+}),
 ).annotate({ identifier: "DnsRecordSet" }) as any as S.Schema<DnsRecordSet>;
 
 /** Request to add a record set to a private managed DNS zone in the shared producer host project. */
@@ -95,14 +93,12 @@ export interface AddDnsRecordSetRequest {
   dnsRecordSet?: DnsRecordSet;
 }
 export const AddDnsRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerNetwork: S.optional(S.String),
-    zone: S.optional(S.String),
-    dnsRecordSet: S.optional(DnsRecordSet),
-  }),
-).annotate({
-  identifier: "AddDnsRecordSetRequest",
-}) as any as S.Schema<AddDnsRecordSetRequest>;
+S.Struct({
+  "consumerNetwork": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "dnsRecordSet": S.optional(DnsRecordSet),
+}),
+).annotate({ identifier: "AddDnsRecordSetRequest" }) as any as S.Schema<AddDnsRecordSetRequest>;
 
 export interface AddServicesDnsRecordSetsRequest {
   /** Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. */
@@ -111,30 +107,17 @@ export interface AddServicesDnsRecordSetsRequest {
   body?: AddDnsRecordSetRequest;
 }
 export const AddServicesDnsRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(AddDnsRecordSetRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/dnsRecordSets:add",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AddServicesDnsRecordSetsRequest",
-}) as any as S.Schema<AddServicesDnsRecordSetsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AddDnsRecordSetRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/dnsRecordSets:add","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "AddServicesDnsRecordSetsRequest" }) as any as S.Schema<AddServicesDnsRecordSetsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -146,11 +129,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -167,13 +150,13 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
-    error: S.optional(Status),
-    done: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "response": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "done": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Request to add a private managed DNS zone in the shared producer host project and a matching DNS peering zone in the consumer project. */
@@ -186,14 +169,12 @@ export interface AddDnsZoneRequest {
   dnsSuffix?: string;
 }
 export const AddDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerNetwork: S.optional(S.String),
-    name: S.optional(S.String),
-    dnsSuffix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddDnsZoneRequest",
-}) as any as S.Schema<AddDnsZoneRequest>;
+S.Struct({
+  "consumerNetwork": S.optional(S.String),
+  "name": S.optional(S.String),
+  "dnsSuffix": S.optional(S.String),
+}),
+).annotate({ identifier: "AddDnsZoneRequest" }) as any as S.Schema<AddDnsZoneRequest>;
 
 export interface AddServicesDnsZonesRequest {
   /** Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. */
@@ -202,19 +183,11 @@ export interface AddServicesDnsZonesRequest {
   body?: AddDnsZoneRequest;
 }
 export const AddServicesDnsZonesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(AddDnsZoneRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/dnsZones:add",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AddServicesDnsZonesRequest",
-}) as any as S.Schema<AddServicesDnsZonesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AddDnsZoneRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/dnsZones:add","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "AddServicesDnsZonesRequest" }) as any as S.Schema<AddServicesDnsZonesRequest>;
 
 /** Grouping of IAM role and IAM member. */
 export interface PolicyBinding {
@@ -224,16 +197,14 @@ export interface PolicyBinding {
   role?: string;
 }
 export const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    member: S.optional(S.String),
-    role: S.optional(S.String),
-  }),
+S.Struct({
+  "member": S.optional(S.String),
+  "role": S.optional(S.String),
+}),
 ).annotate({ identifier: "PolicyBinding" }) as any as S.Schema<PolicyBinding>;
 
 export type PolicyBindingList = ReadonlyArray<PolicyBinding>;
-export const PolicyBindingList = /*@__PURE__*/ S.Array(
-  PolicyBinding,
-) as any as S.Schema<PolicyBindingList>;
+export const PolicyBindingList = /*@__PURE__*/ S.Array(PolicyBinding) as any as S.Schema<PolicyBindingList>;
 
 /** Request for AddRoles to allow Service Producers to add roles in the shared VPC host project for them to use. */
 export interface AddRolesRequest {
@@ -243,13 +214,11 @@ export interface AddRolesRequest {
   policyBinding?: PolicyBindingList;
 }
 export const AddRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerNetwork: S.optional(S.String),
-    policyBinding: S.optional(PolicyBindingList),
-  }),
-).annotate({
-  identifier: "AddRolesRequest",
-}) as any as S.Schema<AddRolesRequest>;
+S.Struct({
+  "consumerNetwork": S.optional(S.String),
+  "policyBinding": S.optional(PolicyBindingList),
+}),
+).annotate({ identifier: "AddRolesRequest" }) as any as S.Schema<AddRolesRequest>;
 
 export interface AddServicesRolesRequest {
   /** Required. This is in a form services/{service} where {service} is the name of the private access management service. For example 'service-peering.example.com'. */
@@ -258,19 +227,11 @@ export interface AddServicesRolesRequest {
   body?: AddRolesRequest;
 }
 export const AddServicesRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(AddRolesRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/roles:add",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AddServicesRolesRequest",
-}) as any as S.Schema<AddServicesRolesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AddRolesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/roles:add","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "AddServicesRolesRequest" }) as any as S.Schema<AddServicesRolesRequest>;
 
 export interface SecondaryIpRangeSpec {
   /** Optional. The starting address of a range. The address must be a valid IPv4 address in the x.x.x.x format. This value combined with the IP prefix range is the CIDR range for the secondary IP range. The range must be within the allocated range that is assigned to the private connection. If the CIDR range isn't available, the call fails. */
@@ -283,20 +244,16 @@ export interface SecondaryIpRangeSpec {
   outsideAllocationPublicIpRange?: string;
 }
 export const SecondaryIpRangeSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestedAddress: S.optional(S.String),
-    rangeName: S.optional(S.String),
-    ipPrefixLength: S.optional(S.Number),
-    outsideAllocationPublicIpRange: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecondaryIpRangeSpec",
-}) as any as S.Schema<SecondaryIpRangeSpec>;
+S.Struct({
+  "requestedAddress": S.optional(S.String),
+  "rangeName": S.optional(S.String),
+  "ipPrefixLength": S.optional(S.Number),
+  "outsideAllocationPublicIpRange": S.optional(S.String),
+}),
+).annotate({ identifier: "SecondaryIpRangeSpec" }) as any as S.Schema<SecondaryIpRangeSpec>;
 
 export type SecondaryIpRangeSpecList = ReadonlyArray<SecondaryIpRangeSpec>;
-export const SecondaryIpRangeSpecList = /*@__PURE__*/ S.Array(
-  SecondaryIpRangeSpec,
-) as any as S.Schema<SecondaryIpRangeSpecList>;
+export const SecondaryIpRangeSpecList = /*@__PURE__*/ S.Array(SecondaryIpRangeSpec) as any as S.Schema<SecondaryIpRangeSpecList>;
 
 /** Request to create a subnetwork in a previously peered service network. */
 export interface AddSubnetworkRequest {
@@ -342,31 +299,29 @@ export interface AddSubnetworkRequest {
   internalRange?: string;
 }
 export const AddSubnetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateIpv6GoogleAccess: S.optional(S.String),
-    allowSubnetCidrRoutesOverlap: S.optional(S.Boolean),
-    subnetworkUsers: S.optional(StringList),
-    description: S.optional(S.String),
-    useCustomComputeIdempotencyWindow: S.optional(S.Boolean),
-    consumer: S.optional(S.String),
-    requestedAddress: S.optional(S.String),
-    consumerNetwork: S.optional(S.String),
-    computeIdempotencyWindow: S.optional(S.String),
-    ipPrefixLength: S.optional(S.Number),
-    secondaryIpRangeSpecs: S.optional(SecondaryIpRangeSpecList),
-    subnetwork: S.optional(S.String),
-    purpose: S.optional(S.String),
-    region: S.optional(S.String),
-    role: S.optional(S.String),
-    outsideAllocationPublicIpRange: S.optional(S.String),
-    requestedRanges: S.optional(StringList),
-    skipRequestedAddressValidation: S.optional(S.Boolean),
-    checkServiceNetworkingUsePermission: S.optional(S.Boolean),
-    internalRange: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddSubnetworkRequest",
-}) as any as S.Schema<AddSubnetworkRequest>;
+S.Struct({
+  "privateIpv6GoogleAccess": S.optional(S.String),
+  "allowSubnetCidrRoutesOverlap": S.optional(S.Boolean),
+  "subnetworkUsers": S.optional(StringList),
+  "description": S.optional(S.String),
+  "useCustomComputeIdempotencyWindow": S.optional(S.Boolean),
+  "consumer": S.optional(S.String),
+  "requestedAddress": S.optional(S.String),
+  "consumerNetwork": S.optional(S.String),
+  "computeIdempotencyWindow": S.optional(S.String),
+  "ipPrefixLength": S.optional(S.Number),
+  "secondaryIpRangeSpecs": S.optional(SecondaryIpRangeSpecList),
+  "subnetwork": S.optional(S.String),
+  "purpose": S.optional(S.String),
+  "region": S.optional(S.String),
+  "role": S.optional(S.String),
+  "outsideAllocationPublicIpRange": S.optional(S.String),
+  "requestedRanges": S.optional(StringList),
+  "skipRequestedAddressValidation": S.optional(S.Boolean),
+  "checkServiceNetworkingUsePermission": S.optional(S.Boolean),
+  "internalRange": S.optional(S.String),
+}),
+).annotate({ identifier: "AddSubnetworkRequest" }) as any as S.Schema<AddSubnetworkRequest>;
 
 export interface AddSubnetworkServicesRequest {
   /** Required. A tenant project in the service producer organization, in the following format: services/{service}/{collection-id}/{resource-id}. {collection-id} is the cloud resource collection type that represents the tenant project. Only `projects` are supported. {resource-id} is the tenant project numeric id, such as `123456`. {service} the name of the peering service, such as `service-peering.example.com`. This service must already be enabled in the service consumer's project. */
@@ -375,27 +330,17 @@ export interface AddSubnetworkServicesRequest {
   body?: AddSubnetworkRequest;
 }
 export const AddSubnetworkServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(AddSubnetworkRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}:addSubnetwork",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AddSubnetworkServicesRequest",
-}) as any as S.Schema<AddSubnetworkServicesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AddSubnetworkRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:addSubnetwork","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "AddSubnetworkServicesRequest" }) as any as S.Schema<AddSubnetworkServicesRequest>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -404,25 +349,17 @@ export interface CancelOperationsRequest {
   body?: CancelOperationRequest;
 }
 export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:cancel",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelOperationsRequest",
-}) as any as S.Schema<CancelOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "CancelOperationsRequest" }) as any as S.Schema<CancelOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** Represents a private connection resource. A private connection is implemented as a VPC Network Peering connection between a service producer's VPC network and a service consumer's VPC network. */
 export interface Connection {
@@ -436,12 +373,12 @@ export interface Connection {
   network?: string;
 }
 export const Connection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reservedPeeringRanges: S.optional(StringList),
-    peering: S.optional(S.String),
-    service: S.optional(S.String),
-    network: S.optional(S.String),
-  }),
+S.Struct({
+  "reservedPeeringRanges": S.optional(StringList),
+  "peering": S.optional(S.String),
+  "service": S.optional(S.String),
+  "network": S.optional(S.String),
+}),
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
 export interface CreateServicesConnectionsRequest {
@@ -451,19 +388,11 @@ export interface CreateServicesConnectionsRequest {
   body?: Connection;
 }
 export const CreateServicesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Connection.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/connections",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateServicesConnectionsRequest",
-}) as any as S.Schema<CreateServicesConnectionsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Connection.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/connections","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "CreateServicesConnectionsRequest" }) as any as S.Schema<CreateServicesConnectionsRequest>;
 
 /** DNS domain suffix for which requests originating in the producer VPC network are resolved in the associated consumer VPC network. */
 export interface PeeredDnsDomain {
@@ -473,13 +402,11 @@ export interface PeeredDnsDomain {
   dnsSuffix?: string;
 }
 export const PeeredDnsDomain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    dnsSuffix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PeeredDnsDomain",
-}) as any as S.Schema<PeeredDnsDomain>;
+S.Struct({
+  "name": S.optional(S.String),
+  "dnsSuffix": S.optional(S.String),
+}),
+).annotate({ identifier: "PeeredDnsDomain" }) as any as S.Schema<PeeredDnsDomain>;
 
 export interface CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest {
   /** Required. Parent resource identifying the connection for which the peered DNS domain will be created in the format: `services/{service}/projects/{project}/global/networks/{network}` {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. {project} is the number of the project that contains the service consumer's VPC network e.g. `12345`. {network} is the name of the service consumer's VPC network. */
@@ -487,21 +414,12 @@ export interface CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest {
   /** Request body */
   body?: PeeredDnsDomain;
 }
-export const CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(PeeredDnsDomain.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/peeredDnsDomains",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest",
-  }) as any as S.Schema<CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
+export const CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(PeeredDnsDomain.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/peeredDnsDomains","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest" }) as any as S.Schema<CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
 
 /** Request to delete a private service access connection. The call will fail if there are any managed service instances using this connection. */
 export interface DeleteConnectionRequest {
@@ -509,12 +427,10 @@ export interface DeleteConnectionRequest {
   consumerNetwork?: string;
 }
 export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerNetwork: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteConnectionRequest",
-}) as any as S.Schema<DeleteConnectionRequest>;
+S.Struct({
+  "consumerNetwork": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
 
 export interface DeleteConnectionServicesConnectionsRequest {
   /** Required. The private service connection that connects to a service producer organization. The name includes both the private service name and the VPC network peering name in the format of `services/{peering_service_name}/connections/{vpc_peering_name}`. For Google services that support this functionality, this is `services/servicenetworking.googleapis.com/connections/servicenetworking-googleapis-com`. */
@@ -522,58 +438,32 @@ export interface DeleteConnectionServicesConnectionsRequest {
   /** Request body */
   body?: DeleteConnectionRequest;
 }
-export const DeleteConnectionServicesConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(DeleteConnectionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteConnectionServicesConnectionsRequest",
-  }) as any as S.Schema<DeleteConnectionServicesConnectionsRequest>;
+export const DeleteConnectionServicesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DeleteConnectionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "DeleteConnectionServicesConnectionsRequest" }) as any as S.Schema<DeleteConnectionServicesConnectionsRequest>;
 
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
 export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteOperationsRequest",
-}) as any as S.Schema<DeleteOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "DeleteOperationsRequest" }) as any as S.Schema<DeleteOperationsRequest>;
 
 export interface DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest {
   /** Required. The name of the peered DNS domain to delete in the format: `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}`. {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. {project} is the number of the project that contains the service consumer's VPC network e.g. `12345`. {network} is the name of the service consumer's VPC network. {name} is the name of the peered DNS domain. */
   name: string;
 }
-export const DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest",
-  }) as any as S.Schema<DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
+export const DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest" }) as any as S.Schema<DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
 
 /** Request to disable VPC service controls. */
 export interface DisableVpcServiceControlsRequest {
@@ -581,12 +471,10 @@ export interface DisableVpcServiceControlsRequest {
   consumerNetwork?: string;
 }
 export const DisableVpcServiceControlsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerNetwork: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DisableVpcServiceControlsRequest",
-}) as any as S.Schema<DisableVpcServiceControlsRequest>;
+S.Struct({
+  "consumerNetwork": S.optional(S.String),
+}),
+).annotate({ identifier: "DisableVpcServiceControlsRequest" }) as any as S.Schema<DisableVpcServiceControlsRequest>;
 
 export interface DisableVpcServiceControlsServicesRequest {
   /** Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. */
@@ -594,21 +482,12 @@ export interface DisableVpcServiceControlsServicesRequest {
   /** Request body */
   body?: DisableVpcServiceControlsRequest;
 }
-export const DisableVpcServiceControlsServicesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(DisableVpcServiceControlsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+parent}:disableVpcServiceControls",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DisableVpcServiceControlsServicesRequest",
-}) as any as S.Schema<DisableVpcServiceControlsServicesRequest>;
+export const DisableVpcServiceControlsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(DisableVpcServiceControlsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+parent}:disableVpcServiceControls","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "DisableVpcServiceControlsServicesRequest" }) as any as S.Schema<DisableVpcServiceControlsServicesRequest>;
 
 /** Request to enable VPC service controls. */
 export interface EnableVpcServiceControlsRequest {
@@ -616,12 +495,10 @@ export interface EnableVpcServiceControlsRequest {
   consumerNetwork?: string;
 }
 export const EnableVpcServiceControlsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerNetwork: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnableVpcServiceControlsRequest",
-}) as any as S.Schema<EnableVpcServiceControlsRequest>;
+S.Struct({
+  "consumerNetwork": S.optional(S.String),
+}),
+).annotate({ identifier: "EnableVpcServiceControlsRequest" }) as any as S.Schema<EnableVpcServiceControlsRequest>;
 
 export interface EnableVpcServiceControlsServicesRequest {
   /** Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. */
@@ -629,39 +506,22 @@ export interface EnableVpcServiceControlsServicesRequest {
   /** Request body */
   body?: EnableVpcServiceControlsRequest;
 }
-export const EnableVpcServiceControlsServicesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(EnableVpcServiceControlsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+parent}:enableVpcServiceControls",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "EnableVpcServiceControlsServicesRequest",
-}) as any as S.Schema<EnableVpcServiceControlsServicesRequest>;
+export const EnableVpcServiceControlsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(EnableVpcServiceControlsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+parent}:enableVpcServiceControls","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "EnableVpcServiceControlsServicesRequest" }) as any as S.Schema<EnableVpcServiceControlsServicesRequest>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperationsRequest",
-}) as any as S.Schema<GetOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetServicesDnsRecordSetsRequest {
   /** Required. The consumer network containing the record set. Must be in the form of projects/{project}/global/networks/{network} */
@@ -676,22 +536,14 @@ export interface GetServicesDnsRecordSetsRequest {
   type?: string;
 }
 export const GetServicesDnsRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerNetwork: S.optional(S.String.pipe(T.Query())),
-    domain: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    zone: S.optional(S.String.pipe(T.Query())),
-    type: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/dnsRecordSets:get",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetServicesDnsRecordSetsRequest",
-}) as any as S.Schema<GetServicesDnsRecordSetsRequest>;
+S.Struct({
+  "consumerNetwork": S.optional(S.String.pipe(T.Query())),
+  "domain": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "zone": S.optional(S.String.pipe(T.Query())),
+  "type": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/dnsRecordSets:get","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "GetServicesDnsRecordSetsRequest" }) as any as S.Schema<GetServicesDnsRecordSetsRequest>;
 
 export interface GetServicesProjectsGlobalNetworksRequest {
   /** Required. Name of the consumer config to retrieve in the format: `services/{service}/projects/{project}/global/networks/{network}`. {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. {project} is a project number e.g. `12345` that contains the service consumer's VPC network. {network} is the name of the service consumer's VPC network. */
@@ -699,21 +551,12 @@ export interface GetServicesProjectsGlobalNetworksRequest {
   /** Optional. When true, include the used IP ranges as part of the GetConsumerConfig output. This includes routes created inside the service networking network, consumer network, peers of the consumer network, and reserved ranges inside the service networking network. By default, this is false */
   includeUsedIpRanges?: boolean;
 }
-export const GetServicesProjectsGlobalNetworksRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      includeUsedIpRanges: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetServicesProjectsGlobalNetworksRequest",
-}) as any as S.Schema<GetServicesProjectsGlobalNetworksRequest>;
+export const GetServicesProjectsGlobalNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "includeUsedIpRanges": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "GetServicesProjectsGlobalNetworksRequest" }) as any as S.Schema<GetServicesProjectsGlobalNetworksRequest>;
 
 /** Cloud SQL configuration. */
 export interface CloudSQLConfig {
@@ -725,17 +568,15 @@ export interface CloudSQLConfig {
   umbrellaNetwork?: string;
 }
 export const CloudSQLConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    umbrellaProject: S.optional(S.String),
-    service: S.optional(S.String),
-    umbrellaNetwork: S.optional(S.String),
-  }),
+S.Struct({
+  "umbrellaProject": S.optional(S.String),
+  "service": S.optional(S.String),
+  "umbrellaNetwork": S.optional(S.String),
+}),
 ).annotate({ identifier: "CloudSQLConfig" }) as any as S.Schema<CloudSQLConfig>;
 
 export type CloudSQLConfigList = ReadonlyArray<CloudSQLConfig>;
-export const CloudSQLConfigList = /*@__PURE__*/ S.Array(
-  CloudSQLConfig,
-) as any as S.Schema<CloudSQLConfigList>;
+export const CloudSQLConfigList = /*@__PURE__*/ S.Array(CloudSQLConfig) as any as S.Schema<CloudSQLConfigList>;
 
 /** Allocated IP address ranges for this private service access connection. */
 export interface GoogleCloudServicenetworkingV1ConsumerConfigReservedRange {
@@ -746,23 +587,16 @@ export interface GoogleCloudServicenetworkingV1ConsumerConfigReservedRange {
   /** The name of the reserved range. */
   name?: string;
 }
-export const GoogleCloudServicenetworkingV1ConsumerConfigReservedRange =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.optional(S.String),
-      ipPrefixLength: S.optional(S.Number),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudServicenetworkingV1ConsumerConfigReservedRange",
-  }) as any as S.Schema<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>;
+export const GoogleCloudServicenetworkingV1ConsumerConfigReservedRange = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "address": S.optional(S.String),
+  "ipPrefixLength": S.optional(S.Number),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudServicenetworkingV1ConsumerConfigReservedRange" }) as any as S.Schema<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>;
 
-export type GoogleCloudServicenetworkingV1ConsumerConfigReservedRangeList =
-  ReadonlyArray<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>;
-export const GoogleCloudServicenetworkingV1ConsumerConfigReservedRangeList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudServicenetworkingV1ConsumerConfigReservedRange,
-  ) as any as S.Schema<GoogleCloudServicenetworkingV1ConsumerConfigReservedRangeList>;
+export type GoogleCloudServicenetworkingV1ConsumerConfigReservedRangeList = ReadonlyArray<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>;
+export const GoogleCloudServicenetworkingV1ConsumerConfigReservedRangeList = /*@__PURE__*/ S.Array(GoogleCloudServicenetworkingV1ConsumerConfigReservedRange) as any as S.Schema<GoogleCloudServicenetworkingV1ConsumerConfigReservedRangeList>;
 
 /** Configuration information for a private service access connection. */
 export interface ConsumerConfig {
@@ -796,44 +630,33 @@ export interface ConsumerConfig {
   consumerExportSubnetRoutesWithPublicIp?: boolean;
 }
 export const ConsumerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerExportCustomRoutes: S.optional(S.Boolean),
-    producerExportSubnetRoutesWithPublicIp: S.optional(S.Boolean),
-    vpcScReferenceArchitectureEnabled: S.optional(S.Boolean),
-    producerNetwork: S.optional(S.String),
-    consumerImportCustomRoutes: S.optional(S.Boolean),
-    producerExportCustomRoutes: S.optional(S.Boolean),
-    producerImportSubnetRoutesWithPublicIp: S.optional(S.Boolean),
-    consumerImportSubnetRoutesWithPublicIp: S.optional(S.Boolean),
-    cloudsqlConfigs: S.optional(CloudSQLConfigList),
-    consumerPeeringActive: S.optional(S.Boolean),
-    producerImportCustomRoutes: S.optional(S.Boolean),
-    reservedRanges: S.optional(
-      GoogleCloudServicenetworkingV1ConsumerConfigReservedRangeList,
-    ),
-    usedIpRanges: S.optional(StringList),
-    consumerExportSubnetRoutesWithPublicIp: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "consumerExportCustomRoutes": S.optional(S.Boolean),
+  "producerExportSubnetRoutesWithPublicIp": S.optional(S.Boolean),
+  "vpcScReferenceArchitectureEnabled": S.optional(S.Boolean),
+  "producerNetwork": S.optional(S.String),
+  "consumerImportCustomRoutes": S.optional(S.Boolean),
+  "producerExportCustomRoutes": S.optional(S.Boolean),
+  "producerImportSubnetRoutesWithPublicIp": S.optional(S.Boolean),
+  "consumerImportSubnetRoutesWithPublicIp": S.optional(S.Boolean),
+  "cloudsqlConfigs": S.optional(CloudSQLConfigList),
+  "consumerPeeringActive": S.optional(S.Boolean),
+  "producerImportCustomRoutes": S.optional(S.Boolean),
+  "reservedRanges": S.optional(GoogleCloudServicenetworkingV1ConsumerConfigReservedRangeList),
+  "usedIpRanges": S.optional(StringList),
+  "consumerExportSubnetRoutesWithPublicIp": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "ConsumerConfig" }) as any as S.Schema<ConsumerConfig>;
 
 export interface GetServicesProjectsGlobalNetworksDnsZonesRequest {
   /** Required. The network that the consumer is using to connect with services. Must be in the form of services/{service}/projects/{project}/global/networks/{network}/dnsZones/{zoneName} Where {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this {project} is the project number, as in '12345' {network} is the network name. {zoneName} is the DNS zone name */
   name: string;
 }
-export const GetServicesProjectsGlobalNetworksDnsZonesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetServicesProjectsGlobalNetworksDnsZonesRequest",
-  }) as any as S.Schema<GetServicesProjectsGlobalNetworksDnsZonesRequest>;
+export const GetServicesProjectsGlobalNetworksDnsZonesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "GetServicesProjectsGlobalNetworksDnsZonesRequest" }) as any as S.Schema<GetServicesProjectsGlobalNetworksDnsZonesRequest>;
 
 /** Represents a DNS zone resource. */
 export interface DnsZone {
@@ -843,10 +666,10 @@ export interface DnsZone {
   dnsSuffix?: string;
 }
 export const DnsZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    dnsSuffix: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "dnsSuffix": S.optional(S.String),
+}),
 ).annotate({ identifier: "DnsZone" }) as any as S.Schema<DnsZone>;
 
 /** Represents managed DNS zones created in the shared Producer host and consumer projects. */
@@ -857,32 +680,21 @@ export interface GetDnsZoneResponse {
   consumerPeeringZone?: DnsZone;
 }
 export const GetDnsZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    producerPrivateZone: S.optional(DnsZone),
-    consumerPeeringZone: S.optional(DnsZone),
-  }),
-).annotate({
-  identifier: "GetDnsZoneResponse",
-}) as any as S.Schema<GetDnsZoneResponse>;
+S.Struct({
+  "producerPrivateZone": S.optional(DnsZone),
+  "consumerPeeringZone": S.optional(DnsZone),
+}),
+).annotate({ identifier: "GetDnsZoneResponse" }) as any as S.Schema<GetDnsZoneResponse>;
 
 export interface GetVpcServiceControlsServicesProjectsGlobalNetworksRequest {
   /** Required. Name of the VPC Service Controls config to retrieve in the format: `services/{service}/projects/{project}/global/networks/{network}`. {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. {project} is a project number e.g. `12345` that contains the service consumer's VPC network. {network} is the name of the service consumer's VPC network. */
   name: string;
 }
-export const GetVpcServiceControlsServicesProjectsGlobalNetworksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/vpcServiceControls",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetVpcServiceControlsServicesProjectsGlobalNetworksRequest",
-  }) as any as S.Schema<GetVpcServiceControlsServicesProjectsGlobalNetworksRequest>;
+export const GetVpcServiceControlsServicesProjectsGlobalNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/vpcServiceControls","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "GetVpcServiceControlsServicesProjectsGlobalNetworksRequest" }) as any as S.Schema<GetVpcServiceControlsServicesProjectsGlobalNetworksRequest>;
 
 /** Response for the get VPC Service Controls request. */
 export interface VpcServiceControls {
@@ -890,12 +702,10 @@ export interface VpcServiceControls {
   enabled?: boolean;
 }
 export const VpcServiceControls = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VpcServiceControls",
-}) as any as S.Schema<VpcServiceControls>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VpcServiceControls" }) as any as S.Schema<VpcServiceControls>;
 
 export interface ListOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -910,27 +720,17 @@ export interface ListOperationsRequest {
   returnPartialSuccess?: boolean;
 }
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListOperationsRequest",
-}) as any as S.Schema<ListOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -942,14 +742,12 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListServicesConnectionsRequest {
   /** Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. If you specify `services/-` as the parameter value, all configured peering services are listed. */
@@ -958,24 +756,14 @@ export interface ListServicesConnectionsRequest {
   network?: string;
 }
 export const ListServicesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    network: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/connections",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListServicesConnectionsRequest",
-}) as any as S.Schema<ListServicesConnectionsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "network": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/connections","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "ListServicesConnectionsRequest" }) as any as S.Schema<ListServicesConnectionsRequest>;
 
 export type ConnectionList = ReadonlyArray<Connection>;
-export const ConnectionList = /*@__PURE__*/ S.Array(
-  Connection,
-) as any as S.Schema<ConnectionList>;
+export const ConnectionList = /*@__PURE__*/ S.Array(Connection) as any as S.Schema<ConnectionList>;
 
 /** ListConnectionsResponse is the response to list peering states for the given service and consumer project. */
 export interface ListConnectionsResponse {
@@ -983,12 +771,10 @@ export interface ListConnectionsResponse {
   connections?: ConnectionList;
 }
 export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connections: S.optional(ConnectionList),
-  }),
-).annotate({
-  identifier: "ListConnectionsResponse",
-}) as any as S.Schema<ListConnectionsResponse>;
+S.Struct({
+  "connections": S.optional(ConnectionList),
+}),
+).annotate({ identifier: "ListConnectionsResponse" }) as any as S.Schema<ListConnectionsResponse>;
 
 export interface ListServicesDnsRecordSetsRequest {
   /** Required. The network that the consumer is using to connect with services. Must be in the form of projects/{project}/global/networks/{network} {project} is the project number, as in '12345' {network} is the network name. */
@@ -999,25 +785,15 @@ export interface ListServicesDnsRecordSetsRequest {
   zone?: string;
 }
 export const ListServicesDnsRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerNetwork: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    zone: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/dnsRecordSets:list",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListServicesDnsRecordSetsRequest",
-}) as any as S.Schema<ListServicesDnsRecordSetsRequest>;
+S.Struct({
+  "consumerNetwork": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "zone": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/dnsRecordSets:list","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "ListServicesDnsRecordSetsRequest" }) as any as S.Schema<ListServicesDnsRecordSetsRequest>;
 
 export type DnsRecordSetList = ReadonlyArray<DnsRecordSet>;
-export const DnsRecordSetList = /*@__PURE__*/ S.Array(
-  DnsRecordSet,
-) as any as S.Schema<DnsRecordSetList>;
+export const DnsRecordSetList = /*@__PURE__*/ S.Array(DnsRecordSet) as any as S.Schema<DnsRecordSetList>;
 
 /** Represents all DNS RecordSets associated with the producer network */
 export interface ListDnsRecordSetsResponse {
@@ -1025,31 +801,20 @@ export interface ListDnsRecordSetsResponse {
   dnsRecordSets?: DnsRecordSetList;
 }
 export const ListDnsRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dnsRecordSets: S.optional(DnsRecordSetList),
-  }),
-).annotate({
-  identifier: "ListDnsRecordSetsResponse",
-}) as any as S.Schema<ListDnsRecordSetsResponse>;
+S.Struct({
+  "dnsRecordSets": S.optional(DnsRecordSetList),
+}),
+).annotate({ identifier: "ListDnsRecordSetsResponse" }) as any as S.Schema<ListDnsRecordSetsResponse>;
 
 export interface ListServicesProjectsGlobalNetworksDnsZonesRequest {
   /** Required. Parent resource identifying the connection which owns this collection of DNS zones in the format services/{service}/projects/{project}/global/networks/{network} Service: The service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. Projects: the consumer project containing the consumer network. Network: The consumer network accessible from the tenant project. */
   parent: string;
 }
-export const ListServicesProjectsGlobalNetworksDnsZonesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/dnsZones:list",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListServicesProjectsGlobalNetworksDnsZonesRequest",
-  }) as any as S.Schema<ListServicesProjectsGlobalNetworksDnsZonesRequest>;
+export const ListServicesProjectsGlobalNetworksDnsZonesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/dnsZones:list","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "ListServicesProjectsGlobalNetworksDnsZonesRequest" }) as any as S.Schema<ListServicesProjectsGlobalNetworksDnsZonesRequest>;
 
 /** * Represents a pair of private and peering DNS zone resources. * */
 export interface DnsZonePair {
@@ -1059,16 +824,14 @@ export interface DnsZonePair {
   consumerPeeringZone?: DnsZone;
 }
 export const DnsZonePair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    producerPrivateZone: S.optional(DnsZone),
-    consumerPeeringZone: S.optional(DnsZone),
-  }),
+S.Struct({
+  "producerPrivateZone": S.optional(DnsZone),
+  "consumerPeeringZone": S.optional(DnsZone),
+}),
 ).annotate({ identifier: "DnsZonePair" }) as any as S.Schema<DnsZonePair>;
 
 export type DnsZonePairList = ReadonlyArray<DnsZonePair>;
-export const DnsZonePairList = /*@__PURE__*/ S.Array(
-  DnsZonePair,
-) as any as S.Schema<DnsZonePairList>;
+export const DnsZonePairList = /*@__PURE__*/ S.Array(DnsZonePair) as any as S.Schema<DnsZonePairList>;
 
 /** Represents all DNS zones in the shared producer host project and the matching peering zones in the consumer project. */
 export interface ListDnsZonesResponse {
@@ -1076,36 +839,23 @@ export interface ListDnsZonesResponse {
   dnsZonePairs?: DnsZonePairList;
 }
 export const ListDnsZonesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dnsZonePairs: S.optional(DnsZonePairList),
-  }),
-).annotate({
-  identifier: "ListDnsZonesResponse",
-}) as any as S.Schema<ListDnsZonesResponse>;
+S.Struct({
+  "dnsZonePairs": S.optional(DnsZonePairList),
+}),
+).annotate({ identifier: "ListDnsZonesResponse" }) as any as S.Schema<ListDnsZonesResponse>;
 
 export interface ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest {
   /** Required. Parent resource identifying the connection which owns this collection of peered DNS domains in the format: `services/{service}/projects/{project}/global/networks/{network}`. {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. {project} is a project number e.g. `12345` that contains the service consumer's VPC network. {network} is the name of the service consumer's VPC network. */
   parent: string;
 }
-export const ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/peeredDnsDomains",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest",
-  }) as any as S.Schema<ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
+export const ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/peeredDnsDomains","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest" }) as any as S.Schema<ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
 
 export type PeeredDnsDomainList = ReadonlyArray<PeeredDnsDomain>;
-export const PeeredDnsDomainList = /*@__PURE__*/ S.Array(
-  PeeredDnsDomain,
-) as any as S.Schema<PeeredDnsDomainList>;
+export const PeeredDnsDomainList = /*@__PURE__*/ S.Array(PeeredDnsDomain) as any as S.Schema<PeeredDnsDomainList>;
 
 /** Response to list peered DNS domains for a given connection. */
 export interface ListPeeredDnsDomainsResponse {
@@ -1113,12 +863,10 @@ export interface ListPeeredDnsDomainsResponse {
   peeredDnsDomains?: PeeredDnsDomainList;
 }
 export const ListPeeredDnsDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    peeredDnsDomains: S.optional(PeeredDnsDomainList),
-  }),
-).annotate({
-  identifier: "ListPeeredDnsDomainsResponse",
-}) as any as S.Schema<ListPeeredDnsDomainsResponse>;
+S.Struct({
+  "peeredDnsDomains": S.optional(PeeredDnsDomainList),
+}),
+).annotate({ identifier: "ListPeeredDnsDomainsResponse" }) as any as S.Schema<ListPeeredDnsDomainsResponse>;
 
 export interface PatchServicesConnectionsRequest {
   /** If a previously defined allocated range is removed, force flag must be set to true. */
@@ -1131,21 +879,13 @@ export interface PatchServicesConnectionsRequest {
   body?: Connection;
 }
 export const PatchServicesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    force: S.optional(S.Boolean.pipe(T.Query())),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    body: S.optional(Connection.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchServicesConnectionsRequest",
-}) as any as S.Schema<PatchServicesConnectionsRequest>;
+S.Struct({
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Connection.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "PatchServicesConnectionsRequest" }) as any as S.Schema<PatchServicesConnectionsRequest>;
 
 /** Request to remove a record set from a private managed DNS zone in the shared producer host project. The name, type, ttl, and data values must all exactly match an existing record set in the specified zone. */
 export interface RemoveDnsRecordSetRequest {
@@ -1157,14 +897,12 @@ export interface RemoveDnsRecordSetRequest {
   consumerNetwork?: string;
 }
 export const RemoveDnsRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.String),
-    dnsRecordSet: S.optional(DnsRecordSet),
-    consumerNetwork: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveDnsRecordSetRequest",
-}) as any as S.Schema<RemoveDnsRecordSetRequest>;
+S.Struct({
+  "zone": S.optional(S.String),
+  "dnsRecordSet": S.optional(DnsRecordSet),
+  "consumerNetwork": S.optional(S.String),
+}),
+).annotate({ identifier: "RemoveDnsRecordSetRequest" }) as any as S.Schema<RemoveDnsRecordSetRequest>;
 
 export interface RemoveServicesDnsRecordSetsRequest {
   /** Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. */
@@ -1173,19 +911,11 @@ export interface RemoveServicesDnsRecordSetsRequest {
   body?: RemoveDnsRecordSetRequest;
 }
 export const RemoveServicesDnsRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(RemoveDnsRecordSetRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/dnsRecordSets:remove",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RemoveServicesDnsRecordSetsRequest",
-}) as any as S.Schema<RemoveServicesDnsRecordSetsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(RemoveDnsRecordSetRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/dnsRecordSets:remove","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "RemoveServicesDnsRecordSetsRequest" }) as any as S.Schema<RemoveServicesDnsRecordSetsRequest>;
 
 /** Request to remove a private managed DNS zone in the shared producer host project and a matching DNS peering zone in the consumer project. */
 export interface RemoveDnsZoneRequest {
@@ -1195,13 +925,11 @@ export interface RemoveDnsZoneRequest {
   name?: string;
 }
 export const RemoveDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerNetwork: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveDnsZoneRequest",
-}) as any as S.Schema<RemoveDnsZoneRequest>;
+S.Struct({
+  "consumerNetwork": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "RemoveDnsZoneRequest" }) as any as S.Schema<RemoveDnsZoneRequest>;
 
 export interface RemoveServicesDnsZonesRequest {
   /** Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. */
@@ -1210,19 +938,11 @@ export interface RemoveServicesDnsZonesRequest {
   body?: RemoveDnsZoneRequest;
 }
 export const RemoveServicesDnsZonesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(RemoveDnsZoneRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/dnsZones:remove",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RemoveServicesDnsZonesRequest",
-}) as any as S.Schema<RemoveServicesDnsZonesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(RemoveDnsZoneRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/dnsZones:remove","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "RemoveServicesDnsZonesRequest" }) as any as S.Schema<RemoveServicesDnsZonesRequest>;
 
 /** Request to search for an unused range within allocated ranges. */
 export interface SearchRangeRequest {
@@ -1232,13 +952,11 @@ export interface SearchRangeRequest {
   network?: string;
 }
 export const SearchRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipPrefixLength: S.optional(S.Number),
-    network: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchRangeRequest",
-}) as any as S.Schema<SearchRangeRequest>;
+S.Struct({
+  "ipPrefixLength": S.optional(S.Number),
+  "network": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchRangeRequest" }) as any as S.Schema<SearchRangeRequest>;
 
 export interface SearchRangeServicesRequest {
   /** Required. This is in a form services/{service}. {service} the name of the private access management service, for example 'service-peering.example.com'. */
@@ -1247,19 +965,11 @@ export interface SearchRangeServicesRequest {
   body?: SearchRangeRequest;
 }
 export const SearchRangeServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(SearchRangeRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}:searchRange",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SearchRangeServicesRequest",
-}) as any as S.Schema<SearchRangeServicesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(SearchRangeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:searchRange","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "SearchRangeServicesRequest" }) as any as S.Schema<SearchRangeServicesRequest>;
 
 /** Request to update the configuration of a service networking connection including the import/export of custom routes and subnetwork routes with public IP. */
 export interface UpdateConsumerConfigRequest {
@@ -1267,12 +977,10 @@ export interface UpdateConsumerConfigRequest {
   consumerConfig?: ConsumerConfig;
 }
 export const UpdateConsumerConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerConfig: S.optional(ConsumerConfig),
-  }),
-).annotate({
-  identifier: "UpdateConsumerConfigRequest",
-}) as any as S.Schema<UpdateConsumerConfigRequest>;
+S.Struct({
+  "consumerConfig": S.optional(ConsumerConfig),
+}),
+).annotate({ identifier: "UpdateConsumerConfigRequest" }) as any as S.Schema<UpdateConsumerConfigRequest>;
 
 export interface UpdateConsumerConfigServicesProjectsGlobalNetworksRequest {
   /** Required. Parent resource identifying the connection for which the consumer config is being updated in the format: `services/{service}/projects/{project}/global/networks/{network}` {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. {project} is the number of the project that contains the service consumer's VPC network e.g. `12345`. {network} is the name of the service consumer's VPC network. */
@@ -1280,21 +988,12 @@ export interface UpdateConsumerConfigServicesProjectsGlobalNetworksRequest {
   /** Request body */
   body?: UpdateConsumerConfigRequest;
 }
-export const UpdateConsumerConfigServicesProjectsGlobalNetworksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(UpdateConsumerConfigRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+parent}:updateConsumerConfig",
-        baseUrl: "https://servicenetworking.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateConsumerConfigServicesProjectsGlobalNetworksRequest",
-  }) as any as S.Schema<UpdateConsumerConfigServicesProjectsGlobalNetworksRequest>;
+export const UpdateConsumerConfigServicesProjectsGlobalNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateConsumerConfigRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+parent}:updateConsumerConfig","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "UpdateConsumerConfigServicesProjectsGlobalNetworksRequest" }) as any as S.Schema<UpdateConsumerConfigServicesProjectsGlobalNetworksRequest>;
 
 /** Request to update a record set from a private managed DNS zone in the shared producer host project. The name, type, ttl, and data values of the existing record set must all exactly match an existing record set in the specified zone. */
 export interface UpdateDnsRecordSetRequest {
@@ -1308,15 +1007,13 @@ export interface UpdateDnsRecordSetRequest {
   newDnsRecordSet?: DnsRecordSet;
 }
 export const UpdateDnsRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    existingDnsRecordSet: S.optional(DnsRecordSet),
-    consumerNetwork: S.optional(S.String),
-    zone: S.optional(S.String),
-    newDnsRecordSet: S.optional(DnsRecordSet),
-  }),
-).annotate({
-  identifier: "UpdateDnsRecordSetRequest",
-}) as any as S.Schema<UpdateDnsRecordSetRequest>;
+S.Struct({
+  "existingDnsRecordSet": S.optional(DnsRecordSet),
+  "consumerNetwork": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "newDnsRecordSet": S.optional(DnsRecordSet),
+}),
+).annotate({ identifier: "UpdateDnsRecordSetRequest" }) as any as S.Schema<UpdateDnsRecordSetRequest>;
 
 export interface UpdateServicesDnsRecordSetsRequest {
   /** Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. */
@@ -1325,19 +1022,11 @@ export interface UpdateServicesDnsRecordSetsRequest {
   body?: UpdateDnsRecordSetRequest;
 }
 export const UpdateServicesDnsRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(UpdateDnsRecordSetRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/dnsRecordSets:update",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateServicesDnsRecordSetsRequest",
-}) as any as S.Schema<UpdateServicesDnsRecordSetsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateDnsRecordSetRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/dnsRecordSets:update","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "UpdateServicesDnsRecordSetsRequest" }) as any as S.Schema<UpdateServicesDnsRecordSetsRequest>;
 
 export interface SecondaryIpRange {
   /** Name of the secondary IP range. */
@@ -1346,18 +1035,14 @@ export interface SecondaryIpRange {
   ipCidrRange?: string;
 }
 export const SecondaryIpRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rangeName: S.optional(S.String),
-    ipCidrRange: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecondaryIpRange",
-}) as any as S.Schema<SecondaryIpRange>;
+S.Struct({
+  "rangeName": S.optional(S.String),
+  "ipCidrRange": S.optional(S.String),
+}),
+).annotate({ identifier: "SecondaryIpRange" }) as any as S.Schema<SecondaryIpRange>;
 
 export type SecondaryIpRangeList = ReadonlyArray<SecondaryIpRange>;
-export const SecondaryIpRangeList = /*@__PURE__*/ S.Array(
-  SecondaryIpRange,
-) as any as S.Schema<SecondaryIpRangeList>;
+export const SecondaryIpRangeList = /*@__PURE__*/ S.Array(SecondaryIpRange) as any as S.Schema<SecondaryIpRangeList>;
 
 /** Represents a subnet that was created or discovered by a private access management service. */
 export interface Subnetwork {
@@ -1375,25 +1060,21 @@ export interface Subnetwork {
   region?: string;
 }
 export const Subnetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secondaryIpRanges: S.optional(SecondaryIpRangeList),
-    name: S.optional(S.String),
-    ipCidrRange: S.optional(S.String),
-    network: S.optional(S.String),
-    outsideAllocation: S.optional(S.Boolean),
-    region: S.optional(S.String),
-  }),
+S.Struct({
+  "secondaryIpRanges": S.optional(SecondaryIpRangeList),
+  "name": S.optional(S.String),
+  "ipCidrRange": S.optional(S.String),
+  "network": S.optional(S.String),
+  "outsideAllocation": S.optional(S.Boolean),
+  "region": S.optional(S.String),
+}),
 ).annotate({ identifier: "Subnetwork" }) as any as S.Schema<Subnetwork>;
 
 export type SubnetworkList = ReadonlyArray<Subnetwork>;
-export const SubnetworkList = /*@__PURE__*/ S.Array(
-  Subnetwork,
-) as any as S.Schema<SubnetworkList>;
+export const SubnetworkList = /*@__PURE__*/ S.Array(Subnetwork) as any as S.Schema<SubnetworkList>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Represents a range reservation. */
 export interface RangeReservation {
@@ -1407,15 +1088,13 @@ export interface RangeReservation {
   secondaryRangeIpPrefixLengths?: IntegerList;
 }
 export const RangeReservation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestedRanges: S.optional(StringList),
-    subnetworkCandidates: S.optional(SubnetworkList),
-    ipPrefixLength: S.optional(S.Number),
-    secondaryRangeIpPrefixLengths: S.optional(IntegerList),
-  }),
-).annotate({
-  identifier: "RangeReservation",
-}) as any as S.Schema<RangeReservation>;
+S.Struct({
+  "requestedRanges": S.optional(StringList),
+  "subnetworkCandidates": S.optional(SubnetworkList),
+  "ipPrefixLength": S.optional(S.Number),
+  "secondaryRangeIpPrefixLengths": S.optional(IntegerList),
+}),
+).annotate({ identifier: "RangeReservation" }) as any as S.Schema<RangeReservation>;
 
 /** Represents a consumer project. */
 export interface ConsumerProject {
@@ -1423,12 +1102,10 @@ export interface ConsumerProject {
   projectNum?: string;
 }
 export const ConsumerProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectNum: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConsumerProject",
-}) as any as S.Schema<ConsumerProject>;
+S.Struct({
+  "projectNum": S.optional(S.String),
+}),
+).annotate({ identifier: "ConsumerProject" }) as any as S.Schema<ConsumerProject>;
 
 export interface ValidateConsumerConfigRequest {
   /** Required. The network that the consumer is using to connect with services. Must be in the form of projects/{project}/global/networks/{network} {project} is a project number, as in '12345' {network} is network name. */
@@ -1443,16 +1120,14 @@ export interface ValidateConsumerConfigRequest {
   consumerProject?: ConsumerProject;
 }
 export const ValidateConsumerConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerNetwork: S.optional(S.String),
-    rangeReservation: S.optional(RangeReservation),
-    validateNetwork: S.optional(S.Boolean),
-    checkServiceNetworkingUsePermission: S.optional(S.Boolean),
-    consumerProject: S.optional(ConsumerProject),
-  }),
-).annotate({
-  identifier: "ValidateConsumerConfigRequest",
-}) as any as S.Schema<ValidateConsumerConfigRequest>;
+S.Struct({
+  "consumerNetwork": S.optional(S.String),
+  "rangeReservation": S.optional(RangeReservation),
+  "validateNetwork": S.optional(S.Boolean),
+  "checkServiceNetworkingUsePermission": S.optional(S.Boolean),
+  "consumerProject": S.optional(ConsumerProject),
+}),
+).annotate({ identifier: "ValidateConsumerConfigRequest" }) as any as S.Schema<ValidateConsumerConfigRequest>;
 
 export interface ValidateServicesRequest {
   /** Required. This is in a form services/{service} where {service} is the name of the private access management service. For example 'service-peering.example.com'. */
@@ -1461,40 +1136,14 @@ export interface ValidateServicesRequest {
   body?: ValidateConsumerConfigRequest;
 }
 export const ValidateServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(ValidateConsumerConfigRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}:validate",
-      baseUrl: "https://servicenetworking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ValidateServicesRequest",
-}) as any as S.Schema<ValidateServicesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ValidateConsumerConfigRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:validate","baseUrl":"https://servicenetworking.googleapis.com/"})),
+).annotate({ identifier: "ValidateServicesRequest" }) as any as S.Schema<ValidateServicesRequest>;
 
-export type ValidateConsumerConfigResponseValidationErrorEnum =
-  | "VALIDATION_ERROR_UNSPECIFIED"
-  | "VALIDATION_NOT_REQUESTED"
-  | "SERVICE_NETWORKING_NOT_ENABLED"
-  | "NETWORK_NOT_FOUND"
-  | "NETWORK_NOT_PEERED"
-  | "NETWORK_PEERING_DELETED"
-  | "NETWORK_NOT_IN_CONSUMERS_PROJECT"
-  | "NETWORK_NOT_IN_CONSUMERS_HOST_PROJECT"
-  | "HOST_PROJECT_NOT_FOUND"
-  | "CONSUMER_PROJECT_NOT_SERVICE_PROJECT"
-  | "RANGES_EXHAUSTED"
-  | "RANGES_NOT_RESERVED"
-  | "RANGES_DELETED_LATER"
-  | "COMPUTE_API_NOT_ENABLED"
-  | "USE_PERMISSION_NOT_FOUND"
-  | "SN_SERVICE_AGENT_PERMISSION_DENIED_ON_CONSUMER_PROJECT"
-  | (string & {});
-export const ValidateConsumerConfigResponseValidationErrorEnum =
-  /*@__PURE__*/ S.String;
+export type ValidateConsumerConfigResponseValidationErrorEnum = "VALIDATION_ERROR_UNSPECIFIED" | "VALIDATION_NOT_REQUESTED" | "SERVICE_NETWORKING_NOT_ENABLED" | "NETWORK_NOT_FOUND" | "NETWORK_NOT_PEERED" | "NETWORK_PEERING_DELETED" | "NETWORK_NOT_IN_CONSUMERS_PROJECT" | "NETWORK_NOT_IN_CONSUMERS_HOST_PROJECT" | "HOST_PROJECT_NOT_FOUND" | "CONSUMER_PROJECT_NOT_SERVICE_PROJECT" | "RANGES_EXHAUSTED" | "RANGES_NOT_RESERVED" | "RANGES_DELETED_LATER" | "COMPUTE_API_NOT_ENABLED" | "USE_PERMISSION_NOT_FOUND" | "SN_SERVICE_AGENT_PERMISSION_DENIED_ON_CONSUMER_PROJECT";
+export const ValidateConsumerConfigResponseValidationErrorEnum = /*@__PURE__*/ S.String;
 
 export interface ValidateConsumerConfigResponse {
   /** The first validation which failed. */
@@ -1505,23 +1154,14 @@ export interface ValidateConsumerConfigResponse {
   isValid?: boolean;
 }
 export const ValidateConsumerConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validationError: S.optional(
-      ValidateConsumerConfigResponseValidationErrorEnum,
-    ),
-    existingSubnetworkCandidates: S.optional(SubnetworkList),
-    isValid: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ValidateConsumerConfigResponse",
-}) as any as S.Schema<ValidateConsumerConfigResponse>;
+S.Struct({
+  "validationError": S.optional(ValidateConsumerConfigResponseValidationErrorEnum),
+  "existingSubnetworkCandidates": S.optional(SubnetworkList),
+  "isValid": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ValidateConsumerConfigResponse" }) as any as S.Schema<ValidateConsumerConfigResponse>;
 
-export type AddServicesDnsRecordSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddServicesDnsRecordSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service producers can use this method to add DNS record sets to private DNS zones in the shared producer host project. */
 export const addServicesDnsRecordSets: API.OperationMethod<
   AddServicesDnsRecordSetsRequest,
@@ -1536,12 +1176,7 @@ export const addServicesDnsRecordSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddServicesDnsZonesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddServicesDnsZonesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service producers can use this method to add private DNS zones in the shared producer host project and matching peering zones in the consumer project. */
 export const addServicesDnsZones: API.OperationMethod<
   AddServicesDnsZonesRequest,
@@ -1556,12 +1191,7 @@ export const addServicesDnsZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddServicesRolesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddServicesRolesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service producers can use this method to add roles in the shared VPC host project. Each role is bound to the provided member. Each role must be selected from within an allowlisted set of roles. Each role is applied at only the granularity specified in the allowlist. */
 export const addServicesRoles: API.OperationMethod<
   AddServicesRolesRequest,
@@ -1576,12 +1206,7 @@ export const addServicesRoles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddSubnetworkServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddSubnetworkServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** For service producers, provisions a new subnet in a peered service's shared VPC network in the requested region and with the requested size that's expressed as a CIDR range (number of leading bits of ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and prefix length. This method will make producer's tenant project to be a shared VPC service project as needed. */
 export const addSubnetworkServices: API.OperationMethod<
   AddSubnetworkServicesRequest,
@@ -1596,12 +1221,7 @@ export const addSubnetworkServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
   CancelOperationsRequest,
@@ -1616,12 +1236,7 @@ export const cancelOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateServicesConnectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateServicesConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a private connection that establishes a VPC Network Peering connection to a VPC network in the service producer's organization. The administrator of the service consumer's VPC network invokes this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks in the service producer's VPC network. This connection is used for all supported services in the service producer's organization, so it only needs to be invoked once. */
 export const createServicesConnections: API.OperationMethod<
   CreateServicesConnectionsRequest,
@@ -1636,12 +1251,7 @@ export const createServicesConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateServicesProjectsGlobalNetworksPeeredDnsDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateServicesProjectsGlobalNetworksPeeredDnsDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a peered DNS domain which sends requests for records in given namespace originating in the service producer VPC network to the consumer VPC network to be resolved. */
 export const createServicesProjectsGlobalNetworksPeeredDnsDomains: API.OperationMethod<
   CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest,
@@ -1656,12 +1266,7 @@ export const createServicesProjectsGlobalNetworksPeeredDnsDomains: API.Operation
   retry: Retry.Retry,
 }));
 
-export type DeleteConnectionServicesConnectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteConnectionServicesConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a private service access connection. */
 export const deleteConnectionServicesConnections: API.OperationMethod<
   DeleteConnectionServicesConnectionsRequest,
@@ -1676,12 +1281,7 @@ export const deleteConnectionServicesConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
   DeleteOperationsRequest,
@@ -1696,12 +1296,7 @@ export const deleteOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a peered DNS domain. */
 export const deleteServicesProjectsGlobalNetworksPeeredDnsDomains: API.OperationMethod<
   DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest,
@@ -1716,12 +1311,7 @@ export const deleteServicesProjectsGlobalNetworksPeeredDnsDomains: API.Operation
   retry: Retry.Retry,
 }));
 
-export type DisableVpcServiceControlsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DisableVpcServiceControlsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Disables VPC service controls for a connection. */
 export const disableVpcServiceControlsServices: API.OperationMethod<
   DisableVpcServiceControlsServicesRequest,
@@ -1736,12 +1326,7 @@ export const disableVpcServiceControlsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnableVpcServiceControlsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnableVpcServiceControlsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enables VPC service controls for a connection. */
 export const enableVpcServiceControlsServices: API.OperationMethod<
   EnableVpcServiceControlsServicesRequest,
@@ -1786,10 +1371,7 @@ export const getServicesDnsRecordSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetServicesProjectsGlobalNetworksError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetServicesProjectsGlobalNetworksError = NotFound | Forbidden | GcpOpError;
 /** Service producers use this method to get the configuration of their connection including the import/export of custom routes and subnetwork routes with public IP. */
 export const getServicesProjectsGlobalNetworks: API.OperationMethod<
   GetServicesProjectsGlobalNetworksRequest,
@@ -1804,10 +1386,7 @@ export const getServicesProjectsGlobalNetworks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetServicesProjectsGlobalNetworksDnsZonesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetServicesProjectsGlobalNetworksDnsZonesError = NotFound | Forbidden | GcpOpError;
 /** Service producers can use this method to retrieve a DNS zone in the shared producer host project and the matching peering zones in consumer project */
 export const getServicesProjectsGlobalNetworksDnsZones: API.OperationMethod<
   GetServicesProjectsGlobalNetworksDnsZonesRequest,
@@ -1822,10 +1401,7 @@ export const getServicesProjectsGlobalNetworksDnsZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetVpcServiceControlsServicesProjectsGlobalNetworksError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetVpcServiceControlsServicesProjectsGlobalNetworksError = NotFound | Forbidden | GcpOpError;
 /** Consumers use this method to find out the state of VPC Service Controls. The controls could be enabled or disabled for a connection. */
 export const getVpcServiceControlsServicesProjectsGlobalNetworks: API.OperationMethod<
   GetVpcServiceControlsServicesProjectsGlobalNetworksRequest,
@@ -1853,10 +1429,7 @@ export const listOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListServicesConnectionsError = NotFound | Forbidden | GcpOpError;
@@ -1889,10 +1462,7 @@ export const listServicesDnsRecordSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListServicesProjectsGlobalNetworksDnsZonesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListServicesProjectsGlobalNetworksDnsZonesError = NotFound | Forbidden | GcpOpError;
 /** * Service producers can use this method to retrieve a list of available DNS zones in the shared producer host project and the matching peering zones in the consumer project. * */
 export const listServicesProjectsGlobalNetworksDnsZones: API.OperationMethod<
   ListServicesProjectsGlobalNetworksDnsZonesRequest,
@@ -1907,10 +1477,7 @@ export const listServicesProjectsGlobalNetworksDnsZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListServicesProjectsGlobalNetworksPeeredDnsDomainsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListServicesProjectsGlobalNetworksPeeredDnsDomainsError = NotFound | Forbidden | GcpOpError;
 /** Lists peered DNS domains for a connection. */
 export const listServicesProjectsGlobalNetworksPeeredDnsDomains: API.OperationMethod<
   ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest,
@@ -1925,12 +1492,7 @@ export const listServicesProjectsGlobalNetworksPeeredDnsDomains: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type PatchServicesConnectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchServicesConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the allocated ranges that are assigned to a connection. */
 export const patchServicesConnections: API.OperationMethod<
   PatchServicesConnectionsRequest,
@@ -1945,12 +1507,7 @@ export const patchServicesConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveServicesDnsRecordSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemoveServicesDnsRecordSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service producers can use this method to remove DNS record sets from private DNS zones in the shared producer host project. */
 export const removeServicesDnsRecordSets: API.OperationMethod<
   RemoveServicesDnsRecordSetsRequest,
@@ -1965,12 +1522,7 @@ export const removeServicesDnsRecordSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveServicesDnsZonesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemoveServicesDnsZonesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service producers can use this method to remove private DNS zones in the shared producer host project and matching peering zones in the consumer project. */
 export const removeServicesDnsZones: API.OperationMethod<
   RemoveServicesDnsZonesRequest,
@@ -1985,12 +1537,7 @@ export const removeServicesDnsZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchRangeServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SearchRangeServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service producers can use this method to find a currently unused range within consumer allocated ranges. This returned range is not reserved, and not guaranteed to remain unused. It will validate previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number of leading bits of ipv4 network mask, as in CIDR range notation). */
 export const searchRangeServices: API.OperationMethod<
   SearchRangeServicesRequest,
@@ -2005,12 +1552,7 @@ export const searchRangeServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateConsumerConfigServicesProjectsGlobalNetworksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateConsumerConfigServicesProjectsGlobalNetworksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service producers use this method to update the configuration of their connection including the import/export of custom routes and subnetwork routes with public IP. */
 export const updateConsumerConfigServicesProjectsGlobalNetworks: API.OperationMethod<
   UpdateConsumerConfigServicesProjectsGlobalNetworksRequest,
@@ -2025,12 +1567,7 @@ export const updateConsumerConfigServicesProjectsGlobalNetworks: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type UpdateServicesDnsRecordSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateServicesDnsRecordSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service producers can use this method to update DNS record sets from private DNS zones in the shared producer host project. */
 export const updateServicesDnsRecordSets: API.OperationMethod<
   UpdateServicesDnsRecordSetsRequest,
@@ -2045,12 +1582,7 @@ export const updateServicesDnsRecordSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ValidateServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ValidateServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service producers use this method to validate if the consumer provided network, project and requested range are valid. This allows them to use a fail-fast mechanism for consumer requests, and not have to wait for AddSubnetwork operation completion to determine if user request is invalid. */
 export const validateServices: API.OperationMethod<
   ValidateServicesRequest,
@@ -2064,3 +1596,4 @@ export const validateServices: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

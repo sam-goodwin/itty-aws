@@ -13,7 +13,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
-export type TimeMinute = 0 | 30 | (number & {});
+export type TimeMinute = 0 | 30;
 export const TimeMinute = /*@__PURE__*/ S.Number;
 
 /** The time of day. */
@@ -38,8 +38,7 @@ export type DayOfWeek =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday"
-  | (string & {});
+  | "Sunday";
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 /** The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence. */
@@ -146,8 +145,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -155,8 +153,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -192,8 +189,7 @@ export type AgentStatus =
   | "Online"
   | "Executing"
   | "RequiresAttention"
-  | "Unregistering"
-  | (string & {});
+  | "Unregistering";
 export const AgentStatus = /*@__PURE__*/ S.String;
 
 export interface AgentPropertiesErrorDetails {
@@ -216,8 +212,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 export interface AgentProperties {
@@ -576,8 +571,7 @@ export type ConnectionStatus =
   | "Rejected"
   | "Disconnected"
   | "Pending"
-  | "Stale"
-  | (string & {});
+  | "Stale";
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 /** List of job definitions associated with this connection. */
@@ -804,22 +798,21 @@ export type EndpointType =
   | "SmbMount"
   | "AzureMultiCloudConnector"
   | "AzureStorageNfsFileShare"
-  | "S3WithHMAC"
-  | (string & {});
+  | "S3WithHMAC";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 /** The type of the endpoint source/target. */
-export type EndpointKind = "Source" | "Target" | (string & {});
+export type EndpointKind = "Source" | "Target";
 export const EndpointKind = /*@__PURE__*/ S.String;
 
 /** The resource specific properties for the Storage Mover resource. */
 export interface EndpointBasePropertiesInput {
   /** The Endpoint resource type. */
-  endpointType: EndpointType;
+  endpointType: EndpointType | (string & {});
   /** A description for the Endpoint. */
   description?: string;
   /** The Endpoint resource kind source or target. */
-  endpointKind?: EndpointKind;
+  endpointKind?: EndpointKind | (string & {});
 }
 export const EndpointBasePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -836,8 +829,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -859,7 +851,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface EndpointsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
 export const EndpointsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -1205,7 +1197,7 @@ export const EndpointList = /*@__PURE__*/ S.suspend(() =>
 /** The Endpoint resource, which contains information about file sources and targets. */
 export interface EndpointBaseUpdateProperties {
   /** The Endpoint resource type. */
-  endpointType: EndpointType;
+  endpointType: EndpointType | (string & {});
   /** A description for the Endpoint. */
   description?: string;
 }
@@ -1220,7 +1212,7 @@ export const EndpointBaseUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface EndpointsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
 export const EndpointsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -1317,12 +1309,11 @@ export const EndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type JobDefinitionPropertiesInputJobType =
   | "OnPremToCloud"
   | "CloudToCloud"
-  | "OnPremToCloudAgentLess"
-  | (string & {});
+  | "OnPremToCloudAgentLess";
 export const JobDefinitionPropertiesInputJobType = /*@__PURE__*/ S.String;
 
 /** Strategy to use for copy. */
-export type CopyMode = "Additive" | "Mirror" | (string & {});
+export type CopyMode = "Additive" | "Mirror";
 export const CopyMode = /*@__PURE__*/ S.String;
 
 /** The list of cloud endpoints to migrate. */
@@ -1346,12 +1337,11 @@ export type Frequency =
   | "Daily"
   | "Onetime"
   | "None"
-  | "Hourly"
-  | (string & {});
+  | "Hourly";
 export const Frequency = /*@__PURE__*/ S.String;
 
 /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
-export type SchedulerTimeMinute = 0 | 30 | (number & {});
+export type SchedulerTimeMinute = 0 | 30;
 export const SchedulerTimeMinute = /*@__PURE__*/ S.Number;
 
 /** The time of day. */
@@ -1419,8 +1409,7 @@ export const ScheduleInfo = /*@__PURE__*/ S.suspend(() =>
 export type JobDefinitionPropertiesInputDataIntegrityValidation =
   | "SaveVerifyFileMD5"
   | "SaveFileMD5"
-  | "None"
-  | (string & {});
+  | "None";
 export const JobDefinitionPropertiesInputDataIntegrityValidation =
   /*@__PURE__*/ S.String;
 
@@ -1429,9 +1418,9 @@ export interface JobDefinitionPropertiesInput {
   /** A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud. */
   description?: string;
   /** The type of the Job. */
-  jobType?: JobDefinitionPropertiesInputJobType;
+  jobType?: JobDefinitionPropertiesInputJobType | (string & {});
   /** Strategy to use for copy. */
-  copyMode: CopyMode;
+  copyMode: CopyMode | (string & {});
   /** The name of the source Endpoint. */
   sourceName: string;
   /** The subpath to use when reading from the source Endpoint. */
@@ -1449,7 +1438,9 @@ export interface JobDefinitionPropertiesInput {
   /** Schedule information for the Job Definition. */
   schedule?: ScheduleInfo;
   /** The checksum validation mode for the job definition. */
-  dataIntegrityValidation?: JobDefinitionPropertiesInputDataIntegrityValidation;
+  dataIntegrityValidation?:
+    | JobDefinitionPropertiesInputDataIntegrityValidation
+    | (string & {});
   /** Boolean to preserve permissions or not. */
   preservePermissions?: boolean;
   /** Indicates that this Job Definition is a cross-tenant job where the counterpart endpoint resides in a different Azure AD tenant. When true, `crossTenantEndpointTenantId` and `crossTenantEndpointResourceId` must be provided. Defaults to false. Cannot be modified after the Job Definition is created. */
@@ -1528,8 +1519,7 @@ export const JobDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export type JobDefinitionPropertiesJobType =
   | "OnPremToCloud"
   | "CloudToCloud"
-  | "OnPremToCloudAgentLess"
-  | (string & {});
+  | "OnPremToCloudAgentLess";
 export const JobDefinitionPropertiesJobType = /*@__PURE__*/ S.String;
 
 /** The current status of the Job Run in a non-terminal state, if exists. */
@@ -1542,8 +1532,7 @@ export type JobRunStatus =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "PausedByBandwidthManagement"
-  | (string & {});
+  | "PausedByBandwidthManagement";
 export const JobRunStatus = /*@__PURE__*/ S.String;
 
 /** The properties of the cloud source endpoint to migrate. */
@@ -1653,8 +1642,7 @@ export const JobDefinitionPropertiesConnectionsList = /*@__PURE__*/ S.Array(
 export type JobDefinitionPropertiesDataIntegrityValidation =
   | "SaveVerifyFileMD5"
   | "SaveFileMD5"
-  | "None"
-  | (string & {});
+  | "None";
 export const JobDefinitionPropertiesDataIntegrityValidation =
   /*@__PURE__*/ S.String;
 
@@ -2054,8 +2042,7 @@ export const JobDefinitionUpdatePropertiesConnectionsList =
 export type DataIntegrityValidation =
   | "SaveVerifyFileMD5"
   | "SaveFileMD5"
-  | "None"
-  | (string & {});
+  | "None";
 export const DataIntegrityValidation = /*@__PURE__*/ S.String;
 
 /** Job definition properties. */
@@ -2063,13 +2050,13 @@ export interface JobDefinitionUpdateProperties {
   /** A description for the Job Definition. */
   description?: string;
   /** Strategy to use for copy. */
-  copyMode?: CopyMode;
+  copyMode?: CopyMode | (string & {});
   /** Name of the Agent to assign for new Job Runs of this Job Definition. */
   agentName?: string;
   /** List of connections associated to this job */
   connections?: JobDefinitionUpdatePropertiesConnectionsList;
   /** Data Integrity Validation mode. */
-  dataIntegrityValidation?: DataIntegrityValidation;
+  dataIntegrityValidation?: DataIntegrityValidation | (string & {});
   /** Schedule information for the Job Definition. */
   schedule?: ScheduleInfo;
   /** The synchronization mode for the Job Definition. */
@@ -2185,18 +2172,11 @@ export const JobRunsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobRunsGetRequest>;
 
 /** The status of Agent's scanning of source. */
-export type JobRunScanStatus =
-  | "NotStarted"
-  | "Scanning"
-  | "Completed"
-  | (string & {});
+export type JobRunScanStatus = "NotStarted" | "Scanning" | "Completed";
 export const JobRunScanStatus = /*@__PURE__*/ S.String;
 
 /** Trigger type for the job run. Default is manual. */
-export type JobRunPropertiesTriggerType =
-  | "Manual"
-  | "Scheduled"
-  | (string & {});
+export type JobRunPropertiesTriggerType = "Manual" | "Scheduled";
 export const JobRunPropertiesTriggerType = /*@__PURE__*/ S.String;
 
 /** Error type */
@@ -2477,11 +2457,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

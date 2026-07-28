@@ -74,8 +74,7 @@ export type PagesTestsCreateRequestRegion =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const PagesTestsCreateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface CreatePageTestRequest {
@@ -84,7 +83,7 @@ export interface CreatePageTestRequest {
   /** A URL. */
   url: string;
   /** A test region. */
-  region?: PagesTestsCreateRequestRegion;
+  region?: PagesTestsCreateRequestRegion | (string & {});
 }
 export const CreatePageTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -106,8 +105,7 @@ export const CreatePageTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PagesTestsCreateResponseDesktopReportDeviceType =
   | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+  | "MOBILE";
 export const PagesTestsCreateResponseDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -116,8 +114,7 @@ export type PagesTestsCreateResponseDesktopReportErrorCode =
   | "DNS_FAILURE"
   | "NOT_HTML"
   | "LIGHTHOUSE_TIMEOUT"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const PagesTestsCreateResponseDesktopReportErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -143,8 +140,7 @@ export const PagesTestsCreateResponseDesktopReportError =
 export type PagesTestsCreateResponseDesktopReportState =
   | "RUNNING"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PagesTestsCreateResponseDesktopReportState =
   /*@__PURE__*/ S.String;
 
@@ -214,8 +210,7 @@ export type PagesTestsCreateResponseRegionValue =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const PagesTestsCreateResponseRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesTestsCreateResponseRegion {
@@ -232,10 +227,7 @@ export const PagesTestsCreateResponseRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesTestsCreateResponseRegion",
 }) as any as S.Schema<PagesTestsCreateResponseRegion>;
 
-export type PagesTestsCreateResponseScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type PagesTestsCreateResponseScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesTestsCreateResponseScheduleFrequency = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -268,7 +260,7 @@ export const CreatePageTestResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePageTestResponse",
 }) as any as S.Schema<CreatePageTestResponse>;
 
-export type ScheduleCreateRequestFrequency = "DAILY" | "WEEKLY" | (string & {});
+export type ScheduleCreateRequestFrequency = "DAILY" | "WEEKLY";
 export const ScheduleCreateRequestFrequency = /*@__PURE__*/ S.String;
 
 export type ScheduleCreateRequestRegion =
@@ -292,8 +284,7 @@ export type ScheduleCreateRequestRegion =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const ScheduleCreateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface CreateScheduleRequest {
@@ -302,9 +293,9 @@ export interface CreateScheduleRequest {
   /** A URL. */
   url: string;
   /** The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans. */
-  frequency?: ScheduleCreateRequestFrequency;
+  frequency?: ScheduleCreateRequestFrequency | (string & {});
   /** A test region. */
-  region?: ScheduleCreateRequestRegion;
+  region?: ScheduleCreateRequestRegion | (string & {});
 }
 export const CreateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -325,10 +316,7 @@ export const CreateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScheduleRequest",
 }) as any as S.Schema<CreateScheduleRequest>;
 
-export type ScheduleCreateResponseScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type ScheduleCreateResponseScheduleFrequency = "DAILY" | "WEEKLY";
 export const ScheduleCreateResponseScheduleFrequency = /*@__PURE__*/ S.String;
 
 export type ScheduleCreateResponseScheduleRegion =
@@ -352,8 +340,7 @@ export type ScheduleCreateResponseScheduleRegion =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const ScheduleCreateResponseScheduleRegion = /*@__PURE__*/ S.String;
 
 export interface ScheduleCreateResponseSchedule {
@@ -376,8 +363,7 @@ export const ScheduleCreateResponseSchedule = /*@__PURE__*/ S.suspend(() =>
 
 export type ScheduleCreateResponseTestDesktopReportDeviceType =
   | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+  | "MOBILE";
 export const ScheduleCreateResponseTestDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -386,8 +372,7 @@ export type ScheduleCreateResponseTestDesktopReportErrorCode =
   | "DNS_FAILURE"
   | "NOT_HTML"
   | "LIGHTHOUSE_TIMEOUT"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const ScheduleCreateResponseTestDesktopReportErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -413,8 +398,7 @@ export const ScheduleCreateResponseTestDesktopReportError =
 export type ScheduleCreateResponseTestDesktopReportState =
   | "RUNNING"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ScheduleCreateResponseTestDesktopReportState =
   /*@__PURE__*/ S.String;
 
@@ -484,8 +468,7 @@ export type ScheduleCreateResponseTestRegionValue =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const ScheduleCreateResponseTestRegionValue = /*@__PURE__*/ S.String;
 
 export interface ScheduleCreateResponseTestRegion {
@@ -502,10 +485,7 @@ export const ScheduleCreateResponseTestRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduleCreateResponseTestRegion",
 }) as any as S.Schema<ScheduleCreateResponseTestRegion>;
 
-export type ScheduleCreateResponseTestScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type ScheduleCreateResponseTestScheduleFrequency = "DAILY" | "WEEKLY";
 export const ScheduleCreateResponseTestScheduleFrequency =
   /*@__PURE__*/ S.String;
 
@@ -574,8 +554,7 @@ export type PagesTestsDeleteRequestRegion =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const PagesTestsDeleteRequestRegion = /*@__PURE__*/ S.String;
 
 export interface DeletePageTestRequest {
@@ -584,7 +563,7 @@ export interface DeletePageTestRequest {
   /** A URL. */
   url: string;
   /** A test region. */
-  region?: PagesTestsDeleteRequestRegion;
+  region?: PagesTestsDeleteRequestRegion | (string & {});
 }
 export const DeletePageTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -638,8 +617,7 @@ export type ScheduleDeleteRequestRegion =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const ScheduleDeleteRequestRegion = /*@__PURE__*/ S.String;
 
 export interface DeleteScheduleRequest {
@@ -648,7 +626,7 @@ export interface DeleteScheduleRequest {
   /** A URL. */
   url: string;
   /** A test region. */
-  region?: ScheduleDeleteRequestRegion;
+  region?: ScheduleDeleteRequestRegion | (string & {});
 }
 export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -706,10 +684,7 @@ export const GetPageTestRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPageTestRequest",
 }) as any as S.Schema<GetPageTestRequest>;
 
-export type PagesTestsGetResponseDesktopReportDeviceType =
-  | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+export type PagesTestsGetResponseDesktopReportDeviceType = "DESKTOP" | "MOBILE";
 export const PagesTestsGetResponseDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -718,8 +693,7 @@ export type PagesTestsGetResponseDesktopReportErrorCode =
   | "DNS_FAILURE"
   | "NOT_HTML"
   | "LIGHTHOUSE_TIMEOUT"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const PagesTestsGetResponseDesktopReportErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -745,8 +719,7 @@ export const PagesTestsGetResponseDesktopReportError = /*@__PURE__*/ S.suspend(
 export type PagesTestsGetResponseDesktopReportState =
   | "RUNNING"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PagesTestsGetResponseDesktopReportState = /*@__PURE__*/ S.String;
 
 export interface PagesTestsGetResponseDesktopReport {
@@ -814,8 +787,7 @@ export type PagesTestsGetResponseRegionValue =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const PagesTestsGetResponseRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesTestsGetResponseRegion {
@@ -832,10 +804,7 @@ export const PagesTestsGetResponseRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesTestsGetResponseRegion",
 }) as any as S.Schema<PagesTestsGetResponseRegion>;
 
-export type PagesTestsGetResponseScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type PagesTestsGetResponseScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesTestsGetResponseScheduleFrequency = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -889,8 +858,7 @@ export type ScheduleGetRequestRegion =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const ScheduleGetRequestRegion = /*@__PURE__*/ S.String;
 
 export interface GetScheduleRequest {
@@ -899,7 +867,7 @@ export interface GetScheduleRequest {
   /** A URL. */
   url: string;
   /** A test region. */
-  region?: ScheduleGetRequestRegion;
+  region?: ScheduleGetRequestRegion | (string & {});
 }
 export const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -919,7 +887,7 @@ export const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetScheduleRequest",
 }) as any as S.Schema<GetScheduleRequest>;
 
-export type ScheduleGetResponseFrequency = "DAILY" | "WEEKLY" | (string & {});
+export type ScheduleGetResponseFrequency = "DAILY" | "WEEKLY";
 export const ScheduleGetResponseFrequency = /*@__PURE__*/ S.String;
 
 export type ScheduleGetResponseRegion =
@@ -943,8 +911,7 @@ export type ScheduleGetResponseRegion =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const ScheduleGetResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1097,8 +1064,7 @@ export type AvailabilitiesListResponseRegionsItemValue =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const AvailabilitiesListResponseRegionsItemValue =
   /*@__PURE__*/ S.String;
 
@@ -1291,8 +1257,7 @@ export type PagesListResultItemRegionValue =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const PagesListResultItemRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesListResultItemRegion {
@@ -1309,16 +1274,12 @@ export const PagesListResultItemRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesListResultItemRegion",
 }) as any as S.Schema<PagesListResultItemRegion>;
 
-export type PagesListResultItemScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type PagesListResultItemScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesListResultItemScheduleFrequency = /*@__PURE__*/ S.String;
 
 export type PagesListResultItemTestsItemDesktopReportDeviceType =
   | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+  | "MOBILE";
 export const PagesListResultItemTestsItemDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -1327,8 +1288,7 @@ export type PagesListResultItemTestsItemDesktopReportErrorCode =
   | "DNS_FAILURE"
   | "NOT_HTML"
   | "LIGHTHOUSE_TIMEOUT"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const PagesListResultItemTestsItemDesktopReportErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -1354,8 +1314,7 @@ export const PagesListResultItemTestsItemDesktopReportError =
 export type PagesListResultItemTestsItemDesktopReportState =
   | "RUNNING"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PagesListResultItemTestsItemDesktopReportState =
   /*@__PURE__*/ S.String;
 
@@ -1406,10 +1365,7 @@ export const PagesListResultItemTestsItemDesktopReport =
     identifier: "PagesListResultItemTestsItemDesktopReport",
   }) as any as S.Schema<PagesListResultItemTestsItemDesktopReport>;
 
-export type PagesListResultItemTestsItemScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type PagesListResultItemTestsItemScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesListResultItemTestsItemScheduleFrequency =
   /*@__PURE__*/ S.String;
 
@@ -1511,8 +1467,7 @@ export type PagesTestsListRequestRegion =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const PagesTestsListRequestRegion = /*@__PURE__*/ S.String;
 
 export interface ListPageTestsRequest {
@@ -1523,7 +1478,7 @@ export interface ListPageTestsRequest {
   page?: number;
   perPage?: number;
   /** A test region. */
-  region?: PagesTestsListRequestRegion;
+  region?: PagesTestsListRequestRegion | (string & {});
 }
 export const ListPageTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1547,8 +1502,7 @@ export const ListPageTestsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PagesTestsListResultItemDesktopReportDeviceType =
   | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+  | "MOBILE";
 export const PagesTestsListResultItemDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -1557,8 +1511,7 @@ export type PagesTestsListResultItemDesktopReportErrorCode =
   | "DNS_FAILURE"
   | "NOT_HTML"
   | "LIGHTHOUSE_TIMEOUT"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const PagesTestsListResultItemDesktopReportErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -1584,8 +1537,7 @@ export const PagesTestsListResultItemDesktopReportError =
 export type PagesTestsListResultItemDesktopReportState =
   | "RUNNING"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PagesTestsListResultItemDesktopReportState =
   /*@__PURE__*/ S.String;
 
@@ -1655,8 +1607,7 @@ export type PagesTestsListResultItemRegionValue =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const PagesTestsListResultItemRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesTestsListResultItemRegion {
@@ -1673,10 +1624,7 @@ export const PagesTestsListResultItemRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesTestsListResultItemRegion",
 }) as any as S.Schema<PagesTestsListResultItemRegion>;
 
-export type PagesTestsListResultItemScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type PagesTestsListResultItemScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesTestsListResultItemScheduleFrequency = /*@__PURE__*/ S.String;
 
 export interface PagesTestsListResultItem {
@@ -1728,7 +1676,7 @@ export const ListPageTestsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPageTestsResponse",
 }) as any as S.Schema<ListPageTestsResponse>;
 
-export type PagesTrendRequestDeviceType = "DESKTOP" | "MOBILE" | (string & {});
+export type PagesTrendRequestDeviceType = "DESKTOP" | "MOBILE";
 export const PagesTrendRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type PagesTrendRequestRegion =
@@ -1752,8 +1700,7 @@ export type PagesTrendRequestRegion =
   | "us-east1"
   | "us-east4"
   | "us-south1"
-  | "us-west1"
-  | (string & {});
+  | "us-west1";
 export const PagesTrendRequestRegion = /*@__PURE__*/ S.String;
 
 export interface TrendPageRequest {
@@ -1762,11 +1709,11 @@ export interface TrendPageRequest {
   /** A URL. */
   url: string;
   /** The type of device. */
-  deviceType: PagesTrendRequestDeviceType;
+  deviceType: PagesTrendRequestDeviceType | (string & {});
   /** A comma-separated list of metrics to include in the results. */
   metrics: string;
   /** A test region. */
-  region: PagesTrendRequestRegion;
+  region: PagesTrendRequestRegion | (string & {});
   start: string;
   /** The timezone of the start and end timestamps. */
   tz: string;

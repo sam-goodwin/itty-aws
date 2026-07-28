@@ -133,8 +133,7 @@ export type StringWithPatternAndLengthLimits = string;
 export type RoleArn = string;
 export type EncryptionConfigurationType =
   | "AWS_OWNED_KEY"
-  | "CUSTOMER_MANAGED_KMS_KEY"
-  | (string & {});
+  | "CUSTOMER_MANAGED_KMS_KEY";
 export const EncryptionConfigurationType = /*@__PURE__*/ S.String;
 
 export type KmsKeyId = string;

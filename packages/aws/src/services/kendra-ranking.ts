@@ -218,8 +218,7 @@ export type RescoreExecutionPlanStatus =
   | "UPDATING"
   | "ACTIVE"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const RescoreExecutionPlanStatus = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;

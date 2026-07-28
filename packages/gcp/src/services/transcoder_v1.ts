@@ -13,63 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -81,11 +76,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** A Pub/Sub destination. */
@@ -94,12 +89,10 @@ export interface PubsubDestination {
   topic?: string;
 }
 export const PubsubDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PubsubDestination",
-}) as any as S.Schema<PubsubDestination>;
+S.Struct({
+  "topic": S.optional(S.String),
+}),
+).annotate({ identifier: "PubsubDestination" }) as any as S.Schema<PubsubDestination>;
 
 /** Denoise preprocessing configuration. **Note:** This configuration is not supported. */
 export interface Denoise {
@@ -109,10 +102,10 @@ export interface Denoise {
   strength?: number;
 }
 export const Denoise = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tune: S.optional(S.String),
-    strength: S.optional(S.Number),
-  }),
+S.Struct({
+  "tune": S.optional(S.String),
+  "strength": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Denoise" }) as any as S.Schema<Denoise>;
 
 /** Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution. */
@@ -127,12 +120,12 @@ export interface Crop {
   bottomPixels?: number;
 }
 export const Crop = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    leftPixels: S.optional(S.Number),
-    rightPixels: S.optional(S.Number),
-    topPixels: S.optional(S.Number),
-    bottomPixels: S.optional(S.Number),
-  }),
+S.Struct({
+  "leftPixels": S.optional(S.Number),
+  "rightPixels": S.optional(S.Number),
+  "topPixels": S.optional(S.Number),
+  "bottomPixels": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Crop" }) as any as S.Schema<Crop>;
 
 /** Color preprocessing configuration. **Note:** This configuration is not supported. */
@@ -145,11 +138,11 @@ export interface Color {
   saturation?: number;
 }
 export const Color = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brightness: S.optional(S.Number),
-    contrast: S.optional(S.Number),
-    saturation: S.optional(S.Number),
-  }),
+S.Struct({
+  "brightness": S.optional(S.Number),
+  "contrast": S.optional(S.Number),
+  "saturation": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Color" }) as any as S.Schema<Color>;
 
 /** Deblock preprocessing configuration. **Note:** This configuration is not supported. */
@@ -160,10 +153,10 @@ export interface Deblock {
   strength?: number;
 }
 export const Deblock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    strength: S.optional(S.Number),
-  }),
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "strength": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Deblock" }) as any as S.Schema<Deblock>;
 
 /** Yet Another Deinterlacing Filter Configuration. */
@@ -178,12 +171,12 @@ export interface YadifConfig {
   deinterlaceAllFrames?: boolean;
 }
 export const YadifConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(S.String),
-    disableSpatialInterlacing: S.optional(S.Boolean),
-    parity: S.optional(S.String),
-    deinterlaceAllFrames: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "mode": S.optional(S.String),
+  "disableSpatialInterlacing": S.optional(S.Boolean),
+  "parity": S.optional(S.String),
+  "deinterlaceAllFrames": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "YadifConfig" }) as any as S.Schema<YadifConfig>;
 
 /** Bob Weaver Deinterlacing Filter Configuration. */
@@ -196,11 +189,11 @@ export interface BwdifConfig {
   mode?: string;
 }
 export const BwdifConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deinterlaceAllFrames: S.optional(S.Boolean),
-    parity: S.optional(S.String),
-    mode: S.optional(S.String),
-  }),
+S.Struct({
+  "deinterlaceAllFrames": S.optional(S.Boolean),
+  "parity": S.optional(S.String),
+  "mode": S.optional(S.String),
+}),
 ).annotate({ identifier: "BwdifConfig" }) as any as S.Schema<BwdifConfig>;
 
 /** Deinterlace configuration for input video. */
@@ -211,10 +204,10 @@ export interface Deinterlace {
   bwdif?: BwdifConfig;
 }
 export const Deinterlace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    yadif: S.optional(YadifConfig),
-    bwdif: S.optional(BwdifConfig),
-  }),
+S.Struct({
+  "yadif": S.optional(YadifConfig),
+  "bwdif": S.optional(BwdifConfig),
+}),
 ).annotate({ identifier: "Deinterlace" }) as any as S.Schema<Deinterlace>;
 
 /** Audio preprocessing configuration. */
@@ -227,11 +220,11 @@ export interface Audio {
   highBoost?: boolean;
 }
 export const Audio = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lowBoost: S.optional(S.Boolean),
-    lufs: S.optional(S.Number),
-    highBoost: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "lowBoost": S.optional(S.Boolean),
+  "lufs": S.optional(S.Number),
+  "highBoost": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Audio" }) as any as S.Schema<Audio>;
 
 /** Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution. */
@@ -246,12 +239,12 @@ export interface Pad {
   bottomPixels?: number;
 }
 export const Pad = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rightPixels: S.optional(S.Number),
-    leftPixels: S.optional(S.Number),
-    topPixels: S.optional(S.Number),
-    bottomPixels: S.optional(S.Number),
-  }),
+S.Struct({
+  "rightPixels": S.optional(S.Number),
+  "leftPixels": S.optional(S.Number),
+  "topPixels": S.optional(S.Number),
+  "bottomPixels": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Pad" }) as any as S.Schema<Pad>;
 
 /** Preprocessing configurations. */
@@ -272,23 +265,19 @@ export interface PreprocessingConfig {
   pad?: Pad;
 }
 export const PreprocessingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    denoise: S.optional(Denoise),
-    crop: S.optional(Crop),
-    color: S.optional(Color),
-    deblock: S.optional(Deblock),
-    deinterlace: S.optional(Deinterlace),
-    audio: S.optional(Audio),
-    pad: S.optional(Pad),
-  }),
-).annotate({
-  identifier: "PreprocessingConfig",
-}) as any as S.Schema<PreprocessingConfig>;
+S.Struct({
+  "denoise": S.optional(Denoise),
+  "crop": S.optional(Crop),
+  "color": S.optional(Color),
+  "deblock": S.optional(Deblock),
+  "deinterlace": S.optional(Deinterlace),
+  "audio": S.optional(Audio),
+  "pad": S.optional(Pad),
+}),
+).annotate({ identifier: "PreprocessingConfig" }) as any as S.Schema<PreprocessingConfig>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Track definition for the input asset. */
 export interface TrackDefinition {
@@ -302,20 +291,16 @@ export interface TrackDefinition {
   detectLanguages?: boolean;
 }
 export const TrackDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languages: S.optional(StringList),
-    detectedLanguages: S.optional(StringList),
-    inputTrack: S.optional(S.Number),
-    detectLanguages: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TrackDefinition",
-}) as any as S.Schema<TrackDefinition>;
+S.Struct({
+  "languages": S.optional(StringList),
+  "detectedLanguages": S.optional(StringList),
+  "inputTrack": S.optional(S.Number),
+  "detectLanguages": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "TrackDefinition" }) as any as S.Schema<TrackDefinition>;
 
 export type TrackDefinitionList = ReadonlyArray<TrackDefinition>;
-export const TrackDefinitionList = /*@__PURE__*/ S.Array(
-  TrackDefinition,
-) as any as S.Schema<TrackDefinitionList>;
+export const TrackDefinitionList = /*@__PURE__*/ S.Array(TrackDefinition) as any as S.Schema<TrackDefinitionList>;
 
 /** Input attributes that provide additional information about the input asset. */
 export interface InputAttributes {
@@ -323,12 +308,10 @@ export interface InputAttributes {
   trackDefinitions?: TrackDefinitionList;
 }
 export const InputAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trackDefinitions: S.optional(TrackDefinitionList),
-  }),
-).annotate({
-  identifier: "InputAttributes",
-}) as any as S.Schema<InputAttributes>;
+S.Struct({
+  "trackDefinitions": S.optional(TrackDefinitionList),
+}),
+).annotate({ identifier: "InputAttributes" }) as any as S.Schema<InputAttributes>;
 
 /** Input asset. */
 export interface Input {
@@ -342,18 +325,16 @@ export interface Input {
   attributes?: InputAttributes;
 }
 export const Input = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    preprocessingConfig: S.optional(PreprocessingConfig),
-    uri: S.optional(S.String),
-    attributes: S.optional(InputAttributes),
-  }),
+S.Struct({
+  "key": S.optional(S.String),
+  "preprocessingConfig": S.optional(PreprocessingConfig),
+  "uri": S.optional(S.String),
+  "attributes": S.optional(InputAttributes),
+}),
 ).annotate({ identifier: "Input" }) as any as S.Schema<Input>;
 
 export type InputList = ReadonlyArray<Input>;
-export const InputList = /*@__PURE__*/ S.Array(
-  Input,
-) as any as S.Schema<InputList>;
+export const InputList = /*@__PURE__*/ S.Array(Input) as any as S.Schema<InputList>;
 
 /** Configuration for MPEG Common Encryption (MPEG-CENC). */
 export interface MpegCommonEncryption {
@@ -361,44 +342,40 @@ export interface MpegCommonEncryption {
   scheme?: string;
 }
 export const MpegCommonEncryption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scheme: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MpegCommonEncryption",
-}) as any as S.Schema<MpegCommonEncryption>;
+S.Struct({
+  "scheme": S.optional(S.String),
+}),
+).annotate({ identifier: "MpegCommonEncryption" }) as any as S.Schema<MpegCommonEncryption>;
 
 /** Configuration for SAMPLE-AES encryption. */
 export interface SampleAesEncryption {}
 export const SampleAesEncryption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SampleAesEncryption",
-}) as any as S.Schema<SampleAesEncryption>;
+S.Struct({}),
+).annotate({ identifier: "SampleAesEncryption" }) as any as S.Schema<SampleAesEncryption>;
 
 /** Clearkey configuration. */
 export interface Clearkey {}
-export const Clearkey = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Clearkey",
-}) as any as S.Schema<Clearkey>;
+export const Clearkey = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Clearkey" }) as any as S.Schema<Clearkey>;
 
 /** Fairplay configuration. */
 export interface Fairplay {}
-export const Fairplay = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Fairplay",
-}) as any as S.Schema<Fairplay>;
+export const Fairplay = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Fairplay" }) as any as S.Schema<Fairplay>;
 
 /** Widevine configuration. */
 export interface Widevine {}
-export const Widevine = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Widevine",
-}) as any as S.Schema<Widevine>;
+export const Widevine = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Widevine" }) as any as S.Schema<Widevine>;
 
 /** Playready configuration. */
 export interface Playready {}
-export const Playready = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Playready",
-}) as any as S.Schema<Playready>;
+export const Playready = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Playready" }) as any as S.Schema<Playready>;
 
 /** Defines configuration for DRM systems in use. */
 export interface DrmSystems {
@@ -412,21 +389,19 @@ export interface DrmSystems {
   playready?: Playready;
 }
 export const DrmSystems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clearkey: S.optional(Clearkey),
-    fairplay: S.optional(Fairplay),
-    widevine: S.optional(Widevine),
-    playready: S.optional(Playready),
-  }),
+S.Struct({
+  "clearkey": S.optional(Clearkey),
+  "fairplay": S.optional(Fairplay),
+  "widevine": S.optional(Widevine),
+  "playready": S.optional(Playready),
+}),
 ).annotate({ identifier: "DrmSystems" }) as any as S.Schema<DrmSystems>;
 
 /** Configuration for AES-128 encryption. */
 export interface Aes128Encryption {}
 export const Aes128Encryption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "Aes128Encryption",
-}) as any as S.Schema<Aes128Encryption>;
+S.Struct({}),
+).annotate({ identifier: "Aes128Encryption" }) as any as S.Schema<Aes128Encryption>;
 
 /** Configuration for secrets stored in Google Secret Manager. */
 export interface SecretManagerSource {
@@ -434,12 +409,10 @@ export interface SecretManagerSource {
   secretVersion?: string;
 }
 export const SecretManagerSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secretVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretManagerSource",
-}) as any as S.Schema<SecretManagerSource>;
+S.Struct({
+  "secretVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "SecretManagerSource" }) as any as S.Schema<SecretManagerSource>;
 
 /** Encryption settings. */
 export interface Encryption {
@@ -457,20 +430,18 @@ export interface Encryption {
   id?: string;
 }
 export const Encryption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mpegCenc: S.optional(MpegCommonEncryption),
-    sampleAes: S.optional(SampleAesEncryption),
-    drmSystems: S.optional(DrmSystems),
-    aes128: S.optional(Aes128Encryption),
-    secretManagerKeySource: S.optional(SecretManagerSource),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "mpegCenc": S.optional(MpegCommonEncryption),
+  "sampleAes": S.optional(SampleAesEncryption),
+  "drmSystems": S.optional(DrmSystems),
+  "aes128": S.optional(Aes128Encryption),
+  "secretManagerKeySource": S.optional(SecretManagerSource),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
 export type EncryptionList = ReadonlyArray<Encryption>;
-export const EncryptionList = /*@__PURE__*/ S.Array(
-  Encryption,
-) as any as S.Schema<EncryptionList>;
+export const EncryptionList = /*@__PURE__*/ S.Array(Encryption) as any as S.Schema<EncryptionList>;
 
 /** Location of output file(s) in a Cloud Storage bucket. */
 export interface Output {
@@ -478,9 +449,9 @@ export interface Output {
   uri?: string;
 }
 export const Output = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+}),
 ).annotate({ identifier: "Output" }) as any as S.Schema<Output>;
 
 /** Segment settings for `ts`, `fmp4` and `vtt`. */
@@ -491,13 +462,11 @@ export interface SegmentSettings {
   segmentDuration?: string;
 }
 export const SegmentSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    individualSegments: S.optional(S.Boolean),
-    segmentDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SegmentSettings",
-}) as any as S.Schema<SegmentSettings>;
+S.Struct({
+  "individualSegments": S.optional(S.Boolean),
+  "segmentDuration": S.optional(S.String),
+}),
+).annotate({ identifier: "SegmentSettings" }) as any as S.Schema<SegmentSettings>;
 
 /** `fmp4` container configuration. */
 export interface Fmp4Config {
@@ -505,9 +474,9 @@ export interface Fmp4Config {
   codecTag?: string;
 }
 export const Fmp4Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codecTag: S.optional(S.String),
-  }),
+S.Struct({
+  "codecTag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Fmp4Config" }) as any as S.Schema<Fmp4Config>;
 
 /** Multiplexing settings for output stream. */
@@ -528,21 +497,19 @@ export interface MuxStream {
   fileName?: string;
 }
 export const MuxStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    segmentSettings: S.optional(SegmentSettings),
-    fmp4: S.optional(Fmp4Config),
-    key: S.optional(S.String),
-    elementaryStreams: S.optional(StringList),
-    container: S.optional(S.String),
-    encryptionId: S.optional(S.String),
-    fileName: S.optional(S.String),
-  }),
+S.Struct({
+  "segmentSettings": S.optional(SegmentSettings),
+  "fmp4": S.optional(Fmp4Config),
+  "key": S.optional(S.String),
+  "elementaryStreams": S.optional(StringList),
+  "container": S.optional(S.String),
+  "encryptionId": S.optional(S.String),
+  "fileName": S.optional(S.String),
+}),
 ).annotate({ identifier: "MuxStream" }) as any as S.Schema<MuxStream>;
 
 export type MuxStreamList = ReadonlyArray<MuxStream>;
-export const MuxStreamList = /*@__PURE__*/ S.Array(
-  MuxStream,
-) as any as S.Schema<MuxStreamList>;
+export const MuxStreamList = /*@__PURE__*/ S.Array(MuxStream) as any as S.Schema<MuxStreamList>;
 
 /** The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs. */
 export interface AudioMapping {
@@ -560,20 +527,18 @@ export interface AudioMapping {
   inputChannel?: number;
 }
 export const AudioMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    atomKey: S.optional(S.String),
-    inputTrack: S.optional(S.Number),
-    outputChannel: S.optional(S.Number),
-    gainDb: S.optional(S.Number),
-    inputKey: S.optional(S.String),
-    inputChannel: S.optional(S.Number),
-  }),
+S.Struct({
+  "atomKey": S.optional(S.String),
+  "inputTrack": S.optional(S.Number),
+  "outputChannel": S.optional(S.Number),
+  "gainDb": S.optional(S.Number),
+  "inputKey": S.optional(S.String),
+  "inputChannel": S.optional(S.Number),
+}),
 ).annotate({ identifier: "AudioMapping" }) as any as S.Schema<AudioMapping>;
 
 export type AudioMappingList = ReadonlyArray<AudioMapping>;
-export const AudioMappingList = /*@__PURE__*/ S.Array(
-  AudioMapping,
-) as any as S.Schema<AudioMappingList>;
+export const AudioMappingList = /*@__PURE__*/ S.Array(AudioMapping) as any as S.Schema<AudioMappingList>;
 
 /** Audio stream resource. */
 export interface AudioStream {
@@ -595,49 +560,38 @@ export interface AudioStream {
   bitrateBps?: number;
 }
 export const AudioStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sampleRateHertz: S.optional(S.Number),
-    languageCode: S.optional(S.String),
-    channelLayout: S.optional(StringList),
-    mapping: S.optional(AudioMappingList),
-    displayName: S.optional(S.String),
-    codec: S.optional(S.String),
-    channelCount: S.optional(S.Number),
-    bitrateBps: S.optional(S.Number),
-  }),
+S.Struct({
+  "sampleRateHertz": S.optional(S.Number),
+  "languageCode": S.optional(S.String),
+  "channelLayout": S.optional(StringList),
+  "mapping": S.optional(AudioMappingList),
+  "displayName": S.optional(S.String),
+  "codec": S.optional(S.String),
+  "channelCount": S.optional(S.Number),
+  "bitrateBps": S.optional(S.Number),
+}),
 ).annotate({ identifier: "AudioStream" }) as any as S.Schema<AudioStream>;
 
-export type H265CodecSettingsFrameRateConversionStrategyEnum =
-  | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
-  | "DOWNSAMPLE"
-  | "DROP_DUPLICATE"
-  | (string & {});
-export const H265CodecSettingsFrameRateConversionStrategyEnum =
-  /*@__PURE__*/ S.String;
+export type H265CodecSettingsFrameRateConversionStrategyEnum = "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED" | "DOWNSAMPLE" | "DROP_DUPLICATE";
+export const H265CodecSettingsFrameRateConversionStrategyEnum = /*@__PURE__*/ S.String;
 
 /** Convert the input video to a Standard Dynamic Range (SDR) video. */
 export interface H265ColorFormatSDR {}
 export const H265ColorFormatSDR = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "H265ColorFormatSDR",
-}) as any as S.Schema<H265ColorFormatSDR>;
+S.Struct({}),
+).annotate({ identifier: "H265ColorFormatSDR" }) as any as S.Schema<H265ColorFormatSDR>;
 
 /** Convert the input video to a Hybrid Log Gamma (HLG) video. */
 export interface H265ColorFormatHLG {}
 export const H265ColorFormatHLG = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "H265ColorFormatHLG",
-}) as any as S.Schema<H265ColorFormatHLG>;
+S.Struct({}),
+).annotate({ identifier: "H265ColorFormatHLG" }) as any as S.Schema<H265ColorFormatHLG>;
 
 /** Convert the input video to a High Dynamic Range 10 (HDR10) video. */
 export interface H265ColorFormatHDR10 {}
 export const H265ColorFormatHDR10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "H265ColorFormatHDR10",
-}) as any as S.Schema<H265ColorFormatHDR10>;
+S.Struct({}),
+).annotate({ identifier: "H265ColorFormatHDR10" }) as any as S.Schema<H265ColorFormatHDR10>;
 
 /** H265 codec settings. */
 export interface H265CodecSettings {
@@ -689,60 +643,47 @@ export interface H265CodecSettings {
   vbvSizeBits?: number;
 }
 export const H265CodecSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frameRateConversionStrategy: S.optional(
-      H265CodecSettingsFrameRateConversionStrategyEnum,
-    ),
-    rateControlMode: S.optional(S.String),
-    aqStrength: S.optional(S.Number),
-    pixelFormat: S.optional(S.String),
-    gopDuration: S.optional(S.String),
-    sdr: S.optional(H265ColorFormatSDR),
-    hlg: S.optional(H265ColorFormatHLG),
-    bitrateBps: S.optional(S.Number),
-    widthPixels: S.optional(S.Number),
-    frameRate: S.optional(S.Number),
-    tune: S.optional(S.String),
-    crfLevel: S.optional(S.Number),
-    gopFrameCount: S.optional(S.Number),
-    enableTwoPass: S.optional(S.Boolean),
-    preset: S.optional(S.String),
-    hdr10: S.optional(H265ColorFormatHDR10),
-    heightPixels: S.optional(S.Number),
-    bFrameCount: S.optional(S.Number),
-    profile: S.optional(S.String),
-    vbvFullnessBits: S.optional(S.Number),
-    allowOpenGop: S.optional(S.Boolean),
-    bPyramid: S.optional(S.Boolean),
-    vbvSizeBits: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "H265CodecSettings",
-}) as any as S.Schema<H265CodecSettings>;
+S.Struct({
+  "frameRateConversionStrategy": S.optional(H265CodecSettingsFrameRateConversionStrategyEnum),
+  "rateControlMode": S.optional(S.String),
+  "aqStrength": S.optional(S.Number),
+  "pixelFormat": S.optional(S.String),
+  "gopDuration": S.optional(S.String),
+  "sdr": S.optional(H265ColorFormatSDR),
+  "hlg": S.optional(H265ColorFormatHLG),
+  "bitrateBps": S.optional(S.Number),
+  "widthPixels": S.optional(S.Number),
+  "frameRate": S.optional(S.Number),
+  "tune": S.optional(S.String),
+  "crfLevel": S.optional(S.Number),
+  "gopFrameCount": S.optional(S.Number),
+  "enableTwoPass": S.optional(S.Boolean),
+  "preset": S.optional(S.String),
+  "hdr10": S.optional(H265ColorFormatHDR10),
+  "heightPixels": S.optional(S.Number),
+  "bFrameCount": S.optional(S.Number),
+  "profile": S.optional(S.String),
+  "vbvFullnessBits": S.optional(S.Number),
+  "allowOpenGop": S.optional(S.Boolean),
+  "bPyramid": S.optional(S.Boolean),
+  "vbvSizeBits": S.optional(S.Number),
+}),
+).annotate({ identifier: "H265CodecSettings" }) as any as S.Schema<H265CodecSettings>;
 
 /** Convert the input video to a Standard Dynamic Range (SDR) video. */
 export interface Vp9ColorFormatSDR {}
 export const Vp9ColorFormatSDR = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "Vp9ColorFormatSDR",
-}) as any as S.Schema<Vp9ColorFormatSDR>;
+S.Struct({}),
+).annotate({ identifier: "Vp9ColorFormatSDR" }) as any as S.Schema<Vp9ColorFormatSDR>;
 
 /** Convert the input video to a Hybrid Log Gamma (HLG) video. */
 export interface Vp9ColorFormatHLG {}
 export const Vp9ColorFormatHLG = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "Vp9ColorFormatHLG",
-}) as any as S.Schema<Vp9ColorFormatHLG>;
+S.Struct({}),
+).annotate({ identifier: "Vp9ColorFormatHLG" }) as any as S.Schema<Vp9ColorFormatHLG>;
 
-export type Vp9CodecSettingsFrameRateConversionStrategyEnum =
-  | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
-  | "DOWNSAMPLE"
-  | "DROP_DUPLICATE"
-  | (string & {});
-export const Vp9CodecSettingsFrameRateConversionStrategyEnum =
-  /*@__PURE__*/ S.String;
+export type Vp9CodecSettingsFrameRateConversionStrategyEnum = "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED" | "DOWNSAMPLE" | "DROP_DUPLICATE";
+export const Vp9CodecSettingsFrameRateConversionStrategyEnum = /*@__PURE__*/ S.String;
 
 /** VP9 codec settings. */
 export interface Vp9CodecSettings {
@@ -774,50 +715,37 @@ export interface Vp9CodecSettings {
   gopFrameCount?: number;
 }
 export const Vp9CodecSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sdr: S.optional(Vp9ColorFormatSDR),
-    hlg: S.optional(Vp9ColorFormatHLG),
-    gopDuration: S.optional(S.String),
-    pixelFormat: S.optional(S.String),
-    rateControlMode: S.optional(S.String),
-    frameRateConversionStrategy: S.optional(
-      Vp9CodecSettingsFrameRateConversionStrategyEnum,
-    ),
-    crfLevel: S.optional(S.Number),
-    frameRate: S.optional(S.Number),
-    widthPixels: S.optional(S.Number),
-    bitrateBps: S.optional(S.Number),
-    profile: S.optional(S.String),
-    heightPixels: S.optional(S.Number),
-    gopFrameCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "Vp9CodecSettings",
-}) as any as S.Schema<Vp9CodecSettings>;
+S.Struct({
+  "sdr": S.optional(Vp9ColorFormatSDR),
+  "hlg": S.optional(Vp9ColorFormatHLG),
+  "gopDuration": S.optional(S.String),
+  "pixelFormat": S.optional(S.String),
+  "rateControlMode": S.optional(S.String),
+  "frameRateConversionStrategy": S.optional(Vp9CodecSettingsFrameRateConversionStrategyEnum),
+  "crfLevel": S.optional(S.Number),
+  "frameRate": S.optional(S.Number),
+  "widthPixels": S.optional(S.Number),
+  "bitrateBps": S.optional(S.Number),
+  "profile": S.optional(S.String),
+  "heightPixels": S.optional(S.Number),
+  "gopFrameCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "Vp9CodecSettings" }) as any as S.Schema<Vp9CodecSettings>;
 
-export type H264CodecSettingsFrameRateConversionStrategyEnum =
-  | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
-  | "DOWNSAMPLE"
-  | "DROP_DUPLICATE"
-  | (string & {});
-export const H264CodecSettingsFrameRateConversionStrategyEnum =
-  /*@__PURE__*/ S.String;
+export type H264CodecSettingsFrameRateConversionStrategyEnum = "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED" | "DOWNSAMPLE" | "DROP_DUPLICATE";
+export const H264CodecSettingsFrameRateConversionStrategyEnum = /*@__PURE__*/ S.String;
 
 /** Convert the input video to a Standard Dynamic Range (SDR) video. */
 export interface H264ColorFormatSDR {}
 export const H264ColorFormatSDR = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "H264ColorFormatSDR",
-}) as any as S.Schema<H264ColorFormatSDR>;
+S.Struct({}),
+).annotate({ identifier: "H264ColorFormatSDR" }) as any as S.Schema<H264ColorFormatSDR>;
 
 /** Convert the input video to a Hybrid Log Gamma (HLG) video. */
 export interface H264ColorFormatHLG {}
 export const H264ColorFormatHLG = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "H264ColorFormatHLG",
-}) as any as S.Schema<H264ColorFormatHLG>;
+S.Struct({}),
+).annotate({ identifier: "H264ColorFormatHLG" }) as any as S.Schema<H264ColorFormatHLG>;
 
 /** H264 codec settings. */
 export interface H264CodecSettings {
@@ -869,36 +797,32 @@ export interface H264CodecSettings {
   heightPixels?: number;
 }
 export const H264CodecSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bitrateBps: S.optional(S.Number),
-    frameRate: S.optional(S.Number),
-    widthPixels: S.optional(S.Number),
-    crfLevel: S.optional(S.Number),
-    tune: S.optional(S.String),
-    rateControlMode: S.optional(S.String),
-    frameRateConversionStrategy: S.optional(
-      H264CodecSettingsFrameRateConversionStrategyEnum,
-    ),
-    pixelFormat: S.optional(S.String),
-    aqStrength: S.optional(S.Number),
-    sdr: S.optional(H264ColorFormatSDR),
-    hlg: S.optional(H264ColorFormatHLG),
-    gopDuration: S.optional(S.String),
-    allowOpenGop: S.optional(S.Boolean),
-    vbvFullnessBits: S.optional(S.Number),
-    bPyramid: S.optional(S.Boolean),
-    vbvSizeBits: S.optional(S.Number),
-    enableTwoPass: S.optional(S.Boolean),
-    gopFrameCount: S.optional(S.Number),
-    preset: S.optional(S.String),
-    entropyCoder: S.optional(S.String),
-    bFrameCount: S.optional(S.Number),
-    profile: S.optional(S.String),
-    heightPixels: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "H264CodecSettings",
-}) as any as S.Schema<H264CodecSettings>;
+S.Struct({
+  "bitrateBps": S.optional(S.Number),
+  "frameRate": S.optional(S.Number),
+  "widthPixels": S.optional(S.Number),
+  "crfLevel": S.optional(S.Number),
+  "tune": S.optional(S.String),
+  "rateControlMode": S.optional(S.String),
+  "frameRateConversionStrategy": S.optional(H264CodecSettingsFrameRateConversionStrategyEnum),
+  "pixelFormat": S.optional(S.String),
+  "aqStrength": S.optional(S.Number),
+  "sdr": S.optional(H264ColorFormatSDR),
+  "hlg": S.optional(H264ColorFormatHLG),
+  "gopDuration": S.optional(S.String),
+  "allowOpenGop": S.optional(S.Boolean),
+  "vbvFullnessBits": S.optional(S.Number),
+  "bPyramid": S.optional(S.Boolean),
+  "vbvSizeBits": S.optional(S.Number),
+  "enableTwoPass": S.optional(S.Boolean),
+  "gopFrameCount": S.optional(S.Number),
+  "preset": S.optional(S.String),
+  "entropyCoder": S.optional(S.String),
+  "bFrameCount": S.optional(S.Number),
+  "profile": S.optional(S.String),
+  "heightPixels": S.optional(S.Number),
+}),
+).annotate({ identifier: "H264CodecSettings" }) as any as S.Schema<H264CodecSettings>;
 
 /** Video stream resource. */
 export interface VideoStream {
@@ -910,11 +834,11 @@ export interface VideoStream {
   h264?: H264CodecSettings;
 }
 export const VideoStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    h265: S.optional(H265CodecSettings),
-    vp9: S.optional(Vp9CodecSettings),
-    h264: S.optional(H264CodecSettings),
-  }),
+S.Struct({
+  "h265": S.optional(H265CodecSettings),
+  "vp9": S.optional(Vp9CodecSettings),
+  "h264": S.optional(H264CodecSettings),
+}),
 ).annotate({ identifier: "VideoStream" }) as any as S.Schema<VideoStream>;
 
 /** The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs. */
@@ -927,17 +851,15 @@ export interface TextMapping {
   atomKey?: string;
 }
 export const TextMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputKey: S.optional(S.String),
-    inputTrack: S.optional(S.Number),
-    atomKey: S.optional(S.String),
-  }),
+S.Struct({
+  "inputKey": S.optional(S.String),
+  "inputTrack": S.optional(S.Number),
+  "atomKey": S.optional(S.String),
+}),
 ).annotate({ identifier: "TextMapping" }) as any as S.Schema<TextMapping>;
 
 export type TextMappingList = ReadonlyArray<TextMapping>;
-export const TextMappingList = /*@__PURE__*/ S.Array(
-  TextMapping,
-) as any as S.Schema<TextMappingList>;
+export const TextMappingList = /*@__PURE__*/ S.Array(TextMapping) as any as S.Schema<TextMappingList>;
 
 /** Encoding of a text stream. For example, closed captions or subtitles. */
 export interface TextStream {
@@ -951,12 +873,12 @@ export interface TextStream {
   displayName?: string;
 }
 export const TextStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codec: S.optional(S.String),
-    languageCode: S.optional(S.String),
-    mapping: S.optional(TextMappingList),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "codec": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+  "mapping": S.optional(TextMappingList),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "TextStream" }) as any as S.Schema<TextStream>;
 
 /** Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats. */
@@ -971,20 +893,16 @@ export interface ElementaryStream {
   key?: string;
 }
 export const ElementaryStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audioStream: S.optional(AudioStream),
-    videoStream: S.optional(VideoStream),
-    textStream: S.optional(TextStream),
-    key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ElementaryStream",
-}) as any as S.Schema<ElementaryStream>;
+S.Struct({
+  "audioStream": S.optional(AudioStream),
+  "videoStream": S.optional(VideoStream),
+  "textStream": S.optional(TextStream),
+  "key": S.optional(S.String),
+}),
+).annotate({ identifier: "ElementaryStream" }) as any as S.Schema<ElementaryStream>;
 
 export type ElementaryStreamList = ReadonlyArray<ElementaryStream>;
-export const ElementaryStreamList = /*@__PURE__*/ S.Array(
-  ElementaryStream,
-) as any as S.Schema<ElementaryStreamList>;
+export const ElementaryStreamList = /*@__PURE__*/ S.Array(ElementaryStream) as any as S.Schema<ElementaryStreamList>;
 
 /** Edit atom. */
 export interface EditAtom {
@@ -998,18 +916,16 @@ export interface EditAtom {
   key?: string;
 }
 export const EditAtom = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputs: S.optional(StringList),
-    endTimeOffset: S.optional(S.String),
-    startTimeOffset: S.optional(S.String),
-    key: S.optional(S.String),
-  }),
+S.Struct({
+  "inputs": S.optional(StringList),
+  "endTimeOffset": S.optional(S.String),
+  "startTimeOffset": S.optional(S.String),
+  "key": S.optional(S.String),
+}),
 ).annotate({ identifier: "EditAtom" }) as any as S.Schema<EditAtom>;
 
 export type EditAtomList = ReadonlyArray<EditAtom>;
-export const EditAtomList = /*@__PURE__*/ S.Array(
-  EditAtom,
-) as any as S.Schema<EditAtomList>;
+export const EditAtomList = /*@__PURE__*/ S.Array(EditAtom) as any as S.Schema<EditAtomList>;
 
 /** Sprite sheet configuration. */
 export interface SpriteSheet {
@@ -1037,31 +953,25 @@ export interface SpriteSheet {
   totalCount?: number;
 }
 export const SpriteSheet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(S.String),
-    startTimeOffset: S.optional(S.String),
-    endTimeOffset: S.optional(S.String),
-    quality: S.optional(S.Number),
-    columnCount: S.optional(S.Number),
-    interval: S.optional(S.String),
-    filePrefix: S.optional(S.String),
-    spriteWidthPixels: S.optional(S.Number),
-    spriteHeightPixels: S.optional(S.Number),
-    rowCount: S.optional(S.Number),
-    totalCount: S.optional(S.Number),
-  }),
+S.Struct({
+  "format": S.optional(S.String),
+  "startTimeOffset": S.optional(S.String),
+  "endTimeOffset": S.optional(S.String),
+  "quality": S.optional(S.Number),
+  "columnCount": S.optional(S.Number),
+  "interval": S.optional(S.String),
+  "filePrefix": S.optional(S.String),
+  "spriteWidthPixels": S.optional(S.Number),
+  "spriteHeightPixels": S.optional(S.Number),
+  "rowCount": S.optional(S.Number),
+  "totalCount": S.optional(S.Number),
+}),
 ).annotate({ identifier: "SpriteSheet" }) as any as S.Schema<SpriteSheet>;
 
 export type SpriteSheetList = ReadonlyArray<SpriteSheet>;
-export const SpriteSheetList = /*@__PURE__*/ S.Array(
-  SpriteSheet,
-) as any as S.Schema<SpriteSheetList>;
+export const SpriteSheetList = /*@__PURE__*/ S.Array(SpriteSheet) as any as S.Schema<SpriteSheetList>;
 
-export type DashConfigSegmentReferenceSchemeEnum =
-  | "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED"
-  | "SEGMENT_LIST"
-  | "SEGMENT_TEMPLATE_NUMBER"
-  | (string & {});
+export type DashConfigSegmentReferenceSchemeEnum = "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED" | "SEGMENT_LIST" | "SEGMENT_TEMPLATE_NUMBER";
 export const DashConfigSegmentReferenceSchemeEnum = /*@__PURE__*/ S.String;
 
 /** `DASH` manifest configuration. */
@@ -1070,16 +980,12 @@ export interface DashConfig {
   segmentReferenceScheme?: DashConfigSegmentReferenceSchemeEnum;
 }
 export const DashConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    segmentReferenceScheme: S.optional(DashConfigSegmentReferenceSchemeEnum),
-  }),
+S.Struct({
+  "segmentReferenceScheme": S.optional(DashConfigSegmentReferenceSchemeEnum),
+}),
 ).annotate({ identifier: "DashConfig" }) as any as S.Schema<DashConfig>;
 
-export type ManifestTypeEnum =
-  | "MANIFEST_TYPE_UNSPECIFIED"
-  | "HLS"
-  | "DASH"
-  | (string & {});
+export type ManifestTypeEnum = "MANIFEST_TYPE_UNSPECIFIED" | "HLS" | "DASH";
 export const ManifestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Manifest configuration. */
@@ -1094,18 +1000,16 @@ export interface Manifest {
   type?: ManifestTypeEnum;
 }
 export const Manifest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    muxStreams: S.optional(StringList),
-    dash: S.optional(DashConfig),
-    fileName: S.optional(S.String),
-    type: S.optional(ManifestTypeEnum),
-  }),
+S.Struct({
+  "muxStreams": S.optional(StringList),
+  "dash": S.optional(DashConfig),
+  "fileName": S.optional(S.String),
+  "type": S.optional(ManifestTypeEnum),
+}),
 ).annotate({ identifier: "Manifest" }) as any as S.Schema<Manifest>;
 
 export type ManifestList = ReadonlyArray<Manifest>;
-export const ManifestList = /*@__PURE__*/ S.Array(
-  Manifest,
-) as any as S.Schema<ManifestList>;
+export const ManifestList = /*@__PURE__*/ S.Array(Manifest) as any as S.Schema<ManifestList>;
 
 /** Ad break. */
 export interface AdBreak {
@@ -1113,15 +1017,13 @@ export interface AdBreak {
   startTimeOffset?: string;
 }
 export const AdBreak = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTimeOffset: S.optional(S.String),
-  }),
+S.Struct({
+  "startTimeOffset": S.optional(S.String),
+}),
 ).annotate({ identifier: "AdBreak" }) as any as S.Schema<AdBreak>;
 
 export type AdBreakList = ReadonlyArray<AdBreak>;
-export const AdBreakList = /*@__PURE__*/ S.Array(
-  AdBreak,
-) as any as S.Schema<AdBreakList>;
+export const AdBreakList = /*@__PURE__*/ S.Array(AdBreak) as any as S.Schema<AdBreakList>;
 
 /** 2D normalized coordinates. Default: `{0.0, 0.0}` */
 export interface NormalizedCoordinate {
@@ -1131,13 +1033,11 @@ export interface NormalizedCoordinate {
   y?: number;
 }
 export const NormalizedCoordinate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.optional(S.Number),
-    y: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "NormalizedCoordinate",
-}) as any as S.Schema<NormalizedCoordinate>;
+S.Struct({
+  "x": S.optional(S.Number),
+  "y": S.optional(S.Number),
+}),
+).annotate({ identifier: "NormalizedCoordinate" }) as any as S.Schema<NormalizedCoordinate>;
 
 /** Overlaid image. */
 export interface Image {
@@ -1149,18 +1049,14 @@ export interface Image {
   alpha?: number;
 }
 export const Image = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    resolution: S.optional(NormalizedCoordinate),
-    alpha: S.optional(S.Number),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "resolution": S.optional(NormalizedCoordinate),
+  "alpha": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
-export type AnimationFadeFadeTypeEnum =
-  | "FADE_TYPE_UNSPECIFIED"
-  | "FADE_IN"
-  | "FADE_OUT"
-  | (string & {});
+export type AnimationFadeFadeTypeEnum = "FADE_TYPE_UNSPECIFIED" | "FADE_IN" | "FADE_OUT";
 export const AnimationFadeFadeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Display overlay object with fade animation. */
@@ -1175,12 +1071,12 @@ export interface AnimationFade {
   fadeType?: AnimationFadeFadeTypeEnum;
 }
 export const AnimationFade = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTimeOffset: S.optional(S.String),
-    endTimeOffset: S.optional(S.String),
-    xy: S.optional(NormalizedCoordinate),
-    fadeType: S.optional(AnimationFadeFadeTypeEnum),
-  }),
+S.Struct({
+  "startTimeOffset": S.optional(S.String),
+  "endTimeOffset": S.optional(S.String),
+  "xy": S.optional(NormalizedCoordinate),
+  "fadeType": S.optional(AnimationFadeFadeTypeEnum),
+}),
 ).annotate({ identifier: "AnimationFade" }) as any as S.Schema<AnimationFade>;
 
 /** Display static overlay object. */
@@ -1191,13 +1087,11 @@ export interface AnimationStatic {
   xy?: NormalizedCoordinate;
 }
 export const AnimationStatic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTimeOffset: S.optional(S.String),
-    xy: S.optional(NormalizedCoordinate),
-  }),
-).annotate({
-  identifier: "AnimationStatic",
-}) as any as S.Schema<AnimationStatic>;
+S.Struct({
+  "startTimeOffset": S.optional(S.String),
+  "xy": S.optional(NormalizedCoordinate),
+}),
+).annotate({ identifier: "AnimationStatic" }) as any as S.Schema<AnimationStatic>;
 
 /** End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video. */
 export interface AnimationEnd {
@@ -1205,9 +1099,9 @@ export interface AnimationEnd {
   startTimeOffset?: string;
 }
 export const AnimationEnd = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTimeOffset: S.optional(S.String),
-  }),
+S.Struct({
+  "startTimeOffset": S.optional(S.String),
+}),
 ).annotate({ identifier: "AnimationEnd" }) as any as S.Schema<AnimationEnd>;
 
 /** Animation types. */
@@ -1220,17 +1114,15 @@ export interface Animation {
   animationEnd?: AnimationEnd;
 }
 export const Animation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    animationFade: S.optional(AnimationFade),
-    animationStatic: S.optional(AnimationStatic),
-    animationEnd: S.optional(AnimationEnd),
-  }),
+S.Struct({
+  "animationFade": S.optional(AnimationFade),
+  "animationStatic": S.optional(AnimationStatic),
+  "animationEnd": S.optional(AnimationEnd),
+}),
 ).annotate({ identifier: "Animation" }) as any as S.Schema<Animation>;
 
 export type AnimationList = ReadonlyArray<Animation>;
-export const AnimationList = /*@__PURE__*/ S.Array(
-  Animation,
-) as any as S.Schema<AnimationList>;
+export const AnimationList = /*@__PURE__*/ S.Array(Animation) as any as S.Schema<AnimationList>;
 
 /** Overlay configuration. */
 export interface Overlay {
@@ -1240,16 +1132,14 @@ export interface Overlay {
   animations?: AnimationList;
 }
 export const Overlay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(Image),
-    animations: S.optional(AnimationList),
-  }),
+S.Struct({
+  "image": S.optional(Image),
+  "animations": S.optional(AnimationList),
+}),
 ).annotate({ identifier: "Overlay" }) as any as S.Schema<Overlay>;
 
 export type OverlayList = ReadonlyArray<Overlay>;
-export const OverlayList = /*@__PURE__*/ S.Array(
-  Overlay,
-) as any as S.Schema<OverlayList>;
+export const OverlayList = /*@__PURE__*/ S.Array(Overlay) as any as S.Schema<OverlayList>;
 
 /** Job configuration */
 export interface JobConfig {
@@ -1277,48 +1167,31 @@ export interface JobConfig {
   overlays?: OverlayList;
 }
 export const JobConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pubsubDestination: S.optional(PubsubDestination),
-    inputs: S.optional(InputList),
-    encryptions: S.optional(EncryptionList),
-    output: S.optional(Output),
-    muxStreams: S.optional(MuxStreamList),
-    elementaryStreams: S.optional(ElementaryStreamList),
-    editList: S.optional(EditAtomList),
-    spriteSheets: S.optional(SpriteSheetList),
-    manifests: S.optional(ManifestList),
-    adBreaks: S.optional(AdBreakList),
-    overlays: S.optional(OverlayList),
-  }),
+S.Struct({
+  "pubsubDestination": S.optional(PubsubDestination),
+  "inputs": S.optional(InputList),
+  "encryptions": S.optional(EncryptionList),
+  "output": S.optional(Output),
+  "muxStreams": S.optional(MuxStreamList),
+  "elementaryStreams": S.optional(ElementaryStreamList),
+  "editList": S.optional(EditAtomList),
+  "spriteSheets": S.optional(SpriteSheetList),
+  "manifests": S.optional(ManifestList),
+  "adBreaks": S.optional(AdBreakList),
+  "overlays": S.optional(OverlayList),
+}),
 ).annotate({ identifier: "JobConfig" }) as any as S.Schema<JobConfig>;
 
-export type JobModeEnum =
-  | "PROCESSING_MODE_UNSPECIFIED"
-  | "PROCESSING_MODE_INTERACTIVE"
-  | "PROCESSING_MODE_BATCH"
-  | (string & {});
+export type JobModeEnum = "PROCESSING_MODE_UNSPECIFIED" | "PROCESSING_MODE_INTERACTIVE" | "PROCESSING_MODE_BATCH";
 export const JobModeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
-export type JobStateEnum =
-  | "PROCESSING_STATE_UNSPECIFIED"
-  | "PENDING"
-  | "RUNNING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+export type JobStateEnum = "PROCESSING_STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "SUCCEEDED" | "FAILED";
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
-export type JobOptimizationEnum =
-  | "OPTIMIZATION_STRATEGY_UNSPECIFIED"
-  | "AUTODETECT"
-  | "DISABLED"
-  | (string & {});
+export type JobOptimizationEnum = "OPTIMIZATION_STRATEGY_UNSPECIFIED" | "AUTODETECT" | "DISABLED";
 export const JobOptimizationEnum = /*@__PURE__*/ S.String;
 
 /** Transcoding job resource. */
@@ -1357,24 +1230,24 @@ export interface Job {
   batchModePriority?: number;
 }
 export const Job = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endTime: S.optional(S.String),
-    error: S.optional(Status),
-    fillContentGaps: S.optional(S.Boolean),
-    config: S.optional(JobConfig),
-    mode: S.optional(JobModeEnum),
-    labels: S.optional(StringMap),
-    startTime: S.optional(S.String),
-    state: S.optional(JobStateEnum),
-    optimization: S.optional(JobOptimizationEnum),
-    outputUri: S.optional(S.String),
-    name: S.optional(S.String),
-    inputUri: S.optional(S.String),
-    templateId: S.optional(S.String),
-    ttlAfterCompletionDays: S.optional(S.Number),
-    createTime: S.optional(S.String),
-    batchModePriority: S.optional(S.Number),
-  }),
+S.Struct({
+  "endTime": S.optional(S.String),
+  "error": S.optional(Status),
+  "fillContentGaps": S.optional(S.Boolean),
+  "config": S.optional(JobConfig),
+  "mode": S.optional(JobModeEnum),
+  "labels": S.optional(StringMap),
+  "startTime": S.optional(S.String),
+  "state": S.optional(JobStateEnum),
+  "optimization": S.optional(JobOptimizationEnum),
+  "outputUri": S.optional(S.String),
+  "name": S.optional(S.String),
+  "inputUri": S.optional(S.String),
+  "templateId": S.optional(S.String),
+  "ttlAfterCompletionDays": S.optional(S.Number),
+  "createTime": S.optional(S.String),
+  "batchModePriority": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 export interface CreateProjectsLocationsJobsRequest {
@@ -1384,19 +1257,11 @@ export interface CreateProjectsLocationsJobsRequest {
   body?: Job;
 }
 export const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Job.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/jobs",
-      baseUrl: "https://transcoder.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsLocationsJobsRequest",
-}) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Job.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/jobs","baseUrl":"https://transcoder.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsJobsRequest" }) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
 
 /** Transcoding job template resource. */
 export interface JobTemplate {
@@ -1408,11 +1273,11 @@ export interface JobTemplate {
   config?: JobConfig;
 }
 export const JobTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    config: S.optional(JobConfig),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "config": S.optional(JobConfig),
+}),
 ).annotate({ identifier: "JobTemplate" }) as any as S.Schema<JobTemplate>;
 
 export interface CreateProjectsLocationsJobTemplatesRequest {
@@ -1423,22 +1288,13 @@ export interface CreateProjectsLocationsJobTemplatesRequest {
   /** Request body */
   body?: JobTemplate;
 }
-export const CreateProjectsLocationsJobTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobTemplateId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(JobTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/jobTemplates",
-        baseUrl: "https://transcoder.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsJobTemplatesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsJobTemplatesRequest>;
+export const CreateProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "jobTemplateId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(JobTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/jobTemplates","baseUrl":"https://transcoder.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsJobTemplatesRequest" }) as any as S.Schema<CreateProjectsLocationsJobTemplatesRequest>;
 
 export interface DeleteProjectsLocationsJobsRequest {
   /** Required. The name of the job to delete. Format: `projects/{project}/locations/{location}/jobs/{job}` */
@@ -1447,25 +1303,17 @@ export interface DeleteProjectsLocationsJobsRequest {
   allowMissing?: boolean;
 }
 export const DeleteProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://transcoder.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsLocationsJobsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://transcoder.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsJobsRequest" }) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsJobTemplatesRequest {
   /** Required. The name of the job template to delete. `projects/{project}/locations/{location}/jobTemplates/{job_template}` */
@@ -1473,58 +1321,32 @@ export interface DeleteProjectsLocationsJobTemplatesRequest {
   /** If set to true, and the job template is not found, the request will succeed but no action will be taken on the server. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsJobTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://transcoder.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsJobTemplatesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsJobTemplatesRequest>;
+export const DeleteProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://transcoder.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsJobTemplatesRequest" }) as any as S.Schema<DeleteProjectsLocationsJobTemplatesRequest>;
 
 export interface GetProjectsLocationsJobsRequest {
   /** Required. The name of the job to retrieve. Format: `projects/{project}/locations/{location}/jobs/{job}` */
   name: string;
 }
 export const GetProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://transcoder.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsJobsRequest",
-}) as any as S.Schema<GetProjectsLocationsJobsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://transcoder.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsJobsRequest" }) as any as S.Schema<GetProjectsLocationsJobsRequest>;
 
 export interface GetProjectsLocationsJobTemplatesRequest {
   /** Required. The name of the job template to retrieve. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}` */
   name: string;
 }
-export const GetProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://transcoder.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsJobTemplatesRequest",
-}) as any as S.Schema<GetProjectsLocationsJobTemplatesRequest>;
+export const GetProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://transcoder.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsJobTemplatesRequest" }) as any as S.Schema<GetProjectsLocationsJobTemplatesRequest>;
 
 export interface ListProjectsLocationsJobsRequest {
   /** The filter expression, following the syntax outlined in https://google.aip.dev/160. */
@@ -1539,22 +1361,14 @@ export interface ListProjectsLocationsJobsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/jobs",
-      baseUrl: "https://transcoder.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsJobsRequest",
-}) as any as S.Schema<ListProjectsLocationsJobsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/jobs","baseUrl":"https://transcoder.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsJobsRequest" }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
 export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
@@ -1569,14 +1383,12 @@ export interface ListJobsResponse {
   unreachable?: StringList;
 }
 export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    jobs: S.optional(JobList),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListJobsResponse",
-}) as any as S.Schema<ListJobsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "jobs": S.optional(JobList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListJobsResponse" }) as any as S.Schema<ListJobsResponse>;
 
 export interface ListProjectsLocationsJobTemplatesRequest {
   /** The filter expression, following the syntax outlined in https://google.aip.dev/160. */
@@ -1590,29 +1402,18 @@ export interface ListProjectsLocationsJobTemplatesRequest {
   /** The maximum number of items to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/jobTemplates",
-        baseUrl: "https://transcoder.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsJobTemplatesRequest",
-}) as any as S.Schema<ListProjectsLocationsJobTemplatesRequest>;
+export const ListProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/jobTemplates","baseUrl":"https://transcoder.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsJobTemplatesRequest" }) as any as S.Schema<ListProjectsLocationsJobTemplatesRequest>;
 
 export type JobTemplateList = ReadonlyArray<JobTemplate>;
-export const JobTemplateList = /*@__PURE__*/ S.Array(
-  JobTemplate,
-) as any as S.Schema<JobTemplateList>;
+export const JobTemplateList = /*@__PURE__*/ S.Array(JobTemplate) as any as S.Schema<JobTemplateList>;
 
 /** Response message for `TranscoderService.ListJobTemplates`. */
 export interface ListJobTemplatesResponse {
@@ -1624,21 +1425,14 @@ export interface ListJobTemplatesResponse {
   jobTemplates?: JobTemplateList;
 }
 export const ListJobTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-    jobTemplates: S.optional(JobTemplateList),
-  }),
-).annotate({
-  identifier: "ListJobTemplatesResponse",
-}) as any as S.Schema<ListJobTemplatesResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "jobTemplates": S.optional(JobTemplateList),
+}),
+).annotate({ identifier: "ListJobTemplatesResponse" }) as any as S.Schema<ListJobTemplatesResponse>;
 
-export type CreateProjectsLocationsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a job in the specified region. */
 export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsRequest,
@@ -1653,12 +1447,7 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsJobTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsJobTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a job template in the specified region. */
 export const createProjectsLocationsJobTemplates: API.OperationMethod<
   CreateProjectsLocationsJobTemplatesRequest,
@@ -1673,12 +1462,7 @@ export const createProjectsLocationsJobTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a job. */
 export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsRequest,
@@ -1693,12 +1477,7 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsJobTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsJobTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a job template. */
 export const deleteProjectsLocationsJobTemplates: API.OperationMethod<
   DeleteProjectsLocationsJobTemplatesRequest,
@@ -1728,10 +1507,7 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsJobTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsJobTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Returns the job template data. */
 export const getProjectsLocationsJobTemplates: API.OperationMethod<
   GetProjectsLocationsJobTemplatesRequest,
@@ -1759,16 +1535,10 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsJobTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsJobTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Lists job templates in the specified region. */
 export const listProjectsLocationsJobTemplates: API.PaginatedOperationMethod<
   ListProjectsLocationsJobTemplatesRequest,
@@ -1781,8 +1551,6 @@ export const listProjectsLocationsJobTemplates: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
+

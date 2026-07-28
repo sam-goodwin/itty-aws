@@ -112,8 +112,7 @@ export type DataSetType =
   | "customer_profile_by_revenue"
   | "customer_profile_by_geography"
   | "sales_compensation_billed_revenue"
-  | "us_sales_and_use_tax_records"
-  | (string & {});
+  | "us_sales_and_use_tax_records";
 export const DataSetType = /*@__PURE__*/ S.String;
 
 export type DataSetPublicationDate = Date;
@@ -129,7 +128,7 @@ export const CustomerDefinedValues = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface GenerateDataSetRequest {
-  dataSetType: DataSetType;
+  dataSetType: DataSetType | (string & {});
   dataSetPublicationDate: Date;
   roleNameArn: string;
   destinationS3BucketName: string;
@@ -163,13 +162,12 @@ export const GenerateDataSetResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateDataSetResult>;
 export type SupportDataSetType =
   | "customer_support_contacts_data"
-  | "test_customer_support_contacts_data"
-  | (string & {});
+  | "test_customer_support_contacts_data";
 export const SupportDataSetType = /*@__PURE__*/ S.String;
 
 export type FromDate = Date;
 export interface StartSupportDataExportRequest {
-  dataSetType: SupportDataSetType;
+  dataSetType: SupportDataSetType | (string & {});
   fromDate: Date;
   roleNameArn: string;
   destinationS3BucketName: string;

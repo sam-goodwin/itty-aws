@@ -161,8 +161,7 @@ export type HumanLoopStatus =
   | "Failed"
   | "Completed"
   | "Stopped"
-  | "Stopping"
-  | (string & {});
+  | "Stopping";
 export const HumanLoopStatus = /*@__PURE__*/ S.String;
 
 export type HumanLoopArn = string;
@@ -201,7 +200,7 @@ export const DescribeHumanLoopResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeHumanLoopResponse",
 }) as any as S.Schema<DescribeHumanLoopResponse>;
-export type SortOrder = "Ascending" | "Descending" | (string & {});
+export type SortOrder = "Ascending" | "Descending";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export type NextToken = string;
@@ -210,7 +209,7 @@ export interface ListHumanLoopsRequest {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
   FlowDefinitionArn?: string;
-  SortOrder?: SortOrder;
+  SortOrder?: SortOrder | (string & {});
   NextToken?: string;
   MaxResults?: number;
 }
@@ -285,11 +284,10 @@ export const HumanLoopInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HumanLoopInput" }) as any as S.Schema<HumanLoopInput>;
 export type ContentClassifier =
   | "FreeOfPersonallyIdentifiableInformation"
-  | "FreeOfAdultContent"
-  | (string & {});
+  | "FreeOfAdultContent";
 export const ContentClassifier = /*@__PURE__*/ S.String;
 
-export type ContentClassifiers = ContentClassifier[];
+export type ContentClassifiers = (ContentClassifier | (string & {}))[];
 export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface HumanLoopDataAttributes {
   ContentClassifiers?: ContentClassifier[];

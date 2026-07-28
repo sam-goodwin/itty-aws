@@ -23,11 +23,11 @@ export const AppliancesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AppliancesCreateOrUpdateRequestTagsMap>;
 
 /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
-export type AppliancePropertiesInputDistro = "AKSEdge" | (string & {});
+export type AppliancePropertiesInputDistro = "AKSEdge";
 export const AppliancePropertiesInputDistro = /*@__PURE__*/ S.String;
 
 /** Information about the connected appliance. */
-export type Provider = "VMWare" | "HCI" | "SCVMM" | (string & {});
+export type Provider = "VMWare" | "HCI" | "SCVMM";
 export const Provider = /*@__PURE__*/ S.String;
 
 /** Contains infrastructure information about the Appliance */
@@ -47,7 +47,7 @@ export const AppliancePropertiesInfrastructureConfig = /*@__PURE__*/ S.suspend(
 /** Properties for an appliance. */
 export interface AppliancePropertiesInput {
   /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
-  distro?: AppliancePropertiesInputDistro;
+  distro?: AppliancePropertiesInputDistro | (string & {});
   /** Contains infrastructure information about the Appliance */
   infrastructureConfig?: AppliancePropertiesInfrastructureConfig;
   /** Certificates pair used to download MSI certificate from HIS. Can only be set once. */
@@ -67,13 +67,13 @@ export const AppliancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppliancePropertiesInput>;
 
 /** The identity type. */
-export type ResourceIdentityType = "SystemAssigned" | "None" | (string & {});
+export type ResourceIdentityType = "SystemAssigned" | "None";
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. */
-  type?: ResourceIdentityType;
+  type?: ResourceIdentityType | (string & {});
 }
 export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -123,8 +123,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -132,8 +131,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -172,7 +170,7 @@ export const AppliancesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AppliancesCreateOrUpdateResponseTagsMap>;
 
 /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
-export type AppliancePropertiesDistro = "AKSEdge" | (string & {});
+export type AppliancePropertiesDistro = "AKSEdge";
 export const AppliancePropertiesDistro = /*@__PURE__*/ S.String;
 
 /** Appliance’s health and state of connection to on-prem. This list of values is not exhaustive. */
@@ -208,8 +206,7 @@ export type Status =
   | "UpgradeClusterExtensionFailedToDelete"
   | "UpgradeFailed"
   | "Offline"
-  | "None"
-  | (string & {});
+  | "None";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Properties for an appliance. */
@@ -712,10 +709,7 @@ export const HybridConnectionConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridConnectionConfig>;
 
 /** Name which contains the role of the kubeconfig. */
-export type AccessProfileType =
-  | "clusterUser"
-  | "clusterCustomerUser"
-  | (string & {});
+export type AccessProfileType = "clusterUser" | "clusterCustomerUser";
 export const AccessProfileType = /*@__PURE__*/ S.String;
 
 /** Cluster User Credential appliance. */

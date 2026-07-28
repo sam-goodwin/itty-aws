@@ -16,8 +16,7 @@ export type { AzureOpError, AzureOpContext };
 export type AccessBridgesCreateOrUpdateRequestAccessBridgeName =
   | "Bastion"
   | "PrivateVault"
-  | "StorageDashboard"
-  | (string & {});
+  | "StorageDashboard";
 export const AccessBridgesCreateOrUpdateRequestAccessBridgeName =
   /*@__PURE__*/ S.String;
 
@@ -31,7 +30,7 @@ export const AccessBridgesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccessBridgesCreateOrUpdateRequestTagsMap>;
 
 /** The direction of allowed network traffic based on the rule. */
-export type SecurityRuleDirection = "Inbound" | "Outbound" | (string & {});
+export type SecurityRuleDirection = "Inbound" | "Outbound";
 export const SecurityRuleDirection = /*@__PURE__*/ S.String;
 
 /** The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24. */
@@ -104,8 +103,7 @@ export const AccessBridgePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** The supported ExtendedLocation types. */
 export type AzureResourceManagerCommonTypesExtendedLocationType =
   | "EdgeZone"
-  | "CustomLocation"
-  | (string & {});
+  | "CustomLocation";
 export const AzureResourceManagerCommonTypesExtendedLocationType =
   /*@__PURE__*/ S.String;
 
@@ -132,7 +130,9 @@ export interface AccessBridgesCreateOrUpdateRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the access bridge. */
-  accessBridgeName: AccessBridgesCreateOrUpdateRequestAccessBridgeName;
+  accessBridgeName:
+    | AccessBridgesCreateOrUpdateRequestAccessBridgeName
+    | (string & {});
   /** Resource tags. */
   tags?: AccessBridgesCreateOrUpdateRequestTagsMap;
   /** The geo-location where the resource lives */
@@ -170,8 +170,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -179,8 +178,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -227,11 +225,7 @@ export const AccessBridgePropertiesSecurityRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AccessBridgePropertiesSecurityRulesList>;
 
 /** The detailed status reported by the access bridge. */
-export type AccessBridgeDetailedStatus =
-  | "Running"
-  | "Degraded"
-  | "Failed"
-  | (string & {});
+export type AccessBridgeDetailedStatus = "Running" | "Degraded" | "Failed";
 export const AccessBridgeDetailedStatus = /*@__PURE__*/ S.String;
 
 /** AccessBridgeEndpoint describes a single advertised service endpoint. */
@@ -264,7 +258,7 @@ export const AccessBridgePropertiesEndpointsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AccessBridgePropertiesEndpointsList>;
 
 /** The protocol advertised by the access bridge endpoints. */
-export type TransportProtocol = "TCP" | "UDP" | (string & {});
+export type TransportProtocol = "TCP" | "UDP";
 export const TransportProtocol = /*@__PURE__*/ S.String;
 
 /** The provisioning state of the access bridge. */
@@ -273,8 +267,7 @@ export type AccessBridgeProvisioningState =
   | "Canceled"
   | "Failed"
   | "Provisioning"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const AccessBridgeProvisioningState = /*@__PURE__*/ S.String;
 
 /** AccessBridgeProperties captures the input and status for an access bridge. */
@@ -353,8 +346,7 @@ export const AccessBridgesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type AccessBridgesDeleteRequestAccessBridgeName =
   | "Bastion"
   | "PrivateVault"
-  | "StorageDashboard"
-  | (string & {});
+  | "StorageDashboard";
 export const AccessBridgesDeleteRequestAccessBridgeName =
   /*@__PURE__*/ S.String;
 
@@ -364,7 +356,7 @@ export interface AccessBridgesDeleteRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the access bridge. */
-  accessBridgeName: AccessBridgesDeleteRequestAccessBridgeName;
+  accessBridgeName: AccessBridgesDeleteRequestAccessBridgeName | (string & {});
 }
 export const AccessBridgesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -395,8 +387,7 @@ export const AccessBridgesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 export type AccessBridgesGetRequestAccessBridgeName =
   | "Bastion"
   | "PrivateVault"
-  | "StorageDashboard"
-  | (string & {});
+  | "StorageDashboard";
 export const AccessBridgesGetRequestAccessBridgeName = /*@__PURE__*/ S.String;
 
 export interface AccessBridgesGetRequest {
@@ -405,7 +396,7 @@ export interface AccessBridgesGetRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the access bridge. */
-  accessBridgeName: AccessBridgesGetRequestAccessBridgeName;
+  accessBridgeName: AccessBridgesGetRequestAccessBridgeName | (string & {});
 }
 export const AccessBridgesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -591,8 +582,7 @@ export const AccessBridgesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 export type AccessBridgesUpdateRequestAccessBridgeName =
   | "Bastion"
   | "PrivateVault"
-  | "StorageDashboard"
-  | (string & {});
+  | "StorageDashboard";
 export const AccessBridgesUpdateRequestAccessBridgeName =
   /*@__PURE__*/ S.String;
 
@@ -632,7 +622,7 @@ export interface AccessBridgesUpdateRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the access bridge. */
-  accessBridgeName: AccessBridgesUpdateRequestAccessBridgeName;
+  accessBridgeName: AccessBridgesUpdateRequestAccessBridgeName | (string & {});
   /** The list of the resource properties. */
   properties?: AccessBridgePatchProperties;
   /** Resource tags. */
@@ -749,7 +739,7 @@ export const AdministratorConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdministratorConfiguration>;
 
 /** The size of the hugepages to allocate. */
-export type AgentOptionsHugepagesSize = "2M" | "1G" | (string & {});
+export type AgentOptionsHugepagesSize = "2M" | "1G";
 export const AgentOptionsHugepagesSize = /*@__PURE__*/ S.String;
 
 /** AgentOptions are configurations that will be applied to each agent in an agent pool. */
@@ -772,8 +762,7 @@ export type L2NetworkAttachmentConfigurationPluginType =
   | "SRIOV"
   | "OSDevice"
   | "MACVLAN"
-  | "IPVLAN"
-  | (string & {});
+  | "IPVLAN";
 export const L2NetworkAttachmentConfigurationPluginType =
   /*@__PURE__*/ S.String;
 
@@ -801,10 +790,7 @@ export const AttachedNetworkConfigurationL2NetworksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AttachedNetworkConfigurationL2NetworksList>;
 
 /** The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached. */
-export type L3NetworkAttachmentConfigurationIpamEnabled =
-  | "True"
-  | "False"
-  | (string & {});
+export type L3NetworkAttachmentConfigurationIpamEnabled = "True" | "False";
 export const L3NetworkAttachmentConfigurationIpamEnabled =
   /*@__PURE__*/ S.String;
 
@@ -814,8 +800,7 @@ export type L3NetworkAttachmentConfigurationPluginType =
   | "SRIOV"
   | "OSDevice"
   | "MACVLAN"
-  | "IPVLAN"
-  | (string & {});
+  | "IPVLAN";
 export const L3NetworkAttachmentConfigurationPluginType =
   /*@__PURE__*/ S.String;
 
@@ -851,8 +836,7 @@ export type TrunkedNetworkAttachmentConfigurationPluginType =
   | "SRIOV"
   | "OSDevice"
   | "MACVLAN"
-  | "IPVLAN"
-  | (string & {});
+  | "IPVLAN";
 export const TrunkedNetworkAttachmentConfigurationPluginType =
   /*@__PURE__*/ S.String;
 
@@ -933,7 +917,7 @@ export const AgentPoolPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AgentPoolPropertiesInputLabelsList>;
 
 /** The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node. */
-export type AgentPoolMode = "System" | "User" | "NotApplicable" | (string & {});
+export type AgentPoolMode = "System" | "User" | "NotApplicable";
 export const AgentPoolMode = /*@__PURE__*/ S.String;
 
 /** The taints applied to the nodes in this agent pool. */
@@ -976,7 +960,7 @@ export interface AgentPoolPropertiesInput {
   /** The labels applied to the nodes in this agent pool. */
   labels?: AgentPoolPropertiesInputLabelsList;
   /** The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node. */
-  mode: AgentPoolMode;
+  mode: AgentPoolMode | (string & {});
   /** The taints applied to the nodes in this agent pool. */
   taints?: AgentPoolPropertiesInputTaintsList;
   /** The configuration of the agent pool. */
@@ -1072,11 +1056,7 @@ export const AgentPoolPropertiesTaintsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AgentPoolPropertiesTaintsList>;
 
 /** The current status of the agent pool. */
-export type AgentPoolDetailedStatus =
-  | "Available"
-  | "Error"
-  | "Provisioning"
-  | (string & {});
+export type AgentPoolDetailedStatus = "Available" | "Error" | "Provisioning";
 export const AgentPoolDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The provisioning state of the agent pool. */
@@ -1087,8 +1067,7 @@ export type AgentPoolProvisioningState =
   | "Failed"
   | "InProgress"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const AgentPoolProvisioningState = /*@__PURE__*/ S.String;
 
 /** AgentPoolProperties represents the properties of the Kubernetes cluster agent pool. */
@@ -1540,8 +1519,7 @@ export const BareMetalMachineKeySetPropertiesInputJumpHostsAllowedList =
 export type BareMetalMachineKeySetPrivilegeLevel =
   | "Standard"
   | "Superuser"
-  | "Other"
-  | (string & {});
+  | "Other";
 export const BareMetalMachineKeySetPrivilegeLevel = /*@__PURE__*/ S.String;
 
 /** KeySetUser represents the properties of the user in the key set. */
@@ -1583,7 +1561,7 @@ export interface BareMetalMachineKeySetPropertiesInput {
   /** The name of the group that users will be assigned to on the operating system of the machines. */
   osGroupName?: string;
   /** The access level allowed for the users in this key set. */
-  privilegeLevel: BareMetalMachineKeySetPrivilegeLevel;
+  privilegeLevel: BareMetalMachineKeySetPrivilegeLevel | (string & {});
   /** The name of the access level to apply when the privilege level is set to Other. */
   privilegeLevelName?: string;
   /** The unique list of permitted users. */
@@ -1677,15 +1655,11 @@ export type BareMetalMachineKeySetDetailedStatus =
   | "AllActive"
   | "SomeInvalid"
   | "AllInvalid"
-  | "Validating"
-  | (string & {});
+  | "Validating";
 export const BareMetalMachineKeySetDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The indicator of whether the user is currently deployed for access. */
-export type BareMetalMachineKeySetUserSetupStatus =
-  | "Active"
-  | "Invalid"
-  | (string & {});
+export type BareMetalMachineKeySetUserSetupStatus = "Active" | "Invalid";
 export const BareMetalMachineKeySetUserSetupStatus = /*@__PURE__*/ S.String;
 
 /** KeySetUserStatus represents the status of the key set user. */
@@ -1721,8 +1695,7 @@ export type BareMetalMachineKeySetProvisioningState =
   | "Failed"
   | "Canceled"
   | "Accepted"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const BareMetalMachineKeySetProvisioningState = /*@__PURE__*/ S.String;
 
 /** BareMetalMachineKeySetProperties represents the properties of bare metal machine key set. */
@@ -2151,10 +2124,7 @@ export const BareMetalMachineKeySetsUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BareMetalMachineKeySetsUpdateResponse>;
 
 /** The indicator of whether to evacuate the node workload when the bare metal machine is cordoned. */
-export type BareMetalMachinesCordonRequestEvacuate =
-  | "True"
-  | "False"
-  | (string & {});
+export type BareMetalMachinesCordonRequestEvacuate = "True" | "False";
 export const BareMetalMachinesCordonRequestEvacuate = /*@__PURE__*/ S.String;
 
 export interface BareMetalMachinesCordonRequest {
@@ -2165,7 +2135,7 @@ export interface BareMetalMachinesCordonRequest {
   /** The name of the bare metal machine. */
   bareMetalMachineName: string;
   /** The indicator of whether to evacuate the node workload when the bare metal machine is cordoned. */
-  evacuate?: BareMetalMachinesCordonRequestEvacuate;
+  evacuate?: BareMetalMachinesCordonRequestEvacuate | (string & {});
 }
 export const BareMetalMachinesCordonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2310,11 +2280,7 @@ export const BareMetalMachinesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<BareMetalMachinesCreateOrUpdateResponseTagsMap>;
 
 /** The status of the action. */
-export type ActionStateStatus =
-  | "Completed"
-  | "InProgress"
-  | "Failed"
-  | (string & {});
+export type ActionStateStatus = "Completed" | "InProgress" | "Failed";
 export const ActionStateStatus = /*@__PURE__*/ S.String;
 
 /** The status of the step. A value of Completed or Failed indicates a terminal state for the step. */
@@ -2322,8 +2288,7 @@ export type StepStateStatus =
   | "Completed"
   | "InProgress"
   | "Failed"
-  | "NotStarted"
-  | (string & {});
+  | "NotStarted";
 export const StepStateStatus = /*@__PURE__*/ S.String;
 
 /** StepState represents the state of a step in an action. */
@@ -2416,10 +2381,7 @@ export const CertificateInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateInfo>;
 
 /** The cordon status of the bare metal machine. */
-export type BareMetalMachineCordonStatus =
-  | "Cordoned"
-  | "Uncordoned"
-  | (string & {});
+export type BareMetalMachineCordonStatus = "Cordoned" | "Uncordoned";
 export const BareMetalMachineCordonStatus = /*@__PURE__*/ S.String;
 
 /** The more detailed status of the bare metal machine. */
@@ -2429,8 +2391,7 @@ export type BareMetalMachineDetailedStatus =
   | "Available"
   | "Provisioning"
   | "Provisioned"
-  | "Deprovisioning"
-  | (string & {});
+  | "Deprovisioning";
 export const BareMetalMachineDetailedStatus = /*@__PURE__*/ S.String;
 
 /** HardwareInventoryNetworkInterface represents the network interface details as part of a hardware inventory. */
@@ -2525,10 +2486,7 @@ export const HardwareInventory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HardwareInventory>;
 
 /** The outcome of the hardware validation. */
-export type BareMetalMachineHardwareValidationResult =
-  | "Pass"
-  | "Fail"
-  | (string & {});
+export type BareMetalMachineHardwareValidationResult = "Pass" | "Fail";
 export const BareMetalMachineHardwareValidationResult = /*@__PURE__*/ S.String;
 
 /** HardwareValidationStatus represents the latest hardware validation details performed for this bare metal machine. */
@@ -2564,16 +2522,14 @@ export const BareMetalMachinePropertiesMachineRolesList = /*@__PURE__*/ S.Array(
 /** The log level for the monitoring configuration status of the bare metal machine. */
 export type BareMetalMachineMonitoringConfigurationStatusLogLevel =
   | "Default"
-  | "Nexus"
-  | (string & {});
+  | "Nexus";
 export const BareMetalMachineMonitoringConfigurationStatusLogLevel =
   /*@__PURE__*/ S.String;
 
 /** The metrics level for the monitoring configuration status of the bare metal machine. */
 export type BareMetalMachineMonitoringConfigurationStatusMetricsLevel =
   | "Default"
-  | "Nexus"
-  | (string & {});
+  | "Nexus";
 export const BareMetalMachineMonitoringConfigurationStatusMetricsLevel =
   /*@__PURE__*/ S.String;
 
@@ -2599,18 +2555,15 @@ export const BareMetalMachineMonitoringConfigurationStatus =
   }) as any as S.Schema<BareMetalMachineMonitoringConfigurationStatus>;
 
 /** The power state derived from the baseboard management controller. */
-export type BareMetalMachinePowerState = "On" | "Off" | (string & {});
+export type BareMetalMachinePowerState = "On" | "Off";
 export const BareMetalMachinePowerState = /*@__PURE__*/ S.String;
 
 /** The indicator of whether the bare metal machine is ready to receive workloads. */
-export type BareMetalMachineReadyState = "True" | "False" | (string & {});
+export type BareMetalMachineReadyState = "True" | "False";
 export const BareMetalMachineReadyState = /*@__PURE__*/ S.String;
 
 /** The runtime protection agent health status. */
-export type RuntimeProtectionAgentHealthStatus =
-  | "Healthy"
-  | "Unhealthy"
-  | (string & {});
+export type RuntimeProtectionAgentHealthStatus = "Healthy" | "Unhealthy";
 export const RuntimeProtectionAgentHealthStatus = /*@__PURE__*/ S.String;
 
 /** The runtime protection agent health status issues, if present. */
@@ -2622,17 +2575,11 @@ export const RuntimeProtectionStatusAgentHealthStatusIssuesList =
   ) as any as S.Schema<RuntimeProtectionStatusAgentHealthStatusIssuesList>;
 
 /** The runtime protection agent license status. */
-export type RuntimeProtectionAgentLicenseStatus =
-  | "Licensed"
-  | "Unlicensed"
-  | (string & {});
+export type RuntimeProtectionAgentLicenseStatus = "Licensed" | "Unlicensed";
 export const RuntimeProtectionAgentLicenseStatus = /*@__PURE__*/ S.String;
 
 /** The definition update mode for runtime protection. */
-export type RuntimeProtectionDefinitionUpdateMode =
-  | "Automatic"
-  | "None"
-  | (string & {});
+export type RuntimeProtectionDefinitionUpdateMode = "Automatic" | "None";
 export const RuntimeProtectionDefinitionUpdateMode = /*@__PURE__*/ S.String;
 
 /** The mode of operation for runtime protection. */
@@ -2641,8 +2588,7 @@ export type RuntimeProtectionEnforcementLevel =
   | "Disabled"
   | "OnDemand"
   | "Passive"
-  | "RealTime"
-  | (string & {});
+  | "RealTime";
 export const RuntimeProtectionEnforcementLevel = /*@__PURE__*/ S.String;
 
 /** RuntimeProtectionStatus represents the runtime protection status of the bare metal machine. */
@@ -2756,8 +2702,7 @@ export type BareMetalMachineProvisioningState =
   | "Failed"
   | "Canceled"
   | "Provisioning"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const BareMetalMachineProvisioningState = /*@__PURE__*/ S.String;
 
 /** BareMetalMachineProperties represents the properties of a bare metal machine. */
@@ -3152,10 +3097,7 @@ export const BareMetalMachinesListBySubscriptionRequest =
   }) as any as S.Schema<BareMetalMachinesListBySubscriptionRequest>;
 
 /** The indicator of whether to skip the graceful OS shutdown and power off the bare metal machine immediately. */
-export type BareMetalMachinesPowerOffRequestSkipShutdown =
-  | "True"
-  | "False"
-  | (string & {});
+export type BareMetalMachinesPowerOffRequestSkipShutdown = "True" | "False";
 export const BareMetalMachinesPowerOffRequestSkipShutdown =
   /*@__PURE__*/ S.String;
 
@@ -3167,7 +3109,7 @@ export interface BareMetalMachinesPowerOffRequest {
   /** The name of the bare metal machine. */
   bareMetalMachineName: string;
   /** The indicator of whether to skip the graceful OS shutdown and power off the bare metal machine immediately. */
-  skipShutdown?: BareMetalMachinesPowerOffRequestSkipShutdown;
+  skipShutdown?: BareMetalMachinesPowerOffRequestSkipShutdown | (string & {});
 }
 export const BareMetalMachinesPowerOffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3195,10 +3137,7 @@ export const BareMetalMachinesPowerOffResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BareMetalMachinesPowerOffResponse>;
 
 /** The safeguard mode to use for the reimage action, where None indicates to bypass safeguards and All indicates to utilize all safeguards. */
-export type BareMetalMachineReimageSafeguardMode =
-  | "All"
-  | "None"
-  | (string & {});
+export type BareMetalMachineReimageSafeguardMode = "All" | "None";
 export const BareMetalMachineReimageSafeguardMode = /*@__PURE__*/ S.String;
 
 export interface BareMetalMachinesReimageRequest {
@@ -3209,7 +3148,7 @@ export interface BareMetalMachinesReimageRequest {
   /** The name of the bare metal machine. */
   bareMetalMachineName: string;
   /** The safeguard mode to use for the reimage action, where None indicates to bypass safeguards and All indicates to utilize all safeguards. If not specified, the default is All. */
-  safeguardMode?: BareMetalMachineReimageSafeguardMode;
+  safeguardMode?: BareMetalMachineReimageSafeguardMode | (string & {});
 }
 export const BareMetalMachinesReimageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3237,18 +3176,14 @@ export const BareMetalMachinesReimageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BareMetalMachinesReimageResponse>;
 
 /** The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize all safeguards. */
-export type BareMetalMachinesReplaceRequestSafeguardMode =
-  | "All"
-  | "None"
-  | (string & {});
+export type BareMetalMachinesReplaceRequestSafeguardMode = "All" | "None";
 export const BareMetalMachinesReplaceRequestSafeguardMode =
   /*@__PURE__*/ S.String;
 
 /** The indicator of whether to bypass clearing storage while replacing a bare metal machine. */
 export type BareMetalMachinesReplaceRequestStoragePolicy =
   | "Preserve"
-  | "DiscardAll"
-  | (string & {});
+  | "DiscardAll";
 export const BareMetalMachinesReplaceRequestStoragePolicy =
   /*@__PURE__*/ S.String;
 
@@ -3268,11 +3203,11 @@ export interface BareMetalMachinesReplaceRequest {
   /** The OS-level hostname assigned to this machine. */
   machineName?: string;
   /** The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize all safeguards. */
-  safeguardMode?: BareMetalMachinesReplaceRequestSafeguardMode;
+  safeguardMode?: BareMetalMachinesReplaceRequestSafeguardMode | (string & {});
   /** The serial number of the bare metal machine. */
   serialNumber?: string;
   /** The indicator of whether to bypass clearing storage while replacing a bare metal machine. */
-  storagePolicy?: BareMetalMachinesReplaceRequestStoragePolicy;
+  storagePolicy?: BareMetalMachinesReplaceRequestStoragePolicy | (string & {});
 }
 export const BareMetalMachinesReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3723,10 +3658,7 @@ export const BmcKeySetsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BmcKeySetsCreateOrUpdateRequestTagsMap>;
 
 /** The access level allowed for the users in this key set. */
-export type BmcKeySetPrivilegeLevel =
-  | "ReadOnly"
-  | "Administrator"
-  | (string & {});
+export type BmcKeySetPrivilegeLevel = "ReadOnly" | "Administrator";
 export const BmcKeySetPrivilegeLevel = /*@__PURE__*/ S.String;
 
 /** The unique list of permitted users. */
@@ -3742,7 +3674,7 @@ export interface BmcKeySetPropertiesInput {
   /** The date and time after which the users in this key set will be removed from the baseboard management controllers. */
   expiration: string;
   /** The access level allowed for the users in this key set. */
-  privilegeLevel: BmcKeySetPrivilegeLevel;
+  privilegeLevel: BmcKeySetPrivilegeLevel | (string & {});
   /** The unique list of permitted users. */
   userList: BmcKeySetPropertiesInputUserListList;
 }
@@ -3817,8 +3749,7 @@ export type BmcKeySetDetailedStatus =
   | "AllActive"
   | "SomeInvalid"
   | "AllInvalid"
-  | "Validating"
-  | (string & {});
+  | "Validating";
 export const BmcKeySetDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The status evaluation of each user. */
@@ -3834,8 +3765,7 @@ export type BmcKeySetProvisioningState =
   | "Failed"
   | "Canceled"
   | "Accepted"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const BmcKeySetProvisioningState = /*@__PURE__*/ S.String;
 
 /** BmcKeySetProperties represents the properties of baseboard management controller key set. */
@@ -4279,16 +4209,12 @@ export const CloudServicesNetworkPropertiesInputAdditionalEgressEndpointsList =
 /** The indicator of whether the platform default endpoints are allowed for the egress traffic. */
 export type CloudServicesNetworkPropertiesInputEnableDefaultEgressEndpoints =
   | "True"
-  | "False"
-  | (string & {});
+  | "False";
 export const CloudServicesNetworkPropertiesInputEnableDefaultEgressEndpoints =
   /*@__PURE__*/ S.String;
 
 /** The indicator to enable shared storage on the cloud services network. If not specified, the allocation will align with the standard storage enablement. */
-export type CloudServicesNetworkStorageOptionsMode =
-  | "None"
-  | "Standard"
-  | (string & {});
+export type CloudServicesNetworkStorageOptionsMode = "None" | "Standard";
 export const CloudServicesNetworkStorageOptionsMode = /*@__PURE__*/ S.String;
 
 /** CloudServicesNetworkStorageOptions represents the storage options for the cloud services network. */
@@ -4315,7 +4241,9 @@ export interface CloudServicesNetworkPropertiesInput {
   /** The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint. */
   additionalEgressEndpoints?: CloudServicesNetworkPropertiesInputAdditionalEgressEndpointsList;
   /** The indicator of whether the platform default endpoints are allowed for the egress traffic. */
-  enableDefaultEgressEndpoints?: CloudServicesNetworkPropertiesInputEnableDefaultEgressEndpoints;
+  enableDefaultEgressEndpoints?:
+    | CloudServicesNetworkPropertiesInputEnableDefaultEgressEndpoints
+    | (string & {});
   /** The storage options for the cloud services network. */
   storageOptions?: CloudServicesNetworkStorageOptions;
 }
@@ -4392,8 +4320,7 @@ export const CloudServicesNetworkPropertiesAdditionalEgressEndpointsList =
 /** The indicator of whether the platform default endpoints are allowed for the egress traffic. */
 export type CloudServicesNetworkPropertiesEnableDefaultEgressEndpoints =
   | "True"
-  | "False"
-  | (string & {});
+  | "False";
 export const CloudServicesNetworkPropertiesEnableDefaultEgressEndpoints =
   /*@__PURE__*/ S.String;
 
@@ -4409,8 +4336,7 @@ export const CloudServicesNetworkPropertiesAssociatedResourceIdsList =
 export type CloudServicesNetworkDetailedStatus =
   | "Error"
   | "Available"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const CloudServicesNetworkDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The full list of additional and default egress endpoints that are currently enabled. */
@@ -4430,10 +4356,7 @@ export const CloudServicesNetworkPropertiesHybridAksClustersAssociatedIdsList =
   ) as any as S.Schema<CloudServicesNetworkPropertiesHybridAksClustersAssociatedIdsList>;
 
 /** The indicator to enable shared storage on the cloud services network. If not specified, the allocation will align with the standard storage enablement. */
-export type CloudServicesNetworkStorageMode =
-  | "None"
-  | "Standard"
-  | (string & {});
+export type CloudServicesNetworkStorageMode = "None" | "Standard";
 export const CloudServicesNetworkStorageMode = /*@__PURE__*/ S.String;
 
 /** The status of the storage allocation for the cloud services network. */
@@ -4443,8 +4366,7 @@ export type CloudServicesNetworkStorageStatusStatus =
   | "ExpansionFailed"
   | "Initializing"
   | "None"
-  | "Repairing"
-  | (string & {});
+  | "Repairing";
 export const CloudServicesNetworkStorageStatusStatus = /*@__PURE__*/ S.String;
 
 /** CloudServicesNetworkStorageStatus represents the storage status of the cloud services network. */
@@ -4486,8 +4408,7 @@ export type CloudServicesNetworkProvisioningState =
   | "Failed"
   | "Canceled"
   | "Provisioning"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const CloudServicesNetworkProvisioningState = /*@__PURE__*/ S.String;
 
 /** CloudServicesNetworkProperties represents properties of the cloud services network. */
@@ -4821,17 +4742,14 @@ export const CloudServicesNetworkPatchPropertiesAdditionalEgressEndpointsList =
   ) as any as S.Schema<CloudServicesNetworkPatchPropertiesAdditionalEgressEndpointsList>;
 
 /** The indicator of whether the platform default endpoints are allowed for the egress traffic. */
-export type CloudServicesNetworkEnableDefaultEgressEndpoints =
-  | "True"
-  | "False"
-  | (string & {});
+export type CloudServicesNetworkEnableDefaultEgressEndpoints = "True" | "False";
 export const CloudServicesNetworkEnableDefaultEgressEndpoints =
   /*@__PURE__*/ S.String;
 
 /** CloudServicesNetworkStorageOptionsPatch represents the patchable storage options for the cloud services network. */
 export interface CloudServicesNetworkStorageOptionsPatch {
   /** The indicator to enable shared storage on the cloud services network. */
-  mode?: CloudServicesNetworkStorageMode;
+  mode?: CloudServicesNetworkStorageMode | (string & {});
   /** The requested storage allocation for the volume in Mebibytes. */
   sizeMiB?: number;
   /** The resource ID of the storage appliance that hosts the storage. */
@@ -4853,7 +4771,9 @@ export interface CloudServicesNetworkPatchProperties {
   /** The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint. */
   additionalEgressEndpoints?: CloudServicesNetworkPatchPropertiesAdditionalEgressEndpointsList;
   /** The indicator of whether the platform default endpoints are allowed for the egress traffic. */
-  enableDefaultEgressEndpoints?: CloudServicesNetworkEnableDefaultEgressEndpoints;
+  enableDefaultEgressEndpoints?:
+    | CloudServicesNetworkEnableDefaultEgressEndpoints
+    | (string & {});
   /** The storage options for the cloud services network. */
   storageOptions?: CloudServicesNetworkStorageOptionsPatch;
 }
@@ -5025,8 +4945,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -5048,7 +4967,7 @@ export const ClusterManagersCreateOrUpdateRequestIdentityUserAssignedIdentitiesM
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClusterManagersCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClusterManagersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -5065,7 +4984,7 @@ export const ClusterManagersCreateOrUpdateRequestIdentity =
   }) as any as S.Schema<ClusterManagersCreateOrUpdateRequestIdentity>;
 
 /** The type (kind) of the cluster. When specified, the value must exactly match the kind configured on the cluster manager that manages the cluster. If omitted, the service will default the value to the kind value of the cluster manager. */
-export type DeploymentType = "Nexus" | "AzureLocal" | (string & {});
+export type DeploymentType = "Nexus" | "AzureLocal";
 export const DeploymentType = /*@__PURE__*/ S.String;
 
 export interface ClusterManagersCreateOrUpdateRequest {
@@ -5084,7 +5003,7 @@ export interface ClusterManagersCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ClusterManagersCreateOrUpdateRequestIdentity;
   /** The kind of the cluster manager. */
-  kind?: DeploymentType;
+  kind?: DeploymentType | (string & {});
 }
 export const ClusterManagersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5158,8 +5077,7 @@ export type ClusterManagerDetailedStatus =
   | "Provisioning"
   | "ProvisioningFailed"
   | "Updating"
-  | "UpdateFailed"
-  | (string & {});
+  | "UpdateFailed";
 export const ClusterManagerDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The provisioning state of the cluster manager. */
@@ -5169,8 +5087,7 @@ export type ClusterManagerProvisioningState =
   | "Canceled"
   | "Provisioning"
   | "Accepted"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ClusterManagerProvisioningState = /*@__PURE__*/ S.String;
 
 /** ClusterManagerRelayConfiguration represents the relay configuration for the cluster manager. */
@@ -5629,7 +5546,7 @@ export const ClusterManagersUpdateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClusterManagersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClusterManagersUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -5768,10 +5685,7 @@ export const ClusterManagersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterManagersUpdateResponse>;
 
 /** The state to set for the private endpoint connection. */
-export type RelayPrivateEndpointConnectionState =
-  | "Approved"
-  | "Rejected"
-  | (string & {});
+export type RelayPrivateEndpointConnectionState = "Approved" | "Rejected";
 export const RelayPrivateEndpointConnectionState = /*@__PURE__*/ S.String;
 
 export interface ClusterManagersUpdateRelayPrivateEndpointConnectionRequest {
@@ -5782,7 +5696,7 @@ export interface ClusterManagersUpdateRelayPrivateEndpointConnectionRequest {
   /** The name of the cluster manager. */
   clusterManagerName: string;
   /** The state to set for the private endpoint connection. */
-  connectionState: RelayPrivateEndpointConnectionState;
+  connectionState: RelayPrivateEndpointConnectionState | (string & {});
   /** The description to associate with the private endpoint connection. */
   description?: string;
   /** The resource ID of private endpoint to be permitted or denied connection to the relay namespace. */
@@ -5817,16 +5731,12 @@ export const ClusterManagersUpdateRelayPrivateEndpointConnectionResponse =
 
 /** The mode by which the cluster will target the next grouping of servers to continue the update. */
 export type ClustersContinueUpdateVersionRequestMachineGroupTargetingMode =
-  | "AlphaByRack"
-  | (string & {});
+  "AlphaByRack";
 export const ClustersContinueUpdateVersionRequestMachineGroupTargetingMode =
   /*@__PURE__*/ S.String;
 
 /** ClusterContinueUpdateVersionSafeguardMode represents the mode of the cluster continue update safeguards. */
-export type ClusterContinueUpdateVersionSafeguardMode =
-  | "All"
-  | "None"
-  | (string & {});
+export type ClusterContinueUpdateVersionSafeguardMode = "All" | "None";
 export const ClusterContinueUpdateVersionSafeguardMode = /*@__PURE__*/ S.String;
 
 export interface ClustersContinueUpdateVersionRequest {
@@ -5837,9 +5747,11 @@ export interface ClustersContinueUpdateVersionRequest {
   /** The name of the cluster. */
   clusterName: string;
   /** The mode by which the cluster will target the next grouping of servers to continue the update. */
-  machineGroupTargetingMode?: ClustersContinueUpdateVersionRequestMachineGroupTargetingMode;
+  machineGroupTargetingMode?:
+    | ClustersContinueUpdateVersionRequestMachineGroupTargetingMode
+    | (string & {});
   /** Specifies how safeguards are applied during the continue update version operation. Use All to run all pre‑operation validation checks. Use None to bypass safeguards. If not specified, the default is All. */
-  safeguardMode?: ClusterContinueUpdateVersionSafeguardMode;
+  safeguardMode?: ClusterContinueUpdateVersionSafeguardMode | (string & {});
 }
 export const ClustersContinueUpdateVersionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5987,8 +5899,7 @@ export const RackDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 /** The type of managed identity that is being selected. */
 export type ManagedServiceIdentitySelectorType =
   | "SystemAssignedIdentity"
-  | "UserAssignedIdentity"
-  | (string & {});
+  | "UserAssignedIdentity";
 export const ManagedServiceIdentitySelectorType = /*@__PURE__*/ S.String;
 
 /** IdentitySelector represents the selection of a managed identity for use. */
@@ -6046,7 +5957,7 @@ export const ServicePrincipalInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicePrincipalInformation>;
 
 /** The type of rack configuration for the cluster. */
-export type ClusterType = "SingleRack" | "MultiRack" | (string & {});
+export type ClusterType = "SingleRack" | "MultiRack";
 export const ClusterType = /*@__PURE__*/ S.String;
 
 /** The type of command output for the override. */
@@ -6056,8 +5967,7 @@ export type CommandOutputType =
   | "BareMetalMachineRunReadCommands"
   | "ClusterSupportAdministrativeActions"
   | "StorageRunReadCommands"
-  | "BareMetalMachineRunDataExtractsRestricted"
-  | (string & {});
+  | "BareMetalMachineRunDataExtractsRestricted";
 export const CommandOutputType = /*@__PURE__*/ S.String;
 
 /** CommandOutputOverride represents an overridden value for the command output settings. */
@@ -6106,17 +6016,11 @@ export const CommandOutputSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommandOutputSettings>;
 
 /** Selection of how the type evaluation is applied to the cluster calculation. */
-export type ValidationThresholdGrouping =
-  | "PerCluster"
-  | "PerRack"
-  | (string & {});
+export type ValidationThresholdGrouping = "PerCluster" | "PerRack";
 export const ValidationThresholdGrouping = /*@__PURE__*/ S.String;
 
 /** Selection of how the threshold should be evaluated. */
-export type ValidationThresholdType =
-  | "CountSuccess"
-  | "PercentSuccess"
-  | (string & {});
+export type ValidationThresholdType = "CountSuccess" | "PercentSuccess";
 export const ValidationThresholdType = /*@__PURE__*/ S.String;
 
 /** ValidationThreshold indicates allowed machine and node hardware and deployment failures. */
@@ -6149,8 +6053,7 @@ export const ClusterPropertiesInputComputeRackDefinitionsList =
 /** The definition update mode for runtime protection. */
 export type RuntimeProtectionConfigurationDefinitionUpdateMode =
   | "Automatic"
-  | "None"
-  | (string & {});
+  | "None";
 export const RuntimeProtectionConfigurationDefinitionUpdateMode =
   /*@__PURE__*/ S.String;
 
@@ -6160,8 +6063,7 @@ export type RuntimeProtectionConfigurationEnforcementLevel =
   | "Disabled"
   | "OnDemand"
   | "Passive"
-  | "RealTime"
-  | (string & {});
+  | "RealTime";
 export const RuntimeProtectionConfigurationEnforcementLevel =
   /*@__PURE__*/ S.String;
 
@@ -6186,7 +6088,7 @@ export const RuntimeProtectionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RuntimeProtectionConfiguration>;
 
 /** The indicator if the specified key vault should be used to archive the secrets of the cluster. */
-export type ClusterSecretArchiveUseKeyVault = "True" | "False" | (string & {});
+export type ClusterSecretArchiveUseKeyVault = "True" | "False";
 export const ClusterSecretArchiveUseKeyVault = /*@__PURE__*/ S.String;
 
 /** ClusterSecretArchive configures the key vault to archive the secrets of the cluster for later retrieval. */
@@ -6222,10 +6124,7 @@ export const SecretArchiveSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecretArchiveSettings>;
 
 /** The mode of operation for runtime protection. */
-export type ClusterUpdateStrategyType =
-  | "Rack"
-  | "PauseAfterRack"
-  | (string & {});
+export type ClusterUpdateStrategyType = "Rack" | "PauseAfterRack";
 export const ClusterUpdateStrategyType = /*@__PURE__*/ S.String;
 
 /** ClusterUpdateStrategy represents the strategy for updating the cluster. */
@@ -6254,10 +6153,7 @@ export const ClusterUpdateStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterUpdateStrategy>;
 
 /** The mode selection for container vulnerability scanning. */
-export type VulnerabilityScanningSettingsContainerScan =
-  | "Disabled"
-  | "Enabled"
-  | (string & {});
+export type VulnerabilityScanningSettingsContainerScan = "Disabled" | "Enabled";
 export const VulnerabilityScanningSettingsContainerScan =
   /*@__PURE__*/ S.String;
 
@@ -6287,7 +6183,7 @@ export interface ClusterPropertiesInput {
   /** Field Deprecated: Use managed identity to provide cluster privileges. The service principal to be used by the cluster during Arc Appliance installation. */
   clusterServicePrincipal?: ServicePrincipalInformation;
   /** The type of rack configuration for the cluster. */
-  clusterType: ClusterType;
+  clusterType: ClusterType | (string & {});
   /** The current runtime version of the cluster. */
   clusterVersion: string;
   /** The settings for commands run in this cluster, such as bare metal machine run read only commands and data extracts. */
@@ -6351,7 +6247,7 @@ export const ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClustersCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -6385,7 +6281,7 @@ export interface ClustersCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ClustersCreateOrUpdateRequestIdentity;
   /** The type (kind) of the cluster. When specified, the value must exactly match the kind configured on the cluster manager that manages the cluster. If omitted, the service will default the value to the kind value of the cluster manager. */
-  kind?: DeploymentType;
+  kind?: DeploymentType | (string & {});
 }
 export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6517,11 +6413,11 @@ export const ClusterPropertiesActionStatesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClusterPropertiesActionStatesList>;
 
 /** The indicator of whether the control plane will be impacted during the upgrade. */
-export type ControlImpact = "True" | "False" | (string & {});
+export type ControlImpact = "True" | "False";
 export const ControlImpact = /*@__PURE__*/ S.String;
 
 /** The indicator of whether the workload will be impacted during the upgrade. */
-export type WorkloadImpact = "True" | "False" | (string & {});
+export type WorkloadImpact = "True" | "False";
 export const WorkloadImpact = /*@__PURE__*/ S.String;
 
 /** ClusterAvailableUpgradeVersion represents the various cluster upgrade parameters. */
@@ -6599,15 +6495,11 @@ export type ClusterConnectionStatus =
   | "Connected"
   | "Disconnected"
   | "Timeout"
-  | "Undefined"
-  | (string & {});
+  | "Undefined";
 export const ClusterConnectionStatus = /*@__PURE__*/ S.String;
 
 /** The latest connectivity status between cluster manager and the cluster. */
-export type ClusterManagerConnectionStatus =
-  | "Connected"
-  | "Unreachable"
-  | (string & {});
+export type ClusterManagerConnectionStatus = "Connected" | "Unreachable";
 export const ClusterManagerConnectionStatus = /*@__PURE__*/ S.String;
 
 /** The current detailed status of the cluster. */
@@ -6620,8 +6512,7 @@ export type ClusterDetailedStatus =
   | "Degraded"
   | "Deleting"
   | "Disconnected"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ClusterDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The list of credentials that are managed for the cluster and can be rotated on-demand. */
@@ -6643,8 +6534,7 @@ export type ClusterProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Validating"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ClusterProvisioningState = /*@__PURE__*/ S.String;
 
 /** ClusterProperties represents the properties of a cluster. */
@@ -7027,12 +6917,13 @@ export const ClustersGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersGetResponse>;
 
 /** Additional actions supplement the default non-disruptive cluster inspection. Additional actions may be disallowed if the cluster is in a deployed and running state. */
-export type ClusterInspectAdditionalAction = "ResetHardware" | (string & {});
+export type ClusterInspectAdditionalAction = "ResetHardware";
 export const ClusterInspectAdditionalAction = /*@__PURE__*/ S.String;
 
 /** Additional actions supplement the default non-disruptive cluster inspection. Additional actions may be disallowed if the cluster is in a deployed and running state. */
-export type ClustersInspectRequestAdditionalActionsList =
-  ReadonlyArray<ClusterInspectAdditionalAction>;
+export type ClustersInspectRequestAdditionalActionsList = ReadonlyArray<
+  ClusterInspectAdditionalAction | (string & {})
+>;
 export const ClustersInspectRequestAdditionalActionsList =
   /*@__PURE__*/ S.Array(
     ClusterInspectAdditionalAction,
@@ -7299,10 +7190,7 @@ export const ClustersRotateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersRotateCredentialResponse>;
 
 /** The choice of if the scan operation should run the scan. */
-export type ClustersScanRuntimeRequestScanActivity =
-  | "Scan"
-  | "Skip"
-  | (string & {});
+export type ClustersScanRuntimeRequestScanActivity = "Scan" | "Skip";
 export const ClustersScanRuntimeRequestScanActivity = /*@__PURE__*/ S.String;
 
 export interface ClustersScanRuntimeRequest {
@@ -7313,7 +7201,7 @@ export interface ClustersScanRuntimeRequest {
   /** The name of the cluster. */
   clusterName: string;
   /** The choice of if the scan operation should run the scan. */
-  scanActivity?: ClustersScanRuntimeRequestScanActivity;
+  scanActivity?: ClustersScanRuntimeRequestScanActivity | (string & {});
 }
 export const ClustersScanRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7352,7 +7240,7 @@ export const ClustersUpdateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClustersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClustersUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -7514,9 +7402,9 @@ export const ServicePrincipalInformationPatch = /*@__PURE__*/ S.suspend(() =>
 /** ValidationThresholdPatch indicates allowed machine and node hardware and deployment failures for patch operations. */
 export interface ValidationThresholdPatch {
   /** Selection of how the type evaluation is applied to the cluster calculation. */
-  grouping?: ValidationThresholdGrouping;
+  grouping?: ValidationThresholdGrouping | (string & {});
   /** Selection of how the threshold should be evaluated. */
-  type?: ValidationThresholdType;
+  type?: ValidationThresholdType | (string & {});
   /** The numeric threshold value. */
   value?: number;
 }
@@ -7541,9 +7429,9 @@ export const ClusterPatchPropertiesInputComputeRackDefinitionsList =
 /** RuntimeProtectionConfigurationPatch represents the runtime protection configuration for the cluster for patch operations. */
 export interface RuntimeProtectionConfigurationPatch {
   /** The definition update mode for runtime protection. */
-  definitionUpdateMode?: RuntimeProtectionDefinitionUpdateMode;
+  definitionUpdateMode?: RuntimeProtectionDefinitionUpdateMode | (string & {});
   /** The mode of operation for runtime protection. */
-  enforcementLevel?: RuntimeProtectionEnforcementLevel;
+  enforcementLevel?: RuntimeProtectionEnforcementLevel | (string & {});
 }
 export const RuntimeProtectionConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7555,7 +7443,7 @@ export const RuntimeProtectionConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RuntimeProtectionConfigurationPatch>;
 
 /** The indicator if the specified key vault should be used to archive the secrets of the cluster. */
-export type ClusterSecretArchiveEnabled = "True" | "False" | (string & {});
+export type ClusterSecretArchiveEnabled = "True" | "False";
 export const ClusterSecretArchiveEnabled = /*@__PURE__*/ S.String;
 
 /** ClusterSecretArchivePatch configures the key vault to archive the secrets of the cluster for later retrieval for patch operations. */
@@ -7563,7 +7451,7 @@ export interface ClusterSecretArchivePatch {
   /** The resource ID of the key vault to archive the secrets of the cluster. */
   keyVaultId?: string;
   /** The indicator if the specified key vault should be used to archive the secrets of the cluster. */
-  useKeyVault?: ClusterSecretArchiveEnabled;
+  useKeyVault?: ClusterSecretArchiveEnabled | (string & {});
 }
 export const ClusterSecretArchivePatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7579,9 +7467,9 @@ export interface ClusterUpdateStrategyPatch {
   /** The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by the maximum number of machines in the increment. Defaults to the whole increment size. */
   maxUnavailable?: number;
   /** The mode of operation for runtime protection. */
-  strategyType?: ClusterUpdateStrategyType;
+  strategyType?: ClusterUpdateStrategyType | (string & {});
   /** Selection of how the threshold should be evaluated. */
-  thresholdType?: ValidationThresholdType;
+  thresholdType?: ValidationThresholdType | (string & {});
   /** The numeric threshold value. */
   thresholdValue?: number;
   /** The time to wait between the increments of update defined by the strategy. */
@@ -7602,15 +7490,14 @@ export const ClusterUpdateStrategyPatch = /*@__PURE__*/ S.suspend(() =>
 /** The mode selection for container vulnerability scanning. */
 export type VulnerabilityScanningSettingsContainerScan2 =
   | "Disabled"
-  | "Enabled"
-  | (string & {});
+  | "Enabled";
 export const VulnerabilityScanningSettingsContainerScan2 =
   /*@__PURE__*/ S.String;
 
 /** VulnerabilityScanningSettingsPatch represents the settings for how security vulnerability scanning is applied to the cluster. */
 export interface VulnerabilityScanningSettingsPatch {
   /** The mode selection for container vulnerability scanning. */
-  containerScan?: VulnerabilityScanningSettingsContainerScan2;
+  containerScan?: VulnerabilityScanningSettingsContainerScan2 | (string & {});
 }
 export const VulnerabilityScanningSettingsPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7800,7 +7687,7 @@ export const ClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersUpdateResponse>;
 
 /** ClusterUpdateVersionSafeguardMode represents the mode of the cluster update safeguards. */
-export type ClusterUpdateVersionSafeguardMode = "All" | "None" | (string & {});
+export type ClusterUpdateVersionSafeguardMode = "All" | "None";
 export const ClusterUpdateVersionSafeguardMode = /*@__PURE__*/ S.String;
 
 export interface ClustersUpdateVersionRequest {
@@ -7811,7 +7698,7 @@ export interface ClustersUpdateVersionRequest {
   /** The name of the cluster. */
   clusterName: string;
   /** Specifies how safeguards are applied during the update version operation. Use All to run all pre‑operation validation checks. Use None to bypass safeguards. If not specified, the default is All. */
-  safeguardMode?: ClusterUpdateVersionSafeguardMode;
+  safeguardMode?: ClusterUpdateVersionSafeguardMode | (string & {});
   /** The version to be applied to the cluster during update. */
   targetClusterVersion: string;
 }
@@ -7851,13 +7738,13 @@ export const ConsolesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConsolesCreateOrUpdateRequestTagsMap>;
 
 /** The indicator of whether the console access is enabled. */
-export type ConsoleEnabled = "True" | "False" | (string & {});
+export type ConsoleEnabled = "True" | "False";
 export const ConsoleEnabled = /*@__PURE__*/ S.String;
 
 /** ConsoleProperties represents the properties of the virtual machine console. */
 export interface ConsolePropertiesInput {
   /** The indicator of whether the console access is enabled. */
-  enabled: ConsoleEnabled;
+  enabled: ConsoleEnabled | (string & {});
   /** The date and time after which the key will be disallowed access. */
   expiration?: string;
   /** The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in. */
@@ -7923,7 +7810,7 @@ export const ConsolesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConsolesCreateOrUpdateResponseTagsMap>;
 
 /** The more detailed status of the console. */
-export type ConsoleDetailedStatus = "Ready" | "Error" | (string & {});
+export type ConsoleDetailedStatus = "Ready" | "Error";
 export const ConsoleDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The provisioning state of the virtual machine console. */
@@ -7932,8 +7819,7 @@ export type ConsoleProvisioningState =
   | "Failed"
   | "Canceled"
   | "Accepted"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const ConsoleProvisioningState = /*@__PURE__*/ S.String;
 
 /** ConsoleProperties represents the properties of the virtual machine console. */
@@ -8221,7 +8107,7 @@ export const SshPublicKeyPatch = /*@__PURE__*/ S.suspend(() =>
 /** ConsolePatchProperties represents the properties of the virtual machine console that can be patched. */
 export interface ConsolePatchProperties {
   /** The indicator of whether the console access is enabled. */
-  enabled?: ConsoleEnabled;
+  enabled?: ConsoleEnabled | (string & {});
   /** The date and time after which the key will be disallowed access. */
   expiration?: string;
   /** The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in. */
@@ -8432,8 +8318,7 @@ export const KubernetesClusterFeaturePropertiesOptionsList =
 /** The lifecycle indicator of the feature. */
 export type KubernetesClusterFeatureAvailabilityLifecycle =
   | "Preview"
-  | "GenerallyAvailable"
-  | (string & {});
+  | "GenerallyAvailable";
 export const KubernetesClusterFeatureAvailabilityLifecycle =
   /*@__PURE__*/ S.String;
 
@@ -8441,12 +8326,11 @@ export const KubernetesClusterFeatureAvailabilityLifecycle =
 export type KubernetesClusterFeatureDetailedStatus =
   | "Error"
   | "Provisioning"
-  | "Installed"
-  | (string & {});
+  | "Installed";
 export const KubernetesClusterFeatureDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The indicator of if the feature is required or optional. Optional features may be deleted by the user, while required features are managed with the kubernetes cluster lifecycle. */
-export type KubernetesClusterFeatureRequired = "True" | "False" | (string & {});
+export type KubernetesClusterFeatureRequired = "True" | "False";
 export const KubernetesClusterFeatureRequired = /*@__PURE__*/ S.String;
 
 /** The provisioning state of the Kubernetes cluster feature. */
@@ -8456,8 +8340,7 @@ export type KubernetesClusterFeatureProvisioningState =
   | "Deleting"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const KubernetesClusterFeatureProvisioningState = /*@__PURE__*/ S.String;
 
 /** KubernetesClusterFeatureProperties represents the properties of a Kubernetes cluster feature. */
@@ -8981,10 +8864,7 @@ export const KubernetesClusterPropertiesInputInitialAgentPoolConfigurationsList 
   ) as any as S.Schema<KubernetesClusterPropertiesInputInitialAgentPoolConfigurationsList>;
 
 /** The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False. */
-export type BgpAdvertisementAdvertiseToFabric =
-  | "True"
-  | "False"
-  | (string & {});
+export type BgpAdvertisementAdvertiseToFabric = "True" | "False";
 export const BgpAdvertisementAdvertiseToFabric = /*@__PURE__*/ S.String;
 
 /** The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format. */
@@ -9036,17 +8916,11 @@ export const BgpServiceLoadBalancerConfigurationBgpAdvertisementsList =
   ) as any as S.Schema<BgpServiceLoadBalancerConfigurationBgpAdvertisementsList>;
 
 /** The indicator of BFD enablement for this BgpPeer. */
-export type ServiceLoadBalancerBgpPeerBfdEnabled =
-  | "True"
-  | "False"
-  | (string & {});
+export type ServiceLoadBalancerBgpPeerBfdEnabled = "True" | "False";
 export const ServiceLoadBalancerBgpPeerBfdEnabled = /*@__PURE__*/ S.String;
 
 /** The indicator to enable multi-hop peering support. */
-export type ServiceLoadBalancerBgpPeerBgpMultiHop =
-  | "True"
-  | "False"
-  | (string & {});
+export type ServiceLoadBalancerBgpPeerBgpMultiHop = "True" | "False";
 export const ServiceLoadBalancerBgpPeerBgpMultiHop = /*@__PURE__*/ S.String;
 
 /** ServiceLoadBalancerBgpPeer represents the configuration of the BGP service load balancer for the Kubernetes cluster. */
@@ -9100,8 +8974,7 @@ export const BgpServiceLoadBalancerConfigurationBgpPeersList =
 /** The indicator to specify if the load balancer peers with the network fabric. */
 export type BgpServiceLoadBalancerConfigurationFabricPeeringEnabled =
   | "True"
-  | "False"
-  | (string & {});
+  | "False";
 export const BgpServiceLoadBalancerConfigurationFabricPeeringEnabled =
   /*@__PURE__*/ S.String;
 
@@ -9112,11 +8985,11 @@ export const IpAddressPoolAddressesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IpAddressPoolAddressesList>;
 
 /** The indicator to determine if automatic allocation from the pool should occur. */
-export type IpAddressPoolAutoAssign = "True" | "False" | (string & {});
+export type IpAddressPoolAutoAssign = "True" | "False";
 export const IpAddressPoolAutoAssign = /*@__PURE__*/ S.String;
 
 /** The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive. */
-export type IpAddressPoolOnlyUseHostIps = "True" | "False" | (string & {});
+export type IpAddressPoolOnlyUseHostIps = "True" | "False";
 export const IpAddressPoolOnlyUseHostIps = /*@__PURE__*/ S.String;
 
 /** IpAddressPool represents a pool of IP addresses that can be allocated to a service. */
@@ -9347,10 +9220,7 @@ export const KubernetesClusterPropertiesAttachedNetworkIdsList =
   ) as any as S.Schema<KubernetesClusterPropertiesAttachedNetworkIdsList>;
 
 /** The version lifecycle indicator. */
-export type AvailabilityLifecycle =
-  | "Preview"
-  | "GenerallyAvailable"
-  | (string & {});
+export type AvailabilityLifecycle = "Preview" | "GenerallyAvailable";
 export const AvailabilityLifecycle = /*@__PURE__*/ S.String;
 
 /** AvailableUpgrade represents an upgrade available for a Kubernetes cluster. */
@@ -9381,16 +9251,11 @@ export const KubernetesClusterPropertiesAvailableUpgradesList =
 export type KubernetesClusterDetailedStatus =
   | "Available"
   | "Error"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const KubernetesClusterDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The status representing the state of this feature. */
-export type FeatureDetailedStatus =
-  | "Running"
-  | "Failed"
-  | "Unknown"
-  | (string & {});
+export type FeatureDetailedStatus = "Running" | "Failed" | "Unknown";
 export const FeatureDetailedStatus = /*@__PURE__*/ S.String;
 
 /** FeatureStatus contains information regarding a Kubernetes cluster feature. */
@@ -9430,8 +9295,7 @@ export type KubernetesClusterNodeDetailedStatus =
   | "Scheduling"
   | "Stopped"
   | "Terminating"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const KubernetesClusterNodeDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The list of labels on this node that have been assigned to the agent pool containing this node. */
@@ -9441,15 +9305,14 @@ export const KubernetesClusterNodeLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<KubernetesClusterNodeLabelsList>;
 
 /** The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True. */
-export type DefaultGateway = "True" | "False" | (string & {});
+export type DefaultGateway = "True" | "False";
 export const DefaultGateway = /*@__PURE__*/ S.String;
 
 /** The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify Disabled. Otherwise, Disabled is the only permitted value. */
 export type VirtualMachineIPAllocationMethod =
   | "Dynamic"
   | "Static"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const VirtualMachineIPAllocationMethod = /*@__PURE__*/ S.String;
 
 /** NetworkAttachment represents the single network attachment. */
@@ -9492,11 +9355,11 @@ export const KubernetesClusterNodeNetworkAttachmentsList =
   ) as any as S.Schema<KubernetesClusterNodeNetworkAttachmentsList>;
 
 /** The power state of this node. */
-export type KubernetesNodePowerState = "On" | "Off" | "Unknown" | (string & {});
+export type KubernetesNodePowerState = "On" | "Off" | "Unknown";
 export const KubernetesNodePowerState = /*@__PURE__*/ S.String;
 
 /** The role of this node in the cluster. */
-export type KubernetesNodeRole = "ControlPlane" | "Worker" | (string & {});
+export type KubernetesNodeRole = "ControlPlane" | "Worker";
 export const KubernetesNodeRole = /*@__PURE__*/ S.String;
 
 /** The list of taints that have been assigned to the agent pool containing this node. */
@@ -9585,8 +9448,7 @@ export type KubernetesClusterProvisioningState =
   | "InProgress"
   | "Created"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const KubernetesClusterProvisioningState = /*@__PURE__*/ S.String;
 
 /** KubernetesClusterProperties represents the properties of Kubernetes cluster resource. */
@@ -10190,8 +10052,7 @@ export type KubernetesVersionProvisioningState =
   | "Accepted"
   | "Canceled"
   | "Failed"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const KubernetesVersionProvisioningState = /*@__PURE__*/ S.String;
 
 /** KubernetesVersionProperties contains the read-only properties describing available versions. */
@@ -10565,15 +10426,16 @@ export const L2NetworksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type L2NetworkPropertiesInputHybridAksPluginType =
   | "DPDK"
   | "SRIOV"
-  | "OSDevice"
-  | (string & {});
+  | "OSDevice";
 export const L2NetworkPropertiesInputHybridAksPluginType =
   /*@__PURE__*/ S.String;
 
 /** L2NetworkProperties represents properties of the L2 network. */
 export interface L2NetworkPropertiesInput {
   /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS. */
-  hybridAksPluginType?: L2NetworkPropertiesInputHybridAksPluginType;
+  hybridAksPluginType?:
+    | L2NetworkPropertiesInputHybridAksPluginType
+    | (string & {});
   /** The default interface name for this L2 network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine. */
   interfaceName?: string;
   /** The resource ID of the Network Fabric l2IsolationDomain. */
@@ -10641,8 +10503,7 @@ export const L2NetworksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 export type L2NetworkPropertiesHybridAksPluginType =
   | "DPDK"
   | "SRIOV"
-  | "OSDevice"
-  | (string & {});
+  | "OSDevice";
 export const L2NetworkPropertiesHybridAksPluginType = /*@__PURE__*/ S.String;
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
@@ -10654,11 +10515,7 @@ export const L2NetworkPropertiesAssociatedResourceIdsList =
   ) as any as S.Schema<L2NetworkPropertiesAssociatedResourceIdsList>;
 
 /** The more detailed status of the L2 network. */
-export type L2NetworkDetailedStatus =
-  | "Error"
-  | "Available"
-  | "Provisioning"
-  | (string & {});
+export type L2NetworkDetailedStatus = "Error" | "Available" | "Provisioning";
 export const L2NetworkDetailedStatus = /*@__PURE__*/ S.String;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource ID(s) that are associated with this L2 network. */
@@ -10683,8 +10540,7 @@ export type L2NetworkProvisioningState =
   | "Failed"
   | "Canceled"
   | "Provisioning"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const L2NetworkProvisioningState = /*@__PURE__*/ S.String;
 
 /** L2NetworkProperties represents properties of the L2 network. */
@@ -11079,10 +10935,7 @@ export const L3NetworksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L3NetworksCreateOrUpdateRequestTagsMap>;
 
 /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster. */
-export type L3NetworkPropertiesInputHybridAksIpamEnabled =
-  | "True"
-  | "False"
-  | (string & {});
+export type L3NetworkPropertiesInputHybridAksIpamEnabled = "True" | "False";
 export const L3NetworkPropertiesInputHybridAksIpamEnabled =
   /*@__PURE__*/ S.String;
 
@@ -11090,8 +10943,7 @@ export const L3NetworkPropertiesInputHybridAksIpamEnabled =
 export type L3NetworkPropertiesInputHybridAksPluginType =
   | "DPDK"
   | "SRIOV"
-  | "OSDevice"
-  | (string & {});
+  | "OSDevice";
 export const L3NetworkPropertiesInputHybridAksPluginType =
   /*@__PURE__*/ S.String;
 
@@ -11099,20 +10951,23 @@ export const L3NetworkPropertiesInputHybridAksPluginType =
 export type L3NetworkPropertiesInputIpAllocationType =
   | "IPV4"
   | "IPV6"
-  | "DualStack"
-  | (string & {});
+  | "DualStack";
 export const L3NetworkPropertiesInputIpAllocationType = /*@__PURE__*/ S.String;
 
 /** L3NetworkProperties represents properties of the L3 network. */
 export interface L3NetworkPropertiesInput {
   /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster. */
-  hybridAksIpamEnabled?: L3NetworkPropertiesInputHybridAksIpamEnabled;
+  hybridAksIpamEnabled?:
+    | L3NetworkPropertiesInputHybridAksIpamEnabled
+    | (string & {});
   /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS. */
-  hybridAksPluginType?: L3NetworkPropertiesInputHybridAksPluginType;
+  hybridAksPluginType?:
+    | L3NetworkPropertiesInputHybridAksPluginType
+    | (string & {});
   /** The default interface name for this L3 network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine. */
   interfaceName?: string;
   /** The type of the IP address allocation, defaulted to "DualStack". */
-  ipAllocationType?: L3NetworkPropertiesInputIpAllocationType;
+  ipAllocationType?: L3NetworkPropertiesInputIpAllocationType | (string & {});
   /** The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV4 or DualStack. */
   ipv4ConnectedPrefix?: string;
   /** The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV6 or DualStack. */
@@ -11188,26 +11043,18 @@ export const L3NetworksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L3NetworksCreateOrUpdateResponseTagsMap>;
 
 /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster. */
-export type L3NetworkPropertiesHybridAksIpamEnabled =
-  | "True"
-  | "False"
-  | (string & {});
+export type L3NetworkPropertiesHybridAksIpamEnabled = "True" | "False";
 export const L3NetworkPropertiesHybridAksIpamEnabled = /*@__PURE__*/ S.String;
 
 /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS. */
 export type L3NetworkPropertiesHybridAksPluginType =
   | "DPDK"
   | "SRIOV"
-  | "OSDevice"
-  | (string & {});
+  | "OSDevice";
 export const L3NetworkPropertiesHybridAksPluginType = /*@__PURE__*/ S.String;
 
 /** The type of the IP address allocation, defaulted to "DualStack". */
-export type L3NetworkPropertiesIpAllocationType =
-  | "IPV4"
-  | "IPV6"
-  | "DualStack"
-  | (string & {});
+export type L3NetworkPropertiesIpAllocationType = "IPV4" | "IPV6" | "DualStack";
 export const L3NetworkPropertiesIpAllocationType = /*@__PURE__*/ S.String;
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
@@ -11219,11 +11066,7 @@ export const L3NetworkPropertiesAssociatedResourceIdsList =
   ) as any as S.Schema<L3NetworkPropertiesAssociatedResourceIdsList>;
 
 /** The more detailed status of the L3 network. */
-export type L3NetworkDetailedStatus =
-  | "Error"
-  | "Available"
-  | "Provisioning"
-  | (string & {});
+export type L3NetworkDetailedStatus = "Error" | "Available" | "Provisioning";
 export const L3NetworkDetailedStatus = /*@__PURE__*/ S.String;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this L3 network. */
@@ -11248,8 +11091,7 @@ export type L3NetworkProvisioningState =
   | "Failed"
   | "Canceled"
   | "Provisioning"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const L3NetworkProvisioningState = /*@__PURE__*/ S.String;
 
 /** L3NetworkProperties represents properties of the L3 network. */
@@ -11749,8 +11591,7 @@ export const ClusterMetricsConfigurationPropertiesEnabledMetricsList =
 export type ClusterMetricsConfigurationDetailedStatus =
   | "Processing"
   | "Applied"
-  | "Error"
-  | (string & {});
+  | "Error";
 export const ClusterMetricsConfigurationDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The list of metrics that are available for the cluster but disabled at the moment. */
@@ -11767,8 +11608,7 @@ export type ClusterMetricsConfigurationProvisioningState =
   | "Failed"
   | "Canceled"
   | "Accepted"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const ClusterMetricsConfigurationProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -12206,11 +12046,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -12335,11 +12175,7 @@ export const RacksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RacksCreateOrUpdateResponseTagsMap>;
 
 /** The more detailed status of the rack. */
-export type RackDetailedStatus =
-  | "Error"
-  | "Available"
-  | "Provisioning"
-  | (string & {});
+export type RackDetailedStatus = "Error" | "Available" | "Provisioning";
 export const RackDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The provisioning state of the rack resource. */
@@ -12348,8 +12184,7 @@ export type RackProvisioningState =
   | "Failed"
   | "Canceled"
   | "Provisioning"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const RackProvisioningState = /*@__PURE__*/ S.String;
 
 /** RackProperties represents the properties of the rack. */
@@ -12543,20 +12378,15 @@ export const RackSkusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RackSkusGetRequest>;
 
 /** The type of bootstrap protocol used. */
-export type BootstrapProtocol = "PXE" | (string & {});
+export type BootstrapProtocol = "PXE";
 export const BootstrapProtocol = /*@__PURE__*/ S.String;
 
 /** The connection type of the rack SKU resource. */
-export type MachineSkuDiskConnectionType =
-  | "PCIE"
-  | "SATA"
-  | "RAID"
-  | "SAS"
-  | (string & {});
+export type MachineSkuDiskConnectionType = "PCIE" | "SATA" | "RAID" | "SAS";
 export const MachineSkuDiskConnectionType = /*@__PURE__*/ S.String;
 
 /** The disk type of rack SKU resource. */
-export type DiskType = "HDD" | "SSD" | (string & {});
+export type DiskType = "HDD" | "SSD";
 export const DiskType = /*@__PURE__*/ S.String;
 
 /** MachineDisk represents the properties of the disk. */
@@ -12583,7 +12413,7 @@ export const MachineSkuPropertiesDisksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MachineSkuPropertiesDisksList>;
 
 /** The connection type of the device. */
-export type DeviceConnectionType = "PCI" | (string & {});
+export type DeviceConnectionType = "PCI";
 export const DeviceConnectionType = /*@__PURE__*/ S.String;
 
 /** NetworkInterface represents properties of the network interface. */
@@ -12696,15 +12526,11 @@ export const RackSkuPropertiesControllerMachinesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RackSkuPropertiesControllerMachinesList>;
 
 /** The provisioning state of the rack SKU resource. */
-export type RackSkuProvisioningState =
-  | "Canceled"
-  | "Failed"
-  | "Succeeded"
-  | (string & {});
+export type RackSkuProvisioningState = "Canceled" | "Failed" | "Succeeded";
 export const RackSkuProvisioningState = /*@__PURE__*/ S.String;
 
 /** The type of the rack. */
-export type RackSkuType = "Aggregator" | "Compute" | "Single" | (string & {});
+export type RackSkuType = "Aggregator" | "Compute" | "Single";
 export const RackSkuType = /*@__PURE__*/ S.String;
 
 /** StorageApplianceSkuProperties represents the properties of the storage appliance SKU. */
@@ -13175,8 +13001,7 @@ export type StorageApplianceDetailedStatus =
   | "Available"
   | "Degraded"
   | "Error"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const StorageApplianceDetailedStatus = /*@__PURE__*/ S.String;
 
 /** StorageApplianceExpansionShelf represents an expansion shelf connected to a storage appliance. */
@@ -13206,16 +13031,14 @@ export const StorageAppliancePropertiesExpansionShelvesList =
 /** The log level for the monitoring configuration status of the storage appliance. */
 export type StorageApplianceMonitoringConfigurationStatusLogLevel =
   | "Default"
-  | "Nexus"
-  | (string & {});
+  | "Nexus";
 export const StorageApplianceMonitoringConfigurationStatusLogLevel =
   /*@__PURE__*/ S.String;
 
 /** The metrics level for the monitoring configuration status of the storage appliance. */
 export type StorageApplianceMonitoringConfigurationStatusMetricsLevel =
   | "Default"
-  | "Nexus"
-  | (string & {});
+  | "Nexus";
 export const StorageApplianceMonitoringConfigurationStatusMetricsLevel =
   /*@__PURE__*/ S.String;
 
@@ -13241,18 +13064,14 @@ export const StorageApplianceMonitoringConfigurationStatus =
   }) as any as S.Schema<StorageApplianceMonitoringConfigurationStatus>;
 
 /** The indicator of whether the storage appliance supports remote vendor management. */
-export type RemoteVendorManagementFeature =
-  | "Supported"
-  | "Unsupported"
-  | (string & {});
+export type RemoteVendorManagementFeature = "Supported" | "Unsupported";
 export const RemoteVendorManagementFeature = /*@__PURE__*/ S.String;
 
 /** The indicator of whether the remote vendor management feature is enabled or disabled, or unsupported if it is an unsupported feature. */
 export type RemoteVendorManagementStatus =
   | "Enabled"
   | "Disabled"
-  | "Unsupported"
-  | (string & {});
+  | "Unsupported";
 export const RemoteVendorManagementStatus = /*@__PURE__*/ S.String;
 
 /** The list of statuses that represent secret rotation activity. */
@@ -13269,8 +13088,7 @@ export type StorageApplianceProvisioningState =
   | "Failed"
   | "Canceled"
   | "Provisioning"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const StorageApplianceProvisioningState = /*@__PURE__*/ S.String;
 
 /** StorageApplianceProperties represents the properties of the storage appliance. */
@@ -13873,8 +13691,7 @@ export const TrunkedNetworksCreateOrUpdateRequestTagsMap =
 export type TrunkedNetworkPropertiesInputHybridAksPluginType =
   | "DPDK"
   | "SRIOV"
-  | "OSDevice"
-  | (string & {});
+  | "OSDevice";
 export const TrunkedNetworkPropertiesInputHybridAksPluginType =
   /*@__PURE__*/ S.String;
 
@@ -13895,7 +13712,9 @@ export const TrunkedNetworkPropertiesInputVlansList = /*@__PURE__*/ S.Array(
 /** TrunkedNetworkProperties represents properties of the trunked network. */
 export interface TrunkedNetworkPropertiesInput {
   /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS. */
-  hybridAksPluginType?: TrunkedNetworkPropertiesInputHybridAksPluginType;
+  hybridAksPluginType?:
+    | TrunkedNetworkPropertiesInputHybridAksPluginType
+    | (string & {});
   /** The default interface name for this trunked network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine. */
   interfaceName?: string;
   /** The list of resource IDs representing the Network Fabric isolation domains. It can be any combination of l2IsolationDomain and l3IsolationDomain resources. */
@@ -13968,8 +13787,7 @@ export const TrunkedNetworksCreateOrUpdateResponseTagsMap =
 export type TrunkedNetworkPropertiesHybridAksPluginType =
   | "DPDK"
   | "SRIOV"
-  | "OSDevice"
-  | (string & {});
+  | "OSDevice";
 export const TrunkedNetworkPropertiesHybridAksPluginType =
   /*@__PURE__*/ S.String;
 
@@ -13999,8 +13817,7 @@ export const TrunkedNetworkPropertiesAssociatedResourceIdsList =
 export type TrunkedNetworkDetailedStatus =
   | "Error"
   | "Available"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const TrunkedNetworkDetailedStatus = /*@__PURE__*/ S.String;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network. */
@@ -14025,8 +13842,7 @@ export type TrunkedNetworkProvisioningState =
   | "Failed"
   | "Canceled"
   | "Provisioning"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const TrunkedNetworkProvisioningState = /*@__PURE__*/ S.String;
 
 /** TrunkedNetworkProperties represents properties of the trunked network. */
@@ -14421,10 +14237,7 @@ export const TrunkedNetworksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrunkedNetworksUpdateResponse>;
 
 /** The indicator of which relay type the machine should be assigned to use. Platform indicates the use of a platform-dedicated relay. Public indicates the use of the standard public relay for Arc services. */
-export type VirtualMachinesAssignRelayRequestRelayType =
-  | "Platform"
-  | "Public"
-  | (string & {});
+export type VirtualMachinesAssignRelayRequestRelayType = "Platform" | "Public";
 export const VirtualMachinesAssignRelayRequestRelayType =
   /*@__PURE__*/ S.String;
 
@@ -14438,7 +14251,7 @@ export interface VirtualMachinesAssignRelayRequest {
   /** The resourceId of the Microsoft.HybridCompute machine resource to assign relay usage. */
   machineId: string;
   /** The indicator of which relay type the machine should be assigned to use. Platform indicates the use of a platform-dedicated relay. Public indicates the use of the standard public relay for Arc services. */
-  relayType?: VirtualMachinesAssignRelayRequestRelayType;
+  relayType?: VirtualMachinesAssignRelayRequestRelayType | (string & {});
 }
 export const VirtualMachinesAssignRelayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14477,10 +14290,7 @@ export const VirtualMachinesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<VirtualMachinesCreateOrUpdateRequestTagsMap>;
 
 /** Selects the boot method for the virtual machine. */
-export type VirtualMachinePropertiesInputBootMethod =
-  | "BIOS"
-  | "UEFI"
-  | (string & {});
+export type VirtualMachinePropertiesInputBootMethod = "BIOS" | "UEFI";
 export const VirtualMachinePropertiesInputBootMethod = /*@__PURE__*/ S.String;
 
 /** NetworkAttachment represents the single network attachment. */
@@ -14488,9 +14298,9 @@ export interface NetworkAttachmentInput {
   /** The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources. */
   attachedNetworkId: string;
   /** The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True. */
-  defaultGateway?: DefaultGateway;
+  defaultGateway?: DefaultGateway | (string & {});
   /** The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify Disabled. Otherwise, Disabled is the only permitted value. */
-  ipAllocationMethod: VirtualMachineIPAllocationMethod;
+  ipAllocationMethod: VirtualMachineIPAllocationMethod | (string & {});
   /** The IPv4 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV4 or DualStack. If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network. Disabled - this field will be empty. */
   ipv4Address?: string;
   /** The IPv6 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV6 or DualStack. If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network. Disabled - this field will be empty. */
@@ -14514,8 +14324,7 @@ export const NetworkAttachmentInput = /*@__PURE__*/ S.suspend(() =>
 /** Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine. */
 export type VirtualMachinePropertiesInputIsolateEmulatorThread =
   | "False"
-  | "True"
-  | (string & {});
+  | "True";
 export const VirtualMachinePropertiesInputIsolateEmulatorThread =
   /*@__PURE__*/ S.String;
 
@@ -14528,21 +14337,15 @@ export const VirtualMachinePropertiesInputNetworkAttachmentsList =
   ) as any as S.Schema<VirtualMachinePropertiesInputNetworkAttachmentsList>;
 
 /** The specification of whether this hint supports affinity or anti-affinity with the referenced resources. */
-export type VirtualMachinePlacementHintType =
-  | "Affinity"
-  | "AntiAffinity"
-  | (string & {});
+export type VirtualMachinePlacementHintType = "Affinity" | "AntiAffinity";
 export const VirtualMachinePlacementHintType = /*@__PURE__*/ S.String;
 
 /** The indicator of whether the hint is a hard or soft requirement during scheduling. */
-export type VirtualMachineSchedulingExecution = "Hard" | "Soft" | (string & {});
+export type VirtualMachineSchedulingExecution = "Hard" | "Soft";
 export const VirtualMachineSchedulingExecution = /*@__PURE__*/ S.String;
 
 /** The scope for the virtual machine affinity or anti-affinity placement hint. It should always be "Machine" in the case of node affinity. */
-export type VirtualMachinePlacementHintPodAffinityScope =
-  | "Machine"
-  | "Rack"
-  | (string & {});
+export type VirtualMachinePlacementHintPodAffinityScope = "Machine" | "Rack";
 export const VirtualMachinePlacementHintPodAffinityScope =
   /*@__PURE__*/ S.String;
 
@@ -14585,11 +14388,11 @@ export const VirtualMachinePropertiesInputSshPublicKeysList =
   ) as any as S.Schema<VirtualMachinePropertiesInputSshPublicKeysList>;
 
 /** The strategy for creating the OS disk. */
-export type OsDiskCreateOption = "Ephemeral" | "Persistent" | (string & {});
+export type OsDiskCreateOption = "Ephemeral" | "Persistent";
 export const OsDiskCreateOption = /*@__PURE__*/ S.String;
 
 /** The strategy for deleting the OS disk. */
-export type OsDiskDeleteOption = "Delete" | (string & {});
+export type OsDiskDeleteOption = "Delete";
 export const OsDiskDeleteOption = /*@__PURE__*/ S.String;
 
 /** OsDisk represents configuration of the boot disk. */
@@ -14632,17 +14435,12 @@ export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
 /** Field Deprecated, use virtualizationModel instead. The type of the virtio interface. */
 export type VirtualMachinePropertiesInputVirtioInterface =
   | "Modern"
-  | "Transitional"
-  | (string & {});
+  | "Transitional";
 export const VirtualMachinePropertiesInputVirtioInterface =
   /*@__PURE__*/ S.String;
 
 /** The type of the device model to use. */
-export type VirtualMachinePropertiesInputVmDeviceModel =
-  | "T1"
-  | "T2"
-  | "T3"
-  | (string & {});
+export type VirtualMachinePropertiesInputVmDeviceModel = "T1" | "T2" | "T3";
 export const VirtualMachinePropertiesInputVmDeviceModel =
   /*@__PURE__*/ S.String;
 
@@ -14670,13 +14468,15 @@ export interface VirtualMachinePropertiesInput {
   /** The name of the administrator to which the ssh public keys will be added into the authorized keys. */
   adminUsername: string;
   /** Selects the boot method for the virtual machine. */
-  bootMethod?: VirtualMachinePropertiesInputBootMethod;
+  bootMethod?: VirtualMachinePropertiesInputBootMethod | (string & {});
   /** The cloud service network that provides platform-level services for the virtual machine. */
   cloudServicesNetworkAttachment: NetworkAttachmentInput;
   /** The number of CPU cores in the virtual machine. */
   cpuCores: number;
   /** Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine. */
-  isolateEmulatorThread?: VirtualMachinePropertiesInputIsolateEmulatorThread;
+  isolateEmulatorThread?:
+    | VirtualMachinePropertiesInputIsolateEmulatorThread
+    | (string & {});
   /** The memory size of the virtual machine. Allocations are measured in gibibytes. */
   memorySizeGB: number;
   /** The list of network attachments to the virtual machine. */
@@ -14696,9 +14496,11 @@ export interface VirtualMachinePropertiesInput {
   /** The Base64 encoded cloud-init user data. */
   userDataContent?: string;
   /** Field Deprecated, use virtualizationModel instead. The type of the virtio interface. */
-  virtioInterface?: VirtualMachinePropertiesInputVirtioInterface;
+  virtioInterface?:
+    | VirtualMachinePropertiesInputVirtioInterface
+    | (string & {});
   /** The type of the device model to use. */
-  vmDeviceModel?: VirtualMachinePropertiesInputVmDeviceModel;
+  vmDeviceModel?: VirtualMachinePropertiesInputVmDeviceModel | (string & {});
   /** The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image. */
   vmImage: string;
   /** The credentials used to login to the image repository that has access to the specified image. */
@@ -14749,7 +14551,7 @@ export const VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesM
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface VirtualMachinesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -14817,17 +14619,11 @@ export const VirtualMachinesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<VirtualMachinesCreateOrUpdateResponseTagsMap>;
 
 /** Selects the boot method for the virtual machine. */
-export type VirtualMachinePropertiesBootMethod =
-  | "BIOS"
-  | "UEFI"
-  | (string & {});
+export type VirtualMachinePropertiesBootMethod = "BIOS" | "UEFI";
 export const VirtualMachinePropertiesBootMethod = /*@__PURE__*/ S.String;
 
 /** Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine. */
-export type VirtualMachinePropertiesIsolateEmulatorThread =
-  | "False"
-  | "True"
-  | (string & {});
+export type VirtualMachinePropertiesIsolateEmulatorThread = "False" | "True";
 export const VirtualMachinePropertiesIsolateEmulatorThread =
   /*@__PURE__*/ S.String;
 
@@ -14854,18 +14650,11 @@ export const VirtualMachinePropertiesSshPublicKeysList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VirtualMachinePropertiesSshPublicKeysList>;
 
 /** Field Deprecated, use virtualizationModel instead. The type of the virtio interface. */
-export type VirtualMachinePropertiesVirtioInterface =
-  | "Modern"
-  | "Transitional"
-  | (string & {});
+export type VirtualMachinePropertiesVirtioInterface = "Modern" | "Transitional";
 export const VirtualMachinePropertiesVirtioInterface = /*@__PURE__*/ S.String;
 
 /** The type of the device model to use. */
-export type VirtualMachinePropertiesVmDeviceModel =
-  | "T1"
-  | "T2"
-  | "T3"
-  | (string & {});
+export type VirtualMachinePropertiesVmDeviceModel = "T1" | "T2" | "T3";
 export const VirtualMachinePropertiesVmDeviceModel = /*@__PURE__*/ S.String;
 
 /** The more detailed status of the virtual machine. */
@@ -14877,12 +14666,11 @@ export type VirtualMachineDetailedStatus =
   | "Scheduling"
   | "Stopped"
   | "Terminating"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const VirtualMachineDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The power state of the virtual machine. */
-export type VirtualMachinePowerState = "Off" | "On" | "Unknown" | (string & {});
+export type VirtualMachinePowerState = "Off" | "On" | "Unknown";
 export const VirtualMachinePowerState = /*@__PURE__*/ S.String;
 
 /** The resource IDs of volumes that are attached to the virtual machine. */
@@ -14897,8 +14685,7 @@ export type VirtualMachineProvisioningState =
   | "Canceled"
   | "Failed"
   | "Provisioning"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const VirtualMachineProvisioningState = /*@__PURE__*/ S.String;
 
 /** VirtualMachineProperties represents the properties of the virtual machine. */
@@ -15365,10 +15152,7 @@ export const VirtualMachinesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualMachinesListBySubscriptionRequest>;
 
 /** The indicator of whether to skip the graceful OS shutdown and power off the virtual machine immediately. */
-export type VirtualMachinesPowerOffRequestSkipShutdown =
-  | "True"
-  | "False"
-  | (string & {});
+export type VirtualMachinesPowerOffRequestSkipShutdown = "True" | "False";
 export const VirtualMachinesPowerOffRequestSkipShutdown =
   /*@__PURE__*/ S.String;
 
@@ -15380,7 +15164,7 @@ export interface VirtualMachinesPowerOffRequest {
   /** The name of the virtual machine. */
   virtualMachineName: string;
   /** The indicator of whether to skip the graceful OS shutdown and power off the virtual machine immediately. */
-  skipShutdown?: VirtualMachinesPowerOffRequestSkipShutdown;
+  skipShutdown?: VirtualMachinesPowerOffRequestSkipShutdown | (string & {});
 }
 export const VirtualMachinesPowerOffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15515,7 +15299,7 @@ export const VirtualMachinesUpdateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface VirtualMachinesUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: VirtualMachinesUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -15766,11 +15550,7 @@ export const VolumePropertiesAttachedToList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VolumePropertiesAttachedToList>;
 
 /** The more detailed status of the volume. */
-export type VolumeDetailedStatus =
-  | "Active"
-  | "Error"
-  | "Provisioning"
-  | (string & {});
+export type VolumeDetailedStatus = "Active" | "Error" | "Provisioning";
 export const VolumeDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The provisioning state of the volume. */
@@ -15779,8 +15559,7 @@ export type VolumeProvisioningState =
   | "Canceled"
   | "Failed"
   | "Provisioning"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const VolumeProvisioningState = /*@__PURE__*/ S.String;
 
 /** VolumeProperties represents properties of the volume resource. */

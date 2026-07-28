@@ -14,10 +14,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** The properties with which the alert rule resource was created. */
-export type AlertRuleCreationProperties =
-  | "CreatedWithActionGroup"
-  | "None"
-  | (string & {});
+export type AlertRuleCreationProperties = "CreatedWithActionGroup" | "None";
 export const AlertRuleCreationProperties = /*@__PURE__*/ S.String;
 
 /** The generic properties of the alert rule proxy resource. */
@@ -25,7 +22,7 @@ export interface AlertRuleResourcePropertiesInput {
   /** The resource ID of the alert rule resource. */
   alertRuleResourceId: string;
   /** The properties with which the alert rule resource was created. */
-  createdWithProperties: AlertRuleCreationProperties;
+  createdWithProperties: AlertRuleCreationProperties | (string & {});
   /** The creation time of the alert rule resource. */
   creationTime: string;
   /** The template ID associated with alert rule resource. */
@@ -82,8 +79,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -91,8 +87,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -125,8 +120,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -381,8 +375,7 @@ export type ValidationStatus =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "TimedOut"
-  | (string & {});
+  | "TimedOut";
 export const ValidationStatus = /*@__PURE__*/ S.String;
 
 /** The model of a health validation issue. */
@@ -639,11 +632,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -750,8 +743,7 @@ export type SharedPrivateLinkResourceStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const SharedPrivateLinkResourceStatus = /*@__PURE__*/ S.String;
 
 /** The generic properties of a Shared Private Link resource. */
@@ -975,7 +967,7 @@ export const SharedPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharedPrivateLinkResourceListResult>;
 
 /** The type of authentication to use when connecting to a target. */
-export type TargetAuthenticationType = "Aad" | "Sql" | (string & {});
+export type TargetAuthenticationType = "Aad" | "Sql";
 export const TargetAuthenticationType = /*@__PURE__*/ S.String;
 
 /** The vault specific details required if using SQL authentication to connect to a target. */
@@ -1000,7 +992,7 @@ export interface TargetPropertiesInput {
   /** Discriminator property for TargetProperties. */
   targetType: string;
   /** The type of authentication to use when connecting to a target. */
-  targetAuthenticationType: TargetAuthenticationType;
+  targetAuthenticationType: TargetAuthenticationType | (string & {});
   /** To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored. */
   targetVault?: VaultSecret;
   /** The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately. */
@@ -1266,7 +1258,7 @@ export const WatchersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WatchersCreateOrUpdateRequestTagsMap>;
 
 /** The type of Kusto offering. */
-export type KustoOfferingType = "adx" | "free" | "fabric" | (string & {});
+export type KustoOfferingType = "adx" | "free" | "fabric";
 export const KustoOfferingType = /*@__PURE__*/ S.String;
 
 /** The properties of a data store. */
@@ -1319,8 +1311,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
+  | "SystemAssigned, UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -1342,7 +1333,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface WatchersCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const WatchersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -1407,16 +1398,14 @@ export type WatcherStatus =
   | "Running"
   | "Stopping"
   | "Stopped"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const WatcherStatus = /*@__PURE__*/ S.String;
 
 /** The status of the last provisioning operation performed on the resource. */
 export type DatabaseWatcherProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DatabaseWatcherProvisioningState = /*@__PURE__*/ S.String;
 
 /** The RP specific properties of the resource. */
@@ -1933,7 +1922,7 @@ export const WatchersStopResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface WatchersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const WatchersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -1969,7 +1958,7 @@ export interface DatastoreUpdate {
   /** The Kusto management URL. */
   kustoManagementUrl?: string;
   /** The type of a Kusto offering. */
-  kustoOfferingType?: KustoOfferingType;
+  kustoOfferingType?: KustoOfferingType | (string & {});
 }
 export const DatastoreUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -320,7 +320,7 @@ export const AccountProfileUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountProfileUpdateResponse",
 }) as any as S.Schema<AccountProfileUpdateResponse>;
 
-export type CreateRequestType = "standard" | "enterprise" | (string & {});
+export type CreateRequestType = "standard" | "enterprise";
 export const CreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateRequestUnit {
@@ -338,7 +338,7 @@ export const CreateRequestUnit = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAccountRequest {
   /** Account name */
   name: string;
-  type?: CreateRequestType;
+  type?: CreateRequestType | (string & {});
   /** information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/ */
   unit?: CreateRequestUnit;
 }
@@ -354,7 +354,7 @@ export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAccountRequest",
 }) as any as S.Schema<CreateAccountRequest>;
 
-export type CreateResponseType = "standard" | "enterprise" | (string & {});
+export type CreateResponseType = "standard" | "enterprise";
 export const CreateResponseType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseManagedBy {
@@ -419,13 +419,10 @@ export const MembersCreateRequestRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MembersCreateRequestRolesList>;
 
-export type MembersCreateRequestStatus = "accepted" | "pending" | (string & {});
+export type MembersCreateRequestStatus = "accepted" | "pending";
 export const MembersCreateRequestStatus = /*@__PURE__*/ S.String;
 
-export type MembersCreateRequestPoliciesItemAccess =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type MembersCreateRequestPoliciesItemAccess = "allow" | "deny";
 export const MembersCreateRequestPoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface MembersCreateRequestPoliciesItemPermissionGroupsItem {
@@ -470,7 +467,7 @@ export const MembersCreateRequestPoliciesItemResourceGroupsList =
 
 export interface MembersCreateRequestPoliciesItem {
   /** Allow or deny operations against the resources. */
-  access: MembersCreateRequestPoliciesItemAccess;
+  access: MembersCreateRequestPoliciesItemAccess | (string & {});
   /** A set of permission groups that are specified to the policy. */
   permissionGroups: MembersCreateRequestPoliciesItemPermissionGroupsList;
   /** A list of resource groups that the policy applies to. */
@@ -504,7 +501,7 @@ export interface CreateMemberRequest {
   /** Array of roles associated with this member. */
   roles?: MembersCreateRequestRolesList;
   /** Status of the member invitation. If not provided during creation, defaults to 'pending'. */
-  status?: MembersCreateRequestStatus;
+  status?: MembersCreateRequestStatus | (string & {});
   /** Array of policies associated with this member. */
   policies?: MembersCreateRequestPoliciesList;
 }
@@ -528,10 +525,7 @@ export const CreateMemberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMemberRequest",
 }) as any as S.Schema<CreateMemberRequest>;
 
-export type MembersCreateResponsePoliciesItemAccess =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type MembersCreateResponsePoliciesItemAccess = "allow" | "deny";
 export const MembersCreateResponsePoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface MembersCreateResponsePoliciesItemPermissionGroupsItemMeta {
@@ -787,10 +781,7 @@ export const MembersCreateResponseRolesList = /*@__PURE__*/ S.Array(
   MembersCreateResponseRolesItem,
 ) as any as S.Schema<MembersCreateResponseRolesList>;
 
-export type MembersCreateResponseStatus =
-  | "accepted"
-  | "pending"
-  | (string & {});
+export type MembersCreateResponseStatus = "accepted" | "pending";
 export const MembersCreateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface MembersCreateResponseUser {
@@ -851,8 +842,7 @@ export type SubscriptionsCreateRequestFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
-  | "yearly"
-  | (string & {});
+  | "yearly";
 export const SubscriptionsCreateRequestFrequency = /*@__PURE__*/ S.String;
 
 export type SubscriptionsCreateRequestRatePlanId =
@@ -865,8 +855,7 @@ export type SubscriptionsCreateRequestRatePlanId =
   | "partners_free"
   | "partners_pro"
   | "partners_business"
-  | "partners_enterprise"
-  | (string & {});
+  | "partners_enterprise";
 export const SubscriptionsCreateRequestRatePlanId = /*@__PURE__*/ S.String;
 
 export type SubscriptionsCreateRequestRatePlanSetsList = ReadonlyArray<string>;
@@ -876,7 +865,7 @@ export const SubscriptionsCreateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
 
 export interface SubscriptionsCreateRequestRatePlan {
   /** The ID of the rate plan. */
-  id?: SubscriptionsCreateRequestRatePlanId;
+  id?: SubscriptionsCreateRequestRatePlanId | (string & {});
   /** The currency applied to the rate plan subscription. */
   currency?: string;
   /** Whether this rate plan is managed externally from Cloudflare. */
@@ -908,7 +897,7 @@ export interface CreateSubscriptionRequest {
   /** Identifier */
   accountId: string;
   /** How often the subscription is renewed automatically. */
-  frequency?: SubscriptionsCreateRequestFrequency;
+  frequency?: SubscriptionsCreateRequestFrequency | (string & {});
   /** The rate plan applied to the subscription. */
   ratePlan?: SubscriptionsCreateRequestRatePlan;
 }
@@ -936,8 +925,7 @@ export type SubscriptionsCreateResponseFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
-  | "yearly"
-  | (string & {});
+  | "yearly";
 export const SubscriptionsCreateResponseFrequency = /*@__PURE__*/ S.String;
 
 export type SubscriptionsCreateResponseRatePlanId =
@@ -950,8 +938,7 @@ export type SubscriptionsCreateResponseRatePlanId =
   | "partners_free"
   | "partners_pro"
   | "partners_business"
-  | "partners_enterprise"
-  | (string & {});
+  | "partners_enterprise";
 export const SubscriptionsCreateResponseRatePlanId = /*@__PURE__*/ S.String;
 
 export type SubscriptionsCreateResponseRatePlanSetsList = ReadonlyArray<string>;
@@ -997,8 +984,7 @@ export type SubscriptionsCreateResponseState =
   | "AwaitingPayment"
   | "Cancelled"
   | "Failed"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const SubscriptionsCreateResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1039,10 +1025,7 @@ export const CreateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSubscriptionResponse",
 }) as any as S.Schema<CreateSubscriptionResponse>;
 
-export type TokensCreateRequestPoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensCreateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensCreateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensCreateRequestPoliciesItemPermissionGroupsItemMeta {
@@ -1110,7 +1093,7 @@ export const TokensCreateRequestPoliciesItemResourcesMap =
 
 export interface TokensCreateRequestPoliciesItem {
   /** Allow or deny operations against the resources. */
-  effect: TokensCreateRequestPoliciesItemEffect;
+  effect: TokensCreateRequestPoliciesItemEffect | (string & {});
   /** A set of permission groups that are specified to the policy. */
   permissionGroups: TokensCreateRequestPoliciesItemPermissionGroupsList;
   /** A list of resource names that the policy applies to. */
@@ -1259,10 +1242,7 @@ export const TokensCreateResponseCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensCreateResponseCondition",
 }) as any as S.Schema<TokensCreateResponseCondition>;
 
-export type TokensCreateResponsePoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensCreateResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensCreateResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensCreateResponsePoliciesItemPermissionGroupsItemMeta {
@@ -1359,11 +1339,7 @@ export const TokensCreateResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensCreateResponsePoliciesItem,
 ) as any as S.Schema<TokensCreateResponsePoliciesList>;
 
-export type TokensCreateResponseStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensCreateResponseStatus = "active" | "disabled" | "expired";
 export const TokensCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1559,7 +1535,7 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountRequest",
 }) as any as S.Schema<GetAccountRequest>;
 
-export type GetResponseType = "standard" | "enterprise" | (string & {});
+export type GetResponseType = "standard" | "enterprise";
 export const GetResponseType = /*@__PURE__*/ S.String;
 
 export interface GetResponseManagedBy {
@@ -1642,10 +1618,7 @@ export const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMemberRequest",
 }) as any as S.Schema<GetMemberRequest>;
 
-export type MembersGetResponsePoliciesItemAccess =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type MembersGetResponsePoliciesItemAccess = "allow" | "deny";
 export const MembersGetResponsePoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface MembersGetResponsePoliciesItemPermissionGroupsItemMeta {
@@ -1897,7 +1870,7 @@ export const MembersGetResponseRolesList = /*@__PURE__*/ S.Array(
   MembersGetResponseRolesItem,
 ) as any as S.Schema<MembersGetResponseRolesList>;
 
-export type MembersGetResponseStatus = "accepted" | "pending" | (string & {});
+export type MembersGetResponseStatus = "accepted" | "pending";
 export const MembersGetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface MembersGetResponseUser {
@@ -2073,8 +2046,7 @@ export type SubscriptionsGetResultItemFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
-  | "yearly"
-  | (string & {});
+  | "yearly";
 export const SubscriptionsGetResultItemFrequency = /*@__PURE__*/ S.String;
 
 export type SubscriptionsGetResultItemRatePlanId =
@@ -2087,8 +2059,7 @@ export type SubscriptionsGetResultItemRatePlanId =
   | "partners_free"
   | "partners_pro"
   | "partners_business"
-  | "partners_enterprise"
-  | (string & {});
+  | "partners_enterprise";
 export const SubscriptionsGetResultItemRatePlanId = /*@__PURE__*/ S.String;
 
 export type SubscriptionsGetResultItemRatePlanSetsList = ReadonlyArray<string>;
@@ -2133,8 +2104,7 @@ export type SubscriptionsGetResultItemState =
   | "AwaitingPayment"
   | "Cancelled"
   | "Failed"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const SubscriptionsGetResultItemState = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsGetResultItem {
@@ -2261,10 +2231,7 @@ export const TokensGetResponseCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensGetResponseCondition",
 }) as any as S.Schema<TokensGetResponseCondition>;
 
-export type TokensGetResponsePoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensGetResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensGetResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensGetResponsePoliciesItemPermissionGroupsItemMeta {
@@ -2358,11 +2325,7 @@ export const TokensGetResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensGetResponsePoliciesItem,
 ) as any as S.Schema<TokensGetResponsePoliciesList>;
 
-export type TokensGetResponseStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensGetResponseStatus = "active" | "disabled" | "expired";
 export const TokensGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2443,8 +2406,7 @@ export type TokensPermissionGroupsGetResultItemCategory =
   | "email_and_messaging"
   | "cache_and_performance"
   | "account_and_billing"
-  | "other"
-  | (string & {});
+  | "other";
 export const TokensPermissionGroupsGetResultItemCategory =
   /*@__PURE__*/ S.String;
 
@@ -2452,8 +2414,7 @@ export type TokensPermissionGroupsGetResultItemScopesItem =
   | "com.cloudflare.api.account"
   | "com.cloudflare.api.account.zone"
   | "com.cloudflare.api.user"
-  | "com.cloudflare.edge.r2.bucket"
-  | (string & {});
+  | "com.cloudflare.edge.r2.bucket";
 export const TokensPermissionGroupsGetResultItemScopesItem =
   /*@__PURE__*/ S.String;
 
@@ -2499,12 +2460,12 @@ export const GetTokenPermissionGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTokenPermissionGroupResponse",
 }) as any as S.Schema<GetTokenPermissionGroupResponse>;
 
-export type ListRequestDirection = "asc" | "desc" | (string & {});
+export type ListRequestDirection = "asc" | "desc";
 export const ListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListAccountsRequest {
   /** Direction to order results. */
-  direction?: ListRequestDirection;
+  direction?: ListRequestDirection | (string & {});
   /** Name of the account. */
   name?: string;
   /** Page number of paginated results. */
@@ -2525,7 +2486,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type ListResultItemType = "standard" | "enterprise" | (string & {});
+export type ListResultItemType = "standard" | "enterprise";
 export const ListResultItemType = /*@__PURE__*/ S.String;
 
 export interface ListResultItemManagedBy {
@@ -2607,97 +2568,239 @@ export const LogsAuditListRequestIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestIdNotList>;
 
+export interface LogsAuditListRequestId {
+  /** Filters out audit logs by their IDs. */
+  not?: LogsAuditListRequestIdNotList;
+}
+export const LogsAuditListRequestId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestId",
+}) as any as S.Schema<LogsAuditListRequestId>;
+
 export type LogsAuditListRequestAccountNameNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestAccountNameNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestAccountNameNotList>;
 
-export type LogsAuditListRequestActionResultNot =
-  | "success"
-  | "failure"
-  | (string & {});
-export const LogsAuditListRequestActionResultNot = /*@__PURE__*/ S.String;
+export interface LogsAuditListRequestAccountName {
+  /** Filters out audit logs by the account name. */
+  not?: LogsAuditListRequestAccountNameNotList;
+}
+export const LogsAuditListRequestAccountName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestAccountNameNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestAccountName",
+}) as any as S.Schema<LogsAuditListRequestAccountName>;
 
-export type LogsAuditListRequestActionResultNotList =
-  ReadonlyArray<LogsAuditListRequestActionResultNot>;
+export type LogsAuditListRequestActionResultNotItem = "success" | "failure";
+export const LogsAuditListRequestActionResultNotItem = /*@__PURE__*/ S.String;
+
+export type LogsAuditListRequestActionResultNotList = ReadonlyArray<
+  LogsAuditListRequestActionResultNotItem | (string & {})
+>;
 export const LogsAuditListRequestActionResultNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActionResultNot,
+  LogsAuditListRequestActionResultNotItem,
 ) as any as S.Schema<LogsAuditListRequestActionResultNotList>;
 
-export type LogsAuditListRequestActionTypeNot =
+export interface LogsAuditListRequestActionResult {
+  /** Filters out audit logs by whether the action was successful or not. */
+  not?: LogsAuditListRequestActionResultNotList;
+}
+export const LogsAuditListRequestActionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActionResultNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActionResult",
+}) as any as S.Schema<LogsAuditListRequestActionResult>;
+
+export type LogsAuditListRequestActionTypeNotItem =
   | "create"
   | "delete"
   | "view"
-  | "update"
-  | (string & {});
-export const LogsAuditListRequestActionTypeNot = /*@__PURE__*/ S.String;
+  | "update";
+export const LogsAuditListRequestActionTypeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActionTypeNotList =
-  ReadonlyArray<LogsAuditListRequestActionTypeNot>;
+export type LogsAuditListRequestActionTypeNotList = ReadonlyArray<
+  LogsAuditListRequestActionTypeNotItem | (string & {})
+>;
 export const LogsAuditListRequestActionTypeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActionTypeNot,
+  LogsAuditListRequestActionTypeNotItem,
 ) as any as S.Schema<LogsAuditListRequestActionTypeNotList>;
 
-export type LogsAuditListRequestActorContextNot =
+export interface LogsAuditListRequestActionType {
+  /** Filters out audit logs by the action type. */
+  not?: LogsAuditListRequestActionTypeNotList;
+}
+export const LogsAuditListRequestActionType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActionTypeNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActionType",
+}) as any as S.Schema<LogsAuditListRequestActionType>;
+
+export type LogsAuditListRequestActorContextNotItem =
   | "api_key"
   | "api_token"
   | "dash"
   | "oauth"
-  | "origin_ca_key"
-  | (string & {});
-export const LogsAuditListRequestActorContextNot = /*@__PURE__*/ S.String;
+  | "origin_ca_key";
+export const LogsAuditListRequestActorContextNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActorContextNotList =
-  ReadonlyArray<LogsAuditListRequestActorContextNot>;
+export type LogsAuditListRequestActorContextNotList = ReadonlyArray<
+  LogsAuditListRequestActorContextNotItem | (string & {})
+>;
 export const LogsAuditListRequestActorContextNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActorContextNot,
+  LogsAuditListRequestActorContextNotItem,
 ) as any as S.Schema<LogsAuditListRequestActorContextNotList>;
+
+export interface LogsAuditListRequestActorContext {
+  /** Filters out audit logs by the actor context. */
+  not?: LogsAuditListRequestActorContextNotList;
+}
+export const LogsAuditListRequestActorContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorContextNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorContext",
+}) as any as S.Schema<LogsAuditListRequestActorContext>;
 
 export type LogsAuditListRequestActorEmailNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestActorEmailNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorEmailNotList>;
 
+export interface LogsAuditListRequestActorEmail {
+  /** Filters out audit logs by the actor's email address. */
+  not?: LogsAuditListRequestActorEmailNotList;
+}
+export const LogsAuditListRequestActorEmail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorEmailNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorEmail",
+}) as any as S.Schema<LogsAuditListRequestActorEmail>;
+
 export type LogsAuditListRequestActorIdNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestActorIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorIdNotList>;
+
+export interface LogsAuditListRequestActorId {
+  /** Filters out audit logs by the actor ID. This can be either the Account ID or User ID. */
+  not?: LogsAuditListRequestActorIdNotList;
+}
+export const LogsAuditListRequestActorId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorId",
+}) as any as S.Schema<LogsAuditListRequestActorId>;
 
 export type LogsAuditListRequestActorIpAddressNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestActorIpAddressNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorIpAddressNotList>;
 
+export interface LogsAuditListRequestActorIpAddress {
+  /** Filters out audit logs IP address where the action was initiated. */
+  not?: LogsAuditListRequestActorIpAddressNotList;
+}
+export const LogsAuditListRequestActorIpAddress = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorIpAddressNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorIpAddress",
+}) as any as S.Schema<LogsAuditListRequestActorIpAddress>;
+
 export type LogsAuditListRequestActorTokenIdNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestActorTokenIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorTokenIdNotList>;
+
+export interface LogsAuditListRequestActorTokenId {
+  /** Filters out audit logs by the API token ID when the actor context is an api_token or oauth. */
+  not?: LogsAuditListRequestActorTokenIdNotList;
+}
+export const LogsAuditListRequestActorTokenId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorTokenIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorTokenId",
+}) as any as S.Schema<LogsAuditListRequestActorTokenId>;
 
 export type LogsAuditListRequestActorTokenNameNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestActorTokenNameNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorTokenNameNotList>;
 
-export type LogsAuditListRequestActorTypeNot =
+export interface LogsAuditListRequestActorTokenName {
+  /** Filters out audit logs by the API token name when the actor context is an api_token or oauth. */
+  not?: LogsAuditListRequestActorTokenNameNotList;
+}
+export const LogsAuditListRequestActorTokenName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorTokenNameNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorTokenName",
+}) as any as S.Schema<LogsAuditListRequestActorTokenName>;
+
+export type LogsAuditListRequestActorTypeNotItem =
   | "account"
   | "cloudflare_admin"
   | "system"
-  | "user"
-  | (string & {});
-export const LogsAuditListRequestActorTypeNot = /*@__PURE__*/ S.String;
+  | "user";
+export const LogsAuditListRequestActorTypeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActorTypeNotList =
-  ReadonlyArray<LogsAuditListRequestActorTypeNot>;
+export type LogsAuditListRequestActorTypeNotList = ReadonlyArray<
+  LogsAuditListRequestActorTypeNotItem | (string & {})
+>;
 export const LogsAuditListRequestActorTypeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActorTypeNot,
+  LogsAuditListRequestActorTypeNotItem,
 ) as any as S.Schema<LogsAuditListRequestActorTypeNotList>;
+
+export interface LogsAuditListRequestActorType {
+  /** Filters out audit logs by the actor type. */
+  not?: LogsAuditListRequestActorTypeNotList;
+}
+export const LogsAuditListRequestActorType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorTypeNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorType",
+}) as any as S.Schema<LogsAuditListRequestActorType>;
 
 export type LogsAuditListRequestAuditLogIdNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestAuditLogIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestAuditLogIdNotList>;
 
-export type LogsAuditListRequestDirection = "desc" | "asc" | (string & {});
+export interface LogsAuditListRequestAuditLogId {
+  /** Filters out audit logs by their IDs. */
+  not?: LogsAuditListRequestAuditLogIdNotList;
+}
+export const LogsAuditListRequestAuditLogId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestAuditLogIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestAuditLogId",
+}) as any as S.Schema<LogsAuditListRequestAuditLogId>;
+
+export type LogsAuditListRequestDirection = "desc" | "asc";
 export const LogsAuditListRequestDirection = /*@__PURE__*/ S.String;
 
 export type LogsAuditListRequestProductCategoryList = ReadonlyArray<string>;
@@ -2710,59 +2813,179 @@ export const LogsAuditListRequestRawCfRayIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawCfRayIdNotList>;
 
+export interface LogsAuditListRequestRawCfRayId {
+  /** Filters out audit logs by the response CF Ray ID. */
+  not?: LogsAuditListRequestRawCfRayIdNotList;
+}
+export const LogsAuditListRequestRawCfRayId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestRawCfRayIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestRawCfRayId",
+}) as any as S.Schema<LogsAuditListRequestRawCfRayId>;
+
 export type LogsAuditListRequestRawMethodNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestRawMethodNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawMethodNotList>;
+
+export interface LogsAuditListRequestRawMethod {
+  /** Filters out audit logs by the HTTP method for the API call. */
+  not?: LogsAuditListRequestRawMethodNotList;
+}
+export const LogsAuditListRequestRawMethod = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestRawMethodNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestRawMethod",
+}) as any as S.Schema<LogsAuditListRequestRawMethod>;
 
 export type LogsAuditListRequestRawStatusCodeNotList = ReadonlyArray<number>;
 export const LogsAuditListRequestRawStatusCodeNotList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<LogsAuditListRequestRawStatusCodeNotList>;
 
+export interface LogsAuditListRequestRawStatusCode {
+  /** Filters out audit logs by the response status code that was returned. */
+  not?: LogsAuditListRequestRawStatusCodeNotList;
+}
+export const LogsAuditListRequestRawStatusCode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestRawStatusCodeNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestRawStatusCode",
+}) as any as S.Schema<LogsAuditListRequestRawStatusCode>;
+
 export type LogsAuditListRequestRawUriNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestRawUriNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawUriNotList>;
+
+export interface LogsAuditListRequestRawUri {
+  /** Filters out audit logs by the request URI. */
+  not?: LogsAuditListRequestRawUriNotList;
+}
+export const LogsAuditListRequestRawUri = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestRawUriNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestRawUri",
+}) as any as S.Schema<LogsAuditListRequestRawUri>;
 
 export type LogsAuditListRequestResourceIdNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestResourceIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceIdNotList>;
 
+export interface LogsAuditListRequestResourceId {
+  /** Filters out audit logs by the resource ID. */
+  not?: LogsAuditListRequestResourceIdNotList;
+}
+export const LogsAuditListRequestResourceId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestResourceIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestResourceId",
+}) as any as S.Schema<LogsAuditListRequestResourceId>;
+
 export type LogsAuditListRequestResourceProductNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestResourceProductNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceProductNotList>;
 
-export type LogsAuditListRequestResourceScopeNot =
+export interface LogsAuditListRequestResourceProduct {
+  /** Filters out audit logs by the Cloudflare product associated with the changed resource. */
+  not?: LogsAuditListRequestResourceProductNotList;
+}
+export const LogsAuditListRequestResourceProduct = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestResourceProductNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestResourceProduct",
+}) as any as S.Schema<LogsAuditListRequestResourceProduct>;
+
+export type LogsAuditListRequestResourceScopeNotItem =
   | "accounts"
   | "user"
   | "zones"
-  | "memberships"
-  | (string & {});
-export const LogsAuditListRequestResourceScopeNot = /*@__PURE__*/ S.String;
+  | "memberships";
+export const LogsAuditListRequestResourceScopeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestResourceScopeNotList =
-  ReadonlyArray<LogsAuditListRequestResourceScopeNot>;
+export type LogsAuditListRequestResourceScopeNotList = ReadonlyArray<
+  LogsAuditListRequestResourceScopeNotItem | (string & {})
+>;
 export const LogsAuditListRequestResourceScopeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestResourceScopeNot,
+  LogsAuditListRequestResourceScopeNotItem,
 ) as any as S.Schema<LogsAuditListRequestResourceScopeNotList>;
+
+export interface LogsAuditListRequestResourceScope {
+  /** Filters out audit logs by the resource scope, specifying whether the resource is associated with an user, an account, a zone, or a membership. */
+  not?: LogsAuditListRequestResourceScopeNotList;
+}
+export const LogsAuditListRequestResourceScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestResourceScopeNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestResourceScope",
+}) as any as S.Schema<LogsAuditListRequestResourceScope>;
 
 export type LogsAuditListRequestResourceTypeNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestResourceTypeNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceTypeNotList>;
 
+export interface LogsAuditListRequestResourceType {
+  /** Filters out audit logs based on the unique type of resource changed by the action. */
+  not?: LogsAuditListRequestResourceTypeNotList;
+}
+export const LogsAuditListRequestResourceType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestResourceTypeNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestResourceType",
+}) as any as S.Schema<LogsAuditListRequestResourceType>;
+
 export type LogsAuditListRequestZoneIdNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestZoneIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestZoneIdNotList>;
 
+export interface LogsAuditListRequestZoneId {
+  /** Filters out audit logs by the zone ID. */
+  not?: LogsAuditListRequestZoneIdNotList;
+}
+export const LogsAuditListRequestZoneId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestZoneIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestZoneId",
+}) as any as S.Schema<LogsAuditListRequestZoneId>;
+
 export type LogsAuditListRequestZoneNameNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestZoneNameNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestZoneNameNotList>;
+
+export interface LogsAuditListRequestZoneName {
+  /** Filters out audit logs by the zone name associated with the change. */
+  not?: LogsAuditListRequestZoneNameNotList;
+}
+export const LogsAuditListRequestZoneName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestZoneNameNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestZoneName",
+}) as any as S.Schema<LogsAuditListRequestZoneName>;
 
 export interface ListLogAuditsRequest {
   /** The unique id that identifies the account. */
@@ -2771,107 +2994,108 @@ export interface ListLogAuditsRequest {
   before: string;
   /** Limits the returned results to logs newer than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339. */
   since: string;
-  /** Filters out audit logs by their IDs. */
-  idNot?: LogsAuditListRequestIdNotList;
-  /** Filters out audit logs by the account name. */
-  accountNameNot?: LogsAuditListRequestAccountNameNotList;
-  /** Filters out audit logs by whether the action was successful or not. */
-  actionResultNot?: LogsAuditListRequestActionResultNotList;
-  /** Filters out audit logs by the action type. */
-  actionTypeNot?: LogsAuditListRequestActionTypeNotList;
-  /** Filters out audit logs by the actor context. */
-  actorContextNot?: LogsAuditListRequestActorContextNotList;
-  /** Filters out audit logs by the actor's email address. */
-  actorEmailNot?: LogsAuditListRequestActorEmailNotList;
-  /** Filters out audit logs by the actor ID. This can be either the Account ID or User ID. */
-  actorIdNot?: LogsAuditListRequestActorIdNotList;
-  /** Filters out audit logs IP address where the action was initiated. */
-  actorIpAddressNot?: LogsAuditListRequestActorIpAddressNotList;
-  /** Filters out audit logs by the API token ID when the actor context is an api_token or oauth. */
-  actorTokenIdNot?: LogsAuditListRequestActorTokenIdNotList;
-  /** Filters out audit logs by the API token name when the actor context is an api_token or oauth. */
-  actorTokenNameNot?: LogsAuditListRequestActorTokenNameNotList;
-  /** Filters out audit logs by the actor type. */
-  actorTypeNot?: LogsAuditListRequestActorTypeNotList;
-  /** Filters out audit logs by their IDs. */
-  auditLogIdNot?: LogsAuditListRequestAuditLogIdNotList;
+  id?: LogsAuditListRequestId;
+  accountName?: LogsAuditListRequestAccountName;
+  actionResult?: LogsAuditListRequestActionResult;
+  actionType?: LogsAuditListRequestActionType;
+  actorContext?: LogsAuditListRequestActorContext;
+  actorEmail?: LogsAuditListRequestActorEmail;
+  actorId?: LogsAuditListRequestActorId;
+  actorIpAddress?: LogsAuditListRequestActorIpAddress;
+  actorTokenId?: LogsAuditListRequestActorTokenId;
+  actorTokenName?: LogsAuditListRequestActorTokenName;
+  actorType?: LogsAuditListRequestActorType;
+  auditLogId?: LogsAuditListRequestAuditLogId;
   /** The cursor is an opaque token used to paginate through large sets of records. It indicates the position from which to continue when requesting the next set of records. A valid cursor value can be obtained from the cursor object in the result_info structure of a previous response. */
   cursor?: string;
   /** Sets sorting order. */
-  direction?: LogsAuditListRequestDirection;
+  direction?: LogsAuditListRequestDirection | (string & {});
   /** The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
   /** Filters audit logs by one or more predefined product categories. Each product category expands into a curated set of resource_product values and is unioned with any explicit resource_product filter. Matched case-insensitively; unknown product categories return 400. Repeatable. Use the audit log product categories endpoint to discover the available values. */
   productCategory?: LogsAuditListRequestProductCategoryList;
-  /** Filters out audit logs by the response CF Ray ID. */
-  rawCfRayIdNot?: LogsAuditListRequestRawCfRayIdNotList;
-  /** Filters out audit logs by the HTTP method for the API call. */
-  rawMethodNot?: LogsAuditListRequestRawMethodNotList;
-  /** Filters out audit logs by the response status code that was returned. */
-  rawStatusCodeNot?: LogsAuditListRequestRawStatusCodeNotList;
-  /** Filters out audit logs by the request URI. */
-  rawUriNot?: LogsAuditListRequestRawUriNotList;
-  /** Filters out audit logs by the resource ID. */
-  resourceIdNot?: LogsAuditListRequestResourceIdNotList;
-  /** Filters out audit logs by the Cloudflare product associated with the changed resource. */
-  resourceProductNot?: LogsAuditListRequestResourceProductNotList;
-  /** Filters out audit logs by the resource scope, specifying whether the resource is associated with an user, an account, a zone, or a membership. */
-  resourceScopeNot?: LogsAuditListRequestResourceScopeNotList;
-  /** Filters out audit logs based on the unique type of resource changed by the action. */
-  resourceTypeNot?: LogsAuditListRequestResourceTypeNotList;
-  /** Filters out audit logs by the zone ID. */
-  zoneIdNot?: LogsAuditListRequestZoneIdNotList;
-  /** Filters out audit logs by the zone name associated with the change. */
-  zoneNameNot?: LogsAuditListRequestZoneNameNotList;
+  rawCfRayId?: LogsAuditListRequestRawCfRayId;
+  rawMethod?: LogsAuditListRequestRawMethod;
+  rawStatusCode?: LogsAuditListRequestRawStatusCode;
+  rawUri?: LogsAuditListRequestRawUri;
+  resourceId?: LogsAuditListRequestResourceId;
+  resourceProduct?: LogsAuditListRequestResourceProduct;
+  resourceScope?: LogsAuditListRequestResourceScope;
+  resourceType?: LogsAuditListRequestResourceType;
+  zoneId?: LogsAuditListRequestZoneId;
+  zoneName?: LogsAuditListRequestZoneName;
 }
 export const ListLogAuditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     before: S.String.pipe(T.Query()),
     since: S.String.pipe(T.Query()),
-    idNot: S.optional(LogsAuditListRequestIdNotList.pipe(T.Query("id.not"))),
-    accountNameNot: S.optional(
-      LogsAuditListRequestAccountNameNotList.pipe(T.Query("account_name.not")),
-    ),
-    actionResultNot: S.optional(
-      LogsAuditListRequestActionResultNotList.pipe(
-        T.Query("action_result.not"),
+    id: S.optional(LogsAuditListRequestId.pipe(T.DeepQuery("id"))),
+    accountName: S.optional(
+      LogsAuditListRequestAccountName.pipe(
+        T.Body("account_name"),
+        T.DeepQuery("account_name"),
       ),
     ),
-    actionTypeNot: S.optional(
-      LogsAuditListRequestActionTypeNotList.pipe(T.Query("action_type.not")),
-    ),
-    actorContextNot: S.optional(
-      LogsAuditListRequestActorContextNotList.pipe(
-        T.Query("actor_context.not"),
+    actionResult: S.optional(
+      LogsAuditListRequestActionResult.pipe(
+        T.Body("action_result"),
+        T.DeepQuery("action_result"),
       ),
     ),
-    actorEmailNot: S.optional(
-      LogsAuditListRequestActorEmailNotList.pipe(T.Query("actor_email.not")),
-    ),
-    actorIdNot: S.optional(
-      LogsAuditListRequestActorIdNotList.pipe(T.Query("actor_id.not")),
-    ),
-    actorIpAddressNot: S.optional(
-      LogsAuditListRequestActorIpAddressNotList.pipe(
-        T.Query("actor_ip_address.not"),
+    actionType: S.optional(
+      LogsAuditListRequestActionType.pipe(
+        T.Body("action_type"),
+        T.DeepQuery("action_type"),
       ),
     ),
-    actorTokenIdNot: S.optional(
-      LogsAuditListRequestActorTokenIdNotList.pipe(
-        T.Query("actor_token_id.not"),
+    actorContext: S.optional(
+      LogsAuditListRequestActorContext.pipe(
+        T.Body("actor_context"),
+        T.DeepQuery("actor_context"),
       ),
     ),
-    actorTokenNameNot: S.optional(
-      LogsAuditListRequestActorTokenNameNotList.pipe(
-        T.Query("actor_token_name.not"),
+    actorEmail: S.optional(
+      LogsAuditListRequestActorEmail.pipe(
+        T.Body("actor_email"),
+        T.DeepQuery("actor_email"),
       ),
     ),
-    actorTypeNot: S.optional(
-      LogsAuditListRequestActorTypeNotList.pipe(T.Query("actor_type.not")),
+    actorId: S.optional(
+      LogsAuditListRequestActorId.pipe(
+        T.Body("actor_id"),
+        T.DeepQuery("actor_id"),
+      ),
     ),
-    auditLogIdNot: S.optional(
-      LogsAuditListRequestAuditLogIdNotList.pipe(T.Query("audit_log_id.not")),
+    actorIpAddress: S.optional(
+      LogsAuditListRequestActorIpAddress.pipe(
+        T.Body("actor_ip_address"),
+        T.DeepQuery("actor_ip_address"),
+      ),
+    ),
+    actorTokenId: S.optional(
+      LogsAuditListRequestActorTokenId.pipe(
+        T.Body("actor_token_id"),
+        T.DeepQuery("actor_token_id"),
+      ),
+    ),
+    actorTokenName: S.optional(
+      LogsAuditListRequestActorTokenName.pipe(
+        T.Body("actor_token_name"),
+        T.DeepQuery("actor_token_name"),
+      ),
+    ),
+    actorType: S.optional(
+      LogsAuditListRequestActorType.pipe(
+        T.Body("actor_type"),
+        T.DeepQuery("actor_type"),
+      ),
+    ),
+    auditLogId: S.optional(
+      LogsAuditListRequestAuditLogId.pipe(
+        T.Body("audit_log_id"),
+        T.DeepQuery("audit_log_id"),
+      ),
     ),
     cursor: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(LogsAuditListRequestDirection.pipe(T.Query())),
@@ -2879,43 +3103,65 @@ export const ListLogAuditsRequest = /*@__PURE__*/ S.suspend(() =>
     productCategory: S.optional(
       LogsAuditListRequestProductCategoryList.pipe(T.Query("product_category")),
     ),
-    rawCfRayIdNot: S.optional(
-      LogsAuditListRequestRawCfRayIdNotList.pipe(T.Query("raw_cf_ray_id.not")),
-    ),
-    rawMethodNot: S.optional(
-      LogsAuditListRequestRawMethodNotList.pipe(T.Query("raw_method.not")),
-    ),
-    rawStatusCodeNot: S.optional(
-      LogsAuditListRequestRawStatusCodeNotList.pipe(
-        T.Query("raw_status_code.not"),
+    rawCfRayId: S.optional(
+      LogsAuditListRequestRawCfRayId.pipe(
+        T.Body("raw_cf_ray_id"),
+        T.DeepQuery("raw_cf_ray_id"),
       ),
     ),
-    rawUriNot: S.optional(
-      LogsAuditListRequestRawUriNotList.pipe(T.Query("raw_uri.not")),
-    ),
-    resourceIdNot: S.optional(
-      LogsAuditListRequestResourceIdNotList.pipe(T.Query("resource_id.not")),
-    ),
-    resourceProductNot: S.optional(
-      LogsAuditListRequestResourceProductNotList.pipe(
-        T.Query("resource_product.not"),
+    rawMethod: S.optional(
+      LogsAuditListRequestRawMethod.pipe(
+        T.Body("raw_method"),
+        T.DeepQuery("raw_method"),
       ),
     ),
-    resourceScopeNot: S.optional(
-      LogsAuditListRequestResourceScopeNotList.pipe(
-        T.Query("resource_scope.not"),
+    rawStatusCode: S.optional(
+      LogsAuditListRequestRawStatusCode.pipe(
+        T.Body("raw_status_code"),
+        T.DeepQuery("raw_status_code"),
       ),
     ),
-    resourceTypeNot: S.optional(
-      LogsAuditListRequestResourceTypeNotList.pipe(
-        T.Query("resource_type.not"),
+    rawUri: S.optional(
+      LogsAuditListRequestRawUri.pipe(
+        T.Body("raw_uri"),
+        T.DeepQuery("raw_uri"),
       ),
     ),
-    zoneIdNot: S.optional(
-      LogsAuditListRequestZoneIdNotList.pipe(T.Query("zone_id.not")),
+    resourceId: S.optional(
+      LogsAuditListRequestResourceId.pipe(
+        T.Body("resource_id"),
+        T.DeepQuery("resource_id"),
+      ),
     ),
-    zoneNameNot: S.optional(
-      LogsAuditListRequestZoneNameNotList.pipe(T.Query("zone_name.not")),
+    resourceProduct: S.optional(
+      LogsAuditListRequestResourceProduct.pipe(
+        T.Body("resource_product"),
+        T.DeepQuery("resource_product"),
+      ),
+    ),
+    resourceScope: S.optional(
+      LogsAuditListRequestResourceScope.pipe(
+        T.Body("resource_scope"),
+        T.DeepQuery("resource_scope"),
+      ),
+    ),
+    resourceType: S.optional(
+      LogsAuditListRequestResourceType.pipe(
+        T.Body("resource_type"),
+        T.DeepQuery("resource_type"),
+      ),
+    ),
+    zoneId: S.optional(
+      LogsAuditListRequestZoneId.pipe(
+        T.Body("zone_id"),
+        T.DeepQuery("zone_id"),
+      ),
+    ),
+    zoneName: S.optional(
+      LogsAuditListRequestZoneName.pipe(
+        T.Body("zone_name"),
+        T.DeepQuery("zone_name"),
+      ),
     ),
   })
     .pipe(
@@ -2971,16 +3217,14 @@ export type LogsAuditListResultItemActorContext =
   | "api_token"
   | "dash"
   | "oauth"
-  | "origin_ca_key"
-  | (string & {});
+  | "origin_ca_key";
 export const LogsAuditListResultItemActorContext = /*@__PURE__*/ S.String;
 
 export type LogsAuditListResultItemActorType =
   | "account"
   | "cloudflare_admin"
   | "system"
-  | "user"
-  | (string & {});
+  | "user";
 export const LogsAuditListResultItemActorType = /*@__PURE__*/ S.String;
 
 export interface LogsAuditListResultItemActor {
@@ -3126,37 +3370,32 @@ export const ListLogAuditsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLogAuditsResponse",
 }) as any as S.Schema<ListLogAuditsResponse>;
 
-export type MembersListRequestDirection = "asc" | "desc" | (string & {});
+export type MembersListRequestDirection = "asc" | "desc";
 export const MembersListRequestDirection = /*@__PURE__*/ S.String;
 
 export type MembersListRequestOrder =
   | "user.first_name"
   | "user.last_name"
   | "user.email"
-  | "status"
-  | (string & {});
+  | "status";
 export const MembersListRequestOrder = /*@__PURE__*/ S.String;
 
-export type MembersListRequestStatus =
-  | "accepted"
-  | "pending"
-  | "rejected"
-  | (string & {});
+export type MembersListRequestStatus = "accepted" | "pending" | "rejected";
 export const MembersListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListMembersRequest {
   /** Account identifier tag. */
   accountId: string;
   /** Direction to order results. */
-  direction?: MembersListRequestDirection;
+  direction?: MembersListRequestDirection | (string & {});
   /** Field to order results by. */
-  order?: MembersListRequestOrder;
+  order?: MembersListRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Maximum number of results per page. */
   perPage?: number;
   /** A member's status in the account. */
-  status?: MembersListRequestStatus;
+  status?: MembersListRequestStatus | (string & {});
 }
 export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3179,10 +3418,7 @@ export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMembersRequest",
 }) as any as S.Schema<ListMembersRequest>;
 
-export type MembersListResultItemPoliciesItemAccess =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type MembersListResultItemPoliciesItemAccess = "allow" | "deny";
 export const MembersListResultItemPoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface MembersListResultItemPoliciesItemPermissionGroupsItemMeta {
@@ -3438,10 +3674,7 @@ export const MembersListResultItemRolesList = /*@__PURE__*/ S.Array(
   MembersListResultItemRolesItem,
 ) as any as S.Schema<MembersListResultItemRolesList>;
 
-export type MembersListResultItemStatus =
-  | "accepted"
-  | "pending"
-  | (string & {});
+export type MembersListResultItemStatus = "accepted" | "pending";
 export const MembersListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface MembersListResultItemUser {
@@ -3632,14 +3865,14 @@ export const ListRolesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRolesResponse",
 }) as any as S.Schema<ListRolesResponse>;
 
-export type TokensListRequestDirection = "asc" | "desc" | (string & {});
+export type TokensListRequestDirection = "asc" | "desc";
 export const TokensListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListTokensRequest {
   /** Account identifier tag. */
   accountId: string;
   /** Direction to order results. */
-  direction?: TokensListRequestDirection;
+  direction?: TokensListRequestDirection | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Maximum number of results per page. */
@@ -3710,10 +3943,7 @@ export const TokensListResultItemCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensListResultItemCondition",
 }) as any as S.Schema<TokensListResultItemCondition>;
 
-export type TokensListResultItemPoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensListResultItemPoliciesItemEffect = "allow" | "deny";
 export const TokensListResultItemPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensListResultItemPoliciesItemPermissionGroupsItemMeta {
@@ -3810,11 +4040,7 @@ export const TokensListResultItemPoliciesList = /*@__PURE__*/ S.Array(
   TokensListResultItemPoliciesItem,
 ) as any as S.Schema<TokensListResultItemPoliciesList>;
 
-export type TokensListResultItemStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensListResultItemStatus = "active" | "disabled" | "expired";
 export const TokensListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface TokensListResultItem {
@@ -3944,8 +4170,7 @@ export type TokensPermissionGroupsListResultItemCategory =
   | "email_and_messaging"
   | "cache_and_performance"
   | "account_and_billing"
-  | "other"
-  | (string & {});
+  | "other";
 export const TokensPermissionGroupsListResultItemCategory =
   /*@__PURE__*/ S.String;
 
@@ -3953,8 +4178,7 @@ export type TokensPermissionGroupsListResultItemScopesItem =
   | "com.cloudflare.api.account"
   | "com.cloudflare.api.account.zone"
   | "com.cloudflare.api.user"
-  | "com.cloudflare.edge.r2.bucket"
-  | (string & {});
+  | "com.cloudflare.edge.r2.bucket";
 export const TokensPermissionGroupsListResultItemScopesItem =
   /*@__PURE__*/ S.String;
 
@@ -4001,7 +4225,7 @@ export const TokensPermissionGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensPermissionGroupsListResponse",
 }) as any as S.Schema<TokensPermissionGroupsListResponse>;
 
-export type UpdateRequestType = "standard" | "enterprise" | (string & {});
+export type UpdateRequestType = "standard" | "enterprise";
 export const UpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestManagedBy {
@@ -4041,7 +4265,7 @@ export interface UpdateAccountRequest {
   id: string;
   /** Account name */
   name: string;
-  type?: UpdateRequestType;
+  type?: UpdateRequestType | (string & {});
   /** Parent container details */
   managedBy?: UpdateRequestManagedBy;
   /** Account settings */
@@ -4062,7 +4286,7 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAccountRequest",
 }) as any as S.Schema<UpdateAccountRequest>;
 
-export type UpdateResponseType = "standard" | "enterprise" | (string & {});
+export type UpdateResponseType = "standard" | "enterprise";
 export const UpdateResponseType = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseManagedBy {
@@ -4210,7 +4434,7 @@ export const MembersUpdateRequestRolesList = /*@__PURE__*/ S.Array(
   MembersUpdateRequestRolesItem,
 ) as any as S.Schema<MembersUpdateRequestRolesList>;
 
-export type MembersUpdateRequestStatus = "accepted" | "pending" | (string & {});
+export type MembersUpdateRequestStatus = "accepted" | "pending";
 export const MembersUpdateRequestStatus = /*@__PURE__*/ S.String;
 
 export interface MembersUpdateRequestUser {
@@ -4239,10 +4463,7 @@ export const MembersUpdateRequestUser = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembersUpdateRequestUser",
 }) as any as S.Schema<MembersUpdateRequestUser>;
 
-export type MembersUpdateRequestPoliciesItemAccess =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type MembersUpdateRequestPoliciesItemAccess = "allow" | "deny";
 export const MembersUpdateRequestPoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface MembersUpdateRequestPoliciesItemPermissionGroupsItem {
@@ -4289,7 +4510,7 @@ export interface MembersUpdateRequestPoliciesItem {
   /** Policy identifier. */
   id?: string;
   /** Allow or deny operations against the resources. */
-  access: MembersUpdateRequestPoliciesItemAccess;
+  access: MembersUpdateRequestPoliciesItemAccess | (string & {});
   /** A set of permission groups that are specified to the policy. */
   permissionGroups: MembersUpdateRequestPoliciesItemPermissionGroupsList;
   /** A list of resource groups that the policy applies to. */
@@ -4326,7 +4547,7 @@ export interface UpdateMemberRequest {
   /** Roles assigned to this member. */
   roles?: MembersUpdateRequestRolesList;
   /** A member's status in the account. */
-  status?: MembersUpdateRequestStatus;
+  status?: MembersUpdateRequestStatus | (string & {});
   /** Details of the user associated to the membership. */
   user?: MembersUpdateRequestUser;
   /** Array of policies associated with this member. */
@@ -4354,10 +4575,7 @@ export const UpdateMemberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMemberRequest",
 }) as any as S.Schema<UpdateMemberRequest>;
 
-export type MembersUpdateResponsePoliciesItemAccess =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type MembersUpdateResponsePoliciesItemAccess = "allow" | "deny";
 export const MembersUpdateResponsePoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface MembersUpdateResponsePoliciesItemPermissionGroupsItemMeta {
@@ -4613,10 +4831,7 @@ export const MembersUpdateResponseRolesList = /*@__PURE__*/ S.Array(
   MembersUpdateResponseRolesItem,
 ) as any as S.Schema<MembersUpdateResponseRolesList>;
 
-export type MembersUpdateResponseStatus =
-  | "accepted"
-  | "pending"
-  | (string & {});
+export type MembersUpdateResponseStatus = "accepted" | "pending";
 export const MembersUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface MembersUpdateResponseUser {
@@ -4677,8 +4892,7 @@ export type SubscriptionsUpdateRequestFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
-  | "yearly"
-  | (string & {});
+  | "yearly";
 export const SubscriptionsUpdateRequestFrequency = /*@__PURE__*/ S.String;
 
 export type SubscriptionsUpdateRequestRatePlanId =
@@ -4691,8 +4905,7 @@ export type SubscriptionsUpdateRequestRatePlanId =
   | "partners_free"
   | "partners_pro"
   | "partners_business"
-  | "partners_enterprise"
-  | (string & {});
+  | "partners_enterprise";
 export const SubscriptionsUpdateRequestRatePlanId = /*@__PURE__*/ S.String;
 
 export type SubscriptionsUpdateRequestRatePlanSetsList = ReadonlyArray<string>;
@@ -4702,7 +4915,7 @@ export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
 
 export interface SubscriptionsUpdateRequestRatePlan {
   /** The ID of the rate plan. */
-  id?: SubscriptionsUpdateRequestRatePlanId;
+  id?: SubscriptionsUpdateRequestRatePlanId | (string & {});
   /** The currency applied to the rate plan subscription. */
   currency?: string;
   /** Whether this rate plan is managed externally from Cloudflare. */
@@ -4736,7 +4949,7 @@ export interface UpdateSubscriptionRequest {
   /** Subscription identifier tag. */
   subscriptionIdentifier: string;
   /** How often the subscription is renewed automatically. */
-  frequency?: SubscriptionsUpdateRequestFrequency;
+  frequency?: SubscriptionsUpdateRequestFrequency | (string & {});
   /** The rate plan applied to the subscription. */
   ratePlan?: SubscriptionsUpdateRequestRatePlan;
 }
@@ -4765,8 +4978,7 @@ export type SubscriptionsUpdateResponseFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
-  | "yearly"
-  | (string & {});
+  | "yearly";
 export const SubscriptionsUpdateResponseFrequency = /*@__PURE__*/ S.String;
 
 export type SubscriptionsUpdateResponseRatePlanId =
@@ -4779,8 +4991,7 @@ export type SubscriptionsUpdateResponseRatePlanId =
   | "partners_free"
   | "partners_pro"
   | "partners_business"
-  | "partners_enterprise"
-  | (string & {});
+  | "partners_enterprise";
 export const SubscriptionsUpdateResponseRatePlanId = /*@__PURE__*/ S.String;
 
 export type SubscriptionsUpdateResponseRatePlanSetsList = ReadonlyArray<string>;
@@ -4826,8 +5037,7 @@ export type SubscriptionsUpdateResponseState =
   | "AwaitingPayment"
   | "Cancelled"
   | "Failed"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const SubscriptionsUpdateResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4868,10 +5078,7 @@ export const UpdateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSubscriptionResponse",
 }) as any as S.Schema<UpdateSubscriptionResponse>;
 
-export type TokensUpdateRequestPoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensUpdateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta {
@@ -4939,7 +5146,7 @@ export const TokensUpdateRequestPoliciesItemResourcesMap =
 
 export interface TokensUpdateRequestPoliciesItem {
   /** Allow or deny operations against the resources. */
-  effect: TokensUpdateRequestPoliciesItemEffect;
+  effect: TokensUpdateRequestPoliciesItemEffect | (string & {});
   /** A set of permission groups that are specified to the policy. */
   permissionGroups: TokensUpdateRequestPoliciesItemPermissionGroupsList;
   /** A list of resource names that the policy applies to. */
@@ -5008,11 +5215,7 @@ export const TokensUpdateRequestCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensUpdateRequestCondition",
 }) as any as S.Schema<TokensUpdateRequestCondition>;
 
-export type TokensUpdateRequestStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensUpdateRequestStatus = "active" | "disabled" | "expired";
 export const TokensUpdateRequestStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateTokenRequest {
@@ -5030,7 +5233,7 @@ export interface UpdateTokenRequest {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string;
   /** Status of the token. */
-  status?: TokensUpdateRequestStatus;
+  status?: TokensUpdateRequestStatus | (string & {});
 }
 export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5101,10 +5304,7 @@ export const TokensUpdateResponseCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensUpdateResponseCondition",
 }) as any as S.Schema<TokensUpdateResponseCondition>;
 
-export type TokensUpdateResponsePoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensUpdateResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta {
@@ -5201,11 +5401,7 @@ export const TokensUpdateResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensUpdateResponsePoliciesItem,
 ) as any as S.Schema<TokensUpdateResponsePoliciesList>;
 
-export type TokensUpdateResponseStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensUpdateResponseStatus = "active" | "disabled" | "expired";
 export const TokensUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5267,11 +5463,7 @@ export const VerifyTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerifyTokenRequest",
 }) as any as S.Schema<VerifyTokenRequest>;
 
-export type TokensVerifyResponseStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensVerifyResponseStatus = "active" | "disabled" | "expired";
 export const TokensVerifyResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

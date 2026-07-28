@@ -26,15 +26,11 @@ export const AssessmentScopeParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssessmentScopeParameters>;
 
 /** Environment Type for Azure. */
-export type AzureEnvironmentType =
-  | "Unknown"
-  | "DevTest"
-  | "Production"
-  | (string & {});
+export type AzureEnvironmentType = "Unknown" | "DevTest" | "Production";
 export const AzureEnvironmentType = /*@__PURE__*/ S.String;
 
 /** Licensing Program for Azure. */
-export type LicensingProgram = "Default" | "EA" | (string & {});
+export type LicensingProgram = "Default" | "EA";
 export const LicensingProgram = /*@__PURE__*/ S.String;
 
 /** Currency for Azure. */
@@ -64,19 +60,15 @@ export type AzureCurrency =
   | "CHF"
   | "ARS"
   | "AUD"
-  | "CNY"
-  | (string & {});
+  | "CNY";
 export const AzureCurrency = /*@__PURE__*/ S.String;
 
 /** Assessment Sizing Criteria. */
-export type AssessmentSizingCriterion =
-  | "PerformanceBased"
-  | "AsOnPremises"
-  | (string & {});
+export type AssessmentSizingCriterion = "PerformanceBased" | "AsOnPremises";
 export const AssessmentSizingCriterion = /*@__PURE__*/ S.String;
 
 /** Time Range for Performance Data. */
-export type TimeRange = "Day" | "Week" | "Month" | "Custom" | (string & {});
+export type TimeRange = "Day" | "Week" | "Month" | "Custom";
 export const TimeRange = /*@__PURE__*/ S.String;
 
 /** Percentile for Performance Data. */
@@ -84,8 +76,7 @@ export type Percentile =
   | "Percentile50"
   | "Percentile90"
   | "Percentile95"
-  | "Percentile99"
-  | (string & {});
+  | "Percentile99";
 export const Percentile = /*@__PURE__*/ S.String;
 
 /** Data model of Performance Data Settings. */
@@ -119,8 +110,7 @@ export type AzureVmCategory =
   | "HighPerformanceCompute"
   | "MemoryOptimized"
   | "StorageOptimized"
-  | "Isolated"
-  | (string & {});
+  | "Isolated";
 export const AzureVmCategory = /*@__PURE__*/ S.String;
 
 /** Savings Options for Azure. */
@@ -129,16 +119,15 @@ export type SavingsOptions =
   | "OneYearSavings"
   | "ThreeYearsSavings"
   | "OneYearReserved"
-  | "ThreeYearsReserved"
-  | (string & {});
+  | "ThreeYearsReserved";
 export const SavingsOptions = /*@__PURE__*/ S.String;
 
 /** Consolidation Type. */
-export type ConsolidationType = "Full" | "AsOnSource" | (string & {});
+export type ConsolidationType = "Full" | "AsOnSource";
 export const ConsolidationType = /*@__PURE__*/ S.String;
 
 /** Pricing Tier for Azure. */
-export type PricingTier = "Standard" | "Free" | (string & {});
+export type PricingTier = "Standard" | "Free";
 export const PricingTier = /*@__PURE__*/ S.String;
 
 /** Data model of AKS Assessment Settings. */
@@ -240,8 +229,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -249,8 +237,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -285,8 +272,7 @@ export type ProvisioningStatus =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const ProvisioningStatus = /*@__PURE__*/ S.String;
 
 /** Assessment Status. */
@@ -298,8 +284,7 @@ export type AssessmentStatus =
   | "Invalid"
   | "OutOfSync"
   | "OutDated"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const AssessmentStatus = /*@__PURE__*/ S.String;
 
 /** Data model of AKS Assessment Details. */
@@ -641,11 +626,11 @@ export const AksClusterOperationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AksClusterOperationsGetRequest>;
 
 /** Node Pool Mode. */
-export type NodePoolMode = "User" | "System" | (string & {});
+export type NodePoolMode = "User" | "System";
 export const NodePoolMode = /*@__PURE__*/ S.String;
 
 /** Operating System Type. */
-export type OSType = "Linux" | "Windows" | (string & {});
+export type OSType = "Linux" | "Windows";
 export const OSType = /*@__PURE__*/ S.String;
 
 /** Data model of Node Pool. */
@@ -1438,8 +1423,7 @@ export type CloudSuitability =
   | "NotSuitable"
   | "Suitable"
   | "ConditionallySuitable"
-  | "ReadinessUnknown"
-  | (string & {});
+  | "ReadinessUnknown";
 export const CloudSuitability = /*@__PURE__*/ S.String;
 
 export type AzureDiskSuitabilityExplanation =
@@ -1451,8 +1435,7 @@ export type AzureDiskSuitabilityExplanation =
   | "NoDiskSizeFoundInSelectedLocation"
   | "NoDiskSizeFoundForSelectedRedundancy"
   | "InternalErrorOccurredForDiskEvaluation"
-  | "NoEaPriceFoundForDiskSize"
-  | (string & {});
+  | "NoEaPriceFoundForDiskSize";
 export const AzureDiskSuitabilityExplanation = /*@__PURE__*/ S.String;
 
 export type AzureDiskSuitabilityDetail =
@@ -1468,8 +1451,7 @@ export type AzureDiskSuitabilityDetail =
   | "MegabytesPerSecondOfReadOutOfRange"
   | "MegabytesPerSecondOfWriteOutOfRange"
   | "DiskGigabytesConsumedOutOfRange"
-  | "DiskGigabytesProvisionedOutOfRange"
-  | (string & {});
+  | "DiskGigabytesProvisionedOutOfRange";
 export const AzureDiskSuitabilityDetail = /*@__PURE__*/ S.String;
 
 export type AzureDiskSize =
@@ -1514,8 +1496,7 @@ export type AzureDiskSize =
   | "Premium_P2"
   | "Premium_P3"
   | "Ultra"
-  | "PremiumV2"
-  | (string & {});
+  | "PremiumV2";
 export const AzureDiskSize = /*@__PURE__*/ S.String;
 
 export type AzureDiskType =
@@ -1525,8 +1506,7 @@ export type AzureDiskType =
   | "Premium"
   | "StandardOrPremium"
   | "Ultra"
-  | "PremiumV2"
-  | (string & {});
+  | "PremiumV2";
 export const AzureDiskType = /*@__PURE__*/ S.String;
 
 /** Assessed disk properties class. */
@@ -1621,8 +1601,7 @@ export type CostComponentName =
   | "MonthlyAvsNodeCost"
   | "MonthlyAvsExternalStorageCost"
   | "MonthlyAvsNetworkCost"
-  | "MonthlyVcfByolCostDifference"
-  | (string & {});
+  | "MonthlyVcfByolCostDifference";
 export const CostComponentName = /*@__PURE__*/ S.String;
 
 /** Class to represent the component of the cost. */
@@ -1698,15 +1677,13 @@ export type AzureNetworkAdapterSuitabilityDetail =
   | "MegabytesOfDataTransmittedMissing"
   | "MegabytesOfDataTransmittedOutOfRange"
   | "MegabytesOfDataRecievedMissing"
-  | "MegabytesOfDataRecievedOutOfRange"
-  | (string & {});
+  | "MegabytesOfDataRecievedOutOfRange";
 export const AzureNetworkAdapterSuitabilityDetail = /*@__PURE__*/ S.String;
 
 export type AzureNetworkAdapterSuitabilityExplanation =
   | "Unknown"
   | "NotApplicable"
-  | "InternalErrorOccurred"
-  | (string & {});
+  | "InternalErrorOccurred";
 export const AzureNetworkAdapterSuitabilityExplanation = /*@__PURE__*/ S.String;
 
 /** Gets the ip addresses. */
@@ -2257,8 +2234,7 @@ export type AzureVmSize =
   | "Standard_E16bds_v5"
   | "Standard_E32bds_v5"
   | "Standard_E48bds_v5"
-  | "Standard_E64bds_v5"
-  | (string & {});
+  | "Standard_E64bds_v5";
 export const AzureVmSize = /*@__PURE__*/ S.String;
 
 export type AzureVmSuitabilityExplanation =
@@ -2300,8 +2276,7 @@ export type AzureVmSuitabilityExplanation =
   | "NoVmSizeForBasicPricingTier"
   | "NoVmSizeInSelectedFamilyFound"
   | "NoEaPriceFoundForVmSize"
-  | "NoVmSizeFoundForOfferCurrencyReservedInstance"
-  | (string & {});
+  | "NoVmSizeFoundForOfferCurrencyReservedInstance";
 export const AzureVmSuitabilityExplanation = /*@__PURE__*/ S.String;
 
 export type AzureVmSuitabilityDetail =
@@ -2313,31 +2288,20 @@ export type AzureVmSuitabilityDetail =
   | "PercentageOfCoresUtilizedMissing"
   | "PercentageOfMemoryUtilizedMissing"
   | "PercentageOfCoresUtilizedOutOfRange"
-  | "PercentageOfMemoryUtilizedOutOfRange"
-  | (string & {});
+  | "PercentageOfMemoryUtilizedOutOfRange";
 export const AzureVmSuitabilityDetail = /*@__PURE__*/ S.String;
 
 export type AssessedMachineType =
   | "Unknown"
   | "AssessedMachine"
   | "AvsAssessedMachine"
-  | "SqlAssessedMachine"
-  | (string & {});
+  | "SqlAssessedMachine";
 export const AssessedMachineType = /*@__PURE__*/ S.String;
 
-export type MachineBootType =
-  | "Unknown"
-  | "EFI"
-  | "BIOS"
-  | "NotSpecified"
-  | (string & {});
+export type MachineBootType = "Unknown" | "EFI" | "BIOS" | "NotSpecified";
 export const MachineBootType = /*@__PURE__*/ S.String;
 
-export type GuestOperatingSystemArchitecture =
-  | "Unknown"
-  | "X86"
-  | "X64"
-  | (string & {});
+export type GuestOperatingSystemArchitecture = "Unknown" | "X86" | "X64";
 export const GuestOperatingSystemArchitecture = /*@__PURE__*/ S.String;
 
 /** Assessed machine properties class. */
@@ -2615,8 +2579,7 @@ export type TargetType =
   | "AzureSqlDatabase"
   | "AzureSqlManagedInstance"
   | "AzureSqlVirtualMachine"
-  | "AzureVirtualMachine"
-  | (string & {});
+  | "AzureVirtualMachine";
 export const TargetType = /*@__PURE__*/ S.String;
 
 export type RecommendedSuitability =
@@ -2631,8 +2594,7 @@ export type RecommendedSuitability =
   | "ConditionallySuitableForSqlDB"
   | "ConditionallySuitableForSqlMI"
   | "ConditionallySuitableForVM"
-  | "ConditionallySuitableForSqlVM"
-  | (string & {});
+  | "ConditionallySuitableForSqlVM";
 export const RecommendedSuitability = /*@__PURE__*/ S.String;
 
 export type AzureSqlServiceTier =
@@ -2640,16 +2602,14 @@ export type AzureSqlServiceTier =
   | "Automatic"
   | "GeneralPurpose"
   | "BusinessCritical"
-  | "HyperScale"
-  | (string & {});
+  | "HyperScale";
 export const AzureSqlServiceTier = /*@__PURE__*/ S.String;
 
 export type ComputeTier =
   | "Unknown"
   | "Automatic"
   | "Provisioned"
-  | "Serverless"
-  | (string & {});
+  | "Serverless";
 export const ComputeTier = /*@__PURE__*/ S.String;
 
 export type HardwareGeneration =
@@ -2658,8 +2618,7 @@ export type HardwareGeneration =
   | "Gen5"
   | "Fsv2_series"
   | "M_series"
-  | "DC_series"
-  | (string & {});
+  | "DC_series";
 export const HardwareGeneration = /*@__PURE__*/ S.String;
 
 /** Class representing Azure SQL PAAS SKU. */
@@ -2711,15 +2670,10 @@ export type AzureManagedDiskSkuDTODiskType =
   | "Premium"
   | "StandardOrPremium"
   | "Ultra"
-  | "PremiumV2"
-  | (string & {});
+  | "PremiumV2";
 export const AzureManagedDiskSkuDTODiskType = /*@__PURE__*/ S.String;
 
-export type AzureManagedDiskSkuDTODiskRedundancy =
-  | "Unknown"
-  | "LRS"
-  | "ZRS"
-  | (string & {});
+export type AzureManagedDiskSkuDTODiskRedundancy = "Unknown" | "LRS" | "ZRS";
 export const AzureManagedDiskSkuDTODiskRedundancy = /*@__PURE__*/ S.String;
 
 /** Class representing an Azure Managed Disk SKU. */
@@ -2777,8 +2731,7 @@ export const SharedResourcesDTOSharedTempDbDisksList = /*@__PURE__*/ S.Array(
 export type AzureQuorumWitnessDTOQuorumWitnessType =
   | "Unknown"
   | "Cloud"
-  | "Disk"
-  | (string & {});
+  | "Disk";
 export const AzureQuorumWitnessDTOQuorumWitnessType = /*@__PURE__*/ S.String;
 
 /** Quorum Witness. */
@@ -2830,16 +2783,14 @@ export const SqlAssessmentV2PaasSuitabilityDataCostComponentsList =
 export type SkuReplicationMode =
   | "NotApplicable"
   | "ActiveGeoReplication"
-  | "FailoverGroupInstance"
-  | (string & {});
+  | "FailoverGroupInstance";
 export const SkuReplicationMode = /*@__PURE__*/ S.String;
 
 export type SqlMigrationGuidelineCategory =
   | "Unknown"
   | "General"
   | "FailoverCluterInstanceGuideLine"
-  | "AvailabilityGroupGuideline"
-  | (string & {});
+  | "AvailabilityGroupGuideline";
 export const SqlMigrationGuidelineCategory = /*@__PURE__*/ S.String;
 
 /** Migration Guideline Context. */
@@ -2954,8 +2905,7 @@ export const SqlAssessmentV2PaasSuitabilityDataRecommendationReasoningsList =
 export type SqlAssessmentMigrationIssueCategory =
   | "Issue"
   | "Warning"
-  | "Internal"
-  | (string & {});
+  | "Internal";
 export const SqlAssessmentMigrationIssueCategory = /*@__PURE__*/ S.String;
 
 /** Class representing the impacted objects. */
@@ -3105,8 +3055,7 @@ export type CompatibilityLevel =
   | "CompatLevel120"
   | "CompatLevel130"
   | "CompatLevel140"
-  | "CompatLevel150"
-  | (string & {});
+  | "CompatLevel150";
 export const CompatibilityLevel = /*@__PURE__*/ S.String;
 
 /** Assessed SQL database properties web model. */
@@ -3404,8 +3353,7 @@ export type AzureVmFamily =
   | "Easv5_series"
   | "Eadsv5_series"
   | "Ebsv5_series"
-  | "Ebdsv5_series"
-  | (string & {});
+  | "Ebdsv5_series";
 export const AzureVmFamily = /*@__PURE__*/ S.String;
 
 /** Azure Virtual Machine SKU. */
@@ -3616,8 +3564,7 @@ export type SqlFCIMetadataState =
   | "Failed"
   | "Pending"
   | "OnlinePending"
-  | "OfflinePending"
-  | (string & {});
+  | "OfflinePending";
 export const SqlFCIMetadataState = /*@__PURE__*/ S.String;
 
 /** Sql fci meta data. */
@@ -3984,12 +3931,7 @@ export const AssessedSqlMachinesOperationsGetRequest = /*@__PURE__*/ S.suspend(
   identifier: "AssessedSqlMachinesOperationsGetRequest",
 }) as any as S.Schema<AssessedSqlMachinesOperationsGetRequest>;
 
-export type SqlFCIState =
-  | "Unknown"
-  | "Active"
-  | "Passive"
-  | "NotApplicable"
-  | (string & {});
+export type SqlFCIState = "Unknown" | "Active" | "Passive" | "NotApplicable";
 export const SqlFCIState = /*@__PURE__*/ S.String;
 
 /** Assessed Sql Instance Summary. */
@@ -4680,7 +4622,7 @@ export const AssessedWebApplicationOperationsGetRequest =
   }) as any as S.Schema<AssessedWebApplicationOperationsGetRequest>;
 
 /** Web App Type. */
-export type WebAppType = "Unknown" | "IIS" | "Tomcat" | (string & {});
+export type WebAppType = "Unknown" | "IIS" | "Tomcat";
 export const WebAppType = /*@__PURE__*/ S.String;
 
 /** Readiness for Azure. */
@@ -4688,16 +4630,15 @@ export type Readiness =
   | "Unknown"
   | "NotReady"
   | "ReadyWithConditions"
-  | "Ready"
-  | (string & {});
+  | "Ready";
 export const Readiness = /*@__PURE__*/ S.String;
 
 /** Suitability for Azure. */
-export type Suitability = "NotSuitable" | "Suitable" | (string & {});
+export type Suitability = "NotSuitable" | "Suitable";
 export const Suitability = /*@__PURE__*/ S.String;
 
 /** Suitability Check or Rule Result. */
-export type CheckResult = "Unknown" | "Issue" | "Warn" | "Pass" | (string & {});
+export type CheckResult = "Unknown" | "Issue" | "Warn" | "Pass";
 export const CheckResult = /*@__PURE__*/ S.String;
 
 /** Data model of More information about check or rule. */
@@ -4750,8 +4691,7 @@ export const SuitabilityResultFailedChecksList = /*@__PURE__*/ S.Array(
 export type SuggestedMigrationTool =
   | "None"
   | "WebAppMigration"
-  | "ServerMigration"
-  | (string & {});
+  | "ServerMigration";
 export const SuggestedMigrationTool = /*@__PURE__*/ S.String;
 
 /** Data model of Suitability Result. */
@@ -5041,11 +4981,7 @@ export const AssessmentResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssessmentResult",
 }) as any as S.Schema<AssessmentResult>;
 
-export type AzureWebAppSuitabilityIssueCategory =
-  | "Unknown"
-  | "Issue"
-  | "Info"
-  | (string & {});
+export type AzureWebAppSuitabilityIssueCategory = "Unknown" | "Issue" | "Info";
 export const AzureWebAppSuitabilityIssueCategory = /*@__PURE__*/ S.String;
 
 /** Gets or sets the issue description list. */
@@ -5489,8 +5425,7 @@ export type AzureLocation =
   | "UsSecCentral"
   | "UsSecWest"
   | "SwedenCentral"
-  | "QatarCentral"
-  | (string & {});
+  | "QatarCentral";
 export const AzureLocation = /*@__PURE__*/ S.String;
 
 /** List of Azure locations that support Premium SSD V2 disks for assessments. */
@@ -5676,22 +5611,21 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Project Status. */
-export type ProjectStatus = "Active" | "Inactive" | (string & {});
+export type ProjectStatus = "Active" | "Inactive";
 export const ProjectStatus = /*@__PURE__*/ S.String;
 
 /** Properties of a project. */
 export interface ProjectPropertiesInput {
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects. */
   assessmentSolutionId?: string;
   /** Assessment project status. */
-  projectStatus?: ProjectStatus;
+  projectStatus?: ProjectStatus | (string & {});
   /** The ARM id of service map workspace created by customer. */
   customerWorkspaceId?: string;
   /** Location of service map workspace created by customer. */
@@ -5785,8 +5719,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -5813,8 +5746,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -6167,7 +6099,7 @@ export interface AssessmentProjectUpdateProperties {
   /** Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects. */
   assessmentSolutionId?: string;
   /** Assessment project status. */
-  projectStatus?: ProjectStatus;
+  projectStatus?: ProjectStatus | (string & {});
   /** The ARM id of service map workspace created by customer. */
   customerWorkspaceId?: string;
   /** Location of service map workspace created by customer. */
@@ -6177,7 +6109,7 @@ export interface AssessmentProjectUpdateProperties {
   /** The ARM id of the storage account used for interactions when public access is disabled. */
   customerStorageAccountArmId?: string;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const AssessmentProjectUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6299,8 +6231,7 @@ export type AssessmentType =
   | "MachineAssessment"
   | "AvsAssessment"
   | "SqlAssessment"
-  | "WebAppAssessment"
-  | (string & {});
+  | "WebAppAssessment";
 export const AssessmentType = /*@__PURE__*/ S.String;
 
 /** Error summary containing affected entities for each type of assessment. */
@@ -6459,7 +6390,7 @@ export const AssessmentProjectSummaryListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssessmentProjectSummaryListResult",
 }) as any as S.Schema<AssessmentProjectSummaryListResult>;
 
-export type AzurePricingTier = "Standard" | "Basic" | (string & {});
+export type AzurePricingTier = "Standard" | "Basic";
 export const AzurePricingTier = /*@__PURE__*/ S.String;
 
 export type AzureStorageRedundancy =
@@ -6467,31 +6398,28 @@ export type AzureStorageRedundancy =
   | "LocallyRedundant"
   | "ZoneRedundant"
   | "GeoRedundant"
-  | "ReadAccessGeoRedundant"
-  | (string & {});
+  | "ReadAccessGeoRedundant";
 export const AzureStorageRedundancy = /*@__PURE__*/ S.String;
 
-export type AzureReservedInstance =
-  | "None"
-  | "RI1Year"
-  | "RI3Year"
-  | (string & {});
+export type AzureReservedInstance = "None" | "RI1Year" | "RI3Year";
 export const AzureReservedInstance = /*@__PURE__*/ S.String;
 
-export type AzureHybridUseBenefit = "Unknown" | "Yes" | "No" | (string & {});
+export type AzureHybridUseBenefit = "Unknown" | "Yes" | "No";
 export const AzureHybridUseBenefit = /*@__PURE__*/ S.String;
 
 /** Gets or sets the azure storage type. Premium, Standard etc. */
-export type MachineAssessmentPropertiesInputAzureDiskTypesList =
-  ReadonlyArray<AzureDiskType>;
+export type MachineAssessmentPropertiesInputAzureDiskTypesList = ReadonlyArray<
+  AzureDiskType | (string & {})
+>;
 export const MachineAssessmentPropertiesInputAzureDiskTypesList =
   /*@__PURE__*/ S.Array(
     AzureDiskType,
   ) as any as S.Schema<MachineAssessmentPropertiesInputAzureDiskTypesList>;
 
 /** Gets or sets the Azure VM families. */
-export type MachineAssessmentPropertiesInputAzureVmFamiliesList =
-  ReadonlyArray<AzureVmFamily>;
+export type MachineAssessmentPropertiesInputAzureVmFamiliesList = ReadonlyArray<
+  AzureVmFamily | (string & {})
+>;
 export const MachineAssessmentPropertiesInputAzureVmFamiliesList =
   /*@__PURE__*/ S.Array(
     AzureVmFamily,
@@ -6554,26 +6482,25 @@ export type AzureOfferCode =
   | "EA"
   | "MSAZR0243P"
   | "SavingsPlan1Year"
-  | "SavingsPlan3Year"
-  | (string & {});
+  | "SavingsPlan3Year";
 export const AzureOfferCode = /*@__PURE__*/ S.String;
 
 /** Properties of an assessment. */
 export interface MachineAssessmentPropertiesInput {
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Gets or sets enterprise agreement subscription id. */
   eaSubscriptionId?: string;
   /** Gets or sets Azure Pricing Tier - Free, Basic, etc. */
-  azurePricingTier?: AzurePricingTier;
+  azurePricingTier?: AzurePricingTier | (string & {});
   /** Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage. */
-  azureStorageRedundancy?: AzureStorageRedundancy;
+  azureStorageRedundancy?: AzureStorageRedundancy | (string & {});
   /** Gets or sets the Azure Reserved Instance - 1-Year, 3-Year. */
-  reservedInstance?: AzureReservedInstance;
+  reservedInstance?: AzureReservedInstance | (string & {});
   /** Gets or sets the user configurable setting to display the azure hybrid use benefit. */
-  azureHybridUseBenefit?: AzureHybridUseBenefit;
+  azureHybridUseBenefit?: AzureHybridUseBenefit | (string & {});
   /** Gets or sets the user configurable setting to display the linux azure hybrid use benefit. */
-  linuxAzureHybridUseBenefit?: AzureHybridUseBenefit;
+  linuxAzureHybridUseBenefit?: AzureHybridUseBenefit | (string & {});
   /** Gets or sets the azure storage type. Premium, Standard etc. */
   azureDiskTypes?: MachineAssessmentPropertiesInputAzureDiskTypesList;
   /** Gets or sets the Azure VM families. */
@@ -6583,15 +6510,15 @@ export interface MachineAssessmentPropertiesInput {
   /** Azure Location or Azure region where to which the machines will be migrated. */
   azureLocation?: string;
   /** Azure Offer Code. */
-  azureOfferCode?: AzureOfferCode;
+  azureOfferCode?: AzureOfferCode | (string & {});
   /** Currency in which prices should be reported. */
-  currency?: AzureCurrency;
+  currency?: AzureCurrency | (string & {});
   /** Percentage of buffer that user wants on performance metrics when recommending Azure sizes. */
   scalingFactor?: number;
   /** Percentile of the utilization data values to be considered while assessing machines. */
-  percentile?: Percentile;
+  percentile?: Percentile | (string & {});
   /** Time Range for which the historic utilization data should be considered for assessment. */
-  timeRange?: TimeRange;
+  timeRange?: TimeRange | (string & {});
   /** Gets or sets the start time to consider performance data for assessment. */
   perfDataStartTime?: string;
   /** Gets or sets the end time to consider performance data for assessment. */
@@ -6599,7 +6526,7 @@ export interface MachineAssessmentPropertiesInput {
   /** Custom discount percentage. */
   discountPercentage?: number;
   /** Assessment sizing criterion. */
-  sizingCriterion?: AssessmentSizingCriterion;
+  sizingCriterion?: AssessmentSizingCriterion | (string & {});
 }
 export const MachineAssessmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6740,14 +6667,10 @@ export const MachineAssessmentPropertiesSuitabilitySummaryMap =
     S.Number,
   ) as any as S.Schema<MachineAssessmentPropertiesSuitabilitySummaryMap>;
 
-export type GroupType = "Default" | "Import" | (string & {});
+export type GroupType = "Default" | "Import";
 export const GroupType = /*@__PURE__*/ S.String;
 
-export type AssessmentStage =
-  | "InProgress"
-  | "UnderReview"
-  | "Approved"
-  | (string & {});
+export type AssessmentStage = "InProgress" | "UnderReview" | "Approved";
 export const AssessmentStage = /*@__PURE__*/ S.String;
 
 /** Properties of an assessment. */
@@ -7166,8 +7089,7 @@ export type ExternalStorageType =
   | "None"
   | "AnfStandard"
   | "AnfPremium"
-  | "AnfUltra"
-  | (string & {});
+  | "AnfUltra";
 export const ExternalStorageType = /*@__PURE__*/ S.String;
 
 /** AVS assessed disk web model class. */
@@ -7264,8 +7186,7 @@ export type AzureAvsVmSuitabilityExplanation =
   | "Unknown"
   | "NotApplicable"
   | "IpV6NotSupported"
-  | "UnsupportedOperatingSystem"
-  | (string & {});
+  | "UnsupportedOperatingSystem";
 export const AzureAvsVmSuitabilityExplanation = /*@__PURE__*/ S.String;
 
 export type AzureAvsVmSuitabilityDetail =
@@ -7274,8 +7195,7 @@ export type AzureAvsVmSuitabilityDetail =
   | "PercentageOfMemoryUtilizedMissing"
   | "PercentageOfCoresUtilizedOutOfRange"
   | "PercentageOfMemoryUtilizedOutOfRange"
-  | "PercentageOfStorageUtilizedOutOfRange"
-  | (string & {});
+  | "PercentageOfStorageUtilizedOutOfRange";
 export const AzureAvsVmSuitabilityDetail = /*@__PURE__*/ S.String;
 
 /** AVS assessed machine properties web model. */
@@ -7509,13 +7429,7 @@ export const AvsAssessmentOptionsOperationsGetRequest = /*@__PURE__*/ S.suspend(
   identifier: "AvsAssessmentOptionsOperationsGetRequest",
 }) as any as S.Schema<AvsAssessmentOptionsOperationsGetRequest>;
 
-export type AzureAvsNodeType =
-  | "Unknown"
-  | "AV36"
-  | "AV36P"
-  | "AV52"
-  | "AV64"
-  | (string & {});
+export type AzureAvsNodeType = "Unknown" | "AV36" | "AV36P" | "AV52" | "AV64";
 export const AzureAvsNodeType = /*@__PURE__*/ S.String;
 
 /** List of locations where this node type is available. */
@@ -7584,8 +7498,7 @@ export type FttAndRaidLevel =
   | "Ftt1Raid5"
   | "Ftt2Raid1"
   | "Ftt2Raid6"
-  | "Ftt3Raid1"
-  | (string & {});
+  | "Ftt3Raid1";
 export const FttAndRaidLevel = /*@__PURE__*/ S.String;
 
 /** FTT and Raid level values. */
@@ -7772,22 +7685,23 @@ export const AvsAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Failures to tolerate and RAID levels in a common property. */
 export type AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList =
-  ReadonlyArray<FttAndRaidLevel>;
+  ReadonlyArray<FttAndRaidLevel | (string & {})>;
 export const AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList =
   /*@__PURE__*/ S.Array(
     FttAndRaidLevel,
   ) as any as S.Schema<AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList>;
 
 /** AVS node types. */
-export type AvsAssessmentPropertiesInputNodeTypesList =
-  ReadonlyArray<AzureAvsNodeType>;
+export type AvsAssessmentPropertiesInputNodeTypesList = ReadonlyArray<
+  AzureAvsNodeType | (string & {})
+>;
 export const AvsAssessmentPropertiesInputNodeTypesList = /*@__PURE__*/ S.Array(
   AzureAvsNodeType,
 ) as any as S.Schema<AvsAssessmentPropertiesInputNodeTypesList>;
 
 /** List of AVS external storage types. */
 export type AvsAssessmentPropertiesInputExternalStorageTypesList =
-  ReadonlyArray<ExternalStorageType>;
+  ReadonlyArray<ExternalStorageType | (string & {})>;
 export const AvsAssessmentPropertiesInputExternalStorageTypesList =
   /*@__PURE__*/ S.Array(
     ExternalStorageType,
@@ -7797,32 +7711,31 @@ export const AvsAssessmentPropertiesInputExternalStorageTypesList =
 export type AvsAssessmentScenario =
   | "Unknown"
   | "NewAvsSddc"
-  | "AvsSddcExpansion"
-  | (string & {});
+  | "AvsSddcExpansion";
 export const AvsAssessmentScenario = /*@__PURE__*/ S.String;
 
 /** Properties of the AVS assessment. */
 export interface AvsAssessmentPropertiesInput {
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Failures to tolerate and RAID level in a common property. */
-  failuresToTolerateAndRaidLevel?: FttAndRaidLevel;
+  failuresToTolerateAndRaidLevel?: FttAndRaidLevel | (string & {});
   /** List of Failures to tolerate and RAID levels in a common property. */
   failuresToTolerateAndRaidLevelList?: AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList;
   /** VCPU over subscription. */
   vcpuOversubscription?: number;
   /** AVS node type. */
-  nodeType?: AzureAvsNodeType;
+  nodeType?: AzureAvsNodeType | (string & {});
   /** AVS node types. */
   nodeTypes?: AvsAssessmentPropertiesInputNodeTypesList;
   /** List of AVS external storage types. */
   externalStorageTypes?: AvsAssessmentPropertiesInputExternalStorageTypesList;
   /** AVS Assessment Scenario. */
-  avsAssessmentScenario?: AvsAssessmentScenario;
+  avsAssessmentScenario?: AvsAssessmentScenario | (string & {});
   /** Is VCF license applied */
   isVcfByolEnabled?: boolean;
   /** Reserved instance. */
-  reservedInstance?: AzureReservedInstance;
+  reservedInstance?: AzureReservedInstance | (string & {});
   /** Percentage of CPU capacity reserved for processing additional workloads. */
   cpuHeadroom?: number;
   /** Memory overcommit. */
@@ -7832,17 +7745,17 @@ export interface AvsAssessmentPropertiesInput {
   /** Is Stretch Cluster Enabled. */
   isStretchClusterEnabled?: boolean;
   /** Azure Location or Azure region where to which the machines will be migrated. */
-  azureLocation?: AzureLocation;
+  azureLocation?: AzureLocation | (string & {});
   /** Azure Offer code according to which cost estimation is done. */
-  azureOfferCode?: AzureOfferCode;
+  azureOfferCode?: AzureOfferCode | (string & {});
   /** Currency in which prices should be reported. */
-  currency?: AzureCurrency;
+  currency?: AzureCurrency | (string & {});
   /** Percentage of buffer that user wants on performance metrics when recommending Azure sizes. */
   scalingFactor?: number;
   /** Percentile of the utilization data values to be considered while assessing machines. */
-  percentile?: Percentile;
+  percentile?: Percentile | (string & {});
   /** Time Range for which the historic utilization data should be considered for assessment. */
-  timeRange?: TimeRange;
+  timeRange?: TimeRange | (string & {});
   /** Gets or sets the start time to consider performance data for assessment. */
   perfDataStartTime?: string;
   /** Gets or sets the end time to consider performance data for assessment. */
@@ -7850,7 +7763,7 @@ export interface AvsAssessmentPropertiesInput {
   /** Custom discount percentage. */
   discountPercentage?: number;
   /** Assessment sizing criterion. */
-  sizingCriterion?: AssessmentSizingCriterion;
+  sizingCriterion?: AssessmentSizingCriterion | (string & {});
 }
 export const AvsAssessmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7967,8 +7880,7 @@ export type AzureAvsSuitabilityExplanation =
   | "NotApplicable"
   | "UnsupportedLocationForSelectedNode"
   | "InternalErrorInRecommendation"
-  | "UnsupportedLocationForSelectedExternalStorageTypes"
-  | (string & {});
+  | "UnsupportedLocationForSelectedExternalStorageTypes";
 export const AzureAvsSuitabilityExplanation = /*@__PURE__*/ S.String;
 
 /** Details on the Estimated nodes for AVS Assessment. */
@@ -8053,11 +7965,7 @@ export const AvsAssessmentPropertiesAvsEstimatedExternalStoragesList =
   ) as any as S.Schema<AvsAssessmentPropertiesAvsEstimatedExternalStoragesList>;
 
 /** Different network skus. */
-export type NetworkSkuType =
-  | "Unknown"
-  | "None"
-  | "ExpressRouteUltra"
-  | (string & {});
+export type NetworkSkuType = "Unknown" | "None" | "ExpressRouteUltra";
 export const NetworkSkuType = /*@__PURE__*/ S.String;
 
 /** Details on the Estimated Network Costs for AVS Assessment. */
@@ -9325,8 +9233,9 @@ export const EventCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventCollection>;
 
 /** List of assessment types supported on this group. */
-export type GroupPropertiesInputSupportedAssessmentTypesList =
-  ReadonlyArray<AssessmentType>;
+export type GroupPropertiesInputSupportedAssessmentTypesList = ReadonlyArray<
+  AssessmentType | (string & {})
+>;
 export const GroupPropertiesInputSupportedAssessmentTypesList =
   /*@__PURE__*/ S.Array(
     AssessmentType,
@@ -9335,11 +9244,11 @@ export const GroupPropertiesInputSupportedAssessmentTypesList =
 /** Properties of group resource. */
 export interface GroupPropertiesInput {
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** List of assessment types supported on this group. */
   supportedAssessmentTypes?: GroupPropertiesInputSupportedAssessmentTypesList;
   /** The type of group. */
-  groupType?: GroupType;
+  groupType?: GroupType | (string & {});
 }
 export const GroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9389,8 +9298,7 @@ export type GroupStatus =
   | "Updated"
   | "Running"
   | "Completed"
-  | "Invalid"
-  | (string & {});
+  | "Invalid";
 export const GroupStatus = /*@__PURE__*/ S.String;
 
 /** List of References to Assessments created on this group. */
@@ -9628,7 +9536,7 @@ export const GroupListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupListResult",
 }) as any as S.Schema<GroupListResult>;
 
-export type GroupUpdateOperation = "Add" | "Remove" | (string & {});
+export type GroupUpdateOperation = "Add" | "Remove";
 export const GroupUpdateOperation = /*@__PURE__*/ S.String;
 
 /** List of machine names that are part of this group. */
@@ -9640,7 +9548,7 @@ export const GroupBodyPropertiesMachinesList = /*@__PURE__*/ S.Array(
 /** Body properties of group update. */
 export interface GroupBodyProperties {
   /** Whether to add or remove the machines. */
-  operationType?: GroupUpdateOperation;
+  operationType?: GroupUpdateOperation | (string & {});
   /** List of machine names that are part of this group. */
   machines?: GroupBodyPropertiesMachinesList;
 }
@@ -9729,8 +9637,7 @@ export type ProvisioningState_2 =
   | "Completed"
   | "Failed"
   | "Succeeded"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningState_2 = /*@__PURE__*/ S.String;
 
 /** The properties of Hyperv Cluster */
@@ -9742,7 +9649,7 @@ export interface HypervClusterPropertiesInput {
   /** Gets or sets list of hosts (FQDN) currently being tracked by the cluster. */
   hostFqdnList?: HypervClusterPropertiesInputHostFqdnListList;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const HypervClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9806,8 +9713,7 @@ export const HealthErrorDetailsMessageParametersMap = /*@__PURE__*/ S.Record(
 export type HealthErrorDetailsSource =
   | "RefreshFabricLayout"
   | "RefreshFabricLayoutGuest"
-  | "RefreshFabricLayoutDependencyMap"
-  | (string & {});
+  | "RefreshFabricLayoutDependencyMap";
 export const HealthErrorDetailsSource = /*@__PURE__*/ S.String;
 
 /** Gets discovery scope for which error is encountered. */
@@ -9816,8 +9722,7 @@ export type HealthErrorDetailsDiscoveryScope =
   | "DependencyMap"
   | "StaticData"
   | "SQLServerConnectionInfo"
-  | "DiscoveryTargets"
-  | (string & {});
+  | "DiscoveryTargets";
 export const HealthErrorDetailsDiscoveryScope = /*@__PURE__*/ S.String;
 
 /** Error contract returned when some exception occurs in Rest API. */
@@ -10152,7 +10057,7 @@ export const CollectorAgentPropertiesBase = /*@__PURE__*/ S.suspend(() =>
 /** Collector properties class. */
 export interface CollectorPropertiesBaseWithAgentInput {
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Gets or sets the collector agent properties. */
   agentProperties?: CollectorAgentPropertiesBase;
   /** Gets the discovery site id. */
@@ -10709,7 +10614,7 @@ export interface HypervHostPropertiesInput {
   /** Gets or sets the run as account ID of the Hyper-V host. */
   runAsAccountId?: string;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const HypervHostPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11324,7 +11229,7 @@ export const HypervMachinesControllerGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HypervMachinesControllerGetRequest>;
 
 /** Value indicating whether the VM is highly available */
-export type HighAvailability = "Unknown" | "No" | "Yes" | (string & {});
+export type HighAvailability = "Unknown" | "No" | "Yes";
 export const HighAvailability = /*@__PURE__*/ S.String;
 
 /** Second level object returned as part of Machine REST resource. */
@@ -11454,8 +11359,7 @@ export type ApplicationDiscoveryScopeStatus =
   | "DiscoveryInProgress"
   | "Disabled"
   | "DiscoveryPartiallySucceded"
-  | "DiscoverySucceeded"
-  | (string & {});
+  | "DiscoverySucceeded";
 export const ApplicationDiscoveryScopeStatus = /*@__PURE__*/ S.String;
 
 /** Gets errors for discovery scope. */
@@ -11492,8 +11396,7 @@ export type DependencyMapDiscoveryScopeStatus =
   | "DiscoveryInProgress"
   | "Disabled"
   | "DiscoveryPartiallySucceded"
-  | "DiscoverySucceeded"
-  | (string & {});
+  | "DiscoverySucceeded";
 export const DependencyMapDiscoveryScopeStatus = /*@__PURE__*/ S.String;
 
 /** Gets errors for discovery scope. */
@@ -11531,8 +11434,7 @@ export type StaticDiscoveryScopeStatus =
   | "DiscoveryInProgress"
   | "Disabled"
   | "DiscoveryPartiallySucceded"
-  | "DiscoverySucceeded"
-  | (string & {});
+  | "DiscoverySucceeded";
 export const StaticDiscoveryScopeStatus = /*@__PURE__*/ S.String;
 
 /** Gets errors for discovery scope. */
@@ -11567,8 +11469,7 @@ export type SqlMetadataDiscoveryPipe =
   | "PowerShell"
   | "SSH"
   | "CIM"
-  | "Other"
-  | (string & {});
+  | "Other";
 export const SqlMetadataDiscoveryPipe = /*@__PURE__*/ S.String;
 
 /** SQLDiscoveryScope Status */
@@ -11580,8 +11481,7 @@ export type SQLDiscoveryScopeStatus =
   | "DiscoveryInProgress"
   | "Disabled"
   | "DiscoveryPartiallySucceded"
-  | "DiscoverySucceeded"
-  | (string & {});
+  | "DiscoverySucceeded";
 export const SQLDiscoveryScopeStatus = /*@__PURE__*/ S.String;
 
 /** Contains data related SQL discovery. */
@@ -11616,8 +11516,7 @@ export type DiscoveryScopeStatus =
   | "DiscoveryInProgress"
   | "Disabled"
   | "DiscoveryPartiallySucceded"
-  | "DiscoverySucceeded"
-  | (string & {});
+  | "DiscoverySucceeded";
 export const DiscoveryScopeStatus = /*@__PURE__*/ S.String;
 
 /** Data related to a machine's WebApps discovery. */
@@ -11648,8 +11547,7 @@ export type ShallowDiscoveryStatus =
   | "DiscoveryInProgress"
   | "Disabled"
   | "DiscoveryPartiallySucceded"
-  | "DiscoverySucceeded"
-  | (string & {});
+  | "DiscoverySucceeded";
 export const ShallowDiscoveryStatus = /*@__PURE__*/ S.String;
 
 /** Data related to a machine's Oracle discovery. */
@@ -11994,15 +11892,11 @@ export const AppsAndRoles = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppsAndRoles" }) as any as S.Schema<AppsAndRoles>;
 
 /** esu Status */
-export type EsuStatus = "Unknown" | "Active" | "InActive" | (string & {});
+export type EsuStatus = "Unknown" | "Active" | "InActive";
 export const EsuStatus = /*@__PURE__*/ S.String;
 
 /** support status */
-export type SupportStatus =
-  | "Unknown"
-  | "Mainstream"
-  | "Extended"
-  | (string & {});
+export type SupportStatus = "Unknown" | "Mainstream" | "Extended";
 export const SupportStatus = /*@__PURE__*/ S.String;
 
 /** esu year */
@@ -12011,8 +11905,7 @@ export type EsuYear =
   | "FirstYear"
   | "SecondYear"
   | "ThirdYear"
-  | "UpgradeYear"
-  | (string & {});
+  | "UpgradeYear";
 export const EsuYear = /*@__PURE__*/ S.String;
 
 /** product support status. */
@@ -12812,8 +12705,7 @@ export type DiscoveryScopes =
   | "AppsAndRoles"
   | "DependencyMap"
   | "StaticData"
-  | "SQLServerConnectionInfo"
-  | (string & {});
+  | "SQLServerConnectionInfo";
 export const DiscoveryScopes = /*@__PURE__*/ S.String;
 
 /** The site error summary model. */
@@ -12966,7 +12858,7 @@ export interface SitePropertiesInput {
   /** Gets or sets the ARM ID of migration hub solution for SDS. */
   discoverySolutionId?: string;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const SitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13177,14 +13069,13 @@ export type ExportMachineErrorsProperties =
   | "AppsAndRoles"
   | "DependencyMap"
   | "StaticData"
-  | "SQLServerConnectionInfo"
-  | (string & {});
+  | "SQLServerConnectionInfo";
 export const ExportMachineErrorsProperties = /*@__PURE__*/ S.String;
 
 /** The Properties class for export machine errors request body. */
 export interface RequestExportMachineErrorsProperties {
   /** Gets or sets the discovery scope. */
-  discoveryScope?: ExportMachineErrorsProperties;
+  discoveryScope?: ExportMachineErrorsProperties | (string & {});
 }
 export const RequestExportMachineErrorsProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -13330,8 +13221,7 @@ export const SiteHealthSummaryAffectedResourcesList = /*@__PURE__*/ S.Array(
 export type SiteHealthSummaryFabricLayoutUpdateSourcesItem =
   | "RefreshFabricLayout"
   | "RefreshFabricLayoutGuest"
-  | "RefreshFabricLayoutDependencyMap"
-  | (string & {});
+  | "RefreshFabricLayoutDependencyMap";
 export const SiteHealthSummaryFabricLayoutUpdateSourcesItem =
   /*@__PURE__*/ S.String;
 
@@ -13459,7 +13349,7 @@ export interface HypervSiteUpdatePropertiesInput {
   /** Gets or sets the ARM ID of migration hub solution for SDS. */
   discoverySolutionId?: string;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const HypervSiteUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13645,7 +13535,7 @@ export const HypervSitesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HypervSitesListBySubscriptionRequest>;
 
 export type HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault =
-  "default" | (string & {});
+  "default";
 export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault =
   /*@__PURE__*/ S.String;
 
@@ -13659,7 +13549,9 @@ export interface HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryR
   /** HypervMachine name */
   machineName: string;
   /** Default value. */
-  default: HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault;
+  default:
+    | HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault
+    | (string & {});
 }
 export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -14602,7 +14494,7 @@ export const IisWebServersListResult = /*@__PURE__*/ S.suspend(() =>
 /** Collector properties class. */
 export interface CollectorPropertiesBaseInput {
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Gets the discovery site id. */
   discoverySiteId?: string;
 }
@@ -14944,8 +14836,7 @@ export type DeleteImportedMachinesJobPropertiesJobState =
   | "Verified"
   | "VerifiedWithErrors"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const DeleteImportedMachinesJobPropertiesJobState =
   /*@__PURE__*/ S.String;
 
@@ -15142,8 +15033,7 @@ export type JobResult =
   | "CompletedWithErrors"
   | "Failed"
   | "WaitingForBlobUpload"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const JobResult = /*@__PURE__*/ S.String;
 
 /** errors list */
@@ -15846,7 +15736,7 @@ export interface ImportSitePropertiesInput {
   /** Gets or sets the ARM ID of migration hub solution for SDS. */
   discoverySolutionId?: string;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const ImportSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16268,7 +16158,7 @@ export interface ImportSiteUpdateProperties {
   /** Gets or sets the ARM ID of migration hub solution for SDS. */
   discoverySolutionId?: string;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const ImportSiteUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17658,8 +17548,7 @@ export const MasterSitesControllerCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type MasterSitePropertiesPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const MasterSitePropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Gets or sets the sites that are a part of Master Site. The key should contain the Site ARM name. */
@@ -17671,7 +17560,7 @@ export const MasterSitePropertiesInputSitesList = /*@__PURE__*/ S.Array(
 /** Class for site properties. */
 export interface MasterSitePropertiesInput {
   /** Gets or sets the state of public network access. */
-  publicNetworkAccess?: MasterSitePropertiesPublicNetworkAccess;
+  publicNetworkAccess?: MasterSitePropertiesPublicNetworkAccess | (string & {});
   /** Gets or sets a value indicating whether multiple sites per site type are allowed. */
   allowMultipleSites?: boolean;
   /** Gets or sets the sites that are a part of Master Site. The key should contain the Site ARM name. */
@@ -17764,8 +17653,7 @@ export type PrivateLinkServiceConnectionStateStatus_2 =
   | "Approved"
   | "Pending"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const PrivateLinkServiceConnectionStateStatus_2 = /*@__PURE__*/ S.String;
 
 /** Service Connection State */
@@ -18158,7 +18046,7 @@ export const MasterSiteUpdatePropertiesSitesList = /*@__PURE__*/ S.Array(
 /** The updatable properties of the MasterSite. */
 export interface MasterSiteUpdateProperties {
   /** Gets or sets the state of public network access. */
-  publicNetworkAccess?: MasterSitePropertiesPublicNetworkAccess;
+  publicNetworkAccess?: MasterSitePropertiesPublicNetworkAccess | (string & {});
   /** Gets or sets a value indicating whether multiple sites per site type are allowed. */
   allowMultipleSites?: boolean;
   /** Gets or sets the sites that are a part of Master Site. The key should contain the Site ARM name. */
@@ -18360,8 +18248,7 @@ export type MigrateProjectPropertiesRegisteredToolsItem =
   | "CloudSphere"
   | "Modernization"
   | "ServerMigration_DataReplication"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const MigrateProjectPropertiesRegisteredToolsItem =
   /*@__PURE__*/ S.String;
 
@@ -18378,8 +18265,7 @@ export type ProjectSummaryRefreshSummaryState =
   | "Started"
   | "InProgress"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProjectSummaryRefreshSummaryState = /*@__PURE__*/ S.String;
 
 /** Extended summary. */
@@ -18425,8 +18311,7 @@ export type MigrateProjectPropertiesRefreshSummaryState =
   | "Started"
   | "InProgress"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const MigrateProjectPropertiesRefreshSummaryState =
   /*@__PURE__*/ S.String;
 
@@ -18434,8 +18319,7 @@ export const MigrateProjectPropertiesRefreshSummaryState =
 export type MigrateProjectPropertiesPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const MigrateProjectPropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -18445,8 +18329,7 @@ export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const PrivateEndpointConnectionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -18465,8 +18348,7 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Approved"
   | "Pending"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 
 /** Private endpoint connection state. */
@@ -18516,8 +18398,7 @@ export type PrivateEndpointConnectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateEndpointConnectionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -18526,8 +18407,7 @@ export type PrivateEndpointConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateEndpointConnectionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -18642,8 +18522,7 @@ export type MigrateProjectSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MigrateProjectSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -18651,8 +18530,7 @@ export type MigrateProjectSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MigrateProjectSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -18737,8 +18615,7 @@ export type MigrateProjectsControllerGetToolRegistrationDetailsRequestTool =
   | "CloudSphere"
   | "Modernization"
   | "ServerMigration_DataReplication"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const MigrateProjectsControllerGetToolRegistrationDetailsRequestTool =
   /*@__PURE__*/ S.String;
 
@@ -18760,7 +18637,9 @@ export interface MigrateProjectsControllerGetToolRegistrationDetailsRequest {
   resourceGroupName: string;
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
-  tool?: MigrateProjectsControllerGetToolRegistrationDetailsRequestTool;
+  tool?:
+    | MigrateProjectsControllerGetToolRegistrationDetailsRequestTool
+    | (string & {});
   applicationDetails?: AadAppDetails;
 }
 export const MigrateProjectsControllerGetToolRegistrationDetailsRequest =
@@ -18802,8 +18681,7 @@ export const RegistrationDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 export type MigrateProjectPropertiesInputPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const MigrateProjectPropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -18814,7 +18692,9 @@ export interface MigrateProjectPropertiesInput {
   /** Utility storage account id. */
   utilityStorageAccountId?: string;
   /** Gets or sets the state of public network access. */
-  publicNetworkAccess?: MigrateProjectPropertiesInputPublicNetworkAccess;
+  publicNetworkAccess?:
+    | MigrateProjectPropertiesInputPublicNetworkAccess
+    | (string & {});
 }
 export const MigrateProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18899,8 +18779,7 @@ export const MigrateProjectsControllerPutMigrateProjectRequest =
 /** Gets or sets the goal for which summary needs to be refreshed. */
 export type MigrateProjectsControllerRefreshSummaryRequestGoal =
   | "Servers"
-  | "Databases"
-  | (string & {});
+  | "Databases";
 export const MigrateProjectsControllerRefreshSummaryRequestGoal =
   /*@__PURE__*/ S.String;
 
@@ -18912,7 +18791,7 @@ export interface MigrateProjectsControllerRefreshSummaryRequest {
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
   /** Gets or sets the goal for which summary needs to be refreshed. */
-  goal?: MigrateProjectsControllerRefreshSummaryRequestGoal;
+  goal?: MigrateProjectsControllerRefreshSummaryRequestGoal | (string & {});
 }
 export const MigrateProjectsControllerRefreshSummaryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -18972,8 +18851,7 @@ export type MigrateProjectsControllerRegisterToolRequestTool =
   | "CloudSphere"
   | "Modernization"
   | "ServerMigration_DataReplication"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const MigrateProjectsControllerRegisterToolRequestTool =
   /*@__PURE__*/ S.String;
 
@@ -18985,7 +18863,7 @@ export interface MigrateProjectsControllerRegisterToolRequest {
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
   /** Gets or sets the tool to be registered. */
-  tool?: MigrateProjectsControllerRegisterToolRequestTool;
+  tool?: MigrateProjectsControllerRegisterToolRequestTool | (string & {});
 }
 export const MigrateProjectsControllerRegisterToolRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -19056,11 +18934,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -19292,8 +19170,7 @@ export type PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionRe
     | "BadGateway"
     | "ServiceUnavailable"
     | "GatewayTimeout"
-    | "HttpVersionNotSupported"
-    | (string & {});
+    | "HttpVersionNotSupported";
 export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionResponseBody =
   /*@__PURE__*/ S.String;
 
@@ -19990,8 +19867,7 @@ export type PrivateEndpointConnectionProxyPropertiesStatus =
   | "Succeeded"
   | "Failed"
   | "Cancelled"
-  | "Running"
-  | (string & {});
+  | "Running";
 export const PrivateEndpointConnectionProxyPropertiesStatus =
   /*@__PURE__*/ S.String;
 
@@ -20015,8 +19891,7 @@ export type PrivateEndpointConnectionProxySystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateEndpointConnectionProxySystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -20025,8 +19900,7 @@ export type PrivateEndpointConnectionProxySystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateEndpointConnectionProxySystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -22205,7 +22079,7 @@ export interface ServerUpdatePropertiesInput {
   /** Gets or sets tags on the Server machine. */
   tags?: ServerUpdatePropertiesInputTagsMap;
   /** Provisioning state of the server resource. */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const ServerUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23047,7 +22921,7 @@ export const ServerSitesControllerUpdatePropertiesResponse =
   }) as any as S.Schema<ServerSitesControllerUpdatePropertiesResponse>;
 
 export type ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault =
-  "default" | (string & {});
+  "default";
 export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault =
   /*@__PURE__*/ S.String;
 
@@ -23061,7 +22935,9 @@ export interface ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryR
   /** A server machine name */
   machineName: string;
   /** Default value. */
-  default: ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault;
+  default:
+    | ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault
+    | (string & {});
 }
 export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23722,7 +23598,7 @@ export interface VmwareSiteUpdatePropertiesInput {
   /** Gets or sets the ARM ID of migration hub solution for SDS. */
   discoverySolutionId?: string;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const VmwareSiteUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23870,16 +23746,14 @@ export type SolutionPropertiesInputTool =
   | "CloudSphere"
   | "Modernization"
   | "ServerMigration_DataReplication"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const SolutionPropertiesInputTool = /*@__PURE__*/ S.String;
 
 /** Gets or sets the purpose of the solution. */
 export type SolutionPropertiesInputPurpose =
   | "Discovery"
   | "Assessment"
-  | "Migration"
-  | (string & {});
+  | "Migration";
 export const SolutionPropertiesInputPurpose = /*@__PURE__*/ S.String;
 
 /** Gets or sets the goal of the solution. */
@@ -23888,15 +23762,11 @@ export type SolutionPropertiesInputGoal =
   | "Databases"
   | "DesktopVirtualization"
   | "WebApplications"
-  | "DataCenter"
-  | (string & {});
+  | "DataCenter";
 export const SolutionPropertiesInputGoal = /*@__PURE__*/ S.String;
 
 /** Gets or sets the current status of the solution. */
-export type SolutionPropertiesInputStatus =
-  | "Inactive"
-  | "Active"
-  | (string & {});
+export type SolutionPropertiesInputStatus = "Inactive" | "Active";
 export const SolutionPropertiesInputStatus = /*@__PURE__*/ S.String;
 
 /** Gets or sets the cleanup state of the solution. */
@@ -23905,8 +23775,7 @@ export type SolutionPropertiesInputCleanupState =
   | "Started"
   | "InProgress"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SolutionPropertiesInputCleanupState = /*@__PURE__*/ S.String;
 
 /** The solution summary class. */
@@ -23948,15 +23817,15 @@ export const SolutionDetails = /*@__PURE__*/ S.suspend(() =>
 /** Class for solution properties. */
 export interface SolutionPropertiesInput {
   /** Gets or sets the tool being used in the solution. */
-  tool?: SolutionPropertiesInputTool;
+  tool?: SolutionPropertiesInputTool | (string & {});
   /** Gets or sets the purpose of the solution. */
-  purpose?: SolutionPropertiesInputPurpose;
+  purpose?: SolutionPropertiesInputPurpose | (string & {});
   /** Gets or sets the goal of the solution. */
-  goal?: SolutionPropertiesInputGoal;
+  goal?: SolutionPropertiesInputGoal | (string & {});
   /** Gets or sets the current status of the solution. */
-  status?: SolutionPropertiesInputStatus;
+  status?: SolutionPropertiesInputStatus | (string & {});
   /** Gets or sets the cleanup state of the solution. */
-  cleanupState?: SolutionPropertiesInputCleanupState;
+  cleanupState?: SolutionPropertiesInputCleanupState | (string & {});
   /** Gets or sets the summary of the solution. */
   summary?: SolutionSummaryInput;
   /** Gets or sets the details of the solution. */
@@ -24036,16 +23905,14 @@ export type SolutionPropertiesTool =
   | "CloudSphere"
   | "Modernization"
   | "ServerMigration_DataReplication"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const SolutionPropertiesTool = /*@__PURE__*/ S.String;
 
 /** Gets or sets the purpose of the solution. */
 export type SolutionPropertiesPurpose =
   | "Discovery"
   | "Assessment"
-  | "Migration"
-  | (string & {});
+  | "Migration";
 export const SolutionPropertiesPurpose = /*@__PURE__*/ S.String;
 
 /** Gets or sets the goal of the solution. */
@@ -24054,12 +23921,11 @@ export type SolutionPropertiesGoal =
   | "Databases"
   | "DesktopVirtualization"
   | "WebApplications"
-  | "DataCenter"
-  | (string & {});
+  | "DataCenter";
 export const SolutionPropertiesGoal = /*@__PURE__*/ S.String;
 
 /** Gets or sets the current status of the solution. */
-export type SolutionPropertiesStatus = "Inactive" | "Active" | (string & {});
+export type SolutionPropertiesStatus = "Inactive" | "Active";
 export const SolutionPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** Gets or sets the cleanup state of the solution. */
@@ -24068,8 +23934,7 @@ export type SolutionPropertiesCleanupState =
   | "Started"
   | "InProgress"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SolutionPropertiesCleanupState = /*@__PURE__*/ S.String;
 
 /** The solution summary class. */
@@ -24671,10 +24536,10 @@ export const SqlAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlAssessmentOptionsListResult",
 }) as any as S.Schema<SqlAssessmentOptionsListResult>;
 
-export type OsLicense = "Unknown" | "Yes" | "No" | (string & {});
+export type OsLicense = "Unknown" | "Yes" | "No";
 export const OsLicense = /*@__PURE__*/ S.String;
 
-export type EnvironmentType = "Production" | "Test" | (string & {});
+export type EnvironmentType = "Production" | "Test";
 export const EnvironmentType = /*@__PURE__*/ S.String;
 
 /** Entity Uptime. */
@@ -24695,16 +24560,14 @@ export type OptimizationLogic =
   | "MinimizeCost"
   | "ModernizeToPaaS"
   | "ModernizeToAzureSqlMi"
-  | "ModernizeToAzureSqlDb"
-  | (string & {});
+  | "ModernizeToAzureSqlDb";
 export const OptimizationLogic = /*@__PURE__*/ S.String;
 
 export type AzureSqlInstanceType =
   | "Unknown"
   | "Automatic"
   | "SingleInstance"
-  | "InstancePools"
-  | (string & {});
+  | "InstancePools";
 export const AzureSqlInstanceType = /*@__PURE__*/ S.String;
 
 /** SQL managed instance assessment settings. */
@@ -24725,11 +24588,10 @@ export type AzureSqlDataBaseType =
   | "Unknown"
   | "Automatic"
   | "SingleDatabase"
-  | "ElasticPool"
-  | (string & {});
+  | "ElasticPool";
 export const AzureSqlDataBaseType = /*@__PURE__*/ S.String;
 
-export type AzureSqlPurchaseModel = "Unknown" | "VCore" | "DTU" | (string & {});
+export type AzureSqlPurchaseModel = "Unknown" | "VCore" | "DTU";
 export const AzureSqlPurchaseModel = /*@__PURE__*/ S.String;
 
 /** SQL database assessment settings. */
@@ -24772,39 +24634,37 @@ export const SqlVmSettings = /*@__PURE__*/ S.suspend(() =>
 export type MultiSubnetIntent =
   | "None"
   | "HighAvailability"
-  | "DisasterRecovery"
-  | (string & {});
+  | "DisasterRecovery";
 export const MultiSubnetIntent = /*@__PURE__*/ S.String;
 
 export type AsyncCommitModeIntent =
   | "None"
   | "HighAvailability"
-  | "DisasterRecovery"
-  | (string & {});
+  | "DisasterRecovery";
 export const AsyncCommitModeIntent = /*@__PURE__*/ S.String;
 
-export type AzureSecurityOfferingType = "NO" | "MDC" | (string & {});
+export type AzureSecurityOfferingType = "NO" | "MDC";
 export const AzureSecurityOfferingType = /*@__PURE__*/ S.String;
 
-export type SqlServerLicense = "Unknown" | "Yes" | "No" | (string & {});
+export type SqlServerLicense = "Unknown" | "Yes" | "No";
 export const SqlServerLicense = /*@__PURE__*/ S.String;
 
 /** SQL assessment properties class. */
 export interface SqlAssessmentV2PropertiesInput {
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Gets or sets user configurable setting to display the azure hybrid use benefit. */
-  osLicense?: OsLicense;
+  osLicense?: OsLicense | (string & {});
   /** Gets or sets user configurable setting to display the environment type. */
-  environmentType?: EnvironmentType;
+  environmentType?: EnvironmentType | (string & {});
   /** Gets or sets the duration for which the entity (SQL, VMs) are up in the on-premises environment. */
   entityUptime?: EntityUptime;
   /** Gets or sets SQL optimization logic. */
-  optimizationLogic?: OptimizationLogic;
+  optimizationLogic?: OptimizationLogic | (string & {});
   /** Gets or sets azure reserved instance for VM. */
-  reservedInstanceForVm?: AzureReservedInstance;
+  reservedInstanceForVm?: AzureReservedInstance | (string & {});
   /** Gets or sets Azure Offer Code for VM. */
-  azureOfferCodeForVm?: AzureOfferCode;
+  azureOfferCodeForVm?: AzureOfferCode | (string & {});
   /** Gets or sets the Enterprise agreement subscription id. */
   eaSubscriptionId?: string;
   /** Gets or sets user configurable SQL managed instance settings. */
@@ -24814,37 +24674,37 @@ export interface SqlAssessmentV2PropertiesInput {
   /** Gets or sets user configurable SQL VM settings. */
   azureSqlVmSettings?: SqlVmSettings;
   /** Gets or sets user preference indicating intent of multi-subnet configuration. */
-  multiSubnetIntent?: MultiSubnetIntent;
+  multiSubnetIntent?: MultiSubnetIntent | (string & {});
   /** Gets or sets user preference indicating intent of async commit mode. */
-  asyncCommitModeIntent?: AsyncCommitModeIntent;
+  asyncCommitModeIntent?: AsyncCommitModeIntent | (string & {});
   /** Gets or sets a value indicating whether internet access is available. */
   isInternetAccessAvailable?: boolean;
   /** Gets or sets the Azure Location or Azure region where to which the machines will be migrated. */
-  disasterRecoveryLocation?: AzureLocation;
+  disasterRecoveryLocation?: AzureLocation | (string & {});
   /** Gets or sets a value indicating whether HADR assessments needs to be created. */
   enableHadrAssessment?: boolean;
   /** Gets or sets a value indicating azure security offering type. */
-  azureSecurityOfferingType?: AzureSecurityOfferingType;
+  azureSecurityOfferingType?: AzureSecurityOfferingType | (string & {});
   /** Reserved instance. */
-  reservedInstance?: AzureReservedInstance;
+  reservedInstance?: AzureReservedInstance | (string & {});
   /** SQL server license. */
-  sqlServerLicense?: SqlServerLicense;
+  sqlServerLicense?: SqlServerLicense | (string & {});
   /** Gets the group type for the assessment. */
-  groupType?: GroupType;
+  groupType?: GroupType | (string & {});
   /** Assessment type of the assessment. */
-  assessmentType?: AssessmentType;
+  assessmentType?: AssessmentType | (string & {});
   /** Azure Location or Azure region where to which the machines will be migrated. */
   azureLocation?: string;
   /** Azure Offer Code. */
-  azureOfferCode?: AzureOfferCode;
+  azureOfferCode?: AzureOfferCode | (string & {});
   /** Currency in which prices should be reported. */
-  currency?: AzureCurrency;
+  currency?: AzureCurrency | (string & {});
   /** Percentage of buffer that user wants on performance metrics when recommending Azure sizes. */
   scalingFactor?: number;
   /** Percentile of the utilization data values to be considered while assessing machines. */
-  percentile?: Percentile;
+  percentile?: Percentile | (string & {});
   /** Time Range for which the historic utilization data should be considered for assessment. */
-  timeRange?: TimeRange;
+  timeRange?: TimeRange | (string & {});
   /** Gets or sets the start time to consider performance data for assessment. */
   perfDataStartTime?: string;
   /** Gets or sets the end time to consider performance data for assessment. */
@@ -24852,7 +24712,7 @@ export interface SqlAssessmentV2PropertiesInput {
   /** Custom discount percentage. */
   discountPercentage?: number;
   /** Assessment sizing criterion. */
-  sizingCriterion?: AssessmentSizingCriterion;
+  sizingCriterion?: AssessmentSizingCriterion | (string & {});
   /** Confidence Rating in Percentage. */
   confidenceRatingInPercentage?: number;
 }
@@ -25628,8 +25488,7 @@ export const SqlAvailabilityGroupsControllerGetRequest =
 export type SqlAvailabilityGroupPropertiesAvailabilityGroupType =
   | "Unknown"
   | "Traditional"
-  | "Distributed"
-  | (string & {});
+  | "Distributed";
 export const SqlAvailabilityGroupPropertiesAvailabilityGroupType =
   /*@__PURE__*/ S.String;
 
@@ -25637,8 +25496,7 @@ export const SqlAvailabilityGroupPropertiesAvailabilityGroupType =
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaType =
   | "Unknown"
   | "DatabaseReplica"
-  | "AvailabilityGroupReplica"
-  | (string & {});
+  | "AvailabilityGroupReplica";
 export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaType =
   /*@__PURE__*/ S.String;
 
@@ -25646,32 +25504,31 @@ export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaType =
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaState =
   | "Unknown"
   | "Primary"
-  | "Secondary"
-  | (string & {});
+  | "Secondary";
 export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaState =
   /*@__PURE__*/ S.String;
 
 /** ReplicaSyncStatus */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSyncStatus =
-  "Unknown" | "Synchronized" | "Unsynchronized" | (string & {});
+  "Unknown" | "Synchronized" | "Unsynchronized";
 export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSyncStatus =
   /*@__PURE__*/ S.String;
 
 /** ReplicaCommitMode */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaCommitMode =
-  "Unknown" | "Synchronous" | "Asynchronous" | (string & {});
+  "Unknown" | "Synchronous" | "Asynchronous";
 export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaCommitMode =
   /*@__PURE__*/ S.String;
 
 /** ReplicaReadMode */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaReadMode =
-  "Unknown" | "None" | "ReadOnly" | "ReadWrite" | (string & {});
+  "Unknown" | "None" | "ReadOnly" | "ReadWrite";
 export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaReadMode =
   /*@__PURE__*/ S.String;
 
 /** ReplicaSeedMode */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSeedMode =
-  "Unknown" | "Manual" | "Automatic" | (string & {});
+  "Unknown" | "Manual" | "Automatic";
 export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSeedMode =
   /*@__PURE__*/ S.String;
 
@@ -25779,8 +25636,7 @@ export const SqlAvailabilityGroupPropertiesAvailabilityReplicasList =
 export type SqlAvailabilityReplicaOverviewReplicaState =
   | "Unknown"
   | "Primary"
-  | "Secondary"
-  | (string & {});
+  | "Secondary";
 export const SqlAvailabilityReplicaOverviewReplicaState =
   /*@__PURE__*/ S.String;
 
@@ -26228,8 +26084,7 @@ export type FileType =
   | "Log"
   | "Filestream"
   | "NotSupported"
-  | "Fulltext"
-  | (string & {});
+  | "Fulltext";
 export const FileType = /*@__PURE__*/ S.String;
 
 /** File Metadata web model. */
@@ -26274,8 +26129,7 @@ export const ErrorsMessageParametersMap = /*@__PURE__*/ S.Record(
 export type MicrosoftAzureFDSWebRoleHealthErrorDetailsSource =
   | "RefreshFabricLayout"
   | "RefreshFabricLayoutGuest"
-  | "RefreshFabricLayoutDependencyMap"
-  | (string & {});
+  | "RefreshFabricLayoutDependencyMap";
 export const MicrosoftAzureFDSWebRoleHealthErrorDetailsSource =
   /*@__PURE__*/ S.String;
 
@@ -27078,8 +26932,7 @@ export type SqlMachineOverviewFciRole =
   | "Unknown"
   | "NotApplicable"
   | "ActiveNode"
-  | "PossibleOwnerNode"
-  | (string & {});
+  | "PossibleOwnerNode";
 export const SqlMachineOverviewFciRole = /*@__PURE__*/ S.String;
 
 /** Gets or sets SQL machine overview data. */
@@ -27118,8 +26971,7 @@ export type FCIInstanceState =
   | "Failed"
   | "Pending"
   | "OnlinePending"
-  | "OfflinePending"
-  | (string & {});
+  | "OfflinePending";
 export const FCIInstanceState = /*@__PURE__*/ S.String;
 
 /** The class representing the properties for an FCI instance. */
@@ -27172,8 +27024,7 @@ export type SqlServerStatus =
   | "Running"
   | "StartPending"
   | "Stopped"
-  | "StopPending"
-  | (string & {});
+  | "StopPending";
 export const SqlServerStatus = /*@__PURE__*/ S.String;
 
 /** Class for SQL Server properties. */
@@ -27458,9 +27309,9 @@ export interface SqlServerV2UpdateProperties {
   /** Gets or sets the timestamp marking last updated on the machine. */
   updatedTimestamp?: string;
   /** Gets or sets the powered on status. */
-  status?: SqlServerStatus;
+  status?: SqlServerStatus | (string & {});
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const SqlServerV2UpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -27583,10 +27434,7 @@ export const SqlSitePropertiesInputSiteAppliancePropertiesCollectionList =
   ) as any as S.Schema<SqlSitePropertiesInputSiteAppliancePropertiesCollectionList>;
 
 /** SqlSiteProperties DiscoveryScenario */
-export type SqlSitePropertiesDiscoveryScenario =
-  | "Migrate"
-  | "DR"
-  | (string & {});
+export type SqlSitePropertiesDiscoveryScenario = "Migrate" | "DR";
 export const SqlSitePropertiesDiscoveryScenario = /*@__PURE__*/ S.String;
 
 /** Class for SQL site properties. */
@@ -27594,7 +27442,7 @@ export interface SqlSitePropertiesInput {
   /** Gets or sets the appliance details used by service to communicate to the appliance. */
   siteAppliancePropertiesCollection?: SqlSitePropertiesInputSiteAppliancePropertiesCollectionList;
   /** Gets or sets the discovery scenario. */
-  discoveryScenario?: SqlSitePropertiesDiscoveryScenario;
+  discoveryScenario?: SqlSitePropertiesDiscoveryScenario | (string & {});
 }
 export const SqlSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -28075,7 +27923,7 @@ export interface SqlSiteUpdatePropertiesInput {
   /** Gets or sets the appliance details used by service to communicate to the appliance. */
   siteAppliancePropertiesCollection?: SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList;
   /** Gets or sets the discovery scenario. */
-  discoveryScenario?: SqlSitePropertiesDiscoveryScenario;
+  discoveryScenario?: SqlSitePropertiesDiscoveryScenario | (string & {});
 }
 export const SqlSiteUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -28857,7 +28705,7 @@ export interface VcenterPropertiesInput {
   /** Gets or sets the friendly name of the vCenter. */
   friendlyName?: string;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const VcenterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -29613,8 +29461,7 @@ export type VMwareDatastoreType =
   | "VFFS"
   | "VMFS"
   | "VSAN"
-  | "VVOL"
-  | (string & {});
+  | "VVOL";
 export const VMwareDatastoreType = /*@__PURE__*/ S.String;
 
 /** Second level object returned as part of VMware host REST resource. */
@@ -30028,7 +29875,7 @@ export const VmwarePropertiesControllerUpdateTagsResponse =
   }) as any as S.Schema<VmwarePropertiesControllerUpdateTagsResponse>;
 
 export type VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault =
-  "default" | (string & {});
+  "default";
 export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault =
   /*@__PURE__*/ S.String;
 
@@ -30042,7 +29889,9 @@ export interface VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryR
   /** Machine name */
   machineName: string;
   /** Default value. */
-  default: VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault;
+  default:
+    | VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault
+    | (string & {});
 }
 export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -30208,8 +30057,7 @@ export type AzureWebAppTier =
   | "Free"
   | "Premium_V2"
   | "Premium_V3"
-  | "Isolated"
-  | (string & {});
+  | "Isolated";
 export const AzureWebAppTier = /*@__PURE__*/ S.String;
 
 /** Gets or sets the target location. */
@@ -30482,7 +30330,7 @@ export const DiscoveredEntityLightSummary = /*@__PURE__*/ S.suspend(() =>
 /** Web app assessment properties class. */
 export interface WebAppAssessmentV2PropertiesInput {
   /** Gets or sets user configurable setting to display the environment type. */
-  environmentType?: EnvironmentType;
+  environmentType?: EnvironmentType | (string & {});
   /** Gets or sets the duration for which the entity (Web app, VMs) are up in the on-premises environment. */
   entityUptime?: EntityUptime;
   /** Gets or sets the Enterprise agreement subscription id. */
@@ -30494,25 +30342,25 @@ export interface WebAppAssessmentV2PropertiesInput {
   /** Gets or sets user configurable discovered entity settings. */
   discoveredEntityLightSummary?: DiscoveredEntityLightSummary;
   /** Gets or sets a value indicating azure security offering type. */
-  azureSecurityOfferingType?: AzureSecurityOfferingType;
+  azureSecurityOfferingType?: AzureSecurityOfferingType | (string & {});
   /** Reserved instance. */
-  reservedInstance?: AzureReservedInstance;
+  reservedInstance?: AzureReservedInstance | (string & {});
   /** Gets the group type for the assessment. */
-  groupType?: GroupType;
+  groupType?: GroupType | (string & {});
   /** Assessment type of the assessment. */
-  assessmentType?: AssessmentType;
+  assessmentType?: AssessmentType | (string & {});
   /** Azure Location or Azure region where to which the machines will be migrated. */
   azureLocation?: string;
   /** Azure Offer Code. */
-  azureOfferCode?: AzureOfferCode;
+  azureOfferCode?: AzureOfferCode | (string & {});
   /** Currency in which prices should be reported. */
-  currency?: AzureCurrency;
+  currency?: AzureCurrency | (string & {});
   /** Percentage of buffer that user wants on performance metrics when recommending Azure sizes. */
   scalingFactor?: number;
   /** Percentile of the utilization data values to be considered while assessing machines. */
-  percentile?: Percentile;
+  percentile?: Percentile | (string & {});
   /** Time Range for which the historic utilization data should be considered for assessment. */
-  timeRange?: TimeRange;
+  timeRange?: TimeRange | (string & {});
   /** Gets or sets the start time to consider performance data for assessment. */
   perfDataStartTime?: string;
   /** Gets or sets the end time to consider performance data for assessment. */
@@ -30520,7 +30368,7 @@ export interface WebAppAssessmentV2PropertiesInput {
   /** Custom discount percentage. */
   discountPercentage?: number;
   /** Assessment sizing criterion. */
-  sizingCriterion?: AssessmentSizingCriterion;
+  sizingCriterion?: AssessmentSizingCriterion | (string & {});
   /** Confidence Rating in Percentage. */
   confidenceRatingInPercentage?: number;
 }
@@ -30595,8 +30443,7 @@ export type ProvisioningState2 =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState2 = /*@__PURE__*/ S.String;
 
 /** Web app assessment properties class. */
@@ -32378,8 +32225,7 @@ export const WebAppServicePlanV2OperationsGetRequest = /*@__PURE__*/ S.suspend(
 export type AzureWebAppTargetType =
   | "Unknown"
   | "AzureAppService"
-  | "AzureAppServiceContainer"
-  | (string & {});
+  | "AzureAppServiceContainer";
 export const AzureWebAppTargetType = /*@__PURE__*/ S.String;
 
 /** Cost components. */
@@ -32568,10 +32414,7 @@ export const WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList =
   ) as any as S.Schema<WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList>;
 
 /** Discovery Scenario */
-export type WebAppSitePropertiesDiscoveryScenario =
-  | "Migrate"
-  | "DR"
-  | (string & {});
+export type WebAppSitePropertiesDiscoveryScenario = "Migrate" | "DR";
 export const WebAppSitePropertiesDiscoveryScenario = /*@__PURE__*/ S.String;
 
 /** Class for Web app site properties. */
@@ -32579,7 +32422,7 @@ export interface WebAppSitePropertiesInput {
   /** Gets or sets the appliance details used by service to communicate to the appliance. */
   siteAppliancePropertiesCollection?: WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList;
   /** Gets or sets the discovery scenario. */
-  discoveryScenario?: WebAppSitePropertiesDiscoveryScenario;
+  discoveryScenario?: WebAppSitePropertiesDiscoveryScenario | (string & {});
 }
 export const WebAppSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33005,7 +32848,7 @@ export interface WebAppSiteUpdatePropertiesInput {
   /** Gets or sets the appliance details used by service to communicate to the appliance. */
   siteAppliancePropertiesCollection?: WebAppSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList;
   /** Gets or sets the discovery scenario. */
-  discoveryScenario?: WebAppSitePropertiesDiscoveryScenario;
+  discoveryScenario?: WebAppSitePropertiesDiscoveryScenario | (string & {});
 }
 export const WebAppSiteUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

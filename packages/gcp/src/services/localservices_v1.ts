@@ -13,27 +13,27 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface SearchAccountReportsRequest {
@@ -57,40 +57,29 @@ export interface SearchAccountReportsRequest {
   pageSize?: number;
 }
 export const SearchAccountReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "startDate.year": S.optional(S.Number.pipe(T.Query())),
-    "startDate.month": S.optional(S.Number.pipe(T.Query())),
-    "endDate.day": S.optional(S.Number.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
-    "startDate.day": S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    "endDate.year": S.optional(S.Number.pipe(T.Query())),
-    "endDate.month": S.optional(S.Number.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/accountReports:search",
-      baseUrl: "https://localservices.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SearchAccountReportsRequest",
-}) as any as S.Schema<SearchAccountReportsRequest>;
+S.Struct({
+  "startDate.year": S.optional(S.Number.pipe(T.Query())),
+  "startDate.month": S.optional(S.Number.pipe(T.Query())),
+  "endDate.day": S.optional(S.Number.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+  "startDate.day": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "endDate.year": S.optional(S.Number.pipe(T.Query())),
+  "endDate.month": S.optional(S.Number.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/accountReports:search","baseUrl":"https://localservices.googleapis.com/"})),
+).annotate({ identifier: "SearchAccountReportsRequest" }) as any as S.Schema<SearchAccountReportsRequest>;
 
 /** Conatiner for aggregator specific information if lead is for an aggregator GLS account. */
 export interface GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
   /** Provider id (listed in aggregator system) which maps to a account id in GLS system. */
   aggregatorProviderId?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1AggregatorInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      aggregatorProviderId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
-  }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1AggregatorInfo>;
+export const GoogleAdsHomeservicesLocalservicesV1AggregatorInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "aggregatorProviderId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo" }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1AggregatorInfo>;
 
 /** An Account Report of a GLS account identified by their account id containing aggregate data gathered from a particular date range. Next ID: 18 */
 export interface GoogleAdsHomeservicesLocalservicesV1AccountReport {
@@ -129,39 +118,30 @@ export interface GoogleAdsHomeservicesLocalservicesV1AccountReport {
   /** Number of impressions that customers have had in the past 2 days. */
   impressionsLastTwoDays?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1AccountReport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      currencyCode: S.optional(S.String),
-      previousPeriodTotalCost: S.optional(S.Number),
-      aggregatorInfo: S.optional(
-        GoogleAdsHomeservicesLocalservicesV1AggregatorInfo,
-      ),
-      previousPeriodPhoneCalls: S.optional(S.String),
-      currentPeriodPhoneCalls: S.optional(S.String),
-      phoneLeadResponsiveness: S.optional(S.Number),
-      currentPeriodChargedLeads: S.optional(S.String),
-      currentPeriodConnectedPhoneCalls: S.optional(S.String),
-      accountId: S.optional(S.String),
-      previousPeriodConnectedPhoneCalls: S.optional(S.String),
-      currentPeriodTotalCost: S.optional(S.Number),
-      averageWeeklyBudget: S.optional(S.Number),
-      totalReview: S.optional(S.Number),
-      previousPeriodChargedLeads: S.optional(S.String),
-      businessName: S.optional(S.String),
-      averageFiveStarRating: S.optional(S.Number),
-      impressionsLastTwoDays: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsHomeservicesLocalservicesV1AccountReport",
-  }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
+export const GoogleAdsHomeservicesLocalservicesV1AccountReport = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "currencyCode": S.optional(S.String),
+  "previousPeriodTotalCost": S.optional(S.Number),
+  "aggregatorInfo": S.optional(GoogleAdsHomeservicesLocalservicesV1AggregatorInfo),
+  "previousPeriodPhoneCalls": S.optional(S.String),
+  "currentPeriodPhoneCalls": S.optional(S.String),
+  "phoneLeadResponsiveness": S.optional(S.Number),
+  "currentPeriodChargedLeads": S.optional(S.String),
+  "currentPeriodConnectedPhoneCalls": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "previousPeriodConnectedPhoneCalls": S.optional(S.String),
+  "currentPeriodTotalCost": S.optional(S.Number),
+  "averageWeeklyBudget": S.optional(S.Number),
+  "totalReview": S.optional(S.Number),
+  "previousPeriodChargedLeads": S.optional(S.String),
+  "businessName": S.optional(S.String),
+  "averageFiveStarRating": S.optional(S.Number),
+  "impressionsLastTwoDays": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleAdsHomeservicesLocalservicesV1AccountReport" }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
 
-export type GoogleAdsHomeservicesLocalservicesV1AccountReportList =
-  ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
-export const GoogleAdsHomeservicesLocalservicesV1AccountReportList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsHomeservicesLocalservicesV1AccountReport,
-  ) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1AccountReportList>;
+export type GoogleAdsHomeservicesLocalservicesV1AccountReportList = ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
+export const GoogleAdsHomeservicesLocalservicesV1AccountReportList = /*@__PURE__*/ S.Array(GoogleAdsHomeservicesLocalservicesV1AccountReport) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1AccountReportList>;
 
 /** A page of the response received from the SearchAccountReports method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request page. */
 export interface GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
@@ -170,18 +150,12 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsRespons
   /** List of account reports which maps 1:1 to a particular linked GLS account. */
   accountReports?: GoogleAdsHomeservicesLocalservicesV1AccountReportList;
 }
-export const GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      accountReports: S.optional(
-        GoogleAdsHomeservicesLocalservicesV1AccountReportList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse",
-  }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse>;
+export const GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "accountReports": S.optional(GoogleAdsHomeservicesLocalservicesV1AccountReportList),
+}),
+).annotate({ identifier: "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse" }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse>;
 
 export interface SearchDetailedLeadReportsRequest {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -204,26 +178,18 @@ export interface SearchDetailedLeadReportsRequest {
   pageSize?: number;
 }
 export const SearchDetailedLeadReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "startDate.year": S.optional(S.Number.pipe(T.Query())),
-    "startDate.month": S.optional(S.Number.pipe(T.Query())),
-    "endDate.day": S.optional(S.Number.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
-    "startDate.day": S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    "endDate.year": S.optional(S.Number.pipe(T.Query())),
-    "endDate.month": S.optional(S.Number.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/detailedLeadReports:search",
-      baseUrl: "https://localservices.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SearchDetailedLeadReportsRequest",
-}) as any as S.Schema<SearchDetailedLeadReportsRequest>;
+S.Struct({
+  "startDate.year": S.optional(S.Number.pipe(T.Query())),
+  "startDate.month": S.optional(S.Number.pipe(T.Query())),
+  "endDate.day": S.optional(S.Number.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+  "startDate.day": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "endDate.year": S.optional(S.Number.pipe(T.Query())),
+  "endDate.month": S.optional(S.Number.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/detailedLeadReports:search","baseUrl":"https://localservices.googleapis.com/"})),
+).annotate({ identifier: "SearchDetailedLeadReportsRequest" }) as any as S.Schema<SearchDetailedLeadReportsRequest>;
 
 /** Container for message lead specific information. */
 export interface GoogleAdsHomeservicesLocalservicesV1MessageLead {
@@ -236,26 +202,17 @@ export interface GoogleAdsHomeservicesLocalservicesV1MessageLead {
   /** Consumer phone number associated with the message lead. */
   consumerPhoneNumber?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1MessageLead =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerName: S.optional(S.String),
-      postalCode: S.optional(S.String),
-      jobType: S.optional(S.String),
-      consumerPhoneNumber: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsHomeservicesLocalservicesV1MessageLead",
-  }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1MessageLead>;
+export const GoogleAdsHomeservicesLocalservicesV1MessageLead = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "customerName": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+  "jobType": S.optional(S.String),
+  "consumerPhoneNumber": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleAdsHomeservicesLocalservicesV1MessageLead" }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1MessageLead>;
 
-export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum =
-    | "LEAD_TYPE_UNSPECIFIED"
-    | "MESSAGE"
-    | "PHONE_CALL"
-    | "BOOKING"
-    | (string & {});
-export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum = "LEAD_TYPE_UNSPECIFIED" | "MESSAGE" | "PHONE_CALL" | "BOOKING";
+export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface GoogleTypeTimeZone {
@@ -265,18 +222,14 @@ export interface GoogleTypeTimeZone {
   version?: string;
 }
 export const GoogleTypeTimeZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleTypeTimeZone",
-}) as any as S.Schema<GoogleTypeTimeZone>;
+S.Struct({
+  "id": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleTypeTimeZone" }) as any as S.Schema<GoogleTypeTimeZone>;
 
-export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum =
-  "CHARGE_STATUS_UNSPECIFIED" | "CHARGED" | "NOT_CHARGED" | (string & {});
-export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum = "CHARGE_STATUS_UNSPECIFIED" | "CHARGED" | "NOT_CHARGED";
+export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum = /*@__PURE__*/ S.String;
 
 /** Container for booking lead specific information. */
 export interface GoogleAdsHomeservicesLocalservicesV1BookingLead {
@@ -291,18 +244,15 @@ export interface GoogleAdsHomeservicesLocalservicesV1BookingLead {
   /** Timestamp of when service is provided by advertiser. */
   bookingAppointmentTimestamp?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1BookingLead =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumerEmail: S.optional(S.String),
-      consumerPhoneNumber: S.optional(S.String),
-      customerName: S.optional(S.String),
-      jobType: S.optional(S.String),
-      bookingAppointmentTimestamp: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsHomeservicesLocalservicesV1BookingLead",
-  }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1BookingLead>;
+export const GoogleAdsHomeservicesLocalservicesV1BookingLead = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "consumerEmail": S.optional(S.String),
+  "consumerPhoneNumber": S.optional(S.String),
+  "customerName": S.optional(S.String),
+  "jobType": S.optional(S.String),
+  "bookingAppointmentTimestamp": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleAdsHomeservicesLocalservicesV1BookingLead" }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1BookingLead>;
 
 /** Container for phone lead specific information. */
 export interface GoogleAdsHomeservicesLocalservicesV1PhoneLead {
@@ -313,16 +263,13 @@ export interface GoogleAdsHomeservicesLocalservicesV1PhoneLead {
   /** Duration of the charged phone call in seconds. */
   chargedConnectedCallDurationSeconds?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1PhoneLead =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumerPhoneNumber: S.optional(S.String),
-      chargedCallTimestamp: S.optional(S.String),
-      chargedConnectedCallDurationSeconds: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsHomeservicesLocalservicesV1PhoneLead",
-  }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1PhoneLead>;
+export const GoogleAdsHomeservicesLocalservicesV1PhoneLead = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "consumerPhoneNumber": S.optional(S.String),
+  "chargedCallTimestamp": S.optional(S.String),
+  "chargedConnectedCallDurationSeconds": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleAdsHomeservicesLocalservicesV1PhoneLead" }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1PhoneLead>;
 
 /** A Detailed Lead Report of a lead identified by their lead id and contains consumer, account, monetization, and lead data. */
 export interface GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
@@ -361,43 +308,30 @@ export interface GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   /** More information associated to only phone leads. */
   phoneLead?: GoogleAdsHomeservicesLocalservicesV1PhoneLead;
 }
-export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      messageLead: S.optional(GoogleAdsHomeservicesLocalservicesV1MessageLead),
-      accountId: S.optional(S.String),
-      leadType: S.optional(
-        GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum,
-      ),
-      leadId: S.optional(S.String),
-      currencyCode: S.optional(S.String),
-      timezone: S.optional(GoogleTypeTimeZone),
-      leadCategory: S.optional(S.String),
-      leadCreationTimestamp: S.optional(S.String),
-      geo: S.optional(S.String),
-      googleAdsLeadId: S.optional(S.String),
-      aggregatorInfo: S.optional(
-        GoogleAdsHomeservicesLocalservicesV1AggregatorInfo,
-      ),
-      businessName: S.optional(S.String),
-      chargeStatus: S.optional(
-        GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum,
-      ),
-      leadPrice: S.optional(S.Number),
-      bookingLead: S.optional(GoogleAdsHomeservicesLocalservicesV1BookingLead),
-      disputeStatus: S.optional(S.String),
-      phoneLead: S.optional(GoogleAdsHomeservicesLocalservicesV1PhoneLead),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport",
-  }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
+export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "messageLead": S.optional(GoogleAdsHomeservicesLocalservicesV1MessageLead),
+  "accountId": S.optional(S.String),
+  "leadType": S.optional(GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum),
+  "leadId": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+  "timezone": S.optional(GoogleTypeTimeZone),
+  "leadCategory": S.optional(S.String),
+  "leadCreationTimestamp": S.optional(S.String),
+  "geo": S.optional(S.String),
+  "googleAdsLeadId": S.optional(S.String),
+  "aggregatorInfo": S.optional(GoogleAdsHomeservicesLocalservicesV1AggregatorInfo),
+  "businessName": S.optional(S.String),
+  "chargeStatus": S.optional(GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum),
+  "leadPrice": S.optional(S.Number),
+  "bookingLead": S.optional(GoogleAdsHomeservicesLocalservicesV1BookingLead),
+  "disputeStatus": S.optional(S.String),
+  "phoneLead": S.optional(GoogleAdsHomeservicesLocalservicesV1PhoneLead),
+}),
+).annotate({ identifier: "GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport" }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
 
-export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList =
-  ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
-export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport,
-  ) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList>;
+export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList = ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
+export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList = /*@__PURE__*/ S.Array(GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList>;
 
 /** A page of the response received from the SearchDetailedLeadReports method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request page. */
 export interface GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
@@ -406,18 +340,12 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsRe
   /** Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. */
   nextPageToken?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detailedLeadReports: S.optional(
-        GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse",
-  }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse>;
+export const GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "detailedLeadReports": S.optional(GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse" }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse>;
 
 export type SearchAccountReportsError = NotFound | Forbidden | GcpOpError;
 /** Get account reports containing aggregate account data of all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts. */
@@ -432,10 +360,7 @@ export const searchAccountReports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type SearchDetailedLeadReportsError = NotFound | Forbidden | GcpOpError;
@@ -451,8 +376,6 @@ export const searchDetailedLeadReports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
+

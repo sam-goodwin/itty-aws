@@ -120,8 +120,7 @@ export type AnalyticsRuleType =
   | "popular_queries"
   | "nohits_queries"
   | "counter"
-  | "log"
-  | (string & {});
+  | "log";
 export const AnalyticsRuleType = /*@__PURE__*/ S.String;
 
 export type AnalyticsRuleCreateParamsMetaFieldsList = ReadonlyArray<string>;
@@ -154,7 +153,7 @@ export const AnalyticsRuleCreateParams = /*@__PURE__*/ S.suspend(() =>
 
 export interface AnalyticsRuleCreate {
   name: string;
-  type: AnalyticsRuleType;
+  type: AnalyticsRuleType | (string & {});
   collection: string;
   event_type: string;
   rule_tag?: string;
@@ -1979,20 +1978,14 @@ export const HealthStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthStatus" }) as any as S.Schema<HealthStatus>;
 
-export type IndexAction =
-  | "create"
-  | "update"
-  | "upsert"
-  | "emplace"
-  | (string & {});
+export type IndexAction = "create" | "update" | "upsert" | "emplace";
 export const IndexAction = /*@__PURE__*/ S.String;
 
 export type DirtyValues =
   | "coerce_or_reject"
   | "coerce_or_drop"
   | "drop"
-  | "reject"
-  | (string & {});
+  | "reject";
 export const DirtyValues = /*@__PURE__*/ S.String;
 
 export interface ImportDocumentsRequestImportDocumentsParameters {
@@ -2001,8 +1994,8 @@ export interface ImportDocumentsRequestImportDocumentsParameters {
   return_id?: boolean;
   remote_embedding_batch_size?: number;
   return_doc?: boolean;
-  action?: IndexAction;
-  dirty_values?: DirtyValues;
+  action?: IndexAction | (string & {});
+  dirty_values?: DirtyValues | (string & {});
 }
 export const ImportDocumentsRequestImportDocumentsParameters =
   /*@__PURE__*/ S.suspend(() =>
@@ -2074,9 +2067,9 @@ export interface IndexDocumentRequest {
   /** The name of the collection to add the document to */
   collectionName: string;
   /** Additional action to perform */
-  action?: IndexAction;
+  action?: IndexAction | (string & {});
   /** Dealing with Dirty Data */
-  dirty_values?: DirtyValues;
+  dirty_values?: DirtyValues | (string & {});
 }
 export const IndexDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2129,11 +2122,7 @@ export const ListStemmingDictionariesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStemmingDictionariesResponse>;
 
 /** Dictates the direction in which the words in the query must be dropped when the original words in the query do not appear in any document. Values: right_to_left (default), left_to_right, both_sides:3 A note on both_sides:3 - for queries up to 3 tokens (words) in length, this mode will drop tokens from both sides and exhaustively rank all matching results. If query length is greater than 3 words, Typesense will just fallback to default behavior of right_to_left */
-export type DropTokensMode =
-  | "right_to_left"
-  | "left_to_right"
-  | "both_sides:3"
-  | (string & {});
+export type DropTokensMode = "right_to_left" | "left_to_right" | "both_sides:3";
 export const DropTokensMode = /*@__PURE__*/ S.String;
 
 /** Parameters for the multi search API. */
@@ -2196,7 +2185,7 @@ export interface MultiSearchParameters {
   snippet_threshold?: number;
   /** If the number of results found for a specific query is less than this number, Typesense will attempt to drop the tokens in the query until enough results are found. Tokens that have the least individual hits are dropped first. Set to 0 to disable. Default: 10 */
   drop_tokens_threshold?: number;
-  drop_tokens_mode?: DropTokensMode;
+  drop_tokens_mode?: DropTokensMode | (string & {});
   /** If the number of results found for a specific query is less than this number, Typesense will attempt to look for tokens with more typos until enough results are found. Default: 100 */
   typo_tokens_threshold?: number;
   /** Set this parameter to false to disable typos on alphanumerical query tokens. Default: true. */
@@ -3695,7 +3684,7 @@ export const CurationRuleTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CurationRuleTagsList>;
 
 /** Indicates whether the match on the query term should be `exact` or `contains`. If we want to match all queries that contained the word `apple`, we will use the `contains` match instead. */
-export type CurationRuleMatch = "exact" | "contains" | (string & {});
+export type CurationRuleMatch = "exact" | "contains";
 export const CurationRuleMatch = /*@__PURE__*/ S.String;
 
 export interface CurationRule {
@@ -4806,7 +4795,7 @@ export interface UpdateDocumentRequest {
   /** The Document ID */
   documentId: string;
   /** Dealing with Dirty Data */
-  dirty_values?: DirtyValues;
+  dirty_values?: DirtyValues | (string & {});
 }
 export const UpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

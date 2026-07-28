@@ -77,24 +77,15 @@ export const TasksRunsAppendLogCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsAppendLogCreateRequest>;
 
 /** * `claude` - claude * `codex` - codex */
-export type RuntimeAdapterEnum = "claude" | "codex" | (string & {});
+export type RuntimeAdapterEnum = "claude" | "codex";
 export const RuntimeAdapterEnum = /*@__PURE__*/ S.String;
 
 /** * `anthropic` - anthropic * `openai` - openai */
-export type TaskRunDetailDTOProviderEnum =
-  | "anthropic"
-  | "openai"
-  | (string & {});
+export type TaskRunDetailDTOProviderEnum = "anthropic" | "openai";
 export const TaskRunDetailDTOProviderEnum = /*@__PURE__*/ S.String;
 
 /** * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-export type ReasoningEffortEnum =
-  | "low"
-  | "medium"
-  | "high"
-  | "xhigh"
-  | "max"
-  | (string & {});
+export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max";
 export const ReasoningEffortEnum = /*@__PURE__*/ S.String;
 
 export type TaskRunDetailDTOOutputMap = { [key: string]: unknown | undefined };
@@ -110,16 +101,11 @@ export const TaskRunDetailDTOStateMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TaskRunDetailDTOStateMap>;
 
 /** * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
-export type SkillSourceEnum =
-  | "user"
-  | "repo"
-  | "marketplace"
-  | "codex"
-  | (string & {});
+export type SkillSourceEnum = "user" | "repo" | "marketplace" | "codex";
 export const SkillSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `zip` - zip */
-export type BundleFormatEnum = "zip" | (string & {});
+export type BundleFormatEnum = "zip";
 export const BundleFormatEnum = /*@__PURE__*/ S.String;
 
 export interface TaskRunArtifactMetadata {
@@ -249,25 +235,24 @@ export type TaskRunArtifactTypeEnum =
   | "artifact"
   | "tree_snapshot"
   | "user_attachment"
-  | "skill_bundle"
-  | (string & {});
+  | "skill_bundle";
 export const TaskRunArtifactTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `utf-8` - utf-8 * `base64` - base64 */
-export type ContentEncodingEnum = "utf-8" | "base64" | (string & {});
+export type ContentEncodingEnum = "utf-8" | "base64";
 export const ContentEncodingEnum = /*@__PURE__*/ S.String;
 
 export interface TaskRunArtifactUpload {
   /** File name to associate with the artifact */
   name?: string;
   /** Classification for the artifact * `plan` - plan * `context` - context * `reference` - reference * `output` - output * `artifact` - artifact * `tree_snapshot` - tree_snapshot * `user_attachment` - user_attachment * `skill_bundle` - skill_bundle */
-  type?: TaskRunArtifactTypeEnum;
+  type?: TaskRunArtifactTypeEnum | (string & {});
   /** Optional source label for the artifact, such as agent_output or user_attachment */
   source?: string;
   /** Artifact contents encoded according to content_encoding */
   content?: string;
   /** Encoding used for content. Use base64 for binary files and utf-8 for text payloads. * `utf-8` - utf-8 * `base64` - base64 */
-  content_encoding?: ContentEncodingEnum;
+  content_encoding?: ContentEncodingEnum | (string & {});
   /** Optional MIME type for the artifact */
   content_type?: string;
   /** Optional structured metadata for special artifact types, such as skill bundles. */
@@ -379,7 +364,7 @@ export interface TaskRunArtifactFinalizeUpload {
   /** File name associated with the artifact */
   name?: string;
   /** Classification for the artifact * `plan` - plan * `context` - context * `reference` - reference * `output` - output * `artifact` - artifact * `tree_snapshot` - tree_snapshot * `user_attachment` - user_attachment * `skill_bundle` - skill_bundle */
-  type?: TaskRunArtifactTypeEnum;
+  type?: TaskRunArtifactTypeEnum | (string & {});
   /** Optional source label for the artifact, such as agent_output or user_attachment */
   source?: string;
   /** S3 object key returned by the prepare step */
@@ -466,7 +451,7 @@ export interface TaskRunArtifactPrepareUpload {
   /** File name to associate with the artifact */
   name?: string;
   /** Classification for the artifact * `plan` - plan * `context` - context * `reference` - reference * `output` - output * `artifact` - artifact * `tree_snapshot` - tree_snapshot * `user_attachment` - user_attachment * `skill_bundle` - skill_bundle */
-  type?: TaskRunArtifactTypeEnum;
+  type?: TaskRunArtifactTypeEnum | (string & {});
   /** Optional source label for the artifact, such as agent_output or user_attachment */
   source?: string;
   /** Expected upload size in bytes (max 31457280 bytes) */
@@ -675,7 +660,7 @@ export const TasksRunsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsCancelCreateRequest>;
 
 /** * `2.0` - 2.0 */
-export type JsonrpcEnum = "2.0" | (string & {});
+export type JsonrpcEnum = "2.0";
 export const JsonrpcEnum = /*@__PURE__*/ S.String;
 
 /** * `user_message` - user_message * `cancel` - cancel * `close` - close * `permission_response` - permission_response * `set_config_option` - set_config_option * `mcp_response` - mcp_response */
@@ -685,8 +670,7 @@ export type MethodEnum =
   | "close"
   | "permission_response"
   | "set_config_option"
-  | "mcp_response"
-  | (string & {});
+  | "mcp_response";
 export const MethodEnum = /*@__PURE__*/ S.String;
 
 /** Parameters for the command */
@@ -704,9 +688,9 @@ export interface TasksRunsCommandCreateRequest {
   task_id: string;
   id: string;
   /** JSON-RPC version, must be '2.0' * `2.0` - 2.0 */
-  jsonrpc?: JsonrpcEnum;
+  jsonrpc?: JsonrpcEnum | (string & {});
   /** Command method to execute on the agent server * `user_message` - user_message * `cancel` - cancel * `close` - close * `permission_response` - permission_response * `set_config_option` - set_config_option * `mcp_response` - mcp_response */
-  method?: MethodEnum;
+  method?: MethodEnum | (string & {});
   /** Parameters for the command */
   params?: TasksRunsCommandCreateRequestParamsMap;
 }
@@ -806,7 +790,7 @@ export const ConnectionTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionTokenResponse>;
 
 /** * `http` - http * `sse` - sse */
-export type ImportedMcpServerTypeEnum = "http" | "sse" | (string & {});
+export type ImportedMcpServerTypeEnum = "http" | "sse";
 export const ImportedMcpServerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ImportedMcpServerHeader {
@@ -830,7 +814,7 @@ export const ImportedMcpServerHeadersList = /*@__PURE__*/ S.Array(
 
 /** One client-imported MCP server, in the agent server's --mcpServers entry shape. */
 export interface ImportedMcpServer {
-  type: ImportedMcpServerTypeEnum;
+  type: ImportedMcpServerTypeEnum | (string & {});
   name: string;
   url: string;
   headers?: ImportedMcpServerHeadersList;
@@ -875,26 +859,20 @@ export const TasksRunsCreateRequestRelayedMcpServersList =
   ) as any as S.Schema<TasksRunsCreateRequestRelayedMcpServersList>;
 
 /** * `local` - local * `cloud` - cloud */
-export type TaskRunBootstrapCreateRequestEnvironmentEnum =
-  | "local"
-  | "cloud"
-  | (string & {});
+export type TaskRunBootstrapCreateRequestEnvironmentEnum = "local" | "cloud";
 export const TaskRunBootstrapCreateRequestEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
 /** * `interactive` - interactive * `background` - background */
-export type TaskExecutionModeEnum =
-  | "interactive"
-  | "background"
-  | (string & {});
+export type TaskExecutionModeEnum = "interactive" | "background";
 export const TaskExecutionModeEnum = /*@__PURE__*/ S.String;
 
 /** * `user` - user * `bot` - bot */
-export type PrAuthorshipModeEnum = "user" | "bot" | (string & {});
+export type PrAuthorshipModeEnum = "user" | "bot";
 export const PrAuthorshipModeEnum = /*@__PURE__*/ S.String;
 
 /** * `manual` - manual * `signal_report` - signal_report */
-export type RunSourceEnum = "manual" | "signal_report" | (string & {});
+export type RunSourceEnum = "manual" | "signal_report";
 export const RunSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
@@ -905,8 +883,7 @@ export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   | "bypassPermissions"
   | "auto"
   | "read-only"
-  | "full-access"
-  | (string & {});
+  | "full-access";
 export const TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -919,9 +896,9 @@ export interface TasksRunsCreateRequest {
   /** Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
   relayed_mcp_servers?: TasksRunsCreateRequestRelayedMcpServersList | null;
   /** Execution environment for the new run. Use 'cloud' for remote sandbox runs and 'local' for desktop sessions. * `local` - local * `cloud` - cloud */
-  environment?: TaskRunBootstrapCreateRequestEnvironmentEnum;
+  environment?: TaskRunBootstrapCreateRequestEnvironmentEnum | (string & {});
   /** Execution mode: 'interactive' for user-connected runs, 'background' for autonomous runs * `interactive` - interactive * `background` - background */
-  mode?: TaskExecutionModeEnum;
+  mode?: TaskExecutionModeEnum | (string & {});
   /** Git branch to checkout in the sandbox */
   branch?: string | null;
   /** Optional sandbox environment to apply for this cloud run. */
@@ -929,23 +906,25 @@ export interface TasksRunsCreateRequest {
   /** Optional custom base image for this cloud run's sandbox (Modal VM runtime only); takes precedence over the environment's image. */
   custom_image_id?: string;
   /** Whether pull requests for this run should be authored by the user or the bot. * `user` - user * `bot` - bot */
-  pr_authorship_mode?: PrAuthorshipModeEnum;
+  pr_authorship_mode?: PrAuthorshipModeEnum | (string & {});
   /** When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask. */
   auto_publish?: boolean | null;
   /** High-level source that triggered this run, used to distinguish manual and signal-based cloud runs. * `manual` - manual * `signal_report` - signal_report */
-  run_source?: RunSourceEnum;
+  run_source?: RunSourceEnum | (string & {});
   /** Optional signal report identifier when this run was started from Inbox. */
   signal_report_id?: string;
   /** Agent runtime adapter to launch for this run. Use 'claude' for the Claude runtime or 'codex' for the Codex runtime. * `claude` - claude * `codex` - codex */
-  runtime_adapter?: RuntimeAdapterEnum;
+  runtime_adapter?: RuntimeAdapterEnum | (string & {});
   /** LLM model identifier to run in the selected runtime. */
   model?: string;
   /** Reasoning effort to request for models that expose an effort control. * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-  reasoning_effort?: ReasoningEffortEnum;
+  reasoning_effort?: ReasoningEffortEnum | (string & {});
   /** Ephemeral GitHub user token from PostHog Code for user-authored cloud pull requests. */
   github_user_token?: string;
   /** Initial permission mode for the agent session. Claude runtimes accept PostHog permission presets like 'plan'. Codex runtimes accept native Codex modes like 'plan', 'auto', and 'read-only'. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
-  initial_permission_mode?: TaskRunBootstrapCreateRequestInitialPermissionModeEnum;
+  initial_permission_mode?:
+    | TaskRunBootstrapCreateRequestInitialPermissionModeEnum
+    | (string & {});
   /** Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out. */
   rtk_enabled?: boolean | null;
 }
@@ -1072,8 +1051,7 @@ export type RunStatusEnum =
   | "in_progress"
   | "completed"
   | "failed"
-  | "cancelled"
-  | (string & {});
+  | "cancelled";
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 /** State keys to remove atomically before applying any state updates. */
@@ -1085,7 +1063,7 @@ export const TasksRunsPartialUpdateRequestStateRemoveKeysList =
   ) as any as S.Schema<TasksRunsPartialUpdateRequestStateRemoveKeysList>;
 
 /** * `local` - local */
-export type TaskRunUpdateEnvironmentEnum = "local" | (string & {});
+export type TaskRunUpdateEnvironmentEnum = "local";
 export const TaskRunUpdateEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export interface TasksRunsPartialUpdateRequest {
@@ -1094,7 +1072,7 @@ export interface TasksRunsPartialUpdateRequest {
   task_id: string;
   id: string;
   /** Current execution status * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
-  status?: RunStatusEnum;
+  status?: RunStatusEnum | (string & {});
   /** Git branch name to associate with the task */
   branch?: string | null;
   /** Current stage of the run (e.g. research, plan, build) */
@@ -1108,7 +1086,7 @@ export interface TasksRunsPartialUpdateRequest {
   /** Error message if execution failed */
   error_message?: string | null;
   /** Transition a cloud run to local. Use the resume_in_cloud action to move a run into cloud. * `local` - local */
-  environment?: TaskRunUpdateEnvironmentEnum;
+  environment?: TaskRunUpdateEnvironmentEnum | (string & {});
 }
 export const TasksRunsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1343,7 +1321,7 @@ export const TasksRunsStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsStartCreateRequest>;
 
 /** * `acp` - ACP * `pi` - Pi */
-export type RuntimeEnum = "acp" | "pi" | (string & {});
+export type RuntimeEnum = "acp" | "pi";
 export const RuntimeEnum = /*@__PURE__*/ S.String;
 
 export type TaskDetailDTOJsonSchemaMap = { [key: string]: unknown | undefined };

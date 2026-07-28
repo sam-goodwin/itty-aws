@@ -419,6 +419,50 @@ export const generateService = (
   const ref = makeSchemaRef(prelude, indexOf);
   const tsRef = makeTsRef(tsPrelude);
 
+  // Direction classification for enum openness. Enum ALIASES are emitted
+  // CLOSED (exhaustively matchable on reads); shapes reachable ONLY from
+  // request roots re-open enum references inline (`X | (string & {})`) so
+  // consumers can send tomorrow's values without an SDK update. A shape
+  // reachable from any response/error root is response-side — the safe
+  // (closed) default for reads.
+  const requestReachable = reachableFrom(
+    shapes,
+    selected.map((op) => op.def.__input),
+    shapeDeps,
+  );
+  const responseReachable = reachableFrom(
+    shapes,
+    [
+      ...selected.map((op) => op.def.__output),
+      ...collectOpErrorIds(selected, shapes),
+      ...(spec.extraRoots?.(selected, shapes) ?? []),
+    ],
+    shapeDeps,
+  );
+  const requestOnly = new Set(
+    [...requestReachable].filter((id) => !responseReachable.has(id)),
+  );
+  /** The inline open arm for an enum-targeted reference, if any. */
+  const openEnumArm = (target: string): string | undefined => {
+    const t = shapes[target]?.type;
+    return t === "enum"
+      ? "(string & {})"
+      : t === "intEnum"
+        ? "(number & {})"
+        : undefined;
+  };
+  /**
+   * TS reference as seen from inside the shape `ownerId`: enum references
+   * from request-only shapes gain the inline open arm; everything else is
+   * the plain (closed) alias.
+   */
+  const tsRefAt = (target: string, ownerId: string): string => {
+    const base = tsRef(target);
+    if (!requestOnly.has(ownerId)) return base;
+    const arm = openEnumArm(target);
+    return arm ? `${base} | ${arm}` : base;
+  };
+
   const wireKind =
     spec.wireKind ??
     ((b: MemberBinding): "label" | "query" | "header" | "other" =>
@@ -689,7 +733,7 @@ export const generateService = (
           doc: info.doc,
           type:
             memberTsTypeOf(info, tsRef) ??
-            `${tsRef(info.target)}${info.nullable ? " | null" : ""}`,
+            `${tsRefAt(info.target, id)}${info.nullable ? " | null" : ""}`,
         }),
       );
       const members = infos.map((info) => emitMember(info, i));
@@ -727,14 +771,14 @@ export const generateService = (
       );
     } else if (d.type === "list") {
       out.push(
-        `export type ${name} = ReadonlyArray<${tsRef(d.member.target)}>;`,
+        `export type ${name} = ReadonlyArray<${tsRefAt(d.member.target, id)}>;`,
       );
       out.push(
         `export const ${name} = ${pure}S.Array(${ref(d.member.target, i)}) as any as S.Schema<${name}>;\n`,
       );
     } else if (d.type === "map") {
       out.push(
-        `export type ${name} = { [key: string]: ${tsRef(d.value.target)} | undefined };`,
+        `export type ${name} = { [key: string]: ${tsRefAt(d.value.target, id)} | undefined };`,
       );
       out.push(
         `export const ${name} = ${pure}S.Record(S.String, ${ref(d.value.target, i)}) as any as S.Schema<${name}>;\n`,
@@ -767,15 +811,14 @@ export const generateService = (
         .filter((v: unknown): v is string => typeof v === "string");
       out.push(...enumDecl({ name, values, pure }));
     } else if (d.type === "intEnum") {
-      // Open numeric literal union (documented values plus `(number & {})`
-      // for forward compatibility); schema stays S.Number (protocols never
-      // validate enum membership).
+      // CLOSED numeric literal union alias (`type Y = 1 | 30`); request-side
+      // member references re-open it inline (`Y | (number & {})`) — see the
+      // direction classification above. Schema stays S.Number (protocols
+      // never validate enum membership).
       const values = Object.values(d.members ?? {})
         .map((m: any) => m.traits?.["smithy.api#enumValue"])
         .filter((v: unknown): v is number => typeof v === "number");
-      const union = values.length
-        ? `${values.join(" | ")} | (number & {})`
-        : "number";
+      const union = values.length ? values.join(" | ") : "number";
       out.push(
         `export type ${name} = ${union};`,
         `export const ${name} = ${pure}S.Number;\n`,

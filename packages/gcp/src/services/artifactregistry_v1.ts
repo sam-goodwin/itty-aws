@@ -13,57 +13,55 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The request to delete multiple versions across a repository. */
 export interface BatchDeleteVersionsRequest {
@@ -73,13 +71,11 @@ export interface BatchDeleteVersionsRequest {
   validateOnly?: boolean;
 }
 export const BatchDeleteVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-    validateOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BatchDeleteVersionsRequest",
-}) as any as S.Schema<BatchDeleteVersionsRequest>;
+S.Struct({
+  "names": S.optional(StringList),
+  "validateOnly": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BatchDeleteVersionsRequest" }) as any as S.Schema<BatchDeleteVersionsRequest>;
 
 export interface BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The name of the repository holding all requested versions. */
@@ -87,33 +83,18 @@ export interface BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest
   /** Request body */
   body?: BatchDeleteVersionsRequest;
 }
-export const BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeleteVersionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/versions:batchDelete",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest",
-  }) as any as S.Schema<BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
+export const BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchDeleteVersionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/versions:batchDelete","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest" }) as any as S.Schema<BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -125,11 +106,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -146,22 +127,20 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    error: S.optional(Status),
-    done: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "response": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "error": S.optional(Status),
+  "done": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -169,27 +148,18 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** The request for checking an artifact for streaming. */
 export interface CheckPrewarmedArtifactRequest {
@@ -201,14 +171,12 @@ export interface CheckPrewarmedArtifactRequest {
   streamLocation?: string;
 }
 export const CheckPrewarmedArtifactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tag: S.optional(S.String),
-    version: S.optional(S.String),
-    streamLocation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckPrewarmedArtifactRequest",
-}) as any as S.Schema<CheckPrewarmedArtifactRequest>;
+S.Struct({
+  "tag": S.optional(S.String),
+  "version": S.optional(S.String),
+  "streamLocation": S.optional(S.String),
+}),
+).annotate({ identifier: "CheckPrewarmedArtifactRequest" }) as any as S.Schema<CheckPrewarmedArtifactRequest>;
 
 export interface CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest {
   /** Required. The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. If the package or version ID parts contain slashes, the slashes are escaped. */
@@ -216,21 +184,12 @@ export interface CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: CheckPrewarmedArtifactRequest;
 }
-export const CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repository: S.String.pipe(T.Label()),
-      body: S.optional(CheckPrewarmedArtifactRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+repository}:checkPrewarmedArtifact",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest>;
+export const CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repository": S.String.pipe(T.Label()),
+  "body": S.optional(CheckPrewarmedArtifactRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+repository}:checkPrewarmedArtifact","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest" }) as any as S.Schema<CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest>;
 
 /** PrewarmedArtifact represents a streamed artifact. This is not a request message, so field_behavior annotations are not required. */
 export interface PrewarmedArtifact {
@@ -242,14 +201,12 @@ export interface PrewarmedArtifact {
   uri?: string;
 }
 export const PrewarmedArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    expirationTime: S.optional(S.String),
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrewarmedArtifact",
-}) as any as S.Schema<PrewarmedArtifact>;
+S.Struct({
+  "location": S.optional(S.String),
+  "expirationTime": S.optional(S.String),
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "PrewarmedArtifact" }) as any as S.Schema<PrewarmedArtifact>;
 
 /** The response for checking an artifact for streaming. */
 export interface CheckPrewarmedArtifactResponse {
@@ -257,12 +214,10 @@ export interface CheckPrewarmedArtifactResponse {
   prewarmedArtifact?: PrewarmedArtifact;
 }
 export const CheckPrewarmedArtifactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prewarmedArtifact: S.optional(PrewarmedArtifact),
-  }),
-).annotate({
-  identifier: "CheckPrewarmedArtifactResponse",
-}) as any as S.Schema<CheckPrewarmedArtifactResponse>;
+S.Struct({
+  "prewarmedArtifact": S.optional(PrewarmedArtifact),
+}),
+).annotate({ identifier: "CheckPrewarmedArtifactResponse" }) as any as S.Schema<CheckPrewarmedArtifactResponse>;
 
 /** DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type. */
 export interface DockerRepositoryConfig {
@@ -270,29 +225,16 @@ export interface DockerRepositoryConfig {
   immutableTags?: boolean;
 }
 export const DockerRepositoryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    immutableTags: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DockerRepositoryConfig",
-}) as any as S.Schema<DockerRepositoryConfig>;
+S.Struct({
+  "immutableTags": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DockerRepositoryConfig" }) as any as S.Schema<DockerRepositoryConfig>;
 
-export type VulnerabilityScanningConfigEnablementStateEnum =
-  | "ENABLEMENT_STATE_UNSPECIFIED"
-  | "SCANNING_UNSUPPORTED"
-  | "SCANNING_DISABLED"
-  | "SCANNING_ACTIVE"
-  | (string & {});
-export const VulnerabilityScanningConfigEnablementStateEnum =
-  /*@__PURE__*/ S.String;
+export type VulnerabilityScanningConfigEnablementStateEnum = "ENABLEMENT_STATE_UNSPECIFIED" | "SCANNING_UNSUPPORTED" | "SCANNING_DISABLED" | "SCANNING_ACTIVE";
+export const VulnerabilityScanningConfigEnablementStateEnum = /*@__PURE__*/ S.String;
 
-export type VulnerabilityScanningConfigEnablementConfigEnum =
-  | "ENABLEMENT_CONFIG_UNSPECIFIED"
-  | "INHERITED"
-  | "DISABLED"
-  | (string & {});
-export const VulnerabilityScanningConfigEnablementConfigEnum =
-  /*@__PURE__*/ S.String;
+export type VulnerabilityScanningConfigEnablementConfigEnum = "ENABLEMENT_CONFIG_UNSPECIFIED" | "INHERITED" | "DISABLED";
+export const VulnerabilityScanningConfigEnablementConfigEnum = /*@__PURE__*/ S.String;
 
 /** Config on whether to perform vulnerability scanning for resources in this repository, as well as output fields describing current state. */
 export interface VulnerabilityScanningConfig {
@@ -306,32 +248,18 @@ export interface VulnerabilityScanningConfig {
   enablementConfig?: VulnerabilityScanningConfigEnablementConfigEnum;
 }
 export const VulnerabilityScanningConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastEnableTime: S.optional(S.String),
-    enablementStateReason: S.optional(S.String),
-    enablementState: S.optional(VulnerabilityScanningConfigEnablementStateEnum),
-    enablementConfig: S.optional(
-      VulnerabilityScanningConfigEnablementConfigEnum,
-    ),
-  }),
-).annotate({
-  identifier: "VulnerabilityScanningConfig",
-}) as any as S.Schema<VulnerabilityScanningConfig>;
+S.Struct({
+  "lastEnableTime": S.optional(S.String),
+  "enablementStateReason": S.optional(S.String),
+  "enablementState": S.optional(VulnerabilityScanningConfigEnablementStateEnum),
+  "enablementConfig": S.optional(VulnerabilityScanningConfigEnablementConfigEnum),
+}),
+).annotate({ identifier: "VulnerabilityScanningConfig" }) as any as S.Schema<VulnerabilityScanningConfig>;
 
-export type RepositoryModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "STANDARD_REPOSITORY"
-  | "VIRTUAL_REPOSITORY"
-  | "REMOTE_REPOSITORY"
-  | "AOSS_REPOSITORY"
-  | "ASSURED_OSS_REPOSITORY"
-  | (string & {});
+export type RepositoryModeEnum = "MODE_UNSPECIFIED" | "STANDARD_REPOSITORY" | "VIRTUAL_REPOSITORY" | "REMOTE_REPOSITORY" | "AOSS_REPOSITORY" | "ASSURED_OSS_REPOSITORY";
 export const RepositoryModeEnum = /*@__PURE__*/ S.String;
 
-export type NpmRepositoryPublicRepositoryEnum =
-  | "PUBLIC_REPOSITORY_UNSPECIFIED"
-  | "NPMJS"
-  | (string & {});
+export type NpmRepositoryPublicRepositoryEnum = "PUBLIC_REPOSITORY_UNSPECIFIED" | "NPMJS";
 export const NpmRepositoryPublicRepositoryEnum = /*@__PURE__*/ S.String;
 
 /** Customer-specified publicly available remote repository. */
@@ -339,15 +267,11 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmReposi
   /** An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/". */
   uri?: string;
 }
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository>;
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository" }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository>;
 
 /** Configuration for a Npm remote repository. */
 export interface NpmRepository {
@@ -357,26 +281,19 @@ export interface NpmRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository;
 }
 export const NpmRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicRepository: S.optional(NpmRepositoryPublicRepositoryEnum),
-    customRepository: S.optional(
-      GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository,
-    ),
-  }),
+S.Struct({
+  "publicRepository": S.optional(NpmRepositoryPublicRepositoryEnum),
+  "customRepository": S.optional(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository),
+}),
 ).annotate({ identifier: "NpmRepository" }) as any as S.Schema<NpmRepository>;
 
 /** The configuration for the no-cache fetching mode, which acts as a non-caching proxy. */
 export interface NoCacheFetching {}
 export const NoCacheFetching = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NoCacheFetching",
-}) as any as S.Schema<NoCacheFetching>;
+S.Struct({}),
+).annotate({ identifier: "NoCacheFetching" }) as any as S.Schema<NoCacheFetching>;
 
-export type DockerRepositoryPublicRepositoryEnum =
-  | "PUBLIC_REPOSITORY_UNSPECIFIED"
-  | "DOCKER_HUB"
-  | (string & {});
+export type DockerRepositoryPublicRepositoryEnum = "PUBLIC_REPOSITORY_UNSPECIFIED" | "DOCKER_HUB";
 export const DockerRepositoryPublicRepositoryEnum = /*@__PURE__*/ S.String;
 
 /** Customer-specified publicly available remote repository. */
@@ -384,15 +301,11 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRep
   /** An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io". */
   uri?: string;
 }
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository>;
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository" }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository>;
 
 /** Configuration for a Docker remote repository. */
 export interface DockerRepository {
@@ -402,24 +315,14 @@ export interface DockerRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository;
 }
 export const DockerRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicRepository: S.optional(DockerRepositoryPublicRepositoryEnum),
-    customRepository: S.optional(
-      GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository,
-    ),
-  }),
-).annotate({
-  identifier: "DockerRepository",
-}) as any as S.Schema<DockerRepository>;
+S.Struct({
+  "publicRepository": S.optional(DockerRepositoryPublicRepositoryEnum),
+  "customRepository": S.optional(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository),
+}),
+).annotate({ identifier: "DockerRepository" }) as any as S.Schema<DockerRepository>;
 
-export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum =
-    | "REPOSITORY_BASE_UNSPECIFIED"
-    | "DEBIAN"
-    | "UBUNTU"
-    | "DEBIAN_SNAPSHOT"
-    | (string & {});
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum = "REPOSITORY_BASE_UNSPECIFIED" | "DEBIAN" | "UBUNTU" | "DEBIAN_SNAPSHOT";
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum = /*@__PURE__*/ S.String;
 
 /** Publicly available Apt repositories constructed from a common repository base and a custom repository path. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
@@ -428,33 +331,23 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptReposi
   /** A custom field to define a path to a specific repository from the base. */
   repositoryPath?: string;
 }
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repositoryBase: S.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum,
-      ),
-      repositoryPath: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository>;
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repositoryBase": S.optional(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum),
+  "repositoryPath": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository" }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository>;
 
 /** Customer-specified publicly available remote repository. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository {
   /** An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/". */
   uri?: string;
 }
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository>;
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository" }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository>;
 
 /** Configuration for an Apt remote repository. */
 export interface AptRepository {
@@ -464,20 +357,13 @@ export interface AptRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository;
 }
 export const AptRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicRepository: S.optional(
-      GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository,
-    ),
-    customRepository: S.optional(
-      GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository,
-    ),
-  }),
+S.Struct({
+  "publicRepository": S.optional(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository),
+  "customRepository": S.optional(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository),
+}),
 ).annotate({ identifier: "AptRepository" }) as any as S.Schema<AptRepository>;
 
-export type PythonRepositoryPublicRepositoryEnum =
-  | "PUBLIC_REPOSITORY_UNSPECIFIED"
-  | "PYPI"
-  | (string & {});
+export type PythonRepositoryPublicRepositoryEnum = "PUBLIC_REPOSITORY_UNSPECIFIED" | "PYPI";
 export const PythonRepositoryPublicRepositoryEnum = /*@__PURE__*/ S.String;
 
 /** Customer-specified publicly available remote repository. */
@@ -485,15 +371,11 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRep
   /** An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/". */
   uri?: string;
 }
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository>;
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository" }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository>;
 
 /** Configuration for a Python remote repository. */
 export interface PythonRepository {
@@ -503,27 +385,14 @@ export interface PythonRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository;
 }
 export const PythonRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicRepository: S.optional(PythonRepositoryPublicRepositoryEnum),
-    customRepository: S.optional(
-      GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository,
-    ),
-  }),
-).annotate({
-  identifier: "PythonRepository",
-}) as any as S.Schema<PythonRepository>;
+S.Struct({
+  "publicRepository": S.optional(PythonRepositoryPublicRepositoryEnum),
+  "customRepository": S.optional(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository),
+}),
+).annotate({ identifier: "PythonRepository" }) as any as S.Schema<PythonRepository>;
 
-export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum =
-    | "REPOSITORY_BASE_UNSPECIFIED"
-    | "CENTOS"
-    | "CENTOS_DEBUG"
-    | "CENTOS_VAULT"
-    | "CENTOS_STREAM"
-    | "ROCKY"
-    | "EPEL"
-    | (string & {});
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum = "REPOSITORY_BASE_UNSPECIFIED" | "CENTOS" | "CENTOS_DEBUG" | "CENTOS_VAULT" | "CENTOS_STREAM" | "ROCKY" | "EPEL";
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum = /*@__PURE__*/ S.String;
 
 /** Publicly available Yum repositories constructed from a common repository base and a custom repository path. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
@@ -532,33 +401,23 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumReposi
   /** A custom field to define a path to a specific repository from the base. */
   repositoryPath?: string;
 }
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repositoryBase: S.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum,
-      ),
-      repositoryPath: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository>;
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repositoryBase": S.optional(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum),
+  "repositoryPath": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository" }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository>;
 
 /** Customer-specified publicly available remote repository. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository {
   /** An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/". */
   uri?: string;
 }
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository>;
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository" }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository>;
 
 /** Configuration for a Yum remote repository. */
 export interface YumRepository {
@@ -568,14 +427,10 @@ export interface YumRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository;
 }
 export const YumRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicRepository: S.optional(
-      GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository,
-    ),
-    customRepository: S.optional(
-      GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository,
-    ),
-  }),
+S.Struct({
+  "publicRepository": S.optional(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository),
+  "customRepository": S.optional(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository),
+}),
 ).annotate({ identifier: "YumRepository" }) as any as S.Schema<YumRepository>;
 
 /** Common remote repository settings type. */
@@ -584,17 +439,12 @@ export interface CommonRemoteRepository {
   uri?: string;
 }
 export const CommonRemoteRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CommonRemoteRepository",
-}) as any as S.Schema<CommonRemoteRepository>;
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "CommonRemoteRepository" }) as any as S.Schema<CommonRemoteRepository>;
 
-export type MavenRepositoryPublicRepositoryEnum =
-  | "PUBLIC_REPOSITORY_UNSPECIFIED"
-  | "MAVEN_CENTRAL"
-  | (string & {});
+export type MavenRepositoryPublicRepositoryEnum = "PUBLIC_REPOSITORY_UNSPECIFIED" | "MAVEN_CENTRAL";
 export const MavenRepositoryPublicRepositoryEnum = /*@__PURE__*/ S.String;
 
 /** Customer-specified publicly available remote repository. */
@@ -602,15 +452,11 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepo
   /** An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/". */
   uri?: string;
 }
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository>;
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository" }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository>;
 
 /** Configuration for a Maven remote repository. */
 export interface MavenRepository {
@@ -620,15 +466,11 @@ export interface MavenRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository;
 }
 export const MavenRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicRepository: S.optional(MavenRepositoryPublicRepositoryEnum),
-    customRepository: S.optional(
-      GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository,
-    ),
-  }),
-).annotate({
-  identifier: "MavenRepository",
-}) as any as S.Schema<MavenRepository>;
+S.Struct({
+  "publicRepository": S.optional(MavenRepositoryPublicRepositoryEnum),
+  "customRepository": S.optional(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository),
+}),
+).annotate({ identifier: "MavenRepository" }) as any as S.Schema<MavenRepository>;
 
 /** Username and password credentials. */
 export interface UsernamePasswordCredentials {
@@ -638,13 +480,11 @@ export interface UsernamePasswordCredentials {
   passwordSecretVersion?: string;
 }
 export const UsernamePasswordCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    username: S.optional(S.String),
-    passwordSecretVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UsernamePasswordCredentials",
-}) as any as S.Schema<UsernamePasswordCredentials>;
+S.Struct({
+  "username": S.optional(S.String),
+  "passwordSecretVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "UsernamePasswordCredentials" }) as any as S.Schema<UsernamePasswordCredentials>;
 
 /** The credentials to access the remote repository. */
 export interface UpstreamCredentials {
@@ -652,12 +492,10 @@ export interface UpstreamCredentials {
   usernamePasswordCredentials?: UsernamePasswordCredentials;
 }
 export const UpstreamCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    usernamePasswordCredentials: S.optional(UsernamePasswordCredentials),
-  }),
-).annotate({
-  identifier: "UpstreamCredentials",
-}) as any as S.Schema<UpstreamCredentials>;
+S.Struct({
+  "usernamePasswordCredentials": S.optional(UsernamePasswordCredentials),
+}),
+).annotate({ identifier: "UpstreamCredentials" }) as any as S.Schema<UpstreamCredentials>;
 
 /** Remote repository configuration. */
 export interface RemoteRepositoryConfig {
@@ -685,28 +523,22 @@ export interface RemoteRepositoryConfig {
   upstreamCredentials?: UpstreamCredentials;
 }
 export const RemoteRepositoryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    npmRepository: S.optional(NpmRepository),
-    noCache: S.optional(NoCacheFetching),
-    dockerRepository: S.optional(DockerRepository),
-    aptRepository: S.optional(AptRepository),
-    disableUpstreamValidation: S.optional(S.Boolean),
-    pythonRepository: S.optional(PythonRepository),
-    yumRepository: S.optional(YumRepository),
-    commonRepository: S.optional(CommonRemoteRepository),
-    mavenRepository: S.optional(MavenRepository),
-    description: S.optional(S.String),
-    upstreamCredentials: S.optional(UpstreamCredentials),
-  }),
-).annotate({
-  identifier: "RemoteRepositoryConfig",
-}) as any as S.Schema<RemoteRepositoryConfig>;
+S.Struct({
+  "npmRepository": S.optional(NpmRepository),
+  "noCache": S.optional(NoCacheFetching),
+  "dockerRepository": S.optional(DockerRepository),
+  "aptRepository": S.optional(AptRepository),
+  "disableUpstreamValidation": S.optional(S.Boolean),
+  "pythonRepository": S.optional(PythonRepository),
+  "yumRepository": S.optional(YumRepository),
+  "commonRepository": S.optional(CommonRemoteRepository),
+  "mavenRepository": S.optional(MavenRepository),
+  "description": S.optional(S.String),
+  "upstreamCredentials": S.optional(UpstreamCredentials),
+}),
+).annotate({ identifier: "RemoteRepositoryConfig" }) as any as S.Schema<RemoteRepositoryConfig>;
 
-export type MavenRepositoryConfigVersionPolicyEnum =
-  | "VERSION_POLICY_UNSPECIFIED"
-  | "RELEASE"
-  | "SNAPSHOT"
-  | (string & {});
+export type MavenRepositoryConfigVersionPolicyEnum = "VERSION_POLICY_UNSPECIFIED" | "RELEASE" | "SNAPSHOT";
 export const MavenRepositoryConfigVersionPolicyEnum = /*@__PURE__*/ S.String;
 
 /** MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type. */
@@ -717,38 +549,19 @@ export interface MavenRepositoryConfig {
   versionPolicy?: MavenRepositoryConfigVersionPolicyEnum;
 }
 export const MavenRepositoryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowSnapshotOverwrites: S.optional(S.Boolean),
-    versionPolicy: S.optional(MavenRepositoryConfigVersionPolicyEnum),
-  }),
-).annotate({
-  identifier: "MavenRepositoryConfig",
-}) as any as S.Schema<MavenRepositoryConfig>;
+S.Struct({
+  "allowSnapshotOverwrites": S.optional(S.Boolean),
+  "versionPolicy": S.optional(MavenRepositoryConfigVersionPolicyEnum),
+}),
+).annotate({ identifier: "MavenRepositoryConfig" }) as any as S.Schema<MavenRepositoryConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
-export type PlatformLogsConfigLoggingStateEnum =
-  | "LOGGING_STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type PlatformLogsConfigLoggingStateEnum = "LOGGING_STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
 export const PlatformLogsConfigLoggingStateEnum = /*@__PURE__*/ S.String;
 
-export type PlatformLogsConfigSeverityLevelEnum =
-  | "SEVERITY_LEVEL_UNSPECIFIED"
-  | "DEBUG"
-  | "INFO"
-  | "NOTICE"
-  | "WARNING"
-  | "ERROR"
-  | "CRITICAL"
-  | "ALERT"
-  | "EMERGENCY"
-  | (string & {});
+export type PlatformLogsConfigSeverityLevelEnum = "SEVERITY_LEVEL_UNSPECIFIED" | "DEBUG" | "INFO" | "NOTICE" | "WARNING" | "ERROR" | "CRITICAL" | "ALERT" | "EMERGENCY";
 export const PlatformLogsConfigSeverityLevelEnum = /*@__PURE__*/ S.String;
 
 /** The platform logs config for a project or a repository. */
@@ -759,28 +572,13 @@ export interface PlatformLogsConfig {
   severityLevel?: PlatformLogsConfigSeverityLevelEnum;
 }
 export const PlatformLogsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loggingState: S.optional(PlatformLogsConfigLoggingStateEnum),
-    severityLevel: S.optional(PlatformLogsConfigSeverityLevelEnum),
-  }),
-).annotate({
-  identifier: "PlatformLogsConfig",
-}) as any as S.Schema<PlatformLogsConfig>;
+S.Struct({
+  "loggingState": S.optional(PlatformLogsConfigLoggingStateEnum),
+  "severityLevel": S.optional(PlatformLogsConfigSeverityLevelEnum),
+}),
+).annotate({ identifier: "PlatformLogsConfig" }) as any as S.Schema<PlatformLogsConfig>;
 
-export type RepositoryFormatEnum =
-  | "FORMAT_UNSPECIFIED"
-  | "DOCKER"
-  | "MAVEN"
-  | "NPM"
-  | "APT"
-  | "YUM"
-  | "GOOGET"
-  | "PYTHON"
-  | "KFP"
-  | "GO"
-  | "GENERIC"
-  | "RUBY"
-  | (string & {});
+export type RepositoryFormatEnum = "FORMAT_UNSPECIFIED" | "DOCKER" | "MAVEN" | "NPM" | "APT" | "YUM" | "GOOGET" | "PYTHON" | "KFP" | "GO" | "GENERIC" | "RUBY";
 export const RepositoryFormatEnum = /*@__PURE__*/ S.String;
 
 /** Artifact policy configuration for the repository contents. */
@@ -793,17 +591,15 @@ export interface UpstreamPolicy {
   repository?: string;
 }
 export const UpstreamPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priority: S.optional(S.Number),
-    id: S.optional(S.String),
-    repository: S.optional(S.String),
-  }),
+S.Struct({
+  "priority": S.optional(S.Number),
+  "id": S.optional(S.String),
+  "repository": S.optional(S.String),
+}),
 ).annotate({ identifier: "UpstreamPolicy" }) as any as S.Schema<UpstreamPolicy>;
 
 export type UpstreamPolicyList = ReadonlyArray<UpstreamPolicy>;
-export const UpstreamPolicyList = /*@__PURE__*/ S.Array(
-  UpstreamPolicy,
-) as any as S.Schema<UpstreamPolicyList>;
+export const UpstreamPolicyList = /*@__PURE__*/ S.Array(UpstreamPolicy) as any as S.Schema<UpstreamPolicyList>;
 
 /** Virtual repository configuration. */
 export interface VirtualRepositoryConfig {
@@ -811,19 +607,12 @@ export interface VirtualRepositoryConfig {
   upstreamPolicies?: UpstreamPolicyList;
 }
 export const VirtualRepositoryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upstreamPolicies: S.optional(UpstreamPolicyList),
-  }),
-).annotate({
-  identifier: "VirtualRepositoryConfig",
-}) as any as S.Schema<VirtualRepositoryConfig>;
+S.Struct({
+  "upstreamPolicies": S.optional(UpstreamPolicyList),
+}),
+).annotate({ identifier: "VirtualRepositoryConfig" }) as any as S.Schema<VirtualRepositoryConfig>;
 
-export type CleanupPolicyConditionTagStateEnum =
-  | "TAG_STATE_UNSPECIFIED"
-  | "TAGGED"
-  | "UNTAGGED"
-  | "ANY"
-  | (string & {});
+export type CleanupPolicyConditionTagStateEnum = "TAG_STATE_UNSPECIFIED" | "TAGGED" | "UNTAGGED" | "ANY";
 export const CleanupPolicyConditionTagStateEnum = /*@__PURE__*/ S.String;
 
 /** CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied. */
@@ -842,17 +631,15 @@ export interface CleanupPolicyCondition {
   newerThan?: string;
 }
 export const CleanupPolicyCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tagPrefixes: S.optional(StringList),
-    olderThan: S.optional(S.String),
-    packageNamePrefixes: S.optional(StringList),
-    tagState: S.optional(CleanupPolicyConditionTagStateEnum),
-    versionNamePrefixes: S.optional(StringList),
-    newerThan: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CleanupPolicyCondition",
-}) as any as S.Schema<CleanupPolicyCondition>;
+S.Struct({
+  "tagPrefixes": S.optional(StringList),
+  "olderThan": S.optional(S.String),
+  "packageNamePrefixes": S.optional(StringList),
+  "tagState": S.optional(CleanupPolicyConditionTagStateEnum),
+  "versionNamePrefixes": S.optional(StringList),
+  "newerThan": S.optional(S.String),
+}),
+).annotate({ identifier: "CleanupPolicyCondition" }) as any as S.Schema<CleanupPolicyCondition>;
 
 /** CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of versions. */
 export interface CleanupPolicyMostRecentVersions {
@@ -862,19 +649,13 @@ export interface CleanupPolicyMostRecentVersions {
   keepCount?: number;
 }
 export const CleanupPolicyMostRecentVersions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageNamePrefixes: S.optional(StringList),
-    keepCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CleanupPolicyMostRecentVersions",
-}) as any as S.Schema<CleanupPolicyMostRecentVersions>;
+S.Struct({
+  "packageNamePrefixes": S.optional(StringList),
+  "keepCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "CleanupPolicyMostRecentVersions" }) as any as S.Schema<CleanupPolicyMostRecentVersions>;
 
-export type CleanupPolicyActionEnum =
-  | "ACTION_UNSPECIFIED"
-  | "DELETE"
-  | "KEEP"
-  | (string & {});
+export type CleanupPolicyActionEnum = "ACTION_UNSPECIFIED" | "DELETE" | "KEEP";
 export const CleanupPolicyActionEnum = /*@__PURE__*/ S.String;
 
 /** Artifact policy configuration for repository cleanup policies. */
@@ -889,19 +670,16 @@ export interface CleanupPolicy {
   action?: CleanupPolicyActionEnum;
 }
 export const CleanupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    condition: S.optional(CleanupPolicyCondition),
-    mostRecentVersions: S.optional(CleanupPolicyMostRecentVersions),
-    action: S.optional(CleanupPolicyActionEnum),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "condition": S.optional(CleanupPolicyCondition),
+  "mostRecentVersions": S.optional(CleanupPolicyMostRecentVersions),
+  "action": S.optional(CleanupPolicyActionEnum),
+}),
 ).annotate({ identifier: "CleanupPolicy" }) as any as S.Schema<CleanupPolicy>;
 
 export type CleanupPolicyMap = { [key: string]: CleanupPolicy | undefined };
-export const CleanupPolicyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CleanupPolicy,
-) as any as S.Schema<CleanupPolicyMap>;
+export const CleanupPolicyMap = /*@__PURE__*/ S.Record(S.String, CleanupPolicy) as any as S.Schema<CleanupPolicyMap>;
 
 /** A Repository for storing artifacts with a specific format. */
 export interface Repository {
@@ -949,29 +727,29 @@ export interface Repository {
   sizeBytes?: string;
 }
 export const Repository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dockerConfig: S.optional(DockerRepositoryConfig),
-    disallowUnspecifiedMode: S.optional(S.Boolean),
-    cleanupPolicyDryRun: S.optional(S.Boolean),
-    vulnerabilityScanningConfig: S.optional(VulnerabilityScanningConfig),
-    satisfiesPzs: S.optional(S.Boolean),
-    registryUri: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    mode: S.optional(RepositoryModeEnum),
-    remoteRepositoryConfig: S.optional(RemoteRepositoryConfig),
-    satisfiesPzi: S.optional(S.Boolean),
-    kmsKeyName: S.optional(S.String),
-    mavenConfig: S.optional(MavenRepositoryConfig),
-    createTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    platformLogsConfig: S.optional(PlatformLogsConfig),
-    format: S.optional(RepositoryFormatEnum),
-    description: S.optional(S.String),
-    virtualRepositoryConfig: S.optional(VirtualRepositoryConfig),
-    cleanupPolicies: S.optional(CleanupPolicyMap),
-    sizeBytes: S.optional(S.String),
-  }),
+S.Struct({
+  "dockerConfig": S.optional(DockerRepositoryConfig),
+  "disallowUnspecifiedMode": S.optional(S.Boolean),
+  "cleanupPolicyDryRun": S.optional(S.Boolean),
+  "vulnerabilityScanningConfig": S.optional(VulnerabilityScanningConfig),
+  "satisfiesPzs": S.optional(S.Boolean),
+  "registryUri": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "mode": S.optional(RepositoryModeEnum),
+  "remoteRepositoryConfig": S.optional(RemoteRepositoryConfig),
+  "satisfiesPzi": S.optional(S.Boolean),
+  "kmsKeyName": S.optional(S.String),
+  "mavenConfig": S.optional(MavenRepositoryConfig),
+  "createTime": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "platformLogsConfig": S.optional(PlatformLogsConfig),
+  "format": S.optional(RepositoryFormatEnum),
+  "description": S.optional(S.String),
+  "virtualRepositoryConfig": S.optional(VirtualRepositoryConfig),
+  "cleanupPolicies": S.optional(CleanupPolicyMap),
+  "sizeBytes": S.optional(S.String),
+}),
 ).annotate({ identifier: "Repository" }) as any as S.Schema<Repository>;
 
 export interface CreateProjectsLocationsRepositoriesRequest {
@@ -982,22 +760,13 @@ export interface CreateProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const CreateProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      repositoryId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Repository.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/repositories",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>;
+export const CreateProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "repositoryId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Repository.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/repositories","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>;
 
 /** An Attachment refers to additional metadata that can be attached to artifacts in Artifact Registry. An attachment consists of one or more files. */
 export interface Attachment {
@@ -1021,17 +790,17 @@ export interface Attachment {
   target?: string;
 }
 export const Attachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    ociVersionName: S.optional(S.String),
-    type: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    attachmentNamespace: S.optional(S.String),
-    createTime: S.optional(S.String),
-    files: S.optional(StringList),
-    name: S.optional(S.String),
-    target: S.optional(S.String),
-  }),
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "ociVersionName": S.optional(S.String),
+  "type": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "attachmentNamespace": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "files": S.optional(StringList),
+  "name": S.optional(S.String),
+  "target": S.optional(S.String),
+}),
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
 export interface CreateProjectsLocationsRepositoriesAttachmentsRequest {
@@ -1042,22 +811,13 @@ export interface CreateProjectsLocationsRepositoriesAttachmentsRequest {
   /** Request body */
   body?: Attachment;
 }
-export const CreateProjectsLocationsRepositoriesAttachmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attachmentId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Attachment.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/attachments",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesAttachmentsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesAttachmentsRequest>;
+export const CreateProjectsLocationsRepositoriesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "attachmentId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Attachment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/attachments","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesAttachmentsRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesAttachmentsRequest>;
 
 /** Tags point to a version and represent an alternative name that can be used to access the version. */
 export interface Tag {
@@ -1067,10 +827,10 @@ export interface Tag {
   version?: string;
 }
 export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export interface CreateProjectsLocationsRepositoriesPackagesTagsRequest {
@@ -1081,30 +841,16 @@ export interface CreateProjectsLocationsRepositoriesPackagesTagsRequest {
   /** Request body */
   body?: Tag;
 }
-export const CreateProjectsLocationsRepositoriesPackagesTagsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      tagId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Tag.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/tags",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesPackagesTagsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesPackagesTagsRequest>;
+export const CreateProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "tagId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Tag.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/tags","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesPackagesTagsRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesPackagesTagsRequest>;
 
-export type GoogleDevtoolsArtifactregistryV1RuleActionEnum =
-  | "ACTION_UNSPECIFIED"
-  | "ALLOW"
-  | "DENY"
-  | (string & {});
-export const GoogleDevtoolsArtifactregistryV1RuleActionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleDevtoolsArtifactregistryV1RuleActionEnum = "ACTION_UNSPECIFIED" | "ALLOW" | "DENY";
+export const GoogleDevtoolsArtifactregistryV1RuleActionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -1118,20 +864,16 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
-export type GoogleDevtoolsArtifactregistryV1RuleOperationEnum =
-  | "OPERATION_UNSPECIFIED"
-  | "DOWNLOAD"
-  | (string & {});
-export const GoogleDevtoolsArtifactregistryV1RuleOperationEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleDevtoolsArtifactregistryV1RuleOperationEnum = "OPERATION_UNSPECIFIED" | "DOWNLOAD";
+export const GoogleDevtoolsArtifactregistryV1RuleOperationEnum = /*@__PURE__*/ S.String;
 
 /** A rule defines the deny or allow action of the operation it applies to and the conditions required for the rule to apply. You can set one rule for an entire repository and one rule for each package within. */
 export interface GoogleDevtoolsArtifactregistryV1Rule {
@@ -1145,18 +887,15 @@ export interface GoogleDevtoolsArtifactregistryV1Rule {
   condition?: Expr;
   operation?: GoogleDevtoolsArtifactregistryV1RuleOperationEnum;
 }
-export const GoogleDevtoolsArtifactregistryV1Rule = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      action: S.optional(GoogleDevtoolsArtifactregistryV1RuleActionEnum),
-      packageId: S.optional(S.String),
-      name: S.optional(S.String),
-      condition: S.optional(Expr),
-      operation: S.optional(GoogleDevtoolsArtifactregistryV1RuleOperationEnum),
-    }),
-).annotate({
-  identifier: "GoogleDevtoolsArtifactregistryV1Rule",
-}) as any as S.Schema<GoogleDevtoolsArtifactregistryV1Rule>;
+export const GoogleDevtoolsArtifactregistryV1Rule = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "action": S.optional(GoogleDevtoolsArtifactregistryV1RuleActionEnum),
+  "packageId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "condition": S.optional(Expr),
+  "operation": S.optional(GoogleDevtoolsArtifactregistryV1RuleOperationEnum),
+}),
+).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1Rule" }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1Rule>;
 
 export interface CreateProjectsLocationsRepositoriesRulesRequest {
   /** Required. The name of the parent resource where the rule will be created. */
@@ -1166,117 +905,63 @@ export interface CreateProjectsLocationsRepositoriesRulesRequest {
   /** Request body */
   body?: GoogleDevtoolsArtifactregistryV1Rule;
 }
-export const CreateProjectsLocationsRepositoriesRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      ruleId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleDevtoolsArtifactregistryV1Rule.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/rules",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesRulesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesRulesRequest>;
+export const CreateProjectsLocationsRepositoriesRulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "ruleId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleDevtoolsArtifactregistryV1Rule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/rules","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesRulesRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesRulesRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesRequest {
   /** Required. The name of the repository to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>;
+export const DeleteProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesAttachmentsRequest {
   /** Required. The name of the attachment to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesAttachmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesAttachmentsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesAttachmentsRequest>;
+export const DeleteProjectsLocationsRepositoriesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesAttachmentsRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesAttachmentsRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesFilesRequest {
   /** Required. The name of the file to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesFilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesFilesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesFilesRequest>;
+export const DeleteProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesFilesRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesFilesRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesPackagesRequest {
   /** Required. The name of the package to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesPackagesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesRequest>;
+export const DeleteProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesPackagesRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the tag to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesPackagesTagsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesPackagesTagsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesTagsRequest>;
+export const DeleteProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesPackagesTagsRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesTagsRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The name of the version to delete. */
@@ -1284,67 +969,38 @@ export interface DeleteProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** By default, a version that is tagged may not be deleted. If force=true, the version and any tags pointing to the version are deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsRepositoriesPackagesVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesPackagesVersionsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
+export const DeleteProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesPackagesVersionsRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesRulesRequest {
   /** Required. The name of the rule to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesRulesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesRulesRequest>;
+export const DeleteProjectsLocationsRepositoriesRulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesRulesRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesRulesRequest>;
 
 export interface DownloadProjectsLocationsRepositoriesFilesRequest {
   /** Required. The name of the file to download. */
   name: string;
 }
-export const DownloadProjectsLocationsRepositoriesFilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:download",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DownloadProjectsLocationsRepositoriesFilesRequest",
-  }) as any as S.Schema<DownloadProjectsLocationsRepositoriesFilesRequest>;
+export const DownloadProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:download","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "DownloadProjectsLocationsRepositoriesFilesRequest" }) as any as S.Schema<DownloadProjectsLocationsRepositoriesFilesRequest>;
 
 /** The response to download a file. */
 export interface DownloadFileResponse {}
 export const DownloadFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DownloadFileResponse",
-}) as any as S.Schema<DownloadFileResponse>;
+S.Struct({}),
+).annotate({ identifier: "DownloadFileResponse" }) as any as S.Schema<DownloadFileResponse>;
 
 /** The request for exporting an artifact to a destination. */
 export interface ExportArtifactRequest {
@@ -1356,14 +1012,12 @@ export interface ExportArtifactRequest {
   sourceVersion?: string;
 }
 export const ExportArtifactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsPath: S.optional(S.String),
-    sourceTag: S.optional(S.String),
-    sourceVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportArtifactRequest",
-}) as any as S.Schema<ExportArtifactRequest>;
+S.Struct({
+  "gcsPath": S.optional(S.String),
+  "sourceTag": S.optional(S.String),
+  "sourceVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "ExportArtifactRequest" }) as any as S.Schema<ExportArtifactRequest>;
 
 export interface ExportArtifactProjectsLocationsRepositoriesRequest {
   /** Required. The repository of the artifact to export. Format: projects/{project}/locations/{location}/repositories/{repository} */
@@ -1371,21 +1025,12 @@ export interface ExportArtifactProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: ExportArtifactRequest;
 }
-export const ExportArtifactProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repository: S.String.pipe(T.Label()),
-      body: S.optional(ExportArtifactRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+repository}:exportArtifact",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExportArtifactProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<ExportArtifactProjectsLocationsRepositoriesRequest>;
+export const ExportArtifactProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repository": S.String.pipe(T.Label()),
+  "body": S.optional(ExportArtifactRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+repository}:exportArtifact","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ExportArtifactProjectsLocationsRepositoriesRequest" }) as any as S.Schema<ExportArtifactProjectsLocationsRepositoriesRequest>;
 
 export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1393,21 +1038,12 @@ export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
+export const GetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  "resource": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsRepositoriesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -1419,17 +1055,15 @@ export interface Binding {
   role?: string;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    members: S.optional(StringList),
-    condition: S.optional(Expr),
-    role: S.optional(S.String),
-  }),
+S.Struct({
+  "members": S.optional(StringList),
+  "condition": S.optional(Expr),
+  "role": S.optional(S.String),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1441,31 +1075,22 @@ export interface Policy {
   version?: number;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bindings: S.optional(BindingList),
-    etag: S.optional(S.String),
-    version: S.optional(S.Number),
-  }),
+S.Struct({
+  "bindings": S.optional(BindingList),
+  "etag": S.optional(S.String),
+  "version": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetProjectConfigProjectsLocationsRequest {
   /** Required. The name of the project's logging configuration: projects/{project}/locations/{location}/projectConfig */
   name: string;
 }
-export const GetProjectConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectConfigProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectConfigProjectsLocationsRequest>;
+export const GetProjectConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectConfigProjectsLocationsRequest" }) as any as S.Schema<GetProjectConfigProjectsLocationsRequest>;
 
 /** The Artifact Registry logging configurations that apply to a Project. */
 export interface ProjectConfig {
@@ -1475,10 +1100,10 @@ export interface ProjectConfig {
   platformLogsConfig?: PlatformLogsConfig;
 }
 export const ProjectConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    platformLogsConfig: S.optional(PlatformLogsConfig),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "platformLogsConfig": S.optional(PlatformLogsConfig),
+}),
 ).annotate({ identifier: "ProjectConfig" }) as any as S.Schema<ProjectConfig>;
 
 export interface GetProjectSettingsProjectsRequest {
@@ -1486,27 +1111,12 @@ export interface GetProjectSettingsProjectsRequest {
   name: string;
 }
 export const GetProjectSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://artifactregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectSettingsProjectsRequest",
-}) as any as S.Schema<GetProjectSettingsProjectsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectSettingsProjectsRequest" }) as any as S.Schema<GetProjectSettingsProjectsRequest>;
 
-export type ProjectSettingsLegacyRedirectionStateEnum =
-  | "REDIRECTION_STATE_UNSPECIFIED"
-  | "REDIRECTION_FROM_GCR_IO_DISABLED"
-  | "REDIRECTION_FROM_GCR_IO_ENABLED"
-  | "REDIRECTION_FROM_GCR_IO_FINALIZED"
-  | "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING"
-  | "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING"
-  | (string & {});
+export type ProjectSettingsLegacyRedirectionStateEnum = "REDIRECTION_STATE_UNSPECIFIED" | "REDIRECTION_FROM_GCR_IO_DISABLED" | "REDIRECTION_FROM_GCR_IO_ENABLED" | "REDIRECTION_FROM_GCR_IO_FINALIZED" | "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING" | "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING";
 export const ProjectSettingsLegacyRedirectionStateEnum = /*@__PURE__*/ S.String;
 
 /** The Artifact Registry settings that apply to a Project. */
@@ -1519,34 +1129,22 @@ export interface ProjectSettings {
   pullPercent?: number;
 }
 export const ProjectSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    legacyRedirectionState: S.optional(
-      ProjectSettingsLegacyRedirectionStateEnum,
-    ),
-    pullPercent: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ProjectSettings",
-}) as any as S.Schema<ProjectSettings>;
+S.Struct({
+  "name": S.optional(S.String),
+  "legacyRedirectionState": S.optional(ProjectSettingsLegacyRedirectionStateEnum),
+  "pullPercent": S.optional(S.Number),
+}),
+).annotate({ identifier: "ProjectSettings" }) as any as S.Schema<ProjectSettings>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://artifactregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1562,90 +1160,54 @@ export interface Location {
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    locationId: S.optional(S.String),
-  }),
+S.Struct({
+  "labels": S.optional(StringMap),
+  "metadata": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "locationId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRepositoriesRequest {
   /** Required. The name of the repository to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsRepositoriesRequest",
-}) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>;
+export const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>;
 
 export interface GetProjectsLocationsRepositoriesAttachmentsRequest {
   /** Required. The name of the attachment to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesAttachmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesAttachmentsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesAttachmentsRequest>;
+export const GetProjectsLocationsRepositoriesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesAttachmentsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesAttachmentsRequest>;
 
 export interface GetProjectsLocationsRepositoriesDockerImagesRequest {
   /** Required. The name of the docker images. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesDockerImagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesDockerImagesRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesDockerImagesRequest>;
+export const GetProjectsLocationsRepositoriesDockerImagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesDockerImagesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesDockerImagesRequest>;
 
 /** Details of a single image manifest within a multi-arch image. */
 export interface ImageManifest {
@@ -1665,21 +1227,19 @@ export interface ImageManifest {
   variant?: string;
 }
 export const ImageManifest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    architecture: S.optional(S.String),
-    os: S.optional(S.String),
-    osFeatures: S.optional(StringList),
-    digest: S.optional(S.String),
-    osVersion: S.optional(S.String),
-    mediaType: S.optional(S.String),
-    variant: S.optional(S.String),
-  }),
+S.Struct({
+  "architecture": S.optional(S.String),
+  "os": S.optional(S.String),
+  "osFeatures": S.optional(StringList),
+  "digest": S.optional(S.String),
+  "osVersion": S.optional(S.String),
+  "mediaType": S.optional(S.String),
+  "variant": S.optional(S.String),
+}),
 ).annotate({ identifier: "ImageManifest" }) as any as S.Schema<ImageManifest>;
 
 export type ImageManifestList = ReadonlyArray<ImageManifest>;
-export const ImageManifestList = /*@__PURE__*/ S.Array(
-  ImageManifest,
-) as any as S.Schema<ImageManifestList>;
+export const ImageManifestList = /*@__PURE__*/ S.Array(ImageManifest) as any as S.Schema<ImageManifestList>;
 
 /** DockerImage represents a docker artifact. The following fields are returned as untyped metadata in the Version resource, using camelcase keys (i.e. metadata.imageSizeBytes): * imageSizeBytes * mediaType * buildTime */
 export interface DockerImage {
@@ -1705,45 +1265,31 @@ export interface DockerImage {
   mediaType?: string;
 }
 export const DockerImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageSizeBytes: S.optional(S.String),
-    uploadTime: S.optional(S.String),
-    name: S.optional(S.String),
-    buildTime: S.optional(S.String),
-    uri: S.optional(S.String),
-    tags: S.optional(StringList),
-    updateTime: S.optional(S.String),
-    imageManifests: S.optional(ImageManifestList),
-    artifactType: S.optional(S.String),
-    mediaType: S.optional(S.String),
-  }),
+S.Struct({
+  "imageSizeBytes": S.optional(S.String),
+  "uploadTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "buildTime": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "tags": S.optional(StringList),
+  "updateTime": S.optional(S.String),
+  "imageManifests": S.optional(ImageManifestList),
+  "artifactType": S.optional(S.String),
+  "mediaType": S.optional(S.String),
+}),
 ).annotate({ identifier: "DockerImage" }) as any as S.Schema<DockerImage>;
 
 export interface GetProjectsLocationsRepositoriesFilesRequest {
   /** Required. The name of the file to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesFilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesFilesRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesFilesRequest>;
+export const GetProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesFilesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesFilesRequest>;
 
-export type HashTypeEnum =
-  | "HASH_TYPE_UNSPECIFIED"
-  | "SHA256"
-  | "MD5"
-  | "DIRSUM_SHA256"
-  | (string & {});
+export type HashTypeEnum = "HASH_TYPE_UNSPECIFIED" | "SHA256" | "MD5" | "DIRSUM_SHA256";
 export const HashTypeEnum = /*@__PURE__*/ S.String;
 
 /** A hash of file content. */
@@ -1754,16 +1300,14 @@ export interface Hash {
   value?: string;
 }
 export const Hash = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(HashTypeEnum),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(HashTypeEnum),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Hash" }) as any as S.Schema<Hash>;
 
 export type HashList = ReadonlyArray<Hash>;
-export const HashList = /*@__PURE__*/ S.Array(
-  Hash,
-) as any as S.Schema<HashList>;
+export const HashList = /*@__PURE__*/ S.Array(Hash) as any as S.Schema<HashList>;
 
 /** Files store content that is potentially associated with Packages or Versions. */
 export interface GoogleDevtoolsArtifactregistryV1File {
@@ -1784,40 +1328,28 @@ export interface GoogleDevtoolsArtifactregistryV1File {
   /** The name of the Package or Version that owns this file, if any. */
   owner?: string;
 }
-export const GoogleDevtoolsArtifactregistryV1File = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateTime: S.optional(S.String),
-      annotations: S.optional(StringMap),
-      fetchTime: S.optional(S.String),
-      name: S.optional(S.String),
-      sizeBytes: S.optional(S.String),
-      hashes: S.optional(HashList),
-      createTime: S.optional(S.String),
-      owner: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleDevtoolsArtifactregistryV1File",
-}) as any as S.Schema<GoogleDevtoolsArtifactregistryV1File>;
+export const GoogleDevtoolsArtifactregistryV1File = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "fetchTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "sizeBytes": S.optional(S.String),
+  "hashes": S.optional(HashList),
+  "createTime": S.optional(S.String),
+  "owner": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1File" }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1File>;
 
 export interface GetProjectsLocationsRepositoriesMavenArtifactsRequest {
   /** Required. The name of the maven artifact. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesMavenArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesMavenArtifactsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesMavenArtifactsRequest>;
+export const GetProjectsLocationsRepositoriesMavenArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesMavenArtifactsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesMavenArtifactsRequest>;
 
 /** MavenArtifact represents a maven artifact. */
 export interface MavenArtifact {
@@ -1837,35 +1369,26 @@ export interface MavenArtifact {
   artifactId?: string;
 }
 export const MavenArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    pomUri: S.optional(S.String),
-    groupId: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    artifactId: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "pomUri": S.optional(S.String),
+  "groupId": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "artifactId": S.optional(S.String),
+}),
 ).annotate({ identifier: "MavenArtifact" }) as any as S.Schema<MavenArtifact>;
 
 export interface GetProjectsLocationsRepositoriesNpmPackagesRequest {
   /** Required. The name of the npm package. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesNpmPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesNpmPackagesRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesNpmPackagesRequest>;
+export const GetProjectsLocationsRepositoriesNpmPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesNpmPackagesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesNpmPackagesRequest>;
 
 /** NpmPackage represents an npm artifact. */
 export interface NpmPackage {
@@ -1883,34 +1406,25 @@ export interface NpmPackage {
   updateTime?: string;
 }
 export const NpmPackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    packageName: S.optional(S.String),
-    tags: S.optional(StringList),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "packageName": S.optional(S.String),
+  "tags": S.optional(StringList),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "NpmPackage" }) as any as S.Schema<NpmPackage>;
 
 export interface GetProjectsLocationsRepositoriesPackagesRequest {
   /** Required. The name of the package to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesPackagesRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesRequest>;
+export const GetProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesPackagesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesRequest>;
 
 /** Packages are named collections of versions. */
 export interface Package {
@@ -1926,67 +1440,40 @@ export interface Package {
   name?: string;
 }
 export const Package = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    annotations: S.optional(StringMap),
-    updateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "annotations": S.optional(StringMap),
+  "updateTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Package" }) as any as S.Schema<Package>;
 
 export interface GetProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the tag to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesPackagesTagsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesPackagesTagsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesTagsRequest>;
+export const GetProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesPackagesTagsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesTagsRequest>;
 
-export type GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
-  | "VERSION_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsLocationsRepositoriesPackagesVersionsViewEnum = "VERSION_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const GetProjectsLocationsRepositoriesPackagesVersionsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The name of the version to retrieve. */
   name: string;
   /** The view that should be returned in the response. */
-  view?: GetProjectsLocationsRepositoriesPackagesVersionsViewEnum;
+  view?: GetProjectsLocationsRepositoriesPackagesVersionsViewEnum | (string & {});
 }
-export const GetProjectsLocationsRepositoriesPackagesVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      view: S.optional(
-        GetProjectsLocationsRepositoriesPackagesVersionsViewEnum.pipe(
-          T.Query(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesPackagesVersionsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
+export const GetProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetProjectsLocationsRepositoriesPackagesVersionsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesPackagesVersionsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export type TagList = ReadonlyArray<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
@@ -2011,36 +1498,27 @@ export interface Version {
   updateTime?: string;
 }
 export const Version = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    relatedTags: S.optional(TagList),
-    metadata: S.optional(DocumentMap),
-    fingerprints: S.optional(HashList),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "relatedTags": S.optional(TagList),
+  "metadata": S.optional(DocumentMap),
+  "fingerprints": S.optional(HashList),
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
 export interface GetProjectsLocationsRepositoriesPythonPackagesRequest {
   /** Required. The name of the python package. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesPythonPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesPythonPackagesRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesPythonPackagesRequest>;
+export const GetProjectsLocationsRepositoriesPythonPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesPythonPackagesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesPythonPackagesRequest>;
 
 /** PythonPackage represents a python artifact. */
 export interface PythonPackage {
@@ -2058,59 +1536,37 @@ export interface PythonPackage {
   name?: string;
 }
 export const PythonPackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    uri: S.optional(S.String),
-    version: S.optional(S.String),
-    createTime: S.optional(S.String),
-    packageName: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "version": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "packageName": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "PythonPackage" }) as any as S.Schema<PythonPackage>;
 
 export interface GetProjectsLocationsRepositoriesRulesRequest {
   /** Required. The name of the rule to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesRulesRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesRulesRequest>;
+export const GetProjectsLocationsRepositoriesRulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesRulesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesRulesRequest>;
 
 export interface GetVpcscConfigProjectsLocationsRequest {
   /** Required. The name of the VPCSCConfig resource. */
   name: string;
 }
-export const GetVpcscConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetVpcscConfigProjectsLocationsRequest",
-}) as any as S.Schema<GetVpcscConfigProjectsLocationsRequest>;
+export const GetVpcscConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "GetVpcscConfigProjectsLocationsRequest" }) as any as S.Schema<GetVpcscConfigProjectsLocationsRequest>;
 
-export type VPCSCConfigVpcscPolicyEnum =
-  | "VPCSC_POLICY_UNSPECIFIED"
-  | "DENY"
-  | "ALLOW"
-  | (string & {});
+export type VPCSCConfigVpcscPolicyEnum = "VPCSC_POLICY_UNSPECIFIED" | "DENY" | "ALLOW";
 export const VPCSCConfigVpcscPolicyEnum = /*@__PURE__*/ S.String;
 
 /** The Artifact Registry VPC SC config that apply to a Project. */
@@ -2121,10 +1577,10 @@ export interface VPCSCConfig {
   name?: string;
 }
 export const VPCSCConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpcscPolicy: S.optional(VPCSCConfigVpcscPolicyEnum),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "vpcscPolicy": S.optional(VPCSCConfigVpcscPolicyEnum),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "VPCSCConfig" }) as any as S.Schema<VPCSCConfig>;
 
 /** Google Cloud Storage location where the artifacts currently reside. */
@@ -2135,13 +1591,11 @@ export interface ImportAptArtifactsGcsSource {
   useWildcards?: boolean;
 }
 export const ImportAptArtifactsGcsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uris: S.optional(StringList),
-    useWildcards: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ImportAptArtifactsGcsSource",
-}) as any as S.Schema<ImportAptArtifactsGcsSource>;
+S.Struct({
+  "uris": S.optional(StringList),
+  "useWildcards": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ImportAptArtifactsGcsSource" }) as any as S.Schema<ImportAptArtifactsGcsSource>;
 
 /** The request to import new apt artifacts. */
 export interface ImportAptArtifactsRequest {
@@ -2149,12 +1603,10 @@ export interface ImportAptArtifactsRequest {
   gcsSource?: ImportAptArtifactsGcsSource;
 }
 export const ImportAptArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsSource: S.optional(ImportAptArtifactsGcsSource),
-  }),
-).annotate({
-  identifier: "ImportAptArtifactsRequest",
-}) as any as S.Schema<ImportAptArtifactsRequest>;
+S.Struct({
+  "gcsSource": S.optional(ImportAptArtifactsGcsSource),
+}),
+).annotate({ identifier: "ImportAptArtifactsRequest" }) as any as S.Schema<ImportAptArtifactsRequest>;
 
 export interface ImportProjectsLocationsRepositoriesAptArtifactsRequest {
   /** The name of the parent resource where the artifacts will be imported. */
@@ -2162,21 +1614,12 @@ export interface ImportProjectsLocationsRepositoriesAptArtifactsRequest {
   /** Request body */
   body?: ImportAptArtifactsRequest;
 }
-export const ImportProjectsLocationsRepositoriesAptArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ImportAptArtifactsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/aptArtifacts:import",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsRepositoriesAptArtifactsRequest",
-  }) as any as S.Schema<ImportProjectsLocationsRepositoriesAptArtifactsRequest>;
+export const ImportProjectsLocationsRepositoriesAptArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ImportAptArtifactsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/aptArtifacts:import","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ImportProjectsLocationsRepositoriesAptArtifactsRequest" }) as any as S.Schema<ImportProjectsLocationsRepositoriesAptArtifactsRequest>;
 
 /** Google Cloud Storage location where the artifacts currently reside. */
 export interface ImportGoogetArtifactsGcsSource {
@@ -2186,13 +1629,11 @@ export interface ImportGoogetArtifactsGcsSource {
   useWildcards?: boolean;
 }
 export const ImportGoogetArtifactsGcsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uris: S.optional(StringList),
-    useWildcards: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ImportGoogetArtifactsGcsSource",
-}) as any as S.Schema<ImportGoogetArtifactsGcsSource>;
+S.Struct({
+  "uris": S.optional(StringList),
+  "useWildcards": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ImportGoogetArtifactsGcsSource" }) as any as S.Schema<ImportGoogetArtifactsGcsSource>;
 
 /** The request to import new googet artifacts. */
 export interface ImportGoogetArtifactsRequest {
@@ -2200,12 +1641,10 @@ export interface ImportGoogetArtifactsRequest {
   gcsSource?: ImportGoogetArtifactsGcsSource;
 }
 export const ImportGoogetArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsSource: S.optional(ImportGoogetArtifactsGcsSource),
-  }),
-).annotate({
-  identifier: "ImportGoogetArtifactsRequest",
-}) as any as S.Schema<ImportGoogetArtifactsRequest>;
+S.Struct({
+  "gcsSource": S.optional(ImportGoogetArtifactsGcsSource),
+}),
+).annotate({ identifier: "ImportGoogetArtifactsRequest" }) as any as S.Schema<ImportGoogetArtifactsRequest>;
 
 export interface ImportProjectsLocationsRepositoriesGoogetArtifactsRequest {
   /** The name of the parent resource where the artifacts will be imported. */
@@ -2213,21 +1652,12 @@ export interface ImportProjectsLocationsRepositoriesGoogetArtifactsRequest {
   /** Request body */
   body?: ImportGoogetArtifactsRequest;
 }
-export const ImportProjectsLocationsRepositoriesGoogetArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ImportGoogetArtifactsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/googetArtifacts:import",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsRepositoriesGoogetArtifactsRequest",
-  }) as any as S.Schema<ImportProjectsLocationsRepositoriesGoogetArtifactsRequest>;
+export const ImportProjectsLocationsRepositoriesGoogetArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ImportGoogetArtifactsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/googetArtifacts:import","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ImportProjectsLocationsRepositoriesGoogetArtifactsRequest" }) as any as S.Schema<ImportProjectsLocationsRepositoriesGoogetArtifactsRequest>;
 
 /** Google Cloud Storage location where the artifacts currently reside. */
 export interface ImportYumArtifactsGcsSource {
@@ -2237,13 +1667,11 @@ export interface ImportYumArtifactsGcsSource {
   uris?: StringList;
 }
 export const ImportYumArtifactsGcsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    useWildcards: S.optional(S.Boolean),
-    uris: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ImportYumArtifactsGcsSource",
-}) as any as S.Schema<ImportYumArtifactsGcsSource>;
+S.Struct({
+  "useWildcards": S.optional(S.Boolean),
+  "uris": S.optional(StringList),
+}),
+).annotate({ identifier: "ImportYumArtifactsGcsSource" }) as any as S.Schema<ImportYumArtifactsGcsSource>;
 
 /** The request to import new yum artifacts. */
 export interface ImportYumArtifactsRequest {
@@ -2251,12 +1679,10 @@ export interface ImportYumArtifactsRequest {
   gcsSource?: ImportYumArtifactsGcsSource;
 }
 export const ImportYumArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsSource: S.optional(ImportYumArtifactsGcsSource),
-  }),
-).annotate({
-  identifier: "ImportYumArtifactsRequest",
-}) as any as S.Schema<ImportYumArtifactsRequest>;
+S.Struct({
+  "gcsSource": S.optional(ImportYumArtifactsGcsSource),
+}),
+).annotate({ identifier: "ImportYumArtifactsRequest" }) as any as S.Schema<ImportYumArtifactsRequest>;
 
 export interface ImportProjectsLocationsRepositoriesYumArtifactsRequest {
   /** The name of the parent resource where the artifacts will be imported. */
@@ -2264,21 +1690,12 @@ export interface ImportProjectsLocationsRepositoriesYumArtifactsRequest {
   /** Request body */
   body?: ImportYumArtifactsRequest;
 }
-export const ImportProjectsLocationsRepositoriesYumArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ImportYumArtifactsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/yumArtifacts:import",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsRepositoriesYumArtifactsRequest",
-  }) as any as S.Schema<ImportProjectsLocationsRepositoriesYumArtifactsRequest>;
+export const ImportProjectsLocationsRepositoriesYumArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ImportYumArtifactsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/yumArtifacts:import","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ImportProjectsLocationsRepositoriesYumArtifactsRequest" }) as any as S.Schema<ImportProjectsLocationsRepositoriesYumArtifactsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -2293,27 +1710,17 @@ export interface ListProjectsLocationsRequest {
   filter?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://artifactregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2323,13 +1730,11 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    locations: S.optional(LocationList),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "locations": S.optional(LocationList),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsRepositoriesRequest {
   /** Required. The name of the parent resource whose repositories will be listed. */
@@ -2343,29 +1748,18 @@ export interface ListProjectsLocationsRepositoriesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/repositories",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsRepositoriesRequest",
-}) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
+export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/repositories","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
 
 export type RepositoryList = ReadonlyArray<Repository>;
-export const RepositoryList = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<RepositoryList>;
+export const RepositoryList = /*@__PURE__*/ S.Array(Repository) as any as S.Schema<RepositoryList>;
 
 /** The response from listing repositories. */
 export interface ListRepositoriesResponse {
@@ -2375,13 +1769,11 @@ export interface ListRepositoriesResponse {
   nextPageToken?: string;
 }
 export const ListRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repositories: S.optional(RepositoryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRepositoriesResponse",
-}) as any as S.Schema<ListRepositoriesResponse>;
+S.Struct({
+  "repositories": S.optional(RepositoryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListRepositoriesResponse" }) as any as S.Schema<ListRepositoriesResponse>;
 
 export interface ListProjectsLocationsRepositoriesAttachmentsRequest {
   /** Required. The name of the parent resource whose attachments will be listed. */
@@ -2393,28 +1785,17 @@ export interface ListProjectsLocationsRepositoriesAttachmentsRequest {
   /** Optional. An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `target` * `type` * `attachment_namespace` */
   filter?: string;
 }
-export const ListProjectsLocationsRepositoriesAttachmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/attachments",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesAttachmentsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesAttachmentsRequest>;
+export const ListProjectsLocationsRepositoriesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/attachments","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesAttachmentsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesAttachmentsRequest>;
 
 export type AttachmentList = ReadonlyArray<Attachment>;
-export const AttachmentList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<AttachmentList>;
+export const AttachmentList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<AttachmentList>;
 
 /** The response from listing attachments. */
 export interface ListAttachmentsResponse {
@@ -2424,13 +1805,11 @@ export interface ListAttachmentsResponse {
   nextPageToken?: string;
 }
 export const ListAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attachments: S.optional(AttachmentList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAttachmentsResponse",
-}) as any as S.Schema<ListAttachmentsResponse>;
+S.Struct({
+  "attachments": S.optional(AttachmentList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAttachmentsResponse" }) as any as S.Schema<ListAttachmentsResponse>;
 
 export interface ListProjectsLocationsRepositoriesDockerImagesRequest {
   /** Required. The name of the parent resource whose docker images will be listed. */
@@ -2442,28 +1821,17 @@ export interface ListProjectsLocationsRepositoriesDockerImagesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRepositoriesDockerImagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/dockerImages",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesDockerImagesRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesDockerImagesRequest>;
+export const ListProjectsLocationsRepositoriesDockerImagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/dockerImages","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesDockerImagesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesDockerImagesRequest>;
 
 export type DockerImageList = ReadonlyArray<DockerImage>;
-export const DockerImageList = /*@__PURE__*/ S.Array(
-  DockerImage,
-) as any as S.Schema<DockerImageList>;
+export const DockerImageList = /*@__PURE__*/ S.Array(DockerImage) as any as S.Schema<DockerImageList>;
 
 /** The response from listing docker images. */
 export interface ListDockerImagesResponse {
@@ -2473,13 +1841,11 @@ export interface ListDockerImagesResponse {
   nextPageToken?: string;
 }
 export const ListDockerImagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dockerImages: S.optional(DockerImageList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDockerImagesResponse",
-}) as any as S.Schema<ListDockerImagesResponse>;
+S.Struct({
+  "dockerImages": S.optional(DockerImageList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDockerImagesResponse" }) as any as S.Schema<ListDockerImagesResponse>;
 
 export interface ListProjectsLocationsRepositoriesFilesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
@@ -2493,30 +1859,18 @@ export interface ListProjectsLocationsRepositoriesFilesRequest {
   /** An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `owner` * `annotations` Examples of using a filter: To filter the results of your request to files with the name `my_file.txt` in project `my-project` in the `us-central` region, in repository `my-repo`, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-file.txt"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-*"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/*file.txt"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/*file*"` To filter the results of your request to files owned by the version `1.0` in package `pkg1`, append the following filter expression to your request: * `owner="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"` To filter the results of your request to files with the annotation key-value pair [`external_link`: `external_link_value`], append the following filter expression to your request: * `"annotations.external_link:external_link_value"` To filter just for a specific annotation key `external_link`, append the following filter expression to your request: * `"annotations.external_link"` If the annotation key or value contains special characters, you can escape them by surrounding the value with backticks. For example, to filter the results of your request to files with the annotation key-value pair [`external.link`:`https://example.com/my-file`], append the following filter expression to your request: * `` "annotations.`external.link`:`https://example.com/my-file`" `` You can also filter with annotations with a wildcard to match any number of characters before or after the value: * `` "annotations.*_link:`*example.com*`" `` */
   filter?: string;
 }
-export const ListProjectsLocationsRepositoriesFilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/files",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesFilesRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesFilesRequest>;
+export const ListProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/files","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesFilesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesFilesRequest>;
 
-export type GoogleDevtoolsArtifactregistryV1FileList =
-  ReadonlyArray<GoogleDevtoolsArtifactregistryV1File>;
-export const GoogleDevtoolsArtifactregistryV1FileList = /*@__PURE__*/ S.Array(
-  GoogleDevtoolsArtifactregistryV1File,
-) as any as S.Schema<GoogleDevtoolsArtifactregistryV1FileList>;
+export type GoogleDevtoolsArtifactregistryV1FileList = ReadonlyArray<GoogleDevtoolsArtifactregistryV1File>;
+export const GoogleDevtoolsArtifactregistryV1FileList = /*@__PURE__*/ S.Array(GoogleDevtoolsArtifactregistryV1File) as any as S.Schema<GoogleDevtoolsArtifactregistryV1FileList>;
 
 /** The response from listing files. */
 export interface ListFilesResponse {
@@ -2526,13 +1880,11 @@ export interface ListFilesResponse {
   nextPageToken?: string;
 }
 export const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    files: S.optional(GoogleDevtoolsArtifactregistryV1FileList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListFilesResponse",
-}) as any as S.Schema<ListFilesResponse>;
+S.Struct({
+  "files": S.optional(GoogleDevtoolsArtifactregistryV1FileList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListFilesResponse" }) as any as S.Schema<ListFilesResponse>;
 
 export interface ListProjectsLocationsRepositoriesMavenArtifactsRequest {
   /** Required. The name of the parent resource whose maven artifacts will be listed. */
@@ -2542,27 +1894,16 @@ export interface ListProjectsLocationsRepositoriesMavenArtifactsRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRepositoriesMavenArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/mavenArtifacts",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesMavenArtifactsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesMavenArtifactsRequest>;
+export const ListProjectsLocationsRepositoriesMavenArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/mavenArtifacts","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesMavenArtifactsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesMavenArtifactsRequest>;
 
 export type MavenArtifactList = ReadonlyArray<MavenArtifact>;
-export const MavenArtifactList = /*@__PURE__*/ S.Array(
-  MavenArtifact,
-) as any as S.Schema<MavenArtifactList>;
+export const MavenArtifactList = /*@__PURE__*/ S.Array(MavenArtifact) as any as S.Schema<MavenArtifactList>;
 
 /** The response from listing maven artifacts. */
 export interface ListMavenArtifactsResponse {
@@ -2572,13 +1913,11 @@ export interface ListMavenArtifactsResponse {
   nextPageToken?: string;
 }
 export const ListMavenArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mavenArtifacts: S.optional(MavenArtifactList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListMavenArtifactsResponse",
-}) as any as S.Schema<ListMavenArtifactsResponse>;
+S.Struct({
+  "mavenArtifacts": S.optional(MavenArtifactList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListMavenArtifactsResponse" }) as any as S.Schema<ListMavenArtifactsResponse>;
 
 export interface ListProjectsLocationsRepositoriesNpmPackagesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
@@ -2588,27 +1927,16 @@ export interface ListProjectsLocationsRepositoriesNpmPackagesRequest {
   /** The maximum number of artifacts to return. Maximum page size is 1,000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesNpmPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/npmPackages",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesNpmPackagesRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesNpmPackagesRequest>;
+export const ListProjectsLocationsRepositoriesNpmPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/npmPackages","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesNpmPackagesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesNpmPackagesRequest>;
 
 export type NpmPackageList = ReadonlyArray<NpmPackage>;
-export const NpmPackageList = /*@__PURE__*/ S.Array(
-  NpmPackage,
-) as any as S.Schema<NpmPackageList>;
+export const NpmPackageList = /*@__PURE__*/ S.Array(NpmPackage) as any as S.Schema<NpmPackageList>;
 
 /** The response from listing npm packages. */
 export interface ListNpmPackagesResponse {
@@ -2618,13 +1946,11 @@ export interface ListNpmPackagesResponse {
   nextPageToken?: string;
 }
 export const ListNpmPackagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    npmPackages: S.optional(NpmPackageList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListNpmPackagesResponse",
-}) as any as S.Schema<ListNpmPackagesResponse>;
+S.Struct({
+  "npmPackages": S.optional(NpmPackageList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListNpmPackagesResponse" }) as any as S.Schema<ListNpmPackagesResponse>;
 
 export interface ListProjectsLocationsRepositoriesPackagesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
@@ -2638,29 +1964,18 @@ export interface ListProjectsLocationsRepositoriesPackagesRequest {
   /** Optional. The field to order the results by. */
   orderBy?: string;
 }
-export const ListProjectsLocationsRepositoriesPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/packages",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesPackagesRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesRequest>;
+export const ListProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/packages","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesPackagesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesRequest>;
 
 export type PackageList = ReadonlyArray<Package>;
-export const PackageList = /*@__PURE__*/ S.Array(
-  Package,
-) as any as S.Schema<PackageList>;
+export const PackageList = /*@__PURE__*/ S.Array(Package) as any as S.Schema<PackageList>;
 
 /** The response from listing packages. */
 export interface ListPackagesResponse {
@@ -2670,13 +1985,11 @@ export interface ListPackagesResponse {
   packages?: PackageList;
 }
 export const ListPackagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    packages: S.optional(PackageList),
-  }),
-).annotate({
-  identifier: "ListPackagesResponse",
-}) as any as S.Schema<ListPackagesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "packages": S.optional(PackageList),
+}),
+).annotate({ identifier: "ListPackagesResponse" }) as any as S.Schema<ListPackagesResponse>;
 
 export interface ListProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the parent package whose tags will be listed. For example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. */
@@ -2688,23 +2001,14 @@ export interface ListProjectsLocationsRepositoriesPackagesTagsRequest {
   /** An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `version` Examples of using a filter: To filter the results of your request to tags with the name `my-tag` in package `my-package` in repository `my-repo` in project "`y-project` in the us-central region, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my-tag"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my*"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag*"` To filter the results of your request to tags applied to the version `1.0` in package `my-package`, append the following filter expression to your request: * `version="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"` */
   filter?: string;
 }
-export const ListProjectsLocationsRepositoriesPackagesTagsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/tags",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesPackagesTagsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesTagsRequest>;
+export const ListProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/tags","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesPackagesTagsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesTagsRequest>;
 
 /** The response from listing tags. */
 export interface ListTagsResponse {
@@ -2714,21 +2018,14 @@ export interface ListTagsResponse {
   nextPageToken?: string;
 }
 export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(TagList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListTagsResponse",
-}) as any as S.Schema<ListTagsResponse>;
+S.Struct({
+  "tags": S.optional(TagList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListTagsResponse" }) as any as S.Schema<ListTagsResponse>;
 
-export type ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
-  | "VERSION_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsRepositoriesPackagesVersionsViewEnum = "VERSION_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const ListProjectsLocationsRepositoriesPackagesVersionsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The name of the parent resource whose versions will be listed. */
@@ -2736,7 +2033,7 @@ export interface ListProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The maximum number of versions to return. Maximum page size is 1,000. */
   pageSize?: number;
   /** The view that should be returned in the response. */
-  view?: ListProjectsLocationsRepositoriesPackagesVersionsViewEnum;
+  view?: ListProjectsLocationsRepositoriesPackagesVersionsViewEnum | (string & {});
   /** Optional. The field to order the results by. */
   orderBy?: string;
   /** Optional. An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `annotations` Examples of using a filter: To filter the results of your request to versions with the name `my-version` in project `my-project` in the `us-central` region, in repository `my-repo`, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/my-version"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/*version"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/my*"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/*version*"` To filter the results of your request to versions with the annotation key-value pair [`external_link`: `external_link_value`], append the following filter expression to your request: * `"annotations.external_link:external_link_value"` To filter just for a specific annotation key `external_link`, append the following filter expression to your request: * `"annotations.external_link"` If the annotation key or value contains special characters, you can escape them by surrounding the value with backticks. For example, to filter the results of your request to versions with the annotation key-value pair [`external.link`:`https://example.com/my-version`], append the following filter expression to your request: * `` "annotations.`external.link`:`https://example.com/my-version`" `` You can also filter with annotations with a wildcard to match any number of characters before or after the value: * `` "annotations.*_link:`*example.com*`" `` */
@@ -2744,34 +2041,19 @@ export interface ListProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRepositoriesPackagesVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      view: S.optional(
-        ListProjectsLocationsRepositoriesPackagesVersionsViewEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/versions",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesPackagesVersionsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesVersionsRequest>;
+export const ListProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "view": S.optional(ListProjectsLocationsRepositoriesPackagesVersionsViewEnum.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/versions","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesPackagesVersionsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export type VersionList = ReadonlyArray<Version>;
-export const VersionList = /*@__PURE__*/ S.Array(
-  Version,
-) as any as S.Schema<VersionList>;
+export const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
 
 /** The response from listing versions. */
 export interface ListVersionsResponse {
@@ -2781,13 +2063,11 @@ export interface ListVersionsResponse {
   versions?: VersionList;
 }
 export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    versions: S.optional(VersionList),
-  }),
-).annotate({
-  identifier: "ListVersionsResponse",
-}) as any as S.Schema<ListVersionsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "versions": S.optional(VersionList),
+}),
+).annotate({ identifier: "ListVersionsResponse" }) as any as S.Schema<ListVersionsResponse>;
 
 export interface ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest {
   /** Required. The repository of the artifact to list. Format: projects/{project}/locations/{location}/repositories/{repository} */
@@ -2799,28 +2079,17 @@ export interface ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest {
   /** Optional. Filter should only support The location of the prewarmed artifacts. multi-region is not supported for this field. */
   filter?: string;
 }
-export const ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/prewarmedArtifacts",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest>;
+export const ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/prewarmedArtifacts","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest>;
 
 export type PrewarmedArtifactList = ReadonlyArray<PrewarmedArtifact>;
-export const PrewarmedArtifactList = /*@__PURE__*/ S.Array(
-  PrewarmedArtifact,
-) as any as S.Schema<PrewarmedArtifactList>;
+export const PrewarmedArtifactList = /*@__PURE__*/ S.Array(PrewarmedArtifact) as any as S.Schema<PrewarmedArtifactList>;
 
 /** The response for listing artifacts for streaming. */
 export interface ListPrewarmedArtifactsResponse {
@@ -2830,13 +2099,11 @@ export interface ListPrewarmedArtifactsResponse {
   prewarmedArtifacts?: PrewarmedArtifactList;
 }
 export const ListPrewarmedArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    prewarmedArtifacts: S.optional(PrewarmedArtifactList),
-  }),
-).annotate({
-  identifier: "ListPrewarmedArtifactsResponse",
-}) as any as S.Schema<ListPrewarmedArtifactsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "prewarmedArtifacts": S.optional(PrewarmedArtifactList),
+}),
+).annotate({ identifier: "ListPrewarmedArtifactsResponse" }) as any as S.Schema<ListPrewarmedArtifactsResponse>;
 
 export interface ListProjectsLocationsRepositoriesPythonPackagesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
@@ -2846,27 +2113,16 @@ export interface ListProjectsLocationsRepositoriesPythonPackagesRequest {
   /** The maximum number of artifacts to return. Maximum page size is 1,000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesPythonPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/pythonPackages",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesPythonPackagesRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesPythonPackagesRequest>;
+export const ListProjectsLocationsRepositoriesPythonPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/pythonPackages","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesPythonPackagesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesPythonPackagesRequest>;
 
 export type PythonPackageList = ReadonlyArray<PythonPackage>;
-export const PythonPackageList = /*@__PURE__*/ S.Array(
-  PythonPackage,
-) as any as S.Schema<PythonPackageList>;
+export const PythonPackageList = /*@__PURE__*/ S.Array(PythonPackage) as any as S.Schema<PythonPackageList>;
 
 /** The response from listing python packages. */
 export interface ListPythonPackagesResponse {
@@ -2876,13 +2132,11 @@ export interface ListPythonPackagesResponse {
   nextPageToken?: string;
 }
 export const ListPythonPackagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pythonPackages: S.optional(PythonPackageList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPythonPackagesResponse",
-}) as any as S.Schema<ListPythonPackagesResponse>;
+S.Struct({
+  "pythonPackages": S.optional(PythonPackageList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPythonPackagesResponse" }) as any as S.Schema<ListPythonPackagesResponse>;
 
 export interface ListProjectsLocationsRepositoriesRulesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
@@ -2892,28 +2146,16 @@ export interface ListProjectsLocationsRepositoriesRulesRequest {
   /** The maximum number of rules to return. Maximum page size is 1,000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/rules",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesRulesRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesRulesRequest>;
+export const ListProjectsLocationsRepositoriesRulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/rules","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesRulesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesRulesRequest>;
 
-export type GoogleDevtoolsArtifactregistryV1RuleList =
-  ReadonlyArray<GoogleDevtoolsArtifactregistryV1Rule>;
-export const GoogleDevtoolsArtifactregistryV1RuleList = /*@__PURE__*/ S.Array(
-  GoogleDevtoolsArtifactregistryV1Rule,
-) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RuleList>;
+export type GoogleDevtoolsArtifactregistryV1RuleList = ReadonlyArray<GoogleDevtoolsArtifactregistryV1Rule>;
+export const GoogleDevtoolsArtifactregistryV1RuleList = /*@__PURE__*/ S.Array(GoogleDevtoolsArtifactregistryV1Rule) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RuleList>;
 
 /** The response from listing rules. */
 export interface ListRulesResponse {
@@ -2923,13 +2165,11 @@ export interface ListRulesResponse {
   nextPageToken?: string;
 }
 export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(GoogleDevtoolsArtifactregistryV1RuleList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRulesResponse",
-}) as any as S.Schema<ListRulesResponse>;
+S.Struct({
+  "rules": S.optional(GoogleDevtoolsArtifactregistryV1RuleList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListRulesResponse" }) as any as S.Schema<ListRulesResponse>;
 
 export interface PatchProjectsLocationsRepositoriesRequest {
   /** The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. For each location in a project, repository names must be unique. */
@@ -2939,22 +2179,13 @@ export interface PatchProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const PatchProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Repository.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>;
+export const PatchProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Repository.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>;
 
 export interface PatchProjectsLocationsRepositoriesFilesRequest {
   /** The name of the file, for example: `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains slashes, they are escaped. */
@@ -2964,22 +2195,13 @@ export interface PatchProjectsLocationsRepositoriesFilesRequest {
   /** Request body */
   body?: GoogleDevtoolsArtifactregistryV1File;
 }
-export const PatchProjectsLocationsRepositoriesFilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleDevtoolsArtifactregistryV1File.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesFilesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesFilesRequest>;
+export const PatchProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleDevtoolsArtifactregistryV1File.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesFilesRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesFilesRequest>;
 
 export interface PatchProjectsLocationsRepositoriesPackagesRequest {
   /** The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped. */
@@ -2989,22 +2211,13 @@ export interface PatchProjectsLocationsRepositoriesPackagesRequest {
   /** Request body */
   body?: Package;
 }
-export const PatchProjectsLocationsRepositoriesPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Package.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesPackagesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesRequest>;
+export const PatchProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Package.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesPackagesRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesRequest>;
 
 export interface PatchProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded. */
@@ -3014,22 +2227,13 @@ export interface PatchProjectsLocationsRepositoriesPackagesTagsRequest {
   /** Request body */
   body?: Tag;
 }
-export const PatchProjectsLocationsRepositoriesPackagesTagsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Tag.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesPackagesTagsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesTagsRequest>;
+export const PatchProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Tag.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesPackagesTagsRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesTagsRequest>;
 
 export interface PatchProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If the package or version ID parts contain slashes, the slashes are escaped. */
@@ -3039,22 +2243,13 @@ export interface PatchProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** Request body */
   body?: Version;
 }
-export const PatchProjectsLocationsRepositoriesPackagesVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Version.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesPackagesVersionsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesVersionsRequest>;
+export const PatchProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Version.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesPackagesVersionsRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export interface PatchProjectsLocationsRepositoriesRulesRequest {
   /** The name of the rule, for example: `projects/p1/locations/us-central1/repositories/repo1/rules/rule1`. */
@@ -3064,22 +2259,13 @@ export interface PatchProjectsLocationsRepositoriesRulesRequest {
   /** Request body */
   body?: GoogleDevtoolsArtifactregistryV1Rule;
 }
-export const PatchProjectsLocationsRepositoriesRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleDevtoolsArtifactregistryV1Rule.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesRulesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesRulesRequest>;
+export const PatchProjectsLocationsRepositoriesRulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleDevtoolsArtifactregistryV1Rule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesRulesRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesRulesRequest>;
 
 /** The platform (architecture and OS) of the image. This is a sub-message. */
 export interface PrewarmPlatform {
@@ -3089,13 +2275,11 @@ export interface PrewarmPlatform {
   os?: string;
 }
 export const PrewarmPlatform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    architecture: S.optional(S.String),
-    os: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrewarmPlatform",
-}) as any as S.Schema<PrewarmPlatform>;
+S.Struct({
+  "architecture": S.optional(S.String),
+  "os": S.optional(S.String),
+}),
+).annotate({ identifier: "PrewarmPlatform" }) as any as S.Schema<PrewarmPlatform>;
 
 /** The request for prewarming an artifact for streaming. */
 export interface PrewarmArtifactRequest {
@@ -3113,17 +2297,15 @@ export interface PrewarmArtifactRequest {
   version?: string;
 }
 export const PrewarmArtifactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retentionDays: S.optional(S.String),
-    streamLocation: S.optional(S.String),
-    force: S.optional(S.Boolean),
-    platform: S.optional(PrewarmPlatform),
-    tag: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrewarmArtifactRequest",
-}) as any as S.Schema<PrewarmArtifactRequest>;
+S.Struct({
+  "retentionDays": S.optional(S.String),
+  "streamLocation": S.optional(S.String),
+  "force": S.optional(S.Boolean),
+  "platform": S.optional(PrewarmPlatform),
+  "tag": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
+).annotate({ identifier: "PrewarmArtifactRequest" }) as any as S.Schema<PrewarmArtifactRequest>;
 
 export interface PrewarmArtifactProjectsLocationsRepositoriesRequest {
   /** Required. The repository name, for example: `projects/p1/locations/us-central1/repositories/repo1`. If the package or version ID parts contain slashes, the slashes are escaped. */
@@ -3131,21 +2313,12 @@ export interface PrewarmArtifactProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: PrewarmArtifactRequest;
 }
-export const PrewarmArtifactProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repository: S.String.pipe(T.Label()),
-      body: S.optional(PrewarmArtifactRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+repository}:prewarmArtifact",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PrewarmArtifactProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<PrewarmArtifactProjectsLocationsRepositoriesRequest>;
+export const PrewarmArtifactProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repository": S.String.pipe(T.Label()),
+  "body": S.optional(PrewarmArtifactRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+repository}:prewarmArtifact","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "PrewarmArtifactProjectsLocationsRepositoriesRequest" }) as any as S.Schema<PrewarmArtifactProjectsLocationsRepositoriesRequest>;
 
 /** The request for removing an artifact from streaming. */
 export interface RemovePrewarmedArtifactRequest {
@@ -3157,14 +2330,12 @@ export interface RemovePrewarmedArtifactRequest {
   tag?: string;
 }
 export const RemovePrewarmedArtifactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    streamLocation: S.optional(S.String),
-    tag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemovePrewarmedArtifactRequest",
-}) as any as S.Schema<RemovePrewarmedArtifactRequest>;
+S.Struct({
+  "version": S.optional(S.String),
+  "streamLocation": S.optional(S.String),
+  "tag": S.optional(S.String),
+}),
+).annotate({ identifier: "RemovePrewarmedArtifactRequest" }) as any as S.Schema<RemovePrewarmedArtifactRequest>;
 
 export interface RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest {
   /** Required. The repository name, for example: `projects/p1/locations/us-central1/repositories/repo1`. */
@@ -3172,21 +2343,12 @@ export interface RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: RemovePrewarmedArtifactRequest;
 }
-export const RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repository: S.String.pipe(T.Label()),
-      body: S.optional(RemovePrewarmedArtifactRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+repository}:removePrewarmedArtifact",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest>;
+export const RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repository": S.String.pipe(T.Label()),
+  "body": S.optional(RemovePrewarmedArtifactRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+repository}:removePrewarmedArtifact","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest" }) as any as S.Schema<RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest>;
 
 /** The response for removing an artifact from streaming. */
 export interface RemovePrewarmedArtifactResponse {
@@ -3194,12 +2356,10 @@ export interface RemovePrewarmedArtifactResponse {
   prewarmedArtifact?: PrewarmedArtifact;
 }
 export const RemovePrewarmedArtifactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prewarmedArtifact: S.optional(PrewarmedArtifact),
-  }),
-).annotate({
-  identifier: "RemovePrewarmedArtifactResponse",
-}) as any as S.Schema<RemovePrewarmedArtifactResponse>;
+S.Struct({
+  "prewarmedArtifact": S.optional(PrewarmedArtifact),
+}),
+).annotate({ identifier: "RemovePrewarmedArtifactResponse" }) as any as S.Schema<RemovePrewarmedArtifactResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -3207,12 +2367,10 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3220,21 +2378,12 @@ export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
+export const SetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsRepositoriesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -3242,12 +2391,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3255,21 +2402,12 @@ export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
+export const TestIamPermissionsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsRepositoriesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -3277,12 +2415,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateProjectConfigProjectsLocationsRequest {
   /** Identifier. The name of the project's configuration. Always of the form: projects/{project}/locations/{location}/projectConfig */
@@ -3292,22 +2428,13 @@ export interface UpdateProjectConfigProjectsLocationsRequest {
   /** Request body */
   body?: ProjectConfig;
 }
-export const UpdateProjectConfigProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ProjectConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateProjectConfigProjectsLocationsRequest",
-  }) as any as S.Schema<UpdateProjectConfigProjectsLocationsRequest>;
+export const UpdateProjectConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ProjectConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectConfigProjectsLocationsRequest" }) as any as S.Schema<UpdateProjectConfigProjectsLocationsRequest>;
 
 export interface UpdateProjectSettingsProjectsRequest {
   /** The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update request: never set In response: always set */
@@ -3317,22 +2444,13 @@ export interface UpdateProjectSettingsProjectsRequest {
   /** Request body */
   body?: ProjectSettings;
 }
-export const UpdateProjectSettingsProjectsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ProjectSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateProjectSettingsProjectsRequest",
-}) as any as S.Schema<UpdateProjectSettingsProjectsRequest>;
+export const UpdateProjectSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ProjectSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectSettingsProjectsRequest" }) as any as S.Schema<UpdateProjectSettingsProjectsRequest>;
 
 export interface UpdateVpcscConfigProjectsLocationsRequest {
   /** The name of the project's VPC SC Config. Always of the form: projects/{projectID}/locations/{location}/vpcscConfig In update request: never set In response: always set */
@@ -3342,30 +2460,19 @@ export interface UpdateVpcscConfigProjectsLocationsRequest {
   /** Request body */
   body?: VPCSCConfig;
 }
-export const UpdateVpcscConfigProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(VPCSCConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateVpcscConfigProjectsLocationsRequest",
-  }) as any as S.Schema<UpdateVpcscConfigProjectsLocationsRequest>;
+export const UpdateVpcscConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(VPCSCConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "UpdateVpcscConfigProjectsLocationsRequest" }) as any as S.Schema<UpdateVpcscConfigProjectsLocationsRequest>;
 
 /** The request to upload an artifact. */
 export interface UploadAptArtifactRequest {}
 export const UploadAptArtifactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadAptArtifactRequest",
-}) as any as S.Schema<UploadAptArtifactRequest>;
+S.Struct({}),
+).annotate({ identifier: "UploadAptArtifactRequest" }) as any as S.Schema<UploadAptArtifactRequest>;
 
 export interface UploadProjectsLocationsRepositoriesAptArtifactsRequest {
   /** The name of the parent resource where the artifacts will be uploaded. */
@@ -3373,21 +2480,12 @@ export interface UploadProjectsLocationsRepositoriesAptArtifactsRequest {
   /** Request body */
   body?: UploadAptArtifactRequest;
 }
-export const UploadProjectsLocationsRepositoriesAptArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(UploadAptArtifactRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/aptArtifacts:create",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UploadProjectsLocationsRepositoriesAptArtifactsRequest",
-  }) as any as S.Schema<UploadProjectsLocationsRepositoriesAptArtifactsRequest>;
+export const UploadProjectsLocationsRepositoriesAptArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(UploadAptArtifactRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/aptArtifacts:create","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "UploadProjectsLocationsRepositoriesAptArtifactsRequest" }) as any as S.Schema<UploadProjectsLocationsRepositoriesAptArtifactsRequest>;
 
 /** The response to upload an artifact. */
 export interface UploadAptArtifactMediaResponse {
@@ -3395,12 +2493,10 @@ export interface UploadAptArtifactMediaResponse {
   operation?: Operation;
 }
 export const UploadAptArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadAptArtifactMediaResponse",
-}) as any as S.Schema<UploadAptArtifactMediaResponse>;
+S.Struct({
+  "operation": S.optional(Operation),
+}),
+).annotate({ identifier: "UploadAptArtifactMediaResponse" }) as any as S.Schema<UploadAptArtifactMediaResponse>;
 
 /** The request to upload a file. */
 export interface UploadFileRequest {
@@ -3408,12 +2504,10 @@ export interface UploadFileRequest {
   fileId?: string;
 }
 export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UploadFileRequest",
-}) as any as S.Schema<UploadFileRequest>;
+S.Struct({
+  "fileId": S.optional(S.String),
+}),
+).annotate({ identifier: "UploadFileRequest" }) as any as S.Schema<UploadFileRequest>;
 
 export interface UploadProjectsLocationsRepositoriesFilesRequest {
   /** Required. The resource name of the repository where the file will be uploaded. */
@@ -3421,21 +2515,12 @@ export interface UploadProjectsLocationsRepositoriesFilesRequest {
   /** Request body */
   body?: UploadFileRequest;
 }
-export const UploadProjectsLocationsRepositoriesFilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(UploadFileRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/files:upload",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UploadProjectsLocationsRepositoriesFilesRequest",
-  }) as any as S.Schema<UploadProjectsLocationsRepositoriesFilesRequest>;
+export const UploadProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(UploadFileRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/files:upload","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "UploadProjectsLocationsRepositoriesFilesRequest" }) as any as S.Schema<UploadProjectsLocationsRepositoriesFilesRequest>;
 
 /** The response to upload a generic artifact. */
 export interface UploadFileMediaResponse {
@@ -3443,12 +2528,10 @@ export interface UploadFileMediaResponse {
   operation?: Operation;
 }
 export const UploadFileMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadFileMediaResponse",
-}) as any as S.Schema<UploadFileMediaResponse>;
+S.Struct({
+  "operation": S.optional(Operation),
+}),
+).annotate({ identifier: "UploadFileMediaResponse" }) as any as S.Schema<UploadFileMediaResponse>;
 
 /** The request to upload a generic artifact. The created GenericArtifact will have the resource name {parent}/genericArtifacts/package_id:version_id. The created file will have the resource name {parent}/files/package_id:version_id:filename. */
 export interface UploadGenericArtifactRequest {
@@ -3460,14 +2543,12 @@ export interface UploadGenericArtifactRequest {
   versionId?: string;
 }
 export const UploadGenericArtifactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filename: S.optional(S.String),
-    packageId: S.optional(S.String),
-    versionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UploadGenericArtifactRequest",
-}) as any as S.Schema<UploadGenericArtifactRequest>;
+S.Struct({
+  "filename": S.optional(S.String),
+  "packageId": S.optional(S.String),
+  "versionId": S.optional(S.String),
+}),
+).annotate({ identifier: "UploadGenericArtifactRequest" }) as any as S.Schema<UploadGenericArtifactRequest>;
 
 export interface UploadProjectsLocationsRepositoriesGenericArtifactsRequest {
   /** The resource name of the repository where the generic artifact will be uploaded. */
@@ -3475,21 +2556,12 @@ export interface UploadProjectsLocationsRepositoriesGenericArtifactsRequest {
   /** Request body */
   body?: UploadGenericArtifactRequest;
 }
-export const UploadProjectsLocationsRepositoriesGenericArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(UploadGenericArtifactRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/genericArtifacts:create",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UploadProjectsLocationsRepositoriesGenericArtifactsRequest",
-  }) as any as S.Schema<UploadProjectsLocationsRepositoriesGenericArtifactsRequest>;
+export const UploadProjectsLocationsRepositoriesGenericArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(UploadGenericArtifactRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/genericArtifacts:create","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "UploadProjectsLocationsRepositoriesGenericArtifactsRequest" }) as any as S.Schema<UploadProjectsLocationsRepositoriesGenericArtifactsRequest>;
 
 /** The response to upload a generic artifact. */
 export interface UploadGenericArtifactMediaResponse {
@@ -3497,20 +2569,16 @@ export interface UploadGenericArtifactMediaResponse {
   operation?: Operation;
 }
 export const UploadGenericArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadGenericArtifactMediaResponse",
-}) as any as S.Schema<UploadGenericArtifactMediaResponse>;
+S.Struct({
+  "operation": S.optional(Operation),
+}),
+).annotate({ identifier: "UploadGenericArtifactMediaResponse" }) as any as S.Schema<UploadGenericArtifactMediaResponse>;
 
 /** The request to upload a Go module. */
 export interface UploadGoModuleRequest {}
 export const UploadGoModuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadGoModuleRequest",
-}) as any as S.Schema<UploadGoModuleRequest>;
+S.Struct({}),
+).annotate({ identifier: "UploadGoModuleRequest" }) as any as S.Schema<UploadGoModuleRequest>;
 
 export interface UploadProjectsLocationsRepositoriesGoModulesRequest {
   /** The resource name of the repository where the Go module will be uploaded. */
@@ -3518,21 +2586,12 @@ export interface UploadProjectsLocationsRepositoriesGoModulesRequest {
   /** Request body */
   body?: UploadGoModuleRequest;
 }
-export const UploadProjectsLocationsRepositoriesGoModulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(UploadGoModuleRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/goModules:create",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UploadProjectsLocationsRepositoriesGoModulesRequest",
-  }) as any as S.Schema<UploadProjectsLocationsRepositoriesGoModulesRequest>;
+export const UploadProjectsLocationsRepositoriesGoModulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(UploadGoModuleRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/goModules:create","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "UploadProjectsLocationsRepositoriesGoModulesRequest" }) as any as S.Schema<UploadProjectsLocationsRepositoriesGoModulesRequest>;
 
 /** The response to upload a Go module. */
 export interface UploadGoModuleMediaResponse {
@@ -3540,20 +2599,16 @@ export interface UploadGoModuleMediaResponse {
   operation?: Operation;
 }
 export const UploadGoModuleMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadGoModuleMediaResponse",
-}) as any as S.Schema<UploadGoModuleMediaResponse>;
+S.Struct({
+  "operation": S.optional(Operation),
+}),
+).annotate({ identifier: "UploadGoModuleMediaResponse" }) as any as S.Schema<UploadGoModuleMediaResponse>;
 
 /** The request to upload an artifact. */
 export interface UploadGoogetArtifactRequest {}
 export const UploadGoogetArtifactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadGoogetArtifactRequest",
-}) as any as S.Schema<UploadGoogetArtifactRequest>;
+S.Struct({}),
+).annotate({ identifier: "UploadGoogetArtifactRequest" }) as any as S.Schema<UploadGoogetArtifactRequest>;
 
 export interface UploadProjectsLocationsRepositoriesGoogetArtifactsRequest {
   /** The name of the parent resource where the artifacts will be uploaded. */
@@ -3561,21 +2616,12 @@ export interface UploadProjectsLocationsRepositoriesGoogetArtifactsRequest {
   /** Request body */
   body?: UploadGoogetArtifactRequest;
 }
-export const UploadProjectsLocationsRepositoriesGoogetArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(UploadGoogetArtifactRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/googetArtifacts:create",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UploadProjectsLocationsRepositoriesGoogetArtifactsRequest",
-  }) as any as S.Schema<UploadProjectsLocationsRepositoriesGoogetArtifactsRequest>;
+export const UploadProjectsLocationsRepositoriesGoogetArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(UploadGoogetArtifactRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/googetArtifacts:create","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "UploadProjectsLocationsRepositoriesGoogetArtifactsRequest" }) as any as S.Schema<UploadProjectsLocationsRepositoriesGoogetArtifactsRequest>;
 
 /** The response to upload an artifact. */
 export interface UploadGoogetArtifactMediaResponse {
@@ -3583,12 +2629,10 @@ export interface UploadGoogetArtifactMediaResponse {
   operation?: Operation;
 }
 export const UploadGoogetArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadGoogetArtifactMediaResponse",
-}) as any as S.Schema<UploadGoogetArtifactMediaResponse>;
+S.Struct({
+  "operation": S.optional(Operation),
+}),
+).annotate({ identifier: "UploadGoogetArtifactMediaResponse" }) as any as S.Schema<UploadGoogetArtifactMediaResponse>;
 
 /** The request to upload an artifact. */
 export interface UploadKfpArtifactRequest {
@@ -3598,13 +2642,11 @@ export interface UploadKfpArtifactRequest {
   description?: string;
 }
 export const UploadKfpArtifactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(StringList),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UploadKfpArtifactRequest",
-}) as any as S.Schema<UploadKfpArtifactRequest>;
+S.Struct({
+  "tags": S.optional(StringList),
+  "description": S.optional(S.String),
+}),
+).annotate({ identifier: "UploadKfpArtifactRequest" }) as any as S.Schema<UploadKfpArtifactRequest>;
 
 export interface UploadProjectsLocationsRepositoriesKfpArtifactsRequest {
   /** The resource name of the repository where the KFP artifact will be uploaded. */
@@ -3612,21 +2654,12 @@ export interface UploadProjectsLocationsRepositoriesKfpArtifactsRequest {
   /** Request body */
   body?: UploadKfpArtifactRequest;
 }
-export const UploadProjectsLocationsRepositoriesKfpArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(UploadKfpArtifactRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/kfpArtifacts:create",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UploadProjectsLocationsRepositoriesKfpArtifactsRequest",
-  }) as any as S.Schema<UploadProjectsLocationsRepositoriesKfpArtifactsRequest>;
+export const UploadProjectsLocationsRepositoriesKfpArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(UploadKfpArtifactRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/kfpArtifacts:create","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "UploadProjectsLocationsRepositoriesKfpArtifactsRequest" }) as any as S.Schema<UploadProjectsLocationsRepositoriesKfpArtifactsRequest>;
 
 /** The response to upload an artifact. */
 export interface UploadKfpArtifactMediaResponse {
@@ -3634,20 +2667,16 @@ export interface UploadKfpArtifactMediaResponse {
   operation?: Operation;
 }
 export const UploadKfpArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadKfpArtifactMediaResponse",
-}) as any as S.Schema<UploadKfpArtifactMediaResponse>;
+S.Struct({
+  "operation": S.optional(Operation),
+}),
+).annotate({ identifier: "UploadKfpArtifactMediaResponse" }) as any as S.Schema<UploadKfpArtifactMediaResponse>;
 
 /** The request to upload an artifact. */
 export interface UploadYumArtifactRequest {}
 export const UploadYumArtifactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadYumArtifactRequest",
-}) as any as S.Schema<UploadYumArtifactRequest>;
+S.Struct({}),
+).annotate({ identifier: "UploadYumArtifactRequest" }) as any as S.Schema<UploadYumArtifactRequest>;
 
 export interface UploadProjectsLocationsRepositoriesYumArtifactsRequest {
   /** The name of the parent resource where the artifacts will be uploaded. */
@@ -3655,21 +2684,12 @@ export interface UploadProjectsLocationsRepositoriesYumArtifactsRequest {
   /** Request body */
   body?: UploadYumArtifactRequest;
 }
-export const UploadProjectsLocationsRepositoriesYumArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(UploadYumArtifactRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/yumArtifacts:create",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UploadProjectsLocationsRepositoriesYumArtifactsRequest",
-  }) as any as S.Schema<UploadProjectsLocationsRepositoriesYumArtifactsRequest>;
+export const UploadProjectsLocationsRepositoriesYumArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(UploadYumArtifactRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/yumArtifacts:create","baseUrl":"https://artifactregistry.googleapis.com/"})),
+).annotate({ identifier: "UploadProjectsLocationsRepositoriesYumArtifactsRequest" }) as any as S.Schema<UploadProjectsLocationsRepositoriesYumArtifactsRequest>;
 
 /** The response to upload an artifact. */
 export interface UploadYumArtifactMediaResponse {
@@ -3677,19 +2697,12 @@ export interface UploadYumArtifactMediaResponse {
   operation?: Operation;
 }
 export const UploadYumArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadYumArtifactMediaResponse",
-}) as any as S.Schema<UploadYumArtifactMediaResponse>;
+S.Struct({
+  "operation": S.optional(Operation),
+}),
+).annotate({ identifier: "UploadYumArtifactMediaResponse" }) as any as S.Schema<UploadYumArtifactMediaResponse>;
 
-export type BatchDeleteProjectsLocationsRepositoriesPackagesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchDeleteProjectsLocationsRepositoriesPackagesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes multiple versions across a repository. The returned operation will complete once the versions have been deleted. */
 export const batchDeleteProjectsLocationsRepositoriesPackagesVersions: API.OperationMethod<
   BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest,
@@ -3704,12 +2717,7 @@ export const batchDeleteProjectsLocationsRepositoriesPackagesVersions: API.Opera
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -3724,12 +2732,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckPrewarmedArtifactProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CheckPrewarmedArtifactProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Checks an artifact streaming. */
 export const checkPrewarmedArtifactProjectsLocationsRepositories: API.OperationMethod<
   CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest,
@@ -3744,12 +2747,7 @@ export const checkPrewarmedArtifactProjectsLocationsRepositories: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository. */
 export const createProjectsLocationsRepositories: API.OperationMethod<
   CreateProjectsLocationsRepositoriesRequest,
@@ -3764,12 +2762,7 @@ export const createProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesAttachmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an attachment. The returned Operation will finish once the attachment has been created. Its response will be the created attachment. */
 export const createProjectsLocationsRepositoriesAttachments: API.OperationMethod<
   CreateProjectsLocationsRepositoriesAttachmentsRequest,
@@ -3784,12 +2777,7 @@ export const createProjectsLocationsRepositoriesAttachments: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesPackagesTagsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesPackagesTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a tag. */
 export const createProjectsLocationsRepositoriesPackagesTags: API.OperationMethod<
   CreateProjectsLocationsRepositoriesPackagesTagsRequest,
@@ -3804,12 +2792,7 @@ export const createProjectsLocationsRepositoriesPackagesTags: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesRulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a rule. */
 export const createProjectsLocationsRepositoriesRules: API.OperationMethod<
   CreateProjectsLocationsRepositoriesRulesRequest,
@@ -3824,12 +2807,7 @@ export const createProjectsLocationsRepositoriesRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a repository and all of its contents. The returned Operation will finish once the repository has been deleted. It will not have any Operation metadata and will return a google.protobuf.Empty response. */
 export const deleteProjectsLocationsRepositories: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesRequest,
@@ -3844,12 +2822,7 @@ export const deleteProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesAttachmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an attachment. The returned Operation will finish once the attachments has been deleted. It will not have any Operation metadata and will return a `google.protobuf.Empty` response. */
 export const deleteProjectsLocationsRepositoriesAttachments: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesAttachmentsRequest,
@@ -3864,12 +2837,7 @@ export const deleteProjectsLocationsRepositoriesAttachments: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesFilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a file and all of its content. It is only allowed on generic repositories. The returned operation will complete once the file has been deleted. */
 export const deleteProjectsLocationsRepositoriesFiles: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesFilesRequest,
@@ -3884,12 +2852,7 @@ export const deleteProjectsLocationsRepositoriesFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesPackagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesPackagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a package and all of its versions and tags. The returned operation will complete once the package has been deleted. */
 export const deleteProjectsLocationsRepositoriesPackages: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesPackagesRequest,
@@ -3904,12 +2867,7 @@ export const deleteProjectsLocationsRepositoriesPackages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesPackagesTagsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesPackagesTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a tag. */
 export const deleteProjectsLocationsRepositoriesPackagesTags: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesPackagesTagsRequest,
@@ -3924,12 +2882,7 @@ export const deleteProjectsLocationsRepositoriesPackagesTags: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesPackagesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesPackagesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a version and all of its content. The returned operation will complete once the version has been deleted. */
 export const deleteProjectsLocationsRepositoriesPackagesVersions: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesPackagesVersionsRequest,
@@ -3944,12 +2897,7 @@ export const deleteProjectsLocationsRepositoriesPackagesVersions: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesRulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a rule. */
 export const deleteProjectsLocationsRepositoriesRules: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesRulesRequest,
@@ -3964,10 +2912,7 @@ export const deleteProjectsLocationsRepositoriesRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DownloadProjectsLocationsRepositoriesFilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type DownloadProjectsLocationsRepositoriesFilesError = NotFound | Forbidden | GcpOpError;
 /** Download a file. */
 export const downloadProjectsLocationsRepositoriesFiles: API.OperationMethod<
   DownloadProjectsLocationsRepositoriesFilesRequest,
@@ -3982,12 +2927,7 @@ export const downloadProjectsLocationsRepositoriesFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExportArtifactProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExportArtifactProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Exports an artifact to a Cloud Storage bucket. */
 export const exportArtifactProjectsLocationsRepositories: API.OperationMethod<
   ExportArtifactProjectsLocationsRepositoriesRequest,
@@ -4002,10 +2942,7 @@ export const exportArtifactProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Gets the IAM policy for a given resource. */
 export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   GetIamPolicyProjectsLocationsRepositoriesRequest,
@@ -4020,10 +2957,7 @@ export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectConfigProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectConfigProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the project configuration. */
 export const getProjectConfigProjectsLocations: API.OperationMethod<
   GetProjectConfigProjectsLocationsRequest,
@@ -4068,10 +3002,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -4086,10 +3017,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Gets a repository. */
 export const getProjectsLocationsRepositories: API.OperationMethod<
   GetProjectsLocationsRepositoriesRequest,
@@ -4104,10 +3032,7 @@ export const getProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesAttachmentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesAttachmentsError = NotFound | Forbidden | GcpOpError;
 /** Gets an attachment. */
 export const getProjectsLocationsRepositoriesAttachments: API.OperationMethod<
   GetProjectsLocationsRepositoriesAttachmentsRequest,
@@ -4122,10 +3047,7 @@ export const getProjectsLocationsRepositoriesAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesDockerImagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesDockerImagesError = NotFound | Forbidden | GcpOpError;
 /** Gets a docker image. */
 export const getProjectsLocationsRepositoriesDockerImages: API.OperationMethod<
   GetProjectsLocationsRepositoriesDockerImagesRequest,
@@ -4140,10 +3062,7 @@ export const getProjectsLocationsRepositoriesDockerImages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesFilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesFilesError = NotFound | Forbidden | GcpOpError;
 /** Gets a file. */
 export const getProjectsLocationsRepositoriesFiles: API.OperationMethod<
   GetProjectsLocationsRepositoriesFilesRequest,
@@ -4158,10 +3077,7 @@ export const getProjectsLocationsRepositoriesFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesMavenArtifactsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesMavenArtifactsError = NotFound | Forbidden | GcpOpError;
 /** Gets a maven artifact. */
 export const getProjectsLocationsRepositoriesMavenArtifacts: API.OperationMethod<
   GetProjectsLocationsRepositoriesMavenArtifactsRequest,
@@ -4176,10 +3092,7 @@ export const getProjectsLocationsRepositoriesMavenArtifacts: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesNpmPackagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesNpmPackagesError = NotFound | Forbidden | GcpOpError;
 /** Gets a npm package. */
 export const getProjectsLocationsRepositoriesNpmPackages: API.OperationMethod<
   GetProjectsLocationsRepositoriesNpmPackagesRequest,
@@ -4194,10 +3107,7 @@ export const getProjectsLocationsRepositoriesNpmPackages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesPackagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesPackagesError = NotFound | Forbidden | GcpOpError;
 /** Gets a package. */
 export const getProjectsLocationsRepositoriesPackages: API.OperationMethod<
   GetProjectsLocationsRepositoriesPackagesRequest,
@@ -4212,10 +3122,7 @@ export const getProjectsLocationsRepositoriesPackages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesPackagesTagsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesPackagesTagsError = NotFound | Forbidden | GcpOpError;
 /** Gets a tag. */
 export const getProjectsLocationsRepositoriesPackagesTags: API.OperationMethod<
   GetProjectsLocationsRepositoriesPackagesTagsRequest,
@@ -4230,10 +3137,7 @@ export const getProjectsLocationsRepositoriesPackagesTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesPackagesVersionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesPackagesVersionsError = NotFound | Forbidden | GcpOpError;
 /** Gets a version */
 export const getProjectsLocationsRepositoriesPackagesVersions: API.OperationMethod<
   GetProjectsLocationsRepositoriesPackagesVersionsRequest,
@@ -4248,10 +3152,7 @@ export const getProjectsLocationsRepositoriesPackagesVersions: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesPythonPackagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesPythonPackagesError = NotFound | Forbidden | GcpOpError;
 /** Gets a python package. */
 export const getProjectsLocationsRepositoriesPythonPackages: API.OperationMethod<
   GetProjectsLocationsRepositoriesPythonPackagesRequest,
@@ -4266,10 +3167,7 @@ export const getProjectsLocationsRepositoriesPythonPackages: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesRulesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesRulesError = NotFound | Forbidden | GcpOpError;
 /** Gets a rule. */
 export const getProjectsLocationsRepositoriesRules: API.OperationMethod<
   GetProjectsLocationsRepositoriesRulesRequest,
@@ -4284,10 +3182,7 @@ export const getProjectsLocationsRepositoriesRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetVpcscConfigProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetVpcscConfigProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the VPCSC Config for the Project. */
 export const getVpcscConfigProjectsLocations: API.OperationMethod<
   GetVpcscConfigProjectsLocationsRequest,
@@ -4302,12 +3197,7 @@ export const getVpcscConfigProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsRepositoriesAptArtifactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportProjectsLocationsRepositoriesAptArtifactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Imports Apt artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored. */
 export const importProjectsLocationsRepositoriesAptArtifacts: API.OperationMethod<
   ImportProjectsLocationsRepositoriesAptArtifactsRequest,
@@ -4322,12 +3212,7 @@ export const importProjectsLocationsRepositoriesAptArtifacts: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsRepositoriesGoogetArtifactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportProjectsLocationsRepositoriesGoogetArtifactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Imports GooGet artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored. */
 export const importProjectsLocationsRepositoriesGoogetArtifacts: API.OperationMethod<
   ImportProjectsLocationsRepositoriesGoogetArtifactsRequest,
@@ -4342,12 +3227,7 @@ export const importProjectsLocationsRepositoriesGoogetArtifacts: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsRepositoriesYumArtifactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportProjectsLocationsRepositoriesYumArtifactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Imports Yum (RPM) artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored. */
 export const importProjectsLocationsRepositoriesYumArtifacts: API.OperationMethod<
   ImportProjectsLocationsRepositoriesYumArtifactsRequest,
@@ -4375,16 +3255,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Lists repositories. */
 export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesRequest,
@@ -4397,16 +3271,10 @@ export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesAttachmentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesAttachmentsError = NotFound | Forbidden | GcpOpError;
 /** Lists attachments. */
 export const listProjectsLocationsRepositoriesAttachments: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesAttachmentsRequest,
@@ -4419,16 +3287,10 @@ export const listProjectsLocationsRepositoriesAttachments: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesDockerImagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesDockerImagesError = NotFound | Forbidden | GcpOpError;
 /** Lists docker images. */
 export const listProjectsLocationsRepositoriesDockerImages: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesDockerImagesRequest,
@@ -4441,16 +3303,10 @@ export const listProjectsLocationsRepositoriesDockerImages: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesFilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesFilesError = NotFound | Forbidden | GcpOpError;
 /** Lists files. */
 export const listProjectsLocationsRepositoriesFiles: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesFilesRequest,
@@ -4463,16 +3319,10 @@ export const listProjectsLocationsRepositoriesFiles: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesMavenArtifactsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesMavenArtifactsError = NotFound | Forbidden | GcpOpError;
 /** Lists maven artifacts. */
 export const listProjectsLocationsRepositoriesMavenArtifacts: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesMavenArtifactsRequest,
@@ -4485,16 +3335,10 @@ export const listProjectsLocationsRepositoriesMavenArtifacts: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesNpmPackagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesNpmPackagesError = NotFound | Forbidden | GcpOpError;
 /** Lists npm packages. */
 export const listProjectsLocationsRepositoriesNpmPackages: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesNpmPackagesRequest,
@@ -4507,16 +3351,10 @@ export const listProjectsLocationsRepositoriesNpmPackages: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesPackagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesPackagesError = NotFound | Forbidden | GcpOpError;
 /** Lists packages. */
 export const listProjectsLocationsRepositoriesPackages: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesPackagesRequest,
@@ -4529,16 +3367,10 @@ export const listProjectsLocationsRepositoriesPackages: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesPackagesTagsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesPackagesTagsError = NotFound | Forbidden | GcpOpError;
 /** Lists tags. */
 export const listProjectsLocationsRepositoriesPackagesTags: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesPackagesTagsRequest,
@@ -4551,16 +3383,10 @@ export const listProjectsLocationsRepositoriesPackagesTags: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesPackagesVersionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesPackagesVersionsError = NotFound | Forbidden | GcpOpError;
 /** Lists versions. */
 export const listProjectsLocationsRepositoriesPackagesVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesPackagesVersionsRequest,
@@ -4573,16 +3399,10 @@ export const listProjectsLocationsRepositoriesPackagesVersions: API.PaginatedOpe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesPrewarmedArtifactsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesPrewarmedArtifactsError = NotFound | Forbidden | GcpOpError;
 /** Lists all streamed artifacts in a repository. */
 export const listProjectsLocationsRepositoriesPrewarmedArtifacts: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest,
@@ -4595,16 +3415,10 @@ export const listProjectsLocationsRepositoriesPrewarmedArtifacts: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesPythonPackagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesPythonPackagesError = NotFound | Forbidden | GcpOpError;
 /** Lists python packages. */
 export const listProjectsLocationsRepositoriesPythonPackages: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesPythonPackagesRequest,
@@ -4617,16 +3431,10 @@ export const listProjectsLocationsRepositoriesPythonPackages: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesRulesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesRulesError = NotFound | Forbidden | GcpOpError;
 /** Lists rules. */
 export const listProjectsLocationsRepositoriesRules: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesRulesRequest,
@@ -4639,18 +3447,10 @@ export const listProjectsLocationsRepositoriesRules: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a repository. */
 export const patchProjectsLocationsRepositories: API.OperationMethod<
   PatchProjectsLocationsRepositoriesRequest,
@@ -4665,12 +3465,7 @@ export const patchProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesFilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a file. */
 export const patchProjectsLocationsRepositoriesFiles: API.OperationMethod<
   PatchProjectsLocationsRepositoriesFilesRequest,
@@ -4685,12 +3480,7 @@ export const patchProjectsLocationsRepositoriesFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesPackagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesPackagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a package. */
 export const patchProjectsLocationsRepositoriesPackages: API.OperationMethod<
   PatchProjectsLocationsRepositoriesPackagesRequest,
@@ -4705,12 +3495,7 @@ export const patchProjectsLocationsRepositoriesPackages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesPackagesTagsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesPackagesTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a tag. */
 export const patchProjectsLocationsRepositoriesPackagesTags: API.OperationMethod<
   PatchProjectsLocationsRepositoriesPackagesTagsRequest,
@@ -4725,12 +3510,7 @@ export const patchProjectsLocationsRepositoriesPackagesTags: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesPackagesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesPackagesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a version. */
 export const patchProjectsLocationsRepositoriesPackagesVersions: API.OperationMethod<
   PatchProjectsLocationsRepositoriesPackagesVersionsRequest,
@@ -4745,12 +3525,7 @@ export const patchProjectsLocationsRepositoriesPackagesVersions: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesRulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a rule. */
 export const patchProjectsLocationsRepositoriesRules: API.OperationMethod<
   PatchProjectsLocationsRepositoriesRulesRequest,
@@ -4765,12 +3540,7 @@ export const patchProjectsLocationsRepositoriesRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PrewarmArtifactProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PrewarmArtifactProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Prewarms an artifact for streaming. */
 export const prewarmArtifactProjectsLocationsRepositories: API.OperationMethod<
   PrewarmArtifactProjectsLocationsRepositoriesRequest,
@@ -4785,12 +3555,7 @@ export const prewarmArtifactProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemovePrewarmedArtifactProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemovePrewarmedArtifactProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes an artifact from streaming. */
 export const removePrewarmedArtifactProjectsLocationsRepositories: API.OperationMethod<
   RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest,
@@ -4805,12 +3570,7 @@ export const removePrewarmedArtifactProjectsLocationsRepositories: API.Operation
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the IAM policy for a given resource. */
 export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   SetIamPolicyProjectsLocationsRepositoriesRequest,
@@ -4825,12 +3585,7 @@ export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Tests if the caller has a list of permissions on a resource. */
 export const testIamPermissionsProjectsLocationsRepositories: API.OperationMethod<
   TestIamPermissionsProjectsLocationsRepositoriesRequest,
@@ -4845,12 +3600,7 @@ export const testIamPermissionsProjectsLocationsRepositories: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectConfigProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectConfigProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the project configuration. */
 export const updateProjectConfigProjectsLocations: API.OperationMethod<
   UpdateProjectConfigProjectsLocationsRequest,
@@ -4865,12 +3615,7 @@ export const updateProjectConfigProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectSettingsProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectSettingsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the Settings for the Project. */
 export const updateProjectSettingsProjects: API.OperationMethod<
   UpdateProjectSettingsProjectsRequest,
@@ -4885,12 +3630,7 @@ export const updateProjectSettingsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateVpcscConfigProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateVpcscConfigProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the VPCSC Config for the Project. */
 export const updateVpcscConfigProjectsLocations: API.OperationMethod<
   UpdateVpcscConfigProjectsLocationsRequest,
@@ -4905,12 +3645,7 @@ export const updateVpcscConfigProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadProjectsLocationsRepositoriesAptArtifactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadProjectsLocationsRepositoriesAptArtifactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Directly uploads an Apt artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored. */
 export const uploadProjectsLocationsRepositoriesAptArtifacts: API.OperationMethod<
   UploadProjectsLocationsRepositoriesAptArtifactsRequest,
@@ -4925,12 +3660,7 @@ export const uploadProjectsLocationsRepositoriesAptArtifacts: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UploadProjectsLocationsRepositoriesFilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadProjectsLocationsRepositoriesFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Directly uploads a file to a repository. The returned Operation will complete once the resources are uploaded. */
 export const uploadProjectsLocationsRepositoriesFiles: API.OperationMethod<
   UploadProjectsLocationsRepositoriesFilesRequest,
@@ -4945,12 +3675,7 @@ export const uploadProjectsLocationsRepositoriesFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadProjectsLocationsRepositoriesGenericArtifactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadProjectsLocationsRepositoriesGenericArtifactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Directly uploads a Generic artifact. The returned operation will complete once the resources are uploaded. Package, version, and file resources are created based on the uploaded artifact. Uploaded artifacts that conflict with existing resources will raise an `ALREADY_EXISTS` error. */
 export const uploadProjectsLocationsRepositoriesGenericArtifacts: API.OperationMethod<
   UploadProjectsLocationsRepositoriesGenericArtifactsRequest,
@@ -4965,12 +3690,7 @@ export const uploadProjectsLocationsRepositoriesGenericArtifacts: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type UploadProjectsLocationsRepositoriesGoModulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadProjectsLocationsRepositoriesGoModulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Directly uploads a Go module. The returned Operation will complete once the Go module is uploaded. Package, Version, and File resources are created based on the uploaded Go module. */
 export const uploadProjectsLocationsRepositoriesGoModules: API.OperationMethod<
   UploadProjectsLocationsRepositoriesGoModulesRequest,
@@ -4985,12 +3705,7 @@ export const uploadProjectsLocationsRepositoriesGoModules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadProjectsLocationsRepositoriesGoogetArtifactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadProjectsLocationsRepositoriesGoogetArtifactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Directly uploads a GooGet artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored. */
 export const uploadProjectsLocationsRepositoriesGoogetArtifacts: API.OperationMethod<
   UploadProjectsLocationsRepositoriesGoogetArtifactsRequest,
@@ -5005,12 +3720,7 @@ export const uploadProjectsLocationsRepositoriesGoogetArtifacts: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type UploadProjectsLocationsRepositoriesKfpArtifactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadProjectsLocationsRepositoriesKfpArtifactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Directly uploads a KFP artifact. The returned Operation will complete once the resource is uploaded. Package, Version, and File resources will be created based on the uploaded artifact. Uploaded artifacts that conflict with existing resources will be overwritten. */
 export const uploadProjectsLocationsRepositoriesKfpArtifacts: API.OperationMethod<
   UploadProjectsLocationsRepositoriesKfpArtifactsRequest,
@@ -5025,12 +3735,7 @@ export const uploadProjectsLocationsRepositoriesKfpArtifacts: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UploadProjectsLocationsRepositoriesYumArtifactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadProjectsLocationsRepositoriesYumArtifactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Directly uploads a Yum artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored. */
 export const uploadProjectsLocationsRepositoriesYumArtifacts: API.OperationMethod<
   UploadProjectsLocationsRepositoriesYumArtifactsRequest,
@@ -5044,3 +3749,4 @@ export const uploadProjectsLocationsRepositoriesYumArtifacts: API.OperationMetho
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

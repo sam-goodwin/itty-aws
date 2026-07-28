@@ -103,8 +103,7 @@ export type RecipientsCreateResponseAssociationStatus =
   | "associating"
   | "associated"
   | "disassociating"
-  | "disassociated"
-  | (string & {});
+  | "disassociated";
 export const RecipientsCreateResponseAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsCreateResponseResourcesItem {
@@ -170,8 +169,7 @@ export type ResourcesCreateRequestResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const ResourcesCreateRequestResourceType = /*@__PURE__*/ S.String;
 
 export interface CreateResourceRequest {
@@ -186,7 +184,7 @@ export interface CreateResourceRequest {
   /** Share Resource identifier. */
   resourceId: string;
   /** Resource Type. */
-  resourceType: ResourcesCreateRequestResourceType;
+  resourceType: ResourcesCreateRequestResourceType | (string & {});
 }
 export const CreateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -217,15 +215,10 @@ export type ResourcesCreateResponseResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const ResourcesCreateResponseResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesCreateResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesCreateResponseStatus = "active" | "deleting" | "deleted";
 export const ResourcesCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -299,8 +292,7 @@ export type CreateRequestResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const CreateRequestResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export interface CreateRequestResourcesItem {
@@ -311,7 +303,7 @@ export interface CreateRequestResourcesItem {
   /** Share Resource identifier. */
   resourceId: string;
   /** Resource Type. */
-  resourceType: CreateRequestResourcesItemResourceType;
+  resourceType: CreateRequestResourcesItemResourceType | (string & {});
 }
 export const CreateRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -359,20 +351,13 @@ export const CreateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResourceSharingRequest",
 }) as any as S.Schema<CreateResourceSharingRequest>;
 
-export type CreateResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type CreateResponseStatus = "active" | "deleting" | "deleted";
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
-export type CreateResponseTargetType =
-  | "account"
-  | "organization"
-  | (string & {});
+export type CreateResponseTargetType = "account" | "organization";
 export const CreateResponseTargetType = /*@__PURE__*/ S.String;
 
-export type CreateResponseKind = "sent" | "received" | (string & {});
+export type CreateResponseKind = "sent" | "received";
 export const CreateResponseKind = /*@__PURE__*/ S.String;
 
 export type CreateResponseResourcesItemResourceType =
@@ -381,15 +366,13 @@ export type CreateResponseResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const CreateResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type CreateResponseResourcesItemStatus =
   | "active"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const CreateResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponseResourcesItem {
@@ -526,8 +509,7 @@ export type RecipientsDeleteResponseAssociationStatus =
   | "associating"
   | "associated"
   | "disassociating"
-  | "disassociated"
-  | (string & {});
+  | "disassociated";
 export const RecipientsDeleteResponseAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsDeleteResponseResourcesItem {
@@ -619,15 +601,10 @@ export type ResourcesDeleteResponseResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const ResourcesDeleteResponseResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesDeleteResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesDeleteResponseStatus = "active" | "deleting" | "deleted";
 export const ResourcesDeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -692,20 +669,13 @@ export const DeleteResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceSharingRequest",
 }) as any as S.Schema<DeleteResourceSharingRequest>;
 
-export type DeleteResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type DeleteResponseStatus = "active" | "deleting" | "deleted";
 export const DeleteResponseStatus = /*@__PURE__*/ S.String;
 
-export type DeleteResponseTargetType =
-  | "account"
-  | "organization"
-  | (string & {});
+export type DeleteResponseTargetType = "account" | "organization";
 export const DeleteResponseTargetType = /*@__PURE__*/ S.String;
 
-export type DeleteResponseKind = "sent" | "received" | (string & {});
+export type DeleteResponseKind = "sent" | "received";
 export const DeleteResponseKind = /*@__PURE__*/ S.String;
 
 export type DeleteResponseResourcesItemResourceType =
@@ -714,15 +684,13 @@ export type DeleteResponseResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const DeleteResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type DeleteResponseResourcesItemStatus =
   | "active"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const DeleteResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseResourcesItem {
@@ -862,8 +830,7 @@ export type RecipientsGetResponseAssociationStatus =
   | "associating"
   | "associated"
   | "disassociating"
-  | "disassociated"
-  | (string & {});
+  | "disassociated";
 export const RecipientsGetResponseAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsGetResponseResourcesItem {
@@ -954,15 +921,10 @@ export type ResourcesGetResponseResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const ResourcesGetResponseResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesGetResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesGetResponseStatus = "active" | "deleting" | "deleted";
 export const ResourcesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1035,17 +997,13 @@ export const GetResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourceSharingRequest",
 }) as any as S.Schema<GetResourceSharingRequest>;
 
-export type GetResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type GetResponseStatus = "active" | "deleting" | "deleted";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
-export type GetResponseTargetType = "account" | "organization" | (string & {});
+export type GetResponseTargetType = "account" | "organization";
 export const GetResponseTargetType = /*@__PURE__*/ S.String;
 
-export type GetResponseKind = "sent" | "received" | (string & {});
+export type GetResponseKind = "sent" | "received";
 export const GetResponseKind = /*@__PURE__*/ S.String;
 
 export type GetResponseResourcesItemResourceType =
@@ -1054,15 +1012,10 @@ export type GetResponseResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const GetResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
-export type GetResponseResourcesItemStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type GetResponseResourcesItemStatus = "active" | "deleting" | "deleted";
 export const GetResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseResourcesItem {
@@ -1204,8 +1157,7 @@ export type RecipientsListResultItemAssociationStatus =
   | "associating"
   | "associated"
   | "disassociating"
-  | "disassociated"
-  | (string & {});
+  | "disassociated";
 export const RecipientsListResultItemAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsListResultItemResourcesItem {
@@ -1290,15 +1242,10 @@ export type ResourcesListRequestResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const ResourcesListRequestResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesListRequestStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesListRequestStatus = "active" | "deleting" | "deleted";
 export const ResourcesListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListResourcesRequest {
@@ -1311,9 +1258,9 @@ export interface ListResourcesRequest {
   /** Number of objects to return per page. Defaults to `20` when `page` */
   perPage?: number;
   /** Filter share resources by resource_type. */
-  resourceType?: ResourcesListRequestResourceType;
+  resourceType?: ResourcesListRequestResourceType | (string & {});
   /** Filter share resources by status. */
-  status?: ResourcesListRequestStatus;
+  status?: ResourcesListRequestStatus | (string & {});
 }
 export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1344,15 +1291,10 @@ export type ResourcesListResultItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const ResourcesListResultItemResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesListResultItemStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesListResultItemStatus = "active" | "deleting" | "deleted";
 export const ResourcesListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ResourcesListResultItem {
@@ -1413,13 +1355,13 @@ export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResourcesResponse",
 }) as any as S.Schema<ListResourcesResponse>;
 
-export type ListRequestDirection = "asc" | "desc" | (string & {});
+export type ListRequestDirection = "asc" | "desc";
 export const ListRequestDirection = /*@__PURE__*/ S.String;
 
-export type ListRequestKind = "sent" | "received" | (string & {});
+export type ListRequestKind = "sent" | "received";
 export const ListRequestKind = /*@__PURE__*/ S.String;
 
-export type ListRequestOrder = "name" | "created" | (string & {});
+export type ListRequestOrder = "name" | "created";
 export const ListRequestOrder = /*@__PURE__*/ S.String;
 
 export type ListRequestResourceTypes =
@@ -1428,21 +1370,17 @@ export type ListRequestResourceTypes =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const ListRequestResourceTypes = /*@__PURE__*/ S.String;
 
-export type ListRequestResourceTypesList =
-  ReadonlyArray<ListRequestResourceTypes>;
+export type ListRequestResourceTypesList = ReadonlyArray<
+  ListRequestResourceTypes | (string & {})
+>;
 export const ListRequestResourceTypesList = /*@__PURE__*/ S.Array(
   ListRequestResourceTypes,
 ) as any as S.Schema<ListRequestResourceTypesList>;
 
-export type ListRequestStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ListRequestStatus = "active" | "deleting" | "deleted";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export type ListRequestTagList = ReadonlyArray<string>;
@@ -1450,22 +1388,22 @@ export const ListRequestTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListRequestTagList>;
 
-export type ListRequestTargetType = "account" | "organization" | (string & {});
+export type ListRequestTargetType = "account" | "organization";
 export const ListRequestTargetType = /*@__PURE__*/ S.String;
 
 export interface ListResourceSharingsRequest {
   /** Account identifier. */
   accountId: string;
   /** Direction to sort objects. */
-  direction?: ListRequestDirection;
+  direction?: ListRequestDirection | (string & {});
   /** Include recipient counts in the response. */
   includeRecipientCounts?: boolean;
   /** Include resources in the response. */
   includeResources?: boolean;
   /** Filter shares by kind. */
-  kind?: ListRequestKind;
+  kind?: ListRequestKind | (string & {});
   /** Order shares by values in the given field. */
-  order?: ListRequestOrder;
+  order?: ListRequestOrder | (string & {});
   /** Page number. Defaults to `1` when `per_page` is supplied without */
   page?: number;
   /** Number of objects to return per page. Defaults to `20` when `page` */
@@ -1473,11 +1411,11 @@ export interface ListResourceSharingsRequest {
   /** Filter share resources by resource_types. */
   resourceTypes?: ListRequestResourceTypesList;
   /** Filter shares by status. */
-  status?: ListRequestStatus;
+  status?: ListRequestStatus | (string & {});
   /** Filter shares by tag. Each value is either `key=value` (matches shares whose tags contain that key/value pair) or `key` alone (matches shares that have any value for that key). May be repeated; multiple `tag` parameters are ANDed together. Maximum 20 `tag` parameters per request. */
   tag?: ListRequestTagList;
   /** Filter shares by target_type. */
-  targetType?: ListRequestTargetType;
+  targetType?: ListRequestTargetType | (string & {});
 }
 export const ListResourceSharingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1510,20 +1448,13 @@ export const ListResourceSharingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResourceSharingsRequest",
 }) as any as S.Schema<ListResourceSharingsRequest>;
 
-export type ListResultItemStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ListResultItemStatus = "active" | "deleting" | "deleted";
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
-export type ListResultItemTargetType =
-  | "account"
-  | "organization"
-  | (string & {});
+export type ListResultItemTargetType = "account" | "organization";
 export const ListResultItemTargetType = /*@__PURE__*/ S.String;
 
-export type ListResultItemKind = "sent" | "received" | (string & {});
+export type ListResultItemKind = "sent" | "received";
 export const ListResultItemKind = /*@__PURE__*/ S.String;
 
 export type ListResultItemResourcesItemResourceType =
@@ -1532,15 +1463,13 @@ export type ListResultItemResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const ListResultItemResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type ListResultItemResourcesItemStatus =
   | "active"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const ListResultItemResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItemResourcesItem {
@@ -1699,15 +1628,10 @@ export type ResourcesUpdateResponseResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const ResourcesUpdateResponseResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesUpdateResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesUpdateResponseStatus = "active" | "deleting" | "deleted";
 export const ResourcesUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1775,20 +1699,13 @@ export const UpdateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceSharingRequest",
 }) as any as S.Schema<UpdateResourceSharingRequest>;
 
-export type UpdateResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type UpdateResponseStatus = "active" | "deleting" | "deleted";
 export const UpdateResponseStatus = /*@__PURE__*/ S.String;
 
-export type UpdateResponseTargetType =
-  | "account"
-  | "organization"
-  | (string & {});
+export type UpdateResponseTargetType = "account" | "organization";
 export const UpdateResponseTargetType = /*@__PURE__*/ S.String;
 
-export type UpdateResponseKind = "sent" | "received" | (string & {});
+export type UpdateResponseKind = "sent" | "received";
 export const UpdateResponseKind = /*@__PURE__*/ S.String;
 
 export type UpdateResponseResourcesItemResourceType =
@@ -1797,15 +1714,13 @@ export type UpdateResponseResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant"
-  | (string & {});
+  | "idp-federation-grant";
 export const UpdateResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type UpdateResponseResourcesItemStatus =
   | "active"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const UpdateResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseResourcesItem {

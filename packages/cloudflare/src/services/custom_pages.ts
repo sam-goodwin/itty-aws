@@ -57,7 +57,7 @@ export const CreateAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAssetForAccountRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateAssetForAccountResponse {
+export interface CreateAssetResponse {
   /** A short description of the custom asset. */
   description?: string;
   lastUpdated?: string;
@@ -68,7 +68,7 @@ export interface CreateAssetForAccountResponse {
   /** The URL where the asset content is fetched from. */
   url?: string;
 }
-export const CreateAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
@@ -77,8 +77,8 @@ export const CreateAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     url: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "CreateAssetForAccountResponse",
-}) as any as S.Schema<CreateAssetForAccountResponse>;
+  identifier: "CreateAssetResponse",
+}) as any as S.Schema<CreateAssetResponse>;
 
 export interface CreateAssetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -108,30 +108,6 @@ export const CreateAssetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssetForZoneRequest",
 }) as any as S.Schema<CreateAssetForZoneRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateAssetForZoneResponse {
-  /** A short description of the custom asset. */
-  description?: string;
-  lastUpdated?: string;
-  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
-  name?: string;
-  /** The size of the asset content in bytes. */
-  sizeBytes?: number;
-  /** The URL where the asset content is fetched from. */
-  url?: string;
-}
-export const CreateAssetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    name: S.optional(S.String),
-    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
-    url: S.optional(S.String),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateAssetForZoneResponse",
-}) as any as S.Schema<CreateAssetForZoneResponse>;
 
 export interface DeleteAssetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -217,7 +193,7 @@ export const GetAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAssetForAccountRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetAssetForAccountResponse {
+export interface GetAssetResponse {
   /** A short description of the custom asset. */
   description?: string;
   lastUpdated?: string;
@@ -228,7 +204,7 @@ export interface GetAssetForAccountResponse {
   /** The URL where the asset content is fetched from. */
   url?: string;
 }
-export const GetAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
@@ -237,8 +213,8 @@ export const GetAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     url: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "GetAssetForAccountResponse",
-}) as any as S.Schema<GetAssetForAccountResponse>;
+  identifier: "GetAssetResponse",
+}) as any as S.Schema<GetAssetResponse>;
 
 export interface GetAssetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -263,31 +239,7 @@ export const GetAssetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAssetForZoneRequest",
 }) as any as S.Schema<GetAssetForZoneRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetAssetForZoneResponse {
-  /** A short description of the custom asset. */
-  description?: string;
-  lastUpdated?: string;
-  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
-  name?: string;
-  /** The size of the asset content in bytes. */
-  sizeBytes?: number;
-  /** The URL where the asset content is fetched from. */
-  url?: string;
-}
-export const GetAssetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    name: S.optional(S.String),
-    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
-    url: S.optional(S.String),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetAssetForZoneResponse",
-}) as any as S.Schema<GetAssetForZoneResponse>;
-
-export type GetForAccountRequestIdentifier =
+export type GetRequestIdentifier =
   | "1000_errors"
   | "500_errors"
   | "basic_challenge"
@@ -297,20 +249,19 @@ export type GetForAccountRequestIdentifier =
   | "ratelimit_block"
   | "under_attack"
   | "waf_block"
-  | "waf_challenge"
-  | (string & {});
-export const GetForAccountRequestIdentifier = /*@__PURE__*/ S.String;
+  | "waf_challenge";
+export const GetRequestIdentifier = /*@__PURE__*/ S.String;
 
 export interface GetCustomPageForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Error Page Types */
-  identifier: GetForAccountRequestIdentifier;
+  identifier: GetRequestIdentifier | (string & {});
 }
 export const GetCustomPageForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    identifier: GetForAccountRequestIdentifier.pipe(T.Label()),
+    identifier: GetRequestIdentifier.pipe(T.Label()),
   })
     .pipe(
       T.Http({
@@ -324,31 +275,28 @@ export const GetCustomPageForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomPageForAccountRequest",
 }) as any as S.Schema<GetCustomPageForAccountRequest>;
 
-export type GetForAccountResponseRequiredTokensList = ReadonlyArray<string>;
-export const GetForAccountResponseRequiredTokensList = /*@__PURE__*/ S.Array(
+export type GetResponseRequiredTokensList = ReadonlyArray<string>;
+export const GetResponseRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<GetForAccountResponseRequiredTokensList>;
+) as any as S.Schema<GetResponseRequiredTokensList>;
 
-export type GetForAccountResponseState =
-  | "default"
-  | "customized"
-  | (string & {});
-export const GetForAccountResponseState = /*@__PURE__*/ S.String;
+export type GetResponseState = "default" | "customized";
+export const GetResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetCustomPageForAccountResponse {
+export interface GetCustomPageResponse {
   id?: string;
   createdOn?: string;
   description?: string;
   modifiedOn?: string;
   previewTarget?: string;
-  requiredTokens?: GetForAccountResponseRequiredTokensList;
+  requiredTokens?: GetResponseRequiredTokensList;
   /** The custom page state. */
-  state?: GetForAccountResponseState;
+  state?: GetResponseState;
   /** The URL associated with the custom page. */
   url?: string;
 }
-export const GetCustomPageForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
@@ -356,39 +304,25 @@ export const GetCustomPageForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
     requiredTokens: S.optional(
-      GetForAccountResponseRequiredTokensList.pipe(T.Body("required_tokens")),
+      GetResponseRequiredTokensList.pipe(T.Body("required_tokens")),
     ),
-    state: S.optional(GetForAccountResponseState),
+    state: S.optional(GetResponseState),
     url: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "GetCustomPageForAccountResponse",
-}) as any as S.Schema<GetCustomPageForAccountResponse>;
-
-export type GetForZoneRequestIdentifier =
-  | "1000_errors"
-  | "500_errors"
-  | "basic_challenge"
-  | "country_challenge"
-  | "ip_block"
-  | "managed_challenge"
-  | "ratelimit_block"
-  | "under_attack"
-  | "waf_block"
-  | "waf_challenge"
-  | (string & {});
-export const GetForZoneRequestIdentifier = /*@__PURE__*/ S.String;
+  identifier: "GetCustomPageResponse",
+}) as any as S.Schema<GetCustomPageResponse>;
 
 export interface GetCustomPageForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Error Page Types */
-  identifier: GetForZoneRequestIdentifier;
+  identifier: GetRequestIdentifier | (string & {});
 }
 export const GetCustomPageForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    identifier: GetForZoneRequestIdentifier.pipe(T.Label()),
+    identifier: GetRequestIdentifier.pipe(T.Label()),
   })
     .pipe(
       T.Http({
@@ -401,44 +335,6 @@ export const GetCustomPageForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCustomPageForZoneRequest",
 }) as any as S.Schema<GetCustomPageForZoneRequest>;
-
-export type GetForZoneResponseRequiredTokensList = ReadonlyArray<string>;
-export const GetForZoneResponseRequiredTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetForZoneResponseRequiredTokensList>;
-
-export type GetForZoneResponseState = "default" | "customized" | (string & {});
-export const GetForZoneResponseState = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetCustomPageForZoneResponse {
-  id?: string;
-  createdOn?: string;
-  description?: string;
-  modifiedOn?: string;
-  previewTarget?: string;
-  requiredTokens?: GetForZoneResponseRequiredTokensList;
-  /** The custom page state. */
-  state?: GetForZoneResponseState;
-  /** The URL associated with the custom page. */
-  url?: string;
-}
-export const GetCustomPageForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
-    requiredTokens: S.optional(
-      GetForZoneResponseRequiredTokensList.pipe(T.Body("required_tokens")),
-    ),
-    state: S.optional(GetForZoneResponseState),
-    url: S.optional(S.String),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetCustomPageForZoneResponse",
-}) as any as S.Schema<GetCustomPageForZoneResponse>;
 
 export interface ListAssetsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -464,7 +360,7 @@ export const ListAssetsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAssetsForAccountRequest",
 }) as any as S.Schema<ListAssetsForAccountRequest>;
 
-export interface AssetsListForAccountResultItem {
+export interface AssetsListResultItem {
   /** A short description of the custom asset. */
   description?: string;
   lastUpdated?: string;
@@ -475,7 +371,7 @@ export interface AssetsListForAccountResultItem {
   /** The URL where the asset content is fetched from. */
   url?: string;
 }
-export const AssetsListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
+export const AssetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
@@ -484,29 +380,28 @@ export const AssetsListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
     url: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "AssetsListForAccountResultItem",
-}) as any as S.Schema<AssetsListForAccountResultItem>;
+  identifier: "AssetsListResultItem",
+}) as any as S.Schema<AssetsListResultItem>;
 
-export type AssetsListForAccountResultList =
-  ReadonlyArray<AssetsListForAccountResultItem>;
-export const AssetsListForAccountResultList = /*@__PURE__*/ S.Array(
-  AssetsListForAccountResultItem,
-) as any as S.Schema<AssetsListForAccountResultList>;
+export type AssetsListResultList = ReadonlyArray<AssetsListResultItem>;
+export const AssetsListResultList = /*@__PURE__*/ S.Array(
+  AssetsListResultItem,
+) as any as S.Schema<AssetsListResultList>;
 
-export interface ListAssetsForAccountResponse {
+export interface ListAssetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result: AssetsListForAccountResultList;
+  result: AssetsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListAssetsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: AssetsListForAccountResultList.pipe(T.EnvelopePayload()),
+    result: AssetsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "ListAssetsForAccountResponse",
-}) as any as S.Schema<ListAssetsForAccountResponse>;
+  identifier: "ListAssetsResponse",
+}) as any as S.Schema<ListAssetsResponse>;
 
 export interface ListAssetsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -532,50 +427,6 @@ export const ListAssetsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAssetsForZoneRequest",
 }) as any as S.Schema<ListAssetsForZoneRequest>;
 
-export interface AssetsListForZoneResultItem {
-  /** A short description of the custom asset. */
-  description?: string;
-  lastUpdated?: string;
-  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
-  name?: string;
-  /** The size of the asset content in bytes. */
-  sizeBytes?: number;
-  /** The URL where the asset content is fetched from. */
-  url?: string;
-}
-export const AssetsListForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    name: S.optional(S.String),
-    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AssetsListForZoneResultItem",
-}) as any as S.Schema<AssetsListForZoneResultItem>;
-
-export type AssetsListForZoneResultList =
-  ReadonlyArray<AssetsListForZoneResultItem>;
-export const AssetsListForZoneResultList = /*@__PURE__*/ S.Array(
-  AssetsListForZoneResultItem,
-) as any as S.Schema<AssetsListForZoneResultList>;
-
-export interface ListAssetsForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result: AssetsListForZoneResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
-export const ListAssetsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: AssetsListForZoneResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListAssetsForZoneResponse",
-}) as any as S.Schema<ListAssetsForZoneResponse>;
-
 export interface ListCustomPagesForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -596,30 +447,27 @@ export const ListCustomPagesForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomPagesForAccountRequest",
 }) as any as S.Schema<ListCustomPagesForAccountRequest>;
 
-export type ListForAccountResultItemRequiredTokensList = ReadonlyArray<string>;
-export const ListForAccountResultItemRequiredTokensList = /*@__PURE__*/ S.Array(
+export type ListResultItemRequiredTokensList = ReadonlyArray<string>;
+export const ListResultItemRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<ListForAccountResultItemRequiredTokensList>;
+) as any as S.Schema<ListResultItemRequiredTokensList>;
 
-export type ListForAccountResultItemState =
-  | "default"
-  | "customized"
-  | (string & {});
-export const ListForAccountResultItemState = /*@__PURE__*/ S.String;
+export type ListResultItemState = "default" | "customized";
+export const ListResultItemState = /*@__PURE__*/ S.String;
 
-export interface ListForAccountResultItem {
+export interface ListResultItem {
   id?: string;
   createdOn?: string;
   description?: string;
   modifiedOn?: string;
   previewTarget?: string;
-  requiredTokens?: ListForAccountResultItemRequiredTokensList;
+  requiredTokens?: ListResultItemRequiredTokensList;
   /** The custom page state. */
-  state?: ListForAccountResultItemState;
+  state?: ListResultItemState;
   /** The URL associated with the custom page. */
   url?: string;
 }
-export const ListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
+export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
@@ -627,36 +475,32 @@ export const ListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
     requiredTokens: S.optional(
-      ListForAccountResultItemRequiredTokensList.pipe(
-        T.Body("required_tokens"),
-      ),
+      ListResultItemRequiredTokensList.pipe(T.Body("required_tokens")),
     ),
-    state: S.optional(ListForAccountResultItemState),
+    state: S.optional(ListResultItemState),
     url: S.optional(S.String),
   }),
-).annotate({
-  identifier: "ListForAccountResultItem",
-}) as any as S.Schema<ListForAccountResultItem>;
+).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListForAccountResultList = ReadonlyArray<ListForAccountResultItem>;
-export const ListForAccountResultList = /*@__PURE__*/ S.Array(
-  ListForAccountResultItem,
-) as any as S.Schema<ListForAccountResultList>;
+export type ListResultList = ReadonlyArray<ListResultItem>;
+export const ListResultList = /*@__PURE__*/ S.Array(
+  ListResultItem,
+) as any as S.Schema<ListResultList>;
 
-export interface ListCustomPagesForAccountResponse {
+export interface ListCustomPagesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result: ListForAccountResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListCustomPagesForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListCustomPagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: ListForAccountResultList.pipe(T.EnvelopePayload()),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "ListCustomPagesForAccountResponse",
-}) as any as S.Schema<ListCustomPagesForAccountResponse>;
+  identifier: "ListCustomPagesResponse",
+}) as any as S.Schema<ListCustomPagesResponse>;
 
 export interface ListCustomPagesForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -678,67 +522,7 @@ export const ListCustomPagesForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomPagesForZoneRequest",
 }) as any as S.Schema<ListCustomPagesForZoneRequest>;
 
-export type ListForZoneResultItemRequiredTokensList = ReadonlyArray<string>;
-export const ListForZoneResultItemRequiredTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListForZoneResultItemRequiredTokensList>;
-
-export type ListForZoneResultItemState =
-  | "default"
-  | "customized"
-  | (string & {});
-export const ListForZoneResultItemState = /*@__PURE__*/ S.String;
-
-export interface ListForZoneResultItem {
-  id?: string;
-  createdOn?: string;
-  description?: string;
-  modifiedOn?: string;
-  previewTarget?: string;
-  requiredTokens?: ListForZoneResultItemRequiredTokensList;
-  /** The custom page state. */
-  state?: ListForZoneResultItemState;
-  /** The URL associated with the custom page. */
-  url?: string;
-}
-export const ListForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
-    requiredTokens: S.optional(
-      ListForZoneResultItemRequiredTokensList.pipe(T.Body("required_tokens")),
-    ),
-    state: S.optional(ListForZoneResultItemState),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListForZoneResultItem",
-}) as any as S.Schema<ListForZoneResultItem>;
-
-export type ListForZoneResultList = ReadonlyArray<ListForZoneResultItem>;
-export const ListForZoneResultList = /*@__PURE__*/ S.Array(
-  ListForZoneResultItem,
-) as any as S.Schema<ListForZoneResultList>;
-
-export interface ListCustomPagesForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result: ListForZoneResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
-export const ListCustomPagesForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: ListForZoneResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListCustomPagesForZoneResponse",
-}) as any as S.Schema<ListCustomPagesForZoneResponse>;
-
-export type UpdateForAccountRequestIdentifier =
+export type UpdateRequestIdentifier =
   | "1000_errors"
   | "500_errors"
   | "basic_challenge"
@@ -748,31 +532,27 @@ export type UpdateForAccountRequestIdentifier =
   | "ratelimit_block"
   | "under_attack"
   | "waf_block"
-  | "waf_challenge"
-  | (string & {});
-export const UpdateForAccountRequestIdentifier = /*@__PURE__*/ S.String;
+  | "waf_challenge";
+export const UpdateRequestIdentifier = /*@__PURE__*/ S.String;
 
-export type UpdateForAccountRequestState =
-  | "default"
-  | "customized"
-  | (string & {});
-export const UpdateForAccountRequestState = /*@__PURE__*/ S.String;
+export type UpdateRequestState = "default" | "customized";
+export const UpdateRequestState = /*@__PURE__*/ S.String;
 
 export interface PutCustomPageForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Error Page Types */
-  identifier: UpdateForAccountRequestIdentifier;
+  identifier: UpdateRequestIdentifier | (string & {});
   /** The custom page state. */
-  state: UpdateForAccountRequestState;
+  state: UpdateRequestState | (string & {});
   /** The URL associated with the custom page. */
   url: string;
 }
 export const PutCustomPageForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    identifier: UpdateForAccountRequestIdentifier.pipe(T.Label()),
-    state: UpdateForAccountRequestState,
+    identifier: UpdateRequestIdentifier.pipe(T.Label()),
+    state: UpdateRequestState,
     url: S.String,
   })
     .pipe(
@@ -787,31 +567,28 @@ export const PutCustomPageForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutCustomPageForAccountRequest",
 }) as any as S.Schema<PutCustomPageForAccountRequest>;
 
-export type UpdateForAccountResponseRequiredTokensList = ReadonlyArray<string>;
-export const UpdateForAccountResponseRequiredTokensList = /*@__PURE__*/ S.Array(
+export type UpdateResponseRequiredTokensList = ReadonlyArray<string>;
+export const UpdateResponseRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<UpdateForAccountResponseRequiredTokensList>;
+) as any as S.Schema<UpdateResponseRequiredTokensList>;
 
-export type UpdateForAccountResponseState =
-  | "default"
-  | "customized"
-  | (string & {});
-export const UpdateForAccountResponseState = /*@__PURE__*/ S.String;
+export type UpdateResponseState = "default" | "customized";
+export const UpdateResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PutCustomPageForAccountResponse {
+export interface PutCustomPageResponse {
   id?: string;
   createdOn?: string;
   description?: string;
   modifiedOn?: string;
   previewTarget?: string;
-  requiredTokens?: UpdateForAccountResponseRequiredTokensList;
+  requiredTokens?: UpdateResponseRequiredTokensList;
   /** The custom page state. */
-  state?: UpdateForAccountResponseState;
+  state?: UpdateResponseState;
   /** The URL associated with the custom page. */
   url?: string;
 }
-export const PutCustomPageForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
@@ -819,52 +596,30 @@ export const PutCustomPageForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
     requiredTokens: S.optional(
-      UpdateForAccountResponseRequiredTokensList.pipe(
-        T.Body("required_tokens"),
-      ),
+      UpdateResponseRequiredTokensList.pipe(T.Body("required_tokens")),
     ),
-    state: S.optional(UpdateForAccountResponseState),
+    state: S.optional(UpdateResponseState),
     url: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "PutCustomPageForAccountResponse",
-}) as any as S.Schema<PutCustomPageForAccountResponse>;
-
-export type UpdateForZoneRequestIdentifier =
-  | "1000_errors"
-  | "500_errors"
-  | "basic_challenge"
-  | "country_challenge"
-  | "ip_block"
-  | "managed_challenge"
-  | "ratelimit_block"
-  | "under_attack"
-  | "waf_block"
-  | "waf_challenge"
-  | (string & {});
-export const UpdateForZoneRequestIdentifier = /*@__PURE__*/ S.String;
-
-export type UpdateForZoneRequestState =
-  | "default"
-  | "customized"
-  | (string & {});
-export const UpdateForZoneRequestState = /*@__PURE__*/ S.String;
+  identifier: "PutCustomPageResponse",
+}) as any as S.Schema<PutCustomPageResponse>;
 
 export interface PutCustomPageForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Error Page Types */
-  identifier: UpdateForZoneRequestIdentifier;
+  identifier: UpdateRequestIdentifier | (string & {});
   /** The custom page state. */
-  state: UpdateForZoneRequestState;
+  state: UpdateRequestState | (string & {});
   /** The URL associated with the custom page. */
   url: string;
 }
 export const PutCustomPageForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    identifier: UpdateForZoneRequestIdentifier.pipe(T.Label()),
-    state: UpdateForZoneRequestState,
+    identifier: UpdateRequestIdentifier.pipe(T.Label()),
+    state: UpdateRequestState,
     url: S.String,
   })
     .pipe(
@@ -878,47 +633,6 @@ export const PutCustomPageForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutCustomPageForZoneRequest",
 }) as any as S.Schema<PutCustomPageForZoneRequest>;
-
-export type UpdateForZoneResponseRequiredTokensList = ReadonlyArray<string>;
-export const UpdateForZoneResponseRequiredTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateForZoneResponseRequiredTokensList>;
-
-export type UpdateForZoneResponseState =
-  | "default"
-  | "customized"
-  | (string & {});
-export const UpdateForZoneResponseState = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PutCustomPageForZoneResponse {
-  id?: string;
-  createdOn?: string;
-  description?: string;
-  modifiedOn?: string;
-  previewTarget?: string;
-  requiredTokens?: UpdateForZoneResponseRequiredTokensList;
-  /** The custom page state. */
-  state?: UpdateForZoneResponseState;
-  /** The URL associated with the custom page. */
-  url?: string;
-}
-export const PutCustomPageForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
-    requiredTokens: S.optional(
-      UpdateForZoneResponseRequiredTokensList.pipe(T.Body("required_tokens")),
-    ),
-    state: S.optional(UpdateForZoneResponseState),
-    url: S.optional(S.String),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutCustomPageForZoneResponse",
-}) as any as S.Schema<PutCustomPageForZoneResponse>;
 
 export interface UpdateAssetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -950,7 +664,7 @@ export const UpdateAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAssetForAccountRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateAssetForAccountResponse {
+export interface UpdateAssetResponse {
   /** A short description of the custom asset. */
   description?: string;
   lastUpdated?: string;
@@ -961,7 +675,7 @@ export interface UpdateAssetForAccountResponse {
   /** The URL where the asset content is fetched from. */
   url?: string;
 }
-export const UpdateAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
@@ -970,8 +684,8 @@ export const UpdateAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     url: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "UpdateAssetForAccountResponse",
-}) as any as S.Schema<UpdateAssetForAccountResponse>;
+  identifier: "UpdateAssetResponse",
+}) as any as S.Schema<UpdateAssetResponse>;
 
 export interface UpdateAssetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -1002,40 +716,16 @@ export const UpdateAssetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAssetForZoneRequest",
 }) as any as S.Schema<UpdateAssetForZoneRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateAssetForZoneResponse {
-  /** A short description of the custom asset. */
-  description?: string;
-  lastUpdated?: string;
-  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
-  name?: string;
-  /** The size of the asset content in bytes. */
-  sizeBytes?: number;
-  /** The URL where the asset content is fetched from. */
-  url?: string;
-}
-export const UpdateAssetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    name: S.optional(S.String),
-    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
-    url: S.optional(S.String),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateAssetForZoneResponse",
-}) as any as S.Schema<UpdateAssetForZoneResponse>;
-
 export type CreateAssetForAccountError = CloudflareOpError;
 /** Creates a new custom asset. */
 export const createAssetForAccount: API.OperationMethod<
   CreateAssetForAccountRequest,
-  CreateAssetForAccountResponse,
+  CreateAssetResponse,
   CreateAssetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetForAccountRequest,
-  output: CreateAssetForAccountResponse,
+  output: CreateAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1045,12 +735,12 @@ export type CreateAssetForZoneError = CloudflareOpError;
 /** Creates a new custom asset. */
 export const createAssetForZone: API.OperationMethod<
   CreateAssetForZoneRequest,
-  CreateAssetForZoneResponse,
+  CreateAssetResponse,
   CreateAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetForZoneRequest,
-  output: CreateAssetForZoneResponse,
+  output: CreateAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1090,12 +780,12 @@ export type GetAssetForAccountError = CloudflareOpError;
 /** Fetches the details of a custom asset. */
 export const getAssetForAccount: API.OperationMethod<
   GetAssetForAccountRequest,
-  GetAssetForAccountResponse,
+  GetAssetResponse,
   GetAssetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssetForAccountRequest,
-  output: GetAssetForAccountResponse,
+  output: GetAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1105,12 +795,12 @@ export type GetAssetForZoneError = CloudflareOpError;
 /** Fetches the details of a custom asset. */
 export const getAssetForZone: API.OperationMethod<
   GetAssetForZoneRequest,
-  GetAssetForZoneResponse,
+  GetAssetResponse,
   GetAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssetForZoneRequest,
-  output: GetAssetForZoneResponse,
+  output: GetAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1120,12 +810,12 @@ export type GetCustomPageForAccountError = CloudflareOpError;
 /** Fetches the details of a custom page. */
 export const getCustomPageForAccount: API.OperationMethod<
   GetCustomPageForAccountRequest,
-  GetCustomPageForAccountResponse,
+  GetCustomPageResponse,
   GetCustomPageForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCustomPageForAccountRequest,
-  output: GetCustomPageForAccountResponse,
+  output: GetCustomPageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1135,12 +825,12 @@ export type GetCustomPageForZoneError = CloudflareOpError;
 /** Fetches the details of a custom page. */
 export const getCustomPageForZone: API.OperationMethod<
   GetCustomPageForZoneRequest,
-  GetCustomPageForZoneResponse,
+  GetCustomPageResponse,
   GetCustomPageForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCustomPageForZoneRequest,
-  output: GetCustomPageForZoneResponse,
+  output: GetCustomPageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1150,13 +840,13 @@ export type ListAssetsForAccountError = CloudflareOpError;
 /** Fetches all the custom assets. */
 export const listAssetsForAccount: API.PaginatedOperationMethod<
   ListAssetsForAccountRequest,
-  ListAssetsForAccountResponse,
+  ListAssetsResponse,
   ListAssetsForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAssetsForAccountRequest,
-    output: ListAssetsForAccountResponse,
+    output: ListAssetsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1175,13 +865,13 @@ export type ListAssetsForZoneError = CloudflareOpError;
 /** Fetches all the custom assets. */
 export const listAssetsForZone: API.PaginatedOperationMethod<
   ListAssetsForZoneRequest,
-  ListAssetsForZoneResponse,
+  ListAssetsResponse,
   ListAssetsForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAssetsForZoneRequest,
-    output: ListAssetsForZoneResponse,
+    output: ListAssetsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1200,13 +890,13 @@ export type ListCustomPagesForAccountError = CloudflareOpError;
 /** Fetches all the custom pages. */
 export const listCustomPagesForAccount: API.PaginatedOperationMethod<
   ListCustomPagesForAccountRequest,
-  ListCustomPagesForAccountResponse,
+  ListCustomPagesResponse,
   ListCustomPagesForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCustomPagesForAccountRequest,
-    output: ListCustomPagesForAccountResponse,
+    output: ListCustomPagesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1219,13 +909,13 @@ export type ListCustomPagesForZoneError = CloudflareOpError;
 /** Fetches all the custom pages. */
 export const listCustomPagesForZone: API.PaginatedOperationMethod<
   ListCustomPagesForZoneRequest,
-  ListCustomPagesForZoneResponse,
+  ListCustomPagesResponse,
   ListCustomPagesForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCustomPagesForZoneRequest,
-    output: ListCustomPagesForZoneResponse,
+    output: ListCustomPagesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1238,12 +928,12 @@ export type PutCustomPageForAccountError = CloudflareOpError;
 /** Updates the configuration of an existing custom page. */
 export const putCustomPageForAccount: API.OperationMethod<
   PutCustomPageForAccountRequest,
-  PutCustomPageForAccountResponse,
+  PutCustomPageResponse,
   PutCustomPageForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PutCustomPageForAccountRequest,
-  output: PutCustomPageForAccountResponse,
+  output: PutCustomPageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1253,12 +943,12 @@ export type PutCustomPageForZoneError = CloudflareOpError;
 /** Updates the configuration of an existing custom page. */
 export const putCustomPageForZone: API.OperationMethod<
   PutCustomPageForZoneRequest,
-  PutCustomPageForZoneResponse,
+  PutCustomPageResponse,
   PutCustomPageForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PutCustomPageForZoneRequest,
-  output: PutCustomPageForZoneResponse,
+  output: PutCustomPageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1268,12 +958,12 @@ export type UpdateAssetForAccountError = CloudflareOpError;
 /** Updates the configuration of an existing custom asset. */
 export const updateAssetForAccount: API.OperationMethod<
   UpdateAssetForAccountRequest,
-  UpdateAssetForAccountResponse,
+  UpdateAssetResponse,
   UpdateAssetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetForAccountRequest,
-  output: UpdateAssetForAccountResponse,
+  output: UpdateAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1283,12 +973,12 @@ export type UpdateAssetForZoneError = CloudflareOpError;
 /** Updates the configuration of an existing custom asset. */
 export const updateAssetForZone: API.OperationMethod<
   UpdateAssetForZoneRequest,
-  UpdateAssetForZoneResponse,
+  UpdateAssetResponse,
   UpdateAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetForZoneRequest,
-  output: UpdateAssetForZoneResponse,
+  output: UpdateAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

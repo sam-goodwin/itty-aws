@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,39 +72,23 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
-export type AnnotationTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "TYPE_LEGACY_EXPORT_CONSENT"
-  | "TYPE_QWIKLAB"
-  | (string & {});
+export type AnnotationTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_LEGACY_EXPORT_CONSENT" | "TYPE_QWIKLAB";
 export const AnnotationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing an Annotation */
@@ -123,13 +105,13 @@ export interface Annotation {
   updateTime?: string;
 }
 export const Annotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    type: S.optional(AnnotationTypeEnum),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "type": S.optional(AnnotationTypeEnum),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
 
 export interface CreateProjectsLocationsAnnotationsRequest {
@@ -140,33 +122,19 @@ export interface CreateProjectsLocationsAnnotationsRequest {
   /** Request body */
   body?: Annotation;
 }
-export const CreateProjectsLocationsAnnotationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Annotation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/annotations",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsAnnotationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsAnnotationsRequest>;
+export const CreateProjectsLocationsAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Annotation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/annotations","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsAnnotationsRequest" }) as any as S.Schema<CreateProjectsLocationsAnnotationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -178,11 +146,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -199,26 +167,16 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "response": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type CollectorStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "STATE_INITIALIZING"
-  | "STATE_READY_TO_USE"
-  | "STATE_REGISTERED"
-  | "STATE_ACTIVE"
-  | "STATE_PAUSED"
-  | "STATE_DELETING"
-  | "STATE_DECOMMISSIONED"
-  | "STATE_ERROR"
-  | (string & {});
+export type CollectorStateEnum = "STATE_UNSPECIFIED" | "STATE_INITIALIZING" | "STATE_READY_TO_USE" | "STATE_REGISTERED" | "STATE_ACTIVE" | "STATE_PAUSED" | "STATE_DELETING" | "STATE_DECOMMISSIONED" | "STATE_ERROR";
 export const CollectorStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing a MC Source of type VSphere Scan. */
@@ -227,9 +185,9 @@ export interface VSphereScan {
   coreSource?: string;
 }
 export const VSphereScan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coreSource: S.optional(S.String),
-  }),
+S.Struct({
+  "coreSource": S.optional(S.String),
+}),
 ).annotate({ identifier: "VSphereScan" }) as any as S.Schema<VSphereScan>;
 
 /** Message describing a MC Source of type Guest OS Scan. */
@@ -238,9 +196,9 @@ export interface GuestOsScan {
   coreSource?: string;
 }
 export const GuestOsScan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coreSource: S.optional(S.String),
-  }),
+S.Struct({
+  "coreSource": S.optional(S.String),
+}),
 ).annotate({ identifier: "GuestOsScan" }) as any as S.Schema<GuestOsScan>;
 
 /** Message describing Collector object. */
@@ -277,23 +235,23 @@ export interface Collector {
   displayName?: string;
 }
 export const Collector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(CollectorStateEnum),
-    vsphereScan: S.optional(VSphereScan),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    expectedAssetCount: S.optional(S.String),
-    clientVersion: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    bucket: S.optional(S.String),
-    eulaUri: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    description: S.optional(S.String),
-    createTime: S.optional(S.String),
-    guestOsScan: S.optional(GuestOsScan),
-    collectionDays: S.optional(S.Number),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "state": S.optional(CollectorStateEnum),
+  "vsphereScan": S.optional(VSphereScan),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "expectedAssetCount": S.optional(S.String),
+  "clientVersion": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "bucket": S.optional(S.String),
+  "eulaUri": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "description": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "guestOsScan": S.optional(GuestOsScan),
+  "collectionDays": S.optional(S.Number),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Collector" }) as any as S.Schema<Collector>;
 
 export interface CreateProjectsLocationsCollectorsRequest {
@@ -306,23 +264,14 @@ export interface CreateProjectsLocationsCollectorsRequest {
   /** Request body */
   body?: Collector;
 }
-export const CreateProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      collectorId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Collector.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/collectors",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsCollectorsRequest",
-}) as any as S.Schema<CreateProjectsLocationsCollectorsRequest>;
+export const CreateProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "collectorId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Collector.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/collectors","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsCollectorsRequest" }) as any as S.Schema<CreateProjectsLocationsCollectorsRequest>;
 
 export interface DeleteProjectsLocationsCollectorsRequest {
   /** Required. Name of the resource. */
@@ -330,58 +279,32 @@ export interface DeleteProjectsLocationsCollectorsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsCollectorsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsCollectorsRequest>;
+export const DeleteProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsCollectorsRequest" }) as any as S.Schema<DeleteProjectsLocationsCollectorsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -397,76 +320,47 @@ export interface Location {
   labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationId: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "locationId": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsAnnotationsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsAnnotationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsAnnotationsRequest",
-}) as any as S.Schema<GetProjectsLocationsAnnotationsRequest>;
+export const GetProjectsLocationsAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsAnnotationsRequest" }) as any as S.Schema<GetProjectsLocationsAnnotationsRequest>;
 
 export interface GetProjectsLocationsCollectorsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsCollectorsRequest",
-}) as any as S.Schema<GetProjectsLocationsCollectorsRequest>;
+export const GetProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCollectorsRequest" }) as any as S.Schema<GetProjectsLocationsCollectorsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -481,27 +375,17 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -511,13 +395,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsCollectorsRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
@@ -531,29 +413,18 @@ export interface ListProjectsLocationsCollectorsRequest {
   /** Hint for how to order the results. */
   orderBy?: string;
 }
-export const ListProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/collectors",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsCollectorsRequest",
-}) as any as S.Schema<ListProjectsLocationsCollectorsRequest>;
+export const ListProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/collectors","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCollectorsRequest" }) as any as S.Schema<ListProjectsLocationsCollectorsRequest>;
 
 export type CollectorList = ReadonlyArray<Collector>;
-export const CollectorList = /*@__PURE__*/ S.Array(
-  Collector,
-) as any as S.Schema<CollectorList>;
+export const CollectorList = /*@__PURE__*/ S.Array(Collector) as any as S.Schema<CollectorList>;
 
 /** Message for response to listing Collectors. */
 export interface ListCollectorsResponse {
@@ -565,14 +436,12 @@ export interface ListCollectorsResponse {
   unreachable?: StringList;
 }
 export const ListCollectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collectors: S.optional(CollectorList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListCollectorsResponse",
-}) as any as S.Schema<ListCollectorsResponse>;
+S.Struct({
+  "collectors": S.optional(CollectorList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListCollectorsResponse" }) as any as S.Schema<ListCollectorsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -584,28 +453,17 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -615,13 +473,11 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    operations: S.optional(OperationList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "operations": S.optional(OperationList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsCollectorsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the Collector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -633,23 +489,14 @@ export interface PatchProjectsLocationsCollectorsRequest {
   /** Request body */
   body?: Collector;
 }
-export const PatchProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Collector.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsCollectorsRequest",
-}) as any as S.Schema<PatchProjectsLocationsCollectorsRequest>;
+export const PatchProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Collector.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCollectorsRequest" }) as any as S.Schema<PatchProjectsLocationsCollectorsRequest>;
 
 /** Message for pausing a Collector. */
 export interface PauseCollectorRequest {
@@ -657,12 +504,10 @@ export interface PauseCollectorRequest {
   requestId?: string;
 }
 export const PauseCollectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PauseCollectorRequest",
-}) as any as S.Schema<PauseCollectorRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "PauseCollectorRequest" }) as any as S.Schema<PauseCollectorRequest>;
 
 export interface PauseProjectsLocationsCollectorsRequest {
   /** Required. Name of the resource. */
@@ -670,21 +515,12 @@ export interface PauseProjectsLocationsCollectorsRequest {
   /** Request body */
   body?: PauseCollectorRequest;
 }
-export const PauseProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(PauseCollectorRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:pause",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PauseProjectsLocationsCollectorsRequest",
-}) as any as S.Schema<PauseProjectsLocationsCollectorsRequest>;
+export const PauseProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(PauseCollectorRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:pause","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "PauseProjectsLocationsCollectorsRequest" }) as any as S.Schema<PauseProjectsLocationsCollectorsRequest>;
 
 /** Message for registering a Collector. */
 export interface RegisterCollectorRequest {
@@ -692,12 +528,10 @@ export interface RegisterCollectorRequest {
   requestId?: string;
 }
 export const RegisterCollectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegisterCollectorRequest",
-}) as any as S.Schema<RegisterCollectorRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "RegisterCollectorRequest" }) as any as S.Schema<RegisterCollectorRequest>;
 
 export interface RegisterProjectsLocationsCollectorsRequest {
   /** Required. Name of the resource. */
@@ -705,21 +539,12 @@ export interface RegisterProjectsLocationsCollectorsRequest {
   /** Request body */
   body?: RegisterCollectorRequest;
 }
-export const RegisterProjectsLocationsCollectorsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RegisterCollectorRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:register",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RegisterProjectsLocationsCollectorsRequest",
-  }) as any as S.Schema<RegisterProjectsLocationsCollectorsRequest>;
+export const RegisterProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RegisterCollectorRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:register","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "RegisterProjectsLocationsCollectorsRequest" }) as any as S.Schema<RegisterProjectsLocationsCollectorsRequest>;
 
 /** Message for resuming a Collector. */
 export interface ResumeCollectorRequest {
@@ -727,12 +552,10 @@ export interface ResumeCollectorRequest {
   requestId?: string;
 }
 export const ResumeCollectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResumeCollectorRequest",
-}) as any as S.Schema<ResumeCollectorRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "ResumeCollectorRequest" }) as any as S.Schema<ResumeCollectorRequest>;
 
 export interface ResumeProjectsLocationsCollectorsRequest {
   /** Required. Name of the resource. */
@@ -740,28 +563,14 @@ export interface ResumeProjectsLocationsCollectorsRequest {
   /** Request body */
   body?: ResumeCollectorRequest;
 }
-export const ResumeProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ResumeCollectorRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:resume",
-        baseUrl: "https://rapidmigrationassessment.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ResumeProjectsLocationsCollectorsRequest",
-}) as any as S.Schema<ResumeProjectsLocationsCollectorsRequest>;
+export const ResumeProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ResumeCollectorRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:resume","baseUrl":"https://rapidmigrationassessment.googleapis.com/"})),
+).annotate({ identifier: "ResumeProjectsLocationsCollectorsRequest" }) as any as S.Schema<ResumeProjectsLocationsCollectorsRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -776,12 +585,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsAnnotationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsAnnotationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an Annotation */
 export const createProjectsLocationsAnnotations: API.OperationMethod<
   CreateProjectsLocationsAnnotationsRequest,
@@ -796,12 +600,7 @@ export const createProjectsLocationsAnnotations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCollectorsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsCollectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a Collector to manage the on-prem appliance which collects information about Customer assets. */
 export const createProjectsLocationsCollectors: API.OperationMethod<
   CreateProjectsLocationsCollectorsRequest,
@@ -816,12 +615,7 @@ export const createProjectsLocationsCollectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCollectorsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsCollectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Collector - changes state of collector to "Deleting". Background jobs does final deletion through producer API. */
 export const deleteProjectsLocationsCollectors: API.OperationMethod<
   DeleteProjectsLocationsCollectorsRequest,
@@ -836,12 +630,7 @@ export const deleteProjectsLocationsCollectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -871,10 +660,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAnnotationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsAnnotationsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Annotation. */
 export const getProjectsLocationsAnnotations: API.OperationMethod<
   GetProjectsLocationsAnnotationsRequest,
@@ -889,10 +675,7 @@ export const getProjectsLocationsAnnotations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCollectorsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCollectorsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Collector. */
 export const getProjectsLocationsCollectors: API.OperationMethod<
   GetProjectsLocationsCollectorsRequest,
@@ -907,10 +690,7 @@ export const getProjectsLocationsCollectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -938,16 +718,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCollectorsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCollectorsError = NotFound | Forbidden | GcpOpError;
 /** Lists Collectors in a given project and location. */
 export const listProjectsLocationsCollectors: API.PaginatedOperationMethod<
   ListProjectsLocationsCollectorsRequest,
@@ -960,16 +734,10 @@ export const listProjectsLocationsCollectors: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -982,18 +750,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsCollectorsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCollectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single Collector. */
 export const patchProjectsLocationsCollectors: API.OperationMethod<
   PatchProjectsLocationsCollectorsRequest,
@@ -1008,12 +768,7 @@ export const patchProjectsLocationsCollectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PauseProjectsLocationsCollectorsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PauseProjectsLocationsCollectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Pauses the given collector. */
 export const pauseProjectsLocationsCollectors: API.OperationMethod<
   PauseProjectsLocationsCollectorsRequest,
@@ -1028,12 +783,7 @@ export const pauseProjectsLocationsCollectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RegisterProjectsLocationsCollectorsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RegisterProjectsLocationsCollectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Registers the given collector. */
 export const registerProjectsLocationsCollectors: API.OperationMethod<
   RegisterProjectsLocationsCollectorsRequest,
@@ -1048,12 +798,7 @@ export const registerProjectsLocationsCollectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResumeProjectsLocationsCollectorsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResumeProjectsLocationsCollectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resumes the given collector. */
 export const resumeProjectsLocationsCollectors: API.OperationMethod<
   ResumeProjectsLocationsCollectorsRequest,
@@ -1067,3 +812,4 @@ export const resumeProjectsLocationsCollectors: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

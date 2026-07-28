@@ -119,7 +119,7 @@ export const CreateEdgeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEdgeResponse",
 }) as any as S.Schema<CreateEdgeResponse>;
 
-export type JobsCreateForAccountRequestDataset =
+export type JobsCreateRequestDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
@@ -154,44 +154,35 @@ export type JobsCreateForAccountRequestDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const JobsCreateForAccountRequestDataset = /*@__PURE__*/ S.String;
+  | "zero_trust_network_sessions";
+export const JobsCreateRequestDataset = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountRequestFrequency =
-  | "high"
-  | "low"
-  | (string & {});
-export const JobsCreateForAccountRequestFrequency = /*@__PURE__*/ S.String;
+export type JobsCreateRequestFrequency = "high" | "low";
+export const JobsCreateRequestFrequency = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountRequestKind = "" | "edge" | (string & {});
-export const JobsCreateForAccountRequestKind = /*@__PURE__*/ S.String;
+export type JobsCreateRequestKind = "" | "edge";
+export const JobsCreateRequestKind = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountRequestOutputOptionsFieldNamesList =
+export type JobsCreateRequestOutputOptionsFieldNamesList =
   ReadonlyArray<string>;
-export const JobsCreateForAccountRequestOutputOptionsFieldNamesList =
+export const JobsCreateRequestOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<JobsCreateForAccountRequestOutputOptionsFieldNamesList>;
+  ) as any as S.Schema<JobsCreateRequestOutputOptionsFieldNamesList>;
 
-export type JobsCreateForAccountRequestOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsCreateForAccountRequestOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
+export type JobsCreateRequestOutputOptionsOutputType = "ndjson" | "csv";
+export const JobsCreateRequestOutputOptionsOutputType = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountRequestOutputOptionsTimestampFormat =
+export type JobsCreateRequestOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsCreateForAccountRequestOutputOptionsTimestampFormat =
+  | "rfc3339ns";
+export const JobsCreateRequestOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export interface JobsCreateForAccountRequestOutputOptions {
+export interface JobsCreateRequestOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string;
   /** String to be appended after each batch. */
@@ -201,11 +192,11 @@ export interface JobsCreateForAccountRequestOutputOptions {
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsCreateForAccountRequestOutputOptionsFieldNamesList;
+  fieldNames?: JobsCreateRequestOutputOptionsFieldNamesList;
   /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsCreateForAccountRequestOutputOptionsOutputType;
+  outputType?: JobsCreateRequestOutputOptionsOutputType | (string & {});
   /** String to be inserted in-between the records as separator. */
   recordDelimiter?: string;
   /** String to be prepended before each record. */
@@ -217,40 +208,37 @@ export interface JobsCreateForAccountRequestOutputOptions {
   /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsCreateForAccountRequestOutputOptionsTimestampFormat;
+  timestampFormat?:
+    | JobsCreateRequestOutputOptionsTimestampFormat
+    | (string & {});
 }
-export const JobsCreateForAccountRequestOutputOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsCreateForAccountRequestOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
+export const JobsCreateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
+    batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
+    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
+    fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
+    fieldNames: S.optional(
+      JobsCreateRequestOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
+    ),
+    mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
+    outputType: S.optional(
+      JobsCreateRequestOutputOptionsOutputType.pipe(T.Body("output_type")),
+    ),
+    recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
+    recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
+    recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
+    recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
+    sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
+    timestampFormat: S.optional(
+      JobsCreateRequestOutputOptionsTimestampFormat.pipe(
+        T.Body("timestamp_format"),
       ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsCreateForAccountRequestOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsCreateForAccountRequestOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
+    ),
+  }),
 ).annotate({
-  identifier: "JobsCreateForAccountRequestOutputOptions",
-}) as any as S.Schema<JobsCreateForAccountRequestOutputOptions>;
+  identifier: "JobsCreateRequestOutputOptions",
+}) as any as S.Schema<JobsCreateRequestOutputOptions>;
 
 export interface CreateJobForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -258,15 +246,15 @@ export interface CreateJobForAccountRequest {
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsCreateForAccountRequestDataset;
+  dataset?: JobsCreateRequestDataset | (string & {});
   /** Flag that indicates if the job is enabled. */
   enabled?: boolean;
   /** The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
   filter?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsCreateForAccountRequestFrequency;
+  frequency?: JobsCreateRequestFrequency | (string & {});
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsCreateForAccountRequestKind;
+  kind?: JobsCreateRequestKind | (string & {});
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
@@ -278,7 +266,7 @@ export interface CreateJobForAccountRequest {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsCreateForAccountRequestOutputOptions;
+  outputOptions?: JobsCreateRequestOutputOptions;
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
@@ -286,11 +274,11 @@ export const CreateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
-    dataset: S.optional(JobsCreateForAccountRequestDataset),
+    dataset: S.optional(JobsCreateRequestDataset),
     enabled: S.optional(S.Boolean),
     filter: S.optional(S.String),
-    frequency: S.optional(JobsCreateForAccountRequestFrequency),
-    kind: S.optional(JobsCreateForAccountRequestKind),
+    frequency: S.optional(JobsCreateRequestFrequency),
+    kind: S.optional(JobsCreateRequestKind),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
     maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
@@ -299,7 +287,7 @@ export const CreateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
-      JobsCreateForAccountRequestOutputOptions.pipe(T.Body("output_options")),
+      JobsCreateRequestOutputOptions.pipe(T.Body("output_options")),
     ),
     ownershipChallenge: S.optional(
       S.String.pipe(T.Body("ownership_challenge")),
@@ -317,7 +305,7 @@ export const CreateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateJobForAccountRequest",
 }) as any as S.Schema<CreateJobForAccountRequest>;
 
-export type JobsCreateForAccountResponseDataset =
+export type JobsCreateResponseDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
@@ -352,44 +340,35 @@ export type JobsCreateForAccountResponseDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const JobsCreateForAccountResponseDataset = /*@__PURE__*/ S.String;
+  | "zero_trust_network_sessions";
+export const JobsCreateResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountResponseFrequency =
-  | "high"
-  | "low"
-  | (string & {});
-export const JobsCreateForAccountResponseFrequency = /*@__PURE__*/ S.String;
+export type JobsCreateResponseFrequency = "high" | "low";
+export const JobsCreateResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountResponseKind = "" | "edge" | (string & {});
-export const JobsCreateForAccountResponseKind = /*@__PURE__*/ S.String;
+export type JobsCreateResponseKind = "" | "edge";
+export const JobsCreateResponseKind = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountResponseOutputOptionsFieldNamesList =
+export type JobsCreateResponseOutputOptionsFieldNamesList =
   ReadonlyArray<string>;
-export const JobsCreateForAccountResponseOutputOptionsFieldNamesList =
+export const JobsCreateResponseOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<JobsCreateForAccountResponseOutputOptionsFieldNamesList>;
+  ) as any as S.Schema<JobsCreateResponseOutputOptionsFieldNamesList>;
 
-export type JobsCreateForAccountResponseOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsCreateForAccountResponseOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
+export type JobsCreateResponseOutputOptionsOutputType = "ndjson" | "csv";
+export const JobsCreateResponseOutputOptionsOutputType = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountResponseOutputOptionsTimestampFormat =
+export type JobsCreateResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsCreateForAccountResponseOutputOptionsTimestampFormat =
+  | "rfc3339ns";
+export const JobsCreateResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export interface JobsCreateForAccountResponseOutputOptions {
+export interface JobsCreateResponseOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string;
   /** String to be appended after each batch. */
@@ -399,11 +378,11 @@ export interface JobsCreateForAccountResponseOutputOptions {
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsCreateForAccountResponseOutputOptionsFieldNamesList;
+  fieldNames?: JobsCreateResponseOutputOptionsFieldNamesList;
   /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsCreateForAccountResponseOutputOptionsOutputType;
+  outputType?: JobsCreateResponseOutputOptionsOutputType;
   /** String to be inserted in-between the records as separator. */
   recordDelimiter?: string;
   /** String to be prepended before each record. */
@@ -415,47 +394,42 @@ export interface JobsCreateForAccountResponseOutputOptions {
   /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsCreateForAccountResponseOutputOptionsTimestampFormat;
+  timestampFormat?: JobsCreateResponseOutputOptionsTimestampFormat;
 }
-export const JobsCreateForAccountResponseOutputOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsCreateForAccountResponseOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
+export const JobsCreateResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
+    batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
+    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
+    fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
+    fieldNames: S.optional(
+      JobsCreateResponseOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
+    ),
+    mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
+    outputType: S.optional(
+      JobsCreateResponseOutputOptionsOutputType.pipe(T.Body("output_type")),
+    ),
+    recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
+    recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
+    recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
+    recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
+    sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
+    timestampFormat: S.optional(
+      JobsCreateResponseOutputOptionsTimestampFormat.pipe(
+        T.Body("timestamp_format"),
       ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsCreateForAccountResponseOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsCreateForAccountResponseOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "JobsCreateForAccountResponseOutputOptions",
-  }) as any as S.Schema<JobsCreateForAccountResponseOutputOptions>;
+    ),
+  }),
+).annotate({
+  identifier: "JobsCreateResponseOutputOptions",
+}) as any as S.Schema<JobsCreateResponseOutputOptions>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateJobForAccountResponse {
+export interface CreateJobResponse {
   /** Unique id of the job. */
   id?: number;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsCreateForAccountResponseDataset;
+  dataset?: JobsCreateResponseDataset;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf?: string;
   /** Flag that indicates if the job is enabled. */
@@ -463,9 +437,9 @@ export interface CreateJobForAccountResponse {
   /** If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null. */
   errorMessage?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsCreateForAccountResponseFrequency;
+  frequency?: JobsCreateResponseFrequency;
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsCreateForAccountResponseKind;
+  kind?: JobsCreateResponseKind;
   /** Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty. */
   lastComplete?: string;
   /** Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field. */
@@ -481,17 +455,17 @@ export interface CreateJobForAccountResponse {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsCreateForAccountResponseOutputOptions;
+  outputOptions?: JobsCreateResponseOutputOptions;
 }
-export const CreateJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
-    dataset: S.optional(JobsCreateForAccountResponseDataset),
+    dataset: S.optional(JobsCreateResponseDataset),
     destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
     enabled: S.optional(S.Boolean),
     errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    frequency: S.optional(JobsCreateForAccountResponseFrequency),
-    kind: S.optional(JobsCreateForAccountResponseKind),
+    frequency: S.optional(JobsCreateResponseFrequency),
+    kind: S.optional(JobsCreateResponseKind),
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
@@ -502,142 +476,12 @@ export const CreateJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
-      JobsCreateForAccountResponseOutputOptions.pipe(T.Body("output_options")),
+      JobsCreateResponseOutputOptions.pipe(T.Body("output_options")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "CreateJobForAccountResponse",
-}) as any as S.Schema<CreateJobForAccountResponse>;
-
-export type JobsCreateForZoneRequestDataset =
-  | "access_requests"
-  | "audit_logs"
-  | "audit_logs_v2"
-  | "biso_user_actions"
-  | "casb_findings"
-  | "device_posture_results"
-  | "dex_application_tests"
-  | "dex_device_state_events"
-  | "dlp_forensic_copies"
-  | "dns_firewall_logs"
-  | "dns_logs"
-  | "email_security_alerts"
-  | "email_security_post_delivery_events"
-  | "firewall_events"
-  | "gateway_dns"
-  | "gateway_http"
-  | "gateway_network"
-  | "http_requests"
-  | "ipsec_logs"
-  | "magic_ids_detections"
-  | "mcp_portal_logs"
-  | "mnm_flow_logs"
-  | "nel_reports"
-  | "network_analytics_logs"
-  | "page_shield_events"
-  | "sinkhole_http_logs"
-  | "spectrum_events"
-  | "ssh_logs"
-  | "turnstile_events"
-  | "warp_config_changes"
-  | "warp_toggle_changes"
-  | "websocket_analytics"
-  | "workers_trace_events"
-  | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const JobsCreateForZoneRequestDataset = /*@__PURE__*/ S.String;
-
-export type JobsCreateForZoneRequestFrequency = "high" | "low" | (string & {});
-export const JobsCreateForZoneRequestFrequency = /*@__PURE__*/ S.String;
-
-export type JobsCreateForZoneRequestKind = "" | "edge" | (string & {});
-export const JobsCreateForZoneRequestKind = /*@__PURE__*/ S.String;
-
-export type JobsCreateForZoneRequestOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
-export const JobsCreateForZoneRequestOutputOptionsFieldNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<JobsCreateForZoneRequestOutputOptionsFieldNamesList>;
-
-export type JobsCreateForZoneRequestOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsCreateForZoneRequestOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
-
-export type JobsCreateForZoneRequestOutputOptionsTimestampFormat =
-  | "unixnano"
-  | "unix"
-  | "rfc3339"
-  | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsCreateForZoneRequestOutputOptionsTimestampFormat =
-  /*@__PURE__*/ S.String;
-
-export interface JobsCreateForZoneRequestOutputOptions {
-  /** String to be prepended before each batch. */
-  batchPrefix?: string;
-  /** String to be appended after each batch. */
-  batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
-  /** String to join fields. This field be ignored when `record_template` is set. */
-  fieldDelimiter?: string;
-  /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsCreateForZoneRequestOutputOptionsFieldNamesList;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
-  mergeSubrequests?: boolean;
-  /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsCreateForZoneRequestOutputOptionsOutputType;
-  /** String to be inserted in-between the records as separator. */
-  recordDelimiter?: string;
-  /** String to be prepended before each record. */
-  recordPrefix?: string;
-  /** String to be appended after each record. */
-  recordSuffix?: string;
-  /** String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc. */
-  recordTemplate?: string;
-  /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
-  sampleRate?: number;
-  /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsCreateForZoneRequestOutputOptionsTimestampFormat;
-}
-export const JobsCreateForZoneRequestOutputOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsCreateForZoneRequestOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
-      ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsCreateForZoneRequestOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsCreateForZoneRequestOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "JobsCreateForZoneRequestOutputOptions",
-}) as any as S.Schema<JobsCreateForZoneRequestOutputOptions>;
+  identifier: "CreateJobResponse",
+}) as any as S.Schema<CreateJobResponse>;
 
 export interface CreateJobForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -645,15 +489,15 @@ export interface CreateJobForZoneRequest {
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsCreateForZoneRequestDataset;
+  dataset?: JobsCreateRequestDataset | (string & {});
   /** Flag that indicates if the job is enabled. */
   enabled?: boolean;
   /** The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
   filter?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsCreateForZoneRequestFrequency;
+  frequency?: JobsCreateRequestFrequency | (string & {});
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsCreateForZoneRequestKind;
+  kind?: JobsCreateRequestKind | (string & {});
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
@@ -665,7 +509,7 @@ export interface CreateJobForZoneRequest {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsCreateForZoneRequestOutputOptions;
+  outputOptions?: JobsCreateRequestOutputOptions;
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
@@ -673,11 +517,11 @@ export const CreateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
-    dataset: S.optional(JobsCreateForZoneRequestDataset),
+    dataset: S.optional(JobsCreateRequestDataset),
     enabled: S.optional(S.Boolean),
     filter: S.optional(S.String),
-    frequency: S.optional(JobsCreateForZoneRequestFrequency),
-    kind: S.optional(JobsCreateForZoneRequestKind),
+    frequency: S.optional(JobsCreateRequestFrequency),
+    kind: S.optional(JobsCreateRequestKind),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
     maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
@@ -686,7 +530,7 @@ export const CreateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
-      JobsCreateForZoneRequestOutputOptions.pipe(T.Body("output_options")),
+      JobsCreateRequestOutputOptions.pipe(T.Body("output_options")),
     ),
     ownershipChallenge: S.optional(
       S.String.pipe(T.Body("ownership_challenge")),
@@ -703,195 +547,6 @@ export const CreateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobForZoneRequest",
 }) as any as S.Schema<CreateJobForZoneRequest>;
-
-export type JobsCreateForZoneResponseDataset =
-  | "access_requests"
-  | "audit_logs"
-  | "audit_logs_v2"
-  | "biso_user_actions"
-  | "casb_findings"
-  | "device_posture_results"
-  | "dex_application_tests"
-  | "dex_device_state_events"
-  | "dlp_forensic_copies"
-  | "dns_firewall_logs"
-  | "dns_logs"
-  | "email_security_alerts"
-  | "email_security_post_delivery_events"
-  | "firewall_events"
-  | "gateway_dns"
-  | "gateway_http"
-  | "gateway_network"
-  | "http_requests"
-  | "ipsec_logs"
-  | "magic_ids_detections"
-  | "mcp_portal_logs"
-  | "mnm_flow_logs"
-  | "nel_reports"
-  | "network_analytics_logs"
-  | "page_shield_events"
-  | "sinkhole_http_logs"
-  | "spectrum_events"
-  | "ssh_logs"
-  | "turnstile_events"
-  | "warp_config_changes"
-  | "warp_toggle_changes"
-  | "websocket_analytics"
-  | "workers_trace_events"
-  | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const JobsCreateForZoneResponseDataset = /*@__PURE__*/ S.String;
-
-export type JobsCreateForZoneResponseFrequency = "high" | "low" | (string & {});
-export const JobsCreateForZoneResponseFrequency = /*@__PURE__*/ S.String;
-
-export type JobsCreateForZoneResponseKind = "" | "edge" | (string & {});
-export const JobsCreateForZoneResponseKind = /*@__PURE__*/ S.String;
-
-export type JobsCreateForZoneResponseOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
-export const JobsCreateForZoneResponseOutputOptionsFieldNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<JobsCreateForZoneResponseOutputOptionsFieldNamesList>;
-
-export type JobsCreateForZoneResponseOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsCreateForZoneResponseOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
-
-export type JobsCreateForZoneResponseOutputOptionsTimestampFormat =
-  | "unixnano"
-  | "unix"
-  | "rfc3339"
-  | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsCreateForZoneResponseOutputOptionsTimestampFormat =
-  /*@__PURE__*/ S.String;
-
-export interface JobsCreateForZoneResponseOutputOptions {
-  /** String to be prepended before each batch. */
-  batchPrefix?: string;
-  /** String to be appended after each batch. */
-  batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
-  /** String to join fields. This field be ignored when `record_template` is set. */
-  fieldDelimiter?: string;
-  /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsCreateForZoneResponseOutputOptionsFieldNamesList;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
-  mergeSubrequests?: boolean;
-  /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsCreateForZoneResponseOutputOptionsOutputType;
-  /** String to be inserted in-between the records as separator. */
-  recordDelimiter?: string;
-  /** String to be prepended before each record. */
-  recordPrefix?: string;
-  /** String to be appended after each record. */
-  recordSuffix?: string;
-  /** String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc. */
-  recordTemplate?: string;
-  /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
-  sampleRate?: number;
-  /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsCreateForZoneResponseOutputOptionsTimestampFormat;
-}
-export const JobsCreateForZoneResponseOutputOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsCreateForZoneResponseOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
-      ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsCreateForZoneResponseOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsCreateForZoneResponseOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "JobsCreateForZoneResponseOutputOptions",
-}) as any as S.Schema<JobsCreateForZoneResponseOutputOptions>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateJobForZoneResponse {
-  /** Unique id of the job. */
-  id?: number;
-  /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsCreateForZoneResponseDataset;
-  /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf?: string;
-  /** Flag that indicates if the job is enabled. */
-  enabled?: boolean;
-  /** If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null. */
-  errorMessage?: string;
-  /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsCreateForZoneResponseFrequency;
-  /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsCreateForZoneResponseKind;
-  /** Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty. */
-  lastComplete?: string;
-  /** Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field. */
-  lastError?: string;
-  /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
-  logpullOptions?: string;
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: number;
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: number;
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: number;
-  /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string;
-  /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsCreateForZoneResponseOutputOptions;
-}
-export const CreateJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    dataset: S.optional(JobsCreateForZoneResponseDataset),
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    enabled: S.optional(S.Boolean),
-    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    frequency: S.optional(JobsCreateForZoneResponseFrequency),
-    kind: S.optional(JobsCreateForZoneResponseKind),
-    lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
-    lastError: S.optional(S.String.pipe(T.Body("last_error"))),
-    logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
-    maxUploadIntervalSeconds: S.optional(
-      S.Number.pipe(T.Body("max_upload_interval_seconds")),
-    ),
-    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
-    name: S.optional(S.String),
-    outputOptions: S.optional(
-      JobsCreateForZoneResponseOutputOptions.pipe(T.Body("output_options")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateJobForZoneResponse",
-}) as any as S.Schema<CreateJobForZoneResponse>;
 
 export interface CreateOwnershipForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -917,20 +572,20 @@ export const CreateOwnershipForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOwnershipForAccountRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateOwnershipForAccountResponse {
+export interface CreateOwnershipResponse {
   filename?: string;
   message?: string;
   valid?: boolean;
 }
-export const CreateOwnershipForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.String),
     message: S.optional(S.String),
     valid: S.optional(S.Boolean),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "CreateOwnershipForAccountResponse",
-}) as any as S.Schema<CreateOwnershipForAccountResponse>;
+  identifier: "CreateOwnershipResponse",
+}) as any as S.Schema<CreateOwnershipResponse>;
 
 export interface CreateOwnershipForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -954,22 +609,6 @@ export const CreateOwnershipForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOwnershipForZoneRequest",
 }) as any as S.Schema<CreateOwnershipForZoneRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateOwnershipForZoneResponse {
-  filename?: string;
-  message?: string;
-  valid?: boolean;
-}
-export const CreateOwnershipForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filename: S.optional(S.String),
-    message: S.optional(S.String),
-    valid: S.optional(S.Boolean),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateOwnershipForZoneResponse",
-}) as any as S.Schema<CreateOwnershipForZoneResponse>;
 
 export interface DeleteJobForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -995,17 +634,17 @@ export const DeleteJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteJobForAccountRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteJobForAccountResponse {
+export interface DeleteJobResponse {
   /** Unique id of the job. */
   id?: number;
 }
-export const DeleteJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "DeleteJobForAccountResponse",
-}) as any as S.Schema<DeleteJobForAccountResponse>;
+  identifier: "DeleteJobResponse",
+}) as any as S.Schema<DeleteJobResponse>;
 
 export interface DeleteJobForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -1029,19 +668,6 @@ export const DeleteJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteJobForZoneRequest",
 }) as any as S.Schema<DeleteJobForZoneRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteJobForZoneResponse {
-  /** Unique id of the job. */
-  id?: number;
-}
-export const DeleteJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteJobForZoneResponse",
-}) as any as S.Schema<DeleteJobForZoneResponse>;
 
 export interface DestinationExistsValidateForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -1068,17 +694,16 @@ export const DestinationExistsValidateForAccountRequest =
   }) as any as S.Schema<DestinationExistsValidateForAccountRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DestinationExistsValidateForAccountResponse {
+export interface DestinationExistsValidateResponse {
   exists?: boolean;
 }
-export const DestinationExistsValidateForAccountResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      exists: S.optional(S.Boolean),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-  ).annotate({
-    identifier: "DestinationExistsValidateForAccountResponse",
-  }) as any as S.Schema<DestinationExistsValidateForAccountResponse>;
+export const DestinationExistsValidateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exists: S.optional(S.Boolean),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "DestinationExistsValidateResponse",
+}) as any as S.Schema<DestinationExistsValidateResponse>;
 
 export interface DestinationExistsValidateForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -1103,19 +728,6 @@ export const DestinationExistsValidateForZoneRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DestinationExistsValidateForZoneRequest",
 }) as any as S.Schema<DestinationExistsValidateForZoneRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DestinationExistsValidateForZoneResponse {
-  exists?: boolean;
-}
-export const DestinationExistsValidateForZoneResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      exists: S.optional(S.Boolean),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DestinationExistsValidateForZoneResponse",
-}) as any as S.Schema<DestinationExistsValidateForZoneResponse>;
 
 export interface DestinationValidateForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -1142,19 +754,18 @@ export const DestinationValidateForAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DestinationValidateForAccountRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DestinationValidateForAccountResponse {
+export interface DestinationValidateResponse {
   message?: string;
   valid?: boolean;
 }
-export const DestinationValidateForAccountResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      message: S.optional(S.String),
-      valid: S.optional(S.Boolean),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+export const DestinationValidateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.optional(S.String),
+    valid: S.optional(S.Boolean),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "DestinationValidateForAccountResponse",
-}) as any as S.Schema<DestinationValidateForAccountResponse>;
+  identifier: "DestinationValidateResponse",
+}) as any as S.Schema<DestinationValidateResponse>;
 
 export interface DestinationValidateForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -1179,21 +790,7 @@ export const DestinationValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationValidateForZoneRequest",
 }) as any as S.Schema<DestinationValidateForZoneRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DestinationValidateForZoneResponse {
-  message?: string;
-  valid?: boolean;
-}
-export const DestinationValidateForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    valid: S.optional(S.Boolean),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DestinationValidateForZoneResponse",
-}) as any as S.Schema<DestinationValidateForZoneResponse>;
-
-export type DatasetsFieldsGetForAccountRequestDatasetId =
+export type DatasetsFieldsGetRequestDatasetId =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
@@ -1228,23 +825,19 @@ export type DatasetsFieldsGetForAccountRequestDatasetId =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const DatasetsFieldsGetForAccountRequestDatasetId =
-  /*@__PURE__*/ S.String;
+  | "zero_trust_network_sessions";
+export const DatasetsFieldsGetRequestDatasetId = /*@__PURE__*/ S.String;
 
 export interface GetDatasetFieldForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  datasetId: DatasetsFieldsGetForAccountRequestDatasetId;
+  datasetId: DatasetsFieldsGetRequestDatasetId | (string & {});
 }
 export const GetDatasetFieldForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    datasetId: DatasetsFieldsGetForAccountRequestDatasetId.pipe(
-      T.Label("dataset_id"),
-    ),
+    datasetId: DatasetsFieldsGetRequestDatasetId.pipe(T.Label("dataset_id")),
   })
     .pipe(
       T.Http({
@@ -1258,64 +851,23 @@ export const GetDatasetFieldForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatasetFieldForAccountRequest",
 }) as any as S.Schema<GetDatasetFieldForAccountRequest>;
 
-export type GetDatasetFieldForAccountResponse = unknown;
-export const GetDatasetFieldForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export type GetDatasetFieldResponse = unknown;
+export const GetDatasetFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
-  identifier: "GetDatasetFieldForAccountResponse",
-}) as any as S.Schema<GetDatasetFieldForAccountResponse>;
-
-export type DatasetsFieldsGetForZoneRequestDatasetId =
-  | "access_requests"
-  | "audit_logs"
-  | "audit_logs_v2"
-  | "biso_user_actions"
-  | "casb_findings"
-  | "device_posture_results"
-  | "dex_application_tests"
-  | "dex_device_state_events"
-  | "dlp_forensic_copies"
-  | "dns_firewall_logs"
-  | "dns_logs"
-  | "email_security_alerts"
-  | "email_security_post_delivery_events"
-  | "firewall_events"
-  | "gateway_dns"
-  | "gateway_http"
-  | "gateway_network"
-  | "http_requests"
-  | "ipsec_logs"
-  | "magic_ids_detections"
-  | "mcp_portal_logs"
-  | "mnm_flow_logs"
-  | "nel_reports"
-  | "network_analytics_logs"
-  | "page_shield_events"
-  | "sinkhole_http_logs"
-  | "spectrum_events"
-  | "ssh_logs"
-  | "turnstile_events"
-  | "warp_config_changes"
-  | "warp_toggle_changes"
-  | "websocket_analytics"
-  | "workers_trace_events"
-  | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const DatasetsFieldsGetForZoneRequestDatasetId = /*@__PURE__*/ S.String;
+  identifier: "GetDatasetFieldResponse",
+}) as any as S.Schema<GetDatasetFieldResponse>;
 
 export interface GetDatasetFieldForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  datasetId: DatasetsFieldsGetForZoneRequestDatasetId;
+  datasetId: DatasetsFieldsGetRequestDatasetId | (string & {});
 }
 export const GetDatasetFieldForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    datasetId: DatasetsFieldsGetForZoneRequestDatasetId.pipe(
-      T.Label("dataset_id"),
-    ),
+    datasetId: DatasetsFieldsGetRequestDatasetId.pipe(T.Label("dataset_id")),
   })
     .pipe(
       T.Http({
@@ -1329,14 +881,7 @@ export const GetDatasetFieldForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatasetFieldForZoneRequest",
 }) as any as S.Schema<GetDatasetFieldForZoneRequest>;
 
-export type GetDatasetFieldForZoneResponse = unknown;
-export const GetDatasetFieldForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "GetDatasetFieldForZoneResponse",
-}) as any as S.Schema<GetDatasetFieldForZoneResponse>;
-
-export type DatasetsJobsGetForAccountRequestDatasetId =
+export type DatasetsJobsGetRequestDatasetId =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
@@ -1371,22 +916,19 @@ export type DatasetsJobsGetForAccountRequestDatasetId =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const DatasetsJobsGetForAccountRequestDatasetId = /*@__PURE__*/ S.String;
+  | "zero_trust_network_sessions";
+export const DatasetsJobsGetRequestDatasetId = /*@__PURE__*/ S.String;
 
 export interface GetDatasetJobForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  datasetId: DatasetsJobsGetForAccountRequestDatasetId;
+  datasetId: DatasetsJobsGetRequestDatasetId | (string & {});
 }
 export const GetDatasetJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    datasetId: DatasetsJobsGetForAccountRequestDatasetId.pipe(
-      T.Label("dataset_id"),
-    ),
+    datasetId: DatasetsJobsGetRequestDatasetId.pipe(T.Label("dataset_id")),
   })
     .pipe(
       T.Http({
@@ -1400,7 +942,7 @@ export const GetDatasetJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatasetJobForAccountRequest",
 }) as any as S.Schema<GetDatasetJobForAccountRequest>;
 
-export type DatasetsJobsGetForAccountResultItemDataset =
+export type DatasetsJobsGetResultItemDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
@@ -1435,49 +977,36 @@ export type DatasetsJobsGetForAccountResultItemDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const DatasetsJobsGetForAccountResultItemDataset =
-  /*@__PURE__*/ S.String;
+  | "zero_trust_network_sessions";
+export const DatasetsJobsGetResultItemDataset = /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForAccountResultItemFrequency =
-  | "high"
-  | "low"
-  | (string & {});
-export const DatasetsJobsGetForAccountResultItemFrequency =
-  /*@__PURE__*/ S.String;
+export type DatasetsJobsGetResultItemFrequency = "high" | "low";
+export const DatasetsJobsGetResultItemFrequency = /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForAccountResultItemKind =
-  | ""
-  | "edge"
-  | (string & {});
-export const DatasetsJobsGetForAccountResultItemKind = /*@__PURE__*/ S.String;
+export type DatasetsJobsGetResultItemKind = "" | "edge";
+export const DatasetsJobsGetResultItemKind = /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList =
+export type DatasetsJobsGetResultItemOutputOptionsFieldNamesList =
   ReadonlyArray<string>;
-export const DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList =
+export const DatasetsJobsGetResultItemOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList>;
+  ) as any as S.Schema<DatasetsJobsGetResultItemOutputOptionsFieldNamesList>;
 
-export type DatasetsJobsGetForAccountResultItemOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const DatasetsJobsGetForAccountResultItemOutputOptionsOutputType =
+export type DatasetsJobsGetResultItemOutputOptionsOutputType = "ndjson" | "csv";
+export const DatasetsJobsGetResultItemOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForAccountResultItemOutputOptionsTimestampFormat =
+export type DatasetsJobsGetResultItemOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const DatasetsJobsGetForAccountResultItemOutputOptionsTimestampFormat =
+  | "rfc3339ns";
+export const DatasetsJobsGetResultItemOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export interface DatasetsJobsGetForAccountResultItemOutputOptions {
+export interface DatasetsJobsGetResultItemOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string;
   /** String to be appended after each batch. */
@@ -1487,11 +1016,11 @@ export interface DatasetsJobsGetForAccountResultItemOutputOptions {
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList;
+  fieldNames?: DatasetsJobsGetResultItemOutputOptionsFieldNamesList;
   /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: DatasetsJobsGetForAccountResultItemOutputOptionsOutputType;
+  outputType?: DatasetsJobsGetResultItemOutputOptionsOutputType;
   /** String to be inserted in-between the records as separator. */
   recordDelimiter?: string;
   /** String to be prepended before each record. */
@@ -1503,23 +1032,23 @@ export interface DatasetsJobsGetForAccountResultItemOutputOptions {
   /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: DatasetsJobsGetForAccountResultItemOutputOptionsTimestampFormat;
+  timestampFormat?: DatasetsJobsGetResultItemOutputOptionsTimestampFormat;
 }
-export const DatasetsJobsGetForAccountResultItemOutputOptions =
-  /*@__PURE__*/ S.suspend(() =>
+export const DatasetsJobsGetResultItemOutputOptions = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
       CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
-        DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList.pipe(
+        DatasetsJobsGetResultItemOutputOptionsFieldNamesList.pipe(
           T.Body("field_names"),
         ),
       ),
       mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
       outputType: S.optional(
-        DatasetsJobsGetForAccountResultItemOutputOptionsOutputType.pipe(
+        DatasetsJobsGetResultItemOutputOptionsOutputType.pipe(
           T.Body("output_type"),
         ),
       ),
@@ -1529,20 +1058,20 @@ export const DatasetsJobsGetForAccountResultItemOutputOptions =
       recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
       sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
       timestampFormat: S.optional(
-        DatasetsJobsGetForAccountResultItemOutputOptionsTimestampFormat.pipe(
+        DatasetsJobsGetResultItemOutputOptionsTimestampFormat.pipe(
           T.Body("timestamp_format"),
         ),
       ),
     }),
-  ).annotate({
-    identifier: "DatasetsJobsGetForAccountResultItemOutputOptions",
-  }) as any as S.Schema<DatasetsJobsGetForAccountResultItemOutputOptions>;
+).annotate({
+  identifier: "DatasetsJobsGetResultItemOutputOptions",
+}) as any as S.Schema<DatasetsJobsGetResultItemOutputOptions>;
 
-export interface DatasetsJobsGetForAccountResultItem {
+export interface DatasetsJobsGetResultItem {
   /** Unique id of the job. */
   id?: number;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: DatasetsJobsGetForAccountResultItemDataset;
+  dataset?: DatasetsJobsGetResultItemDataset;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf?: string;
   /** Flag that indicates if the job is enabled. */
@@ -1550,9 +1079,9 @@ export interface DatasetsJobsGetForAccountResultItem {
   /** If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null. */
   errorMessage?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: DatasetsJobsGetForAccountResultItemFrequency;
+  frequency?: DatasetsJobsGetResultItemFrequency;
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: DatasetsJobsGetForAccountResultItemKind;
+  kind?: DatasetsJobsGetResultItemKind;
   /** Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty. */
   lastComplete?: string;
   /** Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field. */
@@ -1568,17 +1097,17 @@ export interface DatasetsJobsGetForAccountResultItem {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: DatasetsJobsGetForAccountResultItemOutputOptions;
+  outputOptions?: DatasetsJobsGetResultItemOutputOptions;
 }
-export const DatasetsJobsGetForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
+export const DatasetsJobsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
-    dataset: S.optional(DatasetsJobsGetForAccountResultItemDataset),
+    dataset: S.optional(DatasetsJobsGetResultItemDataset),
     destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
     enabled: S.optional(S.Boolean),
     errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    frequency: S.optional(DatasetsJobsGetForAccountResultItemFrequency),
-    kind: S.optional(DatasetsJobsGetForAccountResultItemKind),
+    frequency: S.optional(DatasetsJobsGetResultItemFrequency),
+    kind: S.optional(DatasetsJobsGetResultItemKind),
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
@@ -1589,87 +1118,44 @@ export const DatasetsJobsGetForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
     maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
-      DatasetsJobsGetForAccountResultItemOutputOptions.pipe(
-        T.Body("output_options"),
-      ),
+      DatasetsJobsGetResultItemOutputOptions.pipe(T.Body("output_options")),
     ),
   }),
 ).annotate({
-  identifier: "DatasetsJobsGetForAccountResultItem",
-}) as any as S.Schema<DatasetsJobsGetForAccountResultItem>;
+  identifier: "DatasetsJobsGetResultItem",
+}) as any as S.Schema<DatasetsJobsGetResultItem>;
 
-export type DatasetsJobsGetForAccountResultList =
-  ReadonlyArray<DatasetsJobsGetForAccountResultItem>;
-export const DatasetsJobsGetForAccountResultList = /*@__PURE__*/ S.Array(
-  DatasetsJobsGetForAccountResultItem,
-) as any as S.Schema<DatasetsJobsGetForAccountResultList>;
+export type DatasetsJobsGetResultList =
+  ReadonlyArray<DatasetsJobsGetResultItem>;
+export const DatasetsJobsGetResultList = /*@__PURE__*/ S.Array(
+  DatasetsJobsGetResultItem,
+) as any as S.Schema<DatasetsJobsGetResultList>;
 
-export interface GetDatasetJobForAccountResponse {
+export interface GetDatasetJobResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result: DatasetsJobsGetForAccountResultList;
+  result: DatasetsJobsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetDatasetJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetDatasetJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: DatasetsJobsGetForAccountResultList.pipe(T.EnvelopePayload()),
+    result: DatasetsJobsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "GetDatasetJobForAccountResponse",
-}) as any as S.Schema<GetDatasetJobForAccountResponse>;
-
-export type DatasetsJobsGetForZoneRequestDatasetId =
-  | "access_requests"
-  | "audit_logs"
-  | "audit_logs_v2"
-  | "biso_user_actions"
-  | "casb_findings"
-  | "device_posture_results"
-  | "dex_application_tests"
-  | "dex_device_state_events"
-  | "dlp_forensic_copies"
-  | "dns_firewall_logs"
-  | "dns_logs"
-  | "email_security_alerts"
-  | "email_security_post_delivery_events"
-  | "firewall_events"
-  | "gateway_dns"
-  | "gateway_http"
-  | "gateway_network"
-  | "http_requests"
-  | "ipsec_logs"
-  | "magic_ids_detections"
-  | "mcp_portal_logs"
-  | "mnm_flow_logs"
-  | "nel_reports"
-  | "network_analytics_logs"
-  | "page_shield_events"
-  | "sinkhole_http_logs"
-  | "spectrum_events"
-  | "ssh_logs"
-  | "turnstile_events"
-  | "warp_config_changes"
-  | "warp_toggle_changes"
-  | "websocket_analytics"
-  | "workers_trace_events"
-  | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const DatasetsJobsGetForZoneRequestDatasetId = /*@__PURE__*/ S.String;
+  identifier: "GetDatasetJobResponse",
+}) as any as S.Schema<GetDatasetJobResponse>;
 
 export interface GetDatasetJobForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  datasetId: DatasetsJobsGetForZoneRequestDatasetId;
+  datasetId: DatasetsJobsGetRequestDatasetId | (string & {});
 }
 export const GetDatasetJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    datasetId: DatasetsJobsGetForZoneRequestDatasetId.pipe(
-      T.Label("dataset_id"),
-    ),
+    datasetId: DatasetsJobsGetRequestDatasetId.pipe(T.Label("dataset_id")),
   })
     .pipe(
       T.Http({
@@ -1682,220 +1168,6 @@ export const GetDatasetJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDatasetJobForZoneRequest",
 }) as any as S.Schema<GetDatasetJobForZoneRequest>;
-
-export type DatasetsJobsGetForZoneResultItemDataset =
-  | "access_requests"
-  | "audit_logs"
-  | "audit_logs_v2"
-  | "biso_user_actions"
-  | "casb_findings"
-  | "device_posture_results"
-  | "dex_application_tests"
-  | "dex_device_state_events"
-  | "dlp_forensic_copies"
-  | "dns_firewall_logs"
-  | "dns_logs"
-  | "email_security_alerts"
-  | "email_security_post_delivery_events"
-  | "firewall_events"
-  | "gateway_dns"
-  | "gateway_http"
-  | "gateway_network"
-  | "http_requests"
-  | "ipsec_logs"
-  | "magic_ids_detections"
-  | "mcp_portal_logs"
-  | "mnm_flow_logs"
-  | "nel_reports"
-  | "network_analytics_logs"
-  | "page_shield_events"
-  | "sinkhole_http_logs"
-  | "spectrum_events"
-  | "ssh_logs"
-  | "turnstile_events"
-  | "warp_config_changes"
-  | "warp_toggle_changes"
-  | "websocket_analytics"
-  | "workers_trace_events"
-  | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const DatasetsJobsGetForZoneResultItemDataset = /*@__PURE__*/ S.String;
-
-export type DatasetsJobsGetForZoneResultItemFrequency =
-  | "high"
-  | "low"
-  | (string & {});
-export const DatasetsJobsGetForZoneResultItemFrequency = /*@__PURE__*/ S.String;
-
-export type DatasetsJobsGetForZoneResultItemKind = "" | "edge" | (string & {});
-export const DatasetsJobsGetForZoneResultItemKind = /*@__PURE__*/ S.String;
-
-export type DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
-export const DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList>;
-
-export type DatasetsJobsGetForZoneResultItemOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const DatasetsJobsGetForZoneResultItemOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
-
-export type DatasetsJobsGetForZoneResultItemOutputOptionsTimestampFormat =
-  | "unixnano"
-  | "unix"
-  | "rfc3339"
-  | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const DatasetsJobsGetForZoneResultItemOutputOptionsTimestampFormat =
-  /*@__PURE__*/ S.String;
-
-export interface DatasetsJobsGetForZoneResultItemOutputOptions {
-  /** String to be prepended before each batch. */
-  batchPrefix?: string;
-  /** String to be appended after each batch. */
-  batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
-  /** String to join fields. This field be ignored when `record_template` is set. */
-  fieldDelimiter?: string;
-  /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
-  mergeSubrequests?: boolean;
-  /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: DatasetsJobsGetForZoneResultItemOutputOptionsOutputType;
-  /** String to be inserted in-between the records as separator. */
-  recordDelimiter?: string;
-  /** String to be prepended before each record. */
-  recordPrefix?: string;
-  /** String to be appended after each record. */
-  recordSuffix?: string;
-  /** String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc. */
-  recordTemplate?: string;
-  /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
-  sampleRate?: number;
-  /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: DatasetsJobsGetForZoneResultItemOutputOptionsTimestampFormat;
-}
-export const DatasetsJobsGetForZoneResultItemOutputOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
-      ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        DatasetsJobsGetForZoneResultItemOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        DatasetsJobsGetForZoneResultItemOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DatasetsJobsGetForZoneResultItemOutputOptions",
-  }) as any as S.Schema<DatasetsJobsGetForZoneResultItemOutputOptions>;
-
-export interface DatasetsJobsGetForZoneResultItem {
-  /** Unique id of the job. */
-  id?: number;
-  /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: DatasetsJobsGetForZoneResultItemDataset;
-  /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf?: string;
-  /** Flag that indicates if the job is enabled. */
-  enabled?: boolean;
-  /** If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null. */
-  errorMessage?: string;
-  /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: DatasetsJobsGetForZoneResultItemFrequency;
-  /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: DatasetsJobsGetForZoneResultItemKind;
-  /** Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty. */
-  lastComplete?: string;
-  /** Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field. */
-  lastError?: string;
-  /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
-  logpullOptions?: string;
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: number;
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: number;
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: number;
-  /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string;
-  /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: DatasetsJobsGetForZoneResultItemOutputOptions;
-}
-export const DatasetsJobsGetForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    dataset: S.optional(DatasetsJobsGetForZoneResultItemDataset),
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    enabled: S.optional(S.Boolean),
-    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    frequency: S.optional(DatasetsJobsGetForZoneResultItemFrequency),
-    kind: S.optional(DatasetsJobsGetForZoneResultItemKind),
-    lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
-    lastError: S.optional(S.String.pipe(T.Body("last_error"))),
-    logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
-    maxUploadIntervalSeconds: S.optional(
-      S.Number.pipe(T.Body("max_upload_interval_seconds")),
-    ),
-    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
-    name: S.optional(S.String),
-    outputOptions: S.optional(
-      DatasetsJobsGetForZoneResultItemOutputOptions.pipe(
-        T.Body("output_options"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "DatasetsJobsGetForZoneResultItem",
-}) as any as S.Schema<DatasetsJobsGetForZoneResultItem>;
-
-export type DatasetsJobsGetForZoneResultList =
-  ReadonlyArray<DatasetsJobsGetForZoneResultItem>;
-export const DatasetsJobsGetForZoneResultList = /*@__PURE__*/ S.Array(
-  DatasetsJobsGetForZoneResultItem,
-) as any as S.Schema<DatasetsJobsGetForZoneResultList>;
-
-export interface GetDatasetJobForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result: DatasetsJobsGetForZoneResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
-export const GetDatasetJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: DatasetsJobsGetForZoneResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetDatasetJobForZoneResponse",
-}) as any as S.Schema<GetDatasetJobForZoneResponse>;
 
 export interface GetEdgeRequest {
   /** Identifier. */
@@ -1982,7 +1254,7 @@ export const GetJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetJobForAccountRequest",
 }) as any as S.Schema<GetJobForAccountRequest>;
 
-export type JobsGetForAccountResponseDataset =
+export type JobsGetResponseDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
@@ -2017,41 +1289,33 @@ export type JobsGetForAccountResponseDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const JobsGetForAccountResponseDataset = /*@__PURE__*/ S.String;
+  | "zero_trust_network_sessions";
+export const JobsGetResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsGetForAccountResponseFrequency = "high" | "low" | (string & {});
-export const JobsGetForAccountResponseFrequency = /*@__PURE__*/ S.String;
+export type JobsGetResponseFrequency = "high" | "low";
+export const JobsGetResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsGetForAccountResponseKind = "" | "edge" | (string & {});
-export const JobsGetForAccountResponseKind = /*@__PURE__*/ S.String;
+export type JobsGetResponseKind = "" | "edge";
+export const JobsGetResponseKind = /*@__PURE__*/ S.String;
 
-export type JobsGetForAccountResponseOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
-export const JobsGetForAccountResponseOutputOptionsFieldNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<JobsGetForAccountResponseOutputOptionsFieldNamesList>;
+export type JobsGetResponseOutputOptionsFieldNamesList = ReadonlyArray<string>;
+export const JobsGetResponseOutputOptionsFieldNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<JobsGetResponseOutputOptionsFieldNamesList>;
 
-export type JobsGetForAccountResponseOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsGetForAccountResponseOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
+export type JobsGetResponseOutputOptionsOutputType = "ndjson" | "csv";
+export const JobsGetResponseOutputOptionsOutputType = /*@__PURE__*/ S.String;
 
-export type JobsGetForAccountResponseOutputOptionsTimestampFormat =
+export type JobsGetResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsGetForAccountResponseOutputOptionsTimestampFormat =
+  | "rfc3339ns";
+export const JobsGetResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export interface JobsGetForAccountResponseOutputOptions {
+export interface JobsGetResponseOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string;
   /** String to be appended after each batch. */
@@ -2061,11 +1325,11 @@ export interface JobsGetForAccountResponseOutputOptions {
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsGetForAccountResponseOutputOptionsFieldNamesList;
+  fieldNames?: JobsGetResponseOutputOptionsFieldNamesList;
   /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsGetForAccountResponseOutputOptionsOutputType;
+  outputType?: JobsGetResponseOutputOptionsOutputType;
   /** String to be inserted in-between the records as separator. */
   recordDelimiter?: string;
   /** String to be prepended before each record. */
@@ -2077,47 +1341,42 @@ export interface JobsGetForAccountResponseOutputOptions {
   /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsGetForAccountResponseOutputOptionsTimestampFormat;
+  timestampFormat?: JobsGetResponseOutputOptionsTimestampFormat;
 }
-export const JobsGetForAccountResponseOutputOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsGetForAccountResponseOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
+export const JobsGetResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
+    batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
+    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
+    fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
+    fieldNames: S.optional(
+      JobsGetResponseOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
+    ),
+    mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
+    outputType: S.optional(
+      JobsGetResponseOutputOptionsOutputType.pipe(T.Body("output_type")),
+    ),
+    recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
+    recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
+    recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
+    recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
+    sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
+    timestampFormat: S.optional(
+      JobsGetResponseOutputOptionsTimestampFormat.pipe(
+        T.Body("timestamp_format"),
       ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsGetForAccountResponseOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsGetForAccountResponseOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
+    ),
+  }),
 ).annotate({
-  identifier: "JobsGetForAccountResponseOutputOptions",
-}) as any as S.Schema<JobsGetForAccountResponseOutputOptions>;
+  identifier: "JobsGetResponseOutputOptions",
+}) as any as S.Schema<JobsGetResponseOutputOptions>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetJobForAccountResponse {
+export interface GetJobResponse {
   /** Unique id of the job. */
   id?: number;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsGetForAccountResponseDataset;
+  dataset?: JobsGetResponseDataset;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf?: string;
   /** Flag that indicates if the job is enabled. */
@@ -2125,9 +1384,9 @@ export interface GetJobForAccountResponse {
   /** If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null. */
   errorMessage?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsGetForAccountResponseFrequency;
+  frequency?: JobsGetResponseFrequency;
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsGetForAccountResponseKind;
+  kind?: JobsGetResponseKind;
   /** Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty. */
   lastComplete?: string;
   /** Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field. */
@@ -2143,17 +1402,17 @@ export interface GetJobForAccountResponse {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsGetForAccountResponseOutputOptions;
+  outputOptions?: JobsGetResponseOutputOptions;
 }
-export const GetJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
-    dataset: S.optional(JobsGetForAccountResponseDataset),
+    dataset: S.optional(JobsGetResponseDataset),
     destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
     enabled: S.optional(S.Boolean),
     errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    frequency: S.optional(JobsGetForAccountResponseFrequency),
-    kind: S.optional(JobsGetForAccountResponseKind),
+    frequency: S.optional(JobsGetResponseFrequency),
+    kind: S.optional(JobsGetResponseKind),
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
@@ -2164,12 +1423,10 @@ export const GetJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
-      JobsGetForAccountResponseOutputOptions.pipe(T.Body("output_options")),
+      JobsGetResponseOutputOptions.pipe(T.Body("output_options")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetJobForAccountResponse",
-}) as any as S.Schema<GetJobForAccountResponse>;
+).annotate({ identifier: "GetJobResponse" }) as any as S.Schema<GetJobResponse>;
 
 export interface GetJobForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -2194,192 +1451,6 @@ export const GetJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetJobForZoneRequest",
 }) as any as S.Schema<GetJobForZoneRequest>;
 
-export type JobsGetForZoneResponseDataset =
-  | "access_requests"
-  | "audit_logs"
-  | "audit_logs_v2"
-  | "biso_user_actions"
-  | "casb_findings"
-  | "device_posture_results"
-  | "dex_application_tests"
-  | "dex_device_state_events"
-  | "dlp_forensic_copies"
-  | "dns_firewall_logs"
-  | "dns_logs"
-  | "email_security_alerts"
-  | "email_security_post_delivery_events"
-  | "firewall_events"
-  | "gateway_dns"
-  | "gateway_http"
-  | "gateway_network"
-  | "http_requests"
-  | "ipsec_logs"
-  | "magic_ids_detections"
-  | "mcp_portal_logs"
-  | "mnm_flow_logs"
-  | "nel_reports"
-  | "network_analytics_logs"
-  | "page_shield_events"
-  | "sinkhole_http_logs"
-  | "spectrum_events"
-  | "ssh_logs"
-  | "turnstile_events"
-  | "warp_config_changes"
-  | "warp_toggle_changes"
-  | "websocket_analytics"
-  | "workers_trace_events"
-  | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const JobsGetForZoneResponseDataset = /*@__PURE__*/ S.String;
-
-export type JobsGetForZoneResponseFrequency = "high" | "low" | (string & {});
-export const JobsGetForZoneResponseFrequency = /*@__PURE__*/ S.String;
-
-export type JobsGetForZoneResponseKind = "" | "edge" | (string & {});
-export const JobsGetForZoneResponseKind = /*@__PURE__*/ S.String;
-
-export type JobsGetForZoneResponseOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
-export const JobsGetForZoneResponseOutputOptionsFieldNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<JobsGetForZoneResponseOutputOptionsFieldNamesList>;
-
-export type JobsGetForZoneResponseOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsGetForZoneResponseOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
-
-export type JobsGetForZoneResponseOutputOptionsTimestampFormat =
-  | "unixnano"
-  | "unix"
-  | "rfc3339"
-  | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsGetForZoneResponseOutputOptionsTimestampFormat =
-  /*@__PURE__*/ S.String;
-
-export interface JobsGetForZoneResponseOutputOptions {
-  /** String to be prepended before each batch. */
-  batchPrefix?: string;
-  /** String to be appended after each batch. */
-  batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
-  /** String to join fields. This field be ignored when `record_template` is set. */
-  fieldDelimiter?: string;
-  /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsGetForZoneResponseOutputOptionsFieldNamesList;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
-  mergeSubrequests?: boolean;
-  /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsGetForZoneResponseOutputOptionsOutputType;
-  /** String to be inserted in-between the records as separator. */
-  recordDelimiter?: string;
-  /** String to be prepended before each record. */
-  recordPrefix?: string;
-  /** String to be appended after each record. */
-  recordSuffix?: string;
-  /** String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc. */
-  recordTemplate?: string;
-  /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
-  sampleRate?: number;
-  /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsGetForZoneResponseOutputOptionsTimestampFormat;
-}
-export const JobsGetForZoneResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-    batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-    fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-    fieldNames: S.optional(
-      JobsGetForZoneResponseOutputOptionsFieldNamesList.pipe(
-        T.Body("field_names"),
-      ),
-    ),
-    mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-    outputType: S.optional(
-      JobsGetForZoneResponseOutputOptionsOutputType.pipe(T.Body("output_type")),
-    ),
-    recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-    recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-    recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-    recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-    sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-    timestampFormat: S.optional(
-      JobsGetForZoneResponseOutputOptionsTimestampFormat.pipe(
-        T.Body("timestamp_format"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "JobsGetForZoneResponseOutputOptions",
-}) as any as S.Schema<JobsGetForZoneResponseOutputOptions>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetJobForZoneResponse {
-  /** Unique id of the job. */
-  id?: number;
-  /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsGetForZoneResponseDataset;
-  /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf?: string;
-  /** Flag that indicates if the job is enabled. */
-  enabled?: boolean;
-  /** If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null. */
-  errorMessage?: string;
-  /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsGetForZoneResponseFrequency;
-  /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsGetForZoneResponseKind;
-  /** Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty. */
-  lastComplete?: string;
-  /** Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field. */
-  lastError?: string;
-  /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
-  logpullOptions?: string;
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: number;
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: number;
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: number;
-  /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string;
-  /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsGetForZoneResponseOutputOptions;
-}
-export const GetJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    dataset: S.optional(JobsGetForZoneResponseDataset),
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    enabled: S.optional(S.Boolean),
-    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    frequency: S.optional(JobsGetForZoneResponseFrequency),
-    kind: S.optional(JobsGetForZoneResponseKind),
-    lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
-    lastError: S.optional(S.String.pipe(T.Body("last_error"))),
-    logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
-    maxUploadIntervalSeconds: S.optional(
-      S.Number.pipe(T.Body("max_upload_interval_seconds")),
-    ),
-    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
-    name: S.optional(S.String),
-    outputOptions: S.optional(
-      JobsGetForZoneResponseOutputOptions.pipe(T.Body("output_options")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetJobForZoneResponse",
-}) as any as S.Schema<GetJobForZoneResponse>;
-
 export interface ListJobsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -2400,7 +1471,7 @@ export const ListJobsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListJobsForAccountRequest",
 }) as any as S.Schema<ListJobsForAccountRequest>;
 
-export type JobsListForAccountResultItemDataset =
+export type JobsListResultItemDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
@@ -2435,44 +1506,35 @@ export type JobsListForAccountResultItemDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const JobsListForAccountResultItemDataset = /*@__PURE__*/ S.String;
+  | "zero_trust_network_sessions";
+export const JobsListResultItemDataset = /*@__PURE__*/ S.String;
 
-export type JobsListForAccountResultItemFrequency =
-  | "high"
-  | "low"
-  | (string & {});
-export const JobsListForAccountResultItemFrequency = /*@__PURE__*/ S.String;
+export type JobsListResultItemFrequency = "high" | "low";
+export const JobsListResultItemFrequency = /*@__PURE__*/ S.String;
 
-export type JobsListForAccountResultItemKind = "" | "edge" | (string & {});
-export const JobsListForAccountResultItemKind = /*@__PURE__*/ S.String;
+export type JobsListResultItemKind = "" | "edge";
+export const JobsListResultItemKind = /*@__PURE__*/ S.String;
 
-export type JobsListForAccountResultItemOutputOptionsFieldNamesList =
+export type JobsListResultItemOutputOptionsFieldNamesList =
   ReadonlyArray<string>;
-export const JobsListForAccountResultItemOutputOptionsFieldNamesList =
+export const JobsListResultItemOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<JobsListForAccountResultItemOutputOptionsFieldNamesList>;
+  ) as any as S.Schema<JobsListResultItemOutputOptionsFieldNamesList>;
 
-export type JobsListForAccountResultItemOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsListForAccountResultItemOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
+export type JobsListResultItemOutputOptionsOutputType = "ndjson" | "csv";
+export const JobsListResultItemOutputOptionsOutputType = /*@__PURE__*/ S.String;
 
-export type JobsListForAccountResultItemOutputOptionsTimestampFormat =
+export type JobsListResultItemOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsListForAccountResultItemOutputOptionsTimestampFormat =
+  | "rfc3339ns";
+export const JobsListResultItemOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export interface JobsListForAccountResultItemOutputOptions {
+export interface JobsListResultItemOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string;
   /** String to be appended after each batch. */
@@ -2482,11 +1544,11 @@ export interface JobsListForAccountResultItemOutputOptions {
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsListForAccountResultItemOutputOptionsFieldNamesList;
+  fieldNames?: JobsListResultItemOutputOptionsFieldNamesList;
   /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsListForAccountResultItemOutputOptionsOutputType;
+  outputType?: JobsListResultItemOutputOptionsOutputType;
   /** String to be inserted in-between the records as separator. */
   recordDelimiter?: string;
   /** String to be prepended before each record. */
@@ -2498,46 +1560,41 @@ export interface JobsListForAccountResultItemOutputOptions {
   /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsListForAccountResultItemOutputOptionsTimestampFormat;
+  timestampFormat?: JobsListResultItemOutputOptionsTimestampFormat;
 }
-export const JobsListForAccountResultItemOutputOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsListForAccountResultItemOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
+export const JobsListResultItemOutputOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
+    batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
+    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
+    fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
+    fieldNames: S.optional(
+      JobsListResultItemOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
+    ),
+    mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
+    outputType: S.optional(
+      JobsListResultItemOutputOptionsOutputType.pipe(T.Body("output_type")),
+    ),
+    recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
+    recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
+    recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
+    recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
+    sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
+    timestampFormat: S.optional(
+      JobsListResultItemOutputOptionsTimestampFormat.pipe(
+        T.Body("timestamp_format"),
       ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsListForAccountResultItemOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsListForAccountResultItemOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "JobsListForAccountResultItemOutputOptions",
-  }) as any as S.Schema<JobsListForAccountResultItemOutputOptions>;
+    ),
+  }),
+).annotate({
+  identifier: "JobsListResultItemOutputOptions",
+}) as any as S.Schema<JobsListResultItemOutputOptions>;
 
-export interface JobsListForAccountResultItem {
+export interface JobsListResultItem {
   /** Unique id of the job. */
   id?: number;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsListForAccountResultItemDataset;
+  dataset?: JobsListResultItemDataset;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf?: string;
   /** Flag that indicates if the job is enabled. */
@@ -2545,9 +1602,9 @@ export interface JobsListForAccountResultItem {
   /** If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null. */
   errorMessage?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsListForAccountResultItemFrequency;
+  frequency?: JobsListResultItemFrequency;
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsListForAccountResultItemKind;
+  kind?: JobsListResultItemKind;
   /** Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty. */
   lastComplete?: string;
   /** Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field. */
@@ -2563,17 +1620,17 @@ export interface JobsListForAccountResultItem {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsListForAccountResultItemOutputOptions;
+  outputOptions?: JobsListResultItemOutputOptions;
 }
-export const JobsListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
+export const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
-    dataset: S.optional(JobsListForAccountResultItemDataset),
+    dataset: S.optional(JobsListResultItemDataset),
     destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
     enabled: S.optional(S.Boolean),
     errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    frequency: S.optional(JobsListForAccountResultItemFrequency),
-    kind: S.optional(JobsListForAccountResultItemKind),
+    frequency: S.optional(JobsListResultItemFrequency),
+    kind: S.optional(JobsListResultItemKind),
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
@@ -2584,33 +1641,32 @@ export const JobsListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
     maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
-      JobsListForAccountResultItemOutputOptions.pipe(T.Body("output_options")),
+      JobsListResultItemOutputOptions.pipe(T.Body("output_options")),
     ),
   }),
 ).annotate({
-  identifier: "JobsListForAccountResultItem",
-}) as any as S.Schema<JobsListForAccountResultItem>;
+  identifier: "JobsListResultItem",
+}) as any as S.Schema<JobsListResultItem>;
 
-export type JobsListForAccountResultList =
-  ReadonlyArray<JobsListForAccountResultItem>;
-export const JobsListForAccountResultList = /*@__PURE__*/ S.Array(
-  JobsListForAccountResultItem,
-) as any as S.Schema<JobsListForAccountResultList>;
+export type JobsListResultList = ReadonlyArray<JobsListResultItem>;
+export const JobsListResultList = /*@__PURE__*/ S.Array(
+  JobsListResultItem,
+) as any as S.Schema<JobsListResultList>;
 
-export interface ListJobsForAccountResponse {
+export interface ListJobsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result: JobsListForAccountResultList;
+  result: JobsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListJobsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: JobsListForAccountResultList.pipe(T.EnvelopePayload()),
+    result: JobsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "ListJobsForAccountResponse",
-}) as any as S.Schema<ListJobsForAccountResponse>;
+  identifier: "ListJobsResponse",
+}) as any as S.Schema<ListJobsResponse>;
 
 export interface ListJobsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -2631,215 +1687,6 @@ export const ListJobsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListJobsForZoneRequest",
 }) as any as S.Schema<ListJobsForZoneRequest>;
-
-export type JobsListForZoneResultItemDataset =
-  | "access_requests"
-  | "audit_logs"
-  | "audit_logs_v2"
-  | "biso_user_actions"
-  | "casb_findings"
-  | "device_posture_results"
-  | "dex_application_tests"
-  | "dex_device_state_events"
-  | "dlp_forensic_copies"
-  | "dns_firewall_logs"
-  | "dns_logs"
-  | "email_security_alerts"
-  | "email_security_post_delivery_events"
-  | "firewall_events"
-  | "gateway_dns"
-  | "gateway_http"
-  | "gateway_network"
-  | "http_requests"
-  | "ipsec_logs"
-  | "magic_ids_detections"
-  | "mcp_portal_logs"
-  | "mnm_flow_logs"
-  | "nel_reports"
-  | "network_analytics_logs"
-  | "page_shield_events"
-  | "sinkhole_http_logs"
-  | "spectrum_events"
-  | "ssh_logs"
-  | "turnstile_events"
-  | "warp_config_changes"
-  | "warp_toggle_changes"
-  | "websocket_analytics"
-  | "workers_trace_events"
-  | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const JobsListForZoneResultItemDataset = /*@__PURE__*/ S.String;
-
-export type JobsListForZoneResultItemFrequency = "high" | "low" | (string & {});
-export const JobsListForZoneResultItemFrequency = /*@__PURE__*/ S.String;
-
-export type JobsListForZoneResultItemKind = "" | "edge" | (string & {});
-export const JobsListForZoneResultItemKind = /*@__PURE__*/ S.String;
-
-export type JobsListForZoneResultItemOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
-export const JobsListForZoneResultItemOutputOptionsFieldNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<JobsListForZoneResultItemOutputOptionsFieldNamesList>;
-
-export type JobsListForZoneResultItemOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsListForZoneResultItemOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
-
-export type JobsListForZoneResultItemOutputOptionsTimestampFormat =
-  | "unixnano"
-  | "unix"
-  | "rfc3339"
-  | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsListForZoneResultItemOutputOptionsTimestampFormat =
-  /*@__PURE__*/ S.String;
-
-export interface JobsListForZoneResultItemOutputOptions {
-  /** String to be prepended before each batch. */
-  batchPrefix?: string;
-  /** String to be appended after each batch. */
-  batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
-  /** String to join fields. This field be ignored when `record_template` is set. */
-  fieldDelimiter?: string;
-  /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsListForZoneResultItemOutputOptionsFieldNamesList;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
-  mergeSubrequests?: boolean;
-  /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsListForZoneResultItemOutputOptionsOutputType;
-  /** String to be inserted in-between the records as separator. */
-  recordDelimiter?: string;
-  /** String to be prepended before each record. */
-  recordPrefix?: string;
-  /** String to be appended after each record. */
-  recordSuffix?: string;
-  /** String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc. */
-  recordTemplate?: string;
-  /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
-  sampleRate?: number;
-  /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsListForZoneResultItemOutputOptionsTimestampFormat;
-}
-export const JobsListForZoneResultItemOutputOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsListForZoneResultItemOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
-      ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsListForZoneResultItemOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsListForZoneResultItemOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "JobsListForZoneResultItemOutputOptions",
-}) as any as S.Schema<JobsListForZoneResultItemOutputOptions>;
-
-export interface JobsListForZoneResultItem {
-  /** Unique id of the job. */
-  id?: number;
-  /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsListForZoneResultItemDataset;
-  /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf?: string;
-  /** Flag that indicates if the job is enabled. */
-  enabled?: boolean;
-  /** If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null. */
-  errorMessage?: string;
-  /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsListForZoneResultItemFrequency;
-  /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsListForZoneResultItemKind;
-  /** Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty. */
-  lastComplete?: string;
-  /** Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field. */
-  lastError?: string;
-  /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
-  logpullOptions?: string;
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: number;
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: number;
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: number;
-  /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string;
-  /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsListForZoneResultItemOutputOptions;
-}
-export const JobsListForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    dataset: S.optional(JobsListForZoneResultItemDataset),
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    enabled: S.optional(S.Boolean),
-    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    frequency: S.optional(JobsListForZoneResultItemFrequency),
-    kind: S.optional(JobsListForZoneResultItemKind),
-    lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
-    lastError: S.optional(S.String.pipe(T.Body("last_error"))),
-    logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
-    maxUploadIntervalSeconds: S.optional(
-      S.Number.pipe(T.Body("max_upload_interval_seconds")),
-    ),
-    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
-    name: S.optional(S.String),
-    outputOptions: S.optional(
-      JobsListForZoneResultItemOutputOptions.pipe(T.Body("output_options")),
-    ),
-  }),
-).annotate({
-  identifier: "JobsListForZoneResultItem",
-}) as any as S.Schema<JobsListForZoneResultItem>;
-
-export type JobsListForZoneResultList =
-  ReadonlyArray<JobsListForZoneResultItem>;
-export const JobsListForZoneResultList = /*@__PURE__*/ S.Array(
-  JobsListForZoneResultItem,
-) as any as S.Schema<JobsListForZoneResultList>;
-
-export interface ListJobsForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result: JobsListForZoneResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
-export const ListJobsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: JobsListForZoneResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListJobsForZoneResponse",
-}) as any as S.Schema<ListJobsForZoneResponse>;
 
 export interface OriginValidateForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -2865,18 +1712,18 @@ export const OriginValidateForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OriginValidateForAccountRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OriginValidateForAccountResponse {
+export interface OriginValidateResponse {
   message?: string;
   valid?: boolean;
 }
-export const OriginValidateForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const OriginValidateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     valid: S.optional(S.Boolean),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "OriginValidateForAccountResponse",
-}) as any as S.Schema<OriginValidateForAccountResponse>;
+  identifier: "OriginValidateResponse",
+}) as any as S.Schema<OriginValidateResponse>;
 
 export interface OriginValidateForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -2901,54 +1748,32 @@ export const OriginValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "OriginValidateForZoneRequest",
 }) as any as S.Schema<OriginValidateForZoneRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OriginValidateForZoneResponse {
-  message?: string;
-  valid?: boolean;
-}
-export const OriginValidateForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    valid: S.optional(S.Boolean),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "OriginValidateForZoneResponse",
-}) as any as S.Schema<OriginValidateForZoneResponse>;
+export type JobsUpdateRequestFrequency = "high" | "low";
+export const JobsUpdateRequestFrequency = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountRequestFrequency =
-  | "high"
-  | "low"
-  | (string & {});
-export const JobsUpdateForAccountRequestFrequency = /*@__PURE__*/ S.String;
+export type JobsUpdateRequestKind = "" | "edge";
+export const JobsUpdateRequestKind = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountRequestKind = "" | "edge" | (string & {});
-export const JobsUpdateForAccountRequestKind = /*@__PURE__*/ S.String;
-
-export type JobsUpdateForAccountRequestOutputOptionsFieldNamesList =
+export type JobsUpdateRequestOutputOptionsFieldNamesList =
   ReadonlyArray<string>;
-export const JobsUpdateForAccountRequestOutputOptionsFieldNamesList =
+export const JobsUpdateRequestOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<JobsUpdateForAccountRequestOutputOptionsFieldNamesList>;
+  ) as any as S.Schema<JobsUpdateRequestOutputOptionsFieldNamesList>;
 
-export type JobsUpdateForAccountRequestOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsUpdateForAccountRequestOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
+export type JobsUpdateRequestOutputOptionsOutputType = "ndjson" | "csv";
+export const JobsUpdateRequestOutputOptionsOutputType = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountRequestOutputOptionsTimestampFormat =
+export type JobsUpdateRequestOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsUpdateForAccountRequestOutputOptionsTimestampFormat =
+  | "rfc3339ns";
+export const JobsUpdateRequestOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export interface JobsUpdateForAccountRequestOutputOptions {
+export interface JobsUpdateRequestOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string;
   /** String to be appended after each batch. */
@@ -2958,11 +1783,11 @@ export interface JobsUpdateForAccountRequestOutputOptions {
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsUpdateForAccountRequestOutputOptionsFieldNamesList;
+  fieldNames?: JobsUpdateRequestOutputOptionsFieldNamesList;
   /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsUpdateForAccountRequestOutputOptionsOutputType;
+  outputType?: JobsUpdateRequestOutputOptionsOutputType | (string & {});
   /** String to be inserted in-between the records as separator. */
   recordDelimiter?: string;
   /** String to be prepended before each record. */
@@ -2974,40 +1799,37 @@ export interface JobsUpdateForAccountRequestOutputOptions {
   /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsUpdateForAccountRequestOutputOptionsTimestampFormat;
+  timestampFormat?:
+    | JobsUpdateRequestOutputOptionsTimestampFormat
+    | (string & {});
 }
-export const JobsUpdateForAccountRequestOutputOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsUpdateForAccountRequestOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
+export const JobsUpdateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
+    batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
+    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
+    fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
+    fieldNames: S.optional(
+      JobsUpdateRequestOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
+    ),
+    mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
+    outputType: S.optional(
+      JobsUpdateRequestOutputOptionsOutputType.pipe(T.Body("output_type")),
+    ),
+    recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
+    recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
+    recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
+    recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
+    sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
+    timestampFormat: S.optional(
+      JobsUpdateRequestOutputOptionsTimestampFormat.pipe(
+        T.Body("timestamp_format"),
       ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsUpdateForAccountRequestOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsUpdateForAccountRequestOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
+    ),
+  }),
 ).annotate({
-  identifier: "JobsUpdateForAccountRequestOutputOptions",
-}) as any as S.Schema<JobsUpdateForAccountRequestOutputOptions>;
+  identifier: "JobsUpdateRequestOutputOptions",
+}) as any as S.Schema<JobsUpdateRequestOutputOptions>;
 
 export interface UpdateJobForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -3021,9 +1843,9 @@ export interface UpdateJobForAccountRequest {
   /** The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
   filter?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsUpdateForAccountRequestFrequency;
+  frequency?: JobsUpdateRequestFrequency | (string & {});
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsUpdateForAccountRequestKind;
+  kind?: JobsUpdateRequestKind | (string & {});
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
@@ -3035,7 +1857,7 @@ export interface UpdateJobForAccountRequest {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsUpdateForAccountRequestOutputOptions;
+  outputOptions?: JobsUpdateRequestOutputOptions;
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
@@ -3046,8 +1868,8 @@ export const UpdateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
     enabled: S.optional(S.Boolean),
     filter: S.optional(S.String),
-    frequency: S.optional(JobsUpdateForAccountRequestFrequency),
-    kind: S.optional(JobsUpdateForAccountRequestKind),
+    frequency: S.optional(JobsUpdateRequestFrequency),
+    kind: S.optional(JobsUpdateRequestKind),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
     maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
@@ -3056,7 +1878,7 @@ export const UpdateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
-      JobsUpdateForAccountRequestOutputOptions.pipe(T.Body("output_options")),
+      JobsUpdateRequestOutputOptions.pipe(T.Body("output_options")),
     ),
     ownershipChallenge: S.optional(
       S.String.pipe(T.Body("ownership_challenge")),
@@ -3074,7 +1896,7 @@ export const UpdateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateJobForAccountRequest",
 }) as any as S.Schema<UpdateJobForAccountRequest>;
 
-export type JobsUpdateForAccountResponseDataset =
+export type JobsUpdateResponseDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
@@ -3109,44 +1931,35 @@ export type JobsUpdateForAccountResponseDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const JobsUpdateForAccountResponseDataset = /*@__PURE__*/ S.String;
+  | "zero_trust_network_sessions";
+export const JobsUpdateResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountResponseFrequency =
-  | "high"
-  | "low"
-  | (string & {});
-export const JobsUpdateForAccountResponseFrequency = /*@__PURE__*/ S.String;
+export type JobsUpdateResponseFrequency = "high" | "low";
+export const JobsUpdateResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountResponseKind = "" | "edge" | (string & {});
-export const JobsUpdateForAccountResponseKind = /*@__PURE__*/ S.String;
+export type JobsUpdateResponseKind = "" | "edge";
+export const JobsUpdateResponseKind = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountResponseOutputOptionsFieldNamesList =
+export type JobsUpdateResponseOutputOptionsFieldNamesList =
   ReadonlyArray<string>;
-export const JobsUpdateForAccountResponseOutputOptionsFieldNamesList =
+export const JobsUpdateResponseOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<JobsUpdateForAccountResponseOutputOptionsFieldNamesList>;
+  ) as any as S.Schema<JobsUpdateResponseOutputOptionsFieldNamesList>;
 
-export type JobsUpdateForAccountResponseOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsUpdateForAccountResponseOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
+export type JobsUpdateResponseOutputOptionsOutputType = "ndjson" | "csv";
+export const JobsUpdateResponseOutputOptionsOutputType = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountResponseOutputOptionsTimestampFormat =
+export type JobsUpdateResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsUpdateForAccountResponseOutputOptionsTimestampFormat =
+  | "rfc3339ns";
+export const JobsUpdateResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export interface JobsUpdateForAccountResponseOutputOptions {
+export interface JobsUpdateResponseOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string;
   /** String to be appended after each batch. */
@@ -3156,11 +1969,11 @@ export interface JobsUpdateForAccountResponseOutputOptions {
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsUpdateForAccountResponseOutputOptionsFieldNamesList;
+  fieldNames?: JobsUpdateResponseOutputOptionsFieldNamesList;
   /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsUpdateForAccountResponseOutputOptionsOutputType;
+  outputType?: JobsUpdateResponseOutputOptionsOutputType;
   /** String to be inserted in-between the records as separator. */
   recordDelimiter?: string;
   /** String to be prepended before each record. */
@@ -3172,47 +1985,42 @@ export interface JobsUpdateForAccountResponseOutputOptions {
   /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsUpdateForAccountResponseOutputOptionsTimestampFormat;
+  timestampFormat?: JobsUpdateResponseOutputOptionsTimestampFormat;
 }
-export const JobsUpdateForAccountResponseOutputOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsUpdateForAccountResponseOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
+export const JobsUpdateResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
+    batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
+    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
+    fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
+    fieldNames: S.optional(
+      JobsUpdateResponseOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
+    ),
+    mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
+    outputType: S.optional(
+      JobsUpdateResponseOutputOptionsOutputType.pipe(T.Body("output_type")),
+    ),
+    recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
+    recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
+    recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
+    recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
+    sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
+    timestampFormat: S.optional(
+      JobsUpdateResponseOutputOptionsTimestampFormat.pipe(
+        T.Body("timestamp_format"),
       ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsUpdateForAccountResponseOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsUpdateForAccountResponseOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "JobsUpdateForAccountResponseOutputOptions",
-  }) as any as S.Schema<JobsUpdateForAccountResponseOutputOptions>;
+    ),
+  }),
+).annotate({
+  identifier: "JobsUpdateResponseOutputOptions",
+}) as any as S.Schema<JobsUpdateResponseOutputOptions>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateJobForAccountResponse {
+export interface UpdateJobResponse {
   /** Unique id of the job. */
   id?: number;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsUpdateForAccountResponseDataset;
+  dataset?: JobsUpdateResponseDataset;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf?: string;
   /** Flag that indicates if the job is enabled. */
@@ -3220,9 +2028,9 @@ export interface UpdateJobForAccountResponse {
   /** If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null. */
   errorMessage?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsUpdateForAccountResponseFrequency;
+  frequency?: JobsUpdateResponseFrequency;
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsUpdateForAccountResponseKind;
+  kind?: JobsUpdateResponseKind;
   /** Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty. */
   lastComplete?: string;
   /** Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field. */
@@ -3238,17 +2046,17 @@ export interface UpdateJobForAccountResponse {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsUpdateForAccountResponseOutputOptions;
+  outputOptions?: JobsUpdateResponseOutputOptions;
 }
-export const UpdateJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
-    dataset: S.optional(JobsUpdateForAccountResponseDataset),
+    dataset: S.optional(JobsUpdateResponseDataset),
     destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
     enabled: S.optional(S.Boolean),
     errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    frequency: S.optional(JobsUpdateForAccountResponseFrequency),
-    kind: S.optional(JobsUpdateForAccountResponseKind),
+    frequency: S.optional(JobsUpdateResponseFrequency),
+    kind: S.optional(JobsUpdateResponseKind),
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
@@ -3259,103 +2067,12 @@ export const UpdateJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
-      JobsUpdateForAccountResponseOutputOptions.pipe(T.Body("output_options")),
+      JobsUpdateResponseOutputOptions.pipe(T.Body("output_options")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "UpdateJobForAccountResponse",
-}) as any as S.Schema<UpdateJobForAccountResponse>;
-
-export type JobsUpdateForZoneRequestFrequency = "high" | "low" | (string & {});
-export const JobsUpdateForZoneRequestFrequency = /*@__PURE__*/ S.String;
-
-export type JobsUpdateForZoneRequestKind = "" | "edge" | (string & {});
-export const JobsUpdateForZoneRequestKind = /*@__PURE__*/ S.String;
-
-export type JobsUpdateForZoneRequestOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
-export const JobsUpdateForZoneRequestOutputOptionsFieldNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<JobsUpdateForZoneRequestOutputOptionsFieldNamesList>;
-
-export type JobsUpdateForZoneRequestOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsUpdateForZoneRequestOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
-
-export type JobsUpdateForZoneRequestOutputOptionsTimestampFormat =
-  | "unixnano"
-  | "unix"
-  | "rfc3339"
-  | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsUpdateForZoneRequestOutputOptionsTimestampFormat =
-  /*@__PURE__*/ S.String;
-
-export interface JobsUpdateForZoneRequestOutputOptions {
-  /** String to be prepended before each batch. */
-  batchPrefix?: string;
-  /** String to be appended after each batch. */
-  batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
-  /** String to join fields. This field be ignored when `record_template` is set. */
-  fieldDelimiter?: string;
-  /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsUpdateForZoneRequestOutputOptionsFieldNamesList;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
-  mergeSubrequests?: boolean;
-  /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsUpdateForZoneRequestOutputOptionsOutputType;
-  /** String to be inserted in-between the records as separator. */
-  recordDelimiter?: string;
-  /** String to be prepended before each record. */
-  recordPrefix?: string;
-  /** String to be appended after each record. */
-  recordSuffix?: string;
-  /** String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc. */
-  recordTemplate?: string;
-  /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
-  sampleRate?: number;
-  /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsUpdateForZoneRequestOutputOptionsTimestampFormat;
-}
-export const JobsUpdateForZoneRequestOutputOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsUpdateForZoneRequestOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
-      ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsUpdateForZoneRequestOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsUpdateForZoneRequestOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "JobsUpdateForZoneRequestOutputOptions",
-}) as any as S.Schema<JobsUpdateForZoneRequestOutputOptions>;
+  identifier: "UpdateJobResponse",
+}) as any as S.Schema<UpdateJobResponse>;
 
 export interface UpdateJobForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -3369,9 +2086,9 @@ export interface UpdateJobForZoneRequest {
   /** The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
   filter?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsUpdateForZoneRequestFrequency;
+  frequency?: JobsUpdateRequestFrequency | (string & {});
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsUpdateForZoneRequestKind;
+  kind?: JobsUpdateRequestKind | (string & {});
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
@@ -3383,7 +2100,7 @@ export interface UpdateJobForZoneRequest {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsUpdateForZoneRequestOutputOptions;
+  outputOptions?: JobsUpdateRequestOutputOptions;
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
@@ -3394,8 +2111,8 @@ export const UpdateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
     enabled: S.optional(S.Boolean),
     filter: S.optional(S.String),
-    frequency: S.optional(JobsUpdateForZoneRequestFrequency),
-    kind: S.optional(JobsUpdateForZoneRequestKind),
+    frequency: S.optional(JobsUpdateRequestFrequency),
+    kind: S.optional(JobsUpdateRequestKind),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
     maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
@@ -3404,7 +2121,7 @@ export const UpdateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
-      JobsUpdateForZoneRequestOutputOptions.pipe(T.Body("output_options")),
+      JobsUpdateRequestOutputOptions.pipe(T.Body("output_options")),
     ),
     ownershipChallenge: S.optional(
       S.String.pipe(T.Body("ownership_challenge")),
@@ -3421,195 +2138,6 @@ export const UpdateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateJobForZoneRequest",
 }) as any as S.Schema<UpdateJobForZoneRequest>;
-
-export type JobsUpdateForZoneResponseDataset =
-  | "access_requests"
-  | "audit_logs"
-  | "audit_logs_v2"
-  | "biso_user_actions"
-  | "casb_findings"
-  | "device_posture_results"
-  | "dex_application_tests"
-  | "dex_device_state_events"
-  | "dlp_forensic_copies"
-  | "dns_firewall_logs"
-  | "dns_logs"
-  | "email_security_alerts"
-  | "email_security_post_delivery_events"
-  | "firewall_events"
-  | "gateway_dns"
-  | "gateway_http"
-  | "gateway_network"
-  | "http_requests"
-  | "ipsec_logs"
-  | "magic_ids_detections"
-  | "mcp_portal_logs"
-  | "mnm_flow_logs"
-  | "nel_reports"
-  | "network_analytics_logs"
-  | "page_shield_events"
-  | "sinkhole_http_logs"
-  | "spectrum_events"
-  | "ssh_logs"
-  | "turnstile_events"
-  | "warp_config_changes"
-  | "warp_toggle_changes"
-  | "websocket_analytics"
-  | "workers_trace_events"
-  | "zaraz_events"
-  | "zero_trust_network_sessions"
-  | (string & {});
-export const JobsUpdateForZoneResponseDataset = /*@__PURE__*/ S.String;
-
-export type JobsUpdateForZoneResponseFrequency = "high" | "low" | (string & {});
-export const JobsUpdateForZoneResponseFrequency = /*@__PURE__*/ S.String;
-
-export type JobsUpdateForZoneResponseKind = "" | "edge" | (string & {});
-export const JobsUpdateForZoneResponseKind = /*@__PURE__*/ S.String;
-
-export type JobsUpdateForZoneResponseOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
-export const JobsUpdateForZoneResponseOutputOptionsFieldNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<JobsUpdateForZoneResponseOutputOptionsFieldNamesList>;
-
-export type JobsUpdateForZoneResponseOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
-export const JobsUpdateForZoneResponseOutputOptionsOutputType =
-  /*@__PURE__*/ S.String;
-
-export type JobsUpdateForZoneResponseOutputOptionsTimestampFormat =
-  | "unixnano"
-  | "unix"
-  | "rfc3339"
-  | "rfc3339ms"
-  | "rfc3339ns"
-  | (string & {});
-export const JobsUpdateForZoneResponseOutputOptionsTimestampFormat =
-  /*@__PURE__*/ S.String;
-
-export interface JobsUpdateForZoneResponseOutputOptions {
-  /** String to be prepended before each batch. */
-  batchPrefix?: string;
-  /** String to be appended after each batch. */
-  batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
-  /** String to join fields. This field be ignored when `record_template` is set. */
-  fieldDelimiter?: string;
-  /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsUpdateForZoneResponseOutputOptionsFieldNamesList;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
-  mergeSubrequests?: boolean;
-  /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsUpdateForZoneResponseOutputOptionsOutputType;
-  /** String to be inserted in-between the records as separator. */
-  recordDelimiter?: string;
-  /** String to be prepended before each record. */
-  recordPrefix?: string;
-  /** String to be appended after each record. */
-  recordSuffix?: string;
-  /** String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc. */
-  recordTemplate?: string;
-  /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
-  sampleRate?: number;
-  /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
-  timestampFormat?: JobsUpdateForZoneResponseOutputOptionsTimestampFormat;
-}
-export const JobsUpdateForZoneResponseOutputOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-      batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-      fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-      fieldNames: S.optional(
-        JobsUpdateForZoneResponseOutputOptionsFieldNamesList.pipe(
-          T.Body("field_names"),
-        ),
-      ),
-      mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-      outputType: S.optional(
-        JobsUpdateForZoneResponseOutputOptionsOutputType.pipe(
-          T.Body("output_type"),
-        ),
-      ),
-      recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-      recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-      recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-      recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-      sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-      timestampFormat: S.optional(
-        JobsUpdateForZoneResponseOutputOptionsTimestampFormat.pipe(
-          T.Body("timestamp_format"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "JobsUpdateForZoneResponseOutputOptions",
-}) as any as S.Schema<JobsUpdateForZoneResponseOutputOptions>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateJobForZoneResponse {
-  /** Unique id of the job. */
-  id?: number;
-  /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsUpdateForZoneResponseDataset;
-  /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf?: string;
-  /** Flag that indicates if the job is enabled. */
-  enabled?: boolean;
-  /** If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null. */
-  errorMessage?: string;
-  /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsUpdateForZoneResponseFrequency;
-  /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsUpdateForZoneResponseKind;
-  /** Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty. */
-  lastComplete?: string;
-  /** Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field. */
-  lastError?: string;
-  /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
-  logpullOptions?: string;
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: number;
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: number;
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: number;
-  /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string;
-  /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsUpdateForZoneResponseOutputOptions;
-}
-export const UpdateJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    dataset: S.optional(JobsUpdateForZoneResponseDataset),
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    enabled: S.optional(S.Boolean),
-    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    frequency: S.optional(JobsUpdateForZoneResponseFrequency),
-    kind: S.optional(JobsUpdateForZoneResponseKind),
-    lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
-    lastError: S.optional(S.String.pipe(T.Body("last_error"))),
-    logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
-    maxUploadIntervalSeconds: S.optional(
-      S.Number.pipe(T.Body("max_upload_interval_seconds")),
-    ),
-    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
-    name: S.optional(S.String),
-    outputOptions: S.optional(
-      JobsUpdateForZoneResponseOutputOptions.pipe(T.Body("output_options")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateJobForZoneResponse",
-}) as any as S.Schema<UpdateJobForZoneResponse>;
 
 export interface ValidateOwnershipForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -3638,16 +2166,16 @@ export const ValidateOwnershipForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidateOwnershipForAccountRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ValidateOwnershipForAccountResponse {
+export interface ValidateOwnershipResponse {
   valid?: boolean;
 }
-export const ValidateOwnershipForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const ValidateOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.optional(S.Boolean),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "ValidateOwnershipForAccountResponse",
-}) as any as S.Schema<ValidateOwnershipForAccountResponse>;
+  identifier: "ValidateOwnershipResponse",
+}) as any as S.Schema<ValidateOwnershipResponse>;
 
 export interface ValidateOwnershipForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -3675,18 +2203,6 @@ export const ValidateOwnershipForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateOwnershipForZoneRequest",
 }) as any as S.Schema<ValidateOwnershipForZoneRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ValidateOwnershipForZoneResponse {
-  valid?: boolean;
-}
-export const ValidateOwnershipForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    valid: S.optional(S.Boolean),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ValidateOwnershipForZoneResponse",
-}) as any as S.Schema<ValidateOwnershipForZoneResponse>;
-
 export type CreateEdgeError = CloudflareOpError;
 /** Creates a new Instant Logs job for a zone. */
 export const createEdge: API.OperationMethod<
@@ -3706,12 +2222,12 @@ export type CreateJobForAccountError = CloudflareOpError;
 /** Creates a new Logpush job for an account or zone. */
 export const createJobForAccount: API.OperationMethod<
   CreateJobForAccountRequest,
-  CreateJobForAccountResponse,
+  CreateJobResponse,
   CreateJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateJobForAccountRequest,
-  output: CreateJobForAccountResponse,
+  output: CreateJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3721,12 +2237,12 @@ export type CreateJobForZoneError = CloudflareOpError;
 /** Creates a new Logpush job for an account or zone. */
 export const createJobForZone: API.OperationMethod<
   CreateJobForZoneRequest,
-  CreateJobForZoneResponse,
+  CreateJobResponse,
   CreateJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateJobForZoneRequest,
-  output: CreateJobForZoneResponse,
+  output: CreateJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3736,12 +2252,12 @@ export type CreateOwnershipForAccountError = CloudflareOpError;
 /** Gets a new ownership challenge sent to your destination. */
 export const createOwnershipForAccount: API.OperationMethod<
   CreateOwnershipForAccountRequest,
-  CreateOwnershipForAccountResponse,
+  CreateOwnershipResponse,
   CreateOwnershipForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOwnershipForAccountRequest,
-  output: CreateOwnershipForAccountResponse,
+  output: CreateOwnershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3751,12 +2267,12 @@ export type CreateOwnershipForZoneError = CloudflareOpError;
 /** Gets a new ownership challenge sent to your destination. */
 export const createOwnershipForZone: API.OperationMethod<
   CreateOwnershipForZoneRequest,
-  CreateOwnershipForZoneResponse,
+  CreateOwnershipResponse,
   CreateOwnershipForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOwnershipForZoneRequest,
-  output: CreateOwnershipForZoneResponse,
+  output: CreateOwnershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3766,12 +2282,12 @@ export type DeleteJobForAccountError = JobNotFound | CloudflareOpError;
 /** Deletes a Logpush job. */
 export const deleteJobForAccount: API.OperationMethod<
   DeleteJobForAccountRequest,
-  DeleteJobForAccountResponse,
+  DeleteJobResponse,
   DeleteJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobForAccountRequest,
-  output: DeleteJobForAccountResponse,
+  output: DeleteJobResponse,
   errors: [JobNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3781,12 +2297,12 @@ export type DeleteJobForZoneError = JobNotFound | CloudflareOpError;
 /** Deletes a Logpush job. */
 export const deleteJobForZone: API.OperationMethod<
   DeleteJobForZoneRequest,
-  DeleteJobForZoneResponse,
+  DeleteJobResponse,
   DeleteJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobForZoneRequest,
-  output: DeleteJobForZoneResponse,
+  output: DeleteJobResponse,
   errors: [JobNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3796,12 +2312,12 @@ export type DestinationExistsValidateForAccountError = CloudflareOpError;
 /** Checks if there is an existing job with a destination. */
 export const destinationExistsValidateForAccount: API.OperationMethod<
   DestinationExistsValidateForAccountRequest,
-  DestinationExistsValidateForAccountResponse,
+  DestinationExistsValidateResponse,
   DestinationExistsValidateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationExistsValidateForAccountRequest,
-  output: DestinationExistsValidateForAccountResponse,
+  output: DestinationExistsValidateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3811,12 +2327,12 @@ export type DestinationExistsValidateForZoneError = CloudflareOpError;
 /** Checks if there is an existing job with a destination. */
 export const destinationExistsValidateForZone: API.OperationMethod<
   DestinationExistsValidateForZoneRequest,
-  DestinationExistsValidateForZoneResponse,
+  DestinationExistsValidateResponse,
   DestinationExistsValidateForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationExistsValidateForZoneRequest,
-  output: DestinationExistsValidateForZoneResponse,
+  output: DestinationExistsValidateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3826,12 +2342,12 @@ export type DestinationValidateForAccountError = CloudflareOpError;
 /** Validates destination. */
 export const destinationValidateForAccount: API.OperationMethod<
   DestinationValidateForAccountRequest,
-  DestinationValidateForAccountResponse,
+  DestinationValidateResponse,
   DestinationValidateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationValidateForAccountRequest,
-  output: DestinationValidateForAccountResponse,
+  output: DestinationValidateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3841,12 +2357,12 @@ export type DestinationValidateForZoneError = CloudflareOpError;
 /** Validates destination. */
 export const destinationValidateForZone: API.OperationMethod<
   DestinationValidateForZoneRequest,
-  DestinationValidateForZoneResponse,
+  DestinationValidateResponse,
   DestinationValidateForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationValidateForZoneRequest,
-  output: DestinationValidateForZoneResponse,
+  output: DestinationValidateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3856,12 +2372,12 @@ export type GetDatasetFieldForAccountError = CloudflareOpError;
 /** Lists all fields available for a dataset. The response result is. an object with key-value pairs, where keys are field names, and values are descriptions. */
 export const getDatasetFieldForAccount: API.OperationMethod<
   GetDatasetFieldForAccountRequest,
-  GetDatasetFieldForAccountResponse,
+  GetDatasetFieldResponse,
   GetDatasetFieldForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDatasetFieldForAccountRequest,
-  output: GetDatasetFieldForAccountResponse,
+  output: GetDatasetFieldResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3871,12 +2387,12 @@ export type GetDatasetFieldForZoneError = CloudflareOpError;
 /** Lists all fields available for a dataset. The response result is. an object with key-value pairs, where keys are field names, and values are descriptions. */
 export const getDatasetFieldForZone: API.OperationMethod<
   GetDatasetFieldForZoneRequest,
-  GetDatasetFieldForZoneResponse,
+  GetDatasetFieldResponse,
   GetDatasetFieldForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDatasetFieldForZoneRequest,
-  output: GetDatasetFieldForZoneResponse,
+  output: GetDatasetFieldResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3886,13 +2402,13 @@ export type GetDatasetJobForAccountError = CloudflareOpError;
 /** Lists Logpush jobs for an account or zone for a dataset. */
 export const getDatasetJobForAccount: API.PaginatedOperationMethod<
   GetDatasetJobForAccountRequest,
-  GetDatasetJobForAccountResponse,
+  GetDatasetJobResponse,
   GetDatasetJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDatasetJobForAccountRequest,
-    output: GetDatasetJobForAccountResponse,
+    output: GetDatasetJobResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3905,13 +2421,13 @@ export type GetDatasetJobForZoneError = CloudflareOpError;
 /** Lists Logpush jobs for an account or zone for a dataset. */
 export const getDatasetJobForZone: API.PaginatedOperationMethod<
   GetDatasetJobForZoneRequest,
-  GetDatasetJobForZoneResponse,
+  GetDatasetJobResponse,
   GetDatasetJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDatasetJobForZoneRequest,
-    output: GetDatasetJobForZoneResponse,
+    output: GetDatasetJobResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3943,12 +2459,12 @@ export type GetJobForAccountError = JobNotFound | Forbidden | CloudflareOpError;
 /** Gets the details of a Logpush job. */
 export const getJobForAccount: API.OperationMethod<
   GetJobForAccountRequest,
-  GetJobForAccountResponse,
+  GetJobResponse,
   GetJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobForAccountRequest,
-  output: GetJobForAccountResponse,
+  output: GetJobResponse,
   errors: [JobNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3958,12 +2474,12 @@ export type GetJobForZoneError = JobNotFound | Forbidden | CloudflareOpError;
 /** Gets the details of a Logpush job. */
 export const getJobForZone: API.OperationMethod<
   GetJobForZoneRequest,
-  GetJobForZoneResponse,
+  GetJobResponse,
   GetJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobForZoneRequest,
-  output: GetJobForZoneResponse,
+  output: GetJobResponse,
   errors: [JobNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3973,13 +2489,13 @@ export type ListJobsForAccountError = Forbidden | NotFound | CloudflareOpError;
 /** Lists Logpush jobs for an account or zone. */
 export const listJobsForAccount: API.PaginatedOperationMethod<
   ListJobsForAccountRequest,
-  ListJobsForAccountResponse,
+  ListJobsResponse,
   ListJobsForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListJobsForAccountRequest,
-    output: ListJobsForAccountResponse,
+    output: ListJobsResponse,
     errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3992,13 +2508,13 @@ export type ListJobsForZoneError = Forbidden | NotFound | CloudflareOpError;
 /** Lists Logpush jobs for an account or zone. */
 export const listJobsForZone: API.PaginatedOperationMethod<
   ListJobsForZoneRequest,
-  ListJobsForZoneResponse,
+  ListJobsResponse,
   ListJobsForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListJobsForZoneRequest,
-    output: ListJobsForZoneResponse,
+    output: ListJobsResponse,
     errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4011,12 +2527,12 @@ export type OriginValidateForAccountError = CloudflareOpError;
 /** Validates logpull origin with logpull_options. */
 export const originValidateForAccount: API.OperationMethod<
   OriginValidateForAccountRequest,
-  OriginValidateForAccountResponse,
+  OriginValidateResponse,
   OriginValidateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: OriginValidateForAccountRequest,
-  output: OriginValidateForAccountResponse,
+  output: OriginValidateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4026,12 +2542,12 @@ export type OriginValidateForZoneError = CloudflareOpError;
 /** Validates logpull origin with logpull_options. */
 export const originValidateForZone: API.OperationMethod<
   OriginValidateForZoneRequest,
-  OriginValidateForZoneResponse,
+  OriginValidateResponse,
   OriginValidateForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: OriginValidateForZoneRequest,
-  output: OriginValidateForZoneResponse,
+  output: OriginValidateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4041,12 +2557,12 @@ export type UpdateJobForAccountError = CloudflareOpError;
 /** Updates a Logpush job. */
 export const updateJobForAccount: API.OperationMethod<
   UpdateJobForAccountRequest,
-  UpdateJobForAccountResponse,
+  UpdateJobResponse,
   UpdateJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobForAccountRequest,
-  output: UpdateJobForAccountResponse,
+  output: UpdateJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4056,12 +2572,12 @@ export type UpdateJobForZoneError = CloudflareOpError;
 /** Updates a Logpush job. */
 export const updateJobForZone: API.OperationMethod<
   UpdateJobForZoneRequest,
-  UpdateJobForZoneResponse,
+  UpdateJobResponse,
   UpdateJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobForZoneRequest,
-  output: UpdateJobForZoneResponse,
+  output: UpdateJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4071,12 +2587,12 @@ export type ValidateOwnershipForAccountError = CloudflareOpError;
 /** Validates ownership challenge of the destination. */
 export const validateOwnershipForAccount: API.OperationMethod<
   ValidateOwnershipForAccountRequest,
-  ValidateOwnershipForAccountResponse,
+  ValidateOwnershipResponse,
   ValidateOwnershipForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ValidateOwnershipForAccountRequest,
-  output: ValidateOwnershipForAccountResponse,
+  output: ValidateOwnershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4086,12 +2602,12 @@ export type ValidateOwnershipForZoneError = CloudflareOpError;
 /** Validates ownership challenge of the destination. */
 export const validateOwnershipForZone: API.OperationMethod<
   ValidateOwnershipForZoneRequest,
-  ValidateOwnershipForZoneResponse,
+  ValidateOwnershipResponse,
   ValidateOwnershipForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ValidateOwnershipForZoneRequest,
-  output: ValidateOwnershipForZoneResponse,
+  output: ValidateOwnershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

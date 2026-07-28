@@ -318,7 +318,7 @@ export const DomainsCheckAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainsCheckAvailabilityRequest>;
 
 /** Valid values are Regular domain: Azure will charge the full price of domain registration, SoftDeleted: Purchasing this domain will simply restore it and this operation will not cost anything. */
-export type DomainType = "Regular" | "SoftDeleted" | (string & {});
+export type DomainType = "Regular" | "SoftDeleted";
 export const DomainType = /*@__PURE__*/ S.String;
 
 /** Domain availability check result. */
@@ -436,7 +436,7 @@ export const DomainPurchaseConsent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainPurchaseConsent>;
 
 /** Current DNS type */
-export type DnsType = "AzureDns" | "DefaultDomainRegistrarDns" | (string & {});
+export type DnsType = "AzureDns" | "DefaultDomainRegistrarDns";
 export const DnsType = /*@__PURE__*/ S.String;
 
 /** Domain resource specific properties */
@@ -456,11 +456,11 @@ export interface DomainPropertiesInput {
   /** Legal agreement consent. */
   consent: DomainPurchaseConsent;
   /** Current DNS type */
-  dnsType?: DnsType;
+  dnsType?: DnsType | (string & {});
   /** Azure DNS Zone to use */
   dnsZoneId?: string;
   /** Target DNS type (would be used for migration) */
-  targetDnsType?: DnsType;
+  targetDnsType?: DnsType | (string & {});
   /** Authorization code for the domain. */
   authCode?: string;
 }
@@ -524,8 +524,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -533,8 +532,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -594,8 +592,7 @@ export type DomainStatus =
   | "Unlocked"
   | "Unparked"
   | "Updated"
-  | "JsonConverterFailed"
-  | (string & {});
+  | "JsonConverterFailed";
 export const DomainStatus = /*@__PURE__*/ S.String;
 
 /** Domain provisioning state. */
@@ -604,8 +601,7 @@ export type ProvisioningState =
   | "Failed"
   | "Canceled"
   | "InProgress"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Name servers. */
@@ -621,15 +617,15 @@ export const HostNameSiteNamesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HostNameSiteNamesList>;
 
 /** Type of the Azure resource the hostname is assigned to. */
-export type AzureResourceType = "Website" | "TrafficManager" | (string & {});
+export type AzureResourceType = "Website" | "TrafficManager";
 export const AzureResourceType = /*@__PURE__*/ S.String;
 
 /** Type of the DNS record. */
-export type CustomHostNameDnsRecordType = "CName" | "A" | (string & {});
+export type CustomHostNameDnsRecordType = "CName" | "A";
 export const CustomHostNameDnsRecordType = /*@__PURE__*/ S.String;
 
 /** Type of the hostname. */
-export type HostNameType = "Verified" | "Managed" | (string & {});
+export type HostNameType = "Verified" | "Managed";
 export const HostNameType = /*@__PURE__*/ S.String;
 
 /** Details of a hostname derived from a domain. */
@@ -668,8 +664,7 @@ export const DomainPropertiesManagedHostNamesList = /*@__PURE__*/ S.Array(
 export type ResourceNotRenewableReason =
   | "RegistrationStatusNotSupportedForRenewal"
   | "ExpirationNotInRenewalTimeRange"
-  | "SubscriptionNotActive"
-  | (string & {});
+  | "SubscriptionNotActive";
 export const ResourceNotRenewableReason = /*@__PURE__*/ S.String;
 
 /** Reasons why domain is not renewable. */
@@ -1447,11 +1442,11 @@ export interface DomainPatchResourcePropertiesInput {
   /** Legal agreement consent. */
   consent: DomainPurchaseConsent;
   /** Current DNS type */
-  dnsType?: DnsType;
+  dnsType?: DnsType | (string & {});
   /** Azure DNS Zone to use */
   dnsZoneId?: string;
   /** Target DNS type (would be used for migration) */
-  targetDnsType?: DnsType;
+  targetDnsType?: DnsType | (string & {});
   /** Authorization code for the domain. */
   authCode?: string;
 }

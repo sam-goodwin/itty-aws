@@ -13,82 +13,64 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type GoogleCloudPolicysimulatorV1betaReplayStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "RUNNING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
-export const GoogleCloudPolicysimulatorV1betaReplayStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaReplayStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "SUCCEEDED" | "FAILED";
+export const GoogleCloudPolicysimulatorV1betaReplayStateEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceEnum =
-  | "LOG_SOURCE_UNSPECIFIED"
-  | "RECENT_ACCESSES"
-  | (string & {});
-export const GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceEnum = "LOG_SOURCE_UNSPECIFIED" | "RECENT_ACCESSES";
+export const GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceEnum = /*@__PURE__*/ S.String;
 
-export type GoogleIamV1AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type GoogleIamV1AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
@@ -98,19 +80,14 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
-    exemptedMembers: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1AuditLogConfig",
-}) as any as S.Schema<GoogleIamV1AuditLogConfig>;
+S.Struct({
+  "logType": S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
+  "exemptedMembers": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleIamV1AuditLogConfig" }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList =
-  ReadonlyArray<GoogleIamV1AuditLogConfig>;
-export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
-  GoogleIamV1AuditLogConfig,
-) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
+export type GoogleIamV1AuditLogConfigList = ReadonlyArray<GoogleIamV1AuditLogConfig>;
+export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(GoogleIamV1AuditLogConfig) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface GoogleIamV1AuditConfig {
@@ -120,18 +97,14 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
 export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1AuditConfig",
-}) as any as S.Schema<GoogleIamV1AuditConfig>;
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(GoogleIamV1AuditLogConfigList),
+}),
+).annotate({ identifier: "GoogleIamV1AuditConfig" }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
 export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
-export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
-  GoogleIamV1AuditConfig,
-) as any as S.Schema<GoogleIamV1AuditConfigList>;
+export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(GoogleIamV1AuditConfig) as any as S.Schema<GoogleIamV1AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface GoogleTypeExpr {
@@ -145,12 +118,12 @@ export interface GoogleTypeExpr {
   description?: string;
 }
 export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
+S.Struct({
+  "location": S.optional(S.String),
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+}),
 ).annotate({ identifier: "GoogleTypeExpr" }) as any as S.Schema<GoogleTypeExpr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -163,19 +136,15 @@ export interface GoogleIamV1Binding {
   condition?: GoogleTypeExpr;
 }
 export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    members: S.optional(StringList),
-    role: S.optional(S.String),
-    condition: S.optional(GoogleTypeExpr),
-  }),
-).annotate({
-  identifier: "GoogleIamV1Binding",
-}) as any as S.Schema<GoogleIamV1Binding>;
+S.Struct({
+  "members": S.optional(StringList),
+  "role": S.optional(S.String),
+  "condition": S.optional(GoogleTypeExpr),
+}),
+).annotate({ identifier: "GoogleIamV1Binding" }) as any as S.Schema<GoogleIamV1Binding>;
 
 export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
-export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
-  GoogleIamV1Binding,
-) as any as S.Schema<GoogleIamV1BindingList>;
+export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(GoogleIamV1Binding) as any as S.Schema<GoogleIamV1BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface GoogleIamV1Policy {
@@ -189,23 +158,16 @@ export interface GoogleIamV1Policy {
   bindings?: GoogleIamV1BindingList;
 }
 export const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auditConfigs: S.optional(GoogleIamV1AuditConfigList),
-    etag: S.optional(S.String),
-    version: S.optional(S.Number),
-    bindings: S.optional(GoogleIamV1BindingList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1Policy",
-}) as any as S.Schema<GoogleIamV1Policy>;
+S.Struct({
+  "auditConfigs": S.optional(GoogleIamV1AuditConfigList),
+  "etag": S.optional(S.String),
+  "version": S.optional(S.Number),
+  "bindings": S.optional(GoogleIamV1BindingList),
+}),
+).annotate({ identifier: "GoogleIamV1Policy" }) as any as S.Schema<GoogleIamV1Policy>;
 
-export type GoogleIamV1PolicyMap = {
-  [key: string]: GoogleIamV1Policy | undefined;
-};
-export const GoogleIamV1PolicyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GoogleIamV1Policy,
-) as any as S.Schema<GoogleIamV1PolicyMap>;
+export type GoogleIamV1PolicyMap = { [key: string]: GoogleIamV1Policy | undefined };
+export const GoogleIamV1PolicyMap = /*@__PURE__*/ S.Record(S.String, GoogleIamV1Policy) as any as S.Schema<GoogleIamV1PolicyMap>;
 
 /** The configuration used for a Replay. */
 export interface GoogleCloudPolicysimulatorV1betaReplayConfig {
@@ -214,17 +176,12 @@ export interface GoogleCloudPolicysimulatorV1betaReplayConfig {
   /** A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay. */
   policyOverlay?: GoogleIamV1PolicyMap;
 }
-export const GoogleCloudPolicysimulatorV1betaReplayConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      logSource: S.optional(
-        GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceEnum,
-      ),
-      policyOverlay: S.optional(GoogleIamV1PolicyMap),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaReplayConfig",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayConfig>;
+export const GoogleCloudPolicysimulatorV1betaReplayConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "logSource": S.optional(GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceEnum),
+  "policyOverlay": S.optional(GoogleIamV1PolicyMap),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaReplayConfig" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayConfig>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface GoogleTypeDate {
@@ -236,11 +193,11 @@ export interface GoogleTypeDate {
   day?: number;
 }
 export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    month: S.optional(S.Number),
-    year: S.optional(S.Number),
-    day: S.optional(S.Number),
-  }),
+S.Struct({
+  "month": S.optional(S.Number),
+  "year": S.optional(S.Number),
+  "day": S.optional(S.Number),
+}),
 ).annotate({ identifier: "GoogleTypeDate" }) as any as S.Schema<GoogleTypeDate>;
 
 /** Summary statistics about the replayed log entries. */
@@ -258,19 +215,16 @@ export interface GoogleCloudPolicysimulatorV1betaReplayResultsSummary {
   /** The number of log entries that could not be replayed. */
   errorCount?: number;
 }
-export const GoogleCloudPolicysimulatorV1betaReplayResultsSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unchangedCount: S.optional(S.Number),
-      newestDate: S.optional(GoogleTypeDate),
-      differenceCount: S.optional(S.Number),
-      oldestDate: S.optional(GoogleTypeDate),
-      logCount: S.optional(S.Number),
-      errorCount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaReplayResultsSummary",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayResultsSummary>;
+export const GoogleCloudPolicysimulatorV1betaReplayResultsSummary = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "unchangedCount": S.optional(S.Number),
+  "newestDate": S.optional(GoogleTypeDate),
+  "differenceCount": S.optional(S.Number),
+  "oldestDate": S.optional(GoogleTypeDate),
+  "logCount": S.optional(S.Number),
+  "errorCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaReplayResultsSummary" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayResultsSummary>;
 
 /** A resource describing a `Replay`, or simulation. */
 export interface GoogleCloudPolicysimulatorV1betaReplay {
@@ -283,19 +237,14 @@ export interface GoogleCloudPolicysimulatorV1betaReplay {
   /** Output only. Summary statistics about the replayed log entries. */
   resultsSummary?: GoogleCloudPolicysimulatorV1betaReplayResultsSummary;
 }
-export const GoogleCloudPolicysimulatorV1betaReplay = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      state: S.optional(GoogleCloudPolicysimulatorV1betaReplayStateEnum),
-      config: S.optional(GoogleCloudPolicysimulatorV1betaReplayConfig),
-      name: S.optional(S.String),
-      resultsSummary: S.optional(
-        GoogleCloudPolicysimulatorV1betaReplayResultsSummary,
-      ),
-    }),
-).annotate({
-  identifier: "GoogleCloudPolicysimulatorV1betaReplay",
-}) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplay>;
+export const GoogleCloudPolicysimulatorV1betaReplay = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "state": S.optional(GoogleCloudPolicysimulatorV1betaReplayStateEnum),
+  "config": S.optional(GoogleCloudPolicysimulatorV1betaReplayConfig),
+  "name": S.optional(S.String),
+  "resultsSummary": S.optional(GoogleCloudPolicysimulatorV1betaReplayResultsSummary),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaReplay" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplay>;
 
 export interface CreateFoldersLocationsReplaysRequest {
   /** Required. The parent resource where this Replay will be created. This resource must be a project, folder, or organization with a location. Example: `projects/my-example-project/locations/global` */
@@ -303,34 +252,18 @@ export interface CreateFoldersLocationsReplaysRequest {
   /** Request body */
   body?: GoogleCloudPolicysimulatorV1betaReplay;
 }
-export const CreateFoldersLocationsReplaysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudPolicysimulatorV1betaReplay.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/replays",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateFoldersLocationsReplaysRequest",
-}) as any as S.Schema<CreateFoldersLocationsReplaysRequest>;
+export const CreateFoldersLocationsReplaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudPolicysimulatorV1betaReplay.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/replays","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "CreateFoldersLocationsReplaysRequest" }) as any as S.Schema<CreateFoldersLocationsReplaysRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -342,14 +275,12 @@ export interface GoogleRpcStatus {
   details?: DocumentMapList;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
-).annotate({
-  identifier: "GoogleRpcStatus",
-}) as any as S.Schema<GoogleRpcStatus>;
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
+).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
@@ -365,16 +296,14 @@ export interface GoogleLongrunningOperation {
   name?: string;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    error: S.optional(GoogleRpcStatus),
-    response: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleLongrunningOperation",
-}) as any as S.Schema<GoogleLongrunningOperation>;
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(GoogleRpcStatus),
+  "response": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleLongrunningOperation" }) as any as S.Schema<GoogleLongrunningOperation>;
 
 /** A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used. */
 export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
@@ -383,15 +312,12 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
   /** List of values denied at this resource. */
   deniedValues?: StringList;
 }
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowedValues: S.optional(StringList),
-      deniedValues: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues",
-  }) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues>;
+export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowedValues": S.optional(StringList),
+  "deniedValues": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues" }) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues>;
 
 /** A rule used to express this policy. */
 export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
@@ -408,28 +334,19 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   /** If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set in policies for boolean constraints, custom constraints and managed constraints. */
   enforce?: boolean;
 }
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      values: S.optional(
-        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues,
-      ),
-      allowAll: S.optional(S.Boolean),
-      condition: S.optional(GoogleTypeExpr),
-      parameters: S.optional(DocumentMap),
-      denyAll: S.optional(S.Boolean),
-      enforce: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRule",
-  }) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
+export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "values": S.optional(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues),
+  "allowAll": S.optional(S.Boolean),
+  "condition": S.optional(GoogleTypeExpr),
+  "parameters": S.optional(DocumentMap),
+  "denyAll": S.optional(S.Boolean),
+  "enforce": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRule" }) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
 
-export type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
-  ReadonlyArray<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudOrgpolicyV2PolicySpecPolicyRule,
-  ) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList>;
+export type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList = ReadonlyArray<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
+export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList = /*@__PURE__*/ S.Array(GoogleCloudOrgpolicyV2PolicySpecPolicyRule) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList>;
 
 /** Defines a Google Cloud policy specification that is used to specify constraints for configurations of Google Cloud resources. */
 export interface GoogleCloudOrgpolicyV2PolicySpec {
@@ -445,16 +362,14 @@ export interface GoogleCloudOrgpolicyV2PolicySpec {
   updateTime?: string;
 }
 export const GoogleCloudOrgpolicyV2PolicySpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inheritFromParent: S.optional(S.Boolean),
-    etag: S.optional(S.String),
-    rules: S.optional(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList),
-    reset: S.optional(S.Boolean),
-    updateTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudOrgpolicyV2PolicySpec",
-}) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpec>;
+S.Struct({
+  "inheritFromParent": S.optional(S.Boolean),
+  "etag": S.optional(S.String),
+  "rules": S.optional(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList),
+  "reset": S.optional(S.Boolean),
+  "updateTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudOrgpolicyV2PolicySpec" }) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpec>;
 
 /** Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run. */
 export interface GoogleCloudOrgpolicyV2AlternatePolicySpec {
@@ -463,15 +378,12 @@ export interface GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /** Specify constraint for configurations of Google Cloud resources. */
   spec?: GoogleCloudOrgpolicyV2PolicySpec;
 }
-export const GoogleCloudOrgpolicyV2AlternatePolicySpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      launch: S.optional(S.String),
-      spec: S.optional(GoogleCloudOrgpolicyV2PolicySpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2AlternatePolicySpec",
-  }) as any as S.Schema<GoogleCloudOrgpolicyV2AlternatePolicySpec>;
+export const GoogleCloudOrgpolicyV2AlternatePolicySpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "launch": S.optional(S.String),
+  "spec": S.optional(GoogleCloudOrgpolicyV2PolicySpec),
+}),
+).annotate({ identifier: "GoogleCloudOrgpolicyV2AlternatePolicySpec" }) as any as S.Schema<GoogleCloudOrgpolicyV2AlternatePolicySpec>;
 
 /** Defines an organization policy that is used to specify constraints for configurations of Google Cloud resources. */
 export interface GoogleCloudOrgpolicyV2Policy {
@@ -487,16 +399,14 @@ export interface GoogleCloudOrgpolicyV2Policy {
   etag?: string;
 }
 export const GoogleCloudOrgpolicyV2Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alternate: S.optional(GoogleCloudOrgpolicyV2AlternatePolicySpec),
-    dryRunSpec: S.optional(GoogleCloudOrgpolicyV2PolicySpec),
-    name: S.optional(S.String),
-    spec: S.optional(GoogleCloudOrgpolicyV2PolicySpec),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudOrgpolicyV2Policy",
-}) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>;
+S.Struct({
+  "alternate": S.optional(GoogleCloudOrgpolicyV2AlternatePolicySpec),
+  "dryRunSpec": S.optional(GoogleCloudOrgpolicyV2PolicySpec),
+  "name": S.optional(S.String),
+  "spec": S.optional(GoogleCloudOrgpolicyV2PolicySpec),
+  "etag": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudOrgpolicyV2Policy" }) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>;
 
 /** A change to an OrgPolicy. */
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay {
@@ -505,48 +415,24 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay {
   /** Optional. The new or updated OrgPolicy. */
   policy?: GoogleCloudOrgpolicyV2Policy;
 }
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyParent: S.optional(S.String),
-      policy: S.optional(GoogleCloudOrgpolicyV2Policy),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>;
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "policyParent": S.optional(S.String),
+  "policy": S.optional(GoogleCloudOrgpolicyV2Policy),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>;
 
-export type GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlayList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>;
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlayList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay,
-  ) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlayList>;
+export type GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlayList = ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>;
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlayList = /*@__PURE__*/ S.Array(GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlayList>;
 
-export type GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
-  | "ACTION_TYPE_UNSPECIFIED"
-  | "ALLOW"
-  | "DENY"
-  | (string & {});
-export const GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum = "ACTION_TYPE_UNSPECIFIED" | "ALLOW" | "DENY";
+export const GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
-  | "METHOD_TYPE_UNSPECIFIED"
-  | "CREATE"
-  | "UPDATE"
-  | "DELETE"
-  | "REMOVE_GRANT"
-  | "GOVERN_TAGS"
-  | (string & {});
-export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum = "METHOD_TYPE_UNSPECIFIED" | "CREATE" | "UPDATE" | "DELETE" | "REMOVE_GRANT" | "GOVERN_TAGS";
+export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
-  ReadonlyArray<GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum>;
-export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList>;
+export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList = ReadonlyArray<GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum>;
+export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList>;
 
 /** A custom constraint defined by customers which can *only* be applied to the given resource types and organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating a custom constraint itself does NOT apply any policy enforcement*. */
 export interface GoogleCloudOrgpolicyV2CustomConstraint {
@@ -567,25 +453,18 @@ export interface GoogleCloudOrgpolicyV2CustomConstraint {
   /** Output only. The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` methods were called. */
   updateTime?: string;
 }
-export const GoogleCloudOrgpolicyV2CustomConstraint = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      resourceTypes: S.optional(StringList),
-      actionType: S.optional(
-        GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum,
-      ),
-      displayName: S.optional(S.String),
-      condition: S.optional(S.String),
-      methodTypes: S.optional(
-        GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList,
-      ),
-      description: S.optional(S.String),
-      updateTime: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudOrgpolicyV2CustomConstraint",
-}) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraint>;
+export const GoogleCloudOrgpolicyV2CustomConstraint = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "resourceTypes": S.optional(StringList),
+  "actionType": S.optional(GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum),
+  "displayName": S.optional(S.String),
+  "condition": S.optional(S.String),
+  "methodTypes": S.optional(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList),
+  "description": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudOrgpolicyV2CustomConstraint" }) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraint>;
 
 /** A change to an OrgPolicy custom constraint. */
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay {
@@ -594,23 +473,15 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstrain
   /** Optional. The new or updated custom constraint. */
   customConstraint?: GoogleCloudOrgpolicyV2CustomConstraint;
 }
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customConstraintParent: S.optional(S.String),
-      customConstraint: S.optional(GoogleCloudOrgpolicyV2CustomConstraint),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "customConstraintParent": S.optional(S.String),
+  "customConstraint": S.optional(GoogleCloudOrgpolicyV2CustomConstraint),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
 
-export type GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay,
-  ) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList>;
+export type GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList = ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList = /*@__PURE__*/ S.Array(GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList>;
 
 /** The proposed changes to OrgPolicy. */
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay {
@@ -619,29 +490,15 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay {
   /** Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the same name will be overridden in the simulation. That is, violations will be determined as if all custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each request evaluates a single constraint. */
   customConstraints?: GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList;
 }
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policies: S.optional(
-        GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlayList,
-      ),
-      customConstraints: S.optional(
-        GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay>;
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "policies": S.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlayList),
+  "customConstraints": S.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay>;
 
-export type GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewStateEnum =
-    | "PREVIEW_STATE_UNSPECIFIED"
-    | "PREVIEW_PENDING"
-    | "PREVIEW_RUNNING"
-    | "PREVIEW_SUCCEEDED"
-    | "PREVIEW_FAILED"
-    | (string & {});
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewStateEnum = "PREVIEW_STATE_UNSPECIFIED" | "PREVIEW_PENDING" | "PREVIEW_RUNNING" | "PREVIEW_SUCCEEDED" | "PREVIEW_FAILED";
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewStateEnum = /*@__PURE__*/ S.String;
 
 /** A summary of the state of all resources scanned for compliance with the changed OrgPolicy. */
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts {
@@ -656,19 +513,15 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResou
   /** Output only. Number of resources where the constraint was not enforced, i.e. the Policy set `enforced: false` for that resource. */
   unenforced?: number;
 }
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      errors: S.optional(S.Number),
-      scanned: S.optional(S.Number),
-      compliant: S.optional(S.Number),
-      noncompliant: S.optional(S.Number),
-      unenforced: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts>;
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "errors": S.optional(S.Number),
+  "scanned": S.optional(S.Number),
+  "compliant": S.optional(S.Number),
+  "noncompliant": S.optional(S.Number),
+  "unenforced": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts>;
 
 /** OrgPolicyViolationsPreview is a resource providing a preview of the violations that will exist if an OrgPolicy change is made. The list of violations are modeled as child resources and retrieved via a ListOrgPolicyViolations API call. There are potentially more OrgPolicyViolations than could fit in an embedded field. Thus, the use of a child resource instead of a field. */
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview {
@@ -687,24 +540,17 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview {
   /** Output only. Time when this `OrgPolicyViolationsPreview` was created. */
   createTime?: string;
 }
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customConstraints: S.optional(StringList),
-      name: S.optional(S.String),
-      overlay: S.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay),
-      violationsCount: S.optional(S.Number),
-      state: S.optional(
-        GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewStateEnum,
-      ),
-      resourceCounts: S.optional(
-        GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts,
-      ),
-      createTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview>;
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "customConstraints": S.optional(StringList),
+  "name": S.optional(S.String),
+  "overlay": S.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay),
+  "violationsCount": S.optional(S.Number),
+  "state": S.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewStateEnum),
+  "resourceCounts": S.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts),
+  "createTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview>;
 
 export interface CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
   /** Optional. An optional user-specified ID for the OrgPolicyViolationsPreview. If not provided, a random ID will be generated. */
@@ -714,27 +560,13 @@ export interface CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest 
   /** Request body */
   body?: GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview;
 }
-export const CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      orgPolicyViolationsPreviewId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/orgPolicyViolationsPreviews",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest",
-  }) as any as S.Schema<CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
+export const CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orgPolicyViolationsPreviewId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/orgPolicyViolationsPreviews","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest" }) as any as S.Schema<CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
 export interface CreateOrganizationsLocationsReplaysRequest {
   /** Required. The parent resource where this Replay will be created. This resource must be a project, folder, or organization with a location. Example: `projects/my-example-project/locations/global` */
@@ -742,23 +574,12 @@ export interface CreateOrganizationsLocationsReplaysRequest {
   /** Request body */
   body?: GoogleCloudPolicysimulatorV1betaReplay;
 }
-export const CreateOrganizationsLocationsReplaysRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudPolicysimulatorV1betaReplay.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/replays",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateOrganizationsLocationsReplaysRequest",
-  }) as any as S.Schema<CreateOrganizationsLocationsReplaysRequest>;
+export const CreateOrganizationsLocationsReplaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudPolicysimulatorV1betaReplay.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/replays","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "CreateOrganizationsLocationsReplaysRequest" }) as any as S.Schema<CreateOrganizationsLocationsReplaysRequest>;
 
 export interface CreateProjectsLocationsReplaysRequest {
   /** Required. The parent resource where this Replay will be created. This resource must be a project, folder, or organization with a location. Example: `projects/my-example-project/locations/global` */
@@ -766,23 +587,12 @@ export interface CreateProjectsLocationsReplaysRequest {
   /** Request body */
   body?: GoogleCloudPolicysimulatorV1betaReplay;
 }
-export const CreateProjectsLocationsReplaysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudPolicysimulatorV1betaReplay.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/replays",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsReplaysRequest",
-}) as any as S.Schema<CreateProjectsLocationsReplaysRequest>;
+export const CreateProjectsLocationsReplaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudPolicysimulatorV1betaReplay.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/replays","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsReplaysRequest" }) as any as S.Schema<CreateProjectsLocationsReplaysRequest>;
 
 export interface GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
   /** Required. The organization under which this OrgPolicyViolationsPreview will be created. Example: `organizations/my-example-org/locations/global` */
@@ -790,293 +600,152 @@ export interface GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsReques
   /** Request body */
   body?: GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview;
 }
-export const GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/orgPolicyViolationsPreviews:generate",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest",
-  }) as any as S.Schema<GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
+export const GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/orgPolicyViolationsPreviews:generate","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest" }) as any as S.Schema<GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
 export interface GetFoldersLocationsAccessPolicySimulationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsAccessPolicySimulationsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetFoldersLocationsAccessPolicySimulationsOperationsRequest",
-  }) as any as S.Schema<GetFoldersLocationsAccessPolicySimulationsOperationsRequest>;
+export const GetFoldersLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetFoldersLocationsAccessPolicySimulationsOperationsRequest" }) as any as S.Schema<GetFoldersLocationsAccessPolicySimulationsOperationsRequest>;
 
 export interface GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest",
-  }) as any as S.Schema<GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+export const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest" }) as any as S.Schema<GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
 export interface GetFoldersLocationsReplaysRequest {
   /** Required. The name of the Replay to retrieve, in the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the `Replay`. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36` */
   name: string;
 }
 export const GetFoldersLocationsReplaysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+name}",
-      baseUrl: "https://policysimulator.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetFoldersLocationsReplaysRequest",
-}) as any as S.Schema<GetFoldersLocationsReplaysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetFoldersLocationsReplaysRequest" }) as any as S.Schema<GetFoldersLocationsReplaysRequest>;
 
 export interface GetFoldersLocationsReplaysOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetFoldersLocationsReplaysOperationsRequest",
-  }) as any as S.Schema<GetFoldersLocationsReplaysOperationsRequest>;
+export const GetFoldersLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetFoldersLocationsReplaysOperationsRequest" }) as any as S.Schema<GetFoldersLocationsReplaysOperationsRequest>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+name}",
-      baseUrl: "https://policysimulator.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperationsRequest",
-}) as any as S.Schema<GetOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest",
-  }) as any as S.Schema<GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest>;
+export const GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest" }) as any as S.Schema<GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest>;
 
 export interface GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
   /** Required. The name of the OrgPolicyViolationsPreview to get. */
   name: string;
 }
-export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest",
-  }) as any as S.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
+export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest" }) as any as S.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
 export interface GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest",
-  }) as any as S.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest" }) as any as S.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
 export interface GetOrganizationsLocationsReplaysRequest {
   /** Required. The name of the Replay to retrieve, in the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the `Replay`. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36` */
   name: string;
 }
-export const GetOrganizationsLocationsReplaysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetOrganizationsLocationsReplaysRequest",
-}) as any as S.Schema<GetOrganizationsLocationsReplaysRequest>;
+export const GetOrganizationsLocationsReplaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsReplaysRequest" }) as any as S.Schema<GetOrganizationsLocationsReplaysRequest>;
 
 export interface GetOrganizationsLocationsReplaysOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetOrganizationsLocationsReplaysOperationsRequest",
-  }) as any as S.Schema<GetOrganizationsLocationsReplaysOperationsRequest>;
+export const GetOrganizationsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsReplaysOperationsRequest" }) as any as S.Schema<GetOrganizationsLocationsReplaysOperationsRequest>;
 
 export interface GetProjectsLocationsAccessPolicySimulationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsAccessPolicySimulationsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsAccessPolicySimulationsOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsAccessPolicySimulationsOperationsRequest>;
+export const GetProjectsLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsAccessPolicySimulationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsAccessPolicySimulationsOperationsRequest>;
 
 export interface GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+export const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
 export interface GetProjectsLocationsReplaysRequest {
   /** Required. The name of the Replay to retrieve, in the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the `Replay`. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36` */
   name: string;
 }
 export const GetProjectsLocationsReplaysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+name}",
-      baseUrl: "https://policysimulator.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsReplaysRequest",
-}) as any as S.Schema<GetProjectsLocationsReplaysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsReplaysRequest" }) as any as S.Schema<GetProjectsLocationsReplaysRequest>;
 
 export interface GetProjectsLocationsReplaysOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsReplaysOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsReplaysOperationsRequest>;
+export const GetProjectsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsReplaysOperationsRequest" }) as any as S.Schema<GetProjectsLocationsReplaysOperationsRequest>;
 
 export interface ListFoldersLocationsReplaysRequest {
   /** Required. The parent resource, in the following format: `{projects|folders|organizations}/{resource-id}/locations/global`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global` Only `Replay` objects that are direct children of the provided parent are listed. In other words, `Replay` objects that are children of a project will not be included when the parent is a folder of that project. */
@@ -1087,26 +756,15 @@ export interface ListFoldersLocationsReplaysRequest {
   pageToken?: string;
 }
 export const ListFoldersLocationsReplaysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+parent}/replays",
-      baseUrl: "https://policysimulator.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListFoldersLocationsReplaysRequest",
-}) as any as S.Schema<ListFoldersLocationsReplaysRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/replays","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListFoldersLocationsReplaysRequest" }) as any as S.Schema<ListFoldersLocationsReplaysRequest>;
 
-export type GoogleCloudPolicysimulatorV1betaReplayList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaReplay>;
-export const GoogleCloudPolicysimulatorV1betaReplayList = /*@__PURE__*/ S.Array(
-  GoogleCloudPolicysimulatorV1betaReplay,
-) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayList>;
+export type GoogleCloudPolicysimulatorV1betaReplayList = ReadonlyArray<GoogleCloudPolicysimulatorV1betaReplay>;
+export const GoogleCloudPolicysimulatorV1betaReplayList = /*@__PURE__*/ S.Array(GoogleCloudPolicysimulatorV1betaReplay) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayList>;
 
 /** Response message for Simulator.ListReplays. */
 export interface GoogleCloudPolicysimulatorV1betaListReplaysResponse {
@@ -1115,15 +773,12 @@ export interface GoogleCloudPolicysimulatorV1betaListReplaysResponse {
   /** A token that you can use to retrieve the next page of results. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudPolicysimulatorV1betaListReplaysResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      replays: S.optional(GoogleCloudPolicysimulatorV1betaReplayList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaListReplaysResponse",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaListReplaysResponse>;
+export const GoogleCloudPolicysimulatorV1betaListReplaysResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "replays": S.optional(GoogleCloudPolicysimulatorV1betaReplayList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaListReplaysResponse" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaListReplaysResponse>;
 
 export interface ListFoldersLocationsReplaysOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -1137,30 +792,18 @@ export interface ListFoldersLocationsReplaysOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListFoldersLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListFoldersLocationsReplaysOperationsRequest",
-  }) as any as S.Schema<ListFoldersLocationsReplaysOperationsRequest>;
+export const ListFoldersLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListFoldersLocationsReplaysOperationsRequest" }) as any as S.Schema<ListFoldersLocationsReplaysOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
-  GoogleLongrunningOperation,
-) as any as S.Schema<GoogleLongrunningOperationList>;
+export type GoogleLongrunningOperationList = ReadonlyArray<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(GoogleLongrunningOperation) as any as S.Schema<GoogleLongrunningOperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
@@ -1171,16 +814,13 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operations: S.optional(GoogleLongrunningOperationList),
-      nextPageToken: S.optional(S.String),
-      unreachable: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "GoogleLongrunningListOperationsResponse",
-}) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "operations": S.optional(GoogleLongrunningOperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleLongrunningListOperationsResponse" }) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
 
 export interface ListFoldersLocationsReplaysResultsRequest {
   /** Required. The Replay whose results are listed, in the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}` Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36` */
@@ -1190,72 +830,31 @@ export interface ListFoldersLocationsReplaysResultsRequest {
   /** A page token, received from a previous Simulator.ListReplayResults call. Provide this token to retrieve the next page of results. When paginating, all other parameters provided to [Simulator.ListReplayResults[] must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListFoldersLocationsReplaysResultsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/results",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListFoldersLocationsReplaysResultsRequest",
-  }) as any as S.Schema<ListFoldersLocationsReplaysResultsRequest>;
+export const ListFoldersLocationsReplaysResultsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/results","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListFoldersLocationsReplaysResultsRequest" }) as any as S.Schema<ListFoldersLocationsReplaysResultsRequest>;
 
-export type GoogleCloudPolicysimulatorV1betaExplainedAccessAccessStateEnum =
-  | "ACCESS_STATE_UNSPECIFIED"
-  | "GRANTED"
-  | "NOT_GRANTED"
-  | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED"
-  | (string & {});
-export const GoogleCloudPolicysimulatorV1betaExplainedAccessAccessStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaExplainedAccessAccessStateEnum = "ACCESS_STATE_UNSPECIFIED" | "GRANTED" | "NOT_GRANTED" | "UNKNOWN_CONDITIONAL" | "UNKNOWN_INFO_DENIED";
+export const GoogleCloudPolicysimulatorV1betaExplainedAccessAccessStateEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudPolicysimulatorV1betaExplainedPolicyAccessEnum =
-  | "ACCESS_STATE_UNSPECIFIED"
-  | "GRANTED"
-  | "NOT_GRANTED"
-  | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED"
-  | (string & {});
-export const GoogleCloudPolicysimulatorV1betaExplainedPolicyAccessEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaExplainedPolicyAccessEnum = "ACCESS_STATE_UNSPECIFIED" | "GRANTED" | "NOT_GRANTED" | "UNKNOWN_CONDITIONAL" | "UNKNOWN_INFO_DENIED";
+export const GoogleCloudPolicysimulatorV1betaExplainedPolicyAccessEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
-export const GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionRelevanceEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionRelevanceEnum = "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+export const GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionRelevanceEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudPolicysimulatorV1betaBindingExplanationAccessEnum =
-  | "ACCESS_STATE_UNSPECIFIED"
-  | "GRANTED"
-  | "NOT_GRANTED"
-  | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED"
-  | (string & {});
-export const GoogleCloudPolicysimulatorV1betaBindingExplanationAccessEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaBindingExplanationAccessEnum = "ACCESS_STATE_UNSPECIFIED" | "GRANTED" | "NOT_GRANTED" | "UNKNOWN_CONDITIONAL" | "UNKNOWN_INFO_DENIED";
+export const GoogleCloudPolicysimulatorV1betaBindingExplanationAccessEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMembershipEnum =
-    | "MEMBERSHIP_UNSPECIFIED"
-    | "MEMBERSHIP_INCLUDED"
-    | "MEMBERSHIP_NOT_INCLUDED"
-    | "MEMBERSHIP_UNKNOWN_INFO_DENIED"
-    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
-    | (string & {});
-export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMembershipEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMembershipEnum = "MEMBERSHIP_UNSPECIFIED" | "MEMBERSHIP_INCLUDED" | "MEMBERSHIP_NOT_INCLUDED" | "MEMBERSHIP_UNKNOWN_INFO_DENIED" | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
+export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMembershipEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
-export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipRelevanceEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipRelevanceEnum = "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipRelevanceEnum = /*@__PURE__*/ S.String;
 
 /** Details about whether the binding includes the principal. */
 export interface GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership {
@@ -1264,49 +863,21 @@ export interface GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMemb
   /** The relevance of the principal's status to the overall determination for the binding. */
   relevance?: GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipRelevanceEnum;
 }
-export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      membership: S.optional(
-        GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMembershipEnum,
-      ),
-      relevance: S.optional(
-        GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipRelevanceEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership>;
+export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "membership": S.optional(GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMembershipEnum),
+  "relevance": S.optional(GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipRelevanceEnum),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership>;
 
-export type GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMap =
-  {
-    [key: string]:
-      | GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership
-      | undefined;
-  };
-export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership,
-  ) as any as S.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMap>;
+export type GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMap = { [key: string]: GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership | undefined };
+export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMap = /*@__PURE__*/ S.Record(S.String, GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership) as any as S.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMap>;
 
-export type GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionEnum =
-    | "ROLE_PERMISSION_UNSPECIFIED"
-    | "ROLE_PERMISSION_INCLUDED"
-    | "ROLE_PERMISSION_NOT_INCLUDED"
-    | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED"
-    | (string & {});
-export const GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionEnum = "ROLE_PERMISSION_UNSPECIFIED" | "ROLE_PERMISSION_INCLUDED" | "ROLE_PERMISSION_NOT_INCLUDED" | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED";
+export const GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudPolicysimulatorV1betaBindingExplanationRelevanceEnum =
-  | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-  | "NORMAL"
-  | "HIGH"
-  | (string & {});
-export const GoogleCloudPolicysimulatorV1betaBindingExplanationRelevanceEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaBindingExplanationRelevanceEnum = "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+export const GoogleCloudPolicysimulatorV1betaBindingExplanationRelevanceEnum = /*@__PURE__*/ S.String;
 
 /** Details about how a binding in a policy affects a principal's ability to use a permission. */
 export interface GoogleCloudPolicysimulatorV1betaBindingExplanation {
@@ -1325,45 +896,23 @@ export interface GoogleCloudPolicysimulatorV1betaBindingExplanation {
   /** A condition expression that prevents this binding from granting access unless the expression evaluates to `true`. To learn about IAM Conditions, see https://cloud.google.com/iam/docs/conditions-overview. */
   condition?: GoogleTypeExpr;
 }
-export const GoogleCloudPolicysimulatorV1betaBindingExplanation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rolePermissionRelevance: S.optional(
-        GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionRelevanceEnum,
-      ),
-      access: S.optional(
-        GoogleCloudPolicysimulatorV1betaBindingExplanationAccessEnum,
-      ),
-      memberships: S.optional(
-        GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMap,
-      ),
-      rolePermission: S.optional(
-        GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionEnum,
-      ),
-      relevance: S.optional(
-        GoogleCloudPolicysimulatorV1betaBindingExplanationRelevanceEnum,
-      ),
-      role: S.optional(S.String),
-      condition: S.optional(GoogleTypeExpr),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaBindingExplanation",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanation>;
+export const GoogleCloudPolicysimulatorV1betaBindingExplanation = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "rolePermissionRelevance": S.optional(GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionRelevanceEnum),
+  "access": S.optional(GoogleCloudPolicysimulatorV1betaBindingExplanationAccessEnum),
+  "memberships": S.optional(GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembershipMap),
+  "rolePermission": S.optional(GoogleCloudPolicysimulatorV1betaBindingExplanationRolePermissionEnum),
+  "relevance": S.optional(GoogleCloudPolicysimulatorV1betaBindingExplanationRelevanceEnum),
+  "role": S.optional(S.String),
+  "condition": S.optional(GoogleTypeExpr),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaBindingExplanation" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanation>;
 
-export type GoogleCloudPolicysimulatorV1betaBindingExplanationList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaBindingExplanation>;
-export const GoogleCloudPolicysimulatorV1betaBindingExplanationList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudPolicysimulatorV1betaBindingExplanation,
-  ) as any as S.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanationList>;
+export type GoogleCloudPolicysimulatorV1betaBindingExplanationList = ReadonlyArray<GoogleCloudPolicysimulatorV1betaBindingExplanation>;
+export const GoogleCloudPolicysimulatorV1betaBindingExplanationList = /*@__PURE__*/ S.Array(GoogleCloudPolicysimulatorV1betaBindingExplanation) as any as S.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanationList>;
 
-export type GoogleCloudPolicysimulatorV1betaExplainedPolicyRelevanceEnum =
-  | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-  | "NORMAL"
-  | "HIGH"
-  | (string & {});
-export const GoogleCloudPolicysimulatorV1betaExplainedPolicyRelevanceEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaExplainedPolicyRelevanceEnum = "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+export const GoogleCloudPolicysimulatorV1betaExplainedPolicyRelevanceEnum = /*@__PURE__*/ S.String;
 
 /** Details about how a specific IAM Policy contributed to the access check. */
 export interface GoogleCloudPolicysimulatorV1betaExplainedPolicy {
@@ -1378,36 +927,21 @@ export interface GoogleCloudPolicysimulatorV1betaExplainedPolicy {
   /** The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the user who created the Replay does not have access to the policy, this field is omitted. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
   fullResourceName?: string;
 }
-export const GoogleCloudPolicysimulatorV1betaExplainedPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policy: S.optional(GoogleIamV1Policy),
-      access: S.optional(
-        GoogleCloudPolicysimulatorV1betaExplainedPolicyAccessEnum,
-      ),
-      bindingExplanations: S.optional(
-        GoogleCloudPolicysimulatorV1betaBindingExplanationList,
-      ),
-      relevance: S.optional(
-        GoogleCloudPolicysimulatorV1betaExplainedPolicyRelevanceEnum,
-      ),
-      fullResourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaExplainedPolicy",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaExplainedPolicy>;
+export const GoogleCloudPolicysimulatorV1betaExplainedPolicy = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "policy": S.optional(GoogleIamV1Policy),
+  "access": S.optional(GoogleCloudPolicysimulatorV1betaExplainedPolicyAccessEnum),
+  "bindingExplanations": S.optional(GoogleCloudPolicysimulatorV1betaBindingExplanationList),
+  "relevance": S.optional(GoogleCloudPolicysimulatorV1betaExplainedPolicyRelevanceEnum),
+  "fullResourceName": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaExplainedPolicy" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaExplainedPolicy>;
 
-export type GoogleCloudPolicysimulatorV1betaExplainedPolicyList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaExplainedPolicy>;
-export const GoogleCloudPolicysimulatorV1betaExplainedPolicyList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudPolicysimulatorV1betaExplainedPolicy,
-  ) as any as S.Schema<GoogleCloudPolicysimulatorV1betaExplainedPolicyList>;
+export type GoogleCloudPolicysimulatorV1betaExplainedPolicyList = ReadonlyArray<GoogleCloudPolicysimulatorV1betaExplainedPolicy>;
+export const GoogleCloudPolicysimulatorV1betaExplainedPolicyList = /*@__PURE__*/ S.Array(GoogleCloudPolicysimulatorV1betaExplainedPolicy) as any as S.Schema<GoogleCloudPolicysimulatorV1betaExplainedPolicyList>;
 
 export type GoogleRpcStatusList = ReadonlyArray<GoogleRpcStatus>;
-export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
-  GoogleRpcStatus,
-) as any as S.Schema<GoogleRpcStatusList>;
+export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(GoogleRpcStatus) as any as S.Schema<GoogleRpcStatusList>;
 
 /** Details about how a set of policies, listed in ExplainedPolicy, resulted in a certain AccessState when replaying an access tuple. */
 export interface GoogleCloudPolicysimulatorV1betaExplainedAccess {
@@ -1418,30 +952,16 @@ export interface GoogleCloudPolicysimulatorV1betaExplainedAccess {
   /** If the AccessState is `UNKNOWN`, this field contains a list of errors explaining why the result is `UNKNOWN`. If the `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is omitted. */
   errors?: GoogleRpcStatusList;
 }
-export const GoogleCloudPolicysimulatorV1betaExplainedAccess =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessState: S.optional(
-        GoogleCloudPolicysimulatorV1betaExplainedAccessAccessStateEnum,
-      ),
-      policies: S.optional(GoogleCloudPolicysimulatorV1betaExplainedPolicyList),
-      errors: S.optional(GoogleRpcStatusList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaExplainedAccess",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaExplainedAccess>;
+export const GoogleCloudPolicysimulatorV1betaExplainedAccess = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accessState": S.optional(GoogleCloudPolicysimulatorV1betaExplainedAccessAccessStateEnum),
+  "policies": S.optional(GoogleCloudPolicysimulatorV1betaExplainedPolicyList),
+  "errors": S.optional(GoogleRpcStatusList),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaExplainedAccess" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaExplainedAccess>;
 
-export type GoogleCloudPolicysimulatorV1betaAccessStateDiffAccessChangeEnum =
-  | "ACCESS_CHANGE_TYPE_UNSPECIFIED"
-  | "NO_CHANGE"
-  | "UNKNOWN_CHANGE"
-  | "ACCESS_REVOKED"
-  | "ACCESS_GAINED"
-  | "ACCESS_MAYBE_REVOKED"
-  | "ACCESS_MAYBE_GAINED"
-  | (string & {});
-export const GoogleCloudPolicysimulatorV1betaAccessStateDiffAccessChangeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudPolicysimulatorV1betaAccessStateDiffAccessChangeEnum = "ACCESS_CHANGE_TYPE_UNSPECIFIED" | "NO_CHANGE" | "UNKNOWN_CHANGE" | "ACCESS_REVOKED" | "ACCESS_GAINED" | "ACCESS_MAYBE_REVOKED" | "ACCESS_MAYBE_GAINED";
+export const GoogleCloudPolicysimulatorV1betaAccessStateDiffAccessChangeEnum = /*@__PURE__*/ S.String;
 
 /** A summary and comparison of the principal's access under the current (baseline) policies and the proposed (simulated) policies for a single access tuple. */
 export interface GoogleCloudPolicysimulatorV1betaAccessStateDiff {
@@ -1452,32 +972,24 @@ export interface GoogleCloudPolicysimulatorV1betaAccessStateDiff {
   /** How the principal's access, specified in the AccessState field, changed between the current (baseline) policies and proposed (simulated) policies. */
   accessChange?: GoogleCloudPolicysimulatorV1betaAccessStateDiffAccessChangeEnum;
 }
-export const GoogleCloudPolicysimulatorV1betaAccessStateDiff =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      baseline: S.optional(GoogleCloudPolicysimulatorV1betaExplainedAccess),
-      simulated: S.optional(GoogleCloudPolicysimulatorV1betaExplainedAccess),
-      accessChange: S.optional(
-        GoogleCloudPolicysimulatorV1betaAccessStateDiffAccessChangeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaAccessStateDiff",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaAccessStateDiff>;
+export const GoogleCloudPolicysimulatorV1betaAccessStateDiff = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "baseline": S.optional(GoogleCloudPolicysimulatorV1betaExplainedAccess),
+  "simulated": S.optional(GoogleCloudPolicysimulatorV1betaExplainedAccess),
+  "accessChange": S.optional(GoogleCloudPolicysimulatorV1betaAccessStateDiffAccessChangeEnum),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaAccessStateDiff" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaAccessStateDiff>;
 
 /** The difference between the results of evaluating an access tuple under the current (baseline) policies and under the proposed (simulated) policies. This difference explains how a principal's access could change if the proposed policies were applied. */
 export interface GoogleCloudPolicysimulatorV1betaReplayDiff {
   /** A summary and comparison of the principal's access under the current (baseline) policies and the proposed (simulated) policies for a single access tuple. The evaluation of the principal's access is reported in the AccessState field. */
   accessDiff?: GoogleCloudPolicysimulatorV1betaAccessStateDiff;
 }
-export const GoogleCloudPolicysimulatorV1betaReplayDiff =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessDiff: S.optional(GoogleCloudPolicysimulatorV1betaAccessStateDiff),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaReplayDiff",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayDiff>;
+export const GoogleCloudPolicysimulatorV1betaReplayDiff = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accessDiff": S.optional(GoogleCloudPolicysimulatorV1betaAccessStateDiff),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaReplayDiff" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayDiff>;
 
 /** Information about the principal, resource, and permission to check. */
 export interface GoogleCloudPolicysimulatorV1betaAccessTuple {
@@ -1488,16 +1000,13 @@ export interface GoogleCloudPolicysimulatorV1betaAccessTuple {
   /** Required. The principal whose access you want to check, in the form of the email address that represents that principal. For example, `alice@example.com` or `my-service-account@my-project.iam.gserviceaccount.com`. The principal must be a Google Account or a service account. Other types of principals are not supported. */
   principal?: string;
 }
-export const GoogleCloudPolicysimulatorV1betaAccessTuple =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permission: S.optional(S.String),
-      fullResourceName: S.optional(S.String),
-      principal: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaAccessTuple",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaAccessTuple>;
+export const GoogleCloudPolicysimulatorV1betaAccessTuple = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "permission": S.optional(S.String),
+  "fullResourceName": S.optional(S.String),
+  "principal": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaAccessTuple" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaAccessTuple>;
 
 /** The result of replaying a single access tuple against a simulated state. */
 export interface GoogleCloudPolicysimulatorV1betaReplayResult {
@@ -1514,26 +1023,19 @@ export interface GoogleCloudPolicysimulatorV1betaReplayResult {
   /** The resource name of the `ReplayResult`, in the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}/results/{replay-result-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36/results/1234` */
   name?: string;
 }
-export const GoogleCloudPolicysimulatorV1betaReplayResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      diff: S.optional(GoogleCloudPolicysimulatorV1betaReplayDiff),
-      error: S.optional(GoogleRpcStatus),
-      parent: S.optional(S.String),
-      accessTuple: S.optional(GoogleCloudPolicysimulatorV1betaAccessTuple),
-      lastSeenDate: S.optional(GoogleTypeDate),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaReplayResult",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayResult>;
+export const GoogleCloudPolicysimulatorV1betaReplayResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "diff": S.optional(GoogleCloudPolicysimulatorV1betaReplayDiff),
+  "error": S.optional(GoogleRpcStatus),
+  "parent": S.optional(S.String),
+  "accessTuple": S.optional(GoogleCloudPolicysimulatorV1betaAccessTuple),
+  "lastSeenDate": S.optional(GoogleTypeDate),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaReplayResult" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayResult>;
 
-export type GoogleCloudPolicysimulatorV1betaReplayResultList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaReplayResult>;
-export const GoogleCloudPolicysimulatorV1betaReplayResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudPolicysimulatorV1betaReplayResult,
-  ) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayResultList>;
+export type GoogleCloudPolicysimulatorV1betaReplayResultList = ReadonlyArray<GoogleCloudPolicysimulatorV1betaReplayResult>;
+export const GoogleCloudPolicysimulatorV1betaReplayResultList = /*@__PURE__*/ S.Array(GoogleCloudPolicysimulatorV1betaReplayResult) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayResultList>;
 
 /** Response message for Simulator.ListReplayResults. */
 export interface GoogleCloudPolicysimulatorV1betaListReplayResultsResponse {
@@ -1542,17 +1044,12 @@ export interface GoogleCloudPolicysimulatorV1betaListReplayResultsResponse {
   /** A token that you can use to retrieve the next page of ReplayResult objects. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudPolicysimulatorV1betaListReplayResultsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      replayResults: S.optional(
-        GoogleCloudPolicysimulatorV1betaReplayResultList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaListReplayResultsResponse",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaListReplayResultsResponse>;
+export const GoogleCloudPolicysimulatorV1betaListReplayResultsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "replayResults": S.optional(GoogleCloudPolicysimulatorV1betaReplayResultList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaListReplayResultsResponse" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaListReplayResultsResponse>;
 
 export interface ListOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -1567,22 +1064,14 @@ export interface ListOperationsRequest {
   filter?: string;
 }
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+name}",
-      baseUrl: "https://policysimulator.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListOperationsRequest",
-}) as any as S.Schema<ListOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export interface ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
   /** Required. The parent the violations are scoped to. Format: `organizations/{organization}/locations/{location}` Example: `organizations/my-example-org/locations/global` */
@@ -1592,29 +1081,16 @@ export interface ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
   /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/orgPolicyViolationsPreviews",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest",
-  }) as any as S.Schema<ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
+export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/orgPolicyViolationsPreviews","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest" }) as any as S.Schema<ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
-export type GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview>;
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview,
-  ) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewList>;
+export type GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewList = ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview>;
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewList = /*@__PURE__*/ S.Array(GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewList>;
 
 /** ListOrgPolicyViolationsPreviewsResponse is the response message for OrgPolicyViolationsPreviewService.ListOrgPolicyViolationsPreviews. */
 export interface GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse {
@@ -1623,18 +1099,12 @@ export interface GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviews
   /** A token that you can use to retrieve the next page of results. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      orgPolicyViolationsPreviews: S.optional(
-        GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse>;
+export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orgPolicyViolationsPreviews": S.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse>;
 
 export interface ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest {
   /** Required. The OrgPolicyViolationsPreview to get OrgPolicyViolations from. Format: organizations/{organization}/locations/{location}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreview} */
@@ -1644,23 +1114,13 @@ export interface ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyV
   /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/orgPolicyViolations",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest",
-  }) as any as S.Schema<ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest>;
+export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/orgPolicyViolations","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest" }) as any as S.Schema<ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest>;
 
 /** ResourceContext provides the context we know about a resource. It is similar in concept to google.cloud.asset.v1.Resource, but focuses on the information specifically used by Simulator. */
 export interface GoogleCloudPolicysimulatorV1betaResourceContext {
@@ -1671,16 +1131,13 @@ export interface GoogleCloudPolicysimulatorV1betaResourceContext {
   /** The ancestry path of the resource in Google Cloud [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and ends at root. If the resource is a project, folder, or organization, the ancestry path starts from the resource itself. Example: `["projects/123456789", "folders/5432", "organizations/1234"]` */
   ancestors?: StringList;
 }
-export const GoogleCloudPolicysimulatorV1betaResourceContext =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetType: S.optional(S.String),
-      resource: S.optional(S.String),
-      ancestors: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaResourceContext",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaResourceContext>;
+export const GoogleCloudPolicysimulatorV1betaResourceContext = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "assetType": S.optional(S.String),
+  "resource": S.optional(S.String),
+  "ancestors": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaResourceContext" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaResourceContext>;
 
 /** OrgPolicyViolation is a resource representing a single resource violating a single OrgPolicy constraint. */
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolation {
@@ -1693,24 +1150,17 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolation {
   /** Any error encountered during the evaluation. */
   error?: GoogleRpcStatus;
 }
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      customConstraint: S.optional(GoogleCloudOrgpolicyV2CustomConstraint),
-      resource: S.optional(GoogleCloudPolicysimulatorV1betaResourceContext),
-      error: S.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyViolation",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolation>;
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolation = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "customConstraint": S.optional(GoogleCloudOrgpolicyV2CustomConstraint),
+  "resource": S.optional(GoogleCloudPolicysimulatorV1betaResourceContext),
+  "error": S.optional(GoogleRpcStatus),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyViolation" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolation>;
 
-export type GoogleCloudPolicysimulatorV1betaOrgPolicyViolationList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyViolation>;
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudPolicysimulatorV1betaOrgPolicyViolation,
-  ) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationList>;
+export type GoogleCloudPolicysimulatorV1betaOrgPolicyViolationList = ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyViolation>;
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationList = /*@__PURE__*/ S.Array(GoogleCloudPolicysimulatorV1betaOrgPolicyViolation) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationList>;
 
 /** ListOrgPolicyViolationsResponse is the response message for OrgPolicyViolationsPreviewService.ListOrgPolicyViolations */
 export interface GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse {
@@ -1719,18 +1169,12 @@ export interface GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse
   /** A token that you can use to retrieve the next page of results. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      orgPolicyViolations: S.optional(
-        GoogleCloudPolicysimulatorV1betaOrgPolicyViolationList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse",
-  }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse>;
+export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orgPolicyViolations": S.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyViolationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse" }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse>;
 
 export interface ListOrganizationsLocationsReplaysRequest {
   /** Required. The parent resource, in the following format: `{projects|folders|organizations}/{resource-id}/locations/global`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global` Only `Replay` objects that are direct children of the provided parent are listed. In other words, `Replay` objects that are children of a project will not be included when the parent is a folder of that project. */
@@ -1740,22 +1184,13 @@ export interface ListOrganizationsLocationsReplaysRequest {
   /** A page token, received from a previous Simulator.ListReplays call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to Simulator.ListReplays must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsReplaysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/replays",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListOrganizationsLocationsReplaysRequest",
-}) as any as S.Schema<ListOrganizationsLocationsReplaysRequest>;
+export const ListOrganizationsLocationsReplaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/replays","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsReplaysRequest" }) as any as S.Schema<ListOrganizationsLocationsReplaysRequest>;
 
 export interface ListOrganizationsLocationsReplaysOperationsRequest {
   /** The standard list filter. */
@@ -1769,24 +1204,15 @@ export interface ListOrganizationsLocationsReplaysOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListOrganizationsLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListOrganizationsLocationsReplaysOperationsRequest",
-  }) as any as S.Schema<ListOrganizationsLocationsReplaysOperationsRequest>;
+export const ListOrganizationsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsReplaysOperationsRequest" }) as any as S.Schema<ListOrganizationsLocationsReplaysOperationsRequest>;
 
 export interface ListOrganizationsLocationsReplaysResultsRequest {
   /** Required. The Replay whose results are listed, in the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}` Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36` */
@@ -1796,22 +1222,13 @@ export interface ListOrganizationsLocationsReplaysResultsRequest {
   /** A page token, received from a previous Simulator.ListReplayResults call. Provide this token to retrieve the next page of results. When paginating, all other parameters provided to [Simulator.ListReplayResults[] must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsReplaysResultsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/results",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListOrganizationsLocationsReplaysResultsRequest",
-  }) as any as S.Schema<ListOrganizationsLocationsReplaysResultsRequest>;
+export const ListOrganizationsLocationsReplaysResultsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/results","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsReplaysResultsRequest" }) as any as S.Schema<ListOrganizationsLocationsReplaysResultsRequest>;
 
 export interface ListProjectsLocationsReplaysRequest {
   /** Required. The parent resource, in the following format: `{projects|folders|organizations}/{resource-id}/locations/global`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global` Only `Replay` objects that are direct children of the provided parent are listed. In other words, `Replay` objects that are children of a project will not be included when the parent is a folder of that project. */
@@ -1822,20 +1239,12 @@ export interface ListProjectsLocationsReplaysRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsReplaysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+parent}/replays",
-      baseUrl: "https://policysimulator.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsReplaysRequest",
-}) as any as S.Schema<ListProjectsLocationsReplaysRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/replays","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsReplaysRequest" }) as any as S.Schema<ListProjectsLocationsReplaysRequest>;
 
 export interface ListProjectsLocationsReplaysOperationsRequest {
   /** The standard list page size. */
@@ -1849,24 +1258,15 @@ export interface ListProjectsLocationsReplaysOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsReplaysOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsReplaysOperationsRequest>;
+export const ListProjectsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsReplaysOperationsRequest" }) as any as S.Schema<ListProjectsLocationsReplaysOperationsRequest>;
 
 export interface ListProjectsLocationsReplaysResultsRequest {
   /** Required. The Replay whose results are listed, in the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}` Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36` */
@@ -1876,29 +1276,15 @@ export interface ListProjectsLocationsReplaysResultsRequest {
   /** A page token, received from a previous Simulator.ListReplayResults call. Provide this token to retrieve the next page of results. When paginating, all other parameters provided to [Simulator.ListReplayResults[] must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsReplaysResultsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/results",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsReplaysResultsRequest",
-  }) as any as S.Schema<ListProjectsLocationsReplaysResultsRequest>;
+export const ListProjectsLocationsReplaysResultsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/results","baseUrl":"https://policysimulator.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsReplaysResultsRequest" }) as any as S.Schema<ListProjectsLocationsReplaysResultsRequest>;
 
-export type CreateFoldersLocationsReplaysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateFoldersLocationsReplaysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates and starts a Replay using the given ReplayConfig. */
 export const createFoldersLocationsReplays: API.OperationMethod<
   CreateFoldersLocationsReplaysRequest,
@@ -1913,12 +1299,7 @@ export const createFoldersLocationsReplays: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateOrganizationsLocationsOrgPolicyViolationsPreviewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateOrganizationsLocationsOrgPolicyViolationsPreviewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** CreateOrgPolicyViolationsPreview creates an OrgPolicyViolationsPreview for the proposed changes in the provided OrgPolicyViolationsPreview.OrgPolicyOverlay. The changes to OrgPolicy are specified by this `OrgPolicyOverlay`. The resources to scan are inferred from these specified changes. */
 export const createOrganizationsLocationsOrgPolicyViolationsPreviews: API.OperationMethod<
   CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
@@ -1933,12 +1314,7 @@ export const createOrganizationsLocationsOrgPolicyViolationsPreviews: API.Operat
   retry: Retry.Retry,
 }));
 
-export type CreateOrganizationsLocationsReplaysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateOrganizationsLocationsReplaysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates and starts a Replay using the given ReplayConfig. */
 export const createOrganizationsLocationsReplays: API.OperationMethod<
   CreateOrganizationsLocationsReplaysRequest,
@@ -1953,12 +1329,7 @@ export const createOrganizationsLocationsReplays: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsReplaysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsReplaysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates and starts a Replay using the given ReplayConfig. */
 export const createProjectsLocationsReplays: API.OperationMethod<
   CreateProjectsLocationsReplaysRequest,
@@ -1973,12 +1344,7 @@ export const createProjectsLocationsReplays: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** GenerateOrgPolicyViolationsPreview generates an OrgPolicyViolationsPreview for the proposed changes in the provided OrgPolicyViolationsPreview.OrgPolicyOverlay. The changes to OrgPolicy are specified by this `OrgPolicyOverlay`. The resources to scan are inferred from these specified changes. */
 export const generateOrganizationsLocationsOrgPolicyViolationsPreviews: API.OperationMethod<
   GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
@@ -1993,10 +1359,7 @@ export const generateOrganizationsLocationsOrgPolicyViolationsPreviews: API.Oper
   retry: Retry.Retry,
 }));
 
-export type GetFoldersLocationsAccessPolicySimulationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetFoldersLocationsAccessPolicySimulationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersLocationsAccessPolicySimulationsOperations: API.OperationMethod<
   GetFoldersLocationsAccessPolicySimulationsOperationsRequest,
@@ -2011,10 +1374,7 @@ export const getFoldersLocationsAccessPolicySimulationsOperations: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersLocationsOrgPolicyViolationsPreviewsOperations: API.OperationMethod<
   GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest,
@@ -2044,10 +1404,7 @@ export const getFoldersLocationsReplays: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetFoldersLocationsReplaysOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetFoldersLocationsReplaysOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersLocationsReplaysOperations: API.OperationMethod<
   GetFoldersLocationsReplaysOperationsRequest,
@@ -2077,10 +1434,7 @@ export const getOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsAccessPolicySimulationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOrganizationsLocationsAccessPolicySimulationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsAccessPolicySimulationsOperations: API.OperationMethod<
   GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest,
@@ -2095,10 +1449,7 @@ export const getOrganizationsLocationsAccessPolicySimulationsOperations: API.Ope
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsError = NotFound | Forbidden | GcpOpError;
 /** GetOrgPolicyViolationsPreview gets the specified OrgPolicyViolationsPreview. Each OrgPolicyViolationsPreview is available for at least 7 days. */
 export const getOrganizationsLocationsOrgPolicyViolationsPreviews: API.OperationMethod<
   GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
@@ -2113,8 +1464,7 @@ export const getOrganizationsLocationsOrgPolicyViolationsPreviews: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsOrgPolicyViolationsPreviewsOperations: API.OperationMethod<
   GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest,
@@ -2129,10 +1479,7 @@ export const getOrganizationsLocationsOrgPolicyViolationsPreviewsOperations: API
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsReplaysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOrganizationsLocationsReplaysError = NotFound | Forbidden | GcpOpError;
 /** Gets the specified Replay. Each `Replay` is available for at least 7 days. */
 export const getOrganizationsLocationsReplays: API.OperationMethod<
   GetOrganizationsLocationsReplaysRequest,
@@ -2147,10 +1494,7 @@ export const getOrganizationsLocationsReplays: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsReplaysOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOrganizationsLocationsReplaysOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsReplaysOperations: API.OperationMethod<
   GetOrganizationsLocationsReplaysOperationsRequest,
@@ -2165,10 +1509,7 @@ export const getOrganizationsLocationsReplaysOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAccessPolicySimulationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsAccessPolicySimulationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsAccessPolicySimulationsOperations: API.OperationMethod<
   GetProjectsLocationsAccessPolicySimulationsOperationsRequest,
@@ -2183,10 +1524,7 @@ export const getProjectsLocationsAccessPolicySimulationsOperations: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOrgPolicyViolationsPreviewsOperations: API.OperationMethod<
   GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest,
@@ -2201,10 +1539,7 @@ export const getProjectsLocationsOrgPolicyViolationsPreviewsOperations: API.Oper
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsReplaysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsReplaysError = NotFound | Forbidden | GcpOpError;
 /** Gets the specified Replay. Each `Replay` is available for at least 7 days. */
 export const getProjectsLocationsReplays: API.OperationMethod<
   GetProjectsLocationsReplaysRequest,
@@ -2219,10 +1554,7 @@ export const getProjectsLocationsReplays: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsReplaysOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsReplaysOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsReplaysOperations: API.OperationMethod<
   GetProjectsLocationsReplaysOperationsRequest,
@@ -2237,10 +1569,7 @@ export const getProjectsLocationsReplaysOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListFoldersLocationsReplaysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListFoldersLocationsReplaysError = NotFound | Forbidden | GcpOpError;
 /** Lists each Replay in a project, folder, or organization. Each `Replay` is available for at least 7 days. */
 export const listFoldersLocationsReplays: API.PaginatedOperationMethod<
   ListFoldersLocationsReplaysRequest,
@@ -2253,16 +1582,10 @@ export const listFoldersLocationsReplays: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListFoldersLocationsReplaysOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListFoldersLocationsReplaysOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listFoldersLocationsReplaysOperations: API.PaginatedOperationMethod<
   ListFoldersLocationsReplaysOperationsRequest,
@@ -2275,16 +1598,10 @@ export const listFoldersLocationsReplaysOperations: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListFoldersLocationsReplaysResultsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListFoldersLocationsReplaysResultsError = NotFound | Forbidden | GcpOpError;
 /** Lists the results of running a Replay. */
 export const listFoldersLocationsReplaysResults: API.PaginatedOperationMethod<
   ListFoldersLocationsReplaysResultsRequest,
@@ -2297,10 +1614,7 @@ export const listFoldersLocationsReplaysResults: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
@@ -2316,16 +1630,10 @@ export const listOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsError = NotFound | Forbidden | GcpOpError;
 /** ListOrgPolicyViolationsPreviews lists each OrgPolicyViolationsPreview in an organization. Each OrgPolicyViolationsPreview is available for at least 7 days. */
 export const listOrganizationsLocationsOrgPolicyViolationsPreviews: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
@@ -2334,19 +1642,14 @@ export const listOrganizationsLocationsOrgPolicyViolationsPreviews: API.Paginate
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
-  output:
-    GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse,
+  output: GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsError =
-  NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsError = NotFound | Forbidden | GcpOpError;
 /** ListOrgPolicyViolations lists the OrgPolicyViolations that are present in an OrgPolicyViolationsPreview. */
 export const listOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest,
@@ -2354,22 +1657,15 @@ export const listOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest,
+  input: ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest,
   output: GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsLocationsReplaysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOrganizationsLocationsReplaysError = NotFound | Forbidden | GcpOpError;
 /** Lists each Replay in a project, folder, or organization. Each `Replay` is available for at least 7 days. */
 export const listOrganizationsLocationsReplays: API.PaginatedOperationMethod<
   ListOrganizationsLocationsReplaysRequest,
@@ -2382,16 +1678,10 @@ export const listOrganizationsLocationsReplays: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsLocationsReplaysOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOrganizationsLocationsReplaysOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsLocationsReplaysOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsReplaysOperationsRequest,
@@ -2404,16 +1694,10 @@ export const listOrganizationsLocationsReplaysOperations: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsLocationsReplaysResultsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOrganizationsLocationsReplaysResultsError = NotFound | Forbidden | GcpOpError;
 /** Lists the results of running a Replay. */
 export const listOrganizationsLocationsReplaysResults: API.PaginatedOperationMethod<
   ListOrganizationsLocationsReplaysResultsRequest,
@@ -2426,16 +1710,10 @@ export const listOrganizationsLocationsReplaysResults: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsReplaysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsReplaysError = NotFound | Forbidden | GcpOpError;
 /** Lists each Replay in a project, folder, or organization. Each `Replay` is available for at least 7 days. */
 export const listProjectsLocationsReplays: API.PaginatedOperationMethod<
   ListProjectsLocationsReplaysRequest,
@@ -2448,16 +1726,10 @@ export const listProjectsLocationsReplays: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsReplaysOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsReplaysOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsReplaysOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsReplaysOperationsRequest,
@@ -2470,16 +1742,10 @@ export const listProjectsLocationsReplaysOperations: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsReplaysResultsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsReplaysResultsError = NotFound | Forbidden | GcpOpError;
 /** Lists the results of running a Replay. */
 export const listProjectsLocationsReplaysResults: API.PaginatedOperationMethod<
   ListProjectsLocationsReplaysResultsRequest,
@@ -2492,8 +1758,6 @@ export const listProjectsLocationsReplaysResults: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
+

@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,32 +72,21 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The AuthProvider of the Binding. */
 export interface AuthProviderBinding {
@@ -111,14 +98,12 @@ export interface AuthProviderBinding {
   authProvider?: string;
 }
 export const AuthProviderBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scopes: S.optional(StringList),
-    continueUri: S.optional(S.String),
-    authProvider: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthProviderBinding",
-}) as any as S.Schema<AuthProviderBinding>;
+S.Struct({
+  "scopes": S.optional(StringList),
+  "continueUri": S.optional(S.String),
+  "authProvider": S.optional(S.String),
+}),
+).annotate({ identifier: "AuthProviderBinding" }) as any as S.Schema<AuthProviderBinding>;
 
 /** The source of the Binding. */
 export interface Source {
@@ -126,9 +111,9 @@ export interface Source {
   identifier?: string;
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.optional(S.String),
-  }),
+S.Struct({
+  "identifier": S.optional(S.String),
+}),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
 /** The target of the Binding. */
@@ -137,9 +122,9 @@ export interface Target {
   identifier?: string;
 }
 export const Target = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.optional(S.String),
-  }),
+S.Struct({
+  "identifier": S.optional(S.String),
+}),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
 /** Represents a user-defined Binding. */
@@ -162,16 +147,16 @@ export interface Binding {
   target?: Target;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    authProviderBinding: S.optional(AuthProviderBinding),
-    displayName: S.optional(S.String),
-    source: S.optional(Source),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    target: S.optional(Target),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "authProviderBinding": S.optional(AuthProviderBinding),
+  "displayName": S.optional(S.String),
+  "source": S.optional(Source),
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "target": S.optional(Target),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export interface CreateProjectsLocationsBindingsRequest {
@@ -184,34 +169,20 @@ export interface CreateProjectsLocationsBindingsRequest {
   /** Request body */
   body?: Binding;
 }
-export const CreateProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bindingId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Binding.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/bindings",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsBindingsRequest",
-}) as any as S.Schema<CreateProjectsLocationsBindingsRequest>;
+export const CreateProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "bindingId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Binding.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/bindings","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBindingsRequest" }) as any as S.Schema<CreateProjectsLocationsBindingsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -223,11 +194,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -244,20 +215,16 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type McpServerSpecTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "NO_SPEC"
-  | "TOOL_SPEC"
-  | (string & {});
+export type McpServerSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC" | "TOOL_SPEC";
 export const McpServerSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the MCP Server. */
@@ -268,17 +235,13 @@ export interface McpServerSpec {
   content?: DocumentMap;
 }
 export const McpServerSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(McpServerSpecTypeEnum),
-    content: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "type": S.optional(McpServerSpecTypeEnum),
+  "content": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "McpServerSpec" }) as any as S.Schema<McpServerSpec>;
 
-export type AgentSpecTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "NO_SPEC"
-  | "A2A_AGENT_CARD"
-  | (string & {});
+export type AgentSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC" | "A2A_AGENT_CARD";
 export const AgentSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the agent. */
@@ -289,16 +252,13 @@ export interface AgentSpec {
   content?: DocumentMap;
 }
 export const AgentSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AgentSpecTypeEnum),
-    content: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "type": S.optional(AgentSpecTypeEnum),
+  "content": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "AgentSpec" }) as any as S.Schema<AgentSpec>;
 
-export type EndpointSpecTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "NO_SPEC"
-  | (string & {});
+export type EndpointSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC";
 export const EndpointSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the endpoint. */
@@ -309,18 +269,13 @@ export interface EndpointSpec {
   content?: DocumentMap;
 }
 export const EndpointSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(EndpointSpecTypeEnum),
-    content: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "type": S.optional(EndpointSpecTypeEnum),
+  "content": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "EndpointSpec" }) as any as S.Schema<EndpointSpec>;
 
-export type InterfaceProtocolBindingEnum =
-  | "PROTOCOL_BINDING_UNSPECIFIED"
-  | "JSONRPC"
-  | "GRPC"
-  | "HTTP_JSON"
-  | (string & {});
+export type InterfaceProtocolBindingEnum = "PROTOCOL_BINDING_UNSPECIFIED" | "JSONRPC" | "GRPC" | "HTTP_JSON";
 export const InterfaceProtocolBindingEnum = /*@__PURE__*/ S.String;
 
 /** Represents the connection details for an Agent or MCP Server. */
@@ -331,16 +286,14 @@ export interface Interface {
   url?: string;
 }
 export const Interface = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocolBinding: S.optional(InterfaceProtocolBindingEnum),
-    url: S.optional(S.String),
-  }),
+S.Struct({
+  "protocolBinding": S.optional(InterfaceProtocolBindingEnum),
+  "url": S.optional(S.String),
+}),
 ).annotate({ identifier: "Interface" }) as any as S.Schema<Interface>;
 
 export type InterfaceList = ReadonlyArray<Interface>;
-export const InterfaceList = /*@__PURE__*/ S.Array(
-  Interface,
-) as any as S.Schema<InterfaceList>;
+export const InterfaceList = /*@__PURE__*/ S.Array(Interface) as any as S.Schema<InterfaceList>;
 
 /** Represents a user-defined Service. */
 export interface Service {
@@ -366,18 +319,18 @@ export interface Service {
   name?: string;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mcpServerSpec: S.optional(McpServerSpec),
-    displayName: S.optional(S.String),
-    agentSpec: S.optional(AgentSpec),
-    endpointSpec: S.optional(EndpointSpec),
-    description: S.optional(S.String),
-    interfaces: S.optional(InterfaceList),
-    registryResource: S.optional(S.String),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "mcpServerSpec": S.optional(McpServerSpec),
+  "displayName": S.optional(S.String),
+  "agentSpec": S.optional(AgentSpec),
+  "endpointSpec": S.optional(EndpointSpec),
+  "description": S.optional(S.String),
+  "interfaces": S.optional(InterfaceList),
+  "registryResource": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export interface CreateProjectsLocationsServicesRequest {
@@ -390,23 +343,14 @@ export interface CreateProjectsLocationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      serviceId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Service.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/services",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsServicesRequest",
-}) as any as S.Schema<CreateProjectsLocationsServicesRequest>;
+export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "serviceId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Service.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/services","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsServicesRequest" }) as any as S.Schema<CreateProjectsLocationsServicesRequest>;
 
 export interface DeleteProjectsLocationsBindingsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -414,40 +358,22 @@ export interface DeleteProjectsLocationsBindingsRequest {
   /** Required. The name of the Binding. Format: `projects/{project}/locations/{location}/bindings/{binding}`. */
   name: string;
 }
-export const DeleteProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsBindingsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsBindingsRequest>;
+export const DeleteProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBindingsRequest" }) as any as S.Schema<DeleteProjectsLocationsBindingsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsServicesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -455,21 +381,12 @@ export interface DeleteProjectsLocationsServicesRequest {
   /** Required. The name of the Service. Format: `projects/{project}/locations/{location}/services/{service}`. */
   name: string;
 }
-export const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsServicesRequest",
-}) as any as S.Schema<DeleteProjectsLocationsServicesRequest>;
+export const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsServicesRequest" }) as any as S.Schema<DeleteProjectsLocationsServicesRequest>;
 
 export interface FetchAvailableProjectsLocationsBindingsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. Page size is 500 if unspecified and is capped at `500` even if a larger value is given. */
@@ -483,29 +400,18 @@ export interface FetchAvailableProjectsLocationsBindingsRequest {
   /** Optional. The identifier of the target Agent, MCP Server, or Endpoint. Format: * `urn:agent:{publisher}:{namespace}:{name}` * `urn:mcp:{publisher}:{namespace}:{name}` * `urn:endpoint:{publisher}:{namespace}:{name}` */
   targetIdentifier?: string;
 }
-export const FetchAvailableProjectsLocationsBindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      sourceIdentifier: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      targetIdentifier: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/bindings:fetchAvailable",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchAvailableProjectsLocationsBindingsRequest",
-  }) as any as S.Schema<FetchAvailableProjectsLocationsBindingsRequest>;
+export const FetchAvailableProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "sourceIdentifier": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "targetIdentifier": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/bindings:fetchAvailable","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "FetchAvailableProjectsLocationsBindingsRequest" }) as any as S.Schema<FetchAvailableProjectsLocationsBindingsRequest>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** Message for response to fetching available Bindings. */
 export interface FetchAvailableBindingsResponse {
@@ -515,37 +421,24 @@ export interface FetchAvailableBindingsResponse {
   nextPageToken?: string;
 }
 export const FetchAvailableBindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bindings: S.optional(BindingList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FetchAvailableBindingsResponse",
-}) as any as S.Schema<FetchAvailableBindingsResponse>;
+S.Struct({
+  "bindings": S.optional(BindingList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "FetchAvailableBindingsResponse" }) as any as S.Schema<FetchAvailableBindingsResponse>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://agentregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -561,13 +454,13 @@ export interface Location {
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
-    metadata: S.optional(DocumentMap),
-    locationId: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "metadata": S.optional(DocumentMap),
+  "locationId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsAgentsRequest {
@@ -575,18 +468,10 @@ export interface GetProjectsLocationsAgentsRequest {
   name: string;
 }
 export const GetProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://agentregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsAgentsRequest",
-}) as any as S.Schema<GetProjectsLocationsAgentsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsAgentsRequest" }) as any as S.Schema<GetProjectsLocationsAgentsRequest>;
 
 /** Represents the skills of an Agent. */
 export interface A2ASkill {
@@ -602,24 +487,19 @@ export interface A2ASkill {
   examples?: StringList;
 }
 export const A2ASkill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    id: S.optional(S.String),
-    tags: S.optional(StringList),
-    examples: S.optional(StringList),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "id": S.optional(S.String),
+  "tags": S.optional(StringList),
+  "examples": S.optional(StringList),
+}),
 ).annotate({ identifier: "A2ASkill" }) as any as S.Schema<A2ASkill>;
 
 export type A2ASkillList = ReadonlyArray<A2ASkill>;
-export const A2ASkillList = /*@__PURE__*/ S.Array(
-  A2ASkill,
-) as any as S.Schema<A2ASkillList>;
+export const A2ASkillList = /*@__PURE__*/ S.Array(A2ASkill) as any as S.Schema<A2ASkillList>;
 
-export type CardTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "A2A_AGENT_CARD"
-  | (string & {});
+export type CardTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT_CARD";
 export const CardTypeEnum = /*@__PURE__*/ S.String;
 
 /** Full Agent Card payload, often obtained from the A2A Agent Card. */
@@ -630,23 +510,16 @@ export interface Card {
   content?: DocumentMap;
 }
 export const Card = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CardTypeEnum),
-    content: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "type": S.optional(CardTypeEnum),
+  "content": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Card" }) as any as S.Schema<Card>;
 
 export type DocumentMapMap = { [key: string]: DocumentMap | undefined };
-export const DocumentMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DocumentMap,
-) as any as S.Schema<DocumentMapMap>;
+export const DocumentMapMap = /*@__PURE__*/ S.Record(S.String, DocumentMap) as any as S.Schema<DocumentMapMap>;
 
-export type ProtocolTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "A2A_AGENT"
-  | "CUSTOM"
-  | (string & {});
+export type ProtocolTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT" | "CUSTOM";
 export const ProtocolTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the protocol of an Agent. */
@@ -659,17 +532,15 @@ export interface Protocol {
   type?: ProtocolTypeEnum;
 }
 export const Protocol = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocolVersion: S.optional(S.String),
-    interfaces: S.optional(InterfaceList),
-    type: S.optional(ProtocolTypeEnum),
-  }),
+S.Struct({
+  "protocolVersion": S.optional(S.String),
+  "interfaces": S.optional(InterfaceList),
+  "type": S.optional(ProtocolTypeEnum),
+}),
 ).annotate({ identifier: "Protocol" }) as any as S.Schema<Protocol>;
 
 export type ProtocolList = ReadonlyArray<Protocol>;
-export const ProtocolList = /*@__PURE__*/ S.Array(
-  Protocol,
-) as any as S.Schema<ProtocolList>;
+export const ProtocolList = /*@__PURE__*/ S.Array(Protocol) as any as S.Schema<ProtocolList>;
 
 /** Represents an Agent. "A2A" below refers to the Agent-to-Agent protocol. */
 export interface Agent {
@@ -701,21 +572,21 @@ export interface Agent {
   displayName?: string;
 }
 export const Agent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    skills: S.optional(A2ASkillList),
-    card: S.optional(Card),
-    version: S.optional(S.String),
-    attributes: S.optional(DocumentMapMap),
-    agentId: S.optional(S.String),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    protocols: S.optional(ProtocolList),
-    uid: S.optional(S.String),
-    description: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "skills": S.optional(A2ASkillList),
+  "card": S.optional(Card),
+  "version": S.optional(S.String),
+  "attributes": S.optional(DocumentMapMap),
+  "agentId": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "location": S.optional(S.String),
+  "protocols": S.optional(ProtocolList),
+  "uid": S.optional(S.String),
+  "description": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Agent" }) as any as S.Schema<Agent>;
 
 export interface GetProjectsLocationsBindingsRequest {
@@ -723,37 +594,20 @@ export interface GetProjectsLocationsBindingsRequest {
   name: string;
 }
 export const GetProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://agentregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsBindingsRequest",
-}) as any as S.Schema<GetProjectsLocationsBindingsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBindingsRequest" }) as any as S.Schema<GetProjectsLocationsBindingsRequest>;
 
 export interface GetProjectsLocationsEndpointsRequest {
   /** Required. The name of the endpoint to retrieve. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
   name: string;
 }
-export const GetProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsEndpointsRequest",
-}) as any as S.Schema<GetProjectsLocationsEndpointsRequest>;
+export const GetProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsEndpointsRequest" }) as any as S.Schema<GetProjectsLocationsEndpointsRequest>;
 
 /** Represents an Endpoint. */
 export interface Endpoint {
@@ -775,36 +629,27 @@ export interface Endpoint {
   interfaces?: InterfaceList;
 }
 export const Endpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpointId: S.optional(S.String),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    attributes: S.optional(DocumentMapMap),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    interfaces: S.optional(InterfaceList),
-  }),
+S.Struct({
+  "endpointId": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "attributes": S.optional(DocumentMapMap),
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "interfaces": S.optional(InterfaceList),
+}),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 export interface GetProjectsLocationsMcpServersRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsMcpServersRequest",
-}) as any as S.Schema<GetProjectsLocationsMcpServersRequest>;
+export const GetProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsMcpServersRequest" }) as any as S.Schema<GetProjectsLocationsMcpServersRequest>;
 
 /** Annotations describing the characteristics and behavior of a tool or operation. */
 export interface Annotations {
@@ -820,13 +665,13 @@ export interface Annotations {
   readOnlyHint?: boolean;
 }
 export const Annotations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    openWorldHint: S.optional(S.Boolean),
-    destructiveHint: S.optional(S.Boolean),
-    idempotentHint: S.optional(S.Boolean),
-    readOnlyHint: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "openWorldHint": S.optional(S.Boolean),
+  "destructiveHint": S.optional(S.Boolean),
+  "idempotentHint": S.optional(S.Boolean),
+  "readOnlyHint": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Annotations" }) as any as S.Schema<Annotations>;
 
 /** Represents a single tool provided by an MCP Server. */
@@ -839,17 +684,15 @@ export interface Tool {
   annotations?: Annotations;
 }
 export const Tool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    annotations: S.optional(Annotations),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "annotations": S.optional(Annotations),
+}),
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 
 export type ToolList = ReadonlyArray<Tool>;
-export const ToolList = /*@__PURE__*/ S.Array(
-  Tool,
-) as any as S.Schema<ToolList>;
+export const ToolList = /*@__PURE__*/ S.Array(Tool) as any as S.Schema<ToolList>;
 
 /** Represents an MCP (Model Context Protocol) Server. */
 export interface McpServer {
@@ -873,55 +716,38 @@ export interface McpServer {
   tools?: ToolList;
 }
 export const McpServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mcpServerId: S.optional(S.String),
-    description: S.optional(S.String),
-    interfaces: S.optional(InterfaceList),
-    attributes: S.optional(DocumentMapMap),
-    displayName: S.optional(S.String),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    tools: S.optional(ToolList),
-  }),
+S.Struct({
+  "mcpServerId": S.optional(S.String),
+  "description": S.optional(S.String),
+  "interfaces": S.optional(InterfaceList),
+  "attributes": S.optional(DocumentMapMap),
+  "displayName": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "tools": S.optional(ToolList),
+}),
 ).annotate({ identifier: "McpServer" }) as any as S.Schema<McpServer>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsServicesRequest {
   /** Required. The name of the Service. Format: `projects/{project}/locations/{location}/services/{service}`. */
   name: string;
 }
 export const GetProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://agentregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsServicesRequest",
-}) as any as S.Schema<GetProjectsLocationsServicesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsServicesRequest" }) as any as S.Schema<GetProjectsLocationsServicesRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -936,27 +762,17 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://agentregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -966,13 +782,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsAgentsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
@@ -987,27 +801,17 @@ export interface ListProjectsLocationsAgentsRequest {
   filter?: string;
 }
 export const ListProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/agents",
-      baseUrl: "https://agentregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsAgentsRequest",
-}) as any as S.Schema<ListProjectsLocationsAgentsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/agents","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsAgentsRequest" }) as any as S.Schema<ListProjectsLocationsAgentsRequest>;
 
 export type AgentList = ReadonlyArray<Agent>;
-export const AgentList = /*@__PURE__*/ S.Array(
-  Agent,
-) as any as S.Schema<AgentList>;
+export const AgentList = /*@__PURE__*/ S.Array(Agent) as any as S.Schema<AgentList>;
 
 /** Message for response to listing Agents */
 export interface ListAgentsResponse {
@@ -1017,13 +821,11 @@ export interface ListAgentsResponse {
   nextPageToken?: string;
 }
 export const ListAgentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agents: S.optional(AgentList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAgentsResponse",
-}) as any as S.Schema<ListAgentsResponse>;
+S.Struct({
+  "agents": S.optional(AgentList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAgentsResponse" }) as any as S.Schema<ListAgentsResponse>;
 
 export interface ListProjectsLocationsBindingsRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -1037,24 +839,15 @@ export interface ListProjectsLocationsBindingsRequest {
   /** Required. The project and location to list bindings in. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/bindings",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsBindingsRequest",
-}) as any as S.Schema<ListProjectsLocationsBindingsRequest>;
+export const ListProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/bindings","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBindingsRequest" }) as any as S.Schema<ListProjectsLocationsBindingsRequest>;
 
 /** Message for response to listing Bindings */
 export interface ListBindingsResponse {
@@ -1064,13 +857,11 @@ export interface ListBindingsResponse {
   nextPageToken?: string;
 }
 export const ListBindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bindings: S.optional(BindingList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBindingsResponse",
-}) as any as S.Schema<ListBindingsResponse>;
+S.Struct({
+  "bindings": S.optional(BindingList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBindingsResponse" }) as any as S.Schema<ListBindingsResponse>;
 
 export interface ListProjectsLocationsEndpointsRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -1082,28 +873,17 @@ export interface ListProjectsLocationsEndpointsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/endpoints",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsEndpointsRequest",
-}) as any as S.Schema<ListProjectsLocationsEndpointsRequest>;
+export const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/endpoints","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsEndpointsRequest" }) as any as S.Schema<ListProjectsLocationsEndpointsRequest>;
 
 export type EndpointList = ReadonlyArray<Endpoint>;
-export const EndpointList = /*@__PURE__*/ S.Array(
-  Endpoint,
-) as any as S.Schema<EndpointList>;
+export const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
 
 /** Message for response to listing Endpoints */
 export interface ListEndpointsResponse {
@@ -1113,13 +893,11 @@ export interface ListEndpointsResponse {
   nextPageToken?: string;
 }
 export const ListEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoints: S.optional(EndpointList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEndpointsResponse",
-}) as any as S.Schema<ListEndpointsResponse>;
+S.Struct({
+  "endpoints": S.optional(EndpointList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListEndpointsResponse" }) as any as S.Schema<ListEndpointsResponse>;
 
 export interface ListProjectsLocationsMcpServersRequest {
   /** Required. Parent value for ListMcpServersRequest. Format: `projects/{project}/locations/{location}`. */
@@ -1133,29 +911,18 @@ export interface ListProjectsLocationsMcpServersRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/mcpServers",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsMcpServersRequest",
-}) as any as S.Schema<ListProjectsLocationsMcpServersRequest>;
+export const ListProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/mcpServers","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsMcpServersRequest" }) as any as S.Schema<ListProjectsLocationsMcpServersRequest>;
 
 export type McpServerList = ReadonlyArray<McpServer>;
-export const McpServerList = /*@__PURE__*/ S.Array(
-  McpServer,
-) as any as S.Schema<McpServerList>;
+export const McpServerList = /*@__PURE__*/ S.Array(McpServer) as any as S.Schema<McpServerList>;
 
 /** Message for response to listing McpServers */
 export interface ListMcpServersResponse {
@@ -1165,13 +932,11 @@ export interface ListMcpServersResponse {
   nextPageToken?: string;
 }
 export const ListMcpServersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mcpServers: S.optional(McpServerList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListMcpServersResponse",
-}) as any as S.Schema<ListMcpServersResponse>;
+S.Struct({
+  "mcpServers": S.optional(McpServerList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListMcpServersResponse" }) as any as S.Schema<ListMcpServersResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -1185,29 +950,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1219,14 +973,12 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsServicesRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -1238,28 +990,17 @@ export interface ListProjectsLocationsServicesRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/services",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsServicesRequest",
-}) as any as S.Schema<ListProjectsLocationsServicesRequest>;
+export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/services","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsServicesRequest" }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
 export type ServiceList = ReadonlyArray<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(
-  Service,
-) as any as S.Schema<ServiceList>;
+export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** Message for response to listing Services */
 export interface ListServicesResponse {
@@ -1269,13 +1010,11 @@ export interface ListServicesResponse {
   nextPageToken?: string;
 }
 export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    services: S.optional(ServiceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListServicesResponse",
-}) as any as S.Schema<ListServicesResponse>;
+S.Struct({
+  "services": S.optional(ServiceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListServicesResponse" }) as any as S.Schema<ListServicesResponse>;
 
 export interface PatchProjectsLocationsBindingsRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the Binding resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields present in the request will be overwritten. */
@@ -1287,23 +1026,14 @@ export interface PatchProjectsLocationsBindingsRequest {
   /** Request body */
   body?: Binding;
 }
-export const PatchProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Binding.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsBindingsRequest",
-}) as any as S.Schema<PatchProjectsLocationsBindingsRequest>;
+export const PatchProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Binding.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBindingsRequest" }) as any as S.Schema<PatchProjectsLocationsBindingsRequest>;
 
 export interface PatchProjectsLocationsServicesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1315,23 +1045,14 @@ export interface PatchProjectsLocationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Service.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsServicesRequest",
-}) as any as S.Schema<PatchProjectsLocationsServicesRequest>;
+export const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Service.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsServicesRequest" }) as any as S.Schema<PatchProjectsLocationsServicesRequest>;
 
 /** Message for searching Agents */
 export interface SearchAgentsRequest {
@@ -1343,14 +1064,12 @@ export interface SearchAgentsRequest {
   pageToken?: string;
 }
 export const SearchAgentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    searchString: S.optional(S.String),
-    pageSize: S.optional(S.Number),
-    pageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchAgentsRequest",
-}) as any as S.Schema<SearchAgentsRequest>;
+S.Struct({
+  "searchString": S.optional(S.String),
+  "pageSize": S.optional(S.Number),
+  "pageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchAgentsRequest" }) as any as S.Schema<SearchAgentsRequest>;
 
 export interface SearchProjectsLocationsAgentsRequest {
   /** Required. Parent value for SearchAgentsRequest. Format: `projects/{project}/locations/{location}`. */
@@ -1358,21 +1077,12 @@ export interface SearchProjectsLocationsAgentsRequest {
   /** Request body */
   body?: SearchAgentsRequest;
 }
-export const SearchProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(SearchAgentsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/agents:search",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SearchProjectsLocationsAgentsRequest",
-}) as any as S.Schema<SearchProjectsLocationsAgentsRequest>;
+export const SearchProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(SearchAgentsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/agents:search","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "SearchProjectsLocationsAgentsRequest" }) as any as S.Schema<SearchProjectsLocationsAgentsRequest>;
 
 /** Message for response to searching Agents */
 export interface SearchAgentsResponse {
@@ -1382,13 +1092,11 @@ export interface SearchAgentsResponse {
   agents?: AgentList;
 }
 export const SearchAgentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    agents: S.optional(AgentList),
-  }),
-).annotate({
-  identifier: "SearchAgentsResponse",
-}) as any as S.Schema<SearchAgentsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "agents": S.optional(AgentList),
+}),
+).annotate({ identifier: "SearchAgentsResponse" }) as any as S.Schema<SearchAgentsResponse>;
 
 /** Message for searching MCP Servers */
 export interface SearchMcpServersRequest {
@@ -1400,14 +1108,12 @@ export interface SearchMcpServersRequest {
   pageToken?: string;
 }
 export const SearchMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    searchString: S.optional(S.String),
-    pageSize: S.optional(S.Number),
-    pageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchMcpServersRequest",
-}) as any as S.Schema<SearchMcpServersRequest>;
+S.Struct({
+  "searchString": S.optional(S.String),
+  "pageSize": S.optional(S.Number),
+  "pageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchMcpServersRequest" }) as any as S.Schema<SearchMcpServersRequest>;
 
 export interface SearchProjectsLocationsMcpServersRequest {
   /** Required. Parent value for SearchMcpServersRequest. Format: `projects/{project}/locations/{location}`. */
@@ -1415,21 +1121,12 @@ export interface SearchProjectsLocationsMcpServersRequest {
   /** Request body */
   body?: SearchMcpServersRequest;
 }
-export const SearchProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(SearchMcpServersRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/mcpServers:search",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SearchProjectsLocationsMcpServersRequest",
-}) as any as S.Schema<SearchProjectsLocationsMcpServersRequest>;
+export const SearchProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(SearchMcpServersRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/mcpServers:search","baseUrl":"https://agentregistry.googleapis.com/"})),
+).annotate({ identifier: "SearchProjectsLocationsMcpServersRequest" }) as any as S.Schema<SearchProjectsLocationsMcpServersRequest>;
 
 /** Message for response to searching MCP Servers */
 export interface SearchMcpServersResponse {
@@ -1439,20 +1136,13 @@ export interface SearchMcpServersResponse {
   nextPageToken?: string;
 }
 export const SearchMcpServersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mcpServers: S.optional(McpServerList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchMcpServersResponse",
-}) as any as S.Schema<SearchMcpServersResponse>;
+S.Struct({
+  "mcpServers": S.optional(McpServerList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchMcpServersResponse" }) as any as S.Schema<SearchMcpServersResponse>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1467,12 +1157,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBindingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Binding in a given project and location. */
 export const createProjectsLocationsBindings: API.OperationMethod<
   CreateProjectsLocationsBindingsRequest,
@@ -1487,12 +1172,7 @@ export const createProjectsLocationsBindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Service in a given project and location. */
 export const createProjectsLocationsServices: API.OperationMethod<
   CreateProjectsLocationsServicesRequest,
@@ -1507,12 +1187,7 @@ export const createProjectsLocationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBindingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Binding. */
 export const deleteProjectsLocationsBindings: API.OperationMethod<
   DeleteProjectsLocationsBindingsRequest,
@@ -1527,12 +1202,7 @@ export const deleteProjectsLocationsBindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1547,12 +1217,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Service. */
 export const deleteProjectsLocationsServices: API.OperationMethod<
   DeleteProjectsLocationsServicesRequest,
@@ -1567,10 +1232,7 @@ export const deleteProjectsLocationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FetchAvailableProjectsLocationsBindingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchAvailableProjectsLocationsBindingsError = NotFound | Forbidden | GcpOpError;
 /** Fetches available Bindings. */
 export const fetchAvailableProjectsLocationsBindings: API.PaginatedOperationMethod<
   FetchAvailableProjectsLocationsBindingsRequest,
@@ -1583,10 +1245,7 @@ export const fetchAvailableProjectsLocationsBindings: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type GetProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -1619,10 +1278,7 @@ export const getProjectsLocationsAgents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBindingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBindingsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Binding. */
 export const getProjectsLocationsBindings: API.OperationMethod<
   GetProjectsLocationsBindingsRequest,
@@ -1637,10 +1293,7 @@ export const getProjectsLocationsBindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsEndpointsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsEndpointsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Endpoint. */
 export const getProjectsLocationsEndpoints: API.OperationMethod<
   GetProjectsLocationsEndpointsRequest,
@@ -1655,10 +1308,7 @@ export const getProjectsLocationsEndpoints: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsMcpServersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsMcpServersError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single McpServer. */
 export const getProjectsLocationsMcpServers: API.OperationMethod<
   GetProjectsLocationsMcpServersRequest,
@@ -1673,10 +1323,7 @@ export const getProjectsLocationsMcpServers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1691,10 +1338,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsServicesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsServicesError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Service. */
 export const getProjectsLocationsServices: API.OperationMethod<
   GetProjectsLocationsServicesRequest,
@@ -1722,16 +1366,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsAgentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsAgentsError = NotFound | Forbidden | GcpOpError;
 /** Lists Agents in a given project and location. */
 export const listProjectsLocationsAgents: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsRequest,
@@ -1744,16 +1382,10 @@ export const listProjectsLocationsAgents: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBindingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBindingsError = NotFound | Forbidden | GcpOpError;
 /** Lists Bindings in a given project and location. */
 export const listProjectsLocationsBindings: API.PaginatedOperationMethod<
   ListProjectsLocationsBindingsRequest,
@@ -1766,16 +1398,10 @@ export const listProjectsLocationsBindings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsEndpointsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsEndpointsError = NotFound | Forbidden | GcpOpError;
 /** Lists Endpoints in a given project and location. */
 export const listProjectsLocationsEndpoints: API.PaginatedOperationMethod<
   ListProjectsLocationsEndpointsRequest,
@@ -1788,16 +1414,10 @@ export const listProjectsLocationsEndpoints: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsMcpServersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsMcpServersError = NotFound | Forbidden | GcpOpError;
 /** Lists McpServers in a given project and location. */
 export const listProjectsLocationsMcpServers: API.PaginatedOperationMethod<
   ListProjectsLocationsMcpServersRequest,
@@ -1810,16 +1430,10 @@ export const listProjectsLocationsMcpServers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1832,16 +1446,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsServicesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsServicesError = NotFound | Forbidden | GcpOpError;
 /** Lists Services in a given project and location. */
 export const listProjectsLocationsServices: API.PaginatedOperationMethod<
   ListProjectsLocationsServicesRequest,
@@ -1854,18 +1462,10 @@ export const listProjectsLocationsServices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsBindingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single Binding. */
 export const patchProjectsLocationsBindings: API.OperationMethod<
   PatchProjectsLocationsBindingsRequest,
@@ -1880,12 +1480,7 @@ export const patchProjectsLocationsBindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single Service. */
 export const patchProjectsLocationsServices: API.OperationMethod<
   PatchProjectsLocationsServicesRequest,
@@ -1900,12 +1495,7 @@ export const patchProjectsLocationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchProjectsLocationsAgentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SearchProjectsLocationsAgentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Searches Agents in a given project and location. */
 export const searchProjectsLocationsAgents: API.OperationMethod<
   SearchProjectsLocationsAgentsRequest,
@@ -1920,12 +1510,7 @@ export const searchProjectsLocationsAgents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchProjectsLocationsMcpServersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SearchProjectsLocationsMcpServersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Searches McpServers in a given project and location. */
 export const searchProjectsLocationsMcpServers: API.OperationMethod<
   SearchProjectsLocationsMcpServersRequest,
@@ -1939,3 +1524,4 @@ export const searchProjectsLocationsMcpServers: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

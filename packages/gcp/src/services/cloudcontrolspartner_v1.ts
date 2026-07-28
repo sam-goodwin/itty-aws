@@ -13,67 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type CustomerOnboardingStepCompletionStateEnum =
-  | "COMPLETION_STATE_UNSPECIFIED"
-  | "PENDING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "NOT_APPLICABLE"
-  | (string & {});
+export type CustomerOnboardingStepCompletionStateEnum = "COMPLETION_STATE_UNSPECIFIED" | "PENDING" | "SUCCEEDED" | "FAILED" | "NOT_APPLICABLE";
 export const CustomerOnboardingStepCompletionStateEnum = /*@__PURE__*/ S.String;
 
-export type CustomerOnboardingStepStepEnum =
-  | "STEP_UNSPECIFIED"
-  | "KAJ_ENROLLMENT"
-  | "CUSTOMER_ENVIRONMENT"
-  | (string & {});
+export type CustomerOnboardingStepStepEnum = "STEP_UNSPECIFIED" | "KAJ_ENROLLMENT" | "CUSTOMER_ENVIRONMENT";
 export const CustomerOnboardingStepStepEnum = /*@__PURE__*/ S.String;
 
 /** Container for customer onboarding information */
@@ -88,20 +78,16 @@ export interface CustomerOnboardingStep {
   completionTime?: string;
 }
 export const CustomerOnboardingStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completionState: S.optional(CustomerOnboardingStepCompletionStateEnum),
-    startTime: S.optional(S.String),
-    step: S.optional(CustomerOnboardingStepStepEnum),
-    completionTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerOnboardingStep",
-}) as any as S.Schema<CustomerOnboardingStep>;
+S.Struct({
+  "completionState": S.optional(CustomerOnboardingStepCompletionStateEnum),
+  "startTime": S.optional(S.String),
+  "step": S.optional(CustomerOnboardingStepStepEnum),
+  "completionTime": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomerOnboardingStep" }) as any as S.Schema<CustomerOnboardingStep>;
 
 export type CustomerOnboardingStepList = ReadonlyArray<CustomerOnboardingStep>;
-export const CustomerOnboardingStepList = /*@__PURE__*/ S.Array(
-  CustomerOnboardingStep,
-) as any as S.Schema<CustomerOnboardingStepList>;
+export const CustomerOnboardingStepList = /*@__PURE__*/ S.Array(CustomerOnboardingStep) as any as S.Schema<CustomerOnboardingStepList>;
 
 /** Container for customer onboarding steps */
 export interface CustomerOnboardingState {
@@ -109,12 +95,10 @@ export interface CustomerOnboardingState {
   onboardingSteps?: CustomerOnboardingStepList;
 }
 export const CustomerOnboardingState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onboardingSteps: S.optional(CustomerOnboardingStepList),
-  }),
-).annotate({
-  identifier: "CustomerOnboardingState",
-}) as any as S.Schema<CustomerOnboardingState>;
+S.Struct({
+  "onboardingSteps": S.optional(CustomerOnboardingStepList),
+}),
+).annotate({ identifier: "CustomerOnboardingState" }) as any as S.Schema<CustomerOnboardingState>;
 
 /** Contains metadata around a Cloud Controls Partner Customer */
 export interface Customer {
@@ -130,13 +114,13 @@ export interface Customer {
   name?: string;
 }
 export const Customer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    customerOnboardingState: S.optional(CustomerOnboardingState),
-    isOnboarded: S.optional(S.Boolean),
-    organizationDomain: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "customerOnboardingState": S.optional(CustomerOnboardingState),
+  "isOnboarded": S.optional(S.Boolean),
+  "organizationDomain": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Customer" }) as any as S.Schema<Customer>;
 
 export interface CreateOrganizationsLocationsCustomersRequest {
@@ -147,75 +131,41 @@ export interface CreateOrganizationsLocationsCustomersRequest {
   /** Request body */
   body?: Customer;
 }
-export const CreateOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      customerId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Customer.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/customers",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateOrganizationsLocationsCustomersRequest",
-  }) as any as S.Schema<CreateOrganizationsLocationsCustomersRequest>;
+export const CreateOrganizationsLocationsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "customerId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Customer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/customers","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "CreateOrganizationsLocationsCustomersRequest" }) as any as S.Schema<CreateOrganizationsLocationsCustomersRequest>;
 
 export interface DeleteOrganizationsLocationsCustomersRequest {
   /** Required. name of the resource to be deleted format: name=organizations/*\/locations/*\/customers/* */
   name: string;
 }
-export const DeleteOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteOrganizationsLocationsCustomersRequest",
-  }) as any as S.Schema<DeleteOrganizationsLocationsCustomersRequest>;
+export const DeleteOrganizationsLocationsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "DeleteOrganizationsLocationsCustomersRequest" }) as any as S.Schema<DeleteOrganizationsLocationsCustomersRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest {
   /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/ekmConnections` */
   name: string;
 }
-export const GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest",
-  }) as any as S.Schema<GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest>;
+export const GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest" }) as any as S.Schema<GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest>;
 
-export type EkmConnectionConnectionStateEnum =
-  | "CONNECTION_STATE_UNSPECIFIED"
-  | "AVAILABLE"
-  | "NOT_AVAILABLE"
-  | "ERROR"
-  | "PERMISSION_DENIED"
-  | (string & {});
+export type EkmConnectionConnectionStateEnum = "CONNECTION_STATE_UNSPECIFIED" | "AVAILABLE" | "NOT_AVAILABLE" | "ERROR" | "PERMISSION_DENIED";
 export const EkmConnectionConnectionStateEnum = /*@__PURE__*/ S.String;
 
 /** Information around the error that occurred if the connection state is anything other than available or unspecified */
@@ -226,13 +176,11 @@ export interface ConnectionError {
   errorMessage?: string;
 }
 export const ConnectionError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorDomain: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectionError",
-}) as any as S.Schema<ConnectionError>;
+S.Struct({
+  "errorDomain": S.optional(S.String),
+  "errorMessage": S.optional(S.String),
+}),
+).annotate({ identifier: "ConnectionError" }) as any as S.Schema<ConnectionError>;
 
 /** Details about the EKM connection */
 export interface EkmConnection {
@@ -244,17 +192,15 @@ export interface EkmConnection {
   connectionError?: ConnectionError;
 }
 export const EkmConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionName: S.optional(S.String),
-    connectionState: S.optional(EkmConnectionConnectionStateEnum),
-    connectionError: S.optional(ConnectionError),
-  }),
+S.Struct({
+  "connectionName": S.optional(S.String),
+  "connectionState": S.optional(EkmConnectionConnectionStateEnum),
+  "connectionError": S.optional(ConnectionError),
+}),
 ).annotate({ identifier: "EkmConnection" }) as any as S.Schema<EkmConnection>;
 
 export type EkmConnectionList = ReadonlyArray<EkmConnection>;
-export const EkmConnectionList = /*@__PURE__*/ S.Array(
-  EkmConnection,
-) as any as S.Schema<EkmConnectionList>;
+export const EkmConnectionList = /*@__PURE__*/ S.Array(EkmConnection) as any as S.Schema<EkmConnectionList>;
 
 /** The EKM connections associated with a workload */
 export interface EkmConnections {
@@ -264,64 +210,36 @@ export interface EkmConnections {
   ekmConnections?: EkmConnectionList;
 }
 export const EkmConnections = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    ekmConnections: S.optional(EkmConnectionList),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "ekmConnections": S.optional(EkmConnectionList),
+}),
 ).annotate({ identifier: "EkmConnections" }) as any as S.Schema<EkmConnections>;
 
 export interface GetOrganizationsLocationsCustomersRequest {
   /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
   name: string;
 }
-export const GetOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetOrganizationsLocationsCustomersRequest",
-  }) as any as S.Schema<GetOrganizationsLocationsCustomersRequest>;
+export const GetOrganizationsLocationsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsCustomersRequest" }) as any as S.Schema<GetOrganizationsLocationsCustomersRequest>;
 
 export interface GetOrganizationsLocationsCustomersWorkloadsRequest {
   /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
   name: string;
 }
-export const GetOrganizationsLocationsCustomersWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetOrganizationsLocationsCustomersWorkloadsRequest",
-  }) as any as S.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>;
+export const GetOrganizationsLocationsCustomersWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsCustomersWorkloadsRequest" }) as any as S.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>;
 
-export type WorkloadOnboardingStepStepEnum =
-  | "STEP_UNSPECIFIED"
-  | "EKM_PROVISIONED"
-  | "SIGNED_ACCESS_APPROVAL_CONFIGURED"
-  | (string & {});
+export type WorkloadOnboardingStepStepEnum = "STEP_UNSPECIFIED" | "EKM_PROVISIONED" | "SIGNED_ACCESS_APPROVAL_CONFIGURED";
 export const WorkloadOnboardingStepStepEnum = /*@__PURE__*/ S.String;
 
-export type WorkloadOnboardingStepCompletionStateEnum =
-  | "COMPLETION_STATE_UNSPECIFIED"
-  | "PENDING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "NOT_APPLICABLE"
-  | (string & {});
+export type WorkloadOnboardingStepCompletionStateEnum = "COMPLETION_STATE_UNSPECIFIED" | "PENDING" | "SUCCEEDED" | "FAILED" | "NOT_APPLICABLE";
 export const WorkloadOnboardingStepCompletionStateEnum = /*@__PURE__*/ S.String;
 
 /** Container for workload onboarding information. */
@@ -336,20 +254,16 @@ export interface WorkloadOnboardingStep {
   startTime?: string;
 }
 export const WorkloadOnboardingStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    step: S.optional(WorkloadOnboardingStepStepEnum),
-    completionTime: S.optional(S.String),
-    completionState: S.optional(WorkloadOnboardingStepCompletionStateEnum),
-    startTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkloadOnboardingStep",
-}) as any as S.Schema<WorkloadOnboardingStep>;
+S.Struct({
+  "step": S.optional(WorkloadOnboardingStepStepEnum),
+  "completionTime": S.optional(S.String),
+  "completionState": S.optional(WorkloadOnboardingStepCompletionStateEnum),
+  "startTime": S.optional(S.String),
+}),
+).annotate({ identifier: "WorkloadOnboardingStep" }) as any as S.Schema<WorkloadOnboardingStep>;
 
 export type WorkloadOnboardingStepList = ReadonlyArray<WorkloadOnboardingStep>;
-export const WorkloadOnboardingStepList = /*@__PURE__*/ S.Array(
-  WorkloadOnboardingStep,
-) as any as S.Schema<WorkloadOnboardingStepList>;
+export const WorkloadOnboardingStepList = /*@__PURE__*/ S.Array(WorkloadOnboardingStep) as any as S.Schema<WorkloadOnboardingStepList>;
 
 /** Container for workload onboarding steps. */
 export interface WorkloadOnboardingState {
@@ -357,23 +271,12 @@ export interface WorkloadOnboardingState {
   onboardingSteps?: WorkloadOnboardingStepList;
 }
 export const WorkloadOnboardingState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onboardingSteps: S.optional(WorkloadOnboardingStepList),
-  }),
-).annotate({
-  identifier: "WorkloadOnboardingState",
-}) as any as S.Schema<WorkloadOnboardingState>;
+S.Struct({
+  "onboardingSteps": S.optional(WorkloadOnboardingStepList),
+}),
+).annotate({ identifier: "WorkloadOnboardingState" }) as any as S.Schema<WorkloadOnboardingState>;
 
-export type WorkloadPartnerEnum =
-  | "PARTNER_UNSPECIFIED"
-  | "PARTNER_LOCAL_CONTROLS_BY_S3NS"
-  | "PARTNER_SOVEREIGN_CONTROLS_BY_T_SYSTEMS"
-  | "PARTNER_SOVEREIGN_CONTROLS_BY_SIA_MINSAIT"
-  | "PARTNER_SOVEREIGN_CONTROLS_BY_PSN"
-  | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT"
-  | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM"
-  | "PARTNER_SPAIN_DATA_BOUNDARY_BY_TELEFONICA"
-  | (string & {});
+export type WorkloadPartnerEnum = "PARTNER_UNSPECIFIED" | "PARTNER_LOCAL_CONTROLS_BY_S3NS" | "PARTNER_SOVEREIGN_CONTROLS_BY_T_SYSTEMS" | "PARTNER_SOVEREIGN_CONTROLS_BY_SIA_MINSAIT" | "PARTNER_SOVEREIGN_CONTROLS_BY_PSN" | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT" | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM" | "PARTNER_SPAIN_DATA_BOUNDARY_BY_TELEFONICA";
 export const WorkloadPartnerEnum = /*@__PURE__*/ S.String;
 
 /** Contains metadata around the [Workload resource](https://cloud.google.com/assured-workloads/docs/reference/rest/Shared.Types/Workload) in the Assured Workloads API. */
@@ -398,51 +301,33 @@ export interface Workload {
   folderId?: string;
 }
 export const Workload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isOnboarded: S.optional(S.Boolean),
-    keyManagementProjectId: S.optional(S.String),
-    folder: S.optional(S.String),
-    workloadOnboardingState: S.optional(WorkloadOnboardingState),
-    location: S.optional(S.String),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-    partner: S.optional(WorkloadPartnerEnum),
-    folderId: S.optional(S.String),
-  }),
+S.Struct({
+  "isOnboarded": S.optional(S.Boolean),
+  "keyManagementProjectId": S.optional(S.String),
+  "folder": S.optional(S.String),
+  "workloadOnboardingState": S.optional(WorkloadOnboardingState),
+  "location": S.optional(S.String),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "partner": S.optional(WorkloadPartnerEnum),
+  "folderId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Workload" }) as any as S.Schema<Workload>;
 
 export interface GetOrganizationsLocationsCustomersWorkloadsViolationsRequest {
   /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/violations/{violation}` */
   name: string;
 }
-export const GetOrganizationsLocationsCustomersWorkloadsViolationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetOrganizationsLocationsCustomersWorkloadsViolationsRequest",
-  }) as any as S.Schema<GetOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
+export const GetOrganizationsLocationsCustomersWorkloadsViolationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsCustomersWorkloadsViolationsRequest" }) as any as S.Schema<GetOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type RemediationRemediationTypeEnum =
-  | "REMEDIATION_TYPE_UNSPECIFIED"
-  | "REMEDIATION_BOOLEAN_ORG_POLICY_VIOLATION"
-  | "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION"
-  | "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION"
-  | "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION"
-  | "REMEDIATION_RESOURCE_VIOLATION"
-  | (string & {});
+export type RemediationRemediationTypeEnum = "REMEDIATION_TYPE_UNSPECIFIED" | "REMEDIATION_BOOLEAN_ORG_POLICY_VIOLATION" | "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION" | "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION" | "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION" | "REMEDIATION_RESOURCE_VIOLATION";
 export const RemediationRemediationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Remediation instructions to resolve violation via gcloud cli */
@@ -455,11 +340,11 @@ export interface Gcloud {
   gcloudCommands?: StringList;
 }
 export const Gcloud = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    steps: S.optional(StringList),
-    additionalLinks: S.optional(StringList),
-    gcloudCommands: S.optional(StringList),
-  }),
+S.Struct({
+  "steps": S.optional(StringList),
+  "additionalLinks": S.optional(StringList),
+  "gcloudCommands": S.optional(StringList),
+}),
 ).annotate({ identifier: "Gcloud" }) as any as S.Schema<Gcloud>;
 
 /** Remediation instructions to resolve violation via cloud console */
@@ -472,11 +357,11 @@ export interface Console {
   additionalLinks?: StringList;
 }
 export const Console = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consoleUris: S.optional(StringList),
-    steps: S.optional(StringList),
-    additionalLinks: S.optional(StringList),
-  }),
+S.Struct({
+  "consoleUris": S.optional(StringList),
+  "steps": S.optional(StringList),
+  "additionalLinks": S.optional(StringList),
+}),
 ).annotate({ identifier: "Console" }) as any as S.Schema<Console>;
 
 /** Instructions to remediate violation */
@@ -487,10 +372,10 @@ export interface Instructions {
   consoleInstructions?: Console;
 }
 export const Instructions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcloudInstructions: S.optional(Gcloud),
-    consoleInstructions: S.optional(Console),
-  }),
+S.Struct({
+  "gcloudInstructions": S.optional(Gcloud),
+  "consoleInstructions": S.optional(Console),
+}),
 ).annotate({ identifier: "Instructions" }) as any as S.Schema<Instructions>;
 
 /** Represents remediation guidance to resolve compliance violation for AssuredWorkload */
@@ -503,19 +388,14 @@ export interface Remediation {
   instructions?: Instructions;
 }
 export const Remediation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compliantValues: S.optional(StringList),
-    remediationType: S.optional(RemediationRemediationTypeEnum),
-    instructions: S.optional(Instructions),
-  }),
+S.Struct({
+  "compliantValues": S.optional(StringList),
+  "remediationType": S.optional(RemediationRemediationTypeEnum),
+  "instructions": S.optional(Instructions),
+}),
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 
-export type ViolationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "RESOLVED"
-  | "UNRESOLVED"
-  | "EXCEPTION"
-  | (string & {});
+export type ViolationStateEnum = "STATE_UNSPECIFIED" | "RESOLVED" | "UNRESOLVED" | "EXCEPTION";
 export const ViolationStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of resource Violation */
@@ -542,46 +422,31 @@ export interface Violation {
   nonCompliantOrgPolicy?: string;
 }
 export const Violation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    description: S.optional(S.String),
-    folderId: S.optional(S.String),
-    remediation: S.optional(Remediation),
-    name: S.optional(S.String),
-    beginTime: S.optional(S.String),
-    category: S.optional(S.String),
-    resolveTime: S.optional(S.String),
-    state: S.optional(ViolationStateEnum),
-    nonCompliantOrgPolicy: S.optional(S.String),
-  }),
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "description": S.optional(S.String),
+  "folderId": S.optional(S.String),
+  "remediation": S.optional(Remediation),
+  "name": S.optional(S.String),
+  "beginTime": S.optional(S.String),
+  "category": S.optional(S.String),
+  "resolveTime": S.optional(S.String),
+  "state": S.optional(ViolationStateEnum),
+  "nonCompliantOrgPolicy": S.optional(S.String),
+}),
 ).annotate({ identifier: "Violation" }) as any as S.Schema<Violation>;
 
 export interface GetPartnerOrganizationsLocationsRequest {
   /** Required. Format: `organizations/{organization}/locations/{location}/partner` */
   name: string;
 }
-export const GetPartnerOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetPartnerOrganizationsLocationsRequest",
-}) as any as S.Schema<GetPartnerOrganizationsLocationsRequest>;
+export const GetPartnerOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "GetPartnerOrganizationsLocationsRequest" }) as any as S.Schema<GetPartnerOrganizationsLocationsRequest>;
 
-export type EkmMetadataEkmSolutionEnum =
-  | "EKM_SOLUTION_UNSPECIFIED"
-  | "FORTANIX"
-  | "FUTUREX"
-  | "THALES"
-  | "VIRTRU"
-  | (string & {});
+export type EkmMetadataEkmSolutionEnum = "EKM_SOLUTION_UNSPECIFIED" | "FORTANIX" | "FUTUREX" | "THALES" | "VIRTRU";
 export const EkmMetadataEkmSolutionEnum = /*@__PURE__*/ S.String;
 
 /** Holds information needed by Mudbray to use partner EKMs for workloads. */
@@ -592,16 +457,14 @@ export interface EkmMetadata {
   ekmEndpointUri?: string;
 }
 export const EkmMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ekmSolution: S.optional(EkmMetadataEkmSolutionEnum),
-    ekmEndpointUri: S.optional(S.String),
-  }),
+S.Struct({
+  "ekmSolution": S.optional(EkmMetadataEkmSolutionEnum),
+  "ekmEndpointUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "EkmMetadata" }) as any as S.Schema<EkmMetadata>;
 
 export type EkmMetadataList = ReadonlyArray<EkmMetadata>;
-export const EkmMetadataList = /*@__PURE__*/ S.Array(
-  EkmMetadata,
-) as any as S.Schema<EkmMetadataList>;
+export const EkmMetadataList = /*@__PURE__*/ S.Array(EkmMetadata) as any as S.Schema<EkmMetadataList>;
 
 /** Represents the SKU a partner owns inside Google Cloud to sell to customers. */
 export interface Sku {
@@ -611,10 +474,10 @@ export interface Sku {
   displayName?: string;
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 export type SkuList = ReadonlyArray<Sku>;
@@ -638,54 +501,32 @@ export interface Partner {
   skus?: SkuList;
 }
 export const Partner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-    partnerProjectId: S.optional(S.String),
-    operatedCloudRegions: S.optional(StringList),
-    ekmSolutions: S.optional(EkmMetadataList),
-    skus: S.optional(SkuList),
-  }),
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "partnerProjectId": S.optional(S.String),
+  "operatedCloudRegions": S.optional(StringList),
+  "ekmSolutions": S.optional(EkmMetadataList),
+  "skus": S.optional(SkuList),
+}),
 ).annotate({ identifier: "Partner" }) as any as S.Schema<Partner>;
 
 export interface GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest {
   /** Required. Name of the resource to get in the format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/partnerPermissions` */
   name: string;
 }
-export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest",
-  }) as any as S.Schema<GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest>;
+export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest" }) as any as S.Schema<GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest>;
 
-export type PartnerPermissionsPartnerPermissionsItemEnum =
-  | "PERMISSION_UNSPECIFIED"
-  | "ACCESS_TRANSPARENCY_AND_EMERGENCY_ACCESS_LOGS"
-  | "ASSURED_WORKLOADS_MONITORING"
-  | "ACCESS_APPROVAL_REQUESTS"
-  | "ASSURED_WORKLOADS_EKM_CONNECTION_STATUS"
-  | "ACCESS_TRANSPARENCY_LOGS_SUPPORT_CASE_VIEWER"
-  | (string & {});
-export const PartnerPermissionsPartnerPermissionsItemEnum =
-  /*@__PURE__*/ S.String;
+export type PartnerPermissionsPartnerPermissionsItemEnum = "PERMISSION_UNSPECIFIED" | "ACCESS_TRANSPARENCY_AND_EMERGENCY_ACCESS_LOGS" | "ASSURED_WORKLOADS_MONITORING" | "ACCESS_APPROVAL_REQUESTS" | "ASSURED_WORKLOADS_EKM_CONNECTION_STATUS" | "ACCESS_TRANSPARENCY_LOGS_SUPPORT_CASE_VIEWER";
+export const PartnerPermissionsPartnerPermissionsItemEnum = /*@__PURE__*/ S.String;
 
-export type PartnerPermissionsPartnerPermissionsItemEnumList =
-  ReadonlyArray<PartnerPermissionsPartnerPermissionsItemEnum>;
-export const PartnerPermissionsPartnerPermissionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    PartnerPermissionsPartnerPermissionsItemEnum,
-  ) as any as S.Schema<PartnerPermissionsPartnerPermissionsItemEnumList>;
+export type PartnerPermissionsPartnerPermissionsItemEnumList = ReadonlyArray<PartnerPermissionsPartnerPermissionsItemEnum>;
+export const PartnerPermissionsPartnerPermissionsItemEnumList = /*@__PURE__*/ S.Array(PartnerPermissionsPartnerPermissionsItemEnum) as any as S.Schema<PartnerPermissionsPartnerPermissionsItemEnumList>;
 
 /** The permissions granted to the partner for a workload */
 export interface PartnerPermissions {
@@ -695,15 +536,11 @@ export interface PartnerPermissions {
   name?: string;
 }
 export const PartnerPermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partnerPermissions: S.optional(
-      PartnerPermissionsPartnerPermissionsItemEnumList,
-    ),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerPermissions",
-}) as any as S.Schema<PartnerPermissions>;
+S.Struct({
+  "partnerPermissions": S.optional(PartnerPermissionsPartnerPermissionsItemEnumList),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "PartnerPermissions" }) as any as S.Schema<PartnerPermissions>;
 
 export interface ListOrganizationsLocationsCustomersRequest {
   /** Required. Parent resource Format: `organizations/{organization}/locations/{location}` */
@@ -717,29 +554,18 @@ export interface ListOrganizationsLocationsCustomersRequest {
   /** Optional. Filtering results */
   filter?: string;
 }
-export const ListOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/customers",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListOrganizationsLocationsCustomersRequest",
-  }) as any as S.Schema<ListOrganizationsLocationsCustomersRequest>;
+export const ListOrganizationsLocationsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/customers","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsCustomersRequest" }) as any as S.Schema<ListOrganizationsLocationsCustomersRequest>;
 
 export type CustomerList = ReadonlyArray<Customer>;
-export const CustomerList = /*@__PURE__*/ S.Array(
-  Customer,
-) as any as S.Schema<CustomerList>;
+export const CustomerList = /*@__PURE__*/ S.Array(Customer) as any as S.Schema<CustomerList>;
 
 /** Response message for list customer Customers requests */
 export interface ListCustomersResponse {
@@ -751,14 +577,12 @@ export interface ListCustomersResponse {
   nextPageToken?: string;
 }
 export const ListCustomersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    customers: S.optional(CustomerList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCustomersResponse",
-}) as any as S.Schema<ListCustomersResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "customers": S.optional(CustomerList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCustomersResponse" }) as any as S.Schema<ListCustomersResponse>;
 
 export interface ListOrganizationsLocationsCustomersWorkloadsRequest {
   /** Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
@@ -772,29 +596,18 @@ export interface ListOrganizationsLocationsCustomersWorkloadsRequest {
   /** Optional. Filtering results. */
   filter?: string;
 }
-export const ListOrganizationsLocationsCustomersWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workloads",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListOrganizationsLocationsCustomersWorkloadsRequest",
-  }) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsRequest>;
+export const ListOrganizationsLocationsCustomersWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workloads","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsCustomersWorkloadsRequest" }) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsRequest>;
 
 export type WorkloadList = ReadonlyArray<Workload>;
-export const WorkloadList = /*@__PURE__*/ S.Array(
-  Workload,
-) as any as S.Schema<WorkloadList>;
+export const WorkloadList = /*@__PURE__*/ S.Array(Workload) as any as S.Schema<WorkloadList>;
 
 /** Response message for list customer workloads requests. */
 export interface ListWorkloadsResponse {
@@ -806,14 +619,12 @@ export interface ListWorkloadsResponse {
   nextPageToken?: string;
 }
 export const ListWorkloadsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    workloads: S.optional(WorkloadList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkloadsResponse",
-}) as any as S.Schema<ListWorkloadsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "workloads": S.optional(WorkloadList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListWorkloadsResponse" }) as any as S.Schema<ListWorkloadsResponse>;
 
 export interface ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest {
   /** Optional. A page token, received from a previous `ListAccessApprovalRequests` call. Provide this to retrieve the subsequent page. */
@@ -827,35 +638,17 @@ export interface ListOrganizationsLocationsCustomersWorkloadsAccessApprovalReque
   /** Optional. The maximum number of access requests to return. The service may return fewer than this value. If unspecified, at most 500 access requests will be returned. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/accessApprovalRequests",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest",
-  }) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest>;
+export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/accessApprovalRequests","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest" }) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest>;
 
-export type AccessReasonTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "CUSTOMER_INITIATED_SUPPORT"
-  | "GOOGLE_INITIATED_SERVICE"
-  | "GOOGLE_INITIATED_REVIEW"
-  | "THIRD_PARTY_DATA_REQUEST"
-  | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
-  | "CLOUD_INITIATED_ACCESS"
-  | (string & {});
+export type AccessReasonTypeEnum = "TYPE_UNSPECIFIED" | "CUSTOMER_INITIATED_SUPPORT" | "GOOGLE_INITIATED_SERVICE" | "GOOGLE_INITIATED_REVIEW" | "THIRD_PARTY_DATA_REQUEST" | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT" | "CLOUD_INITIATED_ACCESS";
 export const AccessReasonTypeEnum = /*@__PURE__*/ S.String;
 
 /** Reason for the access. */
@@ -866,10 +659,10 @@ export interface AccessReason {
   detail?: string;
 }
 export const AccessReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AccessReasonTypeEnum),
-    detail: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(AccessReasonTypeEnum),
+  "detail": S.optional(S.String),
+}),
 ).annotate({ identifier: "AccessReason" }) as any as S.Schema<AccessReason>;
 
 /** Details about the Access request. */
@@ -884,20 +677,16 @@ export interface AccessApprovalRequest {
   requestedExpirationTime?: string;
 }
 export const AccessApprovalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestedReason: S.optional(AccessReason),
-    name: S.optional(S.String),
-    requestTime: S.optional(S.String),
-    requestedExpirationTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccessApprovalRequest",
-}) as any as S.Schema<AccessApprovalRequest>;
+S.Struct({
+  "requestedReason": S.optional(AccessReason),
+  "name": S.optional(S.String),
+  "requestTime": S.optional(S.String),
+  "requestedExpirationTime": S.optional(S.String),
+}),
+).annotate({ identifier: "AccessApprovalRequest" }) as any as S.Schema<AccessApprovalRequest>;
 
 export type AccessApprovalRequestList = ReadonlyArray<AccessApprovalRequest>;
-export const AccessApprovalRequestList = /*@__PURE__*/ S.Array(
-  AccessApprovalRequest,
-) as any as S.Schema<AccessApprovalRequestList>;
+export const AccessApprovalRequestList = /*@__PURE__*/ S.Array(AccessApprovalRequest) as any as S.Schema<AccessApprovalRequestList>;
 
 /** Response message for list access requests. */
 export interface ListAccessApprovalRequestsResponse {
@@ -909,14 +698,12 @@ export interface ListAccessApprovalRequestsResponse {
   unreachable?: StringList;
 }
 export const ListAccessApprovalRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessApprovalRequests: S.optional(AccessApprovalRequestList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListAccessApprovalRequestsResponse",
-}) as any as S.Schema<ListAccessApprovalRequestsResponse>;
+S.Struct({
+  "accessApprovalRequests": S.optional(AccessApprovalRequestList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListAccessApprovalRequestsResponse" }) as any as S.Schema<ListAccessApprovalRequestsResponse>;
 
 export interface ListOrganizationsLocationsCustomersWorkloadsViolationsRequest {
   /** Optional. A page token, received from a previous `ListViolations` call. Provide this to retrieve the subsequent page. */
@@ -934,31 +721,20 @@ export interface ListOrganizationsLocationsCustomersWorkloadsViolationsRequest {
   /** Optional. The maximum number of customers row to return. The service may return fewer than this value. If unspecified, at most 10 customers will be returned. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsCustomersWorkloadsViolationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      "interval.endTime": S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      "interval.startTime": S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/violations",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListOrganizationsLocationsCustomersWorkloadsViolationsRequest",
-  }) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
+export const ListOrganizationsLocationsCustomersWorkloadsViolationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "interval.endTime": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "interval.startTime": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/violations","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsLocationsCustomersWorkloadsViolationsRequest" }) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 
 export type ViolationList = ReadonlyArray<Violation>;
-export const ViolationList = /*@__PURE__*/ S.Array(
-  Violation,
-) as any as S.Schema<ViolationList>;
+export const ViolationList = /*@__PURE__*/ S.Array(Violation) as any as S.Schema<ViolationList>;
 
 /** Response message for list customer violation requests */
 export interface ListViolationsResponse {
@@ -970,14 +746,12 @@ export interface ListViolationsResponse {
   nextPageToken?: string;
 }
 export const ListViolationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    violations: S.optional(ViolationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListViolationsResponse",
-}) as any as S.Schema<ListViolationsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "violations": S.optional(ViolationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListViolationsResponse" }) as any as S.Schema<ListViolationsResponse>;
 
 export interface PatchOrganizationsLocationsCustomersRequest {
   /** Optional. The list of fields to update */
@@ -987,29 +761,15 @@ export interface PatchOrganizationsLocationsCustomersRequest {
   /** Request body */
   body?: Customer;
 }
-export const PatchOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Customer.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchOrganizationsLocationsCustomersRequest",
-  }) as any as S.Schema<PatchOrganizationsLocationsCustomersRequest>;
+export const PatchOrganizationsLocationsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Customer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudcontrolspartner.googleapis.com/"})),
+).annotate({ identifier: "PatchOrganizationsLocationsCustomersRequest" }) as any as S.Schema<PatchOrganizationsLocationsCustomersRequest>;
 
-export type CreateOrganizationsLocationsCustomersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateOrganizationsLocationsCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new customer. */
 export const createOrganizationsLocationsCustomers: API.OperationMethod<
   CreateOrganizationsLocationsCustomersRequest,
@@ -1024,12 +784,7 @@ export const createOrganizationsLocationsCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOrganizationsLocationsCustomersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteOrganizationsLocationsCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete details of a single customer */
 export const deleteOrganizationsLocationsCustomers: API.OperationMethod<
   DeleteOrganizationsLocationsCustomersRequest,
@@ -1044,10 +799,7 @@ export const deleteOrganizationsLocationsCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsError = NotFound | Forbidden | GcpOpError;
 /** Gets the EKM connections associated with a workload */
 export const getEkmConnectionsOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
   GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest,
@@ -1062,10 +814,7 @@ export const getEkmConnectionsOrganizationsLocationsCustomersWorkloads: API.Oper
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsCustomersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOrganizationsLocationsCustomersError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single customer */
 export const getOrganizationsLocationsCustomers: API.OperationMethod<
   GetOrganizationsLocationsCustomersRequest,
@@ -1080,10 +829,7 @@ export const getOrganizationsLocationsCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsCustomersWorkloadsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOrganizationsLocationsCustomersWorkloadsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single workload */
 export const getOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
   GetOrganizationsLocationsCustomersWorkloadsRequest,
@@ -1098,10 +844,7 @@ export const getOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsCustomersWorkloadsViolationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOrganizationsLocationsCustomersWorkloadsViolationsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Violation. */
 export const getOrganizationsLocationsCustomersWorkloadsViolations: API.OperationMethod<
   GetOrganizationsLocationsCustomersWorkloadsViolationsRequest,
@@ -1116,10 +859,7 @@ export const getOrganizationsLocationsCustomersWorkloadsViolations: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type GetPartnerOrganizationsLocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetPartnerOrganizationsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Get details of a Partner. */
 export const getPartnerOrganizationsLocations: API.OperationMethod<
   GetPartnerOrganizationsLocationsRequest,
@@ -1134,8 +874,7 @@ export const getPartnerOrganizationsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsError = NotFound | Forbidden | GcpOpError;
 /** Gets the partner permissions granted for a workload */
 export const getPartnerPermissionsOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
   GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest,
@@ -1150,10 +889,7 @@ export const getPartnerPermissionsOrganizationsLocationsCustomersWorkloads: API.
   retry: Retry.Retry,
 }));
 
-export type ListOrganizationsLocationsCustomersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOrganizationsLocationsCustomersError = NotFound | Forbidden | GcpOpError;
 /** Lists customers of a partner identified by its Google Cloud organization ID */
 export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
   ListOrganizationsLocationsCustomersRequest,
@@ -1166,16 +902,10 @@ export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsLocationsCustomersWorkloadsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOrganizationsLocationsCustomersWorkloadsError = NotFound | Forbidden | GcpOpError;
 /** Lists customer workloads for a given customer org id */
 export const listOrganizationsLocationsCustomersWorkloads: API.PaginatedOperationMethod<
   ListOrganizationsLocationsCustomersWorkloadsRequest,
@@ -1188,14 +918,10 @@ export const listOrganizationsLocationsCustomersWorkloads: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsError =
-  NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsError = NotFound | Forbidden | GcpOpError;
 /** Deprecated: Only returns access approval requests directly associated with an assured workload folder. */
 export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests: API.PaginatedOperationMethod<
   ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest,
@@ -1203,22 +929,15 @@ export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests:
   ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest,
+  input: ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest,
   output: ListAccessApprovalRequestsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsLocationsCustomersWorkloadsViolationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOrganizationsLocationsCustomersWorkloadsViolationsError = NotFound | Forbidden | GcpOpError;
 /** Lists Violations for a workload Callers may also choose to read across multiple Customers or for a single customer as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of {customer} & {workload}. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
 export const listOrganizationsLocationsCustomersWorkloadsViolations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsCustomersWorkloadsViolationsRequest,
@@ -1231,18 +950,10 @@ export const listOrganizationsLocationsCustomersWorkloadsViolations: API.Paginat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchOrganizationsLocationsCustomersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchOrganizationsLocationsCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update details of a single customer */
 export const patchOrganizationsLocationsCustomers: API.OperationMethod<
   PatchOrganizationsLocationsCustomersRequest,
@@ -1256,3 +967,4 @@ export const patchOrganizationsLocationsCustomers: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

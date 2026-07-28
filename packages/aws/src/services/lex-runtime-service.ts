@@ -238,11 +238,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type ConfirmationStatus =
-  | "None"
-  | "Confirmed"
-  | "Denied"
-  | (string & {});
+export type ConfirmationStatus = "None" | "Confirmed" | "Denied";
 export const ConfirmationStatus = /*@__PURE__*/ S.String;
 
 export type DialogActionType =
@@ -250,15 +246,10 @@ export type DialogActionType =
   | "ConfirmIntent"
   | "ElicitSlot"
   | "Close"
-  | "Delegate"
-  | (string & {});
+  | "Delegate";
 export const DialogActionType = /*@__PURE__*/ S.String;
 
-export type FulfillmentState =
-  | "Fulfilled"
-  | "Failed"
-  | "ReadyForFulfillment"
-  | (string & {});
+export type FulfillmentState = "Fulfilled" | "Failed" | "ReadyForFulfillment";
 export const FulfillmentState = /*@__PURE__*/ S.String;
 
 export interface IntentSummary {
@@ -288,8 +279,7 @@ export type MessageFormatType =
   | "PlainText"
   | "CustomPayload"
   | "SSML"
-  | "Composite"
-  | (string & {});
+  | "Composite";
 export const MessageFormatType = /*@__PURE__*/ S.String;
 
 export interface DialogAction {
@@ -427,8 +417,7 @@ export type DialogState =
   | "ElicitSlot"
   | "Fulfilled"
   | "ReadyForFulfillment"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const DialogState = /*@__PURE__*/ S.String;
 
 export type SensitiveStringUnbounded = string | redacted.Redacted<string>;
@@ -577,9 +566,7 @@ export const SentimentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SentimentResponse",
 }) as any as S.Schema<SentimentResponse>;
-export type ContentType =
-  | "application/vnd.amazonaws.card.generic"
-  | (string & {});
+export type ContentType = "application/vnd.amazonaws.card.generic";
 export const ContentType = /*@__PURE__*/ S.String;
 
 export type StringWithLength = string;

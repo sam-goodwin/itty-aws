@@ -160,7 +160,7 @@ export const GetRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRoutingControlStateRequest",
 }) as any as S.Schema<GetRoutingControlStateRequest>;
-export type RoutingControlState = "On" | "Off" | (string & {});
+export type RoutingControlState = "On" | "Off";
 export const RoutingControlState = /*@__PURE__*/ S.String;
 
 export type RoutingControlName = string;
@@ -234,7 +234,7 @@ export type Arns = string[];
 export const Arns = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateRoutingControlStateRequest {
   RoutingControlArn: string;
-  RoutingControlState: RoutingControlState;
+  RoutingControlState: RoutingControlState | (string & {});
   SafetyRulesToOverride?: string[];
 }
 export const UpdateRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -256,7 +256,7 @@ export const UpdateRoutingControlStateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRoutingControlStateResponse>;
 export interface UpdateRoutingControlStateEntry {
   RoutingControlArn: string;
-  RoutingControlState: RoutingControlState;
+  RoutingControlState: RoutingControlState | (string & {});
 }
 export const UpdateRoutingControlStateEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -295,8 +295,7 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other"
-  | (string & {});
+  | "other";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

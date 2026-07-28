@@ -3276,6 +3276,23 @@
         }
       }
     },
+    "com.cloudflare.firewall#AccessRulesListForAccountRequestConfiguration": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesListForAccountRequestConfigurationTarget",
+          "traits": {
+            "smithy.api#documentation": "Defines the target to search in existing rules."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`."
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesListForAccountRequestDirection": {
       "type": "enum",
       "members": {
@@ -3379,18 +3396,10 @@
             "smithy.api#required": {}
           }
         },
-        "configuration_target": {
-          "target": "com.cloudflare.firewall#AccessRulesListForAccountRequestConfigurationTarget",
+        "configuration": {
+          "target": "com.cloudflare.firewall#AccessRulesListForAccountRequestConfiguration",
           "traits": {
-            "smithy.api#documentation": "Defines the target to search in existing rules.",
-            "smithy.api#httpQuery": "configuration.target"
-          }
-        },
-        "configuration_value": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.",
-            "smithy.api#httpQuery": "configuration.value"
+            "com.cloudflare.protocols#deepQuery": "configuration"
           }
         },
         "direction": {
@@ -3848,6 +3857,23 @@
         }
       }
     },
+    "com.cloudflare.firewall#AccessRulesListForZoneRequestConfiguration": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesListForZoneRequestConfigurationTarget",
+          "traits": {
+            "smithy.api#documentation": "Defines the target to search in existing rules."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`."
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesListForZoneRequestDirection": {
       "type": "enum",
       "members": {
@@ -3951,18 +3977,10 @@
             "smithy.api#required": {}
           }
         },
-        "configuration_target": {
-          "target": "com.cloudflare.firewall#AccessRulesListForZoneRequestConfigurationTarget",
+        "configuration": {
+          "target": "com.cloudflare.firewall#AccessRulesListForZoneRequestConfiguration",
           "traits": {
-            "smithy.api#documentation": "Defines the target to search in existing rules.",
-            "smithy.api#httpQuery": "configuration.target"
-          }
-        },
-        "configuration_value": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.",
-            "smithy.api#httpQuery": "configuration.value"
+            "com.cloudflare.protocols#deepQuery": "configuration"
           }
         },
         "direction": {

@@ -13,60 +13,55 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type NotificationSubscriptionRegisteredEventEnum =
-  | "NOTIFICATION_EVENT_TYPE_UNSPECIFIED"
-  | "PRODUCT_STATUS_CHANGE"
-  | "ACCOUNT_SERVICE_CHANGE"
-  | (string & {});
-export const NotificationSubscriptionRegisteredEventEnum =
-  /*@__PURE__*/ S.String;
+export type NotificationSubscriptionRegisteredEventEnum = "NOTIFICATION_EVENT_TYPE_UNSPECIFIED" | "PRODUCT_STATUS_CHANGE" | "ACCOUNT_SERVICE_CHANGE";
+export const NotificationSubscriptionRegisteredEventEnum = /*@__PURE__*/ S.String;
 
 /** Represents a notification subscription owned by a Merchant account. See [Decode notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how to decode the notification payload and how to interpret its contents. */
 export interface NotificationSubscription {
@@ -82,16 +77,14 @@ export interface NotificationSubscription {
   callBackUri?: string;
 }
 export const NotificationSubscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetAccount: S.optional(S.String),
-    registeredEvent: S.optional(NotificationSubscriptionRegisteredEventEnum),
-    allManagedAccounts: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    callBackUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NotificationSubscription",
-}) as any as S.Schema<NotificationSubscription>;
+S.Struct({
+  "targetAccount": S.optional(S.String),
+  "registeredEvent": S.optional(NotificationSubscriptionRegisteredEventEnum),
+  "allManagedAccounts": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "callBackUri": S.optional(S.String),
+}),
+).annotate({ identifier: "NotificationSubscription" }) as any as S.Schema<NotificationSubscription>;
 
 export interface CreateAccountsNotificationsubscriptionsRequest {
   /** Required. The merchant account that owns the new notification subscription. Format: `accounts/{account}` */
@@ -99,65 +92,38 @@ export interface CreateAccountsNotificationsubscriptionsRequest {
   /** Request body */
   body?: NotificationSubscription;
 }
-export const CreateAccountsNotificationsubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(NotificationSubscription.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "notifications/v1beta/{+parent}/notificationsubscriptions",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateAccountsNotificationsubscriptionsRequest",
-  }) as any as S.Schema<CreateAccountsNotificationsubscriptionsRequest>;
+export const CreateAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(NotificationSubscription.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"notifications/v1beta/{+parent}/notificationsubscriptions","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsNotificationsubscriptionsRequest" }) as any as S.Schema<CreateAccountsNotificationsubscriptionsRequest>;
 
 export interface DeleteAccountsNotificationsubscriptionsRequest {
   /** Required. The name of the notification subscription to be deleted. */
   name: string;
 }
-export const DeleteAccountsNotificationsubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "notifications/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteAccountsNotificationsubscriptionsRequest",
-  }) as any as S.Schema<DeleteAccountsNotificationsubscriptionsRequest>;
+export const DeleteAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"notifications/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsNotificationsubscriptionsRequest" }) as any as S.Schema<DeleteAccountsNotificationsubscriptionsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface GetAccountsNotificationsubscriptionsRequest {
   /** Required. The `name` of the notification subscription. */
   name: string;
 }
-export const GetAccountsNotificationsubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "notifications/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetAccountsNotificationsubscriptionsRequest",
-  }) as any as S.Schema<GetAccountsNotificationsubscriptionsRequest>;
+export const GetAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"notifications/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsNotificationsubscriptionsRequest" }) as any as S.Schema<GetAccountsNotificationsubscriptionsRequest>;
 
 export interface ListAccountsNotificationsubscriptionsRequest {
   /** Required. The merchant account who owns the notification subscriptions. Format: `accounts/{account}` */
@@ -167,28 +133,16 @@ export interface ListAccountsNotificationsubscriptionsRequest {
   /** The maximum number of notification subscriptions to return in a page. The default value for `page_size` is 100. The maximum value is `200`. Values above `200` will be coerced to `200`. */
   pageSize?: number;
 }
-export const ListAccountsNotificationsubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "notifications/v1beta/{+parent}/notificationsubscriptions",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAccountsNotificationsubscriptionsRequest",
-  }) as any as S.Schema<ListAccountsNotificationsubscriptionsRequest>;
+export const ListAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"notifications/v1beta/{+parent}/notificationsubscriptions","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsNotificationsubscriptionsRequest" }) as any as S.Schema<ListAccountsNotificationsubscriptionsRequest>;
 
-export type NotificationSubscriptionList =
-  ReadonlyArray<NotificationSubscription>;
-export const NotificationSubscriptionList = /*@__PURE__*/ S.Array(
-  NotificationSubscription,
-) as any as S.Schema<NotificationSubscriptionList>;
+export type NotificationSubscriptionList = ReadonlyArray<NotificationSubscription>;
+export const NotificationSubscriptionList = /*@__PURE__*/ S.Array(NotificationSubscription) as any as S.Schema<NotificationSubscriptionList>;
 
 /** Response message for the ListNotificationSubscription method. */
 export interface ListNotificationSubscriptionsResponse {
@@ -197,15 +151,12 @@ export interface ListNotificationSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListNotificationSubscriptionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      notificationSubscriptions: S.optional(NotificationSubscriptionList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListNotificationSubscriptionsResponse",
-}) as any as S.Schema<ListNotificationSubscriptionsResponse>;
+export const ListNotificationSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "notificationSubscriptions": S.optional(NotificationSubscriptionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListNotificationSubscriptionsResponse" }) as any as S.Schema<ListNotificationSubscriptionsResponse>;
 
 export interface PatchAccountsNotificationsubscriptionsRequest {
   /** List of fields being updated. */
@@ -215,29 +166,15 @@ export interface PatchAccountsNotificationsubscriptionsRequest {
   /** Request body */
   body?: NotificationSubscription;
 }
-export const PatchAccountsNotificationsubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(NotificationSubscription.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "notifications/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchAccountsNotificationsubscriptionsRequest",
-  }) as any as S.Schema<PatchAccountsNotificationsubscriptionsRequest>;
+export const PatchAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(NotificationSubscription.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"notifications/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsNotificationsubscriptionsRequest" }) as any as S.Schema<PatchAccountsNotificationsubscriptionsRequest>;
 
-export type CreateAccountsNotificationsubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsNotificationsubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a notification subscription for a business. For standalone or sub-accounts, the business can create a subscription for self. For advanced accounts, the business can create a subscription for all managed accounts or for a specific subaccount. See [Decode notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how to decode the notification payload and how to interpret its contents. We will allow the following types of notification subscriptions to exist together (per business as a subscriber per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for managed accounts + subscription for self. we will not allow (per business as a subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for the same target account. */
 export const createAccountsNotificationsubscriptions: API.OperationMethod<
   CreateAccountsNotificationsubscriptionsRequest,
@@ -252,12 +189,7 @@ export const createAccountsNotificationsubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsNotificationsubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsNotificationsubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a notification subscription for a merchant. */
 export const deleteAccountsNotificationsubscriptions: API.OperationMethod<
   DeleteAccountsNotificationsubscriptionsRequest,
@@ -272,10 +204,7 @@ export const deleteAccountsNotificationsubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsNotificationsubscriptionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsNotificationsubscriptionsError = NotFound | Forbidden | GcpOpError;
 /** Gets notification subscriptions for an account. */
 export const getAccountsNotificationsubscriptions: API.OperationMethod<
   GetAccountsNotificationsubscriptionsRequest,
@@ -290,10 +219,7 @@ export const getAccountsNotificationsubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAccountsNotificationsubscriptionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsNotificationsubscriptionsError = NotFound | Forbidden | GcpOpError;
 /** Gets all the notification subscriptions for a merchant. */
 export const listAccountsNotificationsubscriptions: API.PaginatedOperationMethod<
   ListAccountsNotificationsubscriptionsRequest,
@@ -306,18 +232,10 @@ export const listAccountsNotificationsubscriptions: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchAccountsNotificationsubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsNotificationsubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing notification subscription for a merchant. */
 export const patchAccountsNotificationsubscriptions: API.OperationMethod<
   PatchAccountsNotificationsubscriptionsRequest,
@@ -331,3 +249,4 @@ export const patchAccountsNotificationsubscriptions: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -26,20 +26,19 @@ export type GenerationLanguage =
   | "python"
   | "ruby"
   | "rust"
-  | "swift"
-  | (string & {});
+  | "swift";
 export const GenerationLanguage = /*@__PURE__*/ S.String;
 
 /** The mode of generation to be used for generating Dockerfiles. */
-export type DockerfileGenerationMode = "enabled" | "disabled" | (string & {});
+export type DockerfileGenerationMode = "enabled" | "disabled";
 export const DockerfileGenerationMode = /*@__PURE__*/ S.String;
 
 /** The mode of generation to be used for generating Manifest. */
-export type ManifestGenerationMode = "enabled" | "disabled" | (string & {});
+export type ManifestGenerationMode = "enabled" | "disabled";
 export const ManifestGenerationMode = /*@__PURE__*/ S.String;
 
 /** Determines the type of manifests to be generated. */
-export type GenerationManifestType = "helm" | "kube" | (string & {});
+export type GenerationManifestType = "helm" | "kube";
 export const GenerationManifestType = /*@__PURE__*/ S.String;
 
 export interface GeneratePreviewArtifactsRequest {
@@ -47,7 +46,7 @@ export interface GeneratePreviewArtifactsRequest {
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
-  generationLanguage?: GenerationLanguage;
+  generationLanguage?: GenerationLanguage | (string & {});
   /** The version of the language image used for execution in the generated dockerfile. */
   languageVersion?: string;
   /** The version of the language image used for building the code in the generated dockerfile. */
@@ -60,9 +59,9 @@ export interface GeneratePreviewArtifactsRequest {
   dockerfileOutputDirectory?: string;
   /** The directory to output the generated manifests to. */
   manifestOutputDirectory?: string;
-  dockerfileGenerationMode?: DockerfileGenerationMode;
-  manifestGenerationMode?: ManifestGenerationMode;
-  manifestType?: GenerationManifestType;
+  dockerfileGenerationMode?: DockerfileGenerationMode | (string & {});
+  manifestGenerationMode?: ManifestGenerationMode | (string & {});
+  manifestType?: GenerationManifestType | (string & {});
   /** The name of the image to be generated. */
   imageName?: string;
   /** The namespace to deploy the application to. */
@@ -190,8 +189,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -199,8 +197,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -370,11 +367,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -431,7 +428,7 @@ export const WorkflowCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkflowCreateOrUpdateRequestTagsMap>;
 
 /** Determines the type of manifests within the repository. */
-export type ManifestType = "helm" | "kube" | "kustomize" | (string & {});
+export type ManifestType = "helm" | "kube" | "kustomize";
 export const ManifestType = /*@__PURE__*/ S.String;
 
 export type DeploymentPropertiesKubeManifestLocationsList =
@@ -512,15 +509,11 @@ export const GitHubWorkflowProfileInputOidcCredentials =
   }) as any as S.Schema<GitHubWorkflowProfileInputOidcCredentials>;
 
 /** Describes the status of the workflow run */
-export type WorkflowRunStatus =
-  | "queued"
-  | "inprogress"
-  | "completed"
-  | (string & {});
+export type WorkflowRunStatus = "queued" | "inprogress" | "completed";
 export const WorkflowRunStatus = /*@__PURE__*/ S.String;
 
 export interface WorkflowRunInput {
-  workflowRunStatus?: WorkflowRunStatus;
+  workflowRunStatus?: WorkflowRunStatus | (string & {});
 }
 export const WorkflowRunInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -692,12 +685,7 @@ export const GitHubWorkflowProfileOidcCredentials = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GitHubWorkflowProfileOidcCredentials>;
 
 /** The status of the Pull Request submitted against the users repository. */
-export type PullRequestStatus =
-  | "unknown"
-  | "submitted"
-  | "merged"
-  | "removed"
-  | (string & {});
+export type PullRequestStatus = "unknown" | "submitted" | "merged" | "removed";
 export const PullRequestStatus = /*@__PURE__*/ S.String;
 
 export interface WorkflowRun {
@@ -719,11 +707,7 @@ export const WorkflowRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowRun" }) as any as S.Schema<WorkflowRun>;
 
 /** Determines the authorization status of requests. */
-export type AuthorizationStatus =
-  | "Authorized"
-  | "NotFound"
-  | "Error"
-  | (string & {});
+export type AuthorizationStatus = "Authorized" | "NotFound" | "Error";
 export const AuthorizationStatus = /*@__PURE__*/ S.String;
 
 /** GitHub Workflow Profile */

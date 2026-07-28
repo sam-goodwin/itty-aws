@@ -65,8 +65,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -74,8 +73,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -335,8 +333,7 @@ export const SsoProperties = /*@__PURE__*/ S.suspend(() =>
 /** Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API. */
 export type ApiPortalPropertiesInputApiTryOutEnabledState =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ApiPortalPropertiesInputApiTryOutEnabledState =
   /*@__PURE__*/ S.String;
 
@@ -352,7 +349,9 @@ export interface ApiPortalPropertiesInput {
   sourceUrls?: ApiPortalPropertiesInputSourceUrlsList;
   ssoProperties?: SsoProperties;
   /** Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API. */
-  apiTryOutEnabledState?: ApiPortalPropertiesInputApiTryOutEnabledState;
+  apiTryOutEnabledState?:
+    | ApiPortalPropertiesInputApiTryOutEnabledState
+    | (string & {});
 }
 export const ApiPortalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -425,8 +424,7 @@ export type ApiPortalPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ApiPortalPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The array of resource Ids of gateway to integrate with API portal. */
@@ -480,10 +478,7 @@ export const ApiPortalPropertiesInstancesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ApiPortalPropertiesInstancesList>;
 
 /** Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API. */
-export type ApiPortalPropertiesApiTryOutEnabledState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type ApiPortalPropertiesApiTryOutEnabledState = "Enabled" | "Disabled";
 export const ApiPortalPropertiesApiTryOutEnabledState = /*@__PURE__*/ S.String;
 
 /** API portal properties payload */
@@ -834,8 +829,7 @@ export type ApmPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ApmPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Non-sensitive properties for the APM */
@@ -1142,8 +1136,7 @@ export type ApplicationAcceleratorPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ApplicationAcceleratorPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1466,8 +1459,7 @@ export type ApplicationLiveViewPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ApplicationLiveViewPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1779,9 +1771,7 @@ export const PersistentDiskInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PersistentDiskInput>;
 
 /** The type of the underlying resource to mount as a persistent disk. */
-export type CustomPersistentDiskPropertiesType =
-  | "AzureFileVolume"
-  | (string & {});
+export type CustomPersistentDiskPropertiesType = "AzureFileVolume";
 export const CustomPersistentDiskPropertiesType = /*@__PURE__*/ S.String;
 
 /** These are the mount options for a persistent disk. */
@@ -1876,11 +1866,11 @@ export const AppVNetAddonsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppVNetAddonsInput>;
 
 /** Type of the affinity, set this to Cookie to enable session affinity. */
-export type IngressSettingsSessionAffinity = "Cookie" | "None" | (string & {});
+export type IngressSettingsSessionAffinity = "Cookie" | "None";
 export const IngressSettingsSessionAffinity = /*@__PURE__*/ S.String;
 
 /** How ingress should communicate with this app backend service. */
-export type IngressSettingsBackendProtocol = "GRPC" | "Default" | (string & {});
+export type IngressSettingsBackendProtocol = "GRPC" | "Default";
 export const IngressSettingsBackendProtocol = /*@__PURE__*/ S.String;
 
 /** Collection of certificate resource id. */
@@ -1975,8 +1965,7 @@ export type ManagedIdentityPropertiesInputType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedIdentityPropertiesInputType = /*@__PURE__*/ S.String;
 
 /** The details of the user-assigned managed identity assigned to an App. */
@@ -1999,7 +1988,7 @@ export const UserAssignedManagedIdentitiesInput = /*@__PURE__*/ S.Record(
 /** Managed identity properties retrieved from ARM request headers. */
 export interface ManagedIdentityPropertiesInput {
   /** Type of the managed identity */
-  type?: ManagedIdentityPropertiesInputType;
+  type?: ManagedIdentityPropertiesInputType | (string & {});
   /** Principal Id of system-assigned managed identity. */
   principalId?: string;
   /** Tenant Id of system-assigned managed identity. */
@@ -2070,8 +2059,7 @@ export type AppResourcePropertiesProvisioningState =
   | "Failed"
   | "Creating"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const AppResourcePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Persistent disk payload */
@@ -2159,8 +2147,7 @@ export type ManagedIdentityPropertiesType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedIdentityPropertiesType = /*@__PURE__*/ S.String;
 
 /** The details of the user-assigned managed identity assigned to an App. */
@@ -2982,8 +2969,7 @@ export type BuildpackBindingPropertiesInputBindingType =
   | "AppDynamics"
   | "Dynatrace"
   | "NewRelic"
-  | "ElasticAPM"
-  | (string & {});
+  | "ElasticAPM";
 export const BuildpackBindingPropertiesInputBindingType =
   /*@__PURE__*/ S.String;
 
@@ -3026,7 +3012,7 @@ export const BuildpackBindingLaunchProperties = /*@__PURE__*/ S.suspend(() =>
 /** Properties of a buildpack binding */
 export interface BuildpackBindingPropertiesInput {
   /** Buildpack Binding Type */
-  bindingType?: BuildpackBindingPropertiesInputBindingType;
+  bindingType?: BuildpackBindingPropertiesInputBindingType | (string & {});
   /** The object describes the buildpack binding launch properties */
   launchProperties?: BuildpackBindingLaunchProperties;
 }
@@ -3084,8 +3070,7 @@ export type BuildpackBindingPropertiesBindingType =
   | "AppDynamics"
   | "Dynatrace"
   | "NewRelic"
-  | "ElasticAPM"
-  | (string & {});
+  | "ElasticAPM";
 export const BuildpackBindingPropertiesBindingType = /*@__PURE__*/ S.String;
 
 /** State of the Buildpack Binding. */
@@ -3094,8 +3079,7 @@ export type BuildpackBindingPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const BuildpackBindingPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3714,8 +3698,7 @@ export type BuilderPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const BuilderPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Builder buildpack groups. */
@@ -4043,8 +4026,7 @@ export type BuildServicePropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const BuildServicePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The runtime resource configuration of this build service. */
@@ -4241,8 +4223,7 @@ export type BuildPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const BuildPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The environment variables for this build */
@@ -4259,8 +4240,7 @@ export type TriggeredBuildResultProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const TriggeredBuildResultProvisioningState = /*@__PURE__*/ S.String;
 
 /** The build result triggered by a build */
@@ -4484,8 +4464,7 @@ export type BuildResultPropertiesProvisioningState =
   | "Building"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const BuildResultPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The error code compose of code and message. */
@@ -4507,8 +4486,7 @@ export type BuildStagePropertiesStatus =
   | "NotStarted"
   | "Running"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const BuildStagePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** The build stage (init-container and container) resources in build pod. */
@@ -5280,8 +5258,7 @@ export type CertificatePropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const CertificatePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Certificate resource payload. */
@@ -5533,8 +5510,7 @@ export type ConfigServerPropertiesProvisioningState =
   | "Deleted"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ConfigServerPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Collection of pattern of the repository */
@@ -5897,10 +5873,7 @@ export const ConfigServerSettingsValidateResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigServerSettingsValidateResult>;
 
 /** The generation of the Application Configuration Service. */
-export type ConfigurationServicePropertiesInputGeneration =
-  | "Gen1"
-  | "Gen2"
-  | (string & {});
+export type ConfigurationServicePropertiesInputGeneration = "Gen1" | "Gen2";
 export const ConfigurationServicePropertiesInputGeneration =
   /*@__PURE__*/ S.String;
 
@@ -5921,7 +5894,7 @@ export const ConfigurationServiceGitRepositorySearchPathsList =
   ) as any as S.Schema<ConfigurationServiceGitRepositorySearchPathsList>;
 
 /** Git libraries used to support various repository providers */
-export type GitImplementation = "go-git" | "libgit2" | (string & {});
+export type GitImplementation = "go-git" | "libgit2";
 export const GitImplementation = /*@__PURE__*/ S.String;
 
 /** Git repository property payload for Application Configuration Service */
@@ -6007,7 +5980,7 @@ export const ConfigurationServiceSettings = /*@__PURE__*/ S.suspend(() =>
 /** Application Configuration Service properties payload */
 export interface ConfigurationServicePropertiesInput {
   /** The generation of the Application Configuration Service. */
-  generation?: ConfigurationServicePropertiesInputGeneration;
+  generation?: ConfigurationServicePropertiesInputGeneration | (string & {});
   settings?: ConfigurationServiceSettings;
 }
 export const ConfigurationServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
@@ -6056,16 +6029,12 @@ export type ConfigurationServicePropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ConfigurationServicePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The generation of the Application Configuration Service. */
-export type ConfigurationServicePropertiesGeneration =
-  | "Gen1"
-  | "Gen2"
-  | (string & {});
+export type ConfigurationServicePropertiesGeneration = "Gen1" | "Gen2";
 export const ConfigurationServicePropertiesGeneration = /*@__PURE__*/ S.String;
 
 /** Resource request payload of Application Configuration Service */
@@ -6510,8 +6479,7 @@ export type ContainerRegistryPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ContainerRegistryPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -6817,8 +6785,7 @@ export type CustomDomainPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const CustomDomainPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Custom domain of app resource payload. */
@@ -7093,8 +7060,7 @@ export const CustomDomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 /** Type of the customized accelerator. */
 export type CustomizedAcceleratorPropertiesInputAcceleratorType =
   | "Accelerator"
-  | "Fragment"
-  | (string & {});
+  | "Fragment";
 export const CustomizedAcceleratorPropertiesInputAcceleratorType =
   /*@__PURE__*/ S.String;
 
@@ -7151,7 +7117,9 @@ export const AcceleratorGitRepository = /*@__PURE__*/ S.suspend(() =>
 /** Customized accelerator properties payload */
 export interface CustomizedAcceleratorPropertiesInput {
   /** Type of the customized accelerator. */
-  acceleratorType?: CustomizedAcceleratorPropertiesInputAcceleratorType;
+  acceleratorType?:
+    | CustomizedAcceleratorPropertiesInputAcceleratorType
+    | (string & {});
   displayName?: string;
   description?: string;
   iconUrl?: string;
@@ -7220,16 +7188,14 @@ export type CustomizedAcceleratorPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const CustomizedAcceleratorPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Type of the customized accelerator. */
 export type CustomizedAcceleratorPropertiesAcceleratorType =
   | "Accelerator"
-  | "Fragment"
-  | (string & {});
+  | "Fragment";
 export const CustomizedAcceleratorPropertiesAcceleratorType =
   /*@__PURE__*/ S.String;
 
@@ -7477,8 +7443,7 @@ export const CustomizedAcceleratorResourceCollection = /*@__PURE__*/ S.suspend(
 /** Type of the customized accelerator. */
 export type CustomizedAcceleratorsValidateRequestAcceleratorType =
   | "Accelerator"
-  | "Fragment"
-  | (string & {});
+  | "Fragment";
 export const CustomizedAcceleratorsValidateRequestAcceleratorType =
   /*@__PURE__*/ S.String;
 
@@ -7501,7 +7466,9 @@ export interface CustomizedAcceleratorsValidateRequest {
   /** The name of the customized accelerator. */
   customizedAcceleratorName: string;
   /** Type of the customized accelerator. */
-  acceleratorType?: CustomizedAcceleratorsValidateRequestAcceleratorType;
+  acceleratorType?:
+    | CustomizedAcceleratorsValidateRequestAcceleratorType
+    | (string & {});
   displayName?: string;
   description?: string;
   iconUrl?: string;
@@ -7539,10 +7506,7 @@ export const CustomizedAcceleratorsValidateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomizedAcceleratorsValidateRequest>;
 
 /** State of the customized accelerator validation result */
-export type CustomizedAcceleratorValidateResultState =
-  | "Valid"
-  | "Invalid"
-  | (string & {});
+export type CustomizedAcceleratorValidateResultState = "Valid" | "Invalid";
 export const CustomizedAcceleratorValidateResultState = /*@__PURE__*/ S.String;
 
 /** Validation result for customized accelerator properties */
@@ -7613,8 +7577,7 @@ export const DeploymentSettingsAddonConfigsMap = /*@__PURE__*/ S.Record(
 export type ProbeActionType =
   | "HTTPGetAction"
   | "TCPSocketAction"
-  | "ExecAction"
-  | (string & {});
+  | "ExecAction";
 export const ProbeActionType = /*@__PURE__*/ S.String;
 
 /** The action of the probe. */
@@ -7767,16 +7730,12 @@ export type DeploymentResourcePropertiesProvisioningState =
   | "Creating"
   | "Updating"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const DeploymentResourcePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Status of the Deployment */
-export type DeploymentResourcePropertiesStatus =
-  | "Stopped"
-  | "Running"
-  | (string & {});
+export type DeploymentResourcePropertiesStatus = "Stopped" | "Running";
 export const DeploymentResourcePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** Deployment instance payload */
@@ -8597,16 +8556,13 @@ export const DevToolPortalSsoProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevToolPortalSsoProperties>;
 
 /** State of the plugin */
-export type DevToolPortalFeatureDetailInputState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DevToolPortalFeatureDetailInputState = "Enabled" | "Disabled";
 export const DevToolPortalFeatureDetailInputState = /*@__PURE__*/ S.String;
 
 /** Detail settings for Dev Tool Portal feature */
 export interface DevToolPortalFeatureDetailInput {
   /** State of the plugin */
-  state?: DevToolPortalFeatureDetailInputState;
+  state?: DevToolPortalFeatureDetailInputState | (string & {});
 }
 export const DevToolPortalFeatureDetailInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8688,8 +8644,7 @@ export type DevToolPortalPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DevToolPortalPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The resource quantity for required CPU and Memory of Dev Tool Portal */
@@ -8759,10 +8714,7 @@ export const DevToolPortalPropertiesComponentsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DevToolPortalPropertiesComponentsList>;
 
 /** State of the plugin */
-export type DevToolPortalFeatureDetailState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DevToolPortalFeatureDetailState = "Enabled" | "Disabled";
 export const DevToolPortalFeatureDetailState = /*@__PURE__*/ S.String;
 
 /** Detail settings for Dev Tool Portal feature */
@@ -9255,10 +9207,7 @@ export const GatewayRouteConfigOpenApiProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayRouteConfigOpenApiProperties>;
 
 /** Protocol of routed Azure Spring Apps applications. */
-export type GatewayRouteConfigPropertiesInputProtocol =
-  | "HTTP"
-  | "HTTPS"
-  | (string & {});
+export type GatewayRouteConfigPropertiesInputProtocol = "HTTP" | "HTTPS";
 export const GatewayRouteConfigPropertiesInputProtocol = /*@__PURE__*/ S.String;
 
 /** A number of conditions to evaluate a route for each request. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request. */
@@ -9346,7 +9295,7 @@ export interface GatewayRouteConfigPropertiesInput {
   appResourceId?: string;
   openApi?: GatewayRouteConfigOpenApiProperties;
   /** Protocol of routed Azure Spring Apps applications. */
-  protocol?: GatewayRouteConfigPropertiesInputProtocol;
+  protocol?: GatewayRouteConfigPropertiesInputProtocol | (string & {});
   /** Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`. */
   routes?: GatewayRouteConfigPropertiesInputRoutesList;
   /** Enable Single Sign-On in app level. */
@@ -9410,16 +9359,12 @@ export type GatewayRouteConfigPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const GatewayRouteConfigPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Protocol of routed Azure Spring Apps applications. */
-export type GatewayRouteConfigPropertiesProtocol =
-  | "HTTP"
-  | "HTTPS"
-  | (string & {});
+export type GatewayRouteConfigPropertiesProtocol = "HTTP" | "HTTPS";
 export const GatewayRouteConfigPropertiesProtocol = /*@__PURE__*/ S.String;
 
 /** Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`. */
@@ -9767,8 +9712,7 @@ export const GatewayPropertiesInputClientAuthCertificatesList =
 /** Whether to enable certificate verification or not */
 export type GatewayPropertiesInputClientAuthCertificateVerification =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const GatewayPropertiesInputClientAuthCertificateVerification =
   /*@__PURE__*/ S.String;
 
@@ -9777,7 +9721,9 @@ export interface GatewayPropertiesInputClientAuth {
   /** Collection of certificate resource Ids in Azure Spring Apps. */
   certificates?: GatewayPropertiesInputClientAuthCertificatesList;
   /** Whether to enable certificate verification or not */
-  certificateVerification?: GatewayPropertiesInputClientAuthCertificateVerification;
+  certificateVerification?:
+    | GatewayPropertiesInputClientAuthCertificateVerification
+    | (string & {});
 }
 export const GatewayPropertiesInputClientAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9920,8 +9866,7 @@ export type GatewayPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const GatewayPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Collection of certificate resource Ids in Azure Spring Apps. */
@@ -9934,8 +9879,7 @@ export const GatewayPropertiesClientAuthCertificatesList =
 /** Whether to enable certificate verification or not */
 export type GatewayPropertiesClientAuthCertificateVerification =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const GatewayPropertiesClientAuthCertificateVerification =
   /*@__PURE__*/ S.String;
 
@@ -10429,8 +10373,7 @@ export type MonitoringSettingPropertiesProvisioningState =
   | "NotAvailable"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const MonitoringSettingPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -10672,7 +10615,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationDetailActionType = "Internal" | (string & {});
+export type OperationDetailActionType = "Internal";
 export const OperationDetailActionType = /*@__PURE__*/ S.String;
 
 /** Specifications of the Log for Azure Monitoring */
@@ -10992,8 +10935,7 @@ export type PredefinedAcceleratorPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const PredefinedAcceleratorPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -11005,10 +10947,7 @@ export const PredefinedAcceleratorPropertiesAcceleratorTagsList =
   ) as any as S.Schema<PredefinedAcceleratorPropertiesAcceleratorTagsList>;
 
 /** State of the predefined accelerator. */
-export type PredefinedAcceleratorPropertiesState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type PredefinedAcceleratorPropertiesState = "Enabled" | "Disabled";
 export const PredefinedAcceleratorPropertiesState = /*@__PURE__*/ S.String;
 
 /** Predefined accelerator properties payload */
@@ -11159,15 +11098,11 @@ export type SupportedRuntimeVersionValue =
   | "Java_8"
   | "Java_11"
   | "Java_17"
-  | "NetCore_31"
-  | (string & {});
+  | "NetCore_31";
 export const SupportedRuntimeVersionValue = /*@__PURE__*/ S.String;
 
 /** The platform of this runtime version (possible values: "Java" or ".NET"). */
-export type SupportedRuntimeVersionPlatform =
-  | "Java"
-  | ".NET Core"
-  | (string & {});
+export type SupportedRuntimeVersionPlatform = "Java" | ".NET Core";
 export const SupportedRuntimeVersionPlatform = /*@__PURE__*/ S.String;
 
 /** Supported deployment runtime version descriptor. */
@@ -11243,8 +11178,7 @@ export type ServiceRegistryPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ServiceRegistryPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -11701,8 +11635,7 @@ export type ClusterResourcePropertiesProvisioningState =
   | "Failed"
   | "Moving"
   | "Moved"
-  | "MoveFailed"
-  | (string & {});
+  | "MoveFailed";
 export const ClusterResourcePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -11738,7 +11671,7 @@ export const RequiredTrafficFqdnsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RequiredTrafficFqdnsList>;
 
 /** The direction of required traffic */
-export type RequiredTrafficDirection = "Inbound" | "Outbound" | (string & {});
+export type RequiredTrafficDirection = "Inbound" | "Outbound";
 export const RequiredTrafficDirection = /*@__PURE__*/ S.String;
 
 /** Required inbound or outbound traffic for Azure Spring Apps resource. */
@@ -11808,10 +11741,7 @@ export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkProfile" }) as any as S.Schema<NetworkProfile>;
 
 /** Power state of the Service */
-export type ClusterResourcePropertiesPowerState =
-  | "Running"
-  | "Stopped"
-  | (string & {});
+export type ClusterResourcePropertiesPowerState = "Running" | "Stopped";
 export const ClusterResourcePropertiesPowerState = /*@__PURE__*/ S.String;
 
 /** Service properties payload */
@@ -12463,10 +12393,7 @@ export const ServicesListTestKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesListTestKeysRequest>;
 
 /** Type of the test key */
-export type ServicesRegenerateTestKeyRequestKeyType =
-  | "Primary"
-  | "Secondary"
-  | (string & {});
+export type ServicesRegenerateTestKeyRequestKeyType = "Primary" | "Secondary";
 export const ServicesRegenerateTestKeyRequestKeyType = /*@__PURE__*/ S.String;
 
 export interface ServicesRegenerateTestKeyRequest {
@@ -12477,7 +12404,7 @@ export interface ServicesRegenerateTestKeyRequest {
   /** The name of the Service resource. */
   serviceName: string;
   /** Type of the test key */
-  keyType: ServicesRegenerateTestKeyRequestKeyType;
+  keyType: ServicesRegenerateTestKeyRequestKeyType | (string & {});
 }
 export const ServicesRegenerateTestKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12668,11 +12595,7 @@ export const SkusListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkusListRequest>;
 
 /** Gets or sets the type of the scale. */
-export type SkuCapacityScaleType =
-  | "None"
-  | "Manual"
-  | "Automatic"
-  | (string & {});
+export type SkuCapacityScaleType = "None" | "Manual" | "Automatic";
 export const SkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** The SKU capacity */
@@ -12785,7 +12708,7 @@ export const ResourceSkuLocationInfoList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourceSkuLocationInfoList>;
 
 /** Gets the type of restrictions. Possible values include: 'Location', 'Zone' */
-export type ResourceSkuRestrictionsType = "Location" | "Zone" | (string & {});
+export type ResourceSkuRestrictionsType = "Location" | "Zone";
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** Gets the value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
@@ -12825,8 +12748,7 @@ export const ResourceSkuRestrictionInfo = /*@__PURE__*/ S.suspend(() =>
 /** Gets the reason for restriction. Possible values include: 'QuotaId', 'NotAvailableForSubscription' */
 export type ResourceSkuRestrictionsReasonCode =
   | "QuotaId"
-  | "NotAvailableForSubscription"
-  | (string & {});
+  | "NotAvailableForSubscription";
 export const ResourceSkuRestrictionsReasonCode = /*@__PURE__*/ S.String;
 
 /** Restrictions where the SKU cannot be used */
@@ -12910,7 +12832,7 @@ export const ResourceSkuCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCollection>;
 
 /** The type of the storage. */
-export type StoragePropertiesStorageType = "StorageAccount" | (string & {});
+export type StoragePropertiesStorageType = "StorageAccount";
 export const StoragePropertiesStorageType = /*@__PURE__*/ S.String;
 
 /** Storage resource payload. */

@@ -14,8 +14,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** The type of resource, for instance Microsoft.DigitalTwins/digitalTwinsInstances. */
 export type DigitalTwinsCheckNameAvailabilityRequestType =
-  | "Microsoft.DigitalTwins/digitalTwinsInstances"
-  | (string & {});
+  "Microsoft.DigitalTwins/digitalTwinsInstances";
 export const DigitalTwinsCheckNameAvailabilityRequestType =
   /*@__PURE__*/ S.String;
 
@@ -27,7 +26,7 @@ export interface DigitalTwinsCheckNameAvailabilityRequest {
   /** Resource name. */
   name: string;
   /** The type of resource, for instance Microsoft.DigitalTwins/digitalTwinsInstances. */
-  type: DigitalTwinsCheckNameAvailabilityRequestType;
+  type: DigitalTwinsCheckNameAvailabilityRequestType | (string & {});
 }
 export const DigitalTwinsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -49,7 +48,7 @@ export const DigitalTwinsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DigitalTwinsCheckNameAvailabilityRequest>;
 
 /** Message providing the reason why the given name is invalid. */
-export type CheckNameResultReason = "Invalid" | "AlreadyExists" | (string & {});
+export type CheckNameResultReason = "Invalid" | "AlreadyExists";
 export const CheckNameResultReason = /*@__PURE__*/ S.String;
 
 /** The result returned from a check name availability request. */
@@ -85,8 +84,7 @@ export type DigitalTwinsIdentityInputType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const DigitalTwinsIdentityInputType = /*@__PURE__*/ S.String;
 
 /** The information about the user assigned identity. */
@@ -110,7 +108,7 @@ export const DigitalTwinsIdentityInputUserAssignedIdentitiesMap =
 /** The managed identity for the DigitalTwinsInstance. */
 export interface DigitalTwinsIdentityInput {
   /** The type of Managed Identity used by the DigitalTwinsInstance. */
-  type?: DigitalTwinsIdentityInputType;
+  type?: DigitalTwinsIdentityInputType | (string & {});
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. . */
   userAssignedIdentities?: DigitalTwinsIdentityInputUserAssignedIdentitiesMap | null;
 }
@@ -144,8 +142,7 @@ export type ConnectionStateStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const ConnectionStateStatus = /*@__PURE__*/ S.String;
 
 /** The current state of a private endpoint connection. */
@@ -210,8 +207,7 @@ export const DigitalTwinsPropertiesInputPrivateEndpointConnectionsList =
 /** Public network access for the DigitalTwinsInstance. */
 export type DigitalTwinsPropertiesInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const DigitalTwinsPropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -220,7 +216,10 @@ export interface DigitalTwinsPropertiesInput {
   /** The private endpoint connections. */
   privateEndpointConnections?: DigitalTwinsPropertiesInputPrivateEndpointConnectionsList | null;
   /** Public network access for the DigitalTwinsInstance. */
-  publicNetworkAccess?: DigitalTwinsPropertiesInputPublicNetworkAccess | null;
+  publicNetworkAccess?:
+    | DigitalTwinsPropertiesInputPublicNetworkAccess
+    | (string & {})
+    | null;
 }
 export const DigitalTwinsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -286,8 +285,7 @@ export type DigitalTwinsIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const DigitalTwinsIdentityType = /*@__PURE__*/ S.String;
 
 /** The information about the user assigned identity. */
@@ -345,8 +343,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -354,8 +351,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -396,8 +392,7 @@ export type DigitalTwinsPropertiesProvisioningState =
   | "Warning"
   | "Suspending"
   | "Restoring"
-  | "Moving"
-  | (string & {});
+  | "Moving";
 export const DigitalTwinsPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The provisioning state. */
@@ -405,8 +400,7 @@ export type ConnectionPropertiesProvisioningState =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const ConnectionPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The private endpoint property of a private endpoint connection. */
@@ -486,10 +480,7 @@ export const DigitalTwinsPropertiesPrivateEndpointConnectionsList =
   ) as any as S.Schema<DigitalTwinsPropertiesPrivateEndpointConnectionsList>;
 
 /** Public network access for the DigitalTwinsInstance. */
-export type DigitalTwinsPropertiesPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DigitalTwinsPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const DigitalTwinsPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The properties of a DigitalTwinsInstance. */
@@ -628,24 +619,19 @@ export const DigitalTwinsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 export type DigitalTwinsEndpointResourcePropertiesInputEndpointType =
   | "EventHub"
   | "EventGrid"
-  | "ServiceBus"
-  | (string & {});
+  | "ServiceBus";
 export const DigitalTwinsEndpointResourcePropertiesInputEndpointType =
   /*@__PURE__*/ S.String;
 
 /** Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified. */
 export type DigitalTwinsEndpointResourcePropertiesInputAuthenticationType =
   | "KeyBased"
-  | "IdentityBased"
-  | (string & {});
+  | "IdentityBased";
 export const DigitalTwinsEndpointResourcePropertiesInputAuthenticationType =
   /*@__PURE__*/ S.String;
 
 /** The type of managed identity used. */
-export type ManagedIdentityReferenceType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
+export type ManagedIdentityReferenceType = "SystemAssigned" | "UserAssigned";
 export const ManagedIdentityReferenceType = /*@__PURE__*/ S.String;
 
 /** The properties of the Managed Identity. */
@@ -667,9 +653,13 @@ export const ManagedIdentityReference = /*@__PURE__*/ S.suspend(() =>
 /** Properties related to Digital Twins Endpoint */
 export interface DigitalTwinsEndpointResourcePropertiesInput {
   /** The type of Digital Twins endpoint */
-  endpointType: DigitalTwinsEndpointResourcePropertiesInputEndpointType;
+  endpointType:
+    | DigitalTwinsEndpointResourcePropertiesInputEndpointType
+    | (string & {});
   /** Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified. */
-  authenticationType?: DigitalTwinsEndpointResourcePropertiesInputAuthenticationType;
+  authenticationType?:
+    | DigitalTwinsEndpointResourcePropertiesInputAuthenticationType
+    | (string & {});
   /** Dead letter storage secret for key-based authentication. Will be obfuscated during read. */
   deadLetterSecret?: string | null;
   /** Dead letter storage URL for identity-based authentication. */
@@ -728,8 +718,7 @@ export const DigitalTwinsEndpointCreateOrUpdateRequest =
 export type DigitalTwinsEndpointResourcePropertiesEndpointType =
   | "EventHub"
   | "EventGrid"
-  | "ServiceBus"
-  | (string & {});
+  | "ServiceBus";
 export const DigitalTwinsEndpointResourcePropertiesEndpointType =
   /*@__PURE__*/ S.String;
 
@@ -746,16 +735,14 @@ export type DigitalTwinsEndpointResourcePropertiesProvisioningState =
   | "Suspending"
   | "Restoring"
   | "Moving"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const DigitalTwinsEndpointResourcePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified. */
 export type DigitalTwinsEndpointResourcePropertiesAuthenticationType =
   | "KeyBased"
-  | "IdentityBased"
-  | (string & {});
+  | "IdentityBased";
 export const DigitalTwinsEndpointResourcePropertiesAuthenticationType =
   /*@__PURE__*/ S.String;
 
@@ -1186,15 +1173,17 @@ export const DigitalTwinsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Public network access for the DigitalTwinsInstance. */
 export type DigitalTwinsPatchPropertiesPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const DigitalTwinsPatchPropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** The properties of a DigitalTwinsInstance. */
 export interface DigitalTwinsPatchProperties {
   /** Public network access for the DigitalTwinsInstance. */
-  publicNetworkAccess?: DigitalTwinsPatchPropertiesPublicNetworkAccess | null;
+  publicNetworkAccess?:
+    | DigitalTwinsPatchPropertiesPublicNetworkAccess
+    | (string & {})
+    | null;
 }
 export const DigitalTwinsPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1650,15 +1639,16 @@ export const GroupIdInformationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of time series connection resource. */
 export type TimeSeriesDatabaseConnectionPropertiesInputConnectionType =
-  | "AzureDataExplorer"
-  | (string & {});
+  "AzureDataExplorer";
 export const TimeSeriesDatabaseConnectionPropertiesInputConnectionType =
   /*@__PURE__*/ S.String;
 
 /** Properties of a time series database connection resource. */
 export interface TimeSeriesDatabaseConnectionPropertiesInput {
   /** The type of time series connection resource. */
-  connectionType: TimeSeriesDatabaseConnectionPropertiesInputConnectionType;
+  connectionType:
+    | TimeSeriesDatabaseConnectionPropertiesInputConnectionType
+    | (string & {});
   /** Managed identity properties for the time series database connection resource. */
   identity?: ManagedIdentityReference | null;
 }
@@ -1706,8 +1696,7 @@ export const TimeSeriesDatabaseConnectionsCreateOrUpdateRequest =
 
 /** The type of time series connection resource. */
 export type TimeSeriesDatabaseConnectionPropertiesConnectionType =
-  | "AzureDataExplorer"
-  | (string & {});
+  "AzureDataExplorer";
 export const TimeSeriesDatabaseConnectionPropertiesConnectionType =
   /*@__PURE__*/ S.String;
 
@@ -1724,8 +1713,7 @@ export type TimeSeriesDatabaseConnectionPropertiesProvisioningState =
   | "Suspending"
   | "Restoring"
   | "Moving"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const TimeSeriesDatabaseConnectionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1777,7 +1765,7 @@ export const TimeSeriesDatabaseConnectionsCreateOrUpdateResponse =
   }) as any as S.Schema<TimeSeriesDatabaseConnectionsCreateOrUpdateResponse>;
 
 export type TimeSeriesDatabaseConnectionsDeleteRequestCleanupConnectionArtifacts =
-  "true" | "false" | (string & {});
+  "true" | "false";
 export const TimeSeriesDatabaseConnectionsDeleteRequestCleanupConnectionArtifacts =
   /*@__PURE__*/ S.String;
 
@@ -1791,7 +1779,9 @@ export interface TimeSeriesDatabaseConnectionsDeleteRequest {
   /** Name of time series database connection. */
   timeSeriesDatabaseConnectionName: string;
   /** Specifies whether or not to attempt to clean up artifacts that were created in order to establish a connection to the time series database. This is a best-effort attempt that will fail if appropriate permissions are not in place. Setting this to 'true' does not delete any recorded data. */
-  cleanupConnectionArtifacts?: TimeSeriesDatabaseConnectionsDeleteRequestCleanupConnectionArtifacts;
+  cleanupConnectionArtifacts?:
+    | TimeSeriesDatabaseConnectionsDeleteRequestCleanupConnectionArtifacts
+    | (string & {});
 }
 export const TimeSeriesDatabaseConnectionsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>

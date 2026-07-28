@@ -22,13 +22,13 @@ export const DeidServicesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DeidServicesCreateRequestTagsMap>;
 
 /** State of the public network access. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Details of the HealthDataAIServices DeidService. */
 export interface DeidServicePropertiesInput {
   /** Gets or sets allow or disallow public network access to resource */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
 export const DeidServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -43,8 +43,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -66,7 +65,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface DeidServicesCreateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const DeidServicesCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -120,8 +119,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -129,8 +127,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -176,8 +173,7 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The group ids for the private endpoint resource. */
@@ -205,8 +201,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -233,8 +228,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -653,8 +647,7 @@ export type ManagedServiceIdentityUpdateInputType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityUpdateInputType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -679,7 +672,7 @@ export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
 /** The template for adding optional properties. */
 export interface ManagedServiceIdentityUpdateInput {
   /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-  type?: ManagedServiceIdentityUpdateInputType;
+  type?: ManagedServiceIdentityUpdateInputType | (string & {});
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap;
 }
@@ -697,7 +690,7 @@ export const ManagedServiceIdentityUpdateInput = /*@__PURE__*/ S.suspend(() =>
 /** The template for adding optional properties. */
 export interface DeidPropertiesUpdate {
   /** Gets or sets allow or disallow public network access to resource */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
 export const DeidPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -840,11 +833,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

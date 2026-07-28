@@ -296,8 +296,7 @@ export type PoliciesCreateRequestAlertType =
   | "tunnel_update_event"
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
-  | "zone_aop_custom_certificate_expiration_type"
-  | (string & {});
+  | "zone_aop_custom_certificate_expiration_type";
 export const PoliciesCreateRequestAlertType = /*@__PURE__*/ S.String;
 
 export interface PoliciesCreateRequestMechanismsEmailItem {
@@ -463,13 +462,13 @@ export type PoliciesCreateRequestFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_NONE"
   | "INCIDENT_IMPACT_MINOR"
   | "INCIDENT_IMPACT_MAJOR"
-  | "INCIDENT_IMPACT_CRITICAL"
-  | (string & {});
+  | "INCIDENT_IMPACT_CRITICAL";
 export const PoliciesCreateRequestFiltersIncidentImpactItem =
   /*@__PURE__*/ S.String;
 
-export type PoliciesCreateRequestFiltersIncidentImpactList =
-  ReadonlyArray<PoliciesCreateRequestFiltersIncidentImpactItem>;
+export type PoliciesCreateRequestFiltersIncidentImpactList = ReadonlyArray<
+  PoliciesCreateRequestFiltersIncidentImpactItem | (string & {})
+>;
 export const PoliciesCreateRequestFiltersIncidentImpactList =
   /*@__PURE__*/ S.Array(
     PoliciesCreateRequestFiltersIncidentImpactItem,
@@ -598,13 +597,13 @@ export const PoliciesCreateRequestFiltersTargetZoneNameList =
   ) as any as S.Schema<PoliciesCreateRequestFiltersTargetZoneNameList>;
 
 export type PoliciesCreateRequestFiltersTrafficExclusionsItem =
-  | "security_events"
-  | (string & {});
+  "security_events";
 export const PoliciesCreateRequestFiltersTrafficExclusionsItem =
   /*@__PURE__*/ S.String;
 
-export type PoliciesCreateRequestFiltersTrafficExclusionsList =
-  ReadonlyArray<PoliciesCreateRequestFiltersTrafficExclusionsItem>;
+export type PoliciesCreateRequestFiltersTrafficExclusionsList = ReadonlyArray<
+  PoliciesCreateRequestFiltersTrafficExclusionsItem | (string & {})
+>;
 export const PoliciesCreateRequestFiltersTrafficExclusionsList =
   /*@__PURE__*/ S.Array(
     PoliciesCreateRequestFiltersTrafficExclusionsItem,
@@ -863,7 +862,7 @@ export interface CreatePolicyRequest {
   /** The account id */
   accountId: string;
   /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
-  alertType: PoliciesCreateRequestAlertType;
+  alertType: PoliciesCreateRequestAlertType | (string & {});
   /** Whether or not the Notification policy is enabled. */
   enabled: boolean;
   /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
@@ -1106,8 +1105,7 @@ export const GetDestinationEligibleRequest = /*@__PURE__*/ S.suspend(() =>
 export type DestinationsEligibleGetResultValueItemType =
   | "email"
   | "pagerduty"
-  | "webhook"
-  | (string & {});
+  | "webhook";
 export const DestinationsEligibleGetResultValueItemType =
   /*@__PURE__*/ S.String;
 
@@ -1238,8 +1236,7 @@ export type DestinationsWebhooksGetResponseType =
   | "generic"
   | "opsgenie"
   | "slack"
-  | "splunk"
-  | (string & {});
+  | "splunk";
 export const DestinationsWebhooksGetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1368,8 +1365,7 @@ export type PoliciesGetResponseAlertType =
   | "tunnel_update_event"
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
-  | "zone_aop_custom_certificate_expiration_type"
-  | (string & {});
+  | "zone_aop_custom_certificate_expiration_type";
 export const PoliciesGetResponseAlertType = /*@__PURE__*/ S.String;
 
 export type PoliciesGetResponseFiltersActionsList = ReadonlyArray<string>;
@@ -1455,8 +1451,7 @@ export type PoliciesGetResponseFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_NONE"
   | "INCIDENT_IMPACT_MINOR"
   | "INCIDENT_IMPACT_MAJOR"
-  | "INCIDENT_IMPACT_CRITICAL"
-  | (string & {});
+  | "INCIDENT_IMPACT_CRITICAL";
 export const PoliciesGetResponseFiltersIncidentImpactItem =
   /*@__PURE__*/ S.String;
 
@@ -1587,9 +1582,7 @@ export const PoliciesGetResponseFiltersTargetZoneNameList =
     S.String,
   ) as any as S.Schema<PoliciesGetResponseFiltersTargetZoneNameList>;
 
-export type PoliciesGetResponseFiltersTrafficExclusionsItem =
-  | "security_events"
-  | (string & {});
+export type PoliciesGetResponseFiltersTrafficExclusionsItem = "security_events";
 export const PoliciesGetResponseFiltersTrafficExclusionsItem =
   /*@__PURE__*/ S.String;
 
@@ -2145,8 +2138,7 @@ export type DestinationsWebhooksListResultItemType =
   | "generic"
   | "opsgenie"
   | "slack"
-  | "splunk"
-  | (string & {});
+  | "splunk";
 export const DestinationsWebhooksListResultItemType = /*@__PURE__*/ S.String;
 
 export interface DestinationsWebhooksListResultItem {
@@ -2238,8 +2230,7 @@ export const ListHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
 export type HistoryListResultItemMechanismType =
   | "email"
   | "pagerduty"
-  | "webhook"
-  | (string & {});
+  | "webhook";
 export const HistoryListResultItemMechanismType = /*@__PURE__*/ S.String;
 
 export interface HistoryListResultItem {
@@ -2389,8 +2380,7 @@ export type PoliciesListResultItemAlertType =
   | "tunnel_update_event"
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
-  | "zone_aop_custom_certificate_expiration_type"
-  | (string & {});
+  | "zone_aop_custom_certificate_expiration_type";
 export const PoliciesListResultItemAlertType = /*@__PURE__*/ S.String;
 
 export type PoliciesListResultItemFiltersActionsList = ReadonlyArray<string>;
@@ -2485,8 +2475,7 @@ export type PoliciesListResultItemFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_NONE"
   | "INCIDENT_IMPACT_MINOR"
   | "INCIDENT_IMPACT_MAJOR"
-  | "INCIDENT_IMPACT_CRITICAL"
-  | (string & {});
+  | "INCIDENT_IMPACT_CRITICAL";
 export const PoliciesListResultItemFiltersIncidentImpactItem =
   /*@__PURE__*/ S.String;
 
@@ -2620,8 +2609,7 @@ export const PoliciesListResultItemFiltersTargetZoneNameList =
   ) as any as S.Schema<PoliciesListResultItemFiltersTargetZoneNameList>;
 
 export type PoliciesListResultItemFiltersTrafficExclusionsItem =
-  | "security_events"
-  | (string & {});
+  "security_events";
 export const PoliciesListResultItemFiltersTrafficExclusionsItem =
   /*@__PURE__*/ S.String;
 
@@ -3196,8 +3184,7 @@ export type PoliciesUpdateRequestAlertType =
   | "tunnel_update_event"
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
-  | "zone_aop_custom_certificate_expiration_type"
-  | (string & {});
+  | "zone_aop_custom_certificate_expiration_type";
 export const PoliciesUpdateRequestAlertType = /*@__PURE__*/ S.String;
 
 export type PoliciesUpdateRequestFiltersActionsList = ReadonlyArray<string>;
@@ -3289,13 +3276,13 @@ export type PoliciesUpdateRequestFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_NONE"
   | "INCIDENT_IMPACT_MINOR"
   | "INCIDENT_IMPACT_MAJOR"
-  | "INCIDENT_IMPACT_CRITICAL"
-  | (string & {});
+  | "INCIDENT_IMPACT_CRITICAL";
 export const PoliciesUpdateRequestFiltersIncidentImpactItem =
   /*@__PURE__*/ S.String;
 
-export type PoliciesUpdateRequestFiltersIncidentImpactList =
-  ReadonlyArray<PoliciesUpdateRequestFiltersIncidentImpactItem>;
+export type PoliciesUpdateRequestFiltersIncidentImpactList = ReadonlyArray<
+  PoliciesUpdateRequestFiltersIncidentImpactItem | (string & {})
+>;
 export const PoliciesUpdateRequestFiltersIncidentImpactList =
   /*@__PURE__*/ S.Array(
     PoliciesUpdateRequestFiltersIncidentImpactItem,
@@ -3424,13 +3411,13 @@ export const PoliciesUpdateRequestFiltersTargetZoneNameList =
   ) as any as S.Schema<PoliciesUpdateRequestFiltersTargetZoneNameList>;
 
 export type PoliciesUpdateRequestFiltersTrafficExclusionsItem =
-  | "security_events"
-  | (string & {});
+  "security_events";
 export const PoliciesUpdateRequestFiltersTrafficExclusionsItem =
   /*@__PURE__*/ S.String;
 
-export type PoliciesUpdateRequestFiltersTrafficExclusionsList =
-  ReadonlyArray<PoliciesUpdateRequestFiltersTrafficExclusionsItem>;
+export type PoliciesUpdateRequestFiltersTrafficExclusionsList = ReadonlyArray<
+  PoliciesUpdateRequestFiltersTrafficExclusionsItem | (string & {})
+>;
 export const PoliciesUpdateRequestFiltersTrafficExclusionsList =
   /*@__PURE__*/ S.Array(
     PoliciesUpdateRequestFiltersTrafficExclusionsItem,
@@ -3767,7 +3754,7 @@ export interface UpdatePolicyRequest {
   /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
   alertInterval?: string;
   /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
-  alertType?: PoliciesUpdateRequestAlertType;
+  alertType?: PoliciesUpdateRequestAlertType | (string & {});
   /** Optional description for the Notification policy. */
   description?: string;
   /** Whether or not the Notification policy is enabled. */

@@ -69,25 +69,20 @@ export class ZoneNotFound extends T.applyErrorMatchers(
   [{ status: 400, message: { includes: "Cannot find a valid zone" } }],
 ) {}
 
-export type CreateRequestBundleMethod =
-  | "ubiquitous"
-  | "optimal"
-  | "force"
-  | (string & {});
+export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
 export const CreateRequestBundleMethod = /*@__PURE__*/ S.String;
 
-export type CreateRequestDeploy = "staging" | "production" | (string & {});
+export type CreateRequestDeploy = "staging" | "production";
 export const CreateRequestDeploy = /*@__PURE__*/ S.String;
 
 export type CreateRequestGeoRestrictionsLabel =
   | "us"
   | "eu"
-  | "highest_security"
-  | (string & {});
+  | "highest_security";
 export const CreateRequestGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface CreateRequestGeoRestrictions {
-  label?: CreateRequestGeoRestrictionsLabel;
+  label?: CreateRequestGeoRestrictionsLabel | (string & {});
 }
 export const CreateRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -97,7 +92,7 @@ export const CreateRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestGeoRestrictions",
 }) as any as S.Schema<CreateRequestGeoRestrictions>;
 
-export type CreateRequestType = "legacy_custom" | "sni_custom" | (string & {});
+export type CreateRequestType = "legacy_custom" | "sni_custom";
 export const CreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateCustomCertificateRequest {
@@ -106,11 +101,11 @@ export interface CreateCustomCertificateRequest {
   /** The zone's SSL certificate or certificate and the intermediate(s). */
   certificate: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: CreateRequestBundleMethod;
+  bundleMethod?: CreateRequestBundleMethod | (string & {});
   /** The identifier for the Custom CSR that was used. */
   customCsrId?: string;
   /** The environment to deploy the certificate to, defaults to production. */
-  deploy?: CreateRequestDeploy;
+  deploy?: CreateRequestDeploy | (string & {});
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
   geoRestrictions?: CreateRequestGeoRestrictions;
   /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. */
@@ -118,7 +113,7 @@ export interface CreateCustomCertificateRequest {
   /** The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
   privateKey?: string;
   /** The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake. */
-  type?: CreateRequestType;
+  type?: CreateRequestType | (string & {});
 }
 export const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -148,18 +143,13 @@ export const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomCertificateRequest",
 }) as any as S.Schema<CreateCustomCertificateRequest>;
 
-export type CreateResponseBundleMethod =
-  | "ubiquitous"
-  | "optimal"
-  | "force"
-  | (string & {});
+export type CreateResponseBundleMethod = "ubiquitous" | "optimal" | "force";
 export const CreateResponseBundleMethod = /*@__PURE__*/ S.String;
 
 export type CreateResponseGeoRestrictionsLabel =
   | "us"
   | "eu"
-  | "highest_security"
-  | (string & {});
+  | "highest_security";
 export const CreateResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface CreateResponseGeoRestrictions {
@@ -183,10 +173,7 @@ export const CreateResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseKeylessServerPermissionsList>;
 
-export type CreateResponseKeylessServerStatus =
-  | "active"
-  | "deleted"
-  | (string & {});
+export type CreateResponseKeylessServerStatus = "active" | "deleted";
 export const CreateResponseKeylessServerStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponseKeylessServerTunnel {
@@ -248,8 +235,7 @@ export type CreateResponseStatus =
   | "expired"
   | "deleted"
   | "pending"
-  | "initializing"
-  | (string & {});
+  | "initializing";
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -372,18 +358,10 @@ export const GetCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomCertificateRequest",
 }) as any as S.Schema<GetCustomCertificateRequest>;
 
-export type GetResponseBundleMethod =
-  | "ubiquitous"
-  | "optimal"
-  | "force"
-  | (string & {});
+export type GetResponseBundleMethod = "ubiquitous" | "optimal" | "force";
 export const GetResponseBundleMethod = /*@__PURE__*/ S.String;
 
-export type GetResponseGeoRestrictionsLabel =
-  | "us"
-  | "eu"
-  | "highest_security"
-  | (string & {});
+export type GetResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export const GetResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface GetResponseGeoRestrictions {
@@ -407,10 +385,7 @@ export const GetResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseKeylessServerPermissionsList>;
 
-export type GetResponseKeylessServerStatus =
-  | "active"
-  | "deleted"
-  | (string & {});
+export type GetResponseKeylessServerStatus = "active" | "deleted";
 export const GetResponseKeylessServerStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseKeylessServerTunnel {
@@ -472,8 +447,7 @@ export type GetResponseStatus =
   | "expired"
   | "deleted"
   | "pending"
-  | "initializing"
-  | (string & {});
+  | "initializing";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -537,7 +511,7 @@ export const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomCertificateResponse",
 }) as any as S.Schema<GetCustomCertificateResponse>;
 
-export type ListRequestMatch = "any" | "all" | (string & {});
+export type ListRequestMatch = "any" | "all";
 export const ListRequestMatch = /*@__PURE__*/ S.String;
 
 export type ListRequestStatus =
@@ -545,21 +519,20 @@ export type ListRequestStatus =
   | "expired"
   | "deleted"
   | "pending"
-  | "initializing"
-  | (string & {});
+  | "initializing";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListCustomCertificatesRequest {
   /** Identifier. */
   zoneId: string;
   /** Whether to match all search requirements or at least one (any). */
-  match?: ListRequestMatch;
+  match?: ListRequestMatch | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Number of zones per page. */
   perPage?: number;
   /** Status of the zone's custom SSL. */
-  status?: ListRequestStatus;
+  status?: ListRequestStatus | (string & {});
 }
 export const ListCustomCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -581,18 +554,13 @@ export const ListCustomCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomCertificatesRequest",
 }) as any as S.Schema<ListCustomCertificatesRequest>;
 
-export type ListResultItemBundleMethod =
-  | "ubiquitous"
-  | "optimal"
-  | "force"
-  | (string & {});
+export type ListResultItemBundleMethod = "ubiquitous" | "optimal" | "force";
 export const ListResultItemBundleMethod = /*@__PURE__*/ S.String;
 
 export type ListResultItemGeoRestrictionsLabel =
   | "us"
   | "eu"
-  | "highest_security"
-  | (string & {});
+  | "highest_security";
 export const ListResultItemGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface ListResultItemGeoRestrictions {
@@ -616,10 +584,7 @@ export const ListResultItemKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemKeylessServerPermissionsList>;
 
-export type ListResultItemKeylessServerStatus =
-  | "active"
-  | "deleted"
-  | (string & {});
+export type ListResultItemKeylessServerStatus = "active" | "deleted";
 export const ListResultItemKeylessServerStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItemKeylessServerTunnel {
@@ -681,8 +646,7 @@ export type ListResultItemStatus =
   | "expired"
   | "deleted"
   | "pending"
-  | "initializing"
-  | (string & {});
+  | "initializing";
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
@@ -763,25 +727,17 @@ export const ListCustomCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomCertificatesResponse",
 }) as any as S.Schema<ListCustomCertificatesResponse>;
 
-export type EditRequestBundleMethod =
-  | "ubiquitous"
-  | "optimal"
-  | "force"
-  | (string & {});
+export type EditRequestBundleMethod = "ubiquitous" | "optimal" | "force";
 export const EditRequestBundleMethod = /*@__PURE__*/ S.String;
 
-export type EditRequestDeploy = "staging" | "production" | (string & {});
+export type EditRequestDeploy = "staging" | "production";
 export const EditRequestDeploy = /*@__PURE__*/ S.String;
 
-export type EditRequestGeoRestrictionsLabel =
-  | "us"
-  | "eu"
-  | "highest_security"
-  | (string & {});
+export type EditRequestGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export const EditRequestGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface EditRequestGeoRestrictions {
-  label?: EditRequestGeoRestrictionsLabel;
+  label?: EditRequestGeoRestrictionsLabel | (string & {});
 }
 export const EditRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -797,13 +753,13 @@ export interface PatchCustomCertificateRequest {
   /** Identifier. */
   customCertificateId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: EditRequestBundleMethod;
+  bundleMethod?: EditRequestBundleMethod | (string & {});
   /** The zone's SSL certificate or certificate and the intermediate(s). */
   certificate?: string;
   /** The identifier for the Custom CSR that was used. */
   customCsrId?: string;
   /** The environment to deploy the certificate to, defaults to production. */
-  deploy?: EditRequestDeploy;
+  deploy?: EditRequestDeploy | (string & {});
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
   geoRestrictions?: EditRequestGeoRestrictions;
   /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. */
@@ -839,18 +795,10 @@ export const PatchCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchCustomCertificateRequest",
 }) as any as S.Schema<PatchCustomCertificateRequest>;
 
-export type EditResponseBundleMethod =
-  | "ubiquitous"
-  | "optimal"
-  | "force"
-  | (string & {});
+export type EditResponseBundleMethod = "ubiquitous" | "optimal" | "force";
 export const EditResponseBundleMethod = /*@__PURE__*/ S.String;
 
-export type EditResponseGeoRestrictionsLabel =
-  | "us"
-  | "eu"
-  | "highest_security"
-  | (string & {});
+export type EditResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export const EditResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface EditResponseGeoRestrictions {
@@ -874,10 +822,7 @@ export const EditResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseKeylessServerPermissionsList>;
 
-export type EditResponseKeylessServerStatus =
-  | "active"
-  | "deleted"
-  | (string & {});
+export type EditResponseKeylessServerStatus = "active" | "deleted";
 export const EditResponseKeylessServerStatus = /*@__PURE__*/ S.String;
 
 export interface EditResponseKeylessServerTunnel {
@@ -939,8 +884,7 @@ export type EditResponseStatus =
   | "expired"
   | "deleted"
   | "pending"
-  | "initializing"
-  | (string & {});
+  | "initializing";
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1052,15 +996,13 @@ export const PutPrioritizeRequest = /*@__PURE__*/ S.suspend(() =>
 export type PrioritizeUpdateResultItemBundleMethod =
   | "ubiquitous"
   | "optimal"
-  | "force"
-  | (string & {});
+  | "force";
 export const PrioritizeUpdateResultItemBundleMethod = /*@__PURE__*/ S.String;
 
 export type PrioritizeUpdateResultItemGeoRestrictionsLabel =
   | "us"
   | "eu"
-  | "highest_security"
-  | (string & {});
+  | "highest_security";
 export const PrioritizeUpdateResultItemGeoRestrictionsLabel =
   /*@__PURE__*/ S.String;
 
@@ -1090,8 +1032,7 @@ export const PrioritizeUpdateResultItemKeylessServerPermissionsList =
 
 export type PrioritizeUpdateResultItemKeylessServerStatus =
   | "active"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const PrioritizeUpdateResultItemKeylessServerStatus =
   /*@__PURE__*/ S.String;
 
@@ -1156,8 +1097,7 @@ export type PrioritizeUpdateResultItemStatus =
   | "expired"
   | "deleted"
   | "pending"
-  | "initializing"
-  | (string & {});
+  | "initializing";
 export const PrioritizeUpdateResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface PrioritizeUpdateResultItem {

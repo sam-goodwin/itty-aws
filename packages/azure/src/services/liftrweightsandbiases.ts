@@ -26,8 +26,7 @@ export type LiftrBaseMarketplaceSubscriptionStatus =
   | "PendingFulfillmentStart"
   | "Subscribed"
   | "Suspended"
-  | "Unsubscribed"
-  | (string & {});
+  | "Unsubscribed";
 export const LiftrBaseMarketplaceSubscriptionStatus = /*@__PURE__*/ S.String;
 
 /** Offer details for the marketplace that is selected by the user */
@@ -109,8 +108,7 @@ export type Region =
   | "westus"
   | "westeurope"
   | "japaneast"
-  | "koreacentral"
-  | (string & {});
+  | "koreacentral";
 export const Region = /*@__PURE__*/ S.String;
 
 /** Partner's specific Properties */
@@ -130,15 +128,11 @@ export const PartnerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartnerProperties>;
 
 /** Defines the type of Single Sign-On (SSO) mechanism being used */
-export type LiftrBaseSingleSignOnType = "Saml" | "OpenId" | (string & {});
+export type LiftrBaseSingleSignOnType = "Saml" | "OpenId";
 export const LiftrBaseSingleSignOnType = /*@__PURE__*/ S.String;
 
 /** Various states of the SSO resource */
-export type LiftrBaseSingleSignOnStates =
-  | "Initial"
-  | "Enable"
-  | "Disable"
-  | (string & {});
+export type LiftrBaseSingleSignOnStates = "Initial" | "Enable" | "Disable";
 export const LiftrBaseSingleSignOnStates = /*@__PURE__*/ S.String;
 
 /** List of AAD domains fetched from Microsoft Graph for user. */
@@ -201,8 +195,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -224,7 +217,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface InstancesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const InstancesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -279,8 +272,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -288,8 +280,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -331,8 +322,7 @@ export const InstancesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -695,11 +685,7 @@ export const InstancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
-    | "None"
-    | "SystemAssigned"
-    | "UserAssigned"
-    | "SystemAssigned,UserAssigned"
-    | (string & {});
+  "None" | "SystemAssigned" | "UserAssigned" | "SystemAssigned,UserAssigned";
 export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
   /*@__PURE__*/ S.String;
 
@@ -727,7 +713,9 @@ export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUse
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput {
   /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-  type?: AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType;
+  type?:
+    | AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType
+    | (string & {});
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap;
 }
@@ -878,11 +866,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

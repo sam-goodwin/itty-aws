@@ -93,8 +93,7 @@ export type MonitorLocalResourceType =
   | "AWS::AvailabilityZone"
   | "AWS::EC2::Subnet"
   | "AWS::Region"
-  | "AWS::EKS::Cluster"
-  | (string & {});
+  | "AWS::EKS::Cluster";
 export const MonitorLocalResourceType = /*@__PURE__*/ S.String;
 
 export interface MonitorLocalResource {
@@ -114,8 +113,7 @@ export type MonitorRemoteResourceType =
   | "AWS::AvailabilityZone"
   | "AWS::EC2::Subnet"
   | "AWS::AWSService"
-  | "AWS::Region"
-  | (string & {});
+  | "AWS::Region";
 export const MonitorRemoteResourceType = /*@__PURE__*/ S.String;
 
 export interface MonitorRemoteResource {
@@ -175,8 +173,7 @@ export type MonitorStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "ERROR"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const MonitorStatus = /*@__PURE__*/ S.String;
 
 export type Iso8601Timestamp = Date;
@@ -209,7 +206,7 @@ export type TargetId = { accountId: string };
 export const TargetId = /*@__PURE__*/ S.Union([
   S.Struct({ accountId: S.String }),
 ]);
-export type TargetType = "ACCOUNT" | (string & {});
+export type TargetType = "ACCOUNT";
 export const TargetType = /*@__PURE__*/ S.String;
 
 export interface TargetIdentifier {
@@ -260,8 +257,7 @@ export type ScopeStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | "DEACTIVATING"
-  | "DEACTIVATED"
-  | (string & {});
+  | "DEACTIVATED";
 export const ScopeStatus = /*@__PURE__*/ S.String;
 
 export interface CreateScopeOutput {
@@ -423,8 +419,7 @@ export type MetricUnit =
   | "Gigabits/Second"
   | "Terabits/Second"
   | "Count/Second"
-  | "None"
-  | (string & {});
+  | "None";
 export const MetricUnit = /*@__PURE__*/ S.String;
 
 export type InstanceId = string;
@@ -438,8 +433,7 @@ export type DestinationCategory =
   | "UNCLASSIFIED"
   | "AMAZON_S3"
   | "AMAZON_DYNAMODB"
-  | "INTER_REGION"
-  | (string & {});
+  | "INTER_REGION";
 export const DestinationCategory = /*@__PURE__*/ S.String;
 
 export type Component = string;
@@ -737,8 +731,7 @@ export type QueryStatus =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const QueryStatus = /*@__PURE__*/ S.String;
 
 export interface GetQueryStatusMonitorTopContributorsOutput {
@@ -847,7 +840,7 @@ export type MaxResults = number;
 export interface ListMonitorsInput {
   nextToken?: string;
   maxResults?: number;
-  monitorStatus?: MonitorStatus;
+  monitorStatus?: MonitorStatus | (string & {});
 }
 export const ListMonitorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -959,8 +952,7 @@ export type MonitorMetric =
   | "ROUND_TRIP_TIME"
   | "TIMEOUTS"
   | "RETRANSMISSIONS"
-  | "DATA_TRANSFERRED"
-  | (string & {});
+  | "DATA_TRANSFERRED";
 export const MonitorMetric = /*@__PURE__*/ S.String;
 
 export type Limit = number;
@@ -968,8 +960,8 @@ export interface StartQueryMonitorTopContributorsInput {
   monitorName: string;
   startTime: Date;
   endTime: Date;
-  metricName: MonitorMetric;
-  destinationCategory: DestinationCategory;
+  metricName: MonitorMetric | (string & {});
+  destinationCategory: DestinationCategory | (string & {});
   limit?: number;
 }
 export const StartQueryMonitorTopContributorsInput = /*@__PURE__*/ S.suspend(
@@ -1008,16 +1000,15 @@ export const StartQueryMonitorTopContributorsOutput = /*@__PURE__*/ S.suspend(
 export type WorkloadInsightsMetric =
   | "TIMEOUTS"
   | "RETRANSMISSIONS"
-  | "DATA_TRANSFERRED"
-  | (string & {});
+  | "DATA_TRANSFERRED";
 export const WorkloadInsightsMetric = /*@__PURE__*/ S.String;
 
 export interface StartQueryWorkloadInsightsTopContributorsInput {
   scopeId: string;
   startTime: Date;
   endTime: Date;
-  metricName: WorkloadInsightsMetric;
-  destinationCategory: DestinationCategory;
+  metricName: WorkloadInsightsMetric | (string & {});
+  destinationCategory: DestinationCategory | (string & {});
   limit?: number;
 }
 export const StartQueryWorkloadInsightsTopContributorsInput =
@@ -1056,8 +1047,8 @@ export interface StartQueryWorkloadInsightsTopContributorsDataInput {
   scopeId: string;
   startTime: Date;
   endTime: Date;
-  metricName: WorkloadInsightsMetric;
-  destinationCategory: DestinationCategory;
+  metricName: WorkloadInsightsMetric | (string & {});
+  destinationCategory: DestinationCategory | (string & {});
 }
 export const StartQueryWorkloadInsightsTopContributorsDataInput =
   /*@__PURE__*/ S.suspend(() =>

@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request message for CancelSubmission. */
 export interface CancelSubmissionRequest {}
 export const CancelSubmissionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelSubmissionRequest",
-}) as any as S.Schema<CancelSubmissionRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelSubmissionRequest" }) as any as S.Schema<CancelSubmissionRequest>;
 
 export interface CancelSubmissionPublishersItemsRequest {
   /** Required. Name of the item to cancel the submission of in the form `publishers/{publisherId}/items/{itemId}` */
@@ -74,47 +72,28 @@ export interface CancelSubmissionPublishersItemsRequest {
   /** Request body */
   body?: CancelSubmissionRequest;
 }
-export const CancelSubmissionPublishersItemsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelSubmissionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:cancelSubmission",
-        baseUrl: "https://chromewebstore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelSubmissionPublishersItemsRequest",
-}) as any as S.Schema<CancelSubmissionPublishersItemsRequest>;
+export const CancelSubmissionPublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelSubmissionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:cancelSubmission","baseUrl":"https://chromewebstore.googleapis.com/"})),
+).annotate({ identifier: "CancelSubmissionPublishersItemsRequest" }) as any as S.Schema<CancelSubmissionPublishersItemsRequest>;
 
 /** Response message for `CancelSubmission`. */
 export interface CancelSubmissionResponse {}
 export const CancelSubmissionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelSubmissionResponse",
-}) as any as S.Schema<CancelSubmissionResponse>;
+S.Struct({}),
+).annotate({ identifier: "CancelSubmissionResponse" }) as any as S.Schema<CancelSubmissionResponse>;
 
 export interface FetchStatusPublishersItemsRequest {
   /** Required. Name of the item to retrieve the status of in the form `publishers/{publisherId}/items/{itemId}` */
   name: string;
 }
 export const FetchStatusPublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}:fetchStatus",
-      baseUrl: "https://chromewebstore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "FetchStatusPublishersItemsRequest",
-}) as any as S.Schema<FetchStatusPublishersItemsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}:fetchStatus","baseUrl":"https://chromewebstore.googleapis.com/"})),
+).annotate({ identifier: "FetchStatusPublishersItemsRequest" }) as any as S.Schema<FetchStatusPublishersItemsRequest>;
 
 /** Deployment information for a specific release channel */
 export interface DistributionChannel {
@@ -124,28 +103,16 @@ export interface DistributionChannel {
   crxVersion?: string;
 }
 export const DistributionChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployPercentage: S.optional(S.Number),
-    crxVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DistributionChannel",
-}) as any as S.Schema<DistributionChannel>;
+S.Struct({
+  "deployPercentage": S.optional(S.Number),
+  "crxVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "DistributionChannel" }) as any as S.Schema<DistributionChannel>;
 
 export type DistributionChannelList = ReadonlyArray<DistributionChannel>;
-export const DistributionChannelList = /*@__PURE__*/ S.Array(
-  DistributionChannel,
-) as any as S.Schema<DistributionChannelList>;
+export const DistributionChannelList = /*@__PURE__*/ S.Array(DistributionChannel) as any as S.Schema<DistributionChannelList>;
 
-export type ItemRevisionStatusStateEnum =
-  | "ITEM_STATE_UNSPECIFIED"
-  | "PENDING_REVIEW"
-  | "STAGED"
-  | "PUBLISHED"
-  | "PUBLISHED_TO_TESTERS"
-  | "REJECTED"
-  | "CANCELLED"
-  | (string & {});
+export type ItemRevisionStatusStateEnum = "ITEM_STATE_UNSPECIFIED" | "PENDING_REVIEW" | "STAGED" | "PUBLISHED" | "PUBLISHED_TO_TESTERS" | "REJECTED" | "CANCELLED";
 export const ItemRevisionStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Details on the status of an item revision. */
@@ -156,23 +123,14 @@ export interface ItemRevisionStatus {
   state?: ItemRevisionStatusStateEnum;
 }
 export const ItemRevisionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    distributionChannels: S.optional(DistributionChannelList),
-    state: S.optional(ItemRevisionStatusStateEnum),
-  }),
-).annotate({
-  identifier: "ItemRevisionStatus",
-}) as any as S.Schema<ItemRevisionStatus>;
+S.Struct({
+  "distributionChannels": S.optional(DistributionChannelList),
+  "state": S.optional(ItemRevisionStatusStateEnum),
+}),
+).annotate({ identifier: "ItemRevisionStatus" }) as any as S.Schema<ItemRevisionStatus>;
 
-export type FetchItemStatusResponseLastAsyncUploadStateEnum =
-  | "UPLOAD_STATE_UNSPECIFIED"
-  | "SUCCEEDED"
-  | "IN_PROGRESS"
-  | "FAILED"
-  | "NOT_FOUND"
-  | (string & {});
-export const FetchItemStatusResponseLastAsyncUploadStateEnum =
-  /*@__PURE__*/ S.String;
+export type FetchItemStatusResponseLastAsyncUploadStateEnum = "UPLOAD_STATE_UNSPECIFIED" | "SUCCEEDED" | "IN_PROGRESS" | "FAILED" | "NOT_FOUND";
+export const FetchItemStatusResponseLastAsyncUploadStateEnum = /*@__PURE__*/ S.String;
 
 /** Response message for `FetchItemStatus`. */
 export interface FetchItemStatusResponse {
@@ -194,27 +152,19 @@ export interface FetchItemStatusResponse {
   warned?: boolean;
 }
 export const FetchItemStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publishedItemRevisionStatus: S.optional(ItemRevisionStatus),
-    publicKey: S.optional(S.String),
-    itemId: S.optional(S.String),
-    submittedItemRevisionStatus: S.optional(ItemRevisionStatus),
-    takenDown: S.optional(S.Boolean),
-    lastAsyncUploadState: S.optional(
-      FetchItemStatusResponseLastAsyncUploadStateEnum,
-    ),
-    name: S.optional(S.String),
-    warned: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "FetchItemStatusResponse",
-}) as any as S.Schema<FetchItemStatusResponse>;
+S.Struct({
+  "publishedItemRevisionStatus": S.optional(ItemRevisionStatus),
+  "publicKey": S.optional(S.String),
+  "itemId": S.optional(S.String),
+  "submittedItemRevisionStatus": S.optional(ItemRevisionStatus),
+  "takenDown": S.optional(S.Boolean),
+  "lastAsyncUploadState": S.optional(FetchItemStatusResponseLastAsyncUploadStateEnum),
+  "name": S.optional(S.String),
+  "warned": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "FetchItemStatusResponse" }) as any as S.Schema<FetchItemStatusResponse>;
 
-export type PublishItemRequestPublishTypeEnum =
-  | "PUBLISH_TYPE_UNSPECIFIED"
-  | "DEFAULT_PUBLISH"
-  | "STAGED_PUBLISH"
-  | (string & {});
+export type PublishItemRequestPublishTypeEnum = "PUBLISH_TYPE_UNSPECIFIED" | "DEFAULT_PUBLISH" | "STAGED_PUBLISH";
 export const PublishItemRequestPublishTypeEnum = /*@__PURE__*/ S.String;
 
 /** Deployment information for a specific release channel. Used in requests to update deployment parameters. */
@@ -223,20 +173,18 @@ export interface DeployInfo {
   deployPercentage?: number;
 }
 export const DeployInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployPercentage: S.optional(S.Number),
-  }),
+S.Struct({
+  "deployPercentage": S.optional(S.Number),
+}),
 ).annotate({ identifier: "DeployInfo" }) as any as S.Schema<DeployInfo>;
 
 export type DeployInfoList = ReadonlyArray<DeployInfo>;
-export const DeployInfoList = /*@__PURE__*/ S.Array(
-  DeployInfo,
-) as any as S.Schema<DeployInfoList>;
+export const DeployInfoList = /*@__PURE__*/ S.Array(DeployInfo) as any as S.Schema<DeployInfoList>;
 
 /** Request message for PublishItem. */
 export interface PublishItemRequest {
   /** Optional. Use this to control if the item is published immediately on approval or staged for publishing in the future. Defaults to `DEFAULT_PUBLISH` if unset. */
-  publishType?: PublishItemRequestPublishTypeEnum;
+  publishType?: PublishItemRequestPublishTypeEnum | (string & {});
   /** Optional. Additional deploy information including the desired initial percentage rollout. Defaults to the current value saved in the developer dashboard if unset. */
   deployInfos?: DeployInfoList;
   /** Optional. Whether to attempt to skip item review. The API will validate if the item qualifies and return a validation error if the item requires review. Defaults to `false` if unset. */
@@ -245,15 +193,13 @@ export interface PublishItemRequest {
   blockOnWarnings?: boolean;
 }
 export const PublishItemRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publishType: S.optional(PublishItemRequestPublishTypeEnum),
-    deployInfos: S.optional(DeployInfoList),
-    skipReview: S.optional(S.Boolean),
-    blockOnWarnings: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PublishItemRequest",
-}) as any as S.Schema<PublishItemRequest>;
+S.Struct({
+  "publishType": S.optional(PublishItemRequestPublishTypeEnum),
+  "deployInfos": S.optional(DeployInfoList),
+  "skipReview": S.optional(S.Boolean),
+  "blockOnWarnings": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PublishItemRequest" }) as any as S.Schema<PublishItemRequest>;
 
 export interface PublishPublishersItemsRequest {
   /** Required. Name of the item in the form `publishers/{publisherId}/items/{itemId}` */
@@ -262,19 +208,11 @@ export interface PublishPublishersItemsRequest {
   body?: PublishItemRequest;
 }
 export const PublishPublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(PublishItemRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/{+name}:publish",
-      baseUrl: "https://chromewebstore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PublishPublishersItemsRequest",
-}) as any as S.Schema<PublishPublishersItemsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(PublishItemRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:publish","baseUrl":"https://chromewebstore.googleapis.com/"})),
+).annotate({ identifier: "PublishPublishersItemsRequest" }) as any as S.Schema<PublishPublishersItemsRequest>;
 
 /** Represents a single warning encountered during the request. */
 export interface Warning {
@@ -284,16 +222,14 @@ export interface Warning {
   reason?: string;
 }
 export const Warning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    reason: S.optional(S.String),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "reason": S.optional(S.String),
+}),
 ).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
 
 export type WarningList = ReadonlyArray<Warning>;
-export const WarningList = /*@__PURE__*/ S.Array(
-  Warning,
-) as any as S.Schema<WarningList>;
+export const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
 
 /** Message containing details on warnings encountered during PublishItem. */
 export interface WarningsInfo {
@@ -301,20 +237,12 @@ export interface WarningsInfo {
   warnings?: WarningList;
 }
 export const WarningsInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    warnings: S.optional(WarningList),
-  }),
+S.Struct({
+  "warnings": S.optional(WarningList),
+}),
 ).annotate({ identifier: "WarningsInfo" }) as any as S.Schema<WarningsInfo>;
 
-export type PublishItemResponseStateEnum =
-  | "ITEM_STATE_UNSPECIFIED"
-  | "PENDING_REVIEW"
-  | "STAGED"
-  | "PUBLISHED"
-  | "PUBLISHED_TO_TESTERS"
-  | "REJECTED"
-  | "CANCELLED"
-  | (string & {});
+export type PublishItemResponseStateEnum = "ITEM_STATE_UNSPECIFIED" | "PENDING_REVIEW" | "STAGED" | "PUBLISHED" | "PUBLISHED_TO_TESTERS" | "REJECTED" | "CANCELLED";
 export const PublishItemResponseStateEnum = /*@__PURE__*/ S.String;
 
 /** Response message for `PublishItem`. */
@@ -329,15 +257,13 @@ export interface PublishItemResponse {
   state?: PublishItemResponseStateEnum;
 }
 export const PublishItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    warningInfo: S.optional(WarningsInfo),
-    itemId: S.optional(S.String),
-    name: S.optional(S.String),
-    state: S.optional(PublishItemResponseStateEnum),
-  }),
-).annotate({
-  identifier: "PublishItemResponse",
-}) as any as S.Schema<PublishItemResponse>;
+S.Struct({
+  "warningInfo": S.optional(WarningsInfo),
+  "itemId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "state": S.optional(PublishItemResponseStateEnum),
+}),
+).annotate({ identifier: "PublishItemResponse" }) as any as S.Schema<PublishItemResponse>;
 
 /** Request message for SetPublishedDeployPercentage. */
 export interface SetPublishedDeployPercentageRequest {
@@ -345,12 +271,10 @@ export interface SetPublishedDeployPercentageRequest {
   deployPercentage?: number;
 }
 export const SetPublishedDeployPercentageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployPercentage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SetPublishedDeployPercentageRequest",
-}) as any as S.Schema<SetPublishedDeployPercentageRequest>;
+S.Struct({
+  "deployPercentage": S.optional(S.Number),
+}),
+).annotate({ identifier: "SetPublishedDeployPercentageRequest" }) as any as S.Schema<SetPublishedDeployPercentageRequest>;
 
 export interface SetPublishedDeployPercentagePublishersItemsRequest {
   /** Required. Name of the item to update the published revision of in the form `publishers/{publisherId}/items/{itemId}` */
@@ -358,37 +282,24 @@ export interface SetPublishedDeployPercentagePublishersItemsRequest {
   /** Request body */
   body?: SetPublishedDeployPercentageRequest;
 }
-export const SetPublishedDeployPercentagePublishersItemsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetPublishedDeployPercentageRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:setPublishedDeployPercentage",
-        baseUrl: "https://chromewebstore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetPublishedDeployPercentagePublishersItemsRequest",
-  }) as any as S.Schema<SetPublishedDeployPercentagePublishersItemsRequest>;
+export const SetPublishedDeployPercentagePublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetPublishedDeployPercentageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:setPublishedDeployPercentage","baseUrl":"https://chromewebstore.googleapis.com/"})),
+).annotate({ identifier: "SetPublishedDeployPercentagePublishersItemsRequest" }) as any as S.Schema<SetPublishedDeployPercentagePublishersItemsRequest>;
 
 /** Response message for `SetPublishedDeployPercentage`. */
 export interface SetPublishedDeployPercentageResponse {}
-export const SetPublishedDeployPercentageResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "SetPublishedDeployPercentageResponse",
-}) as any as S.Schema<SetPublishedDeployPercentageResponse>;
+export const SetPublishedDeployPercentageResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "SetPublishedDeployPercentageResponse" }) as any as S.Schema<SetPublishedDeployPercentageResponse>;
 
 /** Request message for UploadItemPackage. */
 export interface UploadItemPackageRequest {}
 export const UploadItemPackageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadItemPackageRequest",
-}) as any as S.Schema<UploadItemPackageRequest>;
+S.Struct({}),
+).annotate({ identifier: "UploadItemPackageRequest" }) as any as S.Schema<UploadItemPackageRequest>;
 
 export interface UploadMediaRequest {
   /** Required. Name of the item to upload the new package to in the form `publishers/{publisherId}/items/{itemId}` */
@@ -397,27 +308,13 @@ export interface UploadMediaRequest {
   body?: UploadItemPackageRequest;
 }
 export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(UploadItemPackageRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/{+name}:upload",
-      baseUrl: "https://chromewebstore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UploadMediaRequest",
-}) as any as S.Schema<UploadMediaRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UploadItemPackageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:upload","baseUrl":"https://chromewebstore.googleapis.com/"})),
+).annotate({ identifier: "UploadMediaRequest" }) as any as S.Schema<UploadMediaRequest>;
 
-export type UploadItemPackageResponseUploadStateEnum =
-  | "UPLOAD_STATE_UNSPECIFIED"
-  | "SUCCEEDED"
-  | "IN_PROGRESS"
-  | "FAILED"
-  | "NOT_FOUND"
-  | (string & {});
+export type UploadItemPackageResponseUploadStateEnum = "UPLOAD_STATE_UNSPECIFIED" | "SUCCEEDED" | "IN_PROGRESS" | "FAILED" | "NOT_FOUND";
 export const UploadItemPackageResponseUploadStateEnum = /*@__PURE__*/ S.String;
 
 /** Response message for `UploadItemPackage`. */
@@ -432,22 +329,15 @@ export interface UploadItemPackageResponse {
   name?: string;
 }
 export const UploadItemPackageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemId: S.optional(S.String),
-    crxVersion: S.optional(S.String),
-    uploadState: S.optional(UploadItemPackageResponseUploadStateEnum),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UploadItemPackageResponse",
-}) as any as S.Schema<UploadItemPackageResponse>;
+S.Struct({
+  "itemId": S.optional(S.String),
+  "crxVersion": S.optional(S.String),
+  "uploadState": S.optional(UploadItemPackageResponseUploadStateEnum),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "UploadItemPackageResponse" }) as any as S.Schema<UploadItemPackageResponse>;
 
-export type CancelSubmissionPublishersItemsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelSubmissionPublishersItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancel the current active submission of an item if present. This can be used to cancel the review of a pending submission. */
 export const cancelSubmissionPublishersItems: API.OperationMethod<
   CancelSubmissionPublishersItemsRequest,
@@ -477,12 +367,7 @@ export const fetchStatusPublishersItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishPublishersItemsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PublishPublishersItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Submit the item to be published in the store. The item will be submitted for review unless `skip_review` is set to true, or the item is staged from a previous submission with `publish_type` set to `STAGED_PUBLISH`. */
 export const publishPublishersItems: API.OperationMethod<
   PublishPublishersItemsRequest,
@@ -497,12 +382,7 @@ export const publishPublishersItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetPublishedDeployPercentagePublishersItemsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetPublishedDeployPercentagePublishersItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Set a higher target deploy percentage for the item's published revision. This will be updated without the item being submitted for review. This is only available to items with over 10,000 seven-day active users. */
 export const setPublishedDeployPercentagePublishersItems: API.OperationMethod<
   SetPublishedDeployPercentagePublishersItemsRequest,
@@ -517,12 +397,7 @@ export const setPublishedDeployPercentagePublishersItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadMediaError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadMediaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Upload a new package to an existing item. */
 export const uploadMedia: API.OperationMethod<
   UploadMediaRequest,
@@ -536,3 +411,4 @@ export const uploadMedia: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

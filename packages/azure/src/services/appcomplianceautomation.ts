@@ -13,17 +13,13 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** Evidence type */
-export type EvidenceType =
-  | "File"
-  | "AutoCollectedEvidence"
-  | "Data"
-  | (string & {});
+export type EvidenceType = "File" | "AutoCollectedEvidence" | "Data";
 export const EvidenceType = /*@__PURE__*/ S.String;
 
 /** Evidence's properties. */
 export interface EvidencePropertiesInput {
   /** Evidence type. */
-  evidenceType?: EvidenceType;
+  evidenceType?: EvidenceType | (string & {});
   /** The path of the file in storage. */
   filePath: string;
   /** Extra data considered as evidence. */
@@ -81,8 +77,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -90,8 +85,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -129,8 +123,7 @@ export type ProvisioningState =
   | "Deleting"
   | "Fixing"
   | "Verifying"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Evidence's properties. */
@@ -440,11 +433,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -517,8 +510,7 @@ export const ProviderActionsCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type ProviderActionsCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const ProviderActionsCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -781,7 +773,7 @@ export const TriggerEvaluationPropertyResourceIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TriggerEvaluationPropertyResourceIdsList>;
 
 /** Indicates the resource status. */
-export type ResourceStatus = "Healthy" | "Unhealthy" | (string & {});
+export type ResourceStatus = "Healthy" | "Unhealthy";
 export const ResourceStatus = /*@__PURE__*/ S.String;
 
 /** A class represent the quick assessment. */
@@ -859,7 +851,7 @@ export const TriggerEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerEvaluationResponse>;
 
 /** Resource Origin. */
-export type ResourceOrigin = "Azure" | "AWS" | "GCP" | (string & {});
+export type ResourceOrigin = "Azure" | "AWS" | "GCP";
 export const ResourceOrigin = /*@__PURE__*/ S.String;
 
 /** Single resource Id's metadata. */
@@ -948,12 +940,7 @@ export const ReportPropertiesResourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ReportPropertiesResourcesList>;
 
 /** Report status. */
-export type ReportStatus =
-  | "Active"
-  | "Failed"
-  | "Reviewing"
-  | "Disabled"
-  | (string & {});
+export type ReportStatus = "Active" | "Failed" | "Reviewing" | "Disabled";
 export const ReportStatus = /*@__PURE__*/ S.String;
 
 /** List of report error codes. */
@@ -1174,7 +1161,7 @@ export const ReportFixRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportFixRequest>;
 
 /** Indicates whether the fix action is Succeeded or Failed. */
-export type Result = "Succeeded" | "Failed" | (string & {});
+export type Result = "Succeeded" | "Failed";
 export const Result = /*@__PURE__*/ S.String;
 
 /** Report fix result. */
@@ -1274,8 +1261,7 @@ export type InputType =
   | "MultiSelectDropdown"
   | "MultiSelectDropdownCustom"
   | "Group"
-  | "Upload"
-  | (string & {});
+  | "Upload";
 export const InputType = /*@__PURE__*/ S.String;
 
 /** Option id list. */
@@ -1299,8 +1285,7 @@ export type Rule =
   | "PublisherVerification"
   | "DynamicDropdown"
   | "PreventNonEnglishChar"
-  | "ValidEmail"
-  | (string & {});
+  | "ValidEmail";
 export const Rule = /*@__PURE__*/ S.String;
 
 /** The rule of the question. */
@@ -1467,8 +1452,7 @@ export const ReportNestedResourceCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type ReportNestedResourceCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const ReportNestedResourceCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -1905,8 +1889,7 @@ export type DownloadType =
   | "ComplianceReport"
   | "CompliancePdfReport"
   | "ComplianceDetailedPdfReport"
-  | "ResourceList"
-  | (string & {});
+  | "ResourceList";
 export const DownloadType = /*@__PURE__*/ S.String;
 
 export interface SnapshotDownloadRequest {
@@ -1917,7 +1900,7 @@ export interface SnapshotDownloadRequest {
   /** Tenant id. */
   reportCreatorTenantId?: string;
   /** Indicates the download type. */
-  downloadType: DownloadType;
+  downloadType: DownloadType | (string & {});
   /** The offerGuid which mapping to the reports. */
   offerGuid?: string;
 }
@@ -1971,8 +1954,7 @@ export type ControlStatus =
   | "Passed"
   | "Failed"
   | "NotApplicable"
-  | "PendingApproval"
-  | (string & {});
+  | "PendingApproval";
 export const ControlStatus = /*@__PURE__*/ S.String;
 
 /** Object that includes all the content for single compliance result. */
@@ -2106,8 +2088,7 @@ export type SnapshotPropertiesReportSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SnapshotPropertiesReportSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2116,8 +2097,7 @@ export type SnapshotPropertiesReportSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SnapshotPropertiesReportSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2156,8 +2136,7 @@ export type CategoryStatus =
   | "Passed"
   | "Failed"
   | "NotApplicable"
-  | "PendingApproval"
-  | (string & {});
+  | "PendingApproval";
 export const CategoryStatus = /*@__PURE__*/ S.String;
 
 /** Indicates the control family status. */
@@ -2165,20 +2144,15 @@ export type ControlFamilyStatus =
   | "Passed"
   | "Failed"
   | "NotApplicable"
-  | "PendingApproval"
-  | (string & {});
+  | "PendingApproval";
 export const ControlFamilyStatus = /*@__PURE__*/ S.String;
 
 /** Indicates the customer responsibility type. */
-export type ResponsibilityType =
-  | "Automated"
-  | "ScopedManual"
-  | "Manual"
-  | (string & {});
+export type ResponsibilityType = "Automated" | "ScopedManual" | "Manual";
 export const ResponsibilityType = /*@__PURE__*/ S.String;
 
 /** Indicates the customer responsibility severity. */
-export type ResponsibilitySeverity = "High" | "Medium" | "Low" | (string & {});
+export type ResponsibilitySeverity = "High" | "Medium" | "Low";
 export const ResponsibilitySeverity = /*@__PURE__*/ S.String;
 
 /** Indicates the customer responsibility status. */
@@ -2186,17 +2160,11 @@ export type ResponsibilityStatus =
   | "Passed"
   | "Failed"
   | "NotApplicable"
-  | "PendingApproval"
-  | (string & {});
+  | "PendingApproval";
 export const ResponsibilityStatus = /*@__PURE__*/ S.String;
 
 /** Indicates the customer responsibility supported cloud environment. */
-export type ResponsibilityEnvironment =
-  | "Azure"
-  | "AWS"
-  | "GCP"
-  | "General"
-  | (string & {});
+export type ResponsibilityEnvironment = "Azure" | "AWS" | "GCP" | "General";
 export const ResponsibilityEnvironment = /*@__PURE__*/ S.String;
 
 /** List of recommendation id. */
@@ -2245,7 +2213,7 @@ export const ResponsibilityResourceListList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResponsibilityResourceListList>;
 
 /** Indicates whether this solution is the recommended. */
-export type IsRecommendSolution = "true" | "false" | (string & {});
+export type IsRecommendSolution = "true" | "false";
 export const IsRecommendSolution = /*@__PURE__*/ S.String;
 
 /** A class represent the recommendation solution. */
@@ -2607,11 +2575,11 @@ export const SnapshotResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotResourceListResult>;
 
 /** Webhook status. */
-export type WebhookStatus = "Enabled" | "Disabled" | (string & {});
+export type WebhookStatus = "Enabled" | "Disabled";
 export const WebhookStatus = /*@__PURE__*/ S.String;
 
 /** whether to send notification under any event. */
-export type SendAllEvents = "true" | "false" | (string & {});
+export type SendAllEvents = "true" | "false";
 export const SendAllEvents = /*@__PURE__*/ S.String;
 
 /** notification event. */
@@ -2620,46 +2588,47 @@ export type NotificationEvent =
   | "generate_snapshot_failed"
   | "assessment_failure"
   | "report_configuration_changes"
-  | "report_deletion"
-  | (string & {});
+  | "report_deletion";
 export const NotificationEvent = /*@__PURE__*/ S.String;
 
 /** under which event notification should be sent. */
-export type WebhookPropertiesInputEventsList = ReadonlyArray<NotificationEvent>;
+export type WebhookPropertiesInputEventsList = ReadonlyArray<
+  NotificationEvent | (string & {})
+>;
 export const WebhookPropertiesInputEventsList = /*@__PURE__*/ S.Array(
   NotificationEvent,
 ) as any as S.Schema<WebhookPropertiesInputEventsList>;
 
 /** content type */
-export type ContentType = "application/json" | (string & {});
+export type ContentType = "application/json";
 export const ContentType = /*@__PURE__*/ S.String;
 
 /** whether to update webhookKey. */
-export type UpdateWebhookKey = "true" | "false" | (string & {});
+export type UpdateWebhookKey = "true" | "false";
 export const UpdateWebhookKey = /*@__PURE__*/ S.String;
 
 /** whether to enable ssl verification */
-export type EnableSslVerification = "true" | "false" | (string & {});
+export type EnableSslVerification = "true" | "false";
 export const EnableSslVerification = /*@__PURE__*/ S.String;
 
 /** Webhook properties. */
 export interface WebhookPropertiesInput {
   /** Webhook status. */
-  status?: WebhookStatus;
+  status?: WebhookStatus | (string & {});
   /** whether to send notification under any event. */
-  sendAllEvents?: SendAllEvents;
+  sendAllEvents?: SendAllEvents | (string & {});
   /** under which event notification should be sent. */
   events?: WebhookPropertiesInputEventsList;
   /** webhook payload url */
   payloadUrl?: string;
   /** content type */
-  contentType?: ContentType;
+  contentType?: ContentType | (string & {});
   /** webhook secret token. If not set, this field value is null; otherwise, please set a string value. */
   webhookKey?: string;
   /** whether to update webhookKey. */
-  updateWebhookKey?: UpdateWebhookKey;
+  updateWebhookKey?: UpdateWebhookKey | (string & {});
   /** whether to enable ssl verification */
-  enableSslVerification?: EnableSslVerification;
+  enableSslVerification?: EnableSslVerification | (string & {});
 }
 export const WebhookPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2708,15 +2677,11 @@ export const WebhookPropertiesEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WebhookPropertiesEventsList>;
 
 /** whether webhookKey is enabled. */
-export type WebhookKeyEnabled = "true" | "false" | (string & {});
+export type WebhookKeyEnabled = "true" | "false";
 export const WebhookKeyEnabled = /*@__PURE__*/ S.String;
 
 /** webhook deliveryStatus */
-export type DeliveryStatus =
-  | "Succeeded"
-  | "Failed"
-  | "NotStarted"
-  | (string & {});
+export type DeliveryStatus = "Succeeded" | "Failed" | "NotStarted";
 export const DeliveryStatus = /*@__PURE__*/ S.String;
 
 /** Webhook properties. */

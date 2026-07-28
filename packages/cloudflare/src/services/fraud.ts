@@ -59,8 +59,7 @@ export const GetFraudRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFraudRequest>;
 
 export type GetResponseAuthenticationSettingsFailureCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const GetResponseAuthenticationSettingsFailureCriteriaKind =
   /*@__PURE__*/ S.String;
 
@@ -92,8 +91,7 @@ export const GetResponseAuthenticationSettingsFailureCriteria =
   }) as any as S.Schema<GetResponseAuthenticationSettingsFailureCriteria>;
 
 export type GetResponseAuthenticationSettingsSuccessCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const GetResponseAuthenticationSettingsSuccessCriteriaKind =
   /*@__PURE__*/ S.String;
 
@@ -147,7 +145,7 @@ export const GetResponseAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseAuthenticationSettings",
 }) as any as S.Schema<GetResponseAuthenticationSettings>;
 
-export type GetResponseUserProfiles = "enabled" | "disabled" | (string & {});
+export type GetResponseUserProfiles = "enabled" | "disabled";
 export const GetResponseUserProfiles = /*@__PURE__*/ S.String;
 
 export type GetResponseUsernameExpressionsList = ReadonlyArray<string>;
@@ -181,8 +179,7 @@ export const GetFraudResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFraudResponse>;
 
 export type UpdateRequestAuthenticationSettingsFailureCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const UpdateRequestAuthenticationSettingsFailureCriteriaKind =
   /*@__PURE__*/ S.String;
 
@@ -195,7 +192,7 @@ export const UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList =
 
 export interface UpdateRequestAuthenticationSettingsFailureCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
-  kind: UpdateRequestAuthenticationSettingsFailureCriteriaKind;
+  kind: UpdateRequestAuthenticationSettingsFailureCriteriaKind | (string & {});
   /** HTTP status codes to match against the origin response. */
   statusCodes?: UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList;
 }
@@ -214,8 +211,7 @@ export const UpdateRequestAuthenticationSettingsFailureCriteria =
   }) as any as S.Schema<UpdateRequestAuthenticationSettingsFailureCriteria>;
 
 export type UpdateRequestAuthenticationSettingsSuccessCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const UpdateRequestAuthenticationSettingsSuccessCriteriaKind =
   /*@__PURE__*/ S.String;
 
@@ -228,7 +224,7 @@ export const UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList =
 
 export interface UpdateRequestAuthenticationSettingsSuccessCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
-  kind: UpdateRequestAuthenticationSettingsSuccessCriteriaKind;
+  kind: UpdateRequestAuthenticationSettingsSuccessCriteriaKind | (string & {});
   /** HTTP status codes to match against the origin response. */
   statusCodes?: UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList;
 }
@@ -269,7 +265,7 @@ export const UpdateRequestAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestAuthenticationSettings",
 }) as any as S.Schema<UpdateRequestAuthenticationSettings>;
 
-export type UpdateRequestUserProfiles = "enabled" | "disabled" | (string & {});
+export type UpdateRequestUserProfiles = "enabled" | "disabled";
 export const UpdateRequestUserProfiles = /*@__PURE__*/ S.String;
 
 export type UpdateRequestUsernameExpressionsList = ReadonlyArray<string>;
@@ -283,7 +279,7 @@ export interface PutFraudRequest {
   /** Configuration for classifying login authentication outcomes based on the origin response. */
   authenticationSettings?: UpdateRequestAuthenticationSettings;
   /** Whether Fraud User Profiles is enabled for the zone. */
-  userProfiles?: UpdateRequestUserProfiles;
+  userProfiles?: UpdateRequestUserProfiles | (string & {});
   /** List of expressions to detect usernames in write HTTP requests. */
   usernameExpressions?: UpdateRequestUsernameExpressionsList;
 }
@@ -315,8 +311,7 @@ export const PutFraudRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutFraudRequest>;
 
 export type UpdateResponseAuthenticationSettingsFailureCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const UpdateResponseAuthenticationSettingsFailureCriteriaKind =
   /*@__PURE__*/ S.String;
 
@@ -348,8 +343,7 @@ export const UpdateResponseAuthenticationSettingsFailureCriteria =
   }) as any as S.Schema<UpdateResponseAuthenticationSettingsFailureCriteria>;
 
 export type UpdateResponseAuthenticationSettingsSuccessCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const UpdateResponseAuthenticationSettingsSuccessCriteriaKind =
   /*@__PURE__*/ S.String;
 
@@ -404,7 +398,7 @@ export const UpdateResponseAuthenticationSettings = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseAuthenticationSettings",
 }) as any as S.Schema<UpdateResponseAuthenticationSettings>;
 
-export type UpdateResponseUserProfiles = "enabled" | "disabled" | (string & {});
+export type UpdateResponseUserProfiles = "enabled" | "disabled";
 export const UpdateResponseUserProfiles = /*@__PURE__*/ S.String;
 
 export type UpdateResponseUsernameExpressionsList = ReadonlyArray<string>;

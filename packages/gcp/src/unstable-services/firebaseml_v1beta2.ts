@@ -13,63 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -81,11 +76,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -102,19 +97,17 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(Status),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "error": S.optional(Status),
+  "metadata": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** Information that is specific to TfLite models. */
 export interface TfLiteModel {
@@ -126,11 +119,11 @@ export interface TfLiteModel {
   sizeBytes?: string;
 }
 export const TfLiteModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsTfliteUri: S.optional(S.String),
-    automlModel: S.optional(S.String),
-    sizeBytes: S.optional(S.String),
-  }),
+S.Struct({
+  "gcsTfliteUri": S.optional(S.String),
+  "automlModel": S.optional(S.String),
+  "sizeBytes": S.optional(S.String),
+}),
 ).annotate({ identifier: "TfLiteModel" }) as any as S.Schema<TfLiteModel>;
 
 /** State common to all model types. Includes publishing and validation information. */
@@ -141,16 +134,14 @@ export interface ModelState {
   published?: boolean;
 }
 export const ModelState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validationError: S.optional(Status),
-    published: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "validationError": S.optional(Status),
+  "published": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "ModelState" }) as any as S.Schema<ModelState>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** An ML model hosted in Firebase ML */
 export interface Model {
@@ -176,18 +167,18 @@ export interface Model {
   createTime?: string;
 }
 export const Model = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelHash: S.optional(S.String),
-    activeOperations: S.optional(OperationList),
-    updateTime: S.optional(S.String),
-    tfliteModel: S.optional(TfLiteModel),
-    displayName: S.optional(S.String),
-    state: S.optional(ModelState),
-    tags: S.optional(StringList),
-    etag: S.optional(S.String),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "modelHash": S.optional(S.String),
+  "activeOperations": S.optional(OperationList),
+  "updateTime": S.optional(S.String),
+  "tfliteModel": S.optional(TfLiteModel),
+  "displayName": S.optional(S.String),
+  "state": S.optional(ModelState),
+  "tags": S.optional(StringList),
+  "etag": S.optional(S.String),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Model" }) as any as S.Schema<Model>;
 
 export interface CreateProjectsModelsRequest {
@@ -197,66 +188,39 @@ export interface CreateProjectsModelsRequest {
   body?: Model;
 }
 export const CreateProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Model.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta2/{+parent}/models",
-      baseUrl: "https://firebaseml.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsModelsRequest",
-}) as any as S.Schema<CreateProjectsModelsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Model.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta2/{+parent}/models","baseUrl":"https://firebaseml.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsModelsRequest" }) as any as S.Schema<CreateProjectsModelsRequest>;
 
 export interface DeleteProjectsModelsRequest {
   /** Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}` */
   name: string;
 }
 export const DeleteProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta2/{+name}",
-      baseUrl: "https://firebaseml.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsModelsRequest",
-}) as any as S.Schema<DeleteProjectsModelsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta2/{+name}","baseUrl":"https://firebaseml.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsModelsRequest" }) as any as S.Schema<DeleteProjectsModelsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DownloadProjectsModelsRequest {
   /** Required. The name of the model to download. The name must have the form `projects/{project}/models/{model}` */
   name: string;
 }
 export const DownloadProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta2/{+name}:download",
-      baseUrl: "https://firebaseml.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DownloadProjectsModelsRequest",
-}) as any as S.Schema<DownloadProjectsModelsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}:download","baseUrl":"https://firebaseml.googleapis.com/"})),
+).annotate({ identifier: "DownloadProjectsModelsRequest" }) as any as S.Schema<DownloadProjectsModelsRequest>;
 
-export type DownloadModelResponseModelFormatEnum =
-  | "MODEL_FORMAT_UNSPECIFIED"
-  | "TFLITE"
-  | (string & {});
+export type DownloadModelResponseModelFormatEnum = "MODEL_FORMAT_UNSPECIFIED" | "TFLITE";
 export const DownloadModelResponseModelFormatEnum = /*@__PURE__*/ S.String;
 
 /** The response for downloading a model to device. */
@@ -271,51 +235,33 @@ export interface DownloadModelResponse {
   sizeBytes?: string;
 }
 export const DownloadModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    downloadUri: S.optional(S.String),
-    expireTime: S.optional(S.String),
-    modelFormat: S.optional(DownloadModelResponseModelFormatEnum),
-    sizeBytes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DownloadModelResponse",
-}) as any as S.Schema<DownloadModelResponse>;
+S.Struct({
+  "downloadUri": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+  "modelFormat": S.optional(DownloadModelResponseModelFormatEnum),
+  "sizeBytes": S.optional(S.String),
+}),
+).annotate({ identifier: "DownloadModelResponse" }) as any as S.Schema<DownloadModelResponse>;
 
 export interface GetProjectsModelsRequest {
   /** Required. The name of the model to get. The name must have the form `projects/{project_id}/models/{model_id}` */
   name: string;
 }
 export const GetProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta2/{+name}",
-      baseUrl: "https://firebaseml.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsModelsRequest",
-}) as any as S.Schema<GetProjectsModelsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://firebaseml.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsModelsRequest" }) as any as S.Schema<GetProjectsModelsRequest>;
 
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta2/{+name}",
-      baseUrl: "https://firebaseml.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsOperationsRequest",
-}) as any as S.Schema<GetProjectsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+name}","baseUrl":"https://firebaseml.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsOperationsRequest" }) as any as S.Schema<GetProjectsOperationsRequest>;
 
 export interface ListProjectsModelsRequest {
   /** Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}' */
@@ -328,26 +274,16 @@ export interface ListProjectsModelsRequest {
   pageToken?: string;
 }
 export const ListProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta2/{+parent}/models",
-      baseUrl: "https://firebaseml.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsModelsRequest",
-}) as any as S.Schema<ListProjectsModelsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+parent}/models","baseUrl":"https://firebaseml.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsModelsRequest" }) as any as S.Schema<ListProjectsModelsRequest>;
 
 export type ModelList = ReadonlyArray<Model>;
-export const ModelList = /*@__PURE__*/ S.Array(
-  Model,
-) as any as S.Schema<ModelList>;
+export const ModelList = /*@__PURE__*/ S.Array(Model) as any as S.Schema<ModelList>;
 
 /** The response for list models */
 export interface ListModelsResponse {
@@ -357,13 +293,11 @@ export interface ListModelsResponse {
   models?: ModelList;
 }
 export const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    models: S.optional(ModelList),
-  }),
-).annotate({
-  identifier: "ListModelsResponse",
-}) as any as S.Schema<ListModelsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "models": S.optional(ModelList),
+}),
+).annotate({ identifier: "ListModelsResponse" }) as any as S.Schema<ListModelsResponse>;
 
 export interface PatchProjectsModelsRequest {
   /** The update mask */
@@ -374,27 +308,14 @@ export interface PatchProjectsModelsRequest {
   body?: Model;
 }
 export const PatchProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    body: S.optional(Model.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1beta2/{+name}",
-      baseUrl: "https://firebaseml.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsModelsRequest",
-}) as any as S.Schema<PatchProjectsModelsRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Model.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta2/{+name}","baseUrl":"https://firebaseml.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsModelsRequest" }) as any as S.Schema<PatchProjectsModelsRequest>;
 
-export type CreateProjectsModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a model in Firebase ML. The longrunning operation will eventually return a Model */
 export const createProjectsModels: API.OperationMethod<
   CreateProjectsModelsRequest,
@@ -409,12 +330,7 @@ export const createProjectsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a model */
 export const deleteProjectsModels: API.OperationMethod<
   DeleteProjectsModelsRequest,
@@ -487,18 +403,10 @@ export const listProjectsModels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a model. The longrunning operation will eventually return a Model. */
 export const patchProjectsModels: API.OperationMethod<
   PatchProjectsModelsRequest,
@@ -512,3 +420,4 @@ export const patchProjectsModels: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

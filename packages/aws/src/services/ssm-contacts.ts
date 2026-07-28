@@ -201,21 +201,21 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export type SsmContactsArn = string;
-export type AcceptType = "DELIVERED" | "READ" | (string & {});
+export type AcceptType = "DELIVERED" | "READ";
 export const AcceptType = /*@__PURE__*/ S.String;
 
 export type ReceiptInfo = string;
 export type AcceptCode = string;
-export type AcceptCodeValidation = "IGNORE" | "ENFORCE" | (string & {});
+export type AcceptCodeValidation = "IGNORE" | "ENFORCE";
 export const AcceptCodeValidation = /*@__PURE__*/ S.String;
 
 export interface AcceptPageRequest {
   PageId: string;
   ContactChannelId?: string;
-  AcceptType: AcceptType;
+  AcceptType: AcceptType | (string & {});
   Note?: string;
   AcceptCode: string;
-  AcceptCodeValidation?: AcceptCodeValidation;
+  AcceptCodeValidation?: AcceptCodeValidation | (string & {});
 }
 export const AcceptPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -257,11 +257,7 @@ export const ActivateContactChannelResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivateContactChannelResult>;
 export type ContactAlias = string;
 export type ContactName = string;
-export type ContactType =
-  | "PERSONAL"
-  | "ESCALATION"
-  | "ONCALL_SCHEDULE"
-  | (string & {});
+export type ContactType = "PERSONAL" | "ESCALATION" | "ONCALL_SCHEDULE";
 export const ContactType = /*@__PURE__*/ S.String;
 
 export type StageDurationInMins = number;
@@ -336,7 +332,7 @@ export type IdempotencyToken = string;
 export interface CreateContactRequest {
   Alias: string;
   DisplayName?: string;
-  Type: ContactType;
+  Type: ContactType | (string & {});
   Plan: Plan;
   Tags?: Tag[];
   IdempotencyToken?: string;
@@ -364,7 +360,7 @@ export const CreateContactResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateContactResult",
 }) as any as S.Schema<CreateContactResult>;
 export type ChannelName = string;
-export type ChannelType = "SMS" | "VOICE" | "EMAIL" | (string & {});
+export type ChannelType = "SMS" | "VOICE" | "EMAIL";
 export const ChannelType = /*@__PURE__*/ S.String;
 
 export type SimpleAddress = string;
@@ -380,7 +376,7 @@ export type DeferActivation = boolean;
 export interface CreateContactChannelRequest {
   ContactId: string;
   Name: string;
-  Type: ChannelType;
+  Type: ChannelType | (string & {});
   DeliveryAddress: ContactChannelAddress;
   DeferActivation?: boolean;
   IdempotencyToken?: string;
@@ -430,15 +426,7 @@ export const MonthlySetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MonthlySetting" }) as any as S.Schema<MonthlySetting>;
 export type MonthlySettings = MonthlySetting[];
 export const MonthlySettings = /*@__PURE__*/ S.Array(MonthlySetting);
-export type DayOfWeek =
-  | "MON"
-  | "TUE"
-  | "WED"
-  | "THU"
-  | "FRI"
-  | "SAT"
-  | "SUN"
-  | (string & {});
+export type DayOfWeek = "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "SUN";
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export interface WeeklySetting {
@@ -756,7 +744,7 @@ export const GetContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetContactChannelRequest",
 }) as any as S.Schema<GetContactChannelRequest>;
-export type ActivationStatus = "ACTIVATED" | "NOT_ACTIVATED" | (string & {});
+export type ActivationStatus = "ACTIVATED" | "NOT_ACTIVATED";
 export const ActivationStatus = /*@__PURE__*/ S.String;
 
 export interface GetContactChannelResult {
@@ -914,7 +902,7 @@ export interface ListContactsRequest {
   NextToken?: string;
   MaxResults?: number;
   AliasPrefix?: string;
-  Type?: ContactType;
+  Type?: ContactType | (string & {});
 }
 export const ListContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1029,13 +1017,7 @@ export const ListPageReceiptsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPageReceiptsRequest",
 }) as any as S.Schema<ListPageReceiptsRequest>;
-export type ReceiptType =
-  | "DELIVERED"
-  | "ERROR"
-  | "READ"
-  | "SENT"
-  | "STOP"
-  | (string & {});
+export type ReceiptType = "DELIVERED" | "ERROR" | "READ" | "SENT" | "STOP";
 export const ReceiptType = /*@__PURE__*/ S.String;
 
 export interface Receipt {
@@ -1233,7 +1215,7 @@ export const ListPreviewRotationShiftsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPreviewRotationShiftsRequest",
 }) as any as S.Schema<ListPreviewRotationShiftsRequest>;
-export type ShiftType = "REGULAR" | "OVERRIDDEN" | (string & {});
+export type ShiftType = "REGULAR" | "OVERRIDDEN";
 export const ShiftType = /*@__PURE__*/ S.String;
 
 export interface ShiftDetails {
@@ -1616,8 +1598,7 @@ export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
   | "CANNOT_PARSE"
   | "FIELD_VALIDATION_FAILED"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

@@ -172,7 +172,7 @@ export const FileShareGetProvisioningRecommendationRequest =
   }) as any as S.Schema<FileShareGetProvisioningRecommendationRequest>;
 
 /** Redundancy enum. */
-export type Redundancy = "Local" | "Zone" | (string & {});
+export type Redundancy = "Local" | "Zone";
 export const Redundancy = /*@__PURE__*/ S.String;
 
 /** Redundancy options for the share. */
@@ -311,8 +311,7 @@ export const FileSharesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 /** The reason why the given name is not available. */
 export type FileSharesCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const FileSharesCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -345,26 +344,19 @@ export const FileSharesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FileSharesCreateOrUpdateRequestTagsMap>;
 
 /** Media Tier enum. */
-export type MediaTier = "SSD" | (string & {});
+export type MediaTier = "SSD";
 export const MediaTier = /*@__PURE__*/ S.String;
 
 /** Protocol enum. */
-export type Protocol = "NFS" | (string & {});
+export type Protocol = "NFS";
 export const Protocol = /*@__PURE__*/ S.String;
 
 /** Share root squash enum. */
-export type ShareRootSquash =
-  | "NoRootSquash"
-  | "RootSquash"
-  | "AllSquash"
-  | (string & {});
+export type ShareRootSquash = "NoRootSquash" | "RootSquash" | "AllSquash";
 export const ShareRootSquash = /*@__PURE__*/ S.String;
 
 /** State of NFS encryption in transit. */
-export type EncryptionInTransitRequired =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type EncryptionInTransitRequired = "Enabled" | "Disabled";
 export const EncryptionInTransitRequired = /*@__PURE__*/ S.String;
 
 /** Properties specific to the NFS protocol. */
@@ -403,7 +395,7 @@ export const PublicAccessProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicAccessProperties>;
 
 /** State of the public network access. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** File share properties */
@@ -411,11 +403,11 @@ export interface FileSharePropertiesInput {
   /** The name of the file share as seen by the end user when mounting the share, such as in a URI or UNC format in their operating system. */
   mountName?: string;
   /** The storage media tier of the file share. */
-  mediaTier?: MediaTier;
+  mediaTier?: MediaTier | (string & {});
   /** The chosen redundancy level of the file share. */
-  redundancy?: Redundancy;
+  redundancy?: Redundancy | (string & {});
   /** The file sharing protocol for this file share. */
-  protocol?: Protocol;
+  protocol?: Protocol | (string & {});
   /** The provisioned storage size of the share in GiB (1 GiB is 1024^3 bytes or 1073741824 bytes). A component of the file share's bill is the provisioned storage, regardless of the amount of used storage. */
   provisionedStorageGiB?: number;
   /** The provisioned IO / sec of the share. */
@@ -427,7 +419,7 @@ export interface FileSharePropertiesInput {
   /** The set of properties for control public access. */
   publicAccessProperties?: PublicAccessProperties;
   /** Gets or sets allow or disallow public network access to azure managed file share */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
 export const FileSharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -485,8 +477,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -494,8 +485,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -546,8 +536,7 @@ export type FileShareProvisioningState =
   | "TransientFailure"
   | "Creating"
   | "Patching"
-  | "Posting"
-  | (string & {});
+  | "Posting";
 export const FileShareProvisioningState = /*@__PURE__*/ S.String;
 
 /** The group ids for the private endpoint resource. */
@@ -575,8 +564,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -603,8 +591,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1308,7 +1295,7 @@ export interface FileShareUpdateProperties {
   /** The set of properties for control public access. */
   publicAccessProperties?: PublicAccessProperties;
   /** Gets or sets allow or disallow public network access to azure managed file share */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
 export const FileShareUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1430,11 +1417,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

@@ -274,13 +274,13 @@ export const ConfiguredAudienceModelOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfiguredAudienceModelOutputConfig",
 }) as any as S.Schema<ConfiguredAudienceModelOutputConfig>;
-export type SharedAudienceMetrics = "ALL" | "NONE" | (string & {});
+export type SharedAudienceMetrics = "ALL" | "NONE";
 export const SharedAudienceMetrics = /*@__PURE__*/ S.String;
 
 export type MetricsList = SharedAudienceMetrics[];
 export const MetricsList = /*@__PURE__*/ S.Array(SharedAudienceMetrics);
 export type MinMatchingSeedSize = number;
-export type AudienceSizeType = "ABSOLUTE" | "PERCENTAGE" | (string & {});
+export type AudienceSizeType = "ABSOLUTE" | "PERCENTAGE";
 export const AudienceSizeType = /*@__PURE__*/ S.String;
 
 export type AudienceSizeValue = number;
@@ -298,7 +298,7 @@ export const AudienceSizeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AudienceSizeConfig",
 }) as any as S.Schema<AudienceSizeConfig>;
-export type TagOnCreatePolicy = "FROM_PARENT_RESOURCE" | "NONE" | (string & {});
+export type TagOnCreatePolicy = "FROM_PARENT_RESOURCE" | "NONE";
 export const TagOnCreatePolicy = /*@__PURE__*/ S.String;
 
 export interface CreateConfiguredAudienceModelRequest {
@@ -310,7 +310,7 @@ export interface CreateConfiguredAudienceModelRequest {
   minMatchingSeedSize?: number;
   audienceSizeConfig?: AudienceSizeConfig;
   tags?: { [key: string]: string | undefined };
-  childResourceTagOnCreatePolicy?: TagOnCreatePolicy;
+  childResourceTagOnCreatePolicy?: TagOnCreatePolicy | (string & {});
 }
 export const CreateConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -433,14 +433,13 @@ export const CreateConfiguredModelAlgorithmResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateConfiguredModelAlgorithmResponse>;
 export type AccountIdList = string[];
 export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
-export type LogType = "ALL" | "ERROR_SUMMARY" | (string & {});
+export type LogType = "ALL" | "ERROR_SUMMARY";
 export const LogType = /*@__PURE__*/ S.String;
 
 export type EntityType =
   | "ALL_PERSONALLY_IDENTIFIABLE_INFORMATION"
   | "NUMBERS"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const EntityType = /*@__PURE__*/ S.String;
 
 export type EntityTypeList = EntityType[];
@@ -488,7 +487,7 @@ export type LogsConfigurationPolicyList = LogsConfigurationPolicy[];
 export const LogsConfigurationPolicyList = /*@__PURE__*/ S.Array(
   LogsConfigurationPolicy,
 );
-export type NoiseLevelType = "HIGH" | "MEDIUM" | "LOW" | "NONE" | (string & {});
+export type NoiseLevelType = "HIGH" | "MEDIUM" | "LOW" | "NONE";
 export const NoiseLevelType = /*@__PURE__*/ S.String;
 
 export interface MetricsConfigurationPolicy {
@@ -499,7 +498,7 @@ export const MetricsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MetricsConfigurationPolicy",
 }) as any as S.Schema<MetricsConfigurationPolicy>;
-export type TrainedModelArtifactMaxSizeUnitType = "GB" | (string & {});
+export type TrainedModelArtifactMaxSizeUnitType = "GB";
 export const TrainedModelArtifactMaxSizeUnitType = /*@__PURE__*/ S.String;
 
 export type TrainedModelArtifactMaxSizeValue = number;
@@ -526,7 +525,7 @@ export const TrainedModelsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrainedModelsConfigurationPolicy",
 }) as any as S.Schema<TrainedModelsConfigurationPolicy>;
-export type TrainedModelExportsMaxSizeUnitType = "GB" | (string & {});
+export type TrainedModelExportsMaxSizeUnitType = "GB";
 export const TrainedModelExportsMaxSizeUnitType = /*@__PURE__*/ S.String;
 
 export type TrainedModelExportsMaxSizeValue = number;
@@ -539,7 +538,7 @@ export const TrainedModelExportsMaxSize = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrainedModelExportsMaxSize",
 }) as any as S.Schema<TrainedModelExportsMaxSize>;
-export type TrainedModelExportFileType = "MODEL" | "OUTPUT" | (string & {});
+export type TrainedModelExportFileType = "MODEL" | "OUTPUT";
 export const TrainedModelExportFileType = /*@__PURE__*/ S.String;
 
 export type TrainedModelExportFileTypeList = TrainedModelExportFileType[];
@@ -559,7 +558,7 @@ export const TrainedModelExportsConfigurationPolicy = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "TrainedModelExportsConfigurationPolicy",
 }) as any as S.Schema<TrainedModelExportsConfigurationPolicy>;
-export type TrainedModelInferenceMaxOutputSizeUnitType = "GB" | (string & {});
+export type TrainedModelInferenceMaxOutputSizeUnitType = "GB";
 export const TrainedModelInferenceMaxOutputSizeUnitType =
   /*@__PURE__*/ S.String;
 
@@ -682,7 +681,7 @@ export const ProtectedQuerySQLParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProtectedQuerySQLParameters",
 }) as any as S.Schema<ProtectedQuerySQLParameters>;
-export type WorkerComputeType = "CR.1X" | "CR.4X" | (string & {});
+export type WorkerComputeType = "CR.1X" | "CR.4X";
 export const WorkerComputeType = /*@__PURE__*/ S.String;
 
 export type SparkPropertyKey = string;
@@ -716,7 +715,7 @@ export type ComputeConfiguration = { worker: WorkerComputeConfiguration };
 export const ComputeConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ worker: WorkerComputeConfiguration }),
 ]);
-export type ResultFormat = "CSV" | "PARQUET" | (string & {});
+export type ResultFormat = "CSV" | "PARQUET";
 export const ResultFormat = /*@__PURE__*/ S.String;
 
 export interface ProtectedQueryInputParameters {
@@ -950,8 +949,7 @@ export type InstanceType =
   | "ml.p3.2xlarge"
   | "ml.p3.8xlarge"
   | "ml.p3.16xlarge"
-  | "ml.p3dn.24xlarge"
-  | (string & {});
+  | "ml.p3dn.24xlarge";
 export const InstanceType = /*@__PURE__*/ S.String;
 
 export interface ResourceConfig {
@@ -993,10 +991,7 @@ export type IncrementalTrainingDataChannels = IncrementalTrainingDataChannel[];
 export const IncrementalTrainingDataChannels = /*@__PURE__*/ S.Array(
   IncrementalTrainingDataChannel,
 );
-export type S3DataDistributionType =
-  | "FullyReplicated"
-  | "ShardedByS3Key"
-  | (string & {});
+export type S3DataDistributionType = "FullyReplicated" | "ShardedByS3Key";
 export const S3DataDistributionType = /*@__PURE__*/ S.String;
 
 export interface ModelTrainingDataChannel {
@@ -1017,7 +1012,7 @@ export type ModelTrainingDataChannels = ModelTrainingDataChannel[];
 export const ModelTrainingDataChannels = /*@__PURE__*/ S.Array(
   ModelTrainingDataChannel,
 );
-export type TrainingInputMode = "File" | "FastFile" | "Pipe" | (string & {});
+export type TrainingInputMode = "File" | "FastFile" | "Pipe";
 export const TrainingInputMode = /*@__PURE__*/ S.String;
 
 export interface CreateTrainedModelRequest {
@@ -1030,7 +1025,7 @@ export interface CreateTrainedModelRequest {
   stoppingCondition?: StoppingCondition;
   incrementalTrainingDataChannels?: IncrementalTrainingDataChannel[];
   dataChannels: ModelTrainingDataChannel[];
-  trainingInputMode?: TrainingInputMode;
+  trainingInputMode?: TrainingInputMode | (string & {});
   description?: string;
   kmsKeyArn?: string;
   tags?: { [key: string]: string | undefined };
@@ -1082,7 +1077,7 @@ export const CreateTrainedModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrainedModelResponse",
 }) as any as S.Schema<CreateTrainedModelResponse>;
-export type DatasetType = "INTERACTIONS" | (string & {});
+export type DatasetType = "INTERACTIONS";
 export const DatasetType = /*@__PURE__*/ S.String;
 
 export type ColumnName = string;
@@ -1091,8 +1086,7 @@ export type ColumnType =
   | "ITEM_ID"
   | "TIMESTAMP"
   | "CATEGORICAL_FEATURE"
-  | "NUMERICAL_FEATURE"
-  | (string & {});
+  | "NUMERICAL_FEATURE";
 export const ColumnType = /*@__PURE__*/ S.String;
 
 export type ColumnTypeList = ColumnType[];
@@ -1510,8 +1504,7 @@ export type AudienceGenerationJobStatus =
   | "ACTIVE"
   | "DELETE_PENDING"
   | "DELETE_IN_PROGRESS"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const AudienceGenerationJobStatus = /*@__PURE__*/ S.String;
 
 export interface StatusDetails {
@@ -1631,8 +1624,7 @@ export type AudienceModelStatus =
   | "ACTIVE"
   | "DELETE_PENDING"
   | "DELETE_IN_PROGRESS"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const AudienceModelStatus = /*@__PURE__*/ S.String;
 
 export interface GetAudienceModelResponse {
@@ -1764,8 +1756,7 @@ export type MLInputChannelStatus =
   | "DELETE_PENDING"
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const MLInputChannelStatus = /*@__PURE__*/ S.String;
 
 export type BudgetedResourceArn = string;
@@ -1774,11 +1765,10 @@ export type AccessBudgetType =
   | "CALENDAR_DAY"
   | "CALENDAR_MONTH"
   | "CALENDAR_WEEK"
-  | "LIFETIME"
-  | (string & {});
+  | "LIFETIME";
 export const AccessBudgetType = /*@__PURE__*/ S.String;
 
-export type AutoRefreshMode = "ENABLED" | "DISABLED" | (string & {});
+export type AutoRefreshMode = "ENABLED" | "DISABLED";
 export const AutoRefreshMode = /*@__PURE__*/ S.String;
 
 export interface AccessBudgetDetails {
@@ -1823,10 +1813,7 @@ export const PrivacyBudgets = /*@__PURE__*/ S.Union([
   S.Struct({ accessBudgets: AccessBudgets }),
 ]);
 export type SyntheticDataColumnName = string;
-export type SyntheticDataColumnType =
-  | "CATEGORICAL"
-  | "NUMERICAL"
-  | (string & {});
+export type SyntheticDataColumnType = "CATEGORICAL" | "NUMERICAL";
 export const SyntheticDataColumnType = /*@__PURE__*/ S.String;
 
 export interface SyntheticDataColumnProperties {
@@ -1869,9 +1856,7 @@ export const MLSyntheticDataParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MLSyntheticDataParameters",
 }) as any as S.Schema<MLSyntheticDataParameters>;
-export type MembershipInferenceAttackVersion =
-  | "DISTANCE_TO_CLOSEST_RECORD_V1"
-  | (string & {});
+export type MembershipInferenceAttackVersion = "DISTANCE_TO_CLOSEST_RECORD_V1";
 export const MembershipInferenceAttackVersion = /*@__PURE__*/ S.String;
 
 export interface MembershipInferenceAttackScore {
@@ -2024,17 +2009,13 @@ export type TrainedModelStatus =
   | "INACTIVE"
   | "CANCEL_PENDING"
   | "CANCEL_IN_PROGRESS"
-  | "CANCEL_FAILED"
-  | (string & {});
+  | "CANCEL_FAILED";
 export const TrainedModelStatus = /*@__PURE__*/ S.String;
 
-export type MetricsStatus =
-  | "PUBLISH_SUCCEEDED"
-  | "PUBLISH_FAILED"
-  | (string & {});
+export type MetricsStatus = "PUBLISH_SUCCEEDED" | "PUBLISH_FAILED";
 export const MetricsStatus = /*@__PURE__*/ S.String;
 
-export type LogsStatus = "PUBLISH_SUCCEEDED" | "PUBLISH_FAILED" | (string & {});
+export type LogsStatus = "PUBLISH_SUCCEEDED" | "PUBLISH_FAILED";
 export const LogsStatus = /*@__PURE__*/ S.String;
 
 export interface GetCollaborationTrainedModelResponse {
@@ -2116,7 +2097,7 @@ export const GetConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConfiguredAudienceModelRequest",
 }) as any as S.Schema<GetConfiguredAudienceModelRequest>;
-export type ConfiguredAudienceModelStatus = "ACTIVE" | (string & {});
+export type ConfiguredAudienceModelStatus = "ACTIVE";
 export const ConfiguredAudienceModelStatus = /*@__PURE__*/ S.String;
 
 export interface GetConfiguredAudienceModelResponse {
@@ -2555,8 +2536,7 @@ export type TrainedModelInferenceJobStatus =
   | "CANCEL_PENDING"
   | "CANCEL_IN_PROGRESS"
   | "CANCEL_FAILED"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const TrainedModelInferenceJobStatus = /*@__PURE__*/ S.String;
 
 export type InferenceInstanceType =
@@ -2653,8 +2633,7 @@ export type InferenceInstanceType =
   | "ml.m4.4xlarge"
   | "ml.p3.16xlarge"
   | "ml.p3.2xlarge"
-  | "ml.p3.8xlarge"
-  | (string & {});
+  | "ml.p3.8xlarge";
 export const InferenceInstanceType = /*@__PURE__*/ S.String;
 
 export interface InferenceResourceConfig {
@@ -2788,7 +2767,7 @@ export const GetTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTrainingDatasetRequest",
 }) as any as S.Schema<GetTrainingDatasetRequest>;
-export type TrainingDatasetStatus = "ACTIVE" | (string & {});
+export type TrainingDatasetStatus = "ACTIVE";
 export const TrainingDatasetStatus = /*@__PURE__*/ S.String;
 
 export interface GetTrainingDatasetResponse {
@@ -2848,8 +2827,7 @@ export type AudienceExportJobStatus =
   | "CREATE_PENDING"
   | "CREATE_IN_PROGRESS"
   | "CREATE_FAILED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const AudienceExportJobStatus = /*@__PURE__*/ S.String;
 
 export interface AudienceExportJobSummary {
@@ -3234,8 +3212,7 @@ export type TrainedModelExportJobStatus =
   | "CREATE_PENDING"
   | "CREATE_IN_PROGRESS"
   | "CREATE_FAILED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const TrainedModelExportJobStatus = /*@__PURE__*/ S.String;
 
 export interface CollaborationTrainedModelExportJobSummary {
@@ -3933,7 +3910,7 @@ export interface ListTrainedModelVersionsRequest {
   maxResults?: number;
   membershipIdentifier: string;
   trainedModelArn: string;
-  status?: TrainedModelStatus;
+  status?: TrainedModelStatus | (string & {});
 }
 export const ListTrainedModelVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4029,15 +4006,14 @@ export const ListTrainingDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrainingDatasetsResponse>;
 export type PolicyExistenceCondition =
   | "POLICY_MUST_EXIST"
-  | "POLICY_MUST_NOT_EXIST"
-  | (string & {});
+  | "POLICY_MUST_NOT_EXIST";
 export const PolicyExistenceCondition = /*@__PURE__*/ S.String;
 
 export interface PutConfiguredAudienceModelPolicyRequest {
   configuredAudienceModelArn: string;
   configuredAudienceModelPolicy: string;
   previousPolicyHash?: string;
-  policyExistenceCondition?: PolicyExistenceCondition;
+  policyExistenceCondition?: PolicyExistenceCondition | (string & {});
 }
 export const PutConfiguredAudienceModelPolicyRequest = /*@__PURE__*/ S.suspend(
   () =>

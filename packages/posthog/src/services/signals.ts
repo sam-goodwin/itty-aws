@@ -329,8 +329,7 @@ export type SignalReportArtefactTypeEnum =
   | "title_change"
   | "summary_change"
   | "code_review"
-  | "related_to"
-  | (string & {});
+  | "related_to";
 export const SignalReportArtefactTypeEnum = /*@__PURE__*/ S.String;
 
 export type SignalReportArtefactContentCase0Map = {
@@ -472,11 +471,7 @@ export const SignalsReportArtefactsRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SignalsReportArtefactsRetrieveRequest>;
 
 /** * `suppressed` - suppressed * `potential` - potential * `resolved` - resolved */
-export type SignalReportStateEnum =
-  | "suppressed"
-  | "potential"
-  | "resolved"
-  | (string & {});
+export type SignalReportStateEnum = "suppressed" | "potential" | "resolved";
 export const SignalReportStateEnum = /*@__PURE__*/ S.String;
 
 /** * `already_fixed` - Already fixed * `report_unclear` - Report is unclear to me * `analysis_wrong` - Agent's analysis is wrong * `wontfix_intentional` - Won't fix - intentional behavior * `wontfix_irrelevant` - Won't fix - issue is real but insignificant * `other` - Something else… */
@@ -486,8 +481,7 @@ export type DismissalReasonEnum =
   | "analysis_wrong"
   | "wontfix_intentional"
   | "wontfix_irrelevant"
-  | "other"
-  | (string & {});
+  | "other";
 export const DismissalReasonEnum = /*@__PURE__*/ S.String;
 
 /** Report ids to transition to `state` in one call (1–100). Duplicates are de-duplicated; each id is processed independently so one disallowed transition does not block the rest. `dismissal_reason`, `dismissal_note` and `snooze_for` apply to every id. */
@@ -501,9 +495,9 @@ export interface SignalsReportsBulkStateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Target state for the report. Use 'suppressed' to dismiss the report from the inbox, 'potential' to snooze/reopen it for later review, or 'resolved' when the work this report asked for has been done. Resolving is only allowed from a researched status (ready or pending_input) or a suppressed report; other statuses return 409 (skipped in bulk). * `suppressed` - suppressed * `potential` - potential * `resolved` - resolved */
-  state: SignalReportStateEnum;
+  state: SignalReportStateEnum | (string & {});
   /** Optional canonical reason code for the dismissal. Must be one of: already_fixed, report_unclear, analysis_wrong, wontfix_intentional, wontfix_irrelevant, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' (the reason/note records why). Reserve 'already_fixed' with state='potential' (snooze/restore) for "fixed by something else / might recur" cases, so the report reappears if the issue comes back. Use 'other' together with a dismissal_note for anything that doesn't fit a code. * `already_fixed` - Already fixed * `report_unclear` - Report is unclear to me * `analysis_wrong` - Agent's analysis is wrong * `wontfix_intentional` - Won't fix - intentional behavior * `wontfix_irrelevant` - Won't fix - issue is real but insignificant * `other` - Something else… */
-  dismissal_reason?: DismissalReasonEnum;
+  dismissal_reason?: DismissalReasonEnum | (string & {});
   /** Optional free-form note explaining the dismissal. Capped at 4000 characters. */
   dismissal_note?: string;
   /** Optional, only honored when state is 'potential'. Number of additional signals the report must accumulate before it is re-promoted into the pipeline — effectively snoozing it until then. Omit to let the report re-enter the pipeline on the next matching signal. */
@@ -647,8 +641,7 @@ export type SignalReportStatusEnum =
   | "resolved"
   | "failed"
   | "deleted"
-  | "suppressed"
-  | (string & {});
+  | "suppressed";
 export const SignalReportStatusEnum = /*@__PURE__*/ S.String;
 
 /** Distinct source products contributing signals to this report (from ClickHouse). */
@@ -662,12 +655,11 @@ export type SignalReportRefundReasonEnum =
   | "pr_incorrect"
   | "pr_not_useful"
   | "duplicate"
-  | "other"
-  | (string & {});
+  | "other";
 export const SignalReportRefundReasonEnum = /*@__PURE__*/ S.String;
 
 /** * `excluded` - Excluded * `credited` - Credited */
-export type BillingPathEnum = "excluded" | "credited" | (string & {});
+export type BillingPathEnum = "excluded" | "credited";
 export const BillingPathEnum = /*@__PURE__*/ S.String;
 
 export interface SignalReportRefund {
@@ -712,16 +704,14 @@ export type RefundIneligibilityReasonEnum =
   | "already_refunded"
   | "billing_exempt"
   | "no_billable_pr"
-  | "out_of_period"
-  | (string & {});
+  | "out_of_period";
 export const RefundIneligibilityReasonEnum = /*@__PURE__*/ S.String;
 
 /** * `posthog_health_check` - PostHog health check * `posthog_onboarding` - PostHog onboarding * `posthog_system` - PostHog system */
 export type BillingExemptReasonEnum =
   | "posthog_health_check"
   | "posthog_onboarding"
-  | "posthog_system"
-  | (string & {});
+  | "posthog_system";
 export const BillingExemptReasonEnum = /*@__PURE__*/ S.String;
 
 export interface SignalReport {
@@ -844,7 +834,7 @@ export interface SignalsReportsRefundCreateRequest {
   /** A UUID string identifying this signal report. */
   id: string;
   /** Why this PR is being refunded. One of: pr_incorrect (the PR doesn't address what the report promised), pr_not_useful (technically fine but not worth paying for), duplicate (covers work already charged elsewhere), other. Required — refund reviews key on it. * `pr_incorrect` - PR incorrect * `pr_not_useful` - PR not useful * `duplicate` - Duplicate * `other` - Other */
-  reason: SignalReportRefundReasonEnum;
+  reason: SignalReportRefundReasonEnum | (string & {});
   /** Optional free-form context for the refund; stored on the refund and echoed in the report's dismissal artefact. Capped at 4000 characters. */
   note?: string;
 }
@@ -1035,8 +1025,7 @@ export type SignalSourceProduct =
   | "judgeme_reviews"
   | "intercom"
   | "hubspot"
-  | "engineering_analytics"
-  | (string & {});
+  | "engineering_analytics";
 export const SignalSourceProduct = /*@__PURE__*/ S.String;
 
 /** * `session_analysis_cluster` - session_analysis_cluster * `session_problem` - session_problem * `evaluation` - evaluation * `evaluation_report` - evaluation_report * `issue` - issue * `ticket` - ticket * `issue_created` - issue_created * `issue_reopened` - issue_reopened * `issue_spiking` - issue_spiking * `endpoint_execution_failed` - endpoint_execution_failed * `endpoint_breakdown_limit_exceeded` - endpoint_breakdown_limit_exceeded * `cross_source_issue` - cross_source_issue * `alert_state_change` - alert_state_change * `health_issue` - health_issue * `scanner_finding` - scanner_finding * `anomaly_investigation` - anomaly_investigation * `feedback` - feedback * `review` - review * `ci_flaky_check` - ci_flaky_check * `ci_broken_default_branch` - ci_broken_default_branch * `ci_duration_regression` - ci_duration_regression */
@@ -1061,8 +1050,7 @@ export type SignalSourceType =
   | "review"
   | "ci_flaky_check"
   | "ci_broken_default_branch"
-  | "ci_duration_regression"
-  | (string & {});
+  | "ci_duration_regression";
 export const SignalSourceType = /*@__PURE__*/ S.String;
 
 export type ProblemTypeEnum =
@@ -1070,8 +1058,7 @@ export type ProblemTypeEnum =
   | "abandonment"
   | "blocking_exception"
   | "non_blocking_exception"
-  | "failure"
-  | (string & {});
+  | "failure";
 export const ProblemTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SessionProblemEventEntry {
@@ -1411,7 +1398,7 @@ export const EndpointBreakdownLimitExceededSignalExtra =
     identifier: "EndpointBreakdownLimitExceededSignalExtra",
   }) as any as S.Schema<EndpointBreakdownLimitExceededSignalExtra>;
 
-export type ReportPriority = "P0" | "P1" | "P2" | "P3" | "P4" | (string & {});
+export type ReportPriority = "P0" | "P1" | "P2" | "P3" | "P4";
 export const ReportPriority = /*@__PURE__*/ S.String;
 
 export interface SignalsScoutEvidenceEntry {
@@ -1495,16 +1482,12 @@ export const SignalsScoutSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsScoutSignalExtra",
 }) as any as S.Schema<SignalsScoutSignalExtra>;
 
-export type LogsAlertStateChangeSignalExtraActionEnum =
-  | "firing"
-  | "broken"
-  | (string & {});
+export type LogsAlertStateChangeSignalExtraActionEnum = "firing" | "broken";
 export const LogsAlertStateChangeSignalExtraActionEnum = /*@__PURE__*/ S.String;
 
 export type LogsAlertStateChangeSignalExtraThresholdOperatorEnum =
   | "above"
-  | "below"
-  | (string & {});
+  | "below";
 export const LogsAlertStateChangeSignalExtraThresholdOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1591,8 +1574,7 @@ export const ReplayVisionScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(
 export type InvestigationVerdictEnum =
   | "true_positive"
   | "false_positive"
-  | "inconclusive"
-  | (string & {});
+  | "inconclusive";
 export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
 
 export type AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList =
@@ -1639,8 +1621,7 @@ export const AnalyticsAnomalyInvestigationSignalExtra = /*@__PURE__*/ S.suspend(
 export type HealthCheckSignalExtraSeverityEnum =
   | "critical"
   | "warning"
-  | "info"
-  | (string & {});
+  | "info";
 export const HealthCheckSignalExtraSeverityEnum = /*@__PURE__*/ S.String;
 
 export type HealthCheckSignalExtraPayloadMap = {
@@ -2609,9 +2590,9 @@ export interface SignalsReportsStateCreateRequest {
   /** A UUID string identifying this signal report. */
   id: string;
   /** Target state for the report. Use 'suppressed' to dismiss the report from the inbox, 'potential' to snooze/reopen it for later review, or 'resolved' when the work this report asked for has been done. Resolving is only allowed from a researched status (ready or pending_input) or a suppressed report; other statuses return 409 (skipped in bulk). * `suppressed` - suppressed * `potential` - potential * `resolved` - resolved */
-  state: SignalReportStateEnum;
+  state: SignalReportStateEnum | (string & {});
   /** Optional canonical reason code for the dismissal. Must be one of: already_fixed, report_unclear, analysis_wrong, wontfix_intentional, wontfix_irrelevant, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' (the reason/note records why). Reserve 'already_fixed' with state='potential' (snooze/restore) for "fixed by something else / might recur" cases, so the report reappears if the issue comes back. Use 'other' together with a dismissal_note for anything that doesn't fit a code. * `already_fixed` - Already fixed * `report_unclear` - Report is unclear to me * `analysis_wrong` - Agent's analysis is wrong * `wontfix_intentional` - Won't fix - intentional behavior * `wontfix_irrelevant` - Won't fix - issue is real but insignificant * `other` - Something else… */
-  dismissal_reason?: DismissalReasonEnum;
+  dismissal_reason?: DismissalReasonEnum | (string & {});
   /** Optional free-form note explaining the dismissal. Capped at 4000 characters. */
   dismissal_note?: string;
   /** Optional, only honored when state is 'potential'. Number of additional signals the report must accumulate before it is re-promoted into the pipeline — effectively snoozing it until then. Omit to let the report re-enter the pipeline on the next matching signal. */
@@ -2699,7 +2680,7 @@ export const SignalsScoutConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsScoutConfigCreateRequest",
 }) as any as S.Schema<SignalsScoutConfigCreateRequest>;
 
-export type ScoutOriginEnum = "canonical" | "custom" | (string & {});
+export type ScoutOriginEnum = "canonical" | "custom";
 export const ScoutOriginEnum = /*@__PURE__*/ S.String;
 
 /** Read shape for a per-(team, skill) scout config. One row per `signals-scout-*` skill on the team. The coordinator auto-creates a row when it discovers a scout skill; this serializer lets agents tune the row. */
@@ -3019,18 +3000,11 @@ export const SignalsScoutEmitReportRequestEvidenceList = /*@__PURE__*/ S.Array(
 export type ActionabilityEnum =
   | "immediately_actionable"
   | "requires_human_input"
-  | "not_actionable"
-  | (string & {});
+  | "not_actionable";
 export const ActionabilityEnum = /*@__PURE__*/ S.String;
 
 /** * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
-export type AutonomyPriorityEnum =
-  | "P0"
-  | "P1"
-  | "P2"
-  | "P3"
-  | "P4"
-  | (string & {});
+export type AutonomyPriorityEnum = "P0" | "P1" | "P2" | "P3" | "P4";
 export const AutonomyPriorityEnum = /*@__PURE__*/ S.String;
 
 /** Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human — the inbox floats a reviewer's own reports to the top of their inbox even when no PR is involved — so set it whenever you can name a plausible owner. It also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold. */
@@ -3055,13 +3029,13 @@ export interface SignalsScoutEmitReportRequest {
   /** 2-3 sentence evidence-grounded justification for the actionability call below. */
   actionability_explanation: string;
   /** The scout's actionability call: `immediately_actionable` -> the report surfaces READY; `requires_human_input` -> PENDING_INPUT; `not_actionable` -> suppressed. A safety-judge failure suppresses the report regardless. * `immediately_actionable` - immediately_actionable * `requires_human_input` - requires_human_input * `not_actionable` - not_actionable */
-  actionability: ActionabilityEnum;
+  actionability: ActionabilityEnum | (string & {});
   /** Whether the issue already appears fixed in recent changes (tracked separately). */
   already_addressed?: boolean;
   /** Optional repo for autostart (opening a draft PR): `owner/repo` targets that repo, the `NO_REPO` sentinel opts out (report lands without a PR), and omitting it triggers free-form selection across the team's repos — the slow path on a many-repo team, so pass `owner/repo` when you know it. */
   repository?: string | null;
   /** Optional priority (`P0`-`P4`). Required for autostart; pair with `priority_explanation`. * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
-  priority?: AutonomyPriorityEnum | null;
+  priority?: AutonomyPriorityEnum | (string & {}) | null;
   /** 2-3 sentence justification for `priority`. Required when `priority` is set. */
   priority_explanation?: string | null;
   /** Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human — the inbox floats a reviewer's own reports to the top of their inbox even when no PR is involved — so set it whenever you can name a plausible owner. It also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold. */
@@ -3185,7 +3159,7 @@ export interface SignalsScoutEmitSignalRequest {
   /** Optional one-line hypothesis the finding tests. */
   hypothesis?: string | null;
   /** Optional severity tag — one of P0, P1, P2, P3, P4. Informational only. * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
-  severity?: AutonomyPriorityEnum | null;
+  severity?: AutonomyPriorityEnum | (string & {}) | null;
   /** Optional keys for downstream dedupe (e.g. `error_tracking_issue:<id>`). */
   dedupe_keys?: SignalsScoutEmitSignalRequestDedupeKeysList;
   /** Optional category tags as lowercase kebab-case slugs (e.g. `cost-spike`, `silent-failure`), max 10. Reuse the vocabulary in your `tags:<domain>:taxonomy` scratchpad entry when a tag fits; coin a new slug when a genuinely new category emerges. Near-miss formats are normalized to slugs; persisted in the signal's `extra.tags` and on the emission row. */
@@ -4780,8 +4754,7 @@ export type RunStatusEnum =
   | "in_progress"
   | "completed"
   | "failed"
-  | "cancelled"
-  | (string & {});
+  | "cancelled";
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 /** The `finding_id`s behind `emitted_count`, in emit order. Each maps to a `Signal` with `source_id = run:<run_id>:finding:<finding_id>`. Empty for non-emitting runs. */
@@ -5240,8 +5213,7 @@ export type SignalSourceConfigSourceProductEnum =
   | "judgeme_reviews"
   | "intercom"
   | "hubspot"
-  | "engineering_analytics"
-  | (string & {});
+  | "engineering_analytics";
 export const SignalSourceConfigSourceProductEnum = /*@__PURE__*/ S.String;
 
 /** * `session_analysis_cluster` - Session analysis cluster * `evaluation` - Evaluation * `evaluation_report` - Evaluation report * `issue` - Issue * `ticket` - Ticket * `issue_created` - Issue created * `issue_reopened` - Issue reopened * `issue_spiking` - Issue spiking * `cross_source_issue` - Cross source issue * `alert_state_change` - Alert state change * `health_issue` - Health issue * `endpoint_execution_failed` - Endpoint execution failed * `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded * `scanner_finding` - Scanner finding * `anomaly_investigation` - Anomaly investigation * `ci_flaky_check` - CI flaky check * `ci_broken_default_branch` - CI broken default branch * `ci_duration_regression` - CI duration regression */
@@ -5263,15 +5235,14 @@ export type SignalSourceConfigSourceTypeEnum =
   | "anomaly_investigation"
   | "ci_flaky_check"
   | "ci_broken_default_branch"
-  | "ci_duration_regression"
-  | (string & {});
+  | "ci_duration_regression";
 export const SignalSourceConfigSourceTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SignalsSourceConfigsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  source_product?: SignalSourceConfigSourceProductEnum;
-  source_type?: SignalSourceConfigSourceTypeEnum;
+  source_product?: SignalSourceConfigSourceProductEnum | (string & {});
+  source_type?: SignalSourceConfigSourceTypeEnum | (string & {});
   enabled?: boolean;
   config?: unknown;
 }
@@ -5398,8 +5369,8 @@ export interface SignalsSourceConfigsPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this signal source config. */
   id: string;
-  source_product?: SignalSourceConfigSourceProductEnum;
-  source_type?: SignalSourceConfigSourceTypeEnum;
+  source_product?: SignalSourceConfigSourceProductEnum | (string & {});
+  source_type?: SignalSourceConfigSourceTypeEnum | (string & {});
   enabled?: boolean;
   config?: unknown;
 }
@@ -5449,8 +5420,8 @@ export interface SignalsSourceConfigsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this signal source config. */
   id: string;
-  source_product?: SignalSourceConfigSourceProductEnum;
-  source_type?: SignalSourceConfigSourceTypeEnum;
+  source_product?: SignalSourceConfigSourceProductEnum | (string & {});
+  source_type?: SignalSourceConfigSourceTypeEnum | (string & {});
   enabled?: boolean;
   config?: unknown;
 }

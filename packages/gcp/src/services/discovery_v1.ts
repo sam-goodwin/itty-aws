@@ -13,27 +13,27 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface GetRestApisRequest {
@@ -43,105 +43,74 @@ export interface GetRestApisRequest {
   version: string;
 }
 export const GetRestApisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api: S.String.pipe(T.Label()),
-    version: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "apis/{api}/{version}/rest",
-      baseUrl: "https://www.googleapis.com/discovery/v1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetRestApisRequest",
-}) as any as S.Schema<GetRestApisRequest>;
+S.Struct({
+  "api": S.String.pipe(T.Label()),
+  "version": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"apis/{api}/{version}/rest","baseUrl":"https://www.googleapis.com/discovery/v1/"})),
+).annotate({ identifier: "GetRestApisRequest" }) as any as S.Schema<GetRestApisRequest>;
 
 export interface RestDescriptionAuthOauth2ScopesValue {
   /** Description of scope. */
   description?: string;
 }
-export const RestDescriptionAuthOauth2ScopesValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      description: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RestDescriptionAuthOauth2ScopesValue",
-}) as any as S.Schema<RestDescriptionAuthOauth2ScopesValue>;
+export const RestDescriptionAuthOauth2ScopesValue = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "description": S.optional(S.String),
+}),
+).annotate({ identifier: "RestDescriptionAuthOauth2ScopesValue" }) as any as S.Schema<RestDescriptionAuthOauth2ScopesValue>;
 
-export type RestDescriptionAuthOauth2ScopesValueMap = {
-  [key: string]: RestDescriptionAuthOauth2ScopesValue | undefined;
-};
-export const RestDescriptionAuthOauth2ScopesValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RestDescriptionAuthOauth2ScopesValue,
-) as any as S.Schema<RestDescriptionAuthOauth2ScopesValueMap>;
+export type RestDescriptionAuthOauth2ScopesValueMap = { [key: string]: RestDescriptionAuthOauth2ScopesValue | undefined };
+export const RestDescriptionAuthOauth2ScopesValueMap = /*@__PURE__*/ S.Record(S.String, RestDescriptionAuthOauth2ScopesValue) as any as S.Schema<RestDescriptionAuthOauth2ScopesValueMap>;
 
 export interface RestDescriptionAuthOauth2 {
   /** Available OAuth 2.0 scopes. */
   scopes?: RestDescriptionAuthOauth2ScopesValueMap;
 }
 export const RestDescriptionAuthOauth2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scopes: S.optional(RestDescriptionAuthOauth2ScopesValueMap),
-  }),
-).annotate({
-  identifier: "RestDescriptionAuthOauth2",
-}) as any as S.Schema<RestDescriptionAuthOauth2>;
+S.Struct({
+  "scopes": S.optional(RestDescriptionAuthOauth2ScopesValueMap),
+}),
+).annotate({ identifier: "RestDescriptionAuthOauth2" }) as any as S.Schema<RestDescriptionAuthOauth2>;
 
 export interface RestDescriptionAuth {
   /** OAuth 2.0 authentication information. */
   oauth2?: RestDescriptionAuthOauth2;
 }
 export const RestDescriptionAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oauth2: S.optional(RestDescriptionAuthOauth2),
-  }),
-).annotate({
-  identifier: "RestDescriptionAuth",
-}) as any as S.Schema<RestDescriptionAuth>;
+S.Struct({
+  "oauth2": S.optional(RestDescriptionAuthOauth2),
+}),
+).annotate({ identifier: "RestDescriptionAuth" }) as any as S.Schema<RestDescriptionAuth>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface JsonSchemaAnnotations {
   /** A list of methods for which this property is required on requests. */
   required?: StringList;
 }
 export const JsonSchemaAnnotations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    required: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "JsonSchemaAnnotations",
-}) as any as S.Schema<JsonSchemaAnnotations>;
+S.Struct({
+  "required": S.optional(StringList),
+}),
+).annotate({ identifier: "JsonSchemaAnnotations" }) as any as S.Schema<JsonSchemaAnnotations>;
 
 export type BooleanList = ReadonlyArray<boolean>;
-export const BooleanList = /*@__PURE__*/ S.Array(
-  S.Boolean,
-) as any as S.Schema<BooleanList>;
+export const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
 
 export interface JsonSchemaVariantMapItem {
   $ref?: string;
   type_value?: string;
 }
 export const JsonSchemaVariantMapItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    $ref: S.optional(S.String),
-    type_value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JsonSchemaVariantMapItem",
-}) as any as S.Schema<JsonSchemaVariantMapItem>;
+S.Struct({
+  "$ref": S.optional(S.String),
+  "type_value": S.optional(S.String),
+}),
+).annotate({ identifier: "JsonSchemaVariantMapItem" }) as any as S.Schema<JsonSchemaVariantMapItem>;
 
-export type JsonSchemaVariantMapItemList =
-  ReadonlyArray<JsonSchemaVariantMapItem>;
-export const JsonSchemaVariantMapItemList = /*@__PURE__*/ S.Array(
-  JsonSchemaVariantMapItem,
-) as any as S.Schema<JsonSchemaVariantMapItemList>;
+export type JsonSchemaVariantMapItemList = ReadonlyArray<JsonSchemaVariantMapItem>;
+export const JsonSchemaVariantMapItemList = /*@__PURE__*/ S.Array(JsonSchemaVariantMapItem) as any as S.Schema<JsonSchemaVariantMapItemList>;
 
 export interface JsonSchemaVariant {
   /** The name of the type discriminant property. */
@@ -150,13 +119,11 @@ export interface JsonSchemaVariant {
   map?: JsonSchemaVariantMapItemList;
 }
 export const JsonSchemaVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discriminant: S.optional(S.String),
-    map: S.optional(JsonSchemaVariantMapItemList),
-  }),
-).annotate({
-  identifier: "JsonSchemaVariant",
-}) as any as S.Schema<JsonSchemaVariant>;
+S.Struct({
+  "discriminant": S.optional(S.String),
+  "map": S.optional(JsonSchemaVariantMapItemList),
+}),
+).annotate({ identifier: "JsonSchemaVariant" }) as any as S.Schema<JsonSchemaVariant>;
 
 export interface JsonSchema {
   /** The maximum value of this parameter. */
@@ -205,49 +172,44 @@ export interface JsonSchema {
   variant?: JsonSchemaVariant;
 }
 export const JsonSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maximum: S.optional(S.String),
-    annotations: S.optional(JsonSchemaAnnotations),
-    enum: S.optional(StringList),
-    type: S.optional(S.String),
-    enumDescriptions: S.optional(StringList),
-    additionalProperties: S.optional(JsonSchema),
-    minimum: S.optional(S.String),
-    properties: S.optional(S.suspend(() => JsonSchemaMap)),
-    $ref: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    items: S.optional(JsonSchema),
-    location: S.optional(S.String),
-    deprecated: S.optional(S.Boolean),
-    pattern: S.optional(S.String),
-    enumDeprecated: S.optional(BooleanList),
-    description: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    id: S.optional(S.String),
-    repeated: S.optional(S.Boolean),
-    default: S.optional(S.String),
-    format: S.optional(S.String),
-    variant: S.optional(JsonSchemaVariant),
-  }),
+S.Struct({
+  "maximum": S.optional(S.String),
+  "annotations": S.optional(JsonSchemaAnnotations),
+  "enum": S.optional(StringList),
+  "type": S.optional(S.String),
+  "enumDescriptions": S.optional(StringList),
+  "additionalProperties": S.optional(JsonSchema),
+  "minimum": S.optional(S.String),
+  "properties": S.optional(S.suspend(() => JsonSchemaMap)),
+  "$ref": S.optional(S.String),
+  "required": S.optional(S.Boolean),
+  "items": S.optional(JsonSchema),
+  "location": S.optional(S.String),
+  "deprecated": S.optional(S.Boolean),
+  "pattern": S.optional(S.String),
+  "enumDeprecated": S.optional(BooleanList),
+  "description": S.optional(S.String),
+  "readOnly": S.optional(S.Boolean),
+  "id": S.optional(S.String),
+  "repeated": S.optional(S.Boolean),
+  "default": S.optional(S.String),
+  "format": S.optional(S.String),
+  "variant": S.optional(JsonSchemaVariant),
+}),
 ).annotate({ identifier: "JsonSchema" }) as any as S.Schema<JsonSchema>;
 
 export type JsonSchemaMap = { [key: string]: JsonSchema | undefined };
-export const JsonSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  JsonSchema,
-) as any as S.Schema<JsonSchemaMap>;
+export const JsonSchemaMap = /*@__PURE__*/ S.Record(S.String, JsonSchema) as any as S.Schema<JsonSchemaMap>;
 
 export interface RestMethodResponse {
   /** Schema ID for the response schema. */
   $ref?: string;
 }
 export const RestMethodResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    $ref: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestMethodResponse",
-}) as any as S.Schema<RestMethodResponse>;
+S.Struct({
+  "$ref": S.optional(S.String),
+}),
+).annotate({ identifier: "RestMethodResponse" }) as any as S.Schema<RestMethodResponse>;
 
 export interface RestMethodMediaUploadProtocolsResumable {
   /** True if this endpoint supports uploading multipart media. */
@@ -255,15 +217,12 @@ export interface RestMethodMediaUploadProtocolsResumable {
   /** The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level. */
   path?: string;
 }
-export const RestMethodMediaUploadProtocolsResumable = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      multipart: S.optional(S.Boolean),
-      path: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RestMethodMediaUploadProtocolsResumable",
-}) as any as S.Schema<RestMethodMediaUploadProtocolsResumable>;
+export const RestMethodMediaUploadProtocolsResumable = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "multipart": S.optional(S.Boolean),
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "RestMethodMediaUploadProtocolsResumable" }) as any as S.Schema<RestMethodMediaUploadProtocolsResumable>;
 
 export interface RestMethodMediaUploadProtocolsSimple {
   /** True if this endpoint supports upload multipart media. */
@@ -271,15 +230,12 @@ export interface RestMethodMediaUploadProtocolsSimple {
   /** The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level. */
   path?: string;
 }
-export const RestMethodMediaUploadProtocolsSimple = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      multipart: S.optional(S.Boolean),
-      path: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RestMethodMediaUploadProtocolsSimple",
-}) as any as S.Schema<RestMethodMediaUploadProtocolsSimple>;
+export const RestMethodMediaUploadProtocolsSimple = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "multipart": S.optional(S.Boolean),
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "RestMethodMediaUploadProtocolsSimple" }) as any as S.Schema<RestMethodMediaUploadProtocolsSimple>;
 
 export interface RestMethodMediaUploadProtocols {
   /** Supports the Resumable Media Upload protocol. */
@@ -288,13 +244,11 @@ export interface RestMethodMediaUploadProtocols {
   simple?: RestMethodMediaUploadProtocolsSimple;
 }
 export const RestMethodMediaUploadProtocols = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resumable: S.optional(RestMethodMediaUploadProtocolsResumable),
-    simple: S.optional(RestMethodMediaUploadProtocolsSimple),
-  }),
-).annotate({
-  identifier: "RestMethodMediaUploadProtocols",
-}) as any as S.Schema<RestMethodMediaUploadProtocols>;
+S.Struct({
+  "resumable": S.optional(RestMethodMediaUploadProtocolsResumable),
+  "simple": S.optional(RestMethodMediaUploadProtocolsSimple),
+}),
+).annotate({ identifier: "RestMethodMediaUploadProtocols" }) as any as S.Schema<RestMethodMediaUploadProtocols>;
 
 export interface RestMethodMediaUpload {
   /** Supported upload protocols. */
@@ -305,14 +259,12 @@ export interface RestMethodMediaUpload {
   accept?: StringList;
 }
 export const RestMethodMediaUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocols: S.optional(RestMethodMediaUploadProtocols),
-    maxSize: S.optional(S.String),
-    accept: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "RestMethodMediaUpload",
-}) as any as S.Schema<RestMethodMediaUpload>;
+S.Struct({
+  "protocols": S.optional(RestMethodMediaUploadProtocols),
+  "maxSize": S.optional(S.String),
+  "accept": S.optional(StringList),
+}),
+).annotate({ identifier: "RestMethodMediaUpload" }) as any as S.Schema<RestMethodMediaUpload>;
 
 export interface RestMethodRequest {
   /** Schema ID for the request schema. */
@@ -321,13 +273,11 @@ export interface RestMethodRequest {
   parameterName?: string;
 }
 export const RestMethodRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    $ref: S.optional(S.String),
-    parameterName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestMethodRequest",
-}) as any as S.Schema<RestMethodRequest>;
+S.Struct({
+  "$ref": S.optional(S.String),
+  "parameterName": S.optional(S.String),
+}),
+).annotate({ identifier: "RestMethodRequest" }) as any as S.Schema<RestMethodRequest>;
 
 export interface RestMethod {
   /** Whether this method is deprecated. */
@@ -368,33 +318,30 @@ export interface RestMethod {
   supportsMediaDownload?: boolean;
 }
 export const RestMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deprecated: S.optional(S.Boolean),
-    path: S.optional(S.String),
-    description: S.optional(S.String),
-    supportsMediaUpload: S.optional(S.Boolean),
-    id: S.optional(S.String),
-    httpMethod: S.optional(S.String),
-    scopes: S.optional(StringList),
-    parameterOrder: S.optional(StringList),
-    apiVersion: S.optional(S.String),
-    useMediaDownloadService: S.optional(S.Boolean),
-    response: S.optional(RestMethodResponse),
-    mediaUpload: S.optional(RestMethodMediaUpload),
-    parameters: S.optional(JsonSchemaMap),
-    request: S.optional(RestMethodRequest),
-    supportsSubscription: S.optional(S.Boolean),
-    etagRequired: S.optional(S.Boolean),
-    flatPath: S.optional(S.String),
-    supportsMediaDownload: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "deprecated": S.optional(S.Boolean),
+  "path": S.optional(S.String),
+  "description": S.optional(S.String),
+  "supportsMediaUpload": S.optional(S.Boolean),
+  "id": S.optional(S.String),
+  "httpMethod": S.optional(S.String),
+  "scopes": S.optional(StringList),
+  "parameterOrder": S.optional(StringList),
+  "apiVersion": S.optional(S.String),
+  "useMediaDownloadService": S.optional(S.Boolean),
+  "response": S.optional(RestMethodResponse),
+  "mediaUpload": S.optional(RestMethodMediaUpload),
+  "parameters": S.optional(JsonSchemaMap),
+  "request": S.optional(RestMethodRequest),
+  "supportsSubscription": S.optional(S.Boolean),
+  "etagRequired": S.optional(S.Boolean),
+  "flatPath": S.optional(S.String),
+  "supportsMediaDownload": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "RestMethod" }) as any as S.Schema<RestMethod>;
 
 export type RestMethodMap = { [key: string]: RestMethod | undefined };
-export const RestMethodMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RestMethod,
-) as any as S.Schema<RestMethodMap>;
+export const RestMethodMap = /*@__PURE__*/ S.Record(S.String, RestMethod) as any as S.Schema<RestMethodMap>;
 
 export interface RestResource {
   /** Methods on this resource. */
@@ -405,18 +352,15 @@ export interface RestResource {
   deprecated?: boolean;
 }
 export const RestResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    methods: S.optional(RestMethodMap),
-    resources: S.optional(S.suspend(() => RestResourceMap)),
-    deprecated: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "methods": S.optional(RestMethodMap),
+  "resources": S.optional(S.suspend(() => RestResourceMap)),
+  "deprecated": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "RestResource" }) as any as S.Schema<RestResource>;
 
 export type RestResourceMap = { [key: string]: RestResource | undefined };
-export const RestResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RestResource,
-) as any as S.Schema<RestResourceMap>;
+export const RestResourceMap = /*@__PURE__*/ S.Record(S.String, RestResource) as any as S.Schema<RestResourceMap>;
 
 export interface RestDescriptionEndpointsItem {
   /** The location of the endpoint */
@@ -429,21 +373,16 @@ export interface RestDescriptionEndpointsItem {
   deprecated?: boolean;
 }
 export const RestDescriptionEndpointsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    endpointUrl: S.optional(S.String),
-    description: S.optional(S.String),
-    deprecated: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RestDescriptionEndpointsItem",
-}) as any as S.Schema<RestDescriptionEndpointsItem>;
+S.Struct({
+  "location": S.optional(S.String),
+  "endpointUrl": S.optional(S.String),
+  "description": S.optional(S.String),
+  "deprecated": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "RestDescriptionEndpointsItem" }) as any as S.Schema<RestDescriptionEndpointsItem>;
 
-export type RestDescriptionEndpointsItemList =
-  ReadonlyArray<RestDescriptionEndpointsItem>;
-export const RestDescriptionEndpointsItemList = /*@__PURE__*/ S.Array(
-  RestDescriptionEndpointsItem,
-) as any as S.Schema<RestDescriptionEndpointsItemList>;
+export type RestDescriptionEndpointsItemList = ReadonlyArray<RestDescriptionEndpointsItem>;
+export const RestDescriptionEndpointsItemList = /*@__PURE__*/ S.Array(RestDescriptionEndpointsItem) as any as S.Schema<RestDescriptionEndpointsItemList>;
 
 export interface RestDescriptionIcons {
   /** The URL of the 16x16 icon. */
@@ -452,13 +391,11 @@ export interface RestDescriptionIcons {
   x32?: string;
 }
 export const RestDescriptionIcons = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x16: S.optional(S.String),
-    x32: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestDescriptionIcons",
-}) as any as S.Schema<RestDescriptionIcons>;
+S.Struct({
+  "x16": S.optional(S.String),
+  "x32": S.optional(S.String),
+}),
+).annotate({ identifier: "RestDescriptionIcons" }) as any as S.Schema<RestDescriptionIcons>;
 
 export interface RestDescription {
   /** Authentication information. */
@@ -524,42 +461,40 @@ export interface RestDescription {
   icons?: RestDescriptionIcons;
 }
 export const RestDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auth: S.optional(RestDescriptionAuth),
-    exponentialBackoffDefault: S.optional(S.Boolean),
-    servicePath: S.optional(S.String),
-    version: S.optional(S.String),
-    ownerName: S.optional(S.String),
-    kind: S.optional(S.String),
-    schemas: S.optional(JsonSchemaMap),
-    documentationLink: S.optional(S.String),
-    batchPath: S.optional(S.String),
-    etag: S.optional(S.String),
-    basePath: S.optional(S.String),
-    resources: S.optional(RestResourceMap),
-    canonicalName: S.optional(S.String),
-    revision: S.optional(S.String),
-    packagePath: S.optional(S.String),
-    discoveryVersion: S.optional(S.String),
-    features: S.optional(StringList),
-    name: S.optional(S.String),
-    parameters: S.optional(JsonSchemaMap),
-    methods: S.optional(RestMethodMap),
-    protocol: S.optional(S.String),
-    labels: S.optional(StringList),
-    title: S.optional(S.String),
-    endpoints: S.optional(RestDescriptionEndpointsItemList),
-    baseUrl: S.optional(S.String),
-    description: S.optional(S.String),
-    rootUrl: S.optional(S.String),
-    ownerDomain: S.optional(S.String),
-    id: S.optional(S.String),
-    version_module: S.optional(S.Boolean),
-    icons: S.optional(RestDescriptionIcons),
-  }),
-).annotate({
-  identifier: "RestDescription",
-}) as any as S.Schema<RestDescription>;
+S.Struct({
+  "auth": S.optional(RestDescriptionAuth),
+  "exponentialBackoffDefault": S.optional(S.Boolean),
+  "servicePath": S.optional(S.String),
+  "version": S.optional(S.String),
+  "ownerName": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "schemas": S.optional(JsonSchemaMap),
+  "documentationLink": S.optional(S.String),
+  "batchPath": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "basePath": S.optional(S.String),
+  "resources": S.optional(RestResourceMap),
+  "canonicalName": S.optional(S.String),
+  "revision": S.optional(S.String),
+  "packagePath": S.optional(S.String),
+  "discoveryVersion": S.optional(S.String),
+  "features": S.optional(StringList),
+  "name": S.optional(S.String),
+  "parameters": S.optional(JsonSchemaMap),
+  "methods": S.optional(RestMethodMap),
+  "protocol": S.optional(S.String),
+  "labels": S.optional(StringList),
+  "title": S.optional(S.String),
+  "endpoints": S.optional(RestDescriptionEndpointsItemList),
+  "baseUrl": S.optional(S.String),
+  "description": S.optional(S.String),
+  "rootUrl": S.optional(S.String),
+  "ownerDomain": S.optional(S.String),
+  "id": S.optional(S.String),
+  "version_module": S.optional(S.Boolean),
+  "icons": S.optional(RestDescriptionIcons),
+}),
+).annotate({ identifier: "RestDescription" }) as any as S.Schema<RestDescription>;
 
 export interface ListApisRequest {
   /** Only include APIs with the given name. */
@@ -568,19 +503,11 @@ export interface ListApisRequest {
   preferred?: boolean;
 }
 export const ListApisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String.pipe(T.Query())),
-    preferred: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "apis",
-      baseUrl: "https://www.googleapis.com/discovery/v1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListApisRequest",
-}) as any as S.Schema<ListApisRequest>;
+S.Struct({
+  "name": S.optional(S.String.pipe(T.Query())),
+  "preferred": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"apis","baseUrl":"https://www.googleapis.com/discovery/v1/"})),
+).annotate({ identifier: "ListApisRequest" }) as any as S.Schema<ListApisRequest>;
 
 export interface DirectoryListItemsItemIcons {
   /** The URL of the 32x32 icon. */
@@ -589,13 +516,11 @@ export interface DirectoryListItemsItemIcons {
   x16?: string;
 }
 export const DirectoryListItemsItemIcons = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x32: S.optional(S.String),
-    x16: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DirectoryListItemsItemIcons",
-}) as any as S.Schema<DirectoryListItemsItemIcons>;
+S.Struct({
+  "x32": S.optional(S.String),
+  "x16": S.optional(S.String),
+}),
+).annotate({ identifier: "DirectoryListItemsItemIcons" }) as any as S.Schema<DirectoryListItemsItemIcons>;
 
 export interface DirectoryListItemsItem {
   /** Links to 16x16 and 32x32 icons representing the API. */
@@ -624,28 +549,24 @@ export interface DirectoryListItemsItem {
   preferred?: boolean;
 }
 export const DirectoryListItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    icons: S.optional(DirectoryListItemsItemIcons),
-    id: S.optional(S.String),
-    discoveryLink: S.optional(S.String),
-    documentationLink: S.optional(S.String),
-    discoveryRestUrl: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    description: S.optional(S.String),
-    version: S.optional(S.String),
-    title: S.optional(S.String),
-    labels: S.optional(StringList),
-    preferred: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DirectoryListItemsItem",
-}) as any as S.Schema<DirectoryListItemsItem>;
+S.Struct({
+  "icons": S.optional(DirectoryListItemsItemIcons),
+  "id": S.optional(S.String),
+  "discoveryLink": S.optional(S.String),
+  "documentationLink": S.optional(S.String),
+  "discoveryRestUrl": S.optional(S.String),
+  "name": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "description": S.optional(S.String),
+  "version": S.optional(S.String),
+  "title": S.optional(S.String),
+  "labels": S.optional(StringList),
+  "preferred": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DirectoryListItemsItem" }) as any as S.Schema<DirectoryListItemsItem>;
 
 export type DirectoryListItemsItemList = ReadonlyArray<DirectoryListItemsItem>;
-export const DirectoryListItemsItemList = /*@__PURE__*/ S.Array(
-  DirectoryListItemsItem,
-) as any as S.Schema<DirectoryListItemsItemList>;
+export const DirectoryListItemsItemList = /*@__PURE__*/ S.Array(DirectoryListItemsItem) as any as S.Schema<DirectoryListItemsItemList>;
 
 export interface DirectoryList {
   /** Indicate the version of the Discovery API used to generate this doc. */
@@ -656,11 +577,11 @@ export interface DirectoryList {
   kind?: string;
 }
 export const DirectoryList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoveryVersion: S.optional(S.String),
-    items: S.optional(DirectoryListItemsItemList),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "discoveryVersion": S.optional(S.String),
+  "items": S.optional(DirectoryListItemsItemList),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "DirectoryList" }) as any as S.Schema<DirectoryList>;
 
 export type GetRestApisError = NotFound | Forbidden | GcpOpError;
@@ -692,3 +613,4 @@ export const listApis: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

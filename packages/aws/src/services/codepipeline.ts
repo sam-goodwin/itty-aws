@@ -281,8 +281,7 @@ export type JobStatus =
   | "InProgress"
   | "TimedOut"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export interface AcknowledgeJobOutput {
@@ -330,8 +329,7 @@ export type ActionCategory =
   | "Test"
   | "Invoke"
   | "Approval"
-  | "Compute"
-  | (string & {});
+  | "Compute";
 export const ActionCategory = /*@__PURE__*/ S.String;
 
 export type ActionProvider = string;
@@ -356,11 +354,7 @@ export const ActionTypeSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActionTypeSettings>;
 export type ActionConfigurationKey = string;
 export type Description = string;
-export type ActionConfigurationPropertyType =
-  | "String"
-  | "Number"
-  | "Boolean"
-  | (string & {});
+export type ActionConfigurationPropertyType = "String" | "Number" | "Boolean";
 export const ActionConfigurationPropertyType = /*@__PURE__*/ S.String;
 
 export interface ActionConfigurationProperty {
@@ -412,7 +406,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateCustomActionTypeInput {
-  category: ActionCategory;
+  category: ActionCategory | (string & {});
   provider: string;
   version: string;
   settings?: ActionTypeSettings;
@@ -445,7 +439,7 @@ export const CreateCustomActionTypeInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCustomActionTypeInput",
 }) as any as S.Schema<CreateCustomActionTypeInput>;
-export type ActionOwner = "AWS" | "ThirdParty" | "Custom" | (string & {});
+export type ActionOwner = "AWS" | "ThirdParty" | "Custom";
 export const ActionOwner = /*@__PURE__*/ S.String;
 
 export interface ActionTypeId {
@@ -489,12 +483,12 @@ export const CreateCustomActionTypeOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomActionTypeOutput>;
 export type PipelineName = string;
 export type RoleArn = string;
-export type ArtifactStoreType = "S3" | (string & {});
+export type ArtifactStoreType = "S3";
 export const ArtifactStoreType = /*@__PURE__*/ S.String;
 
 export type ArtifactStoreLocation = string;
 export type EncryptionKeyId = string;
-export type EncryptionKeyType = "KMS" | (string & {});
+export type EncryptionKeyType = "KMS";
 export const EncryptionKeyType = /*@__PURE__*/ S.String;
 
 export interface EncryptionKey {
@@ -524,7 +518,7 @@ export const ArtifactStoreMap = /*@__PURE__*/ S.Record(
 );
 export type StageName = string;
 export type BlockerName = string;
-export type BlockerType = "Schedule" | (string & {});
+export type BlockerType = "Schedule";
 export const BlockerType = /*@__PURE__*/ S.String;
 
 export interface BlockerDeclaration {
@@ -578,10 +572,7 @@ export type ActionNamespace = string;
 export type ActionTimeout = number;
 export type EnvironmentVariableName = string;
 export type EnvironmentVariableValue = string;
-export type EnvironmentVariableType =
-  | "PLAINTEXT"
-  | "SECRETS_MANAGER"
-  | (string & {});
+export type EnvironmentVariableType = "PLAINTEXT" | "SECRETS_MANAGER";
 export const EnvironmentVariableType = /*@__PURE__*/ S.String;
 
 export interface EnvironmentVariable {
@@ -638,10 +629,10 @@ export const ActionDeclaration = /*@__PURE__*/ S.suspend(() =>
 export type StageActionDeclarationList = ActionDeclaration[];
 export const StageActionDeclarationList =
   /*@__PURE__*/ S.Array(ActionDeclaration);
-export type Result = "ROLLBACK" | "FAIL" | "RETRY" | "SKIP" | (string & {});
+export type Result = "ROLLBACK" | "FAIL" | "RETRY" | "SKIP";
 export const Result = /*@__PURE__*/ S.String;
 
-export type StageRetryMode = "FAILED_ACTIONS" | "ALL_ACTIONS" | (string & {});
+export type StageRetryMode = "FAILED_ACTIONS" | "ALL_ACTIONS";
 export const StageRetryMode = /*@__PURE__*/ S.String;
 
 export interface RetryConfiguration {
@@ -653,10 +644,10 @@ export const RetryConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetryConfiguration",
 }) as any as S.Schema<RetryConfiguration>;
 export type RuleName = string;
-export type RuleCategory = "Rule" | (string & {});
+export type RuleCategory = "Rule";
 export const RuleCategory = /*@__PURE__*/ S.String;
 
-export type RuleOwner = "AWS" | (string & {});
+export type RuleOwner = "AWS";
 export const RuleOwner = /*@__PURE__*/ S.String;
 
 export type RuleProvider = string;
@@ -774,14 +765,10 @@ export type PipelineStageDeclarationList = StageDeclaration[];
 export const PipelineStageDeclarationList =
   /*@__PURE__*/ S.Array(StageDeclaration);
 export type PipelineVersion = number;
-export type ExecutionMode =
-  | "QUEUED"
-  | "SUPERSEDED"
-  | "PARALLEL"
-  | (string & {});
+export type ExecutionMode = "QUEUED" | "SUPERSEDED" | "PARALLEL";
 export const ExecutionMode = /*@__PURE__*/ S.String;
 
-export type PipelineType = "V1" | "V2" | (string & {});
+export type PipelineType = "V1" | "V2";
 export const PipelineType = /*@__PURE__*/ S.String;
 
 export type PipelineVariableName = string;
@@ -805,9 +792,7 @@ export type PipelineVariableDeclarationList = PipelineVariableDeclaration[];
 export const PipelineVariableDeclarationList = /*@__PURE__*/ S.Array(
   PipelineVariableDeclaration,
 );
-export type PipelineTriggerProviderType =
-  | "CodeStarSourceConnection"
-  | (string & {});
+export type PipelineTriggerProviderType = "CodeStarSourceConnection";
 export const PipelineTriggerProviderType = /*@__PURE__*/ S.String;
 
 export type GitTagNamePattern = string;
@@ -869,11 +854,7 @@ export const GitPushFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitPushFilter" }) as any as S.Schema<GitPushFilter>;
 export type GitPushFilterList = GitPushFilter[];
 export const GitPushFilterList = /*@__PURE__*/ S.Array(GitPushFilter);
-export type GitPullRequestEventType =
-  | "OPEN"
-  | "UPDATED"
-  | "CLOSED"
-  | (string & {});
+export type GitPullRequestEventType = "OPEN" | "UPDATED" | "CLOSED";
 export const GitPullRequestEventType = /*@__PURE__*/ S.String;
 
 export type GitPullRequestEventTypeList = GitPullRequestEventType[];
@@ -987,7 +968,7 @@ export const CreatePipelineOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePipelineOutput",
 }) as any as S.Schema<CreatePipelineOutput>;
 export interface DeleteCustomActionTypeInput {
-  category: ActionCategory;
+  category: ActionCategory | (string & {});
   provider: string;
   version: string;
 }
@@ -1090,14 +1071,14 @@ export const DeregisterWebhookWithThirdPartyOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeregisterWebhookWithThirdPartyOutput",
 }) as any as S.Schema<DeregisterWebhookWithThirdPartyOutput>;
-export type StageTransitionType = "Inbound" | "Outbound" | (string & {});
+export type StageTransitionType = "Inbound" | "Outbound";
 export const StageTransitionType = /*@__PURE__*/ S.String;
 
 export type DisabledReason = string;
 export interface DisableStageTransitionInput {
   pipelineName: string;
   stageName: string;
-  transitionType: StageTransitionType;
+  transitionType: StageTransitionType | (string & {});
   reason: string;
 }
 export const DisableStageTransitionInput = /*@__PURE__*/ S.suspend(() =>
@@ -1129,7 +1110,7 @@ export const DisableStageTransitionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface EnableStageTransitionInput {
   pipelineName: string;
   stageName: string;
-  transitionType: StageTransitionType;
+  transitionType: StageTransitionType | (string & {});
 }
 export const EnableStageTransitionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1158,7 +1139,7 @@ export const EnableStageTransitionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableStageTransitionResponse>;
 export type ActionTypeOwner = string;
 export interface GetActionTypeInput {
-  category: ActionCategory;
+  category: ActionCategory | (string & {});
   owner: string;
   provider: string;
   version: string;
@@ -1223,7 +1204,7 @@ export const ExecutorConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecutorConfiguration",
 }) as any as S.Schema<ExecutorConfiguration>;
-export type ExecutorType = "JobWorker" | "Lambda" | (string & {});
+export type ExecutorType = "JobWorker" | "Lambda";
 export const ExecutorType = /*@__PURE__*/ S.String;
 
 export type PolicyStatementsTemplate = string;
@@ -1415,7 +1396,7 @@ export const PipelineContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "PipelineContext",
 }) as any as S.Schema<PipelineContext>;
 export type Revision = string;
-export type ArtifactLocationType = "S3" | (string & {});
+export type ArtifactLocationType = "S3";
 export const ArtifactLocationType = /*@__PURE__*/ S.String;
 
 export type S3BucketName = string;
@@ -1590,8 +1571,7 @@ export type PipelineExecutionStatus =
   | "Stopping"
   | "Succeeded"
   | "Superseded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PipelineExecutionStatus = /*@__PURE__*/ S.String;
 
 export type PipelineExecutionStatusSummary = string;
@@ -1641,8 +1621,7 @@ export type TriggerType =
   | "PutActionRevision"
   | "WebhookV2"
   | "ManualRollback"
-  | "AutomatedRollback"
-  | (string & {});
+  | "AutomatedRollback";
 export const TriggerType = /*@__PURE__*/ S.String;
 
 export type TriggerDetail = string;
@@ -1658,7 +1637,7 @@ export const ExecutionTrigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecutionTrigger",
 }) as any as S.Schema<ExecutionTrigger>;
-export type ExecutionType = "STANDARD" | "ROLLBACK" | (string & {});
+export type ExecutionType = "STANDARD" | "ROLLBACK";
 export const ExecutionType = /*@__PURE__*/ S.String;
 
 export interface PipelineRollbackMetadata {
@@ -1732,8 +1711,7 @@ export type StageExecutionStatus =
   | "Stopped"
   | "Stopping"
   | "Succeeded"
-  | "Skipped"
-  | (string & {});
+  | "Skipped";
 export const StageExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface StageExecution {
@@ -1785,8 +1763,7 @@ export type ActionExecutionStatus =
   | "InProgress"
   | "Abandoned"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ActionExecutionStatus = /*@__PURE__*/ S.String;
 
 export type ExecutionSummary = string;
@@ -1861,8 +1838,7 @@ export type ConditionExecutionStatus =
   | "Succeeded"
   | "Cancelled"
   | "Abandoned"
-  | "Overridden"
-  | (string & {});
+  | "Overridden";
 export const ConditionExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface StageConditionsExecution {
@@ -1910,8 +1886,7 @@ export type RuleExecutionStatus =
   | "InProgress"
   | "Abandoned"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const RuleExecutionStatus = /*@__PURE__*/ S.String;
 
 export type RuleExecutionToken = string;
@@ -1984,10 +1959,7 @@ export const StageConditionState = /*@__PURE__*/ S.suspend(() =>
   identifier: "StageConditionState",
 }) as any as S.Schema<StageConditionState>;
 export type RetryAttempt = number;
-export type RetryTrigger =
-  | "AutomatedStageRetry"
-  | "ManualStageRetry"
-  | (string & {});
+export type RetryTrigger = "AutomatedStageRetry" | "ManualStageRetry";
 export const RetryTrigger = /*@__PURE__*/ S.String;
 
 export interface RetryStageMetadata {
@@ -2115,12 +2087,12 @@ export const GetThirdPartyJobDetailsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetThirdPartyJobDetailsOutput",
 }) as any as S.Schema<GetThirdPartyJobDetailsOutput>;
-export type StartTimeRange = "Latest" | "All" | (string & {});
+export type StartTimeRange = "Latest" | "All";
 export const StartTimeRange = /*@__PURE__*/ S.String;
 
 export interface LatestInPipelineExecutionFilter {
   pipelineExecutionId: string;
-  startTimeRange: StartTimeRange;
+  startTimeRange: StartTimeRange | (string & {});
 }
 export const LatestInPipelineExecutionFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pipelineExecutionId: S.String, startTimeRange: StartTimeRange }),
@@ -2302,7 +2274,7 @@ export const ListActionExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListActionExecutionsOutput",
 }) as any as S.Schema<ListActionExecutionsOutput>;
 export interface ListActionTypesInput {
-  actionOwnerFilter?: ActionOwner;
+  actionOwnerFilter?: ActionOwner | (string & {});
   nextToken?: string;
   regionFilter?: string;
 }
@@ -2339,14 +2311,14 @@ export const ListActionTypesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListActionTypesOutput",
 }) as any as S.Schema<ListActionTypesOutput>;
-export type TargetFilterName = "TARGET_STATUS" | (string & {});
+export type TargetFilterName = "TARGET_STATUS";
 export const TargetFilterName = /*@__PURE__*/ S.String;
 
 export type TargetFilterValue = string;
 export type TargetFilterValueList = string[];
 export const TargetFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface TargetFilter {
-  name?: TargetFilterName;
+  name?: TargetFilterName | (string & {});
   values?: string[];
 }
 export const TargetFilter = /*@__PURE__*/ S.suspend(() =>
@@ -2760,7 +2732,7 @@ export const ListRuleExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRuleExecutionsOutput",
 }) as any as S.Schema<ListRuleExecutionsOutput>;
 export interface ListRuleTypesInput {
-  ruleOwnerFilter?: RuleOwner;
+  ruleOwnerFilter?: RuleOwner | (string & {});
   regionFilter?: string;
 }
 export const ListRuleTypesInput = /*@__PURE__*/ S.suspend(() =>
@@ -2797,11 +2769,7 @@ export const RuleTypeSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RuleTypeSettings",
 }) as any as S.Schema<RuleTypeSettings>;
-export type RuleConfigurationPropertyType =
-  | "String"
-  | "Number"
-  | "Boolean"
-  | (string & {});
+export type RuleConfigurationPropertyType = "String" | "Number" | "Boolean";
 export const RuleConfigurationPropertyType = /*@__PURE__*/ S.String;
 
 export interface RuleConfigurationProperty {
@@ -2928,8 +2896,7 @@ export const WebhookFilters = /*@__PURE__*/ S.Array(WebhookFilterRule);
 export type WebhookAuthenticationType =
   | "GITHUB_HMAC"
   | "IP"
-  | "UNAUTHENTICATED"
-  | (string & {});
+  | "UNAUTHENTICATED";
 export const WebhookAuthenticationType = /*@__PURE__*/ S.String;
 
 export type WebhookAuthConfigurationAllowedIPRange = string;
@@ -3007,14 +2974,14 @@ export const ListWebhooksOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWebhooksOutput",
 }) as any as S.Schema<ListWebhooksOutput>;
-export type ConditionType = "BEFORE_ENTRY" | "ON_SUCCESS" | (string & {});
+export type ConditionType = "BEFORE_ENTRY" | "ON_SUCCESS";
 export const ConditionType = /*@__PURE__*/ S.String;
 
 export interface OverrideStageConditionInput {
   pipelineName: string;
   stageName: string;
   pipelineExecutionId: string;
-  conditionType: ConditionType;
+  conditionType: ConditionType | (string & {});
 }
 export const OverrideStageConditionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3176,12 +3143,12 @@ export const PutActionRevisionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutActionRevisionOutput",
 }) as any as S.Schema<PutActionRevisionOutput>;
 export type ApprovalSummary = string;
-export type ApprovalStatus = "Approved" | "Rejected" | (string & {});
+export type ApprovalStatus = "Approved" | "Rejected";
 export const ApprovalStatus = /*@__PURE__*/ S.String;
 
 export interface ApprovalResult {
   summary: string;
-  status: ApprovalStatus;
+  status: ApprovalStatus | (string & {});
 }
 export const ApprovalResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ summary: S.String, status: ApprovalStatus }),
@@ -3231,12 +3198,11 @@ export type FailureType =
   | "PermissionError"
   | "RevisionOutOfSync"
   | "RevisionUnavailable"
-  | "SystemUnavailable"
-  | (string & {});
+  | "SystemUnavailable";
 export const FailureType = /*@__PURE__*/ S.String;
 
 export interface FailureDetails {
-  type: FailureType;
+  type: FailureType | (string & {});
   message: string;
   externalExecutionId?: string;
 }
@@ -3455,7 +3421,7 @@ export interface RetryStageExecutionInput {
   pipelineName: string;
   stageName: string;
   pipelineExecutionId: string;
-  retryMode: StageRetryMode;
+  retryMode: StageRetryMode | (string & {});
 }
 export const RetryStageExecutionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3533,13 +3499,12 @@ export type SourceRevisionType =
   | "COMMIT_ID"
   | "IMAGE_DIGEST"
   | "S3_OBJECT_VERSION_ID"
-  | "S3_OBJECT_KEY"
-  | (string & {});
+  | "S3_OBJECT_KEY";
 export const SourceRevisionType = /*@__PURE__*/ S.String;
 
 export interface SourceRevisionOverride {
   actionName: string;
-  revisionType: SourceRevisionType;
+  revisionType: SourceRevisionType | (string & {});
   revisionValue: string;
 }
 export const SourceRevisionOverride = /*@__PURE__*/ S.suspend(() =>

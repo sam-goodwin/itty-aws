@@ -53,11 +53,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -159,18 +158,14 @@ export const LLMPrompt = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMPrompt" }) as any as S.Schema<LLMPrompt>;
 
-export type LlmPromptsListRequestContent =
-  | "full"
-  | "preview"
-  | "none"
-  | (string & {});
+export type LlmPromptsListRequestContent = "full" | "preview" | "none";
 export const LlmPromptsListRequestContent = /*@__PURE__*/ S.String;
 
 export interface LlmPromptsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Controls how much prompt content is included in the response. 'full' includes the full prompt, 'preview' includes a short prompt_preview, and 'none' omits prompt content entirely. The outline field is always included. * `full` - full * `preview` - preview * `none` - none */
-  content?: LlmPromptsListRequestContent;
+  content?: LlmPromptsListRequestContent | (string & {});
   /** Filter prompts by the ID of the user who created them. */
   created_by_id?: number;
   /** Number of results to return per page. */
@@ -488,11 +483,7 @@ export const LlmPromptsNamePartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmPromptsNamePartialUpdateRequest",
 }) as any as S.Schema<LlmPromptsNamePartialUpdateRequest>;
 
-export type LlmPromptsNameRetrieveRequestContent =
-  | "full"
-  | "preview"
-  | "none"
-  | (string & {});
+export type LlmPromptsNameRetrieveRequestContent = "full" | "preview" | "none";
 export const LlmPromptsNameRetrieveRequestContent = /*@__PURE__*/ S.String;
 
 export interface LlmPromptsNameRetrieveRequest {
@@ -500,7 +491,7 @@ export interface LlmPromptsNameRetrieveRequest {
   project_id: string;
   prompt_name: string;
   /** Controls how much prompt content is included in the response. 'full' includes the full prompt, 'preview' includes a short prompt_preview, and 'none' omits prompt content entirely. The outline field is always included. * `full` - full * `preview` - preview * `none` - none */
-  content?: LlmPromptsNameRetrieveRequestContent;
+  content?: LlmPromptsNameRetrieveRequestContent | (string & {});
   /** Fetch the version this label currently points to, e.g. 'production'. Lowercase letters, numbers, dots, hyphens and underscores. Mutually exclusive with version. */
   label?: string;
   /** Specific prompt version to fetch. If omitted, the latest version is returned. */

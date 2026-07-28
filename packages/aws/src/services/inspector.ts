@@ -211,8 +211,7 @@ export type FailedItemErrorCode =
   | "ITEM_DOES_NOT_EXIST"
   | "ACCESS_DENIED"
   | "LIMIT_EXCEEDED"
-  | "INTERNAL_ERROR"
-  | (string & {});
+  | "INTERNAL_ERROR";
 export const FailedItemErrorCode = /*@__PURE__*/ S.String;
 
 export interface FailedItemDetails {
@@ -418,8 +417,7 @@ export type AssessmentRunState =
   | "ERROR"
   | "COMPLETED"
   | "COMPLETED_WITH_ERRORS"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const AssessmentRunState = /*@__PURE__*/ S.String;
 
 export type AssessmentRulesPackageArnList = string[];
@@ -445,8 +443,7 @@ export type InspectorEvent =
   | "ASSESSMENT_RUN_COMPLETED"
   | "ASSESSMENT_RUN_STATE_CHANGED"
   | "FINDING_REPORTED"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const InspectorEvent = /*@__PURE__*/ S.String;
 
 export type Message = string;
@@ -454,8 +451,7 @@ export type AssessmentRunNotificationSnsStatusCode =
   | "SUCCESS"
   | "TOPIC_DOES_NOT_EXIST"
   | "ACCESS_DENIED"
-  | "INTERNAL_ERROR"
-  | (string & {});
+  | "INTERNAL_ERROR";
 export const AssessmentRunNotificationSnsStatusCode = /*@__PURE__*/ S.String;
 
 export interface AssessmentRunNotification {
@@ -487,8 +483,7 @@ export type Severity =
   | "Medium"
   | "High"
   | "Informational"
-  | "Undefined"
-  | (string & {});
+  | "Undefined";
 export const Severity = /*@__PURE__*/ S.String;
 
 export type FindingCount = number;
@@ -663,12 +658,12 @@ export const DescribeCrossAccountAccessRoleResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeCrossAccountAccessRoleResponse>;
 export type BatchDescribeExclusionsArnList = string[];
 export const BatchDescribeExclusionsArnList = /*@__PURE__*/ S.Array(S.String);
-export type Locale = "EN_US" | (string & {});
+export type Locale = "EN_US";
 export const Locale = /*@__PURE__*/ S.String;
 
 export interface DescribeExclusionsRequest {
   exclusionArns: string[];
-  locale?: Locale;
+  locale?: Locale | (string & {});
 }
 export const DescribeExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -681,7 +676,7 @@ export const DescribeExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeExclusionsRequest",
 }) as any as S.Schema<DescribeExclusionsRequest>;
 export type Text = string;
-export type ScopeType = "INSTANCE_ID" | "RULES_PACKAGE_ARN" | (string & {});
+export type ScopeType = "INSTANCE_ID" | "RULES_PACKAGE_ARN";
 export const ScopeType = /*@__PURE__*/ S.String;
 
 export type ScopeValue = string;
@@ -730,7 +725,7 @@ export const DescribeExclusionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeExclusionsResponse>;
 export interface DescribeFindingsRequest {
   findingArns: string[];
-  locale?: Locale;
+  locale?: Locale | (string & {});
 }
 export const DescribeFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -758,7 +753,7 @@ export const InspectorServiceAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InspectorServiceAttributes",
 }) as any as S.Schema<InspectorServiceAttributes>;
-export type AssetType = "ec2-instance" | (string & {});
+export type AssetType = "ec2-instance";
 export const AssetType = /*@__PURE__*/ S.String;
 
 export type AgentId = string;
@@ -945,7 +940,7 @@ export const DescribeResourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeResourceGroupsResponse>;
 export interface DescribeRulesPackagesRequest {
   rulesPackageArns: string[];
-  locale?: Locale;
+  locale?: Locale | (string & {});
 }
 export const DescribeRulesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -987,16 +982,16 @@ export const DescribeRulesPackagesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRulesPackagesResponse",
 }) as any as S.Schema<DescribeRulesPackagesResponse>;
-export type ReportFileFormat = "HTML" | "PDF" | (string & {});
+export type ReportFileFormat = "HTML" | "PDF";
 export const ReportFileFormat = /*@__PURE__*/ S.String;
 
-export type ReportType = "FINDING" | "FULL" | (string & {});
+export type ReportType = "FINDING" | "FULL";
 export const ReportType = /*@__PURE__*/ S.String;
 
 export interface GetAssessmentReportRequest {
   assessmentRunArn: string;
-  reportFileFormat: ReportFileFormat;
-  reportType: ReportType;
+  reportFileFormat: ReportFileFormat | (string & {});
+  reportType: ReportType | (string & {});
 }
 export const GetAssessmentReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1009,11 +1004,7 @@ export const GetAssessmentReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssessmentReportRequest",
 }) as any as S.Schema<GetAssessmentReportRequest>;
-export type ReportStatus =
-  | "WORK_IN_PROGRESS"
-  | "FAILED"
-  | "COMPLETED"
-  | (string & {});
+export type ReportStatus = "WORK_IN_PROGRESS" | "FAILED" | "COMPLETED";
 export const ReportStatus = /*@__PURE__*/ S.String;
 
 export type Url = string;
@@ -1033,7 +1024,7 @@ export interface GetExclusionsPreviewRequest {
   previewToken: string;
   nextToken?: string;
   maxResults?: number;
-  locale?: Locale;
+  locale?: Locale | (string & {});
 }
 export const GetExclusionsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1048,7 +1039,7 @@ export const GetExclusionsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetExclusionsPreviewRequest",
 }) as any as S.Schema<GetExclusionsPreviewRequest>;
-export type PreviewStatus = "WORK_IN_PROGRESS" | "COMPLETED" | (string & {});
+export type PreviewStatus = "WORK_IN_PROGRESS" | "COMPLETED";
 export const PreviewStatus = /*@__PURE__*/ S.String;
 
 export interface ExclusionPreview {
@@ -1120,10 +1111,10 @@ export const GetTelemetryMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTelemetryMetadataResponse",
 }) as any as S.Schema<GetTelemetryMetadataResponse>;
-export type AgentHealth = "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
+export type AgentHealth = "HEALTHY" | "UNHEALTHY" | "UNKNOWN";
 export const AgentHealth = /*@__PURE__*/ S.String;
 
-export type AgentHealthList = AgentHealth[];
+export type AgentHealthList = (AgentHealth | (string & {}))[];
 export const AgentHealthList = /*@__PURE__*/ S.Array(AgentHealth);
 export type AgentHealthCode =
   | "IDLE"
@@ -1131,11 +1122,10 @@ export type AgentHealthCode =
   | "SHUTDOWN"
   | "UNHEALTHY"
   | "THROTTLED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const AgentHealthCode = /*@__PURE__*/ S.String;
 
-export type AgentHealthCodeList = AgentHealthCode[];
+export type AgentHealthCodeList = (AgentHealthCode | (string & {}))[];
 export const AgentHealthCodeList = /*@__PURE__*/ S.Array(AgentHealthCode);
 export interface AgentFilter {
   agentHealths: AgentHealth[];
@@ -1204,7 +1194,7 @@ export const ListAssessmentRunAgentsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListParentArnList = string[];
 export const ListParentArnList = /*@__PURE__*/ S.Array(S.String);
 export type NamePattern = string;
-export type AssessmentRunStateList = AssessmentRunState[];
+export type AssessmentRunStateList = (AssessmentRunState | (string & {}))[];
 export const AssessmentRunStateList = /*@__PURE__*/ S.Array(AssessmentRunState);
 export interface DurationRange {
   minSeconds?: number;
@@ -1454,7 +1444,7 @@ export const AutoScalingGroupList = /*@__PURE__*/ S.Array(S.String);
 export type RuleName = string;
 export type RuleNameList = string[];
 export const RuleNameList = /*@__PURE__*/ S.Array(S.String);
-export type SeverityList = Severity[];
+export type SeverityList = (Severity | (string & {}))[];
 export const SeverityList = /*@__PURE__*/ S.Array(Severity);
 export interface FindingFilter {
   agentIds?: string[];
@@ -1690,12 +1680,12 @@ export const StartAssessmentRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartAssessmentRunResponse",
 }) as any as S.Schema<StartAssessmentRunResponse>;
-export type StopAction = "START_EVALUATION" | "SKIP_EVALUATION" | (string & {});
+export type StopAction = "START_EVALUATION" | "SKIP_EVALUATION";
 export const StopAction = /*@__PURE__*/ S.String;
 
 export interface StopAssessmentRunRequest {
   assessmentRunArn: string;
-  stopAction?: StopAction;
+  stopAction?: StopAction | (string & {});
 }
 export const StopAssessmentRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1715,7 +1705,7 @@ export const StopAssessmentRunResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopAssessmentRunResponse>;
 export interface SubscribeToEventRequest {
   resourceArn: string;
-  event: InspectorEvent;
+  event: InspectorEvent | (string & {});
   topicArn: string;
 }
 export const SubscribeToEventRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1737,7 +1727,7 @@ export const SubscribeToEventResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscribeToEventResponse>;
 export interface UnsubscribeFromEventRequest {
   resourceArn: string;
-  event: InspectorEvent;
+  event: InspectorEvent | (string & {});
   topicArn: string;
 }
 export const UnsubscribeFromEventRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1788,8 +1778,7 @@ export type AccessDeniedErrorCode =
   | "ACCESS_DENIED_TO_RESOURCE_GROUP"
   | "ACCESS_DENIED_TO_RULES_PACKAGE"
   | "ACCESS_DENIED_TO_SNS_TOPIC"
-  | "ACCESS_DENIED_TO_IAM_ROLE"
-  | (string & {});
+  | "ACCESS_DENIED_TO_IAM_ROLE";
 export const AccessDeniedErrorCode = /*@__PURE__*/ S.String;
 
 export type InvalidInputErrorCode =
@@ -1846,8 +1835,7 @@ export type InvalidInputErrorCode =
   | "INVALID_NUMBER_OF_AGENT_IDS"
   | "INVALID_NUMBER_OF_AUTO_SCALING_GROUPS"
   | "INVALID_NUMBER_OF_RULE_NAMES"
-  | "INVALID_NUMBER_OF_SEVERITIES"
-  | (string & {});
+  | "INVALID_NUMBER_OF_SEVERITIES";
 export const InvalidInputErrorCode = /*@__PURE__*/ S.String;
 
 export type NoSuchEntityErrorCode =
@@ -1858,14 +1846,12 @@ export type NoSuchEntityErrorCode =
   | "RESOURCE_GROUP_DOES_NOT_EXIST"
   | "RULES_PACKAGE_DOES_NOT_EXIST"
   | "SNS_TOPIC_DOES_NOT_EXIST"
-  | "IAM_ROLE_DOES_NOT_EXIST"
-  | (string & {});
+  | "IAM_ROLE_DOES_NOT_EXIST";
 export const NoSuchEntityErrorCode = /*@__PURE__*/ S.String;
 
 export type InvalidCrossAccountRoleErrorCode =
   | "ROLE_DOES_NOT_EXIST_OR_INVALID_TRUST_RELATIONSHIP"
-  | "ROLE_DOES_NOT_HAVE_CORRECT_POLICY"
-  | (string & {});
+  | "ROLE_DOES_NOT_HAVE_CORRECT_POLICY";
 export const InvalidCrossAccountRoleErrorCode = /*@__PURE__*/ S.String;
 
 export type LimitExceededErrorCode =
@@ -1873,8 +1859,7 @@ export type LimitExceededErrorCode =
   | "ASSESSMENT_TEMPLATE_LIMIT_EXCEEDED"
   | "ASSESSMENT_RUN_LIMIT_EXCEEDED"
   | "RESOURCE_GROUP_LIMIT_EXCEEDED"
-  | "EVENT_SUBSCRIPTION_LIMIT_EXCEEDED"
-  | (string & {});
+  | "EVENT_SUBSCRIPTION_LIMIT_EXCEEDED";
 export const LimitExceededErrorCode = /*@__PURE__*/ S.String;
 
 export type AssessmentRunInProgressArnList = string[];

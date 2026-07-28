@@ -14376,6 +14376,76 @@
         "smithy.api#documentation": "You can upload your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint. It assumes that cURL is called from a location with bind_config.txt (valid BIND config) present. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information."
       }
     },
+    "com.cloudflare.dns#RecordsListRequestComment": {
+      "type": "structure",
+      "members": {
+        "absent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If this parameter is present, only records *without* a comment are returned."
+          }
+        },
+        "contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Substring of the DNS record comment. Comment filters are case-insensitive."
+          }
+        },
+        "endswith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Suffix of the DNS record comment. Comment filters are case-insensitive."
+          }
+        },
+        "exact": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Exact value of the DNS record comment. Comment filters are case-insensitive."
+          }
+        },
+        "present": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If this parameter is present, only records *with* a comment are returned."
+          }
+        },
+        "startswith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Prefix of the DNS record comment. Comment filters are case-insensitive."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListRequestContent": {
+      "type": "structure",
+      "members": {
+        "contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Substring of the DNS record content. Content filters are case-insensitive."
+          }
+        },
+        "endswith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Suffix of the DNS record content. Content filters are case-insensitive."
+          }
+        },
+        "exact": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Exact value of the DNS record content. Content filters are case-insensitive."
+          }
+        },
+        "startswith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Prefix of the DNS record content. Content filters are case-insensitive."
+          }
+        }
+      }
+    },
     "com.cloudflare.dns#RecordsListRequestMatch": {
       "type": "enum",
       "members": {
@@ -14389,6 +14459,35 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListRequestName": {
+      "type": "structure",
+      "members": {
+        "contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Substring of the DNS record name. Name filters are case-insensitive."
+          }
+        },
+        "endswith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Suffix of the DNS record name. Name filters are case-insensitive."
+          }
+        },
+        "exact": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Exact value of the DNS record name. Name filters are case-insensitive."
+          }
+        },
+        "startswith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Prefix of the DNS record name. Name filters are case-insensitive."
           }
         }
       }
@@ -14424,6 +14523,47 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "proxied"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListRequestTag": {
+      "type": "structure",
+      "members": {
+        "absent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a tag which must *not* be present on the DNS record. Tag filters are case-insensitive."
+          }
+        },
+        "contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value contains `<tag-value>`. Tag filters are case-insensitive."
+          }
+        },
+        "endswith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value ends with `<tag-value>`. Tag filters are case-insensitive."
+          }
+        },
+        "exact": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value is `<tag-value>`. Tag filters are case-insensitive."
+          }
+        },
+        "present": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a tag which must be present on the DNS record. Tag filters are case-insensitive."
+          }
+        },
+        "startswith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value starts with `<tag-value>`. Tag filters are case-insensitive."
           }
         }
       }
@@ -14587,74 +14727,16 @@
             "smithy.api#required": {}
           }
         },
-        "comment_absent": {
-          "target": "smithy.api#String",
+        "comment": {
+          "target": "com.cloudflare.dns#RecordsListRequestComment",
           "traits": {
-            "smithy.api#documentation": "If this parameter is present, only records *without* a comment are returned.",
-            "smithy.api#httpQuery": "comment.absent"
+            "com.cloudflare.protocols#deepQuery": "comment"
           }
         },
-        "comment_contains": {
-          "target": "smithy.api#String",
+        "content": {
+          "target": "com.cloudflare.dns#RecordsListRequestContent",
           "traits": {
-            "smithy.api#documentation": "Substring of the DNS record comment. Comment filters are case-insensitive.",
-            "smithy.api#httpQuery": "comment.contains"
-          }
-        },
-        "comment_endswith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Suffix of the DNS record comment. Comment filters are case-insensitive.",
-            "smithy.api#httpQuery": "comment.endswith"
-          }
-        },
-        "comment_exact": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Exact value of the DNS record comment. Comment filters are case-insensitive.",
-            "smithy.api#httpQuery": "comment.exact"
-          }
-        },
-        "comment_present": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "If this parameter is present, only records *with* a comment are returned.",
-            "smithy.api#httpQuery": "comment.present"
-          }
-        },
-        "comment_startswith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Prefix of the DNS record comment. Comment filters are case-insensitive.",
-            "smithy.api#httpQuery": "comment.startswith"
-          }
-        },
-        "content_contains": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Substring of the DNS record content. Content filters are case-insensitive.",
-            "smithy.api#httpQuery": "content.contains"
-          }
-        },
-        "content_endswith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Suffix of the DNS record content. Content filters are case-insensitive.",
-            "smithy.api#httpQuery": "content.endswith"
-          }
-        },
-        "content_exact": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Exact value of the DNS record content. Content filters are case-insensitive.",
-            "smithy.api#httpQuery": "content.exact"
-          }
-        },
-        "content_startswith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Prefix of the DNS record content. Content filters are case-insensitive.",
-            "smithy.api#httpQuery": "content.startswith"
+            "com.cloudflare.protocols#deepQuery": "content"
           }
         },
         "direction": {
@@ -14678,32 +14760,10 @@
             "smithy.api#httpQuery": "match"
           }
         },
-        "name_contains": {
-          "target": "smithy.api#String",
+        "name": {
+          "target": "com.cloudflare.dns#RecordsListRequestName",
           "traits": {
-            "smithy.api#documentation": "Substring of the DNS record name. Name filters are case-insensitive.",
-            "smithy.api#httpQuery": "name.contains"
-          }
-        },
-        "name_endswith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Suffix of the DNS record name. Name filters are case-insensitive.",
-            "smithy.api#httpQuery": "name.endswith"
-          }
-        },
-        "name_exact": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Exact value of the DNS record name. Name filters are case-insensitive.",
-            "smithy.api#httpQuery": "name.exact"
-          }
-        },
-        "name_startswith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Prefix of the DNS record name. Name filters are case-insensitive.",
-            "smithy.api#httpQuery": "name.startswith"
+            "com.cloudflare.protocols#deepQuery": "name"
           }
         },
         "order": {
@@ -14755,46 +14815,10 @@
             "smithy.api#httpQuery": "shadowing_name"
           }
         },
-        "tag_absent": {
-          "target": "smithy.api#String",
+        "tag": {
+          "target": "com.cloudflare.dns#RecordsListRequestTag",
           "traits": {
-            "smithy.api#documentation": "Name of a tag which must *not* be present on the DNS record. Tag filters are case-insensitive.",
-            "smithy.api#httpQuery": "tag.absent"
-          }
-        },
-        "tag_contains": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value contains `<tag-value>`. Tag filters are case-insensitive.",
-            "smithy.api#httpQuery": "tag.contains"
-          }
-        },
-        "tag_endswith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value ends with `<tag-value>`. Tag filters are case-insensitive.",
-            "smithy.api#httpQuery": "tag.endswith"
-          }
-        },
-        "tag_exact": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value is `<tag-value>`. Tag filters are case-insensitive.",
-            "smithy.api#httpQuery": "tag.exact"
-          }
-        },
-        "tag_present": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a tag which must be present on the DNS record. Tag filters are case-insensitive.",
-            "smithy.api#httpQuery": "tag.present"
-          }
-        },
-        "tag_startswith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value starts with `<tag-value>`. Tag filters are case-insensitive.",
-            "smithy.api#httpQuery": "tag.startswith"
+            "com.cloudflare.protocols#deepQuery": "tag"
           }
         },
         "tag_match": {
@@ -27343,6 +27367,35 @@
         }
       }
     },
+    "com.cloudflare.dns#SettingsAccountViewsListRequestName": {
+      "type": "structure",
+      "members": {
+        "contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Substring of the DNS view name."
+          }
+        },
+        "endswith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Suffix of the DNS view name."
+          }
+        },
+        "exact": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Exact value of the DNS view name."
+          }
+        },
+        "startswith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Prefix of the DNS view name."
+          }
+        }
+      }
+    },
     "com.cloudflare.dns#SettingsAccountViewsListRequestOrder": {
       "type": "enum",
       "members": {
@@ -27391,32 +27444,10 @@
             "smithy.api#httpQuery": "match"
           }
         },
-        "name_contains": {
-          "target": "smithy.api#String",
+        "name": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsListRequestName",
           "traits": {
-            "smithy.api#documentation": "Substring of the DNS view name.",
-            "smithy.api#httpQuery": "name.contains"
-          }
-        },
-        "name_endswith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Suffix of the DNS view name.",
-            "smithy.api#httpQuery": "name.endswith"
-          }
-        },
-        "name_exact": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Exact value of the DNS view name.",
-            "smithy.api#httpQuery": "name.exact"
-          }
-        },
-        "name_startswith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Prefix of the DNS view name.",
-            "smithy.api#httpQuery": "name.startswith"
+            "com.cloudflare.protocols#deepQuery": "name"
           }
         },
         "order": {

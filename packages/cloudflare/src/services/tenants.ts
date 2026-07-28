@@ -69,9 +69,7 @@ export const GetEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEntitlementRequest",
 }) as any as S.Schema<GetEntitlementRequest>;
 
-export type EntitlementsGetResponseAllowAddSubdomainType =
-  | "bool"
-  | (string & {});
+export type EntitlementsGetResponseAllowAddSubdomainType = "bool";
 export const EntitlementsGetResponseAllowAddSubdomainType =
   /*@__PURE__*/ S.String;
 
@@ -89,9 +87,7 @@ export const EntitlementsGetResponseAllowAddSubdomain = /*@__PURE__*/ S.suspend(
   identifier: "EntitlementsGetResponseAllowAddSubdomain",
 }) as any as S.Schema<EntitlementsGetResponseAllowAddSubdomain>;
 
-export type EntitlementsGetResponseAllowAutoAcceptInvitesType =
-  | "bool"
-  | (string & {});
+export type EntitlementsGetResponseAllowAutoAcceptInvitesType = "bool";
 export const EntitlementsGetResponseAllowAutoAcceptInvitesType =
   /*@__PURE__*/ S.String;
 
@@ -109,9 +105,7 @@ export const EntitlementsGetResponseAllowAutoAcceptInvites =
     identifier: "EntitlementsGetResponseAllowAutoAcceptInvites",
   }) as any as S.Schema<EntitlementsGetResponseAllowAutoAcceptInvites>;
 
-export type EntitlementsGetResponseCnameSetupAllowedType =
-  | "bool"
-  | (string & {});
+export type EntitlementsGetResponseCnameSetupAllowedType = "bool";
 export const EntitlementsGetResponseCnameSetupAllowedType =
   /*@__PURE__*/ S.String;
 
@@ -130,7 +124,7 @@ export const EntitlementsGetResponseCnameSetupAllowed = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EntitlementsGetResponseCnameSetupAllowed>;
 
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
-  "max_count" | (string & {});
+  "max_count";
 export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
   /*@__PURE__*/ S.String;
 
@@ -150,7 +144,7 @@ export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganization
   }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation>;
 
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType =
-  "bool" | (string & {});
+  "bool";
 export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType =
   /*@__PURE__*/ S.String;
 
@@ -170,7 +164,7 @@ export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganization
   }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation>;
 
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType =
-  "" | (string & {});
+  "";
 export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType =
   /*@__PURE__*/ S.String;
 
@@ -235,9 +229,7 @@ export const EntitlementsGetResponseCustomEntitlementsList =
     EntitlementsGetResponseCustomEntitlementsItem,
   ) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsList>;
 
-export type EntitlementsGetResponseMhsCertificateCountType =
-  | "max_count"
-  | (string & {});
+export type EntitlementsGetResponseMhsCertificateCountType = "max_count";
 export const EntitlementsGetResponseMhsCertificateCountType =
   /*@__PURE__*/ S.String;
 
@@ -255,9 +247,7 @@ export const EntitlementsGetResponseMhsCertificateCount =
     identifier: "EntitlementsGetResponseMhsCertificateCount",
   }) as any as S.Schema<EntitlementsGetResponseMhsCertificateCount>;
 
-export type EntitlementsGetResponsePartialSetupAllowedType =
-  | "bool"
-  | (string & {});
+export type EntitlementsGetResponsePartialSetupAllowedType = "bool";
 export const EntitlementsGetResponsePartialSetupAllowedType =
   /*@__PURE__*/ S.String;
 
@@ -487,10 +477,7 @@ export const AccountsListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListResultItemSettings",
 }) as any as S.Schema<AccountsListResultItemSettings>;
 
-export type AccountsListResultItemType =
-  | "standard"
-  | "enterprise"
-  | (string & {});
+export type AccountsListResultItemType = "standard" | "enterprise";
 export const AccountsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface AccountsListResultItem {

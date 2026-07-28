@@ -176,8 +176,7 @@ export type ProviderType =
   | "GitHubEnterpriseServer"
   | "GitLab"
   | "GitLabSelfManaged"
-  | "AzureDevOps"
-  | (string & {});
+  | "AzureDevOps";
 export const ProviderType = /*@__PURE__*/ S.String;
 
 export type ConnectionName = string;
@@ -194,7 +193,7 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type HostArn = string;
 export interface CreateConnectionInput {
-  ProviderType?: ProviderType;
+  ProviderType?: ProviderType | (string & {});
   ConnectionName: string;
   Tags?: Tag[];
   HostArn?: string;
@@ -249,7 +248,7 @@ export const VpcConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpcConfiguration>;
 export interface CreateHostInput {
   Name: string;
-  ProviderType: ProviderType;
+  ProviderType: ProviderType | (string & {});
   ProviderEndpoint: string;
   VpcConfiguration?: VpcConfiguration;
   Tags?: Tag[];
@@ -335,19 +334,16 @@ export type BranchName = string;
 export type DeploymentFilePath = string;
 export type ResourceName = string;
 export type IamRoleArn = string;
-export type SyncConfigurationType = "CFN_STACK_SYNC" | (string & {});
+export type SyncConfigurationType = "CFN_STACK_SYNC";
 export const SyncConfigurationType = /*@__PURE__*/ S.String;
 
-export type PublishDeploymentStatus = "ENABLED" | "DISABLED" | (string & {});
+export type PublishDeploymentStatus = "ENABLED" | "DISABLED";
 export const PublishDeploymentStatus = /*@__PURE__*/ S.String;
 
-export type TriggerResourceUpdateOn =
-  | "ANY_CHANGE"
-  | "FILE_CHANGE"
-  | (string & {});
+export type TriggerResourceUpdateOn = "ANY_CHANGE" | "FILE_CHANGE";
 export const TriggerResourceUpdateOn = /*@__PURE__*/ S.String;
 
-export type PullRequestComment = "ENABLED" | "DISABLED" | (string & {});
+export type PullRequestComment = "ENABLED" | "DISABLED";
 export const PullRequestComment = /*@__PURE__*/ S.String;
 
 export interface CreateSyncConfigurationInput {
@@ -356,10 +352,10 @@ export interface CreateSyncConfigurationInput {
   RepositoryLinkId: string;
   ResourceName: string;
   RoleArn: string;
-  SyncType: SyncConfigurationType;
-  PublishDeploymentStatus?: PublishDeploymentStatus;
-  TriggerResourceUpdateOn?: TriggerResourceUpdateOn;
-  PullRequestComment?: PullRequestComment;
+  SyncType: SyncConfigurationType | (string & {});
+  PublishDeploymentStatus?: PublishDeploymentStatus | (string & {});
+  TriggerResourceUpdateOn?: TriggerResourceUpdateOn | (string & {});
+  PullRequestComment?: PullRequestComment | (string & {});
 }
 export const CreateSyncConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -467,7 +463,7 @@ export const DeleteRepositoryLinkOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRepositoryLinkOutput",
 }) as any as S.Schema<DeleteRepositoryLinkOutput>;
 export interface DeleteSyncConfigurationInput {
-  SyncType: SyncConfigurationType;
+  SyncType: SyncConfigurationType | (string & {});
   ResourceName: string;
 }
 export const DeleteSyncConfigurationInput = /*@__PURE__*/ S.suspend(() =>
@@ -494,11 +490,7 @@ export const GetConnectionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectionInput",
 }) as any as S.Schema<GetConnectionInput>;
 export type AccountId = string;
-export type ConnectionStatus =
-  | "PENDING"
-  | "AVAILABLE"
-  | "ERROR"
-  | (string & {});
+export type ConnectionStatus = "PENDING" | "AVAILABLE" | "ERROR";
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface Connection {
@@ -573,7 +565,7 @@ export const GetRepositoryLinkOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetRepositorySyncStatusInput {
   Branch: string;
   RepositoryLinkId: string;
-  SyncType: SyncConfigurationType;
+  SyncType: SyncConfigurationType | (string & {});
 }
 export const GetRepositorySyncStatusInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -591,8 +583,7 @@ export type RepositorySyncStatus =
   | "INITIATED"
   | "IN_PROGRESS"
   | "SUCCEEDED"
-  | "QUEUED"
-  | (string & {});
+  | "QUEUED";
 export const RepositorySyncStatus = /*@__PURE__*/ S.String;
 
 export type Event = string;
@@ -641,7 +632,7 @@ export const GetRepositorySyncStatusOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRepositorySyncStatusOutput>;
 export interface GetResourceSyncStatusInput {
   ResourceName: string;
-  SyncType: SyncConfigurationType;
+  SyncType: SyncConfigurationType | (string & {});
 }
 export const GetResourceSyncStatusInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceName: S.String, SyncType: SyncConfigurationType }).pipe(
@@ -692,8 +683,7 @@ export type ResourceSyncStatus =
   | "FAILED"
   | "INITIATED"
   | "IN_PROGRESS"
-  | "SUCCEEDED"
-  | (string & {});
+  | "SUCCEEDED";
 export const ResourceSyncStatus = /*@__PURE__*/ S.String;
 
 export type Target = string;
@@ -732,7 +722,7 @@ export const GetResourceSyncStatusOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourceSyncStatusOutput",
 }) as any as S.Schema<GetResourceSyncStatusOutput>;
 export interface GetSyncBlockerSummaryInput {
-  SyncType: SyncConfigurationType;
+  SyncType: SyncConfigurationType | (string & {});
   ResourceName: string;
 }
 export const GetSyncBlockerSummaryInput = /*@__PURE__*/ S.suspend(() =>
@@ -743,10 +733,10 @@ export const GetSyncBlockerSummaryInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSyncBlockerSummaryInput",
 }) as any as S.Schema<GetSyncBlockerSummaryInput>;
 export type Id = string;
-export type BlockerType = "AUTOMATED" | (string & {});
+export type BlockerType = "AUTOMATED";
 export const BlockerType = /*@__PURE__*/ S.String;
 
-export type BlockerStatus = "ACTIVE" | "RESOLVED" | (string & {});
+export type BlockerStatus = "ACTIVE" | "RESOLVED";
 export const BlockerStatus = /*@__PURE__*/ S.String;
 
 export type CreatedReason = string;
@@ -811,7 +801,7 @@ export const GetSyncBlockerSummaryOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSyncBlockerSummaryOutput",
 }) as any as S.Schema<GetSyncBlockerSummaryOutput>;
 export interface GetSyncConfigurationInput {
-  SyncType: SyncConfigurationType;
+  SyncType: SyncConfigurationType | (string & {});
   ResourceName: string;
 }
 export const GetSyncConfigurationInput = /*@__PURE__*/ S.suspend(() =>
@@ -832,7 +822,7 @@ export const GetSyncConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListConnectionsInput {
-  ProviderTypeFilter?: ProviderType;
+  ProviderTypeFilter?: ProviderType | (string & {});
   HostArnFilter?: string;
   MaxResults?: number;
   NextToken?: string;
@@ -938,7 +928,7 @@ export const ListRepositoryLinksOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRepositoryLinksOutput>;
 export interface ListRepositorySyncDefinitionsInput {
   RepositoryLinkId: string;
-  SyncType: SyncConfigurationType;
+  SyncType: SyncConfigurationType | (string & {});
 }
 export const ListRepositorySyncDefinitionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -987,7 +977,7 @@ export interface ListSyncConfigurationsInput {
   MaxResults?: number;
   NextToken?: string;
   RepositoryLinkId: string;
-  SyncType: SyncConfigurationType;
+  SyncType: SyncConfigurationType | (string & {});
 }
 export const ListSyncConfigurationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1118,7 +1108,7 @@ export const UpdateRepositoryLinkOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRepositoryLinkOutput>;
 export interface UpdateSyncBlockerInput {
   Id: string;
-  SyncType: SyncConfigurationType;
+  SyncType: SyncConfigurationType | (string & {});
   ResourceName: string;
   ResolvedReason: string;
 }
@@ -1154,10 +1144,10 @@ export interface UpdateSyncConfigurationInput {
   RepositoryLinkId?: string;
   ResourceName: string;
   RoleArn?: string;
-  SyncType: SyncConfigurationType;
-  PublishDeploymentStatus?: PublishDeploymentStatus;
-  TriggerResourceUpdateOn?: TriggerResourceUpdateOn;
-  PullRequestComment?: PullRequestComment;
+  SyncType: SyncConfigurationType | (string & {});
+  PublishDeploymentStatus?: PublishDeploymentStatus | (string & {});
+  TriggerResourceUpdateOn?: TriggerResourceUpdateOn | (string & {});
+  PullRequestComment?: PullRequestComment | (string & {});
 }
 export const UpdateSyncConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

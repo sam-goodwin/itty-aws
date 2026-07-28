@@ -43,8 +43,7 @@ export type HogFunctionTypeEnum =
   | "source_webhook"
   | "warehouse_source_webhook"
   | "site_app"
-  | "transformation"
-  | (string & {});
+  | "transformation";
 export const HogFunctionTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `string` - string * `number` - number * `boolean` - boolean * `dictionary` - dictionary * `choice` - choice * `json` - json * `integration` - integration * `integration_multi` - integration_multi * `integration_field` - integration_field * `email` - email * `native_email` - native_email * `posthog_assignee` - posthog_assignee * `posthog_ticket_tags` - posthog_ticket_tags * `posthog_business_hours` - posthog_business_hours * `non_failure_status_codes` - non_failure_status_codes * `customer_analytics_account_properties` - customer_analytics_account_properties * `customer_analytics_account_relationships` - customer_analytics_account_relationships */
@@ -65,8 +64,7 @@ export type InputsSchemaItemTypeEnum =
   | "posthog_business_hours"
   | "non_failure_status_codes"
   | "customer_analytics_account_properties"
-  | "customer_analytics_account_relationships"
-  | (string & {});
+  | "customer_analytics_account_relationships";
 export const InputsSchemaItemTypeEnum = /*@__PURE__*/ S.String;
 
 export type InputsSchemaItemChoicesItemMap = {
@@ -83,7 +81,7 @@ export const InputsSchemaItemChoicesList = /*@__PURE__*/ S.Array(
   InputsSchemaItemChoicesItemMap,
 ) as any as S.Schema<InputsSchemaItemChoicesList>;
 
-export type InputsSchemaItemTemplatingCase1 = "hog" | "liquid" | (string & {});
+export type InputsSchemaItemTemplatingCase1 = "hog" | "liquid";
 export const InputsSchemaItemTemplatingCase1 = /*@__PURE__*/ S.String;
 
 export type InputsSchemaItemTemplating =
@@ -141,12 +139,12 @@ export const HogFunctionsCreateRequestInputsSchemaList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HogFunctionsCreateRequestInputsSchemaList>;
 
 /** * `hog` - hog * `liquid` - liquid */
-export type HogFunctionTemplatingEnum = "hog" | "liquid" | (string & {});
+export type HogFunctionTemplatingEnum = "hog" | "liquid";
 export const HogFunctionTemplatingEnum = /*@__PURE__*/ S.String;
 
 export interface InputsItemInput {
   value?: unknown;
-  templating?: HogFunctionTemplatingEnum;
+  templating?: HogFunctionTemplatingEnum | (string & {});
 }
 export const InputsItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -170,8 +168,7 @@ export const HogFunctionsCreateRequestInputsMap = /*@__PURE__*/ S.Record(
 export type HogFunctionFiltersSourceEnum =
   | "events"
   | "person-updates"
-  | "data-warehouse-table"
-  | (string & {});
+  | "data-warehouse-table";
 export const HogFunctionFiltersSourceEnum = /*@__PURE__*/ S.String;
 
 export type HogFunctionFiltersActionsItemMap = {
@@ -317,7 +314,7 @@ export interface HogFunctionsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
-  type?: HogFunctionTypeEnum | null;
+  type?: HogFunctionTypeEnum | (string & {}) | null;
   /** Display name for the function. */
   name?: string | null;
   /** Human-readable description of what this function does. */
@@ -390,11 +387,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -583,14 +579,7 @@ export const HogFunctionTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFunctionTemplate>;
 
 /** * `0` - 0 * `1` - 1 * `2` - 2 * `3` - 3 * `11` - 11 * `12` - 12 */
-export type HogFunctionStatusStateEnum =
-  | 0
-  | 1
-  | 2
-  | 3
-  | 11
-  | 12
-  | (number & {});
+export type HogFunctionStatusStateEnum = 0 | 1 | 2 | 3 | 11 | 12;
 export const HogFunctionStatusStateEnum = /*@__PURE__*/ S.Number;
 
 export interface HogFunctionStatus {
@@ -606,7 +595,7 @@ export const HogFunctionStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionStatus",
 }) as any as S.Schema<HogFunctionStatus>;
 
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
+export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface HogFunctionOutput {
@@ -735,7 +724,7 @@ export interface HogFunctionsEnableBackfillsCreateRequest {
   /** A UUID string identifying this hog function. */
   id: string;
   /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
-  type?: HogFunctionTypeEnum | null;
+  type?: HogFunctionTypeEnum | (string & {}) | null;
   /** Display name for the function. */
   name?: string | null;
   /** Human-readable description of what this function does. */
@@ -878,7 +867,7 @@ export const HogFunctionInputMappingsList = /*@__PURE__*/ S.Array(
 
 export interface HogFunctionInput {
   /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
-  type?: HogFunctionTypeEnum | null;
+  type?: HogFunctionTypeEnum | (string & {}) | null;
   /** Display name for the function. */
   name?: string | null;
   /** Human-readable description of what this function does. */
@@ -1163,18 +1152,14 @@ export const HogFunctionsLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionsLogsRetrieveResponse",
 }) as any as S.Schema<HogFunctionsLogsRetrieveResponse>;
 
-export type HogFunctionsMetricsRetrieveRequestBreakdownBy =
-  | "name"
-  | "kind"
-  | (string & {});
+export type HogFunctionsMetricsRetrieveRequestBreakdownBy = "name" | "kind";
 export const HogFunctionsMetricsRetrieveRequestBreakdownBy =
   /*@__PURE__*/ S.String;
 
 export type HogFunctionsMetricsRetrieveRequestInterval =
   | "hour"
   | "day"
-  | "week"
-  | (string & {});
+  | "week";
 export const HogFunctionsMetricsRetrieveRequestInterval =
   /*@__PURE__*/ S.String;
 
@@ -1188,11 +1173,11 @@ export interface HogFunctionsMetricsRetrieveRequest {
   /** End of the time range. Same format as 'after'. Defaults to now. */
   before?: string;
   /** Group the series by metric 'name' or 'kind'. Defaults to 'kind'. * `name` - name * `kind` - kind */
-  breakdown_by?: HogFunctionsMetricsRetrieveRequestBreakdownBy;
+  breakdown_by?: HogFunctionsMetricsRetrieveRequestBreakdownBy | (string & {});
   /** Filter metrics to a specific execution instance. */
   instance_id?: string;
   /** Time bucket size for the series. One of: hour, day, week. Defaults to 'day'. * `hour` - hour * `day` - day * `week` - week */
-  interval?: HogFunctionsMetricsRetrieveRequestInterval;
+  interval?: HogFunctionsMetricsRetrieveRequestInterval | (string & {});
   /** Comma-separated metric kinds to filter by, e.g. 'success,failure'. */
   kind?: string;
   /** Comma-separated metric names to filter by. */
@@ -1267,16 +1252,14 @@ export const AppMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type HogFunctionsMetricsTotalsRetrieveRequestBreakdownBy =
   | "name"
-  | "kind"
-  | (string & {});
+  | "kind";
 export const HogFunctionsMetricsTotalsRetrieveRequestBreakdownBy =
   /*@__PURE__*/ S.String;
 
 export type HogFunctionsMetricsTotalsRetrieveRequestInterval =
   | "hour"
   | "day"
-  | "week"
-  | (string & {});
+  | "week";
 export const HogFunctionsMetricsTotalsRetrieveRequestInterval =
   /*@__PURE__*/ S.String;
 
@@ -1290,11 +1273,13 @@ export interface HogFunctionsMetricsTotalsRetrieveRequest {
   /** End of the time range. Same format as 'after'. Defaults to now. */
   before?: string;
   /** Group the series by metric 'name' or 'kind'. Defaults to 'kind'. * `name` - name * `kind` - kind */
-  breakdown_by?: HogFunctionsMetricsTotalsRetrieveRequestBreakdownBy;
+  breakdown_by?:
+    | HogFunctionsMetricsTotalsRetrieveRequestBreakdownBy
+    | (string & {});
   /** Filter metrics to a specific execution instance. */
   instance_id?: string;
   /** Time bucket size for the series. One of: hour, day, week. Defaults to 'day'. * `hour` - hour * `day` - day * `week` - week */
-  interval?: HogFunctionsMetricsTotalsRetrieveRequestInterval;
+  interval?: HogFunctionsMetricsTotalsRetrieveRequestInterval | (string & {});
   /** Comma-separated metric kinds to filter by, e.g. 'success,failure'. */
   kind?: string;
   /** Comma-separated metric names to filter by. */
@@ -1377,7 +1362,7 @@ export interface HogFunctionsPartialUpdateRequest {
   /** A UUID string identifying this hog function. */
   id: string;
   /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
-  type?: HogFunctionTypeEnum | null;
+  type?: HogFunctionTypeEnum | (string & {}) | null;
   /** Display name for the function. */
   name?: string | null;
   /** Human-readable description of what this function does. */
@@ -1492,13 +1477,13 @@ export const HogFunctionsRearrangePartialUpdateResponse =
 export type HogInvocationRerunFilterStatusEnum =
   | "running"
   | "succeeded"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const HogInvocationRerunFilterStatusEnum = /*@__PURE__*/ S.String;
 
 /** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
-export type HogInvocationRerunFilterStatusList =
-  ReadonlyArray<HogInvocationRerunFilterStatusEnum>;
+export type HogInvocationRerunFilterStatusList = ReadonlyArray<
+  HogInvocationRerunFilterStatusEnum | (string & {})
+>;
 export const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
   HogInvocationRerunFilterStatusEnum,
 ) as any as S.Schema<HogInvocationRerunFilterStatusList>;
@@ -1639,7 +1624,7 @@ export interface HogFunctionsUpdateRequest {
   /** A UUID string identifying this hog function. */
   id: string;
   /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
-  type?: HogFunctionTypeEnum | null;
+  type?: HogFunctionTypeEnum | (string & {}) | null;
   /** Display name for the function. */
   name?: string | null;
   /** Human-readable description of what this function does. */

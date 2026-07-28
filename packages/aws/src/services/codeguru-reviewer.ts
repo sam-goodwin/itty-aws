@@ -172,10 +172,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type KMSKeyId = string;
-export type EncryptionOption =
-  | "AWS_OWNED_CMK"
-  | "CUSTOMER_MANAGED_CMK"
-  | (string & {});
+export type EncryptionOption = "AWS_OWNED_CMK" | "CUSTOMER_MANAGED_CMK";
 export const EncryptionOption = /*@__PURE__*/ S.String;
 
 export interface KMSKeyDetails {
@@ -220,8 +217,7 @@ export type ProviderType =
   | "GitHub"
   | "Bitbucket"
   | "GitHubEnterpriseServer"
-  | "S3Bucket"
-  | (string & {});
+  | "S3Bucket";
 export const ProviderType = /*@__PURE__*/ S.String;
 
 export type RepositoryAssociationState =
@@ -229,8 +225,7 @@ export type RepositoryAssociationState =
   | "Associating"
   | "Failed"
   | "Disassociating"
-  | "Disassociated"
-  | (string & {});
+  | "Disassociated";
 export const RepositoryAssociationState = /*@__PURE__*/ S.String;
 
 export type StateReason = string;
@@ -361,7 +356,7 @@ export interface EventInfo {
 export const EventInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), State: S.optional(S.String) }),
 ).annotate({ identifier: "EventInfo" }) as any as S.Schema<EventInfo>;
-export type VendorName = "GitHub" | "GitLab" | "NativeS3" | (string & {});
+export type VendorName = "GitHub" | "GitLab" | "NativeS3";
 export const VendorName = /*@__PURE__*/ S.String;
 
 export interface RequestMetadata {
@@ -408,7 +403,7 @@ export const RepositoryAnalysis = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RepositoryAnalysis",
 }) as any as S.Schema<RepositoryAnalysis>;
-export type AnalysisType = "Security" | "CodeQuality" | (string & {});
+export type AnalysisType = "Security" | "CodeQuality";
 export const AnalysisType = /*@__PURE__*/ S.String;
 
 export type AnalysisTypes = AnalysisType[];
@@ -448,15 +443,10 @@ export const CreateCodeReviewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCodeReviewRequest",
 }) as any as S.Schema<CreateCodeReviewRequest>;
-export type JobState =
-  | "Completed"
-  | "Pending"
-  | "Failed"
-  | "Deleting"
-  | (string & {});
+export type JobState = "Completed" | "Pending" | "Failed" | "Deleting";
 export const JobState = /*@__PURE__*/ S.String;
 
-export type Type = "PullRequest" | "RepositoryAnalysis" | (string & {});
+export type Type = "PullRequest" | "RepositoryAnalysis";
 export const Type = /*@__PURE__*/ S.String;
 
 export type PullRequestId = string;
@@ -474,11 +464,7 @@ export const Metrics = /*@__PURE__*/ S.suspend(() =>
     FindingsCount: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
-export type ConfigFileState =
-  | "Present"
-  | "Absent"
-  | "PresentWithErrors"
-  | (string & {});
+export type ConfigFileState = "Present" | "Absent" | "PresentWithErrors";
 export const ConfigFileState = /*@__PURE__*/ S.String;
 
 export interface CodeReview {
@@ -582,7 +568,7 @@ export const DescribeRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeRecommendationFeedbackRequest",
 }) as any as S.Schema<DescribeRecommendationFeedbackRequest>;
-export type Reaction = "ThumbsUp" | "ThumbsDown" | (string & {});
+export type Reaction = "ThumbsUp" | "ThumbsDown";
 export const Reaction = /*@__PURE__*/ S.String;
 
 export type Reactions = Reaction[];
@@ -684,9 +670,9 @@ export const DisassociateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateRepositoryResponse",
 }) as any as S.Schema<DisassociateRepositoryResponse>;
-export type ProviderTypes = ProviderType[];
+export type ProviderTypes = (ProviderType | (string & {}))[];
 export const ProviderTypes = /*@__PURE__*/ S.Array(ProviderType);
-export type JobStates = JobState[];
+export type JobStates = (JobState | (string & {}))[];
 export const JobStates = /*@__PURE__*/ S.Array(JobState);
 export type RepositoryNames = string[];
 export const RepositoryNames = /*@__PURE__*/ S.Array(S.String);
@@ -696,7 +682,7 @@ export interface ListCodeReviewsRequest {
   ProviderTypes?: ProviderType[];
   States?: JobState[];
   RepositoryNames?: string[];
-  Type: Type;
+  Type: Type | (string & {});
   MaxResults?: number;
   NextToken?: string;
 }
@@ -895,8 +881,7 @@ export type RecommendationCategory =
   | "JavaBestPractices"
   | "ResourceLeaks"
   | "SecurityIssues"
-  | "CodeInconsistencies"
-  | (string & {});
+  | "CodeInconsistencies";
 export const RecommendationCategory = /*@__PURE__*/ S.String;
 
 export type RuleId = string;
@@ -922,13 +907,7 @@ export const RuleMetadata = /*@__PURE__*/ S.suspend(() =>
     RuleTags: S.optional(RuleTags),
   }),
 ).annotate({ identifier: "RuleMetadata" }) as any as S.Schema<RuleMetadata>;
-export type Severity =
-  | "Info"
-  | "Low"
-  | "Medium"
-  | "High"
-  | "Critical"
-  | (string & {});
+export type Severity = "Info" | "Low" | "Medium" | "High" | "Critical";
 export const Severity = /*@__PURE__*/ S.String;
 
 export interface RecommendationSummary {
@@ -971,7 +950,10 @@ export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommendationsResponse",
 }) as any as S.Schema<ListRecommendationsResponse>;
-export type RepositoryAssociationStates = RepositoryAssociationState[];
+export type RepositoryAssociationStates = (
+  | RepositoryAssociationState
+  | (string & {})
+)[];
 export const RepositoryAssociationStates = /*@__PURE__*/ S.Array(
   RepositoryAssociationState,
 );

@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,34 +72,20 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
-export type DeploymentWorkloadTypeEnum =
-  | "WORKLOAD_TYPE_UNSPECIFIED"
-  | "SAP_S4"
-  | "SQL_SERVER"
-  | "ORACLE"
-  | (string & {});
+export type DeploymentWorkloadTypeEnum = "WORKLOAD_TYPE_UNSPECIFIED" | "SAP_S4" | "SQL_SERVER" | "ORACLE";
 export const DeploymentWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
 /** In order to align with the Infra Manager dependency, we create the same TerraformVariable message to represent a Terraform input variable, by following Infra Manager's API documentation: https://cloud.google.com/infrastructure-manager/docs/reference/rest. A Terraform input variable. */
@@ -110,32 +94,19 @@ export interface TerraformVariable {
   inputValue?: unknown;
 }
 export const TerraformVariable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputValue: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "TerraformVariable",
-}) as any as S.Schema<TerraformVariable>;
+S.Struct({
+  "inputValue": S.optional(S.Unknown),
+}),
+).annotate({ identifier: "TerraformVariable" }) as any as S.Schema<TerraformVariable>;
 
-export type TerraformVariableMap = {
-  [key: string]: TerraformVariable | undefined;
-};
-export const TerraformVariableMap = /*@__PURE__*/ S.Record(
-  S.String,
-  TerraformVariable,
-) as any as S.Schema<TerraformVariableMap>;
+export type TerraformVariableMap = { [key: string]: TerraformVariable | undefined };
+export const TerraformVariableMap = /*@__PURE__*/ S.Record(S.String, TerraformVariable) as any as S.Schema<TerraformVariableMap>;
 
-export type LocationDetailsInternetAccessEnum =
-  | "INTERNETACCESS_UNSPECIFIED"
-  | "ALLOW_EXTERNAL_IP"
-  | "CONFIGURE_NAT"
-  | (string & {});
+export type LocationDetailsInternetAccessEnum = "INTERNETACCESS_UNSPECIFIED" | "ALLOW_EXTERNAL_IP" | "CONFIGURE_NAT";
 export const LocationDetailsInternetAccessEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Message for SAP instance details. */
 export interface LocationDetails {
@@ -164,29 +135,23 @@ export interface LocationDetails {
   vpcName?: string;
 }
 export const LocationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subnetName: S.optional(S.String),
-    zone2Name: S.optional(S.String),
-    networkProject: S.optional(S.String),
-    dnsZoneNameSuffix: S.optional(S.String),
-    deploymentDnsEnabled: S.optional(S.Boolean),
-    regionName: S.optional(S.String),
-    internetAccess: S.optional(LocationDetailsInternetAccessEnum),
-    zone1Name: S.optional(S.String),
-    customTags: S.optional(StringList),
-    createCommsFirewall: S.optional(S.Boolean),
-    dnsZone: S.optional(S.String),
-    vpcName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LocationDetails",
-}) as any as S.Schema<LocationDetails>;
+S.Struct({
+  "subnetName": S.optional(S.String),
+  "zone2Name": S.optional(S.String),
+  "networkProject": S.optional(S.String),
+  "dnsZoneNameSuffix": S.optional(S.String),
+  "deploymentDnsEnabled": S.optional(S.Boolean),
+  "regionName": S.optional(S.String),
+  "internetAccess": S.optional(LocationDetailsInternetAccessEnum),
+  "zone1Name": S.optional(S.String),
+  "customTags": S.optional(StringList),
+  "createCommsFirewall": S.optional(S.Boolean),
+  "dnsZone": S.optional(S.String),
+  "vpcName": S.optional(S.String),
+}),
+).annotate({ identifier: "LocationDetails" }) as any as S.Schema<LocationDetails>;
 
-export type SapSystemS4ConfigEnvironmentTypeEnum =
-  | "ENVIRONMENT_TYPE_UNSPECIFIED"
-  | "NON_PRODUCTION"
-  | "PRODUCTION"
-  | (string & {});
+export type SapSystemS4ConfigEnvironmentTypeEnum = "ENVIRONMENT_TYPE_UNSPECIFIED" | "NON_PRODUCTION" | "PRODUCTION";
 export const SapSystemS4ConfigEnvironmentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message for SAP instance details. */
@@ -225,24 +190,24 @@ export interface AppDetails {
   sharedStorage?: string;
 }
 export const AppDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machineType: S.optional(S.String),
-    vmsMultiplier: S.optional(S.Number),
-    ascsServiceAccount: S.optional(S.String),
-    image: S.optional(S.String),
-    appServiceAccount: S.optional(S.String),
-    secretManagerSecret: S.optional(S.String),
-    appInstanceId: S.optional(S.String),
-    ascsImage: S.optional(S.String),
-    ersVm: S.optional(S.String),
-    appVmNames: S.optional(StringList),
-    ascsMachineType: S.optional(S.String),
-    ascsInstanceId: S.optional(S.String),
-    ascsVm: S.optional(S.String),
-    sid: S.optional(S.String),
-    ersInstanceId: S.optional(S.String),
-    sharedStorage: S.optional(S.String),
-  }),
+S.Struct({
+  "machineType": S.optional(S.String),
+  "vmsMultiplier": S.optional(S.Number),
+  "ascsServiceAccount": S.optional(S.String),
+  "image": S.optional(S.String),
+  "appServiceAccount": S.optional(S.String),
+  "secretManagerSecret": S.optional(S.String),
+  "appInstanceId": S.optional(S.String),
+  "ascsImage": S.optional(S.String),
+  "ersVm": S.optional(S.String),
+  "appVmNames": S.optional(StringList),
+  "ascsMachineType": S.optional(S.String),
+  "ascsInstanceId": S.optional(S.String),
+  "ascsVm": S.optional(S.String),
+  "sid": S.optional(S.String),
+  "ersInstanceId": S.optional(S.String),
+  "sharedStorage": S.optional(S.String),
+}),
 ).annotate({ identifier: "AppDetails" }) as any as S.Schema<AppDetails>;
 
 /** Message for SAP instance details. */
@@ -267,41 +232,26 @@ export interface DatabaseDetails {
   databaseServiceAccount?: string;
 }
 export const DatabaseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machineType: S.optional(S.String),
-    image: S.optional(S.String),
-    secretManagerSecret: S.optional(S.String),
-    sid: S.optional(S.String),
-    secondaryDbVm: S.optional(S.String),
-    instanceId: S.optional(S.String),
-    diskType: S.optional(S.String),
-    primaryDbVm: S.optional(S.String),
-    databaseServiceAccount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatabaseDetails",
-}) as any as S.Schema<DatabaseDetails>;
+S.Struct({
+  "machineType": S.optional(S.String),
+  "image": S.optional(S.String),
+  "secretManagerSecret": S.optional(S.String),
+  "sid": S.optional(S.String),
+  "secondaryDbVm": S.optional(S.String),
+  "instanceId": S.optional(S.String),
+  "diskType": S.optional(S.String),
+  "primaryDbVm": S.optional(S.String),
+  "databaseServiceAccount": S.optional(S.String),
+}),
+).annotate({ identifier: "DatabaseDetails" }) as any as S.Schema<DatabaseDetails>;
 
-export type SapSystemS4ConfigDeploymentModelEnum =
-  | "DEPLOYMENT_MODEL_UNSPECIFIED"
-  | "DISTRIBUTED"
-  | "DISTRIBUTED_HA"
-  | (string & {});
+export type SapSystemS4ConfigDeploymentModelEnum = "DEPLOYMENT_MODEL_UNSPECIFIED" | "DISTRIBUTED" | "DISTRIBUTED_HA";
 export const SapSystemS4ConfigDeploymentModelEnum = /*@__PURE__*/ S.String;
 
-export type SapSystemS4ConfigScalingMethodEnum =
-  | "SCALE_METHOD_UNSPECIFIED"
-  | "SCALE_UP"
-  | "SCALE_OUT"
-  | (string & {});
+export type SapSystemS4ConfigScalingMethodEnum = "SCALE_METHOD_UNSPECIFIED" | "SCALE_UP" | "SCALE_OUT";
 export const SapSystemS4ConfigScalingMethodEnum = /*@__PURE__*/ S.String;
 
-export type SapSystemS4ConfigVersionEnum =
-  | "VERSION_UNSPECIFIED"
-  | "S4_HANA_2021"
-  | "S4_HANA_2022"
-  | "S4_HANA_2023"
-  | (string & {});
+export type SapSystemS4ConfigVersionEnum = "VERSION_UNSPECIFIED" | "S4_HANA_2021" | "S4_HANA_2022" | "S4_HANA_2023";
 export const SapSystemS4ConfigVersionEnum = /*@__PURE__*/ S.String;
 
 /** Message for SAP system workload. */
@@ -333,54 +283,33 @@ export interface SapSystemS4Config {
   sapBootDiskImage?: string;
 }
 export const SapSystemS4Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowStoppingForUpdate: S.optional(S.Boolean),
-    location: S.optional(LocationDetails),
-    mediaBucketName: S.optional(S.String),
-    environmentType: S.optional(SapSystemS4ConfigEnvironmentTypeEnum),
-    app: S.optional(AppDetails),
-    vmPrefix: S.optional(S.String),
-    database: S.optional(DatabaseDetails),
-    ansibleRunnerServiceAccount: S.optional(S.String),
-    deploymentModel: S.optional(SapSystemS4ConfigDeploymentModelEnum),
-    scalingMethod: S.optional(SapSystemS4ConfigScalingMethodEnum),
-    version: S.optional(SapSystemS4ConfigVersionEnum),
-    gcpProjectId: S.optional(S.String),
-    sapBootDiskImage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SapSystemS4Config",
-}) as any as S.Schema<SapSystemS4Config>;
+S.Struct({
+  "allowStoppingForUpdate": S.optional(S.Boolean),
+  "location": S.optional(LocationDetails),
+  "mediaBucketName": S.optional(S.String),
+  "environmentType": S.optional(SapSystemS4ConfigEnvironmentTypeEnum),
+  "app": S.optional(AppDetails),
+  "vmPrefix": S.optional(S.String),
+  "database": S.optional(DatabaseDetails),
+  "ansibleRunnerServiceAccount": S.optional(S.String),
+  "deploymentModel": S.optional(SapSystemS4ConfigDeploymentModelEnum),
+  "scalingMethod": S.optional(SapSystemS4ConfigScalingMethodEnum),
+  "version": S.optional(SapSystemS4ConfigVersionEnum),
+  "gcpProjectId": S.optional(S.String),
+  "sapBootDiskImage": S.optional(S.String),
+}),
+).annotate({ identifier: "SapSystemS4Config" }) as any as S.Schema<SapSystemS4Config>;
 
-export type DeploymentStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "UPDATING"
-  | "DELETING"
-  | "FAILED"
-  | (string & {});
+export type DeploymentStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "UPDATING" | "DELETING" | "FAILED";
 export const DeploymentStateEnum = /*@__PURE__*/ S.String;
 
-export type SqlServerWorkloadFciTypeEnum =
-  | "FCI_TYPE_UNSPECIFIED"
-  | "SHARED_DISK"
-  | "S2D"
-  | (string & {});
+export type SqlServerWorkloadFciTypeEnum = "FCI_TYPE_UNSPECIFIED" | "SHARED_DISK" | "S2D";
 export const SqlServerWorkloadFciTypeEnum = /*@__PURE__*/ S.String;
 
-export type SqlServerWorkloadDeploymentModelEnum =
-  | "DEPLOYMENT_MODEL_UNSPECIFIED"
-  | "HIGH_AVAILABILITY"
-  | "SINGLE_INSTANCE"
-  | (string & {});
+export type SqlServerWorkloadDeploymentModelEnum = "DEPLOYMENT_MODEL_UNSPECIFIED" | "HIGH_AVAILABILITY" | "SINGLE_INSTANCE";
 export const SqlServerWorkloadDeploymentModelEnum = /*@__PURE__*/ S.String;
 
-export type DatabaseTenancyModelEnum =
-  | "TENANCY_MODEL_UNSPECIFIED"
-  | "SHARED"
-  | "SOLE_TENANT"
-  | (string & {});
+export type DatabaseTenancyModelEnum = "TENANCY_MODEL_UNSPECIFIED" | "SHARED" | "SOLE_TENANT";
 export const DatabaseTenancyModelEnum = /*@__PURE__*/ S.String;
 
 /** Database details. */
@@ -409,19 +338,19 @@ export interface Database {
   secondarySoleTenantNodeType?: string;
 }
 export const Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    soleTenantNode: S.optional(S.String),
-    diskType: S.optional(S.String),
-    smt: S.optional(S.Boolean),
-    secondarySoleTenantNode: S.optional(S.String),
-    machineType: S.optional(S.String),
-    soleTenantNodeType: S.optional(S.String),
-    tempdbOnSsd: S.optional(S.Boolean),
-    tenancyModel: S.optional(DatabaseTenancyModelEnum),
-    secretManagerSecret: S.optional(S.String),
-    floatingIpAddress: S.optional(S.String),
-    secondarySoleTenantNodeType: S.optional(S.String),
-  }),
+S.Struct({
+  "soleTenantNode": S.optional(S.String),
+  "diskType": S.optional(S.String),
+  "smt": S.optional(S.Boolean),
+  "secondarySoleTenantNode": S.optional(S.String),
+  "machineType": S.optional(S.String),
+  "soleTenantNodeType": S.optional(S.String),
+  "tempdbOnSsd": S.optional(S.Boolean),
+  "tenancyModel": S.optional(DatabaseTenancyModelEnum),
+  "secretManagerSecret": S.optional(S.String),
+  "floatingIpAddress": S.optional(S.String),
+  "secondarySoleTenantNodeType": S.optional(S.String),
+}),
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 /** Pacemaker configuration. */
@@ -440,21 +369,17 @@ export interface Pacemaker {
   pacemakerClusterSecret?: string;
 }
 export const Pacemaker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sqlPacemakerUsername: S.optional(S.String),
-    sqlPacemakerSecret: S.optional(S.String),
-    pacemakerCluster: S.optional(S.String),
-    pacemakerClusterUsername: S.optional(S.String),
-    bucketNameNodeCertificates: S.optional(S.String),
-    pacemakerClusterSecret: S.optional(S.String),
-  }),
+S.Struct({
+  "sqlPacemakerUsername": S.optional(S.String),
+  "sqlPacemakerSecret": S.optional(S.String),
+  "pacemakerCluster": S.optional(S.String),
+  "pacemakerClusterUsername": S.optional(S.String),
+  "bucketNameNodeCertificates": S.optional(S.String),
+  "pacemakerClusterSecret": S.optional(S.String),
+}),
 ).annotate({ identifier: "Pacemaker" }) as any as S.Schema<Pacemaker>;
 
-export type ActiveDirectoryTypeEnum =
-  | "ACTIVE_DIRECTORY_TYPE_UNSPECIFIED"
-  | "GCP_MANAGED"
-  | "SELF_MANAGED"
-  | (string & {});
+export type ActiveDirectoryTypeEnum = "ACTIVE_DIRECTORY_TYPE_UNSPECIFIED" | "GCP_MANAGED" | "SELF_MANAGED";
 export const ActiveDirectoryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Active Directory details. */
@@ -471,62 +396,31 @@ export interface ActiveDirectory {
   domainUsername?: string;
 }
 export const ActiveDirectory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ActiveDirectoryTypeEnum),
-    domain: S.optional(S.String),
-    secretManagerSecret: S.optional(S.String),
-    dnsAddress: S.optional(S.String),
-    domainUsername: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ActiveDirectory",
-}) as any as S.Schema<ActiveDirectory>;
+S.Struct({
+  "type": S.optional(ActiveDirectoryTypeEnum),
+  "domain": S.optional(S.String),
+  "secretManagerSecret": S.optional(S.String),
+  "dnsAddress": S.optional(S.String),
+  "domainUsername": S.optional(S.String),
+}),
+).annotate({ identifier: "ActiveDirectory" }) as any as S.Schema<ActiveDirectory>;
 
-export type SqlServerWorkloadSqlServerVersionEnum =
-  | "SQL_SERVER_VERSION_TYPE_UNSPECIFIED"
-  | "SQL_SERVER_VERSION_TYPE_2017"
-  | "SQL_SERVER_VERSION_TYPE_2019"
-  | "SQL_SERVER_VERSION_TYPE_2022"
-  | (string & {});
+export type SqlServerWorkloadSqlServerVersionEnum = "SQL_SERVER_VERSION_TYPE_UNSPECIFIED" | "SQL_SERVER_VERSION_TYPE_2017" | "SQL_SERVER_VERSION_TYPE_2019" | "SQL_SERVER_VERSION_TYPE_2022";
 export const SqlServerWorkloadSqlServerVersionEnum = /*@__PURE__*/ S.String;
 
-export type SqlServerWorkloadOperatingSystemTypeEnum =
-  | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
-  | "WINDOWS"
-  | "UBUNTU"
-  | "RED_HAT_ENTERPRISE_LINUX"
-  | "SUSE"
-  | (string & {});
+export type SqlServerWorkloadOperatingSystemTypeEnum = "OPERATING_SYSTEM_TYPE_UNSPECIFIED" | "WINDOWS" | "UBUNTU" | "RED_HAT_ENTERPRISE_LINUX" | "SUSE";
 export const SqlServerWorkloadOperatingSystemTypeEnum = /*@__PURE__*/ S.String;
 
-export type SqlServerWorkloadSqlServerEditionEnum =
-  | "SQL_SERVER_EDITION_TYPE_UNSPECIFIED"
-  | "SQL_SERVER_EDITION_TYPE_DEVELOPER"
-  | "SQL_SERVER_EDITION_TYPE_ENTERPRISE"
-  | "SQL_SERVER_EDITION_TYPE_STANDARD"
-  | "SQL_SERVER_EDITION_TYPE_WEB"
-  | (string & {});
+export type SqlServerWorkloadSqlServerEditionEnum = "SQL_SERVER_EDITION_TYPE_UNSPECIFIED" | "SQL_SERVER_EDITION_TYPE_DEVELOPER" | "SQL_SERVER_EDITION_TYPE_ENTERPRISE" | "SQL_SERVER_EDITION_TYPE_STANDARD" | "SQL_SERVER_EDITION_TYPE_WEB";
 export const SqlServerWorkloadSqlServerEditionEnum = /*@__PURE__*/ S.String;
 
-export type SqlServerWorkloadOsImageTypeEnum =
-  | "OS_IMAGE_TYPE_UNSPECIFIED"
-  | "PUBLIC_IMAGE"
-  | "CUSTOM_IMAGE"
-  | (string & {});
+export type SqlServerWorkloadOsImageTypeEnum = "OS_IMAGE_TYPE_UNSPECIFIED" | "PUBLIC_IMAGE" | "CUSTOM_IMAGE";
 export const SqlServerWorkloadOsImageTypeEnum = /*@__PURE__*/ S.String;
 
-export type SqlServerWorkloadEnvironmentTypeEnum =
-  | "ENVIRONMENT_TYPE_UNSPECIFIED"
-  | "NON_PRODUCTION"
-  | "PRODUCTION"
-  | (string & {});
+export type SqlServerWorkloadEnvironmentTypeEnum = "ENVIRONMENT_TYPE_UNSPECIFIED" | "NON_PRODUCTION" | "PRODUCTION";
 export const SqlServerWorkloadEnvironmentTypeEnum = /*@__PURE__*/ S.String;
 
-export type SqlLocationDetailsInternetAccessEnum =
-  | "INTERNET_ACCESS_UNSPECIFIED"
-  | "ALLOW_EXTERNAL_IP"
-  | "CONFIGURE_NAT"
-  | (string & {});
+export type SqlLocationDetailsInternetAccessEnum = "INTERNET_ACCESS_UNSPECIFIED" | "ALLOW_EXTERNAL_IP" | "CONFIGURE_NAT";
 export const SqlLocationDetailsInternetAccessEnum = /*@__PURE__*/ S.String;
 
 /** Location and networking details for configuring SQL server workload. */
@@ -551,26 +445,20 @@ export interface SqlLocationDetails {
   secondaryZone?: string;
 }
 export const SqlLocationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcpProjectId: S.optional(S.String),
-    primaryZone: S.optional(S.String),
-    subnetwork: S.optional(S.String),
-    dnsZone: S.optional(S.String),
-    tertiaryZone: S.optional(S.String),
-    region: S.optional(S.String),
-    internetAccess: S.optional(SqlLocationDetailsInternetAccessEnum),
-    network: S.optional(S.String),
-    secondaryZone: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlLocationDetails",
-}) as any as S.Schema<SqlLocationDetails>;
+S.Struct({
+  "gcpProjectId": S.optional(S.String),
+  "primaryZone": S.optional(S.String),
+  "subnetwork": S.optional(S.String),
+  "dnsZone": S.optional(S.String),
+  "tertiaryZone": S.optional(S.String),
+  "region": S.optional(S.String),
+  "internetAccess": S.optional(SqlLocationDetailsInternetAccessEnum),
+  "network": S.optional(S.String),
+  "secondaryZone": S.optional(S.String),
+}),
+).annotate({ identifier: "SqlLocationDetails" }) as any as S.Schema<SqlLocationDetails>;
 
-export type SqlServerWorkloadHaTypeEnum =
-  | "HA_TYPE_UNSPECIFIED"
-  | "AOAG"
-  | "FCI"
-  | (string & {});
+export type SqlServerWorkloadHaTypeEnum = "HA_TYPE_UNSPECIFIED" | "AOAG" | "FCI";
 export const SqlServerWorkloadHaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message for MS SQL workload. */
@@ -611,28 +499,26 @@ export interface SqlServerWorkload {
   haType?: SqlServerWorkloadHaTypeEnum;
 }
 export const SqlServerWorkload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fciType: S.optional(SqlServerWorkloadFciTypeEnum),
-    deploymentModel: S.optional(SqlServerWorkloadDeploymentModelEnum),
-    mediaBucket: S.optional(S.String),
-    isSqlPayg: S.optional(S.Boolean),
-    database: S.optional(Database),
-    pacemaker: S.optional(Pacemaker),
-    activeDirectory: S.optional(ActiveDirectory),
-    sqlServerVersion: S.optional(SqlServerWorkloadSqlServerVersionEnum),
-    operatingSystemType: S.optional(SqlServerWorkloadOperatingSystemTypeEnum),
-    sqlServerEdition: S.optional(SqlServerWorkloadSqlServerEditionEnum),
-    osImageType: S.optional(SqlServerWorkloadOsImageTypeEnum),
-    environmentType: S.optional(SqlServerWorkloadEnvironmentTypeEnum),
-    osImage: S.optional(S.String),
-    location: S.optional(SqlLocationDetails),
-    vmPrefix: S.optional(S.String),
-    computeEngineServiceAccount: S.optional(S.String),
-    haType: S.optional(SqlServerWorkloadHaTypeEnum),
-  }),
-).annotate({
-  identifier: "SqlServerWorkload",
-}) as any as S.Schema<SqlServerWorkload>;
+S.Struct({
+  "fciType": S.optional(SqlServerWorkloadFciTypeEnum),
+  "deploymentModel": S.optional(SqlServerWorkloadDeploymentModelEnum),
+  "mediaBucket": S.optional(S.String),
+  "isSqlPayg": S.optional(S.Boolean),
+  "database": S.optional(Database),
+  "pacemaker": S.optional(Pacemaker),
+  "activeDirectory": S.optional(ActiveDirectory),
+  "sqlServerVersion": S.optional(SqlServerWorkloadSqlServerVersionEnum),
+  "operatingSystemType": S.optional(SqlServerWorkloadOperatingSystemTypeEnum),
+  "sqlServerEdition": S.optional(SqlServerWorkloadSqlServerEditionEnum),
+  "osImageType": S.optional(SqlServerWorkloadOsImageTypeEnum),
+  "environmentType": S.optional(SqlServerWorkloadEnvironmentTypeEnum),
+  "osImage": S.optional(S.String),
+  "location": S.optional(SqlLocationDetails),
+  "vmPrefix": S.optional(S.String),
+  "computeEngineServiceAccount": S.optional(S.String),
+  "haType": S.optional(SqlServerWorkloadHaTypeEnum),
+}),
+).annotate({ identifier: "SqlServerWorkload" }) as any as S.Schema<SqlServerWorkload>;
 
 /** The Deployment object represents user intent for deploying a specific type of workload. */
 export interface Deployment {
@@ -660,19 +546,19 @@ export interface Deployment {
   name?: string;
 }
 export const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    workerPool: S.optional(S.String),
-    workloadType: S.optional(DeploymentWorkloadTypeEnum),
-    terraformVariables: S.optional(TerraformVariableMap),
-    createTime: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    sapSystemS4Config: S.optional(SapSystemS4Config),
-    state: S.optional(DeploymentStateEnum),
-    updateTime: S.optional(S.String),
-    sqlServerWorkload: S.optional(SqlServerWorkload),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "workerPool": S.optional(S.String),
+  "workloadType": S.optional(DeploymentWorkloadTypeEnum),
+  "terraformVariables": S.optional(TerraformVariableMap),
+  "createTime": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "sapSystemS4Config": S.optional(SapSystemS4Config),
+  "state": S.optional(DeploymentStateEnum),
+  "updateTime": S.optional(S.String),
+  "sqlServerWorkload": S.optional(SqlServerWorkload),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 export interface CreateProjectsLocationsDeploymentsRequest {
@@ -685,34 +571,20 @@ export interface CreateProjectsLocationsDeploymentsRequest {
   /** Request body */
   body?: Deployment;
 }
-export const CreateProjectsLocationsDeploymentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      deploymentId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Deployment.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/deployments",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsDeploymentsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsDeploymentsRequest>;
+export const CreateProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "deploymentId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Deployment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/deployments","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsDeploymentsRequest" }) as any as S.Schema<CreateProjectsLocationsDeploymentsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -724,11 +596,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -745,24 +617,16 @@ export interface Operation {
   metadata?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
-    response: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+  "error": S.optional(Status),
+  "response": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type ActuationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "INFRA_CREATING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "POST_INFRA_CONFIGURING"
-  | "INFRA_DESTROYING"
-  | "TIMEOUT"
-  | (string & {});
+export type ActuationStateEnum = "STATE_UNSPECIFIED" | "INFRA_CREATING" | "SUCCEEDED" | "FAILED" | "POST_INFRA_CONFIGURING" | "INFRA_DESTROYING" | "TIMEOUT";
 export const ActuationStateEnum = /*@__PURE__*/ S.String;
 
 /** Message for output of deployment resource. */
@@ -773,34 +637,16 @@ export interface DeploymentOutput {
   type?: string;
 }
 export const DeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeploymentOutput",
-}) as any as S.Schema<DeploymentOutput>;
+S.Struct({
+  "name": S.optional(S.String),
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "DeploymentOutput" }) as any as S.Schema<DeploymentOutput>;
 
 export type DeploymentOutputList = ReadonlyArray<DeploymentOutput>;
-export const DeploymentOutputList = /*@__PURE__*/ S.Array(
-  DeploymentOutput,
-) as any as S.Schema<DeploymentOutputList>;
+export const DeploymentOutputList = /*@__PURE__*/ S.Array(DeploymentOutput) as any as S.Schema<DeploymentOutputList>;
 
-export type ActuationOutputErrorCodeEnum =
-  | "ERROR_CODE_UNSPECIFIED"
-  | "TERRAFORM_FAILED"
-  | "PERMISSION_DENIED_IN_TERRAFORM"
-  | "QUOTA_EXCEED_IN_TERRAFORM"
-  | "ANSIBLE_FAILED"
-  | "CONSTRAINT_VIOLATION_IN_TERRAFORM"
-  | "RESOURCE_ALREADY_EXISTS_IN_TERRAFORM"
-  | "RESOURCE_UNAVAILABLE_IN_TERRAFORM"
-  | "PERMISSION_DENIED_IN_ANSIBLE"
-  | "INVALID_SECRET_IN_ANSIBLE"
-  | "TERRAFORM_DELETION_FAILED"
-  | "RESOURCE_IN_USE_IN_TERRAFORM_DELETION"
-  | "ANSIBLE_START_FAILED"
-  | (string & {});
+export type ActuationOutputErrorCodeEnum = "ERROR_CODE_UNSPECIFIED" | "TERRAFORM_FAILED" | "PERMISSION_DENIED_IN_TERRAFORM" | "QUOTA_EXCEED_IN_TERRAFORM" | "ANSIBLE_FAILED" | "CONSTRAINT_VIOLATION_IN_TERRAFORM" | "RESOURCE_ALREADY_EXISTS_IN_TERRAFORM" | "RESOURCE_UNAVAILABLE_IN_TERRAFORM" | "PERMISSION_DENIED_IN_ANSIBLE" | "INVALID_SECRET_IN_ANSIBLE" | "TERRAFORM_DELETION_FAILED" | "RESOURCE_IN_USE_IN_TERRAFORM_DELETION" | "ANSIBLE_START_FAILED";
 export const ActuationOutputErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Message for output of actuation. */
@@ -827,21 +673,19 @@ export interface ActuationOutput {
   hasUserFacingErrorMsg?: boolean;
 }
 export const ActuationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blueprintId: S.optional(S.String),
-    ansibleError: S.optional(S.String),
-    ansibleFailedTask: S.optional(StringList),
-    errorLogs: S.optional(S.String),
-    errorCode: S.optional(ActuationOutputErrorCodeEnum),
-    terraformError: S.optional(S.String),
-    actuateLogs: S.optional(S.String),
-    terraformTemplate: S.optional(S.String),
-    cloudbuildId: S.optional(S.String),
-    hasUserFacingErrorMsg: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ActuationOutput",
-}) as any as S.Schema<ActuationOutput>;
+S.Struct({
+  "blueprintId": S.optional(S.String),
+  "ansibleError": S.optional(S.String),
+  "ansibleFailedTask": S.optional(StringList),
+  "errorLogs": S.optional(S.String),
+  "errorCode": S.optional(ActuationOutputErrorCodeEnum),
+  "terraformError": S.optional(S.String),
+  "actuateLogs": S.optional(S.String),
+  "terraformTemplate": S.optional(S.String),
+  "cloudbuildId": S.optional(S.String),
+  "hasUserFacingErrorMsg": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ActuationOutput" }) as any as S.Schema<ActuationOutput>;
 
 /** The Actuation object represents the bootstrap state and output results of deployed infrastructure and software. */
 export interface Actuation {
@@ -859,14 +703,14 @@ export interface Actuation {
   startTime?: string;
 }
 export const Actuation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(ActuationStateEnum),
-    deploymentOutput: S.optional(DeploymentOutputList),
-    name: S.optional(S.String),
-    endTime: S.optional(S.String),
-    actuationOutput: S.optional(ActuationOutput),
-    startTime: S.optional(S.String),
-  }),
+S.Struct({
+  "state": S.optional(ActuationStateEnum),
+  "deploymentOutput": S.optional(DeploymentOutputList),
+  "name": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "actuationOutput": S.optional(ActuationOutput),
+  "startTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Actuation" }) as any as S.Schema<Actuation>;
 
 export interface CreateProjectsLocationsDeploymentsActuationsRequest {
@@ -877,37 +721,18 @@ export interface CreateProjectsLocationsDeploymentsActuationsRequest {
   /** Request body */
   body?: Actuation;
 }
-export const CreateProjectsLocationsDeploymentsActuationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Actuation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/actuations",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsDeploymentsActuationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsDeploymentsActuationsRequest>;
+export const CreateProjectsLocationsDeploymentsActuationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Actuation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/actuations","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsDeploymentsActuationsRequest" }) as any as S.Schema<CreateProjectsLocationsDeploymentsActuationsRequest>;
 
-export type EvaluationEvaluationTypeEnum =
-  | "EVALUATION_TYPE_UNSPECIFIED"
-  | "SAP"
-  | "SQL_SERVER"
-  | "OTHER"
-  | (string & {});
+export type EvaluationEvaluationTypeEnum = "EVALUATION_TYPE_UNSPECIFIED" | "SAP" | "SQL_SERVER" | "OTHER";
 export const EvaluationEvaluationTypeEnum = /*@__PURE__*/ S.String;
 
-export type ResourceStatusStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | (string & {});
+export type ResourceStatusStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING";
 export const ResourceStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The lifecycle status of an Evaluation resource. */
@@ -916,9 +741,9 @@ export interface ResourceStatus {
   state?: ResourceStatusStateEnum;
 }
 export const ResourceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(ResourceStatusStateEnum),
-  }),
+S.Struct({
+  "state": S.optional(ResourceStatusStateEnum),
+}),
 ).annotate({ identifier: "ResourceStatus" }) as any as S.Schema<ResourceStatus>;
 
 /** BigQuery destination for evaluation results. */
@@ -929,13 +754,11 @@ export interface BigQueryDestination {
   createNewResultsTable?: boolean;
 }
 export const BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationDataset: S.optional(S.String),
-    createNewResultsTable: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BigQueryDestination",
-}) as any as S.Schema<BigQueryDestination>;
+S.Struct({
+  "destinationDataset": S.optional(S.String),
+  "createNewResultsTable": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BigQueryDestination" }) as any as S.Schema<BigQueryDestination>;
 
 /** A filter for matching Compute Engine instances. */
 export interface GceInstanceFilter {
@@ -943,18 +766,13 @@ export interface GceInstanceFilter {
   serviceAccounts?: StringList;
 }
 export const GceInstanceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceAccounts: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GceInstanceFilter",
-}) as any as S.Schema<GceInstanceFilter>;
+S.Struct({
+  "serviceAccounts": S.optional(StringList),
+}),
+).annotate({ identifier: "GceInstanceFilter" }) as any as S.Schema<GceInstanceFilter>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Resource filter for an evaluation defining the scope of resources to be evaluated. */
 export interface ResourceFilter {
@@ -968,12 +786,12 @@ export interface ResourceFilter {
   scopes?: StringList;
 }
 export const ResourceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gceInstanceFilter: S.optional(GceInstanceFilter),
-    inclusionLabels: S.optional(StringMap),
-    resourceIdPatterns: S.optional(StringList),
-    scopes: S.optional(StringList),
-  }),
+S.Struct({
+  "gceInstanceFilter": S.optional(GceInstanceFilter),
+  "inclusionLabels": S.optional(StringMap),
+  "resourceIdPatterns": S.optional(StringList),
+  "scopes": S.optional(StringList),
+}),
 ).annotate({ identifier: "ResourceFilter" }) as any as S.Schema<ResourceFilter>;
 
 /** Represents a Workload Manager Evaluation configuration. An Evaluation defines a set of rules to be validated against a scope of Cloud resources. */
@@ -1006,21 +824,21 @@ export interface Evaluation {
   labels?: StringMap;
 }
 export const Evaluation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleNames: S.optional(StringList),
-    kmsKey: S.optional(S.String),
-    evaluationType: S.optional(EvaluationEvaluationTypeEnum),
-    description: S.optional(S.String),
-    resourceStatus: S.optional(ResourceStatus),
-    bigQueryDestination: S.optional(BigQueryDestination),
-    customRulesBucket: S.optional(S.String),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    resourceFilter: S.optional(ResourceFilter),
-    schedule: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "ruleNames": S.optional(StringList),
+  "kmsKey": S.optional(S.String),
+  "evaluationType": S.optional(EvaluationEvaluationTypeEnum),
+  "description": S.optional(S.String),
+  "resourceStatus": S.optional(ResourceStatus),
+  "bigQueryDestination": S.optional(BigQueryDestination),
+  "customRulesBucket": S.optional(S.String),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "resourceFilter": S.optional(ResourceFilter),
+  "schedule": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Evaluation" }) as any as S.Schema<Evaluation>;
 
 export interface CreateProjectsLocationsEvaluationsRequest {
@@ -1033,23 +851,14 @@ export interface CreateProjectsLocationsEvaluationsRequest {
   /** Request body */
   body?: Evaluation;
 }
-export const CreateProjectsLocationsEvaluationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      evaluationId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Evaluation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/evaluations",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsEvaluationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsEvaluationsRequest>;
+export const CreateProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "evaluationId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Evaluation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/evaluations","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsEvaluationsRequest" }) as any as S.Schema<CreateProjectsLocationsEvaluationsRequest>;
 
 export interface DeleteProjectsLocationsDeploymentsRequest {
   /** Required. Name of the resource. */
@@ -1057,40 +866,22 @@ export interface DeleteProjectsLocationsDeploymentsRequest {
   /** Optional. If set to true, any actuation will also be deleted. Follows the best practice from https://aip.dev/135#cascading-delete. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsDeploymentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsDeploymentsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsDeploymentsRequest>;
+export const DeleteProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsDeploymentsRequest" }) as any as S.Schema<DeleteProjectsLocationsDeploymentsRequest>;
 
 export interface DeleteProjectsLocationsDeploymentsActuationsRequest {
   /** Required. The name of the actuation to delete. projects/{project}/locations/{location}/deployments/{deployment}/actuations/{actuation}. */
   name: string;
 }
-export const DeleteProjectsLocationsDeploymentsActuationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsDeploymentsActuationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsDeploymentsActuationsRequest>;
+export const DeleteProjectsLocationsDeploymentsActuationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsDeploymentsActuationsRequest" }) as any as S.Schema<DeleteProjectsLocationsDeploymentsActuationsRequest>;
 
 export interface DeleteProjectsLocationsEvaluationsRequest {
   /** Required. Name of the resource. */
@@ -1100,22 +891,13 @@ export interface DeleteProjectsLocationsEvaluationsRequest {
   /** Optional. Followed the best practice from https://aip.dev/135#cascading-delete. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsEvaluationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsEvaluationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsEvaluationsRequest>;
+export const DeleteProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsEvaluationsRequest" }) as any as S.Schema<DeleteProjectsLocationsEvaluationsRequest>;
 
 export interface DeleteProjectsLocationsEvaluationsExecutionsRequest {
   /** Required. Name of the resource. */
@@ -1123,21 +905,12 @@ export interface DeleteProjectsLocationsEvaluationsExecutionsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsEvaluationsExecutionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsEvaluationsExecutionsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsEvaluationsExecutionsRequest>;
+export const DeleteProjectsLocationsEvaluationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsEvaluationsExecutionsRequest" }) as any as S.Schema<DeleteProjectsLocationsEvaluationsExecutionsRequest>;
 
 export interface DeleteProjectsLocationsInsightsRequest {
   /** Required. The system id of the SAP system resource to delete. Formatted as projects/{project}/locations/{location}/sapSystems/{sap_system_id} */
@@ -1145,58 +918,32 @@ export interface DeleteProjectsLocationsInsightsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsInsightsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsInsightsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsInsightsRequest>;
+export const DeleteProjectsLocationsInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsInsightsRequest" }) as any as S.Schema<DeleteProjectsLocationsInsightsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://workloadmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1212,77 +959,46 @@ export interface Location {
   name?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    displayName: S.optional(S.String),
-    locationId: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "displayName": S.optional(S.String),
+  "locationId": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsDeploymentsRequest {
   /** Required. Name of the resource. The format is 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}'. */
   name: string;
 }
-export const GetProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsDeploymentsRequest",
-}) as any as S.Schema<GetProjectsLocationsDeploymentsRequest>;
+export const GetProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsDeploymentsRequest" }) as any as S.Schema<GetProjectsLocationsDeploymentsRequest>;
 
 export interface GetProjectsLocationsDeploymentsActuationsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsDeploymentsActuationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDeploymentsActuationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsDeploymentsActuationsRequest>;
+export const GetProjectsLocationsDeploymentsActuationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsDeploymentsActuationsRequest" }) as any as S.Schema<GetProjectsLocationsDeploymentsActuationsRequest>;
 
 export interface GetProjectsLocationsDiscoveredprofilesRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsDiscoveredprofilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDiscoveredprofilesRequest",
-  }) as any as S.Schema<GetProjectsLocationsDiscoveredprofilesRequest>;
+export const GetProjectsLocationsDiscoveredprofilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsDiscoveredprofilesRequest" }) as any as S.Schema<GetProjectsLocationsDiscoveredprofilesRequest>;
 
-export type BackupPropertiesLatestBackupStatusEnum =
-  | "BACKUP_STATE_UNSPECIFIED"
-  | "BACKUP_STATE_SUCCESS"
-  | "BACKUP_STATE_FAILURE"
-  | (string & {});
+export type BackupPropertiesLatestBackupStatusEnum = "BACKUP_STATE_UNSPECIFIED" | "BACKUP_STATE_SUCCESS" | "BACKUP_STATE_FAILURE";
 export const BackupPropertiesLatestBackupStatusEnum = /*@__PURE__*/ S.String;
 
 /** Backup properties. */
@@ -1293,23 +1009,13 @@ export interface BackupProperties {
   latestBackupStatus?: BackupPropertiesLatestBackupStatusEnum;
 }
 export const BackupProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latestBackupTime: S.optional(S.String),
-    latestBackupStatus: S.optional(BackupPropertiesLatestBackupStatusEnum),
-  }),
-).annotate({
-  identifier: "BackupProperties",
-}) as any as S.Schema<BackupProperties>;
+S.Struct({
+  "latestBackupTime": S.optional(S.String),
+  "latestBackupStatus": S.optional(BackupPropertiesLatestBackupStatusEnum),
+}),
+).annotate({ identifier: "BackupProperties" }) as any as S.Schema<BackupProperties>;
 
-export type DatabasePropertiesDatabaseTypeEnum =
-  | "DATABASE_TYPE_UNSPECIFIED"
-  | "HANA"
-  | "MAX_DB"
-  | "DB2"
-  | "ORACLE"
-  | "SQLSERVER"
-  | "ASE"
-  | (string & {});
+export type DatabasePropertiesDatabaseTypeEnum = "DATABASE_TYPE_UNSPECIFIED" | "HANA" | "MAX_DB" | "DB2" | "ORACLE" | "SQLSERVER" | "ASE";
 export const DatabasePropertiesDatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** Database Properties. */
@@ -1320,29 +1026,16 @@ export interface DatabaseProperties {
   databaseType?: DatabasePropertiesDatabaseTypeEnum;
 }
 export const DatabaseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backupProperties: S.optional(BackupProperties),
-    databaseType: S.optional(DatabasePropertiesDatabaseTypeEnum),
-  }),
-).annotate({
-  identifier: "DatabaseProperties",
-}) as any as S.Schema<DatabaseProperties>;
+S.Struct({
+  "backupProperties": S.optional(BackupProperties),
+  "databaseType": S.optional(DatabasePropertiesDatabaseTypeEnum),
+}),
+).annotate({ identifier: "DatabaseProperties" }) as any as S.Schema<DatabaseProperties>;
 
-export type SapComponentTopologyTypeEnum =
-  | "TOPOLOGY_TYPE_UNSPECIFIED"
-  | "TOPOLOGY_SCALE_UP"
-  | "TOPOLOGY_SCALE_OUT"
-  | (string & {});
+export type SapComponentTopologyTypeEnum = "TOPOLOGY_TYPE_UNSPECIFIED" | "TOPOLOGY_SCALE_UP" | "TOPOLOGY_SCALE_OUT";
 export const SapComponentTopologyTypeEnum = /*@__PURE__*/ S.String;
 
-export type ServiceStatesStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CONFIG_FAILURE"
-  | "IAM_FAILURE"
-  | "FUNCTIONALITY_FAILURE"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type ServiceStatesStateEnum = "STATE_UNSPECIFIED" | "CONFIG_FAILURE" | "IAM_FAILURE" | "FUNCTIONALITY_FAILURE" | "ENABLED" | "DISABLED";
 export const ServiceStatesStateEnum = /*@__PURE__*/ S.String;
 
 /** The IAM permission status. */
@@ -1353,16 +1046,14 @@ export interface IAMPermission {
   name?: string;
 }
 export const IAMPermission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    granted: S.optional(S.Boolean),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "granted": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "IAMPermission" }) as any as S.Schema<IAMPermission>;
 
 export type IAMPermissionList = ReadonlyArray<IAMPermission>;
-export const IAMPermissionList = /*@__PURE__*/ S.Array(
-  IAMPermission,
-) as any as S.Schema<IAMPermissionList>;
+export const IAMPermissionList = /*@__PURE__*/ S.Array(IAMPermission) as any as S.Schema<IAMPermissionList>;
 
 /** The state of the service. */
 export interface ServiceStates {
@@ -1372,10 +1063,10 @@ export interface ServiceStates {
   iamPermissions?: IAMPermissionList;
 }
 export const ServiceStates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(ServiceStatesStateEnum),
-    iamPermissions: S.optional(IAMPermissionList),
-  }),
+S.Struct({
+  "state": S.optional(ServiceStatesStateEnum),
+  "iamPermissions": S.optional(IAMPermissionList),
+}),
 ).annotate({ identifier: "ServiceStates" }) as any as S.Schema<ServiceStates>;
 
 /** Agent status. */
@@ -1394,14 +1085,14 @@ export interface AgentStates {
   installedVersion?: string;
 }
 export const AgentStates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    processMetrics: S.optional(ServiceStates),
-    systemDiscovery: S.optional(ServiceStates),
-    availableVersion: S.optional(S.String),
-    isFullyEnabled: S.optional(S.Boolean),
-    hanaMonitoring: S.optional(ServiceStates),
-    installedVersion: S.optional(S.String),
-  }),
+S.Struct({
+  "processMetrics": S.optional(ServiceStates),
+  "systemDiscovery": S.optional(ServiceStates),
+  "availableVersion": S.optional(S.String),
+  "isFullyEnabled": S.optional(S.Boolean),
+  "hanaMonitoring": S.optional(ServiceStates),
+  "installedVersion": S.optional(S.String),
+}),
 ).annotate({ identifier: "AgentStates" }) as any as S.Schema<AgentStates>;
 
 /** SAP instance properties. */
@@ -1412,29 +1103,17 @@ export interface SapInstanceProperties {
   agentStates?: AgentStates;
 }
 export const SapInstanceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numbers: S.optional(StringList),
-    agentStates: S.optional(AgentStates),
-  }),
-).annotate({
-  identifier: "SapInstanceProperties",
-}) as any as S.Schema<SapInstanceProperties>;
+S.Struct({
+  "numbers": S.optional(StringList),
+  "agentStates": S.optional(AgentStates),
+}),
+).annotate({ identifier: "SapInstanceProperties" }) as any as S.Schema<SapInstanceProperties>;
 
-export type InstancePropertiesRolesItemEnum =
-  | "INSTANCE_ROLE_UNSPECIFIED"
-  | "INSTANCE_ROLE_ASCS"
-  | "INSTANCE_ROLE_ERS"
-  | "INSTANCE_ROLE_APP_SERVER"
-  | "INSTANCE_ROLE_HANA_PRIMARY"
-  | "INSTANCE_ROLE_HANA_SECONDARY"
-  | (string & {});
+export type InstancePropertiesRolesItemEnum = "INSTANCE_ROLE_UNSPECIFIED" | "INSTANCE_ROLE_ASCS" | "INSTANCE_ROLE_ERS" | "INSTANCE_ROLE_APP_SERVER" | "INSTANCE_ROLE_HANA_PRIMARY" | "INSTANCE_ROLE_HANA_SECONDARY";
 export const InstancePropertiesRolesItemEnum = /*@__PURE__*/ S.String;
 
-export type InstancePropertiesRolesItemEnumList =
-  ReadonlyArray<InstancePropertiesRolesItemEnum>;
-export const InstancePropertiesRolesItemEnumList = /*@__PURE__*/ S.Array(
-  InstancePropertiesRolesItemEnum,
-) as any as S.Schema<InstancePropertiesRolesItemEnumList>;
+export type InstancePropertiesRolesItemEnumList = ReadonlyArray<InstancePropertiesRolesItemEnum>;
+export const InstancePropertiesRolesItemEnumList = /*@__PURE__*/ S.Array(InstancePropertiesRolesItemEnum) as any as S.Schema<InstancePropertiesRolesItemEnumList>;
 
 /** Maintenance Event */
 export interface UpcomingMaintenanceEvent {
@@ -1450,16 +1129,14 @@ export interface UpcomingMaintenanceEvent {
   onHostMaintenance?: string;
 }
 export const UpcomingMaintenanceEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    maintenanceStatus: S.optional(S.String),
-    endTime: S.optional(S.String),
-    startTime: S.optional(S.String),
-    onHostMaintenance: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpcomingMaintenanceEvent",
-}) as any as S.Schema<UpcomingMaintenanceEvent>;
+S.Struct({
+  "type": S.optional(S.String),
+  "maintenanceStatus": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "startTime": S.optional(S.String),
+  "onHostMaintenance": S.optional(S.String),
+}),
+).annotate({ identifier: "UpcomingMaintenanceEvent" }) as any as S.Schema<UpcomingMaintenanceEvent>;
 
 /** Instance Properties. */
 export interface InstanceProperties {
@@ -1477,32 +1154,17 @@ export interface InstanceProperties {
   instanceNumber?: string;
 }
 export const InstanceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sapInstanceProperties: S.optional(SapInstanceProperties),
-    roles: S.optional(InstancePropertiesRolesItemEnumList),
-    status: S.optional(S.String),
-    machineType: S.optional(S.String),
-    upcomingMaintenanceEvent: S.optional(UpcomingMaintenanceEvent),
-    instanceNumber: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InstanceProperties",
-}) as any as S.Schema<InstanceProperties>;
+S.Struct({
+  "sapInstanceProperties": S.optional(SapInstanceProperties),
+  "roles": S.optional(InstancePropertiesRolesItemEnumList),
+  "status": S.optional(S.String),
+  "machineType": S.optional(S.String),
+  "upcomingMaintenanceEvent": S.optional(UpcomingMaintenanceEvent),
+  "instanceNumber": S.optional(S.String),
+}),
+).annotate({ identifier: "InstanceProperties" }) as any as S.Schema<InstanceProperties>;
 
-export type CloudResourceKindEnum =
-  | "RESOURCE_KIND_UNSPECIFIED"
-  | "RESOURCE_KIND_INSTANCE"
-  | "RESOURCE_KIND_DISK"
-  | "RESOURCE_KIND_ADDRESS"
-  | "RESOURCE_KIND_FILESTORE"
-  | "RESOURCE_KIND_HEALTH_CHECK"
-  | "RESOURCE_KIND_FORWARDING_RULE"
-  | "RESOURCE_KIND_BACKEND_SERVICE"
-  | "RESOURCE_KIND_SUBNETWORK"
-  | "RESOURCE_KIND_NETWORK"
-  | "RESOURCE_KIND_PUBLIC_ADDRESS"
-  | "RESOURCE_KIND_INSTANCE_GROUP"
-  | (string & {});
+export type CloudResourceKindEnum = "RESOURCE_KIND_UNSPECIFIED" | "RESOURCE_KIND_INSTANCE" | "RESOURCE_KIND_DISK" | "RESOURCE_KIND_ADDRESS" | "RESOURCE_KIND_FILESTORE" | "RESOURCE_KIND_HEALTH_CHECK" | "RESOURCE_KIND_FORWARDING_RULE" | "RESOURCE_KIND_BACKEND_SERVICE" | "RESOURCE_KIND_SUBNETWORK" | "RESOURCE_KIND_NETWORK" | "RESOURCE_KIND_PUBLIC_ADDRESS" | "RESOURCE_KIND_INSTANCE_GROUP";
 export const CloudResourceKindEnum = /*@__PURE__*/ S.String;
 
 /** The resource on GCP */
@@ -1515,17 +1177,15 @@ export interface CloudResource {
   name?: string;
 }
 export const CloudResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceProperties: S.optional(InstanceProperties),
-    kind: S.optional(CloudResourceKindEnum),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "instanceProperties": S.optional(InstanceProperties),
+  "kind": S.optional(CloudResourceKindEnum),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "CloudResource" }) as any as S.Schema<CloudResource>;
 
 export type CloudResourceList = ReadonlyArray<CloudResource>;
-export const CloudResourceList = /*@__PURE__*/ S.Array(
-  CloudResource,
-) as any as S.Schema<CloudResourceList>;
+export const CloudResourceList = /*@__PURE__*/ S.Array(CloudResource) as any as S.Schema<CloudResourceList>;
 
 /** The component of sap workload */
 export interface SapComponent {
@@ -1541,24 +1201,16 @@ export interface SapComponent {
   haHosts?: StringList;
 }
 export const SapComponent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseProperties: S.optional(DatabaseProperties),
-    topologyType: S.optional(SapComponentTopologyTypeEnum),
-    resources: S.optional(CloudResourceList),
-    sid: S.optional(S.String),
-    haHosts: S.optional(StringList),
-  }),
+S.Struct({
+  "databaseProperties": S.optional(DatabaseProperties),
+  "topologyType": S.optional(SapComponentTopologyTypeEnum),
+  "resources": S.optional(CloudResourceList),
+  "sid": S.optional(S.String),
+  "haHosts": S.optional(StringList),
+}),
 ).annotate({ identifier: "SapComponent" }) as any as S.Schema<SapComponent>;
 
-export type SapWorkloadArchitectureEnum =
-  | "ARCHITECTURE_UNSPECIFIED"
-  | "INVALID"
-  | "CENTRALIZED"
-  | "DISTRIBUTED"
-  | "DISTRIBUTED_HA"
-  | "STANDALONE_DATABASE"
-  | "STANDALONE_DATABASE_HA"
-  | (string & {});
+export type SapWorkloadArchitectureEnum = "ARCHITECTURE_UNSPECIFIED" | "INVALID" | "CENTRALIZED" | "DISTRIBUTED" | "DISTRIBUTED_HA" | "STANDALONE_DATABASE" | "STANDALONE_DATABASE_HA";
 export const SapWorkloadArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** Contains the details of a product. */
@@ -1569,16 +1221,14 @@ export interface Product {
   version?: string;
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 export type ProductList = ReadonlyArray<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(
-  Product,
-) as any as S.Schema<ProductList>;
+export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 /** The body of sap workload */
 export interface SapWorkload {
@@ -1594,19 +1244,16 @@ export interface SapWorkload {
   application?: SapComponent;
 }
 export const SapWorkload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.optional(SapComponent),
-    metadata: S.optional(StringMap),
-    architecture: S.optional(SapWorkloadArchitectureEnum),
-    products: S.optional(ProductList),
-    application: S.optional(SapComponent),
-  }),
+S.Struct({
+  "database": S.optional(SapComponent),
+  "metadata": S.optional(StringMap),
+  "architecture": S.optional(SapWorkloadArchitectureEnum),
+  "products": S.optional(ProductList),
+  "application": S.optional(SapComponent),
+}),
 ).annotate({ identifier: "SapWorkload" }) as any as S.Schema<SapWorkload>;
 
-export type WorkloadProfileWorkloadTypeEnum =
-  | "WORKLOAD_TYPE_UNSPECIFIED"
-  | "S4_HANA"
-  | (string & {});
+export type WorkloadProfileWorkloadTypeEnum = "WORKLOAD_TYPE_UNSPECIFIED" | "S4_HANA";
 export const WorkloadProfileWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
 /** Workload resource. */
@@ -1623,70 +1270,35 @@ export interface WorkloadProfile {
   labels?: StringMap;
 }
 export const WorkloadProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    refreshedTime: S.optional(S.String),
-    sapWorkload: S.optional(SapWorkload),
-    workloadType: S.optional(WorkloadProfileWorkloadTypeEnum),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "WorkloadProfile",
-}) as any as S.Schema<WorkloadProfile>;
+S.Struct({
+  "refreshedTime": S.optional(S.String),
+  "sapWorkload": S.optional(SapWorkload),
+  "workloadType": S.optional(WorkloadProfileWorkloadTypeEnum),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
+).annotate({ identifier: "WorkloadProfile" }) as any as S.Schema<WorkloadProfile>;
 
 export interface GetProjectsLocationsDiscoveredprofilesHealthRequest {
   /** Required. The resource name */
   name: string;
 }
-export const GetProjectsLocationsDiscoveredprofilesHealthRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDiscoveredprofilesHealthRequest",
-  }) as any as S.Schema<GetProjectsLocationsDiscoveredprofilesHealthRequest>;
+export const GetProjectsLocationsDiscoveredprofilesHealthRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsDiscoveredprofilesHealthRequest" }) as any as S.Schema<GetProjectsLocationsDiscoveredprofilesHealthRequest>;
 
-export type WorkloadProfileHealthStateEnum =
-  | "HEALTH_STATE_UNSPECIFIED"
-  | "HEALTHY"
-  | "UNHEALTHY"
-  | "CRITICAL"
-  | "UNSUPPORTED"
-  | (string & {});
+export type WorkloadProfileHealthStateEnum = "HEALTH_STATE_UNSPECIFIED" | "HEALTHY" | "UNHEALTHY" | "CRITICAL" | "UNSUPPORTED";
 export const WorkloadProfileHealthStateEnum = /*@__PURE__*/ S.String;
 
-export type ComponentHealthStateEnum =
-  | "HEALTH_STATE_UNSPECIFIED"
-  | "HEALTHY"
-  | "UNHEALTHY"
-  | "CRITICAL"
-  | "UNSUPPORTED"
-  | (string & {});
+export type ComponentHealthStateEnum = "HEALTH_STATE_UNSPECIFIED" | "HEALTHY" | "UNHEALTHY" | "CRITICAL" | "UNSUPPORTED";
 export const ComponentHealthStateEnum = /*@__PURE__*/ S.String;
 
-export type ComponentHealthComponentHealthTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "TYPE_REQUIRED"
-  | "TYPE_OPTIONAL"
-  | "TYPE_SPECIAL"
-  | (string & {});
+export type ComponentHealthComponentHealthTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_REQUIRED" | "TYPE_OPTIONAL" | "TYPE_SPECIAL";
 export const ComponentHealthComponentHealthTypeEnum = /*@__PURE__*/ S.String;
 
-export type HealthCheckStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PASSED"
-  | "FAILED"
-  | "DEGRADED"
-  | "SKIPPED"
-  | "UNSUPPORTED"
-  | (string & {});
+export type HealthCheckStateEnum = "STATE_UNSPECIFIED" | "PASSED" | "FAILED" | "DEGRADED" | "SKIPPED" | "UNSUPPORTED";
 export const HealthCheckStateEnum = /*@__PURE__*/ S.String;
 
 /** HealthCheck contains the detailed health check of a component based on asource. */
@@ -1703,19 +1315,17 @@ export interface HealthCheck {
   metric?: string;
 }
 export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(S.String),
-    state: S.optional(HealthCheckStateEnum),
-    resource: S.optional(CloudResource),
-    message: S.optional(S.String),
-    metric: S.optional(S.String),
-  }),
+S.Struct({
+  "source": S.optional(S.String),
+  "state": S.optional(HealthCheckStateEnum),
+  "resource": S.optional(CloudResource),
+  "message": S.optional(S.String),
+  "metric": S.optional(S.String),
+}),
 ).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
 
 export type HealthCheckList = ReadonlyArray<HealthCheck>;
-export const HealthCheckList = /*@__PURE__*/ S.Array(
-  HealthCheck,
-) as any as S.Schema<HealthCheckList>;
+export const HealthCheckList = /*@__PURE__*/ S.Array(HealthCheck) as any as S.Schema<HealthCheckList>;
 
 /** HealthCondition contains the detailed health check of each component. */
 export interface ComponentHealth {
@@ -1731,21 +1341,17 @@ export interface ComponentHealth {
   componentHealthChecks?: HealthCheckList;
 }
 export const ComponentHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(ComponentHealthStateEnum),
-    componentHealthType: S.optional(ComponentHealthComponentHealthTypeEnum),
-    component: S.optional(S.String),
-    subComponentsHealth: S.optional(S.suspend(() => ComponentHealthList)),
-    componentHealthChecks: S.optional(HealthCheckList),
-  }),
-).annotate({
-  identifier: "ComponentHealth",
-}) as any as S.Schema<ComponentHealth>;
+S.Struct({
+  "state": S.optional(ComponentHealthStateEnum),
+  "componentHealthType": S.optional(ComponentHealthComponentHealthTypeEnum),
+  "component": S.optional(S.String),
+  "subComponentsHealth": S.optional(S.suspend(() => ComponentHealthList)),
+  "componentHealthChecks": S.optional(HealthCheckList),
+}),
+).annotate({ identifier: "ComponentHealth" }) as any as S.Schema<ComponentHealth>;
 
 export type ComponentHealthList = ReadonlyArray<ComponentHealth>;
-export const ComponentHealthList = /*@__PURE__*/ S.Array(
-  ComponentHealth,
-) as any as S.Schema<ComponentHealthList>;
+export const ComponentHealthList = /*@__PURE__*/ S.Array(ComponentHealth) as any as S.Schema<ComponentHealthList>;
 
 /** WorkloadProfileHealth contains the detailed health check of workload. */
 export interface WorkloadProfileHealth {
@@ -1757,52 +1363,32 @@ export interface WorkloadProfileHealth {
   checkTime?: string;
 }
 export const WorkloadProfileHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(WorkloadProfileHealthStateEnum),
-    componentsHealth: S.optional(ComponentHealthList),
-    checkTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkloadProfileHealth",
-}) as any as S.Schema<WorkloadProfileHealth>;
+S.Struct({
+  "state": S.optional(WorkloadProfileHealthStateEnum),
+  "componentsHealth": S.optional(ComponentHealthList),
+  "checkTime": S.optional(S.String),
+}),
+).annotate({ identifier: "WorkloadProfileHealth" }) as any as S.Schema<WorkloadProfileHealth>;
 
 export interface GetProjectsLocationsEvaluationsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsEvaluationsRequest",
-}) as any as S.Schema<GetProjectsLocationsEvaluationsRequest>;
+export const GetProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsEvaluationsRequest" }) as any as S.Schema<GetProjectsLocationsEvaluationsRequest>;
 
 export interface GetProjectsLocationsEvaluationsExecutionsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsEvaluationsExecutionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsEvaluationsExecutionsRequest",
-  }) as any as S.Schema<GetProjectsLocationsEvaluationsExecutionsRequest>;
+export const GetProjectsLocationsEvaluationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsEvaluationsExecutionsRequest" }) as any as S.Schema<GetProjectsLocationsEvaluationsExecutionsRequest>;
 
 /** Execution summary. */
 export interface Summary {
@@ -1814,26 +1400,17 @@ export interface Summary {
   newFixes?: string;
 }
 export const Summary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failures: S.optional(S.String),
-    newFailures: S.optional(S.String),
-    newFixes: S.optional(S.String),
-  }),
+S.Struct({
+  "failures": S.optional(S.String),
+  "newFailures": S.optional(S.String),
+  "newFixes": S.optional(S.String),
+}),
 ).annotate({ identifier: "Summary" }) as any as S.Schema<Summary>;
 
-export type ExecutionRunTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "ONE_TIME"
-  | "SCHEDULED"
-  | (string & {});
+export type ExecutionRunTypeEnum = "TYPE_UNSPECIFIED" | "ONE_TIME" | "SCHEDULED";
 export const ExecutionRunTypeEnum = /*@__PURE__*/ S.String;
 
-export type ExecutionStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "RUNNING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+export type ExecutionStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "SUCCEEDED" | "FAILED";
 export const ExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** Additional information generated by an execution. */
@@ -1842,29 +1419,18 @@ export interface Notice {
   message?: string;
 }
 export const Notice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Notice" }) as any as S.Schema<Notice>;
 
 export type NoticeList = ReadonlyArray<Notice>;
-export const NoticeList = /*@__PURE__*/ S.Array(
-  Notice,
-) as any as S.Schema<NoticeList>;
+export const NoticeList = /*@__PURE__*/ S.Array(Notice) as any as S.Schema<NoticeList>;
 
-export type ExecutionEngineEnum =
-  | "ENGINE_UNSPECIFIED"
-  | "ENGINE_SCANNER"
-  | "V2"
-  | (string & {});
+export type ExecutionEngineEnum = "ENGINE_UNSPECIFIED" | "ENGINE_SCANNER" | "V2";
 export const ExecutionEngineEnum = /*@__PURE__*/ S.String;
 
-export type RuleExecutionResultStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "STATE_SUCCESS"
-  | "STATE_FAILURE"
-  | "STATE_SKIPPED"
-  | (string & {});
+export type RuleExecutionResultStateEnum = "STATE_UNSPECIFIED" | "STATE_SUCCESS" | "STATE_FAILURE" | "STATE_SKIPPED";
 export const RuleExecutionResultStateEnum = /*@__PURE__*/ S.String;
 
 /** Execution result summary per rule. */
@@ -1881,26 +1447,19 @@ export interface RuleExecutionResult {
   resultCount?: string;
 }
 export const RuleExecutionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scannedResourceCount: S.optional(S.String),
-    message: S.optional(S.String),
-    rule: S.optional(S.String),
-    state: S.optional(RuleExecutionResultStateEnum),
-    resultCount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RuleExecutionResult",
-}) as any as S.Schema<RuleExecutionResult>;
+S.Struct({
+  "scannedResourceCount": S.optional(S.String),
+  "message": S.optional(S.String),
+  "rule": S.optional(S.String),
+  "state": S.optional(RuleExecutionResultStateEnum),
+  "resultCount": S.optional(S.String),
+}),
+).annotate({ identifier: "RuleExecutionResult" }) as any as S.Schema<RuleExecutionResult>;
 
 export type RuleExecutionResultList = ReadonlyArray<RuleExecutionResult>;
-export const RuleExecutionResultList = /*@__PURE__*/ S.Array(
-  RuleExecutionResult,
-) as any as S.Schema<RuleExecutionResultList>;
+export const RuleExecutionResultList = /*@__PURE__*/ S.Array(RuleExecutionResult) as any as S.Schema<RuleExecutionResultList>;
 
-export type ExternalDataSourcesTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "BIG_QUERY_TABLE"
-  | (string & {});
+export type ExternalDataSourcesTypeEnum = "TYPE_UNSPECIFIED" | "BIG_QUERY_TABLE";
 export const ExternalDataSourcesTypeEnum = /*@__PURE__*/ S.String;
 
 /** External data sources for an execution. */
@@ -1915,20 +1474,16 @@ export interface ExternalDataSources {
   name?: string;
 }
 export const ExternalDataSources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ExternalDataSourcesTypeEnum),
-    assetType: S.optional(S.String),
-    uri: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExternalDataSources",
-}) as any as S.Schema<ExternalDataSources>;
+S.Struct({
+  "type": S.optional(ExternalDataSourcesTypeEnum),
+  "assetType": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "ExternalDataSources" }) as any as S.Schema<ExternalDataSources>;
 
 export type ExternalDataSourcesList = ReadonlyArray<ExternalDataSources>;
-export const ExternalDataSourcesList = /*@__PURE__*/ S.Array(
-  ExternalDataSources,
-) as any as S.Schema<ExternalDataSourcesList>;
+export const ExternalDataSourcesList = /*@__PURE__*/ S.Array(ExternalDataSources) as any as S.Schema<ExternalDataSourcesList>;
 
 /** Execution that represents a single run of an Evaluation. */
 export interface Execution {
@@ -1960,41 +1515,32 @@ export interface Execution {
   externalDataSources?: ExternalDataSourcesList;
 }
 export const Execution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    inventoryTime: S.optional(S.String),
-    resultSummary: S.optional(Summary),
-    runType: S.optional(ExecutionRunTypeEnum),
-    name: S.optional(S.String),
-    state: S.optional(ExecutionStateEnum),
-    notices: S.optional(NoticeList),
-    endTime: S.optional(S.String),
-    evaluationId: S.optional(S.String),
-    engine: S.optional(ExecutionEngineEnum),
-    labels: S.optional(StringMap),
-    ruleResults: S.optional(RuleExecutionResultList),
-    externalDataSources: S.optional(ExternalDataSourcesList),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "inventoryTime": S.optional(S.String),
+  "resultSummary": S.optional(Summary),
+  "runType": S.optional(ExecutionRunTypeEnum),
+  "name": S.optional(S.String),
+  "state": S.optional(ExecutionStateEnum),
+  "notices": S.optional(NoticeList),
+  "endTime": S.optional(S.String),
+  "evaluationId": S.optional(S.String),
+  "engine": S.optional(ExecutionEngineEnum),
+  "labels": S.optional(StringMap),
+  "ruleResults": S.optional(RuleExecutionResultList),
+  "externalDataSources": S.optional(ExternalDataSourcesList),
+}),
 ).annotate({ identifier: "Execution" }) as any as S.Schema<Execution>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -2009,27 +1555,17 @@ export interface ListProjectsLocationsRequest {
   filter?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://workloadmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2039,13 +1575,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsDeploymentsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -2059,29 +1593,18 @@ export interface ListProjectsLocationsDeploymentsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/deployments",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsDeploymentsRequest",
-}) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>;
+export const ListProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/deployments","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsDeploymentsRequest" }) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>;
 
 export type DeploymentList = ReadonlyArray<Deployment>;
-export const DeploymentList = /*@__PURE__*/ S.Array(
-  Deployment,
-) as any as S.Schema<DeploymentList>;
+export const DeploymentList = /*@__PURE__*/ S.Array(Deployment) as any as S.Schema<DeploymentList>;
 
 /** Message for response to listing deployments. */
 export interface ListDeploymentsResponse {
@@ -2093,14 +1616,12 @@ export interface ListDeploymentsResponse {
   unreachable?: StringList;
 }
 export const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployments: S.optional(DeploymentList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListDeploymentsResponse",
-}) as any as S.Schema<ListDeploymentsResponse>;
+S.Struct({
+  "deployments": S.optional(DeploymentList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListDeploymentsResponse" }) as any as S.Schema<ListDeploymentsResponse>;
 
 export interface ListProjectsLocationsDeploymentsActuationsRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -2114,29 +1635,18 @@ export interface ListProjectsLocationsDeploymentsActuationsRequest {
   /** Optional. Filtering results. */
   filter?: string;
 }
-export const ListProjectsLocationsDeploymentsActuationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/actuations",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsDeploymentsActuationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsDeploymentsActuationsRequest>;
+export const ListProjectsLocationsDeploymentsActuationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/actuations","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsDeploymentsActuationsRequest" }) as any as S.Schema<ListProjectsLocationsDeploymentsActuationsRequest>;
 
 export type ActuationList = ReadonlyArray<Actuation>;
-export const ActuationList = /*@__PURE__*/ S.Array(
-  Actuation,
-) as any as S.Schema<ActuationList>;
+export const ActuationList = /*@__PURE__*/ S.Array(Actuation) as any as S.Schema<ActuationList>;
 
 /** The response object from `ListActuations`. */
 export interface ListActuationsResponse {
@@ -2148,14 +1658,12 @@ export interface ListActuationsResponse {
   unreachable?: StringList;
 }
 export const ListActuationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actuations: S.optional(ActuationList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListActuationsResponse",
-}) as any as S.Schema<ListActuationsResponse>;
+S.Struct({
+  "actuations": S.optional(ActuationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListActuationsResponse" }) as any as S.Schema<ListActuationsResponse>;
 
 export interface ListProjectsLocationsDiscoveredprofilesRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
@@ -2167,28 +1675,17 @@ export interface ListProjectsLocationsDiscoveredprofilesRequest {
   /** Optional. Filtering results */
   filter?: string;
 }
-export const ListProjectsLocationsDiscoveredprofilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/discoveredprofiles",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsDiscoveredprofilesRequest",
-  }) as any as S.Schema<ListProjectsLocationsDiscoveredprofilesRequest>;
+export const ListProjectsLocationsDiscoveredprofilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/discoveredprofiles","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsDiscoveredprofilesRequest" }) as any as S.Schema<ListProjectsLocationsDiscoveredprofilesRequest>;
 
 export type WorkloadProfileList = ReadonlyArray<WorkloadProfile>;
-export const WorkloadProfileList = /*@__PURE__*/ S.Array(
-  WorkloadProfile,
-) as any as S.Schema<WorkloadProfileList>;
+export const WorkloadProfileList = /*@__PURE__*/ S.Array(WorkloadProfile) as any as S.Schema<WorkloadProfileList>;
 
 /** List discovered profile Response returns discovered profiles from agents */
 export interface ListDiscoveredProfilesResponse {
@@ -2200,14 +1697,12 @@ export interface ListDiscoveredProfilesResponse {
   nextPageToken?: string;
 }
 export const ListDiscoveredProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workloadProfiles: S.optional(WorkloadProfileList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDiscoveredProfilesResponse",
-}) as any as S.Schema<ListDiscoveredProfilesResponse>;
+S.Struct({
+  "workloadProfiles": S.optional(WorkloadProfileList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDiscoveredProfilesResponse" }) as any as S.Schema<ListDiscoveredProfilesResponse>;
 
 export interface ListProjectsLocationsEvaluationsRequest {
   /** A token identifying a page of results the server should return. */
@@ -2221,29 +1716,18 @@ export interface ListProjectsLocationsEvaluationsRequest {
   /** Filter to be applied when listing the evaluation results. */
   filter?: string;
 }
-export const ListProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/evaluations",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsEvaluationsRequest",
-}) as any as S.Schema<ListProjectsLocationsEvaluationsRequest>;
+export const ListProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/evaluations","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsEvaluationsRequest" }) as any as S.Schema<ListProjectsLocationsEvaluationsRequest>;
 
 export type EvaluationList = ReadonlyArray<Evaluation>;
-export const EvaluationList = /*@__PURE__*/ S.Array(
-  Evaluation,
-) as any as S.Schema<EvaluationList>;
+export const EvaluationList = /*@__PURE__*/ S.Array(Evaluation) as any as S.Schema<EvaluationList>;
 
 /** Response message for the ListEvaluations RPC. */
 export interface ListEvaluationsResponse {
@@ -2255,14 +1739,12 @@ export interface ListEvaluationsResponse {
   evaluations?: EvaluationList;
 }
 export const ListEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    evaluations: S.optional(EvaluationList),
-  }),
-).annotate({
-  identifier: "ListEvaluationsResponse",
-}) as any as S.Schema<ListEvaluationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "evaluations": S.optional(EvaluationList),
+}),
+).annotate({ identifier: "ListEvaluationsResponse" }) as any as S.Schema<ListEvaluationsResponse>;
 
 export interface ListProjectsLocationsEvaluationsExecutionsRequest {
   /** Filtering results. */
@@ -2276,29 +1758,18 @@ export interface ListProjectsLocationsEvaluationsExecutionsRequest {
   /** Required. The resource prefix of the Execution using the form: `projects/{project}/locations/{location}/evaluations/{evaluation}`. */
   parent: string;
 }
-export const ListProjectsLocationsEvaluationsExecutionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/executions",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsEvaluationsExecutionsRequest",
-  }) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsRequest>;
+export const ListProjectsLocationsEvaluationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/executions","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsEvaluationsExecutionsRequest" }) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsRequest>;
 
 export type ExecutionList = ReadonlyArray<Execution>;
-export const ExecutionList = /*@__PURE__*/ S.Array(
-  Execution,
-) as any as S.Schema<ExecutionList>;
+export const ExecutionList = /*@__PURE__*/ S.Array(Execution) as any as S.Schema<ExecutionList>;
 
 /** Response message for the ListExecutions RPC. */
 export interface ListExecutionsResponse {
@@ -2310,14 +1781,12 @@ export interface ListExecutionsResponse {
   unreachable?: StringList;
 }
 export const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executions: S.optional(ExecutionList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListExecutionsResponse",
-}) as any as S.Schema<ListExecutionsResponse>;
+S.Struct({
+  "executions": S.optional(ExecutionList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListExecutionsResponse" }) as any as S.Schema<ListExecutionsResponse>;
 
 export interface ListProjectsLocationsEvaluationsExecutionsResultsRequest {
   /** Required. The execution results. Format: {parent}/evaluations/*\/executions/*\/results. */
@@ -2329,29 +1798,16 @@ export interface ListProjectsLocationsEvaluationsExecutionsResultsRequest {
   /** Filtering results. */
   filter?: string;
 }
-export const ListProjectsLocationsEvaluationsExecutionsResultsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/results",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsEvaluationsExecutionsResultsRequest",
-  }) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsResultsRequest>;
+export const ListProjectsLocationsEvaluationsExecutionsResultsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/results","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsEvaluationsExecutionsResultsRequest" }) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsResultsRequest>;
 
-export type ExecutionResultTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "TYPE_PASSED"
-  | "TYPE_VIOLATED"
-  | (string & {});
+export type ExecutionResultTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_PASSED" | "TYPE_VIOLATED";
 export const ExecutionResultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Resource in execution result. */
@@ -2364,11 +1820,11 @@ export interface Resource {
   name?: string;
 }
 export const Resource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 /** An AgentCommand specifies a one-time executable program for the agent to run. */
@@ -2379,10 +1835,10 @@ export interface AgentCommand {
   parameters?: StringMap;
 }
 export const AgentCommand = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    command: S.optional(S.String),
-    parameters: S.optional(StringMap),
-  }),
+S.Struct({
+  "command": S.optional(S.String),
+  "parameters": S.optional(StringMap),
+}),
 ).annotate({ identifier: "AgentCommand" }) as any as S.Schema<AgentCommand>;
 
 /** A ShellCommand is invoked via the agent's command line executor. */
@@ -2395,11 +1851,11 @@ export interface ShellCommand {
   args?: string;
 }
 export const ShellCommand = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeoutSeconds: S.optional(S.Number),
-    command: S.optional(S.String),
-    args: S.optional(S.String),
-  }),
+S.Struct({
+  "timeoutSeconds": S.optional(S.Number),
+  "command": S.optional(S.String),
+  "args": S.optional(S.String),
+}),
 ).annotate({ identifier: "ShellCommand" }) as any as S.Schema<ShellCommand>;
 
 /** Command specifies the type of command to execute. */
@@ -2410,16 +1866,14 @@ export interface Command {
   shellCommand?: ShellCommand;
 }
 export const Command = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentCommand: S.optional(AgentCommand),
-    shellCommand: S.optional(ShellCommand),
-  }),
+S.Struct({
+  "agentCommand": S.optional(AgentCommand),
+  "shellCommand": S.optional(ShellCommand),
+}),
 ).annotate({ identifier: "Command" }) as any as S.Schema<Command>;
 
 export type CommandList = ReadonlyArray<Command>;
-export const CommandList = /*@__PURE__*/ S.Array(
-  Command,
-) as any as S.Schema<CommandList>;
+export const CommandList = /*@__PURE__*/ S.Array(Command) as any as S.Schema<CommandList>;
 
 /** The rule output of the violation. */
 export interface RuleOutput {
@@ -2429,16 +1883,14 @@ export interface RuleOutput {
   message?: string;
 }
 export const RuleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(StringMap),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "details": S.optional(StringMap),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "RuleOutput" }) as any as S.Schema<RuleOutput>;
 
 export type RuleOutputList = ReadonlyArray<RuleOutput>;
-export const RuleOutputList = /*@__PURE__*/ S.Array(
-  RuleOutput,
-) as any as S.Schema<RuleOutputList>;
+export const RuleOutputList = /*@__PURE__*/ S.Array(RuleOutput) as any as S.Schema<RuleOutputList>;
 
 /** The violation in an evaluation result. */
 export interface ViolationDetails {
@@ -2452,15 +1904,13 @@ export interface ViolationDetails {
   observed?: StringMap;
 }
 export const ViolationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asset: S.optional(S.String),
-    ruleOutput: S.optional(RuleOutputList),
-    serviceAccount: S.optional(S.String),
-    observed: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "ViolationDetails",
-}) as any as S.Schema<ViolationDetails>;
+S.Struct({
+  "asset": S.optional(S.String),
+  "ruleOutput": S.optional(RuleOutputList),
+  "serviceAccount": S.optional(S.String),
+  "observed": S.optional(StringMap),
+}),
+).annotate({ identifier: "ViolationDetails" }) as any as S.Schema<ViolationDetails>;
 
 /** The result of an execution. */
 export interface ExecutionResult {
@@ -2482,24 +1932,20 @@ export interface ExecutionResult {
   documentationUrl?: string;
 }
 export const ExecutionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.optional(S.String),
-    violationMessage: S.optional(S.String),
-    type: S.optional(ExecutionResultTypeEnum),
-    resource: S.optional(Resource),
-    rule: S.optional(S.String),
-    commands: S.optional(CommandList),
-    violationDetails: S.optional(ViolationDetails),
-    documentationUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecutionResult",
-}) as any as S.Schema<ExecutionResult>;
+S.Struct({
+  "severity": S.optional(S.String),
+  "violationMessage": S.optional(S.String),
+  "type": S.optional(ExecutionResultTypeEnum),
+  "resource": S.optional(Resource),
+  "rule": S.optional(S.String),
+  "commands": S.optional(CommandList),
+  "violationDetails": S.optional(ViolationDetails),
+  "documentationUrl": S.optional(S.String),
+}),
+).annotate({ identifier: "ExecutionResult" }) as any as S.Schema<ExecutionResult>;
 
 export type ExecutionResultList = ReadonlyArray<ExecutionResult>;
-export const ExecutionResultList = /*@__PURE__*/ S.Array(
-  ExecutionResult,
-) as any as S.Schema<ExecutionResultList>;
+export const ExecutionResultList = /*@__PURE__*/ S.Array(ExecutionResult) as any as S.Schema<ExecutionResultList>;
 
 /** Response message for the ListExecutionResults RPC. */
 export interface ListExecutionResultsResponse {
@@ -2509,13 +1955,11 @@ export interface ListExecutionResultsResponse {
   executionResults?: ExecutionResultList;
 }
 export const ListExecutionResultsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    executionResults: S.optional(ExecutionResultList),
-  }),
-).annotate({
-  identifier: "ListExecutionResultsResponse",
-}) as any as S.Schema<ListExecutionResultsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "executionResults": S.optional(ExecutionResultList),
+}),
+).annotate({ identifier: "ListExecutionResultsResponse" }) as any as S.Schema<ListExecutionResultsResponse>;
 
 export interface ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest {
   /** Filtering results. */
@@ -2531,26 +1975,16 @@ export interface ListProjectsLocationsEvaluationsExecutionsScannedResourcesReque
   /** Required. Parent for ListScannedResourcesRequest. */
   parent: string;
 }
-export const ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      rule: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/scannedResources",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest",
-  }) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest>;
+export const ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "rule": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/scannedResources","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest" }) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest>;
 
 /** A scanned resource. */
 export interface ScannedResource {
@@ -2560,18 +1994,14 @@ export interface ScannedResource {
   resource?: string;
 }
 export const ScannedResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    resource: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScannedResource",
-}) as any as S.Schema<ScannedResource>;
+S.Struct({
+  "type": S.optional(S.String),
+  "resource": S.optional(S.String),
+}),
+).annotate({ identifier: "ScannedResource" }) as any as S.Schema<ScannedResource>;
 
 export type ScannedResourceList = ReadonlyArray<ScannedResource>;
-export const ScannedResourceList = /*@__PURE__*/ S.Array(
-  ScannedResource,
-) as any as S.Schema<ScannedResourceList>;
+export const ScannedResourceList = /*@__PURE__*/ S.Array(ScannedResource) as any as S.Schema<ScannedResourceList>;
 
 /** Response message for the ListScannedResources RPC. */
 export interface ListScannedResourcesResponse {
@@ -2581,13 +2011,11 @@ export interface ListScannedResourcesResponse {
   nextPageToken?: string;
 }
 export const ListScannedResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scannedResources: S.optional(ScannedResourceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListScannedResourcesResponse",
-}) as any as S.Schema<ListScannedResourcesResponse>;
+S.Struct({
+  "scannedResources": S.optional(ScannedResourceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListScannedResourcesResponse" }) as any as S.Schema<ListScannedResourcesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -2601,29 +2029,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2635,23 +2052,15 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
-export type ListProjectsLocationsRulesEvaluationTypeEnum =
-  | "EVALUATION_TYPE_UNSPECIFIED"
-  | "SAP"
-  | "SQL_SERVER"
-  | "OTHER"
-  | (string & {});
-export const ListProjectsLocationsRulesEvaluationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsRulesEvaluationTypeEnum = "EVALUATION_TYPE_UNSPECIFIED" | "SAP" | "SQL_SERVER" | "OTHER";
+export const ListProjectsLocationsRulesEvaluationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsRulesRequest {
   /** Filter based on primary_category, secondary_category. */
@@ -2659,7 +2068,7 @@ export interface ListProjectsLocationsRulesRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
   /** Optional. The evaluation type of the rules will be applied to. The Cloud Storage bucket name for custom rules. */
-  evaluationType?: ListProjectsLocationsRulesEvaluationTypeEnum;
+  evaluationType?: ListProjectsLocationsRulesEvaluationTypeEnum | (string & {});
   /** The Cloud Storage bucket name for custom rules. */
   customRulesBucket?: string;
   /** A token identifying a page of results the server should return. */
@@ -2668,31 +2077,17 @@ export interface ListProjectsLocationsRulesRequest {
   parent: string;
 }
 export const ListProjectsLocationsRulesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    evaluationType: S.optional(
-      ListProjectsLocationsRulesEvaluationTypeEnum.pipe(T.Query()),
-    ),
-    customRulesBucket: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/rules",
-      baseUrl: "https://workloadmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRulesRequest",
-}) as any as S.Schema<ListProjectsLocationsRulesRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "evaluationType": S.optional(ListProjectsLocationsRulesEvaluationTypeEnum.pipe(T.Query())),
+  "customRulesBucket": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/rules","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRulesRequest" }) as any as S.Schema<ListProjectsLocationsRulesRequest>;
 
-export type RuleRuleTypeEnum =
-  | "RULE_TYPE_UNSPECIFIED"
-  | "BASELINE"
-  | "CUSTOM"
-  | (string & {});
+export type RuleRuleTypeEnum = "RULE_TYPE_UNSPECIFIED" | "BASELINE" | "CUSTOM";
 export const RuleRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** A rule to be evaluated. */
@@ -2725,27 +2120,25 @@ export interface Rule {
   ruleType?: RuleRuleTypeEnum;
 }
 export const Rule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    severity: S.optional(S.String),
-    tags: S.optional(StringList),
-    assetType: S.optional(S.String),
-    name: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-    primaryCategory: S.optional(S.String),
-    displayName: S.optional(S.String),
-    secondaryCategory: S.optional(S.String),
-    uri: S.optional(S.String),
-    remediation: S.optional(S.String),
-    revisionId: S.optional(S.String),
-    ruleType: S.optional(RuleRuleTypeEnum),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "severity": S.optional(S.String),
+  "tags": S.optional(StringList),
+  "assetType": S.optional(S.String),
+  "name": S.optional(S.String),
+  "errorMessage": S.optional(S.String),
+  "primaryCategory": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "secondaryCategory": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "remediation": S.optional(S.String),
+  "revisionId": S.optional(S.String),
+  "ruleType": S.optional(RuleRuleTypeEnum),
+}),
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
 export type RuleList = ReadonlyArray<Rule>;
-export const RuleList = /*@__PURE__*/ S.Array(
-  Rule,
-) as any as S.Schema<RuleList>;
+export const RuleList = /*@__PURE__*/ S.Array(Rule) as any as S.Schema<RuleList>;
 
 /** Response message for the ListRules RPC. */
 export interface ListRulesResponse {
@@ -2753,12 +2146,10 @@ export interface ListRulesResponse {
   rules?: RuleList;
 }
 export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(RuleList),
-  }),
-).annotate({
-  identifier: "ListRulesResponse",
-}) as any as S.Schema<ListRulesResponse>;
+S.Struct({
+  "rules": S.optional(RuleList),
+}),
+).annotate({ identifier: "ListRulesResponse" }) as any as S.Schema<ListRulesResponse>;
 
 export interface PatchProjectsLocationsEvaluationsRequest {
   /** Name of resource that has the form `projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}`. */
@@ -2770,23 +2161,14 @@ export interface PatchProjectsLocationsEvaluationsRequest {
   /** Request body */
   body?: Evaluation;
 }
-export const PatchProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Evaluation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsEvaluationsRequest",
-}) as any as S.Schema<PatchProjectsLocationsEvaluationsRequest>;
+export const PatchProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Evaluation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsEvaluationsRequest" }) as any as S.Schema<PatchProjectsLocationsEvaluationsRequest>;
 
 /** Request message for the RunEvaluation RPC. */
 export interface RunEvaluationRequest {
@@ -2798,14 +2180,12 @@ export interface RunEvaluationRequest {
   execution?: Execution;
 }
 export const RunEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionId: S.optional(S.String),
-    requestId: S.optional(S.String),
-    execution: S.optional(Execution),
-  }),
-).annotate({
-  identifier: "RunEvaluationRequest",
-}) as any as S.Schema<RunEvaluationRequest>;
+S.Struct({
+  "executionId": S.optional(S.String),
+  "requestId": S.optional(S.String),
+  "execution": S.optional(Execution),
+}),
+).annotate({ identifier: "RunEvaluationRequest" }) as any as S.Schema<RunEvaluationRequest>;
 
 export interface RunProjectsLocationsEvaluationsExecutionsRequest {
   /** Required. The resource name of the Evaluation using the form: `projects/{project}/locations/{location}/evaluations/{evaluation}`. */
@@ -2813,21 +2193,12 @@ export interface RunProjectsLocationsEvaluationsExecutionsRequest {
   /** Request body */
   body?: RunEvaluationRequest;
 }
-export const RunProjectsLocationsEvaluationsExecutionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RunEvaluationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}/executions:run",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RunProjectsLocationsEvaluationsExecutionsRequest",
-  }) as any as S.Schema<RunProjectsLocationsEvaluationsExecutionsRequest>;
+export const RunProjectsLocationsEvaluationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RunEvaluationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}/executions:run","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "RunProjectsLocationsEvaluationsExecutionsRequest" }) as any as S.Schema<RunProjectsLocationsEvaluationsExecutionsRequest>;
 
 /** Message containing collected data names and values. */
 export interface SqlserverValidationDetails {
@@ -2835,58 +2206,33 @@ export interface SqlserverValidationDetails {
   fields?: StringMap;
 }
 export const SqlserverValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "SqlserverValidationDetails",
-}) as any as S.Schema<SqlserverValidationDetails>;
+S.Struct({
+  "fields": S.optional(StringMap),
+}),
+).annotate({ identifier: "SqlserverValidationDetails" }) as any as S.Schema<SqlserverValidationDetails>;
 
-export type SqlserverValidationDetailsList =
-  ReadonlyArray<SqlserverValidationDetails>;
-export const SqlserverValidationDetailsList = /*@__PURE__*/ S.Array(
-  SqlserverValidationDetails,
-) as any as S.Schema<SqlserverValidationDetailsList>;
+export type SqlserverValidationDetailsList = ReadonlyArray<SqlserverValidationDetails>;
+export const SqlserverValidationDetailsList = /*@__PURE__*/ S.Array(SqlserverValidationDetails) as any as S.Schema<SqlserverValidationDetailsList>;
 
-export type SqlserverValidationValidationDetailTypeEnum =
-  | "SQLSERVER_VALIDATION_TYPE_UNSPECIFIED"
-  | "OS"
-  | "DB_LOG_DISK_SEPARATION"
-  | "DB_MAX_PARALLELISM"
-  | "DB_CXPACKET_WAITS"
-  | "DB_TRANSACTION_LOG_HANDLING"
-  | "DB_VIRTUAL_LOG_FILE_COUNT"
-  | "DB_BUFFER_POOL_EXTENSION"
-  | "DB_MAX_SERVER_MEMORY"
-  | "INSTANCE_METRICS"
-  | "DB_INDEX_FRAGMENTATION"
-  | "DB_TABLE_INDEX_COMPRESSION"
-  | "DB_BACKUP_POLICY"
-  | (string & {});
-export const SqlserverValidationValidationDetailTypeEnum =
-  /*@__PURE__*/ S.String;
+export type SqlserverValidationValidationDetailTypeEnum = "SQLSERVER_VALIDATION_TYPE_UNSPECIFIED" | "OS" | "DB_LOG_DISK_SEPARATION" | "DB_MAX_PARALLELISM" | "DB_CXPACKET_WAITS" | "DB_TRANSACTION_LOG_HANDLING" | "DB_VIRTUAL_LOG_FILE_COUNT" | "DB_BUFFER_POOL_EXTENSION" | "DB_MAX_SERVER_MEMORY" | "INSTANCE_METRICS" | "DB_INDEX_FRAGMENTATION" | "DB_TABLE_INDEX_COMPRESSION" | "DB_BACKUP_POLICY";
+export const SqlserverValidationValidationDetailTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing the Sqlserver validation metrics. */
 export interface SqlserverValidationValidationDetail {
   /** Required. Details wraps map that represents collected data names and values. */
   details?: SqlserverValidationDetailsList;
   /** Optional. The Sqlserver system that the validation data is from. */
-  type?: SqlserverValidationValidationDetailTypeEnum;
+  type?: SqlserverValidationValidationDetailTypeEnum | (string & {});
 }
 export const SqlserverValidationValidationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(SqlserverValidationDetailsList),
-    type: S.optional(SqlserverValidationValidationDetailTypeEnum),
-  }),
-).annotate({
-  identifier: "SqlserverValidationValidationDetail",
-}) as any as S.Schema<SqlserverValidationValidationDetail>;
+S.Struct({
+  "details": S.optional(SqlserverValidationDetailsList),
+  "type": S.optional(SqlserverValidationValidationDetailTypeEnum),
+}),
+).annotate({ identifier: "SqlserverValidationValidationDetail" }) as any as S.Schema<SqlserverValidationValidationDetail>;
 
-export type SqlserverValidationValidationDetailList =
-  ReadonlyArray<SqlserverValidationValidationDetail>;
-export const SqlserverValidationValidationDetailList = /*@__PURE__*/ S.Array(
-  SqlserverValidationValidationDetail,
-) as any as S.Schema<SqlserverValidationValidationDetailList>;
+export type SqlserverValidationValidationDetailList = ReadonlyArray<SqlserverValidationValidationDetail>;
+export const SqlserverValidationValidationDetailList = /*@__PURE__*/ S.Array(SqlserverValidationValidationDetail) as any as S.Schema<SqlserverValidationValidationDetailList>;
 
 /** A presentation of SQLServer workload insight. The schema of SqlServer workloads validation related data. */
 export interface SqlserverValidation {
@@ -2900,22 +2246,15 @@ export interface SqlserverValidation {
   projectId?: string;
 }
 export const SqlserverValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentVersion: S.optional(S.String),
-    instance: S.optional(S.String),
-    validationDetails: S.optional(SqlserverValidationValidationDetailList),
-    projectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlserverValidation",
-}) as any as S.Schema<SqlserverValidation>;
+S.Struct({
+  "agentVersion": S.optional(S.String),
+  "instance": S.optional(S.String),
+  "validationDetails": S.optional(SqlserverValidationValidationDetailList),
+  "projectId": S.optional(S.String),
+}),
+).annotate({ identifier: "SqlserverValidation" }) as any as S.Schema<SqlserverValidation>;
 
-export type TorsoValidationWorkloadTypeEnum =
-  | "WORKLOAD_TYPE_UNSPECIFIED"
-  | "MYSQL"
-  | "ORACLE"
-  | "REDIS"
-  | (string & {});
+export type TorsoValidationWorkloadTypeEnum = "WORKLOAD_TYPE_UNSPECIFIED" | "MYSQL" | "ORACLE" | "REDIS";
 export const TorsoValidationWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
 /** The schema of torso workload validation data. */
@@ -2923,7 +2262,7 @@ export interface TorsoValidation {
   /** Optional. instance_name lists the human readable name of the instance that the data comes from. */
   instanceName?: string;
   /** Required. workload_type specifies the type of torso workload. */
-  workloadType?: TorsoValidationWorkloadTypeEnum;
+  workloadType?: TorsoValidationWorkloadTypeEnum | (string & {});
   /** Required. agent_version lists the version of the agent that collected this data. */
   agentVersion?: string;
   /** Required. validation_details contains the pairs of validation data: field name & field value. */
@@ -2932,56 +2271,37 @@ export interface TorsoValidation {
   projectId?: string;
 }
 export const TorsoValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceName: S.optional(S.String),
-    workloadType: S.optional(TorsoValidationWorkloadTypeEnum),
-    agentVersion: S.optional(S.String),
-    validationDetails: S.optional(StringMap),
-    projectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TorsoValidation",
-}) as any as S.Schema<TorsoValidation>;
+S.Struct({
+  "instanceName": S.optional(S.String),
+  "workloadType": S.optional(TorsoValidationWorkloadTypeEnum),
+  "agentVersion": S.optional(S.String),
+  "validationDetails": S.optional(StringMap),
+  "projectId": S.optional(S.String),
+}),
+).annotate({ identifier: "TorsoValidation" }) as any as S.Schema<TorsoValidation>;
 
-export type SapValidationValidationDetailSapValidationTypeEnum =
-  | "SAP_VALIDATION_TYPE_UNSPECIFIED"
-  | "SYSTEM"
-  | "COROSYNC"
-  | "PACEMAKER"
-  | "HANA"
-  | "NETWEAVER"
-  | "HANA_SECURITY"
-  | "CUSTOM"
-  | (string & {});
-export const SapValidationValidationDetailSapValidationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type SapValidationValidationDetailSapValidationTypeEnum = "SAP_VALIDATION_TYPE_UNSPECIFIED" | "SYSTEM" | "COROSYNC" | "PACEMAKER" | "HANA" | "NETWEAVER" | "HANA_SECURITY" | "CUSTOM";
+export const SapValidationValidationDetailSapValidationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing the SAP validation metrics. */
 export interface SapValidationValidationDetail {
   /** Optional. The SAP system that the validation data is from. */
-  sapValidationType?: SapValidationValidationDetailSapValidationTypeEnum;
+  sapValidationType?: SapValidationValidationDetailSapValidationTypeEnum | (string & {});
   /** Optional. The pairs of metrics data: field name & field value. */
   details?: StringMap;
   /** Optional. Was there a SAP system detected for this validation type. */
   isPresent?: boolean;
 }
 export const SapValidationValidationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sapValidationType: S.optional(
-      SapValidationValidationDetailSapValidationTypeEnum,
-    ),
-    details: S.optional(StringMap),
-    isPresent: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SapValidationValidationDetail",
-}) as any as S.Schema<SapValidationValidationDetail>;
+S.Struct({
+  "sapValidationType": S.optional(SapValidationValidationDetailSapValidationTypeEnum),
+  "details": S.optional(StringMap),
+  "isPresent": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SapValidationValidationDetail" }) as any as S.Schema<SapValidationValidationDetail>;
 
-export type SapValidationValidationDetailList =
-  ReadonlyArray<SapValidationValidationDetail>;
-export const SapValidationValidationDetailList = /*@__PURE__*/ S.Array(
-  SapValidationValidationDetail,
-) as any as S.Schema<SapValidationValidationDetailList>;
+export type SapValidationValidationDetailList = ReadonlyArray<SapValidationValidationDetail>;
+export const SapValidationValidationDetailList = /*@__PURE__*/ S.Array(SapValidationValidationDetail) as any as S.Schema<SapValidationValidationDetailList>;
 
 /** A presentation of SAP workload insight. The schema of SAP workloads validation related data. */
 export interface SapValidation {
@@ -2993,58 +2313,37 @@ export interface SapValidation {
   zone?: string;
 }
 export const SapValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validationDetails: S.optional(SapValidationValidationDetailList),
-    projectId: S.optional(S.String),
-    zone: S.optional(S.String),
-  }),
+S.Struct({
+  "validationDetails": S.optional(SapValidationValidationDetailList),
+  "projectId": S.optional(S.String),
+  "zone": S.optional(S.String),
+}),
 ).annotate({ identifier: "SapValidation" }) as any as S.Schema<SapValidation>;
 
-export type AgentStatusServiceStatusFullyFunctionalEnum =
-  | "UNSPECIFIED_STATE"
-  | "SUCCESS_STATE"
-  | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
-export const AgentStatusServiceStatusFullyFunctionalEnum =
-  /*@__PURE__*/ S.String;
+export type AgentStatusServiceStatusFullyFunctionalEnum = "UNSPECIFIED_STATE" | "SUCCESS_STATE" | "FAILURE_STATE" | "ERROR_STATE";
+export const AgentStatusServiceStatusFullyFunctionalEnum = /*@__PURE__*/ S.String;
 
-export type AgentStatusIAMPermissionGrantedEnum =
-  | "UNSPECIFIED_STATE"
-  | "SUCCESS_STATE"
-  | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+export type AgentStatusIAMPermissionGrantedEnum = "UNSPECIFIED_STATE" | "SUCCESS_STATE" | "FAILURE_STATE" | "ERROR_STATE";
 export const AgentStatusIAMPermissionGrantedEnum = /*@__PURE__*/ S.String;
 
 /** The IAM permission status. */
 export interface AgentStatusIAMPermission {
   /** Output only. Whether the permission is granted. */
-  granted?: AgentStatusIAMPermissionGrantedEnum;
+  granted?: AgentStatusIAMPermissionGrantedEnum | (string & {});
   /** Output only. The name of the permission. */
   name?: string;
 }
 export const AgentStatusIAMPermission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    granted: S.optional(AgentStatusIAMPermissionGrantedEnum),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgentStatusIAMPermission",
-}) as any as S.Schema<AgentStatusIAMPermission>;
+S.Struct({
+  "granted": S.optional(AgentStatusIAMPermissionGrantedEnum),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "AgentStatusIAMPermission" }) as any as S.Schema<AgentStatusIAMPermission>;
 
-export type AgentStatusIAMPermissionList =
-  ReadonlyArray<AgentStatusIAMPermission>;
-export const AgentStatusIAMPermissionList = /*@__PURE__*/ S.Array(
-  AgentStatusIAMPermission,
-) as any as S.Schema<AgentStatusIAMPermissionList>;
+export type AgentStatusIAMPermissionList = ReadonlyArray<AgentStatusIAMPermission>;
+export const AgentStatusIAMPermissionList = /*@__PURE__*/ S.Array(AgentStatusIAMPermission) as any as S.Schema<AgentStatusIAMPermissionList>;
 
-export type AgentStatusServiceStatusStateEnum =
-  | "UNSPECIFIED_STATE"
-  | "SUCCESS_STATE"
-  | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+export type AgentStatusServiceStatusStateEnum = "UNSPECIFIED_STATE" | "SUCCESS_STATE" | "FAILURE_STATE" | "ERROR_STATE";
 export const AgentStatusServiceStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The configuration value. */
@@ -3057,19 +2356,15 @@ export interface AgentStatusConfigValue {
   value?: string;
 }
 export const AgentStatusConfigValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isDefault: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgentStatusConfigValue",
-}) as any as S.Schema<AgentStatusConfigValue>;
+S.Struct({
+  "isDefault": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "AgentStatusConfigValue" }) as any as S.Schema<AgentStatusConfigValue>;
 
 export type AgentStatusConfigValueList = ReadonlyArray<AgentStatusConfigValue>;
-export const AgentStatusConfigValueList = /*@__PURE__*/ S.Array(
-  AgentStatusConfigValue,
-) as any as S.Schema<AgentStatusConfigValueList>;
+export const AgentStatusConfigValueList = /*@__PURE__*/ S.Array(AgentStatusConfigValue) as any as S.Schema<AgentStatusConfigValueList>;
 
 /** The status of a service (process metrics, host metrics, etc.). */
 export interface AgentStatusServiceStatus {
@@ -3078,44 +2373,33 @@ export interface AgentStatusServiceStatus {
   /** Output only. The error message for the service if it is not fully functional. */
   errorMessage?: string;
   /** Output only. Whether the service is fully functional (all checks passed). */
-  fullyFunctional?: AgentStatusServiceStatusFullyFunctionalEnum;
+  fullyFunctional?: AgentStatusServiceStatusFullyFunctionalEnum | (string & {});
   /** Output only. The permissions required for the service. */
   iamPermissions?: AgentStatusIAMPermissionList;
   /** Output only. The state of the service (enabled or disabled in the configuration). */
-  state?: AgentStatusServiceStatusStateEnum;
+  state?: AgentStatusServiceStatusStateEnum | (string & {});
   /** Output only. The configuration values for the service. */
   configValues?: AgentStatusConfigValueList;
   /** Output only. The message to display when the service state is unspecified. */
   unspecifiedStateMessage?: string;
 }
 export const AgentStatusServiceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-    fullyFunctional: S.optional(AgentStatusServiceStatusFullyFunctionalEnum),
-    iamPermissions: S.optional(AgentStatusIAMPermissionList),
-    state: S.optional(AgentStatusServiceStatusStateEnum),
-    configValues: S.optional(AgentStatusConfigValueList),
-    unspecifiedStateMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgentStatusServiceStatus",
-}) as any as S.Schema<AgentStatusServiceStatus>;
+S.Struct({
+  "name": S.optional(S.String),
+  "errorMessage": S.optional(S.String),
+  "fullyFunctional": S.optional(AgentStatusServiceStatusFullyFunctionalEnum),
+  "iamPermissions": S.optional(AgentStatusIAMPermissionList),
+  "state": S.optional(AgentStatusServiceStatusStateEnum),
+  "configValues": S.optional(AgentStatusConfigValueList),
+  "unspecifiedStateMessage": S.optional(S.String),
+}),
+).annotate({ identifier: "AgentStatusServiceStatus" }) as any as S.Schema<AgentStatusServiceStatus>;
 
-export type AgentStatusServiceStatusList =
-  ReadonlyArray<AgentStatusServiceStatus>;
-export const AgentStatusServiceStatusList = /*@__PURE__*/ S.Array(
-  AgentStatusServiceStatus,
-) as any as S.Schema<AgentStatusServiceStatusList>;
+export type AgentStatusServiceStatusList = ReadonlyArray<AgentStatusServiceStatus>;
+export const AgentStatusServiceStatusList = /*@__PURE__*/ S.Array(AgentStatusServiceStatus) as any as S.Schema<AgentStatusServiceStatusList>;
 
-export type AgentStatusCloudApiAccessFullScopesGrantedEnum =
-  | "UNSPECIFIED_STATE"
-  | "SUCCESS_STATE"
-  | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
-export const AgentStatusCloudApiAccessFullScopesGrantedEnum =
-  /*@__PURE__*/ S.String;
+export type AgentStatusCloudApiAccessFullScopesGrantedEnum = "UNSPECIFIED_STATE" | "SUCCESS_STATE" | "FAILURE_STATE" | "ERROR_STATE";
+export const AgentStatusCloudApiAccessFullScopesGrantedEnum = /*@__PURE__*/ S.String;
 
 /** Version is reported as Major.Minor.Build.Patch. */
 export interface SapDiscoveryResourceInstancePropertiesKernelVersionVersion {
@@ -3130,18 +2414,15 @@ export interface SapDiscoveryResourceInstancePropertiesKernelVersionVersion {
   /** Optional. The build version number. */
   build?: number;
 }
-export const SapDiscoveryResourceInstancePropertiesKernelVersionVersion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      major: S.optional(S.Number),
-      minor: S.optional(S.Number),
-      remainder: S.optional(S.String),
-      patch: S.optional(S.Number),
-      build: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SapDiscoveryResourceInstancePropertiesKernelVersionVersion",
-  }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesKernelVersionVersion>;
+export const SapDiscoveryResourceInstancePropertiesKernelVersionVersion = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "major": S.optional(S.Number),
+  "minor": S.optional(S.Number),
+  "remainder": S.optional(S.String),
+  "patch": S.optional(S.Number),
+  "build": S.optional(S.Number),
+}),
+).annotate({ identifier: "SapDiscoveryResourceInstancePropertiesKernelVersionVersion" }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesKernelVersionVersion>;
 
 /** KernelVersion encapsulates the kernel version data for the system. */
 export interface SapDiscoveryResourceInstancePropertiesKernelVersion {
@@ -3152,43 +2433,21 @@ export interface SapDiscoveryResourceInstancePropertiesKernelVersion {
   /** Optional. Captures the OS-specific kernel version, the portion of the string up to the first dash. */
   osKernel?: SapDiscoveryResourceInstancePropertiesKernelVersionVersion;
 }
-export const SapDiscoveryResourceInstancePropertiesKernelVersion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      distroKernel: S.optional(
-        SapDiscoveryResourceInstancePropertiesKernelVersionVersion,
-      ),
-      rawString: S.optional(S.String),
-      osKernel: S.optional(
-        SapDiscoveryResourceInstancePropertiesKernelVersionVersion,
-      ),
-    }),
-  ).annotate({
-    identifier: "SapDiscoveryResourceInstancePropertiesKernelVersion",
-  }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesKernelVersion>;
+export const SapDiscoveryResourceInstancePropertiesKernelVersion = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "distroKernel": S.optional(SapDiscoveryResourceInstancePropertiesKernelVersionVersion),
+  "rawString": S.optional(S.String),
+  "osKernel": S.optional(SapDiscoveryResourceInstancePropertiesKernelVersionVersion),
+}),
+).annotate({ identifier: "SapDiscoveryResourceInstancePropertiesKernelVersion" }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesKernelVersion>;
 
-export type AgentStatusConfigurationValidEnum =
-  | "UNSPECIFIED_STATE"
-  | "SUCCESS_STATE"
-  | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+export type AgentStatusConfigurationValidEnum = "UNSPECIFIED_STATE" | "SUCCESS_STATE" | "FAILURE_STATE" | "ERROR_STATE";
 export const AgentStatusConfigurationValidEnum = /*@__PURE__*/ S.String;
 
-export type AgentStatusSystemdServiceRunningEnum =
-  | "UNSPECIFIED_STATE"
-  | "SUCCESS_STATE"
-  | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+export type AgentStatusSystemdServiceRunningEnum = "UNSPECIFIED_STATE" | "SUCCESS_STATE" | "FAILURE_STATE" | "ERROR_STATE";
 export const AgentStatusSystemdServiceRunningEnum = /*@__PURE__*/ S.String;
 
-export type AgentStatusSystemdServiceEnabledEnum =
-  | "UNSPECIFIED_STATE"
-  | "SUCCESS_STATE"
-  | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+export type AgentStatusSystemdServiceEnabledEnum = "UNSPECIFIED_STATE" | "SUCCESS_STATE" | "FAILURE_STATE" | "ERROR_STATE";
 export const AgentStatusSystemdServiceEnabledEnum = /*@__PURE__*/ S.String;
 
 /** The reference to public documentation. */
@@ -3199,18 +2458,14 @@ export interface AgentStatusReference {
   url?: string;
 }
 export const AgentStatusReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgentStatusReference",
-}) as any as S.Schema<AgentStatusReference>;
+S.Struct({
+  "name": S.optional(S.String),
+  "url": S.optional(S.String),
+}),
+).annotate({ identifier: "AgentStatusReference" }) as any as S.Schema<AgentStatusReference>;
 
 export type AgentStatusReferenceList = ReadonlyArray<AgentStatusReference>;
-export const AgentStatusReferenceList = /*@__PURE__*/ S.Array(
-  AgentStatusReference,
-) as any as S.Schema<AgentStatusReferenceList>;
+export const AgentStatusReferenceList = /*@__PURE__*/ S.Array(AgentStatusReference) as any as S.Schema<AgentStatusReferenceList>;
 
 /** The schema of agent status data. */
 export interface AgentStatus {
@@ -3225,7 +2480,7 @@ export interface AgentStatus {
   /** Output only. The error message for the agent configuration if invalid. */
   configurationErrorMessage?: string;
   /** Output only. Whether the agent has full access to Cloud APIs. */
-  cloudApiAccessFullScopesGranted?: AgentStatusCloudApiAccessFullScopesGrantedEnum;
+  cloudApiAccessFullScopesGranted?: AgentStatusCloudApiAccessFullScopesGrantedEnum | (string & {});
   /** Output only. The kernel version of the system. */
   kernelVersion?: SapDiscoveryResourceInstancePropertiesKernelVersion;
   /** Output only. The available version of the agent in artifact registry. */
@@ -3233,34 +2488,30 @@ export interface AgentStatus {
   /** Output only. The name of the agent. */
   agentName?: string;
   /** Output only. Whether the agent configuration is valid. */
-  configurationValid?: AgentStatusConfigurationValidEnum;
+  configurationValid?: AgentStatusConfigurationValidEnum | (string & {});
   /** Output only. Whether the agent service is running in systemd. */
-  systemdServiceRunning?: AgentStatusSystemdServiceRunningEnum;
+  systemdServiceRunning?: AgentStatusSystemdServiceRunningEnum | (string & {});
   /** Output only. Whether the agent service is enabled in systemd. */
-  systemdServiceEnabled?: AgentStatusSystemdServiceEnabledEnum;
+  systemdServiceEnabled?: AgentStatusSystemdServiceEnabledEnum | (string & {});
   /** Output only. Optional references to public documentation. */
   references?: AgentStatusReferenceList;
 }
 export const AgentStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    services: S.optional(AgentStatusServiceStatusList),
-    instanceUri: S.optional(S.String),
-    configurationFilePath: S.optional(S.String),
-    installedVersion: S.optional(S.String),
-    configurationErrorMessage: S.optional(S.String),
-    cloudApiAccessFullScopesGranted: S.optional(
-      AgentStatusCloudApiAccessFullScopesGrantedEnum,
-    ),
-    kernelVersion: S.optional(
-      SapDiscoveryResourceInstancePropertiesKernelVersion,
-    ),
-    availableVersion: S.optional(S.String),
-    agentName: S.optional(S.String),
-    configurationValid: S.optional(AgentStatusConfigurationValidEnum),
-    systemdServiceRunning: S.optional(AgentStatusSystemdServiceRunningEnum),
-    systemdServiceEnabled: S.optional(AgentStatusSystemdServiceEnabledEnum),
-    references: S.optional(AgentStatusReferenceList),
-  }),
+S.Struct({
+  "services": S.optional(AgentStatusServiceStatusList),
+  "instanceUri": S.optional(S.String),
+  "configurationFilePath": S.optional(S.String),
+  "installedVersion": S.optional(S.String),
+  "configurationErrorMessage": S.optional(S.String),
+  "cloudApiAccessFullScopesGranted": S.optional(AgentStatusCloudApiAccessFullScopesGrantedEnum),
+  "kernelVersion": S.optional(SapDiscoveryResourceInstancePropertiesKernelVersion),
+  "availableVersion": S.optional(S.String),
+  "agentName": S.optional(S.String),
+  "configurationValid": S.optional(AgentStatusConfigurationValidEnum),
+  "systemdServiceRunning": S.optional(AgentStatusSystemdServiceRunningEnum),
+  "systemdServiceEnabled": S.optional(AgentStatusSystemdServiceEnabledEnum),
+  "references": S.optional(AgentStatusReferenceList),
+}),
 ).annotate({ identifier: "AgentStatus" }) as any as S.Schema<AgentStatus>;
 
 /** A presentation of OpenShift workload insight. The schema of OpenShift workloads validation related data. */
@@ -3271,58 +2522,20 @@ export interface OpenShiftValidation {
   validationDetails?: DocumentMap;
 }
 export const OpenShiftValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterId: S.optional(S.String),
-    validationDetails: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "OpenShiftValidation",
-}) as any as S.Schema<OpenShiftValidation>;
+S.Struct({
+  "clusterId": S.optional(S.String),
+  "validationDetails": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "OpenShiftValidation" }) as any as S.Schema<OpenShiftValidation>;
 
-export type SapDiscoveryResourceResourceTypeEnum =
-  | "RESOURCE_TYPE_UNSPECIFIED"
-  | "RESOURCE_TYPE_COMPUTE"
-  | "RESOURCE_TYPE_STORAGE"
-  | "RESOURCE_TYPE_NETWORK"
-  | (string & {});
+export type SapDiscoveryResourceResourceTypeEnum = "RESOURCE_TYPE_UNSPECIFIED" | "RESOURCE_TYPE_COMPUTE" | "RESOURCE_TYPE_STORAGE" | "RESOURCE_TYPE_NETWORK";
 export const SapDiscoveryResourceResourceTypeEnum = /*@__PURE__*/ S.String;
 
-export type SapDiscoveryResourceResourceKindEnum =
-  | "RESOURCE_KIND_UNSPECIFIED"
-  | "RESOURCE_KIND_INSTANCE"
-  | "RESOURCE_KIND_DISK"
-  | "RESOURCE_KIND_ADDRESS"
-  | "RESOURCE_KIND_FILESTORE"
-  | "RESOURCE_KIND_HEALTH_CHECK"
-  | "RESOURCE_KIND_FORWARDING_RULE"
-  | "RESOURCE_KIND_BACKEND_SERVICE"
-  | "RESOURCE_KIND_SUBNETWORK"
-  | "RESOURCE_KIND_NETWORK"
-  | "RESOURCE_KIND_PUBLIC_ADDRESS"
-  | "RESOURCE_KIND_INSTANCE_GROUP"
-  | (string & {});
+export type SapDiscoveryResourceResourceKindEnum = "RESOURCE_KIND_UNSPECIFIED" | "RESOURCE_KIND_INSTANCE" | "RESOURCE_KIND_DISK" | "RESOURCE_KIND_ADDRESS" | "RESOURCE_KIND_FILESTORE" | "RESOURCE_KIND_HEALTH_CHECK" | "RESOURCE_KIND_FORWARDING_RULE" | "RESOURCE_KIND_BACKEND_SERVICE" | "RESOURCE_KIND_SUBNETWORK" | "RESOURCE_KIND_NETWORK" | "RESOURCE_KIND_PUBLIC_ADDRESS" | "RESOURCE_KIND_INSTANCE_GROUP";
 export const SapDiscoveryResourceResourceKindEnum = /*@__PURE__*/ S.String;
 
-export type SapDiscoveryResourceInstancePropertiesInstanceRoleEnum =
-  | "INSTANCE_ROLE_UNSPECIFIED"
-  | "INSTANCE_ROLE_ASCS"
-  | "INSTANCE_ROLE_ERS"
-  | "INSTANCE_ROLE_APP_SERVER"
-  | "INSTANCE_ROLE_DATABASE"
-  | "INSTANCE_ROLE_ASCS_ERS"
-  | "INSTANCE_ROLE_ASCS_APP_SERVER"
-  | "INSTANCE_ROLE_ASCS_DATABASE"
-  | "INSTANCE_ROLE_ERS_APP_SERVER"
-  | "INSTANCE_ROLE_ERS_DATABASE"
-  | "INSTANCE_ROLE_APP_SERVER_DATABASE"
-  | "INSTANCE_ROLE_ASCS_ERS_APP_SERVER"
-  | "INSTANCE_ROLE_ASCS_ERS_DATABASE"
-  | "INSTANCE_ROLE_ASCS_APP_SERVER_DATABASE"
-  | "INSTANCE_ROLE_ERS_APP_SERVER_DATABASE"
-  | "INSTANCE_ROLE_ASCS_ERS_APP_SERVER_DATABASE"
-  | (string & {});
-export const SapDiscoveryResourceInstancePropertiesInstanceRoleEnum =
-  /*@__PURE__*/ S.String;
+export type SapDiscoveryResourceInstancePropertiesInstanceRoleEnum = "INSTANCE_ROLE_UNSPECIFIED" | "INSTANCE_ROLE_ASCS" | "INSTANCE_ROLE_ERS" | "INSTANCE_ROLE_APP_SERVER" | "INSTANCE_ROLE_DATABASE" | "INSTANCE_ROLE_ASCS_ERS" | "INSTANCE_ROLE_ASCS_APP_SERVER" | "INSTANCE_ROLE_ASCS_DATABASE" | "INSTANCE_ROLE_ERS_APP_SERVER" | "INSTANCE_ROLE_ERS_DATABASE" | "INSTANCE_ROLE_APP_SERVER_DATABASE" | "INSTANCE_ROLE_ASCS_ERS_APP_SERVER" | "INSTANCE_ROLE_ASCS_ERS_DATABASE" | "INSTANCE_ROLE_ASCS_APP_SERVER_DATABASE" | "INSTANCE_ROLE_ERS_APP_SERVER_DATABASE" | "INSTANCE_ROLE_ASCS_ERS_APP_SERVER_DATABASE";
+export const SapDiscoveryResourceInstancePropertiesInstanceRoleEnum = /*@__PURE__*/ S.String;
 
 /** Fields to describe an SAP application server instance. */
 export interface SapDiscoveryResourceInstancePropertiesAppInstance {
@@ -3331,22 +2544,15 @@ export interface SapDiscoveryResourceInstancePropertiesAppInstance {
   /** Optional. Instance name of the SAP application instance. */
   name?: string;
 }
-export const SapDiscoveryResourceInstancePropertiesAppInstance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      number: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SapDiscoveryResourceInstancePropertiesAppInstance",
-  }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesAppInstance>;
+export const SapDiscoveryResourceInstancePropertiesAppInstance = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "number": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "SapDiscoveryResourceInstancePropertiesAppInstance" }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesAppInstance>;
 
-export type SapDiscoveryResourceInstancePropertiesAppInstanceList =
-  ReadonlyArray<SapDiscoveryResourceInstancePropertiesAppInstance>;
-export const SapDiscoveryResourceInstancePropertiesAppInstanceList =
-  /*@__PURE__*/ S.Array(
-    SapDiscoveryResourceInstancePropertiesAppInstance,
-  ) as any as S.Schema<SapDiscoveryResourceInstancePropertiesAppInstanceList>;
+export type SapDiscoveryResourceInstancePropertiesAppInstanceList = ReadonlyArray<SapDiscoveryResourceInstancePropertiesAppInstance>;
+export const SapDiscoveryResourceInstancePropertiesAppInstanceList = /*@__PURE__*/ S.Array(SapDiscoveryResourceInstancePropertiesAppInstance) as any as S.Schema<SapDiscoveryResourceInstancePropertiesAppInstanceList>;
 
 /** Disk mount on the instance. */
 export interface SapDiscoveryResourceInstancePropertiesDiskMount {
@@ -3357,28 +2563,21 @@ export interface SapDiscoveryResourceInstancePropertiesDiskMount {
   /** Optional. Filesystem mount point. */
   mountPoint?: string;
 }
-export const SapDiscoveryResourceInstancePropertiesDiskMount =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      diskNames: S.optional(StringList),
-      name: S.optional(S.String),
-      mountPoint: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SapDiscoveryResourceInstancePropertiesDiskMount",
-  }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesDiskMount>;
+export const SapDiscoveryResourceInstancePropertiesDiskMount = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "diskNames": S.optional(StringList),
+  "name": S.optional(S.String),
+  "mountPoint": S.optional(S.String),
+}),
+).annotate({ identifier: "SapDiscoveryResourceInstancePropertiesDiskMount" }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesDiskMount>;
 
-export type SapDiscoveryResourceInstancePropertiesDiskMountList =
-  ReadonlyArray<SapDiscoveryResourceInstancePropertiesDiskMount>;
-export const SapDiscoveryResourceInstancePropertiesDiskMountList =
-  /*@__PURE__*/ S.Array(
-    SapDiscoveryResourceInstancePropertiesDiskMount,
-  ) as any as S.Schema<SapDiscoveryResourceInstancePropertiesDiskMountList>;
+export type SapDiscoveryResourceInstancePropertiesDiskMountList = ReadonlyArray<SapDiscoveryResourceInstancePropertiesDiskMount>;
+export const SapDiscoveryResourceInstancePropertiesDiskMountList = /*@__PURE__*/ S.Array(SapDiscoveryResourceInstancePropertiesDiskMount) as any as S.Schema<SapDiscoveryResourceInstancePropertiesDiskMountList>;
 
 /** A set of properties only present for an instance type resource */
 export interface SapDiscoveryResourceInstanceProperties {
   /** Optional. Bitmask of instance role, a resource may have multiple roles at once. */
-  instanceRole?: SapDiscoveryResourceInstancePropertiesInstanceRoleEnum;
+  instanceRole?: SapDiscoveryResourceInstancePropertiesInstanceRoleEnum | (string & {});
   /** Optional. The kernel version of the instance. */
   osKernelVersion?: SapDiscoveryResourceInstancePropertiesKernelVersion;
   /** Optional. A virtual hostname of the instance if it has one. */
@@ -3394,36 +2593,25 @@ export interface SapDiscoveryResourceInstanceProperties {
   /** Optional. Disk mounts on the instance. */
   diskMounts?: SapDiscoveryResourceInstancePropertiesDiskMountList;
 }
-export const SapDiscoveryResourceInstanceProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceRole: S.optional(
-        SapDiscoveryResourceInstancePropertiesInstanceRoleEnum,
-      ),
-      osKernelVersion: S.optional(
-        SapDiscoveryResourceInstancePropertiesKernelVersion,
-      ),
-      virtualHostname: S.optional(S.String),
-      instanceNumber: S.optional(S.String),
-      isDrSite: S.optional(S.Boolean),
-      clusterInstances: S.optional(StringList),
-      appInstances: S.optional(
-        SapDiscoveryResourceInstancePropertiesAppInstanceList,
-      ),
-      diskMounts: S.optional(
-        SapDiscoveryResourceInstancePropertiesDiskMountList,
-      ),
-    }),
-).annotate({
-  identifier: "SapDiscoveryResourceInstanceProperties",
-}) as any as S.Schema<SapDiscoveryResourceInstanceProperties>;
+export const SapDiscoveryResourceInstanceProperties = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "instanceRole": S.optional(SapDiscoveryResourceInstancePropertiesInstanceRoleEnum),
+  "osKernelVersion": S.optional(SapDiscoveryResourceInstancePropertiesKernelVersion),
+  "virtualHostname": S.optional(S.String),
+  "instanceNumber": S.optional(S.String),
+  "isDrSite": S.optional(S.Boolean),
+  "clusterInstances": S.optional(StringList),
+  "appInstances": S.optional(SapDiscoveryResourceInstancePropertiesAppInstanceList),
+  "diskMounts": S.optional(SapDiscoveryResourceInstancePropertiesDiskMountList),
+}),
+).annotate({ identifier: "SapDiscoveryResourceInstanceProperties" }) as any as S.Schema<SapDiscoveryResourceInstanceProperties>;
 
 /** Message describing a resource. */
 export interface SapDiscoveryResource {
   /** Required. The type of this resource. */
-  resourceType?: SapDiscoveryResourceResourceTypeEnum;
+  resourceType?: SapDiscoveryResourceResourceTypeEnum | (string & {});
   /** Required. ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc. */
-  resourceKind?: SapDiscoveryResourceResourceKindEnum;
+  resourceKind?: SapDiscoveryResourceResourceKindEnum | (string & {});
   /** Required. Unix timestamp of when this resource last had its discovery data updated. */
   updateTime?: string;
   /** Optional. A list of resource URIs related to this resource. */
@@ -3434,43 +2622,29 @@ export interface SapDiscoveryResource {
   instanceProperties?: SapDiscoveryResourceInstanceProperties;
 }
 export const SapDiscoveryResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.optional(SapDiscoveryResourceResourceTypeEnum),
-    resourceKind: S.optional(SapDiscoveryResourceResourceKindEnum),
-    updateTime: S.optional(S.String),
-    relatedResources: S.optional(StringList),
-    resourceUri: S.optional(S.String),
-    instanceProperties: S.optional(SapDiscoveryResourceInstanceProperties),
-  }),
-).annotate({
-  identifier: "SapDiscoveryResource",
-}) as any as S.Schema<SapDiscoveryResource>;
+S.Struct({
+  "resourceType": S.optional(SapDiscoveryResourceResourceTypeEnum),
+  "resourceKind": S.optional(SapDiscoveryResourceResourceKindEnum),
+  "updateTime": S.optional(S.String),
+  "relatedResources": S.optional(StringList),
+  "resourceUri": S.optional(S.String),
+  "instanceProperties": S.optional(SapDiscoveryResourceInstanceProperties),
+}),
+).annotate({ identifier: "SapDiscoveryResource" }) as any as S.Schema<SapDiscoveryResource>;
 
 export type SapDiscoveryResourceList = ReadonlyArray<SapDiscoveryResource>;
-export const SapDiscoveryResourceList = /*@__PURE__*/ S.Array(
-  SapDiscoveryResource,
-) as any as S.Schema<SapDiscoveryResourceList>;
+export const SapDiscoveryResourceList = /*@__PURE__*/ S.Array(SapDiscoveryResource) as any as S.Schema<SapDiscoveryResourceList>;
 
-export type SapDiscoveryComponentTopologyTypeEnum =
-  | "TOPOLOGY_TYPE_UNSPECIFIED"
-  | "TOPOLOGY_SCALE_UP"
-  | "TOPOLOGY_SCALE_OUT"
-  | (string & {});
+export type SapDiscoveryComponentTopologyTypeEnum = "TOPOLOGY_TYPE_UNSPECIFIED" | "TOPOLOGY_SCALE_UP" | "TOPOLOGY_SCALE_OUT";
 export const SapDiscoveryComponentTopologyTypeEnum = /*@__PURE__*/ S.String;
 
-export type SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum =
-  | "APPLICATION_TYPE_UNSPECIFIED"
-  | "NETWEAVER"
-  | "NETWEAVER_ABAP"
-  | "NETWEAVER_JAVA"
-  | (string & {});
-export const SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum = "APPLICATION_TYPE_UNSPECIFIED" | "NETWEAVER" | "NETWEAVER_ABAP" | "NETWEAVER_JAVA";
+export const SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum = /*@__PURE__*/ S.String;
 
 /** A set of properties describing an SAP Application layer. */
 export interface SapDiscoveryComponentApplicationProperties {
   /** Required. Type of the application. Netweaver, etc. */
-  applicationType?: SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum;
+  applicationType?: SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum | (string & {});
   /** Optional. Deprecated: ApplicationType now tells you whether this is ABAP or Java. */
   abap?: boolean;
   /** Optional. Instance number of the SAP application instance. */
@@ -3486,23 +2660,18 @@ export interface SapDiscoveryComponentApplicationProperties {
   /** Optional. Instance number of the ASCS instance. */
   ascsInstanceNumber?: string;
 }
-export const SapDiscoveryComponentApplicationProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationType: S.optional(
-        SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum,
-      ),
-      abap: S.optional(S.Boolean),
-      appInstanceNumber: S.optional(S.String),
-      ascsUri: S.optional(S.String),
-      ersInstanceNumber: S.optional(S.String),
-      nfsUri: S.optional(S.String),
-      kernelVersion: S.optional(S.String),
-      ascsInstanceNumber: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SapDiscoveryComponentApplicationProperties",
-  }) as any as S.Schema<SapDiscoveryComponentApplicationProperties>;
+export const SapDiscoveryComponentApplicationProperties = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "applicationType": S.optional(SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum),
+  "abap": S.optional(S.Boolean),
+  "appInstanceNumber": S.optional(S.String),
+  "ascsUri": S.optional(S.String),
+  "ersInstanceNumber": S.optional(S.String),
+  "nfsUri": S.optional(S.String),
+  "kernelVersion": S.optional(S.String),
+  "ascsInstanceNumber": S.optional(S.String),
+}),
+).annotate({ identifier: "SapDiscoveryComponentApplicationProperties" }) as any as S.Schema<SapDiscoveryComponentApplicationProperties>;
 
 /** A replication site used in Disaster Recovery (DR) configurations. */
 export interface SapDiscoveryComponentReplicationSite {
@@ -3511,33 +2680,18 @@ export interface SapDiscoveryComponentReplicationSite {
   /** Optional. The name of the source site from which this one replicates. */
   sourceSite?: string;
 }
-export const SapDiscoveryComponentReplicationSite = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      component: S.optional(S.suspend(() => SapDiscoveryComponent)),
-      sourceSite: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SapDiscoveryComponentReplicationSite",
-}) as any as S.Schema<SapDiscoveryComponentReplicationSite>;
+export const SapDiscoveryComponentReplicationSite = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "component": S.optional(S.suspend(() => SapDiscoveryComponent)),
+  "sourceSite": S.optional(S.String),
+}),
+).annotate({ identifier: "SapDiscoveryComponentReplicationSite" }) as any as S.Schema<SapDiscoveryComponentReplicationSite>;
 
-export type SapDiscoveryComponentReplicationSiteList =
-  ReadonlyArray<SapDiscoveryComponentReplicationSite>;
-export const SapDiscoveryComponentReplicationSiteList = /*@__PURE__*/ S.Array(
-  SapDiscoveryComponentReplicationSite,
-) as any as S.Schema<SapDiscoveryComponentReplicationSiteList>;
+export type SapDiscoveryComponentReplicationSiteList = ReadonlyArray<SapDiscoveryComponentReplicationSite>;
+export const SapDiscoveryComponentReplicationSiteList = /*@__PURE__*/ S.Array(SapDiscoveryComponentReplicationSite) as any as S.Schema<SapDiscoveryComponentReplicationSiteList>;
 
-export type SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum =
-  | "DATABASE_TYPE_UNSPECIFIED"
-  | "HANA"
-  | "MAX_DB"
-  | "DB2"
-  | "ORACLE"
-  | "SQLSERVER"
-  | "ASE"
-  | (string & {});
-export const SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum =
-  /*@__PURE__*/ S.String;
+export type SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum = "DATABASE_TYPE_UNSPECIFIED" | "HANA" | "MAX_DB" | "DB2" | "ORACLE" | "SQLSERVER" | "ASE";
+export const SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** A set of properties describing an SAP Database layer. */
 export interface SapDiscoveryComponentDatabaseProperties {
@@ -3546,7 +2700,7 @@ export interface SapDiscoveryComponentDatabaseProperties {
   /** Optional. Instance number of the SAP instance. */
   instanceNumber?: string;
   /** Required. Type of the database. HANA, DB2, etc. */
-  databaseType?: SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum;
+  databaseType?: SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum | (string & {});
   /** Optional. The version of the database software running in the system. */
   databaseVersion?: string;
   /** Required. URI of the recognized primary instance of the database. */
@@ -3556,22 +2710,17 @@ export interface SapDiscoveryComponentDatabaseProperties {
   /** Optional. URI of the recognized shared NFS of the database. May be empty if the database has only a single node. */
   sharedNfsUri?: string;
 }
-export const SapDiscoveryComponentDatabaseProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      databaseSid: S.optional(S.String),
-      instanceNumber: S.optional(S.String),
-      databaseType: S.optional(
-        SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum,
-      ),
-      databaseVersion: S.optional(S.String),
-      primaryInstanceUri: S.optional(S.String),
-      landscapeId: S.optional(S.String),
-      sharedNfsUri: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SapDiscoveryComponentDatabaseProperties",
-}) as any as S.Schema<SapDiscoveryComponentDatabaseProperties>;
+export const SapDiscoveryComponentDatabaseProperties = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "databaseSid": S.optional(S.String),
+  "instanceNumber": S.optional(S.String),
+  "databaseType": S.optional(SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum),
+  "databaseVersion": S.optional(S.String),
+  "primaryInstanceUri": S.optional(S.String),
+  "landscapeId": S.optional(S.String),
+  "sharedNfsUri": S.optional(S.String),
+}),
+).annotate({ identifier: "SapDiscoveryComponentDatabaseProperties" }) as any as S.Schema<SapDiscoveryComponentDatabaseProperties>;
 
 /** Message describing the system component. */
 export interface SapDiscoveryComponent {
@@ -3580,7 +2729,7 @@ export interface SapDiscoveryComponent {
   /** Optional. The region this component's resources are primarily located in. */
   region?: string;
   /** Optional. The detected topology of the component. */
-  topologyType?: SapDiscoveryComponentTopologyTypeEnum;
+  topologyType?: SapDiscoveryComponentTopologyTypeEnum | (string & {});
   /** Optional. The component is a SAP application. */
   applicationProperties?: SapDiscoveryComponentApplicationProperties;
   /** Optional. A list of replication sites used in Disaster Recovery (DR) configurations. */
@@ -3595,22 +2744,18 @@ export interface SapDiscoveryComponent {
   databaseProperties?: SapDiscoveryComponentDatabaseProperties;
 }
 export const SapDiscoveryComponent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: S.optional(SapDiscoveryResourceList),
-    region: S.optional(S.String),
-    topologyType: S.optional(SapDiscoveryComponentTopologyTypeEnum),
-    applicationProperties: S.optional(
-      SapDiscoveryComponentApplicationProperties,
-    ),
-    replicationSites: S.optional(SapDiscoveryComponentReplicationSiteList),
-    sid: S.optional(S.String),
-    haHosts: S.optional(StringList),
-    hostProject: S.optional(S.String),
-    databaseProperties: S.optional(SapDiscoveryComponentDatabaseProperties),
-  }),
-).annotate({
-  identifier: "SapDiscoveryComponent",
-}) as any as S.Schema<SapDiscoveryComponent>;
+S.Struct({
+  "resources": S.optional(SapDiscoveryResourceList),
+  "region": S.optional(S.String),
+  "topologyType": S.optional(SapDiscoveryComponentTopologyTypeEnum),
+  "applicationProperties": S.optional(SapDiscoveryComponentApplicationProperties),
+  "replicationSites": S.optional(SapDiscoveryComponentReplicationSiteList),
+  "sid": S.optional(S.String),
+  "haHosts": S.optional(StringList),
+  "hostProject": S.optional(S.String),
+  "databaseProperties": S.optional(SapDiscoveryComponentDatabaseProperties),
+}),
+).annotate({ identifier: "SapDiscoveryComponent" }) as any as S.Schema<SapDiscoveryComponent>;
 
 /** Message describing SAP discovery system metadata */
 export interface SapDiscoveryMetadata {
@@ -3624,15 +2769,13 @@ export interface SapDiscoveryMetadata {
   customerRegion?: string;
 }
 export const SapDiscoveryMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definedSystem: S.optional(S.String),
-    sapProduct: S.optional(S.String),
-    environmentType: S.optional(S.String),
-    customerRegion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SapDiscoveryMetadata",
-}) as any as S.Schema<SapDiscoveryMetadata>;
+S.Struct({
+  "definedSystem": S.optional(S.String),
+  "sapProduct": S.optional(S.String),
+  "environmentType": S.optional(S.String),
+  "customerRegion": S.optional(S.String),
+}),
+).annotate({ identifier: "SapDiscoveryMetadata" }) as any as S.Schema<SapDiscoveryMetadata>;
 
 /** A product name and version. */
 export interface SapDiscoveryWorkloadPropertiesProductVersion {
@@ -3641,22 +2784,15 @@ export interface SapDiscoveryWorkloadPropertiesProductVersion {
   /** Optional. Version of the product. */
   version?: string;
 }
-export const SapDiscoveryWorkloadPropertiesProductVersion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      version: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SapDiscoveryWorkloadPropertiesProductVersion",
-  }) as any as S.Schema<SapDiscoveryWorkloadPropertiesProductVersion>;
+export const SapDiscoveryWorkloadPropertiesProductVersion = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
+).annotate({ identifier: "SapDiscoveryWorkloadPropertiesProductVersion" }) as any as S.Schema<SapDiscoveryWorkloadPropertiesProductVersion>;
 
-export type SapDiscoveryWorkloadPropertiesProductVersionList =
-  ReadonlyArray<SapDiscoveryWorkloadPropertiesProductVersion>;
-export const SapDiscoveryWorkloadPropertiesProductVersionList =
-  /*@__PURE__*/ S.Array(
-    SapDiscoveryWorkloadPropertiesProductVersion,
-  ) as any as S.Schema<SapDiscoveryWorkloadPropertiesProductVersionList>;
+export type SapDiscoveryWorkloadPropertiesProductVersionList = ReadonlyArray<SapDiscoveryWorkloadPropertiesProductVersion>;
+export const SapDiscoveryWorkloadPropertiesProductVersionList = /*@__PURE__*/ S.Array(SapDiscoveryWorkloadPropertiesProductVersion) as any as S.Schema<SapDiscoveryWorkloadPropertiesProductVersionList>;
 
 /** A SAP software component name, version, and type. */
 export interface SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {
@@ -3669,24 +2805,17 @@ export interface SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {
   /** Optional. The component's type. */
   type?: string;
 }
-export const SapDiscoveryWorkloadPropertiesSoftwareComponentProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      extVersion: S.optional(S.String),
-      version: S.optional(S.String),
-      type: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SapDiscoveryWorkloadPropertiesSoftwareComponentProperties",
-  }) as any as S.Schema<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
+export const SapDiscoveryWorkloadPropertiesSoftwareComponentProperties = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "extVersion": S.optional(S.String),
+  "version": S.optional(S.String),
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "SapDiscoveryWorkloadPropertiesSoftwareComponentProperties" }) as any as S.Schema<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
 
-export type SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList =
-  ReadonlyArray<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
-export const SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList =
-  /*@__PURE__*/ S.Array(
-    SapDiscoveryWorkloadPropertiesSoftwareComponentProperties,
-  ) as any as S.Schema<SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList>;
+export type SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList = ReadonlyArray<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
+export const SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList = /*@__PURE__*/ S.Array(SapDiscoveryWorkloadPropertiesSoftwareComponentProperties) as any as S.Schema<SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList>;
 
 /** A set of properties describing an SAP workload. */
 export interface SapDiscoveryWorkloadProperties {
@@ -3696,17 +2825,11 @@ export interface SapDiscoveryWorkloadProperties {
   softwareComponentVersions?: SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList;
 }
 export const SapDiscoveryWorkloadProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productVersions: S.optional(
-      SapDiscoveryWorkloadPropertiesProductVersionList,
-    ),
-    softwareComponentVersions: S.optional(
-      SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList,
-    ),
-  }),
-).annotate({
-  identifier: "SapDiscoveryWorkloadProperties",
-}) as any as S.Schema<SapDiscoveryWorkloadProperties>;
+S.Struct({
+  "productVersions": S.optional(SapDiscoveryWorkloadPropertiesProductVersionList),
+  "softwareComponentVersions": S.optional(SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList),
+}),
+).annotate({ identifier: "SapDiscoveryWorkloadProperties" }) as any as S.Schema<SapDiscoveryWorkloadProperties>;
 
 /** The schema of SAP system discovery data. */
 export interface SapDiscovery {
@@ -3728,16 +2851,16 @@ export interface SapDiscovery {
   updateTime?: string;
 }
 export const SapDiscovery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    systemId: S.optional(S.String),
-    databaseLayer: S.optional(SapDiscoveryComponent),
-    applicationLayer: S.optional(SapDiscoveryComponent),
-    useDrReconciliation: S.optional(S.Boolean),
-    metadata: S.optional(SapDiscoveryMetadata),
-    workloadProperties: S.optional(SapDiscoveryWorkloadProperties),
-    projectNumber: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "systemId": S.optional(S.String),
+  "databaseLayer": S.optional(SapDiscoveryComponent),
+  "applicationLayer": S.optional(SapDiscoveryComponent),
+  "useDrReconciliation": S.optional(S.Boolean),
+  "metadata": S.optional(SapDiscoveryMetadata),
+  "workloadProperties": S.optional(SapDiscoveryWorkloadProperties),
+  "projectNumber": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "SapDiscovery" }) as any as S.Schema<SapDiscovery>;
 
 /** A presentation of host resource usage where the workload runs. */
@@ -3760,16 +2883,16 @@ export interface Insight {
   sapDiscovery?: SapDiscovery;
 }
 export const Insight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sqlserverValidation: S.optional(SqlserverValidation),
-    torsoValidation: S.optional(TorsoValidation),
-    sapValidation: S.optional(SapValidation),
-    sentTime: S.optional(S.String),
-    instanceId: S.optional(S.String),
-    agentStatus: S.optional(AgentStatus),
-    openShiftValidation: S.optional(OpenShiftValidation),
-    sapDiscovery: S.optional(SapDiscovery),
-  }),
+S.Struct({
+  "sqlserverValidation": S.optional(SqlserverValidation),
+  "torsoValidation": S.optional(TorsoValidation),
+  "sapValidation": S.optional(SapValidation),
+  "sentTime": S.optional(S.String),
+  "instanceId": S.optional(S.String),
+  "agentStatus": S.optional(AgentStatus),
+  "openShiftValidation": S.optional(OpenShiftValidation),
+  "sapDiscovery": S.optional(SapDiscovery),
+}),
 ).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
 
 /** Request for sending the data insights. */
@@ -3782,14 +2905,12 @@ export interface WriteInsightRequest {
   requestId?: string;
 }
 export const WriteInsightRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insight: S.optional(Insight),
-    agentVersion: S.optional(S.String),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WriteInsightRequest",
-}) as any as S.Schema<WriteInsightRequest>;
+S.Struct({
+  "insight": S.optional(Insight),
+  "agentVersion": S.optional(S.String),
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "WriteInsightRequest" }) as any as S.Schema<WriteInsightRequest>;
 
 export interface WriteInsightProjectsLocationsInsightsRequest {
   /** Required. The GCP location. The format is: projects/{project}/locations/{location}. */
@@ -3797,36 +2918,20 @@ export interface WriteInsightProjectsLocationsInsightsRequest {
   /** Request body */
   body?: WriteInsightRequest;
 }
-export const WriteInsightProjectsLocationsInsightsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      location: S.String.pipe(T.Label()),
-      body: S.optional(WriteInsightRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+location}/insights:writeInsight",
-        baseUrl: "https://workloadmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "WriteInsightProjectsLocationsInsightsRequest",
-  }) as any as S.Schema<WriteInsightProjectsLocationsInsightsRequest>;
+export const WriteInsightProjectsLocationsInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "location": S.String.pipe(T.Label()),
+  "body": S.optional(WriteInsightRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+location}/insights:writeInsight","baseUrl":"https://workloadmanager.googleapis.com/"})),
+).annotate({ identifier: "WriteInsightProjectsLocationsInsightsRequest" }) as any as S.Schema<WriteInsightProjectsLocationsInsightsRequest>;
 
 /** The response for write insights request. */
 export interface WriteInsightResponse {}
 export const WriteInsightResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WriteInsightResponse",
-}) as any as S.Schema<WriteInsightResponse>;
+S.Struct({}),
+).annotate({ identifier: "WriteInsightResponse" }) as any as S.Schema<WriteInsightResponse>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -3841,12 +2946,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsDeploymentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Deployment in a given project and location. */
 export const createProjectsLocationsDeployments: API.OperationMethod<
   CreateProjectsLocationsDeploymentsRequest,
@@ -3861,12 +2961,7 @@ export const createProjectsLocationsDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsDeploymentsActuationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsDeploymentsActuationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new actuation for an existing Deployment. */
 export const createProjectsLocationsDeploymentsActuations: API.OperationMethod<
   CreateProjectsLocationsDeploymentsActuationsRequest,
@@ -3881,12 +2976,7 @@ export const createProjectsLocationsDeploymentsActuations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsEvaluationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsEvaluationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Evaluation in a given project and location. */
 export const createProjectsLocationsEvaluations: API.OperationMethod<
   CreateProjectsLocationsEvaluationsRequest,
@@ -3901,12 +2991,7 @@ export const createProjectsLocationsEvaluations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsDeploymentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Deployment. */
 export const deleteProjectsLocationsDeployments: API.OperationMethod<
   DeleteProjectsLocationsDeploymentsRequest,
@@ -3921,12 +3006,7 @@ export const deleteProjectsLocationsDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsDeploymentsActuationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsDeploymentsActuationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Actuation. */
 export const deleteProjectsLocationsDeploymentsActuations: API.OperationMethod<
   DeleteProjectsLocationsDeploymentsActuationsRequest,
@@ -3941,12 +3021,7 @@ export const deleteProjectsLocationsDeploymentsActuations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsEvaluationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsEvaluationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Evaluation. */
 export const deleteProjectsLocationsEvaluations: API.OperationMethod<
   DeleteProjectsLocationsEvaluationsRequest,
@@ -3961,12 +3036,7 @@ export const deleteProjectsLocationsEvaluations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsEvaluationsExecutionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsEvaluationsExecutionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Execution. */
 export const deleteProjectsLocationsEvaluationsExecutions: API.OperationMethod<
   DeleteProjectsLocationsEvaluationsExecutionsRequest,
@@ -3981,12 +3051,7 @@ export const deleteProjectsLocationsEvaluationsExecutions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInsightsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsInsightsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete the data insights from workload manager data warehouse. */
 export const deleteProjectsLocationsInsights: API.OperationMethod<
   DeleteProjectsLocationsInsightsRequest,
@@ -4001,12 +3066,7 @@ export const deleteProjectsLocationsInsights: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -4036,10 +3096,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDeploymentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsDeploymentsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Deployment. */
 export const getProjectsLocationsDeployments: API.OperationMethod<
   GetProjectsLocationsDeploymentsRequest,
@@ -4054,10 +3111,7 @@ export const getProjectsLocationsDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDeploymentsActuationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsDeploymentsActuationsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Actuation. */
 export const getProjectsLocationsDeploymentsActuations: API.OperationMethod<
   GetProjectsLocationsDeploymentsActuationsRequest,
@@ -4072,10 +3126,7 @@ export const getProjectsLocationsDeploymentsActuations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDiscoveredprofilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsDiscoveredprofilesError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a discovered workload profile. */
 export const getProjectsLocationsDiscoveredprofiles: API.OperationMethod<
   GetProjectsLocationsDiscoveredprofilesRequest,
@@ -4090,10 +3141,7 @@ export const getProjectsLocationsDiscoveredprofiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDiscoveredprofilesHealthError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsDiscoveredprofilesHealthError = NotFound | Forbidden | GcpOpError;
 /** Get the health of a discovered workload profile. */
 export const getProjectsLocationsDiscoveredprofilesHealth: API.OperationMethod<
   GetProjectsLocationsDiscoveredprofilesHealthRequest,
@@ -4108,10 +3156,7 @@ export const getProjectsLocationsDiscoveredprofilesHealth: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsEvaluationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsEvaluationsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Evaluation. */
 export const getProjectsLocationsEvaluations: API.OperationMethod<
   GetProjectsLocationsEvaluationsRequest,
@@ -4126,10 +3171,7 @@ export const getProjectsLocationsEvaluations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsEvaluationsExecutionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsEvaluationsExecutionsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Execution. */
 export const getProjectsLocationsEvaluationsExecutions: API.OperationMethod<
   GetProjectsLocationsEvaluationsExecutionsRequest,
@@ -4144,10 +3186,7 @@ export const getProjectsLocationsEvaluationsExecutions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -4175,16 +3214,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsDeploymentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsDeploymentsError = NotFound | Forbidden | GcpOpError;
 /** Lists Deployments in a given project and location. */
 export const listProjectsLocationsDeployments: API.PaginatedOperationMethod<
   ListProjectsLocationsDeploymentsRequest,
@@ -4197,16 +3230,10 @@ export const listProjectsLocationsDeployments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsDeploymentsActuationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsDeploymentsActuationsError = NotFound | Forbidden | GcpOpError;
 /** Lists Actuations in a given project, location and deployment. */
 export const listProjectsLocationsDeploymentsActuations: API.PaginatedOperationMethod<
   ListProjectsLocationsDeploymentsActuationsRequest,
@@ -4219,16 +3246,10 @@ export const listProjectsLocationsDeploymentsActuations: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsDiscoveredprofilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsDiscoveredprofilesError = NotFound | Forbidden | GcpOpError;
 /** List discovered workload profiles */
 export const listProjectsLocationsDiscoveredprofiles: API.PaginatedOperationMethod<
   ListProjectsLocationsDiscoveredprofilesRequest,
@@ -4241,16 +3262,10 @@ export const listProjectsLocationsDiscoveredprofiles: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsEvaluationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsEvaluationsError = NotFound | Forbidden | GcpOpError;
 /** Lists Evaluations in a given project and location. */
 export const listProjectsLocationsEvaluations: API.PaginatedOperationMethod<
   ListProjectsLocationsEvaluationsRequest,
@@ -4263,16 +3278,10 @@ export const listProjectsLocationsEvaluations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsEvaluationsExecutionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsEvaluationsExecutionsError = NotFound | Forbidden | GcpOpError;
 /** Lists Executions in a given project and location. */
 export const listProjectsLocationsEvaluationsExecutions: API.PaginatedOperationMethod<
   ListProjectsLocationsEvaluationsExecutionsRequest,
@@ -4285,16 +3294,10 @@ export const listProjectsLocationsEvaluationsExecutions: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsEvaluationsExecutionsResultsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsEvaluationsExecutionsResultsError = NotFound | Forbidden | GcpOpError;
 /** Lists the result of a single evaluation. */
 export const listProjectsLocationsEvaluationsExecutionsResults: API.PaginatedOperationMethod<
   ListProjectsLocationsEvaluationsExecutionsResultsRequest,
@@ -4307,16 +3310,10 @@ export const listProjectsLocationsEvaluationsExecutionsResults: API.PaginatedOpe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsEvaluationsExecutionsScannedResourcesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsEvaluationsExecutionsScannedResourcesError = NotFound | Forbidden | GcpOpError;
 /** List all scanned resources for a single Execution. */
 export const listProjectsLocationsEvaluationsExecutionsScannedResources: API.PaginatedOperationMethod<
   ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest,
@@ -4329,16 +3326,10 @@ export const listProjectsLocationsEvaluationsExecutionsScannedResources: API.Pag
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -4351,10 +3342,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsLocationsRulesError = NotFound | Forbidden | GcpOpError;
@@ -4372,12 +3360,7 @@ export const listProjectsLocationsRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsEvaluationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsEvaluationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single Evaluation. */
 export const patchProjectsLocationsEvaluations: API.OperationMethod<
   PatchProjectsLocationsEvaluationsRequest,
@@ -4392,12 +3375,7 @@ export const patchProjectsLocationsEvaluations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunProjectsLocationsEvaluationsExecutionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RunProjectsLocationsEvaluationsExecutionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Execution in a given project and location. */
 export const runProjectsLocationsEvaluationsExecutions: API.OperationMethod<
   RunProjectsLocationsEvaluationsExecutionsRequest,
@@ -4412,12 +3390,7 @@ export const runProjectsLocationsEvaluationsExecutions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WriteInsightProjectsLocationsInsightsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WriteInsightProjectsLocationsInsightsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Write the data insights to workload manager data warehouse. */
 export const writeInsightProjectsLocationsInsights: API.OperationMethod<
   WriteInsightProjectsLocationsInsightsRequest,
@@ -4431,3 +3404,4 @@ export const writeInsightProjectsLocationsInsights: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

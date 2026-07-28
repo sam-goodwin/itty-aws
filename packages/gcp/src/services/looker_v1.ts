@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,27 +72,18 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** Looker instance OAuth login settings. */
 export interface OAuthConfig {
@@ -106,22 +95,14 @@ export interface OAuthConfig {
   clientSecret?: string;
 }
 export const OAuthConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sharedOauthClientEnabled: S.optional(S.Boolean),
-    clientId: S.optional(S.String),
-    clientSecret: S.optional(S.String),
-  }),
+S.Struct({
+  "sharedOauthClientEnabled": S.optional(S.Boolean),
+  "clientId": S.optional(S.String),
+  "clientSecret": S.optional(S.String),
+}),
 ).annotate({ identifier: "OAuthConfig" }) as any as S.Schema<OAuthConfig>;
 
-export type CustomDomainStateEnum =
-  | "CUSTOM_DOMAIN_STATE_UNSPECIFIED"
-  | "UNVERIFIED"
-  | "VERIFIED"
-  | "MODIFYING"
-  | "AVAILABLE"
-  | "UNAVAILABLE"
-  | "UNKNOWN"
-  | (string & {});
+export type CustomDomainStateEnum = "CUSTOM_DOMAIN_STATE_UNSPECIFIED" | "UNVERIFIED" | "VERIFIED" | "MODIFYING" | "AVAILABLE" | "UNAVAILABLE" | "UNKNOWN";
 export const CustomDomainStateEnum = /*@__PURE__*/ S.String;
 
 /** Custom domain information. */
@@ -132,26 +113,13 @@ export interface CustomDomain {
   state?: CustomDomainStateEnum;
 }
 export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-    state: S.optional(CustomDomainStateEnum),
-  }),
+S.Struct({
+  "domain": S.optional(S.String),
+  "state": S.optional(CustomDomainStateEnum),
+}),
 ).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
 
-export type InstancePlatformEditionEnum =
-  | "PLATFORM_EDITION_UNSPECIFIED"
-  | "LOOKER_CORE_TRIAL"
-  | "LOOKER_CORE_STANDARD"
-  | "LOOKER_CORE_STANDARD_ANNUAL"
-  | "LOOKER_CORE_ENTERPRISE_ANNUAL"
-  | "LOOKER_CORE_EMBED_ANNUAL"
-  | "LOOKER_CORE_NONPROD_STANDARD_ANNUAL"
-  | "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL"
-  | "LOOKER_CORE_NONPROD_EMBED_ANNUAL"
-  | "LOOKER_CORE_TRIAL_STANDARD"
-  | "LOOKER_CORE_TRIAL_ENTERPRISE"
-  | "LOOKER_CORE_TRIAL_EMBED"
-  | (string & {});
+export type InstancePlatformEditionEnum = "PLATFORM_EDITION_UNSPECIFIED" | "LOOKER_CORE_TRIAL" | "LOOKER_CORE_STANDARD" | "LOOKER_CORE_STANDARD_ANNUAL" | "LOOKER_CORE_ENTERPRISE_ANNUAL" | "LOOKER_CORE_EMBED_ANNUAL" | "LOOKER_CORE_NONPROD_STANDARD_ANNUAL" | "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL" | "LOOKER_CORE_NONPROD_EMBED_ANNUAL" | "LOOKER_CORE_TRIAL_STANDARD" | "LOOKER_CORE_TRIAL_ENTERPRISE" | "LOOKER_CORE_TRIAL_EMBED";
 export const InstancePlatformEditionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -164,11 +132,11 @@ export interface Looker_Date {
   day?: number;
 }
 export const Looker_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    month: S.optional(S.Number),
-    year: S.optional(S.Number),
-    day: S.optional(S.Number),
-  }),
+S.Struct({
+  "month": S.optional(S.Number),
+  "year": S.optional(S.Number),
+  "day": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Looker_Date" }) as any as S.Schema<Looker_Date>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -183,12 +151,12 @@ export interface TimeOfDay {
   hours?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minutes: S.optional(S.Number),
-    seconds: S.optional(S.Number),
-    nanos: S.optional(S.Number),
-    hours: S.optional(S.Number),
-  }),
+S.Struct({
+  "minutes": S.optional(S.Number),
+  "seconds": S.optional(S.Number),
+  "nanos": S.optional(S.Number),
+  "hours": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** Specifies the maintenance denial period. */
@@ -201,33 +169,17 @@ export interface DenyMaintenancePeriod {
   time?: TimeOfDay;
 }
 export const DenyMaintenancePeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startDate: S.optional(Looker_Date),
-    endDate: S.optional(Looker_Date),
-    time: S.optional(TimeOfDay),
-  }),
-).annotate({
-  identifier: "DenyMaintenancePeriod",
-}) as any as S.Schema<DenyMaintenancePeriod>;
+S.Struct({
+  "startDate": S.optional(Looker_Date),
+  "endDate": S.optional(Looker_Date),
+  "time": S.optional(TimeOfDay),
+}),
+).annotate({ identifier: "DenyMaintenancePeriod" }) as any as S.Schema<DenyMaintenancePeriod>;
 
-export type InstanceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "CREATING"
-  | "FAILED"
-  | "SUSPENDED"
-  | "UPDATING"
-  | "DELETING"
-  | "EXPORTING"
-  | "IMPORTING"
-  | (string & {});
+export type InstanceStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "FAILED" | "SUSPENDED" | "UPDATING" | "DELETING" | "EXPORTING" | "IMPORTING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
-export type InstanceClassTypeEnum =
-  | "CLASS_TYPE_UNSPECIFIED"
-  | "R1"
-  | "P1"
-  | (string & {});
+export type InstanceClassTypeEnum = "CLASS_TYPE_UNSPECIFIED" | "R1" | "P1";
 export const InstanceClassTypeEnum = /*@__PURE__*/ S.String;
 
 /** Ingress IP allowlist rule. */
@@ -238,18 +190,14 @@ export interface IngressIpAllowlistRule {
   ipRange?: string;
 }
 export const IngressIpAllowlistRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    ipRange: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IngressIpAllowlistRule",
-}) as any as S.Schema<IngressIpAllowlistRule>;
+S.Struct({
+  "description": S.optional(S.String),
+  "ipRange": S.optional(S.String),
+}),
+).annotate({ identifier: "IngressIpAllowlistRule" }) as any as S.Schema<IngressIpAllowlistRule>;
 
 export type IngressIpAllowlistRuleList = ReadonlyArray<IngressIpAllowlistRule>;
-export const IngressIpAllowlistRuleList = /*@__PURE__*/ S.Array(
-  IngressIpAllowlistRule,
-) as any as S.Schema<IngressIpAllowlistRuleList>;
+export const IngressIpAllowlistRuleList = /*@__PURE__*/ S.Array(IngressIpAllowlistRule) as any as S.Schema<IngressIpAllowlistRuleList>;
 
 /** Ingress IP allowlist configuration. */
 export interface IngressIpAllowlistConfig {
@@ -261,20 +209,14 @@ export interface IngressIpAllowlistConfig {
   allowlistRules?: IngressIpAllowlistRuleList;
 }
 export const IngressIpAllowlistConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    googleServicesEnabled: S.optional(S.Boolean),
-    allowlistRules: S.optional(IngressIpAllowlistRuleList),
-  }),
-).annotate({
-  identifier: "IngressIpAllowlistConfig",
-}) as any as S.Schema<IngressIpAllowlistConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "googleServicesEnabled": S.optional(S.Boolean),
+  "allowlistRules": S.optional(IngressIpAllowlistRuleList),
+}),
+).annotate({ identifier: "IngressIpAllowlistConfig" }) as any as S.Schema<IngressIpAllowlistConfig>;
 
-export type EncryptionConfigKmsKeyStateEnum =
-  | "KMS_KEY_STATE_UNSPECIFIED"
-  | "VALID"
-  | "REVOKED"
-  | (string & {});
+export type EncryptionConfigKmsKeyStateEnum = "KMS_KEY_STATE_UNSPECIFIED" | "VALID" | "REVOKED";
 export const EncryptionConfigKmsKeyStateEnum = /*@__PURE__*/ S.String;
 
 /** Encryption configuration (i.e. CMEK). */
@@ -287,29 +229,17 @@ export interface EncryptionConfig {
   kmsKeyNameVersion?: string;
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyName: S.optional(S.String),
-    kmsKeyState: S.optional(EncryptionConfigKmsKeyStateEnum),
-    kmsKeyNameVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EncryptionConfig",
-}) as any as S.Schema<EncryptionConfig>;
+S.Struct({
+  "kmsKeyName": S.optional(S.String),
+  "kmsKeyState": S.optional(EncryptionConfigKmsKeyStateEnum),
+  "kmsKeyNameVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
 
-export type InstanceSoftDeleteReasonEnum =
-  | "SOFT_DELETE_REASON_UNSPECIFIED"
-  | "BILLING_ACCOUNT_ISSUE"
-  | "TRIAL_EXPIRED"
-  | "CUSTOMER_REQUEST"
-  | (string & {});
+export type InstanceSoftDeleteReasonEnum = "SOFT_DELETE_REASON_UNSPECIFIED" | "BILLING_ACCOUNT_ISSUE" | "TRIAL_EXPIRED" | "CUSTOMER_REQUEST";
 export const InstanceSoftDeleteReasonEnum = /*@__PURE__*/ S.String;
 
-export type InstanceReleaseChannelEnum =
-  | "RELEASE_CHANNEL_UNSPECIFIED"
-  | "RAPID"
-  | "REGULAR"
-  | "STABLE"
-  | (string & {});
+export type InstanceReleaseChannelEnum = "RELEASE_CHANNEL_UNSPECIFIED" | "RAPID" | "REGULAR" | "STABLE";
 export const InstanceReleaseChannelEnum = /*@__PURE__*/ S.String;
 
 /** Published upcoming future maintenance schedule. */
@@ -320,27 +250,16 @@ export interface MaintenanceSchedule {
   endTime?: string;
 }
 export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MaintenanceSchedule",
-}) as any as S.Schema<MaintenanceSchedule>;
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
+).annotate({ identifier: "MaintenanceSchedule" }) as any as S.Schema<MaintenanceSchedule>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type ServiceAttachmentConnectionStatusEnum =
-  | "UNKNOWN"
-  | "ACCEPTED"
-  | "PENDING"
-  | "REJECTED"
-  | "NEEDS_ATTENTION"
-  | "CLOSED"
-  | (string & {});
+export type ServiceAttachmentConnectionStatusEnum = "UNKNOWN" | "ACCEPTED" | "PENDING" | "REJECTED" | "NEEDS_ATTENTION" | "CLOSED";
 export const ServiceAttachmentConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Service attachment configuration. */
@@ -357,21 +276,17 @@ export interface ServiceAttachment {
   failureReason?: string;
 }
 export const ServiceAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localFqdn: S.optional(S.String),
-    localFqdns: S.optional(StringList),
-    targetServiceAttachmentUri: S.optional(S.String),
-    connectionStatus: S.optional(ServiceAttachmentConnectionStatusEnum),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceAttachment",
-}) as any as S.Schema<ServiceAttachment>;
+S.Struct({
+  "localFqdn": S.optional(S.String),
+  "localFqdns": S.optional(StringList),
+  "targetServiceAttachmentUri": S.optional(S.String),
+  "connectionStatus": S.optional(ServiceAttachmentConnectionStatusEnum),
+  "failureReason": S.optional(S.String),
+}),
+).annotate({ identifier: "ServiceAttachment" }) as any as S.Schema<ServiceAttachment>;
 
 export type ServiceAttachmentList = ReadonlyArray<ServiceAttachment>;
-export const ServiceAttachmentList = /*@__PURE__*/ S.Array(
-  ServiceAttachment,
-) as any as S.Schema<ServiceAttachmentList>;
+export const ServiceAttachmentList = /*@__PURE__*/ S.Array(ServiceAttachment) as any as S.Schema<ServiceAttachmentList>;
 
 /** Information for Private Service Connect (PSC) setup for a Looker instance. */
 export interface PscConfig {
@@ -383,11 +298,11 @@ export interface PscConfig {
   serviceAttachments?: ServiceAttachmentList;
 }
 export const PscConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedVpcs: S.optional(StringList),
-    lookerServiceAttachmentUri: S.optional(S.String),
-    serviceAttachments: S.optional(ServiceAttachmentList),
-  }),
+S.Struct({
+  "allowedVpcs": S.optional(StringList),
+  "lookerServiceAttachmentUri": S.optional(S.String),
+  "serviceAttachments": S.optional(ServiceAttachmentList),
+}),
 ).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
 
 /** Looker instance Admin settings fields. */
@@ -396,21 +311,12 @@ export interface AdminSettings {
   allowedEmailDomains?: StringList;
 }
 export const AdminSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedEmailDomains: S.optional(StringList),
-  }),
+S.Struct({
+  "allowedEmailDomains": S.optional(StringList),
+}),
 ).annotate({ identifier: "AdminSettings" }) as any as S.Schema<AdminSettings>;
 
-export type MaintenanceWindowDayOfWeekEnum =
-  | "DAY_OF_WEEK_UNSPECIFIED"
-  | "MONDAY"
-  | "TUESDAY"
-  | "WEDNESDAY"
-  | "THURSDAY"
-  | "FRIDAY"
-  | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+export type MaintenanceWindowDayOfWeekEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
 export const MaintenanceWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the recurring maintenance window. */
@@ -421,13 +327,11 @@ export interface MaintenanceWindow {
   startTime?: TimeOfDay;
 }
 export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dayOfWeek: S.optional(MaintenanceWindowDayOfWeekEnum),
-    startTime: S.optional(TimeOfDay),
-  }),
-).annotate({
-  identifier: "MaintenanceWindow",
-}) as any as S.Schema<MaintenanceWindow>;
+S.Struct({
+  "dayOfWeek": S.optional(MaintenanceWindowDayOfWeekEnum),
+  "startTime": S.optional(TimeOfDay),
+}),
+).annotate({ identifier: "MaintenanceWindow" }) as any as S.Schema<MaintenanceWindow>;
 
 /** Controlled egress configuration. */
 export interface ControlledEgressConfig {
@@ -439,14 +343,12 @@ export interface ControlledEgressConfig {
   egressFqdns?: StringList;
 }
 export const ControlledEgressConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    webProxyIps: S.optional(StringList),
-    marketplaceEnabled: S.optional(S.Boolean),
-    egressFqdns: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ControlledEgressConfig",
-}) as any as S.Schema<ControlledEgressConfig>;
+S.Struct({
+  "webProxyIps": S.optional(StringList),
+  "marketplaceEnabled": S.optional(S.Boolean),
+  "egressFqdns": S.optional(StringList),
+}),
+).annotate({ identifier: "ControlledEgressConfig" }) as any as S.Schema<ControlledEgressConfig>;
 
 /** Metadata about users for a Looker instance. */
 export interface UserMetadata {
@@ -458,11 +360,11 @@ export interface UserMetadata {
   additionalViewerUserCount?: number;
 }
 export const UserMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalStandardUserCount: S.optional(S.Number),
-    additionalDeveloperUserCount: S.optional(S.Number),
-    additionalViewerUserCount: S.optional(S.Number),
-  }),
+S.Struct({
+  "additionalStandardUserCount": S.optional(S.Number),
+  "additionalDeveloperUserCount": S.optional(S.Number),
+  "additionalViewerUserCount": S.optional(S.Number),
+}),
 ).annotate({ identifier: "UserMetadata" }) as any as S.Schema<UserMetadata>;
 
 /** Configuration for periodic export. */
@@ -475,14 +377,12 @@ export interface PeriodicExportConfig {
   gcsUri?: string;
 }
 export const PeriodicExportConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKey: S.optional(S.String),
-    startTime: S.optional(TimeOfDay),
-    gcsUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PeriodicExportConfig",
-}) as any as S.Schema<PeriodicExportConfig>;
+S.Struct({
+  "kmsKey": S.optional(S.String),
+  "startTime": S.optional(TimeOfDay),
+  "gcsUri": S.optional(S.String),
+}),
+).annotate({ identifier: "PeriodicExportConfig" }) as any as S.Schema<PeriodicExportConfig>;
 
 /** A Looker instance. */
 export interface Instance {
@@ -568,48 +468,48 @@ export interface Instance {
   privateIpEnabled?: boolean;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oauthConfig: S.optional(OAuthConfig),
-    ingressPrivateIp: S.optional(S.String),
-    customDomain: S.optional(CustomDomain),
-    platformEdition: S.optional(InstancePlatformEditionEnum),
-    geminiEnabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    egressPublicIp: S.optional(S.String),
-    denyMaintenancePeriod: S.optional(DenyMaintenancePeriod),
-    reservedRange: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    satisfiesPzi: S.optional(S.Boolean),
-    state: S.optional(InstanceStateEnum),
-    classType: S.optional(InstanceClassTypeEnum),
-    catalogIntegrationOptOut: S.optional(S.Boolean),
-    ingressIpAllowlistConfig: S.optional(IngressIpAllowlistConfig),
-    lookerUri: S.optional(S.String),
-    encryptionConfig: S.optional(EncryptionConfig),
-    controlledEgressEnabled: S.optional(S.Boolean),
-    softDeleteReason: S.optional(InstanceSoftDeleteReasonEnum),
-    createTime: S.optional(S.String),
-    pscEnabled: S.optional(S.Boolean),
-    fipsEnabled: S.optional(S.Boolean),
-    releaseChannel: S.optional(InstanceReleaseChannelEnum),
-    satisfiesPzs: S.optional(S.Boolean),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    pscConfig: S.optional(PscConfig),
-    adminSettings: S.optional(AdminSettings),
-    consumerNetwork: S.optional(S.String),
-    maintenanceWindow: S.optional(MaintenanceWindow),
-    lookerVersion: S.optional(S.String),
-    controlledEgressConfig: S.optional(ControlledEgressConfig),
-    lastDenyMaintenancePeriod: S.optional(DenyMaintenancePeriod),
-    userMetadata: S.optional(UserMetadata),
-    suspendedTime: S.optional(S.String),
-    periodicExportConfig: S.optional(PeriodicExportConfig),
-    acceleratedSecurityPatchEnabled: S.optional(S.Boolean),
-    publicIpEnabled: S.optional(S.Boolean),
-    ingressPublicIp: S.optional(S.String),
-    linkedLspProjectNumber: S.optional(S.String),
-    privateIpEnabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "oauthConfig": S.optional(OAuthConfig),
+  "ingressPrivateIp": S.optional(S.String),
+  "customDomain": S.optional(CustomDomain),
+  "platformEdition": S.optional(InstancePlatformEditionEnum),
+  "geminiEnabled": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "egressPublicIp": S.optional(S.String),
+  "denyMaintenancePeriod": S.optional(DenyMaintenancePeriod),
+  "reservedRange": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "satisfiesPzi": S.optional(S.Boolean),
+  "state": S.optional(InstanceStateEnum),
+  "classType": S.optional(InstanceClassTypeEnum),
+  "catalogIntegrationOptOut": S.optional(S.Boolean),
+  "ingressIpAllowlistConfig": S.optional(IngressIpAllowlistConfig),
+  "lookerUri": S.optional(S.String),
+  "encryptionConfig": S.optional(EncryptionConfig),
+  "controlledEgressEnabled": S.optional(S.Boolean),
+  "softDeleteReason": S.optional(InstanceSoftDeleteReasonEnum),
+  "createTime": S.optional(S.String),
+  "pscEnabled": S.optional(S.Boolean),
+  "fipsEnabled": S.optional(S.Boolean),
+  "releaseChannel": S.optional(InstanceReleaseChannelEnum),
+  "satisfiesPzs": S.optional(S.Boolean),
+  "maintenanceSchedule": S.optional(MaintenanceSchedule),
+  "pscConfig": S.optional(PscConfig),
+  "adminSettings": S.optional(AdminSettings),
+  "consumerNetwork": S.optional(S.String),
+  "maintenanceWindow": S.optional(MaintenanceWindow),
+  "lookerVersion": S.optional(S.String),
+  "controlledEgressConfig": S.optional(ControlledEgressConfig),
+  "lastDenyMaintenancePeriod": S.optional(DenyMaintenancePeriod),
+  "userMetadata": S.optional(UserMetadata),
+  "suspendedTime": S.optional(S.String),
+  "periodicExportConfig": S.optional(PeriodicExportConfig),
+  "acceleratedSecurityPatchEnabled": S.optional(S.Boolean),
+  "publicIpEnabled": S.optional(S.Boolean),
+  "ingressPublicIp": S.optional(S.String),
+  "linkedLspProjectNumber": S.optional(S.String),
+  "privateIpEnabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface CreateProjectsLocationsInstancesRequest {
@@ -620,33 +520,19 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      instanceId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Instance.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/instances",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsInstancesRequest",
-}) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
+export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "instanceId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Instance.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/instances","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsInstancesRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -658,11 +544,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -679,22 +565,16 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "error": S.optional(Status),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type InstanceBackupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "DELETING"
-  | "ACTIVE"
-  | "FAILED"
-  | (string & {});
+export type InstanceBackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "DELETING" | "ACTIVE" | "FAILED";
 export const InstanceBackupStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of a backup resource. */
@@ -711,13 +591,13 @@ export interface InstanceBackup {
   state?: InstanceBackupStateEnum;
 }
 export const InstanceBackup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionConfig: S.optional(EncryptionConfig),
-    expireTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    state: S.optional(InstanceBackupStateEnum),
-  }),
+S.Struct({
+  "encryptionConfig": S.optional(EncryptionConfig),
+  "expireTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "state": S.optional(InstanceBackupStateEnum),
+}),
 ).annotate({ identifier: "InstanceBackup" }) as any as S.Schema<InstanceBackup>;
 
 export interface CreateProjectsLocationsInstancesBackupsRequest {
@@ -726,21 +606,12 @@ export interface CreateProjectsLocationsInstancesBackupsRequest {
   /** Request body */
   body?: InstanceBackup;
 }
-export const CreateProjectsLocationsInstancesBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(InstanceBackup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/backups",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsInstancesBackupsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsInstancesBackupsRequest>;
+export const CreateProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(InstanceBackup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/backups","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsInstancesBackupsRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesBackupsRequest>;
 
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
@@ -748,59 +619,32 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Whether to force cascading delete. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsInstancesRequest",
-}) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
+export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsInstancesRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
 
 export interface DeleteProjectsLocationsInstancesBackupsRequest {
   /** Required. Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup} */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsInstancesBackupsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsInstancesBackupsRequest>;
+export const DeleteProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsInstancesBackupsRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesBackupsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** Configuration for Encryption - e.g. CMEK. */
 export interface ExportEncryptionConfig {
@@ -808,12 +652,10 @@ export interface ExportEncryptionConfig {
   kmsKeyName?: string;
 }
 export const ExportEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportEncryptionConfig",
-}) as any as S.Schema<ExportEncryptionConfig>;
+S.Struct({
+  "kmsKeyName": S.optional(S.String),
+}),
+).annotate({ identifier: "ExportEncryptionConfig" }) as any as S.Schema<ExportEncryptionConfig>;
 
 /** Request options for exporting data of an Instance. */
 export interface ExportInstanceRequest {
@@ -823,13 +665,11 @@ export interface ExportInstanceRequest {
   encryptionConfig?: ExportEncryptionConfig;
 }
 export const ExportInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsUri: S.optional(S.String),
-    encryptionConfig: S.optional(ExportEncryptionConfig),
-  }),
-).annotate({
-  identifier: "ExportInstanceRequest",
-}) as any as S.Schema<ExportInstanceRequest>;
+S.Struct({
+  "gcsUri": S.optional(S.String),
+  "encryptionConfig": S.optional(ExportEncryptionConfig),
+}),
+).annotate({ identifier: "ExportInstanceRequest" }) as any as S.Schema<ExportInstanceRequest>;
 
 export interface ExportProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
@@ -837,45 +677,25 @@ export interface ExportProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ExportInstanceRequest;
 }
-export const ExportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ExportInstanceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:export",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ExportProjectsLocationsInstancesRequest",
-}) as any as S.Schema<ExportProjectsLocationsInstancesRequest>;
+export const ExportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ExportInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:export","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "ExportProjectsLocationsInstancesRequest" }) as any as S.Schema<ExportProjectsLocationsInstancesRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://looker.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -891,71 +711,44 @@ export interface Location {
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    locationId: S.optional(S.String),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "displayName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "locationId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsInstancesRequest",
-}) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
+export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsInstancesRequest" }) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
 
 export interface GetProjectsLocationsInstancesBackupsRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}/backups/{backup}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsInstancesBackupsRequest",
-  }) as any as S.Schema<GetProjectsLocationsInstancesBackupsRequest>;
+export const GetProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsInstancesBackupsRequest" }) as any as S.Schema<GetProjectsLocationsInstancesBackupsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 /** Requestion options for importing looker data to an Instance */
 export interface ImportInstanceRequest {
@@ -963,12 +756,10 @@ export interface ImportInstanceRequest {
   gcsUri?: string;
 }
 export const ImportInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImportInstanceRequest",
-}) as any as S.Schema<ImportInstanceRequest>;
+S.Struct({
+  "gcsUri": S.optional(S.String),
+}),
+).annotate({ identifier: "ImportInstanceRequest" }) as any as S.Schema<ImportInstanceRequest>;
 
 export interface ImportProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
@@ -976,21 +767,12 @@ export interface ImportProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ImportInstanceRequest;
 }
-export const ImportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ImportInstanceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:import",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ImportProjectsLocationsInstancesRequest",
-}) as any as S.Schema<ImportProjectsLocationsInstancesRequest>;
+export const ImportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ImportInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:import","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "ImportProjectsLocationsInstancesRequest" }) as any as S.Schema<ImportProjectsLocationsInstancesRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -1005,27 +787,17 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://looker.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1035,13 +807,11 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    locations: S.optional(LocationList),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "locations": S.optional(LocationList),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}`. */
@@ -1053,28 +823,17 @@ export interface ListProjectsLocationsInstancesRequest {
   /** A page token received from a previous ListInstancesRequest. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/instances",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsInstancesRequest",
-}) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
+export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/instances","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsInstancesRequest" }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(
-  Instance,
-) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** Response from ListInstances. */
 export interface ListInstancesResponse {
@@ -1086,14 +845,12 @@ export interface ListInstancesResponse {
   instances?: InstanceList;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    instances: S.optional(InstanceList),
-  }),
-).annotate({
-  identifier: "ListInstancesResponse",
-}) as any as S.Schema<ListInstancesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "instances": S.optional(InstanceList),
+}),
+).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsLocationsInstancesBackupsRequest {
   /** A page token received from a previous ListInstances request. */
@@ -1105,28 +862,17 @@ export interface ListProjectsLocationsInstancesBackupsRequest {
   /** Sort results. Default order is "create_time desc". Other supported fields are "state" and "expire_time". https://google.aip.dev/132#ordering */
   orderBy?: string;
 }
-export const ListProjectsLocationsInstancesBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/backups",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsInstancesBackupsRequest",
-  }) as any as S.Schema<ListProjectsLocationsInstancesBackupsRequest>;
+export const ListProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backups","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsInstancesBackupsRequest" }) as any as S.Schema<ListProjectsLocationsInstancesBackupsRequest>;
 
 export type InstanceBackupList = ReadonlyArray<InstanceBackup>;
-export const InstanceBackupList = /*@__PURE__*/ S.Array(
-  InstanceBackup,
-) as any as S.Schema<InstanceBackupList>;
+export const InstanceBackupList = /*@__PURE__*/ S.Array(InstanceBackup) as any as S.Schema<InstanceBackupList>;
 
 /** Response from listing Looker instance backups. */
 export interface ListInstanceBackupsResponse {
@@ -1138,14 +884,12 @@ export interface ListInstanceBackupsResponse {
   nextPageToken?: string;
 }
 export const ListInstanceBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceBackups: S.optional(InstanceBackupList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListInstanceBackupsResponse",
-}) as any as S.Schema<ListInstanceBackupsResponse>;
+S.Struct({
+  "instanceBackups": S.optional(InstanceBackupList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListInstanceBackupsResponse" }) as any as S.Schema<ListInstanceBackupsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -1159,29 +903,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1193,14 +926,12 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsInstancesRequest {
   /** Output only. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
@@ -1210,30 +941,19 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Instance.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsInstancesRequest",
-}) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
+export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Instance.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsInstancesRequest" }) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
 
 /** Request options for restarting an instance. */
 export interface RestartInstanceRequest {}
 export const RestartInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestartInstanceRequest",
-}) as any as S.Schema<RestartInstanceRequest>;
+S.Struct({}),
+).annotate({ identifier: "RestartInstanceRequest" }) as any as S.Schema<RestartInstanceRequest>;
 
 export interface RestartProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
@@ -1241,21 +961,12 @@ export interface RestartProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RestartInstanceRequest;
 }
-export const RestartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RestartInstanceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:restart",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "RestartProjectsLocationsInstancesRequest",
-}) as any as S.Schema<RestartProjectsLocationsInstancesRequest>;
+export const RestartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RestartInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:restart","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "RestartProjectsLocationsInstancesRequest" }) as any as S.Schema<RestartProjectsLocationsInstancesRequest>;
 
 /** Request options for restoring an instance */
 export interface RestoreInstanceRequest {
@@ -1263,12 +974,10 @@ export interface RestoreInstanceRequest {
   backup?: string;
 }
 export const RestoreInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backup: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestoreInstanceRequest",
-}) as any as S.Schema<RestoreInstanceRequest>;
+S.Struct({
+  "backup": S.optional(S.String),
+}),
+).annotate({ identifier: "RestoreInstanceRequest" }) as any as S.Schema<RestoreInstanceRequest>;
 
 export interface RestoreProjectsLocationsInstancesRequest {
   /** Required. Instance being restored Format: projects/{project}/locations/{location}/instances/{instance} */
@@ -1276,29 +985,18 @@ export interface RestoreProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RestoreInstanceRequest;
 }
-export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RestoreInstanceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:restore",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "RestoreProjectsLocationsInstancesRequest",
-}) as any as S.Schema<RestoreProjectsLocationsInstancesRequest>;
+export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RestoreInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:restore","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "RestoreProjectsLocationsInstancesRequest" }) as any as S.Schema<RestoreProjectsLocationsInstancesRequest>;
 
 /** Request options for undeleting an instance. */
 export interface UndeleteInstanceRequest {}
 export const UndeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UndeleteInstanceRequest",
-}) as any as S.Schema<UndeleteInstanceRequest>;
+S.Struct({}),
+).annotate({ identifier: "UndeleteInstanceRequest" }) as any as S.Schema<UndeleteInstanceRequest>;
 
 export interface UndeleteProjectsLocationsInstancesRequest {
   /** Required. Format: projects/{project}/locations/{location}/instances/{instance} */
@@ -1306,28 +1004,14 @@ export interface UndeleteProjectsLocationsInstancesRequest {
   /** Request body */
   body?: UndeleteInstanceRequest;
 }
-export const UndeleteProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UndeleteInstanceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:undelete",
-        baseUrl: "https://looker.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UndeleteProjectsLocationsInstancesRequest",
-  }) as any as S.Schema<UndeleteProjectsLocationsInstancesRequest>;
+export const UndeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UndeleteInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:undelete","baseUrl":"https://looker.googleapis.com/"})),
+).annotate({ identifier: "UndeleteProjectsLocationsInstancesRequest" }) as any as S.Schema<UndeleteProjectsLocationsInstancesRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1342,12 +1026,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Instance in a given project and location. */
 export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesRequest,
@@ -1362,12 +1041,7 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsInstancesBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Backup Looker instance. */
 export const createProjectsLocationsInstancesBackups: API.OperationMethod<
   CreateProjectsLocationsInstancesBackupsRequest,
@@ -1382,12 +1056,7 @@ export const createProjectsLocationsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete instance. */
 export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesRequest,
@@ -1402,12 +1071,7 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsInstancesBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete backup. */
 export const deleteProjectsLocationsInstancesBackups: API.OperationMethod<
   DeleteProjectsLocationsInstancesBackupsRequest,
@@ -1422,12 +1086,7 @@ export const deleteProjectsLocationsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1442,12 +1101,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExportProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExportProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Export instance. */
 export const exportProjectsLocationsInstances: API.OperationMethod<
   ExportProjectsLocationsInstancesRequest,
@@ -1477,10 +1131,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Instance. */
 export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesRequest,
@@ -1495,10 +1146,7 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsInstancesBackupsError = NotFound | Forbidden | GcpOpError;
 export const getProjectsLocationsInstancesBackups: API.OperationMethod<
   GetProjectsLocationsInstancesBackupsRequest,
   InstanceBackup,
@@ -1512,10 +1160,7 @@ export const getProjectsLocationsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1530,12 +1175,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Import instance. */
 export const importProjectsLocationsInstances: API.OperationMethod<
   ImportProjectsLocationsInstancesRequest,
@@ -1563,16 +1203,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Lists Instances in a given project and location. */
 export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesRequest,
@@ -1585,16 +1219,10 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsInstancesBackupsError = NotFound | Forbidden | GcpOpError;
 /** List backups of Looker instance. */
 export const listProjectsLocationsInstancesBackups: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesBackupsRequest,
@@ -1607,16 +1235,10 @@ export const listProjectsLocationsInstancesBackups: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1629,18 +1251,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update Instance. */
 export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesRequest,
@@ -1655,12 +1269,7 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestartProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RestartProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Restart instance. */
 export const restartProjectsLocationsInstances: API.OperationMethod<
   RestartProjectsLocationsInstancesRequest,
@@ -1675,12 +1284,7 @@ export const restartProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RestoreProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Restore Looker instance. */
 export const restoreProjectsLocationsInstances: API.OperationMethod<
   RestoreProjectsLocationsInstancesRequest,
@@ -1695,12 +1299,7 @@ export const restoreProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UndeleteProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Undeletes Looker instance. */
 export const undeleteProjectsLocationsInstances: API.OperationMethod<
   UndeleteProjectsLocationsInstancesRequest,
@@ -1714,3 +1313,4 @@ export const undeleteProjectsLocationsInstances: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -182,8 +182,7 @@ export type InterconnectsCreateRequestBandwidth =
   | "5G"
   | "10G"
   | "20G"
-  | "50G"
-  | (string & {});
+  | "50G";
 export const InterconnectsCreateRequestBandwidth = /*@__PURE__*/ S.String;
 
 export interface CreateInterconnectRequest {
@@ -194,7 +193,7 @@ export interface CreateInterconnectRequest {
   type: string;
   speed?: string;
   /** Bandwidth structure as visible through the customer-facing API. */
-  bandwidth?: InterconnectsCreateRequestBandwidth;
+  bandwidth?: InterconnectsCreateRequestBandwidth | (string & {});
   /** Pairing key provided by GCP */
   pairingKey?: string;
 }
@@ -708,8 +707,7 @@ export type InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed
     | "5G"
     | "10G"
     | "20G"
-    | "50G"
-    | (string & {});
+    | "50G";
 export const InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed =
   /*@__PURE__*/ S.String;
 

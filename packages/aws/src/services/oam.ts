@@ -152,11 +152,10 @@ export type ResourceType =
   | "AWS::ApplicationInsights::Application"
   | "AWS::InternetMonitor::Monitor"
   | "AWS::ApplicationSignals::Service"
-  | "AWS::ApplicationSignals::ServiceLevelObjective"
-  | (string & {});
+  | "AWS::ApplicationSignals::ServiceLevelObjective";
 export const ResourceType = /*@__PURE__*/ S.String;
 
-export type ResourceTypesInput = ResourceType[];
+export type ResourceTypesInput = (ResourceType | (string & {}))[];
 export const ResourceTypesInput = /*@__PURE__*/ S.Array(ResourceType);
 export type ResourceIdentifier = string;
 export type TagKey = string;

@@ -127,7 +127,7 @@ export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedExcept
 export type Name = string;
 export type Description = string;
 export type Repository = string;
-export type Platform = "WEB" | "WEB_DYNAMIC" | "WEB_COMPUTE" | (string & {});
+export type Platform = "WEB" | "WEB_DYNAMIC" | "WEB_COMPUTE";
 export const Platform = /*@__PURE__*/ S.String;
 
 export type ComputeRoleArn = string;
@@ -183,8 +183,7 @@ export type Stage =
   | "BETA"
   | "DEVELOPMENT"
   | "EXPERIMENTAL"
-  | "PULL_REQUEST"
-  | (string & {});
+  | "PULL_REQUEST";
 export const Stage = /*@__PURE__*/ S.String;
 
 export type Framework = string;
@@ -220,11 +219,7 @@ export const AutoBranchCreationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoBranchCreationConfig",
 }) as any as S.Schema<AutoBranchCreationConfig>;
-export type BuildComputeType =
-  | "STANDARD_8GB"
-  | "LARGE_16GB"
-  | "XLARGE_72GB"
-  | (string & {});
+export type BuildComputeType = "STANDARD_8GB" | "LARGE_16GB" | "XLARGE_72GB";
 export const BuildComputeType = /*@__PURE__*/ S.String;
 
 export interface JobConfig {
@@ -233,10 +228,7 @@ export interface JobConfig {
 export const JobConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ buildComputeType: BuildComputeType }),
 ).annotate({ identifier: "JobConfig" }) as any as S.Schema<JobConfig>;
-export type CacheConfigType =
-  | "AMPLIFY_MANAGED"
-  | "AMPLIFY_MANAGED_NO_COOKIES"
-  | (string & {});
+export type CacheConfigType = "AMPLIFY_MANAGED" | "AMPLIFY_MANAGED_NO_COOKIES";
 export const CacheConfigType = /*@__PURE__*/ S.String;
 
 export interface CacheConfig {
@@ -249,7 +241,7 @@ export interface CreateAppRequest {
   name: string;
   description?: string;
   repository?: string;
-  platform?: Platform;
+  platform?: Platform | (string & {});
   computeRoleArn?: string;
   iamServiceRoleArn?: string;
   oauthToken?: string | redacted.Redacted<string>;
@@ -331,7 +323,7 @@ export const ProductionBranch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProductionBranch",
 }) as any as S.Schema<ProductionBranch>;
-export type RepositoryCloneMethod = "SSH" | "TOKEN" | "SIGV4" | (string & {});
+export type RepositoryCloneMethod = "SSH" | "TOKEN" | "SIGV4";
 export const RepositoryCloneMethod = /*@__PURE__*/ S.String;
 
 export type WebhookCreateTime = Date;
@@ -341,8 +333,7 @@ export type WafStatus =
   | "ASSOCIATION_FAILED"
   | "ASSOCIATION_SUCCESS"
   | "DISASSOCIATING"
-  | "DISASSOCIATION_FAILED"
-  | (string & {});
+  | "DISASSOCIATION_FAILED";
 export const WafStatus = /*@__PURE__*/ S.String;
 
 export type StatusReason = string;
@@ -507,7 +498,7 @@ export interface CreateBranchRequest {
   appId: string;
   branchName: string;
   description?: string;
-  stage?: Stage;
+  stage?: Stage | (string & {});
   framework?: string;
   enableNotification?: boolean;
   enableAutoBuild?: boolean;
@@ -719,12 +710,12 @@ export type AutoSubDomainCreationPattern = string;
 export type AutoSubDomainCreationPatterns = string[];
 export const AutoSubDomainCreationPatterns = /*@__PURE__*/ S.Array(S.String);
 export type AutoSubDomainIAMRole = string;
-export type CertificateType = "AMPLIFY_MANAGED" | "CUSTOM" | (string & {});
+export type CertificateType = "AMPLIFY_MANAGED" | "CUSTOM";
 export const CertificateType = /*@__PURE__*/ S.String;
 
 export type CertificateArn = string;
 export interface CertificateSettings {
-  type: CertificateType;
+  type: CertificateType | (string & {});
   customCertificateArn?: string;
 }
 export const CertificateSettings = /*@__PURE__*/ S.suspend(() =>
@@ -778,8 +769,7 @@ export type DomainStatus =
   | "FAILED"
   | "CREATING"
   | "REQUESTING_CERTIFICATE"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const DomainStatus = /*@__PURE__*/ S.String;
 
 export type UpdateStatus =
@@ -789,8 +779,7 @@ export type UpdateStatus =
   | "PENDING_DEPLOYMENT"
   | "AWAITING_APP_CNAME"
   | "UPDATE_COMPLETE"
-  | "UPDATE_FAILED"
-  | (string & {});
+  | "UPDATE_FAILED";
 export const UpdateStatus = /*@__PURE__*/ S.String;
 
 export type CertificateVerificationDNSRecord = string;
@@ -1076,21 +1065,15 @@ export type JobStatus =
   | "FAILED"
   | "SUCCEED"
   | "CANCELLING"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type EndTime = Date;
-export type JobType =
-  | "RELEASE"
-  | "RETRY"
-  | "MANUAL"
-  | "WEB_HOOK"
-  | (string & {});
+export type JobType = "RELEASE" | "RETRY" | "MANUAL" | "WEB_HOOK";
 export const JobType = /*@__PURE__*/ S.String;
 
 export type SourceUrl = string;
-export type SourceUrlType = "ZIP" | "BUCKET_PREFIX" | (string & {});
+export type SourceUrlType = "ZIP" | "BUCKET_PREFIX";
 export const SourceUrlType = /*@__PURE__*/ S.String;
 
 export interface JobSummary {
@@ -1744,7 +1727,7 @@ export interface StartDeploymentRequest {
   branchName: string;
   jobId?: string;
   sourceUrl?: string;
-  sourceUrlType?: SourceUrlType;
+  sourceUrlType?: SourceUrlType | (string & {});
 }
 export const StartDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1783,7 +1766,7 @@ export interface StartJobRequest {
   appId: string;
   branchName: string;
   jobId?: string;
-  jobType: JobType;
+  jobType: JobType | (string & {});
   jobReason?: string;
   commitId?: string;
   commitMessage?: string;
@@ -1915,7 +1898,7 @@ export interface UpdateAppRequest {
   appId: string;
   name?: string;
   description?: string;
-  platform?: Platform;
+  platform?: Platform | (string & {});
   computeRoleArn?: string;
   iamServiceRoleArn?: string;
   environmentVariables?: { [key: string]: string | undefined };
@@ -1986,7 +1969,7 @@ export interface UpdateBranchRequest {
   branchName: string;
   description?: string;
   framework?: string;
-  stage?: Stage;
+  stage?: Stage | (string & {});
   enableNotification?: boolean;
   enableAutoBuild?: boolean;
   enableSkewProtection?: boolean;

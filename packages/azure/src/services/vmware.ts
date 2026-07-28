@@ -14,13 +14,13 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** Addon type */
-export type AddonType = "SRM" | "VR" | "HCX" | "Arc" | (string & {});
+export type AddonType = "SRM" | "VR" | "HCX" | "Arc";
 export const AddonType = /*@__PURE__*/ S.String;
 
 /** The properties of an addon */
 export interface AddonPropertiesInput {
   /** Addon type */
-  addonType: AddonType;
+  addonType: AddonType | (string & {});
 }
 export const AddonPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -66,8 +66,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -75,8 +74,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -113,8 +111,7 @@ export type AddonProvisioningState =
   | "Cancelled"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const AddonProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of an addon */
@@ -362,8 +359,7 @@ export type ExpressRouteAuthorizationProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ExpressRouteAuthorizationProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -619,11 +615,7 @@ export const CloudLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudLinksCreateOrUpdateRequest>;
 
 /** cloud link provisioning state */
-export type CloudLinkProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
+export type CloudLinkProvisioningState = "Succeeded" | "Failed" | "Canceled";
 export const CloudLinkProvisioningState = /*@__PURE__*/ S.String;
 
 /** Cloud Link status */
@@ -632,8 +624,7 @@ export type CloudLinkStatus =
   | "Building"
   | "Deleting"
   | "Failed"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const CloudLinkStatus = /*@__PURE__*/ S.String;
 
 /** The properties of a cloud link. */
@@ -860,14 +851,14 @@ export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterPropertiesInput>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
 export interface ClustersCreateOrUpdateRequestSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -928,8 +919,7 @@ export type ClusterProvisioningState =
   | "Canceled"
   | "Cancelled"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ClusterProvisioningState = /*@__PURE__*/ S.String;
 
 /** The hosts */
@@ -1292,7 +1282,7 @@ export const ClusterZoneList = /*@__PURE__*/ S.suspend(() =>
 export interface ClustersUpdateRequestSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -1431,7 +1421,7 @@ export const NetAppVolume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetAppVolume" }) as any as S.Schema<NetAppVolume>;
 
 /** Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN */
-export type DiskPoolVolumeInputMountOption = "MOUNT" | "ATTACH" | (string & {});
+export type DiskPoolVolumeInputMountOption = "MOUNT" | "ATTACH";
 export const DiskPoolVolumeInputMountOption = /*@__PURE__*/ S.String;
 
 /** An iSCSI volume from Microsoft.StoragePool provider */
@@ -1441,7 +1431,7 @@ export interface DiskPoolVolumeInput {
   /** Name of the LUN to be used for datastore */
   lunName: string;
   /** Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN */
-  mountOption?: DiskPoolVolumeInputMountOption;
+  mountOption?: DiskPoolVolumeInputMountOption | (string & {});
 }
 export const DiskPoolVolumeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1547,12 +1537,11 @@ export type DatastoreProvisioningState =
   | "Pending"
   | "Creating"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const DatastoreProvisioningState = /*@__PURE__*/ S.String;
 
 /** Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN */
-export type DiskPoolVolumeMountOption = "MOUNT" | "ATTACH" | (string & {});
+export type DiskPoolVolumeMountOption = "MOUNT" | "ATTACH";
 export const DiskPoolVolumeMountOption = /*@__PURE__*/ S.String;
 
 /** An iSCSI volume from Microsoft.StoragePool provider */
@@ -1583,8 +1572,7 @@ export type DatastoreStatus =
   | "Attached"
   | "Detached"
   | "LostCommunication"
-  | "DeadOrError"
-  | (string & {});
+  | "DeadOrError";
 export const DatastoreStatus = /*@__PURE__*/ S.String;
 
 /** The properties of a datastore */
@@ -1860,16 +1848,14 @@ export type GlobalReachConnectionProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const GlobalReachConnectionProvisioningState = /*@__PURE__*/ S.String;
 
 /** Global Reach Connection status */
 export type GlobalReachConnectionStatus =
   | "Connected"
   | "Connecting"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const GlobalReachConnectionStatus = /*@__PURE__*/ S.String;
 
 /** The properties of a global reach connection */
@@ -2129,8 +2115,7 @@ export const HcxEnterpriseSitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 export type HcxEnterpriseSiteProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const HcxEnterpriseSiteProvisioningState = /*@__PURE__*/ S.String;
 
 /** HCX Enterprise Site status */
@@ -2138,8 +2123,7 @@ export type HcxEnterpriseSiteStatus =
   | "Available"
   | "Consumed"
   | "Deactivated"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const HcxEnterpriseSiteStatus = /*@__PURE__*/ S.String;
 
 /** The properties of an HCX Enterprise Site */
@@ -2377,19 +2361,15 @@ export const HostsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostsGetRequest>;
 
 /** The kind of host. */
-export type HostKind = "General" | "Specialized" | (string & {});
+export type HostKind = "General" | "Specialized";
 export const HostKind = /*@__PURE__*/ S.String;
 
 /** provisioning state of the host */
-export type HostProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
+export type HostProvisioningState = "Succeeded" | "Failed" | "Canceled";
 export const HostProvisioningState = /*@__PURE__*/ S.String;
 
 /** The reason for host maintenance. */
-export type HostMaintenance = "Replacement" | "Upgrade" | (string & {});
+export type HostMaintenance = "Replacement" | "Upgrade";
 export const HostMaintenance = /*@__PURE__*/ S.String;
 
 /** The properties of a host. */
@@ -2634,8 +2614,7 @@ export type IscsiPathProvisioningState =
   | "Pending"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const IscsiPathProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of an iSCSI path resource */
@@ -2829,19 +2808,17 @@ export const IscsiPathListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "IscsiPathListResult",
 }) as any as S.Schema<IscsiPathListResult>;
 
-export type LicensesCreateOrUpdateRequestLicenseName =
-  | "VmwareFirewall"
-  | (string & {});
+export type LicensesCreateOrUpdateRequestLicenseName = "VmwareFirewall";
 export const LicensesCreateOrUpdateRequestLicenseName = /*@__PURE__*/ S.String;
 
 /** The kind of license. */
-export type LicenseKind = "VmwareFirewall" | (string & {});
+export type LicenseKind = "VmwareFirewall";
 export const LicenseKind = /*@__PURE__*/ S.String;
 
 /** The properties of a license */
 export interface LicensePropertiesInput {
   /** License kind */
-  kind: LicenseKind;
+  kind: LicenseKind | (string & {});
 }
 export const LicensePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2859,7 +2836,7 @@ export interface LicensesCreateOrUpdateRequest {
   /** Name of the private cloud */
   privateCloudName: string;
   /** Name of the license. */
-  licenseName: LicensesCreateOrUpdateRequestLicenseName;
+  licenseName: LicensesCreateOrUpdateRequestLicenseName | (string & {});
   /** The resource-specific properties for this resource. */
   properties?: LicensePropertiesInput;
 }
@@ -2883,11 +2860,7 @@ export const LicensesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LicensesCreateOrUpdateRequest>;
 
 /** provisioning state of the license */
-export type LicenseProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
+export type LicenseProvisioningState = "Succeeded" | "Failed" | "Canceled";
 export const LicenseProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of a license */
@@ -2930,7 +2903,7 @@ export const LicensesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicensesCreateOrUpdateResponse",
 }) as any as S.Schema<LicensesCreateOrUpdateResponse>;
 
-export type LicensesDeleteRequestLicenseName = "VmwareFirewall" | (string & {});
+export type LicensesDeleteRequestLicenseName = "VmwareFirewall";
 export const LicensesDeleteRequestLicenseName = /*@__PURE__*/ S.String;
 
 export interface LicensesDeleteRequest {
@@ -2941,7 +2914,7 @@ export interface LicensesDeleteRequest {
   /** Name of the private cloud */
   privateCloudName: string;
   /** Name of the license. */
-  licenseName: LicensesDeleteRequestLicenseName;
+  licenseName: LicensesDeleteRequestLicenseName | (string & {});
 }
 export const LicensesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2968,7 +2941,7 @@ export const LicensesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicensesDeleteResponse",
 }) as any as S.Schema<LicensesDeleteResponse>;
 
-export type LicensesGetRequestLicenseName = "VmwareFirewall" | (string & {});
+export type LicensesGetRequestLicenseName = "VmwareFirewall";
 export const LicensesGetRequestLicenseName = /*@__PURE__*/ S.String;
 
 export interface LicensesGetRequest {
@@ -2979,7 +2952,7 @@ export interface LicensesGetRequest {
   /** Name of the private cloud */
   privateCloudName: string;
   /** Name of the license. */
-  licenseName: LicensesGetRequestLicenseName;
+  licenseName: LicensesGetRequestLicenseName | (string & {});
 }
 export const LicensesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3023,9 +2996,7 @@ export const LicensesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicensesGetResponse",
 }) as any as S.Schema<LicensesGetResponse>;
 
-export type LicensesGetPropertiesRequestLicenseName =
-  | "VmwareFirewall"
-  | (string & {});
+export type LicensesGetPropertiesRequestLicenseName = "VmwareFirewall";
 export const LicensesGetPropertiesRequestLicenseName = /*@__PURE__*/ S.String;
 
 export interface LicensesGetPropertiesRequest {
@@ -3036,7 +3007,7 @@ export interface LicensesGetPropertiesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
   /** Name of the license. */
-  licenseName: LicensesGetPropertiesRequestLicenseName;
+  licenseName: LicensesGetPropertiesRequestLicenseName | (string & {});
 }
 export const LicensesGetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3157,7 +3128,7 @@ export const QuotaHostsRemainingMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QuotaHostsRemainingMap>;
 
 /** quota enabled */
-export type QuotaEnabled = "Enabled" | "Disabled" | (string & {});
+export type QuotaEnabled = "Enabled" | "Disabled";
 export const QuotaEnabled = /*@__PURE__*/ S.String;
 
 /** Subscription quotas */
@@ -3181,7 +3152,7 @@ export interface LocationsCheckTrialAvailabilityRequest {
   location: string;
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -3212,11 +3183,7 @@ export const LocationsCheckTrialAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LocationsCheckTrialAvailabilityRequest>;
 
 /** trial status */
-export type TrialStatus =
-  | "TrialAvailable"
-  | "TrialUsed"
-  | "TrialDisabled"
-  | (string & {});
+export type TrialStatus = "TrialAvailable" | "TrialUsed" | "TrialDisabled";
 export const TrialStatus = /*@__PURE__*/ S.String;
 
 /** Subscription trial availability */
@@ -3262,7 +3229,7 @@ export const MaintenancesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaintenancesGetRequest>;
 
 /** type of the maintenance */
-export type MaintenanceType = "VCSA" | "ESXI" | "NSXT" | (string & {});
+export type MaintenanceType = "VCSA" | "ESXI" | "NSXT";
 export const MaintenanceType = /*@__PURE__*/ S.String;
 
 /** Customer presentable maintenance state */
@@ -3272,8 +3239,7 @@ export type MaintenanceStateName =
   | "InProgress"
   | "Success"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const MaintenanceStateName = /*@__PURE__*/ S.String;
 
 /** state of the maintenance */
@@ -3303,16 +3269,14 @@ export type MaintenanceProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const MaintenanceProvisioningState = /*@__PURE__*/ S.String;
 
 /** Defines the type of operation */
 export type MaintenanceManagementOperationKind =
   | "Schedule"
   | "Reschedule"
-  | "MaintenanceReadinessRefresh"
-  | (string & {});
+  | "MaintenanceReadinessRefresh";
 export const MaintenanceManagementOperationKind = /*@__PURE__*/ S.String;
 
 /** Defines operations that can be performed on maintenance */
@@ -3336,7 +3300,7 @@ export const MaintenancePropertiesOperationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MaintenancePropertiesOperationsList>;
 
 /** Defines the type of maintenance readiness check */
-export type MaintenanceCheckType = "Precheck" | "Preflight" | (string & {});
+export type MaintenanceCheckType = "Precheck" | "Preflight";
 export const MaintenanceCheckType = /*@__PURE__*/ S.String;
 
 /** Defines the readiness status of maintenance */
@@ -3344,8 +3308,7 @@ export type MaintenanceReadinessStatus =
   | "Ready"
   | "NotReady"
   | "DataNotAvailable"
-  | "NotApplicable"
-  | (string & {});
+  | "NotApplicable";
 export const MaintenanceReadinessStatus = /*@__PURE__*/ S.String;
 
 /** Steps to resolve the error */
@@ -3590,14 +3553,10 @@ export type MaintenancesListRequestStateName =
   | "InProgress"
   | "Success"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const MaintenancesListRequestStateName = /*@__PURE__*/ S.String;
 
-export type MaintenancesListRequestStatus =
-  | "Active"
-  | "Inactive"
-  | (string & {});
+export type MaintenancesListRequestStatus = "Active" | "Inactive";
 export const MaintenancesListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface MaintenancesListRequest {
@@ -3608,9 +3567,9 @@ export interface MaintenancesListRequest {
   /** Name of the private cloud */
   privateCloudName: string;
   /** Filter maintenances based on state */
-  stateName?: MaintenancesListRequestStateName;
+  stateName?: MaintenancesListRequestStateName | (string & {});
   /** Filter active or inactive maintenances */
-  status?: MaintenancesListRequestStatus;
+  status?: MaintenancesListRequestStatus | (string & {});
   /** date from which result should be returned. ie. scheduledStartTime >= from */
   from?: string;
   /** date till which result should be returned. i.e. scheduledStartTime <= to */
@@ -3835,11 +3794,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -3887,19 +3846,19 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** Placement Policy type */
-export type PlacementPolicyType = "VmVm" | "VmHost" | (string & {});
+export type PlacementPolicyType = "VmVm" | "VmHost";
 export const PlacementPolicyType = /*@__PURE__*/ S.String;
 
 /** Placement Policy state */
-export type PlacementPolicyState = "Enabled" | "Disabled" | (string & {});
+export type PlacementPolicyState = "Enabled" | "Disabled";
 export const PlacementPolicyState = /*@__PURE__*/ S.String;
 
 /** Abstract placement policy properties */
 export interface PlacementPolicyPropertiesInput {
   /** Placement Policy type */
-  type: PlacementPolicyType;
+  type: PlacementPolicyType | (string & {});
   /** Whether the placement policy is enabled or disabled */
-  state?: PlacementPolicyState;
+  state?: PlacementPolicyState | (string & {});
   /** Display name of the placement policy */
   displayName?: string;
 }
@@ -3955,8 +3914,7 @@ export type PlacementPolicyProvisioningState =
   | "Canceled"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const PlacementPolicyProvisioningState = /*@__PURE__*/ S.String;
 
 /** Abstract placement policy properties */
@@ -4191,25 +4149,25 @@ export const PlacementPolicyUpdatePropertiesHostMembersList =
   ) as any as S.Schema<PlacementPolicyUpdatePropertiesHostMembersList>;
 
 /** Affinity Strength */
-export type AffinityStrength = "Should" | "Must" | (string & {});
+export type AffinityStrength = "Should" | "Must";
 export const AffinityStrength = /*@__PURE__*/ S.String;
 
 /** Azure Hybrid Benefit type */
-export type AzureHybridBenefitType = "SqlHost" | "None" | (string & {});
+export type AzureHybridBenefitType = "SqlHost" | "None";
 export const AzureHybridBenefitType = /*@__PURE__*/ S.String;
 
 /** The properties of a placement policy resource that may be updated */
 export interface PlacementPolicyUpdateProperties {
   /** Whether the placement policy is enabled or disabled */
-  state?: PlacementPolicyState;
+  state?: PlacementPolicyState | (string & {});
   /** Virtual machine members list */
   vmMembers?: PlacementPolicyUpdatePropertiesVmMembersList;
   /** Host members list */
   hostMembers?: PlacementPolicyUpdatePropertiesHostMembersList;
   /** vm-host placement policy affinity strength (should/must) */
-  affinityStrength?: AffinityStrength;
+  affinityStrength?: AffinityStrength | (string & {});
   /** placement policy azure hybrid benefit opt-in type */
-  azureHybridBenefitType?: AzureHybridBenefitType;
+  azureHybridBenefitType?: AzureHybridBenefitType | (string & {});
 }
 export const PlacementPolicyUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4316,14 +4274,11 @@ export const ManagementClusterInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementClusterInput>;
 
 /** Connectivity to internet is enabled or disabled */
-export type PrivateCloudPropertiesInputInternet =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type PrivateCloudPropertiesInputInternet = "Enabled" | "Disabled";
 export const PrivateCloudPropertiesInputInternet = /*@__PURE__*/ S.String;
 
 /** Whether SSL is enabled or disabled */
-export type SslEnum = "Enabled" | "Disabled" | (string & {});
+export type SslEnum = "Enabled" | "Disabled";
 export const SslEnum = /*@__PURE__*/ S.String;
 
 /** vCenter Single Sign On Identity Source */
@@ -4373,7 +4328,7 @@ export const PrivateCloudPropertiesInputIdentitySourcesList =
   ) as any as S.Schema<PrivateCloudPropertiesInputIdentitySourcesList>;
 
 /** Whether the private clouds is available in a single zone or two zones */
-export type AvailabilityStrategy = "SingleZone" | "DualZone" | (string & {});
+export type AvailabilityStrategy = "SingleZone" | "DualZone";
 export const AvailabilityStrategy = /*@__PURE__*/ S.String;
 
 /** The properties describing private cloud availability zone distribution */
@@ -4396,7 +4351,7 @@ export const AvailabilityProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailabilityProperties>;
 
 /** Whether encryption is enabled or disabled */
-export type EncryptionState = "Enabled" | "Disabled" | (string & {});
+export type EncryptionState = "Enabled" | "Disabled";
 export const EncryptionState = /*@__PURE__*/ S.String;
 
 /** An Encryption Key */
@@ -4421,7 +4376,7 @@ export const EncryptionKeyVaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** The properties of customer managed encryption key */
 export interface EncryptionInput {
   /** Status of customer managed encryption key */
-  status?: EncryptionState;
+  status?: EncryptionState | (string & {});
   /** The key vault where the encryption key is stored */
   keyVaultProperties?: EncryptionKeyVaultPropertiesInput;
 }
@@ -4449,17 +4404,17 @@ export const CircuitInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CircuitInput" }) as any as S.Schema<CircuitInput>;
 
 /** The type of DNS zone. */
-export type DnsZoneType = "Public" | "Private" | (string & {});
+export type DnsZoneType = "Public" | "Private";
 export const DnsZoneType = /*@__PURE__*/ S.String;
 
 /** The kind of license. */
-export type VcfLicenseKind = "vcf5" | (string & {});
+export type VcfLicenseKind = "vcf5";
 export const VcfLicenseKind = /*@__PURE__*/ S.String;
 
 /** A VMware Cloud Foundation license */
 export interface VcfLicenseInput {
   /** License kind */
-  kind: VcfLicenseKind;
+  kind: VcfLicenseKind | (string & {});
 }
 export const VcfLicenseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4474,7 +4429,7 @@ export interface PrivateCloudPropertiesInput {
   /** The default cluster used for management */
   managementCluster: ManagementClusterInput;
   /** Connectivity to internet is enabled or disabled */
-  internet?: PrivateCloudPropertiesInputInternet;
+  internet?: PrivateCloudPropertiesInputInternet | (string & {});
   /** vCenter Single Sign On Identity Sources */
   identitySources?: PrivateCloudPropertiesInputIdentitySourcesList;
   /** Properties describing how the cloud is distributed across availability zones */
@@ -4496,7 +4451,7 @@ export interface PrivateCloudPropertiesInput {
   /** Azure resource ID of the virtual network */
   virtualNetworkId?: string;
   /** The type of DNS zone to use. */
-  dnsZoneType?: DnsZoneType;
+  dnsZoneType?: DnsZoneType | (string & {});
   /** The private cloud license */
   vcfLicense?: VcfLicenseInput;
 }
@@ -4527,7 +4482,7 @@ export const PrivateCloudPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export interface PrivateCloudsCreateOrUpdateRequestSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -4549,15 +4504,12 @@ export const PrivateCloudsCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateCloudsCreateOrUpdateRequestSku>;
 
 /** Type of managed service identity (either system assigned, or none). */
-export type SystemAssignedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | (string & {});
+export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
 export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface PrivateCloudsCreateOrUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType;
+  type: SystemAssignedServiceIdentityType | (string & {});
 }
 export const PrivateCloudsCreateOrUpdateRequestIdentity =
   /*@__PURE__*/ S.suspend(() =>
@@ -4660,10 +4612,7 @@ export const ManagementCluster = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementCluster>;
 
 /** Connectivity to internet is enabled or disabled */
-export type PrivateCloudPropertiesInternet =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type PrivateCloudPropertiesInternet = "Enabled" | "Disabled";
 export const PrivateCloudPropertiesInternet = /*@__PURE__*/ S.String;
 
 /** vCenter Single Sign On Identity Sources */
@@ -4674,11 +4623,11 @@ export const PrivateCloudPropertiesIdentitySourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PrivateCloudPropertiesIdentitySourcesList>;
 
 /** Whether the the encryption key is connected or access denied */
-export type EncryptionKeyStatus = "Connected" | "AccessDenied" | (string & {});
+export type EncryptionKeyStatus = "Connected" | "AccessDenied";
 export const EncryptionKeyStatus = /*@__PURE__*/ S.String;
 
 /** Whether the encryption version is fixed or auto-detected */
-export type EncryptionVersionType = "Fixed" | "AutoDetected" | (string & {});
+export type EncryptionVersionType = "Fixed" | "AutoDetected";
 export const EncryptionVersionType = /*@__PURE__*/ S.String;
 
 /** An Encryption Key */
@@ -4740,8 +4689,7 @@ export type PrivateCloudProvisioningState =
   | "Pending"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const PrivateCloudProvisioningState = /*@__PURE__*/ S.String;
 
 /** An ExpressRoute Circuit */
@@ -4799,7 +4747,7 @@ export const PrivateCloudPropertiesExternalCloudLinksList =
   ) as any as S.Schema<PrivateCloudPropertiesExternalCloudLinksList>;
 
 /** NSX public IP quota raised */
-export type NsxPublicIpQuotaRaisedEnum = "Enabled" | "Disabled" | (string & {});
+export type NsxPublicIpQuotaRaisedEnum = "Enabled" | "Disabled";
 export const NsxPublicIpQuotaRaisedEnum = /*@__PURE__*/ S.String;
 
 /** A VMware Cloud Foundation license */
@@ -5451,7 +5399,7 @@ export const PrivateCloudsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export interface PrivateCloudsUpdateRequestSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -5473,7 +5421,7 @@ export const PrivateCloudsUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (either system assigned, or none) */
 export interface PrivateCloudsUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType;
+  type: SystemAssignedServiceIdentityType | (string & {});
 }
 export const PrivateCloudsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5484,7 +5432,7 @@ export const PrivateCloudsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudsUpdateRequestIdentity>;
 
 /** Whether internet is enabled or disabled */
-export type InternetEnum = "Enabled" | "Disabled" | (string & {});
+export type InternetEnum = "Enabled" | "Disabled";
 export const InternetEnum = /*@__PURE__*/ S.String;
 
 /** vCenter Single Sign On Identity Sources */
@@ -5508,7 +5456,7 @@ export interface PrivateCloudUpdatePropertiesInput {
   /** The default cluster used for management */
   managementCluster?: ManagementClusterInput;
   /** Connectivity to internet is enabled or disabled */
-  internet?: InternetEnum;
+  internet?: InternetEnum | (string & {});
   /** vCenter Single Sign On Identity Sources */
   identitySources?: PrivateCloudUpdatePropertiesInputIdentitySourcesList;
   /** Properties describing how the cloud is distributed across availability zones */
@@ -5518,7 +5466,7 @@ export interface PrivateCloudUpdatePropertiesInput {
   /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
   extendedNetworkBlocks?: PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList;
   /** The type of DNS zone to use. */
-  dnsZoneType?: DnsZoneType;
+  dnsZoneType?: DnsZoneType | (string & {});
 }
 export const PrivateCloudUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5703,8 +5651,7 @@ export const ProvisionedNetworksGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProvisionedNetworkProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisionedNetworkProvisioningState = /*@__PURE__*/ S.String;
 
 /** The type of network provisioned. */
@@ -5715,8 +5662,7 @@ export type ProvisionedNetworkTypes =
   | "hcxUplink"
   | "vcenterManagement"
   | "vmotion"
-  | "vsan"
-  | (string & {});
+  | "vsan";
 export const ProvisionedNetworkTypes = /*@__PURE__*/ S.String;
 
 /** The properties of a provisioned network. */
@@ -5889,8 +5835,7 @@ export type PureStoragePolicyProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const PureStoragePolicyProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of a Pure Storage Policy Based Management policy */
@@ -6129,15 +6074,11 @@ export const ScriptCmdletsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptCmdletsGetRequest>;
 
 /** A script cmdlet provisioning state */
-export type ScriptCmdletProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
+export type ScriptCmdletProvisioningState = "Succeeded" | "Failed" | "Canceled";
 export const ScriptCmdletProvisioningState = /*@__PURE__*/ S.String;
 
 /** Specifies whether a script cmdlet is intended to be invoked only through automation or visible to customers */
-export type ScriptCmdletAudience = "Automation" | "Any" | (string & {});
+export type ScriptCmdletAudience = "Automation" | "Any";
 export const ScriptCmdletAudience = /*@__PURE__*/ S.String;
 
 /** Script Parameter types */
@@ -6147,16 +6088,15 @@ export type ScriptParameterTypes =
   | "Credential"
   | "Int"
   | "Bool"
-  | "Float"
-  | (string & {});
+  | "Float";
 export const ScriptParameterTypes = /*@__PURE__*/ S.String;
 
 /** Visibility Parameter */
-export type VisibilityParameterEnum = "Visible" | "Hidden" | (string & {});
+export type VisibilityParameterEnum = "Visible" | "Hidden";
 export const VisibilityParameterEnum = /*@__PURE__*/ S.String;
 
 /** Optional Param */
-export type OptionalParamEnum = "Optional" | "Required" | (string & {});
+export type OptionalParamEnum = "Optional" | "Required";
 export const OptionalParamEnum = /*@__PURE__*/ S.String;
 
 /** An parameter that the script will accept */
@@ -6317,8 +6257,7 @@ export const ScriptCmdletsList = /*@__PURE__*/ S.suspend(() =>
 export type ScriptExecutionParameterType =
   | "Value"
   | "SecureValue"
-  | "Credential"
-  | (string & {});
+  | "Credential";
 export const ScriptExecutionParameterType = /*@__PURE__*/ S.String;
 
 /** The arguments passed in to the execution */
@@ -6461,8 +6400,7 @@ export type ScriptExecutionProvisioningState =
   | "Running"
   | "Cancelling"
   | "Cancelled"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ScriptExecutionProvisioningState = /*@__PURE__*/ S.String;
 
 /** Standard output stream from the powershell execution */
@@ -6670,12 +6608,12 @@ export type ScriptOutputStreamType =
   | "Information"
   | "Warning"
   | "Output"
-  | "Error"
-  | (string & {});
+  | "Error";
 export const ScriptOutputStreamType = /*@__PURE__*/ S.String;
 
-export type ScriptExecutionsGetExecutionLogsRequestBodyList =
-  ReadonlyArray<ScriptOutputStreamType>;
+export type ScriptExecutionsGetExecutionLogsRequestBodyList = ReadonlyArray<
+  ScriptOutputStreamType | (string & {})
+>;
 export const ScriptExecutionsGetExecutionLogsRequestBodyList =
   /*@__PURE__*/ S.Array(
     ScriptOutputStreamType,
@@ -6843,8 +6781,7 @@ export const ScriptPackagesGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type ScriptPackageProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ScriptPackageProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of a Script Package subresource */
@@ -7020,8 +6957,7 @@ export const SkusListRequest = /*@__PURE__*/ S.suspend(() =>
 /** Describes the type of resource the SKU applies to. */
 export type ResourceSkuResourceType =
   | "privateClouds"
-  | "privateClouds/clusters"
-  | (string & {});
+  | "privateClouds/clusters";
 export const ResourceSkuResourceType = /*@__PURE__*/ S.String;
 
 /** The set of locations that the SKU is available. */
@@ -7122,7 +7058,7 @@ export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourceSkuCapabilitiesList>;
 
 /** Describes the kind of SKU restrictions that can exist */
-export type ResourceSkuRestrictionsType = "Location" | "Zone" | (string & {});
+export type ResourceSkuRestrictionsType = "Location" | "Zone";
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
@@ -7162,8 +7098,7 @@ export const ResourceSkuRestrictionInfo = /*@__PURE__*/ S.suspend(() =>
 /** Describes the reason for SKU restriction. */
 export type ResourceSkuRestrictionsReasonCode =
   | "QuotaId"
-  | "NotAvailableForSubscription"
-  | (string & {});
+  | "NotAvailableForSubscription";
 export const ResourceSkuRestrictionsReasonCode = /*@__PURE__*/ S.String;
 
 /** The restrictions of the SKU. */
@@ -7287,15 +7222,11 @@ export const VirtualMachinesGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type VirtualMachineProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const VirtualMachineProvisioningState = /*@__PURE__*/ S.String;
 
 /** Virtual Machine Restrict Movement state */
-export type VirtualMachineRestrictMovementState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type VirtualMachineRestrictMovementState = "Enabled" | "Disabled";
 export const VirtualMachineRestrictMovementState = /*@__PURE__*/ S.String;
 
 /** Virtual Machine Properties */
@@ -7432,7 +7363,7 @@ export interface VirtualMachinesRestrictMovementRequest {
   /** ID of the virtual machine. */
   virtualMachineId: string;
   /** Whether VM DRS-driven movement is restricted (enabled) or not (disabled) */
-  restrictMovement?: VirtualMachineRestrictMovementState;
+  restrictMovement?: VirtualMachineRestrictMovementState | (string & {});
 }
 export const VirtualMachinesRestrictMovementRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7463,13 +7394,13 @@ export const VirtualMachinesRestrictMovementResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualMachinesRestrictMovementResponse>;
 
 /** Type of DHCP: SERVER or RELAY. */
-export type DhcpTypeEnum = "SERVER" | "RELAY" | (string & {});
+export type DhcpTypeEnum = "SERVER" | "RELAY";
 export const DhcpTypeEnum = /*@__PURE__*/ S.String;
 
 /** Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from */
 export interface WorkloadNetworkDhcpEntityInput {
   /** Type of DHCP: SERVER or RELAY. */
-  dhcpType: DhcpTypeEnum;
+  dhcpType: DhcpTypeEnum | (string & {});
   /** Display name of the DHCP entity. */
   displayName?: string;
   /** NSX revision number. */
@@ -7529,8 +7460,7 @@ export type WorkloadNetworkDhcpProvisioningState =
   | "Canceled"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const WorkloadNetworkDhcpProvisioningState = /*@__PURE__*/ S.String;
 
 /** Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from */
@@ -7596,8 +7526,7 @@ export type DnsServiceLogLevelEnum =
   | "INFO"
   | "WARNING"
   | "ERROR"
-  | "FATAL"
-  | (string & {});
+  | "FATAL";
 export const DnsServiceLogLevelEnum = /*@__PURE__*/ S.String;
 
 /** NSX DNS Service Properties */
@@ -7611,7 +7540,7 @@ export interface WorkloadNetworkDnsServicePropertiesInput {
   /** FQDN zones of the DNS Service. */
   fqdnZones?: WorkloadNetworkDnsServicePropertiesInputFqdnZonesList;
   /** DNS Service log level. */
-  logLevel?: DnsServiceLogLevelEnum;
+  logLevel?: DnsServiceLogLevelEnum | (string & {});
   /** NSX revision number. */
   revision?: number;
 }
@@ -7672,7 +7601,7 @@ export const WorkloadNetworkDnsServicePropertiesFqdnZonesList =
   ) as any as S.Schema<WorkloadNetworkDnsServicePropertiesFqdnZonesList>;
 
 /** DNS service status */
-export type DnsServiceStatusEnum = "SUCCESS" | "FAILURE" | (string & {});
+export type DnsServiceStatusEnum = "SUCCESS" | "FAILURE";
 export const DnsServiceStatusEnum = /*@__PURE__*/ S.String;
 
 /** Workload Network DNS Service provisioning state */
@@ -7682,8 +7611,7 @@ export type WorkloadNetworkDnsServiceProvisioningState =
   | "Canceled"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const WorkloadNetworkDnsServiceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -7846,8 +7774,7 @@ export type WorkloadNetworkDnsZoneProvisioningState =
   | "Canceled"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const WorkloadNetworkDnsZoneProvisioningState = /*@__PURE__*/ S.String;
 
 /** NSX DNS Zone Properties */
@@ -7907,11 +7834,7 @@ export const WorkloadNetworksCreateDnsZoneResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkloadNetworksCreateDnsZoneResponse>;
 
 /** Port Mirroring Direction */
-export type PortMirroringDirectionEnum =
-  | "INGRESS"
-  | "EGRESS"
-  | "BIDIRECTIONAL"
-  | (string & {});
+export type PortMirroringDirectionEnum = "INGRESS" | "EGRESS" | "BIDIRECTIONAL";
 export const PortMirroringDirectionEnum = /*@__PURE__*/ S.String;
 
 /** NSX Port Mirroring Properties */
@@ -7919,7 +7842,7 @@ export interface WorkloadNetworkPortMirroringPropertiesInput {
   /** Display name of the port mirroring profile. */
   displayName?: string;
   /** Direction of port mirroring profile. */
-  direction?: PortMirroringDirectionEnum;
+  direction?: PortMirroringDirectionEnum | (string & {});
   /** Source VM Group. */
   source?: string;
   /** Destination VM Group. */
@@ -7973,7 +7896,7 @@ export const WorkloadNetworksCreatePortMirroringRequest =
   }) as any as S.Schema<WorkloadNetworksCreatePortMirroringRequest>;
 
 /** Port Mirroring status */
-export type PortMirroringStatusEnum = "SUCCESS" | "FAILURE" | (string & {});
+export type PortMirroringStatusEnum = "SUCCESS" | "FAILURE";
 export const PortMirroringStatusEnum = /*@__PURE__*/ S.String;
 
 /** Workload Network Port Mirroring provisioning state */
@@ -7983,8 +7906,7 @@ export type WorkloadNetworkPortMirroringProvisioningState =
   | "Canceled"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const WorkloadNetworkPortMirroringProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -8103,8 +8025,7 @@ export type WorkloadNetworkPublicIPProvisioningState =
   | "Canceled"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const WorkloadNetworkPublicIPProvisioningState = /*@__PURE__*/ S.String;
 
 /** NSX Public IP Block Properties */
@@ -8253,7 +8174,7 @@ export const WorkloadNetworkSegmentPropertiesPortVifList =
   ) as any as S.Schema<WorkloadNetworkSegmentPropertiesPortVifList>;
 
 /** Segment status */
-export type SegmentStatusEnum = "SUCCESS" | "FAILURE" | (string & {});
+export type SegmentStatusEnum = "SUCCESS" | "FAILURE";
 export const SegmentStatusEnum = /*@__PURE__*/ S.String;
 
 /** Workload Network Segment provisioning state */
@@ -8263,8 +8184,7 @@ export type WorkloadNetworkSegmentProvisioningState =
   | "Canceled"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const WorkloadNetworkSegmentProvisioningState = /*@__PURE__*/ S.String;
 
 /** NSX Segment Properties */
@@ -8391,7 +8311,7 @@ export const WorkloadNetworkVMGroupPropertiesMembersList =
   ) as any as S.Schema<WorkloadNetworkVMGroupPropertiesMembersList>;
 
 /** VM group status */
-export type VMGroupStatusEnum = "SUCCESS" | "FAILURE" | (string & {});
+export type VMGroupStatusEnum = "SUCCESS" | "FAILURE";
 export const VMGroupStatusEnum = /*@__PURE__*/ S.String;
 
 /** Workload Network VM Group provisioning state */
@@ -8401,8 +8321,7 @@ export type WorkloadNetworkVMGroupProvisioningState =
   | "Canceled"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const WorkloadNetworkVMGroupProvisioningState = /*@__PURE__*/ S.String;
 
 /** NSX VM Group Properties */
@@ -8737,8 +8656,7 @@ export type WorkloadNetworkProvisioningState =
   | "Canceled"
   | "Building"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const WorkloadNetworkProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of a workload network */
@@ -9195,7 +9113,7 @@ export const WorkloadNetworksGetVirtualMachineRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkloadNetworksGetVirtualMachineRequest>;
 
 /** VM type */
-export type VMTypeEnum = "REGULAR" | "EDGE" | "SERVICE" | (string & {});
+export type VMTypeEnum = "REGULAR" | "EDGE" | "SERVICE";
 export const VMTypeEnum = /*@__PURE__*/ S.String;
 
 /** NSX Virtual Machine Properties */

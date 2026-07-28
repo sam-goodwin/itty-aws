@@ -132,23 +132,17 @@ export type EncryptionMode =
   | "CFB8"
   | "CFB64"
   | "CFB128"
-  | "OFB"
-  | (string & {});
+  | "OFB";
 export const EncryptionMode = /*@__PURE__*/ S.String;
 
 export type InitializationVectorType = string | redacted.Redacted<string>;
-export type PaddingType =
-  | "PKCS1"
-  | "OAEP_SHA1"
-  | "OAEP_SHA256"
-  | "OAEP_SHA512"
-  | (string & {});
+export type PaddingType = "PKCS1" | "OAEP_SHA1" | "OAEP_SHA256" | "OAEP_SHA512";
 export const PaddingType = /*@__PURE__*/ S.String;
 
 export interface SymmetricEncryptionAttributes {
-  Mode: EncryptionMode;
+  Mode: EncryptionMode | (string & {});
   InitializationVector?: string | redacted.Redacted<string>;
-  PaddingType?: PaddingType;
+  PaddingType?: PaddingType | (string & {});
 }
 export const SymmetricEncryptionAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -160,7 +154,7 @@ export const SymmetricEncryptionAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "SymmetricEncryptionAttributes",
 }) as any as S.Schema<SymmetricEncryptionAttributes>;
 export interface AsymmetricEncryptionAttributes {
-  PaddingType?: PaddingType;
+  PaddingType?: PaddingType | (string & {});
 }
 export const AsymmetricEncryptionAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PaddingType: S.optional(PaddingType) }),
@@ -168,7 +162,7 @@ export const AsymmetricEncryptionAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "AsymmetricEncryptionAttributes",
 }) as any as S.Schema<AsymmetricEncryptionAttributes>;
 export type HexLength16Or20Or24 = string;
-export type DukptEncryptionMode = "ECB" | "CBC" | (string & {});
+export type DukptEncryptionMode = "ECB" | "CBC";
 export const DukptEncryptionMode = /*@__PURE__*/ S.String;
 
 export type DukptDerivationType =
@@ -176,22 +170,17 @@ export type DukptDerivationType =
   | "TDES_3KEY"
   | "AES_128"
   | "AES_192"
-  | "AES_256"
-  | (string & {});
+  | "AES_256";
 export const DukptDerivationType = /*@__PURE__*/ S.String;
 
-export type DukptKeyVariant =
-  | "BIDIRECTIONAL"
-  | "REQUEST"
-  | "RESPONSE"
-  | (string & {});
+export type DukptKeyVariant = "BIDIRECTIONAL" | "REQUEST" | "RESPONSE";
 export const DukptKeyVariant = /*@__PURE__*/ S.String;
 
 export interface DukptEncryptionAttributes {
   KeySerialNumber: string;
-  Mode?: DukptEncryptionMode;
-  DukptKeyDerivationType?: DukptDerivationType;
-  DukptKeyVariant?: DukptKeyVariant;
+  Mode?: DukptEncryptionMode | (string & {});
+  DukptKeyDerivationType?: DukptDerivationType | (string & {});
+  DukptKeyVariant?: DukptKeyVariant | (string & {});
   InitializationVector?: string | redacted.Redacted<string>;
 }
 export const DukptEncryptionAttributes = /*@__PURE__*/ S.suspend(() =>
@@ -205,24 +194,21 @@ export const DukptEncryptionAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DukptEncryptionAttributes",
 }) as any as S.Schema<DukptEncryptionAttributes>;
-export type EmvMajorKeyDerivationMode =
-  | "EMV_OPTION_A"
-  | "EMV_OPTION_B"
-  | (string & {});
+export type EmvMajorKeyDerivationMode = "EMV_OPTION_A" | "EMV_OPTION_B";
 export const EmvMajorKeyDerivationMode = /*@__PURE__*/ S.String;
 
 export type PrimaryAccountNumberType = string | redacted.Redacted<string>;
 export type NumberLengthEquals2 = string;
 export type SessionDerivationDataType = string | redacted.Redacted<string>;
-export type EmvEncryptionMode = "ECB" | "CBC" | (string & {});
+export type EmvEncryptionMode = "ECB" | "CBC";
 export const EmvEncryptionMode = /*@__PURE__*/ S.String;
 
 export interface EmvEncryptionAttributes {
-  MajorKeyDerivationMode: EmvMajorKeyDerivationMode;
+  MajorKeyDerivationMode: EmvMajorKeyDerivationMode | (string & {});
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   SessionDerivationData: string | redacted.Redacted<string>;
-  Mode?: EmvEncryptionMode;
+  Mode?: EmvEncryptionMode | (string & {});
   InitializationVector?: string | redacted.Redacted<string>;
 }
 export const EmvEncryptionAttributes = /*@__PURE__*/ S.suspend(() =>
@@ -279,27 +265,22 @@ export type SymmetricKeyAlgorithm =
   | "HMAC_SHA256"
   | "HMAC_SHA384"
   | "HMAC_SHA512"
-  | "HMAC_SHA224"
-  | (string & {});
+  | "HMAC_SHA224";
 export const SymmetricKeyAlgorithm = /*@__PURE__*/ S.String;
 
-export type KeyDerivationFunction = "NIST_SP800" | "ANSI_X963" | (string & {});
+export type KeyDerivationFunction = "NIST_SP800" | "ANSI_X963";
 export const KeyDerivationFunction = /*@__PURE__*/ S.String;
 
-export type KeyDerivationHashAlgorithm =
-  | "SHA_256"
-  | "SHA_384"
-  | "SHA_512"
-  | (string & {});
+export type KeyDerivationHashAlgorithm = "SHA_256" | "SHA_384" | "SHA_512";
 export const KeyDerivationHashAlgorithm = /*@__PURE__*/ S.String;
 
 export type SharedInformation = string;
 export interface EcdhDerivationAttributes {
   CertificateAuthorityPublicKeyIdentifier: string;
   PublicKeyCertificate: string;
-  KeyAlgorithm: SymmetricKeyAlgorithm;
-  KeyDerivationFunction: KeyDerivationFunction;
-  KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm;
+  KeyAlgorithm: SymmetricKeyAlgorithm | (string & {});
+  KeyDerivationFunction: KeyDerivationFunction | (string & {});
+  KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm | (string & {});
   SharedInformation: string;
 }
 export const EcdhDerivationAttributes = /*@__PURE__*/ S.suspend(() =>
@@ -420,16 +401,12 @@ export const EncryptDataOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptDataOutput",
 }) as any as S.Schema<EncryptDataOutput>;
-export type RandomKeyMaxLength =
-  | "BYTES_8"
-  | "BYTES_16"
-  | "BYTES_24"
-  | (string & {});
+export type RandomKeyMaxLength = "BYTES_8" | "BYTES_16" | "BYTES_24";
 export const RandomKeyMaxLength = /*@__PURE__*/ S.String;
 
 export interface KekValidationRequest {
-  DeriveKeyAlgorithm: SymmetricKeyAlgorithm;
-  RandomKeyMaxLength?: RandomKeyMaxLength;
+  DeriveKeyAlgorithm: SymmetricKeyAlgorithm | (string & {});
+  RandomKeyMaxLength?: RandomKeyMaxLength | (string & {});
 }
 export const KekValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -461,16 +438,13 @@ export const As2805KekValidationType = /*@__PURE__*/ S.Union([
   S.Struct({ KekValidationRequest: KekValidationRequest }),
   S.Struct({ KekValidationResponse: KekValidationResponse }),
 ]);
-export type RandomKeySendVariantMask =
-  | "VARIANT_MASK_82C0"
-  | "VARIANT_MASK_82"
-  | (string & {});
+export type RandomKeySendVariantMask = "VARIANT_MASK_82C0" | "VARIANT_MASK_82";
 export const RandomKeySendVariantMask = /*@__PURE__*/ S.String;
 
 export interface GenerateAs2805KekValidationInput {
   KeyIdentifier: string;
   KekValidationType: As2805KekValidationType;
-  RandomKeySendVariantMask: RandomKeySendVariantMask;
+  RandomKeySendVariantMask: RandomKeySendVariantMask | (string & {});
 }
 export const GenerateAs2805KekValidationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -507,10 +481,7 @@ export const GenerateAs2805KekValidationOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerateAs2805KekValidationOutput",
 }) as any as S.Schema<GenerateAs2805KekValidationOutput>;
 export type TransactionDataType = string | redacted.Redacted<string>;
-export type MajorKeyDerivationMode =
-  | "EMV_OPTION_A"
-  | "EMV_OPTION_B"
-  | (string & {});
+export type MajorKeyDerivationMode = "EMV_OPTION_A" | "EMV_OPTION_B";
 export const MajorKeyDerivationMode = /*@__PURE__*/ S.String;
 
 export type HexLengthEquals4 = string;
@@ -625,7 +596,7 @@ export const SessionKeyDerivation = /*@__PURE__*/ S.Union([
 export interface GenerateAuthRequestCryptogramInput {
   KeyIdentifier: string;
   TransactionData: string | redacted.Redacted<string>;
-  MajorKeyDerivationMode: MajorKeyDerivationMode;
+  MajorKeyDerivationMode: MajorKeyDerivationMode | (string & {});
   SessionKeyDerivationAttributes: SessionKeyDerivation;
 }
 export const GenerateAuthRequestCryptogramInput = /*@__PURE__*/ S.suspend(() =>
@@ -871,8 +842,7 @@ export type MacAlgorithm =
   | "HMAC_SHA256"
   | "HMAC_SHA384"
   | "HMAC_SHA512"
-  | "AS2805_4_1"
-  | (string & {});
+  | "AS2805_4_1";
 export const MacAlgorithm = /*@__PURE__*/ S.String;
 
 export type SessionKeyDerivationMode =
@@ -880,8 +850,7 @@ export type SessionKeyDerivationMode =
   | "EMV2000"
   | "AMEX"
   | "MASTERCARD_SESSION_KEY"
-  | "VISA"
-  | (string & {});
+  | "VISA";
 export const SessionKeyDerivationMode = /*@__PURE__*/ S.String;
 
 export type ApplicationCryptogramType = string | redacted.Redacted<string>;
@@ -896,10 +865,10 @@ export const SessionKeyDerivationValue = /*@__PURE__*/ S.Union([
   S.Struct({ ApplicationTransactionCounter: S.String }),
 ]);
 export interface MacAlgorithmEmv {
-  MajorKeyDerivationMode: MajorKeyDerivationMode;
+  MajorKeyDerivationMode: MajorKeyDerivationMode | (string & {});
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
-  SessionKeyDerivationMode: SessionKeyDerivationMode;
+  SessionKeyDerivationMode: SessionKeyDerivationMode | (string & {});
   SessionKeyDerivationValue: SessionKeyDerivationValue;
 }
 export const MacAlgorithmEmv = /*@__PURE__*/ S.suspend(() =>
@@ -915,8 +884,8 @@ export const MacAlgorithmEmv = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MacAlgorithmEmv>;
 export interface MacAlgorithmDukpt {
   KeySerialNumber: string;
-  DukptKeyVariant: DukptKeyVariant;
-  DukptDerivationType?: DukptDerivationType;
+  DukptKeyVariant: DukptKeyVariant | (string & {});
+  DukptDerivationType?: DukptDerivationType | (string & {});
 }
 export const MacAlgorithmDukpt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -929,7 +898,7 @@ export const MacAlgorithmDukpt = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MacAlgorithmDukpt>;
 export type MacAttributes =
   | {
-      Algorithm: MacAlgorithm;
+      Algorithm: MacAlgorithm | (string & {});
       EmvMac?: never;
       DukptIso9797Algorithm1?: never;
       DukptIso9797Algorithm3?: never;
@@ -1011,31 +980,24 @@ export type PinBlockLengthEquals16 = string | redacted.Redacted<string>;
 export type PinBlockFormatForEmvPinChange =
   | "ISO_FORMAT_0"
   | "ISO_FORMAT_1"
-  | "ISO_FORMAT_3"
-  | (string & {});
+  | "ISO_FORMAT_3";
 export const PinBlockFormatForEmvPinChange = /*@__PURE__*/ S.String;
 
 export type CommandMessageDataType = string | redacted.Redacted<string>;
-export type PinBlockPaddingType =
-  | "NO_PADDING"
-  | "ISO_IEC_7816_4"
-  | (string & {});
+export type PinBlockPaddingType = "NO_PADDING" | "ISO_IEC_7816_4";
 export const PinBlockPaddingType = /*@__PURE__*/ S.String;
 
-export type PinBlockLengthPosition =
-  | "NONE"
-  | "FRONT_OF_PIN_BLOCK"
-  | (string & {});
+export type PinBlockLengthPosition = "NONE" | "FRONT_OF_PIN_BLOCK";
 export const PinBlockLengthPosition = /*@__PURE__*/ S.String;
 
 export interface EmvCommonAttributes {
-  MajorKeyDerivationMode: MajorKeyDerivationMode;
+  MajorKeyDerivationMode: MajorKeyDerivationMode | (string & {});
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationCryptogram: string | redacted.Redacted<string>;
-  Mode: EmvEncryptionMode;
-  PinBlockPaddingType: PinBlockPaddingType;
-  PinBlockLengthPosition: PinBlockLengthPosition;
+  Mode: EmvEncryptionMode | (string & {});
+  PinBlockPaddingType: PinBlockPaddingType | (string & {});
+  PinBlockLengthPosition: PinBlockLengthPosition | (string & {});
 }
 export const EmvCommonAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1063,7 +1025,7 @@ export const CurrentPinAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "CurrentPinAttributes",
 }) as any as S.Schema<CurrentPinAttributes>;
 export interface AmexAttributes {
-  MajorKeyDerivationMode: MajorKeyDerivationMode;
+  MajorKeyDerivationMode: MajorKeyDerivationMode | (string & {});
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationTransactionCounter: string;
@@ -1081,7 +1043,7 @@ export const AmexAttributes = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AmexAttributes" }) as any as S.Schema<AmexAttributes>;
 export interface VisaAttributes {
-  MajorKeyDerivationMode: MajorKeyDerivationMode;
+  MajorKeyDerivationMode: MajorKeyDerivationMode | (string & {});
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationTransactionCounter: string;
@@ -1099,7 +1061,7 @@ export const VisaAttributes = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VisaAttributes" }) as any as S.Schema<VisaAttributes>;
 export interface Emv2000Attributes {
-  MajorKeyDerivationMode: MajorKeyDerivationMode;
+  MajorKeyDerivationMode: MajorKeyDerivationMode | (string & {});
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationTransactionCounter: string;
@@ -1115,7 +1077,7 @@ export const Emv2000Attributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "Emv2000Attributes",
 }) as any as S.Schema<Emv2000Attributes>;
 export interface MasterCardAttributes {
-  MajorKeyDerivationMode: MajorKeyDerivationMode;
+  MajorKeyDerivationMode: MajorKeyDerivationMode | (string & {});
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationCryptogram: string | redacted.Redacted<string>;
@@ -1176,7 +1138,7 @@ export const DerivationMethodAttributes = /*@__PURE__*/ S.Union([
 export interface GenerateMacEmvPinChangeInput {
   NewPinPekIdentifier: string;
   NewEncryptedPinBlock: string | redacted.Redacted<string>;
-  PinBlockFormat: PinBlockFormatForEmvPinChange;
+  PinBlockFormat: PinBlockFormatForEmvPinChange | (string & {});
   SecureMessagingIntegrityKeyIdentifier: string;
   SecureMessagingConfidentialityKeyIdentifier: string;
   MessageData: string | redacted.Redacted<string>;
@@ -1393,8 +1355,7 @@ export type PinBlockFormatForPinData =
   | "ISO_FORMAT_0"
   | "ISO_FORMAT_1"
   | "ISO_FORMAT_3"
-  | "ISO_FORMAT_4"
-  | (string & {});
+  | "ISO_FORMAT_4";
 export const PinBlockFormatForPinData = /*@__PURE__*/ S.String;
 
 export interface GeneratePinDataInput {
@@ -1403,7 +1364,7 @@ export interface GeneratePinDataInput {
   GenerationAttributes: PinGenerationAttributes;
   PinDataLength?: number;
   PrimaryAccountNumber?: string | redacted.Redacted<string>;
-  PinBlockFormat: PinBlockFormatForPinData;
+  PinBlockFormat: PinBlockFormatForPinData | (string & {});
   EncryptionWrappedKey?: WrappedKey;
 }
 export const GeneratePinDataInput = /*@__PURE__*/ S.suspend(() =>
@@ -1522,9 +1483,9 @@ export interface IncomingDiffieHellmanTr31KeyBlock {
   PrivateKeyIdentifier: string;
   CertificateAuthorityPublicKeyIdentifier: string;
   PublicKeyCertificate: string;
-  DeriveKeyAlgorithm: SymmetricKeyAlgorithm;
-  KeyDerivationFunction: KeyDerivationFunction;
-  KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm;
+  DeriveKeyAlgorithm: SymmetricKeyAlgorithm | (string & {});
+  KeyDerivationFunction: KeyDerivationFunction | (string & {});
+  KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm | (string & {});
   DerivationData: DiffieHellmanDerivationData;
   WrappedKeyBlock: string | redacted.Redacted<string>;
 }
@@ -1675,8 +1636,8 @@ export const TranslationIsoFormats = /*@__PURE__*/ S.Union([
 export type HexEvenLengthBetween16And32 = string | redacted.Redacted<string>;
 export interface DukptDerivationAttributes {
   KeySerialNumber: string;
-  DukptKeyDerivationType?: DukptDerivationType;
-  DukptKeyVariant?: DukptKeyVariant;
+  DukptKeyDerivationType?: DukptDerivationType | (string & {});
+  DukptKeyVariant?: DukptKeyVariant | (string & {});
 }
 export const DukptDerivationAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1783,7 +1744,7 @@ export interface VerifyAuthRequestCryptogramInput {
   KeyIdentifier: string;
   TransactionData: string | redacted.Redacted<string>;
   AuthRequestCryptogram: string | redacted.Redacted<string>;
-  MajorKeyDerivationMode: MajorKeyDerivationMode;
+  MajorKeyDerivationMode: MajorKeyDerivationMode | (string & {});
   SessionKeyDerivationAttributes: SessionKeyDerivation;
   AuthResponseAttributes?: CryptogramAuthResponse;
 }
@@ -2036,7 +1997,7 @@ export const PinVerificationAttributes = /*@__PURE__*/ S.Union([
 ]);
 export interface DukptAttributes {
   KeySerialNumber: string;
-  DukptDerivationType: DukptDerivationType;
+  DukptDerivationType: DukptDerivationType | (string & {});
 }
 export const DukptAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2052,7 +2013,7 @@ export interface VerifyPinDataInput {
   VerificationAttributes: PinVerificationAttributes;
   EncryptedPinBlock: string | redacted.Redacted<string>;
   PrimaryAccountNumber?: string | redacted.Redacted<string>;
-  PinBlockFormat: PinBlockFormatForPinData;
+  PinBlockFormat: PinBlockFormatForPinData | (string & {});
   PinDataLength?: number;
   DukptAttributes?: DukptAttributes;
   EncryptionWrappedKey?: WrappedKey;

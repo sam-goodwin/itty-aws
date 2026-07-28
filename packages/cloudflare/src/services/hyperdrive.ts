@@ -74,8 +74,7 @@ export class PrivateHostNotAllowed extends T.applyErrorMatchers(
 export type ConfigsCreateRequestOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsCreateRequestOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -89,7 +88,7 @@ export interface ConfigsCreateRequestOriginPublicDatabase {
   /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
   port: number;
   /** Specifies the URL scheme used to connect to your origin database. */
-  scheme: ConfigsCreateRequestOriginPublicDatabaseScheme;
+  scheme: ConfigsCreateRequestOriginPublicDatabaseScheme | (string & {});
   /** Set the user of your origin database. */
   user: string;
 }
@@ -108,7 +107,7 @@ export const ConfigsCreateRequestOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsCreateRequestOriginPublicDatabase>;
 
 export type ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -124,7 +123,9 @@ export interface ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudfla
   /** Set the password needed to access your origin database. The API never returns this write-only value. */
   password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
-  scheme: ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme;
+  scheme:
+    | ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme
+    | (string & {});
   /** Set the user of your origin database. */
   user: string;
 }
@@ -146,7 +147,7 @@ export const ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTu
   }) as any as S.Schema<ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -156,7 +157,9 @@ export interface ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPC {
   /** Set the password needed to access your origin database. The API never returns this write-only value. */
   password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
-  scheme: ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPCScheme;
+  scheme:
+    | ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPCScheme
+    | (string & {});
   /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
   serviceId: string;
   /** Set the user of your origin database. */
@@ -293,8 +296,7 @@ export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsCreateResponseOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsCreateResponseOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -327,7 +329,7 @@ export const ConfigsCreateResponseOriginPublicDatabase =
   }) as any as S.Schema<ConfigsCreateResponseOriginPublicDatabase>;
 
 export type ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -365,7 +367,7 @@ export const ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareT
   }) as any as S.Schema<ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -566,8 +568,7 @@ export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsGetResponseOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsGetResponseOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -600,7 +601,7 @@ export const ConfigsGetResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsGetResponseOriginPublicDatabase>;
 
 export type ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -640,8 +641,7 @@ export const ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunn
 export type ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -806,8 +806,7 @@ export const ListConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsListResultItemOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsListResultItemOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -840,7 +839,7 @@ export const ConfigsListResultItemOriginPublicDatabase =
   }) as any as S.Schema<ConfigsListResultItemOriginPublicDatabase>;
 
 export type ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -878,7 +877,7 @@ export const ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareT
   }) as any as S.Schema<ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -1104,8 +1103,7 @@ export const ConfigsEditRequestMtls = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -1115,7 +1113,9 @@ export interface ConfigsEditRequestOriginHyperdriveHyperdriveDatabase {
   /** Set the password needed to access your origin database. The API never returns this write-only value. */
   password?: string;
   /** Specifies the URL scheme used to connect to your origin database. */
-  scheme?: ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme;
+  scheme?:
+    | ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme
+    | (string & {});
   /** Set the user of your origin database. */
   user?: string;
 }
@@ -1237,8 +1237,7 @@ export const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsEditResponseOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsEditResponseOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -1271,7 +1270,7 @@ export const ConfigsEditResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsEditResponseOriginPublicDatabase>;
 
 export type ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -1309,7 +1308,7 @@ export const ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTun
   }) as any as S.Schema<ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -1455,8 +1454,7 @@ export const PatchConfigResponse = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsUpdateRequestOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsUpdateRequestOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -1470,7 +1468,7 @@ export interface ConfigsUpdateRequestOriginPublicDatabase {
   /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
   port: number;
   /** Specifies the URL scheme used to connect to your origin database. */
-  scheme: ConfigsUpdateRequestOriginPublicDatabaseScheme;
+  scheme: ConfigsUpdateRequestOriginPublicDatabaseScheme | (string & {});
   /** Set the user of your origin database. */
   user: string;
 }
@@ -1489,7 +1487,7 @@ export const ConfigsUpdateRequestOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsUpdateRequestOriginPublicDatabase>;
 
 export type ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -1505,7 +1503,9 @@ export interface ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudfla
   /** Set the password needed to access your origin database. The API never returns this write-only value. */
   password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
-  scheme: ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme;
+  scheme:
+    | ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme
+    | (string & {});
   /** Set the user of your origin database. */
   user: string;
 }
@@ -1527,7 +1527,7 @@ export const ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTu
   }) as any as S.Schema<ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -1537,7 +1537,9 @@ export interface ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC {
   /** Set the password needed to access your origin database. The API never returns this write-only value. */
   password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
-  scheme: ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme;
+  scheme:
+    | ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme
+    | (string & {});
   /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
   serviceId: string;
   /** Set the user of your origin database. */
@@ -1677,8 +1679,7 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsUpdateResponseOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsUpdateResponseOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -1711,7 +1712,7 @@ export const ConfigsUpdateResponseOriginPublicDatabase =
   }) as any as S.Schema<ConfigsUpdateResponseOriginPublicDatabase>;
 
 export type ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -1749,7 +1750,7 @@ export const ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareT
   }) as any as S.Schema<ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 

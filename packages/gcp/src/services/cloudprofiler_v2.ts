@@ -13,70 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type ProfileProfileTypeEnum =
-  | "PROFILE_TYPE_UNSPECIFIED"
-  | "CPU"
-  | "WALL"
-  | "HEAP"
-  | "THREADS"
-  | "CONTENTION"
-  | "PEAK_HEAP"
-  | "HEAP_ALLOC"
-  | (string & {});
+export type ProfileProfileTypeEnum = "PROFILE_TYPE_UNSPECIFIED" | "CPU" | "WALL" | "HEAP" | "THREADS" | "CONTENTION" | "PEAK_HEAP" | "HEAP_ALLOC";
 export const ProfileProfileTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Deployment contains the deployment identification information. */
 export interface Deployment {
@@ -88,11 +76,11 @@ export interface Deployment {
   labels?: StringMap;
 }
 export const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.String),
-    projectId: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "target": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 /** Profile resource. */
@@ -113,15 +101,15 @@ export interface Profile {
   startTime?: string;
 }
 export const Profile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileType: S.optional(ProfileProfileTypeEnum),
-    profileBytes: S.optional(S.String),
-    deployment: S.optional(Deployment),
-    duration: S.optional(S.String),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    startTime: S.optional(S.String),
-  }),
+S.Struct({
+  "profileType": S.optional(ProfileProfileTypeEnum),
+  "profileBytes": S.optional(S.String),
+  "deployment": S.optional(Deployment),
+  "duration": S.optional(S.String),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "startTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
 
 export interface CreateOfflineProjectsProfilesRequest {
@@ -130,40 +118,18 @@ export interface CreateOfflineProjectsProfilesRequest {
   /** Request body */
   body?: Profile;
 }
-export const CreateOfflineProjectsProfilesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Profile.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/profiles:createOffline",
-        baseUrl: "https://cloudprofiler.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateOfflineProjectsProfilesRequest",
-}) as any as S.Schema<CreateOfflineProjectsProfilesRequest>;
+export const CreateOfflineProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Profile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/profiles:createOffline","baseUrl":"https://cloudprofiler.googleapis.com/"})),
+).annotate({ identifier: "CreateOfflineProjectsProfilesRequest" }) as any as S.Schema<CreateOfflineProjectsProfilesRequest>;
 
-export type CreateProfileRequestProfileTypeItemEnum =
-  | "PROFILE_TYPE_UNSPECIFIED"
-  | "CPU"
-  | "WALL"
-  | "HEAP"
-  | "THREADS"
-  | "CONTENTION"
-  | "PEAK_HEAP"
-  | "HEAP_ALLOC"
-  | (string & {});
+export type CreateProfileRequestProfileTypeItemEnum = "PROFILE_TYPE_UNSPECIFIED" | "CPU" | "WALL" | "HEAP" | "THREADS" | "CONTENTION" | "PEAK_HEAP" | "HEAP_ALLOC";
 export const CreateProfileRequestProfileTypeItemEnum = /*@__PURE__*/ S.String;
 
-export type CreateProfileRequestProfileTypeItemEnumList =
-  ReadonlyArray<CreateProfileRequestProfileTypeItemEnum>;
-export const CreateProfileRequestProfileTypeItemEnumList =
-  /*@__PURE__*/ S.Array(
-    CreateProfileRequestProfileTypeItemEnum,
-  ) as any as S.Schema<CreateProfileRequestProfileTypeItemEnumList>;
+export type CreateProfileRequestProfileTypeItemEnumList = ReadonlyArray<CreateProfileRequestProfileTypeItemEnum | (string & {})>;
+export const CreateProfileRequestProfileTypeItemEnumList = /*@__PURE__*/ S.Array(CreateProfileRequestProfileTypeItemEnum) as any as S.Schema<CreateProfileRequestProfileTypeItemEnumList>;
 
 /** CreateProfileRequest describes a profile resource online creation request. The deployment field must be populated. The profile_type specifies the list of profile types supported by the agent. The creation call will hang until a profile of one of these types needs to be collected. */
 export interface CreateProfileRequest {
@@ -173,13 +139,11 @@ export interface CreateProfileRequest {
   profileType?: CreateProfileRequestProfileTypeItemEnumList;
 }
 export const CreateProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployment: S.optional(Deployment),
-    profileType: S.optional(CreateProfileRequestProfileTypeItemEnumList),
-  }),
-).annotate({
-  identifier: "CreateProfileRequest",
-}) as any as S.Schema<CreateProfileRequest>;
+S.Struct({
+  "deployment": S.optional(Deployment),
+  "profileType": S.optional(CreateProfileRequestProfileTypeItemEnumList),
+}),
+).annotate({ identifier: "CreateProfileRequest" }) as any as S.Schema<CreateProfileRequest>;
 
 export interface CreateProjectsProfilesRequest {
   /** Parent project to create the profile in. */
@@ -188,19 +152,11 @@ export interface CreateProjectsProfilesRequest {
   body?: CreateProfileRequest;
 }
 export const CreateProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(CreateProfileRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/{+parent}/profiles",
-      baseUrl: "https://cloudprofiler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsProfilesRequest",
-}) as any as S.Schema<CreateProjectsProfilesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CreateProfileRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/profiles","baseUrl":"https://cloudprofiler.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsProfilesRequest" }) as any as S.Schema<CreateProjectsProfilesRequest>;
 
 export interface ListProjectsProfilesRequest {
   /** Optional. The maximum number of items to return. Default page_size is 1000. Max limit is 1000. */
@@ -211,25 +167,15 @@ export interface ListProjectsProfilesRequest {
   pageToken?: string;
 }
 export const ListProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/profiles",
-      baseUrl: "https://cloudprofiler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsProfilesRequest",
-}) as any as S.Schema<ListProjectsProfilesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/profiles","baseUrl":"https://cloudprofiler.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsProfilesRequest" }) as any as S.Schema<ListProjectsProfilesRequest>;
 
 export type ProfileList = ReadonlyArray<Profile>;
-export const ProfileList = /*@__PURE__*/ S.Array(
-  Profile,
-) as any as S.Schema<ProfileList>;
+export const ProfileList = /*@__PURE__*/ S.Array(Profile) as any as S.Schema<ProfileList>;
 
 /** ListProfileResponse contains the list of collected profiles for deployments in projects which the user has permissions to view. */
 export interface ListProfilesResponse {
@@ -241,14 +187,12 @@ export interface ListProfilesResponse {
   profiles?: ProfileList;
 }
 export const ListProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    skippedProfiles: S.optional(S.Number),
-    profiles: S.optional(ProfileList),
-  }),
-).annotate({
-  identifier: "ListProfilesResponse",
-}) as any as S.Schema<ListProfilesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "skippedProfiles": S.optional(S.Number),
+  "profiles": S.optional(ProfileList),
+}),
+).annotate({ identifier: "ListProfilesResponse" }) as any as S.Schema<ListProfilesResponse>;
 
 export interface PatchProjectsProfilesRequest {
   /** Output only. Opaque, server-assigned, unique ID for this profile. */
@@ -259,27 +203,14 @@ export interface PatchProjectsProfilesRequest {
   body?: Profile;
 }
 export const PatchProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Profile.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v2/{+name}",
-      baseUrl: "https://cloudprofiler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsProfilesRequest",
-}) as any as S.Schema<PatchProjectsProfilesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Profile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://cloudprofiler.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsProfilesRequest" }) as any as S.Schema<PatchProjectsProfilesRequest>;
 
-export type CreateOfflineProjectsProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateOfflineProjectsProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** CreateOfflineProfile creates a new profile resource in the offline mode. The client provides the profile to create along with the profile bytes, the server records it. _Direct use of this API is discouraged, please use a [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent) instead for profile collection._ */
 export const createOfflineProjectsProfiles: API.OperationMethod<
   CreateOfflineProjectsProfilesRequest,
@@ -294,12 +225,7 @@ export const createOfflineProjectsProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** CreateProfile creates a new profile resource in the online mode. _Direct use of this API is discouraged, please use a [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent) instead for profile collection._ The server ensures that the new profiles are created at a constant rate per deployment, so the creation request may hang for some time until the next profile session is available. The request may fail with ABORTED error if the creation is not available within ~1m, the response will indicate the duration of the backoff the client should take before attempting creating a profile again. The backoff duration is returned in google.rpc.RetryInfo extension on the response status. To a gRPC client, the extension will be return as a binary-serialized proto in the trailing metadata item named "google.rpc.retryinfo-bin". */
 export const createProjectsProfiles: API.OperationMethod<
   CreateProjectsProfilesRequest,
@@ -327,18 +253,10 @@ export const listProjectsProfiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** UpdateProfile updates the profile bytes and labels on the profile resource created in the online mode. Updating the bytes for profiles created in the offline mode is currently not supported: the profile content must be provided at the time of the profile creation. _Direct use of this API is discouraged, please use a [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent) instead for profile collection._ */
 export const patchProjectsProfiles: API.OperationMethod<
   PatchProjectsProfilesRequest,
@@ -352,3 +270,4 @@ export const patchProjectsProfiles: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

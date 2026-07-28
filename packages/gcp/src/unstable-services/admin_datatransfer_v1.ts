@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface GetApplicationsRequest {
@@ -65,23 +65,13 @@ export interface GetApplicationsRequest {
   applicationId: string;
 }
 export const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/datatransfer/v1/applications/{applicationId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetApplicationsRequest",
-}) as any as S.Schema<GetApplicationsRequest>;
+S.Struct({
+  "applicationId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/datatransfer/v1/applications/{applicationId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetApplicationsRequest" }) as any as S.Schema<GetApplicationsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Template for application transfer parameters. */
 export interface ApplicationTransferParam {
@@ -91,19 +81,14 @@ export interface ApplicationTransferParam {
   value?: StringList;
 }
 export const ApplicationTransferParam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ApplicationTransferParam",
-}) as any as S.Schema<ApplicationTransferParam>;
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(StringList),
+}),
+).annotate({ identifier: "ApplicationTransferParam" }) as any as S.Schema<ApplicationTransferParam>;
 
-export type ApplicationTransferParamList =
-  ReadonlyArray<ApplicationTransferParam>;
-export const ApplicationTransferParamList = /*@__PURE__*/ S.Array(
-  ApplicationTransferParam,
-) as any as S.Schema<ApplicationTransferParamList>;
+export type ApplicationTransferParamList = ReadonlyArray<ApplicationTransferParam>;
+export const ApplicationTransferParamList = /*@__PURE__*/ S.Array(ApplicationTransferParam) as any as S.Schema<ApplicationTransferParamList>;
 
 /** Application resources represent applications installed on the domain that support transferring ownership of user data. */
 export interface Application {
@@ -119,13 +104,13 @@ export interface Application {
   transferParams?: ApplicationTransferParamList;
 }
 export const Application = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    etag: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    transferParams: S.optional(ApplicationTransferParamList),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "name": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "transferParams": S.optional(ApplicationTransferParamList),
+}),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 export interface GetTransfersRequest {
@@ -133,18 +118,10 @@ export interface GetTransfersRequest {
   dataTransferId: string;
 }
 export const GetTransfersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataTransferId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/datatransfer/v1/transfers/{dataTransferId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetTransfersRequest",
-}) as any as S.Schema<GetTransfersRequest>;
+S.Struct({
+  "dataTransferId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/datatransfer/v1/transfers/{dataTransferId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetTransfersRequest" }) as any as S.Schema<GetTransfersRequest>;
 
 /** Template to map fields of ApplicationDataTransfer resource. */
 export interface ApplicationDataTransfer {
@@ -156,20 +133,15 @@ export interface ApplicationDataTransfer {
   applicationTransferStatus?: string;
 }
 export const ApplicationDataTransfer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationId: S.optional(S.String),
-    applicationTransferParams: S.optional(ApplicationTransferParamList),
-    applicationTransferStatus: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationDataTransfer",
-}) as any as S.Schema<ApplicationDataTransfer>;
+S.Struct({
+  "applicationId": S.optional(S.String),
+  "applicationTransferParams": S.optional(ApplicationTransferParamList),
+  "applicationTransferStatus": S.optional(S.String),
+}),
+).annotate({ identifier: "ApplicationDataTransfer" }) as any as S.Schema<ApplicationDataTransfer>;
 
-export type ApplicationDataTransferList =
-  ReadonlyArray<ApplicationDataTransfer>;
-export const ApplicationDataTransferList = /*@__PURE__*/ S.Array(
-  ApplicationDataTransfer,
-) as any as S.Schema<ApplicationDataTransferList>;
+export type ApplicationDataTransferList = ReadonlyArray<ApplicationDataTransfer>;
+export const ApplicationDataTransferList = /*@__PURE__*/ S.Array(ApplicationDataTransfer) as any as S.Schema<ApplicationDataTransferList>;
 
 /** A Transfer resource represents the transfer of the ownership of user data between users. */
 export interface DataTransfer {
@@ -191,16 +163,16 @@ export interface DataTransfer {
   requestTime?: string;
 }
 export const DataTransfer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationDataTransfers: S.optional(ApplicationDataTransferList),
-    oldOwnerUserId: S.optional(S.String),
-    id: S.optional(S.String),
-    overallTransferStatusCode: S.optional(S.String),
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    newOwnerUserId: S.optional(S.String),
-    requestTime: S.optional(S.String),
-  }),
+S.Struct({
+  "applicationDataTransfers": S.optional(ApplicationDataTransferList),
+  "oldOwnerUserId": S.optional(S.String),
+  "id": S.optional(S.String),
+  "overallTransferStatusCode": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "newOwnerUserId": S.optional(S.String),
+  "requestTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "DataTransfer" }) as any as S.Schema<DataTransfer>;
 
 export interface InsertTransfersRequest {
@@ -208,18 +180,10 @@ export interface InsertTransfersRequest {
   body?: DataTransfer;
 }
 export const InsertTransfersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DataTransfer.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/datatransfer/v1/transfers",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertTransfersRequest",
-}) as any as S.Schema<InsertTransfersRequest>;
+S.Struct({
+  "body": S.optional(DataTransfer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/datatransfer/v1/transfers","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertTransfersRequest" }) as any as S.Schema<InsertTransfersRequest>;
 
 export interface ListApplicationsRequest {
   /** Token to specify next page in the list. */
@@ -230,25 +194,15 @@ export interface ListApplicationsRequest {
   maxResults?: number;
 }
 export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    customerId: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/datatransfer/v1/applications",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListApplicationsRequest",
-}) as any as S.Schema<ListApplicationsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "customerId": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/datatransfer/v1/applications","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListApplicationsRequest" }) as any as S.Schema<ListApplicationsRequest>;
 
 export type ApplicationList = ReadonlyArray<Application>;
-export const ApplicationList = /*@__PURE__*/ S.Array(
-  Application,
-) as any as S.Schema<ApplicationList>;
+export const ApplicationList = /*@__PURE__*/ S.Array(Application) as any as S.Schema<ApplicationList>;
 
 /** Template for a collection of Applications. */
 export interface ApplicationsListResponse {
@@ -262,15 +216,13 @@ export interface ApplicationsListResponse {
   kind?: string;
 }
 export const ApplicationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    etag: S.optional(S.String),
-    applications: S.optional(ApplicationList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationsListResponse",
-}) as any as S.Schema<ApplicationsListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "applications": S.optional(ApplicationList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ApplicationsListResponse" }) as any as S.Schema<ApplicationsListResponse>;
 
 export interface ListTransfersRequest {
   /** Token to specify the next page in the list. */
@@ -287,28 +239,18 @@ export interface ListTransfersRequest {
   status?: string;
 }
 export const ListTransfersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    oldOwnerUserId: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    customerId: S.optional(S.String.pipe(T.Query())),
-    newOwnerUserId: S.optional(S.String.pipe(T.Query())),
-    status: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/datatransfer/v1/transfers",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListTransfersRequest",
-}) as any as S.Schema<ListTransfersRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "oldOwnerUserId": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "customerId": S.optional(S.String.pipe(T.Query())),
+  "newOwnerUserId": S.optional(S.String.pipe(T.Query())),
+  "status": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/datatransfer/v1/transfers","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListTransfersRequest" }) as any as S.Schema<ListTransfersRequest>;
 
 export type DataTransferList = ReadonlyArray<DataTransfer>;
-export const DataTransferList = /*@__PURE__*/ S.Array(
-  DataTransfer,
-) as any as S.Schema<DataTransferList>;
+export const DataTransferList = /*@__PURE__*/ S.Array(DataTransfer) as any as S.Schema<DataTransferList>;
 
 /** Template for a collection of DataTransfer resources. */
 export interface DataTransfersListResponse {
@@ -322,15 +264,13 @@ export interface DataTransfersListResponse {
   dataTransfers?: DataTransferList;
 }
 export const DataTransfersListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    dataTransfers: S.optional(DataTransferList),
-  }),
-).annotate({
-  identifier: "DataTransfersListResponse",
-}) as any as S.Schema<DataTransfersListResponse>;
+S.Struct({
+  "etag": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "dataTransfers": S.optional(DataTransferList),
+}),
+).annotate({ identifier: "DataTransfersListResponse" }) as any as S.Schema<DataTransfersListResponse>;
 
 export type GetApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves information about an application for the given application ID. */
@@ -362,12 +302,7 @@ export const getTransfers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertTransfersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertTransfersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a data transfer request. See the [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference for specific application requirements. */
 export const insertTransfers: API.OperationMethod<
   InsertTransfersRequest,
@@ -395,10 +330,7 @@ export const listApplications: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListTransfersError = NotFound | Forbidden | GcpOpError;
@@ -414,8 +346,6 @@ export const listTransfers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
+

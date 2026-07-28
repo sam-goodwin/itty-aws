@@ -12,11 +12,7 @@ import * as Retry from "../retry.ts";
 
 export type { AxiomOpError, AxiomOpContext };
 
-export type QueryAplRequestFormat =
-  | "legacy"
-  | "tabular"
-  | "tabular-rows"
-  | (string & {});
+export type QueryAplRequestFormat = "legacy" | "tabular" | "tabular-rows";
 export const QueryAplRequestFormat = /*@__PURE__*/ S.String;
 
 export interface QueryAplRequestDefaultOrderItem {
@@ -115,7 +111,7 @@ export const QueryAplRequestVariablesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QueryAplRequestVariablesMap>;
 
 export interface QueryAplRequest {
-  format: QueryAplRequestFormat;
+  format: QueryAplRequestFormat | (string & {});
   nocache?: boolean;
   saveAsKind?: string;
   /** when saveAsKind is true, this parameter indicates the id of the associated dataset */

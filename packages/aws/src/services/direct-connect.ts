@@ -155,16 +155,12 @@ export type DirectConnectGatewayAssociationState =
   | "associated"
   | "disassociating"
   | "disassociated"
-  | "updating"
-  | (string & {});
+  | "updating";
 export const DirectConnectGatewayAssociationState = /*@__PURE__*/ S.String;
 
 export type StateChangeError = string;
 export type GatewayIdentifier = string;
-export type GatewayType =
-  | "virtualPrivateGateway"
-  | "transitGateway"
-  | (string & {});
+export type GatewayType = "virtualPrivateGateway" | "transitGateway";
 export const GatewayType = /*@__PURE__*/ S.String;
 
 export type Region = string;
@@ -289,8 +285,7 @@ export type ConnectionState =
   | "deleting"
   | "deleted"
   | "rejected"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const ConnectionState = /*@__PURE__*/ S.String;
 
 export type LocationCode = string;
@@ -301,7 +296,7 @@ export type AwsDevice = string;
 export type JumboFrameCapable = boolean;
 export type AwsDeviceV2 = string;
 export type AwsLogicalDeviceId = string;
-export type HasLogicalRedundancy = "unknown" | "yes" | "no" | (string & {});
+export type HasLogicalRedundancy = "unknown" | "yes" | "no";
 export const HasLogicalRedundancy = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -447,7 +442,7 @@ export type LongAsn = number;
 export type MTU = number;
 export type BGPAuthKey = string;
 export type AmazonAddress = string;
-export type AddressFamily = "ipv4" | "ipv6" | (string & {});
+export type AddressFamily = "ipv4" | "ipv6";
 export const AddressFamily = /*@__PURE__*/ S.String;
 
 export type CustomerAddress = string;
@@ -460,7 +455,7 @@ export interface NewPrivateVirtualInterfaceAllocation {
   mtu?: number;
   authKey?: string;
   amazonAddress?: string;
-  addressFamily?: AddressFamily;
+  addressFamily?: AddressFamily | (string & {});
   customerAddress?: string;
   tags?: Tag[];
   rateLimit?: string;
@@ -521,8 +516,7 @@ export type VirtualInterfaceState =
   | "deleting"
   | "deleted"
   | "rejected"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const VirtualInterfaceState = /*@__PURE__*/ S.String;
 
 export type RouterConfig = string;
@@ -532,11 +526,10 @@ export type BGPPeerState =
   | "pending"
   | "available"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const BGPPeerState = /*@__PURE__*/ S.String;
 
-export type BGPStatus = "up" | "down" | "unknown" | (string & {});
+export type BGPStatus = "up" | "down" | "unknown";
 export const BGPStatus = /*@__PURE__*/ S.String;
 
 export interface BGPPeer {
@@ -642,7 +635,7 @@ export interface NewPublicVirtualInterfaceAllocation {
   authKey?: string;
   amazonAddress?: string;
   customerAddress?: string;
-  addressFamily?: AddressFamily;
+  addressFamily?: AddressFamily | (string & {});
   routeFilterPrefixes?: RouteFilterPrefix[];
   tags?: Tag[];
   rateLimit?: string;
@@ -698,7 +691,7 @@ export interface NewTransitVirtualInterfaceAllocation {
   authKey?: string;
   amazonAddress?: string;
   customerAddress?: string;
-  addressFamily?: AddressFamily;
+  addressFamily?: AddressFamily | (string & {});
   tags?: Tag[];
   rateLimit?: string;
 }
@@ -1008,7 +1001,7 @@ export interface NewBGPPeer {
   asn?: number;
   asnLong?: number;
   authKey?: string;
-  addressFamily?: AddressFamily;
+  addressFamily?: AddressFamily | (string & {});
   amazonAddress?: string;
   customerAddress?: string;
 }
@@ -1114,8 +1107,7 @@ export type DirectConnectGatewayState =
   | "pending"
   | "available"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const DirectConnectGatewayState = /*@__PURE__*/ S.String;
 
 export interface DirectConnectGateway {
@@ -1227,8 +1219,7 @@ export const CreateDirectConnectGatewayAssociationProposalRequest =
 export type DirectConnectGatewayAssociationProposalState =
   | "requested"
   | "accepted"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const DirectConnectGatewayAssociationProposalState =
   /*@__PURE__*/ S.String;
 
@@ -1312,8 +1303,7 @@ export type InterconnectState =
   | "down"
   | "deleting"
   | "deleted"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const InterconnectState = /*@__PURE__*/ S.String;
 
 export interface Interconnect {
@@ -1404,8 +1394,7 @@ export type LagState =
   | "down"
   | "deleting"
   | "deleted"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const LagState = /*@__PURE__*/ S.String;
 
 export type ConnectionList = Connection[];
@@ -1471,7 +1460,7 @@ export interface NewPrivateVirtualInterface {
   authKey?: string;
   amazonAddress?: string;
   customerAddress?: string;
-  addressFamily?: AddressFamily;
+  addressFamily?: AddressFamily | (string & {});
   virtualGatewayId?: string;
   directConnectGatewayId?: string;
   tags?: Tag[];
@@ -1529,7 +1518,7 @@ export interface NewPublicVirtualInterface {
   authKey?: string;
   amazonAddress?: string;
   customerAddress?: string;
-  addressFamily?: AddressFamily;
+  addressFamily?: AddressFamily | (string & {});
   routeFilterPrefixes?: RouteFilterPrefix[];
   tags?: Tag[];
   rateLimit?: string;
@@ -1582,7 +1571,7 @@ export interface NewTransitVirtualInterface {
   authKey?: string;
   amazonAddress?: string;
   customerAddress?: string;
-  addressFamily?: AddressFamily;
+  addressFamily?: AddressFamily | (string & {});
   directConnectGatewayId?: string;
   tags?: Tag[];
   enableSiteLink?: boolean;
@@ -1860,13 +1849,13 @@ export const DeleteVirtualInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteVirtualInterfaceResponse",
 }) as any as S.Schema<DeleteVirtualInterfaceResponse>;
-export type LoaContentType = "application/pdf" | (string & {});
+export type LoaContentType = "application/pdf";
 export const LoaContentType = /*@__PURE__*/ S.String;
 
 export interface DescribeConnectionLoaRequest {
   connectionId: string;
   providerName?: string;
-  loaContentType?: LoaContentType;
+  loaContentType?: LoaContentType | (string & {});
 }
 export const DescribeConnectionLoaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1991,7 +1980,7 @@ export const CustomerAgreement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerAgreement>;
 export type AgreementList = CustomerAgreement[];
 export const AgreementList = /*@__PURE__*/ S.Array(CustomerAgreement);
-export type NniPartnerType = "v1" | "v2" | "nonPartner" | (string & {});
+export type NniPartnerType = "v1" | "v2" | "nonPartner";
 export const NniPartnerType = /*@__PURE__*/ S.String;
 
 export interface DescribeCustomerMetadataResponse {
@@ -2138,14 +2127,12 @@ export type DirectConnectGatewayAttachmentState =
   | "attaching"
   | "attached"
   | "detaching"
-  | "detached"
-  | (string & {});
+  | "detached";
 export const DirectConnectGatewayAttachmentState = /*@__PURE__*/ S.String;
 
 export type DirectConnectGatewayAttachmentType =
   | "TransitVirtualInterface"
-  | "PrivateVirtualInterface"
-  | (string & {});
+  | "PrivateVirtualInterface";
 export const DirectConnectGatewayAttachmentType = /*@__PURE__*/ S.String;
 
 export interface DirectConnectGatewayAttachment {
@@ -2257,7 +2244,7 @@ export const DescribeHostedConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeInterconnectLoaRequest {
   interconnectId: string;
   providerName?: string;
-  loaContentType?: LoaContentType;
+  loaContentType?: LoaContentType | (string & {});
 }
 export const DescribeInterconnectLoaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2360,7 +2347,7 @@ export const Lags = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeLoaRequest {
   connectionId: string;
   providerName?: string;
-  loaContentType?: LoaContentType;
+  loaContentType?: LoaContentType | (string & {});
 }
 export const DescribeLoaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

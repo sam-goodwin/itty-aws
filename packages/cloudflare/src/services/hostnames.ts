@@ -53,15 +53,14 @@ export class HostnameTlsSettingNotFound extends T.applyErrorMatchers(
 export type SettingsTlsDeleteRequestSettingId =
   | "ciphers"
   | "min_tls_version"
-  | "http2"
-  | (string & {});
+  | "http2";
 export const SettingsTlsDeleteRequestSettingId = /*@__PURE__*/ S.String;
 
 export interface DeleteSettingTlsRequest {
   /** Identifier. */
   zoneId: string;
   /** The TLS Setting name. */
-  settingId: SettingsTlsDeleteRequestSettingId;
+  settingId: SettingsTlsDeleteRequestSettingId | (string & {});
   /** The hostname for which the tls settings are set. */
   hostname: string;
 }
@@ -89,8 +88,7 @@ export type SettingsTlsDeleteResponseValueCase0 =
   | "1.2"
   | "1.3"
   | "on"
-  | "off"
-  | (string & {});
+  | "off";
 export const SettingsTlsDeleteResponseValueCase0 = /*@__PURE__*/ S.String;
 
 export type SettingsTlsDeleteResponseValueCase1List = ReadonlyArray<string>;
@@ -133,15 +131,14 @@ export const DeleteSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsTlsGetRequestSettingId =
   | "ciphers"
   | "min_tls_version"
-  | "http2"
-  | (string & {});
+  | "http2";
 export const SettingsTlsGetRequestSettingId = /*@__PURE__*/ S.String;
 
 export interface GetSettingTlsRequest {
   /** Identifier. */
   zoneId: string;
   /** The TLS Setting name. */
-  settingId: SettingsTlsGetRequestSettingId;
+  settingId: SettingsTlsGetRequestSettingId | (string & {});
 }
 export const GetSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -166,8 +163,7 @@ export type SettingsTlsGetResultItemValueCase0 =
   | "1.2"
   | "1.3"
   | "on"
-  | "off"
-  | (string & {});
+  | "off";
 export const SettingsTlsGetResultItemValueCase0 = /*@__PURE__*/ S.String;
 
 export type SettingsTlsGetResultItemValueCase1List = ReadonlyArray<string>;
@@ -229,8 +225,7 @@ export const GetSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsTlsUpdateRequestSettingId =
   | "ciphers"
   | "min_tls_version"
-  | "http2"
-  | (string & {});
+  | "http2";
 export const SettingsTlsUpdateRequestSettingId = /*@__PURE__*/ S.String;
 
 export type SettingsTlsUpdateRequestValueCase0 =
@@ -239,8 +234,7 @@ export type SettingsTlsUpdateRequestValueCase0 =
   | "1.2"
   | "1.3"
   | "on"
-  | "off"
-  | (string & {});
+  | "off";
 export const SettingsTlsUpdateRequestValueCase0 = /*@__PURE__*/ S.String;
 
 export type SettingsTlsUpdateRequestValueCase1List = ReadonlyArray<string>;
@@ -259,7 +253,7 @@ export interface PutSettingTlsRequest {
   /** Identifier. */
   zoneId: string;
   /** The TLS Setting name. */
-  settingId: SettingsTlsUpdateRequestSettingId;
+  settingId: SettingsTlsUpdateRequestSettingId | (string & {});
   /** The hostname for which the tls settings are set. */
   hostname: string;
   /** The TLS setting value. */
@@ -290,8 +284,7 @@ export type SettingsTlsUpdateResponseValueCase0 =
   | "1.2"
   | "1.3"
   | "on"
-  | "off"
-  | (string & {});
+  | "off";
 export const SettingsTlsUpdateResponseValueCase0 = /*@__PURE__*/ S.String;
 
 export type SettingsTlsUpdateResponseValueCase1List = ReadonlyArray<string>;

@@ -157,8 +157,7 @@ export type StreamGroupLocationStatus =
   | "ACTIVATING"
   | "ACTIVE"
   | "ERROR"
-  | "REMOVING"
-  | (string & {});
+  | "REMOVING";
 export const StreamGroupLocationStatus = /*@__PURE__*/ S.String;
 
 export type CapacityValue = number;
@@ -256,11 +255,7 @@ export const AssociateApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateApplicationsOutput",
 }) as any as S.Schema<AssociateApplicationsOutput>;
 export type Description = string;
-export type RuntimeEnvironmentType =
-  | "PROTON"
-  | "WINDOWS"
-  | "UBUNTU"
-  | (string & {});
+export type RuntimeEnvironmentType = "PROTON" | "WINDOWS" | "UBUNTU";
 export const RuntimeEnvironmentType = /*@__PURE__*/ S.String;
 
 export type RuntimeEnvironmentVersion = string;
@@ -323,18 +318,16 @@ export type ApplicationStatus =
   | "PROCESSING"
   | "READY"
   | "DELETING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export type ApplicationStatusReason =
   | "internalError"
   | "accessDenied"
-  | "sourceModified"
-  | (string & {});
+  | "sourceModified";
 export const ApplicationStatusReason = /*@__PURE__*/ S.String;
 
-export type ReplicationStatusType = "REPLICATING" | "COMPLETED" | (string & {});
+export type ReplicationStatusType = "REPLICATING" | "COMPLETED";
 export const ReplicationStatusType = /*@__PURE__*/ S.String;
 
 export interface ReplicationStatus {
@@ -404,13 +397,12 @@ export type StreamClass =
   | "gen6n_small_win2022"
   | "gen6n_medium_win2022"
   | "gen6e_pro"
-  | "gen6e_pro_win2022"
-  | (string & {});
+  | "gen6e_pro_win2022";
 export const StreamClass = /*@__PURE__*/ S.String;
 
 export interface CreateStreamGroupInput {
   Description: string;
-  StreamClass: StreamClass;
+  StreamClass: StreamClass | (string & {});
   DefaultApplicationIdentifier?: string;
   LocationConfigurations?: LocationConfiguration[];
   Tags?: { [key: string]: string | undefined };
@@ -453,14 +445,10 @@ export type StreamGroupStatus =
   | "ACTIVE_WITH_ERRORS"
   | "ERROR"
   | "DELETING"
-  | "EXPIRED"
-  | (string & {});
+  | "EXPIRED";
 export const StreamGroupStatus = /*@__PURE__*/ S.String;
 
-export type StreamGroupStatusReason =
-  | "internalError"
-  | "noAvailableInstances"
-  | (string & {});
+export type StreamGroupStatusReason = "internalError" | "noAvailableInstances";
 export const StreamGroupStatusReason = /*@__PURE__*/ S.String;
 
 export interface CreateStreamGroupOutput {
@@ -786,8 +774,7 @@ export type StreamSessionStatus =
   | "RECONNECTING"
   | "TERMINATING"
   | "TERMINATED"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const StreamSessionStatus = /*@__PURE__*/ S.String;
 
 export type StreamSessionStatusReason =
@@ -800,11 +787,10 @@ export type StreamSessionStatusReason =
   | "reconnectionTimeout"
   | "maxSessionLengthTimeout"
   | "idleTimeout"
-  | "apiTerminated"
-  | (string & {});
+  | "apiTerminated";
 export const StreamSessionStatusReason = /*@__PURE__*/ S.String;
 
-export type Protocol = "WebRTC" | (string & {});
+export type Protocol = "WebRTC";
 export const Protocol = /*@__PURE__*/ S.String;
 
 export type ConnectionTimeoutSeconds = number;
@@ -826,11 +812,7 @@ export const PerformanceStatsConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PerformanceStatsConfiguration>;
 export type FileLocationUri = string;
 export type WebSdkProtocolUrl = string;
-export type ExportFilesStatus =
-  | "SUCCEEDED"
-  | "FAILED"
-  | "PENDING"
-  | (string & {});
+export type ExportFilesStatus = "SUCCEEDED" | "FAILED" | "PENDING";
 export const ExportFilesStatus = /*@__PURE__*/ S.String;
 
 export type ExportFilesReason = string;
@@ -1019,8 +1001,8 @@ export const ListStreamGroupsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStreamGroupsOutput",
 }) as any as S.Schema<ListStreamGroupsOutput>;
 export interface ListStreamSessionsInput {
-  Status?: StreamSessionStatus;
-  ExportFilesStatus?: ExportFilesStatus;
+  Status?: StreamSessionStatus | (string & {});
+  ExportFilesStatus?: ExportFilesStatus | (string & {});
   NextToken?: string;
   MaxResults?: number;
   Identifier: string;
@@ -1094,8 +1076,8 @@ export const ListStreamSessionsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStreamSessionsOutput",
 }) as any as S.Schema<ListStreamSessionsOutput>;
 export interface ListStreamSessionsByAccountInput {
-  Status?: StreamSessionStatus;
-  ExportFilesStatus?: ExportFilesStatus;
+  Status?: StreamSessionStatus | (string & {});
+  ExportFilesStatus?: ExportFilesStatus | (string & {});
   NextToken?: string;
   MaxResults?: number;
 }
@@ -1192,7 +1174,7 @@ export interface StartStreamSessionInput {
   ClientToken?: string;
   Description?: string;
   Identifier: string;
-  Protocol: Protocol;
+  Protocol: Protocol | (string & {});
   SignalRequest: string | redacted.Redacted<string>;
   ApplicationIdentifier: string;
   UserId?: string;

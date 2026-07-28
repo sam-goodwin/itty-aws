@@ -43,8 +43,7 @@ export type TableFormatEnum =
   | "Parquet"
   | "JSONEachRow"
   | "Delta"
-  | "DeltaS3Wrapper"
-  | (string & {});
+  | "DeltaS3Wrapper";
 export const TableFormatEnum = /*@__PURE__*/ S.String;
 
 export interface CredentialInput {
@@ -73,7 +72,7 @@ export interface WarehouseTablesCreateRequest {
   project_id: string;
   deleted?: boolean | null;
   name?: string;
-  format?: TableFormatEnum;
+  format?: TableFormatEnum | (string & {});
   url_pattern?: string;
   credential?: CredentialInput;
   options?: WarehouseTablesCreateRequestOptionsMap;
@@ -113,11 +112,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -1422,8 +1420,7 @@ export type ExternalDataSourceTypeEnum =
   | "Zylo"
   | "Tally"
   | "Nuntly"
-  | "Vturb"
-  | (string & {});
+  | "Vturb";
 export const ExternalDataSourceTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SimpleExternalDataSourceSerializers {
@@ -1498,11 +1495,7 @@ export const TableOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableOutput" }) as any as S.Schema<TableOutput>;
 
 /** * `csv` - csv * `json` - json * `parquet` - parquet */
-export type CreateTableFromUploadFileFormatEnum =
-  | "csv"
-  | "json"
-  | "parquet"
-  | (string & {});
+export type CreateTableFromUploadFileFormatEnum = "csv" | "json" | "parquet";
 export const CreateTableFromUploadFileFormatEnum = /*@__PURE__*/ S.String;
 
 export interface WarehouseTablesCreateFromUploadCreateRequest {
@@ -1513,7 +1506,7 @@ export interface WarehouseTablesCreateFromUploadCreateRequest {
   /** Sanitized filename returned by upload_file. */
   filename: string;
   /** How the uploaded file is read: 'csv', 'json', or 'parquet'. * `csv` - csv * `json` - json * `parquet` - parquet */
-  file_format: CreateTableFromUploadFileFormatEnum;
+  file_format: CreateTableFromUploadFileFormatEnum | (string & {});
   /** Name the resulting table is queried by in HogQL. */
   table_name: string;
 }
@@ -1578,7 +1571,7 @@ export interface WarehouseTablesFileCreateRequest {
   project_id: string;
   deleted?: boolean | null;
   name?: string;
-  format?: TableFormatEnum;
+  format?: TableFormatEnum | (string & {});
   url_pattern?: string;
   credential?: CredentialInput;
   options?: WarehouseTablesFileCreateRequestOptionsMap;
@@ -1676,7 +1669,7 @@ export interface WarehouseTablesPartialUpdateRequest {
   id: string;
   deleted?: boolean | null;
   name?: string;
-  format?: TableFormatEnum;
+  format?: TableFormatEnum | (string & {});
   url_pattern?: string;
   credential?: CredentialInput;
   options?: WarehouseTablesPartialUpdateRequestOptionsMap;
@@ -1766,7 +1759,7 @@ export interface WarehouseTablesUpdateRequest {
   id: string;
   deleted?: boolean | null;
   name?: string;
-  format?: TableFormatEnum;
+  format?: TableFormatEnum | (string & {});
   url_pattern?: string;
   credential?: CredentialInput;
   options?: WarehouseTablesUpdateRequestOptionsMap;
@@ -1808,7 +1801,7 @@ export interface WarehouseTablesUpdateSchemaCreateRequest {
   id: string;
   deleted?: boolean | null;
   name?: string;
-  format?: TableFormatEnum;
+  format?: TableFormatEnum | (string & {});
   url_pattern?: string;
   credential?: CredentialInput;
   options?: WarehouseTablesUpdateSchemaCreateRequestOptionsMap;
@@ -1845,8 +1838,7 @@ export const WarehouseTablesUpdateSchemaCreateResponse =
 export type WarehouseTablesUploadFileCreateRequestFileFormat =
   | "csv"
   | "json"
-  | "parquet"
-  | (string & {});
+  | "parquet";
 export const WarehouseTablesUploadFileCreateRequestFileFormat =
   /*@__PURE__*/ S.String;
 
@@ -1856,7 +1848,7 @@ export interface WarehouseTablesUploadFileCreateRequest {
   /** The file to upload. */
   file: string;
   /** How the file will be read when the table is created. */
-  file_format: WarehouseTablesUploadFileCreateRequestFileFormat;
+  file_format: WarehouseTablesUploadFileCreateRequestFileFormat | (string & {});
 }
 export const WarehouseTablesUploadFileCreateRequest = /*@__PURE__*/ S.suspend(
   () =>

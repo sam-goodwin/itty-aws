@@ -1166,12 +1166,7 @@ export const GetNotificationsAccessForOrganizationRequest =
   ).annotate({
     identifier: "GetNotificationsAccessForOrganizationRequest",
   }) as any as S.Schema<GetNotificationsAccessForOrganizationRequest>;
-export type AccessStatus =
-  | "ENABLED"
-  | "DISABLED"
-  | "PENDING"
-  | "FAILED"
-  | (string & {});
+export type AccessStatus = "ENABLED" | "DISABLED" | "PENDING" | "FAILED";
 export const AccessStatus = /*@__PURE__*/ S.String;
 
 export interface NotificationsAccessForOrganization {

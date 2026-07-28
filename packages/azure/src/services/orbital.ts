@@ -14,8 +14,7 @@ export type { AzureOpError, AzureOpContext };
 
 export type AvailableGroundStationsListByCapabilityRequestCapability =
   | "EarthObservation"
-  | "Communication"
-  | (string & {});
+  | "Communication";
 export const AvailableGroundStationsListByCapabilityRequestCapability =
   /*@__PURE__*/ S.String;
 
@@ -23,7 +22,9 @@ export interface AvailableGroundStationsListByCapabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Ground Station Capability. */
-  capability: AvailableGroundStationsListByCapabilityRequestCapability;
+  capability:
+    | AvailableGroundStationsListByCapabilityRequestCapability
+    | (string & {});
 }
 export const AvailableGroundStationsListByCapabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -45,10 +46,7 @@ export const AvailableGroundStationsListByCapabilityRequest =
   }) as any as S.Schema<AvailableGroundStationsListByCapabilityRequest>;
 
 /** Release Status of a ground station. */
-export type AvailableGroundStationPropertiesReleaseMode =
-  | "Preview"
-  | "GA"
-  | (string & {});
+export type AvailableGroundStationPropertiesReleaseMode = "Preview" | "GA";
 export const AvailableGroundStationPropertiesReleaseMode =
   /*@__PURE__*/ S.String;
 
@@ -145,16 +143,14 @@ export type ProvisioningStateInput =
   | "failed"
   | "canceled"
   | "updating"
-  | "deleting"
-  | (string & {});
+  | "deleting";
 export const ProvisioningStateInput = /*@__PURE__*/ S.String;
 
 /** Auto-tracking configuration. */
 export type ContactProfilesPropertiesInputAutoTrackingConfiguration =
   | "disabled"
   | "xBand"
-  | "sBand"
-  | (string & {});
+  | "sBand";
 export const ContactProfilesPropertiesInputAutoTrackingConfiguration =
   /*@__PURE__*/ S.String;
 
@@ -202,16 +198,15 @@ export type ContactProfileLinkPolarization =
   | "RHCP"
   | "LHCP"
   | "linearVertical"
-  | "linearHorizontal"
-  | (string & {});
+  | "linearHorizontal";
 export const ContactProfileLinkPolarization = /*@__PURE__*/ S.String;
 
 /** Direction (Uplink or Downlink). */
-export type ContactProfileLinkDirection = "Uplink" | "Downlink" | (string & {});
+export type ContactProfileLinkDirection = "Uplink" | "Downlink";
 export const ContactProfileLinkDirection = /*@__PURE__*/ S.String;
 
 /** Protocol either UDP or TCP. */
-export type EndPointProtocol = "TCP" | "UDP" | (string & {});
+export type EndPointProtocol = "TCP" | "UDP";
 export const EndPointProtocol = /*@__PURE__*/ S.String;
 
 /** Customer end point to store and retrieve data during a contact with the spacecraft. */
@@ -312,13 +307,15 @@ export const ContactProfilesPropertiesInputLinksList = /*@__PURE__*/ S.Array(
 /** List of Contact Profile Resource Properties. */
 export interface ContactProfilesPropertiesInput {
   /** The current state of the resource's creation, deletion, or modification. */
-  provisioningState?: ProvisioningStateInput;
+  provisioningState?: ProvisioningStateInput | (string & {});
   /** Minimum viable contact duration in ISO 8601 format. Used for listing the available contacts with a spacecraft at a given ground station. */
   minimumViableContactDuration?: string;
   /** Minimum viable elevation for the contact in decimal degrees. Used for listing the available contacts with a spacecraft at a given ground station. */
   minimumElevationDegrees?: number;
   /** Auto-tracking configuration. */
-  autoTrackingConfiguration?: ContactProfilesPropertiesInputAutoTrackingConfiguration;
+  autoTrackingConfiguration?:
+    | ContactProfilesPropertiesInputAutoTrackingConfiguration
+    | (string & {});
   /** ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub. */
   eventHubUri?: string;
   /** Network configuration of customer virtual network. */
@@ -387,8 +384,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -396,8 +392,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -443,16 +438,14 @@ export type ProvisioningState =
   | "failed"
   | "canceled"
   | "updating"
-  | "deleting"
-  | (string & {});
+  | "deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Auto-tracking configuration. */
 export type ContactProfilesPropertiesAutoTrackingConfiguration =
   | "disabled"
   | "xBand"
-  | "sBand"
-  | (string & {});
+  | "sBand";
 export const ContactProfilesPropertiesAutoTrackingConfiguration =
   /*@__PURE__*/ S.String;
 
@@ -848,7 +841,7 @@ export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
 /** Properties of the Contact Resource. */
 export interface ContactsPropertiesInput {
   /** The current state of the resource's creation, deletion, or modification. */
-  provisioningState?: ProvisioningStateInput;
+  provisioningState?: ProvisioningStateInput | (string & {});
   /** Reservation start time of a contact (ISO 8601 UTC standard). */
   reservationStartTime: string;
   /** Reservation end time of a contact (ISO 8601 UTC standard). */
@@ -906,8 +899,7 @@ export type ContactsPropertiesStatus =
   | "cancelled"
   | "succeeded"
   | "failed"
-  | "providerCancelled"
-  | (string & {});
+  | "providerCancelled";
 export const ContactsPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** List of Source IP */
@@ -1653,10 +1645,7 @@ export const LocationData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LocationData" }) as any as S.Schema<LocationData>;
 
 /** The type of the global communications site. groundStations can only use sites of type GroundStation, and edgeSites can only use sites of type Edge. */
-export type GlobalCommunicationsSiteType =
-  | "Edge"
-  | "GroundStation"
-  | (string & {});
+export type GlobalCommunicationsSiteType = "Edge" | "GroundStation";
 export const GlobalCommunicationsSiteType = /*@__PURE__*/ S.String;
 
 /** One of the partner routers within a global communications site. */
@@ -1762,12 +1751,13 @@ export const GroundStationsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<GroundStationsCreateOrUpdateRequestTagsMap>;
 
 /** Capability of the Ground Station. */
-export type Capability = "EarthObservation" | "Communication" | (string & {});
+export type Capability = "EarthObservation" | "Communication";
 export const Capability = /*@__PURE__*/ S.String;
 
 /** Ground station capabilities. */
-export type GroundStationsPropertiesInputCapabilitiesList =
-  ReadonlyArray<Capability>;
+export type GroundStationsPropertiesInputCapabilitiesList = ReadonlyArray<
+  Capability | (string & {})
+>;
 export const GroundStationsPropertiesInputCapabilitiesList =
   /*@__PURE__*/ S.Array(
     Capability,
@@ -1856,10 +1846,7 @@ export const GroundStationsPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GroundStationsPropertiesCapabilitiesList>;
 
 /** Release Status of a ground station. */
-export type GroundStationsPropertiesReleaseMode =
-  | "Preview"
-  | "GA"
-  | (string & {});
+export type GroundStationsPropertiesReleaseMode = "Preview" | "GA";
 export const GroundStationsPropertiesReleaseMode = /*@__PURE__*/ S.String;
 
 /** List of ground station resource properties. */
@@ -2345,8 +2332,7 @@ export type ProvisioningState_2 =
   | "Failed"
   | "Canceled"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState_2 = /*@__PURE__*/ S.String;
 
 /** The name of the partner router that cross-connects with the Orbital Edge Router at the edge site. */
@@ -2754,11 +2740,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2831,12 +2817,7 @@ export const OperationsResultsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsResultsGetRequest>;
 
 /** The status of operation. */
-export type Status =
-  | "Succeeded"
-  | "Canceled"
-  | "Failed"
-  | "Running"
-  | (string & {});
+export type Status = "Succeeded" | "Canceled" | "Failed" | "Running";
 export const Status = /*@__PURE__*/ S.String;
 
 /** A list of results when the operation returns multiple results. */
@@ -2908,10 +2889,7 @@ export const SpacecraftsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SpacecraftsCreateOrUpdateRequestTagsMap>;
 
 /** Direction (Uplink or Downlink). */
-export type SpacecraftLinkInputDirection =
-  | "Uplink"
-  | "Downlink"
-  | (string & {});
+export type SpacecraftLinkInputDirection = "Uplink" | "Downlink";
 export const SpacecraftLinkInputDirection = /*@__PURE__*/ S.String;
 
 /** Polarization. e.g. (RHCP, LHCP). */
@@ -2919,8 +2897,7 @@ export type SpacecraftLinkInputPolarization =
   | "RHCP"
   | "LHCP"
   | "linearVertical"
-  | "linearHorizontal"
-  | (string & {});
+  | "linearHorizontal";
 export const SpacecraftLinkInputPolarization = /*@__PURE__*/ S.String;
 
 /** List of authorized spacecraft links per ground station and the expiration date of the authorization. */
@@ -2932,9 +2909,9 @@ export interface SpacecraftLinkInput {
   /** Bandwidth in MHz. */
   bandwidthMHz: number;
   /** Direction (Uplink or Downlink). */
-  direction: SpacecraftLinkInputDirection;
+  direction: SpacecraftLinkInputDirection | (string & {});
   /** Polarization. e.g. (RHCP, LHCP). */
-  polarization: SpacecraftLinkInputPolarization;
+  polarization: SpacecraftLinkInputPolarization | (string & {});
 }
 export const SpacecraftLinkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2958,7 +2935,7 @@ export const SpacecraftsPropertiesInputLinksList = /*@__PURE__*/ S.Array(
 /** List of Spacecraft Resource Properties. */
 export interface SpacecraftsPropertiesInput {
   /** The current state of the resource's creation, deletion, or modification. */
-  provisioningState?: ProvisioningStateInput;
+  provisioningState?: ProvisioningStateInput | (string & {});
   /** NORAD ID of the spacecraft. */
   noradId?: string;
   /** Title line of the two-line element set (TLE). */
@@ -3027,7 +3004,7 @@ export const SpacecraftsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SpacecraftsCreateOrUpdateResponseTagsMap>;
 
 /** Direction (Uplink or Downlink). */
-export type SpacecraftLinkDirection = "Uplink" | "Downlink" | (string & {});
+export type SpacecraftLinkDirection = "Uplink" | "Downlink";
 export const SpacecraftLinkDirection = /*@__PURE__*/ S.String;
 
 /** Polarization. e.g. (RHCP, LHCP). */
@@ -3035,8 +3012,7 @@ export type SpacecraftLinkPolarization =
   | "RHCP"
   | "LHCP"
   | "linearVertical"
-  | "linearHorizontal"
-  | (string & {});
+  | "linearHorizontal";
 export const SpacecraftLinkPolarization = /*@__PURE__*/ S.String;
 
 /** Authorized groundstation. */

@@ -92,11 +92,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -380,8 +379,7 @@ export type AccountsNotebooksListRequestOrdering =
   | "-created_at"
   | "-created_by"
   | "created_at"
-  | "created_by"
-  | (string & {});
+  | "created_by";
 export const AccountsNotebooksListRequestOrdering = /*@__PURE__*/ S.String;
 
 export interface AccountsNotebooksListRequest {
@@ -394,7 +392,7 @@ export interface AccountsNotebooksListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
   /** Sort by creation date or author. Defaults to '-created_at'. */
-  ordering?: AccountsNotebooksListRequestOrdering;
+  ordering?: AccountsNotebooksListRequestOrdering | (string & {});
   /** Full-text search across notebook title and content. */
   search?: string;
 }

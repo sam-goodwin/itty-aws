@@ -35,10 +35,10 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type EventsListRequestFormat = "csv" | "json" | (string & {});
+export type EventsListRequestFormat = "csv" | "json";
 export const EventsListRequestFormat = /*@__PURE__*/ S.String;
 
-export type PropertyGroupOperator = "AND" | "OR" | (string & {});
+export type PropertyGroupOperator = "AND" | "OR";
 export const PropertyGroupOperator = /*@__PURE__*/ S.String;
 
 export type PropertyItemValueCase3Item = string | number;
@@ -78,11 +78,10 @@ export type PropertyItemOperatorEnum =
   | "is_date_after"
   | "is_date_before"
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const PropertyItemOperatorEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemOperator = PropertyItemOperatorEnum | BlankEnum;
@@ -120,8 +119,7 @@ export type PropertyFilterTypeEnum =
   | "revenue_analytics"
   | "account_custom_property"
   | "flag"
-  | "workflow_variable"
-  | (string & {});
+  | "workflow_variable";
 export const PropertyFilterTypeEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemType = PropertyFilterTypeEnum | BlankEnum;
@@ -152,7 +150,7 @@ export const PropertyValuesList = /*@__PURE__*/ S.Array(
 
 export interface Property {
   /** You can use a simplified version: ```json { "properties": [ { "key": "email", "value": "x@y.com", "operator": "exact", "type": "event" } ] } ``` Or you can create more complicated queries with AND and OR: ```json { "properties": { "type": "AND", "values": [ { "type": "OR", "values": [ {"key": "email", ...}, {"key": "email", ...} ] }, { "type": "AND", "values": [ {"key": "email", ...}, {"key": "email", ...} ] } ] ] } ``` * `AND` - AND * `OR` - OR */
-  type?: PropertyGroupOperator;
+  type?: PropertyGroupOperator | (string & {});
   values?: PropertyValuesList;
 }
 export const Property = /*@__PURE__*/ S.suspend(() =>
@@ -188,7 +186,7 @@ export interface EventsListRequest {
   distinct_id?: number;
   /** Filter list by event. For example `user sign up` or `$pageview`. */
   event?: string;
-  format?: EventsListRequestFormat;
+  format?: EventsListRequestFormat | (string & {});
   /** Include person details for each event. Default: false. */
   include_person?: boolean;
   /** The maximum number of results to return */
@@ -325,14 +323,14 @@ export const PaginatedClickhouseEventList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedClickhouseEventList",
 }) as any as S.Schema<PaginatedClickhouseEventList>;
 
-export type EventsRetrieveRequestFormat = "csv" | "json" | (string & {});
+export type EventsRetrieveRequestFormat = "csv" | "json";
 export const EventsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface EventsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
-  format?: EventsRetrieveRequestFormat;
+  format?: EventsRetrieveRequestFormat | (string & {});
   /** Include person details for the event. Default: false. */
   include_person?: boolean;
 }
@@ -368,13 +366,13 @@ export const EventsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventsRetrieveResponse",
 }) as any as S.Schema<EventsRetrieveResponse>;
 
-export type EventsValuesRetrieveRequestFormat = "csv" | "json" | (string & {});
+export type EventsValuesRetrieveRequestFormat = "csv" | "json";
 export const EventsValuesRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface EventsValuesRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  format?: EventsValuesRetrieveRequestFormat;
+  format?: EventsValuesRetrieveRequestFormat | (string & {});
 }
 export const EventsValuesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

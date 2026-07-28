@@ -154,31 +154,26 @@ export type AggregationEnum =
   | "p95"
   | "rate"
   | "increase"
-  | "histogram_quantile"
-  | (string & {});
+  | "histogram_quantile";
 export const AggregationEnum = /*@__PURE__*/ S.String;
 
 /** * `eq` - eq * `neq` - neq * `regex` - regex * `not_regex` - not_regex */
-export type OpEnum = "eq" | "neq" | "regex" | "not_regex" | (string & {});
+export type OpEnum = "eq" | "neq" | "regex" | "not_regex";
 export const OpEnum = /*@__PURE__*/ S.String;
 
 /** * `resource` - resource * `attribute` - attribute * `auto` - auto */
-export type MetricAttributeScopeEnum =
-  | "resource"
-  | "attribute"
-  | "auto"
-  | (string & {});
+export type MetricAttributeScopeEnum = "resource" | "attribute" | "auto";
 export const MetricAttributeScopeEnum = /*@__PURE__*/ S.String;
 
 export interface MetricFilter {
   /** Attribute name to filter on, without any type-tag suffix (e.g. 'k8s.pod.name', 'env'). */
   key: string;
   /** Comparison operator. 'regex'/'not_regex' use RE2 syntax. Negative operators also match rows that lack the key entirely, mirroring Prometheus negative matchers. * `eq` - eq * `neq` - neq * `regex` - regex * `not_regex` - not_regex */
-  op?: OpEnum;
+  op?: OpEnum | (string & {});
   /** Value to compare against. For regex operators this is the pattern. */
   value: string;
   /** Where the attribute lives: 'resource' = per-target resource attributes (k8s.pod.name, service.version), 'attribute' = per-datapoint attributes (http.method, path), 'auto' = resource first with per-datapoint fallback. Use 'auto' unless you know the exact scope. * `resource` - resource * `attribute` - attribute * `auto` - auto */
-  scope?: MetricAttributeScopeEnum;
+  scope?: MetricAttributeScopeEnum | (string & {});
 }
 export const MetricFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -213,7 +208,7 @@ export interface MetricAnomalyBody {
   /** End of the healthy comparison window. Defaults to anomalyFrom. Must not extend past anomalyFrom. */
   baselineTo?: string;
   /** Aggregation to characterize. Omit to auto-pick from the metric's OTel type (counter -> rate, gauge -> avg, histogram -> histogram_quantile 0.95). * `sum` - sum * `avg` - avg * `count` - count * `p95` - p95 * `rate` - rate * `increase` - increase * `histogram_quantile` - histogram_quantile */
-  aggregation?: AggregationEnum | null;
+  aggregation?: AggregationEnum | (string & {}) | null;
   /** Quantile for histogram_quantile. Defaults to 0.95. */
   quantile?: number | null;
   /** Label predicates narrowing which series are characterized. */
@@ -259,7 +254,7 @@ export const MetricsCharacterizeCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricsCharacterizeCreateRequest>;
 
 /** * `up` - up * `down` - down * `flat` - flat */
-export type MetricAnomalyDirectionEnum = "up" | "down" | "flat" | (string & {});
+export type MetricAnomalyDirectionEnum = "up" | "down" | "flat";
 export const MetricAnomalyDirectionEnum = /*@__PURE__*/ S.String;
 
 export interface MetricAnomalyDimension {
@@ -433,8 +428,7 @@ export type OtelMetricTypeEnum =
   | "sum"
   | "histogram"
   | "exponential_histogram"
-  | "summary"
-  | (string & {});
+  | "summary";
 export const OtelMetricTypeEnum = /*@__PURE__*/ S.String;
 
 /** Label predicates ANDed together. Rows must satisfy every filter. */
@@ -447,7 +441,7 @@ export interface MetricGroupBy {
   /** Attribute name to split series by (e.g. 'k8s.pod.name', 'env'). */
   key: string;
   /** Where the attribute lives; same semantics as filter scope. Use 'auto' unless you know the exact scope. * `resource` - resource * `attribute` - attribute * `auto` - auto */
-  scope?: MetricAttributeScopeEnum;
+  scope?: MetricAttributeScopeEnum | (string & {});
 }
 export const MetricGroupBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -471,8 +465,7 @@ export type MetricQueryIntervalEnum =
   | "hour"
   | "hour_6"
   | "day"
-  | "week"
-  | (string & {});
+  | "week";
 export const MetricQueryIntervalEnum = /*@__PURE__*/ S.String;
 
 /** Label predicates ANDed together for this clause. */
@@ -493,9 +486,9 @@ export interface MetricClause {
   /** Exact metric name this clause queries. */
   metricName: string;
   /** Constrain the query to one metric type. A name can exist as several types (e.g. a counter and a gauge); without this, rows of every type sharing the name are blended into one aggregate. Get the type from 'metric-names-list'. * `gauge` - gauge * `sum` - sum * `histogram` - histogram * `exponential_histogram` - exponential_histogram * `summary` - summary */
-  metricType?: OtelMetricTypeEnum | null;
+  metricType?: OtelMetricTypeEnum | (string & {}) | null;
   /** Aggregation applied per time bucket; same semantics as the top-level aggregation. * `sum` - sum * `avg` - avg * `count` - count * `p95` - p95 * `rate` - rate * `increase` - increase * `histogram_quantile` - histogram_quantile */
-  aggregation?: AggregationEnum;
+  aggregation?: AggregationEnum | (string & {});
   /** Quantile in (0, 1) for 'histogram_quantile'. */
   quantile?: number | null;
   /** Label predicates ANDed together for this clause. */
@@ -525,9 +518,9 @@ export interface MetricQueryBody {
   /** Exact metric name to query (e.g. 'http.server.duration'). Single-clause shorthand — mutually exclusive with 'clauses'. */
   metricName?: string;
   /** Constrain the query to one metric type. A name can exist as several types (e.g. a counter and a gauge); without this, rows of every type sharing the name are blended into one aggregate. Get the type from 'metric-names-list'. * `gauge` - gauge * `sum` - sum * `histogram` - histogram * `exponential_histogram` - exponential_histogram * `summary` - summary */
-  metricType?: OtelMetricTypeEnum | null;
+  metricType?: OtelMetricTypeEnum | (string & {}) | null;
   /** Aggregation applied per time bucket. 'rate' (per-second) and 'increase' are counter-aware: per-series deltas with Prometheus counter-reset handling, temporality-aware (delta-temporality samples count as-is). 'histogram_quantile' interpolates from OTel histogram buckets and requires 'quantile'. * `sum` - sum * `avg` - avg * `count` - count * `p95` - p95 * `rate` - rate * `increase` - increase * `histogram_quantile` - histogram_quantile */
-  aggregation?: AggregationEnum;
+  aggregation?: AggregationEnum | (string & {});
   /** Quantile in (0, 1) for 'histogram_quantile' (e.g. 0.95). Ignored for other aggregations. */
   quantile?: number | null;
   /** Label predicates ANDed together. Rows must satisfy every filter. */
@@ -535,7 +528,7 @@ export interface MetricQueryBody {
   /** Labels to split the result into separate series by. Series share one time grid and are capped at the 100 largest. */
   groupBy?: MetricQueryBodyGroupByList;
   /** Bucket size for the shared time grid. Omit to auto-pick (~60 buckets across the range). * `second` - second * `minute` - minute * `minute_5` - minute_5 * `minute_15` - minute_15 * `hour` - hour * `hour_6` - hour_6 * `day` - day * `week` - week */
-  interval?: MetricQueryIntervalEnum | null;
+  interval?: MetricQueryIntervalEnum | (string & {}) | null;
   /** Full multi-clause form: each clause is an independent metric selection sharing the request's time grid (maximum 10). Mutually exclusive with 'metricName'. */
   clauses?: MetricQueryBodyClausesList;
   /** Arithmetic over clause names evaluated server-side per grid point, e.g. '(a - b) / a'. Supports + - * / and parentheses; division by zero yields 0. When set, only the formula result series are returned. */

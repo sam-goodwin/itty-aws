@@ -12,13 +12,11 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export type AdDomainServiceMembersListRequestNextPartitionKey =
-  | " "
-  | (string & {});
+export type AdDomainServiceMembersListRequestNextPartitionKey = " ";
 export const AdDomainServiceMembersListRequestNextPartitionKey =
   /*@__PURE__*/ S.String;
 
-export type AdDomainServiceMembersListRequestNextRowKey = " " | (string & {});
+export type AdDomainServiceMembersListRequestNextRowKey = " ";
 export const AdDomainServiceMembersListRequestNextRowKey =
   /*@__PURE__*/ S.String;
 
@@ -32,9 +30,11 @@ export interface AdDomainServiceMembersListRequest {
   /** The custom query. */
   query?: string;
   /** The next partition key to query for. */
-  nextPartitionKey: AdDomainServiceMembersListRequestNextPartitionKey;
+  nextPartitionKey:
+    | AdDomainServiceMembersListRequestNextPartitionKey
+    | (string & {});
   /** The next row key to query for. */
-  nextRowKey: AdDomainServiceMembersListRequestNextRowKey;
+  nextRowKey: AdDomainServiceMembersListRequestNextRowKey | (string & {});
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
@@ -148,8 +148,7 @@ export const AddsServiceMemberRecommendedQfesList = /*@__PURE__*/ S.Array(
 export type AddsServiceMemberServerReportedMonitoringLevel =
   | "Partial"
   | "Full"
-  | "Off"
-  | (string & {});
+  | "Off";
 export const AddsServiceMemberServerReportedMonitoringLevel =
   /*@__PURE__*/ S.String;
 
@@ -437,8 +436,7 @@ export const AddsServiceMembersGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type ServiceMemberServerReportedMonitoringLevel =
   | "Partial"
   | "Full"
-  | "Off"
-  | (string & {});
+  | "Off";
 export const ServiceMemberServerReportedMonitoringLevel =
   /*@__PURE__*/ S.String;
 
@@ -1412,15 +1410,11 @@ export const ReplicationDetailsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicationDetailsList",
 }) as any as S.Schema<ReplicationDetailsList>;
 
-export type AddsServicesListReplicationSummaryRequestNextPartitionKey =
-  | " "
-  | (string & {});
+export type AddsServicesListReplicationSummaryRequestNextPartitionKey = " ";
 export const AddsServicesListReplicationSummaryRequestNextPartitionKey =
   /*@__PURE__*/ S.String;
 
-export type AddsServicesListReplicationSummaryRequestNextRowKey =
-  | " "
-  | (string & {});
+export type AddsServicesListReplicationSummaryRequestNextRowKey = " ";
 export const AddsServicesListReplicationSummaryRequestNextRowKey =
   /*@__PURE__*/ S.String;
 
@@ -1434,9 +1428,13 @@ export interface AddsServicesListReplicationSummaryRequest {
   /** The custom query. */
   query: string;
   /** The next partition key to query for. */
-  nextPartitionKey: AddsServicesListReplicationSummaryRequestNextPartitionKey;
+  nextPartitionKey:
+    | AddsServicesListReplicationSummaryRequestNextPartitionKey
+    | (string & {});
   /** The next row key to query for. */
-  nextRowKey: AddsServicesListReplicationSummaryRequestNextRowKey;
+  nextRowKey:
+    | AddsServicesListReplicationSummaryRequestNextRowKey
+    | (string & {});
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
@@ -1521,7 +1519,7 @@ export const AddsServicesListServerAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServicesListServerAlertsRequest>;
 
 /** The alert level which indicates the severity of the alert. */
-export type AlertLevel = "Warning" | "Error" | "PreWarning" | (string & {});
+export type AlertLevel = "Warning" | "Error" | "PreWarning";
 export const AlertLevel = /*@__PURE__*/ S.String;
 
 /** The alert state which can be either active or resolved with multiple resolution types. */
@@ -1530,8 +1528,7 @@ export type AlertState =
   | "ResolvedByPositiveResult"
   | "ResolvedManually"
   | "ResolvedByTimer"
-  | "ResolvedByStateChange"
-  | (string & {});
+  | "ResolvedByStateChange";
 export const AlertState = /*@__PURE__*/ S.String;
 
 /** The help link which contains more information related to an alert. */
@@ -1729,8 +1726,7 @@ export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
 export type AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel =
   | "Partial"
   | "Full"
-  | "Off"
-  | (string & {});
+  | "Off";
 export const AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel =
   /*@__PURE__*/ S.String;
 
@@ -1786,7 +1782,9 @@ export interface AddsServicesServiceMembersAddRequest {
   /** The service role that is being monitored in the server. */
   role?: string;
   /** The monitoring level reported by the server. */
-  serverReportedMonitoringLevel?: AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel;
+  serverReportedMonitoringLevel?:
+    | AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel
+    | (string & {});
   /** The health status of the server. */
   status?: string;
 }
@@ -2414,8 +2412,7 @@ export type DimensionHealth =
   | "Warning"
   | "Error"
   | "NotMonitored"
-  | "Missing"
-  | (string & {});
+  | "Missing";
 export const DimensionHealth = /*@__PURE__*/ S.String;
 
 /** The connector object error. */
@@ -2758,8 +2755,7 @@ export const ServiceGetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ServiceMembersAddRequestServerReportedMonitoringLevel =
   | "Partial"
   | "Full"
-  | "Off"
-  | (string & {});
+  | "Off";
 export const ServiceMembersAddRequestServerReportedMonitoringLevel =
   /*@__PURE__*/ S.String;
 
@@ -2815,7 +2811,9 @@ export interface ServiceMembersAddRequest {
   /** The service role that is being monitored in the server. */
   role?: string;
   /** The monitoring level reported by the server. */
-  serverReportedMonitoringLevel?: ServiceMembersAddRequestServerReportedMonitoringLevel;
+  serverReportedMonitoringLevel?:
+    | ServiceMembersAddRequestServerReportedMonitoringLevel
+    | (string & {});
   /** The health status of the server. */
   status?: string;
 }

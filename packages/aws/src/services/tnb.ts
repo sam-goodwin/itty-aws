@@ -165,13 +165,13 @@ export const CreateSolFunctionPackageInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSolFunctionPackageInput>;
 export type VnfPkgId = string;
 export type VnfPkgArn = string;
-export type OnboardingState = "CREATED" | "ONBOARDED" | "ERROR" | (string & {});
+export type OnboardingState = "CREATED" | "ONBOARDED" | "ERROR";
 export const OnboardingState = /*@__PURE__*/ S.String;
 
-export type OperationalState = "ENABLED" | "DISABLED" | (string & {});
+export type OperationalState = "ENABLED" | "DISABLED";
 export const OperationalState = /*@__PURE__*/ S.String;
 
-export type UsageState = "IN_USE" | "NOT_IN_USE" | (string & {});
+export type UsageState = "IN_USE" | "NOT_IN_USE";
 export const UsageState = /*@__PURE__*/ S.String;
 
 export interface CreateSolFunctionPackageOutput {
@@ -258,17 +258,13 @@ export const CreateSolNetworkPackageInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSolNetworkPackageInput",
 }) as any as S.Schema<CreateSolNetworkPackageInput>;
 export type NsdInfoArn = string;
-export type NsdOnboardingState =
-  | "CREATED"
-  | "ONBOARDED"
-  | "ERROR"
-  | (string & {});
+export type NsdOnboardingState = "CREATED" | "ONBOARDED" | "ERROR";
 export const NsdOnboardingState = /*@__PURE__*/ S.String;
 
-export type NsdOperationalState = "ENABLED" | "DISABLED" | (string & {});
+export type NsdOperationalState = "ENABLED" | "DISABLED";
 export const NsdOperationalState = /*@__PURE__*/ S.String;
 
-export type NsdUsageState = "IN_USE" | "NOT_IN_USE" | (string & {});
+export type NsdUsageState = "IN_USE" | "NOT_IN_USE";
 export const NsdUsageState = /*@__PURE__*/ S.String;
 
 export interface CreateSolNetworkPackageOutput {
@@ -392,13 +388,10 @@ export const GetSolFunctionInstanceInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSolFunctionInstanceInput>;
 export type VnfInstanceArn = string;
 export type VnfdId = string;
-export type VnfInstantiationState =
-  | "INSTANTIATED"
-  | "NOT_INSTANTIATED"
-  | (string & {});
+export type VnfInstantiationState = "INSTANTIATED" | "NOT_INSTANTIATED";
 export const VnfInstantiationState = /*@__PURE__*/ S.String;
 
-export type VnfOperationalState = "STARTED" | "STOPPED" | (string & {});
+export type VnfOperationalState = "STARTED" | "STOPPED";
 export const VnfOperationalState = /*@__PURE__*/ S.String;
 
 export interface GetSolVnfcResourceInfoMetadata {
@@ -559,12 +552,12 @@ export const GetSolFunctionPackageOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSolFunctionPackageOutput",
 }) as any as S.Schema<GetSolFunctionPackageOutput>;
-export type PackageContentType = "application/zip" | (string & {});
+export type PackageContentType = "application/zip";
 export const PackageContentType = /*@__PURE__*/ S.String;
 
 export interface GetSolFunctionPackageContentInput {
   vnfPkgId: string;
-  accept: PackageContentType;
+  accept: PackageContentType | (string & {});
 }
 export const GetSolFunctionPackageContentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -600,12 +593,12 @@ export const GetSolFunctionPackageContentOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSolFunctionPackageContentOutput",
 }) as any as S.Schema<GetSolFunctionPackageContentOutput>;
-export type DescriptorContentType = "text/plain" | (string & {});
+export type DescriptorContentType = "text/plain";
 export const DescriptorContentType = /*@__PURE__*/ S.String;
 
 export interface GetSolFunctionPackageDescriptorInput {
   vnfPkgId: string;
-  accept: DescriptorContentType;
+  accept: DescriptorContentType | (string & {});
 }
 export const GetSolFunctionPackageDescriptorInput = /*@__PURE__*/ S.suspend(
   () =>
@@ -675,8 +668,7 @@ export type NsState =
   | "INSTANTIATE_IN_PROGRESS"
   | "INTENT_TO_UPDATE_IN_PROGRESS"
   | "UPDATE_IN_PROGRESS"
-  | "TERMINATE_IN_PROGRESS"
-  | (string & {});
+  | "TERMINATE_IN_PROGRESS";
 export const NsState = /*@__PURE__*/ S.String;
 
 export interface LcmOperationInfo {
@@ -753,21 +745,13 @@ export type NsLcmOperationState =
   | "COMPLETED"
   | "FAILED"
   | "CANCELLING"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const NsLcmOperationState = /*@__PURE__*/ S.String;
 
-export type LcmOperationType =
-  | "INSTANTIATE"
-  | "UPDATE"
-  | "TERMINATE"
-  | (string & {});
+export type LcmOperationType = "INSTANTIATE" | "UPDATE" | "TERMINATE";
 export const LcmOperationType = /*@__PURE__*/ S.String;
 
-export type UpdateSolNetworkType =
-  | "MODIFY_VNF_INFORMATION"
-  | "UPDATE_NS"
-  | (string & {});
+export type UpdateSolNetworkType = "MODIFY_VNF_INFORMATION" | "UPDATE_NS";
 export const UpdateSolNetworkType = /*@__PURE__*/ S.String;
 
 export interface ProblemDetails {
@@ -843,8 +827,7 @@ export type TaskStatus =
   | "COMPLETED"
   | "ERROR"
   | "SKIPPED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const TaskStatus = /*@__PURE__*/ S.String;
 
 export interface GetSolNetworkOperationTaskDetails {
@@ -977,7 +960,7 @@ export const GetSolNetworkPackageOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSolNetworkPackageOutput>;
 export interface GetSolNetworkPackageContentInput {
   nsdInfoId: string;
-  accept: PackageContentType;
+  accept: PackageContentType | (string & {});
 }
 export const GetSolNetworkPackageContentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1505,7 +1488,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagsForResourceOutput>;
 export interface PutSolFunctionPackageContentInput {
   vnfPkgId: string;
-  contentType?: PackageContentType;
+  contentType?: PackageContentType | (string & {});
   file: T.StreamingInputBody;
 }
 export const PutSolFunctionPackageContentInput = /*@__PURE__*/ S.suspend(() =>
@@ -1561,7 +1544,7 @@ export const PutSolFunctionPackageContentOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutSolFunctionPackageContentOutput>;
 export interface PutSolNetworkPackageContentInput {
   nsdInfoId: string;
-  contentType?: PackageContentType;
+  contentType?: PackageContentType | (string & {});
   file: T.StreamingInputBody;
 }
 export const PutSolNetworkPackageContentInput = /*@__PURE__*/ S.suspend(() =>
@@ -1708,7 +1691,7 @@ export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceOutput>;
 export interface UpdateSolFunctionPackageInput {
   vnfPkgId: string;
-  operationalState: OperationalState;
+  operationalState: OperationalState | (string & {});
 }
 export const UpdateSolFunctionPackageInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1758,7 +1741,7 @@ export const UpdateSolNetworkServiceData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSolNetworkServiceData>;
 export interface UpdateSolNetworkInstanceInput {
   nsInstanceId: string;
-  updateType: UpdateSolNetworkType;
+  updateType: UpdateSolNetworkType | (string & {});
   modifyVnfInfoData?: UpdateSolNetworkModify;
   updateNs?: UpdateSolNetworkServiceData;
   tags?: { [key: string]: string | undefined };
@@ -1797,7 +1780,7 @@ export const UpdateSolNetworkInstanceOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSolNetworkInstanceOutput>;
 export interface UpdateSolNetworkPackageInput {
   nsdInfoId: string;
-  nsdOperationalState: NsdOperationalState;
+  nsdOperationalState: NsdOperationalState | (string & {});
 }
 export const UpdateSolNetworkPackageInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1829,7 +1812,7 @@ export const UpdateSolNetworkPackageOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSolNetworkPackageOutput>;
 export interface ValidateSolFunctionPackageContentInput {
   vnfPkgId: string;
-  contentType?: PackageContentType;
+  contentType?: PackageContentType | (string & {});
   file: T.StreamingInputBody;
 }
 export const ValidateSolFunctionPackageContentInput = /*@__PURE__*/ S.suspend(
@@ -1888,7 +1871,7 @@ export const ValidateSolFunctionPackageContentOutput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ValidateSolFunctionPackageContentOutput>;
 export interface ValidateSolNetworkPackageContentInput {
   nsdInfoId: string;
-  contentType?: PackageContentType;
+  contentType?: PackageContentType | (string & {});
   file: T.StreamingInputBody;
 }
 export const ValidateSolNetworkPackageContentInput = /*@__PURE__*/ S.suspend(

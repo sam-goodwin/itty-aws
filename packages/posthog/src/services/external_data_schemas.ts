@@ -127,8 +127,7 @@ export type SyncTypeEnum =
   | "append"
   | "webhook"
   | "cdc"
-  | "xmin"
-  | (string & {});
+  | "xmin";
 export const SyncTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
@@ -139,8 +138,7 @@ export type IncrementalFieldTypeEnum =
   | "date"
   | "timestamp"
   | "objectid"
-  | "xid"
-  | (string & {});
+  | "xid";
 export const IncrementalFieldTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `never` - never * `1min` - 1min * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
@@ -155,8 +153,7 @@ export type SyncFrequencyEnum =
   | "12hour"
   | "24hour"
   | "7day"
-  | "30day"
-  | (string & {});
+  | "30day";
 export const SyncFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Column names for primary key deduplication. */
@@ -168,11 +165,7 @@ export const ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsL
   ) as any as S.Schema<ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList>;
 
 /** * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
-export type CdcTableModeEnum =
-  | "consolidated"
-  | "cdc_only"
-  | "both"
-  | (string & {});
+export type CdcTableModeEnum = "consolidated" | "cdc_only" | "both";
 export const CdcTableModeEnum = /*@__PURE__*/ S.String;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
@@ -217,21 +210,21 @@ export interface ExternalDataSchemasIncrementalFieldsCreateRequest {
   id: string;
   should_sync?: boolean;
   /** Sync strategy: incremental, full_refresh, append, cdc, or xmin. * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
-  sync_type?: SyncTypeEnum | null;
+  sync_type?: SyncTypeEnum | (string & {}) | null;
   /** Column name used to track sync progress. */
   incremental_field?: string | null;
   /** Data type of the incremental field. * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
-  incremental_field_type?: IncrementalFieldTypeEnum | null;
+  incremental_field_type?: IncrementalFieldTypeEnum | (string & {}) | null;
   /** Seconds to subtract from the stored incremental watermark at sync time, so each incremental run re-reads a rolling overlap window and catches late or backdated rows. Applies to timestamp/date incremental fields only. The stored watermark is unchanged. Maximum 5184000 (60 days). */
   incremental_field_lookback_seconds?: number | null;
   /** How often to sync. * `never` - never * `1min` - 1min * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
-  sync_frequency?: SyncFrequencyEnum | null;
+  sync_frequency?: SyncFrequencyEnum | (string & {}) | null;
   /** UTC time of day to run the sync (HH:MM:SS). */
   sync_time_of_day?: string | null;
   /** Column names for primary key deduplication. */
   primary_key_columns?: ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList | null;
   /** For CDC syncs: consolidated, cdc_only, or both. * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
-  cdc_table_mode?: CdcTableModeEnum | null;
+  cdc_table_mode?: CdcTableModeEnum | (string & {}) | null;
   /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
   enabled_columns?: ExternalDataSchemasIncrementalFieldsCreateRequestEnabledColumnsList | null;
   /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
@@ -624,21 +617,21 @@ export interface ExternalDataSchemasPartialUpdateRequest {
   id: string;
   should_sync?: boolean;
   /** Sync strategy: incremental, full_refresh, append, cdc, or xmin. * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
-  sync_type?: SyncTypeEnum | null;
+  sync_type?: SyncTypeEnum | (string & {}) | null;
   /** Column name used to track sync progress. */
   incremental_field?: string | null;
   /** Data type of the incremental field. * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
-  incremental_field_type?: IncrementalFieldTypeEnum | null;
+  incremental_field_type?: IncrementalFieldTypeEnum | (string & {}) | null;
   /** Seconds to subtract from the stored incremental watermark at sync time, so each incremental run re-reads a rolling overlap window and catches late or backdated rows. Applies to timestamp/date incremental fields only. The stored watermark is unchanged. Maximum 5184000 (60 days). */
   incremental_field_lookback_seconds?: number | null;
   /** How often to sync. * `never` - never * `1min` - 1min * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
-  sync_frequency?: SyncFrequencyEnum | null;
+  sync_frequency?: SyncFrequencyEnum | (string & {}) | null;
   /** UTC time of day to run the sync (HH:MM:SS). */
   sync_time_of_day?: string | null;
   /** Column names for primary key deduplication. */
   primary_key_columns?: ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList | null;
   /** For CDC syncs: consolidated, cdc_only, or both. * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
-  cdc_table_mode?: CdcTableModeEnum | null;
+  cdc_table_mode?: CdcTableModeEnum | (string & {}) | null;
   /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
   enabled_columns?: ExternalDataSchemasPartialUpdateRequestEnabledColumnsList | null;
   /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
@@ -729,21 +722,21 @@ export interface ExternalDataSchemasReloadCreateRequest {
   id: string;
   should_sync?: boolean;
   /** Sync strategy: incremental, full_refresh, append, cdc, or xmin. * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
-  sync_type?: SyncTypeEnum | null;
+  sync_type?: SyncTypeEnum | (string & {}) | null;
   /** Column name used to track sync progress. */
   incremental_field?: string | null;
   /** Data type of the incremental field. * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
-  incremental_field_type?: IncrementalFieldTypeEnum | null;
+  incremental_field_type?: IncrementalFieldTypeEnum | (string & {}) | null;
   /** Seconds to subtract from the stored incremental watermark at sync time, so each incremental run re-reads a rolling overlap window and catches late or backdated rows. Applies to timestamp/date incremental fields only. The stored watermark is unchanged. Maximum 5184000 (60 days). */
   incremental_field_lookback_seconds?: number | null;
   /** How often to sync. * `never` - never * `1min` - 1min * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
-  sync_frequency?: SyncFrequencyEnum | null;
+  sync_frequency?: SyncFrequencyEnum | (string & {}) | null;
   /** UTC time of day to run the sync (HH:MM:SS). */
   sync_time_of_day?: string | null;
   /** Column names for primary key deduplication. */
   primary_key_columns?: ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList | null;
   /** For CDC syncs: consolidated, cdc_only, or both. * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
-  cdc_table_mode?: CdcTableModeEnum | null;
+  cdc_table_mode?: CdcTableModeEnum | (string & {}) | null;
   /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
   enabled_columns?: ExternalDataSchemasReloadCreateRequestEnabledColumnsList | null;
   /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
@@ -841,21 +834,21 @@ export interface ExternalDataSchemasResyncCreateRequest {
   id: string;
   should_sync?: boolean;
   /** Sync strategy: incremental, full_refresh, append, cdc, or xmin. * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
-  sync_type?: SyncTypeEnum | null;
+  sync_type?: SyncTypeEnum | (string & {}) | null;
   /** Column name used to track sync progress. */
   incremental_field?: string | null;
   /** Data type of the incremental field. * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
-  incremental_field_type?: IncrementalFieldTypeEnum | null;
+  incremental_field_type?: IncrementalFieldTypeEnum | (string & {}) | null;
   /** Seconds to subtract from the stored incremental watermark at sync time, so each incremental run re-reads a rolling overlap window and catches late or backdated rows. Applies to timestamp/date incremental fields only. The stored watermark is unchanged. Maximum 5184000 (60 days). */
   incremental_field_lookback_seconds?: number | null;
   /** How often to sync. * `never` - never * `1min` - 1min * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
-  sync_frequency?: SyncFrequencyEnum | null;
+  sync_frequency?: SyncFrequencyEnum | (string & {}) | null;
   /** UTC time of day to run the sync (HH:MM:SS). */
   sync_time_of_day?: string | null;
   /** Column names for primary key deduplication. */
   primary_key_columns?: ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList | null;
   /** For CDC syncs: consolidated, cdc_only, or both. * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
-  cdc_table_mode?: CdcTableModeEnum | null;
+  cdc_table_mode?: CdcTableModeEnum | (string & {}) | null;
   /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
   enabled_columns?: ExternalDataSchemasResyncCreateRequestEnabledColumnsList | null;
   /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
@@ -974,21 +967,21 @@ export interface ExternalDataSchemasUpdateRequest {
   id: string;
   should_sync?: boolean;
   /** Sync strategy: incremental, full_refresh, append, cdc, or xmin. * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
-  sync_type?: SyncTypeEnum | null;
+  sync_type?: SyncTypeEnum | (string & {}) | null;
   /** Column name used to track sync progress. */
   incremental_field?: string | null;
   /** Data type of the incremental field. * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
-  incremental_field_type?: IncrementalFieldTypeEnum | null;
+  incremental_field_type?: IncrementalFieldTypeEnum | (string & {}) | null;
   /** Seconds to subtract from the stored incremental watermark at sync time, so each incremental run re-reads a rolling overlap window and catches late or backdated rows. Applies to timestamp/date incremental fields only. The stored watermark is unchanged. Maximum 5184000 (60 days). */
   incremental_field_lookback_seconds?: number | null;
   /** How often to sync. * `never` - never * `1min` - 1min * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
-  sync_frequency?: SyncFrequencyEnum | null;
+  sync_frequency?: SyncFrequencyEnum | (string & {}) | null;
   /** UTC time of day to run the sync (HH:MM:SS). */
   sync_time_of_day?: string | null;
   /** Column names for primary key deduplication. */
   primary_key_columns?: ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList | null;
   /** For CDC syncs: consolidated, cdc_only, or both. * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
-  cdc_table_mode?: CdcTableModeEnum | null;
+  cdc_table_mode?: CdcTableModeEnum | (string & {}) | null;
   /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
   enabled_columns?: ExternalDataSchemasUpdateRequestEnabledColumnsList | null;
   /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */

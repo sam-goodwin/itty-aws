@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,33 +72,21 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:cancel",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:cancel","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature. */
 export interface CryptoKeyConfig {
@@ -108,12 +94,10 @@ export interface CryptoKeyConfig {
   keyReference?: string;
 }
 export const CryptoKeyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyReference: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CryptoKeyConfig",
-}) as any as S.Schema<CryptoKeyConfig>;
+S.Struct({
+  "keyReference": S.optional(S.String),
+}),
+).annotate({ identifier: "CryptoKeyConfig" }) as any as S.Schema<CryptoKeyConfig>;
 
 /** Represents an arbitrary window of time. */
 export interface TimeWindow {
@@ -123,10 +107,10 @@ export interface TimeWindow {
   endTime?: string;
 }
 export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
 
 /** Represents an arbitrary window of time that recurs. */
@@ -137,13 +121,11 @@ export interface RecurringTimeWindow {
   recurrence?: string;
 }
 export const RecurringTimeWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    window: S.optional(TimeWindow),
-    recurrence: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecurringTimeWindow",
-}) as any as S.Schema<RecurringTimeWindow>;
+S.Struct({
+  "window": S.optional(TimeWindow),
+  "recurrence": S.optional(S.String),
+}),
+).annotate({ identifier: "RecurringTimeWindow" }) as any as S.Schema<RecurringTimeWindow>;
 
 /** Maintenance window of the instance. */
 export interface MaintenanceWindow {
@@ -151,12 +133,10 @@ export interface MaintenanceWindow {
   recurringTimeWindow?: RecurringTimeWindow;
 }
 export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recurringTimeWindow: S.optional(RecurringTimeWindow),
-  }),
-).annotate({
-  identifier: "MaintenanceWindow",
-}) as any as S.Schema<MaintenanceWindow>;
+S.Struct({
+  "recurringTimeWindow": S.optional(RecurringTimeWindow),
+}),
+).annotate({ identifier: "MaintenanceWindow" }) as any as S.Schema<MaintenanceWindow>;
 
 /** Maintenance policy of the instance. */
 export interface MaintenancePolicy {
@@ -166,37 +146,19 @@ export interface MaintenancePolicy {
   maintenanceExclusionWindow?: TimeWindow;
 }
 export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maintenanceWindow: S.optional(MaintenanceWindow),
-    maintenanceExclusionWindow: S.optional(TimeWindow),
-  }),
-).annotate({
-  identifier: "MaintenancePolicy",
-}) as any as S.Schema<MaintenancePolicy>;
+S.Struct({
+  "maintenanceWindow": S.optional(MaintenanceWindow),
+  "maintenanceExclusionWindow": S.optional(TimeWindow),
+}),
+).annotate({ identifier: "MaintenancePolicy" }) as any as S.Schema<MaintenancePolicy>;
 
-export type InstanceTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "BASIC"
-  | "ENTERPRISE"
-  | "DEVELOPER"
-  | (string & {});
+export type InstanceTypeEnum = "TYPE_UNSPECIFIED" | "BASIC" | "ENTERPRISE" | "DEVELOPER";
 export const InstanceTypeEnum = /*@__PURE__*/ S.String;
 
-export type AcceleratorAcceleratorTypeEnum =
-  | "ACCELERATOR_TYPE_UNSPECIFIED"
-  | "CDC"
-  | "HEALTHCARE"
-  | "CCAI_INSIGHTS"
-  | "CLOUDSEARCH"
-  | (string & {});
+export type AcceleratorAcceleratorTypeEnum = "ACCELERATOR_TYPE_UNSPECIFIED" | "CDC" | "HEALTHCARE" | "CCAI_INSIGHTS" | "CLOUDSEARCH";
 export const AcceleratorAcceleratorTypeEnum = /*@__PURE__*/ S.String;
 
-export type AcceleratorStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | "UNKNOWN"
-  | (string & {});
+export type AcceleratorStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | "UNKNOWN";
 export const AcceleratorStateEnum = /*@__PURE__*/ S.String;
 
 /** Identifies Cloud Data Fusion accelerators for an instance. */
@@ -207,29 +169,20 @@ export interface Accelerator {
   state?: AcceleratorStateEnum;
 }
 export const Accelerator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acceleratorType: S.optional(AcceleratorAcceleratorTypeEnum),
-    state: S.optional(AcceleratorStateEnum),
-  }),
+S.Struct({
+  "acceleratorType": S.optional(AcceleratorAcceleratorTypeEnum),
+  "state": S.optional(AcceleratorStateEnum),
+}),
 ).annotate({ identifier: "Accelerator" }) as any as S.Schema<Accelerator>;
 
 export type AcceleratorList = ReadonlyArray<Accelerator>;
-export const AcceleratorList = /*@__PURE__*/ S.Array(
-  Accelerator,
-) as any as S.Schema<AcceleratorList>;
+export const AcceleratorList = /*@__PURE__*/ S.Array(Accelerator) as any as S.Schema<AcceleratorList>;
 
-export type InstanceDisabledReasonItemEnum =
-  | "DISABLED_REASON_UNSPECIFIED"
-  | "KMS_KEY_ISSUE"
-  | "PROJECT_STATE_OFF"
-  | (string & {});
+export type InstanceDisabledReasonItemEnum = "DISABLED_REASON_UNSPECIFIED" | "KMS_KEY_ISSUE" | "PROJECT_STATE_OFF";
 export const InstanceDisabledReasonItemEnum = /*@__PURE__*/ S.String;
 
-export type InstanceDisabledReasonItemEnumList =
-  ReadonlyArray<InstanceDisabledReasonItemEnum>;
-export const InstanceDisabledReasonItemEnumList = /*@__PURE__*/ S.Array(
-  InstanceDisabledReasonItemEnum,
-) as any as S.Schema<InstanceDisabledReasonItemEnumList>;
+export type InstanceDisabledReasonItemEnumList = ReadonlyArray<InstanceDisabledReasonItemEnum>;
+export const InstanceDisabledReasonItemEnumList = /*@__PURE__*/ S.Array(InstanceDisabledReasonItemEnum) as any as S.Schema<InstanceDisabledReasonItemEnumList>;
 
 /** Monitoring configuration for a Data Fusion instance. */
 export interface MonitoringConfig {
@@ -237,12 +190,10 @@ export interface MonitoringConfig {
   enableInstanceV2Metrics?: boolean;
 }
 export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableInstanceV2Metrics: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "MonitoringConfig",
-}) as any as S.Schema<MonitoringConfig>;
+S.Struct({
+  "enableInstanceV2Metrics": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "MonitoringConfig" }) as any as S.Schema<MonitoringConfig>;
 
 /** Confirguration of PubSubEventWriter. */
 export interface EventPublishConfig {
@@ -252,26 +203,17 @@ export interface EventPublishConfig {
   topic?: string;
 }
 export const EventPublishConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    topic: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventPublishConfig",
-}) as any as S.Schema<EventPublishConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "topic": S.optional(S.String),
+}),
+).annotate({ identifier: "EventPublishConfig" }) as any as S.Schema<EventPublishConfig>;
 
-export type VersionTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "TYPE_PREVIEW"
-  | "TYPE_GENERAL_AVAILABILITY"
-  | "TYPE_DEPRECATED"
-  | (string & {});
+export type VersionTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_PREVIEW" | "TYPE_GENERAL_AVAILABILITY" | "TYPE_DEPRECATED";
 export const VersionTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The Data Fusion version. */
 export interface Version {
@@ -285,24 +227,18 @@ export interface Version {
   availableFeatures?: StringList;
 }
 export const Version = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(VersionTypeEnum),
-    defaultVersion: S.optional(S.Boolean),
-    versionNumber: S.optional(S.String),
-    availableFeatures: S.optional(StringList),
-  }),
+S.Struct({
+  "type": S.optional(VersionTypeEnum),
+  "defaultVersion": S.optional(S.Boolean),
+  "versionNumber": S.optional(S.String),
+  "availableFeatures": S.optional(StringList),
+}),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
 export type VersionList = ReadonlyArray<Version>;
-export const VersionList = /*@__PURE__*/ S.Array(
-  Version,
-) as any as S.Schema<VersionList>;
+export const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
 
-export type NetworkConfigConnectionTypeEnum =
-  | "CONNECTION_TYPE_UNSPECIFIED"
-  | "VPC_PEERING"
-  | "PRIVATE_SERVICE_CONNECT_INTERFACES"
-  | (string & {});
+export type NetworkConfigConnectionTypeEnum = "CONNECTION_TYPE_UNSPECIFIED" | "VPC_PEERING" | "PRIVATE_SERVICE_CONNECT_INTERFACES";
 export const NetworkConfigConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for using Private Service Connect to establish connectivity between the Data Fusion consumer project and the corresponding tenant project. */
@@ -315,14 +251,12 @@ export interface PrivateServiceConnectConfig {
   effectiveUnreachableCidrBlock?: string;
 }
 export const PrivateServiceConnectConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkAttachment: S.optional(S.String),
-    unreachableCidrBlock: S.optional(S.String),
-    effectiveUnreachableCidrBlock: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateServiceConnectConfig",
-}) as any as S.Schema<PrivateServiceConnectConfig>;
+S.Struct({
+  "networkAttachment": S.optional(S.String),
+  "unreachableCidrBlock": S.optional(S.String),
+  "effectiveUnreachableCidrBlock": S.optional(S.String),
+}),
+).annotate({ identifier: "PrivateServiceConnectConfig" }) as any as S.Schema<PrivateServiceConnectConfig>;
 
 /** Network configuration for a Data Fusion instance. These configurations are used for peering with the customer network. Configurations are optional when a public Data Fusion instance is to be created. However, providing these configurations allows several benefits, such as reduced network latency while accessing the customer resources from managed Data Fusion instance nodes, as well as access to the customer on-prem resources. */
 export interface NetworkConfig {
@@ -336,36 +270,18 @@ export interface NetworkConfig {
   privateServiceConnectConfig?: PrivateServiceConnectConfig;
 }
 export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipAllocation: S.optional(S.String),
-    network: S.optional(S.String),
-    connectionType: S.optional(NetworkConfigConnectionTypeEnum),
-    privateServiceConnectConfig: S.optional(PrivateServiceConnectConfig),
-  }),
+S.Struct({
+  "ipAllocation": S.optional(S.String),
+  "network": S.optional(S.String),
+  "connectionType": S.optional(NetworkConfigConnectionTypeEnum),
+  "privateServiceConnectConfig": S.optional(PrivateServiceConnectConfig),
+}),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type InstanceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "RUNNING"
-  | "FAILED"
-  | "DELETING"
-  | "UPGRADING"
-  | "RESTARTING"
-  | "UPDATING"
-  | "AUTO_UPDATING"
-  | "AUTO_UPGRADING"
-  | "DISABLED"
-  | "ENABLING"
-  | (string & {});
+export type InstanceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "RUNNING" | "FAILED" | "DELETING" | "UPGRADING" | "RESTARTING" | "UPDATING" | "AUTO_UPDATING" | "AUTO_UPGRADING" | "DISABLED" | "ENABLING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
-export type MaintenanceEventStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "SCHEDULED"
-  | "STARTED"
-  | "COMPLETED"
-  | (string & {});
+export type MaintenanceEventStateEnum = "STATE_UNSPECIFIED" | "SCHEDULED" | "STARTED" | "COMPLETED";
 export const MaintenanceEventStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a maintenance event. */
@@ -378,19 +294,15 @@ export interface MaintenanceEvent {
   state?: MaintenanceEventStateEnum;
 }
 export const MaintenanceEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    state: S.optional(MaintenanceEventStateEnum),
-  }),
-).annotate({
-  identifier: "MaintenanceEvent",
-}) as any as S.Schema<MaintenanceEvent>;
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "state": S.optional(MaintenanceEventStateEnum),
+}),
+).annotate({ identifier: "MaintenanceEvent" }) as any as S.Schema<MaintenanceEvent>;
 
 export type MaintenanceEventList = ReadonlyArray<MaintenanceEvent>;
-export const MaintenanceEventList = /*@__PURE__*/ S.Array(
-  MaintenanceEvent,
-) as any as S.Schema<MaintenanceEventList>;
+export const MaintenanceEventList = /*@__PURE__*/ S.Array(MaintenanceEvent) as any as S.Schema<MaintenanceEventList>;
 
 /** Logging configuration for a Data Fusion instance. */
 export interface LoggingConfig {
@@ -400,10 +312,10 @@ export interface LoggingConfig {
   enableInstanceV2Logs?: boolean;
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceCloudLoggingDisabled: S.optional(S.Boolean),
-    enableInstanceV2Logs: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "instanceCloudLoggingDisabled": S.optional(S.Boolean),
+  "enableInstanceV2Logs": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
 
 /** Represents a Data Fusion instance. */
@@ -490,48 +402,48 @@ export interface Instance {
   loggingConfig?: LoggingConfig;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceAccount: S.optional(S.String),
-    enableStackdriverLogging: S.optional(S.Boolean),
-    dataplexDataLineageIntegrationEnabled: S.optional(S.Boolean),
-    options: S.optional(StringMap),
-    p4ServiceAccount: S.optional(S.String),
-    serviceEndpoint: S.optional(S.String),
-    cryptoKeyConfig: S.optional(CryptoKeyConfig),
-    maintenancePolicy: S.optional(MaintenancePolicy),
-    privateInstance: S.optional(S.Boolean),
-    zone: S.optional(S.String),
-    dataprocServiceAccount: S.optional(S.String),
-    description: S.optional(S.String),
-    labels: S.optional(StringMap),
-    version: S.optional(S.String),
-    name: S.optional(S.String),
-    satisfiesPzi: S.optional(S.Boolean),
-    workforceIdentityServiceEndpoint: S.optional(S.String),
-    createTime: S.optional(S.String),
-    stateMessage: S.optional(S.String),
-    patchRevision: S.optional(S.String),
-    enableRbac: S.optional(S.Boolean),
-    type: S.optional(InstanceTypeEnum),
-    accelerators: S.optional(AcceleratorList),
-    enableZoneSeparation: S.optional(S.Boolean),
-    tags: S.optional(StringMap),
-    updateTime: S.optional(S.String),
-    disabledReason: S.optional(InstanceDisabledReasonItemEnumList),
-    enableStackdriverMonitoring: S.optional(S.Boolean),
-    gcsBucket: S.optional(S.String),
-    monitoringConfig: S.optional(MonitoringConfig),
-    eventPublishConfig: S.optional(EventPublishConfig),
-    availableVersion: S.optional(VersionList),
-    networkConfig: S.optional(NetworkConfig),
-    apiEndpoint: S.optional(S.String),
-    tenantProjectId: S.optional(S.String),
-    satisfiesPzs: S.optional(S.Boolean),
-    displayName: S.optional(S.String),
-    state: S.optional(InstanceStateEnum),
-    maintenanceEvents: S.optional(MaintenanceEventList),
-    loggingConfig: S.optional(LoggingConfig),
-  }),
+S.Struct({
+  "serviceAccount": S.optional(S.String),
+  "enableStackdriverLogging": S.optional(S.Boolean),
+  "dataplexDataLineageIntegrationEnabled": S.optional(S.Boolean),
+  "options": S.optional(StringMap),
+  "p4ServiceAccount": S.optional(S.String),
+  "serviceEndpoint": S.optional(S.String),
+  "cryptoKeyConfig": S.optional(CryptoKeyConfig),
+  "maintenancePolicy": S.optional(MaintenancePolicy),
+  "privateInstance": S.optional(S.Boolean),
+  "zone": S.optional(S.String),
+  "dataprocServiceAccount": S.optional(S.String),
+  "description": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "version": S.optional(S.String),
+  "name": S.optional(S.String),
+  "satisfiesPzi": S.optional(S.Boolean),
+  "workforceIdentityServiceEndpoint": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "stateMessage": S.optional(S.String),
+  "patchRevision": S.optional(S.String),
+  "enableRbac": S.optional(S.Boolean),
+  "type": S.optional(InstanceTypeEnum),
+  "accelerators": S.optional(AcceleratorList),
+  "enableZoneSeparation": S.optional(S.Boolean),
+  "tags": S.optional(StringMap),
+  "updateTime": S.optional(S.String),
+  "disabledReason": S.optional(InstanceDisabledReasonItemEnumList),
+  "enableStackdriverMonitoring": S.optional(S.Boolean),
+  "gcsBucket": S.optional(S.String),
+  "monitoringConfig": S.optional(MonitoringConfig),
+  "eventPublishConfig": S.optional(EventPublishConfig),
+  "availableVersion": S.optional(VersionList),
+  "networkConfig": S.optional(NetworkConfig),
+  "apiEndpoint": S.optional(S.String),
+  "tenantProjectId": S.optional(S.String),
+  "satisfiesPzs": S.optional(S.Boolean),
+  "displayName": S.optional(S.String),
+  "state": S.optional(InstanceStateEnum),
+  "maintenanceEvents": S.optional(MaintenanceEventList),
+  "loggingConfig": S.optional(LoggingConfig),
+}),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface CreateProjectsLocationsInstancesRequest {
@@ -542,33 +454,19 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      instanceId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Instance.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/instances",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsInstancesRequest",
-}) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
+export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "instanceId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Instance.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/instances","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsInstancesRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -580,11 +478,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -601,13 +499,13 @@ export interface Operation {
   metadata?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(Status),
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-    response: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "error": S.optional(Status),
+  "name": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+  "response": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** DNS peering configuration. These configurations are used to create DNS peering with the customer Cloud DNS. */
@@ -624,13 +522,13 @@ export interface DnsPeering {
   targetNetwork?: string;
 }
 export const DnsPeering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    targetProject: S.optional(S.String),
-    targetNetwork: S.optional(S.String),
-  }),
+S.Struct({
+  "domain": S.optional(S.String),
+  "description": S.optional(S.String),
+  "name": S.optional(S.String),
+  "targetProject": S.optional(S.String),
+  "targetNetwork": S.optional(S.String),
+}),
 ).annotate({ identifier: "DnsPeering" }) as any as S.Schema<DnsPeering>;
 
 export interface CreateProjectsLocationsInstancesDnsPeeringsRequest {
@@ -641,22 +539,13 @@ export interface CreateProjectsLocationsInstancesDnsPeeringsRequest {
   /** Request body */
   body?: DnsPeering;
 }
-export const CreateProjectsLocationsInstancesDnsPeeringsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dnsPeeringId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(DnsPeering.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/dnsPeerings",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsInstancesDnsPeeringsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsInstancesDnsPeeringsRequest>;
+export const CreateProjectsLocationsInstancesDnsPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "dnsPeeringId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(DnsPeering.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/dnsPeerings","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsInstancesDnsPeeringsRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesDnsPeeringsRequest>;
 
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. The instance resource name in the format projects/{project}/locations/{location}/instances/{instance} */
@@ -664,59 +553,32 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Optional. If set to true, any nested resources from this instance will also be deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsInstancesRequest",
-}) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
+export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsInstancesRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
 
 export interface DeleteProjectsLocationsInstancesDnsPeeringsRequest {
   /** Required. The name of the DNS peering zone to delete. Format: projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering} */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesDnsPeeringsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsInstancesDnsPeeringsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsInstancesDnsPeeringsRequest>;
+export const DeleteProjectsLocationsInstancesDnsPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsInstancesDnsPeeringsRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesDnsPeeringsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -724,28 +586,14 @@ export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+resource}:getIamPolicy",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsInstancesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
+export const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  "resource": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsInstancesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -756,16 +604,14 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-    exemptedMembers: S.optional(StringList),
-  }),
+S.Struct({
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+  "exemptedMembers": S.optional(StringList),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -775,16 +621,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -798,12 +642,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -816,17 +660,15 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    members: S.optional(StringList),
-    condition: S.optional(Expr),
-  }),
+S.Struct({
+  "role": S.optional(S.String),
+  "members": S.optional(StringList),
+  "condition": S.optional(Expr),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -840,12 +682,12 @@ export interface Policy {
   bindings?: BindingList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    auditConfigs: S.optional(AuditConfigList),
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "auditConfigs": S.optional(AuditConfigList),
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsInstancesNamespacesRequest {
@@ -854,39 +696,22 @@ export interface GetIamPolicyProjectsLocationsInstancesNamespacesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsInstancesNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+resource}:getIamPolicy",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsInstancesNamespacesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesNamespacesRequest>;
+export const GetIamPolicyProjectsLocationsInstancesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  "resource": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsInstancesNamespacesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesNamespacesRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://datafusion.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -902,52 +727,34 @@ export interface Location {
   metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    locationId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
-    metadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "locationId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "metadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. The instance resource name in the format projects/{project}/locations/{location}/instances/{instance}. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsInstancesRequest",
-}) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
+export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsInstancesRequest" }) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -962,27 +769,17 @@ export interface ListProjectsLocationsRequest {
   name: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}/locations",
-      baseUrl: "https://datafusion.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -992,13 +789,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsInstancesRequest {
   /** List filter. */
@@ -1012,29 +807,18 @@ export interface ListProjectsLocationsInstancesRequest {
   /** The next_page_token value to use if there are additional results to retrieve for this list request. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/instances",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsInstancesRequest",
-}) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
+export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/instances","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsInstancesRequest" }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(
-  Instance,
-) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** Response message for the list instance request. */
 export interface ListInstancesResponse {
@@ -1046,14 +830,12 @@ export interface ListInstancesResponse {
   unreachable?: StringList;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    instances: S.optional(InstanceList),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListInstancesResponse",
-}) as any as S.Schema<ListInstancesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "instances": S.optional(InstanceList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsLocationsInstancesDnsPeeringsRequest {
   /** Required. The parent, which owns this collection of dns peerings. Format: projects/{project}/locations/{location}/instances/{instance} */
@@ -1063,27 +845,16 @@ export interface ListProjectsLocationsInstancesDnsPeeringsRequest {
   /** A page token, received from a previous `ListDnsPeerings` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDnsPeerings` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesDnsPeeringsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/dnsPeerings",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsInstancesDnsPeeringsRequest",
-  }) as any as S.Schema<ListProjectsLocationsInstancesDnsPeeringsRequest>;
+export const ListProjectsLocationsInstancesDnsPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/dnsPeerings","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsInstancesDnsPeeringsRequest" }) as any as S.Schema<ListProjectsLocationsInstancesDnsPeeringsRequest>;
 
 export type DnsPeeringList = ReadonlyArray<DnsPeering>;
-export const DnsPeeringList = /*@__PURE__*/ S.Array(
-  DnsPeering,
-) as any as S.Schema<DnsPeeringList>;
+export const DnsPeeringList = /*@__PURE__*/ S.Array(DnsPeering) as any as S.Schema<DnsPeeringList>;
 
 /** Response message for list DNS peerings. */
 export interface ListDnsPeeringsResponse {
@@ -1093,21 +864,14 @@ export interface ListDnsPeeringsResponse {
   nextPageToken?: string;
 }
 export const ListDnsPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dnsPeerings: S.optional(DnsPeeringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDnsPeeringsResponse",
-}) as any as S.Schema<ListDnsPeeringsResponse>;
+S.Struct({
+  "dnsPeerings": S.optional(DnsPeeringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDnsPeeringsResponse" }) as any as S.Schema<ListDnsPeeringsResponse>;
 
-export type ListProjectsLocationsInstancesNamespacesViewEnum =
-  | "NAMESPACE_VIEW_UNSPECIFIED"
-  | "NAMESPACE_VIEW_BASIC"
-  | "NAMESPACE_VIEW_FULL"
-  | (string & {});
-export const ListProjectsLocationsInstancesNamespacesViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsInstancesNamespacesViewEnum = "NAMESPACE_VIEW_UNSPECIFIED" | "NAMESPACE_VIEW_BASIC" | "NAMESPACE_VIEW_FULL";
+export const ListProjectsLocationsInstancesNamespacesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsInstancesNamespacesRequest {
   /** Required. The instance to list its namespaces. */
@@ -1117,27 +881,16 @@ export interface ListProjectsLocationsInstancesNamespacesRequest {
   /** The next_page_token value to use if there are additional results to retrieve for this list request. */
   pageToken?: string;
   /** By default, only basic information about a namespace is returned (e.g. name). When `NAMESPACE_VIEW_FULL` is specified, additional information associated with a namespace gets returned (e.g. IAM policy set on the namespace) */
-  view?: ListProjectsLocationsInstancesNamespacesViewEnum;
+  view?: ListProjectsLocationsInstancesNamespacesViewEnum | (string & {});
 }
-export const ListProjectsLocationsInstancesNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      view: S.optional(
-        ListProjectsLocationsInstancesNamespacesViewEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/namespaces",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsInstancesNamespacesRequest",
-  }) as any as S.Schema<ListProjectsLocationsInstancesNamespacesRequest>;
+export const ListProjectsLocationsInstancesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "view": S.optional(ListProjectsLocationsInstancesNamespacesViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/namespaces","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsInstancesNamespacesRequest" }) as any as S.Schema<ListProjectsLocationsInstancesNamespacesRequest>;
 
 /** IAMPolicy encapsulates the IAM policy name, definition and status of policy fetching. */
 export interface IAMPolicy {
@@ -1147,10 +900,10 @@ export interface IAMPolicy {
   status?: Status;
 }
 export const IAMPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-    status: S.optional(Status),
-  }),
+S.Struct({
+  "policy": S.optional(Policy),
+  "status": S.optional(Status),
+}),
 ).annotate({ identifier: "IAMPolicy" }) as any as S.Schema<IAMPolicy>;
 
 /** Represents the information of a namespace */
@@ -1161,16 +914,14 @@ export interface Namespace {
   iamPolicy?: IAMPolicy;
 }
 export const Namespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    iamPolicy: S.optional(IAMPolicy),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "iamPolicy": S.optional(IAMPolicy),
+}),
 ).annotate({ identifier: "Namespace" }) as any as S.Schema<Namespace>;
 
 export type NamespaceList = ReadonlyArray<Namespace>;
-export const NamespaceList = /*@__PURE__*/ S.Array(
-  Namespace,
-) as any as S.Schema<NamespaceList>;
+export const NamespaceList = /*@__PURE__*/ S.Array(Namespace) as any as S.Schema<NamespaceList>;
 
 /** List namespaces response. */
 export interface ListNamespacesResponse {
@@ -1180,13 +931,11 @@ export interface ListNamespacesResponse {
   nextPageToken?: string;
 }
 export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespaces: S.optional(NamespaceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListNamespacesResponse",
-}) as any as S.Schema<ListNamespacesResponse>;
+S.Struct({
+  "namespaces": S.optional(NamespaceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListNamespacesResponse" }) as any as S.Schema<ListNamespacesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -1200,29 +949,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}/operations",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/operations","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1234,14 +972,12 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsVersionsRequest {
   /** Required. The project and location for which to retrieve instance information in the format projects/{project}/locations/{location}. */
@@ -1253,23 +989,14 @@ export interface ListProjectsLocationsVersionsRequest {
   /** Whether or not to return the latest patch of every available minor version. If true, only the latest patch will be returned. Ex. if allowed versions is [6.1.1, 6.1.2, 6.2.0] then response will be [6.1.2, 6.2.0] */
   latestPatchOnly?: boolean;
 }
-export const ListProjectsLocationsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      latestPatchOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/versions",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsVersionsRequest",
-}) as any as S.Schema<ListProjectsLocationsVersionsRequest>;
+export const ListProjectsLocationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "latestPatchOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/versions","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsVersionsRequest" }) as any as S.Schema<ListProjectsLocationsVersionsRequest>;
 
 /** Response message for the list available versions request. */
 export interface ListAvailableVersionsResponse {
@@ -1281,14 +1008,12 @@ export interface ListAvailableVersionsResponse {
   nextPageToken?: string;
 }
 export const ListAvailableVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versions: S.optional(VersionList),
-    availableVersions: S.optional(VersionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAvailableVersionsResponse",
-}) as any as S.Schema<ListAvailableVersionsResponse>;
+S.Struct({
+  "versions": S.optional(VersionList),
+  "availableVersions": S.optional(VersionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAvailableVersionsResponse" }) as any as S.Schema<ListAvailableVersionsResponse>;
 
 export interface PatchProjectsLocationsInstancesRequest {
   /** Field mask is used to specify the fields that the update will overwrite in an instance resource. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask, all the supported fields (labels and options currently) will be overwritten. */
@@ -1298,30 +1023,19 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Instance.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsInstancesRequest",
-}) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
+export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Instance.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsInstancesRequest" }) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
 
 /** Request message for RemoveIamPolicy method. */
 export interface RemoveIamPolicyRequest {}
 export const RemoveIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveIamPolicyRequest",
-}) as any as S.Schema<RemoveIamPolicyRequest>;
+S.Struct({}),
+).annotate({ identifier: "RemoveIamPolicyRequest" }) as any as S.Schema<RemoveIamPolicyRequest>;
 
 export interface RemoveIamPolicyProjectsLocationsRequest {
   /** Required. The resource on which IAM policy to be removed is attached to. */
@@ -1329,37 +1043,24 @@ export interface RemoveIamPolicyProjectsLocationsRequest {
   /** Request body */
   body?: RemoveIamPolicyRequest;
 }
-export const RemoveIamPolicyProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(RemoveIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:removeIamPolicy",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "RemoveIamPolicyProjectsLocationsRequest",
-}) as any as S.Schema<RemoveIamPolicyProjectsLocationsRequest>;
+export const RemoveIamPolicyProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(RemoveIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:removeIamPolicy","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "RemoveIamPolicyProjectsLocationsRequest" }) as any as S.Schema<RemoveIamPolicyProjectsLocationsRequest>;
 
 /** Response message for RemoveIamPolicy method. */
 export interface RemoveIamPolicyResponse {}
 export const RemoveIamPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveIamPolicyResponse",
-}) as any as S.Schema<RemoveIamPolicyResponse>;
+S.Struct({}),
+).annotate({ identifier: "RemoveIamPolicyResponse" }) as any as S.Schema<RemoveIamPolicyResponse>;
 
 /** Request message for restarting a Data Fusion instance. */
 export interface RestartInstanceRequest {}
 export const RestartInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestartInstanceRequest",
-}) as any as S.Schema<RestartInstanceRequest>;
+S.Struct({}),
+).annotate({ identifier: "RestartInstanceRequest" }) as any as S.Schema<RestartInstanceRequest>;
 
 export interface RestartProjectsLocationsInstancesRequest {
   /** Required. Name of the Data Fusion instance which need to be restarted in the form of projects/{project}/locations/{location}/instances/{instance} */
@@ -1367,21 +1068,12 @@ export interface RestartProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RestartInstanceRequest;
 }
-export const RestartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RestartInstanceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:restart",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "RestartProjectsLocationsInstancesRequest",
-}) as any as S.Schema<RestartProjectsLocationsInstancesRequest>;
+export const RestartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RestartInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:restart","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "RestartProjectsLocationsInstancesRequest" }) as any as S.Schema<RestartProjectsLocationsInstancesRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -1391,13 +1083,11 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1405,21 +1095,12 @@ export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:setIamPolicy",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsInstancesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
+export const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsInstancesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
 
 export interface SetIamPolicyProjectsLocationsInstancesNamespacesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1427,21 +1108,12 @@ export interface SetIamPolicyProjectsLocationsInstancesNamespacesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsInstancesNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:setIamPolicy",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsInstancesNamespacesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesNamespacesRequest>;
+export const SetIamPolicyProjectsLocationsInstancesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsInstancesNamespacesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesNamespacesRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -1449,12 +1121,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1462,21 +1132,12 @@ export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsInstancesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
+export const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsInstancesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -1484,12 +1145,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsInstancesNamespacesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1497,29 +1156,18 @@ export interface TestIamPermissionsProjectsLocationsInstancesNamespacesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsInstancesNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsInstancesNamespacesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesNamespacesRequest>;
+export const TestIamPermissionsProjectsLocationsInstancesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsInstancesNamespacesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesNamespacesRequest>;
 
 /** Request message for upgrading a Data Fusion instance. To change the instance properties, instance update should be used. */
 export interface UpgradeInstanceRequest {}
 export const UpgradeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpgradeInstanceRequest",
-}) as any as S.Schema<UpgradeInstanceRequest>;
+S.Struct({}),
+).annotate({ identifier: "UpgradeInstanceRequest" }) as any as S.Schema<UpgradeInstanceRequest>;
 
 export interface UpgradeProjectsLocationsInstancesRequest {
   /** Required. Name of the Data Fusion instance which need to be upgraded in the form of projects/{project}/locations/{location}/instances/{instance} Instance will be upgraded with the latest stable version of the Data Fusion. */
@@ -1527,28 +1175,14 @@ export interface UpgradeProjectsLocationsInstancesRequest {
   /** Request body */
   body?: UpgradeInstanceRequest;
 }
-export const UpgradeProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UpgradeInstanceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:upgrade",
-        baseUrl: "https://datafusion.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UpgradeProjectsLocationsInstancesRequest",
-}) as any as S.Schema<UpgradeProjectsLocationsInstancesRequest>;
+export const UpgradeProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UpgradeInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:upgrade","baseUrl":"https://datafusion.googleapis.com/"})),
+).annotate({ identifier: "UpgradeProjectsLocationsInstancesRequest" }) as any as S.Schema<UpgradeProjectsLocationsInstancesRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1563,12 +1197,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Data Fusion instance in the specified project and location. */
 export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesRequest,
@@ -1583,12 +1212,7 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesDnsPeeringsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsInstancesDnsPeeringsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates DNS peering on the given resource. */
 export const createProjectsLocationsInstancesDnsPeerings: API.OperationMethod<
   CreateProjectsLocationsInstancesDnsPeeringsRequest,
@@ -1603,12 +1227,7 @@ export const createProjectsLocationsInstancesDnsPeerings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Data Fusion instance. */
 export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesRequest,
@@ -1623,12 +1242,7 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesDnsPeeringsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsInstancesDnsPeeringsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes DNS peering on the given resource. */
 export const deleteProjectsLocationsInstancesDnsPeerings: API.OperationMethod<
   DeleteProjectsLocationsInstancesDnsPeeringsRequest,
@@ -1643,12 +1257,7 @@ export const deleteProjectsLocationsInstancesDnsPeerings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1663,10 +1272,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesRequest,
@@ -1681,10 +1287,7 @@ export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsInstancesNamespacesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsInstancesNamespacesError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsInstancesNamespaces: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesNamespacesRequest,
@@ -1714,10 +1317,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Data Fusion instance. */
 export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesRequest,
@@ -1732,10 +1332,7 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1763,16 +1360,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Lists Data Fusion instances in the specified project and location. */
 export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesRequest,
@@ -1785,16 +1376,10 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsInstancesDnsPeeringsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsInstancesDnsPeeringsError = NotFound | Forbidden | GcpOpError;
 /** Lists DNS peerings for a given resource. */
 export const listProjectsLocationsInstancesDnsPeerings: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesDnsPeeringsRequest,
@@ -1807,16 +1392,10 @@ export const listProjectsLocationsInstancesDnsPeerings: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsInstancesNamespacesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsInstancesNamespacesError = NotFound | Forbidden | GcpOpError;
 /** List namespaces in a given instance */
 export const listProjectsLocationsInstancesNamespaces: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesNamespacesRequest,
@@ -1829,16 +1408,10 @@ export const listProjectsLocationsInstancesNamespaces: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1851,16 +1424,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsVersionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsVersionsError = NotFound | Forbidden | GcpOpError;
 /** Lists possible versions for Data Fusion instances in the specified project and location. */
 export const listProjectsLocationsVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsVersionsRequest,
@@ -1873,18 +1440,10 @@ export const listProjectsLocationsVersions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a single Data Fusion instance. */
 export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesRequest,
@@ -1899,12 +1458,7 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveIamPolicyProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemoveIamPolicyProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Remove IAM policy that is currently set on the given resource. */
 export const removeIamPolicyProjectsLocations: API.OperationMethod<
   RemoveIamPolicyProjectsLocationsRequest,
@@ -1919,12 +1473,7 @@ export const removeIamPolicyProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestartProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RestartProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Restart a single Data Fusion instance. At the end of an operation instance is fully restarted. */
 export const restartProjectsLocationsInstances: API.OperationMethod<
   RestartProjectsLocationsInstancesRequest,
@@ -1939,12 +1488,7 @@ export const restartProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesRequest,
@@ -1959,12 +1503,7 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsInstancesNamespacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsInstancesNamespacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsInstancesNamespaces: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesNamespacesRequest,
@@ -1979,12 +1518,7 @@ export const setIamPolicyProjectsLocationsInstancesNamespaces: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesRequest,
@@ -1999,12 +1533,7 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsInstancesNamespacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsInstancesNamespacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsInstancesNamespaces: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesNamespacesRequest,
@@ -2019,12 +1548,7 @@ export const testIamPermissionsProjectsLocationsInstancesNamespaces: API.Operati
   retry: Retry.Retry,
 }));
 
-export type UpgradeProjectsLocationsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpgradeProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Upgrade a single Data Fusion instance. At the end of an operation instance is fully upgraded. */
 export const upgradeProjectsLocationsInstances: API.OperationMethod<
   UpgradeProjectsLocationsInstancesRequest,
@@ -2038,3 +1562,4 @@ export const upgradeProjectsLocationsInstances: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

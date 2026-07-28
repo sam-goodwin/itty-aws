@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
@@ -68,20 +68,14 @@ export interface LatLng {
   longitude?: number;
 }
 export const LatLng = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latitude: S.optional(S.Number),
-    longitude: S.optional(S.Number),
-  }),
+S.Struct({
+  "latitude": S.optional(S.Number),
+  "longitude": S.optional(S.Number),
+}),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
-export type LookupCurrentConditionsRequestUaqiColorPaletteEnum =
-  | "COLOR_PALETTE_UNSPECIFIED"
-  | "RED_GREEN"
-  | "INDIGO_PERSIAN_DARK"
-  | "INDIGO_PERSIAN_LIGHT"
-  | (string & {});
-export const LookupCurrentConditionsRequestUaqiColorPaletteEnum =
-  /*@__PURE__*/ S.String;
+export type LookupCurrentConditionsRequestUaqiColorPaletteEnum = "COLOR_PALETTE_UNSPECIFIED" | "RED_GREEN" | "INDIGO_PERSIAN_DARK" | "INDIGO_PERSIAN_LIGHT";
+export const LookupCurrentConditionsRequestUaqiColorPaletteEnum = /*@__PURE__*/ S.String;
 
 /** Expresses a 'country/region to AQI' relationship. Pairs a country/region with a desired AQI so that air quality data that is required for that country/region will be displayed according to the chosen AQI. */
 export interface CustomLocalAqi {
@@ -91,34 +85,20 @@ export interface CustomLocalAqi {
   aqi?: string;
 }
 export const CustomLocalAqi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-    aqi: S.optional(S.String),
-  }),
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "aqi": S.optional(S.String),
+}),
 ).annotate({ identifier: "CustomLocalAqi" }) as any as S.Schema<CustomLocalAqi>;
 
 export type CustomLocalAqiList = ReadonlyArray<CustomLocalAqi>;
-export const CustomLocalAqiList = /*@__PURE__*/ S.Array(
-  CustomLocalAqi,
-) as any as S.Schema<CustomLocalAqiList>;
+export const CustomLocalAqiList = /*@__PURE__*/ S.Array(CustomLocalAqi) as any as S.Schema<CustomLocalAqiList>;
 
-export type LookupCurrentConditionsRequestExtraComputationsItemEnum =
-  | "EXTRA_COMPUTATION_UNSPECIFIED"
-  | "LOCAL_AQI"
-  | "HEALTH_RECOMMENDATIONS"
-  | "POLLUTANT_ADDITIONAL_INFO"
-  | "DOMINANT_POLLUTANT_CONCENTRATION"
-  | "POLLUTANT_CONCENTRATION"
-  | (string & {});
-export const LookupCurrentConditionsRequestExtraComputationsItemEnum =
-  /*@__PURE__*/ S.String;
+export type LookupCurrentConditionsRequestExtraComputationsItemEnum = "EXTRA_COMPUTATION_UNSPECIFIED" | "LOCAL_AQI" | "HEALTH_RECOMMENDATIONS" | "POLLUTANT_ADDITIONAL_INFO" | "DOMINANT_POLLUTANT_CONCENTRATION" | "POLLUTANT_CONCENTRATION";
+export const LookupCurrentConditionsRequestExtraComputationsItemEnum = /*@__PURE__*/ S.String;
 
-export type LookupCurrentConditionsRequestExtraComputationsItemEnumList =
-  ReadonlyArray<LookupCurrentConditionsRequestExtraComputationsItemEnum>;
-export const LookupCurrentConditionsRequestExtraComputationsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    LookupCurrentConditionsRequestExtraComputationsItemEnum,
-  ) as any as S.Schema<LookupCurrentConditionsRequestExtraComputationsItemEnumList>;
+export type LookupCurrentConditionsRequestExtraComputationsItemEnumList = ReadonlyArray<LookupCurrentConditionsRequestExtraComputationsItemEnum | (string & {})>;
+export const LookupCurrentConditionsRequestExtraComputationsItemEnumList = /*@__PURE__*/ S.Array(LookupCurrentConditionsRequestExtraComputationsItemEnum) as any as S.Schema<LookupCurrentConditionsRequestExtraComputationsItemEnumList>;
 
 /** The request definition of the air quality current conditions. */
 export interface LookupCurrentConditionsRequest {
@@ -129,46 +109,32 @@ export interface LookupCurrentConditionsRequest {
   /** Optional. If set to true, the Universal AQI will be included in the 'indexes' field of the response. Default value is true. */
   universalAqi?: boolean;
   /** Optional. Determines the color palette used for data provided by the 'Universal Air Quality Index' (UAQI). This color palette is relevant just for UAQI, other AQIs have a predetermined color palette that can't be controlled. */
-  uaqiColorPalette?: LookupCurrentConditionsRequestUaqiColorPaletteEnum;
+  uaqiColorPalette?: LookupCurrentConditionsRequestUaqiColorPaletteEnum | (string & {});
   /** Optional. Expresses a 'country/region to AQI' relationship. Pairs a country/region with a desired AQI so that air quality data that is required for that country/region will be displayed according to the chosen AQI. This parameter can be used to specify a non-default AQI for a given country, for example, to get the US EPA index for Canada rather than the default index for Canada. */
   customLocalAqis?: CustomLocalAqiList;
   /** Optional. Additional features that can be optionally enabled. Specifying extra computations will result in the relevant elements and fields to be returned in the response. */
   extraComputations?: LookupCurrentConditionsRequestExtraComputationsItemEnumList;
 }
 export const LookupCurrentConditionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(LatLng),
-    languageCode: S.optional(S.String),
-    universalAqi: S.optional(S.Boolean),
-    uaqiColorPalette: S.optional(
-      LookupCurrentConditionsRequestUaqiColorPaletteEnum,
-    ),
-    customLocalAqis: S.optional(CustomLocalAqiList),
-    extraComputations: S.optional(
-      LookupCurrentConditionsRequestExtraComputationsItemEnumList,
-    ),
-  }),
-).annotate({
-  identifier: "LookupCurrentConditionsRequest",
-}) as any as S.Schema<LookupCurrentConditionsRequest>;
+S.Struct({
+  "location": S.optional(LatLng),
+  "languageCode": S.optional(S.String),
+  "universalAqi": S.optional(S.Boolean),
+  "uaqiColorPalette": S.optional(LookupCurrentConditionsRequestUaqiColorPaletteEnum),
+  "customLocalAqis": S.optional(CustomLocalAqiList),
+  "extraComputations": S.optional(LookupCurrentConditionsRequestExtraComputationsItemEnumList),
+}),
+).annotate({ identifier: "LookupCurrentConditionsRequest" }) as any as S.Schema<LookupCurrentConditionsRequest>;
 
 export interface LookupCurrentConditionsRequest_ {
   /** Request body */
   body?: LookupCurrentConditionsRequest;
 }
 export const LookupCurrentConditionsRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(LookupCurrentConditionsRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/currentConditions:lookup",
-      baseUrl: "https://airquality.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "LookupCurrentConditionsRequest_",
-}) as any as S.Schema<LookupCurrentConditionsRequest_>;
+S.Struct({
+  "body": S.optional(LookupCurrentConditionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/currentConditions:lookup","baseUrl":"https://airquality.googleapis.com/"})),
+).annotate({ identifier: "LookupCurrentConditionsRequest_" }) as any as S.Schema<LookupCurrentConditionsRequest_>;
 
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
 export interface Color {
@@ -182,12 +148,12 @@ export interface Color {
   alpha?: number;
 }
 export const Color = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blue: S.optional(S.Number),
-    green: S.optional(S.Number),
-    red: S.optional(S.Number),
-    alpha: S.optional(S.Number),
-  }),
+S.Struct({
+  "blue": S.optional(S.Number),
+  "green": S.optional(S.Number),
+  "red": S.optional(S.Number),
+  "alpha": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Color" }) as any as S.Schema<Color>;
 
 /** The basic object for representing different air quality metrics. When brought together, these metrics provide a snapshot about the current air quality conditions. There are multiple indexes in the world serving different purposes and groups interested in measuring different aspects of air quality. */
@@ -208,23 +174,19 @@ export interface AirQualityIndex {
   code?: string;
 }
 export const AirQualityIndex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aqiDisplay: S.optional(S.String),
-    category: S.optional(S.String),
-    displayName: S.optional(S.String),
-    aqi: S.optional(S.Number),
-    color: S.optional(Color),
-    dominantPollutant: S.optional(S.String),
-    code: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AirQualityIndex",
-}) as any as S.Schema<AirQualityIndex>;
+S.Struct({
+  "aqiDisplay": S.optional(S.String),
+  "category": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "aqi": S.optional(S.Number),
+  "color": S.optional(Color),
+  "dominantPollutant": S.optional(S.String),
+  "code": S.optional(S.String),
+}),
+).annotate({ identifier: "AirQualityIndex" }) as any as S.Schema<AirQualityIndex>;
 
 export type AirQualityIndexList = ReadonlyArray<AirQualityIndex>;
-export const AirQualityIndexList = /*@__PURE__*/ S.Array(
-  AirQualityIndex,
-) as any as S.Schema<AirQualityIndexList>;
+export const AirQualityIndexList = /*@__PURE__*/ S.Array(AirQualityIndex) as any as S.Schema<AirQualityIndexList>;
 
 /** The emission sources and health effects of a given pollutant. */
 export interface AdditionalInfo {
@@ -234,17 +196,13 @@ export interface AdditionalInfo {
   effects?: string;
 }
 export const AdditionalInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sources: S.optional(S.String),
-    effects: S.optional(S.String),
-  }),
+S.Struct({
+  "sources": S.optional(S.String),
+  "effects": S.optional(S.String),
+}),
 ).annotate({ identifier: "AdditionalInfo" }) as any as S.Schema<AdditionalInfo>;
 
-export type ConcentrationUnitsEnum =
-  | "UNIT_UNSPECIFIED"
-  | "PARTS_PER_BILLION"
-  | "MICROGRAMS_PER_CUBIC_METER"
-  | (string & {});
+export type ConcentrationUnitsEnum = "UNIT_UNSPECIFIED" | "PARTS_PER_BILLION" | "MICROGRAMS_PER_CUBIC_METER";
 export const ConcentrationUnitsEnum = /*@__PURE__*/ S.String;
 
 /** The concentration of a given pollutant in the air. */
@@ -255,10 +213,10 @@ export interface Concentration {
   value?: number;
 }
 export const Concentration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    units: S.optional(ConcentrationUnitsEnum),
-    value: S.optional(S.Number),
-  }),
+S.Struct({
+  "units": S.optional(ConcentrationUnitsEnum),
+  "value": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Concentration" }) as any as S.Schema<Concentration>;
 
 /** Data regarding an air quality pollutant. */
@@ -275,19 +233,17 @@ export interface Pollutant {
   displayName?: string;
 }
 export const Pollutant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalInfo: S.optional(AdditionalInfo),
-    fullName: S.optional(S.String),
-    concentration: S.optional(Concentration),
-    code: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "additionalInfo": S.optional(AdditionalInfo),
+  "fullName": S.optional(S.String),
+  "concentration": S.optional(Concentration),
+  "code": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Pollutant" }) as any as S.Schema<Pollutant>;
 
 export type PollutantList = ReadonlyArray<Pollutant>;
-export const PollutantList = /*@__PURE__*/ S.Array(
-  Pollutant,
-) as any as S.Schema<PollutantList>;
+export const PollutantList = /*@__PURE__*/ S.Array(Pollutant) as any as S.Schema<PollutantList>;
 
 /** Health recommendations for different population groups in a free text format. The recommendations are derived from their associated air quality conditions. */
 export interface HealthRecommendations {
@@ -307,18 +263,16 @@ export interface HealthRecommendations {
   lungDiseasePopulation?: string;
 }
 export const HealthRecommendations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    children: S.optional(S.String),
-    pregnantWomen: S.optional(S.String),
-    elderly: S.optional(S.String),
-    generalPopulation: S.optional(S.String),
-    heartDiseasePopulation: S.optional(S.String),
-    athletes: S.optional(S.String),
-    lungDiseasePopulation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HealthRecommendations",
-}) as any as S.Schema<HealthRecommendations>;
+S.Struct({
+  "children": S.optional(S.String),
+  "pregnantWomen": S.optional(S.String),
+  "elderly": S.optional(S.String),
+  "generalPopulation": S.optional(S.String),
+  "heartDiseasePopulation": S.optional(S.String),
+  "athletes": S.optional(S.String),
+  "lungDiseasePopulation": S.optional(S.String),
+}),
+).annotate({ identifier: "HealthRecommendations" }) as any as S.Schema<HealthRecommendations>;
 
 export interface LookupCurrentConditionsResponse {
   /** A rounded down timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. For example: "2014-10-02T15:00:00Z". */
@@ -333,34 +287,20 @@ export interface LookupCurrentConditionsResponse {
   healthRecommendations?: HealthRecommendations;
 }
 export const LookupCurrentConditionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateTime: S.optional(S.String),
-    regionCode: S.optional(S.String),
-    indexes: S.optional(AirQualityIndexList),
-    pollutants: S.optional(PollutantList),
-    healthRecommendations: S.optional(HealthRecommendations),
-  }),
-).annotate({
-  identifier: "LookupCurrentConditionsResponse",
-}) as any as S.Schema<LookupCurrentConditionsResponse>;
+S.Struct({
+  "dateTime": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+  "indexes": S.optional(AirQualityIndexList),
+  "pollutants": S.optional(PollutantList),
+  "healthRecommendations": S.optional(HealthRecommendations),
+}),
+).annotate({ identifier: "LookupCurrentConditionsResponse" }) as any as S.Schema<LookupCurrentConditionsResponse>;
 
-export type LookupForecastRequestExtraComputationsItemEnum =
-  | "EXTRA_COMPUTATION_UNSPECIFIED"
-  | "LOCAL_AQI"
-  | "HEALTH_RECOMMENDATIONS"
-  | "POLLUTANT_ADDITIONAL_INFO"
-  | "DOMINANT_POLLUTANT_CONCENTRATION"
-  | "POLLUTANT_CONCENTRATION"
-  | (string & {});
-export const LookupForecastRequestExtraComputationsItemEnum =
-  /*@__PURE__*/ S.String;
+export type LookupForecastRequestExtraComputationsItemEnum = "EXTRA_COMPUTATION_UNSPECIFIED" | "LOCAL_AQI" | "HEALTH_RECOMMENDATIONS" | "POLLUTANT_ADDITIONAL_INFO" | "DOMINANT_POLLUTANT_CONCENTRATION" | "POLLUTANT_CONCENTRATION";
+export const LookupForecastRequestExtraComputationsItemEnum = /*@__PURE__*/ S.String;
 
-export type LookupForecastRequestExtraComputationsItemEnumList =
-  ReadonlyArray<LookupForecastRequestExtraComputationsItemEnum>;
-export const LookupForecastRequestExtraComputationsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    LookupForecastRequestExtraComputationsItemEnum,
-  ) as any as S.Schema<LookupForecastRequestExtraComputationsItemEnumList>;
+export type LookupForecastRequestExtraComputationsItemEnumList = ReadonlyArray<LookupForecastRequestExtraComputationsItemEnum | (string & {})>;
+export const LookupForecastRequestExtraComputationsItemEnumList = /*@__PURE__*/ S.Array(LookupForecastRequestExtraComputationsItemEnum) as any as S.Schema<LookupForecastRequestExtraComputationsItemEnumList>;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -370,18 +310,13 @@ export interface Interval {
   startTime?: string;
 }
 export const Interval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endTime: S.optional(S.String),
-    startTime: S.optional(S.String),
-  }),
+S.Struct({
+  "endTime": S.optional(S.String),
+  "startTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
-export type LookupForecastRequestUaqiColorPaletteEnum =
-  | "COLOR_PALETTE_UNSPECIFIED"
-  | "RED_GREEN"
-  | "INDIGO_PERSIAN_DARK"
-  | "INDIGO_PERSIAN_LIGHT"
-  | (string & {});
+export type LookupForecastRequestUaqiColorPaletteEnum = "COLOR_PALETTE_UNSPECIFIED" | "RED_GREEN" | "INDIGO_PERSIAN_DARK" | "INDIGO_PERSIAN_LIGHT";
 export const LookupForecastRequestUaqiColorPaletteEnum = /*@__PURE__*/ S.String;
 
 /** The request object of the air quality forecast API. */
@@ -403,46 +338,34 @@ export interface LookupForecastRequest {
   /** Optional. Expresses a 'country/region to AQI' relationship. Pairs a country/region with a desired AQI so that air quality data that is required for that country/region will be displayed according to the chosen AQI. This parameter can be used to specify a non-default AQI for a given country, for example, to get the US EPA index for Canada rather than the default index for Canada. */
   customLocalAqis?: CustomLocalAqiList;
   /** Optional. Determines the color palette used for data provided by the 'Universal Air Quality Index' (UAQI). This color palette is relevant just for UAQI, other AQIs have a predetermined color palette that can't be controlled. */
-  uaqiColorPalette?: LookupForecastRequestUaqiColorPaletteEnum;
+  uaqiColorPalette?: LookupForecastRequestUaqiColorPaletteEnum | (string & {});
   /** A timestamp for which to return the data for a specific point in time. The timestamp is rounded to the previous exact hour. Note: this will return hourly data for the requested timestamp only (i.e. a single hourly info element). For example, a request sent where the date_time parameter is set to 2023-01-03T11:05:49Z will be rounded down to 2023-01-03T11:00:00Z. */
   dateTime?: string;
 }
 export const LookupForecastRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extraComputations: S.optional(
-      LookupForecastRequestExtraComputationsItemEnumList,
-    ),
-    period: S.optional(Interval),
-    universalAqi: S.optional(S.Boolean),
-    languageCode: S.optional(S.String),
-    location: S.optional(LatLng),
-    pageSize: S.optional(S.Number),
-    pageToken: S.optional(S.String),
-    customLocalAqis: S.optional(CustomLocalAqiList),
-    uaqiColorPalette: S.optional(LookupForecastRequestUaqiColorPaletteEnum),
-    dateTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LookupForecastRequest",
-}) as any as S.Schema<LookupForecastRequest>;
+S.Struct({
+  "extraComputations": S.optional(LookupForecastRequestExtraComputationsItemEnumList),
+  "period": S.optional(Interval),
+  "universalAqi": S.optional(S.Boolean),
+  "languageCode": S.optional(S.String),
+  "location": S.optional(LatLng),
+  "pageSize": S.optional(S.Number),
+  "pageToken": S.optional(S.String),
+  "customLocalAqis": S.optional(CustomLocalAqiList),
+  "uaqiColorPalette": S.optional(LookupForecastRequestUaqiColorPaletteEnum),
+  "dateTime": S.optional(S.String),
+}),
+).annotate({ identifier: "LookupForecastRequest" }) as any as S.Schema<LookupForecastRequest>;
 
 export interface LookupForecastRequest_ {
   /** Request body */
   body?: LookupForecastRequest;
 }
 export const LookupForecastRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(LookupForecastRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/forecast:lookup",
-      baseUrl: "https://airquality.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "LookupForecastRequest_",
-}) as any as S.Schema<LookupForecastRequest_>;
+S.Struct({
+  "body": S.optional(LookupForecastRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/forecast:lookup","baseUrl":"https://airquality.googleapis.com/"})),
+).annotate({ identifier: "LookupForecastRequest_" }) as any as S.Schema<LookupForecastRequest_>;
 
 /** Contains the air quality information for each hour in the requested range. For example, if the request is for 48 hours of forecast there will be 48 elements of hourly forecasts. */
 export interface HourlyForecast {
@@ -456,18 +379,16 @@ export interface HourlyForecast {
   dateTime?: string;
 }
 export const HourlyForecast = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexes: S.optional(AirQualityIndexList),
-    healthRecommendations: S.optional(HealthRecommendations),
-    pollutants: S.optional(PollutantList),
-    dateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "indexes": S.optional(AirQualityIndexList),
+  "healthRecommendations": S.optional(HealthRecommendations),
+  "pollutants": S.optional(PollutantList),
+  "dateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "HourlyForecast" }) as any as S.Schema<HourlyForecast>;
 
 export type HourlyForecastList = ReadonlyArray<HourlyForecast>;
-export const HourlyForecastList = /*@__PURE__*/ S.Array(
-  HourlyForecast,
-) as any as S.Schema<HourlyForecastList>;
+export const HourlyForecastList = /*@__PURE__*/ S.Array(HourlyForecast) as any as S.Schema<HourlyForecastList>;
 
 /** The response object of the air quality forecast API. */
 export interface LookupForecastResponse {
@@ -479,67 +400,40 @@ export interface LookupForecastResponse {
   regionCode?: string;
 }
 export const LookupForecastResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    hourlyForecasts: S.optional(HourlyForecastList),
-    regionCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LookupForecastResponse",
-}) as any as S.Schema<LookupForecastResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "hourlyForecasts": S.optional(HourlyForecastList),
+  "regionCode": S.optional(S.String),
+}),
+).annotate({ identifier: "LookupForecastResponse" }) as any as S.Schema<LookupForecastResponse>;
 
-export type LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum =
-  | "MAP_TYPE_UNSPECIFIED"
-  | "UAQI_RED_GREEN"
-  | "UAQI_INDIGO_PERSIAN"
-  | "PM25_INDIGO_PERSIAN"
-  | "GBR_DEFRA"
-  | "DEU_UBA"
-  | "CAN_EC"
-  | "FRA_ATMO"
-  | "US_AQI"
-  | (string & {});
-export const LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum =
-  /*@__PURE__*/ S.String;
+export type LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum = "MAP_TYPE_UNSPECIFIED" | "UAQI_RED_GREEN" | "UAQI_INDIGO_PERSIAN" | "PM25_INDIGO_PERSIAN" | "GBR_DEFRA" | "DEU_UBA" | "CAN_EC" | "FRA_ATMO" | "US_AQI";
+export const LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LookupHeatmapTileMapTypesHeatmapTilesRequest {
   /** Required. Defines the north-south point in the requested tile. */
   y: number;
   /** Required. The type of the air quality heatmap. Defines the pollutant that the map will graphically represent. Allowed values: - UAQI_RED_GREEN (UAQI, red-green palette) - UAQI_INDIGO_PERSIAN (UAQI, indigo-persian palette) - PM25_INDIGO_PERSIAN - GBR_DEFRA - DEU_UBA - CAN_EC - FRA_ATMO - US_AQI */
-  mapType: LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum;
+  mapType: LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum | (string & {});
   /** Required. Defines the east-west point in the requested tile. */
   x: number;
   /** Required. The map's zoom level. Defines how large or small the contents of a map appear in a map view. Zoom level 0 is the entire world in a single tile. Zoom level 1 is the entire world in 4 tiles. Zoom level 2 is the entire world in 16 tiles. Zoom level 16 is the entire world in 65,536 tiles. Allowed values: 0-16 */
   zoom: number;
 }
-export const LookupHeatmapTileMapTypesHeatmapTilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      y: S.Number.pipe(T.Label()),
-      mapType: LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum.pipe(T.Label()),
-      x: S.Number.pipe(T.Label()),
-      zoom: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}",
-        baseUrl: "https://airquality.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "LookupHeatmapTileMapTypesHeatmapTilesRequest",
-  }) as any as S.Schema<LookupHeatmapTileMapTypesHeatmapTilesRequest>;
+export const LookupHeatmapTileMapTypesHeatmapTilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "y": S.Number.pipe(T.Label()),
+  "mapType": LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum.pipe(T.Label()),
+  "x": S.Number.pipe(T.Label()),
+  "zoom": S.Number.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}","baseUrl":"https://airquality.googleapis.com/"})),
+).annotate({ identifier: "LookupHeatmapTileMapTypesHeatmapTilesRequest" }) as any as S.Schema<LookupHeatmapTileMapTypesHeatmapTilesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
@@ -551,45 +445,28 @@ export interface HttpBody {
   contentType?: string;
 }
 export const HttpBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.String),
-    extensions: S.optional(DocumentMapList),
-    contentType: S.optional(S.String),
-  }),
+S.Struct({
+  "data": S.optional(S.String),
+  "extensions": S.optional(DocumentMapList),
+  "contentType": S.optional(S.String),
+}),
 ).annotate({ identifier: "HttpBody" }) as any as S.Schema<HttpBody>;
 
-export type LookupHistoryRequestUaqiColorPaletteEnum =
-  | "COLOR_PALETTE_UNSPECIFIED"
-  | "RED_GREEN"
-  | "INDIGO_PERSIAN_DARK"
-  | "INDIGO_PERSIAN_LIGHT"
-  | (string & {});
+export type LookupHistoryRequestUaqiColorPaletteEnum = "COLOR_PALETTE_UNSPECIFIED" | "RED_GREEN" | "INDIGO_PERSIAN_DARK" | "INDIGO_PERSIAN_LIGHT";
 export const LookupHistoryRequestUaqiColorPaletteEnum = /*@__PURE__*/ S.String;
 
-export type LookupHistoryRequestExtraComputationsItemEnum =
-  | "EXTRA_COMPUTATION_UNSPECIFIED"
-  | "LOCAL_AQI"
-  | "HEALTH_RECOMMENDATIONS"
-  | "POLLUTANT_ADDITIONAL_INFO"
-  | "DOMINANT_POLLUTANT_CONCENTRATION"
-  | "POLLUTANT_CONCENTRATION"
-  | (string & {});
-export const LookupHistoryRequestExtraComputationsItemEnum =
-  /*@__PURE__*/ S.String;
+export type LookupHistoryRequestExtraComputationsItemEnum = "EXTRA_COMPUTATION_UNSPECIFIED" | "LOCAL_AQI" | "HEALTH_RECOMMENDATIONS" | "POLLUTANT_ADDITIONAL_INFO" | "DOMINANT_POLLUTANT_CONCENTRATION" | "POLLUTANT_CONCENTRATION";
+export const LookupHistoryRequestExtraComputationsItemEnum = /*@__PURE__*/ S.String;
 
-export type LookupHistoryRequestExtraComputationsItemEnumList =
-  ReadonlyArray<LookupHistoryRequestExtraComputationsItemEnum>;
-export const LookupHistoryRequestExtraComputationsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    LookupHistoryRequestExtraComputationsItemEnum,
-  ) as any as S.Schema<LookupHistoryRequestExtraComputationsItemEnumList>;
+export type LookupHistoryRequestExtraComputationsItemEnumList = ReadonlyArray<LookupHistoryRequestExtraComputationsItemEnum | (string & {})>;
+export const LookupHistoryRequestExtraComputationsItemEnumList = /*@__PURE__*/ S.Array(LookupHistoryRequestExtraComputationsItemEnum) as any as S.Schema<LookupHistoryRequestExtraComputationsItemEnumList>;
 
 /** The request object of the air quality history API. */
 export interface LookupHistoryRequest {
   /** Optional. A page token received from a previous history call. It is used to retrieve the subsequent page. Note that when providing a value for this parameter all other parameters provided must match the call that provided the page token (the previous call). */
   pageToken?: string;
   /** Optional. Determines the color palette used for data provided by the 'Universal Air Quality Index' (UAQI). This color palette is relevant just for UAQI, other AQIs have a predetermined color palette that can't be controlled. */
-  uaqiColorPalette?: LookupHistoryRequestUaqiColorPaletteEnum;
+  uaqiColorPalette?: LookupHistoryRequestUaqiColorPaletteEnum | (string & {});
   /** Optional. Expresses a 'country/region to AQI' relationship. Pairs a country/region with a desired AQI so that air quality data that is required for that country/region will be displayed according to the chosen AQI. This parameter can be used to specify a non-default AQI for a given country, for example, to get the US EPA index for Canada rather than the default index for Canada. */
   customLocalAqis?: CustomLocalAqiList;
   /** A timestamp for which to return historical data. The timestamp is rounded to the previous exact hour. Note: this will return hourly data for the requested timestamp only (i.e. a single hourly info element). For example, a request sent where the dateTime parameter is set to 2023-01-03T11:05:49Z will be rounded down to 2023-01-03T11:00:00Z. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". */
@@ -610,42 +487,30 @@ export interface LookupHistoryRequest {
   languageCode?: string;
 }
 export const LookupHistoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String),
-    uaqiColorPalette: S.optional(LookupHistoryRequestUaqiColorPaletteEnum),
-    customLocalAqis: S.optional(CustomLocalAqiList),
-    dateTime: S.optional(S.String),
-    period: S.optional(Interval),
-    extraComputations: S.optional(
-      LookupHistoryRequestExtraComputationsItemEnumList,
-    ),
-    hours: S.optional(S.Number),
-    universalAqi: S.optional(S.Boolean),
-    pageSize: S.optional(S.Number),
-    location: S.optional(LatLng),
-    languageCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LookupHistoryRequest",
-}) as any as S.Schema<LookupHistoryRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String),
+  "uaqiColorPalette": S.optional(LookupHistoryRequestUaqiColorPaletteEnum),
+  "customLocalAqis": S.optional(CustomLocalAqiList),
+  "dateTime": S.optional(S.String),
+  "period": S.optional(Interval),
+  "extraComputations": S.optional(LookupHistoryRequestExtraComputationsItemEnumList),
+  "hours": S.optional(S.Number),
+  "universalAqi": S.optional(S.Boolean),
+  "pageSize": S.optional(S.Number),
+  "location": S.optional(LatLng),
+  "languageCode": S.optional(S.String),
+}),
+).annotate({ identifier: "LookupHistoryRequest" }) as any as S.Schema<LookupHistoryRequest>;
 
 export interface LookupHistoryRequest_ {
   /** Request body */
   body?: LookupHistoryRequest;
 }
 export const LookupHistoryRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(LookupHistoryRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/history:lookup",
-      baseUrl: "https://airquality.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "LookupHistoryRequest_",
-}) as any as S.Schema<LookupHistoryRequest_>;
+S.Struct({
+  "body": S.optional(LookupHistoryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/history:lookup","baseUrl":"https://airquality.googleapis.com/"})),
+).annotate({ identifier: "LookupHistoryRequest_" }) as any as S.Schema<LookupHistoryRequest_>;
 
 /** Contains the air quality information for each hour in the requested range. For example, if the request is for 48 hours of history there will be 48 elements of hourly info. */
 export interface HourInfo {
@@ -659,18 +524,16 @@ export interface HourInfo {
   dateTime?: string;
 }
 export const HourInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexes: S.optional(AirQualityIndexList),
-    healthRecommendations: S.optional(HealthRecommendations),
-    pollutants: S.optional(PollutantList),
-    dateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "indexes": S.optional(AirQualityIndexList),
+  "healthRecommendations": S.optional(HealthRecommendations),
+  "pollutants": S.optional(PollutantList),
+  "dateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "HourInfo" }) as any as S.Schema<HourInfo>;
 
 export type HourInfoList = ReadonlyArray<HourInfo>;
-export const HourInfoList = /*@__PURE__*/ S.Array(
-  HourInfo,
-) as any as S.Schema<HourInfoList>;
+export const HourInfoList = /*@__PURE__*/ S.Array(HourInfo) as any as S.Schema<HourInfoList>;
 
 export interface LookupHistoryResponse {
   /** Optional. The ISO_3166-1 alpha-2 code of the country/region corresponding to the location provided in the request. This field might be omitted from the response if the location provided in the request resides in a disputed territory. */
@@ -681,21 +544,14 @@ export interface LookupHistoryResponse {
   nextPageToken?: string;
 }
 export const LookupHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-    hoursInfo: S.optional(HourInfoList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LookupHistoryResponse",
-}) as any as S.Schema<LookupHistoryResponse>;
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "hoursInfo": S.optional(HourInfoList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "LookupHistoryResponse" }) as any as S.Schema<LookupHistoryResponse>;
 
-export type LookupCurrentConditionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type LookupCurrentConditionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** The Current Conditions endpoint provides hourly air quality information in more than 100 countries, up to a 500 x 500 meters resolution. Includes over 70 local indexes and global air quality index and categories. */
 export const lookupCurrentConditions: API.OperationMethod<
   LookupCurrentConditionsRequest_,
@@ -710,12 +566,7 @@ export const lookupCurrentConditions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LookupForecastError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type LookupForecastError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns air quality forecast for a specific location for a given time range. */
 export const lookupForecast: API.OperationMethod<
   LookupForecastRequest_,
@@ -730,10 +581,7 @@ export const lookupForecast: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LookupHeatmapTileMapTypesHeatmapTilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type LookupHeatmapTileMapTypesHeatmapTilesError = NotFound | Forbidden | GcpOpError;
 /** Returns a bytes array containing the data of the tile PNG image. */
 export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
   LookupHeatmapTileMapTypesHeatmapTilesRequest,
@@ -748,12 +596,7 @@ export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LookupHistoryError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type LookupHistoryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns air quality history for a specific location for a given time range. */
 export const lookupHistory: API.OperationMethod<
   LookupHistoryRequest_,
@@ -767,3 +610,4 @@ export const lookupHistory: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -13,81 +13,64 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum =
-  | "RETRIEVABLE_OPTION_UNSPECIFIED"
-  | "RETRIEVABLE_ENABLED"
-  | "RETRIEVABLE_DISABLED"
-  | (string & {});
-export const GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum = "RETRIEVABLE_OPTION_UNSPECIFIED" | "RETRIEVABLE_ENABLED" | "RETRIEVABLE_DISABLED";
+export const GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaCatalogAttributeTypeEnum =
-  | "UNKNOWN"
-  | "TEXTUAL"
-  | "NUMERICAL"
-  | (string & {});
-export const GoogleCloudRetailV2betaCatalogAttributeTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaCatalogAttributeTypeEnum = "UNKNOWN" | "TEXTUAL" | "NUMERICAL";
+export const GoogleCloudRetailV2betaCatalogAttributeTypeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum =
-    | "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"
-    | "RECOMMENDATIONS_FILTERING_DISABLED"
-    | "RECOMMENDATIONS_FILTERING_ENABLED"
-    | (string & {});
-export const GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum = "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED" | "RECOMMENDATIONS_FILTERING_DISABLED" | "RECOMMENDATIONS_FILTERING_ENABLED";
+export const GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Replaces a set of textual facet values by the same (possibly different) merged facet value. Each facet value should appear at most once as a value per CatalogAttribute. This feature is available only for textual custom attributes. */
 export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue {
@@ -96,37 +79,26 @@ export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetVa
   /** All the facet values that are replaces by the same merged_value that follows. The maximum number of values per MergedFacetValue is 25. Each value can have up to 128 characters. */
   values?: StringList;
 }
-export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mergedValue: S.optional(S.String),
-      values: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>;
+export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "mergedValue": S.optional(S.String),
+  "values": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue" }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>;
 
-export type GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList =
-  ReadonlyArray<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>;
-export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue,
-  ) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList>;
+export type GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList = ReadonlyArray<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>;
+export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList>;
 
 /** The current facet key (i.e. attribute config) maps into the merged_facet_key. A facet key can have at most one child. The current facet key and the merged facet key need both to be textual custom attributes or both numerical custom attributes (same type). */
 export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet {
   /** The merged facet key should be a valid facet key that is different than the facet key of the current catalog attribute. We refer this is merged facet key as the child of the current catalog attribute. This merged facet key can't be a parent of another facet key (i.e. no directed path of length 2). This merged facet key needs to be either a textual custom attribute or a numerical custom attribute. */
   mergedFacetKey?: string;
 }
-export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mergedFacetKey: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet>;
+export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "mergedFacetKey": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet" }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet>;
 
 /** A floating point interval. */
 export interface GoogleCloudRetailV2betaInterval {
@@ -140,21 +112,16 @@ export interface GoogleCloudRetailV2betaInterval {
   exclusiveMaximum?: number;
 }
 export const GoogleCloudRetailV2betaInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exclusiveMinimum: S.optional(S.Number),
-    minimum: S.optional(S.Number),
-    maximum: S.optional(S.Number),
-    exclusiveMaximum: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaInterval",
-}) as any as S.Schema<GoogleCloudRetailV2betaInterval>;
+S.Struct({
+  "exclusiveMinimum": S.optional(S.Number),
+  "minimum": S.optional(S.Number),
+  "maximum": S.optional(S.Number),
+  "exclusiveMaximum": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaInterval" }) as any as S.Schema<GoogleCloudRetailV2betaInterval>;
 
-export type GoogleCloudRetailV2betaIntervalList =
-  ReadonlyArray<GoogleCloudRetailV2betaInterval>;
-export const GoogleCloudRetailV2betaIntervalList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaInterval,
-) as any as S.Schema<GoogleCloudRetailV2betaIntervalList>;
+export type GoogleCloudRetailV2betaIntervalList = ReadonlyArray<GoogleCloudRetailV2betaInterval>;
+export const GoogleCloudRetailV2betaIntervalList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaInterval) as any as S.Schema<GoogleCloudRetailV2betaIntervalList>;
 
 /** Facet values to ignore on facets during the specified time range for the given SearchResponse.Facet.key attribute. */
 export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues {
@@ -165,24 +132,16 @@ export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetV
   /** List of facet values to ignore for the following time range. The facet values are the same as the attribute values. There is a limit of 10 values per instance of IgnoredFacetValues. Each value can have at most 128 characters. */
   values?: StringList;
 }
-export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      startTime: S.optional(S.String),
-      endTime: S.optional(S.String),
-      values: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues>;
+export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "values": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues" }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues>;
 
-export type GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList =
-  ReadonlyArray<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues>;
-export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues,
-  ) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList>;
+export type GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList = ReadonlyArray<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues>;
+export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList>;
 
 /** Options to rerank based on facet values engaged by the user for the current key. That key needs to be a custom textual key and facetable. To use this control, you also need to pass all the facet keys engaged by the user in the request using the field [SearchRequest.FacetSpec]. In particular, if you don't pass the facet keys engaged that you want to rerank on, this control won't be effective. Moreover, to obtain better results, the facet values that you want to rerank on should be close to English (ideally made of words, underscores, and spaces). */
 export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig {
@@ -191,16 +150,12 @@ export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig 
   /** If empty, rerank on all facet values for the current key. Otherwise, will rerank on the facet values from this list only. */
   facetValues?: StringList;
 }
-export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rerankFacet: S.optional(S.Boolean),
-      facetValues: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig>;
+export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "rerankFacet": S.optional(S.Boolean),
+  "facetValues": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig" }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig>;
 
 /** Possible options for the facet that corresponds to the current attribute config. */
 export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfig {
@@ -215,58 +170,27 @@ export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfig {
   /** Set this field only if you want to rerank based on facet values engaged by the user for the current key. This option is only possible for custom facetable textual keys. */
   rerankConfig?: GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig;
 }
-export const GoogleCloudRetailV2betaCatalogAttributeFacetConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mergedFacetValues: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList,
-      ),
-      mergedFacet: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet,
-      ),
-      facetIntervals: S.optional(GoogleCloudRetailV2betaIntervalList),
-      ignoredFacetValues: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList,
-      ),
-      rerankConfig: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfig>;
+export const GoogleCloudRetailV2betaCatalogAttributeFacetConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "mergedFacetValues": S.optional(GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList),
+  "mergedFacet": S.optional(GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet),
+  "facetIntervals": S.optional(GoogleCloudRetailV2betaIntervalList),
+  "ignoredFacetValues": S.optional(GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList),
+  "rerankConfig": S.optional(GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfig" }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfig>;
 
-export type GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum =
-  | "INDEXABLE_OPTION_UNSPECIFIED"
-  | "INDEXABLE_ENABLED"
-  | "INDEXABLE_DISABLED"
-  | (string & {});
-export const GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum = "INDEXABLE_OPTION_UNSPECIFIED" | "INDEXABLE_ENABLED" | "INDEXABLE_DISABLED";
+export const GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum =
-  | "DYNAMIC_FACETABLE_OPTION_UNSPECIFIED"
-  | "DYNAMIC_FACETABLE_ENABLED"
-  | "DYNAMIC_FACETABLE_DISABLED"
-  | (string & {});
-export const GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum = "DYNAMIC_FACETABLE_OPTION_UNSPECIFIED" | "DYNAMIC_FACETABLE_ENABLED" | "DYNAMIC_FACETABLE_DISABLED";
+export const GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum =
-  | "SEARCHABLE_OPTION_UNSPECIFIED"
-  | "SEARCHABLE_ENABLED"
-  | "SEARCHABLE_DISABLED"
-  | (string & {});
-export const GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum = "SEARCHABLE_OPTION_UNSPECIFIED" | "SEARCHABLE_ENABLED" | "SEARCHABLE_DISABLED";
+export const GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum =
-  | "EXACT_SEARCHABLE_OPTION_UNSPECIFIED"
-  | "EXACT_SEARCHABLE_ENABLED"
-  | "EXACT_SEARCHABLE_DISABLED"
-  | (string & {});
-export const GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum = "EXACT_SEARCHABLE_OPTION_UNSPECIFIED" | "EXACT_SEARCHABLE_ENABLED" | "EXACT_SEARCHABLE_DISABLED";
+export const GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum = /*@__PURE__*/ S.String;
 
 /** Catalog level attribute config for an attribute. For example, if customers want to enable/disable facet for a specific attribute. */
 export interface GoogleCloudRetailV2betaCatalogAttribute {
@@ -291,51 +215,31 @@ export interface GoogleCloudRetailV2betaCatalogAttribute {
   /** Required. Attribute name. For example: `color`, `brands`, `attributes.custom_attribute`, such as `attributes.xyz`. To be indexable, the attribute name can contain only alpha-numeric characters and underscores. For example, an attribute named `attributes.abc_xyz` can be indexed, but an attribute named `attributes.abc-xyz` cannot be indexed. If the attribute key starts with `attributes.`, then the attribute is a custom attribute. Attributes such as `brands`, `patterns`, and `title` are built-in and called system attributes. */
   key?: string;
 }
-export const GoogleCloudRetailV2betaCatalogAttribute = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      retrievableOption: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum,
-      ),
-      type: S.optional(GoogleCloudRetailV2betaCatalogAttributeTypeEnum),
-      recommendationsFilteringOption: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum,
-      ),
-      facetConfig: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeFacetConfig,
-      ),
-      inUse: S.optional(S.Boolean),
-      indexableOption: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum,
-      ),
-      dynamicFacetableOption: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum,
-      ),
-      searchableOption: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum,
-      ),
-      exactSearchableOption: S.optional(
-        GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum,
-      ),
-      key: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaCatalogAttribute",
-}) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttribute>;
+export const GoogleCloudRetailV2betaCatalogAttribute = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "retrievableOption": S.optional(GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum),
+  "type": S.optional(GoogleCloudRetailV2betaCatalogAttributeTypeEnum),
+  "recommendationsFilteringOption": S.optional(GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum),
+  "facetConfig": S.optional(GoogleCloudRetailV2betaCatalogAttributeFacetConfig),
+  "inUse": S.optional(S.Boolean),
+  "indexableOption": S.optional(GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum),
+  "dynamicFacetableOption": S.optional(GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum),
+  "searchableOption": S.optional(GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum),
+  "exactSearchableOption": S.optional(GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum),
+  "key": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCatalogAttribute" }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttribute>;
 
 /** Request for CatalogService.AddCatalogAttribute method. */
 export interface GoogleCloudRetailV2betaAddCatalogAttributeRequest {
   /** Required. The CatalogAttribute to add. */
   catalogAttribute?: GoogleCloudRetailV2betaCatalogAttribute;
 }
-export const GoogleCloudRetailV2betaAddCatalogAttributeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalogAttribute: S.optional(GoogleCloudRetailV2betaCatalogAttribute),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaAddCatalogAttributeRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaAddCatalogAttributeRequest>;
+export const GoogleCloudRetailV2betaAddCatalogAttributeRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalogAttribute": S.optional(GoogleCloudRetailV2betaCatalogAttribute),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaAddCatalogAttributeRequest" }) as any as S.Schema<GoogleCloudRetailV2betaAddCatalogAttributeRequest>;
 
 export interface AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest {
   /** Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` */
@@ -343,41 +247,18 @@ export interface AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigReq
   /** Request body */
   body?: GoogleCloudRetailV2betaAddCatalogAttributeRequest;
 }
-export const AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributesConfig: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaAddCatalogAttributeRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+attributesConfig}:addCatalogAttribute",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest",
-  }) as any as S.Schema<AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>;
+export const AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "attributesConfig": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaAddCatalogAttributeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+attributesConfig}:addCatalogAttribute","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest" }) as any as S.Schema<AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>;
 
-export type GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum =
-  | "ATTRIBUTE_CONFIG_LEVEL_UNSPECIFIED"
-  | "PRODUCT_LEVEL_ATTRIBUTE_CONFIG"
-  | "CATALOG_LEVEL_ATTRIBUTE_CONFIG"
-  | (string & {});
-export const GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum = "ATTRIBUTE_CONFIG_LEVEL_UNSPECIFIED" | "PRODUCT_LEVEL_ATTRIBUTE_CONFIG" | "CATALOG_LEVEL_ATTRIBUTE_CONFIG";
+export const GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaCatalogAttributeMap = {
-  [key: string]: GoogleCloudRetailV2betaCatalogAttribute | undefined;
-};
-export const GoogleCloudRetailV2betaCatalogAttributeMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudRetailV2betaCatalogAttribute,
-  ) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeMap>;
+export type GoogleCloudRetailV2betaCatalogAttributeMap = { [key: string]: GoogleCloudRetailV2betaCatalogAttribute | undefined };
+export const GoogleCloudRetailV2betaCatalogAttributeMap = /*@__PURE__*/ S.Record(S.String, GoogleCloudRetailV2betaCatalogAttribute) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeMap>;
 
 /** Catalog level attribute config. */
 export interface GoogleCloudRetailV2betaAttributesConfig {
@@ -388,32 +269,24 @@ export interface GoogleCloudRetailV2betaAttributesConfig {
   /** Enable attribute(s) config at catalog level. For example, indexable, dynamic_facetable, or searchable for each attribute. The key is catalog attribute's name. For example: `color`, `brands`, `attributes.custom_attribute`, such as `attributes.xyz`. The maximum number of catalog attributes allowed in a request is 1000. */
   catalogAttributes?: GoogleCloudRetailV2betaCatalogAttributeMap;
 }
-export const GoogleCloudRetailV2betaAttributesConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      attributeConfigLevel: S.optional(
-        GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum,
-      ),
-      catalogAttributes: S.optional(GoogleCloudRetailV2betaCatalogAttributeMap),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaAttributesConfig",
-}) as any as S.Schema<GoogleCloudRetailV2betaAttributesConfig>;
+export const GoogleCloudRetailV2betaAttributesConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "attributeConfigLevel": S.optional(GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum),
+  "catalogAttributes": S.optional(GoogleCloudRetailV2betaCatalogAttributeMap),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaAttributesConfig" }) as any as S.Schema<GoogleCloudRetailV2betaAttributesConfig>;
 
 /** Request for AddControl method. */
 export interface GoogleCloudRetailV2betaAddControlRequest {
   /** Required. The id of the control to apply. Assumed to be in the same catalog as the serving config - if id is not found a NOT_FOUND error is returned. */
   controlId?: string;
 }
-export const GoogleCloudRetailV2betaAddControlRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      controlId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaAddControlRequest",
-}) as any as S.Schema<GoogleCloudRetailV2betaAddControlRequest>;
+export const GoogleCloudRetailV2betaAddControlRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "controlId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaAddControlRequest" }) as any as S.Schema<GoogleCloudRetailV2betaAddControlRequest>;
 
 export interface AddControlProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
@@ -421,94 +294,49 @@ export interface AddControlProjectsLocationsCatalogsServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaAddControlRequest;
 }
-export const AddControlProjectsLocationsCatalogsServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      servingConfig: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaAddControlRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+servingConfig}:addControl",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AddControlProjectsLocationsCatalogsServingConfigsRequest",
-  }) as any as S.Schema<AddControlProjectsLocationsCatalogsServingConfigsRequest>;
+export const AddControlProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "servingConfig": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaAddControlRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+servingConfig}:addControl","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "AddControlProjectsLocationsCatalogsServingConfigsRequest" }) as any as S.Schema<AddControlProjectsLocationsCatalogsServingConfigsRequest>;
 
-export type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "AUTO"
-  | "DISABLED"
-  | (string & {});
-export const GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum = "MODE_UNSPECIFIED" | "AUTO" | "DISABLED";
+export const GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum = /*@__PURE__*/ S.String;
 
 /** The specification for personalization. */
 export interface GoogleCloudRetailV2betaSearchRequestPersonalizationSpec {
   /** Defaults to Mode.AUTO. */
   mode?: GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum;
 }
-export const GoogleCloudRetailV2betaSearchRequestPersonalizationSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchRequestPersonalizationSpec",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestPersonalizationSpec>;
+export const GoogleCloudRetailV2betaSearchRequestPersonalizationSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "mode": S.optional(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestPersonalizationSpec" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestPersonalizationSpec>;
 
-export type GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum =
-  | "SOLUTION_TYPE_UNSPECIFIED"
-  | "SOLUTION_TYPE_RECOMMENDATION"
-  | "SOLUTION_TYPE_SEARCH"
-  | (string & {});
-export const GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum = "SOLUTION_TYPE_UNSPECIFIED" | "SOLUTION_TYPE_RECOMMENDATION" | "SOLUTION_TYPE_SEARCH";
+export const GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList =
-  ReadonlyArray<GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum>;
-export const GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList>;
+export type GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList = ReadonlyArray<GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum>;
+export const GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum) as any as S.Schema<GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList>;
 
-export type GoogleCloudRetailV2betaServingConfigDiversityTypeEnum =
-  | "DIVERSITY_TYPE_UNSPECIFIED"
-  | "RULE_BASED_DIVERSITY"
-  | "DATA_DRIVEN_DIVERSITY"
-  | (string & {});
-export const GoogleCloudRetailV2betaServingConfigDiversityTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaServingConfigDiversityTypeEnum = "DIVERSITY_TYPE_UNSPECIFIED" | "RULE_BASED_DIVERSITY" | "DATA_DRIVEN_DIVERSITY";
+export const GoogleCloudRetailV2betaServingConfigDiversityTypeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "ENABLED"
-  | (string & {});
-export const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED";
+export const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum = /*@__PURE__*/ S.String;
 
 /** The specifications of dynamically generated facets. */
 export interface GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec {
   /** Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset. */
   mode?: GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum;
 }
-export const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec>;
+export const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "mode": S.optional(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec>;
 
 /** Configures metadata that is used to generate serving time results (e.g. search results or recommendation predictions). */
 export interface GoogleCloudRetailV2betaServingConfig {
@@ -553,41 +381,30 @@ export interface GoogleCloudRetailV2betaServingConfig {
   /** The specification for dynamically generated facets. Notice that only textual facets can be dynamically generated. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. */
   dynamicFacetSpec?: GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec;
 }
-export const GoogleCloudRetailV2betaServingConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      replacementControlIds: S.optional(StringList),
-      personalizationSpec: S.optional(
-        GoogleCloudRetailV2betaSearchRequestPersonalizationSpec,
-      ),
-      filterControlIds: S.optional(StringList),
-      facetControlIds: S.optional(StringList),
-      modelId: S.optional(S.String),
-      name: S.optional(S.String),
-      ignoreRecsDenylist: S.optional(S.Boolean),
-      doNotAssociateControlIds: S.optional(StringList),
-      onewaySynonymsControlIds: S.optional(StringList),
-      diversityLevel: S.optional(S.String),
-      twowaySynonymsControlIds: S.optional(StringList),
-      priceRerankingLevel: S.optional(S.String),
-      enableCategoryFilterLevel: S.optional(S.String),
-      displayName: S.optional(S.String),
-      redirectControlIds: S.optional(StringList),
-      solutionTypes: S.optional(
-        GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList,
-      ),
-      boostControlIds: S.optional(StringList),
-      diversityType: S.optional(
-        GoogleCloudRetailV2betaServingConfigDiversityTypeEnum,
-      ),
-      ignoreControlIds: S.optional(StringList),
-      dynamicFacetSpec: S.optional(
-        GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec,
-      ),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaServingConfig",
-}) as any as S.Schema<GoogleCloudRetailV2betaServingConfig>;
+export const GoogleCloudRetailV2betaServingConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "replacementControlIds": S.optional(StringList),
+  "personalizationSpec": S.optional(GoogleCloudRetailV2betaSearchRequestPersonalizationSpec),
+  "filterControlIds": S.optional(StringList),
+  "facetControlIds": S.optional(StringList),
+  "modelId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "ignoreRecsDenylist": S.optional(S.Boolean),
+  "doNotAssociateControlIds": S.optional(StringList),
+  "onewaySynonymsControlIds": S.optional(StringList),
+  "diversityLevel": S.optional(S.String),
+  "twowaySynonymsControlIds": S.optional(StringList),
+  "priceRerankingLevel": S.optional(S.String),
+  "enableCategoryFilterLevel": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "redirectControlIds": S.optional(StringList),
+  "solutionTypes": S.optional(GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList),
+  "boostControlIds": S.optional(StringList),
+  "diversityType": S.optional(GoogleCloudRetailV2betaServingConfigDiversityTypeEnum),
+  "ignoreControlIds": S.optional(StringList),
+  "dynamicFacetSpec": S.optional(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaServingConfig" }) as any as S.Schema<GoogleCloudRetailV2betaServingConfig>;
 
 /** Request message for ProductService.AddFulfillmentPlaces method. */
 export interface GoogleCloudRetailV2betaAddFulfillmentPlacesRequest {
@@ -600,17 +417,14 @@ export interface GoogleCloudRetailV2betaAddFulfillmentPlacesRequest {
   /** If set to true, and the Product is not found, the fulfillment information will still be processed and retained for at most 1 day and processed once the Product is created. If set to false, a NOT_FOUND error is returned if the Product is not found. */
   allowMissing?: boolean;
 }
-export const GoogleCloudRetailV2betaAddFulfillmentPlacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      placeIds: S.optional(StringList),
-      addTime: S.optional(S.String),
-      type: S.optional(S.String),
-      allowMissing: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaAddFulfillmentPlacesRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaAddFulfillmentPlacesRequest>;
+export const GoogleCloudRetailV2betaAddFulfillmentPlacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "placeIds": S.optional(StringList),
+  "addTime": S.optional(S.String),
+  "type": S.optional(S.String),
+  "allowMissing": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaAddFulfillmentPlacesRequest" }) as any as S.Schema<GoogleCloudRetailV2betaAddFulfillmentPlacesRequest>;
 
 export interface AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
@@ -618,35 +432,18 @@ export interface AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRe
   /** Request body */
   body?: GoogleCloudRetailV2betaAddFulfillmentPlacesRequest;
 }
-export const AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaAddFulfillmentPlacesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+product}:addFulfillmentPlaces",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest>;
+export const AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "product": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaAddFulfillmentPlacesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+product}:addFulfillmentPlaces","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -658,14 +455,12 @@ export interface GoogleRpcStatus {
   details?: DocumentMapList;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
-).annotate({
-  identifier: "GoogleRpcStatus",
-}) as any as S.Schema<GoogleRpcStatus>;
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
+).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
@@ -681,21 +476,17 @@ export interface GoogleLongrunningOperation {
   error?: GoogleRpcStatus;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    error: S.optional(GoogleRpcStatus),
-  }),
-).annotate({
-  identifier: "GoogleLongrunningOperation",
-}) as any as S.Schema<GoogleLongrunningOperation>;
+S.Struct({
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "error": S.optional(GoogleRpcStatus),
+}),
+).annotate({ identifier: "GoogleLongrunningOperation" }) as any as S.Schema<GoogleLongrunningOperation>;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** A custom attribute that is not explicitly modeled in Product. */
 export interface GoogleCloudRetailV2betaCustomAttribute {
@@ -708,25 +499,17 @@ export interface GoogleCloudRetailV2betaCustomAttribute {
   /** This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details. */
   indexable?: boolean;
 }
-export const GoogleCloudRetailV2betaCustomAttribute = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      text: S.optional(StringList),
-      numbers: S.optional(DoubleList),
-      searchable: S.optional(S.Boolean),
-      indexable: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaCustomAttribute",
-}) as any as S.Schema<GoogleCloudRetailV2betaCustomAttribute>;
+export const GoogleCloudRetailV2betaCustomAttribute = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "text": S.optional(StringList),
+  "numbers": S.optional(DoubleList),
+  "searchable": S.optional(S.Boolean),
+  "indexable": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCustomAttribute" }) as any as S.Schema<GoogleCloudRetailV2betaCustomAttribute>;
 
-export type GoogleCloudRetailV2betaCustomAttributeMap = {
-  [key: string]: GoogleCloudRetailV2betaCustomAttribute | undefined;
-};
-export const GoogleCloudRetailV2betaCustomAttributeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GoogleCloudRetailV2betaCustomAttribute,
-) as any as S.Schema<GoogleCloudRetailV2betaCustomAttributeMap>;
+export type GoogleCloudRetailV2betaCustomAttributeMap = { [key: string]: GoogleCloudRetailV2betaCustomAttribute | undefined };
+export const GoogleCloudRetailV2betaCustomAttributeMap = /*@__PURE__*/ S.Record(S.String, GoogleCloudRetailV2betaCustomAttribute) as any as S.Schema<GoogleCloudRetailV2betaCustomAttributeMap>;
 
 /** The price range of all variant Product having the same Product.primary_product_id. */
 export interface GoogleCloudRetailV2betaPriceInfoPriceRange {
@@ -735,15 +518,12 @@ export interface GoogleCloudRetailV2betaPriceInfoPriceRange {
   /** The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id. */
   originalPrice?: GoogleCloudRetailV2betaInterval;
 }
-export const GoogleCloudRetailV2betaPriceInfoPriceRange =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      price: S.optional(GoogleCloudRetailV2betaInterval),
-      originalPrice: S.optional(GoogleCloudRetailV2betaInterval),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaPriceInfoPriceRange",
-  }) as any as S.Schema<GoogleCloudRetailV2betaPriceInfoPriceRange>;
+export const GoogleCloudRetailV2betaPriceInfoPriceRange = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "price": S.optional(GoogleCloudRetailV2betaInterval),
+  "originalPrice": S.optional(GoogleCloudRetailV2betaInterval),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPriceInfoPriceRange" }) as any as S.Schema<GoogleCloudRetailV2betaPriceInfoPriceRange>;
 
 /** The price information of a Product. */
 export interface GoogleCloudRetailV2betaPriceInfo {
@@ -763,18 +543,16 @@ export interface GoogleCloudRetailV2betaPriceInfo {
   cost?: number;
 }
 export const GoogleCloudRetailV2betaPriceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priceExpireTime: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-    priceRange: S.optional(GoogleCloudRetailV2betaPriceInfoPriceRange),
-    priceEffectiveTime: S.optional(S.String),
-    price: S.optional(S.Number),
-    originalPrice: S.optional(S.Number),
-    cost: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaPriceInfo",
-}) as any as S.Schema<GoogleCloudRetailV2betaPriceInfo>;
+S.Struct({
+  "priceExpireTime": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+  "priceRange": S.optional(GoogleCloudRetailV2betaPriceInfoPriceRange),
+  "priceEffectiveTime": S.optional(S.String),
+  "price": S.optional(S.Number),
+  "originalPrice": S.optional(S.Number),
+  "cost": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPriceInfo" }) as any as S.Schema<GoogleCloudRetailV2betaPriceInfo>;
 
 /** The inventory information at a place (e.g. a store) identified by a place ID. */
 export interface GoogleCloudRetailV2betaLocalInventory {
@@ -787,23 +565,17 @@ export interface GoogleCloudRetailV2betaLocalInventory {
   /** Optional. The place ID for the current set of inventory information. */
   placeId?: string;
 }
-export const GoogleCloudRetailV2betaLocalInventory = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attributes: S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
-      priceInfo: S.optional(GoogleCloudRetailV2betaPriceInfo),
-      fulfillmentTypes: S.optional(StringList),
-      placeId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaLocalInventory",
-}) as any as S.Schema<GoogleCloudRetailV2betaLocalInventory>;
+export const GoogleCloudRetailV2betaLocalInventory = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "attributes": S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
+  "priceInfo": S.optional(GoogleCloudRetailV2betaPriceInfo),
+  "fulfillmentTypes": S.optional(StringList),
+  "placeId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaLocalInventory" }) as any as S.Schema<GoogleCloudRetailV2betaLocalInventory>;
 
-export type GoogleCloudRetailV2betaLocalInventoryList =
-  ReadonlyArray<GoogleCloudRetailV2betaLocalInventory>;
-export const GoogleCloudRetailV2betaLocalInventoryList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaLocalInventory,
-) as any as S.Schema<GoogleCloudRetailV2betaLocalInventoryList>;
+export type GoogleCloudRetailV2betaLocalInventoryList = ReadonlyArray<GoogleCloudRetailV2betaLocalInventory>;
+export const GoogleCloudRetailV2betaLocalInventoryList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaLocalInventory) as any as S.Schema<GoogleCloudRetailV2betaLocalInventoryList>;
 
 /** Request message for ProductService.AddLocalInventories method. */
 export interface GoogleCloudRetailV2betaAddLocalInventoriesRequest {
@@ -816,17 +588,14 @@ export interface GoogleCloudRetailV2betaAddLocalInventoriesRequest {
   /** Indicates which inventory fields in the provided list of LocalInventory to update. The field is updated to the provided value. If a field is set while the place does not have a previous local inventory, the local inventory at that store is created. If a field is set while the value of that field is not provided, the original field value, if it exists, is deleted. If the mask is not set or set with empty paths, all inventory fields will be updated. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned and the entire update will be ignored. */
   addMask?: string;
 }
-export const GoogleCloudRetailV2betaAddLocalInventoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowMissing: S.optional(S.Boolean),
-      addTime: S.optional(S.String),
-      localInventories: S.optional(GoogleCloudRetailV2betaLocalInventoryList),
-      addMask: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaAddLocalInventoriesRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaAddLocalInventoriesRequest>;
+export const GoogleCloudRetailV2betaAddLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowMissing": S.optional(S.Boolean),
+  "addTime": S.optional(S.String),
+  "localInventories": S.optional(GoogleCloudRetailV2betaLocalInventoryList),
+  "addMask": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaAddLocalInventoriesRequest" }) as any as S.Schema<GoogleCloudRetailV2betaAddLocalInventoriesRequest>;
 
 export interface AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
@@ -834,38 +603,23 @@ export interface AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsReq
   /** Request body */
   body?: GoogleCloudRetailV2betaAddLocalInventoriesRequest;
 }
-export const AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaAddLocalInventoriesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+product}:addLocalInventories",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>;
+export const AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "product": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaAddLocalInventoriesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+product}:addLocalInventories","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>;
 
 /** Request for CatalogService.BatchRemoveCatalogAttributes method. */
 export interface GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest {
   /** Required. The attribute name keys of the CatalogAttributes to delete. A maximum of 1000 catalog attributes can be deleted in a batch. */
   attributeKeys?: StringList;
 }
-export const GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributeKeys: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest>;
+export const GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "attributeKeys": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest" }) as any as S.Schema<GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest>;
 
 export interface BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest {
   /** Required. The attributes config resource shared by all catalog attributes being deleted. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` */
@@ -873,26 +627,12 @@ export interface BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributes
   /** Request body */
   body?: GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest;
 }
-export const BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributesConfig: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+attributesConfig}:batchRemoveCatalogAttributes",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest",
-  }) as any as S.Schema<BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest>;
+export const BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "attributesConfig": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+attributesConfig}:batchRemoveCatalogAttributes","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest" }) as any as S.Schema<BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest>;
 
 /** Response of the CatalogService.BatchRemoveCatalogAttributes. */
 export interface GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse {
@@ -901,15 +641,12 @@ export interface GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse {
   /** Catalog attributes that were reset. Catalog attributes that are either in use by products or are predefined attributes cannot be deleted; however, their configuration properties will reset to default values upon removal request. */
   resetCatalogAttributes?: StringList;
 }
-export const GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedCatalogAttributes: S.optional(StringList),
-      resetCatalogAttributes: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse>;
+export const GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "deletedCatalogAttributes": S.optional(StringList),
+  "resetCatalogAttributes": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse" }) as any as S.Schema<GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse>;
 
 /** Configuration for a single generated question. */
 export interface GoogleCloudRetailV2betaGenerativeQuestionConfig {
@@ -928,20 +665,17 @@ export interface GoogleCloudRetailV2betaGenerativeQuestionConfig {
   /** Optional. Whether the question is asked at serving time. */
   allowedInConversation?: boolean;
 }
-export const GoogleCloudRetailV2betaGenerativeQuestionConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalog: S.optional(S.String),
-      facet: S.optional(S.String),
-      exampleValues: S.optional(StringList),
-      frequency: S.optional(S.Number),
-      finalQuestion: S.optional(S.String),
-      generatedQuestion: S.optional(S.String),
-      allowedInConversation: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaGenerativeQuestionConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionConfig>;
+export const GoogleCloudRetailV2betaGenerativeQuestionConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalog": S.optional(S.String),
+  "facet": S.optional(S.String),
+  "exampleValues": S.optional(StringList),
+  "frequency": S.optional(S.Number),
+  "finalQuestion": S.optional(S.String),
+  "generatedQuestion": S.optional(S.String),
+  "allowedInConversation": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaGenerativeQuestionConfig" }) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionConfig>;
 
 /** Request for UpdateGenerativeQuestionConfig method. */
 export interface GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest {
@@ -950,41 +684,26 @@ export interface GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest {
   /** Optional. Indicates which fields in the provided GenerativeQuestionConfig to update. The following are NOT supported: * GenerativeQuestionConfig.frequency If not set or empty, all supported fields are updated. */
   updateMask?: string;
 }
-export const GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      generativeQuestionConfig: S.optional(
-        GoogleCloudRetailV2betaGenerativeQuestionConfig,
-      ),
-      updateMask: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest>;
+export const GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "generativeQuestionConfig": S.optional(GoogleCloudRetailV2betaGenerativeQuestionConfig),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest" }) as any as S.Schema<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest>;
 
-export type GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList =
-  ReadonlyArray<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest>;
-export const GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest,
-  ) as any as S.Schema<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList>;
+export type GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList = ReadonlyArray<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest>;
+export const GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest) as any as S.Schema<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList>;
 
 /** Request for BatchUpdateGenerativeQuestionConfig method. */
 export interface GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest {
   /** Required. The updates question configs. */
   requests?: GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList;
 }
-export const GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(
-        GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest>;
+export const GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requests": S.optional(GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest" }) as any as S.Schema<GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest>;
 
 export interface BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest {
   /** Optional. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
@@ -992,49 +711,26 @@ export interface BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest;
 }
-export const BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/generativeQuestion:batchUpdate",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest",
-  }) as any as S.Schema<BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest>;
+export const BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/generativeQuestion:batchUpdate","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest" }) as any as S.Schema<BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest>;
 
-export type GoogleCloudRetailV2betaGenerativeQuestionConfigList =
-  ReadonlyArray<GoogleCloudRetailV2betaGenerativeQuestionConfig>;
-export const GoogleCloudRetailV2betaGenerativeQuestionConfigList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaGenerativeQuestionConfig,
-  ) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionConfigList>;
+export type GoogleCloudRetailV2betaGenerativeQuestionConfigList = ReadonlyArray<GoogleCloudRetailV2betaGenerativeQuestionConfig>;
+export const GoogleCloudRetailV2betaGenerativeQuestionConfigList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaGenerativeQuestionConfig) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionConfigList>;
 
 /** Aggregated response for UpdateGenerativeQuestionConfig method. */
 export interface GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse {
   /** Optional. The updates question configs. */
   generativeQuestionConfigs?: GoogleCloudRetailV2betaGenerativeQuestionConfigList;
 }
-export const GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      generativeQuestionConfigs: S.optional(
-        GoogleCloudRetailV2betaGenerativeQuestionConfigList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse>;
+export const GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "generativeQuestionConfigs": S.optional(GoogleCloudRetailV2betaGenerativeQuestionConfigList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse" }) as any as S.Schema<GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse>;
 
 /** Request message for CollectUserEvent method. */
 export interface GoogleCloudRetailV2betaCollectUserEventRequest {
@@ -1049,18 +745,15 @@ export interface GoogleCloudRetailV2betaCollectUserEventRequest {
   /** The event timestamp in milliseconds. This prevents browser caching of otherwise identical get requests. The name is abbreviated to reduce the payload bytes. */
   ets?: string;
 }
-export const GoogleCloudRetailV2betaCollectUserEventRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-      rawJson: S.optional(S.String),
-      prebuiltRule: S.optional(S.String),
-      userEvent: S.optional(S.String),
-      ets: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaCollectUserEventRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCollectUserEventRequest>;
+export const GoogleCloudRetailV2betaCollectUserEventRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "uri": S.optional(S.String),
+  "rawJson": S.optional(S.String),
+  "prebuiltRule": S.optional(S.String),
+  "userEvent": S.optional(S.String),
+  "ets": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCollectUserEventRequest" }) as any as S.Schema<GoogleCloudRetailV2betaCollectUserEventRequest>;
 
 export interface CollectProjectsLocationsCatalogsUserEventsRequest {
   /** Required. The parent catalog name, such as `projects/1234/locations/global/catalogs/default_catalog`. */
@@ -1068,23 +761,12 @@ export interface CollectProjectsLocationsCatalogsUserEventsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaCollectUserEventRequest;
 }
-export const CollectProjectsLocationsCatalogsUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaCollectUserEventRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/userEvents:collect",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CollectProjectsLocationsCatalogsUserEventsRequest",
-  }) as any as S.Schema<CollectProjectsLocationsCatalogsUserEventsRequest>;
+export const CollectProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaCollectUserEventRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/userEvents:collect","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "CollectProjectsLocationsCatalogsUserEventsRequest" }) as any as S.Schema<CollectProjectsLocationsCatalogsUserEventsRequest>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface GoogleApiHttpBody {
@@ -1096,14 +778,12 @@ export interface GoogleApiHttpBody {
   extensions?: DocumentMapList;
 }
 export const GoogleApiHttpBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String),
-    data: S.optional(S.String),
-    extensions: S.optional(DocumentMapList),
-  }),
-).annotate({
-  identifier: "GoogleApiHttpBody",
-}) as any as S.Schema<GoogleApiHttpBody>;
+S.Struct({
+  "contentType": S.optional(S.String),
+  "data": S.optional(S.String),
+  "extensions": S.optional(DocumentMapList),
+}),
+).annotate({ identifier: "GoogleApiHttpBody" }) as any as S.Schema<GoogleApiHttpBody>;
 
 export interface CompleteQueryProjectsLocationsCatalogsRequest {
   /** The device type context for completion suggestions. We recommend that you leave this field empty. It can apply different suggestions on different device types, e.g. `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`. */
@@ -1125,50 +805,33 @@ export interface CompleteQueryProjectsLocationsCatalogsRequest {
   /** Completion max suggestions. If left unset or set to 0, then will fallback to the configured value CompletionConfig.max_suggestions. The maximum allowed max suggestions is 20. If it is set higher, it will be capped by 20. */
   maxSuggestions?: number;
 }
-export const CompleteQueryProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deviceType: S.optional(S.String.pipe(T.Query())),
-      catalog: S.String.pipe(T.Label()),
-      dataset: S.optional(S.String.pipe(T.Query())),
-      query: S.optional(S.String.pipe(T.Query())),
-      enableAttributeSuggestions: S.optional(S.Boolean.pipe(T.Query())),
-      languageCodes: S.optional(StringList.pipe(T.Query())),
-      visitorId: S.optional(S.String.pipe(T.Query())),
-      entity: S.optional(S.String.pipe(T.Query())),
-      maxSuggestions: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+catalog}:completeQuery",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CompleteQueryProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<CompleteQueryProjectsLocationsCatalogsRequest>;
+export const CompleteQueryProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "deviceType": S.optional(S.String.pipe(T.Query())),
+  "catalog": S.String.pipe(T.Label()),
+  "dataset": S.optional(S.String.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+  "enableAttributeSuggestions": S.optional(S.Boolean.pipe(T.Query())),
+  "languageCodes": S.optional(StringList.pipe(T.Query())),
+  "visitorId": S.optional(S.String.pipe(T.Query())),
+  "entity": S.optional(S.String.pipe(T.Query())),
+  "maxSuggestions": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+catalog}:completeQuery","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "CompleteQueryProjectsLocationsCatalogsRequest" }) as any as S.Schema<CompleteQueryProjectsLocationsCatalogsRequest>;
 
 /** Deprecated: Recent search of this user. */
 export interface GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult {
   /** The recent search query. */
   recentSearch?: string;
 }
-export const GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      recentSearch: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult>;
+export const GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "recentSearch": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult" }) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult>;
 
-export type GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList =
-  ReadonlyArray<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult>;
-export const GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult,
-  ) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList>;
+export type GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList = ReadonlyArray<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult>;
+export const GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList>;
 
 /** Resource that represents completion results. */
 export interface GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult {
@@ -1177,47 +840,29 @@ export interface GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult {
   /** Custom attributes for the suggestion term. * For `user-data`, the attributes are additional custom attributes ingested through BigQuery. * For `cloud-retail`, the attributes are product attributes generated by Cloud Retail. It requires UserEvent.product_details is imported properly. */
   attributes?: GoogleCloudRetailV2betaCustomAttributeMap;
 }
-export const GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      suggestion: S.optional(S.String),
-      attributes: S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult>;
+export const GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "suggestion": S.optional(S.String),
+  "attributes": S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult" }) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult>;
 
-export type GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList =
-  ReadonlyArray<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult>;
-export const GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult,
-  ) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList>;
+export type GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList = ReadonlyArray<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult>;
+export const GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList>;
 
 /** Resource that represents attribute results. */
 export interface GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult {
   /** The list of suggestions for the attribute. */
   suggestions?: StringList;
 }
-export const GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      suggestions: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult>;
+export const GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "suggestions": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult" }) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult>;
 
-export type GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap = {
-  [key: string]:
-    | GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult
-    | undefined;
-};
-export const GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult,
-  ) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap>;
+export type GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap = { [key: string]: GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult | undefined };
+export const GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap = /*@__PURE__*/ S.Record(S.String, GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap>;
 
 /** Response of the autocomplete query. */
 export interface GoogleCloudRetailV2betaCompleteQueryResponse {
@@ -1230,23 +875,14 @@ export interface GoogleCloudRetailV2betaCompleteQueryResponse {
   /** A map of matched attribute suggestions. This field is only available for `cloud-retail` dataset. Current supported keys: * `brands` * `categories` */
   attributeResults?: GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap;
 }
-export const GoogleCloudRetailV2betaCompleteQueryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributionToken: S.optional(S.String),
-      recentSearchResults: S.optional(
-        GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList,
-      ),
-      completionResults: S.optional(
-        GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList,
-      ),
-      attributeResults: S.optional(
-        GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaCompleteQueryResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponse>;
+export const GoogleCloudRetailV2betaCompleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "attributionToken": S.optional(S.String),
+  "recentSearchResults": S.optional(GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList),
+  "completionResults": S.optional(GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList),
+  "attributeResults": S.optional(GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCompleteQueryResponse" }) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponse>;
 
 /** Boost applies to products which match a condition. */
 export interface GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec {
@@ -1255,23 +891,15 @@ export interface GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec
   /** Strength of the condition boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored. */
   boost?: number;
 }
-export const GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      condition: S.optional(S.String),
-      boost: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>;
+export const GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "condition": S.optional(S.String),
+  "boost": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>;
 
-export type GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>;
-export const GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec,
-  ) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList>;
+export type GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList = ReadonlyArray<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>;
+export const GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList>;
 
 /** Boost specification to boost certain items. */
 export interface GoogleCloudRetailV2betaSearchRequestBoostSpec {
@@ -1280,17 +908,12 @@ export interface GoogleCloudRetailV2betaSearchRequestBoostSpec {
   /** Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 20. */
   conditionBoostSpecs?: GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList;
 }
-export const GoogleCloudRetailV2betaSearchRequestBoostSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      skipBoostSpecValidation: S.optional(S.Boolean),
-      conditionBoostSpecs: S.optional(
-        GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchRequestBoostSpec",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestBoostSpec>;
+export const GoogleCloudRetailV2betaSearchRequestBoostSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "skipBoostSpecValidation": S.optional(S.Boolean),
+  "conditionBoostSpecs": S.optional(GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestBoostSpec" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestBoostSpec>;
 
 /** Search parameters. */
 export interface GoogleCloudRetailV2betaConversationalSearchRequestSearchParams {
@@ -1303,18 +926,14 @@ export interface GoogleCloudRetailV2betaConversationalSearchRequestSearchParams 
   /** Optional. The sort string to specify the sorting of search results. The syntax of the sort string is the same as SearchRequest.order_by. */
   sortBy?: string;
 }
-export const GoogleCloudRetailV2betaConversationalSearchRequestSearchParams =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      boostSpec: S.optional(GoogleCloudRetailV2betaSearchRequestBoostSpec),
-      filter: S.optional(S.String),
-      canonicalFilter: S.optional(S.String),
-      sortBy: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaConversationalSearchRequestSearchParams",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestSearchParams>;
+export const GoogleCloudRetailV2betaConversationalSearchRequestSearchParams = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "boostSpec": S.optional(GoogleCloudRetailV2betaSearchRequestBoostSpec),
+  "filter": S.optional(S.String),
+  "canonicalFilter": S.optional(S.String),
+  "sortBy": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchRequestSearchParams" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestSearchParams>;
 
 /** Information of an end user. */
 export interface GoogleCloudRetailV2betaUserInfo {
@@ -1328,21 +947,16 @@ export interface GoogleCloudRetailV2betaUserInfo {
   userAgent?: string;
 }
 export const GoogleCloudRetailV2betaUserInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    directUserRequest: S.optional(S.Boolean),
-    userAgent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaUserInfo",
-}) as any as S.Schema<GoogleCloudRetailV2betaUserInfo>;
+S.Struct({
+  "userId": S.optional(S.String),
+  "ipAddress": S.optional(S.String),
+  "directUserRequest": S.optional(S.Boolean),
+  "userAgent": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaUserInfo" }) as any as S.Schema<GoogleCloudRetailV2betaUserInfo>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Product attribute which structured by an attribute name and value. This structure is used in conversational search filters and answers. For example, if we have `name=color` and `value=red`, this means that the color is `red`. */
 export interface GoogleCloudRetailV2betaProductAttributeValue {
@@ -1351,32 +965,23 @@ export interface GoogleCloudRetailV2betaProductAttributeValue {
   /** The attribute value. */
   value?: string;
 }
-export const GoogleCloudRetailV2betaProductAttributeValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaProductAttributeValue",
-  }) as any as S.Schema<GoogleCloudRetailV2betaProductAttributeValue>;
+export const GoogleCloudRetailV2betaProductAttributeValue = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaProductAttributeValue" }) as any as S.Schema<GoogleCloudRetailV2betaProductAttributeValue>;
 
 /** This field specifies the selected answers during the conversational search. */
 export interface GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer {
   /** Optional. This field specifies the selected answer which is a attribute key-value. */
   productAttributeValue?: GoogleCloudRetailV2betaProductAttributeValue;
 }
-export const GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productAttributeValue: S.optional(
-        GoogleCloudRetailV2betaProductAttributeValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer>;
+export const GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productAttributeValue": S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer>;
 
 /** This field specifies the current user answer during the conversational filtering search. This can be either user selected from suggested answers or user input plain text. */
 export interface GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer {
@@ -1385,107 +990,61 @@ export interface GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer {
   /** Optional. This field specifies the selected answer during the conversational search. This should be a subset of ConversationalSearchResponse.FollowupQuestion.SuggestedAnswer. */
   selectedAnswer?: GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer;
 }
-export const GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      textAnswer: S.optional(S.String),
-      selectedAnswer: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer>;
+export const GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "textAnswer": S.optional(S.String),
+  "selectedAnswer": S.optional(GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer>;
 
-export type GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum =
-    | "MODE_UNSPECIFIED"
-    | "DISABLED"
-    | "ENABLED"
-    | "CONVERSATIONAL_FILTER_ONLY"
-    | (string & {});
-export const GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED" | "CONVERSATIONAL_FILTER_ONLY";
+export const GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum = /*@__PURE__*/ S.String;
 
 /** This field specifies all conversational filtering related parameters addition to conversational retail search. */
 export interface GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec {
   /** Optional. This field specifies the current user answer during the conversational filtering search. It can be either user selected from suggested answers or user input plain text. */
   userAnswer?: GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer;
   /** Optional. Mode to control Conversational Filtering. Defaults to Mode.DISABLED if it's unset. */
-  conversationalFilteringMode?: GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum;
+  conversationalFilteringMode?: GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum | (string & {});
   /** Optional. This field is deprecated. Please use ConversationalFilteringSpec.conversational_filtering_mode instead. */
   enableConversationalFiltering?: boolean;
 }
-export const GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userAnswer: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer,
-      ),
-      conversationalFilteringMode: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum,
-      ),
-      enableConversationalFiltering: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec>;
+export const GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "userAnswer": S.optional(GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer),
+  "conversationalFilteringMode": S.optional(GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum),
+  "enableConversationalFiltering": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec>;
 
-export type GoogleCloudRetailV2betaSafetySettingMethodEnum =
-  | "HARM_BLOCK_METHOD_UNSPECIFIED"
-  | "SEVERITY"
-  | "PROBABILITY"
-  | (string & {});
-export const GoogleCloudRetailV2betaSafetySettingMethodEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaSafetySettingMethodEnum = "HARM_BLOCK_METHOD_UNSPECIFIED" | "SEVERITY" | "PROBABILITY";
+export const GoogleCloudRetailV2betaSafetySettingMethodEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaSafetySettingThresholdEnum =
-  | "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
-  | "BLOCK_LOW_AND_ABOVE"
-  | "BLOCK_MEDIUM_AND_ABOVE"
-  | "BLOCK_ONLY_HIGH"
-  | "BLOCK_NONE"
-  | "OFF"
-  | (string & {});
-export const GoogleCloudRetailV2betaSafetySettingThresholdEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaSafetySettingThresholdEnum = "HARM_BLOCK_THRESHOLD_UNSPECIFIED" | "BLOCK_LOW_AND_ABOVE" | "BLOCK_MEDIUM_AND_ABOVE" | "BLOCK_ONLY_HIGH" | "BLOCK_NONE" | "OFF";
+export const GoogleCloudRetailV2betaSafetySettingThresholdEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaSafetySettingCategoryEnum =
-  | "HARM_CATEGORY_UNSPECIFIED"
-  | "HARM_CATEGORY_HATE_SPEECH"
-  | "HARM_CATEGORY_DANGEROUS_CONTENT"
-  | "HARM_CATEGORY_HARASSMENT"
-  | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
-  | "HARM_CATEGORY_CIVIC_INTEGRITY"
-  | (string & {});
-export const GoogleCloudRetailV2betaSafetySettingCategoryEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaSafetySettingCategoryEnum = "HARM_CATEGORY_UNSPECIFIED" | "HARM_CATEGORY_HATE_SPEECH" | "HARM_CATEGORY_DANGEROUS_CONTENT" | "HARM_CATEGORY_HARASSMENT" | "HARM_CATEGORY_SEXUALLY_EXPLICIT" | "HARM_CATEGORY_CIVIC_INTEGRITY";
+export const GoogleCloudRetailV2betaSafetySettingCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Safety settings. */
 export interface GoogleCloudRetailV2betaSafetySetting {
   /** Optional. Specify if the threshold is used for probability or severity score. If not specified, the threshold is used for probability score. */
-  method?: GoogleCloudRetailV2betaSafetySettingMethodEnum;
+  method?: GoogleCloudRetailV2betaSafetySettingMethodEnum | (string & {});
   /** The harm block threshold. */
-  threshold?: GoogleCloudRetailV2betaSafetySettingThresholdEnum;
+  threshold?: GoogleCloudRetailV2betaSafetySettingThresholdEnum | (string & {});
   /** Harm category. */
-  category?: GoogleCloudRetailV2betaSafetySettingCategoryEnum;
+  category?: GoogleCloudRetailV2betaSafetySettingCategoryEnum | (string & {});
 }
-export const GoogleCloudRetailV2betaSafetySetting = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      method: S.optional(GoogleCloudRetailV2betaSafetySettingMethodEnum),
-      threshold: S.optional(GoogleCloudRetailV2betaSafetySettingThresholdEnum),
-      category: S.optional(GoogleCloudRetailV2betaSafetySettingCategoryEnum),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaSafetySetting",
-}) as any as S.Schema<GoogleCloudRetailV2betaSafetySetting>;
+export const GoogleCloudRetailV2betaSafetySetting = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "method": S.optional(GoogleCloudRetailV2betaSafetySettingMethodEnum),
+  "threshold": S.optional(GoogleCloudRetailV2betaSafetySettingThresholdEnum),
+  "category": S.optional(GoogleCloudRetailV2betaSafetySettingCategoryEnum),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSafetySetting" }) as any as S.Schema<GoogleCloudRetailV2betaSafetySetting>;
 
-export type GoogleCloudRetailV2betaSafetySettingList =
-  ReadonlyArray<GoogleCloudRetailV2betaSafetySetting>;
-export const GoogleCloudRetailV2betaSafetySettingList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaSafetySetting,
-) as any as S.Schema<GoogleCloudRetailV2betaSafetySettingList>;
+export type GoogleCloudRetailV2betaSafetySettingList = ReadonlyArray<GoogleCloudRetailV2betaSafetySetting>;
+export const GoogleCloudRetailV2betaSafetySettingList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaSafetySetting) as any as S.Schema<GoogleCloudRetailV2betaSafetySettingList>;
 
 /** Request message for ConversationalSearchService.ConversationalSearch method. */
 export interface GoogleCloudRetailV2betaConversationalSearchRequest {
@@ -1510,27 +1069,20 @@ export interface GoogleCloudRetailV2betaConversationalSearchRequest {
   /** Optional. The safety settings to be applied to the generated content. */
   safetySettings?: GoogleCloudRetailV2betaSafetySettingList;
 }
-export const GoogleCloudRetailV2betaConversationalSearchRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      searchParams: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchRequestSearchParams,
-      ),
-      userInfo: S.optional(GoogleCloudRetailV2betaUserInfo),
-      conversationId: S.optional(S.String),
-      visitorId: S.optional(S.String),
-      pageCategories: S.optional(StringList),
-      userLabels: S.optional(StringMap),
-      query: S.optional(S.String),
-      branch: S.optional(S.String),
-      conversationalFilteringSpec: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec,
-      ),
-      safetySettings: S.optional(GoogleCloudRetailV2betaSafetySettingList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaConversationalSearchRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequest>;
+export const GoogleCloudRetailV2betaConversationalSearchRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "searchParams": S.optional(GoogleCloudRetailV2betaConversationalSearchRequestSearchParams),
+  "userInfo": S.optional(GoogleCloudRetailV2betaUserInfo),
+  "conversationId": S.optional(S.String),
+  "visitorId": S.optional(S.String),
+  "pageCategories": S.optional(StringList),
+  "userLabels": S.optional(StringMap),
+  "query": S.optional(S.String),
+  "branch": S.optional(S.String),
+  "conversationalFilteringSpec": S.optional(GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec),
+  "safetySettings": S.optional(GoogleCloudRetailV2betaSafetySettingList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchRequest" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequest>;
 
 export interface ConversationalSearchProjectsLocationsCatalogsPlacementsRequest {
   /** Required. The resource name of the search engine placement, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search` or `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` This field is used to identify the serving config name and the set of models that will be used to make the search. */
@@ -1538,87 +1090,51 @@ export interface ConversationalSearchProjectsLocationsCatalogsPlacementsRequest 
   /** Request body */
   body?: GoogleCloudRetailV2betaConversationalSearchRequest;
 }
-export const ConversationalSearchProjectsLocationsCatalogsPlacementsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      placement: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+placement}:conversationalSearch",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ConversationalSearchProjectsLocationsCatalogsPlacementsRequest",
-  }) as any as S.Schema<ConversationalSearchProjectsLocationsCatalogsPlacementsRequest>;
+export const ConversationalSearchProjectsLocationsCatalogsPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "placement": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaConversationalSearchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+placement}:conversationalSearch","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ConversationalSearchProjectsLocationsCatalogsPlacementsRequest" }) as any as S.Schema<ConversationalSearchProjectsLocationsCatalogsPlacementsRequest>;
 
 /** The proposed refined search for intent-refinement/bundled shopping conversation. When using CONVERSATIONAL_FILTER_ONLY mode, the refined_query from search response will be populated here. */
 export interface GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch {
   /** The query to be used for search. */
   query?: string;
 }
-export const GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      query: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch>;
+export const GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "query": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch>;
 
-export type GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList =
-  ReadonlyArray<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch>;
-export const GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch,
-  ) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList>;
+export type GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList = ReadonlyArray<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch>;
+export const GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList>;
 
 /** Additional filter that client side need to apply. */
 export interface GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResultAdditionalFilter {
   /** Product attribute value, including an attribute key and an attribute value. Other types can be added here in the future. */
   productAttributeValue?: GoogleCloudRetailV2betaProductAttributeValue;
 }
-export const GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResultAdditionalFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productAttributeValue: S.optional(
-        GoogleCloudRetailV2betaProductAttributeValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResultAdditionalFilter",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResultAdditionalFilter>;
+export const GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResultAdditionalFilter = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productAttributeValue": S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResultAdditionalFilter" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResultAdditionalFilter>;
 
 /** Suggested answers to the follow-up question. If it's numerical attribute, only ProductAttributeInterval will be set. If it's textual attribute, only productAttributeValue will be set. */
 export interface GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer {
   /** Product attribute value, including an attribute key and an attribute value. Other types can be added here in the future. */
   productAttributeValue?: GoogleCloudRetailV2betaProductAttributeValue;
 }
-export const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productAttributeValue: S.optional(
-        GoogleCloudRetailV2betaProductAttributeValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
+export const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productAttributeValue": S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 
-export type GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList =
-  ReadonlyArray<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
-export const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer,
-  ) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList>;
+export type GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList = ReadonlyArray<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
+export const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList>;
 
 /** The conversational followup question generated for Intent refinement. */
 export interface GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion {
@@ -1627,18 +1143,12 @@ export interface GoogleCloudRetailV2betaConversationalSearchResponseFollowupQues
   /** The conversational followup question generated for Intent refinement. */
   followupQuestion?: string;
 }
-export const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      suggestedAnswers: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList,
-      ),
-      followupQuestion: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion>;
+export const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "suggestedAnswers": S.optional(GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList),
+  "followupQuestion": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion>;
 
 /** This field specifies all related information that is needed on client side for UI rendering of conversational filtering search. */
 export interface GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult {
@@ -1647,28 +1157,15 @@ export interface GoogleCloudRetailV2betaConversationalSearchResponseConversation
   /** The conversational filtering question. */
   followupQuestion?: GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion;
 }
-export const GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalFilter: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResultAdditionalFilter,
-      ),
-      followupQuestion: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult>;
+export const GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "additionalFilter": S.optional(GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResultAdditionalFilter),
+  "followupQuestion": S.optional(GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult>;
 
-export type GoogleCloudRetailV2betaConversationalSearchResponseStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "STREAMING"
-  | "SUCCEEDED"
-  | (string & {});
-export const GoogleCloudRetailV2betaConversationalSearchResponseStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaConversationalSearchResponseStateEnum = "STATE_UNSPECIFIED" | "STREAMING" | "SUCCEEDED";
+export const GoogleCloudRetailV2betaConversationalSearchResponseStateEnum = /*@__PURE__*/ S.String;
 
 /** Response message for ConversationalSearchService.ConversationalSearch method. */
 export interface GoogleCloudRetailV2betaConversationalSearchResponse {
@@ -1687,28 +1184,17 @@ export interface GoogleCloudRetailV2betaConversationalSearchResponse {
   /** Conversation UUID. This field will be stored in client side storage to maintain the conversation session with server and will be used for next search request's ConversationalSearchRequest.conversation_id to restore conversation state in server. */
   conversationId?: string;
 }
-export const GoogleCloudRetailV2betaConversationalSearchResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userQueryTypes: S.optional(StringList),
-      refinedSearch: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList,
-      ),
-      conversationalFilteringResult: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult,
-      ),
-      followupQuestion: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion,
-      ),
-      conversationalTextResponse: S.optional(S.String),
-      state: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchResponseStateEnum,
-      ),
-      conversationId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaConversationalSearchResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponse>;
+export const GoogleCloudRetailV2betaConversationalSearchResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "userQueryTypes": S.optional(StringList),
+  "refinedSearch": S.optional(GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList),
+  "conversationalFilteringResult": S.optional(GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult),
+  "followupQuestion": S.optional(GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion),
+  "conversationalTextResponse": S.optional(S.String),
+  "state": S.optional(GoogleCloudRetailV2betaConversationalSearchResponseStateEnum),
+  "conversationId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchResponse" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponse>;
 
 export interface ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The resource name of the search engine placement, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search` or `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` This field is used to identify the serving config name and the set of models that will be used to make the search. */
@@ -1716,24 +1202,12 @@ export interface ConversationalSearchProjectsLocationsCatalogsServingConfigsRequ
   /** Request body */
   body?: GoogleCloudRetailV2betaConversationalSearchRequest;
 }
-export const ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      placement: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+placement}:conversationalSearch",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest",
-  }) as any as S.Schema<ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest>;
+export const ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "placement": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaConversationalSearchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+placement}:conversationalSearch","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest" }) as any as S.Schema<ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest>;
 
 /** Promotion specification. */
 export interface GoogleCloudRetailV2betaPromotion {
@@ -1741,23 +1215,16 @@ export interface GoogleCloudRetailV2betaPromotion {
   promotionId?: string;
 }
 export const GoogleCloudRetailV2betaPromotion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    promotionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaPromotion",
-}) as any as S.Schema<GoogleCloudRetailV2betaPromotion>;
+S.Struct({
+  "promotionId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPromotion" }) as any as S.Schema<GoogleCloudRetailV2betaPromotion>;
 
-export type GoogleCloudRetailV2betaPromotionList =
-  ReadonlyArray<GoogleCloudRetailV2betaPromotion>;
-export const GoogleCloudRetailV2betaPromotionList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaPromotion,
-) as any as S.Schema<GoogleCloudRetailV2betaPromotionList>;
+export type GoogleCloudRetailV2betaPromotionList = ReadonlyArray<GoogleCloudRetailV2betaPromotion>;
+export const GoogleCloudRetailV2betaPromotionList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaPromotion) as any as S.Schema<GoogleCloudRetailV2betaPromotionList>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** The rating of a Product. */
 export interface GoogleCloudRetailV2betaRating {
@@ -1769,21 +1236,14 @@ export interface GoogleCloudRetailV2betaRating {
   averageRating?: number;
 }
 export const GoogleCloudRetailV2betaRating = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ratingCount: S.optional(S.Number),
-    ratingHistogram: S.optional(IntegerList),
-    averageRating: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaRating",
-}) as any as S.Schema<GoogleCloudRetailV2betaRating>;
+S.Struct({
+  "ratingCount": S.optional(S.Number),
+  "ratingHistogram": S.optional(IntegerList),
+  "averageRating": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRating" }) as any as S.Schema<GoogleCloudRetailV2betaRating>;
 
-export type GoogleCloudRetailV2betaProductTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "PRIMARY"
-  | "VARIANT"
-  | "COLLECTION"
-  | (string & {});
+export type GoogleCloudRetailV2betaProductTypeEnum = "TYPE_UNSPECIFIED" | "PRIMARY" | "VARIANT" | "COLLECTION";
 export const GoogleCloudRetailV2betaProductTypeEnum = /*@__PURE__*/ S.String;
 
 /** Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. */
@@ -1793,37 +1253,21 @@ export interface GoogleCloudRetailV2betaFulfillmentInfo {
   /** The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned. */
   placeIds?: StringList;
 }
-export const GoogleCloudRetailV2betaFulfillmentInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.optional(S.String),
-      placeIds: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaFulfillmentInfo",
-}) as any as S.Schema<GoogleCloudRetailV2betaFulfillmentInfo>;
+export const GoogleCloudRetailV2betaFulfillmentInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "type": S.optional(S.String),
+  "placeIds": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaFulfillmentInfo" }) as any as S.Schema<GoogleCloudRetailV2betaFulfillmentInfo>;
 
-export type GoogleCloudRetailV2betaFulfillmentInfoList =
-  ReadonlyArray<GoogleCloudRetailV2betaFulfillmentInfo>;
-export const GoogleCloudRetailV2betaFulfillmentInfoList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaFulfillmentInfo,
-) as any as S.Schema<GoogleCloudRetailV2betaFulfillmentInfoList>;
+export type GoogleCloudRetailV2betaFulfillmentInfoList = ReadonlyArray<GoogleCloudRetailV2betaFulfillmentInfo>;
+export const GoogleCloudRetailV2betaFulfillmentInfoList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaFulfillmentInfo) as any as S.Schema<GoogleCloudRetailV2betaFulfillmentInfoList>;
 
-export type GoogleCloudRetailV2betaProductList =
-  ReadonlyArray<GoogleCloudRetailV2betaProduct>;
-export const GoogleCloudRetailV2betaProductList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GoogleCloudRetailV2betaProduct),
-) as any as S.Schema<GoogleCloudRetailV2betaProductList>;
+export type GoogleCloudRetailV2betaProductList = ReadonlyArray<GoogleCloudRetailV2betaProduct>;
+export const GoogleCloudRetailV2betaProductList = /*@__PURE__*/ S.Array(S.suspend(() => GoogleCloudRetailV2betaProduct)) as any as S.Schema<GoogleCloudRetailV2betaProductList>;
 
-export type GoogleCloudRetailV2betaProductAvailabilityEnum =
-  | "AVAILABILITY_UNSPECIFIED"
-  | "IN_STOCK"
-  | "OUT_OF_STOCK"
-  | "PREORDER"
-  | "BACKORDER"
-  | (string & {});
-export const GoogleCloudRetailV2betaProductAvailabilityEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaProductAvailabilityEnum = "AVAILABILITY_UNSPECIFIED" | "IN_STOCK" | "OUT_OF_STOCK" | "PREORDER" | "BACKORDER";
+export const GoogleCloudRetailV2betaProductAvailabilityEnum = /*@__PURE__*/ S.String;
 
 /** An intended audience of the Product for whom it's sold. */
 export interface GoogleCloudRetailV2betaAudience {
@@ -1833,13 +1277,11 @@ export interface GoogleCloudRetailV2betaAudience {
   ageGroups?: StringList;
 }
 export const GoogleCloudRetailV2betaAudience = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    genders: S.optional(StringList),
-    ageGroups: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaAudience",
-}) as any as S.Schema<GoogleCloudRetailV2betaAudience>;
+S.Struct({
+  "genders": S.optional(StringList),
+  "ageGroups": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaAudience" }) as any as S.Schema<GoogleCloudRetailV2betaAudience>;
 
 /** Product image. Recommendations AI and Retail Search use product images to improve prediction and search results. Product images can be returned in results, and are shown in prediction or search previews in the console. Please try to provide correct product images and avoid using images with size too small. */
 export interface GoogleCloudRetailV2betaImage {
@@ -1851,20 +1293,15 @@ export interface GoogleCloudRetailV2betaImage {
   width?: number;
 }
 export const GoogleCloudRetailV2betaImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    height: S.optional(S.Number),
-    width: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaImage",
-}) as any as S.Schema<GoogleCloudRetailV2betaImage>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "height": S.optional(S.Number),
+  "width": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaImage" }) as any as S.Schema<GoogleCloudRetailV2betaImage>;
 
-export type GoogleCloudRetailV2betaImageList =
-  ReadonlyArray<GoogleCloudRetailV2betaImage>;
-export const GoogleCloudRetailV2betaImageList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaImage,
-) as any as S.Schema<GoogleCloudRetailV2betaImageList>;
+export type GoogleCloudRetailV2betaImageList = ReadonlyArray<GoogleCloudRetailV2betaImage>;
+export const GoogleCloudRetailV2betaImageList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaImage) as any as S.Schema<GoogleCloudRetailV2betaImageList>;
 
 /** The color information of a Product. */
 export interface GoogleCloudRetailV2betaColorInfo {
@@ -1874,13 +1311,11 @@ export interface GoogleCloudRetailV2betaColorInfo {
   colors?: StringList;
 }
 export const GoogleCloudRetailV2betaColorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    colorFamilies: S.optional(StringList),
-    colors: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaColorInfo",
-}) as any as S.Schema<GoogleCloudRetailV2betaColorInfo>;
+S.Struct({
+  "colorFamilies": S.optional(StringList),
+  "colors": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaColorInfo" }) as any as S.Schema<GoogleCloudRetailV2betaColorInfo>;
 
 /** Product captures all metadata information of items to be recommended or searched. */
 export interface GoogleCloudRetailV2betaProduct {
@@ -1954,45 +1389,43 @@ export interface GoogleCloudRetailV2betaProduct {
   colorInfo?: GoogleCloudRetailV2betaColorInfo;
 }
 export const GoogleCloudRetailV2betaProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brands: S.optional(StringList),
-    patterns: S.optional(StringList),
-    promotions: S.optional(GoogleCloudRetailV2betaPromotionList),
-    rating: S.optional(GoogleCloudRetailV2betaRating),
-    type: S.optional(GoogleCloudRetailV2betaProductTypeEnum),
-    fulfillmentInfo: S.optional(GoogleCloudRetailV2betaFulfillmentInfoList),
-    materials: S.optional(StringList),
-    sizes: S.optional(StringList),
-    variants: S.optional(GoogleCloudRetailV2betaProductList),
-    uri: S.optional(S.String),
-    expireTime: S.optional(S.String),
-    availability: S.optional(GoogleCloudRetailV2betaProductAvailabilityEnum),
-    languageCode: S.optional(S.String),
-    gtin: S.optional(S.String),
-    categories: S.optional(StringList),
-    primaryProductId: S.optional(S.String),
-    title: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    audience: S.optional(GoogleCloudRetailV2betaAudience),
-    availableQuantity: S.optional(S.Number),
-    localInventories: S.optional(GoogleCloudRetailV2betaLocalInventoryList),
-    tags: S.optional(StringList),
-    ttl: S.optional(S.String),
-    attributes: S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
-    retrievableFields: S.optional(S.String),
-    priceInfo: S.optional(GoogleCloudRetailV2betaPriceInfo),
-    availableTime: S.optional(S.String),
-    publishTime: S.optional(S.String),
-    conditions: S.optional(StringList),
-    images: S.optional(GoogleCloudRetailV2betaImageList),
-    id: S.optional(S.String),
-    collectionMemberIds: S.optional(StringList),
-    colorInfo: S.optional(GoogleCloudRetailV2betaColorInfo),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaProduct",
-}) as any as S.Schema<GoogleCloudRetailV2betaProduct>;
+S.Struct({
+  "brands": S.optional(StringList),
+  "patterns": S.optional(StringList),
+  "promotions": S.optional(GoogleCloudRetailV2betaPromotionList),
+  "rating": S.optional(GoogleCloudRetailV2betaRating),
+  "type": S.optional(GoogleCloudRetailV2betaProductTypeEnum),
+  "fulfillmentInfo": S.optional(GoogleCloudRetailV2betaFulfillmentInfoList),
+  "materials": S.optional(StringList),
+  "sizes": S.optional(StringList),
+  "variants": S.optional(GoogleCloudRetailV2betaProductList),
+  "uri": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+  "availability": S.optional(GoogleCloudRetailV2betaProductAvailabilityEnum),
+  "languageCode": S.optional(S.String),
+  "gtin": S.optional(S.String),
+  "categories": S.optional(StringList),
+  "primaryProductId": S.optional(S.String),
+  "title": S.optional(S.String),
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "audience": S.optional(GoogleCloudRetailV2betaAudience),
+  "availableQuantity": S.optional(S.Number),
+  "localInventories": S.optional(GoogleCloudRetailV2betaLocalInventoryList),
+  "tags": S.optional(StringList),
+  "ttl": S.optional(S.String),
+  "attributes": S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
+  "retrievableFields": S.optional(S.String),
+  "priceInfo": S.optional(GoogleCloudRetailV2betaPriceInfo),
+  "availableTime": S.optional(S.String),
+  "publishTime": S.optional(S.String),
+  "conditions": S.optional(StringList),
+  "images": S.optional(GoogleCloudRetailV2betaImageList),
+  "id": S.optional(S.String),
+  "collectionMemberIds": S.optional(StringList),
+  "colorInfo": S.optional(GoogleCloudRetailV2betaColorInfo),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaProduct" }) as any as S.Schema<GoogleCloudRetailV2betaProduct>;
 
 export interface CreateProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. The parent catalog resource name, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch`. */
@@ -2002,36 +1435,24 @@ export interface CreateProjectsLocationsCatalogsBranchesProductsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaProduct;
 }
-export const CreateProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      productId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudRetailV2betaProduct.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/products",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCatalogsBranchesProductsRequest>;
+export const CreateProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "productId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaProduct.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/products","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<CreateProjectsLocationsCatalogsBranchesProductsRequest>;
 
 /** Pins one or more specified products to a specific position in the results. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: mapping of `[pin_position, product_id]` pairs (pin position uses 1-based indexing). * Action Result: Will pin products with matching ids to the position specified in the final result order. Example: Suppose the query is `shoes`, the Condition.query_terms is `shoes` and the pin_map has `{1, "pid1"}`, then product with `pid1` will be pinned to the top position in the final results. If multiple PinActions are matched to a single request the actions will be processed from most to least recently updated. Pins to positions larger than the max allowed page size of 120 are not allowed. */
 export interface GoogleCloudRetailV2betaRulePinAction {
   /** Required. A map of positions to product_ids. Partial matches per action are allowed, if a certain position in the map is already filled that `[position, product_id]` pair will be ignored but the rest may still be applied. This case will only occur if multiple pin actions are matched to a single request, as the map guarantees that pin positions are unique within the same action. Duplicate product_ids are not permitted within a single pin map. The max size of this map is 120, equivalent to the max [request page size](https://cloud.google.com/retail/docs/reference/rest/v2/projects.locations.catalogs.placements/search#request-body). */
   pinMap?: StringMap;
 }
-export const GoogleCloudRetailV2betaRulePinAction = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pinMap: S.optional(StringMap),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaRulePinAction",
-}) as any as S.Schema<GoogleCloudRetailV2betaRulePinAction>;
+export const GoogleCloudRetailV2betaRulePinAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pinMap": S.optional(StringMap),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRulePinAction" }) as any as S.Schema<GoogleCloudRetailV2betaRulePinAction>;
 
 /** A boost action to apply to results matching condition specified above. */
 export interface GoogleCloudRetailV2betaRuleBoostAction {
@@ -2040,15 +1461,12 @@ export interface GoogleCloudRetailV2betaRuleBoostAction {
   /** The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) * */
   productsFilter?: string;
 }
-export const GoogleCloudRetailV2betaRuleBoostAction = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      boost: S.optional(S.Number),
-      productsFilter: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaRuleBoostAction",
-}) as any as S.Schema<GoogleCloudRetailV2betaRuleBoostAction>;
+export const GoogleCloudRetailV2betaRuleBoostAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "boost": S.optional(S.Number),
+  "productsFilter": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleBoostAction" }) as any as S.Schema<GoogleCloudRetailV2betaRuleBoostAction>;
 
 /** Query terms that we want to match on. */
 export interface GoogleCloudRetailV2betaConditionQueryTerm {
@@ -2057,22 +1475,15 @@ export interface GoogleCloudRetailV2betaConditionQueryTerm {
   /** Whether this is supposed to be a full or partial match. */
   fullMatch?: boolean;
 }
-export const GoogleCloudRetailV2betaConditionQueryTerm =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(S.String),
-      fullMatch: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaConditionQueryTerm",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConditionQueryTerm>;
+export const GoogleCloudRetailV2betaConditionQueryTerm = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "value": S.optional(S.String),
+  "fullMatch": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConditionQueryTerm" }) as any as S.Schema<GoogleCloudRetailV2betaConditionQueryTerm>;
 
-export type GoogleCloudRetailV2betaConditionQueryTermList =
-  ReadonlyArray<GoogleCloudRetailV2betaConditionQueryTerm>;
-export const GoogleCloudRetailV2betaConditionQueryTermList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaConditionQueryTerm,
-  ) as any as S.Schema<GoogleCloudRetailV2betaConditionQueryTermList>;
+export type GoogleCloudRetailV2betaConditionQueryTermList = ReadonlyArray<GoogleCloudRetailV2betaConditionQueryTerm>;
+export const GoogleCloudRetailV2betaConditionQueryTermList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaConditionQueryTerm) as any as S.Schema<GoogleCloudRetailV2betaConditionQueryTermList>;
 
 /** Used for time-dependent conditions. Example: Want to have rule applied for week long sale. */
 export interface GoogleCloudRetailV2betaConditionTimeRange {
@@ -2081,22 +1492,15 @@ export interface GoogleCloudRetailV2betaConditionTimeRange {
   /** End of time range. Range is inclusive. */
   endTime?: string;
 }
-export const GoogleCloudRetailV2betaConditionTimeRange =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      startTime: S.optional(S.String),
-      endTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaConditionTimeRange",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConditionTimeRange>;
+export const GoogleCloudRetailV2betaConditionTimeRange = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConditionTimeRange" }) as any as S.Schema<GoogleCloudRetailV2betaConditionTimeRange>;
 
-export type GoogleCloudRetailV2betaConditionTimeRangeList =
-  ReadonlyArray<GoogleCloudRetailV2betaConditionTimeRange>;
-export const GoogleCloudRetailV2betaConditionTimeRangeList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaConditionTimeRange,
-  ) as any as S.Schema<GoogleCloudRetailV2betaConditionTimeRangeList>;
+export type GoogleCloudRetailV2betaConditionTimeRangeList = ReadonlyArray<GoogleCloudRetailV2betaConditionTimeRange>;
+export const GoogleCloudRetailV2betaConditionTimeRangeList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaConditionTimeRange) as any as S.Schema<GoogleCloudRetailV2betaConditionTimeRangeList>;
 
 /** Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted. */
 export interface GoogleCloudRetailV2betaCondition {
@@ -2108,28 +1512,23 @@ export interface GoogleCloudRetailV2betaCondition {
   pageCategories?: StringList;
 }
 export const GoogleCloudRetailV2betaCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queryTerms: S.optional(GoogleCloudRetailV2betaConditionQueryTermList),
-    activeTimeRange: S.optional(GoogleCloudRetailV2betaConditionTimeRangeList),
-    pageCategories: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaCondition",
-}) as any as S.Schema<GoogleCloudRetailV2betaCondition>;
+S.Struct({
+  "queryTerms": S.optional(GoogleCloudRetailV2betaConditionQueryTermList),
+  "activeTimeRange": S.optional(GoogleCloudRetailV2betaConditionTimeRangeList),
+  "pageCategories": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCondition" }) as any as S.Schema<GoogleCloudRetailV2betaCondition>;
 
 /** Prevents a term in the query from being used in search. Example: Don't search for "shoddy". */
 export interface GoogleCloudRetailV2betaRuleIgnoreAction {
   /** Terms to ignore in the search query. */
   ignoreTerms?: StringList;
 }
-export const GoogleCloudRetailV2betaRuleIgnoreAction = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ignoreTerms: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaRuleIgnoreAction",
-}) as any as S.Schema<GoogleCloudRetailV2betaRuleIgnoreAction>;
+export const GoogleCloudRetailV2betaRuleIgnoreAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ignoreTerms": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleIgnoreAction" }) as any as S.Schema<GoogleCloudRetailV2betaRuleIgnoreAction>;
 
 /** Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe". */
 export interface GoogleCloudRetailV2betaRuleReplacementAction {
@@ -2140,30 +1539,24 @@ export interface GoogleCloudRetailV2betaRuleReplacementAction {
   /** Term that will be used for replacement. */
   replacementTerm?: string;
 }
-export const GoogleCloudRetailV2betaRuleReplacementAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      queryTerms: S.optional(StringList),
-      term: S.optional(S.String),
-      replacementTerm: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRuleReplacementAction",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRuleReplacementAction>;
+export const GoogleCloudRetailV2betaRuleReplacementAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "queryTerms": S.optional(StringList),
+  "term": S.optional(S.String),
+  "replacementTerm": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleReplacementAction" }) as any as S.Schema<GoogleCloudRetailV2betaRuleReplacementAction>;
 
 /** * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter. */
 export interface GoogleCloudRetailV2betaRuleFilterAction {
   /** A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) * */
   filter?: string;
 }
-export const GoogleCloudRetailV2betaRuleFilterAction = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaRuleFilterAction",
-}) as any as S.Schema<GoogleCloudRetailV2betaRuleFilterAction>;
+export const GoogleCloudRetailV2betaRuleFilterAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleFilterAction" }) as any as S.Schema<GoogleCloudRetailV2betaRuleFilterAction>;
 
 /** Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers". */
 export interface GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
@@ -2174,16 +1567,13 @@ export interface GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
   /** Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms. */
   synonyms?: StringList;
 }
-export const GoogleCloudRetailV2betaRuleOnewaySynonymsAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      onewayTerms: S.optional(StringList),
-      queryTerms: S.optional(StringList),
-      synonyms: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRuleOnewaySynonymsAction",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRuleOnewaySynonymsAction>;
+export const GoogleCloudRetailV2betaRuleOnewaySynonymsAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "onewayTerms": S.optional(StringList),
+  "queryTerms": S.optional(StringList),
+  "synonyms": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleOnewaySynonymsAction" }) as any as S.Schema<GoogleCloudRetailV2betaRuleOnewaySynonymsAction>;
 
 /** Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap". */
 export interface GoogleCloudRetailV2betaRuleDoNotAssociateAction {
@@ -2194,58 +1584,46 @@ export interface GoogleCloudRetailV2betaRuleDoNotAssociateAction {
   /** Will be [deprecated = true] post migration; */
   terms?: StringList;
 }
-export const GoogleCloudRetailV2betaRuleDoNotAssociateAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      queryTerms: S.optional(StringList),
-      doNotAssociateTerms: S.optional(StringList),
-      terms: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRuleDoNotAssociateAction",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRuleDoNotAssociateAction>;
+export const GoogleCloudRetailV2betaRuleDoNotAssociateAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "queryTerms": S.optional(StringList),
+  "doNotAssociateTerms": S.optional(StringList),
+  "terms": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleDoNotAssociateAction" }) as any as S.Schema<GoogleCloudRetailV2betaRuleDoNotAssociateAction>;
 
 /** Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri. */
 export interface GoogleCloudRetailV2betaRuleRedirectAction {
   /** URL must have length equal or less than 2000 characters. */
   redirectUri?: string;
 }
-export const GoogleCloudRetailV2betaRuleRedirectAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      redirectUri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRuleRedirectAction",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRuleRedirectAction>;
+export const GoogleCloudRetailV2betaRuleRedirectAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "redirectUri": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleRedirectAction" }) as any as S.Schema<GoogleCloudRetailV2betaRuleRedirectAction>;
 
 /** Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers". */
 export interface GoogleCloudRetailV2betaRuleTwowaySynonymsAction {
   /** Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms. */
   synonyms?: StringList;
 }
-export const GoogleCloudRetailV2betaRuleTwowaySynonymsAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      synonyms: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRuleTwowaySynonymsAction",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRuleTwowaySynonymsAction>;
+export const GoogleCloudRetailV2betaRuleTwowaySynonymsAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "synonyms": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleTwowaySynonymsAction" }) as any as S.Schema<GoogleCloudRetailV2betaRuleTwowaySynonymsAction>;
 
 /** Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name "size", then facet key "size" will be removed from the request (if it is present). */
 export interface GoogleCloudRetailV2betaRuleRemoveFacetAction {
   /** The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters. */
   attributeNames?: StringList;
 }
-export const GoogleCloudRetailV2betaRuleRemoveFacetAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributeNames: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRuleRemoveFacetAction",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRuleRemoveFacetAction>;
+export const GoogleCloudRetailV2betaRuleRemoveFacetAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "attributeNames": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleRemoveFacetAction" }) as any as S.Schema<GoogleCloudRetailV2betaRuleRemoveFacetAction>;
 
 /** Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified position. */
 export interface GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment {
@@ -2254,39 +1632,26 @@ export interface GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionA
   /** This is the position in the request as explained above. It should be strictly positive be at most 100. */
   position?: number;
 }
-export const GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributeName: S.optional(S.String),
-      position: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>;
+export const GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "attributeName": S.optional(S.String),
+  "position": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment" }) as any as S.Schema<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>;
 
-export type GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList =
-  ReadonlyArray<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>;
-export const GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment,
-  ) as any as S.Schema<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList>;
+export type GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList = ReadonlyArray<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>;
+export const GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment) as any as S.Schema<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList>;
 
 /** Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key "size" is not already in the top 8 slots, then the facet "size" will appear at a position close to 8. b) The facet key "size" in among the top 8 positions in the request, then it will stay at its current rank. */
 export interface GoogleCloudRetailV2betaRuleForceReturnFacetAction {
   /** Each instance corresponds to a force return attribute for the given condition. There can't be more 15 instances here. */
   facetPositionAdjustments?: GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList;
 }
-export const GoogleCloudRetailV2betaRuleForceReturnFacetAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      facetPositionAdjustments: S.optional(
-        GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRuleForceReturnFacetAction",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRuleForceReturnFacetAction>;
+export const GoogleCloudRetailV2betaRuleForceReturnFacetAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "facetPositionAdjustments": S.optional(GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRuleForceReturnFacetAction" }) as any as S.Schema<GoogleCloudRetailV2betaRuleForceReturnFacetAction>;
 
 /** A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH. */
 export interface GoogleCloudRetailV2betaRule {
@@ -2316,61 +1681,33 @@ export interface GoogleCloudRetailV2betaRule {
   forceReturnFacetAction?: GoogleCloudRetailV2betaRuleForceReturnFacetAction;
 }
 export const GoogleCloudRetailV2betaRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pinAction: S.optional(GoogleCloudRetailV2betaRulePinAction),
-    boostAction: S.optional(GoogleCloudRetailV2betaRuleBoostAction),
-    condition: S.optional(GoogleCloudRetailV2betaCondition),
-    ignoreAction: S.optional(GoogleCloudRetailV2betaRuleIgnoreAction),
-    replacementAction: S.optional(GoogleCloudRetailV2betaRuleReplacementAction),
-    filterAction: S.optional(GoogleCloudRetailV2betaRuleFilterAction),
-    onewaySynonymsAction: S.optional(
-      GoogleCloudRetailV2betaRuleOnewaySynonymsAction,
-    ),
-    doNotAssociateAction: S.optional(
-      GoogleCloudRetailV2betaRuleDoNotAssociateAction,
-    ),
-    redirectAction: S.optional(GoogleCloudRetailV2betaRuleRedirectAction),
-    twowaySynonymsAction: S.optional(
-      GoogleCloudRetailV2betaRuleTwowaySynonymsAction,
-    ),
-    removeFacetAction: S.optional(GoogleCloudRetailV2betaRuleRemoveFacetAction),
-    forceReturnFacetAction: S.optional(
-      GoogleCloudRetailV2betaRuleForceReturnFacetAction,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaRule",
-}) as any as S.Schema<GoogleCloudRetailV2betaRule>;
+S.Struct({
+  "pinAction": S.optional(GoogleCloudRetailV2betaRulePinAction),
+  "boostAction": S.optional(GoogleCloudRetailV2betaRuleBoostAction),
+  "condition": S.optional(GoogleCloudRetailV2betaCondition),
+  "ignoreAction": S.optional(GoogleCloudRetailV2betaRuleIgnoreAction),
+  "replacementAction": S.optional(GoogleCloudRetailV2betaRuleReplacementAction),
+  "filterAction": S.optional(GoogleCloudRetailV2betaRuleFilterAction),
+  "onewaySynonymsAction": S.optional(GoogleCloudRetailV2betaRuleOnewaySynonymsAction),
+  "doNotAssociateAction": S.optional(GoogleCloudRetailV2betaRuleDoNotAssociateAction),
+  "redirectAction": S.optional(GoogleCloudRetailV2betaRuleRedirectAction),
+  "twowaySynonymsAction": S.optional(GoogleCloudRetailV2betaRuleTwowaySynonymsAction),
+  "removeFacetAction": S.optional(GoogleCloudRetailV2betaRuleRemoveFacetAction),
+  "forceReturnFacetAction": S.optional(GoogleCloudRetailV2betaRuleForceReturnFacetAction),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRule" }) as any as S.Schema<GoogleCloudRetailV2betaRule>;
 
-export type GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum =
-  | "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED"
-  | "SEARCH_SOLUTION_USE_CASE_SEARCH"
-  | "SEARCH_SOLUTION_USE_CASE_BROWSE"
-  | (string & {});
-export const GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum = "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED" | "SEARCH_SOLUTION_USE_CASE_SEARCH" | "SEARCH_SOLUTION_USE_CASE_BROWSE";
+export const GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList =
-  ReadonlyArray<GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum>;
-export const GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum,
-  ) as any as S.Schema<GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList>;
+export type GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList = ReadonlyArray<GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum>;
+export const GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum) as any as S.Schema<GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList>;
 
-export type GoogleCloudRetailV2betaControlSolutionTypesItemEnum =
-  | "SOLUTION_TYPE_UNSPECIFIED"
-  | "SOLUTION_TYPE_RECOMMENDATION"
-  | "SOLUTION_TYPE_SEARCH"
-  | (string & {});
-export const GoogleCloudRetailV2betaControlSolutionTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaControlSolutionTypesItemEnum = "SOLUTION_TYPE_UNSPECIFIED" | "SOLUTION_TYPE_RECOMMENDATION" | "SOLUTION_TYPE_SEARCH";
+export const GoogleCloudRetailV2betaControlSolutionTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaControlSolutionTypesItemEnumList =
-  ReadonlyArray<GoogleCloudRetailV2betaControlSolutionTypesItemEnum>;
-export const GoogleCloudRetailV2betaControlSolutionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaControlSolutionTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudRetailV2betaControlSolutionTypesItemEnumList>;
+export type GoogleCloudRetailV2betaControlSolutionTypesItemEnumList = ReadonlyArray<GoogleCloudRetailV2betaControlSolutionTypesItemEnum>;
+export const GoogleCloudRetailV2betaControlSolutionTypesItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaControlSolutionTypesItemEnum) as any as S.Schema<GoogleCloudRetailV2betaControlSolutionTypesItemEnumList>;
 
 /** Configures dynamic metadata that can be linked to a ServingConfig and affect search or recommendation results at serving time. */
 export interface GoogleCloudRetailV2betaControl {
@@ -2388,21 +1725,15 @@ export interface GoogleCloudRetailV2betaControl {
   solutionTypes?: GoogleCloudRetailV2betaControlSolutionTypesItemEnumList;
 }
 export const GoogleCloudRetailV2betaControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    associatedServingConfigIds: S.optional(StringList),
-    rule: S.optional(GoogleCloudRetailV2betaRule),
-    searchSolutionUseCase: S.optional(
-      GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList,
-    ),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    solutionTypes: S.optional(
-      GoogleCloudRetailV2betaControlSolutionTypesItemEnumList,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaControl",
-}) as any as S.Schema<GoogleCloudRetailV2betaControl>;
+S.Struct({
+  "associatedServingConfigIds": S.optional(StringList),
+  "rule": S.optional(GoogleCloudRetailV2betaRule),
+  "searchSolutionUseCase": S.optional(GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "solutionTypes": S.optional(GoogleCloudRetailV2betaControlSolutionTypesItemEnumList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaControl" }) as any as S.Schema<GoogleCloudRetailV2betaControl>;
 
 export interface CreateProjectsLocationsCatalogsControlsRequest {
   /** Required. Full resource name of parent catalog. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` */
@@ -2412,124 +1743,66 @@ export interface CreateProjectsLocationsCatalogsControlsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaControl;
 }
-export const CreateProjectsLocationsCatalogsControlsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      controlId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudRetailV2betaControl.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/controls",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCatalogsControlsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCatalogsControlsRequest>;
+export const CreateProjectsLocationsCatalogsControlsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "controlId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaControl.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/controls","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsCatalogsControlsRequest" }) as any as S.Schema<CreateProjectsLocationsCatalogsControlsRequest>;
 
-export type GoogleCloudRetailV2betaModelServingStateEnum =
-  | "SERVING_STATE_UNSPECIFIED"
-  | "INACTIVE"
-  | "ACTIVE"
-  | "TUNED"
-  | (string & {});
-export const GoogleCloudRetailV2betaModelServingStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaModelServingStateEnum = "SERVING_STATE_UNSPECIFIED" | "INACTIVE" | "ACTIVE" | "TUNED";
+export const GoogleCloudRetailV2betaModelServingStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations. */
 export interface GoogleCloudRetailV2betaModelServingConfigList {
   /** Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`. */
   servingConfigIds?: StringList;
 }
-export const GoogleCloudRetailV2betaModelServingConfigList =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      servingConfigIds: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaModelServingConfigList",
-  }) as any as S.Schema<GoogleCloudRetailV2betaModelServingConfigList>;
+export const GoogleCloudRetailV2betaModelServingConfigList = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "servingConfigIds": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaModelServingConfigList" }) as any as S.Schema<GoogleCloudRetailV2betaModelServingConfigList>;
 
-export type GoogleCloudRetailV2betaModelServingConfigListList =
-  ReadonlyArray<GoogleCloudRetailV2betaModelServingConfigList>;
-export const GoogleCloudRetailV2betaModelServingConfigListList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaModelServingConfigList,
-  ) as any as S.Schema<GoogleCloudRetailV2betaModelServingConfigListList>;
+export type GoogleCloudRetailV2betaModelServingConfigListList = ReadonlyArray<GoogleCloudRetailV2betaModelServingConfigList>;
+export const GoogleCloudRetailV2betaModelServingConfigListList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaModelServingConfigList) as any as S.Schema<GoogleCloudRetailV2betaModelServingConfigListList>;
 
-export type GoogleCloudRetailV2betaModelFilteringOptionEnum =
-  | "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"
-  | "RECOMMENDATIONS_FILTERING_DISABLED"
-  | "RECOMMENDATIONS_FILTERING_ENABLED"
-  | (string & {});
-export const GoogleCloudRetailV2betaModelFilteringOptionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaModelFilteringOptionEnum = "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED" | "RECOMMENDATIONS_FILTERING_DISABLED" | "RECOMMENDATIONS_FILTERING_ENABLED";
+export const GoogleCloudRetailV2betaModelFilteringOptionEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum =
-    | "CONTEXT_PRODUCTS_TYPE_UNSPECIFIED"
-    | "SINGLE_CONTEXT_PRODUCT"
-    | "MULTIPLE_CONTEXT_PRODUCTS"
-    | (string & {});
-export const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum = "CONTEXT_PRODUCTS_TYPE_UNSPECIFIED" | "SINGLE_CONTEXT_PRODUCT" | "MULTIPLE_CONTEXT_PRODUCTS";
+export const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional configs for the frequently-bought-together model type. */
 export interface GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig {
   /** Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS. */
   contextProductsType?: GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum;
 }
-export const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contextProductsType: S.optional(
-        GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig>;
+export const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "contextProductsType": S.optional(GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig" }) as any as S.Schema<GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig>;
 
 /** Additional model features config. */
 export interface GoogleCloudRetailV2betaModelModelFeaturesConfig {
   /** Additional configs for frequently-bought-together models. */
   frequentlyBoughtTogetherConfig?: GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig;
 }
-export const GoogleCloudRetailV2betaModelModelFeaturesConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      frequentlyBoughtTogetherConfig: S.optional(
-        GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaModelModelFeaturesConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaModelModelFeaturesConfig>;
+export const GoogleCloudRetailV2betaModelModelFeaturesConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "frequentlyBoughtTogetherConfig": S.optional(GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaModelModelFeaturesConfig" }) as any as S.Schema<GoogleCloudRetailV2betaModelModelFeaturesConfig>;
 
-export type GoogleCloudRetailV2betaModelPeriodicTuningStateEnum =
-  | "PERIODIC_TUNING_STATE_UNSPECIFIED"
-  | "PERIODIC_TUNING_DISABLED"
-  | "ALL_TUNING_DISABLED"
-  | "PERIODIC_TUNING_ENABLED"
-  | (string & {});
-export const GoogleCloudRetailV2betaModelPeriodicTuningStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaModelPeriodicTuningStateEnum = "PERIODIC_TUNING_STATE_UNSPECIFIED" | "PERIODIC_TUNING_DISABLED" | "ALL_TUNING_DISABLED" | "PERIODIC_TUNING_ENABLED";
+export const GoogleCloudRetailV2betaModelPeriodicTuningStateEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaModelTrainingStateEnum =
-  | "TRAINING_STATE_UNSPECIFIED"
-  | "PAUSED"
-  | "TRAINING"
-  | (string & {});
-export const GoogleCloudRetailV2betaModelTrainingStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaModelTrainingStateEnum = "TRAINING_STATE_UNSPECIFIED" | "PAUSED" | "TRAINING";
+export const GoogleCloudRetailV2betaModelTrainingStateEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaModelDataStateEnum =
-  | "DATA_STATE_UNSPECIFIED"
-  | "DATA_OK"
-  | "DATA_ERROR"
-  | (string & {});
+export type GoogleCloudRetailV2betaModelDataStateEnum = "DATA_STATE_UNSPECIFIED" | "DATA_OK" | "DATA_ERROR";
 export const GoogleCloudRetailV2betaModelDataStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata that describes the training and serving parameters of a Model. A Model can be associated with a ServingConfig and then queried through the Predict API. */
@@ -2566,34 +1839,24 @@ export interface GoogleCloudRetailV2betaModel {
   updateTime?: string;
 }
 export const GoogleCloudRetailV2betaModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    servingState: S.optional(GoogleCloudRetailV2betaModelServingStateEnum),
-    tuningOperation: S.optional(S.String),
-    lastTuneTime: S.optional(S.String),
-    servingConfigLists: S.optional(
-      GoogleCloudRetailV2betaModelServingConfigListList,
-    ),
-    filteringOption: S.optional(
-      GoogleCloudRetailV2betaModelFilteringOptionEnum,
-    ),
-    modelFeaturesConfig: S.optional(
-      GoogleCloudRetailV2betaModelModelFeaturesConfig,
-    ),
-    name: S.optional(S.String),
-    optimizationObjective: S.optional(S.String),
-    periodicTuningState: S.optional(
-      GoogleCloudRetailV2betaModelPeriodicTuningStateEnum,
-    ),
-    trainingState: S.optional(GoogleCloudRetailV2betaModelTrainingStateEnum),
-    createTime: S.optional(S.String),
-    type: S.optional(S.String),
-    dataState: S.optional(GoogleCloudRetailV2betaModelDataStateEnum),
-    displayName: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaModel",
-}) as any as S.Schema<GoogleCloudRetailV2betaModel>;
+S.Struct({
+  "servingState": S.optional(GoogleCloudRetailV2betaModelServingStateEnum),
+  "tuningOperation": S.optional(S.String),
+  "lastTuneTime": S.optional(S.String),
+  "servingConfigLists": S.optional(GoogleCloudRetailV2betaModelServingConfigListList),
+  "filteringOption": S.optional(GoogleCloudRetailV2betaModelFilteringOptionEnum),
+  "modelFeaturesConfig": S.optional(GoogleCloudRetailV2betaModelModelFeaturesConfig),
+  "name": S.optional(S.String),
+  "optimizationObjective": S.optional(S.String),
+  "periodicTuningState": S.optional(GoogleCloudRetailV2betaModelPeriodicTuningStateEnum),
+  "trainingState": S.optional(GoogleCloudRetailV2betaModelTrainingStateEnum),
+  "createTime": S.optional(S.String),
+  "type": S.optional(S.String),
+  "dataState": S.optional(GoogleCloudRetailV2betaModelDataStateEnum),
+  "displayName": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaModel" }) as any as S.Schema<GoogleCloudRetailV2betaModel>;
 
 export interface CreateProjectsLocationsCatalogsModelsRequest {
   /** Optional. Whether to run a dry run to validate the request (without actually creating the model). */
@@ -2603,22 +1866,13 @@ export interface CreateProjectsLocationsCatalogsModelsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaModel;
 }
-export const CreateProjectsLocationsCatalogsModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dryRun: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudRetailV2betaModel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/models",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCatalogsModelsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCatalogsModelsRequest>;
+export const CreateProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "dryRun": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaModel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/models","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsCatalogsModelsRequest" }) as any as S.Schema<CreateProjectsLocationsCatalogsModelsRequest>;
 
 export interface CreateProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. Full resource name of parent. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` */
@@ -2628,120 +1882,70 @@ export interface CreateProjectsLocationsCatalogsServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaServingConfig;
 }
-export const CreateProjectsLocationsCatalogsServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      servingConfigId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudRetailV2betaServingConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/servingConfigs",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCatalogsServingConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCatalogsServingConfigsRequest>;
+export const CreateProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "servingConfigId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaServingConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/servingConfigs","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsCatalogsServingConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsCatalogsServingConfigsRequest>;
 
 export interface DeleteProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to delete the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the Product to delete does not exist, a NOT_FOUND error is returned. The Product to delete can neither be a Product.Type.COLLECTION Product member nor a Product.Type.PRIMARY Product with more than one variants. Otherwise, an INVALID_ARGUMENT error is returned. All inventory information for the named Product will be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCatalogsBranchesProductsRequest>;
+export const DeleteProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<DeleteProjectsLocationsCatalogsBranchesProductsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
 export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
+S.Struct({}),
+).annotate({ identifier: "GoogleProtobufEmpty" }) as any as S.Schema<GoogleProtobufEmpty>;
 
 export interface DeleteProjectsLocationsCatalogsControlsRequest {
   /** Required. The resource name of the Control to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsCatalogsControlsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCatalogsControlsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCatalogsControlsRequest>;
+export const DeleteProjectsLocationsCatalogsControlsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsCatalogsControlsRequest" }) as any as S.Schema<DeleteProjectsLocationsCatalogsControlsRequest>;
 
 export interface DeleteProjectsLocationsCatalogsModelsRequest {
   /** Required. The resource name of the Model to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsCatalogsModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCatalogsModelsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCatalogsModelsRequest>;
+export const DeleteProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsCatalogsModelsRequest" }) as any as S.Schema<DeleteProjectsLocationsCatalogsModelsRequest>;
 
 export interface DeleteProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The resource name of the ServingConfig to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsCatalogsServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCatalogsServingConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCatalogsServingConfigsRequest>;
+export const DeleteProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsCatalogsServingConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsCatalogsServingConfigsRequest>;
 
 /** The Google Cloud Storage output destination configuration. */
 export interface GoogleCloudRetailV2betaOutputConfigGcsDestination {
   /** Required. The output uri prefix for saving output data to json files. Some mapping examples are as follows: output_uri_prefix sample output(assuming the object is foo.json) ======================== ============================================= gs://bucket/ gs://bucket/foo.json gs://bucket/folder/ gs://bucket/folder/foo.json gs://bucket/folder/item_ gs://bucket/folder/item_foo.json */
   outputUriPrefix?: string;
 }
-export const GoogleCloudRetailV2betaOutputConfigGcsDestination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outputUriPrefix: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaOutputConfigGcsDestination",
-  }) as any as S.Schema<GoogleCloudRetailV2betaOutputConfigGcsDestination>;
+export const GoogleCloudRetailV2betaOutputConfigGcsDestination = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "outputUriPrefix": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaOutputConfigGcsDestination" }) as any as S.Schema<GoogleCloudRetailV2betaOutputConfigGcsDestination>;
 
 /** The BigQuery output destination configuration. */
 export interface GoogleCloudRetailV2betaOutputConfigBigQueryDestination {
@@ -2752,16 +1956,13 @@ export interface GoogleCloudRetailV2betaOutputConfigBigQueryDestination {
   /** Required. The prefix of exported BigQuery tables. */
   tableIdPrefix?: string;
 }
-export const GoogleCloudRetailV2betaOutputConfigBigQueryDestination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      datasetId: S.optional(S.String),
-      tableType: S.optional(S.String),
-      tableIdPrefix: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaOutputConfigBigQueryDestination",
-  }) as any as S.Schema<GoogleCloudRetailV2betaOutputConfigBigQueryDestination>;
+export const GoogleCloudRetailV2betaOutputConfigBigQueryDestination = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "datasetId": S.optional(S.String),
+  "tableType": S.optional(S.String),
+  "tableIdPrefix": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaOutputConfigBigQueryDestination" }) as any as S.Schema<GoogleCloudRetailV2betaOutputConfigBigQueryDestination>;
 
 /** The output configuration setting. */
 export interface GoogleCloudRetailV2betaOutputConfig {
@@ -2771,17 +1972,11 @@ export interface GoogleCloudRetailV2betaOutputConfig {
   bigqueryDestination?: GoogleCloudRetailV2betaOutputConfigBigQueryDestination;
 }
 export const GoogleCloudRetailV2betaOutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsDestination: S.optional(
-      GoogleCloudRetailV2betaOutputConfigGcsDestination,
-    ),
-    bigqueryDestination: S.optional(
-      GoogleCloudRetailV2betaOutputConfigBigQueryDestination,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaOutputConfig",
-}) as any as S.Schema<GoogleCloudRetailV2betaOutputConfig>;
+S.Struct({
+  "gcsDestination": S.optional(GoogleCloudRetailV2betaOutputConfigGcsDestination),
+  "bigqueryDestination": S.optional(GoogleCloudRetailV2betaOutputConfigBigQueryDestination),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaOutputConfig" }) as any as S.Schema<GoogleCloudRetailV2betaOutputConfig>;
 
 /** Request message for the `ExportAnalyticsMetrics` method. */
 export interface GoogleCloudRetailV2betaExportAnalyticsMetricsRequest {
@@ -2790,15 +1985,12 @@ export interface GoogleCloudRetailV2betaExportAnalyticsMetricsRequest {
   /** A filtering expression to specify restrictions on returned metrics. The expression is a sequence of terms. Each term applies a restriction to the returned metrics. Use this expression to restrict results to a specific time range. Currently we expect only one types of fields: * `timestamp`: This can be specified twice, once with a less than operator and once with a greater than operator. The `timestamp` restriction should result in one, contiguous, valid, `timestamp` range. Some examples of valid filters expressions: * Example 1: `timestamp > "2012-04-23T18:25:43.511Z" timestamp < "2012-04-23T18:30:43.511Z"` * Example 2: `timestamp > "2012-04-23T18:25:43.511Z"` */
   filter?: string;
 }
-export const GoogleCloudRetailV2betaExportAnalyticsMetricsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outputConfig: S.optional(GoogleCloudRetailV2betaOutputConfig),
-      filter: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaExportAnalyticsMetricsRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaExportAnalyticsMetricsRequest>;
+export const GoogleCloudRetailV2betaExportAnalyticsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "outputConfig": S.optional(GoogleCloudRetailV2betaOutputConfig),
+  "filter": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaExportAnalyticsMetricsRequest" }) as any as S.Schema<GoogleCloudRetailV2betaExportAnalyticsMetricsRequest>;
 
 export interface ExportAnalyticsMetricsProjectsLocationsCatalogsRequest {
   /** Required. Full resource name of the parent catalog. Expected format: `projects/*\/locations/*\/catalogs/*` */
@@ -2806,23 +1998,12 @@ export interface ExportAnalyticsMetricsProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaExportAnalyticsMetricsRequest;
 }
-export const ExportAnalyticsMetricsProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalog: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaExportAnalyticsMetricsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+catalog}:exportAnalyticsMetrics",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExportAnalyticsMetricsProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<ExportAnalyticsMetricsProjectsLocationsCatalogsRequest>;
+export const ExportAnalyticsMetricsProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalog": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaExportAnalyticsMetricsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+catalog}:exportAnalyticsMetrics","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ExportAnalyticsMetricsProjectsLocationsCatalogsRequest" }) as any as S.Schema<ExportAnalyticsMetricsProjectsLocationsCatalogsRequest>;
 
 /** Request message for ExportProducts method. */
 export interface GoogleCloudRetailV2betaExportProductsRequest {
@@ -2831,15 +2012,12 @@ export interface GoogleCloudRetailV2betaExportProductsRequest {
   /** Deprecated: This field is deprecated. Any filter provided will be ignored. */
   filter?: string;
 }
-export const GoogleCloudRetailV2betaExportProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outputConfig: S.optional(GoogleCloudRetailV2betaOutputConfig),
-      filter: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaExportProductsRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaExportProductsRequest>;
+export const GoogleCloudRetailV2betaExportProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "outputConfig": S.optional(GoogleCloudRetailV2betaOutputConfig),
+  "filter": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaExportProductsRequest" }) as any as S.Schema<GoogleCloudRetailV2betaExportProductsRequest>;
 
 export interface ExportProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Resource name of a Branch, and `default_branch` for branch_id component is supported. For example `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch` */
@@ -2847,23 +2025,12 @@ export interface ExportProjectsLocationsCatalogsBranchesProductsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaExportProductsRequest;
 }
-export const ExportProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaExportProductsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/products:export",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExportProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<ExportProjectsLocationsCatalogsBranchesProductsRequest>;
+export const ExportProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaExportProductsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/products:export","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ExportProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<ExportProjectsLocationsCatalogsBranchesProductsRequest>;
 
 /** Request message for the `ExportUserEvents` method. */
 export interface GoogleCloudRetailV2betaExportUserEventsRequest {
@@ -2872,15 +2039,12 @@ export interface GoogleCloudRetailV2betaExportUserEventsRequest {
   /** Deprecated: This field is deprecated. Any filter provided will be ignored. */
   filter?: string;
 }
-export const GoogleCloudRetailV2betaExportUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outputConfig: S.optional(GoogleCloudRetailV2betaOutputConfig),
-      filter: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaExportUserEventsRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaExportUserEventsRequest>;
+export const GoogleCloudRetailV2betaExportUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "outputConfig": S.optional(GoogleCloudRetailV2betaOutputConfig),
+  "filter": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaExportUserEventsRequest" }) as any as S.Schema<GoogleCloudRetailV2betaExportUserEventsRequest>;
 
 export interface ExportProjectsLocationsCatalogsUserEventsRequest {
   /** Required. Resource name of a Catalog. For example `projects/1234/locations/global/catalogs/default_catalog` */
@@ -2888,70 +2052,39 @@ export interface ExportProjectsLocationsCatalogsUserEventsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaExportUserEventsRequest;
 }
-export const ExportProjectsLocationsCatalogsUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaExportUserEventsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/userEvents:export",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExportProjectsLocationsCatalogsUserEventsRequest",
-  }) as any as S.Schema<ExportProjectsLocationsCatalogsUserEventsRequest>;
+export const ExportProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaExportUserEventsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/userEvents:export","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ExportProjectsLocationsCatalogsUserEventsRequest" }) as any as S.Schema<ExportProjectsLocationsCatalogsUserEventsRequest>;
 
 export interface GetAlertConfigProjectsRequest {
   /** Required. Full AlertConfig resource name. Format: projects/{project_number}/alertConfig */
   name: string;
 }
 export const GetAlertConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta/{+name}",
-      baseUrl: "https://retail.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAlertConfigProjectsRequest",
-}) as any as S.Schema<GetAlertConfigProjectsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetAlertConfigProjectsRequest" }) as any as S.Schema<GetAlertConfigProjectsRequest>;
 
 /** Recipient contact information. */
 export interface GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient {
   /** Email address of the recipient. */
   emailAddress?: string;
 }
-export const GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      emailAddress: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient",
-  }) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient>;
+export const GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "emailAddress": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient" }) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient>;
 
-export type GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList =
-  ReadonlyArray<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient>;
-export const GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient,
-  ) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList>;
+export type GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList = ReadonlyArray<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient>;
+export const GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList>;
 
-export type GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum =
-  | "ENROLL_STATUS_UNSPECIFIED"
-  | "ENROLLED"
-  | "DECLINED"
-  | (string & {});
-export const GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum = "ENROLL_STATUS_UNSPECIFIED" | "ENROLLED" | "DECLINED";
+export const GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum = /*@__PURE__*/ S.String;
 
 /** Alert policy for a customer. */
 export interface GoogleCloudRetailV2betaAlertConfigAlertPolicy {
@@ -2962,27 +2095,16 @@ export interface GoogleCloudRetailV2betaAlertConfigAlertPolicy {
   /** The enrollment status of a customer. */
   enrollStatus?: GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum;
 }
-export const GoogleCloudRetailV2betaAlertConfigAlertPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      recipients: S.optional(
-        GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList,
-      ),
-      alertGroup: S.optional(S.String),
-      enrollStatus: S.optional(
-        GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaAlertConfigAlertPolicy",
-  }) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicy>;
+export const GoogleCloudRetailV2betaAlertConfigAlertPolicy = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "recipients": S.optional(GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList),
+  "alertGroup": S.optional(S.String),
+  "enrollStatus": S.optional(GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaAlertConfigAlertPolicy" }) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicy>;
 
-export type GoogleCloudRetailV2betaAlertConfigAlertPolicyList =
-  ReadonlyArray<GoogleCloudRetailV2betaAlertConfigAlertPolicy>;
-export const GoogleCloudRetailV2betaAlertConfigAlertPolicyList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaAlertConfigAlertPolicy,
-  ) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicyList>;
+export type GoogleCloudRetailV2betaAlertConfigAlertPolicyList = ReadonlyArray<GoogleCloudRetailV2betaAlertConfigAlertPolicy>;
+export const GoogleCloudRetailV2betaAlertConfigAlertPolicyList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaAlertConfigAlertPolicy) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicyList>;
 
 /** Project level alert config. */
 export interface GoogleCloudRetailV2betaAlertConfig {
@@ -2992,53 +2114,31 @@ export interface GoogleCloudRetailV2betaAlertConfig {
   alertPolicies?: GoogleCloudRetailV2betaAlertConfigAlertPolicyList;
 }
 export const GoogleCloudRetailV2betaAlertConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    alertPolicies: S.optional(
-      GoogleCloudRetailV2betaAlertConfigAlertPolicyList,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaAlertConfig",
-}) as any as S.Schema<GoogleCloudRetailV2betaAlertConfig>;
+S.Struct({
+  "name": S.optional(S.String),
+  "alertPolicies": S.optional(GoogleCloudRetailV2betaAlertConfigAlertPolicyList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaAlertConfig" }) as any as S.Schema<GoogleCloudRetailV2betaAlertConfig>;
 
 export interface GetAttributesConfigProjectsLocationsCatalogsRequest {
   /** Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` */
   name: string;
 }
-export const GetAttributesConfigProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetAttributesConfigProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<GetAttributesConfigProjectsLocationsCatalogsRequest>;
+export const GetAttributesConfigProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetAttributesConfigProjectsLocationsCatalogsRequest" }) as any as S.Schema<GetAttributesConfigProjectsLocationsCatalogsRequest>;
 
 export interface GetCompletionConfigProjectsLocationsCatalogsRequest {
   /** Required. Full CompletionConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/completionConfig` */
   name: string;
 }
-export const GetCompletionConfigProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetCompletionConfigProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<GetCompletionConfigProjectsLocationsCatalogsRequest>;
+export const GetCompletionConfigProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetCompletionConfigProjectsLocationsCatalogsRequest" }) as any as S.Schema<GetCompletionConfigProjectsLocationsCatalogsRequest>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface GoogleTypeDate {
@@ -3050,11 +2150,11 @@ export interface GoogleTypeDate {
   day?: number;
 }
 export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    year: S.optional(S.Number),
-    month: S.optional(S.Number),
-    day: S.optional(S.Number),
-  }),
+S.Struct({
+  "year": S.optional(S.Number),
+  "month": S.optional(S.Number),
+  "day": S.optional(S.Number),
+}),
 ).annotate({ identifier: "GoogleTypeDate" }) as any as S.Schema<GoogleTypeDate>;
 
 /** BigQuery source import data from. */
@@ -3072,33 +2172,27 @@ export interface GoogleCloudRetailV2betaBigQuerySource {
   /** BigQuery time partitioned table's _PARTITIONDATE in YYYY-MM-DD format. */
   partitionDate?: GoogleTypeDate;
 }
-export const GoogleCloudRetailV2betaBigQuerySource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tableId: S.optional(S.String),
-      gcsStagingDir: S.optional(S.String),
-      dataSchema: S.optional(S.String),
-      projectId: S.optional(S.String),
-      datasetId: S.optional(S.String),
-      partitionDate: S.optional(GoogleTypeDate),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaBigQuerySource",
-}) as any as S.Schema<GoogleCloudRetailV2betaBigQuerySource>;
+export const GoogleCloudRetailV2betaBigQuerySource = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "tableId": S.optional(S.String),
+  "gcsStagingDir": S.optional(S.String),
+  "dataSchema": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "datasetId": S.optional(S.String),
+  "partitionDate": S.optional(GoogleTypeDate),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaBigQuerySource" }) as any as S.Schema<GoogleCloudRetailV2betaBigQuerySource>;
 
 /** The input config source for completion data. */
 export interface GoogleCloudRetailV2betaCompletionDataInputConfig {
   /** Required. BigQuery input source. Add the IAM permission "BigQuery Data Viewer" for cloud-retail-customer-data-access@system.gserviceaccount.com before using this feature otherwise an error is thrown. */
   bigQuerySource?: GoogleCloudRetailV2betaBigQuerySource;
 }
-export const GoogleCloudRetailV2betaCompletionDataInputConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bigQuerySource: S.optional(GoogleCloudRetailV2betaBigQuerySource),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaCompletionDataInputConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaCompletionDataInputConfig>;
+export const GoogleCloudRetailV2betaCompletionDataInputConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "bigQuerySource": S.optional(GoogleCloudRetailV2betaBigQuerySource),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCompletionDataInputConfig" }) as any as S.Schema<GoogleCloudRetailV2betaCompletionDataInputConfig>;
 
 /** Catalog level autocomplete config for customers to customize autocomplete feature's settings. */
 export interface GoogleCloudRetailV2betaCompletionConfig {
@@ -3125,50 +2219,31 @@ export interface GoogleCloudRetailV2betaCompletionConfig {
   /** Output only. Name of the LRO corresponding to the latest denylist import. Can use GetOperation API to retrieve the latest state of the Long Running Operation. */
   lastDenylistImportOperation?: string;
 }
-export const GoogleCloudRetailV2betaCompletionConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      lastSuggestionsImportOperation: S.optional(S.String),
-      lastAllowlistImportOperation: S.optional(S.String),
-      autoLearning: S.optional(S.Boolean),
-      allowlistInputConfig: S.optional(
-        GoogleCloudRetailV2betaCompletionDataInputConfig,
-      ),
-      name: S.optional(S.String),
-      matchingOrder: S.optional(S.String),
-      denylistInputConfig: S.optional(
-        GoogleCloudRetailV2betaCompletionDataInputConfig,
-      ),
-      suggestionsInputConfig: S.optional(
-        GoogleCloudRetailV2betaCompletionDataInputConfig,
-      ),
-      maxSuggestions: S.optional(S.Number),
-      minPrefixLength: S.optional(S.Number),
-      lastDenylistImportOperation: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaCompletionConfig",
-}) as any as S.Schema<GoogleCloudRetailV2betaCompletionConfig>;
+export const GoogleCloudRetailV2betaCompletionConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "lastSuggestionsImportOperation": S.optional(S.String),
+  "lastAllowlistImportOperation": S.optional(S.String),
+  "autoLearning": S.optional(S.Boolean),
+  "allowlistInputConfig": S.optional(GoogleCloudRetailV2betaCompletionDataInputConfig),
+  "name": S.optional(S.String),
+  "matchingOrder": S.optional(S.String),
+  "denylistInputConfig": S.optional(GoogleCloudRetailV2betaCompletionDataInputConfig),
+  "suggestionsInputConfig": S.optional(GoogleCloudRetailV2betaCompletionDataInputConfig),
+  "maxSuggestions": S.optional(S.Number),
+  "minPrefixLength": S.optional(S.Number),
+  "lastDenylistImportOperation": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCompletionConfig" }) as any as S.Schema<GoogleCloudRetailV2betaCompletionConfig>;
 
 export interface GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest {
   /** Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
   name: string;
 }
-export const GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}/conversationalSearchCustomizationConfig",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest>;
+export const GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}/conversationalSearchCustomizationConfig","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest" }) as any as S.Schema<GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest>;
 
 /** An example for intent classification. */
 export interface GoogleCloudRetailV2betaIntentClassificationConfigExample {
@@ -3181,29 +2256,20 @@ export interface GoogleCloudRetailV2betaIntentClassificationConfigExample {
   /** Required. Whether the example is classified positively. */
   classifiedPositive?: boolean;
 }
-export const GoogleCloudRetailV2betaIntentClassificationConfigExample =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      intentType: S.optional(S.String),
-      reason: S.optional(S.String),
-      query: S.optional(S.String),
-      classifiedPositive: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaIntentClassificationConfigExample",
-  }) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigExample>;
+export const GoogleCloudRetailV2betaIntentClassificationConfigExample = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "intentType": S.optional(S.String),
+  "reason": S.optional(S.String),
+  "query": S.optional(S.String),
+  "classifiedPositive": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaIntentClassificationConfigExample" }) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigExample>;
 
-export type GoogleCloudRetailV2betaIntentClassificationConfigExampleList =
-  ReadonlyArray<GoogleCloudRetailV2betaIntentClassificationConfigExample>;
-export const GoogleCloudRetailV2betaIntentClassificationConfigExampleList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaIntentClassificationConfigExample,
-  ) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigExampleList>;
+export type GoogleCloudRetailV2betaIntentClassificationConfigExampleList = ReadonlyArray<GoogleCloudRetailV2betaIntentClassificationConfigExample>;
+export const GoogleCloudRetailV2betaIntentClassificationConfigExampleList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaIntentClassificationConfigExample) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigExampleList>;
 
-export type GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum =
-  "OPERATION_UNSPECIFIED" | "EXACT_MATCH" | "CONTAINS" | (string & {});
-export const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum = "OPERATION_UNSPECIFIED" | "EXACT_MATCH" | "CONTAINS";
+export const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum = /*@__PURE__*/ S.String;
 
 /** An inline force intent classification configuration. */
 export interface GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent {
@@ -3214,42 +2280,27 @@ export interface GoogleCloudRetailV2betaIntentClassificationConfigInlineForceInt
   /** Optional. The operation to perform for the query. */
   operation?: GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum;
 }
-export const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      intentType: S.optional(S.String),
-      query: S.optional(S.String),
-      operation: S.optional(
-        GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent",
-  }) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent>;
+export const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "intentType": S.optional(S.String),
+  "query": S.optional(S.String),
+  "operation": S.optional(GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent" }) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent>;
 
-export type GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList =
-  ReadonlyArray<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent>;
-export const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent,
-  ) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList>;
+export type GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList = ReadonlyArray<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent>;
+export const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList>;
 
 /** Inline source for intent classifications. */
 export interface GoogleCloudRetailV2betaIntentClassificationConfigInlineSource {
   /** Optional. A list of inline force intent classifications. */
   inlineForceIntents?: GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList;
 }
-export const GoogleCloudRetailV2betaIntentClassificationConfigInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      inlineForceIntents: S.optional(
-        GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaIntentClassificationConfigInlineSource",
-  }) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigInlineSource>;
+export const GoogleCloudRetailV2betaIntentClassificationConfigInlineSource = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "inlineForceIntents": S.optional(GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaIntentClassificationConfigInlineSource" }) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigInlineSource>;
 
 /** The public proto to represent the intent classification config. It will be converted to the internal proto in the backend. */
 export interface GoogleCloudRetailV2betaIntentClassificationConfig {
@@ -3264,22 +2315,15 @@ export interface GoogleCloudRetailV2betaIntentClassificationConfig {
   /** Optional. A list of intent types that will be disabled for this customer. The intent types must match one of the predefined intent types defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype */
   disabledIntentTypes?: StringList;
 }
-export const GoogleCloudRetailV2betaIntentClassificationConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      blocklistKeywords: S.optional(StringList),
-      example: S.optional(
-        GoogleCloudRetailV2betaIntentClassificationConfigExampleList,
-      ),
-      inlineSource: S.optional(
-        GoogleCloudRetailV2betaIntentClassificationConfigInlineSource,
-      ),
-      modelPreamble: S.optional(S.String),
-      disabledIntentTypes: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaIntentClassificationConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfig>;
+export const GoogleCloudRetailV2betaIntentClassificationConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "blocklistKeywords": S.optional(StringList),
+  "example": S.optional(GoogleCloudRetailV2betaIntentClassificationConfigExampleList),
+  "inlineSource": S.optional(GoogleCloudRetailV2betaIntentClassificationConfigInlineSource),
+  "modelPreamble": S.optional(S.String),
+  "disabledIntentTypes": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaIntentClassificationConfig" }) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfig>;
 
 /** The public proto to represent the conversational search customization config. It will be converted to the internal proto in the backend. */
 export interface GoogleCloudRetailV2betaConversationalSearchCustomizationConfig {
@@ -3290,38 +2334,23 @@ export interface GoogleCloudRetailV2betaConversationalSearchCustomizationConfig 
   /** Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
   catalog?: string;
 }
-export const GoogleCloudRetailV2betaConversationalSearchCustomizationConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      intentClassificationConfig: S.optional(
-        GoogleCloudRetailV2betaIntentClassificationConfig,
-      ),
-      retailerDisplayName: S.optional(S.String),
-      catalog: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaConversationalSearchCustomizationConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchCustomizationConfig>;
+export const GoogleCloudRetailV2betaConversationalSearchCustomizationConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "intentClassificationConfig": S.optional(GoogleCloudRetailV2betaIntentClassificationConfig),
+  "retailerDisplayName": S.optional(S.String),
+  "catalog": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaConversationalSearchCustomizationConfig" }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchCustomizationConfig>;
 
 export interface GetDefaultBranchProjectsLocationsCatalogsRequest {
   /** The parent catalog resource name, such as `projects/*\/locations/global/catalogs/default_catalog`. */
   catalog: string;
 }
-export const GetDefaultBranchProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalog: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+catalog}:getDefaultBranch",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetDefaultBranchProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<GetDefaultBranchProjectsLocationsCatalogsRequest>;
+export const GetDefaultBranchProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalog": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+catalog}:getDefaultBranch","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetDefaultBranchProjectsLocationsCatalogsRequest" }) as any as S.Schema<GetDefaultBranchProjectsLocationsCatalogsRequest>;
 
 /** Response message of CatalogService.GetDefaultBranch. */
 export interface GoogleCloudRetailV2betaGetDefaultBranchResponse {
@@ -3332,35 +2361,23 @@ export interface GoogleCloudRetailV2betaGetDefaultBranchResponse {
   /** The time when this branch is set to default. */
   setTime?: string;
 }
-export const GoogleCloudRetailV2betaGetDefaultBranchResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      branch: S.optional(S.String),
-      note: S.optional(S.String),
-      setTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaGetDefaultBranchResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaGetDefaultBranchResponse>;
+export const GoogleCloudRetailV2betaGetDefaultBranchResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "branch": S.optional(S.String),
+  "note": S.optional(S.String),
+  "setTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaGetDefaultBranchResponse" }) as any as S.Schema<GoogleCloudRetailV2betaGetDefaultBranchResponse>;
 
 export interface GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest {
   /** Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
   catalog: string;
 }
-export const GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalog: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+catalog}/generativeQuestionFeature",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest>;
+export const GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalog": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+catalog}/generativeQuestionFeature","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest" }) as any as S.Schema<GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest>;
 
 /** Configuration for overall generative question feature state. */
 export interface GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig {
@@ -3371,200 +2388,118 @@ export interface GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig {
   /** Optional. Minimum number of products in the response to trigger follow-up questions. Value must be 0 or positive. */
   minimumProducts?: number;
 }
-export const GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalog: S.optional(S.String),
-      featureEnabled: S.optional(S.Boolean),
-      minimumProducts: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig>;
+export const GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalog": S.optional(S.String),
+  "featureEnabled": S.optional(S.Boolean),
+  "minimumProducts": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig" }) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig>;
 
 export interface GetProjectsLocationsCatalogsBranchesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsCatalogsBranchesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCatalogsBranchesOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCatalogsBranchesOperationsRequest>;
+export const GetProjectsLocationsCatalogsBranchesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCatalogsBranchesOperationsRequest" }) as any as S.Schema<GetProjectsLocationsCatalogsBranchesOperationsRequest>;
 
 export interface GetProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested Product does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const GetProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCatalogsBranchesProductsRequest>;
+export const GetProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<GetProjectsLocationsCatalogsBranchesProductsRequest>;
 
 export interface GetProjectsLocationsCatalogsControlsRequest {
   /** Required. The resource name of the Control to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}` */
   name: string;
 }
-export const GetProjectsLocationsCatalogsControlsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCatalogsControlsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCatalogsControlsRequest>;
+export const GetProjectsLocationsCatalogsControlsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCatalogsControlsRequest" }) as any as S.Schema<GetProjectsLocationsCatalogsControlsRequest>;
 
 export interface GetProjectsLocationsCatalogsModelsRequest {
   /** Required. The resource name of the Model to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog}/models/{model_id}` */
   name: string;
 }
-export const GetProjectsLocationsCatalogsModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCatalogsModelsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCatalogsModelsRequest>;
+export const GetProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCatalogsModelsRequest" }) as any as S.Schema<GetProjectsLocationsCatalogsModelsRequest>;
 
 export interface GetProjectsLocationsCatalogsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsCatalogsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCatalogsOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCatalogsOperationsRequest>;
+export const GetProjectsLocationsCatalogsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCatalogsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsCatalogsOperationsRequest>;
 
 export interface GetProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The resource name of the ServingConfig to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
   name: string;
 }
-export const GetProjectsLocationsCatalogsServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCatalogsServingConfigsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCatalogsServingConfigsRequest>;
+export const GetProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCatalogsServingConfigsRequest" }) as any as S.Schema<GetProjectsLocationsCatalogsServingConfigsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta/{+name}",
-      baseUrl: "https://retail.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsOperationsRequest",
-}) as any as S.Schema<GetProjectsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsOperationsRequest" }) as any as S.Schema<GetProjectsOperationsRequest>;
 
 /** Configuration of destination for Import related errors. */
 export interface GoogleCloudRetailV2betaImportErrorsConfig {
   /** Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory. Import errors are written to sharded files in this directory, one per line, as a JSON-encoded `google.rpc.Status` message. */
   gcsPrefix?: string;
 }
-export const GoogleCloudRetailV2betaImportErrorsConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gcsPrefix: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaImportErrorsConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaImportErrorsConfig>;
+export const GoogleCloudRetailV2betaImportErrorsConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "gcsPrefix": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaImportErrorsConfig" }) as any as S.Schema<GoogleCloudRetailV2betaImportErrorsConfig>;
 
-export type GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum =
-  "RECONCILIATION_MODE_UNSPECIFIED" | "INCREMENTAL" | "FULL" | (string & {});
-export const GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum = "RECONCILIATION_MODE_UNSPECIFIED" | "INCREMENTAL" | "FULL";
+export const GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum = /*@__PURE__*/ S.String;
 
 /** The inline source for the input config for ImportProducts method. */
 export interface GoogleCloudRetailV2betaProductInlineSource {
   /** Required. A list of products to update/create. Each product must have a valid Product.id. Recommended max of 100 items. */
   products?: GoogleCloudRetailV2betaProductList;
 }
-export const GoogleCloudRetailV2betaProductInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      products: S.optional(GoogleCloudRetailV2betaProductList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaProductInlineSource",
-  }) as any as S.Schema<GoogleCloudRetailV2betaProductInlineSource>;
+export const GoogleCloudRetailV2betaProductInlineSource = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "products": S.optional(GoogleCloudRetailV2betaProductList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaProductInlineSource" }) as any as S.Schema<GoogleCloudRetailV2betaProductInlineSource>;
 
 /** Google Cloud Storage location for input content. */
 export interface GoogleCloudRetailV2betaGcsSource {
@@ -3574,13 +2509,11 @@ export interface GoogleCloudRetailV2betaGcsSource {
   dataSchema?: string;
 }
 export const GoogleCloudRetailV2betaGcsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputUris: S.optional(StringList),
-    dataSchema: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaGcsSource",
-}) as any as S.Schema<GoogleCloudRetailV2betaGcsSource>;
+S.Struct({
+  "inputUris": S.optional(StringList),
+  "dataSchema": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaGcsSource" }) as any as S.Schema<GoogleCloudRetailV2betaGcsSource>;
 
 /** The input config source for products. */
 export interface GoogleCloudRetailV2betaProductInputConfig {
@@ -3591,18 +2524,13 @@ export interface GoogleCloudRetailV2betaProductInputConfig {
   /** BigQuery input source. */
   bigQuerySource?: GoogleCloudRetailV2betaBigQuerySource;
 }
-export const GoogleCloudRetailV2betaProductInputConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productInlineSource: S.optional(
-        GoogleCloudRetailV2betaProductInlineSource,
-      ),
-      gcsSource: S.optional(GoogleCloudRetailV2betaGcsSource),
-      bigQuerySource: S.optional(GoogleCloudRetailV2betaBigQuerySource),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaProductInputConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaProductInputConfig>;
+export const GoogleCloudRetailV2betaProductInputConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productInlineSource": S.optional(GoogleCloudRetailV2betaProductInlineSource),
+  "gcsSource": S.optional(GoogleCloudRetailV2betaGcsSource),
+  "bigQuerySource": S.optional(GoogleCloudRetailV2betaBigQuerySource),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaProductInputConfig" }) as any as S.Schema<GoogleCloudRetailV2betaProductInputConfig>;
 
 /** Request message for Import methods. */
 export interface GoogleCloudRetailV2betaImportProductsRequest {
@@ -3615,25 +2543,20 @@ export interface GoogleCloudRetailV2betaImportProductsRequest {
   /** Deprecated. This field has no effect. */
   requestId?: string;
   /** The mode of reconciliation between existing products and the products to be imported. Defaults to ReconciliationMode.INCREMENTAL. */
-  reconciliationMode?: GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum;
+  reconciliationMode?: GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum | (string & {});
   /** Required. The desired input location of the data. */
   inputConfig?: GoogleCloudRetailV2betaProductInputConfig;
 }
-export const GoogleCloudRetailV2betaImportProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String),
-      errorsConfig: S.optional(GoogleCloudRetailV2betaImportErrorsConfig),
-      notificationPubsubTopic: S.optional(S.String),
-      requestId: S.optional(S.String),
-      reconciliationMode: S.optional(
-        GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum,
-      ),
-      inputConfig: S.optional(GoogleCloudRetailV2betaProductInputConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaImportProductsRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaImportProductsRequest>;
+export const GoogleCloudRetailV2betaImportProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String),
+  "errorsConfig": S.optional(GoogleCloudRetailV2betaImportErrorsConfig),
+  "notificationPubsubTopic": S.optional(S.String),
+  "requestId": S.optional(S.String),
+  "reconciliationMode": S.optional(GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum),
+  "inputConfig": S.optional(GoogleCloudRetailV2betaProductInputConfig),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaImportProductsRequest" }) as any as S.Schema<GoogleCloudRetailV2betaImportProductsRequest>;
 
 export interface ImportProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch` If no updateMask is specified, requires products.create permission. If updateMask is specified, requires products.update permission. */
@@ -3641,23 +2564,12 @@ export interface ImportProjectsLocationsCatalogsBranchesProductsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaImportProductsRequest;
 }
-export const ImportProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaImportProductsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/products:import",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<ImportProjectsLocationsCatalogsBranchesProductsRequest>;
+export const ImportProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaImportProductsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/products:import","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ImportProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<ImportProjectsLocationsCatalogsBranchesProductsRequest>;
 
 /** Request message for ImportCompletionData methods. */
 export interface GoogleCloudRetailV2betaImportCompletionDataRequest {
@@ -3666,15 +2578,12 @@ export interface GoogleCloudRetailV2betaImportCompletionDataRequest {
   /** Required. The desired input location of the data. */
   inputConfig?: GoogleCloudRetailV2betaCompletionDataInputConfig;
 }
-export const GoogleCloudRetailV2betaImportCompletionDataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      notificationPubsubTopic: S.optional(S.String),
-      inputConfig: S.optional(GoogleCloudRetailV2betaCompletionDataInputConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaImportCompletionDataRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaImportCompletionDataRequest>;
+export const GoogleCloudRetailV2betaImportCompletionDataRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "notificationPubsubTopic": S.optional(S.String),
+  "inputConfig": S.optional(GoogleCloudRetailV2betaCompletionDataInputConfig),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaImportCompletionDataRequest" }) as any as S.Schema<GoogleCloudRetailV2betaImportCompletionDataRequest>;
 
 export interface ImportProjectsLocationsCatalogsCompletionDataRequest {
   /** Required. The catalog which the suggestions dataset belongs to. Format: `projects/1234/locations/global/catalogs/default_catalog`. */
@@ -3682,23 +2591,12 @@ export interface ImportProjectsLocationsCatalogsCompletionDataRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaImportCompletionDataRequest;
 }
-export const ImportProjectsLocationsCatalogsCompletionDataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaImportCompletionDataRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/completionData:import",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsCatalogsCompletionDataRequest",
-  }) as any as S.Schema<ImportProjectsLocationsCatalogsCompletionDataRequest>;
+export const ImportProjectsLocationsCatalogsCompletionDataRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaImportCompletionDataRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/completionData:import","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ImportProjectsLocationsCatalogsCompletionDataRequest" }) as any as S.Schema<ImportProjectsLocationsCatalogsCompletionDataRequest>;
 
 /** Detailed product information associated with a user event. */
 export interface GoogleCloudRetailV2betaProductDetail {
@@ -3707,21 +2605,15 @@ export interface GoogleCloudRetailV2betaProductDetail {
   /** Quantity of the product associated with the user event. For example, this field will be 2 if two products are added to the shopping cart for `purchase-complete` event. Required for `add-to-cart` and `purchase-complete` event types. */
   quantity?: number;
 }
-export const GoogleCloudRetailV2betaProductDetail = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      product: S.optional(GoogleCloudRetailV2betaProduct),
-      quantity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaProductDetail",
-}) as any as S.Schema<GoogleCloudRetailV2betaProductDetail>;
+export const GoogleCloudRetailV2betaProductDetail = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "product": S.optional(GoogleCloudRetailV2betaProduct),
+  "quantity": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaProductDetail" }) as any as S.Schema<GoogleCloudRetailV2betaProductDetail>;
 
-export type GoogleCloudRetailV2betaProductDetailList =
-  ReadonlyArray<GoogleCloudRetailV2betaProductDetail>;
-export const GoogleCloudRetailV2betaProductDetailList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaProductDetail,
-) as any as S.Schema<GoogleCloudRetailV2betaProductDetailList>;
+export type GoogleCloudRetailV2betaProductDetailList = ReadonlyArray<GoogleCloudRetailV2betaProductDetail>;
+export const GoogleCloudRetailV2betaProductDetailList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaProductDetail) as any as S.Schema<GoogleCloudRetailV2betaProductDetailList>;
 
 /** Detailed panel information associated with a user event. */
 export interface GoogleCloudRetailV2betaPanelInfo {
@@ -3739,23 +2631,18 @@ export interface GoogleCloudRetailV2betaPanelInfo {
   productDetails?: GoogleCloudRetailV2betaProductDetailList;
 }
 export const GoogleCloudRetailV2betaPanelInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    panelId: S.optional(S.String),
-    totalPanels: S.optional(S.Number),
-    panelPosition: S.optional(S.Number),
-    attributionToken: S.optional(S.String),
-    displayName: S.optional(S.String),
-    productDetails: S.optional(GoogleCloudRetailV2betaProductDetailList),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaPanelInfo",
-}) as any as S.Schema<GoogleCloudRetailV2betaPanelInfo>;
+S.Struct({
+  "panelId": S.optional(S.String),
+  "totalPanels": S.optional(S.Number),
+  "panelPosition": S.optional(S.Number),
+  "attributionToken": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "productDetails": S.optional(GoogleCloudRetailV2betaProductDetailList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPanelInfo" }) as any as S.Schema<GoogleCloudRetailV2betaPanelInfo>;
 
-export type GoogleCloudRetailV2betaPanelInfoList =
-  ReadonlyArray<GoogleCloudRetailV2betaPanelInfo>;
-export const GoogleCloudRetailV2betaPanelInfoList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaPanelInfo,
-) as any as S.Schema<GoogleCloudRetailV2betaPanelInfoList>;
+export type GoogleCloudRetailV2betaPanelInfoList = ReadonlyArray<GoogleCloudRetailV2betaPanelInfo>;
+export const GoogleCloudRetailV2betaPanelInfoList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaPanelInfo) as any as S.Schema<GoogleCloudRetailV2betaPanelInfoList>;
 
 /** A transaction represents the entire purchase transaction. */
 export interface GoogleCloudRetailV2betaPurchaseTransaction {
@@ -3770,18 +2657,15 @@ export interface GoogleCloudRetailV2betaPurchaseTransaction {
   /** Required. Total non-zero revenue or grand total associated with the transaction. This value include shipping, tax, or other adjustments to total revenue that you want to include as part of your revenue calculations. */
   revenue?: number;
 }
-export const GoogleCloudRetailV2betaPurchaseTransaction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tax: S.optional(S.Number),
-      currencyCode: S.optional(S.String),
-      id: S.optional(S.String),
-      cost: S.optional(S.Number),
-      revenue: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaPurchaseTransaction",
-  }) as any as S.Schema<GoogleCloudRetailV2betaPurchaseTransaction>;
+export const GoogleCloudRetailV2betaPurchaseTransaction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "tax": S.optional(S.Number),
+  "currencyCode": S.optional(S.String),
+  "id": S.optional(S.String),
+  "cost": S.optional(S.Number),
+  "revenue": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPurchaseTransaction" }) as any as S.Schema<GoogleCloudRetailV2betaPurchaseTransaction>;
 
 /** Detailed completion information including completion attribution token and clicked completion info. */
 export interface GoogleCloudRetailV2betaCompletionDetail {
@@ -3792,16 +2676,13 @@ export interface GoogleCloudRetailV2betaCompletionDetail {
   /** Completion attribution token in CompleteQueryResponse.attribution_token. */
   completionAttributionToken?: string;
 }
-export const GoogleCloudRetailV2betaCompletionDetail = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      selectedSuggestion: S.optional(S.String),
-      selectedPosition: S.optional(S.Number),
-      completionAttributionToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaCompletionDetail",
-}) as any as S.Schema<GoogleCloudRetailV2betaCompletionDetail>;
+export const GoogleCloudRetailV2betaCompletionDetail = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "selectedSuggestion": S.optional(S.String),
+  "selectedPosition": S.optional(S.Number),
+  "completionAttributionToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCompletionDetail" }) as any as S.Schema<GoogleCloudRetailV2betaCompletionDetail>;
 
 /** UserEvent captures all metadata information Retail API needs to know about how end users interact with customers' website. */
 export interface GoogleCloudRetailV2betaUserEvent {
@@ -3851,53 +2732,45 @@ export interface GoogleCloudRetailV2betaUserEvent {
   searchQuery?: string;
 }
 export const GoogleCloudRetailV2betaUserEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String),
-    productDetails: S.optional(GoogleCloudRetailV2betaProductDetailList),
-    panels: S.optional(GoogleCloudRetailV2betaPanelInfoList),
-    referrerUri: S.optional(S.String),
-    eventTime: S.optional(S.String),
-    eventType: S.optional(S.String),
-    sessionId: S.optional(S.String),
-    offset: S.optional(S.Number),
-    userInfo: S.optional(GoogleCloudRetailV2betaUserInfo),
-    attributes: S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
-    cartId: S.optional(S.String),
-    orderBy: S.optional(S.String),
-    uri: S.optional(S.String),
-    purchaseTransaction: S.optional(GoogleCloudRetailV2betaPurchaseTransaction),
-    pageCategories: S.optional(StringList),
-    pageViewId: S.optional(S.String),
-    visitorId: S.optional(S.String),
-    attributionToken: S.optional(S.String),
-    entity: S.optional(S.String),
-    completionDetail: S.optional(GoogleCloudRetailV2betaCompletionDetail),
-    experimentIds: S.optional(StringList),
-    searchQuery: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaUserEvent",
-}) as any as S.Schema<GoogleCloudRetailV2betaUserEvent>;
+S.Struct({
+  "filter": S.optional(S.String),
+  "productDetails": S.optional(GoogleCloudRetailV2betaProductDetailList),
+  "panels": S.optional(GoogleCloudRetailV2betaPanelInfoList),
+  "referrerUri": S.optional(S.String),
+  "eventTime": S.optional(S.String),
+  "eventType": S.optional(S.String),
+  "sessionId": S.optional(S.String),
+  "offset": S.optional(S.Number),
+  "userInfo": S.optional(GoogleCloudRetailV2betaUserInfo),
+  "attributes": S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
+  "cartId": S.optional(S.String),
+  "orderBy": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "purchaseTransaction": S.optional(GoogleCloudRetailV2betaPurchaseTransaction),
+  "pageCategories": S.optional(StringList),
+  "pageViewId": S.optional(S.String),
+  "visitorId": S.optional(S.String),
+  "attributionToken": S.optional(S.String),
+  "entity": S.optional(S.String),
+  "completionDetail": S.optional(GoogleCloudRetailV2betaCompletionDetail),
+  "experimentIds": S.optional(StringList),
+  "searchQuery": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaUserEvent" }) as any as S.Schema<GoogleCloudRetailV2betaUserEvent>;
 
-export type GoogleCloudRetailV2betaUserEventList =
-  ReadonlyArray<GoogleCloudRetailV2betaUserEvent>;
-export const GoogleCloudRetailV2betaUserEventList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaUserEvent,
-) as any as S.Schema<GoogleCloudRetailV2betaUserEventList>;
+export type GoogleCloudRetailV2betaUserEventList = ReadonlyArray<GoogleCloudRetailV2betaUserEvent>;
+export const GoogleCloudRetailV2betaUserEventList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaUserEvent) as any as S.Schema<GoogleCloudRetailV2betaUserEventList>;
 
 /** The inline source for the input config for ImportUserEvents method. */
 export interface GoogleCloudRetailV2betaUserEventInlineSource {
   /** Required. A list of user events to import. Recommended max of 10k items. */
   userEvents?: GoogleCloudRetailV2betaUserEventList;
 }
-export const GoogleCloudRetailV2betaUserEventInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userEvents: S.optional(GoogleCloudRetailV2betaUserEventList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaUserEventInlineSource",
-  }) as any as S.Schema<GoogleCloudRetailV2betaUserEventInlineSource>;
+export const GoogleCloudRetailV2betaUserEventInlineSource = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "userEvents": S.optional(GoogleCloudRetailV2betaUserEventList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaUserEventInlineSource" }) as any as S.Schema<GoogleCloudRetailV2betaUserEventInlineSource>;
 
 /** The input config source for user events. */
 export interface GoogleCloudRetailV2betaUserEventInputConfig {
@@ -3908,18 +2781,13 @@ export interface GoogleCloudRetailV2betaUserEventInputConfig {
   /** Required. BigQuery input source. */
   bigQuerySource?: GoogleCloudRetailV2betaBigQuerySource;
 }
-export const GoogleCloudRetailV2betaUserEventInputConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userEventInlineSource: S.optional(
-        GoogleCloudRetailV2betaUserEventInlineSource,
-      ),
-      gcsSource: S.optional(GoogleCloudRetailV2betaGcsSource),
-      bigQuerySource: S.optional(GoogleCloudRetailV2betaBigQuerySource),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaUserEventInputConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaUserEventInputConfig>;
+export const GoogleCloudRetailV2betaUserEventInputConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "userEventInlineSource": S.optional(GoogleCloudRetailV2betaUserEventInlineSource),
+  "gcsSource": S.optional(GoogleCloudRetailV2betaGcsSource),
+  "bigQuerySource": S.optional(GoogleCloudRetailV2betaBigQuerySource),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaUserEventInputConfig" }) as any as S.Schema<GoogleCloudRetailV2betaUserEventInputConfig>;
 
 /** Request message for the ImportUserEvents request. */
 export interface GoogleCloudRetailV2betaImportUserEventsRequest {
@@ -3928,15 +2796,12 @@ export interface GoogleCloudRetailV2betaImportUserEventsRequest {
   /** Required. The desired input location of the data. */
   inputConfig?: GoogleCloudRetailV2betaUserEventInputConfig;
 }
-export const GoogleCloudRetailV2betaImportUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      errorsConfig: S.optional(GoogleCloudRetailV2betaImportErrorsConfig),
-      inputConfig: S.optional(GoogleCloudRetailV2betaUserEventInputConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaImportUserEventsRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaImportUserEventsRequest>;
+export const GoogleCloudRetailV2betaImportUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "errorsConfig": S.optional(GoogleCloudRetailV2betaImportErrorsConfig),
+  "inputConfig": S.optional(GoogleCloudRetailV2betaUserEventInputConfig),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaImportUserEventsRequest" }) as any as S.Schema<GoogleCloudRetailV2betaImportUserEventsRequest>;
 
 export interface ImportProjectsLocationsCatalogsUserEventsRequest {
   /** Required. `projects/1234/locations/global/catalogs/default_catalog` */
@@ -3944,23 +2809,12 @@ export interface ImportProjectsLocationsCatalogsUserEventsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaImportUserEventsRequest;
 }
-export const ImportProjectsLocationsCatalogsUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaImportUserEventsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/userEvents:import",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsCatalogsUserEventsRequest",
-  }) as any as S.Schema<ImportProjectsLocationsCatalogsUserEventsRequest>;
+export const ImportProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaImportUserEventsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/userEvents:import","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ImportProjectsLocationsCatalogsUserEventsRequest" }) as any as S.Schema<ImportProjectsLocationsCatalogsUserEventsRequest>;
 
 export interface ListProjectsLocationsCatalogsRequest {
   /** Required. The account resource name with an associated location. If the caller does not have permission to list Catalogs under this location, regardless of whether or not this location exists, a PERMISSION_DENIED error is returned. */
@@ -3970,22 +2824,13 @@ export interface ListProjectsLocationsCatalogsRequest {
   /** A page token ListCatalogsResponse.next_page_token, received from a previous CatalogService.ListCatalogs call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to CatalogService.ListCatalogs must match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+parent}/catalogs",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsCatalogsRequest",
-}) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
+export const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/catalogs","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCatalogsRequest" }) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
 
 /** Configures what level the product should be uploaded with regards to how users will be send events and how predictions will be made. */
 export interface GoogleCloudRetailV2betaProductLevelConfig {
@@ -3994,15 +2839,12 @@ export interface GoogleCloudRetailV2betaProductLevelConfig {
   /** Which field of [Merchant Center Product](/bigquery-transfer/docs/merchant-center-products-schema) should be imported as Product.id. Acceptable values are: * `offerId` (default): Import `offerId` as the product ID. * `itemGroupId`: Import `itemGroupId` as the product ID. Notice that Retail API will choose one item from the ones with the same `itemGroupId`, and use it to represent the item group. If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. If this field is `itemGroupId` and ingestion_product_type is `variant`, an INVALID_ARGUMENT error is returned. See [Product levels](https://cloud.google.com/retail/docs/catalog#product-levels) for more details. */
   merchantCenterProductIdField?: string;
 }
-export const GoogleCloudRetailV2betaProductLevelConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ingestionProductType: S.optional(S.String),
-      merchantCenterProductIdField: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaProductLevelConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaProductLevelConfig>;
+export const GoogleCloudRetailV2betaProductLevelConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ingestionProductType": S.optional(S.String),
+  "merchantCenterProductIdField": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaProductLevelConfig" }) as any as S.Schema<GoogleCloudRetailV2betaProductLevelConfig>;
 
 /** Merchant Center Feed filter criterion. */
 export interface GoogleCloudRetailV2betaMerchantCenterFeedFilter {
@@ -4013,23 +2855,16 @@ export interface GoogleCloudRetailV2betaMerchantCenterFeedFilter {
   /** AFM data source ID. */
   dataSourceId?: string;
 }
-export const GoogleCloudRetailV2betaMerchantCenterFeedFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      primaryFeedName: S.optional(S.String),
-      primaryFeedId: S.optional(S.String),
-      dataSourceId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaMerchantCenterFeedFilter",
-  }) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterFeedFilter>;
+export const GoogleCloudRetailV2betaMerchantCenterFeedFilter = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "primaryFeedName": S.optional(S.String),
+  "primaryFeedId": S.optional(S.String),
+  "dataSourceId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaMerchantCenterFeedFilter" }) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterFeedFilter>;
 
-export type GoogleCloudRetailV2betaMerchantCenterFeedFilterList =
-  ReadonlyArray<GoogleCloudRetailV2betaMerchantCenterFeedFilter>;
-export const GoogleCloudRetailV2betaMerchantCenterFeedFilterList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaMerchantCenterFeedFilter,
-  ) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterFeedFilterList>;
+export type GoogleCloudRetailV2betaMerchantCenterFeedFilterList = ReadonlyArray<GoogleCloudRetailV2betaMerchantCenterFeedFilter>;
+export const GoogleCloudRetailV2betaMerchantCenterFeedFilterList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaMerchantCenterFeedFilter) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterFeedFilterList>;
 
 /** Represents a link between a Merchant Center account and a branch. After a link is established, products from the linked Merchant Center account are streamed to the linked branch. */
 export interface GoogleCloudRetailV2betaMerchantCenterLink {
@@ -4046,40 +2881,30 @@ export interface GoogleCloudRetailV2betaMerchantCenterLink {
   /** Criteria for the Merchant Center feeds to be ingested via the link. All offers will be ingested if the list is empty. Otherwise the offers will be ingested from selected feeds. */
   feeds?: GoogleCloudRetailV2betaMerchantCenterFeedFilterList;
 }
-export const GoogleCloudRetailV2betaMerchantCenterLink =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantCenterAccountId: S.optional(S.String),
-      languageCode: S.optional(S.String),
-      destinations: S.optional(StringList),
-      regionCode: S.optional(S.String),
-      branchId: S.optional(S.String),
-      feeds: S.optional(GoogleCloudRetailV2betaMerchantCenterFeedFilterList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaMerchantCenterLink",
-  }) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterLink>;
+export const GoogleCloudRetailV2betaMerchantCenterLink = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantCenterAccountId": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+  "destinations": S.optional(StringList),
+  "regionCode": S.optional(S.String),
+  "branchId": S.optional(S.String),
+  "feeds": S.optional(GoogleCloudRetailV2betaMerchantCenterFeedFilterList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaMerchantCenterLink" }) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterLink>;
 
-export type GoogleCloudRetailV2betaMerchantCenterLinkList =
-  ReadonlyArray<GoogleCloudRetailV2betaMerchantCenterLink>;
-export const GoogleCloudRetailV2betaMerchantCenterLinkList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaMerchantCenterLink,
-  ) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterLinkList>;
+export type GoogleCloudRetailV2betaMerchantCenterLinkList = ReadonlyArray<GoogleCloudRetailV2betaMerchantCenterLink>;
+export const GoogleCloudRetailV2betaMerchantCenterLinkList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaMerchantCenterLink) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterLinkList>;
 
 /** Configures Merchant Center linking. Links contained in the config will be used to sync data from a Merchant Center account to a Cloud Retail branch. */
 export interface GoogleCloudRetailV2betaMerchantCenterLinkingConfig {
   /** Links between Merchant Center accounts and branches. */
   links?: GoogleCloudRetailV2betaMerchantCenterLinkList;
 }
-export const GoogleCloudRetailV2betaMerchantCenterLinkingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      links: S.optional(GoogleCloudRetailV2betaMerchantCenterLinkList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaMerchantCenterLinkingConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterLinkingConfig>;
+export const GoogleCloudRetailV2betaMerchantCenterLinkingConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "links": S.optional(GoogleCloudRetailV2betaMerchantCenterLinkList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaMerchantCenterLinkingConfig" }) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterLinkingConfig>;
 
 /** The catalog configuration. */
 export interface GoogleCloudRetailV2betaCatalog {
@@ -4093,23 +2918,16 @@ export interface GoogleCloudRetailV2betaCatalog {
   merchantCenterLinkingConfig?: GoogleCloudRetailV2betaMerchantCenterLinkingConfig;
 }
 export const GoogleCloudRetailV2betaCatalog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    productLevelConfig: S.optional(GoogleCloudRetailV2betaProductLevelConfig),
-    displayName: S.optional(S.String),
-    merchantCenterLinkingConfig: S.optional(
-      GoogleCloudRetailV2betaMerchantCenterLinkingConfig,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaCatalog",
-}) as any as S.Schema<GoogleCloudRetailV2betaCatalog>;
+S.Struct({
+  "name": S.optional(S.String),
+  "productLevelConfig": S.optional(GoogleCloudRetailV2betaProductLevelConfig),
+  "displayName": S.optional(S.String),
+  "merchantCenterLinkingConfig": S.optional(GoogleCloudRetailV2betaMerchantCenterLinkingConfig),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaCatalog" }) as any as S.Schema<GoogleCloudRetailV2betaCatalog>;
 
-export type GoogleCloudRetailV2betaCatalogList =
-  ReadonlyArray<GoogleCloudRetailV2betaCatalog>;
-export const GoogleCloudRetailV2betaCatalogList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaCatalog,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalogList>;
+export type GoogleCloudRetailV2betaCatalogList = ReadonlyArray<GoogleCloudRetailV2betaCatalog>;
+export const GoogleCloudRetailV2betaCatalogList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaCatalog) as any as S.Schema<GoogleCloudRetailV2betaCatalogList>;
 
 /** Response for CatalogService.ListCatalogs method. */
 export interface GoogleCloudRetailV2betaListCatalogsResponse {
@@ -4118,15 +2936,12 @@ export interface GoogleCloudRetailV2betaListCatalogsResponse {
   /** A token that can be sent as ListCatalogsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudRetailV2betaListCatalogsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalogs: S.optional(GoogleCloudRetailV2betaCatalogList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaListCatalogsResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaListCatalogsResponse>;
+export const GoogleCloudRetailV2betaListCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalogs": S.optional(GoogleCloudRetailV2betaCatalogList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaListCatalogsResponse" }) as any as S.Schema<GoogleCloudRetailV2betaListCatalogsResponse>;
 
 export interface ListProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. The parent branch resource name, such as `projects/*\/locations/global/catalogs/default_catalog/branches/0`. Use `default_branch` as the branch ID, to list products under the default branch. If the caller does not have permission to list Products under this branch, regardless of whether or not this branch exists, a PERMISSION_DENIED error is returned. */
@@ -4140,24 +2955,15 @@ export interface ListProjectsLocationsCatalogsBranchesProductsRequest {
   /** The fields of Product to return in the responses. If not set or empty, the following fields are returned: * Product.name * Product.id * Product.title * Product.uri * Product.images * Product.price_info * Product.brands If "*" is provided, all fields are returned. Product.name is always returned no matter what mask is set. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. */
   readMask?: string;
 }
-export const ListProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      readMask: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+parent}/products",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCatalogsBranchesProductsRequest>;
+export const ListProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "readMask": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/products","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<ListProjectsLocationsCatalogsBranchesProductsRequest>;
 
 /** Response message for ProductService.ListProducts method. */
 export interface GoogleCloudRetailV2betaListProductsResponse {
@@ -4166,15 +2972,12 @@ export interface GoogleCloudRetailV2betaListProductsResponse {
   /** A token that can be sent as ListProductsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudRetailV2betaListProductsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      products: S.optional(GoogleCloudRetailV2betaProductList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaListProductsResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaListProductsResponse>;
+export const GoogleCloudRetailV2betaListProductsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "products": S.optional(GoogleCloudRetailV2betaProductList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaListProductsResponse" }) as any as S.Schema<GoogleCloudRetailV2betaListProductsResponse>;
 
 export interface ListProjectsLocationsCatalogsControlsRequest {
   /** Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. * List controls that are used in a single ServingConfig: 'serving_config = "boosted_home_page_cvr"' */
@@ -4186,29 +2989,17 @@ export interface ListProjectsLocationsCatalogsControlsRequest {
   /** Required. The catalog resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` */
   parent: string;
 }
-export const ListProjectsLocationsCatalogsControlsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+parent}/controls",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCatalogsControlsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCatalogsControlsRequest>;
+export const ListProjectsLocationsCatalogsControlsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/controls","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCatalogsControlsRequest" }) as any as S.Schema<ListProjectsLocationsCatalogsControlsRequest>;
 
-export type GoogleCloudRetailV2betaControlList =
-  ReadonlyArray<GoogleCloudRetailV2betaControl>;
-export const GoogleCloudRetailV2betaControlList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaControl,
-) as any as S.Schema<GoogleCloudRetailV2betaControlList>;
+export type GoogleCloudRetailV2betaControlList = ReadonlyArray<GoogleCloudRetailV2betaControl>;
+export const GoogleCloudRetailV2betaControlList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaControl) as any as S.Schema<GoogleCloudRetailV2betaControlList>;
 
 /** Response for ListControls method. */
 export interface GoogleCloudRetailV2betaListControlsResponse {
@@ -4217,50 +3008,33 @@ export interface GoogleCloudRetailV2betaListControlsResponse {
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
 }
-export const GoogleCloudRetailV2betaListControlsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      controls: S.optional(GoogleCloudRetailV2betaControlList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaListControlsResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaListControlsResponse>;
+export const GoogleCloudRetailV2betaListControlsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "controls": S.optional(GoogleCloudRetailV2betaControlList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaListControlsResponse" }) as any as S.Schema<GoogleCloudRetailV2betaListControlsResponse>;
 
 export interface ListProjectsLocationsCatalogsGenerativeQuestionsRequest {
   /** Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
   parent: string;
 }
-export const ListProjectsLocationsCatalogsGenerativeQuestionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+parent}/generativeQuestions",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCatalogsGenerativeQuestionsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCatalogsGenerativeQuestionsRequest>;
+export const ListProjectsLocationsCatalogsGenerativeQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/generativeQuestions","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCatalogsGenerativeQuestionsRequest" }) as any as S.Schema<ListProjectsLocationsCatalogsGenerativeQuestionsRequest>;
 
 /** Response for ListQuestions method. */
 export interface GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse {
   /** All the questions for a given catalog. */
   generativeQuestionConfigs?: GoogleCloudRetailV2betaGenerativeQuestionConfigList;
 }
-export const GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      generativeQuestionConfigs: S.optional(
-        GoogleCloudRetailV2betaGenerativeQuestionConfigList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse>;
+export const GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "generativeQuestionConfigs": S.optional(GoogleCloudRetailV2betaGenerativeQuestionConfigList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse" }) as any as S.Schema<GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse>;
 
 export interface ListProjectsLocationsCatalogsModelsRequest {
   /** Required. The parent for which to list models. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` */
@@ -4270,28 +3044,16 @@ export interface ListProjectsLocationsCatalogsModelsRequest {
   /** Optional. A page token, received from a previous `ListModels` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCatalogsModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+parent}/models",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCatalogsModelsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCatalogsModelsRequest>;
+export const ListProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/models","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCatalogsModelsRequest" }) as any as S.Schema<ListProjectsLocationsCatalogsModelsRequest>;
 
-export type GoogleCloudRetailV2betaModelList =
-  ReadonlyArray<GoogleCloudRetailV2betaModel>;
-export const GoogleCloudRetailV2betaModelList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaModel,
-) as any as S.Schema<GoogleCloudRetailV2betaModelList>;
+export type GoogleCloudRetailV2betaModelList = ReadonlyArray<GoogleCloudRetailV2betaModel>;
+export const GoogleCloudRetailV2betaModelList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaModel) as any as S.Schema<GoogleCloudRetailV2betaModelList>;
 
 /** Response to a ListModelRequest. */
 export interface GoogleCloudRetailV2betaListModelsResponse {
@@ -4300,15 +3062,12 @@ export interface GoogleCloudRetailV2betaListModelsResponse {
   /** List of Models. */
   models?: GoogleCloudRetailV2betaModelList;
 }
-export const GoogleCloudRetailV2betaListModelsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      models: S.optional(GoogleCloudRetailV2betaModelList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaListModelsResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaListModelsResponse>;
+export const GoogleCloudRetailV2betaListModelsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "models": S.optional(GoogleCloudRetailV2betaModelList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaListModelsResponse" }) as any as S.Schema<GoogleCloudRetailV2betaListModelsResponse>;
 
 export interface ListProjectsLocationsCatalogsOperationsRequest {
   /** The standard list page size. */
@@ -4322,30 +3081,18 @@ export interface ListProjectsLocationsCatalogsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsCatalogsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}/operations",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCatalogsOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCatalogsOperationsRequest>;
+export const ListProjectsLocationsCatalogsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}/operations","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCatalogsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsCatalogsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
-  GoogleLongrunningOperation,
-) as any as S.Schema<GoogleLongrunningOperationList>;
+export type GoogleLongrunningOperationList = ReadonlyArray<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(GoogleLongrunningOperation) as any as S.Schema<GoogleLongrunningOperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
@@ -4356,16 +3103,13 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operations: S.optional(GoogleLongrunningOperationList),
-      nextPageToken: S.optional(S.String),
-      unreachable: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "GoogleLongrunningListOperationsResponse",
-}) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "operations": S.optional(GoogleLongrunningOperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleLongrunningListOperationsResponse" }) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
 
 export interface ListProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The catalog resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` */
@@ -4375,28 +3119,16 @@ export interface ListProjectsLocationsCatalogsServingConfigsRequest {
   /** Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCatalogsServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+parent}/servingConfigs",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCatalogsServingConfigsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCatalogsServingConfigsRequest>;
+export const ListProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/servingConfigs","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCatalogsServingConfigsRequest" }) as any as S.Schema<ListProjectsLocationsCatalogsServingConfigsRequest>;
 
-export type GoogleCloudRetailV2betaServingConfigList =
-  ReadonlyArray<GoogleCloudRetailV2betaServingConfig>;
-export const GoogleCloudRetailV2betaServingConfigList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaServingConfig,
-) as any as S.Schema<GoogleCloudRetailV2betaServingConfigList>;
+export type GoogleCloudRetailV2betaServingConfigList = ReadonlyArray<GoogleCloudRetailV2betaServingConfig>;
+export const GoogleCloudRetailV2betaServingConfigList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaServingConfig) as any as S.Schema<GoogleCloudRetailV2betaServingConfigList>;
 
 /** Response for ListServingConfigs method. */
 export interface GoogleCloudRetailV2betaListServingConfigsResponse {
@@ -4405,15 +3137,12 @@ export interface GoogleCloudRetailV2betaListServingConfigsResponse {
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
 }
-export const GoogleCloudRetailV2betaListServingConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      servingConfigs: S.optional(GoogleCloudRetailV2betaServingConfigList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaListServingConfigsResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2betaListServingConfigsResponse>;
+export const GoogleCloudRetailV2betaListServingConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "servingConfigs": S.optional(GoogleCloudRetailV2betaServingConfigList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaListServingConfigsResponse" }) as any as S.Schema<GoogleCloudRetailV2betaListServingConfigsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
@@ -4427,24 +3156,15 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta/{+name}/operations",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}/operations","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -4459,22 +3179,14 @@ export interface ListProjectsOperationsRequest {
   pageSize?: number;
 }
 export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2beta/{+name}/operations",
-      baseUrl: "https://retail.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsOperationsRequest",
-}) as any as S.Schema<ListProjectsOperationsRequest>;
+S.Struct({
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}/operations","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsOperationsRequest" }) as any as S.Schema<ListProjectsOperationsRequest>;
 
 export interface PatchProjectsLocationsCatalogsRequest {
   /** Required. Immutable. The fully qualified resource name of the catalog. */
@@ -4484,22 +3196,13 @@ export interface PatchProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaCatalog;
 }
-export const PatchProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudRetailV2betaCatalog.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsCatalogsRequest",
-}) as any as S.Schema<PatchProjectsLocationsCatalogsRequest>;
+export const PatchProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaCatalog.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCatalogsRequest" }) as any as S.Schema<PatchProjectsLocationsCatalogsRequest>;
 
 export interface PatchProjectsLocationsCatalogsBranchesProductsRequest {
   /** Indicates which fields in the provided Product to update. The immutable and output only fields are NOT supported. If not set, all supported fields (the fields that are neither immutable nor output only) are updated. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. The attribute key can be updated by setting the mask path as "attributes.${key_name}". If a key name is present in the mask but not in the patching product from the request, this key will be deleted after the update. */
@@ -4511,23 +3214,14 @@ export interface PatchProjectsLocationsCatalogsBranchesProductsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaProduct;
 }
-export const PatchProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudRetailV2betaProduct.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCatalogsBranchesProductsRequest>;
+export const PatchProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaProduct.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<PatchProjectsLocationsCatalogsBranchesProductsRequest>;
 
 export interface PatchProjectsLocationsCatalogsControlsRequest {
   /** Immutable. Fully qualified name `projects/*\/locations/global/catalogs/*\/controls/*` */
@@ -4537,22 +3231,13 @@ export interface PatchProjectsLocationsCatalogsControlsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaControl;
 }
-export const PatchProjectsLocationsCatalogsControlsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudRetailV2betaControl.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCatalogsControlsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCatalogsControlsRequest>;
+export const PatchProjectsLocationsCatalogsControlsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaControl.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCatalogsControlsRequest" }) as any as S.Schema<PatchProjectsLocationsCatalogsControlsRequest>;
 
 export interface PatchProjectsLocationsCatalogsModelsRequest {
   /** Required. The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40. */
@@ -4562,22 +3247,13 @@ export interface PatchProjectsLocationsCatalogsModelsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaModel;
 }
-export const PatchProjectsLocationsCatalogsModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudRetailV2betaModel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCatalogsModelsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCatalogsModelsRequest>;
+export const PatchProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaModel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCatalogsModelsRequest" }) as any as S.Schema<PatchProjectsLocationsCatalogsModelsRequest>;
 
 export interface PatchProjectsLocationsCatalogsServingConfigsRequest {
   /** Indicates which fields in the provided ServingConfig to update. The following are NOT supported: * ServingConfig.name If not set, all supported fields are updated. */
@@ -4587,30 +3263,19 @@ export interface PatchProjectsLocationsCatalogsServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaServingConfig;
 }
-export const PatchProjectsLocationsCatalogsServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudRetailV2betaServingConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCatalogsServingConfigsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCatalogsServingConfigsRequest>;
+export const PatchProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaServingConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCatalogsServingConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsCatalogsServingConfigsRequest>;
 
 /** Request for pausing training of a model. */
 export interface GoogleCloudRetailV2betaPauseModelRequest {}
-export const GoogleCloudRetailV2betaPauseModelRequest = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaPauseModelRequest",
-}) as any as S.Schema<GoogleCloudRetailV2betaPauseModelRequest>;
+export const GoogleCloudRetailV2betaPauseModelRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPauseModelRequest" }) as any as S.Schema<GoogleCloudRetailV2betaPauseModelRequest>;
 
 export interface PauseProjectsLocationsCatalogsModelsRequest {
   /** Required. The name of the model to pause. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` */
@@ -4618,23 +3283,12 @@ export interface PauseProjectsLocationsCatalogsModelsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaPauseModelRequest;
 }
-export const PauseProjectsLocationsCatalogsModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaPauseModelRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+name}:pause",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PauseProjectsLocationsCatalogsModelsRequest",
-  }) as any as S.Schema<PauseProjectsLocationsCatalogsModelsRequest>;
+export const PauseProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaPauseModelRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:pause","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "PauseProjectsLocationsCatalogsModelsRequest" }) as any as S.Schema<PauseProjectsLocationsCatalogsModelsRequest>;
 
 /** Request message for Predict method. */
 export interface GoogleCloudRetailV2betaPredictRequest {
@@ -4653,20 +3307,17 @@ export interface GoogleCloudRetailV2betaPredictRequest {
   /** Required. Context about the user, what they are looking at and what action they took to trigger the predict request. Note that this user event detail won't be ingested to userEvent logs. Thus, a separate userEvent write request is required for event logging. Don't set UserEvent.visitor_id or UserInfo.user_id to the same fixed ID for different users. If you are trying to receive non-personalized recommendations (not recommended; this can negatively impact model performance), instead set UserEvent.visitor_id to a random unique ID and leave UserInfo.user_id unset. */
   userEvent?: GoogleCloudRetailV2betaUserEvent;
 }
-export const GoogleCloudRetailV2betaPredictRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String),
-      pageSize: S.optional(S.Number),
-      params: S.optional(DocumentMap),
-      labels: S.optional(StringMap),
-      pageToken: S.optional(S.String),
-      validateOnly: S.optional(S.Boolean),
-      userEvent: S.optional(GoogleCloudRetailV2betaUserEvent),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaPredictRequest",
-}) as any as S.Schema<GoogleCloudRetailV2betaPredictRequest>;
+export const GoogleCloudRetailV2betaPredictRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String),
+  "pageSize": S.optional(S.Number),
+  "params": S.optional(DocumentMap),
+  "labels": S.optional(StringMap),
+  "pageToken": S.optional(S.String),
+  "validateOnly": S.optional(S.Boolean),
+  "userEvent": S.optional(GoogleCloudRetailV2betaUserEvent),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPredictRequest" }) as any as S.Schema<GoogleCloudRetailV2betaPredictRequest>;
 
 export interface PredictProjectsLocationsCatalogsPlacementsRequest {
   /** Required. Full resource name of the format: `{placement=projects/*\/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*\/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs */
@@ -4674,23 +3325,12 @@ export interface PredictProjectsLocationsCatalogsPlacementsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaPredictRequest;
 }
-export const PredictProjectsLocationsCatalogsPlacementsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      placement: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaPredictRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+placement}:predict",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PredictProjectsLocationsCatalogsPlacementsRequest",
-  }) as any as S.Schema<PredictProjectsLocationsCatalogsPlacementsRequest>;
+export const PredictProjectsLocationsCatalogsPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "placement": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaPredictRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+placement}:predict","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "PredictProjectsLocationsCatalogsPlacementsRequest" }) as any as S.Schema<PredictProjectsLocationsCatalogsPlacementsRequest>;
 
 /** PredictionResult represents the recommendation prediction results. */
 export interface GoogleCloudRetailV2betaPredictResponsePredictionResult {
@@ -4699,22 +3339,15 @@ export interface GoogleCloudRetailV2betaPredictResponsePredictionResult {
   /** Additional product metadata / annotations. Possible values: * `product`: JSON representation of the product. Is set if `returnProduct` is set to true in `PredictRequest.params`. * `score`: Prediction score in double value. Is set if `returnScore` is set to true in `PredictRequest.params`. */
   metadata?: DocumentMap;
 }
-export const GoogleCloudRetailV2betaPredictResponsePredictionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      metadata: S.optional(DocumentMap),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaPredictResponsePredictionResult",
-  }) as any as S.Schema<GoogleCloudRetailV2betaPredictResponsePredictionResult>;
+export const GoogleCloudRetailV2betaPredictResponsePredictionResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "id": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPredictResponsePredictionResult" }) as any as S.Schema<GoogleCloudRetailV2betaPredictResponsePredictionResult>;
 
-export type GoogleCloudRetailV2betaPredictResponsePredictionResultList =
-  ReadonlyArray<GoogleCloudRetailV2betaPredictResponsePredictionResult>;
-export const GoogleCloudRetailV2betaPredictResponsePredictionResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaPredictResponsePredictionResult,
-  ) as any as S.Schema<GoogleCloudRetailV2betaPredictResponsePredictionResultList>;
+export type GoogleCloudRetailV2betaPredictResponsePredictionResultList = ReadonlyArray<GoogleCloudRetailV2betaPredictResponsePredictionResult>;
+export const GoogleCloudRetailV2betaPredictResponsePredictionResultList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaPredictResponsePredictionResult) as any as S.Schema<GoogleCloudRetailV2betaPredictResponsePredictionResultList>;
 
 /** Response message for predict method. */
 export interface GoogleCloudRetailV2betaPredictResponse {
@@ -4727,19 +3360,14 @@ export interface GoogleCloudRetailV2betaPredictResponse {
   /** IDs of products in the request that were missing from the inventory. */
   missingIds?: StringList;
 }
-export const GoogleCloudRetailV2betaPredictResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      results: S.optional(
-        GoogleCloudRetailV2betaPredictResponsePredictionResultList,
-      ),
-      attributionToken: S.optional(S.String),
-      validateOnly: S.optional(S.Boolean),
-      missingIds: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaPredictResponse",
-}) as any as S.Schema<GoogleCloudRetailV2betaPredictResponse>;
+export const GoogleCloudRetailV2betaPredictResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "results": S.optional(GoogleCloudRetailV2betaPredictResponsePredictionResultList),
+  "attributionToken": S.optional(S.String),
+  "validateOnly": S.optional(S.Boolean),
+  "missingIds": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPredictResponse" }) as any as S.Schema<GoogleCloudRetailV2betaPredictResponse>;
 
 export interface PredictProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. Full resource name of the format: `{placement=projects/*\/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*\/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs */
@@ -4747,23 +3375,12 @@ export interface PredictProjectsLocationsCatalogsServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaPredictRequest;
 }
-export const PredictProjectsLocationsCatalogsServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      placement: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaPredictRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+placement}:predict",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PredictProjectsLocationsCatalogsServingConfigsRequest",
-  }) as any as S.Schema<PredictProjectsLocationsCatalogsServingConfigsRequest>;
+export const PredictProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "placement": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaPredictRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+placement}:predict","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "PredictProjectsLocationsCatalogsServingConfigsRequest" }) as any as S.Schema<PredictProjectsLocationsCatalogsServingConfigsRequest>;
 
 /** Request message for PurgeProducts method. */
 export interface GoogleCloudRetailV2betaPurgeProductsRequest {
@@ -4772,15 +3389,12 @@ export interface GoogleCloudRetailV2betaPurgeProductsRequest {
   /** Actually perform the purge. If `force` is set to false, the method will return the expected purge count without deleting any products. */
   force?: boolean;
 }
-export const GoogleCloudRetailV2betaPurgeProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String),
-      force: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaPurgeProductsRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaPurgeProductsRequest>;
+export const GoogleCloudRetailV2betaPurgeProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String),
+  "force": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPurgeProductsRequest" }) as any as S.Schema<GoogleCloudRetailV2betaPurgeProductsRequest>;
 
 export interface PurgeProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. The resource name of the branch under which the products are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}/branches/${branchId}` */
@@ -4788,23 +3402,12 @@ export interface PurgeProjectsLocationsCatalogsBranchesProductsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaPurgeProductsRequest;
 }
-export const PurgeProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaPurgeProductsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/products:purge",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PurgeProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<PurgeProjectsLocationsCatalogsBranchesProductsRequest>;
+export const PurgeProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaPurgeProductsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/products:purge","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "PurgeProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<PurgeProjectsLocationsCatalogsBranchesProductsRequest>;
 
 /** Request message for PurgeUserEvents method. */
 export interface GoogleCloudRetailV2betaPurgeUserEventsRequest {
@@ -4813,15 +3416,12 @@ export interface GoogleCloudRetailV2betaPurgeUserEventsRequest {
   /** Actually perform the purge. If `force` is set to false, the method will return the expected purge count without deleting any user events. */
   force?: boolean;
 }
-export const GoogleCloudRetailV2betaPurgeUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String),
-      force: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaPurgeUserEventsRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaPurgeUserEventsRequest>;
+export const GoogleCloudRetailV2betaPurgeUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String),
+  "force": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPurgeUserEventsRequest" }) as any as S.Schema<GoogleCloudRetailV2betaPurgeUserEventsRequest>;
 
 export interface PurgeProjectsLocationsCatalogsUserEventsRequest {
   /** Required. The resource name of the catalog under which the events are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}` */
@@ -4829,47 +3429,26 @@ export interface PurgeProjectsLocationsCatalogsUserEventsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaPurgeUserEventsRequest;
 }
-export const PurgeProjectsLocationsCatalogsUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaPurgeUserEventsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/userEvents:purge",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PurgeProjectsLocationsCatalogsUserEventsRequest",
-  }) as any as S.Schema<PurgeProjectsLocationsCatalogsUserEventsRequest>;
+export const PurgeProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaPurgeUserEventsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/userEvents:purge","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "PurgeProjectsLocationsCatalogsUserEventsRequest" }) as any as S.Schema<PurgeProjectsLocationsCatalogsUserEventsRequest>;
 
-export type GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum =
-    | "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED"
-    | "JOINED_EVENTS"
-    | "UNJOINED_EVENTS"
-    | (string & {});
-export const GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum = "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED" | "JOINED_EVENTS" | "UNJOINED_EVENTS";
+export const GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum = /*@__PURE__*/ S.String;
 
 /** Request message for RejoinUserEvents method. */
 export interface GoogleCloudRetailV2betaRejoinUserEventsRequest {
   /** The type of the user event rejoin to define the scope and range of the user events to be rejoined with the latest product catalog. Defaults to `USER_EVENT_REJOIN_SCOPE_UNSPECIFIED` if this field is not set, or set to an invalid integer value. */
-  userEventRejoinScope?: GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum;
+  userEventRejoinScope?: GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum | (string & {});
 }
-export const GoogleCloudRetailV2betaRejoinUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userEventRejoinScope: S.optional(
-        GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRejoinUserEventsRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRejoinUserEventsRequest>;
+export const GoogleCloudRetailV2betaRejoinUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "userEventRejoinScope": S.optional(GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRejoinUserEventsRequest" }) as any as S.Schema<GoogleCloudRetailV2betaRejoinUserEventsRequest>;
 
 export interface RejoinProjectsLocationsCatalogsUserEventsRequest {
   /** Required. The parent catalog resource name, such as `projects/1234/locations/global/catalogs/default_catalog`. */
@@ -4877,37 +3456,23 @@ export interface RejoinProjectsLocationsCatalogsUserEventsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaRejoinUserEventsRequest;
 }
-export const RejoinProjectsLocationsCatalogsUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaRejoinUserEventsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/userEvents:rejoin",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RejoinProjectsLocationsCatalogsUserEventsRequest",
-  }) as any as S.Schema<RejoinProjectsLocationsCatalogsUserEventsRequest>;
+export const RejoinProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaRejoinUserEventsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/userEvents:rejoin","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "RejoinProjectsLocationsCatalogsUserEventsRequest" }) as any as S.Schema<RejoinProjectsLocationsCatalogsUserEventsRequest>;
 
 /** Request for CatalogService.RemoveCatalogAttribute method. */
 export interface GoogleCloudRetailV2betaRemoveCatalogAttributeRequest {
   /** Required. The attribute name key of the CatalogAttribute to remove. */
   key?: string;
 }
-export const GoogleCloudRetailV2betaRemoveCatalogAttributeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRemoveCatalogAttributeRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRemoveCatalogAttributeRequest>;
+export const GoogleCloudRetailV2betaRemoveCatalogAttributeRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "key": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRemoveCatalogAttributeRequest" }) as any as S.Schema<GoogleCloudRetailV2betaRemoveCatalogAttributeRequest>;
 
 export interface RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest {
   /** Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` */
@@ -4915,38 +3480,23 @@ export interface RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfig
   /** Request body */
   body?: GoogleCloudRetailV2betaRemoveCatalogAttributeRequest;
 }
-export const RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributesConfig: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaRemoveCatalogAttributeRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+attributesConfig}:removeCatalogAttribute",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest",
-  }) as any as S.Schema<RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>;
+export const RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "attributesConfig": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaRemoveCatalogAttributeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+attributesConfig}:removeCatalogAttribute","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest" }) as any as S.Schema<RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>;
 
 /** Request for RemoveControl method. */
 export interface GoogleCloudRetailV2betaRemoveControlRequest {
   /** Required. The id of the control to apply. Assumed to be in the same catalog as the serving config. */
   controlId?: string;
 }
-export const GoogleCloudRetailV2betaRemoveControlRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      controlId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRemoveControlRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRemoveControlRequest>;
+export const GoogleCloudRetailV2betaRemoveControlRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "controlId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRemoveControlRequest" }) as any as S.Schema<GoogleCloudRetailV2betaRemoveControlRequest>;
 
 export interface RemoveControlProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
@@ -4954,23 +3504,12 @@ export interface RemoveControlProjectsLocationsCatalogsServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaRemoveControlRequest;
 }
-export const RemoveControlProjectsLocationsCatalogsServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      servingConfig: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaRemoveControlRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+servingConfig}:removeControl",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemoveControlProjectsLocationsCatalogsServingConfigsRequest",
-  }) as any as S.Schema<RemoveControlProjectsLocationsCatalogsServingConfigsRequest>;
+export const RemoveControlProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "servingConfig": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaRemoveControlRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+servingConfig}:removeControl","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "RemoveControlProjectsLocationsCatalogsServingConfigsRequest" }) as any as S.Schema<RemoveControlProjectsLocationsCatalogsServingConfigsRequest>;
 
 /** Request message for ProductService.RemoveFulfillmentPlaces method. */
 export interface GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest {
@@ -4983,17 +3522,14 @@ export interface GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest {
   /** Required. The IDs for this type, such as the store IDs for "pickup-in-store" or the region IDs for "same-day-delivery", to be removed for this type. At least 1 value is required, and a maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned. */
   placeIds?: StringList;
 }
-export const GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(S.String),
-      removeTime: S.optional(S.String),
-      allowMissing: S.optional(S.Boolean),
-      placeIds: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest>;
+export const GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "type": S.optional(S.String),
+  "removeTime": S.optional(S.String),
+  "allowMissing": S.optional(S.Boolean),
+  "placeIds": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest" }) as any as S.Schema<GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest>;
 
 export interface RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
@@ -5001,26 +3537,12 @@ export interface RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProduct
   /** Request body */
   body?: GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest;
 }
-export const RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+product}:removeFulfillmentPlaces",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest>;
+export const RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "product": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+product}:removeFulfillmentPlaces","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest>;
 
 /** Request message for ProductService.RemoveLocalInventories method. */
 export interface GoogleCloudRetailV2betaRemoveLocalInventoriesRequest {
@@ -5031,16 +3553,13 @@ export interface GoogleCloudRetailV2betaRemoveLocalInventoriesRequest {
   /** If set to true, and the Product is not found, the local inventory removal request will still be processed and retained for at most 1 day and processed once the Product is created. If set to false, a NOT_FOUND error is returned if the Product is not found. */
   allowMissing?: boolean;
 }
-export const GoogleCloudRetailV2betaRemoveLocalInventoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      placeIds: S.optional(StringList),
-      removeTime: S.optional(S.String),
-      allowMissing: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaRemoveLocalInventoriesRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaRemoveLocalInventoriesRequest>;
+export const GoogleCloudRetailV2betaRemoveLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "placeIds": S.optional(StringList),
+  "removeTime": S.optional(S.String),
+  "allowMissing": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaRemoveLocalInventoriesRequest" }) as any as S.Schema<GoogleCloudRetailV2betaRemoveLocalInventoriesRequest>;
 
 export interface RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
@@ -5048,24 +3567,12 @@ export interface RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProducts
   /** Request body */
   body?: GoogleCloudRetailV2betaRemoveLocalInventoriesRequest;
 }
-export const RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaRemoveLocalInventoriesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+product}:removeLocalInventories",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>;
+export const RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "product": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaRemoveLocalInventoriesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+product}:removeLocalInventories","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>;
 
 /** Request for CatalogService.ReplaceCatalogAttribute method. */
 export interface GoogleCloudRetailV2betaReplaceCatalogAttributeRequest {
@@ -5074,15 +3581,12 @@ export interface GoogleCloudRetailV2betaReplaceCatalogAttributeRequest {
   /** Optional. Indicates which fields in the provided CatalogAttribute to update. The following are NOT supported: * CatalogAttribute.key If not set, all supported fields are updated. */
   updateMask?: string;
 }
-export const GoogleCloudRetailV2betaReplaceCatalogAttributeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalogAttribute: S.optional(GoogleCloudRetailV2betaCatalogAttribute),
-      updateMask: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaReplaceCatalogAttributeRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaReplaceCatalogAttributeRequest>;
+export const GoogleCloudRetailV2betaReplaceCatalogAttributeRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalogAttribute": S.optional(GoogleCloudRetailV2betaCatalogAttribute),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaReplaceCatalogAttributeRequest" }) as any as S.Schema<GoogleCloudRetailV2betaReplaceCatalogAttributeRequest>;
 
 export interface ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest {
   /** Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` */
@@ -5090,33 +3594,18 @@ export interface ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfi
   /** Request body */
   body?: GoogleCloudRetailV2betaReplaceCatalogAttributeRequest;
 }
-export const ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributesConfig: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaReplaceCatalogAttributeRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+attributesConfig}:replaceCatalogAttribute",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest",
-  }) as any as S.Schema<ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>;
+export const ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "attributesConfig": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaReplaceCatalogAttributeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+attributesConfig}:replaceCatalogAttribute","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest" }) as any as S.Schema<ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>;
 
 /** Request for resuming training of a model. */
 export interface GoogleCloudRetailV2betaResumeModelRequest {}
-export const GoogleCloudRetailV2betaResumeModelRequest =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudRetailV2betaResumeModelRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaResumeModelRequest>;
+export const GoogleCloudRetailV2betaResumeModelRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRetailV2betaResumeModelRequest" }) as any as S.Schema<GoogleCloudRetailV2betaResumeModelRequest>;
 
 export interface ResumeProjectsLocationsCatalogsModelsRequest {
   /** Required. The name of the model to resume. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` */
@@ -5124,23 +3613,12 @@ export interface ResumeProjectsLocationsCatalogsModelsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaResumeModelRequest;
 }
-export const ResumeProjectsLocationsCatalogsModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaResumeModelRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+name}:resume",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ResumeProjectsLocationsCatalogsModelsRequest",
-  }) as any as S.Schema<ResumeProjectsLocationsCatalogsModelsRequest>;
+export const ResumeProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaResumeModelRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:resume","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "ResumeProjectsLocationsCatalogsModelsRequest" }) as any as S.Schema<ResumeProjectsLocationsCatalogsModelsRequest>;
 
 /** Specifies how a facet is computed. */
 export interface GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey {
@@ -5163,22 +3641,19 @@ export interface GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey {
   /** Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5 */
   restrictedValues?: StringList;
 }
-export const GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      prefixes: S.optional(StringList),
-      orderBy: S.optional(S.String),
-      intervals: S.optional(GoogleCloudRetailV2betaIntervalList),
-      contains: S.optional(StringList),
-      caseInsensitive: S.optional(S.Boolean),
-      query: S.optional(S.String),
-      key: S.optional(S.String),
-      returnMinMax: S.optional(S.Boolean),
-      restrictedValues: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey>;
+export const GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "prefixes": S.optional(StringList),
+  "orderBy": S.optional(S.String),
+  "intervals": S.optional(GoogleCloudRetailV2betaIntervalList),
+  "contains": S.optional(StringList),
+  "caseInsensitive": S.optional(S.Boolean),
+  "query": S.optional(S.String),
+  "key": S.optional(S.String),
+  "returnMinMax": S.optional(S.Boolean),
+  "restrictedValues": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey>;
 
 /** A facet specification to perform faceted search. */
 export interface GoogleCloudRetailV2betaSearchRequestFacetSpec {
@@ -5191,26 +3666,17 @@ export interface GoogleCloudRetailV2betaSearchRequestFacetSpec {
   /** Required. The facet key specification. */
   facetKey?: GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey;
 }
-export const GoogleCloudRetailV2betaSearchRequestFacetSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      limit: S.optional(S.Number),
-      enableDynamicPosition: S.optional(S.Boolean),
-      excludedFilterKeys: S.optional(StringList),
-      facetKey: S.optional(
-        GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchRequestFacetSpec",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestFacetSpec>;
+export const GoogleCloudRetailV2betaSearchRequestFacetSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "limit": S.optional(S.Number),
+  "enableDynamicPosition": S.optional(S.Boolean),
+  "excludedFilterKeys": S.optional(StringList),
+  "facetKey": S.optional(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestFacetSpec" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestFacetSpec>;
 
-export type GoogleCloudRetailV2betaSearchRequestFacetSpecList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchRequestFacetSpec>;
-export const GoogleCloudRetailV2betaSearchRequestFacetSpecList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaSearchRequestFacetSpec,
-  ) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestFacetSpecList>;
+export type GoogleCloudRetailV2betaSearchRequestFacetSpecList = ReadonlyArray<GoogleCloudRetailV2betaSearchRequestFacetSpec>;
+export const GoogleCloudRetailV2betaSearchRequestFacetSpecList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaSearchRequestFacetSpec) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestFacetSpecList>;
 
 /** A list of string values. */
 export interface GoogleCloudRetailV2betaStringList {
@@ -5218,44 +3684,30 @@ export interface GoogleCloudRetailV2betaStringList {
   values?: StringList;
 }
 export const GoogleCloudRetailV2betaStringList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaStringList",
-}) as any as S.Schema<GoogleCloudRetailV2betaStringList>;
+S.Struct({
+  "values": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaStringList" }) as any as S.Schema<GoogleCloudRetailV2betaStringList>;
 
-export type GoogleCloudRetailV2betaStringListMap = {
-  [key: string]: GoogleCloudRetailV2betaStringList | undefined;
-};
-export const GoogleCloudRetailV2betaStringListMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GoogleCloudRetailV2betaStringList,
-) as any as S.Schema<GoogleCloudRetailV2betaStringListMap>;
+export type GoogleCloudRetailV2betaStringListMap = { [key: string]: GoogleCloudRetailV2betaStringList | undefined };
+export const GoogleCloudRetailV2betaStringListMap = /*@__PURE__*/ S.Record(S.String, GoogleCloudRetailV2betaStringList) as any as S.Schema<GoogleCloudRetailV2betaStringListMap>;
 
-export type GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum =
-  "CONDITION_UNSPECIFIED" | "DISABLED" | "AUTO" | (string & {});
-export const GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum = "CONDITION_UNSPECIFIED" | "DISABLED" | "AUTO";
+export const GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum = /*@__PURE__*/ S.String;
 
 /** Specification to determine under which conditions query expansion should occur. */
 export interface GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec {
   /** The condition under which query expansion should occur. Default to Condition.DISABLED. */
-  condition?: GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum;
+  condition?: GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum | (string & {});
   /** Whether to pin unexpanded results. The default value is false. If this field is set to true, unexpanded products are always at the top of the search results, followed by the expanded results. */
   pinUnexpandedResults?: boolean;
 }
-export const GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      condition: S.optional(
-        GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum,
-      ),
-      pinUnexpandedResults: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec>;
+export const GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "condition": S.optional(GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum),
+  "pinUnexpandedResults": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec>;
 
 /** Product attribute name and numeric interval. */
 export interface GoogleCloudRetailV2betaProductAttributeInterval {
@@ -5264,15 +3716,12 @@ export interface GoogleCloudRetailV2betaProductAttributeInterval {
   /** The numeric interval (e.g. [10, 20)) */
   interval?: GoogleCloudRetailV2betaInterval;
 }
-export const GoogleCloudRetailV2betaProductAttributeInterval =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      interval: S.optional(GoogleCloudRetailV2betaInterval),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaProductAttributeInterval",
-  }) as any as S.Schema<GoogleCloudRetailV2betaProductAttributeInterval>;
+export const GoogleCloudRetailV2betaProductAttributeInterval = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "interval": S.optional(GoogleCloudRetailV2betaInterval),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaProductAttributeInterval" }) as any as S.Schema<GoogleCloudRetailV2betaProductAttributeInterval>;
 
 /** This field specifies the tile information including an attribute key, attribute value. More fields will be added in the future, eg: product id or product counts, etc. */
 export interface GoogleCloudRetailV2betaTile {
@@ -5284,24 +3733,15 @@ export interface GoogleCloudRetailV2betaTile {
   representativeProductId?: string;
 }
 export const GoogleCloudRetailV2betaTile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productAttributeValue: S.optional(
-      GoogleCloudRetailV2betaProductAttributeValue,
-    ),
-    productAttributeInterval: S.optional(
-      GoogleCloudRetailV2betaProductAttributeInterval,
-    ),
-    representativeProductId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaTile",
-}) as any as S.Schema<GoogleCloudRetailV2betaTile>;
+S.Struct({
+  "productAttributeValue": S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+  "productAttributeInterval": S.optional(GoogleCloudRetailV2betaProductAttributeInterval),
+  "representativeProductId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaTile" }) as any as S.Schema<GoogleCloudRetailV2betaTile>;
 
-export type GoogleCloudRetailV2betaTileList =
-  ReadonlyArray<GoogleCloudRetailV2betaTile>;
-export const GoogleCloudRetailV2betaTileList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaTile,
-) as any as S.Schema<GoogleCloudRetailV2betaTileList>;
+export type GoogleCloudRetailV2betaTileList = ReadonlyArray<GoogleCloudRetailV2betaTile>;
+export const GoogleCloudRetailV2betaTileList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaTile) as any as S.Schema<GoogleCloudRetailV2betaTileList>;
 
 /** This field specifies tile navigation related parameters. */
 export interface GoogleCloudRetailV2betaSearchRequestTileNavigationSpec {
@@ -5310,22 +3750,15 @@ export interface GoogleCloudRetailV2betaSearchRequestTileNavigationSpec {
   /** This field specifies whether the customer would like to request tile navigation. */
   tileNavigationRequested?: boolean;
 }
-export const GoogleCloudRetailV2betaSearchRequestTileNavigationSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appliedTiles: S.optional(GoogleCloudRetailV2betaTileList),
-      tileNavigationRequested: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchRequestTileNavigationSpec",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestTileNavigationSpec>;
+export const GoogleCloudRetailV2betaSearchRequestTileNavigationSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "appliedTiles": S.optional(GoogleCloudRetailV2betaTileList),
+  "tileNavigationRequested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestTileNavigationSpec" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestTileNavigationSpec>;
 
-export type GoogleCloudRetailV2betaProductAttributeValueList =
-  ReadonlyArray<GoogleCloudRetailV2betaProductAttributeValue>;
-export const GoogleCloudRetailV2betaProductAttributeValueList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaProductAttributeValue,
-  ) as any as S.Schema<GoogleCloudRetailV2betaProductAttributeValueList>;
+export type GoogleCloudRetailV2betaProductAttributeValueList = ReadonlyArray<GoogleCloudRetailV2betaProductAttributeValue>;
+export const GoogleCloudRetailV2betaProductAttributeValueList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaProductAttributeValue) as any as S.Schema<GoogleCloudRetailV2betaProductAttributeValueList>;
 
 /** This field specifies the selected answers during the conversational search. */
 export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer {
@@ -5334,20 +3767,12 @@ export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUse
   /** This field is deprecated and should not be set. */
   productAttributeValues?: GoogleCloudRetailV2betaProductAttributeValueList;
 }
-export const GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productAttributeValue: S.optional(
-        GoogleCloudRetailV2betaProductAttributeValue,
-      ),
-      productAttributeValues: S.optional(
-        GoogleCloudRetailV2betaProductAttributeValueList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer>;
+export const GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productAttributeValue": S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+  "productAttributeValues": S.optional(GoogleCloudRetailV2betaProductAttributeValueList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer>;
 
 /** This field specifies the current user answer during the conversational search. This can be either user selected from suggested answers or user input plain text. */
 export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer {
@@ -5356,18 +3781,12 @@ export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUse
   /** This field specifies the incremental input text from the user during the conversational search. */
   textAnswer?: string;
 }
-export const GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      selectedAnswer: S.optional(
-        GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer,
-      ),
-      textAnswer: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer>;
+export const GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "selectedAnswer": S.optional(GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer),
+  "textAnswer": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer>;
 
 /** This field specifies all conversational related parameters addition to traditional retail search. */
 export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec {
@@ -5378,50 +3797,30 @@ export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec {
   /** This field specifies the conversation id, which maintains the state of the conversation between client side and server side. Use the value from the previous SearchResponse.ConversationalSearchResult.conversation_id. For the initial request, this should be empty. */
   conversationId?: string;
 }
-export const GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      followupConversationRequested: S.optional(S.Boolean),
-      userAnswer: S.optional(
-        GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer,
-      ),
-      conversationId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec>;
+export const GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "followupConversationRequested": S.optional(S.Boolean),
+  "userAnswer": S.optional(GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer),
+  "conversationId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec>;
 
-export type GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "SUGGESTION_ONLY"
-  | "AUTO"
-  | (string & {});
-export const GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum = "MODE_UNSPECIFIED" | "SUGGESTION_ONLY" | "AUTO";
+export const GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum = /*@__PURE__*/ S.String;
 
 /** The specification for query spell correction. */
 export interface GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec {
   /** The mode under which spell correction should take effect to replace the original search query. Default to Mode.AUTO. */
-  mode?: GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum;
+  mode?: GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum | (string & {});
 }
-export const GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec>;
+export const GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "mode": S.optional(GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec>;
 
-export type GoogleCloudRetailV2betaSearchRequestSearchModeEnum =
-  | "SEARCH_MODE_UNSPECIFIED"
-  | "PRODUCT_SEARCH_ONLY"
-  | "FACETED_SEARCH_ONLY"
-  | (string & {});
-export const GoogleCloudRetailV2betaSearchRequestSearchModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRetailV2betaSearchRequestSearchModeEnum = "SEARCH_MODE_UNSPECIFIED" | "PRODUCT_SEARCH_ONLY" | "FACETED_SEARCH_ONLY";
+export const GoogleCloudRetailV2betaSearchRequestSearchModeEnum = /*@__PURE__*/ S.String;
 
 /** Request message for SearchService.Search method. */
 export interface GoogleCloudRetailV2betaSearchRequest {
@@ -5474,60 +3873,43 @@ export interface GoogleCloudRetailV2betaSearchRequest {
   /** The spell correction specification that specifies the mode under which spell correction will take effect. */
   spellCorrectionSpec?: GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec;
   /** The search mode of the search request. If not specified, a single search request triggers both product search and faceted search. */
-  searchMode?: GoogleCloudRetailV2betaSearchRequestSearchModeEnum;
+  searchMode?: GoogleCloudRetailV2betaSearchRequestSearchModeEnum | (string & {});
   /** The filter syntax consists of an expression language for constructing a predicate from one or more fields of the products being filtered. Filter expression is case-sensitive. For more information, see [Filter](https://cloud.google.com/retail/docs/filter-and-order#filter). If this field is unrecognizable, an INVALID_ARGUMENT is returned. */
   filter?: string;
   /** The branch resource name, such as `projects/*\/locations/global/catalogs/default_catalog/branches/0`. Use "default_branch" as the branch ID or leave this field empty, to search products under the default branch. */
   branch?: string;
 }
-export const GoogleCloudRetailV2betaSearchRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String),
-      pageCategories: S.optional(StringList),
-      visitorId: S.optional(S.String),
-      entity: S.optional(S.String),
-      placeId: S.optional(S.String),
-      facetSpecs: S.optional(GoogleCloudRetailV2betaSearchRequestFacetSpecList),
-      query: S.optional(S.String),
-      personalizationSpec: S.optional(
-        GoogleCloudRetailV2betaSearchRequestPersonalizationSpec,
-      ),
-      labels: S.optional(StringMap),
-      dynamicFacetSpec: S.optional(
-        GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec,
-      ),
-      userAttributes: S.optional(GoogleCloudRetailV2betaStringListMap),
-      offset: S.optional(S.Number),
-      canonicalFilter: S.optional(S.String),
-      regionCode: S.optional(S.String),
-      queryExpansionSpec: S.optional(
-        GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec,
-      ),
-      tileNavigationSpec: S.optional(
-        GoogleCloudRetailV2betaSearchRequestTileNavigationSpec,
-      ),
-      boostSpec: S.optional(GoogleCloudRetailV2betaSearchRequestBoostSpec),
-      languageCode: S.optional(S.String),
-      conversationalSearchSpec: S.optional(
-        GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec,
-      ),
-      pageSize: S.optional(S.Number),
-      orderBy: S.optional(S.String),
-      variantRollupKeys: S.optional(StringList),
-      userInfo: S.optional(GoogleCloudRetailV2betaUserInfo),
-      spellCorrectionSpec: S.optional(
-        GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec,
-      ),
-      searchMode: S.optional(
-        GoogleCloudRetailV2betaSearchRequestSearchModeEnum,
-      ),
-      filter: S.optional(S.String),
-      branch: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaSearchRequest",
-}) as any as S.Schema<GoogleCloudRetailV2betaSearchRequest>;
+export const GoogleCloudRetailV2betaSearchRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String),
+  "pageCategories": S.optional(StringList),
+  "visitorId": S.optional(S.String),
+  "entity": S.optional(S.String),
+  "placeId": S.optional(S.String),
+  "facetSpecs": S.optional(GoogleCloudRetailV2betaSearchRequestFacetSpecList),
+  "query": S.optional(S.String),
+  "personalizationSpec": S.optional(GoogleCloudRetailV2betaSearchRequestPersonalizationSpec),
+  "labels": S.optional(StringMap),
+  "dynamicFacetSpec": S.optional(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec),
+  "userAttributes": S.optional(GoogleCloudRetailV2betaStringListMap),
+  "offset": S.optional(S.Number),
+  "canonicalFilter": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+  "queryExpansionSpec": S.optional(GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec),
+  "tileNavigationSpec": S.optional(GoogleCloudRetailV2betaSearchRequestTileNavigationSpec),
+  "boostSpec": S.optional(GoogleCloudRetailV2betaSearchRequestBoostSpec),
+  "languageCode": S.optional(S.String),
+  "conversationalSearchSpec": S.optional(GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec),
+  "pageSize": S.optional(S.Number),
+  "orderBy": S.optional(S.String),
+  "variantRollupKeys": S.optional(StringList),
+  "userInfo": S.optional(GoogleCloudRetailV2betaUserInfo),
+  "spellCorrectionSpec": S.optional(GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec),
+  "searchMode": S.optional(GoogleCloudRetailV2betaSearchRequestSearchModeEnum),
+  "filter": S.optional(S.String),
+  "branch": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchRequest" }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequest>;
 
 export interface SearchProjectsLocationsCatalogsPlacementsRequest {
   /** Required. The resource name of the Retail Search serving config, such as `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that are used to make the search. */
@@ -5535,21 +3917,12 @@ export interface SearchProjectsLocationsCatalogsPlacementsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaSearchRequest;
 }
-export const SearchProjectsLocationsCatalogsPlacementsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      placement: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudRetailV2betaSearchRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+placement}:search",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchProjectsLocationsCatalogsPlacementsRequest",
-  }) as any as S.Schema<SearchProjectsLocationsCatalogsPlacementsRequest>;
+export const SearchProjectsLocationsCatalogsPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "placement": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaSearchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+placement}:search","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "SearchProjectsLocationsCatalogsPlacementsRequest" }) as any as S.Schema<SearchProjectsLocationsCatalogsPlacementsRequest>;
 
 /** A facet value which contains value names and their count. */
 export interface GoogleCloudRetailV2betaSearchResponseFacetFacetValue {
@@ -5564,25 +3937,18 @@ export interface GoogleCloudRetailV2betaSearchResponseFacetFacetValue {
   /** Number of items that have this facet value. */
   count?: string;
 }
-export const GoogleCloudRetailV2betaSearchResponseFacetFacetValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      interval: S.optional(GoogleCloudRetailV2betaInterval),
-      maxValue: S.optional(S.Number),
-      value: S.optional(S.String),
-      minValue: S.optional(S.Number),
-      count: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchResponseFacetFacetValue",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacetFacetValue>;
+export const GoogleCloudRetailV2betaSearchResponseFacetFacetValue = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "interval": S.optional(GoogleCloudRetailV2betaInterval),
+  "maxValue": S.optional(S.Number),
+  "value": S.optional(S.String),
+  "minValue": S.optional(S.Number),
+  "count": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchResponseFacetFacetValue" }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacetFacetValue>;
 
-export type GoogleCloudRetailV2betaSearchResponseFacetFacetValueList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchResponseFacetFacetValue>;
-export const GoogleCloudRetailV2betaSearchResponseFacetFacetValueList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaSearchResponseFacetFacetValue,
-  ) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacetFacetValueList>;
+export type GoogleCloudRetailV2betaSearchResponseFacetFacetValueList = ReadonlyArray<GoogleCloudRetailV2betaSearchResponseFacetFacetValue>;
+export const GoogleCloudRetailV2betaSearchResponseFacetFacetValueList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaSearchResponseFacetFacetValue) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacetFacetValueList>;
 
 /** A facet result. */
 export interface GoogleCloudRetailV2betaSearchResponseFacet {
@@ -5593,25 +3959,16 @@ export interface GoogleCloudRetailV2betaSearchResponseFacet {
   /** Whether the facet is dynamically generated. */
   dynamicFacet?: boolean;
 }
-export const GoogleCloudRetailV2betaSearchResponseFacet =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      values: S.optional(
-        GoogleCloudRetailV2betaSearchResponseFacetFacetValueList,
-      ),
-      dynamicFacet: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchResponseFacet",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacet>;
+export const GoogleCloudRetailV2betaSearchResponseFacet = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "key": S.optional(S.String),
+  "values": S.optional(GoogleCloudRetailV2betaSearchResponseFacetFacetValueList),
+  "dynamicFacet": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchResponseFacet" }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacet>;
 
-export type GoogleCloudRetailV2betaSearchResponseFacetList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchResponseFacet>;
-export const GoogleCloudRetailV2betaSearchResponseFacetList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaSearchResponseFacet,
-  ) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacetList>;
+export type GoogleCloudRetailV2betaSearchResponseFacetList = ReadonlyArray<GoogleCloudRetailV2betaSearchResponseFacet>;
+export const GoogleCloudRetailV2betaSearchResponseFacetList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaSearchResponseFacet) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacetList>;
 
 /** Metadata for active serving config A/B tests. */
 export interface GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment {
@@ -5620,15 +3977,12 @@ export interface GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment {
   /** The fully qualified resource name of the serving config `Experiment.VariantArm.serving_config_id` responsible for generating the search response. For example: `projects/*\/locations/*\/catalogs/*\/servingConfigs/*`. */
   experimentServingConfig?: string;
 }
-export const GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      originalServingConfig: S.optional(S.String),
-      experimentServingConfig: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment",
-  }) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment>;
+export const GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "originalServingConfig": S.optional(S.String),
+  "experimentServingConfig": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment" }) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment>;
 
 /** Metadata for active A/B testing experiment. */
 export interface GoogleCloudRetailV2betaExperimentInfo {
@@ -5637,71 +3991,43 @@ export interface GoogleCloudRetailV2betaExperimentInfo {
   /** The fully qualified resource name of the experiment that provides the serving config under test, should an active experiment exist. For example: `projects/*\/locations/global/catalogs/default_catalog/experiments/experiment_id` */
   experiment?: string;
 }
-export const GoogleCloudRetailV2betaExperimentInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      servingConfigExperiment: S.optional(
-        GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment,
-      ),
-      experiment: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaExperimentInfo",
-}) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfo>;
+export const GoogleCloudRetailV2betaExperimentInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "servingConfigExperiment": S.optional(GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment),
+  "experiment": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaExperimentInfo" }) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfo>;
 
-export type GoogleCloudRetailV2betaExperimentInfoList =
-  ReadonlyArray<GoogleCloudRetailV2betaExperimentInfo>;
-export const GoogleCloudRetailV2betaExperimentInfoList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaExperimentInfo,
-) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfoList>;
+export type GoogleCloudRetailV2betaExperimentInfoList = ReadonlyArray<GoogleCloudRetailV2betaExperimentInfo>;
+export const GoogleCloudRetailV2betaExperimentInfoList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaExperimentInfo) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfoList>;
 
 /** Additional filter that client side need to apply. */
 export interface GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter {
   /** Product attribute value, including an attribute key and an attribute value. Other types can be added here in the future. */
   productAttributeValue?: GoogleCloudRetailV2betaProductAttributeValue;
 }
-export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productAttributeValue: S.optional(
-        GoogleCloudRetailV2betaProductAttributeValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter>;
+export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productAttributeValue": S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter" }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter>;
 
-export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter>;
-export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter,
-  ) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList>;
+export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList = ReadonlyArray<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter>;
+export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList>;
 
 /** Suggested answers to the follow-up question. */
 export interface GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer {
   /** Product attribute value, including an attribute key and an attribute value. Other types can be added here in the future. */
   productAttributeValue?: GoogleCloudRetailV2betaProductAttributeValue;
 }
-export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productAttributeValue: S.optional(
-        GoogleCloudRetailV2betaProductAttributeValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer>;
+export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productAttributeValue": S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer" }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer>;
 
-export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer>;
-export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer,
-  ) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList>;
+export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList = ReadonlyArray<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer>;
+export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList>;
 
 /** This field specifies all related information that is needed on client side for UI rendering of conversational retail search. */
 export interface GoogleCloudRetailV2betaSearchResponseConversationalSearchResult {
@@ -5718,26 +4044,16 @@ export interface GoogleCloudRetailV2betaSearchResponseConversationalSearchResult
   /** The current refined query for the conversational search. This field will be used in customer UI that the query in the search bar should be replaced with the refined query. For example, if SearchRequest.query is `dress` and next SearchRequest.ConversationalSearchSpec.UserAnswer.text_answer is `red color`, which does not match any product attribute value filters, the refined query will be `dress, red color`. */
   refinedQuery?: string;
 }
-export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalFilters: S.optional(
-        GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList,
-      ),
-      suggestedAnswers: S.optional(
-        GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList,
-      ),
-      additionalFilter: S.optional(
-        GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter,
-      ),
-      conversationId: S.optional(S.String),
-      followupQuestion: S.optional(S.String),
-      refinedQuery: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2betaSearchResponseConversationalSearchResult",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResult>;
+export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "additionalFilters": S.optional(GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList),
+  "suggestedAnswers": S.optional(GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList),
+  "additionalFilter": S.optional(GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter),
+  "conversationId": S.optional(S.String),
+  "followupQuestion": S.optional(S.String),
+  "refinedQuery": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchResponseConversationalSearchResult" }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResult>;
 
 /** A message with a list of double values. */
 export interface GoogleCloudRetailV2betaDoubleList {
@@ -5745,20 +4061,13 @@ export interface GoogleCloudRetailV2betaDoubleList {
   values?: DoubleList;
 }
 export const GoogleCloudRetailV2betaDoubleList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(DoubleList),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaDoubleList",
-}) as any as S.Schema<GoogleCloudRetailV2betaDoubleList>;
+S.Struct({
+  "values": S.optional(DoubleList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaDoubleList" }) as any as S.Schema<GoogleCloudRetailV2betaDoubleList>;
 
-export type GoogleCloudRetailV2betaDoubleListMap = {
-  [key: string]: GoogleCloudRetailV2betaDoubleList | undefined;
-};
-export const GoogleCloudRetailV2betaDoubleListMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GoogleCloudRetailV2betaDoubleList,
-) as any as S.Schema<GoogleCloudRetailV2betaDoubleListMap>;
+export type GoogleCloudRetailV2betaDoubleListMap = { [key: string]: GoogleCloudRetailV2betaDoubleList | undefined };
+export const GoogleCloudRetailV2betaDoubleListMap = /*@__PURE__*/ S.Record(S.String, GoogleCloudRetailV2betaDoubleList) as any as S.Schema<GoogleCloudRetailV2betaDoubleListMap>;
 
 /** Represents the search results. */
 export interface GoogleCloudRetailV2betaSearchResponseSearchResult {
@@ -5777,27 +4086,20 @@ export interface GoogleCloudRetailV2betaSearchResponseSearchResult {
   /** If a variant Product matches the search query, this map indicates which Product fields are matched. The key is the Product.name, the value is a field mask of the matched Product fields. If matched attributes cannot be determined, this map will be empty. For example, a key "sku1" with field mask "products.color_info" indicates there is a match between "sku1" ColorInfo and the query. */
   matchingVariantFields?: StringMap;
 }
-export const GoogleCloudRetailV2betaSearchResponseSearchResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      matchingVariantCount: S.optional(S.Number),
-      product: S.optional(GoogleCloudRetailV2betaProduct),
-      personalLabels: S.optional(StringList),
-      id: S.optional(S.String),
-      variantRollupValues: S.optional(DocumentMap),
-      modelScores: S.optional(GoogleCloudRetailV2betaDoubleListMap),
-      matchingVariantFields: S.optional(StringMap),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchResponseSearchResult",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseSearchResult>;
+export const GoogleCloudRetailV2betaSearchResponseSearchResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "matchingVariantCount": S.optional(S.Number),
+  "product": S.optional(GoogleCloudRetailV2betaProduct),
+  "personalLabels": S.optional(StringList),
+  "id": S.optional(S.String),
+  "variantRollupValues": S.optional(DocumentMap),
+  "modelScores": S.optional(GoogleCloudRetailV2betaDoubleListMap),
+  "matchingVariantFields": S.optional(StringMap),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchResponseSearchResult" }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseSearchResult>;
 
-export type GoogleCloudRetailV2betaSearchResponseSearchResultList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchResponseSearchResult>;
-export const GoogleCloudRetailV2betaSearchResponseSearchResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaSearchResponseSearchResult,
-  ) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseSearchResultList>;
+export type GoogleCloudRetailV2betaSearchResponseSearchResultList = ReadonlyArray<GoogleCloudRetailV2betaSearchResponseSearchResult>;
+export const GoogleCloudRetailV2betaSearchResponseSearchResultList = /*@__PURE__*/ S.Array(GoogleCloudRetailV2betaSearchResponseSearchResult) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseSearchResultList>;
 
 /** Information describing query expansion including whether expansion has occurred. */
 export interface GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo {
@@ -5806,40 +4108,26 @@ export interface GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo {
   /** Number of pinned results. This field will only be set when expansion happens and SearchRequest.QueryExpansionSpec.pin_unexpanded_results is set to true. */
   pinnedResultCount?: string;
 }
-export const GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expandedQuery: S.optional(S.Boolean),
-      pinnedResultCount: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo>;
+export const GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "expandedQuery": S.optional(S.Boolean),
+  "pinnedResultCount": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo" }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo>;
 
 /** List of product ids which have associated pins. */
 export interface GoogleCloudRetailV2betaPinControlMetadataProductPins {
   /** List of product ids which have associated pins. */
   productId?: StringList;
 }
-export const GoogleCloudRetailV2betaPinControlMetadataProductPins =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productId: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaPinControlMetadataProductPins",
-  }) as any as S.Schema<GoogleCloudRetailV2betaPinControlMetadataProductPins>;
+export const GoogleCloudRetailV2betaPinControlMetadataProductPins = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productId": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPinControlMetadataProductPins" }) as any as S.Schema<GoogleCloudRetailV2betaPinControlMetadataProductPins>;
 
-export type GoogleCloudRetailV2betaPinControlMetadataProductPinsMap = {
-  [key: string]:
-    | GoogleCloudRetailV2betaPinControlMetadataProductPins
-    | undefined;
-};
-export const GoogleCloudRetailV2betaPinControlMetadataProductPinsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudRetailV2betaPinControlMetadataProductPins,
-  ) as any as S.Schema<GoogleCloudRetailV2betaPinControlMetadataProductPinsMap>;
+export type GoogleCloudRetailV2betaPinControlMetadataProductPinsMap = { [key: string]: GoogleCloudRetailV2betaPinControlMetadataProductPins | undefined };
+export const GoogleCloudRetailV2betaPinControlMetadataProductPinsMap = /*@__PURE__*/ S.Record(S.String, GoogleCloudRetailV2betaPinControlMetadataProductPins) as any as S.Schema<GoogleCloudRetailV2betaPinControlMetadataProductPinsMap>;
 
 /** Metadata for pinning to be returned in the response. This is used for distinguishing between applied vs dropped pins. */
 export interface GoogleCloudRetailV2betaPinControlMetadata {
@@ -5848,33 +4136,23 @@ export interface GoogleCloudRetailV2betaPinControlMetadata {
   /** Map of all matched pins, keyed by pin position. */
   allMatchedPins?: GoogleCloudRetailV2betaPinControlMetadataProductPinsMap;
 }
-export const GoogleCloudRetailV2betaPinControlMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      droppedPins: S.optional(
-        GoogleCloudRetailV2betaPinControlMetadataProductPinsMap,
-      ),
-      allMatchedPins: S.optional(
-        GoogleCloudRetailV2betaPinControlMetadataProductPinsMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaPinControlMetadata",
-  }) as any as S.Schema<GoogleCloudRetailV2betaPinControlMetadata>;
+export const GoogleCloudRetailV2betaPinControlMetadata = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "droppedPins": S.optional(GoogleCloudRetailV2betaPinControlMetadataProductPinsMap),
+  "allMatchedPins": S.optional(GoogleCloudRetailV2betaPinControlMetadataProductPinsMap),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaPinControlMetadata" }) as any as S.Schema<GoogleCloudRetailV2betaPinControlMetadata>;
 
 /** This field specifies all related information for tile navigation that will be used in client side. */
 export interface GoogleCloudRetailV2betaSearchResponseTileNavigationResult {
   /** The current tiles that are used for tile navigation, sorted by engagement. */
   tiles?: GoogleCloudRetailV2betaTileList;
 }
-export const GoogleCloudRetailV2betaSearchResponseTileNavigationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tiles: S.optional(GoogleCloudRetailV2betaTileList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSearchResponseTileNavigationResult",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseTileNavigationResult>;
+export const GoogleCloudRetailV2betaSearchResponseTileNavigationResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "tiles": S.optional(GoogleCloudRetailV2betaTileList),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchResponseTileNavigationResult" }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseTileNavigationResult>;
 
 /** Response message for SearchService.Search method. */
 export interface GoogleCloudRetailV2betaSearchResponse {
@@ -5907,37 +4185,24 @@ export interface GoogleCloudRetailV2betaSearchResponse {
   /** A token that can be sent as SearchRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudRetailV2betaSearchResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      facets: S.optional(GoogleCloudRetailV2betaSearchResponseFacetList),
-      experimentInfo: S.optional(GoogleCloudRetailV2betaExperimentInfoList),
-      correctedQuery: S.optional(S.String),
-      attributionToken: S.optional(S.String),
-      conversationalSearchResult: S.optional(
-        GoogleCloudRetailV2betaSearchResponseConversationalSearchResult,
-      ),
-      results: S.optional(
-        GoogleCloudRetailV2betaSearchResponseSearchResultList,
-      ),
-      totalSize: S.optional(S.Number),
-      queryExpansionInfo: S.optional(
-        GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo,
-      ),
-      appliedControls: S.optional(StringList),
-      pinControlMetadata: S.optional(GoogleCloudRetailV2betaPinControlMetadata),
-      invalidConditionBoostSpecs: S.optional(
-        GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList,
-      ),
-      tileNavigationResult: S.optional(
-        GoogleCloudRetailV2betaSearchResponseTileNavigationResult,
-      ),
-      redirectUri: S.optional(S.String),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaSearchResponse",
-}) as any as S.Schema<GoogleCloudRetailV2betaSearchResponse>;
+export const GoogleCloudRetailV2betaSearchResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "facets": S.optional(GoogleCloudRetailV2betaSearchResponseFacetList),
+  "experimentInfo": S.optional(GoogleCloudRetailV2betaExperimentInfoList),
+  "correctedQuery": S.optional(S.String),
+  "attributionToken": S.optional(S.String),
+  "conversationalSearchResult": S.optional(GoogleCloudRetailV2betaSearchResponseConversationalSearchResult),
+  "results": S.optional(GoogleCloudRetailV2betaSearchResponseSearchResultList),
+  "totalSize": S.optional(S.Number),
+  "queryExpansionInfo": S.optional(GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo),
+  "appliedControls": S.optional(StringList),
+  "pinControlMetadata": S.optional(GoogleCloudRetailV2betaPinControlMetadata),
+  "invalidConditionBoostSpecs": S.optional(GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList),
+  "tileNavigationResult": S.optional(GoogleCloudRetailV2betaSearchResponseTileNavigationResult),
+  "redirectUri": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSearchResponse" }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponse>;
 
 export interface SearchProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The resource name of the Retail Search serving config, such as `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that are used to make the search. */
@@ -5945,21 +4210,12 @@ export interface SearchProjectsLocationsCatalogsServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaSearchRequest;
 }
-export const SearchProjectsLocationsCatalogsServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      placement: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudRetailV2betaSearchRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+placement}:search",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchProjectsLocationsCatalogsServingConfigsRequest",
-  }) as any as S.Schema<SearchProjectsLocationsCatalogsServingConfigsRequest>;
+export const SearchProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "placement": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaSearchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+placement}:search","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "SearchProjectsLocationsCatalogsServingConfigsRequest" }) as any as S.Schema<SearchProjectsLocationsCatalogsServingConfigsRequest>;
 
 /** Request message to set a specified branch as new default_branch. */
 export interface GoogleCloudRetailV2betaSetDefaultBranchRequest {
@@ -5970,16 +4226,13 @@ export interface GoogleCloudRetailV2betaSetDefaultBranchRequest {
   /** Some note on this request, this can be retrieved by CatalogService.GetDefaultBranch before next valid default branch set occurs. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. */
   note?: string;
 }
-export const GoogleCloudRetailV2betaSetDefaultBranchRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      force: S.optional(S.Boolean),
-      branchId: S.optional(S.String),
-      note: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSetDefaultBranchRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSetDefaultBranchRequest>;
+export const GoogleCloudRetailV2betaSetDefaultBranchRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "force": S.optional(S.Boolean),
+  "branchId": S.optional(S.String),
+  "note": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSetDefaultBranchRequest" }) as any as S.Schema<GoogleCloudRetailV2betaSetDefaultBranchRequest>;
 
 export interface SetDefaultBranchProjectsLocationsCatalogsRequest {
   /** Full resource name of the catalog, such as `projects/*\/locations/global/catalogs/default_catalog`. */
@@ -5987,23 +4240,12 @@ export interface SetDefaultBranchProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaSetDefaultBranchRequest;
 }
-export const SetDefaultBranchProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalog: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaSetDefaultBranchRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+catalog}:setDefaultBranch",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetDefaultBranchProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<SetDefaultBranchProjectsLocationsCatalogsRequest>;
+export const SetDefaultBranchProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalog": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaSetDefaultBranchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+catalog}:setDefaultBranch","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "SetDefaultBranchProjectsLocationsCatalogsRequest" }) as any as S.Schema<SetDefaultBranchProjectsLocationsCatalogsRequest>;
 
 /** Request message for ProductService.SetInventory method. */
 export interface GoogleCloudRetailV2betaSetInventoryRequest {
@@ -6016,17 +4258,14 @@ export interface GoogleCloudRetailV2betaSetInventoryRequest {
   /** If set to true, and the Product with name Product.name is not found, the inventory update will still be processed and retained for at most 1 day until the Product is created. If set to false, a NOT_FOUND error is returned if the Product is not found. */
   allowMissing?: boolean;
 }
-export const GoogleCloudRetailV2betaSetInventoryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      inventory: S.optional(GoogleCloudRetailV2betaProduct),
-      setMask: S.optional(S.String),
-      setTime: S.optional(S.String),
-      allowMissing: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2betaSetInventoryRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2betaSetInventoryRequest>;
+export const GoogleCloudRetailV2betaSetInventoryRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "inventory": S.optional(GoogleCloudRetailV2betaProduct),
+  "setMask": S.optional(S.String),
+  "setTime": S.optional(S.String),
+  "allowMissing": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRetailV2betaSetInventoryRequest" }) as any as S.Schema<GoogleCloudRetailV2betaSetInventoryRequest>;
 
 export interface SetInventoryProjectsLocationsCatalogsBranchesProductsRequest {
   /** Immutable. Full resource name of the product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. */
@@ -6034,31 +4273,18 @@ export interface SetInventoryProjectsLocationsCatalogsBranchesProductsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaSetInventoryRequest;
 }
-export const SetInventoryProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaSetInventoryRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+name}:setInventory",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetInventoryProjectsLocationsCatalogsBranchesProductsRequest",
-  }) as any as S.Schema<SetInventoryProjectsLocationsCatalogsBranchesProductsRequest>;
+export const SetInventoryProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaSetInventoryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:setInventory","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "SetInventoryProjectsLocationsCatalogsBranchesProductsRequest" }) as any as S.Schema<SetInventoryProjectsLocationsCatalogsBranchesProductsRequest>;
 
 /** Request to manually start a tuning process now (instead of waiting for the periodically scheduled tuning to happen). */
 export interface GoogleCloudRetailV2betaTuneModelRequest {}
-export const GoogleCloudRetailV2betaTuneModelRequest = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaTuneModelRequest",
-}) as any as S.Schema<GoogleCloudRetailV2betaTuneModelRequest>;
+export const GoogleCloudRetailV2betaTuneModelRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRetailV2betaTuneModelRequest" }) as any as S.Schema<GoogleCloudRetailV2betaTuneModelRequest>;
 
 export interface TuneProjectsLocationsCatalogsModelsRequest {
   /** Required. The resource name of the model to tune. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` */
@@ -6066,23 +4292,12 @@ export interface TuneProjectsLocationsCatalogsModelsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaTuneModelRequest;
 }
-export const TuneProjectsLocationsCatalogsModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaTuneModelRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+name}:tune",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TuneProjectsLocationsCatalogsModelsRequest",
-  }) as any as S.Schema<TuneProjectsLocationsCatalogsModelsRequest>;
+export const TuneProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaTuneModelRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:tune","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "TuneProjectsLocationsCatalogsModelsRequest" }) as any as S.Schema<TuneProjectsLocationsCatalogsModelsRequest>;
 
 export interface UpdateAlertConfigProjectsRequest {
   /** Required. Immutable. The name of the AlertConfig singleton resource. Format: projects/*\/alertConfig */
@@ -6093,20 +4308,12 @@ export interface UpdateAlertConfigProjectsRequest {
   body?: GoogleCloudRetailV2betaAlertConfig;
 }
 export const UpdateAlertConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(GoogleCloudRetailV2betaAlertConfig.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v2beta/{+name}",
-      baseUrl: "https://retail.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAlertConfigProjectsRequest",
-}) as any as S.Schema<UpdateAlertConfigProjectsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaAlertConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "UpdateAlertConfigProjectsRequest" }) as any as S.Schema<UpdateAlertConfigProjectsRequest>;
 
 export interface UpdateAttributesConfigProjectsLocationsCatalogsRequest {
   /** Optional. Indicates which fields in the provided AttributesConfig to update. The following is the only supported field: * AttributesConfig.catalog_attributes If not set, all supported fields are updated. */
@@ -6116,24 +4323,13 @@ export interface UpdateAttributesConfigProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaAttributesConfig;
 }
-export const UpdateAttributesConfigProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2betaAttributesConfig.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateAttributesConfigProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<UpdateAttributesConfigProjectsLocationsCatalogsRequest>;
+export const UpdateAttributesConfigProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRetailV2betaAttributesConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "UpdateAttributesConfigProjectsLocationsCatalogsRequest" }) as any as S.Schema<UpdateAttributesConfigProjectsLocationsCatalogsRequest>;
 
 export interface UpdateCompletionConfigProjectsLocationsCatalogsRequest {
   /** Required. Immutable. Fully qualified name `projects/*\/locations/*\/catalogs/*\/completionConfig` */
@@ -6143,24 +4339,13 @@ export interface UpdateCompletionConfigProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaCompletionConfig;
 }
-export const UpdateCompletionConfigProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(
-        GoogleCloudRetailV2betaCompletionConfig.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2beta/{+name}",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateCompletionConfigProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<UpdateCompletionConfigProjectsLocationsCatalogsRequest>;
+export const UpdateCompletionConfigProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaCompletionConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "UpdateCompletionConfigProjectsLocationsCatalogsRequest" }) as any as S.Schema<UpdateCompletionConfigProjectsLocationsCatalogsRequest>;
 
 export interface UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest {
   /** Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
@@ -6170,27 +4355,13 @@ export interface UpdateConversationalSearchCustomizationConfigProjectsLocationsC
   /** Request body */
   body?: GoogleCloudRetailV2betaConversationalSearchCustomizationConfig;
 }
-export const UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalog: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(
-        GoogleCloudRetailV2betaConversationalSearchCustomizationConfig.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2beta/{+catalog}/conversationalSearchCustomizationConfig",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest>;
+export const UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalog": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaConversationalSearchCustomizationConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+catalog}/conversationalSearchCustomizationConfig","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest" }) as any as S.Schema<UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest>;
 
 export interface UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest {
   /** Required. Resource name of the affected catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
@@ -6200,27 +4371,13 @@ export interface UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest
   /** Request body */
   body?: GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig;
 }
-export const UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalog: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(
-        GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2beta/{+catalog}/generativeQuestionFeature",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest>;
+export const UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalog": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+catalog}/generativeQuestionFeature","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest" }) as any as S.Schema<UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest>;
 
 export interface UpdateGenerativeQuestionProjectsLocationsCatalogsRequest {
   /** Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
@@ -6230,24 +4387,13 @@ export interface UpdateGenerativeQuestionProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaGenerativeQuestionConfig;
 }
-export const UpdateGenerativeQuestionProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalog: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(
-        GoogleCloudRetailV2betaGenerativeQuestionConfig.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2beta/{+catalog}/generativeQuestion",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateGenerativeQuestionProjectsLocationsCatalogsRequest",
-  }) as any as S.Schema<UpdateGenerativeQuestionProjectsLocationsCatalogsRequest>;
+export const UpdateGenerativeQuestionProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "catalog": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaGenerativeQuestionConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+catalog}/generativeQuestion","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "UpdateGenerativeQuestionProjectsLocationsCatalogsRequest" }) as any as S.Schema<UpdateGenerativeQuestionProjectsLocationsCatalogsRequest>;
 
 export interface WriteProjectsLocationsCatalogsUserEventsRequest {
   /** Required. The parent catalog resource name, such as `projects/1234/locations/global/catalogs/default_catalog`. */
@@ -6257,29 +4403,15 @@ export interface WriteProjectsLocationsCatalogsUserEventsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaUserEvent;
 }
-export const WriteProjectsLocationsCatalogsUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      writeAsync: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(GoogleCloudRetailV2betaUserEvent.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+parent}/userEvents:write",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "WriteProjectsLocationsCatalogsUserEventsRequest",
-  }) as any as S.Schema<WriteProjectsLocationsCatalogsUserEventsRequest>;
+export const WriteProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "writeAsync": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRetailV2betaUserEvent.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/userEvents:write","baseUrl":"https://retail.googleapis.com/"})),
+).annotate({ identifier: "WriteProjectsLocationsCatalogsUserEventsRequest" }) as any as S.Schema<WriteProjectsLocationsCatalogsUserEventsRequest>;
 
-export type AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds the specified CatalogAttribute to the AttributesConfig. If the CatalogAttribute to add already exists, an ALREADY_EXISTS error is returned. */
 export const addCatalogAttributeProjectsLocationsCatalogsAttributesConfig: API.OperationMethod<
   AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest,
@@ -6294,12 +4426,7 @@ export const addCatalogAttributeProjectsLocationsCatalogsAttributesConfig: API.O
   retry: Retry.Retry,
 }));
 
-export type AddControlProjectsLocationsCatalogsServingConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddControlProjectsLocationsCatalogsServingConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enables a Control on the specified ServingConfig. The control is added in the last position of the list of controls it belongs to (e.g. if it's a facet spec control it will be applied in the last position of servingConfig.facetSpecIds) Returns a ALREADY_EXISTS error if the control has already been applied. Returns a FAILED_PRECONDITION error if the addition could exceed maximum number of control allowed for that type of control. */
 export const addControlProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   AddControlProjectsLocationsCatalogsServingConfigsRequest,
@@ -6314,8 +4441,7 @@ export const addControlProjectsLocationsCatalogsServingConfigs: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** We recommend that you use the ProductService.AddLocalInventories method instead of the ProductService.AddFulfillmentPlaces method. ProductService.AddLocalInventories achieves the same results but provides more fine-grained control over ingesting local inventory data. Incrementally adds place IDs to Product.fulfillment_info.place_ids. This process is asynchronous and does not require the Product to exist before updating fulfillment information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, the added place IDs are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated with the stale updates will not be marked as done until being obsolete. */
 export const addFulfillmentPlacesProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest,
@@ -6330,12 +4456,7 @@ export const addFulfillmentPlacesProjectsLocationsCatalogsBranchesProducts: API.
   retry: Retry.Retry,
 }));
 
-export type AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates local inventory information for a Product at a list of places, while respecting the last update timestamps of each inventory field. This process is asynchronous and does not require the Product to exist before updating inventory information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, updates are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. Local inventory information can only be modified using this method. ProductService.CreateProduct and ProductService.UpdateProduct has no effect on local inventories. The returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated with the stale updates will not be marked as done until being obsolete. */
 export const addLocalInventoriesProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest,
@@ -6350,8 +4471,7 @@ export const addLocalInventoriesProjectsLocationsCatalogsBranchesProducts: API.O
   retry: Retry.Retry,
 }));
 
-export type BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes all specified CatalogAttributes from the AttributesConfig. */
 export const batchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfig: API.OperationMethod<
   BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest,
@@ -6359,20 +4479,14 @@ export const batchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConf
   BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest,
+  input: BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest,
   output: GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateProjectsLocationsCatalogsGenerativeQuestionError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateProjectsLocationsCatalogsGenerativeQuestionError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Allows management of multiple questions. */
 export const batchUpdateProjectsLocationsCatalogsGenerativeQuestion: API.OperationMethod<
   BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest,
@@ -6387,12 +4501,7 @@ export const batchUpdateProjectsLocationsCatalogsGenerativeQuestion: API.Operati
   retry: Retry.Retry,
 }));
 
-export type CollectProjectsLocationsCatalogsUserEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CollectProjectsLocationsCatalogsUserEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Writes a single user event from the browser. For larger user event payload over 16 KB, the POST method should be used instead, otherwise a 400 Bad Request error is returned. This method is used only by the Retail API JavaScript pixel and Google Tag Manager. Users should not call this method directly. */
 export const collectProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   CollectProjectsLocationsCatalogsUserEventsRequest,
@@ -6407,10 +4516,7 @@ export const collectProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CompleteQueryProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CompleteQueryProjectsLocationsCatalogsError = NotFound | Forbidden | GcpOpError;
 /** Completes the specified prefix with keyword suggestions. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature. */
 export const completeQueryProjectsLocationsCatalogs: API.OperationMethod<
   CompleteQueryProjectsLocationsCatalogsRequest,
@@ -6425,12 +4531,7 @@ export const completeQueryProjectsLocationsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConversationalSearchProjectsLocationsCatalogsPlacementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ConversationalSearchProjectsLocationsCatalogsPlacementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Performs a conversational search. This feature is only available for users who have Conversational Search enabled. */
 export const conversationalSearchProjectsLocationsCatalogsPlacements: API.OperationMethod<
   ConversationalSearchProjectsLocationsCatalogsPlacementsRequest,
@@ -6445,12 +4546,7 @@ export const conversationalSearchProjectsLocationsCatalogsPlacements: API.Operat
   retry: Retry.Retry,
 }));
 
-export type ConversationalSearchProjectsLocationsCatalogsServingConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ConversationalSearchProjectsLocationsCatalogsServingConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Performs a conversational search. This feature is only available for users who have Conversational Search enabled. */
 export const conversationalSearchProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest,
@@ -6465,12 +4561,7 @@ export const conversationalSearchProjectsLocationsCatalogsServingConfigs: API.Op
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCatalogsBranchesProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Product. */
 export const createProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   CreateProjectsLocationsCatalogsBranchesProductsRequest,
@@ -6485,12 +4576,7 @@ export const createProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCatalogsControlsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsCatalogsControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Control. If the Control to create already exists, an ALREADY_EXISTS error is returned. */
 export const createProjectsLocationsCatalogsControls: API.OperationMethod<
   CreateProjectsLocationsCatalogsControlsRequest,
@@ -6505,12 +4591,7 @@ export const createProjectsLocationsCatalogsControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCatalogsModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsCatalogsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new model. */
 export const createProjectsLocationsCatalogsModels: API.OperationMethod<
   CreateProjectsLocationsCatalogsModelsRequest,
@@ -6525,12 +4606,7 @@ export const createProjectsLocationsCatalogsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCatalogsServingConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsCatalogsServingConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a ServingConfig. A maximum of 100 ServingConfigs are allowed in a Catalog, otherwise a FAILED_PRECONDITION error is returned. */
 export const createProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   CreateProjectsLocationsCatalogsServingConfigsRequest,
@@ -6545,12 +4621,7 @@ export const createProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCatalogsBranchesProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a Product. */
 export const deleteProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   DeleteProjectsLocationsCatalogsBranchesProductsRequest,
@@ -6565,12 +4636,7 @@ export const deleteProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCatalogsControlsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsCatalogsControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned. */
 export const deleteProjectsLocationsCatalogsControls: API.OperationMethod<
   DeleteProjectsLocationsCatalogsControlsRequest,
@@ -6585,12 +4651,7 @@ export const deleteProjectsLocationsCatalogsControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCatalogsModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsCatalogsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing model. */
 export const deleteProjectsLocationsCatalogsModels: API.OperationMethod<
   DeleteProjectsLocationsCatalogsModelsRequest,
@@ -6605,12 +4666,7 @@ export const deleteProjectsLocationsCatalogsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCatalogsServingConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsCatalogsServingConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a ServingConfig. Returns a NotFound error if the ServingConfig does not exist. */
 export const deleteProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   DeleteProjectsLocationsCatalogsServingConfigsRequest,
@@ -6625,12 +4681,7 @@ export const deleteProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExportAnalyticsMetricsProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExportAnalyticsMetricsProjectsLocationsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Exports analytics metrics. `Operation.response` is of type `ExportAnalyticsMetricsResponse`. `Operation.metadata` is of type `ExportMetadata`. */
 export const exportAnalyticsMetricsProjectsLocationsCatalogs: API.OperationMethod<
   ExportAnalyticsMetricsProjectsLocationsCatalogsRequest,
@@ -6645,12 +4696,7 @@ export const exportAnalyticsMetricsProjectsLocationsCatalogs: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type ExportProjectsLocationsCatalogsBranchesProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExportProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Exports multiple Products. */
 export const exportProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   ExportProjectsLocationsCatalogsBranchesProductsRequest,
@@ -6665,12 +4711,7 @@ export const exportProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type ExportProjectsLocationsCatalogsUserEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExportProjectsLocationsCatalogsUserEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Exports user events. `Operation.response` is of type `ExportResponse`. `Operation.metadata` is of type `ExportMetadata`. */
 export const exportProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   ExportProjectsLocationsCatalogsUserEventsRequest,
@@ -6700,10 +4741,7 @@ export const getAlertConfigProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAttributesConfigProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAttributesConfigProjectsLocationsCatalogsError = NotFound | Forbidden | GcpOpError;
 /** Gets an AttributesConfig. */
 export const getAttributesConfigProjectsLocationsCatalogs: API.OperationMethod<
   GetAttributesConfigProjectsLocationsCatalogsRequest,
@@ -6718,10 +4756,7 @@ export const getAttributesConfigProjectsLocationsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCompletionConfigProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetCompletionConfigProjectsLocationsCatalogsError = NotFound | Forbidden | GcpOpError;
 /** Gets a CompletionConfig. */
 export const getCompletionConfigProjectsLocationsCatalogs: API.OperationMethod<
   GetCompletionConfigProjectsLocationsCatalogsRequest,
@@ -6736,8 +4771,7 @@ export const getCompletionConfigProjectsLocationsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsError = NotFound | Forbidden | GcpOpError;
 /** Returns the conversational search customization config for a given catalog. */
 export const getConversationalSearchCustomizationConfigProjectsLocationsCatalogs: API.OperationMethod<
   GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest,
@@ -6745,18 +4779,14 @@ export const getConversationalSearchCustomizationConfigProjectsLocationsCatalogs
   GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest,
+  input: GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest,
   output: GoogleCloudRetailV2betaConversationalSearchCustomizationConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetDefaultBranchProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetDefaultBranchProjectsLocationsCatalogsError = NotFound | Forbidden | GcpOpError;
 /** Get which branch is currently default branch set by CatalogService.SetDefaultBranch method under a specified parent catalog. */
 export const getDefaultBranchProjectsLocationsCatalogs: API.OperationMethod<
   GetDefaultBranchProjectsLocationsCatalogsRequest,
@@ -6771,10 +4801,7 @@ export const getDefaultBranchProjectsLocationsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetGenerativeQuestionFeatureProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetGenerativeQuestionFeatureProjectsLocationsCatalogsError = NotFound | Forbidden | GcpOpError;
 /** Manages overal generative question feature state -- enables toggling feature on and off. */
 export const getGenerativeQuestionFeatureProjectsLocationsCatalogs: API.OperationMethod<
   GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest,
@@ -6789,10 +4816,7 @@ export const getGenerativeQuestionFeatureProjectsLocationsCatalogs: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCatalogsBranchesOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCatalogsBranchesOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCatalogsBranchesOperations: API.OperationMethod<
   GetProjectsLocationsCatalogsBranchesOperationsRequest,
@@ -6807,10 +4831,7 @@ export const getProjectsLocationsCatalogsBranchesOperations: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCatalogsBranchesProductsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | GcpOpError;
 /** Gets a Product. */
 export const getProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   GetProjectsLocationsCatalogsBranchesProductsRequest,
@@ -6825,10 +4846,7 @@ export const getProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCatalogsControlsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCatalogsControlsError = NotFound | Forbidden | GcpOpError;
 /** Gets a Control. */
 export const getProjectsLocationsCatalogsControls: API.OperationMethod<
   GetProjectsLocationsCatalogsControlsRequest,
@@ -6843,10 +4861,7 @@ export const getProjectsLocationsCatalogsControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCatalogsModelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCatalogsModelsError = NotFound | Forbidden | GcpOpError;
 /** Gets a model. */
 export const getProjectsLocationsCatalogsModels: API.OperationMethod<
   GetProjectsLocationsCatalogsModelsRequest,
@@ -6861,10 +4876,7 @@ export const getProjectsLocationsCatalogsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCatalogsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCatalogsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCatalogsOperations: API.OperationMethod<
   GetProjectsLocationsCatalogsOperationsRequest,
@@ -6879,10 +4891,7 @@ export const getProjectsLocationsCatalogsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCatalogsServingConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCatalogsServingConfigsError = NotFound | Forbidden | GcpOpError;
 /** Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist. */
 export const getProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   GetProjectsLocationsCatalogsServingConfigsRequest,
@@ -6897,10 +4906,7 @@ export const getProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -6930,12 +4936,7 @@ export const getProjectsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsCatalogsBranchesProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Bulk import of multiple Products. Request processing may be synchronous. Non-existing items are created. Note that it is possible for a subset of the Products to be successfully updated. */
 export const importProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   ImportProjectsLocationsCatalogsBranchesProductsRequest,
@@ -6950,12 +4951,7 @@ export const importProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsCatalogsCompletionDataError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportProjectsLocationsCatalogsCompletionDataError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Bulk import of processed completion dataset. Request processing is asynchronous. Partial updating is not supported. The operation is successfully finished only after the imported suggestions are indexed successfully and ready for serving. The process takes hours. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature. */
 export const importProjectsLocationsCatalogsCompletionData: API.OperationMethod<
   ImportProjectsLocationsCatalogsCompletionDataRequest,
@@ -6970,12 +4966,7 @@ export const importProjectsLocationsCatalogsCompletionData: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsCatalogsUserEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportProjectsLocationsCatalogsUserEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Bulk import of User events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. `Operation.response` is of type `ImportResponse`. Note that it is possible for a subset of the items to be successfully inserted. `Operation.metadata` is of type `ImportMetadata`. */
 export const importProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   ImportProjectsLocationsCatalogsUserEventsRequest,
@@ -6990,10 +4981,7 @@ export const importProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCatalogsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the Catalogs associated with the project. */
 export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsRequest,
@@ -7006,16 +4994,10 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCatalogsBranchesProductsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | GcpOpError;
 /** Gets a list of Products. */
 export const listProjectsLocationsCatalogsBranchesProducts: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsBranchesProductsRequest,
@@ -7028,16 +5010,10 @@ export const listProjectsLocationsCatalogsBranchesProducts: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCatalogsControlsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCatalogsControlsError = NotFound | Forbidden | GcpOpError;
 /** Lists all Controls by their parent Catalog. */
 export const listProjectsLocationsCatalogsControls: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsControlsRequest,
@@ -7050,16 +5026,10 @@ export const listProjectsLocationsCatalogsControls: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCatalogsGenerativeQuestionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCatalogsGenerativeQuestionsError = NotFound | Forbidden | GcpOpError;
 /** Returns all questions for a given catalog. */
 export const listProjectsLocationsCatalogsGenerativeQuestions: API.OperationMethod<
   ListProjectsLocationsCatalogsGenerativeQuestionsRequest,
@@ -7074,10 +5044,7 @@ export const listProjectsLocationsCatalogsGenerativeQuestions: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsCatalogsModelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCatalogsModelsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the models linked to this event store. */
 export const listProjectsLocationsCatalogsModels: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsModelsRequest,
@@ -7090,16 +5057,10 @@ export const listProjectsLocationsCatalogsModels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCatalogsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCatalogsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCatalogsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsOperationsRequest,
@@ -7112,16 +5073,10 @@ export const listProjectsLocationsCatalogsOperations: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCatalogsServingConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCatalogsServingConfigsError = NotFound | Forbidden | GcpOpError;
 /** Lists all ServingConfigs linked to this catalog. */
 export const listProjectsLocationsCatalogsServingConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsServingConfigsRequest,
@@ -7134,16 +5089,10 @@ export const listProjectsLocationsCatalogsServingConfigs: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -7156,10 +5105,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsOperationsError = NotFound | Forbidden | GcpOpError;
@@ -7175,18 +5121,10 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the Catalogs. */
 export const patchProjectsLocationsCatalogs: API.OperationMethod<
   PatchProjectsLocationsCatalogsRequest,
@@ -7201,12 +5139,7 @@ export const patchProjectsLocationsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCatalogsBranchesProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a Product. */
 export const patchProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   PatchProjectsLocationsCatalogsBranchesProductsRequest,
@@ -7221,12 +5154,7 @@ export const patchProjectsLocationsCatalogsBranchesProducts: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCatalogsControlsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCatalogsControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a Control. Control cannot be set to a different oneof field, if so an INVALID_ARGUMENT is returned. If the Control to update does not exist, a NOT_FOUND error is returned. */
 export const patchProjectsLocationsCatalogsControls: API.OperationMethod<
   PatchProjectsLocationsCatalogsControlsRequest,
@@ -7241,12 +5169,7 @@ export const patchProjectsLocationsCatalogsControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCatalogsModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCatalogsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update of model metadata. Only fields that currently can be updated are: `filtering_option` and `periodic_tuning_state`. If other values are provided, this API method ignores them. */
 export const patchProjectsLocationsCatalogsModels: API.OperationMethod<
   PatchProjectsLocationsCatalogsModelsRequest,
@@ -7261,12 +5184,7 @@ export const patchProjectsLocationsCatalogsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCatalogsServingConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCatalogsServingConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a ServingConfig. */
 export const patchProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   PatchProjectsLocationsCatalogsServingConfigsRequest,
@@ -7281,12 +5199,7 @@ export const patchProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PauseProjectsLocationsCatalogsModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PauseProjectsLocationsCatalogsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Pauses the training of an existing model. */
 export const pauseProjectsLocationsCatalogsModels: API.OperationMethod<
   PauseProjectsLocationsCatalogsModelsRequest,
@@ -7301,12 +5214,7 @@ export const pauseProjectsLocationsCatalogsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PredictProjectsLocationsCatalogsPlacementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PredictProjectsLocationsCatalogsPlacementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Makes a recommendation prediction. */
 export const predictProjectsLocationsCatalogsPlacements: API.OperationMethod<
   PredictProjectsLocationsCatalogsPlacementsRequest,
@@ -7321,12 +5229,7 @@ export const predictProjectsLocationsCatalogsPlacements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PredictProjectsLocationsCatalogsServingConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PredictProjectsLocationsCatalogsServingConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Makes a recommendation prediction. */
 export const predictProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   PredictProjectsLocationsCatalogsServingConfigsRequest,
@@ -7341,12 +5244,7 @@ export const predictProjectsLocationsCatalogsServingConfigs: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type PurgeProjectsLocationsCatalogsBranchesProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PurgeProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Permanently deletes all selected Products under a branch. This process is asynchronous. If the request is valid, the removal will be enqueued and processed offline. Depending on the number of Products, this operation could take hours to complete. Before the operation completes, some Products may still be returned by ProductService.GetProduct or ProductService.ListProducts. Depending on the number of Products, this operation could take hours to complete. To get a sample of Products that would be deleted, set PurgeProductsRequest.force to false. */
 export const purgeProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   PurgeProjectsLocationsCatalogsBranchesProductsRequest,
@@ -7361,12 +5259,7 @@ export const purgeProjectsLocationsCatalogsBranchesProducts: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type PurgeProjectsLocationsCatalogsUserEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PurgeProjectsLocationsCatalogsUserEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes permanently all user events specified by the filter provided. Depending on the number of events specified by the filter, this operation could take hours or days to complete. To test a filter, use the list command first. */
 export const purgeProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   PurgeProjectsLocationsCatalogsUserEventsRequest,
@@ -7381,12 +5274,7 @@ export const purgeProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RejoinProjectsLocationsCatalogsUserEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RejoinProjectsLocationsCatalogsUserEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts a user-event rejoin operation with latest product catalog. Events are not annotated with detailed product information for products that are missing from the catalog when the user event is ingested. These events are stored as unjoined events with limited usage on training and serving. You can use this method to start a join operation on specified events with the latest version of product catalog. You can also use this method to correct events joined with the wrong product catalog. A rejoin operation can take hours or days to complete. */
 export const rejoinProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   RejoinProjectsLocationsCatalogsUserEventsRequest,
@@ -7401,8 +5289,7 @@ export const rejoinProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes the specified CatalogAttribute from the AttributesConfig. If the CatalogAttribute to remove does not exist, a NOT_FOUND error is returned. */
 export const removeCatalogAttributeProjectsLocationsCatalogsAttributesConfig: API.OperationMethod<
   RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest,
@@ -7417,12 +5304,7 @@ export const removeCatalogAttributeProjectsLocationsCatalogsAttributesConfig: AP
   retry: Retry.Retry,
 }));
 
-export type RemoveControlProjectsLocationsCatalogsServingConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemoveControlProjectsLocationsCatalogsServingConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Disables a Control on the specified ServingConfig. The control is removed from the ServingConfig. Returns a NOT_FOUND error if the Control is not enabled for the ServingConfig. */
 export const removeControlProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   RemoveControlProjectsLocationsCatalogsServingConfigsRequest,
@@ -7437,8 +5319,7 @@ export const removeControlProjectsLocationsCatalogsServingConfigs: API.Operation
   retry: Retry.Retry,
 }));
 
-export type RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** We recommend that you use the ProductService.RemoveLocalInventories method instead of the ProductService.RemoveFulfillmentPlaces method. ProductService.RemoveLocalInventories achieves the same results but provides more fine-grained control over ingesting local inventory data. Incrementally removes place IDs from a Product.fulfillment_info.place_ids. This process is asynchronous and does not require the Product to exist before updating fulfillment information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, the removed place IDs are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated with the stale updates will not be marked as done until being obsolete. */
 export const removeFulfillmentPlacesProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest,
@@ -7446,16 +5327,14 @@ export const removeFulfillmentPlacesProjectsLocationsCatalogsBranchesProducts: A
   RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest,
+  input: RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest,
   output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Remove local inventory information for a Product at a list of places at a removal timestamp. This process is asynchronous. If the request is valid, the removal will be enqueued and processed downstream. As a consequence, when a response is returned, removals are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. Local inventory information can only be removed using this method. ProductService.CreateProduct and ProductService.UpdateProduct has no effect on local inventories. The returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated with the stale updates will not be marked as done until being obsolete. */
 export const removeLocalInventoriesProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest,
@@ -7470,8 +5349,7 @@ export const removeLocalInventoriesProjectsLocationsCatalogsBranchesProducts: AP
   retry: Retry.Retry,
 }));
 
-export type ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Replaces the specified CatalogAttribute in the AttributesConfig by updating the catalog attribute with the same CatalogAttribute.key. If the CatalogAttribute to replace does not exist, a NOT_FOUND error is returned. */
 export const replaceCatalogAttributeProjectsLocationsCatalogsAttributesConfig: API.OperationMethod<
   ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest,
@@ -7479,20 +5357,14 @@ export const replaceCatalogAttributeProjectsLocationsCatalogsAttributesConfig: A
   ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest,
+  input: ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest,
   output: GoogleCloudRetailV2betaAttributesConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type ResumeProjectsLocationsCatalogsModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResumeProjectsLocationsCatalogsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resumes the training of an existing model. */
 export const resumeProjectsLocationsCatalogsModels: API.OperationMethod<
   ResumeProjectsLocationsCatalogsModelsRequest,
@@ -7507,12 +5379,7 @@ export const resumeProjectsLocationsCatalogsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchProjectsLocationsCatalogsPlacementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SearchProjectsLocationsCatalogsPlacementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Performs a search. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature. */
 export const searchProjectsLocationsCatalogsPlacements: API.OperationMethod<
   SearchProjectsLocationsCatalogsPlacementsRequest,
@@ -7527,12 +5394,7 @@ export const searchProjectsLocationsCatalogsPlacements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchProjectsLocationsCatalogsServingConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SearchProjectsLocationsCatalogsServingConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Performs a search. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature. */
 export const searchProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   SearchProjectsLocationsCatalogsServingConfigsRequest,
@@ -7547,12 +5409,7 @@ export const searchProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetDefaultBranchProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetDefaultBranchProjectsLocationsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Set a specified branch id as default branch. API methods such as SearchService.Search, ProductService.GetProduct, ProductService.ListProducts will treat requests using "default_branch" to the actual branch id set as default. For example, if `projects/*\/locations/*\/catalogs/*\/branches/1` is set as default, setting SearchRequest.branch to `projects/*\/locations/*\/catalogs/*\/branches/default_branch` is equivalent to setting SearchRequest.branch to `projects/*\/locations/*\/catalogs/*\/branches/1`. Using multiple branches can be useful when developers would like to have a staging branch to test and verify for future usage. When it becomes ready, developers switch on the staging branch using this API while keeping using `projects/*\/locations/*\/catalogs/*\/branches/default_branch` as SearchRequest.branch to route the traffic to this staging branch. CAUTION: If you have live predict/search traffic, switching the default branch could potentially cause outages if the ID space of the new branch is very different from the old one. More specifically: * PredictionService will only return product IDs from branch {newBranch}. * SearchService will only return product IDs from branch {newBranch} (if branch is not explicitly set). * UserEventService will only join events with products from branch {newBranch}. */
 export const setDefaultBranchProjectsLocationsCatalogs: API.OperationMethod<
   SetDefaultBranchProjectsLocationsCatalogsRequest,
@@ -7567,12 +5424,7 @@ export const setDefaultBranchProjectsLocationsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetInventoryProjectsLocationsCatalogsBranchesProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetInventoryProjectsLocationsCatalogsBranchesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates inventory information for a Product while respecting the last update timestamps of each inventory field. This process is asynchronous and does not require the Product to exist before updating fulfillment information. If the request is valid, the update is enqueued and processed downstream. As a consequence, when a response is returned, updates are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. When inventory is updated with ProductService.CreateProduct and ProductService.UpdateProduct, the specified inventory field value(s) overwrite any existing value(s) while ignoring the last update time for this field. Furthermore, the last update times for the specified inventory fields are overwritten by the times of the ProductService.CreateProduct or ProductService.UpdateProduct request. If no inventory fields are set in CreateProductRequest.product, then any pre-existing inventory information for this product is used. If no inventory fields are set in SetInventoryRequest.set_mask, then any existing inventory information is preserved. Pre-existing inventory information can only be updated with ProductService.SetInventory, ProductService.AddFulfillmentPlaces, and ProductService.RemoveFulfillmentPlaces. The returned Operations is obsolete after one day, and the GetOperation API returns `NOT_FOUND` afterwards. If conflicting updates are issued, the Operations associated with the stale updates are not marked as done until they are obsolete. */
 export const setInventoryProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   SetInventoryProjectsLocationsCatalogsBranchesProductsRequest,
@@ -7587,12 +5439,7 @@ export const setInventoryProjectsLocationsCatalogsBranchesProducts: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type TuneProjectsLocationsCatalogsModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TuneProjectsLocationsCatalogsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Tunes an existing model. */
 export const tuneProjectsLocationsCatalogsModels: API.OperationMethod<
   TuneProjectsLocationsCatalogsModelsRequest,
@@ -7607,12 +5454,7 @@ export const tuneProjectsLocationsCatalogsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAlertConfigProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAlertConfigProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update the alert config of the requested project. */
 export const updateAlertConfigProjects: API.OperationMethod<
   UpdateAlertConfigProjectsRequest,
@@ -7627,12 +5469,7 @@ export const updateAlertConfigProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAttributesConfigProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAttributesConfigProjectsLocationsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the AttributesConfig. The catalog attributes in the request will be updated in the catalog, or inserted if they do not exist. Existing catalog attributes not included in the request will remain unchanged. Attributes that are assigned to products, but do not exist at the catalog level, are always included in the response. The product attribute is assigned default values for missing catalog attribute fields, e.g., searchable and dynamic facetable options. */
 export const updateAttributesConfigProjectsLocationsCatalogs: API.OperationMethod<
   UpdateAttributesConfigProjectsLocationsCatalogsRequest,
@@ -7647,12 +5484,7 @@ export const updateAttributesConfigProjectsLocationsCatalogs: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UpdateCompletionConfigProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCompletionConfigProjectsLocationsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the CompletionConfigs. */
 export const updateCompletionConfigProjectsLocationsCatalogs: API.OperationMethod<
   UpdateCompletionConfigProjectsLocationsCatalogsRequest,
@@ -7667,8 +5499,7 @@ export const updateCompletionConfigProjectsLocationsCatalogs: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the conversational search customization config for a given catalog. */
 export const updateConversationalSearchCustomizationConfigProjectsLocationsCatalogs: API.OperationMethod<
   UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest,
@@ -7676,20 +5507,14 @@ export const updateConversationalSearchCustomizationConfigProjectsLocationsCatal
   UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest,
+  input: UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest,
   output: GoogleCloudRetailV2betaConversationalSearchCustomizationConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Manages overal generative question feature state -- enables toggling feature on and off. */
 export const updateGenerativeQuestionFeatureProjectsLocationsCatalogs: API.OperationMethod<
   UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest,
@@ -7704,12 +5529,7 @@ export const updateGenerativeQuestionFeatureProjectsLocationsCatalogs: API.Opera
   retry: Retry.Retry,
 }));
 
-export type UpdateGenerativeQuestionProjectsLocationsCatalogsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateGenerativeQuestionProjectsLocationsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Allows management of individual questions. */
 export const updateGenerativeQuestionProjectsLocationsCatalogs: API.OperationMethod<
   UpdateGenerativeQuestionProjectsLocationsCatalogsRequest,
@@ -7724,12 +5544,7 @@ export const updateGenerativeQuestionProjectsLocationsCatalogs: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type WriteProjectsLocationsCatalogsUserEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WriteProjectsLocationsCatalogsUserEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Writes a single user event. */
 export const writeProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   WriteProjectsLocationsCatalogsUserEventsRequest,
@@ -7743,3 +5558,4 @@ export const writeProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

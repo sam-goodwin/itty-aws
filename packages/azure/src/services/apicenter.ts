@@ -93,8 +93,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -102,8 +101,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -240,7 +238,7 @@ export const ApiDefinitionsExportSpecificationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ApiDefinitionsExportSpecificationRequest>;
 
 /** Result format for exported Api spec */
-export type ApiSpecExportResultFormat = "inline" | "link" | (string & {});
+export type ApiSpecExportResultFormat = "inline" | "link";
 export const ApiSpecExportResultFormat = /*@__PURE__*/ S.String;
 
 /** The API specification export result. */
@@ -321,7 +319,7 @@ export const ApiDefinitionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiDefinitionsGetResponse>;
 
 /** Source format for imported Api spec */
-export type ApiSpecImportSourceFormat = "inline" | "link" | (string & {});
+export type ApiSpecImportSourceFormat = "inline" | "link";
 export const ApiSpecImportSourceFormat = /*@__PURE__*/ S.String;
 
 /** API specification details. */
@@ -358,7 +356,7 @@ export interface ApiDefinitionsImportSpecificationRequest {
   /** Value of the API specification source. */
   value?: string;
   /** Format of the API specification source. */
-  format?: ApiSpecImportSourceFormat;
+  format?: ApiSpecImportSourceFormat | (string & {});
   /** API specification details. */
   specification?: ApiSpecImportRequestSpecification;
 }
@@ -482,8 +480,7 @@ export type ApiKind =
   | "grpc"
   | "soap"
   | "webhook"
-  | "websocket"
-  | (string & {});
+  | "websocket";
 export const ApiKind = /*@__PURE__*/ S.String;
 
 /** The stage of the Api development lifecycle */
@@ -494,8 +491,7 @@ export type LifecycleStage =
   | "preview"
   | "production"
   | "deprecated"
-  | "retired"
-  | (string & {});
+  | "retired";
 export const LifecycleStage = /*@__PURE__*/ S.String;
 
 /** Terms of service for the API. */
@@ -1092,7 +1088,7 @@ export const ApiVersionListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiVersionListResult>;
 
 /** State of the Deployment */
-export type DeploymentState = "active" | "inactive" | (string & {});
+export type DeploymentState = "active" | "inactive";
 export const DeploymentState = /*@__PURE__*/ S.String;
 
 /** Base runtime URLs for this deployment. */
@@ -1389,8 +1385,7 @@ export type EnvironmentKind =
   | "development"
   | "testing"
   | "staging"
-  | "production"
-  | (string & {});
+  | "production";
 export const EnvironmentKind = /*@__PURE__*/ S.String;
 
 /** The type of environment server */
@@ -1401,8 +1396,7 @@ export type EnvironmentServerType =
   | "AWS API Gateway"
   | "Kong API Gateway"
   | "Kubernetes"
-  | "MuleSoft API Management"
-  | (string & {});
+  | "MuleSoft API Management";
 export const EnvironmentServerType = /*@__PURE__*/ S.String;
 
 /** The location of the management portal */
@@ -1703,11 +1697,7 @@ export const EnvironmentListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentListResult>;
 
 /** Assignment entity for Metadata */
-export type MetadataAssignmentEntity =
-  | "api"
-  | "environment"
-  | "deployment"
-  | (string & {});
+export type MetadataAssignmentEntity = "api" | "environment" | "deployment";
 export const MetadataAssignmentEntity = /*@__PURE__*/ S.String;
 
 /** Assignment metadata */
@@ -2006,11 +1996,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2079,8 +2069,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -2102,7 +2091,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ServicesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ServicesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -2162,11 +2151,7 @@ export const ServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
 
 /** The provisioning state of the resource */
-export type ProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
+export type ProvisioningState = "Succeeded" | "Failed" | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of the service. */
@@ -2301,7 +2286,7 @@ export interface ServicesExportMetadataSchemaRequest {
   /** The name of Azure API Center service. */
   serviceName: string;
   /** An entity the metadata schema is requested for. */
-  assignedTo?: MetadataAssignmentEntity;
+  assignedTo?: MetadataAssignmentEntity | (string & {});
 }
 export const ServicesExportMetadataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2322,7 +2307,7 @@ export const ServicesExportMetadataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesExportMetadataSchemaRequest>;
 
 /** The format for schema export */
-export type MetadataSchemaExportFormat = "inline" | "link" | (string & {});
+export type MetadataSchemaExportFormat = "inline" | "link";
 export const MetadataSchemaExportFormat = /*@__PURE__*/ S.String;
 
 /** The metadata schema export result. */
@@ -2550,7 +2535,7 @@ export const ServicesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ServicesUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ServicesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>

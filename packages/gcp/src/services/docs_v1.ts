@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Deletes a Header from the document. */
@@ -68,13 +68,11 @@ export interface DeleteHeaderRequest {
   tabId?: string;
 }
 export const DeleteHeaderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headerId: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteHeaderRequest",
-}) as any as S.Schema<DeleteHeaderRequest>;
+S.Struct({
+  "headerId": S.optional(S.String),
+  "tabId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteHeaderRequest" }) as any as S.Schema<DeleteHeaderRequest>;
 
 /** Deletes a PositionedObject from the document. */
 export interface DeletePositionedObjectRequest {
@@ -84,13 +82,11 @@ export interface DeletePositionedObjectRequest {
   tabId?: string;
 }
 export const DeletePositionedObjectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeletePositionedObjectRequest",
-}) as any as S.Schema<DeletePositionedObjectRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "tabId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeletePositionedObjectRequest" }) as any as S.Schema<DeletePositionedObjectRequest>;
 
 /** A particular location in the document. */
 export interface Location {
@@ -102,11 +98,11 @@ export interface Location {
   index?: number;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    segmentId: S.optional(S.String),
-    tabId: S.optional(S.String),
-    index: S.optional(S.Number),
-  }),
+S.Struct({
+  "segmentId": S.optional(S.String),
+  "tabId": S.optional(S.String),
+  "index": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 /** Location at the end of a body, header, footer or footnote. The location is immediately before the last newline in the document segment. */
@@ -117,13 +113,11 @@ export interface EndOfSegmentLocation {
   tabId?: string;
 }
 export const EndOfSegmentLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    segmentId: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EndOfSegmentLocation",
-}) as any as S.Schema<EndOfSegmentLocation>;
+S.Struct({
+  "segmentId": S.optional(S.String),
+  "tabId": S.optional(S.String),
+}),
+).annotate({ identifier: "EndOfSegmentLocation" }) as any as S.Schema<EndOfSegmentLocation>;
 
 /** Inserts a page break followed by a newline at the specified location. */
 export interface InsertPageBreakRequest {
@@ -133,13 +127,11 @@ export interface InsertPageBreakRequest {
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
 export const InsertPageBreakRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-  }),
-).annotate({
-  identifier: "InsertPageBreakRequest",
-}) as any as S.Schema<InsertPageBreakRequest>;
+S.Struct({
+  "location": S.optional(Location),
+  "endOfSegmentLocation": S.optional(EndOfSegmentLocation),
+}),
+).annotate({ identifier: "InsertPageBreakRequest" }) as any as S.Schema<InsertPageBreakRequest>;
 
 /** Updates the number of pinned table header rows in a table. */
 export interface PinTableHeaderRowsRequest {
@@ -149,13 +141,11 @@ export interface PinTableHeaderRowsRequest {
   pinnedHeaderRowsCount?: number;
 }
 export const PinTableHeaderRowsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableStartLocation: S.optional(Location),
-    pinnedHeaderRowsCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PinTableHeaderRowsRequest",
-}) as any as S.Schema<PinTableHeaderRowsRequest>;
+S.Struct({
+  "tableStartLocation": S.optional(Location),
+  "pinnedHeaderRowsCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "PinTableHeaderRowsRequest" }) as any as S.Schema<PinTableHeaderRowsRequest>;
 
 /** Specifies a contiguous range of text. */
 export interface Range {
@@ -169,12 +159,12 @@ export interface Range {
   endIndex?: number;
 }
 export const Range = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    segmentId: S.optional(S.String),
-    tabId: S.optional(S.String),
-    startIndex: S.optional(S.Number),
-    endIndex: S.optional(S.Number),
-  }),
+S.Struct({
+  "segmentId": S.optional(S.String),
+  "tabId": S.optional(S.String),
+  "startIndex": S.optional(S.Number),
+  "endIndex": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
 
 /** Creates a NamedRange referencing the given range. */
@@ -185,18 +175,14 @@ export interface CreateNamedRangeRequest {
   range?: Range;
 }
 export const CreateNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "CreateNamedRangeRequest",
-}) as any as S.Schema<CreateNamedRangeRequest>;
+S.Struct({
+  "name": S.optional(S.String),
+  "range": S.optional(Range),
+}),
+).annotate({ identifier: "CreateNamedRangeRequest" }) as any as S.Schema<CreateNamedRangeRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A criteria that specifies in which tabs a request executes. */
 export interface TabsCriteria {
@@ -204,9 +190,9 @@ export interface TabsCriteria {
   tabIds?: StringList;
 }
 export const TabsCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabIds: S.optional(StringList),
-  }),
+S.Struct({
+  "tabIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "TabsCriteria" }) as any as S.Schema<TabsCriteria>;
 
 /** Deletes a NamedRange. */
@@ -219,16 +205,14 @@ export interface DeleteNamedRangeRequest {
   name?: string;
 }
 export const DeleteNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabsCriteria: S.optional(TabsCriteria),
-    namedRangeId: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteNamedRangeRequest",
-}) as any as S.Schema<DeleteNamedRangeRequest>;
+S.Struct({
+  "tabsCriteria": S.optional(TabsCriteria),
+  "namedRangeId": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteNamedRangeRequest" }) as any as S.Schema<DeleteNamedRangeRequest>;
 
-export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "PT" | (string & {});
+export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "PT";
 export const DimensionUnitEnum = /*@__PURE__*/ S.String;
 
 /** A magnitude in a single direction in the specified units. */
@@ -239,10 +223,10 @@ export interface Dimension {
   unit?: DimensionUnitEnum;
 }
 export const Dimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    magnitude: S.optional(S.Number),
-    unit: S.optional(DimensionUnitEnum),
-  }),
+S.Struct({
+  "magnitude": S.optional(S.Number),
+  "unit": S.optional(DimensionUnitEnum),
+}),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** A width and height. */
@@ -253,17 +237,13 @@ export interface Size {
   height?: Dimension;
 }
 export const Size = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(Dimension),
-    height: S.optional(Dimension),
-  }),
+S.Struct({
+  "width": S.optional(Dimension),
+  "height": S.optional(Dimension),
+}),
 ).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
 
-export type DocumentFormatDocumentModeEnum =
-  | "DOCUMENT_MODE_UNSPECIFIED"
-  | "PAGES"
-  | "PAGELESS"
-  | (string & {});
+export type DocumentFormatDocumentModeEnum = "DOCUMENT_MODE_UNSPECIFIED" | "PAGES" | "PAGELESS";
 export const DocumentFormatDocumentModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents document-level format settings. */
@@ -272,9 +252,9 @@ export interface DocumentFormat {
   documentMode?: DocumentFormatDocumentModeEnum;
 }
 export const DocumentFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentMode: S.optional(DocumentFormatDocumentModeEnum),
-  }),
+S.Struct({
+  "documentMode": S.optional(DocumentFormatDocumentModeEnum),
+}),
 ).annotate({ identifier: "DocumentFormat" }) as any as S.Schema<DocumentFormat>;
 
 /** An RGB color. */
@@ -287,11 +267,11 @@ export interface RgbColor {
   red?: number;
 }
 export const RgbColor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    green: S.optional(S.Number),
-    blue: S.optional(S.Number),
-    red: S.optional(S.Number),
-  }),
+S.Struct({
+  "green": S.optional(S.Number),
+  "blue": S.optional(S.Number),
+  "red": S.optional(S.Number),
+}),
 ).annotate({ identifier: "RgbColor" }) as any as S.Schema<RgbColor>;
 
 /** A solid color. */
@@ -300,9 +280,9 @@ export interface Color {
   rgbColor?: RgbColor;
 }
 export const Color = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rgbColor: S.optional(RgbColor),
-  }),
+S.Struct({
+  "rgbColor": S.optional(RgbColor),
+}),
 ).annotate({ identifier: "Color" }) as any as S.Schema<Color>;
 
 /** A color that can either be fully opaque or fully transparent. */
@@ -311,9 +291,9 @@ export interface OptionalColor {
   color?: Color;
 }
 export const OptionalColor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color: S.optional(Color),
-  }),
+S.Struct({
+  "color": S.optional(Color),
+}),
 ).annotate({ identifier: "OptionalColor" }) as any as S.Schema<OptionalColor>;
 
 /** Represents the background of a document. */
@@ -322,9 +302,9 @@ export interface Background {
   color?: OptionalColor;
 }
 export const Background = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color: S.optional(OptionalColor),
-  }),
+S.Struct({
+  "color": S.optional(OptionalColor),
+}),
 ).annotate({ identifier: "Background" }) as any as S.Schema<Background>;
 
 /** The style of the document. */
@@ -371,28 +351,28 @@ export interface DocumentStyle {
   background?: Background;
 }
 export const DocumentStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstPageFooterId: S.optional(S.String),
-    marginTop: S.optional(Dimension),
-    evenPageHeaderId: S.optional(S.String),
-    marginFooter: S.optional(Dimension),
-    marginBottom: S.optional(Dimension),
-    flipPageOrientation: S.optional(S.Boolean),
-    firstPageHeaderId: S.optional(S.String),
-    pageSize: S.optional(Size),
-    defaultHeaderId: S.optional(S.String),
-    useCustomHeaderFooterMargins: S.optional(S.Boolean),
-    useFirstPageHeaderFooter: S.optional(S.Boolean),
-    defaultFooterId: S.optional(S.String),
-    useEvenPageHeaderFooter: S.optional(S.Boolean),
-    marginHeader: S.optional(Dimension),
-    pageNumberStart: S.optional(S.Number),
-    evenPageFooterId: S.optional(S.String),
-    marginRight: S.optional(Dimension),
-    documentFormat: S.optional(DocumentFormat),
-    marginLeft: S.optional(Dimension),
-    background: S.optional(Background),
-  }),
+S.Struct({
+  "firstPageFooterId": S.optional(S.String),
+  "marginTop": S.optional(Dimension),
+  "evenPageHeaderId": S.optional(S.String),
+  "marginFooter": S.optional(Dimension),
+  "marginBottom": S.optional(Dimension),
+  "flipPageOrientation": S.optional(S.Boolean),
+  "firstPageHeaderId": S.optional(S.String),
+  "pageSize": S.optional(Size),
+  "defaultHeaderId": S.optional(S.String),
+  "useCustomHeaderFooterMargins": S.optional(S.Boolean),
+  "useFirstPageHeaderFooter": S.optional(S.Boolean),
+  "defaultFooterId": S.optional(S.String),
+  "useEvenPageHeaderFooter": S.optional(S.Boolean),
+  "marginHeader": S.optional(Dimension),
+  "pageNumberStart": S.optional(S.Number),
+  "evenPageFooterId": S.optional(S.String),
+  "marginRight": S.optional(Dimension),
+  "documentFormat": S.optional(DocumentFormat),
+  "marginLeft": S.optional(Dimension),
+  "background": S.optional(Background),
+}),
 ).annotate({ identifier: "DocumentStyle" }) as any as S.Schema<DocumentStyle>;
 
 /** Updates the DocumentStyle. */
@@ -405,20 +385,14 @@ export interface UpdateDocumentStyleRequest {
   tabId?: string;
 }
 export const UpdateDocumentStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentStyle: S.optional(DocumentStyle),
-    fields: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDocumentStyleRequest",
-}) as any as S.Schema<UpdateDocumentStyleRequest>;
+S.Struct({
+  "documentStyle": S.optional(DocumentStyle),
+  "fields": S.optional(S.String),
+  "tabId": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateDocumentStyleRequest" }) as any as S.Schema<UpdateDocumentStyleRequest>;
 
-export type InsertSectionBreakRequestSectionTypeEnum =
-  | "SECTION_TYPE_UNSPECIFIED"
-  | "CONTINUOUS"
-  | "NEXT_PAGE"
-  | (string & {});
+export type InsertSectionBreakRequestSectionTypeEnum = "SECTION_TYPE_UNSPECIFIED" | "CONTINUOUS" | "NEXT_PAGE";
 export const InsertSectionBreakRequestSectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Inserts a section break at the given location. A newline character will be inserted before the section break. */
@@ -428,17 +402,15 @@ export interface InsertSectionBreakRequest {
   /** Inserts a newline and a section break at the end of the document body. Section breaks cannot be inserted inside a footnote, header or footer. Because section breaks can only be inserted inside the body, the segment ID field must be empty. */
   endOfSegmentLocation?: EndOfSegmentLocation;
   /** The type of section to insert. */
-  sectionType?: InsertSectionBreakRequestSectionTypeEnum;
+  sectionType?: InsertSectionBreakRequestSectionTypeEnum | (string & {});
 }
 export const InsertSectionBreakRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-    sectionType: S.optional(InsertSectionBreakRequestSectionTypeEnum),
-  }),
-).annotate({
-  identifier: "InsertSectionBreakRequest",
-}) as any as S.Schema<InsertSectionBreakRequest>;
+S.Struct({
+  "location": S.optional(Location),
+  "endOfSegmentLocation": S.optional(EndOfSegmentLocation),
+  "sectionType": S.optional(InsertSectionBreakRequestSectionTypeEnum),
+}),
+).annotate({ identifier: "InsertSectionBreakRequest" }) as any as S.Schema<InsertSectionBreakRequest>;
 
 /** Deletes bullets from all of the paragraphs that overlap with the given range. The nesting level of each paragraph will be visually preserved by adding indent to the start of the corresponding paragraph. */
 export interface DeleteParagraphBulletsRequest {
@@ -446,12 +418,10 @@ export interface DeleteParagraphBulletsRequest {
   range?: Range;
 }
 export const DeleteParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "DeleteParagraphBulletsRequest",
-}) as any as S.Schema<DeleteParagraphBulletsRequest>;
+S.Struct({
+  "range": S.optional(Range),
+}),
+).annotate({ identifier: "DeleteParagraphBulletsRequest" }) as any as S.Schema<DeleteParagraphBulletsRequest>;
 
 /** Inserts a table at the specified location. A newline character will be inserted before the inserted table. */
 export interface InsertTableRequest {
@@ -465,52 +435,30 @@ export interface InsertTableRequest {
   rows?: number;
 }
 export const InsertTableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-    columns: S.optional(S.Number),
-    rows: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InsertTableRequest",
-}) as any as S.Schema<InsertTableRequest>;
+S.Struct({
+  "location": S.optional(Location),
+  "endOfSegmentLocation": S.optional(EndOfSegmentLocation),
+  "columns": S.optional(S.Number),
+  "rows": S.optional(S.Number),
+}),
+).annotate({ identifier: "InsertTableRequest" }) as any as S.Schema<InsertTableRequest>;
 
-export type CreateParagraphBulletsRequestBulletPresetEnum =
-  | "BULLET_GLYPH_PRESET_UNSPECIFIED"
-  | "BULLET_DISC_CIRCLE_SQUARE"
-  | "BULLET_DIAMONDX_ARROW3D_SQUARE"
-  | "BULLET_CHECKBOX"
-  | "BULLET_ARROW_DIAMOND_DISC"
-  | "BULLET_STAR_CIRCLE_SQUARE"
-  | "BULLET_ARROW3D_CIRCLE_SQUARE"
-  | "BULLET_LEFTTRIANGLE_DIAMOND_DISC"
-  | "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE"
-  | "BULLET_DIAMOND_CIRCLE_SQUARE"
-  | "NUMBERED_DECIMAL_ALPHA_ROMAN"
-  | "NUMBERED_DECIMAL_ALPHA_ROMAN_PARENS"
-  | "NUMBERED_DECIMAL_NESTED"
-  | "NUMBERED_UPPERALPHA_ALPHA_ROMAN"
-  | "NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL"
-  | "NUMBERED_ZERODECIMAL_ALPHA_ROMAN"
-  | (string & {});
-export const CreateParagraphBulletsRequestBulletPresetEnum =
-  /*@__PURE__*/ S.String;
+export type CreateParagraphBulletsRequestBulletPresetEnum = "BULLET_GLYPH_PRESET_UNSPECIFIED" | "BULLET_DISC_CIRCLE_SQUARE" | "BULLET_DIAMONDX_ARROW3D_SQUARE" | "BULLET_CHECKBOX" | "BULLET_ARROW_DIAMOND_DISC" | "BULLET_STAR_CIRCLE_SQUARE" | "BULLET_ARROW3D_CIRCLE_SQUARE" | "BULLET_LEFTTRIANGLE_DIAMOND_DISC" | "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE" | "BULLET_DIAMOND_CIRCLE_SQUARE" | "NUMBERED_DECIMAL_ALPHA_ROMAN" | "NUMBERED_DECIMAL_ALPHA_ROMAN_PARENS" | "NUMBERED_DECIMAL_NESTED" | "NUMBERED_UPPERALPHA_ALPHA_ROMAN" | "NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL" | "NUMBERED_ZERODECIMAL_ALPHA_ROMAN";
+export const CreateParagraphBulletsRequestBulletPresetEnum = /*@__PURE__*/ S.String;
 
 /** Creates bullets for all of the paragraphs that overlap with the given range. The nesting level of each paragraph will be determined by counting leading tabs in front of each paragraph. To avoid excess space between the bullet and the corresponding paragraph, these leading tabs are removed by this request. This may change the indices of parts of the text. If the paragraph immediately before paragraphs being updated is in a list with a matching preset, the paragraphs being updated are added to that preceding list. */
 export interface CreateParagraphBulletsRequest {
   /** The kinds of bullet glyphs to be used. */
-  bulletPreset?: CreateParagraphBulletsRequestBulletPresetEnum;
+  bulletPreset?: CreateParagraphBulletsRequestBulletPresetEnum | (string & {});
   /** The range to apply the bullet preset to. */
   range?: Range;
 }
 export const CreateParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bulletPreset: S.optional(CreateParagraphBulletsRequestBulletPresetEnum),
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "CreateParagraphBulletsRequest",
-}) as any as S.Schema<CreateParagraphBulletsRequest>;
+S.Struct({
+  "bulletPreset": S.optional(CreateParagraphBulletsRequestBulletPresetEnum),
+  "range": S.optional(Range),
+}),
+).annotate({ identifier: "CreateParagraphBulletsRequest" }) as any as S.Schema<CreateParagraphBulletsRequest>;
 
 /** A reference to a heading in this document. */
 export interface HeadingLink {
@@ -520,10 +468,10 @@ export interface HeadingLink {
   tabId?: string;
 }
 export const HeadingLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "tabId": S.optional(S.String),
+}),
 ).annotate({ identifier: "HeadingLink" }) as any as S.Schema<HeadingLink>;
 
 /** A reference to a bookmark in this document. */
@@ -534,10 +482,10 @@ export interface BookmarkLink {
   tabId?: string;
 }
 export const BookmarkLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "tabId": S.optional(S.String),
+}),
 ).annotate({ identifier: "BookmarkLink" }) as any as S.Schema<BookmarkLink>;
 
 /** A reference to another portion of a document or an external URL resource. */
@@ -556,14 +504,14 @@ export interface Link {
   bookmarkId?: string;
 }
 export const Link = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    heading: S.optional(HeadingLink),
-    headingId: S.optional(S.String),
-    url: S.optional(S.String),
-    bookmark: S.optional(BookmarkLink),
-    tabId: S.optional(S.String),
-    bookmarkId: S.optional(S.String),
-  }),
+S.Struct({
+  "heading": S.optional(HeadingLink),
+  "headingId": S.optional(S.String),
+  "url": S.optional(S.String),
+  "bookmark": S.optional(BookmarkLink),
+  "tabId": S.optional(S.String),
+  "bookmarkId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 /** Represents a font family and weight of text. */
@@ -574,20 +522,13 @@ export interface WeightedFontFamily {
   weight?: number;
 }
 export const WeightedFontFamily = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fontFamily: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WeightedFontFamily",
-}) as any as S.Schema<WeightedFontFamily>;
+S.Struct({
+  "fontFamily": S.optional(S.String),
+  "weight": S.optional(S.Number),
+}),
+).annotate({ identifier: "WeightedFontFamily" }) as any as S.Schema<WeightedFontFamily>;
 
-export type TextStyleBaselineOffsetEnum =
-  | "BASELINE_OFFSET_UNSPECIFIED"
-  | "NONE"
-  | "SUPERSCRIPT"
-  | "SUBSCRIPT"
-  | (string & {});
+export type TextStyleBaselineOffsetEnum = "BASELINE_OFFSET_UNSPECIFIED" | "NONE" | "SUPERSCRIPT" | "SUBSCRIPT";
 export const TextStyleBaselineOffsetEnum = /*@__PURE__*/ S.String;
 
 /** Represents the styling that can be applied to text. Inherited text styles are represented as unset fields in this message. A text style's parent depends on where the text style is defined: * The TextStyle of text in a Paragraph inherits from the paragraph's corresponding named style type. * The TextStyle on a named style inherits from the normal text named style. * The TextStyle of the normal text named style inherits from the default text style in the Docs editor. * The TextStyle on a Paragraph element that's contained in a table may inherit its text style from the table style. If the text style does not inherit from a parent, unsetting fields will revert the style to a value matching the defaults in the Docs editor. */
@@ -616,19 +557,19 @@ export interface TextStyle {
   smallCaps?: boolean;
 }
 export const TextStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fontSize: S.optional(Dimension),
-    bold: S.optional(S.Boolean),
-    link: S.optional(Link),
-    underline: S.optional(S.Boolean),
-    strikethrough: S.optional(S.Boolean),
-    weightedFontFamily: S.optional(WeightedFontFamily),
-    baselineOffset: S.optional(TextStyleBaselineOffsetEnum),
-    italic: S.optional(S.Boolean),
-    backgroundColor: S.optional(OptionalColor),
-    foregroundColor: S.optional(OptionalColor),
-    smallCaps: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "fontSize": S.optional(Dimension),
+  "bold": S.optional(S.Boolean),
+  "link": S.optional(Link),
+  "underline": S.optional(S.Boolean),
+  "strikethrough": S.optional(S.Boolean),
+  "weightedFontFamily": S.optional(WeightedFontFamily),
+  "baselineOffset": S.optional(TextStyleBaselineOffsetEnum),
+  "italic": S.optional(S.Boolean),
+  "backgroundColor": S.optional(OptionalColor),
+  "foregroundColor": S.optional(OptionalColor),
+  "smallCaps": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "TextStyle" }) as any as S.Schema<TextStyle>;
 
 /** Update the styling of text. */
@@ -641,14 +582,12 @@ export interface UpdateTextStyleRequest {
   textStyle?: TextStyle;
 }
 export const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(S.String),
-    range: S.optional(Range),
-    textStyle: S.optional(TextStyle),
-  }),
-).annotate({
-  identifier: "UpdateTextStyleRequest",
-}) as any as S.Schema<UpdateTextStyleRequest>;
+S.Struct({
+  "fields": S.optional(S.String),
+  "range": S.optional(Range),
+  "textStyle": S.optional(TextStyle),
+}),
+).annotate({ identifier: "UpdateTextStyleRequest" }) as any as S.Schema<UpdateTextStyleRequest>;
 
 /** Location of a single cell within a table. */
 export interface TableCellLocation {
@@ -660,14 +599,12 @@ export interface TableCellLocation {
   tableStartLocation?: Location;
 }
 export const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowIndex: S.optional(S.Number),
-    columnIndex: S.optional(S.Number),
-    tableStartLocation: S.optional(Location),
-  }),
-).annotate({
-  identifier: "TableCellLocation",
-}) as any as S.Schema<TableCellLocation>;
+S.Struct({
+  "rowIndex": S.optional(S.Number),
+  "columnIndex": S.optional(S.Number),
+  "tableStartLocation": S.optional(Location),
+}),
+).annotate({ identifier: "TableCellLocation" }) as any as S.Schema<TableCellLocation>;
 
 /** A table range represents a reference to a subset of a table. It's important to note that the cells specified by a table range do not necessarily form a rectangle. For example, let's say we have a 3 x 3 table where all the cells of the last row are merged together. The table looks like this: [ ] A table range with table cell location = (table_start_location, row = 0, column = 0), row span = 3 and column span = 2 specifies the following cells: x x [ x x x ] */
 export interface TableRange {
@@ -679,11 +616,11 @@ export interface TableRange {
   columnSpan?: number;
 }
 export const TableRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellLocation: S.optional(TableCellLocation),
-    rowSpan: S.optional(S.Number),
-    columnSpan: S.optional(S.Number),
-  }),
+S.Struct({
+  "tableCellLocation": S.optional(TableCellLocation),
+  "rowSpan": S.optional(S.Number),
+  "columnSpan": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TableRange" }) as any as S.Schema<TableRange>;
 
 /** Unmerges cells in a Table. */
@@ -692,29 +629,15 @@ export interface UnmergeTableCellsRequest {
   tableRange?: TableRange;
 }
 export const UnmergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({
-  identifier: "UnmergeTableCellsRequest",
-}) as any as S.Schema<UnmergeTableCellsRequest>;
+S.Struct({
+  "tableRange": S.optional(TableRange),
+}),
+).annotate({ identifier: "UnmergeTableCellsRequest" }) as any as S.Schema<UnmergeTableCellsRequest>;
 
-export type DateElementPropertiesTimeFormatEnum =
-  | "TIME_FORMAT_UNSPECIFIED"
-  | "TIME_FORMAT_DISABLED"
-  | "TIME_FORMAT_HOUR_MINUTE"
-  | "TIME_FORMAT_HOUR_MINUTE_TIMEZONE"
-  | (string & {});
+export type DateElementPropertiesTimeFormatEnum = "TIME_FORMAT_UNSPECIFIED" | "TIME_FORMAT_DISABLED" | "TIME_FORMAT_HOUR_MINUTE" | "TIME_FORMAT_HOUR_MINUTE_TIMEZONE";
 export const DateElementPropertiesTimeFormatEnum = /*@__PURE__*/ S.String;
 
-export type DateElementPropertiesDateFormatEnum =
-  | "DATE_FORMAT_UNSPECIFIED"
-  | "DATE_FORMAT_CUSTOM"
-  | "DATE_FORMAT_MONTH_DAY_ABBREVIATED"
-  | "DATE_FORMAT_MONTH_DAY_FULL"
-  | "DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED"
-  | "DATE_FORMAT_ISO8601"
-  | (string & {});
+export type DateElementPropertiesDateFormatEnum = "DATE_FORMAT_UNSPECIFIED" | "DATE_FORMAT_CUSTOM" | "DATE_FORMAT_MONTH_DAY_ABBREVIATED" | "DATE_FORMAT_MONTH_DAY_FULL" | "DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED" | "DATE_FORMAT_ISO8601";
 export const DateElementPropertiesDateFormatEnum = /*@__PURE__*/ S.String;
 
 /** Properties of a DateElement. */
@@ -733,17 +656,15 @@ export interface DateElementProperties {
   locale?: string;
 }
 export const DateElementProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayText: S.optional(S.String),
-    timestamp: S.optional(S.String),
-    timeFormat: S.optional(DateElementPropertiesTimeFormatEnum),
-    timeZoneId: S.optional(S.String),
-    dateFormat: S.optional(DateElementPropertiesDateFormatEnum),
-    locale: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DateElementProperties",
-}) as any as S.Schema<DateElementProperties>;
+S.Struct({
+  "displayText": S.optional(S.String),
+  "timestamp": S.optional(S.String),
+  "timeFormat": S.optional(DateElementPropertiesTimeFormatEnum),
+  "timeZoneId": S.optional(S.String),
+  "dateFormat": S.optional(DateElementPropertiesDateFormatEnum),
+  "locale": S.optional(S.String),
+}),
+).annotate({ identifier: "DateElementProperties" }) as any as S.Schema<DateElementProperties>;
 
 /** Inserts a date at the specified location. */
 export interface InsertDateRequest {
@@ -755,14 +676,12 @@ export interface InsertDateRequest {
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
 export const InsertDateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateElementProperties: S.optional(DateElementProperties),
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-  }),
-).annotate({
-  identifier: "InsertDateRequest",
-}) as any as S.Schema<InsertDateRequest>;
+S.Struct({
+  "dateElementProperties": S.optional(DateElementProperties),
+  "location": S.optional(Location),
+  "endOfSegmentLocation": S.optional(EndOfSegmentLocation),
+}),
+).annotate({ identifier: "InsertDateRequest" }) as any as S.Schema<InsertDateRequest>;
 
 /** Inserts text at the specified location. */
 export interface InsertTextRequest {
@@ -774,14 +693,12 @@ export interface InsertTextRequest {
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
 export const InsertTextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-  }),
-).annotate({
-  identifier: "InsertTextRequest",
-}) as any as S.Schema<InsertTextRequest>;
+S.Struct({
+  "text": S.optional(S.String),
+  "location": S.optional(Location),
+  "endOfSegmentLocation": S.optional(EndOfSegmentLocation),
+}),
+).annotate({ identifier: "InsertTextRequest" }) as any as S.Schema<InsertTextRequest>;
 
 /** Inserts an InlineObject containing an image at the given location. */
 export interface InsertInlineImageRequest {
@@ -795,22 +712,15 @@ export interface InsertInlineImageRequest {
   uri?: string;
 }
 export const InsertInlineImageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-    objectSize: S.optional(Size),
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsertInlineImageRequest",
-}) as any as S.Schema<InsertInlineImageRequest>;
+S.Struct({
+  "location": S.optional(Location),
+  "endOfSegmentLocation": S.optional(EndOfSegmentLocation),
+  "objectSize": S.optional(Size),
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "InsertInlineImageRequest" }) as any as S.Schema<InsertInlineImageRequest>;
 
-export type TableCellBorderDashStyleEnum =
-  | "DASH_STYLE_UNSPECIFIED"
-  | "SOLID"
-  | "DOT"
-  | "DASH"
-  | (string & {});
+export type TableCellBorderDashStyleEnum = "DASH_STYLE_UNSPECIFIED" | "SOLID" | "DOT" | "DASH";
 export const TableCellBorderDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** A border around a table cell. Table cell borders cannot be transparent. To hide a table cell border, make its width 0. */
@@ -823,22 +733,14 @@ export interface TableCellBorder {
   dashStyle?: TableCellBorderDashStyleEnum;
 }
 export const TableCellBorder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(Dimension),
-    color: S.optional(OptionalColor),
-    dashStyle: S.optional(TableCellBorderDashStyleEnum),
-  }),
-).annotate({
-  identifier: "TableCellBorder",
-}) as any as S.Schema<TableCellBorder>;
+S.Struct({
+  "width": S.optional(Dimension),
+  "color": S.optional(OptionalColor),
+  "dashStyle": S.optional(TableCellBorderDashStyleEnum),
+}),
+).annotate({ identifier: "TableCellBorder" }) as any as S.Schema<TableCellBorder>;
 
-export type TableCellStyleContentAlignmentEnum =
-  | "CONTENT_ALIGNMENT_UNSPECIFIED"
-  | "CONTENT_ALIGNMENT_UNSUPPORTED"
-  | "TOP"
-  | "MIDDLE"
-  | "BOTTOM"
-  | (string & {});
+export type TableCellStyleContentAlignmentEnum = "CONTENT_ALIGNMENT_UNSPECIFIED" | "CONTENT_ALIGNMENT_UNSUPPORTED" | "TOP" | "MIDDLE" | "BOTTOM";
 export const TableCellStyleContentAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** The style of a TableCell. Inherited table cell styles are represented as unset fields in this message. A table cell style can inherit from the table's style. */
@@ -869,20 +771,20 @@ export interface TableCellStyle {
   borderLeft?: TableCellBorder;
 }
 export const TableCellStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paddingRight: S.optional(Dimension),
-    paddingTop: S.optional(Dimension),
-    columnSpan: S.optional(S.Number),
-    backgroundColor: S.optional(OptionalColor),
-    borderTop: S.optional(TableCellBorder),
-    paddingBottom: S.optional(Dimension),
-    rowSpan: S.optional(S.Number),
-    borderRight: S.optional(TableCellBorder),
-    borderBottom: S.optional(TableCellBorder),
-    contentAlignment: S.optional(TableCellStyleContentAlignmentEnum),
-    paddingLeft: S.optional(Dimension),
-    borderLeft: S.optional(TableCellBorder),
-  }),
+S.Struct({
+  "paddingRight": S.optional(Dimension),
+  "paddingTop": S.optional(Dimension),
+  "columnSpan": S.optional(S.Number),
+  "backgroundColor": S.optional(OptionalColor),
+  "borderTop": S.optional(TableCellBorder),
+  "paddingBottom": S.optional(Dimension),
+  "rowSpan": S.optional(S.Number),
+  "borderRight": S.optional(TableCellBorder),
+  "borderBottom": S.optional(TableCellBorder),
+  "contentAlignment": S.optional(TableCellStyleContentAlignmentEnum),
+  "paddingLeft": S.optional(Dimension),
+  "borderLeft": S.optional(TableCellBorder),
+}),
 ).annotate({ identifier: "TableCellStyle" }) as any as S.Schema<TableCellStyle>;
 
 /** Updates the style of a range of table cells. */
@@ -897,35 +799,21 @@ export interface UpdateTableCellStyleRequest {
   tableRange?: TableRange;
 }
 export const UpdateTableCellStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellStyle: S.optional(TableCellStyle),
-    fields: S.optional(S.String),
-    tableStartLocation: S.optional(Location),
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({
-  identifier: "UpdateTableCellStyleRequest",
-}) as any as S.Schema<UpdateTableCellStyleRequest>;
+S.Struct({
+  "tableCellStyle": S.optional(TableCellStyle),
+  "fields": S.optional(S.String),
+  "tableStartLocation": S.optional(Location),
+  "tableRange": S.optional(TableRange),
+}),
+).annotate({ identifier: "UpdateTableCellStyleRequest" }) as any as S.Schema<UpdateTableCellStyleRequest>;
 
-export type SectionStyleColumnSeparatorStyleEnum =
-  | "COLUMN_SEPARATOR_STYLE_UNSPECIFIED"
-  | "NONE"
-  | "BETWEEN_EACH_COLUMN"
-  | (string & {});
+export type SectionStyleColumnSeparatorStyleEnum = "COLUMN_SEPARATOR_STYLE_UNSPECIFIED" | "NONE" | "BETWEEN_EACH_COLUMN";
 export const SectionStyleColumnSeparatorStyleEnum = /*@__PURE__*/ S.String;
 
-export type SectionStyleContentDirectionEnum =
-  | "CONTENT_DIRECTION_UNSPECIFIED"
-  | "LEFT_TO_RIGHT"
-  | "RIGHT_TO_LEFT"
-  | (string & {});
+export type SectionStyleContentDirectionEnum = "CONTENT_DIRECTION_UNSPECIFIED" | "LEFT_TO_RIGHT" | "RIGHT_TO_LEFT";
 export const SectionStyleContentDirectionEnum = /*@__PURE__*/ S.String;
 
-export type SectionStyleSectionTypeEnum =
-  | "SECTION_TYPE_UNSPECIFIED"
-  | "CONTINUOUS"
-  | "NEXT_PAGE"
-  | (string & {});
+export type SectionStyleSectionTypeEnum = "SECTION_TYPE_UNSPECIFIED" | "CONTINUOUS" | "NEXT_PAGE";
 export const SectionStyleSectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Properties that apply to a section's column. */
@@ -936,19 +824,14 @@ export interface SectionColumnProperties {
   paddingEnd?: Dimension;
 }
 export const SectionColumnProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(Dimension),
-    paddingEnd: S.optional(Dimension),
-  }),
-).annotate({
-  identifier: "SectionColumnProperties",
-}) as any as S.Schema<SectionColumnProperties>;
+S.Struct({
+  "width": S.optional(Dimension),
+  "paddingEnd": S.optional(Dimension),
+}),
+).annotate({ identifier: "SectionColumnProperties" }) as any as S.Schema<SectionColumnProperties>;
 
-export type SectionColumnPropertiesList =
-  ReadonlyArray<SectionColumnProperties>;
-export const SectionColumnPropertiesList = /*@__PURE__*/ S.Array(
-  SectionColumnProperties,
-) as any as S.Schema<SectionColumnPropertiesList>;
+export type SectionColumnPropertiesList = ReadonlyArray<SectionColumnProperties>;
+export const SectionColumnPropertiesList = /*@__PURE__*/ S.Array(SectionColumnProperties) as any as S.Schema<SectionColumnPropertiesList>;
 
 /** The styling that applies to a section. */
 export interface SectionStyle {
@@ -992,27 +875,27 @@ export interface SectionStyle {
   flipPageOrientation?: boolean;
 }
 export const SectionStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    marginLeft: S.optional(Dimension),
-    columnSeparatorStyle: S.optional(SectionStyleColumnSeparatorStyleEnum),
-    marginRight: S.optional(Dimension),
-    contentDirection: S.optional(SectionStyleContentDirectionEnum),
-    sectionType: S.optional(SectionStyleSectionTypeEnum),
-    firstPageHeaderId: S.optional(S.String),
-    useFirstPageHeaderFooter: S.optional(S.Boolean),
-    defaultHeaderId: S.optional(S.String),
-    marginHeader: S.optional(Dimension),
-    defaultFooterId: S.optional(S.String),
-    evenPageFooterId: S.optional(S.String),
-    pageNumberStart: S.optional(S.Number),
-    marginTop: S.optional(Dimension),
-    firstPageFooterId: S.optional(S.String),
-    marginFooter: S.optional(Dimension),
-    columnProperties: S.optional(SectionColumnPropertiesList),
-    evenPageHeaderId: S.optional(S.String),
-    marginBottom: S.optional(Dimension),
-    flipPageOrientation: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "marginLeft": S.optional(Dimension),
+  "columnSeparatorStyle": S.optional(SectionStyleColumnSeparatorStyleEnum),
+  "marginRight": S.optional(Dimension),
+  "contentDirection": S.optional(SectionStyleContentDirectionEnum),
+  "sectionType": S.optional(SectionStyleSectionTypeEnum),
+  "firstPageHeaderId": S.optional(S.String),
+  "useFirstPageHeaderFooter": S.optional(S.Boolean),
+  "defaultHeaderId": S.optional(S.String),
+  "marginHeader": S.optional(Dimension),
+  "defaultFooterId": S.optional(S.String),
+  "evenPageFooterId": S.optional(S.String),
+  "pageNumberStart": S.optional(S.Number),
+  "marginTop": S.optional(Dimension),
+  "firstPageFooterId": S.optional(S.String),
+  "marginFooter": S.optional(Dimension),
+  "columnProperties": S.optional(SectionColumnPropertiesList),
+  "evenPageHeaderId": S.optional(S.String),
+  "marginBottom": S.optional(Dimension),
+  "flipPageOrientation": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "SectionStyle" }) as any as S.Schema<SectionStyle>;
 
 /** Updates the SectionStyle. */
@@ -1025,14 +908,12 @@ export interface UpdateSectionStyleRequest {
   fields?: string;
 }
 export const UpdateSectionStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(Range),
-    sectionStyle: S.optional(SectionStyle),
-    fields: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSectionStyleRequest",
-}) as any as S.Schema<UpdateSectionStyleRequest>;
+S.Struct({
+  "range": S.optional(Range),
+  "sectionStyle": S.optional(SectionStyle),
+  "fields": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateSectionStyleRequest" }) as any as S.Schema<UpdateSectionStyleRequest>;
 
 /** Inserts an empty column into a table. */
 export interface InsertTableColumnRequest {
@@ -1042,13 +923,11 @@ export interface InsertTableColumnRequest {
   insertRight?: boolean;
 }
 export const InsertTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellLocation: S.optional(TableCellLocation),
-    insertRight: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "InsertTableColumnRequest",
-}) as any as S.Schema<InsertTableColumnRequest>;
+S.Struct({
+  "tableCellLocation": S.optional(TableCellLocation),
+  "insertRight": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "InsertTableColumnRequest" }) as any as S.Schema<InsertTableColumnRequest>;
 
 /** Deletes a row from a table. */
 export interface DeleteTableRowRequest {
@@ -1056,12 +935,10 @@ export interface DeleteTableRowRequest {
   tableCellLocation?: TableCellLocation;
 }
 export const DeleteTableRowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "DeleteTableRowRequest",
-}) as any as S.Schema<DeleteTableRowRequest>;
+S.Struct({
+  "tableCellLocation": S.optional(TableCellLocation),
+}),
+).annotate({ identifier: "DeleteTableRowRequest" }) as any as S.Schema<DeleteTableRowRequest>;
 
 /** Deletes a tab. If the tab has child tabs, they are deleted as well. */
 export interface DeleteTabRequest {
@@ -1069,12 +946,10 @@ export interface DeleteTabRequest {
   tabId?: string;
 }
 export const DeleteTabRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteTabRequest",
-}) as any as S.Schema<DeleteTabRequest>;
+S.Struct({
+  "tabId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteTabRequest" }) as any as S.Schema<DeleteTabRequest>;
 
 /** Properties specific to a linked Person. */
 export interface PersonProperties {
@@ -1084,13 +959,11 @@ export interface PersonProperties {
   name?: string;
 }
 export const PersonProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PersonProperties",
-}) as any as S.Schema<PersonProperties>;
+S.Struct({
+  "email": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "PersonProperties" }) as any as S.Schema<PersonProperties>;
 
 /** Inserts a person mention. */
 export interface InsertPersonRequest {
@@ -1102,19 +975,14 @@ export interface InsertPersonRequest {
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
 export const InsertPersonRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    personProperties: S.optional(PersonProperties),
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-  }),
-).annotate({
-  identifier: "InsertPersonRequest",
-}) as any as S.Schema<InsertPersonRequest>;
+S.Struct({
+  "personProperties": S.optional(PersonProperties),
+  "location": S.optional(Location),
+  "endOfSegmentLocation": S.optional(EndOfSegmentLocation),
+}),
+).annotate({ identifier: "InsertPersonRequest" }) as any as S.Schema<InsertPersonRequest>;
 
-export type CreateFooterRequestTypeEnum =
-  | "HEADER_FOOTER_TYPE_UNSPECIFIED"
-  | "DEFAULT"
-  | (string & {});
+export type CreateFooterRequestTypeEnum = "HEADER_FOOTER_TYPE_UNSPECIFIED" | "DEFAULT";
 export const CreateFooterRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creates a Footer. The new footer is applied to the SectionStyle at the location of the SectionBreak if specified, otherwise it is applied to the DocumentStyle. If a footer of the specified type already exists, a 400 bad request error is returned. */
@@ -1122,16 +990,14 @@ export interface CreateFooterRequest {
   /** The location of the SectionBreak immediately preceding the section whose SectionStyle this footer should belong to. If this is unset or refers to the first section break in the document, the footer applies to the document style. */
   sectionBreakLocation?: Location;
   /** The type of footer to create. */
-  type?: CreateFooterRequestTypeEnum;
+  type?: CreateFooterRequestTypeEnum | (string & {});
 }
 export const CreateFooterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sectionBreakLocation: S.optional(Location),
-    type: S.optional(CreateFooterRequestTypeEnum),
-  }),
-).annotate({
-  identifier: "CreateFooterRequest",
-}) as any as S.Schema<CreateFooterRequest>;
+S.Struct({
+  "sectionBreakLocation": S.optional(Location),
+  "type": S.optional(CreateFooterRequestTypeEnum),
+}),
+).annotate({ identifier: "CreateFooterRequest" }) as any as S.Schema<CreateFooterRequest>;
 
 /** Properties of a tab. */
 export interface TabProperties {
@@ -1149,14 +1015,14 @@ export interface TabProperties {
   index?: number;
 }
 export const TabProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    nestingLevel: S.optional(S.Number),
-    iconEmoji: S.optional(S.String),
-    tabId: S.optional(S.String),
-    parentTabId: S.optional(S.String),
-    index: S.optional(S.Number),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "nestingLevel": S.optional(S.Number),
+  "iconEmoji": S.optional(S.String),
+  "tabId": S.optional(S.String),
+  "parentTabId": S.optional(S.String),
+  "index": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TabProperties" }) as any as S.Schema<TabProperties>;
 
 /** Adds a document tab. When a tab is added at a given index, all subsequent tabs' indexes are incremented. */
@@ -1165,23 +1031,15 @@ export interface AddDocumentTabRequest {
   tabProperties?: TabProperties;
 }
 export const AddDocumentTabRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabProperties: S.optional(TabProperties),
-  }),
-).annotate({
-  identifier: "AddDocumentTabRequest",
-}) as any as S.Schema<AddDocumentTabRequest>;
+S.Struct({
+  "tabProperties": S.optional(TabProperties),
+}),
+).annotate({ identifier: "AddDocumentTabRequest" }) as any as S.Schema<AddDocumentTabRequest>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
-export type TableColumnPropertiesWidthTypeEnum =
-  | "WIDTH_TYPE_UNSPECIFIED"
-  | "EVENLY_DISTRIBUTED"
-  | "FIXED_WIDTH"
-  | (string & {});
+export type TableColumnPropertiesWidthTypeEnum = "WIDTH_TYPE_UNSPECIFIED" | "EVENLY_DISTRIBUTED" | "FIXED_WIDTH";
 export const TableColumnPropertiesWidthTypeEnum = /*@__PURE__*/ S.String;
 
 /** The properties of a column in a table. */
@@ -1192,13 +1050,11 @@ export interface TableColumnProperties {
   width?: Dimension;
 }
 export const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    widthType: S.optional(TableColumnPropertiesWidthTypeEnum),
-    width: S.optional(Dimension),
-  }),
-).annotate({
-  identifier: "TableColumnProperties",
-}) as any as S.Schema<TableColumnProperties>;
+S.Struct({
+  "widthType": S.optional(TableColumnPropertiesWidthTypeEnum),
+  "width": S.optional(Dimension),
+}),
+).annotate({ identifier: "TableColumnProperties" }) as any as S.Schema<TableColumnProperties>;
 
 /** Updates the TableColumnProperties of columns in a table. */
 export interface UpdateTableColumnPropertiesRequest {
@@ -1212,22 +1068,15 @@ export interface UpdateTableColumnPropertiesRequest {
   fields?: string;
 }
 export const UpdateTableColumnPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columnIndices: S.optional(IntegerList),
-    tableStartLocation: S.optional(Location),
-    tableColumnProperties: S.optional(TableColumnProperties),
-    fields: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateTableColumnPropertiesRequest",
-}) as any as S.Schema<UpdateTableColumnPropertiesRequest>;
+S.Struct({
+  "columnIndices": S.optional(IntegerList),
+  "tableStartLocation": S.optional(Location),
+  "tableColumnProperties": S.optional(TableColumnProperties),
+  "fields": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateTableColumnPropertiesRequest" }) as any as S.Schema<UpdateTableColumnPropertiesRequest>;
 
-export type ParagraphBorderDashStyleEnum =
-  | "DASH_STYLE_UNSPECIFIED"
-  | "SOLID"
-  | "DOT"
-  | "DASH"
-  | (string & {});
+export type ParagraphBorderDashStyleEnum = "DASH_STYLE_UNSPECIFIED" | "SOLID" | "DOT" | "DASH";
 export const ParagraphBorderDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** A border around a paragraph. */
@@ -1242,28 +1091,18 @@ export interface ParagraphBorder {
   padding?: Dimension;
 }
 export const ParagraphBorder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color: S.optional(OptionalColor),
-    dashStyle: S.optional(ParagraphBorderDashStyleEnum),
-    width: S.optional(Dimension),
-    padding: S.optional(Dimension),
-  }),
-).annotate({
-  identifier: "ParagraphBorder",
-}) as any as S.Schema<ParagraphBorder>;
+S.Struct({
+  "color": S.optional(OptionalColor),
+  "dashStyle": S.optional(ParagraphBorderDashStyleEnum),
+  "width": S.optional(Dimension),
+  "padding": S.optional(Dimension),
+}),
+).annotate({ identifier: "ParagraphBorder" }) as any as S.Schema<ParagraphBorder>;
 
-export type ParagraphStyleSpacingModeEnum =
-  | "SPACING_MODE_UNSPECIFIED"
-  | "NEVER_COLLAPSE"
-  | "COLLAPSE_LISTS"
-  | (string & {});
+export type ParagraphStyleSpacingModeEnum = "SPACING_MODE_UNSPECIFIED" | "NEVER_COLLAPSE" | "COLLAPSE_LISTS";
 export const ParagraphStyleSpacingModeEnum = /*@__PURE__*/ S.String;
 
-export type ParagraphStyleDirectionEnum =
-  | "CONTENT_DIRECTION_UNSPECIFIED"
-  | "LEFT_TO_RIGHT"
-  | "RIGHT_TO_LEFT"
-  | (string & {});
+export type ParagraphStyleDirectionEnum = "CONTENT_DIRECTION_UNSPECIFIED" | "LEFT_TO_RIGHT" | "RIGHT_TO_LEFT";
 export const ParagraphStyleDirectionEnum = /*@__PURE__*/ S.String;
 
 /** The shading of a paragraph. */
@@ -1272,40 +1111,18 @@ export interface Shading {
   backgroundColor?: OptionalColor;
 }
 export const Shading = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backgroundColor: S.optional(OptionalColor),
-  }),
+S.Struct({
+  "backgroundColor": S.optional(OptionalColor),
+}),
 ).annotate({ identifier: "Shading" }) as any as S.Schema<Shading>;
 
-export type ParagraphStyleNamedStyleTypeEnum =
-  | "NAMED_STYLE_TYPE_UNSPECIFIED"
-  | "NORMAL_TEXT"
-  | "TITLE"
-  | "SUBTITLE"
-  | "HEADING_1"
-  | "HEADING_2"
-  | "HEADING_3"
-  | "HEADING_4"
-  | "HEADING_5"
-  | "HEADING_6"
-  | (string & {});
+export type ParagraphStyleNamedStyleTypeEnum = "NAMED_STYLE_TYPE_UNSPECIFIED" | "NORMAL_TEXT" | "TITLE" | "SUBTITLE" | "HEADING_1" | "HEADING_2" | "HEADING_3" | "HEADING_4" | "HEADING_5" | "HEADING_6";
 export const ParagraphStyleNamedStyleTypeEnum = /*@__PURE__*/ S.String;
 
-export type ParagraphStyleAlignmentEnum =
-  | "ALIGNMENT_UNSPECIFIED"
-  | "START"
-  | "CENTER"
-  | "END"
-  | "JUSTIFIED"
-  | (string & {});
+export type ParagraphStyleAlignmentEnum = "ALIGNMENT_UNSPECIFIED" | "START" | "CENTER" | "END" | "JUSTIFIED";
 export const ParagraphStyleAlignmentEnum = /*@__PURE__*/ S.String;
 
-export type TabStopAlignmentEnum =
-  | "TAB_STOP_ALIGNMENT_UNSPECIFIED"
-  | "START"
-  | "CENTER"
-  | "END"
-  | (string & {});
+export type TabStopAlignmentEnum = "TAB_STOP_ALIGNMENT_UNSPECIFIED" | "START" | "CENTER" | "END";
 export const TabStopAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** A tab stop within a paragraph. */
@@ -1316,16 +1133,14 @@ export interface TabStop {
   alignment?: TabStopAlignmentEnum;
 }
 export const TabStop = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offset: S.optional(Dimension),
-    alignment: S.optional(TabStopAlignmentEnum),
-  }),
+S.Struct({
+  "offset": S.optional(Dimension),
+  "alignment": S.optional(TabStopAlignmentEnum),
+}),
 ).annotate({ identifier: "TabStop" }) as any as S.Schema<TabStop>;
 
 export type TabStopList = ReadonlyArray<TabStop>;
-export const TabStopList = /*@__PURE__*/ S.Array(
-  TabStop,
-) as any as S.Schema<TabStopList>;
+export const TabStopList = /*@__PURE__*/ S.Array(TabStop) as any as S.Schema<TabStopList>;
 
 /** Styles that apply to a whole paragraph. Inherited paragraph styles are represented as unset fields in this message. A paragraph style's parent depends on where the paragraph style is defined: * The ParagraphStyle on a Paragraph inherits from the paragraph's corresponding named style type. * The ParagraphStyle on a named style inherits from the normal text named style. * The ParagraphStyle of the normal text named style inherits from the default paragraph style in the Docs editor. * The ParagraphStyle on a Paragraph element that's contained in a table may inherit its paragraph style from the table style. If the paragraph style does not inherit from a parent, unsetting fields will revert the style to a value matching the defaults in the Docs editor. */
 export interface ParagraphStyle {
@@ -1375,30 +1190,30 @@ export interface ParagraphStyle {
   keepLinesTogether?: boolean;
 }
 export const ParagraphStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indentFirstLine: S.optional(Dimension),
-    borderLeft: S.optional(ParagraphBorder),
-    spacingMode: S.optional(ParagraphStyleSpacingModeEnum),
-    spaceBelow: S.optional(Dimension),
-    direction: S.optional(ParagraphStyleDirectionEnum),
-    borderBottom: S.optional(ParagraphBorder),
-    borderRight: S.optional(ParagraphBorder),
-    spaceAbove: S.optional(Dimension),
-    indentEnd: S.optional(Dimension),
-    shading: S.optional(Shading),
-    namedStyleType: S.optional(ParagraphStyleNamedStyleTypeEnum),
-    borderTop: S.optional(ParagraphBorder),
-    headingId: S.optional(S.String),
-    borderBetween: S.optional(ParagraphBorder),
-    keepWithNext: S.optional(S.Boolean),
-    alignment: S.optional(ParagraphStyleAlignmentEnum),
-    tabStops: S.optional(TabStopList),
-    lineSpacing: S.optional(S.Number),
-    pageBreakBefore: S.optional(S.Boolean),
-    avoidWidowAndOrphan: S.optional(S.Boolean),
-    indentStart: S.optional(Dimension),
-    keepLinesTogether: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "indentFirstLine": S.optional(Dimension),
+  "borderLeft": S.optional(ParagraphBorder),
+  "spacingMode": S.optional(ParagraphStyleSpacingModeEnum),
+  "spaceBelow": S.optional(Dimension),
+  "direction": S.optional(ParagraphStyleDirectionEnum),
+  "borderBottom": S.optional(ParagraphBorder),
+  "borderRight": S.optional(ParagraphBorder),
+  "spaceAbove": S.optional(Dimension),
+  "indentEnd": S.optional(Dimension),
+  "shading": S.optional(Shading),
+  "namedStyleType": S.optional(ParagraphStyleNamedStyleTypeEnum),
+  "borderTop": S.optional(ParagraphBorder),
+  "headingId": S.optional(S.String),
+  "borderBetween": S.optional(ParagraphBorder),
+  "keepWithNext": S.optional(S.Boolean),
+  "alignment": S.optional(ParagraphStyleAlignmentEnum),
+  "tabStops": S.optional(TabStopList),
+  "lineSpacing": S.optional(S.Number),
+  "pageBreakBefore": S.optional(S.Boolean),
+  "avoidWidowAndOrphan": S.optional(S.Boolean),
+  "indentStart": S.optional(Dimension),
+  "keepLinesTogether": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "ParagraphStyle" }) as any as S.Schema<ParagraphStyle>;
 
 /** Update the styling of all paragraphs that overlap with the given range. */
@@ -1411,27 +1226,14 @@ export interface UpdateParagraphStyleRequest {
   paragraphStyle?: ParagraphStyle;
 }
 export const UpdateParagraphStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(Range),
-    fields: S.optional(S.String),
-    paragraphStyle: S.optional(ParagraphStyle),
-  }),
-).annotate({
-  identifier: "UpdateParagraphStyleRequest",
-}) as any as S.Schema<UpdateParagraphStyleRequest>;
+S.Struct({
+  "range": S.optional(Range),
+  "fields": S.optional(S.String),
+  "paragraphStyle": S.optional(ParagraphStyle),
+}),
+).annotate({ identifier: "UpdateParagraphStyleRequest" }) as any as S.Schema<UpdateParagraphStyleRequest>;
 
-export type NamedStyleNamedStyleTypeEnum =
-  | "NAMED_STYLE_TYPE_UNSPECIFIED"
-  | "NORMAL_TEXT"
-  | "TITLE"
-  | "SUBTITLE"
-  | "HEADING_1"
-  | "HEADING_2"
-  | "HEADING_3"
-  | "HEADING_4"
-  | "HEADING_5"
-  | "HEADING_6"
-  | (string & {});
+export type NamedStyleNamedStyleTypeEnum = "NAMED_STYLE_TYPE_UNSPECIFIED" | "NORMAL_TEXT" | "TITLE" | "SUBTITLE" | "HEADING_1" | "HEADING_2" | "HEADING_3" | "HEADING_4" | "HEADING_5" | "HEADING_6";
 export const NamedStyleNamedStyleTypeEnum = /*@__PURE__*/ S.String;
 
 /** A named style. Paragraphs in the document can inherit their TextStyle and ParagraphStyle from this named style when they have the same named style type. */
@@ -1444,11 +1246,11 @@ export interface NamedStyle {
   textStyle?: TextStyle;
 }
 export const NamedStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namedStyleType: S.optional(NamedStyleNamedStyleTypeEnum),
-    paragraphStyle: S.optional(ParagraphStyle),
-    textStyle: S.optional(TextStyle),
-  }),
+S.Struct({
+  "namedStyleType": S.optional(NamedStyleNamedStyleTypeEnum),
+  "paragraphStyle": S.optional(ParagraphStyle),
+  "textStyle": S.optional(TextStyle),
+}),
 ).annotate({ identifier: "NamedStyle" }) as any as S.Schema<NamedStyle>;
 
 /** Updates a named style. */
@@ -1461,14 +1263,12 @@ export interface UpdateNamedStyleRequest {
   fields?: string;
 }
 export const UpdateNamedStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabId: S.optional(S.String),
-    namedStyle: S.optional(NamedStyle),
-    fields: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateNamedStyleRequest",
-}) as any as S.Schema<UpdateNamedStyleRequest>;
+S.Struct({
+  "tabId": S.optional(S.String),
+  "namedStyle": S.optional(NamedStyle),
+  "fields": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateNamedStyleRequest" }) as any as S.Schema<UpdateNamedStyleRequest>;
 
 /** Inserts an empty row into a table. */
 export interface InsertTableRowRequest {
@@ -1478,13 +1278,11 @@ export interface InsertTableRowRequest {
   insertBelow?: boolean;
 }
 export const InsertTableRowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellLocation: S.optional(TableCellLocation),
-    insertBelow: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "InsertTableRowRequest",
-}) as any as S.Schema<InsertTableRowRequest>;
+S.Struct({
+  "tableCellLocation": S.optional(TableCellLocation),
+  "insertBelow": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "InsertTableRowRequest" }) as any as S.Schema<InsertTableRowRequest>;
 
 /** A criteria that matches a specific string of text in the document. */
 export interface SubstringMatchCriteria {
@@ -1496,14 +1294,12 @@ export interface SubstringMatchCriteria {
   matchCase?: boolean;
 }
 export const SubstringMatchCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-    searchByRegex: S.optional(S.Boolean),
-    matchCase: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SubstringMatchCriteria",
-}) as any as S.Schema<SubstringMatchCriteria>;
+S.Struct({
+  "text": S.optional(S.String),
+  "searchByRegex": S.optional(S.Boolean),
+  "matchCase": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SubstringMatchCriteria" }) as any as S.Schema<SubstringMatchCriteria>;
 
 /** Replaces all instances of text matching a criteria with replace text. */
 export interface ReplaceAllTextRequest {
@@ -1515,14 +1311,12 @@ export interface ReplaceAllTextRequest {
   containsText?: SubstringMatchCriteria;
 }
 export const ReplaceAllTextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replaceText: S.optional(S.String),
-    tabsCriteria: S.optional(TabsCriteria),
-    containsText: S.optional(SubstringMatchCriteria),
-  }),
-).annotate({
-  identifier: "ReplaceAllTextRequest",
-}) as any as S.Schema<ReplaceAllTextRequest>;
+S.Struct({
+  "replaceText": S.optional(S.String),
+  "tabsCriteria": S.optional(TabsCriteria),
+  "containsText": S.optional(SubstringMatchCriteria),
+}),
+).annotate({ identifier: "ReplaceAllTextRequest" }) as any as S.Schema<ReplaceAllTextRequest>;
 
 /** Deletes content from the document. */
 export interface DeleteContentRangeRequest {
@@ -1530,12 +1324,10 @@ export interface DeleteContentRangeRequest {
   range?: Range;
 }
 export const DeleteContentRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "DeleteContentRangeRequest",
-}) as any as S.Schema<DeleteContentRangeRequest>;
+S.Struct({
+  "range": S.optional(Range),
+}),
+).annotate({ identifier: "DeleteContentRangeRequest" }) as any as S.Schema<DeleteContentRangeRequest>;
 
 /** Merges cells in a Table. */
 export interface MergeTableCellsRequest {
@@ -1543,12 +1335,10 @@ export interface MergeTableCellsRequest {
   tableRange?: TableRange;
 }
 export const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({
-  identifier: "MergeTableCellsRequest",
-}) as any as S.Schema<MergeTableCellsRequest>;
+S.Struct({
+  "tableRange": S.optional(TableRange),
+}),
+).annotate({ identifier: "MergeTableCellsRequest" }) as any as S.Schema<MergeTableCellsRequest>;
 
 /** Properties specific to a RichLink. */
 export interface RichLinkProperties {
@@ -1560,14 +1350,12 @@ export interface RichLinkProperties {
   uri?: string;
 }
 export const RichLinkProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mimeType: S.optional(S.String),
-    title: S.optional(S.String),
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RichLinkProperties",
-}) as any as S.Schema<RichLinkProperties>;
+S.Struct({
+  "mimeType": S.optional(S.String),
+  "title": S.optional(S.String),
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "RichLinkProperties" }) as any as S.Schema<RichLinkProperties>;
 
 /** Inserts a RichLink at the specified location. */
 export interface InsertRichLinkRequest {
@@ -1579,14 +1367,12 @@ export interface InsertRichLinkRequest {
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
 export const InsertRichLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    richLinkProperties: S.optional(RichLinkProperties),
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-  }),
-).annotate({
-  identifier: "InsertRichLinkRequest",
-}) as any as S.Schema<InsertRichLinkRequest>;
+S.Struct({
+  "richLinkProperties": S.optional(RichLinkProperties),
+  "location": S.optional(Location),
+  "endOfSegmentLocation": S.optional(EndOfSegmentLocation),
+}),
+).annotate({ identifier: "InsertRichLinkRequest" }) as any as S.Schema<InsertRichLinkRequest>;
 
 /** Update the properties of a document tab. */
 export interface UpdateDocumentTabPropertiesRequest {
@@ -1596,13 +1382,11 @@ export interface UpdateDocumentTabPropertiesRequest {
   fields?: string;
 }
 export const UpdateDocumentTabPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabProperties: S.optional(TabProperties),
-    fields: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDocumentTabPropertiesRequest",
-}) as any as S.Schema<UpdateDocumentTabPropertiesRequest>;
+S.Struct({
+  "tabProperties": S.optional(TabProperties),
+  "fields": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateDocumentTabPropertiesRequest" }) as any as S.Schema<UpdateDocumentTabPropertiesRequest>;
 
 /** Styles that apply to a table row. */
 export interface TableRowStyle {
@@ -1614,11 +1398,11 @@ export interface TableRowStyle {
   preventOverflow?: boolean;
 }
 export const TableRowStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableHeader: S.optional(S.Boolean),
-    minRowHeight: S.optional(Dimension),
-    preventOverflow: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "tableHeader": S.optional(S.Boolean),
+  "minRowHeight": S.optional(Dimension),
+  "preventOverflow": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "TableRowStyle" }) as any as S.Schema<TableRowStyle>;
 
 /** Updates the TableRowStyle of rows in a table. */
@@ -1633,37 +1417,30 @@ export interface UpdateTableRowStyleRequest {
   tableRowStyle?: TableRowStyle;
 }
 export const UpdateTableRowStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowIndices: S.optional(IntegerList),
-    fields: S.optional(S.String),
-    tableStartLocation: S.optional(Location),
-    tableRowStyle: S.optional(TableRowStyle),
-  }),
-).annotate({
-  identifier: "UpdateTableRowStyleRequest",
-}) as any as S.Schema<UpdateTableRowStyleRequest>;
+S.Struct({
+  "rowIndices": S.optional(IntegerList),
+  "fields": S.optional(S.String),
+  "tableStartLocation": S.optional(Location),
+  "tableRowStyle": S.optional(TableRowStyle),
+}),
+).annotate({ identifier: "UpdateTableRowStyleRequest" }) as any as S.Schema<UpdateTableRowStyleRequest>;
 
-export type CreateHeaderRequestTypeEnum =
-  | "HEADER_FOOTER_TYPE_UNSPECIFIED"
-  | "DEFAULT"
-  | (string & {});
+export type CreateHeaderRequestTypeEnum = "HEADER_FOOTER_TYPE_UNSPECIFIED" | "DEFAULT";
 export const CreateHeaderRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creates a Header. The new header is applied to the SectionStyle at the location of the SectionBreak if specified, otherwise it is applied to the DocumentStyle. If a header of the specified type already exists, a 400 bad request error is returned. */
 export interface CreateHeaderRequest {
   /** The type of header to create. */
-  type?: CreateHeaderRequestTypeEnum;
+  type?: CreateHeaderRequestTypeEnum | (string & {});
   /** The location of the SectionBreak which begins the section this header should belong to. If `section_break_location' is unset or if it refers to the first section break in the document body, the header applies to the DocumentStyle */
   sectionBreakLocation?: Location;
 }
 export const CreateHeaderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CreateHeaderRequestTypeEnum),
-    sectionBreakLocation: S.optional(Location),
-  }),
-).annotate({
-  identifier: "CreateHeaderRequest",
-}) as any as S.Schema<CreateHeaderRequest>;
+S.Struct({
+  "type": S.optional(CreateHeaderRequestTypeEnum),
+  "sectionBreakLocation": S.optional(Location),
+}),
+).annotate({ identifier: "CreateHeaderRequest" }) as any as S.Schema<CreateHeaderRequest>;
 
 /** Replaces the contents of the specified NamedRange or NamedRanges with the given replacement content. Note that an individual NamedRange may consist of multiple discontinuous ranges. In this case, only the content in the first range will be replaced. The other ranges and their content will be deleted. In cases where replacing or deleting any ranges would result in an invalid document structure, a 400 bad request error is returned. */
 export interface ReplaceNamedRangeContentRequest {
@@ -1677,15 +1454,13 @@ export interface ReplaceNamedRangeContentRequest {
   namedRangeName?: string;
 }
 export const ReplaceNamedRangeContentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabsCriteria: S.optional(TabsCriteria),
-    namedRangeId: S.optional(S.String),
-    text: S.optional(S.String),
-    namedRangeName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplaceNamedRangeContentRequest",
-}) as any as S.Schema<ReplaceNamedRangeContentRequest>;
+S.Struct({
+  "tabsCriteria": S.optional(TabsCriteria),
+  "namedRangeId": S.optional(S.String),
+  "text": S.optional(S.String),
+  "namedRangeName": S.optional(S.String),
+}),
+).annotate({ identifier: "ReplaceNamedRangeContentRequest" }) as any as S.Schema<ReplaceNamedRangeContentRequest>;
 
 /** Deletes a Footer from the document. */
 export interface DeleteFooterRequest {
@@ -1695,13 +1470,11 @@ export interface DeleteFooterRequest {
   footerId?: string;
 }
 export const DeleteFooterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabId: S.optional(S.String),
-    footerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteFooterRequest",
-}) as any as S.Schema<DeleteFooterRequest>;
+S.Struct({
+  "tabId": S.optional(S.String),
+  "footerId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteFooterRequest" }) as any as S.Schema<DeleteFooterRequest>;
 
 /** Deletes a column from a table. */
 export interface DeleteTableColumnRequest {
@@ -1709,17 +1482,12 @@ export interface DeleteTableColumnRequest {
   tableCellLocation?: TableCellLocation;
 }
 export const DeleteTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "DeleteTableColumnRequest",
-}) as any as S.Schema<DeleteTableColumnRequest>;
+S.Struct({
+  "tableCellLocation": S.optional(TableCellLocation),
+}),
+).annotate({ identifier: "DeleteTableColumnRequest" }) as any as S.Schema<DeleteTableColumnRequest>;
 
-export type ReplaceImageRequestImageReplaceMethodEnum =
-  | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
-  | "CENTER_CROP"
-  | (string & {});
+export type ReplaceImageRequestImageReplaceMethodEnum = "IMAGE_REPLACE_METHOD_UNSPECIFIED" | "CENTER_CROP";
 export const ReplaceImageRequestImageReplaceMethodEnum = /*@__PURE__*/ S.String;
 
 /** Replaces an existing image with a new image. Replacing an image removes some image effects from the existing image in order to mirror the behavior of the Docs editor. */
@@ -1727,22 +1495,20 @@ export interface ReplaceImageRequest {
   /** The ID of the existing image that will be replaced. The ID can be retrieved from the response of a get request. */
   imageObjectId?: string;
   /** The replacement method. */
-  imageReplaceMethod?: ReplaceImageRequestImageReplaceMethodEnum;
+  imageReplaceMethod?: ReplaceImageRequestImageReplaceMethodEnum | (string & {});
   /** The URI of the new image. The image is fetched once at insertion time and a copy is stored for display inside the document. Images must be less than 50MB, cannot exceed 25 megapixels, and must be in PNG, JPEG, or GIF format. The provided URI can't surpass 2 KB in length. The URI is saved with the image, and exposed through the ImageProperties.source_uri field. */
   uri?: string;
   /** The tab that the image to be replaced is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
   tabId?: string;
 }
 export const ReplaceImageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageObjectId: S.optional(S.String),
-    imageReplaceMethod: S.optional(ReplaceImageRequestImageReplaceMethodEnum),
-    uri: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplaceImageRequest",
-}) as any as S.Schema<ReplaceImageRequest>;
+S.Struct({
+  "imageObjectId": S.optional(S.String),
+  "imageReplaceMethod": S.optional(ReplaceImageRequestImageReplaceMethodEnum),
+  "uri": S.optional(S.String),
+  "tabId": S.optional(S.String),
+}),
+).annotate({ identifier: "ReplaceImageRequest" }) as any as S.Schema<ReplaceImageRequest>;
 
 /** Creates a Footnote segment and inserts a new FootnoteReference to it at the given location. The new Footnote segment will contain a space followed by a newline character. */
 export interface CreateFootnoteRequest {
@@ -1752,13 +1518,11 @@ export interface CreateFootnoteRequest {
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
 export const CreateFootnoteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-  }),
-).annotate({
-  identifier: "CreateFootnoteRequest",
-}) as any as S.Schema<CreateFootnoteRequest>;
+S.Struct({
+  "location": S.optional(Location),
+  "endOfSegmentLocation": S.optional(EndOfSegmentLocation),
+}),
+).annotate({ identifier: "CreateFootnoteRequest" }) as any as S.Schema<CreateFootnoteRequest>;
 
 /** A single update to apply to a document. */
 export interface Request {
@@ -1844,54 +1608,52 @@ export interface Request {
   createFootnote?: CreateFootnoteRequest;
 }
 export const Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleteHeader: S.optional(DeleteHeaderRequest),
-    deletePositionedObject: S.optional(DeletePositionedObjectRequest),
-    insertPageBreak: S.optional(InsertPageBreakRequest),
-    pinTableHeaderRows: S.optional(PinTableHeaderRowsRequest),
-    createNamedRange: S.optional(CreateNamedRangeRequest),
-    deleteNamedRange: S.optional(DeleteNamedRangeRequest),
-    updateDocumentStyle: S.optional(UpdateDocumentStyleRequest),
-    insertSectionBreak: S.optional(InsertSectionBreakRequest),
-    deleteParagraphBullets: S.optional(DeleteParagraphBulletsRequest),
-    insertTable: S.optional(InsertTableRequest),
-    createParagraphBullets: S.optional(CreateParagraphBulletsRequest),
-    updateTextStyle: S.optional(UpdateTextStyleRequest),
-    unmergeTableCells: S.optional(UnmergeTableCellsRequest),
-    insertDate: S.optional(InsertDateRequest),
-    insertText: S.optional(InsertTextRequest),
-    insertInlineImage: S.optional(InsertInlineImageRequest),
-    updateTableCellStyle: S.optional(UpdateTableCellStyleRequest),
-    updateSectionStyle: S.optional(UpdateSectionStyleRequest),
-    insertTableColumn: S.optional(InsertTableColumnRequest),
-    deleteTableRow: S.optional(DeleteTableRowRequest),
-    deleteTab: S.optional(DeleteTabRequest),
-    insertPerson: S.optional(InsertPersonRequest),
-    createFooter: S.optional(CreateFooterRequest),
-    addDocumentTab: S.optional(AddDocumentTabRequest),
-    updateTableColumnProperties: S.optional(UpdateTableColumnPropertiesRequest),
-    updateParagraphStyle: S.optional(UpdateParagraphStyleRequest),
-    updateNamedStyle: S.optional(UpdateNamedStyleRequest),
-    insertTableRow: S.optional(InsertTableRowRequest),
-    replaceAllText: S.optional(ReplaceAllTextRequest),
-    deleteContentRange: S.optional(DeleteContentRangeRequest),
-    mergeTableCells: S.optional(MergeTableCellsRequest),
-    insertRichLink: S.optional(InsertRichLinkRequest),
-    updateDocumentTabProperties: S.optional(UpdateDocumentTabPropertiesRequest),
-    updateTableRowStyle: S.optional(UpdateTableRowStyleRequest),
-    createHeader: S.optional(CreateHeaderRequest),
-    replaceNamedRangeContent: S.optional(ReplaceNamedRangeContentRequest),
-    deleteFooter: S.optional(DeleteFooterRequest),
-    deleteTableColumn: S.optional(DeleteTableColumnRequest),
-    replaceImage: S.optional(ReplaceImageRequest),
-    createFootnote: S.optional(CreateFootnoteRequest),
-  }),
+S.Struct({
+  "deleteHeader": S.optional(DeleteHeaderRequest),
+  "deletePositionedObject": S.optional(DeletePositionedObjectRequest),
+  "insertPageBreak": S.optional(InsertPageBreakRequest),
+  "pinTableHeaderRows": S.optional(PinTableHeaderRowsRequest),
+  "createNamedRange": S.optional(CreateNamedRangeRequest),
+  "deleteNamedRange": S.optional(DeleteNamedRangeRequest),
+  "updateDocumentStyle": S.optional(UpdateDocumentStyleRequest),
+  "insertSectionBreak": S.optional(InsertSectionBreakRequest),
+  "deleteParagraphBullets": S.optional(DeleteParagraphBulletsRequest),
+  "insertTable": S.optional(InsertTableRequest),
+  "createParagraphBullets": S.optional(CreateParagraphBulletsRequest),
+  "updateTextStyle": S.optional(UpdateTextStyleRequest),
+  "unmergeTableCells": S.optional(UnmergeTableCellsRequest),
+  "insertDate": S.optional(InsertDateRequest),
+  "insertText": S.optional(InsertTextRequest),
+  "insertInlineImage": S.optional(InsertInlineImageRequest),
+  "updateTableCellStyle": S.optional(UpdateTableCellStyleRequest),
+  "updateSectionStyle": S.optional(UpdateSectionStyleRequest),
+  "insertTableColumn": S.optional(InsertTableColumnRequest),
+  "deleteTableRow": S.optional(DeleteTableRowRequest),
+  "deleteTab": S.optional(DeleteTabRequest),
+  "insertPerson": S.optional(InsertPersonRequest),
+  "createFooter": S.optional(CreateFooterRequest),
+  "addDocumentTab": S.optional(AddDocumentTabRequest),
+  "updateTableColumnProperties": S.optional(UpdateTableColumnPropertiesRequest),
+  "updateParagraphStyle": S.optional(UpdateParagraphStyleRequest),
+  "updateNamedStyle": S.optional(UpdateNamedStyleRequest),
+  "insertTableRow": S.optional(InsertTableRowRequest),
+  "replaceAllText": S.optional(ReplaceAllTextRequest),
+  "deleteContentRange": S.optional(DeleteContentRangeRequest),
+  "mergeTableCells": S.optional(MergeTableCellsRequest),
+  "insertRichLink": S.optional(InsertRichLinkRequest),
+  "updateDocumentTabProperties": S.optional(UpdateDocumentTabPropertiesRequest),
+  "updateTableRowStyle": S.optional(UpdateTableRowStyleRequest),
+  "createHeader": S.optional(CreateHeaderRequest),
+  "replaceNamedRangeContent": S.optional(ReplaceNamedRangeContentRequest),
+  "deleteFooter": S.optional(DeleteFooterRequest),
+  "deleteTableColumn": S.optional(DeleteTableColumnRequest),
+  "replaceImage": S.optional(ReplaceImageRequest),
+  "createFootnote": S.optional(CreateFootnoteRequest),
+}),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
 export type RequestList = ReadonlyArray<Request>;
-export const RequestList = /*@__PURE__*/ S.Array(
-  Request,
-) as any as S.Schema<RequestList>;
+export const RequestList = /*@__PURE__*/ S.Array(Request) as any as S.Schema<RequestList>;
 
 /** Provides control over how write requests are executed. */
 export interface WriteControl {
@@ -1901,10 +1663,10 @@ export interface WriteControl {
   requiredRevisionId?: string;
 }
 export const WriteControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetRevisionId: S.optional(S.String),
-    requiredRevisionId: S.optional(S.String),
-  }),
+S.Struct({
+  "targetRevisionId": S.optional(S.String),
+  "requiredRevisionId": S.optional(S.String),
+}),
 ).annotate({ identifier: "WriteControl" }) as any as S.Schema<WriteControl>;
 
 /** Request message for BatchUpdateDocument. */
@@ -1915,13 +1677,11 @@ export interface BatchUpdateDocumentRequest {
   writeControl?: WriteControl;
 }
 export const BatchUpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(RequestList),
-    writeControl: S.optional(WriteControl),
-  }),
-).annotate({
-  identifier: "BatchUpdateDocumentRequest",
-}) as any as S.Schema<BatchUpdateDocumentRequest>;
+S.Struct({
+  "requests": S.optional(RequestList),
+  "writeControl": S.optional(WriteControl),
+}),
+).annotate({ identifier: "BatchUpdateDocumentRequest" }) as any as S.Schema<BatchUpdateDocumentRequest>;
 
 export interface BatchUpdateDocumentsRequest {
   /** The ID of the document to update. */
@@ -1930,19 +1690,11 @@ export interface BatchUpdateDocumentsRequest {
   body?: BatchUpdateDocumentRequest;
 }
 export const BatchUpdateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentId: S.String.pipe(T.Label()),
-    body: S.optional(BatchUpdateDocumentRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/documents/{documentId}:batchUpdate",
-      baseUrl: "https://docs.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchUpdateDocumentsRequest",
-}) as any as S.Schema<BatchUpdateDocumentsRequest>;
+S.Struct({
+  "documentId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdateDocumentRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/documents/{documentId}:batchUpdate","baseUrl":"https://docs.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateDocumentsRequest" }) as any as S.Schema<BatchUpdateDocumentsRequest>;
 
 /** The result of creating a named range. */
 export interface CreateNamedRangeResponse {
@@ -1950,12 +1702,10 @@ export interface CreateNamedRangeResponse {
   namedRangeId?: string;
 }
 export const CreateNamedRangeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namedRangeId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateNamedRangeResponse",
-}) as any as S.Schema<CreateNamedRangeResponse>;
+S.Struct({
+  "namedRangeId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateNamedRangeResponse" }) as any as S.Schema<CreateNamedRangeResponse>;
 
 /** The result of inserting an inline image. */
 export interface InsertInlineImageResponse {
@@ -1963,12 +1713,10 @@ export interface InsertInlineImageResponse {
   objectId?: string;
 }
 export const InsertInlineImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsertInlineImageResponse",
-}) as any as S.Schema<InsertInlineImageResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "InsertInlineImageResponse" }) as any as S.Schema<InsertInlineImageResponse>;
 
 /** The result of creating a footer. */
 export interface CreateFooterResponse {
@@ -1976,12 +1724,10 @@ export interface CreateFooterResponse {
   footerId?: string;
 }
 export const CreateFooterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    footerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateFooterResponse",
-}) as any as S.Schema<CreateFooterResponse>;
+S.Struct({
+  "footerId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateFooterResponse" }) as any as S.Schema<CreateFooterResponse>;
 
 /** The result of adding a document tab. */
 export interface AddDocumentTabResponse {
@@ -1989,12 +1735,10 @@ export interface AddDocumentTabResponse {
   tabProperties?: TabProperties;
 }
 export const AddDocumentTabResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabProperties: S.optional(TabProperties),
-  }),
-).annotate({
-  identifier: "AddDocumentTabResponse",
-}) as any as S.Schema<AddDocumentTabResponse>;
+S.Struct({
+  "tabProperties": S.optional(TabProperties),
+}),
+).annotate({ identifier: "AddDocumentTabResponse" }) as any as S.Schema<AddDocumentTabResponse>;
 
 /** The result of replacing text. */
 export interface ReplaceAllTextResponse {
@@ -2002,12 +1746,10 @@ export interface ReplaceAllTextResponse {
   occurrencesChanged?: number;
 }
 export const ReplaceAllTextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    occurrencesChanged: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ReplaceAllTextResponse",
-}) as any as S.Schema<ReplaceAllTextResponse>;
+S.Struct({
+  "occurrencesChanged": S.optional(S.Number),
+}),
+).annotate({ identifier: "ReplaceAllTextResponse" }) as any as S.Schema<ReplaceAllTextResponse>;
 
 /** The result of creating a footnote. */
 export interface CreateFootnoteResponse {
@@ -2015,12 +1757,10 @@ export interface CreateFootnoteResponse {
   footnoteId?: string;
 }
 export const CreateFootnoteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    footnoteId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateFootnoteResponse",
-}) as any as S.Schema<CreateFootnoteResponse>;
+S.Struct({
+  "footnoteId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateFootnoteResponse" }) as any as S.Schema<CreateFootnoteResponse>;
 
 /** The result of inserting an embedded Google Sheets chart. */
 export interface InsertInlineSheetsChartResponse {
@@ -2028,12 +1768,10 @@ export interface InsertInlineSheetsChartResponse {
   objectId?: string;
 }
 export const InsertInlineSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsertInlineSheetsChartResponse",
-}) as any as S.Schema<InsertInlineSheetsChartResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "InsertInlineSheetsChartResponse" }) as any as S.Schema<InsertInlineSheetsChartResponse>;
 
 /** The result of creating a header. */
 export interface CreateHeaderResponse {
@@ -2041,12 +1779,10 @@ export interface CreateHeaderResponse {
   headerId?: string;
 }
 export const CreateHeaderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateHeaderResponse",
-}) as any as S.Schema<CreateHeaderResponse>;
+S.Struct({
+  "headerId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateHeaderResponse" }) as any as S.Schema<CreateHeaderResponse>;
 
 /** A single response from an update. */
 export interface Response {
@@ -2068,22 +1804,20 @@ export interface Response {
   createHeader?: CreateHeaderResponse;
 }
 export const Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createNamedRange: S.optional(CreateNamedRangeResponse),
-    insertInlineImage: S.optional(InsertInlineImageResponse),
-    createFooter: S.optional(CreateFooterResponse),
-    addDocumentTab: S.optional(AddDocumentTabResponse),
-    replaceAllText: S.optional(ReplaceAllTextResponse),
-    createFootnote: S.optional(CreateFootnoteResponse),
-    insertInlineSheetsChart: S.optional(InsertInlineSheetsChartResponse),
-    createHeader: S.optional(CreateHeaderResponse),
-  }),
+S.Struct({
+  "createNamedRange": S.optional(CreateNamedRangeResponse),
+  "insertInlineImage": S.optional(InsertInlineImageResponse),
+  "createFooter": S.optional(CreateFooterResponse),
+  "addDocumentTab": S.optional(AddDocumentTabResponse),
+  "replaceAllText": S.optional(ReplaceAllTextResponse),
+  "createFootnote": S.optional(CreateFootnoteResponse),
+  "insertInlineSheetsChart": S.optional(InsertInlineSheetsChartResponse),
+  "createHeader": S.optional(CreateHeaderResponse),
+}),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
 export type ResponseList = ReadonlyArray<Response>;
-export const ResponseList = /*@__PURE__*/ S.Array(
-  Response,
-) as any as S.Schema<ResponseList>;
+export const ResponseList = /*@__PURE__*/ S.Array(Response) as any as S.Schema<ResponseList>;
 
 /** Response message from a BatchUpdateDocument request. */
 export interface BatchUpdateDocumentResponse {
@@ -2095,33 +1829,17 @@ export interface BatchUpdateDocumentResponse {
   writeControl?: WriteControl;
 }
 export const BatchUpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentId: S.optional(S.String),
-    replies: S.optional(ResponseList),
-    writeControl: S.optional(WriteControl),
-  }),
-).annotate({
-  identifier: "BatchUpdateDocumentResponse",
-}) as any as S.Schema<BatchUpdateDocumentResponse>;
+S.Struct({
+  "documentId": S.optional(S.String),
+  "replies": S.optional(ResponseList),
+  "writeControl": S.optional(WriteControl),
+}),
+).annotate({ identifier: "BatchUpdateDocumentResponse" }) as any as S.Schema<BatchUpdateDocumentResponse>;
 
-export type NestingLevelGlyphTypeEnum =
-  | "GLYPH_TYPE_UNSPECIFIED"
-  | "NONE"
-  | "DECIMAL"
-  | "ZERO_DECIMAL"
-  | "UPPER_ALPHA"
-  | "ALPHA"
-  | "UPPER_ROMAN"
-  | "ROMAN"
-  | (string & {});
+export type NestingLevelGlyphTypeEnum = "GLYPH_TYPE_UNSPECIFIED" | "NONE" | "DECIMAL" | "ZERO_DECIMAL" | "UPPER_ALPHA" | "ALPHA" | "UPPER_ROMAN" | "ROMAN";
 export const NestingLevelGlyphTypeEnum = /*@__PURE__*/ S.String;
 
-export type NestingLevelBulletAlignmentEnum =
-  | "BULLET_ALIGNMENT_UNSPECIFIED"
-  | "START"
-  | "CENTER"
-  | "END"
-  | (string & {});
+export type NestingLevelBulletAlignmentEnum = "BULLET_ALIGNMENT_UNSPECIFIED" | "START" | "CENTER" | "END";
 export const NestingLevelBulletAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties describing the look and feel of a list bullet at a given level of nesting. */
@@ -2144,22 +1862,20 @@ export interface NestingLevel {
   indentFirstLine?: Dimension;
 }
 export const NestingLevel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    glyphType: S.optional(NestingLevelGlyphTypeEnum),
-    glyphFormat: S.optional(S.String),
-    indentStart: S.optional(Dimension),
-    bulletAlignment: S.optional(NestingLevelBulletAlignmentEnum),
-    textStyle: S.optional(TextStyle),
-    glyphSymbol: S.optional(S.String),
-    startNumber: S.optional(S.Number),
-    indentFirstLine: S.optional(Dimension),
-  }),
+S.Struct({
+  "glyphType": S.optional(NestingLevelGlyphTypeEnum),
+  "glyphFormat": S.optional(S.String),
+  "indentStart": S.optional(Dimension),
+  "bulletAlignment": S.optional(NestingLevelBulletAlignmentEnum),
+  "textStyle": S.optional(TextStyle),
+  "glyphSymbol": S.optional(S.String),
+  "startNumber": S.optional(S.Number),
+  "indentFirstLine": S.optional(Dimension),
+}),
 ).annotate({ identifier: "NestingLevel" }) as any as S.Schema<NestingLevel>;
 
 export type NestingLevelList = ReadonlyArray<NestingLevel>;
-export const NestingLevelList = /*@__PURE__*/ S.Array(
-  NestingLevel,
-) as any as S.Schema<NestingLevelList>;
+export const NestingLevelList = /*@__PURE__*/ S.Array(NestingLevel) as any as S.Schema<NestingLevelList>;
 
 /** The properties of a list that describe the look and feel of bullets belonging to paragraphs associated with a list. */
 export interface ListProperties {
@@ -2167,9 +1883,9 @@ export interface ListProperties {
   nestingLevels?: NestingLevelList;
 }
 export const ListProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nestingLevels: S.optional(NestingLevelList),
-  }),
+S.Struct({
+  "nestingLevels": S.optional(NestingLevelList),
+}),
 ).annotate({ identifier: "ListProperties" }) as any as S.Schema<ListProperties>;
 
 /** A mask that indicates which of the fields on the base TextStyle have been changed in this suggestion. For any field set to true, there's a new suggested value. */
@@ -2198,22 +1914,20 @@ export interface TextStyleSuggestionState {
   fontSizeSuggested?: boolean;
 }
 export const TextStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    underlineSuggested: S.optional(S.Boolean),
-    boldSuggested: S.optional(S.Boolean),
-    strikethroughSuggested: S.optional(S.Boolean),
-    backgroundColorSuggested: S.optional(S.Boolean),
-    italicSuggested: S.optional(S.Boolean),
-    linkSuggested: S.optional(S.Boolean),
-    baselineOffsetSuggested: S.optional(S.Boolean),
-    weightedFontFamilySuggested: S.optional(S.Boolean),
-    foregroundColorSuggested: S.optional(S.Boolean),
-    smallCapsSuggested: S.optional(S.Boolean),
-    fontSizeSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TextStyleSuggestionState",
-}) as any as S.Schema<TextStyleSuggestionState>;
+S.Struct({
+  "underlineSuggested": S.optional(S.Boolean),
+  "boldSuggested": S.optional(S.Boolean),
+  "strikethroughSuggested": S.optional(S.Boolean),
+  "backgroundColorSuggested": S.optional(S.Boolean),
+  "italicSuggested": S.optional(S.Boolean),
+  "linkSuggested": S.optional(S.Boolean),
+  "baselineOffsetSuggested": S.optional(S.Boolean),
+  "weightedFontFamilySuggested": S.optional(S.Boolean),
+  "foregroundColorSuggested": S.optional(S.Boolean),
+  "smallCapsSuggested": S.optional(S.Boolean),
+  "fontSizeSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "TextStyleSuggestionState" }) as any as S.Schema<TextStyleSuggestionState>;
 
 /** A mask that indicates which of the fields on the base NestingLevel have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface NestingLevelSuggestionState {
@@ -2235,25 +1949,20 @@ export interface NestingLevelSuggestionState {
   indentStartSuggested?: boolean;
 }
 export const NestingLevelSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indentFirstLineSuggested: S.optional(S.Boolean),
-    glyphSymbolSuggested: S.optional(S.Boolean),
-    bulletAlignmentSuggested: S.optional(S.Boolean),
-    glyphTypeSuggested: S.optional(S.Boolean),
-    glyphFormatSuggested: S.optional(S.Boolean),
-    textStyleSuggestionState: S.optional(TextStyleSuggestionState),
-    startNumberSuggested: S.optional(S.Boolean),
-    indentStartSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "NestingLevelSuggestionState",
-}) as any as S.Schema<NestingLevelSuggestionState>;
+S.Struct({
+  "indentFirstLineSuggested": S.optional(S.Boolean),
+  "glyphSymbolSuggested": S.optional(S.Boolean),
+  "bulletAlignmentSuggested": S.optional(S.Boolean),
+  "glyphTypeSuggested": S.optional(S.Boolean),
+  "glyphFormatSuggested": S.optional(S.Boolean),
+  "textStyleSuggestionState": S.optional(TextStyleSuggestionState),
+  "startNumberSuggested": S.optional(S.Boolean),
+  "indentStartSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "NestingLevelSuggestionState" }) as any as S.Schema<NestingLevelSuggestionState>;
 
-export type NestingLevelSuggestionStateList =
-  ReadonlyArray<NestingLevelSuggestionState>;
-export const NestingLevelSuggestionStateList = /*@__PURE__*/ S.Array(
-  NestingLevelSuggestionState,
-) as any as S.Schema<NestingLevelSuggestionStateList>;
+export type NestingLevelSuggestionStateList = ReadonlyArray<NestingLevelSuggestionState>;
+export const NestingLevelSuggestionStateList = /*@__PURE__*/ S.Array(NestingLevelSuggestionState) as any as S.Schema<NestingLevelSuggestionStateList>;
 
 /** A mask that indicates which of the fields on the base ListProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface ListPropertiesSuggestionState {
@@ -2261,12 +1970,10 @@ export interface ListPropertiesSuggestionState {
   nestingLevelsSuggestionStates?: NestingLevelSuggestionStateList;
 }
 export const ListPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nestingLevelsSuggestionStates: S.optional(NestingLevelSuggestionStateList),
-  }),
-).annotate({
-  identifier: "ListPropertiesSuggestionState",
-}) as any as S.Schema<ListPropertiesSuggestionState>;
+S.Struct({
+  "nestingLevelsSuggestionStates": S.optional(NestingLevelSuggestionStateList),
+}),
+).annotate({ identifier: "ListPropertiesSuggestionState" }) as any as S.Schema<ListPropertiesSuggestionState>;
 
 /** A suggested change to ListProperties. */
 export interface SuggestedListProperties {
@@ -2276,21 +1983,14 @@ export interface SuggestedListProperties {
   listProperties?: ListProperties;
 }
 export const SuggestedListProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listPropertiesSuggestionState: S.optional(ListPropertiesSuggestionState),
-    listProperties: S.optional(ListProperties),
-  }),
-).annotate({
-  identifier: "SuggestedListProperties",
-}) as any as S.Schema<SuggestedListProperties>;
+S.Struct({
+  "listPropertiesSuggestionState": S.optional(ListPropertiesSuggestionState),
+  "listProperties": S.optional(ListProperties),
+}),
+).annotate({ identifier: "SuggestedListProperties" }) as any as S.Schema<SuggestedListProperties>;
 
-export type SuggestedListPropertiesMap = {
-  [key: string]: SuggestedListProperties | undefined;
-};
-export const SuggestedListPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedListProperties,
-) as any as S.Schema<SuggestedListPropertiesMap>;
+export type SuggestedListPropertiesMap = { [key: string]: SuggestedListProperties | undefined };
+export const SuggestedListPropertiesMap = /*@__PURE__*/ S.Record(S.String, SuggestedListProperties) as any as S.Schema<SuggestedListPropertiesMap>;
 
 /** A List represents the list attributes for a group of paragraphs that all belong to the same list. A paragraph that's part of a list has a reference to the list's ID in its bullet. */
 export interface List {
@@ -2304,24 +2004,19 @@ export interface List {
   suggestedListPropertiesChanges?: SuggestedListPropertiesMap;
 }
 export const List = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedInsertionId: S.optional(S.String),
-    suggestedDeletionIds: S.optional(StringList),
-    listProperties: S.optional(ListProperties),
-    suggestedListPropertiesChanges: S.optional(SuggestedListPropertiesMap),
-  }),
+S.Struct({
+  "suggestedInsertionId": S.optional(S.String),
+  "suggestedDeletionIds": S.optional(StringList),
+  "listProperties": S.optional(ListProperties),
+  "suggestedListPropertiesChanges": S.optional(SuggestedListPropertiesMap),
+}),
 ).annotate({ identifier: "List" }) as any as S.Schema<List>;
 
 export type ListMap = { [key: string]: List | undefined };
-export const ListMap = /*@__PURE__*/ S.Record(
-  S.String,
-  List,
-) as any as S.Schema<ListMap>;
+export const ListMap = /*@__PURE__*/ S.Record(S.String, List) as any as S.Schema<ListMap>;
 
 export type NamedStyleList = ReadonlyArray<NamedStyle>;
-export const NamedStyleList = /*@__PURE__*/ S.Array(
-  NamedStyle,
-) as any as S.Schema<NamedStyleList>;
+export const NamedStyleList = /*@__PURE__*/ S.Array(NamedStyle) as any as S.Schema<NamedStyleList>;
 
 /** The named styles. Paragraphs in the document can inherit their TextStyle and ParagraphStyle from these named styles. */
 export interface NamedStyles {
@@ -2329,9 +2024,9 @@ export interface NamedStyles {
   styles?: NamedStyleList;
 }
 export const NamedStyles = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    styles: S.optional(NamedStyleList),
-  }),
+S.Struct({
+  "styles": S.optional(NamedStyleList),
+}),
 ).annotate({ identifier: "NamedStyles" }) as any as S.Schema<NamedStyles>;
 
 /** A StructuralElement representing a table of contents. */
@@ -2344,14 +2039,12 @@ export interface TableOfContents {
   suggestedInsertionIds?: StringList;
 }
 export const TableOfContents = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.suspend(() => StructuralElementList)),
-    suggestedDeletionIds: S.optional(StringList),
-    suggestedInsertionIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TableOfContents",
-}) as any as S.Schema<TableOfContents>;
+S.Struct({
+  "content": S.optional(S.suspend(() => StructuralElementList)),
+  "suggestedDeletionIds": S.optional(StringList),
+  "suggestedInsertionIds": S.optional(StringList),
+}),
+).annotate({ identifier: "TableOfContents" }) as any as S.Schema<TableOfContents>;
 
 /** A ParagraphElement representing an equation. */
 export interface Equation {
@@ -2361,10 +2054,10 @@ export interface Equation {
   suggestedInsertionIds?: StringList;
 }
 export const Equation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedDeletionIds: S.optional(StringList),
-    suggestedInsertionIds: S.optional(StringList),
-  }),
+S.Struct({
+  "suggestedDeletionIds": S.optional(StringList),
+  "suggestedInsertionIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "Equation" }) as any as S.Schema<Equation>;
 
 /** A suggested change to a TextStyle. */
@@ -2375,21 +2068,14 @@ export interface SuggestedTextStyle {
   textStyle?: TextStyle;
 }
 export const SuggestedTextStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textStyleSuggestionState: S.optional(TextStyleSuggestionState),
-    textStyle: S.optional(TextStyle),
-  }),
-).annotate({
-  identifier: "SuggestedTextStyle",
-}) as any as S.Schema<SuggestedTextStyle>;
+S.Struct({
+  "textStyleSuggestionState": S.optional(TextStyleSuggestionState),
+  "textStyle": S.optional(TextStyle),
+}),
+).annotate({ identifier: "SuggestedTextStyle" }) as any as S.Schema<SuggestedTextStyle>;
 
-export type SuggestedTextStyleMap = {
-  [key: string]: SuggestedTextStyle | undefined;
-};
-export const SuggestedTextStyleMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedTextStyle,
-) as any as S.Schema<SuggestedTextStyleMap>;
+export type SuggestedTextStyleMap = { [key: string]: SuggestedTextStyle | undefined };
+export const SuggestedTextStyleMap = /*@__PURE__*/ S.Record(S.String, SuggestedTextStyle) as any as S.Schema<SuggestedTextStyleMap>;
 
 /** A ParagraphElement that represents a run of text that all has the same styling. */
 export interface TextRun {
@@ -2405,13 +2091,13 @@ export interface TextRun {
   content?: string;
 }
 export const TextRun = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textStyle: S.optional(TextStyle),
-    suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
-    suggestedInsertionIds: S.optional(StringList),
-    suggestedDeletionIds: S.optional(StringList),
-    content: S.optional(S.String),
-  }),
+S.Struct({
+  "textStyle": S.optional(TextStyle),
+  "suggestedTextStyleChanges": S.optional(SuggestedTextStyleMap),
+  "suggestedInsertionIds": S.optional(StringList),
+  "suggestedDeletionIds": S.optional(StringList),
+  "content": S.optional(S.String),
+}),
 ).annotate({ identifier: "TextRun" }) as any as S.Schema<TextRun>;
 
 /** A ParagraphElement representing a horizontal line. */
@@ -2426,19 +2112,15 @@ export interface HorizontalRule {
   textStyle?: TextStyle;
 }
 export const HorizontalRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedDeletionIds: S.optional(StringList),
-    suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
-    suggestedInsertionIds: S.optional(StringList),
-    textStyle: S.optional(TextStyle),
-  }),
+S.Struct({
+  "suggestedDeletionIds": S.optional(StringList),
+  "suggestedTextStyleChanges": S.optional(SuggestedTextStyleMap),
+  "suggestedInsertionIds": S.optional(StringList),
+  "textStyle": S.optional(TextStyle),
+}),
 ).annotate({ identifier: "HorizontalRule" }) as any as S.Schema<HorizontalRule>;
 
-export type AutoTextTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "PAGE_NUMBER"
-  | "PAGE_COUNT"
-  | (string & {});
+export type AutoTextTypeEnum = "TYPE_UNSPECIFIED" | "PAGE_NUMBER" | "PAGE_COUNT";
 export const AutoTextTypeEnum = /*@__PURE__*/ S.String;
 
 /** A ParagraphElement representing a spot in the text that's dynamically replaced with content that can change over time, like a page number. */
@@ -2455,13 +2137,13 @@ export interface AutoText {
   type?: AutoTextTypeEnum;
 }
 export const AutoText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedDeletionIds: S.optional(StringList),
-    suggestedInsertionIds: S.optional(StringList),
-    suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
-    textStyle: S.optional(TextStyle),
-    type: S.optional(AutoTextTypeEnum),
-  }),
+S.Struct({
+  "suggestedDeletionIds": S.optional(StringList),
+  "suggestedInsertionIds": S.optional(StringList),
+  "suggestedTextStyleChanges": S.optional(SuggestedTextStyleMap),
+  "textStyle": S.optional(TextStyle),
+  "type": S.optional(AutoTextTypeEnum),
+}),
 ).annotate({ identifier: "AutoText" }) as any as S.Schema<AutoText>;
 
 /** A ParagraphElement representing a page break. A page break makes the subsequent text start at the top of the next page. */
@@ -2476,12 +2158,12 @@ export interface PageBreak {
   suggestedTextStyleChanges?: SuggestedTextStyleMap;
 }
 export const PageBreak = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedInsertionIds: S.optional(StringList),
-    textStyle: S.optional(TextStyle),
-    suggestedDeletionIds: S.optional(StringList),
-    suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
-  }),
+S.Struct({
+  "suggestedInsertionIds": S.optional(StringList),
+  "textStyle": S.optional(TextStyle),
+  "suggestedDeletionIds": S.optional(StringList),
+  "suggestedTextStyleChanges": S.optional(SuggestedTextStyleMap),
+}),
 ).annotate({ identifier: "PageBreak" }) as any as S.Schema<PageBreak>;
 
 /** A ParagraphElement representing a column break. A column break makes the subsequent text start at the top of the next column. */
@@ -2496,12 +2178,12 @@ export interface ColumnBreak {
   suggestedTextStyleChanges?: SuggestedTextStyleMap;
 }
 export const ColumnBreak = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedInsertionIds: S.optional(StringList),
-    textStyle: S.optional(TextStyle),
-    suggestedDeletionIds: S.optional(StringList),
-    suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
-  }),
+S.Struct({
+  "suggestedInsertionIds": S.optional(StringList),
+  "textStyle": S.optional(TextStyle),
+  "suggestedDeletionIds": S.optional(StringList),
+  "suggestedTextStyleChanges": S.optional(SuggestedTextStyleMap),
+}),
 ).annotate({ identifier: "ColumnBreak" }) as any as S.Schema<ColumnBreak>;
 
 /** A person or email address mentioned in a document. These mentions behave as a single, immutable element containing the person's name or email address. */
@@ -2520,14 +2202,14 @@ export interface Person {
   suggestedDeletionIds?: StringList;
 }
 export const Person = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textStyle: S.optional(TextStyle),
-    personProperties: S.optional(PersonProperties),
-    personId: S.optional(S.String),
-    suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
-    suggestedInsertionIds: S.optional(StringList),
-    suggestedDeletionIds: S.optional(StringList),
-  }),
+S.Struct({
+  "textStyle": S.optional(TextStyle),
+  "personProperties": S.optional(PersonProperties),
+  "personId": S.optional(S.String),
+  "suggestedTextStyleChanges": S.optional(SuggestedTextStyleMap),
+  "suggestedInsertionIds": S.optional(StringList),
+  "suggestedDeletionIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "Person" }) as any as S.Schema<Person>;
 
 /** A ParagraphElement representing a footnote reference. A footnote reference is the inline content rendered with a number and is used to identify the footnote. */
@@ -2546,17 +2228,15 @@ export interface FootnoteReference {
   textStyle?: TextStyle;
 }
 export const FootnoteReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    footnoteId: S.optional(S.String),
-    footnoteNumber: S.optional(S.String),
-    suggestedDeletionIds: S.optional(StringList),
-    suggestedInsertionIds: S.optional(StringList),
-    suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
-    textStyle: S.optional(TextStyle),
-  }),
-).annotate({
-  identifier: "FootnoteReference",
-}) as any as S.Schema<FootnoteReference>;
+S.Struct({
+  "footnoteId": S.optional(S.String),
+  "footnoteNumber": S.optional(S.String),
+  "suggestedDeletionIds": S.optional(StringList),
+  "suggestedInsertionIds": S.optional(StringList),
+  "suggestedTextStyleChanges": S.optional(SuggestedTextStyleMap),
+  "textStyle": S.optional(TextStyle),
+}),
+).annotate({ identifier: "FootnoteReference" }) as any as S.Schema<FootnoteReference>;
 
 /** A link to a Google resource (such as a file in Drive, a YouTube video, or a Calendar event). */
 export interface RichLink {
@@ -2574,14 +2254,14 @@ export interface RichLink {
   suggestedDeletionIds?: StringList;
 }
 export const RichLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textStyle: S.optional(TextStyle),
-    suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
-    richLinkProperties: S.optional(RichLinkProperties),
-    suggestedInsertionIds: S.optional(StringList),
-    richLinkId: S.optional(S.String),
-    suggestedDeletionIds: S.optional(StringList),
-  }),
+S.Struct({
+  "textStyle": S.optional(TextStyle),
+  "suggestedTextStyleChanges": S.optional(SuggestedTextStyleMap),
+  "richLinkProperties": S.optional(RichLinkProperties),
+  "suggestedInsertionIds": S.optional(StringList),
+  "richLinkId": S.optional(S.String),
+  "suggestedDeletionIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "RichLink" }) as any as S.Schema<RichLink>;
 
 /** A ParagraphElement that contains an InlineObject. */
@@ -2598,16 +2278,14 @@ export interface InlineObjectElement {
   suggestedDeletionIds?: StringList;
 }
 export const InlineObjectElement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inlineObjectId: S.optional(S.String),
-    textStyle: S.optional(TextStyle),
-    suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
-    suggestedInsertionIds: S.optional(StringList),
-    suggestedDeletionIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InlineObjectElement",
-}) as any as S.Schema<InlineObjectElement>;
+S.Struct({
+  "inlineObjectId": S.optional(S.String),
+  "textStyle": S.optional(TextStyle),
+  "suggestedTextStyleChanges": S.optional(SuggestedTextStyleMap),
+  "suggestedInsertionIds": S.optional(StringList),
+  "suggestedDeletionIds": S.optional(StringList),
+}),
+).annotate({ identifier: "InlineObjectElement" }) as any as S.Schema<InlineObjectElement>;
 
 /** A mask that indicates which of the fields on the base DateElementProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface DateElementPropertiesSuggestionState {
@@ -2622,18 +2300,15 @@ export interface DateElementPropertiesSuggestionState {
   /** Indicates if there was a suggested change to time_zone_id. */
   timeZoneIdSuggested?: boolean;
 }
-export const DateElementPropertiesSuggestionState = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      localeSuggested: S.optional(S.Boolean),
-      timeFormatSuggested: S.optional(S.Boolean),
-      timestampSuggested: S.optional(S.Boolean),
-      dateFormatSuggested: S.optional(S.Boolean),
-      timeZoneIdSuggested: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "DateElementPropertiesSuggestionState",
-}) as any as S.Schema<DateElementPropertiesSuggestionState>;
+export const DateElementPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "localeSuggested": S.optional(S.Boolean),
+  "timeFormatSuggested": S.optional(S.Boolean),
+  "timestampSuggested": S.optional(S.Boolean),
+  "dateFormatSuggested": S.optional(S.Boolean),
+  "timeZoneIdSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DateElementPropertiesSuggestionState" }) as any as S.Schema<DateElementPropertiesSuggestionState>;
 
 /** A suggested change to a DateElementProperties. */
 export interface SuggestedDateElementProperties {
@@ -2643,23 +2318,14 @@ export interface SuggestedDateElementProperties {
   dateElementPropertiesSuggestionState?: DateElementPropertiesSuggestionState;
 }
 export const SuggestedDateElementProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateElementProperties: S.optional(DateElementProperties),
-    dateElementPropertiesSuggestionState: S.optional(
-      DateElementPropertiesSuggestionState,
-    ),
-  }),
-).annotate({
-  identifier: "SuggestedDateElementProperties",
-}) as any as S.Schema<SuggestedDateElementProperties>;
+S.Struct({
+  "dateElementProperties": S.optional(DateElementProperties),
+  "dateElementPropertiesSuggestionState": S.optional(DateElementPropertiesSuggestionState),
+}),
+).annotate({ identifier: "SuggestedDateElementProperties" }) as any as S.Schema<SuggestedDateElementProperties>;
 
-export type SuggestedDateElementPropertiesMap = {
-  [key: string]: SuggestedDateElementProperties | undefined;
-};
-export const SuggestedDateElementPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedDateElementProperties,
-) as any as S.Schema<SuggestedDateElementPropertiesMap>;
+export type SuggestedDateElementPropertiesMap = { [key: string]: SuggestedDateElementProperties | undefined };
+export const SuggestedDateElementPropertiesMap = /*@__PURE__*/ S.Record(S.String, SuggestedDateElementProperties) as any as S.Schema<SuggestedDateElementPropertiesMap>;
 
 /** A date instance mentioned in a document. */
 export interface DateElement {
@@ -2679,17 +2345,15 @@ export interface DateElement {
   textStyle?: TextStyle;
 }
 export const DateElement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedDeletionIds: S.optional(StringList),
-    dateElementProperties: S.optional(DateElementProperties),
-    suggestedDateElementPropertiesChanges: S.optional(
-      SuggestedDateElementPropertiesMap,
-    ),
-    suggestedInsertionIds: S.optional(StringList),
-    dateId: S.optional(S.String),
-    suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
-    textStyle: S.optional(TextStyle),
-  }),
+S.Struct({
+  "suggestedDeletionIds": S.optional(StringList),
+  "dateElementProperties": S.optional(DateElementProperties),
+  "suggestedDateElementPropertiesChanges": S.optional(SuggestedDateElementPropertiesMap),
+  "suggestedInsertionIds": S.optional(StringList),
+  "dateId": S.optional(S.String),
+  "suggestedTextStyleChanges": S.optional(SuggestedTextStyleMap),
+  "textStyle": S.optional(TextStyle),
+}),
 ).annotate({ identifier: "DateElement" }) as any as S.Schema<DateElement>;
 
 /** A ParagraphElement describes content within a Paragraph. */
@@ -2722,29 +2386,25 @@ export interface ParagraphElement {
   dateElement?: DateElement;
 }
 export const ParagraphElement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    equation: S.optional(Equation),
-    textRun: S.optional(TextRun),
-    horizontalRule: S.optional(HorizontalRule),
-    autoText: S.optional(AutoText),
-    pageBreak: S.optional(PageBreak),
-    columnBreak: S.optional(ColumnBreak),
-    startIndex: S.optional(S.Number),
-    person: S.optional(Person),
-    endIndex: S.optional(S.Number),
-    footnoteReference: S.optional(FootnoteReference),
-    richLink: S.optional(RichLink),
-    inlineObjectElement: S.optional(InlineObjectElement),
-    dateElement: S.optional(DateElement),
-  }),
-).annotate({
-  identifier: "ParagraphElement",
-}) as any as S.Schema<ParagraphElement>;
+S.Struct({
+  "equation": S.optional(Equation),
+  "textRun": S.optional(TextRun),
+  "horizontalRule": S.optional(HorizontalRule),
+  "autoText": S.optional(AutoText),
+  "pageBreak": S.optional(PageBreak),
+  "columnBreak": S.optional(ColumnBreak),
+  "startIndex": S.optional(S.Number),
+  "person": S.optional(Person),
+  "endIndex": S.optional(S.Number),
+  "footnoteReference": S.optional(FootnoteReference),
+  "richLink": S.optional(RichLink),
+  "inlineObjectElement": S.optional(InlineObjectElement),
+  "dateElement": S.optional(DateElement),
+}),
+).annotate({ identifier: "ParagraphElement" }) as any as S.Schema<ParagraphElement>;
 
 export type ParagraphElementList = ReadonlyArray<ParagraphElement>;
-export const ParagraphElementList = /*@__PURE__*/ S.Array(
-  ParagraphElement,
-) as any as S.Schema<ParagraphElementList>;
+export const ParagraphElementList = /*@__PURE__*/ S.Array(ParagraphElement) as any as S.Schema<ParagraphElementList>;
 
 /** A collection of object IDs. */
 export interface ObjectReferences {
@@ -2752,20 +2412,13 @@ export interface ObjectReferences {
   objectIds?: StringList;
 }
 export const ObjectReferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ObjectReferences",
-}) as any as S.Schema<ObjectReferences>;
+S.Struct({
+  "objectIds": S.optional(StringList),
+}),
+).annotate({ identifier: "ObjectReferences" }) as any as S.Schema<ObjectReferences>;
 
-export type ObjectReferencesMap = {
-  [key: string]: ObjectReferences | undefined;
-};
-export const ObjectReferencesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ObjectReferences,
-) as any as S.Schema<ObjectReferencesMap>;
+export type ObjectReferencesMap = { [key: string]: ObjectReferences | undefined };
+export const ObjectReferencesMap = /*@__PURE__*/ S.Record(S.String, ObjectReferences) as any as S.Schema<ObjectReferencesMap>;
 
 /** Describes the bullet of a paragraph. */
 export interface Bullet {
@@ -2777,11 +2430,11 @@ export interface Bullet {
   nestingLevel?: number;
 }
 export const Bullet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textStyle: S.optional(TextStyle),
-    listId: S.optional(S.String),
-    nestingLevel: S.optional(S.Number),
-  }),
+S.Struct({
+  "textStyle": S.optional(TextStyle),
+  "listId": S.optional(S.String),
+  "nestingLevel": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Bullet" }) as any as S.Schema<Bullet>;
 
 /** A mask that indicates which of the fields on the base Bullet have been changed in this suggestion. For any field set to true, there's a new suggested value. */
@@ -2794,14 +2447,12 @@ export interface BulletSuggestionState {
   nestingLevelSuggested?: boolean;
 }
 export const BulletSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listIdSuggested: S.optional(S.Boolean),
-    textStyleSuggestionState: S.optional(TextStyleSuggestionState),
-    nestingLevelSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BulletSuggestionState",
-}) as any as S.Schema<BulletSuggestionState>;
+S.Struct({
+  "listIdSuggested": S.optional(S.Boolean),
+  "textStyleSuggestionState": S.optional(TextStyleSuggestionState),
+  "nestingLevelSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BulletSuggestionState" }) as any as S.Schema<BulletSuggestionState>;
 
 /** A suggested change to a Bullet. */
 export interface SuggestedBullet {
@@ -2811,19 +2462,14 @@ export interface SuggestedBullet {
   bullet?: Bullet;
 }
 export const SuggestedBullet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bulletSuggestionState: S.optional(BulletSuggestionState),
-    bullet: S.optional(Bullet),
-  }),
-).annotate({
-  identifier: "SuggestedBullet",
-}) as any as S.Schema<SuggestedBullet>;
+S.Struct({
+  "bulletSuggestionState": S.optional(BulletSuggestionState),
+  "bullet": S.optional(Bullet),
+}),
+).annotate({ identifier: "SuggestedBullet" }) as any as S.Schema<SuggestedBullet>;
 
 export type SuggestedBulletMap = { [key: string]: SuggestedBullet | undefined };
-export const SuggestedBulletMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedBullet,
-) as any as S.Schema<SuggestedBulletMap>;
+export const SuggestedBulletMap = /*@__PURE__*/ S.Record(S.String, SuggestedBullet) as any as S.Schema<SuggestedBulletMap>;
 
 /** A mask that indicates which of the fields on the base Shading have been changed in this suggested change. For any field set to true, there's a new suggested value. */
 export interface ShadingSuggestionState {
@@ -2831,12 +2477,10 @@ export interface ShadingSuggestionState {
   backgroundColorSuggested?: boolean;
 }
 export const ShadingSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backgroundColorSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ShadingSuggestionState",
-}) as any as S.Schema<ShadingSuggestionState>;
+S.Struct({
+  "backgroundColorSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ShadingSuggestionState" }) as any as S.Schema<ShadingSuggestionState>;
 
 /** A mask that indicates which of the fields on the base ParagraphStyle have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface ParagraphStyleSuggestionState {
@@ -2884,32 +2528,30 @@ export interface ParagraphStyleSuggestionState {
   spaceBelowSuggested?: boolean;
 }
 export const ParagraphStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alignmentSuggested: S.optional(S.Boolean),
-    lineSpacingSuggested: S.optional(S.Boolean),
-    spaceAboveSuggested: S.optional(S.Boolean),
-    borderBetweenSuggested: S.optional(S.Boolean),
-    namedStyleTypeSuggested: S.optional(S.Boolean),
-    avoidWidowAndOrphanSuggested: S.optional(S.Boolean),
-    spacingModeSuggested: S.optional(S.Boolean),
-    borderTopSuggested: S.optional(S.Boolean),
-    pageBreakBeforeSuggested: S.optional(S.Boolean),
-    indentEndSuggested: S.optional(S.Boolean),
-    borderBottomSuggested: S.optional(S.Boolean),
-    shadingSuggestionState: S.optional(ShadingSuggestionState),
-    borderRightSuggested: S.optional(S.Boolean),
-    keepWithNextSuggested: S.optional(S.Boolean),
-    headingIdSuggested: S.optional(S.Boolean),
-    indentFirstLineSuggested: S.optional(S.Boolean),
-    indentStartSuggested: S.optional(S.Boolean),
-    borderLeftSuggested: S.optional(S.Boolean),
-    keepLinesTogetherSuggested: S.optional(S.Boolean),
-    directionSuggested: S.optional(S.Boolean),
-    spaceBelowSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ParagraphStyleSuggestionState",
-}) as any as S.Schema<ParagraphStyleSuggestionState>;
+S.Struct({
+  "alignmentSuggested": S.optional(S.Boolean),
+  "lineSpacingSuggested": S.optional(S.Boolean),
+  "spaceAboveSuggested": S.optional(S.Boolean),
+  "borderBetweenSuggested": S.optional(S.Boolean),
+  "namedStyleTypeSuggested": S.optional(S.Boolean),
+  "avoidWidowAndOrphanSuggested": S.optional(S.Boolean),
+  "spacingModeSuggested": S.optional(S.Boolean),
+  "borderTopSuggested": S.optional(S.Boolean),
+  "pageBreakBeforeSuggested": S.optional(S.Boolean),
+  "indentEndSuggested": S.optional(S.Boolean),
+  "borderBottomSuggested": S.optional(S.Boolean),
+  "shadingSuggestionState": S.optional(ShadingSuggestionState),
+  "borderRightSuggested": S.optional(S.Boolean),
+  "keepWithNextSuggested": S.optional(S.Boolean),
+  "headingIdSuggested": S.optional(S.Boolean),
+  "indentFirstLineSuggested": S.optional(S.Boolean),
+  "indentStartSuggested": S.optional(S.Boolean),
+  "borderLeftSuggested": S.optional(S.Boolean),
+  "keepLinesTogetherSuggested": S.optional(S.Boolean),
+  "directionSuggested": S.optional(S.Boolean),
+  "spaceBelowSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ParagraphStyleSuggestionState" }) as any as S.Schema<ParagraphStyleSuggestionState>;
 
 /** A suggested change to a ParagraphStyle. */
 export interface SuggestedParagraphStyle {
@@ -2919,21 +2561,14 @@ export interface SuggestedParagraphStyle {
   paragraphStyle?: ParagraphStyle;
 }
 export const SuggestedParagraphStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paragraphStyleSuggestionState: S.optional(ParagraphStyleSuggestionState),
-    paragraphStyle: S.optional(ParagraphStyle),
-  }),
-).annotate({
-  identifier: "SuggestedParagraphStyle",
-}) as any as S.Schema<SuggestedParagraphStyle>;
+S.Struct({
+  "paragraphStyleSuggestionState": S.optional(ParagraphStyleSuggestionState),
+  "paragraphStyle": S.optional(ParagraphStyle),
+}),
+).annotate({ identifier: "SuggestedParagraphStyle" }) as any as S.Schema<SuggestedParagraphStyle>;
 
-export type SuggestedParagraphStyleMap = {
-  [key: string]: SuggestedParagraphStyle | undefined;
-};
-export const SuggestedParagraphStyleMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedParagraphStyle,
-) as any as S.Schema<SuggestedParagraphStyleMap>;
+export type SuggestedParagraphStyleMap = { [key: string]: SuggestedParagraphStyle | undefined };
+export const SuggestedParagraphStyleMap = /*@__PURE__*/ S.Record(S.String, SuggestedParagraphStyle) as any as S.Schema<SuggestedParagraphStyleMap>;
 
 /** A StructuralElement representing a paragraph. A paragraph is a range of content that's terminated with a newline character. */
 export interface Paragraph {
@@ -2953,21 +2588,19 @@ export interface Paragraph {
   positionedObjectIds?: StringList;
 }
 export const Paragraph = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    elements: S.optional(ParagraphElementList),
-    suggestedPositionedObjectIds: S.optional(ObjectReferencesMap),
-    bullet: S.optional(Bullet),
-    suggestedBulletChanges: S.optional(SuggestedBulletMap),
-    paragraphStyle: S.optional(ParagraphStyle),
-    suggestedParagraphStyleChanges: S.optional(SuggestedParagraphStyleMap),
-    positionedObjectIds: S.optional(StringList),
-  }),
+S.Struct({
+  "elements": S.optional(ParagraphElementList),
+  "suggestedPositionedObjectIds": S.optional(ObjectReferencesMap),
+  "bullet": S.optional(Bullet),
+  "suggestedBulletChanges": S.optional(SuggestedBulletMap),
+  "paragraphStyle": S.optional(ParagraphStyle),
+  "suggestedParagraphStyleChanges": S.optional(SuggestedParagraphStyleMap),
+  "positionedObjectIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "Paragraph" }) as any as S.Schema<Paragraph>;
 
 export type TableColumnPropertiesList = ReadonlyArray<TableColumnProperties>;
-export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
-  TableColumnProperties,
-) as any as S.Schema<TableColumnPropertiesList>;
+export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(TableColumnProperties) as any as S.Schema<TableColumnPropertiesList>;
 
 /** Styles that apply to a table. */
 export interface TableStyle {
@@ -2975,9 +2608,9 @@ export interface TableStyle {
   tableColumnProperties?: TableColumnPropertiesList;
 }
 export const TableStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableColumnProperties: S.optional(TableColumnPropertiesList),
-  }),
+S.Struct({
+  "tableColumnProperties": S.optional(TableColumnPropertiesList),
+}),
 ).annotate({ identifier: "TableStyle" }) as any as S.Schema<TableStyle>;
 
 /** A mask that indicates which of the fields on the base TableRowStyle have been changed in this suggestion. For any field set to true, there's a new suggested value. */
@@ -2986,12 +2619,10 @@ export interface TableRowStyleSuggestionState {
   minRowHeightSuggested?: boolean;
 }
 export const TableRowStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minRowHeightSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TableRowStyleSuggestionState",
-}) as any as S.Schema<TableRowStyleSuggestionState>;
+S.Struct({
+  "minRowHeightSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "TableRowStyleSuggestionState" }) as any as S.Schema<TableRowStyleSuggestionState>;
 
 /** A suggested change to a TableRowStyle. */
 export interface SuggestedTableRowStyle {
@@ -3001,21 +2632,14 @@ export interface SuggestedTableRowStyle {
   tableRowStyleSuggestionState?: TableRowStyleSuggestionState;
 }
 export const SuggestedTableRowStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableRowStyle: S.optional(TableRowStyle),
-    tableRowStyleSuggestionState: S.optional(TableRowStyleSuggestionState),
-  }),
-).annotate({
-  identifier: "SuggestedTableRowStyle",
-}) as any as S.Schema<SuggestedTableRowStyle>;
+S.Struct({
+  "tableRowStyle": S.optional(TableRowStyle),
+  "tableRowStyleSuggestionState": S.optional(TableRowStyleSuggestionState),
+}),
+).annotate({ identifier: "SuggestedTableRowStyle" }) as any as S.Schema<SuggestedTableRowStyle>;
 
-export type SuggestedTableRowStyleMap = {
-  [key: string]: SuggestedTableRowStyle | undefined;
-};
-export const SuggestedTableRowStyleMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedTableRowStyle,
-) as any as S.Schema<SuggestedTableRowStyleMap>;
+export type SuggestedTableRowStyleMap = { [key: string]: SuggestedTableRowStyle | undefined };
+export const SuggestedTableRowStyleMap = /*@__PURE__*/ S.Record(S.String, SuggestedTableRowStyle) as any as S.Schema<SuggestedTableRowStyleMap>;
 
 /** A mask that indicates which of the fields on the base TableCellStyle have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface TableCellStyleSuggestionState {
@@ -3045,23 +2669,21 @@ export interface TableCellStyleSuggestionState {
   paddingTopSuggested?: boolean;
 }
 export const TableCellStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    borderTopSuggested: S.optional(S.Boolean),
-    paddingLeftSuggested: S.optional(S.Boolean),
-    contentAlignmentSuggested: S.optional(S.Boolean),
-    rowSpanSuggested: S.optional(S.Boolean),
-    backgroundColorSuggested: S.optional(S.Boolean),
-    borderLeftSuggested: S.optional(S.Boolean),
-    borderBottomSuggested: S.optional(S.Boolean),
-    columnSpanSuggested: S.optional(S.Boolean),
-    borderRightSuggested: S.optional(S.Boolean),
-    paddingBottomSuggested: S.optional(S.Boolean),
-    paddingRightSuggested: S.optional(S.Boolean),
-    paddingTopSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TableCellStyleSuggestionState",
-}) as any as S.Schema<TableCellStyleSuggestionState>;
+S.Struct({
+  "borderTopSuggested": S.optional(S.Boolean),
+  "paddingLeftSuggested": S.optional(S.Boolean),
+  "contentAlignmentSuggested": S.optional(S.Boolean),
+  "rowSpanSuggested": S.optional(S.Boolean),
+  "backgroundColorSuggested": S.optional(S.Boolean),
+  "borderLeftSuggested": S.optional(S.Boolean),
+  "borderBottomSuggested": S.optional(S.Boolean),
+  "columnSpanSuggested": S.optional(S.Boolean),
+  "borderRightSuggested": S.optional(S.Boolean),
+  "paddingBottomSuggested": S.optional(S.Boolean),
+  "paddingRightSuggested": S.optional(S.Boolean),
+  "paddingTopSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "TableCellStyleSuggestionState" }) as any as S.Schema<TableCellStyleSuggestionState>;
 
 /** A suggested change to a TableCellStyle. */
 export interface SuggestedTableCellStyle {
@@ -3071,21 +2693,14 @@ export interface SuggestedTableCellStyle {
   tableCellStyleSuggestionState?: TableCellStyleSuggestionState;
 }
 export const SuggestedTableCellStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellStyle: S.optional(TableCellStyle),
-    tableCellStyleSuggestionState: S.optional(TableCellStyleSuggestionState),
-  }),
-).annotate({
-  identifier: "SuggestedTableCellStyle",
-}) as any as S.Schema<SuggestedTableCellStyle>;
+S.Struct({
+  "tableCellStyle": S.optional(TableCellStyle),
+  "tableCellStyleSuggestionState": S.optional(TableCellStyleSuggestionState),
+}),
+).annotate({ identifier: "SuggestedTableCellStyle" }) as any as S.Schema<SuggestedTableCellStyle>;
 
-export type SuggestedTableCellStyleMap = {
-  [key: string]: SuggestedTableCellStyle | undefined;
-};
-export const SuggestedTableCellStyleMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedTableCellStyle,
-) as any as S.Schema<SuggestedTableCellStyleMap>;
+export type SuggestedTableCellStyleMap = { [key: string]: SuggestedTableCellStyle | undefined };
+export const SuggestedTableCellStyleMap = /*@__PURE__*/ S.Record(S.String, SuggestedTableCellStyle) as any as S.Schema<SuggestedTableCellStyleMap>;
 
 /** The contents and style of a cell in a Table. */
 export interface TableCell {
@@ -3105,21 +2720,19 @@ export interface TableCell {
   tableCellStyle?: TableCellStyle;
 }
 export const TableCell = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedInsertionIds: S.optional(StringList),
-    startIndex: S.optional(S.Number),
-    suggestedDeletionIds: S.optional(StringList),
-    suggestedTableCellStyleChanges: S.optional(SuggestedTableCellStyleMap),
-    content: S.optional(S.suspend(() => StructuralElementList)),
-    endIndex: S.optional(S.Number),
-    tableCellStyle: S.optional(TableCellStyle),
-  }),
+S.Struct({
+  "suggestedInsertionIds": S.optional(StringList),
+  "startIndex": S.optional(S.Number),
+  "suggestedDeletionIds": S.optional(StringList),
+  "suggestedTableCellStyleChanges": S.optional(SuggestedTableCellStyleMap),
+  "content": S.optional(S.suspend(() => StructuralElementList)),
+  "endIndex": S.optional(S.Number),
+  "tableCellStyle": S.optional(TableCellStyle),
+}),
 ).annotate({ identifier: "TableCell" }) as any as S.Schema<TableCell>;
 
 export type TableCellList = ReadonlyArray<TableCell>;
-export const TableCellList = /*@__PURE__*/ S.Array(
-  TableCell,
-) as any as S.Schema<TableCellList>;
+export const TableCellList = /*@__PURE__*/ S.Array(TableCell) as any as S.Schema<TableCellList>;
 
 /** The contents and style of a row in a Table. */
 export interface TableRow {
@@ -3139,21 +2752,19 @@ export interface TableRow {
   suggestedDeletionIds?: StringList;
 }
 export const TableRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableRowStyle: S.optional(TableRowStyle),
-    suggestedTableRowStyleChanges: S.optional(SuggestedTableRowStyleMap),
-    endIndex: S.optional(S.Number),
-    tableCells: S.optional(TableCellList),
-    suggestedInsertionIds: S.optional(StringList),
-    startIndex: S.optional(S.Number),
-    suggestedDeletionIds: S.optional(StringList),
-  }),
+S.Struct({
+  "tableRowStyle": S.optional(TableRowStyle),
+  "suggestedTableRowStyleChanges": S.optional(SuggestedTableRowStyleMap),
+  "endIndex": S.optional(S.Number),
+  "tableCells": S.optional(TableCellList),
+  "suggestedInsertionIds": S.optional(StringList),
+  "startIndex": S.optional(S.Number),
+  "suggestedDeletionIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "TableRow" }) as any as S.Schema<TableRow>;
 
 export type TableRowList = ReadonlyArray<TableRow>;
-export const TableRowList = /*@__PURE__*/ S.Array(
-  TableRow,
-) as any as S.Schema<TableRowList>;
+export const TableRowList = /*@__PURE__*/ S.Array(TableRow) as any as S.Schema<TableRowList>;
 
 /** A StructuralElement representing a table. */
 export interface Table {
@@ -3171,14 +2782,14 @@ export interface Table {
   suggestedDeletionIds?: StringList;
 }
 export const Table = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rows: S.optional(S.Number),
-    tableStyle: S.optional(TableStyle),
-    columns: S.optional(S.Number),
-    suggestedInsertionIds: S.optional(StringList),
-    tableRows: S.optional(TableRowList),
-    suggestedDeletionIds: S.optional(StringList),
-  }),
+S.Struct({
+  "rows": S.optional(S.Number),
+  "tableStyle": S.optional(TableStyle),
+  "columns": S.optional(S.Number),
+  "suggestedInsertionIds": S.optional(StringList),
+  "tableRows": S.optional(TableRowList),
+  "suggestedDeletionIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 /** A StructuralElement representing a section break. A section is a range of content that has the same SectionStyle. A section break represents the start of a new section, and the section style applies to the section after the section break. The document body always begins with a section break. */
@@ -3191,11 +2802,11 @@ export interface SectionBreak {
   sectionStyle?: SectionStyle;
 }
 export const SectionBreak = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedDeletionIds: S.optional(StringList),
-    suggestedInsertionIds: S.optional(StringList),
-    sectionStyle: S.optional(SectionStyle),
-  }),
+S.Struct({
+  "suggestedDeletionIds": S.optional(StringList),
+  "suggestedInsertionIds": S.optional(StringList),
+  "sectionStyle": S.optional(SectionStyle),
+}),
 ).annotate({ identifier: "SectionBreak" }) as any as S.Schema<SectionBreak>;
 
 /** A StructuralElement describes content that provides structure to the document. */
@@ -3214,22 +2825,18 @@ export interface StructuralElement {
   sectionBreak?: SectionBreak;
 }
 export const StructuralElement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endIndex: S.optional(S.Number),
-    tableOfContents: S.optional(TableOfContents),
-    paragraph: S.optional(Paragraph),
-    table: S.optional(Table),
-    startIndex: S.optional(S.Number),
-    sectionBreak: S.optional(SectionBreak),
-  }),
-).annotate({
-  identifier: "StructuralElement",
-}) as any as S.Schema<StructuralElement>;
+S.Struct({
+  "endIndex": S.optional(S.Number),
+  "tableOfContents": S.optional(TableOfContents),
+  "paragraph": S.optional(Paragraph),
+  "table": S.optional(Table),
+  "startIndex": S.optional(S.Number),
+  "sectionBreak": S.optional(SectionBreak),
+}),
+).annotate({ identifier: "StructuralElement" }) as any as S.Schema<StructuralElement>;
 
 export type StructuralElementList = ReadonlyArray<StructuralElement>;
-export const StructuralElementList = /*@__PURE__*/ S.Array(
-  StructuralElement,
-) as any as S.Schema<StructuralElementList>;
+export const StructuralElementList = /*@__PURE__*/ S.Array(StructuralElement) as any as S.Schema<StructuralElementList>;
 
 /** A document header. */
 export interface Header {
@@ -3239,22 +2846,17 @@ export interface Header {
   content?: StructuralElementList;
 }
 export const Header = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headerId: S.optional(S.String),
-    content: S.optional(StructuralElementList),
-  }),
+S.Struct({
+  "headerId": S.optional(S.String),
+  "content": S.optional(StructuralElementList),
+}),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
 export type HeaderMap = { [key: string]: Header | undefined };
-export const HeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Header,
-) as any as S.Schema<HeaderMap>;
+export const HeaderMap = /*@__PURE__*/ S.Record(S.String, Header) as any as S.Schema<HeaderMap>;
 
 export type RangeList = ReadonlyArray<Range>;
-export const RangeList = /*@__PURE__*/ S.Array(
-  Range,
-) as any as S.Schema<RangeList>;
+export const RangeList = /*@__PURE__*/ S.Array(Range) as any as S.Schema<RangeList>;
 
 /** A collection of Ranges with the same named range ID. Named ranges allow developers to associate parts of a document with an arbitrary user-defined label so their contents can be programmatically read or edited later. A document can contain multiple named ranges with the same name, but every named range has a unique ID. A named range is created with a single Range, and content inserted inside a named range generally expands that range. However, certain document changes can cause the range to be split into multiple ranges. Named ranges are not private. All applications and collaborators that have access to the document can see its named ranges. */
 export interface NamedRange {
@@ -3266,17 +2868,15 @@ export interface NamedRange {
   name?: string;
 }
 export const NamedRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ranges: S.optional(RangeList),
-    namedRangeId: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "ranges": S.optional(RangeList),
+  "namedRangeId": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "NamedRange" }) as any as S.Schema<NamedRange>;
 
 export type NamedRangeList = ReadonlyArray<NamedRange>;
-export const NamedRangeList = /*@__PURE__*/ S.Array(
-  NamedRange,
-) as any as S.Schema<NamedRangeList>;
+export const NamedRangeList = /*@__PURE__*/ S.Array(NamedRange) as any as S.Schema<NamedRangeList>;
 
 /** A collection of all the NamedRanges in the document that share a given name. */
 export interface NamedRanges {
@@ -3286,17 +2886,14 @@ export interface NamedRanges {
   namedRanges?: NamedRangeList;
 }
 export const NamedRanges = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    namedRanges: S.optional(NamedRangeList),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "namedRanges": S.optional(NamedRangeList),
+}),
 ).annotate({ identifier: "NamedRanges" }) as any as S.Schema<NamedRanges>;
 
 export type NamedRangesMap = { [key: string]: NamedRanges | undefined };
-export const NamedRangesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  NamedRanges,
-) as any as S.Schema<NamedRangesMap>;
+export const NamedRangesMap = /*@__PURE__*/ S.Record(S.String, NamedRanges) as any as S.Schema<NamedRangesMap>;
 
 /** A document footnote. */
 export interface Footnote {
@@ -3306,17 +2903,14 @@ export interface Footnote {
   content?: StructuralElementList;
 }
 export const Footnote = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    footnoteId: S.optional(S.String),
-    content: S.optional(StructuralElementList),
-  }),
+S.Struct({
+  "footnoteId": S.optional(S.String),
+  "content": S.optional(StructuralElementList),
+}),
 ).annotate({ identifier: "Footnote" }) as any as S.Schema<Footnote>;
 
 export type FootnoteMap = { [key: string]: Footnote | undefined };
-export const FootnoteMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Footnote,
-) as any as S.Schema<FootnoteMap>;
+export const FootnoteMap = /*@__PURE__*/ S.Record(S.String, Footnote) as any as S.Schema<FootnoteMap>;
 
 /** A mask that indicates which of the fields on the base Size have been changed in this suggestion. For any field set to true, the Size has a new suggested value. */
 export interface SizeSuggestionState {
@@ -3326,13 +2920,11 @@ export interface SizeSuggestionState {
   widthSuggested?: boolean;
 }
 export const SizeSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    heightSuggested: S.optional(S.Boolean),
-    widthSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SizeSuggestionState",
-}) as any as S.Schema<SizeSuggestionState>;
+S.Struct({
+  "heightSuggested": S.optional(S.Boolean),
+  "widthSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SizeSuggestionState" }) as any as S.Schema<SizeSuggestionState>;
 
 /** A mask that indicates which of the fields on the base Background have been changed in this suggestion. For any field set to true, the Backgound has a new suggested value. */
 export interface BackgroundSuggestionState {
@@ -3340,12 +2932,10 @@ export interface BackgroundSuggestionState {
   backgroundColorSuggested?: boolean;
 }
 export const BackgroundSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backgroundColorSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BackgroundSuggestionState",
-}) as any as S.Schema<BackgroundSuggestionState>;
+S.Struct({
+  "backgroundColorSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BackgroundSuggestionState" }) as any as S.Schema<BackgroundSuggestionState>;
 
 /** A mask that indicates which of the fields on the base DocumentStyle have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface DocumentStyleSuggestionState {
@@ -3389,30 +2979,28 @@ export interface DocumentStyleSuggestionState {
   marginTopSuggested?: boolean;
 }
 export const DocumentStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    marginRightSuggested: S.optional(S.Boolean),
-    marginLeftSuggested: S.optional(S.Boolean),
-    marginHeaderSuggested: S.optional(S.Boolean),
-    defaultFooterIdSuggested: S.optional(S.Boolean),
-    pageNumberStartSuggested: S.optional(S.Boolean),
-    pageSizeSuggestionState: S.optional(SizeSuggestionState),
-    evenPageFooterIdSuggested: S.optional(S.Boolean),
-    flipPageOrientationSuggested: S.optional(S.Boolean),
-    firstPageHeaderIdSuggested: S.optional(S.Boolean),
-    backgroundSuggestionState: S.optional(BackgroundSuggestionState),
-    defaultHeaderIdSuggested: S.optional(S.Boolean),
-    useCustomHeaderFooterMarginsSuggested: S.optional(S.Boolean),
-    firstPageFooterIdSuggested: S.optional(S.Boolean),
-    marginBottomSuggested: S.optional(S.Boolean),
-    evenPageHeaderIdSuggested: S.optional(S.Boolean),
-    useEvenPageHeaderFooterSuggested: S.optional(S.Boolean),
-    marginFooterSuggested: S.optional(S.Boolean),
-    useFirstPageHeaderFooterSuggested: S.optional(S.Boolean),
-    marginTopSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DocumentStyleSuggestionState",
-}) as any as S.Schema<DocumentStyleSuggestionState>;
+S.Struct({
+  "marginRightSuggested": S.optional(S.Boolean),
+  "marginLeftSuggested": S.optional(S.Boolean),
+  "marginHeaderSuggested": S.optional(S.Boolean),
+  "defaultFooterIdSuggested": S.optional(S.Boolean),
+  "pageNumberStartSuggested": S.optional(S.Boolean),
+  "pageSizeSuggestionState": S.optional(SizeSuggestionState),
+  "evenPageFooterIdSuggested": S.optional(S.Boolean),
+  "flipPageOrientationSuggested": S.optional(S.Boolean),
+  "firstPageHeaderIdSuggested": S.optional(S.Boolean),
+  "backgroundSuggestionState": S.optional(BackgroundSuggestionState),
+  "defaultHeaderIdSuggested": S.optional(S.Boolean),
+  "useCustomHeaderFooterMarginsSuggested": S.optional(S.Boolean),
+  "firstPageFooterIdSuggested": S.optional(S.Boolean),
+  "marginBottomSuggested": S.optional(S.Boolean),
+  "evenPageHeaderIdSuggested": S.optional(S.Boolean),
+  "useEvenPageHeaderFooterSuggested": S.optional(S.Boolean),
+  "marginFooterSuggested": S.optional(S.Boolean),
+  "useFirstPageHeaderFooterSuggested": S.optional(S.Boolean),
+  "marginTopSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DocumentStyleSuggestionState" }) as any as S.Schema<DocumentStyleSuggestionState>;
 
 /** A suggested change to the DocumentStyle. */
 export interface SuggestedDocumentStyle {
@@ -3422,21 +3010,14 @@ export interface SuggestedDocumentStyle {
   documentStyle?: DocumentStyle;
 }
 export const SuggestedDocumentStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentStyleSuggestionState: S.optional(DocumentStyleSuggestionState),
-    documentStyle: S.optional(DocumentStyle),
-  }),
-).annotate({
-  identifier: "SuggestedDocumentStyle",
-}) as any as S.Schema<SuggestedDocumentStyle>;
+S.Struct({
+  "documentStyleSuggestionState": S.optional(DocumentStyleSuggestionState),
+  "documentStyle": S.optional(DocumentStyle),
+}),
+).annotate({ identifier: "SuggestedDocumentStyle" }) as any as S.Schema<SuggestedDocumentStyle>;
 
-export type SuggestedDocumentStyleMap = {
-  [key: string]: SuggestedDocumentStyle | undefined;
-};
-export const SuggestedDocumentStyleMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedDocumentStyle,
-) as any as S.Schema<SuggestedDocumentStyleMap>;
+export type SuggestedDocumentStyleMap = { [key: string]: SuggestedDocumentStyle | undefined };
+export const SuggestedDocumentStyleMap = /*@__PURE__*/ S.Record(S.String, SuggestedDocumentStyle) as any as S.Schema<SuggestedDocumentStyleMap>;
 
 /** A reference to a linked chart embedded from Google Sheets. */
 export interface SheetsChartReference {
@@ -3446,13 +3027,11 @@ export interface SheetsChartReference {
   spreadsheetId?: string;
 }
 export const SheetsChartReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chartId: S.optional(S.Number),
-    spreadsheetId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SheetsChartReference",
-}) as any as S.Schema<SheetsChartReference>;
+S.Struct({
+  "chartId": S.optional(S.Number),
+  "spreadsheetId": S.optional(S.String),
+}),
+).annotate({ identifier: "SheetsChartReference" }) as any as S.Schema<SheetsChartReference>;
 
 /** A reference to the external linked source content. */
 export interface LinkedContentReference {
@@ -3460,25 +3039,15 @@ export interface LinkedContentReference {
   sheetsChartReference?: SheetsChartReference;
 }
 export const LinkedContentReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sheetsChartReference: S.optional(SheetsChartReference),
-  }),
-).annotate({
-  identifier: "LinkedContentReference",
-}) as any as S.Schema<LinkedContentReference>;
+S.Struct({
+  "sheetsChartReference": S.optional(SheetsChartReference),
+}),
+).annotate({ identifier: "LinkedContentReference" }) as any as S.Schema<LinkedContentReference>;
 
-export type EmbeddedObjectBorderPropertyStateEnum =
-  | "RENDERED"
-  | "NOT_RENDERED"
-  | (string & {});
+export type EmbeddedObjectBorderPropertyStateEnum = "RENDERED" | "NOT_RENDERED";
 export const EmbeddedObjectBorderPropertyStateEnum = /*@__PURE__*/ S.String;
 
-export type EmbeddedObjectBorderDashStyleEnum =
-  | "DASH_STYLE_UNSPECIFIED"
-  | "SOLID"
-  | "DOT"
-  | "DASH"
-  | (string & {});
+export type EmbeddedObjectBorderDashStyleEnum = "DASH_STYLE_UNSPECIFIED" | "SOLID" | "DOT" | "DASH";
 export const EmbeddedObjectBorderDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** A border around an EmbeddedObject. */
@@ -3493,23 +3062,19 @@ export interface EmbeddedObjectBorder {
   dashStyle?: EmbeddedObjectBorderDashStyleEnum;
 }
 export const EmbeddedObjectBorder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    propertyState: S.optional(EmbeddedObjectBorderPropertyStateEnum),
-    width: S.optional(Dimension),
-    color: S.optional(OptionalColor),
-    dashStyle: S.optional(EmbeddedObjectBorderDashStyleEnum),
-  }),
-).annotate({
-  identifier: "EmbeddedObjectBorder",
-}) as any as S.Schema<EmbeddedObjectBorder>;
+S.Struct({
+  "propertyState": S.optional(EmbeddedObjectBorderPropertyStateEnum),
+  "width": S.optional(Dimension),
+  "color": S.optional(OptionalColor),
+  "dashStyle": S.optional(EmbeddedObjectBorderDashStyleEnum),
+}),
+).annotate({ identifier: "EmbeddedObjectBorder" }) as any as S.Schema<EmbeddedObjectBorder>;
 
 /** The properties of an embedded drawing and used to differentiate the object type. An embedded drawing is one that's created and edited within a document. Note that extensive details are not supported. */
 export interface EmbeddedDrawingProperties {}
 export const EmbeddedDrawingProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EmbeddedDrawingProperties",
-}) as any as S.Schema<EmbeddedDrawingProperties>;
+S.Struct({}),
+).annotate({ identifier: "EmbeddedDrawingProperties" }) as any as S.Schema<EmbeddedDrawingProperties>;
 
 /** The crop properties of an image. The crop rectangle is represented using fractional offsets from the original content's 4 edges. - If the offset is in the interval (0, 1), the corresponding edge of crop rectangle is positioned inside of the image's original bounding rectangle. - If the offset is negative or greater than 1, the corresponding edge of crop rectangle is positioned outside of the image's original bounding rectangle. - If all offsets and rotation angles are 0, the image is not cropped. */
 export interface CropProperties {
@@ -3525,13 +3090,13 @@ export interface CropProperties {
   offsetBottom?: number;
 }
 export const CropProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offsetLeft: S.optional(S.Number),
-    angle: S.optional(S.Number),
-    offsetTop: S.optional(S.Number),
-    offsetRight: S.optional(S.Number),
-    offsetBottom: S.optional(S.Number),
-  }),
+S.Struct({
+  "offsetLeft": S.optional(S.Number),
+  "angle": S.optional(S.Number),
+  "offsetTop": S.optional(S.Number),
+  "offsetRight": S.optional(S.Number),
+  "offsetBottom": S.optional(S.Number),
+}),
 ).annotate({ identifier: "CropProperties" }) as any as S.Schema<CropProperties>;
 
 /** The properties of an image. */
@@ -3552,18 +3117,16 @@ export interface ImageProperties {
   transparency?: number;
 }
 export const ImageProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceUri: S.optional(S.String),
-    contrast: S.optional(S.Number),
-    cropProperties: S.optional(CropProperties),
-    contentUri: S.optional(S.String),
-    brightness: S.optional(S.Number),
-    angle: S.optional(S.Number),
-    transparency: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ImageProperties",
-}) as any as S.Schema<ImageProperties>;
+S.Struct({
+  "sourceUri": S.optional(S.String),
+  "contrast": S.optional(S.Number),
+  "cropProperties": S.optional(CropProperties),
+  "contentUri": S.optional(S.String),
+  "brightness": S.optional(S.Number),
+  "angle": S.optional(S.Number),
+  "transparency": S.optional(S.Number),
+}),
+).annotate({ identifier: "ImageProperties" }) as any as S.Schema<ImageProperties>;
 
 /** An embedded object in the document. */
 export interface EmbeddedObject {
@@ -3591,19 +3154,19 @@ export interface EmbeddedObject {
   title?: string;
 }
 export const EmbeddedObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    linkedContentReference: S.optional(LinkedContentReference),
-    size: S.optional(Size),
-    embeddedObjectBorder: S.optional(EmbeddedObjectBorder),
-    description: S.optional(S.String),
-    marginLeft: S.optional(Dimension),
-    embeddedDrawingProperties: S.optional(EmbeddedDrawingProperties),
-    marginTop: S.optional(Dimension),
-    marginRight: S.optional(Dimension),
-    imageProperties: S.optional(ImageProperties),
-    marginBottom: S.optional(Dimension),
-    title: S.optional(S.String),
-  }),
+S.Struct({
+  "linkedContentReference": S.optional(LinkedContentReference),
+  "size": S.optional(Size),
+  "embeddedObjectBorder": S.optional(EmbeddedObjectBorder),
+  "description": S.optional(S.String),
+  "marginLeft": S.optional(Dimension),
+  "embeddedDrawingProperties": S.optional(EmbeddedDrawingProperties),
+  "marginTop": S.optional(Dimension),
+  "marginRight": S.optional(Dimension),
+  "imageProperties": S.optional(ImageProperties),
+  "marginBottom": S.optional(Dimension),
+  "title": S.optional(S.String),
+}),
 ).annotate({ identifier: "EmbeddedObject" }) as any as S.Schema<EmbeddedObject>;
 
 /** Properties of an InlineObject. */
@@ -3612,12 +3175,10 @@ export interface InlineObjectProperties {
   embeddedObject?: EmbeddedObject;
 }
 export const InlineObjectProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    embeddedObject: S.optional(EmbeddedObject),
-  }),
-).annotate({
-  identifier: "InlineObjectProperties",
-}) as any as S.Schema<InlineObjectProperties>;
+S.Struct({
+  "embeddedObject": S.optional(EmbeddedObject),
+}),
+).annotate({ identifier: "InlineObjectProperties" }) as any as S.Schema<InlineObjectProperties>;
 
 /** A mask that indicates which of the fields on the base SheetsChartReference have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface SheetsChartReferenceSuggestionState {
@@ -3627,29 +3188,22 @@ export interface SheetsChartReferenceSuggestionState {
   chartIdSuggested?: boolean;
 }
 export const SheetsChartReferenceSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spreadsheetIdSuggested: S.optional(S.Boolean),
-    chartIdSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SheetsChartReferenceSuggestionState",
-}) as any as S.Schema<SheetsChartReferenceSuggestionState>;
+S.Struct({
+  "spreadsheetIdSuggested": S.optional(S.Boolean),
+  "chartIdSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SheetsChartReferenceSuggestionState" }) as any as S.Schema<SheetsChartReferenceSuggestionState>;
 
 /** A mask that indicates which of the fields on the base LinkedContentReference have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface LinkedContentReferenceSuggestionState {
   /** A mask that indicates which of the fields in sheets_chart_reference have been changed in this suggestion. */
   sheetsChartReferenceSuggestionState?: SheetsChartReferenceSuggestionState;
 }
-export const LinkedContentReferenceSuggestionState = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sheetsChartReferenceSuggestionState: S.optional(
-        SheetsChartReferenceSuggestionState,
-      ),
-    }),
-).annotate({
-  identifier: "LinkedContentReferenceSuggestionState",
-}) as any as S.Schema<LinkedContentReferenceSuggestionState>;
+export const LinkedContentReferenceSuggestionState = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sheetsChartReferenceSuggestionState": S.optional(SheetsChartReferenceSuggestionState),
+}),
+).annotate({ identifier: "LinkedContentReferenceSuggestionState" }) as any as S.Schema<LinkedContentReferenceSuggestionState>;
 
 /** A mask that indicates which of the fields on the base EmbeddedObjectBorder have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface EmbeddedObjectBorderSuggestionState {
@@ -3663,23 +3217,19 @@ export interface EmbeddedObjectBorderSuggestionState {
   propertyStateSuggested?: boolean;
 }
 export const EmbeddedObjectBorderSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dashStyleSuggested: S.optional(S.Boolean),
-    colorSuggested: S.optional(S.Boolean),
-    widthSuggested: S.optional(S.Boolean),
-    propertyStateSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EmbeddedObjectBorderSuggestionState",
-}) as any as S.Schema<EmbeddedObjectBorderSuggestionState>;
+S.Struct({
+  "dashStyleSuggested": S.optional(S.Boolean),
+  "colorSuggested": S.optional(S.Boolean),
+  "widthSuggested": S.optional(S.Boolean),
+  "propertyStateSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "EmbeddedObjectBorderSuggestionState" }) as any as S.Schema<EmbeddedObjectBorderSuggestionState>;
 
 /** A mask that indicates which of the fields on the base EmbeddedDrawingProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface EmbeddedDrawingPropertiesSuggestionState {}
-export const EmbeddedDrawingPropertiesSuggestionState = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "EmbeddedDrawingPropertiesSuggestionState",
-}) as any as S.Schema<EmbeddedDrawingPropertiesSuggestionState>;
+export const EmbeddedDrawingPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "EmbeddedDrawingPropertiesSuggestionState" }) as any as S.Schema<EmbeddedDrawingPropertiesSuggestionState>;
 
 /** A mask that indicates which of the fields on the base CropProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface CropPropertiesSuggestionState {
@@ -3695,16 +3245,14 @@ export interface CropPropertiesSuggestionState {
   offsetBottomSuggested?: boolean;
 }
 export const CropPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offsetLeftSuggested: S.optional(S.Boolean),
-    offsetTopSuggested: S.optional(S.Boolean),
-    angleSuggested: S.optional(S.Boolean),
-    offsetRightSuggested: S.optional(S.Boolean),
-    offsetBottomSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CropPropertiesSuggestionState",
-}) as any as S.Schema<CropPropertiesSuggestionState>;
+S.Struct({
+  "offsetLeftSuggested": S.optional(S.Boolean),
+  "offsetTopSuggested": S.optional(S.Boolean),
+  "angleSuggested": S.optional(S.Boolean),
+  "offsetRightSuggested": S.optional(S.Boolean),
+  "offsetBottomSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CropPropertiesSuggestionState" }) as any as S.Schema<CropPropertiesSuggestionState>;
 
 /** A mask that indicates which of the fields on the base ImageProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface ImagePropertiesSuggestionState {
@@ -3724,18 +3272,16 @@ export interface ImagePropertiesSuggestionState {
   contrastSuggested?: boolean;
 }
 export const ImagePropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    angleSuggested: S.optional(S.Boolean),
-    sourceUriSuggested: S.optional(S.Boolean),
-    brightnessSuggested: S.optional(S.Boolean),
-    transparencySuggested: S.optional(S.Boolean),
-    contentUriSuggested: S.optional(S.Boolean),
-    cropPropertiesSuggestionState: S.optional(CropPropertiesSuggestionState),
-    contrastSuggested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ImagePropertiesSuggestionState",
-}) as any as S.Schema<ImagePropertiesSuggestionState>;
+S.Struct({
+  "angleSuggested": S.optional(S.Boolean),
+  "sourceUriSuggested": S.optional(S.Boolean),
+  "brightnessSuggested": S.optional(S.Boolean),
+  "transparencySuggested": S.optional(S.Boolean),
+  "contentUriSuggested": S.optional(S.Boolean),
+  "cropPropertiesSuggestionState": S.optional(CropPropertiesSuggestionState),
+  "contrastSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ImagePropertiesSuggestionState" }) as any as S.Schema<ImagePropertiesSuggestionState>;
 
 /** A mask that indicates which of the fields on the base EmbeddedObject have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface EmbeddedObjectSuggestionState {
@@ -3763,42 +3309,31 @@ export interface EmbeddedObjectSuggestionState {
   sizeSuggestionState?: SizeSuggestionState;
 }
 export const EmbeddedObjectSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    titleSuggested: S.optional(S.Boolean),
-    descriptionSuggested: S.optional(S.Boolean),
-    marginLeftSuggested: S.optional(S.Boolean),
-    marginRightSuggested: S.optional(S.Boolean),
-    marginBottomSuggested: S.optional(S.Boolean),
-    linkedContentReferenceSuggestionState: S.optional(
-      LinkedContentReferenceSuggestionState,
-    ),
-    embeddedObjectBorderSuggestionState: S.optional(
-      EmbeddedObjectBorderSuggestionState,
-    ),
-    marginTopSuggested: S.optional(S.Boolean),
-    embeddedDrawingPropertiesSuggestionState: S.optional(
-      EmbeddedDrawingPropertiesSuggestionState,
-    ),
-    imagePropertiesSuggestionState: S.optional(ImagePropertiesSuggestionState),
-    sizeSuggestionState: S.optional(SizeSuggestionState),
-  }),
-).annotate({
-  identifier: "EmbeddedObjectSuggestionState",
-}) as any as S.Schema<EmbeddedObjectSuggestionState>;
+S.Struct({
+  "titleSuggested": S.optional(S.Boolean),
+  "descriptionSuggested": S.optional(S.Boolean),
+  "marginLeftSuggested": S.optional(S.Boolean),
+  "marginRightSuggested": S.optional(S.Boolean),
+  "marginBottomSuggested": S.optional(S.Boolean),
+  "linkedContentReferenceSuggestionState": S.optional(LinkedContentReferenceSuggestionState),
+  "embeddedObjectBorderSuggestionState": S.optional(EmbeddedObjectBorderSuggestionState),
+  "marginTopSuggested": S.optional(S.Boolean),
+  "embeddedDrawingPropertiesSuggestionState": S.optional(EmbeddedDrawingPropertiesSuggestionState),
+  "imagePropertiesSuggestionState": S.optional(ImagePropertiesSuggestionState),
+  "sizeSuggestionState": S.optional(SizeSuggestionState),
+}),
+).annotate({ identifier: "EmbeddedObjectSuggestionState" }) as any as S.Schema<EmbeddedObjectSuggestionState>;
 
 /** A mask that indicates which of the fields on the base InlineObjectProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface InlineObjectPropertiesSuggestionState {
   /** A mask that indicates which of the fields in embedded_object have been changed in this suggestion. */
   embeddedObjectSuggestionState?: EmbeddedObjectSuggestionState;
 }
-export const InlineObjectPropertiesSuggestionState = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      embeddedObjectSuggestionState: S.optional(EmbeddedObjectSuggestionState),
-    }),
-).annotate({
-  identifier: "InlineObjectPropertiesSuggestionState",
-}) as any as S.Schema<InlineObjectPropertiesSuggestionState>;
+export const InlineObjectPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "embeddedObjectSuggestionState": S.optional(EmbeddedObjectSuggestionState),
+}),
+).annotate({ identifier: "InlineObjectPropertiesSuggestionState" }) as any as S.Schema<InlineObjectPropertiesSuggestionState>;
 
 /** A suggested change to InlineObjectProperties. */
 export interface SuggestedInlineObjectProperties {
@@ -3808,23 +3343,14 @@ export interface SuggestedInlineObjectProperties {
   inlineObjectProperties?: InlineObjectProperties;
 }
 export const SuggestedInlineObjectProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inlineObjectPropertiesSuggestionState: S.optional(
-      InlineObjectPropertiesSuggestionState,
-    ),
-    inlineObjectProperties: S.optional(InlineObjectProperties),
-  }),
-).annotate({
-  identifier: "SuggestedInlineObjectProperties",
-}) as any as S.Schema<SuggestedInlineObjectProperties>;
+S.Struct({
+  "inlineObjectPropertiesSuggestionState": S.optional(InlineObjectPropertiesSuggestionState),
+  "inlineObjectProperties": S.optional(InlineObjectProperties),
+}),
+).annotate({ identifier: "SuggestedInlineObjectProperties" }) as any as S.Schema<SuggestedInlineObjectProperties>;
 
-export type SuggestedInlineObjectPropertiesMap = {
-  [key: string]: SuggestedInlineObjectProperties | undefined;
-};
-export const SuggestedInlineObjectPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedInlineObjectProperties,
-) as any as S.Schema<SuggestedInlineObjectPropertiesMap>;
+export type SuggestedInlineObjectPropertiesMap = { [key: string]: SuggestedInlineObjectProperties | undefined };
+export const SuggestedInlineObjectPropertiesMap = /*@__PURE__*/ S.Record(S.String, SuggestedInlineObjectProperties) as any as S.Schema<SuggestedInlineObjectPropertiesMap>;
 
 /** An object that appears inline with text. An InlineObject contains an EmbeddedObject such as an image. */
 export interface InlineObject {
@@ -3840,22 +3366,17 @@ export interface InlineObject {
   objectId?: string;
 }
 export const InlineObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedInsertionId: S.optional(S.String),
-    suggestedDeletionIds: S.optional(StringList),
-    inlineObjectProperties: S.optional(InlineObjectProperties),
-    suggestedInlineObjectPropertiesChanges: S.optional(
-      SuggestedInlineObjectPropertiesMap,
-    ),
-    objectId: S.optional(S.String),
-  }),
+S.Struct({
+  "suggestedInsertionId": S.optional(S.String),
+  "suggestedDeletionIds": S.optional(StringList),
+  "inlineObjectProperties": S.optional(InlineObjectProperties),
+  "suggestedInlineObjectPropertiesChanges": S.optional(SuggestedInlineObjectPropertiesMap),
+  "objectId": S.optional(S.String),
+}),
 ).annotate({ identifier: "InlineObject" }) as any as S.Schema<InlineObject>;
 
 export type InlineObjectMap = { [key: string]: InlineObject | undefined };
-export const InlineObjectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InlineObject,
-) as any as S.Schema<InlineObjectMap>;
+export const InlineObjectMap = /*@__PURE__*/ S.Record(S.String, InlineObject) as any as S.Schema<InlineObjectMap>;
 
 /** The document body. The body typically contains the full document contents except for headers, footers, and footnotes. */
 export interface Body {
@@ -3863,9 +3384,9 @@ export interface Body {
   content?: StructuralElementList;
 }
 export const Body = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(StructuralElementList),
-  }),
+S.Struct({
+  "content": S.optional(StructuralElementList),
+}),
 ).annotate({ identifier: "Body" }) as any as S.Schema<Body>;
 
 /** A mask that indicates which of the fields on the base PositionedObjectPositioning have been changed in this suggestion. For any field set to true, there's a new suggested value. */
@@ -3877,16 +3398,13 @@ export interface PositionedObjectPositioningSuggestionState {
   /** Indicates if there was a suggested change to layout. */
   layoutSuggested?: boolean;
 }
-export const PositionedObjectPositioningSuggestionState =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      topOffsetSuggested: S.optional(S.Boolean),
-      leftOffsetSuggested: S.optional(S.Boolean),
-      layoutSuggested: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PositionedObjectPositioningSuggestionState",
-  }) as any as S.Schema<PositionedObjectPositioningSuggestionState>;
+export const PositionedObjectPositioningSuggestionState = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "topOffsetSuggested": S.optional(S.Boolean),
+  "leftOffsetSuggested": S.optional(S.Boolean),
+  "layoutSuggested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PositionedObjectPositioningSuggestionState" }) as any as S.Schema<PositionedObjectPositioningSuggestionState>;
 
 /** A mask that indicates which of the fields on the base PositionedObjectProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface PositionedObjectPropertiesSuggestionState {
@@ -3895,27 +3413,14 @@ export interface PositionedObjectPropertiesSuggestionState {
   /** A mask that indicates which of the fields in embedded_object have been changed in this suggestion. */
   embeddedObjectSuggestionState?: EmbeddedObjectSuggestionState;
 }
-export const PositionedObjectPropertiesSuggestionState =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      positioningSuggestionState: S.optional(
-        PositionedObjectPositioningSuggestionState,
-      ),
-      embeddedObjectSuggestionState: S.optional(EmbeddedObjectSuggestionState),
-    }),
-  ).annotate({
-    identifier: "PositionedObjectPropertiesSuggestionState",
-  }) as any as S.Schema<PositionedObjectPropertiesSuggestionState>;
+export const PositionedObjectPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "positioningSuggestionState": S.optional(PositionedObjectPositioningSuggestionState),
+  "embeddedObjectSuggestionState": S.optional(EmbeddedObjectSuggestionState),
+}),
+).annotate({ identifier: "PositionedObjectPropertiesSuggestionState" }) as any as S.Schema<PositionedObjectPropertiesSuggestionState>;
 
-export type PositionedObjectPositioningLayoutEnum =
-  | "POSITIONED_OBJECT_LAYOUT_UNSPECIFIED"
-  | "WRAP_TEXT"
-  | "BREAK_LEFT"
-  | "BREAK_RIGHT"
-  | "BREAK_LEFT_RIGHT"
-  | "IN_FRONT_OF_TEXT"
-  | "BEHIND_TEXT"
-  | (string & {});
+export type PositionedObjectPositioningLayoutEnum = "POSITIONED_OBJECT_LAYOUT_UNSPECIFIED" | "WRAP_TEXT" | "BREAK_LEFT" | "BREAK_RIGHT" | "BREAK_LEFT_RIGHT" | "IN_FRONT_OF_TEXT" | "BEHIND_TEXT";
 export const PositionedObjectPositioningLayoutEnum = /*@__PURE__*/ S.String;
 
 /** The positioning of a PositionedObject. The positioned object is positioned relative to the beginning of the Paragraph it's tethered to. */
@@ -3928,14 +3433,12 @@ export interface PositionedObjectPositioning {
   leftOffset?: Dimension;
 }
 export const PositionedObjectPositioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topOffset: S.optional(Dimension),
-    layout: S.optional(PositionedObjectPositioningLayoutEnum),
-    leftOffset: S.optional(Dimension),
-  }),
-).annotate({
-  identifier: "PositionedObjectPositioning",
-}) as any as S.Schema<PositionedObjectPositioning>;
+S.Struct({
+  "topOffset": S.optional(Dimension),
+  "layout": S.optional(PositionedObjectPositioningLayoutEnum),
+  "leftOffset": S.optional(Dimension),
+}),
+).annotate({ identifier: "PositionedObjectPositioning" }) as any as S.Schema<PositionedObjectPositioning>;
 
 /** Properties of a PositionedObject. */
 export interface PositionedObjectProperties {
@@ -3945,13 +3448,11 @@ export interface PositionedObjectProperties {
   embeddedObject?: EmbeddedObject;
 }
 export const PositionedObjectProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    positioning: S.optional(PositionedObjectPositioning),
-    embeddedObject: S.optional(EmbeddedObject),
-  }),
-).annotate({
-  identifier: "PositionedObjectProperties",
-}) as any as S.Schema<PositionedObjectProperties>;
+S.Struct({
+  "positioning": S.optional(PositionedObjectPositioning),
+  "embeddedObject": S.optional(EmbeddedObject),
+}),
+).annotate({ identifier: "PositionedObjectProperties" }) as any as S.Schema<PositionedObjectProperties>;
 
 /** A suggested change to PositionedObjectProperties. */
 export interface SuggestedPositionedObjectProperties {
@@ -3961,23 +3462,14 @@ export interface SuggestedPositionedObjectProperties {
   positionedObjectProperties?: PositionedObjectProperties;
 }
 export const SuggestedPositionedObjectProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    positionedObjectPropertiesSuggestionState: S.optional(
-      PositionedObjectPropertiesSuggestionState,
-    ),
-    positionedObjectProperties: S.optional(PositionedObjectProperties),
-  }),
-).annotate({
-  identifier: "SuggestedPositionedObjectProperties",
-}) as any as S.Schema<SuggestedPositionedObjectProperties>;
+S.Struct({
+  "positionedObjectPropertiesSuggestionState": S.optional(PositionedObjectPropertiesSuggestionState),
+  "positionedObjectProperties": S.optional(PositionedObjectProperties),
+}),
+).annotate({ identifier: "SuggestedPositionedObjectProperties" }) as any as S.Schema<SuggestedPositionedObjectProperties>;
 
-export type SuggestedPositionedObjectPropertiesMap = {
-  [key: string]: SuggestedPositionedObjectProperties | undefined;
-};
-export const SuggestedPositionedObjectPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedPositionedObjectProperties,
-) as any as S.Schema<SuggestedPositionedObjectPropertiesMap>;
+export type SuggestedPositionedObjectPropertiesMap = { [key: string]: SuggestedPositionedObjectProperties | undefined };
+export const SuggestedPositionedObjectPropertiesMap = /*@__PURE__*/ S.Record(S.String, SuggestedPositionedObjectProperties) as any as S.Schema<SuggestedPositionedObjectPropertiesMap>;
 
 /** An object that's tethered to a Paragraph and positioned relative to the beginning of the paragraph. A PositionedObject contains an EmbeddedObject such as an image. */
 export interface PositionedObject {
@@ -3993,41 +3485,20 @@ export interface PositionedObject {
   positionedObjectProperties?: PositionedObjectProperties;
 }
 export const PositionedObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestedPositionedObjectPropertiesChanges: S.optional(
-      SuggestedPositionedObjectPropertiesMap,
-    ),
-    suggestedInsertionId: S.optional(S.String),
-    suggestedDeletionIds: S.optional(StringList),
-    objectId: S.optional(S.String),
-    positionedObjectProperties: S.optional(PositionedObjectProperties),
-  }),
-).annotate({
-  identifier: "PositionedObject",
-}) as any as S.Schema<PositionedObject>;
+S.Struct({
+  "suggestedPositionedObjectPropertiesChanges": S.optional(SuggestedPositionedObjectPropertiesMap),
+  "suggestedInsertionId": S.optional(S.String),
+  "suggestedDeletionIds": S.optional(StringList),
+  "objectId": S.optional(S.String),
+  "positionedObjectProperties": S.optional(PositionedObjectProperties),
+}),
+).annotate({ identifier: "PositionedObject" }) as any as S.Schema<PositionedObject>;
 
-export type PositionedObjectMap = {
-  [key: string]: PositionedObject | undefined;
-};
-export const PositionedObjectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PositionedObject,
-) as any as S.Schema<PositionedObjectMap>;
+export type PositionedObjectMap = { [key: string]: PositionedObject | undefined };
+export const PositionedObjectMap = /*@__PURE__*/ S.Record(S.String, PositionedObject) as any as S.Schema<PositionedObjectMap>;
 
-export type NamedStyleSuggestionStateNamedStyleTypeEnum =
-  | "NAMED_STYLE_TYPE_UNSPECIFIED"
-  | "NORMAL_TEXT"
-  | "TITLE"
-  | "SUBTITLE"
-  | "HEADING_1"
-  | "HEADING_2"
-  | "HEADING_3"
-  | "HEADING_4"
-  | "HEADING_5"
-  | "HEADING_6"
-  | (string & {});
-export const NamedStyleSuggestionStateNamedStyleTypeEnum =
-  /*@__PURE__*/ S.String;
+export type NamedStyleSuggestionStateNamedStyleTypeEnum = "NAMED_STYLE_TYPE_UNSPECIFIED" | "NORMAL_TEXT" | "TITLE" | "SUBTITLE" | "HEADING_1" | "HEADING_2" | "HEADING_3" | "HEADING_4" | "HEADING_5" | "HEADING_6";
+export const NamedStyleSuggestionStateNamedStyleTypeEnum = /*@__PURE__*/ S.String;
 
 /** A suggestion state of a NamedStyle message. */
 export interface NamedStyleSuggestionState {
@@ -4039,20 +3510,15 @@ export interface NamedStyleSuggestionState {
   paragraphStyleSuggestionState?: ParagraphStyleSuggestionState;
 }
 export const NamedStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namedStyleType: S.optional(NamedStyleSuggestionStateNamedStyleTypeEnum),
-    textStyleSuggestionState: S.optional(TextStyleSuggestionState),
-    paragraphStyleSuggestionState: S.optional(ParagraphStyleSuggestionState),
-  }),
-).annotate({
-  identifier: "NamedStyleSuggestionState",
-}) as any as S.Schema<NamedStyleSuggestionState>;
+S.Struct({
+  "namedStyleType": S.optional(NamedStyleSuggestionStateNamedStyleTypeEnum),
+  "textStyleSuggestionState": S.optional(TextStyleSuggestionState),
+  "paragraphStyleSuggestionState": S.optional(ParagraphStyleSuggestionState),
+}),
+).annotate({ identifier: "NamedStyleSuggestionState" }) as any as S.Schema<NamedStyleSuggestionState>;
 
-export type NamedStyleSuggestionStateList =
-  ReadonlyArray<NamedStyleSuggestionState>;
-export const NamedStyleSuggestionStateList = /*@__PURE__*/ S.Array(
-  NamedStyleSuggestionState,
-) as any as S.Schema<NamedStyleSuggestionStateList>;
+export type NamedStyleSuggestionStateList = ReadonlyArray<NamedStyleSuggestionState>;
+export const NamedStyleSuggestionStateList = /*@__PURE__*/ S.Array(NamedStyleSuggestionState) as any as S.Schema<NamedStyleSuggestionStateList>;
 
 /** The suggestion state of a NamedStyles message. */
 export interface NamedStylesSuggestionState {
@@ -4060,12 +3526,10 @@ export interface NamedStylesSuggestionState {
   stylesSuggestionStates?: NamedStyleSuggestionStateList;
 }
 export const NamedStylesSuggestionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stylesSuggestionStates: S.optional(NamedStyleSuggestionStateList),
-  }),
-).annotate({
-  identifier: "NamedStylesSuggestionState",
-}) as any as S.Schema<NamedStylesSuggestionState>;
+S.Struct({
+  "stylesSuggestionStates": S.optional(NamedStyleSuggestionStateList),
+}),
+).annotate({ identifier: "NamedStylesSuggestionState" }) as any as S.Schema<NamedStylesSuggestionState>;
 
 /** A suggested change to the NamedStyles. */
 export interface SuggestedNamedStyles {
@@ -4075,21 +3539,14 @@ export interface SuggestedNamedStyles {
   namedStylesSuggestionState?: NamedStylesSuggestionState;
 }
 export const SuggestedNamedStyles = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namedStyles: S.optional(NamedStyles),
-    namedStylesSuggestionState: S.optional(NamedStylesSuggestionState),
-  }),
-).annotate({
-  identifier: "SuggestedNamedStyles",
-}) as any as S.Schema<SuggestedNamedStyles>;
+S.Struct({
+  "namedStyles": S.optional(NamedStyles),
+  "namedStylesSuggestionState": S.optional(NamedStylesSuggestionState),
+}),
+).annotate({ identifier: "SuggestedNamedStyles" }) as any as S.Schema<SuggestedNamedStyles>;
 
-export type SuggestedNamedStylesMap = {
-  [key: string]: SuggestedNamedStyles | undefined;
-};
-export const SuggestedNamedStylesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SuggestedNamedStyles,
-) as any as S.Schema<SuggestedNamedStylesMap>;
+export type SuggestedNamedStylesMap = { [key: string]: SuggestedNamedStyles | undefined };
+export const SuggestedNamedStylesMap = /*@__PURE__*/ S.Record(S.String, SuggestedNamedStyles) as any as S.Schema<SuggestedNamedStylesMap>;
 
 /** A document footer. */
 export interface Footer {
@@ -4099,17 +3556,14 @@ export interface Footer {
   footerId?: string;
 }
 export const Footer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(StructuralElementList),
-    footerId: S.optional(S.String),
-  }),
+S.Struct({
+  "content": S.optional(StructuralElementList),
+  "footerId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Footer" }) as any as S.Schema<Footer>;
 
 export type FooterMap = { [key: string]: Footer | undefined };
-export const FooterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Footer,
-) as any as S.Schema<FooterMap>;
+export const FooterMap = /*@__PURE__*/ S.Record(S.String, Footer) as any as S.Schema<FooterMap>;
 
 /** A tab with document contents. */
 export interface DocumentTab {
@@ -4139,20 +3593,20 @@ export interface DocumentTab {
   footers?: FooterMap;
 }
 export const DocumentTab = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namedStyles: S.optional(NamedStyles),
-    headers: S.optional(HeaderMap),
-    lists: S.optional(ListMap),
-    documentStyle: S.optional(DocumentStyle),
-    namedRanges: S.optional(NamedRangesMap),
-    footnotes: S.optional(FootnoteMap),
-    suggestedDocumentStyleChanges: S.optional(SuggestedDocumentStyleMap),
-    inlineObjects: S.optional(InlineObjectMap),
-    body: S.optional(Body),
-    positionedObjects: S.optional(PositionedObjectMap),
-    suggestedNamedStylesChanges: S.optional(SuggestedNamedStylesMap),
-    footers: S.optional(FooterMap),
-  }),
+S.Struct({
+  "namedStyles": S.optional(NamedStyles),
+  "headers": S.optional(HeaderMap),
+  "lists": S.optional(ListMap),
+  "documentStyle": S.optional(DocumentStyle),
+  "namedRanges": S.optional(NamedRangesMap),
+  "footnotes": S.optional(FootnoteMap),
+  "suggestedDocumentStyleChanges": S.optional(SuggestedDocumentStyleMap),
+  "inlineObjects": S.optional(InlineObjectMap),
+  "body": S.optional(Body),
+  "positionedObjects": S.optional(PositionedObjectMap),
+  "suggestedNamedStylesChanges": S.optional(SuggestedNamedStylesMap),
+  "footers": S.optional(FooterMap),
+}),
 ).annotate({ identifier: "DocumentTab" }) as any as S.Schema<DocumentTab>;
 
 /** A tab in a document. */
@@ -4165,22 +3619,17 @@ export interface Tab {
   tabProperties?: TabProperties;
 }
 export const Tab = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    childTabs: S.optional(S.suspend(() => TabList)),
-    documentTab: S.optional(DocumentTab),
-    tabProperties: S.optional(TabProperties),
-  }),
+S.Struct({
+  "childTabs": S.optional(S.suspend(() => TabList)),
+  "documentTab": S.optional(DocumentTab),
+  "tabProperties": S.optional(TabProperties),
+}),
 ).annotate({ identifier: "Tab" }) as any as S.Schema<Tab>;
 
 export type TabList = ReadonlyArray<Tab>;
 export const TabList = /*@__PURE__*/ S.Array(Tab) as any as S.Schema<TabList>;
 
-export type DocumentSuggestionsViewModeEnum =
-  | "DEFAULT_FOR_CURRENT_ACCESS"
-  | "SUGGESTIONS_INLINE"
-  | "PREVIEW_SUGGESTIONS_ACCEPTED"
-  | "PREVIEW_WITHOUT_SUGGESTIONS"
-  | (string & {});
+export type DocumentSuggestionsViewModeEnum = "DEFAULT_FOR_CURRENT_ACCESS" | "SUGGESTIONS_INLINE" | "PREVIEW_SUGGESTIONS_ACCEPTED" | "PREVIEW_WITHOUT_SUGGESTIONS";
 export const DocumentSuggestionsViewModeEnum = /*@__PURE__*/ S.String;
 
 /** A Google Docs document. */
@@ -4221,25 +3670,25 @@ export interface Document {
   inlineObjects?: InlineObjectMap;
 }
 export const Document = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lists: S.optional(ListMap),
-    tabs: S.optional(TabList),
-    namedStyles: S.optional(NamedStyles),
-    revisionId: S.optional(S.String),
-    footers: S.optional(FooterMap),
-    footnotes: S.optional(FootnoteMap),
-    suggestedDocumentStyleChanges: S.optional(SuggestedDocumentStyleMap),
-    documentStyle: S.optional(DocumentStyle),
-    documentId: S.optional(S.String),
-    headers: S.optional(HeaderMap),
-    body: S.optional(Body),
-    positionedObjects: S.optional(PositionedObjectMap),
-    suggestedNamedStylesChanges: S.optional(SuggestedNamedStylesMap),
-    suggestionsViewMode: S.optional(DocumentSuggestionsViewModeEnum),
-    title: S.optional(S.String),
-    namedRanges: S.optional(NamedRangesMap),
-    inlineObjects: S.optional(InlineObjectMap),
-  }),
+S.Struct({
+  "lists": S.optional(ListMap),
+  "tabs": S.optional(TabList),
+  "namedStyles": S.optional(NamedStyles),
+  "revisionId": S.optional(S.String),
+  "footers": S.optional(FooterMap),
+  "footnotes": S.optional(FootnoteMap),
+  "suggestedDocumentStyleChanges": S.optional(SuggestedDocumentStyleMap),
+  "documentStyle": S.optional(DocumentStyle),
+  "documentId": S.optional(S.String),
+  "headers": S.optional(HeaderMap),
+  "body": S.optional(Body),
+  "positionedObjects": S.optional(PositionedObjectMap),
+  "suggestedNamedStylesChanges": S.optional(SuggestedNamedStylesMap),
+  "suggestionsViewMode": S.optional(DocumentSuggestionsViewModeEnum),
+  "title": S.optional(S.String),
+  "namedRanges": S.optional(NamedRangesMap),
+  "inlineObjects": S.optional(InlineObjectMap),
+}),
 ).annotate({ identifier: "Document" }) as any as S.Schema<Document>;
 
 export interface CreateDocumentsRequest {
@@ -4247,59 +3696,31 @@ export interface CreateDocumentsRequest {
   body?: Document;
 }
 export const CreateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(Document.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/documents",
-      baseUrl: "https://docs.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateDocumentsRequest",
-}) as any as S.Schema<CreateDocumentsRequest>;
+S.Struct({
+  "body": S.optional(Document.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/documents","baseUrl":"https://docs.googleapis.com/"})),
+).annotate({ identifier: "CreateDocumentsRequest" }) as any as S.Schema<CreateDocumentsRequest>;
 
-export type GetDocumentsSuggestionsViewModeEnum =
-  | "DEFAULT_FOR_CURRENT_ACCESS"
-  | "SUGGESTIONS_INLINE"
-  | "PREVIEW_SUGGESTIONS_ACCEPTED"
-  | "PREVIEW_WITHOUT_SUGGESTIONS"
-  | (string & {});
+export type GetDocumentsSuggestionsViewModeEnum = "DEFAULT_FOR_CURRENT_ACCESS" | "SUGGESTIONS_INLINE" | "PREVIEW_SUGGESTIONS_ACCEPTED" | "PREVIEW_WITHOUT_SUGGESTIONS";
 export const GetDocumentsSuggestionsViewModeEnum = /*@__PURE__*/ S.String;
 
 export interface GetDocumentsRequest {
   /** The ID of the document to retrieve. */
   documentId: string;
   /** The suggestions view mode to apply to the document. This allows viewing the document with all suggestions inline, accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS is used. */
-  suggestionsViewMode?: GetDocumentsSuggestionsViewModeEnum;
+  suggestionsViewMode?: GetDocumentsSuggestionsViewModeEnum | (string & {});
   /** Whether to populate the Document.tabs field instead of the text content fields like `body` and `documentStyle` on Document. - When `True`: Document content populates in the Document.tabs field instead of the text content fields in Document. - When `False`: The content of the document's first tab populates the content fields in Document excluding Document.tabs. If a document has only one tab, then that tab is used to populate the document content. Document.tabs will be empty. */
   includeTabsContent?: boolean;
 }
 export const GetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentId: S.String.pipe(T.Label()),
-    suggestionsViewMode: S.optional(
-      GetDocumentsSuggestionsViewModeEnum.pipe(T.Query()),
-    ),
-    includeTabsContent: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/documents/{documentId}",
-      baseUrl: "https://docs.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetDocumentsRequest",
-}) as any as S.Schema<GetDocumentsRequest>;
+S.Struct({
+  "documentId": S.String.pipe(T.Label()),
+  "suggestionsViewMode": S.optional(GetDocumentsSuggestionsViewModeEnum.pipe(T.Query())),
+  "includeTabsContent": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/documents/{documentId}","baseUrl":"https://docs.googleapis.com/"})),
+).annotate({ identifier: "GetDocumentsRequest" }) as any as S.Schema<GetDocumentsRequest>;
 
-export type BatchUpdateDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Applies one or more updates to the document. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests. For example, suppose you call batchUpdate with four updates, and only the third one returns information. The response would have two empty replies, the reply to the third request, and another empty reply, in that order. Because other users may be editing the document, the document might not exactly reflect your changes: your changes may be altered with respect to collaborator changes. If there are no collaborators, the document should reflect your changes. In any case, the updates in your request are guaranteed to be applied together atomically. */
 export const batchUpdateDocuments: API.OperationMethod<
   BatchUpdateDocumentsRequest,
@@ -4314,12 +3735,7 @@ export const batchUpdateDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a blank document using the title given in the request. Other fields in the request, including any provided content, are ignored. Returns the created document. */
 export const createDocuments: API.OperationMethod<
   CreateDocumentsRequest,
@@ -4348,3 +3764,4 @@ export const getDocuments: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

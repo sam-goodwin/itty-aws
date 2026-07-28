@@ -13,62 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type BatchGetAmpUrlsRequestLookupStrategyEnum =
-  | "FETCH_LIVE_DOC"
-  | "IN_INDEX_DOC"
-  | (string & {});
+export type BatchGetAmpUrlsRequestLookupStrategyEnum = "FETCH_LIVE_DOC" | "IN_INDEX_DOC";
 export const BatchGetAmpUrlsRequestLookupStrategyEnum = /*@__PURE__*/ S.String;
 
 /** AMP URL request for a batch of URLs. */
@@ -76,43 +71,26 @@ export interface BatchGetAmpUrlsRequest {
   /** List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per lookup (see [Usage Limits](/amp/cache/reference/limits)). */
   urls?: StringList;
   /** The lookup_strategy being requested. */
-  lookupStrategy?: BatchGetAmpUrlsRequestLookupStrategyEnum;
+  lookupStrategy?: BatchGetAmpUrlsRequestLookupStrategyEnum | (string & {});
 }
 export const BatchGetAmpUrlsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    urls: S.optional(StringList),
-    lookupStrategy: S.optional(BatchGetAmpUrlsRequestLookupStrategyEnum),
-  }),
-).annotate({
-  identifier: "BatchGetAmpUrlsRequest",
-}) as any as S.Schema<BatchGetAmpUrlsRequest>;
+S.Struct({
+  "urls": S.optional(StringList),
+  "lookupStrategy": S.optional(BatchGetAmpUrlsRequestLookupStrategyEnum),
+}),
+).annotate({ identifier: "BatchGetAmpUrlsRequest" }) as any as S.Schema<BatchGetAmpUrlsRequest>;
 
 export interface BatchGetAmpUrlsRequest_ {
   /** Request body */
   body?: BatchGetAmpUrlsRequest;
 }
 export const BatchGetAmpUrlsRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(BatchGetAmpUrlsRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/ampUrls:batchGet",
-      baseUrl: "https://acceleratedmobilepageurl.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchGetAmpUrlsRequest_",
-}) as any as S.Schema<BatchGetAmpUrlsRequest_>;
+S.Struct({
+  "body": S.optional(BatchGetAmpUrlsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/ampUrls:batchGet","baseUrl":"https://acceleratedmobilepageurl.googleapis.com/"})),
+).annotate({ identifier: "BatchGetAmpUrlsRequest_" }) as any as S.Schema<BatchGetAmpUrlsRequest_>;
 
-export type AmpUrlErrorErrorCodeEnum =
-  | "ERROR_CODE_UNSPECIFIED"
-  | "INPUT_URL_NOT_FOUND"
-  | "NO_AMP_URL"
-  | "APPLICATION_ERROR"
-  | "URL_IS_VALID_AMP"
-  | "URL_IS_INVALID_AMP"
-  | (string & {});
+export type AmpUrlErrorErrorCodeEnum = "ERROR_CODE_UNSPECIFIED" | "INPUT_URL_NOT_FOUND" | "NO_AMP_URL" | "APPLICATION_ERROR" | "URL_IS_VALID_AMP" | "URL_IS_INVALID_AMP";
 export const AmpUrlErrorErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** AMP URL Error resource for a requested URL that couldn't be found. */
@@ -125,17 +103,15 @@ export interface AmpUrlError {
   errorMessage?: string;
 }
 export const AmpUrlError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: S.optional(AmpUrlErrorErrorCodeEnum),
-    originalUrl: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-  }),
+S.Struct({
+  "errorCode": S.optional(AmpUrlErrorErrorCodeEnum),
+  "originalUrl": S.optional(S.String),
+  "errorMessage": S.optional(S.String),
+}),
 ).annotate({ identifier: "AmpUrlError" }) as any as S.Schema<AmpUrlError>;
 
 export type AmpUrlErrorList = ReadonlyArray<AmpUrlError>;
-export const AmpUrlErrorList = /*@__PURE__*/ S.Array(
-  AmpUrlError,
-) as any as S.Schema<AmpUrlErrorList>;
+export const AmpUrlErrorList = /*@__PURE__*/ S.Array(AmpUrlError) as any as S.Schema<AmpUrlErrorList>;
 
 /** AMP URL response for a requested URL. */
 export interface AmpUrl {
@@ -147,17 +123,15 @@ export interface AmpUrl {
   cdnAmpUrl?: string;
 }
 export const AmpUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originalUrl: S.optional(S.String),
-    ampUrl: S.optional(S.String),
-    cdnAmpUrl: S.optional(S.String),
-  }),
+S.Struct({
+  "originalUrl": S.optional(S.String),
+  "ampUrl": S.optional(S.String),
+  "cdnAmpUrl": S.optional(S.String),
+}),
 ).annotate({ identifier: "AmpUrl" }) as any as S.Schema<AmpUrl>;
 
 export type AmpUrlList = ReadonlyArray<AmpUrl>;
-export const AmpUrlList = /*@__PURE__*/ S.Array(
-  AmpUrl,
-) as any as S.Schema<AmpUrlList>;
+export const AmpUrlList = /*@__PURE__*/ S.Array(AmpUrl) as any as S.Schema<AmpUrlList>;
 
 /** Batch AMP URL response. */
 export interface BatchGetAmpUrlsResponse {
@@ -167,20 +141,13 @@ export interface BatchGetAmpUrlsResponse {
   ampUrls?: AmpUrlList;
 }
 export const BatchGetAmpUrlsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    urlErrors: S.optional(AmpUrlErrorList),
-    ampUrls: S.optional(AmpUrlList),
-  }),
-).annotate({
-  identifier: "BatchGetAmpUrlsResponse",
-}) as any as S.Schema<BatchGetAmpUrlsResponse>;
+S.Struct({
+  "urlErrors": S.optional(AmpUrlErrorList),
+  "ampUrls": S.optional(AmpUrlList),
+}),
+).annotate({ identifier: "BatchGetAmpUrlsResponse" }) as any as S.Schema<BatchGetAmpUrlsResponse>;
 
-export type BatchGetAmpUrlsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchGetAmpUrlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format). */
 export const batchGetAmpUrls: API.OperationMethod<
   BatchGetAmpUrlsRequest_,
@@ -194,3 +161,4 @@ export const batchGetAmpUrls: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

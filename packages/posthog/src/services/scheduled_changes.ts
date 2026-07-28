@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `FeatureFlag` - feature flag */
-export type ModelNameEnum = "FeatureFlag" | (string & {});
+export type ModelNameEnum = "FeatureFlag";
 export const ModelNameEnum = /*@__PURE__*/ S.String;
 
 /** * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
@@ -20,8 +20,7 @@ export type ScheduledChangeRecurrenceIntervalEnum =
   | "daily"
   | "weekly"
   | "monthly"
-  | "yearly"
-  | (string & {});
+  | "yearly";
 export const ScheduledChangeRecurrenceIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface ScheduledChangesCreateRequest {
@@ -30,7 +29,7 @@ export interface ScheduledChangesCreateRequest {
   /** The ID of the record to modify (e.g. the feature flag ID). */
   record_id: string;
   /** The type of record to modify. Currently only "FeatureFlag" is supported. * `FeatureFlag` - feature flag */
-  model_name: ModelNameEnum;
+  model_name: ModelNameEnum | (string & {});
   /** The change to apply. Must include an 'operation' key and a 'value' key. Supported operations: 'update_status' (value: true/false to enable/disable the flag), 'add_release_condition' (value: object with 'groups', 'payloads', and 'multivariate' keys), 'update_variants' (value: object with 'variants' and 'payloads' keys). */
   payload: unknown;
   /** ISO 8601 datetime when the change should be applied (e.g. '2025-06-01T14:00:00Z'). */
@@ -38,7 +37,10 @@ export interface ScheduledChangesCreateRequest {
   /** Whether this schedule repeats. Only the 'update_status' operation supports recurring schedules. */
   is_recurring?: boolean;
   /** How often the schedule repeats. Required when is_recurring is true. One of: daily, weekly, monthly, yearly. * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
-  recurrence_interval?: ScheduledChangeRecurrenceIntervalEnum | null;
+  recurrence_interval?:
+    | ScheduledChangeRecurrenceIntervalEnum
+    | (string & {})
+    | null;
   cron_expression?: string | null;
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
@@ -82,11 +84,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -260,7 +261,7 @@ export interface ScheduledChangesPartialUpdateRequest {
   /** The ID of the record to modify (e.g. the feature flag ID). */
   record_id?: string;
   /** The type of record to modify. Currently only "FeatureFlag" is supported. * `FeatureFlag` - feature flag */
-  model_name?: ModelNameEnum;
+  model_name?: ModelNameEnum | (string & {});
   /** The change to apply. Must include an 'operation' key and a 'value' key. Supported operations: 'update_status' (value: true/false to enable/disable the flag), 'add_release_condition' (value: object with 'groups', 'payloads', and 'multivariate' keys), 'update_variants' (value: object with 'variants' and 'payloads' keys). */
   payload?: unknown;
   /** ISO 8601 datetime when the change should be applied (e.g. '2025-06-01T14:00:00Z'). */
@@ -268,7 +269,10 @@ export interface ScheduledChangesPartialUpdateRequest {
   /** Whether this schedule repeats. Only the 'update_status' operation supports recurring schedules. */
   is_recurring?: boolean;
   /** How often the schedule repeats. Required when is_recurring is true. One of: daily, weekly, monthly, yearly. * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
-  recurrence_interval?: ScheduledChangeRecurrenceIntervalEnum | null;
+  recurrence_interval?:
+    | ScheduledChangeRecurrenceIntervalEnum
+    | (string & {})
+    | null;
   cron_expression?: string | null;
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
@@ -328,7 +332,7 @@ export interface ScheduledChangesUpdateRequest {
   /** The ID of the record to modify (e.g. the feature flag ID). */
   record_id: string;
   /** The type of record to modify. Currently only "FeatureFlag" is supported. * `FeatureFlag` - feature flag */
-  model_name: ModelNameEnum;
+  model_name: ModelNameEnum | (string & {});
   /** The change to apply. Must include an 'operation' key and a 'value' key. Supported operations: 'update_status' (value: true/false to enable/disable the flag), 'add_release_condition' (value: object with 'groups', 'payloads', and 'multivariate' keys), 'update_variants' (value: object with 'variants' and 'payloads' keys). */
   payload: unknown;
   /** ISO 8601 datetime when the change should be applied (e.g. '2025-06-01T14:00:00Z'). */
@@ -336,7 +340,10 @@ export interface ScheduledChangesUpdateRequest {
   /** Whether this schedule repeats. Only the 'update_status' operation supports recurring schedules. */
   is_recurring?: boolean;
   /** How often the schedule repeats. Required when is_recurring is true. One of: daily, weekly, monthly, yearly. * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
-  recurrence_interval?: ScheduledChangeRecurrenceIntervalEnum | null;
+  recurrence_interval?:
+    | ScheduledChangeRecurrenceIntervalEnum
+    | (string & {})
+    | null;
   cron_expression?: string | null;
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;

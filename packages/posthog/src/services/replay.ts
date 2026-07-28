@@ -92,10 +92,7 @@ export const SessionSummaries = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionSummaries>;
 
 /** * `collection` - Collection * `filters` - Filters */
-export type SessionRecordingPlaylistTypeEnum =
-  | "collection"
-  | "filters"
-  | (string & {});
+export type SessionRecordingPlaylistTypeEnum = "collection" | "filters";
 export const SessionRecordingPlaylistTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SessionRecordingPlaylistsCreateRequest {
@@ -113,7 +110,7 @@ export interface SessionRecordingPlaylistsCreateRequest {
   /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them. */
   filters?: unknown;
   /** Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after. * `collection` - Collection * `filters` - Filters */
-  type?: SessionRecordingPlaylistTypeEnum | null;
+  type?: SessionRecordingPlaylistTypeEnum | (string & {}) | null;
   _create_in_folder?: string;
 }
 export const SessionRecordingPlaylistsCreateRequest = /*@__PURE__*/ S.suspend(
@@ -154,11 +151,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -366,7 +362,7 @@ export interface SessionRecordingPlaylistsPartialUpdateRequest {
   /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them. */
   filters?: unknown;
   /** Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after. * `collection` - Collection * `filters` - Filters */
-  type?: SessionRecordingPlaylistTypeEnum | null;
+  type?: SessionRecordingPlaylistTypeEnum | (string & {}) | null;
   _create_in_folder?: string;
 }
 export const SessionRecordingPlaylistsPartialUpdateRequest =
@@ -410,7 +406,7 @@ export interface SessionRecordingPlaylistsRecordingsCreateRequest {
   /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them. */
   filters?: unknown;
   /** Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after. * `collection` - Collection * `filters` - Filters */
-  type?: SessionRecordingPlaylistTypeEnum | null;
+  type?: SessionRecordingPlaylistTypeEnum | (string & {}) | null;
   _create_in_folder?: string;
 }
 export const SessionRecordingPlaylistsRecordingsCreateRequest =
@@ -537,7 +533,7 @@ export interface SessionRecordingPlaylistsUpdateRequest {
   /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them. */
   filters?: unknown;
   /** Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after. * `collection` - Collection * `filters` - Filters */
-  type?: SessionRecordingPlaylistTypeEnum | null;
+  type?: SessionRecordingPlaylistTypeEnum | (string & {}) | null;
   _create_in_folder?: string;
 }
 export const SessionRecordingPlaylistsUpdateRequest = /*@__PURE__*/ S.suspend(

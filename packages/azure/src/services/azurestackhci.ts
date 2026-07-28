@@ -47,8 +47,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -56,8 +55,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -105,8 +103,7 @@ export type ProvisioningState =
   | "InProgress"
   | "Accepted"
   | "Provisioning"
-  | "DisableInProgress"
-  | (string & {});
+  | "DisableInProgress";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Aggregate state of Arc agent across the nodes in this HCI cluster. */
@@ -128,8 +125,7 @@ export type ArcSettingAggregateState =
   | "InProgress"
   | "Accepted"
   | "Provisioning"
-  | "DisableInProgress"
-  | (string & {});
+  | "DisableInProgress";
 export const ArcSettingAggregateState = /*@__PURE__*/ S.String;
 
 /** State of the Arc agent in this node. Indicates the current lifecycle status of the agent, such as whether it's being provisioned, connected, updated, or has encountered an error. */
@@ -151,8 +147,7 @@ export type NodeArcState =
   | "InProgress"
   | "Accepted"
   | "Provisioning"
-  | "DisableInProgress"
-  | (string & {});
+  | "DisableInProgress";
 export const NodeArcState = /*@__PURE__*/ S.String;
 
 /** Status of Arc agent for a particular node in HCI Cluster. */
@@ -183,7 +178,7 @@ export const ArcSettingPropertiesPerNodeDetailsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ArcSettingPropertiesPerNodeDetailsList>;
 
 /** Specifies the name of the service associated with the update or operation. This helps identify which system component or tool is involved. */
-export type ServiceName = "WAC" | (string & {});
+export type ServiceName = "WAC";
 export const ServiceName = /*@__PURE__*/ S.String;
 
 /** Service configuration details */
@@ -850,7 +845,7 @@ export const ArcSettingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArcSettingsUpdateResponse>;
 
 /** Remote Support Type for cluster */
-export type RemoteSupportType = "Enable" | "Revoke" | (string & {});
+export type RemoteSupportType = "Enable" | "Revoke";
 export const RemoteSupportType = /*@__PURE__*/ S.String;
 
 /** Properties for Remote Support Request */
@@ -858,7 +853,7 @@ export interface RemoteSupportRequestProperties {
   /** Expiration DateTimeStamp when Remote Support Access will be expired */
   expirationTimeStamp?: string;
   /** Remote Support Type for cluster */
-  remoteSupportType?: RemoteSupportType;
+  remoteSupportType?: RemoteSupportType | (string & {});
 }
 export const RemoteSupportRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -921,8 +916,7 @@ export type Status =
   | "ValidationFailed"
   | "DeploymentInProgress"
   | "DeploymentFailed"
-  | "DeploymentSuccess"
-  | (string & {});
+  | "DeploymentSuccess";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Overall connectivity status for the cluster resource. Indicates whether the cluster is connected to Azure, partially connected, or has not recently communicated. */
@@ -932,16 +926,15 @@ export type ConnectivityStatus =
   | "NotConnectedRecently"
   | "PartiallyConnected"
   | "Disconnected"
-  | "NotSpecified"
-  | (string & {});
+  | "NotSpecified";
 export const ConnectivityStatus = /*@__PURE__*/ S.String;
 
 /** Status of the Software Assurance for the cluster. */
-export type SoftwareAssuranceStatus = "Enabled" | "Disabled" | (string & {});
+export type SoftwareAssuranceStatus = "Enabled" | "Disabled";
 export const SoftwareAssuranceStatus = /*@__PURE__*/ S.String;
 
 /** Customer Intent for Software Assurance Benefit. */
-export type SoftwareAssuranceIntent = "Enable" | "Disable" | (string & {});
+export type SoftwareAssuranceIntent = "Enable" | "Disable";
 export const SoftwareAssuranceIntent = /*@__PURE__*/ S.String;
 
 /** Software Assurance properties of the cluster. */
@@ -968,12 +961,11 @@ export type LogCollectionStatus =
   | "None"
   | "InProgress"
   | "Failed"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const LogCollectionStatus = /*@__PURE__*/ S.String;
 
 /** Specifies the type of log collection job. Determines whether the logs are collected immediately on demand or as part of a scheduled operation. */
-export type LogCollectionJobType = "OnDemand" | "Scheduled" | (string & {});
+export type LogCollectionJobType = "OnDemand" | "Scheduled";
 export const LogCollectionJobType = /*@__PURE__*/ S.String;
 
 /** Log Collection Error details of the cluster. */
@@ -1060,10 +1052,7 @@ export const LogCollectionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogCollectionProperties>;
 
 /** Remote Support Access Level */
-export type AccessLevel =
-  | "Diagnostics"
-  | "DiagnosticsAndRepair"
-  | (string & {});
+export type AccessLevel = "Diagnostics" | "DiagnosticsAndRepair";
 export const AccessLevel = /*@__PURE__*/ S.String;
 
 /** Remote Support Node Settings of the cluster. */
@@ -1145,8 +1134,7 @@ export type RemoteSupportProvisioningState =
   | "GrantInProgress"
   | "RevokeInProgress"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const RemoteSupportProvisioningState = /*@__PURE__*/ S.String;
 
 /** Remote Support properties of the cluster. */
@@ -1180,11 +1168,11 @@ export const RemoteSupportProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoteSupportProperties>;
 
 /** Desired state of Windows Server Subscription. */
-export type WindowsServerSubscription = "Disabled" | "Enabled" | (string & {});
+export type WindowsServerSubscription = "Disabled" | "Enabled";
 export const WindowsServerSubscription = /*@__PURE__*/ S.String;
 
 /** Desired level of diagnostic data emitted by the cluster. */
-export type DiagnosticLevel = "Off" | "Basic" | "Enhanced" | (string & {});
+export type DiagnosticLevel = "Off" | "Basic" | "Enhanced";
 export const DiagnosticLevel = /*@__PURE__*/ S.String;
 
 /** Desired properties of the cluster. */
@@ -1204,11 +1192,11 @@ export const ClusterDesiredProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterDesiredProperties>;
 
 /** Specifies the type of hardware vendor for all nodes in the cluster. Indicates whether the nodes are provided by Microsoft or a third-party vendor. */
-export type ClusterNodeType = "FirstParty" | "ThirdParty" | (string & {});
+export type ClusterNodeType = "FirstParty" | "ThirdParty";
 export const ClusterNodeType = /*@__PURE__*/ S.String;
 
 /** OEM activation status of the cluster. */
-export type OemActivation = "Disabled" | "Enabled" | (string & {});
+export type OemActivation = "Disabled" | "Enabled";
 export const OemActivation = /*@__PURE__*/ S.String;
 
 /** Cluster node details. */
@@ -1271,7 +1259,7 @@ export const ClusterReportedPropertiesNodesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClusterReportedPropertiesNodesList>;
 
 /** IMDS attestation status of the cluster. */
-export type ImdsAttestation = "Disabled" | "Enabled" | (string & {});
+export type ImdsAttestation = "Disabled" | "Enabled";
 export const ImdsAttestation = /*@__PURE__*/ S.String;
 
 /** Capabilities supported by the cluster. */
@@ -1286,8 +1274,7 @@ export const ClusterReportedPropertiesSupportedCapabilitiesList =
 export type ClusterReportedPropertiesHardwareClass =
   | "Small"
   | "Medium"
-  | "Large"
-  | (string & {});
+  | "Large";
 export const ClusterReportedPropertiesHardwareClass = /*@__PURE__*/ S.String;
 
 /** Properties reported by cluster agent. */
@@ -1399,7 +1386,7 @@ export const ClusterBillingProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterBillingProperties>;
 
 /** Type of secrets to store */
-export type SecretsType = "BackupSecrets" | (string & {});
+export type SecretsType = "BackupSecrets";
 export const SecretsType = /*@__PURE__*/ S.String;
 
 /** Secrets location details */
@@ -1426,7 +1413,7 @@ export const ClusterPropertiesSecretsLocationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClusterPropertiesSecretsLocationsList>;
 
 /** Supported Storage Pattern for HCI Cluster */
-export type ClusterPattern = "Standard" | "RackAware" | (string & {});
+export type ClusterPattern = "Standard" | "RackAware";
 export const ClusterPattern = /*@__PURE__*/ S.String;
 
 /** Nodes belonging to a particular zone */
@@ -1462,12 +1449,11 @@ export const ClusterPropertiesLocalAvailabilityZonesList =
 /** Identity Provider for the cluster */
 export type ClusterPropertiesIdentityProvider =
   | "ActiveDirectory"
-  | "LocalIdentity"
-  | (string & {});
+  | "LocalIdentity";
 export const ClusterPropertiesIdentityProvider = /*@__PURE__*/ S.String;
 
 /** Storage type supported for HCI Cluster. */
-export type StorageType = "S2D" | "SAN" | "SANS2D" | (string & {});
+export type StorageType = "S2D" | "SAN" | "SANS2D";
 export const StorageType = /*@__PURE__*/ S.String;
 
 /** Cluster properties. */
@@ -1576,8 +1562,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -1678,7 +1663,7 @@ export const ClustersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Software Assurance properties of the cluster. */
 export interface SoftwareAssurancePropertiesInput {
   /** Customer Intent for Software Assurance Benefit. */
-  softwareAssuranceIntent?: SoftwareAssuranceIntent;
+  softwareAssuranceIntent?: SoftwareAssuranceIntent | (string & {});
 }
 export const SoftwareAssurancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1784,7 +1769,7 @@ export const ClustersCreateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClustersCreateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClustersCreateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -2006,7 +1991,7 @@ export const ClustersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface SoftwareAssuranceChangeRequestProperties {
   /** Customer Intent for Software Assurance Benefit. This indicates whether the customer wishes to opt in or out of the Software Assurance program, which provides licensing and support benefits. */
-  softwareAssuranceIntent?: SoftwareAssuranceIntent;
+  softwareAssuranceIntent?: SoftwareAssuranceIntent | (string & {});
 }
 export const SoftwareAssuranceChangeRequestProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -2508,7 +2493,7 @@ export const ClustersUpdateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClustersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClustersUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -2835,14 +2820,13 @@ export const DeploymentSettingsPropertiesInputArcNodeResourceIdsList =
   ) as any as S.Schema<DeploymentSettingsPropertiesInputArcNodeResourceIdsList>;
 
 /** Deployment mode to trigger job. */
-export type DeploymentMode = "Validate" | "Deploy" | (string & {});
+export type DeploymentMode = "Validate" | "Deploy";
 export const DeploymentMode = /*@__PURE__*/ S.String;
 
 /** The intended operation for a cluster. */
 export type DeploymentSettingsPropertiesInputOperationType =
   | "ClusterProvisioning"
-  | "ClusterUpgrade"
-  | (string & {});
+  | "ClusterUpgrade";
 export const DeploymentSettingsPropertiesInputOperationType =
   /*@__PURE__*/ S.String;
 
@@ -2916,7 +2900,7 @@ export interface DeploymentClusterInput {
   /** For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net. */
   azureServiceEndpoint?: string;
   /** Cluster Pattern supported. */
-  clusterPattern?: ClusterPattern;
+  clusterPattern?: ClusterPattern | (string & {});
 }
 export const DeploymentClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2932,18 +2916,15 @@ export const DeploymentClusterInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentClusterInput>;
 
 /** Identity Provider for the cluster */
-export type IdentityProvider =
-  | "ActiveDirectory"
-  | "LocalIdentity"
-  | (string & {});
+export type IdentityProvider = "ActiveDirectory" | "LocalIdentity";
 export const IdentityProvider = /*@__PURE__*/ S.String;
 
 /** Volume provisioning type for S2D storage. */
-export type VolumeType = "Fixed" | "ThinProvisioned" | (string & {});
+export type VolumeType = "Fixed" | "ThinProvisioned";
 export const VolumeType = /*@__PURE__*/ S.String;
 
 /** Overprovisioning ratio for S2D storage. */
-export type OverprovisioningRatio = "0" | "1" | "2" | (string & {});
+export type OverprovisioningRatio = "0" | "1" | "2";
 export const OverprovisioningRatio = /*@__PURE__*/ S.String;
 
 /** The S2D (Storage Spaces Direct) configuration for AzureStackHCI Cluster storage. */
@@ -3021,8 +3002,7 @@ export const InfrastructureNetworkIpPoolsList = /*@__PURE__*/ S.Array(
 /** Specifies how DNS servers are configured for the infrastructure network. Allowed values are 'UseDnsServer' to use the provided DNS servers, and 'UseForwarder' to use DNS forwarders. */
 export type InfrastructureNetworkDnsServerConfig =
   | "UseDnsServer"
-  | "UseForwarder"
-  | (string & {});
+  | "UseForwarder";
 export const InfrastructureNetworkDnsServerConfig = /*@__PURE__*/ S.String;
 
 /** Forwarder details of the DNS Zone to be configured. */
@@ -3432,8 +3412,7 @@ export type EceSecrets =
   | "AzureStackLCMUserCredential"
   | "DefaultARBApplication"
   | "LocalAdminCredential"
-  | "WitnessStorageKey"
-  | (string & {});
+  | "WitnessStorageKey";
 export const EceSecrets = /*@__PURE__*/ S.String;
 
 /** Protected parameters list stored in keyvault. */
@@ -3500,7 +3479,7 @@ export interface DeploymentDataInput {
   /** Observability config to deploy AzureStackHCI Cluster. */
   cluster?: DeploymentClusterInput;
   /** Identity Provider for the cluster */
-  identityProvider?: IdentityProvider;
+  identityProvider?: IdentityProvider | (string & {});
   /** Storage config to deploy AzureStackHCI Cluster. */
   storage?: Storage;
   /** naming prefix to deploy cluster. */
@@ -3691,9 +3670,11 @@ export interface DeploymentSettingsPropertiesInput {
   /** Azure resource ids of Arc machines to be part of cluster. */
   arcNodeResourceIds: DeploymentSettingsPropertiesInputArcNodeResourceIdsList;
   /** The deployment mode for cluster deployment. */
-  deploymentMode: DeploymentMode;
+  deploymentMode: DeploymentMode | (string & {});
   /** The intended operation for a cluster. */
-  operationType?: DeploymentSettingsPropertiesInputOperationType;
+  operationType?:
+    | DeploymentSettingsPropertiesInputOperationType
+    | (string & {});
   /** Scale units will contains list of deployment data */
   deploymentConfiguration: DeploymentConfigurationInput;
 }
@@ -3751,16 +3732,11 @@ export const DeploymentSettingsPropertiesArcNodeResourceIdsList =
 /** The intended operation for a cluster. */
 export type DeploymentSettingsPropertiesOperationType =
   | "ClusterProvisioning"
-  | "ClusterUpgrade"
-  | (string & {});
+  | "ClusterUpgrade";
 export const DeploymentSettingsPropertiesOperationType = /*@__PURE__*/ S.String;
 
 /** Hardware class of the cluster. */
-export type DeploymentClusterHardwareClass =
-  | "Small"
-  | "Medium"
-  | "Large"
-  | (string & {});
+export type DeploymentClusterHardwareClass = "Small" | "Medium" | "Large";
 export const DeploymentClusterHardwareClass = /*@__PURE__*/ S.String;
 
 /** AzureStackHCI Cluster deployment properties. */
@@ -4259,7 +4235,7 @@ export const DeploymentSettingListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentSettingListResult>;
 
 /** Edge device kind. */
-export type EdgeDeviceKind = "HCI" | (string & {});
+export type EdgeDeviceKind = "HCI";
 export const EdgeDeviceKind = /*@__PURE__*/ S.String;
 
 export interface EdgeDeviceJobsCreateOrUpdateRequest {
@@ -4270,7 +4246,7 @@ export interface EdgeDeviceJobsCreateOrUpdateRequest {
   /** Name of EdgeDevice Job */
   jobsName: string;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: EdgeDeviceKind;
+  kind: EdgeDeviceKind | (string & {});
 }
 export const EdgeDeviceJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4465,7 +4441,7 @@ export const EdgeDeviceJobListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EdgeDeviceJobListResult>;
 
 /** Edge device kind. */
-export type DeviceKind = "HCI" | (string & {});
+export type DeviceKind = "HCI";
 export const DeviceKind = /*@__PURE__*/ S.String;
 
 export interface EdgeDevicesCreateOrUpdateRequest {
@@ -4474,7 +4450,7 @@ export interface EdgeDevicesCreateOrUpdateRequest {
   /** Name of Device */
   edgeDeviceName: string;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DeviceKind;
+  kind: DeviceKind | (string & {});
 }
 export const EdgeDevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4804,8 +4780,7 @@ export type ExtensionAggregateState =
   | "InProgress"
   | "Accepted"
   | "Provisioning"
-  | "UpgradeFailedRollbackSucceeded"
-  | (string & {});
+  | "UpgradeFailedRollbackSucceeded";
 export const ExtensionAggregateState = /*@__PURE__*/ S.String;
 
 /** State of Arc Extension in this node. Reflects the current lifecycle status of the extension on the individual node, such as whether it's being created, updated, deleted, or has encountered an error. */
@@ -4826,12 +4801,11 @@ export type NodeExtensionState =
   | "PartiallyConnected"
   | "InProgress"
   | "Accepted"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const NodeExtensionState = /*@__PURE__*/ S.String;
 
 /** The level code. Indicates the severity or importance of the status message. */
-export type StatusLevelTypes = "Info" | "Warning" | "Error" | (string & {});
+export type StatusLevelTypes = "Info" | "Warning" | "Error";
 export const StatusLevelTypes = /*@__PURE__*/ S.String;
 
 /** Instance view status. */
@@ -4915,7 +4889,7 @@ export const ExtensionPropertiesPerNodeExtensionDetailsList =
   ) as any as S.Schema<ExtensionPropertiesPerNodeExtensionDetailsList>;
 
 /** Indicates whether the extension is managed by the user or by Azure. */
-export type ExtensionManagedBy = "User" | "Azure" | (string & {});
+export type ExtensionManagedBy = "User" | "Azure";
 export const ExtensionManagedBy = /*@__PURE__*/ S.String;
 
 /** Status of Arc Extension for a particular node in HCI Cluster. */
@@ -5277,25 +5251,18 @@ export const GalleryImagesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GalleryImagesCreateOrUpdateRequestTagsMap>;
 
 /** Operating system type that the gallery image uses [Windows, Linux] */
-export type GalleryImagePropertiesInputOsType =
-  | "Windows"
-  | "Linux"
-  | (string & {});
+export type GalleryImagePropertiesInputOsType = "Windows" | "Linux";
 export const GalleryImagePropertiesInputOsType = /*@__PURE__*/ S.String;
 
 /** Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure] */
 export type GalleryImagePropertiesInputCloudInitDataSource =
   | "NoCloud"
-  | "Azure"
-  | (string & {});
+  | "Azure";
 export const GalleryImagePropertiesInputCloudInitDataSource =
   /*@__PURE__*/ S.String;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
-export type GalleryImagePropertiesInputHyperVGeneration =
-  | "V1"
-  | "V2"
-  | (string & {});
+export type GalleryImagePropertiesInputHyperVGeneration = "V1" | "V2";
 export const GalleryImagePropertiesInputHyperVGeneration =
   /*@__PURE__*/ S.String;
 
@@ -5373,11 +5340,15 @@ export interface GalleryImagePropertiesInput {
   /** location of the image the gallery image should be created from */
   imagePath?: string;
   /** Operating system type that the gallery image uses [Windows, Linux] */
-  osType: GalleryImagePropertiesInputOsType;
+  osType: GalleryImagePropertiesInputOsType | (string & {});
   /** Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure] */
-  cloudInitDataSource?: GalleryImagePropertiesInputCloudInitDataSource;
+  cloudInitDataSource?:
+    | GalleryImagePropertiesInputCloudInitDataSource
+    | (string & {});
   /** The hypervisor generation of the Virtual Machine [V1, V2] */
-  hyperVGeneration?: GalleryImagePropertiesInputHyperVGeneration;
+  hyperVGeneration?:
+    | GalleryImagePropertiesInputHyperVGeneration
+    | (string & {});
   identifier?: GalleryImageIdentifier;
   version?: GalleryImageVersionInput;
 }
@@ -5398,7 +5369,7 @@ export const GalleryImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GalleryImagePropertiesInput>;
 
 /** The type of extendedLocation. */
-export type ExtendedLocationType = "CustomLocation" | (string & {});
+export type ExtendedLocationType = "CustomLocation";
 export const ExtendedLocationType = /*@__PURE__*/ S.String;
 
 /** The complex type of the extended location. */
@@ -5406,7 +5377,7 @@ export interface GalleryImagesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const GalleryImagesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -5467,21 +5438,15 @@ export const GalleryImagesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<GalleryImagesCreateOrUpdateResponseTagsMap>;
 
 /** Operating system type that the gallery image uses [Windows, Linux] */
-export type GalleryImagePropertiesOsType = "Windows" | "Linux" | (string & {});
+export type GalleryImagePropertiesOsType = "Windows" | "Linux";
 export const GalleryImagePropertiesOsType = /*@__PURE__*/ S.String;
 
 /** Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure] */
-export type GalleryImagePropertiesCloudInitDataSource =
-  | "NoCloud"
-  | "Azure"
-  | (string & {});
+export type GalleryImagePropertiesCloudInitDataSource = "NoCloud" | "Azure";
 export const GalleryImagePropertiesCloudInitDataSource = /*@__PURE__*/ S.String;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
-export type GalleryImagePropertiesHyperVGeneration =
-  | "V1"
-  | "V2"
-  | (string & {});
+export type GalleryImagePropertiesHyperVGeneration = "V1" | "V2";
 export const GalleryImagePropertiesHyperVGeneration = /*@__PURE__*/ S.String;
 
 /** This is the disk image base class. */
@@ -5543,16 +5508,14 @@ export type GalleryImagePropertiesProvisioningState =
   | "InProgress"
   | "Accepted"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const GalleryImagePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The status of the operation performed on the gallery image [Succeeded, Failed, InProgress] */
 export type GalleryImageStatusProvisioningStatusStatus =
   | "Succeeded"
   | "Failed"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const GalleryImageStatusProvisioningStatusStatus =
   /*@__PURE__*/ S.String;
 
@@ -6036,11 +5999,7 @@ export const GuestCredential = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuestCredential>;
 
 /** Defines the different types of operations for guest agent. */
-export type ProvisioningAction =
-  | "install"
-  | "uninstall"
-  | "repair"
-  | (string & {});
+export type ProvisioningAction = "install" | "uninstall" | "repair";
 export const ProvisioningAction = /*@__PURE__*/ S.String;
 
 /** Defines the resource properties. */
@@ -6048,7 +6007,7 @@ export interface GuestAgentPropertiesInput {
   /** Username / Password Credentials to provision guest agent. */
   credentials?: GuestCredential;
   /** The guest agent provisioning action. */
-  provisioningAction?: ProvisioningAction;
+  provisioningAction?: ProvisioningAction | (string & {});
 }
 export const GuestAgentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6278,9 +6237,7 @@ export const HybridIdentityMetadataGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridIdentityMetadataGetRequest>;
 
 /** The identity type. */
-export type HybridIdentityMetadataPropertiesIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+export type HybridIdentityMetadataPropertiesIdentityType = "SystemAssigned";
 export const HybridIdentityMetadataPropertiesIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -6462,8 +6419,7 @@ export const SubnetPropertiesFormatInputAddressPrefixesList =
 /** IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic' */
 export type SubnetPropertiesFormatInputIpAllocationMethod =
   | "Dynamic"
-  | "Static"
-  | (string & {});
+  | "Static";
 export const SubnetPropertiesFormatInputIpAllocationMethod =
   /*@__PURE__*/ S.String;
 
@@ -6552,7 +6508,7 @@ export const RouteTableInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteTableInput>;
 
 /** Type of the IP Pool [vm, vippool] */
-export type IPPoolInputIpPoolType = "vm" | "vippool" | (string & {});
+export type IPPoolInputIpPoolType = "vm" | "vippool";
 export const IPPoolInputIpPoolType = /*@__PURE__*/ S.String;
 
 export interface IPPoolInfoInput {}
@@ -6566,7 +6522,7 @@ export interface IPPoolInput {
   /** Name of the IP-Pool */
   name?: string;
   /** Type of the IP Pool [vm, vippool] */
-  ipPoolType?: IPPoolInputIpPoolType;
+  ipPoolType?: IPPoolInputIpPoolType | (string & {});
   /** Start of the IP address pool */
   start?: string;
   /** End of the IP address pool */
@@ -6596,7 +6552,9 @@ export interface SubnetPropertiesFormatInput {
   /** List of address prefixes for the subnet. */
   addressPrefixes?: SubnetPropertiesFormatInputAddressPrefixesList;
   /** IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic' */
-  ipAllocationMethod?: SubnetPropertiesFormatInputIpAllocationMethod;
+  ipAllocationMethod?:
+    | SubnetPropertiesFormatInputIpAllocationMethod
+    | (string & {});
   /** IPConfigurationReferences - list of IPConfigurationReferences */
   ipConfigurationReferences?: SubnetPropertiesFormatInputIpConfigurationReferencesList;
   routeTable?: RouteTableInput;
@@ -6667,7 +6625,7 @@ export interface LogicalNetworksCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const LogicalNetworksCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -6756,10 +6714,7 @@ export const SubnetPropertiesFormatAddressPrefixesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SubnetPropertiesFormatAddressPrefixesList>;
 
 /** IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic' */
-export type SubnetPropertiesFormatIpAllocationMethod =
-  | "Dynamic"
-  | "Static"
-  | (string & {});
+export type SubnetPropertiesFormatIpAllocationMethod = "Dynamic" | "Static";
 export const SubnetPropertiesFormatIpAllocationMethod = /*@__PURE__*/ S.String;
 
 /** IPConfigurationReference - Describes a IPConfiguration under the virtual network */
@@ -6805,7 +6760,7 @@ export const RouteTable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouteTable" }) as any as S.Schema<RouteTable>;
 
 /** Type of the IP Pool [vm, vippool] */
-export type IPPoolIpPoolType = "vm" | "vippool" | (string & {});
+export type IPPoolIpPoolType = "vm" | "vippool";
 export const IPPoolIpPoolType = /*@__PURE__*/ S.String;
 
 export interface IPPoolInfo {
@@ -6906,16 +6861,14 @@ export type LogicalNetworkPropertiesProvisioningState =
   | "InProgress"
   | "Accepted"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const LogicalNetworkPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The status of the operation performed on the logical network [Succeeded, Failed, InProgress] */
 export type LogicalNetworkStatusProvisioningStatusStatus =
   | "Succeeded"
   | "Failed"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const LogicalNetworkStatusProvisioningStatusStatus =
   /*@__PURE__*/ S.String;
 
@@ -7365,26 +7318,21 @@ export const MarketplaceGalleryImagesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<MarketplaceGalleryImagesCreateOrUpdateRequestTagsMap>;
 
 /** Operating system type that the gallery image uses [Windows, Linux] */
-export type MarketplaceGalleryImagePropertiesInputOsType =
-  | "Windows"
-  | "Linux"
-  | (string & {});
+export type MarketplaceGalleryImagePropertiesInputOsType = "Windows" | "Linux";
 export const MarketplaceGalleryImagePropertiesInputOsType =
   /*@__PURE__*/ S.String;
 
 /** Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure] */
 export type MarketplaceGalleryImagePropertiesInputCloudInitDataSource =
   | "NoCloud"
-  | "Azure"
-  | (string & {});
+  | "Azure";
 export const MarketplaceGalleryImagePropertiesInputCloudInitDataSource =
   /*@__PURE__*/ S.String;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
 export type MarketplaceGalleryImagePropertiesInputHyperVGeneration =
   | "V1"
-  | "V2"
-  | (string & {});
+  | "V2";
 export const MarketplaceGalleryImagePropertiesInputHyperVGeneration =
   /*@__PURE__*/ S.String;
 
@@ -7393,11 +7341,15 @@ export interface MarketplaceGalleryImagePropertiesInput {
   /** Storage ContainerID of the storage container to be used for marketplace gallery image */
   containerId?: string;
   /** Operating system type that the gallery image uses [Windows, Linux] */
-  osType: MarketplaceGalleryImagePropertiesInputOsType;
+  osType: MarketplaceGalleryImagePropertiesInputOsType | (string & {});
   /** Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure] */
-  cloudInitDataSource?: MarketplaceGalleryImagePropertiesInputCloudInitDataSource;
+  cloudInitDataSource?:
+    | MarketplaceGalleryImagePropertiesInputCloudInitDataSource
+    | (string & {});
   /** The hypervisor generation of the Virtual Machine [V1, V2] */
-  hyperVGeneration?: MarketplaceGalleryImagePropertiesInputHyperVGeneration;
+  hyperVGeneration?:
+    | MarketplaceGalleryImagePropertiesInputHyperVGeneration
+    | (string & {});
   identifier?: GalleryImageIdentifier;
   version?: GalleryImageVersionInput;
 }
@@ -7424,7 +7376,7 @@ export interface MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -7486,25 +7438,18 @@ export const MarketplaceGalleryImagesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<MarketplaceGalleryImagesCreateOrUpdateResponseTagsMap>;
 
 /** Operating system type that the gallery image uses [Windows, Linux] */
-export type MarketplaceGalleryImagePropertiesOsType =
-  | "Windows"
-  | "Linux"
-  | (string & {});
+export type MarketplaceGalleryImagePropertiesOsType = "Windows" | "Linux";
 export const MarketplaceGalleryImagePropertiesOsType = /*@__PURE__*/ S.String;
 
 /** Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure] */
 export type MarketplaceGalleryImagePropertiesCloudInitDataSource =
   | "NoCloud"
-  | "Azure"
-  | (string & {});
+  | "Azure";
 export const MarketplaceGalleryImagePropertiesCloudInitDataSource =
   /*@__PURE__*/ S.String;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
-export type MarketplaceGalleryImagePropertiesHyperVGeneration =
-  | "V1"
-  | "V2"
-  | (string & {});
+export type MarketplaceGalleryImagePropertiesHyperVGeneration = "V1" | "V2";
 export const MarketplaceGalleryImagePropertiesHyperVGeneration =
   /*@__PURE__*/ S.String;
 
@@ -7515,8 +7460,7 @@ export type MarketplaceGalleryImagePropertiesProvisioningState =
   | "InProgress"
   | "Accepted"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const MarketplaceGalleryImagePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -7524,8 +7468,7 @@ export const MarketplaceGalleryImagePropertiesProvisioningState =
 export type MarketplaceGalleryImageStatusProvisioningStatusStatus =
   | "Succeeded"
   | "Failed"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const MarketplaceGalleryImageStatusProvisioningStatusStatus =
   /*@__PURE__*/ S.String;
 
@@ -8124,7 +8067,7 @@ export interface NetworkInterfacesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const NetworkInterfacesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -8251,8 +8194,7 @@ export type NetworkInterfacePropertiesProvisioningState =
   | "InProgress"
   | "Accepted"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const NetworkInterfacePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -8260,8 +8202,7 @@ export const NetworkInterfacePropertiesProvisioningState =
 export type NetworkInterfaceStatusProvisioningStatusStatus =
   | "Succeeded"
   | "Failed"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const NetworkInterfaceStatusProvisioningStatusStatus =
   /*@__PURE__*/ S.String;
 
@@ -8956,11 +8897,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -9010,33 +8951,37 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 /** Secured Core Compliance Assignment */
 export type SecurityPropertiesInputSecuredCoreComplianceAssignment =
   | "Audit"
-  | "ApplyAndAutoCorrect"
-  | (string & {});
+  | "ApplyAndAutoCorrect";
 export const SecurityPropertiesInputSecuredCoreComplianceAssignment =
   /*@__PURE__*/ S.String;
 
 /** WDAC Compliance Assignment */
 export type SecurityPropertiesInputWdacComplianceAssignment =
   | "Audit"
-  | "ApplyAndAutoCorrect"
-  | (string & {});
+  | "ApplyAndAutoCorrect";
 export const SecurityPropertiesInputWdacComplianceAssignment =
   /*@__PURE__*/ S.String;
 
 /** SMB encryption for intra-cluster traffic Compliance Assignment */
 export type SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment =
-  "Audit" | "ApplyAndAutoCorrect" | (string & {});
+  "Audit" | "ApplyAndAutoCorrect";
 export const SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment =
   /*@__PURE__*/ S.String;
 
 /** Security properties of the resource */
 export interface SecurityPropertiesInput {
   /** Secured Core Compliance Assignment */
-  securedCoreComplianceAssignment?: SecurityPropertiesInputSecuredCoreComplianceAssignment;
+  securedCoreComplianceAssignment?:
+    | SecurityPropertiesInputSecuredCoreComplianceAssignment
+    | (string & {});
   /** WDAC Compliance Assignment */
-  wdacComplianceAssignment?: SecurityPropertiesInputWdacComplianceAssignment;
+  wdacComplianceAssignment?:
+    | SecurityPropertiesInputWdacComplianceAssignment
+    | (string & {});
   /** SMB encryption for intra-cluster traffic Compliance Assignment */
-  smbEncryptionForIntraClusterTrafficComplianceAssignment?: SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment;
+  smbEncryptionForIntraClusterTrafficComplianceAssignment?:
+    | SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment
+    | (string & {});
 }
 export const SecurityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9089,31 +9034,25 @@ export const SecuritySettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 /** Secured Core Compliance Assignment */
 export type SecurityPropertiesSecuredCoreComplianceAssignment =
   | "Audit"
-  | "ApplyAndAutoCorrect"
-  | (string & {});
+  | "ApplyAndAutoCorrect";
 export const SecurityPropertiesSecuredCoreComplianceAssignment =
   /*@__PURE__*/ S.String;
 
 /** WDAC Compliance Assignment */
 export type SecurityPropertiesWdacComplianceAssignment =
   | "Audit"
-  | "ApplyAndAutoCorrect"
-  | (string & {});
+  | "ApplyAndAutoCorrect";
 export const SecurityPropertiesWdacComplianceAssignment =
   /*@__PURE__*/ S.String;
 
 /** SMB encryption for intra-cluster traffic Compliance Assignment */
 export type SecurityPropertiesSmbEncryptionForIntraClusterTrafficComplianceAssignment =
-  "Audit" | "ApplyAndAutoCorrect" | (string & {});
+  "Audit" | "ApplyAndAutoCorrect";
 export const SecurityPropertiesSmbEncryptionForIntraClusterTrafficComplianceAssignment =
   /*@__PURE__*/ S.String;
 
 /** Represents the compliance status of a resource. */
-export type ComplianceStatus =
-  | "Compliant"
-  | "NonCompliant"
-  | "Pending"
-  | (string & {});
+export type ComplianceStatus = "Compliant" | "NonCompliant" | "Pending";
 export const ComplianceStatus = /*@__PURE__*/ S.String;
 
 /** Security compliance properties of the resource */
@@ -9553,7 +9492,7 @@ export interface StorageContainersCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const StorageContainersCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -9621,8 +9560,7 @@ export type StorageContainerPropertiesProvisioningState =
   | "InProgress"
   | "Accepted"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const StorageContainerPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -9630,8 +9568,7 @@ export const StorageContainerPropertiesProvisioningState =
 export type StorageContainerStatusProvisioningStatusStatus =
   | "Succeeded"
   | "Failed"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const StorageContainerStatusProvisioningStatusStatus =
   /*@__PURE__*/ S.String;
 
@@ -10147,8 +10084,7 @@ export type UpdateRunPropertiesState =
   | "Unknown"
   | "Succeeded"
   | "InProgress"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const UpdateRunPropertiesState = /*@__PURE__*/ S.String;
 
 /** Recursive model for child steps of this step. */
@@ -10492,8 +10428,7 @@ export type State =
   | "ScanFailed"
   | "AdditionalContentRequired"
   | "HealthCheckExpired"
-  | "PendingOEMValidation"
-  | (string & {});
+  | "PendingOEMValidation";
 export const State = /*@__PURE__*/ S.String;
 
 /** If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty. */
@@ -10549,7 +10484,7 @@ export const UpdatePropertiesComponentVersionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdatePropertiesComponentVersionsList>;
 
 /** Indicates whether a reboot is required after the update or operation. Helps determine if a system restart is necessary to complete the process. */
-export type RebootRequirement = "Unknown" | "True" | "False" | (string & {});
+export type RebootRequirement = "Unknown" | "True" | "False";
 export const RebootRequirement = /*@__PURE__*/ S.String;
 
 /** Overall health state for update-specific health checks. Indicates whether the system is functioning correctly, has warnings or errors, or is undergoing a health evaluation. */
@@ -10559,8 +10494,7 @@ export type HealthState =
   | "Failure"
   | "Warning"
   | "Error"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const HealthState = /*@__PURE__*/ S.String;
 
 /** Key-value pairs that allow grouping/filtering individual tests. */
@@ -10580,12 +10514,7 @@ export const PrecheckResultTags = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrecheckResultTags>;
 
 /** Indicates the importance or impact level of the result. Determines whether the result is informational, a warning, or a critical issue that may block updates. */
-export type Severity =
-  | "Critical"
-  | "Warning"
-  | "Informational"
-  | "Hidden"
-  | (string & {});
+export type Severity = "Critical" | "Warning" | "Informational" | "Hidden";
 export const Severity = /*@__PURE__*/ S.String;
 
 export interface PrecheckResult {
@@ -10648,7 +10577,7 @@ export const UpdatePropertiesHealthCheckResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdatePropertiesHealthCheckResultList>;
 
 /** Indicates how the update content is made available for download. This determines whether the update is sourced locally, from an online repository, or requires user notification. */
-export type AvailabilityType = "Local" | "Online" | "Notify" | (string & {});
+export type AvailabilityType = "Local" | "Online" | "Notify";
 export const AvailabilityType = /*@__PURE__*/ S.String;
 
 /** Additional information regarding the state of the update. See definition of UpdateStateProperties type below for more details on this property. */
@@ -10938,15 +10867,15 @@ export interface UpdatePropertiesInput {
   /** Minimum Sbe Version of the update. */
   minSbeVersionRequired?: string;
   /** Represents the current state of the update as it relates to this stamp. This includes phases such as preparation, installation, scanning, and error handling, providing insight into the update's progress and any issues encountered. */
-  state?: State;
+  state?: State | (string & {});
   /** If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty. */
   prerequisites?: UpdatePropertiesInputPrerequisitesList;
   /** An array of component versions for a Solution Bundle update, and an empty array otherwise. */
   componentVersions?: UpdatePropertiesInputComponentVersionsList;
   /** Indicates whether a reboot is required after the update or operation. Helps determine if a system restart is necessary to complete the process. */
-  rebootRequired?: RebootRequirement;
+  rebootRequired?: RebootRequirement | (string & {});
   /** Overall health state for update-specific health checks. */
-  healthState?: HealthState;
+  healthState?: HealthState | (string & {});
   /** An array of PrecheckResult objects. */
   healthCheckResult?: UpdatePropertiesInputHealthCheckResultList;
   /** Last time the package-specific checks were run. */
@@ -10964,7 +10893,7 @@ export interface UpdatePropertiesInput {
   /** Link to release notes for the update. */
   releaseLink?: string;
   /** Indicates how the update content is made available for download. This determines whether the update is sourced locally, from an online repository, or requires user notification. */
-  availabilityType?: AvailabilityType;
+  availabilityType?: AvailabilityType | (string & {});
   /** Customer-visible type of the update. */
   packageType?: string;
   /** Extensible KV pairs serialized as a string. This is currently used to report the stamp OEM family and hardware model information when an update is flagged as Invalid for the stamp based on OEM type. */
@@ -11142,8 +11071,7 @@ export type UpdateSummariesPropertiesState =
   | "UpdateFailed"
   | "NeedsAttention"
   | "PreparationInProgress"
-  | "PreparationFailed"
-  | (string & {});
+  | "PreparationFailed";
 export const UpdateSummariesPropertiesState = /*@__PURE__*/ S.String;
 
 /** Properties of Update summaries */
@@ -11401,13 +11329,13 @@ export interface UpdateSummariesPropertiesInput {
   /** Last time the update service successfully checked for updates */
   lastChecked?: string;
   /** Overall health state for update-specific health checks. */
-  healthState?: HealthState;
+  healthState?: HealthState | (string & {});
   /** An array of pre-check result objects. */
   healthCheckResult?: UpdateSummariesPropertiesInputHealthCheckResultList;
   /** Last time the package-specific checks were run. */
   healthCheckDate?: string;
   /** Overall update state of the stamp. Indicates the current status of update deployment across the stamp, including preparation, application, and any issues encountered. */
-  state?: UpdateSummariesPropertiesState;
+  state?: UpdateSummariesPropertiesState | (string & {});
 }
 export const UpdateSummariesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11839,18 +11767,12 @@ export const VirtualHardDisksCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<VirtualHardDisksCreateOrUpdateRequestTagsMap>;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
-export type VirtualHardDiskPropertiesInputHyperVGeneration =
-  | "V1"
-  | "V2"
-  | (string & {});
+export type VirtualHardDiskPropertiesInputHyperVGeneration = "V1" | "V2";
 export const VirtualHardDiskPropertiesInputHyperVGeneration =
   /*@__PURE__*/ S.String;
 
 /** The format of the actual VHD file [vhd, vhdx] */
-export type VirtualHardDiskPropertiesInputDiskFileFormat =
-  | "vhdx"
-  | "vhd"
-  | (string & {});
+export type VirtualHardDiskPropertiesInputDiskFileFormat = "vhdx" | "vhd";
 export const VirtualHardDiskPropertiesInputDiskFileFormat =
   /*@__PURE__*/ S.String;
 
@@ -11864,9 +11786,11 @@ export interface VirtualHardDiskPropertiesInput {
   logicalSectorBytes?: number;
   physicalSectorBytes?: number;
   /** The hypervisor generation of the Virtual Machine [V1, V2] */
-  hyperVGeneration?: VirtualHardDiskPropertiesInputHyperVGeneration;
+  hyperVGeneration?:
+    | VirtualHardDiskPropertiesInputHyperVGeneration
+    | (string & {});
   /** The format of the actual VHD file [vhd, vhdx] */
-  diskFileFormat?: VirtualHardDiskPropertiesInputDiskFileFormat;
+  diskFileFormat?: VirtualHardDiskPropertiesInputDiskFileFormat | (string & {});
   /** Storage ContainerID of the storage container to be used for VHD */
   containerId?: string;
 }
@@ -11892,7 +11816,7 @@ export interface VirtualHardDisksCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const VirtualHardDisksCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -11954,17 +11878,11 @@ export const VirtualHardDisksCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<VirtualHardDisksCreateOrUpdateResponseTagsMap>;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
-export type VirtualHardDiskPropertiesHyperVGeneration =
-  | "V1"
-  | "V2"
-  | (string & {});
+export type VirtualHardDiskPropertiesHyperVGeneration = "V1" | "V2";
 export const VirtualHardDiskPropertiesHyperVGeneration = /*@__PURE__*/ S.String;
 
 /** The format of the actual VHD file [vhd, vhdx] */
-export type VirtualHardDiskPropertiesDiskFileFormat =
-  | "vhdx"
-  | "vhd"
-  | (string & {});
+export type VirtualHardDiskPropertiesDiskFileFormat = "vhdx" | "vhd";
 export const VirtualHardDiskPropertiesDiskFileFormat = /*@__PURE__*/ S.String;
 
 /** Provisioning state of the virtual hard disk. */
@@ -11974,8 +11892,7 @@ export type VirtualHardDiskPropertiesProvisioningState =
   | "InProgress"
   | "Accepted"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const VirtualHardDiskPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -11983,8 +11900,7 @@ export const VirtualHardDiskPropertiesProvisioningState =
 export type VirtualHardDiskStatusProvisioningStatusStatus =
   | "Succeeded"
   | "Failed"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const VirtualHardDiskStatusProvisioningStatusStatus =
   /*@__PURE__*/ S.String;
 
@@ -12461,8 +12377,7 @@ export type VirtualMachineInstancePropertiesInputHardwareProfileVmSize =
   | "Standard_NV6"
   | "Standard_NV12"
   | "Standard_K8S5_v1"
-  | "Custom"
-  | (string & {});
+  | "Custom";
 export const VirtualMachineInstancePropertiesInputHardwareProfileVmSize =
   /*@__PURE__*/ S.String;
 
@@ -12486,7 +12401,9 @@ export const VirtualMachineInstancePropertiesInputHardwareProfileDynamicMemoryCo
 
 /** HardwareProfile - Specifies the hardware settings for the virtual machine instance. */
 export interface VirtualMachineInstancePropertiesInputHardwareProfile {
-  vmSize?: VirtualMachineInstancePropertiesInputHardwareProfileVmSize;
+  vmSize?:
+    | VirtualMachineInstancePropertiesInputHardwareProfileVmSize
+    | (string & {});
   /** number of processors for the virtual machine instance */
   processors?: number;
   /** RAM in MB for the virtual machine instance */
@@ -12678,8 +12595,7 @@ export const VirtualMachineInstancePropertiesInputSecurityProfileUefiSettings =
 /** Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function. */
 export type VirtualMachineInstancePropertiesInputSecurityProfileSecurityType =
   | "TrustedLaunch"
-  | "ConfidentialVM"
-  | (string & {});
+  | "ConfidentialVM";
 export const VirtualMachineInstancePropertiesInputSecurityProfileSecurityType =
   /*@__PURE__*/ S.String;
 
@@ -12688,7 +12604,9 @@ export interface VirtualMachineInstancePropertiesInputSecurityProfile {
   enableTPM?: boolean;
   uefiSettings?: VirtualMachineInstancePropertiesInputSecurityProfileUefiSettings;
   /** Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function. */
-  securityType?: VirtualMachineInstancePropertiesInputSecurityProfileSecurityType;
+  securityType?:
+    | VirtualMachineInstancePropertiesInputSecurityProfileSecurityType
+    | (string & {});
 }
 export const VirtualMachineInstancePropertiesInputSecurityProfile =
   /*@__PURE__*/ S.suspend(() =>
@@ -12745,8 +12663,7 @@ export const VirtualMachineInstancePropertiesInputStorageProfileImageReference =
 /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
 export type VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType =
   | "Linux"
-  | "Windows"
-  | (string & {});
+  | "Windows";
 export const VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType =
   /*@__PURE__*/ S.String;
 
@@ -12755,7 +12672,9 @@ export interface VirtualMachineInstancePropertiesInputStorageProfileOsDisk {
   /** Resource ID of the OS disk */
   id?: string;
   /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
-  osType?: VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType;
+  osType?:
+    | VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType
+    | (string & {});
 }
 export const VirtualMachineInstancePropertiesInputStorageProfileOsDisk =
   /*@__PURE__*/ S.suspend(() =>
@@ -12882,7 +12801,7 @@ export interface VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -12896,15 +12815,16 @@ export const VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation =
 
 /** The identity type. */
 export type VirtualMachineInstancesCreateOrUpdateRequestIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+  "SystemAssigned";
 export const VirtualMachineInstancesCreateOrUpdateRequestIdentityType =
   /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
 export interface VirtualMachineInstancesCreateOrUpdateRequestIdentity {
   /** The identity type. */
-  type?: VirtualMachineInstancesCreateOrUpdateRequestIdentityType;
+  type?:
+    | VirtualMachineInstancesCreateOrUpdateRequestIdentityType
+    | (string & {});
 }
 export const VirtualMachineInstancesCreateOrUpdateRequestIdentity =
   /*@__PURE__*/ S.suspend(() =>
@@ -12972,8 +12892,7 @@ export type VirtualMachineInstancePropertiesHardwareProfileVmSize =
   | "Standard_NV6"
   | "Standard_NV12"
   | "Standard_K8S5_v1"
-  | "Custom"
-  | (string & {});
+  | "Custom";
 export const VirtualMachineInstancePropertiesHardwareProfileVmSize =
   /*@__PURE__*/ S.String;
 
@@ -13151,8 +13070,7 @@ export const VirtualMachineInstancePropertiesSecurityProfileUefiSettings =
 /** Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function. */
 export type VirtualMachineInstancePropertiesSecurityProfileSecurityType =
   | "TrustedLaunch"
-  | "ConfidentialVM"
-  | (string & {});
+  | "ConfidentialVM";
 export const VirtualMachineInstancePropertiesSecurityProfileSecurityType =
   /*@__PURE__*/ S.String;
 
@@ -13216,8 +13134,7 @@ export const VirtualMachineInstancePropertiesStorageProfileImageReference =
 /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
 export type VirtualMachineInstancePropertiesStorageProfileOsDiskOsType =
   | "Linux"
-  | "Windows"
-  | (string & {});
+  | "Windows";
 export const VirtualMachineInstancePropertiesStorageProfileOsDiskOsType =
   /*@__PURE__*/ S.String;
 
@@ -13274,17 +13191,12 @@ export type VirtualMachineInstancePropertiesProvisioningState =
   | "InProgress"
   | "Accepted"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const VirtualMachineInstancePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The level code. */
-export type InstanceViewStatusLevel =
-  | "Info"
-  | "Warning"
-  | "Error"
-  | (string & {});
+export type InstanceViewStatusLevel = "Info" | "Warning" | "Error";
 export const InstanceViewStatusLevel = /*@__PURE__*/ S.String;
 
 /** Instance view status. */
@@ -13358,16 +13270,14 @@ export type VirtualMachineInstanceStatusPowerState =
   | "Starting"
   | "Stopped"
   | "Stopping"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const VirtualMachineInstanceStatusPowerState = /*@__PURE__*/ S.String;
 
 /** The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress] */
 export type VirtualMachineInstanceStatusProvisioningStatusStatus =
   | "Succeeded"
   | "Failed"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const VirtualMachineInstanceStatusProvisioningStatusStatus =
   /*@__PURE__*/ S.String;
 
@@ -13414,8 +13324,7 @@ export const VirtualMachineInstanceStatus = /*@__PURE__*/ S.suspend(() =>
 export type GuestAgentInstallStatusStatus =
   | "Succeeded"
   | "InProgress"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const GuestAgentInstallStatusStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -13615,8 +13524,7 @@ export const VirtualMachineInstancesCreateOrUpdateResponseExtendedLocation =
 
 /** The identity type. */
 export type VirtualMachineInstancesCreateOrUpdateResponseIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+  "SystemAssigned";
 export const VirtualMachineInstancesCreateOrUpdateResponseIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -13740,9 +13648,7 @@ export const VirtualMachineInstancesGetResponseExtendedLocation =
   }) as any as S.Schema<VirtualMachineInstancesGetResponseExtendedLocation>;
 
 /** The identity type. */
-export type VirtualMachineInstancesGetResponseIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+export type VirtualMachineInstancesGetResponseIdentityType = "SystemAssigned";
 export const VirtualMachineInstancesGetResponseIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -13834,9 +13740,7 @@ export const VirtualMachineInstanceExtendedLocation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualMachineInstanceExtendedLocation>;
 
 /** The identity type. */
-export type VirtualMachineInstanceIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+export type VirtualMachineInstanceIdentityType = "SystemAssigned";
 export const VirtualMachineInstanceIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -13946,8 +13850,7 @@ export const VirtualMachineInstancesRestartResponseExtendedLocation =
 
 /** The identity type. */
 export type VirtualMachineInstancesRestartResponseIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+  "SystemAssigned";
 export const VirtualMachineInstancesRestartResponseIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -14040,9 +13943,7 @@ export const VirtualMachineInstancesStartResponseExtendedLocation =
   }) as any as S.Schema<VirtualMachineInstancesStartResponseExtendedLocation>;
 
 /** The identity type. */
-export type VirtualMachineInstancesStartResponseIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+export type VirtualMachineInstancesStartResponseIdentityType = "SystemAssigned";
 export const VirtualMachineInstancesStartResponseIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -14135,9 +14036,7 @@ export const VirtualMachineInstancesStopResponseExtendedLocation =
   }) as any as S.Schema<VirtualMachineInstancesStopResponseExtendedLocation>;
 
 /** The identity type. */
-export type VirtualMachineInstancesStopResponseIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+export type VirtualMachineInstancesStopResponseIdentityType = "SystemAssigned";
 export const VirtualMachineInstancesStopResponseIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -14215,13 +14114,12 @@ export type HardwareProfileUpdateVmSize =
   | "Standard_NV6"
   | "Standard_NV12"
   | "Standard_K8S5_v1"
-  | "Custom"
-  | (string & {});
+  | "Custom";
 export const HardwareProfileUpdateVmSize = /*@__PURE__*/ S.String;
 
 /** HardwareProfile - Specifies the hardware settings for the virtual machine instance. */
 export interface HardwareProfileUpdate {
-  vmSize?: HardwareProfileUpdateVmSize;
+  vmSize?: HardwareProfileUpdateVmSize | (string & {});
   /** number of processors for the virtual machine instance */
   processors?: number;
   /** RAM in MB for the virtual machine instance */
@@ -14367,16 +14265,14 @@ export const VirtualMachineInstanceUpdateProperties = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualMachineInstanceUpdateProperties>;
 
 /** The identity type. */
-export type VirtualMachineInstancesUpdateRequestIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+export type VirtualMachineInstancesUpdateRequestIdentityType = "SystemAssigned";
 export const VirtualMachineInstancesUpdateRequestIdentityType =
   /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
 export interface VirtualMachineInstancesUpdateRequestIdentity {
   /** The identity type. */
-  type?: VirtualMachineInstancesUpdateRequestIdentityType;
+  type?: VirtualMachineInstancesUpdateRequestIdentityType | (string & {});
 }
 export const VirtualMachineInstancesUpdateRequestIdentity =
   /*@__PURE__*/ S.suspend(() =>
@@ -14431,8 +14327,7 @@ export const VirtualMachineInstancesUpdateResponseExtendedLocation =
 
 /** The identity type. */
 export type VirtualMachineInstancesUpdateResponseIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+  "SystemAssigned";
 export const VirtualMachineInstancesUpdateResponseIdentityType =
   /*@__PURE__*/ S.String;
 

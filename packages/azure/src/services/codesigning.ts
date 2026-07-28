@@ -18,14 +18,13 @@ export type ProfileType =
   | "PrivateTrust"
   | "PrivateTrustCIPolicy"
   | "VBSEnclave"
-  | "PublicTrustTest"
-  | (string & {});
+  | "PublicTrustTest";
 export const ProfileType = /*@__PURE__*/ S.String;
 
 /** Properties of the certificate profile. */
 export interface CertificateProfilePropertiesInput {
   /** Profile type of the certificate. */
-  profileType: ProfileType;
+  profileType: ProfileType | (string & {});
   /** Whether to include STREET in the certificate subject name. */
   includeStreetAddress?: boolean;
   /** Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types */
@@ -89,8 +88,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -98,8 +96,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -135,32 +132,19 @@ export type ProvisioningState =
   | "Canceled"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Status of the certificate profiles. */
-export type CertificateProfileStatus =
-  | "Active"
-  | "Disabled"
-  | "Suspended"
-  | (string & {});
+export type CertificateProfileStatus = "Active" | "Disabled" | "Suspended";
 export const CertificateProfileStatus = /*@__PURE__*/ S.String;
 
 /** Status of the certificate */
-export type CertificateStatus =
-  | "Active"
-  | "Expired"
-  | "Revoked"
-  | (string & {});
+export type CertificateStatus = "Active" | "Expired" | "Revoked";
 export const CertificateStatus = /*@__PURE__*/ S.String;
 
 /** Revocation status of the certificate. */
-export type RevocationStatus =
-  | "Succeeded"
-  | "InProgress"
-  | "Failed"
-  | (string & {});
+export type RevocationStatus = "Succeeded" | "InProgress" | "Failed";
 export const RevocationStatus = /*@__PURE__*/ S.String;
 
 /** Revocation details of the certificate. */
@@ -531,10 +515,7 @@ export const CodeSigningAccountsCheckNameAvailabilityRequest =
   }) as any as S.Schema<CodeSigningAccountsCheckNameAvailabilityRequest>;
 
 /** The reason that an artifact signing account name could not be used. The Reason element is only returned if nameAvailable is false. */
-export type NameUnavailabilityReason =
-  | "AccountNameInvalid"
-  | "AlreadyExists"
-  | (string & {});
+export type NameUnavailabilityReason = "AccountNameInvalid" | "AlreadyExists";
 export const NameUnavailabilityReason = /*@__PURE__*/ S.String;
 
 /** The CheckNameAvailability operation response. */
@@ -566,7 +547,7 @@ export const CodeSigningAccountsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CodeSigningAccountsCreateRequestTagsMap>;
 
 /** Name of the sku. */
-export type SkuName = "Basic" | "Premium" | (string & {});
+export type SkuName = "Basic" | "Premium";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** SKU of the artifact signing account. */
@@ -897,7 +878,7 @@ export const CodeSigningAccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** SKU of the artifact signing account. */
 export interface AccountSkuPatch {
   /** Name of the SKU. */
-  name?: SkuName;
+  name?: SkuName | (string & {});
 }
 export const AccountSkuPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1027,11 +1008,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

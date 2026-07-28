@@ -223,20 +223,10 @@ export const BatchGetVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetVariableRequest",
 }) as any as S.Schema<BatchGetVariableRequest>;
-export type DataType =
-  | "STRING"
-  | "INTEGER"
-  | "FLOAT"
-  | "BOOLEAN"
-  | "DATETIME"
-  | (string & {});
+export type DataType = "STRING" | "INTEGER" | "FLOAT" | "BOOLEAN" | "DATETIME";
 export const DataType = /*@__PURE__*/ S.String;
 
-export type DataSource =
-  | "EVENT"
-  | "MODEL_SCORE"
-  | "EXTERNAL_MODEL_SCORE"
-  | (string & {});
+export type DataSource = "EVENT" | "MODEL_SCORE" | "EXTERNAL_MODEL_SCORE";
 export const DataSource = /*@__PURE__*/ S.String;
 
 export type FraudDetectorArn = string;
@@ -441,8 +431,7 @@ export type ModelIdentifier = string;
 export type ModelTypeEnum =
   | "ONLINE_FRAUD_INSIGHTS"
   | "TRANSACTION_FRAUD_INSIGHTS"
-  | "ACCOUNT_TAKEOVER_INSIGHTS"
-  | (string & {});
+  | "ACCOUNT_TAKEOVER_INSIGHTS";
 export const ModelTypeEnum = /*@__PURE__*/ S.String;
 
 export type FloatVersionString = string;
@@ -462,7 +451,7 @@ export const ModelVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelVersion" }) as any as S.Schema<ModelVersion>;
 export type ListOfModelVersions = ModelVersion[];
 export const ListOfModelVersions = /*@__PURE__*/ S.Array(ModelVersion);
-export type RuleExecutionMode = "ALL_MATCHED" | "FIRST_MATCHED" | (string & {});
+export type RuleExecutionMode = "ALL_MATCHED" | "FIRST_MATCHED";
 export const RuleExecutionMode = /*@__PURE__*/ S.String;
 
 export interface CreateDetectorVersionRequest {
@@ -471,7 +460,7 @@ export interface CreateDetectorVersionRequest {
   externalModelEndpoints?: string[];
   rules: Rule[];
   modelVersions?: ModelVersion[];
-  ruleExecutionMode?: RuleExecutionMode;
+  ruleExecutionMode?: RuleExecutionMode | (string & {});
   tags?: Tag[];
 }
 export const CreateDetectorVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -497,11 +486,7 @@ export const CreateDetectorVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDetectorVersionRequest",
 }) as any as S.Schema<CreateDetectorVersionRequest>;
-export type DetectorVersionStatus =
-  | "DRAFT"
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type DetectorVersionStatus = "DRAFT" | "ACTIVE" | "INACTIVE";
 export const DetectorVersionStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDetectorVersionResult {
@@ -559,7 +544,7 @@ export const CreateListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateListResult>;
 export interface CreateModelRequest {
   modelId: string;
-  modelType: ModelTypeEnum;
+  modelType: ModelTypeEnum | (string & {});
   description?: string;
   eventTypeName: string;
   tags?: Tag[];
@@ -591,10 +576,7 @@ export const CreateModelResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateModelResult",
 }) as any as S.Schema<CreateModelResult>;
-export type TrainingDataSourceEnum =
-  | "EXTERNAL_EVENTS"
-  | "INGESTED_EVENTS"
-  | (string & {});
+export type TrainingDataSourceEnum = "EXTERNAL_EVENTS" | "INGESTED_EVENTS";
 export const TrainingDataSourceEnum = /*@__PURE__*/ S.String;
 
 export type LabelMapper = { [key: string]: string[] | undefined };
@@ -602,12 +584,7 @@ export const LabelMapper = /*@__PURE__*/ S.Record(
   S.String,
   ListOfStrings.pipe(S.optional),
 );
-export type UnlabeledEventsTreatment =
-  | "IGNORE"
-  | "FRAUD"
-  | "LEGIT"
-  | "AUTO"
-  | (string & {});
+export type UnlabeledEventsTreatment = "IGNORE" | "FRAUD" | "LEGIT" | "AUTO";
 export const UnlabeledEventsTreatment = /*@__PURE__*/ S.String;
 
 export interface LabelSchema {
@@ -660,8 +637,8 @@ export const IngestedEventsDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IngestedEventsDetail>;
 export interface CreateModelVersionRequest {
   modelId: string;
-  modelType: ModelTypeEnum;
-  trainingDataSource: TrainingDataSourceEnum;
+  modelType: ModelTypeEnum | (string & {});
+  trainingDataSource: TrainingDataSourceEnum | (string & {});
   trainingDataSchema: TrainingDataSchema;
   externalEventsDetail?: ExternalEventsDetail;
   ingestedEventsDetail?: IngestedEventsDetail;
@@ -707,7 +684,7 @@ export const CreateModelVersionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateModelVersionResult",
 }) as any as S.Schema<CreateModelVersionResult>;
 export type RuleExpression = string | redacted.Redacted<string>;
-export type Language = "DETECTORPL" | (string & {});
+export type Language = "DETECTORPL";
 export const Language = /*@__PURE__*/ S.String;
 
 export type NonEmptyListOfStrings = string[];
@@ -717,7 +694,7 @@ export interface CreateRuleRequest {
   detectorId: string;
   description?: string;
   expression: string | redacted.Redacted<string>;
-  language: Language;
+  language: Language | (string & {});
   outcomes: string[];
   tags?: Tag[];
 }
@@ -754,8 +731,8 @@ export const CreateRuleResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRuleResult>;
 export interface CreateVariableRequest {
   name: string;
-  dataType: DataType;
-  dataSource: DataSource;
+  dataType: DataType | (string & {});
+  dataSource: DataSource | (string & {});
   defaultValue: string;
   description?: string;
   variableType?: string;
@@ -1071,7 +1048,7 @@ export const DeleteListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteListResult>;
 export interface DeleteModelRequest {
   modelId: string;
-  modelType: ModelTypeEnum;
+  modelType: ModelTypeEnum | (string & {});
 }
 export const DeleteModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ modelId: S.String, modelType: ModelTypeEnum }).pipe(
@@ -1096,7 +1073,7 @@ export const DeleteModelResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteModelResult>;
 export interface DeleteModelVersionRequest {
   modelId: string;
-  modelType: ModelTypeEnum;
+  modelType: ModelTypeEnum | (string & {});
   modelVersionNumber: string;
 }
 export const DeleteModelVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1261,7 +1238,7 @@ export type ModelsMaxPageSize = number;
 export interface DescribeModelVersionsRequest {
   modelId?: string;
   modelVersionNumber?: string;
-  modelType?: ModelTypeEnum;
+  modelType?: ModelTypeEnum | (string & {});
   nextToken?: string;
   maxResults?: number;
 }
@@ -1672,8 +1649,7 @@ export type AsyncJobStatus =
   | "CANCEL_IN_PROGRESS"
   | "CANCELED"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const AsyncJobStatus = /*@__PURE__*/ S.String;
 
 export interface BatchImport {
@@ -2157,7 +2133,7 @@ export const RuleResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleResult" }) as any as S.Schema<RuleResult>;
 export type ListOfRuleResults = RuleResult[];
 export const ListOfRuleResults = /*@__PURE__*/ S.Array(RuleResult);
-export type ModelSource = "SAGEMAKER" | (string & {});
+export type ModelSource = "SAGEMAKER";
 export const ModelSource = /*@__PURE__*/ S.String;
 
 export interface ExternalModelSummary {
@@ -2451,7 +2427,7 @@ export const GetEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEventTypesRequest",
 }) as any as S.Schema<GetEventTypesRequest>;
-export type EventIngestion = "ENABLED" | "DISABLED" | (string & {});
+export type EventIngestion = "ENABLED" | "DISABLED";
 export const EventIngestion = /*@__PURE__*/ S.String;
 
 export interface IngestedEventStatistics {
@@ -2547,10 +2523,7 @@ export const GetExternalModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetExternalModelsRequest",
 }) as any as S.Schema<GetExternalModelsRequest>;
-export type ModelInputDataFormat =
-  | "TEXT_CSV"
-  | "APPLICATION_JSON"
-  | (string & {});
+export type ModelInputDataFormat = "TEXT_CSV" | "APPLICATION_JSON";
 export const ModelInputDataFormat = /*@__PURE__*/ S.String;
 
 export type UseEventVariables = boolean;
@@ -2573,10 +2546,7 @@ export const ModelInputConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModelInputConfiguration",
 }) as any as S.Schema<ModelInputConfiguration>;
-export type ModelOutputDataFormat =
-  | "TEXT_CSV"
-  | "APPLICATION_JSONLINES"
-  | (string & {});
+export type ModelOutputDataFormat = "TEXT_CSV" | "APPLICATION_JSONLINES";
 export const ModelOutputDataFormat = /*@__PURE__*/ S.String;
 
 export type JsonKeyToVariableMap = { [key: string]: string | undefined };
@@ -2603,7 +2573,7 @@ export const ModelOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModelOutputConfiguration",
 }) as any as S.Schema<ModelOutputConfiguration>;
-export type ModelEndpointStatus = "ASSOCIATED" | "DISSOCIATED" | (string & {});
+export type ModelEndpointStatus = "ASSOCIATED" | "DISSOCIATED";
 export const ModelEndpointStatus = /*@__PURE__*/ S.String;
 
 export interface ExternalModel {
@@ -2827,7 +2797,7 @@ export const GetListsMetadataResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetListsMetadataResult>;
 export interface GetModelsRequest {
   modelId?: string;
-  modelType?: ModelTypeEnum;
+  modelType?: ModelTypeEnum | (string & {});
   nextToken?: string;
   maxResults?: number;
 }
@@ -2887,7 +2857,7 @@ export const GetModelsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetModelsResult>;
 export interface GetModelVersionRequest {
   modelId: string;
-  modelType: ModelTypeEnum;
+  modelType: ModelTypeEnum | (string & {});
   modelVersionNumber: string;
 }
 export const GetModelVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3285,7 +3255,7 @@ export interface PutEventTypeRequest {
   eventVariables: string[];
   labels?: string[];
   entityTypes: string[];
-  eventIngestion?: EventIngestion;
+  eventIngestion?: EventIngestion | (string & {});
   tags?: Tag[];
   eventOrchestration?: EventOrchestration;
 }
@@ -3321,11 +3291,11 @@ export const PutEventTypeResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEventTypeResult>;
 export interface PutExternalModelRequest {
   modelEndpoint: string;
-  modelSource: ModelSource;
+  modelSource: ModelSource | (string & {});
   invokeModelEndpointRoleArn: string;
   inputConfiguration: ModelInputConfiguration;
   outputConfiguration: ModelOutputConfiguration;
-  modelEndpointStatus: ModelEndpointStatus;
+  modelEndpointStatus: ModelEndpointStatus | (string & {});
   tags?: Tag[];
 }
 export const PutExternalModelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3538,7 +3508,7 @@ export interface UpdateDetectorVersionRequest {
   rules: Rule[];
   description?: string;
   modelVersions?: ModelVersion[];
-  ruleExecutionMode?: RuleExecutionMode;
+  ruleExecutionMode?: RuleExecutionMode | (string & {});
 }
 export const UpdateDetectorVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3603,7 +3573,7 @@ export const UpdateDetectorVersionMetadataResult = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDetectorVersionStatusRequest {
   detectorId: string;
   detectorVersionId: string;
-  status: DetectorVersionStatus;
+  status: DetectorVersionStatus | (string & {});
 }
 export const UpdateDetectorVersionStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3662,14 +3632,14 @@ export const UpdateEventLabelResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateEventLabelResult",
 }) as any as S.Schema<UpdateEventLabelResult>;
-export type ListUpdateMode = "REPLACE" | "APPEND" | "REMOVE" | (string & {});
+export type ListUpdateMode = "REPLACE" | "APPEND" | "REMOVE";
 export const ListUpdateMode = /*@__PURE__*/ S.String;
 
 export interface UpdateListRequest {
   name: string;
   elements?: (string | redacted.Redacted<string>)[];
   description?: string;
-  updateMode?: ListUpdateMode;
+  updateMode?: ListUpdateMode | (string & {});
   variableType?: string;
 }
 export const UpdateListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3701,7 +3671,7 @@ export const UpdateListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateListResult>;
 export interface UpdateModelRequest {
   modelId: string;
-  modelType: ModelTypeEnum;
+  modelType: ModelTypeEnum | (string & {});
   description?: string;
 }
 export const UpdateModelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3731,7 +3701,7 @@ export const UpdateModelResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateModelResult>;
 export interface UpdateModelVersionRequest {
   modelId: string;
-  modelType: ModelTypeEnum;
+  modelType: ModelTypeEnum | (string & {});
   majorVersionNumber: string;
   externalEventsDetail?: ExternalEventsDetail;
   ingestedEventsDetail?: IngestedEventsDetail;
@@ -3775,18 +3745,14 @@ export const UpdateModelVersionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateModelVersionResult",
 }) as any as S.Schema<UpdateModelVersionResult>;
-export type ModelVersionStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | "TRAINING_CANCELLED"
-  | (string & {});
+export type ModelVersionStatus = "ACTIVE" | "INACTIVE" | "TRAINING_CANCELLED";
 export const ModelVersionStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateModelVersionStatusRequest {
   modelId: string;
-  modelType: ModelTypeEnum;
+  modelType: ModelTypeEnum | (string & {});
   modelVersionNumber: string;
-  status: ModelVersionStatus;
+  status: ModelVersionStatus | (string & {});
 }
 export const UpdateModelVersionStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3843,7 +3809,7 @@ export interface UpdateRuleVersionRequest {
   rule: Rule;
   description?: string;
   expression: string | redacted.Redacted<string>;
-  language: Language;
+  language: Language | (string & {});
   outcomes: string[];
   tags?: Tag[];
 }

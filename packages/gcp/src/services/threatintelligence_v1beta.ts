@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request message for MarkAlertAsBenign. */
 export interface MarkAlertAsBenignRequest {}
 export const MarkAlertAsBenignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MarkAlertAsBenignRequest",
-}) as any as S.Schema<MarkAlertAsBenignRequest>;
+S.Struct({}),
+).annotate({ identifier: "MarkAlertAsBenignRequest" }) as any as S.Schema<MarkAlertAsBenignRequest>;
 
 export interface BenignProjectsAlertsRequest {
   /** Required. Name of the alert to mark as a benign. Format: projects/{project}/alerts/{alert} */
@@ -75,24 +73,14 @@ export interface BenignProjectsAlertsRequest {
   body?: MarkAlertAsBenignRequest;
 }
 export const BenignProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MarkAlertAsBenignRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta/{+name}:benign",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BenignProjectsAlertsRequest",
-}) as any as S.Schema<BenignProjectsAlertsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MarkAlertAsBenignRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:benign","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "BenignProjectsAlertsRequest" }) as any as S.Schema<BenignProjectsAlertsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Captures the specific details of InsiderThreat alert. */
 export interface InsiderThreatAlertDetail {
@@ -102,13 +90,11 @@ export interface InsiderThreatAlertDetail {
   discoveryDocumentIds?: StringList;
 }
 export const InsiderThreatAlertDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.optional(S.String),
-    discoveryDocumentIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InsiderThreatAlertDetail",
-}) as any as S.Schema<InsiderThreatAlertDetail>;
+S.Struct({
+  "severity": S.optional(S.String),
+  "discoveryDocumentIds": S.optional(StringList),
+}),
+).annotate({ identifier: "InsiderThreatAlertDetail" }) as any as S.Schema<InsiderThreatAlertDetail>;
 
 /** Captures the specific details of InitialAccessBroker (IAB) alert. */
 export interface InitialAccessBrokerAlertDetail {
@@ -118,13 +104,11 @@ export interface InitialAccessBrokerAlertDetail {
   discoveryDocumentIds?: StringList;
 }
 export const InitialAccessBrokerAlertDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.optional(S.String),
-    discoveryDocumentIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InitialAccessBrokerAlertDetail",
-}) as any as S.Schema<InitialAccessBrokerAlertDetail>;
+S.Struct({
+  "severity": S.optional(S.String),
+  "discoveryDocumentIds": S.optional(StringList),
+}),
+).annotate({ identifier: "InitialAccessBrokerAlertDetail" }) as any as S.Schema<InitialAccessBrokerAlertDetail>;
 
 /** Captures the specific details of Data Leak alert. */
 export interface DataLeakAlertDetail {
@@ -134,97 +118,31 @@ export interface DataLeakAlertDetail {
   discoveryDocumentIds?: StringList;
 }
 export const DataLeakAlertDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.optional(S.String),
-    discoveryDocumentIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "DataLeakAlertDetail",
-}) as any as S.Schema<DataLeakAlertDetail>;
+S.Struct({
+  "severity": S.optional(S.String),
+  "discoveryDocumentIds": S.optional(StringList),
+}),
+).annotate({ identifier: "DataLeakAlertDetail" }) as any as S.Schema<DataLeakAlertDetail>;
 
-export type VulnerabilityMatchExploitationConsequencesItemEnum =
-  | "EXPLOITATION_CONSEQUENCE_UNSPECIFIED"
-  | "CODE_EXECUTION"
-  | "COMMAND_EXECUTION"
-  | "DATA_LOSS"
-  | "DATA_MANIPULATION"
-  | "DENIAL_OF_SERVICE"
-  | "INFORMATION_DISCLOSURE"
-  | "UNAUTHORIZED_ACCESS"
-  | "PRIVILEGE_ESCALATION"
-  | "SANDBOX_ESCAPE"
-  | "SECURITY_BYPASS"
-  | "CONTAINER_ESCAPE"
-  | "SPOOFING"
-  | (string & {});
-export const VulnerabilityMatchExploitationConsequencesItemEnum =
-  /*@__PURE__*/ S.String;
+export type VulnerabilityMatchExploitationConsequencesItemEnum = "EXPLOITATION_CONSEQUENCE_UNSPECIFIED" | "CODE_EXECUTION" | "COMMAND_EXECUTION" | "DATA_LOSS" | "DATA_MANIPULATION" | "DENIAL_OF_SERVICE" | "INFORMATION_DISCLOSURE" | "UNAUTHORIZED_ACCESS" | "PRIVILEGE_ESCALATION" | "SANDBOX_ESCAPE" | "SECURITY_BYPASS" | "CONTAINER_ESCAPE" | "SPOOFING";
+export const VulnerabilityMatchExploitationConsequencesItemEnum = /*@__PURE__*/ S.String;
 
-export type VulnerabilityMatchExploitationConsequencesItemEnumList =
-  ReadonlyArray<VulnerabilityMatchExploitationConsequencesItemEnum>;
-export const VulnerabilityMatchExploitationConsequencesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    VulnerabilityMatchExploitationConsequencesItemEnum,
-  ) as any as S.Schema<VulnerabilityMatchExploitationConsequencesItemEnumList>;
+export type VulnerabilityMatchExploitationConsequencesItemEnumList = ReadonlyArray<VulnerabilityMatchExploitationConsequencesItemEnum>;
+export const VulnerabilityMatchExploitationConsequencesItemEnumList = /*@__PURE__*/ S.Array(VulnerabilityMatchExploitationConsequencesItemEnum) as any as S.Schema<VulnerabilityMatchExploitationConsequencesItemEnumList>;
 
-export type VulnerabilityMatchExploitationVectorsItemEnum =
-  | "EXPLOITATION_VECTOR_UNSPECIFIED"
-  | "ADMINISTRATIVE_INTERFACE"
-  | "BLUETOOTH_ACCESS"
-  | "BROWSER"
-  | "COMPROMISED_COMMUNICATION_CHANNEL"
-  | "EMAIL"
-  | "EXPOSED_WEB_APPLICATION"
-  | "LOCAL_NETWORK_ACCESS"
-  | "MALICIOUS_APPLICATION"
-  | "MALICIOUS_FILE"
-  | "MALICIOUS_SERVER"
-  | "OPEN_PORT"
-  | "PHYSICAL_ACCESS"
-  | "SHORT_RANGE_RADIO"
-  | "UNSPECIFIED_LOCAL_VECTOR"
-  | "UNSPECIFIED_REMOTE_VECTOR"
-  | "VPN_ACCESS"
-  | "WIFI_ACCESS"
-  | (string & {});
-export const VulnerabilityMatchExploitationVectorsItemEnum =
-  /*@__PURE__*/ S.String;
+export type VulnerabilityMatchExploitationVectorsItemEnum = "EXPLOITATION_VECTOR_UNSPECIFIED" | "ADMINISTRATIVE_INTERFACE" | "BLUETOOTH_ACCESS" | "BROWSER" | "COMPROMISED_COMMUNICATION_CHANNEL" | "EMAIL" | "EXPOSED_WEB_APPLICATION" | "LOCAL_NETWORK_ACCESS" | "MALICIOUS_APPLICATION" | "MALICIOUS_FILE" | "MALICIOUS_SERVER" | "OPEN_PORT" | "PHYSICAL_ACCESS" | "SHORT_RANGE_RADIO" | "UNSPECIFIED_LOCAL_VECTOR" | "UNSPECIFIED_REMOTE_VECTOR" | "VPN_ACCESS" | "WIFI_ACCESS";
+export const VulnerabilityMatchExploitationVectorsItemEnum = /*@__PURE__*/ S.String;
 
-export type VulnerabilityMatchExploitationVectorsItemEnumList =
-  ReadonlyArray<VulnerabilityMatchExploitationVectorsItemEnum>;
-export const VulnerabilityMatchExploitationVectorsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    VulnerabilityMatchExploitationVectorsItemEnum,
-  ) as any as S.Schema<VulnerabilityMatchExploitationVectorsItemEnumList>;
+export type VulnerabilityMatchExploitationVectorsItemEnumList = ReadonlyArray<VulnerabilityMatchExploitationVectorsItemEnum>;
+export const VulnerabilityMatchExploitationVectorsItemEnumList = /*@__PURE__*/ S.Array(VulnerabilityMatchExploitationVectorsItemEnum) as any as S.Schema<VulnerabilityMatchExploitationVectorsItemEnumList>;
 
-export type VulnerabilityMatchExploitationStateEnum =
-  | "EXPLOITATION_STATE_UNSPECIFIED"
-  | "EXPLOITATION_STATE_NO_KNOWN"
-  | "EXPLOITATION_STATE_REPORTED"
-  | "EXPLOITATION_STATE_SUSPECTED"
-  | "EXPLOITATION_STATE_CONFIRMED"
-  | "EXPLOITATION_STATE_WIDESPREAD"
-  | (string & {});
+export type VulnerabilityMatchExploitationStateEnum = "EXPLOITATION_STATE_UNSPECIFIED" | "EXPLOITATION_STATE_NO_KNOWN" | "EXPLOITATION_STATE_REPORTED" | "EXPLOITATION_STATE_SUSPECTED" | "EXPLOITATION_STATE_CONFIRMED" | "EXPLOITATION_STATE_WIDESPREAD";
 export const VulnerabilityMatchExploitationStateEnum = /*@__PURE__*/ S.String;
 
-export type VulnerabilityMatchPriorityEnum =
-  | "PRIORITY_UNSPECIFIED"
-  | "P0"
-  | "P1"
-  | "P2"
-  | "P3"
-  | "P4"
-  | (string & {});
+export type VulnerabilityMatchPriorityEnum = "PRIORITY_UNSPECIFIED" | "P0" | "P1" | "P2" | "P3" | "P4";
 export const VulnerabilityMatchPriorityEnum = /*@__PURE__*/ S.String;
 
-export type VulnerabilityMatchRiskRatingEnum =
-  | "RISK_RATING_UNSPECIFIED"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "CRITICAL"
-  | "UNRATED"
-  | (string & {});
+export type VulnerabilityMatchRiskRatingEnum = "RISK_RATING_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH" | "CRITICAL" | "UNRATED";
 export const VulnerabilityMatchRiskRatingEnum = /*@__PURE__*/ S.String;
 
 /** Contains details about a product fix. */
@@ -239,29 +157,18 @@ export interface ProductFix {
   displayName?: string;
 }
 export const ProductFix = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    sourceId: S.optional(S.String),
-    publishTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "sourceId": S.optional(S.String),
+  "publishTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "ProductFix" }) as any as S.Schema<ProductFix>;
 
 export type ProductFixList = ReadonlyArray<ProductFix>;
-export const ProductFixList = /*@__PURE__*/ S.Array(
-  ProductFix,
-) as any as S.Schema<ProductFixList>;
+export const ProductFixList = /*@__PURE__*/ S.Array(ProductFix) as any as S.Schema<ProductFixList>;
 
-export type AssociationTypeEnum =
-  | "THREAT_INTEL_OBJECT_TYPE_UNSPECIFIED"
-  | "THREAT_INTEL_OBJECT_TYPE_THREAT_ACTOR"
-  | "THREAT_INTEL_OBJECT_TYPE_MALWARE"
-  | "THREAT_INTEL_OBJECT_TYPE_REPORT"
-  | "THREAT_INTEL_OBJECT_TYPE_CAMPAIGN"
-  | "THREAT_INTEL_OBJECT_TYPE_IOC_COLLECTION"
-  | "THREAT_INTEL_OBJECT_TYPE_SOFTWARE_AND_TOOLKITS"
-  | "THREAT_INTEL_OBJECT_TYPE_VULNERABILITY"
-  | (string & {});
+export type AssociationTypeEnum = "THREAT_INTEL_OBJECT_TYPE_UNSPECIFIED" | "THREAT_INTEL_OBJECT_TYPE_THREAT_ACTOR" | "THREAT_INTEL_OBJECT_TYPE_MALWARE" | "THREAT_INTEL_OBJECT_TYPE_REPORT" | "THREAT_INTEL_OBJECT_TYPE_CAMPAIGN" | "THREAT_INTEL_OBJECT_TYPE_IOC_COLLECTION" | "THREAT_INTEL_OBJECT_TYPE_SOFTWARE_AND_TOOLKITS" | "THREAT_INTEL_OBJECT_TYPE_VULNERABILITY";
 export const AssociationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an association with a vulnerability. */
@@ -272,34 +179,19 @@ export interface Association {
   id?: string;
 }
 export const Association = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AssociationTypeEnum),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(AssociationTypeEnum),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "Association" }) as any as S.Schema<Association>;
 
 export type AssociationList = ReadonlyArray<Association>;
-export const AssociationList = /*@__PURE__*/ S.Array(
-  Association,
-) as any as S.Schema<AssociationList>;
+export const AssociationList = /*@__PURE__*/ S.Array(Association) as any as S.Schema<AssociationList>;
 
-export type PublicExploitExploitReliabilityEnum =
-  | "EXPLOIT_RELIABILITY_UNSPECIFIED"
-  | "UNREVIEWED"
-  | "REVIEWED"
-  | "TESTED"
-  | (string & {});
+export type PublicExploitExploitReliabilityEnum = "EXPLOIT_RELIABILITY_UNSPECIFIED" | "UNREVIEWED" | "REVIEWED" | "TESTED";
 export const PublicExploitExploitReliabilityEnum = /*@__PURE__*/ S.String;
 
-export type PublicExploitExploitGradeEnum =
-  | "EXPLOIT_GRADE_UNSPECIFIED"
-  | "UNEVALUATED"
-  | "PROOF_OF_CONCEPT"
-  | "NON_WEAPONIZED"
-  | "WEAPONIZED"
-  | "SCANNER"
-  | "FAKE"
-  | (string & {});
+export type PublicExploitExploitGradeEnum = "EXPLOIT_GRADE_UNSPECIFIED" | "UNEVALUATED" | "PROOF_OF_CONCEPT" | "NON_WEAPONIZED" | "WEAPONIZED" | "SCANNER" | "FAKE";
 export const PublicExploitExploitGradeEnum = /*@__PURE__*/ S.String;
 
 /** Contains details about a public exploit. */
@@ -318,20 +210,18 @@ export interface PublicExploit {
   exploitName?: string;
 }
 export const PublicExploit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sizeBytes: S.optional(S.String),
-    uri: S.optional(S.String),
-    exploitReliability: S.optional(PublicExploitExploitReliabilityEnum),
-    exploitGrade: S.optional(PublicExploitExploitGradeEnum),
-    releaseTime: S.optional(S.String),
-    exploitName: S.optional(S.String),
-  }),
+S.Struct({
+  "sizeBytes": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "exploitReliability": S.optional(PublicExploitExploitReliabilityEnum),
+  "exploitGrade": S.optional(PublicExploitExploitGradeEnum),
+  "releaseTime": S.optional(S.String),
+  "exploitName": S.optional(S.String),
+}),
 ).annotate({ identifier: "PublicExploit" }) as any as S.Schema<PublicExploit>;
 
 export type PublicExploitList = ReadonlyArray<PublicExploit>;
-export const PublicExploitList = /*@__PURE__*/ S.Array(
-  PublicExploit,
-) as any as S.Schema<PublicExploitList>;
+export const PublicExploitList = /*@__PURE__*/ S.Array(PublicExploit) as any as S.Schema<PublicExploitList>;
 
 /** Contains details about a vulnerability match. */
 export interface VulnerabilityMatch {
@@ -371,32 +261,26 @@ export interface VulnerabilityMatch {
   description?: string;
 }
 export const VulnerabilityMatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collectionId: S.optional(S.String),
-    matchedTechnologies: S.optional(StringList),
-    disclosureTime: S.optional(S.String),
-    exploitationConsequences: S.optional(
-      VulnerabilityMatchExploitationConsequencesItemEnumList,
-    ),
-    exploitationVectors: S.optional(
-      VulnerabilityMatchExploitationVectorsItemEnumList,
-    ),
-    technologies: S.optional(StringList),
-    cvss3Score: S.optional(S.Number),
-    exploitationState: S.optional(VulnerabilityMatchExploitationStateEnum),
-    priority: S.optional(VulnerabilityMatchPriorityEnum),
-    publiclyAvailableExploit: S.optional(S.Boolean),
-    cveId: S.optional(S.String),
-    riskRating: S.optional(VulnerabilityMatchRiskRatingEnum),
-    epssScore: S.optional(S.Number),
-    productFixes: S.optional(ProductFixList),
-    associations: S.optional(AssociationList),
-    publicExploits: S.optional(PublicExploitList),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VulnerabilityMatch",
-}) as any as S.Schema<VulnerabilityMatch>;
+S.Struct({
+  "collectionId": S.optional(S.String),
+  "matchedTechnologies": S.optional(StringList),
+  "disclosureTime": S.optional(S.String),
+  "exploitationConsequences": S.optional(VulnerabilityMatchExploitationConsequencesItemEnumList),
+  "exploitationVectors": S.optional(VulnerabilityMatchExploitationVectorsItemEnumList),
+  "technologies": S.optional(StringList),
+  "cvss3Score": S.optional(S.Number),
+  "exploitationState": S.optional(VulnerabilityMatchExploitationStateEnum),
+  "priority": S.optional(VulnerabilityMatchPriorityEnum),
+  "publiclyAvailableExploit": S.optional(S.Boolean),
+  "cveId": S.optional(S.String),
+  "riskRating": S.optional(VulnerabilityMatchRiskRatingEnum),
+  "epssScore": S.optional(S.Number),
+  "productFixes": S.optional(ProductFixList),
+  "associations": S.optional(AssociationList),
+  "publicExploits": S.optional(PublicExploitList),
+  "description": S.optional(S.String),
+}),
+).annotate({ identifier: "VulnerabilityMatch" }) as any as S.Schema<VulnerabilityMatch>;
 
 /** Contains details for a technology watchlist alert. */
 export interface TargetTechnologyAlertDetail {
@@ -404,12 +288,10 @@ export interface TargetTechnologyAlertDetail {
   vulnerabilityMatch?: VulnerabilityMatch;
 }
 export const TargetTechnologyAlertDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vulnerabilityMatch: S.optional(VulnerabilityMatch),
-  }),
-).annotate({
-  identifier: "TargetTechnologyAlertDetail",
-}) as any as S.Schema<TargetTechnologyAlertDetail>;
+S.Struct({
+  "vulnerabilityMatch": S.optional(VulnerabilityMatch),
+}),
+).annotate({ identifier: "TargetTechnologyAlertDetail" }) as any as S.Schema<TargetTechnologyAlertDetail>;
 
 /** Container for different types of alert details. */
 export interface AlertDetail {
@@ -425,13 +307,13 @@ export interface AlertDetail {
   targetTechnology?: TargetTechnologyAlertDetail;
 }
 export const AlertDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detailType: S.optional(S.String),
-    insiderThreat: S.optional(InsiderThreatAlertDetail),
-    initialAccessBroker: S.optional(InitialAccessBrokerAlertDetail),
-    dataLeak: S.optional(DataLeakAlertDetail),
-    targetTechnology: S.optional(TargetTechnologyAlertDetail),
-  }),
+S.Struct({
+  "detailType": S.optional(S.String),
+  "insiderThreat": S.optional(InsiderThreatAlertDetail),
+  "initialAccessBroker": S.optional(InitialAccessBrokerAlertDetail),
+  "dataLeak": S.optional(DataLeakAlertDetail),
+  "targetTechnology": S.optional(TargetTechnologyAlertDetail),
+}),
 ).annotate({ identifier: "AlertDetail" }) as any as S.Schema<AlertDetail>;
 
 /** Details the evidence used to determine the relevance verdict. */
@@ -442,26 +324,16 @@ export interface Evidence {
   distinctThemes?: StringList;
 }
 export const Evidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commonThemes: S.optional(StringList),
-    distinctThemes: S.optional(StringList),
-  }),
+S.Struct({
+  "commonThemes": S.optional(StringList),
+  "distinctThemes": S.optional(StringList),
+}),
 ).annotate({ identifier: "Evidence" }) as any as S.Schema<Evidence>;
 
-export type RelevanceAnalysisRelevanceLevelEnum =
-  | "RELEVANCE_LEVEL_UNSPECIFIED"
-  | "RELEVANCE_LEVEL_LOW"
-  | "RELEVANCE_LEVEL_MEDIUM"
-  | "RELEVANCE_LEVEL_HIGH"
-  | (string & {});
+export type RelevanceAnalysisRelevanceLevelEnum = "RELEVANCE_LEVEL_UNSPECIFIED" | "RELEVANCE_LEVEL_LOW" | "RELEVANCE_LEVEL_MEDIUM" | "RELEVANCE_LEVEL_HIGH";
 export const RelevanceAnalysisRelevanceLevelEnum = /*@__PURE__*/ S.String;
 
-export type RelevanceAnalysisConfidenceEnum =
-  | "CONFIDENCE_LEVEL_UNSPECIFIED"
-  | "CONFIDENCE_LEVEL_LOW"
-  | "CONFIDENCE_LEVEL_MEDIUM"
-  | "CONFIDENCE_LEVEL_HIGH"
-  | (string & {});
+export type RelevanceAnalysisConfidenceEnum = "CONFIDENCE_LEVEL_UNSPECIFIED" | "CONFIDENCE_LEVEL_LOW" | "CONFIDENCE_LEVEL_MEDIUM" | "CONFIDENCE_LEVEL_HIGH";
 export const RelevanceAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
 
 /** Structured relevance analysis for a threat. */
@@ -478,32 +350,19 @@ export interface RelevanceAnalysis {
   confidence?: RelevanceAnalysisConfidenceEnum;
 }
 export const RelevanceAnalysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relevant: S.optional(S.Boolean),
-    evidence: S.optional(Evidence),
-    relevanceLevel: S.optional(RelevanceAnalysisRelevanceLevelEnum),
-    reasoning: S.optional(S.String),
-    confidence: S.optional(RelevanceAnalysisConfidenceEnum),
-  }),
-).annotate({
-  identifier: "RelevanceAnalysis",
-}) as any as S.Schema<RelevanceAnalysis>;
+S.Struct({
+  "relevant": S.optional(S.Boolean),
+  "evidence": S.optional(Evidence),
+  "relevanceLevel": S.optional(RelevanceAnalysisRelevanceLevelEnum),
+  "reasoning": S.optional(S.String),
+  "confidence": S.optional(RelevanceAnalysisConfidenceEnum),
+}),
+).annotate({ identifier: "RelevanceAnalysis" }) as any as S.Schema<RelevanceAnalysis>;
 
-export type PriorityAnalysisConfidenceEnum =
-  | "CONFIDENCE_LEVEL_UNSPECIFIED"
-  | "CONFIDENCE_LEVEL_LOW"
-  | "CONFIDENCE_LEVEL_MEDIUM"
-  | "CONFIDENCE_LEVEL_HIGH"
-  | (string & {});
+export type PriorityAnalysisConfidenceEnum = "CONFIDENCE_LEVEL_UNSPECIFIED" | "CONFIDENCE_LEVEL_LOW" | "CONFIDENCE_LEVEL_MEDIUM" | "CONFIDENCE_LEVEL_HIGH";
 export const PriorityAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
 
-export type PriorityAnalysisPriorityLevelEnum =
-  | "PRIORITY_LEVEL_UNSPECIFIED"
-  | "PRIORITY_LEVEL_LOW"
-  | "PRIORITY_LEVEL_MEDIUM"
-  | "PRIORITY_LEVEL_HIGH"
-  | "PRIORITY_LEVEL_CRITICAL"
-  | (string & {});
+export type PriorityAnalysisPriorityLevelEnum = "PRIORITY_LEVEL_UNSPECIFIED" | "PRIORITY_LEVEL_LOW" | "PRIORITY_LEVEL_MEDIUM" | "PRIORITY_LEVEL_HIGH" | "PRIORITY_LEVEL_CRITICAL";
 export const PriorityAnalysisPriorityLevelEnum = /*@__PURE__*/ S.String;
 
 /** Structured priority analysis for a threat. */
@@ -516,14 +375,12 @@ export interface PriorityAnalysis {
   priorityLevel?: PriorityAnalysisPriorityLevelEnum;
 }
 export const PriorityAnalysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reasoning: S.optional(S.String),
-    confidence: S.optional(PriorityAnalysisConfidenceEnum),
-    priorityLevel: S.optional(PriorityAnalysisPriorityLevelEnum),
-  }),
-).annotate({
-  identifier: "PriorityAnalysis",
-}) as any as S.Schema<PriorityAnalysis>;
+S.Struct({
+  "reasoning": S.optional(S.String),
+  "confidence": S.optional(PriorityAnalysisConfidenceEnum),
+  "priorityLevel": S.optional(PriorityAnalysisPriorityLevelEnum),
+}),
+).annotate({ identifier: "PriorityAnalysis" }) as any as S.Schema<PriorityAnalysis>;
 
 /** Tracks basic CRUD facts. */
 export interface Audit {
@@ -537,43 +394,21 @@ export interface Audit {
   creator?: string;
 }
 export const Audit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    updater: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    creator: S.optional(S.String),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "updater": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "creator": S.optional(S.String),
+}),
 ).annotate({ identifier: "Audit" }) as any as S.Schema<Audit>;
 
-export type AlertStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "NEW"
-  | "READ"
-  | "TRIAGED"
-  | "ESCALATED"
-  | "RESOLVED"
-  | "DUPLICATE"
-  | "FALSE_POSITIVE"
-  | "NOT_ACTIONABLE"
-  | "BENIGN"
-  | "TRACKED_EXTERNALLY"
-  | (string & {});
+export type AlertStateEnum = "STATE_UNSPECIFIED" | "NEW" | "READ" | "TRIAGED" | "ESCALATED" | "RESOLVED" | "DUPLICATE" | "FALSE_POSITIVE" | "NOT_ACTIONABLE" | "BENIGN" | "TRACKED_EXTERNALLY";
 export const AlertStateEnum = /*@__PURE__*/ S.String;
 
-export type SeverityAnalysisSeverityLevelEnum =
-  | "SEVERITY_LEVEL_UNSPECIFIED"
-  | "SEVERITY_LEVEL_LOW"
-  | "SEVERITY_LEVEL_MEDIUM"
-  | "SEVERITY_LEVEL_HIGH"
-  | (string & {});
+export type SeverityAnalysisSeverityLevelEnum = "SEVERITY_LEVEL_UNSPECIFIED" | "SEVERITY_LEVEL_LOW" | "SEVERITY_LEVEL_MEDIUM" | "SEVERITY_LEVEL_HIGH";
 export const SeverityAnalysisSeverityLevelEnum = /*@__PURE__*/ S.String;
 
-export type SeverityAnalysisConfidenceEnum =
-  | "CONFIDENCE_LEVEL_UNSPECIFIED"
-  | "CONFIDENCE_LEVEL_LOW"
-  | "CONFIDENCE_LEVEL_MEDIUM"
-  | "CONFIDENCE_LEVEL_HIGH"
-  | (string & {});
+export type SeverityAnalysisConfidenceEnum = "CONFIDENCE_LEVEL_UNSPECIFIED" | "CONFIDENCE_LEVEL_LOW" | "CONFIDENCE_LEVEL_MEDIUM" | "CONFIDENCE_LEVEL_HIGH";
 export const SeverityAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
 
 /** Structured severity analysis for a threat. */
@@ -586,14 +421,12 @@ export interface SeverityAnalysis {
   reasoning?: string;
 }
 export const SeverityAnalysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severityLevel: S.optional(SeverityAnalysisSeverityLevelEnum),
-    confidence: S.optional(SeverityAnalysisConfidenceEnum),
-    reasoning: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SeverityAnalysis",
-}) as any as S.Schema<SeverityAnalysis>;
+S.Struct({
+  "severityLevel": S.optional(SeverityAnalysisSeverityLevelEnum),
+  "confidence": S.optional(SeverityAnalysisConfidenceEnum),
+  "reasoning": S.optional(S.String),
+}),
+).annotate({ identifier: "SeverityAnalysis" }) as any as S.Schema<SeverityAnalysis>;
 
 /** Stateful object representing a group of Findings. Key feature to an Alert is that it expresses the user's intent towards the findings of that group, even those that haven't occurred yet. */
 export interface Alert {
@@ -631,24 +464,24 @@ export interface Alert {
   displayName?: string;
 }
 export const Alert = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detail: S.optional(AlertDetail),
-    duplicatedBy: S.optional(StringList),
-    relevanceAnalysis: S.optional(RelevanceAnalysis),
-    priorityAnalysis: S.optional(PriorityAnalysis),
-    name: S.optional(S.String),
-    configurations: S.optional(StringList),
-    findings: S.optional(StringList),
-    audit: S.optional(Audit),
-    duplicateOf: S.optional(S.String),
-    state: S.optional(AlertStateEnum),
-    etag: S.optional(S.String),
-    severityAnalysis: S.optional(SeverityAnalysis),
-    findingCount: S.optional(S.String),
-    externalId: S.optional(S.String),
-    aiSummary: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "detail": S.optional(AlertDetail),
+  "duplicatedBy": S.optional(StringList),
+  "relevanceAnalysis": S.optional(RelevanceAnalysis),
+  "priorityAnalysis": S.optional(PriorityAnalysis),
+  "name": S.optional(S.String),
+  "configurations": S.optional(StringList),
+  "findings": S.optional(StringList),
+  "audit": S.optional(Audit),
+  "duplicateOf": S.optional(S.String),
+  "state": S.optional(AlertStateEnum),
+  "etag": S.optional(S.String),
+  "severityAnalysis": S.optional(SeverityAnalysis),
+  "findingCount": S.optional(S.String),
+  "externalId": S.optional(S.String),
+  "aiSummary": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 /** Request message for MarkAlertAsDuplicate. */
@@ -657,12 +490,10 @@ export interface MarkAlertAsDuplicateRequest {
   duplicateOf?: string;
 }
 export const MarkAlertAsDuplicateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    duplicateOf: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MarkAlertAsDuplicateRequest",
-}) as any as S.Schema<MarkAlertAsDuplicateRequest>;
+S.Struct({
+  "duplicateOf": S.optional(S.String),
+}),
+).annotate({ identifier: "MarkAlertAsDuplicateRequest" }) as any as S.Schema<MarkAlertAsDuplicateRequest>;
 
 export interface DuplicateProjectsAlertsRequest {
   /** Required. Name of the alert to mark as a duplicate. Format: projects/{project}/alerts/{alert} */
@@ -671,19 +502,11 @@ export interface DuplicateProjectsAlertsRequest {
   body?: MarkAlertAsDuplicateRequest;
 }
 export const DuplicateProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MarkAlertAsDuplicateRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta/{+name}:duplicate",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DuplicateProjectsAlertsRequest",
-}) as any as S.Schema<DuplicateProjectsAlertsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MarkAlertAsDuplicateRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:duplicate","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "DuplicateProjectsAlertsRequest" }) as any as S.Schema<DuplicateProjectsAlertsRequest>;
 
 export interface EnumerateFacetsProjectsAlertsRequest {
   /** Optional. Filter on what alerts will be enumerated. */
@@ -691,21 +514,12 @@ export interface EnumerateFacetsProjectsAlertsRequest {
   /** Required. Parent of the alerts. */
   parent: string;
 }
-export const EnumerateFacetsProjectsAlertsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/alerts:enumerateFacets",
-        baseUrl: "https://threatintelligence.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "EnumerateFacetsProjectsAlertsRequest",
-}) as any as S.Schema<EnumerateFacetsProjectsAlertsRequest>;
+export const EnumerateFacetsProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/alerts:enumerateFacets","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "EnumerateFacetsProjectsAlertsRequest" }) as any as S.Schema<EnumerateFacetsProjectsAlertsRequest>;
 
 /** FacetCount represents a count of records with each facet value. */
 export interface FacetCount {
@@ -715,16 +529,14 @@ export interface FacetCount {
   count?: number;
 }
 export const FacetCount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    count: S.optional(S.Number),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+  "count": S.optional(S.Number),
+}),
 ).annotate({ identifier: "FacetCount" }) as any as S.Schema<FacetCount>;
 
 export type FacetCountList = ReadonlyArray<FacetCount>;
-export const FacetCountList = /*@__PURE__*/ S.Array(
-  FacetCount,
-) as any as S.Schema<FacetCountList>;
+export const FacetCountList = /*@__PURE__*/ S.Array(FacetCount) as any as S.Schema<FacetCountList>;
 
 /** Facet represents a sub element of a resource for filtering. The results from this method are used to populate the filterable facets in the UI. */
 export interface Facet {
@@ -742,20 +554,18 @@ export interface Facet {
   minValue?: string;
 }
 export const Facet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxValue: S.optional(S.String),
-    facet: S.optional(S.String),
-    totalCount: S.optional(S.String),
-    facetType: S.optional(S.String),
-    facetCounts: S.optional(FacetCountList),
-    minValue: S.optional(S.String),
-  }),
+S.Struct({
+  "maxValue": S.optional(S.String),
+  "facet": S.optional(S.String),
+  "totalCount": S.optional(S.String),
+  "facetType": S.optional(S.String),
+  "facetCounts": S.optional(FacetCountList),
+  "minValue": S.optional(S.String),
+}),
 ).annotate({ identifier: "Facet" }) as any as S.Schema<Facet>;
 
 export type FacetList = ReadonlyArray<Facet>;
-export const FacetList = /*@__PURE__*/ S.Array(
-  Facet,
-) as any as S.Schema<FacetList>;
+export const FacetList = /*@__PURE__*/ S.Array(Facet) as any as S.Schema<FacetList>;
 
 /** Response message for EnumerateAlertFacets. */
 export interface EnumerateAlertFacetsResponse {
@@ -763,20 +573,16 @@ export interface EnumerateAlertFacetsResponse {
   facets?: FacetList;
 }
 export const EnumerateAlertFacetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facets: S.optional(FacetList),
-  }),
-).annotate({
-  identifier: "EnumerateAlertFacetsResponse",
-}) as any as S.Schema<EnumerateAlertFacetsResponse>;
+S.Struct({
+  "facets": S.optional(FacetList),
+}),
+).annotate({ identifier: "EnumerateAlertFacetsResponse" }) as any as S.Schema<EnumerateAlertFacetsResponse>;
 
 /** Request message for MarkAlertAsEscalated. */
 export interface MarkAlertAsEscalatedRequest {}
 export const MarkAlertAsEscalatedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MarkAlertAsEscalatedRequest",
-}) as any as S.Schema<MarkAlertAsEscalatedRequest>;
+S.Struct({}),
+).annotate({ identifier: "MarkAlertAsEscalatedRequest" }) as any as S.Schema<MarkAlertAsEscalatedRequest>;
 
 export interface EscalateProjectsAlertsRequest {
   /** Required. Name of the alert to mark as escalated. Format: projects/{project}/alerts/{alert} */
@@ -785,27 +591,17 @@ export interface EscalateProjectsAlertsRequest {
   body?: MarkAlertAsEscalatedRequest;
 }
 export const EscalateProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MarkAlertAsEscalatedRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta/{+name}:escalate",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "EscalateProjectsAlertsRequest",
-}) as any as S.Schema<EscalateProjectsAlertsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MarkAlertAsEscalatedRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:escalate","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "EscalateProjectsAlertsRequest" }) as any as S.Schema<EscalateProjectsAlertsRequest>;
 
 /** Request message for MarkAlertAsFalsePositive. */
 export interface MarkAlertAsFalsePositiveRequest {}
 export const MarkAlertAsFalsePositiveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MarkAlertAsFalsePositiveRequest",
-}) as any as S.Schema<MarkAlertAsFalsePositiveRequest>;
+S.Struct({}),
+).annotate({ identifier: "MarkAlertAsFalsePositiveRequest" }) as any as S.Schema<MarkAlertAsFalsePositiveRequest>;
 
 export interface FalsePositiveProjectsAlertsRequest {
   /** Required. Name of the alert to mark as a false positive. Format: projects/{project}/alerts/{alert} */
@@ -814,19 +610,11 @@ export interface FalsePositiveProjectsAlertsRequest {
   body?: MarkAlertAsFalsePositiveRequest;
 }
 export const FalsePositiveProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MarkAlertAsFalsePositiveRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta/{+name}:falsePositive",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "FalsePositiveProjectsAlertsRequest",
-}) as any as S.Schema<FalsePositiveProjectsAlertsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MarkAlertAsFalsePositiveRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:falsePositive","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "FalsePositiveProjectsAlertsRequest" }) as any as S.Schema<FalsePositiveProjectsAlertsRequest>;
 
 /** Request message for GenerateOrgProfileConfiguration. */
 export interface GenerateOrgProfileConfigurationRequest {
@@ -835,15 +623,12 @@ export interface GenerateOrgProfileConfigurationRequest {
   /** Required. The domain of the organization to generate the profile for. */
   domain?: string;
 }
-export const GenerateOrgProfileConfigurationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      displayName: S.optional(S.String),
-      domain: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GenerateOrgProfileConfigurationRequest",
-}) as any as S.Schema<GenerateOrgProfileConfigurationRequest>;
+export const GenerateOrgProfileConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "displayName": S.optional(S.String),
+  "domain": S.optional(S.String),
+}),
+).annotate({ identifier: "GenerateOrgProfileConfigurationRequest" }) as any as S.Schema<GenerateOrgProfileConfigurationRequest>;
 
 export interface GenerateOrgProfileProjectsRequest {
   /** Required. The name of the project to generate the profile for. Format: projects/{project} */
@@ -852,30 +637,17 @@ export interface GenerateOrgProfileProjectsRequest {
   body?: GenerateOrgProfileConfigurationRequest;
 }
 export const GenerateOrgProfileProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(GenerateOrgProfileConfigurationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta/{+name}:generateOrgProfile",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GenerateOrgProfileProjectsRequest",
-}) as any as S.Schema<GenerateOrgProfileProjectsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GenerateOrgProfileConfigurationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:generateOrgProfile","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "GenerateOrgProfileProjectsRequest" }) as any as S.Schema<GenerateOrgProfileProjectsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -887,11 +659,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -908,13 +680,13 @@ export interface Operation {
   metadata?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    response: S.optional(DocumentMap),
-    error: S.optional(Status),
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-    metadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "response": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "name": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+  "metadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface GetPasswordProjectsAlertsRequest {
@@ -922,54 +694,30 @@ export interface GetPasswordProjectsAlertsRequest {
   name: string;
 }
 export const GetPasswordProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+name}:GetPassword",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPasswordProjectsAlertsRequest",
-}) as any as S.Schema<GetPasswordProjectsAlertsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}:GetPassword","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "GetPasswordProjectsAlertsRequest" }) as any as S.Schema<GetPasswordProjectsAlertsRequest>;
 
 export interface GetProjectsAlertsRequest {
   /** Required. Name of the alert to get. Format: projects/{project}/alerts/{alert} */
   name: string;
 }
 export const GetProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+name}",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsAlertsRequest",
-}) as any as S.Schema<GetProjectsAlertsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsAlertsRequest" }) as any as S.Schema<GetProjectsAlertsRequest>;
 
 export interface GetProjectsAlertsDocumentsRequest {
   /** Required. Name of the alert document to get. Format: projects/{project}/alerts/{alert}/documents/{document} */
   name: string;
 }
 export const GetProjectsAlertsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+name}",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsAlertsDocumentsRequest",
-}) as any as S.Schema<GetProjectsAlertsDocumentsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsAlertsDocumentsRequest" }) as any as S.Schema<GetProjectsAlertsDocumentsRequest>;
 
 /** The translation of an alert document. */
 export interface AlertDocumentTranslation {
@@ -979,13 +727,11 @@ export interface AlertDocumentTranslation {
   translatedContent?: string;
 }
 export const AlertDocumentTranslation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    translatedTitle: S.optional(S.String),
-    translatedContent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AlertDocumentTranslation",
-}) as any as S.Schema<AlertDocumentTranslation>;
+S.Struct({
+  "translatedTitle": S.optional(S.String),
+  "translatedContent": S.optional(S.String),
+}),
+).annotate({ identifier: "AlertDocumentTranslation" }) as any as S.Schema<AlertDocumentTranslation>;
 
 /** A document that is associated with an alert. */
 export interface AlertDocument {
@@ -1017,21 +763,21 @@ export interface AlertDocument {
   title?: string;
 }
 export const AlertDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aiSummary: S.optional(S.String),
-    content: S.optional(S.String),
-    sourceUri: S.optional(S.String),
-    sourceUpdateTime: S.optional(S.String),
-    languageCode: S.optional(S.String),
-    author: S.optional(S.String),
-    createTime: S.optional(S.String),
-    ingestTime: S.optional(S.String),
-    name: S.optional(S.String),
-    collectionTime: S.optional(S.String),
-    source: S.optional(S.String),
-    translation: S.optional(AlertDocumentTranslation),
-    title: S.optional(S.String),
-  }),
+S.Struct({
+  "aiSummary": S.optional(S.String),
+  "content": S.optional(S.String),
+  "sourceUri": S.optional(S.String),
+  "sourceUpdateTime": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+  "author": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "ingestTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "collectionTime": S.optional(S.String),
+  "source": S.optional(S.String),
+  "translation": S.optional(AlertDocumentTranslation),
+  "title": S.optional(S.String),
+}),
 ).annotate({ identifier: "AlertDocument" }) as any as S.Schema<AlertDocument>;
 
 export interface GetProjectsConfigurationsRequest {
@@ -1039,25 +785,12 @@ export interface GetProjectsConfigurationsRequest {
   name: string;
 }
 export const GetProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+name}",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsConfigurationsRequest",
-}) as any as S.Schema<GetProjectsConfigurationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsConfigurationsRequest" }) as any as S.Schema<GetProjectsConfigurationsRequest>;
 
-export type ConfigurationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | "DEPRECATED"
-  | (string & {});
+export type ConfigurationStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | "DEPRECATED";
 export const ConfigurationStateEnum = /*@__PURE__*/ S.String;
 
 /** A string with citation ids. */
@@ -1068,13 +801,11 @@ export interface CustomerProfileCitedString {
   citationIds?: StringList;
 }
 export const CustomerProfileCitedString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    citationIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CustomerProfileCitedString",
-}) as any as S.Schema<CustomerProfileCitedString>;
+S.Struct({
+  "value": S.optional(S.String),
+  "citationIds": S.optional(StringList),
+}),
+).annotate({ identifier: "CustomerProfileCitedString" }) as any as S.Schema<CustomerProfileCitedString>;
 
 /** A summarized version of the customer profile. Generated by the backend. */
 export interface CustomerProfileSummary {
@@ -1104,23 +835,21 @@ export interface CustomerProfileSummary {
   primaryWebsite?: CustomerProfileCitedString;
 }
 export const CustomerProfileSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productsSummary: S.optional(CustomerProfileCitedString),
-    keyPeopleSummary: S.optional(CustomerProfileCitedString),
-    servicesSummary: S.optional(CustomerProfileCitedString),
-    parentCompany: S.optional(CustomerProfileCitedString),
-    title: S.optional(CustomerProfileCitedString),
-    industry: S.optional(CustomerProfileCitedString),
-    entityType: S.optional(CustomerProfileCitedString),
-    founded: S.optional(CustomerProfileCitedString),
-    headquarters: S.optional(CustomerProfileCitedString),
-    areaServed: S.optional(CustomerProfileCitedString),
-    brands: S.optional(CustomerProfileCitedString),
-    primaryWebsite: S.optional(CustomerProfileCitedString),
-  }),
-).annotate({
-  identifier: "CustomerProfileSummary",
-}) as any as S.Schema<CustomerProfileSummary>;
+S.Struct({
+  "productsSummary": S.optional(CustomerProfileCitedString),
+  "keyPeopleSummary": S.optional(CustomerProfileCitedString),
+  "servicesSummary": S.optional(CustomerProfileCitedString),
+  "parentCompany": S.optional(CustomerProfileCitedString),
+  "title": S.optional(CustomerProfileCitedString),
+  "industry": S.optional(CustomerProfileCitedString),
+  "entityType": S.optional(CustomerProfileCitedString),
+  "founded": S.optional(CustomerProfileCitedString),
+  "headquarters": S.optional(CustomerProfileCitedString),
+  "areaServed": S.optional(CustomerProfileCitedString),
+  "brands": S.optional(CustomerProfileCitedString),
+  "primaryWebsite": S.optional(CustomerProfileCitedString),
+}),
+).annotate({ identifier: "CustomerProfileSummary" }) as any as S.Schema<CustomerProfileSummary>;
 
 /** Industry information for the customer profile. */
 export interface CustomerProfileIndustry {
@@ -1130,19 +859,14 @@ export interface CustomerProfileIndustry {
   citationIds?: StringList;
 }
 export const CustomerProfileIndustry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    industry: S.optional(S.String),
-    citationIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CustomerProfileIndustry",
-}) as any as S.Schema<CustomerProfileIndustry>;
+S.Struct({
+  "industry": S.optional(S.String),
+  "citationIds": S.optional(StringList),
+}),
+).annotate({ identifier: "CustomerProfileIndustry" }) as any as S.Schema<CustomerProfileIndustry>;
 
-export type CustomerProfileIndustryList =
-  ReadonlyArray<CustomerProfileIndustry>;
-export const CustomerProfileIndustryList = /*@__PURE__*/ S.Array(
-  CustomerProfileIndustry,
-) as any as S.Schema<CustomerProfileIndustryList>;
+export type CustomerProfileIndustryList = ReadonlyArray<CustomerProfileIndustry>;
+export const CustomerProfileIndustryList = /*@__PURE__*/ S.Array(CustomerProfileIndustry) as any as S.Schema<CustomerProfileIndustryList>;
 
 /** Security considerations for the customer profile. */
 export interface CustomerProfileSecurityConsiderations {
@@ -1151,15 +875,12 @@ export interface CustomerProfileSecurityConsiderations {
   /** Optional. A series of considerations for the security of the organization, such as "high risk of compromise" or "vulnerable to cyberbullying". */
   considerations?: StringList;
 }
-export const CustomerProfileSecurityConsiderations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      note: S.optional(S.String),
-      considerations: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "CustomerProfileSecurityConsiderations",
-}) as any as S.Schema<CustomerProfileSecurityConsiderations>;
+export const CustomerProfileSecurityConsiderations = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "note": S.optional(S.String),
+  "considerations": S.optional(StringList),
+}),
+).annotate({ identifier: "CustomerProfileSecurityConsiderations" }) as any as S.Schema<CustomerProfileSecurityConsiderations>;
 
 /** Citation information for the customer profile. */
 export interface CustomerProfileCitation {
@@ -1175,22 +896,17 @@ export interface CustomerProfileCitation {
   source?: string;
 }
 export const CustomerProfileCitation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(S.String),
-    uri: S.optional(S.String),
-    retrievalTime: S.optional(S.String),
-    citationId: S.optional(S.String),
-    source: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerProfileCitation",
-}) as any as S.Schema<CustomerProfileCitation>;
+S.Struct({
+  "document": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "retrievalTime": S.optional(S.String),
+  "citationId": S.optional(S.String),
+  "source": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomerProfileCitation" }) as any as S.Schema<CustomerProfileCitation>;
 
-export type CustomerProfileCitationList =
-  ReadonlyArray<CustomerProfileCitation>;
-export const CustomerProfileCitationList = /*@__PURE__*/ S.Array(
-  CustomerProfileCitation,
-) as any as S.Schema<CustomerProfileCitationList>;
+export type CustomerProfileCitationList = ReadonlyArray<CustomerProfileCitation>;
+export const CustomerProfileCitationList = /*@__PURE__*/ S.Array(CustomerProfileCitation) as any as S.Schema<CustomerProfileCitationList>;
 
 /** Web presence information for the customer profile. */
 export interface CustomerProfileWebPresence {
@@ -1200,19 +916,14 @@ export interface CustomerProfileWebPresence {
   citationIds?: StringList;
 }
 export const CustomerProfileWebPresence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-    citationIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CustomerProfileWebPresence",
-}) as any as S.Schema<CustomerProfileWebPresence>;
+S.Struct({
+  "domain": S.optional(S.String),
+  "citationIds": S.optional(StringList),
+}),
+).annotate({ identifier: "CustomerProfileWebPresence" }) as any as S.Schema<CustomerProfileWebPresence>;
 
-export type CustomerProfileWebPresenceList =
-  ReadonlyArray<CustomerProfileWebPresence>;
-export const CustomerProfileWebPresenceList = /*@__PURE__*/ S.Array(
-  CustomerProfileWebPresence,
-) as any as S.Schema<CustomerProfileWebPresenceList>;
+export type CustomerProfileWebPresenceList = ReadonlyArray<CustomerProfileWebPresence>;
+export const CustomerProfileWebPresenceList = /*@__PURE__*/ S.Array(CustomerProfileWebPresence) as any as S.Schema<CustomerProfileWebPresenceList>;
 
 /** Company information for the customer profile. */
 export interface CustomerProfileCompany {
@@ -1222,18 +933,14 @@ export interface CustomerProfileCompany {
   company?: string;
 }
 export const CustomerProfileCompany = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    citationIds: S.optional(StringList),
-    company: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerProfileCompany",
-}) as any as S.Schema<CustomerProfileCompany>;
+S.Struct({
+  "citationIds": S.optional(StringList),
+  "company": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomerProfileCompany" }) as any as S.Schema<CustomerProfileCompany>;
 
 export type CustomerProfileCompanyList = ReadonlyArray<CustomerProfileCompany>;
-export const CustomerProfileCompanyList = /*@__PURE__*/ S.Array(
-  CustomerProfileCompany,
-) as any as S.Schema<CustomerProfileCompanyList>;
+export const CustomerProfileCompanyList = /*@__PURE__*/ S.Array(CustomerProfileCompany) as any as S.Schema<CustomerProfileCompanyList>;
 
 /** Person information for the customer profile. */
 export interface CustomerProfilePerson {
@@ -1245,19 +952,15 @@ export interface CustomerProfilePerson {
   title?: string;
 }
 export const CustomerProfilePerson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    citationIds: S.optional(StringList),
-    title: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerProfilePerson",
-}) as any as S.Schema<CustomerProfilePerson>;
+S.Struct({
+  "name": S.optional(S.String),
+  "citationIds": S.optional(StringList),
+  "title": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomerProfilePerson" }) as any as S.Schema<CustomerProfilePerson>;
 
 export type CustomerProfilePersonList = ReadonlyArray<CustomerProfilePerson>;
-export const CustomerProfilePersonList = /*@__PURE__*/ S.Array(
-  CustomerProfilePerson,
-) as any as S.Schema<CustomerProfilePersonList>;
+export const CustomerProfilePersonList = /*@__PURE__*/ S.Array(CustomerProfilePerson) as any as S.Schema<CustomerProfilePersonList>;
 
 /** Product information for the customer profile. */
 export interface CustomerProfileProduct {
@@ -1269,19 +972,15 @@ export interface CustomerProfileProduct {
   product?: string;
 }
 export const CustomerProfileProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand: S.optional(S.String),
-    citationIds: S.optional(StringList),
-    product: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerProfileProduct",
-}) as any as S.Schema<CustomerProfileProduct>;
+S.Struct({
+  "brand": S.optional(S.String),
+  "citationIds": S.optional(StringList),
+  "product": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomerProfileProduct" }) as any as S.Schema<CustomerProfileProduct>;
 
 export type CustomerProfileProductList = ReadonlyArray<CustomerProfileProduct>;
-export const CustomerProfileProductList = /*@__PURE__*/ S.Array(
-  CustomerProfileProduct,
-) as any as S.Schema<CustomerProfileProductList>;
+export const CustomerProfileProductList = /*@__PURE__*/ S.Array(CustomerProfileProduct) as any as S.Schema<CustomerProfileProductList>;
 
 /** Location information for the customer profile. */
 export interface CustomerProfileLocation {
@@ -1295,21 +994,16 @@ export interface CustomerProfileLocation {
   address?: string;
 }
 export const CustomerProfileLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand: S.optional(S.String),
-    citationIds: S.optional(StringList),
-    facilityType: S.optional(S.String),
-    address: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerProfileLocation",
-}) as any as S.Schema<CustomerProfileLocation>;
+S.Struct({
+  "brand": S.optional(S.String),
+  "citationIds": S.optional(StringList),
+  "facilityType": S.optional(S.String),
+  "address": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomerProfileLocation" }) as any as S.Schema<CustomerProfileLocation>;
 
-export type CustomerProfileLocationList =
-  ReadonlyArray<CustomerProfileLocation>;
-export const CustomerProfileLocationList = /*@__PURE__*/ S.Array(
-  CustomerProfileLocation,
-) as any as S.Schema<CustomerProfileLocationList>;
+export type CustomerProfileLocationList = ReadonlyArray<CustomerProfileLocation>;
+export const CustomerProfileLocationList = /*@__PURE__*/ S.Array(CustomerProfileLocation) as any as S.Schema<CustomerProfileLocationList>;
 
 /** Contact information for the customer profile. */
 export interface CustomerProfileContactInfo {
@@ -1327,23 +1021,18 @@ export interface CustomerProfileContactInfo {
   other?: string;
 }
 export const CustomerProfileContactInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    citationIds: S.optional(StringList),
-    email: S.optional(S.String),
-    label: S.optional(S.String),
-    phone: S.optional(S.String),
-    address: S.optional(S.String),
-    other: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerProfileContactInfo",
-}) as any as S.Schema<CustomerProfileContactInfo>;
+S.Struct({
+  "citationIds": S.optional(StringList),
+  "email": S.optional(S.String),
+  "label": S.optional(S.String),
+  "phone": S.optional(S.String),
+  "address": S.optional(S.String),
+  "other": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomerProfileContactInfo" }) as any as S.Schema<CustomerProfileContactInfo>;
 
-export type CustomerProfileContactInfoList =
-  ReadonlyArray<CustomerProfileContactInfo>;
-export const CustomerProfileContactInfoList = /*@__PURE__*/ S.Array(
-  CustomerProfileContactInfo,
-) as any as S.Schema<CustomerProfileContactInfoList>;
+export type CustomerProfileContactInfoList = ReadonlyArray<CustomerProfileContactInfo>;
+export const CustomerProfileContactInfoList = /*@__PURE__*/ S.Array(CustomerProfileContactInfo) as any as S.Schema<CustomerProfileContactInfoList>;
 
 /** CustomerProfileConfig is the configuration for the customer profile. */
 export interface CustomerProfileConfig {
@@ -1375,64 +1064,34 @@ export interface CustomerProfileConfig {
   contactInfo?: CustomerProfileContactInfoList;
 }
 export const CustomerProfileConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.optional(S.String),
-    summary: S.optional(CustomerProfileSummary),
-    industries: S.optional(CustomerProfileIndustryList),
-    securityConsiderations: S.optional(CustomerProfileSecurityConsiderations),
-    citations: S.optional(CustomerProfileCitationList),
-    webPresences: S.optional(CustomerProfileWebPresenceList),
-    parentCompanies: S.optional(CustomerProfileCompanyList),
-    orgSummary: S.optional(S.String),
-    executives: S.optional(CustomerProfilePersonList),
-    technologyPresence: S.optional(S.String),
-    products: S.optional(CustomerProfileProductList),
-    locations: S.optional(CustomerProfileLocationList),
-    contactInfo: S.optional(CustomerProfileContactInfoList),
-  }),
-).annotate({
-  identifier: "CustomerProfileConfig",
-}) as any as S.Schema<CustomerProfileConfig>;
+S.Struct({
+  "org": S.optional(S.String),
+  "summary": S.optional(CustomerProfileSummary),
+  "industries": S.optional(CustomerProfileIndustryList),
+  "securityConsiderations": S.optional(CustomerProfileSecurityConsiderations),
+  "citations": S.optional(CustomerProfileCitationList),
+  "webPresences": S.optional(CustomerProfileWebPresenceList),
+  "parentCompanies": S.optional(CustomerProfileCompanyList),
+  "orgSummary": S.optional(S.String),
+  "executives": S.optional(CustomerProfilePersonList),
+  "technologyPresence": S.optional(S.String),
+  "products": S.optional(CustomerProfileProductList),
+  "locations": S.optional(CustomerProfileLocationList),
+  "contactInfo": S.optional(CustomerProfileContactInfoList),
+}),
+).annotate({ identifier: "CustomerProfileConfig" }) as any as S.Schema<CustomerProfileConfig>;
 
-export type TechnologyWatchListAlertThresholdExploitationStatesItemEnum =
-  | "EXPLOITATION_STATE_UNSPECIFIED"
-  | "EXPLOITATION_STATE_NO_KNOWN"
-  | "EXPLOITATION_STATE_REPORTED"
-  | "EXPLOITATION_STATE_SUSPECTED"
-  | "EXPLOITATION_STATE_CONFIRMED"
-  | "EXPLOITATION_STATE_WIDESPREAD"
-  | (string & {});
-export const TechnologyWatchListAlertThresholdExploitationStatesItemEnum =
-  /*@__PURE__*/ S.String;
+export type TechnologyWatchListAlertThresholdExploitationStatesItemEnum = "EXPLOITATION_STATE_UNSPECIFIED" | "EXPLOITATION_STATE_NO_KNOWN" | "EXPLOITATION_STATE_REPORTED" | "EXPLOITATION_STATE_SUSPECTED" | "EXPLOITATION_STATE_CONFIRMED" | "EXPLOITATION_STATE_WIDESPREAD";
+export const TechnologyWatchListAlertThresholdExploitationStatesItemEnum = /*@__PURE__*/ S.String;
 
-export type TechnologyWatchListAlertThresholdExploitationStatesItemEnumList =
-  ReadonlyArray<TechnologyWatchListAlertThresholdExploitationStatesItemEnum>;
-export const TechnologyWatchListAlertThresholdExploitationStatesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    TechnologyWatchListAlertThresholdExploitationStatesItemEnum,
-  ) as any as S.Schema<TechnologyWatchListAlertThresholdExploitationStatesItemEnumList>;
+export type TechnologyWatchListAlertThresholdExploitationStatesItemEnumList = ReadonlyArray<TechnologyWatchListAlertThresholdExploitationStatesItemEnum>;
+export const TechnologyWatchListAlertThresholdExploitationStatesItemEnumList = /*@__PURE__*/ S.Array(TechnologyWatchListAlertThresholdExploitationStatesItemEnum) as any as S.Schema<TechnologyWatchListAlertThresholdExploitationStatesItemEnumList>;
 
-export type TechnologyWatchListAlertThresholdPriorityMinimumEnum =
-  | "PRIORITY_UNSPECIFIED"
-  | "P0"
-  | "P1"
-  | "P2"
-  | "P3"
-  | "P4"
-  | (string & {});
-export const TechnologyWatchListAlertThresholdPriorityMinimumEnum =
-  /*@__PURE__*/ S.String;
+export type TechnologyWatchListAlertThresholdPriorityMinimumEnum = "PRIORITY_UNSPECIFIED" | "P0" | "P1" | "P2" | "P3" | "P4";
+export const TechnologyWatchListAlertThresholdPriorityMinimumEnum = /*@__PURE__*/ S.String;
 
-export type TechnologyWatchListAlertThresholdRiskRatingMinimumEnum =
-  | "RISK_RATING_UNSPECIFIED"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "CRITICAL"
-  | "UNRATED"
-  | (string & {});
-export const TechnologyWatchListAlertThresholdRiskRatingMinimumEnum =
-  /*@__PURE__*/ S.String;
+export type TechnologyWatchListAlertThresholdRiskRatingMinimumEnum = "RISK_RATING_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH" | "CRITICAL" | "UNRATED";
+export const TechnologyWatchListAlertThresholdRiskRatingMinimumEnum = /*@__PURE__*/ S.String;
 
 /** TechnologyWatchListAlertThreshold contains the thresholds for alerting. */
 export interface TechnologyWatchListAlertThreshold {
@@ -1448,22 +1107,14 @@ export interface TechnologyWatchListAlertThreshold {
   riskRatingMinimum?: TechnologyWatchListAlertThresholdRiskRatingMinimumEnum;
 }
 export const TechnologyWatchListAlertThreshold = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cvssScoreMinimum: S.optional(S.Number),
-    exploitationStates: S.optional(
-      TechnologyWatchListAlertThresholdExploitationStatesItemEnumList,
-    ),
-    priorityMinimum: S.optional(
-      TechnologyWatchListAlertThresholdPriorityMinimumEnum,
-    ),
-    epssScoreMinimum: S.optional(S.Number),
-    riskRatingMinimum: S.optional(
-      TechnologyWatchListAlertThresholdRiskRatingMinimumEnum,
-    ),
-  }),
-).annotate({
-  identifier: "TechnologyWatchListAlertThreshold",
-}) as any as S.Schema<TechnologyWatchListAlertThreshold>;
+S.Struct({
+  "cvssScoreMinimum": S.optional(S.Number),
+  "exploitationStates": S.optional(TechnologyWatchListAlertThresholdExploitationStatesItemEnumList),
+  "priorityMinimum": S.optional(TechnologyWatchListAlertThresholdPriorityMinimumEnum),
+  "epssScoreMinimum": S.optional(S.Number),
+  "riskRatingMinimum": S.optional(TechnologyWatchListAlertThresholdRiskRatingMinimumEnum),
+}),
+).annotate({ identifier: "TechnologyWatchListAlertThreshold" }) as any as S.Schema<TechnologyWatchListAlertThreshold>;
 
 /** TechnologyWatchListConfig is the configuration for the technology watchlist. */
 export interface TechnologyWatchListConfig {
@@ -1473,13 +1124,11 @@ export interface TechnologyWatchListConfig {
   alertThreshold?: TechnologyWatchListAlertThreshold;
 }
 export const TechnologyWatchListConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    technologies: S.optional(StringList),
-    alertThreshold: S.optional(TechnologyWatchListAlertThreshold),
-  }),
-).annotate({
-  identifier: "TechnologyWatchListConfig",
-}) as any as S.Schema<TechnologyWatchListConfig>;
+S.Struct({
+  "technologies": S.optional(StringList),
+  "alertThreshold": S.optional(TechnologyWatchListAlertThreshold),
+}),
+).annotate({ identifier: "TechnologyWatchListConfig" }) as any as S.Schema<TechnologyWatchListConfig>;
 
 /** Wrapper class that contains the union struct for all the various configuration detail specific classes. */
 export interface ConfigurationDetail {
@@ -1491,14 +1140,12 @@ export interface ConfigurationDetail {
   detailType?: string;
 }
 export const ConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerProfile: S.optional(CustomerProfileConfig),
-    technologyWatchlist: S.optional(TechnologyWatchListConfig),
-    detailType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigurationDetail",
-}) as any as S.Schema<ConfigurationDetail>;
+S.Struct({
+  "customerProfile": S.optional(CustomerProfileConfig),
+  "technologyWatchlist": S.optional(TechnologyWatchListConfig),
+  "detailType": S.optional(S.String),
+}),
+).annotate({ identifier: "ConfigurationDetail" }) as any as S.Schema<ConfigurationDetail>;
 
 /** A configuration represents a behavior an engine should follow when producing new findings. */
 export interface Configuration {
@@ -1522,17 +1169,17 @@ export interface Configuration {
   version?: string;
 }
 export const Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audit: S.optional(Audit),
-    description: S.optional(S.String),
-    etag: S.optional(S.String),
-    state: S.optional(ConfigurationStateEnum),
-    detail: S.optional(ConfigurationDetail),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    provider: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "audit": S.optional(Audit),
+  "description": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "state": S.optional(ConfigurationStateEnum),
+  "detail": S.optional(ConfigurationDetail),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "provider": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 export interface GetProjectsFindingsRequest {
@@ -1540,18 +1187,10 @@ export interface GetProjectsFindingsRequest {
   name: string;
 }
 export const GetProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+name}",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsFindingsRequest",
-}) as any as S.Schema<GetProjectsFindingsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsFindingsRequest" }) as any as S.Schema<GetProjectsFindingsRequest>;
 
 /** Contains details for a technology watchlist finding. */
 export interface TargetTechnologyFindingDetail {
@@ -1559,20 +1198,12 @@ export interface TargetTechnologyFindingDetail {
   vulnerabilityMatch?: VulnerabilityMatch;
 }
 export const TargetTechnologyFindingDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vulnerabilityMatch: S.optional(VulnerabilityMatch),
-  }),
-).annotate({
-  identifier: "TargetTechnologyFindingDetail",
-}) as any as S.Schema<TargetTechnologyFindingDetail>;
+S.Struct({
+  "vulnerabilityMatch": S.optional(VulnerabilityMatch),
+}),
+).annotate({ identifier: "TargetTechnologyFindingDetail" }) as any as S.Schema<TargetTechnologyFindingDetail>;
 
-export type DataLeakFindingDetailSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+export type DataLeakFindingDetailSeverityEnum = "SEVERITY_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
 export const DataLeakFindingDetailSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A detail object for a Data Leak finding. */
@@ -1585,24 +1216,15 @@ export interface DataLeakFindingDetail {
   severity?: DataLeakFindingDetailSeverityEnum;
 }
 export const DataLeakFindingDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matchScore: S.optional(S.Number),
-    documentId: S.optional(S.String),
-    severity: S.optional(DataLeakFindingDetailSeverityEnum),
-  }),
-).annotate({
-  identifier: "DataLeakFindingDetail",
-}) as any as S.Schema<DataLeakFindingDetail>;
+S.Struct({
+  "matchScore": S.optional(S.Number),
+  "documentId": S.optional(S.String),
+  "severity": S.optional(DataLeakFindingDetailSeverityEnum),
+}),
+).annotate({ identifier: "DataLeakFindingDetail" }) as any as S.Schema<DataLeakFindingDetail>;
 
-export type InitialAccessBrokerFindingDetailSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "CRITICAL"
-  | (string & {});
-export const InitialAccessBrokerFindingDetailSeverityEnum =
-  /*@__PURE__*/ S.String;
+export type InitialAccessBrokerFindingDetailSeverityEnum = "SEVERITY_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+export const InitialAccessBrokerFindingDetailSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A detail object for an Initial Access Broker (IAB) finding. */
 export interface InitialAccessBrokerFindingDetail {
@@ -1614,22 +1236,14 @@ export interface InitialAccessBrokerFindingDetail {
   documentId?: string;
 }
 export const InitialAccessBrokerFindingDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matchScore: S.optional(S.Number),
-    severity: S.optional(InitialAccessBrokerFindingDetailSeverityEnum),
-    documentId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InitialAccessBrokerFindingDetail",
-}) as any as S.Schema<InitialAccessBrokerFindingDetail>;
+S.Struct({
+  "matchScore": S.optional(S.Number),
+  "severity": S.optional(InitialAccessBrokerFindingDetailSeverityEnum),
+  "documentId": S.optional(S.String),
+}),
+).annotate({ identifier: "InitialAccessBrokerFindingDetail" }) as any as S.Schema<InitialAccessBrokerFindingDetail>;
 
-export type InsiderThreatFindingDetailSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+export type InsiderThreatFindingDetailSeverityEnum = "SEVERITY_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
 export const InsiderThreatFindingDetailSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A detail object for a InsiderThreat finding. */
@@ -1642,14 +1256,12 @@ export interface InsiderThreatFindingDetail {
   documentId?: string;
 }
 export const InsiderThreatFindingDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matchScore: S.optional(S.Number),
-    severity: S.optional(InsiderThreatFindingDetailSeverityEnum),
-    documentId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsiderThreatFindingDetail",
-}) as any as S.Schema<InsiderThreatFindingDetail>;
+S.Struct({
+  "matchScore": S.optional(S.Number),
+  "severity": S.optional(InsiderThreatFindingDetailSeverityEnum),
+  "documentId": S.optional(S.String),
+}),
+).annotate({ identifier: "InsiderThreatFindingDetail" }) as any as S.Schema<InsiderThreatFindingDetail>;
 
 /** Wrapper class that contains the union struct for all the various findings detail specific classes. */
 export interface FindingDetail {
@@ -1665,13 +1277,13 @@ export interface FindingDetail {
   detailType?: string;
 }
 export const FindingDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetTechnology: S.optional(TargetTechnologyFindingDetail),
-    dataLeak: S.optional(DataLeakFindingDetail),
-    initialAccessBroker: S.optional(InitialAccessBrokerFindingDetail),
-    insiderThreat: S.optional(InsiderThreatFindingDetail),
-    detailType: S.optional(S.String),
-  }),
+S.Struct({
+  "targetTechnology": S.optional(TargetTechnologyFindingDetail),
+  "dataLeak": S.optional(DataLeakFindingDetail),
+  "initialAccessBroker": S.optional(InitialAccessBrokerFindingDetail),
+  "insiderThreat": S.optional(InsiderThreatFindingDetail),
+  "detailType": S.optional(S.String),
+}),
 ).annotate({ identifier: "FindingDetail" }) as any as S.Schema<FindingDetail>;
 
 /** A ‘stateless’ and a point in time event that a check produced a result of interest. */
@@ -1702,20 +1314,20 @@ export interface Finding {
   reoccurrenceTimes?: StringList;
 }
 export const Finding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert: S.optional(S.String),
-    audit: S.optional(Audit),
-    detail: S.optional(FindingDetail),
-    aiSummary: S.optional(S.String),
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-    configurations: S.optional(StringList),
-    severity: S.optional(S.Number),
-    provider: S.optional(S.String),
-    relevanceAnalysis: S.optional(RelevanceAnalysis),
-    severityAnalysis: S.optional(SeverityAnalysis),
-    reoccurrenceTimes: S.optional(StringList),
-  }),
+S.Struct({
+  "alert": S.optional(S.String),
+  "audit": S.optional(Audit),
+  "detail": S.optional(FindingDetail),
+  "aiSummary": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+  "configurations": S.optional(StringList),
+  "severity": S.optional(S.Number),
+  "provider": S.optional(S.String),
+  "relevanceAnalysis": S.optional(RelevanceAnalysis),
+  "severityAnalysis": S.optional(SeverityAnalysis),
+  "reoccurrenceTimes": S.optional(StringList),
+}),
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 
 export interface ListProjectsAlertsRequest {
@@ -1731,27 +1343,17 @@ export interface ListProjectsAlertsRequest {
   orderBy?: string;
 }
 export const ListProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+parent}/alerts",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsAlertsRequest",
-}) as any as S.Schema<ListProjectsAlertsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/alerts","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsAlertsRequest" }) as any as S.Schema<ListProjectsAlertsRequest>;
 
 export type AlertList = ReadonlyArray<Alert>;
-export const AlertList = /*@__PURE__*/ S.Array(
-  Alert,
-) as any as S.Schema<AlertList>;
+export const AlertList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertList>;
 
 /** Response message for ListAlerts. */
 export interface ListAlertsResponse {
@@ -1761,13 +1363,11 @@ export interface ListAlertsResponse {
   nextPageToken?: string;
 }
 export const ListAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alerts: S.optional(AlertList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAlertsResponse",
-}) as any as S.Schema<ListAlertsResponse>;
+S.Struct({
+  "alerts": S.optional(AlertList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAlertsResponse" }) as any as S.Schema<ListAlertsResponse>;
 
 export interface ListProjectsConfigurationsRequest {
   /** Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2". */
@@ -1782,27 +1382,17 @@ export interface ListProjectsConfigurationsRequest {
   filter?: string;
 }
 export const ListProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+parent}/configurations",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsConfigurationsRequest",
-}) as any as S.Schema<ListProjectsConfigurationsRequest>;
+S.Struct({
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/configurations","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsConfigurationsRequest" }) as any as S.Schema<ListProjectsConfigurationsRequest>;
 
 export type ConfigurationList = ReadonlyArray<Configuration>;
-export const ConfigurationList = /*@__PURE__*/ S.Array(
-  Configuration,
-) as any as S.Schema<ConfigurationList>;
+export const ConfigurationList = /*@__PURE__*/ S.Array(Configuration) as any as S.Schema<ConfigurationList>;
 
 /** Response message for ListConfigurations. */
 export interface ListConfigurationsResponse {
@@ -1812,13 +1402,11 @@ export interface ListConfigurationsResponse {
   configurations?: ConfigurationList;
 }
 export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    configurations: S.optional(ConfigurationList),
-  }),
-).annotate({
-  identifier: "ListConfigurationsResponse",
-}) as any as S.Schema<ListConfigurationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "configurations": S.optional(ConfigurationList),
+}),
+).annotate({ identifier: "ListConfigurationsResponse" }) as any as S.Schema<ListConfigurationsResponse>;
 
 export interface ListProjectsConfigurationsRevisionsRequest {
   /** Optional. An AIP-160 filter string */
@@ -1832,24 +1420,15 @@ export interface ListProjectsConfigurationsRevisionsRequest {
   /** Optional. Specify ordering of response */
   orderBy?: string;
 }
-export const ListProjectsConfigurationsRevisionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/revisions",
-        baseUrl: "https://threatintelligence.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsConfigurationsRevisionsRequest",
-  }) as any as S.Schema<ListProjectsConfigurationsRevisionsRequest>;
+export const ListProjectsConfigurationsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/revisions","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsConfigurationsRevisionsRequest" }) as any as S.Schema<ListProjectsConfigurationsRevisionsRequest>;
 
 /** A ConfigurationRevision is a snapshot of a Configuration at a point in time. It is immutable. */
 export interface ConfigurationRevision {
@@ -1861,19 +1440,15 @@ export interface ConfigurationRevision {
   name?: string;
 }
 export const ConfigurationRevision = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    snapshot: S.optional(Configuration),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigurationRevision",
-}) as any as S.Schema<ConfigurationRevision>;
+S.Struct({
+  "snapshot": S.optional(Configuration),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "ConfigurationRevision" }) as any as S.Schema<ConfigurationRevision>;
 
 export type ConfigurationRevisionList = ReadonlyArray<ConfigurationRevision>;
-export const ConfigurationRevisionList = /*@__PURE__*/ S.Array(
-  ConfigurationRevision,
-) as any as S.Schema<ConfigurationRevisionList>;
+export const ConfigurationRevisionList = /*@__PURE__*/ S.Array(ConfigurationRevision) as any as S.Schema<ConfigurationRevisionList>;
 
 /** Response message for ListConfigurationRevisions. */
 export interface ListConfigurationRevisionsResponse {
@@ -1883,13 +1458,11 @@ export interface ListConfigurationRevisionsResponse {
   nextPageToken?: string;
 }
 export const ListConfigurationRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revisions: S.optional(ConfigurationRevisionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListConfigurationRevisionsResponse",
-}) as any as S.Schema<ListConfigurationRevisionsResponse>;
+S.Struct({
+  "revisions": S.optional(ConfigurationRevisionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListConfigurationRevisionsResponse" }) as any as S.Schema<ListConfigurationRevisionsResponse>;
 
 export interface ListProjectsFindingsRequest {
   /** Required. Parent of the findings. */
@@ -1904,27 +1477,17 @@ export interface ListProjectsFindingsRequest {
   filter?: string;
 }
 export const ListProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+parent}/findings",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsFindingsRequest",
-}) as any as S.Schema<ListProjectsFindingsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/findings","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsFindingsRequest" }) as any as S.Schema<ListProjectsFindingsRequest>;
 
 export type FindingList = ReadonlyArray<Finding>;
-export const FindingList = /*@__PURE__*/ S.Array(
-  Finding,
-) as any as S.Schema<FindingList>;
+export const FindingList = /*@__PURE__*/ S.Array(Finding) as any as S.Schema<FindingList>;
 
 /** Response message for ListFindings. */
 export interface ListFindingsResponse {
@@ -1934,21 +1497,17 @@ export interface ListFindingsResponse {
   nextPageToken?: string;
 }
 export const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    findings: S.optional(FindingList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListFindingsResponse",
-}) as any as S.Schema<ListFindingsResponse>;
+S.Struct({
+  "findings": S.optional(FindingList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListFindingsResponse" }) as any as S.Schema<ListFindingsResponse>;
 
 /** Request message for MarkAlertAsNotActionable. */
 export interface MarkAlertAsNotActionableRequest {}
 export const MarkAlertAsNotActionableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MarkAlertAsNotActionableRequest",
-}) as any as S.Schema<MarkAlertAsNotActionableRequest>;
+S.Struct({}),
+).annotate({ identifier: "MarkAlertAsNotActionableRequest" }) as any as S.Schema<MarkAlertAsNotActionableRequest>;
 
 export interface NotActionableProjectsAlertsRequest {
   /** Required. Name of the alert to mark as a not actionable. Format: projects/{project}/alerts/{alert} */
@@ -1957,27 +1516,17 @@ export interface NotActionableProjectsAlertsRequest {
   body?: MarkAlertAsNotActionableRequest;
 }
 export const NotActionableProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MarkAlertAsNotActionableRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta/{+name}:notActionable",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "NotActionableProjectsAlertsRequest",
-}) as any as S.Schema<NotActionableProjectsAlertsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MarkAlertAsNotActionableRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:notActionable","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "NotActionableProjectsAlertsRequest" }) as any as S.Schema<NotActionableProjectsAlertsRequest>;
 
 /** Request message for MarkAlertAsRead. */
 export interface MarkAlertAsReadRequest {}
 export const MarkAlertAsReadRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MarkAlertAsReadRequest",
-}) as any as S.Schema<MarkAlertAsReadRequest>;
+S.Struct({}),
+).annotate({ identifier: "MarkAlertAsReadRequest" }) as any as S.Schema<MarkAlertAsReadRequest>;
 
 export interface ReadProjectsAlertsRequest {
   /** Required. Name of the alert to mark as read. Format: projects/{project}/alerts/{alert} */
@@ -1986,27 +1535,17 @@ export interface ReadProjectsAlertsRequest {
   body?: MarkAlertAsReadRequest;
 }
 export const ReadProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MarkAlertAsReadRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta/{+name}:read",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ReadProjectsAlertsRequest",
-}) as any as S.Schema<ReadProjectsAlertsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MarkAlertAsReadRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:read","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "ReadProjectsAlertsRequest" }) as any as S.Schema<ReadProjectsAlertsRequest>;
 
 /** Request message for MarkAlertAsResolved. */
 export interface MarkAlertAsResolvedRequest {}
 export const MarkAlertAsResolvedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MarkAlertAsResolvedRequest",
-}) as any as S.Schema<MarkAlertAsResolvedRequest>;
+S.Struct({}),
+).annotate({ identifier: "MarkAlertAsResolvedRequest" }) as any as S.Schema<MarkAlertAsResolvedRequest>;
 
 export interface ResolveProjectsAlertsRequest {
   /** Required. Name of the alert to mark as resolved. Format: projects/{project}/alerts/{alert} */
@@ -2015,19 +1554,11 @@ export interface ResolveProjectsAlertsRequest {
   body?: MarkAlertAsResolvedRequest;
 }
 export const ResolveProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MarkAlertAsResolvedRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta/{+name}:resolve",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResolveProjectsAlertsRequest",
-}) as any as S.Schema<ResolveProjectsAlertsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MarkAlertAsResolvedRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:resolve","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "ResolveProjectsAlertsRequest" }) as any as S.Schema<ResolveProjectsAlertsRequest>;
 
 export interface SearchProjectsFindingsRequest {
   /** Required. Parent of the findings. Format: vaults/{vault} */
@@ -2042,22 +1573,14 @@ export interface SearchProjectsFindingsRequest {
   query?: string;
 }
 export const SearchProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+parent}/findings:search",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SearchProjectsFindingsRequest",
-}) as any as S.Schema<SearchProjectsFindingsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/findings:search","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "SearchProjectsFindingsRequest" }) as any as S.Schema<SearchProjectsFindingsRequest>;
 
 /** Response message for SearchFindings. */
 export interface SearchFindingsResponse {
@@ -2067,21 +1590,17 @@ export interface SearchFindingsResponse {
   nextPageToken?: string;
 }
 export const SearchFindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    findings: S.optional(FindingList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchFindingsResponse",
-}) as any as S.Schema<SearchFindingsResponse>;
+S.Struct({
+  "findings": S.optional(FindingList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchFindingsResponse" }) as any as S.Schema<SearchFindingsResponse>;
 
 /** Request message for MarkAlertAsTrackedExternally. */
 export interface MarkAlertAsTrackedExternallyRequest {}
 export const MarkAlertAsTrackedExternallyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MarkAlertAsTrackedExternallyRequest",
-}) as any as S.Schema<MarkAlertAsTrackedExternallyRequest>;
+S.Struct({}),
+).annotate({ identifier: "MarkAlertAsTrackedExternallyRequest" }) as any as S.Schema<MarkAlertAsTrackedExternallyRequest>;
 
 export interface TrackExternallyProjectsAlertsRequest {
   /** Required. Name of the alert to mark as tracked externally. Format: projects/{project}/alerts/{alert} */
@@ -2089,29 +1608,18 @@ export interface TrackExternallyProjectsAlertsRequest {
   /** Request body */
   body?: MarkAlertAsTrackedExternallyRequest;
 }
-export const TrackExternallyProjectsAlertsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(MarkAlertAsTrackedExternallyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+name}:trackExternally",
-        baseUrl: "https://threatintelligence.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "TrackExternallyProjectsAlertsRequest",
-}) as any as S.Schema<TrackExternallyProjectsAlertsRequest>;
+export const TrackExternallyProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MarkAlertAsTrackedExternallyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:trackExternally","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "TrackExternallyProjectsAlertsRequest" }) as any as S.Schema<TrackExternallyProjectsAlertsRequest>;
 
 /** Request message for MarkAlertAsTriaged. */
 export interface MarkAlertAsTriagedRequest {}
 export const MarkAlertAsTriagedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MarkAlertAsTriagedRequest",
-}) as any as S.Schema<MarkAlertAsTriagedRequest>;
+S.Struct({}),
+).annotate({ identifier: "MarkAlertAsTriagedRequest" }) as any as S.Schema<MarkAlertAsTriagedRequest>;
 
 export interface TriageProjectsAlertsRequest {
   /** Required. Name of the alert to mark as a triaged. Format: projects/{project}/alerts/{alert} */
@@ -2120,19 +1628,11 @@ export interface TriageProjectsAlertsRequest {
   body?: MarkAlertAsTriagedRequest;
 }
 export const TriageProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MarkAlertAsTriagedRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta/{+name}:triage",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "TriageProjectsAlertsRequest",
-}) as any as S.Schema<TriageProjectsAlertsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MarkAlertAsTriagedRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:triage","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "TriageProjectsAlertsRequest" }) as any as S.Schema<TriageProjectsAlertsRequest>;
 
 export interface UpsertProjectsConfigurationsRequest {
   /** Required. Parent of the configuration. */
@@ -2143,20 +1643,12 @@ export interface UpsertProjectsConfigurationsRequest {
   body?: Configuration;
 }
 export const UpsertProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    publishTime: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Configuration.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta/{+parent}/configurations:upsert",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpsertProjectsConfigurationsRequest",
-}) as any as S.Schema<UpsertProjectsConfigurationsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "publishTime": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Configuration.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/configurations:upsert","baseUrl":"https://threatintelligence.googleapis.com/"})),
+).annotate({ identifier: "UpsertProjectsConfigurationsRequest" }) as any as S.Schema<UpsertProjectsConfigurationsRequest>;
 
 /** Response message for UpsertConfiguration. */
 export interface UpsertConfigurationResponse {
@@ -2164,19 +1656,12 @@ export interface UpsertConfigurationResponse {
   configuration?: string;
 }
 export const UpsertConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpsertConfigurationResponse",
-}) as any as S.Schema<UpsertConfigurationResponse>;
+S.Struct({
+  "configuration": S.optional(S.String),
+}),
+).annotate({ identifier: "UpsertConfigurationResponse" }) as any as S.Schema<UpsertConfigurationResponse>;
 
-export type BenignProjectsAlertsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BenignProjectsAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks an alert as benign - BENIGN. */
 export const benignProjectsAlerts: API.OperationMethod<
   BenignProjectsAlertsRequest,
@@ -2191,12 +1676,7 @@ export const benignProjectsAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DuplicateProjectsAlertsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DuplicateProjectsAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks an alert as a duplicate of another alert. - DUPLICATE. */
 export const duplicateProjectsAlerts: API.OperationMethod<
   DuplicateProjectsAlertsRequest,
@@ -2211,10 +1691,7 @@ export const duplicateProjectsAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnumerateFacetsProjectsAlertsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type EnumerateFacetsProjectsAlertsError = NotFound | Forbidden | GcpOpError;
 /** EnumerateAlertFacets returns the facets and the number of alerts that meet the filter criteria and have that value for each facet. */
 export const enumerateFacetsProjectsAlerts: API.OperationMethod<
   EnumerateFacetsProjectsAlertsRequest,
@@ -2229,12 +1706,7 @@ export const enumerateFacetsProjectsAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EscalateProjectsAlertsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EscalateProjectsAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks an alert as escalated - ESCALATED. */
 export const escalateProjectsAlerts: API.OperationMethod<
   EscalateProjectsAlertsRequest,
@@ -2249,12 +1721,7 @@ export const escalateProjectsAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FalsePositiveProjectsAlertsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type FalsePositiveProjectsAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks an alert as a false positive - FALSE_POSITIVE. */
 export const falsePositiveProjectsAlerts: API.OperationMethod<
   FalsePositiveProjectsAlertsRequest,
@@ -2269,12 +1736,7 @@ export const falsePositiveProjectsAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateOrgProfileProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GenerateOrgProfileProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Triggers the generation of a Customer Profile for a project. */
 export const generateOrgProfileProjects: API.OperationMethod<
   GenerateOrgProfileProjectsRequest,
@@ -2377,10 +1839,7 @@ export const listProjectsAlerts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsConfigurationsError = NotFound | Forbidden | GcpOpError;
@@ -2396,16 +1855,10 @@ export const listProjectsConfigurations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsConfigurationsRevisionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsConfigurationsRevisionsError = NotFound | Forbidden | GcpOpError;
 /** List configuration revisions that meet the filter criteria. */
 export const listProjectsConfigurationsRevisions: API.PaginatedOperationMethod<
   ListProjectsConfigurationsRevisionsRequest,
@@ -2418,10 +1871,7 @@ export const listProjectsConfigurationsRevisions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsFindingsError = NotFound | Forbidden | GcpOpError;
@@ -2437,18 +1887,10 @@ export const listProjectsFindings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type NotActionableProjectsAlertsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type NotActionableProjectsAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks an alert as not actionable - NOT_ACTIONABLE. */
 export const notActionableProjectsAlerts: API.OperationMethod<
   NotActionableProjectsAlertsRequest,
@@ -2463,12 +1905,7 @@ export const notActionableProjectsAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReadProjectsAlertsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ReadProjectsAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks an alert as read - READ. */
 export const readProjectsAlerts: API.OperationMethod<
   ReadProjectsAlertsRequest,
@@ -2483,12 +1920,7 @@ export const readProjectsAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResolveProjectsAlertsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResolveProjectsAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks an alert to closed state - RESOLVED. */
 export const resolveProjectsAlerts: API.OperationMethod<
   ResolveProjectsAlertsRequest,
@@ -2516,18 +1948,10 @@ export const searchProjectsFindings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type TrackExternallyProjectsAlertsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TrackExternallyProjectsAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks an alert as tracked externally - TRACKED_EXTERNALLY. */
 export const trackExternallyProjectsAlerts: API.OperationMethod<
   TrackExternallyProjectsAlertsRequest,
@@ -2542,12 +1966,7 @@ export const trackExternallyProjectsAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TriageProjectsAlertsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TriageProjectsAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks an alert as triaged - TRIAGED. */
 export const triageProjectsAlerts: API.OperationMethod<
   TriageProjectsAlertsRequest,
@@ -2562,12 +1981,7 @@ export const triageProjectsAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpsertProjectsConfigurationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpsertProjectsConfigurationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates or updates a configuration. */
 export const upsertProjectsConfigurations: API.OperationMethod<
   UpsertProjectsConfigurationsRequest,
@@ -2581,3 +1995,4 @@ export const upsertProjectsConfigurations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -376,7 +376,7 @@ export const ListFinetunesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFinetunesResponse",
 }) as any as S.Schema<ListFinetunesResponse>;
 
-export type ModelsListRequestFormat = "openrouter" | (string & {});
+export type ModelsListRequestFormat = "openrouter";
 export const ModelsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ListModelsRequest {
@@ -384,7 +384,7 @@ export interface ListModelsRequest {
   /** Filter by Author */
   author?: string;
   /** If set, return models in the requested marketplace format instead of the default response. */
-  format?: ModelsListRequestFormat;
+  format?: ModelsListRequestFormat | (string & {});
   /** Filter to hide experimental models */
   hideExperimental?: boolean;
   /** If true, include models whose planned_deprecation_date is in the past — but only within a three-month grace window after that date. Models whose planned_deprecation_date is more than three months in the past remain hidden regardless of this flag. Future planned-deprecation dates are always included regardless of this flag. Defaults to false, preserving the existing behavior of hiding all past-dated deprecations. */
@@ -517,15 +517,12 @@ export const RunRequestAudioList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RunRequestAudioList>;
 
-export type RunRequestResponseFormatType =
-  | "json_object"
-  | "json_schema"
-  | (string & {});
+export type RunRequestResponseFormatType = "json_object" | "json_schema";
 export const RunRequestResponseFormatType = /*@__PURE__*/ S.String;
 
 export interface RunRequestResponseFormat {
   jsonSchema?: unknown;
-  type?: RunRequestResponseFormatType;
+  type?: RunRequestResponseFormatType | (string & {});
 }
 export const RunRequestResponseFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

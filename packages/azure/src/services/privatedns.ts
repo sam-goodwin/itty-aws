@@ -71,8 +71,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -80,8 +79,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -117,8 +115,7 @@ export type ProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of the Private DNS zone. */
@@ -501,8 +498,7 @@ export type RecordSetsCreateOrUpdateRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT"
-  | (string & {});
+  | "TXT";
 export const RecordSetsCreateOrUpdateRequestRecordType = /*@__PURE__*/ S.String;
 
 /** The metadata attached to the record set. */
@@ -722,7 +718,7 @@ export interface RecordSetsCreateOrUpdateRequest {
   /** The name of the DNS zone (without a terminating dot). */
   privateZoneName: string;
   /** The type of DNS record in this record set. */
-  recordType: RecordSetsCreateOrUpdateRequestRecordType;
+  recordType: RecordSetsCreateOrUpdateRequestRecordType | (string & {});
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
   /** The properties of the record set. */
@@ -877,8 +873,7 @@ export type RecordSetsDeleteRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT"
-  | (string & {});
+  | "TXT";
 export const RecordSetsDeleteRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsDeleteRequest {
@@ -889,7 +884,7 @@ export interface RecordSetsDeleteRequest {
   /** The name of the DNS zone (without a terminating dot). */
   privateZoneName: string;
   /** The type of DNS record in this record set. */
-  recordType: RecordSetsDeleteRequestRecordType;
+  recordType: RecordSetsDeleteRequestRecordType | (string & {});
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
 }
@@ -927,8 +922,7 @@ export type RecordSetsGetRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT"
-  | (string & {});
+  | "TXT";
 export const RecordSetsGetRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsGetRequest {
@@ -939,7 +933,7 @@ export interface RecordSetsGetRequest {
   /** The name of the DNS zone (without a terminating dot). */
   privateZoneName: string;
   /** The type of DNS record in this record set. */
-  recordType: RecordSetsGetRequestRecordType;
+  recordType: RecordSetsGetRequestRecordType | (string & {});
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
 }
@@ -1078,8 +1072,7 @@ export type RecordSetsListByTypeRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT"
-  | (string & {});
+  | "TXT";
 export const RecordSetsListByTypeRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsListByTypeRequest {
@@ -1090,7 +1083,7 @@ export interface RecordSetsListByTypeRequest {
   /** The name of the DNS zone (without a terminating dot). */
   privateZoneName: string;
   /** The type of DNS record in this record set. */
-  recordType: RecordSetsListByTypeRequestRecordType;
+  recordType: RecordSetsListByTypeRequestRecordType | (string & {});
   /** The maximum number of record sets to return. If not specified, returns up to 100 record sets. */
   _top?: number;
   /** The suffix label of the record set name to be used to filter the record set enumeration. If this parameter is specified, the returned enumeration will only contain records that end with ".<recordsetnamesuffix>". */
@@ -1126,8 +1119,7 @@ export type RecordSetsUpdateRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT"
-  | (string & {});
+  | "TXT";
 export const RecordSetsUpdateRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsUpdateRequest {
@@ -1138,7 +1130,7 @@ export interface RecordSetsUpdateRequest {
   /** The name of the DNS zone (without a terminating dot). */
   privateZoneName: string;
   /** The type of DNS record in this record set. */
-  recordType: RecordSetsUpdateRequestRecordType;
+  recordType: RecordSetsUpdateRequestRecordType | (string & {});
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
   /** The properties of the record set. */
@@ -1206,7 +1198,7 @@ export const SubResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubResource" }) as any as S.Schema<SubResource>;
 
 /** The resolution policy on the virtual network link. Only applicable for virtual network links to privatelink zones, and for A,AAAA,CNAME queries. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response. */
-export type ResolutionPolicy = "Default" | "NxDomainRedirect" | (string & {});
+export type ResolutionPolicy = "Default" | "NxDomainRedirect";
 export const ResolutionPolicy = /*@__PURE__*/ S.String;
 
 /** Represents the properties of the Private DNS zone. */
@@ -1216,7 +1208,7 @@ export interface VirtualNetworkLinkPropertiesInput {
   /** Is auto-registration of virtual machine records in the virtual network in the Private DNS zone enabled? */
   registrationEnabled?: boolean;
   /** The resolution policy on the virtual network link. Only applicable for virtual network links to privatelink zones, and for A,AAAA,CNAME queries. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response. */
-  resolutionPolicy?: ResolutionPolicy;
+  resolutionPolicy?: ResolutionPolicy | (string & {});
 }
 export const VirtualNetworkLinkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1280,10 +1272,7 @@ export const VirtualNetworkLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>;
 
 /** The status of the virtual network link to the Private DNS zone. Possible values are 'InProgress' and 'Done'. This is a read-only property and any attempt to set this value will be ignored. */
-export type VirtualNetworkLinkState =
-  | "InProgress"
-  | "Completed"
-  | (string & {});
+export type VirtualNetworkLinkState = "InProgress" | "Completed";
 export const VirtualNetworkLinkState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of the Private DNS zone. */

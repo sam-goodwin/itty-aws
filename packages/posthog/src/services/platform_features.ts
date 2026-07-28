@@ -73,11 +73,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -355,11 +354,7 @@ export const ChangeRequestsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeRequestsApproveCreateRequest>;
 
 /** * `valid` - Valid * `invalid` - Invalid * `stale` - Stale (resource changed) */
-export type ValidationStatusEnum =
-  | "valid"
-  | "invalid"
-  | "stale"
-  | (string & {});
+export type ValidationStatusEnum = "valid" | "invalid" | "stale";
 export const ValidationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - Pending * `approved` - Approved (awaiting application) * `applied` - Applied * `rejected` - Rejected * `expired` - Expired * `failed` - Failed to apply */
@@ -369,8 +364,7 @@ export type ChangeRequestStateEnum =
   | "applied"
   | "rejected"
   | "expired"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const ChangeRequestStateEnum = /*@__PURE__*/ S.String;
 
 export type ChangeRequestApprovalsItemMap = {

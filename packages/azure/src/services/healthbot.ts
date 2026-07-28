@@ -55,7 +55,7 @@ export const HealthBotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthBotPropertiesInput>;
 
 /** The name of the Azure Health Bot SKU */
-export type SkuName = "F0" | "C0" | "PES" | "C1" | (string & {});
+export type SkuName = "F0" | "C0" | "PES" | "C1";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
@@ -74,8 +74,7 @@ export type ResourceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** The details of the user assigned managed identity used by the Video Analyzer resource. */
@@ -98,7 +97,7 @@ export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot */
-  type?: ResourceIdentityType;
+  type?: ResourceIdentityType | (string & {});
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
@@ -154,8 +153,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -163,8 +161,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */

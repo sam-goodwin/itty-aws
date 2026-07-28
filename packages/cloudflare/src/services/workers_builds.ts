@@ -38,8 +38,7 @@ export type BuildsCancelResponseBuildOutcome =
   | "fail"
   | "skipped"
   | "cancelled"
-  | "terminated"
-  | (string & {});
+  | "terminated";
 export const BuildsCancelResponseBuildOutcome = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -87,16 +86,14 @@ export type BuildsGetResponseBuildOutcome =
   | "fail"
   | "skipped"
   | "cancelled"
-  | "terminated"
-  | (string & {});
+  | "terminated";
 export const BuildsGetResponseBuildOutcome = /*@__PURE__*/ S.String;
 
 export type BuildsGetResponseBuildTriggerMetadataBuildTriggerSource =
   | "push"
   | "pull_request"
   | "manual"
-  | "api"
-  | (string & {});
+  | "api";
 export const BuildsGetResponseBuildTriggerMetadataBuildTriggerSource =
   /*@__PURE__*/ S.String;
 
@@ -112,8 +109,7 @@ export const BuildsGetResponseBuildTriggerMetadataEnvironmentVariablesMap =
 export type BuildsGetResponseBuildTriggerMetadataProviderType =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const BuildsGetResponseBuildTriggerMetadataProviderType =
   /*@__PURE__*/ S.String;
 
@@ -190,8 +186,7 @@ export type BuildsGetResponseStatus =
   | "queued"
   | "initializing"
   | "running"
-  | "stopped"
-  | (string & {});
+  | "stopped";
 export const BuildsGetResponseStatus = /*@__PURE__*/ S.String;
 
 export type BuildsGetResponseTriggerBranchExcludesList = ReadonlyArray<string>;
@@ -217,8 +212,7 @@ export const BuildsGetResponseTriggerPathIncludesList = /*@__PURE__*/ S.Array(
 export type BuildsGetResponseTriggerRepoConnectionProviderType =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const BuildsGetResponseTriggerRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 
@@ -395,16 +389,14 @@ export type BuildsListResultItemBuildOutcome =
   | "fail"
   | "skipped"
   | "cancelled"
-  | "terminated"
-  | (string & {});
+  | "terminated";
 export const BuildsListResultItemBuildOutcome = /*@__PURE__*/ S.String;
 
 export type BuildsListResultItemBuildTriggerMetadataBuildTriggerSource =
   | "push"
   | "pull_request"
   | "manual"
-  | "api"
-  | (string & {});
+  | "api";
 export const BuildsListResultItemBuildTriggerMetadataBuildTriggerSource =
   /*@__PURE__*/ S.String;
 
@@ -420,8 +412,7 @@ export const BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap =
 export type BuildsListResultItemBuildTriggerMetadataProviderType =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const BuildsListResultItemBuildTriggerMetadataProviderType =
   /*@__PURE__*/ S.String;
 
@@ -498,8 +489,7 @@ export type BuildsListResultItemStatus =
   | "queued"
   | "initializing"
   | "running"
-  | "stopped"
-  | (string & {});
+  | "stopped";
 export const BuildsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export type BuildsListResultItemTriggerBranchExcludesList =
@@ -531,8 +521,7 @@ export const BuildsListResultItemTriggerPathIncludesList =
 export type BuildsListResultItemTriggerRepoConnectionProviderType =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const BuildsListResultItemTriggerRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 
@@ -990,8 +979,7 @@ export type DeployHooksTriggerResponseStatus =
   | "queued"
   | "initializing"
   | "running"
-  | "stopped"
-  | (string & {});
+  | "stopped";
 export const DeployHooksTriggerResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1134,13 +1122,12 @@ export type GetBuildsByVersionResponseBuildsValueBuildOutcome =
   | "fail"
   | "skipped"
   | "cancelled"
-  | "terminated"
-  | (string & {});
+  | "terminated";
 export const GetBuildsByVersionResponseBuildsValueBuildOutcome =
   /*@__PURE__*/ S.String;
 
 export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataBuildTriggerSource =
-  "push" | "pull_request" | "manual" | "api" | (string & {});
+  "push" | "pull_request" | "manual" | "api";
 export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataBuildTriggerSource =
   /*@__PURE__*/ S.String;
 
@@ -1153,7 +1140,7 @@ export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataEnvironmen
   ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataEnvironmentVariablesMap>;
 
 export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataProviderType =
-  "github" | "gitlab" | "gitlab_internal" | (string & {});
+  "github" | "gitlab" | "gitlab_internal";
 export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataProviderType =
   /*@__PURE__*/ S.String;
 
@@ -1231,8 +1218,7 @@ export type GetBuildsByVersionResponseBuildsValueStatus =
   | "queued"
   | "initializing"
   | "running"
-  | "stopped"
-  | (string & {});
+  | "stopped";
 export const GetBuildsByVersionResponseBuildsValueStatus =
   /*@__PURE__*/ S.String;
 
@@ -1265,7 +1251,7 @@ export const GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList =
   ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList>;
 
 export type GetBuildsByVersionResponseBuildsValueTriggerRepoConnectionProviderType =
-  "github" | "gitlab" | "gitlab_internal" | (string & {});
+  "github" | "gitlab" | "gitlab_internal";
 export const GetBuildsByVersionResponseBuildsValueTriggerRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 
@@ -1467,13 +1453,12 @@ export type GetLatestBuildsResponseBuildsValueBuildOutcome =
   | "fail"
   | "skipped"
   | "cancelled"
-  | "terminated"
-  | (string & {});
+  | "terminated";
 export const GetLatestBuildsResponseBuildsValueBuildOutcome =
   /*@__PURE__*/ S.String;
 
 export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataBuildTriggerSource =
-  "push" | "pull_request" | "manual" | "api" | (string & {});
+  "push" | "pull_request" | "manual" | "api";
 export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataBuildTriggerSource =
   /*@__PURE__*/ S.String;
 
@@ -1486,7 +1471,7 @@ export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataEnvironmentVa
   ) as any as S.Schema<GetLatestBuildsResponseBuildsValueBuildTriggerMetadataEnvironmentVariablesMap>;
 
 export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataProviderType =
-  "github" | "gitlab" | "gitlab_internal" | (string & {});
+  "github" | "gitlab" | "gitlab_internal";
 export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataProviderType =
   /*@__PURE__*/ S.String;
 
@@ -1564,8 +1549,7 @@ export type GetLatestBuildsResponseBuildsValueStatus =
   | "queued"
   | "initializing"
   | "running"
-  | "stopped"
-  | (string & {});
+  | "stopped";
 export const GetLatestBuildsResponseBuildsValueStatus = /*@__PURE__*/ S.String;
 
 export type GetLatestBuildsResponseBuildsValueTriggerBranchExcludesList =
@@ -1597,7 +1581,7 @@ export const GetLatestBuildsResponseBuildsValueTriggerPathIncludesList =
   ) as any as S.Schema<GetLatestBuildsResponseBuildsValueTriggerPathIncludesList>;
 
 export type GetLatestBuildsResponseBuildsValueTriggerRepoConnectionProviderType =
-  "github" | "gitlab" | "gitlab_internal" | (string & {});
+  "github" | "gitlab" | "gitlab_internal";
 export const GetLatestBuildsResponseBuildsValueTriggerRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 
@@ -1775,14 +1759,13 @@ export const GetLatestBuildsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ReposConfigAutofillGetRequestProviderType =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const ReposConfigAutofillGetRequestProviderType = /*@__PURE__*/ S.String;
 
 export interface ReposConfigAutofillGetRequest {
   /** Account identifier. */
   accountId: string;
-  providerType: ReposConfigAutofillGetRequestProviderType;
+  providerType: ReposConfigAutofillGetRequestProviderType | (string & {});
   /** Provider account identifier. */
   providerAccountId: string;
   /** Repository identifier. */
@@ -1827,8 +1810,7 @@ export type ReposConfigAutofillGetResponsePackageManager =
   | "yarn"
   | "pnpm"
   | "bun"
-  | "uv"
-  | (string & {});
+  | "uv";
 export const ReposConfigAutofillGetResponsePackageManager =
   /*@__PURE__*/ S.String;
 
@@ -1899,8 +1881,7 @@ export const ReposConnectionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 export type ReposConnectionsUpsertRequestProviderType =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const ReposConnectionsUpsertRequestProviderType = /*@__PURE__*/ S.String;
 
 export interface ReposConnectionsUpsertRequest {
@@ -1909,7 +1890,7 @@ export interface ReposConnectionsUpsertRequest {
   /** Provider account identifier. */
   providerAccountId: string;
   providerAccountName: string;
-  providerType: ReposConnectionsUpsertRequestProviderType;
+  providerType: ReposConnectionsUpsertRequestProviderType | (string & {});
   /** Repository identifier. */
   repoId: string;
   repoName: string;
@@ -1938,8 +1919,7 @@ export const ReposConnectionsUpsertRequest = /*@__PURE__*/ S.suspend(() =>
 export type ReposConnectionsUpsertResponseProviderType =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const ReposConnectionsUpsertResponseProviderType =
   /*@__PURE__*/ S.String;
 
@@ -2204,8 +2184,7 @@ export const TriggersCreateResponsePathIncludesList = /*@__PURE__*/ S.Array(
 export type TriggersCreateResponseRepoConnectionProviderType =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const TriggersCreateResponseRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 
@@ -2313,8 +2292,7 @@ export const TriggersCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export type TriggersCreateBuildRequestSeedRepoProvider =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const TriggersCreateBuildRequestSeedRepoProvider =
   /*@__PURE__*/ S.String;
 
@@ -2349,7 +2327,7 @@ export interface TriggersCreateBuildRequestSeedRepo {
   branch: string;
   owner: string;
   path: string;
-  provider: TriggersCreateBuildRequestSeedRepoProvider;
+  provider: TriggersCreateBuildRequestSeedRepoProvider | (string & {});
   repository: string;
   files?: TriggersCreateBuildRequestSeedRepoFilesList;
 }
@@ -2656,8 +2634,7 @@ export const TriggersListResultItemPathIncludesList = /*@__PURE__*/ S.Array(
 export type TriggersListResultItemRepoConnectionProviderType =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const TriggersListResultItemRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 
@@ -2897,8 +2874,7 @@ export const TriggersUpdateResponsePathIncludesList = /*@__PURE__*/ S.Array(
 export type TriggersUpdateResponseRepoConnectionProviderType =
   | "github"
   | "gitlab"
-  | "gitlab_internal"
-  | (string & {});
+  | "gitlab_internal";
 export const TriggersUpdateResponseRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 

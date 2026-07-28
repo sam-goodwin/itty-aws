@@ -7,12 +7,7 @@ import {
   type FlyIoOpError,
   type FlyIoOpContext,
 } from "../protocol.ts";
-import {
-  BadRequest,
-  Forbidden,
-  NotFound,
-  UnprocessableEntity,
-} from "../errors.ts";
+import { BadRequest, Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 import * as Retry from "../retry.ts";
 
 export type { FlyIoOpError, FlyIoOpContext };
@@ -23,21 +18,13 @@ export interface AppCertificatesAcmeCreateRequest {
   hostname?: string;
 }
 export const AppCertificatesAcmeCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    hostname: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/certificates/acme",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppCertificatesAcmeCreateRequest",
-}) as any as S.Schema<AppCertificatesAcmeCreateRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "hostname": S.optional(S.String),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/certificates/acme","code":200})),
+).annotate({ identifier: "AppCertificatesAcmeCreateRequest" }) as any as S.Schema<AppCertificatesAcmeCreateRequest>;
 
-export type IssuedCertificateType = "rsa" | "ecdsa" | (string & {});
+export type IssuedCertificateType = "rsa" | "ecdsa";
 export const IssuedCertificateType = /*@__PURE__*/ S.String;
 
 export interface IssuedCertificate {
@@ -46,28 +33,20 @@ export interface IssuedCertificate {
   type?: IssuedCertificateType;
 }
 export const IssuedCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificate_authority: S.optional(S.String),
-    expires_at: S.optional(S.String),
-    type: S.optional(IssuedCertificateType),
-  }),
-).annotate({
-  identifier: "IssuedCertificate",
-}) as any as S.Schema<IssuedCertificate>;
+S.Struct({
+  "certificate_authority": S.optional(S.String),
+  "expires_at": S.optional(S.String),
+  "type": S.optional(IssuedCertificateType),
+}),
+).annotate({ identifier: "IssuedCertificate" }) as any as S.Schema<IssuedCertificate>;
 
 export type CertificateEntryIssuedList = ReadonlyArray<IssuedCertificate>;
-export const CertificateEntryIssuedList = /*@__PURE__*/ S.Array(
-  IssuedCertificate,
-) as any as S.Schema<CertificateEntryIssuedList>;
+export const CertificateEntryIssuedList = /*@__PURE__*/ S.Array(IssuedCertificate) as any as S.Schema<CertificateEntryIssuedList>;
 
-export type CertificateEntrySource = "custom" | "fly" | (string & {});
+export type CertificateEntrySource = "custom" | "fly";
 export const CertificateEntrySource = /*@__PURE__*/ S.String;
 
-export type CertificateEntryStatus =
-  | "active"
-  | "pending_ownership"
-  | "pending_validation"
-  | (string & {});
+export type CertificateEntryStatus = "active" | "pending_ownership" | "pending_validation";
 export const CertificateEntryStatus = /*@__PURE__*/ S.String;
 
 export interface CertificateEntry {
@@ -79,42 +58,34 @@ export interface CertificateEntry {
   status?: CertificateEntryStatus;
 }
 export const CertificateEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.String),
-    expires_at: S.optional(S.String),
-    issued: S.optional(CertificateEntryIssuedList),
-    issuer: S.optional(S.String),
-    source: S.optional(CertificateEntrySource),
-    status: S.optional(CertificateEntryStatus),
-  }),
-).annotate({
-  identifier: "CertificateEntry",
-}) as any as S.Schema<CertificateEntry>;
+S.Struct({
+  "created_at": S.optional(S.String),
+  "expires_at": S.optional(S.String),
+  "issued": S.optional(CertificateEntryIssuedList),
+  "issuer": S.optional(S.String),
+  "source": S.optional(CertificateEntrySource),
+  "status": S.optional(CertificateEntryStatus),
+}),
+).annotate({ identifier: "CertificateEntry" }) as any as S.Schema<CertificateEntry>;
 
 export type CertificateDetailCertificatesList = ReadonlyArray<CertificateEntry>;
-export const CertificateDetailCertificatesList = /*@__PURE__*/ S.Array(
-  CertificateEntry,
-) as any as S.Schema<CertificateDetailCertificatesList>;
+export const CertificateDetailCertificatesList = /*@__PURE__*/ S.Array(CertificateEntry) as any as S.Schema<CertificateDetailCertificatesList>;
 
 export type DNSRequirementsAList = ReadonlyArray<string>;
-export const DNSRequirementsAList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRequirementsAList>;
+export const DNSRequirementsAList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DNSRequirementsAList>;
 
 export type DNSRequirementsAaaaList = ReadonlyArray<string>;
-export const DNSRequirementsAaaaList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRequirementsAaaaList>;
+export const DNSRequirementsAaaaList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DNSRequirementsAaaaList>;
 
 export interface AcmeChallenge {
   name?: string;
   target?: string;
 }
 export const AcmeChallenge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    target: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "target": S.optional(S.String),
+}),
 ).annotate({ identifier: "AcmeChallenge" }) as any as S.Schema<AcmeChallenge>;
 
 export interface OwnershipVerification {
@@ -123,14 +94,12 @@ export interface OwnershipVerification {
   org_value?: string;
 }
 export const OwnershipVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_value: S.optional(S.String),
-    name: S.optional(S.String),
-    org_value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OwnershipVerification",
-}) as any as S.Schema<OwnershipVerification>;
+S.Struct({
+  "app_value": S.optional(S.String),
+  "name": S.optional(S.String),
+  "org_value": S.optional(S.String),
+}),
+).annotate({ identifier: "OwnershipVerification" }) as any as S.Schema<OwnershipVerification>;
 
 export interface DNSRequirements {
   a?: DNSRequirementsAList;
@@ -140,16 +109,14 @@ export interface DNSRequirements {
   ownership?: OwnershipVerification;
 }
 export const DNSRequirements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    a: S.optional(DNSRequirementsAList),
-    aaaa: S.optional(DNSRequirementsAaaaList),
-    acme_challenge: S.optional(AcmeChallenge),
-    cname: S.optional(S.String),
-    ownership: S.optional(OwnershipVerification),
-  }),
-).annotate({
-  identifier: "DNSRequirements",
-}) as any as S.Schema<DNSRequirements>;
+S.Struct({
+  "a": S.optional(DNSRequirementsAList),
+  "aaaa": S.optional(DNSRequirementsAaaaList),
+  "acme_challenge": S.optional(AcmeChallenge),
+  "cname": S.optional(S.String),
+  "ownership": S.optional(OwnershipVerification),
+}),
+).annotate({ identifier: "DNSRequirements" }) as any as S.Schema<DNSRequirements>;
 
 export interface CertificateValidation {
   alpn_configured?: boolean;
@@ -158,15 +125,13 @@ export interface CertificateValidation {
   ownership_txt_configured?: boolean;
 }
 export const CertificateValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alpn_configured: S.optional(S.Boolean),
-    dns_configured: S.optional(S.Boolean),
-    http_configured: S.optional(S.Boolean),
-    ownership_txt_configured: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CertificateValidation",
-}) as any as S.Schema<CertificateValidation>;
+S.Struct({
+  "alpn_configured": S.optional(S.Boolean),
+  "dns_configured": S.optional(S.Boolean),
+  "http_configured": S.optional(S.Boolean),
+  "ownership_txt_configured": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CertificateValidation" }) as any as S.Schema<CertificateValidation>;
 
 export interface CertificateValidationError {
   code?: string;
@@ -175,21 +140,16 @@ export interface CertificateValidationError {
   timestamp?: string;
 }
 export const CertificateValidationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    remediation: S.optional(S.String),
-    timestamp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertificateValidationError",
-}) as any as S.Schema<CertificateValidationError>;
+S.Struct({
+  "code": S.optional(S.String),
+  "message": S.optional(S.String),
+  "remediation": S.optional(S.String),
+  "timestamp": S.optional(S.String),
+}),
+).annotate({ identifier: "CertificateValidationError" }) as any as S.Schema<CertificateValidationError>;
 
-export type CertificateDetailValidationErrorsList =
-  ReadonlyArray<CertificateValidationError>;
-export const CertificateDetailValidationErrorsList = /*@__PURE__*/ S.Array(
-  CertificateValidationError,
-) as any as S.Schema<CertificateDetailValidationErrorsList>;
+export type CertificateDetailValidationErrorsList = ReadonlyArray<CertificateValidationError>;
+export const CertificateDetailValidationErrorsList = /*@__PURE__*/ S.Array(CertificateValidationError) as any as S.Schema<CertificateDetailValidationErrorsList>;
 
 export interface CertificateDetail {
   acme_requested?: boolean;
@@ -204,21 +164,19 @@ export interface CertificateDetail {
   validation_errors?: CertificateDetailValidationErrorsList;
 }
 export const CertificateDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acme_requested: S.optional(S.Boolean),
-    certificates: S.optional(CertificateDetailCertificatesList),
-    configured: S.optional(S.Boolean),
-    dns_provider: S.optional(S.String),
-    dns_requirements: S.optional(DNSRequirements),
-    hostname: S.optional(S.String),
-    rate_limited_until: S.optional(S.String),
-    status: S.optional(S.String),
-    validation: S.optional(CertificateValidation),
-    validation_errors: S.optional(CertificateDetailValidationErrorsList),
-  }),
-).annotate({
-  identifier: "CertificateDetail",
-}) as any as S.Schema<CertificateDetail>;
+S.Struct({
+  "acme_requested": S.optional(S.Boolean),
+  "certificates": S.optional(CertificateDetailCertificatesList),
+  "configured": S.optional(S.Boolean),
+  "dns_provider": S.optional(S.String),
+  "dns_requirements": S.optional(DNSRequirements),
+  "hostname": S.optional(S.String),
+  "rate_limited_until": S.optional(S.String),
+  "status": S.optional(S.String),
+  "validation": S.optional(CertificateValidation),
+  "validation_errors": S.optional(CertificateDetailValidationErrorsList),
+}),
+).annotate({ identifier: "CertificateDetail" }) as any as S.Schema<CertificateDetail>;
 
 export interface AppCertificatesAcmeDeleteRequest {
   /** Fly App Name */
@@ -227,19 +185,11 @@ export interface AppCertificatesAcmeDeleteRequest {
   hostname: string;
 }
 export const AppCertificatesAcmeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    hostname: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/apps/{app_name}/certificates/{hostname}/acme",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppCertificatesAcmeDeleteRequest",
-}) as any as S.Schema<AppCertificatesAcmeDeleteRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "hostname": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}/certificates/{hostname}/acme","code":200})),
+).annotate({ identifier: "AppCertificatesAcmeDeleteRequest" }) as any as S.Schema<AppCertificatesAcmeDeleteRequest>;
 
 export interface AppCertificatesCheckRequest {
   /** Fly App Name */
@@ -248,45 +198,26 @@ export interface AppCertificatesCheckRequest {
   hostname: string;
 }
 export const AppCertificatesCheckRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    hostname: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/certificates/{hostname}/check",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppCertificatesCheckRequest",
-}) as any as S.Schema<AppCertificatesCheckRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "hostname": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/certificates/{hostname}/check","code":200})),
+).annotate({ identifier: "AppCertificatesCheckRequest" }) as any as S.Schema<AppCertificatesCheckRequest>;
 
-export type CertificateCheckResponseCertificatesList =
-  ReadonlyArray<CertificateEntry>;
-export const CertificateCheckResponseCertificatesList = /*@__PURE__*/ S.Array(
-  CertificateEntry,
-) as any as S.Schema<CertificateCheckResponseCertificatesList>;
+export type CertificateCheckResponseCertificatesList = ReadonlyArray<CertificateEntry>;
+export const CertificateCheckResponseCertificatesList = /*@__PURE__*/ S.Array(CertificateEntry) as any as S.Schema<CertificateCheckResponseCertificatesList>;
 
 export type DNSRecordsAList = ReadonlyArray<string>;
-export const DNSRecordsAList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRecordsAList>;
+export const DNSRecordsAList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DNSRecordsAList>;
 
 export type DNSRecordsAaaaList = ReadonlyArray<string>;
-export const DNSRecordsAaaaList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRecordsAaaaList>;
+export const DNSRecordsAaaaList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DNSRecordsAaaaList>;
 
 export type DNSRecordsCnameList = ReadonlyArray<string>;
-export const DNSRecordsCnameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRecordsCnameList>;
+export const DNSRecordsCnameList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DNSRecordsCnameList>;
 
 export type DNSRecordsResolvedAddressesList = ReadonlyArray<string>;
-export const DNSRecordsResolvedAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRecordsResolvedAddressesList>;
+export const DNSRecordsResolvedAddressesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DNSRecordsResolvedAddressesList>;
 
 export interface DNSRecords {
   a?: DNSRecordsAList;
@@ -298,23 +229,19 @@ export interface DNSRecords {
   soa?: string;
 }
 export const DNSRecords = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    a: S.optional(DNSRecordsAList),
-    aaaa: S.optional(DNSRecordsAaaaList),
-    acme_challenge_cname: S.optional(S.String),
-    cname: S.optional(DNSRecordsCnameList),
-    ownership_txt: S.optional(S.String),
-    resolved_addresses: S.optional(DNSRecordsResolvedAddressesList),
-    soa: S.optional(S.String),
-  }),
+S.Struct({
+  "a": S.optional(DNSRecordsAList),
+  "aaaa": S.optional(DNSRecordsAaaaList),
+  "acme_challenge_cname": S.optional(S.String),
+  "cname": S.optional(DNSRecordsCnameList),
+  "ownership_txt": S.optional(S.String),
+  "resolved_addresses": S.optional(DNSRecordsResolvedAddressesList),
+  "soa": S.optional(S.String),
+}),
 ).annotate({ identifier: "DNSRecords" }) as any as S.Schema<DNSRecords>;
 
-export type CertificateCheckResponseValidationErrorsList =
-  ReadonlyArray<CertificateValidationError>;
-export const CertificateCheckResponseValidationErrorsList =
-  /*@__PURE__*/ S.Array(
-    CertificateValidationError,
-  ) as any as S.Schema<CertificateCheckResponseValidationErrorsList>;
+export type CertificateCheckResponseValidationErrorsList = ReadonlyArray<CertificateValidationError>;
+export const CertificateCheckResponseValidationErrorsList = /*@__PURE__*/ S.Array(CertificateValidationError) as any as S.Schema<CertificateCheckResponseValidationErrorsList>;
 
 export interface CertificateCheckResponse {
   acme_requested?: boolean;
@@ -330,22 +257,20 @@ export interface CertificateCheckResponse {
   validation_errors?: CertificateCheckResponseValidationErrorsList;
 }
 export const CertificateCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acme_requested: S.optional(S.Boolean),
-    certificates: S.optional(CertificateCheckResponseCertificatesList),
-    configured: S.optional(S.Boolean),
-    dns_provider: S.optional(S.String),
-    dns_records: S.optional(DNSRecords),
-    dns_requirements: S.optional(DNSRequirements),
-    hostname: S.optional(S.String),
-    rate_limited_until: S.optional(S.String),
-    status: S.optional(S.String),
-    validation: S.optional(CertificateValidation),
-    validation_errors: S.optional(CertificateCheckResponseValidationErrorsList),
-  }),
-).annotate({
-  identifier: "CertificateCheckResponse",
-}) as any as S.Schema<CertificateCheckResponse>;
+S.Struct({
+  "acme_requested": S.optional(S.Boolean),
+  "certificates": S.optional(CertificateCheckResponseCertificatesList),
+  "configured": S.optional(S.Boolean),
+  "dns_provider": S.optional(S.String),
+  "dns_records": S.optional(DNSRecords),
+  "dns_requirements": S.optional(DNSRequirements),
+  "hostname": S.optional(S.String),
+  "rate_limited_until": S.optional(S.String),
+  "status": S.optional(S.String),
+  "validation": S.optional(CertificateValidation),
+  "validation_errors": S.optional(CertificateCheckResponseValidationErrorsList),
+}),
+).annotate({ identifier: "CertificateCheckResponse" }) as any as S.Schema<CertificateCheckResponse>;
 
 export interface AppCertificatesCustomCreateRequest {
   /** Fly App Name */
@@ -355,21 +280,13 @@ export interface AppCertificatesCustomCreateRequest {
   private_key?: string;
 }
 export const AppCertificatesCustomCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    fullchain: S.optional(S.String),
-    hostname: S.optional(S.String),
-    private_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/certificates/custom",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppCertificatesCustomCreateRequest",
-}) as any as S.Schema<AppCertificatesCustomCreateRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "fullchain": S.optional(S.String),
+  "hostname": S.optional(S.String),
+  "private_key": S.optional(S.String.pipe(T.SensitiveValue({}))),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/certificates/custom","code":200})),
+).annotate({ identifier: "AppCertificatesCustomCreateRequest" }) as any as S.Schema<AppCertificatesCustomCreateRequest>;
 
 export interface AppCertificatesCustomDeleteRequest {
   /** Fly App Name */
@@ -378,33 +295,17 @@ export interface AppCertificatesCustomDeleteRequest {
   hostname: string;
 }
 export const AppCertificatesCustomDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    hostname: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/apps/{app_name}/certificates/{hostname}/custom",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppCertificatesCustomDeleteRequest",
-}) as any as S.Schema<AppCertificatesCustomDeleteRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "hostname": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}/certificates/{hostname}/custom","code":200})),
+).annotate({ identifier: "AppCertificatesCustomDeleteRequest" }) as any as S.Schema<AppCertificatesCustomDeleteRequest>;
 
-export type DestroyCustomCertificateResponseCertificatesList =
-  ReadonlyArray<CertificateEntry>;
-export const DestroyCustomCertificateResponseCertificatesList =
-  /*@__PURE__*/ S.Array(
-    CertificateEntry,
-  ) as any as S.Schema<DestroyCustomCertificateResponseCertificatesList>;
+export type DestroyCustomCertificateResponseCertificatesList = ReadonlyArray<CertificateEntry>;
+export const DestroyCustomCertificateResponseCertificatesList = /*@__PURE__*/ S.Array(CertificateEntry) as any as S.Schema<DestroyCustomCertificateResponseCertificatesList>;
 
-export type DestroyCustomCertificateResponseValidationErrorsList =
-  ReadonlyArray<CertificateValidationError>;
-export const DestroyCustomCertificateResponseValidationErrorsList =
-  /*@__PURE__*/ S.Array(
-    CertificateValidationError,
-  ) as any as S.Schema<DestroyCustomCertificateResponseValidationErrorsList>;
+export type DestroyCustomCertificateResponseValidationErrorsList = ReadonlyArray<CertificateValidationError>;
+export const DestroyCustomCertificateResponseValidationErrorsList = /*@__PURE__*/ S.Array(CertificateValidationError) as any as S.Schema<DestroyCustomCertificateResponseValidationErrorsList>;
 
 export interface DestroyCustomCertificateResponse {
   acme_requested?: boolean;
@@ -420,24 +321,20 @@ export interface DestroyCustomCertificateResponse {
   warning?: string;
 }
 export const DestroyCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acme_requested: S.optional(S.Boolean),
-    certificates: S.optional(DestroyCustomCertificateResponseCertificatesList),
-    configured: S.optional(S.Boolean),
-    dns_provider: S.optional(S.String),
-    dns_requirements: S.optional(DNSRequirements),
-    hostname: S.optional(S.String),
-    rate_limited_until: S.optional(S.String),
-    status: S.optional(S.String),
-    validation: S.optional(CertificateValidation),
-    validation_errors: S.optional(
-      DestroyCustomCertificateResponseValidationErrorsList,
-    ),
-    warning: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DestroyCustomCertificateResponse",
-}) as any as S.Schema<DestroyCustomCertificateResponse>;
+S.Struct({
+  "acme_requested": S.optional(S.Boolean),
+  "certificates": S.optional(DestroyCustomCertificateResponseCertificatesList),
+  "configured": S.optional(S.Boolean),
+  "dns_provider": S.optional(S.String),
+  "dns_requirements": S.optional(DNSRequirements),
+  "hostname": S.optional(S.String),
+  "rate_limited_until": S.optional(S.String),
+  "status": S.optional(S.String),
+  "validation": S.optional(CertificateValidation),
+  "validation_errors": S.optional(DestroyCustomCertificateResponseValidationErrorsList),
+  "warning": S.optional(S.String),
+}),
+).annotate({ identifier: "DestroyCustomCertificateResponse" }) as any as S.Schema<DestroyCustomCertificateResponse>;
 
 export interface AppCertificatesDeleteRequest {
   /** Fly App Name */
@@ -446,26 +343,16 @@ export interface AppCertificatesDeleteRequest {
   hostname: string;
 }
 export const AppCertificatesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    hostname: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/apps/{app_name}/certificates/{hostname}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppCertificatesDeleteRequest",
-}) as any as S.Schema<AppCertificatesDeleteRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "hostname": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}/certificates/{hostname}","code":200})),
+).annotate({ identifier: "AppCertificatesDeleteRequest" }) as any as S.Schema<AppCertificatesDeleteRequest>;
 
 export interface AppCertificatesDeleteResponse {}
 export const AppCertificatesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AppCertificatesDeleteResponse",
-}) as any as S.Schema<AppCertificatesDeleteResponse>;
+S.Struct({}),
+).annotate({ identifier: "AppCertificatesDeleteResponse" }) as any as S.Schema<AppCertificatesDeleteResponse>;
 
 export interface AppCertificatesListRequest {
   /** Fly App Name */
@@ -478,17 +365,13 @@ export interface AppCertificatesListRequest {
   limit?: number;
 }
 export const AppCertificatesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    cursor: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/apps/{app_name}/certificates", code: 200 }),
-  ),
-).annotate({
-  identifier: "AppCertificatesListRequest",
-}) as any as S.Schema<AppCertificatesListRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "cursor": S.optional(S.String.pipe(T.Query())),
+  "limit": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/certificates","code":200})),
+).annotate({ identifier: "AppCertificatesListRequest" }) as any as S.Schema<AppCertificatesListRequest>;
 
 export interface CertificateSummary {
   acme_alpn_configured?: boolean;
@@ -506,30 +389,25 @@ export interface CertificateSummary {
   updated_at?: string;
 }
 export const CertificateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acme_alpn_configured: S.optional(S.Boolean),
-    acme_dns_configured: S.optional(S.Boolean),
-    acme_http_configured: S.optional(S.Boolean),
-    acme_requested: S.optional(S.Boolean),
-    configured: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    dns_provider: S.optional(S.String),
-    has_custom_certificate: S.optional(S.Boolean),
-    has_fly_certificate: S.optional(S.Boolean),
-    hostname: S.optional(S.String),
-    ownership_txt_configured: S.optional(S.Boolean),
-    status: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertificateSummary",
-}) as any as S.Schema<CertificateSummary>;
+S.Struct({
+  "acme_alpn_configured": S.optional(S.Boolean),
+  "acme_dns_configured": S.optional(S.Boolean),
+  "acme_http_configured": S.optional(S.Boolean),
+  "acme_requested": S.optional(S.Boolean),
+  "configured": S.optional(S.Boolean),
+  "created_at": S.optional(S.String),
+  "dns_provider": S.optional(S.String),
+  "has_custom_certificate": S.optional(S.Boolean),
+  "has_fly_certificate": S.optional(S.Boolean),
+  "hostname": S.optional(S.String),
+  "ownership_txt_configured": S.optional(S.Boolean),
+  "status": S.optional(S.String),
+  "updated_at": S.optional(S.String),
+}),
+).annotate({ identifier: "CertificateSummary" }) as any as S.Schema<CertificateSummary>;
 
-export type ListCertificatesResponseCertificatesList =
-  ReadonlyArray<CertificateSummary>;
-export const ListCertificatesResponseCertificatesList = /*@__PURE__*/ S.Array(
-  CertificateSummary,
-) as any as S.Schema<ListCertificatesResponseCertificatesList>;
+export type ListCertificatesResponseCertificatesList = ReadonlyArray<CertificateSummary>;
+export const ListCertificatesResponseCertificatesList = /*@__PURE__*/ S.Array(CertificateSummary) as any as S.Schema<ListCertificatesResponseCertificatesList>;
 
 export interface ListCertificatesResponse {
   certificates?: ListCertificatesResponseCertificatesList;
@@ -537,14 +415,12 @@ export interface ListCertificatesResponse {
   total_count?: number;
 }
 export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificates: S.optional(ListCertificatesResponseCertificatesList),
-    next_cursor: S.optional(S.String),
-    total_count: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListCertificatesResponse",
-}) as any as S.Schema<ListCertificatesResponse>;
+S.Struct({
+  "certificates": S.optional(ListCertificatesResponseCertificatesList),
+  "next_cursor": S.optional(S.String),
+  "total_count": S.optional(S.Number),
+}),
+).annotate({ identifier: "ListCertificatesResponse" }) as any as S.Schema<ListCertificatesResponse>;
 
 export interface AppCertificatesShowRequest {
   /** Fly App Name */
@@ -553,19 +429,11 @@ export interface AppCertificatesShowRequest {
   hostname: string;
 }
 export const AppCertificatesShowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    hostname: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/certificates/{hostname}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppCertificatesShowRequest",
-}) as any as S.Schema<AppCertificatesShowRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "hostname": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/certificates/{hostname}","code":200})),
+).annotate({ identifier: "AppCertificatesShowRequest" }) as any as S.Schema<AppCertificatesShowRequest>;
 
 export interface AppCreateDeployTokenRequest {
   /** Fly App Name */
@@ -573,26 +441,20 @@ export interface AppCreateDeployTokenRequest {
   expiry?: string;
 }
 export const AppCreateDeployTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    expiry: S.optional(S.String),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/apps/{app_name}/deploy_token", code: 200 }),
-  ),
-).annotate({
-  identifier: "AppCreateDeployTokenRequest",
-}) as any as S.Schema<AppCreateDeployTokenRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "expiry": S.optional(S.String),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/deploy_token","code":200})),
+).annotate({ identifier: "AppCreateDeployTokenRequest" }) as any as S.Schema<AppCreateDeployTokenRequest>;
 
 export interface CreateAppResponse {
   token?: string;
 }
 export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateAppResponse",
-}) as any as S.Schema<CreateAppResponse>;
+S.Struct({
+  "token": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateAppResponse" }) as any as S.Schema<CreateAppResponse>;
 
 export interface AppIPAssignmentsCreateRequest {
   /** Fly App Name */
@@ -604,23 +466,15 @@ export interface AppIPAssignmentsCreateRequest {
   type?: string;
 }
 export const AppIPAssignmentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    network: S.optional(S.String),
-    org_slug: S.optional(S.String),
-    region: S.optional(S.String),
-    service_name: S.optional(S.String),
-    type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/ip_assignments",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppIPAssignmentsCreateRequest",
-}) as any as S.Schema<AppIPAssignmentsCreateRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "network": S.optional(S.String),
+  "org_slug": S.optional(S.String),
+  "region": S.optional(S.String),
+  "service_name": S.optional(S.String),
+  "type": S.optional(S.String),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/ip_assignments","code":200})),
+).annotate({ identifier: "AppIPAssignmentsCreateRequest" }) as any as S.Schema<AppIPAssignmentsCreateRequest>;
 
 export interface IPAssignment {
   created_at?: string;
@@ -630,13 +484,13 @@ export interface IPAssignment {
   shared?: boolean;
 }
 export const IPAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.String),
-    ip: S.optional(S.String),
-    region: S.optional(S.String),
-    service_name: S.optional(S.String),
-    shared: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "created_at": S.optional(S.String),
+  "ip": S.optional(S.String),
+  "region": S.optional(S.String),
+  "service_name": S.optional(S.String),
+  "shared": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "IPAssignment" }) as any as S.Schema<IPAssignment>;
 
 export interface AppIPAssignmentsDeleteRequest {
@@ -646,60 +500,38 @@ export interface AppIPAssignmentsDeleteRequest {
   ip: string;
 }
 export const AppIPAssignmentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    ip: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/apps/{app_name}/ip_assignments/{ip}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppIPAssignmentsDeleteRequest",
-}) as any as S.Schema<AppIPAssignmentsDeleteRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "ip": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}/ip_assignments/{ip}","code":200})),
+).annotate({ identifier: "AppIPAssignmentsDeleteRequest" }) as any as S.Schema<AppIPAssignmentsDeleteRequest>;
 
 export interface AppIPAssignmentsDeleteResponse {}
 export const AppIPAssignmentsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AppIPAssignmentsDeleteResponse",
-}) as any as S.Schema<AppIPAssignmentsDeleteResponse>;
+S.Struct({}),
+).annotate({ identifier: "AppIPAssignmentsDeleteResponse" }) as any as S.Schema<AppIPAssignmentsDeleteResponse>;
 
 export interface AppIPAssignmentsListRequest {
   /** Fly App Name */
   app_name: string;
 }
 export const AppIPAssignmentsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/ip_assignments",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppIPAssignmentsListRequest",
-}) as any as S.Schema<AppIPAssignmentsListRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/ip_assignments","code":200})),
+).annotate({ identifier: "AppIPAssignmentsListRequest" }) as any as S.Schema<AppIPAssignmentsListRequest>;
 
 export type ListIPAssignmentsResponseIpsList = ReadonlyArray<IPAssignment>;
-export const ListIPAssignmentsResponseIpsList = /*@__PURE__*/ S.Array(
-  IPAssignment,
-) as any as S.Schema<ListIPAssignmentsResponseIpsList>;
+export const ListIPAssignmentsResponseIpsList = /*@__PURE__*/ S.Array(IPAssignment) as any as S.Schema<ListIPAssignmentsResponseIpsList>;
 
 export interface ListIPAssignmentsResponse {
   ips?: ListIPAssignmentsResponseIpsList;
 }
 export const ListIPAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ips: S.optional(ListIPAssignmentsResponseIpsList),
-  }),
-).annotate({
-  identifier: "ListIPAssignmentsResponse",
-}) as any as S.Schema<ListIPAssignmentsResponse>;
+S.Struct({
+  "ips": S.optional(ListIPAssignmentsResponseIpsList),
+}),
+).annotate({ identifier: "ListIPAssignmentsResponse" }) as any as S.Schema<ListIPAssignmentsResponse>;
 
 export interface AppsCreateRequest {
   enable_subdomains?: boolean;
@@ -708,41 +540,33 @@ export interface AppsCreateRequest {
   org_slug?: string;
 }
 export const AppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enable_subdomains: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    network: S.optional(S.String),
-    org_slug: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/apps", code: 200 })),
-).annotate({
-  identifier: "AppsCreateRequest",
-}) as any as S.Schema<AppsCreateRequest>;
+S.Struct({
+  "enable_subdomains": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "network": S.optional(S.String),
+  "org_slug": S.optional(S.String),
+}).pipe(T.Http({"method":"POST","uri":"/apps","code":200})),
+).annotate({ identifier: "AppsCreateRequest" }) as any as S.Schema<AppsCreateRequest>;
 
 export interface AppsCreateResponse {}
 export const AppsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AppsCreateResponse",
-}) as any as S.Schema<AppsCreateResponse>;
+S.Struct({}),
+).annotate({ identifier: "AppsCreateResponse" }) as any as S.Schema<AppsCreateResponse>;
 
 export interface AppsDeleteRequest {
   /** Fly App Name */
   app_name: string;
 }
 export const AppsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "DELETE", uri: "/apps/{app_name}", code: 200 })),
-).annotate({
-  identifier: "AppsDeleteRequest",
-}) as any as S.Schema<AppsDeleteRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}","code":200})),
+).annotate({ identifier: "AppsDeleteRequest" }) as any as S.Schema<AppsDeleteRequest>;
 
 export interface AppsDeleteResponse {}
 export const AppsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AppsDeleteResponse",
-}) as any as S.Schema<AppsDeleteResponse>;
+S.Struct({}),
+).annotate({ identifier: "AppsDeleteResponse" }) as any as S.Schema<AppsDeleteResponse>;
 
 export interface AppsListRequest {
   /** The org slug, or 'personal', to filter apps */
@@ -751,13 +575,11 @@ export interface AppsListRequest {
   app_role?: string;
 }
 export const AppsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org_slug: S.String.pipe(T.Query()),
-    app_role: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/apps", code: 200 })),
-).annotate({
-  identifier: "AppsListRequest",
-}) as any as S.Schema<AppsListRequest>;
+S.Struct({
+  "org_slug": S.String.pipe(T.Query()),
+  "app_role": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps","code":200})),
+).annotate({ identifier: "AppsListRequest" }) as any as S.Schema<AppsListRequest>;
 
 export interface AppOrganizationInfo {
   internal_numeric_id?: number;
@@ -765,14 +587,12 @@ export interface AppOrganizationInfo {
   slug?: string;
 }
 export const AppOrganizationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    internal_numeric_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    slug: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppOrganizationInfo",
-}) as any as S.Schema<AppOrganizationInfo>;
+S.Struct({
+  "internal_numeric_id": S.optional(S.Number),
+  "name": S.optional(S.String),
+  "slug": S.optional(S.String),
+}),
+).annotate({ identifier: "AppOrganizationInfo" }) as any as S.Schema<AppOrganizationInfo>;
 
 export interface App {
   id?: string;
@@ -785,47 +605,41 @@ export interface App {
   volume_count?: number;
 }
 export const App = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    internal_numeric_id: S.optional(S.Number),
-    machine_count: S.optional(S.Number),
-    name: S.optional(S.String),
-    network: S.optional(S.String),
-    organization: S.optional(AppOrganizationInfo),
-    status: S.optional(S.String),
-    volume_count: S.optional(S.Number),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "internal_numeric_id": S.optional(S.Number),
+  "machine_count": S.optional(S.Number),
+  "name": S.optional(S.String),
+  "network": S.optional(S.String),
+  "organization": S.optional(AppOrganizationInfo),
+  "status": S.optional(S.String),
+  "volume_count": S.optional(S.Number),
+}),
 ).annotate({ identifier: "App" }) as any as S.Schema<App>;
 
 export type ListAppsResponseAppsList = ReadonlyArray<App>;
-export const ListAppsResponseAppsList = /*@__PURE__*/ S.Array(
-  App,
-) as any as S.Schema<ListAppsResponseAppsList>;
+export const ListAppsResponseAppsList = /*@__PURE__*/ S.Array(App) as any as S.Schema<ListAppsResponseAppsList>;
 
 export interface ListAppsResponse {
   apps?: ListAppsResponseAppsList;
   total_apps?: number;
 }
 export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apps: S.optional(ListAppsResponseAppsList),
-    total_apps: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListAppsResponse",
-}) as any as S.Schema<ListAppsResponse>;
+S.Struct({
+  "apps": S.optional(ListAppsResponseAppsList),
+  "total_apps": S.optional(S.Number),
+}),
+).annotate({ identifier: "ListAppsResponse" }) as any as S.Schema<ListAppsResponse>;
 
 export interface AppsShowRequest {
   /** Fly App Name */
   app_name: string;
 }
 export const AppsShowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/apps/{app_name}", code: 200 })),
-).annotate({
-  identifier: "AppsShowRequest",
-}) as any as S.Schema<AppsShowRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}","code":200})),
+).annotate({ identifier: "AppsShowRequest" }) as any as S.Schema<AppsShowRequest>;
 
 export interface CreateVolumeSnapshotRequest {
   /** Fly App Name */
@@ -834,40 +648,24 @@ export interface CreateVolumeSnapshotRequest {
   volume_id: string;
 }
 export const CreateVolumeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    volume_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/volumes/{volume_id}/snapshots",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CreateVolumeSnapshotRequest",
-}) as any as S.Schema<CreateVolumeSnapshotRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "volume_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/volumes/{volume_id}/snapshots","code":200})),
+).annotate({ identifier: "CreateVolumeSnapshotRequest" }) as any as S.Schema<CreateVolumeSnapshotRequest>;
 
 export interface CreateVolumeSnapshotResponse {}
 export const CreateVolumeSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateVolumeSnapshotResponse",
-}) as any as S.Schema<CreateVolumeSnapshotResponse>;
+S.Struct({}),
+).annotate({ identifier: "CreateVolumeSnapshotResponse" }) as any as S.Schema<CreateVolumeSnapshotResponse>;
 
 export interface CurrentTokenShowRequest {}
 export const CurrentTokenShowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/tokens/current", code: 200 }),
-  ),
-).annotate({
-  identifier: "CurrentTokenShowRequest",
-}) as any as S.Schema<CurrentTokenShowRequest>;
+S.Struct({}).pipe(T.Http({"method":"GET","uri":"/tokens/current","code":200})),
+).annotate({ identifier: "CurrentTokenShowRequest" }) as any as S.Schema<CurrentTokenShowRequest>;
 
 export type MainTokenInfoAppsList = ReadonlyArray<string>;
-export const MainTokenInfoAppsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MainTokenInfoAppsList>;
+export const MainTokenInfoAppsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<MainTokenInfoAppsList>;
 
 export interface MainTokenInfo {
   apps?: MainTokenInfoAppsList;
@@ -882,32 +680,28 @@ export interface MainTokenInfo {
   user?: string;
 }
 export const MainTokenInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apps: S.optional(MainTokenInfoAppsList),
-    org_slug: S.optional(S.String),
-    organization: S.optional(S.String),
-    restricted_to_machine: S.optional(S.String),
-    source_machine_id: S.optional(S.String),
-    token_id: S.optional(S.String),
-    user: S.optional(S.String),
-  }),
+S.Struct({
+  "apps": S.optional(MainTokenInfoAppsList),
+  "org_slug": S.optional(S.String),
+  "organization": S.optional(S.String),
+  "restricted_to_machine": S.optional(S.String),
+  "source_machine_id": S.optional(S.String),
+  "token_id": S.optional(S.String),
+  "user": S.optional(S.String),
+}),
 ).annotate({ identifier: "MainTokenInfo" }) as any as S.Schema<MainTokenInfo>;
 
 export type CurrentTokenResponseTokensList = ReadonlyArray<MainTokenInfo>;
-export const CurrentTokenResponseTokensList = /*@__PURE__*/ S.Array(
-  MainTokenInfo,
-) as any as S.Schema<CurrentTokenResponseTokensList>;
+export const CurrentTokenResponseTokensList = /*@__PURE__*/ S.Array(MainTokenInfo) as any as S.Schema<CurrentTokenResponseTokensList>;
 
 export interface CurrentTokenResponse {
   tokens?: CurrentTokenResponseTokensList;
 }
 export const CurrentTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokens: S.optional(CurrentTokenResponseTokensList),
-  }),
-).annotate({
-  identifier: "CurrentTokenResponse",
-}) as any as S.Schema<CurrentTokenResponse>;
+S.Struct({
+  "tokens": S.optional(CurrentTokenResponseTokensList),
+}),
+).annotate({ identifier: "CurrentTokenResponse" }) as any as S.Schema<CurrentTokenResponse>;
 
 export interface MachinesCordonRequest {
   /** Fly App Name */
@@ -916,43 +710,29 @@ export interface MachinesCordonRequest {
   machine_id: string;
 }
 export const MachinesCordonRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/cordon",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesCordonRequest",
-}) as any as S.Schema<MachinesCordonRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/cordon","code":200})),
+).annotate({ identifier: "MachinesCordonRequest" }) as any as S.Schema<MachinesCordonRequest>;
 
 export interface MachinesCordonResponse {}
 export const MachinesCordonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesCordonResponse",
-}) as any as S.Schema<MachinesCordonResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesCordonResponse" }) as any as S.Schema<MachinesCordonResponse>;
 
 export interface FlyMachineCacheDrive {
   size_mb?: number;
 }
 export const FlyMachineCacheDrive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    size_mb: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FlyMachineCacheDrive",
-}) as any as S.Schema<FlyMachineCacheDrive>;
+S.Struct({
+  "size_mb": S.optional(S.Number),
+}),
+).annotate({ identifier: "FlyMachineCacheDrive" }) as any as S.Schema<FlyMachineCacheDrive>;
 
 /** The header value */
 export type FlyMachineHTTPHeaderValuesList = ReadonlyArray<string>;
-export const FlyMachineHTTPHeaderValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineHTTPHeaderValuesList>;
+export const FlyMachineHTTPHeaderValuesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachineHTTPHeaderValuesList>;
 
 /** For http checks, an array of objects with string field Name and array of strings field Values. The key/value pairs specify header and header values that will get passed with the check call. */
 export interface FlyMachineHTTPHeader {
@@ -962,21 +742,17 @@ export interface FlyMachineHTTPHeader {
   values?: FlyMachineHTTPHeaderValuesList;
 }
 export const FlyMachineHTTPHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    values: S.optional(FlyMachineHTTPHeaderValuesList),
-  }),
-).annotate({
-  identifier: "FlyMachineHTTPHeader",
-}) as any as S.Schema<FlyMachineHTTPHeader>;
+S.Struct({
+  "name": S.optional(S.String),
+  "values": S.optional(FlyMachineHTTPHeaderValuesList),
+}),
+).annotate({ identifier: "FlyMachineHTTPHeader" }) as any as S.Schema<FlyMachineHTTPHeader>;
 
 export type FlyMachineCheckHeadersList = ReadonlyArray<FlyMachineHTTPHeader>;
-export const FlyMachineCheckHeadersList = /*@__PURE__*/ S.Array(
-  FlyMachineHTTPHeader,
-) as any as S.Schema<FlyMachineCheckHeadersList>;
+export const FlyMachineCheckHeadersList = /*@__PURE__*/ S.Array(FlyMachineHTTPHeader) as any as S.Schema<FlyMachineCheckHeadersList>;
 
 /** Kind of the check (informational, readiness) */
-export type FlyMachineCheckKind = "informational" | "readiness" | (string & {});
+export type FlyMachineCheckKind = "informational" | "readiness";
 export const FlyMachineCheckKind = /*@__PURE__*/ S.String;
 
 export interface FlyMachineCheck {
@@ -1005,44 +781,31 @@ export interface FlyMachineCheck {
   type?: string;
 }
 export const FlyMachineCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    grace_period: S.optional(S.String),
-    headers: S.optional(FlyMachineCheckHeadersList),
-    interval: S.optional(S.String),
-    kind: S.optional(FlyMachineCheckKind),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    protocol: S.optional(S.String),
-    timeout: S.optional(S.String),
-    tls_server_name: S.optional(S.String),
-    tls_skip_verify: S.optional(S.Boolean),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyMachineCheck",
-}) as any as S.Schema<FlyMachineCheck>;
+S.Struct({
+  "grace_period": S.optional(S.String),
+  "headers": S.optional(FlyMachineCheckHeadersList),
+  "interval": S.optional(S.String),
+  "kind": S.optional(FlyMachineCheckKind),
+  "method": S.optional(S.String),
+  "path": S.optional(S.String),
+  "port": S.optional(S.Number),
+  "protocol": S.optional(S.String),
+  "timeout": S.optional(S.String),
+  "tls_server_name": S.optional(S.String),
+  "tls_skip_verify": S.optional(S.Boolean),
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyMachineCheck" }) as any as S.Schema<FlyMachineCheck>;
 
 /** An optional object that defines one or more named top-level checks. The key for each check is the check name. */
-export type FlyMachineConfigChecksMap = {
-  [key: string]: FlyMachineCheck | undefined;
-};
-export const FlyMachineConfigChecksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  FlyMachineCheck,
-) as any as S.Schema<FlyMachineConfigChecksMap>;
+export type FlyMachineConfigChecksMap = { [key: string]: FlyMachineCheck | undefined };
+export const FlyMachineConfigChecksMap = /*@__PURE__*/ S.Record(S.String, FlyMachineCheck) as any as S.Schema<FlyMachineConfigChecksMap>;
 
 /** CmdOverride is used to override the default command of the image. */
 export type FlyContainerConfigCmdList = ReadonlyArray<string>;
-export const FlyContainerConfigCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyContainerConfigCmdList>;
+export const FlyContainerConfigCmdList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyContainerConfigCmdList>;
 
-export type FlyContainerDependencyCondition =
-  | "exited_successfully"
-  | "healthy"
-  | "started"
-  | (string & {});
+export type FlyContainerDependencyCondition = "exited_successfully" | "healthy" | "started";
 export const FlyContainerDependencyCondition = /*@__PURE__*/ S.String;
 
 export interface FlyContainerDependency {
@@ -1050,43 +813,26 @@ export interface FlyContainerDependency {
   name?: string;
 }
 export const FlyContainerDependency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(FlyContainerDependencyCondition),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyContainerDependency",
-}) as any as S.Schema<FlyContainerDependency>;
+S.Struct({
+  "condition": S.optional(FlyContainerDependencyCondition),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyContainerDependency" }) as any as S.Schema<FlyContainerDependency>;
 
 /** DependsOn can be used to define dependencies between containers. The container will only be started after all of its dependent conditions have been satisfied. */
-export type FlyContainerConfigDependsOnList =
-  ReadonlyArray<FlyContainerDependency>;
-export const FlyContainerConfigDependsOnList = /*@__PURE__*/ S.Array(
-  FlyContainerDependency,
-) as any as S.Schema<FlyContainerConfigDependsOnList>;
+export type FlyContainerConfigDependsOnList = ReadonlyArray<FlyContainerDependency>;
+export const FlyContainerConfigDependsOnList = /*@__PURE__*/ S.Array(FlyContainerDependency) as any as S.Schema<FlyContainerConfigDependsOnList>;
 
 /** EntrypointOverride is used to override the default entrypoint of the image. */
 export type FlyContainerConfigEntrypointList = ReadonlyArray<string>;
-export const FlyContainerConfigEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyContainerConfigEntrypointList>;
+export const FlyContainerConfigEntrypointList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyContainerConfigEntrypointList>;
 
 /** ExtraEnv is used to add additional environment variables to the container. */
 export type FlyContainerConfigEnvMap = { [key: string]: string | undefined };
-export const FlyContainerConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FlyContainerConfigEnvMap>;
+export const FlyContainerConfigEnvMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<FlyContainerConfigEnvMap>;
 
 /** FieldRef selects a field of the Machine: supports id, version, app_name, private_ip, region, image. */
-export type FlyEnvFromFieldRef =
-  | "id"
-  | "version"
-  | "app_name"
-  | "private_ip"
-  | "region"
-  | "image"
-  | (string & {});
+export type FlyEnvFromFieldRef = "id" | "version" | "app_name" | "private_ip" | "region" | "image";
 export const FlyEnvFromFieldRef = /*@__PURE__*/ S.String;
 
 /** EnvVar defines an environment variable to be populated from a machine field, env_var */
@@ -1097,23 +843,19 @@ export interface FlyEnvFrom {
   field_ref?: FlyEnvFromFieldRef;
 }
 export const FlyEnvFrom = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env_var: S.optional(S.String),
-    field_ref: S.optional(FlyEnvFromFieldRef),
-  }),
+S.Struct({
+  "env_var": S.optional(S.String),
+  "field_ref": S.optional(FlyEnvFromFieldRef),
+}),
 ).annotate({ identifier: "FlyEnvFrom" }) as any as S.Schema<FlyEnvFrom>;
 
 /** EnvFrom can be provided to set environment variables from machine fields. */
 export type FlyContainerConfigEnvFromList = ReadonlyArray<FlyEnvFrom>;
-export const FlyContainerConfigEnvFromList = /*@__PURE__*/ S.Array(
-  FlyEnvFrom,
-) as any as S.Schema<FlyContainerConfigEnvFromList>;
+export const FlyContainerConfigEnvFromList = /*@__PURE__*/ S.Array(FlyEnvFrom) as any as S.Schema<FlyContainerConfigEnvFromList>;
 
 /** Image Config overrides - these fields are used to override the image configuration. If not provided, the image configuration will be used. ExecOverride is used to override the default command of the image. */
 export type FlyContainerConfigExecList = ReadonlyArray<string>;
-export const FlyContainerConfigExecList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyContainerConfigExecList>;
+export const FlyContainerConfigExecList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyContainerConfigExecList>;
 
 /** A file that will be written to the Machine. One of RawValue or SecretName must be set. */
 export interface FlyFile {
@@ -1129,46 +871,38 @@ export interface FlyFile {
   secret_name?: string;
 }
 export const FlyFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guest_path: S.optional(S.String),
-    image_config: S.optional(S.String),
-    mode: S.optional(S.Number),
-    raw_value: S.optional(S.String),
-    secret_name: S.optional(S.String),
-  }),
+S.Struct({
+  "guest_path": S.optional(S.String),
+  "image_config": S.optional(S.String),
+  "mode": S.optional(S.Number),
+  "raw_value": S.optional(S.String),
+  "secret_name": S.optional(S.String),
+}),
 ).annotate({ identifier: "FlyFile" }) as any as S.Schema<FlyFile>;
 
 /** Files are files that will be written to the container file system. */
 export type FlyContainerConfigFilesList = ReadonlyArray<FlyFile>;
-export const FlyContainerConfigFilesList = /*@__PURE__*/ S.Array(
-  FlyFile,
-) as any as S.Schema<FlyContainerConfigFilesList>;
+export const FlyContainerConfigFilesList = /*@__PURE__*/ S.Array(FlyFile) as any as S.Schema<FlyContainerConfigFilesList>;
 
 /** The command to run to check the health of the container (e.g. ["cat", "/tmp/healthy"]) */
 export type FlyExecHealthcheckCommandList = ReadonlyArray<string>;
-export const FlyExecHealthcheckCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyExecHealthcheckCommandList>;
+export const FlyExecHealthcheckCommandList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyExecHealthcheckCommandList>;
 
 export interface FlyExecHealthcheck {
   /** The command to run to check the health of the container (e.g. ["cat", "/tmp/healthy"]) */
   command?: FlyExecHealthcheckCommandList;
 }
 export const FlyExecHealthcheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    command: S.optional(FlyExecHealthcheckCommandList),
-  }),
-).annotate({
-  identifier: "FlyExecHealthcheck",
-}) as any as S.Schema<FlyExecHealthcheck>;
+S.Struct({
+  "command": S.optional(FlyExecHealthcheckCommandList),
+}),
+).annotate({ identifier: "FlyExecHealthcheck" }) as any as S.Schema<FlyExecHealthcheck>;
 
 /** Additional headers to send with the request */
 export type FlyHTTPHealthcheckHeadersList = ReadonlyArray<FlyMachineHTTPHeader>;
-export const FlyHTTPHealthcheckHeadersList = /*@__PURE__*/ S.Array(
-  FlyMachineHTTPHeader,
-) as any as S.Schema<FlyHTTPHealthcheckHeadersList>;
+export const FlyHTTPHealthcheckHeadersList = /*@__PURE__*/ S.Array(FlyMachineHTTPHeader) as any as S.Schema<FlyHTTPHealthcheckHeadersList>;
 
-export type FlyContainerHealthcheckScheme = "http" | "https" | (string & {});
+export type FlyContainerHealthcheckScheme = "http" | "https";
 export const FlyContainerHealthcheckScheme = /*@__PURE__*/ S.String;
 
 export interface FlyHTTPHealthcheck {
@@ -1188,23 +922,18 @@ export interface FlyHTTPHealthcheck {
   tls_skip_verify?: boolean;
 }
 export const FlyHTTPHealthcheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.optional(FlyHTTPHealthcheckHeadersList),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    scheme: S.optional(FlyContainerHealthcheckScheme),
-    tls_server_name: S.optional(S.String),
-    tls_skip_verify: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "FlyHTTPHealthcheck",
-}) as any as S.Schema<FlyHTTPHealthcheck>;
+S.Struct({
+  "headers": S.optional(FlyHTTPHealthcheckHeadersList),
+  "method": S.optional(S.String),
+  "path": S.optional(S.String),
+  "port": S.optional(S.Number),
+  "scheme": S.optional(FlyContainerHealthcheckScheme),
+  "tls_server_name": S.optional(S.String),
+  "tls_skip_verify": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "FlyHTTPHealthcheck" }) as any as S.Schema<FlyHTTPHealthcheck>;
 
-export type FlyContainerHealthcheckKind =
-  | "readiness"
-  | "liveness"
-  | (string & {});
+export type FlyContainerHealthcheckKind = "readiness" | "liveness";
 export const FlyContainerHealthcheckKind = /*@__PURE__*/ S.String;
 
 export interface FlyTCPHealthcheck {
@@ -1212,14 +941,12 @@ export interface FlyTCPHealthcheck {
   port?: number;
 }
 export const FlyTCPHealthcheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    port: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FlyTCPHealthcheck",
-}) as any as S.Schema<FlyTCPHealthcheck>;
+S.Struct({
+  "port": S.optional(S.Number),
+}),
+).annotate({ identifier: "FlyTCPHealthcheck" }) as any as S.Schema<FlyTCPHealthcheck>;
 
-export type FlyUnhealthyPolicy = "stop" | (string & {});
+export type FlyUnhealthyPolicy = "stop";
 export const FlyUnhealthyPolicy = /*@__PURE__*/ S.String;
 
 export interface FlyContainerHealthcheck {
@@ -1244,37 +971,27 @@ export interface FlyContainerHealthcheck {
   unhealthy?: FlyUnhealthyPolicy;
 }
 export const FlyContainerHealthcheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exec: S.optional(FlyExecHealthcheck),
-    failure_threshold: S.optional(S.Number),
-    grace_period: S.optional(S.Number),
-    http: S.optional(FlyHTTPHealthcheck),
-    interval: S.optional(S.Number),
-    kind: S.optional(FlyContainerHealthcheckKind),
-    name: S.optional(S.String),
-    success_threshold: S.optional(S.Number),
-    tcp: S.optional(FlyTCPHealthcheck),
-    timeout: S.optional(S.Number),
-    unhealthy: S.optional(FlyUnhealthyPolicy),
-  }),
-).annotate({
-  identifier: "FlyContainerHealthcheck",
-}) as any as S.Schema<FlyContainerHealthcheck>;
+S.Struct({
+  "exec": S.optional(FlyExecHealthcheck),
+  "failure_threshold": S.optional(S.Number),
+  "grace_period": S.optional(S.Number),
+  "http": S.optional(FlyHTTPHealthcheck),
+  "interval": S.optional(S.Number),
+  "kind": S.optional(FlyContainerHealthcheckKind),
+  "name": S.optional(S.String),
+  "success_threshold": S.optional(S.Number),
+  "tcp": S.optional(FlyTCPHealthcheck),
+  "timeout": S.optional(S.Number),
+  "unhealthy": S.optional(FlyUnhealthyPolicy),
+}),
+).annotate({ identifier: "FlyContainerHealthcheck" }) as any as S.Schema<FlyContainerHealthcheck>;
 
 /** Healthchecks determine the health of your containers. Healthchecks can use HTTP, TCP or an Exec command. */
-export type FlyContainerConfigHealthchecksList =
-  ReadonlyArray<FlyContainerHealthcheck>;
-export const FlyContainerConfigHealthchecksList = /*@__PURE__*/ S.Array(
-  FlyContainerHealthcheck,
-) as any as S.Schema<FlyContainerConfigHealthchecksList>;
+export type FlyContainerConfigHealthchecksList = ReadonlyArray<FlyContainerHealthcheck>;
+export const FlyContainerConfigHealthchecksList = /*@__PURE__*/ S.Array(FlyContainerHealthcheck) as any as S.Schema<FlyContainerConfigHealthchecksList>;
 
 /** * no - Never try to restart a Machine automatically when its main process exits, whether that’s on purpose or on a crash. * always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly. * on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules. * spot-price - Starts the Machine only when there is capacity and the spot price is less than or equal to the bid price. */
-export type FlyMachineRestartPolicy =
-  | "no"
-  | "always"
-  | "on-failure"
-  | "spot-price"
-  | (string & {});
+export type FlyMachineRestartPolicy = "no" | "always" | "on-failure" | "spot-price";
 export const FlyMachineRestartPolicy = /*@__PURE__*/ S.String;
 
 /** The Machine restart policy defines whether and how flyd restarts a Machine after its main process exits. See https://fly.io/docs/machines/guides-examples/machine-restart-policy/. */
@@ -1287,14 +1004,12 @@ export interface FlyMachineRestart {
   policy?: FlyMachineRestartPolicy;
 }
 export const FlyMachineRestart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gpu_bid_price: S.optional(S.Number),
-    max_retries: S.optional(S.Number),
-    policy: S.optional(FlyMachineRestartPolicy),
-  }),
-).annotate({
-  identifier: "FlyMachineRestart",
-}) as any as S.Schema<FlyMachineRestart>;
+S.Struct({
+  "gpu_bid_price": S.optional(S.Number),
+  "max_retries": S.optional(S.Number),
+  "policy": S.optional(FlyMachineRestartPolicy),
+}),
+).annotate({ identifier: "FlyMachineRestart" }) as any as S.Schema<FlyMachineRestart>;
 
 /** A Secret needing to be set in the environment of the Machine. env_var is required */
 export interface FlyMachineSecret {
@@ -1304,29 +1019,17 @@ export interface FlyMachineSecret {
   name?: string;
 }
 export const FlyMachineSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env_var: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyMachineSecret",
-}) as any as S.Schema<FlyMachineSecret>;
+S.Struct({
+  "env_var": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyMachineSecret" }) as any as S.Schema<FlyMachineSecret>;
 
 /** Secrets can be provided at the process level to explicitly indicate which secrets should be used for the process. If not provided, the secrets provided at the machine level will be used. */
 export type FlyContainerConfigSecretsList = ReadonlyArray<FlyMachineSecret>;
-export const FlyContainerConfigSecretsList = /*@__PURE__*/ S.Array(
-  FlyMachineSecret,
-) as any as S.Schema<FlyContainerConfigSecretsList>;
+export const FlyContainerConfigSecretsList = /*@__PURE__*/ S.Array(FlyMachineSecret) as any as S.Schema<FlyContainerConfigSecretsList>;
 
-export type FlyStopConfigSignal =
-  | "SIGHUP"
-  | "SIGINT"
-  | "SIGQUIT"
-  | "SIGKILL"
-  | "SIGUSR1"
-  | "SIGUSR2"
-  | "SIGTERM"
-  | (string & {});
+export type FlyStopConfigSignal = "SIGHUP" | "SIGINT" | "SIGQUIT" | "SIGKILL" | "SIGUSR1" | "SIGUSR2" | "SIGTERM";
 export const FlyStopConfigSignal = /*@__PURE__*/ S.String;
 
 export interface FlyStopConfig {
@@ -1334,10 +1037,10 @@ export interface FlyStopConfig {
   timeout?: string;
 }
 export const FlyStopConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signal: S.optional(FlyStopConfigSignal),
-    timeout: S.optional(S.String),
-  }),
+S.Struct({
+  "signal": S.optional(FlyStopConfigSignal),
+  "timeout": S.optional(S.String),
+}),
 ).annotate({ identifier: "FlyStopConfig" }) as any as S.Schema<FlyStopConfig>;
 
 export interface FlyContainerConfig {
@@ -1371,75 +1074,61 @@ export interface FlyContainerConfig {
   user?: string;
 }
 export const FlyContainerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cmd: S.optional(FlyContainerConfigCmdList),
-    depends_on: S.optional(FlyContainerConfigDependsOnList),
-    entrypoint: S.optional(FlyContainerConfigEntrypointList),
-    env: S.optional(FlyContainerConfigEnvMap),
-    env_from: S.optional(FlyContainerConfigEnvFromList),
-    exec: S.optional(FlyContainerConfigExecList),
-    files: S.optional(FlyContainerConfigFilesList),
-    healthchecks: S.optional(FlyContainerConfigHealthchecksList),
-    image: S.optional(S.String),
-    name: S.optional(S.String),
-    restart: S.optional(FlyMachineRestart),
-    secrets: S.optional(FlyContainerConfigSecretsList),
-    stop: S.optional(FlyStopConfig),
-    user: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyContainerConfig",
-}) as any as S.Schema<FlyContainerConfig>;
+S.Struct({
+  "cmd": S.optional(FlyContainerConfigCmdList),
+  "depends_on": S.optional(FlyContainerConfigDependsOnList),
+  "entrypoint": S.optional(FlyContainerConfigEntrypointList),
+  "env": S.optional(FlyContainerConfigEnvMap),
+  "env_from": S.optional(FlyContainerConfigEnvFromList),
+  "exec": S.optional(FlyContainerConfigExecList),
+  "files": S.optional(FlyContainerConfigFilesList),
+  "healthchecks": S.optional(FlyContainerConfigHealthchecksList),
+  "image": S.optional(S.String),
+  "name": S.optional(S.String),
+  "restart": S.optional(FlyMachineRestart),
+  "secrets": S.optional(FlyContainerConfigSecretsList),
+  "stop": S.optional(FlyStopConfig),
+  "user": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyContainerConfig" }) as any as S.Schema<FlyContainerConfig>;
 
 /** Containers are a list of containers that will run in the machine. Currently restricted to only specific organizations. */
 export type FlyMachineConfigContainersList = ReadonlyArray<FlyContainerConfig>;
-export const FlyMachineConfigContainersList = /*@__PURE__*/ S.Array(
-  FlyContainerConfig,
-) as any as S.Schema<FlyMachineConfigContainersList>;
+export const FlyMachineConfigContainersList = /*@__PURE__*/ S.Array(FlyContainerConfig) as any as S.Schema<FlyMachineConfigContainersList>;
 
 export interface FlyDnsForwardRule {
   addr?: string;
   basename?: string;
 }
 export const FlyDnsForwardRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addr: S.optional(S.String),
-    basename: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyDnsForwardRule",
-}) as any as S.Schema<FlyDnsForwardRule>;
+S.Struct({
+  "addr": S.optional(S.String),
+  "basename": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyDnsForwardRule" }) as any as S.Schema<FlyDnsForwardRule>;
 
 export type FlyDNSConfigDnsForwardRulesList = ReadonlyArray<FlyDnsForwardRule>;
-export const FlyDNSConfigDnsForwardRulesList = /*@__PURE__*/ S.Array(
-  FlyDnsForwardRule,
-) as any as S.Schema<FlyDNSConfigDnsForwardRulesList>;
+export const FlyDNSConfigDnsForwardRulesList = /*@__PURE__*/ S.Array(FlyDnsForwardRule) as any as S.Schema<FlyDNSConfigDnsForwardRulesList>;
 
 export type FlyDNSConfigNameserversList = ReadonlyArray<string>;
-export const FlyDNSConfigNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyDNSConfigNameserversList>;
+export const FlyDNSConfigNameserversList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyDNSConfigNameserversList>;
 
 export interface FlyDnsOption {
   name?: string;
   value?: string;
 }
 export const FlyDnsOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "FlyDnsOption" }) as any as S.Schema<FlyDnsOption>;
 
 export type FlyDNSConfigOptionsList = ReadonlyArray<FlyDnsOption>;
-export const FlyDNSConfigOptionsList = /*@__PURE__*/ S.Array(
-  FlyDnsOption,
-) as any as S.Schema<FlyDNSConfigOptionsList>;
+export const FlyDNSConfigOptionsList = /*@__PURE__*/ S.Array(FlyDnsOption) as any as S.Schema<FlyDNSConfigOptionsList>;
 
 export type FlyDNSConfigSearchesList = ReadonlyArray<string>;
-export const FlyDNSConfigSearchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyDNSConfigSearchesList>;
+export const FlyDNSConfigSearchesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyDNSConfigSearchesList>;
 
 export interface FlyDNSConfig {
   dns_forward_rules?: FlyDNSConfigDnsForwardRulesList;
@@ -1451,40 +1140,29 @@ export interface FlyDNSConfig {
   skip_registration?: boolean;
 }
 export const FlyDNSConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dns_forward_rules: S.optional(FlyDNSConfigDnsForwardRulesList),
-    hostname: S.optional(S.String),
-    hostname_fqdn: S.optional(S.String),
-    nameservers: S.optional(FlyDNSConfigNameserversList),
-    options: S.optional(FlyDNSConfigOptionsList),
-    searches: S.optional(FlyDNSConfigSearchesList),
-    skip_registration: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "dns_forward_rules": S.optional(FlyDNSConfigDnsForwardRulesList),
+  "hostname": S.optional(S.String),
+  "hostname_fqdn": S.optional(S.String),
+  "nameservers": S.optional(FlyDNSConfigNameserversList),
+  "options": S.optional(FlyDNSConfigOptionsList),
+  "searches": S.optional(FlyDNSConfigSearchesList),
+  "skip_registration": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "FlyDNSConfig" }) as any as S.Schema<FlyDNSConfig>;
 
 /** An object filled with key/value pairs to be set as environment variables */
 export type FlyMachineConfigEnvMap = { [key: string]: string | undefined };
-export const FlyMachineConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FlyMachineConfigEnvMap>;
+export const FlyMachineConfigEnvMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<FlyMachineConfigEnvMap>;
 
 export type FlyMachineConfigFilesList = ReadonlyArray<FlyFile>;
-export const FlyMachineConfigFilesList = /*@__PURE__*/ S.Array(
-  FlyFile,
-) as any as S.Schema<FlyMachineConfigFilesList>;
+export const FlyMachineConfigFilesList = /*@__PURE__*/ S.Array(FlyFile) as any as S.Schema<FlyMachineConfigFilesList>;
 
 export type FlyMachineGuestKernelArgsList = ReadonlyArray<string>;
-export const FlyMachineGuestKernelArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineGuestKernelArgsList>;
+export const FlyMachineGuestKernelArgsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachineGuestKernelArgsList>;
 
 /** Deprecated: use MachineConfig.Rootfs instead */
-export type FlyMachineGuestPersistRootfs =
-  | "never"
-  | "always"
-  | "restart"
-  | (string & {});
+export type FlyMachineGuestPersistRootfs = "never" | "always" | "restart";
 export const FlyMachineGuestPersistRootfs = /*@__PURE__*/ S.String;
 
 export interface FlyMachineGuest {
@@ -1500,40 +1178,30 @@ export interface FlyMachineGuest {
   persist_rootfs?: FlyMachineGuestPersistRootfs;
 }
 export const FlyMachineGuest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpu_kind: S.optional(S.String),
-    cpus: S.optional(S.Number),
-    gpu_kind: S.optional(S.String),
-    gpus: S.optional(S.Number),
-    host_dedication_id: S.optional(S.String),
-    kernel_args: S.optional(FlyMachineGuestKernelArgsList),
-    max_memory_mb: S.optional(S.Number),
-    memory_mb: S.optional(S.Number),
-    persist_rootfs: S.optional(FlyMachineGuestPersistRootfs),
-  }),
-).annotate({
-  identifier: "FlyMachineGuest",
-}) as any as S.Schema<FlyMachineGuest>;
+S.Struct({
+  "cpu_kind": S.optional(S.String),
+  "cpus": S.optional(S.Number),
+  "gpu_kind": S.optional(S.String),
+  "gpus": S.optional(S.Number),
+  "host_dedication_id": S.optional(S.String),
+  "kernel_args": S.optional(FlyMachineGuestKernelArgsList),
+  "max_memory_mb": S.optional(S.Number),
+  "memory_mb": S.optional(S.Number),
+  "persist_rootfs": S.optional(FlyMachineGuestPersistRootfs),
+}),
+).annotate({ identifier: "FlyMachineGuest" }) as any as S.Schema<FlyMachineGuest>;
 
 export type FlyMachineInitCmdList = ReadonlyArray<string>;
-export const FlyMachineInitCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineInitCmdList>;
+export const FlyMachineInitCmdList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachineInitCmdList>;
 
 export type FlyMachineInitEntrypointList = ReadonlyArray<string>;
-export const FlyMachineInitEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineInitEntrypointList>;
+export const FlyMachineInitEntrypointList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachineInitEntrypointList>;
 
 export type FlyMachineInitExecList = ReadonlyArray<string>;
-export const FlyMachineInitExecList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineInitExecList>;
+export const FlyMachineInitExecList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachineInitExecList>;
 
 export type FlyMachineInitKernelArgsList = ReadonlyArray<string>;
-export const FlyMachineInitKernelArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineInitKernelArgsList>;
+export const FlyMachineInitKernelArgsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachineInitKernelArgsList>;
 
 export interface FlyMachineInit {
   cmd?: FlyMachineInitCmdList;
@@ -1544,21 +1212,18 @@ export interface FlyMachineInit {
   tty?: boolean;
 }
 export const FlyMachineInit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cmd: S.optional(FlyMachineInitCmdList),
-    entrypoint: S.optional(FlyMachineInitEntrypointList),
-    exec: S.optional(FlyMachineInitExecList),
-    kernel_args: S.optional(FlyMachineInitKernelArgsList),
-    swap_size_mb: S.optional(S.Number),
-    tty: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "cmd": S.optional(FlyMachineInitCmdList),
+  "entrypoint": S.optional(FlyMachineInitEntrypointList),
+  "exec": S.optional(FlyMachineInitExecList),
+  "kernel_args": S.optional(FlyMachineInitKernelArgsList),
+  "swap_size_mb": S.optional(S.Number),
+  "tty": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "FlyMachineInit" }) as any as S.Schema<FlyMachineInit>;
 
 export type FlyMachineConfigMetadataMap = { [key: string]: string | undefined };
-export const FlyMachineConfigMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FlyMachineConfigMetadataMap>;
+export const FlyMachineConfigMetadataMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<FlyMachineConfigMetadataMap>;
 
 export interface FlyMachineMetrics {
   https?: boolean;
@@ -1566,14 +1231,12 @@ export interface FlyMachineMetrics {
   port?: number;
 }
 export const FlyMachineMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    https: S.optional(S.Boolean),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FlyMachineMetrics",
-}) as any as S.Schema<FlyMachineMetrics>;
+S.Struct({
+  "https": S.optional(S.Boolean),
+  "path": S.optional(S.String),
+  "port": S.optional(S.Number),
+}),
+).annotate({ identifier: "FlyMachineMetrics" }) as any as S.Schema<FlyMachineMetrics>;
 
 export interface FlyMachineMount {
   add_size_gb?: number;
@@ -1586,57 +1249,40 @@ export interface FlyMachineMount {
   volume?: string;
 }
 export const FlyMachineMount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    add_size_gb: S.optional(S.Number),
-    encrypted: S.optional(S.Boolean),
-    extend_threshold_percent: S.optional(S.Number),
-    name: S.optional(S.String),
-    path: S.optional(S.String),
-    size_gb: S.optional(S.Number),
-    size_gb_limit: S.optional(S.Number),
-    volume: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyMachineMount",
-}) as any as S.Schema<FlyMachineMount>;
+S.Struct({
+  "add_size_gb": S.optional(S.Number),
+  "encrypted": S.optional(S.Boolean),
+  "extend_threshold_percent": S.optional(S.Number),
+  "name": S.optional(S.String),
+  "path": S.optional(S.String),
+  "size_gb": S.optional(S.Number),
+  "size_gb_limit": S.optional(S.Number),
+  "volume": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyMachineMount" }) as any as S.Schema<FlyMachineMount>;
 
 export type FlyMachineConfigMountsList = ReadonlyArray<FlyMachineMount>;
-export const FlyMachineConfigMountsList = /*@__PURE__*/ S.Array(
-  FlyMachineMount,
-) as any as S.Schema<FlyMachineConfigMountsList>;
+export const FlyMachineConfigMountsList = /*@__PURE__*/ S.Array(FlyMachineMount) as any as S.Schema<FlyMachineConfigMountsList>;
 
 export type FlyMachineProcessCmdList = ReadonlyArray<string>;
-export const FlyMachineProcessCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineProcessCmdList>;
+export const FlyMachineProcessCmdList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachineProcessCmdList>;
 
 export type FlyMachineProcessEntrypointList = ReadonlyArray<string>;
-export const FlyMachineProcessEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineProcessEntrypointList>;
+export const FlyMachineProcessEntrypointList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachineProcessEntrypointList>;
 
 export type FlyMachineProcessEnvMap = { [key: string]: string | undefined };
-export const FlyMachineProcessEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FlyMachineProcessEnvMap>;
+export const FlyMachineProcessEnvMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<FlyMachineProcessEnvMap>;
 
 /** EnvFrom can be provided to set environment variables from machine fields. */
 export type FlyMachineProcessEnvFromList = ReadonlyArray<FlyEnvFrom>;
-export const FlyMachineProcessEnvFromList = /*@__PURE__*/ S.Array(
-  FlyEnvFrom,
-) as any as S.Schema<FlyMachineProcessEnvFromList>;
+export const FlyMachineProcessEnvFromList = /*@__PURE__*/ S.Array(FlyEnvFrom) as any as S.Schema<FlyMachineProcessEnvFromList>;
 
 export type FlyMachineProcessExecList = ReadonlyArray<string>;
-export const FlyMachineProcessExecList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineProcessExecList>;
+export const FlyMachineProcessExecList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachineProcessExecList>;
 
 /** Secrets can be provided at the process level to explicitly indicate which secrets should be used for the process. If not provided, the secrets provided at the machine level will be used. */
 export type FlyMachineProcessSecretsList = ReadonlyArray<FlyMachineSecret>;
-export const FlyMachineProcessSecretsList = /*@__PURE__*/ S.Array(
-  FlyMachineSecret,
-) as any as S.Schema<FlyMachineProcessSecretsList>;
+export const FlyMachineProcessSecretsList = /*@__PURE__*/ S.Array(FlyMachineSecret) as any as S.Schema<FlyMachineProcessSecretsList>;
 
 export interface FlyMachineProcess {
   cmd?: FlyMachineProcessCmdList;
@@ -1652,30 +1298,22 @@ export interface FlyMachineProcess {
   user?: string;
 }
 export const FlyMachineProcess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cmd: S.optional(FlyMachineProcessCmdList),
-    entrypoint: S.optional(FlyMachineProcessEntrypointList),
-    env: S.optional(FlyMachineProcessEnvMap),
-    env_from: S.optional(FlyMachineProcessEnvFromList),
-    exec: S.optional(FlyMachineProcessExecList),
-    ignore_app_secrets: S.optional(S.Boolean),
-    secrets: S.optional(FlyMachineProcessSecretsList),
-    user: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyMachineProcess",
-}) as any as S.Schema<FlyMachineProcess>;
+S.Struct({
+  "cmd": S.optional(FlyMachineProcessCmdList),
+  "entrypoint": S.optional(FlyMachineProcessEntrypointList),
+  "env": S.optional(FlyMachineProcessEnvMap),
+  "env_from": S.optional(FlyMachineProcessEnvFromList),
+  "exec": S.optional(FlyMachineProcessExecList),
+  "ignore_app_secrets": S.optional(S.Boolean),
+  "secrets": S.optional(FlyMachineProcessSecretsList),
+  "user": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyMachineProcess" }) as any as S.Schema<FlyMachineProcess>;
 
 export type FlyMachineConfigProcessesList = ReadonlyArray<FlyMachineProcess>;
-export const FlyMachineConfigProcessesList = /*@__PURE__*/ S.Array(
-  FlyMachineProcess,
-) as any as S.Schema<FlyMachineConfigProcessesList>;
+export const FlyMachineConfigProcessesList = /*@__PURE__*/ S.Array(FlyMachineProcess) as any as S.Schema<FlyMachineConfigProcessesList>;
 
-export type FlyMachineRootfsPersist =
-  | "never"
-  | "always"
-  | "restart"
-  | (string & {});
+export type FlyMachineRootfsPersist = "never" | "always" | "restart";
 export const FlyMachineRootfsPersist = /*@__PURE__*/ S.String;
 
 export interface FlyMachineRootfs {
@@ -1683,27 +1321,18 @@ export interface FlyMachineRootfs {
   size_gb?: number;
 }
 export const FlyMachineRootfs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    persist: S.optional(FlyMachineRootfsPersist),
-    size_gb: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FlyMachineRootfs",
-}) as any as S.Schema<FlyMachineRootfs>;
+S.Struct({
+  "persist": S.optional(FlyMachineRootfsPersist),
+  "size_gb": S.optional(S.Number),
+}),
+).annotate({ identifier: "FlyMachineRootfs" }) as any as S.Schema<FlyMachineRootfs>;
 
 /** Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for "off" and "stop" in responses. * "off" or false - Do not autostop the Machine. * "stop" or true - Automatically stop the Machine. * "suspend" - Automatically suspend the Machine, falling back to a full stop if this is not possible. */
-export type FlyMachineServiceAutostop =
-  | "off"
-  | "stop"
-  | "suspend"
-  | (string & {});
+export type FlyMachineServiceAutostop = "off" | "stop" | "suspend";
 export const FlyMachineServiceAutostop = /*@__PURE__*/ S.String;
 
-export type FlyMachineServiceCheckHeadersList =
-  ReadonlyArray<FlyMachineHTTPHeader>;
-export const FlyMachineServiceCheckHeadersList = /*@__PURE__*/ S.Array(
-  FlyMachineHTTPHeader,
-) as any as S.Schema<FlyMachineServiceCheckHeadersList>;
+export type FlyMachineServiceCheckHeadersList = ReadonlyArray<FlyMachineHTTPHeader>;
+export const FlyMachineServiceCheckHeadersList = /*@__PURE__*/ S.Array(FlyMachineHTTPHeader) as any as S.Schema<FlyMachineServiceCheckHeadersList>;
 
 export interface FlyMachineServiceCheck {
   /** The time to wait after a VM starts before checking its health */
@@ -1729,28 +1358,24 @@ export interface FlyMachineServiceCheck {
   type?: string;
 }
 export const FlyMachineServiceCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    grace_period: S.optional(S.String),
-    headers: S.optional(FlyMachineServiceCheckHeadersList),
-    interval: S.optional(S.String),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    protocol: S.optional(S.String),
-    timeout: S.optional(S.String),
-    tls_server_name: S.optional(S.String),
-    tls_skip_verify: S.optional(S.Boolean),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyMachineServiceCheck",
-}) as any as S.Schema<FlyMachineServiceCheck>;
+S.Struct({
+  "grace_period": S.optional(S.String),
+  "headers": S.optional(FlyMachineServiceCheckHeadersList),
+  "interval": S.optional(S.String),
+  "method": S.optional(S.String),
+  "path": S.optional(S.String),
+  "port": S.optional(S.Number),
+  "protocol": S.optional(S.String),
+  "timeout": S.optional(S.String),
+  "tls_server_name": S.optional(S.String),
+  "tls_skip_verify": S.optional(S.Boolean),
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyMachineServiceCheck" }) as any as S.Schema<FlyMachineServiceCheck>;
 
 /** An optional list of service checks */
 export type FlyMachineServiceChecksList = ReadonlyArray<FlyMachineServiceCheck>;
-export const FlyMachineServiceChecksList = /*@__PURE__*/ S.Array(
-  FlyMachineServiceCheck,
-) as any as S.Schema<FlyMachineServiceChecksList>;
+export const FlyMachineServiceChecksList = /*@__PURE__*/ S.Array(FlyMachineServiceCheck) as any as S.Schema<FlyMachineServiceChecksList>;
 
 export interface FlyMachineServiceConcurrency {
   hard_limit?: number;
@@ -1758,22 +1383,18 @@ export interface FlyMachineServiceConcurrency {
   type?: string;
 }
 export const FlyMachineServiceConcurrency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hard_limit: S.optional(S.Number),
-    soft_limit: S.optional(S.Number),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyMachineServiceConcurrency",
-}) as any as S.Schema<FlyMachineServiceConcurrency>;
+S.Struct({
+  "hard_limit": S.optional(S.Number),
+  "soft_limit": S.optional(S.Number),
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyMachineServiceConcurrency" }) as any as S.Schema<FlyMachineServiceConcurrency>;
 
 export type FlyMachinePortHandlersList = ReadonlyArray<string>;
-export const FlyMachinePortHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachinePortHandlersList>;
+export const FlyMachinePortHandlersList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachinePortHandlersList>;
 
 /** Currently either "cookie" or "header" */
-export type FlyReplayCacheType = "cookie" | "header" | (string & {});
+export type FlyReplayCacheType = "cookie" | "header";
 export const FlyReplayCacheType = /*@__PURE__*/ S.String;
 
 export interface FlyReplayCache {
@@ -1786,40 +1407,31 @@ export interface FlyReplayCache {
   type?: FlyReplayCacheType;
 }
 export const FlyReplayCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow_bypass: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    path_prefix: S.optional(S.String),
-    ttl_seconds: S.optional(S.Number),
-    type: S.optional(FlyReplayCacheType),
-  }),
+S.Struct({
+  "allow_bypass": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "path_prefix": S.optional(S.String),
+  "ttl_seconds": S.optional(S.Number),
+  "type": S.optional(FlyReplayCacheType),
+}),
 ).annotate({ identifier: "FlyReplayCache" }) as any as S.Schema<FlyReplayCache>;
 
 export type FlyHTTPOptionsReplayCacheList = ReadonlyArray<FlyReplayCache>;
-export const FlyHTTPOptionsReplayCacheList = /*@__PURE__*/ S.Array(
-  FlyReplayCache,
-) as any as S.Schema<FlyHTTPOptionsReplayCacheList>;
+export const FlyHTTPOptionsReplayCacheList = /*@__PURE__*/ S.Array(FlyReplayCache) as any as S.Schema<FlyHTTPOptionsReplayCacheList>;
 
-export type FlyHTTPResponseOptionsHeadersMap = {
-  [key: string]: unknown | undefined;
-};
-export const FlyHTTPResponseOptionsHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlyHTTPResponseOptionsHeadersMap>;
+export type FlyHTTPResponseOptionsHeadersMap = { [key: string]: unknown | undefined };
+export const FlyHTTPResponseOptionsHeadersMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<FlyHTTPResponseOptionsHeadersMap>;
 
 export interface FlyHTTPResponseOptions {
   headers?: FlyHTTPResponseOptionsHeadersMap;
   pristine?: boolean;
 }
 export const FlyHTTPResponseOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.optional(FlyHTTPResponseOptionsHeadersMap),
-    pristine: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "FlyHTTPResponseOptions",
-}) as any as S.Schema<FlyHTTPResponseOptions>;
+S.Struct({
+  "headers": S.optional(FlyHTTPResponseOptionsHeadersMap),
+  "pristine": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "FlyHTTPResponseOptions" }) as any as S.Schema<FlyHTTPResponseOptions>;
 
 export interface FlyHTTPOptions {
   compress?: boolean;
@@ -1830,36 +1442,30 @@ export interface FlyHTTPOptions {
   response?: FlyHTTPResponseOptions;
 }
 export const FlyHTTPOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compress: S.optional(S.Boolean),
-    h2_backend: S.optional(S.Boolean),
-    headers_read_timeout: S.optional(S.Number),
-    idle_timeout: S.optional(S.Number),
-    replay_cache: S.optional(FlyHTTPOptionsReplayCacheList),
-    response: S.optional(FlyHTTPResponseOptions),
-  }),
+S.Struct({
+  "compress": S.optional(S.Boolean),
+  "h2_backend": S.optional(S.Boolean),
+  "headers_read_timeout": S.optional(S.Number),
+  "idle_timeout": S.optional(S.Number),
+  "replay_cache": S.optional(FlyHTTPOptionsReplayCacheList),
+  "response": S.optional(FlyHTTPResponseOptions),
+}),
 ).annotate({ identifier: "FlyHTTPOptions" }) as any as S.Schema<FlyHTTPOptions>;
 
 export interface FlyProxyProtoOptions {
   version?: string;
 }
 export const FlyProxyProtoOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyProxyProtoOptions",
-}) as any as S.Schema<FlyProxyProtoOptions>;
+S.Struct({
+  "version": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyProxyProtoOptions" }) as any as S.Schema<FlyProxyProtoOptions>;
 
 export type FlyTLSOptionsAlpnList = ReadonlyArray<string>;
-export const FlyTLSOptionsAlpnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyTLSOptionsAlpnList>;
+export const FlyTLSOptionsAlpnList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyTLSOptionsAlpnList>;
 
 export type FlyTLSOptionsVersionsList = ReadonlyArray<string>;
-export const FlyTLSOptionsVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyTLSOptionsVersionsList>;
+export const FlyTLSOptionsVersionsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyTLSOptionsVersionsList>;
 
 export interface FlyTLSOptions {
   alpn?: FlyTLSOptionsAlpnList;
@@ -1867,11 +1473,11 @@ export interface FlyTLSOptions {
   versions?: FlyTLSOptionsVersionsList;
 }
 export const FlyTLSOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alpn: S.optional(FlyTLSOptionsAlpnList),
-    default_self_signed: S.optional(S.Boolean),
-    versions: S.optional(FlyTLSOptionsVersionsList),
-  }),
+S.Struct({
+  "alpn": S.optional(FlyTLSOptionsAlpnList),
+  "default_self_signed": S.optional(S.Boolean),
+  "versions": S.optional(FlyTLSOptionsVersionsList),
+}),
 ).annotate({ identifier: "FlyTLSOptions" }) as any as S.Schema<FlyTLSOptions>;
 
 export interface FlyMachinePort {
@@ -1885,22 +1491,20 @@ export interface FlyMachinePort {
   tls_options?: FlyTLSOptions;
 }
 export const FlyMachinePort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end_port: S.optional(S.Number),
-    force_https: S.optional(S.Boolean),
-    handlers: S.optional(FlyMachinePortHandlersList),
-    http_options: S.optional(FlyHTTPOptions),
-    port: S.optional(S.Number),
-    proxy_proto_options: S.optional(FlyProxyProtoOptions),
-    start_port: S.optional(S.Number),
-    tls_options: S.optional(FlyTLSOptions),
-  }),
+S.Struct({
+  "end_port": S.optional(S.Number),
+  "force_https": S.optional(S.Boolean),
+  "handlers": S.optional(FlyMachinePortHandlersList),
+  "http_options": S.optional(FlyHTTPOptions),
+  "port": S.optional(S.Number),
+  "proxy_proto_options": S.optional(FlyProxyProtoOptions),
+  "start_port": S.optional(S.Number),
+  "tls_options": S.optional(FlyTLSOptions),
+}),
 ).annotate({ identifier: "FlyMachinePort" }) as any as S.Schema<FlyMachinePort>;
 
 export type FlyMachineServicePortsList = ReadonlyArray<FlyMachinePort>;
-export const FlyMachineServicePortsList = /*@__PURE__*/ S.Array(
-  FlyMachinePort,
-) as any as S.Schema<FlyMachineServicePortsList>;
+export const FlyMachineServicePortsList = /*@__PURE__*/ S.Array(FlyMachinePort) as any as S.Schema<FlyMachineServicePortsList>;
 
 export interface FlyMachineService {
   autostart?: boolean;
@@ -1917,42 +1521,36 @@ export interface FlyMachineService {
   protocol?: string;
 }
 export const FlyMachineService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autostart: S.optional(S.Boolean),
-    autostop: S.optional(FlyMachineServiceAutostop),
-    checks: S.optional(FlyMachineServiceChecksList),
-    concurrency: S.optional(FlyMachineServiceConcurrency),
-    force_instance_description: S.optional(S.String),
-    force_instance_key: S.optional(S.String),
-    internal_port: S.optional(S.Number),
-    min_machines_running: S.optional(S.Number),
-    ports: S.optional(FlyMachineServicePortsList),
-    protocol: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlyMachineService",
-}) as any as S.Schema<FlyMachineService>;
+S.Struct({
+  "autostart": S.optional(S.Boolean),
+  "autostop": S.optional(FlyMachineServiceAutostop),
+  "checks": S.optional(FlyMachineServiceChecksList),
+  "concurrency": S.optional(FlyMachineServiceConcurrency),
+  "force_instance_description": S.optional(S.String),
+  "force_instance_key": S.optional(S.String),
+  "internal_port": S.optional(S.Number),
+  "min_machines_running": S.optional(S.Number),
+  "ports": S.optional(FlyMachineServicePortsList),
+  "protocol": S.optional(S.String),
+}),
+).annotate({ identifier: "FlyMachineService" }) as any as S.Schema<FlyMachineService>;
 
 export type FlyMachineConfigServicesList = ReadonlyArray<FlyMachineService>;
-export const FlyMachineConfigServicesList = /*@__PURE__*/ S.Array(
-  FlyMachineService,
-) as any as S.Schema<FlyMachineConfigServicesList>;
+export const FlyMachineConfigServicesList = /*@__PURE__*/ S.Array(FlyMachineService) as any as S.Schema<FlyMachineConfigServicesList>;
 
 export interface FlyMachineSpot {
   /** MaxPriceFraction is the maximum fraction of the full Machine price you will pay for this Machine. Range: (0, 1.0] */
   max_price_fraction?: number;
 }
 export const FlyMachineSpot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_price_fraction: S.optional(S.Number),
-  }),
+S.Struct({
+  "max_price_fraction": S.optional(S.Number),
+}),
 ).annotate({ identifier: "FlyMachineSpot" }) as any as S.Schema<FlyMachineSpot>;
 
 /** Standbys enable a machine to be a standby for another. In the event of a hardware failure, the standby machine will be started. */
 export type FlyMachineConfigStandbysList = ReadonlyArray<string>;
-export const FlyMachineConfigStandbysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineConfigStandbysList>;
+export const FlyMachineConfigStandbysList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyMachineConfigStandbysList>;
 
 export interface FlyStatic {
   guest_path: string;
@@ -1961,18 +1559,16 @@ export interface FlyStatic {
   url_prefix: string;
 }
 export const FlyStatic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guest_path: S.String,
-    index_document: S.optional(S.String),
-    tigris_bucket: S.optional(S.String),
-    url_prefix: S.String,
-  }),
+S.Struct({
+  "guest_path": S.String,
+  "index_document": S.optional(S.String),
+  "tigris_bucket": S.optional(S.String),
+  "url_prefix": S.String,
+}),
 ).annotate({ identifier: "FlyStatic" }) as any as S.Schema<FlyStatic>;
 
 export type FlyMachineConfigStaticsList = ReadonlyArray<FlyStatic>;
-export const FlyMachineConfigStaticsList = /*@__PURE__*/ S.Array(
-  FlyStatic,
-) as any as S.Schema<FlyMachineConfigStaticsList>;
+export const FlyMachineConfigStaticsList = /*@__PURE__*/ S.Array(FlyStatic) as any as S.Schema<FlyMachineConfigStaticsList>;
 
 export interface FlyMachineConfig {
   /** Optional boolean telling the Machine to destroy itself once it’s complete (default false) */
@@ -2009,35 +1605,33 @@ export interface FlyMachineConfig {
   stop_config?: FlyStopConfig;
 }
 export const FlyMachineConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auto_destroy: S.optional(S.Boolean),
-    cache_drive: S.optional(FlyMachineCacheDrive),
-    checks: S.optional(FlyMachineConfigChecksMap),
-    containers: S.optional(FlyMachineConfigContainersList),
-    disable_machine_autostart: S.optional(S.Boolean),
-    dns: S.optional(FlyDNSConfig),
-    env: S.optional(FlyMachineConfigEnvMap),
-    files: S.optional(FlyMachineConfigFilesList),
-    guest: S.optional(FlyMachineGuest),
-    image: S.optional(S.String),
-    init: S.optional(FlyMachineInit),
-    metadata: S.optional(FlyMachineConfigMetadataMap),
-    metrics: S.optional(FlyMachineMetrics),
-    mounts: S.optional(FlyMachineConfigMountsList),
-    processes: S.optional(FlyMachineConfigProcessesList),
-    restart: S.optional(FlyMachineRestart),
-    rootfs: S.optional(FlyMachineRootfs),
-    schedule: S.optional(S.String),
-    services: S.optional(FlyMachineConfigServicesList),
-    size: S.optional(S.String),
-    spot: S.optional(FlyMachineSpot),
-    standbys: S.optional(FlyMachineConfigStandbysList),
-    statics: S.optional(FlyMachineConfigStaticsList),
-    stop_config: S.optional(FlyStopConfig),
-  }),
-).annotate({
-  identifier: "FlyMachineConfig",
-}) as any as S.Schema<FlyMachineConfig>;
+S.Struct({
+  "auto_destroy": S.optional(S.Boolean),
+  "cache_drive": S.optional(FlyMachineCacheDrive),
+  "checks": S.optional(FlyMachineConfigChecksMap),
+  "containers": S.optional(FlyMachineConfigContainersList),
+  "disable_machine_autostart": S.optional(S.Boolean),
+  "dns": S.optional(FlyDNSConfig),
+  "env": S.optional(FlyMachineConfigEnvMap),
+  "files": S.optional(FlyMachineConfigFilesList),
+  "guest": S.optional(FlyMachineGuest),
+  "image": S.optional(S.String),
+  "init": S.optional(FlyMachineInit),
+  "metadata": S.optional(FlyMachineConfigMetadataMap),
+  "metrics": S.optional(FlyMachineMetrics),
+  "mounts": S.optional(FlyMachineConfigMountsList),
+  "processes": S.optional(FlyMachineConfigProcessesList),
+  "restart": S.optional(FlyMachineRestart),
+  "rootfs": S.optional(FlyMachineRootfs),
+  "schedule": S.optional(S.String),
+  "services": S.optional(FlyMachineConfigServicesList),
+  "size": S.optional(S.String),
+  "spot": S.optional(FlyMachineSpot),
+  "standbys": S.optional(FlyMachineConfigStandbysList),
+  "statics": S.optional(FlyMachineConfigStaticsList),
+  "stop_config": S.optional(FlyStopConfig),
+}),
+).annotate({ identifier: "FlyMachineConfig" }) as any as S.Schema<FlyMachineConfig>;
 
 export interface MachinesCreateRequest {
   /** Fly App Name */
@@ -2055,22 +1649,18 @@ export interface MachinesCreateRequest {
   skip_service_registration?: boolean;
 }
 export const MachinesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    config: S.optional(FlyMachineConfig),
-    lease_ttl: S.optional(S.Number),
-    min_secrets_version: S.optional(S.Number),
-    name: S.optional(S.String),
-    region: S.optional(S.String),
-    skip_launch: S.optional(S.Boolean),
-    skip_secrets: S.optional(S.Boolean),
-    skip_service_registration: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/apps/{app_name}/machines", code: 200 }),
-  ),
-).annotate({
-  identifier: "MachinesCreateRequest",
-}) as any as S.Schema<MachinesCreateRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "config": S.optional(FlyMachineConfig),
+  "lease_ttl": S.optional(S.Number),
+  "min_secrets_version": S.optional(S.Number),
+  "name": S.optional(S.String),
+  "region": S.optional(S.String),
+  "skip_launch": S.optional(S.Boolean),
+  "skip_secrets": S.optional(S.Boolean),
+  "skip_service_registration": S.optional(S.Boolean),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines","code":200})),
+).annotate({ identifier: "MachinesCreateRequest" }) as any as S.Schema<MachinesCreateRequest>;
 
 export interface CheckStatus {
   name?: string;
@@ -2079,18 +1669,16 @@ export interface CheckStatus {
   updated_at?: string;
 }
 export const CheckStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    output: S.optional(S.String),
-    status: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "output": S.optional(S.String),
+  "status": S.optional(S.String),
+  "updated_at": S.optional(S.String),
+}),
 ).annotate({ identifier: "CheckStatus" }) as any as S.Schema<CheckStatus>;
 
 export type MachineChecksList = ReadonlyArray<CheckStatus>;
-export const MachineChecksList = /*@__PURE__*/ S.Array(
-  CheckStatus,
-) as any as S.Schema<MachineChecksList>;
+export const MachineChecksList = /*@__PURE__*/ S.Array(CheckStatus) as any as S.Schema<MachineChecksList>;
 
 export interface MachineEvent {
   id?: string;
@@ -2101,33 +1689,24 @@ export interface MachineEvent {
   type?: string;
 }
 export const MachineEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    request: S.optional(S.Unknown),
-    source: S.optional(S.String),
-    status: S.optional(S.String),
-    timestamp: S.optional(S.Number),
-    type: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "request": S.optional(S.Unknown),
+  "source": S.optional(S.String),
+  "status": S.optional(S.String),
+  "timestamp": S.optional(S.Number),
+  "type": S.optional(S.String),
+}),
 ).annotate({ identifier: "MachineEvent" }) as any as S.Schema<MachineEvent>;
 
 export type MachineEventsList = ReadonlyArray<MachineEvent>;
-export const MachineEventsList = /*@__PURE__*/ S.Array(
-  MachineEvent,
-) as any as S.Schema<MachineEventsList>;
+export const MachineEventsList = /*@__PURE__*/ S.Array(MachineEvent) as any as S.Schema<MachineEventsList>;
 
-export type MachineHostStatus =
-  | "ok"
-  | "unknown"
-  | "unreachable"
-  | (string & {});
+export type MachineHostStatus = "ok" | "unknown" | "unreachable";
 export const MachineHostStatus = /*@__PURE__*/ S.String;
 
 export type ImageRefLabelsMap = { [key: string]: string | undefined };
-export const ImageRefLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImageRefLabelsMap>;
+export const ImageRefLabelsMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<ImageRefLabelsMap>;
 
 export interface ImageRef {
   digest?: string;
@@ -2137,13 +1716,13 @@ export interface ImageRef {
   tag?: string;
 }
 export const ImageRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    digest: S.optional(S.String),
-    labels: S.optional(ImageRefLabelsMap),
-    registry: S.optional(S.String),
-    repository: S.optional(S.String),
-    tag: S.optional(S.String),
-  }),
+S.Struct({
+  "digest": S.optional(S.String),
+  "labels": S.optional(ImageRefLabelsMap),
+  "registry": S.optional(S.String),
+  "repository": S.optional(S.String),
+  "tag": S.optional(S.String),
+}),
 ).annotate({ identifier: "ImageRef" }) as any as S.Schema<ImageRef>;
 
 export interface StrippedLease {
@@ -2152,11 +1731,11 @@ export interface StrippedLease {
   owner?: string;
 }
 export const StrippedLease = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    expires_at: S.optional(S.Number),
-    owner: S.optional(S.String),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "expires_at": S.optional(S.Number),
+  "owner": S.optional(S.String),
+}),
 ).annotate({ identifier: "StrippedLease" }) as any as S.Schema<StrippedLease>;
 
 export interface Machine {
@@ -2182,25 +1761,25 @@ export interface Machine {
   updated_at?: string;
 }
 export const Machine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checks: S.optional(MachineChecksList),
-    config: S.optional(FlyMachineConfig),
-    cordoned: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    events: S.optional(MachineEventsList),
-    host_status: S.optional(MachineHostStatus),
-    id: S.optional(S.String),
-    image_ref: S.optional(ImageRef),
-    incomplete_config: S.optional(FlyMachineConfig),
-    instance_id: S.optional(S.String),
-    lease: S.optional(StrippedLease),
-    name: S.optional(S.String),
-    nonce: S.optional(S.String),
-    private_ip: S.optional(S.String),
-    region: S.optional(S.String),
-    state: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
+S.Struct({
+  "checks": S.optional(MachineChecksList),
+  "config": S.optional(FlyMachineConfig),
+  "cordoned": S.optional(S.Boolean),
+  "created_at": S.optional(S.String),
+  "events": S.optional(MachineEventsList),
+  "host_status": S.optional(MachineHostStatus),
+  "id": S.optional(S.String),
+  "image_ref": S.optional(ImageRef),
+  "incomplete_config": S.optional(FlyMachineConfig),
+  "instance_id": S.optional(S.String),
+  "lease": S.optional(StrippedLease),
+  "name": S.optional(S.String),
+  "nonce": S.optional(S.String),
+  "private_ip": S.optional(S.String),
+  "region": S.optional(S.String),
+  "state": S.optional(S.String),
+  "updated_at": S.optional(S.String),
+}),
 ).annotate({ identifier: "Machine" }) as any as S.Schema<Machine>;
 
 export interface MachinesCreateLeaseRequest {
@@ -2213,21 +1792,13 @@ export interface MachinesCreateLeaseRequest {
   ttl?: number;
 }
 export const MachinesCreateLeaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    description: S.optional(S.String),
-    ttl: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/lease",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesCreateLeaseRequest",
-}) as any as S.Schema<MachinesCreateLeaseRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "description": S.optional(S.String),
+  "ttl": S.optional(S.Number),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/lease","code":200})),
+).annotate({ identifier: "MachinesCreateLeaseRequest" }) as any as S.Schema<MachinesCreateLeaseRequest>;
 
 export interface Lease {
   /** Description or reason for the Lease. */
@@ -2242,13 +1813,13 @@ export interface Lease {
   version?: string;
 }
 export const Lease = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    expires_at: S.optional(S.Number),
-    nonce: S.optional(S.String),
-    owner: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "expires_at": S.optional(S.Number),
+  "nonce": S.optional(S.String),
+  "owner": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "Lease" }) as any as S.Schema<Lease>;
 
 export interface MachinesDeleteRequest {
@@ -2260,27 +1831,17 @@ export interface MachinesDeleteRequest {
   force?: boolean;
 }
 export const MachinesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    force: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/apps/{app_name}/machines/{machine_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesDeleteRequest",
-}) as any as S.Schema<MachinesDeleteRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}/machines/{machine_id}","code":200})),
+).annotate({ identifier: "MachinesDeleteRequest" }) as any as S.Schema<MachinesDeleteRequest>;
 
 export interface MachinesDeleteResponse {}
 export const MachinesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesDeleteResponse",
-}) as any as S.Schema<MachinesDeleteResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesDeleteResponse" }) as any as S.Schema<MachinesDeleteResponse>;
 
 export interface MachinesDeleteMetadataRequest {
   /** Fly App Name */
@@ -2291,32 +1852,20 @@ export interface MachinesDeleteMetadataRequest {
   key: string;
 }
 export const MachinesDeleteMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    key: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesDeleteMetadataRequest",
-}) as any as S.Schema<MachinesDeleteMetadataRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "key": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}/machines/{machine_id}/metadata/{key}","code":200})),
+).annotate({ identifier: "MachinesDeleteMetadataRequest" }) as any as S.Schema<MachinesDeleteMetadataRequest>;
 
 export interface MachinesDeleteMetadataResponse {}
 export const MachinesDeleteMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesDeleteMetadataResponse",
-}) as any as S.Schema<MachinesDeleteMetadataResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesDeleteMetadataResponse" }) as any as S.Schema<MachinesDeleteMetadataResponse>;
 
 export type MachinesExecRequestCommandList = ReadonlyArray<string>;
-export const MachinesExecRequestCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MachinesExecRequestCommandList>;
+export const MachinesExecRequestCommandList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<MachinesExecRequestCommandList>;
 
 export interface MachinesExecRequest {
   /** Fly App Name */
@@ -2331,24 +1880,16 @@ export interface MachinesExecRequest {
   timeout?: number;
 }
 export const MachinesExecRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    cmd: S.optional(S.String),
-    command: S.optional(MachinesExecRequestCommandList),
-    container: S.optional(S.String),
-    stdin: S.optional(S.String),
-    timeout: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/exec",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesExecRequest",
-}) as any as S.Schema<MachinesExecRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "cmd": S.optional(S.String),
+  "command": S.optional(MachinesExecRequestCommandList),
+  "container": S.optional(S.String),
+  "stdin": S.optional(S.String),
+  "timeout": S.optional(S.Number),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/exec","code":200})),
+).annotate({ identifier: "MachinesExecRequest" }) as any as S.Schema<MachinesExecRequest>;
 
 export interface Flydv1ExecResponse {
   exit_code?: number;
@@ -2357,15 +1898,13 @@ export interface Flydv1ExecResponse {
   stdout?: string;
 }
 export const Flydv1ExecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exit_code: S.optional(S.Number),
-    exit_signal: S.optional(S.Number),
-    stderr: S.optional(S.String),
-    stdout: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Flydv1ExecResponse",
-}) as any as S.Schema<Flydv1ExecResponse>;
+S.Struct({
+  "exit_code": S.optional(S.Number),
+  "exit_signal": S.optional(S.Number),
+  "stderr": S.optional(S.String),
+  "stdout": S.optional(S.String),
+}),
+).annotate({ identifier: "Flydv1ExecResponse" }) as any as S.Schema<Flydv1ExecResponse>;
 
 export interface MachinesGetMemoryRequest {
   /** Fly App Name */
@@ -2374,32 +1913,22 @@ export interface MachinesGetMemoryRequest {
   machine_id: string;
 }
 export const MachinesGetMemoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/machines/{machine_id}/memory",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesGetMemoryRequest",
-}) as any as S.Schema<MachinesGetMemoryRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/machines/{machine_id}/memory","code":200})),
+).annotate({ identifier: "MachinesGetMemoryRequest" }) as any as S.Schema<MachinesGetMemoryRequest>;
 
 export interface MainMemoryResponse {
   available_mb?: number;
   limit_mb?: number;
 }
 export const MainMemoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    available_mb: S.optional(S.Number),
-    limit_mb: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MainMemoryResponse",
-}) as any as S.Schema<MainMemoryResponse>;
+S.Struct({
+  "available_mb": S.optional(S.Number),
+  "limit_mb": S.optional(S.Number),
+}),
+).annotate({ identifier: "MainMemoryResponse" }) as any as S.Schema<MainMemoryResponse>;
 
 export interface MachinesGetMetadataKeyRequest {
   /** Fly App Name */
@@ -2410,31 +1939,21 @@ export interface MachinesGetMetadataKeyRequest {
   key: string;
 }
 export const MachinesGetMetadataKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    key: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesGetMetadataKeyRequest",
-}) as any as S.Schema<MachinesGetMetadataKeyRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "key": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/machines/{machine_id}/metadata/{key}","code":200})),
+).annotate({ identifier: "MachinesGetMetadataKeyRequest" }) as any as S.Schema<MachinesGetMetadataKeyRequest>;
 
 export interface MetadataValueResponse {
   value?: string;
 }
 export const MetadataValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MetadataValueResponse",
-}) as any as S.Schema<MetadataValueResponse>;
+S.Struct({
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "MetadataValueResponse" }) as any as S.Schema<MetadataValueResponse>;
 
 export interface MachinesListRequest {
   /** Fly App Name */
@@ -2451,31 +1970,23 @@ export interface MachinesListRequest {
   summary?: boolean;
 }
 export const MachinesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    include_deleted: S.optional(S.Boolean.pipe(T.Query())),
-    include_leases: S.optional(S.Boolean.pipe(T.Query())),
-    region: S.optional(S.String.pipe(T.Query())),
-    state: S.optional(S.String.pipe(T.Query())),
-    summary: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/apps/{app_name}/machines", code: 200 }),
-  ),
-).annotate({
-  identifier: "MachinesListRequest",
-}) as any as S.Schema<MachinesListRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "include_deleted": S.optional(S.Boolean.pipe(T.Query())),
+  "include_leases": S.optional(S.Boolean.pipe(T.Query())),
+  "region": S.optional(S.String.pipe(T.Query())),
+  "state": S.optional(S.String.pipe(T.Query())),
+  "summary": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/machines","code":200})),
+).annotate({ identifier: "MachinesListRequest" }) as any as S.Schema<MachinesListRequest>;
 
 export type MachinesListResponseBodyList = ReadonlyArray<Machine>;
-export const MachinesListResponseBodyList = /*@__PURE__*/ S.Array(
-  Machine,
-) as any as S.Schema<MachinesListResponseBodyList>;
+export const MachinesListResponseBodyList = /*@__PURE__*/ S.Array(Machine) as any as S.Schema<MachinesListResponseBodyList>;
 
 export type MachinesListResponse = MachinesListResponseBodyList;
 export const MachinesListResponse = /*@__PURE__*/ S.suspend(() =>
-  MachinesListResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "MachinesListResponse",
-}) as any as S.Schema<MachinesListResponse>;
+MachinesListResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({ identifier: "MachinesListResponse" }) as any as S.Schema<MachinesListResponse>;
 
 export interface MachinesListEventsRequest {
   /** Fly App Name */
@@ -2486,32 +1997,20 @@ export interface MachinesListEventsRequest {
   limit?: number;
 }
 export const MachinesListEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/machines/{machine_id}/events",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesListEventsRequest",
-}) as any as S.Schema<MachinesListEventsRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "limit": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/machines/{machine_id}/events","code":200})),
+).annotate({ identifier: "MachinesListEventsRequest" }) as any as S.Schema<MachinesListEventsRequest>;
 
 export type MachinesListEventsResponseBodyList = ReadonlyArray<MachineEvent>;
-export const MachinesListEventsResponseBodyList = /*@__PURE__*/ S.Array(
-  MachineEvent,
-) as any as S.Schema<MachinesListEventsResponseBodyList>;
+export const MachinesListEventsResponseBodyList = /*@__PURE__*/ S.Array(MachineEvent) as any as S.Schema<MachinesListEventsResponseBodyList>;
 
 export type MachinesListEventsResponse = MachinesListEventsResponseBodyList;
 export const MachinesListEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  MachinesListEventsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "MachinesListEventsResponse",
-}) as any as S.Schema<MachinesListEventsResponse>;
+MachinesListEventsResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({ identifier: "MachinesListEventsResponse" }) as any as S.Schema<MachinesListEventsResponse>;
 
 export interface MachinesListProcessesRequest {
   /** Fly App Name */
@@ -2524,37 +2023,27 @@ export interface MachinesListProcessesRequest {
   order?: string;
 }
 export const MachinesListProcessesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    sort_by: S.optional(S.String.pipe(T.Query())),
-    order: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/machines/{machine_id}/ps",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesListProcessesRequest",
-}) as any as S.Schema<MachinesListProcessesRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "sort_by": S.optional(S.String.pipe(T.Query())),
+  "order": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/machines/{machine_id}/ps","code":200})),
+).annotate({ identifier: "MachinesListProcessesRequest" }) as any as S.Schema<MachinesListProcessesRequest>;
 
 export interface ListenSocket {
   address?: string;
   proto?: string;
 }
 export const ListenSocket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    proto: S.optional(S.String),
-  }),
+S.Struct({
+  "address": S.optional(S.String),
+  "proto": S.optional(S.String),
+}),
 ).annotate({ identifier: "ListenSocket" }) as any as S.Schema<ListenSocket>;
 
 export type ProcessStatListenSocketsList = ReadonlyArray<ListenSocket>;
-export const ProcessStatListenSocketsList = /*@__PURE__*/ S.Array(
-  ListenSocket,
-) as any as S.Schema<ProcessStatListenSocketsList>;
+export const ProcessStatListenSocketsList = /*@__PURE__*/ S.Array(ListenSocket) as any as S.Schema<ProcessStatListenSocketsList>;
 
 export interface ProcessStat {
   command?: string;
@@ -2567,30 +2056,25 @@ export interface ProcessStat {
   stime?: number;
 }
 export const ProcessStat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    command: S.optional(S.String),
-    cpu: S.optional(S.Number),
-    directory: S.optional(S.String),
-    listen_sockets: S.optional(ProcessStatListenSocketsList),
-    pid: S.optional(S.Number),
-    rss: S.optional(S.Number),
-    rtime: S.optional(S.Number),
-    stime: S.optional(S.Number),
-  }),
+S.Struct({
+  "command": S.optional(S.String),
+  "cpu": S.optional(S.Number),
+  "directory": S.optional(S.String),
+  "listen_sockets": S.optional(ProcessStatListenSocketsList),
+  "pid": S.optional(S.Number),
+  "rss": S.optional(S.Number),
+  "rtime": S.optional(S.Number),
+  "stime": S.optional(S.Number),
+}),
 ).annotate({ identifier: "ProcessStat" }) as any as S.Schema<ProcessStat>;
 
 export type MachinesListProcessesResponseBodyList = ReadonlyArray<ProcessStat>;
-export const MachinesListProcessesResponseBodyList = /*@__PURE__*/ S.Array(
-  ProcessStat,
-) as any as S.Schema<MachinesListProcessesResponseBodyList>;
+export const MachinesListProcessesResponseBodyList = /*@__PURE__*/ S.Array(ProcessStat) as any as S.Schema<MachinesListProcessesResponseBodyList>;
 
-export type MachinesListProcessesResponse =
-  MachinesListProcessesResponseBodyList;
+export type MachinesListProcessesResponse = MachinesListProcessesResponseBodyList;
 export const MachinesListProcessesResponse = /*@__PURE__*/ S.suspend(() =>
-  MachinesListProcessesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "MachinesListProcessesResponse",
-}) as any as S.Schema<MachinesListProcessesResponse>;
+MachinesListProcessesResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({ identifier: "MachinesListProcessesResponse" }) as any as S.Schema<MachinesListProcessesResponse>;
 
 export interface MachinesListVersionsRequest {
   /** Fly App Name */
@@ -2599,43 +2083,30 @@ export interface MachinesListVersionsRequest {
   machine_id: string;
 }
 export const MachinesListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/machines/{machine_id}/versions",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesListVersionsRequest",
-}) as any as S.Schema<MachinesListVersionsRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/machines/{machine_id}/versions","code":200})),
+).annotate({ identifier: "MachinesListVersionsRequest" }) as any as S.Schema<MachinesListVersionsRequest>;
 
 export interface MachineVersion {
   user_config?: FlyMachineConfig;
   version?: string;
 }
 export const MachineVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user_config: S.optional(FlyMachineConfig),
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "user_config": S.optional(FlyMachineConfig),
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "MachineVersion" }) as any as S.Schema<MachineVersion>;
 
-export type MachinesListVersionsResponseBodyList =
-  ReadonlyArray<MachineVersion>;
-export const MachinesListVersionsResponseBodyList = /*@__PURE__*/ S.Array(
-  MachineVersion,
-) as any as S.Schema<MachinesListVersionsResponseBodyList>;
+export type MachinesListVersionsResponseBodyList = ReadonlyArray<MachineVersion>;
+export const MachinesListVersionsResponseBodyList = /*@__PURE__*/ S.Array(MachineVersion) as any as S.Schema<MachinesListVersionsResponseBodyList>;
 
 export type MachinesListVersionsResponse = MachinesListVersionsResponseBodyList;
 export const MachinesListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  MachinesListVersionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "MachinesListVersionsResponse",
-}) as any as S.Schema<MachinesListVersionsResponse>;
+MachinesListVersionsResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({ identifier: "MachinesListVersionsResponse" }) as any as S.Schema<MachinesListVersionsResponse>;
 
 export interface MachinesOrgListRequest {
   /** Fly Organization Slug */
@@ -2656,34 +2127,23 @@ export interface MachinesOrgListRequest {
   limit?: number;
 }
 export const MachinesOrgListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org_slug: S.String.pipe(T.Label()),
-    include_deleted: S.optional(S.Boolean.pipe(T.Query())),
-    region: S.optional(S.String.pipe(T.Query())),
-    state: S.optional(S.String.pipe(T.Query())),
-    summary: S.optional(S.Boolean.pipe(T.Query())),
-    updated_after: S.optional(S.String.pipe(T.Query())),
-    cursor: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/orgs/{org_slug}/machines", code: 200 }),
-  ),
-).annotate({
-  identifier: "MachinesOrgListRequest",
-}) as any as S.Schema<MachinesOrgListRequest>;
+S.Struct({
+  "org_slug": S.String.pipe(T.Label()),
+  "include_deleted": S.optional(S.Boolean.pipe(T.Query())),
+  "region": S.optional(S.String.pipe(T.Query())),
+  "state": S.optional(S.String.pipe(T.Query())),
+  "summary": S.optional(S.Boolean.pipe(T.Query())),
+  "updated_after": S.optional(S.String.pipe(T.Query())),
+  "cursor": S.optional(S.String.pipe(T.Query())),
+  "limit": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/orgs/{org_slug}/machines","code":200})),
+).annotate({ identifier: "MachinesOrgListRequest" }) as any as S.Schema<MachinesOrgListRequest>;
 
 export type OrgMachinesResponseErrorRegionsList = ReadonlyArray<string>;
-export const OrgMachinesResponseErrorRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgMachinesResponseErrorRegionsList>;
+export const OrgMachinesResponseErrorRegionsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<OrgMachinesResponseErrorRegionsList>;
 
-export type MachineOverviewConfigMetadataMap = {
-  [key: string]: string | undefined;
-};
-export const MachineOverviewConfigMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MachineOverviewConfigMetadataMap>;
+export type MachineOverviewConfigMetadataMap = { [key: string]: string | undefined };
+export const MachineOverviewConfigMetadataMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<MachineOverviewConfigMetadataMap>;
 
 export interface MachineOverviewConfig {
   guest?: FlyMachineGuest;
@@ -2691,14 +2151,12 @@ export interface MachineOverviewConfig {
   metadata?: MachineOverviewConfigMetadataMap;
 }
 export const MachineOverviewConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guest: S.optional(FlyMachineGuest),
-    image: S.optional(S.String),
-    metadata: S.optional(MachineOverviewConfigMetadataMap),
-  }),
-).annotate({
-  identifier: "MachineOverviewConfig",
-}) as any as S.Schema<MachineOverviewConfig>;
+S.Struct({
+  "guest": S.optional(FlyMachineGuest),
+  "image": S.optional(S.String),
+  "metadata": S.optional(MachineOverviewConfigMetadataMap),
+}),
+).annotate({ identifier: "MachineOverviewConfig" }) as any as S.Schema<MachineOverviewConfig>;
 
 export interface OrgMachine {
   app_name?: string;
@@ -2713,24 +2171,22 @@ export interface OrgMachine {
   version?: string;
 }
 export const OrgMachine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.optional(S.String),
-    config: S.optional(MachineOverviewConfig),
-    created_at: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    private_ip: S.optional(S.String),
-    region: S.optional(S.String),
-    state: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "app_name": S.optional(S.String),
+  "config": S.optional(MachineOverviewConfig),
+  "created_at": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "private_ip": S.optional(S.String),
+  "region": S.optional(S.String),
+  "state": S.optional(S.String),
+  "updated_at": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "OrgMachine" }) as any as S.Schema<OrgMachine>;
 
 export type OrgMachinesResponseMachinesList = ReadonlyArray<OrgMachine>;
-export const OrgMachinesResponseMachinesList = /*@__PURE__*/ S.Array(
-  OrgMachine,
-) as any as S.Schema<OrgMachinesResponseMachinesList>;
+export const OrgMachinesResponseMachinesList = /*@__PURE__*/ S.Array(OrgMachine) as any as S.Schema<OrgMachinesResponseMachinesList>;
 
 export interface OrgMachinesResponse {
   error_regions?: OrgMachinesResponseErrorRegionsList;
@@ -2740,16 +2196,14 @@ export interface OrgMachinesResponse {
   next_cursor?: string;
 }
 export const OrgMachinesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error_regions: S.optional(OrgMachinesResponseErrorRegionsList),
-    last_machine_id: S.optional(S.String),
-    last_updated_at: S.optional(S.String),
-    machines: S.optional(OrgMachinesResponseMachinesList),
-    next_cursor: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OrgMachinesResponse",
-}) as any as S.Schema<OrgMachinesResponse>;
+S.Struct({
+  "error_regions": S.optional(OrgMachinesResponseErrorRegionsList),
+  "last_machine_id": S.optional(S.String),
+  "last_updated_at": S.optional(S.String),
+  "machines": S.optional(OrgMachinesResponseMachinesList),
+  "next_cursor": S.optional(S.String),
+}),
+).annotate({ identifier: "OrgMachinesResponse" }) as any as S.Schema<OrgMachinesResponse>;
 
 export interface MachinesReclaimMemoryRequest {
   /** Fly App Name */
@@ -2759,31 +2213,21 @@ export interface MachinesReclaimMemoryRequest {
   amount_mb?: number;
 }
 export const MachinesReclaimMemoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    amount_mb: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/memory/reclaim",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesReclaimMemoryRequest",
-}) as any as S.Schema<MachinesReclaimMemoryRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "amount_mb": S.optional(S.Number),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/memory/reclaim","code":200})),
+).annotate({ identifier: "MachinesReclaimMemoryRequest" }) as any as S.Schema<MachinesReclaimMemoryRequest>;
 
 export interface MainReclaimMemoryResponse {
   actual_mb?: number;
 }
 export const MainReclaimMemoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actual_mb: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MainReclaimMemoryResponse",
-}) as any as S.Schema<MainReclaimMemoryResponse>;
+S.Struct({
+  "actual_mb": S.optional(S.Number),
+}),
+).annotate({ identifier: "MainReclaimMemoryResponse" }) as any as S.Schema<MainReclaimMemoryResponse>;
 
 export interface MachinesReleaseLeaseRequest {
   /** Fly App Name */
@@ -2792,36 +2236,18 @@ export interface MachinesReleaseLeaseRequest {
   machine_id: string;
 }
 export const MachinesReleaseLeaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/apps/{app_name}/machines/{machine_id}/lease",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesReleaseLeaseRequest",
-}) as any as S.Schema<MachinesReleaseLeaseRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}/machines/{machine_id}/lease","code":200})),
+).annotate({ identifier: "MachinesReleaseLeaseRequest" }) as any as S.Schema<MachinesReleaseLeaseRequest>;
 
 export interface MachinesReleaseLeaseResponse {}
 export const MachinesReleaseLeaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesReleaseLeaseResponse",
-}) as any as S.Schema<MachinesReleaseLeaseResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesReleaseLeaseResponse" }) as any as S.Schema<MachinesReleaseLeaseResponse>;
 
-export type MachinesRestartRequestSignal =
-  | "SIGHUP"
-  | "SIGINT"
-  | "SIGQUIT"
-  | "SIGKILL"
-  | "SIGUSR1"
-  | "SIGUSR2"
-  | "SIGTERM"
-  | (string & {});
+export type MachinesRestartRequestSignal = "SIGHUP" | "SIGINT" | "SIGQUIT" | "SIGKILL" | "SIGUSR1" | "SIGUSR2" | "SIGTERM";
 export const MachinesRestartRequestSignal = /*@__PURE__*/ S.String;
 
 export interface MachinesRestartRequest {
@@ -2832,31 +2258,21 @@ export interface MachinesRestartRequest {
   /** Restart timeout as a Go duration string or number of seconds */
   timeout?: string;
   /** Unix signal name */
-  signal?: MachinesRestartRequestSignal;
+  signal?: MachinesRestartRequestSignal | (string & {});
 }
 export const MachinesRestartRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    timeout: S.optional(S.String.pipe(T.Query())),
-    signal: S.optional(MachinesRestartRequestSignal.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/restart",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesRestartRequest",
-}) as any as S.Schema<MachinesRestartRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "timeout": S.optional(S.String.pipe(T.Query())),
+  "signal": S.optional(MachinesRestartRequestSignal.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/restart","code":200})),
+).annotate({ identifier: "MachinesRestartRequest" }) as any as S.Schema<MachinesRestartRequest>;
 
 export interface MachinesRestartResponse {}
 export const MachinesRestartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesRestartResponse",
-}) as any as S.Schema<MachinesRestartResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesRestartResponse" }) as any as S.Schema<MachinesRestartResponse>;
 
 export interface MachinesSetMemoryLimitRequest {
   /** Fly App Name */
@@ -2866,20 +2282,12 @@ export interface MachinesSetMemoryLimitRequest {
   limit_mb?: number;
 }
 export const MachinesSetMemoryLimitRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    limit_mb: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/apps/{app_name}/machines/{machine_id}/memory",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesSetMemoryLimitRequest",
-}) as any as S.Schema<MachinesSetMemoryLimitRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "limit_mb": S.optional(S.Number),
+}).pipe(T.Http({"method":"PUT","uri":"/apps/{app_name}/machines/{machine_id}/memory","code":200})),
+).annotate({ identifier: "MachinesSetMemoryLimitRequest" }) as any as S.Schema<MachinesSetMemoryLimitRequest>;
 
 export interface MachinesShowRequest {
   /** Fly App Name */
@@ -2890,20 +2298,12 @@ export interface MachinesShowRequest {
   include_leases?: boolean;
 }
 export const MachinesShowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    include_leases: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/machines/{machine_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesShowRequest",
-}) as any as S.Schema<MachinesShowRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "include_leases": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/machines/{machine_id}","code":200})),
+).annotate({ identifier: "MachinesShowRequest" }) as any as S.Schema<MachinesShowRequest>;
 
 export interface MachinesShowLeaseRequest {
   /** Fly App Name */
@@ -2912,19 +2312,11 @@ export interface MachinesShowLeaseRequest {
   machine_id: string;
 }
 export const MachinesShowLeaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/machines/{machine_id}/lease",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesShowLeaseRequest",
-}) as any as S.Schema<MachinesShowLeaseRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/machines/{machine_id}/lease","code":200})),
+).annotate({ identifier: "MachinesShowLeaseRequest" }) as any as S.Schema<MachinesShowLeaseRequest>;
 
 export interface MachinesShowMetadataRequest {
   /** Fly App Name */
@@ -2933,51 +2325,21 @@ export interface MachinesShowMetadataRequest {
   machine_id: string;
 }
 export const MachinesShowMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/machines/{machine_id}/metadata",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesShowMetadataRequest",
-}) as any as S.Schema<MachinesShowMetadataRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/machines/{machine_id}/metadata","code":200})),
+).annotate({ identifier: "MachinesShowMetadataRequest" }) as any as S.Schema<MachinesShowMetadataRequest>;
 
-export type MachinesShowMetadataResponseBodyMap = {
-  [key: string]: string | undefined;
-};
-export const MachinesShowMetadataResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MachinesShowMetadataResponseBodyMap>;
+export type MachinesShowMetadataResponseBodyMap = { [key: string]: string | undefined };
+export const MachinesShowMetadataResponseBodyMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<MachinesShowMetadataResponseBodyMap>;
 
 export type MachinesShowMetadataResponse = MachinesShowMetadataResponseBodyMap;
 export const MachinesShowMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  MachinesShowMetadataResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "MachinesShowMetadataResponse",
-}) as any as S.Schema<MachinesShowMetadataResponse>;
+MachinesShowMetadataResponseBodyMap.pipe(T.RawResponseRoot()),
+).annotate({ identifier: "MachinesShowMetadataResponse" }) as any as S.Schema<MachinesShowMetadataResponse>;
 
-export type MachinesSignalRequestSignal =
-  | "SIGABRT"
-  | "SIGALRM"
-  | "SIGFPE"
-  | "SIGHUP"
-  | "SIGILL"
-  | "SIGINT"
-  | "SIGKILL"
-  | "SIGPIPE"
-  | "SIGQUIT"
-  | "SIGSEGV"
-  | "SIGTERM"
-  | "SIGTRAP"
-  | "SIGUSR1"
-  | "SIGUSR2"
-  | (string & {});
+export type MachinesSignalRequestSignal = "SIGABRT" | "SIGALRM" | "SIGFPE" | "SIGHUP" | "SIGILL" | "SIGINT" | "SIGKILL" | "SIGPIPE" | "SIGQUIT" | "SIGSEGV" | "SIGTERM" | "SIGTRAP" | "SIGUSR1" | "SIGUSR2";
 export const MachinesSignalRequestSignal = /*@__PURE__*/ S.String;
 
 export interface MachinesSignalRequest {
@@ -2985,30 +2347,20 @@ export interface MachinesSignalRequest {
   app_name: string;
   /** Machine ID */
   machine_id: string;
-  signal?: MachinesSignalRequestSignal;
+  signal?: MachinesSignalRequestSignal | (string & {});
 }
 export const MachinesSignalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    signal: S.optional(MachinesSignalRequestSignal),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/signal",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesSignalRequest",
-}) as any as S.Schema<MachinesSignalRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "signal": S.optional(MachinesSignalRequestSignal),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/signal","code":200})),
+).annotate({ identifier: "MachinesSignalRequest" }) as any as S.Schema<MachinesSignalRequest>;
 
 export interface MachinesSignalResponse {}
 export const MachinesSignalResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesSignalResponse",
-}) as any as S.Schema<MachinesSignalResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesSignalResponse" }) as any as S.Schema<MachinesSignalResponse>;
 
 export interface MachinesStartRequest {
   /** Fly App Name */
@@ -3017,36 +2369,18 @@ export interface MachinesStartRequest {
   machine_id: string;
 }
 export const MachinesStartRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/start",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesStartRequest",
-}) as any as S.Schema<MachinesStartRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/start","code":200})),
+).annotate({ identifier: "MachinesStartRequest" }) as any as S.Schema<MachinesStartRequest>;
 
 export interface MachinesStartResponse {}
 export const MachinesStartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesStartResponse",
-}) as any as S.Schema<MachinesStartResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesStartResponse" }) as any as S.Schema<MachinesStartResponse>;
 
-export type MachinesStopRequestSignal =
-  | "SIGHUP"
-  | "SIGINT"
-  | "SIGQUIT"
-  | "SIGKILL"
-  | "SIGUSR1"
-  | "SIGUSR2"
-  | "SIGTERM"
-  | (string & {});
+export type MachinesStopRequestSignal = "SIGHUP" | "SIGINT" | "SIGQUIT" | "SIGKILL" | "SIGUSR1" | "SIGUSR2" | "SIGTERM";
 export const MachinesStopRequestSignal = /*@__PURE__*/ S.String;
 
 export interface MachinesStopRequest {
@@ -3054,32 +2388,22 @@ export interface MachinesStopRequest {
   app_name: string;
   /** Machine ID */
   machine_id: string;
-  signal?: MachinesStopRequestSignal;
+  signal?: MachinesStopRequestSignal | (string & {});
   timeout?: string;
 }
 export const MachinesStopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    signal: S.optional(MachinesStopRequestSignal),
-    timeout: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/stop",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesStopRequest",
-}) as any as S.Schema<MachinesStopRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "signal": S.optional(MachinesStopRequestSignal),
+  "timeout": S.optional(S.String),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/stop","code":200})),
+).annotate({ identifier: "MachinesStopRequest" }) as any as S.Schema<MachinesStopRequest>;
 
 export interface MachinesStopResponse {}
 export const MachinesStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesStopResponse",
-}) as any as S.Schema<MachinesStopResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesStopResponse" }) as any as S.Schema<MachinesStopResponse>;
 
 export interface MachinesSuspendRequest {
   /** Fly App Name */
@@ -3088,26 +2412,16 @@ export interface MachinesSuspendRequest {
   machine_id: string;
 }
 export const MachinesSuspendRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/suspend",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesSuspendRequest",
-}) as any as S.Schema<MachinesSuspendRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/suspend","code":200})),
+).annotate({ identifier: "MachinesSuspendRequest" }) as any as S.Schema<MachinesSuspendRequest>;
 
 export interface MachinesSuspendResponse {}
 export const MachinesSuspendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesSuspendResponse",
-}) as any as S.Schema<MachinesSuspendResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesSuspendResponse" }) as any as S.Schema<MachinesSuspendResponse>;
 
 export interface MachinesUncordonRequest {
   /** Fly App Name */
@@ -3116,26 +2430,16 @@ export interface MachinesUncordonRequest {
   machine_id: string;
 }
 export const MachinesUncordonRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/uncordon",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesUncordonRequest",
-}) as any as S.Schema<MachinesUncordonRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/uncordon","code":200})),
+).annotate({ identifier: "MachinesUncordonRequest" }) as any as S.Schema<MachinesUncordonRequest>;
 
 export interface MachinesUncordonResponse {}
 export const MachinesUncordonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesUncordonResponse",
-}) as any as S.Schema<MachinesUncordonResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesUncordonResponse" }) as any as S.Schema<MachinesUncordonResponse>;
 
 export interface MachinesUpdateRequest {
   /** Fly App Name */
@@ -3156,36 +2460,23 @@ export interface MachinesUpdateRequest {
   skip_service_registration?: boolean;
 }
 export const MachinesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    config: S.optional(FlyMachineConfig),
-    current_version: S.optional(S.String),
-    lease_ttl: S.optional(S.Number),
-    min_secrets_version: S.optional(S.Number),
-    name: S.optional(S.String),
-    region: S.optional(S.String),
-    skip_launch: S.optional(S.Boolean),
-    skip_secrets: S.optional(S.Boolean),
-    skip_service_registration: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesUpdateRequest",
-}) as any as S.Schema<MachinesUpdateRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "config": S.optional(FlyMachineConfig),
+  "current_version": S.optional(S.String),
+  "lease_ttl": S.optional(S.Number),
+  "min_secrets_version": S.optional(S.Number),
+  "name": S.optional(S.String),
+  "region": S.optional(S.String),
+  "skip_launch": S.optional(S.Boolean),
+  "skip_secrets": S.optional(S.Boolean),
+  "skip_service_registration": S.optional(S.Boolean),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}","code":200})),
+).annotate({ identifier: "MachinesUpdateRequest" }) as any as S.Schema<MachinesUpdateRequest>;
 
-export type MachinesUpdateMetadataRequestMetadataMap = {
-  [key: string]: string | undefined;
-};
-export const MachinesUpdateMetadataRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MachinesUpdateMetadataRequestMetadataMap>;
+export type MachinesUpdateMetadataRequestMetadataMap = { [key: string]: string | undefined };
+export const MachinesUpdateMetadataRequestMetadataMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<MachinesUpdateMetadataRequestMetadataMap>;
 
 export interface MachinesUpdateMetadataRequest {
   /** Fly App Name */
@@ -3197,37 +2488,22 @@ export interface MachinesUpdateMetadataRequest {
   updated_at?: string;
 }
 export const MachinesUpdateMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    machine_version: S.optional(S.String),
-    metadata: S.optional(MachinesUpdateMetadataRequestMetadataMap),
-    updated_at: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/apps/{app_name}/machines/{machine_id}/metadata",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesUpdateMetadataRequest",
-}) as any as S.Schema<MachinesUpdateMetadataRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "machine_version": S.optional(S.String),
+  "metadata": S.optional(MachinesUpdateMetadataRequestMetadataMap),
+  "updated_at": S.optional(S.String),
+}).pipe(T.Http({"method":"PUT","uri":"/apps/{app_name}/machines/{machine_id}/metadata","code":200})),
+).annotate({ identifier: "MachinesUpdateMetadataRequest" }) as any as S.Schema<MachinesUpdateMetadataRequest>;
 
 export interface MachinesUpdateMetadataResponse {}
 export const MachinesUpdateMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesUpdateMetadataResponse",
-}) as any as S.Schema<MachinesUpdateMetadataResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesUpdateMetadataResponse" }) as any as S.Schema<MachinesUpdateMetadataResponse>;
 
-export type MachinesUpdateMetadataRequestMetadataMap2 = {
-  [key: string]: string | undefined;
-};
-export const MachinesUpdateMetadataRequestMetadataMap2 = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MachinesUpdateMetadataRequestMetadataMap2>;
+export type MachinesUpdateMetadataRequestMetadataMap2 = { [key: string]: string | undefined };
+export const MachinesUpdateMetadataRequestMetadataMap2 = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<MachinesUpdateMetadataRequestMetadataMap2>;
 
 export interface MachinesUpdateMetadataRequest2 {
   /** Fly App Name */
@@ -3239,29 +2515,19 @@ export interface MachinesUpdateMetadataRequest2 {
   updated_at?: string;
 }
 export const MachinesUpdateMetadataRequest2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    machine_version: S.optional(S.String),
-    metadata: S.optional(MachinesUpdateMetadataRequestMetadataMap2),
-    updated_at: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/apps/{app_name}/machines/{machine_id}/metadata",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesUpdateMetadataRequest2",
-}) as any as S.Schema<MachinesUpdateMetadataRequest2>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "machine_version": S.optional(S.String),
+  "metadata": S.optional(MachinesUpdateMetadataRequestMetadataMap2),
+  "updated_at": S.optional(S.String),
+}).pipe(T.Http({"method":"PATCH","uri":"/apps/{app_name}/machines/{machine_id}/metadata","code":200})),
+).annotate({ identifier: "MachinesUpdateMetadataRequest2" }) as any as S.Schema<MachinesUpdateMetadataRequest2>;
 
 export interface MachinesUpdateMetadata2Response {}
 export const MachinesUpdateMetadata2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesUpdateMetadata2Response",
-}) as any as S.Schema<MachinesUpdateMetadata2Response>;
+S.Struct({}),
+).annotate({ identifier: "MachinesUpdateMetadata2Response" }) as any as S.Schema<MachinesUpdateMetadata2Response>;
 
 export interface MachinesUpsertMetadataRequest {
   /** Fly App Name */
@@ -3274,38 +2540,21 @@ export interface MachinesUpsertMetadataRequest {
   value?: string;
 }
 export const MachinesUpsertMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    key: S.String.pipe(T.Label()),
-    updated_at: S.optional(S.String),
-    value: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesUpsertMetadataRequest",
-}) as any as S.Schema<MachinesUpsertMetadataRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "key": S.String.pipe(T.Label()),
+  "updated_at": S.optional(S.String),
+  "value": S.optional(S.String),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/machines/{machine_id}/metadata/{key}","code":200})),
+).annotate({ identifier: "MachinesUpsertMetadataRequest" }) as any as S.Schema<MachinesUpsertMetadataRequest>;
 
 export interface MachinesUpsertMetadataResponse {}
 export const MachinesUpsertMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MachinesUpsertMetadataResponse",
-}) as any as S.Schema<MachinesUpsertMetadataResponse>;
+S.Struct({}),
+).annotate({ identifier: "MachinesUpsertMetadataResponse" }) as any as S.Schema<MachinesUpsertMetadataResponse>;
 
-export type MachinesWaitRequestState =
-  | "started"
-  | "stopped"
-  | "suspended"
-  | "destroyed"
-  | "failed"
-  | "settled"
-  | (string & {});
+export type MachinesWaitRequestState = "started" | "stopped" | "suspended" | "destroyed" | "failed" | "settled";
 export const MachinesWaitRequestState = /*@__PURE__*/ S.String;
 
 export interface MachinesWaitRequest {
@@ -3322,27 +2571,19 @@ export interface MachinesWaitRequest {
   /** wait timeout. default 60s */
   timeout?: number;
   /** desired state(s), supports repeated or comma-separated values */
-  state?: MachinesWaitRequestState;
+  state?: MachinesWaitRequestState | (string & {});
 }
 export const MachinesWaitRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    machine_id: S.String.pipe(T.Label()),
-    version: S.optional(S.String.pipe(T.Query())),
-    instance_id: S.optional(S.String.pipe(T.Query())),
-    from_event_id: S.optional(S.String.pipe(T.Query())),
-    timeout: S.optional(S.Number.pipe(T.Query())),
-    state: S.optional(MachinesWaitRequestState.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/machines/{machine_id}/wait",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MachinesWaitRequest",
-}) as any as S.Schema<MachinesWaitRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "machine_id": S.String.pipe(T.Label()),
+  "version": S.optional(S.String.pipe(T.Query())),
+  "instance_id": S.optional(S.String.pipe(T.Query())),
+  "from_event_id": S.optional(S.String.pipe(T.Query())),
+  "timeout": S.optional(S.Number.pipe(T.Query())),
+  "state": S.optional(MachinesWaitRequestState.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/machines/{machine_id}/wait","code":200})),
+).annotate({ identifier: "MachinesWaitRequest" }) as any as S.Schema<MachinesWaitRequest>;
 
 export interface WaitMachineResponse {
   event_id?: string;
@@ -3351,21 +2592,16 @@ export interface WaitMachineResponse {
   version?: string;
 }
 export const WaitMachineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event_id: S.optional(S.String),
-    ok: S.optional(S.Boolean),
-    state: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WaitMachineResponse",
-}) as any as S.Schema<WaitMachineResponse>;
+S.Struct({
+  "event_id": S.optional(S.String),
+  "ok": S.optional(S.Boolean),
+  "state": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
+).annotate({ identifier: "WaitMachineResponse" }) as any as S.Schema<WaitMachineResponse>;
 
 export type PlacementWeights = { [key: string]: number | undefined };
-export const PlacementWeights = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<PlacementWeights>;
+export const PlacementWeights = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<PlacementWeights>;
 
 export interface PlatformPlacementsPostRequest {
   /** Resource requirements for the Machine to simulate. Defaults to a performance-1x machine */
@@ -3381,18 +2617,16 @@ export interface PlatformPlacementsPostRequest {
   weights?: PlacementWeights;
 }
 export const PlatformPlacementsPostRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compute: S.optional(FlyMachineGuest),
-    count: S.optional(S.Number),
-    org_slug: S.String,
-    region: S.optional(S.String),
-    volume_name: S.optional(S.String),
-    volume_size_bytes: S.optional(S.Number),
-    weights: S.optional(PlacementWeights),
-  }).pipe(T.Http({ method: "POST", uri: "/platform/placements", code: 200 })),
-).annotate({
-  identifier: "PlatformPlacementsPostRequest",
-}) as any as S.Schema<PlatformPlacementsPostRequest>;
+S.Struct({
+  "compute": S.optional(FlyMachineGuest),
+  "count": S.optional(S.Number),
+  "org_slug": S.String,
+  "region": S.optional(S.String),
+  "volume_name": S.optional(S.String),
+  "volume_size_bytes": S.optional(S.Number),
+  "weights": S.optional(PlacementWeights),
+}).pipe(T.Http({"method":"POST","uri":"/platform/placements","code":200})),
+).annotate({ identifier: "PlatformPlacementsPostRequest" }) as any as S.Schema<PlatformPlacementsPostRequest>;
 
 export interface PlacementRegionPlacement {
   concurrency?: number;
@@ -3400,40 +2634,29 @@ export interface PlacementRegionPlacement {
   region?: string;
 }
 export const PlacementRegionPlacement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    concurrency: S.optional(S.Number),
-    count: S.optional(S.Number),
-    region: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PlacementRegionPlacement",
-}) as any as S.Schema<PlacementRegionPlacement>;
+S.Struct({
+  "concurrency": S.optional(S.Number),
+  "count": S.optional(S.Number),
+  "region": S.optional(S.String),
+}),
+).annotate({ identifier: "PlacementRegionPlacement" }) as any as S.Schema<PlacementRegionPlacement>;
 
-export type MainGetPlacementsResponseRegionsList =
-  ReadonlyArray<PlacementRegionPlacement>;
-export const MainGetPlacementsResponseRegionsList = /*@__PURE__*/ S.Array(
-  PlacementRegionPlacement,
-) as any as S.Schema<MainGetPlacementsResponseRegionsList>;
+export type MainGetPlacementsResponseRegionsList = ReadonlyArray<PlacementRegionPlacement>;
+export const MainGetPlacementsResponseRegionsList = /*@__PURE__*/ S.Array(PlacementRegionPlacement) as any as S.Schema<MainGetPlacementsResponseRegionsList>;
 
 export interface MainGetPlacementsResponse {
   regions?: MainGetPlacementsResponseRegionsList;
 }
 export const MainGetPlacementsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(MainGetPlacementsResponseRegionsList),
-  }),
-).annotate({
-  identifier: "MainGetPlacementsResponse",
-}) as any as S.Schema<MainGetPlacementsResponse>;
+S.Struct({
+  "regions": S.optional(MainGetPlacementsResponseRegionsList),
+}),
+).annotate({ identifier: "MainGetPlacementsResponse" }) as any as S.Schema<MainGetPlacementsResponse>;
 
 export interface PlatformRegionsGetRequest {}
 export const PlatformRegionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/platform/regions", code: 200 }),
-  ),
-).annotate({
-  identifier: "PlatformRegionsGetRequest",
-}) as any as S.Schema<PlatformRegionsGetRequest>;
+S.Struct({}).pipe(T.Http({"method":"GET","uri":"/platform/regions","code":200})),
+).annotate({ identifier: "PlatformRegionsGetRequest" }) as any as S.Schema<PlatformRegionsGetRequest>;
 
 export interface MainRegionRow {
   code?: string;
@@ -3446,35 +2669,31 @@ export interface MainRegionRow {
   requires_paid_plan?: boolean;
 }
 export const MainRegionRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    deprecated: S.optional(S.Boolean),
-    gateway_available: S.optional(S.Boolean),
-    geo_region: S.optional(S.String),
-    latitude: S.optional(S.Number),
-    longitude: S.optional(S.Number),
-    name: S.optional(S.String),
-    requires_paid_plan: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "code": S.optional(S.String),
+  "deprecated": S.optional(S.Boolean),
+  "gateway_available": S.optional(S.Boolean),
+  "geo_region": S.optional(S.String),
+  "latitude": S.optional(S.Number),
+  "longitude": S.optional(S.Number),
+  "name": S.optional(S.String),
+  "requires_paid_plan": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "MainRegionRow" }) as any as S.Schema<MainRegionRow>;
 
 export type MainRegionResponseRegionsList = ReadonlyArray<MainRegionRow>;
-export const MainRegionResponseRegionsList = /*@__PURE__*/ S.Array(
-  MainRegionRow,
-) as any as S.Schema<MainRegionResponseRegionsList>;
+export const MainRegionResponseRegionsList = /*@__PURE__*/ S.Array(MainRegionRow) as any as S.Schema<MainRegionResponseRegionsList>;
 
 export interface MainRegionResponse {
   nearest?: string;
   regions?: MainRegionResponseRegionsList;
 }
 export const MainRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nearest: S.optional(S.String),
-    regions: S.optional(MainRegionResponseRegionsList),
-  }),
-).annotate({
-  identifier: "MainRegionResponse",
-}) as any as S.Schema<MainRegionResponse>;
+S.Struct({
+  "nearest": S.optional(S.String),
+  "regions": S.optional(MainRegionResponseRegionsList),
+}),
+).annotate({ identifier: "MainRegionResponse" }) as any as S.Schema<MainRegionResponse>;
 
 export interface SecretCreateRequest {
   /** Fly App Name */
@@ -3484,20 +2703,12 @@ export interface SecretCreateRequest {
   value?: string;
 }
 export const SecretCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    value: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/secrets/{secret_name}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretCreateRequest",
-}) as any as S.Schema<SecretCreateRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+  "value": S.optional(S.String),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/secrets/{secret_name}","code":200})),
+).annotate({ identifier: "SecretCreateRequest" }) as any as S.Schema<SecretCreateRequest>;
 
 export interface SetAppSecretResponse {
   /** DEPRECATED */
@@ -3510,18 +2721,16 @@ export interface SetAppSecretResponse {
   version?: number;
 }
 export const SetAppSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Version: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    digest: S.optional(S.String),
-    name: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    value: S.optional(S.String),
-    version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SetAppSecretResponse",
-}) as any as S.Schema<SetAppSecretResponse>;
+S.Struct({
+  "Version": S.optional(S.Number),
+  "created_at": S.optional(S.String),
+  "digest": S.optional(S.String),
+  "name": S.optional(S.String),
+  "updated_at": S.optional(S.String),
+  "value": S.optional(S.String),
+  "version": S.optional(S.Number),
+}),
+).annotate({ identifier: "SetAppSecretResponse" }) as any as S.Schema<SetAppSecretResponse>;
 
 export interface SecretDeleteRequest {
   /** Fly App Name */
@@ -3530,19 +2739,11 @@ export interface SecretDeleteRequest {
   secret_name: string;
 }
 export const SecretDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/apps/{app_name}/secrets/{secret_name}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretDeleteRequest",
-}) as any as S.Schema<SecretDeleteRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}/secrets/{secret_name}","code":200})),
+).annotate({ identifier: "SecretDeleteRequest" }) as any as S.Schema<SecretDeleteRequest>;
 
 export interface DeleteAppSecretResponse {
   /** DEPRECATED */
@@ -3550,13 +2751,11 @@ export interface DeleteAppSecretResponse {
   version?: number;
 }
 export const DeleteAppSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Version: S.optional(S.Number),
-    version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DeleteAppSecretResponse",
-}) as any as S.Schema<DeleteAppSecretResponse>;
+S.Struct({
+  "Version": S.optional(S.Number),
+  "version": S.optional(S.Number),
+}),
+).annotate({ identifier: "DeleteAppSecretResponse" }) as any as S.Schema<DeleteAppSecretResponse>;
 
 export interface SecretGetRequest {
   /** Fly App Name */
@@ -3569,21 +2768,13 @@ export interface SecretGetRequest {
   show_secrets?: boolean;
 }
 export const SecretGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    min_version: S.optional(S.String.pipe(T.Query())),
-    show_secrets: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/secrets/{secret_name}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretGetRequest",
-}) as any as S.Schema<SecretGetRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+  "min_version": S.optional(S.String.pipe(T.Query())),
+  "show_secrets": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/secrets/{secret_name}","code":200})),
+).annotate({ identifier: "SecretGetRequest" }) as any as S.Schema<SecretGetRequest>;
 
 export interface AppSecret {
   created_at?: string;
@@ -3593,24 +2784,20 @@ export interface AppSecret {
   value?: string;
 }
 export const AppSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.String),
-    digest: S.optional(S.String),
-    name: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "created_at": S.optional(S.String),
+  "digest": S.optional(S.String),
+  "name": S.optional(S.String),
+  "updated_at": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "AppSecret" }) as any as S.Schema<AppSecret>;
 
 export type SecretkeyDecryptRequestAssociatedDataList = ReadonlyArray<number>;
-export const SecretkeyDecryptRequestAssociatedDataList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretkeyDecryptRequestAssociatedDataList>;
+export const SecretkeyDecryptRequestAssociatedDataList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SecretkeyDecryptRequestAssociatedDataList>;
 
 export type SecretkeyDecryptRequestCiphertextList = ReadonlyArray<number>;
-export const SecretkeyDecryptRequestCiphertextList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretkeyDecryptRequestCiphertextList>;
+export const SecretkeyDecryptRequestCiphertextList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SecretkeyDecryptRequestCiphertextList>;
 
 export interface SecretkeyDecryptRequest {
   /** Fly App Name */
@@ -3623,38 +2810,26 @@ export interface SecretkeyDecryptRequest {
   ciphertext?: SecretkeyDecryptRequestCiphertextList;
 }
 export const SecretkeyDecryptRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    min_version: S.optional(S.String.pipe(T.Query())),
-    associated_data: S.optional(SecretkeyDecryptRequestAssociatedDataList),
-    ciphertext: S.optional(SecretkeyDecryptRequestCiphertextList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/secretkeys/{secret_name}/decrypt",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretkeyDecryptRequest",
-}) as any as S.Schema<SecretkeyDecryptRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+  "min_version": S.optional(S.String.pipe(T.Query())),
+  "associated_data": S.optional(SecretkeyDecryptRequestAssociatedDataList),
+  "ciphertext": S.optional(SecretkeyDecryptRequestCiphertextList),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/secretkeys/{secret_name}/decrypt","code":200})),
+).annotate({ identifier: "SecretkeyDecryptRequest" }) as any as S.Schema<SecretkeyDecryptRequest>;
 
 export type DecryptSecretkeyResponsePlaintextList = ReadonlyArray<number>;
-export const DecryptSecretkeyResponsePlaintextList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DecryptSecretkeyResponsePlaintextList>;
+export const DecryptSecretkeyResponsePlaintextList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DecryptSecretkeyResponsePlaintextList>;
 
 export interface DecryptSecretkeyResponse {
   plaintext?: DecryptSecretkeyResponsePlaintextList;
 }
 export const DecryptSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    plaintext: S.optional(DecryptSecretkeyResponsePlaintextList),
-  }),
-).annotate({
-  identifier: "DecryptSecretkeyResponse",
-}) as any as S.Schema<DecryptSecretkeyResponse>;
+S.Struct({
+  "plaintext": S.optional(DecryptSecretkeyResponsePlaintextList),
+}),
+).annotate({ identifier: "DecryptSecretkeyResponse" }) as any as S.Schema<DecryptSecretkeyResponse>;
 
 export interface SecretkeyDeleteRequest {
   /** Fly App Name */
@@ -3663,19 +2838,11 @@ export interface SecretkeyDeleteRequest {
   secret_name: string;
 }
 export const SecretkeyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/apps/{app_name}/secretkeys/{secret_name}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretkeyDeleteRequest",
-}) as any as S.Schema<SecretkeyDeleteRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}/secretkeys/{secret_name}","code":200})),
+).annotate({ identifier: "SecretkeyDeleteRequest" }) as any as S.Schema<SecretkeyDeleteRequest>;
 
 export interface DeleteSecretkeyResponse {
   /** DEPRECATED */
@@ -3683,23 +2850,17 @@ export interface DeleteSecretkeyResponse {
   version?: number;
 }
 export const DeleteSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Version: S.optional(S.Number),
-    version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DeleteSecretkeyResponse",
-}) as any as S.Schema<DeleteSecretkeyResponse>;
+S.Struct({
+  "Version": S.optional(S.Number),
+  "version": S.optional(S.Number),
+}),
+).annotate({ identifier: "DeleteSecretkeyResponse" }) as any as S.Schema<DeleteSecretkeyResponse>;
 
 export type SecretkeyEncryptRequestAssociatedDataList = ReadonlyArray<number>;
-export const SecretkeyEncryptRequestAssociatedDataList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretkeyEncryptRequestAssociatedDataList>;
+export const SecretkeyEncryptRequestAssociatedDataList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SecretkeyEncryptRequestAssociatedDataList>;
 
 export type SecretkeyEncryptRequestPlaintextList = ReadonlyArray<number>;
-export const SecretkeyEncryptRequestPlaintextList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretkeyEncryptRequestPlaintextList>;
+export const SecretkeyEncryptRequestPlaintextList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SecretkeyEncryptRequestPlaintextList>;
 
 export interface SecretkeyEncryptRequest {
   /** Fly App Name */
@@ -3712,43 +2873,29 @@ export interface SecretkeyEncryptRequest {
   plaintext?: SecretkeyEncryptRequestPlaintextList;
 }
 export const SecretkeyEncryptRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    min_version: S.optional(S.String.pipe(T.Query())),
-    associated_data: S.optional(SecretkeyEncryptRequestAssociatedDataList),
-    plaintext: S.optional(SecretkeyEncryptRequestPlaintextList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/secretkeys/{secret_name}/encrypt",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretkeyEncryptRequest",
-}) as any as S.Schema<SecretkeyEncryptRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+  "min_version": S.optional(S.String.pipe(T.Query())),
+  "associated_data": S.optional(SecretkeyEncryptRequestAssociatedDataList),
+  "plaintext": S.optional(SecretkeyEncryptRequestPlaintextList),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/secretkeys/{secret_name}/encrypt","code":200})),
+).annotate({ identifier: "SecretkeyEncryptRequest" }) as any as S.Schema<SecretkeyEncryptRequest>;
 
 export type EncryptSecretkeyResponseCiphertextList = ReadonlyArray<number>;
-export const EncryptSecretkeyResponseCiphertextList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<EncryptSecretkeyResponseCiphertextList>;
+export const EncryptSecretkeyResponseCiphertextList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<EncryptSecretkeyResponseCiphertextList>;
 
 export interface EncryptSecretkeyResponse {
   ciphertext?: EncryptSecretkeyResponseCiphertextList;
 }
 export const EncryptSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ciphertext: S.optional(EncryptSecretkeyResponseCiphertextList),
-  }),
-).annotate({
-  identifier: "EncryptSecretkeyResponse",
-}) as any as S.Schema<EncryptSecretkeyResponse>;
+S.Struct({
+  "ciphertext": S.optional(EncryptSecretkeyResponseCiphertextList),
+}),
+).annotate({ identifier: "EncryptSecretkeyResponse" }) as any as S.Schema<EncryptSecretkeyResponse>;
 
 export type SecretkeyGenerateRequestValueList = ReadonlyArray<number>;
-export const SecretkeyGenerateRequestValueList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretkeyGenerateRequestValueList>;
+export const SecretkeyGenerateRequestValueList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SecretkeyGenerateRequestValueList>;
 
 export interface SecretkeyGenerateRequest {
   /** Fly App Name */
@@ -3759,26 +2906,16 @@ export interface SecretkeyGenerateRequest {
   value?: SecretkeyGenerateRequestValueList;
 }
 export const SecretkeyGenerateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    type: S.optional(S.String),
-    value: S.optional(SecretkeyGenerateRequestValueList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/secretkeys/{secret_name}/generate",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretkeyGenerateRequest",
-}) as any as S.Schema<SecretkeyGenerateRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+  "type": S.optional(S.String),
+  "value": S.optional(SecretkeyGenerateRequestValueList),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/secretkeys/{secret_name}/generate","code":200})),
+).annotate({ identifier: "SecretkeyGenerateRequest" }) as any as S.Schema<SecretkeyGenerateRequest>;
 
 export type SetSecretkeyResponsePublicKeyList = ReadonlyArray<number>;
-export const SetSecretkeyResponsePublicKeyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SetSecretkeyResponsePublicKeyList>;
+export const SetSecretkeyResponsePublicKeyList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SetSecretkeyResponsePublicKeyList>;
 
 export interface SetSecretkeyResponse {
   /** DEPRECATED */
@@ -3791,18 +2928,16 @@ export interface SetSecretkeyResponse {
   version?: number;
 }
 export const SetSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Version: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    name: S.optional(S.String),
-    public_key: S.optional(SetSecretkeyResponsePublicKeyList),
-    type: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SetSecretkeyResponse",
-}) as any as S.Schema<SetSecretkeyResponse>;
+S.Struct({
+  "Version": S.optional(S.Number),
+  "created_at": S.optional(S.String),
+  "name": S.optional(S.String),
+  "public_key": S.optional(SetSecretkeyResponsePublicKeyList),
+  "type": S.optional(S.String),
+  "updated_at": S.optional(S.String),
+  "version": S.optional(S.Number),
+}),
+).annotate({ identifier: "SetSecretkeyResponse" }) as any as S.Schema<SetSecretkeyResponse>;
 
 export interface SecretkeyGetRequest {
   /** Fly App Name */
@@ -3813,25 +2948,15 @@ export interface SecretkeyGetRequest {
   min_version?: string;
 }
 export const SecretkeyGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    min_version: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/secretkeys/{secret_name}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretkeyGetRequest",
-}) as any as S.Schema<SecretkeyGetRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+  "min_version": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/secretkeys/{secret_name}","code":200})),
+).annotate({ identifier: "SecretkeyGetRequest" }) as any as S.Schema<SecretkeyGetRequest>;
 
 export type SecretKeyPublicKeyList = ReadonlyArray<number>;
-export const SecretKeyPublicKeyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretKeyPublicKeyList>;
+export const SecretKeyPublicKeyList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SecretKeyPublicKeyList>;
 
 export interface SecretKey {
   created_at?: string;
@@ -3841,19 +2966,17 @@ export interface SecretKey {
   updated_at?: string;
 }
 export const SecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.String),
-    name: S.optional(S.String),
-    public_key: S.optional(SecretKeyPublicKeyList),
-    type: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
+S.Struct({
+  "created_at": S.optional(S.String),
+  "name": S.optional(S.String),
+  "public_key": S.optional(SecretKeyPublicKeyList),
+  "type": S.optional(S.String),
+  "updated_at": S.optional(S.String),
+}),
 ).annotate({ identifier: "SecretKey" }) as any as S.Schema<SecretKey>;
 
 export type SecretkeySetRequestValueList = ReadonlyArray<number>;
-export const SecretkeySetRequestValueList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretkeySetRequestValueList>;
+export const SecretkeySetRequestValueList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SecretkeySetRequestValueList>;
 
 export interface SecretkeySetRequest {
   /** Fly App Name */
@@ -3864,26 +2987,16 @@ export interface SecretkeySetRequest {
   value?: SecretkeySetRequestValueList;
 }
 export const SecretkeySetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    type: S.optional(S.String),
-    value: S.optional(SecretkeySetRequestValueList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/secretkeys/{secret_name}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretkeySetRequest",
-}) as any as S.Schema<SecretkeySetRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+  "type": S.optional(S.String),
+  "value": S.optional(SecretkeySetRequestValueList),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/secretkeys/{secret_name}","code":200})),
+).annotate({ identifier: "SecretkeySetRequest" }) as any as S.Schema<SecretkeySetRequest>;
 
 export type SecretkeySignRequestPlaintextList = ReadonlyArray<number>;
-export const SecretkeySignRequestPlaintextList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretkeySignRequestPlaintextList>;
+export const SecretkeySignRequestPlaintextList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SecretkeySignRequestPlaintextList>;
 
 export interface SecretkeySignRequest {
   /** Fly App Name */
@@ -3895,37 +3008,25 @@ export interface SecretkeySignRequest {
   plaintext?: SecretkeySignRequestPlaintextList;
 }
 export const SecretkeySignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    min_version: S.optional(S.String.pipe(T.Query())),
-    plaintext: S.optional(SecretkeySignRequestPlaintextList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/secretkeys/{secret_name}/sign",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretkeySignRequest",
-}) as any as S.Schema<SecretkeySignRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+  "min_version": S.optional(S.String.pipe(T.Query())),
+  "plaintext": S.optional(SecretkeySignRequestPlaintextList),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/secretkeys/{secret_name}/sign","code":200})),
+).annotate({ identifier: "SecretkeySignRequest" }) as any as S.Schema<SecretkeySignRequest>;
 
 export type SignSecretkeyResponseSignatureList = ReadonlyArray<number>;
-export const SignSecretkeyResponseSignatureList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SignSecretkeyResponseSignatureList>;
+export const SignSecretkeyResponseSignatureList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SignSecretkeyResponseSignatureList>;
 
 export interface SignSecretkeyResponse {
   signature?: SignSecretkeyResponseSignatureList;
 }
 export const SignSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signature: S.optional(SignSecretkeyResponseSignatureList),
-  }),
-).annotate({
-  identifier: "SignSecretkeyResponse",
-}) as any as S.Schema<SignSecretkeyResponse>;
+S.Struct({
+  "signature": S.optional(SignSecretkeyResponseSignatureList),
+}),
+).annotate({ identifier: "SignSecretkeyResponse" }) as any as S.Schema<SignSecretkeyResponse>;
 
 export interface SecretkeysListRequest {
   /** Fly App Name */
@@ -3936,40 +3037,30 @@ export interface SecretkeysListRequest {
   types?: string;
 }
 export const SecretkeysListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    min_version: S.optional(S.String.pipe(T.Query())),
-    types: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/apps/{app_name}/secretkeys", code: 200 }),
-  ),
-).annotate({
-  identifier: "SecretkeysListRequest",
-}) as any as S.Schema<SecretkeysListRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "min_version": S.optional(S.String.pipe(T.Query())),
+  "types": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/secretkeys","code":200})),
+).annotate({ identifier: "SecretkeysListRequest" }) as any as S.Schema<SecretkeysListRequest>;
 
 export type SecretKeysSecretKeysList = ReadonlyArray<SecretKey>;
-export const SecretKeysSecretKeysList = /*@__PURE__*/ S.Array(
-  SecretKey,
-) as any as S.Schema<SecretKeysSecretKeysList>;
+export const SecretKeysSecretKeysList = /*@__PURE__*/ S.Array(SecretKey) as any as S.Schema<SecretKeysSecretKeysList>;
 
 export interface SecretKeys {
   secret_keys?: SecretKeysSecretKeysList;
 }
 export const SecretKeys = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secret_keys: S.optional(SecretKeysSecretKeysList),
-  }),
+S.Struct({
+  "secret_keys": S.optional(SecretKeysSecretKeysList),
+}),
 ).annotate({ identifier: "SecretKeys" }) as any as S.Schema<SecretKeys>;
 
 export type SecretkeyVerifyRequestPlaintextList = ReadonlyArray<number>;
-export const SecretkeyVerifyRequestPlaintextList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretkeyVerifyRequestPlaintextList>;
+export const SecretkeyVerifyRequestPlaintextList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SecretkeyVerifyRequestPlaintextList>;
 
 export type SecretkeyVerifyRequestSignatureList = ReadonlyArray<number>;
-export const SecretkeyVerifyRequestSignatureList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretkeyVerifyRequestSignatureList>;
+export const SecretkeyVerifyRequestSignatureList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<SecretkeyVerifyRequestSignatureList>;
 
 export interface SecretkeyVerifyRequest {
   /** Fly App Name */
@@ -3982,29 +3073,19 @@ export interface SecretkeyVerifyRequest {
   signature?: SecretkeyVerifyRequestSignatureList;
 }
 export const SecretkeyVerifyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    min_version: S.optional(S.String.pipe(T.Query())),
-    plaintext: S.optional(SecretkeyVerifyRequestPlaintextList),
-    signature: S.optional(SecretkeyVerifyRequestSignatureList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/apps/{app_name}/secretkeys/{secret_name}/verify",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SecretkeyVerifyRequest",
-}) as any as S.Schema<SecretkeyVerifyRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "secret_name": S.String.pipe(T.Label()),
+  "min_version": S.optional(S.String.pipe(T.Query())),
+  "plaintext": S.optional(SecretkeyVerifyRequestPlaintextList),
+  "signature": S.optional(SecretkeyVerifyRequestSignatureList),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/secretkeys/{secret_name}/verify","code":200})),
+).annotate({ identifier: "SecretkeyVerifyRequest" }) as any as S.Schema<SecretkeyVerifyRequest>;
 
 export interface SecretkeyVerifyResponse {}
 export const SecretkeyVerifyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SecretkeyVerifyResponse",
-}) as any as S.Schema<SecretkeyVerifyResponse>;
+S.Struct({}),
+).annotate({ identifier: "SecretkeyVerifyResponse" }) as any as S.Schema<SecretkeyVerifyResponse>;
 
 export interface SecretsListRequest {
   /** Fly App Name */
@@ -4015,38 +3096,27 @@ export interface SecretsListRequest {
   show_secrets?: boolean;
 }
 export const SecretsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    min_version: S.optional(S.String.pipe(T.Query())),
-    show_secrets: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/apps/{app_name}/secrets", code: 200 }),
-  ),
-).annotate({
-  identifier: "SecretsListRequest",
-}) as any as S.Schema<SecretsListRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "min_version": S.optional(S.String.pipe(T.Query())),
+  "show_secrets": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/secrets","code":200})),
+).annotate({ identifier: "SecretsListRequest" }) as any as S.Schema<SecretsListRequest>;
 
 export type AppSecretsSecretsList = ReadonlyArray<AppSecret>;
-export const AppSecretsSecretsList = /*@__PURE__*/ S.Array(
-  AppSecret,
-) as any as S.Schema<AppSecretsSecretsList>;
+export const AppSecretsSecretsList = /*@__PURE__*/ S.Array(AppSecret) as any as S.Schema<AppSecretsSecretsList>;
 
 export interface AppSecrets {
   secrets?: AppSecretsSecretsList;
 }
 export const AppSecrets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secrets: S.optional(AppSecretsSecretsList),
-  }),
+S.Struct({
+  "secrets": S.optional(AppSecretsSecretsList),
+}),
 ).annotate({ identifier: "AppSecrets" }) as any as S.Schema<AppSecrets>;
 
-export type SecretsUpdateRequestValuesMap = {
-  [key: string]: string | undefined;
-};
-export const SecretsUpdateRequestValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SecretsUpdateRequestValuesMap>;
+export type SecretsUpdateRequestValuesMap = { [key: string]: string | undefined };
+export const SecretsUpdateRequestValuesMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<SecretsUpdateRequestValuesMap>;
 
 export interface SecretsUpdateRequest {
   /** Fly App Name */
@@ -4054,20 +3124,14 @@ export interface SecretsUpdateRequest {
   values?: SecretsUpdateRequestValuesMap;
 }
 export const SecretsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    values: S.optional(SecretsUpdateRequestValuesMap),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/apps/{app_name}/secrets", code: 200 }),
-  ),
-).annotate({
-  identifier: "SecretsUpdateRequest",
-}) as any as S.Schema<SecretsUpdateRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "values": S.optional(SecretsUpdateRequestValuesMap),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/secrets","code":200})),
+).annotate({ identifier: "SecretsUpdateRequest" }) as any as S.Schema<SecretsUpdateRequest>;
 
 export type AppSecretsUpdateRespSecretsList = ReadonlyArray<AppSecret>;
-export const AppSecretsUpdateRespSecretsList = /*@__PURE__*/ S.Array(
-  AppSecret,
-) as any as S.Schema<AppSecretsUpdateRespSecretsList>;
+export const AppSecretsUpdateRespSecretsList = /*@__PURE__*/ S.Array(AppSecret) as any as S.Schema<AppSecretsUpdateRespSecretsList>;
 
 export interface AppSecretsUpdateResp {
   /** DEPRECATED */
@@ -4076,51 +3140,39 @@ export interface AppSecretsUpdateResp {
   version?: number;
 }
 export const AppSecretsUpdateResp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Version: S.optional(S.Number),
-    secrets: S.optional(AppSecretsUpdateRespSecretsList),
-    version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AppSecretsUpdateResp",
-}) as any as S.Schema<AppSecretsUpdateResp>;
+S.Struct({
+  "Version": S.optional(S.Number),
+  "secrets": S.optional(AppSecretsUpdateRespSecretsList),
+  "version": S.optional(S.Number),
+}),
+).annotate({ identifier: "AppSecretsUpdateResp" }) as any as S.Schema<AppSecretsUpdateResp>;
 
 export interface TokensAuthenticateRequest {
   header?: string;
 }
 export const TokensAuthenticateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    header: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/tokens/authenticate", code: 200 })),
-).annotate({
-  identifier: "TokensAuthenticateRequest",
-}) as any as S.Schema<TokensAuthenticateRequest>;
+S.Struct({
+  "header": S.optional(S.String),
+}).pipe(T.Http({"method":"POST","uri":"/tokens/authenticate","code":200})),
+).annotate({ identifier: "TokensAuthenticateRequest" }) as any as S.Schema<TokensAuthenticateRequest>;
 
 export type MacaroonCaveatSetCaveatsList = ReadonlyArray<unknown>;
-export const MacaroonCaveatSetCaveatsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MacaroonCaveatSetCaveatsList>;
+export const MacaroonCaveatSetCaveatsList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<MacaroonCaveatSetCaveatsList>;
 
 export interface MacaroonCaveatSet {
   caveats?: MacaroonCaveatSetCaveatsList;
 }
 export const MacaroonCaveatSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caveats: S.optional(MacaroonCaveatSetCaveatsList),
-  }),
-).annotate({
-  identifier: "MacaroonCaveatSet",
-}) as any as S.Schema<MacaroonCaveatSet>;
+S.Struct({
+  "caveats": S.optional(MacaroonCaveatSetCaveatsList),
+}),
+).annotate({ identifier: "MacaroonCaveatSet" }) as any as S.Schema<MacaroonCaveatSet>;
 
 export type MacaroonNonceKidList = ReadonlyArray<number>;
-export const MacaroonNonceKidList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<MacaroonNonceKidList>;
+export const MacaroonNonceKidList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<MacaroonNonceKidList>;
 
 export type MacaroonNonceRndList = ReadonlyArray<number>;
-export const MacaroonNonceRndList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<MacaroonNonceRndList>;
+export const MacaroonNonceRndList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<MacaroonNonceRndList>;
 
 export interface MacaroonNonce {
   kid?: MacaroonNonceKidList;
@@ -4128,17 +3180,15 @@ export interface MacaroonNonce {
   rnd?: MacaroonNonceRndList;
 }
 export const MacaroonNonce = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.optional(MacaroonNonceKidList),
-    proof: S.optional(S.Boolean),
-    rnd: S.optional(MacaroonNonceRndList),
-  }),
+S.Struct({
+  "kid": S.optional(MacaroonNonceKidList),
+  "proof": S.optional(S.Boolean),
+  "rnd": S.optional(MacaroonNonceRndList),
+}),
 ).annotate({ identifier: "MacaroonNonce" }) as any as S.Schema<MacaroonNonce>;
 
 export type RootVerifiedTokenPermissionTokenList = ReadonlyArray<number>;
-export const RootVerifiedTokenPermissionTokenList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RootVerifiedTokenPermissionTokenList>;
+export const RootVerifiedTokenPermissionTokenList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<RootVerifiedTokenPermissionTokenList>;
 
 export interface RootVerifiedToken {
   caveats?: MacaroonCaveatSet;
@@ -4147,41 +3197,32 @@ export interface RootVerifiedToken {
   permission_token?: RootVerifiedTokenPermissionTokenList;
 }
 export const RootVerifiedToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caveats: S.optional(MacaroonCaveatSet),
-    header: S.optional(S.String),
-    nonce: S.optional(MacaroonNonce),
-    permission_token: S.optional(RootVerifiedTokenPermissionTokenList),
-  }),
-).annotate({
-  identifier: "RootVerifiedToken",
-}) as any as S.Schema<RootVerifiedToken>;
+S.Struct({
+  "caveats": S.optional(MacaroonCaveatSet),
+  "header": S.optional(S.String),
+  "nonce": S.optional(MacaroonNonce),
+  "permission_token": S.optional(RootVerifiedTokenPermissionTokenList),
+}),
+).annotate({ identifier: "RootVerifiedToken" }) as any as S.Schema<RootVerifiedToken>;
 
-export type TokensAuthenticateResponseBodyList =
-  ReadonlyArray<RootVerifiedToken>;
-export const TokensAuthenticateResponseBodyList = /*@__PURE__*/ S.Array(
-  RootVerifiedToken,
-) as any as S.Schema<TokensAuthenticateResponseBodyList>;
+export type TokensAuthenticateResponseBodyList = ReadonlyArray<RootVerifiedToken>;
+export const TokensAuthenticateResponseBodyList = /*@__PURE__*/ S.Array(RootVerifiedToken) as any as S.Schema<TokensAuthenticateResponseBodyList>;
 
 export type TokensAuthenticateResponse = TokensAuthenticateResponseBodyList;
 export const TokensAuthenticateResponse = /*@__PURE__*/ S.suspend(() =>
-  TokensAuthenticateResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TokensAuthenticateResponse",
-}) as any as S.Schema<TokensAuthenticateResponse>;
+TokensAuthenticateResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({ identifier: "TokensAuthenticateResponse" }) as any as S.Schema<TokensAuthenticateResponse>;
 
-export type RessetAction = 1 | 2 | 4 | 8 | 16 | 31 | 0 | (number & {});
+export type RessetAction = 1 | 2 | 4 | 8 | 16 | 31 | 0;
 export const RessetAction = /*@__PURE__*/ S.Number;
 
 /** Command is the command being executed on a machine. If this is specified, the Machine must be set. */
 export type MainTokenAccessCommandList = ReadonlyArray<string>;
-export const MainTokenAccessCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MainTokenAccessCommandList>;
+export const MainTokenAccessCommandList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<MainTokenAccessCommandList>;
 
 export interface MainTokenAccess {
   /** Action is the action being taken on the specified resource. This is the combination of individual action characters (e.g "rw") - r: read - w: write - c: create - d: delete - C: control */
-  action?: RessetAction;
+  action?: RessetAction | (number & {});
   /** AppFeature is a named set of functionality associated with the app. If this is specified, the AppName field must be set. - images: images in the fly.io registry */
   app_feature?: string;
   /** AppName is the name of the app being accessed. */
@@ -4206,41 +3247,35 @@ export interface MainTokenAccess {
   volume_id?: string;
 }
 export const MainTokenAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(RessetAction),
-    app_feature: S.optional(S.String),
-    app_name: S.optional(S.String),
-    command: S.optional(MainTokenAccessCommandList),
-    machine_feature: S.optional(S.String),
-    machine_id: S.optional(S.String),
-    mutation: S.optional(S.String),
-    org_feature: S.optional(S.String),
-    org_slug: S.optional(S.String),
-    source_machine: S.optional(S.String),
-    storage_object: S.optional(S.String),
-    volume_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MainTokenAccess",
-}) as any as S.Schema<MainTokenAccess>;
+S.Struct({
+  "action": S.optional(RessetAction),
+  "app_feature": S.optional(S.String),
+  "app_name": S.optional(S.String),
+  "command": S.optional(MainTokenAccessCommandList),
+  "machine_feature": S.optional(S.String),
+  "machine_id": S.optional(S.String),
+  "mutation": S.optional(S.String),
+  "org_feature": S.optional(S.String),
+  "org_slug": S.optional(S.String),
+  "source_machine": S.optional(S.String),
+  "storage_object": S.optional(S.String),
+  "volume_id": S.optional(S.String),
+}),
+).annotate({ identifier: "MainTokenAccess" }) as any as S.Schema<MainTokenAccess>;
 
 export interface TokensAuthorizeRequest {
   access?: MainTokenAccess;
   header?: string;
 }
 export const TokensAuthorizeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access: S.optional(MainTokenAccess),
-    header: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/tokens/authorize", code: 200 })),
-).annotate({
-  identifier: "TokensAuthorizeRequest",
-}) as any as S.Schema<TokensAuthorizeRequest>;
+S.Struct({
+  "access": S.optional(MainTokenAccess),
+  "header": S.optional(S.String),
+}).pipe(T.Http({"method":"POST","uri":"/tokens/authorize","code":200})),
+).annotate({ identifier: "TokensAuthorizeRequest" }) as any as S.Schema<TokensAuthorizeRequest>;
 
 export type FlyioAccessCommandList = ReadonlyArray<string>;
-export const FlyioAccessCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyioAccessCommandList>;
+export const FlyioAccessCommandList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlyioAccessCommandList>;
 
 export interface FlyioAccess {
   action?: RessetAction;
@@ -4260,23 +3295,23 @@ export interface FlyioAccess {
   volume?: string;
 }
 export const FlyioAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(RessetAction),
-    app_feature: S.optional(S.String),
-    appid: S.optional(S.Number),
-    cluster: S.optional(S.String),
-    command: S.optional(FlyioAccessCommandList),
-    feature: S.optional(S.String),
-    machine: S.optional(S.String),
-    machine_feature: S.optional(S.String),
-    mutation: S.optional(S.String),
-    orgid: S.optional(S.Number),
-    sourceApp: S.optional(S.String),
-    sourceMachine: S.optional(S.String),
-    sourceOrganization: S.optional(S.String),
-    storage_object: S.optional(S.String),
-    volume: S.optional(S.String),
-  }),
+S.Struct({
+  "action": S.optional(RessetAction),
+  "app_feature": S.optional(S.String),
+  "appid": S.optional(S.Number),
+  "cluster": S.optional(S.String),
+  "command": S.optional(FlyioAccessCommandList),
+  "feature": S.optional(S.String),
+  "machine": S.optional(S.String),
+  "machine_feature": S.optional(S.String),
+  "mutation": S.optional(S.String),
+  "orgid": S.optional(S.Number),
+  "sourceApp": S.optional(S.String),
+  "sourceMachine": S.optional(S.String),
+  "sourceOrganization": S.optional(S.String),
+  "storage_object": S.optional(S.String),
+  "volume": S.optional(S.String),
+}),
 ).annotate({ identifier: "FlyioAccess" }) as any as S.Schema<FlyioAccess>;
 
 export interface AuthorizeResponse {
@@ -4284,47 +3319,37 @@ export interface AuthorizeResponse {
   verified_token?: RootVerifiedToken;
 }
 export const AuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access: S.optional(FlyioAccess),
-    verified_token: S.optional(RootVerifiedToken),
-  }),
-).annotate({
-  identifier: "AuthorizeResponse",
-}) as any as S.Schema<AuthorizeResponse>;
+S.Struct({
+  "access": S.optional(FlyioAccess),
+  "verified_token": S.optional(RootVerifiedToken),
+}),
+).annotate({ identifier: "AuthorizeResponse" }) as any as S.Schema<AuthorizeResponse>;
 
 export interface TokensRequestKmsRequest {}
 export const TokensRequestKmsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "POST", uri: "/tokens/kms", code: 200 })),
-).annotate({
-  identifier: "TokensRequestKmsRequest",
-}) as any as S.Schema<TokensRequestKmsRequest>;
+S.Struct({}).pipe(T.Http({"method":"POST","uri":"/tokens/kms","code":200})),
+).annotate({ identifier: "TokensRequestKmsRequest" }) as any as S.Schema<TokensRequestKmsRequest>;
 
 export interface TokensRequestKmsResponse {}
 export const TokensRequestKmsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TokensRequestKmsResponse",
-}) as any as S.Schema<TokensRequestKmsResponse>;
+S.Struct({}),
+).annotate({ identifier: "TokensRequestKmsResponse" }) as any as S.Schema<TokensRequestKmsResponse>;
 
 export interface TokensRequestOIDCRequest {
   aud?: string;
   aws_principal_tags?: boolean;
 }
 export const TokensRequestOIDCRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aud: S.optional(S.String),
-    aws_principal_tags: S.optional(S.Boolean),
-  }).pipe(T.Http({ method: "POST", uri: "/tokens/oidc", code: 200 })),
-).annotate({
-  identifier: "TokensRequestOIDCRequest",
-}) as any as S.Schema<TokensRequestOIDCRequest>;
+S.Struct({
+  "aud": S.optional(S.String),
+  "aws_principal_tags": S.optional(S.Boolean),
+}).pipe(T.Http({"method":"POST","uri":"/tokens/oidc","code":200})),
+).annotate({ identifier: "TokensRequestOIDCRequest" }) as any as S.Schema<TokensRequestOIDCRequest>;
 
 export interface TokensRequestOIDCResponse {}
 export const TokensRequestOIDCResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TokensRequestOIDCResponse",
-}) as any as S.Schema<TokensRequestOIDCResponse>;
+S.Struct({}),
+).annotate({ identifier: "TokensRequestOIDCResponse" }) as any as S.Schema<TokensRequestOIDCResponse>;
 
 export interface VolumeDeleteRequest {
   /** Fly App Name */
@@ -4333,24 +3358,16 @@ export interface VolumeDeleteRequest {
   volume_id: string;
 }
 export const VolumeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    volume_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/apps/{app_name}/volumes/{volume_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "VolumeDeleteRequest",
-}) as any as S.Schema<VolumeDeleteRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "volume_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"/apps/{app_name}/volumes/{volume_id}","code":200})),
+).annotate({ identifier: "VolumeDeleteRequest" }) as any as S.Schema<VolumeDeleteRequest>;
 
-export type VolumeHostStatus = "ok" | "unknown" | "unreachable" | (string & {});
+export type VolumeHostStatus = "ok" | "unknown" | "unreachable";
 export const VolumeHostStatus = /*@__PURE__*/ S.String;
 
-export type VolumeType = "local" | "cache" | (string & {});
+export type VolumeType = "local" | "cache";
 export const VolumeType = /*@__PURE__*/ S.String;
 
 export interface Volume {
@@ -4377,29 +3394,29 @@ export interface Volume {
   zone?: string;
 }
 export const Volume = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attached_alloc_id: S.optional(S.String),
-    attached_machine_id: S.optional(S.String),
-    auto_backup_enabled: S.optional(S.Boolean),
-    block_size: S.optional(S.Number),
-    blocks: S.optional(S.Number),
-    blocks_avail: S.optional(S.Number),
-    blocks_free: S.optional(S.Number),
-    bytes_total: S.optional(S.Number),
-    bytes_used: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    encrypted: S.optional(S.Boolean),
-    fstype: S.optional(S.String),
-    host_status: S.optional(VolumeHostStatus),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    region: S.optional(S.String),
-    size_gb: S.optional(S.Number),
-    snapshot_retention: S.optional(S.Number),
-    state: S.optional(S.String),
-    type: S.optional(VolumeType),
-    zone: S.optional(S.String),
-  }),
+S.Struct({
+  "attached_alloc_id": S.optional(S.String),
+  "attached_machine_id": S.optional(S.String),
+  "auto_backup_enabled": S.optional(S.Boolean),
+  "block_size": S.optional(S.Number),
+  "blocks": S.optional(S.Number),
+  "blocks_avail": S.optional(S.Number),
+  "blocks_free": S.optional(S.Number),
+  "bytes_total": S.optional(S.Number),
+  "bytes_used": S.optional(S.Number),
+  "created_at": S.optional(S.String),
+  "encrypted": S.optional(S.Boolean),
+  "fstype": S.optional(S.String),
+  "host_status": S.optional(VolumeHostStatus),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "region": S.optional(S.String),
+  "size_gb": S.optional(S.Number),
+  "snapshot_retention": S.optional(S.Number),
+  "state": S.optional(S.String),
+  "type": S.optional(VolumeType),
+  "zone": S.optional(S.String),
+}),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 export interface VolumesCreateRequest {
@@ -4423,27 +3440,23 @@ export interface VolumesCreateRequest {
   unique_zone_app_wide?: boolean;
 }
 export const VolumesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    auto_backup_enabled: S.optional(S.Boolean),
-    compute: S.optional(FlyMachineGuest),
-    compute_image: S.optional(S.String),
-    encrypted: S.optional(S.Boolean),
-    fstype: S.optional(S.String),
-    name: S.optional(S.String),
-    region: S.optional(S.String),
-    require_unique_zone: S.optional(S.Boolean),
-    size_gb: S.optional(S.Number),
-    snapshot_id: S.optional(S.String),
-    snapshot_retention: S.optional(S.Number),
-    source_volume_id: S.optional(S.String),
-    unique_zone_app_wide: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/apps/{app_name}/volumes", code: 200 }),
-  ),
-).annotate({
-  identifier: "VolumesCreateRequest",
-}) as any as S.Schema<VolumesCreateRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "auto_backup_enabled": S.optional(S.Boolean),
+  "compute": S.optional(FlyMachineGuest),
+  "compute_image": S.optional(S.String),
+  "encrypted": S.optional(S.Boolean),
+  "fstype": S.optional(S.String),
+  "name": S.optional(S.String),
+  "region": S.optional(S.String),
+  "require_unique_zone": S.optional(S.Boolean),
+  "size_gb": S.optional(S.Number),
+  "snapshot_id": S.optional(S.String),
+  "snapshot_retention": S.optional(S.Number),
+  "source_volume_id": S.optional(S.String),
+  "unique_zone_app_wide": S.optional(S.Boolean),
+}).pipe(T.Http({"method":"POST","uri":"/apps/{app_name}/volumes","code":200})),
+).annotate({ identifier: "VolumesCreateRequest" }) as any as S.Schema<VolumesCreateRequest>;
 
 export interface VolumesExtendRequest {
   /** Fly App Name */
@@ -4453,33 +3466,23 @@ export interface VolumesExtendRequest {
   size_gb?: number;
 }
 export const VolumesExtendRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    volume_id: S.String.pipe(T.Label()),
-    size_gb: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/apps/{app_name}/volumes/{volume_id}/extend",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "VolumesExtendRequest",
-}) as any as S.Schema<VolumesExtendRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "volume_id": S.String.pipe(T.Label()),
+  "size_gb": S.optional(S.Number),
+}).pipe(T.Http({"method":"PUT","uri":"/apps/{app_name}/volumes/{volume_id}/extend","code":200})),
+).annotate({ identifier: "VolumesExtendRequest" }) as any as S.Schema<VolumesExtendRequest>;
 
 export interface ExtendVolumeResponse {
   needs_restart?: boolean;
   volume?: Volume;
 }
 export const ExtendVolumeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    needs_restart: S.optional(S.Boolean),
-    volume: S.optional(Volume),
-  }),
-).annotate({
-  identifier: "ExtendVolumeResponse",
-}) as any as S.Schema<ExtendVolumeResponse>;
+S.Struct({
+  "needs_restart": S.optional(S.Boolean),
+  "volume": S.optional(Volume),
+}),
+).annotate({ identifier: "ExtendVolumeResponse" }) as any as S.Schema<ExtendVolumeResponse>;
 
 export interface VolumesGetByIdRequest {
   /** Fly App Name */
@@ -4488,19 +3491,11 @@ export interface VolumesGetByIdRequest {
   volume_id: string;
 }
 export const VolumesGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    volume_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/volumes/{volume_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "VolumesGetByIdRequest",
-}) as any as S.Schema<VolumesGetByIdRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "volume_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/volumes/{volume_id}","code":200})),
+).annotate({ identifier: "VolumesGetByIdRequest" }) as any as S.Schema<VolumesGetByIdRequest>;
 
 export interface VolumesListRequest {
   /** Fly App Name */
@@ -4509,27 +3504,19 @@ export interface VolumesListRequest {
   summary?: boolean;
 }
 export const VolumesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    summary: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/apps/{app_name}/volumes", code: 200 }),
-  ),
-).annotate({
-  identifier: "VolumesListRequest",
-}) as any as S.Schema<VolumesListRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "summary": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/volumes","code":200})),
+).annotate({ identifier: "VolumesListRequest" }) as any as S.Schema<VolumesListRequest>;
 
 export type VolumesListResponseBodyList = ReadonlyArray<Volume>;
-export const VolumesListResponseBodyList = /*@__PURE__*/ S.Array(
-  Volume,
-) as any as S.Schema<VolumesListResponseBodyList>;
+export const VolumesListResponseBodyList = /*@__PURE__*/ S.Array(Volume) as any as S.Schema<VolumesListResponseBodyList>;
 
 export type VolumesListResponse = VolumesListResponseBodyList;
 export const VolumesListResponse = /*@__PURE__*/ S.suspend(() =>
-  VolumesListResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "VolumesListResponse",
-}) as any as S.Schema<VolumesListResponse>;
+VolumesListResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({ identifier: "VolumesListResponse" }) as any as S.Schema<VolumesListResponse>;
 
 export interface VolumesListSnapshotsRequest {
   /** Fly App Name */
@@ -4538,19 +3525,11 @@ export interface VolumesListSnapshotsRequest {
   volume_id: string;
 }
 export const VolumesListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    volume_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/apps/{app_name}/volumes/{volume_id}/snapshots",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "VolumesListSnapshotsRequest",
-}) as any as S.Schema<VolumesListSnapshotsRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "volume_id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"/apps/{app_name}/volumes/{volume_id}/snapshots","code":200})),
+).annotate({ identifier: "VolumesListSnapshotsRequest" }) as any as S.Schema<VolumesListSnapshotsRequest>;
 
 export interface VolumeSnapshot {
   created_at?: string;
@@ -4562,29 +3541,24 @@ export interface VolumeSnapshot {
   volume_size?: number;
 }
 export const VolumeSnapshot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.String),
-    digest: S.optional(S.String),
-    id: S.optional(S.String),
-    retention_days: S.optional(S.Number),
-    size: S.optional(S.Number),
-    status: S.optional(S.String),
-    volume_size: S.optional(S.Number),
-  }),
+S.Struct({
+  "created_at": S.optional(S.String),
+  "digest": S.optional(S.String),
+  "id": S.optional(S.String),
+  "retention_days": S.optional(S.Number),
+  "size": S.optional(S.Number),
+  "status": S.optional(S.String),
+  "volume_size": S.optional(S.Number),
+}),
 ).annotate({ identifier: "VolumeSnapshot" }) as any as S.Schema<VolumeSnapshot>;
 
-export type VolumesListSnapshotsResponseBodyList =
-  ReadonlyArray<VolumeSnapshot>;
-export const VolumesListSnapshotsResponseBodyList = /*@__PURE__*/ S.Array(
-  VolumeSnapshot,
-) as any as S.Schema<VolumesListSnapshotsResponseBodyList>;
+export type VolumesListSnapshotsResponseBodyList = ReadonlyArray<VolumeSnapshot>;
+export const VolumesListSnapshotsResponseBodyList = /*@__PURE__*/ S.Array(VolumeSnapshot) as any as S.Schema<VolumesListSnapshotsResponseBodyList>;
 
 export type VolumesListSnapshotsResponse = VolumesListSnapshotsResponseBodyList;
 export const VolumesListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
-  VolumesListSnapshotsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "VolumesListSnapshotsResponse",
-}) as any as S.Schema<VolumesListSnapshotsResponse>;
+VolumesListSnapshotsResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({ identifier: "VolumesListSnapshotsResponse" }) as any as S.Schema<VolumesListSnapshotsResponse>;
 
 export interface VolumesOrgListRequest {
   /** Fly Organization Slug */
@@ -4605,30 +3579,22 @@ export interface VolumesOrgListRequest {
   limit?: number;
 }
 export const VolumesOrgListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org_slug: S.String.pipe(T.Label()),
-    include_deleted: S.optional(S.Boolean.pipe(T.Query())),
-    region: S.optional(S.String.pipe(T.Query())),
-    state: S.optional(S.String.pipe(T.Query())),
-    summary: S.optional(S.Boolean.pipe(T.Query())),
-    updated_after: S.optional(S.String.pipe(T.Query())),
-    cursor: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/orgs/{org_slug}/volumes", code: 200 }),
-  ),
-).annotate({
-  identifier: "VolumesOrgListRequest",
-}) as any as S.Schema<VolumesOrgListRequest>;
+S.Struct({
+  "org_slug": S.String.pipe(T.Label()),
+  "include_deleted": S.optional(S.Boolean.pipe(T.Query())),
+  "region": S.optional(S.String.pipe(T.Query())),
+  "state": S.optional(S.String.pipe(T.Query())),
+  "summary": S.optional(S.Boolean.pipe(T.Query())),
+  "updated_after": S.optional(S.String.pipe(T.Query())),
+  "cursor": S.optional(S.String.pipe(T.Query())),
+  "limit": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"/orgs/{org_slug}/volumes","code":200})),
+).annotate({ identifier: "VolumesOrgListRequest" }) as any as S.Schema<VolumesOrgListRequest>;
 
-export type OrgVolumeHostStatus =
-  | "ok"
-  | "unknown"
-  | "unreachable"
-  | (string & {});
+export type OrgVolumeHostStatus = "ok" | "unknown" | "unreachable";
 export const OrgVolumeHostStatus = /*@__PURE__*/ S.String;
 
-export type OrgVolumeType = "local" | "cache" | (string & {});
+export type OrgVolumeType = "local" | "cache";
 export const OrgVolumeType = /*@__PURE__*/ S.String;
 
 export interface OrgVolume {
@@ -4657,37 +3623,35 @@ export interface OrgVolume {
   zone?: string;
 }
 export const OrgVolume = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.optional(S.String),
-    attached_alloc_id: S.optional(S.String),
-    attached_machine_id: S.optional(S.String),
-    auto_backup_enabled: S.optional(S.Boolean),
-    block_size: S.optional(S.Number),
-    blocks: S.optional(S.Number),
-    blocks_avail: S.optional(S.Number),
-    blocks_free: S.optional(S.Number),
-    bytes_total: S.optional(S.Number),
-    bytes_used: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    encrypted: S.optional(S.Boolean),
-    fstype: S.optional(S.String),
-    host_status: S.optional(OrgVolumeHostStatus),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    region: S.optional(S.String),
-    size_gb: S.optional(S.Number),
-    snapshot_retention: S.optional(S.Number),
-    state: S.optional(S.String),
-    type: S.optional(OrgVolumeType),
-    updated_at: S.optional(S.String),
-    zone: S.optional(S.String),
-  }),
+S.Struct({
+  "app_name": S.optional(S.String),
+  "attached_alloc_id": S.optional(S.String),
+  "attached_machine_id": S.optional(S.String),
+  "auto_backup_enabled": S.optional(S.Boolean),
+  "block_size": S.optional(S.Number),
+  "blocks": S.optional(S.Number),
+  "blocks_avail": S.optional(S.Number),
+  "blocks_free": S.optional(S.Number),
+  "bytes_total": S.optional(S.Number),
+  "bytes_used": S.optional(S.Number),
+  "created_at": S.optional(S.String),
+  "encrypted": S.optional(S.Boolean),
+  "fstype": S.optional(S.String),
+  "host_status": S.optional(OrgVolumeHostStatus),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "region": S.optional(S.String),
+  "size_gb": S.optional(S.Number),
+  "snapshot_retention": S.optional(S.Number),
+  "state": S.optional(S.String),
+  "type": S.optional(OrgVolumeType),
+  "updated_at": S.optional(S.String),
+  "zone": S.optional(S.String),
+}),
 ).annotate({ identifier: "OrgVolume" }) as any as S.Schema<OrgVolume>;
 
 export type OrgVolumesResponseVolumesList = ReadonlyArray<OrgVolume>;
-export const OrgVolumesResponseVolumesList = /*@__PURE__*/ S.Array(
-  OrgVolume,
-) as any as S.Schema<OrgVolumesResponseVolumesList>;
+export const OrgVolumesResponseVolumesList = /*@__PURE__*/ S.Array(OrgVolume) as any as S.Schema<OrgVolumesResponseVolumesList>;
 
 export interface OrgVolumesResponse {
   last_updated_at?: string;
@@ -4696,15 +3660,13 @@ export interface OrgVolumesResponse {
   volumes?: OrgVolumesResponseVolumesList;
 }
 export const OrgVolumesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    last_updated_at: S.optional(S.String),
-    last_volume_id: S.optional(S.String),
-    next_cursor: S.optional(S.String),
-    volumes: S.optional(OrgVolumesResponseVolumesList),
-  }),
-).annotate({
-  identifier: "OrgVolumesResponse",
-}) as any as S.Schema<OrgVolumesResponse>;
+S.Struct({
+  "last_updated_at": S.optional(S.String),
+  "last_volume_id": S.optional(S.String),
+  "next_cursor": S.optional(S.String),
+  "volumes": S.optional(OrgVolumesResponseVolumesList),
+}),
+).annotate({ identifier: "OrgVolumesResponse" }) as any as S.Schema<OrgVolumesResponse>;
 
 export interface VolumesUpdateRequest {
   /** Fly App Name */
@@ -4715,28 +3677,15 @@ export interface VolumesUpdateRequest {
   snapshot_retention?: number;
 }
 export const VolumesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_name: S.String.pipe(T.Label()),
-    volume_id: S.String.pipe(T.Label()),
-    auto_backup_enabled: S.optional(S.Boolean),
-    snapshot_retention: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/apps/{app_name}/volumes/{volume_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "VolumesUpdateRequest",
-}) as any as S.Schema<VolumesUpdateRequest>;
+S.Struct({
+  "app_name": S.String.pipe(T.Label()),
+  "volume_id": S.String.pipe(T.Label()),
+  "auto_backup_enabled": S.optional(S.Boolean),
+  "snapshot_retention": S.optional(S.Number),
+}).pipe(T.Http({"method":"PUT","uri":"/apps/{app_name}/volumes/{volume_id}","code":200})),
+).annotate({ identifier: "VolumesUpdateRequest" }) as any as S.Schema<VolumesUpdateRequest>;
 
-export type AppCertificatesAcmeCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | UnprocessableEntity
-  | FlyIoOpError;
+export type AppCertificatesAcmeCreateError = BadRequest | Forbidden | NotFound | UnprocessableEntity | FlyIoOpError;
 /** Request ACME certificate */
 export const appCertificatesAcmeCreate: API.OperationMethod<
   AppCertificatesAcmeCreateRequest,
@@ -4751,10 +3700,7 @@ export const appCertificatesAcmeCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AppCertificatesAcmeDeleteError =
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type AppCertificatesAcmeDeleteError = Forbidden | NotFound | FlyIoOpError;
 /** Remove ACME certificates */
 export const appCertificatesAcmeDelete: API.OperationMethod<
   AppCertificatesAcmeDeleteRequest,
@@ -4769,11 +3715,7 @@ export const appCertificatesAcmeDelete: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AppCertificatesCheckError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type AppCertificatesCheckError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Check DNS and re-validate certificate */
 export const appCertificatesCheck: API.OperationMethod<
   AppCertificatesCheckRequest,
@@ -4788,12 +3730,7 @@ export const appCertificatesCheck: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AppCertificatesCustomCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | UnprocessableEntity
-  | FlyIoOpError;
+export type AppCertificatesCustomCreateError = BadRequest | Forbidden | NotFound | UnprocessableEntity | FlyIoOpError;
 /** Upload custom certificate */
 export const appCertificatesCustomCreate: API.OperationMethod<
   AppCertificatesCustomCreateRequest,
@@ -4808,10 +3745,7 @@ export const appCertificatesCustomCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AppCertificatesCustomDeleteError =
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type AppCertificatesCustomDeleteError = Forbidden | NotFound | FlyIoOpError;
 /** Remove custom certificate */
 export const appCertificatesCustomDelete: API.OperationMethod<
   AppCertificatesCustomDeleteRequest,
@@ -4871,11 +3805,7 @@ export const appCertificatesShow: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AppCreateDeployTokenError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type AppCreateDeployTokenError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Create App deploy token */
 export const appCreateDeployToken: API.OperationMethod<
   AppCreateDeployTokenRequest,
@@ -4890,11 +3820,7 @@ export const appCreateDeployToken: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AppIPAssignmentsCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type AppIPAssignmentsCreateError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Assign new IP address to app */
 export const appIPAssignmentsCreate: API.OperationMethod<
   AppIPAssignmentsCreateRequest,
@@ -4999,11 +3925,7 @@ export const appsShow: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateVolumeSnapshotError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type CreateVolumeSnapshotError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Create Snapshot Create a snapshot for a specific volume within an app. */
 export const createVolumeSnapshot: API.OperationMethod<
   CreateVolumeSnapshotRequest,
@@ -5033,11 +3955,7 @@ export const currentTokenShow: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesCordonError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesCordonError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Cordon Machine “Cordoning” a Machine refers to disabling its services, so the Fly Proxy won’t route requests to it. In flyctl this is used by blue/green deployments; one set of Machines is started up with services disabled, and when they are all healthy, the services are enabled on the new Machines and disabled on the old ones. */
 export const machinesCordon: API.OperationMethod<
   MachinesCordonRequest,
@@ -5052,11 +3970,7 @@ export const machinesCordon: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesCreateError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Create Machine Create a Machine within a specific app using the details provided in the request body. **Important**: This request can fail, and you’re responsible for handling that failure. If you ask for a large Machine, or a Machine in a region we happen to be at capacity for, you might need to retry the request, or to fall back to another region. If you’re working directly with the Machines API, you’re taking some responsibility for your own orchestration! */
 export const machinesCreate: API.OperationMethod<
   MachinesCreateRequest,
@@ -5071,11 +3985,7 @@ export const machinesCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesCreateLeaseError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesCreateLeaseError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Create Lease Create a lease for a specific Machine within an app using the details provided in the request body. Machine leases can be used to obtain an exclusive lock on modifying a Machine. */
 export const machinesCreateLease: API.OperationMethod<
   MachinesCreateLeaseRequest,
@@ -5120,11 +4030,7 @@ export const machinesDeleteMetadata: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesExecError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesExecError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Execute Command Execute a command on a specific Machine and return the raw command output bytes. */
 export const machinesExec: API.OperationMethod<
   MachinesExecRequest,
@@ -5199,11 +4105,7 @@ export const machinesListEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesListProcessesError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesListProcessesError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** List Processes List all processes running on a specific Machine within an app, with optional sorting parameters. */
 export const machinesListProcesses: API.OperationMethod<
   MachinesListProcessesRequest,
@@ -5248,11 +4150,7 @@ export const machinesOrgList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesReclaimMemoryError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesReclaimMemoryError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Reclaim Machine Memory Trigger the balloon device to reclaim memory from a machine */
 export const machinesReclaimMemory: API.OperationMethod<
   MachinesReclaimMemoryRequest,
@@ -5282,11 +4180,7 @@ export const machinesReleaseLease: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesRestartError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesRestartError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Restart Machine Restart a specific Machine within an app, with an optional timeout parameter. */
 export const machinesRestart: API.OperationMethod<
   MachinesRestartRequest,
@@ -5301,11 +4195,7 @@ export const machinesRestart: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesSetMemoryLimitError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesSetMemoryLimitError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Set Machine Memory Limit Set the memory limit for a machine using the balloon device */
 export const machinesSetMemoryLimit: API.OperationMethod<
   MachinesSetMemoryLimitRequest,
@@ -5365,11 +4255,7 @@ export const machinesShowMetadata: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesSignalError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesSignalError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Signal Machine Send a signal to a specific Machine within an app using the details provided in the request body. */
 export const machinesSignal: API.OperationMethod<
   MachinesSignalRequest,
@@ -5384,11 +4270,7 @@ export const machinesSignal: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesStartError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesStartError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Start Machine Start a specific Machine within an app. */
 export const machinesStart: API.OperationMethod<
   MachinesStartRequest,
@@ -5403,11 +4285,7 @@ export const machinesStart: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesStopError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesStopError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Stop Machine Stop a specific Machine within an app, with an optional request body to specify signal and timeout. */
 export const machinesStop: API.OperationMethod<
   MachinesStopRequest,
@@ -5422,11 +4300,7 @@ export const machinesStop: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesSuspendError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesSuspendError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Suspend Machine Suspend a specific Machine within an app. The next start operation will attempt (but is not guaranteed) to resume the Machine from a snapshot taken at suspension time, rather than performing a cold boot. */
 export const machinesSuspend: API.OperationMethod<
   MachinesSuspendRequest,
@@ -5441,11 +4315,7 @@ export const machinesSuspend: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesUncordonError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesUncordonError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Uncordon Machine “Cordoning” a Machine refers to disabling its services, so the Fly Proxy won’t route requests to it. In flyctl this is used by blue/green deployments; one set of Machines is started up with services disabled, and when they are all healthy, the services are enabled on the new Machines and disabled on the old ones. */
 export const machinesUncordon: API.OperationMethod<
   MachinesUncordonRequest,
@@ -5460,11 +4330,7 @@ export const machinesUncordon: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesUpdateError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Update Machine Update a Machine's configuration using the details provided in the request body. */
 export const machinesUpdate: API.OperationMethod<
   MachinesUpdateRequest,
@@ -5479,11 +4345,7 @@ export const machinesUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesUpdateMetadataError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesUpdateMetadataError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Update Metadata (set/remove multiple keys) Update multiple metadata keys at once. Null values and empty strings remove keys. + If `machine_version` is provided and no longer matches the current machine version, returns 412 Precondition Failed. */
 export const machinesUpdateMetadata: API.OperationMethod<
   MachinesUpdateMetadataRequest,
@@ -5513,11 +4375,7 @@ export const machinesUpdateMetadata2: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesUpsertMetadataError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesUpsertMetadataError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Upsert Metadata Key Update metadata for a specific machine within an app by providing a metadata key. */
 export const machinesUpsertMetadata: API.OperationMethod<
   MachinesUpsertMetadataRequest,
@@ -5532,11 +4390,7 @@ export const machinesUpsertMetadata: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesWaitError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type MachinesWaitError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Wait for State Wait for a Machine to reach a specific state. Specify the desired state with the state parameter. See the [Machine states table](https://fly.io/docs/machines/working-with-machines/#machine-states) for a list of possible states. The default for this parameter is `started`. This request will block for up to 60 seconds. Set a shorter timeout with the timeout parameter. */
 export const machinesWait: API.OperationMethod<
   MachinesWaitRequest,
@@ -5581,11 +4435,7 @@ export const platformRegionsGet: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SecretCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type SecretCreateError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Create or update Secret */
 export const secretCreate: API.OperationMethod<
   SecretCreateRequest,
@@ -5630,11 +4480,7 @@ export const secretGet: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SecretkeyDecryptError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type SecretkeyDecryptError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Decrypt with a secret key */
 export const secretkeyDecrypt: API.OperationMethod<
   SecretkeyDecryptRequest,
@@ -5664,11 +4510,7 @@ export const secretkeyDelete: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SecretkeyEncryptError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type SecretkeyEncryptError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Encrypt with a secret key */
 export const secretkeyEncrypt: API.OperationMethod<
   SecretkeyEncryptRequest,
@@ -5683,11 +4525,7 @@ export const secretkeyEncrypt: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SecretkeyGenerateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type SecretkeyGenerateError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Generate a random secret key */
 export const secretkeyGenerate: API.OperationMethod<
   SecretkeyGenerateRequest,
@@ -5717,11 +4555,7 @@ export const secretkeyGet: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SecretkeySetError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type SecretkeySetError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Create or update a secret key */
 export const secretkeySet: API.OperationMethod<
   SecretkeySetRequest,
@@ -5736,11 +4570,7 @@ export const secretkeySet: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SecretkeySignError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type SecretkeySignError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Sign with a secret key */
 export const secretkeySign: API.OperationMethod<
   SecretkeySignRequest,
@@ -5770,11 +4600,7 @@ export const secretkeysList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SecretkeyVerifyError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type SecretkeyVerifyError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Verify with a secret key */
 export const secretkeyVerify: API.OperationMethod<
   SecretkeyVerifyRequest,
@@ -5804,11 +4630,7 @@ export const secretsList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SecretsUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type SecretsUpdateError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Update app secrets belonging to an app */
 export const secretsUpdate: API.OperationMethod<
   SecretsUpdateRequest,
@@ -5853,11 +4675,7 @@ export const tokensAuthorize: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TokensRequestKmsError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type TokensRequestKmsError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Request a Petsem token for accessing KMS This site hosts documentation generated from the Fly.io Machines API OpenAPI specification. Visit our complete [Machines API docs](https://fly.io/docs/machines/api/apps-resource/) for details about using the Apps resource. */
 export const tokensRequestKms: API.OperationMethod<
   TokensRequestKmsRequest,
@@ -5872,11 +4690,7 @@ export const tokensRequestKms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TokensRequestOIDCError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type TokensRequestOIDCError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Request an OIDC token Request an Open ID Connect token for your machine. Customize the audience claim with the `aud` parameter. This returns a JWT token. Learn more about [using OpenID Connect](/docs/reference/openid-connect/) on Fly.io. */
 export const tokensRequestOIDC: API.OperationMethod<
   TokensRequestOIDCRequest,
@@ -5906,11 +4720,7 @@ export const volumeDelete: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VolumesCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type VolumesCreateError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Create Volume Create a volume for a specific app using the details provided in the request body. */
 export const volumesCreate: API.OperationMethod<
   VolumesCreateRequest,
@@ -5925,11 +4735,7 @@ export const volumesCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VolumesExtendError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type VolumesExtendError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Extend Volume Extend a volume's size within an app using the details provided in the request body. */
 export const volumesExtend: API.OperationMethod<
   VolumesExtendRequest,
@@ -6004,11 +4810,7 @@ export const volumesOrgList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VolumesUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | FlyIoOpError;
+export type VolumesUpdateError = BadRequest | Forbidden | NotFound | FlyIoOpError;
 /** Update Volume Update a volume's configuration using the details provided in the request body. */
 export const volumesUpdate: API.OperationMethod<
   VolumesUpdateRequest,
@@ -6022,3 +4824,4 @@ export const volumesUpdate: API.OperationMethod<
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
+

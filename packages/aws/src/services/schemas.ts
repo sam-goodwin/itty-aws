@@ -163,7 +163,7 @@ export const CreateDiscovererRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDiscovererRequest",
 }) as any as S.Schema<CreateDiscovererRequest>;
-export type DiscovererState = "STARTED" | "STOPPED" | (string & {});
+export type DiscovererState = "STARTED" | "STOPPED";
 export const DiscovererState = /*@__PURE__*/ S.String;
 
 export interface CreateDiscovererResponse {
@@ -230,7 +230,7 @@ export const CreateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRegistryResponse",
 }) as any as S.Schema<CreateRegistryResponse>;
 export type __stringMin1Max100000 = string;
-export type Type = "OpenApi3" | "JSONSchemaDraft4" | (string & {});
+export type Type = "OpenApi3" | "JSONSchemaDraft4";
 export const Type = /*@__PURE__*/ S.String;
 
 export interface CreateSchemaRequest {
@@ -239,7 +239,7 @@ export interface CreateSchemaRequest {
   RegistryName: string;
   SchemaName: string;
   Tags?: { [key: string]: string | undefined };
-  Type?: Type;
+  Type?: Type | (string & {});
 }
 export const CreateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -460,8 +460,7 @@ export const DescribeCodeBindingRequest = /*@__PURE__*/ S.suspend(() =>
 export type CodeGenerationStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_COMPLETE"
-  | "CREATE_FAILED"
-  | (string & {});
+  | "CREATE_FAILED";
 export const CodeGenerationStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeCodeBindingResponse {
@@ -700,7 +699,7 @@ export const __listOfGetDiscoveredSchemaVersionItemInput =
   /*@__PURE__*/ S.Array(S.String);
 export interface GetDiscoveredSchemaRequest {
   Events?: string[];
-  Type?: Type;
+  Type?: Type | (string & {});
 }
 export const GetDiscoveredSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1386,7 +1385,7 @@ export interface UpdateSchemaRequest {
   Description?: string;
   RegistryName: string;
   SchemaName: string;
-  Type?: Type;
+  Type?: Type | (string & {});
 }
 export const UpdateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

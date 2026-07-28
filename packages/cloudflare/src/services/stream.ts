@@ -107,11 +107,7 @@ export const CopyAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CopyAudioTrackRequest",
 }) as any as S.Schema<CopyAudioTrackRequest>;
 
-export type AudioTracksCopyResponseStatus =
-  | "queued"
-  | "ready"
-  | "error"
-  | (string & {});
+export type AudioTracksCopyResponseStatus = "queued" | "ready" | "error";
 export const AudioTracksCopyResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -165,8 +161,7 @@ export const CreateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 export type CaptionsLanguageCreateResponseStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const CaptionsLanguageCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -327,8 +322,7 @@ export type ClipCreateResponseStatusState =
   | "inprogress"
   | "ready"
   | "error"
-  | "live-inprogress"
-  | (string & {});
+  | "live-inprogress";
 export const ClipCreateResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface ClipCreateResponseStatus {
@@ -609,8 +603,7 @@ export type CopyCreateResponseStatusState =
   | "inprogress"
   | "ready"
   | "error"
-  | "live-inprogress"
-  | (string & {});
+  | "live-inprogress";
 export const CopyCreateResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface CopyCreateResponseStatus {
@@ -918,8 +911,7 @@ export const CreateDownloadRequest = /*@__PURE__*/ S.suspend(() =>
 export type DownloadsCreateResponseAudioStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const DownloadsCreateResponseAudioStatus = /*@__PURE__*/ S.String;
 
 export interface DownloadsCreateResponseAudio {
@@ -943,8 +935,7 @@ export const DownloadsCreateResponseAudio = /*@__PURE__*/ S.suspend(() =>
 export type DownloadsCreateResponseDefaultStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const DownloadsCreateResponseDefaultStatus = /*@__PURE__*/ S.String;
 
 export interface DownloadsCreateResponseDefault {
@@ -1030,10 +1021,7 @@ export const LiveInputsCreateRequestRecordingAllowedOriginsList =
     S.String,
   ) as any as S.Schema<LiveInputsCreateRequestRecordingAllowedOriginsList>;
 
-export type LiveInputsCreateRequestRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
+export type LiveInputsCreateRequestRecordingMode = "off" | "automatic";
 export const LiveInputsCreateRequestRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsCreateRequestRecording {
@@ -1042,7 +1030,7 @@ export interface LiveInputsCreateRequestRecording {
   /** Disables reporting the number of live viewers when this property is set to `true`. */
   hideLiveViewerCount?: boolean;
   /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsCreateRequestRecordingMode;
+  mode?: LiveInputsCreateRequestRecordingMode | (string & {});
   /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
   requireSignedURLs?: boolean;
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
@@ -1107,10 +1095,7 @@ export const LiveInputsCreateResponseRecordingAllowedOriginsList =
     S.String,
   ) as any as S.Schema<LiveInputsCreateResponseRecordingAllowedOriginsList>;
 
-export type LiveInputsCreateResponseRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
+export type LiveInputsCreateResponseRecordingMode = "off" | "automatic";
 export const LiveInputsCreateResponseRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsCreateResponseRecording {
@@ -1214,8 +1199,7 @@ export type LiveInputsCreateResponseStatus =
   | "ttl_exceeded"
   | "failed_to_connect"
   | "failed_to_reconnect"
-  | "new_configuration_accepted"
-  | (string & {});
+  | "new_configuration_accepted";
 export const LiveInputsCreateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface LiveInputsCreateResponseWebRTC {
@@ -1355,7 +1339,7 @@ export const CreateLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLiveInputOutputResponse",
 }) as any as S.Schema<CreateLiveInputOutputResponse>;
 
-export type CreateRequestTusResumable = "1.0.0" | (string & {});
+export type CreateRequestTusResumable = "1.0.0";
 export const CreateRequestTusResumable = /*@__PURE__*/ S.String;
 
 export interface CreateStreamRequest {
@@ -1364,7 +1348,7 @@ export interface CreateStreamRequest {
   /** Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients. */
   directUser?: boolean;
   /** Specifies the TUS protocol version. This value must be included in every upload request. */
-  tusResumable: CreateRequestTusResumable;
+  tusResumable: CreateRequestTusResumable | (string & {});
   /** Indicates the size of the entire upload in bytes. The value must be a non-negative integer. */
   uploadLength: number;
   /** A user-defined identifier for the media creator. */
@@ -1400,10 +1384,7 @@ export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateStreamResponse",
 }) as any as S.Schema<CreateStreamResponse>;
 
-export type TokenCreateRequestAccessRulesItemAction =
-  | "allow"
-  | "block"
-  | (string & {});
+export type TokenCreateRequestAccessRulesItemAction = "allow" | "block";
 export const TokenCreateRequestAccessRulesItemAction = /*@__PURE__*/ S.String;
 
 export type TokenCreateRequestAccessRulesItemCountryList =
@@ -1421,19 +1402,18 @@ export const TokenCreateRequestAccessRulesItemIpList = /*@__PURE__*/ S.Array(
 export type TokenCreateRequestAccessRulesItemType =
   | "any"
   | "ip.src"
-  | "ip.geoip.country"
-  | (string & {});
+  | "ip.geoip.country";
 export const TokenCreateRequestAccessRulesItemType = /*@__PURE__*/ S.String;
 
 export interface TokenCreateRequestAccessRulesItem {
   /** The action to take when a request matches a rule. If the action is `block`, the signed token blocks views for viewers matching the rule. */
-  action?: TokenCreateRequestAccessRulesItemAction;
+  action?: TokenCreateRequestAccessRulesItemAction | (string & {});
   /** An array of 2-letter country codes in ISO 3166-1 Alpha-2 format used to match requests. */
   country?: TokenCreateRequestAccessRulesItemCountryList;
   /** An array of IPv4 or IPV6 addresses or CIDRs used to match requests. */
   ip?: TokenCreateRequestAccessRulesItemIpList;
   /** Lists available rule types to match for requests. An `any` type matches all requests and can be used as a wildcard to apply default actions after other rules. */
-  type?: TokenCreateRequestAccessRulesItemType;
+  type?: TokenCreateRequestAccessRulesItemType | (string & {});
 }
 export const TokenCreateRequestAccessRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2014,8 +1994,7 @@ export type EditResponseStatusState =
   | "inprogress"
   | "ready"
   | "error"
-  | "live-inprogress"
-  | (string & {});
+  | "live-inprogress";
 export const EditResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface EditResponseStatus {
@@ -2192,8 +2171,7 @@ export const GetAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
 export type AudioTracksGetResponseAudioItemStatus =
   | "queued"
   | "ready"
-  | "error"
-  | (string & {});
+  | "error";
 export const AudioTracksGetResponseAudioItemStatus = /*@__PURE__*/ S.String;
 
 export interface AudioTracksGetResponseAudioItem {
@@ -2259,11 +2237,7 @@ export const GetCaptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCaptionRequest",
 }) as any as S.Schema<GetCaptionRequest>;
 
-export type CaptionsGetResultItemStatus =
-  | "ready"
-  | "inprogress"
-  | "error"
-  | (string & {});
+export type CaptionsGetResultItemStatus = "ready" | "inprogress" | "error";
 export const CaptionsGetResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface CaptionsGetResultItem {
@@ -2336,8 +2310,7 @@ export const GetCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 export type CaptionsLanguageGetResponseStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const CaptionsLanguageGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2418,11 +2391,7 @@ export const GetDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDownloadRequest",
 }) as any as S.Schema<GetDownloadRequest>;
 
-export type DownloadsGetResponseAudioStatus =
-  | "ready"
-  | "inprogress"
-  | "error"
-  | (string & {});
+export type DownloadsGetResponseAudioStatus = "ready" | "inprogress" | "error";
 export const DownloadsGetResponseAudioStatus = /*@__PURE__*/ S.String;
 
 export interface DownloadsGetResponseAudio {
@@ -2446,8 +2415,7 @@ export const DownloadsGetResponseAudio = /*@__PURE__*/ S.suspend(() =>
 export type DownloadsGetResponseDefaultStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const DownloadsGetResponseDefaultStatus = /*@__PURE__*/ S.String;
 
 export interface DownloadsGetResponseDefault {
@@ -2598,10 +2566,7 @@ export const LiveInputsGetResponseRecordingAllowedOriginsList =
     S.String,
   ) as any as S.Schema<LiveInputsGetResponseRecordingAllowedOriginsList>;
 
-export type LiveInputsGetResponseRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
+export type LiveInputsGetResponseRecordingMode = "off" | "automatic";
 export const LiveInputsGetResponseRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsGetResponseRecording {
@@ -2704,8 +2669,7 @@ export type LiveInputsGetResponseStatus =
   | "ttl_exceeded"
   | "failed_to_connect"
   | "failed_to_reconnect"
-  | "new_configuration_accepted"
-  | (string & {});
+  | "new_configuration_accepted";
 export const LiveInputsGetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface LiveInputsGetResponseWebRTC {
@@ -2874,8 +2838,7 @@ export type GetResponseStatusState =
   | "inprogress"
   | "ready"
   | "error"
-  | "live-inprogress"
-  | (string & {});
+  | "live-inprogress";
 export const GetResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface GetResponseStatus {
@@ -3278,8 +3241,7 @@ export type ListRequestStatus =
   | "inprogress"
   | "ready"
   | "error"
-  | "live-inprogress"
-  | (string & {});
+  | "live-inprogress";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListStreamsRequest {
@@ -3310,7 +3272,7 @@ export interface ListStreamsRequest {
   /** Lists videos created after the specified date. */
   start?: string;
   /** Specifies the processing status for all quality levels for a video. */
-  status?: ListRequestStatus;
+  status?: ListRequestStatus | (string & {});
   /** Specifies whether the video is `vod` or `live`. */
   type?: string;
   /** Provides a fast, exact string match on the `name` key in the `meta` field. */
@@ -3408,8 +3370,7 @@ export type ListResultItemStatusState =
   | "inprogress"
   | "ready"
   | "error"
-  | "live-inprogress"
-  | (string & {});
+  | "live-inprogress";
 export const ListResultItemStatusState = /*@__PURE__*/ S.String;
 
 export interface ListResultItemStatus {
@@ -3691,11 +3652,7 @@ export const PatchAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchAudioTrackRequest",
 }) as any as S.Schema<PatchAudioTrackRequest>;
 
-export type AudioTracksEditResponseStatus =
-  | "queued"
-  | "ready"
-  | "error"
-  | (string & {});
+export type AudioTracksEditResponseStatus = "queued" | "ready" | "error";
 export const AudioTracksEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3836,8 +3793,7 @@ export const UpdateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 export type CaptionsLanguageUpdateResponseStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const CaptionsLanguageUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3869,10 +3825,7 @@ export const LiveInputsUpdateRequestRecordingAllowedOriginsList =
     S.String,
   ) as any as S.Schema<LiveInputsUpdateRequestRecordingAllowedOriginsList>;
 
-export type LiveInputsUpdateRequestRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
+export type LiveInputsUpdateRequestRecordingMode = "off" | "automatic";
 export const LiveInputsUpdateRequestRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsUpdateRequestRecording {
@@ -3881,7 +3834,7 @@ export interface LiveInputsUpdateRequestRecording {
   /** Disables reporting the number of live viewers when this property is set to `true`. */
   hideLiveViewerCount?: boolean;
   /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsUpdateRequestRecordingMode;
+  mode?: LiveInputsUpdateRequestRecordingMode | (string & {});
   /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
   requireSignedURLs?: boolean;
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
@@ -3949,10 +3902,7 @@ export const LiveInputsUpdateResponseRecordingAllowedOriginsList =
     S.String,
   ) as any as S.Schema<LiveInputsUpdateResponseRecordingAllowedOriginsList>;
 
-export type LiveInputsUpdateResponseRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
+export type LiveInputsUpdateResponseRecordingMode = "off" | "automatic";
 export const LiveInputsUpdateResponseRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsUpdateResponseRecording {
@@ -4056,8 +4006,7 @@ export type LiveInputsUpdateResponseStatus =
   | "ttl_exceeded"
   | "failed_to_connect"
   | "failed_to_reconnect"
-  | "new_configuration_accepted"
-  | (string & {});
+  | "new_configuration_accepted";
 export const LiveInputsUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface LiveInputsUpdateResponseWebRTC {

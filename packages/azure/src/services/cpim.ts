@@ -38,10 +38,7 @@ export const B2CTenantsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<B2CTenantsCheckNameAvailabilityRequest>;
 
 /** Describes the reason for the 'nameAvailable' value. */
-export type NameAvailabilityReason =
-  | "AlreadyExists"
-  | "Invalid"
-  | (string & {});
+export type NameAvailabilityReason = "AlreadyExists" | "Invalid";
 export const NameAvailabilityReason = /*@__PURE__*/ S.String;
 
 /** Response of the CheckNameAvailability operation. */
@@ -89,15 +86,11 @@ export const B2CTenantsCreateRequestProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<B2CTenantsCreateRequestProperties>;
 
 /** The name of the SKU for the tenant. */
-export type B2CResourceSKUName =
-  | "Standard"
-  | "PremiumP1"
-  | "PremiumP2"
-  | (string & {});
+export type B2CResourceSKUName = "Standard" | "PremiumP1" | "PremiumP2";
 export const B2CResourceSKUName = /*@__PURE__*/ S.String;
 
 /** The tier of the tenant. */
-export type B2CResourceSKUTier = "A0" | (string & {});
+export type B2CResourceSKUTier = "A0";
 export const B2CResourceSKUTier = /*@__PURE__*/ S.String;
 
 /** SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling). */
@@ -160,15 +153,13 @@ export const B2CTenantsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the B2C tenant resource. */
 export type B2CTenantResourceType =
-  | "Microsoft.AzureActiveDirectory/b2cDirectories"
-  | (string & {});
+  "Microsoft.AzureActiveDirectory/b2cDirectories";
 export const B2CTenantResourceType = /*@__PURE__*/ S.String;
 
 /** The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling). */
 export type B2CTenantResourcePropertiesBillingConfigBillingType =
   | "MAU"
-  | "Auths"
-  | (string & {});
+  | "Auths";
 export const B2CTenantResourcePropertiesBillingConfigBillingType =
   /*@__PURE__*/ S.String;
 
@@ -219,8 +210,7 @@ export type B2CTenantResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const B2CTenantResourceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -228,8 +218,7 @@ export type B2CTenantResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const B2CTenantResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -416,15 +405,16 @@ export const B2CTenantsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 /** The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling). */
 export type B2CTenantResourcePropertiesInputBillingConfigBillingType =
   | "MAU"
-  | "Auths"
-  | (string & {});
+  | "Auths";
 export const B2CTenantResourcePropertiesInputBillingConfigBillingType =
   /*@__PURE__*/ S.String;
 
 /** The billing configuration for the tenant. */
 export interface B2CTenantResourcePropertiesInputBillingConfig {
   /** The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling). */
-  billingType?: B2CTenantResourcePropertiesInputBillingConfigBillingType;
+  billingType?:
+    | B2CTenantResourcePropertiesInputBillingConfigBillingType
+    | (string & {});
 }
 export const B2CTenantResourcePropertiesInputBillingConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -563,8 +553,7 @@ export type GuestUsagesResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const GuestUsagesResourceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -573,8 +562,7 @@ export type GuestUsagesResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const GuestUsagesResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

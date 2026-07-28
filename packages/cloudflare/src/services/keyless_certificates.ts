@@ -50,11 +50,7 @@ export class KeylessSslNotAvailable extends T.applyErrorMatchers(
   [{ code: 1067, message: { includes: "Keyless SSL is not available" } }],
 ) {}
 
-export type CreateRequestBundleMethod =
-  | "ubiquitous"
-  | "optimal"
-  | "force"
-  | (string & {});
+export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
 export const CreateRequestBundleMethod = /*@__PURE__*/ S.String;
 
 export interface CreateRequestTunnel {
@@ -82,7 +78,7 @@ export interface CreateKeylessCertificateRequest {
   /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
   port: number;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: CreateRequestBundleMethod;
+  bundleMethod?: CreateRequestBundleMethod | (string & {});
   /** The keyless SSL name. */
   name?: string;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
@@ -117,7 +113,7 @@ export const CreateResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponsePermissionsList>;
 
-export type CreateResponseStatus = "active" | "deleted" | (string & {});
+export type CreateResponseStatus = "active" | "deleted";
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponseTunnel {
@@ -239,7 +235,7 @@ export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponsePermissionsList>;
 
-export type GetResponseStatus = "active" | "deleted" | (string & {});
+export type GetResponseStatus = "active" | "deleted";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseTunnel {
@@ -322,7 +318,7 @@ export const ListResultItemPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemPermissionsList>;
 
-export type ListResultItemStatus = "active" | "deleted" | (string & {});
+export type ListResultItemStatus = "active" | "deleted";
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItemTunnel {
@@ -455,7 +451,7 @@ export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponsePermissionsList>;
 
-export type EditResponseStatus = "active" | "deleted" | (string & {});
+export type EditResponseStatus = "active" | "deleted";
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
 export interface EditResponseTunnel {

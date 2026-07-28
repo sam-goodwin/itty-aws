@@ -973,13 +973,35 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.accounts#LogsAuditListRequestId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by their IDs."
+          }
+        }
+      }
+    },
     "com.cloudflare.accounts#LogsAuditListRequestAccountNameNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.accounts#LogsAuditListRequestActionResultNot": {
+    "com.cloudflare.accounts#LogsAuditListRequestAccountName": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestAccountNameNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the account name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestActionResultNotItem": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -999,10 +1021,21 @@
     "com.cloudflare.accounts#LogsAuditListRequestActionResultNotList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#LogsAuditListRequestActionResultNot"
+        "target": "com.cloudflare.accounts#LogsAuditListRequestActionResultNotItem"
       }
     },
-    "com.cloudflare.accounts#LogsAuditListRequestActionTypeNot": {
+    "com.cloudflare.accounts#LogsAuditListRequestActionResult": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActionResultNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by whether the action was successful or not."
+          }
+        }
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestActionTypeNotItem": {
       "type": "enum",
       "members": {
         "CREATE": {
@@ -1034,10 +1067,21 @@
     "com.cloudflare.accounts#LogsAuditListRequestActionTypeNotList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#LogsAuditListRequestActionTypeNot"
+        "target": "com.cloudflare.accounts#LogsAuditListRequestActionTypeNotItem"
       }
     },
-    "com.cloudflare.accounts#LogsAuditListRequestActorContextNot": {
+    "com.cloudflare.accounts#LogsAuditListRequestActionType": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActionTypeNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the action type."
+          }
+        }
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestActorContextNotItem": {
       "type": "enum",
       "members": {
         "API_KEY": {
@@ -1075,7 +1119,18 @@
     "com.cloudflare.accounts#LogsAuditListRequestActorContextNotList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#LogsAuditListRequestActorContextNot"
+        "target": "com.cloudflare.accounts#LogsAuditListRequestActorContextNotItem"
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestActorContext": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorContextNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the actor context."
+          }
+        }
       }
     },
     "com.cloudflare.accounts#LogsAuditListRequestActorEmailNotList": {
@@ -1084,10 +1139,32 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.accounts#LogsAuditListRequestActorEmail": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorEmailNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the actor's email address."
+          }
+        }
+      }
+    },
     "com.cloudflare.accounts#LogsAuditListRequestActorIdNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestActorId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the actor ID. This can be either the Account ID or User ID."
+          }
+        }
       }
     },
     "com.cloudflare.accounts#LogsAuditListRequestActorIpAddressNotList": {
@@ -1096,10 +1173,32 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.accounts#LogsAuditListRequestActorIpAddress": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorIpAddressNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs IP address where the action was initiated."
+          }
+        }
+      }
+    },
     "com.cloudflare.accounts#LogsAuditListRequestActorTokenIdNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestActorTokenId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorTokenIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the API token ID when the actor context is an api_token or oauth."
+          }
+        }
       }
     },
     "com.cloudflare.accounts#LogsAuditListRequestActorTokenNameNotList": {
@@ -1108,7 +1207,18 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.accounts#LogsAuditListRequestActorTypeNot": {
+    "com.cloudflare.accounts#LogsAuditListRequestActorTokenName": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorTokenNameNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the API token name when the actor context is an api_token or oauth."
+          }
+        }
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestActorTypeNotItem": {
       "type": "enum",
       "members": {
         "ACCOUNT": {
@@ -1140,13 +1250,35 @@
     "com.cloudflare.accounts#LogsAuditListRequestActorTypeNotList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#LogsAuditListRequestActorTypeNot"
+        "target": "com.cloudflare.accounts#LogsAuditListRequestActorTypeNotItem"
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestActorType": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorTypeNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the actor type."
+          }
+        }
       }
     },
     "com.cloudflare.accounts#LogsAuditListRequestAuditLogIdNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestAuditLogId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestAuditLogIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by their IDs."
+          }
+        }
       }
     },
     "com.cloudflare.accounts#LogsAuditListRequestDirection": {
@@ -1178,10 +1310,32 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.accounts#LogsAuditListRequestRawCfRayId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestRawCfRayIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the response CF Ray ID."
+          }
+        }
+      }
+    },
     "com.cloudflare.accounts#LogsAuditListRequestRawMethodNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestRawMethod": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestRawMethodNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the HTTP method for the API call."
+          }
+        }
       }
     },
     "com.cloudflare.accounts#LogsAuditListRequestRawStatusCodeNotList": {
@@ -1190,10 +1344,32 @@
         "target": "smithy.api#Double"
       }
     },
+    "com.cloudflare.accounts#LogsAuditListRequestRawStatusCode": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestRawStatusCodeNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the response status code that was returned."
+          }
+        }
+      }
+    },
     "com.cloudflare.accounts#LogsAuditListRequestRawUriNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestRawUri": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestRawUriNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the request URI."
+          }
+        }
       }
     },
     "com.cloudflare.accounts#LogsAuditListRequestResourceIdNotList": {
@@ -1202,13 +1378,35 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.accounts#LogsAuditListRequestResourceId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the resource ID."
+          }
+        }
+      }
+    },
     "com.cloudflare.accounts#LogsAuditListRequestResourceProductNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.accounts#LogsAuditListRequestResourceScopeNot": {
+    "com.cloudflare.accounts#LogsAuditListRequestResourceProduct": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceProductNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the Cloudflare product associated with the changed resource."
+          }
+        }
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestResourceScopeNotItem": {
       "type": "enum",
       "members": {
         "ACCOUNTS": {
@@ -1240,7 +1438,18 @@
     "com.cloudflare.accounts#LogsAuditListRequestResourceScopeNotList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#LogsAuditListRequestResourceScopeNot"
+        "target": "com.cloudflare.accounts#LogsAuditListRequestResourceScopeNotItem"
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestResourceScope": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceScopeNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the resource scope, specifying whether the resource is associated with an user, an account, a zone, or a membership."
+          }
+        }
       }
     },
     "com.cloudflare.accounts#LogsAuditListRequestResourceTypeNotList": {
@@ -1249,16 +1458,49 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.accounts#LogsAuditListRequestResourceType": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceTypeNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs based on the unique type of resource changed by the action."
+          }
+        }
+      }
+    },
     "com.cloudflare.accounts#LogsAuditListRequestZoneIdNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.accounts#LogsAuditListRequestZoneId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestZoneIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the zone ID."
+          }
+        }
+      }
+    },
     "com.cloudflare.accounts#LogsAuditListRequestZoneNameNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.accounts#LogsAuditListRequestZoneName": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestZoneNameNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the zone name associated with the change."
+          }
+        }
       }
     },
     "com.cloudflare.accounts#LogsAuditListRequest": {
@@ -1288,88 +1530,76 @@
             "smithy.api#required": {}
           }
         },
-        "id_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestIdNotList",
+        "id": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by their IDs.",
-            "smithy.api#httpQuery": "id.not"
+            "com.cloudflare.protocols#deepQuery": "id"
           }
         },
-        "account_name_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestAccountNameNotList",
+        "account_name": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestAccountName",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the account name.",
-            "smithy.api#httpQuery": "account_name.not"
+            "com.cloudflare.protocols#deepQuery": "account_name"
           }
         },
-        "action_result_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestActionResultNotList",
+        "action_result": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActionResult",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by whether the action was successful or not.",
-            "smithy.api#httpQuery": "action_result.not"
+            "com.cloudflare.protocols#deepQuery": "action_result"
           }
         },
-        "action_type_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestActionTypeNotList",
+        "action_type": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActionType",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the action type.",
-            "smithy.api#httpQuery": "action_type.not"
+            "com.cloudflare.protocols#deepQuery": "action_type"
           }
         },
-        "actor_context_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestActorContextNotList",
+        "actor_context": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorContext",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the actor context.",
-            "smithy.api#httpQuery": "actor_context.not"
+            "com.cloudflare.protocols#deepQuery": "actor_context"
           }
         },
-        "actor_email_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestActorEmailNotList",
+        "actor_email": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorEmail",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the actor's email address.",
-            "smithy.api#httpQuery": "actor_email.not"
+            "com.cloudflare.protocols#deepQuery": "actor_email"
           }
         },
-        "actor_id_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestActorIdNotList",
+        "actor_id": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the actor ID. This can be either the Account ID or User ID.",
-            "smithy.api#httpQuery": "actor_id.not"
+            "com.cloudflare.protocols#deepQuery": "actor_id"
           }
         },
-        "actor_ip_address_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestActorIpAddressNotList",
+        "actor_ip_address": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorIpAddress",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs IP address where the action was initiated.",
-            "smithy.api#httpQuery": "actor_ip_address.not"
+            "com.cloudflare.protocols#deepQuery": "actor_ip_address"
           }
         },
-        "actor_token_id_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestActorTokenIdNotList",
+        "actor_token_id": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorTokenId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the API token ID when the actor context is an api_token or oauth.",
-            "smithy.api#httpQuery": "actor_token_id.not"
+            "com.cloudflare.protocols#deepQuery": "actor_token_id"
           }
         },
-        "actor_token_name_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestActorTokenNameNotList",
+        "actor_token_name": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorTokenName",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the API token name when the actor context is an api_token or oauth.",
-            "smithy.api#httpQuery": "actor_token_name.not"
+            "com.cloudflare.protocols#deepQuery": "actor_token_name"
           }
         },
-        "actor_type_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestActorTypeNotList",
+        "actor_type": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestActorType",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the actor type.",
-            "smithy.api#httpQuery": "actor_type.not"
+            "com.cloudflare.protocols#deepQuery": "actor_type"
           }
         },
-        "audit_log_id_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestAuditLogIdNotList",
+        "audit_log_id": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestAuditLogId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by their IDs.",
-            "smithy.api#httpQuery": "audit_log_id.not"
+            "com.cloudflare.protocols#deepQuery": "audit_log_id"
           }
         },
         "cursor": {
@@ -1400,74 +1630,64 @@
             "smithy.api#httpQuery": "product_category"
           }
         },
-        "raw_cf_ray_id_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestRawCfRayIdNotList",
+        "raw_cf_ray_id": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestRawCfRayId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the response CF Ray ID.",
-            "smithy.api#httpQuery": "raw_cf_ray_id.not"
+            "com.cloudflare.protocols#deepQuery": "raw_cf_ray_id"
           }
         },
-        "raw_method_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestRawMethodNotList",
+        "raw_method": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestRawMethod",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the HTTP method for the API call.",
-            "smithy.api#httpQuery": "raw_method.not"
+            "com.cloudflare.protocols#deepQuery": "raw_method"
           }
         },
-        "raw_status_code_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestRawStatusCodeNotList",
+        "raw_status_code": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestRawStatusCode",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the response status code that was returned.",
-            "smithy.api#httpQuery": "raw_status_code.not"
+            "com.cloudflare.protocols#deepQuery": "raw_status_code"
           }
         },
-        "raw_uri_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestRawUriNotList",
+        "raw_uri": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestRawUri",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the request URI.",
-            "smithy.api#httpQuery": "raw_uri.not"
+            "com.cloudflare.protocols#deepQuery": "raw_uri"
           }
         },
-        "resource_id_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceIdNotList",
+        "resource_id": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the resource ID.",
-            "smithy.api#httpQuery": "resource_id.not"
+            "com.cloudflare.protocols#deepQuery": "resource_id"
           }
         },
-        "resource_product_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceProductNotList",
+        "resource_product": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceProduct",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the Cloudflare product associated with the changed resource.",
-            "smithy.api#httpQuery": "resource_product.not"
+            "com.cloudflare.protocols#deepQuery": "resource_product"
           }
         },
-        "resource_scope_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceScopeNotList",
+        "resource_scope": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceScope",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the resource scope, specifying whether the resource is associated with an user, an account, a zone, or a membership.",
-            "smithy.api#httpQuery": "resource_scope.not"
+            "com.cloudflare.protocols#deepQuery": "resource_scope"
           }
         },
-        "resource_type_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceTypeNotList",
+        "resource_type": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestResourceType",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs based on the unique type of resource changed by the action.",
-            "smithy.api#httpQuery": "resource_type.not"
+            "com.cloudflare.protocols#deepQuery": "resource_type"
           }
         },
-        "zone_id_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestZoneIdNotList",
+        "zone_id": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestZoneId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the zone ID.",
-            "smithy.api#httpQuery": "zone_id.not"
+            "com.cloudflare.protocols#deepQuery": "zone_id"
           }
         },
-        "zone_name_not": {
-          "target": "com.cloudflare.accounts#LogsAuditListRequestZoneNameNotList",
+        "zone_name": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestZoneName",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the zone name associated with the change.",
-            "smithy.api#httpQuery": "zone_name.not"
+            "com.cloudflare.protocols#deepQuery": "zone_name"
           }
         }
       },

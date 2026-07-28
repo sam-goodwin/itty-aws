@@ -46,8 +46,7 @@ export type SkuNameEnum =
   | "PerNode"
   | "PerGB2018"
   | "Standalone"
-  | "CapacityReservation"
-  | (string & {});
+  | "CapacityReservation";
 export const SkuNameEnum = /*@__PURE__*/ S.String;
 
 /** Service Tier details. */
@@ -109,7 +108,7 @@ export const ClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
 
 /** Configures whether billing will be only on the cluster or each workspace will be billed by its proportional use. This does not change the overall billing, only how it will be distributed. Default value is 'Cluster' */
-export type BillingType = "Cluster" | "Workspaces" | (string & {});
+export type BillingType = "Cluster" | "Workspaces";
 export const BillingType = /*@__PURE__*/ S.String;
 
 /** The key vault properties. */
@@ -184,7 +183,7 @@ export interface ClusterPropertiesInput {
   /** Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones. */
   isAvailabilityZonesEnabled?: boolean;
   /** The cluster's billing type. */
-  billingType?: BillingType;
+  billingType?: BillingType | (string & {});
   /** The associated key properties. */
   keyVaultProperties?: KeyVaultProperties;
   /** The list of Log Analytics workspaces associated with the cluster */
@@ -217,8 +216,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -240,7 +238,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClustersCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ClustersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -254,7 +252,7 @@ export const ClustersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClustersCreateOrUpdateRequestIdentity>;
 
 /** The SKU (tier) of a cluster. */
-export type ClusterSkuNameEnum = "CapacityReservation" | (string & {});
+export type ClusterSkuNameEnum = "CapacityReservation";
 export const ClusterSkuNameEnum = /*@__PURE__*/ S.String;
 
 /** The cluster sku definition. */
@@ -316,8 +314,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -325,8 +322,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -372,8 +368,7 @@ export type ClusterEntityStatus =
   | "Canceled"
   | "Deleting"
   | "ProvisioningAccount"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ClusterEntityStatus = /*@__PURE__*/ S.String;
 
 /** The list of Log Analytics workspaces associated with the cluster. */
@@ -431,8 +426,7 @@ export type ClusterReplicationState =
   | "RollbackRequested"
   | "RollingBack"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ClusterReplicationState = /*@__PURE__*/ S.String;
 
 /** Cluster replication properties. */
@@ -838,7 +832,7 @@ export interface ClusterPatchProperties {
   /** The associated key properties. */
   keyVaultProperties?: KeyVaultProperties;
   /** The cluster's billing type. */
-  billingType?: BillingType;
+  billingType?: BillingType | (string & {});
 }
 export const ClusterPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -851,7 +845,7 @@ export const ClusterPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ClustersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ClustersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -981,7 +975,7 @@ export const DataExportPropertiesTableNamesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DataExportPropertiesTableNamesList>;
 
 /** The type of the destination resource */
-export type Type = "StorageAccount" | "EventHub" | (string & {});
+export type Type = "StorageAccount" | "EventHub";
 export const Type = /*@__PURE__*/ S.String;
 
 /** Destination meta data. */
@@ -1288,8 +1282,7 @@ export type DataSourceKind =
   | "Itsm"
   | "DnsAnalytics"
   | "ApplicationInsights"
-  | "SqlDataClassification"
-  | (string & {});
+  | "SqlDataClassification";
 export const DataSourceKind = /*@__PURE__*/ S.String;
 
 /** Resource tags. */
@@ -1315,7 +1308,7 @@ export interface DataSourcesCreateOrUpdateRequest {
   /** The ETag of the data source. */
   etag?: string;
   /** The kind of the DataSource. */
-  kind: DataSourceKind;
+  kind: DataSourceKind | (string & {});
   /** Resource tags. */
   tags?: DataSourcesCreateOrUpdateRequestTagsMap;
 }
@@ -1614,8 +1607,7 @@ export type WorkspaceEntityStatus =
   | "Canceled"
   | "Deleting"
   | "ProvisioningAccount"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const WorkspaceEntityStatus = /*@__PURE__*/ S.String;
 
 /** The name of the SKU. */
@@ -1627,8 +1619,7 @@ export type WorkspaceSkuNameEnum =
   | "PerGB2018"
   | "Standalone"
   | "CapacityReservation"
-  | "LACluster"
-  | (string & {});
+  | "LACluster";
 export const WorkspaceSkuNameEnum = /*@__PURE__*/ S.String;
 
 /** The SKU (tier) of a workspace. */
@@ -1655,8 +1646,7 @@ export type DataIngestionStatus =
   | "ForceOff"
   | "OverQuota"
   | "SubscriptionSuspended"
-  | "ApproachingQuota"
-  | (string & {});
+  | "ApproachingQuota";
 export const DataIngestionStatus = /*@__PURE__*/ S.String;
 
 /** The daily volume cap for ingestion. */
@@ -1682,8 +1672,7 @@ export const WorkspaceCapping = /*@__PURE__*/ S.suspend(() =>
 export type WorkspacePropertiesPublicNetworkAccessForIngestion =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const WorkspacePropertiesPublicNetworkAccessForIngestion =
   /*@__PURE__*/ S.String;
 
@@ -1691,8 +1680,7 @@ export const WorkspacePropertiesPublicNetworkAccessForIngestion =
 export type WorkspacePropertiesPublicNetworkAccessForQuery =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const WorkspacePropertiesPublicNetworkAccessForQuery =
   /*@__PURE__*/ S.String;
 
@@ -1769,8 +1757,7 @@ export type WorkspaceReplicationState =
   | "RollbackRequested"
   | "RollingBack"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const WorkspaceReplicationState = /*@__PURE__*/ S.String;
 
 /** Workspace replication properties. */
@@ -1804,8 +1791,7 @@ export type WorkspaceFailoverState =
   | "Activating"
   | "Active"
   | "Deactivating"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const WorkspaceFailoverState = /*@__PURE__*/ S.String;
 
 /** The failover state of the replication. */
@@ -1886,11 +1872,7 @@ export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceProperties>;
 
 /** Type of managed service identity. */
-export type IdentityType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "None"
-  | (string & {});
+export type IdentityType = "SystemAssigned" | "UserAssigned" | "None";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties. */
@@ -2186,8 +2168,7 @@ export type LinkedServiceEntityStatus =
   | "Succeeded"
   | "Deleting"
   | "ProvisioningAccount"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const LinkedServiceEntityStatus = /*@__PURE__*/ S.String;
 
 /** Linked service properties. */
@@ -2505,8 +2486,7 @@ export type LinkedStorageAccountsCreateOrUpdateRequestDataSourceType =
   | "AzureWatson"
   | "Query"
   | "Ingestion"
-  | "Alerts"
-  | (string & {});
+  | "Alerts";
 export const LinkedStorageAccountsCreateOrUpdateRequestDataSourceType =
   /*@__PURE__*/ S.String;
 
@@ -2516,8 +2496,7 @@ export type DataSourceType =
   | "AzureWatson"
   | "Query"
   | "Ingestion"
-  | "Alerts"
-  | (string & {});
+  | "Alerts";
 export const DataSourceType = /*@__PURE__*/ S.String;
 
 /** Linked storage accounts resources ids. */
@@ -2554,7 +2533,9 @@ export interface LinkedStorageAccountsCreateOrUpdateRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** Linked storage accounts type. */
-  dataSourceType: LinkedStorageAccountsCreateOrUpdateRequestDataSourceType;
+  dataSourceType:
+    | LinkedStorageAccountsCreateOrUpdateRequestDataSourceType
+    | (string & {});
   /** Linked storage accounts properties. */
   properties: LinkedStorageAccountsProperties;
 }
@@ -2611,8 +2592,7 @@ export type LinkedStorageAccountsDeleteRequestDataSourceType =
   | "AzureWatson"
   | "Query"
   | "Ingestion"
-  | "Alerts"
-  | (string & {});
+  | "Alerts";
 export const LinkedStorageAccountsDeleteRequestDataSourceType =
   /*@__PURE__*/ S.String;
 
@@ -2624,7 +2604,9 @@ export interface LinkedStorageAccountsDeleteRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** Linked storage accounts type. */
-  dataSourceType: LinkedStorageAccountsDeleteRequestDataSourceType;
+  dataSourceType:
+    | LinkedStorageAccountsDeleteRequestDataSourceType
+    | (string & {});
 }
 export const LinkedStorageAccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2658,8 +2640,7 @@ export type LinkedStorageAccountsGetRequestDataSourceType =
   | "AzureWatson"
   | "Query"
   | "Ingestion"
-  | "Alerts"
-  | (string & {});
+  | "Alerts";
 export const LinkedStorageAccountsGetRequestDataSourceType =
   /*@__PURE__*/ S.String;
 
@@ -2671,7 +2652,7 @@ export interface LinkedStorageAccountsGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** Linked storage accounts type. */
-  dataSourceType: LinkedStorageAccountsGetRequestDataSourceType;
+  dataSourceType: LinkedStorageAccountsGetRequestDataSourceType | (string & {});
 }
 export const LinkedStorageAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4407,7 +4388,7 @@ export const SearchMetadataCoreSummariesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchMetadataCoreSummariesList>;
 
 /** The sort order of the search. */
-export type SearchSortEnum = "asc" | "desc" | (string & {});
+export type SearchSortEnum = "asc" | "desc";
 export const SearchSortEnum = /*@__PURE__*/ S.String;
 
 /** The sort parameters for search. */
@@ -4655,7 +4636,7 @@ export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageAccount" }) as any as S.Schema<StorageAccount>;
 
 /** The state of the storage insight connection to the workspace */
-export type StorageInsightState = "OK" | "ERROR" | (string & {});
+export type StorageInsightState = "OK" | "ERROR";
 export const StorageInsightState = /*@__PURE__*/ S.String;
 
 /** The status of the storage insight. */
@@ -4972,11 +4953,11 @@ export const StorageInsightListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageInsightListResult>;
 
 /** SummaryRules rule type: User. */
-export type RuleTypeEnum = "User" | (string & {});
+export type RuleTypeEnum = "User";
 export const RuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** The time cursor used in Summary rules bins processing, e.g. TimeGenerated. */
-export type TimeSelectorEnum = "TimeGenerated" | (string & {});
+export type TimeSelectorEnum = "TimeGenerated";
 export const TimeSelectorEnum = /*@__PURE__*/ S.String;
 
 /** Rule definition parameters. */
@@ -5008,7 +4989,7 @@ export const RuleDefinition = /*@__PURE__*/ S.suspend(() =>
 /** Summary rule properties. */
 export interface SummaryLogsPropertiesInput {
   /** SummaryRules rule type: User. */
-  ruleType?: RuleTypeEnum;
+  ruleType?: RuleTypeEnum | (string & {});
   /** The display name of the Summary rule. */
   displayName?: string;
   /** The description of the Summary rule. */
@@ -5059,7 +5040,7 @@ export const SummaryLogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryLogsCreateOrUpdateRequest>;
 
 /** Indicates the reason for rule deactivation. */
-export type StatusCodeEnum = "UserAction" | "DataPlaneError" | (string & {});
+export type StatusCodeEnum = "UserAction" | "DataPlaneError";
 export const StatusCodeEnum = /*@__PURE__*/ S.String;
 
 /** Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded. */
@@ -5068,8 +5049,7 @@ export type ProvisioningStateEnum =
   | "Succeeded"
   | "Deleting"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningStateEnum = /*@__PURE__*/ S.String;
 
 /** Summary rule properties. */
@@ -5485,7 +5465,7 @@ export const RestoredLogsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoredLogsInput>;
 
 /** Instruct the system how to handle and charge the logs ingested to this table. */
-export type TablePlanEnum = "Basic" | "Analytics" | "Auxiliary" | (string & {});
+export type TablePlanEnum = "Basic" | "Analytics" | "Auxiliary";
 export const TablePlanEnum = /*@__PURE__*/ S.String;
 
 /** Column data type. */
@@ -5497,17 +5477,11 @@ export type ColumnTypeEnum =
   | "boolean"
   | "dateTime"
   | "guid"
-  | "dynamic"
-  | (string & {});
+  | "dynamic";
 export const ColumnTypeEnum = /*@__PURE__*/ S.String;
 
 /** Column data type logical hint. */
-export type ColumnDataTypeHintEnum =
-  | "uri"
-  | "guid"
-  | "armPath"
-  | "ip"
-  | (string & {});
+export type ColumnDataTypeHintEnum = "uri" | "guid" | "armPath" | "ip";
 export const ColumnDataTypeHintEnum = /*@__PURE__*/ S.String;
 
 /** Table column. */
@@ -5515,9 +5489,9 @@ export interface ColumnInput {
   /** Column name. */
   name?: string;
   /** Column data type. */
-  type?: ColumnTypeEnum;
+  type?: ColumnTypeEnum | (string & {});
   /** Column data type logical hint. */
-  dataTypeHint?: ColumnDataTypeHintEnum;
+  dataTypeHint?: ColumnDataTypeHintEnum | (string & {});
   /** Column display name. */
   displayName?: string;
   /** Column description. */
@@ -5570,7 +5544,7 @@ export interface TablePropertiesInput {
   /** Parameters of the restore operation that initiated this table. */
   restoredLogs?: RestoredLogsInput;
   /** Instruct the system how to handle and charge the logs ingested to this table. */
-  plan?: TablePlanEnum;
+  plan?: TablePlanEnum | (string & {});
   /** Table schema. */
   schema?: SchemaInput;
 }
@@ -5740,7 +5714,7 @@ export const SchemaLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SchemaLabelsList>;
 
 /** Table's creator. */
-export type SourceEnum = "microsoft" | "customer" | (string & {});
+export type SourceEnum = "microsoft" | "customer";
 export const SourceEnum = /*@__PURE__*/ S.String;
 
 /** Table's creator. */
@@ -5748,16 +5722,11 @@ export type TableTypeEnum =
   | "Microsoft"
   | "CustomLog"
   | "RestoredLogs"
-  | "SearchResults"
-  | (string & {});
+  | "SearchResults";
 export const TableTypeEnum = /*@__PURE__*/ S.String;
 
 /** The subtype describes what APIs can be used to interact with the table, and what features are available against it. */
-export type TableSubTypeEnum =
-  | "Any"
-  | "Classic"
-  | "DataCollectionRuleBased"
-  | (string & {});
+export type TableSubTypeEnum = "Any" | "Classic" | "DataCollectionRuleBased";
 export const TableSubTypeEnum = /*@__PURE__*/ S.String;
 
 /** List of solutions the table is affiliated with */
@@ -5812,8 +5781,7 @@ export type OperationalInsightsTableProvisioningState =
   | "Updating"
   | "InProgress"
   | "Succeeded"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const OperationalInsightsTableProvisioningState = /*@__PURE__*/ S.String;
 
 /** Table properties. */
@@ -6249,7 +6217,7 @@ export const WorkspacePurgeGetPurgeStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacePurgeGetPurgeStatusRequest>;
 
 /** Status of the operation represented by the requested Id. */
-export type PurgeState = "pending" | "completed" | (string & {});
+export type PurgeState = "pending" | "completed";
 export const PurgeState = /*@__PURE__*/ S.String;
 
 /** Response containing status for a specific purge operation. */
@@ -6344,7 +6312,7 @@ export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** The SKU (tier) of a workspace. */
 export interface WorkspaceSkuInput {
   /** The name of the SKU. */
-  name: WorkspaceSkuNameEnum;
+  name: WorkspaceSkuNameEnum | (string & {});
   /** The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected. */
   capacityReservationLevel?: number | null;
 }
@@ -6374,8 +6342,7 @@ export const WorkspaceCappingInput = /*@__PURE__*/ S.suspend(() =>
 export type WorkspacePropertiesInputPublicNetworkAccessForIngestion =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const WorkspacePropertiesInputPublicNetworkAccessForIngestion =
   /*@__PURE__*/ S.String;
 
@@ -6383,8 +6350,7 @@ export const WorkspacePropertiesInputPublicNetworkAccessForIngestion =
 export type WorkspacePropertiesInputPublicNetworkAccessForQuery =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const WorkspacePropertiesInputPublicNetworkAccessForQuery =
   /*@__PURE__*/ S.String;
 
@@ -6448,9 +6414,13 @@ export interface WorkspacePropertiesInput {
   /** The daily volume cap for ingestion. */
   workspaceCapping?: WorkspaceCappingInput;
   /** The network access type for accessing Log Analytics ingestion. */
-  publicNetworkAccessForIngestion?: WorkspacePropertiesInputPublicNetworkAccessForIngestion;
+  publicNetworkAccessForIngestion?:
+    | WorkspacePropertiesInputPublicNetworkAccessForIngestion
+    | (string & {});
   /** The network access type for accessing Log Analytics query. */
-  publicNetworkAccessForQuery?: WorkspacePropertiesInputPublicNetworkAccessForQuery;
+  publicNetworkAccessForQuery?:
+    | WorkspacePropertiesInputPublicNetworkAccessForQuery
+    | (string & {});
   /** Indicates whether customer managed storage is mandatory for query management. */
   forceCmkForQuery?: boolean;
   /** Workspace features. */
@@ -6503,7 +6473,7 @@ export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
 /** Identity for the resource. */
 export interface IdentityInput {
   /** Type of managed service identity. */
-  type: IdentityType;
+  type: IdentityType | (string & {});
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
@@ -6807,8 +6777,7 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Deleting"
   | "Accepted"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const NetworkSecurityPerimeterConfigurationProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -6817,15 +6786,11 @@ export type ProvisioningIssuePropertiesIssueType =
   | "Unknown"
   | "ConfigurationPropagationFailure"
   | "MissingPerimeterConfiguration"
-  | "MissingIdentityConfiguration"
-  | (string & {});
+  | "MissingIdentityConfiguration";
 export const ProvisioningIssuePropertiesIssueType = /*@__PURE__*/ S.String;
 
 /** Severity of the issue. */
-export type ProvisioningIssuePropertiesSeverity =
-  | "Warning"
-  | "Error"
-  | (string & {});
+export type ProvisioningIssuePropertiesSeverity = "Warning" | "Error";
 export const ProvisioningIssuePropertiesSeverity = /*@__PURE__*/ S.String;
 
 /** Fully qualified resource IDs of suggested resources that can be associated to the network security perimeter (NSP) to remediate the issue. */
@@ -6837,7 +6802,7 @@ export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   ) as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Direction of Access Rule */
-export type AccessRuleDirection = "Inbound" | "Outbound" | (string & {});
+export type AccessRuleDirection = "Inbound" | "Outbound";
 export const AccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
@@ -7022,11 +6987,7 @@ export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesLi
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
 
 /** Access mode of the resource association */
-export type ResourceAssociationAccessMode =
-  | "Enforced"
-  | "Learning"
-  | "Audit"
-  | (string & {});
+export type ResourceAssociationAccessMode = "Enforced" | "Learning" | "Audit";
 export const ResourceAssociationAccessMode = /*@__PURE__*/ S.String;
 
 /** Information about resource association */

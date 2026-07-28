@@ -264,7 +264,7 @@ export const CreateIdentitySourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIdentitySourceRequest",
 }) as any as S.Schema<CreateIdentitySourceRequest>;
-export type IdentitySourceType = "IAM_IDENTITY_CENTER" | (string & {});
+export type IdentitySourceType = "IAM_IDENTITY_CENTER";
 export const IdentitySourceType = /*@__PURE__*/ S.String;
 
 export interface CreateIdentitySourceResponse {
@@ -360,25 +360,19 @@ export const ApprovalStrategyResponse = /*@__PURE__*/ S.Union([
   S.Struct({ MofN: MofNApprovalStrategy }),
 ]);
 export type ParticipantId = string;
-export type IdentityStatus =
-  | "PENDING"
-  | "ACCEPTED"
-  | "REJECTED"
-  | "INVALID"
-  | (string & {});
+export type IdentityStatus = "PENDING" | "ACCEPTED" | "REJECTED" | "INVALID";
 export const IdentityStatus = /*@__PURE__*/ S.String;
 
 export type ApproverLastActivity =
   | "VOTED"
   | "BASELINED"
-  | "RESPONDED_TO_INVITATION"
-  | (string & {});
+  | "RESPONDED_TO_INVITATION";
 export const ApproverLastActivity = /*@__PURE__*/ S.String;
 
-export type MfaType = "EMAIL_OTP" | (string & {});
+export type MfaType = "EMAIL_OTP";
 export const MfaType = /*@__PURE__*/ S.String;
 
-export type MfaSyncStatus = "IN_SYNC" | "OUT_OF_SYNC" | (string & {});
+export type MfaSyncStatus = "IN_SYNC" | "OUT_OF_SYNC";
 export const MfaSyncStatus = /*@__PURE__*/ S.String;
 
 export interface MfaMethod {
@@ -425,12 +419,7 @@ export type GetApprovalTeamResponseApprovers =
 export const GetApprovalTeamResponseApprovers = /*@__PURE__*/ S.Array(
   GetApprovalTeamResponseApprover,
 );
-export type ApprovalTeamStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | "DELETING"
-  | "PENDING"
-  | (string & {});
+export type ApprovalTeamStatus = "ACTIVE" | "INACTIVE" | "DELETING" | "PENDING";
 export const ApprovalTeamStatus = /*@__PURE__*/ S.String;
 
 export type ApprovalTeamStatusCode =
@@ -445,8 +434,7 @@ export type ApprovalTeamStatusCode =
   | "UPDATE_FAILED_VALIDATION"
   | "DELETE_PENDING_APPROVAL"
   | "DELETE_FAILED_APPROVAL"
-  | "DELETE_FAILED_VALIDATION"
-  | (string & {});
+  | "DELETE_FAILED_VALIDATION";
 export const ApprovalTeamStatusCode = /*@__PURE__*/ S.String;
 
 export type Message = string;
@@ -557,20 +545,14 @@ export type IdentitySourceParametersForGet = {
 export const IdentitySourceParametersForGet = /*@__PURE__*/ S.Union([
   S.Struct({ IamIdentityCenter: IamIdentityCenterForGet }),
 ]);
-export type IdentitySourceStatus =
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | "ERROR"
-  | (string & {});
+export type IdentitySourceStatus = "CREATING" | "ACTIVE" | "DELETING" | "ERROR";
 export const IdentitySourceStatus = /*@__PURE__*/ S.String;
 
 export type IdentitySourceStatusCode =
   | "ACCESS_DENIED"
   | "DELETION_FAILED"
   | "IDC_INSTANCE_NOT_FOUND"
-  | "IDC_INSTANCE_NOT_VALID"
-  | (string & {});
+  | "IDC_INSTANCE_NOT_VALID";
 export const IdentitySourceStatusCode = /*@__PURE__*/ S.String;
 
 export interface GetIdentitySourceResponse {
@@ -618,11 +600,11 @@ export const GetPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPolicyVersionRequest>;
 export type UnqualifiedPolicyArn = string;
 export type PolicyVersionId = number;
-export type PolicyType = "AWS_MANAGED" | "AWS_RAM" | (string & {});
+export type PolicyType = "AWS_MANAGED" | "AWS_RAM";
 export const PolicyType = /*@__PURE__*/ S.String;
 
 export type PolicyName = string;
-export type PolicyStatus = "ATTACHABLE" | "DEPRECATED" | (string & {});
+export type PolicyStatus = "ATTACHABLE" | "DEPRECATED";
 export const PolicyStatus = /*@__PURE__*/ S.String;
 
 export type PolicyDocument = string | redacted.Redacted<string>;
@@ -663,7 +645,7 @@ export const GetPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourcePolicyRequest {
   ResourceArn: string;
   PolicyName: string;
-  PolicyType: PolicyType;
+  PolicyType: PolicyType | (string & {});
 }
 export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -732,23 +714,17 @@ export type SessionStatus =
   | "CANCELLED"
   | "APPROVED"
   | "FAILED"
-  | "CREATING"
-  | (string & {});
+  | "CREATING";
 export const SessionStatus = /*@__PURE__*/ S.String;
 
 export type SessionStatusCode =
   | "REJECTED"
   | "EXPIRED"
   | "CONFIGURATION_CHANGED"
-  | "ALL_APPROVERS_IN_SESSION"
-  | (string & {});
+  | "ALL_APPROVERS_IN_SESSION";
 export const SessionStatusCode = /*@__PURE__*/ S.String;
 
-export type SessionExecutionStatus =
-  | "EXECUTED"
-  | "FAILED"
-  | "PENDING"
-  | (string & {});
+export type SessionExecutionStatus = "EXECUTED" | "FAILED" | "PENDING";
 export const SessionExecutionStatus = /*@__PURE__*/ S.String;
 
 export type ActionName = string;
@@ -756,16 +732,10 @@ export type ServicePrincipal = string;
 export type AccountId = string;
 export type Region = string;
 export type RequesterComment = string | redacted.Redacted<string>;
-export type ActionCompletionStrategy =
-  | "AUTO_COMPLETION_UPON_APPROVAL"
-  | (string & {});
+export type ActionCompletionStrategy = "AUTO_COMPLETION_UPON_APPROVAL";
 export const ActionCompletionStrategy = /*@__PURE__*/ S.String;
 
-export type SessionResponse =
-  | "APPROVED"
-  | "REJECTED"
-  | "NO_RESPONSE"
-  | (string & {});
+export type SessionResponse = "APPROVED" | "REJECTED" | "NO_RESPONSE";
 export const SessionResponse = /*@__PURE__*/ S.String;
 
 export interface GetSessionResponseApproverResponse {
@@ -793,9 +763,7 @@ export type GetSessionResponseApproverResponses =
 export const GetSessionResponseApproverResponses = /*@__PURE__*/ S.Array(
   GetSessionResponseApproverResponse,
 );
-export type AdditionalSecurityRequirement =
-  | "APPROVER_VERIFICATION_REQUIRED"
-  | (string & {});
+export type AdditionalSecurityRequirement = "APPROVER_VERIFICATION_REQUIRED";
 export const AdditionalSecurityRequirement = /*@__PURE__*/ S.String;
 
 export type AdditionalSecurityRequirements = AdditionalSecurityRequirement[];
@@ -1180,8 +1148,7 @@ export type FilterField =
   | "VotingTime"
   | "Vote"
   | "SessionStatus"
-  | "InitiationTime"
-  | (string & {});
+  | "InitiationTime";
 export const FilterField = /*@__PURE__*/ S.String;
 
 export type Operator =
@@ -1193,13 +1160,12 @@ export type Operator =
   | "LTE"
   | "CONTAINS"
   | "NOT_CONTAINS"
-  | "BETWEEN"
-  | (string & {});
+  | "BETWEEN";
 export const Operator = /*@__PURE__*/ S.String;
 
 export interface Filter {
-  FieldName?: FilterField;
-  Operator?: Operator;
+  FieldName?: FilterField | (string & {});
+  Operator?: Operator | (string & {});
   Value?: string;
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
@@ -1458,10 +1424,10 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type UpdateAction = "SYNCHRONIZE_MFA_DEVICES" | (string & {});
+export type UpdateAction = "SYNCHRONIZE_MFA_DEVICES";
 export const UpdateAction = /*@__PURE__*/ S.String;
 
-export type UpdateActions = UpdateAction[];
+export type UpdateActions = (UpdateAction | (string & {}))[];
 export const UpdateActions = /*@__PURE__*/ S.Array(UpdateAction);
 export interface UpdateApprovalTeamRequest {
   ApprovalStrategy?: ApprovalStrategy;

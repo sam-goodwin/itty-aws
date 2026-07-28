@@ -23,13 +23,13 @@ export const CustomLocationsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<CustomLocationsCreateOrUpdateRequestTagsMap>;
 
 /** The identity type. */
-export type IdentityInputType = "SystemAssigned" | "None" | (string & {});
+export type IdentityInputType = "SystemAssigned" | "None";
 export const IdentityInputType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. */
-  type?: IdentityInputType;
+  type?: IdentityInputType | (string & {});
 }
 export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -63,7 +63,7 @@ export const CustomLocationPropertiesClusterExtensionIdsList =
   ) as any as S.Schema<CustomLocationPropertiesClusterExtensionIdsList>;
 
 /** Type of host the Custom Locations is referencing (Kubernetes, etc...). */
-export type CustomLocationPropertiesHostType = "Kubernetes" | (string & {});
+export type CustomLocationPropertiesHostType = "Kubernetes";
 export const CustomLocationPropertiesHostType = /*@__PURE__*/ S.String;
 
 /** Properties for a custom location. */
@@ -148,7 +148,7 @@ export const CustomLocationsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<CustomLocationsCreateOrUpdateResponseTagsMap>;
 
 /** The identity type. */
-export type IdentityType = "SystemAssigned" | "None" | (string & {});
+export type IdentityType = "SystemAssigned" | "None";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -173,8 +173,7 @@ export type CustomLocationsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const CustomLocationsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -183,8 +182,7 @@ export type CustomLocationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const CustomLocationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -326,8 +324,7 @@ export type CustomLocationsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const CustomLocationsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -336,8 +333,7 @@ export type CustomLocationsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const CustomLocationsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -442,8 +438,7 @@ export type CustomLocationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const CustomLocationSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -451,8 +446,7 @@ export type CustomLocationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const CustomLocationSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -636,8 +630,7 @@ export type EnabledResourceTypeSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const EnabledResourceTypeSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -646,8 +639,7 @@ export type EnabledResourceTypeSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const EnabledResourceTypeSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -868,8 +860,7 @@ export type CustomLocationsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const CustomLocationsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -878,8 +869,7 @@ export type CustomLocationsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const CustomLocationsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

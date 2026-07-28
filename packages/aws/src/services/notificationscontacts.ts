@@ -402,10 +402,7 @@ export type ResourceId = string;
 export type ResourceType = string;
 export type ServiceCode = string;
 export type QuotaCode = string;
-export type ValidationExceptionReason =
-  | "fieldValidationFailed"
-  | "other"
-  | (string & {});
+export type ValidationExceptionReason = "fieldValidationFailed" | "other";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

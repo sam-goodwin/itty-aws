@@ -88,15 +88,14 @@ export class PolicyQuotaExceeded extends T.applyErrorMatchers(
 export type PoliciesCreateRequestAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesCreateRequestAction = /*@__PURE__*/ S.String;
 
 export interface CreatePolicyRequest {
   /** Identifier */
   zoneId: string;
   /** The action to take if the expression matches */
-  action: PoliciesCreateRequestAction;
+  action: PoliciesCreateRequestAction | (string & {});
   /** A description for the policy */
   description: string;
   /** Whether the policy is enabled */
@@ -130,8 +129,7 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesCreateResponseAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesCreateResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -308,7 +306,7 @@ export const GetCookyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCookyRequest",
 }) as any as S.Schema<GetCookyRequest>;
 
-export type CookiesGetResponseType = "first_party" | "unknown" | (string & {});
+export type CookiesGetResponseType = "first_party" | "unknown";
 export const CookiesGetResponseType = /*@__PURE__*/ S.String;
 
 export type CookiesGetResponsePageUrlsList = ReadonlyArray<string>;
@@ -316,11 +314,7 @@ export const CookiesGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CookiesGetResponsePageUrlsList>;
 
-export type CookiesGetResponseSameSiteAttribute =
-  | "lax"
-  | "strict"
-  | "none"
-  | (string & {});
+export type CookiesGetResponseSameSiteAttribute = "lax" | "strict" | "none";
 export const CookiesGetResponseSameSiteAttribute = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -434,8 +428,7 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesGetResponseAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesGetResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -624,33 +617,30 @@ export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetScriptResponse",
 }) as any as S.Schema<GetScriptResponse>;
 
-export type ConnectionsListRequestDirection = "asc" | "desc" | (string & {});
+export type ConnectionsListRequestDirection = "asc" | "desc";
 export const ConnectionsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type ConnectionsListRequestExport = "csv" | (string & {});
+export type ConnectionsListRequestExport = "csv";
 export const ConnectionsListRequestExport = /*@__PURE__*/ S.String;
 
-export type ConnectionsListRequestOrderBy =
-  | "first_seen_at"
-  | "last_seen_at"
-  | (string & {});
+export type ConnectionsListRequestOrderBy = "first_seen_at" | "last_seen_at";
 export const ConnectionsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListConnectionsRequest {
   /** Identifier */
   zoneId: string;
   /** The direction used to sort returned connections. */
-  direction?: ConnectionsListRequestDirection;
+  direction?: ConnectionsListRequestDirection | (string & {});
   /** When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true. */
   excludeCdnCgi?: boolean;
   /** Excludes connections whose URL contains one of the URL-encoded URLs separated by commas. */
   excludeUrls?: string;
   /** Export the list of connections as a file, limited to 50000 entries. */
-  export?: ConnectionsListRequestExport;
+  export?: ConnectionsListRequestExport | (string & {});
   /** Includes connections that match one or more URL-encoded hostnames separated by commas. */
   hosts?: string;
   /** The field used to sort returned connections. */
-  orderBy?: ConnectionsListRequestOrderBy;
+  orderBy?: ConnectionsListRequestOrderBy | (string & {});
   /** The current page number of the paginated results. */
   page?: string;
   /** Includes connections that match one or more page URLs (separated by commas) where they were last seen */
@@ -786,37 +776,30 @@ export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectionsResponse",
 }) as any as S.Schema<ListConnectionsResponse>;
 
-export type CookiesListRequestDirection = "asc" | "desc" | (string & {});
+export type CookiesListRequestDirection = "asc" | "desc";
 export const CookiesListRequestDirection = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestExport = "csv" | (string & {});
+export type CookiesListRequestExport = "csv";
 export const CookiesListRequestExport = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestOrderBy =
-  | "first_seen_at"
-  | "last_seen_at"
-  | (string & {});
+export type CookiesListRequestOrderBy = "first_seen_at" | "last_seen_at";
 export const CookiesListRequestOrderBy = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestSameSite =
-  | "lax"
-  | "strict"
-  | "none"
-  | (string & {});
+export type CookiesListRequestSameSite = "lax" | "strict" | "none";
 export const CookiesListRequestSameSite = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestType = "first_party" | "unknown" | (string & {});
+export type CookiesListRequestType = "first_party" | "unknown";
 export const CookiesListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListCookiesRequest {
   /** Identifier */
   zoneId: string;
   /** The direction used to sort returned cookies.' */
-  direction?: CookiesListRequestDirection;
+  direction?: CookiesListRequestDirection | (string & {});
   /** Filters the returned cookies that match the specified domain attribute */
   domain?: string;
   /** Export the list of cookies as a file, limited to 50000 entries. */
-  export?: CookiesListRequestExport;
+  export?: CookiesListRequestExport | (string & {});
   /** Includes cookies that match one or more URL-encoded hostnames separated by commas. */
   hosts?: string;
   /** Filters the returned cookies that are set with HttpOnly */
@@ -824,7 +807,7 @@ export interface ListCookiesRequest {
   /** Filters the returned cookies that match the specified name. */
   name?: string;
   /** The field used to sort returned cookies. */
-  orderBy?: CookiesListRequestOrderBy;
+  orderBy?: CookiesListRequestOrderBy | (string & {});
   /** The current page number of the paginated results. */
   page?: string;
   /** Includes connections that match one or more page URLs (separated by commas) where they were last seen */
@@ -834,11 +817,11 @@ export interface ListCookiesRequest {
   /** The number of results per page. */
   perPage?: number;
   /** Filters the returned cookies that match the specified same_site attribute */
-  sameSite?: CookiesListRequestSameSite;
+  sameSite?: CookiesListRequestSameSite | (string & {});
   /** Filters the returned cookies that are set with Secure */
   secure?: boolean;
   /** Filters the returned cookies that match the specified type attribute */
-  type?: CookiesListRequestType;
+  type?: CookiesListRequestType | (string & {});
 }
 export const ListCookiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -870,10 +853,7 @@ export const ListCookiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCookiesRequest",
 }) as any as S.Schema<ListCookiesRequest>;
 
-export type CookiesListResultItemType =
-  | "first_party"
-  | "unknown"
-  | (string & {});
+export type CookiesListResultItemType = "first_party" | "unknown";
 export const CookiesListResultItemType = /*@__PURE__*/ S.String;
 
 export type CookiesListResultItemPageUrlsList = ReadonlyArray<string>;
@@ -881,11 +861,7 @@ export const CookiesListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CookiesListResultItemPageUrlsList>;
 
-export type CookiesListResultItemSameSiteAttribute =
-  | "lax"
-  | "strict"
-  | "none"
-  | (string & {});
+export type CookiesListResultItemSameSiteAttribute = "lax" | "strict" | "none";
 export const CookiesListResultItemSameSiteAttribute = /*@__PURE__*/ S.String;
 
 export interface CookiesListResultItem {
@@ -977,8 +953,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesListResultItemAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesListResultItemAction = /*@__PURE__*/ S.String;
 
 export interface PoliciesListResultItem {
@@ -1028,23 +1003,20 @@ export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoliciesResponse",
 }) as any as S.Schema<ListPoliciesResponse>;
 
-export type ScriptsListRequestDirection = "asc" | "desc" | (string & {});
+export type ScriptsListRequestDirection = "asc" | "desc";
 export const ScriptsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type ScriptsListRequestExport = "csv" | (string & {});
+export type ScriptsListRequestExport = "csv";
 export const ScriptsListRequestExport = /*@__PURE__*/ S.String;
 
-export type ScriptsListRequestOrderBy =
-  | "first_seen_at"
-  | "last_seen_at"
-  | (string & {});
+export type ScriptsListRequestOrderBy = "first_seen_at" | "last_seen_at";
 export const ScriptsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListScriptsRequest {
   /** Identifier */
   zoneId: string;
   /** The direction used to sort returned scripts. */
-  direction?: ScriptsListRequestDirection;
+  direction?: ScriptsListRequestDirection | (string & {});
   /** When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true. */
   excludeCdnCgi?: boolean;
   /** When true, excludes duplicate scripts. We consider a script duplicate of another if their javascript */
@@ -1052,11 +1024,11 @@ export interface ListScriptsRequest {
   /** Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas. */
   excludeUrls?: string;
   /** Export the list of scripts as a file, limited to 50000 entries. */
-  export?: ScriptsListRequestExport;
+  export?: ScriptsListRequestExport | (string & {});
   /** Includes scripts that match one or more URL-encoded hostnames separated by commas. */
   hosts?: string;
   /** The field used to sort returned scripts. */
-  orderBy?: ScriptsListRequestOrderBy;
+  orderBy?: ScriptsListRequestOrderBy | (string & {});
   /** The current page number of the paginated results. */
   page?: string;
   /** Includes scripts that match one or more page URLs (separated by commas) where they were last seen */
@@ -1272,8 +1244,7 @@ export const PutPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesUpdateRequestAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesUpdateRequestAction = /*@__PURE__*/ S.String;
 
 export interface UpdatePolicyRequest {
@@ -1282,7 +1253,7 @@ export interface UpdatePolicyRequest {
   /** Identifier */
   policyId: string;
   /** The action to take if the expression matches */
-  action?: PoliciesUpdateRequestAction;
+  action?: PoliciesUpdateRequestAction | (string & {});
   /** A description for the policy */
   description?: string;
   /** Whether the policy is enabled */
@@ -1317,8 +1288,7 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesUpdateResponseAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesUpdateResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

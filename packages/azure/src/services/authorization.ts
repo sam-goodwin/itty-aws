@@ -718,8 +718,7 @@ export type RoleAssignmentPropertiesInputPrincipalType =
   | "ForeignGroup"
   | "Device"
   | "AgentUser"
-  | "AgentServicePrincipal"
-  | (string & {});
+  | "AgentServicePrincipal";
 export const RoleAssignmentPropertiesInputPrincipalType =
   /*@__PURE__*/ S.String;
 
@@ -730,7 +729,7 @@ export interface RoleAssignmentPropertiesInput {
   /** The principal ID. */
   principalId: string;
   /** The principal type of the assigned principal ID. */
-  principalType?: RoleAssignmentPropertiesInputPrincipalType;
+  principalType?: RoleAssignmentPropertiesInputPrincipalType | (string & {});
   /** Description of role assignment */
   description?: string;
   /** The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container' */
@@ -784,8 +783,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -793,8 +791,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -831,8 +828,7 @@ export type RoleAssignmentPropertiesPrincipalType =
   | "ForeignGroup"
   | "Device"
   | "AgentUser"
-  | "AgentServicePrincipal"
-  | (string & {});
+  | "AgentServicePrincipal";
 export const RoleAssignmentPropertiesPrincipalType = /*@__PURE__*/ S.String;
 
 /** Role assignment properties. */

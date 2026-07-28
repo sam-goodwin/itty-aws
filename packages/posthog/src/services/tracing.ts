@@ -50,8 +50,7 @@ export const TracingAggregationQueryBodyServiceNamesList =
 export type SpanPropertyTypeEnum =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute"
-  | (string & {});
+  | "span_resource_attribute";
 export const SpanPropertyTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `lt` - lt * `is_set` - is_set * `is_not_set` - is_not_set */
@@ -65,17 +64,16 @@ export type SpanPropertyFilterOperatorEnum =
   | "gt"
   | "lt"
   | "is_set"
-  | "is_not_set"
-  | (string & {});
+  | "is_not_set";
 export const SpanPropertyFilterOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface SpanPropertyFilter {
   /** Attribute key. For type "span", use built-in fields (trace_id, span_id, duration, name, kind, status_code, is_root_span). For "span_attribute"/"span_resource_attribute", use the attribute key (e.g. "http.method"). */
   key: string;
   /** "span" filters built-in span fields. "span_attribute" filters span-level attributes. "span_resource_attribute" filters resource-level attributes. * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute */
-  type: SpanPropertyTypeEnum;
+  type: SpanPropertyTypeEnum | (string & {});
   /** Comparison operator. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `lt` - lt * `is_set` - is_set * `is_not_set` - is_not_set */
-  operator: SpanPropertyFilterOperatorEnum;
+  operator: SpanPropertyFilterOperatorEnum | (string & {});
   /** Value to compare against. String, number, or array of strings. Omit for is_set/is_not_set operators. */
   value?: unknown;
 }
@@ -222,8 +220,7 @@ export const TracingAggregationResponse = /*@__PURE__*/ S.suspend(() =>
 /** * `count` - count * `error_count` - error_count */
 export type TracingAttributeBreakdownQueryBodyOrderByEnum =
   | "count"
-  | "error_count"
-  | (string & {});
+  | "error_count";
 export const TracingAttributeBreakdownQueryBodyOrderByEnum =
   /*@__PURE__*/ S.String;
 
@@ -247,13 +244,13 @@ export interface TracingAttributeBreakdownQueryBody {
   /** Attribute key to group by (e.g. "server.address", "http.response.status_code"). Discover keys with apm-attributes-list. For the "span" breakdown type, must be one of the allowlisted top-level columns: "service_name", "status_code". */
   breakdownKey: string;
   /** Where the key lives: "span" for allowlisted top-level span columns, "span_attribute" for span-level attributes, "span_resource_attribute" for resource-level attributes. * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute */
-  breakdownType: SpanPropertyTypeEnum;
+  breakdownType: SpanPropertyTypeEnum | (string & {});
   /** Drop filters targeting the breakdown key itself (including serviceNames for a service_name breakdown), so a facet's value list stays complete while one of its values is selected. */
   excludeBreakdownFilter?: boolean;
   /** Type-ahead filter over the breakdown field's own values (case-insensitive substring match). An empty string means no filter. Lets a facet's value search reach past the row limit. */
   facetSearch?: string;
   /** Order rows by span count or error count, descending. Defaults to count. * `count` - count * `error_count` - error_count */
-  orderBy?: TracingAttributeBreakdownQueryBodyOrderByEnum;
+  orderBy?: TracingAttributeBreakdownQueryBodyOrderByEnum | (string & {});
   /** Date range for the primary window. Defaults to last hour. */
   dateRange?: TracingDateRange;
   /** Optional comparison-window configuration. When omitted, only the primary window is returned. */
@@ -360,8 +357,7 @@ export const TracingAttributeBreakdownResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type TracingSpansAttributesRetrieveRequestAttributeType =
   | "span_attribute"
-  | "span_resource_attribute"
-  | (string & {});
+  | "span_resource_attribute";
 export const TracingSpansAttributesRetrieveRequestAttributeType =
   /*@__PURE__*/ S.String;
 
@@ -369,7 +365,9 @@ export interface TracingSpansAttributesRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Type of attributes: "span_attribute" for span-level attributes, "span_resource_attribute" for resource-level attributes. * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute */
-  attribute_type?: TracingSpansAttributesRetrieveRequestAttributeType;
+  attribute_type?:
+    | TracingSpansAttributesRetrieveRequestAttributeType
+    | (string & {});
   /** Max results (default: 100). */
   limit?: number;
   /** Pagination offset (default: 0). */
@@ -402,7 +400,7 @@ export const TracingSpansAttributesRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TracingSpansAttributesRetrieveRequest>;
 
 /** * `key` - key * `value` - value */
-export type MatchedOnEnum = "key" | "value" | (string & {});
+export type MatchedOnEnum = "key" | "value";
 export const MatchedOnEnum = /*@__PURE__*/ S.String;
 
 export interface TracingAttributeEntry {
@@ -701,14 +699,11 @@ export const TracingQueryBodyStatusCodesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TracingQueryBodyStatusCodesList>;
 
 /** * `timestamp` - timestamp * `duration` - duration */
-export type TracingQueryBodyOrderByEnum =
-  | "timestamp"
-  | "duration"
-  | (string & {});
+export type TracingQueryBodyOrderByEnum = "timestamp" | "duration";
 export const TracingQueryBodyOrderByEnum = /*@__PURE__*/ S.String;
 
 /** * `ASC` - ASC * `DESC` - DESC */
-export type OrderDirectionEnum = "ASC" | "DESC" | (string & {});
+export type OrderDirectionEnum = "ASC" | "DESC";
 export const OrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** Property filters for the query. */
@@ -725,9 +720,9 @@ export interface TracingQueryBody {
   /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) — not HTTP status codes. Use [2] to select error spans. */
   statusCodes?: TracingQueryBodyStatusCodesList;
   /** Column to order by. Defaults to timestamp. Ordering by timestamp paginates via the keyset cursor ('after'); ordering by duration paginates via 'offset'. * `timestamp` - timestamp * `duration` - duration */
-  orderBy?: TracingQueryBodyOrderByEnum;
+  orderBy?: TracingQueryBodyOrderByEnum | (string & {});
   /** Order direction. Defaults to DESC (e.g. timestamp+DESC = newest first, duration+DESC = slowest first). * `ASC` - ASC * `DESC` - DESC */
-  orderDirection?: OrderDirectionEnum;
+  orderDirection?: OrderDirectionEnum | (string & {});
   /** Property filters for the query. */
   filterGroup?: TracingQueryBodyFilterGroupList;
   /** Filter to a specific trace ID (hex string). */
@@ -1064,7 +1059,7 @@ export const SymbolStatsResponseResultsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SymbolStatsResponseResultsList>;
 
 /** * `line` - line * `symbol` - symbol */
-export type GranularityEnum = "line" | "symbol" | (string & {});
+export type GranularityEnum = "line" | "symbol";
 export const GranularityEnum = /*@__PURE__*/ S.String;
 
 export interface SymbolStatsResponse {
@@ -1189,8 +1184,7 @@ export const TracingSpansTreeCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export type TracingSpansValuesRetrieveRequestAttributeType =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute"
-  | (string & {});
+  | "span_resource_attribute";
 export const TracingSpansValuesRetrieveRequestAttributeType =
   /*@__PURE__*/ S.String;
 
@@ -1198,7 +1192,9 @@ export interface TracingSpansValuesRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Type of attribute: "span" for built-in span fields (e.g. name), "span_attribute" for span-level attributes, "span_resource_attribute" for resource-level attributes. * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute */
-  attribute_type?: TracingSpansValuesRetrieveRequestAttributeType;
+  attribute_type?:
+    | TracingSpansValuesRetrieveRequestAttributeType
+    | (string & {});
   /** The attribute key to get values for. */
   key: string;
   /** Max results (default: 100). */
@@ -1294,11 +1290,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

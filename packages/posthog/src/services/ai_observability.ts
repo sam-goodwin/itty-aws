@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `all` - all * `pass` - pass * `fail` - fail * `na` - na */
-export type FilterEnum = "all" | "pass" | "fail" | "na" | (string & {});
+export type FilterEnum = "all" | "pass" | "fail" | "na";
 export const FilterEnum = /*@__PURE__*/ S.String;
 
 /** Optional: specific generation IDs to include in summary (max 250) */
@@ -53,7 +53,7 @@ export interface LlmAnalyticsEvaluationSummaryCreateRequest {
   /** UUID of the evaluation config to summarize */
   evaluation_id?: string;
   /** Filter type to apply ('all', 'pass', 'fail', or 'na') * `all` - all * `pass` - pass * `fail` - fail * `na` - na */
-  filter?: FilterEnum;
+  filter?: FilterEnum | (string & {});
   /** Optional: specific generation IDs to include in summary (max 250) */
   generation_ids?: LlmAnalyticsEvaluationSummaryCreateRequestGenerationIdsList;
   /** If true, bypass cache and generate a fresh summary */
@@ -225,14 +225,15 @@ export type LlmAnalyticsPersonalSpendListRequestBucketMinutes =
   | 5
   | 15
   | 30
-  | 60
-  | (number & {});
+  | 60;
 export const LlmAnalyticsPersonalSpendListRequestBucketMinutes =
   /*@__PURE__*/ S.Number;
 
 export interface LlmAnalyticsPersonalSpendListRequest {
   /** When set, additionally return a `by_bucket` breakdown: a time-ascending UTC cost series for the scoped product at this bucket size in minutes, with per-bucket cost split into uncached input / output / cache read / cache creation components plus the matching token sums. Supported bucket sizes: 5, 15, 30, 60. The window may span at most 600 buckets of the chosen size (e.g. 50 hours at 5-minute buckets). * `5` - 5 * `15` - 15 * `30` - 30 * `60` - 60 */
-  bucket_minutes?: LlmAnalyticsPersonalSpendListRequestBucketMinutes;
+  bucket_minutes?:
+    | LlmAnalyticsPersonalSpendListRequestBucketMinutes
+    | (number & {});
   /** Start of the spend window. Accepts absolute dates (`2026-04-23`) or relative strings (`-7d`, `-1m`, etc.) — same parser used elsewhere in PostHog. Defaults to `-30d`. The window between `date_from` and `date_to` cannot exceed 90 days. */
   date_from?: string;
   /** End of the spend window. Accepts the same formats as `date_from`. Defaults to `now` when omitted. */
@@ -615,7 +616,7 @@ export const LlmAnalyticsSummarizationBatchCheckCreateRequestTraceIdsList =
   ) as any as S.Schema<LlmAnalyticsSummarizationBatchCheckCreateRequestTraceIdsList>;
 
 /** * `minimal` - minimal * `detailed` - detailed */
-export type DetailModeValueEnum = "minimal" | "detailed" | (string & {});
+export type DetailModeValueEnum = "minimal" | "detailed";
 export const DetailModeValueEnum = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsSummarizationBatchCheckCreateRequest {
@@ -624,7 +625,7 @@ export interface LlmAnalyticsSummarizationBatchCheckCreateRequest {
   /** List of trace IDs to check for cached summaries */
   trace_ids?: LlmAnalyticsSummarizationBatchCheckCreateRequestTraceIdsList;
   /** Summary detail level to check for * `minimal` - minimal * `detailed` - detailed */
-  mode?: DetailModeValueEnum;
+  mode?: DetailModeValueEnum | (string & {});
   /** LLM model used for cached summaries */
   model?: string | null;
 }
@@ -678,16 +679,16 @@ export const BatchCheckResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchCheckResponse>;
 
 /** * `trace` - trace * `event` - event */
-export type SummarizeTypeEnum = "trace" | "event" | (string & {});
+export type SummarizeTypeEnum = "trace" | "event";
 export const SummarizeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsSummarizationCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Type of entity to summarize. Inferred automatically when using trace_id or generation_id. * `trace` - trace * `event` - event */
-  summarize_type?: SummarizeTypeEnum;
+  summarize_type?: SummarizeTypeEnum | (string & {});
   /** Summary detail level: 'minimal' for 3-5 points, 'detailed' for 5-10 points * `minimal` - minimal * `detailed` - detailed */
-  mode?: DetailModeValueEnum;
+  mode?: DetailModeValueEnum | (string & {});
   /** Data to summarize. For traces: {trace, hierarchy}. For events: {event}. Not required when using trace_id or generation_id. */
   data?: unknown;
   /** Force regenerate summary, bypassing cache */
@@ -808,8 +809,7 @@ export type EventTypeEnum =
   | "$ai_generation"
   | "$ai_span"
   | "$ai_embedding"
-  | "$ai_trace"
-  | (string & {});
+  | "$ai_trace";
 export const EventTypeEnum = /*@__PURE__*/ S.String;
 
 export interface TextReprOptions {
@@ -855,7 +855,7 @@ export interface LlmAnalyticsTextReprCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Type of LLM event to stringify * `$ai_generation` - $ai_generation * `$ai_span` - $ai_span * `$ai_embedding` - $ai_embedding * `$ai_trace` - $ai_trace */
-  event_type?: EventTypeEnum;
+  event_type?: EventTypeEnum | (string & {});
   /** Event data to stringify. For traces, should include 'trace' and 'hierarchy' fields. */
   data?: unknown;
   /** Optional configuration for text generation */

@@ -142,11 +142,11 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export type ClusterName = string;
-export type SchedulerType = "SLURM" | (string & {});
+export type SchedulerType = "SLURM";
 export const SchedulerType = /*@__PURE__*/ S.String;
 
 export interface SchedulerRequest {
-  type: SchedulerType;
+  type: SchedulerType | (string & {});
   version: string;
 }
 export const SchedulerRequest = /*@__PURE__*/ S.suspend(() =>
@@ -154,7 +154,7 @@ export const SchedulerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SchedulerRequest",
 }) as any as S.Schema<SchedulerRequest>;
-export type Size = "SMALL" | "MEDIUM" | "LARGE" | (string & {});
+export type Size = "SMALL" | "MEDIUM" | "LARGE";
 export const Size = /*@__PURE__*/ S.String;
 
 export type SubnetId = string;
@@ -163,13 +163,13 @@ export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
-export type NetworkType = "IPV4" | "IPV6" | (string & {});
+export type NetworkType = "IPV4" | "IPV6";
 export const NetworkType = /*@__PURE__*/ S.String;
 
 export interface NetworkingRequest {
   subnetIds?: string[];
   securityGroupIds?: string[];
-  networkType?: NetworkType;
+  networkType?: NetworkType | (string & {});
 }
 export const NetworkingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -215,12 +215,12 @@ export const CgroupCustomSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CgroupCustomSetting>;
 export type CgroupCustomSettings = CgroupCustomSetting[];
 export const CgroupCustomSettings = /*@__PURE__*/ S.Array(CgroupCustomSetting);
-export type AccountingMode = "STANDARD" | "NONE" | (string & {});
+export type AccountingMode = "STANDARD" | "NONE";
 export const AccountingMode = /*@__PURE__*/ S.String;
 
 export interface AccountingRequest {
   defaultPurgeTimeInDays?: number;
-  mode: AccountingMode;
+  mode: AccountingMode | (string & {});
 }
 export const AccountingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -230,11 +230,11 @@ export const AccountingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccountingRequest",
 }) as any as S.Schema<AccountingRequest>;
-export type SlurmRestMode = "STANDARD" | "NONE" | (string & {});
+export type SlurmRestMode = "STANDARD" | "NONE";
 export const SlurmRestMode = /*@__PURE__*/ S.String;
 
 export interface SlurmRestRequest {
-  mode: SlurmRestMode;
+  mode: SlurmRestMode | (string & {});
 }
 export const SlurmRestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mode: SlurmRestMode }),
@@ -272,7 +272,7 @@ export const RequestTagMap = /*@__PURE__*/ S.Record(
 export interface CreateClusterRequest {
   clusterName: string;
   scheduler: SchedulerRequest;
-  size: Size;
+  size: Size | (string & {});
   networking: NetworkingRequest;
   slurmConfiguration?: ClusterSlurmConfigurationRequest;
   clientToken?: string;
@@ -303,8 +303,7 @@ export type ClusterStatus =
   | "UPDATE_FAILED"
   | "SUSPENDING"
   | "SUSPENDED"
-  | "RESUMING"
-  | (string & {});
+  | "RESUMING";
 export const ClusterStatus = /*@__PURE__*/ S.String;
 
 export interface Scheduler {
@@ -386,11 +385,7 @@ export const Networking = /*@__PURE__*/ S.suspend(() =>
     networkType: S.optional(NetworkType),
   }),
 ).annotate({ identifier: "Networking" }) as any as S.Schema<Networking>;
-export type EndpointType =
-  | "SLURMCTLD"
-  | "SLURMDBD"
-  | "SLURMRESTD"
-  | (string & {});
+export type EndpointType = "SLURMCTLD" | "SLURMDBD" | "SLURMRESTD";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 export interface Endpoint {
@@ -467,8 +462,7 @@ export type PurchaseOption =
   | "ONDEMAND"
   | "SPOT"
   | "CAPACITY_BLOCK"
-  | "INTERRUPTIBLE_CAPACITY_RESERVATION"
-  | (string & {});
+  | "INTERRUPTIBLE_CAPACITY_RESERVATION";
 export const PurchaseOption = /*@__PURE__*/ S.String;
 
 export interface CustomLaunchTemplate {
@@ -501,8 +495,7 @@ export const InstanceList = /*@__PURE__*/ S.Array(InstanceConfig);
 export type SpotAllocationStrategy =
   | "lowest-price"
   | "capacity-optimized"
-  | "price-capacity-optimized"
-  | (string & {});
+  | "price-capacity-optimized";
 export const SpotAllocationStrategy = /*@__PURE__*/ S.String;
 
 export interface SpotOptions {
@@ -529,7 +522,7 @@ export interface CreateComputeNodeGroupRequest {
   computeNodeGroupName: string;
   amiId?: string;
   subnetIds: string[];
-  purchaseOption?: PurchaseOption;
+  purchaseOption?: PurchaseOption | (string & {});
   customLaunchTemplate: CustomLaunchTemplate;
   iamInstanceProfileArn: string;
   scalingConfiguration: ScalingConfigurationRequest;
@@ -571,8 +564,7 @@ export type ComputeNodeGroupStatus =
   | "DELETED"
   | "SUSPENDING"
   | "SUSPENDED"
-  | "RESUMING"
-  | (string & {});
+  | "RESUMING";
 export const ComputeNodeGroupStatus = /*@__PURE__*/ S.String;
 
 export interface ScalingConfiguration {
@@ -701,8 +693,7 @@ export type QueueStatus =
   | "UPDATE_FAILED"
   | "SUSPENDING"
   | "SUSPENDED"
-  | "RESUMING"
-  | (string & {});
+  | "RESUMING";
 export const QueueStatus = /*@__PURE__*/ S.String;
 
 export interface QueueSlurmConfiguration {
@@ -1111,7 +1102,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccountingRequest {
   defaultPurgeTimeInDays?: number;
-  mode?: AccountingMode;
+  mode?: AccountingMode | (string & {});
 }
 export const UpdateAccountingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1122,7 +1113,7 @@ export const UpdateAccountingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAccountingRequest",
 }) as any as S.Schema<UpdateAccountingRequest>;
 export interface UpdateSlurmRestRequest {
-  mode?: SlurmRestMode;
+  mode?: SlurmRestMode | (string & {});
 }
 export const UpdateSlurmRestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mode: S.optional(SlurmRestMode) }),
@@ -1203,7 +1194,7 @@ export interface UpdateComputeNodeGroupRequest {
   amiId?: string;
   subnetIds?: string[];
   customLaunchTemplate?: CustomLaunchTemplate;
-  purchaseOption?: PurchaseOption;
+  purchaseOption?: PurchaseOption | (string & {});
   spotOptions?: SpotOptions;
   scalingConfiguration?: ScalingConfigurationRequest;
   iamInstanceProfileArn?: string;
@@ -1281,8 +1272,7 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other"
-  | (string & {});
+  | "other";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

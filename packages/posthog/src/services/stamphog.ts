@@ -49,8 +49,7 @@ export type ResolutionSourceEnum =
   | "manual"
   | "slack_name_match"
   | "stamphog_config"
-  | "owners_contact"
-  | (string & {});
+  | "owners_contact";
 export const ResolutionSourceEnum = /*@__PURE__*/ S.String;
 
 export interface DigestChannel {
@@ -285,11 +284,7 @@ export const StamphogDigestRunsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StamphogDigestRunsListRequest>;
 
 /** * `pending` - PENDING * `completed` - COMPLETED * `failed` - FAILED */
-export type DigestRunStatusEnum =
-  | "pending"
-  | "completed"
-  | "failed"
-  | (string & {});
+export type DigestRunStatusEnum = "pending" | "completed" | "failed";
 export const DigestRunStatusEnum = /*@__PURE__*/ S.String;
 
 export interface DigestRun {
@@ -500,7 +495,7 @@ export const StamphogPullRequestsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StamphogPullRequestsRetrieveRequest>;
 
 /** * `all` - all * `label` - label */
-export type ReviewModeEnum = "all" | "label" | (string & {});
+export type ReviewModeEnum = "all" | "label";
 export const ReviewModeEnum = /*@__PURE__*/ S.String;
 
 export interface StamphogRepoConfigsCreateRequest {
@@ -515,7 +510,7 @@ export interface StamphogRepoConfigsCreateRequest {
   /** Whether merged PRs on this repo are captured for the daily Slack digest. */
   digest_enabled?: boolean;
   /** When reviews run: 'all' reviews every pull request (the default); 'label' reviews only pull requests carrying the trigger label, mirroring the Action's opt-in flow. * `all` - all * `label` - label */
-  review_mode?: ReviewModeEnum;
+  review_mode?: ReviewModeEnum | (string & {});
   /** Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'. */
   trigger_label?: string;
 }
@@ -702,7 +697,7 @@ export interface StamphogRepoConfigsPartialUpdateRequest {
   /** Whether merged PRs on this repo are captured for the daily Slack digest. */
   digest_enabled?: boolean;
   /** When reviews run: 'all' reviews every pull request (the default); 'label' reviews only pull requests carrying the trigger label, mirroring the Action's opt-in flow. * `all` - all * `label` - label */
-  review_mode?: ReviewModeEnum;
+  review_mode?: ReviewModeEnum | (string & {});
   /** Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'. */
   trigger_label?: string;
 }
@@ -851,7 +846,7 @@ export interface StamphogRepoConfigsUpdateRequest {
   /** Whether merged PRs on this repo are captured for the daily Slack digest. */
   digest_enabled?: boolean;
   /** When reviews run: 'all' reviews every pull request (the default); 'label' reviews only pull requests carrying the trigger label, mirroring the Action's opt-in flow. * `all` - all * `label` - label */
-  review_mode?: ReviewModeEnum;
+  review_mode?: ReviewModeEnum | (string & {});
   /** Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'. */
   trigger_label?: string;
 }
@@ -916,8 +911,7 @@ export type ReviewRunStatusEnum =
   | "reviewing"
   | "completed"
   | "failed"
-  | "superseded"
-  | (string & {});
+  | "superseded";
 export const ReviewRunStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `none` - NONE * `approved` - APPROVED * `refused` - REFUSED * `escalate` - ESCALATE * `wait` - WAIT * `error` - ERROR */
@@ -927,8 +921,7 @@ export type ReviewRunVerdictEnum =
   | "refused"
   | "escalate"
   | "wait"
-  | "error"
-  | (string & {});
+  | "error";
 export const ReviewRunVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Allowlisted, content-free slice of ``ReviewRun.gate_result``. The raw gate blob nests ``gates``, ``classification``, and ``policy`` sub-objects that carry repository content — changed-file paths (``safe_migration_files``, ``invalid_folder_files``), manifest gate messages, and declared ``policy.scopes`` — which a project member without repo access must not read. Only the terminal decision is exposed. */

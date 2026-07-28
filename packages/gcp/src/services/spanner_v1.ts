@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** A session in the Cloud Spanner Adapter API. */
@@ -66,9 +66,9 @@ export interface AdapterSession {
   name?: string;
 }
 export const AdapterSession = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "AdapterSession" }) as any as S.Schema<AdapterSession>;
 
 export interface AdapterProjectsInstancesDatabasesSessionsRequest {
@@ -77,27 +77,15 @@ export interface AdapterProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: AdapterSession;
 }
-export const AdapterProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(AdapterSession.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/sessions:adapter",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AdapterProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<AdapterProjectsInstancesDatabasesSessionsRequest>;
+export const AdapterProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AdapterSession.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/sessions:adapter","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "AdapterProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<AdapterProjectsInstancesDatabasesSessionsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Message sent by the client to the adapter. */
 export interface AdaptMessageRequest {
@@ -109,14 +97,12 @@ export interface AdaptMessageRequest {
   attachments?: StringMap;
 }
 export const AdaptMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: S.optional(S.String),
-    payload: S.optional(S.String),
-    attachments: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "AdaptMessageRequest",
-}) as any as S.Schema<AdaptMessageRequest>;
+S.Struct({
+  "protocol": S.optional(S.String),
+  "payload": S.optional(S.String),
+  "attachments": S.optional(StringMap),
+}),
+).annotate({ identifier: "AdaptMessageRequest" }) as any as S.Schema<AdaptMessageRequest>;
 
 export interface AdaptMessageProjectsInstancesDatabasesSessionsRequest {
   /** Required. The database session in which the adapter request is processed. */
@@ -124,21 +110,12 @@ export interface AdaptMessageProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: AdaptMessageRequest;
 }
-export const AdaptMessageProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AdaptMessageRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:adaptMessage",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AdaptMessageProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<AdaptMessageProjectsInstancesDatabasesSessionsRequest>;
+export const AdaptMessageProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(AdaptMessageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:adaptMessage","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "AdaptMessageProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<AdaptMessageProjectsInstancesDatabasesSessionsRequest>;
 
 /** Message sent by the adapter to the client. */
 export interface AdaptMessageResponse {
@@ -150,19 +127,15 @@ export interface AdaptMessageResponse {
   last?: boolean;
 }
 export const AdaptMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    payload: S.optional(S.String),
-    stateUpdates: S.optional(StringMap),
-    last: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdaptMessageResponse",
-}) as any as S.Schema<AdaptMessageResponse>;
+S.Struct({
+  "payload": S.optional(S.String),
+  "stateUpdates": S.optional(StringMap),
+  "last": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AdaptMessageResponse" }) as any as S.Schema<AdaptMessageResponse>;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 /** A split key. */
 export interface Key {
@@ -170,9 +143,9 @@ export interface Key {
   keyParts?: DocumentList;
 }
 export const Key = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyParts: S.optional(DocumentList),
-  }),
+S.Struct({
+  "keyParts": S.optional(DocumentList),
+}),
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
 export type KeyList = ReadonlyArray<Key>;
@@ -190,18 +163,16 @@ export interface SplitPoints {
   expireTime?: string;
 }
 export const SplitPoints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    table: S.optional(S.String),
-    index: S.optional(S.String),
-    keys: S.optional(KeyList),
-    expireTime: S.optional(S.String),
-  }),
+S.Struct({
+  "table": S.optional(S.String),
+  "index": S.optional(S.String),
+  "keys": S.optional(KeyList),
+  "expireTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "SplitPoints" }) as any as S.Schema<SplitPoints>;
 
 export type SplitPointsList = ReadonlyArray<SplitPoints>;
-export const SplitPointsList = /*@__PURE__*/ S.Array(
-  SplitPoints,
-) as any as S.Schema<SplitPointsList>;
+export const SplitPointsList = /*@__PURE__*/ S.Array(SplitPoints) as any as S.Schema<SplitPointsList>;
 
 /** The request for AddSplitPoints. */
 export interface AddSplitPointsRequest {
@@ -211,13 +182,11 @@ export interface AddSplitPointsRequest {
   initiator?: string;
 }
 export const AddSplitPointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    splitPoints: S.optional(SplitPointsList),
-    initiator: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddSplitPointsRequest",
-}) as any as S.Schema<AddSplitPointsRequest>;
+S.Struct({
+  "splitPoints": S.optional(SplitPointsList),
+  "initiator": S.optional(S.String),
+}),
+).annotate({ identifier: "AddSplitPointsRequest" }) as any as S.Schema<AddSplitPointsRequest>;
 
 export interface AddSplitPointsProjectsInstancesDatabasesRequest {
   /** Required. The database on whose tables or indexes the split points are to be added. Values are of the form `projects//instances//databases/`. */
@@ -225,29 +194,18 @@ export interface AddSplitPointsProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: AddSplitPointsRequest;
 }
-export const AddSplitPointsProjectsInstancesDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(AddSplitPointsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}:addSplitPoints",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AddSplitPointsProjectsInstancesDatabasesRequest",
-  }) as any as S.Schema<AddSplitPointsProjectsInstancesDatabasesRequest>;
+export const AddSplitPointsProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(AddSplitPointsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}:addSplitPoints","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "AddSplitPointsProjectsInstancesDatabasesRequest" }) as any as S.Schema<AddSplitPointsProjectsInstancesDatabasesRequest>;
 
 /** The response for AddSplitPoints. */
 export interface AddSplitPointsResponse {}
 export const AddSplitPointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AddSplitPointsResponse",
-}) as any as S.Schema<AddSplitPointsResponse>;
+S.Struct({}),
+).annotate({ identifier: "AddSplitPointsResponse" }) as any as S.Schema<AddSplitPointsResponse>;
 
 /** A session in the Cloud Spanner API. */
 export interface Session {
@@ -265,14 +223,14 @@ export interface Session {
   multiplexed?: boolean;
 }
 export const Session = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    createTime: S.optional(S.String),
-    approximateLastUseTime: S.optional(S.String),
-    creatorRole: S.optional(S.String),
-    multiplexed: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "createTime": S.optional(S.String),
+  "approximateLastUseTime": S.optional(S.String),
+  "creatorRole": S.optional(S.String),
+  "multiplexed": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
 
 /** The request for BatchCreateSessions. */
@@ -283,13 +241,11 @@ export interface BatchCreateSessionsRequest {
   sessionCount?: number;
 }
 export const BatchCreateSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionTemplate: S.optional(Session),
-    sessionCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BatchCreateSessionsRequest",
-}) as any as S.Schema<BatchCreateSessionsRequest>;
+S.Struct({
+  "sessionTemplate": S.optional(Session),
+  "sessionCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "BatchCreateSessionsRequest" }) as any as S.Schema<BatchCreateSessionsRequest>;
 
 export interface BatchCreateProjectsInstancesDatabasesSessionsRequest {
   /** Required. The database in which the new sessions are created. */
@@ -297,26 +253,15 @@ export interface BatchCreateProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: BatchCreateSessionsRequest;
 }
-export const BatchCreateProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(BatchCreateSessionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/sessions:batchCreate",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchCreateProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<BatchCreateProjectsInstancesDatabasesSessionsRequest>;
+export const BatchCreateProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(BatchCreateSessionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}/sessions:batchCreate","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "BatchCreateProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<BatchCreateProjectsInstancesDatabasesSessionsRequest>;
 
 export type SessionList = ReadonlyArray<Session>;
-export const SessionList = /*@__PURE__*/ S.Array(
-  Session,
-) as any as S.Schema<SessionList>;
+export const SessionList = /*@__PURE__*/ S.Array(Session) as any as S.Schema<SessionList>;
 
 /** The response for BatchCreateSessions. */
 export interface BatchCreateSessionsResponse {
@@ -324,26 +269,16 @@ export interface BatchCreateSessionsResponse {
   session?: SessionList;
 }
 export const BatchCreateSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session: S.optional(SessionList),
-  }),
-).annotate({
-  identifier: "BatchCreateSessionsResponse",
-}) as any as S.Schema<BatchCreateSessionsResponse>;
+S.Struct({
+  "session": S.optional(SessionList),
+}),
+).annotate({ identifier: "BatchCreateSessionsResponse" }) as any as S.Schema<BatchCreateSessionsResponse>;
 
-export type RequestOptionsPriorityEnum =
-  | "PRIORITY_UNSPECIFIED"
-  | "PRIORITY_LOW"
-  | "PRIORITY_MEDIUM"
-  | "PRIORITY_HIGH"
-  | (string & {});
+export type RequestOptionsPriorityEnum = "PRIORITY_UNSPECIFIED" | "PRIORITY_LOW" | "PRIORITY_MEDIUM" | "PRIORITY_HIGH";
 export const RequestOptionsPriorityEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Container for various pieces of client-owned context attached to a request. */
 export interface ClientContext {
@@ -351,15 +286,15 @@ export interface ClientContext {
   secureContext?: DocumentMap;
 }
 export const ClientContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secureContext: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "secureContext": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "ClientContext" }) as any as S.Schema<ClientContext>;
 
 /** Common request options for various APIs. */
 export interface RequestOptions {
   /** Priority for the request. */
-  priority?: RequestOptionsPriorityEnum;
+  priority?: RequestOptionsPriorityEnum | (string & {});
   /** A per-request tag which can be applied to queries or reads, used for statistics collection. Both `request_tag` and `transaction_tag` can be specified for a read or query that belongs to a transaction. This field is ignored for requests where it's not applicable (for example, `CommitRequest`). Legal characters for `request_tag` values are all printable characters (ASCII 32 - 126) and the length of a request_tag is limited to 50 characters. Values that exceed this limit are truncated. Any leading underscore (_) characters are removed from the string. */
   requestTag?: string;
   /** A tag used for statistics collection about this transaction. Both `request_tag` and `transaction_tag` can be specified for a read or query that belongs to a transaction. To enable tagging on a transaction, `transaction_tag` must be set to the same value for all requests belonging to the same transaction, including BeginTransaction. If this request doesn't belong to any transaction, `transaction_tag` is ignored. Legal characters for `transaction_tag` values are all printable characters (ASCII 32 - 126) and the length of a `transaction_tag` is limited to 50 characters. Values that exceed this limit are truncated. Any leading underscore (_) characters are removed from the string. */
@@ -368,23 +303,19 @@ export interface RequestOptions {
   clientContext?: ClientContext;
 }
 export const RequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priority: S.optional(RequestOptionsPriorityEnum),
-    requestTag: S.optional(S.String),
-    transactionTag: S.optional(S.String),
-    clientContext: S.optional(ClientContext),
-  }),
+S.Struct({
+  "priority": S.optional(RequestOptionsPriorityEnum),
+  "requestTag": S.optional(S.String),
+  "transactionTag": S.optional(S.String),
+  "clientContext": S.optional(ClientContext),
+}),
 ).annotate({ identifier: "RequestOptions" }) as any as S.Schema<RequestOptions>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type DocumentListList = ReadonlyArray<DocumentList>;
-export const DocumentListList = /*@__PURE__*/ S.Array(
-  DocumentList,
-) as any as S.Schema<DocumentListList>;
+export const DocumentListList = /*@__PURE__*/ S.Array(DocumentList) as any as S.Schema<DocumentListList>;
 
 /** Arguments to insert, update, insert_or_update, and replace operations. */
 export interface Write {
@@ -396,11 +327,11 @@ export interface Write {
   values?: DocumentListList;
 }
 export const Write = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    table: S.optional(S.String),
-    columns: S.optional(StringList),
-    values: S.optional(DocumentListList),
-  }),
+S.Struct({
+  "table": S.optional(S.String),
+  "columns": S.optional(StringList),
+  "values": S.optional(DocumentListList),
+}),
 ).annotate({ identifier: "Write" }) as any as S.Schema<Write>;
 
 /** KeyRange represents a range of rows in a table or index. A range has a start key and an end key. These keys can be open or closed, indicating if the range includes rows with that key. Keys are represented by lists, where the ith value in the list corresponds to the ith component of the table or index primary key. Individual values are encoded as described here. For example, consider the following table definition: CREATE TABLE UserEvents ( UserName STRING(MAX), EventDate STRING(10) ) PRIMARY KEY(UserName, EventDate); The following keys name rows in this table: "Bob", "2014-09-23" Since the `UserEvents` table's `PRIMARY KEY` clause names two columns, each `UserEvents` key has two elements; the first is the `UserName`, and the second is the `EventDate`. Key ranges with multiple components are interpreted lexicographically by component using the table or index key's declared sort order. For example, the following range returns all events for user `"Bob"` that occurred in the year 2015: "start_closed": ["Bob", "2015-01-01"] "end_closed": ["Bob", "2015-12-31"] Start and end keys can omit trailing key components. This affects the inclusion and exclusion of rows that exactly match the provided key components: if the key is closed, then rows that exactly match the provided components are included; if the key is open, then rows that exactly match are not included. For example, the following range includes all events for `"Bob"` that occurred during and after the year 2000: "start_closed": ["Bob", "2000-01-01"] "end_closed": ["Bob"] The next example retrieves all events for `"Bob"`: "start_closed": ["Bob"] "end_closed": ["Bob"] To retrieve events before the year 2000: "start_closed": ["Bob"] "end_open": ["Bob", "2000-01-01"] The following range includes all rows in the table: "start_closed": [] "end_closed": [] This range returns all users whose `UserName` begins with any character from A to C: "start_closed": ["A"] "end_open": ["D"] This range returns all users whose `UserName` begins with B: "start_closed": ["B"] "end_open": ["C"] Key ranges honor column sort order. For example, suppose a table is defined as follows: CREATE TABLE DescendingSortedTable { Key INT64, ... ) PRIMARY KEY(Key DESC); The following range retrieves all rows with key values between 1 and 100 inclusive: "start_closed": ["100"] "end_closed": ["1"] Note that 100 is passed as the start, and 1 is passed as the end, because `Key` is a descending column in the schema. */
@@ -415,18 +346,16 @@ export interface KeyRange {
   endOpen?: DocumentList;
 }
 export const KeyRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startClosed: S.optional(DocumentList),
-    startOpen: S.optional(DocumentList),
-    endClosed: S.optional(DocumentList),
-    endOpen: S.optional(DocumentList),
-  }),
+S.Struct({
+  "startClosed": S.optional(DocumentList),
+  "startOpen": S.optional(DocumentList),
+  "endClosed": S.optional(DocumentList),
+  "endOpen": S.optional(DocumentList),
+}),
 ).annotate({ identifier: "KeyRange" }) as any as S.Schema<KeyRange>;
 
 export type KeyRangeList = ReadonlyArray<KeyRange>;
-export const KeyRangeList = /*@__PURE__*/ S.Array(
-  KeyRange,
-) as any as S.Schema<KeyRangeList>;
+export const KeyRangeList = /*@__PURE__*/ S.Array(KeyRange) as any as S.Schema<KeyRangeList>;
 
 /** `KeySet` defines a collection of Cloud Spanner keys and/or key ranges. All the keys are expected to be in the same table or index. The keys need not be sorted in any particular way. If the same key is specified multiple times in the set (for example if two ranges, two keys, or a key and a range overlap), Cloud Spanner behaves as if the key were only specified once. */
 export interface KeySet {
@@ -438,11 +367,11 @@ export interface KeySet {
   all?: boolean;
 }
 export const KeySet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: S.optional(DocumentListList),
-    ranges: S.optional(KeyRangeList),
-    all: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "keys": S.optional(DocumentListList),
+  "ranges": S.optional(KeyRangeList),
+  "all": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "KeySet" }) as any as S.Schema<KeySet>;
 
 /** Arguments to delete operations. */
@@ -453,10 +382,10 @@ export interface Delete {
   keySet?: KeySet;
 }
 export const Delete = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    table: S.optional(S.String),
-    keySet: S.optional(KeySet),
-  }),
+S.Struct({
+  "table": S.optional(S.String),
+  "keySet": S.optional(KeySet),
+}),
 ).annotate({ identifier: "Delete" }) as any as S.Schema<Delete>;
 
 /** Arguments to send operations. */
@@ -471,12 +400,12 @@ export interface Send {
   payload?: unknown;
 }
 export const Send = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queue: S.optional(S.String),
-    key: S.optional(DocumentList),
-    deliverTime: S.optional(S.String),
-    payload: S.optional(S.Unknown),
-  }),
+S.Struct({
+  "queue": S.optional(S.String),
+  "key": S.optional(DocumentList),
+  "deliverTime": S.optional(S.String),
+  "payload": S.optional(S.Unknown),
+}),
 ).annotate({ identifier: "Send" }) as any as S.Schema<Send>;
 
 /** Arguments to ack operations. */
@@ -489,11 +418,11 @@ export interface Ack {
   ignoreNotFound?: boolean;
 }
 export const Ack = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queue: S.optional(S.String),
-    key: S.optional(DocumentList),
-    ignoreNotFound: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "queue": S.optional(S.String),
+  "key": S.optional(DocumentList),
+  "ignoreNotFound": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Ack" }) as any as S.Schema<Ack>;
 
 /** A modification to one or more Cloud Spanner rows. Mutations can be applied to a Cloud Spanner database by sending them in a Commit call. */
@@ -514,21 +443,19 @@ export interface Mutation {
   ack?: Ack;
 }
 export const Mutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insert: S.optional(Write),
-    update: S.optional(Write),
-    insertOrUpdate: S.optional(Write),
-    replace: S.optional(Write),
-    delete: S.optional(Delete),
-    send: S.optional(Send),
-    ack: S.optional(Ack),
-  }),
+S.Struct({
+  "insert": S.optional(Write),
+  "update": S.optional(Write),
+  "insertOrUpdate": S.optional(Write),
+  "replace": S.optional(Write),
+  "delete": S.optional(Delete),
+  "send": S.optional(Send),
+  "ack": S.optional(Ack),
+}),
 ).annotate({ identifier: "Mutation" }) as any as S.Schema<Mutation>;
 
 export type MutationList = ReadonlyArray<Mutation>;
-export const MutationList = /*@__PURE__*/ S.Array(
-  Mutation,
-) as any as S.Schema<MutationList>;
+export const MutationList = /*@__PURE__*/ S.Array(Mutation) as any as S.Schema<MutationList>;
 
 /** A group of mutations to be committed together. Related mutations should be placed in a group. For example, two mutations inserting rows with the same primary key prefix in both parent and child tables are related. */
 export interface MutationGroup {
@@ -536,15 +463,13 @@ export interface MutationGroup {
   mutations?: MutationList;
 }
 export const MutationGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mutations: S.optional(MutationList),
-  }),
+S.Struct({
+  "mutations": S.optional(MutationList),
+}),
 ).annotate({ identifier: "MutationGroup" }) as any as S.Schema<MutationGroup>;
 
 export type MutationGroupList = ReadonlyArray<MutationGroup>;
-export const MutationGroupList = /*@__PURE__*/ S.Array(
-  MutationGroup,
-) as any as S.Schema<MutationGroupList>;
+export const MutationGroupList = /*@__PURE__*/ S.Array(MutationGroup) as any as S.Schema<MutationGroupList>;
 
 /** The request for BatchWrite. */
 export interface BatchWriteRequest {
@@ -556,14 +481,12 @@ export interface BatchWriteRequest {
   excludeTxnFromChangeStreams?: boolean;
 }
 export const BatchWriteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestOptions: S.optional(RequestOptions),
-    mutationGroups: S.optional(MutationGroupList),
-    excludeTxnFromChangeStreams: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BatchWriteRequest",
-}) as any as S.Schema<BatchWriteRequest>;
+S.Struct({
+  "requestOptions": S.optional(RequestOptions),
+  "mutationGroups": S.optional(MutationGroupList),
+  "excludeTxnFromChangeStreams": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BatchWriteRequest" }) as any as S.Schema<BatchWriteRequest>;
 
 export interface BatchWriteProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the batch request is to be run. */
@@ -571,31 +494,18 @@ export interface BatchWriteProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: BatchWriteRequest;
 }
-export const BatchWriteProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(BatchWriteRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:batchWrite",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchWriteProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<BatchWriteProjectsInstancesDatabasesSessionsRequest>;
+export const BatchWriteProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(BatchWriteRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:batchWrite","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "BatchWriteProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<BatchWriteProjectsInstancesDatabasesSessionsRequest>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -607,11 +517,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** The result of applying a batch of mutations. */
@@ -624,40 +534,34 @@ export interface BatchWriteResponse {
   commitTimestamp?: string;
 }
 export const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexes: S.optional(IntegerList),
-    status: S.optional(Status),
-    commitTimestamp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchWriteResponse",
-}) as any as S.Schema<BatchWriteResponse>;
+S.Struct({
+  "indexes": S.optional(IntegerList),
+  "status": S.optional(Status),
+  "commitTimestamp": S.optional(S.String),
+}),
+).annotate({ identifier: "BatchWriteResponse" }) as any as S.Schema<BatchWriteResponse>;
 
-export type ReadWriteReadLockModeEnum =
-  | "READ_LOCK_MODE_UNSPECIFIED"
-  | "PESSIMISTIC"
-  | "OPTIMISTIC"
-  | (string & {});
+export type ReadWriteReadLockModeEnum = "READ_LOCK_MODE_UNSPECIFIED" | "PESSIMISTIC" | "OPTIMISTIC";
 export const ReadWriteReadLockModeEnum = /*@__PURE__*/ S.String;
 
 /** Message type to initiate a read-write transaction. Currently this transaction type has no options. */
 export interface ReadWrite {
   /** The read lock mode for the transaction. */
-  readLockMode?: ReadWriteReadLockModeEnum;
+  readLockMode?: ReadWriteReadLockModeEnum | (string & {});
   /** Optional. Clients should pass the transaction ID of the previous transaction attempt that was aborted if this transaction is being executed on a multiplexed session. */
   multiplexedSessionPreviousTransactionId?: string;
 }
 export const ReadWrite = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readLockMode: S.optional(ReadWriteReadLockModeEnum),
-    multiplexedSessionPreviousTransactionId: S.optional(S.String),
-  }),
+S.Struct({
+  "readLockMode": S.optional(ReadWriteReadLockModeEnum),
+  "multiplexedSessionPreviousTransactionId": S.optional(S.String),
+}),
 ).annotate({ identifier: "ReadWrite" }) as any as S.Schema<ReadWrite>;
 
 /** Message type to initiate a Partitioned DML transaction. */
 export interface PartitionedDml {}
 export const PartitionedDml = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+S.Struct({}),
 ).annotate({ identifier: "PartitionedDml" }) as any as S.Schema<PartitionedDml>;
 
 /** Message type to initiate a read-only transaction. */
@@ -676,21 +580,17 @@ export interface ReadOnly {
   returnReadTimestamp?: boolean;
 }
 export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strong: S.optional(S.Boolean),
-    minReadTimestamp: S.optional(S.String),
-    maxStaleness: S.optional(S.String),
-    readTimestamp: S.optional(S.String),
-    exactStaleness: S.optional(S.String),
-    returnReadTimestamp: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "strong": S.optional(S.Boolean),
+  "minReadTimestamp": S.optional(S.String),
+  "maxStaleness": S.optional(S.String),
+  "readTimestamp": S.optional(S.String),
+  "exactStaleness": S.optional(S.String),
+  "returnReadTimestamp": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "ReadOnly" }) as any as S.Schema<ReadOnly>;
 
-export type TransactionOptionsIsolationLevelEnum =
-  | "ISOLATION_LEVEL_UNSPECIFIED"
-  | "SERIALIZABLE"
-  | "REPEATABLE_READ"
-  | (string & {});
+export type TransactionOptionsIsolationLevelEnum = "ISOLATION_LEVEL_UNSPECIFIED" | "SERIALIZABLE" | "REPEATABLE_READ";
 export const TransactionOptionsIsolationLevelEnum = /*@__PURE__*/ S.String;
 
 /** Options to use for transactions. */
@@ -704,19 +604,17 @@ export interface TransactionOptions {
   /** When `exclude_txn_from_change_streams` is set to `true`, it prevents read or write transactions from being tracked in change streams. * If the DDL option `allow_txn_exclusion` is set to `true`, then the updates made within this transaction aren't recorded in the change stream. * If you don't set the DDL option `allow_txn_exclusion` or if it's set to `false`, then the updates made within this transaction are recorded in the change stream. When `exclude_txn_from_change_streams` is set to `false` or not set, modifications from this transaction are recorded in all change streams that are tracking columns modified by these transactions. The `exclude_txn_from_change_streams` option can only be specified for read-write or partitioned DML transactions, otherwise the API returns an `INVALID_ARGUMENT` error. */
   excludeTxnFromChangeStreams?: boolean;
   /** Isolation level for the transaction. */
-  isolationLevel?: TransactionOptionsIsolationLevelEnum;
+  isolationLevel?: TransactionOptionsIsolationLevelEnum | (string & {});
 }
 export const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readWrite: S.optional(ReadWrite),
-    partitionedDml: S.optional(PartitionedDml),
-    readOnly: S.optional(ReadOnly),
-    excludeTxnFromChangeStreams: S.optional(S.Boolean),
-    isolationLevel: S.optional(TransactionOptionsIsolationLevelEnum),
-  }),
-).annotate({
-  identifier: "TransactionOptions",
-}) as any as S.Schema<TransactionOptions>;
+S.Struct({
+  "readWrite": S.optional(ReadWrite),
+  "partitionedDml": S.optional(PartitionedDml),
+  "readOnly": S.optional(ReadOnly),
+  "excludeTxnFromChangeStreams": S.optional(S.Boolean),
+  "isolationLevel": S.optional(TransactionOptionsIsolationLevelEnum),
+}),
+).annotate({ identifier: "TransactionOptions" }) as any as S.Schema<TransactionOptions>;
 
 /** The request for BeginTransaction. */
 export interface BeginTransactionRequest {
@@ -728,14 +626,12 @@ export interface BeginTransactionRequest {
   mutationKey?: Mutation;
 }
 export const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(TransactionOptions),
-    requestOptions: S.optional(RequestOptions),
-    mutationKey: S.optional(Mutation),
-  }),
-).annotate({
-  identifier: "BeginTransactionRequest",
-}) as any as S.Schema<BeginTransactionRequest>;
+S.Struct({
+  "options": S.optional(TransactionOptions),
+  "requestOptions": S.optional(RequestOptions),
+  "mutationKey": S.optional(Mutation),
+}),
+).annotate({ identifier: "BeginTransactionRequest" }) as any as S.Schema<BeginTransactionRequest>;
 
 export interface BeginTransactionProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the transaction runs. */
@@ -743,21 +639,12 @@ export interface BeginTransactionProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: BeginTransactionRequest;
 }
-export const BeginTransactionProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:beginTransaction",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BeginTransactionProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<BeginTransactionProjectsInstancesDatabasesSessionsRequest>;
+export const BeginTransactionProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:beginTransaction","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "BeginTransactionProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<BeginTransactionProjectsInstancesDatabasesSessionsRequest>;
 
 /** When a read-write transaction is executed on a multiplexed session, this precommit token is sent back to the client as a part of the Transaction message in the BeginTransaction response and also as a part of the ResultSet and PartialResultSet responses. */
 export interface MultiplexedSessionPrecommitToken {
@@ -767,13 +654,11 @@ export interface MultiplexedSessionPrecommitToken {
   seqNum?: number;
 }
 export const MultiplexedSessionPrecommitToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    precommitToken: S.optional(S.String),
-    seqNum: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MultiplexedSessionPrecommitToken",
-}) as any as S.Schema<MultiplexedSessionPrecommitToken>;
+S.Struct({
+  "precommitToken": S.optional(S.String),
+  "seqNum": S.optional(S.Number),
+}),
+).annotate({ identifier: "MultiplexedSessionPrecommitToken" }) as any as S.Schema<MultiplexedSessionPrecommitToken>;
 
 /** A transaction. */
 export interface Transaction {
@@ -785,132 +670,78 @@ export interface Transaction {
   precommitToken?: MultiplexedSessionPrecommitToken;
 }
 export const Transaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    readTimestamp: S.optional(S.String),
-    precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "readTimestamp": S.optional(S.String),
+  "precommitToken": S.optional(MultiplexedSessionPrecommitToken),
+}),
 ).annotate({ identifier: "Transaction" }) as any as S.Schema<Transaction>;
 
 export interface CancelProjectsInstanceConfigsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstanceConfigsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelProjectsInstanceConfigsOperationsRequest",
-  }) as any as S.Schema<CancelProjectsInstanceConfigsOperationsRequest>;
+export const CancelProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsInstanceConfigsOperationsRequest" }) as any as S.Schema<CancelProjectsInstanceConfigsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface CancelProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstanceConfigsSsdCachesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelProjectsInstanceConfigsSsdCachesOperationsRequest",
-  }) as any as S.Schema<CancelProjectsInstanceConfigsSsdCachesOperationsRequest>;
+export const CancelProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsInstanceConfigsSsdCachesOperationsRequest" }) as any as S.Schema<CancelProjectsInstanceConfigsSsdCachesOperationsRequest>;
 
 export interface CancelProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstancesBackupsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelProjectsInstancesBackupsOperationsRequest",
-  }) as any as S.Schema<CancelProjectsInstancesBackupsOperationsRequest>;
+export const CancelProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsInstancesBackupsOperationsRequest" }) as any as S.Schema<CancelProjectsInstancesBackupsOperationsRequest>;
 
 export interface CancelProjectsInstancesDatabasesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstancesDatabasesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelProjectsInstancesDatabasesOperationsRequest",
-  }) as any as S.Schema<CancelProjectsInstancesDatabasesOperationsRequest>;
+export const CancelProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsInstancesDatabasesOperationsRequest" }) as any as S.Schema<CancelProjectsInstancesDatabasesOperationsRequest>;
 
 export interface CancelProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstancesInstancePartitionsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelProjectsInstancesInstancePartitionsOperationsRequest",
-  }) as any as S.Schema<CancelProjectsInstancesInstancePartitionsOperationsRequest>;
+export const CancelProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsInstancesInstancePartitionsOperationsRequest" }) as any as S.Schema<CancelProjectsInstancesInstancePartitionsOperationsRequest>;
 
 export interface CancelProjectsInstancesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsInstancesOperationsRequest",
-}) as any as S.Schema<CancelProjectsInstancesOperationsRequest>;
+export const CancelProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsInstancesOperationsRequest" }) as any as S.Schema<CancelProjectsInstancesOperationsRequest>;
 
 /** Message type for a single-region quorum. */
 export interface SingleRegionQuorum {
@@ -918,20 +749,16 @@ export interface SingleRegionQuorum {
   servingLocation?: string;
 }
 export const SingleRegionQuorum = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    servingLocation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SingleRegionQuorum",
-}) as any as S.Schema<SingleRegionQuorum>;
+S.Struct({
+  "servingLocation": S.optional(S.String),
+}),
+).annotate({ identifier: "SingleRegionQuorum" }) as any as S.Schema<SingleRegionQuorum>;
 
 /** Message type for a dual-region quorum. Currently this type has no options. */
 export interface DualRegionQuorum {}
 export const DualRegionQuorum = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DualRegionQuorum",
-}) as any as S.Schema<DualRegionQuorum>;
+S.Struct({}),
+).annotate({ identifier: "DualRegionQuorum" }) as any as S.Schema<DualRegionQuorum>;
 
 /** Information about the database quorum type. This only applies to dual-region instance configs. */
 export interface QuorumType {
@@ -941,10 +768,10 @@ export interface QuorumType {
   dualRegion?: DualRegionQuorum;
 }
 export const QuorumType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    singleRegion: S.optional(SingleRegionQuorum),
-    dualRegion: S.optional(DualRegionQuorum),
-  }),
+S.Struct({
+  "singleRegion": S.optional(SingleRegionQuorum),
+  "dualRegion": S.optional(DualRegionQuorum),
+}),
 ).annotate({ identifier: "QuorumType" }) as any as S.Schema<QuorumType>;
 
 /** The request for ChangeQuorum. */
@@ -957,14 +784,12 @@ export interface ChangeQuorumRequest {
   etag?: string;
 }
 export const ChangeQuorumRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    quorumType: S.optional(QuorumType),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChangeQuorumRequest",
-}) as any as S.Schema<ChangeQuorumRequest>;
+S.Struct({
+  "name": S.optional(S.String),
+  "quorumType": S.optional(QuorumType),
+  "etag": S.optional(S.String),
+}),
+).annotate({ identifier: "ChangeQuorumRequest" }) as any as S.Schema<ChangeQuorumRequest>;
 
 export interface ChangequorumProjectsInstancesDatabasesRequest {
   /** Required. Name of the database in which to apply `ChangeQuorum`. Values are of the form `projects//instances//databases/`. */
@@ -972,21 +797,12 @@ export interface ChangequorumProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: ChangeQuorumRequest;
 }
-export const ChangequorumProjectsInstancesDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ChangeQuorumRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:changequorum",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ChangequorumProjectsInstancesDatabasesRequest",
-  }) as any as S.Schema<ChangequorumProjectsInstancesDatabasesRequest>;
+export const ChangequorumProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ChangeQuorumRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:changequorum","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ChangequorumProjectsInstancesDatabasesRequest" }) as any as S.Schema<ChangequorumProjectsInstancesDatabasesRequest>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
@@ -1002,13 +818,13 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "error": S.optional(Status),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The request for Commit. */
@@ -1029,15 +845,15 @@ export interface CommitRequest {
   precommitToken?: MultiplexedSessionPrecommitToken;
 }
 export const CommitRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionId: S.optional(S.String),
-    singleUseTransaction: S.optional(TransactionOptions),
-    mutations: S.optional(MutationList),
-    returnCommitStats: S.optional(S.Boolean),
-    maxCommitDelay: S.optional(S.String),
-    requestOptions: S.optional(RequestOptions),
-    precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-  }),
+S.Struct({
+  "transactionId": S.optional(S.String),
+  "singleUseTransaction": S.optional(TransactionOptions),
+  "mutations": S.optional(MutationList),
+  "returnCommitStats": S.optional(S.Boolean),
+  "maxCommitDelay": S.optional(S.String),
+  "requestOptions": S.optional(RequestOptions),
+  "precommitToken": S.optional(MultiplexedSessionPrecommitToken),
+}),
 ).annotate({ identifier: "CommitRequest" }) as any as S.Schema<CommitRequest>;
 
 export interface CommitProjectsInstancesDatabasesSessionsRequest {
@@ -1046,21 +862,12 @@ export interface CommitProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: CommitRequest;
 }
-export const CommitProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(CommitRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:commit",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CommitProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<CommitProjectsInstancesDatabasesSessionsRequest>;
+export const CommitProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(CommitRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:commit","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CommitProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<CommitProjectsInstancesDatabasesSessionsRequest>;
 
 /** Additional statistics about a commit. */
 export interface CommitStats {
@@ -1068,23 +875,15 @@ export interface CommitStats {
   mutationCount?: string;
 }
 export const CommitStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mutationCount: S.optional(S.String),
-  }),
+S.Struct({
+  "mutationCount": S.optional(S.String),
+}),
 ).annotate({ identifier: "CommitStats" }) as any as S.Schema<CommitStats>;
 
-export type CommitResponseIsolationLevelEnum =
-  | "ISOLATION_LEVEL_UNSPECIFIED"
-  | "SERIALIZABLE"
-  | "REPEATABLE_READ"
-  | (string & {});
+export type CommitResponseIsolationLevelEnum = "ISOLATION_LEVEL_UNSPECIFIED" | "SERIALIZABLE" | "REPEATABLE_READ";
 export const CommitResponseIsolationLevelEnum = /*@__PURE__*/ S.String;
 
-export type CommitResponseReadLockModeEnum =
-  | "READ_LOCK_MODE_UNSPECIFIED"
-  | "PESSIMISTIC"
-  | "OPTIMISTIC"
-  | (string & {});
+export type CommitResponseReadLockModeEnum = "READ_LOCK_MODE_UNSPECIFIED" | "PESSIMISTIC" | "OPTIMISTIC";
 export const CommitResponseReadLockModeEnum = /*@__PURE__*/ S.String;
 
 /** The response for Commit. */
@@ -1103,43 +902,35 @@ export interface CommitResponse {
   readLockMode?: CommitResponseReadLockModeEnum;
 }
 export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitTimestamp: S.optional(S.String),
-    commitStats: S.optional(CommitStats),
-    precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-    snapshotTimestamp: S.optional(S.String),
-    isolationLevel: S.optional(CommitResponseIsolationLevelEnum),
-    readLockMode: S.optional(CommitResponseReadLockModeEnum),
-  }),
+S.Struct({
+  "commitTimestamp": S.optional(S.String),
+  "commitStats": S.optional(CommitStats),
+  "precommitToken": S.optional(MultiplexedSessionPrecommitToken),
+  "snapshotTimestamp": S.optional(S.String),
+  "isolationLevel": S.optional(CommitResponseIsolationLevelEnum),
+  "readLockMode": S.optional(CommitResponseReadLockModeEnum),
+}),
 ).annotate({ identifier: "CommitResponse" }) as any as S.Schema<CommitResponse>;
 
-export type CopyBackupEncryptionConfigEncryptionTypeEnum =
-  | "ENCRYPTION_TYPE_UNSPECIFIED"
-  | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION"
-  | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
-export const CopyBackupEncryptionConfigEncryptionTypeEnum =
-  /*@__PURE__*/ S.String;
+export type CopyBackupEncryptionConfigEncryptionTypeEnum = "ENCRYPTION_TYPE_UNSPECIFIED" | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION" | "GOOGLE_DEFAULT_ENCRYPTION" | "CUSTOMER_MANAGED_ENCRYPTION";
+export const CopyBackupEncryptionConfigEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption configuration for the copied backup. */
 export interface CopyBackupEncryptionConfig {
   /** Required. The encryption type of the backup. */
-  encryptionType?: CopyBackupEncryptionConfigEncryptionTypeEnum;
+  encryptionType?: CopyBackupEncryptionConfigEncryptionTypeEnum | (string & {});
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. */
   kmsKeyName?: string;
   /** Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. KMS keys specified can be in any order. The keys referenced by `kms_key_names` must fully cover all regions of the backup's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
   kmsKeyNames?: StringList;
 }
 export const CopyBackupEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionType: S.optional(CopyBackupEncryptionConfigEncryptionTypeEnum),
-    kmsKeyName: S.optional(S.String),
-    kmsKeyNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CopyBackupEncryptionConfig",
-}) as any as S.Schema<CopyBackupEncryptionConfig>;
+S.Struct({
+  "encryptionType": S.optional(CopyBackupEncryptionConfigEncryptionTypeEnum),
+  "kmsKeyName": S.optional(S.String),
+  "kmsKeyNames": S.optional(StringList),
+}),
+).annotate({ identifier: "CopyBackupEncryptionConfig" }) as any as S.Schema<CopyBackupEncryptionConfig>;
 
 /** The request for CopyBackup. */
 export interface CopyBackupRequest {
@@ -1153,15 +944,13 @@ export interface CopyBackupRequest {
   encryptionConfig?: CopyBackupEncryptionConfig;
 }
 export const CopyBackupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backupId: S.optional(S.String),
-    sourceBackup: S.optional(S.String),
-    expireTime: S.optional(S.String),
-    encryptionConfig: S.optional(CopyBackupEncryptionConfig),
-  }),
-).annotate({
-  identifier: "CopyBackupRequest",
-}) as any as S.Schema<CopyBackupRequest>;
+S.Struct({
+  "backupId": S.optional(S.String),
+  "sourceBackup": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+  "encryptionConfig": S.optional(CopyBackupEncryptionConfig),
+}),
+).annotate({ identifier: "CopyBackupRequest" }) as any as S.Schema<CopyBackupRequest>;
 
 export interface CopyProjectsInstancesBackupsRequest {
   /** Required. The name of the destination instance that will contain the backup copy. Values are of the form: `projects/{project}/instances/{instance}`. */
@@ -1170,33 +959,16 @@ export interface CopyProjectsInstancesBackupsRequest {
   body?: CopyBackupRequest;
 }
 export const CopyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(CopyBackupRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/backups:copy",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CopyProjectsInstancesBackupsRequest",
-}) as any as S.Schema<CopyProjectsInstancesBackupsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CopyBackupRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/backups:copy","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CopyProjectsInstancesBackupsRequest" }) as any as S.Schema<CopyProjectsInstancesBackupsRequest>;
 
-export type InstanceConfigConfigTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "GOOGLE_MANAGED"
-  | "USER_MANAGED"
-  | (string & {});
+export type InstanceConfigConfigTypeEnum = "TYPE_UNSPECIFIED" | "GOOGLE_MANAGED" | "USER_MANAGED";
 export const InstanceConfigConfigTypeEnum = /*@__PURE__*/ S.String;
 
-export type ReplicaInfoTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "READ_WRITE"
-  | "READ_ONLY"
-  | "WITNESS"
-  | (string & {});
+export type ReplicaInfoTypeEnum = "TYPE_UNSPECIFIED" | "READ_WRITE" | "READ_ONLY" | "WITNESS";
 export const ReplicaInfoTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ReplicaInfo {
@@ -1208,41 +980,23 @@ export interface ReplicaInfo {
   defaultLeaderLocation?: boolean;
 }
 export const ReplicaInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    type: S.optional(ReplicaInfoTypeEnum),
-    defaultLeaderLocation: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "location": S.optional(S.String),
+  "type": S.optional(ReplicaInfoTypeEnum),
+  "defaultLeaderLocation": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "ReplicaInfo" }) as any as S.Schema<ReplicaInfo>;
 
 export type ReplicaInfoList = ReadonlyArray<ReplicaInfo>;
-export const ReplicaInfoList = /*@__PURE__*/ S.Array(
-  ReplicaInfo,
-) as any as S.Schema<ReplicaInfoList>;
+export const ReplicaInfoList = /*@__PURE__*/ S.Array(ReplicaInfo) as any as S.Schema<ReplicaInfoList>;
 
-export type InstanceConfigStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | (string & {});
+export type InstanceConfigStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
 export const InstanceConfigStateEnum = /*@__PURE__*/ S.String;
 
-export type InstanceConfigFreeInstanceAvailabilityEnum =
-  | "FREE_INSTANCE_AVAILABILITY_UNSPECIFIED"
-  | "AVAILABLE"
-  | "UNSUPPORTED"
-  | "DISABLED"
-  | "QUOTA_EXCEEDED"
-  | (string & {});
-export const InstanceConfigFreeInstanceAvailabilityEnum =
-  /*@__PURE__*/ S.String;
+export type InstanceConfigFreeInstanceAvailabilityEnum = "FREE_INSTANCE_AVAILABILITY_UNSPECIFIED" | "AVAILABLE" | "UNSUPPORTED" | "DISABLED" | "QUOTA_EXCEEDED";
+export const InstanceConfigFreeInstanceAvailabilityEnum = /*@__PURE__*/ S.String;
 
-export type InstanceConfigQuorumTypeEnum =
-  | "QUORUM_TYPE_UNSPECIFIED"
-  | "REGION"
-  | "DUAL_REGION"
-  | "MULTI_REGION"
-  | (string & {});
+export type InstanceConfigQuorumTypeEnum = "QUORUM_TYPE_UNSPECIFIED" | "REGION" | "DUAL_REGION" | "MULTI_REGION";
 export const InstanceConfigQuorumTypeEnum = /*@__PURE__*/ S.String;
 
 /** A possible configuration for a Cloud Spanner instance. Configurations define the geographic placement of nodes and their replication. */
@@ -1277,24 +1031,22 @@ export interface InstanceConfig {
   storageLimitPerProcessingUnit?: string;
 }
 export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    configType: S.optional(InstanceConfigConfigTypeEnum),
-    replicas: S.optional(ReplicaInfoList),
-    optionalReplicas: S.optional(ReplicaInfoList),
-    baseConfig: S.optional(S.String),
-    labels: S.optional(StringMap),
-    etag: S.optional(S.String),
-    leaderOptions: S.optional(StringList),
-    reconciling: S.optional(S.Boolean),
-    state: S.optional(InstanceConfigStateEnum),
-    freeInstanceAvailability: S.optional(
-      InstanceConfigFreeInstanceAvailabilityEnum,
-    ),
-    quorumType: S.optional(InstanceConfigQuorumTypeEnum),
-    storageLimitPerProcessingUnit: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "configType": S.optional(InstanceConfigConfigTypeEnum),
+  "replicas": S.optional(ReplicaInfoList),
+  "optionalReplicas": S.optional(ReplicaInfoList),
+  "baseConfig": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "etag": S.optional(S.String),
+  "leaderOptions": S.optional(StringList),
+  "reconciling": S.optional(S.Boolean),
+  "state": S.optional(InstanceConfigStateEnum),
+  "freeInstanceAvailability": S.optional(InstanceConfigFreeInstanceAvailabilityEnum),
+  "quorumType": S.optional(InstanceConfigQuorumTypeEnum),
+  "storageLimitPerProcessingUnit": S.optional(S.String),
+}),
 ).annotate({ identifier: "InstanceConfig" }) as any as S.Schema<InstanceConfig>;
 
 /** The request for CreateInstanceConfig. */
@@ -1307,14 +1059,12 @@ export interface CreateInstanceConfigRequest {
   validateOnly?: boolean;
 }
 export const CreateInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceConfigId: S.optional(S.String),
-    instanceConfig: S.optional(InstanceConfig),
-    validateOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateInstanceConfigRequest",
-}) as any as S.Schema<CreateInstanceConfigRequest>;
+S.Struct({
+  "instanceConfigId": S.optional(S.String),
+  "instanceConfig": S.optional(InstanceConfig),
+  "validateOnly": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CreateInstanceConfigRequest" }) as any as S.Schema<CreateInstanceConfigRequest>;
 
 export interface CreateProjectsInstanceConfigsRequest {
   /** Required. The name of the project in which to create the instance configuration. Values are of the form `projects/`. */
@@ -1322,21 +1072,12 @@ export interface CreateProjectsInstanceConfigsRequest {
   /** Request body */
   body?: CreateInstanceConfigRequest;
 }
-export const CreateProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CreateInstanceConfigRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/instanceConfigs",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsInstanceConfigsRequest",
-}) as any as S.Schema<CreateProjectsInstanceConfigsRequest>;
+export const CreateProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CreateInstanceConfigRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/instanceConfigs","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstanceConfigsRequest" }) as any as S.Schema<CreateProjectsInstanceConfigsRequest>;
 
 /** ReplicaSelection identifies replicas with common properties. */
 export interface InstanceReplicaSelection {
@@ -1344,12 +1085,10 @@ export interface InstanceReplicaSelection {
   location?: string;
 }
 export const InstanceReplicaSelection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InstanceReplicaSelection",
-}) as any as S.Schema<InstanceReplicaSelection>;
+S.Struct({
+  "location": S.optional(S.String),
+}),
+).annotate({ identifier: "InstanceReplicaSelection" }) as any as S.Schema<InstanceReplicaSelection>;
 
 /** ReplicaComputeCapacity describes the amount of server resources that are allocated to each replica identified by the replica selection. */
 export interface ReplicaComputeCapacity {
@@ -1361,19 +1100,15 @@ export interface ReplicaComputeCapacity {
   processingUnits?: number;
 }
 export const ReplicaComputeCapacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replicaSelection: S.optional(InstanceReplicaSelection),
-    nodeCount: S.optional(S.Number),
-    processingUnits: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ReplicaComputeCapacity",
-}) as any as S.Schema<ReplicaComputeCapacity>;
+S.Struct({
+  "replicaSelection": S.optional(InstanceReplicaSelection),
+  "nodeCount": S.optional(S.Number),
+  "processingUnits": S.optional(S.Number),
+}),
+).annotate({ identifier: "ReplicaComputeCapacity" }) as any as S.Schema<ReplicaComputeCapacity>;
 
 export type ReplicaComputeCapacityList = ReadonlyArray<ReplicaComputeCapacity>;
-export const ReplicaComputeCapacityList = /*@__PURE__*/ S.Array(
-  ReplicaComputeCapacity,
-) as any as S.Schema<ReplicaComputeCapacityList>;
+export const ReplicaComputeCapacityList = /*@__PURE__*/ S.Array(ReplicaComputeCapacity) as any as S.Schema<ReplicaComputeCapacityList>;
 
 /** The autoscaling limits for the instance. Users can define the minimum and maximum compute capacity allocated to the instance, and the autoscaler will only scale within that range. Users can either use nodes or processing units to specify the limits, but should use the same unit to set both the min_limit and max_limit. */
 export interface AutoscalingLimits {
@@ -1387,15 +1122,13 @@ export interface AutoscalingLimits {
   maxProcessingUnits?: number;
 }
 export const AutoscalingLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minNodes: S.optional(S.Number),
-    minProcessingUnits: S.optional(S.Number),
-    maxNodes: S.optional(S.Number),
-    maxProcessingUnits: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AutoscalingLimits",
-}) as any as S.Schema<AutoscalingLimits>;
+S.Struct({
+  "minNodes": S.optional(S.Number),
+  "minProcessingUnits": S.optional(S.Number),
+  "maxNodes": S.optional(S.Number),
+  "maxProcessingUnits": S.optional(S.Number),
+}),
+).annotate({ identifier: "AutoscalingLimits" }) as any as S.Schema<AutoscalingLimits>;
 
 /** The autoscaling targets for an instance. */
 export interface AutoscalingTargets {
@@ -1407,14 +1140,12 @@ export interface AutoscalingTargets {
   storageUtilizationPercent?: number;
 }
 export const AutoscalingTargets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    highPriorityCpuUtilizationPercent: S.optional(S.Number),
-    totalCpuUtilizationPercent: S.optional(S.Number),
-    storageUtilizationPercent: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AutoscalingTargets",
-}) as any as S.Schema<AutoscalingTargets>;
+S.Struct({
+  "highPriorityCpuUtilizationPercent": S.optional(S.Number),
+  "totalCpuUtilizationPercent": S.optional(S.Number),
+  "storageUtilizationPercent": S.optional(S.Number),
+}),
+).annotate({ identifier: "AutoscalingTargets" }) as any as S.Schema<AutoscalingTargets>;
 
 /** Overrides the top-level autoscaling configuration for the replicas identified by `replica_selection`. All fields in this message are optional. Any unspecified fields will use the corresponding values from the top-level autoscaling configuration. */
 export interface AutoscalingConfigOverrides {
@@ -1430,16 +1161,14 @@ export interface AutoscalingConfigOverrides {
   disableTotalCpuAutoscaling?: boolean;
 }
 export const AutoscalingConfigOverrides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoscalingLimits: S.optional(AutoscalingLimits),
-    autoscalingTargetHighPriorityCpuUtilizationPercent: S.optional(S.Number),
-    autoscalingTargetTotalCpuUtilizationPercent: S.optional(S.Number),
-    disableHighPriorityCpuAutoscaling: S.optional(S.Boolean),
-    disableTotalCpuAutoscaling: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AutoscalingConfigOverrides",
-}) as any as S.Schema<AutoscalingConfigOverrides>;
+S.Struct({
+  "autoscalingLimits": S.optional(AutoscalingLimits),
+  "autoscalingTargetHighPriorityCpuUtilizationPercent": S.optional(S.Number),
+  "autoscalingTargetTotalCpuUtilizationPercent": S.optional(S.Number),
+  "disableHighPriorityCpuAutoscaling": S.optional(S.Boolean),
+  "disableTotalCpuAutoscaling": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AutoscalingConfigOverrides" }) as any as S.Schema<AutoscalingConfigOverrides>;
 
 /** AsymmetricAutoscalingOption specifies the scaling of replicas identified by the given selection. */
 export interface AsymmetricAutoscalingOption {
@@ -1449,19 +1178,14 @@ export interface AsymmetricAutoscalingOption {
   overrides?: AutoscalingConfigOverrides;
 }
 export const AsymmetricAutoscalingOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replicaSelection: S.optional(InstanceReplicaSelection),
-    overrides: S.optional(AutoscalingConfigOverrides),
-  }),
-).annotate({
-  identifier: "AsymmetricAutoscalingOption",
-}) as any as S.Schema<AsymmetricAutoscalingOption>;
+S.Struct({
+  "replicaSelection": S.optional(InstanceReplicaSelection),
+  "overrides": S.optional(AutoscalingConfigOverrides),
+}),
+).annotate({ identifier: "AsymmetricAutoscalingOption" }) as any as S.Schema<AsymmetricAutoscalingOption>;
 
-export type AsymmetricAutoscalingOptionList =
-  ReadonlyArray<AsymmetricAutoscalingOption>;
-export const AsymmetricAutoscalingOptionList = /*@__PURE__*/ S.Array(
-  AsymmetricAutoscalingOption,
-) as any as S.Schema<AsymmetricAutoscalingOptionList>;
+export type AsymmetricAutoscalingOptionList = ReadonlyArray<AsymmetricAutoscalingOption>;
+export const AsymmetricAutoscalingOptionList = /*@__PURE__*/ S.Array(AsymmetricAutoscalingOption) as any as S.Schema<AsymmetricAutoscalingOptionList>;
 
 /** Autoscaling configuration for an instance. */
 export interface AutoscalingConfig {
@@ -1473,34 +1197,20 @@ export interface AutoscalingConfig {
   asymmetricAutoscalingOptions?: AsymmetricAutoscalingOptionList;
 }
 export const AutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoscalingLimits: S.optional(AutoscalingLimits),
-    autoscalingTargets: S.optional(AutoscalingTargets),
-    asymmetricAutoscalingOptions: S.optional(AsymmetricAutoscalingOptionList),
-  }),
-).annotate({
-  identifier: "AutoscalingConfig",
-}) as any as S.Schema<AutoscalingConfig>;
+S.Struct({
+  "autoscalingLimits": S.optional(AutoscalingLimits),
+  "autoscalingTargets": S.optional(AutoscalingTargets),
+  "asymmetricAutoscalingOptions": S.optional(AsymmetricAutoscalingOptionList),
+}),
+).annotate({ identifier: "AutoscalingConfig" }) as any as S.Schema<AutoscalingConfig>;
 
-export type InstanceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | (string & {});
+export type InstanceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
-export type InstanceInstanceTypeEnum =
-  | "INSTANCE_TYPE_UNSPECIFIED"
-  | "PROVISIONED"
-  | "FREE_INSTANCE"
-  | (string & {});
+export type InstanceInstanceTypeEnum = "INSTANCE_TYPE_UNSPECIFIED" | "PROVISIONED" | "FREE_INSTANCE";
 export const InstanceInstanceTypeEnum = /*@__PURE__*/ S.String;
 
-export type FreeInstanceMetadataExpireBehaviorEnum =
-  | "EXPIRE_BEHAVIOR_UNSPECIFIED"
-  | "FREE_TO_PROVISIONED"
-  | "REMOVE_AFTER_GRACE_PERIOD"
-  | (string & {});
+export type FreeInstanceMetadataExpireBehaviorEnum = "EXPIRE_BEHAVIOR_UNSPECIFIED" | "FREE_TO_PROVISIONED" | "REMOVE_AFTER_GRACE_PERIOD";
 export const FreeInstanceMetadataExpireBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes. */
@@ -1513,28 +1223,17 @@ export interface FreeInstanceMetadata {
   expireBehavior?: FreeInstanceMetadataExpireBehaviorEnum;
 }
 export const FreeInstanceMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expireTime: S.optional(S.String),
-    upgradeTime: S.optional(S.String),
-    expireBehavior: S.optional(FreeInstanceMetadataExpireBehaviorEnum),
-  }),
-).annotate({
-  identifier: "FreeInstanceMetadata",
-}) as any as S.Schema<FreeInstanceMetadata>;
+S.Struct({
+  "expireTime": S.optional(S.String),
+  "upgradeTime": S.optional(S.String),
+  "expireBehavior": S.optional(FreeInstanceMetadataExpireBehaviorEnum),
+}),
+).annotate({ identifier: "FreeInstanceMetadata" }) as any as S.Schema<FreeInstanceMetadata>;
 
-export type InstanceEditionEnum =
-  | "EDITION_UNSPECIFIED"
-  | "STANDARD"
-  | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+export type InstanceEditionEnum = "EDITION_UNSPECIFIED" | "STANDARD" | "ENTERPRISE" | "ENTERPRISE_PLUS";
 export const InstanceEditionEnum = /*@__PURE__*/ S.String;
 
-export type InstanceDefaultBackupScheduleTypeEnum =
-  | "DEFAULT_BACKUP_SCHEDULE_TYPE_UNSPECIFIED"
-  | "NONE"
-  | "AUTOMATIC"
-  | (string & {});
+export type InstanceDefaultBackupScheduleTypeEnum = "DEFAULT_BACKUP_SCHEDULE_TYPE_UNSPECIFIED" | "NONE" | "AUTOMATIC";
 export const InstanceDefaultBackupScheduleTypeEnum = /*@__PURE__*/ S.String;
 
 /** An isolated set of Cloud Spanner resources on which databases can be hosted. */
@@ -1573,26 +1272,24 @@ export interface Instance {
   defaultBackupScheduleType?: InstanceDefaultBackupScheduleTypeEnum;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    config: S.optional(S.String),
-    displayName: S.optional(S.String),
-    nodeCount: S.optional(S.Number),
-    processingUnits: S.optional(S.Number),
-    replicaComputeCapacity: S.optional(ReplicaComputeCapacityList),
-    autoscalingConfig: S.optional(AutoscalingConfig),
-    state: S.optional(InstanceStateEnum),
-    labels: S.optional(StringMap),
-    instanceType: S.optional(InstanceInstanceTypeEnum),
-    endpointUris: S.optional(StringList),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    freeInstanceMetadata: S.optional(FreeInstanceMetadata),
-    edition: S.optional(InstanceEditionEnum),
-    defaultBackupScheduleType: S.optional(
-      InstanceDefaultBackupScheduleTypeEnum,
-    ),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "config": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "nodeCount": S.optional(S.Number),
+  "processingUnits": S.optional(S.Number),
+  "replicaComputeCapacity": S.optional(ReplicaComputeCapacityList),
+  "autoscalingConfig": S.optional(AutoscalingConfig),
+  "state": S.optional(InstanceStateEnum),
+  "labels": S.optional(StringMap),
+  "instanceType": S.optional(InstanceInstanceTypeEnum),
+  "endpointUris": S.optional(StringList),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "freeInstanceMetadata": S.optional(FreeInstanceMetadata),
+  "edition": S.optional(InstanceEditionEnum),
+  "defaultBackupScheduleType": S.optional(InstanceDefaultBackupScheduleTypeEnum),
+}),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 /** The request for CreateInstance. */
@@ -1603,13 +1300,11 @@ export interface CreateInstanceRequest {
   instance?: Instance;
 }
 export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.optional(S.String),
-    instance: S.optional(Instance),
-  }),
-).annotate({
-  identifier: "CreateInstanceRequest",
-}) as any as S.Schema<CreateInstanceRequest>;
+S.Struct({
+  "instanceId": S.optional(S.String),
+  "instance": S.optional(Instance),
+}),
+).annotate({ identifier: "CreateInstanceRequest" }) as any as S.Schema<CreateInstanceRequest>;
 
 export interface CreateProjectsInstancesRequest {
   /** Required. The name of the project in which to create the instance. Values are of the form `projects/`. */
@@ -1618,41 +1313,19 @@ export interface CreateProjectsInstancesRequest {
   body?: CreateInstanceRequest;
 }
 export const CreateProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(CreateInstanceRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/instances",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsInstancesRequest",
-}) as any as S.Schema<CreateProjectsInstancesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CreateInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/instances","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesRequest" }) as any as S.Schema<CreateProjectsInstancesRequest>;
 
-export type CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum =
-  | "ENCRYPTION_TYPE_UNSPECIFIED"
-  | "USE_DATABASE_ENCRYPTION"
-  | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
-export const CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum =
-  /*@__PURE__*/ S.String;
+export type CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum = "ENCRYPTION_TYPE_UNSPECIFIED" | "USE_DATABASE_ENCRYPTION" | "GOOGLE_DEFAULT_ENCRYPTION" | "CUSTOMER_MANAGED_ENCRYPTION";
+export const CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum = /*@__PURE__*/ S.String;
 
-export type BackupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | (string & {});
+export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
-export type EncryptionInfoEncryptionTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
+export type EncryptionInfoEncryptionTypeEnum = "TYPE_UNSPECIFIED" | "GOOGLE_DEFAULT_ENCRYPTION" | "CUSTOMER_MANAGED_ENCRYPTION";
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption information for a Cloud Spanner database or backup. */
@@ -1665,23 +1338,17 @@ export interface EncryptionInfo {
   kmsKeyVersion?: string;
 }
 export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionType: S.optional(EncryptionInfoEncryptionTypeEnum),
-    encryptionStatus: S.optional(Status),
-    kmsKeyVersion: S.optional(S.String),
-  }),
+S.Struct({
+  "encryptionType": S.optional(EncryptionInfoEncryptionTypeEnum),
+  "encryptionStatus": S.optional(Status),
+  "kmsKeyVersion": S.optional(S.String),
+}),
 ).annotate({ identifier: "EncryptionInfo" }) as any as S.Schema<EncryptionInfo>;
 
 export type EncryptionInfoList = ReadonlyArray<EncryptionInfo>;
-export const EncryptionInfoList = /*@__PURE__*/ S.Array(
-  EncryptionInfo,
-) as any as S.Schema<EncryptionInfoList>;
+export const EncryptionInfoList = /*@__PURE__*/ S.Array(EncryptionInfo) as any as S.Schema<EncryptionInfoList>;
 
-export type BackupDatabaseDialectEnum =
-  | "DATABASE_DIALECT_UNSPECIFIED"
-  | "GOOGLE_STANDARD_SQL"
-  | "POSTGRESQL"
-  | (string & {});
+export type BackupDatabaseDialectEnum = "DATABASE_DIALECT_UNSPECIFIED" | "GOOGLE_STANDARD_SQL" | "POSTGRESQL";
 export const BackupDatabaseDialectEnum = /*@__PURE__*/ S.String;
 
 /** Instance partition information for the backup. */
@@ -1690,25 +1357,15 @@ export interface BackupInstancePartition {
   instancePartition?: string;
 }
 export const BackupInstancePartition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instancePartition: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BackupInstancePartition",
-}) as any as S.Schema<BackupInstancePartition>;
+S.Struct({
+  "instancePartition": S.optional(S.String),
+}),
+).annotate({ identifier: "BackupInstancePartition" }) as any as S.Schema<BackupInstancePartition>;
 
-export type BackupInstancePartitionList =
-  ReadonlyArray<BackupInstancePartition>;
-export const BackupInstancePartitionList = /*@__PURE__*/ S.Array(
-  BackupInstancePartition,
-) as any as S.Schema<BackupInstancePartitionList>;
+export type BackupInstancePartitionList = ReadonlyArray<BackupInstancePartition>;
+export const BackupInstancePartitionList = /*@__PURE__*/ S.Array(BackupInstancePartition) as any as S.Schema<BackupInstancePartitionList>;
 
-export type BackupMinimumRestorableEditionEnum =
-  | "EDITION_UNSPECIFIED"
-  | "STANDARD"
-  | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+export type BackupMinimumRestorableEditionEnum = "EDITION_UNSPECIFIED" | "STANDARD" | "ENTERPRISE" | "ENTERPRISE_PLUS";
 export const BackupMinimumRestorableEditionEnum = /*@__PURE__*/ S.String;
 
 /** A backup of a Cloud Spanner database. */
@@ -1755,28 +1412,28 @@ export interface Backup {
   minimumRestorableEdition?: BackupMinimumRestorableEditionEnum;
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.optional(S.String),
-    versionTime: S.optional(S.String),
-    expireTime: S.optional(S.String),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-    sizeBytes: S.optional(S.String),
-    freeableSizeBytes: S.optional(S.String),
-    exclusiveSizeBytes: S.optional(S.String),
-    state: S.optional(BackupStateEnum),
-    referencingDatabases: S.optional(StringList),
-    encryptionInfo: S.optional(EncryptionInfo),
-    encryptionInformation: S.optional(EncryptionInfoList),
-    databaseDialect: S.optional(BackupDatabaseDialectEnum),
-    referencingBackups: S.optional(StringList),
-    maxExpireTime: S.optional(S.String),
-    backupSchedules: S.optional(StringList),
-    incrementalBackupChainId: S.optional(S.String),
-    oldestVersionTime: S.optional(S.String),
-    instancePartitions: S.optional(BackupInstancePartitionList),
-    minimumRestorableEdition: S.optional(BackupMinimumRestorableEditionEnum),
-  }),
+S.Struct({
+  "database": S.optional(S.String),
+  "versionTime": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "sizeBytes": S.optional(S.String),
+  "freeableSizeBytes": S.optional(S.String),
+  "exclusiveSizeBytes": S.optional(S.String),
+  "state": S.optional(BackupStateEnum),
+  "referencingDatabases": S.optional(StringList),
+  "encryptionInfo": S.optional(EncryptionInfo),
+  "encryptionInformation": S.optional(EncryptionInfoList),
+  "databaseDialect": S.optional(BackupDatabaseDialectEnum),
+  "referencingBackups": S.optional(StringList),
+  "maxExpireTime": S.optional(S.String),
+  "backupSchedules": S.optional(StringList),
+  "incrementalBackupChainId": S.optional(S.String),
+  "oldestVersionTime": S.optional(S.String),
+  "instancePartitions": S.optional(BackupInstancePartitionList),
+  "minimumRestorableEdition": S.optional(BackupMinimumRestorableEditionEnum),
+}),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 export interface CreateProjectsInstancesBackupsRequest {
@@ -1785,7 +1442,7 @@ export interface CreateProjectsInstancesBackupsRequest {
   /** Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects/{project}/instances/{instance}/backups/{backup_id}`. */
   backupId?: string;
   /** Required. The encryption type of the backup. */
-  "encryptionConfig.encryptionType"?: CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum;
+  "encryptionConfig.encryptionType"?: CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum | (string & {});
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. */
   "encryptionConfig.kmsKeyName"?: string;
   /** Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. The keys referenced by `kms_key_names` must fully cover all regions of the backup's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
@@ -1793,29 +1450,16 @@ export interface CreateProjectsInstancesBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const CreateProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      backupId: S.optional(S.String.pipe(T.Query())),
-      "encryptionConfig.encryptionType": S.optional(
-        CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      "encryptionConfig.kmsKeyName": S.optional(S.String.pipe(T.Query())),
-      "encryptionConfig.kmsKeyNames": S.optional(StringList.pipe(T.Query())),
-      body: S.optional(Backup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/backups",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsInstancesBackupsRequest",
-}) as any as S.Schema<CreateProjectsInstancesBackupsRequest>;
+export const CreateProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "backupId": S.optional(S.String.pipe(T.Query())),
+  "encryptionConfig.encryptionType": S.optional(CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum.pipe(T.Query())),
+  "encryptionConfig.kmsKeyName": S.optional(S.String.pipe(T.Query())),
+  "encryptionConfig.kmsKeyNames": S.optional(StringList.pipe(T.Query())),
+  "body": S.optional(Backup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/backups","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesBackupsRequest" }) as any as S.Schema<CreateProjectsInstancesBackupsRequest>;
 
 /** Encryption configuration for a Cloud Spanner database. */
 export interface EncryptionConfig {
@@ -1825,19 +1469,13 @@ export interface EncryptionConfig {
   kmsKeyNames?: StringList;
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyName: S.optional(S.String),
-    kmsKeyNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "EncryptionConfig",
-}) as any as S.Schema<EncryptionConfig>;
+S.Struct({
+  "kmsKeyName": S.optional(S.String),
+  "kmsKeyNames": S.optional(StringList),
+}),
+).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
 
-export type CreateDatabaseRequestDatabaseDialectEnum =
-  | "DATABASE_DIALECT_UNSPECIFIED"
-  | "GOOGLE_STANDARD_SQL"
-  | "POSTGRESQL"
-  | (string & {});
+export type CreateDatabaseRequestDatabaseDialectEnum = "DATABASE_DIALECT_UNSPECIFIED" | "GOOGLE_STANDARD_SQL" | "POSTGRESQL";
 export const CreateDatabaseRequestDatabaseDialectEnum = /*@__PURE__*/ S.String;
 
 /** The request for CreateDatabase. */
@@ -1849,21 +1487,19 @@ export interface CreateDatabaseRequest {
   /** Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption. */
   encryptionConfig?: EncryptionConfig;
   /** Optional. The dialect of the Cloud Spanner Database. */
-  databaseDialect?: CreateDatabaseRequestDatabaseDialectEnum;
+  databaseDialect?: CreateDatabaseRequestDatabaseDialectEnum | (string & {});
   /** Optional. Proto descriptors used by `CREATE/ALTER PROTO BUNDLE` statements in 'extra_statements'. Contains a protobuf-serialized [`google.protobuf.FileDescriptorSet`](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto) descriptor set. To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run ``` $protoc --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.data \ moon/shot/app.proto ``` For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description). */
   protoDescriptors?: string;
 }
 export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createStatement: S.optional(S.String),
-    extraStatements: S.optional(StringList),
-    encryptionConfig: S.optional(EncryptionConfig),
-    databaseDialect: S.optional(CreateDatabaseRequestDatabaseDialectEnum),
-    protoDescriptors: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDatabaseRequest",
-}) as any as S.Schema<CreateDatabaseRequest>;
+S.Struct({
+  "createStatement": S.optional(S.String),
+  "extraStatements": S.optional(StringList),
+  "encryptionConfig": S.optional(EncryptionConfig),
+  "databaseDialect": S.optional(CreateDatabaseRequestDatabaseDialectEnum),
+  "protoDescriptors": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateDatabaseRequest" }) as any as S.Schema<CreateDatabaseRequest>;
 
 export interface CreateProjectsInstancesDatabasesRequest {
   /** Required. The name of the instance that will serve the new database. Values are of the form `projects//instances/`. */
@@ -1871,21 +1507,12 @@ export interface CreateProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: CreateDatabaseRequest;
 }
-export const CreateProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CreateDatabaseRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/databases",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsInstancesDatabasesRequest",
-}) as any as S.Schema<CreateProjectsInstancesDatabasesRequest>;
+export const CreateProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CreateDatabaseRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/databases","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesDatabasesRequest" }) as any as S.Schema<CreateProjectsInstancesDatabasesRequest>;
 
 /** CrontabSpec can be used to specify the version time and frequency at which the backup is created. */
 export interface CrontabSpec {
@@ -1897,11 +1524,11 @@ export interface CrontabSpec {
   creationWindow?: string;
 }
 export const CrontabSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-    timeZone: S.optional(S.String),
-    creationWindow: S.optional(S.String),
-  }),
+S.Struct({
+  "text": S.optional(S.String),
+  "timeZone": S.optional(S.String),
+  "creationWindow": S.optional(S.String),
+}),
 ).annotate({ identifier: "CrontabSpec" }) as any as S.Schema<CrontabSpec>;
 
 /** Defines specifications of the backup schedule. */
@@ -1910,21 +1537,13 @@ export interface BackupScheduleSpec {
   cronSpec?: CrontabSpec;
 }
 export const BackupScheduleSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cronSpec: S.optional(CrontabSpec),
-  }),
-).annotate({
-  identifier: "BackupScheduleSpec",
-}) as any as S.Schema<BackupScheduleSpec>;
+S.Struct({
+  "cronSpec": S.optional(CrontabSpec),
+}),
+).annotate({ identifier: "BackupScheduleSpec" }) as any as S.Schema<BackupScheduleSpec>;
 
-export type CreateBackupEncryptionConfigEncryptionTypeEnum =
-  | "ENCRYPTION_TYPE_UNSPECIFIED"
-  | "USE_DATABASE_ENCRYPTION"
-  | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
-export const CreateBackupEncryptionConfigEncryptionTypeEnum =
-  /*@__PURE__*/ S.String;
+export type CreateBackupEncryptionConfigEncryptionTypeEnum = "ENCRYPTION_TYPE_UNSPECIFIED" | "USE_DATABASE_ENCRYPTION" | "GOOGLE_DEFAULT_ENCRYPTION" | "CUSTOMER_MANAGED_ENCRYPTION";
+export const CreateBackupEncryptionConfigEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption configuration for the backup to create. */
 export interface CreateBackupEncryptionConfig {
@@ -1936,28 +1555,24 @@ export interface CreateBackupEncryptionConfig {
   kmsKeyNames?: StringList;
 }
 export const CreateBackupEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionType: S.optional(CreateBackupEncryptionConfigEncryptionTypeEnum),
-    kmsKeyName: S.optional(S.String),
-    kmsKeyNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CreateBackupEncryptionConfig",
-}) as any as S.Schema<CreateBackupEncryptionConfig>;
+S.Struct({
+  "encryptionType": S.optional(CreateBackupEncryptionConfigEncryptionTypeEnum),
+  "kmsKeyName": S.optional(S.String),
+  "kmsKeyNames": S.optional(StringList),
+}),
+).annotate({ identifier: "CreateBackupEncryptionConfig" }) as any as S.Schema<CreateBackupEncryptionConfig>;
 
 /** The specification for full backups. A full backup stores the entire contents of the database at a given version time. */
 export interface FullBackupSpec {}
 export const FullBackupSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+S.Struct({}),
 ).annotate({ identifier: "FullBackupSpec" }) as any as S.Schema<FullBackupSpec>;
 
 /** The specification for incremental backup chains. An incremental backup stores the delta of changes between a previous backup and the database contents at a given version time. An incremental backup chain consists of a full backup and zero or more successive incremental backups. The first backup created for an incremental backup chain is always a full backup. */
 export interface IncrementalBackupSpec {}
 export const IncrementalBackupSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IncrementalBackupSpec",
-}) as any as S.Schema<IncrementalBackupSpec>;
+S.Struct({}),
+).annotate({ identifier: "IncrementalBackupSpec" }) as any as S.Schema<IncrementalBackupSpec>;
 
 /** BackupSchedule expresses the automated backup creation specification for a Spanner database. */
 export interface BackupSchedule {
@@ -1977,15 +1592,15 @@ export interface BackupSchedule {
   updateTime?: string;
 }
 export const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    spec: S.optional(BackupScheduleSpec),
-    retentionDuration: S.optional(S.String),
-    encryptionConfig: S.optional(CreateBackupEncryptionConfig),
-    fullBackupSpec: S.optional(FullBackupSpec),
-    incrementalBackupSpec: S.optional(IncrementalBackupSpec),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "spec": S.optional(BackupScheduleSpec),
+  "retentionDuration": S.optional(S.String),
+  "encryptionConfig": S.optional(CreateBackupEncryptionConfig),
+  "fullBackupSpec": S.optional(FullBackupSpec),
+  "incrementalBackupSpec": S.optional(IncrementalBackupSpec),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "BackupSchedule" }) as any as S.Schema<BackupSchedule>;
 
 export interface CreateProjectsInstancesDatabasesBackupSchedulesRequest {
@@ -1996,22 +1611,13 @@ export interface CreateProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: BackupSchedule;
 }
-export const CreateProjectsInstancesDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      backupScheduleId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BackupSchedule.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/backupSchedules",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsInstancesDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<CreateProjectsInstancesDatabasesBackupSchedulesRequest>;
+export const CreateProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "backupScheduleId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BackupSchedule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/backupSchedules","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesDatabasesBackupSchedulesRequest" }) as any as S.Schema<CreateProjectsInstancesDatabasesBackupSchedulesRequest>;
 
 /** The request for CreateSession. */
 export interface CreateSessionRequest {
@@ -2019,12 +1625,10 @@ export interface CreateSessionRequest {
   session?: Session;
 }
 export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session: S.optional(Session),
-  }),
-).annotate({
-  identifier: "CreateSessionRequest",
-}) as any as S.Schema<CreateSessionRequest>;
+S.Struct({
+  "session": S.optional(Session),
+}),
+).annotate({ identifier: "CreateSessionRequest" }) as any as S.Schema<CreateSessionRequest>;
 
 export interface CreateProjectsInstancesDatabasesSessionsRequest {
   /** Required. The database in which the new session is created. */
@@ -2032,27 +1636,14 @@ export interface CreateProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: CreateSessionRequest;
 }
-export const CreateProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(CreateSessionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/sessions",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<CreateProjectsInstancesDatabasesSessionsRequest>;
+export const CreateProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(CreateSessionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}/sessions","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<CreateProjectsInstancesDatabasesSessionsRequest>;
 
-export type InstancePartitionStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | (string & {});
+export type InstancePartitionStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
 export const InstancePartitionStateEnum = /*@__PURE__*/ S.String;
 
 /** An isolated set of Cloud Spanner resources that databases can define placements on. */
@@ -2083,23 +1674,21 @@ export interface InstancePartition {
   etag?: string;
 }
 export const InstancePartition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    config: S.optional(S.String),
-    displayName: S.optional(S.String),
-    nodeCount: S.optional(S.Number),
-    processingUnits: S.optional(S.Number),
-    autoscalingConfig: S.optional(AutoscalingConfig),
-    state: S.optional(InstancePartitionStateEnum),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    referencingDatabases: S.optional(StringList),
-    referencingBackups: S.optional(StringList),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InstancePartition",
-}) as any as S.Schema<InstancePartition>;
+S.Struct({
+  "name": S.optional(S.String),
+  "config": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "nodeCount": S.optional(S.Number),
+  "processingUnits": S.optional(S.Number),
+  "autoscalingConfig": S.optional(AutoscalingConfig),
+  "state": S.optional(InstancePartitionStateEnum),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "referencingDatabases": S.optional(StringList),
+  "referencingBackups": S.optional(StringList),
+  "etag": S.optional(S.String),
+}),
+).annotate({ identifier: "InstancePartition" }) as any as S.Schema<InstancePartition>;
 
 /** The request for CreateInstancePartition. */
 export interface CreateInstancePartitionRequest {
@@ -2109,13 +1698,11 @@ export interface CreateInstancePartitionRequest {
   instancePartition?: InstancePartition;
 }
 export const CreateInstancePartitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instancePartitionId: S.optional(S.String),
-    instancePartition: S.optional(InstancePartition),
-  }),
-).annotate({
-  identifier: "CreateInstancePartitionRequest",
-}) as any as S.Schema<CreateInstancePartitionRequest>;
+S.Struct({
+  "instancePartitionId": S.optional(S.String),
+  "instancePartition": S.optional(InstancePartition),
+}),
+).annotate({ identifier: "CreateInstancePartitionRequest" }) as any as S.Schema<CreateInstancePartitionRequest>;
 
 export interface CreateProjectsInstancesInstancePartitionsRequest {
   /** Required. The name of the instance in which to create the instance partition. Values are of the form `projects//instances/`. */
@@ -2123,21 +1710,12 @@ export interface CreateProjectsInstancesInstancePartitionsRequest {
   /** Request body */
   body?: CreateInstancePartitionRequest;
 }
-export const CreateProjectsInstancesInstancePartitionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CreateInstancePartitionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/instancePartitions",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsInstancesInstancePartitionsRequest",
-  }) as any as S.Schema<CreateProjectsInstancesInstancePartitionsRequest>;
+export const CreateProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CreateInstancePartitionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/instancePartitions","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesInstancePartitionsRequest" }) as any as S.Schema<CreateProjectsInstancesInstancePartitionsRequest>;
 
 export interface DeleteProjectsInstanceConfigsRequest {
   /** Required. The name of the instance configuration to be deleted. Values are of the form `projects//instanceConfigs/` */
@@ -2147,173 +1725,93 @@ export interface DeleteProjectsInstanceConfigsRequest {
   /** An option to validate, but not actually execute, a request, and provide the same response. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsInstanceConfigsRequest",
-}) as any as S.Schema<DeleteProjectsInstanceConfigsRequest>;
+export const DeleteProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstanceConfigsRequest" }) as any as S.Schema<DeleteProjectsInstanceConfigsRequest>;
 
 export interface DeleteProjectsInstanceConfigsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstanceConfigsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstanceConfigsOperationsRequest",
-  }) as any as S.Schema<DeleteProjectsInstanceConfigsOperationsRequest>;
+export const DeleteProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstanceConfigsOperationsRequest" }) as any as S.Schema<DeleteProjectsInstanceConfigsOperationsRequest>;
 
 export interface DeleteProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstanceConfigsSsdCachesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstanceConfigsSsdCachesOperationsRequest",
-  }) as any as S.Schema<DeleteProjectsInstanceConfigsSsdCachesOperationsRequest>;
+export const DeleteProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstanceConfigsSsdCachesOperationsRequest" }) as any as S.Schema<DeleteProjectsInstanceConfigsSsdCachesOperationsRequest>;
 
 export interface DeleteProjectsInstancesRequest {
   /** Required. The name of the instance to be deleted. Values are of the form `projects//instances/` */
   name: string;
 }
 export const DeleteProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsInstancesRequest",
-}) as any as S.Schema<DeleteProjectsInstancesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesRequest" }) as any as S.Schema<DeleteProjectsInstancesRequest>;
 
 export interface DeleteProjectsInstancesBackupsRequest {
   /** Required. Name of the backup to delete. Values are of the form `projects/{project}/instances/{instance}/backups/{backup}`. */
   name: string;
 }
-export const DeleteProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsInstancesBackupsRequest",
-}) as any as S.Schema<DeleteProjectsInstancesBackupsRequest>;
+export const DeleteProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesBackupsRequest" }) as any as S.Schema<DeleteProjectsInstancesBackupsRequest>;
 
 export interface DeleteProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstancesBackupsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesBackupsOperationsRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesBackupsOperationsRequest>;
+export const DeleteProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesBackupsOperationsRequest" }) as any as S.Schema<DeleteProjectsInstancesBackupsOperationsRequest>;
 
 export interface DeleteProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Required. The name of the schedule to delete. Values are of the form `projects//instances//databases//backupSchedules/`. */
   name: string;
 }
-export const DeleteProjectsInstancesDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesDatabasesBackupSchedulesRequest>;
+export const DeleteProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesDatabasesBackupSchedulesRequest" }) as any as S.Schema<DeleteProjectsInstancesDatabasesBackupSchedulesRequest>;
 
 export interface DeleteProjectsInstancesDatabasesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstancesDatabasesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesDatabasesOperationsRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesDatabasesOperationsRequest>;
+export const DeleteProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesDatabasesOperationsRequest" }) as any as S.Schema<DeleteProjectsInstancesDatabasesOperationsRequest>;
 
 export interface DeleteProjectsInstancesDatabasesSessionsRequest {
   /** Required. The name of the session to delete. */
   name: string;
 }
-export const DeleteProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesDatabasesSessionsRequest>;
+export const DeleteProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<DeleteProjectsInstancesDatabasesSessionsRequest>;
 
 export interface DeleteProjectsInstancesInstancePartitionsRequest {
   /** Required. The name of the instance partition to be deleted. Values are of the form `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}` */
@@ -2321,78 +1819,42 @@ export interface DeleteProjectsInstancesInstancePartitionsRequest {
   /** Optional. If not empty, the API only deletes the instance partition when the etag provided matches the current status of the requested instance partition. Otherwise, deletes the instance partition without checking the current status of the requested instance partition. */
   etag?: string;
 }
-export const DeleteProjectsInstancesInstancePartitionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesInstancePartitionsRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesInstancePartitionsRequest>;
+export const DeleteProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesInstancePartitionsRequest" }) as any as S.Schema<DeleteProjectsInstancesInstancePartitionsRequest>;
 
 export interface DeleteProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstancesInstancePartitionsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesInstancePartitionsOperationsRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesInstancePartitionsOperationsRequest>;
+export const DeleteProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesInstancePartitionsOperationsRequest" }) as any as S.Schema<DeleteProjectsInstancesInstancePartitionsOperationsRequest>;
 
 export interface DeleteProjectsInstancesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsInstancesOperationsRequest",
-}) as any as S.Schema<DeleteProjectsInstancesOperationsRequest>;
+export const DeleteProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesOperationsRequest" }) as any as S.Schema<DeleteProjectsInstancesOperationsRequest>;
 
 export interface DropDatabaseProjectsInstancesDatabasesRequest {
   /** Required. The database to be dropped. */
   database: string;
 }
-export const DropDatabaseProjectsInstancesDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+database}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DropDatabaseProjectsInstancesDatabasesRequest",
-  }) as any as S.Schema<DropDatabaseProjectsInstancesDatabasesRequest>;
+export const DropDatabaseProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+database}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "DropDatabaseProjectsInstancesDatabasesRequest" }) as any as S.Schema<DropDatabaseProjectsInstancesDatabasesRequest>;
 
 /** This message is used to select the transaction in which a Read or ExecuteSql call runs. See TransactionOptions for more information about transactions. */
 export interface TransactionSelector {
@@ -2404,34 +1866,14 @@ export interface TransactionSelector {
   begin?: TransactionOptions;
 }
 export const TransactionSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    singleUse: S.optional(TransactionOptions),
-    id: S.optional(S.String),
-    begin: S.optional(TransactionOptions),
-  }),
-).annotate({
-  identifier: "TransactionSelector",
-}) as any as S.Schema<TransactionSelector>;
+S.Struct({
+  "singleUse": S.optional(TransactionOptions),
+  "id": S.optional(S.String),
+  "begin": S.optional(TransactionOptions),
+}),
+).annotate({ identifier: "TransactionSelector" }) as any as S.Schema<TransactionSelector>;
 
-export type TypeCodeEnum =
-  | "TYPE_CODE_UNSPECIFIED"
-  | "BOOL"
-  | "INT64"
-  | "FLOAT64"
-  | "FLOAT32"
-  | "TIMESTAMP"
-  | "DATE"
-  | "STRING"
-  | "BYTES"
-  | "ARRAY"
-  | "STRUCT"
-  | "NUMERIC"
-  | "JSON"
-  | "PROTO"
-  | "ENUM"
-  | "INTERVAL"
-  | "UUID"
-  | (string & {});
+export type TypeCodeEnum = "TYPE_CODE_UNSPECIFIED" | "BOOL" | "INT64" | "FLOAT64" | "FLOAT32" | "TIMESTAMP" | "DATE" | "STRING" | "BYTES" | "ARRAY" | "STRUCT" | "NUMERIC" | "JSON" | "PROTO" | "ENUM" | "INTERVAL" | "UUID";
 export const TypeCodeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a single field of a struct. */
@@ -2442,16 +1884,14 @@ export interface Field {
   type?: Type;
 }
 export const Field = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.suspend(() => Type)),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "type": S.optional(S.suspend(() => Type)),
+}),
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
 export type FieldList = ReadonlyArray<Field>;
-export const FieldList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<FieldList>;
+export const FieldList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FieldList>;
 
 /** `StructType` defines the fields of a STRUCT type. */
 export interface StructType {
@@ -2459,17 +1899,12 @@ export interface StructType {
   fields?: FieldList;
 }
 export const StructType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(FieldList),
-  }),
+S.Struct({
+  "fields": S.optional(FieldList),
+}),
 ).annotate({ identifier: "StructType" }) as any as S.Schema<StructType>;
 
-export type TypeTypeAnnotationEnum =
-  | "TYPE_ANNOTATION_CODE_UNSPECIFIED"
-  | "PG_NUMERIC"
-  | "PG_JSONB"
-  | "PG_OID"
-  | (string & {});
+export type TypeTypeAnnotationEnum = "TYPE_ANNOTATION_CODE_UNSPECIFIED" | "PG_NUMERIC" | "PG_JSONB" | "PG_OID";
 export const TypeTypeAnnotationEnum = /*@__PURE__*/ S.String;
 
 /** `Type` indicates the type of a Cloud Spanner value, as might be stored in a table cell or returned from an SQL query. */
@@ -2486,20 +1921,17 @@ export interface Type {
   protoTypeFqn?: string;
 }
 export const Type = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(TypeCodeEnum),
-    arrayElementType: S.optional(Type),
-    structType: S.optional(StructType),
-    typeAnnotation: S.optional(TypeTypeAnnotationEnum),
-    protoTypeFqn: S.optional(S.String),
-  }),
+S.Struct({
+  "code": S.optional(TypeCodeEnum),
+  "arrayElementType": S.optional(Type),
+  "structType": S.optional(StructType),
+  "typeAnnotation": S.optional(TypeTypeAnnotationEnum),
+  "protoTypeFqn": S.optional(S.String),
+}),
 ).annotate({ identifier: "Type" }) as any as S.Schema<Type>;
 
 export type TypeMap = { [key: string]: Type | undefined };
-export const TypeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Type,
-) as any as S.Schema<TypeMap>;
+export const TypeMap = /*@__PURE__*/ S.Record(S.String, Type) as any as S.Schema<TypeMap>;
 
 /** A single DML statement. */
 export interface Statement {
@@ -2511,17 +1943,15 @@ export interface Statement {
   paramTypes?: TypeMap;
 }
 export const Statement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sql: S.optional(S.String),
-    params: S.optional(DocumentMap),
-    paramTypes: S.optional(TypeMap),
-  }),
+S.Struct({
+  "sql": S.optional(S.String),
+  "params": S.optional(DocumentMap),
+  "paramTypes": S.optional(TypeMap),
+}),
 ).annotate({ identifier: "Statement" }) as any as S.Schema<Statement>;
 
 export type StatementList = ReadonlyArray<Statement>;
-export const StatementList = /*@__PURE__*/ S.Array(
-  Statement,
-) as any as S.Schema<StatementList>;
+export const StatementList = /*@__PURE__*/ S.Array(Statement) as any as S.Schema<StatementList>;
 
 /** The request for ExecuteBatchDml. */
 export interface ExecuteBatchDmlRequest {
@@ -2537,16 +1967,14 @@ export interface ExecuteBatchDmlRequest {
   lastStatements?: boolean;
 }
 export const ExecuteBatchDmlRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transaction: S.optional(TransactionSelector),
-    statements: S.optional(StatementList),
-    seqno: S.optional(S.String),
-    requestOptions: S.optional(RequestOptions),
-    lastStatements: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ExecuteBatchDmlRequest",
-}) as any as S.Schema<ExecuteBatchDmlRequest>;
+S.Struct({
+  "transaction": S.optional(TransactionSelector),
+  "statements": S.optional(StatementList),
+  "seqno": S.optional(S.String),
+  "requestOptions": S.optional(RequestOptions),
+  "lastStatements": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ExecuteBatchDmlRequest" }) as any as S.Schema<ExecuteBatchDmlRequest>;
 
 export interface ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the DML statements should be performed. */
@@ -2554,21 +1982,12 @@ export interface ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: ExecuteBatchDmlRequest;
 }
-export const ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteBatchDmlRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:executeBatchDml",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest>;
+export const ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(ExecuteBatchDmlRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:executeBatchDml","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest>;
 
 /** Metadata about a ResultSet or PartialResultSet. */
 export interface ResultSetMetadata {
@@ -2580,20 +1999,14 @@ export interface ResultSetMetadata {
   undeclaredParameters?: StructType;
 }
 export const ResultSetMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowType: S.optional(StructType),
-    transaction: S.optional(Transaction),
-    undeclaredParameters: S.optional(StructType),
-  }),
-).annotate({
-  identifier: "ResultSetMetadata",
-}) as any as S.Schema<ResultSetMetadata>;
+S.Struct({
+  "rowType": S.optional(StructType),
+  "transaction": S.optional(Transaction),
+  "undeclaredParameters": S.optional(StructType),
+}),
+).annotate({ identifier: "ResultSetMetadata" }) as any as S.Schema<ResultSetMetadata>;
 
-export type PlanNodeKindEnum =
-  | "KIND_UNSPECIFIED"
-  | "RELATIONAL"
-  | "SCALAR"
-  | (string & {});
+export type PlanNodeKindEnum = "KIND_UNSPECIFIED" | "RELATIONAL" | "SCALAR";
 export const PlanNodeKindEnum = /*@__PURE__*/ S.String;
 
 /** Metadata associated with a parent-child relationship appearing in a PlanNode. */
@@ -2606,23 +2019,18 @@ export interface ChildLink {
   variable?: string;
 }
 export const ChildLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    childIndex: S.optional(S.Number),
-    type: S.optional(S.String),
-    variable: S.optional(S.String),
-  }),
+S.Struct({
+  "childIndex": S.optional(S.Number),
+  "type": S.optional(S.String),
+  "variable": S.optional(S.String),
+}),
 ).annotate({ identifier: "ChildLink" }) as any as S.Schema<ChildLink>;
 
 export type ChildLinkList = ReadonlyArray<ChildLink>;
-export const ChildLinkList = /*@__PURE__*/ S.Array(
-  ChildLink,
-) as any as S.Schema<ChildLinkList>;
+export const ChildLinkList = /*@__PURE__*/ S.Array(ChildLink) as any as S.Schema<ChildLinkList>;
 
 export type IntegerMap = { [key: string]: number | undefined };
-export const IntegerMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<IntegerMap>;
+export const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
 
 /** Condensed representation of a node and its subtree. Only present for `SCALAR` PlanNode(s). */
 export interface ShortRepresentation {
@@ -2632,13 +2040,11 @@ export interface ShortRepresentation {
   subqueries?: IntegerMap;
 }
 export const ShortRepresentation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    subqueries: S.optional(IntegerMap),
-  }),
-).annotate({
-  identifier: "ShortRepresentation",
-}) as any as S.Schema<ShortRepresentation>;
+S.Struct({
+  "description": S.optional(S.String),
+  "subqueries": S.optional(IntegerMap),
+}),
+).annotate({ identifier: "ShortRepresentation" }) as any as S.Schema<ShortRepresentation>;
 
 /** Node information for nodes appearing in a QueryPlan.plan_nodes. */
 export interface PlanNode {
@@ -2658,21 +2064,19 @@ export interface PlanNode {
   executionStats?: DocumentMap;
 }
 export const PlanNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    index: S.optional(S.Number),
-    kind: S.optional(PlanNodeKindEnum),
-    displayName: S.optional(S.String),
-    childLinks: S.optional(ChildLinkList),
-    shortRepresentation: S.optional(ShortRepresentation),
-    metadata: S.optional(DocumentMap),
-    executionStats: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "index": S.optional(S.Number),
+  "kind": S.optional(PlanNodeKindEnum),
+  "displayName": S.optional(S.String),
+  "childLinks": S.optional(ChildLinkList),
+  "shortRepresentation": S.optional(ShortRepresentation),
+  "metadata": S.optional(DocumentMap),
+  "executionStats": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "PlanNode" }) as any as S.Schema<PlanNode>;
 
 export type PlanNodeList = ReadonlyArray<PlanNode>;
-export const PlanNodeList = /*@__PURE__*/ S.Array(
-  PlanNode,
-) as any as S.Schema<PlanNodeList>;
+export const PlanNodeList = /*@__PURE__*/ S.Array(PlanNode) as any as S.Schema<PlanNodeList>;
 
 /** Recommendation to add new indexes to run queries more efficiently. */
 export interface IndexAdvice {
@@ -2682,16 +2086,14 @@ export interface IndexAdvice {
   improvementFactor?: number;
 }
 export const IndexAdvice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ddl: S.optional(StringList),
-    improvementFactor: S.optional(S.Number),
-  }),
+S.Struct({
+  "ddl": S.optional(StringList),
+  "improvementFactor": S.optional(S.Number),
+}),
 ).annotate({ identifier: "IndexAdvice" }) as any as S.Schema<IndexAdvice>;
 
 export type IndexAdviceList = ReadonlyArray<IndexAdvice>;
-export const IndexAdviceList = /*@__PURE__*/ S.Array(
-  IndexAdvice,
-) as any as S.Schema<IndexAdviceList>;
+export const IndexAdviceList = /*@__PURE__*/ S.Array(IndexAdvice) as any as S.Schema<IndexAdviceList>;
 
 /** Output of query advisor analysis. */
 export interface QueryAdvisorResult {
@@ -2699,12 +2101,10 @@ export interface QueryAdvisorResult {
   indexAdvice?: IndexAdviceList;
 }
 export const QueryAdvisorResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexAdvice: S.optional(IndexAdviceList),
-  }),
-).annotate({
-  identifier: "QueryAdvisorResult",
-}) as any as S.Schema<QueryAdvisorResult>;
+S.Struct({
+  "indexAdvice": S.optional(IndexAdviceList),
+}),
+).annotate({ identifier: "QueryAdvisorResult" }) as any as S.Schema<QueryAdvisorResult>;
 
 /** Contains an ordered list of nodes appearing in the query plan. */
 export interface QueryPlan {
@@ -2714,10 +2114,10 @@ export interface QueryPlan {
   queryAdvice?: QueryAdvisorResult;
 }
 export const QueryPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    planNodes: S.optional(PlanNodeList),
-    queryAdvice: S.optional(QueryAdvisorResult),
-  }),
+S.Struct({
+  "planNodes": S.optional(PlanNodeList),
+  "queryAdvice": S.optional(QueryAdvisorResult),
+}),
 ).annotate({ identifier: "QueryPlan" }) as any as S.Schema<QueryPlan>;
 
 /** Additional statistics about a ResultSet or PartialResultSet. */
@@ -2732,12 +2132,12 @@ export interface ResultSetStats {
   rowCountLowerBound?: string;
 }
 export const ResultSetStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queryPlan: S.optional(QueryPlan),
-    queryStats: S.optional(DocumentMap),
-    rowCountExact: S.optional(S.String),
-    rowCountLowerBound: S.optional(S.String),
-  }),
+S.Struct({
+  "queryPlan": S.optional(QueryPlan),
+  "queryStats": S.optional(DocumentMap),
+  "rowCountExact": S.optional(S.String),
+  "rowCountLowerBound": S.optional(S.String),
+}),
 ).annotate({ identifier: "ResultSetStats" }) as any as S.Schema<ResultSetStats>;
 
 /** Results from Read or ExecuteSql. */
@@ -2752,18 +2152,16 @@ export interface ResultSet {
   precommitToken?: MultiplexedSessionPrecommitToken;
 }
 export const ResultSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(ResultSetMetadata),
-    rows: S.optional(DocumentListList),
-    stats: S.optional(ResultSetStats),
-    precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-  }),
+S.Struct({
+  "metadata": S.optional(ResultSetMetadata),
+  "rows": S.optional(DocumentListList),
+  "stats": S.optional(ResultSetStats),
+  "precommitToken": S.optional(MultiplexedSessionPrecommitToken),
+}),
 ).annotate({ identifier: "ResultSet" }) as any as S.Schema<ResultSet>;
 
 export type ResultSetList = ReadonlyArray<ResultSet>;
-export const ResultSetList = /*@__PURE__*/ S.Array(
-  ResultSet,
-) as any as S.Schema<ResultSetList>;
+export const ResultSetList = /*@__PURE__*/ S.Array(ResultSet) as any as S.Schema<ResultSetList>;
 
 /** The response for ExecuteBatchDml. Contains a list of ResultSet messages, one for each DML statement that has successfully executed, in the same order as the statements in the request. If a statement fails, the status in the response body identifies the cause of the failure. To check for DML statements that failed, use the following approach: 1. Check the status in the response message. The google.rpc.Code enum value `OK` indicates that all statements were executed successfully. 2. If the status was not `OK`, check the number of result sets in the response. If the response contains `N` ResultSet messages, then statement `N+1` in the request failed. Example 1: * Request: 5 DML statements, all executed successfully. * Response: 5 ResultSet messages, with the status `OK`. Example 2: * Request: 5 DML statements. The third statement has a syntax error. * Response: 2 ResultSet messages, and a syntax error (`INVALID_ARGUMENT`) status. The number of ResultSet messages indicates that the third statement failed, and the fourth and fifth statements were not executed. */
 export interface ExecuteBatchDmlResponse {
@@ -2775,22 +2173,14 @@ export interface ExecuteBatchDmlResponse {
   precommitToken?: MultiplexedSessionPrecommitToken;
 }
 export const ExecuteBatchDmlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resultSets: S.optional(ResultSetList),
-    status: S.optional(Status),
-    precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-  }),
-).annotate({
-  identifier: "ExecuteBatchDmlResponse",
-}) as any as S.Schema<ExecuteBatchDmlResponse>;
+S.Struct({
+  "resultSets": S.optional(ResultSetList),
+  "status": S.optional(Status),
+  "precommitToken": S.optional(MultiplexedSessionPrecommitToken),
+}),
+).annotate({ identifier: "ExecuteBatchDmlResponse" }) as any as S.Schema<ExecuteBatchDmlResponse>;
 
-export type ExecuteSqlRequestQueryModeEnum =
-  | "NORMAL"
-  | "PLAN"
-  | "PROFILE"
-  | "WITH_STATS"
-  | "WITH_PLAN_AND_STATS"
-  | (string & {});
+export type ExecuteSqlRequestQueryModeEnum = "NORMAL" | "PLAN" | "PROFILE" | "WITH_STATS" | "WITH_PLAN_AND_STATS";
 export const ExecuteSqlRequestQueryModeEnum = /*@__PURE__*/ S.String;
 
 /** Query optimizer configuration. */
@@ -2801,17 +2191,13 @@ export interface QueryOptions {
   optimizerStatisticsPackage?: string;
 }
 export const QueryOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    optimizerVersion: S.optional(S.String),
-    optimizerStatisticsPackage: S.optional(S.String),
-  }),
+S.Struct({
+  "optimizerVersion": S.optional(S.String),
+  "optimizerStatisticsPackage": S.optional(S.String),
+}),
 ).annotate({ identifier: "QueryOptions" }) as any as S.Schema<QueryOptions>;
 
-export type ReplicaSelectionTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "READ_WRITE"
-  | "READ_ONLY"
-  | (string & {});
+export type ReplicaSelectionTypeEnum = "TYPE_UNSPECIFIED" | "READ_WRITE" | "READ_ONLY";
 export const ReplicaSelectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** The directed read replica selector. Callers must provide one or more of the following fields for replica selection: * `location` - The location must be one of the regions within the multi-region configuration of your database. * `type` - The type of the replica. Some examples of using replica_selectors are: * `location:us-east1` --> The "us-east1" replica(s) of any available type is used to process the request. * `type:READ_ONLY` --> The "READ_ONLY" type replica(s) in the nearest available location are used to process the request. * `location:us-east1 type:READ_ONLY` --> The "READ_ONLY" type replica(s) in location "us-east1" is used to process the request. */
@@ -2819,21 +2205,17 @@ export interface ReplicaSelection {
   /** The location or region of the serving requests, for example, "us-east1". */
   location?: string;
   /** The type of replica. */
-  type?: ReplicaSelectionTypeEnum;
+  type?: ReplicaSelectionTypeEnum | (string & {});
 }
 export const ReplicaSelection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    type: S.optional(ReplicaSelectionTypeEnum),
-  }),
-).annotate({
-  identifier: "ReplicaSelection",
-}) as any as S.Schema<ReplicaSelection>;
+S.Struct({
+  "location": S.optional(S.String),
+  "type": S.optional(ReplicaSelectionTypeEnum),
+}),
+).annotate({ identifier: "ReplicaSelection" }) as any as S.Schema<ReplicaSelection>;
 
 export type ReplicaSelectionList = ReadonlyArray<ReplicaSelection>;
-export const ReplicaSelectionList = /*@__PURE__*/ S.Array(
-  ReplicaSelection,
-) as any as S.Schema<ReplicaSelectionList>;
+export const ReplicaSelectionList = /*@__PURE__*/ S.Array(ReplicaSelection) as any as S.Schema<ReplicaSelectionList>;
 
 /** An `IncludeReplicas` contains a repeated set of `ReplicaSelection` which indicates the order in which replicas should be considered. */
 export interface IncludeReplicas {
@@ -2843,13 +2225,11 @@ export interface IncludeReplicas {
   autoFailoverDisabled?: boolean;
 }
 export const IncludeReplicas = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replicaSelections: S.optional(ReplicaSelectionList),
-    autoFailoverDisabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "IncludeReplicas",
-}) as any as S.Schema<IncludeReplicas>;
+S.Struct({
+  "replicaSelections": S.optional(ReplicaSelectionList),
+  "autoFailoverDisabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "IncludeReplicas" }) as any as S.Schema<IncludeReplicas>;
 
 /** An ExcludeReplicas contains a repeated set of ReplicaSelection that should be excluded from serving requests. */
 export interface ExcludeReplicas {
@@ -2857,12 +2237,10 @@ export interface ExcludeReplicas {
   replicaSelections?: ReplicaSelectionList;
 }
 export const ExcludeReplicas = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replicaSelections: S.optional(ReplicaSelectionList),
-  }),
-).annotate({
-  identifier: "ExcludeReplicas",
-}) as any as S.Schema<ExcludeReplicas>;
+S.Struct({
+  "replicaSelections": S.optional(ReplicaSelectionList),
+}),
+).annotate({ identifier: "ExcludeReplicas" }) as any as S.Schema<ExcludeReplicas>;
 
 /** The `DirectedReadOptions` can be used to indicate which replicas or regions should be used for non-transactional reads or queries. `DirectedReadOptions` can only be specified for a read-only transaction, otherwise the API returns an `INVALID_ARGUMENT` error. */
 export interface DirectedReadOptions {
@@ -2872,13 +2250,11 @@ export interface DirectedReadOptions {
   excludeReplicas?: ExcludeReplicas;
 }
 export const DirectedReadOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeReplicas: S.optional(IncludeReplicas),
-    excludeReplicas: S.optional(ExcludeReplicas),
-  }),
-).annotate({
-  identifier: "DirectedReadOptions",
-}) as any as S.Schema<DirectedReadOptions>;
+S.Struct({
+  "includeReplicas": S.optional(IncludeReplicas),
+  "excludeReplicas": S.optional(ExcludeReplicas),
+}),
+).annotate({ identifier: "DirectedReadOptions" }) as any as S.Schema<DirectedReadOptions>;
 
 /** The request for ExecuteSql and ExecuteStreamingSql. */
 export interface ExecuteSqlRequest {
@@ -2893,7 +2269,7 @@ export interface ExecuteSqlRequest {
   /** If this request is resuming a previously interrupted SQL statement execution, `resume_token` should be copied from the last PartialResultSet yielded before the interruption. Doing this enables the new SQL statement execution to resume where the last one left off. The rest of the request parameters must exactly match the request that yielded this token. */
   resumeToken?: string;
   /** Used to control the amount of debugging information returned in ResultSetStats. If partition_token is set, query_mode can only be set to QueryMode.NORMAL. */
-  queryMode?: ExecuteSqlRequestQueryModeEnum;
+  queryMode?: ExecuteSqlRequestQueryModeEnum | (string & {});
   /** If present, results are restricted to the specified partition previously created using `PartitionQuery`. There must be an exact match for the values of fields common to this message and the `PartitionQueryRequest` message used to create this `partition_token`. */
   partitionToken?: string;
   /** A per-transaction sequence number used to identify this request. This field makes each request idempotent such that if the request is received multiple times, at most one succeeds. The sequence number must be monotonically increasing within the transaction. If a request arrives for the first time with an out-of-order sequence number, the transaction can be aborted. Replays of previously handled requests yield the same response as the first execution. Required for DML statements. Ignored for queries. */
@@ -2910,24 +2286,22 @@ export interface ExecuteSqlRequest {
   lastStatement?: boolean;
 }
 export const ExecuteSqlRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transaction: S.optional(TransactionSelector),
-    sql: S.optional(S.String),
-    params: S.optional(DocumentMap),
-    paramTypes: S.optional(TypeMap),
-    resumeToken: S.optional(S.String),
-    queryMode: S.optional(ExecuteSqlRequestQueryModeEnum),
-    partitionToken: S.optional(S.String),
-    seqno: S.optional(S.String),
-    queryOptions: S.optional(QueryOptions),
-    requestOptions: S.optional(RequestOptions),
-    directedReadOptions: S.optional(DirectedReadOptions),
-    dataBoostEnabled: S.optional(S.Boolean),
-    lastStatement: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ExecuteSqlRequest",
-}) as any as S.Schema<ExecuteSqlRequest>;
+S.Struct({
+  "transaction": S.optional(TransactionSelector),
+  "sql": S.optional(S.String),
+  "params": S.optional(DocumentMap),
+  "paramTypes": S.optional(TypeMap),
+  "resumeToken": S.optional(S.String),
+  "queryMode": S.optional(ExecuteSqlRequestQueryModeEnum),
+  "partitionToken": S.optional(S.String),
+  "seqno": S.optional(S.String),
+  "queryOptions": S.optional(QueryOptions),
+  "requestOptions": S.optional(RequestOptions),
+  "directedReadOptions": S.optional(DirectedReadOptions),
+  "dataBoostEnabled": S.optional(S.Boolean),
+  "lastStatement": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ExecuteSqlRequest" }) as any as S.Schema<ExecuteSqlRequest>;
 
 export interface ExecuteSqlProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the SQL query should be performed. */
@@ -2935,21 +2309,12 @@ export interface ExecuteSqlProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: ExecuteSqlRequest;
 }
-export const ExecuteSqlProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteSqlRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:executeSql",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecuteSqlProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<ExecuteSqlProjectsInstancesDatabasesSessionsRequest>;
+export const ExecuteSqlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(ExecuteSqlRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:executeSql","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ExecuteSqlProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<ExecuteSqlProjectsInstancesDatabasesSessionsRequest>;
 
 export interface ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the SQL query should be performed. */
@@ -2957,21 +2322,12 @@ export interface ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: ExecuteSqlRequest;
 }
-export const ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteSqlRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:executeStreamingSql",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest>;
+export const ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(ExecuteSqlRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:executeStreamingSql","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest>;
 
 /** Partial results from a streaming read or SQL query. Streaming reads and SQL queries better tolerate large result sets, large rows, and large values, but are a little trickier to consume. */
 export interface PartialResultSet {
@@ -2991,37 +2347,26 @@ export interface PartialResultSet {
   last?: boolean;
 }
 export const PartialResultSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(ResultSetMetadata),
-    values: S.optional(DocumentList),
-    chunkedValue: S.optional(S.Boolean),
-    resumeToken: S.optional(S.String),
-    stats: S.optional(ResultSetStats),
-    precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-    last: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PartialResultSet",
-}) as any as S.Schema<PartialResultSet>;
+S.Struct({
+  "metadata": S.optional(ResultSetMetadata),
+  "values": S.optional(DocumentList),
+  "chunkedValue": S.optional(S.Boolean),
+  "resumeToken": S.optional(S.String),
+  "stats": S.optional(ResultSetStats),
+  "precommitToken": S.optional(MultiplexedSessionPrecommitToken),
+  "last": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PartialResultSet" }) as any as S.Schema<PartialResultSet>;
 
 export interface GetDdlProjectsInstancesDatabasesRequest {
   /** Required. The database whose schema we wish to get. Values are of the form `projects//instances//databases/` */
   database: string;
 }
-export const GetDdlProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+database}/ddl",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetDdlProjectsInstancesDatabasesRequest",
-}) as any as S.Schema<GetDdlProjectsInstancesDatabasesRequest>;
+export const GetDdlProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+database}/ddl","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetDdlProjectsInstancesDatabasesRequest" }) as any as S.Schema<GetDdlProjectsInstancesDatabasesRequest>;
 
 /** The response for GetDatabaseDdl. */
 export interface GetDatabaseDdlResponse {
@@ -3031,13 +2376,11 @@ export interface GetDatabaseDdlResponse {
   protoDescriptors?: string;
 }
 export const GetDatabaseDdlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statements: S.optional(StringList),
-    protoDescriptors: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDatabaseDdlResponse",
-}) as any as S.Schema<GetDatabaseDdlResponse>;
+S.Struct({
+  "statements": S.optional(StringList),
+  "protoDescriptors": S.optional(S.String),
+}),
+).annotate({ identifier: "GetDatabaseDdlResponse" }) as any as S.Schema<GetDatabaseDdlResponse>;
 
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
@@ -3045,12 +2388,10 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestedPolicyVersion: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetPolicyOptions",
-}) as any as S.Schema<GetPolicyOptions>;
+S.Struct({
+  "requestedPolicyVersion": S.optional(S.Number),
+}),
+).annotate({ identifier: "GetPolicyOptions" }) as any as S.Schema<GetPolicyOptions>;
 
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
@@ -3058,12 +2399,10 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(GetPolicyOptions),
-  }),
-).annotate({
-  identifier: "GetIamPolicyRequest",
-}) as any as S.Schema<GetIamPolicyRequest>;
+S.Struct({
+  "options": S.optional(GetPolicyOptions),
+}),
+).annotate({ identifier: "GetIamPolicyRequest" }) as any as S.Schema<GetIamPolicyRequest>;
 
 export interface GetIamPolicyProjectsInstancesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
@@ -3071,21 +2410,12 @@ export interface GetIamPolicyProjectsInstancesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetIamPolicyProjectsInstancesRequest",
-}) as any as S.Schema<GetIamPolicyProjectsInstancesRequest>;
+export const GetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -3099,12 +2429,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -3117,17 +2447,15 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    members: S.optional(StringList),
-    condition: S.optional(Expr),
-  }),
+S.Struct({
+  "role": S.optional(S.String),
+  "members": S.optional(StringList),
+  "condition": S.optional(Expr),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -3139,11 +2467,11 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsInstancesBackupsRequest {
@@ -3152,21 +2480,12 @@ export interface GetIamPolicyProjectsInstancesBackupsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsInstancesBackupsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsInstancesBackupsRequest>;
+export const GetIamPolicyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesBackupsRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesBackupsRequest>;
 
 export interface GetIamPolicyProjectsInstancesDatabasesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
@@ -3174,21 +2493,12 @@ export interface GetIamPolicyProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsInstancesDatabasesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsInstancesDatabasesRequest>;
+export const GetIamPolicyProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesDatabasesRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesDatabasesRequest>;
 
 export interface GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
@@ -3196,77 +2506,42 @@ export interface GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest>;
+export const GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest>;
 
 export interface GetProjectsInstanceConfigsRequest {
   /** Required. The name of the requested instance configuration. Values are of the form `projects//instanceConfigs/`. */
   name: string;
 }
 export const GetProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsInstanceConfigsRequest",
-}) as any as S.Schema<GetProjectsInstanceConfigsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstanceConfigsRequest" }) as any as S.Schema<GetProjectsInstanceConfigsRequest>;
 
 export interface GetProjectsInstanceConfigsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstanceConfigsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstanceConfigsOperationsRequest",
-  }) as any as S.Schema<GetProjectsInstanceConfigsOperationsRequest>;
+export const GetProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstanceConfigsOperationsRequest" }) as any as S.Schema<GetProjectsInstanceConfigsOperationsRequest>;
 
 export interface GetProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstanceConfigsSsdCachesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstanceConfigsSsdCachesOperationsRequest",
-  }) as any as S.Schema<GetProjectsInstanceConfigsSsdCachesOperationsRequest>;
+export const GetProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstanceConfigsSsdCachesOperationsRequest" }) as any as S.Schema<GetProjectsInstanceConfigsSsdCachesOperationsRequest>;
 
 export interface GetProjectsInstancesRequest {
   /** Required. The name of the requested instance. Values are of the form `projects//instances/`. */
@@ -3275,88 +2550,46 @@ export interface GetProjectsInstancesRequest {
   fieldMask?: string;
 }
 export const GetProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    fieldMask: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsInstancesRequest",
-}) as any as S.Schema<GetProjectsInstancesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "fieldMask": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesRequest" }) as any as S.Schema<GetProjectsInstancesRequest>;
 
 export interface GetProjectsInstancesBackupsRequest {
   /** Required. Name of the backup. Values are of the form `projects/{project}/instances/{instance}/backups/{backup}`. */
   name: string;
 }
 export const GetProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsInstancesBackupsRequest",
-}) as any as S.Schema<GetProjectsInstancesBackupsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesBackupsRequest" }) as any as S.Schema<GetProjectsInstancesBackupsRequest>;
 
 export interface GetProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstancesBackupsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstancesBackupsOperationsRequest",
-  }) as any as S.Schema<GetProjectsInstancesBackupsOperationsRequest>;
+export const GetProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesBackupsOperationsRequest" }) as any as S.Schema<GetProjectsInstancesBackupsOperationsRequest>;
 
 export interface GetProjectsInstancesDatabasesRequest {
   /** Required. The name of the requested database. Values are of the form `projects//instances//databases/`. */
   name: string;
 }
-export const GetProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsInstancesDatabasesRequest",
-}) as any as S.Schema<GetProjectsInstancesDatabasesRequest>;
+export const GetProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesDatabasesRequest" }) as any as S.Schema<GetProjectsInstancesDatabasesRequest>;
 
-export type DatabaseStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | "READY_OPTIMIZING"
-  | (string & {});
+export type DatabaseStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "READY_OPTIMIZING";
 export const DatabaseStateEnum = /*@__PURE__*/ S.String;
 
-export type RestoreInfoSourceTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "BACKUP"
-  | (string & {});
+export type RestoreInfoSourceTypeEnum = "TYPE_UNSPECIFIED" | "BACKUP";
 export const RestoreInfoSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a backup. */
@@ -3371,12 +2604,12 @@ export interface BackupInfo {
   sourceDatabase?: string;
 }
 export const BackupInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backup: S.optional(S.String),
-    versionTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    sourceDatabase: S.optional(S.String),
-  }),
+S.Struct({
+  "backup": S.optional(S.String),
+  "versionTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "sourceDatabase": S.optional(S.String),
+}),
 ).annotate({ identifier: "BackupInfo" }) as any as S.Schema<BackupInfo>;
 
 /** Information about the database restore. */
@@ -3387,24 +2620,16 @@ export interface RestoreInfo {
   backupInfo?: BackupInfo;
 }
 export const RestoreInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceType: S.optional(RestoreInfoSourceTypeEnum),
-    backupInfo: S.optional(BackupInfo),
-  }),
+S.Struct({
+  "sourceType": S.optional(RestoreInfoSourceTypeEnum),
+  "backupInfo": S.optional(BackupInfo),
+}),
 ).annotate({ identifier: "RestoreInfo" }) as any as S.Schema<RestoreInfo>;
 
-export type DatabaseDatabaseDialectEnum =
-  | "DATABASE_DIALECT_UNSPECIFIED"
-  | "GOOGLE_STANDARD_SQL"
-  | "POSTGRESQL"
-  | (string & {});
+export type DatabaseDatabaseDialectEnum = "DATABASE_DIALECT_UNSPECIFIED" | "GOOGLE_STANDARD_SQL" | "POSTGRESQL";
 export const DatabaseDatabaseDialectEnum = /*@__PURE__*/ S.String;
 
-export type QuorumInfoInitiatorEnum =
-  | "INITIATOR_UNSPECIFIED"
-  | "GOOGLE"
-  | "USER"
-  | (string & {});
+export type QuorumInfoInitiatorEnum = "INITIATOR_UNSPECIFIED" | "GOOGLE" | "USER";
 export const QuorumInfoInitiatorEnum = /*@__PURE__*/ S.String;
 
 /** Information about the dual-region quorum. */
@@ -3419,12 +2644,12 @@ export interface QuorumInfo {
   etag?: string;
 }
 export const QuorumInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    quorumType: S.optional(QuorumType),
-    initiator: S.optional(QuorumInfoInitiatorEnum),
-    startTime: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "quorumType": S.optional(QuorumType),
+  "initiator": S.optional(QuorumInfoInitiatorEnum),
+  "startTime": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "QuorumInfo" }) as any as S.Schema<QuorumInfo>;
 
 /** A Cloud Spanner database. */
@@ -3457,174 +2682,104 @@ export interface Database {
   quorumInfo?: QuorumInfo;
 }
 export const Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    state: S.optional(DatabaseStateEnum),
-    createTime: S.optional(S.String),
-    restoreInfo: S.optional(RestoreInfo),
-    encryptionConfig: S.optional(EncryptionConfig),
-    encryptionInfo: S.optional(EncryptionInfoList),
-    versionRetentionPeriod: S.optional(S.String),
-    earliestVersionTime: S.optional(S.String),
-    defaultLeader: S.optional(S.String),
-    databaseDialect: S.optional(DatabaseDatabaseDialectEnum),
-    enableDropProtection: S.optional(S.Boolean),
-    reconciling: S.optional(S.Boolean),
-    quorumInfo: S.optional(QuorumInfo),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "state": S.optional(DatabaseStateEnum),
+  "createTime": S.optional(S.String),
+  "restoreInfo": S.optional(RestoreInfo),
+  "encryptionConfig": S.optional(EncryptionConfig),
+  "encryptionInfo": S.optional(EncryptionInfoList),
+  "versionRetentionPeriod": S.optional(S.String),
+  "earliestVersionTime": S.optional(S.String),
+  "defaultLeader": S.optional(S.String),
+  "databaseDialect": S.optional(DatabaseDatabaseDialectEnum),
+  "enableDropProtection": S.optional(S.Boolean),
+  "reconciling": S.optional(S.Boolean),
+  "quorumInfo": S.optional(QuorumInfo),
+}),
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 export interface GetProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Required. The name of the schedule to retrieve. Values are of the form `projects//instances//databases//backupSchedules/`. */
   name: string;
 }
-export const GetProjectsInstancesDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstancesDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<GetProjectsInstancesDatabasesBackupSchedulesRequest>;
+export const GetProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesDatabasesBackupSchedulesRequest" }) as any as S.Schema<GetProjectsInstancesDatabasesBackupSchedulesRequest>;
 
 export interface GetProjectsInstancesDatabasesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstancesDatabasesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstancesDatabasesOperationsRequest",
-  }) as any as S.Schema<GetProjectsInstancesDatabasesOperationsRequest>;
+export const GetProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesDatabasesOperationsRequest" }) as any as S.Schema<GetProjectsInstancesDatabasesOperationsRequest>;
 
 export interface GetProjectsInstancesDatabasesSessionsRequest {
   /** Required. The name of the session to retrieve. */
   name: string;
 }
-export const GetProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<GetProjectsInstancesDatabasesSessionsRequest>;
+export const GetProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<GetProjectsInstancesDatabasesSessionsRequest>;
 
 export interface GetProjectsInstancesInstancePartitionsRequest {
   /** Required. The name of the requested instance partition. Values are of the form `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}`. */
   name: string;
 }
-export const GetProjectsInstancesInstancePartitionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstancesInstancePartitionsRequest",
-  }) as any as S.Schema<GetProjectsInstancesInstancePartitionsRequest>;
+export const GetProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesInstancePartitionsRequest" }) as any as S.Schema<GetProjectsInstancesInstancePartitionsRequest>;
 
 export interface GetProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstancesInstancePartitionsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstancesInstancePartitionsOperationsRequest",
-  }) as any as S.Schema<GetProjectsInstancesInstancePartitionsOperationsRequest>;
+export const GetProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesInstancePartitionsOperationsRequest" }) as any as S.Schema<GetProjectsInstancesInstancePartitionsOperationsRequest>;
 
 export interface GetProjectsInstancesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsInstancesOperationsRequest",
-}) as any as S.Schema<GetProjectsInstancesOperationsRequest>;
+export const GetProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesOperationsRequest" }) as any as S.Schema<GetProjectsInstancesOperationsRequest>;
 
-export type GetScansProjectsInstancesDatabasesViewEnum =
-  | "VIEW_UNSPECIFIED"
-  | "SUMMARY"
-  | "FULL"
-  | (string & {});
-export const GetScansProjectsInstancesDatabasesViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetScansProjectsInstancesDatabasesViewEnum = "VIEW_UNSPECIFIED" | "SUMMARY" | "FULL";
+export const GetScansProjectsInstancesDatabasesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetScansProjectsInstancesDatabasesRequest {
   /** Required. The unique name of the scan containing the requested information, specific to the Database service implementing this interface. */
   name: string;
   /** Specifies which parts of the Scan should be returned in the response. Note, if left unspecified, the FULL view is assumed. */
-  view?: GetScansProjectsInstancesDatabasesViewEnum;
+  view?: GetScansProjectsInstancesDatabasesViewEnum | (string & {});
   /** These fields restrict the Database-specific information returned in the `Scan.data` field. If a `View` is provided that does not include the `Scan.data` field, these are ignored. This range of time must be entirely contained within the defined time range of the targeted scan. The lower bound for the time range to retrieve Scan data for. */
   startTime?: string;
   /** The upper bound for the time range to retrieve Scan data for. */
   endTime?: string;
 }
-export const GetScansProjectsInstancesDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      view: S.optional(
-        GetScansProjectsInstancesDatabasesViewEnum.pipe(T.Query()),
-      ),
-      startTime: S.optional(S.String.pipe(T.Query())),
-      endTime: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/scans",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetScansProjectsInstancesDatabasesRequest",
-  }) as any as S.Schema<GetScansProjectsInstancesDatabasesRequest>;
+export const GetScansProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetScansProjectsInstancesDatabasesViewEnum.pipe(T.Query())),
+  "startTime": S.optional(S.String.pipe(T.Query())),
+  "endTime": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/scans","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "GetScansProjectsInstancesDatabasesRequest" }) as any as S.Schema<GetScansProjectsInstancesDatabasesRequest>;
 
 /** A message representing a key prefix node in the key prefix hierarchy. for eg. Bigtable keyspaces are lexicographically ordered mappings of keys to values. Keys often have a shared prefix structure where users use the keys to organize data. Eg ///employee In this case Keysight will possibly use one node for a company and reuse it for all employees that fall under the company. Doing so improves legibility in the UI. */
 export interface PrefixNode {
@@ -3640,19 +2795,17 @@ export interface PrefixNode {
   dataSourceNode?: boolean;
 }
 export const PrefixNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    word: S.optional(S.String),
-    startIndex: S.optional(S.Number),
-    endIndex: S.optional(S.Number),
-    depth: S.optional(S.Number),
-    dataSourceNode: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "word": S.optional(S.String),
+  "startIndex": S.optional(S.Number),
+  "endIndex": S.optional(S.Number),
+  "depth": S.optional(S.Number),
+  "dataSourceNode": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "PrefixNode" }) as any as S.Schema<PrefixNode>;
 
 export type PrefixNodeList = ReadonlyArray<PrefixNode>;
-export const PrefixNodeList = /*@__PURE__*/ S.Array(
-  PrefixNode,
-) as any as S.Schema<PrefixNodeList>;
+export const PrefixNodeList = /*@__PURE__*/ S.Array(PrefixNode) as any as S.Schema<PrefixNodeList>;
 
 /** A message representing a user-facing string whose value may need to be translated before being displayed. */
 export interface LocalizedString {
@@ -3664,26 +2817,18 @@ export interface LocalizedString {
   args?: StringMap;
 }
 export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.optional(S.String),
-    message: S.optional(S.String),
-    args: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "LocalizedString",
-}) as any as S.Schema<LocalizedString>;
+S.Struct({
+  "token": S.optional(S.String),
+  "message": S.optional(S.String),
+  "args": S.optional(StringMap),
+}),
+).annotate({ identifier: "LocalizedString" }) as any as S.Schema<LocalizedString>;
 
-export type MetricAggregationEnum =
-  | "AGGREGATION_UNSPECIFIED"
-  | "MAX"
-  | "SUM"
-  | (string & {});
+export type MetricAggregationEnum = "AGGREGATION_UNSPECIFIED" | "MAX" | "SUM";
 export const MetricAggregationEnum = /*@__PURE__*/ S.String;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** A message representing a row of a matrix of floats. */
 export interface MetricMatrixRow {
@@ -3691,17 +2836,13 @@ export interface MetricMatrixRow {
   cols?: DoubleList;
 }
 export const MetricMatrixRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cols: S.optional(DoubleList),
-  }),
-).annotate({
-  identifier: "MetricMatrixRow",
-}) as any as S.Schema<MetricMatrixRow>;
+S.Struct({
+  "cols": S.optional(DoubleList),
+}),
+).annotate({ identifier: "MetricMatrixRow" }) as any as S.Schema<MetricMatrixRow>;
 
 export type MetricMatrixRowList = ReadonlyArray<MetricMatrixRow>;
-export const MetricMatrixRowList = /*@__PURE__*/ S.Array(
-  MetricMatrixRow,
-) as any as S.Schema<MetricMatrixRowList>;
+export const MetricMatrixRowList = /*@__PURE__*/ S.Array(MetricMatrixRow) as any as S.Schema<MetricMatrixRowList>;
 
 /** A message representing a matrix of floats. */
 export interface MetricMatrix {
@@ -3709,9 +2850,9 @@ export interface MetricMatrix {
   rows?: MetricMatrixRowList;
 }
 export const MetricMatrix = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rows: S.optional(MetricMatrixRowList),
-  }),
+S.Struct({
+  "rows": S.optional(MetricMatrixRowList),
+}),
 ).annotate({ identifier: "MetricMatrix" }) as any as S.Schema<MetricMatrix>;
 
 /** A message representing a derived metric. */
@@ -3722,10 +2863,10 @@ export interface DerivedMetric {
   denominator?: LocalizedString;
 }
 export const DerivedMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numerator: S.optional(LocalizedString),
-    denominator: S.optional(LocalizedString),
-  }),
+S.Struct({
+  "numerator": S.optional(LocalizedString),
+  "denominator": S.optional(LocalizedString),
+}),
 ).annotate({ identifier: "DerivedMetric" }) as any as S.Schema<DerivedMetric>;
 
 /** A message representing a (sparse) collection of hot keys for specific key buckets. */
@@ -3734,24 +2875,15 @@ export interface IndexedHotKey {
   sparseHotKeys?: IntegerMap;
 }
 export const IndexedHotKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sparseHotKeys: S.optional(IntegerMap),
-  }),
+S.Struct({
+  "sparseHotKeys": S.optional(IntegerMap),
+}),
 ).annotate({ identifier: "IndexedHotKey" }) as any as S.Schema<IndexedHotKey>;
 
 export type IndexedHotKeyMap = { [key: string]: IndexedHotKey | undefined };
-export const IndexedHotKeyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IndexedHotKey,
-) as any as S.Schema<IndexedHotKeyMap>;
+export const IndexedHotKeyMap = /*@__PURE__*/ S.Record(S.String, IndexedHotKey) as any as S.Schema<IndexedHotKeyMap>;
 
-export type ContextValueSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "INFO"
-  | "WARNING"
-  | "ERROR"
-  | "FATAL"
-  | (string & {});
+export type ContextValueSeverityEnum = "SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "ERROR" | "FATAL";
 export const ContextValueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A message representing context for a KeyRangeInfo, including a label, value, unit, and severity. */
@@ -3766,18 +2898,16 @@ export interface ContextValue {
   severity?: ContextValueSeverityEnum;
 }
 export const ContextValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(LocalizedString),
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-    severity: S.optional(ContextValueSeverityEnum),
-  }),
+S.Struct({
+  "label": S.optional(LocalizedString),
+  "value": S.optional(S.Number),
+  "unit": S.optional(S.String),
+  "severity": S.optional(ContextValueSeverityEnum),
+}),
 ).annotate({ identifier: "ContextValue" }) as any as S.Schema<ContextValue>;
 
 export type ContextValueList = ReadonlyArray<ContextValue>;
-export const ContextValueList = /*@__PURE__*/ S.Array(
-  ContextValue,
-) as any as S.Schema<ContextValueList>;
+export const ContextValueList = /*@__PURE__*/ S.Array(ContextValue) as any as S.Schema<ContextValueList>;
 
 /** A message representing information for a key range (possibly one key). */
 export interface KeyRangeInfo {
@@ -3801,23 +2931,21 @@ export interface KeyRangeInfo {
   timeOffset?: string;
 }
 export const KeyRangeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startKeyIndex: S.optional(S.Number),
-    endKeyIndex: S.optional(S.Number),
-    keysCount: S.optional(S.String),
-    metric: S.optional(LocalizedString),
-    value: S.optional(S.Number),
-    unit: S.optional(LocalizedString),
-    info: S.optional(LocalizedString),
-    contextValues: S.optional(ContextValueList),
-    timeOffset: S.optional(S.String),
-  }),
+S.Struct({
+  "startKeyIndex": S.optional(S.Number),
+  "endKeyIndex": S.optional(S.Number),
+  "keysCount": S.optional(S.String),
+  "metric": S.optional(LocalizedString),
+  "value": S.optional(S.Number),
+  "unit": S.optional(LocalizedString),
+  "info": S.optional(LocalizedString),
+  "contextValues": S.optional(ContextValueList),
+  "timeOffset": S.optional(S.String),
+}),
 ).annotate({ identifier: "KeyRangeInfo" }) as any as S.Schema<KeyRangeInfo>;
 
 export type KeyRangeInfoList = ReadonlyArray<KeyRangeInfo>;
-export const KeyRangeInfoList = /*@__PURE__*/ S.Array(
-  KeyRangeInfo,
-) as any as S.Schema<KeyRangeInfoList>;
+export const KeyRangeInfoList = /*@__PURE__*/ S.Array(KeyRangeInfo) as any as S.Schema<KeyRangeInfoList>;
 
 /** A message representing a list of specific information for multiple key ranges. */
 export interface KeyRangeInfos {
@@ -3827,17 +2955,14 @@ export interface KeyRangeInfos {
   totalSize?: number;
 }
 export const KeyRangeInfos = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infos: S.optional(KeyRangeInfoList),
-    totalSize: S.optional(S.Number),
-  }),
+S.Struct({
+  "infos": S.optional(KeyRangeInfoList),
+  "totalSize": S.optional(S.Number),
+}),
 ).annotate({ identifier: "KeyRangeInfos" }) as any as S.Schema<KeyRangeInfos>;
 
 export type KeyRangeInfosMap = { [key: string]: KeyRangeInfos | undefined };
-export const KeyRangeInfosMap = /*@__PURE__*/ S.Record(
-  S.String,
-  KeyRangeInfos,
-) as any as S.Schema<KeyRangeInfosMap>;
+export const KeyRangeInfosMap = /*@__PURE__*/ S.Record(S.String, KeyRangeInfos) as any as S.Schema<KeyRangeInfosMap>;
 
 /** A message representing a (sparse) collection of KeyRangeInfos for specific key buckets. */
 export interface IndexedKeyRangeInfos {
@@ -3845,20 +2970,13 @@ export interface IndexedKeyRangeInfos {
   keyRangeInfos?: KeyRangeInfosMap;
 }
 export const IndexedKeyRangeInfos = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyRangeInfos: S.optional(KeyRangeInfosMap),
-  }),
-).annotate({
-  identifier: "IndexedKeyRangeInfos",
-}) as any as S.Schema<IndexedKeyRangeInfos>;
+S.Struct({
+  "keyRangeInfos": S.optional(KeyRangeInfosMap),
+}),
+).annotate({ identifier: "IndexedKeyRangeInfos" }) as any as S.Schema<IndexedKeyRangeInfos>;
 
-export type IndexedKeyRangeInfosMap = {
-  [key: string]: IndexedKeyRangeInfos | undefined;
-};
-export const IndexedKeyRangeInfosMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IndexedKeyRangeInfos,
-) as any as S.Schema<IndexedKeyRangeInfosMap>;
+export type IndexedKeyRangeInfosMap = { [key: string]: IndexedKeyRangeInfos | undefined };
+export const IndexedKeyRangeInfosMap = /*@__PURE__*/ S.Record(S.String, IndexedKeyRangeInfos) as any as S.Schema<IndexedKeyRangeInfosMap>;
 
 /** A message representing the actual monitoring data, values for each key bucket over time, of a metric. */
 export interface Metric {
@@ -3888,34 +3006,26 @@ export interface Metric {
   indexedKeyRangeInfos?: IndexedKeyRangeInfosMap;
 }
 export const Metric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    visible: S.optional(S.Boolean),
-    displayLabel: S.optional(LocalizedString),
-    unit: S.optional(LocalizedString),
-    info: S.optional(LocalizedString),
-    category: S.optional(LocalizedString),
-    hasNonzeroData: S.optional(S.Boolean),
-    hotValue: S.optional(S.Number),
-    aggregation: S.optional(MetricAggregationEnum),
-    matrix: S.optional(MetricMatrix),
-    derived: S.optional(DerivedMetric),
-    indexedHotKeys: S.optional(IndexedHotKeyMap),
-    indexedKeyRangeInfos: S.optional(IndexedKeyRangeInfosMap),
-  }),
+S.Struct({
+  "visible": S.optional(S.Boolean),
+  "displayLabel": S.optional(LocalizedString),
+  "unit": S.optional(LocalizedString),
+  "info": S.optional(LocalizedString),
+  "category": S.optional(LocalizedString),
+  "hasNonzeroData": S.optional(S.Boolean),
+  "hotValue": S.optional(S.Number),
+  "aggregation": S.optional(MetricAggregationEnum),
+  "matrix": S.optional(MetricMatrix),
+  "derived": S.optional(DerivedMetric),
+  "indexedHotKeys": S.optional(IndexedHotKeyMap),
+  "indexedKeyRangeInfos": S.optional(IndexedKeyRangeInfosMap),
+}),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
 export type MetricList = ReadonlyArray<Metric>;
-export const MetricList = /*@__PURE__*/ S.Array(
-  Metric,
-) as any as S.Schema<MetricList>;
+export const MetricList = /*@__PURE__*/ S.Array(Metric) as any as S.Schema<MetricList>;
 
-export type DiagnosticMessageSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "INFO"
-  | "WARNING"
-  | "ERROR"
-  | "FATAL"
-  | (string & {});
+export type DiagnosticMessageSeverityEnum = "SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "ERROR" | "FATAL";
 export const DiagnosticMessageSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A message representing the key visualizer diagnostic messages. */
@@ -3932,27 +3042,19 @@ export interface DiagnosticMessage {
   metricSpecific?: boolean;
 }
 export const DiagnosticMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.optional(DiagnosticMessageSeverityEnum),
-    metric: S.optional(LocalizedString),
-    shortMessage: S.optional(LocalizedString),
-    info: S.optional(LocalizedString),
-    metricSpecific: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DiagnosticMessage",
-}) as any as S.Schema<DiagnosticMessage>;
+S.Struct({
+  "severity": S.optional(DiagnosticMessageSeverityEnum),
+  "metric": S.optional(LocalizedString),
+  "shortMessage": S.optional(LocalizedString),
+  "info": S.optional(LocalizedString),
+  "metricSpecific": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DiagnosticMessage" }) as any as S.Schema<DiagnosticMessage>;
 
 export type DiagnosticMessageList = ReadonlyArray<DiagnosticMessage>;
-export const DiagnosticMessageList = /*@__PURE__*/ S.Array(
-  DiagnosticMessage,
-) as any as S.Schema<DiagnosticMessageList>;
+export const DiagnosticMessageList = /*@__PURE__*/ S.Array(DiagnosticMessage) as any as S.Schema<DiagnosticMessageList>;
 
-export type VisualizationDataKeyUnitEnum =
-  | "KEY_UNIT_UNSPECIFIED"
-  | "KEY"
-  | "CHUNK"
-  | (string & {});
+export type VisualizationDataKeyUnitEnum = "KEY_UNIT_UNSPECIFIED" | "KEY" | "CHUNK";
 export const VisualizationDataKeyUnitEnum = /*@__PURE__*/ S.String;
 
 export interface VisualizationData {
@@ -3978,21 +3080,19 @@ export interface VisualizationData {
   hasPii?: boolean;
 }
 export const VisualizationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataSourceSeparatorToken: S.optional(S.String),
-    dataSourceEndToken: S.optional(S.String),
-    endKeyStrings: S.optional(StringList),
-    indexedKeys: S.optional(StringList),
-    prefixNodes: S.optional(PrefixNodeList),
-    metrics: S.optional(MetricList),
-    diagnosticMessages: S.optional(DiagnosticMessageList),
-    keySeparator: S.optional(S.String),
-    keyUnit: S.optional(VisualizationDataKeyUnitEnum),
-    hasPii: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VisualizationData",
-}) as any as S.Schema<VisualizationData>;
+S.Struct({
+  "dataSourceSeparatorToken": S.optional(S.String),
+  "dataSourceEndToken": S.optional(S.String),
+  "endKeyStrings": S.optional(StringList),
+  "indexedKeys": S.optional(StringList),
+  "prefixNodes": S.optional(PrefixNodeList),
+  "metrics": S.optional(MetricList),
+  "diagnosticMessages": S.optional(DiagnosticMessageList),
+  "keySeparator": S.optional(S.String),
+  "keyUnit": S.optional(VisualizationDataKeyUnitEnum),
+  "hasPii": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VisualizationData" }) as any as S.Schema<VisualizationData>;
 
 /** ScanData contains Cloud Key Visualizer scan data used by the caller to construct a visualization. */
 export interface ScanData {
@@ -4004,11 +3104,11 @@ export interface ScanData {
   data?: VisualizationData;
 }
 export const ScanData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    data: S.optional(VisualizationData),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "data": S.optional(VisualizationData),
+}),
 ).annotate({ identifier: "ScanData" }) as any as S.Schema<ScanData>;
 
 /** Scan is a structure which describes Cloud Key Visualizer scan information. */
@@ -4025,13 +3125,13 @@ export interface Scan {
   scanData?: ScanData;
 }
 export const Scan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    details: S.optional(DocumentMap),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    scanData: S.optional(ScanData),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "details": S.optional(DocumentMap),
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "scanData": S.optional(ScanData),
+}),
 ).annotate({ identifier: "Scan" }) as any as S.Schema<Scan>;
 
 export interface ListProjectsInstanceConfigOperationsRequest {
@@ -4044,28 +3144,17 @@ export interface ListProjectsInstanceConfigOperationsRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListInstanceConfigOperationsResponse to the same `parent` and with the same `filter`. */
   pageToken?: string;
 }
-export const ListProjectsInstanceConfigOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/instanceConfigOperations",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstanceConfigOperationsRequest",
-  }) as any as S.Schema<ListProjectsInstanceConfigOperationsRequest>;
+export const ListProjectsInstanceConfigOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/instanceConfigOperations","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstanceConfigOperationsRequest" }) as any as S.Schema<ListProjectsInstanceConfigOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response for ListInstanceConfigOperations. */
 export interface ListInstanceConfigOperationsResponse {
@@ -4074,15 +3163,12 @@ export interface ListInstanceConfigOperationsResponse {
   /** `next_page_token` can be sent in a subsequent ListInstanceConfigOperations call to fetch more of the matching metadata. */
   nextPageToken?: string;
 }
-export const ListInstanceConfigOperationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operations: S.optional(OperationList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListInstanceConfigOperationsResponse",
-}) as any as S.Schema<ListInstanceConfigOperationsResponse>;
+export const ListInstanceConfigOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListInstanceConfigOperationsResponse" }) as any as S.Schema<ListInstanceConfigOperationsResponse>;
 
 export interface ListProjectsInstanceConfigsRequest {
   /** Required. The name of the project for which a list of supported instance configurations is requested. Values are of the form `projects/`. */
@@ -4093,25 +3179,15 @@ export interface ListProjectsInstanceConfigsRequest {
   pageToken?: string;
 }
 export const ListProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/instanceConfigs",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsInstanceConfigsRequest",
-}) as any as S.Schema<ListProjectsInstanceConfigsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/instanceConfigs","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstanceConfigsRequest" }) as any as S.Schema<ListProjectsInstanceConfigsRequest>;
 
 export type InstanceConfigList = ReadonlyArray<InstanceConfig>;
-export const InstanceConfigList = /*@__PURE__*/ S.Array(
-  InstanceConfig,
-) as any as S.Schema<InstanceConfigList>;
+export const InstanceConfigList = /*@__PURE__*/ S.Array(InstanceConfig) as any as S.Schema<InstanceConfigList>;
 
 /** The response for ListInstanceConfigs. */
 export interface ListInstanceConfigsResponse {
@@ -4121,13 +3197,11 @@ export interface ListInstanceConfigsResponse {
   nextPageToken?: string;
 }
 export const ListInstanceConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceConfigs: S.optional(InstanceConfigList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListInstanceConfigsResponse",
-}) as any as S.Schema<ListInstanceConfigsResponse>;
+S.Struct({
+  "instanceConfigs": S.optional(InstanceConfigList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListInstanceConfigsResponse" }) as any as S.Schema<ListInstanceConfigsResponse>;
 
 export interface ListProjectsInstanceConfigsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -4141,24 +3215,15 @@ export interface ListProjectsInstanceConfigsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsInstanceConfigsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstanceConfigsOperationsRequest",
-  }) as any as S.Schema<ListProjectsInstanceConfigsOperationsRequest>;
+export const ListProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstanceConfigsOperationsRequest" }) as any as S.Schema<ListProjectsInstanceConfigsOperationsRequest>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -4170,14 +3235,12 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -4191,24 +3254,15 @@ export interface ListProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsInstanceConfigsSsdCachesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstanceConfigsSsdCachesOperationsRequest",
-  }) as any as S.Schema<ListProjectsInstanceConfigsSsdCachesOperationsRequest>;
+export const ListProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstanceConfigsSsdCachesOperationsRequest" }) as any as S.Schema<ListProjectsInstanceConfigsSsdCachesOperationsRequest>;
 
 export interface ListProjectsInstancesRequest {
   /** Required. The name of the project for which a list of instances is requested. Values are of the form `projects/`. */
@@ -4223,27 +3277,17 @@ export interface ListProjectsInstancesRequest {
   instanceDeadline?: string;
 }
 export const ListProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    instanceDeadline: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/instances",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsInstancesRequest",
-}) as any as S.Schema<ListProjectsInstancesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "instanceDeadline": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/instances","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesRequest" }) as any as S.Schema<ListProjectsInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(
-  Instance,
-) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** The response for ListInstances. */
 export interface ListInstancesResponse {
@@ -4255,14 +3299,12 @@ export interface ListInstancesResponse {
   unreachable?: StringList;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instances: S.optional(InstanceList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListInstancesResponse",
-}) as any as S.Schema<ListInstancesResponse>;
+S.Struct({
+  "instances": S.optional(InstanceList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsInstancesBackupOperationsRequest {
   /** Required. The instance of the backup operations. Values are of the form `projects/{project}/instances/{instance}`. */
@@ -4274,23 +3316,14 @@ export interface ListProjectsInstancesBackupOperationsRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListBackupOperationsResponse to the same `parent` and with the same `filter`. */
   pageToken?: string;
 }
-export const ListProjectsInstancesBackupOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/backupOperations",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesBackupOperationsRequest",
-  }) as any as S.Schema<ListProjectsInstancesBackupOperationsRequest>;
+export const ListProjectsInstancesBackupOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backupOperations","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesBackupOperationsRequest" }) as any as S.Schema<ListProjectsInstancesBackupOperationsRequest>;
 
 /** The response for ListBackupOperations. */
 export interface ListBackupOperationsResponse {
@@ -4300,13 +3333,11 @@ export interface ListBackupOperationsResponse {
   nextPageToken?: string;
 }
 export const ListBackupOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBackupOperationsResponse",
-}) as any as S.Schema<ListBackupOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBackupOperationsResponse" }) as any as S.Schema<ListBackupOperationsResponse>;
 
 export interface ListProjectsInstancesBackupsRequest {
   /** Required. The instance to list backups from. Values are of the form `projects/{project}/instances/{instance}`. */
@@ -4319,26 +3350,16 @@ export interface ListProjectsInstancesBackupsRequest {
   pageToken?: string;
 }
 export const ListProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/backups",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsInstancesBackupsRequest",
-}) as any as S.Schema<ListProjectsInstancesBackupsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backups","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesBackupsRequest" }) as any as S.Schema<ListProjectsInstancesBackupsRequest>;
 
 export type BackupList = ReadonlyArray<Backup>;
-export const BackupList = /*@__PURE__*/ S.Array(
-  Backup,
-) as any as S.Schema<BackupList>;
+export const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
 
 /** The response for ListBackups. */
 export interface ListBackupsResponse {
@@ -4348,13 +3369,11 @@ export interface ListBackupsResponse {
   nextPageToken?: string;
 }
 export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backups: S.optional(BackupList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBackupsResponse",
-}) as any as S.Schema<ListBackupsResponse>;
+S.Struct({
+  "backups": S.optional(BackupList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBackupsResponse" }) as any as S.Schema<ListBackupsResponse>;
 
 export interface ListProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -4368,24 +3387,15 @@ export interface ListProjectsInstancesBackupsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsInstancesBackupsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesBackupsOperationsRequest",
-  }) as any as S.Schema<ListProjectsInstancesBackupsOperationsRequest>;
+export const ListProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesBackupsOperationsRequest" }) as any as S.Schema<ListProjectsInstancesBackupsOperationsRequest>;
 
 export interface ListProjectsInstancesDatabaseOperationsRequest {
   /** Required. The instance of the database operations. Values are of the form `projects//instances/`. */
@@ -4397,23 +3407,14 @@ export interface ListProjectsInstancesDatabaseOperationsRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListDatabaseOperationsResponse to the same `parent` and with the same `filter`. */
   pageToken?: string;
 }
-export const ListProjectsInstancesDatabaseOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/databaseOperations",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesDatabaseOperationsRequest",
-  }) as any as S.Schema<ListProjectsInstancesDatabaseOperationsRequest>;
+export const ListProjectsInstancesDatabaseOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/databaseOperations","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesDatabaseOperationsRequest" }) as any as S.Schema<ListProjectsInstancesDatabaseOperationsRequest>;
 
 /** The response for ListDatabaseOperations. */
 export interface ListDatabaseOperationsResponse {
@@ -4423,13 +3424,11 @@ export interface ListDatabaseOperationsResponse {
   nextPageToken?: string;
 }
 export const ListDatabaseOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDatabaseOperationsResponse",
-}) as any as S.Schema<ListDatabaseOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDatabaseOperationsResponse" }) as any as S.Schema<ListDatabaseOperationsResponse>;
 
 export interface ListProjectsInstancesDatabasesRequest {
   /** Required. The instance whose databases should be listed. Values are of the form `projects//instances/`. */
@@ -4439,27 +3438,16 @@ export interface ListProjectsInstancesDatabasesRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListDatabasesResponse. */
   pageToken?: string;
 }
-export const ListProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/databases",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsInstancesDatabasesRequest",
-}) as any as S.Schema<ListProjectsInstancesDatabasesRequest>;
+export const ListProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/databases","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesDatabasesRequest" }) as any as S.Schema<ListProjectsInstancesDatabasesRequest>;
 
 export type DatabaseList = ReadonlyArray<Database>;
-export const DatabaseList = /*@__PURE__*/ S.Array(
-  Database,
-) as any as S.Schema<DatabaseList>;
+export const DatabaseList = /*@__PURE__*/ S.Array(Database) as any as S.Schema<DatabaseList>;
 
 /** The response for ListDatabases. */
 export interface ListDatabasesResponse {
@@ -4469,13 +3457,11 @@ export interface ListDatabasesResponse {
   nextPageToken?: string;
 }
 export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databases: S.optional(DatabaseList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDatabasesResponse",
-}) as any as S.Schema<ListDatabasesResponse>;
+S.Struct({
+  "databases": S.optional(DatabaseList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDatabasesResponse" }) as any as S.Schema<ListDatabasesResponse>;
 
 export interface ListProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Required. Database is the parent resource whose backup schedules should be listed. Values are of the form projects//instances//databases/ */
@@ -4485,27 +3471,16 @@ export interface ListProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Optional. If non-empty, `page_token` should contain a next_page_token from a previous ListBackupSchedulesResponse to the same `parent`. */
   pageToken?: string;
 }
-export const ListProjectsInstancesDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/backupSchedules",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<ListProjectsInstancesDatabasesBackupSchedulesRequest>;
+export const ListProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backupSchedules","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesDatabasesBackupSchedulesRequest" }) as any as S.Schema<ListProjectsInstancesDatabasesBackupSchedulesRequest>;
 
 export type BackupScheduleList = ReadonlyArray<BackupSchedule>;
-export const BackupScheduleList = /*@__PURE__*/ S.Array(
-  BackupSchedule,
-) as any as S.Schema<BackupScheduleList>;
+export const BackupScheduleList = /*@__PURE__*/ S.Array(BackupSchedule) as any as S.Schema<BackupScheduleList>;
 
 /** The response for ListBackupSchedules. */
 export interface ListBackupSchedulesResponse {
@@ -4515,13 +3490,11 @@ export interface ListBackupSchedulesResponse {
   nextPageToken?: string;
 }
 export const ListBackupSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backupSchedules: S.optional(BackupScheduleList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBackupSchedulesResponse",
-}) as any as S.Schema<ListBackupSchedulesResponse>;
+S.Struct({
+  "backupSchedules": S.optional(BackupScheduleList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBackupSchedulesResponse" }) as any as S.Schema<ListBackupSchedulesResponse>;
 
 export interface ListProjectsInstancesDatabasesDatabaseRolesRequest {
   /** Required. The database whose roles should be listed. Values are of the form `projects//instances//databases/`. */
@@ -4531,22 +3504,13 @@ export interface ListProjectsInstancesDatabasesDatabaseRolesRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListDatabaseRolesResponse. */
   pageToken?: string;
 }
-export const ListProjectsInstancesDatabasesDatabaseRolesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/databaseRoles",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesDatabasesDatabaseRolesRequest",
-  }) as any as S.Schema<ListProjectsInstancesDatabasesDatabaseRolesRequest>;
+export const ListProjectsInstancesDatabasesDatabaseRolesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/databaseRoles","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesDatabasesDatabaseRolesRequest" }) as any as S.Schema<ListProjectsInstancesDatabasesDatabaseRolesRequest>;
 
 /** A Cloud Spanner database role. */
 export interface DatabaseRole {
@@ -4554,15 +3518,13 @@ export interface DatabaseRole {
   name?: string;
 }
 export const DatabaseRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "DatabaseRole" }) as any as S.Schema<DatabaseRole>;
 
 export type DatabaseRoleList = ReadonlyArray<DatabaseRole>;
-export const DatabaseRoleList = /*@__PURE__*/ S.Array(
-  DatabaseRole,
-) as any as S.Schema<DatabaseRoleList>;
+export const DatabaseRoleList = /*@__PURE__*/ S.Array(DatabaseRole) as any as S.Schema<DatabaseRoleList>;
 
 /** The response for ListDatabaseRoles. */
 export interface ListDatabaseRolesResponse {
@@ -4572,13 +3534,11 @@ export interface ListDatabaseRolesResponse {
   nextPageToken?: string;
 }
 export const ListDatabaseRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseRoles: S.optional(DatabaseRoleList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDatabaseRolesResponse",
-}) as any as S.Schema<ListDatabaseRolesResponse>;
+S.Struct({
+  "databaseRoles": S.optional(DatabaseRoleList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDatabaseRolesResponse" }) as any as S.Schema<ListDatabaseRolesResponse>;
 
 export interface ListProjectsInstancesDatabasesOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -4592,24 +3552,15 @@ export interface ListProjectsInstancesDatabasesOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsInstancesDatabasesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesDatabasesOperationsRequest",
-  }) as any as S.Schema<ListProjectsInstancesDatabasesOperationsRequest>;
+export const ListProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesDatabasesOperationsRequest" }) as any as S.Schema<ListProjectsInstancesDatabasesOperationsRequest>;
 
 export interface ListProjectsInstancesDatabasesSessionsRequest {
   /** Required. The database in which to list sessions. */
@@ -4621,23 +3572,14 @@ export interface ListProjectsInstancesDatabasesSessionsRequest {
   /** An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `labels.key` where key is the name of a label Some examples of using filters are: * `labels.env:*` --> The session has the label "env". * `labels.env:dev` --> The session has the label "env" and the value of the label contains the string "dev". */
   filter?: string;
 }
-export const ListProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+database}/sessions",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<ListProjectsInstancesDatabasesSessionsRequest>;
+export const ListProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+database}/sessions","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<ListProjectsInstancesDatabasesSessionsRequest>;
 
 /** The response for ListSessions. */
 export interface ListSessionsResponse {
@@ -4647,13 +3589,11 @@ export interface ListSessionsResponse {
   nextPageToken?: string;
 }
 export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessions: S.optional(SessionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSessionsResponse",
-}) as any as S.Schema<ListSessionsResponse>;
+S.Struct({
+  "sessions": S.optional(SessionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListSessionsResponse" }) as any as S.Schema<ListSessionsResponse>;
 
 export interface ListProjectsInstancesInstancePartitionOperationsRequest {
   /** Required. The parent instance of the instance partition operations. Values are of the form `projects//instances/`. */
@@ -4667,24 +3607,15 @@ export interface ListProjectsInstancesInstancePartitionOperationsRequest {
   /** Optional. Deadline used while retrieving metadata for instance partition operations. Instance partitions whose operation metadata cannot be retrieved within this deadline will be added to unreachable_instance_partitions in ListInstancePartitionOperationsResponse. */
   instancePartitionDeadline?: string;
 }
-export const ListProjectsInstancesInstancePartitionOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      instancePartitionDeadline: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/instancePartitionOperations",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesInstancePartitionOperationsRequest",
-  }) as any as S.Schema<ListProjectsInstancesInstancePartitionOperationsRequest>;
+export const ListProjectsInstancesInstancePartitionOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "instancePartitionDeadline": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/instancePartitionOperations","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesInstancePartitionOperationsRequest" }) as any as S.Schema<ListProjectsInstancesInstancePartitionOperationsRequest>;
 
 /** The response for ListInstancePartitionOperations. */
 export interface ListInstancePartitionOperationsResponse {
@@ -4695,16 +3626,13 @@ export interface ListInstancePartitionOperationsResponse {
   /** The list of unreachable instance partitions. It includes the names of instance partitions whose operation metadata could not be retrieved within instance_partition_deadline. */
   unreachableInstancePartitions?: StringList;
 }
-export const ListInstancePartitionOperationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operations: S.optional(OperationList),
-      nextPageToken: S.optional(S.String),
-      unreachableInstancePartitions: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "ListInstancePartitionOperationsResponse",
-}) as any as S.Schema<ListInstancePartitionOperationsResponse>;
+export const ListInstancePartitionOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachableInstancePartitions": S.optional(StringList),
+}),
+).annotate({ identifier: "ListInstancePartitionOperationsResponse" }) as any as S.Schema<ListInstancePartitionOperationsResponse>;
 
 export interface ListProjectsInstancesInstancePartitionsRequest {
   /** Required. The instance whose instance partitions should be listed. Values are of the form `projects//instances/`. Use `{instance} = '-'` to list instance partitions for all Instances in a project, e.g., `projects/myproject/instances/-`. */
@@ -4716,28 +3644,17 @@ export interface ListProjectsInstancesInstancePartitionsRequest {
   /** Optional. Deadline used while retrieving metadata for instance partitions. Instance partitions whose metadata cannot be retrieved within this deadline will be added to unreachable in ListInstancePartitionsResponse. */
   instancePartitionDeadline?: string;
 }
-export const ListProjectsInstancesInstancePartitionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      instancePartitionDeadline: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/instancePartitions",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesInstancePartitionsRequest",
-  }) as any as S.Schema<ListProjectsInstancesInstancePartitionsRequest>;
+export const ListProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "instancePartitionDeadline": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/instancePartitions","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesInstancePartitionsRequest" }) as any as S.Schema<ListProjectsInstancesInstancePartitionsRequest>;
 
 export type InstancePartitionList = ReadonlyArray<InstancePartition>;
-export const InstancePartitionList = /*@__PURE__*/ S.Array(
-  InstancePartition,
-) as any as S.Schema<InstancePartitionList>;
+export const InstancePartitionList = /*@__PURE__*/ S.Array(InstancePartition) as any as S.Schema<InstancePartitionList>;
 
 /** The response for ListInstancePartitions. */
 export interface ListInstancePartitionsResponse {
@@ -4749,14 +3666,12 @@ export interface ListInstancePartitionsResponse {
   unreachable?: StringList;
 }
 export const ListInstancePartitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instancePartitions: S.optional(InstancePartitionList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListInstancePartitionsResponse",
-}) as any as S.Schema<ListInstancePartitionsResponse>;
+S.Struct({
+  "instancePartitions": S.optional(InstancePartitionList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListInstancePartitionsResponse" }) as any as S.Schema<ListInstancePartitionsResponse>;
 
 export interface ListProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -4770,24 +3685,15 @@ export interface ListProjectsInstancesInstancePartitionsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsInstancesInstancePartitionsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesInstancePartitionsOperationsRequest",
-  }) as any as S.Schema<ListProjectsInstancesInstancePartitionsOperationsRequest>;
+export const ListProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesInstancePartitionsOperationsRequest" }) as any as S.Schema<ListProjectsInstancesInstancePartitionsOperationsRequest>;
 
 export interface ListProjectsInstancesOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -4801,37 +3707,24 @@ export interface ListProjectsInstancesOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsInstancesOperationsRequest",
-}) as any as S.Schema<ListProjectsInstancesOperationsRequest>;
+export const ListProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesOperationsRequest" }) as any as S.Schema<ListProjectsInstancesOperationsRequest>;
 
-export type ListScansViewEnum =
-  | "VIEW_UNSPECIFIED"
-  | "SUMMARY"
-  | "FULL"
-  | (string & {});
+export type ListScansViewEnum = "VIEW_UNSPECIFIED" | "SUMMARY" | "FULL";
 export const ListScansViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListScansRequest {
   /** Required. The unique name of the parent resource, specific to the Database service implementing this interface. */
   parent: string;
   /** Specifies which parts of the Scan should be returned in the response. Note, only the SUMMARY view (the default) is currently supported for ListScans. */
-  view?: ListScansViewEnum;
+  view?: ListScansViewEnum | (string & {});
   /** A filter expression to restrict the results based on information present in the available Scan collection. The filter applies to all fields within the Scan message except for `data`. */
   filter?: string;
   /** The maximum number of items to return. */
@@ -4840,27 +3733,17 @@ export interface ListScansRequest {
   pageToken?: string;
 }
 export const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    view: S.optional(ListScansViewEnum.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListScansRequest",
-}) as any as S.Schema<ListScansRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "view": S.optional(ListScansViewEnum.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ListScansRequest" }) as any as S.Schema<ListScansRequest>;
 
 export type ScanList = ReadonlyArray<Scan>;
-export const ScanList = /*@__PURE__*/ S.Array(
-  Scan,
-) as any as S.Schema<ScanList>;
+export const ScanList = /*@__PURE__*/ S.Array(Scan) as any as S.Schema<ScanList>;
 
 /** Response method from the ListScans method. */
 export interface ListScansResponse {
@@ -4870,13 +3753,11 @@ export interface ListScansResponse {
   nextPageToken?: string;
 }
 export const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scans: S.optional(ScanList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListScansResponse",
-}) as any as S.Schema<ListScansResponse>;
+S.Struct({
+  "scans": S.optional(ScanList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListScansResponse" }) as any as S.Schema<ListScansResponse>;
 
 /** Encryption configuration for a Cloud Spanner database. */
 export interface InstanceEncryptionConfig {
@@ -4886,13 +3767,11 @@ export interface InstanceEncryptionConfig {
   kmsKeyNames?: StringList;
 }
 export const InstanceEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyName: S.optional(S.String),
-    kmsKeyNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InstanceEncryptionConfig",
-}) as any as S.Schema<InstanceEncryptionConfig>;
+S.Struct({
+  "kmsKeyName": S.optional(S.String),
+  "kmsKeyNames": S.optional(StringList),
+}),
+).annotate({ identifier: "InstanceEncryptionConfig" }) as any as S.Schema<InstanceEncryptionConfig>;
 
 /** The configuration for each database in the target instance configuration. */
 export interface DatabaseMoveConfig {
@@ -4902,18 +3781,14 @@ export interface DatabaseMoveConfig {
   encryptionConfig?: InstanceEncryptionConfig;
 }
 export const DatabaseMoveConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseId: S.optional(S.String),
-    encryptionConfig: S.optional(InstanceEncryptionConfig),
-  }),
-).annotate({
-  identifier: "DatabaseMoveConfig",
-}) as any as S.Schema<DatabaseMoveConfig>;
+S.Struct({
+  "databaseId": S.optional(S.String),
+  "encryptionConfig": S.optional(InstanceEncryptionConfig),
+}),
+).annotate({ identifier: "DatabaseMoveConfig" }) as any as S.Schema<DatabaseMoveConfig>;
 
 export type DatabaseMoveConfigList = ReadonlyArray<DatabaseMoveConfig>;
-export const DatabaseMoveConfigList = /*@__PURE__*/ S.Array(
-  DatabaseMoveConfig,
-) as any as S.Schema<DatabaseMoveConfigList>;
+export const DatabaseMoveConfigList = /*@__PURE__*/ S.Array(DatabaseMoveConfig) as any as S.Schema<DatabaseMoveConfigList>;
 
 /** The request for MoveInstance. */
 export interface MoveInstanceRequest {
@@ -4923,13 +3798,11 @@ export interface MoveInstanceRequest {
   targetDatabaseMoveConfigs?: DatabaseMoveConfigList;
 }
 export const MoveInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetConfig: S.optional(S.String),
-    targetDatabaseMoveConfigs: S.optional(DatabaseMoveConfigList),
-  }),
-).annotate({
-  identifier: "MoveInstanceRequest",
-}) as any as S.Schema<MoveInstanceRequest>;
+S.Struct({
+  "targetConfig": S.optional(S.String),
+  "targetDatabaseMoveConfigs": S.optional(DatabaseMoveConfigList),
+}),
+).annotate({ identifier: "MoveInstanceRequest" }) as any as S.Schema<MoveInstanceRequest>;
 
 export interface MoveProjectsInstancesRequest {
   /** Required. The instance to move. Values are of the form `projects//instances/`. */
@@ -4938,19 +3811,11 @@ export interface MoveProjectsInstancesRequest {
   body?: MoveInstanceRequest;
 }
 export const MoveProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MoveInstanceRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:move",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "MoveProjectsInstancesRequest",
-}) as any as S.Schema<MoveProjectsInstancesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MoveInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:move","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "MoveProjectsInstancesRequest" }) as any as S.Schema<MoveProjectsInstancesRequest>;
 
 /** Options for a `PartitionQueryRequest` and `PartitionReadRequest`. */
 export interface PartitionOptions {
@@ -4960,13 +3825,11 @@ export interface PartitionOptions {
   maxPartitions?: string;
 }
 export const PartitionOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partitionSizeBytes: S.optional(S.String),
-    maxPartitions: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartitionOptions",
-}) as any as S.Schema<PartitionOptions>;
+S.Struct({
+  "partitionSizeBytes": S.optional(S.String),
+  "maxPartitions": S.optional(S.String),
+}),
+).annotate({ identifier: "PartitionOptions" }) as any as S.Schema<PartitionOptions>;
 
 /** The request for PartitionQuery */
 export interface PartitionQueryRequest {
@@ -4982,16 +3845,14 @@ export interface PartitionQueryRequest {
   partitionOptions?: PartitionOptions;
 }
 export const PartitionQueryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transaction: S.optional(TransactionSelector),
-    sql: S.optional(S.String),
-    params: S.optional(DocumentMap),
-    paramTypes: S.optional(TypeMap),
-    partitionOptions: S.optional(PartitionOptions),
-  }),
-).annotate({
-  identifier: "PartitionQueryRequest",
-}) as any as S.Schema<PartitionQueryRequest>;
+S.Struct({
+  "transaction": S.optional(TransactionSelector),
+  "sql": S.optional(S.String),
+  "params": S.optional(DocumentMap),
+  "paramTypes": S.optional(TypeMap),
+  "partitionOptions": S.optional(PartitionOptions),
+}),
+).annotate({ identifier: "PartitionQueryRequest" }) as any as S.Schema<PartitionQueryRequest>;
 
 export interface PartitionQueryProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session used to create the partitions. */
@@ -4999,21 +3860,12 @@ export interface PartitionQueryProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: PartitionQueryRequest;
 }
-export const PartitionQueryProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(PartitionQueryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:partitionQuery",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PartitionQueryProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<PartitionQueryProjectsInstancesDatabasesSessionsRequest>;
+export const PartitionQueryProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(PartitionQueryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:partitionQuery","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "PartitionQueryProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<PartitionQueryProjectsInstancesDatabasesSessionsRequest>;
 
 /** Information returned for each partition returned in a PartitionResponse. */
 export interface Partition {
@@ -5021,15 +3873,13 @@ export interface Partition {
   partitionToken?: string;
 }
 export const Partition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partitionToken: S.optional(S.String),
-  }),
+S.Struct({
+  "partitionToken": S.optional(S.String),
+}),
 ).annotate({ identifier: "Partition" }) as any as S.Schema<Partition>;
 
 export type PartitionList = ReadonlyArray<Partition>;
-export const PartitionList = /*@__PURE__*/ S.Array(
-  Partition,
-) as any as S.Schema<PartitionList>;
+export const PartitionList = /*@__PURE__*/ S.Array(Partition) as any as S.Schema<PartitionList>;
 
 /** The response for PartitionQuery or PartitionRead */
 export interface PartitionResponse {
@@ -5039,13 +3889,11 @@ export interface PartitionResponse {
   transaction?: Transaction;
 }
 export const PartitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partitions: S.optional(PartitionList),
-    transaction: S.optional(Transaction),
-  }),
-).annotate({
-  identifier: "PartitionResponse",
-}) as any as S.Schema<PartitionResponse>;
+S.Struct({
+  "partitions": S.optional(PartitionList),
+  "transaction": S.optional(Transaction),
+}),
+).annotate({ identifier: "PartitionResponse" }) as any as S.Schema<PartitionResponse>;
 
 /** The request for PartitionRead */
 export interface PartitionReadRequest {
@@ -5063,17 +3911,15 @@ export interface PartitionReadRequest {
   partitionOptions?: PartitionOptions;
 }
 export const PartitionReadRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transaction: S.optional(TransactionSelector),
-    table: S.optional(S.String),
-    index: S.optional(S.String),
-    columns: S.optional(StringList),
-    keySet: S.optional(KeySet),
-    partitionOptions: S.optional(PartitionOptions),
-  }),
-).annotate({
-  identifier: "PartitionReadRequest",
-}) as any as S.Schema<PartitionReadRequest>;
+S.Struct({
+  "transaction": S.optional(TransactionSelector),
+  "table": S.optional(S.String),
+  "index": S.optional(S.String),
+  "columns": S.optional(StringList),
+  "keySet": S.optional(KeySet),
+  "partitionOptions": S.optional(PartitionOptions),
+}),
+).annotate({ identifier: "PartitionReadRequest" }) as any as S.Schema<PartitionReadRequest>;
 
 export interface PartitionReadProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session used to create the partitions. */
@@ -5081,21 +3927,12 @@ export interface PartitionReadProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: PartitionReadRequest;
 }
-export const PartitionReadProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(PartitionReadRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:partitionRead",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PartitionReadProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<PartitionReadProjectsInstancesDatabasesSessionsRequest>;
+export const PartitionReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(PartitionReadRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:partitionRead","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "PartitionReadProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<PartitionReadProjectsInstancesDatabasesSessionsRequest>;
 
 /** The request for UpdateInstanceConfig. */
 export interface UpdateInstanceConfigRequest {
@@ -5107,14 +3944,12 @@ export interface UpdateInstanceConfigRequest {
   validateOnly?: boolean;
 }
 export const UpdateInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceConfig: S.optional(InstanceConfig),
-    updateMask: S.optional(S.String),
-    validateOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateInstanceConfigRequest",
-}) as any as S.Schema<UpdateInstanceConfigRequest>;
+S.Struct({
+  "instanceConfig": S.optional(InstanceConfig),
+  "updateMask": S.optional(S.String),
+  "validateOnly": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "UpdateInstanceConfigRequest" }) as any as S.Schema<UpdateInstanceConfigRequest>;
 
 export interface PatchProjectsInstanceConfigsRequest {
   /** A unique identifier for the instance configuration. Values are of the form `projects//instanceConfigs/a-z*`. User instance configuration must start with `custom-`. */
@@ -5123,19 +3958,11 @@ export interface PatchProjectsInstanceConfigsRequest {
   body?: UpdateInstanceConfigRequest;
 }
 export const PatchProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(UpdateInstanceConfigRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsInstanceConfigsRequest",
-}) as any as S.Schema<PatchProjectsInstanceConfigsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateInstanceConfigRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstanceConfigsRequest" }) as any as S.Schema<PatchProjectsInstanceConfigsRequest>;
 
 /** The request for UpdateInstance. */
 export interface UpdateInstanceRequest {
@@ -5145,13 +3972,11 @@ export interface UpdateInstanceRequest {
   fieldMask?: string;
 }
 export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instance: S.optional(Instance),
-    fieldMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateInstanceRequest",
-}) as any as S.Schema<UpdateInstanceRequest>;
+S.Struct({
+  "instance": S.optional(Instance),
+  "fieldMask": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 
 export interface PatchProjectsInstancesRequest {
   /** Required. A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length. */
@@ -5160,19 +3985,11 @@ export interface PatchProjectsInstancesRequest {
   body?: UpdateInstanceRequest;
 }
 export const PatchProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(UpdateInstanceRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://spanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsInstancesRequest",
-}) as any as S.Schema<PatchProjectsInstancesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesRequest" }) as any as S.Schema<PatchProjectsInstancesRequest>;
 
 export interface PatchProjectsInstancesBackupsRequest {
   /** Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}`. */
@@ -5182,22 +3999,13 @@ export interface PatchProjectsInstancesBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const PatchProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Backup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsInstancesBackupsRequest",
-}) as any as S.Schema<PatchProjectsInstancesBackupsRequest>;
+export const PatchProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Backup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesBackupsRequest" }) as any as S.Schema<PatchProjectsInstancesBackupsRequest>;
 
 export interface PatchProjectsInstancesDatabasesRequest {
   /** Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database. */
@@ -5207,22 +4015,13 @@ export interface PatchProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: Database;
 }
-export const PatchProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Database.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsInstancesDatabasesRequest",
-}) as any as S.Schema<PatchProjectsInstancesDatabasesRequest>;
+export const PatchProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Database.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesDatabasesRequest" }) as any as S.Schema<PatchProjectsInstancesDatabasesRequest>;
 
 export interface PatchProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Identifier. Output only for the CreateBackupSchedule operation. Required for the UpdateBackupSchedule operation. A globally unique identifier for the backup schedule which cannot be changed. Values are of the form `projects//instances//databases//backupSchedules/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. */
@@ -5232,22 +4031,13 @@ export interface PatchProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: BackupSchedule;
 }
-export const PatchProjectsInstancesDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BackupSchedule.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsInstancesDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<PatchProjectsInstancesDatabasesBackupSchedulesRequest>;
+export const PatchProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BackupSchedule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesDatabasesBackupSchedulesRequest" }) as any as S.Schema<PatchProjectsInstancesDatabasesBackupSchedulesRequest>;
 
 /** The request for UpdateInstancePartition. */
 export interface UpdateInstancePartitionRequest {
@@ -5257,13 +4047,11 @@ export interface UpdateInstancePartitionRequest {
   fieldMask?: string;
 }
 export const UpdateInstancePartitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instancePartition: S.optional(InstancePartition),
-    fieldMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateInstancePartitionRequest",
-}) as any as S.Schema<UpdateInstancePartitionRequest>;
+S.Struct({
+  "instancePartition": S.optional(InstancePartition),
+  "fieldMask": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateInstancePartitionRequest" }) as any as S.Schema<UpdateInstancePartitionRequest>;
 
 export interface PatchProjectsInstancesInstancePartitionsRequest {
   /** Required. A unique identifier for the instance partition. Values are of the form `projects//instances//instancePartitions/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length. An instance partition's name cannot be changed after the instance partition is created. */
@@ -5271,34 +4059,17 @@ export interface PatchProjectsInstancesInstancePartitionsRequest {
   /** Request body */
   body?: UpdateInstancePartitionRequest;
 }
-export const PatchProjectsInstancesInstancePartitionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UpdateInstancePartitionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsInstancesInstancePartitionsRequest",
-  }) as any as S.Schema<PatchProjectsInstancesInstancePartitionsRequest>;
+export const PatchProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateInstancePartitionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesInstancePartitionsRequest" }) as any as S.Schema<PatchProjectsInstancesInstancePartitionsRequest>;
 
-export type ReadRequestOrderByEnum =
-  | "ORDER_BY_UNSPECIFIED"
-  | "ORDER_BY_PRIMARY_KEY"
-  | "ORDER_BY_NO_ORDER"
-  | (string & {});
+export type ReadRequestOrderByEnum = "ORDER_BY_UNSPECIFIED" | "ORDER_BY_PRIMARY_KEY" | "ORDER_BY_NO_ORDER";
 export const ReadRequestOrderByEnum = /*@__PURE__*/ S.String;
 
-export type ReadRequestLockHintEnum =
-  | "LOCK_HINT_UNSPECIFIED"
-  | "LOCK_HINT_SHARED"
-  | "LOCK_HINT_EXCLUSIVE"
-  | (string & {});
+export type ReadRequestLockHintEnum = "LOCK_HINT_UNSPECIFIED" | "LOCK_HINT_SHARED" | "LOCK_HINT_EXCLUSIVE";
 export const ReadRequestLockHintEnum = /*@__PURE__*/ S.String;
 
 /** The request for Read and StreamingRead. */
@@ -5326,26 +4097,26 @@ export interface ReadRequest {
   /** If this is for a partitioned read and this field is set to `true`, the request is executed with Spanner Data Boost independent compute resources. If the field is set to `true` but the request doesn't set `partition_token`, the API returns an `INVALID_ARGUMENT` error. */
   dataBoostEnabled?: boolean;
   /** Optional. Order for the returned rows. By default, Spanner returns result rows in primary key order except for PartitionRead requests. For applications that don't require rows to be returned in primary key (`ORDER_BY_PRIMARY_KEY`) order, setting `ORDER_BY_NO_ORDER` option allows Spanner to optimize row retrieval, resulting in lower latencies in certain cases (for example, bulk point lookups). */
-  orderBy?: ReadRequestOrderByEnum;
+  orderBy?: ReadRequestOrderByEnum | (string & {});
   /** Optional. Lock Hint for the request, it can only be used with read-write transactions. */
-  lockHint?: ReadRequestLockHintEnum;
+  lockHint?: ReadRequestLockHintEnum | (string & {});
 }
 export const ReadRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transaction: S.optional(TransactionSelector),
-    table: S.optional(S.String),
-    index: S.optional(S.String),
-    columns: S.optional(StringList),
-    keySet: S.optional(KeySet),
-    limit: S.optional(S.String),
-    resumeToken: S.optional(S.String),
-    partitionToken: S.optional(S.String),
-    requestOptions: S.optional(RequestOptions),
-    directedReadOptions: S.optional(DirectedReadOptions),
-    dataBoostEnabled: S.optional(S.Boolean),
-    orderBy: S.optional(ReadRequestOrderByEnum),
-    lockHint: S.optional(ReadRequestLockHintEnum),
-  }),
+S.Struct({
+  "transaction": S.optional(TransactionSelector),
+  "table": S.optional(S.String),
+  "index": S.optional(S.String),
+  "columns": S.optional(StringList),
+  "keySet": S.optional(KeySet),
+  "limit": S.optional(S.String),
+  "resumeToken": S.optional(S.String),
+  "partitionToken": S.optional(S.String),
+  "requestOptions": S.optional(RequestOptions),
+  "directedReadOptions": S.optional(DirectedReadOptions),
+  "dataBoostEnabled": S.optional(S.Boolean),
+  "orderBy": S.optional(ReadRequestOrderByEnum),
+  "lockHint": S.optional(ReadRequestLockHintEnum),
+}),
 ).annotate({ identifier: "ReadRequest" }) as any as S.Schema<ReadRequest>;
 
 export interface ReadProjectsInstancesDatabasesSessionsRequest {
@@ -5354,51 +4125,32 @@ export interface ReadProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: ReadRequest;
 }
-export const ReadProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(ReadRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:read",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ReadProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<ReadProjectsInstancesDatabasesSessionsRequest>;
+export const ReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(ReadRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:read","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "ReadProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<ReadProjectsInstancesDatabasesSessionsRequest>;
 
-export type RestoreDatabaseEncryptionConfigEncryptionTypeEnum =
-  | "ENCRYPTION_TYPE_UNSPECIFIED"
-  | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION"
-  | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
-export const RestoreDatabaseEncryptionConfigEncryptionTypeEnum =
-  /*@__PURE__*/ S.String;
+export type RestoreDatabaseEncryptionConfigEncryptionTypeEnum = "ENCRYPTION_TYPE_UNSPECIFIED" | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION" | "GOOGLE_DEFAULT_ENCRYPTION" | "CUSTOMER_MANAGED_ENCRYPTION";
+export const RestoreDatabaseEncryptionConfigEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption configuration for the restored database. */
 export interface RestoreDatabaseEncryptionConfig {
   /** Required. The encryption type of the restored database. */
-  encryptionType?: RestoreDatabaseEncryptionConfigEncryptionTypeEnum;
+  encryptionType?: RestoreDatabaseEncryptionConfigEncryptionTypeEnum | (string & {});
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`. */
   kmsKeyName?: string;
   /** Optional. Specifies the KMS configuration for one or more keys used to encrypt the database. Values have the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the database's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
   kmsKeyNames?: StringList;
 }
 export const RestoreDatabaseEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionType: S.optional(
-      RestoreDatabaseEncryptionConfigEncryptionTypeEnum,
-    ),
-    kmsKeyName: S.optional(S.String),
-    kmsKeyNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "RestoreDatabaseEncryptionConfig",
-}) as any as S.Schema<RestoreDatabaseEncryptionConfig>;
+S.Struct({
+  "encryptionType": S.optional(RestoreDatabaseEncryptionConfigEncryptionTypeEnum),
+  "kmsKeyName": S.optional(S.String),
+  "kmsKeyNames": S.optional(StringList),
+}),
+).annotate({ identifier: "RestoreDatabaseEncryptionConfig" }) as any as S.Schema<RestoreDatabaseEncryptionConfig>;
 
 /** The request for RestoreDatabase. */
 export interface RestoreDatabaseRequest {
@@ -5410,14 +4162,12 @@ export interface RestoreDatabaseRequest {
   encryptionConfig?: RestoreDatabaseEncryptionConfig;
 }
 export const RestoreDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseId: S.optional(S.String),
-    backup: S.optional(S.String),
-    encryptionConfig: S.optional(RestoreDatabaseEncryptionConfig),
-  }),
-).annotate({
-  identifier: "RestoreDatabaseRequest",
-}) as any as S.Schema<RestoreDatabaseRequest>;
+S.Struct({
+  "databaseId": S.optional(S.String),
+  "backup": S.optional(S.String),
+  "encryptionConfig": S.optional(RestoreDatabaseEncryptionConfig),
+}),
+).annotate({ identifier: "RestoreDatabaseRequest" }) as any as S.Schema<RestoreDatabaseRequest>;
 
 export interface RestoreProjectsInstancesDatabasesRequest {
   /** Required. The name of the instance in which to create the restored database. This instance must be in the same project and have the same instance configuration as the instance containing the source backup. Values are of the form `projects//instances/`. */
@@ -5425,21 +4175,12 @@ export interface RestoreProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: RestoreDatabaseRequest;
 }
-export const RestoreProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(RestoreDatabaseRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/databases:restore",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "RestoreProjectsInstancesDatabasesRequest",
-}) as any as S.Schema<RestoreProjectsInstancesDatabasesRequest>;
+export const RestoreProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(RestoreDatabaseRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/databases:restore","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "RestoreProjectsInstancesDatabasesRequest" }) as any as S.Schema<RestoreProjectsInstancesDatabasesRequest>;
 
 /** The request for Rollback. */
 export interface RollbackRequest {
@@ -5447,12 +4188,10 @@ export interface RollbackRequest {
   transactionId?: string;
 }
 export const RollbackRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RollbackRequest",
-}) as any as S.Schema<RollbackRequest>;
+S.Struct({
+  "transactionId": S.optional(S.String),
+}),
+).annotate({ identifier: "RollbackRequest" }) as any as S.Schema<RollbackRequest>;
 
 export interface RollbackProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the transaction to roll back is running. */
@@ -5460,21 +4199,12 @@ export interface RollbackProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: RollbackRequest;
 }
-export const RollbackProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(RollbackRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:rollback",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RollbackProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<RollbackProjectsInstancesDatabasesSessionsRequest>;
+export const RollbackProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(RollbackRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:rollback","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "RollbackProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<RollbackProjectsInstancesDatabasesSessionsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -5482,12 +4212,10 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsInstancesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for databases resources. */
@@ -5495,21 +4223,12 @@ export interface SetIamPolicyProjectsInstancesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SetIamPolicyProjectsInstancesRequest",
-}) as any as S.Schema<SetIamPolicyProjectsInstancesRequest>;
+export const SetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesRequest>;
 
 export interface SetIamPolicyProjectsInstancesBackupsRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for databases resources. */
@@ -5517,21 +4236,12 @@ export interface SetIamPolicyProjectsInstancesBackupsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsInstancesBackupsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsInstancesBackupsRequest>;
+export const SetIamPolicyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesBackupsRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesBackupsRequest>;
 
 export interface SetIamPolicyProjectsInstancesDatabasesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for databases resources. */
@@ -5539,21 +4249,12 @@ export interface SetIamPolicyProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsInstancesDatabasesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsInstancesDatabasesRequest>;
+export const SetIamPolicyProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesDatabasesRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesDatabasesRequest>;
 
 export interface SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for databases resources. */
@@ -5561,21 +4262,12 @@ export interface SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest>;
+export const SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest>;
 
 export interface StreamingReadProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the read should be performed. */
@@ -5583,21 +4275,12 @@ export interface StreamingReadProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: ReadRequest;
 }
-export const StreamingReadProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(ReadRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:streamingRead",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "StreamingReadProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<StreamingReadProjectsInstancesDatabasesSessionsRequest>;
+export const StreamingReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "session": S.String.pipe(T.Label()),
+  "body": S.optional(ReadRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+session}:streamingRead","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "StreamingReadProjectsInstancesDatabasesSessionsRequest" }) as any as S.Schema<StreamingReadProjectsInstancesDatabasesSessionsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -5605,12 +4288,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsInstancesRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
@@ -5618,21 +4299,12 @@ export interface TestIamPermissionsProjectsInstancesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesRequest>;
+export const TestIamPermissionsProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -5640,12 +4312,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsInstancesBackupsRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
@@ -5653,21 +4323,12 @@ export interface TestIamPermissionsProjectsInstancesBackupsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesBackupsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesBackupsRequest>;
+export const TestIamPermissionsProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesBackupsRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesBackupsRequest>;
 
 export interface TestIamPermissionsProjectsInstancesDatabasesRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
@@ -5675,21 +4336,12 @@ export interface TestIamPermissionsProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesDatabasesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesRequest>;
+export const TestIamPermissionsProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesDatabasesRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesRequest>;
 
 export interface TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
@@ -5697,22 +4349,12 @@ export interface TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequ
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest>;
+export const TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest>;
 
 export interface TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
@@ -5720,22 +4362,12 @@ export interface TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesReques
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest>;
+export const TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest>;
 
 /** Enqueues the given DDL statements to be applied, in order but not necessarily all at once, to the database schema at some point (or points) in the future. The server checks that the statements are executable (syntactically valid, name tables that exist, etc.) before enqueueing them, but they may still fail upon later execution (for example, if a statement from another batch of statements is applied first and it conflicts in some way, or if there is some data-related problem like a `NULL` value in a column to which `NOT NULL` would be added). If a statement fails, all subsequent statements in the batch are automatically cancelled. Each batch of statements is assigned a name which can be used with the Operations API to monitor progress. See the operation_id field for more details. */
 export interface UpdateDatabaseDdlRequest {
@@ -5747,14 +4379,12 @@ export interface UpdateDatabaseDdlRequest {
   protoDescriptors?: string;
 }
 export const UpdateDatabaseDdlRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statements: S.optional(StringList),
-    operationId: S.optional(S.String),
-    protoDescriptors: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDatabaseDdlRequest",
-}) as any as S.Schema<UpdateDatabaseDdlRequest>;
+S.Struct({
+  "statements": S.optional(StringList),
+  "operationId": S.optional(S.String),
+  "protoDescriptors": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateDatabaseDdlRequest" }) as any as S.Schema<UpdateDatabaseDdlRequest>;
 
 export interface UpdateDdlProjectsInstancesDatabasesRequest {
   /** Required. The database to update. */
@@ -5762,28 +4392,14 @@ export interface UpdateDdlProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: UpdateDatabaseDdlRequest;
 }
-export const UpdateDdlProjectsInstancesDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(UpdateDatabaseDdlRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+database}/ddl",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateDdlProjectsInstancesDatabasesRequest",
-  }) as any as S.Schema<UpdateDdlProjectsInstancesDatabasesRequest>;
+export const UpdateDdlProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateDatabaseDdlRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+database}/ddl","baseUrl":"https://spanner.googleapis.com/"})),
+).annotate({ identifier: "UpdateDdlProjectsInstancesDatabasesRequest" }) as any as S.Schema<UpdateDdlProjectsInstancesDatabasesRequest>;
 
-export type AdapterProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AdapterProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new session to be used for requests made by the adapter. A session identifies a specific incarnation of a database resource and is meant to be reused across many `AdaptMessage` calls. */
 export const adapterProjectsInstancesDatabasesSessions: API.OperationMethod<
   AdapterProjectsInstancesDatabasesSessionsRequest,
@@ -5798,12 +4414,7 @@ export const adapterProjectsInstancesDatabasesSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AdaptMessageProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AdaptMessageProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Handles a single message from the client and returns the result as a stream. The server will interpret the message frame and respond with message frames to the client. */
 export const adaptMessageProjectsInstancesDatabasesSessions: API.OperationMethod<
   AdaptMessageProjectsInstancesDatabasesSessionsRequest,
@@ -5818,12 +4429,7 @@ export const adaptMessageProjectsInstancesDatabasesSessions: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type AddSplitPointsProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddSplitPointsProjectsInstancesDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds split points to specified tables and indexes of a database. */
 export const addSplitPointsProjectsInstancesDatabases: API.OperationMethod<
   AddSplitPointsProjectsInstancesDatabasesRequest,
@@ -5838,12 +4444,7 @@ export const addSplitPointsProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchCreateProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates multiple new sessions. This API can be used to initialize a session cache on the clients. See https://goo.gl/TgSFN2 for best practices on session cache management. */
 export const batchCreateProjectsInstancesDatabasesSessions: API.OperationMethod<
   BatchCreateProjectsInstancesDatabasesSessionsRequest,
@@ -5858,12 +4459,7 @@ export const batchCreateProjectsInstancesDatabasesSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchWriteProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchWriteProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Batches the supplied mutation groups in a collection of efficient transactions. All mutations in a group are committed atomically. However, mutations across groups can be committed non-atomically in an unspecified order and thus, they must be independent of each other. Partial failure is possible, that is, some groups might have been committed successfully, while some might have failed. The results of individual batches are streamed into the response as the batches are applied. `BatchWrite` requests are not replay protected, meaning that each mutation group can be applied more than once. Replays of non-idempotent mutations can have undesirable effects. For example, replays of an insert mutation can produce an already exists error or if you use generated or commit timestamp-based keys, it can result in additional rows being added to the mutation's table. We recommend structuring your mutation groups to be idempotent to avoid this issue. */
 export const batchWriteProjectsInstancesDatabasesSessions: API.OperationMethod<
   BatchWriteProjectsInstancesDatabasesSessionsRequest,
@@ -5878,12 +4474,7 @@ export const batchWriteProjectsInstancesDatabasesSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BeginTransactionProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BeginTransactionProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Begins a new transaction. This step can often be skipped: Read, ExecuteSql and Commit can begin a new transaction as a side-effect. */
 export const beginTransactionProjectsInstancesDatabasesSessions: API.OperationMethod<
   BeginTransactionProjectsInstancesDatabasesSessionsRequest,
@@ -5898,12 +4489,7 @@ export const beginTransactionProjectsInstancesDatabasesSessions: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsInstanceConfigsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsInstanceConfigsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstanceConfigsOperations: API.OperationMethod<
   CancelProjectsInstanceConfigsOperationsRequest,
@@ -5918,12 +4504,7 @@ export const cancelProjectsInstanceConfigsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsInstanceConfigsSsdCachesOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsInstanceConfigsSsdCachesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstanceConfigsSsdCachesOperations: API.OperationMethod<
   CancelProjectsInstanceConfigsSsdCachesOperationsRequest,
@@ -5938,12 +4519,7 @@ export const cancelProjectsInstanceConfigsSsdCachesOperations: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsInstancesBackupsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsInstancesBackupsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstancesBackupsOperations: API.OperationMethod<
   CancelProjectsInstancesBackupsOperationsRequest,
@@ -5958,12 +4534,7 @@ export const cancelProjectsInstancesBackupsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsInstancesDatabasesOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsInstancesDatabasesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstancesDatabasesOperations: API.OperationMethod<
   CancelProjectsInstancesDatabasesOperationsRequest,
@@ -5978,12 +4549,7 @@ export const cancelProjectsInstancesDatabasesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsInstancesInstancePartitionsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsInstancesInstancePartitionsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstancesInstancePartitionsOperations: API.OperationMethod<
   CancelProjectsInstancesInstancePartitionsOperationsRequest,
@@ -5998,12 +4564,7 @@ export const cancelProjectsInstancesInstancePartitionsOperations: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsInstancesOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsInstancesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstancesOperations: API.OperationMethod<
   CancelProjectsInstancesOperationsRequest,
@@ -6018,12 +4579,7 @@ export const cancelProjectsInstancesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ChangequorumProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ChangequorumProjectsInstancesDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** `ChangeQuorum` is strictly restricted to databases that use dual-region instance configurations. Initiates a background operation to change the quorum of a database from dual-region mode to single-region mode or vice versa. The returned long-running operation has a name of the format `projects//instances//databases//operations/` and can be used to track execution of the `ChangeQuorum`. The metadata field type is ChangeQuorumMetadata. Authorization requires `spanner.databases.changequorum` permission on the resource database. */
 export const changequorumProjectsInstancesDatabases: API.OperationMethod<
   ChangequorumProjectsInstancesDatabasesRequest,
@@ -6038,12 +4594,7 @@ export const changequorumProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CommitProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CommitProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Commits a transaction. The request includes the mutations to be applied to rows in the database. `Commit` might return an `ABORTED` error. This can occur at any time; commonly, the cause is conflicts with concurrent transactions. However, it can also happen for a variety of other reasons. If `Commit` returns `ABORTED`, the caller should retry the transaction from the beginning, reusing the same session. On very rare occasions, `Commit` might return `UNKNOWN`. This can happen, for example, if the client job experiences a 1+ hour networking failure. At that point, Cloud Spanner has lost track of the transaction outcome and we recommend that you perform another read from the database to see the state of things as they are now. */
 export const commitProjectsInstancesDatabasesSessions: API.OperationMethod<
   CommitProjectsInstancesDatabasesSessionsRequest,
@@ -6058,12 +4609,7 @@ export const commitProjectsInstancesDatabasesSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CopyProjectsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CopyProjectsInstancesBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts copying a Cloud Spanner Backup. The returned backup long-running operation will have a name of the format `projects//instances//backups//operations/` and can be used to track copying of the backup. The operation is associated with the destination backup. The metadata field type is CopyBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the copying and delete the destination backup. Concurrent CopyBackup requests can run on the same source backup. */
 export const copyProjectsInstancesBackups: API.OperationMethod<
   CopyProjectsInstancesBackupsRequest,
@@ -6078,12 +4624,7 @@ export const copyProjectsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstanceConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstanceConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an instance configuration and begins preparing it to be used. The returned long-running operation can be used to track the progress of preparing the new instance configuration. The instance configuration name is assigned by the caller. If the named instance configuration already exists, `CreateInstanceConfig` returns `ALREADY_EXISTS`. Immediately after the request returns: * The instance configuration is readable via the API, with all requested attributes. The instance configuration's reconciling field is set to true. Its state is `CREATING`. While the operation is pending: * Cancelling the operation renders the instance configuration immediately unreadable via the API. * Except for deleting the creating resource, all other attempts to modify the instance configuration are rejected. Upon completion of the returned operation: * Instances can be created using the instance configuration. * The instance configuration's reconciling field becomes false. Its state becomes `READY`. The returned long-running operation will have a name of the format `/operations/` and can be used to track creation of the instance configuration. The metadata field type is CreateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization requires `spanner.instanceConfigs.create` permission on the resource parent. */
 export const createProjectsInstanceConfigs: API.OperationMethod<
   CreateProjectsInstanceConfigsRequest,
@@ -6098,12 +4639,7 @@ export const createProjectsInstanceConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an instance and begins preparing it to begin serving. The returned long-running operation can be used to track the progress of preparing the new instance. The instance name is assigned by the caller. If the named instance already exists, `CreateInstance` returns `ALREADY_EXISTS`. Immediately upon completion of this request: * The instance is readable via the API, with all requested attributes but no allocated resources. Its state is `CREATING`. Until completion of the returned operation: * Cancelling the operation renders the instance immediately unreadable via the API. * The instance can be deleted. * All other attempts to modify the instance are rejected. Upon completion of the returned operation: * Billing for all successfully-allocated resources begins (some types may have lower than the requested levels). * Databases can be created in the instance. * The instance's allocated resource levels are readable via the API. * The instance's state becomes `READY`. The returned long-running operation will have a name of the format `/operations/` and can be used to track creation of the instance. The metadata field type is CreateInstanceMetadata. The response field type is Instance, if successful. */
 export const createProjectsInstances: API.OperationMethod<
   CreateProjectsInstancesRequest,
@@ -6118,12 +4654,7 @@ export const createProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts creating a new Cloud Spanner Backup. The returned backup long-running operation will have a name of the format `projects//instances//backups//operations/` and can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. There can be only one pending backup creation per database. Backup creation of different databases can run concurrently. */
 export const createProjectsInstancesBackups: API.OperationMethod<
   CreateProjectsInstancesBackupsRequest,
@@ -6138,12 +4669,7 @@ export const createProjectsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Spanner database and starts to prepare it for serving. The returned long-running operation will have a name of the format `/operations/` and can be used to track preparation of the database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if successful. */
 export const createProjectsInstancesDatabases: API.OperationMethod<
   CreateProjectsInstancesDatabasesRequest,
@@ -6158,12 +4684,7 @@ export const createProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesDatabasesBackupSchedulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new backup schedule. */
 export const createProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
   CreateProjectsInstancesDatabasesBackupSchedulesRequest,
@@ -6178,12 +4699,7 @@ export const createProjectsInstancesDatabasesBackupSchedules: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new session. A session can be used to perform transactions that read and/or modify data in a Cloud Spanner database. Sessions are meant to be reused for many consecutive transactions. Sessions can only execute one transaction at a time. To execute multiple concurrent read-write/write-only transactions, create multiple sessions. Note that standalone reads and queries use a transaction internally, and count toward the one transaction limit. Active sessions use additional server resources, so it's a good idea to delete idle and unneeded sessions. Aside from explicit deletes, Cloud Spanner can delete sessions when no operations are sent for more than an hour. If a session is deleted, requests to it return `NOT_FOUND`. Idle sessions can be kept alive by sending a trivial SQL query periodically, for example, `"SELECT 1"`. */
 export const createProjectsInstancesDatabasesSessions: API.OperationMethod<
   CreateProjectsInstancesDatabasesSessionsRequest,
@@ -6198,12 +4714,7 @@ export const createProjectsInstancesDatabasesSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesInstancePartitionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesInstancePartitionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an instance partition and begins preparing it to be used. The returned long-running operation can be used to track the progress of preparing the new instance partition. The instance partition name is assigned by the caller. If the named instance partition already exists, `CreateInstancePartition` returns `ALREADY_EXISTS`. Immediately upon completion of this request: * The instance partition is readable via the API, with all requested attributes but no allocated resources. Its state is `CREATING`. Until completion of the returned operation: * Cancelling the operation renders the instance partition immediately unreadable via the API. * The instance partition can be deleted. * All other attempts to modify the instance partition are rejected. Upon completion of the returned operation: * Billing for all successfully-allocated resources begins (some types may have lower than the requested levels). * Databases can start using this instance partition. * The instance partition's allocated resource levels are readable via the API. * The instance partition's state becomes `READY`. The returned long-running operation will have a name of the format `/operations/` and can be used to track creation of the instance partition. The metadata field type is CreateInstancePartitionMetadata. The response field type is InstancePartition, if successful. */
 export const createProjectsInstancesInstancePartitions: API.OperationMethod<
   CreateProjectsInstancesInstancePartitionsRequest,
@@ -6218,12 +4729,7 @@ export const createProjectsInstancesInstancePartitions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstanceConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstanceConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the instance configuration. Deletion is only allowed when no instances are using the configuration. If any instances are using the configuration, returns `FAILED_PRECONDITION`. Only user-managed configurations can be deleted. Authorization requires `spanner.instanceConfigs.delete` permission on the resource name. */
 export const deleteProjectsInstanceConfigs: API.OperationMethod<
   DeleteProjectsInstanceConfigsRequest,
@@ -6238,12 +4744,7 @@ export const deleteProjectsInstanceConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstanceConfigsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstanceConfigsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstanceConfigsOperations: API.OperationMethod<
   DeleteProjectsInstanceConfigsOperationsRequest,
@@ -6258,12 +4759,7 @@ export const deleteProjectsInstanceConfigsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstanceConfigsSsdCachesOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstanceConfigsSsdCachesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstanceConfigsSsdCachesOperations: API.OperationMethod<
   DeleteProjectsInstanceConfigsSsdCachesOperationsRequest,
@@ -6278,12 +4774,7 @@ export const deleteProjectsInstanceConfigsSsdCachesOperations: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an instance. Immediately upon completion of the request: * Billing ceases for all of the instance's reserved resources. Soon afterward: * The instance and *all of its databases* immediately and irrevocably disappear from the API. All data in the databases is permanently deleted. */
 export const deleteProjectsInstances: API.OperationMethod<
   DeleteProjectsInstancesRequest,
@@ -6298,12 +4789,7 @@ export const deleteProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a pending or completed Backup. */
 export const deleteProjectsInstancesBackups: API.OperationMethod<
   DeleteProjectsInstancesBackupsRequest,
@@ -6318,12 +4804,7 @@ export const deleteProjectsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesBackupsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesBackupsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstancesBackupsOperations: API.OperationMethod<
   DeleteProjectsInstancesBackupsOperationsRequest,
@@ -6338,12 +4819,7 @@ export const deleteProjectsInstancesBackupsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesDatabasesBackupSchedulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a backup schedule. */
 export const deleteProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
   DeleteProjectsInstancesDatabasesBackupSchedulesRequest,
@@ -6358,12 +4834,7 @@ export const deleteProjectsInstancesDatabasesBackupSchedules: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesDatabasesOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesDatabasesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstancesDatabasesOperations: API.OperationMethod<
   DeleteProjectsInstancesDatabasesOperationsRequest,
@@ -6378,12 +4849,7 @@ export const deleteProjectsInstancesDatabasesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Ends a session, releasing server resources associated with it. This asynchronously triggers the cancellation of any operations that are running with this session. */
 export const deleteProjectsInstancesDatabasesSessions: API.OperationMethod<
   DeleteProjectsInstancesDatabasesSessionsRequest,
@@ -6398,12 +4864,7 @@ export const deleteProjectsInstancesDatabasesSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesInstancePartitionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesInstancePartitionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing instance partition. Requires that the instance partition is not used by any database or backup and is not the default instance partition of an instance. Authorization requires `spanner.instancePartitions.delete` permission on the resource name. */
 export const deleteProjectsInstancesInstancePartitions: API.OperationMethod<
   DeleteProjectsInstancesInstancePartitionsRequest,
@@ -6418,12 +4879,7 @@ export const deleteProjectsInstancesInstancePartitions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesInstancePartitionsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesInstancePartitionsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstancesInstancePartitionsOperations: API.OperationMethod<
   DeleteProjectsInstancesInstancePartitionsOperationsRequest,
@@ -6438,12 +4894,7 @@ export const deleteProjectsInstancesInstancePartitionsOperations: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstancesOperations: API.OperationMethod<
   DeleteProjectsInstancesOperationsRequest,
@@ -6458,12 +4909,7 @@ export const deleteProjectsInstancesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DropDatabaseProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DropDatabaseProjectsInstancesDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Drops (aka deletes) a Cloud Spanner database. Completed backups for the database will be retained according to their `expire_time`. Note: Cloud Spanner might continue to accept requests for a few seconds after the database has been deleted. */
 export const dropDatabaseProjectsInstancesDatabases: API.OperationMethod<
   DropDatabaseProjectsInstancesDatabasesRequest,
@@ -6478,12 +4924,7 @@ export const dropDatabaseProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExecuteBatchDmlProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExecuteBatchDmlProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Executes a batch of SQL DML statements. This method allows many statements to be run with lower latency than submitting them sequentially with ExecuteSql. Statements are executed in sequential order. A request can succeed even if a statement fails. The ExecuteBatchDmlResponse.status field in the response provides information about the statement that failed. Clients must inspect this field to determine whether an error occurred. Execution stops after the first failed statement; the remaining statements are not executed. */
 export const executeBatchDmlProjectsInstancesDatabasesSessions: API.OperationMethod<
   ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest,
@@ -6498,12 +4939,7 @@ export const executeBatchDmlProjectsInstancesDatabasesSessions: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type ExecuteSqlProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExecuteSqlProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Executes an SQL statement, returning all results in a single reply. This method can't be used to return a result set larger than 10 MiB; if the query yields more data than that, the query fails with a `FAILED_PRECONDITION` error. Operations inside read-write transactions might return `ABORTED`. If this occurs, the application should restart the transaction from the beginning. See Transaction for more details. Larger result sets can be fetched in streaming fashion by calling ExecuteStreamingSql instead. The query string can be SQL or [Graph Query Language (GQL)](https://cloud.google.com/spanner/docs/reference/standard-sql/graph-intro). */
 export const executeSqlProjectsInstancesDatabasesSessions: API.OperationMethod<
   ExecuteSqlProjectsInstancesDatabasesSessionsRequest,
@@ -6518,12 +4954,7 @@ export const executeSqlProjectsInstancesDatabasesSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExecuteStreamingSqlProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExecuteStreamingSqlProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Like ExecuteSql, except returns the result set as a stream. Unlike ExecuteSql, there is no limit on the size of the returned result set. However, no individual row in the result set can exceed 100 MiB, and no column value can exceed 10 MiB. The query string can be SQL or [Graph Query Language (GQL)](https://cloud.google.com/spanner/docs/reference/standard-sql/graph-intro). */
 export const executeStreamingSqlProjectsInstancesDatabasesSessions: API.OperationMethod<
   ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest,
@@ -6538,10 +4969,7 @@ export const executeStreamingSqlProjectsInstancesDatabasesSessions: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type GetDdlProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetDdlProjectsInstancesDatabasesError = NotFound | Forbidden | GcpOpError;
 /** Returns the schema of a Cloud Spanner database as a list of formatted DDL statements. This method does not show pending schema updates, those may be queried using the Operations API. */
 export const getDdlProjectsInstancesDatabases: API.OperationMethod<
   GetDdlProjectsInstancesDatabasesRequest,
@@ -6556,12 +4984,7 @@ export const getDdlProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. Authorization requires `spanner.instances.getIamPolicy` on resource. */
 export const getIamPolicyProjectsInstances: API.OperationMethod<
   GetIamPolicyProjectsInstancesRequest,
@@ -6576,12 +4999,7 @@ export const getIamPolicyProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.getIamPolicy` permission on resource. */
 export const getIamPolicyProjectsInstancesBackups: API.OperationMethod<
   GetIamPolicyProjectsInstancesBackupsRequest,
@@ -6596,12 +5014,7 @@ export const getIamPolicyProjectsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.getIamPolicy` permission on resource. */
 export const getIamPolicyProjectsInstancesDatabases: API.OperationMethod<
   GetIamPolicyProjectsInstancesDatabasesRequest,
@@ -6616,12 +5029,7 @@ export const getIamPolicyProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesDatabasesBackupSchedulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.getIamPolicy` permission on resource. */
 export const getIamPolicyProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
   GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest,
@@ -6651,10 +5059,7 @@ export const getProjectsInstanceConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstanceConfigsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstanceConfigsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstanceConfigsOperations: API.OperationMethod<
   GetProjectsInstanceConfigsOperationsRequest,
@@ -6669,10 +5074,7 @@ export const getProjectsInstanceConfigsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstanceConfigsSsdCachesOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstanceConfigsSsdCachesOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstanceConfigsSsdCachesOperations: API.OperationMethod<
   GetProjectsInstanceConfigsSsdCachesOperationsRequest,
@@ -6702,10 +5104,7 @@ export const getProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesBackupsError = NotFound | Forbidden | GcpOpError;
 /** Gets metadata on a pending or completed Backup. */
 export const getProjectsInstancesBackups: API.OperationMethod<
   GetProjectsInstancesBackupsRequest,
@@ -6720,10 +5119,7 @@ export const getProjectsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesBackupsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesBackupsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstancesBackupsOperations: API.OperationMethod<
   GetProjectsInstancesBackupsOperationsRequest,
@@ -6738,10 +5134,7 @@ export const getProjectsInstancesBackupsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesDatabasesError = NotFound | Forbidden | GcpOpError;
 /** Gets the state of a Cloud Spanner database. */
 export const getProjectsInstancesDatabases: API.OperationMethod<
   GetProjectsInstancesDatabasesRequest,
@@ -6756,10 +5149,7 @@ export const getProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesDatabasesBackupSchedulesError = NotFound | Forbidden | GcpOpError;
 /** Gets backup schedule for the input schedule name. */
 export const getProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
   GetProjectsInstancesDatabasesBackupSchedulesRequest,
@@ -6774,10 +5164,7 @@ export const getProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesDatabasesOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesDatabasesOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstancesDatabasesOperations: API.OperationMethod<
   GetProjectsInstancesDatabasesOperationsRequest,
@@ -6792,10 +5179,7 @@ export const getProjectsInstancesDatabasesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | GcpOpError;
 /** Gets a session. Returns `NOT_FOUND` if the session doesn't exist. This is mainly useful for determining whether a session is still alive. */
 export const getProjectsInstancesDatabasesSessions: API.OperationMethod<
   GetProjectsInstancesDatabasesSessionsRequest,
@@ -6810,10 +5194,7 @@ export const getProjectsInstancesDatabasesSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesInstancePartitionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesInstancePartitionsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a particular instance partition. */
 export const getProjectsInstancesInstancePartitions: API.OperationMethod<
   GetProjectsInstancesInstancePartitionsRequest,
@@ -6828,10 +5209,7 @@ export const getProjectsInstancesInstancePartitions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesInstancePartitionsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesInstancePartitionsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstancesInstancePartitionsOperations: API.OperationMethod<
   GetProjectsInstancesInstancePartitionsOperationsRequest,
@@ -6846,10 +5224,7 @@ export const getProjectsInstancesInstancePartitionsOperations: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstancesOperations: API.OperationMethod<
   GetProjectsInstancesOperationsRequest,
@@ -6864,10 +5239,7 @@ export const getProjectsInstancesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetScansProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetScansProjectsInstancesDatabasesError = NotFound | Forbidden | GcpOpError;
 /** Request a specific scan with Database-specific data for Cloud Key Visualizer. */
 export const getScansProjectsInstancesDatabases: API.OperationMethod<
   GetScansProjectsInstancesDatabasesRequest,
@@ -6882,10 +5254,7 @@ export const getScansProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsInstanceConfigOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstanceConfigOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists the user-managed instance configuration long-running operations in the given project. An instance configuration operation has a name of the form `projects//instanceConfigs//operations/`. The long-running operation metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that have completed/failed/canceled within the last 7 days, and pending operations. Operations returned are ordered by `operation.metadata.value.start_time` in descending order starting from the most recently started operation. */
 export const listProjectsInstanceConfigOperations: API.PaginatedOperationMethod<
   ListProjectsInstanceConfigOperationsRequest,
@@ -6898,16 +5267,10 @@ export const listProjectsInstanceConfigOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstanceConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstanceConfigsError = NotFound | Forbidden | GcpOpError;
 /** Lists the supported instance configurations for a given project. Returns both Google-managed configurations and user-managed configurations. */
 export const listProjectsInstanceConfigs: API.PaginatedOperationMethod<
   ListProjectsInstanceConfigsRequest,
@@ -6920,16 +5283,10 @@ export const listProjectsInstanceConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstanceConfigsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstanceConfigsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstanceConfigsOperations: API.PaginatedOperationMethod<
   ListProjectsInstanceConfigsOperationsRequest,
@@ -6942,16 +5299,10 @@ export const listProjectsInstanceConfigsOperations: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstanceConfigsSsdCachesOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstanceConfigsSsdCachesOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstanceConfigsSsdCachesOperations: API.PaginatedOperationMethod<
   ListProjectsInstanceConfigsSsdCachesOperationsRequest,
@@ -6964,10 +5315,7 @@ export const listProjectsInstanceConfigsSsdCachesOperations: API.PaginatedOperat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsInstancesError = NotFound | Forbidden | GcpOpError;
@@ -6983,16 +5331,10 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesBackupOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesBackupOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists the backup long-running operations in the given instance. A backup operation has a name of the form `projects//instances//backups//operations/`. The long-running operation metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that have completed/failed/canceled within the last 7 days, and pending operations. Operations returned are ordered by `operation.metadata.value.progress.start_time` in descending order starting from the most recently started operation. */
 export const listProjectsInstancesBackupOperations: API.PaginatedOperationMethod<
   ListProjectsInstancesBackupOperationsRequest,
@@ -7005,16 +5347,10 @@ export const listProjectsInstancesBackupOperations: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesBackupsError = NotFound | Forbidden | GcpOpError;
 /** Lists completed and pending backups. Backups returned are ordered by `create_time` in descending order, starting from the most recent `create_time`. */
 export const listProjectsInstancesBackups: API.PaginatedOperationMethod<
   ListProjectsInstancesBackupsRequest,
@@ -7027,16 +5363,10 @@ export const listProjectsInstancesBackups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesBackupsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesBackupsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstancesBackupsOperations: API.PaginatedOperationMethod<
   ListProjectsInstancesBackupsOperationsRequest,
@@ -7049,16 +5379,10 @@ export const listProjectsInstancesBackupsOperations: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesDatabaseOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesDatabaseOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists database longrunning-operations. A database operation has a name of the form `projects//instances//databases//operations/`. The long-running operation metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that have completed/failed/canceled within the last 7 days, and pending operations. */
 export const listProjectsInstancesDatabaseOperations: API.PaginatedOperationMethod<
   ListProjectsInstancesDatabaseOperationsRequest,
@@ -7071,16 +5395,10 @@ export const listProjectsInstancesDatabaseOperations: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesDatabasesError = NotFound | Forbidden | GcpOpError;
 /** Lists Cloud Spanner databases. */
 export const listProjectsInstancesDatabases: API.PaginatedOperationMethod<
   ListProjectsInstancesDatabasesRequest,
@@ -7093,16 +5411,10 @@ export const listProjectsInstancesDatabases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesDatabasesBackupSchedulesError = NotFound | Forbidden | GcpOpError;
 /** Lists all the backup schedules for the database. */
 export const listProjectsInstancesDatabasesBackupSchedules: API.PaginatedOperationMethod<
   ListProjectsInstancesDatabasesBackupSchedulesRequest,
@@ -7115,16 +5427,10 @@ export const listProjectsInstancesDatabasesBackupSchedules: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesDatabasesDatabaseRolesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesDatabasesDatabaseRolesError = NotFound | Forbidden | GcpOpError;
 /** Lists Cloud Spanner database roles. */
 export const listProjectsInstancesDatabasesDatabaseRoles: API.PaginatedOperationMethod<
   ListProjectsInstancesDatabasesDatabaseRolesRequest,
@@ -7137,16 +5443,10 @@ export const listProjectsInstancesDatabasesDatabaseRoles: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesDatabasesOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesDatabasesOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstancesDatabasesOperations: API.PaginatedOperationMethod<
   ListProjectsInstancesDatabasesOperationsRequest,
@@ -7159,16 +5459,10 @@ export const listProjectsInstancesDatabasesOperations: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | GcpOpError;
 /** Lists all sessions in a given database. */
 export const listProjectsInstancesDatabasesSessions: API.PaginatedOperationMethod<
   ListProjectsInstancesDatabasesSessionsRequest,
@@ -7181,16 +5475,10 @@ export const listProjectsInstancesDatabasesSessions: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesInstancePartitionOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesInstancePartitionOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists instance partition long-running operations in the given instance. An instance partition operation has a name of the form `projects//instances//instancePartitions//operations/`. The long-running operation metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that have completed/failed/canceled within the last 7 days, and pending operations. Operations returned are ordered by `operation.metadata.value.start_time` in descending order starting from the most recently started operation. Authorization requires `spanner.instancePartitionOperations.list` permission on the resource parent. */
 export const listProjectsInstancesInstancePartitionOperations: API.PaginatedOperationMethod<
   ListProjectsInstancesInstancePartitionOperationsRequest,
@@ -7203,16 +5491,10 @@ export const listProjectsInstancesInstancePartitionOperations: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesInstancePartitionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesInstancePartitionsError = NotFound | Forbidden | GcpOpError;
 /** Lists all instance partitions for the given instance. */
 export const listProjectsInstancesInstancePartitions: API.PaginatedOperationMethod<
   ListProjectsInstancesInstancePartitionsRequest,
@@ -7225,16 +5507,10 @@ export const listProjectsInstancesInstancePartitions: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesInstancePartitionsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesInstancePartitionsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstancesInstancePartitionsOperations: API.PaginatedOperationMethod<
   ListProjectsInstancesInstancePartitionsOperationsRequest,
@@ -7247,16 +5523,10 @@ export const listProjectsInstancesInstancePartitionsOperations: API.PaginatedOpe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstancesOperations: API.PaginatedOperationMethod<
   ListProjectsInstancesOperationsRequest,
@@ -7269,10 +5539,7 @@ export const listProjectsInstancesOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListScansError = NotFound | Forbidden | GcpOpError;
@@ -7288,18 +5555,10 @@ export const listScans: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type MoveProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MoveProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Moves an instance to the target instance configuration. You can use the returned long-running operation to track the progress of moving the instance. `MoveInstance` returns `FAILED_PRECONDITION` if the instance meets any of the following criteria: * Is undergoing a move to a different instance configuration * Has backups * Has an ongoing update * Contains any CMEK-enabled databases * Is a free trial instance While the operation is pending: * All other attempts to modify the instance, including changes to its compute capacity, are rejected. * The following database and backup admin operations are rejected: * `DatabaseAdmin.CreateDatabase` * `DatabaseAdmin.UpdateDatabaseDdl` (disabled if default_leader is specified in the request.) * `DatabaseAdmin.RestoreDatabase` * `DatabaseAdmin.CreateBackup` * `DatabaseAdmin.CopyBackup` * Both the source and target instance configurations are subject to hourly compute and storage charges. * The instance might experience higher read-write latencies and a higher transaction abort rate. However, moving an instance doesn't cause any downtime. The returned long-running operation has a name of the format `/operations/` and can be used to track the move instance operation. The metadata field type is MoveInstanceMetadata. The response field type is Instance, if successful. Cancelling the operation sets its metadata's cancel_time. Cancellation is not immediate because it involves moving any data previously moved to the target instance configuration back to the original instance configuration. You can use this operation to track the progress of the cancellation. Upon successful completion of the cancellation, the operation terminates with `CANCELLED` status. If not cancelled, upon completion of the returned operation: * The instance successfully moves to the target instance configuration. * You are billed for compute and storage in target instance configuration. Authorization requires the `spanner.instances.update` permission on the resource instance. For more details, see [Move an instance](https://cloud.google.com/spanner/docs/move-instance). */
 export const moveProjectsInstances: API.OperationMethod<
   MoveProjectsInstancesRequest,
@@ -7314,12 +5573,7 @@ export const moveProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PartitionQueryProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PartitionQueryProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a set of partition tokens that can be used to execute a query operation in parallel. Each of the returned partition tokens can be used by ExecuteStreamingSql to specify a subset of the query result to read. The same session and read-only transaction must be used by the `PartitionQueryRequest` used to create the partition tokens and the `ExecuteSqlRequests` that use the partition tokens. Partition tokens become invalid when the session used to create them is deleted, is idle for too long, begins a new transaction, or becomes too old. When any of these happen, it isn't possible to resume the query, and the whole operation must be restarted from the beginning. */
 export const partitionQueryProjectsInstancesDatabasesSessions: API.OperationMethod<
   PartitionQueryProjectsInstancesDatabasesSessionsRequest,
@@ -7334,12 +5588,7 @@ export const partitionQueryProjectsInstancesDatabasesSessions: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type PartitionReadProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PartitionReadProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a set of partition tokens that can be used to execute a read operation in parallel. Each of the returned partition tokens can be used by StreamingRead to specify a subset of the read result to read. The same session and read-only transaction must be used by the `PartitionReadRequest` used to create the partition tokens and the `ReadRequests` that use the partition tokens. There are no ordering guarantees on rows returned among the returned partition tokens, or even within each individual `StreamingRead` call issued with a `partition_token`. Partition tokens become invalid when the session used to create them is deleted, is idle for too long, begins a new transaction, or becomes too old. When any of these happen, it isn't possible to resume the read, and the whole operation must be restarted from the beginning. */
 export const partitionReadProjectsInstancesDatabasesSessions: API.OperationMethod<
   PartitionReadProjectsInstancesDatabasesSessionsRequest,
@@ -7354,12 +5603,7 @@ export const partitionReadProjectsInstancesDatabasesSessions: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstanceConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstanceConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an instance configuration. The returned long-running operation can be used to track the progress of updating the instance. If the named instance configuration does not exist, returns `NOT_FOUND`. Only user-managed configurations can be updated. Immediately after the request returns: * The instance configuration's reconciling field is set to true. While the operation is pending: * Cancelling the operation sets its metadata's cancel_time. The operation is guaranteed to succeed at undoing all changes, after which point it terminates with a `CANCELLED` status. * All other attempts to modify the instance configuration are rejected. * Reading the instance configuration via the API continues to give the pre-request values. Upon completion of the returned operation: * Creating instances using the instance configuration uses the new values. * The new values of the instance configuration are readable via the API. * The instance configuration's reconciling field becomes false. The returned long-running operation will have a name of the format `/operations/` and can be used to track the instance configuration modification. The metadata field type is UpdateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization requires `spanner.instanceConfigs.update` permission on the resource name. */
 export const patchProjectsInstanceConfigs: API.OperationMethod<
   PatchProjectsInstanceConfigsRequest,
@@ -7374,12 +5618,7 @@ export const patchProjectsInstanceConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an instance, and begins allocating or releasing resources as requested. The returned long-running operation can be used to track the progress of updating the instance. If the named instance does not exist, returns `NOT_FOUND`. Immediately upon completion of this request: * For resource types for which a decrease in the instance's allocation has been requested, billing is based on the newly-requested level. Until completion of the returned operation: * Cancelling the operation sets its metadata's cancel_time, and begins restoring resources to their pre-request values. The operation is guaranteed to succeed at undoing all resource changes, after which point it terminates with a `CANCELLED` status. * All other attempts to modify the instance are rejected. * Reading the instance via the API continues to give the pre-request resource levels. Upon completion of the returned operation: * Billing begins for all successfully-allocated resources (some types may have lower than the requested levels). * All newly-reserved resources are available for serving the instance's tables. * The instance's new resource levels are readable via the API. The returned long-running operation will have a name of the format `/operations/` and can be used to track the instance modification. The metadata field type is UpdateInstanceMetadata. The response field type is Instance, if successful. Authorization requires `spanner.instances.update` permission on the resource name. */
 export const patchProjectsInstances: API.OperationMethod<
   PatchProjectsInstancesRequest,
@@ -7394,12 +5633,7 @@ export const patchProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a pending or completed Backup. */
 export const patchProjectsInstancesBackups: API.OperationMethod<
   PatchProjectsInstancesBackupsRequest,
@@ -7414,12 +5648,7 @@ export const patchProjectsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a Cloud Spanner database. The returned long-running operation can be used to track the progress of updating the database. If the named database does not exist, returns `NOT_FOUND`. While the operation is pending: * The database's reconciling field is set to true. * Cancelling the operation is best-effort. If the cancellation succeeds, the operation metadata's cancel_time is set, the updates are reverted, and the operation terminates with a `CANCELLED` status. * New UpdateDatabase requests will return a `FAILED_PRECONDITION` error until the pending operation is done (returns successfully or with error). * Reading the database via the API continues to give the pre-request values. Upon completion of the returned operation: * The new values are in effect and readable via the API. * The database's reconciling field becomes false. The returned long-running operation will have a name of the format `projects//instances//databases//operations/` and can be used to track the database modification. The metadata field type is UpdateDatabaseMetadata. The response field type is Database, if successful. */
 export const patchProjectsInstancesDatabases: API.OperationMethod<
   PatchProjectsInstancesDatabasesRequest,
@@ -7434,12 +5663,7 @@ export const patchProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesDatabasesBackupSchedulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a backup schedule. */
 export const patchProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
   PatchProjectsInstancesDatabasesBackupSchedulesRequest,
@@ -7454,12 +5678,7 @@ export const patchProjectsInstancesDatabasesBackupSchedules: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesInstancePartitionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesInstancePartitionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an instance partition, and begins allocating or releasing resources as requested. The returned long-running operation can be used to track the progress of updating the instance partition. If the named instance partition does not exist, returns `NOT_FOUND`. Immediately upon completion of this request: * For resource types for which a decrease in the instance partition's allocation has been requested, billing is based on the newly-requested level. Until completion of the returned operation: * Cancelling the operation sets its metadata's cancel_time, and begins restoring resources to their pre-request values. The operation is guaranteed to succeed at undoing all resource changes, after which point it terminates with a `CANCELLED` status. * All other attempts to modify the instance partition are rejected. * Reading the instance partition via the API continues to give the pre-request resource levels. Upon completion of the returned operation: * Billing begins for all successfully-allocated resources (some types may have lower than the requested levels). * All newly-reserved resources are available for serving the instance partition's tables. * The instance partition's new resource levels are readable via the API. The returned long-running operation will have a name of the format `/operations/` and can be used to track the instance partition modification. The metadata field type is UpdateInstancePartitionMetadata. The response field type is InstancePartition, if successful. Authorization requires `spanner.instancePartitions.update` permission on the resource name. */
 export const patchProjectsInstancesInstancePartitions: API.OperationMethod<
   PatchProjectsInstancesInstancePartitionsRequest,
@@ -7474,12 +5693,7 @@ export const patchProjectsInstancesInstancePartitions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReadProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ReadProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Reads rows from the database using key lookups and scans, as a simple key/value style alternative to ExecuteSql. This method can't be used to return a result set larger than 10 MiB; if the read matches more data than that, the read fails with a `FAILED_PRECONDITION` error. Reads inside read-write transactions might return `ABORTED`. If this occurs, the application should restart the transaction from the beginning. See Transaction for more details. Larger result sets can be yielded in streaming fashion by calling StreamingRead instead. */
 export const readProjectsInstancesDatabasesSessions: API.OperationMethod<
   ReadProjectsInstancesDatabasesSessionsRequest,
@@ -7494,12 +5708,7 @@ export const readProjectsInstancesDatabasesSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RestoreProjectsInstancesDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a new database by restoring from a completed backup. The new database must be in the same project and in an instance with the same instance configuration as the instance containing the backup. The returned database long-running operation has a name of the format `projects//instances//databases//operations/`, and can be used to track the progress of the operation, and to cancel it. The metadata field type is RestoreDatabaseMetadata. The response type is Database, if successful. Cancelling the returned operation will stop the restore and delete the database. There can be only one database being restored into an instance at a time. Once the restore operation completes, a new restore operation can be initiated, without waiting for the optimize operation associated with the first restore to complete. */
 export const restoreProjectsInstancesDatabases: API.OperationMethod<
   RestoreProjectsInstancesDatabasesRequest,
@@ -7514,12 +5723,7 @@ export const restoreProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RollbackProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RollbackProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Rolls back a transaction, releasing any locks it holds. It's a good idea to call this for any transaction that includes one or more Read or ExecuteSql requests and ultimately decides not to commit. `Rollback` returns `OK` if it successfully aborts the transaction, the transaction was already aborted, or the transaction isn't found. `Rollback` never returns `ABORTED`. */
 export const rollbackProjectsInstancesDatabasesSessions: API.OperationMethod<
   RollbackProjectsInstancesDatabasesSessionsRequest,
@@ -7534,12 +5738,7 @@ export const rollbackProjectsInstancesDatabasesSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on an instance resource. Replaces any existing policy. Authorization requires `spanner.instances.setIamPolicy` on resource. */
 export const setIamPolicyProjectsInstances: API.OperationMethod<
   SetIamPolicyProjectsInstancesRequest,
@@ -7554,12 +5753,7 @@ export const setIamPolicyProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource. */
 export const setIamPolicyProjectsInstancesBackups: API.OperationMethod<
   SetIamPolicyProjectsInstancesBackupsRequest,
@@ -7574,12 +5768,7 @@ export const setIamPolicyProjectsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource. */
 export const setIamPolicyProjectsInstancesDatabases: API.OperationMethod<
   SetIamPolicyProjectsInstancesDatabasesRequest,
@@ -7594,12 +5783,7 @@ export const setIamPolicyProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesDatabasesBackupSchedulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource. */
 export const setIamPolicyProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
   SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest,
@@ -7614,12 +5798,7 @@ export const setIamPolicyProjectsInstancesDatabasesBackupSchedules: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type StreamingReadProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StreamingReadProjectsInstancesDatabasesSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Like Read, except returns the result set as a stream. Unlike Read, there is no limit on the size of the returned result set. However, no individual row in the result set can exceed 100 MiB, and no column value can exceed 10 MiB. */
 export const streamingReadProjectsInstancesDatabasesSessions: API.OperationMethod<
   StreamingReadProjectsInstancesDatabasesSessionsRequest,
@@ -7634,12 +5813,7 @@ export const streamingReadProjectsInstancesDatabasesSessions: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified instance resource. Attempting this RPC on a non-existent Cloud Spanner instance resource will result in a NOT_FOUND error if the user has `spanner.instances.list` permission on the containing Google Cloud Project. Otherwise returns an empty set of permissions. */
 export const testIamPermissionsProjectsInstances: API.OperationMethod<
   TestIamPermissionsProjectsInstancesRequest,
@@ -7654,12 +5828,7 @@ export const testIamPermissionsProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified database or backup resource. Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an empty set of permissions. Calling this method on a backup that does not exist will result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance. Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing database. */
 export const testIamPermissionsProjectsInstancesBackups: API.OperationMethod<
   TestIamPermissionsProjectsInstancesBackupsRequest,
@@ -7674,12 +5843,7 @@ export const testIamPermissionsProjectsInstancesBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified database or backup resource. Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an empty set of permissions. Calling this method on a backup that does not exist will result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance. Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing database. */
 export const testIamPermissionsProjectsInstancesDatabases: API.OperationMethod<
   TestIamPermissionsProjectsInstancesDatabasesRequest,
@@ -7694,12 +5858,7 @@ export const testIamPermissionsProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified database or backup resource. Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an empty set of permissions. Calling this method on a backup that does not exist will result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance. Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing database. */
 export const testIamPermissionsProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
   TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest,
@@ -7714,12 +5873,7 @@ export const testIamPermissionsProjectsInstancesDatabasesBackupSchedules: API.Op
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified database or backup resource. Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an empty set of permissions. Calling this method on a backup that does not exist will result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance. Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing database. */
 export const testIamPermissionsProjectsInstancesDatabasesDatabaseRoles: API.OperationMethod<
   TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest,
@@ -7734,12 +5888,7 @@ export const testIamPermissionsProjectsInstancesDatabasesDatabaseRoles: API.Oper
   retry: Retry.Retry,
 }));
 
-export type UpdateDdlProjectsInstancesDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateDdlProjectsInstancesDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the schema of a Cloud Spanner database by creating/altering/dropping tables, columns, indexes, etc. The returned long-running operation will have a name of the format `/operations/` and can be used to track execution of the schema changes. The metadata field type is UpdateDatabaseDdlMetadata. The operation has no response. */
 export const updateDdlProjectsInstancesDatabases: API.OperationMethod<
   UpdateDdlProjectsInstancesDatabasesRequest,
@@ -7753,3 +5902,4 @@ export const updateDdlProjectsInstancesDatabases: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

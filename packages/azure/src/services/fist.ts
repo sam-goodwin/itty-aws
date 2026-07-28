@@ -47,8 +47,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -56,8 +55,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -112,7 +110,7 @@ export const BinaryHardeningFeatures = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BinaryHardeningFeatures>;
 
 /** String to indicate if the executable is 32 or 64 bit. */
-export type ExecutableClass = "x86" | "x64" | (string & {});
+export type ExecutableClass = "x86" | "x64";
 export const ExecutableClass = /*@__PURE__*/ S.String;
 
 /** The status of a firmware analysis job. */
@@ -122,8 +120,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Pending"
   | "Extracting"
-  | "Analyzing"
-  | (string & {});
+  | "Analyzing";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Binary hardening of a firmware. */
@@ -279,8 +276,7 @@ export type CertificateUsage =
   | "codeSigning"
   | "emailProtection"
   | "timeStamping"
-  | "ocspSigning"
-  | (string & {});
+  | "ocspSigning";
 export const CertificateUsage = /*@__PURE__*/ S.String;
 
 /** List of functions the certificate can fulfill. */
@@ -461,7 +457,7 @@ export const CryptoKeysListByFirmwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CryptoKeysListByFirmwareRequest>;
 
 /** Different types of cryptographic keys. */
-export type CryptoKeyType = "Public" | "Private" | (string & {});
+export type CryptoKeyType = "Public" | "Private";
 export const CryptoKeyType = /*@__PURE__*/ S.String;
 
 /** Functions the key can fulfill. */
@@ -749,13 +745,7 @@ export const CveResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CveResourceListResult>;
 
 /** The status of a firmware analysis job. */
-export type Status =
-  | "Pending"
-  | "Extracting"
-  | "Analyzing"
-  | "Ready"
-  | "Error"
-  | (string & {});
+export type Status = "Pending" | "Extracting" | "Analyzing" | "Ready" | "Error";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Error and status message */
@@ -794,7 +784,7 @@ export interface FirmwarePropertiesInput {
   /** File size of the uploaded firmware image. */
   fileSize?: number;
   /** The status of firmware scan. */
-  status?: Status;
+  status?: Status | (string & {});
   /** A list of errors or other messages generated during firmware analysis */
   statusMessages?: FirmwarePropertiesInputStatusMessagesList;
 }
@@ -1160,11 +1150,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1432,8 +1422,7 @@ export type SummariesGetRequestSummaryType =
   | "CommonVulnerabilitiesAndExposures"
   | "BinaryHardening"
   | "CryptoCertificate"
-  | "CryptoKey"
-  | (string & {});
+  | "CryptoKey";
 export const SummariesGetRequestSummaryType = /*@__PURE__*/ S.String;
 
 export interface SummariesGetRequest {
@@ -1446,7 +1435,7 @@ export interface SummariesGetRequest {
   /** The id of the firmware. */
   firmwareId: string;
   /** The Firmware analysis summary name describing the type of summary. */
-  summaryType: SummariesGetRequestSummaryType;
+  summaryType: SummariesGetRequestSummaryType | (string & {});
 }
 export const SummariesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1473,8 +1462,7 @@ export type SummaryType =
   | "CommonVulnerabilitiesAndExposures"
   | "BinaryHardening"
   | "CryptoCertificate"
-  | "CryptoKey"
-  | (string & {});
+  | "CryptoKey";
 export const SummaryType = /*@__PURE__*/ S.String;
 
 /** Properties of an analysis summary. */
@@ -1751,14 +1739,14 @@ export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacePropertiesInput>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
 export interface WorkspacesCreateRequestSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -2186,8 +2174,7 @@ export type AzureResourceManagerCommonTypesSkuUpdateTier =
   | "Free"
   | "Basic"
   | "Standard"
-  | "Premium"
-  | (string & {});
+  | "Premium";
 export const AzureResourceManagerCommonTypesSkuUpdateTier =
   /*@__PURE__*/ S.String;
 
@@ -2196,7 +2183,7 @@ export interface AzureResourceManagerCommonTypesSkuUpdate {
   /** The name of the SKU. Ex - P3. It is typically a letter+number code */
   name?: string;
   /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-  tier?: AzureResourceManagerCommonTypesSkuUpdateTier;
+  tier?: AzureResourceManagerCommonTypesSkuUpdateTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */

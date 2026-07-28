@@ -23,12 +23,7 @@ export const JobCollectionsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<JobCollectionsCreateOrUpdateRequestTagsMap>;
 
 /** Gets or set the SKU. */
-export type SkuName =
-  | "Standard"
-  | "Free"
-  | "P10Premium"
-  | "P20Premium"
-  | (string & {});
+export type SkuName = "Standard" | "Free" | "P10Premium" | "P20Premium";
 export const SkuName = /*@__PURE__*/ S.String;
 
 export interface Sku {
@@ -46,8 +41,7 @@ export type JobCollectionPropertiesState =
   | "Enabled"
   | "Disabled"
   | "Suspended"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const JobCollectionPropertiesState = /*@__PURE__*/ S.String;
 
 /** Gets or sets the frequency of recurrence (second, minute, hour, day, week, month). */
@@ -56,8 +50,7 @@ export type JobMaxRecurrenceFrequency =
   | "Hour"
   | "Day"
   | "Week"
-  | "Month"
-  | (string & {});
+  | "Month";
 export const JobMaxRecurrenceFrequency = /*@__PURE__*/ S.String;
 
 export interface JobMaxRecurrence {
@@ -422,8 +415,7 @@ export type JobActionType =
   | "Https"
   | "StorageQueue"
   | "ServiceBusQueue"
-  | "ServiceBusTopic"
-  | (string & {});
+  | "ServiceBusTopic";
 export const JobActionType = /*@__PURE__*/ S.String;
 
 /** Gets or sets the HTTP authentication type. */
@@ -431,8 +423,7 @@ export type HttpAuthenticationType =
   | "NotSpecified"
   | "ClientCertificate"
   | "ActiveDirectoryOAuth"
-  | "Basic"
-  | (string & {});
+  | "Basic";
 export const HttpAuthenticationType = /*@__PURE__*/ S.String;
 
 export interface HttpAuthentication {
@@ -498,10 +489,7 @@ export const StorageQueueMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageQueueMessage>;
 
 /** Gets or sets the authentication type. */
-export type ServiceBusAuthenticationType =
-  | "NotSpecified"
-  | "SharedAccessKey"
-  | (string & {});
+export type ServiceBusAuthenticationType = "NotSpecified" | "SharedAccessKey";
 export const ServiceBusAuthenticationType = /*@__PURE__*/ S.String;
 
 export interface ServiceBusAuthentication {
@@ -584,8 +572,7 @@ export const ServiceBusQueueMessageCustomMessagePropertiesMap =
 export type ServiceBusQueueMessageTransportType =
   | "NotSpecified"
   | "NetMessaging"
-  | "AMQP"
-  | (string & {});
+  | "AMQP";
 export const ServiceBusQueueMessageTransportType = /*@__PURE__*/ S.String;
 
 export interface ServiceBusQueueMessage {
@@ -634,8 +621,7 @@ export const ServiceBusTopicMessageCustomMessagePropertiesMap =
 export type ServiceBusTopicMessageTransportType =
   | "NotSpecified"
   | "NetMessaging"
-  | "AMQP"
-  | (string & {});
+  | "AMQP";
 export const ServiceBusTopicMessageTransportType = /*@__PURE__*/ S.String;
 
 export interface ServiceBusTopicMessage {
@@ -671,7 +657,7 @@ export const ServiceBusTopicMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceBusTopicMessage>;
 
 /** Gets or sets the retry strategy to be used. */
-export type RetryPolicyRetryType = "None" | "Fixed" | (string & {});
+export type RetryPolicyRetryType = "None" | "Fixed";
 export const RetryPolicyRetryType = /*@__PURE__*/ S.String;
 
 export interface RetryPolicy {
@@ -696,8 +682,7 @@ export type JobErrorActionType =
   | "Https"
   | "StorageQueue"
   | "ServiceBusQueue"
-  | "ServiceBusTopic"
-  | (string & {});
+  | "ServiceBusTopic";
 export const JobErrorActionType = /*@__PURE__*/ S.String;
 
 export interface JobErrorAction {
@@ -759,8 +744,7 @@ export type JobRecurrenceFrequency =
   | "Hour"
   | "Day"
   | "Week"
-  | "Month"
-  | (string & {});
+  | "Month";
 export const JobRecurrenceFrequency = /*@__PURE__*/ S.String;
 
 export type JobRecurrenceScheduleWeekDaysItem =
@@ -770,8 +754,7 @@ export type JobRecurrenceScheduleWeekDaysItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday"
-  | (string & {});
+  | "Saturday";
 export const JobRecurrenceScheduleWeekDaysItem = /*@__PURE__*/ S.String;
 
 /** Gets or sets the days of the week that the job should execute on. */
@@ -807,8 +790,7 @@ export type JobRecurrenceScheduleMonthlyOccurrenceDay =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday"
-  | (string & {});
+  | "Sunday";
 export const JobRecurrenceScheduleMonthlyOccurrenceDay = /*@__PURE__*/ S.String;
 
 export interface JobRecurrenceScheduleMonthlyOccurrence {
@@ -881,12 +863,7 @@ export const JobRecurrence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobRecurrence" }) as any as S.Schema<JobRecurrence>;
 
 /** Gets or set the job state. */
-export type JobState =
-  | "Enabled"
-  | "Disabled"
-  | "Faulted"
-  | "Completed"
-  | (string & {});
+export type JobState = "Enabled" | "Disabled" | "Faulted" | "Completed";
 export const JobState = /*@__PURE__*/ S.String;
 
 export interface JobPropertiesInput {
@@ -897,7 +874,7 @@ export interface JobPropertiesInput {
   /** Gets or sets the job recurrence. */
   recurrence?: JobRecurrence;
   /** Gets or set the job state. */
-  state?: JobState;
+  state?: JobState | (string & {});
 }
 export const JobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1158,16 +1135,11 @@ export const JobsListJobHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 /** Gets the job history action name. */
 export type JobHistoryDefinitionPropertiesActionName =
   | "MainAction"
-  | "ErrorAction"
-  | (string & {});
+  | "ErrorAction";
 export const JobHistoryDefinitionPropertiesActionName = /*@__PURE__*/ S.String;
 
 /** Gets the job execution status. */
-export type JobExecutionStatus =
-  | "Completed"
-  | "Failed"
-  | "Postponed"
-  | (string & {});
+export type JobExecutionStatus = "Completed" | "Failed" | "Postponed";
 export const JobExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface JobHistoryDefinitionProperties {

@@ -220318,6 +220318,17 @@
         }
       }
     },
+    "com.cloudflare.zero_trust#DevicesDevicesListRequestLastSeenUser": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter by the last seen user's email."
+          }
+        }
+      }
+    },
     "com.cloudflare.zero_trust#DevicesDevicesListRequestSortBy": {
       "type": "enum",
       "members": {
@@ -220420,11 +220431,10 @@
             "smithy.api#httpQuery": "include"
           }
         },
-        "last_seen_user_email": {
-          "target": "smithy.api#String",
+        "last_seen_user": {
+          "target": "com.cloudflare.zero_trust#DevicesDevicesListRequestLastSeenUser",
           "traits": {
-            "smithy.api#documentation": "Filter by the last seen user's email.",
-            "smithy.api#httpQuery": "last_seen_user.email"
+            "com.cloudflare.protocols#deepQuery": "last_seen_user"
           }
         },
         "per_page": {
@@ -242043,6 +242053,17 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.zero_trust#DevicesRegistrationsListRequestDevice": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter by WARP device ID."
+          }
+        }
+      }
+    },
     "com.cloudflare.zero_trust#DevicesRegistrationsListRequestSortBy": {
       "type": "enum",
       "members": {
@@ -242124,6 +242145,17 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.zero_trust#DevicesRegistrationsListRequestUser": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zero_trust#DevicesRegistrationsListRequestUserIdList",
+          "traits": {
+            "smithy.api#documentation": "Filter by user ID."
+          }
+        }
+      }
+    },
     "com.cloudflare.zero_trust#DevicesRegistrationsListRequest": {
       "type": "structure",
       "members": {
@@ -242148,11 +242180,10 @@
             "smithy.api#httpQuery": "cursor"
           }
         },
-        "device_id": {
-          "target": "smithy.api#String",
+        "device": {
+          "target": "com.cloudflare.zero_trust#DevicesRegistrationsListRequestDevice",
           "traits": {
-            "smithy.api#documentation": "Filter by WARP device ID.",
-            "smithy.api#httpQuery": "device.id"
+            "com.cloudflare.protocols#deepQuery": "device"
           }
         },
         "include": {
@@ -242211,11 +242242,10 @@
             "smithy.api#httpQuery": "status"
           }
         },
-        "user_id": {
-          "target": "com.cloudflare.zero_trust#DevicesRegistrationsListRequestUserIdList",
+        "user": {
+          "target": "com.cloudflare.zero_trust#DevicesRegistrationsListRequestUser",
           "traits": {
-            "smithy.api#documentation": "Filter by user ID.",
-            "smithy.api#httpQuery": "user.id"
+            "com.cloudflare.protocols#deepQuery": "user"
           }
         }
       },

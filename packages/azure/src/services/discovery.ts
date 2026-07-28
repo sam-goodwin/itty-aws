@@ -24,8 +24,7 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -104,8 +103,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -113,8 +111,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -169,8 +166,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -699,7 +695,7 @@ export const BookshelfPropertiesInputWorkloadIdentitiesMap =
   ) as any as S.Schema<BookshelfPropertiesInputWorkloadIdentitiesMap>;
 
 /** State of customer managed key usage. */
-export type CustomerManagedKeys = "Enabled" | "Disabled" | (string & {});
+export type CustomerManagedKeys = "Enabled" | "Disabled";
 export const CustomerManagedKeys = /*@__PURE__*/ S.String;
 
 /** Key Vault Properties with clientId selection */
@@ -725,7 +721,7 @@ export const BookshelfKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BookshelfKeyVaultProperties>;
 
 /** State of public network access. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Bookshelf properties */
@@ -733,13 +729,13 @@ export interface BookshelfPropertiesInput {
   /** User assigned identity IDs to be used by knowledgebase workloads. The key value must be the resource ID of the identity resource. */
   workloadIdentities?: BookshelfPropertiesInputWorkloadIdentitiesMap;
   /** Whether or not to use a customer managed key when encrypting data at rest */
-  customerManagedKeys?: CustomerManagedKeys;
+  customerManagedKeys?: CustomerManagedKeys | (string & {});
   /** The key to use for encrypting data at rest when customer managed keys are enabled. Required if Customer Managed Keys is enabled. */
   keyVaultProperties?: BookshelfKeyVaultProperties;
   /** The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled. */
   logAnalyticsClusterId?: string;
   /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** Private Endpoint Subnet ID for private endpoint connections. */
   privateEndpointSubnetId?: string;
   /** Search Subnet ID for search resources. */
@@ -812,8 +808,7 @@ export type ProvisioningState =
   | "Accepted"
   | "Provisioning"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -1248,7 +1243,7 @@ export interface BookshelfPropertiesUpdate {
   /** The key to use for encrypting data at rest when customer managed keys are enabled. Required if Customer Managed Keys is enabled. */
   keyVaultProperties?: BookshelfKeyVaultPropertiesUpdate;
   /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
 export const BookshelfPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1779,15 +1774,11 @@ export type VmSize =
   | "Standard_NV36ads_A10_v5"
   | "Standard_NV36adms_A10_v5"
   | "Standard_NV72ads_A10_v5"
-  | "Standard_ND40rs_v2"
-  | (string & {});
+  | "Standard_ND40rs_v2";
 export const VmSize = /*@__PURE__*/ S.String;
 
 /** The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'. */
-export type NodePoolPropertiesInputScaleSetPriority =
-  | "Regular"
-  | "Spot"
-  | (string & {});
+export type NodePoolPropertiesInputScaleSetPriority = "Regular" | "Spot";
 export const NodePoolPropertiesInputScaleSetPriority = /*@__PURE__*/ S.String;
 
 /** NodePool properties */
@@ -1795,13 +1786,13 @@ export interface NodePoolPropertiesInput {
   /** The node pool subnet. */
   subnetId: string;
   /** The size of the underlying Azure VM. */
-  vmSize: VmSize;
+  vmSize: VmSize | (string & {});
   /** The maximum number of nodes. */
   maxNodeCount: number;
   /** The minimum number of nodes. */
   minNodeCount?: number;
   /** The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'. */
-  scaleSetPriority?: NodePoolPropertiesInputScaleSetPriority;
+  scaleSetPriority?: NodePoolPropertiesInputScaleSetPriority | (string & {});
   /** The size of the OS disk in GB. If not specified, the default is 120 GB. */
   osDiskSizeGb?: number;
   /** The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageCacheUpperThreshold. The default is 40% */
@@ -1871,10 +1862,7 @@ export const NodePoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodePoolsCreateOrUpdateResponseTagsMap>;
 
 /** The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'. */
-export type NodePoolPropertiesScaleSetPriority =
-  | "Regular"
-  | "Spot"
-  | (string & {});
+export type NodePoolPropertiesScaleSetPriority = "Regular" | "Spot";
 export const NodePoolPropertiesScaleSetPriority = /*@__PURE__*/ S.String;
 
 /** NodePool properties */
@@ -2262,11 +2250,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -3143,10 +3131,7 @@ export const StorageContainersCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<StorageContainersCreateOrUpdateRequestTagsMap>;
 
 /** The kind of the backing storage store. */
-export type StorageStoreType =
-  | "AzureStorageBlob"
-  | "AzureNetAppFiles"
-  | (string & {});
+export type StorageStoreType = "AzureStorageBlob" | "AzureNetAppFiles";
 export const StorageStoreType = /*@__PURE__*/ S.String;
 
 /** An abstract representation of storage store kind. */
@@ -3555,18 +3540,14 @@ export const SupercomputersCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<SupercomputersCreateOrUpdateRequestTagsMap>;
 
 /** Network egress type provisioned for the supercomputer workloads. Defaults to LoadBalancer if not specified. If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality. */
-export type SupercomputerPropertiesInputOutboundType =
-  | "LoadBalancer"
-  | "None"
-  | (string & {});
+export type SupercomputerPropertiesInputOutboundType = "LoadBalancer" | "None";
 export const SupercomputerPropertiesInputOutboundType = /*@__PURE__*/ S.String;
 
 /** Supported System SKU Sizes. */
 export type SystemSku =
   | "Standard_D4s_v6"
   | "Standard_D4s_v5"
-  | "Standard_D4s_v4"
-  | (string & {});
+  | "Standard_D4s_v4";
 export const SystemSku = /*@__PURE__*/ S.String;
 
 /** For user assigned identity resource property. */
@@ -3633,13 +3614,13 @@ export interface SupercomputerPropertiesInput {
   /** System Subnet ID associated with AKS apiserver. Must be delegated to Microsoft.ContainerService/managedClusters. It should have connectivity to the system subnet and nodepool subnets. */
   managementSubnetId?: string;
   /** Network egress type provisioned for the supercomputer workloads. Defaults to LoadBalancer if not specified. If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality. */
-  outboundType?: SupercomputerPropertiesInputOutboundType;
+  outboundType?: SupercomputerPropertiesInputOutboundType | (string & {});
   /** The SKU to use for the system node pool. */
-  systemSku?: SystemSku;
+  systemSku?: SystemSku | (string & {});
   /** Dictionary of identity properties. */
   identities: SupercomputerIdentitiesInput;
   /** Whether or not to use a customer managed key when encrypting data at rest */
-  customerManagedKeys?: CustomerManagedKeys;
+  customerManagedKeys?: CustomerManagedKeys | (string & {});
   /** Disk Encryption Set ID to use for Customer Managed Keys encryption. Required if Customer Managed Keys is enabled. */
   diskEncryptionSetId?: string;
   /** The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled. */
@@ -3661,15 +3642,12 @@ export const SupercomputerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupercomputerPropertiesInput>;
 
 /** Type of managed service identity (either system assigned, or none). */
-export type SystemAssignedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | (string & {});
+export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
 export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface SupercomputersCreateOrUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType;
+  type: SystemAssignedServiceIdentityType | (string & {});
 }
 export const SupercomputersCreateOrUpdateRequestIdentity =
   /*@__PURE__*/ S.suspend(() =>
@@ -3728,10 +3706,7 @@ export const SupercomputersCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<SupercomputersCreateOrUpdateResponseTagsMap>;
 
 /** Network egress type provisioned for the supercomputer workloads. Defaults to LoadBalancer if not specified. If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality. */
-export type SupercomputerPropertiesOutboundType =
-  | "LoadBalancer"
-  | "None"
-  | (string & {});
+export type SupercomputerPropertiesOutboundType = "LoadBalancer" | "None";
 export const SupercomputerPropertiesOutboundType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -4175,14 +4150,16 @@ export const SupercomputerPropertiesUpdateInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of managed service identity (either system assigned, or none). */
 export type AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType =
-  "None" | "SystemAssigned" | (string & {});
+  "None" | "SystemAssigned";
 export const AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType =
   /*@__PURE__*/ S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate {
   /** Type of managed service identity (either system assigned, or none). */
-  type?: AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType;
+  type?:
+    | AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType
+    | (string & {});
 }
 export const AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate =
   /*@__PURE__*/ S.suspend(() =>
@@ -5360,13 +5337,13 @@ export interface WorkspacePropertiesInput {
   /** Identity IDs used for leveraging Workspace resources. */
   workspaceIdentity: Identity;
   /** Whether or not to use a customer managed key when encrypting data at rest */
-  customerManagedKeys?: CustomerManagedKeys;
+  customerManagedKeys?: CustomerManagedKeys | (string & {});
   /** The key to use for encrypting data at rest when customer managed keys are enabled. */
   keyVaultProperties?: KeyVaultProperties;
   /** The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled. */
   logAnalyticsClusterId?: string;
   /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** Agent Subnet ID for agent resources. */
   agentSubnetId?: string;
   /** Private Endpoint Subnet ID for private endpoint connections. */
@@ -5796,7 +5773,7 @@ export interface WorkspacePropertiesUpdate {
   /** The key to use for encrypting data at rest when customer managed keys are enabled. */
   keyVaultProperties?: KeyVaultPropertiesUpdate;
   /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
 export const WorkspacePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

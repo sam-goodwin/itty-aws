@@ -351,14 +351,13 @@ export type IntegrationKindEnum =
   | "stripe"
   | "tiktok-ads"
   | "twilio"
-  | "vercel"
-  | (string & {});
+  | "vercel";
 export const IntegrationKindEnum = /*@__PURE__*/ S.String;
 
 export interface IntegrationsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  kind?: IntegrationKindEnum;
+  kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
 export const IntegrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -392,11 +391,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -483,7 +481,7 @@ export const IntegrationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface IntegrationsDomainConnectApplyUrlCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  kind?: IntegrationKindEnum;
+  kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
 export const IntegrationsDomainConnectApplyUrlCreateRequest =
@@ -539,7 +537,7 @@ export interface IntegrationsEmailPartialUpdateRequest {
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
-  kind?: IntegrationKindEnum;
+  kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
 export const IntegrationsEmailPartialUpdateRequest = /*@__PURE__*/ S.suspend(
@@ -565,7 +563,7 @@ export interface IntegrationsEmailVerifyCreateRequest {
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
-  kind?: IntegrationKindEnum;
+  kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
 export const IntegrationsEmailVerifyCreateRequest = /*@__PURE__*/ S.suspend(
@@ -677,7 +675,7 @@ export const IntegrationsGithubLinkExistingCreateRequest =
   }) as any as S.Schema<IntegrationsGithubLinkExistingCreateRequest>;
 
 /** * `posthog_code` - posthog_code */
-export type ConnectFromEnum = "posthog_code" | (string & {});
+export type ConnectFromEnum = "posthog_code";
 export const ConnectFromEnum = /*@__PURE__*/ S.String;
 
 export interface IntegrationsGithubOauthAuthorizeCreateRequest {
@@ -688,7 +686,7 @@ export interface IntegrationsGithubOauthAuthorizeCreateRequest {
   /** Relative URL to redirect to after the OAuth flow completes. */
   next?: string;
   /** Originating surface for the connect flow; only 'posthog_code' is recognized. * `posthog_code` - posthog_code */
-  connect_from?: ConnectFromEnum;
+  connect_from?: ConnectFromEnum | (string & {});
 }
 export const IntegrationsGithubOauthAuthorizeCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1206,15 +1204,14 @@ export type IntegrationsListRequestKind =
   | "stripe"
   | "tiktok-ads"
   | "twilio"
-  | "vercel"
-  | (string & {});
+  | "vercel";
 export const IntegrationsListRequestKind = /*@__PURE__*/ S.String;
 
 export interface IntegrationsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** * `anthropic` - Anthropic * `apns` - Apple Push * `aws-s3` - Aws S3 * `azure-blob` - Azure Blob * `bing-ads` - Bing Ads * `clickup` - Clickup * `customerio-app` - Customerio App * `customerio-track` - Customerio Track * `customerio-webhook` - Customerio Webhook * `databricks` - Databricks * `email` - Email * `firebase` - Firebase * `github` - Github * `gitlab` - Gitlab * `google-ads` - Google Ads * `google-analytics` - Google Analytics * `google-cloud-service-account` - Google Cloud Service Account * `google-cloud-storage` - Google Cloud Storage * `google-pubsub` - Google Pubsub * `google-search-console` - Google Search Console * `google-sheets` - Google Sheets * `hubspot` - Hubspot * `intercom` - Intercom * `jira` - Jira * `linear` - Linear * `linkedin-ads` - Linkedin Ads * `meta-ads` - Meta Ads * `pinterest-ads` - Pinterest Ads * `postgresql` - Postgresql * `reddit-ads` - Reddit Ads * `resend` - Resend * `s3-compatible` - S3 Compatible * `salesforce` - Salesforce * `slack` - Slack * `slack-posthog-code` - Slack Posthog Code * `snapchat` - Snapchat * `snowflake` - Snowflake * `stripe` - Stripe * `tiktok-ads` - Tiktok Ads * `twilio` - Twilio * `vercel` - Vercel */
-  kind?: IntegrationsListRequestKind;
+  kind?: IntegrationsListRequestKind | (string & {});
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
@@ -1264,7 +1261,7 @@ export interface IntegrationsRequestAccessCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The kind of integration the member is requesting be connected (e.g. 'slack', 'github'). * `anthropic` - Anthropic * `apns` - Apple Push * `aws-s3` - Aws S3 * `azure-blob` - Azure Blob * `bing-ads` - Bing Ads * `clickup` - Clickup * `customerio-app` - Customerio App * `customerio-track` - Customerio Track * `customerio-webhook` - Customerio Webhook * `databricks` - Databricks * `email` - Email * `firebase` - Firebase * `github` - Github * `gitlab` - Gitlab * `google-ads` - Google Ads * `google-analytics` - Google Analytics * `google-cloud-service-account` - Google Cloud Service Account * `google-cloud-storage` - Google Cloud Storage * `google-pubsub` - Google Pubsub * `google-search-console` - Google Search Console * `google-sheets` - Google Sheets * `hubspot` - Hubspot * `intercom` - Intercom * `jira` - Jira * `linear` - Linear * `linkedin-ads` - Linkedin Ads * `meta-ads` - Meta Ads * `pinterest-ads` - Pinterest Ads * `postgresql` - Postgresql * `reddit-ads` - Reddit Ads * `resend` - Resend * `s3-compatible` - S3 Compatible * `salesforce` - Salesforce * `slack` - Slack * `slack-posthog-code` - Slack Posthog Code * `snapchat` - Snapchat * `snowflake` - Snowflake * `stripe` - Stripe * `tiktok-ads` - Tiktok Ads * `twilio` - Twilio * `vercel` - Vercel */
-  kind: IntegrationKindEnum;
+  kind: IntegrationKindEnum | (string & {});
   /** Explanation from the requester of why this integration is needed. Shown to admins in the notification email. */
   reason: string;
 }

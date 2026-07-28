@@ -667,8 +667,7 @@ export type TimezoneEnum =
   | "Universal"
   | "W-SU"
   | "WET"
-  | "Zulu"
-  | (string & {});
+  | "Zulu";
 export const TimezoneEnum = /*@__PURE__*/ S.String;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
@@ -700,16 +699,11 @@ export const EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingEve
   ) as any as S.Schema<EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 /** * `30d` - 30 Days * `90d` - 90 Days * `1y` - 1 Year * `5y` - 5 Years */
-export type SessionRecordingRetentionPeriodEnum =
-  | "30d"
-  | "90d"
-  | "1y"
-  | "5y"
-  | (string & {});
+export type SessionRecordingRetentionPeriodEnum = "30d" | "90d" | "1y" | "5y";
 export const SessionRecordingRetentionPeriodEnum = /*@__PURE__*/ S.String;
 
 /** * `0` - Sunday * `1` - Monday */
-export type WeekStartDayEnum = 0 | 1 | (number & {});
+export type WeekStartDayEnum = 0 | 1;
 export const WeekStartDayEnum = /*@__PURE__*/ S.Number;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
@@ -727,7 +721,7 @@ export const EnvironmentsAddProductIntentPartialUpdateRequestRecordingDomainsLis
   ) as any as S.Schema<EnvironmentsAddProductIntentPartialUpdateRequestRecordingDomainsList>;
 
 /** * `0` - Disabled * `1` - Stateless * `2` - Stateful */
-export type CookielessServerHashModeEnum = 0 | 1 | 2 | (number & {});
+export type CookielessServerHashModeEnum = 0 | 1 | 2;
 export const CookielessServerHashModeEnum = /*@__PURE__*/ S.Number;
 
 /** * `AED` - AED * `AFN` - AFN * `ALL` - ALL * `AMD` - AMD * `ANG` - ANG * `AOA` - AOA * `ARS` - ARS * `AUD` - AUD * `AWG` - AWG * `AZN` - AZN * `BAM` - BAM * `BBD` - BBD * `BDT` - BDT * `BGN` - BGN * `BHD` - BHD * `BIF` - BIF * `BMD` - BMD * `BND` - BND * `BOB` - BOB * `BRL` - BRL * `BSD` - BSD * `BTC` - BTC * `BTN` - BTN * `BWP` - BWP * `BYN` - BYN * `BZD` - BZD * `CAD` - CAD * `CDF` - CDF * `CHF` - CHF * `CLP` - CLP * `CNY` - CNY * `COP` - COP * `CRC` - CRC * `CVE` - CVE * `CZK` - CZK * `DJF` - DJF * `DKK` - DKK * `DOP` - DOP * `DZD` - DZD * `EGP` - EGP * `ERN` - ERN * `ETB` - ETB * `EUR` - EUR * `FJD` - FJD * `GBP` - GBP * `GEL` - GEL * `GHS` - GHS * `GIP` - GIP * `GMD` - GMD * `GNF` - GNF * `GTQ` - GTQ * `GYD` - GYD * `HKD` - HKD * `HNL` - HNL * `HRK` - HRK * `HTG` - HTG * `HUF` - HUF * `IDR` - IDR * `ILS` - ILS * `INR` - INR * `IQD` - IQD * `IRR` - IRR * `ISK` - ISK * `JMD` - JMD * `JOD` - JOD * `JPY` - JPY * `KES` - KES * `KGS` - KGS * `KHR` - KHR * `KMF` - KMF * `KRW` - KRW * `KWD` - KWD * `KYD` - KYD * `KZT` - KZT * `LAK` - LAK * `LBP` - LBP * `LKR` - LKR * `LRD` - LRD * `LTL` - LTL * `LVL` - LVL * `LSL` - LSL * `LYD` - LYD * `MAD` - MAD * `MDL` - MDL * `MGA` - MGA * `MKD` - MKD * `MMK` - MMK * `MNT` - MNT * `MOP` - MOP * `MRU` - MRU * `MTL` - MTL * `MUR` - MUR * `MVR` - MVR * `MWK` - MWK * `MXN` - MXN * `MYR` - MYR * `MZN` - MZN * `NAD` - NAD * `NGN` - NGN * `NIO` - NIO * `NOK` - NOK * `NPR` - NPR * `NZD` - NZD * `OMR` - OMR * `PAB` - PAB * `PEN` - PEN * `PGK` - PGK * `PHP` - PHP * `PKR` - PKR * `PLN` - PLN * `PYG` - PYG * `QAR` - QAR * `RON` - RON * `RSD` - RSD * `RUB` - RUB * `RWF` - RWF * `SAR` - SAR * `SBD` - SBD * `SCR` - SCR * `SDG` - SDG * `SEK` - SEK * `SGD` - SGD * `SRD` - SRD * `SSP` - SSP * `STN` - STN * `SYP` - SYP * `SZL` - SZL * `THB` - THB * `TJS` - TJS * `TMT` - TMT * `TND` - TND * `TOP` - TOP * `TRY` - TRY * `TTD` - TTD * `TWD` - TWD * `TZS` - TZS * `UAH` - UAH * `UGX` - UGX * `USD` - USD * `UYU` - UYU * `UZS` - UZS * `VES` - VES * `VND` - VND * `VUV` - VUV * `WST` - WST * `XAF` - XAF * `XCD` - XCD * `XOF` - XOF * `XPF` - XPF * `YER` - YER * `ZAR` - ZAR * `ZMW` - ZMW */
@@ -883,12 +877,11 @@ export type BaseCurrencyEnum =
   | "XPF"
   | "YER"
   | "ZAR"
-  | "ZMW"
-  | (string & {});
+  | "ZMW";
 export const BaseCurrencyEnum = /*@__PURE__*/ S.String;
 
 export interface TeamRevenueAnalyticsConfig {
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   events?: unknown;
   goals?: unknown;
   filter_test_accounts?: boolean;
@@ -910,15 +903,14 @@ export type AttributionModeEnum =
   | "last_touch"
   | "linear"
   | "time_decay"
-  | "position_based"
-  | (string & {});
+  | "position_based";
 export const AttributionModeEnum = /*@__PURE__*/ S.String;
 
 export interface TeamMarketingAnalyticsConfig {
   sources_map?: unknown;
   conversion_goals?: unknown;
   attribution_window_days?: number;
-  attribution_mode?: AttributionModeEnum;
+  attribution_mode?: AttributionModeEnum | (string & {});
   campaign_name_mappings?: unknown;
   custom_source_mappings?: unknown;
   campaign_field_preferences?: unknown;
@@ -965,10 +957,10 @@ export const TeamCustomerAnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TeamCustomerAnalyticsConfig>;
 
 /** * `b2b` - B2B * `b2c` - B2C * `other` - Other */
-export type BusinessModelEnum = "b2b" | "b2c" | "other" | (string & {});
+export type BusinessModelEnum = "b2b" | "b2c" | "other";
 export const BusinessModelEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -1005,7 +997,7 @@ export interface EnvironmentsAddProductIntentPartialUpdateRequest {
   test_account_filters_default_checked?: boolean | null;
   path_cleaning_filters?: unknown;
   is_demo?: boolean;
-  timezone?: TimezoneEnum;
+  timezone?: TimezoneEnum | (string & {});
   data_attributes?: unknown;
   person_display_name_properties?: EnvironmentsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList | null;
   correlation_config?: unknown;
@@ -1029,14 +1021,19 @@ export interface EnvironmentsAddProductIntentPartialUpdateRequest {
   session_recording_trigger_match_type_config?: string | null;
   /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
   session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?: SessionRecordingRetentionPeriodEnum;
+  session_recording_retention_period?:
+    | SessionRecordingRetentionPeriodEnum
+    | (string & {});
   session_replay_config?: unknown;
   survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | null;
+  week_start_day?: WeekStartDayEnum | (number & {}) | null;
   primary_dashboard?: number | null;
   live_events_columns?: EnvironmentsAddProductIntentPartialUpdateRequestLiveEventsColumnsList | null;
   recording_domains?: EnvironmentsAddProductIntentPartialUpdateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
+  cookieless_server_hash_mode?:
+    | CookielessServerHashModeEnum
+    | (number & {})
+    | null;
   human_friendly_comparison_periods?: boolean | null;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
@@ -1057,7 +1054,7 @@ export interface EnvironmentsAddProductIntentPartialUpdateRequest {
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
   onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -1263,7 +1260,7 @@ export interface EnvironmentsCompleteProductOnboardingPartialUpdateRequest {
   test_account_filters_default_checked?: boolean | null;
   path_cleaning_filters?: unknown;
   is_demo?: boolean;
-  timezone?: TimezoneEnum;
+  timezone?: TimezoneEnum | (string & {});
   data_attributes?: unknown;
   person_display_name_properties?: EnvironmentsCompleteProductOnboardingPartialUpdateRequestPersonDisplayNamePropertiesList | null;
   correlation_config?: unknown;
@@ -1287,14 +1284,19 @@ export interface EnvironmentsCompleteProductOnboardingPartialUpdateRequest {
   session_recording_trigger_match_type_config?: string | null;
   /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
   session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?: SessionRecordingRetentionPeriodEnum;
+  session_recording_retention_period?:
+    | SessionRecordingRetentionPeriodEnum
+    | (string & {});
   session_replay_config?: unknown;
   survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | null;
+  week_start_day?: WeekStartDayEnum | (number & {}) | null;
   primary_dashboard?: number | null;
   live_events_columns?: EnvironmentsCompleteProductOnboardingPartialUpdateRequestLiveEventsColumnsList | null;
   recording_domains?: EnvironmentsCompleteProductOnboardingPartialUpdateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
+  cookieless_server_hash_mode?:
+    | CookielessServerHashModeEnum
+    | (number & {})
+    | null;
   human_friendly_comparison_periods?: boolean | null;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
@@ -1315,7 +1317,7 @@ export interface EnvironmentsCompleteProductOnboardingPartialUpdateRequest {
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
   onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -1524,7 +1526,7 @@ export interface EnvironmentsDefaultEvaluationContextsCreateRequest {
   test_account_filters_default_checked?: boolean | null;
   path_cleaning_filters?: unknown;
   is_demo?: boolean;
-  timezone?: TimezoneEnum;
+  timezone?: TimezoneEnum | (string & {});
   data_attributes?: unknown;
   person_display_name_properties?: EnvironmentsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList | null;
   correlation_config?: unknown;
@@ -1548,14 +1550,19 @@ export interface EnvironmentsDefaultEvaluationContextsCreateRequest {
   session_recording_trigger_match_type_config?: string | null;
   /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
   session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?: SessionRecordingRetentionPeriodEnum;
+  session_recording_retention_period?:
+    | SessionRecordingRetentionPeriodEnum
+    | (string & {});
   session_replay_config?: unknown;
   survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | null;
+  week_start_day?: WeekStartDayEnum | (number & {}) | null;
   primary_dashboard?: number | null;
   live_events_columns?: EnvironmentsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList | null;
   recording_domains?: EnvironmentsDefaultEvaluationContextsCreateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
+  cookieless_server_hash_mode?:
+    | CookielessServerHashModeEnum
+    | (number & {})
+    | null;
   human_friendly_comparison_periods?: boolean | null;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
@@ -1576,7 +1583,7 @@ export interface EnvironmentsDefaultEvaluationContextsCreateRequest {
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
   onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -1869,7 +1876,7 @@ export interface EnvironmentsDefaultReleaseConditionsUpdateRequest {
   test_account_filters_default_checked?: boolean | null;
   path_cleaning_filters?: unknown;
   is_demo?: boolean;
-  timezone?: TimezoneEnum;
+  timezone?: TimezoneEnum | (string & {});
   data_attributes?: unknown;
   person_display_name_properties?: EnvironmentsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList | null;
   correlation_config?: unknown;
@@ -1893,14 +1900,19 @@ export interface EnvironmentsDefaultReleaseConditionsUpdateRequest {
   session_recording_trigger_match_type_config?: string | null;
   /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
   session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?: SessionRecordingRetentionPeriodEnum;
+  session_recording_retention_period?:
+    | SessionRecordingRetentionPeriodEnum
+    | (string & {});
   session_replay_config?: unknown;
   survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | null;
+  week_start_day?: WeekStartDayEnum | (number & {}) | null;
   primary_dashboard?: number | null;
   live_events_columns?: EnvironmentsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList | null;
   recording_domains?: EnvironmentsDefaultReleaseConditionsUpdateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
+  cookieless_server_hash_mode?:
+    | CookielessServerHashModeEnum
+    | (number & {})
+    | null;
   human_friendly_comparison_periods?: boolean | null;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
@@ -1921,7 +1933,7 @@ export interface EnvironmentsDefaultReleaseConditionsUpdateRequest {
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
   onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -2129,7 +2141,7 @@ export interface EnvironmentsDeleteSecretTokenBackupPartialUpdateRequest {
   test_account_filters_default_checked?: boolean | null;
   path_cleaning_filters?: unknown;
   is_demo?: boolean;
-  timezone?: TimezoneEnum;
+  timezone?: TimezoneEnum | (string & {});
   data_attributes?: unknown;
   person_display_name_properties?: EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList | null;
   correlation_config?: unknown;
@@ -2153,14 +2165,19 @@ export interface EnvironmentsDeleteSecretTokenBackupPartialUpdateRequest {
   session_recording_trigger_match_type_config?: string | null;
   /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
   session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?: SessionRecordingRetentionPeriodEnum;
+  session_recording_retention_period?:
+    | SessionRecordingRetentionPeriodEnum
+    | (string & {});
   session_replay_config?: unknown;
   survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | null;
+  week_start_day?: WeekStartDayEnum | (number & {}) | null;
   primary_dashboard?: number | null;
   live_events_columns?: EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList | null;
   recording_domains?: EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
+  cookieless_server_hash_mode?:
+    | CookielessServerHashModeEnum
+    | (number & {})
+    | null;
   human_friendly_comparison_periods?: boolean | null;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
@@ -2181,7 +2198,7 @@ export interface EnvironmentsDeleteSecretTokenBackupPartialUpdateRequest {
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
   onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -2486,7 +2503,7 @@ export interface EnvironmentsExperimentsConfigPartialUpdateRequest {
   test_account_filters_default_checked?: boolean | null;
   path_cleaning_filters?: unknown;
   is_demo?: boolean;
-  timezone?: TimezoneEnum;
+  timezone?: TimezoneEnum | (string & {});
   data_attributes?: unknown;
   person_display_name_properties?: EnvironmentsExperimentsConfigPartialUpdateRequestPersonDisplayNamePropertiesList | null;
   correlation_config?: unknown;
@@ -2510,14 +2527,19 @@ export interface EnvironmentsExperimentsConfigPartialUpdateRequest {
   session_recording_trigger_match_type_config?: string | null;
   /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
   session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?: SessionRecordingRetentionPeriodEnum;
+  session_recording_retention_period?:
+    | SessionRecordingRetentionPeriodEnum
+    | (string & {});
   session_replay_config?: unknown;
   survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | null;
+  week_start_day?: WeekStartDayEnum | (number & {}) | null;
   primary_dashboard?: number | null;
   live_events_columns?: EnvironmentsExperimentsConfigPartialUpdateRequestLiveEventsColumnsList | null;
   recording_domains?: EnvironmentsExperimentsConfigPartialUpdateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
+  cookieless_server_hash_mode?:
+    | CookielessServerHashModeEnum
+    | (number & {})
+    | null;
   human_friendly_comparison_periods?: boolean | null;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
@@ -2538,7 +2560,7 @@ export interface EnvironmentsExperimentsConfigPartialUpdateRequest {
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
   onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -2774,7 +2796,7 @@ export interface EnvironmentsGenerateConversationsPublicTokenCreateRequest {
   test_account_filters_default_checked?: boolean | null;
   path_cleaning_filters?: unknown;
   is_demo?: boolean;
-  timezone?: TimezoneEnum;
+  timezone?: TimezoneEnum | (string & {});
   data_attributes?: unknown;
   person_display_name_properties?: EnvironmentsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList | null;
   correlation_config?: unknown;
@@ -2798,14 +2820,19 @@ export interface EnvironmentsGenerateConversationsPublicTokenCreateRequest {
   session_recording_trigger_match_type_config?: string | null;
   /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
   session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?: SessionRecordingRetentionPeriodEnum;
+  session_recording_retention_period?:
+    | SessionRecordingRetentionPeriodEnum
+    | (string & {});
   session_replay_config?: unknown;
   survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | null;
+  week_start_day?: WeekStartDayEnum | (number & {}) | null;
   primary_dashboard?: number | null;
   live_events_columns?: EnvironmentsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList | null;
   recording_domains?: EnvironmentsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
+  cookieless_server_hash_mode?:
+    | CookielessServerHashModeEnum
+    | (number & {})
+    | null;
   human_friendly_comparison_periods?: boolean | null;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
@@ -2826,7 +2853,7 @@ export interface EnvironmentsGenerateConversationsPublicTokenCreateRequest {
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
   onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -3063,7 +3090,7 @@ export interface EnvironmentsLogsConfigPartialUpdateRequest {
   test_account_filters_default_checked?: boolean | null;
   path_cleaning_filters?: unknown;
   is_demo?: boolean;
-  timezone?: TimezoneEnum;
+  timezone?: TimezoneEnum | (string & {});
   data_attributes?: unknown;
   person_display_name_properties?: EnvironmentsLogsConfigPartialUpdateRequestPersonDisplayNamePropertiesList | null;
   correlation_config?: unknown;
@@ -3087,14 +3114,19 @@ export interface EnvironmentsLogsConfigPartialUpdateRequest {
   session_recording_trigger_match_type_config?: string | null;
   /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
   session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?: SessionRecordingRetentionPeriodEnum;
+  session_recording_retention_period?:
+    | SessionRecordingRetentionPeriodEnum
+    | (string & {});
   session_replay_config?: unknown;
   survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | null;
+  week_start_day?: WeekStartDayEnum | (number & {}) | null;
   primary_dashboard?: number | null;
   live_events_columns?: EnvironmentsLogsConfigPartialUpdateRequestLiveEventsColumnsList | null;
   recording_domains?: EnvironmentsLogsConfigPartialUpdateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
+  cookieless_server_hash_mode?:
+    | CookielessServerHashModeEnum
+    | (number & {})
+    | null;
   human_friendly_comparison_periods?: boolean | null;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
@@ -3115,7 +3147,7 @@ export interface EnvironmentsLogsConfigPartialUpdateRequest {
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
   onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -3351,7 +3383,7 @@ export interface EnvironmentsResetTokenPartialUpdateRequest {
   test_account_filters_default_checked?: boolean | null;
   path_cleaning_filters?: unknown;
   is_demo?: boolean;
-  timezone?: TimezoneEnum;
+  timezone?: TimezoneEnum | (string & {});
   data_attributes?: unknown;
   person_display_name_properties?: EnvironmentsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList | null;
   correlation_config?: unknown;
@@ -3375,14 +3407,19 @@ export interface EnvironmentsResetTokenPartialUpdateRequest {
   session_recording_trigger_match_type_config?: string | null;
   /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
   session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?: SessionRecordingRetentionPeriodEnum;
+  session_recording_retention_period?:
+    | SessionRecordingRetentionPeriodEnum
+    | (string & {});
   session_replay_config?: unknown;
   survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | null;
+  week_start_day?: WeekStartDayEnum | (number & {}) | null;
   primary_dashboard?: number | null;
   live_events_columns?: EnvironmentsResetTokenPartialUpdateRequestLiveEventsColumnsList | null;
   recording_domains?: EnvironmentsResetTokenPartialUpdateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
+  cookieless_server_hash_mode?:
+    | CookielessServerHashModeEnum
+    | (number & {})
+    | null;
   human_friendly_comparison_periods?: boolean | null;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
@@ -3403,7 +3440,7 @@ export interface EnvironmentsResetTokenPartialUpdateRequest {
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
   onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -3610,7 +3647,7 @@ export interface EnvironmentsRotateSecretTokenPartialUpdateRequest {
   test_account_filters_default_checked?: boolean | null;
   path_cleaning_filters?: unknown;
   is_demo?: boolean;
-  timezone?: TimezoneEnum;
+  timezone?: TimezoneEnum | (string & {});
   data_attributes?: unknown;
   person_display_name_properties?: EnvironmentsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList | null;
   correlation_config?: unknown;
@@ -3634,14 +3671,19 @@ export interface EnvironmentsRotateSecretTokenPartialUpdateRequest {
   session_recording_trigger_match_type_config?: string | null;
   /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
   session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?: SessionRecordingRetentionPeriodEnum;
+  session_recording_retention_period?:
+    | SessionRecordingRetentionPeriodEnum
+    | (string & {});
   session_replay_config?: unknown;
   survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | null;
+  week_start_day?: WeekStartDayEnum | (number & {}) | null;
   primary_dashboard?: number | null;
   live_events_columns?: EnvironmentsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList | null;
   recording_domains?: EnvironmentsRotateSecretTokenPartialUpdateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
+  cookieless_server_hash_mode?:
+    | CookielessServerHashModeEnum
+    | (number & {})
+    | null;
   human_friendly_comparison_periods?: boolean | null;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
@@ -3662,7 +3704,7 @@ export interface EnvironmentsRotateSecretTokenPartialUpdateRequest {
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
   onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */

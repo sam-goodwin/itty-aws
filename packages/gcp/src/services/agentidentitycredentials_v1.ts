@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request message for FinalizeCredentials. */
@@ -69,17 +69,13 @@ export interface GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsReques
   /** Required. The same consent_nonce value that was provided during redirect in the UriConsentRequired metadata. */
   consentNonce?: string;
 }
-export const GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userId: S.optional(S.String),
-      userIdValidationState: S.optional(S.String),
-      consentNonce: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest",
-  }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest>;
+export const GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "userId": S.optional(S.String),
+  "userIdValidationState": S.optional(S.String),
+  "consentNonce": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest" }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest>;
 
 export interface FinalizeProjectsLocationsAuthProvidersCredentialsRequest {
   /** Required. The resource name of the AuthProvider. Format: `projects/{project}/locations/{location}/authProviders/{auth_provider}` */
@@ -87,38 +83,21 @@ export interface FinalizeProjectsLocationsAuthProvidersCredentialsRequest {
   /** Request body */
   body?: GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest;
 }
-export const FinalizeProjectsLocationsAuthProvidersCredentialsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authProvider: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+authProvider}/credentials:finalize",
-        baseUrl: "https://agentidentitycredentials.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FinalizeProjectsLocationsAuthProvidersCredentialsRequest",
-  }) as any as S.Schema<FinalizeProjectsLocationsAuthProvidersCredentialsRequest>;
+export const FinalizeProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "authProvider": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+authProvider}/credentials:finalize","baseUrl":"https://agentidentitycredentials.googleapis.com/"})),
+).annotate({ identifier: "FinalizeProjectsLocationsAuthProvidersCredentialsRequest" }) as any as S.Schema<FinalizeProjectsLocationsAuthProvidersCredentialsRequest>;
 
 /** Response message for FinalizeCredentials. Intentionally empty */
 export interface GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse {}
-export const GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse",
-  }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse>;
+export const GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse" }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request message for RetrieveCredentials. */
 export interface GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest {
@@ -131,18 +110,14 @@ export interface GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsReques
   /** Optional. Input only. Set this field only if the previous token was expired or invalid. This value must be the full, previously returned token string. Will trigger a refresh of the access token with a stored refresh token, if possible, or a new consent flow. */
   forceRefreshToken?: string;
 }
-export const GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      scopes: S.optional(StringList),
-      continueUri: S.optional(S.String),
-      userId: S.optional(S.String),
-      forceRefreshToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest",
-  }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest>;
+export const GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "scopes": S.optional(StringList),
+  "continueUri": S.optional(S.String),
+  "userId": S.optional(S.String),
+  "forceRefreshToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest" }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest>;
 
 export interface RetrieveProjectsLocationsAuthProvidersCredentialsRequest {
   /** Required. The parent resource name of the AuthProvider. Format: `projects/{project}/locations/{location}/authProviders/{auth_provider}` */
@@ -150,25 +125,12 @@ export interface RetrieveProjectsLocationsAuthProvidersCredentialsRequest {
   /** Request body */
   body?: GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest;
 }
-export const RetrieveProjectsLocationsAuthProvidersCredentialsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authProvider: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+authProvider}/credentials:retrieve",
-        baseUrl: "https://agentidentitycredentials.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RetrieveProjectsLocationsAuthProvidersCredentialsRequest",
-  }) as any as S.Schema<RetrieveProjectsLocationsAuthProvidersCredentialsRequest>;
+export const RetrieveProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "authProvider": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+authProvider}/credentials:retrieve","baseUrl":"https://agentidentitycredentials.googleapis.com/"})),
+).annotate({ identifier: "RetrieveProjectsLocationsAuthProvidersCredentialsRequest" }) as any as S.Schema<RetrieveProjectsLocationsAuthProvidersCredentialsRequest>;
 
 /** Indicates that the user must visit the provided URI to consent to delegate permission to the agent to act on their behalf. The caller can either poll the `RetrieveCredentials` method, or await the /ValidateUserId callback */
 export interface GoogleCloudAgentidentitycredentialsV1_UriConsentRequired {
@@ -179,23 +141,19 @@ export interface GoogleCloudAgentidentitycredentialsV1_UriConsentRequired {
   /** Output only. A one-time, randomly generated value that validates the entire consent flow is handled by a single user, avoiding CSRF attacks. It must be submitted with the FinalizeCredentials request to complete the OAuth exchange. This will always be present. Implemented per https://www.rfc-editor.org/rfc/rfc6819#section-5.3.5 */
   consentNonce?: string;
 }
-export const GoogleCloudAgentidentitycredentialsV1_UriConsentRequired =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authorizationUri: S.optional(S.String),
-      uid: S.optional(S.String),
-      consentNonce: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAgentidentitycredentialsV1_UriConsentRequired",
-  }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_UriConsentRequired>;
+export const GoogleCloudAgentidentitycredentialsV1_UriConsentRequired = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "authorizationUri": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "consentNonce": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudAgentidentitycredentialsV1_UriConsentRequired" }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_UriConsentRequired>;
 
 /** Indicates that the credential retrieval is pending. The caller should retry the RetrieveCredentials request after some time. */
 export interface GoogleCloudAgentidentitycredentialsV1_Pending {}
-export const GoogleCloudAgentidentitycredentialsV1_Pending =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudAgentidentitycredentialsV1_Pending",
-  }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_Pending>;
+export const GoogleCloudAgentidentitycredentialsV1_Pending = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudAgentidentitycredentialsV1_Pending" }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_Pending>;
 
 /** Message indicating successful retrieval of credentials. */
 export interface GoogleCloudAgentidentitycredentialsV1_Success {
@@ -208,24 +166,20 @@ export interface GoogleCloudAgentidentitycredentialsV1_Success {
   /** The expiration time of the token. This does not guarantee that the token will be valid until this time, since the token could be revoked earlier. There could also be clock skew between the auth provider and the client so it may expire slightly earlier. If not set, the token might be permanent or it may be that the service does not (or cannot) know when it will expire. */
   expireTime?: string;
 }
-export const GoogleCloudAgentidentitycredentialsV1_Success =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      header: S.optional(S.String),
-      scopes: S.optional(StringList),
-      token: S.optional(S.String),
-      expireTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAgentidentitycredentialsV1_Success",
-  }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_Success>;
+export const GoogleCloudAgentidentitycredentialsV1_Success = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "header": S.optional(S.String),
+  "scopes": S.optional(StringList),
+  "token": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudAgentidentitycredentialsV1_Success" }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_Success>;
 
 /** Indicates the user has rejected the permission delegation or cancelled the request. */
 export interface GoogleCloudAgentidentitycredentialsV1_ConsentRejected {}
-export const GoogleCloudAgentidentitycredentialsV1_ConsentRejected =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudAgentidentitycredentialsV1_ConsentRejected",
-  }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_ConsentRejected>;
+export const GoogleCloudAgentidentitycredentialsV1_ConsentRejected = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudAgentidentitycredentialsV1_ConsentRejected" }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_ConsentRejected>;
 
 /** Response message for RetrieveCredentials. Contains the access tokens and related artifacts. */
 export interface GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse {
@@ -238,29 +192,16 @@ export interface GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRespon
   /** Message indicating consent was rejected. */
   consentRejected?: GoogleCloudAgentidentitycredentialsV1_ConsentRejected;
 }
-export const GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uriConsentRequired: S.optional(
-        GoogleCloudAgentidentitycredentialsV1_UriConsentRequired,
-      ),
-      pending: S.optional(GoogleCloudAgentidentitycredentialsV1_Pending),
-      success: S.optional(GoogleCloudAgentidentitycredentialsV1_Success),
-      consentRejected: S.optional(
-        GoogleCloudAgentidentitycredentialsV1_ConsentRejected,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse",
-  }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse>;
+export const GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "uriConsentRequired": S.optional(GoogleCloudAgentidentitycredentialsV1_UriConsentRequired),
+  "pending": S.optional(GoogleCloudAgentidentitycredentialsV1_Pending),
+  "success": S.optional(GoogleCloudAgentidentitycredentialsV1_Success),
+  "consentRejected": S.optional(GoogleCloudAgentidentitycredentialsV1_ConsentRejected),
+}),
+).annotate({ identifier: "GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse" }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse>;
 
-export type FinalizeProjectsLocationsAuthProvidersCredentialsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type FinalizeProjectsLocationsAuthProvidersCredentialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Finalizes the credentials after a successful consent flow. */
 export const finalizeProjectsLocationsAuthProvidersCredentials: API.OperationMethod<
   FinalizeProjectsLocationsAuthProvidersCredentialsRequest,
@@ -275,12 +216,7 @@ export const finalizeProjectsLocationsAuthProvidersCredentials: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type RetrieveProjectsLocationsAuthProvidersCredentialsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RetrieveProjectsLocationsAuthProvidersCredentialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves authorization credentials for an authprovider, or indicates what action needs to be taken to obtain credentials. If the `token` field in the response is populated, credential retrieval was successful. If one of the fields in the `status` oneof is populated, further action is required to obtain credentials, such as redirecting the user for consent. View comments on `RetrieveCredentialsResponse` for more information. */
 export const retrieveProjectsLocationsAuthProvidersCredentials: API.OperationMethod<
   RetrieveProjectsLocationsAuthProvidersCredentialsRequest,
@@ -294,3 +230,4 @@ export const retrieveProjectsLocationsAuthProvidersCredentials: API.OperationMet
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

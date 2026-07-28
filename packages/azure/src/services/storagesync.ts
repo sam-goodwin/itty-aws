@@ -123,8 +123,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -132,8 +131,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -194,16 +192,14 @@ export const CloudEndpointLastChangeEnumerationStatus = /*@__PURE__*/ S.suspend(
 /** State of change enumeration activity */
 export type CloudEndpointChangeEnumerationActivityState =
   | "InitialEnumerationInProgress"
-  | "EnumerationInProgress"
-  | (string & {});
+  | "EnumerationInProgress";
 export const CloudEndpointChangeEnumerationActivityState =
   /*@__PURE__*/ S.String;
 
 /** State of the total counts of change enumeration activity */
 export type CloudEndpointChangeEnumerationTotalCountsState =
   | "Calculating"
-  | "Final"
-  | (string & {});
+  | "Final";
 export const CloudEndpointChangeEnumerationTotalCountsState =
   /*@__PURE__*/ S.String;
 
@@ -816,7 +812,7 @@ export const CloudEndpointsRestoreheartbeatResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CloudEndpointsRestoreheartbeatResponse>;
 
 /** Change Detection Mode. Applies to a directory specified in directoryPath parameter. */
-export type ChangeDetectionMode = "Default" | "Recursive" | (string & {});
+export type ChangeDetectionMode = "Default" | "Recursive";
 export const ChangeDetectionMode = /*@__PURE__*/ S.String;
 
 /** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
@@ -841,7 +837,7 @@ export interface CloudEndpointsTriggerChangeDetectionRequest {
   /** Relative path to a directory Azure File share for which change detection is to be performed. */
   directoryPath?: string;
   /** Change Detection Mode. Applies to a directory specified in directoryPath parameter. */
-  changeDetectionMode?: ChangeDetectionMode;
+  changeDetectionMode?: ChangeDetectionMode | (string & {});
   /** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
   paths?: CloudEndpointsTriggerChangeDetectionRequestPathsList;
 }
@@ -1274,8 +1270,7 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -1372,8 +1367,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1783,12 +1777,11 @@ export type RegisteredServerAgentVersionStatus =
   | "Ok"
   | "NearExpiry"
   | "Expired"
-  | "Blocked"
-  | (string & {});
+  | "Blocked";
 export const RegisteredServerAgentVersionStatus = /*@__PURE__*/ S.String;
 
 /** Type of the Server Auth type */
-export type ServerAuthType = "Certificate" | "ManagedIdentity" | (string & {});
+export type ServerAuthType = "Certificate" | "ManagedIdentity";
 export const ServerAuthType = /*@__PURE__*/ S.String;
 
 /** RegisteredServer Properties object. */
@@ -2177,31 +2170,28 @@ export const RegisteredServersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegisteredServersUpdateResponse>;
 
 /** Type of the Feature Status */
-export type FeatureStatus = "on" | "off" | (string & {});
+export type FeatureStatus = "on" | "off";
 export const FeatureStatus = /*@__PURE__*/ S.String;
 
 /** Policy for how namespace and files are recalled during FastDr. */
 export type ServerEndpointCreateParametersPropertiesInitialDownloadPolicy =
   | "NamespaceOnly"
   | "NamespaceThenModifiedFiles"
-  | "AvoidTieredFiles"
-  | (string & {});
+  | "AvoidTieredFiles";
 export const ServerEndpointCreateParametersPropertiesInitialDownloadPolicy =
   /*@__PURE__*/ S.String;
 
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointCreateParametersPropertiesLocalCacheMode =
   | "DownloadNewAndModifiedFiles"
-  | "UpdateLocallyCachedFiles"
-  | (string & {});
+  | "UpdateLocallyCachedFiles";
 export const ServerEndpointCreateParametersPropertiesLocalCacheMode =
   /*@__PURE__*/ S.String;
 
 /** Policy for how the initial upload sync session is performed. */
 export type ServerEndpointCreateParametersPropertiesInitialUploadPolicy =
   | "ServerAuthoritative"
-  | "Merge"
-  | (string & {});
+  | "Merge";
 export const ServerEndpointCreateParametersPropertiesInitialUploadPolicy =
   /*@__PURE__*/ S.String;
 
@@ -2210,7 +2200,7 @@ export interface ServerEndpointCreateParametersProperties {
   /** Server Local path. */
   serverLocalPath?: string;
   /** Cloud Tiering. */
-  cloudTiering?: FeatureStatus;
+  cloudTiering?: FeatureStatus | (string & {});
   /** Level of free space to be maintained by Cloud Tiering if it is enabled. */
   volumeFreeSpacePercent?: number;
   /** Tier files older than days. */
@@ -2220,15 +2210,21 @@ export interface ServerEndpointCreateParametersProperties {
   /** Server Resource Id. */
   serverResourceId?: string;
   /** Offline data transfer */
-  offlineDataTransfer?: FeatureStatus;
+  offlineDataTransfer?: FeatureStatus | (string & {});
   /** Offline data transfer share name */
   offlineDataTransferShareName?: string;
   /** Policy for how namespace and files are recalled during FastDr. */
-  initialDownloadPolicy?: ServerEndpointCreateParametersPropertiesInitialDownloadPolicy;
+  initialDownloadPolicy?:
+    | ServerEndpointCreateParametersPropertiesInitialDownloadPolicy
+    | (string & {});
   /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
-  localCacheMode?: ServerEndpointCreateParametersPropertiesLocalCacheMode;
+  localCacheMode?:
+    | ServerEndpointCreateParametersPropertiesLocalCacheMode
+    | (string & {});
   /** Policy for how the initial upload sync session is performed. */
-  initialUploadPolicy?: ServerEndpointCreateParametersPropertiesInitialUploadPolicy;
+  initialUploadPolicy?:
+    | ServerEndpointCreateParametersPropertiesInitialUploadPolicy
+    | (string & {});
 }
 export const ServerEndpointCreateParametersProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -2290,19 +2286,14 @@ export const ServerEndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerEndpointsCreateRequest>;
 
 /** Type of the server endpoint health state */
-export type ServerEndpointHealthState =
-  | "Unavailable"
-  | "Healthy"
-  | "Error"
-  | (string & {});
+export type ServerEndpointHealthState = "Unavailable" | "Healthy" | "Error";
 export const ServerEndpointHealthState = /*@__PURE__*/ S.String;
 
 /** Type of the sync activity state */
 export type ServerEndpointSyncActivityState =
   | "Upload"
   | "Download"
-  | "UploadAndDownload"
-  | (string & {});
+  | "UploadAndDownload";
 export const ServerEndpointSyncActivityState = /*@__PURE__*/ S.String;
 
 /** Files not syncing error object */
@@ -2338,8 +2329,7 @@ export type ServerEndpointSyncMode =
   | "NamespaceDownload"
   | "InitialUpload"
   | "SnapshotUpload"
-  | "InitialFullDownload"
-  | (string & {});
+  | "InitialFullDownload";
 export const ServerEndpointSyncMode = /*@__PURE__*/ S.String;
 
 /** Sync Session status object. */
@@ -2417,8 +2407,7 @@ export type ServerEndpointOfflineDataTransferState =
   | "InProgress"
   | "Stopping"
   | "NotRunning"
-  | "Complete"
-  | (string & {});
+  | "Complete";
 export const ServerEndpointOfflineDataTransferState = /*@__PURE__*/ S.String;
 
 /** Background data download activity object */
@@ -2623,10 +2612,7 @@ export const CloudTieringDatePolicyStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudTieringDatePolicyStatus>;
 
 /** Type of the cloud tiering low disk mode state */
-export type CloudTieringLowDiskModeState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type CloudTieringLowDiskModeState = "Enabled" | "Disabled";
 export const CloudTieringLowDiskModeState = /*@__PURE__*/ S.String;
 
 /** Information regarding the low disk mode state */
@@ -2736,23 +2722,20 @@ export const ServerEndpointRecallStatus = /*@__PURE__*/ S.suspend(() =>
 export type ServerEndpointPropertiesInitialDownloadPolicy =
   | "NamespaceOnly"
   | "NamespaceThenModifiedFiles"
-  | "AvoidTieredFiles"
-  | (string & {});
+  | "AvoidTieredFiles";
 export const ServerEndpointPropertiesInitialDownloadPolicy =
   /*@__PURE__*/ S.String;
 
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointPropertiesLocalCacheMode =
   | "DownloadNewAndModifiedFiles"
-  | "UpdateLocallyCachedFiles"
-  | (string & {});
+  | "UpdateLocallyCachedFiles";
 export const ServerEndpointPropertiesLocalCacheMode = /*@__PURE__*/ S.String;
 
 /** Policy for how the initial upload sync session is performed. */
 export type ServerEndpointPropertiesInitialUploadPolicy =
   | "ServerAuthoritative"
-  | "Merge"
-  | (string & {});
+  | "Merge";
 export const ServerEndpointPropertiesInitialUploadPolicy =
   /*@__PURE__*/ S.String;
 
@@ -2762,8 +2745,7 @@ export type ServerProvisioningStatus =
   | "InProgress"
   | "Ready_SyncNotFunctional"
   | "Ready_SyncFunctional"
-  | "Error"
-  | (string & {});
+  | "Error";
 export const ServerProvisioningStatus = /*@__PURE__*/ S.String;
 
 /** Additional information for the provisioning step */
@@ -3159,25 +3141,24 @@ export const ServerEndpointsRecallActionResponse = /*@__PURE__*/ S.suspend(() =>
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointUpdatePropertiesLocalCacheMode =
   | "DownloadNewAndModifiedFiles"
-  | "UpdateLocallyCachedFiles"
-  | (string & {});
+  | "UpdateLocallyCachedFiles";
 export const ServerEndpointUpdatePropertiesLocalCacheMode =
   /*@__PURE__*/ S.String;
 
 /** ServerEndpoint Update Properties object. */
 export interface ServerEndpointUpdateProperties {
   /** Cloud Tiering. */
-  cloudTiering?: FeatureStatus;
+  cloudTiering?: FeatureStatus | (string & {});
   /** Level of free space to be maintained by Cloud Tiering if it is enabled. */
   volumeFreeSpacePercent?: number;
   /** Tier files older than days. */
   tierFilesOlderThanDays?: number;
   /** Offline data transfer */
-  offlineDataTransfer?: FeatureStatus;
+  offlineDataTransfer?: FeatureStatus | (string & {});
   /** Offline data transfer share name */
   offlineDataTransferShareName?: string;
   /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
-  localCacheMode?: ServerEndpointUpdatePropertiesLocalCacheMode;
+  localCacheMode?: ServerEndpointUpdatePropertiesLocalCacheMode | (string & {});
 }
 export const ServerEndpointUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3250,7 +3231,7 @@ export const ServerEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServerEndpointsUpdateResponse",
 }) as any as S.Schema<ServerEndpointsUpdateResponse>;
 
-export type Type = "Microsoft.StorageSync/storageSyncServices" | (string & {});
+export type Type = "Microsoft.StorageSync/storageSyncServices";
 export const Type = /*@__PURE__*/ S.String;
 
 export interface StorageSyncServicesCheckNameAvailabilityRequest {
@@ -3261,7 +3242,7 @@ export interface StorageSyncServicesCheckNameAvailabilityRequest {
   /** The name to check for availability */
   name: string;
   /** The resource type. Must be set to Microsoft.StorageSync/storageSyncServices */
-  type: Type;
+  type: Type | (string & {});
 }
 export const StorageSyncServicesCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3283,10 +3264,7 @@ export const StorageSyncServicesCheckNameAvailabilityRequest =
   }) as any as S.Schema<StorageSyncServicesCheckNameAvailabilityRequest>;
 
 /** Gets the reason that a Storage Sync Service name could not be used. The Reason element is only returned if NameAvailable is false. */
-export type NameAvailabilityReason =
-  | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+export type NameAvailabilityReason = "Invalid" | "AlreadyExists";
 export const NameAvailabilityReason = /*@__PURE__*/ S.String;
 
 /** The CheckNameAvailability operation response. */
@@ -3322,8 +3300,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -3345,7 +3322,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface StorageSyncServicesCreateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const StorageSyncServicesCreateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -3361,14 +3338,13 @@ export const StorageSyncServicesCreateRequestIdentity = /*@__PURE__*/ S.suspend(
 /** Type of the Incoming Traffic Policy */
 export type IncomingTrafficPolicy =
   | "AllowAllTraffic"
-  | "AllowVirtualNetworksOnly"
-  | (string & {});
+  | "AllowVirtualNetworksOnly";
 export const IncomingTrafficPolicy = /*@__PURE__*/ S.String;
 
 /** StorageSyncService Properties object. */
 export interface StorageSyncServiceCreateParametersProperties {
   /** Incoming Traffic Policy */
-  incomingTrafficPolicy?: IncomingTrafficPolicy;
+  incomingTrafficPolicy?: IncomingTrafficPolicy | (string & {});
   /** Use Identity authorization when customer have finished setup RBAC permissions. */
   useIdentity?: boolean;
 }
@@ -3835,7 +3811,7 @@ export const StorageSyncServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface StorageSyncServicesUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const StorageSyncServicesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -3851,7 +3827,7 @@ export const StorageSyncServicesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
 /** StorageSyncService Properties object. */
 export interface StorageSyncServiceUpdateProperties {
   /** Incoming Traffic Policy */
-  incomingTrafficPolicy?: IncomingTrafficPolicy;
+  incomingTrafficPolicy?: IncomingTrafficPolicy | (string & {});
   /** Use Identity authorization when customer have finished setup RBAC permissions. */
   useIdentity?: boolean;
 }
@@ -4257,12 +4233,11 @@ export type WorkflowStatus =
   | "expired"
   | "succeeded"
   | "aborted"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const WorkflowStatus = /*@__PURE__*/ S.String;
 
 /** Type of the Operation Direction */
-export type OperationDirection = "do" | "undo" | "cancel" | (string & {});
+export type OperationDirection = "do" | "undo" | "cancel";
 export const OperationDirection = /*@__PURE__*/ S.String;
 
 /** Workflow Properties object. */

@@ -617,7 +617,7 @@ export const ActivateKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivateKeySigningKeyRequest",
 }) as any as S.Schema<ActivateKeySigningKeyRequest>;
-export type ChangeStatus = "PENDING" | "INSYNC" | (string & {});
+export type ChangeStatus = "PENDING" | "INSYNC";
 export const ChangeStatus = /*@__PURE__*/ S.String;
 
 export type ResourceDescription = string;
@@ -689,8 +689,7 @@ export type VPCRegion =
   | "eu-isoe-west-1"
   | "ap-southeast-6"
   | "us-isob-west-1"
-  | "eusc-de-east-1"
-  | (string & {});
+  | "eusc-de-east-1";
 export const VPCRegion = /*@__PURE__*/ S.String;
 
 export type VPCId = string;
@@ -740,10 +739,7 @@ export const AssociateVPCWithHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
 export type UUID = string;
 export type CollectionVersion = number;
 export type CidrLocationNameDefaultNotAllowed = string;
-export type CidrCollectionChangeAction =
-  | "PUT"
-  | "DELETE_IF_EXISTS"
-  | (string & {});
+export type CidrCollectionChangeAction = "PUT" | "DELETE_IF_EXISTS";
 export const CidrCollectionChangeAction = /*@__PURE__*/ S.String;
 
 export type Cidr = string;
@@ -751,7 +747,7 @@ export type CidrList = string[];
 export const CidrList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Cidr")));
 export interface CidrCollectionChange {
   LocationName: string;
-  Action: CidrCollectionChangeAction;
+  Action: CidrCollectionChangeAction | (string & {});
   CidrList: string[];
 }
 export const CidrCollectionChange = /*@__PURE__*/ S.suspend(() =>
@@ -799,7 +795,7 @@ export const ChangeCidrCollectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChangeCidrCollectionResponse",
 }) as any as S.Schema<ChangeCidrCollectionResponse>;
-export type ChangeAction = "CREATE" | "DELETE" | "UPSERT" | (string & {});
+export type ChangeAction = "CREATE" | "DELETE" | "UPSERT";
 export const ChangeAction = /*@__PURE__*/ S.String;
 
 export type DNSName = string;
@@ -820,8 +816,7 @@ export type RRType =
   | "TLSA"
   | "SSHFP"
   | "SVCB"
-  | "HTTPS"
-  | (string & {});
+  | "HTTPS";
 export const RRType = /*@__PURE__*/ S.String;
 
 export type ResourceRecordSetIdentifier = string;
@@ -865,8 +860,7 @@ export type ResourceRecordSetRegion =
   | "us-gov-west-1"
   | "ap-east-2"
   | "ap-southeast-6"
-  | "eusc-de-east-1"
-  | (string & {});
+  | "eusc-de-east-1";
 export const ResourceRecordSetRegion = /*@__PURE__*/ S.String;
 
 export type GeoLocationContinentCode = string;
@@ -884,7 +878,7 @@ export const GeoLocation = /*@__PURE__*/ S.suspend(() =>
     SubdivisionCode: S.optional(S.String),
   }),
 ).annotate({ identifier: "GeoLocation" }) as any as S.Schema<GeoLocation>;
-export type ResourceRecordSetFailover = "PRIMARY" | "SECONDARY" | (string & {});
+export type ResourceRecordSetFailover = "PRIMARY" | "SECONDARY";
 export const ResourceRecordSetFailover = /*@__PURE__*/ S.String;
 
 export type ResourceRecordSetMultiValueAnswer = boolean;
@@ -994,7 +988,7 @@ export const ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceRecordSet",
 }) as any as S.Schema<ResourceRecordSet>;
 export interface Change {
-  Action: ChangeAction;
+  Action: ChangeAction | (string & {});
   ResourceRecordSet: ResourceRecordSet;
 }
 export const Change = /*@__PURE__*/ S.suspend(() =>
@@ -1044,7 +1038,7 @@ export const ChangeResourceRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChangeResourceRecordSetsResponse",
 }) as any as S.Schema<ChangeResourceRecordSetsResponse>;
-export type TagResourceType = "healthcheck" | "hostedzone" | (string & {});
+export type TagResourceType = "healthcheck" | "hostedzone";
 export const TagResourceType = /*@__PURE__*/ S.String;
 
 export type TagResourceId = string;
@@ -1066,7 +1060,7 @@ export const TagKeyList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Key")),
 );
 export interface ChangeTagsForResourceRequest {
-  ResourceType: TagResourceType;
+  ResourceType: TagResourceType | (string & {});
   ResourceId: string;
   AddTags?: Tag[];
   RemoveTagKeys?: string[];
@@ -1160,8 +1154,7 @@ export type HealthCheckType =
   | "TCP"
   | "CALCULATED"
   | "CLOUDWATCH_METRIC"
-  | "RECOVERY_CONTROL"
-  | (string & {});
+  | "RECOVERY_CONTROL";
 export const HealthCheckType = /*@__PURE__*/ S.String;
 
 export type ResourcePath = string;
@@ -1186,8 +1179,7 @@ export type HealthCheckRegion =
   | "ap-southeast-1"
   | "ap-southeast-2"
   | "ap-northeast-1"
-  | "sa-east-1"
-  | (string & {});
+  | "sa-east-1";
 export const HealthCheckRegion = /*@__PURE__*/ S.String;
 
 export type HealthCheckRegionList = HealthCheckRegion[];
@@ -1240,8 +1232,7 @@ export type CloudWatchRegion =
   | "eu-isoe-west-1"
   | "ap-southeast-6"
   | "us-isob-west-1"
-  | "eusc-de-east-1"
-  | (string & {});
+  | "eusc-de-east-1";
 export const CloudWatchRegion = /*@__PURE__*/ S.String;
 
 export type AlarmName = string;
@@ -1257,8 +1248,7 @@ export const AlarmIdentifier = /*@__PURE__*/ S.suspend(() =>
 export type InsufficientDataHealthStatus =
   | "Healthy"
   | "Unhealthy"
-  | "LastKnownStatus"
-  | (string & {});
+  | "LastKnownStatus";
 export const InsufficientDataHealthStatus = /*@__PURE__*/ S.String;
 
 export type RoutingControlArn = string;
@@ -1346,8 +1336,7 @@ export type ComparisonOperator =
   | "GreaterThanOrEqualToThreshold"
   | "GreaterThanThreshold"
   | "LessThanThreshold"
-  | "LessThanOrEqualToThreshold"
-  | (string & {});
+  | "LessThanOrEqualToThreshold";
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type Period = number;
@@ -1358,8 +1347,7 @@ export type Statistic =
   | "Sum"
   | "SampleCount"
   | "Maximum"
-  | "Minimum"
-  | (string & {});
+  | "Minimum";
 export const Statistic = /*@__PURE__*/ S.String;
 
 export type DimensionField = string;
@@ -1479,8 +1467,7 @@ export type AcceleratedRecoveryStatus =
   | "DISABLING"
   | "DISABLE_FAILED"
   | "DISABLED"
-  | "DISABLING_HOSTED_ZONE_LOCKED"
-  | (string & {});
+  | "DISABLING_HOSTED_ZONE_LOCKED";
 export const AcceleratedRecoveryStatus = /*@__PURE__*/ S.String;
 
 export type FailureReason = string;
@@ -2306,12 +2293,11 @@ export type AccountLimitType =
   | "MAX_HOSTED_ZONES_BY_OWNER"
   | "MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"
   | "MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"
-  | "MAX_TRAFFIC_POLICIES_BY_OWNER"
-  | (string & {});
+  | "MAX_TRAFFIC_POLICIES_BY_OWNER";
 export const AccountLimitType = /*@__PURE__*/ S.String;
 
 export interface GetAccountLimitRequest {
-  Type: AccountLimitType;
+  Type: AccountLimitType | (string & {});
 }
 export const GetAccountLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: AccountLimitType.pipe(T.HttpLabel("Type")) }).pipe(
@@ -2703,12 +2689,11 @@ export const GetHostedZoneCountResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHostedZoneCountResponse>;
 export type HostedZoneLimitType =
   | "MAX_RRSETS_BY_ZONE"
-  | "MAX_VPCS_ASSOCIATED_BY_ZONE"
-  | (string & {});
+  | "MAX_VPCS_ASSOCIATED_BY_ZONE";
 export const HostedZoneLimitType = /*@__PURE__*/ S.String;
 
 export interface GetHostedZoneLimitRequest {
-  Type: HostedZoneLimitType;
+  Type: HostedZoneLimitType | (string & {});
   HostedZoneId: string;
 }
 export const GetHostedZoneLimitRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2803,12 +2788,11 @@ export const GetReusableDelegationSetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReusableDelegationSetResponse",
 }) as any as S.Schema<GetReusableDelegationSetResponse>;
 export type ReusableDelegationSetLimitType =
-  | "MAX_ZONES_BY_REUSABLE_DELEGATION_SET"
-  | (string & {});
+  "MAX_ZONES_BY_REUSABLE_DELEGATION_SET";
 export const ReusableDelegationSetLimitType = /*@__PURE__*/ S.String;
 
 export interface GetReusableDelegationSetLimitRequest {
-  Type: ReusableDelegationSetLimitType;
+  Type: ReusableDelegationSetLimitType | (string & {});
   DelegationSetId: string;
 }
 export const GetReusableDelegationSetLimitRequest = /*@__PURE__*/ S.suspend(
@@ -3203,14 +3187,14 @@ export const ListHealthChecksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListHealthChecksResponse",
 }) as any as S.Schema<ListHealthChecksResponse>;
-export type HostedZoneType = "PrivateHostedZone" | (string & {});
+export type HostedZoneType = "PrivateHostedZone";
 export const HostedZoneType = /*@__PURE__*/ S.String;
 
 export interface ListHostedZonesRequest {
   Marker?: string;
   MaxItems?: number;
   DelegationSetId?: string;
-  HostedZoneType?: HostedZoneType;
+  HostedZoneType?: HostedZoneType | (string & {});
 }
 export const ListHostedZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3306,7 +3290,7 @@ export const ListHostedZonesByNameResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostedZonesByNameResponse>;
 export interface ListHostedZonesByVPCRequest {
   VPCId: string;
-  VPCRegion: VPCRegion;
+  VPCRegion: VPCRegion | (string & {});
   MaxItems?: number;
   NextToken?: string;
 }
@@ -3419,7 +3403,7 @@ export const ListQueryLoggingConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListResourceRecordSetsRequest {
   HostedZoneId: string;
   StartRecordName?: string;
-  StartRecordType?: RRType;
+  StartRecordType?: RRType | (string & {});
   StartRecordIdentifier?: string;
   MaxItems?: number;
 }
@@ -3520,7 +3504,7 @@ export const ListReusableDelegationSetsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReusableDelegationSetsResponse",
 }) as any as S.Schema<ListReusableDelegationSetsResponse>;
 export interface ListTagsForResourceRequest {
-  ResourceType: TagResourceType;
+  ResourceType: TagResourceType | (string & {});
   ResourceId: string;
 }
 export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3569,7 +3553,7 @@ export const TagResourceIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ResourceId")),
 );
 export interface ListTagsForResourcesRequest {
-  ResourceType: TagResourceType;
+  ResourceType: TagResourceType | (string & {});
   ResourceIds: string[];
 }
 export const ListTagsForResourcesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3671,7 +3655,7 @@ export const ListTrafficPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTrafficPolicyInstancesRequest {
   HostedZoneIdMarker?: string;
   TrafficPolicyInstanceNameMarker?: string;
-  TrafficPolicyInstanceTypeMarker?: RRType;
+  TrafficPolicyInstanceTypeMarker?: RRType | (string & {});
   MaxItems?: number;
 }
 export const ListTrafficPolicyInstancesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3727,7 +3711,7 @@ export const ListTrafficPolicyInstancesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTrafficPolicyInstancesByHostedZoneRequest {
   HostedZoneId: string;
   TrafficPolicyInstanceNameMarker?: string;
-  TrafficPolicyInstanceTypeMarker?: RRType;
+  TrafficPolicyInstanceTypeMarker?: RRType | (string & {});
   MaxItems?: number;
 }
 export const ListTrafficPolicyInstancesByHostedZoneRequest =
@@ -3782,7 +3766,7 @@ export interface ListTrafficPolicyInstancesByPolicyRequest {
   TrafficPolicyVersion: number;
   HostedZoneIdMarker?: string;
   TrafficPolicyInstanceNameMarker?: string;
-  TrafficPolicyInstanceTypeMarker?: RRType;
+  TrafficPolicyInstanceTypeMarker?: RRType | (string & {});
   MaxItems?: number;
 }
 export const ListTrafficPolicyInstancesByPolicyRequest =
@@ -3937,7 +3921,7 @@ export type SubnetMask = string;
 export interface TestDNSAnswerRequest {
   HostedZoneId: string;
   RecordName: string;
-  RecordType: RRType;
+  RecordType: RRType | (string & {});
   ResolverIP?: string;
   EDNS0ClientSubnetIP?: string;
   EDNS0ClientSubnetMask?: string;
@@ -4000,11 +3984,13 @@ export type ResettableElementName =
   | "FullyQualifiedDomainName"
   | "Regions"
   | "ResourcePath"
-  | "ChildHealthChecks"
-  | (string & {});
+  | "ChildHealthChecks";
 export const ResettableElementName = /*@__PURE__*/ S.String;
 
-export type ResettableElementNameList = ResettableElementName[];
+export type ResettableElementNameList = (
+  | ResettableElementName
+  | (string & {})
+)[];
 export const ResettableElementNameList = /*@__PURE__*/ S.Array(
   ResettableElementName.pipe(T.XmlName("ResettableElementName")),
 );
@@ -4024,7 +4010,7 @@ export interface UpdateHealthCheckRequest {
   EnableSNI?: boolean;
   Regions?: HealthCheckRegion[];
   AlarmIdentifier?: AlarmIdentifier;
-  InsufficientDataHealthStatus?: InsufficientDataHealthStatus;
+  InsufficientDataHealthStatus?: InsufficientDataHealthStatus | (string & {});
   ResetElements?: ResettableElementName[];
 }
 export const UpdateHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>

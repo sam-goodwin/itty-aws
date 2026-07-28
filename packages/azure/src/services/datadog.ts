@@ -257,8 +257,7 @@ export type DatadogAgreementResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DatadogAgreementResourceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -267,8 +266,7 @@ export type DatadogAgreementResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DatadogAgreementResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -376,21 +374,15 @@ export type Operation =
   | "AddComplete"
   | "DeleteBegin"
   | "DeleteComplete"
-  | "Active"
-  | (string & {});
+  | "Active";
 export const Operation = /*@__PURE__*/ S.String;
 
 /** The state of monitoring. */
-export type Status =
-  | "InProgress"
-  | "Active"
-  | "Failed"
-  | "Deleting"
-  | (string & {});
+export type Status = "InProgress" | "Active" | "Failed" | "Deleting";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
-export type TagAction = "Include" | "Exclude" | (string & {});
+export type TagAction = "Include" | "Exclude";
 export const TagAction = /*@__PURE__*/ S.String;
 
 /** The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored. */
@@ -503,7 +495,7 @@ export interface MonitoredSubscriptionInput {
   /** The subscriptionId to be monitored. */
   subscriptionId?: string;
   /** The state of monitoring. */
-  status?: Status;
+  status?: Status | (string & {});
   /** The reason of not monitoring the subscription. */
   error?: string;
   /** Definition of the properties for a TagRules resource. */
@@ -531,7 +523,7 @@ export const SubscriptionListInputMonitoredSubscriptionListList =
 /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
 export interface SubscriptionListInput {
   /** The operation for the patch on the resource. */
-  operation?: Operation;
+  operation?: Operation | (string & {});
   /** List of subscriptions and the state of the monitoring. */
   monitoredSubscriptionList?: SubscriptionListInputMonitoredSubscriptionListList;
 }
@@ -583,8 +575,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -592,8 +583,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -631,8 +621,7 @@ export type ProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "NotSpecified"
-  | (string & {});
+  | "NotSpecified";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Definition of the properties for a TagRules resource. */
@@ -962,10 +951,7 @@ export const MonitorsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MonitorsCreateRequestTagsMap>;
 
 /** Flag specifying if the resource monitoring is enabled or disabled. */
-export type MonitorPropertiesInputMonitoringStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type MonitorPropertiesInputMonitoringStatus = "Enabled" | "Disabled";
 export const MonitorPropertiesInputMonitoringStatus = /*@__PURE__*/ S.String;
 
 /** Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well. */
@@ -1028,7 +1014,7 @@ export const UserInfo = /*@__PURE__*/ S.suspend(() =>
 /** Properties specific to the monitor resource. */
 export interface MonitorPropertiesInput {
   /** Flag specifying if the resource monitoring is enabled or disabled. */
-  monitoringStatus?: MonitorPropertiesInputMonitoringStatus;
+  monitoringStatus?: MonitorPropertiesInputMonitoringStatus | (string & {});
   /** Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well. */
   datadogOrganizationProperties?: DatadogOrganizationProperties;
   /** Includes name, email and optionally, phone number. User Information can't be null. */
@@ -1055,15 +1041,12 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
-export type ManagedIdentityTypes =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
+export type ManagedIdentityTypes = "SystemAssigned" | "UserAssigned";
 export const ManagedIdentityTypes = /*@__PURE__*/ S.String;
 
 export interface IdentityPropertiesInput {
   /** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
-  type?: ManagedIdentityTypes;
+  type?: ManagedIdentityTypes | (string & {});
 }
 export const IdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1121,10 +1104,7 @@ export const MonitorsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MonitorsCreateResponseTagsMap>;
 
 /** Flag specifying if the resource monitoring is enabled or disabled. */
-export type MonitorPropertiesMonitoringStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type MonitorPropertiesMonitoringStatus = "Enabled" | "Disabled";
 export const MonitorPropertiesMonitoringStatus = /*@__PURE__*/ S.String;
 
 /** Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state. */
@@ -1132,11 +1112,10 @@ export type MarketplaceSubscriptionStatus =
   | "Provisioning"
   | "Active"
   | "Suspended"
-  | "Unsubscribed"
-  | (string & {});
+  | "Unsubscribed";
 export const MarketplaceSubscriptionStatus = /*@__PURE__*/ S.String;
 
-export type LiftrResourceCategories = "Unknown" | "MonitorLogs" | (string & {});
+export type LiftrResourceCategories = "Unknown" | "MonitorLogs";
 export const LiftrResourceCategories = /*@__PURE__*/ S.String;
 
 /** Properties specific to the monitor resource. */
@@ -1858,16 +1837,13 @@ export const MonitorsSetDefaultKeyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorsSetDefaultKeyResponse>;
 
 /** Flag specifying if the resource monitoring is enabled or disabled. */
-export type MonitorUpdatePropertiesMonitoringStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type MonitorUpdatePropertiesMonitoringStatus = "Enabled" | "Disabled";
 export const MonitorUpdatePropertiesMonitoringStatus = /*@__PURE__*/ S.String;
 
 /** The set of properties that can be update in a PATCH request to a monitor resource. */
 export interface MonitorUpdateProperties {
   /** Flag specifying if the resource monitoring is enabled or disabled. */
-  monitoringStatus?: MonitorUpdatePropertiesMonitoringStatus;
+  monitoringStatus?: MonitorUpdatePropertiesMonitoringStatus | (string & {});
   /** The new cloud security posture management value of the monitor resource. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks. */
   cspm?: boolean;
   /** The new resource collection value of the monitor resource. This collects configuration information for all resources in a subscription. */
@@ -2122,17 +2098,12 @@ export const OrganizationsResubscribeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationsResubscribeResponse>;
 
 /** Various states of the SSO resource */
-export type SingleSignOnStates =
-  | "Initial"
-  | "Enable"
-  | "Disable"
-  | "Existing"
-  | (string & {});
+export type SingleSignOnStates = "Initial" | "Enable" | "Disable" | "Existing";
 export const SingleSignOnStates = /*@__PURE__*/ S.String;
 
 export interface DatadogSingleSignOnPropertiesInput {
   /** Various states of the SSO resource */
-  singleSignOnState?: SingleSignOnStates;
+  singleSignOnState?: SingleSignOnStates | (string & {});
   /** The Id of the Enterprise App used for Single sign-on. */
   enterpriseAppId?: string;
 }

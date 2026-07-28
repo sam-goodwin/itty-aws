@@ -101,7 +101,7 @@ export const ApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationHealthPolicy>;
 
 /** The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode. */
-export type FailureAction = "Rollback" | "Manual" | (string & {});
+export type FailureAction = "Rollback" | "Manual";
 export const FailureAction = /*@__PURE__*/ S.String;
 
 /** The policy used for monitoring the application upgrade */
@@ -133,10 +133,7 @@ export const RollingUpgradeMonitoringPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RollingUpgradeMonitoringPolicy>;
 
 /** The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto. */
-export type RollingUpgradeMode =
-  | "Monitored"
-  | "UnmonitoredAuto"
-  | (string & {});
+export type RollingUpgradeMode = "Monitored" | "UnmonitoredAuto";
 export const RollingUpgradeMode = /*@__PURE__*/ S.String;
 
 /** Describes the policy for a monitored application upgrade. */
@@ -208,8 +205,7 @@ export type ManagedIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
+  | "SystemAssigned, UserAssigned";
 export const ManagedIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity. */
@@ -233,7 +229,7 @@ export const ManagedIdentityInputUserAssignedIdentitiesMap =
 /** Describes the managed identities for an Azure resource. */
 export interface ManagedIdentityInput {
   /** The type of managed identity for the resource. */
-  type?: ManagedIdentityType;
+  type?: ManagedIdentityType | (string & {});
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: ManagedIdentityInputUserAssignedIdentitiesMap;
 }
@@ -293,8 +289,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -302,8 +297,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -510,8 +504,7 @@ export type HealthFilter =
   | "Ok"
   | "Warning"
   | "Error"
-  | "All"
-  | (string & {});
+  | "All";
 export const HealthFilter = /*@__PURE__*/ S.String;
 
 export interface ApplicationsFetchHealthRequest {
@@ -524,11 +517,11 @@ export interface ApplicationsFetchHealthRequest {
   /** The name of the application resource. */
   applicationName: string;
   /** Allows filtering of the health events returned in the response based on health state. */
-  eventsHealthStateFilter?: HealthFilter;
+  eventsHealthStateFilter?: HealthFilter | (string & {});
   /** Allows filtering of the deployed applications health state objects returned in the result of application health query based on their health state. */
-  deployedApplicationsHealthStateFilter?: HealthFilter;
+  deployedApplicationsHealthStateFilter?: HealthFilter | (string & {});
   /** Allows filtering of the services health state objects returned in the result of services health query based on their health state. */
-  servicesHealthStateFilter?: HealthFilter;
+  servicesHealthStateFilter?: HealthFilter | (string & {});
   /** Indicates whether the health statistics should be returned as part of the query result. False by default. The statistics show the number of children entities in health state Ok, Warning, and Error. */
   excludeHealthStatistics?: boolean;
   /** Request timeout for the health query in seconds. The default value is 60 seconds. */
@@ -993,7 +986,7 @@ export const ApplicationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsUpdateResponse>;
 
 /** Cluster level definition for the kind of upgrade. */
-export type RuntimeUpgradeKind = "Rolling" | (string & {});
+export type RuntimeUpgradeKind = "Rolling";
 export const RuntimeUpgradeKind = /*@__PURE__*/ S.String;
 
 /** Cluster level definition that represents the health policy used to evaluate the health of services belonging to a service type. */
@@ -1053,24 +1046,23 @@ export const RuntimeApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
 export type RuntimeRollingUpgradeMode =
   | "UnmonitoredAuto"
   | "UnmonitoredManual"
-  | "Monitored"
-  | (string & {});
+  | "Monitored";
 export const RuntimeRollingUpgradeMode = /*@__PURE__*/ S.String;
 
 /** Cluster level definition for the compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. */
-export type RuntimeFailureAction = "Rollback" | "Manual" | (string & {});
+export type RuntimeFailureAction = "Rollback" | "Manual";
 export const RuntimeFailureAction = /*@__PURE__*/ S.String;
 
 /** Describes the parameters for updating a rolling upgrade of application or cluster. */
 export interface RuntimeRollingUpgradeUpdateMonitoringPolicy {
   /** The mode used to monitor health during a rolling upgrade. */
-  rollingUpgradeMode: RuntimeRollingUpgradeMode;
+  rollingUpgradeMode: RuntimeRollingUpgradeMode | (string & {});
   /** If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data). */
   forceRestart?: boolean;
   /** The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues. When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues. The timeout is reset at the start of each upgrade domain. Valid values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer). */
   replicaSetCheckTimeoutInMilliseconds?: number;
   /** The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode */
-  failureAction?: RuntimeFailureAction;
+  failureAction?: RuntimeFailureAction | (string & {});
   /** The amount of time to wait after completing an upgrade domain before applying health policies. It is first interpreted as a string representing an ISO 8601 duration. If that fails, then it is interpreted as a number representing the total number of milliseconds. */
   healthCheckWaitDurationInMilliseconds?: string;
   /** The amount of time that the application or cluster must remain healthy before the upgrade proceeds to the next upgrade domain. It is first interpreted as a string representing an ISO 8601 duration. If that fails, then it is interpreted as a number representing the total number of milliseconds. */
@@ -1114,7 +1106,7 @@ export interface ApplicationsUpdateUpgradeRequest {
   /** The name of the application, including the 'fabric:' URI scheme. */
   name: string;
   /** The kind of the upgrade. */
-  upgradeKind: RuntimeUpgradeKind;
+  upgradeKind: RuntimeUpgradeKind | (string & {});
   /** Defines a health policy used to evaluate the health of an application or one of its children entities. */
   applicationHealthPolicy?: RuntimeApplicationHealthPolicy;
   /** Describes the parameters for updating a rolling upgrade of application or cluster and a monitoring policy. */
@@ -2055,11 +2047,11 @@ export const ManagedClustersCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<ManagedClustersCreateOrUpdateRequestTagsMap>;
 
 /** The reference to the transport protocol used by the load balancing rule. */
-export type Protocol = "tcp" | "udp" | (string & {});
+export type Protocol = "tcp" | "udp";
 export const Protocol = /*@__PURE__*/ S.String;
 
 /** The reference to the load balancer probe used by the load balancing rule. */
-export type ProbeProtocol = "tcp" | "http" | "https" | (string & {});
+export type ProbeProtocol = "tcp" | "http" | "https";
 export const ProbeProtocol = /*@__PURE__*/ S.String;
 
 /** Describes a load balancing rule. */
@@ -2109,8 +2101,7 @@ export type NsgProtocol =
   | "udp"
   | "icmp"
   | "ah"
-  | "esp"
-  | (string & {});
+  | "esp";
 export const NsgProtocol = /*@__PURE__*/ S.String;
 
 /** The CIDR or source IP ranges. */
@@ -2144,11 +2135,11 @@ export const NetworkSecurityRuleDestinationPortRangesList =
   ) as any as S.Schema<NetworkSecurityRuleDestinationPortRangesList>;
 
 /** The network traffic is allowed or denied. */
-export type Access = "allow" | "deny" | (string & {});
+export type Access = "allow" | "deny";
 export const Access = /*@__PURE__*/ S.String;
 
 /** Network security rule direction. */
-export type Direction = "inbound" | "outbound" | (string & {});
+export type Direction = "inbound" | "outbound";
 export const Direction = /*@__PURE__*/ S.String;
 
 /** Describes a network security rule. */
@@ -2315,26 +2306,25 @@ export const ManagedClusterPropertiesInputFabricSettingsList =
 /** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
 export type ManagedClusterPropertiesInputClusterUpgradeMode =
   | "Automatic"
-  | "Manual"
-  | (string & {});
+  | "Manual";
 export const ManagedClusterPropertiesInputClusterUpgradeMode =
   /*@__PURE__*/ S.String;
 
 /** Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. */
-export type ClusterUpgradeCadence = "Wave0" | "Wave1" | "Wave2" | (string & {});
+export type ClusterUpgradeCadence = "Wave0" | "Wave1" | "Wave2";
 export const ClusterUpgradeCadence = /*@__PURE__*/ S.String;
 
 /** Available cluster add-on features */
 export type ManagedClusterAddOnFeature =
   | "DnsService"
   | "BackupRestoreService"
-  | "ResourceMonitorService"
-  | (string & {});
+  | "ResourceMonitorService";
 export const ManagedClusterAddOnFeature = /*@__PURE__*/ S.String;
 
 /** List of add-on features to enable on the cluster. */
-export type ManagedClusterPropertiesInputAddonFeaturesList =
-  ReadonlyArray<ManagedClusterAddOnFeature>;
+export type ManagedClusterPropertiesInputAddonFeaturesList = ReadonlyArray<
+  ManagedClusterAddOnFeature | (string & {})
+>;
 export const ManagedClusterPropertiesInputAddonFeaturesList =
   /*@__PURE__*/ S.Array(
     ManagedClusterAddOnFeature,
@@ -2375,17 +2365,11 @@ export const ManagedClusterPropertiesInputIpTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ManagedClusterPropertiesInputIpTagsList>;
 
 /** Enable or Disable apply network policies on private end point in the subnet. */
-export type PrivateEndpointNetworkPolicies =
-  | "enabled"
-  | "disabled"
-  | (string & {});
+export type PrivateEndpointNetworkPolicies = "enabled" | "disabled";
 export const PrivateEndpointNetworkPolicies = /*@__PURE__*/ S.String;
 
 /** Enable or Disable apply network policies on private link service in the subnet. */
-export type PrivateLinkServiceNetworkPolicies =
-  | "enabled"
-  | "disabled"
-  | (string & {});
+export type PrivateLinkServiceNetworkPolicies = "enabled" | "disabled";
 export const PrivateLinkServiceNetworkPolicies = /*@__PURE__*/ S.String;
 
 /** Describes a Subnet. */
@@ -2455,7 +2439,7 @@ export const ManagedClusterPropertiesInputServiceEndpointsList =
   ) as any as S.Schema<ManagedClusterPropertiesInputServiceEndpointsList>;
 
 /** Indicates the update mode for Cross Az clusters. */
-export type ZonalUpdateMode = "Standard" | "Fast" | (string & {});
+export type ZonalUpdateMode = "Standard" | "Fast";
 export const ZonalUpdateMode = /*@__PURE__*/ S.String;
 
 /** Defines a health policy used to evaluate the health of the cluster or of a cluster node. */
@@ -2548,8 +2532,7 @@ export type AutoGeneratedDomainNameLabelScope =
   | "TenantReuse"
   | "SubscriptionReuse"
   | "ResourceGroupReuse"
-  | "NoReuse"
-  | (string & {});
+  | "NoReuse";
 export const AutoGeneratedDomainNameLabelScope = /*@__PURE__*/ S.String;
 
 /** Describes the managed cluster resource properties. */
@@ -2579,9 +2562,11 @@ export interface ManagedClusterPropertiesInput {
   /** The Service Fabric runtime version of the cluster. This property is required when **clusterUpgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**. */
   clusterCodeVersion?: string;
   /** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
-  clusterUpgradeMode?: ManagedClusterPropertiesInputClusterUpgradeMode;
+  clusterUpgradeMode?:
+    | ManagedClusterPropertiesInputClusterUpgradeMode
+    | (string & {});
   /** Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **clusterUpgradeMode** is set to 'Automatic'. */
-  clusterUpgradeCadence?: ClusterUpgradeCadence;
+  clusterUpgradeCadence?: ClusterUpgradeCadence | (string & {});
   /** List of add-on features to enable on the cluster. */
   addonFeatures?: ManagedClusterPropertiesInputAddonFeaturesList;
   /** Enables automatic OS upgrade for node types created using OS images with version 'latest'. The default value for this setting is false. */
@@ -2603,7 +2588,7 @@ export interface ManagedClusterPropertiesInput {
   /** Service endpoints for subnets in the cluster. */
   serviceEndpoints?: ManagedClusterPropertiesInputServiceEndpointsList;
   /** Indicates the update mode for Cross Az clusters. */
-  zonalUpdateMode?: ZonalUpdateMode;
+  zonalUpdateMode?: ZonalUpdateMode | (string & {});
   /** For new clusters, this parameter indicates that it uses Bring your own VNet, but the subnet is specified at node type level; and for such clusters, the subnetId property is required for node types. */
   useCustomVnet?: boolean;
   /** Specify the resource id of a public IPv4 prefix that the load balancer will allocate a public IPv4 address from. This setting cannot be changed once the cluster is created. */
@@ -2619,7 +2604,9 @@ export interface ManagedClusterPropertiesInput {
   /** If true, token-based authentication is not allowed on the HttpGatewayEndpoint. This is required to support TLS versions 1.3 and above. If token-based authentication is used, HttpGatewayTokenAuthConnectionPort must be defined. */
   enableHttpGatewayExclusiveAuthMode?: boolean;
   /** This property is the entry point to using a public CA cert for your cluster cert. It specifies the level of reuse allowed for the custom FQDN created, matching the subject of the public CA cert. */
-  autoGeneratedDomainNameLabelScope?: AutoGeneratedDomainNameLabelScope;
+  autoGeneratedDomainNameLabelScope?:
+    | AutoGeneratedDomainNameLabelScope
+    | (string & {});
   /** The number of outbound ports allocated for SNAT for each node in the backend pool of the default load balancer. The default value is 0 which provides dynamic port allocation based on pool size. */
   allocatedOutboundPorts?: number;
   /** The VM image the node types are configured with. This property controls the Service Fabric component packages to be used for the cluster. Allowed values are: 'Windows'. The default value is 'Windows'. */
@@ -2688,7 +2675,7 @@ export const ManagedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterPropertiesInput>;
 
 /** Sku Name. */
-export type SkuName = "Basic" | "Standard" | (string & {});
+export type SkuName = "Basic" | "Standard";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** Service Fabric managed cluster Sku definition */
@@ -2757,8 +2744,7 @@ export type ClusterState =
   | "BaselineUpgrade"
   | "Upgrading"
   | "UpgradeFailed"
-  | "Ready"
-  | (string & {});
+  | "Ready";
 export const ClusterState = /*@__PURE__*/ S.String;
 
 /** List of thumbprints of the cluster certificates. */
@@ -2810,15 +2796,11 @@ export type ManagedResourceProvisioningState =
   | "Canceled"
   | "Deleting"
   | "Deleted"
-  | "Other"
-  | (string & {});
+  | "Other";
 export const ManagedResourceProvisioningState = /*@__PURE__*/ S.String;
 
 /** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
-export type ManagedClusterPropertiesClusterUpgradeMode =
-  | "Automatic"
-  | "Manual"
-  | (string & {});
+export type ManagedClusterPropertiesClusterUpgradeMode = "Automatic" | "Manual";
 export const ManagedClusterPropertiesClusterUpgradeMode =
   /*@__PURE__*/ S.String;
 
@@ -3357,7 +3339,7 @@ export const ManagedClusterVersionGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterVersionGetRequest>;
 
 /** Cluster operating system, the default will be Windows */
-export type OsType = "Windows" | (string & {});
+export type OsType = "Windows";
 export const OsType = /*@__PURE__*/ S.String;
 
 /** The detail of the Service Fabric runtime version result */
@@ -3401,9 +3383,7 @@ export const ManagedClusterCodeVersionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedClusterCodeVersionResult",
 }) as any as S.Schema<ManagedClusterCodeVersionResult>;
 
-export type ManagedClusterVersionGetByEnvironmentRequestEnvironment =
-  | "Windows"
-  | (string & {});
+export type ManagedClusterVersionGetByEnvironmentRequestEnvironment = "Windows";
 export const ManagedClusterVersionGetByEnvironmentRequestEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -3413,7 +3393,9 @@ export interface ManagedClusterVersionGetByEnvironmentRequest {
   /** The location for the cluster code versions. This is different from cluster location. */
   location: string;
   /** The operating system of the cluster. */
-  environment: ManagedClusterVersionGetByEnvironmentRequestEnvironment;
+  environment:
+    | ManagedClusterVersionGetByEnvironmentRequestEnvironment
+    | (string & {});
   /** The cluster code version. */
   clusterVersion: string;
 }
@@ -3475,8 +3457,7 @@ export const ManagedClusterVersionListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterVersionListResponse>;
 
 export type ManagedClusterVersionListByEnvironmentRequestEnvironment =
-  | "Windows"
-  | (string & {});
+  "Windows";
 export const ManagedClusterVersionListByEnvironmentRequestEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -3486,7 +3467,9 @@ export interface ManagedClusterVersionListByEnvironmentRequest {
   /** The location for the cluster code versions. This is different from cluster location. */
   location: string;
   /** The operating system of the cluster. */
-  environment: ManagedClusterVersionListByEnvironmentRequestEnvironment;
+  environment:
+    | ManagedClusterVersionListByEnvironmentRequestEnvironment
+    | (string & {});
 }
 export const ManagedClusterVersionListByEnvironmentRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3692,8 +3675,7 @@ export type NodeTypePropertiesInputDataDiskType =
   | "Premium_LRS"
   | "PremiumV2_LRS"
   | "StandardSSD_ZRS"
-  | "Premium_ZRS"
-  | (string & {});
+  | "Premium_ZRS";
 export const NodeTypePropertiesInputDataDiskType = /*@__PURE__*/ S.String;
 
 /** The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run. */
@@ -3797,12 +3779,13 @@ export const VMSSExtensionPropertiesInputProvisionAfterExtensionsList =
   ) as any as S.Schema<VMSSExtensionPropertiesInputProvisionAfterExtensionsList>;
 
 /** Vm extension setup order. */
-export type VmssExtensionSetupOrder = "BeforeSFRuntime" | (string & {});
+export type VmssExtensionSetupOrder = "BeforeSFRuntime";
 export const VmssExtensionSetupOrder = /*@__PURE__*/ S.String;
 
 /** Indicates the setup order for the extension. */
-export type VMSSExtensionPropertiesInputSetupOrderList =
-  ReadonlyArray<VmssExtensionSetupOrder>;
+export type VMSSExtensionPropertiesInputSetupOrderList = ReadonlyArray<
+  VmssExtensionSetupOrder | (string & {})
+>;
 export const VMSSExtensionPropertiesInputSetupOrderList = /*@__PURE__*/ S.Array(
   VmssExtensionSetupOrder,
 ) as any as S.Schema<VMSSExtensionPropertiesInputSetupOrderList>;
@@ -3895,10 +3878,7 @@ export const VmManagedIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmManagedIdentity>;
 
 /** The IP address type of this frontend configuration. If omitted the default value is IPv4. */
-export type FrontendConfigurationIpAddressType =
-  | "IPv4"
-  | "IPv6"
-  | (string & {});
+export type FrontendConfigurationIpAddressType = "IPv4" | "IPv6";
 export const FrontendConfigurationIpAddressType = /*@__PURE__*/ S.String;
 
 /** Describes the frontend configurations for the node type. */
@@ -3946,8 +3926,7 @@ export type VmssDataDiskDiskType =
   | "Premium_LRS"
   | "PremiumV2_LRS"
   | "StandardSSD_ZRS"
-  | "Premium_ZRS"
-  | (string & {});
+  | "Premium_ZRS";
 export const VmssDataDiskDiskType = /*@__PURE__*/ S.String;
 
 /** Managed data disk description. */
@@ -3985,33 +3964,29 @@ export const NodeTypePropertiesInputZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NodeTypePropertiesInputZonesList>;
 
 /** Specifies the eviction policy for virtual machines in a SPOT node type. */
-export type EvictionPolicyType = "Delete" | "Deallocate" | (string & {});
+export type EvictionPolicyType = "Delete" | "Deallocate";
 export const EvictionPolicyType = /*@__PURE__*/ S.String;
 
 /** action to be performed on the vms before bootstrapping the service fabric runtime. */
-export type VmSetupAction = "EnableContainers" | "EnableHyperV" | (string & {});
+export type VmSetupAction = "EnableContainers" | "EnableHyperV";
 export const VmSetupAction = /*@__PURE__*/ S.String;
 
 /** Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime. */
-export type NodeTypePropertiesInputVmSetupActionsList =
-  ReadonlyArray<VmSetupAction>;
+export type NodeTypePropertiesInputVmSetupActionsList = ReadonlyArray<
+  VmSetupAction | (string & {})
+>;
 export const NodeTypePropertiesInputVmSetupActionsList = /*@__PURE__*/ S.Array(
   VmSetupAction,
 ) as any as S.Schema<NodeTypePropertiesInputVmSetupActionsList>;
 
 /** Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported */
-export type SecurityType =
-  | "TrustedLaunch"
-  | "Standard"
-  | "ConfidentialVM"
-  | (string & {});
+export type SecurityType = "TrustedLaunch" | "Standard" | "ConfidentialVM";
 export const SecurityType = /*@__PURE__*/ S.String;
 
 /** Specifies the securityEncryptionType type of the nodeType. Only DiskWithVMGuestState and VMGuestStateOnly are currently supported */
 export type SecurityEncryptionType =
   | "DiskWithVMGuestState"
-  | "VMGuestStateOnly"
-  | (string & {});
+  | "VMGuestStateOnly";
 export const SecurityEncryptionType = /*@__PURE__*/ S.String;
 
 /** Provides information about NAT configuration on the default public Load Balancer for the node type. */
@@ -4086,10 +4061,7 @@ export const IpConfigurationLoadBalancerInboundNatPoolsList =
   ) as any as S.Schema<IpConfigurationLoadBalancerInboundNatPoolsList>;
 
 /** Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4. */
-export type IpConfigurationPrivateIPAddressVersion =
-  | "IPv4"
-  | "IPv6"
-  | (string & {});
+export type IpConfigurationPrivateIPAddressVersion = "IPv4" | "IPv6";
 export const IpConfigurationPrivateIPAddressVersion = /*@__PURE__*/ S.String;
 
 /** Specifies the list of IP tags associated with the public IP address. */
@@ -4101,8 +4073,7 @@ export const PublicIPAddressConfigurationIpTagsList = /*@__PURE__*/ S.Array(
 /** Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4. */
 export type PublicIPAddressConfigurationPublicIPAddressVersion =
   | "IPv4"
-  | "IPv6"
-  | (string & {});
+  | "IPv6";
 export const PublicIPAddressConfigurationPublicIPAddressVersion =
   /*@__PURE__*/ S.String;
 
@@ -4246,7 +4217,7 @@ export interface NodeTypePropertiesInput {
   /** Disk size for the managed disk attached to the vms on the node type in GBs. */
   dataDiskSizeGB?: number;
   /** Managed data disk type. Specifies the storage account type for the managed disk */
-  dataDiskType?: NodeTypePropertiesInputDataDiskType;
+  dataDiskType?: NodeTypePropertiesInputDataDiskType | (string & {});
   /** Managed data disk letter. It can not use the reserved letter C or D and it can not change after created. */
   dataDiskLetter?: string;
   /** The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run. */
@@ -4304,7 +4275,7 @@ export interface NodeTypePropertiesInput {
   /** Indicates the time duration after which the platform will not try to restore the VMSS SPOT instances specified as ISO 8601. */
   spotRestoreTimeout?: string;
   /** Specifies the eviction policy for virtual machines in a SPOT node type. Default is Delete. */
-  evictionPolicy?: EvictionPolicyType;
+  evictionPolicy?: EvictionPolicyType | (string & {});
   /** Indicates the resource id of the vm image. This parameter is used for custom vm image. */
   vmImageResourceId?: string;
   /** Indicates the resource id of the subnet for the node type. */
@@ -4312,9 +4283,9 @@ export interface NodeTypePropertiesInput {
   /** Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime. */
   vmSetupActions?: NodeTypePropertiesInputVmSetupActionsList;
   /** Specifies the security type of the nodeType. Supported values include Standard, TrustedLaunch and ConfidentialVM. */
-  securityType?: SecurityType;
+  securityType?: SecurityType | (string & {});
   /** Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob and VMGuestStateOnly for encryption of just the VMGuestState blob. Note: It can be set for only Confidential VMs. */
-  securityEncryptionType?: SecurityEncryptionType;
+  securityEncryptionType?: SecurityEncryptionType | (string & {});
   /** Specifies whether secure boot should be enabled on the nodeType. Can only be used with TrustedLaunch and ConfidentialVM SecurityType. */
   secureBootEnabled?: boolean;
   /** Specifies whether each node is allocated its own public IPv4 address. This is only supported on secondary node types with custom Load Balancers. */
@@ -4486,8 +4457,7 @@ export type NodeTypePropertiesDataDiskType =
   | "Premium_LRS"
   | "PremiumV2_LRS"
   | "StandardSSD_ZRS"
-  | "Premium_ZRS"
-  | (string & {});
+  | "Premium_ZRS";
 export const NodeTypePropertiesDataDiskType = /*@__PURE__*/ S.String;
 
 /** The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run. */
@@ -4873,7 +4843,7 @@ export const NodeTypesDeallocateRequestNodesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NodeTypesDeallocateRequestNodesList>;
 
 /** Specifies the way the operation will be performed. */
-export type UpdateType = "Default" | "ByUpgradeDomain" | (string & {});
+export type UpdateType = "Default" | "ByUpgradeDomain";
 export const UpdateType = /*@__PURE__*/ S.String;
 
 export interface NodeTypesDeallocateRequest {
@@ -4890,7 +4860,7 @@ export interface NodeTypesDeallocateRequest {
   /** Force the action to go through. */
   force?: boolean;
   /** Specifies the way the operation will be performed. */
-  updateType?: UpdateType;
+  updateType?: UpdateType | (string & {});
 }
 export const NodeTypesDeallocateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4975,7 +4945,7 @@ export interface NodeTypesDeleteNodeRequest {
   /** Force the action to go through. */
   force?: boolean;
   /** Specifies the way the operation will be performed. */
-  updateType?: UpdateType;
+  updateType?: UpdateType | (string & {});
 }
 export const NodeTypesDeleteNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5115,11 +5085,7 @@ export const NodeTypeSupportedSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeTypeSupportedSku>;
 
 /** Node type capacity scale type. */
-export type NodeTypeSkuCapacityScaleType =
-  | "None"
-  | "Manual"
-  | "Automatic"
-  | (string & {});
+export type NodeTypeSkuCapacityScaleType = "None" | "Manual" | "Automatic";
 export const NodeTypeSkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** Provides information about how node type can be scaled. */
@@ -5290,7 +5256,7 @@ export interface NodeTypesRedeployRequest {
   /** Force the action to go through. */
   force?: boolean;
   /** Specifies the way the operation will be performed. */
-  updateType?: UpdateType;
+  updateType?: UpdateType | (string & {});
 }
 export const NodeTypesRedeployRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5340,7 +5306,7 @@ export interface NodeTypesReimageRequest {
   /** Force the action to go through. */
   force?: boolean;
   /** Specifies the way the operation will be performed. */
-  updateType?: UpdateType;
+  updateType?: UpdateType | (string & {});
 }
 export const NodeTypesReimageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5390,7 +5356,7 @@ export interface NodeTypesRestartRequest {
   /** Force the action to go through. */
   force?: boolean;
   /** Specifies the way the operation will be performed. */
-  updateType?: UpdateType;
+  updateType?: UpdateType | (string & {});
 }
 export const NodeTypesRestartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5440,7 +5406,7 @@ export interface NodeTypesStartRequest {
   /** Force the action to go through. */
   force?: boolean;
   /** Specifies the way the operation will be performed. */
-  updateType?: UpdateType;
+  updateType?: UpdateType | (string & {});
 }
 export const NodeTypesStartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5737,10 +5703,7 @@ export const LongRunningOperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LongRunningOperationResult>;
 
 /** The service correlation scheme. */
-export type ServiceCorrelationScheme =
-  | "AlignedAffinity"
-  | "NonAlignedAffinity"
-  | (string & {});
+export type ServiceCorrelationScheme = "AlignedAffinity" | "NonAlignedAffinity";
 export const ServiceCorrelationScheme = /*@__PURE__*/ S.String;
 
 /** Creates a particular correlation between services. */
@@ -5768,12 +5731,7 @@ export const ServiceResourcePropertiesInputCorrelationSchemeList =
   ) as any as S.Schema<ServiceResourcePropertiesInputCorrelationSchemeList>;
 
 /** Determines the metric weight relative to the other metrics that are configured for this service. During runtime, if two metrics end up in conflict, the Cluster Resource Manager prefers the metric with the higher weight. */
-export type ServiceLoadMetricWeight =
-  | "Zero"
-  | "Low"
-  | "Medium"
-  | "High"
-  | (string & {});
+export type ServiceLoadMetricWeight = "Zero" | "Low" | "Medium" | "High";
 export const ServiceLoadMetricWeight = /*@__PURE__*/ S.String;
 
 /** Specifies a metric to load balance a service during runtime. */
@@ -5815,8 +5773,7 @@ export type ServicePlacementPolicyType =
   | "RequiredDomain"
   | "PreferredPrimaryDomain"
   | "RequiredDomainDistribution"
-  | "NonPartiallyPlaceService"
-  | (string & {});
+  | "NonPartiallyPlaceService";
 export const ServicePlacementPolicyType = /*@__PURE__*/ S.String;
 
 /** Describes the policy to be used for placement of a Service Fabric service. */
@@ -5840,14 +5797,13 @@ export const ServiceResourcePropertiesInputServicePlacementPoliciesList =
   ) as any as S.Schema<ServiceResourcePropertiesInputServicePlacementPoliciesList>;
 
 /** Specifies the move cost for the service. */
-export type MoveCost = "Zero" | "Low" | "Medium" | "High" | (string & {});
+export type MoveCost = "Zero" | "Low" | "Medium" | "High";
 export const MoveCost = /*@__PURE__*/ S.String;
 
 /** Enumerates the ways that a service can be partitioned. */
 export type ServiceScalingMechanismKind =
   | "ScalePartitionInstanceCount"
-  | "AddRemoveIncrementalNamedPartition"
-  | (string & {});
+  | "AddRemoveIncrementalNamedPartition";
 export const ServiceScalingMechanismKind = /*@__PURE__*/ S.String;
 
 /** Describes the mechanism for performing a scaling operation. */
@@ -5865,8 +5821,7 @@ export const ScalingMechanism = /*@__PURE__*/ S.suspend(() =>
 /** Enumerates the ways that a service can be partitioned. */
 export type ServiceScalingTriggerKind =
   | "AveragePartitionLoadTrigger"
-  | "AverageServiceLoadTrigger"
-  | (string & {});
+  | "AverageServiceLoadTrigger";
 export const ServiceScalingTriggerKind = /*@__PURE__*/ S.String;
 
 /** Describes the trigger for performing a scaling operation. */
@@ -5902,15 +5857,11 @@ export const ServiceResourcePropertiesInputScalingPoliciesList =
   ) as any as S.Schema<ServiceResourcePropertiesInputScalingPoliciesList>;
 
 /** The kind of service (Stateless or Stateful). */
-export type ServiceKind = "Stateless" | "Stateful" | (string & {});
+export type ServiceKind = "Stateless" | "Stateful";
 export const ServiceKind = /*@__PURE__*/ S.String;
 
 /** Enumerates the ways that a service can be partitioned. */
-export type PartitionScheme =
-  | "Singleton"
-  | "UniformInt64Range"
-  | "Named"
-  | (string & {});
+export type PartitionScheme = "Singleton" | "UniformInt64Range" | "Named";
 export const PartitionScheme = /*@__PURE__*/ S.String;
 
 /** Describes how the service is partitioned. */
@@ -5924,10 +5875,7 @@ export const Partition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Partition" }) as any as S.Schema<Partition>;
 
 /** The activation Mode of the service package */
-export type ServicePackageActivationMode =
-  | "SharedProcess"
-  | "ExclusiveProcess"
-  | (string & {});
+export type ServicePackageActivationMode = "SharedProcess" | "ExclusiveProcess";
 export const ServicePackageActivationMode = /*@__PURE__*/ S.String;
 
 /** The service resource properties. */
@@ -5941,17 +5889,17 @@ export interface ServiceResourcePropertiesInput {
   /** A list that describes the correlation of the service with other services. */
   servicePlacementPolicies?: ServiceResourcePropertiesInputServicePlacementPoliciesList;
   /** Specifies the move cost for the service. */
-  defaultMoveCost?: MoveCost;
+  defaultMoveCost?: MoveCost | (string & {});
   /** Scaling policies for this service. */
   scalingPolicies?: ServiceResourcePropertiesInputScalingPoliciesList;
   /** The kind of service (Stateless or Stateful). */
-  serviceKind: ServiceKind;
+  serviceKind: ServiceKind | (string & {});
   /** The name of the service type */
   serviceTypeName: string;
   /** Describes how the service is partitioned. */
   partitionDescription: Partition;
   /** The activation Mode of the service package */
-  servicePackageActivationMode?: ServicePackageActivationMode;
+  servicePackageActivationMode?: ServicePackageActivationMode | (string & {});
   /** Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP). When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name. When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable. */
   serviceDnsName?: string;
 }
@@ -6355,7 +6303,7 @@ export const ServicesRestartReplicaRequestReplicaIdsList =
   ) as any as S.Schema<ServicesRestartReplicaRequestReplicaIdsList>;
 
 /** The kind of restart to perform. */
-export type RestartKind = "Simultaneous" | (string & {});
+export type RestartKind = "Simultaneous";
 export const RestartKind = /*@__PURE__*/ S.String;
 
 export interface ServicesRestartReplicaRequest {
@@ -6374,7 +6322,7 @@ export interface ServicesRestartReplicaRequest {
   /** The IDs of the replicas to be restarted. */
   replicaIds: ServicesRestartReplicaRequestReplicaIdsList;
   /** The kind of restart to perform. */
-  restartKind: RestartKind;
+  restartKind: RestartKind | (string & {});
   /** If true, the restart operation will be forced. Use this option with care, as it may cause data loss. */
   forceRestart?: boolean;
   /** The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. */

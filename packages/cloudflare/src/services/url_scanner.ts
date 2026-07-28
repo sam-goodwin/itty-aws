@@ -35,22 +35,20 @@ export const ScansBulkCreateRequestBodyItemCustomHeadersMap =
 export type ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem =
   | "desktop"
   | "mobile"
-  | "tablet"
-  | (string & {});
+  | "tablet";
 export const ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem =
   /*@__PURE__*/ S.String;
 
 export type ScansBulkCreateRequestBodyItemScreenshotsResolutionsList =
-  ReadonlyArray<ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem>;
+  ReadonlyArray<
+    ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem | (string & {})
+  >;
 export const ScansBulkCreateRequestBodyItemScreenshotsResolutionsList =
   /*@__PURE__*/ S.Array(
     ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem,
   ) as any as S.Schema<ScansBulkCreateRequestBodyItemScreenshotsResolutionsList>;
 
-export type ScansBulkCreateRequestBodyItemVisibility =
-  | "Public"
-  | "Unlisted"
-  | (string & {});
+export type ScansBulkCreateRequestBodyItemVisibility = "Public" | "Unlisted";
 export const ScansBulkCreateRequestBodyItemVisibility = /*@__PURE__*/ S.String;
 
 export interface ScansBulkCreateRequestBodyItem {
@@ -64,7 +62,7 @@ export interface ScansBulkCreateRequestBodyItem {
   /** Take multiple screenshots targeting different device types. */
   screenshotsResolutions?: ScansBulkCreateRequestBodyItemScreenshotsResolutionsList;
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
-  visibility?: ScansBulkCreateRequestBodyItemVisibility;
+  visibility?: ScansBulkCreateRequestBodyItemVisibility | (string & {});
 }
 export const ScansBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -313,8 +311,7 @@ export type ScansCreateRequestCountry =
   | "VN"
   | "YE"
   | "ZM"
-  | "ZW"
-  | (string & {});
+  | "ZW";
 export const ScansCreateRequestCountry = /*@__PURE__*/ S.String;
 
 export type ScansCreateRequestCustomHeadersMap = {
@@ -328,22 +325,19 @@ export const ScansCreateRequestCustomHeadersMap = /*@__PURE__*/ S.Record(
 export type ScansCreateRequestScreenshotsResolutionsItem =
   | "desktop"
   | "mobile"
-  | "tablet"
-  | (string & {});
+  | "tablet";
 export const ScansCreateRequestScreenshotsResolutionsItem =
   /*@__PURE__*/ S.String;
 
-export type ScansCreateRequestScreenshotsResolutionsList =
-  ReadonlyArray<ScansCreateRequestScreenshotsResolutionsItem>;
+export type ScansCreateRequestScreenshotsResolutionsList = ReadonlyArray<
+  ScansCreateRequestScreenshotsResolutionsItem | (string & {})
+>;
 export const ScansCreateRequestScreenshotsResolutionsList =
   /*@__PURE__*/ S.Array(
     ScansCreateRequestScreenshotsResolutionsItem,
   ) as any as S.Schema<ScansCreateRequestScreenshotsResolutionsList>;
 
-export type ScansCreateRequestVisibility =
-  | "Public"
-  | "Unlisted"
-  | (string & {});
+export type ScansCreateRequestVisibility = "Public" | "Unlisted";
 export const ScansCreateRequestVisibility = /*@__PURE__*/ S.String;
 
 export interface CreateScanRequest {
@@ -353,7 +347,7 @@ export interface CreateScanRequest {
   /** Enable agent readiness checks. */
   agentReadiness?: boolean;
   /** Country to geo egress from */
-  country?: ScansCreateRequestCountry;
+  country?: ScansCreateRequestCountry | (string & {});
   customagent?: string;
   /** Set custom headers. */
   customHeaders?: ScansCreateRequestCustomHeadersMap;
@@ -361,7 +355,7 @@ export interface CreateScanRequest {
   /** Take multiple screenshots targeting different device types. */
   screenshotsResolutions?: ScansCreateRequestScreenshotsResolutionsList;
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
-  visibility?: ScansCreateRequestVisibility;
+  visibility?: ScansCreateRequestVisibility | (string & {});
 }
 export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5066,11 +5060,7 @@ export const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScansResponse",
 }) as any as S.Schema<ListScansResponse>;
 
-export type ScansScreenshotRequestResolution =
-  | "desktop"
-  | "mobile"
-  | "tablet"
-  | (string & {});
+export type ScansScreenshotRequestResolution = "desktop" | "mobile" | "tablet";
 export const ScansScreenshotRequestResolution = /*@__PURE__*/ S.String;
 
 export interface ScreenshotScanRequest {
@@ -5079,7 +5069,7 @@ export interface ScreenshotScanRequest {
   /** Scan UUID. */
   scanId: string;
   /** Target device type. */
-  resolution?: ScansScreenshotRequestResolution;
+  resolution?: ScansScreenshotRequestResolution | (string & {});
 }
 export const ScreenshotScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

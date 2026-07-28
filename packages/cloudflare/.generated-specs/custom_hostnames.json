@@ -3450,6 +3450,29 @@
         }
       }
     },
+    "com.cloudflare.custom_hostnames#ListRequestHostname": {
+      "type": "structure",
+      "members": {
+        "contain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.startsWith' parameters."
+          }
+        },
+        "exact": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified domain name to match against. This parameter cannot be used with the 'id', 'hostname', 'hostname.contain', or 'hostname.startsWith' parameters."
+          }
+        },
+        "startsWith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.contain' parameters."
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_hostnames#ListRequestHostnameStatus": {
       "type": "enum",
       "members": {
@@ -3738,25 +3761,10 @@
             "smithy.api#httpQuery": "direction"
           }
         },
-        "hostname_contain": {
-          "target": "smithy.api#String",
+        "hostname": {
+          "target": "com.cloudflare.custom_hostnames#ListRequestHostname",
           "traits": {
-            "smithy.api#documentation": "Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.startsWith' parameters.",
-            "smithy.api#httpQuery": "hostname.contain"
-          }
-        },
-        "hostname_exact": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Fully qualified domain name to match against. This parameter cannot be used with the 'id', 'hostname', 'hostname.contain', or 'hostname.startsWith' parameters.",
-            "smithy.api#httpQuery": "hostname.exact"
-          }
-        },
-        "hostname_startsWith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.contain' parameters.",
-            "smithy.api#httpQuery": "hostname.startsWith"
+            "com.cloudflare.protocols#deepQuery": "hostname"
           }
         },
         "hostname_status": {

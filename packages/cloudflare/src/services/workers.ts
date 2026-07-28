@@ -440,8 +440,7 @@ export class WorkerVersionNotFound extends T.applyErrorMatchers(
 ) {}
 
 export type ScriptsSecretsBulkUpdateRequestSecretsSecretTextType =
-  | "secret_text"
-  | (string & {});
+  "secret_text";
 export const ScriptsSecretsBulkUpdateRequestSecretsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -451,7 +450,7 @@ export interface ScriptsSecretsBulkUpdateRequestSecretsSecretText {
   /** The secret value to use. */
   text: string;
   /** The kind of resource that the binding provides. */
-  type: ScriptsSecretsBulkUpdateRequestSecretsSecretTextType;
+  type: ScriptsSecretsBulkUpdateRequestSecretsSecretTextType | (string & {});
 }
 export const ScriptsSecretsBulkUpdateRequestSecretsSecretText =
   /*@__PURE__*/ S.suspend(() =>
@@ -468,14 +467,11 @@ export type ScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const ScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
-export type ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType =
-  | "secret_key"
-  | (string & {});
+export type ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType = "secret_key";
 export const ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -487,13 +483,14 @@ export type ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey"
-  | (string & {});
+  | "unwrapKey";
 export const ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
 export type ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList =
-  ReadonlyArray<ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem>;
+  ReadonlyArray<
+    ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem | (string & {})
+  >;
 export const ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem,
@@ -503,11 +500,11 @@ export interface ScriptsSecretsBulkUpdateRequestSecretsSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
   /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format: ScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat;
+  format: ScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat | (string & {});
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType;
+  type: ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType | (string & {});
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
@@ -583,9 +580,7 @@ export const BulkUpdateScriptSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateScriptSecretsRequest",
 }) as any as S.Schema<BulkUpdateScriptSecretsRequest>;
 
-export type ScriptsSecretsBulkUpdateResultSecretTextType =
-  | "secret_text"
-  | (string & {});
+export type ScriptsSecretsBulkUpdateResultSecretTextType = "secret_text";
 export const ScriptsSecretsBulkUpdateResultSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -612,14 +607,11 @@ export type ScriptsSecretsBulkUpdateResultSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const ScriptsSecretsBulkUpdateResultSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
-export type ScriptsSecretsBulkUpdateResultSecretKeyType =
-  | "secret_key"
-  | (string & {});
+export type ScriptsSecretsBulkUpdateResultSecretKeyType = "secret_key";
 export const ScriptsSecretsBulkUpdateResultSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -631,8 +623,7 @@ export type ScriptsSecretsBulkUpdateResultSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey"
-  | (string & {});
+  | "unwrapKey";
 export const ScriptsSecretsBulkUpdateResultSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -783,8 +774,7 @@ export const BetaWorkersCreateRequestObservabilityTracesDestinationsList =
 
 export type BetaWorkersCreateRequestObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const BetaWorkersCreateRequestObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -798,7 +788,9 @@ export interface BetaWorkersCreateRequestObservabilityTraces {
   /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
-  propagationPolicy?: BetaWorkersCreateRequestObservabilityTracesPropagationPolicy;
+  propagationPolicy?:
+    | BetaWorkersCreateRequestObservabilityTracesPropagationPolicy
+    | (string & {});
 }
 export const BetaWorkersCreateRequestObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -963,8 +955,7 @@ export const BetaWorkersCreateResponseObservabilityTracesDestinationsList =
 
 export type BetaWorkersCreateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const BetaWorkersCreateResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1299,16 +1290,14 @@ export type BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling =
   | "auto-trailing-slash"
   | "force-trailing-slash"
   | "drop-trailing-slash"
-  | "none"
-  | (string & {});
+  | "none";
 export const BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling =
   | "none"
   | "404-page"
-  | "single-page-application"
-  | (string & {});
+  | "single-page-application";
 export const BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling =
   /*@__PURE__*/ S.String;
 
@@ -1327,9 +1316,13 @@ export const BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirst =
 
 export interface BetaWorkersVersionsCreateRequestAssetsConfig {
   /** Determines the redirects and rewrites of requests for HTML content. */
-  htmlHandling?: BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling;
+  htmlHandling?:
+    | BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling
+    | (string & {});
   /** Determines the response when a request does not match a static asset, and there is no Worker script. */
-  notFoundHandling?: BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling;
+  notFoundHandling?:
+    | BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling
+    | (string & {});
   /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
   runWorkerFirst?: BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirst;
 }
@@ -1372,9 +1365,7 @@ export const BetaWorkersVersionsCreateRequestAssets = /*@__PURE__*/ S.suspend(
   identifier: "BetaWorkersVersionsCreateRequestAssets",
 }) as any as S.Schema<BetaWorkersVersionsCreateRequestAssets>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItemAIType =
-  | "ai"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestBindingsItemAIType = "ai";
 export const BetaWorkersVersionsCreateRequestBindingsItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -1382,7 +1373,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAI {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemAIType;
+  type: BetaWorkersVersionsCreateRequestBindingsItemAIType | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemAI =
   /*@__PURE__*/ S.suspend(() =>
@@ -1395,8 +1386,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemAI =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemAI>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemAISearchType =
-  | "ai_search"
-  | (string & {});
+  "ai_search";
 export const BetaWorkersVersionsCreateRequestBindingsItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -1406,7 +1396,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAISearch {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemAISearchType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemAISearchType
+    | (string & {});
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
   namespace?: string;
 }
@@ -1423,8 +1415,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemAISearch =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemAISearch>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType =
-  | "ai_search_namespace"
-  | (string & {});
+  "ai_search_namespace";
 export const BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -1434,7 +1425,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace {
   /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace =
   /*@__PURE__*/ S.suspend(() =>
@@ -1448,8 +1441,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngineType =
-  | "analytics_engine"
-  | (string & {});
+  "analytics_engine";
 export const BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -1459,7 +1451,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngineType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngineType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine =
   /*@__PURE__*/ S.suspend(() =>
@@ -1472,9 +1466,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItemAssetsType =
-  | "assets"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestBindingsItemAssetsType = "assets";
 export const BetaWorkersVersionsCreateRequestBindingsItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -1482,7 +1474,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAssets {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemAssetsType;
+  type: BetaWorkersVersionsCreateRequestBindingsItemAssetsType | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemAssets =
   /*@__PURE__*/ S.suspend(() =>
@@ -1494,9 +1486,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemAssets =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemAssets",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemAssets>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItemBrowserType =
-  | "browser"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestBindingsItemBrowserType = "browser";
 export const BetaWorkersVersionsCreateRequestBindingsItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -1504,7 +1494,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemBrowser {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemBrowserType;
+  type: BetaWorkersVersionsCreateRequestBindingsItemBrowserType | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemBrowser =
   /*@__PURE__*/ S.suspend(() =>
@@ -1516,9 +1506,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemBrowser =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemBrowser",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemBrowser>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItemD1Type =
-  | "d1"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestBindingsItemD1Type = "d1";
 export const BetaWorkersVersionsCreateRequestBindingsItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -1528,7 +1516,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemD1 {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemD1Type;
+  type: BetaWorkersVersionsCreateRequestBindingsItemD1Type | (string & {});
   /** Identifier of the D1 database to bind to. */
   id?: string;
 }
@@ -1545,8 +1533,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemD1 =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemD1>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemDataBlobType =
-  | "data_blob"
-  | (string & {});
+  "data_blob";
 export const BetaWorkersVersionsCreateRequestBindingsItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -1556,7 +1543,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemDataBlob {
   /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
   part: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemDataBlobType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemDataBlobType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemDataBlob =
   /*@__PURE__*/ S.suspend(() =>
@@ -1570,8 +1559,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemDataBlob =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemDataBlob>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceType =
-  | "dispatch_namespace"
-  | (string & {});
+  "dispatch_namespace";
 export const BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -1643,7 +1631,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespace {
   /** The name of the dispatch namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceType
+    | (string & {});
   /** Outbound worker. */
   outbound?: BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutbound;
 }
@@ -1662,7 +1652,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespace =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespace>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespaceType =
-  "durable_object_namespace" | (string & {});
+  "durable_object_namespace";
 export const BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -1670,7 +1660,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamesp
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespaceType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespaceType
+    | (string & {});
   /** The exported class name of the Durable Object. */
   className?: string;
   /** The dispatch namespace the Durable Object script belongs to. */
@@ -1701,8 +1693,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespace 
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespace>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemHyperdriveType =
-  | "hyperdrive"
-  | (string & {});
+  "hyperdrive";
 export const BetaWorkersVersionsCreateRequestBindingsItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -1712,7 +1703,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemHyperdrive {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemHyperdriveType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemHyperdriveType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemHyperdrive =
   /*@__PURE__*/ S.suspend(() =>
@@ -1725,9 +1718,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemHyperdrive =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemHyperdrive",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemHyperdrive>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItemInheritType =
-  | "inherit"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestBindingsItemInheritType = "inherit";
 export const BetaWorkersVersionsCreateRequestBindingsItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -1735,7 +1726,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemInherit {
   /** The name of the inherited binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemInheritType;
+  type: BetaWorkersVersionsCreateRequestBindingsItemInheritType | (string & {});
   /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
   oldName?: string;
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
@@ -1753,9 +1744,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemInherit =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemInherit",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemInherit>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItemImagesType =
-  | "images"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestBindingsItemImagesType = "images";
 export const BetaWorkersVersionsCreateRequestBindingsItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -1763,7 +1752,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemImages {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemImagesType;
+  type: BetaWorkersVersionsCreateRequestBindingsItemImagesType | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemImages =
   /*@__PURE__*/ S.suspend(() =>
@@ -1775,9 +1764,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemImages =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemImages",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemImages>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItemJsonType =
-  | "json"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestBindingsItemJsonType = "json";
 export const BetaWorkersVersionsCreateRequestBindingsItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -1787,7 +1774,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemJson {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemJsonType;
+  type: BetaWorkersVersionsCreateRequestBindingsItemJsonType | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemJson =
   /*@__PURE__*/ S.suspend(() =>
@@ -1801,8 +1788,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemJson =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemJson>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemKVNamespaceType =
-  | "kv_namespace"
-  | (string & {});
+  "kv_namespace";
 export const BetaWorkersVersionsCreateRequestBindingsItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -1812,7 +1798,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemKVNamespace {
   /** Namespace identifier tag. */
   namespaceId: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemKVNamespaceType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemKVNamespaceType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemKVNamespace =
   /*@__PURE__*/ S.suspend(() =>
@@ -1825,9 +1813,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemKVNamespace =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemKVNamespace",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemKVNamespace>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItemMediaType =
-  | "media"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestBindingsItemMediaType = "media";
 export const BetaWorkersVersionsCreateRequestBindingsItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -1835,7 +1821,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemMedia {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemMediaType;
+  type: BetaWorkersVersionsCreateRequestBindingsItemMediaType | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemMedia =
   /*@__PURE__*/ S.suspend(() =>
@@ -1848,8 +1834,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemMedia =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemMedia>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType =
-  | "mtls_certificate"
-  | (string & {});
+  "mtls_certificate";
 export const BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -1859,7 +1844,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate =
   /*@__PURE__*/ S.suspend(() =>
@@ -1873,8 +1860,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemPlainTextType =
-  | "plain_text"
-  | (string & {});
+  "plain_text";
 export const BetaWorkersVersionsCreateRequestBindingsItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -1884,7 +1870,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemPlainText {
   /** The text value to use. */
   text: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemPlainTextType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemPlainTextType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemPlainText =
   /*@__PURE__*/ S.suspend(() =>
@@ -1898,8 +1886,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemPlainText =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemPlainText>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemPipelinesType =
-  | "pipelines"
-  | (string & {});
+  "pipelines";
 export const BetaWorkersVersionsCreateRequestBindingsItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -1909,7 +1896,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemPipelines {
   /** Name of the Pipeline to bind to. */
   pipeline: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemPipelinesType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemPipelinesType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemPipelines =
   /*@__PURE__*/ S.suspend(() =>
@@ -1922,9 +1911,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemPipelines =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemPipelines",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemPipelines>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItemQueueType =
-  | "queue"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestBindingsItemQueueType = "queue";
 export const BetaWorkersVersionsCreateRequestBindingsItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -1934,7 +1921,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemQueue {
   /** Name of the Queue to bind to. */
   queueName: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemQueueType;
+  type: BetaWorkersVersionsCreateRequestBindingsItemQueueType | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemQueue =
   /*@__PURE__*/ S.suspend(() =>
@@ -1969,8 +1956,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemRatelimitSimple =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemRatelimitSimple>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemRatelimitType =
-  | "ratelimit"
-  | (string & {});
+  "ratelimit";
 export const BetaWorkersVersionsCreateRequestBindingsItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -1982,7 +1968,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemRatelimit {
   /** The rate limit configuration. */
   simple: BetaWorkersVersionsCreateRequestBindingsItemRatelimitSimple;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemRatelimitType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemRatelimitType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -1997,16 +1985,14 @@ export const BetaWorkersVersionsCreateRequestBindingsItemRatelimit =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemRatelimit>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemR2BucketType =
-  | "r2_bucket"
-  | (string & {});
+  "r2_bucket";
 export const BetaWorkersVersionsCreateRequestBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemR2BucketJurisdiction =
   | "eu"
   | "fedramp"
-  | "fedramp-high"
-  | (string & {});
+  | "fedramp-high";
 export const BetaWorkersVersionsCreateRequestBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -2016,9 +2002,13 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemR2Bucket {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemR2BucketType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemR2BucketType
+    | (string & {});
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: BetaWorkersVersionsCreateRequestBindingsItemR2BucketJurisdiction;
+  jurisdiction?:
+    | BetaWorkersVersionsCreateRequestBindingsItemR2BucketJurisdiction
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemR2Bucket =
   /*@__PURE__*/ S.suspend(() =>
@@ -2035,8 +2025,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemR2Bucket =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemR2Bucket>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemSecretTextType =
-  | "secret_text"
-  | (string & {});
+  "secret_text";
 export const BetaWorkersVersionsCreateRequestBindingsItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -2046,7 +2035,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemSecretText {
   /** The secret value to use. */
   text: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemSecretTextType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemSecretTextType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemSecretText =
   /*@__PURE__*/ S.suspend(() =>
@@ -2060,8 +2051,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemSecretText =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSecretText>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemSendEmailType =
-  | "send_email"
-  | (string & {});
+  "send_email";
 export const BetaWorkersVersionsCreateRequestBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -2083,7 +2073,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemSendEmailType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemSendEmailType
+    | (string & {});
   /** List of allowed destination addresses. */
   allowedDestinationAddresses?: BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList;
   /** List of allowed sender addresses. */
@@ -2114,9 +2106,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemSendEmail =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemSendEmail",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSendEmail>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItemServiceType =
-  | "service"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestBindingsItemServiceType = "service";
 export const BetaWorkersVersionsCreateRequestBindingsItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -2126,7 +2116,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemService {
   /** Name of Worker to bind to. */
   service: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemServiceType;
+  type: BetaWorkersVersionsCreateRequestBindingsItemServiceType | (string & {});
   /** Entrypoint to invoke on the target Worker. */
   entrypoint?: string;
   /** Optional environment if the Worker utilizes one. */
@@ -2146,8 +2136,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemService =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemService>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemTextBlobType =
-  | "text_blob"
-  | (string & {});
+  "text_blob";
 export const BetaWorkersVersionsCreateRequestBindingsItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -2157,7 +2146,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemTextBlob {
   /** The name of the file containing the text content. Only accepted for `service worker syntax` Workers. */
   part: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemTextBlobType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemTextBlobType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemTextBlob =
   /*@__PURE__*/ S.suspend(() =>
@@ -2171,8 +2162,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemTextBlob =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemTextBlob>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemVectorizeType =
-  | "vectorize"
-  | (string & {});
+  "vectorize";
 export const BetaWorkersVersionsCreateRequestBindingsItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -2182,7 +2172,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemVectorize {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemVectorizeType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemVectorizeType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemVectorize =
   /*@__PURE__*/ S.suspend(() =>
@@ -2196,8 +2188,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemVectorize =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemVectorize>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemVersionMetadataType =
-  | "version_metadata"
-  | (string & {});
+  "version_metadata";
 export const BetaWorkersVersionsCreateRequestBindingsItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -2205,7 +2196,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemVersionMetadataType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemVersionMetadataType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata =
   /*@__PURE__*/ S.suspend(() =>
@@ -2218,7 +2211,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecretType =
-  "secrets_store_secret" | (string & {});
+  "secrets_store_secret";
 export const BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -2230,7 +2223,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret 
   /** ID of the store containing the secret. */
   storeId: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecretType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecretType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret =
   /*@__PURE__*/ S.suspend(() =>
@@ -2246,8 +2241,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemFlagshipType =
-  | "flagship"
-  | (string & {});
+  "flagship";
 export const BetaWorkersVersionsCreateRequestBindingsItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -2257,7 +2251,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemFlagship {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemFlagshipType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemFlagshipType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemFlagship =
   /*@__PURE__*/ S.suspend(() =>
@@ -2274,14 +2270,12 @@ export type BetaWorkersVersionsCreateRequestBindingsItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const BetaWorkersVersionsCreateRequestBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemSecretKeyType =
-  | "secret_key"
-  | (string & {});
+  "secret_key";
 export const BetaWorkersVersionsCreateRequestBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -2293,13 +2287,15 @@ export type BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey"
-  | (string & {});
+  | "unwrapKey";
 export const BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesItem>;
+  ReadonlyArray<
+    | BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesItem
+    | (string & {})
+  >;
 export const BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesItem,
@@ -2309,11 +2305,15 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
   /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format: BetaWorkersVersionsCreateRequestBindingsItemSecretKeyFormat;
+  format:
+    | BetaWorkersVersionsCreateRequestBindingsItemSecretKeyFormat
+    | (string & {});
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemSecretKeyType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemSecretKeyType
+    | (string & {});
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
@@ -2337,8 +2337,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemSecretKey =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSecretKey>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemWorkflowType =
-  | "workflow"
-  | (string & {});
+  "workflow";
 export const BetaWorkersVersionsCreateRequestBindingsItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -2346,7 +2345,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemWorkflow {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemWorkflowType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemWorkflowType
+    | (string & {});
   /** Name of the Workflow to bind to. */
   workflowName: string;
   /** Class name of the Workflow. Should only be provided if the Workflow belongs to this script. */
@@ -2368,8 +2369,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemWorkflow =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemWorkflow>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType =
-  | "wasm_module"
-  | (string & {});
+  "wasm_module";
 export const BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -2379,7 +2379,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemWasmModule {
   /** The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers. */
   part: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemWasmModule =
   /*@__PURE__*/ S.suspend(() =>
@@ -2393,8 +2395,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemWasmModule =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemWasmModule>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType =
-  | "vpc_service"
-  | (string & {});
+  "vpc_service";
 export const BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -2404,7 +2405,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemVPCService {
   /** Identifier of the VPC service to bind to. */
   serviceId: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType
+    | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemVPCService =
   /*@__PURE__*/ S.suspend(() =>
@@ -2418,8 +2421,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemVPCService =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemVPCService>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemVPCNetworkType =
-  | "vpc_network"
-  | (string & {});
+  "vpc_network";
 export const BetaWorkersVersionsCreateRequestBindingsItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -2427,7 +2429,9 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemVPCNetworkType;
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemVPCNetworkType
+    | (string & {});
   /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
   networkId?: string;
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
@@ -2935,15 +2939,13 @@ export const BetaWorkersVersionsCreateRequestPackageDependenciesList =
     BetaWorkersVersionsCreateRequestPackageDependenciesItem,
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestPackageDependenciesList>;
 
-export type BetaWorkersVersionsCreateRequestPlacementModeMode =
-  | "smart"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestPlacementModeMode = "smart";
 export const BetaWorkersVersionsCreateRequestPlacementModeMode =
   /*@__PURE__*/ S.String;
 
 export interface BetaWorkersVersionsCreateRequestPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode: BetaWorkersVersionsCreateRequestPlacementModeMode;
+  mode: BetaWorkersVersionsCreateRequestPlacementModeMode | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestPlacementMode =
   /*@__PURE__*/ S.suspend(() =>
@@ -2993,15 +2995,13 @@ export const BetaWorkersVersionsCreateRequestPlacementHost =
     identifier: "BetaWorkersVersionsCreateRequestPlacementHost",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementHost>;
 
-export type BetaWorkersVersionsCreateRequestPlacementCase4Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestPlacementCase4Mode = "targeted";
 export const BetaWorkersVersionsCreateRequestPlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
 export interface BetaWorkersVersionsCreateRequestPlacementCase4 {
   /** Targeted placement mode. */
-  mode: BetaWorkersVersionsCreateRequestPlacementCase4Mode;
+  mode: BetaWorkersVersionsCreateRequestPlacementCase4Mode | (string & {});
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
@@ -3015,9 +3015,7 @@ export const BetaWorkersVersionsCreateRequestPlacementCase4 =
     identifier: "BetaWorkersVersionsCreateRequestPlacementCase4",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementCase4>;
 
-export type BetaWorkersVersionsCreateRequestPlacementCase5Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestPlacementCase5Mode = "targeted";
 export const BetaWorkersVersionsCreateRequestPlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
@@ -3025,7 +3023,7 @@ export interface BetaWorkersVersionsCreateRequestPlacementCase5 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
   /** Targeted placement mode. */
-  mode: BetaWorkersVersionsCreateRequestPlacementCase5Mode;
+  mode: BetaWorkersVersionsCreateRequestPlacementCase5Mode | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestPlacementCase5 =
   /*@__PURE__*/ S.suspend(() =>
@@ -3037,9 +3035,7 @@ export const BetaWorkersVersionsCreateRequestPlacementCase5 =
     identifier: "BetaWorkersVersionsCreateRequestPlacementCase5",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementCase5>;
 
-export type BetaWorkersVersionsCreateRequestPlacementCase6Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestPlacementCase6Mode = "targeted";
 export const BetaWorkersVersionsCreateRequestPlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
@@ -3047,7 +3043,7 @@ export interface BetaWorkersVersionsCreateRequestPlacementCase6 {
   /** TCP host and port for targeted placement. */
   host: string;
   /** Targeted placement mode. */
-  mode: BetaWorkersVersionsCreateRequestPlacementCase6Mode;
+  mode: BetaWorkersVersionsCreateRequestPlacementCase6Mode | (string & {});
 }
 export const BetaWorkersVersionsCreateRequestPlacementCase6 =
   /*@__PURE__*/ S.suspend(() =>
@@ -3059,9 +3055,7 @@ export const BetaWorkersVersionsCreateRequestPlacementCase6 =
     identifier: "BetaWorkersVersionsCreateRequestPlacementCase6",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementCase6>;
 
-export type BetaWorkersVersionsCreateRequestPlacementCase7Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsCreateRequestPlacementCase7Mode = "targeted";
 export const BetaWorkersVersionsCreateRequestPlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -3124,7 +3118,7 @@ export const BetaWorkersVersionsCreateRequestPlacementCase7TargetList =
 
 export interface BetaWorkersVersionsCreateRequestPlacementCase7 {
   /** Targeted placement mode. */
-  mode: BetaWorkersVersionsCreateRequestPlacementCase7Mode;
+  mode: BetaWorkersVersionsCreateRequestPlacementCase7Mode | (string & {});
   /** Array of placement targets (currently limited to single target). */
   target: BetaWorkersVersionsCreateRequestPlacementCase7TargetList;
 }
@@ -3164,8 +3158,7 @@ export const BetaWorkersVersionsCreateRequestPlacement =
 export type BetaWorkersVersionsCreateRequestUsageModel =
   | "standard"
   | "bundled"
-  | "unbound"
-  | (string & {});
+  | "unbound";
 export const BetaWorkersVersionsCreateRequestUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -3203,7 +3196,7 @@ export interface CreateBetaWorkerVersionRequest {
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: BetaWorkersVersionsCreateRequestPlacement;
   /** Usage model for the version. */
-  usageModel?: BetaWorkersVersionsCreateRequestUsageModel;
+  usageModel?: BetaWorkersVersionsCreateRequestUsageModel | (string & {});
 }
 export const CreateBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3281,16 +3274,14 @@ export type BetaWorkersVersionsCreateResponseAssetsConfigHtmlHandling =
   | "auto-trailing-slash"
   | "force-trailing-slash"
   | "drop-trailing-slash"
-  | "none"
-  | (string & {});
+  | "none";
 export const BetaWorkersVersionsCreateResponseAssetsConfigHtmlHandling =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling =
   | "none"
   | "404-page"
-  | "single-page-application"
-  | (string & {});
+  | "single-page-application";
 export const BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling =
   /*@__PURE__*/ S.String;
 
@@ -3354,9 +3345,7 @@ export const BetaWorkersVersionsCreateResponseAssets = /*@__PURE__*/ S.suspend(
   identifier: "BetaWorkersVersionsCreateResponseAssets",
 }) as any as S.Schema<BetaWorkersVersionsCreateResponseAssets>;
 
-export type BetaWorkersVersionsCreateResponseBindingsItemAIType =
-  | "ai"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponseBindingsItemAIType = "ai";
 export const BetaWorkersVersionsCreateResponseBindingsItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -3377,8 +3366,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemAI =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAI>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemAISearchType =
-  | "ai_search"
-  | (string & {});
+  "ai_search";
 export const BetaWorkersVersionsCreateResponseBindingsItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -3405,7 +3393,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemAISearch =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAISearch>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespaceType =
-  "ai_search_namespace" | (string & {});
+  "ai_search_namespace";
 export const BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -3430,8 +3418,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespace =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespace>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngineType =
-  | "analytics_engine"
-  | (string & {});
+  "analytics_engine";
 export const BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -3454,9 +3441,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngine =
     identifier: "BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngine",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngine>;
 
-export type BetaWorkersVersionsCreateResponseBindingsItemAssetsType =
-  | "assets"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponseBindingsItemAssetsType = "assets";
 export const BetaWorkersVersionsCreateResponseBindingsItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -3477,8 +3462,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemAssets =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAssets>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemBrowserType =
-  | "browser"
-  | (string & {});
+  "browser";
 export const BetaWorkersVersionsCreateResponseBindingsItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -3498,9 +3482,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemBrowser =
     identifier: "BetaWorkersVersionsCreateResponseBindingsItemBrowser",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemBrowser>;
 
-export type BetaWorkersVersionsCreateResponseBindingsItemD1Type =
-  | "d1"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponseBindingsItemD1Type = "d1";
 export const BetaWorkersVersionsCreateResponseBindingsItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -3527,8 +3509,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemD1 =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemD1>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemDataBlobType =
-  | "data_blob"
-  | (string & {});
+  "data_blob";
 export const BetaWorkersVersionsCreateResponseBindingsItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -3552,7 +3533,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemDataBlob =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemDataBlob>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceType =
-  "dispatch_namespace" | (string & {});
+  "dispatch_namespace";
 export const BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -3644,7 +3625,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespace =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespace>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespaceType =
-  "durable_object_namespace" | (string & {});
+  "durable_object_namespace";
 export const BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -3683,8 +3664,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespace
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespace>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemHyperdriveType =
-  | "hyperdrive"
-  | (string & {});
+  "hyperdrive";
 export const BetaWorkersVersionsCreateResponseBindingsItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -3708,8 +3688,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemHyperdrive =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemHyperdrive>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemInheritType =
-  | "inherit"
-  | (string & {});
+  "inherit";
 export const BetaWorkersVersionsCreateResponseBindingsItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -3735,9 +3714,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemInherit =
     identifier: "BetaWorkersVersionsCreateResponseBindingsItemInherit",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemInherit>;
 
-export type BetaWorkersVersionsCreateResponseBindingsItemImagesType =
-  | "images"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponseBindingsItemImagesType = "images";
 export const BetaWorkersVersionsCreateResponseBindingsItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -3757,9 +3734,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemImages =
     identifier: "BetaWorkersVersionsCreateResponseBindingsItemImages",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemImages>;
 
-export type BetaWorkersVersionsCreateResponseBindingsItemJsonType =
-  | "json"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponseBindingsItemJsonType = "json";
 export const BetaWorkersVersionsCreateResponseBindingsItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -3783,8 +3758,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemJson =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemJson>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemKVNamespaceType =
-  | "kv_namespace"
-  | (string & {});
+  "kv_namespace";
 export const BetaWorkersVersionsCreateResponseBindingsItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -3807,9 +3781,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemKVNamespace =
     identifier: "BetaWorkersVersionsCreateResponseBindingsItemKVNamespace",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemKVNamespace>;
 
-export type BetaWorkersVersionsCreateResponseBindingsItemMediaType =
-  | "media"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponseBindingsItemMediaType = "media";
 export const BetaWorkersVersionsCreateResponseBindingsItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -3830,8 +3802,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemMedia =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemMedia>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificateType =
-  | "mtls_certificate"
-  | (string & {});
+  "mtls_certificate";
 export const BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -3855,8 +3826,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificate =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificate>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemPlainTextType =
-  | "plain_text"
-  | (string & {});
+  "plain_text";
 export const BetaWorkersVersionsCreateResponseBindingsItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -3880,8 +3850,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemPlainText =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemPlainText>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemPipelinesType =
-  | "pipelines"
-  | (string & {});
+  "pipelines";
 export const BetaWorkersVersionsCreateResponseBindingsItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -3904,9 +3873,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemPipelines =
     identifier: "BetaWorkersVersionsCreateResponseBindingsItemPipelines",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemPipelines>;
 
-export type BetaWorkersVersionsCreateResponseBindingsItemQueueType =
-  | "queue"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponseBindingsItemQueueType = "queue";
 export const BetaWorkersVersionsCreateResponseBindingsItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -3951,8 +3918,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemRatelimitType =
-  | "ratelimit"
-  | (string & {});
+  "ratelimit";
 export const BetaWorkersVersionsCreateResponseBindingsItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -3979,16 +3945,14 @@ export const BetaWorkersVersionsCreateResponseBindingsItemRatelimit =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemRatelimit>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemR2BucketType =
-  | "r2_bucket"
-  | (string & {});
+  "r2_bucket";
 export const BetaWorkersVersionsCreateResponseBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemR2BucketJurisdiction =
   | "eu"
   | "fedramp"
-  | "fedramp-high"
-  | (string & {});
+  | "fedramp-high";
 export const BetaWorkersVersionsCreateResponseBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -4017,8 +3981,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemR2Bucket =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemR2Bucket>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSecretTextType =
-  | "secret_text"
-  | (string & {});
+  "secret_text";
 export const BetaWorkersVersionsCreateResponseBindingsItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -4042,8 +4005,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemSecretText =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSecretText>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSendEmailType =
-  | "send_email"
-  | (string & {});
+  "send_email";
 export const BetaWorkersVersionsCreateResponseBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -4097,8 +4059,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemSendEmail =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSendEmail>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemServiceType =
-  | "service"
-  | (string & {});
+  "service";
 export const BetaWorkersVersionsCreateResponseBindingsItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -4128,8 +4089,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemService =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemService>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemTextBlobType =
-  | "text_blob"
-  | (string & {});
+  "text_blob";
 export const BetaWorkersVersionsCreateResponseBindingsItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -4153,8 +4113,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemTextBlob =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemTextBlob>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemVectorizeType =
-  | "vectorize"
-  | (string & {});
+  "vectorize";
 export const BetaWorkersVersionsCreateResponseBindingsItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -4178,8 +4137,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemVectorize =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemVectorize>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemVersionMetadataType =
-  | "version_metadata"
-  | (string & {});
+  "version_metadata";
 export const BetaWorkersVersionsCreateResponseBindingsItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -4200,7 +4158,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemVersionMetadata =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemVersionMetadata>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecretType =
-  "secrets_store_secret" | (string & {});
+  "secrets_store_secret";
 export const BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -4228,8 +4186,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecret =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecret>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemFlagshipType =
-  | "flagship"
-  | (string & {});
+  "flagship";
 export const BetaWorkersVersionsCreateResponseBindingsItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -4256,14 +4213,12 @@ export type BetaWorkersVersionsCreateResponseBindingsItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const BetaWorkersVersionsCreateResponseBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSecretKeyType =
-  | "secret_key"
-  | (string & {});
+  "secret_key";
 export const BetaWorkersVersionsCreateResponseBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -4275,8 +4230,7 @@ export type BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey"
-  | (string & {});
+  | "unwrapKey";
 export const BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -4319,8 +4273,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemSecretKey =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSecretKey>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemWorkflowType =
-  | "workflow"
-  | (string & {});
+  "workflow";
 export const BetaWorkersVersionsCreateResponseBindingsItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -4350,8 +4303,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemWorkflow =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemWorkflow>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemWasmModuleType =
-  | "wasm_module"
-  | (string & {});
+  "wasm_module";
 export const BetaWorkersVersionsCreateResponseBindingsItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -4375,8 +4327,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemWasmModule =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemWasmModule>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemVPCServiceType =
-  | "vpc_service"
-  | (string & {});
+  "vpc_service";
 export const BetaWorkersVersionsCreateResponseBindingsItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -4400,8 +4351,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemVPCService =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemVPCService>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemVPCNetworkType =
-  | "vpc_network"
-  | (string & {});
+  "vpc_network";
 export const BetaWorkersVersionsCreateResponseBindingsItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -4918,9 +4868,7 @@ export const BetaWorkersVersionsCreateResponsePackageDependenciesList =
     BetaWorkersVersionsCreateResponsePackageDependenciesItem,
   ) as any as S.Schema<BetaWorkersVersionsCreateResponsePackageDependenciesList>;
 
-export type BetaWorkersVersionsCreateResponsePlacementModeMode =
-  | "smart"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponsePlacementModeMode = "smart";
 export const BetaWorkersVersionsCreateResponsePlacementModeMode =
   /*@__PURE__*/ S.String;
 
@@ -4976,9 +4924,7 @@ export const BetaWorkersVersionsCreateResponsePlacementHost =
     identifier: "BetaWorkersVersionsCreateResponsePlacementHost",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementHost>;
 
-export type BetaWorkersVersionsCreateResponsePlacementCase4Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponsePlacementCase4Mode = "targeted";
 export const BetaWorkersVersionsCreateResponsePlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
@@ -4998,9 +4944,7 @@ export const BetaWorkersVersionsCreateResponsePlacementCase4 =
     identifier: "BetaWorkersVersionsCreateResponsePlacementCase4",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase4>;
 
-export type BetaWorkersVersionsCreateResponsePlacementCase5Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponsePlacementCase5Mode = "targeted";
 export const BetaWorkersVersionsCreateResponsePlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
@@ -5020,9 +4964,7 @@ export const BetaWorkersVersionsCreateResponsePlacementCase5 =
     identifier: "BetaWorkersVersionsCreateResponsePlacementCase5",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase5>;
 
-export type BetaWorkersVersionsCreateResponsePlacementCase6Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponsePlacementCase6Mode = "targeted";
 export const BetaWorkersVersionsCreateResponsePlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
@@ -5042,9 +4984,7 @@ export const BetaWorkersVersionsCreateResponsePlacementCase6 =
     identifier: "BetaWorkersVersionsCreateResponsePlacementCase6",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase6>;
 
-export type BetaWorkersVersionsCreateResponsePlacementCase7Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsCreateResponsePlacementCase7Mode = "targeted";
 export const BetaWorkersVersionsCreateResponsePlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -5147,8 +5087,7 @@ export const BetaWorkersVersionsCreateResponsePlacement =
 export type BetaWorkersVersionsCreateResponseUsageModel =
   | "standard"
   | "bundled"
-  | "unbound"
-  | (string & {});
+  | "unbound";
 export const BetaWorkersVersionsCreateResponseUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -5251,21 +5190,20 @@ export const ObservabilityDestinationsCreateRequestConfigurationHeadersMap =
 export type ObservabilityDestinationsCreateRequestConfigurationLogpushDataset =
   | "opentelemetry-traces"
   | "opentelemetry-logs"
-  | "opentelemetry-metrics"
-  | (string & {});
+  | "opentelemetry-metrics";
 export const ObservabilityDestinationsCreateRequestConfigurationLogpushDataset =
   /*@__PURE__*/ S.String;
 
-export type ObservabilityDestinationsCreateRequestConfigurationType =
-  | "logpush"
-  | (string & {});
+export type ObservabilityDestinationsCreateRequestConfigurationType = "logpush";
 export const ObservabilityDestinationsCreateRequestConfigurationType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityDestinationsCreateRequestConfiguration {
   headers: ObservabilityDestinationsCreateRequestConfigurationHeadersMap;
-  logpushDataset: ObservabilityDestinationsCreateRequestConfigurationLogpushDataset;
-  type: ObservabilityDestinationsCreateRequestConfigurationType;
+  logpushDataset:
+    | ObservabilityDestinationsCreateRequestConfigurationLogpushDataset
+    | (string & {});
+  type: ObservabilityDestinationsCreateRequestConfigurationType | (string & {});
   url: string;
 }
 export const ObservabilityDestinationsCreateRequestConfiguration =
@@ -5310,16 +5248,12 @@ export const CreateObservabilityDestinationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateObservabilityDestinationRequest>;
 
 export type ObservabilityDestinationsCreateResponseConfigurationLogpushDataset =
-    | "opentelemetry-traces"
-    | "opentelemetry-logs"
-    | "opentelemetry-metrics"
-    | (string & {});
+  "opentelemetry-traces" | "opentelemetry-logs" | "opentelemetry-metrics";
 export const ObservabilityDestinationsCreateResponseConfigurationLogpushDataset =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityDestinationsCreateResponseConfigurationType =
-  | "logpush"
-  | (string & {});
+  "logpush";
 export const ObservabilityDestinationsCreateResponseConfigurationType =
   /*@__PURE__*/ S.String;
 
@@ -5410,21 +5344,24 @@ export type ObservabilityQueriesCreateRequestParametersCalculationsItemOperator 
     | "P99"
     | "P999"
     | "STDDEV"
-    | "VARIANCE"
-    | (string & {});
+    | "VARIANCE";
 export const ObservabilityQueriesCreateRequestParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateRequestParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityQueriesCreateRequestParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesCreateRequestParametersCalculationsItem {
-  operator: ObservabilityQueriesCreateRequestParametersCalculationsItemOperator;
+  operator:
+    | ObservabilityQueriesCreateRequestParametersCalculationsItemOperator
+    | (string & {});
   alias?: string;
   key?: string;
-  keyType?: ObservabilityQueriesCreateRequestParametersCalculationsItemKeyType;
+  keyType?:
+    | ObservabilityQueriesCreateRequestParametersCalculationsItemKeyType
+    | (string & {});
 }
 export const ObservabilityQueriesCreateRequestParametersCalculationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -5459,13 +5396,12 @@ export type ObservabilityQueriesCreateRequestParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
-  | "OR"
-  | (string & {});
+  | "OR";
 export const ObservabilityQueriesCreateRequestParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -5477,15 +5413,18 @@ export const ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersL
   ) as any as S.Schema<ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersItemCase0Kind =
-  | "group"
-  | (string & {});
+  "group";
 export const ObservabilityQueriesCreateRequestParametersFiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesCreateRequestParametersFiltersItemCase0 {
-  filterCombination: ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList;
-  kind: ObservabilityQueriesCreateRequestParametersFiltersItemCase0Kind;
+  kind:
+    | ObservabilityQueriesCreateRequestParametersFiltersItemCase0Kind
+    | (string & {});
 }
 export const ObservabilityQueriesCreateRequestParametersFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -5530,18 +5469,17 @@ export type ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObserva
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -5554,11 +5492,17 @@ export interface ObservabilityQueriesCreateRequestParametersFiltersItemWorkersOb
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -5602,13 +5546,14 @@ export const ObservabilityQueriesCreateRequestParametersFiltersList =
 export type ObservabilityQueriesCreateRequestParametersGroupBysItemType =
   | "string"
   | "number"
-  | "boolean"
-  | (string & {});
+  | "boolean";
 export const ObservabilityQueriesCreateRequestParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesCreateRequestParametersGroupBysItem {
-  type: ObservabilityQueriesCreateRequestParametersGroupBysItemType;
+  type:
+    | ObservabilityQueriesCreateRequestParametersGroupBysItemType
+    | (string & {});
   value: string;
 }
 export const ObservabilityQueriesCreateRequestParametersGroupBysItem =
@@ -5634,14 +5579,15 @@ export type ObservabilityQueriesCreateRequestParametersHavingsItemOperation =
   | "gt"
   | "gte"
   | "lt"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const ObservabilityQueriesCreateRequestParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesCreateRequestParametersHavingsItem {
   key: string;
-  operation: ObservabilityQueriesCreateRequestParametersHavingsItemOperation;
+  operation:
+    | ObservabilityQueriesCreateRequestParametersHavingsItemOperation
+    | (string & {});
   value: number;
 }
 export const ObservabilityQueriesCreateRequestParametersHavingsItem =
@@ -5688,8 +5634,7 @@ export const ObservabilityQueriesCreateRequestParametersNeedle =
 
 export type ObservabilityQueriesCreateRequestParametersOrderByOrder =
   | "asc"
-  | "desc"
-  | (string & {});
+  | "desc";
 export const ObservabilityQueriesCreateRequestParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
@@ -5697,7 +5642,9 @@ export interface ObservabilityQueriesCreateRequestParametersOrderBy {
   /** Configure which Calculation to order the results by. */
   value: string;
   /** Set the order of the results */
-  order?: ObservabilityQueriesCreateRequestParametersOrderByOrder;
+  order?:
+    | ObservabilityQueriesCreateRequestParametersOrderByOrder
+    | (string & {});
 }
 export const ObservabilityQueriesCreateRequestParametersOrderBy =
   /*@__PURE__*/ S.suspend(() =>
@@ -5717,7 +5664,9 @@ export interface ObservabilityQueriesCreateRequestParameters {
   /** Set the Datasets to query. Leave it empty to query all the datasets. */
   datasets?: ObservabilityQueriesCreateRequestParametersDatasetsList;
   /** Set a Flag to describe how to combine the filters on the query. */
-  filterCombination?: ObservabilityQueriesCreateRequestParametersFilterCombination;
+  filterCombination?:
+    | ObservabilityQueriesCreateRequestParametersFilterCombination
+    | (string & {});
   /** Configure the Filters to apply to the query. Supports nested groups via kind: 'group'. */
   filters?: ObservabilityQueriesCreateRequestParametersFiltersList;
   /** Define how to group the results of the query. */
@@ -5824,13 +5773,12 @@ export type ObservabilityQueriesCreateResponseParametersCalculationsItemOperator
     | "P99"
     | "P999"
     | "STDDEV"
-    | "VARIANCE"
-    | (string & {});
+    | "VARIANCE";
 export const ObservabilityQueriesCreateResponseParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateResponseParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityQueriesCreateResponseParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -5873,13 +5821,12 @@ export type ObservabilityQueriesCreateResponseParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
-  | "OR"
-  | (string & {});
+  | "OR";
 export const ObservabilityQueriesCreateResponseParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityQueriesCreateResponseParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -5891,8 +5838,7 @@ export const ObservabilityQueriesCreateResponseParametersFiltersItemCase0Filters
   ) as any as S.Schema<ObservabilityQueriesCreateResponseParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersItemCase0Kind =
-  | "group"
-  | (string & {});
+  "group";
 export const ObservabilityQueriesCreateResponseParametersFiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
@@ -5944,18 +5890,17 @@ export type ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObserv
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -6016,8 +5961,7 @@ export const ObservabilityQueriesCreateResponseParametersFiltersList =
 export type ObservabilityQueriesCreateResponseParametersGroupBysItemType =
   | "string"
   | "number"
-  | "boolean"
-  | (string & {});
+  | "boolean";
 export const ObservabilityQueriesCreateResponseParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
@@ -6048,8 +5992,7 @@ export type ObservabilityQueriesCreateResponseParametersHavingsItemOperation =
   | "gt"
   | "gte"
   | "lt"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const ObservabilityQueriesCreateResponseParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -6102,8 +6045,7 @@ export const ObservabilityQueriesCreateResponseParametersNeedle =
 
 export type ObservabilityQueriesCreateResponseParametersOrderByOrder =
   | "asc"
-  | "desc"
-  | (string & {});
+  | "desc";
 export const ObservabilityQueriesCreateResponseParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
@@ -6258,25 +6200,28 @@ export type ObservabilitySharedQueriesCreateRequestParametersCalculationsItemOpe
     | "P99"
     | "P999"
     | "STDDEV"
-    | "VARIANCE"
-    | (string & {});
+    | "VARIANCE";
 export const ObservabilitySharedQueriesCreateRequestParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilitySharedQueriesCreateRequestParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesCreateRequestParametersCalculationsItem {
   /** Aggregation operator to apply. Examples: count, avg, sum, min, max, median, p90, p95, p99, uniq, stddev, variance. */
-  operator: ObservabilitySharedQueriesCreateRequestParametersCalculationsItemOperator;
+  operator:
+    | ObservabilitySharedQueriesCreateRequestParametersCalculationsItemOperator
+    | (string & {});
   /** Custom label for this calculation in the results. Useful for distinguishing multiple calculations. */
   alias?: string;
   /** Field name to calculate over. Must exist in the data — verify with the keys endpoint. Omit for operators that don't require a key (e.g. count). */
   key?: string;
   /** Data type of the key. Required when key is provided to ensure correct aggregation. */
-  keyType?: ObservabilitySharedQueriesCreateRequestParametersCalculationsItemKeyType;
+  keyType?:
+    | ObservabilitySharedQueriesCreateRequestParametersCalculationsItemKeyType
+    | (string & {});
 }
 export const ObservabilitySharedQueriesCreateRequestParametersCalculationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -6309,17 +6254,17 @@ export const ObservabilitySharedQueriesCreateRequestParametersDatasetsList =
   ) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersDatasetsList>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilitySharedQueriesCreateRequestParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -6331,14 +6276,18 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fi
   ) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind =
-  "group" | (string & {});
+  "group";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0 {
-  filterCombination: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList;
-  kind: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind;
+  kind:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind
+    | (string & {});
 }
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -6384,18 +6333,17 @@ export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fil
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -6408,11 +6356,17 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCas
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -6454,14 +6408,18 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fi
   ) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Kind =
-  "group" | (string & {});
+  "group";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0 {
-  filterCombination: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList;
-  kind: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Kind;
+  kind:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Kind
+    | (string & {});
 }
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -6507,18 +6465,17 @@ export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersO
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -6531,11 +6488,17 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemWor
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -6579,14 +6542,15 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersList =
 export type ObservabilitySharedQueriesCreateRequestParametersGroupBysItemType =
   | "string"
   | "number"
-  | "boolean"
-  | (string & {});
+  | "boolean";
 export const ObservabilitySharedQueriesCreateRequestParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesCreateRequestParametersGroupBysItem {
   /** Data type of the group-by field. */
-  type: ObservabilitySharedQueriesCreateRequestParametersGroupBysItemType;
+  type:
+    | ObservabilitySharedQueriesCreateRequestParametersGroupBysItemType
+    | (string & {});
   /** Field name to group results by (e.g. $metadata.service, $metadata.statusCode). */
   value: string;
 }
@@ -6608,7 +6572,7 @@ export const ObservabilitySharedQueriesCreateRequestParametersGroupBysList =
   ) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersGroupBysList>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperation =
-  "eq" | "neq" | "gt" | "gte" | "lt" | "lte" | (string & {});
+  "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
 export const ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -6616,7 +6580,9 @@ export interface ObservabilitySharedQueriesCreateRequestParametersHavingsItem {
   /** Calculation alias or operator to filter on after aggregation. */
   key: string;
   /** Numeric comparison operator: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperation;
+  operation:
+    | ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperation
+    | (string & {});
   /** Threshold value to compare the calculation result against. */
   value: number;
 }
@@ -6667,8 +6633,7 @@ export const ObservabilitySharedQueriesCreateRequestParametersNeedle =
 
 export type ObservabilitySharedQueriesCreateRequestParametersOrderByOrder =
   | "asc"
-  | "desc"
-  | (string & {});
+  | "desc";
 export const ObservabilitySharedQueriesCreateRequestParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
@@ -6676,7 +6641,9 @@ export interface ObservabilitySharedQueriesCreateRequestParametersOrderBy {
   /** Alias of the calculation to order results by. Must match the alias (or operator) of a calculation in the query. */
   value: string;
   /** Sort direction: 'asc' for ascending, 'desc' for descending. */
-  order?: ObservabilitySharedQueriesCreateRequestParametersOrderByOrder;
+  order?:
+    | ObservabilitySharedQueriesCreateRequestParametersOrderByOrder
+    | (string & {});
 }
 export const ObservabilitySharedQueriesCreateRequestParametersOrderBy =
   /*@__PURE__*/ S.suspend(() =>
@@ -6696,7 +6663,9 @@ export interface ObservabilitySharedQueriesCreateRequestParameters {
   /** Datasets to query. Leave empty to query all available datasets. */
   datasets?: ObservabilitySharedQueriesCreateRequestParametersDatasetsList;
   /** Logical operator for combining top-level filters: 'and' (all must match) or 'or' (any must match). Defaults to 'and'. */
-  filterCombination?: ObservabilitySharedQueriesCreateRequestParametersFilterCombination;
+  filterCombination?:
+    | ObservabilitySharedQueriesCreateRequestParametersFilterCombination
+    | (string & {});
   /** Filters to narrow query results. Use the keys and values endpoints to discover available fields before building filters. Supports nested groups via kind: 'group'. Maximum nesting depth is 4. */
   filters?: ObservabilitySharedQueriesCreateRequestParametersFiltersList;
   /** Fields to group calculation results by. Only applicable when the query view is 'calculations'. Produces per-group aggregate values. */
@@ -6749,8 +6718,7 @@ export type ObservabilitySharedQueriesCreateRequestView =
   | "calculations"
   | "invocations"
   | "requests"
-  | "agents"
-  | (string & {});
+  | "agents";
 export const ObservabilitySharedQueriesCreateRequestView =
   /*@__PURE__*/ S.String;
 
@@ -6781,7 +6749,7 @@ export interface CreateObservabilitySharedQueryRequest {
   /** Query parameters defining what data to retrieve — filters, calculations, group-bys, and ordering. In practice this should always be provided for ad-hoc queries. Only omit when executing a previously saved query by queryId. Use the keys and values endpoints to discover available fields before building filters. */
   parameters?: ObservabilitySharedQueriesCreateRequestParameters;
   /** Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': Durable Object agent summaries. */
-  view?: ObservabilitySharedQueriesCreateRequestView;
+  view?: ObservabilitySharedQueriesCreateRequestView | (string & {});
 }
 export const CreateObservabilitySharedQueryRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6953,9 +6921,7 @@ export const CreateScriptAssetUploadResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScriptAssetUploadResponse",
 }) as any as S.Schema<CreateScriptAssetUploadResponse>;
 
-export type ScriptsDeploymentsCreateRequestStrategy =
-  | "percentage"
-  | (string & {});
+export type ScriptsDeploymentsCreateRequestStrategy = "percentage";
 export const ScriptsDeploymentsCreateRequestStrategy = /*@__PURE__*/ S.String;
 
 export interface ScriptsDeploymentsCreateRequestVersionsItem {
@@ -7004,7 +6970,7 @@ export interface CreateScriptDeploymentRequest {
   scriptName: string;
   /** If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed. */
   force?: boolean;
-  strategy: ScriptsDeploymentsCreateRequestStrategy;
+  strategy: ScriptsDeploymentsCreateRequestStrategy | (string & {});
   versions: ScriptsDeploymentsCreateRequestVersionsList;
   annotations?: ScriptsDeploymentsCreateRequestAnnotations;
 }
@@ -7029,9 +6995,7 @@ export const CreateScriptDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScriptDeploymentRequest",
 }) as any as S.Schema<CreateScriptDeploymentRequest>;
 
-export type ScriptsDeploymentsCreateResponseStrategy =
-  | "percentage"
-  | (string & {});
+export type ScriptsDeploymentsCreateResponseStrategy = "percentage";
 export const ScriptsDeploymentsCreateResponseStrategy = /*@__PURE__*/ S.String;
 
 export interface ScriptsDeploymentsCreateResponseVersionsItem {
@@ -8392,9 +8356,7 @@ export const CreateScriptTailResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScriptTailResponse",
 }) as any as S.Schema<CreateScriptTailResponse>;
 
-export type ScriptsVersionsCreateRequestBindingsInherit =
-  | "strict"
-  | (string & {});
+export type ScriptsVersionsCreateRequestBindingsInherit = "strict";
 export const ScriptsVersionsCreateRequestBindingsInherit =
   /*@__PURE__*/ S.String;
 
@@ -8404,7 +8366,7 @@ export interface CreateScriptVersionRequest {
   /** Name of the script. */
   scriptName: string;
   /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped. */
-  bindingsInherit?: ScriptsVersionsCreateRequestBindingsInherit;
+  bindingsInherit?: ScriptsVersionsCreateRequestBindingsInherit | (string & {});
 }
 export const CreateScriptVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8428,9 +8390,7 @@ export const CreateScriptVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScriptVersionRequest",
 }) as any as S.Schema<CreateScriptVersionRequest>;
 
-export type ScriptsVersionsCreateResponseResourcesBindingsItemAIType =
-  | "ai"
-  | (string & {});
+export type ScriptsVersionsCreateResponseResourcesBindingsItemAIType = "ai";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -8451,8 +8411,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemAI =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemAI>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemAISearchType =
-  | "ai_search"
-  | (string & {});
+  "ai_search";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -8479,7 +8438,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemAISearch =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemAISearch>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemAISearchNamespaceType =
-  "ai_search_namespace" | (string & {});
+  "ai_search_namespace";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -8504,7 +8463,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemAISearchNamespace
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemAISearchNamespace>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemAnalyticsEngineType =
-  "analytics_engine" | (string & {});
+  "analytics_engine";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -8529,8 +8488,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemAnalyticsEngine =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemAnalyticsEngine>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemAssetsType =
-  | "assets"
-  | (string & {});
+  "assets";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -8551,8 +8509,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemAssets =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemAssets>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemBrowserType =
-  | "browser"
-  | (string & {});
+  "browser";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -8572,9 +8529,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemBrowser =
     identifier: "ScriptsVersionsCreateResponseResourcesBindingsItemBrowser",
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemBrowser>;
 
-export type ScriptsVersionsCreateResponseResourcesBindingsItemD1Type =
-  | "d1"
-  | (string & {});
+export type ScriptsVersionsCreateResponseResourcesBindingsItemD1Type = "d1";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -8601,8 +8556,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemD1 =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemD1>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemDataBlobType =
-  | "data_blob"
-  | (string & {});
+  "data_blob";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -8626,7 +8580,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemDataBlob =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemDataBlob>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceType =
-  "dispatch_namespace" | (string & {});
+  "dispatch_namespace";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -8718,7 +8672,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespace
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespace>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemDurableObjectNamespaceType =
-  "durable_object_namespace" | (string & {});
+  "durable_object_namespace";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -8757,8 +8711,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemDurableObjectName
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemDurableObjectNamespace>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemHyperdriveType =
-  | "hyperdrive"
-  | (string & {});
+  "hyperdrive";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -8782,8 +8735,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemHyperdrive =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemHyperdrive>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemInheritType =
-  | "inherit"
-  | (string & {});
+  "inherit";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -8810,8 +8762,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemInherit =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemInherit>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemImagesType =
-  | "images"
-  | (string & {});
+  "images";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -8831,9 +8782,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemImages =
     identifier: "ScriptsVersionsCreateResponseResourcesBindingsItemImages",
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemImages>;
 
-export type ScriptsVersionsCreateResponseResourcesBindingsItemJsonType =
-  | "json"
-  | (string & {});
+export type ScriptsVersionsCreateResponseResourcesBindingsItemJsonType = "json";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -8857,8 +8806,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemJson =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemJson>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemKVNamespaceType =
-  | "kv_namespace"
-  | (string & {});
+  "kv_namespace";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -8882,8 +8830,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemKVNamespace =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemKVNamespace>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemMediaType =
-  | "media"
-  | (string & {});
+  "media";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -8904,7 +8851,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemMedia =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemMedia>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemMTLSCertificateType =
-  "mtls_certificate" | (string & {});
+  "mtls_certificate";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -8929,8 +8876,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemMTLSCertificate =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemMTLSCertificate>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemPlainTextType =
-  | "plain_text"
-  | (string & {});
+  "plain_text";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -8954,8 +8900,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemPlainText =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemPlainText>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemPipelinesType =
-  | "pipelines"
-  | (string & {});
+  "pipelines";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -8979,8 +8924,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemPipelines =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemPipelines>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemQueueType =
-  | "queue"
-  | (string & {});
+  "queue";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -9026,8 +8970,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemRatelimitSimple =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemRatelimitSimple>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemRatelimitType =
-  | "ratelimit"
-  | (string & {});
+  "ratelimit";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -9054,13 +8997,12 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemRatelimit =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemRatelimit>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketType =
-  | "r2_bucket"
-  | (string & {});
+  "r2_bucket";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high" | (string & {});
+  "eu" | "fedramp" | "fedramp-high";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -9089,8 +9031,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemR2Bucket =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemR2Bucket>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemSecretTextType =
-  | "secret_text"
-  | (string & {});
+  "secret_text";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -9114,8 +9055,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretText =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemSecretText>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailType =
-  | "send_email"
-  | (string & {});
+  "send_email";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -9169,8 +9109,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemSendEmail =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemSendEmail>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemServiceType =
-  | "service"
-  | (string & {});
+  "service";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -9200,8 +9139,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemService =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemService>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemTextBlobType =
-  | "text_blob"
-  | (string & {});
+  "text_blob";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -9225,8 +9163,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemTextBlob =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemTextBlob>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemVectorizeType =
-  | "vectorize"
-  | (string & {});
+  "vectorize";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -9250,7 +9187,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemVectorize =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemVectorize>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemVersionMetadataType =
-  "version_metadata" | (string & {});
+  "version_metadata";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -9272,7 +9209,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemVersionMetadata =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemVersionMetadata>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemSecretsStoreSecretType =
-  "secrets_store_secret" | (string & {});
+  "secrets_store_secret";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -9300,8 +9237,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretsStoreSecre
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemSecretsStoreSecret>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemFlagshipType =
-  | "flagship"
-  | (string & {});
+  "flagship";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -9328,14 +9264,12 @@ export type ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyType =
-  | "secret_key"
-  | (string & {});
+  "secret_key";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -9347,8 +9281,7 @@ export type ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesIte
     | "deriveKey"
     | "deriveBits"
     | "wrapKey"
-    | "unwrapKey"
-    | (string & {});
+    | "unwrapKey";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -9392,8 +9325,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretKey =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemSecretKey>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemWorkflowType =
-  | "workflow"
-  | (string & {});
+  "workflow";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -9423,8 +9355,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemWorkflow =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemWorkflow>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemWasmModuleType =
-  | "wasm_module"
-  | (string & {});
+  "wasm_module";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -9448,8 +9379,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemWasmModule =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemWasmModule>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemVPCServiceType =
-  | "vpc_service"
-  | (string & {});
+  "vpc_service";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -9473,8 +9403,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemVPCService =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemVPCService>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemVPCNetworkType =
-  | "vpc_network"
-  | (string & {});
+  "vpc_network";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -9688,8 +9617,7 @@ export const ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits =
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel =
   | "bundled"
   | "unbound"
-  | "standard"
-  | (string & {});
+  | "standard";
 export const ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -9763,8 +9691,7 @@ export type ScriptsVersionsCreateResponseMetadataSource =
   | "integration"
   | "quick_editor"
   | "playground"
-  | "workersci"
-  | (string & {});
+  | "workersci";
 export const ScriptsVersionsCreateResponseMetadataSource =
   /*@__PURE__*/ S.String;
 
@@ -9972,16 +9899,12 @@ export const DeleteObservabilityDestinationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteObservabilityDestinationRequest>;
 
 export type ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset =
-    | "opentelemetry-traces"
-    | "opentelemetry-logs"
-    | "opentelemetry-metrics"
-    | (string & {});
+  "opentelemetry-traces" | "opentelemetry-logs" | "opentelemetry-metrics";
 export const ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityDestinationsDeleteResponseConfigurationType =
-  | "logpush"
-  | (string & {});
+  "logpush";
 export const ObservabilityDestinationsDeleteResponseConfigurationType =
   /*@__PURE__*/ S.String;
 
@@ -10370,8 +10293,7 @@ export const BetaWorkersGetResponseObservabilityTracesDestinationsList =
 
 export type BetaWorkersGetResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const BetaWorkersGetResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -10679,7 +10601,7 @@ export const GetBetaWorkerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBetaWorkerResponse",
 }) as any as S.Schema<GetBetaWorkerResponse>;
 
-export type BetaWorkersVersionsGetRequestInclude = "modules" | (string & {});
+export type BetaWorkersVersionsGetRequestInclude = "modules";
 export const BetaWorkersVersionsGetRequestInclude = /*@__PURE__*/ S.String;
 
 export interface GetBetaWorkerVersionRequest {
@@ -10690,7 +10612,7 @@ export interface GetBetaWorkerVersionRequest {
   /** Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version. */
   versionId: string;
   /** Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size. */
-  include?: BetaWorkersVersionsGetRequestInclude;
+  include?: BetaWorkersVersionsGetRequestInclude | (string & {});
 }
 export const GetBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10741,16 +10663,14 @@ export type BetaWorkersVersionsGetResponseAssetsConfigHtmlHandling =
   | "auto-trailing-slash"
   | "force-trailing-slash"
   | "drop-trailing-slash"
-  | "none"
-  | (string & {});
+  | "none";
 export const BetaWorkersVersionsGetResponseAssetsConfigHtmlHandling =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling =
   | "none"
   | "404-page"
-  | "single-page-application"
-  | (string & {});
+  | "single-page-application";
 export const BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling =
   /*@__PURE__*/ S.String;
 
@@ -10814,9 +10734,7 @@ export const BetaWorkersVersionsGetResponseAssets = /*@__PURE__*/ S.suspend(
   identifier: "BetaWorkersVersionsGetResponseAssets",
 }) as any as S.Schema<BetaWorkersVersionsGetResponseAssets>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemAIType =
-  | "ai"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemAIType = "ai";
 export const BetaWorkersVersionsGetResponseBindingsItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -10837,8 +10755,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemAI =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAI>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemAISearchType =
-  | "ai_search"
-  | (string & {});
+  "ai_search";
 export const BetaWorkersVersionsGetResponseBindingsItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -10865,8 +10782,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemAISearch =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAISearch>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemAISearchNamespaceType =
-  | "ai_search_namespace"
-  | (string & {});
+  "ai_search_namespace";
 export const BetaWorkersVersionsGetResponseBindingsItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -10890,8 +10806,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemAISearchNamespace =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAISearchNamespace>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngineType =
-  | "analytics_engine"
-  | (string & {});
+  "analytics_engine";
 export const BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -10914,9 +10829,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngine =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngine",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngine>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemAssetsType =
-  | "assets"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemAssetsType = "assets";
 export const BetaWorkersVersionsGetResponseBindingsItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -10936,9 +10849,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemAssets =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemAssets",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAssets>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemBrowserType =
-  | "browser"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemBrowserType = "browser";
 export const BetaWorkersVersionsGetResponseBindingsItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -10958,9 +10869,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemBrowser =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemBrowser",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemBrowser>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemD1Type =
-  | "d1"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemD1Type = "d1";
 export const BetaWorkersVersionsGetResponseBindingsItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -10987,8 +10896,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemD1 =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemD1>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemDataBlobType =
-  | "data_blob"
-  | (string & {});
+  "data_blob";
 export const BetaWorkersVersionsGetResponseBindingsItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -11012,8 +10920,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemDataBlob =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDataBlob>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceType =
-  | "dispatch_namespace"
-  | (string & {});
+  "dispatch_namespace";
 export const BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -11104,7 +11011,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemDispatchNamespace =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDispatchNamespace>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespaceType =
-  "durable_object_namespace" | (string & {});
+  "durable_object_namespace";
 export const BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -11143,8 +11050,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespace =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespace>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemHyperdriveType =
-  | "hyperdrive"
-  | (string & {});
+  "hyperdrive";
 export const BetaWorkersVersionsGetResponseBindingsItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -11167,9 +11073,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemHyperdrive =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemHyperdrive",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemHyperdrive>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemInheritType =
-  | "inherit"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemInheritType = "inherit";
 export const BetaWorkersVersionsGetResponseBindingsItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -11195,9 +11099,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemInherit =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemInherit",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemInherit>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemImagesType =
-  | "images"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemImagesType = "images";
 export const BetaWorkersVersionsGetResponseBindingsItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -11217,9 +11119,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemImages =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemImages",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemImages>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemJsonType =
-  | "json"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemJsonType = "json";
 export const BetaWorkersVersionsGetResponseBindingsItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -11243,8 +11143,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemJson =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemJson>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemKVNamespaceType =
-  | "kv_namespace"
-  | (string & {});
+  "kv_namespace";
 export const BetaWorkersVersionsGetResponseBindingsItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -11267,9 +11166,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemKVNamespace =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemKVNamespace",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemKVNamespace>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemMediaType =
-  | "media"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemMediaType = "media";
 export const BetaWorkersVersionsGetResponseBindingsItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -11290,8 +11187,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemMedia =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemMedia>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemMTLSCertificateType =
-  | "mtls_certificate"
-  | (string & {});
+  "mtls_certificate";
 export const BetaWorkersVersionsGetResponseBindingsItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -11315,8 +11211,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemMTLSCertificate =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemMTLSCertificate>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemPlainTextType =
-  | "plain_text"
-  | (string & {});
+  "plain_text";
 export const BetaWorkersVersionsGetResponseBindingsItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -11340,8 +11235,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemPlainText =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemPlainText>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemPipelinesType =
-  | "pipelines"
-  | (string & {});
+  "pipelines";
 export const BetaWorkersVersionsGetResponseBindingsItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -11364,9 +11258,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemPipelines =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemPipelines",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemPipelines>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemQueueType =
-  | "queue"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemQueueType = "queue";
 export const BetaWorkersVersionsGetResponseBindingsItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -11411,8 +11303,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemRatelimitSimple =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemRatelimitSimple>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemRatelimitType =
-  | "ratelimit"
-  | (string & {});
+  "ratelimit";
 export const BetaWorkersVersionsGetResponseBindingsItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -11439,16 +11330,14 @@ export const BetaWorkersVersionsGetResponseBindingsItemRatelimit =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemRatelimit>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemR2BucketType =
-  | "r2_bucket"
-  | (string & {});
+  "r2_bucket";
 export const BetaWorkersVersionsGetResponseBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsGetResponseBindingsItemR2BucketJurisdiction =
   | "eu"
   | "fedramp"
-  | "fedramp-high"
-  | (string & {});
+  | "fedramp-high";
 export const BetaWorkersVersionsGetResponseBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -11477,8 +11366,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemR2Bucket =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemR2Bucket>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSecretTextType =
-  | "secret_text"
-  | (string & {});
+  "secret_text";
 export const BetaWorkersVersionsGetResponseBindingsItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -11502,8 +11390,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemSecretText =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSecretText>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSendEmailType =
-  | "send_email"
-  | (string & {});
+  "send_email";
 export const BetaWorkersVersionsGetResponseBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -11556,9 +11443,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemSendEmail =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemSendEmail",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSendEmail>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemServiceType =
-  | "service"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemServiceType = "service";
 export const BetaWorkersVersionsGetResponseBindingsItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -11588,8 +11473,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemService =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemService>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemTextBlobType =
-  | "text_blob"
-  | (string & {});
+  "text_blob";
 export const BetaWorkersVersionsGetResponseBindingsItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -11613,8 +11497,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemTextBlob =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemTextBlob>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemVectorizeType =
-  | "vectorize"
-  | (string & {});
+  "vectorize";
 export const BetaWorkersVersionsGetResponseBindingsItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -11638,8 +11521,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemVectorize =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVectorize>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemVersionMetadataType =
-  | "version_metadata"
-  | (string & {});
+  "version_metadata";
 export const BetaWorkersVersionsGetResponseBindingsItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -11660,8 +11542,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemVersionMetadata =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVersionMetadata>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSecretsStoreSecretType =
-  | "secrets_store_secret"
-  | (string & {});
+  "secrets_store_secret";
 export const BetaWorkersVersionsGetResponseBindingsItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -11687,9 +11568,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemSecretsStoreSecret =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemSecretsStoreSecret",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSecretsStoreSecret>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemFlagshipType =
-  | "flagship"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemFlagshipType = "flagship";
 export const BetaWorkersVersionsGetResponseBindingsItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -11716,14 +11595,12 @@ export type BetaWorkersVersionsGetResponseBindingsItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const BetaWorkersVersionsGetResponseBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSecretKeyType =
-  | "secret_key"
-  | (string & {});
+  "secret_key";
 export const BetaWorkersVersionsGetResponseBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -11735,8 +11612,7 @@ export type BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey"
-  | (string & {});
+  | "unwrapKey";
 export const BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -11778,9 +11654,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemSecretKey =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemSecretKey",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSecretKey>;
 
-export type BetaWorkersVersionsGetResponseBindingsItemWorkflowType =
-  | "workflow"
-  | (string & {});
+export type BetaWorkersVersionsGetResponseBindingsItemWorkflowType = "workflow";
 export const BetaWorkersVersionsGetResponseBindingsItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -11810,8 +11684,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemWorkflow =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemWorkflow>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemWasmModuleType =
-  | "wasm_module"
-  | (string & {});
+  "wasm_module";
 export const BetaWorkersVersionsGetResponseBindingsItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -11835,8 +11708,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemWasmModule =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemWasmModule>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemVPCServiceType =
-  | "vpc_service"
-  | (string & {});
+  "vpc_service";
 export const BetaWorkersVersionsGetResponseBindingsItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -11860,8 +11732,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemVPCService =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVPCService>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemVPCNetworkType =
-  | "vpc_network"
-  | (string & {});
+  "vpc_network";
 export const BetaWorkersVersionsGetResponseBindingsItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -12375,9 +12246,7 @@ export const BetaWorkersVersionsGetResponsePackageDependenciesList =
     BetaWorkersVersionsGetResponsePackageDependenciesItem,
   ) as any as S.Schema<BetaWorkersVersionsGetResponsePackageDependenciesList>;
 
-export type BetaWorkersVersionsGetResponsePlacementModeMode =
-  | "smart"
-  | (string & {});
+export type BetaWorkersVersionsGetResponsePlacementModeMode = "smart";
 export const BetaWorkersVersionsGetResponsePlacementModeMode =
   /*@__PURE__*/ S.String;
 
@@ -12433,9 +12302,7 @@ export const BetaWorkersVersionsGetResponsePlacementHost =
     identifier: "BetaWorkersVersionsGetResponsePlacementHost",
   }) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementHost>;
 
-export type BetaWorkersVersionsGetResponsePlacementCase4Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsGetResponsePlacementCase4Mode = "targeted";
 export const BetaWorkersVersionsGetResponsePlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
@@ -12455,9 +12322,7 @@ export const BetaWorkersVersionsGetResponsePlacementCase4 =
     identifier: "BetaWorkersVersionsGetResponsePlacementCase4",
   }) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase4>;
 
-export type BetaWorkersVersionsGetResponsePlacementCase5Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsGetResponsePlacementCase5Mode = "targeted";
 export const BetaWorkersVersionsGetResponsePlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
@@ -12477,9 +12342,7 @@ export const BetaWorkersVersionsGetResponsePlacementCase5 =
     identifier: "BetaWorkersVersionsGetResponsePlacementCase5",
   }) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase5>;
 
-export type BetaWorkersVersionsGetResponsePlacementCase6Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsGetResponsePlacementCase6Mode = "targeted";
 export const BetaWorkersVersionsGetResponsePlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
@@ -12499,9 +12362,7 @@ export const BetaWorkersVersionsGetResponsePlacementCase6 =
     identifier: "BetaWorkersVersionsGetResponsePlacementCase6",
   }) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase6>;
 
-export type BetaWorkersVersionsGetResponsePlacementCase7Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsGetResponsePlacementCase7Mode = "targeted";
 export const BetaWorkersVersionsGetResponsePlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -12603,8 +12464,7 @@ export const BetaWorkersVersionsGetResponsePlacement =
 export type BetaWorkersVersionsGetResponseUsageModel =
   | "standard"
   | "bundled"
-  | "unbound"
-  | (string & {});
+  | "unbound";
 export const BetaWorkersVersionsGetResponseUsageModel = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -12749,8 +12609,7 @@ export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export type ObservabilitySharedQueriesGetRequestView =
   | "events"
   | "invocations"
-  | "calculations"
-  | (string & {});
+  | "calculations";
 export const ObservabilitySharedQueriesGetRequestView = /*@__PURE__*/ S.String;
 
 export interface GetObservabilitySharedQueryRequest {
@@ -12758,7 +12617,7 @@ export interface GetObservabilitySharedQueryRequest {
   /** Specify the ID of the shared query. */
   id: string;
   /** Select the view of the query result to return, defaults to events. */
-  view?: ObservabilitySharedQueriesGetRequestView;
+  view?: ObservabilitySharedQueriesGetRequestView | (string & {});
 }
 export const GetObservabilitySharedQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12816,13 +12675,12 @@ export type ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsI
     | "P99"
     | "P999"
     | "STDDEV"
-    | "VARIANCE"
-    | (string & {});
+    | "VARIANCE";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -12863,12 +12721,12 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -12880,7 +12738,7 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemC
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0Kind =
-  "group" | (string & {});
+  "group";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
@@ -12933,18 +12791,17 @@ export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWo
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -13003,7 +12860,7 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList 
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItemType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
@@ -13030,7 +12887,7 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItemOperation =
-  "eq" | "neq" | "gt" | "gte" | "lt" | "lte" | (string & {});
+  "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -13076,7 +12933,7 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersOrderByOrder =
-  "asc" | "desc" | (string & {});
+  "asc" | "desc";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
@@ -13184,8 +13041,7 @@ export const ObservabilitySharedQueriesGetResponseRunQuery =
 
 export type ObservabilitySharedQueriesGetResponseRunStatus =
   | "STARTED"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const ObservabilitySharedQueriesGetResponseRunStatus =
   /*@__PURE__*/ S.String;
 
@@ -13815,8 +13671,7 @@ export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0Eve
     | "jsrpc"
     | "websocket"
     | "workflow"
-    | "unknown"
-    | (string & {});
+    | "unknown";
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventType =
   /*@__PURE__*/ S.String;
 
@@ -13829,7 +13684,7 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0Ev
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0ExecutionModel =
-  "durableObject" | "stateless" | (string & {});
+  "durableObject" | "stateless";
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -13925,8 +13780,7 @@ export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1Eve
     | "jsrpc"
     | "websocket"
     | "workflow"
-    | "unknown"
-    | (string & {});
+    | "unknown";
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventType =
   /*@__PURE__*/ S.String;
 
@@ -13963,7 +13817,7 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1Ev
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1ExecutionModel =
-  "durableObject" | "stateless" | (string & {});
+  "durableObject" | "stateless";
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -14408,8 +14262,7 @@ export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase
     | "jsrpc"
     | "websocket"
     | "workflow"
-    | "unknown"
-    | (string & {});
+    | "unknown";
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventType =
   /*@__PURE__*/ S.String;
 
@@ -14422,7 +14275,7 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCas
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0ExecutionModel =
-  "durableObject" | "stateless" | (string & {});
+  "durableObject" | "stateless";
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -14518,8 +14371,7 @@ export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase
     | "jsrpc"
     | "websocket"
     | "workflow"
-    | "unknown"
-    | (string & {});
+    | "unknown";
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventType =
   /*@__PURE__*/ S.String;
 
@@ -14556,7 +14408,7 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCas
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1ExecutionModel =
-  "durableObject" | "stateless" | (string & {});
+  "durableObject" | "stateless";
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -14975,9 +14827,7 @@ export const GetScriptDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetScriptDeploymentRequest",
 }) as any as S.Schema<GetScriptDeploymentRequest>;
 
-export type ScriptsDeploymentsGetResponseStrategy =
-  | "percentage"
-  | (string & {});
+export type ScriptsDeploymentsGetResponseStrategy = "percentage";
 export const ScriptsDeploymentsGetResponseStrategy = /*@__PURE__*/ S.String;
 
 export interface ScriptsDeploymentsGetResponseVersionsItem {
@@ -15144,9 +14994,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseAnnotations =
     identifier: "ScriptsScriptAndVersionSettingsGetResponseAnnotations",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseAnnotations>;
 
-export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAIType =
-  | "ai"
-  | (string & {});
+export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAIType = "ai";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -15167,7 +15015,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAI =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAI>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchType =
-  "ai_search" | (string & {});
+  "ai_search";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -15195,7 +15043,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearch =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearch>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespaceType =
-  "ai_search_namespace" | (string & {});
+  "ai_search_namespace";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -15220,7 +15068,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNames
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespace>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAnalyticsEngineType =
-  "analytics_engine" | (string & {});
+  "analytics_engine";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -15245,8 +15093,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAnalyticsEngi
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAnalyticsEngine>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssetsType =
-  | "assets"
-  | (string & {});
+  "assets";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -15267,8 +15114,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssets =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssets>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowserType =
-  | "browser"
-  | (string & {});
+  "browser";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -15288,9 +15134,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowser =
     identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowser",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowser>;
 
-export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemD1Type =
-  | "d1"
-  | (string & {});
+export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemD1Type = "d1";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -15317,7 +15161,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemD1 =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemD1>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlobType =
-  "data_blob" | (string & {});
+  "data_blob";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -15342,7 +15186,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlob =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlob>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceType =
-  "dispatch_namespace" | (string & {});
+  "dispatch_namespace";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -15434,7 +15278,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNames
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespace>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespaceType =
-  "durable_object_namespace" | (string & {});
+  "durable_object_namespace";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -15473,7 +15317,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObject
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespace>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemHyperdriveType =
-  "hyperdrive" | (string & {});
+  "hyperdrive";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -15498,8 +15342,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemHyperdrive =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemHyperdrive>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemInheritType =
-  | "inherit"
-  | (string & {});
+  "inherit";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -15526,8 +15369,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemInherit =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemInherit>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemImagesType =
-  | "images"
-  | (string & {});
+  "images";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -15548,8 +15390,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemImages =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemImages>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemJsonType =
-  | "json"
-  | (string & {});
+  "json";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -15573,7 +15414,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemJson =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemJson>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemKVNamespaceType =
-  "kv_namespace" | (string & {});
+  "kv_namespace";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -15598,8 +15439,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemKVNamespace =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemKVNamespace>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemMediaType =
-  | "media"
-  | (string & {});
+  "media";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -15620,7 +15460,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemMedia =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemMedia>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemMTLSCertificateType =
-  "mtls_certificate" | (string & {});
+  "mtls_certificate";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -15645,7 +15485,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemMTLSCertifica
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemMTLSCertificate>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemPlainTextType =
-  "plain_text" | (string & {});
+  "plain_text";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -15670,7 +15510,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemPlainText =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemPlainText>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemPipelinesType =
-  "pipelines" | (string & {});
+  "pipelines";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -15695,8 +15535,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemPipelines =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemPipelines>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemQueueType =
-  | "queue"
-  | (string & {});
+  "queue";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -15742,7 +15581,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimitSimp
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimitSimple>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimitType =
-  "ratelimit" | (string & {});
+  "ratelimit";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -15771,12 +15610,12 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimit =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimit>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketType =
-  "r2_bucket" | (string & {});
+  "r2_bucket";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high" | (string & {});
+  "eu" | "fedramp" | "fedramp-high";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -15806,7 +15645,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2Bucket =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2Bucket>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretTextType =
-  "secret_text" | (string & {});
+  "secret_text";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -15831,7 +15670,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretText =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretText>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailType =
-  "send_email" | (string & {});
+  "send_email";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -15886,8 +15725,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmail =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmail>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemServiceType =
-  | "service"
-  | (string & {});
+  "service";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -15917,7 +15755,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemService =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemService>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlobType =
-  "text_blob" | (string & {});
+  "text_blob";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -15942,7 +15780,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlob =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlob>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemVectorizeType =
-  "vectorize" | (string & {});
+  "vectorize";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -15967,7 +15805,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVectorize =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemVectorize>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadataType =
-  "version_metadata" | (string & {});
+  "version_metadata";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -15989,7 +15827,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetada
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadata>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecretType =
-  "secrets_store_secret" | (string & {});
+  "secrets_store_secret";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -16017,7 +15855,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreS
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecret>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagshipType =
-  "flagship" | (string & {});
+  "flagship";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -16042,12 +15880,12 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagship =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagship>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyFormat =
-  "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
+  "raw" | "pkcs8" | "spki" | "jwk";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyType =
-  "secret_key" | (string & {});
+  "secret_key";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -16059,8 +15897,7 @@ export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsage
     | "deriveKey"
     | "deriveBits"
     | "wrapKey"
-    | "unwrapKey"
-    | (string & {});
+    | "unwrapKey";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -16106,7 +15943,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKey =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKey>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemWorkflowType =
-  "workflow" | (string & {});
+  "workflow";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -16137,7 +15974,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemWorkflow =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemWorkflow>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModuleType =
-  "wasm_module" | (string & {});
+  "wasm_module";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -16162,7 +15999,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModule =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModule>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCServiceType =
-  "vpc_service" | (string & {});
+  "vpc_service";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -16187,7 +16024,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCService =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCService>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetworkType =
-  "vpc_network" | (string & {});
+  "vpc_network";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -16339,8 +16176,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList =
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsValueType =
   | "worker"
-  | "durable-object"
-  | (string & {});
+  | "durable-object";
 export const ScriptsScriptAndVersionSettingsGetResponseExportsValueType =
   /*@__PURE__*/ S.String;
 
@@ -16724,7 +16560,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestin
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept" | (string & {});
+  "authenticated" | "accept";
 export const ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -16786,8 +16622,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservability =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservability>;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementModeMode =
-  | "smart"
-  | (string & {});
+  "smart";
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementModeMode =
   /*@__PURE__*/ S.String;
 
@@ -16844,8 +16679,7 @@ export const ScriptsScriptAndVersionSettingsGetResponsePlacementHost =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementHost>;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase4Mode =
-  | "targeted"
-  | (string & {});
+  "targeted";
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
@@ -16866,8 +16700,7 @@ export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase4 =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase4>;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase5Mode =
-  | "targeted"
-  | (string & {});
+  "targeted";
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
@@ -16888,8 +16721,7 @@ export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase5 =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase5>;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase6Mode =
-  | "targeted"
-  | (string & {});
+  "targeted";
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
@@ -16910,8 +16742,7 @@ export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase6 =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase6>;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase7Mode =
-  | "targeted"
-  | (string & {});
+  "targeted";
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -17049,8 +16880,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseTailConsumersList =
 export type ScriptsScriptAndVersionSettingsGetResponseUsageModel =
   | "standard"
   | "bundled"
-  | "unbound"
-  | (string & {});
+  | "unbound";
 export const ScriptsScriptAndVersionSettingsGetResponseUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -17164,9 +16994,7 @@ export const GetScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetScriptSecretRequest",
 }) as any as S.Schema<GetScriptSecretRequest>;
 
-export type ScriptsSecretsGetResultSecretTextType =
-  | "secret_text"
-  | (string & {});
+export type ScriptsSecretsGetResultSecretTextType = "secret_text";
 export const ScriptsSecretsGetResultSecretTextType = /*@__PURE__*/ S.String;
 
 export interface ScriptsSecretsGetResultSecretText {
@@ -17191,11 +17019,10 @@ export type ScriptsSecretsGetResultSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const ScriptsSecretsGetResultSecretKeyFormat = /*@__PURE__*/ S.String;
 
-export type ScriptsSecretsGetResultSecretKeyType = "secret_key" | (string & {});
+export type ScriptsSecretsGetResultSecretKeyType = "secret_key";
 export const ScriptsSecretsGetResultSecretKeyType = /*@__PURE__*/ S.String;
 
 export type ScriptsSecretsGetResultSecretKeyUsagesItem =
@@ -17206,8 +17033,7 @@ export type ScriptsSecretsGetResultSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey"
-  | (string & {});
+  | "unwrapKey";
 export const ScriptsSecretsGetResultSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -17330,8 +17156,7 @@ export const ScriptsSettingsGetResponseObservabilityTracesDestinationsList =
 
 export type ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -17549,9 +17374,7 @@ export const GetScriptVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetScriptVersionRequest",
 }) as any as S.Schema<GetScriptVersionRequest>;
 
-export type ScriptsVersionsGetResponseResourcesBindingsItemAIType =
-  | "ai"
-  | (string & {});
+export type ScriptsVersionsGetResponseResourcesBindingsItemAIType = "ai";
 export const ScriptsVersionsGetResponseResourcesBindingsItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -17572,8 +17395,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemAI =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemAI>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemAISearchType =
-  | "ai_search"
-  | (string & {});
+  "ai_search";
 export const ScriptsVersionsGetResponseResourcesBindingsItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -17600,7 +17422,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemAISearch =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemAISearch>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemAISearchNamespaceType =
-  "ai_search_namespace" | (string & {});
+  "ai_search_namespace";
 export const ScriptsVersionsGetResponseResourcesBindingsItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -17625,7 +17447,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemAISearchNamespace =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemAISearchNamespace>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemAnalyticsEngineType =
-  "analytics_engine" | (string & {});
+  "analytics_engine";
 export const ScriptsVersionsGetResponseResourcesBindingsItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -17650,8 +17472,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemAnalyticsEngine =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemAnalyticsEngine>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemAssetsType =
-  | "assets"
-  | (string & {});
+  "assets";
 export const ScriptsVersionsGetResponseResourcesBindingsItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -17672,8 +17493,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemAssets =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemAssets>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemBrowserType =
-  | "browser"
-  | (string & {});
+  "browser";
 export const ScriptsVersionsGetResponseResourcesBindingsItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -17693,9 +17513,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemBrowser =
     identifier: "ScriptsVersionsGetResponseResourcesBindingsItemBrowser",
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemBrowser>;
 
-export type ScriptsVersionsGetResponseResourcesBindingsItemD1Type =
-  | "d1"
-  | (string & {});
+export type ScriptsVersionsGetResponseResourcesBindingsItemD1Type = "d1";
 export const ScriptsVersionsGetResponseResourcesBindingsItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -17722,8 +17540,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemD1 =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemD1>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemDataBlobType =
-  | "data_blob"
-  | (string & {});
+  "data_blob";
 export const ScriptsVersionsGetResponseResourcesBindingsItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -17747,7 +17564,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemDataBlob =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemDataBlob>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceType =
-  "dispatch_namespace" | (string & {});
+  "dispatch_namespace";
 export const ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -17839,7 +17656,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespace =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespace>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemDurableObjectNamespaceType =
-  "durable_object_namespace" | (string & {});
+  "durable_object_namespace";
 export const ScriptsVersionsGetResponseResourcesBindingsItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -17878,8 +17695,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemDurableObjectNamespa
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemDurableObjectNamespace>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemHyperdriveType =
-  | "hyperdrive"
-  | (string & {});
+  "hyperdrive";
 export const ScriptsVersionsGetResponseResourcesBindingsItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -17903,8 +17719,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemHyperdrive =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemHyperdrive>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemInheritType =
-  | "inherit"
-  | (string & {});
+  "inherit";
 export const ScriptsVersionsGetResponseResourcesBindingsItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -17931,8 +17746,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemInherit =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemInherit>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemImagesType =
-  | "images"
-  | (string & {});
+  "images";
 export const ScriptsVersionsGetResponseResourcesBindingsItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -17952,9 +17766,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemImages =
     identifier: "ScriptsVersionsGetResponseResourcesBindingsItemImages",
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemImages>;
 
-export type ScriptsVersionsGetResponseResourcesBindingsItemJsonType =
-  | "json"
-  | (string & {});
+export type ScriptsVersionsGetResponseResourcesBindingsItemJsonType = "json";
 export const ScriptsVersionsGetResponseResourcesBindingsItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -17978,8 +17790,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemJson =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemJson>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemKVNamespaceType =
-  | "kv_namespace"
-  | (string & {});
+  "kv_namespace";
 export const ScriptsVersionsGetResponseResourcesBindingsItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -18002,9 +17813,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemKVNamespace =
     identifier: "ScriptsVersionsGetResponseResourcesBindingsItemKVNamespace",
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemKVNamespace>;
 
-export type ScriptsVersionsGetResponseResourcesBindingsItemMediaType =
-  | "media"
-  | (string & {});
+export type ScriptsVersionsGetResponseResourcesBindingsItemMediaType = "media";
 export const ScriptsVersionsGetResponseResourcesBindingsItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -18025,7 +17834,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemMedia =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemMedia>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemMTLSCertificateType =
-  "mtls_certificate" | (string & {});
+  "mtls_certificate";
 export const ScriptsVersionsGetResponseResourcesBindingsItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -18050,8 +17859,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemMTLSCertificate =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemMTLSCertificate>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemPlainTextType =
-  | "plain_text"
-  | (string & {});
+  "plain_text";
 export const ScriptsVersionsGetResponseResourcesBindingsItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -18075,8 +17883,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemPlainText =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemPlainText>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemPipelinesType =
-  | "pipelines"
-  | (string & {});
+  "pipelines";
 export const ScriptsVersionsGetResponseResourcesBindingsItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -18099,9 +17906,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemPipelines =
     identifier: "ScriptsVersionsGetResponseResourcesBindingsItemPipelines",
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemPipelines>;
 
-export type ScriptsVersionsGetResponseResourcesBindingsItemQueueType =
-  | "queue"
-  | (string & {});
+export type ScriptsVersionsGetResponseResourcesBindingsItemQueueType = "queue";
 export const ScriptsVersionsGetResponseResourcesBindingsItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -18147,8 +17952,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemRatelimitSimple =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemRatelimitSimple>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemRatelimitType =
-  | "ratelimit"
-  | (string & {});
+  "ratelimit";
 export const ScriptsVersionsGetResponseResourcesBindingsItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -18175,13 +17979,12 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemRatelimit =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemRatelimit>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemR2BucketType =
-  | "r2_bucket"
-  | (string & {});
+  "r2_bucket";
 export const ScriptsVersionsGetResponseResourcesBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high" | (string & {});
+  "eu" | "fedramp" | "fedramp-high";
 export const ScriptsVersionsGetResponseResourcesBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -18210,8 +18013,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemR2Bucket =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemR2Bucket>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemSecretTextType =
-  | "secret_text"
-  | (string & {});
+  "secret_text";
 export const ScriptsVersionsGetResponseResourcesBindingsItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -18235,8 +18037,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemSecretText =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemSecretText>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemSendEmailType =
-  | "send_email"
-  | (string & {});
+  "send_email";
 export const ScriptsVersionsGetResponseResourcesBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -18290,8 +18091,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemSendEmail =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemSendEmail>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemServiceType =
-  | "service"
-  | (string & {});
+  "service";
 export const ScriptsVersionsGetResponseResourcesBindingsItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -18321,8 +18121,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemService =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemService>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemTextBlobType =
-  | "text_blob"
-  | (string & {});
+  "text_blob";
 export const ScriptsVersionsGetResponseResourcesBindingsItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -18346,8 +18145,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemTextBlob =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemTextBlob>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemVectorizeType =
-  | "vectorize"
-  | (string & {});
+  "vectorize";
 export const ScriptsVersionsGetResponseResourcesBindingsItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -18371,7 +18169,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemVectorize =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemVectorize>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemVersionMetadataType =
-  "version_metadata" | (string & {});
+  "version_metadata";
 export const ScriptsVersionsGetResponseResourcesBindingsItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -18393,7 +18191,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemVersionMetadata =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemVersionMetadata>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemSecretsStoreSecretType =
-  "secrets_store_secret" | (string & {});
+  "secrets_store_secret";
 export const ScriptsVersionsGetResponseResourcesBindingsItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -18421,8 +18219,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemSecretsStoreSecret =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemSecretsStoreSecret>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemFlagshipType =
-  | "flagship"
-  | (string & {});
+  "flagship";
 export const ScriptsVersionsGetResponseResourcesBindingsItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -18449,14 +18246,12 @@ export type ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyType =
-  | "secret_key"
-  | (string & {});
+  "secret_key";
 export const ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -18468,8 +18263,7 @@ export type ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesItem =
     | "deriveKey"
     | "deriveBits"
     | "wrapKey"
-    | "unwrapKey"
-    | (string & {});
+    | "unwrapKey";
 export const ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -18513,8 +18307,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemSecretKey =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemSecretKey>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemWorkflowType =
-  | "workflow"
-  | (string & {});
+  "workflow";
 export const ScriptsVersionsGetResponseResourcesBindingsItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -18544,8 +18337,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemWorkflow =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemWorkflow>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemWasmModuleType =
-  | "wasm_module"
-  | (string & {});
+  "wasm_module";
 export const ScriptsVersionsGetResponseResourcesBindingsItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -18569,8 +18361,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemWasmModule =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemWasmModule>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemVPCServiceType =
-  | "vpc_service"
-  | (string & {});
+  "vpc_service";
 export const ScriptsVersionsGetResponseResourcesBindingsItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -18594,8 +18385,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemVPCService =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemVPCService>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemVPCNetworkType =
-  | "vpc_network"
-  | (string & {});
+  "vpc_network";
 export const ScriptsVersionsGetResponseResourcesBindingsItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -18809,8 +18599,7 @@ export const ScriptsVersionsGetResponseResourcesScriptRuntimeLimits =
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel =
   | "bundled"
   | "unbound"
-  | "standard"
-  | (string & {});
+  | "standard";
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -18883,8 +18672,7 @@ export type ScriptsVersionsGetResponseMetadataSource =
   | "integration"
   | "quick_editor"
   | "playground"
-  | "workersci"
-  | (string & {});
+  | "workersci";
 export const ScriptsVersionsGetResponseMetadataSource = /*@__PURE__*/ S.String;
 
 export interface ScriptsVersionsGetResponseMetadata {
@@ -18974,12 +18762,12 @@ export const ObservabilityTelemetryKeysRequestDatasetsList =
   ) as any as S.Schema<ObservabilityTelemetryKeysRequestDatasetsList>;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -18991,14 +18779,18 @@ export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Fi
   ) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind =
-  "group" | (string & {});
+  "group";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0 {
-  filterCombination: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList;
-  kind: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind;
+  kind:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind
+    | (string & {});
 }
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -19044,18 +18836,17 @@ export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersO
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -19068,11 +18859,17 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWor
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -19113,16 +18910,16 @@ export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList =
     ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem,
   ) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList>;
 
-export type ObservabilityTelemetryKeysRequestFiltersItemCase0Kind =
-  | "group"
-  | (string & {});
+export type ObservabilityTelemetryKeysRequestFiltersItemCase0Kind = "group";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryKeysRequestFiltersItemCase0 {
-  filterCombination: ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList;
-  kind: ObservabilityTelemetryKeysRequestFiltersItemCase0Kind;
+  kind: ObservabilityTelemetryKeysRequestFiltersItemCase0Kind | (string & {});
 }
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -19166,18 +18963,17 @@ export type ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilt
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -19190,11 +18986,17 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilit
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -19328,8 +19130,7 @@ export const KeysObservabilityTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
 export type ObservabilityTelemetryKeysResultItemType =
   | "string"
   | "boolean"
-  | "number"
-  | (string & {});
+  | "number";
 export const ObservabilityTelemetryKeysResultItemType = /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryKeysResultItem {
@@ -19369,24 +19170,23 @@ export const KeysObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeysObservabilityTelemetryResponse",
 }) as any as S.Schema<KeysObservabilityTelemetryResponse>;
 
-export type BetaWorkersListRequestOrder = "asc" | "desc" | (string & {});
+export type BetaWorkersListRequestOrder = "asc" | "desc";
 export const BetaWorkersListRequestOrder = /*@__PURE__*/ S.String;
 
 export type BetaWorkersListRequestOrderBy =
   | "deployed_on"
   | "updated_on"
   | "created_on"
-  | "name"
-  | (string & {});
+  | "name";
 export const BetaWorkersListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListBetaWorkersRequest {
   /** Identifier. */
   accountId: string;
   /** Sort direction. */
-  order?: BetaWorkersListRequestOrder;
+  order?: BetaWorkersListRequestOrder | (string & {});
   /** Property to sort results by. */
-  orderBy?: BetaWorkersListRequestOrderBy;
+  orderBy?: BetaWorkersListRequestOrderBy | (string & {});
   /** Current page. */
   page?: number;
   /** Items per-page. */
@@ -19457,8 +19257,7 @@ export const BetaWorkersListResultItemObservabilityTracesDestinationsList =
 
 export type BetaWorkersListResultItemObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const BetaWorkersListResultItemObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -19847,16 +19646,14 @@ export type BetaWorkersVersionsListResultItemAssetsConfigHtmlHandling =
   | "auto-trailing-slash"
   | "force-trailing-slash"
   | "drop-trailing-slash"
-  | "none"
-  | (string & {});
+  | "none";
 export const BetaWorkersVersionsListResultItemAssetsConfigHtmlHandling =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling =
   | "none"
   | "404-page"
-  | "single-page-application"
-  | (string & {});
+  | "single-page-application";
 export const BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling =
   /*@__PURE__*/ S.String;
 
@@ -19920,9 +19717,7 @@ export const BetaWorkersVersionsListResultItemAssets = /*@__PURE__*/ S.suspend(
   identifier: "BetaWorkersVersionsListResultItemAssets",
 }) as any as S.Schema<BetaWorkersVersionsListResultItemAssets>;
 
-export type BetaWorkersVersionsListResultItemBindingsItemAIType =
-  | "ai"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemBindingsItemAIType = "ai";
 export const BetaWorkersVersionsListResultItemBindingsItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -19943,8 +19738,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemAI =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAI>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemAISearchType =
-  | "ai_search"
-  | (string & {});
+  "ai_search";
 export const BetaWorkersVersionsListResultItemBindingsItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -19971,7 +19765,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemAISearch =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAISearch>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemAISearchNamespaceType =
-  "ai_search_namespace" | (string & {});
+  "ai_search_namespace";
 export const BetaWorkersVersionsListResultItemBindingsItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -19996,8 +19790,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemAISearchNamespace =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAISearchNamespace>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngineType =
-  | "analytics_engine"
-  | (string & {});
+  "analytics_engine";
 export const BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -20020,9 +19813,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngine =
     identifier: "BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngine",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngine>;
 
-export type BetaWorkersVersionsListResultItemBindingsItemAssetsType =
-  | "assets"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemBindingsItemAssetsType = "assets";
 export const BetaWorkersVersionsListResultItemBindingsItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -20043,8 +19834,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemAssets =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAssets>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemBrowserType =
-  | "browser"
-  | (string & {});
+  "browser";
 export const BetaWorkersVersionsListResultItemBindingsItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -20064,9 +19854,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemBrowser =
     identifier: "BetaWorkersVersionsListResultItemBindingsItemBrowser",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemBrowser>;
 
-export type BetaWorkersVersionsListResultItemBindingsItemD1Type =
-  | "d1"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemBindingsItemD1Type = "d1";
 export const BetaWorkersVersionsListResultItemBindingsItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -20093,8 +19881,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemD1 =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemD1>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemDataBlobType =
-  | "data_blob"
-  | (string & {});
+  "data_blob";
 export const BetaWorkersVersionsListResultItemBindingsItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -20118,7 +19905,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemDataBlob =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDataBlob>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceType =
-  "dispatch_namespace" | (string & {});
+  "dispatch_namespace";
 export const BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -20210,7 +19997,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemDispatchNamespace =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDispatchNamespace>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespaceType =
-  "durable_object_namespace" | (string & {});
+  "durable_object_namespace";
 export const BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -20249,8 +20036,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespace
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespace>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemHyperdriveType =
-  | "hyperdrive"
-  | (string & {});
+  "hyperdrive";
 export const BetaWorkersVersionsListResultItemBindingsItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -20274,8 +20060,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemHyperdrive =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemHyperdrive>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemInheritType =
-  | "inherit"
-  | (string & {});
+  "inherit";
 export const BetaWorkersVersionsListResultItemBindingsItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -20301,9 +20086,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemInherit =
     identifier: "BetaWorkersVersionsListResultItemBindingsItemInherit",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemInherit>;
 
-export type BetaWorkersVersionsListResultItemBindingsItemImagesType =
-  | "images"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemBindingsItemImagesType = "images";
 export const BetaWorkersVersionsListResultItemBindingsItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -20323,9 +20106,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemImages =
     identifier: "BetaWorkersVersionsListResultItemBindingsItemImages",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemImages>;
 
-export type BetaWorkersVersionsListResultItemBindingsItemJsonType =
-  | "json"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemBindingsItemJsonType = "json";
 export const BetaWorkersVersionsListResultItemBindingsItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -20349,8 +20130,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemJson =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemJson>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemKVNamespaceType =
-  | "kv_namespace"
-  | (string & {});
+  "kv_namespace";
 export const BetaWorkersVersionsListResultItemBindingsItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -20373,9 +20153,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemKVNamespace =
     identifier: "BetaWorkersVersionsListResultItemBindingsItemKVNamespace",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemKVNamespace>;
 
-export type BetaWorkersVersionsListResultItemBindingsItemMediaType =
-  | "media"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemBindingsItemMediaType = "media";
 export const BetaWorkersVersionsListResultItemBindingsItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -20396,8 +20174,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemMedia =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemMedia>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemMTLSCertificateType =
-  | "mtls_certificate"
-  | (string & {});
+  "mtls_certificate";
 export const BetaWorkersVersionsListResultItemBindingsItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -20421,8 +20198,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemMTLSCertificate =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemMTLSCertificate>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemPlainTextType =
-  | "plain_text"
-  | (string & {});
+  "plain_text";
 export const BetaWorkersVersionsListResultItemBindingsItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -20446,8 +20222,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemPlainText =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemPlainText>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemPipelinesType =
-  | "pipelines"
-  | (string & {});
+  "pipelines";
 export const BetaWorkersVersionsListResultItemBindingsItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -20470,9 +20245,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemPipelines =
     identifier: "BetaWorkersVersionsListResultItemBindingsItemPipelines",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemPipelines>;
 
-export type BetaWorkersVersionsListResultItemBindingsItemQueueType =
-  | "queue"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemBindingsItemQueueType = "queue";
 export const BetaWorkersVersionsListResultItemBindingsItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -20517,8 +20290,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemRatelimitSimple =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemRatelimitSimple>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemRatelimitType =
-  | "ratelimit"
-  | (string & {});
+  "ratelimit";
 export const BetaWorkersVersionsListResultItemBindingsItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -20545,16 +20317,14 @@ export const BetaWorkersVersionsListResultItemBindingsItemRatelimit =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemRatelimit>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemR2BucketType =
-  | "r2_bucket"
-  | (string & {});
+  "r2_bucket";
 export const BetaWorkersVersionsListResultItemBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsListResultItemBindingsItemR2BucketJurisdiction =
   | "eu"
   | "fedramp"
-  | "fedramp-high"
-  | (string & {});
+  | "fedramp-high";
 export const BetaWorkersVersionsListResultItemBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -20583,8 +20353,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemR2Bucket =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemR2Bucket>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSecretTextType =
-  | "secret_text"
-  | (string & {});
+  "secret_text";
 export const BetaWorkersVersionsListResultItemBindingsItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -20608,8 +20377,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemSecretText =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretText>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSendEmailType =
-  | "send_email"
-  | (string & {});
+  "send_email";
 export const BetaWorkersVersionsListResultItemBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -20663,8 +20431,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemSendEmail =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSendEmail>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemServiceType =
-  | "service"
-  | (string & {});
+  "service";
 export const BetaWorkersVersionsListResultItemBindingsItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -20694,8 +20461,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemService =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemService>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemTextBlobType =
-  | "text_blob"
-  | (string & {});
+  "text_blob";
 export const BetaWorkersVersionsListResultItemBindingsItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -20719,8 +20485,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemTextBlob =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemTextBlob>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemVectorizeType =
-  | "vectorize"
-  | (string & {});
+  "vectorize";
 export const BetaWorkersVersionsListResultItemBindingsItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -20744,8 +20509,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemVectorize =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVectorize>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemVersionMetadataType =
-  | "version_metadata"
-  | (string & {});
+  "version_metadata";
 export const BetaWorkersVersionsListResultItemBindingsItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -20766,7 +20530,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemVersionMetadata =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVersionMetadata>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecretType =
-  "secrets_store_secret" | (string & {});
+  "secrets_store_secret";
 export const BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -20794,8 +20558,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecret =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecret>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemFlagshipType =
-  | "flagship"
-  | (string & {});
+  "flagship";
 export const BetaWorkersVersionsListResultItemBindingsItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -20822,14 +20585,12 @@ export type BetaWorkersVersionsListResultItemBindingsItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const BetaWorkersVersionsListResultItemBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSecretKeyType =
-  | "secret_key"
-  | (string & {});
+  "secret_key";
 export const BetaWorkersVersionsListResultItemBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -20841,8 +20602,7 @@ export type BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey"
-  | (string & {});
+  | "unwrapKey";
 export const BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -20885,8 +20645,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemSecretKey =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretKey>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemWorkflowType =
-  | "workflow"
-  | (string & {});
+  "workflow";
 export const BetaWorkersVersionsListResultItemBindingsItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -20916,8 +20675,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemWorkflow =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemWorkflow>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemWasmModuleType =
-  | "wasm_module"
-  | (string & {});
+  "wasm_module";
 export const BetaWorkersVersionsListResultItemBindingsItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -20941,8 +20699,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemWasmModule =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemWasmModule>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemVPCServiceType =
-  | "vpc_service"
-  | (string & {});
+  "vpc_service";
 export const BetaWorkersVersionsListResultItemBindingsItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -20966,8 +20723,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemVPCService =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVPCService>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemVPCNetworkType =
-  | "vpc_network"
-  | (string & {});
+  "vpc_network";
 export const BetaWorkersVersionsListResultItemBindingsItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -21484,9 +21240,7 @@ export const BetaWorkersVersionsListResultItemPackageDependenciesList =
     BetaWorkersVersionsListResultItemPackageDependenciesItem,
   ) as any as S.Schema<BetaWorkersVersionsListResultItemPackageDependenciesList>;
 
-export type BetaWorkersVersionsListResultItemPlacementModeMode =
-  | "smart"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemPlacementModeMode = "smart";
 export const BetaWorkersVersionsListResultItemPlacementModeMode =
   /*@__PURE__*/ S.String;
 
@@ -21542,9 +21296,7 @@ export const BetaWorkersVersionsListResultItemPlacementHost =
     identifier: "BetaWorkersVersionsListResultItemPlacementHost",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementHost>;
 
-export type BetaWorkersVersionsListResultItemPlacementCase4Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemPlacementCase4Mode = "targeted";
 export const BetaWorkersVersionsListResultItemPlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
@@ -21564,9 +21316,7 @@ export const BetaWorkersVersionsListResultItemPlacementCase4 =
     identifier: "BetaWorkersVersionsListResultItemPlacementCase4",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase4>;
 
-export type BetaWorkersVersionsListResultItemPlacementCase5Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemPlacementCase5Mode = "targeted";
 export const BetaWorkersVersionsListResultItemPlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
@@ -21586,9 +21336,7 @@ export const BetaWorkersVersionsListResultItemPlacementCase5 =
     identifier: "BetaWorkersVersionsListResultItemPlacementCase5",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase5>;
 
-export type BetaWorkersVersionsListResultItemPlacementCase6Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemPlacementCase6Mode = "targeted";
 export const BetaWorkersVersionsListResultItemPlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
@@ -21608,9 +21356,7 @@ export const BetaWorkersVersionsListResultItemPlacementCase6 =
     identifier: "BetaWorkersVersionsListResultItemPlacementCase6",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase6>;
 
-export type BetaWorkersVersionsListResultItemPlacementCase7Mode =
-  | "targeted"
-  | (string & {});
+export type BetaWorkersVersionsListResultItemPlacementCase7Mode = "targeted";
 export const BetaWorkersVersionsListResultItemPlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -21713,8 +21459,7 @@ export const BetaWorkersVersionsListResultItemPlacement =
 export type BetaWorkersVersionsListResultItemUsageModel =
   | "standard"
   | "bundled"
-  | "unbound"
-  | (string & {});
+  | "unbound";
 export const BetaWorkersVersionsListResultItemUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -21910,23 +21655,17 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsResponse",
 }) as any as S.Schema<ListDomainsResponse>;
 
-export type ObservabilityDestinationsListRequestOrder =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type ObservabilityDestinationsListRequestOrder = "asc" | "desc";
 export const ObservabilityDestinationsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type ObservabilityDestinationsListRequestOrderBy =
-  | "created"
-  | "updated"
-  | (string & {});
+export type ObservabilityDestinationsListRequestOrderBy = "created" | "updated";
 export const ObservabilityDestinationsListRequestOrderBy =
   /*@__PURE__*/ S.String;
 
 export interface ListObservabilityDestinationsRequest {
   accountId: string;
-  order?: ObservabilityDestinationsListRequestOrder;
-  orderBy?: ObservabilityDestinationsListRequestOrderBy;
+  order?: ObservabilityDestinationsListRequestOrder | (string & {});
+  orderBy?: ObservabilityDestinationsListRequestOrderBy | (string & {});
   page?: number;
   perPage?: number;
 }
@@ -21981,16 +21720,12 @@ export const ObservabilityDestinationsListResultItemConfigurationJobStatus =
   }) as any as S.Schema<ObservabilityDestinationsListResultItemConfigurationJobStatus>;
 
 export type ObservabilityDestinationsListResultItemConfigurationLogpushDataset =
-    | "opentelemetry-traces"
-    | "opentelemetry-logs"
-    | "opentelemetry-metrics"
-    | (string & {});
+  "opentelemetry-traces" | "opentelemetry-logs" | "opentelemetry-metrics";
 export const ObservabilityDestinationsListResultItemConfigurationLogpushDataset =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityDestinationsListResultItemConfigurationType =
-  | "logpush"
-  | (string & {});
+  "logpush";
 export const ObservabilityDestinationsListResultItemConfigurationType =
   /*@__PURE__*/ S.String;
 
@@ -22066,22 +21801,16 @@ export const ListObservabilityDestinationsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListObservabilityDestinationsResponse",
 }) as any as S.Schema<ListObservabilityDestinationsResponse>;
 
-export type ObservabilityQueriesListRequestOrder =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type ObservabilityQueriesListRequestOrder = "asc" | "desc";
 export const ObservabilityQueriesListRequestOrder = /*@__PURE__*/ S.String;
 
-export type ObservabilityQueriesListRequestOrderBy =
-  | "created"
-  | "updated"
-  | (string & {});
+export type ObservabilityQueriesListRequestOrderBy = "created" | "updated";
 export const ObservabilityQueriesListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListObservabilityQueriesRequest {
   accountId: string;
-  order?: ObservabilityQueriesListRequestOrder;
-  orderBy?: ObservabilityQueriesListRequestOrderBy;
+  order?: ObservabilityQueriesListRequestOrder | (string & {});
+  orderBy?: ObservabilityQueriesListRequestOrderBy | (string & {});
   page?: number;
   perPage?: number;
 }
@@ -22143,13 +21872,12 @@ export type ObservabilityQueriesListResultItemParametersCalculationsItemOperator
     | "P99"
     | "P999"
     | "STDDEV"
-    | "VARIANCE"
-    | (string & {});
+    | "VARIANCE";
 export const ObservabilityQueriesListResultItemParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesListResultItemParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityQueriesListResultItemParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -22192,13 +21920,12 @@ export type ObservabilityQueriesListResultItemParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
-  | "OR"
-  | (string & {});
+  | "OR";
 export const ObservabilityQueriesListResultItemParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesListResultItemParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityQueriesListResultItemParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -22210,8 +21937,7 @@ export const ObservabilityQueriesListResultItemParametersFiltersItemCase0Filters
   ) as any as S.Schema<ObservabilityQueriesListResultItemParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilityQueriesListResultItemParametersFiltersItemCase0Kind =
-  | "group"
-  | (string & {});
+  "group";
 export const ObservabilityQueriesListResultItemParametersFiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
@@ -22263,18 +21989,17 @@ export type ObservabilityQueriesListResultItemParametersFiltersItemWorkersObserv
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -22335,8 +22060,7 @@ export const ObservabilityQueriesListResultItemParametersFiltersList =
 export type ObservabilityQueriesListResultItemParametersGroupBysItemType =
   | "string"
   | "number"
-  | "boolean"
-  | (string & {});
+  | "boolean";
 export const ObservabilityQueriesListResultItemParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
@@ -22367,8 +22091,7 @@ export type ObservabilityQueriesListResultItemParametersHavingsItemOperation =
   | "gt"
   | "gte"
   | "lt"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const ObservabilityQueriesListResultItemParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -22421,8 +22144,7 @@ export const ObservabilityQueriesListResultItemParametersNeedle =
 
 export type ObservabilityQueriesListResultItemParametersOrderByOrder =
   | "asc"
-  | "desc"
-  | (string & {});
+  | "desc";
 export const ObservabilityQueriesListResultItemParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
@@ -22625,8 +22347,7 @@ export const ListScriptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListScriptDeploymentsRequest>;
 
 export type ScriptsDeploymentsListResponseDeploymentsItemStrategy =
-  | "percentage"
-  | (string & {});
+  "percentage";
 export const ScriptsDeploymentsListResponseDeploymentsItemStrategy =
   /*@__PURE__*/ S.String;
 
@@ -22837,8 +22558,7 @@ export const ScriptsListResultItemObservabilityTracesDestinationsList =
 
 export type ScriptsListResultItemObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const ScriptsListResultItemObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -22894,14 +22614,13 @@ export const ScriptsListResultItemObservability = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListResultItemObservability",
 }) as any as S.Schema<ScriptsListResultItemObservability>;
 
-export type ScriptsListResultItemPlacementCase0Mode = "smart" | (string & {});
+export type ScriptsListResultItemPlacementCase0Mode = "smart";
 export const ScriptsListResultItemPlacementCase0Mode = /*@__PURE__*/ S.String;
 
 export type ScriptsListResultItemPlacementCase0Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsListResultItemPlacementCase0Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemPlacementCase0 {
@@ -22925,8 +22644,7 @@ export const ScriptsListResultItemPlacementCase0 = /*@__PURE__*/ S.suspend(() =>
 export type ScriptsListResultItemPlacementCase1Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsListResultItemPlacementCase1Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemPlacementCase1 {
@@ -22950,8 +22668,7 @@ export const ScriptsListResultItemPlacementCase1 = /*@__PURE__*/ S.suspend(() =>
 export type ScriptsListResultItemPlacementCase2Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsListResultItemPlacementCase2Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemPlacementCase2 {
@@ -22975,8 +22692,7 @@ export const ScriptsListResultItemPlacementCase2 = /*@__PURE__*/ S.suspend(() =>
 export type ScriptsListResultItemPlacementCase3Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsListResultItemPlacementCase3Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemPlacementCase3 {
@@ -22997,16 +22713,13 @@ export const ScriptsListResultItemPlacementCase3 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListResultItemPlacementCase3",
 }) as any as S.Schema<ScriptsListResultItemPlacementCase3>;
 
-export type ScriptsListResultItemPlacementCase4Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsListResultItemPlacementCase4Mode = "targeted";
 export const ScriptsListResultItemPlacementCase4Mode = /*@__PURE__*/ S.String;
 
 export type ScriptsListResultItemPlacementCase4Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsListResultItemPlacementCase4Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemPlacementCase4 {
@@ -23030,16 +22743,13 @@ export const ScriptsListResultItemPlacementCase4 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListResultItemPlacementCase4",
 }) as any as S.Schema<ScriptsListResultItemPlacementCase4>;
 
-export type ScriptsListResultItemPlacementCase5Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsListResultItemPlacementCase5Mode = "targeted";
 export const ScriptsListResultItemPlacementCase5Mode = /*@__PURE__*/ S.String;
 
 export type ScriptsListResultItemPlacementCase5Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsListResultItemPlacementCase5Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemPlacementCase5 {
@@ -23063,16 +22773,13 @@ export const ScriptsListResultItemPlacementCase5 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListResultItemPlacementCase5",
 }) as any as S.Schema<ScriptsListResultItemPlacementCase5>;
 
-export type ScriptsListResultItemPlacementCase6Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsListResultItemPlacementCase6Mode = "targeted";
 export const ScriptsListResultItemPlacementCase6Mode = /*@__PURE__*/ S.String;
 
 export type ScriptsListResultItemPlacementCase6Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsListResultItemPlacementCase6Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemPlacementCase6 {
@@ -23096,9 +22803,7 @@ export const ScriptsListResultItemPlacementCase6 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListResultItemPlacementCase6",
 }) as any as S.Schema<ScriptsListResultItemPlacementCase6>;
 
-export type ScriptsListResultItemPlacementCase7Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsListResultItemPlacementCase7Mode = "targeted";
 export const ScriptsListResultItemPlacementCase7Mode = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemPlacementCase7TargetItemRegion {
@@ -23159,8 +22864,7 @@ export const ScriptsListResultItemPlacementCase7TargetList =
 export type ScriptsListResultItemPlacementCase7Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsListResultItemPlacementCase7Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemPlacementCase7 {
@@ -23206,17 +22910,13 @@ export const ScriptsListResultItemPlacement = /*@__PURE__*/ S.Unknown.pipe(
   ]),
 );
 
-export type ScriptsListResultItemPlacementMode =
-  | "smart"
-  | "targeted"
-  | (string & {});
+export type ScriptsListResultItemPlacementMode = "smart" | "targeted";
 export const ScriptsListResultItemPlacementMode = /*@__PURE__*/ S.String;
 
 export type ScriptsListResultItemPlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsListResultItemPlacementStatus = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemRoutesItem {
@@ -23276,8 +22976,7 @@ export const ScriptsListResultItemTailConsumersList = /*@__PURE__*/ S.Array(
 export type ScriptsListResultItemUsageModel =
   | "standard"
   | "bundled"
-  | "unbound"
-  | (string & {});
+  | "unbound";
 export const ScriptsListResultItemUsageModel = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItem {
@@ -23415,9 +23114,7 @@ export const ListScriptSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScriptSecretsRequest",
 }) as any as S.Schema<ListScriptSecretsRequest>;
 
-export type ScriptsSecretsListResultItemSecretTextType =
-  | "secret_text"
-  | (string & {});
+export type ScriptsSecretsListResultItemSecretTextType = "secret_text";
 export const ScriptsSecretsListResultItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -23444,14 +23141,11 @@ export type ScriptsSecretsListResultItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const ScriptsSecretsListResultItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
-export type ScriptsSecretsListResultItemSecretKeyType =
-  | "secret_key"
-  | (string & {});
+export type ScriptsSecretsListResultItemSecretKeyType = "secret_key";
 export const ScriptsSecretsListResultItemSecretKeyType = /*@__PURE__*/ S.String;
 
 export type ScriptsSecretsListResultItemSecretKeyUsagesItem =
@@ -23462,8 +23156,7 @@ export type ScriptsSecretsListResultItemSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey"
-  | (string & {});
+  | "unwrapKey";
 export const ScriptsSecretsListResultItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -23579,8 +23272,7 @@ export type ScriptsVersionsListResponseItemsItemMetadataSource =
   | "integration"
   | "quick_editor"
   | "playground"
-  | "workersci"
-  | (string & {});
+  | "workersci";
 export const ScriptsVersionsListResponseItemsItemMetadataSource =
   /*@__PURE__*/ S.String;
 
@@ -23682,18 +23374,17 @@ export type ObservabilityTelemetryLiveTailRequestFilterCombination =
   | "and"
   | "or"
   | "AND"
-  | "OR"
-  | (string & {});
+  | "OR";
 export const ObservabilityTelemetryLiveTailRequestFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -23705,14 +23396,18 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCas
   ) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind =
-  "group" | (string & {});
+  "group";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0 {
-  filterCombination: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList;
-  kind: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind;
+  kind:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind
+    | (string & {});
 }
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -23758,18 +23453,17 @@ export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWork
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -23782,11 +23476,17 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersIte
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -23827,16 +23527,18 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList =
     ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem,
   ) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList>;
 
-export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind =
-  | "group"
-  | (string & {});
+export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind = "group";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0 {
-  filterCombination: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList;
-  kind: ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind;
+  kind:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind
+    | (string & {});
 }
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -23880,18 +23582,17 @@ export type ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservability
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -23904,11 +23605,17 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservab
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -23952,7 +23659,9 @@ export const ObservabilityTelemetryLiveTailRequestFiltersList =
 export interface LiveTailObservabilityTelemetryRequest {
   accountId: string;
   /** Set a flag to describe how to combine the filters on the query. */
-  filterCombination?: ObservabilityTelemetryLiveTailRequestFilterCombination;
+  filterCombination?:
+    | ObservabilityTelemetryLiveTailRequestFilterCombination
+    | (string & {});
   /** Apply filters to the query. Supports nested groups via kind: 'group'. */
   filters?: ObservabilityTelemetryLiveTailRequestFiltersList;
   scriptId?: string;
@@ -24036,8 +23745,7 @@ export const BetaWorkersEditRequestObservabilityTracesDestinationsList =
 
 export type BetaWorkersEditRequestObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const BetaWorkersEditRequestObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -24051,7 +23759,9 @@ export interface BetaWorkersEditRequestObservabilityTraces {
   /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
-  propagationPolicy?: BetaWorkersEditRequestObservabilityTracesPropagationPolicy;
+  propagationPolicy?:
+    | BetaWorkersEditRequestObservabilityTracesPropagationPolicy
+    | (string & {});
 }
 export const BetaWorkersEditRequestObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -24218,8 +23928,7 @@ export const BetaWorkersEditResponseObservabilityTracesDestinationsList =
 
 export type BetaWorkersEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const BetaWorkersEditResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -24538,15 +24247,13 @@ export const ObservabilityDestinationsUpdateRequestConfigurationHeadersMap =
     S.String,
   ) as any as S.Schema<ObservabilityDestinationsUpdateRequestConfigurationHeadersMap>;
 
-export type ObservabilityDestinationsUpdateRequestConfigurationType =
-  | "logpush"
-  | (string & {});
+export type ObservabilityDestinationsUpdateRequestConfigurationType = "logpush";
 export const ObservabilityDestinationsUpdateRequestConfigurationType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityDestinationsUpdateRequestConfiguration {
   headers: ObservabilityDestinationsUpdateRequestConfigurationHeadersMap;
-  type: ObservabilityDestinationsUpdateRequestConfigurationType;
+  type: ObservabilityDestinationsUpdateRequestConfigurationType | (string & {});
   url: string;
 }
 export const ObservabilityDestinationsUpdateRequestConfiguration =
@@ -24587,16 +24294,12 @@ export const PatchObservabilityDestinationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchObservabilityDestinationRequest>;
 
 export type ObservabilityDestinationsUpdateResponseConfigurationLogpushDataset =
-    | "opentelemetry-traces"
-    | "opentelemetry-logs"
-    | "opentelemetry-metrics"
-    | (string & {});
+  "opentelemetry-traces" | "opentelemetry-logs" | "opentelemetry-metrics";
 export const ObservabilityDestinationsUpdateResponseConfigurationLogpushDataset =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityDestinationsUpdateResponseConfigurationType =
-  | "logpush"
-  | (string & {});
+  "logpush";
 export const ObservabilityDestinationsUpdateResponseConfigurationType =
   /*@__PURE__*/ S.String;
 
@@ -24699,8 +24402,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseAnnotations =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseAnnotations>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemAIType =
-  | "ai"
-  | (string & {});
+  "ai";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -24721,7 +24423,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAI =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAI>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchType =
-  "ai_search" | (string & {});
+  "ai_search";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -24749,7 +24451,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearch =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearch>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespaceType =
-  "ai_search_namespace" | (string & {});
+  "ai_search_namespace";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -24774,7 +24476,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchName
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespace>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngineType =
-  "analytics_engine" | (string & {});
+  "analytics_engine";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -24799,8 +24501,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEng
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngine>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssetsType =
-  | "assets"
-  | (string & {});
+  "assets";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -24821,7 +24522,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssets =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssets>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowserType =
-  "browser" | (string & {});
+  "browser";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -24843,8 +24544,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowser =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowser>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1Type =
-  | "d1"
-  | (string & {});
+  "d1";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -24871,7 +24571,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1 =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlobType =
-  "data_blob" | (string & {});
+  "data_blob";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -24896,7 +24596,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlob =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlob>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceType =
-  "dispatch_namespace" | (string & {});
+  "dispatch_namespace";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -24988,7 +24688,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchName
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespace>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespaceType =
-  "durable_object_namespace" | (string & {});
+  "durable_object_namespace";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -25027,7 +24727,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjec
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespace>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdriveType =
-  "hyperdrive" | (string & {});
+  "hyperdrive";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -25052,7 +24752,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdrive =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdrive>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemInheritType =
-  "inherit" | (string & {});
+  "inherit";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -25080,8 +24780,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemInherit =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemInherit>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemImagesType =
-  | "images"
-  | (string & {});
+  "images";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -25102,8 +24801,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemImages =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemImages>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemJsonType =
-  | "json"
-  | (string & {});
+  "json";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -25127,7 +24825,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemJson =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemJson>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespaceType =
-  "kv_namespace" | (string & {});
+  "kv_namespace";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -25152,8 +24850,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespace 
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespace>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemMediaType =
-  | "media"
-  | (string & {});
+  "media";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -25174,7 +24871,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemMedia =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemMedia>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificateType =
-  "mtls_certificate" | (string & {});
+  "mtls_certificate";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -25199,7 +24896,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertific
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificate>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainTextType =
-  "plain_text" | (string & {});
+  "plain_text";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -25224,7 +24921,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainText =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainText>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelinesType =
-  "pipelines" | (string & {});
+  "pipelines";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -25249,8 +24946,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelines =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelines>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueueType =
-  | "queue"
-  | (string & {});
+  "queue";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -25296,7 +24992,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitSim
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitSimple>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitType =
-  "ratelimit" | (string & {});
+  "ratelimit";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -25325,12 +25021,12 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimit =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimit>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketType =
-  "r2_bucket" | (string & {});
+  "r2_bucket";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high" | (string & {});
+  "eu" | "fedramp" | "fedramp-high";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -25360,7 +25056,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2Bucket =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2Bucket>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretTextType =
-  "secret_text" | (string & {});
+  "secret_text";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -25385,7 +25081,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretText =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretText>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailType =
-  "send_email" | (string & {});
+  "send_email";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -25440,7 +25136,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmail =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmail>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemServiceType =
-  "service" | (string & {});
+  "service";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -25471,7 +25167,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemService =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemService>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlobType =
-  "text_blob" | (string & {});
+  "text_blob";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -25496,7 +25192,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlob =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlob>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorizeType =
-  "vectorize" | (string & {});
+  "vectorize";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -25521,7 +25217,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorize =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorize>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadataType =
-  "version_metadata" | (string & {});
+  "version_metadata";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -25543,7 +25239,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetad
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadata>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecretType =
-  "secrets_store_secret" | (string & {});
+  "secrets_store_secret";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -25571,7 +25267,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStore
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecret>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagshipType =
-  "flagship" | (string & {});
+  "flagship";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -25596,12 +25292,12 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagship =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagship>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyFormat =
-  "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
+  "raw" | "pkcs8" | "spki" | "jwk";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyType =
-  "secret_key" | (string & {});
+  "secret_key";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -25613,8 +25309,7 @@ export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsag
     | "deriveKey"
     | "deriveBits"
     | "wrapKey"
-    | "unwrapKey"
-    | (string & {});
+    | "unwrapKey";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -25660,7 +25355,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKey =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKey>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflowType =
-  "workflow" | (string & {});
+  "workflow";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -25691,7 +25386,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflow =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflow>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModuleType =
-  "wasm_module" | (string & {});
+  "wasm_module";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -25716,7 +25411,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModule =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModule>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCServiceType =
-  "vpc_service" | (string & {});
+  "vpc_service";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -25741,7 +25436,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCService =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCService>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetworkType =
-  "vpc_network" | (string & {});
+  "vpc_network";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -25893,8 +25588,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList =
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsValueType =
   | "worker"
-  | "durable-object"
-  | (string & {});
+  | "durable-object";
 export const ScriptsScriptAndVersionSettingsEditResponseExportsValueType =
   /*@__PURE__*/ S.String;
 
@@ -26278,7 +25972,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDesti
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept" | (string & {});
+  "authenticated" | "accept";
 export const ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -26341,8 +26035,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseObservability =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservability>;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementModeMode =
-  | "smart"
-  | (string & {});
+  "smart";
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementModeMode =
   /*@__PURE__*/ S.String;
 
@@ -26399,8 +26092,7 @@ export const ScriptsScriptAndVersionSettingsEditResponsePlacementHost =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementHost>;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase4Mode =
-  | "targeted"
-  | (string & {});
+  "targeted";
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
@@ -26421,8 +26113,7 @@ export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase4 =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase4>;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase5Mode =
-  | "targeted"
-  | (string & {});
+  "targeted";
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
@@ -26443,8 +26134,7 @@ export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase5 =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase5>;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase6Mode =
-  | "targeted"
-  | (string & {});
+  "targeted";
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
@@ -26465,8 +26155,7 @@ export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase6 =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase6>;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase7Mode =
-  | "targeted"
-  | (string & {});
+  "targeted";
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -26604,8 +26293,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseTailConsumersList =
 export type ScriptsScriptAndVersionSettingsEditResponseUsageModel =
   | "standard"
   | "bundled"
-  | "unbound"
-  | (string & {});
+  | "unbound";
 export const ScriptsScriptAndVersionSettingsEditResponseUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -26735,8 +26423,7 @@ export const ScriptsSettingsEditRequestObservabilityTracesDestinationsList =
 
 export type ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -26750,7 +26437,9 @@ export interface ScriptsSettingsEditRequestObservabilityTraces {
   /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
-  propagationPolicy?: ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy;
+  propagationPolicy?:
+    | ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy
+    | (string & {});
 }
 export const ScriptsSettingsEditRequestObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -26906,8 +26595,7 @@ export const ScriptsSettingsEditResponseObservabilityTracesDestinationsList =
 
 export type ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -27125,7 +26813,7 @@ export const PutDomainResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutDomainResponse",
 }) as any as S.Schema<PutDomainResponse>;
 
-export type ScriptsUpdateRequestBindingsInherit = "strict" | (string & {});
+export type ScriptsUpdateRequestBindingsInherit = "strict";
 export const ScriptsUpdateRequestBindingsInherit = /*@__PURE__*/ S.String;
 
 export interface PutScriptRequest {
@@ -27134,7 +26822,7 @@ export interface PutScriptRequest {
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
   /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped. */
-  bindingsInherit?: ScriptsUpdateRequestBindingsInherit;
+  bindingsInherit?: ScriptsUpdateRequestBindingsInherit | (string & {});
   metadata: PutScriptMetadata;
   /** Module / asset file parts, appended under their own filenames. */
   files?: (File | Blob)[];
@@ -27365,8 +27053,7 @@ export const ScriptsUpdateResponseObservabilityTracesDestinationsList =
 
 export type ScriptsUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const ScriptsUpdateResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -27422,14 +27109,13 @@ export const ScriptsUpdateResponseObservability = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsUpdateResponseObservability",
 }) as any as S.Schema<ScriptsUpdateResponseObservability>;
 
-export type ScriptsUpdateResponsePlacementCase0Mode = "smart" | (string & {});
+export type ScriptsUpdateResponsePlacementCase0Mode = "smart";
 export const ScriptsUpdateResponsePlacementCase0Mode = /*@__PURE__*/ S.String;
 
 export type ScriptsUpdateResponsePlacementCase0Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsUpdateResponsePlacementCase0Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateResponsePlacementCase0 {
@@ -27453,8 +27139,7 @@ export const ScriptsUpdateResponsePlacementCase0 = /*@__PURE__*/ S.suspend(() =>
 export type ScriptsUpdateResponsePlacementCase1Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsUpdateResponsePlacementCase1Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateResponsePlacementCase1 {
@@ -27478,8 +27163,7 @@ export const ScriptsUpdateResponsePlacementCase1 = /*@__PURE__*/ S.suspend(() =>
 export type ScriptsUpdateResponsePlacementCase2Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsUpdateResponsePlacementCase2Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateResponsePlacementCase2 {
@@ -27503,8 +27187,7 @@ export const ScriptsUpdateResponsePlacementCase2 = /*@__PURE__*/ S.suspend(() =>
 export type ScriptsUpdateResponsePlacementCase3Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsUpdateResponsePlacementCase3Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateResponsePlacementCase3 {
@@ -27525,16 +27208,13 @@ export const ScriptsUpdateResponsePlacementCase3 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsUpdateResponsePlacementCase3",
 }) as any as S.Schema<ScriptsUpdateResponsePlacementCase3>;
 
-export type ScriptsUpdateResponsePlacementCase4Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsUpdateResponsePlacementCase4Mode = "targeted";
 export const ScriptsUpdateResponsePlacementCase4Mode = /*@__PURE__*/ S.String;
 
 export type ScriptsUpdateResponsePlacementCase4Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsUpdateResponsePlacementCase4Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateResponsePlacementCase4 {
@@ -27558,16 +27238,13 @@ export const ScriptsUpdateResponsePlacementCase4 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsUpdateResponsePlacementCase4",
 }) as any as S.Schema<ScriptsUpdateResponsePlacementCase4>;
 
-export type ScriptsUpdateResponsePlacementCase5Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsUpdateResponsePlacementCase5Mode = "targeted";
 export const ScriptsUpdateResponsePlacementCase5Mode = /*@__PURE__*/ S.String;
 
 export type ScriptsUpdateResponsePlacementCase5Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsUpdateResponsePlacementCase5Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateResponsePlacementCase5 {
@@ -27591,16 +27268,13 @@ export const ScriptsUpdateResponsePlacementCase5 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsUpdateResponsePlacementCase5",
 }) as any as S.Schema<ScriptsUpdateResponsePlacementCase5>;
 
-export type ScriptsUpdateResponsePlacementCase6Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsUpdateResponsePlacementCase6Mode = "targeted";
 export const ScriptsUpdateResponsePlacementCase6Mode = /*@__PURE__*/ S.String;
 
 export type ScriptsUpdateResponsePlacementCase6Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsUpdateResponsePlacementCase6Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateResponsePlacementCase6 {
@@ -27624,9 +27298,7 @@ export const ScriptsUpdateResponsePlacementCase6 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsUpdateResponsePlacementCase6",
 }) as any as S.Schema<ScriptsUpdateResponsePlacementCase6>;
 
-export type ScriptsUpdateResponsePlacementCase7Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsUpdateResponsePlacementCase7Mode = "targeted";
 export const ScriptsUpdateResponsePlacementCase7Mode = /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateResponsePlacementCase7TargetItemRegion {
@@ -27687,8 +27359,7 @@ export const ScriptsUpdateResponsePlacementCase7TargetList =
 export type ScriptsUpdateResponsePlacementCase7Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsUpdateResponsePlacementCase7Status = /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateResponsePlacementCase7 {
@@ -27734,17 +27405,13 @@ export const ScriptsUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
   ]),
 );
 
-export type ScriptsUpdateResponsePlacementMode =
-  | "smart"
-  | "targeted"
-  | (string & {});
+export type ScriptsUpdateResponsePlacementMode = "smart" | "targeted";
 export const ScriptsUpdateResponsePlacementMode = /*@__PURE__*/ S.String;
 
 export type ScriptsUpdateResponsePlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsUpdateResponsePlacementStatus = /*@__PURE__*/ S.String;
 
 export type ScriptsUpdateResponseTagsList = ReadonlyArray<string>;
@@ -27780,8 +27447,7 @@ export const ScriptsUpdateResponseTailConsumersList = /*@__PURE__*/ S.Array(
 export type ScriptsUpdateResponseUsageModel =
   | "standard"
   | "bundled"
-  | "unbound"
-  | (string & {});
+  | "unbound";
 export const ScriptsUpdateResponseUsageModel = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -28015,8 +27681,7 @@ export const ScriptsContentUpdateResponseObservabilityTracesDestinationsList =
 
 export type ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -28073,17 +27738,14 @@ export const ScriptsContentUpdateResponseObservability =
     identifier: "ScriptsContentUpdateResponseObservability",
   }) as any as S.Schema<ScriptsContentUpdateResponseObservability>;
 
-export type ScriptsContentUpdateResponsePlacementCase0Mode =
-  | "smart"
-  | (string & {});
+export type ScriptsContentUpdateResponsePlacementCase0Mode = "smart";
 export const ScriptsContentUpdateResponsePlacementCase0Mode =
   /*@__PURE__*/ S.String;
 
 export type ScriptsContentUpdateResponsePlacementCase0Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsContentUpdateResponsePlacementCase0Status =
   /*@__PURE__*/ S.String;
 
@@ -28109,8 +27771,7 @@ export const ScriptsContentUpdateResponsePlacementCase0 =
 export type ScriptsContentUpdateResponsePlacementCase1Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsContentUpdateResponsePlacementCase1Status =
   /*@__PURE__*/ S.String;
 
@@ -28136,8 +27797,7 @@ export const ScriptsContentUpdateResponsePlacementCase1 =
 export type ScriptsContentUpdateResponsePlacementCase2Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsContentUpdateResponsePlacementCase2Status =
   /*@__PURE__*/ S.String;
 
@@ -28163,8 +27823,7 @@ export const ScriptsContentUpdateResponsePlacementCase2 =
 export type ScriptsContentUpdateResponsePlacementCase3Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsContentUpdateResponsePlacementCase3Status =
   /*@__PURE__*/ S.String;
 
@@ -28187,17 +27846,14 @@ export const ScriptsContentUpdateResponsePlacementCase3 =
     identifier: "ScriptsContentUpdateResponsePlacementCase3",
   }) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase3>;
 
-export type ScriptsContentUpdateResponsePlacementCase4Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsContentUpdateResponsePlacementCase4Mode = "targeted";
 export const ScriptsContentUpdateResponsePlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
 export type ScriptsContentUpdateResponsePlacementCase4Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsContentUpdateResponsePlacementCase4Status =
   /*@__PURE__*/ S.String;
 
@@ -28223,17 +27879,14 @@ export const ScriptsContentUpdateResponsePlacementCase4 =
     identifier: "ScriptsContentUpdateResponsePlacementCase4",
   }) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase4>;
 
-export type ScriptsContentUpdateResponsePlacementCase5Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsContentUpdateResponsePlacementCase5Mode = "targeted";
 export const ScriptsContentUpdateResponsePlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
 export type ScriptsContentUpdateResponsePlacementCase5Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsContentUpdateResponsePlacementCase5Status =
   /*@__PURE__*/ S.String;
 
@@ -28259,17 +27912,14 @@ export const ScriptsContentUpdateResponsePlacementCase5 =
     identifier: "ScriptsContentUpdateResponsePlacementCase5",
   }) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase5>;
 
-export type ScriptsContentUpdateResponsePlacementCase6Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsContentUpdateResponsePlacementCase6Mode = "targeted";
 export const ScriptsContentUpdateResponsePlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
 export type ScriptsContentUpdateResponsePlacementCase6Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsContentUpdateResponsePlacementCase6Status =
   /*@__PURE__*/ S.String;
 
@@ -28295,9 +27945,7 @@ export const ScriptsContentUpdateResponsePlacementCase6 =
     identifier: "ScriptsContentUpdateResponsePlacementCase6",
   }) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase6>;
 
-export type ScriptsContentUpdateResponsePlacementCase7Mode =
-  | "targeted"
-  | (string & {});
+export type ScriptsContentUpdateResponsePlacementCase7Mode = "targeted";
 export const ScriptsContentUpdateResponsePlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -28359,8 +28007,7 @@ export const ScriptsContentUpdateResponsePlacementCase7TargetList =
 export type ScriptsContentUpdateResponsePlacementCase7Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsContentUpdateResponsePlacementCase7Status =
   /*@__PURE__*/ S.String;
 
@@ -28409,17 +28056,13 @@ export const ScriptsContentUpdateResponsePlacement =
     ]),
   );
 
-export type ScriptsContentUpdateResponsePlacementMode =
-  | "smart"
-  | "targeted"
-  | (string & {});
+export type ScriptsContentUpdateResponsePlacementMode = "smart" | "targeted";
 export const ScriptsContentUpdateResponsePlacementMode = /*@__PURE__*/ S.String;
 
 export type ScriptsContentUpdateResponsePlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
+  | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsContentUpdateResponsePlacementStatus =
   /*@__PURE__*/ S.String;
 
@@ -28457,8 +28100,7 @@ export const ScriptsContentUpdateResponseTailConsumersList =
 export type ScriptsContentUpdateResponseUsageModel =
   | "standard"
   | "bundled"
-  | "unbound"
-  | (string & {});
+  | "unbound";
 export const ScriptsContentUpdateResponseUsageModel = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -28641,18 +28283,14 @@ export const PutScriptScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutScriptScheduleResponse",
 }) as any as S.Schema<PutScriptScheduleResponse>;
 
-export type ScriptsSecretsUpdateRequestType =
-  | "secret_text"
-  | "secret_key"
-  | (string & {});
+export type ScriptsSecretsUpdateRequestType = "secret_text" | "secret_key";
 export const ScriptsSecretsUpdateRequestType = /*@__PURE__*/ S.String;
 
 export type ScriptsSecretsUpdateRequestFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const ScriptsSecretsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 export type ScriptsSecretsUpdateRequestUsagesItem =
@@ -28663,12 +28301,12 @@ export type ScriptsSecretsUpdateRequestUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey"
-  | (string & {});
+  | "unwrapKey";
 export const ScriptsSecretsUpdateRequestUsagesItem = /*@__PURE__*/ S.String;
 
-export type ScriptsSecretsUpdateRequestUsagesList =
-  ReadonlyArray<ScriptsSecretsUpdateRequestUsagesItem>;
+export type ScriptsSecretsUpdateRequestUsagesList = ReadonlyArray<
+  ScriptsSecretsUpdateRequestUsagesItem | (string & {})
+>;
 export const ScriptsSecretsUpdateRequestUsagesList = /*@__PURE__*/ S.Array(
   ScriptsSecretsUpdateRequestUsagesItem,
 ) as any as S.Schema<ScriptsSecretsUpdateRequestUsagesList>;
@@ -28683,11 +28321,11 @@ export interface PutScriptSecretRequest {
   /** The secret value to use. */
   text?: string;
   /** The kind of resource that the binding provides. */
-  type: ScriptsSecretsUpdateRequestType;
+  type: ScriptsSecretsUpdateRequestType | (string & {});
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm?: unknown;
   /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: ScriptsSecretsUpdateRequestFormat;
+  format?: ScriptsSecretsUpdateRequestFormat | (string & {});
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages?: ScriptsSecretsUpdateRequestUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
@@ -28720,9 +28358,7 @@ export const PutScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutScriptSecretRequest",
 }) as any as S.Schema<PutScriptSecretRequest>;
 
-export type ScriptsSecretsUpdateResultSecretTextType =
-  | "secret_text"
-  | (string & {});
+export type ScriptsSecretsUpdateResultSecretTextType = "secret_text";
 export const ScriptsSecretsUpdateResultSecretTextType = /*@__PURE__*/ S.String;
 
 export interface ScriptsSecretsUpdateResultSecretText {
@@ -28748,13 +28384,10 @@ export type ScriptsSecretsUpdateResultSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk"
-  | (string & {});
+  | "jwk";
 export const ScriptsSecretsUpdateResultSecretKeyFormat = /*@__PURE__*/ S.String;
 
-export type ScriptsSecretsUpdateResultSecretKeyType =
-  | "secret_key"
-  | (string & {});
+export type ScriptsSecretsUpdateResultSecretKeyType = "secret_key";
 export const ScriptsSecretsUpdateResultSecretKeyType = /*@__PURE__*/ S.String;
 
 export type ScriptsSecretsUpdateResultSecretKeyUsagesItem =
@@ -28765,8 +28398,7 @@ export type ScriptsSecretsUpdateResultSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey"
-  | (string & {});
+  | "unwrapKey";
 export const ScriptsSecretsUpdateResultSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -28912,25 +28544,28 @@ export type ObservabilityTelemetryQueryRequestParametersCalculationsItemOperator
     | "P99"
     | "P999"
     | "STDDEV"
-    | "VARIANCE"
-    | (string & {});
+    | "VARIANCE";
 export const ObservabilityTelemetryQueryRequestParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryQueryRequestParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryRequestParametersCalculationsItem {
   /** Aggregation operator to apply. Examples: count, avg, sum, min, max, median, p90, p95, p99, uniq, stddev, variance. */
-  operator: ObservabilityTelemetryQueryRequestParametersCalculationsItemOperator;
+  operator:
+    | ObservabilityTelemetryQueryRequestParametersCalculationsItemOperator
+    | (string & {});
   /** Custom label for this calculation in the results. Useful for distinguishing multiple calculations. */
   alias?: string;
   /** Field name to calculate over. Must exist in the data — verify with the keys endpoint. Omit for operators that don't require a key (e.g. count). */
   key?: string;
   /** Data type of the key. Required when key is provided to ensure correct aggregation. */
-  keyType?: ObservabilityTelemetryQueryRequestParametersCalculationsItemKeyType;
+  keyType?:
+    | ObservabilityTelemetryQueryRequestParametersCalculationsItemKeyType
+    | (string & {});
 }
 export const ObservabilityTelemetryQueryRequestParametersCalculationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -28965,18 +28600,17 @@ export type ObservabilityTelemetryQueryRequestParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
-  | "OR"
-  | (string & {});
+  | "OR";
 export const ObservabilityTelemetryQueryRequestParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -28988,14 +28622,18 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Filters
   ) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind =
-  "group" | (string & {});
+  "group";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0 {
-  filterCombination: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList;
-  kind: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind;
+  kind:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind
+    | (string & {});
 }
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -29041,18 +28679,17 @@ export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersI
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -29065,11 +28702,17 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Fil
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -29111,15 +28754,18 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Filters
   ) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Kind =
-  | "group"
-  | (string & {});
+  "group";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0 {
-  filterCombination: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList;
-  kind: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Kind;
+  kind:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Kind
+    | (string & {});
 }
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -29164,18 +28810,17 @@ export type ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObserv
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -29188,11 +28833,17 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersO
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -29236,14 +28887,15 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersList =
 export type ObservabilityTelemetryQueryRequestParametersGroupBysItemType =
   | "string"
   | "number"
-  | "boolean"
-  | (string & {});
+  | "boolean";
 export const ObservabilityTelemetryQueryRequestParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryRequestParametersGroupBysItem {
   /** Data type of the group-by field. */
-  type: ObservabilityTelemetryQueryRequestParametersGroupBysItemType;
+  type:
+    | ObservabilityTelemetryQueryRequestParametersGroupBysItemType
+    | (string & {});
   /** Field name to group results by (e.g. $metadata.service, $metadata.statusCode). */
   value: string;
 }
@@ -29270,8 +28922,7 @@ export type ObservabilityTelemetryQueryRequestParametersHavingsItemOperation =
   | "gt"
   | "gte"
   | "lt"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const ObservabilityTelemetryQueryRequestParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -29279,7 +28930,9 @@ export interface ObservabilityTelemetryQueryRequestParametersHavingsItem {
   /** Calculation alias or operator to filter on after aggregation. */
   key: string;
   /** Numeric comparison operator: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilityTelemetryQueryRequestParametersHavingsItemOperation;
+  operation:
+    | ObservabilityTelemetryQueryRequestParametersHavingsItemOperation
+    | (string & {});
   /** Threshold value to compare the calculation result against. */
   value: number;
 }
@@ -29330,8 +28983,7 @@ export const ObservabilityTelemetryQueryRequestParametersNeedle =
 
 export type ObservabilityTelemetryQueryRequestParametersOrderByOrder =
   | "asc"
-  | "desc"
-  | (string & {});
+  | "desc";
 export const ObservabilityTelemetryQueryRequestParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
@@ -29339,7 +28991,9 @@ export interface ObservabilityTelemetryQueryRequestParametersOrderBy {
   /** Alias of the calculation to order results by. Must match the alias (or operator) of a calculation in the query. */
   value: string;
   /** Sort direction: 'asc' for ascending, 'desc' for descending. */
-  order?: ObservabilityTelemetryQueryRequestParametersOrderByOrder;
+  order?:
+    | ObservabilityTelemetryQueryRequestParametersOrderByOrder
+    | (string & {});
 }
 export const ObservabilityTelemetryQueryRequestParametersOrderBy =
   /*@__PURE__*/ S.suspend(() =>
@@ -29359,7 +29013,9 @@ export interface ObservabilityTelemetryQueryRequestParameters {
   /** Datasets to query. Leave empty to query all available datasets. */
   datasets?: ObservabilityTelemetryQueryRequestParametersDatasetsList;
   /** Logical operator for combining top-level filters: 'and' (all must match) or 'or' (any must match). Defaults to 'and'. */
-  filterCombination?: ObservabilityTelemetryQueryRequestParametersFilterCombination;
+  filterCombination?:
+    | ObservabilityTelemetryQueryRequestParametersFilterCombination
+    | (string & {});
   /** Filters to narrow query results. Use the keys and values endpoints to discover available fields before building filters. Supports nested groups via kind: 'group'. Maximum nesting depth is 4. */
   filters?: ObservabilityTelemetryQueryRequestParametersFiltersList;
   /** Fields to group calculation results by. Only applicable when the query view is 'calculations'. Produces per-group aggregate values. */
@@ -29408,8 +29064,7 @@ export type ObservabilityTelemetryQueryRequestView =
   | "calculations"
   | "invocations"
   | "requests"
-  | "agents"
-  | (string & {});
+  | "agents";
 export const ObservabilityTelemetryQueryRequestView = /*@__PURE__*/ S.String;
 
 export interface QueryObservabilityTelemetryRequest {
@@ -29439,7 +29094,7 @@ export interface QueryObservabilityTelemetryRequest {
   /** Query parameters defining what data to retrieve — filters, calculations, group-bys, and ordering. In practice this should always be provided for ad-hoc queries. Only omit when executing a previously saved query by queryId. Use the keys and values endpoints to discover available fields before building filters. */
   parameters?: ObservabilityTelemetryQueryRequestParameters;
   /** Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': Durable Object agent summaries. */
-  view?: ObservabilityTelemetryQueryRequestView;
+  view?: ObservabilityTelemetryQueryRequestView | (string & {});
 }
 export const QueryObservabilityTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -29508,13 +29163,12 @@ export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsIte
     | "P99"
     | "P999"
     | "STDDEV"
-    | "VARIANCE"
-    | (string & {});
+    | "VARIANCE";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -29555,12 +29209,12 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -29572,7 +29226,7 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCas
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0Kind =
-  "group" | (string & {});
+  "group";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
@@ -29625,18 +29279,17 @@ export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWork
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -29695,7 +29348,7 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItemType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
@@ -29722,7 +29375,7 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItemOperation =
-  "eq" | "neq" | "gt" | "gte" | "lt" | "lte" | (string & {});
+  "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -29769,8 +29422,7 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersNeedle =
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersOrderByOrder =
   | "asc"
-  | "desc"
-  | (string & {});
+  | "desc";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
@@ -29877,8 +29529,7 @@ export const ObservabilityTelemetryQueryResponseRunQuery =
 
 export type ObservabilityTelemetryQueryResponseRunStatus =
   | "STARTED"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const ObservabilityTelemetryQueryResponseRunStatus =
   /*@__PURE__*/ S.String;
 
@@ -30505,8 +30156,7 @@ export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0Event
     | "jsrpc"
     | "websocket"
     | "workflow"
-    | "unknown"
-    | (string & {});
+    | "unknown";
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventType =
   /*@__PURE__*/ S.String;
 
@@ -30519,7 +30169,7 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0Even
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventMap>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0ExecutionModel =
-  "durableObject" | "stateless" | (string & {});
+  "durableObject" | "stateless";
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -30615,8 +30265,7 @@ export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1Event
     | "jsrpc"
     | "websocket"
     | "workflow"
-    | "unknown"
-    | (string & {});
+    | "unknown";
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventType =
   /*@__PURE__*/ S.String;
 
@@ -30653,7 +30302,7 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1Even
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventMap>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1ExecutionModel =
-  "durableObject" | "stateless" | (string & {});
+  "durableObject" | "stateless";
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -31100,8 +30749,7 @@ export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0E
     | "jsrpc"
     | "websocket"
     | "workflow"
-    | "unknown"
-    | (string & {});
+    | "unknown";
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventType =
   /*@__PURE__*/ S.String;
 
@@ -31114,7 +30762,7 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventMap>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0ExecutionModel =
-  "durableObject" | "stateless" | (string & {});
+  "durableObject" | "stateless";
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -31210,8 +30858,7 @@ export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1E
     | "jsrpc"
     | "websocket"
     | "workflow"
-    | "unknown"
-    | (string & {});
+    | "unknown";
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventType =
   /*@__PURE__*/ S.String;
 
@@ -31248,7 +30895,7 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventMap>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1ExecutionModel =
-  "durableObject" | "stateless" | (string & {});
+  "durableObject" | "stateless";
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -31538,11 +31185,7 @@ export const QueryObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryObservabilityTelemetryResponse",
 }) as any as S.Schema<QueryObservabilityTelemetryResponse>;
 
-export type ScriptsSearchRequestOrderBy =
-  | "created_on"
-  | "modified_on"
-  | "name"
-  | (string & {});
+export type ScriptsSearchRequestOrderBy = "created_on" | "modified_on" | "name";
 export const ScriptsSearchRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface SearchScriptRequest {
@@ -31553,7 +31196,7 @@ export interface SearchScriptRequest {
   /** Worker name to search for. Both exact and partial matches are returned. */
   name?: string;
   /** Property to sort results by. Results are sorted in ascending order. */
-  orderBy?: ScriptsSearchRequestOrderBy;
+  orderBy?: ScriptsSearchRequestOrderBy | (string & {});
   /** Current page. */
   page?: number;
   /** Items per page. */
@@ -31667,8 +31310,7 @@ export const BetaWorkersUpdateRequestObservabilityTracesDestinationsList =
 
 export type BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -31682,7 +31324,9 @@ export interface BetaWorkersUpdateRequestObservabilityTraces {
   /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
-  propagationPolicy?: BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy;
+  propagationPolicy?:
+    | BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy
+    | (string & {});
 }
 export const BetaWorkersUpdateRequestObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -31850,8 +31494,7 @@ export const BetaWorkersUpdateResponseObservabilityTracesDestinationsList =
 
 export type BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
-  | "accept"
-  | (string & {});
+  | "accept";
 export const BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -32233,17 +31876,16 @@ export const ObservabilityTelemetryValuesRequestTimeframe =
 export type ObservabilityTelemetryValuesRequestType =
   | "string"
   | "boolean"
-  | "number"
-  | (string & {});
+  | "number";
 export const ObservabilityTelemetryValuesRequestType = /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR" | (string & {});
+  "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -32255,14 +31897,18 @@ export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0
   ) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind =
-  "group" | (string & {});
+  "group";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0 {
-  filterCombination: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList;
-  kind: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind;
+  kind:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind
+    | (string & {});
 }
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -32308,18 +31954,17 @@ export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorker
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -32332,11 +31977,17 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemW
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -32377,16 +32028,16 @@ export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList =
     ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem,
   ) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList>;
 
-export type ObservabilityTelemetryValuesRequestFiltersItemCase0Kind =
-  | "group"
-  | (string & {});
+export type ObservabilityTelemetryValuesRequestFiltersItemCase0Kind = "group";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0Kind =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryValuesRequestFiltersItemCase0 {
-  filterCombination: ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination;
+  filterCombination:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination
+    | (string & {});
   filters: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList;
-  kind: ObservabilityTelemetryValuesRequestFiltersItemCase0Kind;
+  kind: ObservabilityTelemetryValuesRequestFiltersItemCase0Kind | (string & {});
 }
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -32430,18 +32081,17 @@ export type ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFi
     | "IN"
     | "NOT_IN"
     | "STARTS_WITH"
-    | "ENDS_WITH"
-    | (string & {});
+    | "ENDS_WITH";
 export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean" | (string & {});
+  "string" | "number" | "boolean";
 export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind =
-  "filter" | (string & {});
+  "filter";
 export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind =
   /*@__PURE__*/ S.String;
 
@@ -32454,11 +32104,17 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabil
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
   key: string;
   /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafOperation;
+  operation:
+    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
   /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType;
+  type:
+    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -32531,7 +32187,7 @@ export interface ValuesObservabilityTelemetryRequest {
   datasets: ObservabilityTelemetryValuesRequestDatasetsList;
   key: string;
   timeframe: ObservabilityTelemetryValuesRequestTimeframe;
-  type: ObservabilityTelemetryValuesRequestType;
+  type: ObservabilityTelemetryValuesRequestType | (string & {});
   /** Apply filters before listing values. Supports nested groups via kind: 'group'. Maximum nesting depth is 4. */
   filters?: ObservabilityTelemetryValuesRequestFiltersList;
   limit?: number;
@@ -32564,8 +32220,7 @@ export const ValuesObservabilityTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
 export type ObservabilityTelemetryValuesResultItemType =
   | "string"
   | "boolean"
-  | "number"
-  | (string & {});
+  | "number";
 export const ObservabilityTelemetryValuesResultItemType =
   /*@__PURE__*/ S.String;
 

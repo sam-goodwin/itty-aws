@@ -13,15 +13,11 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** OSType to be used to specify OS type for the VMs. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows' */
-export type OSType = "Linux" | "Windows" | (string & {});
+export type OSType = "Linux" | "Windows";
 export const OSType = /*@__PURE__*/ S.String;
 
 /** Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows. */
-export type OSSKU =
-  | "CBLMariner"
-  | "Windows2019"
-  | "Windows2022"
-  | (string & {});
+export type OSSKU = "CBLMariner" | "Windows2019" | "Windows2022";
 export const OSSKU = /*@__PURE__*/ S.String;
 
 /** The node labels to be persisted across all nodes in agent pool. */
@@ -79,8 +75,8 @@ export const AgentPoolPropertiesInputStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of the agent pool resource */
 export interface AgentPoolPropertiesInput {
-  osType?: OSType;
-  osSKU?: OSSKU;
+  osType?: OSType | (string & {});
+  osSKU?: OSSKU | (string & {});
   /** The node labels to be persisted across all nodes in agent pool. */
   nodeLabels?: AgentPoolPropertiesInputNodeLabelsMap;
   /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
@@ -128,7 +124,7 @@ export const AgentPoolCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AgentPoolCreateOrUpdateRequestTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
-export type ExtendedLocationType = "CustomLocation" | (string & {});
+export type ExtendedLocationType = "CustomLocation";
 export const ExtendedLocationType = /*@__PURE__*/ S.String;
 
 /** Extended location pointing to the underlying infrastructure */
@@ -181,8 +177,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -190,8 +185,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -245,8 +239,7 @@ export type ProvisioningState =
   | "Deleting"
   | "Updating"
   | "Upgrading"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Profile for agent pool properties that can be updated */
@@ -607,10 +600,7 @@ export const GetKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetKubernetesVersionsRequest>;
 
 /** The particular KubernetesVersion Image OS Type (Linux, Windows) */
-export type KubernetesVersionReadinessOsType =
-  | "Windows"
-  | "Linux"
-  | (string & {});
+export type KubernetesVersionReadinessOsType = "Windows" | "Linux";
 export const KubernetesVersionReadinessOsType = /*@__PURE__*/ S.String;
 
 /** Indicates whether the kubernetes version image is ready or not */
@@ -1194,11 +1184,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1338,7 +1328,7 @@ export const NetworkProfileLoadBalancerProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkProfileLoadBalancerProfile>;
 
 /** Network policy used for building Kubernetes network. Possible values include: 'calico'. */
-export type NetworkProfileNetworkPolicy = "calico" | (string & {});
+export type NetworkProfileNetworkPolicy = "calico";
 export const NetworkProfileNetworkPolicy = /*@__PURE__*/ S.String;
 
 /** The network configuration profile for the provisioned cluster. */
@@ -1428,8 +1418,8 @@ export const NamedAgentPoolProfileInputNodeTaintsList = /*@__PURE__*/ S.Array(
 
 /** Profile of the default agent pool along with a name parameter */
 export interface NamedAgentPoolProfileInput {
-  osType?: OSType;
-  osSKU?: OSSKU;
+  osType?: OSType | (string & {});
+  osSKU?: OSSKU | (string & {});
   /** The node labels to be persisted across all nodes in agent pool. */
   nodeLabels?: NamedAgentPoolProfileInputNodeLabelsMap;
   /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
@@ -1516,8 +1506,7 @@ export const CloudProviderProfile = /*@__PURE__*/ S.suspend(() =>
 export type ProvisionedClusterLicenseProfileAzureHybridBenefit =
   | "True"
   | "False"
-  | "NotApplicable"
-  | (string & {});
+  | "NotApplicable";
 export const ProvisionedClusterLicenseProfileAzureHybridBenefit =
   /*@__PURE__*/ S.String;
 
@@ -1541,8 +1530,7 @@ export type ProvisionedClusterPropertiesInputAutoScalerProfileExpander =
   | "least-waste"
   | "most-pods"
   | "priority"
-  | "random"
-  | (string & {});
+  | "random";
 export const ProvisionedClusterPropertiesInputAutoScalerProfileExpander =
   /*@__PURE__*/ S.String;
 
@@ -1551,7 +1539,9 @@ export interface ProvisionedClusterPropertiesInputAutoScalerProfile {
   /** Valid values are 'true' and 'false' */
   balance_similar_node_groups?: string;
   /** If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information. */
-  expander?: ProvisionedClusterPropertiesInputAutoScalerProfileExpander;
+  expander?:
+    | ProvisionedClusterPropertiesInputAutoScalerProfileExpander
+    | (string & {});
   /** The default is 10. */
   max_empty_bulk_delete?: string;
   /** The default is 600. */
@@ -1784,8 +1774,7 @@ export type AddonStatusProfilePhase =
   | "provisioned"
   | "deleting"
   | "failed"
-  | "upgrading"
-  | (string & {});
+  | "upgrading";
 export const AddonStatusProfilePhase = /*@__PURE__*/ S.String;
 
 /** The status profile of the addons and other kubernetes components */
@@ -1844,8 +1833,7 @@ export type ProvisionedClusterPropertiesAutoScalerProfileExpander =
   | "least-waste"
   | "most-pods"
   | "priority"
-  | "random"
-  | (string & {});
+  | "random";
 export const ProvisionedClusterPropertiesAutoScalerProfileExpander =
   /*@__PURE__*/ S.String;
 
@@ -2640,15 +2628,16 @@ export const VirtualNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksCreateOrUpdateRequestExtendedLocationType =
-  | "CustomLocation"
-  | (string & {});
+  "CustomLocation";
 export const VirtualNetworksCreateOrUpdateRequestExtendedLocationType =
   /*@__PURE__*/ S.String;
 
 /** Extended location pointing to the underlying infrastructure */
 export interface VirtualNetworksCreateOrUpdateRequestExtendedLocation {
   /** The extended location type. Allowed value: 'CustomLocation' */
-  type?: VirtualNetworksCreateOrUpdateRequestExtendedLocationType;
+  type?:
+    | VirtualNetworksCreateOrUpdateRequestExtendedLocationType
+    | (string & {});
   /** ARM Id of the extended location. */
   name?: string;
 }
@@ -2805,8 +2794,7 @@ export type VirtualNetworkPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const VirtualNetworkPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The error if any from the operation. */
@@ -2896,8 +2884,7 @@ export const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksCreateOrUpdateResponseExtendedLocationType =
-  | "CustomLocation"
-  | (string & {});
+  "CustomLocation";
 export const VirtualNetworksCreateOrUpdateResponseExtendedLocationType =
   /*@__PURE__*/ S.String;
 
@@ -3018,9 +3005,7 @@ export const VirtualNetworkTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VirtualNetworkTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
-export type VirtualNetworkExtendedLocationType =
-  | "CustomLocation"
-  | (string & {});
+export type VirtualNetworkExtendedLocationType = "CustomLocation";
 export const VirtualNetworkExtendedLocationType = /*@__PURE__*/ S.String;
 
 /** Extended location pointing to the underlying infrastructure */
@@ -3145,8 +3130,7 @@ export const VirtualNetworksRetrieveResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksRetrieveResponseExtendedLocationType =
-  | "CustomLocation"
-  | (string & {});
+  "CustomLocation";
 export const VirtualNetworksRetrieveResponseExtendedLocationType =
   /*@__PURE__*/ S.String;
 
@@ -3249,8 +3233,7 @@ export const VirtualNetworksUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksUpdateResponseExtendedLocationType =
-  | "CustomLocation"
-  | (string & {});
+  "CustomLocation";
 export const VirtualNetworksUpdateResponseExtendedLocationType =
   /*@__PURE__*/ S.String;
 

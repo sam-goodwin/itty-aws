@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,33 +72,20 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
-export type BinaryAuthorizationEvaluationModeEnum =
-  | "EVALUATION_MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "PROJECT_SINGLETON_POLICY_ENFORCE"
-  | (string & {});
+export type BinaryAuthorizationEvaluationModeEnum = "EVALUATION_MODE_UNSPECIFIED" | "DISABLED" | "PROJECT_SINGLETON_POLICY_ENFORCE";
 export const BinaryAuthorizationEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for Binary Authorization. */
@@ -109,12 +94,10 @@ export interface BinaryAuthorization {
   evaluationMode?: BinaryAuthorizationEvaluationModeEnum;
 }
 export const BinaryAuthorization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluationMode: S.optional(BinaryAuthorizationEvaluationModeEnum),
-  }),
-).annotate({
-  identifier: "BinaryAuthorization",
-}) as any as S.Schema<BinaryAuthorization>;
+S.Struct({
+  "evaluationMode": S.optional(BinaryAuthorizationEvaluationModeEnum),
+}),
+).annotate({ identifier: "BinaryAuthorization" }) as any as S.Schema<BinaryAuthorization>;
 
 /** Specifies the node access related settings for the bare metal admin cluster. */
 export interface BareMetalAdminNodeAccessConfig {
@@ -122,12 +105,10 @@ export interface BareMetalAdminNodeAccessConfig {
   loginUser?: string;
 }
 export const BareMetalAdminNodeAccessConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loginUser: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalAdminNodeAccessConfig",
-}) as any as S.Schema<BareMetalAdminNodeAccessConfig>;
+S.Struct({
+  "loginUser": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalAdminNodeAccessConfig" }) as any as S.Schema<BareMetalAdminNodeAccessConfig>;
 
 /** BareMetalAdminApiServerArgument represents an arg name->value pair. Only a subset of customized flags are supported. Please refer to the API server documentation below to know the exact format: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/ */
 export interface BareMetalAdminApiServerArgument {
@@ -137,25 +118,17 @@ export interface BareMetalAdminApiServerArgument {
   value?: string;
 }
 export const BareMetalAdminApiServerArgument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    argument: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalAdminApiServerArgument",
-}) as any as S.Schema<BareMetalAdminApiServerArgument>;
+S.Struct({
+  "argument": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalAdminApiServerArgument" }) as any as S.Schema<BareMetalAdminApiServerArgument>;
 
-export type BareMetalAdminApiServerArgumentList =
-  ReadonlyArray<BareMetalAdminApiServerArgument>;
-export const BareMetalAdminApiServerArgumentList = /*@__PURE__*/ S.Array(
-  BareMetalAdminApiServerArgument,
-) as any as S.Schema<BareMetalAdminApiServerArgumentList>;
+export type BareMetalAdminApiServerArgumentList = ReadonlyArray<BareMetalAdminApiServerArgument>;
+export const BareMetalAdminApiServerArgumentList = /*@__PURE__*/ S.Array(BareMetalAdminApiServerArgument) as any as S.Schema<BareMetalAdminApiServerArgumentList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** BareMetalNodeConfig lists machine addresses to access Nodes. */
 export interface BareMetalNodeConfig {
@@ -165,18 +138,14 @@ export interface BareMetalNodeConfig {
   labels?: StringMap;
 }
 export const BareMetalNodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeIp: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "BareMetalNodeConfig",
-}) as any as S.Schema<BareMetalNodeConfig>;
+S.Struct({
+  "nodeIp": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
+).annotate({ identifier: "BareMetalNodeConfig" }) as any as S.Schema<BareMetalNodeConfig>;
 
 export type BareMetalNodeConfigList = ReadonlyArray<BareMetalNodeConfig>;
-export const BareMetalNodeConfigList = /*@__PURE__*/ S.Array(
-  BareMetalNodeConfig,
-) as any as S.Schema<BareMetalNodeConfigList>;
+export const BareMetalNodeConfigList = /*@__PURE__*/ S.Array(BareMetalNodeConfig) as any as S.Schema<BareMetalNodeConfigList>;
 
 /** KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options). */
 export interface BareMetalKubeletConfig {
@@ -188,28 +157,17 @@ export interface BareMetalKubeletConfig {
   registryBurst?: number;
 }
 export const BareMetalKubeletConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serializeImagePullsDisabled: S.optional(S.Boolean),
-    registryPullQps: S.optional(S.Number),
-    registryBurst: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BareMetalKubeletConfig",
-}) as any as S.Schema<BareMetalKubeletConfig>;
+S.Struct({
+  "serializeImagePullsDisabled": S.optional(S.Boolean),
+  "registryPullQps": S.optional(S.Number),
+  "registryBurst": S.optional(S.Number),
+}),
+).annotate({ identifier: "BareMetalKubeletConfig" }) as any as S.Schema<BareMetalKubeletConfig>;
 
-export type BareMetalNodePoolConfigOperatingSystemEnum =
-  | "OPERATING_SYSTEM_UNSPECIFIED"
-  | "LINUX"
-  | (string & {});
-export const BareMetalNodePoolConfigOperatingSystemEnum =
-  /*@__PURE__*/ S.String;
+export type BareMetalNodePoolConfigOperatingSystemEnum = "OPERATING_SYSTEM_UNSPECIFIED" | "LINUX";
+export const BareMetalNodePoolConfigOperatingSystemEnum = /*@__PURE__*/ S.String;
 
-export type NodeTaintEffectEnum =
-  | "EFFECT_UNSPECIFIED"
-  | "NO_SCHEDULE"
-  | "PREFER_NO_SCHEDULE"
-  | "NO_EXECUTE"
-  | (string & {});
+export type NodeTaintEffectEnum = "EFFECT_UNSPECIFIED" | "NO_SCHEDULE" | "PREFER_NO_SCHEDULE" | "NO_EXECUTE";
 export const NodeTaintEffectEnum = /*@__PURE__*/ S.String;
 
 /** NodeTaint applied to every Kubernetes node in a node pool. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes. Node taints are permanent. */
@@ -222,17 +180,15 @@ export interface NodeTaint {
   effect?: NodeTaintEffectEnum;
 }
 export const NodeTaint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    key: S.optional(S.String),
-    effect: S.optional(NodeTaintEffectEnum),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+  "key": S.optional(S.String),
+  "effect": S.optional(NodeTaintEffectEnum),
+}),
 ).annotate({ identifier: "NodeTaint" }) as any as S.Schema<NodeTaint>;
 
 export type NodeTaintList = ReadonlyArray<NodeTaint>;
-export const NodeTaintList = /*@__PURE__*/ S.Array(
-  NodeTaint,
-) as any as S.Schema<NodeTaintList>;
+export const NodeTaintList = /*@__PURE__*/ S.Array(NodeTaint) as any as S.Schema<NodeTaintList>;
 
 /** BareMetalNodePoolConfig describes the configuration of all nodes within a given bare metal node pool. */
 export interface BareMetalNodePoolConfig {
@@ -248,30 +204,25 @@ export interface BareMetalNodePoolConfig {
   taints?: NodeTaintList;
 }
 export const BareMetalNodePoolConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeConfigs: S.optional(BareMetalNodeConfigList),
-    labels: S.optional(StringMap),
-    kubeletConfig: S.optional(BareMetalKubeletConfig),
-    operatingSystem: S.optional(BareMetalNodePoolConfigOperatingSystemEnum),
-    taints: S.optional(NodeTaintList),
-  }),
-).annotate({
-  identifier: "BareMetalNodePoolConfig",
-}) as any as S.Schema<BareMetalNodePoolConfig>;
+S.Struct({
+  "nodeConfigs": S.optional(BareMetalNodeConfigList),
+  "labels": S.optional(StringMap),
+  "kubeletConfig": S.optional(BareMetalKubeletConfig),
+  "operatingSystem": S.optional(BareMetalNodePoolConfigOperatingSystemEnum),
+  "taints": S.optional(NodeTaintList),
+}),
+).annotate({ identifier: "BareMetalNodePoolConfig" }) as any as S.Schema<BareMetalNodePoolConfig>;
 
 /** BareMetalAdminControlPlaneNodePoolConfig specifies the control plane node pool configuration. We have a control plane specific node pool config so that we can flexible about supporting control plane specific fields in the future. */
 export interface BareMetalAdminControlPlaneNodePoolConfig {
   /** Required. The generic configuration for a node pool running the control plane. */
   nodePoolConfig?: BareMetalNodePoolConfig;
 }
-export const BareMetalAdminControlPlaneNodePoolConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodePoolConfig: S.optional(BareMetalNodePoolConfig),
-    }),
-).annotate({
-  identifier: "BareMetalAdminControlPlaneNodePoolConfig",
-}) as any as S.Schema<BareMetalAdminControlPlaneNodePoolConfig>;
+export const BareMetalAdminControlPlaneNodePoolConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nodePoolConfig": S.optional(BareMetalNodePoolConfig),
+}),
+).annotate({ identifier: "BareMetalAdminControlPlaneNodePoolConfig" }) as any as S.Schema<BareMetalAdminControlPlaneNodePoolConfig>;
 
 /** BareMetalAdminControlPlaneConfig specifies the control plane configuration. */
 export interface BareMetalAdminControlPlaneConfig {
@@ -281,20 +232,14 @@ export interface BareMetalAdminControlPlaneConfig {
   controlPlaneNodePoolConfig?: BareMetalAdminControlPlaneNodePoolConfig;
 }
 export const BareMetalAdminControlPlaneConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiServerArgs: S.optional(BareMetalAdminApiServerArgumentList),
-    controlPlaneNodePoolConfig: S.optional(
-      BareMetalAdminControlPlaneNodePoolConfig,
-    ),
-  }),
-).annotate({
-  identifier: "BareMetalAdminControlPlaneConfig",
-}) as any as S.Schema<BareMetalAdminControlPlaneConfig>;
+S.Struct({
+  "apiServerArgs": S.optional(BareMetalAdminApiServerArgumentList),
+  "controlPlaneNodePoolConfig": S.optional(BareMetalAdminControlPlaneNodePoolConfig),
+}),
+).annotate({ identifier: "BareMetalAdminControlPlaneConfig" }) as any as S.Schema<BareMetalAdminControlPlaneConfig>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** BareMetalAdminMaintenanceConfig specifies configurations to put bare metal Admin cluster CRs nodes in and out of maintenance. */
 export interface BareMetalAdminMaintenanceConfig {
@@ -302,12 +247,10 @@ export interface BareMetalAdminMaintenanceConfig {
   maintenanceAddressCidrBlocks?: StringList;
 }
 export const BareMetalAdminMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maintenanceAddressCidrBlocks: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BareMetalAdminMaintenanceConfig",
-}) as any as S.Schema<BareMetalAdminMaintenanceConfig>;
+S.Struct({
+  "maintenanceAddressCidrBlocks": S.optional(StringList),
+}),
+).annotate({ identifier: "BareMetalAdminMaintenanceConfig" }) as any as S.Schema<BareMetalAdminMaintenanceConfig>;
 
 /** Specifies operating system operation settings for cluster provisioning. */
 export interface BareMetalAdminOsEnvironmentConfig {
@@ -315,12 +258,10 @@ export interface BareMetalAdminOsEnvironmentConfig {
   packageRepoExcluded?: boolean;
 }
 export const BareMetalAdminOsEnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageRepoExcluded: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalAdminOsEnvironmentConfig",
-}) as any as S.Schema<BareMetalAdminOsEnvironmentConfig>;
+S.Struct({
+  "packageRepoExcluded": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalAdminOsEnvironmentConfig" }) as any as S.Schema<BareMetalAdminOsEnvironmentConfig>;
 
 /** BareMetalAdminDrainingMachine represents the machines that are currently draining. */
 export interface BareMetalAdminDrainingMachine {
@@ -330,19 +271,14 @@ export interface BareMetalAdminDrainingMachine {
   podCount?: number;
 }
 export const BareMetalAdminDrainingMachine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeIp: S.optional(S.String),
-    podCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BareMetalAdminDrainingMachine",
-}) as any as S.Schema<BareMetalAdminDrainingMachine>;
+S.Struct({
+  "nodeIp": S.optional(S.String),
+  "podCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "BareMetalAdminDrainingMachine" }) as any as S.Schema<BareMetalAdminDrainingMachine>;
 
-export type BareMetalAdminDrainingMachineList =
-  ReadonlyArray<BareMetalAdminDrainingMachine>;
-export const BareMetalAdminDrainingMachineList = /*@__PURE__*/ S.Array(
-  BareMetalAdminDrainingMachine,
-) as any as S.Schema<BareMetalAdminDrainingMachineList>;
+export type BareMetalAdminDrainingMachineList = ReadonlyArray<BareMetalAdminDrainingMachine>;
+export const BareMetalAdminDrainingMachineList = /*@__PURE__*/ S.Array(BareMetalAdminDrainingMachine) as any as S.Schema<BareMetalAdminDrainingMachineList>;
 
 /** BareMetalAdminDrainedMachine represents the machines that are drained. */
 export interface BareMetalAdminDrainedMachine {
@@ -350,18 +286,13 @@ export interface BareMetalAdminDrainedMachine {
   nodeIp?: string;
 }
 export const BareMetalAdminDrainedMachine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeIp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalAdminDrainedMachine",
-}) as any as S.Schema<BareMetalAdminDrainedMachine>;
+S.Struct({
+  "nodeIp": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalAdminDrainedMachine" }) as any as S.Schema<BareMetalAdminDrainedMachine>;
 
-export type BareMetalAdminDrainedMachineList =
-  ReadonlyArray<BareMetalAdminDrainedMachine>;
-export const BareMetalAdminDrainedMachineList = /*@__PURE__*/ S.Array(
-  BareMetalAdminDrainedMachine,
-) as any as S.Schema<BareMetalAdminDrainedMachineList>;
+export type BareMetalAdminDrainedMachineList = ReadonlyArray<BareMetalAdminDrainedMachine>;
+export const BareMetalAdminDrainedMachineList = /*@__PURE__*/ S.Array(BareMetalAdminDrainedMachine) as any as S.Schema<BareMetalAdminDrainedMachineList>;
 
 /** BareMetalAdminMachineDrainStatus represents the status of bare metal node machines that are undergoing drain operations. */
 export interface BareMetalAdminMachineDrainStatus {
@@ -371,13 +302,11 @@ export interface BareMetalAdminMachineDrainStatus {
   drainedMachines?: BareMetalAdminDrainedMachineList;
 }
 export const BareMetalAdminMachineDrainStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    drainingMachines: S.optional(BareMetalAdminDrainingMachineList),
-    drainedMachines: S.optional(BareMetalAdminDrainedMachineList),
-  }),
-).annotate({
-  identifier: "BareMetalAdminMachineDrainStatus",
-}) as any as S.Schema<BareMetalAdminMachineDrainStatus>;
+S.Struct({
+  "drainingMachines": S.optional(BareMetalAdminDrainingMachineList),
+  "drainedMachines": S.optional(BareMetalAdminDrainedMachineList),
+}),
+).annotate({ identifier: "BareMetalAdminMachineDrainStatus" }) as any as S.Schema<BareMetalAdminMachineDrainStatus>;
 
 /** BareMetalAdminMaintenanceStatus represents the maintenance status for bare metal Admin cluster CR's nodes. */
 export interface BareMetalAdminMaintenanceStatus {
@@ -385,12 +314,10 @@ export interface BareMetalAdminMaintenanceStatus {
   machineDrainStatus?: BareMetalAdminMachineDrainStatus;
 }
 export const BareMetalAdminMaintenanceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machineDrainStatus: S.optional(BareMetalAdminMachineDrainStatus),
-  }),
-).annotate({
-  identifier: "BareMetalAdminMaintenanceStatus",
-}) as any as S.Schema<BareMetalAdminMaintenanceStatus>;
+S.Struct({
+  "machineDrainStatus": S.optional(BareMetalAdminMachineDrainStatus),
+}),
+).annotate({ identifier: "BareMetalAdminMaintenanceStatus" }) as any as S.Schema<BareMetalAdminMaintenanceStatus>;
 
 /** BareMetalAdminVipConfig for bare metal load balancer configurations. */
 export interface BareMetalAdminVipConfig {
@@ -398,12 +325,10 @@ export interface BareMetalAdminVipConfig {
   controlPlaneVip?: string;
 }
 export const BareMetalAdminVipConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneVip: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalAdminVipConfig",
-}) as any as S.Schema<BareMetalAdminVipConfig>;
+S.Struct({
+  "controlPlaneVip": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalAdminVipConfig" }) as any as S.Schema<BareMetalAdminVipConfig>;
 
 /** BareMetalAdminManualLbConfig represents configuration parameters for a manual load balancer. */
 export interface BareMetalAdminManualLbConfig {
@@ -411,12 +336,10 @@ export interface BareMetalAdminManualLbConfig {
   enabled?: boolean;
 }
 export const BareMetalAdminManualLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalAdminManualLbConfig",
-}) as any as S.Schema<BareMetalAdminManualLbConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalAdminManualLbConfig" }) as any as S.Schema<BareMetalAdminManualLbConfig>;
 
 /** BareMetalAdminPortConfig is the specification of load balancer ports. */
 export interface BareMetalAdminPortConfig {
@@ -424,26 +347,21 @@ export interface BareMetalAdminPortConfig {
   controlPlaneLoadBalancerPort?: number;
 }
 export const BareMetalAdminPortConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneLoadBalancerPort: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BareMetalAdminPortConfig",
-}) as any as S.Schema<BareMetalAdminPortConfig>;
+S.Struct({
+  "controlPlaneLoadBalancerPort": S.optional(S.Number),
+}),
+).annotate({ identifier: "BareMetalAdminPortConfig" }) as any as S.Schema<BareMetalAdminPortConfig>;
 
 /** Specifies the load balancer's node pool configuration. */
 export interface BareMetalAdminLoadBalancerNodePoolConfig {
   /** The generic configuration for a node pool running a load balancer. */
   nodePoolConfig?: BareMetalNodePoolConfig;
 }
-export const BareMetalAdminLoadBalancerNodePoolConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodePoolConfig: S.optional(BareMetalNodePoolConfig),
-    }),
-).annotate({
-  identifier: "BareMetalAdminLoadBalancerNodePoolConfig",
-}) as any as S.Schema<BareMetalAdminLoadBalancerNodePoolConfig>;
+export const BareMetalAdminLoadBalancerNodePoolConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nodePoolConfig": S.optional(BareMetalNodePoolConfig),
+}),
+).annotate({ identifier: "BareMetalAdminLoadBalancerNodePoolConfig" }) as any as S.Schema<BareMetalAdminLoadBalancerNodePoolConfig>;
 
 /** BareMetalAdminBgpPeerConfig represents configuration parameters for a Border Gateway Protocol (BGP) peer. */
 export interface BareMetalAdminBgpPeerConfig {
@@ -455,20 +373,15 @@ export interface BareMetalAdminBgpPeerConfig {
   controlPlaneNodes?: StringList;
 }
 export const BareMetalAdminBgpPeerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asn: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    controlPlaneNodes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BareMetalAdminBgpPeerConfig",
-}) as any as S.Schema<BareMetalAdminBgpPeerConfig>;
+S.Struct({
+  "asn": S.optional(S.String),
+  "ipAddress": S.optional(S.String),
+  "controlPlaneNodes": S.optional(StringList),
+}),
+).annotate({ identifier: "BareMetalAdminBgpPeerConfig" }) as any as S.Schema<BareMetalAdminBgpPeerConfig>;
 
-export type BareMetalAdminBgpPeerConfigList =
-  ReadonlyArray<BareMetalAdminBgpPeerConfig>;
-export const BareMetalAdminBgpPeerConfigList = /*@__PURE__*/ S.Array(
-  BareMetalAdminBgpPeerConfig,
-) as any as S.Schema<BareMetalAdminBgpPeerConfigList>;
+export type BareMetalAdminBgpPeerConfigList = ReadonlyArray<BareMetalAdminBgpPeerConfig>;
+export const BareMetalAdminBgpPeerConfigList = /*@__PURE__*/ S.Array(BareMetalAdminBgpPeerConfig) as any as S.Schema<BareMetalAdminBgpPeerConfigList>;
 
 /** Represents an IP pool used by the load balancer. */
 export interface BareMetalAdminLoadBalancerAddressPool {
@@ -481,23 +394,17 @@ export interface BareMetalAdminLoadBalancerAddressPool {
   /** If true, prevent IP addresses from being automatically assigned. */
   manualAssign?: boolean;
 }
-export const BareMetalAdminLoadBalancerAddressPool = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      addresses: S.optional(StringList),
-      pool: S.optional(S.String),
-      avoidBuggyIps: S.optional(S.Boolean),
-      manualAssign: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "BareMetalAdminLoadBalancerAddressPool",
-}) as any as S.Schema<BareMetalAdminLoadBalancerAddressPool>;
+export const BareMetalAdminLoadBalancerAddressPool = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "addresses": S.optional(StringList),
+  "pool": S.optional(S.String),
+  "avoidBuggyIps": S.optional(S.Boolean),
+  "manualAssign": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalAdminLoadBalancerAddressPool" }) as any as S.Schema<BareMetalAdminLoadBalancerAddressPool>;
 
-export type BareMetalAdminLoadBalancerAddressPoolList =
-  ReadonlyArray<BareMetalAdminLoadBalancerAddressPool>;
-export const BareMetalAdminLoadBalancerAddressPoolList = /*@__PURE__*/ S.Array(
-  BareMetalAdminLoadBalancerAddressPool,
-) as any as S.Schema<BareMetalAdminLoadBalancerAddressPoolList>;
+export type BareMetalAdminLoadBalancerAddressPoolList = ReadonlyArray<BareMetalAdminLoadBalancerAddressPool>;
+export const BareMetalAdminLoadBalancerAddressPoolList = /*@__PURE__*/ S.Array(BareMetalAdminLoadBalancerAddressPool) as any as S.Schema<BareMetalAdminLoadBalancerAddressPoolList>;
 
 /** BareMetalAdminBgpLbConfig represents configuration parameters for a Border Gateway Protocol (BGP) load balancer. */
 export interface BareMetalAdminBgpLbConfig {
@@ -511,17 +418,13 @@ export interface BareMetalAdminBgpLbConfig {
   addressPools?: BareMetalAdminLoadBalancerAddressPoolList;
 }
 export const BareMetalAdminBgpLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loadBalancerNodePoolConfig: S.optional(
-      BareMetalAdminLoadBalancerNodePoolConfig,
-    ),
-    asn: S.optional(S.String),
-    bgpPeerConfigs: S.optional(BareMetalAdminBgpPeerConfigList),
-    addressPools: S.optional(BareMetalAdminLoadBalancerAddressPoolList),
-  }),
-).annotate({
-  identifier: "BareMetalAdminBgpLbConfig",
-}) as any as S.Schema<BareMetalAdminBgpLbConfig>;
+S.Struct({
+  "loadBalancerNodePoolConfig": S.optional(BareMetalAdminLoadBalancerNodePoolConfig),
+  "asn": S.optional(S.String),
+  "bgpPeerConfigs": S.optional(BareMetalAdminBgpPeerConfigList),
+  "addressPools": S.optional(BareMetalAdminLoadBalancerAddressPoolList),
+}),
+).annotate({ identifier: "BareMetalAdminBgpLbConfig" }) as any as S.Schema<BareMetalAdminBgpLbConfig>;
 
 /** BareMetalAdminLoadBalancerConfig specifies the load balancer configuration. */
 export interface BareMetalAdminLoadBalancerConfig {
@@ -535,15 +438,13 @@ export interface BareMetalAdminLoadBalancerConfig {
   bgpLbConfig?: BareMetalAdminBgpLbConfig;
 }
 export const BareMetalAdminLoadBalancerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vipConfig: S.optional(BareMetalAdminVipConfig),
-    manualLbConfig: S.optional(BareMetalAdminManualLbConfig),
-    portConfig: S.optional(BareMetalAdminPortConfig),
-    bgpLbConfig: S.optional(BareMetalAdminBgpLbConfig),
-  }),
-).annotate({
-  identifier: "BareMetalAdminLoadBalancerConfig",
-}) as any as S.Schema<BareMetalAdminLoadBalancerConfig>;
+S.Struct({
+  "vipConfig": S.optional(BareMetalAdminVipConfig),
+  "manualLbConfig": S.optional(BareMetalAdminManualLbConfig),
+  "portConfig": S.optional(BareMetalAdminPortConfig),
+  "bgpLbConfig": S.optional(BareMetalAdminBgpLbConfig),
+}),
+).annotate({ identifier: "BareMetalAdminLoadBalancerConfig" }) as any as S.Schema<BareMetalAdminLoadBalancerConfig>;
 
 /** Specifies the configs for local persistent volumes (PVs). */
 export interface BareMetalLvpConfig {
@@ -553,13 +454,11 @@ export interface BareMetalLvpConfig {
   path?: string;
 }
 export const BareMetalLvpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storageClass: S.optional(S.String),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalLvpConfig",
-}) as any as S.Schema<BareMetalLvpConfig>;
+S.Struct({
+  "storageClass": S.optional(S.String),
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalLvpConfig" }) as any as S.Schema<BareMetalLvpConfig>;
 
 /** Specifies the configs for local persistent volumes under a shared file system. */
 export interface BareMetalLvpShareConfig {
@@ -569,13 +468,11 @@ export interface BareMetalLvpShareConfig {
   sharedPathPvCount?: number;
 }
 export const BareMetalLvpShareConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lvpConfig: S.optional(BareMetalLvpConfig),
-    sharedPathPvCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BareMetalLvpShareConfig",
-}) as any as S.Schema<BareMetalLvpShareConfig>;
+S.Struct({
+  "lvpConfig": S.optional(BareMetalLvpConfig),
+  "sharedPathPvCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "BareMetalLvpShareConfig" }) as any as S.Schema<BareMetalLvpShareConfig>;
 
 /** BareMetalAdminStorageConfig specifies the cluster storage configuration. */
 export interface BareMetalAdminStorageConfig {
@@ -585,13 +482,11 @@ export interface BareMetalAdminStorageConfig {
   lvpShareConfig?: BareMetalLvpShareConfig;
 }
 export const BareMetalAdminStorageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lvpNodeMountsConfig: S.optional(BareMetalLvpConfig),
-    lvpShareConfig: S.optional(BareMetalLvpShareConfig),
-  }),
-).annotate({
-  identifier: "BareMetalAdminStorageConfig",
-}) as any as S.Schema<BareMetalAdminStorageConfig>;
+S.Struct({
+  "lvpNodeMountsConfig": S.optional(BareMetalLvpConfig),
+  "lvpShareConfig": S.optional(BareMetalLvpShareConfig),
+}),
+).annotate({ identifier: "BareMetalAdminStorageConfig" }) as any as S.Schema<BareMetalAdminStorageConfig>;
 
 /** BareMetalAdminIslandModeCidrConfig specifies the cluster CIDR configuration while running in island mode. */
 export interface BareMetalAdminIslandModeCidrConfig {
@@ -601,27 +496,22 @@ export interface BareMetalAdminIslandModeCidrConfig {
   podAddressCidrBlocks?: StringList;
 }
 export const BareMetalAdminIslandModeCidrConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceAddressCidrBlocks: S.optional(StringList),
-    podAddressCidrBlocks: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BareMetalAdminIslandModeCidrConfig",
-}) as any as S.Schema<BareMetalAdminIslandModeCidrConfig>;
+S.Struct({
+  "serviceAddressCidrBlocks": S.optional(StringList),
+  "podAddressCidrBlocks": S.optional(StringList),
+}),
+).annotate({ identifier: "BareMetalAdminIslandModeCidrConfig" }) as any as S.Schema<BareMetalAdminIslandModeCidrConfig>;
 
 /** Specifies the multiple networking interfaces cluster configuration. */
 export interface BareMetalAdminMultipleNetworkInterfacesConfig {
   /** Whether to enable multiple network interfaces for your pods. When set network_config.advanced_networking is automatically set to true. */
   enabled?: boolean;
 }
-export const BareMetalAdminMultipleNetworkInterfacesConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminMultipleNetworkInterfacesConfig",
-  }) as any as S.Schema<BareMetalAdminMultipleNetworkInterfacesConfig>;
+export const BareMetalAdminMultipleNetworkInterfacesConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalAdminMultipleNetworkInterfacesConfig" }) as any as S.Schema<BareMetalAdminMultipleNetworkInterfacesConfig>;
 
 /** BareMetalAdminNetworkConfig specifies the cluster network configuration. */
 export interface BareMetalAdminNetworkConfig {
@@ -633,16 +523,12 @@ export interface BareMetalAdminNetworkConfig {
   multipleNetworkInterfacesConfig?: BareMetalAdminMultipleNetworkInterfacesConfig;
 }
 export const BareMetalAdminNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    islandModeCidr: S.optional(BareMetalAdminIslandModeCidrConfig),
-    advancedNetworking: S.optional(S.Boolean),
-    multipleNetworkInterfacesConfig: S.optional(
-      BareMetalAdminMultipleNetworkInterfacesConfig,
-    ),
-  }),
-).annotate({
-  identifier: "BareMetalAdminNetworkConfig",
-}) as any as S.Schema<BareMetalAdminNetworkConfig>;
+S.Struct({
+  "islandModeCidr": S.optional(BareMetalAdminIslandModeCidrConfig),
+  "advancedNetworking": S.optional(S.Boolean),
+  "multipleNetworkInterfacesConfig": S.optional(BareMetalAdminMultipleNetworkInterfacesConfig),
+}),
+).annotate({ identifier: "BareMetalAdminNetworkConfig" }) as any as S.Schema<BareMetalAdminNetworkConfig>;
 
 /** Version describes the number of nodes at a given version under a resource. */
 export interface Version {
@@ -652,16 +538,14 @@ export interface Version {
   count?: string;
 }
 export const Version = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    count: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.String),
+  "count": S.optional(S.String),
+}),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
 export type VersionList = ReadonlyArray<Version>;
-export const VersionList = /*@__PURE__*/ S.Array(
-  Version,
-) as any as S.Schema<VersionList>;
+export const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
 
 /** Versions describes the mapping of a given version to the number of machines under this version. */
 export interface Versions {
@@ -669,17 +553,12 @@ export interface Versions {
   versions?: VersionList;
 }
 export const Versions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versions: S.optional(VersionList),
-  }),
+S.Struct({
+  "versions": S.optional(VersionList),
+}),
 ).annotate({ identifier: "Versions" }) as any as S.Schema<Versions>;
 
-export type ResourceConditionStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "STATE_TRUE"
-  | "STATE_FALSE"
-  | "STATE_UNKNOWN"
-  | (string & {});
+export type ResourceConditionStateEnum = "STATE_UNSPECIFIED" | "STATE_TRUE" | "STATE_FALSE" | "STATE_UNKNOWN";
 export const ResourceConditionStateEnum = /*@__PURE__*/ S.String;
 
 /** ResourceCondition provides a standard mechanism for higher-level status reporting from controller. */
@@ -696,21 +575,17 @@ export interface ResourceCondition {
   message?: string;
 }
 export const ResourceCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastTransitionTime: S.optional(S.String),
-    type: S.optional(S.String),
-    state: S.optional(ResourceConditionStateEnum),
-    reason: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceCondition",
-}) as any as S.Schema<ResourceCondition>;
+S.Struct({
+  "lastTransitionTime": S.optional(S.String),
+  "type": S.optional(S.String),
+  "state": S.optional(ResourceConditionStateEnum),
+  "reason": S.optional(S.String),
+  "message": S.optional(S.String),
+}),
+).annotate({ identifier: "ResourceCondition" }) as any as S.Schema<ResourceCondition>;
 
 export type ResourceConditionList = ReadonlyArray<ResourceCondition>;
-export const ResourceConditionList = /*@__PURE__*/ S.Array(
-  ResourceCondition,
-) as any as S.Schema<ResourceConditionList>;
+export const ResourceConditionList = /*@__PURE__*/ S.Array(ResourceCondition) as any as S.Schema<ResourceConditionList>;
 
 /** ResourceStatus describes why a cluster or node pool has a certain status. (e.g., ERROR or DEGRADED). */
 export interface ResourceStatus {
@@ -724,23 +599,15 @@ export interface ResourceStatus {
   conditions?: ResourceConditionList;
 }
 export const ResourceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    versions: S.optional(Versions),
-    errorMessage: S.optional(S.String),
-    conditions: S.optional(ResourceConditionList),
-  }),
+S.Struct({
+  "version": S.optional(S.String),
+  "versions": S.optional(Versions),
+  "errorMessage": S.optional(S.String),
+  "conditions": S.optional(ResourceConditionList),
+}),
 ).annotate({ identifier: "ResourceStatus" }) as any as S.Schema<ResourceStatus>;
 
-export type BareMetalAdminClusterStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PROVISIONING"
-  | "RUNNING"
-  | "RECONCILING"
-  | "STOPPING"
-  | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+export type BareMetalAdminClusterStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "RUNNING" | "RECONCILING" | "STOPPING" | "ERROR" | "DEGRADED";
 export const BareMetalAdminClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** BareMetalAdminClusterOperationsConfig specifies the admin cluster's observability infrastructure. */
@@ -748,14 +615,11 @@ export interface BareMetalAdminClusterOperationsConfig {
   /** Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics). */
   enableApplicationLogs?: boolean;
 }
-export const BareMetalAdminClusterOperationsConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enableApplicationLogs: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "BareMetalAdminClusterOperationsConfig",
-}) as any as S.Schema<BareMetalAdminClusterOperationsConfig>;
+export const BareMetalAdminClusterOperationsConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "enableApplicationLogs": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalAdminClusterOperationsConfig" }) as any as S.Schema<BareMetalAdminClusterOperationsConfig>;
 
 /** BareMetalAdminProxyConfig specifies the cluster proxy configuration. */
 export interface BareMetalAdminProxyConfig {
@@ -765,13 +629,11 @@ export interface BareMetalAdminProxyConfig {
   noProxy?: StringList;
 }
 export const BareMetalAdminProxyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    noProxy: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BareMetalAdminProxyConfig",
-}) as any as S.Schema<BareMetalAdminProxyConfig>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "noProxy": S.optional(StringList),
+}),
+).annotate({ identifier: "BareMetalAdminProxyConfig" }) as any as S.Schema<BareMetalAdminProxyConfig>;
 
 /** Fleet related configuration. Fleets are a Google Cloud concept for logically organizing clusters, letting you use and manage multi-cluster capabilities and apply consistent policies across your systems. See [Anthos Fleets](`https://cloud.google.com/anthos/multicluster-management/fleets`) for more details on Anthos multi-cluster capabilities using Fleets. ## */
 export interface Fleet {
@@ -779,9 +641,9 @@ export interface Fleet {
   membership?: string;
 }
 export const Fleet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    membership: S.optional(S.String),
-  }),
+S.Struct({
+  "membership": S.optional(S.String),
+}),
 ).annotate({ identifier: "Fleet" }) as any as S.Schema<Fleet>;
 
 /** BareMetalAdminWorkloadNodeConfig specifies the workload node configurations. */
@@ -790,27 +652,15 @@ export interface BareMetalAdminWorkloadNodeConfig {
   maxPodsPerNode?: string;
 }
 export const BareMetalAdminWorkloadNodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxPodsPerNode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalAdminWorkloadNodeConfig",
-}) as any as S.Schema<BareMetalAdminWorkloadNodeConfig>;
+S.Struct({
+  "maxPodsPerNode": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalAdminWorkloadNodeConfig" }) as any as S.Schema<BareMetalAdminWorkloadNodeConfig>;
 
-export type ValidationCheckOptionEnum =
-  | "OPTIONS_UNSPECIFIED"
-  | "SKIP_VALIDATION_CHECK_BLOCKING"
-  | "SKIP_VALIDATION_ALL"
-  | (string & {});
+export type ValidationCheckOptionEnum = "OPTIONS_UNSPECIFIED" | "SKIP_VALIDATION_CHECK_BLOCKING" | "SKIP_VALIDATION_ALL";
 export const ValidationCheckOptionEnum = /*@__PURE__*/ S.String;
 
-export type ValidationCheckResultStateEnum =
-  | "STATE_UNKNOWN"
-  | "STATE_FAILURE"
-  | "STATE_SKIPPED"
-  | "STATE_FATAL"
-  | "STATE_WARNING"
-  | (string & {});
+export type ValidationCheckResultStateEnum = "STATE_UNKNOWN" | "STATE_FAILURE" | "STATE_SKIPPED" | "STATE_FATAL" | "STATE_WARNING";
 export const ValidationCheckResultStateEnum = /*@__PURE__*/ S.String;
 
 /** ValidationCheckResult defines the details about the validation check. */
@@ -827,21 +677,17 @@ export interface ValidationCheckResult {
   category?: string;
 }
 export const ValidationCheckResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(ValidationCheckResultStateEnum),
-    reason: S.optional(S.String),
-    details: S.optional(S.String),
-    description: S.optional(S.String),
-    category: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ValidationCheckResult",
-}) as any as S.Schema<ValidationCheckResult>;
+S.Struct({
+  "state": S.optional(ValidationCheckResultStateEnum),
+  "reason": S.optional(S.String),
+  "details": S.optional(S.String),
+  "description": S.optional(S.String),
+  "category": S.optional(S.String),
+}),
+).annotate({ identifier: "ValidationCheckResult" }) as any as S.Schema<ValidationCheckResult>;
 
 export type ValidationCheckResultList = ReadonlyArray<ValidationCheckResult>;
-export const ValidationCheckResultList = /*@__PURE__*/ S.Array(
-  ValidationCheckResult,
-) as any as S.Schema<ValidationCheckResultList>;
+export const ValidationCheckResultList = /*@__PURE__*/ S.Array(ValidationCheckResult) as any as S.Schema<ValidationCheckResultList>;
 
 /** ValidationCheckStatus defines the detailed validation check status. */
 export interface ValidationCheckStatus {
@@ -849,18 +695,12 @@ export interface ValidationCheckStatus {
   result?: ValidationCheckResultList;
 }
 export const ValidationCheckStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ValidationCheckResultList),
-  }),
-).annotate({
-  identifier: "ValidationCheckStatus",
-}) as any as S.Schema<ValidationCheckStatus>;
+S.Struct({
+  "result": S.optional(ValidationCheckResultList),
+}),
+).annotate({ identifier: "ValidationCheckStatus" }) as any as S.Schema<ValidationCheckStatus>;
 
-export type ValidationCheckScenarioEnum =
-  | "SCENARIO_UNSPECIFIED"
-  | "CREATE"
-  | "UPDATE"
-  | (string & {});
+export type ValidationCheckScenarioEnum = "SCENARIO_UNSPECIFIED" | "CREATE" | "UPDATE";
 export const ValidationCheckScenarioEnum = /*@__PURE__*/ S.String;
 
 /** ValidationCheck represents the result of preflight check. */
@@ -873,14 +713,12 @@ export interface ValidationCheck {
   scenario?: ValidationCheckScenarioEnum;
 }
 export const ValidationCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    option: S.optional(ValidationCheckOptionEnum),
-    status: S.optional(ValidationCheckStatus),
-    scenario: S.optional(ValidationCheckScenarioEnum),
-  }),
-).annotate({
-  identifier: "ValidationCheck",
-}) as any as S.Schema<ValidationCheck>;
+S.Struct({
+  "option": S.optional(ValidationCheckOptionEnum),
+  "status": S.optional(ValidationCheckStatus),
+  "scenario": S.optional(ValidationCheckScenarioEnum),
+}),
+).annotate({ identifier: "ValidationCheck" }) as any as S.Schema<ValidationCheck>;
 
 /** ClusterUser configures user principals for an RBAC policy. */
 export interface ClusterUser {
@@ -888,15 +726,13 @@ export interface ClusterUser {
   username?: string;
 }
 export const ClusterUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    username: S.optional(S.String),
-  }),
+S.Struct({
+  "username": S.optional(S.String),
+}),
 ).annotate({ identifier: "ClusterUser" }) as any as S.Schema<ClusterUser>;
 
 export type ClusterUserList = ReadonlyArray<ClusterUser>;
-export const ClusterUserList = /*@__PURE__*/ S.Array(
-  ClusterUser,
-) as any as S.Schema<ClusterUserList>;
+export const ClusterUserList = /*@__PURE__*/ S.Array(ClusterUser) as any as S.Schema<ClusterUserList>;
 
 /** Authorization defines the On-Prem cluster authorization configuration to bootstrap onto the admin cluster. */
 export interface Authorization {
@@ -904,9 +740,9 @@ export interface Authorization {
   adminUsers?: ClusterUserList;
 }
 export const Authorization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminUsers: S.optional(ClusterUserList),
-  }),
+S.Struct({
+  "adminUsers": S.optional(ClusterUserList),
+}),
 ).annotate({ identifier: "Authorization" }) as any as S.Schema<Authorization>;
 
 /** Specifies the security related settings for the bare metal admin cluster. */
@@ -915,12 +751,10 @@ export interface BareMetalAdminSecurityConfig {
   authorization?: Authorization;
 }
 export const BareMetalAdminSecurityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorization: S.optional(Authorization),
-  }),
-).annotate({
-  identifier: "BareMetalAdminSecurityConfig",
-}) as any as S.Schema<BareMetalAdminSecurityConfig>;
+S.Struct({
+  "authorization": S.optional(Authorization),
+}),
+).annotate({ identifier: "BareMetalAdminSecurityConfig" }) as any as S.Schema<BareMetalAdminSecurityConfig>;
 
 /** Resource that represents a bare metal admin cluster. */
 export interface BareMetalAdminCluster {
@@ -984,40 +818,38 @@ export interface BareMetalAdminCluster {
   securityConfig?: BareMetalAdminSecurityConfig;
 }
 export const BareMetalAdminCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binaryAuthorization: S.optional(BinaryAuthorization),
-    uid: S.optional(S.String),
-    nodeAccessConfig: S.optional(BareMetalAdminNodeAccessConfig),
-    controlPlane: S.optional(BareMetalAdminControlPlaneConfig),
-    bareMetalVersion: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    maintenanceConfig: S.optional(BareMetalAdminMaintenanceConfig),
-    osEnvironmentConfig: S.optional(BareMetalAdminOsEnvironmentConfig),
-    localName: S.optional(S.String),
-    maintenanceStatus: S.optional(BareMetalAdminMaintenanceStatus),
-    loadBalancer: S.optional(BareMetalAdminLoadBalancerConfig),
-    storage: S.optional(BareMetalAdminStorageConfig),
-    networkConfig: S.optional(BareMetalAdminNetworkConfig),
-    reconciling: S.optional(S.Boolean),
-    status: S.optional(ResourceStatus),
-    endpoint: S.optional(S.String),
-    description: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    etag: S.optional(S.String),
-    state: S.optional(BareMetalAdminClusterStateEnum),
-    deleteTime: S.optional(S.String),
-    clusterOperations: S.optional(BareMetalAdminClusterOperationsConfig),
-    proxy: S.optional(BareMetalAdminProxyConfig),
-    name: S.optional(S.String),
-    fleet: S.optional(Fleet),
-    createTime: S.optional(S.String),
-    nodeConfig: S.optional(BareMetalAdminWorkloadNodeConfig),
-    validationCheck: S.optional(ValidationCheck),
-    securityConfig: S.optional(BareMetalAdminSecurityConfig),
-  }),
-).annotate({
-  identifier: "BareMetalAdminCluster",
-}) as any as S.Schema<BareMetalAdminCluster>;
+S.Struct({
+  "binaryAuthorization": S.optional(BinaryAuthorization),
+  "uid": S.optional(S.String),
+  "nodeAccessConfig": S.optional(BareMetalAdminNodeAccessConfig),
+  "controlPlane": S.optional(BareMetalAdminControlPlaneConfig),
+  "bareMetalVersion": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "maintenanceConfig": S.optional(BareMetalAdminMaintenanceConfig),
+  "osEnvironmentConfig": S.optional(BareMetalAdminOsEnvironmentConfig),
+  "localName": S.optional(S.String),
+  "maintenanceStatus": S.optional(BareMetalAdminMaintenanceStatus),
+  "loadBalancer": S.optional(BareMetalAdminLoadBalancerConfig),
+  "storage": S.optional(BareMetalAdminStorageConfig),
+  "networkConfig": S.optional(BareMetalAdminNetworkConfig),
+  "reconciling": S.optional(S.Boolean),
+  "status": S.optional(ResourceStatus),
+  "endpoint": S.optional(S.String),
+  "description": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "state": S.optional(BareMetalAdminClusterStateEnum),
+  "deleteTime": S.optional(S.String),
+  "clusterOperations": S.optional(BareMetalAdminClusterOperationsConfig),
+  "proxy": S.optional(BareMetalAdminProxyConfig),
+  "name": S.optional(S.String),
+  "fleet": S.optional(Fleet),
+  "createTime": S.optional(S.String),
+  "nodeConfig": S.optional(BareMetalAdminWorkloadNodeConfig),
+  "validationCheck": S.optional(ValidationCheck),
+  "securityConfig": S.optional(BareMetalAdminSecurityConfig),
+}),
+).annotate({ identifier: "BareMetalAdminCluster" }) as any as S.Schema<BareMetalAdminCluster>;
 
 export interface CreateProjectsLocationsBareMetalAdminClustersRequest {
   /** Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/ */
@@ -1031,35 +863,21 @@ export interface CreateProjectsLocationsBareMetalAdminClustersRequest {
   /** Request body */
   body?: BareMetalAdminCluster;
 }
-export const CreateProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bareMetalAdminClusterId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      allowPreflightFailure: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(BareMetalAdminCluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/bareMetalAdminClusters",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsBareMetalAdminClustersRequest",
-  }) as any as S.Schema<CreateProjectsLocationsBareMetalAdminClustersRequest>;
+export const CreateProjectsLocationsBareMetalAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "bareMetalAdminClusterId": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "allowPreflightFailure": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(BareMetalAdminCluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/bareMetalAdminClusters","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBareMetalAdminClustersRequest" }) as any as S.Schema<CreateProjectsLocationsBareMetalAdminClustersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -1071,11 +889,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -1092,13 +910,13 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    done: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    error: S.optional(Status),
-    metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "done": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "error": S.optional(Status),
+  "metadata": S.optional(DocumentMap),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Specifies the bare metal user cluster's observability infrastructure. */
@@ -1107,12 +925,10 @@ export interface BareMetalClusterOperationsConfig {
   enableApplicationLogs?: boolean;
 }
 export const BareMetalClusterOperationsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableApplicationLogs: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalClusterOperationsConfig",
-}) as any as S.Schema<BareMetalClusterOperationsConfig>;
+S.Struct({
+  "enableApplicationLogs": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalClusterOperationsConfig" }) as any as S.Schema<BareMetalClusterOperationsConfig>;
 
 /** Specifies the cluster proxy configuration. */
 export interface BareMetalProxyConfig {
@@ -1122,31 +938,17 @@ export interface BareMetalProxyConfig {
   noProxy?: StringList;
 }
 export const BareMetalProxyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    noProxy: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BareMetalProxyConfig",
-}) as any as S.Schema<BareMetalProxyConfig>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "noProxy": S.optional(StringList),
+}),
+).annotate({ identifier: "BareMetalProxyConfig" }) as any as S.Schema<BareMetalProxyConfig>;
 
-export type BareMetalClusterStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PROVISIONING"
-  | "RUNNING"
-  | "RECONCILING"
-  | "STOPPING"
-  | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+export type BareMetalClusterStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "RUNNING" | "RECONCILING" | "STOPPING" | "ERROR" | "DEGRADED";
 export const BareMetalClusterStateEnum = /*@__PURE__*/ S.String;
 
-export type BareMetalWorkloadNodeConfigContainerRuntimeEnum =
-  | "CONTAINER_RUNTIME_UNSPECIFIED"
-  | "CONTAINERD"
-  | (string & {});
-export const BareMetalWorkloadNodeConfigContainerRuntimeEnum =
-  /*@__PURE__*/ S.String;
+export type BareMetalWorkloadNodeConfigContainerRuntimeEnum = "CONTAINER_RUNTIME_UNSPECIFIED" | "CONTAINERD";
+export const BareMetalWorkloadNodeConfigContainerRuntimeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the workload node configurations. */
 export interface BareMetalWorkloadNodeConfig {
@@ -1156,15 +958,11 @@ export interface BareMetalWorkloadNodeConfig {
   containerRuntime?: BareMetalWorkloadNodeConfigContainerRuntimeEnum;
 }
 export const BareMetalWorkloadNodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxPodsPerNode: S.optional(S.String),
-    containerRuntime: S.optional(
-      BareMetalWorkloadNodeConfigContainerRuntimeEnum,
-    ),
-  }),
-).annotate({
-  identifier: "BareMetalWorkloadNodeConfig",
-}) as any as S.Schema<BareMetalWorkloadNodeConfig>;
+S.Struct({
+  "maxPodsPerNode": S.optional(S.String),
+  "containerRuntime": S.optional(BareMetalWorkloadNodeConfigContainerRuntimeEnum),
+}),
+).annotate({ identifier: "BareMetalWorkloadNodeConfig" }) as any as S.Schema<BareMetalWorkloadNodeConfig>;
 
 /** Specifies the security related settings for the bare metal user cluster. */
 export interface BareMetalSecurityConfig {
@@ -1172,18 +970,12 @@ export interface BareMetalSecurityConfig {
   authorization?: Authorization;
 }
 export const BareMetalSecurityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorization: S.optional(Authorization),
-  }),
-).annotate({
-  identifier: "BareMetalSecurityConfig",
-}) as any as S.Schema<BareMetalSecurityConfig>;
+S.Struct({
+  "authorization": S.optional(Authorization),
+}),
+).annotate({ identifier: "BareMetalSecurityConfig" }) as any as S.Schema<BareMetalSecurityConfig>;
 
-export type BareMetalClusterUpgradePolicyPolicyEnum =
-  | "NODE_POOL_POLICY_UNSPECIFIED"
-  | "SERIAL"
-  | "CONCURRENT"
-  | (string & {});
+export type BareMetalClusterUpgradePolicyPolicyEnum = "NODE_POOL_POLICY_UNSPECIFIED" | "SERIAL" | "CONCURRENT";
 export const BareMetalClusterUpgradePolicyPolicyEnum = /*@__PURE__*/ S.String;
 
 /** BareMetalClusterUpgradePolicy defines the cluster upgrade policy. */
@@ -1194,13 +986,11 @@ export interface BareMetalClusterUpgradePolicy {
   pause?: boolean;
 }
 export const BareMetalClusterUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(BareMetalClusterUpgradePolicyPolicyEnum),
-    pause: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalClusterUpgradePolicy",
-}) as any as S.Schema<BareMetalClusterUpgradePolicy>;
+S.Struct({
+  "policy": S.optional(BareMetalClusterUpgradePolicyPolicyEnum),
+  "pause": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalClusterUpgradePolicy" }) as any as S.Schema<BareMetalClusterUpgradePolicy>;
 
 /** Specifies the cluster CIDR configuration while running in island mode. */
 export interface BareMetalIslandModeCidrConfig {
@@ -1210,27 +1000,22 @@ export interface BareMetalIslandModeCidrConfig {
   podAddressCidrBlocks?: StringList;
 }
 export const BareMetalIslandModeCidrConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceAddressCidrBlocks: S.optional(StringList),
-    podAddressCidrBlocks: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BareMetalIslandModeCidrConfig",
-}) as any as S.Schema<BareMetalIslandModeCidrConfig>;
+S.Struct({
+  "serviceAddressCidrBlocks": S.optional(StringList),
+  "podAddressCidrBlocks": S.optional(StringList),
+}),
+).annotate({ identifier: "BareMetalIslandModeCidrConfig" }) as any as S.Schema<BareMetalIslandModeCidrConfig>;
 
 /** Specifies the multiple networking interfaces cluster configuration. */
 export interface BareMetalMultipleNetworkInterfacesConfig {
   /** Whether to enable multiple network interfaces for your pods. When set network_config.advanced_networking is automatically set to true. */
   enabled?: boolean;
 }
-export const BareMetalMultipleNetworkInterfacesConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "BareMetalMultipleNetworkInterfacesConfig",
-}) as any as S.Schema<BareMetalMultipleNetworkInterfacesConfig>;
+export const BareMetalMultipleNetworkInterfacesConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalMultipleNetworkInterfacesConfig" }) as any as S.Schema<BareMetalMultipleNetworkInterfacesConfig>;
 
 /** Specifies the SR-IOV networking operator config. */
 export interface BareMetalSrIovConfig {
@@ -1238,12 +1023,10 @@ export interface BareMetalSrIovConfig {
   enabled?: boolean;
 }
 export const BareMetalSrIovConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalSrIovConfig",
-}) as any as S.Schema<BareMetalSrIovConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalSrIovConfig" }) as any as S.Schema<BareMetalSrIovConfig>;
 
 /** Specifies the cluster network configuration. */
 export interface BareMetalNetworkConfig {
@@ -1257,17 +1040,13 @@ export interface BareMetalNetworkConfig {
   srIovConfig?: BareMetalSrIovConfig;
 }
 export const BareMetalNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    islandModeCidr: S.optional(BareMetalIslandModeCidrConfig),
-    advancedNetworking: S.optional(S.Boolean),
-    multipleNetworkInterfacesConfig: S.optional(
-      BareMetalMultipleNetworkInterfacesConfig,
-    ),
-    srIovConfig: S.optional(BareMetalSrIovConfig),
-  }),
-).annotate({
-  identifier: "BareMetalNetworkConfig",
-}) as any as S.Schema<BareMetalNetworkConfig>;
+S.Struct({
+  "islandModeCidr": S.optional(BareMetalIslandModeCidrConfig),
+  "advancedNetworking": S.optional(S.Boolean),
+  "multipleNetworkInterfacesConfig": S.optional(BareMetalMultipleNetworkInterfacesConfig),
+  "srIovConfig": S.optional(BareMetalSrIovConfig),
+}),
+).annotate({ identifier: "BareMetalNetworkConfig" }) as any as S.Schema<BareMetalNetworkConfig>;
 
 /** Specifies configurations to put bare metal nodes in and out of maintenance. */
 export interface BareMetalMaintenanceConfig {
@@ -1275,12 +1054,10 @@ export interface BareMetalMaintenanceConfig {
   maintenanceAddressCidrBlocks?: StringList;
 }
 export const BareMetalMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maintenanceAddressCidrBlocks: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BareMetalMaintenanceConfig",
-}) as any as S.Schema<BareMetalMaintenanceConfig>;
+S.Struct({
+  "maintenanceAddressCidrBlocks": S.optional(StringList),
+}),
+).annotate({ identifier: "BareMetalMaintenanceConfig" }) as any as S.Schema<BareMetalMaintenanceConfig>;
 
 /** Specifies operating system settings for cluster provisioning. */
 export interface BareMetalOsEnvironmentConfig {
@@ -1288,12 +1065,10 @@ export interface BareMetalOsEnvironmentConfig {
   packageRepoExcluded?: boolean;
 }
 export const BareMetalOsEnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageRepoExcluded: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalOsEnvironmentConfig",
-}) as any as S.Schema<BareMetalOsEnvironmentConfig>;
+S.Struct({
+  "packageRepoExcluded": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalOsEnvironmentConfig" }) as any as S.Schema<BareMetalOsEnvironmentConfig>;
 
 /** Represents a machine that is currently draining. */
 export interface BareMetalDrainingMachine {
@@ -1303,19 +1078,14 @@ export interface BareMetalDrainingMachine {
   podCount?: number;
 }
 export const BareMetalDrainingMachine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeIp: S.optional(S.String),
-    podCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BareMetalDrainingMachine",
-}) as any as S.Schema<BareMetalDrainingMachine>;
+S.Struct({
+  "nodeIp": S.optional(S.String),
+  "podCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "BareMetalDrainingMachine" }) as any as S.Schema<BareMetalDrainingMachine>;
 
-export type BareMetalDrainingMachineList =
-  ReadonlyArray<BareMetalDrainingMachine>;
-export const BareMetalDrainingMachineList = /*@__PURE__*/ S.Array(
-  BareMetalDrainingMachine,
-) as any as S.Schema<BareMetalDrainingMachineList>;
+export type BareMetalDrainingMachineList = ReadonlyArray<BareMetalDrainingMachine>;
+export const BareMetalDrainingMachineList = /*@__PURE__*/ S.Array(BareMetalDrainingMachine) as any as S.Schema<BareMetalDrainingMachineList>;
 
 /** Represents a machine that is currently drained. */
 export interface BareMetalDrainedMachine {
@@ -1323,18 +1093,13 @@ export interface BareMetalDrainedMachine {
   nodeIp?: string;
 }
 export const BareMetalDrainedMachine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeIp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalDrainedMachine",
-}) as any as S.Schema<BareMetalDrainedMachine>;
+S.Struct({
+  "nodeIp": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalDrainedMachine" }) as any as S.Schema<BareMetalDrainedMachine>;
 
-export type BareMetalDrainedMachineList =
-  ReadonlyArray<BareMetalDrainedMachine>;
-export const BareMetalDrainedMachineList = /*@__PURE__*/ S.Array(
-  BareMetalDrainedMachine,
-) as any as S.Schema<BareMetalDrainedMachineList>;
+export type BareMetalDrainedMachineList = ReadonlyArray<BareMetalDrainedMachine>;
+export const BareMetalDrainedMachineList = /*@__PURE__*/ S.Array(BareMetalDrainedMachine) as any as S.Schema<BareMetalDrainedMachineList>;
 
 /** Represents the status of node machines that are undergoing drain operations. */
 export interface BareMetalMachineDrainStatus {
@@ -1344,13 +1109,11 @@ export interface BareMetalMachineDrainStatus {
   drainedMachines?: BareMetalDrainedMachineList;
 }
 export const BareMetalMachineDrainStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    drainingMachines: S.optional(BareMetalDrainingMachineList),
-    drainedMachines: S.optional(BareMetalDrainedMachineList),
-  }),
-).annotate({
-  identifier: "BareMetalMachineDrainStatus",
-}) as any as S.Schema<BareMetalMachineDrainStatus>;
+S.Struct({
+  "drainingMachines": S.optional(BareMetalDrainingMachineList),
+  "drainedMachines": S.optional(BareMetalDrainedMachineList),
+}),
+).annotate({ identifier: "BareMetalMachineDrainStatus" }) as any as S.Schema<BareMetalMachineDrainStatus>;
 
 /** Represents the maintenance status of the bare metal user cluster. */
 export interface BareMetalMaintenanceStatus {
@@ -1358,12 +1121,10 @@ export interface BareMetalMaintenanceStatus {
   machineDrainStatus?: BareMetalMachineDrainStatus;
 }
 export const BareMetalMaintenanceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machineDrainStatus: S.optional(BareMetalMachineDrainStatus),
-  }),
-).annotate({
-  identifier: "BareMetalMaintenanceStatus",
-}) as any as S.Schema<BareMetalMaintenanceStatus>;
+S.Struct({
+  "machineDrainStatus": S.optional(BareMetalMachineDrainStatus),
+}),
+).annotate({ identifier: "BareMetalMaintenanceStatus" }) as any as S.Schema<BareMetalMaintenanceStatus>;
 
 /** Specifies the load balancer's node pool configuration. */
 export interface BareMetalLoadBalancerNodePoolConfig {
@@ -1371,12 +1132,10 @@ export interface BareMetalLoadBalancerNodePoolConfig {
   nodePoolConfig?: BareMetalNodePoolConfig;
 }
 export const BareMetalLoadBalancerNodePoolConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodePoolConfig: S.optional(BareMetalNodePoolConfig),
-  }),
-).annotate({
-  identifier: "BareMetalLoadBalancerNodePoolConfig",
-}) as any as S.Schema<BareMetalLoadBalancerNodePoolConfig>;
+S.Struct({
+  "nodePoolConfig": S.optional(BareMetalNodePoolConfig),
+}),
+).annotate({ identifier: "BareMetalLoadBalancerNodePoolConfig" }) as any as S.Schema<BareMetalLoadBalancerNodePoolConfig>;
 
 /** Represents an IP pool used by the load balancer. */
 export interface BareMetalLoadBalancerAddressPool {
@@ -1390,21 +1149,16 @@ export interface BareMetalLoadBalancerAddressPool {
   manualAssign?: boolean;
 }
 export const BareMetalLoadBalancerAddressPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addresses: S.optional(StringList),
-    pool: S.optional(S.String),
-    avoidBuggyIps: S.optional(S.Boolean),
-    manualAssign: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalLoadBalancerAddressPool",
-}) as any as S.Schema<BareMetalLoadBalancerAddressPool>;
+S.Struct({
+  "addresses": S.optional(StringList),
+  "pool": S.optional(S.String),
+  "avoidBuggyIps": S.optional(S.Boolean),
+  "manualAssign": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalLoadBalancerAddressPool" }) as any as S.Schema<BareMetalLoadBalancerAddressPool>;
 
-export type BareMetalLoadBalancerAddressPoolList =
-  ReadonlyArray<BareMetalLoadBalancerAddressPool>;
-export const BareMetalLoadBalancerAddressPoolList = /*@__PURE__*/ S.Array(
-  BareMetalLoadBalancerAddressPool,
-) as any as S.Schema<BareMetalLoadBalancerAddressPoolList>;
+export type BareMetalLoadBalancerAddressPoolList = ReadonlyArray<BareMetalLoadBalancerAddressPool>;
+export const BareMetalLoadBalancerAddressPoolList = /*@__PURE__*/ S.Array(BareMetalLoadBalancerAddressPool) as any as S.Schema<BareMetalLoadBalancerAddressPoolList>;
 
 /** Represents configuration parameters for a MetalLB load balancer. */
 export interface BareMetalMetalLbConfig {
@@ -1414,13 +1168,11 @@ export interface BareMetalMetalLbConfig {
   addressPools?: BareMetalLoadBalancerAddressPoolList;
 }
 export const BareMetalMetalLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loadBalancerNodePoolConfig: S.optional(BareMetalLoadBalancerNodePoolConfig),
-    addressPools: S.optional(BareMetalLoadBalancerAddressPoolList),
-  }),
-).annotate({
-  identifier: "BareMetalMetalLbConfig",
-}) as any as S.Schema<BareMetalMetalLbConfig>;
+S.Struct({
+  "loadBalancerNodePoolConfig": S.optional(BareMetalLoadBalancerNodePoolConfig),
+  "addressPools": S.optional(BareMetalLoadBalancerAddressPoolList),
+}),
+).annotate({ identifier: "BareMetalMetalLbConfig" }) as any as S.Schema<BareMetalMetalLbConfig>;
 
 /** BareMetalBgpPeerConfig represents configuration parameters for a Border Gateway Protocol (BGP) peer. */
 export interface BareMetalBgpPeerConfig {
@@ -1432,19 +1184,15 @@ export interface BareMetalBgpPeerConfig {
   ipAddress?: string;
 }
 export const BareMetalBgpPeerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneNodes: S.optional(StringList),
-    asn: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalBgpPeerConfig",
-}) as any as S.Schema<BareMetalBgpPeerConfig>;
+S.Struct({
+  "controlPlaneNodes": S.optional(StringList),
+  "asn": S.optional(S.String),
+  "ipAddress": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalBgpPeerConfig" }) as any as S.Schema<BareMetalBgpPeerConfig>;
 
 export type BareMetalBgpPeerConfigList = ReadonlyArray<BareMetalBgpPeerConfig>;
-export const BareMetalBgpPeerConfigList = /*@__PURE__*/ S.Array(
-  BareMetalBgpPeerConfig,
-) as any as S.Schema<BareMetalBgpPeerConfigList>;
+export const BareMetalBgpPeerConfigList = /*@__PURE__*/ S.Array(BareMetalBgpPeerConfig) as any as S.Schema<BareMetalBgpPeerConfigList>;
 
 /** BareMetalBgpLbConfig represents configuration parameters for a Border Gateway Protocol (BGP) load balancer. */
 export interface BareMetalBgpLbConfig {
@@ -1458,15 +1206,13 @@ export interface BareMetalBgpLbConfig {
   loadBalancerNodePoolConfig?: BareMetalLoadBalancerNodePoolConfig;
 }
 export const BareMetalBgpLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asn: S.optional(S.String),
-    bgpPeerConfigs: S.optional(BareMetalBgpPeerConfigList),
-    addressPools: S.optional(BareMetalLoadBalancerAddressPoolList),
-    loadBalancerNodePoolConfig: S.optional(BareMetalLoadBalancerNodePoolConfig),
-  }),
-).annotate({
-  identifier: "BareMetalBgpLbConfig",
-}) as any as S.Schema<BareMetalBgpLbConfig>;
+S.Struct({
+  "asn": S.optional(S.String),
+  "bgpPeerConfigs": S.optional(BareMetalBgpPeerConfigList),
+  "addressPools": S.optional(BareMetalLoadBalancerAddressPoolList),
+  "loadBalancerNodePoolConfig": S.optional(BareMetalLoadBalancerNodePoolConfig),
+}),
+).annotate({ identifier: "BareMetalBgpLbConfig" }) as any as S.Schema<BareMetalBgpLbConfig>;
 
 /** Specifies the VIP config for the bare metal load balancer. */
 export interface BareMetalVipConfig {
@@ -1476,13 +1222,11 @@ export interface BareMetalVipConfig {
   ingressVip?: string;
 }
 export const BareMetalVipConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneVip: S.optional(S.String),
-    ingressVip: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalVipConfig",
-}) as any as S.Schema<BareMetalVipConfig>;
+S.Struct({
+  "controlPlaneVip": S.optional(S.String),
+  "ingressVip": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalVipConfig" }) as any as S.Schema<BareMetalVipConfig>;
 
 /** Represents configuration parameters for a manual load balancer. */
 export interface BareMetalManualLbConfig {
@@ -1490,12 +1234,10 @@ export interface BareMetalManualLbConfig {
   enabled?: boolean;
 }
 export const BareMetalManualLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalManualLbConfig",
-}) as any as S.Schema<BareMetalManualLbConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalManualLbConfig" }) as any as S.Schema<BareMetalManualLbConfig>;
 
 /** Specifies load balancer ports for the bare metal user cluster. */
 export interface BareMetalPortConfig {
@@ -1503,12 +1245,10 @@ export interface BareMetalPortConfig {
   controlPlaneLoadBalancerPort?: number;
 }
 export const BareMetalPortConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneLoadBalancerPort: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BareMetalPortConfig",
-}) as any as S.Schema<BareMetalPortConfig>;
+S.Struct({
+  "controlPlaneLoadBalancerPort": S.optional(S.Number),
+}),
+).annotate({ identifier: "BareMetalPortConfig" }) as any as S.Schema<BareMetalPortConfig>;
 
 /** Specifies the load balancer configuration. */
 export interface BareMetalLoadBalancerConfig {
@@ -1524,16 +1264,14 @@ export interface BareMetalLoadBalancerConfig {
   portConfig?: BareMetalPortConfig;
 }
 export const BareMetalLoadBalancerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metalLbConfig: S.optional(BareMetalMetalLbConfig),
-    bgpLbConfig: S.optional(BareMetalBgpLbConfig),
-    vipConfig: S.optional(BareMetalVipConfig),
-    manualLbConfig: S.optional(BareMetalManualLbConfig),
-    portConfig: S.optional(BareMetalPortConfig),
-  }),
-).annotate({
-  identifier: "BareMetalLoadBalancerConfig",
-}) as any as S.Schema<BareMetalLoadBalancerConfig>;
+S.Struct({
+  "metalLbConfig": S.optional(BareMetalMetalLbConfig),
+  "bgpLbConfig": S.optional(BareMetalBgpLbConfig),
+  "vipConfig": S.optional(BareMetalVipConfig),
+  "manualLbConfig": S.optional(BareMetalManualLbConfig),
+  "portConfig": S.optional(BareMetalPortConfig),
+}),
+).annotate({ identifier: "BareMetalLoadBalancerConfig" }) as any as S.Schema<BareMetalLoadBalancerConfig>;
 
 /** BareMetalStorageConfig specifies the cluster storage configuration. */
 export interface BareMetalStorageConfig {
@@ -1543,13 +1281,11 @@ export interface BareMetalStorageConfig {
   lvpNodeMountsConfig?: BareMetalLvpConfig;
 }
 export const BareMetalStorageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lvpShareConfig: S.optional(BareMetalLvpShareConfig),
-    lvpNodeMountsConfig: S.optional(BareMetalLvpConfig),
-  }),
-).annotate({
-  identifier: "BareMetalStorageConfig",
-}) as any as S.Schema<BareMetalStorageConfig>;
+S.Struct({
+  "lvpShareConfig": S.optional(BareMetalLvpShareConfig),
+  "lvpNodeMountsConfig": S.optional(BareMetalLvpConfig),
+}),
+).annotate({ identifier: "BareMetalStorageConfig" }) as any as S.Schema<BareMetalStorageConfig>;
 
 /** Specifies the node access related settings for the bare metal user cluster. */
 export interface BareMetalNodeAccessConfig {
@@ -1557,12 +1293,10 @@ export interface BareMetalNodeAccessConfig {
   loginUser?: string;
 }
 export const BareMetalNodeAccessConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loginUser: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalNodeAccessConfig",
-}) as any as S.Schema<BareMetalNodeAccessConfig>;
+S.Struct({
+  "loginUser": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalNodeAccessConfig" }) as any as S.Schema<BareMetalNodeAccessConfig>;
 
 /** Specifies the control plane node pool configuration. */
 export interface BareMetalControlPlaneNodePoolConfig {
@@ -1570,12 +1304,10 @@ export interface BareMetalControlPlaneNodePoolConfig {
   nodePoolConfig?: BareMetalNodePoolConfig;
 }
 export const BareMetalControlPlaneNodePoolConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodePoolConfig: S.optional(BareMetalNodePoolConfig),
-  }),
-).annotate({
-  identifier: "BareMetalControlPlaneNodePoolConfig",
-}) as any as S.Schema<BareMetalControlPlaneNodePoolConfig>;
+S.Struct({
+  "nodePoolConfig": S.optional(BareMetalNodePoolConfig),
+}),
+).annotate({ identifier: "BareMetalControlPlaneNodePoolConfig" }) as any as S.Schema<BareMetalControlPlaneNodePoolConfig>;
 
 /** Represents an arg name->value pair. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/). */
 export interface BareMetalApiServerArgument {
@@ -1585,19 +1317,14 @@ export interface BareMetalApiServerArgument {
   value?: string;
 }
 export const BareMetalApiServerArgument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    argument: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalApiServerArgument",
-}) as any as S.Schema<BareMetalApiServerArgument>;
+S.Struct({
+  "argument": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalApiServerArgument" }) as any as S.Schema<BareMetalApiServerArgument>;
 
-export type BareMetalApiServerArgumentList =
-  ReadonlyArray<BareMetalApiServerArgument>;
-export const BareMetalApiServerArgumentList = /*@__PURE__*/ S.Array(
-  BareMetalApiServerArgument,
-) as any as S.Schema<BareMetalApiServerArgumentList>;
+export type BareMetalApiServerArgumentList = ReadonlyArray<BareMetalApiServerArgument>;
+export const BareMetalApiServerArgumentList = /*@__PURE__*/ S.Array(BareMetalApiServerArgument) as any as S.Schema<BareMetalApiServerArgumentList>;
 
 /** Specifies the control plane configuration. */
 export interface BareMetalControlPlaneConfig {
@@ -1607,13 +1334,11 @@ export interface BareMetalControlPlaneConfig {
   apiServerArgs?: BareMetalApiServerArgumentList;
 }
 export const BareMetalControlPlaneConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneNodePoolConfig: S.optional(BareMetalControlPlaneNodePoolConfig),
-    apiServerArgs: S.optional(BareMetalApiServerArgumentList),
-  }),
-).annotate({
-  identifier: "BareMetalControlPlaneConfig",
-}) as any as S.Schema<BareMetalControlPlaneConfig>;
+S.Struct({
+  "controlPlaneNodePoolConfig": S.optional(BareMetalControlPlaneNodePoolConfig),
+  "apiServerArgs": S.optional(BareMetalApiServerArgumentList),
+}),
+).annotate({ identifier: "BareMetalControlPlaneConfig" }) as any as S.Schema<BareMetalControlPlaneConfig>;
 
 /** Resource that represents a bare metal user cluster. */
 export interface BareMetalCluster {
@@ -1685,44 +1410,42 @@ export interface BareMetalCluster {
   bareMetalVersion?: string;
 }
 export const BareMetalCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    clusterOperations: S.optional(BareMetalClusterOperationsConfig),
-    proxy: S.optional(BareMetalProxyConfig),
-    state: S.optional(BareMetalClusterStateEnum),
-    deleteTime: S.optional(S.String),
-    nodeConfig: S.optional(BareMetalWorkloadNodeConfig),
-    name: S.optional(S.String),
-    adminClusterMembership: S.optional(S.String),
-    fleet: S.optional(Fleet),
-    createTime: S.optional(S.String),
-    validationCheck: S.optional(ValidationCheck),
-    securityConfig: S.optional(BareMetalSecurityConfig),
-    localNamespace: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
-    upgradePolicy: S.optional(BareMetalClusterUpgradePolicy),
-    networkConfig: S.optional(BareMetalNetworkConfig),
-    status: S.optional(ResourceStatus),
-    endpoint: S.optional(S.String),
-    description: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    maintenanceConfig: S.optional(BareMetalMaintenanceConfig),
-    osEnvironmentConfig: S.optional(BareMetalOsEnvironmentConfig),
-    annotations: S.optional(StringMap),
-    localName: S.optional(S.String),
-    adminClusterName: S.optional(S.String),
-    maintenanceStatus: S.optional(BareMetalMaintenanceStatus),
-    loadBalancer: S.optional(BareMetalLoadBalancerConfig),
-    storage: S.optional(BareMetalStorageConfig),
-    uid: S.optional(S.String),
-    binaryAuthorization: S.optional(BinaryAuthorization),
-    nodeAccessConfig: S.optional(BareMetalNodeAccessConfig),
-    controlPlane: S.optional(BareMetalControlPlaneConfig),
-    bareMetalVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BareMetalCluster",
-}) as any as S.Schema<BareMetalCluster>;
+S.Struct({
+  "etag": S.optional(S.String),
+  "clusterOperations": S.optional(BareMetalClusterOperationsConfig),
+  "proxy": S.optional(BareMetalProxyConfig),
+  "state": S.optional(BareMetalClusterStateEnum),
+  "deleteTime": S.optional(S.String),
+  "nodeConfig": S.optional(BareMetalWorkloadNodeConfig),
+  "name": S.optional(S.String),
+  "adminClusterMembership": S.optional(S.String),
+  "fleet": S.optional(Fleet),
+  "createTime": S.optional(S.String),
+  "validationCheck": S.optional(ValidationCheck),
+  "securityConfig": S.optional(BareMetalSecurityConfig),
+  "localNamespace": S.optional(S.String),
+  "reconciling": S.optional(S.Boolean),
+  "upgradePolicy": S.optional(BareMetalClusterUpgradePolicy),
+  "networkConfig": S.optional(BareMetalNetworkConfig),
+  "status": S.optional(ResourceStatus),
+  "endpoint": S.optional(S.String),
+  "description": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "maintenanceConfig": S.optional(BareMetalMaintenanceConfig),
+  "osEnvironmentConfig": S.optional(BareMetalOsEnvironmentConfig),
+  "annotations": S.optional(StringMap),
+  "localName": S.optional(S.String),
+  "adminClusterName": S.optional(S.String),
+  "maintenanceStatus": S.optional(BareMetalMaintenanceStatus),
+  "loadBalancer": S.optional(BareMetalLoadBalancerConfig),
+  "storage": S.optional(BareMetalStorageConfig),
+  "uid": S.optional(S.String),
+  "binaryAuthorization": S.optional(BinaryAuthorization),
+  "nodeAccessConfig": S.optional(BareMetalNodeAccessConfig),
+  "controlPlane": S.optional(BareMetalControlPlaneConfig),
+  "bareMetalVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "BareMetalCluster" }) as any as S.Schema<BareMetalCluster>;
 
 export interface CreateProjectsLocationsBareMetalClustersRequest {
   /** Optional. If set to true, CLM will force CCFE to persist the cluster resource in RMS when the creation fails during standalone preflight checks. In that case the subsequent create call will fail with "cluster already exists" error and hence a update cluster is required to fix the cluster. */
@@ -1736,24 +1459,15 @@ export interface CreateProjectsLocationsBareMetalClustersRequest {
   /** Request body */
   body?: BareMetalCluster;
 }
-export const CreateProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowPreflightFailure: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      bareMetalClusterId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(BareMetalCluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/bareMetalClusters",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<CreateProjectsLocationsBareMetalClustersRequest>;
+export const CreateProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowPreflightFailure": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "bareMetalClusterId": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(BareMetalCluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/bareMetalClusters","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<CreateProjectsLocationsBareMetalClustersRequest>;
 
 /** BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools. */
 export interface BareMetalParallelUpgradeConfig {
@@ -1763,13 +1477,11 @@ export interface BareMetalParallelUpgradeConfig {
   minimumAvailableNodes?: number;
 }
 export const BareMetalParallelUpgradeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    concurrentNodes: S.optional(S.Number),
-    minimumAvailableNodes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BareMetalParallelUpgradeConfig",
-}) as any as S.Schema<BareMetalParallelUpgradeConfig>;
+S.Struct({
+  "concurrentNodes": S.optional(S.Number),
+  "minimumAvailableNodes": S.optional(S.Number),
+}),
+).annotate({ identifier: "BareMetalParallelUpgradeConfig" }) as any as S.Schema<BareMetalParallelUpgradeConfig>;
 
 /** BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy. */
 export interface BareMetalNodePoolUpgradePolicy {
@@ -1777,22 +1489,12 @@ export interface BareMetalNodePoolUpgradePolicy {
   parallelUpgradeConfig?: BareMetalParallelUpgradeConfig;
 }
 export const BareMetalNodePoolUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parallelUpgradeConfig: S.optional(BareMetalParallelUpgradeConfig),
-  }),
-).annotate({
-  identifier: "BareMetalNodePoolUpgradePolicy",
-}) as any as S.Schema<BareMetalNodePoolUpgradePolicy>;
+S.Struct({
+  "parallelUpgradeConfig": S.optional(BareMetalParallelUpgradeConfig),
+}),
+).annotate({ identifier: "BareMetalNodePoolUpgradePolicy" }) as any as S.Schema<BareMetalNodePoolUpgradePolicy>;
 
-export type BareMetalNodePoolStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PROVISIONING"
-  | "RUNNING"
-  | "RECONCILING"
-  | "STOPPING"
-  | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+export type BareMetalNodePoolStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "RUNNING" | "RECONCILING" | "STOPPING" | "ERROR" | "DEGRADED";
 export const BareMetalNodePoolStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource that represents a bare metal node pool. */
@@ -1825,24 +1527,22 @@ export interface BareMetalNodePool {
   annotations?: StringMap;
 }
 export const BareMetalNodePool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    nodePoolConfig: S.optional(BareMetalNodePoolConfig),
-    status: S.optional(ResourceStatus),
-    updateTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    upgradePolicy: S.optional(BareMetalNodePoolUpgradePolicy),
-    reconciling: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-    etag: S.optional(S.String),
-    state: S.optional(BareMetalNodePoolStateEnum),
-    deleteTime: S.optional(S.String),
-    annotations: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "BareMetalNodePool",
-}) as any as S.Schema<BareMetalNodePool>;
+S.Struct({
+  "displayName": S.optional(S.String),
+  "nodePoolConfig": S.optional(BareMetalNodePoolConfig),
+  "status": S.optional(ResourceStatus),
+  "updateTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "upgradePolicy": S.optional(BareMetalNodePoolUpgradePolicy),
+  "reconciling": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "state": S.optional(BareMetalNodePoolStateEnum),
+  "deleteTime": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+}),
+).annotate({ identifier: "BareMetalNodePool" }) as any as S.Schema<BareMetalNodePool>;
 
 export interface CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
   /** The ID to use for the node pool, which will become the final component of the node pool's resource name. This value must be up to 63 characters, and valid characters are /a-z-/. The value must not be permitted to be a UUID (or UUID-like: anything matching /^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i). */
@@ -1854,24 +1554,14 @@ export interface CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsReque
   /** Request body */
   body?: BareMetalNodePool;
 }
-export const CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bareMetalNodePoolId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BareMetalNodePool.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/bareMetalNodePools",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
+export const CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "bareMetalNodePoolId": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BareMetalNodePool.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/bareMetalNodePools","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest" }) as any as S.Schema<CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
 /** VmwareAdminVCenterConfig contains VCenter configuration for VMware admin cluster. */
 export interface VmwareAdminVCenterConfig {
@@ -1895,20 +1585,18 @@ export interface VmwareAdminVCenterConfig {
   address?: string;
 }
 export const VmwareAdminVCenterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datacenter: S.optional(S.String),
-    folder: S.optional(S.String),
-    storagePolicyName: S.optional(S.String),
-    datastore: S.optional(S.String),
-    resourcePool: S.optional(S.String),
-    dataDisk: S.optional(S.String),
-    cluster: S.optional(S.String),
-    caCertData: S.optional(S.String),
-    address: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareAdminVCenterConfig",
-}) as any as S.Schema<VmwareAdminVCenterConfig>;
+S.Struct({
+  "datacenter": S.optional(S.String),
+  "folder": S.optional(S.String),
+  "storagePolicyName": S.optional(S.String),
+  "datastore": S.optional(S.String),
+  "resourcePool": S.optional(S.String),
+  "dataDisk": S.optional(S.String),
+  "cluster": S.optional(S.String),
+  "caCertData": S.optional(S.String),
+  "address": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareAdminVCenterConfig" }) as any as S.Schema<VmwareAdminVCenterConfig>;
 
 /** VmwareAdminPrivateRegistryConfig represents configuration for admin cluster registry. */
 export interface VmwareAdminPrivateRegistryConfig {
@@ -1918,13 +1606,11 @@ export interface VmwareAdminPrivateRegistryConfig {
   address?: string;
 }
 export const VmwareAdminPrivateRegistryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caCert: S.optional(S.String),
-    address: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareAdminPrivateRegistryConfig",
-}) as any as S.Schema<VmwareAdminPrivateRegistryConfig>;
+S.Struct({
+  "caCert": S.optional(S.String),
+  "address": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareAdminPrivateRegistryConfig" }) as any as S.Schema<VmwareAdminPrivateRegistryConfig>;
 
 /** Represents auto resizing configurations for the VMware user cluster. */
 export interface VmwareAutoResizeConfig {
@@ -1932,12 +1618,10 @@ export interface VmwareAutoResizeConfig {
   enabled?: boolean;
 }
 export const VmwareAutoResizeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VmwareAutoResizeConfig",
-}) as any as S.Schema<VmwareAutoResizeConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VmwareAutoResizeConfig" }) as any as S.Schema<VmwareAutoResizeConfig>;
 
 /** VmwareAdminAddonNodeConfig contains add-on node configurations for VMware admin cluster. */
 export interface VmwareAdminAddonNodeConfig {
@@ -1945,12 +1629,10 @@ export interface VmwareAdminAddonNodeConfig {
   autoResizeConfig?: VmwareAutoResizeConfig;
 }
 export const VmwareAdminAddonNodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoResizeConfig: S.optional(VmwareAutoResizeConfig),
-  }),
-).annotate({
-  identifier: "VmwareAdminAddonNodeConfig",
-}) as any as S.Schema<VmwareAdminAddonNodeConfig>;
+S.Struct({
+  "autoResizeConfig": S.optional(VmwareAutoResizeConfig),
+}),
+).annotate({ identifier: "VmwareAdminAddonNodeConfig" }) as any as S.Schema<VmwareAdminAddonNodeConfig>;
 
 /** VmwareAdminPreparedSecretsConfig represents configuration for admin cluster prepared secrets. */
 export interface VmwareAdminPreparedSecretsConfig {
@@ -1958,12 +1640,10 @@ export interface VmwareAdminPreparedSecretsConfig {
   enabled?: boolean;
 }
 export const VmwareAdminPreparedSecretsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VmwareAdminPreparedSecretsConfig",
-}) as any as S.Schema<VmwareAdminPreparedSecretsConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VmwareAdminPreparedSecretsConfig" }) as any as S.Schema<VmwareAdminPreparedSecretsConfig>;
 
 /** Specifies anti affinity group config for the VMware user cluster. */
 export interface VmwareAAGConfig {
@@ -1971,12 +1651,10 @@ export interface VmwareAAGConfig {
   aagConfigDisabled?: boolean;
 }
 export const VmwareAAGConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aagConfigDisabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VmwareAAGConfig",
-}) as any as S.Schema<VmwareAAGConfig>;
+S.Struct({
+  "aagConfigDisabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VmwareAAGConfig" }) as any as S.Schema<VmwareAAGConfig>;
 
 /** VmwareAdminControlPlaneNodeConfig contains control plane node configuration for VMware admin cluster. */
 export interface VmwareAdminControlPlaneNodeConfig {
@@ -1988,14 +1666,12 @@ export interface VmwareAdminControlPlaneNodeConfig {
   cpus?: string;
 }
 export const VmwareAdminControlPlaneNodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memory: S.optional(S.String),
-    replicas: S.optional(S.String),
-    cpus: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareAdminControlPlaneNodeConfig",
-}) as any as S.Schema<VmwareAdminControlPlaneNodeConfig>;
+S.Struct({
+  "memory": S.optional(S.String),
+  "replicas": S.optional(S.String),
+  "cpus": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareAdminControlPlaneNodeConfig" }) as any as S.Schema<VmwareAdminControlPlaneNodeConfig>;
 
 /** VmwareAdminF5BigIpConfig represents configuration parameters for an F5 BIG-IP load balancer. */
 export interface VmwareAdminF5BigIpConfig {
@@ -2007,14 +1683,12 @@ export interface VmwareAdminF5BigIpConfig {
   address?: string;
 }
 export const VmwareAdminF5BigIpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partition: S.optional(S.String),
-    snatPool: S.optional(S.String),
-    address: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareAdminF5BigIpConfig",
-}) as any as S.Schema<VmwareAdminF5BigIpConfig>;
+S.Struct({
+  "partition": S.optional(S.String),
+  "snatPool": S.optional(S.String),
+  "address": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareAdminF5BigIpConfig" }) as any as S.Schema<VmwareAdminF5BigIpConfig>;
 
 /** VmwareAdminVipConfig for VMware load balancer configurations. */
 export interface VmwareAdminVipConfig {
@@ -2024,13 +1698,11 @@ export interface VmwareAdminVipConfig {
   addonsVip?: string;
 }
 export const VmwareAdminVipConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneVip: S.optional(S.String),
-    addonsVip: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareAdminVipConfig",
-}) as any as S.Schema<VmwareAdminVipConfig>;
+S.Struct({
+  "controlPlaneVip": S.optional(S.String),
+  "addonsVip": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareAdminVipConfig" }) as any as S.Schema<VmwareAdminVipConfig>;
 
 export interface VmwareAdminManualLbConfig {
   /** NodePort for ingress service's https. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 30139). */
@@ -2045,16 +1717,14 @@ export interface VmwareAdminManualLbConfig {
   addonsNodePort?: number;
 }
 export const VmwareAdminManualLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ingressHttpsNodePort: S.optional(S.Number),
-    controlPlaneNodePort: S.optional(S.Number),
-    ingressHttpNodePort: S.optional(S.Number),
-    konnectivityServerNodePort: S.optional(S.Number),
-    addonsNodePort: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "VmwareAdminManualLbConfig",
-}) as any as S.Schema<VmwareAdminManualLbConfig>;
+S.Struct({
+  "ingressHttpsNodePort": S.optional(S.Number),
+  "controlPlaneNodePort": S.optional(S.Number),
+  "ingressHttpNodePort": S.optional(S.Number),
+  "konnectivityServerNodePort": S.optional(S.Number),
+  "addonsNodePort": S.optional(S.Number),
+}),
+).annotate({ identifier: "VmwareAdminManualLbConfig" }) as any as S.Schema<VmwareAdminManualLbConfig>;
 
 /** Represents VMware user cluster node's network configuration. */
 export interface VmwareHostIp {
@@ -2064,16 +1734,14 @@ export interface VmwareHostIp {
   ip?: string;
 }
 export const VmwareHostIp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.optional(S.String),
-    ip: S.optional(S.String),
-  }),
+S.Struct({
+  "hostname": S.optional(S.String),
+  "ip": S.optional(S.String),
+}),
 ).annotate({ identifier: "VmwareHostIp" }) as any as S.Schema<VmwareHostIp>;
 
 export type VmwareHostIpList = ReadonlyArray<VmwareHostIp>;
-export const VmwareHostIpList = /*@__PURE__*/ S.Array(
-  VmwareHostIp,
-) as any as S.Schema<VmwareHostIpList>;
+export const VmwareHostIpList = /*@__PURE__*/ S.Array(VmwareHostIp) as any as S.Schema<VmwareHostIpList>;
 
 /** Represents a collection of IP addresses to assign to nodes. */
 export interface VmwareIpBlock {
@@ -2085,17 +1753,15 @@ export interface VmwareIpBlock {
   gateway?: string;
 }
 export const VmwareIpBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ips: S.optional(VmwareHostIpList),
-    netmask: S.optional(S.String),
-    gateway: S.optional(S.String),
-  }),
+S.Struct({
+  "ips": S.optional(VmwareHostIpList),
+  "netmask": S.optional(S.String),
+  "gateway": S.optional(S.String),
+}),
 ).annotate({ identifier: "VmwareIpBlock" }) as any as S.Schema<VmwareIpBlock>;
 
 export type VmwareIpBlockList = ReadonlyArray<VmwareIpBlock>;
-export const VmwareIpBlockList = /*@__PURE__*/ S.Array(
-  VmwareIpBlock,
-) as any as S.Schema<VmwareIpBlockList>;
+export const VmwareIpBlockList = /*@__PURE__*/ S.Array(VmwareIpBlock) as any as S.Schema<VmwareIpBlockList>;
 
 /** VmwareSeesawConfig represents configuration parameters for an already existing Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update Seesaw configurations it can only bind a pre-existing configuration to a new user cluster. IMPORTANT: When attempting to create a user cluster with a pre-existing Seesaw load balancer you will need to follow some preparation steps before calling the 'CreateVmwareCluster' API method. First you will need to create the user cluster's namespace via kubectl. The namespace will need to use the following naming convention : -gke-onprem-mgmt or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.local_name' to disambiguate collisions; for more context see the documentation of 'VmwareCluster.local_name'. Once the namespace is created you will need to create a secret resource via kubectl. This secret will contain copies of your Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The credentials must be keyed with the following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key', 'seesaw-ssh-ca-cert'. */
 export interface VmwareAdminSeesawConfig {
@@ -2113,17 +1779,15 @@ export interface VmwareAdminSeesawConfig {
   ipBlocks?: VmwareIpBlockList;
 }
 export const VmwareAdminSeesawConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stackdriverName: S.optional(S.String),
-    enableHa: S.optional(S.Boolean),
-    group: S.optional(S.String),
-    masterIp: S.optional(S.String),
-    vms: S.optional(StringList),
-    ipBlocks: S.optional(VmwareIpBlockList),
-  }),
-).annotate({
-  identifier: "VmwareAdminSeesawConfig",
-}) as any as S.Schema<VmwareAdminSeesawConfig>;
+S.Struct({
+  "stackdriverName": S.optional(S.String),
+  "enableHa": S.optional(S.Boolean),
+  "group": S.optional(S.String),
+  "masterIp": S.optional(S.String),
+  "vms": S.optional(StringList),
+  "ipBlocks": S.optional(VmwareIpBlockList),
+}),
+).annotate({ identifier: "VmwareAdminSeesawConfig" }) as any as S.Schema<VmwareAdminSeesawConfig>;
 
 /** VmwareAdminMetalLbConfig represents configuration parameters for a MetalLB load balancer. For admin clusters, currently no configurations is needed. */
 export interface VmwareAdminMetalLbConfig {
@@ -2131,12 +1795,10 @@ export interface VmwareAdminMetalLbConfig {
   enabled?: boolean;
 }
 export const VmwareAdminMetalLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VmwareAdminMetalLbConfig",
-}) as any as S.Schema<VmwareAdminMetalLbConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VmwareAdminMetalLbConfig" }) as any as S.Schema<VmwareAdminMetalLbConfig>;
 
 /** VmwareAdminLoadBalancerConfig contains load balancer configuration for VMware admin cluster. */
 export interface VmwareAdminLoadBalancerConfig {
@@ -2152,16 +1814,14 @@ export interface VmwareAdminLoadBalancerConfig {
   metalLbConfig?: VmwareAdminMetalLbConfig;
 }
 export const VmwareAdminLoadBalancerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    f5Config: S.optional(VmwareAdminF5BigIpConfig),
-    vipConfig: S.optional(VmwareAdminVipConfig),
-    manualLbConfig: S.optional(VmwareAdminManualLbConfig),
-    seesawConfig: S.optional(VmwareAdminSeesawConfig),
-    metalLbConfig: S.optional(VmwareAdminMetalLbConfig),
-  }),
-).annotate({
-  identifier: "VmwareAdminLoadBalancerConfig",
-}) as any as S.Schema<VmwareAdminLoadBalancerConfig>;
+S.Struct({
+  "f5Config": S.optional(VmwareAdminF5BigIpConfig),
+  "vipConfig": S.optional(VmwareAdminVipConfig),
+  "manualLbConfig": S.optional(VmwareAdminManualLbConfig),
+  "seesawConfig": S.optional(VmwareAdminSeesawConfig),
+  "metalLbConfig": S.optional(VmwareAdminMetalLbConfig),
+}),
+).annotate({ identifier: "VmwareAdminLoadBalancerConfig" }) as any as S.Schema<VmwareAdminLoadBalancerConfig>;
 
 /** Specifies config to enable/disable auto repair. The cluster-health-controller is deployed only if Enabled is true. */
 export interface VmwareAutoRepairConfig {
@@ -2169,12 +1829,10 @@ export interface VmwareAutoRepairConfig {
   enabled?: boolean;
 }
 export const VmwareAutoRepairConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VmwareAutoRepairConfig",
-}) as any as S.Schema<VmwareAutoRepairConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VmwareAutoRepairConfig" }) as any as S.Schema<VmwareAutoRepairConfig>;
 
 /** Specifies HA admin control plane config. */
 export interface VmwareAdminHAControlPlaneConfig {
@@ -2182,12 +1840,10 @@ export interface VmwareAdminHAControlPlaneConfig {
   controlPlaneIpBlock?: VmwareIpBlock;
 }
 export const VmwareAdminHAControlPlaneConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneIpBlock: S.optional(VmwareIpBlock),
-  }),
-).annotate({
-  identifier: "VmwareAdminHAControlPlaneConfig",
-}) as any as S.Schema<VmwareAdminHAControlPlaneConfig>;
+S.Struct({
+  "controlPlaneIpBlock": S.optional(VmwareIpBlock),
+}),
+).annotate({ identifier: "VmwareAdminHAControlPlaneConfig" }) as any as S.Schema<VmwareAdminHAControlPlaneConfig>;
 
 /** Represents the network configuration required for the VMware user clusters with Static IP configurations. */
 export interface VmwareStaticIpConfig {
@@ -2195,12 +1851,10 @@ export interface VmwareStaticIpConfig {
   ipBlocks?: VmwareIpBlockList;
 }
 export const VmwareStaticIpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipBlocks: S.optional(VmwareIpBlockList),
-  }),
-).annotate({
-  identifier: "VmwareStaticIpConfig",
-}) as any as S.Schema<VmwareStaticIpConfig>;
+S.Struct({
+  "ipBlocks": S.optional(VmwareIpBlockList),
+}),
+).annotate({ identifier: "VmwareStaticIpConfig" }) as any as S.Schema<VmwareStaticIpConfig>;
 
 /** Represents the network configuration required for the VMware user clusters with DHCP IP configurations. */
 export interface VmwareDhcpIpConfig {
@@ -2208,12 +1862,10 @@ export interface VmwareDhcpIpConfig {
   enabled?: boolean;
 }
 export const VmwareDhcpIpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VmwareDhcpIpConfig",
-}) as any as S.Schema<VmwareDhcpIpConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VmwareDhcpIpConfig" }) as any as S.Schema<VmwareDhcpIpConfig>;
 
 /** Represents the common parameters for all the hosts irrespective of their IP address. */
 export interface VmwareHostConfig {
@@ -2225,14 +1877,12 @@ export interface VmwareHostConfig {
   dnsSearchDomains?: StringList;
 }
 export const VmwareHostConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dnsServers: S.optional(StringList),
-    ntpServers: S.optional(StringList),
-    dnsSearchDomains: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "VmwareHostConfig",
-}) as any as S.Schema<VmwareHostConfig>;
+S.Struct({
+  "dnsServers": S.optional(StringList),
+  "ntpServers": S.optional(StringList),
+  "dnsSearchDomains": S.optional(StringList),
+}),
+).annotate({ identifier: "VmwareHostConfig" }) as any as S.Schema<VmwareHostConfig>;
 
 /** VmwareAdminNetworkConfig contains network configuration for VMware admin cluster. */
 export interface VmwareAdminNetworkConfig {
@@ -2252,18 +1902,16 @@ export interface VmwareAdminNetworkConfig {
   hostConfig?: VmwareHostConfig;
 }
 export const VmwareAdminNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    haControlPlaneConfig: S.optional(VmwareAdminHAControlPlaneConfig),
-    podAddressCidrBlocks: S.optional(StringList),
-    vcenterNetwork: S.optional(S.String),
-    serviceAddressCidrBlocks: S.optional(StringList),
-    staticIpConfig: S.optional(VmwareStaticIpConfig),
-    dhcpIpConfig: S.optional(VmwareDhcpIpConfig),
-    hostConfig: S.optional(VmwareHostConfig),
-  }),
-).annotate({
-  identifier: "VmwareAdminNetworkConfig",
-}) as any as S.Schema<VmwareAdminNetworkConfig>;
+S.Struct({
+  "haControlPlaneConfig": S.optional(VmwareAdminHAControlPlaneConfig),
+  "podAddressCidrBlocks": S.optional(StringList),
+  "vcenterNetwork": S.optional(S.String),
+  "serviceAddressCidrBlocks": S.optional(StringList),
+  "staticIpConfig": S.optional(VmwareStaticIpConfig),
+  "dhcpIpConfig": S.optional(VmwareDhcpIpConfig),
+  "hostConfig": S.optional(VmwareHostConfig),
+}),
+).annotate({ identifier: "VmwareAdminNetworkConfig" }) as any as S.Schema<VmwareAdminNetworkConfig>;
 
 /** VmwareBundleConfig represents configuration for the bundle. */
 export interface VmwareBundleConfig {
@@ -2273,18 +1921,14 @@ export interface VmwareBundleConfig {
   status?: ResourceStatus;
 }
 export const VmwareBundleConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-  }),
-).annotate({
-  identifier: "VmwareBundleConfig",
-}) as any as S.Schema<VmwareBundleConfig>;
+S.Struct({
+  "version": S.optional(S.String),
+  "status": S.optional(ResourceStatus),
+}),
+).annotate({ identifier: "VmwareBundleConfig" }) as any as S.Schema<VmwareBundleConfig>;
 
 export type VmwareBundleConfigList = ReadonlyArray<VmwareBundleConfig>;
-export const VmwareBundleConfigList = /*@__PURE__*/ S.Array(
-  VmwareBundleConfig,
-) as any as S.Schema<VmwareBundleConfigList>;
+export const VmwareBundleConfigList = /*@__PURE__*/ S.Array(VmwareBundleConfig) as any as S.Schema<VmwareBundleConfigList>;
 
 /** VmwarePlatformConfig represents configuration for the VMware platform. */
 export interface VmwarePlatformConfig {
@@ -2298,15 +1942,13 @@ export interface VmwarePlatformConfig {
   bundles?: VmwareBundleConfigList;
 }
 export const VmwarePlatformConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requiredPlatformVersion: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    platformVersion: S.optional(S.String),
-    bundles: S.optional(VmwareBundleConfigList),
-  }),
-).annotate({
-  identifier: "VmwarePlatformConfig",
-}) as any as S.Schema<VmwarePlatformConfig>;
+S.Struct({
+  "requiredPlatformVersion": S.optional(S.String),
+  "status": S.optional(ResourceStatus),
+  "platformVersion": S.optional(S.String),
+  "bundles": S.optional(VmwareBundleConfigList),
+}),
+).annotate({ identifier: "VmwarePlatformConfig" }) as any as S.Schema<VmwarePlatformConfig>;
 
 /** VmwareAdminProxy represents configuration for admin cluster proxy. */
 export interface VmwareAdminProxy {
@@ -2316,23 +1958,13 @@ export interface VmwareAdminProxy {
   url?: string;
 }
 export const VmwareAdminProxy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    noProxy: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareAdminProxy",
-}) as any as S.Schema<VmwareAdminProxy>;
+S.Struct({
+  "noProxy": S.optional(S.String),
+  "url": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareAdminProxy" }) as any as S.Schema<VmwareAdminProxy>;
 
-export type VmwareAdminClusterStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PROVISIONING"
-  | "RUNNING"
-  | "RECONCILING"
-  | "STOPPING"
-  | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+export type VmwareAdminClusterStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "RUNNING" | "RECONCILING" | "STOPPING" | "ERROR" | "DEGRADED";
 export const VmwareAdminClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** VmwareAdminAuthorizationConfig represents configuration for admin cluster authorization. */
@@ -2341,12 +1973,10 @@ export interface VmwareAdminAuthorizationConfig {
   viewerUsers?: ClusterUserList;
 }
 export const VmwareAdminAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    viewerUsers: S.optional(ClusterUserList),
-  }),
-).annotate({
-  identifier: "VmwareAdminAuthorizationConfig",
-}) as any as S.Schema<VmwareAdminAuthorizationConfig>;
+S.Struct({
+  "viewerUsers": S.optional(ClusterUserList),
+}),
+).annotate({ identifier: "VmwareAdminAuthorizationConfig" }) as any as S.Schema<VmwareAdminAuthorizationConfig>;
 
 /** Resource that represents a VMware admin cluster. */
 export interface VmwareAdminCluster {
@@ -2412,41 +2042,39 @@ export interface VmwareAdminCluster {
   authorization?: VmwareAdminAuthorizationConfig;
 }
 export const VmwareAdminCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vcenter: S.optional(VmwareAdminVCenterConfig),
-    uid: S.optional(S.String),
-    privateRegistryConfig: S.optional(VmwareAdminPrivateRegistryConfig),
-    addonNode: S.optional(VmwareAdminAddonNodeConfig),
-    preparedSecrets: S.optional(VmwareAdminPreparedSecretsConfig),
-    annotations: S.optional(StringMap),
-    antiAffinityGroups: S.optional(VmwareAAGConfig),
-    localName: S.optional(S.String),
-    controlPlaneNode: S.optional(VmwareAdminControlPlaneNodeConfig),
-    onPremVersion: S.optional(S.String),
-    loadBalancer: S.optional(VmwareAdminLoadBalancerConfig),
-    autoRepairConfig: S.optional(VmwareAutoRepairConfig),
-    reconciling: S.optional(S.Boolean),
-    networkConfig: S.optional(VmwareAdminNetworkConfig),
-    imageType: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    description: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    endpoint: S.optional(S.String),
-    enableAdvancedCluster: S.optional(S.Boolean),
-    etag: S.optional(S.String),
-    platformConfig: S.optional(VmwarePlatformConfig),
-    proxy: S.optional(VmwareAdminProxy),
-    state: S.optional(VmwareAdminClusterStateEnum),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    fleet: S.optional(Fleet),
-    validationCheck: S.optional(ValidationCheck),
-    bootstrapClusterMembership: S.optional(S.String),
-    authorization: S.optional(VmwareAdminAuthorizationConfig),
-  }),
-).annotate({
-  identifier: "VmwareAdminCluster",
-}) as any as S.Schema<VmwareAdminCluster>;
+S.Struct({
+  "vcenter": S.optional(VmwareAdminVCenterConfig),
+  "uid": S.optional(S.String),
+  "privateRegistryConfig": S.optional(VmwareAdminPrivateRegistryConfig),
+  "addonNode": S.optional(VmwareAdminAddonNodeConfig),
+  "preparedSecrets": S.optional(VmwareAdminPreparedSecretsConfig),
+  "annotations": S.optional(StringMap),
+  "antiAffinityGroups": S.optional(VmwareAAGConfig),
+  "localName": S.optional(S.String),
+  "controlPlaneNode": S.optional(VmwareAdminControlPlaneNodeConfig),
+  "onPremVersion": S.optional(S.String),
+  "loadBalancer": S.optional(VmwareAdminLoadBalancerConfig),
+  "autoRepairConfig": S.optional(VmwareAutoRepairConfig),
+  "reconciling": S.optional(S.Boolean),
+  "networkConfig": S.optional(VmwareAdminNetworkConfig),
+  "imageType": S.optional(S.String),
+  "status": S.optional(ResourceStatus),
+  "description": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "endpoint": S.optional(S.String),
+  "enableAdvancedCluster": S.optional(S.Boolean),
+  "etag": S.optional(S.String),
+  "platformConfig": S.optional(VmwarePlatformConfig),
+  "proxy": S.optional(VmwareAdminProxy),
+  "state": S.optional(VmwareAdminClusterStateEnum),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "fleet": S.optional(Fleet),
+  "validationCheck": S.optional(ValidationCheck),
+  "bootstrapClusterMembership": S.optional(S.String),
+  "authorization": S.optional(VmwareAdminAuthorizationConfig),
+}),
+).annotate({ identifier: "VmwareAdminCluster" }) as any as S.Schema<VmwareAdminCluster>;
 
 export interface CreateProjectsLocationsVmwareAdminClustersRequest {
   /** Required. The parent of the project and location where the cluster is created in. Format: "projects/{project}/locations/{location}" */
@@ -2462,25 +2090,16 @@ export interface CreateProjectsLocationsVmwareAdminClustersRequest {
   /** Request body */
   body?: VmwareAdminCluster;
 }
-export const CreateProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      vmwareAdminClusterId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      allowPreflightFailure: S.optional(S.Boolean.pipe(T.Query())),
-      skipValidations: S.optional(StringList.pipe(T.Query())),
-      body: S.optional(VmwareAdminCluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/vmwareAdminClusters",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsVmwareAdminClustersRequest",
-  }) as any as S.Schema<CreateProjectsLocationsVmwareAdminClustersRequest>;
+export const CreateProjectsLocationsVmwareAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "vmwareAdminClusterId": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "allowPreflightFailure": S.optional(S.Boolean.pipe(T.Query())),
+  "skipValidations": S.optional(StringList.pipe(T.Query())),
+  "body": S.optional(VmwareAdminCluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/vmwareAdminClusters","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsVmwareAdminClustersRequest" }) as any as S.Schema<CreateProjectsLocationsVmwareAdminClustersRequest>;
 
 /** Represents configuration for the VMware VCenter for the user cluster. */
 export interface VmwareVCenterConfig {
@@ -2502,19 +2121,17 @@ export interface VmwareVCenterConfig {
   resourcePool?: string;
 }
 export const VmwareVCenterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    folder: S.optional(S.String),
-    storagePolicyName: S.optional(S.String),
-    cluster: S.optional(S.String),
-    datastore: S.optional(S.String),
-    caCertData: S.optional(S.String),
-    address: S.optional(S.String),
-    datacenter: S.optional(S.String),
-    resourcePool: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareVCenterConfig",
-}) as any as S.Schema<VmwareVCenterConfig>;
+S.Struct({
+  "folder": S.optional(S.String),
+  "storagePolicyName": S.optional(S.String),
+  "cluster": S.optional(S.String),
+  "datastore": S.optional(S.String),
+  "caCertData": S.optional(S.String),
+  "address": S.optional(S.String),
+  "datacenter": S.optional(S.String),
+  "resourcePool": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareVCenterConfig" }) as any as S.Schema<VmwareVCenterConfig>;
 
 /** Specifies vSphere CSI components deployment config in the VMware user cluster. */
 export interface VmwareStorageConfig {
@@ -2522,12 +2139,10 @@ export interface VmwareStorageConfig {
   vsphereCsiDisabled?: boolean;
 }
 export const VmwareStorageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vsphereCsiDisabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VmwareStorageConfig",
-}) as any as S.Schema<VmwareStorageConfig>;
+S.Struct({
+  "vsphereCsiDisabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VmwareStorageConfig" }) as any as S.Schema<VmwareStorageConfig>;
 
 /** Represents configuration parameters for an F5 BIG-IP load balancer. */
 export interface VmwareF5BigIpConfig {
@@ -2539,14 +2154,12 @@ export interface VmwareF5BigIpConfig {
   address?: string;
 }
 export const VmwareF5BigIpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partition: S.optional(S.String),
-    snatPool: S.optional(S.String),
-    address: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareF5BigIpConfig",
-}) as any as S.Schema<VmwareF5BigIpConfig>;
+S.Struct({
+  "partition": S.optional(S.String),
+  "snatPool": S.optional(S.String),
+  "address": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareF5BigIpConfig" }) as any as S.Schema<VmwareF5BigIpConfig>;
 
 /** Specifies the VIP config for the VMware user cluster load balancer. */
 export interface VmwareVipConfig {
@@ -2556,13 +2169,11 @@ export interface VmwareVipConfig {
   ingressVip?: string;
 }
 export const VmwareVipConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneVip: S.optional(S.String),
-    ingressVip: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareVipConfig",
-}) as any as S.Schema<VmwareVipConfig>;
+S.Struct({
+  "controlPlaneVip": S.optional(S.String),
+  "ingressVip": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareVipConfig" }) as any as S.Schema<VmwareVipConfig>;
 
 /** Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster. */
 export interface VmwareManualLbConfig {
@@ -2576,15 +2187,13 @@ export interface VmwareManualLbConfig {
   konnectivityServerNodePort?: number;
 }
 export const VmwareManualLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneNodePort: S.optional(S.Number),
-    ingressHttpNodePort: S.optional(S.Number),
-    ingressHttpsNodePort: S.optional(S.Number),
-    konnectivityServerNodePort: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "VmwareManualLbConfig",
-}) as any as S.Schema<VmwareManualLbConfig>;
+S.Struct({
+  "controlPlaneNodePort": S.optional(S.Number),
+  "ingressHttpNodePort": S.optional(S.Number),
+  "ingressHttpsNodePort": S.optional(S.Number),
+  "konnectivityServerNodePort": S.optional(S.Number),
+}),
+).annotate({ identifier: "VmwareManualLbConfig" }) as any as S.Schema<VmwareManualLbConfig>;
 
 /** VmwareSeesawConfig represents configuration parameters for an already existing Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update Seesaw configurations it can only bind a pre-existing configuration to a new user cluster. IMPORTANT: When attempting to create a user cluster with a pre-existing Seesaw load balancer you will need to follow some preparation steps before calling the 'CreateVmwareCluster' API method. First you will need to create the user cluster's namespace via kubectl. The namespace will need to use the following naming convention : -gke-onprem-mgmt or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.local_name' to disambiguate collisions; for more context see the documentation of 'VmwareCluster.local_name'. Once the namespace is created you will need to create a secret resource via kubectl. This secret will contain copies of your Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The credentials must be keyed with the following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key', 'seesaw-ssh-ca-cert'. */
 export interface VmwareSeesawConfig {
@@ -2602,17 +2211,15 @@ export interface VmwareSeesawConfig {
   masterIp?: string;
 }
 export const VmwareSeesawConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableHa: S.optional(S.Boolean),
-    stackdriverName: S.optional(S.String),
-    vms: S.optional(StringList),
-    ipBlocks: S.optional(VmwareIpBlockList),
-    group: S.optional(S.String),
-    masterIp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareSeesawConfig",
-}) as any as S.Schema<VmwareSeesawConfig>;
+S.Struct({
+  "enableHa": S.optional(S.Boolean),
+  "stackdriverName": S.optional(S.String),
+  "vms": S.optional(StringList),
+  "ipBlocks": S.optional(VmwareIpBlockList),
+  "group": S.optional(S.String),
+  "masterIp": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareSeesawConfig" }) as any as S.Schema<VmwareSeesawConfig>;
 
 /** Represents an IP pool used by the load balancer. */
 export interface VmwareAddressPool {
@@ -2626,20 +2233,16 @@ export interface VmwareAddressPool {
   addresses?: StringList;
 }
 export const VmwareAddressPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avoidBuggyIps: S.optional(S.Boolean),
-    manualAssign: S.optional(S.Boolean),
-    pool: S.optional(S.String),
-    addresses: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "VmwareAddressPool",
-}) as any as S.Schema<VmwareAddressPool>;
+S.Struct({
+  "avoidBuggyIps": S.optional(S.Boolean),
+  "manualAssign": S.optional(S.Boolean),
+  "pool": S.optional(S.String),
+  "addresses": S.optional(StringList),
+}),
+).annotate({ identifier: "VmwareAddressPool" }) as any as S.Schema<VmwareAddressPool>;
 
 export type VmwareAddressPoolList = ReadonlyArray<VmwareAddressPool>;
-export const VmwareAddressPoolList = /*@__PURE__*/ S.Array(
-  VmwareAddressPool,
-) as any as S.Schema<VmwareAddressPoolList>;
+export const VmwareAddressPoolList = /*@__PURE__*/ S.Array(VmwareAddressPool) as any as S.Schema<VmwareAddressPoolList>;
 
 /** Represents configuration parameters for the MetalLB load balancer. */
 export interface VmwareMetalLbConfig {
@@ -2647,12 +2250,10 @@ export interface VmwareMetalLbConfig {
   addressPools?: VmwareAddressPoolList;
 }
 export const VmwareMetalLbConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addressPools: S.optional(VmwareAddressPoolList),
-  }),
-).annotate({
-  identifier: "VmwareMetalLbConfig",
-}) as any as S.Schema<VmwareMetalLbConfig>;
+S.Struct({
+  "addressPools": S.optional(VmwareAddressPoolList),
+}),
+).annotate({ identifier: "VmwareMetalLbConfig" }) as any as S.Schema<VmwareMetalLbConfig>;
 
 /** Specifies the locad balancer config for the VMware user cluster. */
 export interface VmwareLoadBalancerConfig {
@@ -2668,16 +2269,14 @@ export interface VmwareLoadBalancerConfig {
   metalLbConfig?: VmwareMetalLbConfig;
 }
 export const VmwareLoadBalancerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    f5Config: S.optional(VmwareF5BigIpConfig),
-    vipConfig: S.optional(VmwareVipConfig),
-    manualLbConfig: S.optional(VmwareManualLbConfig),
-    seesawConfig: S.optional(VmwareSeesawConfig),
-    metalLbConfig: S.optional(VmwareMetalLbConfig),
-  }),
-).annotate({
-  identifier: "VmwareLoadBalancerConfig",
-}) as any as S.Schema<VmwareLoadBalancerConfig>;
+S.Struct({
+  "f5Config": S.optional(VmwareF5BigIpConfig),
+  "vipConfig": S.optional(VmwareVipConfig),
+  "manualLbConfig": S.optional(VmwareManualLbConfig),
+  "seesawConfig": S.optional(VmwareSeesawConfig),
+  "metalLbConfig": S.optional(VmwareMetalLbConfig),
+}),
+).annotate({ identifier: "VmwareLoadBalancerConfig" }) as any as S.Schema<VmwareLoadBalancerConfig>;
 
 /** Specifies control plane node config. */
 export interface VmwareControlPlaneVsphereConfig {
@@ -2687,13 +2286,11 @@ export interface VmwareControlPlaneVsphereConfig {
   storagePolicyName?: string;
 }
 export const VmwareControlPlaneVsphereConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datastore: S.optional(S.String),
-    storagePolicyName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareControlPlaneVsphereConfig",
-}) as any as S.Schema<VmwareControlPlaneVsphereConfig>;
+S.Struct({
+  "datastore": S.optional(S.String),
+  "storagePolicyName": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareControlPlaneVsphereConfig" }) as any as S.Schema<VmwareControlPlaneVsphereConfig>;
 
 /** Specifies control plane node config for the VMware user cluster. */
 export interface VmwareControlPlaneNodeConfig {
@@ -2709,16 +2306,14 @@ export interface VmwareControlPlaneNodeConfig {
   vsphereConfig?: VmwareControlPlaneVsphereConfig;
 }
 export const VmwareControlPlaneNodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpus: S.optional(S.String),
-    autoResizeConfig: S.optional(VmwareAutoResizeConfig),
-    memory: S.optional(S.String),
-    replicas: S.optional(S.String),
-    vsphereConfig: S.optional(VmwareControlPlaneVsphereConfig),
-  }),
-).annotate({
-  identifier: "VmwareControlPlaneNodeConfig",
-}) as any as S.Schema<VmwareControlPlaneNodeConfig>;
+S.Struct({
+  "cpus": S.optional(S.String),
+  "autoResizeConfig": S.optional(VmwareAutoResizeConfig),
+  "memory": S.optional(S.String),
+  "replicas": S.optional(S.String),
+  "vsphereConfig": S.optional(VmwareControlPlaneVsphereConfig),
+}),
+).annotate({ identifier: "VmwareControlPlaneNodeConfig" }) as any as S.Schema<VmwareControlPlaneNodeConfig>;
 
 /** VmwareClusterUpgradePolicy defines the cluster upgrade policy. */
 export interface VmwareClusterUpgradePolicy {
@@ -2726,12 +2321,10 @@ export interface VmwareClusterUpgradePolicy {
   controlPlaneOnly?: boolean;
 }
 export const VmwareClusterUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VmwareClusterUpgradePolicy",
-}) as any as S.Schema<VmwareClusterUpgradePolicy>;
+S.Struct({
+  "controlPlaneOnly": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VmwareClusterUpgradePolicy" }) as any as S.Schema<VmwareClusterUpgradePolicy>;
 
 /** Specifies control plane V2 config. */
 export interface VmwareControlPlaneV2Config {
@@ -2739,12 +2332,10 @@ export interface VmwareControlPlaneV2Config {
   controlPlaneIpBlock?: VmwareIpBlock;
 }
 export const VmwareControlPlaneV2Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneIpBlock: S.optional(VmwareIpBlock),
-  }),
-).annotate({
-  identifier: "VmwareControlPlaneV2Config",
-}) as any as S.Schema<VmwareControlPlaneV2Config>;
+S.Struct({
+  "controlPlaneIpBlock": S.optional(VmwareIpBlock),
+}),
+).annotate({ identifier: "VmwareControlPlaneV2Config" }) as any as S.Schema<VmwareControlPlaneV2Config>;
 
 /** Specifies network config for the VMware user cluster. */
 export interface VmwareNetworkConfig {
@@ -2764,18 +2355,16 @@ export interface VmwareNetworkConfig {
   controlPlaneV2Config?: VmwareControlPlaneV2Config;
 }
 export const VmwareNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    podAddressCidrBlocks: S.optional(StringList),
-    vcenterNetwork: S.optional(S.String),
-    serviceAddressCidrBlocks: S.optional(StringList),
-    staticIpConfig: S.optional(VmwareStaticIpConfig),
-    dhcpIpConfig: S.optional(VmwareDhcpIpConfig),
-    hostConfig: S.optional(VmwareHostConfig),
-    controlPlaneV2Config: S.optional(VmwareControlPlaneV2Config),
-  }),
-).annotate({
-  identifier: "VmwareNetworkConfig",
-}) as any as S.Schema<VmwareNetworkConfig>;
+S.Struct({
+  "podAddressCidrBlocks": S.optional(StringList),
+  "vcenterNetwork": S.optional(S.String),
+  "serviceAddressCidrBlocks": S.optional(StringList),
+  "staticIpConfig": S.optional(VmwareStaticIpConfig),
+  "dhcpIpConfig": S.optional(VmwareDhcpIpConfig),
+  "hostConfig": S.optional(VmwareHostConfig),
+  "controlPlaneV2Config": S.optional(VmwareControlPlaneV2Config),
+}),
+).annotate({ identifier: "VmwareNetworkConfig" }) as any as S.Schema<VmwareNetworkConfig>;
 
 /** Contains configurations for Dataplane V2, which is optimized dataplane for Kubernetes networking. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2 */
 export interface VmwareDataplaneV2Config {
@@ -2789,25 +2378,15 @@ export interface VmwareDataplaneV2Config {
   advancedNetworking?: boolean;
 }
 export const VmwareDataplaneV2Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    forwardMode: S.optional(S.String),
-    dataplaneV2Enabled: S.optional(S.Boolean),
-    windowsDataplaneV2Enabled: S.optional(S.Boolean),
-    advancedNetworking: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VmwareDataplaneV2Config",
-}) as any as S.Schema<VmwareDataplaneV2Config>;
+S.Struct({
+  "forwardMode": S.optional(S.String),
+  "dataplaneV2Enabled": S.optional(S.Boolean),
+  "windowsDataplaneV2Enabled": S.optional(S.Boolean),
+  "advancedNetworking": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VmwareDataplaneV2Config" }) as any as S.Schema<VmwareDataplaneV2Config>;
 
-export type VmwareClusterStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PROVISIONING"
-  | "RUNNING"
-  | "RECONCILING"
-  | "STOPPING"
-  | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+export type VmwareClusterStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "RUNNING" | "RECONCILING" | "STOPPING" | "ERROR" | "DEGRADED";
 export const VmwareClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource that represents a VMware user cluster. ## */
@@ -2880,41 +2459,41 @@ export interface VmwareCluster {
   createTime?: string;
 }
 export const VmwareCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binaryAuthorization: S.optional(BinaryAuthorization),
-    uid: S.optional(S.String),
-    vcenter: S.optional(VmwareVCenterConfig),
-    annotations: S.optional(StringMap),
-    enableControlPlaneV2: S.optional(S.Boolean),
-    onPremVersion: S.optional(S.String),
-    storage: S.optional(VmwareStorageConfig),
-    loadBalancer: S.optional(VmwareLoadBalancerConfig),
-    disableBundledIngress: S.optional(S.Boolean),
-    localName: S.optional(S.String),
-    controlPlaneNode: S.optional(VmwareControlPlaneNodeConfig),
-    adminClusterName: S.optional(S.String),
-    antiAffinityGroups: S.optional(VmwareAAGConfig),
-    upgradePolicy: S.optional(VmwareClusterUpgradePolicy),
-    networkConfig: S.optional(VmwareNetworkConfig),
-    reconciling: S.optional(S.Boolean),
-    autoRepairConfig: S.optional(VmwareAutoRepairConfig),
-    enableAdvancedCluster: S.optional(S.Boolean),
-    endpoint: S.optional(S.String),
-    description: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    dataplaneV2: S.optional(VmwareDataplaneV2Config),
-    status: S.optional(ResourceStatus),
-    state: S.optional(VmwareClusterStateEnum),
-    deleteTime: S.optional(S.String),
-    etag: S.optional(S.String),
-    vmTrackingEnabled: S.optional(S.Boolean),
-    authorization: S.optional(Authorization),
-    validationCheck: S.optional(ValidationCheck),
-    name: S.optional(S.String),
-    adminClusterMembership: S.optional(S.String),
-    fleet: S.optional(Fleet),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "binaryAuthorization": S.optional(BinaryAuthorization),
+  "uid": S.optional(S.String),
+  "vcenter": S.optional(VmwareVCenterConfig),
+  "annotations": S.optional(StringMap),
+  "enableControlPlaneV2": S.optional(S.Boolean),
+  "onPremVersion": S.optional(S.String),
+  "storage": S.optional(VmwareStorageConfig),
+  "loadBalancer": S.optional(VmwareLoadBalancerConfig),
+  "disableBundledIngress": S.optional(S.Boolean),
+  "localName": S.optional(S.String),
+  "controlPlaneNode": S.optional(VmwareControlPlaneNodeConfig),
+  "adminClusterName": S.optional(S.String),
+  "antiAffinityGroups": S.optional(VmwareAAGConfig),
+  "upgradePolicy": S.optional(VmwareClusterUpgradePolicy),
+  "networkConfig": S.optional(VmwareNetworkConfig),
+  "reconciling": S.optional(S.Boolean),
+  "autoRepairConfig": S.optional(VmwareAutoRepairConfig),
+  "enableAdvancedCluster": S.optional(S.Boolean),
+  "endpoint": S.optional(S.String),
+  "description": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "dataplaneV2": S.optional(VmwareDataplaneV2Config),
+  "status": S.optional(ResourceStatus),
+  "state": S.optional(VmwareClusterStateEnum),
+  "deleteTime": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "vmTrackingEnabled": S.optional(S.Boolean),
+  "authorization": S.optional(Authorization),
+  "validationCheck": S.optional(ValidationCheck),
+  "name": S.optional(S.String),
+  "adminClusterMembership": S.optional(S.String),
+  "fleet": S.optional(Fleet),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "VmwareCluster" }) as any as S.Schema<VmwareCluster>;
 
 export interface CreateProjectsLocationsVmwareClustersRequest {
@@ -2931,35 +2510,18 @@ export interface CreateProjectsLocationsVmwareClustersRequest {
   /** Request body */
   body?: VmwareCluster;
 }
-export const CreateProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      vmwareClusterId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      allowPreflightFailure: S.optional(S.Boolean.pipe(T.Query())),
-      skipValidations: S.optional(StringList.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(VmwareCluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/vmwareClusters",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<CreateProjectsLocationsVmwareClustersRequest>;
+export const CreateProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "vmwareClusterId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "allowPreflightFailure": S.optional(S.Boolean.pipe(T.Query())),
+  "skipValidations": S.optional(StringList.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(VmwareCluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/vmwareClusters","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<CreateProjectsLocationsVmwareClustersRequest>;
 
-export type VmwareNodePoolStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PROVISIONING"
-  | "RUNNING"
-  | "RECONCILING"
-  | "STOPPING"
-  | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+export type VmwareNodePoolStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "RUNNING" | "RECONCILING" | "STOPPING" | "ERROR" | "DEGRADED";
 export const VmwareNodePoolStateEnum = /*@__PURE__*/ S.String;
 
 /** NodePoolAutoscaling config for the NodePool to allow for the kubernetes to scale NodePool. */
@@ -2970,13 +2532,11 @@ export interface VmwareNodePoolAutoscalingConfig {
   minReplicas?: number;
 }
 export const VmwareNodePoolAutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxReplicas: S.optional(S.Number),
-    minReplicas: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "VmwareNodePoolAutoscalingConfig",
-}) as any as S.Schema<VmwareNodePoolAutoscalingConfig>;
+S.Struct({
+  "maxReplicas": S.optional(S.Number),
+  "minReplicas": S.optional(S.Number),
+}),
+).annotate({ identifier: "VmwareNodePoolAutoscalingConfig" }) as any as S.Schema<VmwareNodePoolAutoscalingConfig>;
 
 /** VmwareVsphereTag describes a vSphere tag to be placed on VMs in the node pool. For more information, see https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html */
 export interface VmwareVsphereTag {
@@ -2986,18 +2546,14 @@ export interface VmwareVsphereTag {
   tag?: string;
 }
 export const VmwareVsphereTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    category: S.optional(S.String),
-    tag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareVsphereTag",
-}) as any as S.Schema<VmwareVsphereTag>;
+S.Struct({
+  "category": S.optional(S.String),
+  "tag": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareVsphereTag" }) as any as S.Schema<VmwareVsphereTag>;
 
 export type VmwareVsphereTagList = ReadonlyArray<VmwareVsphereTag>;
-export const VmwareVsphereTagList = /*@__PURE__*/ S.Array(
-  VmwareVsphereTag,
-) as any as S.Schema<VmwareVsphereTagList>;
+export const VmwareVsphereTagList = /*@__PURE__*/ S.Array(VmwareVsphereTag) as any as S.Schema<VmwareVsphereTagList>;
 
 /** VmwareVsphereConfig represents configuration for the VMware VCenter for node pool. */
 export interface VmwareVsphereConfig {
@@ -3009,14 +2565,12 @@ export interface VmwareVsphereConfig {
   tags?: VmwareVsphereTagList;
 }
 export const VmwareVsphereConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostGroups: S.optional(StringList),
-    datastore: S.optional(S.String),
-    tags: S.optional(VmwareVsphereTagList),
-  }),
-).annotate({
-  identifier: "VmwareVsphereConfig",
-}) as any as S.Schema<VmwareVsphereConfig>;
+S.Struct({
+  "hostGroups": S.optional(StringList),
+  "datastore": S.optional(S.String),
+  "tags": S.optional(VmwareVsphereTagList),
+}),
+).annotate({ identifier: "VmwareVsphereConfig" }) as any as S.Schema<VmwareVsphereConfig>;
 
 /** Parameters that describe the configuration of all nodes within a given node pool. */
 export interface VmwareNodeConfig {
@@ -3042,21 +2596,19 @@ export interface VmwareNodeConfig {
   replicas?: string;
 }
 export const VmwareNodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-    image: S.optional(S.String),
-    bootDiskSizeGb: S.optional(S.String),
-    memoryMb: S.optional(S.String),
-    taints: S.optional(NodeTaintList),
-    vsphereConfig: S.optional(VmwareVsphereConfig),
-    enableLoadBalancer: S.optional(S.Boolean),
-    cpus: S.optional(S.String),
-    imageType: S.optional(S.String),
-    replicas: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareNodeConfig",
-}) as any as S.Schema<VmwareNodeConfig>;
+S.Struct({
+  "labels": S.optional(StringMap),
+  "image": S.optional(S.String),
+  "bootDiskSizeGb": S.optional(S.String),
+  "memoryMb": S.optional(S.String),
+  "taints": S.optional(NodeTaintList),
+  "vsphereConfig": S.optional(VmwareVsphereConfig),
+  "enableLoadBalancer": S.optional(S.Boolean),
+  "cpus": S.optional(S.String),
+  "imageType": S.optional(S.String),
+  "replicas": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareNodeConfig" }) as any as S.Schema<VmwareNodeConfig>;
 
 /** Resource VmwareNodePool represents a VMware node pool. ## */
 export interface VmwareNodePool {
@@ -3090,22 +2642,22 @@ export interface VmwareNodePool {
   config?: VmwareNodeConfig;
 }
 export const VmwareNodePool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    onPremVersion: S.optional(S.String),
-    etag: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    state: S.optional(VmwareNodePoolStateEnum),
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    updateTime: S.optional(S.String),
-    nodePoolAutoscaling: S.optional(VmwareNodePoolAutoscalingConfig),
-    uid: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
-    config: S.optional(VmwareNodeConfig),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "onPremVersion": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "deleteTime": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "state": S.optional(VmwareNodePoolStateEnum),
+  "displayName": S.optional(S.String),
+  "status": S.optional(ResourceStatus),
+  "updateTime": S.optional(S.String),
+  "nodePoolAutoscaling": S.optional(VmwareNodePoolAutoscalingConfig),
+  "uid": S.optional(S.String),
+  "reconciling": S.optional(S.Boolean),
+  "config": S.optional(VmwareNodeConfig),
+}),
 ).annotate({ identifier: "VmwareNodePool" }) as any as S.Schema<VmwareNodePool>;
 
 export interface CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -3118,23 +2670,14 @@ export interface CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** Request body */
   body?: VmwareNodePool;
 }
-export const CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      vmwareNodePoolId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(VmwareNodePool.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/vmwareNodePools",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
+export const CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "vmwareNodePoolId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(VmwareNodePool.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/vmwareNodePools","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest" }) as any as S.Schema<CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
 export interface DeleteProjectsLocationsBareMetalClustersRequest {
   /** Required. Name of the bare metal user cluster to be deleted. Format: "projects/{project}/locations/{location}/bareMetalClusters/{bare_metal_cluster}" */
@@ -3150,25 +2693,16 @@ export interface DeleteProjectsLocationsBareMetalClustersRequest {
   /** If set to true, and the bare metal cluster is not found, the request will succeed but no action will be taken on the server and return a completed LRO. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      ignoreErrors: S.optional(S.Boolean.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsBareMetalClustersRequest>;
+export const DeleteProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "ignoreErrors": S.optional(S.Boolean.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<DeleteProjectsLocationsBareMetalClustersRequest>;
 
 export interface DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
   /** Required. The name of the node pool to delete. Format: projects/{project}/locations/{location}/bareMetalClusters/{cluster}/bareMetalNodePools/{nodepool} */
@@ -3182,44 +2716,25 @@ export interface DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsReque
   /** If set to true, and the bare metal node pool is not found, the request will succeed but no action will be taken on the server and return a completed LRO. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      ignoreErrors: S.optional(S.Boolean.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
+export const DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "ignoreErrors": S.optional(S.Boolean.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest" }) as any as S.Schema<DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsVmwareClustersRequest {
   /** If set to true, the deletion of a VMware user cluster resource will succeed even if errors occur during deletion. This parameter can be used when you want to delete GCP's cluster resource and the on-prem admin cluster that hosts your user cluster is disconnected / unreachable or deleted. WARNING: Using this parameter when your user cluster still exists may result in a deleted GCP user cluster but an existing on-prem user cluster. */
@@ -3235,25 +2750,16 @@ export interface DeleteProjectsLocationsVmwareClustersRequest {
   /** If set to true, any node pools from the cluster will also be deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ignoreErrors: S.optional(S.Boolean.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsVmwareClustersRequest>;
+export const DeleteProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ignoreErrors": S.optional(S.Boolean.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<DeleteProjectsLocationsVmwareClustersRequest>;
 
 export interface DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** Required. The name of the node pool to delete. Format: projects/{project}/locations/{location}/vmwareClusters/{cluster}/vmwareNodePools/{nodepool} */
@@ -3267,24 +2773,15 @@ export interface DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** If set to true, and the VMware node pool is not found, the request will succeed but no action will be taken on the server and return a completed LRO. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      ignoreErrors: S.optional(S.Boolean.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
+export const DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "ignoreErrors": S.optional(S.Boolean.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest" }) as any as S.Schema<DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
 /** Message for enrolling an existing bare metal admin cluster to the GKE on-prem API. */
 export interface EnrollBareMetalAdminClusterRequest {
@@ -3294,13 +2791,11 @@ export interface EnrollBareMetalAdminClusterRequest {
   membership?: string;
 }
 export const EnrollBareMetalAdminClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bareMetalAdminClusterId: S.optional(S.String),
-    membership: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnrollBareMetalAdminClusterRequest",
-}) as any as S.Schema<EnrollBareMetalAdminClusterRequest>;
+S.Struct({
+  "bareMetalAdminClusterId": S.optional(S.String),
+  "membership": S.optional(S.String),
+}),
+).annotate({ identifier: "EnrollBareMetalAdminClusterRequest" }) as any as S.Schema<EnrollBareMetalAdminClusterRequest>;
 
 export interface EnrollProjectsLocationsBareMetalAdminClustersRequest {
   /** Required. The parent of the project and location where the cluster is enrolled in. Format: "projects/{project}/locations/{location}" */
@@ -3308,21 +2803,12 @@ export interface EnrollProjectsLocationsBareMetalAdminClustersRequest {
   /** Request body */
   body?: EnrollBareMetalAdminClusterRequest;
 }
-export const EnrollProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(EnrollBareMetalAdminClusterRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/bareMetalAdminClusters:enroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "EnrollProjectsLocationsBareMetalAdminClustersRequest",
-  }) as any as S.Schema<EnrollProjectsLocationsBareMetalAdminClustersRequest>;
+export const EnrollProjectsLocationsBareMetalAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(EnrollBareMetalAdminClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/bareMetalAdminClusters:enroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "EnrollProjectsLocationsBareMetalAdminClustersRequest" }) as any as S.Schema<EnrollProjectsLocationsBareMetalAdminClustersRequest>;
 
 /** Message for enrolling an existing bare metal cluster to the Anthos On-Prem API. */
 export interface EnrollBareMetalClusterRequest {
@@ -3336,15 +2822,13 @@ export interface EnrollBareMetalClusterRequest {
   localNamespace?: string;
 }
 export const EnrollBareMetalClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localName: S.optional(S.String),
-    adminClusterMembership: S.optional(S.String),
-    bareMetalClusterId: S.optional(S.String),
-    localNamespace: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnrollBareMetalClusterRequest",
-}) as any as S.Schema<EnrollBareMetalClusterRequest>;
+S.Struct({
+  "localName": S.optional(S.String),
+  "adminClusterMembership": S.optional(S.String),
+  "bareMetalClusterId": S.optional(S.String),
+  "localNamespace": S.optional(S.String),
+}),
+).annotate({ identifier: "EnrollBareMetalClusterRequest" }) as any as S.Schema<EnrollBareMetalClusterRequest>;
 
 export interface EnrollProjectsLocationsBareMetalClustersRequest {
   /** Required. The parent of the project and location where the cluster is enrolled in. Format: "projects/{project}/locations/{location}" */
@@ -3352,21 +2836,12 @@ export interface EnrollProjectsLocationsBareMetalClustersRequest {
   /** Request body */
   body?: EnrollBareMetalClusterRequest;
 }
-export const EnrollProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(EnrollBareMetalClusterRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/bareMetalClusters:enroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "EnrollProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<EnrollProjectsLocationsBareMetalClustersRequest>;
+export const EnrollProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(EnrollBareMetalClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/bareMetalClusters:enroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "EnrollProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<EnrollProjectsLocationsBareMetalClustersRequest>;
 
 /** Message for enrolling an existing bare metal node pool to the GKE on-prem API. */
 export interface EnrollBareMetalNodePoolRequest {
@@ -3376,13 +2851,11 @@ export interface EnrollBareMetalNodePoolRequest {
   validateOnly?: boolean;
 }
 export const EnrollBareMetalNodePoolRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bareMetalNodePoolId: S.optional(S.String),
-    validateOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EnrollBareMetalNodePoolRequest",
-}) as any as S.Schema<EnrollBareMetalNodePoolRequest>;
+S.Struct({
+  "bareMetalNodePoolId": S.optional(S.String),
+  "validateOnly": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "EnrollBareMetalNodePoolRequest" }) as any as S.Schema<EnrollBareMetalNodePoolRequest>;
 
 export interface EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
   /** Required. The parent resource where this node pool will be created. projects/{project}/locations/{location}/bareMetalClusters/{cluster} */
@@ -3390,22 +2863,12 @@ export interface EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsReque
   /** Request body */
   body?: EnrollBareMetalNodePoolRequest;
 }
-export const EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(EnrollBareMetalNodePoolRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/bareMetalNodePools:enroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
-  }) as any as S.Schema<EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
+export const EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(EnrollBareMetalNodePoolRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/bareMetalNodePools:enroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest" }) as any as S.Schema<EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
 /** Message for enrolling an existing VMware admin cluster to the GKE on-prem API. */
 export interface EnrollVmwareAdminClusterRequest {
@@ -3415,13 +2878,11 @@ export interface EnrollVmwareAdminClusterRequest {
   membership?: string;
 }
 export const EnrollVmwareAdminClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vmwareAdminClusterId: S.optional(S.String),
-    membership: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnrollVmwareAdminClusterRequest",
-}) as any as S.Schema<EnrollVmwareAdminClusterRequest>;
+S.Struct({
+  "vmwareAdminClusterId": S.optional(S.String),
+  "membership": S.optional(S.String),
+}),
+).annotate({ identifier: "EnrollVmwareAdminClusterRequest" }) as any as S.Schema<EnrollVmwareAdminClusterRequest>;
 
 export interface EnrollProjectsLocationsVmwareAdminClustersRequest {
   /** Required. The parent of the project and location where the cluster is enrolled in. Format: "projects/{project}/locations/{location}" */
@@ -3429,21 +2890,12 @@ export interface EnrollProjectsLocationsVmwareAdminClustersRequest {
   /** Request body */
   body?: EnrollVmwareAdminClusterRequest;
 }
-export const EnrollProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(EnrollVmwareAdminClusterRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/vmwareAdminClusters:enroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "EnrollProjectsLocationsVmwareAdminClustersRequest",
-  }) as any as S.Schema<EnrollProjectsLocationsVmwareAdminClustersRequest>;
+export const EnrollProjectsLocationsVmwareAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(EnrollVmwareAdminClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/vmwareAdminClusters:enroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "EnrollProjectsLocationsVmwareAdminClustersRequest" }) as any as S.Schema<EnrollProjectsLocationsVmwareAdminClustersRequest>;
 
 /** Message for enrolling an existing VMware cluster to the Anthos On-Prem API. */
 export interface EnrollVmwareClusterRequest {
@@ -3457,15 +2909,13 @@ export interface EnrollVmwareClusterRequest {
   validateOnly?: boolean;
 }
 export const EnrollVmwareClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localName: S.optional(S.String),
-    adminClusterMembership: S.optional(S.String),
-    vmwareClusterId: S.optional(S.String),
-    validateOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EnrollVmwareClusterRequest",
-}) as any as S.Schema<EnrollVmwareClusterRequest>;
+S.Struct({
+  "localName": S.optional(S.String),
+  "adminClusterMembership": S.optional(S.String),
+  "vmwareClusterId": S.optional(S.String),
+  "validateOnly": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "EnrollVmwareClusterRequest" }) as any as S.Schema<EnrollVmwareClusterRequest>;
 
 export interface EnrollProjectsLocationsVmwareClustersRequest {
   /** Required. The parent of the project and location where the cluster is Enrolled in. Format: "projects/{project}/locations/{location}" */
@@ -3473,21 +2923,12 @@ export interface EnrollProjectsLocationsVmwareClustersRequest {
   /** Request body */
   body?: EnrollVmwareClusterRequest;
 }
-export const EnrollProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(EnrollVmwareClusterRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/vmwareClusters:enroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "EnrollProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<EnrollProjectsLocationsVmwareClustersRequest>;
+export const EnrollProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(EnrollVmwareClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/vmwareClusters:enroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "EnrollProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<EnrollProjectsLocationsVmwareClustersRequest>;
 
 /** Message for enrolling a VMware node pool. */
 export interface EnrollVmwareNodePoolRequest {
@@ -3495,12 +2936,10 @@ export interface EnrollVmwareNodePoolRequest {
   vmwareNodePoolId?: string;
 }
 export const EnrollVmwareNodePoolRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vmwareNodePoolId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnrollVmwareNodePoolRequest",
-}) as any as S.Schema<EnrollVmwareNodePoolRequest>;
+S.Struct({
+  "vmwareNodePoolId": S.optional(S.String),
+}),
+).annotate({ identifier: "EnrollVmwareNodePoolRequest" }) as any as S.Schema<EnrollVmwareNodePoolRequest>;
 
 export interface EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** Required. The parent resource where the node pool is enrolled in. */
@@ -3508,21 +2947,12 @@ export interface EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** Request body */
   body?: EnrollVmwareNodePoolRequest;
 }
-export const EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(EnrollVmwareNodePoolRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/vmwareNodePools:enroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
-  }) as any as S.Schema<EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
+export const EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(EnrollVmwareNodePoolRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/vmwareNodePools:enroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest" }) as any as S.Schema<EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
 export interface GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3530,21 +2960,12 @@ export interface GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest>;
+export const GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -3558,12 +2979,12 @@ export interface Expr {
   expression?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-  }),
+S.Struct({
+  "location": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "expression": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -3576,17 +2997,15 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    members: S.optional(StringList),
-    condition: S.optional(Expr),
-  }),
+S.Struct({
+  "role": S.optional(S.String),
+  "members": S.optional(StringList),
+  "condition": S.optional(Expr),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -3598,11 +3017,11 @@ export interface Policy {
   version?: number;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bindings: S.optional(BindingList),
-    etag: S.optional(S.String),
-    version: S.optional(S.Number),
-  }),
+S.Struct({
+  "bindings": S.optional(BindingList),
+  "etag": S.optional(S.String),
+  "version": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsBareMetalClustersRequest {
@@ -3611,21 +3030,12 @@ export interface GetIamPolicyProjectsLocationsBareMetalClustersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsBareMetalClustersRequest>;
+export const GetIamPolicyProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsBareMetalClustersRequest>;
 
 export interface GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3633,22 +3043,12 @@ export interface GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePool
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
+export const GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
 export interface GetIamPolicyProjectsLocationsVmwareAdminClustersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3656,21 +3056,12 @@ export interface GetIamPolicyProjectsLocationsVmwareAdminClustersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsVmwareAdminClustersRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsVmwareAdminClustersRequest>;
+export const GetIamPolicyProjectsLocationsVmwareAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsVmwareAdminClustersRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsVmwareAdminClustersRequest>;
 
 export interface GetIamPolicyProjectsLocationsVmwareClustersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3678,21 +3069,12 @@ export interface GetIamPolicyProjectsLocationsVmwareClustersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsVmwareClustersRequest>;
+export const GetIamPolicyProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsVmwareClustersRequest>;
 
 export interface GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3700,40 +3082,22 @@ export interface GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsReque
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
+export const GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://gkeonprem.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -3749,358 +3113,192 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-    metadata: S.optional(DocumentMap),
-    locationId: S.optional(S.String),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "labels": S.optional(StringMap),
+  "metadata": S.optional(DocumentMap),
+  "locationId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type GetProjectsLocationsBareMetalAdminClustersViewEnum =
-  | "CLUSTER_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const GetProjectsLocationsBareMetalAdminClustersViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsLocationsBareMetalAdminClustersViewEnum = "CLUSTER_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const GetProjectsLocationsBareMetalAdminClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsBareMetalAdminClustersRequest {
   /** View for bare metal admin cluster. When `BASIC` is specified, only the cluster resource name and membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete cluster configuration details. */
-  view?: GetProjectsLocationsBareMetalAdminClustersViewEnum;
+  view?: GetProjectsLocationsBareMetalAdminClustersViewEnum | (string & {});
   /** Optional. If true, return BareMetal Admin Cluster including the one that only exists in RMS. */
   allowMissing?: boolean;
   /** Required. Name of the bare metal admin cluster to get. Format: "projects/{project}/locations/{location}/bareMetalAdminClusters/{bare_metal_admin_cluster}" */
   name: string;
 }
-export const GetProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        GetProjectsLocationsBareMetalAdminClustersViewEnum.pipe(T.Query()),
-      ),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBareMetalAdminClustersRequest",
-  }) as any as S.Schema<GetProjectsLocationsBareMetalAdminClustersRequest>;
+export const GetProjectsLocationsBareMetalAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(GetProjectsLocationsBareMetalAdminClustersViewEnum.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBareMetalAdminClustersRequest" }) as any as S.Schema<GetProjectsLocationsBareMetalAdminClustersRequest>;
 
 export interface GetProjectsLocationsBareMetalAdminClustersOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsBareMetalAdminClustersOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBareMetalAdminClustersOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBareMetalAdminClustersOperationsRequest>;
+export const GetProjectsLocationsBareMetalAdminClustersOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBareMetalAdminClustersOperationsRequest" }) as any as S.Schema<GetProjectsLocationsBareMetalAdminClustersOperationsRequest>;
 
-export type GetProjectsLocationsBareMetalClustersViewEnum =
-  | "CLUSTER_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const GetProjectsLocationsBareMetalClustersViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsLocationsBareMetalClustersViewEnum = "CLUSTER_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const GetProjectsLocationsBareMetalClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsBareMetalClustersRequest {
   /** View for bare metal user cluster. When `BASIC` is specified, only the cluster resource name and admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete cluster configuration details. */
-  view?: GetProjectsLocationsBareMetalClustersViewEnum;
+  view?: GetProjectsLocationsBareMetalClustersViewEnum | (string & {});
   /** Optional. If true, return BareMetal Cluster including the one that only exists in RMS. */
   allowMissing?: boolean;
   /** Required. Name of the bare metal user cluster to get. Format: "projects/{project}/locations/{location}/bareMetalClusters/{bare_metal_cluster}" */
   name: string;
 }
-export const GetProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        GetProjectsLocationsBareMetalClustersViewEnum.pipe(T.Query()),
-      ),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<GetProjectsLocationsBareMetalClustersRequest>;
+export const GetProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(GetProjectsLocationsBareMetalClustersViewEnum.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<GetProjectsLocationsBareMetalClustersRequest>;
 
-export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
-  | "NODE_POOL_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum = "NODE_POOL_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
   /** Required. The name of the node pool to retrieve. projects/{project}/locations/{location}/bareMetalClusters/{cluster}/bareMetalNodePools/{nodepool} */
   name: string;
   /** View for bare metal node pool. When `BASIC` is specified, only the node pool resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete node pool configuration details. */
-  view?: GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum;
+  view?: GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum | (string & {});
 }
-export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      view: S.optional(
-        GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum.pipe(
-          T.Query(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
+export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest" }) as any as S.Schema<GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
 export interface GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest>;
+export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest>;
 
 export interface GetProjectsLocationsBareMetalClustersOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsBareMetalClustersOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBareMetalClustersOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBareMetalClustersOperationsRequest>;
+export const GetProjectsLocationsBareMetalClustersOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBareMetalClustersOperationsRequest" }) as any as S.Schema<GetProjectsLocationsBareMetalClustersOperationsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
-export type GetProjectsLocationsVmwareAdminClustersViewEnum =
-  | "CLUSTER_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const GetProjectsLocationsVmwareAdminClustersViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsLocationsVmwareAdminClustersViewEnum = "CLUSTER_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const GetProjectsLocationsVmwareAdminClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsVmwareAdminClustersRequest {
   /** View for VMware admin cluster. When `BASIC` is specified, only the cluster resource name and membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete cluster configuration details. */
-  view?: GetProjectsLocationsVmwareAdminClustersViewEnum;
+  view?: GetProjectsLocationsVmwareAdminClustersViewEnum | (string & {});
   /** Optional. If true, return Vmware Admin Cluster including the one that only exists in RMS. */
   allowMissing?: boolean;
   /** Required. Name of the VMware admin cluster to be returned. Format: "projects/{project}/locations/{location}/vmwareAdminClusters/{vmware_admin_cluster}" */
   name: string;
 }
-export const GetProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        GetProjectsLocationsVmwareAdminClustersViewEnum.pipe(T.Query()),
-      ),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsVmwareAdminClustersRequest",
-  }) as any as S.Schema<GetProjectsLocationsVmwareAdminClustersRequest>;
+export const GetProjectsLocationsVmwareAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(GetProjectsLocationsVmwareAdminClustersViewEnum.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsVmwareAdminClustersRequest" }) as any as S.Schema<GetProjectsLocationsVmwareAdminClustersRequest>;
 
 export interface GetProjectsLocationsVmwareAdminClustersOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsVmwareAdminClustersOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsVmwareAdminClustersOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsVmwareAdminClustersOperationsRequest>;
+export const GetProjectsLocationsVmwareAdminClustersOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsVmwareAdminClustersOperationsRequest" }) as any as S.Schema<GetProjectsLocationsVmwareAdminClustersOperationsRequest>;
 
-export type GetProjectsLocationsVmwareClustersViewEnum =
-  | "CLUSTER_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const GetProjectsLocationsVmwareClustersViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsLocationsVmwareClustersViewEnum = "CLUSTER_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const GetProjectsLocationsVmwareClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsVmwareClustersRequest {
   /** View for VMware user cluster. When `BASIC` is specified, only the cluster resource name and admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete cluster configuration details. */
-  view?: GetProjectsLocationsVmwareClustersViewEnum;
+  view?: GetProjectsLocationsVmwareClustersViewEnum | (string & {});
   /** Optional. If true, return Vmware Cluster including the one that only exists in RMS. */
   allowMissing?: boolean;
   /** Required. Name of the VMware user cluster to be returned. Format: "projects/{project}/locations/{location}/vmwareClusters/{vmware_cluster}" */
   name: string;
 }
-export const GetProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        GetProjectsLocationsVmwareClustersViewEnum.pipe(T.Query()),
-      ),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<GetProjectsLocationsVmwareClustersRequest>;
+export const GetProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(GetProjectsLocationsVmwareClustersViewEnum.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<GetProjectsLocationsVmwareClustersRequest>;
 
 export interface GetProjectsLocationsVmwareClustersOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsVmwareClustersOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsVmwareClustersOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsVmwareClustersOperationsRequest>;
+export const GetProjectsLocationsVmwareClustersOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsVmwareClustersOperationsRequest" }) as any as S.Schema<GetProjectsLocationsVmwareClustersOperationsRequest>;
 
-export type GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
-  | "NODE_POOL_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum = "NODE_POOL_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** Required. The name of the node pool to retrieve. projects/{project}/locations/{location}/vmwareClusters/{cluster}/vmwareNodePools/{nodepool} */
   name: string;
   /** View for VMware node pool. When `BASIC` is specified, only the node pool resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete node pool configuration details. */
-  view?: GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum;
+  view?: GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum | (string & {});
 }
-export const GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      view: S.optional(
-        GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum.pipe(
-          T.Query(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
-  }) as any as S.Schema<GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
+export const GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest" }) as any as S.Schema<GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
 export interface GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest>;
+export const GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -4115,27 +3313,17 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://gkeonprem.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -4145,21 +3333,14 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
-export type ListProjectsLocationsBareMetalAdminClustersViewEnum =
-  | "CLUSTER_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const ListProjectsLocationsBareMetalAdminClustersViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsBareMetalAdminClustersViewEnum = "CLUSTER_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const ListProjectsLocationsBareMetalAdminClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsBareMetalAdminClustersRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, at most 50 clusters will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -4171,33 +3352,20 @@ export interface ListProjectsLocationsBareMetalAdminClustersRequest {
   /** Optional. If true, return list of BareMetal Admin Clusters including the ones that only exists in RMS. */
   allowMissing?: boolean;
   /** View for bare metal admin clusters. When `BASIC` is specified, only the admin cluster resource name and membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete admin cluster configuration details. */
-  view?: ListProjectsLocationsBareMetalAdminClustersViewEnum;
+  view?: ListProjectsLocationsBareMetalAdminClustersViewEnum | (string & {});
 }
-export const ListProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      view: S.optional(
-        ListProjectsLocationsBareMetalAdminClustersViewEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/bareMetalAdminClusters",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBareMetalAdminClustersRequest",
-  }) as any as S.Schema<ListProjectsLocationsBareMetalAdminClustersRequest>;
+export const ListProjectsLocationsBareMetalAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "view": S.optional(ListProjectsLocationsBareMetalAdminClustersViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/bareMetalAdminClusters","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBareMetalAdminClustersRequest" }) as any as S.Schema<ListProjectsLocationsBareMetalAdminClustersRequest>;
 
 export type BareMetalAdminClusterList = ReadonlyArray<BareMetalAdminCluster>;
-export const BareMetalAdminClusterList = /*@__PURE__*/ S.Array(
-  BareMetalAdminCluster,
-) as any as S.Schema<BareMetalAdminClusterList>;
+export const BareMetalAdminClusterList = /*@__PURE__*/ S.Array(BareMetalAdminCluster) as any as S.Schema<BareMetalAdminClusterList>;
 
 /** Response message for listing bare metal admin clusters. */
 export interface ListBareMetalAdminClustersResponse {
@@ -4209,14 +3377,12 @@ export interface ListBareMetalAdminClustersResponse {
   nextPageToken?: string;
 }
 export const ListBareMetalAdminClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bareMetalAdminClusters: S.optional(BareMetalAdminClusterList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBareMetalAdminClustersResponse",
-}) as any as S.Schema<ListBareMetalAdminClustersResponse>;
+S.Struct({
+  "bareMetalAdminClusters": S.optional(BareMetalAdminClusterList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBareMetalAdminClustersResponse" }) as any as S.Schema<ListBareMetalAdminClustersResponse>;
 
 export interface ListProjectsLocationsBareMetalAdminClustersOperationsRequest {
   /** The standard list page size. */
@@ -4230,29 +3396,18 @@ export interface ListProjectsLocationsBareMetalAdminClustersOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsBareMetalAdminClustersOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBareMetalAdminClustersOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBareMetalAdminClustersOperationsRequest>;
+export const ListProjectsLocationsBareMetalAdminClustersOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBareMetalAdminClustersOperationsRequest" }) as any as S.Schema<ListProjectsLocationsBareMetalAdminClustersOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -4264,26 +3419,19 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
-export type ListProjectsLocationsBareMetalClustersViewEnum =
-  | "CLUSTER_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const ListProjectsLocationsBareMetalClustersViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsBareMetalClustersViewEnum = "CLUSTER_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const ListProjectsLocationsBareMetalClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsBareMetalClustersRequest {
   /** View for bare metal Clusters. When `BASIC` is specified, only the cluster resource name and admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete cluster configuration details. */
-  view?: ListProjectsLocationsBareMetalClustersViewEnum;
+  view?: ListProjectsLocationsBareMetalClustersViewEnum | (string & {});
   /** A resource filtering expression following https://google.aip.dev/160. When non-empty, only resource's whose attributes field matches the filter are returned. */
   filter?: string;
   /** Optional. If true, return list of BareMetal Clusters including the ones that only exists in RMS. */
@@ -4295,32 +3443,19 @@ export interface ListProjectsLocationsBareMetalClustersRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, at most 50 clusters will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        ListProjectsLocationsBareMetalClustersViewEnum.pipe(T.Query()),
-      ),
-      filter: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/bareMetalClusters",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<ListProjectsLocationsBareMetalClustersRequest>;
+export const ListProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(ListProjectsLocationsBareMetalClustersViewEnum.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/bareMetalClusters","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<ListProjectsLocationsBareMetalClustersRequest>;
 
 export type BareMetalClusterList = ReadonlyArray<BareMetalCluster>;
-export const BareMetalClusterList = /*@__PURE__*/ S.Array(
-  BareMetalCluster,
-) as any as S.Schema<BareMetalClusterList>;
+export const BareMetalClusterList = /*@__PURE__*/ S.Array(BareMetalCluster) as any as S.Schema<BareMetalClusterList>;
 
 /** Response message for listing bare metal Clusters. */
 export interface ListBareMetalClustersResponse {
@@ -4332,22 +3467,15 @@ export interface ListBareMetalClustersResponse {
   unreachable?: StringList;
 }
 export const ListBareMetalClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bareMetalClusters: S.optional(BareMetalClusterList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListBareMetalClustersResponse",
-}) as any as S.Schema<ListBareMetalClustersResponse>;
+S.Struct({
+  "bareMetalClusters": S.optional(BareMetalClusterList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListBareMetalClustersResponse" }) as any as S.Schema<ListBareMetalClustersResponse>;
 
-export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
-  | "NODE_POOL_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum = "NODE_POOL_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
   /** The maximum number of node pools to return. The service may return fewer than this value. If unspecified, at most 50 node pools will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -4357,35 +3485,19 @@ export interface ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest
   /** A page token, received from a previous `ListBareMetalNodePools` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBareMetalNodePools` must match the call that provided the page token. */
   pageToken?: string;
   /** View for bare metal node pools. When `BASIC` is specified, only the node pool resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete node pool configuration details. */
-  view?: ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum;
+  view?: ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum | (string & {});
 }
-export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      view: S.optional(
-        ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum.pipe(
-          T.Query(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/bareMetalNodePools",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
+export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "view": S.optional(ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/bareMetalNodePools","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest" }) as any as S.Schema<ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
 export type BareMetalNodePoolList = ReadonlyArray<BareMetalNodePool>;
-export const BareMetalNodePoolList = /*@__PURE__*/ S.Array(
-  BareMetalNodePool,
-) as any as S.Schema<BareMetalNodePoolList>;
+export const BareMetalNodePoolList = /*@__PURE__*/ S.Array(BareMetalNodePool) as any as S.Schema<BareMetalNodePoolList>;
 
 /** Response message for listing bare metal node pools. */
 export interface ListBareMetalNodePoolsResponse {
@@ -4397,14 +3509,12 @@ export interface ListBareMetalNodePoolsResponse {
   bareMetalNodePools?: BareMetalNodePoolList;
 }
 export const ListBareMetalNodePoolsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    bareMetalNodePools: S.optional(BareMetalNodePoolList),
-  }),
-).annotate({
-  identifier: "ListBareMetalNodePoolsResponse",
-}) as any as S.Schema<ListBareMetalNodePoolsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "bareMetalNodePools": S.optional(BareMetalNodePoolList),
+}),
+).annotate({ identifier: "ListBareMetalNodePoolsResponse" }) as any as S.Schema<ListBareMetalNodePoolsResponse>;
 
 export interface ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest {
   /** The standard list filter. */
@@ -4418,25 +3528,15 @@ export interface ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperati
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest>;
+export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest>;
 
 export interface ListProjectsLocationsBareMetalClustersOperationsRequest {
   /** The standard list page token. */
@@ -4450,24 +3550,15 @@ export interface ListProjectsLocationsBareMetalClustersOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsBareMetalClustersOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBareMetalClustersOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBareMetalClustersOperationsRequest>;
+export const ListProjectsLocationsBareMetalClustersOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBareMetalClustersOperationsRequest" }) as any as S.Schema<ListProjectsLocationsBareMetalClustersOperationsRequest>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -4481,36 +3572,22 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type ListProjectsLocationsVmwareAdminClustersViewEnum =
-  | "CLUSTER_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const ListProjectsLocationsVmwareAdminClustersViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsVmwareAdminClustersViewEnum = "CLUSTER_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const ListProjectsLocationsVmwareAdminClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsVmwareAdminClustersRequest {
   /** View for VMware admin clusters. When `BASIC` is specified, only the admin cluster resource name and membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete admin cluster configuration details. */
-  view?: ListProjectsLocationsVmwareAdminClustersViewEnum;
+  view?: ListProjectsLocationsVmwareAdminClustersViewEnum | (string & {});
   /** Required. The parent of the project and location where the clusters are listed in. Format: "projects/{project}/locations/{location}" */
   parent: string;
   /** A token identifying a page of results the server should return. */
@@ -4520,31 +3597,18 @@ export interface ListProjectsLocationsVmwareAdminClustersRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, at most 50 clusters will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        ListProjectsLocationsVmwareAdminClustersViewEnum.pipe(T.Query()),
-      ),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/vmwareAdminClusters",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsVmwareAdminClustersRequest",
-  }) as any as S.Schema<ListProjectsLocationsVmwareAdminClustersRequest>;
+export const ListProjectsLocationsVmwareAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(ListProjectsLocationsVmwareAdminClustersViewEnum.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/vmwareAdminClusters","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsVmwareAdminClustersRequest" }) as any as S.Schema<ListProjectsLocationsVmwareAdminClustersRequest>;
 
 export type VmwareAdminClusterList = ReadonlyArray<VmwareAdminCluster>;
-export const VmwareAdminClusterList = /*@__PURE__*/ S.Array(
-  VmwareAdminCluster,
-) as any as S.Schema<VmwareAdminClusterList>;
+export const VmwareAdminClusterList = /*@__PURE__*/ S.Array(VmwareAdminCluster) as any as S.Schema<VmwareAdminClusterList>;
 
 /** Response message for listing VMware admin clusters. */
 export interface ListVmwareAdminClustersResponse {
@@ -4556,14 +3620,12 @@ export interface ListVmwareAdminClustersResponse {
   unreachable?: StringList;
 }
 export const ListVmwareAdminClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vmwareAdminClusters: S.optional(VmwareAdminClusterList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListVmwareAdminClustersResponse",
-}) as any as S.Schema<ListVmwareAdminClustersResponse>;
+S.Struct({
+  "vmwareAdminClusters": S.optional(VmwareAdminClusterList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListVmwareAdminClustersResponse" }) as any as S.Schema<ListVmwareAdminClustersResponse>;
 
 export interface ListProjectsLocationsVmwareAdminClustersOperationsRequest {
   /** The standard list page size. */
@@ -4577,36 +3639,22 @@ export interface ListProjectsLocationsVmwareAdminClustersOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsVmwareAdminClustersOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsVmwareAdminClustersOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsVmwareAdminClustersOperationsRequest>;
+export const ListProjectsLocationsVmwareAdminClustersOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsVmwareAdminClustersOperationsRequest" }) as any as S.Schema<ListProjectsLocationsVmwareAdminClustersOperationsRequest>;
 
-export type ListProjectsLocationsVmwareClustersViewEnum =
-  | "CLUSTER_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const ListProjectsLocationsVmwareClustersViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsVmwareClustersViewEnum = "CLUSTER_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const ListProjectsLocationsVmwareClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsVmwareClustersRequest {
   /** View for VMware clusters. When `BASIC` is specified, only the cluster resource name and admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete cluster configuration details. */
-  view?: ListProjectsLocationsVmwareClustersViewEnum;
+  view?: ListProjectsLocationsVmwareClustersViewEnum | (string & {});
   /** A resource filtering expression following https://google.aip.dev/160. When non-empty, only resource's whose attributes field matches the filter are returned. */
   filter?: string;
   /** Required. The parent of the project and location where the clusters are listed in. Format: "projects/{project}/locations/{location}" */
@@ -4618,32 +3666,19 @@ export interface ListProjectsLocationsVmwareClustersRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, at most 50 clusters will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        ListProjectsLocationsVmwareClustersViewEnum.pipe(T.Query()),
-      ),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/vmwareClusters",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<ListProjectsLocationsVmwareClustersRequest>;
+export const ListProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(ListProjectsLocationsVmwareClustersViewEnum.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/vmwareClusters","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<ListProjectsLocationsVmwareClustersRequest>;
 
 export type VmwareClusterList = ReadonlyArray<VmwareCluster>;
-export const VmwareClusterList = /*@__PURE__*/ S.Array(
-  VmwareCluster,
-) as any as S.Schema<VmwareClusterList>;
+export const VmwareClusterList = /*@__PURE__*/ S.Array(VmwareCluster) as any as S.Schema<VmwareClusterList>;
 
 /** Response message for listing VMware Clusters. */
 export interface ListVmwareClustersResponse {
@@ -4655,14 +3690,12 @@ export interface ListVmwareClustersResponse {
   vmwareClusters?: VmwareClusterList;
 }
 export const ListVmwareClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-    vmwareClusters: S.optional(VmwareClusterList),
-  }),
-).annotate({
-  identifier: "ListVmwareClustersResponse",
-}) as any as S.Schema<ListVmwareClustersResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "vmwareClusters": S.optional(VmwareClusterList),
+}),
+).annotate({ identifier: "ListVmwareClustersResponse" }) as any as S.Schema<ListVmwareClustersResponse>;
 
 export interface ListProjectsLocationsVmwareClustersOperationsRequest {
   /** The standard list page size. */
@@ -4676,36 +3709,22 @@ export interface ListProjectsLocationsVmwareClustersOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsVmwareClustersOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsVmwareClustersOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsVmwareClustersOperationsRequest>;
+export const ListProjectsLocationsVmwareClustersOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsVmwareClustersOperationsRequest" }) as any as S.Schema<ListProjectsLocationsVmwareClustersOperationsRequest>;
 
-export type ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
-  | "NODE_POOL_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum = "NODE_POOL_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** View for VMware node pools. When `BASIC` is specified, only the node pool resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete node pool configuration details. */
-  view?: ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum;
+  view?: ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum | (string & {});
   /** Required. The parent, which owns this collection of node pools. Format: projects/{project}/locations/{location}/vmwareClusters/{vmwareCluster} */
   parent: string;
   /** A page token, received from a previous `ListVmwareNodePools` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListVmwareNodePools` must match the call that provided the page token. */
@@ -4713,32 +3732,17 @@ export interface ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** The maximum number of node pools to return. The service may return fewer than this value. If unspecified, at most 50 node pools will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/vmwareNodePools",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
-  }) as any as S.Schema<ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
+export const ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/vmwareNodePools","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest" }) as any as S.Schema<ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
 export type VmwareNodePoolList = ReadonlyArray<VmwareNodePool>;
-export const VmwareNodePoolList = /*@__PURE__*/ S.Array(
-  VmwareNodePool,
-) as any as S.Schema<VmwareNodePoolList>;
+export const VmwareNodePoolList = /*@__PURE__*/ S.Array(VmwareNodePool) as any as S.Schema<VmwareNodePoolList>;
 
 /** Response message for listing VMware node pools. */
 export interface ListVmwareNodePoolsResponse {
@@ -4750,14 +3754,12 @@ export interface ListVmwareNodePoolsResponse {
   unreachable?: StringList;
 }
 export const ListVmwareNodePoolsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vmwareNodePools: S.optional(VmwareNodePoolList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListVmwareNodePoolsResponse",
-}) as any as S.Schema<ListVmwareNodePoolsResponse>;
+S.Struct({
+  "vmwareNodePools": S.optional(VmwareNodePoolList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListVmwareNodePoolsResponse" }) as any as S.Schema<ListVmwareNodePoolsResponse>;
 
 export interface ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest {
   /** The standard list page token. */
@@ -4771,25 +3773,15 @@ export interface ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsReq
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest>;
+export const ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest>;
 
 export interface PatchProjectsLocationsBareMetalAdminClustersRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the BareMetalAdminCluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all populated fields in the BareMetalAdminCluster message will be updated. Empty fields will be ignored unless a field mask is used. */
@@ -4801,23 +3793,14 @@ export interface PatchProjectsLocationsBareMetalAdminClustersRequest {
   /** Request body */
   body?: BareMetalAdminCluster;
 }
-export const PatchProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(BareMetalAdminCluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsBareMetalAdminClustersRequest",
-  }) as any as S.Schema<PatchProjectsLocationsBareMetalAdminClustersRequest>;
+export const PatchProjectsLocationsBareMetalAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(BareMetalAdminCluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBareMetalAdminClustersRequest" }) as any as S.Schema<PatchProjectsLocationsBareMetalAdminClustersRequest>;
 
 export interface PatchProjectsLocationsBareMetalClustersRequest {
   /** If set to true, and the bare metal cluster is not found, the request will create a new bare metal cluster with the provided configuration. The user must have both create and update permission to call Update with allow_missing set to true. */
@@ -4831,24 +3814,15 @@ export interface PatchProjectsLocationsBareMetalClustersRequest {
   /** Request body */
   body?: BareMetalCluster;
 }
-export const PatchProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BareMetalCluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<PatchProjectsLocationsBareMetalClustersRequest>;
+export const PatchProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BareMetalCluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<PatchProjectsLocationsBareMetalClustersRequest>;
 
 export interface PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
   /** If set to true, and the bare metal node pool is not found, the request will create a new bare metal node pool with the provided configuration. The user must have both create and update permission to call Update with allow_missing set to true. */
@@ -4862,25 +3836,15 @@ export interface PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsReques
   /** Request body */
   body?: BareMetalNodePool;
 }
-export const PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BareMetalNodePool.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
+export const PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BareMetalNodePool.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest" }) as any as S.Schema<PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
 export interface PatchProjectsLocationsVmwareAdminClustersRequest {
   /** Validate the request without actually doing any updates. */
@@ -4894,24 +3858,15 @@ export interface PatchProjectsLocationsVmwareAdminClustersRequest {
   /** Request body */
   body?: VmwareAdminCluster;
 }
-export const PatchProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      skipValidations: S.optional(StringList.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(VmwareAdminCluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsVmwareAdminClustersRequest",
-  }) as any as S.Schema<PatchProjectsLocationsVmwareAdminClustersRequest>;
+export const PatchProjectsLocationsVmwareAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "skipValidations": S.optional(StringList.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(VmwareAdminCluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsVmwareAdminClustersRequest" }) as any as S.Schema<PatchProjectsLocationsVmwareAdminClustersRequest>;
 
 export interface PatchProjectsLocationsVmwareClustersRequest {
   /** Immutable. The VMware user cluster resource name. */
@@ -4924,24 +3879,15 @@ export interface PatchProjectsLocationsVmwareClustersRequest {
   /** Request body */
   body?: VmwareCluster;
 }
-export const PatchProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      skipValidations: S.optional(StringList.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(VmwareCluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<PatchProjectsLocationsVmwareClustersRequest>;
+export const PatchProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "skipValidations": S.optional(StringList.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(VmwareCluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<PatchProjectsLocationsVmwareClustersRequest>;
 
 export interface PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the VMwareNodePool resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all populated fields in the VMwareNodePool message will be updated. Empty fields will be ignored unless a field mask is used. */
@@ -4953,23 +3899,14 @@ export interface PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** Request body */
   body?: VmwareNodePool;
 }
-export const PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(VmwareNodePool.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
+export const PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(VmwareNodePool.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest" }) as any as S.Schema<PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
 export interface QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest {
   /** Required. The parent of the project and location to query for version config. Format: "projects/{project}/locations/{location}" */
@@ -4977,22 +3914,12 @@ export interface QueryVersionConfigProjectsLocationsBareMetalAdminClustersReques
   /** The admin cluster resource name. This is the full resource name of the admin cluster resource. Format: "projects/{project}/locations/{location}/bareMetalAdminClusters/{bare_metal_admin_cluster}" */
   "upgradeConfig.clusterName"?: string;
 }
-export const QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      "upgradeConfig.clusterName": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/bareMetalAdminClusters:queryVersionConfig",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest",
-  }) as any as S.Schema<QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest>;
+export const QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "upgradeConfig.clusterName": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/bareMetalAdminClusters:queryVersionConfig","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest" }) as any as S.Schema<QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest>;
 
 /** UpgradeDependency represents a dependency when upgrading a resource. */
 export interface UpgradeDependency {
@@ -5006,20 +3933,16 @@ export interface UpgradeDependency {
   targetVersion?: string;
 }
 export const UpgradeDependency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentVersion: S.optional(S.String),
-    resourceName: S.optional(S.String),
-    membership: S.optional(S.String),
-    targetVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpgradeDependency",
-}) as any as S.Schema<UpgradeDependency>;
+S.Struct({
+  "currentVersion": S.optional(S.String),
+  "resourceName": S.optional(S.String),
+  "membership": S.optional(S.String),
+  "targetVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "UpgradeDependency" }) as any as S.Schema<UpgradeDependency>;
 
 export type UpgradeDependencyList = ReadonlyArray<UpgradeDependency>;
-export const UpgradeDependencyList = /*@__PURE__*/ S.Array(
-  UpgradeDependency,
-) as any as S.Schema<UpgradeDependencyList>;
+export const UpgradeDependencyList = /*@__PURE__*/ S.Array(UpgradeDependency) as any as S.Schema<UpgradeDependencyList>;
 
 /** Contains information about a specific Anthos on bare metal version. */
 export interface BareMetalVersionInfo {
@@ -5031,33 +3954,26 @@ export interface BareMetalVersionInfo {
   hasDependencies?: boolean;
 }
 export const BareMetalVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    dependencies: S.optional(UpgradeDependencyList),
-    hasDependencies: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BareMetalVersionInfo",
-}) as any as S.Schema<BareMetalVersionInfo>;
+S.Struct({
+  "version": S.optional(S.String),
+  "dependencies": S.optional(UpgradeDependencyList),
+  "hasDependencies": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "BareMetalVersionInfo" }) as any as S.Schema<BareMetalVersionInfo>;
 
 export type BareMetalVersionInfoList = ReadonlyArray<BareMetalVersionInfo>;
-export const BareMetalVersionInfoList = /*@__PURE__*/ S.Array(
-  BareMetalVersionInfo,
-) as any as S.Schema<BareMetalVersionInfoList>;
+export const BareMetalVersionInfoList = /*@__PURE__*/ S.Array(BareMetalVersionInfo) as any as S.Schema<BareMetalVersionInfoList>;
 
 /** Response message for querying bare metal admin cluster version config. */
 export interface QueryBareMetalAdminVersionConfigResponse {
   /** List of available versions to install or to upgrade to. */
   versions?: BareMetalVersionInfoList;
 }
-export const QueryBareMetalAdminVersionConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      versions: S.optional(BareMetalVersionInfoList),
-    }),
-).annotate({
-  identifier: "QueryBareMetalAdminVersionConfigResponse",
-}) as any as S.Schema<QueryBareMetalAdminVersionConfigResponse>;
+export const QueryBareMetalAdminVersionConfigResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "versions": S.optional(BareMetalVersionInfoList),
+}),
+).annotate({ identifier: "QueryBareMetalAdminVersionConfigResponse" }) as any as S.Schema<QueryBareMetalAdminVersionConfigResponse>;
 
 export interface QueryVersionConfigProjectsLocationsBareMetalClustersRequest {
   /** Required. The parent of the project and location to query for version config. Format: "projects/{project}/locations/{location}" */
@@ -5069,25 +3985,14 @@ export interface QueryVersionConfigProjectsLocationsBareMetalClustersRequest {
   /** The admin cluster resource name. This is the full resource name of the admin cluster resource. Format: "projects/{project}/locations/{location}/bareMetalAdminClusters/{bare_metal_admin_cluster}" */
   "createConfig.adminClusterName"?: string;
 }
-export const QueryVersionConfigProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      "upgradeConfig.clusterName": S.optional(S.String.pipe(T.Query())),
-      "createConfig.adminClusterMembership": S.optional(
-        S.String.pipe(T.Query()),
-      ),
-      "createConfig.adminClusterName": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/bareMetalClusters:queryVersionConfig",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "QueryVersionConfigProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<QueryVersionConfigProjectsLocationsBareMetalClustersRequest>;
+export const QueryVersionConfigProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "upgradeConfig.clusterName": S.optional(S.String.pipe(T.Query())),
+  "createConfig.adminClusterMembership": S.optional(S.String.pipe(T.Query())),
+  "createConfig.adminClusterName": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/bareMetalClusters:queryVersionConfig","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "QueryVersionConfigProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<QueryVersionConfigProjectsLocationsBareMetalClustersRequest>;
 
 /** Response message for querying bare metal admin cluster version config. */
 export interface QueryBareMetalVersionConfigResponse {
@@ -5095,12 +4000,10 @@ export interface QueryBareMetalVersionConfigResponse {
   versions?: BareMetalVersionInfoList;
 }
 export const QueryBareMetalVersionConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versions: S.optional(BareMetalVersionInfoList),
-  }),
-).annotate({
-  identifier: "QueryBareMetalVersionConfigResponse",
-}) as any as S.Schema<QueryBareMetalVersionConfigResponse>;
+S.Struct({
+  "versions": S.optional(BareMetalVersionInfoList),
+}),
+).annotate({ identifier: "QueryBareMetalVersionConfigResponse" }) as any as S.Schema<QueryBareMetalVersionConfigResponse>;
 
 export interface QueryVersionConfigProjectsLocationsVmwareClustersRequest {
   /** The admin cluster resource name. This is the full resource name of the admin cluster resource. Format: "projects/{project}/locations/{location}/vmwareAdminClusters/{vmware_admin_cluster}" */
@@ -5112,25 +4015,14 @@ export interface QueryVersionConfigProjectsLocationsVmwareClustersRequest {
   /** The user cluster resource name. This is the full resource name of the user cluster resource. Format: "projects/{project}/locations/{location}/vmwareClusters/{vmware_cluster}" */
   "upgradeConfig.clusterName"?: string;
 }
-export const QueryVersionConfigProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "createConfig.adminClusterName": S.optional(S.String.pipe(T.Query())),
-      "createConfig.adminClusterMembership": S.optional(
-        S.String.pipe(T.Query()),
-      ),
-      parent: S.String.pipe(T.Label()),
-      "upgradeConfig.clusterName": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/vmwareClusters:queryVersionConfig",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "QueryVersionConfigProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<QueryVersionConfigProjectsLocationsVmwareClustersRequest>;
+export const QueryVersionConfigProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "createConfig.adminClusterName": S.optional(S.String.pipe(T.Query())),
+  "createConfig.adminClusterMembership": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "upgradeConfig.clusterName": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/vmwareClusters:queryVersionConfig","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "QueryVersionConfigProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<QueryVersionConfigProjectsLocationsVmwareClustersRequest>;
 
 /** Contains information about a specific Anthos on VMware version. */
 export interface VmwareVersionInfo {
@@ -5144,20 +4036,16 @@ export interface VmwareVersionInfo {
   version?: string;
 }
 export const VmwareVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hasDependencies: S.optional(S.Boolean),
-    isInstalled: S.optional(S.Boolean),
-    dependencies: S.optional(UpgradeDependencyList),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VmwareVersionInfo",
-}) as any as S.Schema<VmwareVersionInfo>;
+S.Struct({
+  "hasDependencies": S.optional(S.Boolean),
+  "isInstalled": S.optional(S.Boolean),
+  "dependencies": S.optional(UpgradeDependencyList),
+  "version": S.optional(S.String),
+}),
+).annotate({ identifier: "VmwareVersionInfo" }) as any as S.Schema<VmwareVersionInfo>;
 
 export type VmwareVersionInfoList = ReadonlyArray<VmwareVersionInfo>;
-export const VmwareVersionInfoList = /*@__PURE__*/ S.Array(
-  VmwareVersionInfo,
-) as any as S.Schema<VmwareVersionInfoList>;
+export const VmwareVersionInfoList = /*@__PURE__*/ S.Array(VmwareVersionInfo) as any as S.Schema<VmwareVersionInfoList>;
 
 /** Response message for querying VMware user cluster version config. */
 export interface QueryVmwareVersionConfigResponse {
@@ -5165,12 +4053,10 @@ export interface QueryVmwareVersionConfigResponse {
   versions?: VmwareVersionInfoList;
 }
 export const QueryVmwareVersionConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versions: S.optional(VmwareVersionInfoList),
-  }),
-).annotate({
-  identifier: "QueryVmwareVersionConfigResponse",
-}) as any as S.Schema<QueryVmwareVersionConfigResponse>;
+S.Struct({
+  "versions": S.optional(VmwareVersionInfoList),
+}),
+).annotate({ identifier: "QueryVmwareVersionConfigResponse" }) as any as S.Schema<QueryVmwareVersionConfigResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -5178,12 +4064,10 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5191,21 +4075,12 @@ export interface SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest>;
+export const SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest>;
 
 export interface SetIamPolicyProjectsLocationsBareMetalClustersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5213,21 +4088,12 @@ export interface SetIamPolicyProjectsLocationsBareMetalClustersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsBareMetalClustersRequest>;
+export const SetIamPolicyProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsBareMetalClustersRequest>;
 
 export interface SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5235,22 +4101,12 @@ export interface SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePool
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
+export const SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
 export interface SetIamPolicyProjectsLocationsVmwareAdminClustersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5258,21 +4114,12 @@ export interface SetIamPolicyProjectsLocationsVmwareAdminClustersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsVmwareAdminClustersRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsVmwareAdminClustersRequest>;
+export const SetIamPolicyProjectsLocationsVmwareAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsVmwareAdminClustersRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsVmwareAdminClustersRequest>;
 
 export interface SetIamPolicyProjectsLocationsVmwareClustersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5280,21 +4127,12 @@ export interface SetIamPolicyProjectsLocationsVmwareClustersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsVmwareClustersRequest>;
+export const SetIamPolicyProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsVmwareClustersRequest>;
 
 export interface SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5302,22 +4140,12 @@ export interface SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsReque
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
+export const SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -5325,12 +4153,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5338,22 +4164,12 @@ export interface TestIamPermissionsProjectsLocationsBareMetalAdminClustersReques
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest>;
+export const TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -5361,12 +4177,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsBareMetalClustersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5374,21 +4188,12 @@ export interface TestIamPermissionsProjectsLocationsBareMetalClustersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsBareMetalClustersRequest>;
+export const TestIamPermissionsProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsBareMetalClustersRequest>;
 
 export interface TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5396,22 +4201,12 @@ export interface TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNo
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
+export const TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5419,21 +4214,12 @@ export interface TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest>;
+export const TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest>;
 
 export interface TestIamPermissionsProjectsLocationsVmwareClustersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5441,21 +4227,12 @@ export interface TestIamPermissionsProjectsLocationsVmwareClustersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsVmwareClustersRequest>;
+export const TestIamPermissionsProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsVmwareClustersRequest>;
 
 export interface TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5463,22 +4240,12 @@ export interface TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePool
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
+export const TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
 export interface UnenrollProjectsLocationsBareMetalAdminClustersRequest {
   /** If set to true, the unenrollment of a bare metal admin cluster resource will succeed even if errors occur during unenrollment. This parameter can be used when you want to unenroll admin cluster resource and the on-prem admin cluster is disconnected / unreachable. WARNING: Using this parameter when your admin cluster still exists may result in a deleted GCP admin cluster but existing resourcelink in on-prem admin cluster and membership. */
@@ -5492,24 +4259,15 @@ export interface UnenrollProjectsLocationsBareMetalAdminClustersRequest {
   /** Validate the request without actually doing any updates. */
   validateOnly?: boolean;
 }
-export const UnenrollProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ignoreErrors: S.optional(S.Boolean.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}:unenroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UnenrollProjectsLocationsBareMetalAdminClustersRequest",
-  }) as any as S.Schema<UnenrollProjectsLocationsBareMetalAdminClustersRequest>;
+export const UnenrollProjectsLocationsBareMetalAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ignoreErrors": S.optional(S.Boolean.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}:unenroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "UnenrollProjectsLocationsBareMetalAdminClustersRequest" }) as any as S.Schema<UnenrollProjectsLocationsBareMetalAdminClustersRequest>;
 
 export interface UnenrollProjectsLocationsBareMetalClustersRequest {
   /** This is required if the cluster has any associated node pools. When set, any child node pools will also be unenrolled. */
@@ -5523,24 +4281,15 @@ export interface UnenrollProjectsLocationsBareMetalClustersRequest {
   /** If set to true, and the bare metal cluster is not found, the request will succeed but no action will be taken on the server and return a completed LRO. */
   allowMissing?: boolean;
 }
-export const UnenrollProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      force: S.optional(S.Boolean.pipe(T.Query())),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}:unenroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UnenrollProjectsLocationsBareMetalClustersRequest",
-  }) as any as S.Schema<UnenrollProjectsLocationsBareMetalClustersRequest>;
+export const UnenrollProjectsLocationsBareMetalClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}:unenroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "UnenrollProjectsLocationsBareMetalClustersRequest" }) as any as S.Schema<UnenrollProjectsLocationsBareMetalClustersRequest>;
 
 export interface UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
   /** The current etag of the bare metal node pool. If an etag is provided and does not match the current etag of node pool, deletion will be blocked and an ABORTED error will be returned. */
@@ -5552,24 +4301,14 @@ export interface UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsReq
   /** Required. The name of the node pool to unenroll. Format: projects/{project}/locations/{location}/bareMetalClusters/{cluster}/bareMetalNodePools/{nodepool} */
   name: string;
 }
-export const UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      etag: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}:unenroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
-  }) as any as S.Schema<UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
+export const UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}:unenroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest" }) as any as S.Schema<UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
 export interface UnenrollProjectsLocationsVmwareAdminClustersRequest {
   /** Optional. If set to true, the unenrollment of a vmware admin cluster resource will succeed even if errors occur during unenrollment. This parameter can be used when you want to unenroll admin cluster resource and the on-prem admin cluster is disconnected / unreachable. WARNING: Using this parameter when your admin cluster still exists may result in a deleted GCP admin cluster but existing resourcelink in on-prem admin cluster and membership. */
@@ -5583,24 +4322,15 @@ export interface UnenrollProjectsLocationsVmwareAdminClustersRequest {
   /** Validate the request without actually doing any updates. */
   validateOnly?: boolean;
 }
-export const UnenrollProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ignoreErrors: S.optional(S.Boolean.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}:unenroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UnenrollProjectsLocationsVmwareAdminClustersRequest",
-  }) as any as S.Schema<UnenrollProjectsLocationsVmwareAdminClustersRequest>;
+export const UnenrollProjectsLocationsVmwareAdminClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ignoreErrors": S.optional(S.Boolean.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}:unenroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "UnenrollProjectsLocationsVmwareAdminClustersRequest" }) as any as S.Schema<UnenrollProjectsLocationsVmwareAdminClustersRequest>;
 
 export interface UnenrollProjectsLocationsVmwareClustersRequest {
   /** If set to true, and the VMware cluster is not found, the request will succeed but no action will be taken on the server and return a completed LRO. */
@@ -5614,24 +4344,15 @@ export interface UnenrollProjectsLocationsVmwareClustersRequest {
   /** Validate the request without actually doing any updates. */
   validateOnly?: boolean;
 }
-export const UnenrollProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}:unenroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UnenrollProjectsLocationsVmwareClustersRequest",
-  }) as any as S.Schema<UnenrollProjectsLocationsVmwareClustersRequest>;
+export const UnenrollProjectsLocationsVmwareClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}:unenroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "UnenrollProjectsLocationsVmwareClustersRequest" }) as any as S.Schema<UnenrollProjectsLocationsVmwareClustersRequest>;
 
 export interface UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** The current etag of the VMware node pool. If an etag is provided and does not match the current etag of node pool, deletion will be blocked and an ABORTED error will be returned. */
@@ -5643,30 +4364,16 @@ export interface UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
   /** Required. The name of the node pool to unenroll. Format: projects/{project}/locations/{location}/vmwareClusters/{cluster}/vmwareNodePools/{nodepool} */
   name: string;
 }
-export const UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      etag: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}:unenroll",
-        baseUrl: "https://gkeonprem.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
-  }) as any as S.Schema<UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
+export const UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}:unenroll","baseUrl":"https://gkeonprem.googleapis.com/"})),
+).annotate({ identifier: "UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest" }) as any as S.Schema<UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -5681,12 +4388,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBareMetalAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBareMetalAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new bare metal admin cluster in a given project and location. The API needs to be combined with creating a bootstrap cluster to work. See: https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/installing/creating-clusters/create-admin-cluster-api#prepare_bootstrap_environment */
 export const createProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   CreateProjectsLocationsBareMetalAdminClustersRequest,
@@ -5701,12 +4403,7 @@ export const createProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBareMetalClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new bare metal cluster in a given project and location. */
 export const createProjectsLocationsBareMetalClusters: API.OperationMethod<
   CreateProjectsLocationsBareMetalClustersRequest,
@@ -5721,12 +4418,7 @@ export const createProjectsLocationsBareMetalClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new bare metal node pool in a given project, location and Bare Metal cluster. */
 export const createProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
   CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
@@ -5741,12 +4433,7 @@ export const createProjectsLocationsBareMetalClustersBareMetalNodePools: API.Ope
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsVmwareAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsVmwareAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new VMware admin cluster in a given project and location. The API needs to be combined with creating a bootstrap cluster to work. */
 export const createProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   CreateProjectsLocationsVmwareAdminClustersRequest,
@@ -5761,12 +4448,7 @@ export const createProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsVmwareClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new VMware user cluster in a given project and location. */
 export const createProjectsLocationsVmwareClusters: API.OperationMethod<
   CreateProjectsLocationsVmwareClustersRequest,
@@ -5781,12 +4463,7 @@ export const createProjectsLocationsVmwareClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsVmwareClustersVmwareNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new VMware node pool in a given project, location and VMWare cluster. */
 export const createProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
   CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
@@ -5801,12 +4478,7 @@ export const createProjectsLocationsVmwareClustersVmwareNodePools: API.Operation
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBareMetalClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single bare metal Cluster. */
 export const deleteProjectsLocationsBareMetalClusters: API.OperationMethod<
   DeleteProjectsLocationsBareMetalClustersRequest,
@@ -5821,12 +4493,7 @@ export const deleteProjectsLocationsBareMetalClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single bare metal node pool. */
 export const deleteProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
   DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
@@ -5841,12 +4508,7 @@ export const deleteProjectsLocationsBareMetalClustersBareMetalNodePools: API.Ope
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -5861,12 +4523,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsVmwareClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single VMware Cluster. */
 export const deleteProjectsLocationsVmwareClusters: API.OperationMethod<
   DeleteProjectsLocationsVmwareClustersRequest,
@@ -5881,12 +4538,7 @@ export const deleteProjectsLocationsVmwareClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsVmwareClustersVmwareNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single VMware node pool. */
 export const deleteProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
   DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
@@ -5901,12 +4553,7 @@ export const deleteProjectsLocationsVmwareClustersVmwareNodePools: API.Operation
   retry: Retry.Retry,
 }));
 
-export type EnrollProjectsLocationsBareMetalAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnrollProjectsLocationsBareMetalAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enrolls an existing bare metal admin cluster to the Anthos On-Prem API within a given project and location. Through enrollment, an existing admin cluster will become Anthos On-Prem API managed. The corresponding GCP resources will be created and all future modifications to the cluster will be expected to be performed through the API. */
 export const enrollProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   EnrollProjectsLocationsBareMetalAdminClustersRequest,
@@ -5921,12 +4568,7 @@ export const enrollProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnrollProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnrollProjectsLocationsBareMetalClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enrolls an existing bare metal user cluster and its node pools to the Anthos On-Prem API within a given project and location. Through enrollment, an existing cluster will become Anthos On-Prem API managed. The corresponding GCP resources will be created and all future modifications to the cluster and/or its node pools will be expected to be performed through the API. */
 export const enrollProjectsLocationsBareMetalClusters: API.OperationMethod<
   EnrollProjectsLocationsBareMetalClustersRequest,
@@ -5941,12 +4583,7 @@ export const enrollProjectsLocationsBareMetalClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enrolls an existing bare metal node pool to the Anthos On-Prem API within a given project and location. Through enrollment, an existing node pool will become Anthos On-Prem API managed. The corresponding GCP resources will be created. */
 export const enrollProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
   EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
@@ -5961,12 +4598,7 @@ export const enrollProjectsLocationsBareMetalClustersBareMetalNodePools: API.Ope
   retry: Retry.Retry,
 }));
 
-export type EnrollProjectsLocationsVmwareAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnrollProjectsLocationsVmwareAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enrolls an existing VMware admin cluster to the Anthos On-Prem API within a given project and location. Through enrollment, an existing admin cluster will become Anthos On-Prem API managed. The corresponding GCP resources will be created and all future modifications to the cluster will be expected to be performed through the API. */
 export const enrollProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   EnrollProjectsLocationsVmwareAdminClustersRequest,
@@ -5981,12 +4613,7 @@ export const enrollProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnrollProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnrollProjectsLocationsVmwareClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enrolls an existing VMware user cluster and its node pools to the Anthos On-Prem API within a given project and location. Through enrollment, an existing cluster will become Anthos On-Prem API managed. The corresponding GCP resources will be created and all future modifications to the cluster and/or its node pools will be expected to be performed through the API. */
 export const enrollProjectsLocationsVmwareClusters: API.OperationMethod<
   EnrollProjectsLocationsVmwareClustersRequest,
@@ -6001,12 +4628,7 @@ export const enrollProjectsLocationsVmwareClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnrollProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnrollProjectsLocationsVmwareClustersVmwareNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enrolls a VMware node pool to Anthos On-Prem API */
 export const enrollProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
   EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
@@ -6021,10 +4643,7 @@ export const enrollProjectsLocationsVmwareClustersVmwareNodePools: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsBareMetalAdminClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsBareMetalAdminClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest,
@@ -6039,10 +4658,7 @@ export const getIamPolicyProjectsLocationsBareMetalAdminClusters: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsBareMetalClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBareMetalClusters: API.OperationMethod<
   GetIamPolicyProjectsLocationsBareMetalClustersRequest,
@@ -6057,8 +4673,7 @@ export const getIamPolicyProjectsLocationsBareMetalClusters: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
   GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
@@ -6066,18 +4681,14 @@ export const getIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: A
   GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
+  input: GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsVmwareAdminClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsVmwareAdminClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   GetIamPolicyProjectsLocationsVmwareAdminClustersRequest,
@@ -6092,10 +4703,7 @@ export const getIamPolicyProjectsLocationsVmwareAdminClusters: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsVmwareClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsVmwareClusters: API.OperationMethod<
   GetIamPolicyProjectsLocationsVmwareClustersRequest,
@@ -6110,10 +4718,7 @@ export const getIamPolicyProjectsLocationsVmwareClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
   GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
@@ -6143,10 +4748,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBareMetalAdminClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBareMetalAdminClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single bare metal admin cluster. */
 export const getProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   GetProjectsLocationsBareMetalAdminClustersRequest,
@@ -6161,10 +4763,7 @@ export const getProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBareMetalAdminClustersOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBareMetalAdminClustersOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsBareMetalAdminClustersOperations: API.OperationMethod<
   GetProjectsLocationsBareMetalAdminClustersOperationsRequest,
@@ -6179,10 +4778,7 @@ export const getProjectsLocationsBareMetalAdminClustersOperations: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBareMetalClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single bare metal Cluster. */
 export const getProjectsLocationsBareMetalClusters: API.OperationMethod<
   GetProjectsLocationsBareMetalClustersRequest,
@@ -6197,10 +4793,7 @@ export const getProjectsLocationsBareMetalClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single bare metal node pool. */
 export const getProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
   GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
@@ -6215,8 +4808,7 @@ export const getProjectsLocationsBareMetalClustersBareMetalNodePools: API.Operat
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations: API.OperationMethod<
   GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest,
@@ -6224,18 +4816,14 @@ export const getProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations: 
   GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest,
+  input: GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBareMetalClustersOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBareMetalClustersOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsBareMetalClustersOperations: API.OperationMethod<
   GetProjectsLocationsBareMetalClustersOperationsRequest,
@@ -6250,10 +4838,7 @@ export const getProjectsLocationsBareMetalClustersOperations: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -6268,10 +4853,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsVmwareAdminClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsVmwareAdminClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single VMware admin cluster. */
 export const getProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   GetProjectsLocationsVmwareAdminClustersRequest,
@@ -6286,10 +4868,7 @@ export const getProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsVmwareAdminClustersOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsVmwareAdminClustersOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsVmwareAdminClustersOperations: API.OperationMethod<
   GetProjectsLocationsVmwareAdminClustersOperationsRequest,
@@ -6304,10 +4883,7 @@ export const getProjectsLocationsVmwareAdminClustersOperations: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsVmwareClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single VMware Cluster. */
 export const getProjectsLocationsVmwareClusters: API.OperationMethod<
   GetProjectsLocationsVmwareClustersRequest,
@@ -6322,10 +4898,7 @@ export const getProjectsLocationsVmwareClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsVmwareClustersOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsVmwareClustersOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsVmwareClustersOperations: API.OperationMethod<
   GetProjectsLocationsVmwareClustersOperationsRequest,
@@ -6340,10 +4913,7 @@ export const getProjectsLocationsVmwareClustersOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsVmwareClustersVmwareNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single VMware node pool. */
 export const getProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
   GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
@@ -6358,10 +4928,7 @@ export const getProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsVmwareClustersVmwareNodePoolsOperations: API.OperationMethod<
   GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest,
@@ -6389,16 +4956,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBareMetalAdminClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBareMetalAdminClustersError = NotFound | Forbidden | GcpOpError;
 /** Lists bare metal admin clusters in a given project and location. */
 export const listProjectsLocationsBareMetalAdminClusters: API.PaginatedOperationMethod<
   ListProjectsLocationsBareMetalAdminClustersRequest,
@@ -6411,16 +4972,10 @@ export const listProjectsLocationsBareMetalAdminClusters: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBareMetalAdminClustersOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBareMetalAdminClustersOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsBareMetalAdminClustersOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsBareMetalAdminClustersOperationsRequest,
@@ -6433,16 +4988,10 @@ export const listProjectsLocationsBareMetalAdminClustersOperations: API.Paginate
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBareMetalClustersError = NotFound | Forbidden | GcpOpError;
 /** Lists bare metal clusters in a given project and location. */
 export const listProjectsLocationsBareMetalClusters: API.PaginatedOperationMethod<
   ListProjectsLocationsBareMetalClustersRequest,
@@ -6455,16 +5004,10 @@ export const listProjectsLocationsBareMetalClusters: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Lists bare metal node pools in a given project, location and bare metal cluster. */
 export const listProjectsLocationsBareMetalClustersBareMetalNodePools: API.PaginatedOperationMethod<
   ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
@@ -6477,14 +5020,10 @@ export const listProjectsLocationsBareMetalClustersBareMetalNodePools: API.Pagin
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError =
-  NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest,
@@ -6492,22 +5031,15 @@ export const listProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations:
   ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest,
+  input: ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest,
   output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBareMetalClustersOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBareMetalClustersOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsBareMetalClustersOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsBareMetalClustersOperationsRequest,
@@ -6520,16 +5052,10 @@ export const listProjectsLocationsBareMetalClustersOperations: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -6542,16 +5068,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsVmwareAdminClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsVmwareAdminClustersError = NotFound | Forbidden | GcpOpError;
 /** Lists VMware admin clusters in a given project and location. */
 export const listProjectsLocationsVmwareAdminClusters: API.PaginatedOperationMethod<
   ListProjectsLocationsVmwareAdminClustersRequest,
@@ -6564,16 +5084,10 @@ export const listProjectsLocationsVmwareAdminClusters: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsVmwareAdminClustersOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsVmwareAdminClustersOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsVmwareAdminClustersOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsVmwareAdminClustersOperationsRequest,
@@ -6586,16 +5100,10 @@ export const listProjectsLocationsVmwareAdminClustersOperations: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsVmwareClustersError = NotFound | Forbidden | GcpOpError;
 /** Lists VMware Clusters in a given project and location. */
 export const listProjectsLocationsVmwareClusters: API.PaginatedOperationMethod<
   ListProjectsLocationsVmwareClustersRequest,
@@ -6608,16 +5116,10 @@ export const listProjectsLocationsVmwareClusters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsVmwareClustersOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsVmwareClustersOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsVmwareClustersOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsVmwareClustersOperationsRequest,
@@ -6630,16 +5132,10 @@ export const listProjectsLocationsVmwareClustersOperations: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsVmwareClustersVmwareNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Lists VMware node pools in a given project, location and VMWare cluster. */
 export const listProjectsLocationsVmwareClustersVmwareNodePools: API.PaginatedOperationMethod<
   ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
@@ -6652,16 +5148,10 @@ export const listProjectsLocationsVmwareClustersVmwareNodePools: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsVmwareClustersVmwareNodePoolsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest,
@@ -6674,18 +5164,10 @@ export const listProjectsLocationsVmwareClustersVmwareNodePoolsOperations: API.P
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsBareMetalAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBareMetalAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single bare metal admin cluster. */
 export const patchProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   PatchProjectsLocationsBareMetalAdminClustersRequest,
@@ -6700,12 +5182,7 @@ export const patchProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBareMetalClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single bare metal Cluster. */
 export const patchProjectsLocationsBareMetalClusters: API.OperationMethod<
   PatchProjectsLocationsBareMetalClustersRequest,
@@ -6720,12 +5197,7 @@ export const patchProjectsLocationsBareMetalClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single bare metal node pool. */
 export const patchProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
   PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
@@ -6740,12 +5212,7 @@ export const patchProjectsLocationsBareMetalClustersBareMetalNodePools: API.Oper
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsVmwareAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsVmwareAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single VMware admin cluster. */
 export const patchProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   PatchProjectsLocationsVmwareAdminClustersRequest,
@@ -6760,12 +5227,7 @@ export const patchProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsVmwareClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single VMware cluster. */
 export const patchProjectsLocationsVmwareClusters: API.OperationMethod<
   PatchProjectsLocationsVmwareClustersRequest,
@@ -6780,12 +5242,7 @@ export const patchProjectsLocationsVmwareClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsVmwareClustersVmwareNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single VMware node pool. */
 export const patchProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
   PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
@@ -6800,12 +5257,7 @@ export const patchProjectsLocationsVmwareClustersVmwareNodePools: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type QueryVersionConfigProjectsLocationsBareMetalAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type QueryVersionConfigProjectsLocationsBareMetalAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Queries the bare metal admin cluster version config. */
 export const queryVersionConfigProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest,
@@ -6820,12 +5272,7 @@ export const queryVersionConfigProjectsLocationsBareMetalAdminClusters: API.Oper
   retry: Retry.Retry,
 }));
 
-export type QueryVersionConfigProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type QueryVersionConfigProjectsLocationsBareMetalClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Queries the bare metal user cluster version config. */
 export const queryVersionConfigProjectsLocationsBareMetalClusters: API.OperationMethod<
   QueryVersionConfigProjectsLocationsBareMetalClustersRequest,
@@ -6840,12 +5287,7 @@ export const queryVersionConfigProjectsLocationsBareMetalClusters: API.Operation
   retry: Retry.Retry,
 }));
 
-export type QueryVersionConfigProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type QueryVersionConfigProjectsLocationsVmwareClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Queries the VMware user cluster version config. */
 export const queryVersionConfigProjectsLocationsVmwareClusters: API.OperationMethod<
   QueryVersionConfigProjectsLocationsVmwareClustersRequest,
@@ -6860,12 +5302,7 @@ export const queryVersionConfigProjectsLocationsVmwareClusters: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsBareMetalAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsBareMetalAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest,
@@ -6880,12 +5317,7 @@ export const setIamPolicyProjectsLocationsBareMetalAdminClusters: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsBareMetalClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsBareMetalClusters: API.OperationMethod<
   SetIamPolicyProjectsLocationsBareMetalClustersRequest,
@@ -6900,8 +5332,7 @@ export const setIamPolicyProjectsLocationsBareMetalClusters: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
   SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
@@ -6909,20 +5340,14 @@ export const setIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: A
   SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
+  input: SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsVmwareAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsVmwareAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   SetIamPolicyProjectsLocationsVmwareAdminClustersRequest,
@@ -6937,12 +5362,7 @@ export const setIamPolicyProjectsLocationsVmwareAdminClusters: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsVmwareClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsVmwareClusters: API.OperationMethod<
   SetIamPolicyProjectsLocationsVmwareClustersRequest,
@@ -6957,12 +5377,7 @@ export const setIamPolicyProjectsLocationsVmwareClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
   SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
@@ -6977,12 +5392,7 @@ export const setIamPolicyProjectsLocationsVmwareClustersVmwareNodePools: API.Ope
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsBareMetalAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsBareMetalAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest,
@@ -6997,12 +5407,7 @@ export const testIamPermissionsProjectsLocationsBareMetalAdminClusters: API.Oper
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsBareMetalClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBareMetalClusters: API.OperationMethod<
   TestIamPermissionsProjectsLocationsBareMetalClustersRequest,
@@ -7017,8 +5422,7 @@ export const testIamPermissionsProjectsLocationsBareMetalClusters: API.Operation
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
   TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
@@ -7026,20 +5430,14 @@ export const testIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePo
   TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
+  input: TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsVmwareAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsVmwareAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest,
@@ -7054,12 +5452,7 @@ export const testIamPermissionsProjectsLocationsVmwareAdminClusters: API.Operati
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsVmwareClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsVmwareClusters: API.OperationMethod<
   TestIamPermissionsProjectsLocationsVmwareClustersRequest,
@@ -7074,8 +5467,7 @@ export const testIamPermissionsProjectsLocationsVmwareClusters: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
   TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
@@ -7083,20 +5475,14 @@ export const testIamPermissionsProjectsLocationsVmwareClustersVmwareNodePools: A
   TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
+  input: TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type UnenrollProjectsLocationsBareMetalAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnenrollProjectsLocationsBareMetalAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unenrolls an existing bare metal admin cluster from the Anthos On-Prem API within a given project and location. Unenrollment removes the Cloud reference to the cluster without modifying the underlying OnPrem Resources. Clusters will continue to run; however, they will no longer be accessible through the Anthos On-Prem API or its clients. */
 export const unenrollProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   UnenrollProjectsLocationsBareMetalAdminClustersRequest,
@@ -7111,12 +5497,7 @@ export const unenrollProjectsLocationsBareMetalAdminClusters: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UnenrollProjectsLocationsBareMetalClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnenrollProjectsLocationsBareMetalClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unenrolls an existing bare metal user cluster and its node pools from the Anthos On-Prem API within a given project and location. Unenrollment removes the Cloud reference to the cluster without modifying the underlying OnPrem Resources. Clusters and node pools will continue to run; however, they will no longer be accessible through the Anthos On-Prem API or its clients. */
 export const unenrollProjectsLocationsBareMetalClusters: API.OperationMethod<
   UnenrollProjectsLocationsBareMetalClustersRequest,
@@ -7131,12 +5512,7 @@ export const unenrollProjectsLocationsBareMetalClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unenrolls a bare metal node pool from Anthos On-Prem API. */
 export const unenrollProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
   UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
@@ -7151,12 +5527,7 @@ export const unenrollProjectsLocationsBareMetalClustersBareMetalNodePools: API.O
   retry: Retry.Retry,
 }));
 
-export type UnenrollProjectsLocationsVmwareAdminClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnenrollProjectsLocationsVmwareAdminClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unenrolls an existing VMware admin cluster from the Anthos On-Prem API within a given project and location. Unenrollment removes the Cloud reference to the cluster without modifying the underlying OnPrem Resources. Clusters will continue to run; however, they will no longer be accessible through the Anthos On-Prem API or its clients. */
 export const unenrollProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   UnenrollProjectsLocationsVmwareAdminClustersRequest,
@@ -7171,12 +5542,7 @@ export const unenrollProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnenrollProjectsLocationsVmwareClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnenrollProjectsLocationsVmwareClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unenrolls an existing VMware user cluster and its node pools from the Anthos On-Prem API within a given project and location. Unenrollment removes the Cloud reference to the cluster without modifying the underlying OnPrem Resources. Clusters and node pools will continue to run; however, they will no longer be accessible through the Anthos On-Prem API or UI. */
 export const unenrollProjectsLocationsVmwareClusters: API.OperationMethod<
   UnenrollProjectsLocationsVmwareClustersRequest,
@@ -7191,12 +5557,7 @@ export const unenrollProjectsLocationsVmwareClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unenrolls a VMware node pool to Anthos On-Prem API */
 export const unenrollProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
   UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
@@ -7210,3 +5571,4 @@ export const unenrollProjectsLocationsVmwareClustersVmwareNodePools: API.Operati
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -13,78 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type ConversionSourceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "ARCHIVED"
-  | "PENDING"
-  | (string & {});
+export type ConversionSourceStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED" | "PENDING";
 export const ConversionSourceStateEnum = /*@__PURE__*/ S.String;
 
-export type ConversionSourceControllerEnum =
-  | "CONTROLLER_UNSPECIFIED"
-  | "MERCHANT"
-  | "YOUTUBE_AFFILIATES"
-  | (string & {});
+export type ConversionSourceControllerEnum = "CONTROLLER_UNSPECIFIED" | "MERCHANT" | "YOUTUBE_AFFILIATES";
 export const ConversionSourceControllerEnum = /*@__PURE__*/ S.String;
 
-export type AttributionSettingsAttributionModelEnum =
-  | "ATTRIBUTION_MODEL_UNSPECIFIED"
-  | "CROSS_CHANNEL_LAST_CLICK"
-  | "ADS_PREFERRED_LAST_CLICK"
-  | "CROSS_CHANNEL_DATA_DRIVEN"
-  | "CROSS_CHANNEL_FIRST_CLICK"
-  | "CROSS_CHANNEL_LINEAR"
-  | "CROSS_CHANNEL_POSITION_BASED"
-  | "CROSS_CHANNEL_TIME_DECAY"
-  | (string & {});
+export type AttributionSettingsAttributionModelEnum = "ATTRIBUTION_MODEL_UNSPECIFIED" | "CROSS_CHANNEL_LAST_CLICK" | "ADS_PREFERRED_LAST_CLICK" | "CROSS_CHANNEL_DATA_DRIVEN" | "CROSS_CHANNEL_FIRST_CLICK" | "CROSS_CHANNEL_LINEAR" | "CROSS_CHANNEL_POSITION_BASED" | "CROSS_CHANNEL_TIME_DECAY";
 export const AttributionSettingsAttributionModelEnum = /*@__PURE__*/ S.String;
 
 /** Message representing the type of a conversion event. */
@@ -95,16 +77,14 @@ export interface ConversionType {
   name?: string;
 }
 export const ConversionType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    report: S.optional(S.Boolean),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "report": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "ConversionType" }) as any as S.Schema<ConversionType>;
 
 export type ConversionTypeList = ReadonlyArray<ConversionType>;
-export const ConversionTypeList = /*@__PURE__*/ S.Array(
-  ConversionType,
-) as any as S.Schema<ConversionTypeList>;
+export const ConversionTypeList = /*@__PURE__*/ S.Array(ConversionType) as any as S.Schema<ConversionTypeList>;
 
 /** Represents attribution settings for conversion sources receiving pre-attribution data. */
 export interface AttributionSettings {
@@ -116,14 +96,12 @@ export interface AttributionSettings {
   attributionLookbackWindowDays?: number;
 }
 export const AttributionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributionModel: S.optional(AttributionSettingsAttributionModelEnum),
-    conversionType: S.optional(ConversionTypeList),
-    attributionLookbackWindowDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AttributionSettings",
-}) as any as S.Schema<AttributionSettings>;
+S.Struct({
+  "attributionModel": S.optional(AttributionSettingsAttributionModelEnum),
+  "conversionType": S.optional(ConversionTypeList),
+  "attributionLookbackWindowDays": S.optional(S.Number),
+}),
+).annotate({ identifier: "AttributionSettings" }) as any as S.Schema<AttributionSettings>;
 
 /** "Merchant Center Destination" sources can be used to send conversion events from an online store using a Google tag directly to a Merchant Center account where the source is created. */
 export interface MerchantCenterDestination {
@@ -137,15 +115,13 @@ export interface MerchantCenterDestination {
   attributionSettings?: AttributionSettings;
 }
 export const MerchantCenterDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: S.optional(S.String),
-    displayName: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-    attributionSettings: S.optional(AttributionSettings),
-  }),
-).annotate({
-  identifier: "MerchantCenterDestination",
-}) as any as S.Schema<MerchantCenterDestination>;
+S.Struct({
+  "destination": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+  "attributionSettings": S.optional(AttributionSettings),
+}),
+).annotate({ identifier: "MerchantCenterDestination" }) as any as S.Schema<MerchantCenterDestination>;
 
 /** "Google Analytics Link" sources can be used to get conversion data from an existing Google Analytics property into the linked Merchant Center account. */
 export interface GoogleAnalyticsLink {
@@ -157,14 +133,12 @@ export interface GoogleAnalyticsLink {
   propertyId?: string;
 }
 export const GoogleAnalyticsLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributionSettings: S.optional(AttributionSettings),
-    property: S.optional(S.String),
-    propertyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAnalyticsLink",
-}) as any as S.Schema<GoogleAnalyticsLink>;
+S.Struct({
+  "attributionSettings": S.optional(AttributionSettings),
+  "property": S.optional(S.String),
+  "propertyId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleAnalyticsLink" }) as any as S.Schema<GoogleAnalyticsLink>;
 
 /** Represents a conversion source owned by a Merchant account. A merchant account can have up to 200 conversion sources. */
 export interface ConversionSource {
@@ -182,17 +156,15 @@ export interface ConversionSource {
   googleAnalyticsLink?: GoogleAnalyticsLink;
 }
 export const ConversionSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    state: S.optional(ConversionSourceStateEnum),
-    expireTime: S.optional(S.String),
-    controller: S.optional(ConversionSourceControllerEnum),
-    merchantCenterDestination: S.optional(MerchantCenterDestination),
-    googleAnalyticsLink: S.optional(GoogleAnalyticsLink),
-  }),
-).annotate({
-  identifier: "ConversionSource",
-}) as any as S.Schema<ConversionSource>;
+S.Struct({
+  "name": S.optional(S.String),
+  "state": S.optional(ConversionSourceStateEnum),
+  "expireTime": S.optional(S.String),
+  "controller": S.optional(ConversionSourceControllerEnum),
+  "merchantCenterDestination": S.optional(MerchantCenterDestination),
+  "googleAnalyticsLink": S.optional(GoogleAnalyticsLink),
+}),
+).annotate({ identifier: "ConversionSource" }) as any as S.Schema<ConversionSource>;
 
 export interface CreateAccountsConversionSourcesRequest {
   /** Required. The merchant account that will own the new conversion source. Format: `accounts/{account}` */
@@ -200,64 +172,38 @@ export interface CreateAccountsConversionSourcesRequest {
   /** Request body */
   body?: ConversionSource;
 }
-export const CreateAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ConversionSource.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "conversions/v1/{+parent}/conversionSources",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateAccountsConversionSourcesRequest",
-}) as any as S.Schema<CreateAccountsConversionSourcesRequest>;
+export const CreateAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ConversionSource.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"conversions/v1/{+parent}/conversionSources","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsConversionSourcesRequest" }) as any as S.Schema<CreateAccountsConversionSourcesRequest>;
 
 export interface DeleteAccountsConversionSourcesRequest {
   /** Required. The name of the conversion source to be deleted. Format: `accounts/{account}/conversionSources/{conversion_source}` */
   name: string;
 }
-export const DeleteAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "conversions/v1/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteAccountsConversionSourcesRequest",
-}) as any as S.Schema<DeleteAccountsConversionSourcesRequest>;
+export const DeleteAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"conversions/v1/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsConversionSourcesRequest" }) as any as S.Schema<DeleteAccountsConversionSourcesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface GetAccountsConversionSourcesRequest {
   /** Required. The name of the conversion source to be fetched. Format: `accounts/{account}/conversionSources/{conversion_source}` */
   name: string;
 }
 export const GetAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "conversions/v1/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsConversionSourcesRequest",
-}) as any as S.Schema<GetAccountsConversionSourcesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"conversions/v1/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsConversionSourcesRequest" }) as any as S.Schema<GetAccountsConversionSourcesRequest>;
 
 export interface ListAccountsConversionSourcesRequest {
   /** Required. The merchant account who owns the collection of conversion sources. Format: `accounts/{account}` */
@@ -269,28 +215,17 @@ export interface ListAccountsConversionSourcesRequest {
   /** Optional. Show deleted (archived) conversion sources. By default, deleted conversion sources are not returned. */
   showDeleted?: boolean;
 }
-export const ListAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "conversions/v1/{+parent}/conversionSources",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListAccountsConversionSourcesRequest",
-}) as any as S.Schema<ListAccountsConversionSourcesRequest>;
+export const ListAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"conversions/v1/{+parent}/conversionSources","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsConversionSourcesRequest" }) as any as S.Schema<ListAccountsConversionSourcesRequest>;
 
 export type ConversionSourceList = ReadonlyArray<ConversionSource>;
-export const ConversionSourceList = /*@__PURE__*/ S.Array(
-  ConversionSource,
-) as any as S.Schema<ConversionSourceList>;
+export const ConversionSourceList = /*@__PURE__*/ S.Array(ConversionSource) as any as S.Schema<ConversionSourceList>;
 
 /** Response message for the ListConversionSources method. */
 export interface ListConversionSourcesResponse {
@@ -300,13 +235,11 @@ export interface ListConversionSourcesResponse {
   nextPageToken?: string;
 }
 export const ListConversionSourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversionSources: S.optional(ConversionSourceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListConversionSourcesResponse",
-}) as any as S.Schema<ListConversionSourcesResponse>;
+S.Struct({
+  "conversionSources": S.optional(ConversionSourceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListConversionSourcesResponse" }) as any as S.Schema<ListConversionSourcesResponse>;
 
 export interface PatchAccountsConversionSourcesRequest {
   /** Optional. List of fields being updated. */
@@ -316,30 +249,19 @@ export interface PatchAccountsConversionSourcesRequest {
   /** Request body */
   body?: ConversionSource;
 }
-export const PatchAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ConversionSource.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "conversions/v1/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchAccountsConversionSourcesRequest",
-}) as any as S.Schema<PatchAccountsConversionSourcesRequest>;
+export const PatchAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ConversionSource.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"conversions/v1/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsConversionSourcesRequest" }) as any as S.Schema<PatchAccountsConversionSourcesRequest>;
 
 /** Request message for the UndeleteConversionSource method. */
 export interface UndeleteConversionSourceRequest {}
 export const UndeleteConversionSourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UndeleteConversionSourceRequest",
-}) as any as S.Schema<UndeleteConversionSourceRequest>;
+S.Struct({}),
+).annotate({ identifier: "UndeleteConversionSourceRequest" }) as any as S.Schema<UndeleteConversionSourceRequest>;
 
 export interface UndeleteAccountsConversionSourcesRequest {
   /** Required. The name of the conversion source to be undeleted. Format: `accounts/{account}/conversionSources/{conversion_source}` */
@@ -347,28 +269,14 @@ export interface UndeleteAccountsConversionSourcesRequest {
   /** Request body */
   body?: UndeleteConversionSourceRequest;
 }
-export const UndeleteAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UndeleteConversionSourceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "conversions/v1/{+name}:undelete",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UndeleteAccountsConversionSourcesRequest",
-}) as any as S.Schema<UndeleteAccountsConversionSourcesRequest>;
+export const UndeleteAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UndeleteConversionSourceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"conversions/v1/{+name}:undelete","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "UndeleteAccountsConversionSourcesRequest" }) as any as S.Schema<UndeleteAccountsConversionSourcesRequest>;
 
-export type CreateAccountsConversionSourcesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsConversionSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new conversion source. */
 export const createAccountsConversionSources: API.OperationMethod<
   CreateAccountsConversionSourcesRequest,
@@ -383,12 +291,7 @@ export const createAccountsConversionSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsConversionSourcesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsConversionSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Archives an existing conversion source. If the conversion source is a Merchant Center Destination, it will be recoverable for 30 days. If the conversion source is a Google Analytics Link, it will be deleted immediately and can be restored by creating a new one. */
 export const deleteAccountsConversionSources: API.OperationMethod<
   DeleteAccountsConversionSourcesRequest,
@@ -403,10 +306,7 @@ export const deleteAccountsConversionSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsConversionSourcesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsConversionSourcesError = NotFound | Forbidden | GcpOpError;
 /** Fetches a conversion source. */
 export const getAccountsConversionSources: API.OperationMethod<
   GetAccountsConversionSourcesRequest,
@@ -421,10 +321,7 @@ export const getAccountsConversionSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAccountsConversionSourcesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsConversionSourcesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of conversion sources the caller has access to. */
 export const listAccountsConversionSources: API.PaginatedOperationMethod<
   ListAccountsConversionSourcesRequest,
@@ -437,18 +334,10 @@ export const listAccountsConversionSources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchAccountsConversionSourcesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsConversionSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates information of an existing conversion source. Available only for Merchant Center Destination conversion sources. */
 export const patchAccountsConversionSources: API.OperationMethod<
   PatchAccountsConversionSourcesRequest,
@@ -463,12 +352,7 @@ export const patchAccountsConversionSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteAccountsConversionSourcesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UndeleteAccountsConversionSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Re-enables an archived conversion source. Only Available for Merchant Center Destination conversion sources. */
 export const undeleteAccountsConversionSources: API.OperationMethod<
   UndeleteAccountsConversionSourcesRequest,
@@ -482,3 +366,4 @@ export const undeleteAccountsConversionSources: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

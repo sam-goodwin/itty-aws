@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request to decode the integrity token. */
@@ -66,12 +66,10 @@ export interface DecodeIntegrityTokenRequest {
   integrityToken?: string;
 }
 export const DecodeIntegrityTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrityToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DecodeIntegrityTokenRequest",
-}) as any as S.Schema<DecodeIntegrityTokenRequest>;
+S.Struct({
+  "integrityToken": S.optional(S.String),
+}),
+).annotate({ identifier: "DecodeIntegrityTokenRequest" }) as any as S.Schema<DecodeIntegrityTokenRequest>;
 
 export interface DecodeIntegrityTokenV1Request {
   /** Package name of the app the attached integrity token belongs to. */
@@ -80,32 +78,17 @@ export interface DecodeIntegrityTokenV1Request {
   body?: DecodeIntegrityTokenRequest;
 }
 export const DecodeIntegrityTokenV1Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(DecodeIntegrityTokenRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+packageName}:decodeIntegrityToken",
-      baseUrl: "https://playintegrity.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DecodeIntegrityTokenV1Request",
-}) as any as S.Schema<DecodeIntegrityTokenV1Request>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(DecodeIntegrityTokenRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+packageName}:decodeIntegrityToken","baseUrl":"https://playintegrity.googleapis.com/"})),
+).annotate({ identifier: "DecodeIntegrityTokenV1Request" }) as any as S.Schema<DecodeIntegrityTokenV1Request>;
 
-export type AppIntegrityAppRecognitionVerdictEnum =
-  | "UNKNOWN"
-  | "PLAY_RECOGNIZED"
-  | "UNRECOGNIZED_VERSION"
-  | "UNEVALUATED"
-  | (string & {});
+export type AppIntegrityAppRecognitionVerdictEnum = "UNKNOWN" | "PLAY_RECOGNIZED" | "UNRECOGNIZED_VERSION" | "UNEVALUATED";
 export const AppIntegrityAppRecognitionVerdictEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Contains the application integrity information. */
 export interface AppIntegrity {
@@ -119,12 +102,12 @@ export interface AppIntegrity {
   versionCode?: string;
 }
 export const AppIntegrity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appRecognitionVerdict: S.optional(AppIntegrityAppRecognitionVerdictEnum),
-    packageName: S.optional(S.String),
-    certificateSha256Digest: S.optional(StringList),
-    versionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "appRecognitionVerdict": S.optional(AppIntegrityAppRecognitionVerdictEnum),
+  "packageName": S.optional(S.String),
+  "certificateSha256Digest": S.optional(StringList),
+  "versionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "AppIntegrity" }) as any as S.Schema<AppIntegrity>;
 
 /** Contains information about the device for which the integrity token was generated, e.g. Android SDK version. */
@@ -133,40 +116,19 @@ export interface DeviceAttributes {
   sdkVersion?: number;
 }
 export const DeviceAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sdkVersion: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DeviceAttributes",
-}) as any as S.Schema<DeviceAttributes>;
+S.Struct({
+  "sdkVersion": S.optional(S.Number),
+}),
+).annotate({ identifier: "DeviceAttributes" }) as any as S.Schema<DeviceAttributes>;
 
-export type DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum =
-  | "UNKNOWN"
-  | "MEETS_BASIC_INTEGRITY"
-  | "MEETS_DEVICE_INTEGRITY"
-  | "MEETS_STRONG_INTEGRITY"
-  | "MEETS_VIRTUAL_INTEGRITY"
-  | (string & {});
-export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum =
-  /*@__PURE__*/ S.String;
+export type DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum = "UNKNOWN" | "MEETS_BASIC_INTEGRITY" | "MEETS_DEVICE_INTEGRITY" | "MEETS_STRONG_INTEGRITY" | "MEETS_VIRTUAL_INTEGRITY";
+export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum = /*@__PURE__*/ S.String;
 
-export type DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList =
-  ReadonlyArray<DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum>;
-export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList =
-  /*@__PURE__*/ S.Array(
-    DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum,
-  ) as any as S.Schema<DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList>;
+export type DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList = ReadonlyArray<DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum>;
+export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList = /*@__PURE__*/ S.Array(DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum) as any as S.Schema<DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList>;
 
-export type RecentDeviceActivityDeviceActivityLevelEnum =
-  | "DEVICE_ACTIVITY_LEVEL_UNSPECIFIED"
-  | "UNEVALUATED"
-  | "LEVEL_1"
-  | "LEVEL_2"
-  | "LEVEL_3"
-  | "LEVEL_4"
-  | (string & {});
-export const RecentDeviceActivityDeviceActivityLevelEnum =
-  /*@__PURE__*/ S.String;
+export type RecentDeviceActivityDeviceActivityLevelEnum = "DEVICE_ACTIVITY_LEVEL_UNSPECIFIED" | "UNEVALUATED" | "LEVEL_1" | "LEVEL_2" | "LEVEL_3" | "LEVEL_4";
+export const RecentDeviceActivityDeviceActivityLevelEnum = /*@__PURE__*/ S.String;
 
 /** Recent device activity can help developers identify devices that have exhibited hyperactive attestation activity, which could be a sign of an attack or token farming. */
 export interface RecentDeviceActivity {
@@ -174,14 +136,10 @@ export interface RecentDeviceActivity {
   deviceActivityLevel?: RecentDeviceActivityDeviceActivityLevelEnum;
 }
 export const RecentDeviceActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceActivityLevel: S.optional(
-      RecentDeviceActivityDeviceActivityLevelEnum,
-    ),
-  }),
-).annotate({
-  identifier: "RecentDeviceActivity",
-}) as any as S.Schema<RecentDeviceActivity>;
+S.Struct({
+  "deviceActivityLevel": S.optional(RecentDeviceActivityDeviceActivityLevelEnum),
+}),
+).annotate({ identifier: "RecentDeviceActivity" }) as any as S.Schema<RecentDeviceActivity>;
 
 /** Contains the recall bits values. */
 export interface Values {
@@ -193,11 +151,11 @@ export interface Values {
   bitThird?: boolean;
 }
 export const Values = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bitSecond: S.optional(S.Boolean),
-    bitFirst: S.optional(S.Boolean),
-    bitThird: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "bitSecond": S.optional(S.Boolean),
+  "bitFirst": S.optional(S.Boolean),
+  "bitThird": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Values" }) as any as S.Schema<Values>;
 
 /** Contains the recall bits write dates. */
@@ -210,11 +168,11 @@ export interface WriteDates {
   yyyymmThird?: number;
 }
 export const WriteDates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    yyyymmSecond: S.optional(S.Number),
-    yyyymmFirst: S.optional(S.Number),
-    yyyymmThird: S.optional(S.Number),
-  }),
+S.Struct({
+  "yyyymmSecond": S.optional(S.Number),
+  "yyyymmFirst": S.optional(S.Number),
+  "yyyymmThird": S.optional(S.Number),
+}),
 ).annotate({ identifier: "WriteDates" }) as any as S.Schema<WriteDates>;
 
 /** Contains the recall bits per device set by the developer. */
@@ -225,28 +183,17 @@ export interface DeviceRecall {
   writeDates?: WriteDates;
 }
 export const DeviceRecall = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(Values),
-    writeDates: S.optional(WriteDates),
-  }),
+S.Struct({
+  "values": S.optional(Values),
+  "writeDates": S.optional(WriteDates),
+}),
 ).annotate({ identifier: "DeviceRecall" }) as any as S.Schema<DeviceRecall>;
 
-export type DeviceIntegrityDeviceRecognitionVerdictItemEnum =
-  | "UNKNOWN"
-  | "MEETS_BASIC_INTEGRITY"
-  | "MEETS_DEVICE_INTEGRITY"
-  | "MEETS_STRONG_INTEGRITY"
-  | "MEETS_VIRTUAL_INTEGRITY"
-  | (string & {});
-export const DeviceIntegrityDeviceRecognitionVerdictItemEnum =
-  /*@__PURE__*/ S.String;
+export type DeviceIntegrityDeviceRecognitionVerdictItemEnum = "UNKNOWN" | "MEETS_BASIC_INTEGRITY" | "MEETS_DEVICE_INTEGRITY" | "MEETS_STRONG_INTEGRITY" | "MEETS_VIRTUAL_INTEGRITY";
+export const DeviceIntegrityDeviceRecognitionVerdictItemEnum = /*@__PURE__*/ S.String;
 
-export type DeviceIntegrityDeviceRecognitionVerdictItemEnumList =
-  ReadonlyArray<DeviceIntegrityDeviceRecognitionVerdictItemEnum>;
-export const DeviceIntegrityDeviceRecognitionVerdictItemEnumList =
-  /*@__PURE__*/ S.Array(
-    DeviceIntegrityDeviceRecognitionVerdictItemEnum,
-  ) as any as S.Schema<DeviceIntegrityDeviceRecognitionVerdictItemEnumList>;
+export type DeviceIntegrityDeviceRecognitionVerdictItemEnumList = ReadonlyArray<DeviceIntegrityDeviceRecognitionVerdictItemEnum>;
+export const DeviceIntegrityDeviceRecognitionVerdictItemEnumList = /*@__PURE__*/ S.Array(DeviceIntegrityDeviceRecognitionVerdictItemEnum) as any as S.Schema<DeviceIntegrityDeviceRecognitionVerdictItemEnumList>;
 
 /** Contains the device attestation information. */
 export interface DeviceIntegrity {
@@ -262,29 +209,16 @@ export interface DeviceIntegrity {
   deviceRecognitionVerdict?: DeviceIntegrityDeviceRecognitionVerdictItemEnumList;
 }
 export const DeviceIntegrity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceAttributes: S.optional(DeviceAttributes),
-    legacyDeviceRecognitionVerdict: S.optional(
-      DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList,
-    ),
-    recentDeviceActivity: S.optional(RecentDeviceActivity),
-    deviceRecall: S.optional(DeviceRecall),
-    deviceRecognitionVerdict: S.optional(
-      DeviceIntegrityDeviceRecognitionVerdictItemEnumList,
-    ),
-  }),
-).annotate({
-  identifier: "DeviceIntegrity",
-}) as any as S.Schema<DeviceIntegrity>;
+S.Struct({
+  "deviceAttributes": S.optional(DeviceAttributes),
+  "legacyDeviceRecognitionVerdict": S.optional(DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList),
+  "recentDeviceActivity": S.optional(RecentDeviceActivity),
+  "deviceRecall": S.optional(DeviceRecall),
+  "deviceRecognitionVerdict": S.optional(DeviceIntegrityDeviceRecognitionVerdictItemEnumList),
+}),
+).annotate({ identifier: "DeviceIntegrity" }) as any as S.Schema<DeviceIntegrity>;
 
-export type AccountActivityActivityLevelEnum =
-  | "ACTIVITY_LEVEL_UNSPECIFIED"
-  | "UNEVALUATED"
-  | "UNUSUAL"
-  | "UNKNOWN"
-  | "TYPICAL_BASIC"
-  | "TYPICAL_STRONG"
-  | (string & {});
+export type AccountActivityActivityLevelEnum = "ACTIVITY_LEVEL_UNSPECIFIED" | "UNEVALUATED" | "UNUSUAL" | "UNKNOWN" | "TYPICAL_BASIC" | "TYPICAL_STRONG";
 export const AccountActivityActivityLevelEnum = /*@__PURE__*/ S.String;
 
 /** (Restricted Access) Contains a signal helping apps differentiating between likely genuine and likely non-genuine user traffic. */
@@ -293,19 +227,12 @@ export interface AccountActivity {
   activityLevel?: AccountActivityActivityLevelEnum;
 }
 export const AccountActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activityLevel: S.optional(AccountActivityActivityLevelEnum),
-  }),
-).annotate({
-  identifier: "AccountActivity",
-}) as any as S.Schema<AccountActivity>;
+S.Struct({
+  "activityLevel": S.optional(AccountActivityActivityLevelEnum),
+}),
+).annotate({ identifier: "AccountActivity" }) as any as S.Schema<AccountActivity>;
 
-export type AccountDetailsAppLicensingVerdictEnum =
-  | "UNKNOWN"
-  | "LICENSED"
-  | "UNLICENSED"
-  | "UNEVALUATED"
-  | (string & {});
+export type AccountDetailsAppLicensingVerdictEnum = "UNKNOWN" | "LICENSED" | "UNLICENSED" | "UNEVALUATED";
 export const AccountDetailsAppLicensingVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Contains the account information such as the licensing status for the user in the scope. */
@@ -316,10 +243,10 @@ export interface AccountDetails {
   appLicensingVerdict?: AccountDetailsAppLicensingVerdictEnum;
 }
 export const AccountDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountActivity: S.optional(AccountActivity),
-    appLicensingVerdict: S.optional(AccountDetailsAppLicensingVerdictEnum),
-  }),
+S.Struct({
+  "accountActivity": S.optional(AccountActivity),
+  "appLicensingVerdict": S.optional(AccountDetailsAppLicensingVerdictEnum),
+}),
 ).annotate({ identifier: "AccountDetails" }) as any as S.Schema<AccountDetails>;
 
 /** Contains the integrity request information. */
@@ -334,12 +261,12 @@ export interface RequestDetails {
   timestampMillis?: string;
 }
 export const RequestDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestPackageName: S.optional(S.String),
-    requestHash: S.optional(S.String),
-    nonce: S.optional(S.String),
-    timestampMillis: S.optional(S.String),
-  }),
+S.Struct({
+  "requestPackageName": S.optional(S.String),
+  "requestHash": S.optional(S.String),
+  "nonce": S.optional(S.String),
+  "timestampMillis": S.optional(S.String),
+}),
 ).annotate({ identifier: "RequestDetails" }) as any as S.Schema<RequestDetails>;
 
 /** Contains additional information generated for testing responses. */
@@ -348,41 +275,19 @@ export interface TestingDetails {
   isTestingResponse?: boolean;
 }
 export const TestingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isTestingResponse: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "isTestingResponse": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "TestingDetails" }) as any as S.Schema<TestingDetails>;
 
-export type EnvironmentDetailsPlayProtectVerdictEnum =
-  | "PLAY_PROTECT_VERDICT_UNSPECIFIED"
-  | "UNEVALUATED"
-  | "NO_ISSUES"
-  | "NO_DATA"
-  | "MEDIUM_RISK"
-  | "HIGH_RISK"
-  | "POSSIBLE_RISK"
-  | (string & {});
+export type EnvironmentDetailsPlayProtectVerdictEnum = "PLAY_PROTECT_VERDICT_UNSPECIFIED" | "UNEVALUATED" | "NO_ISSUES" | "NO_DATA" | "MEDIUM_RISK" | "HIGH_RISK" | "POSSIBLE_RISK";
 export const EnvironmentDetailsPlayProtectVerdictEnum = /*@__PURE__*/ S.String;
 
-export type AppAccessRiskVerdictAppsDetectedItemEnum =
-  | "APPS_DETECTED_UNSPECIFIED"
-  | "KNOWN_INSTALLED"
-  | "KNOWN_CAPTURING"
-  | "KNOWN_OVERLAYS"
-  | "KNOWN_CONTROLLING"
-  | "UNKNOWN_INSTALLED"
-  | "UNKNOWN_CAPTURING"
-  | "UNKNOWN_OVERLAYS"
-  | "UNKNOWN_CONTROLLING"
-  | (string & {});
+export type AppAccessRiskVerdictAppsDetectedItemEnum = "APPS_DETECTED_UNSPECIFIED" | "KNOWN_INSTALLED" | "KNOWN_CAPTURING" | "KNOWN_OVERLAYS" | "KNOWN_CONTROLLING" | "UNKNOWN_INSTALLED" | "UNKNOWN_CAPTURING" | "UNKNOWN_OVERLAYS" | "UNKNOWN_CONTROLLING";
 export const AppAccessRiskVerdictAppsDetectedItemEnum = /*@__PURE__*/ S.String;
 
-export type AppAccessRiskVerdictAppsDetectedItemEnumList =
-  ReadonlyArray<AppAccessRiskVerdictAppsDetectedItemEnum>;
-export const AppAccessRiskVerdictAppsDetectedItemEnumList =
-  /*@__PURE__*/ S.Array(
-    AppAccessRiskVerdictAppsDetectedItemEnum,
-  ) as any as S.Schema<AppAccessRiskVerdictAppsDetectedItemEnumList>;
+export type AppAccessRiskVerdictAppsDetectedItemEnumList = ReadonlyArray<AppAccessRiskVerdictAppsDetectedItemEnum>;
+export const AppAccessRiskVerdictAppsDetectedItemEnumList = /*@__PURE__*/ S.Array(AppAccessRiskVerdictAppsDetectedItemEnum) as any as S.Schema<AppAccessRiskVerdictAppsDetectedItemEnumList>;
 
 /** Contains signals about others apps on the device which could be used to access or control the requesting app. */
 export interface AppAccessRiskVerdict {
@@ -390,12 +295,10 @@ export interface AppAccessRiskVerdict {
   appsDetected?: AppAccessRiskVerdictAppsDetectedItemEnumList;
 }
 export const AppAccessRiskVerdict = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appsDetected: S.optional(AppAccessRiskVerdictAppsDetectedItemEnumList),
-  }),
-).annotate({
-  identifier: "AppAccessRiskVerdict",
-}) as any as S.Schema<AppAccessRiskVerdict>;
+S.Struct({
+  "appsDetected": S.optional(AppAccessRiskVerdictAppsDetectedItemEnumList),
+}),
+).annotate({ identifier: "AppAccessRiskVerdict" }) as any as S.Schema<AppAccessRiskVerdict>;
 
 /** Contains information about the environment Play Integrity API runs in, e.g. Play Protect verdict. */
 export interface EnvironmentDetails {
@@ -405,13 +308,11 @@ export interface EnvironmentDetails {
   appAccessRiskVerdict?: AppAccessRiskVerdict;
 }
 export const EnvironmentDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    playProtectVerdict: S.optional(EnvironmentDetailsPlayProtectVerdictEnum),
-    appAccessRiskVerdict: S.optional(AppAccessRiskVerdict),
-  }),
-).annotate({
-  identifier: "EnvironmentDetails",
-}) as any as S.Schema<EnvironmentDetails>;
+S.Struct({
+  "playProtectVerdict": S.optional(EnvironmentDetailsPlayProtectVerdictEnum),
+  "appAccessRiskVerdict": S.optional(AppAccessRiskVerdict),
+}),
+).annotate({ identifier: "EnvironmentDetails" }) as any as S.Schema<EnvironmentDetails>;
 
 /** Contains basic app information and integrity signals like device attestation and licensing details. */
 export interface TokenPayloadExternal {
@@ -429,17 +330,15 @@ export interface TokenPayloadExternal {
   environmentDetails?: EnvironmentDetails;
 }
 export const TokenPayloadExternal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appIntegrity: S.optional(AppIntegrity),
-    deviceIntegrity: S.optional(DeviceIntegrity),
-    accountDetails: S.optional(AccountDetails),
-    requestDetails: S.optional(RequestDetails),
-    testingDetails: S.optional(TestingDetails),
-    environmentDetails: S.optional(EnvironmentDetails),
-  }),
-).annotate({
-  identifier: "TokenPayloadExternal",
-}) as any as S.Schema<TokenPayloadExternal>;
+S.Struct({
+  "appIntegrity": S.optional(AppIntegrity),
+  "deviceIntegrity": S.optional(DeviceIntegrity),
+  "accountDetails": S.optional(AccountDetails),
+  "requestDetails": S.optional(RequestDetails),
+  "testingDetails": S.optional(TestingDetails),
+  "environmentDetails": S.optional(EnvironmentDetails),
+}),
+).annotate({ identifier: "TokenPayloadExternal" }) as any as S.Schema<TokenPayloadExternal>;
 
 /** Response containing the decoded integrity payload. */
 export interface DecodeIntegrityTokenResponse {
@@ -447,12 +346,10 @@ export interface DecodeIntegrityTokenResponse {
   tokenPayloadExternal?: TokenPayloadExternal;
 }
 export const DecodeIntegrityTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenPayloadExternal: S.optional(TokenPayloadExternal),
-  }),
-).annotate({
-  identifier: "DecodeIntegrityTokenResponse",
-}) as any as S.Schema<DecodeIntegrityTokenResponse>;
+S.Struct({
+  "tokenPayloadExternal": S.optional(TokenPayloadExternal),
+}),
+).annotate({ identifier: "DecodeIntegrityTokenResponse" }) as any as S.Schema<DecodeIntegrityTokenResponse>;
 
 /** Request to decode the PC integrity token. */
 export interface DecodePcIntegrityTokenRequest {
@@ -460,12 +357,10 @@ export interface DecodePcIntegrityTokenRequest {
   integrityToken?: string;
 }
 export const DecodePcIntegrityTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrityToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DecodePcIntegrityTokenRequest",
-}) as any as S.Schema<DecodePcIntegrityTokenRequest>;
+S.Struct({
+  "integrityToken": S.optional(S.String),
+}),
+).annotate({ identifier: "DecodePcIntegrityTokenRequest" }) as any as S.Schema<DecodePcIntegrityTokenRequest>;
 
 export interface DecodePcIntegrityTokenV1Request {
   /** Package name of the app the attached integrity token belongs to. */
@@ -474,19 +369,11 @@ export interface DecodePcIntegrityTokenV1Request {
   body?: DecodePcIntegrityTokenRequest;
 }
 export const DecodePcIntegrityTokenV1Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(DecodePcIntegrityTokenRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+packageName}:decodePcIntegrityToken",
-      baseUrl: "https://playintegrity.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DecodePcIntegrityTokenV1Request",
-}) as any as S.Schema<DecodePcIntegrityTokenV1Request>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(DecodePcIntegrityTokenRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+packageName}:decodePcIntegrityToken","baseUrl":"https://playintegrity.googleapis.com/"})),
+).annotate({ identifier: "DecodePcIntegrityTokenV1Request" }) as any as S.Schema<DecodePcIntegrityTokenV1Request>;
 
 /** Contains the integrity request information. */
 export interface PcRequestDetails {
@@ -498,28 +385,18 @@ export interface PcRequestDetails {
   requestHash?: string;
 }
 export const PcRequestDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestTime: S.optional(S.String),
-    requestPackageName: S.optional(S.String),
-    requestHash: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PcRequestDetails",
-}) as any as S.Schema<PcRequestDetails>;
+S.Struct({
+  "requestTime": S.optional(S.String),
+  "requestPackageName": S.optional(S.String),
+  "requestHash": S.optional(S.String),
+}),
+).annotate({ identifier: "PcRequestDetails" }) as any as S.Schema<PcRequestDetails>;
 
-export type PcDeviceIntegrityDeviceRecognitionVerdictItemEnum =
-  | "DEVICE_RECOGNITION_VERDICT_UNSPECIFIED"
-  | "MEETS_PC_INTEGRITY"
-  | (string & {});
-export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnum =
-  /*@__PURE__*/ S.String;
+export type PcDeviceIntegrityDeviceRecognitionVerdictItemEnum = "DEVICE_RECOGNITION_VERDICT_UNSPECIFIED" | "MEETS_PC_INTEGRITY";
+export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnum = /*@__PURE__*/ S.String;
 
-export type PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList =
-  ReadonlyArray<PcDeviceIntegrityDeviceRecognitionVerdictItemEnum>;
-export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList =
-  /*@__PURE__*/ S.Array(
-    PcDeviceIntegrityDeviceRecognitionVerdictItemEnum,
-  ) as any as S.Schema<PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList>;
+export type PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList = ReadonlyArray<PcDeviceIntegrityDeviceRecognitionVerdictItemEnum>;
+export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList = /*@__PURE__*/ S.Array(PcDeviceIntegrityDeviceRecognitionVerdictItemEnum) as any as S.Schema<PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList>;
 
 /** Contains the device attestation information. */
 export interface PcDeviceIntegrity {
@@ -527,21 +404,12 @@ export interface PcDeviceIntegrity {
   deviceRecognitionVerdict?: PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList;
 }
 export const PcDeviceIntegrity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceRecognitionVerdict: S.optional(
-      PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList,
-    ),
-  }),
-).annotate({
-  identifier: "PcDeviceIntegrity",
-}) as any as S.Schema<PcDeviceIntegrity>;
+S.Struct({
+  "deviceRecognitionVerdict": S.optional(PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList),
+}),
+).annotate({ identifier: "PcDeviceIntegrity" }) as any as S.Schema<PcDeviceIntegrity>;
 
-export type PcAccountDetailsAppLicensingVerdictEnum =
-  | "UNKNOWN"
-  | "LICENSED"
-  | "UNLICENSED"
-  | "UNEVALUATED"
-  | (string & {});
+export type PcAccountDetailsAppLicensingVerdictEnum = "UNKNOWN" | "LICENSED" | "UNLICENSED" | "UNEVALUATED";
 export const PcAccountDetailsAppLicensingVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Contains the account information such as the licensing status for the user in the scope. */
@@ -550,12 +418,10 @@ export interface PcAccountDetails {
   appLicensingVerdict?: PcAccountDetailsAppLicensingVerdictEnum;
 }
 export const PcAccountDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appLicensingVerdict: S.optional(PcAccountDetailsAppLicensingVerdictEnum),
-  }),
-).annotate({
-  identifier: "PcAccountDetails",
-}) as any as S.Schema<PcAccountDetails>;
+S.Struct({
+  "appLicensingVerdict": S.optional(PcAccountDetailsAppLicensingVerdictEnum),
+}),
+).annotate({ identifier: "PcAccountDetails" }) as any as S.Schema<PcAccountDetails>;
 
 /** Contains additional information generated for testing responses. */
 export interface PcTestingDetails {
@@ -563,12 +429,10 @@ export interface PcTestingDetails {
   isTestingResponse?: boolean;
 }
 export const PcTestingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isTestingResponse: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PcTestingDetails",
-}) as any as S.Schema<PcTestingDetails>;
+S.Struct({
+  "isTestingResponse": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PcTestingDetails" }) as any as S.Schema<PcTestingDetails>;
 
 /** Contains PC device attestation details. */
 export interface PcTokenPayloadExternal {
@@ -582,15 +446,13 @@ export interface PcTokenPayloadExternal {
   testingDetails?: PcTestingDetails;
 }
 export const PcTokenPayloadExternal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestDetails: S.optional(PcRequestDetails),
-    deviceIntegrity: S.optional(PcDeviceIntegrity),
-    accountDetails: S.optional(PcAccountDetails),
-    testingDetails: S.optional(PcTestingDetails),
-  }),
-).annotate({
-  identifier: "PcTokenPayloadExternal",
-}) as any as S.Schema<PcTokenPayloadExternal>;
+S.Struct({
+  "requestDetails": S.optional(PcRequestDetails),
+  "deviceIntegrity": S.optional(PcDeviceIntegrity),
+  "accountDetails": S.optional(PcAccountDetails),
+  "testingDetails": S.optional(PcTestingDetails),
+}),
+).annotate({ identifier: "PcTokenPayloadExternal" }) as any as S.Schema<PcTokenPayloadExternal>;
 
 /** Response containing the decoded PC integrity payload. */
 export interface DecodePcIntegrityTokenResponse {
@@ -598,12 +460,10 @@ export interface DecodePcIntegrityTokenResponse {
   tokenPayloadExternal?: PcTokenPayloadExternal;
 }
 export const DecodePcIntegrityTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenPayloadExternal: S.optional(PcTokenPayloadExternal),
-  }),
-).annotate({
-  identifier: "DecodePcIntegrityTokenResponse",
-}) as any as S.Schema<DecodePcIntegrityTokenResponse>;
+S.Struct({
+  "tokenPayloadExternal": S.optional(PcTokenPayloadExternal),
+}),
+).annotate({ identifier: "DecodePcIntegrityTokenResponse" }) as any as S.Schema<DecodePcIntegrityTokenResponse>;
 
 /** Request to write device recall bits. */
 export interface WriteDeviceRecallRequest {
@@ -613,13 +473,11 @@ export interface WriteDeviceRecallRequest {
   newValues?: Values;
 }
 export const WriteDeviceRecallRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrityToken: S.optional(S.String),
-    newValues: S.optional(Values),
-  }),
-).annotate({
-  identifier: "WriteDeviceRecallRequest",
-}) as any as S.Schema<WriteDeviceRecallRequest>;
+S.Struct({
+  "integrityToken": S.optional(S.String),
+  "newValues": S.optional(Values),
+}),
+).annotate({ identifier: "WriteDeviceRecallRequest" }) as any as S.Schema<WriteDeviceRecallRequest>;
 
 export interface WriteDeviceRecallRequest_ {
   /** Required. Package name of the app the attached integrity token belongs to. */
@@ -628,34 +486,19 @@ export interface WriteDeviceRecallRequest_ {
   body?: WriteDeviceRecallRequest;
 }
 export const WriteDeviceRecallRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(WriteDeviceRecallRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+packageName}/deviceRecall:write",
-      baseUrl: "https://playintegrity.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "WriteDeviceRecallRequest_",
-}) as any as S.Schema<WriteDeviceRecallRequest_>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(WriteDeviceRecallRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+packageName}/deviceRecall:write","baseUrl":"https://playintegrity.googleapis.com/"})),
+).annotate({ identifier: "WriteDeviceRecallRequest_" }) as any as S.Schema<WriteDeviceRecallRequest_>;
 
 /** Response for the Write Device Recall action. Currently empty. */
 export interface WriteDeviceRecallResponse {}
 export const WriteDeviceRecallResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WriteDeviceRecallResponse",
-}) as any as S.Schema<WriteDeviceRecallResponse>;
+S.Struct({}),
+).annotate({ identifier: "WriteDeviceRecallResponse" }) as any as S.Schema<WriteDeviceRecallResponse>;
 
-export type DecodeIntegrityTokenV1Error =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DecodeIntegrityTokenV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Decodes the integrity token and returns the token payload. */
 export const decodeIntegrityTokenV1: API.OperationMethod<
   DecodeIntegrityTokenV1Request,
@@ -670,12 +513,7 @@ export const decodeIntegrityTokenV1: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DecodePcIntegrityTokenV1Error =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DecodePcIntegrityTokenV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Decodes the PC integrity token and returns the PC token payload. */
 export const decodePcIntegrityTokenV1: API.OperationMethod<
   DecodePcIntegrityTokenV1Request,
@@ -690,12 +528,7 @@ export const decodePcIntegrityTokenV1: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WriteDeviceRecallError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WriteDeviceRecallError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Writes recall bits for the device where Play Integrity API token is obtained. The endpoint is available to select Play partners in an early access program (EAP). */
 export const writeDeviceRecall: API.OperationMethod<
   WriteDeviceRecallRequest_,
@@ -709,3 +542,4 @@ export const writeDeviceRecall: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

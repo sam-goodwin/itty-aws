@@ -208,8 +208,7 @@ export type DriveStatusState =
   | "Transferring"
   | "Completed"
   | "CompletedMoreInfo"
-  | "ShippedBack"
-  | (string & {});
+  | "ShippedBack";
 export const DriveStatusState = /*@__PURE__*/ S.String;
 
 /** Provides information about the drive's status */
@@ -305,8 +304,7 @@ export const Export = /*@__PURE__*/ S.suspend(() =>
 /** The type of kek encryption key */
 export type EncryptionKeyDetailsKekType =
   | "MicrosoftManaged"
-  | "CustomerManaged"
-  | (string & {});
+  | "CustomerManaged";
 export const EncryptionKeyDetailsKekType = /*@__PURE__*/ S.String;
 
 /** Specifies the encryption key properties */
@@ -431,8 +429,7 @@ export type JobResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const JobResponseSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -440,8 +437,7 @@ export type JobResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const JobResponseSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -578,11 +574,7 @@ export const JobDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobDetails" }) as any as S.Schema<JobDetails>;
 
 /** The type of identity */
-export type IdentityDetailsType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
+export type IdentityDetailsType = "None" | "SystemAssigned" | "UserAssigned";
 export const IdentityDetailsType = /*@__PURE__*/ S.String;
 
 /** Specifies the identity properties. */

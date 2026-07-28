@@ -316,8 +316,7 @@ export type LivestreamsCreateIndependentLivestreamResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
-  | "INVOKED"
-  | (string & {});
+  | "INVOKED";
 export const LivestreamsCreateIndependentLivestreamResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -376,23 +375,25 @@ export type MeetingsCreateRequestAiConfigSummarizationSummaryType =
   | "daily_standup"
   | "one_on_one_meeting"
   | "lecture"
-  | "code_review"
-  | (string & {});
+  | "code_review";
 export const MeetingsCreateRequestAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateRequestAiConfigSummarizationTextFormat =
   | "plain_text"
-  | "markdown"
-  | (string & {});
+  | "markdown";
 export const MeetingsCreateRequestAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
 export interface MeetingsCreateRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsCreateRequestAiConfigSummarizationSummaryType;
+  summaryType?:
+    | MeetingsCreateRequestAiConfigSummarizationSummaryType
+    | (string & {});
   /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsCreateRequestAiConfigSummarizationTextFormat;
+  textFormat?:
+    | MeetingsCreateRequestAiConfigSummarizationTextFormat
+    | (string & {});
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number;
 }
@@ -432,8 +433,7 @@ export type MeetingsCreateRequestAiConfigTranscriptionLanguage =
   | "pl"
   | "el"
   | "fr"
-  | "nl"
-  | (string & {});
+  | "nl";
 export const MeetingsCreateRequestAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -441,7 +441,7 @@ export interface MeetingsCreateRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsCreateRequestAiConfigTranscriptionKeywordsList;
   /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsCreateRequestAiConfigTranscriptionLanguage;
+  language?: MeetingsCreateRequestAiConfigTranscriptionLanguage | (string & {});
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean;
 }
@@ -475,23 +475,23 @@ export const MeetingsCreateRequestAiConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type MeetingsCreateRequestRecordingConfigAudioConfigChannel =
   | "mono"
-  | "stereo"
-  | (string & {});
+  | "stereo";
 export const MeetingsCreateRequestRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateRequestRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsCreateRequestRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
 export interface MeetingsCreateRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsCreateRequestRecordingConfigAudioConfigChannel;
+  channel?:
+    | MeetingsCreateRequestRecordingConfigAudioConfigChannel
+    | (string & {});
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsCreateRequestRecordingConfigAudioConfigCodec;
+  codec?: MeetingsCreateRequestRecordingConfigAudioConfigCodec | (string & {});
   /** Controls whether to export audio file seperately */
   exportFile?: boolean;
 }
@@ -539,25 +539,25 @@ export type MeetingsCreateRequestRecordingConfigStorageConfigType =
   | "azure"
   | "digitalocean"
   | "gcs"
-  | "sftp"
-  | (string & {});
+  | "sftp";
 export const MeetingsCreateRequestRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
 export interface MeetingsCreateRequestRecordingConfigStorageConfig {
   /** Type of storage media. */
-  type: MeetingsCreateRequestRecordingConfigStorageConfigType;
+  type: MeetingsCreateRequestRecordingConfigStorageConfigType | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
   accessKey?: string;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod;
+  authMethod?:
+    | MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod
+    | (string & {});
   /** Name of the storage medium's bucket. */
   bucket?: string;
   /** SSH destination server host for SFTP type storage medium */
@@ -603,8 +603,7 @@ export const MeetingsCreateRequestRecordingConfigStorageConfig =
 
 export type MeetingsCreateRequestRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsCreateRequestRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -612,8 +611,7 @@ export type MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
   | "left bottom"
-  | "right bottom"
-  | (string & {});
+  | "right bottom";
 export const MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -635,7 +633,9 @@ export const MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize =
 
 export interface MeetingsCreateRequestRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
-  position?: MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition;
+  position?:
+    | MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition
+    | (string & {});
   /** Size of the watermark */
   size?: MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize;
   /** URL of the watermark image */
@@ -658,7 +658,7 @@ export const MeetingsCreateRequestRecordingConfigVideoConfigWatermark =
 
 export interface MeetingsCreateRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: MeetingsCreateRequestRecordingConfigVideoConfigCodec;
+  codec?: MeetingsCreateRequestRecordingConfigVideoConfigCodec | (string & {});
   /** Controls whether to export video file seperately */
   exportFile?: boolean;
   /** Height of the recording video in pixels */
@@ -797,15 +797,13 @@ export type MeetingsCreateResponseDataAiConfigSummarizationSummaryType =
   | "daily_standup"
   | "one_on_one_meeting"
   | "lecture"
-  | "code_review"
-  | (string & {});
+  | "code_review";
 export const MeetingsCreateResponseDataAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateResponseDataAiConfigSummarizationTextFormat =
   | "plain_text"
-  | "markdown"
-  | (string & {});
+  | "markdown";
 export const MeetingsCreateResponseDataAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -853,8 +851,7 @@ export type MeetingsCreateResponseDataAiConfigTranscriptionLanguage =
   | "pl"
   | "el"
   | "fr"
-  | "nl"
-  | (string & {});
+  | "nl";
 export const MeetingsCreateResponseDataAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -898,15 +895,13 @@ export const MeetingsCreateResponseDataAiConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type MeetingsCreateResponseDataRecordingConfigAudioConfigChannel =
   | "mono"
-  | "stereo"
-  | (string & {});
+  | "stereo";
 export const MeetingsCreateResponseDataRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateResponseDataRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsCreateResponseDataRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -965,15 +960,13 @@ export type MeetingsCreateResponseDataRecordingConfigStorageConfigType =
   | "azure"
   | "digitalocean"
   | "gcs"
-  | "sftp"
-  | (string & {});
+  | "sftp";
 export const MeetingsCreateResponseDataRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateResponseDataRecordingConfigStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const MeetingsCreateResponseDataRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -1029,13 +1022,12 @@ export const MeetingsCreateResponseDataRecordingConfigStorageConfig =
 
 export type MeetingsCreateResponseDataRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsCreateResponseDataRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -1155,10 +1147,7 @@ export const MeetingsCreateResponseDataRecordingConfig =
     identifier: "MeetingsCreateResponseDataRecordingConfig",
   }) as any as S.Schema<MeetingsCreateResponseDataRecordingConfig>;
 
-export type MeetingsCreateResponseDataStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type MeetingsCreateResponseDataStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsCreateResponseDataStatus = /*@__PURE__*/ S.String;
 
 export interface MeetingsCreateResponseData {
@@ -1399,8 +1388,7 @@ export type PresetsCreateRequestConfigMediaScreenshareQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsCreateRequestConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -1408,7 +1396,7 @@ export interface PresetsCreateRequestConfigMediaScreenshare {
   /** Frame rate of screen share */
   frameRate: number;
   /** Quality of screen share */
-  quality: PresetsCreateRequestConfigMediaScreenshareQuality;
+  quality: PresetsCreateRequestConfigMediaScreenshareQuality | (string & {});
 }
 export const PresetsCreateRequestConfigMediaScreenshare =
   /*@__PURE__*/ S.suspend(() =>
@@ -1425,8 +1413,7 @@ export type PresetsCreateRequestConfigMediaVideoQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsCreateRequestConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -1434,7 +1421,7 @@ export interface PresetsCreateRequestConfigMediaVideo {
   /** Frame rate of participants' video */
   frameRate: number;
   /** Video quality of participants */
-  quality: PresetsCreateRequestConfigMediaVideoQuality;
+  quality: PresetsCreateRequestConfigMediaVideoQuality | (string & {});
   /** Enable simulcast for participant videos. */
   simulcast?: boolean;
 }
@@ -1489,8 +1476,7 @@ export type PresetsCreateRequestConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsCreateRequestConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsCreateRequestConfigLivestreamViewerQualitiesList =
@@ -1508,7 +1494,7 @@ export interface PresetsCreateRequestConfig {
   /** Media configuration options. eg: Video quality */
   media: PresetsCreateRequestConfigMedia;
   /** Type of the meeting */
-  viewType: PresetsCreateRequestConfigViewType;
+  viewType: PresetsCreateRequestConfigViewType | (string & {});
   /** Livestream viewer quality levels. */
   livestreamViewerQualities?: PresetsCreateRequestConfigLivestreamViewerQualitiesList;
 }
@@ -1605,14 +1591,15 @@ export const PresetsCreateRequestPermissionsConnectedMeetings =
 export type PresetsCreateRequestPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateRequestPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
 export interface PresetsCreateRequestPermissionsMediaAudio {
   /** Can produce audio */
-  canProduce: PresetsCreateRequestPermissionsMediaAudioCanProduce;
+  canProduce:
+    | PresetsCreateRequestPermissionsMediaAudioCanProduce
+    | (string & {});
 }
 export const PresetsCreateRequestPermissionsMediaAudio =
   /*@__PURE__*/ S.suspend(() =>
@@ -1628,14 +1615,15 @@ export const PresetsCreateRequestPermissionsMediaAudio =
 export type PresetsCreateRequestPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateRequestPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
 export interface PresetsCreateRequestPermissionsMediaScreenshare {
   /** Can produce screen share video */
-  canProduce: PresetsCreateRequestPermissionsMediaScreenshareCanProduce;
+  canProduce:
+    | PresetsCreateRequestPermissionsMediaScreenshareCanProduce
+    | (string & {});
 }
 export const PresetsCreateRequestPermissionsMediaScreenshare =
   /*@__PURE__*/ S.suspend(() =>
@@ -1652,14 +1640,15 @@ export const PresetsCreateRequestPermissionsMediaScreenshare =
 export type PresetsCreateRequestPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateRequestPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
 export interface PresetsCreateRequestPermissionsMediaVideo {
   /** Can produce video */
-  canProduce: PresetsCreateRequestPermissionsMediaVideoCanProduce;
+  canProduce:
+    | PresetsCreateRequestPermissionsMediaVideoCanProduce
+    | (string & {});
 }
 export const PresetsCreateRequestPermissionsMediaVideo =
   /*@__PURE__*/ S.suspend(() =>
@@ -1693,13 +1682,14 @@ export const PresetsCreateRequestPermissionsMedia = /*@__PURE__*/ S.suspend(
 
 export type PresetsCreateRequestPermissionsPluginsConfigValueAccessControl =
   | "FULL_ACCESS"
-  | "VIEW_ONLY"
-  | (string & {});
+  | "VIEW_ONLY";
 export const PresetsCreateRequestPermissionsPluginsConfigValueAccessControl =
   /*@__PURE__*/ S.String;
 
 export interface PresetsCreateRequestPermissionsPluginsConfigValue {
-  accessControl?: PresetsCreateRequestPermissionsPluginsConfigValueAccessControl;
+  accessControl?:
+    | PresetsCreateRequestPermissionsPluginsConfigValueAccessControl
+    | (string & {});
   handlesViewOnly?: boolean;
 }
 export const PresetsCreateRequestPermissionsPluginsConfigValue =
@@ -1769,24 +1759,21 @@ export const PresetsCreateRequestPermissionsPolls = /*@__PURE__*/ S.suspend(
 export type PresetsCreateRequestPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsCreateRequestPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateRequestPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsCreateRequestPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateRequestPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateRequestPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
@@ -1815,13 +1802,15 @@ export interface PresetsCreateRequestPermissions {
   /** Poll permissions */
   polls: PresetsCreateRequestPermissionsPolls;
   /** Type of the recording peer */
-  recorderType: PresetsCreateRequestPermissionsRecorderType;
+  recorderType: PresetsCreateRequestPermissionsRecorderType | (string & {});
   showParticipantList: boolean;
   /** Waiting room type */
-  waitingRoomType: PresetsCreateRequestPermissionsWaitingRoomType;
+  waitingRoomType:
+    | PresetsCreateRequestPermissionsWaitingRoomType
+    | (string & {});
   acceptStageRequests?: boolean;
   isRecorder?: boolean;
-  stageAccess?: PresetsCreateRequestPermissionsStageAccess;
+  stageAccess?: PresetsCreateRequestPermissionsStageAccess | (string & {});
   stageEnabled?: boolean;
   transcriptionEnabled?: boolean;
 }
@@ -1884,16 +1873,14 @@ export type PresetsCreateRequestUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsCreateRequestUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateRequestUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsCreateRequestUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -1966,16 +1953,15 @@ export const PresetsCreateRequestUiDesignTokensColors = /*@__PURE__*/ S.suspend(
 export type PresetsCreateRequestUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsCreateRequestUiDesignTokensTheme = /*@__PURE__*/ S.String;
 
 export interface PresetsCreateRequestUiDesignTokens {
-  borderRadius: PresetsCreateRequestUiDesignTokensBorderRadius;
-  borderWidth: PresetsCreateRequestUiDesignTokensBorderWidth;
+  borderRadius: PresetsCreateRequestUiDesignTokensBorderRadius | (string & {});
+  borderWidth: PresetsCreateRequestUiDesignTokensBorderWidth | (string & {});
   colors: PresetsCreateRequestUiDesignTokensColors;
   spacingBase: number;
-  theme: PresetsCreateRequestUiDesignTokensTheme;
+  theme: PresetsCreateRequestUiDesignTokensTheme | (string & {});
   fontFamily?: string;
   googleFont?: string;
   logo?: string;
@@ -2065,8 +2051,7 @@ export type PresetsCreateResponseDataConfigMediaScreenshareQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsCreateResponseDataConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -2091,8 +2076,7 @@ export type PresetsCreateResponseDataConfigMediaVideoQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsCreateResponseDataConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -2156,8 +2140,7 @@ export type PresetsCreateResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsCreateResponseDataConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsCreateResponseDataConfigLivestreamViewerQualitiesList =
@@ -2273,8 +2256,7 @@ export const PresetsCreateResponseDataPermissionsConnectedMeetings =
 export type PresetsCreateResponseDataPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateResponseDataPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -2296,8 +2278,7 @@ export const PresetsCreateResponseDataPermissionsMediaAudio =
 export type PresetsCreateResponseDataPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateResponseDataPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -2320,8 +2301,7 @@ export const PresetsCreateResponseDataPermissionsMediaScreenshare =
 export type PresetsCreateResponseDataPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateResponseDataPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -2360,7 +2340,7 @@ export const PresetsCreateResponseDataPermissionsMedia =
   }) as any as S.Schema<PresetsCreateResponseDataPermissionsMedia>;
 
 export type PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl =
-  "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
+  "FULL_ACCESS" | "VIEW_ONLY";
 export const PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl =
   /*@__PURE__*/ S.String;
 
@@ -2437,24 +2417,21 @@ export const PresetsCreateResponseDataPermissionsPolls =
 export type PresetsCreateResponseDataPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsCreateResponseDataPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsCreateResponseDataPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateResponseDataPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
@@ -2556,16 +2533,14 @@ export type PresetsCreateResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsCreateResponseDataUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateResponseDataUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsCreateResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -2638,8 +2613,7 @@ export const PresetsCreateResponseDataUiDesignTokensColors =
 export type PresetsCreateResponseDataUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsCreateResponseDataUiDesignTokensTheme =
   /*@__PURE__*/ S.String;
 
@@ -2735,12 +2709,12 @@ export type WebhooksCreateWebhookRequestEventsItem =
   | "recording.statusUpdate"
   | "livestreaming.statusUpdate"
   | "meeting.transcript"
-  | "meeting.summary"
-  | (string & {});
+  | "meeting.summary";
 export const WebhooksCreateWebhookRequestEventsItem = /*@__PURE__*/ S.String;
 
-export type WebhooksCreateWebhookRequestEventsList =
-  ReadonlyArray<WebhooksCreateWebhookRequestEventsItem>;
+export type WebhooksCreateWebhookRequestEventsList = ReadonlyArray<
+  WebhooksCreateWebhookRequestEventsItem | (string & {})
+>;
 export const WebhooksCreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   WebhooksCreateWebhookRequestEventsItem,
 ) as any as S.Schema<WebhooksCreateWebhookRequestEventsList>;
@@ -2789,8 +2763,7 @@ export type WebhooksCreateWebhookResponseDataEventsItem =
   | "recording.statusUpdate"
   | "livestreaming.statusUpdate"
   | "meeting.transcript"
-  | "meeting.summary"
-  | (string & {});
+  | "meeting.summary";
 export const WebhooksCreateWebhookResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
@@ -2953,8 +2926,7 @@ export type PresetsDeleteResponseDataConfigMediaScreenshareQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsDeleteResponseDataConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -2979,8 +2951,7 @@ export type PresetsDeleteResponseDataConfigMediaVideoQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsDeleteResponseDataConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -3044,8 +3015,7 @@ export type PresetsDeleteResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsDeleteResponseDataConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList =
@@ -3161,8 +3131,7 @@ export const PresetsDeleteResponseDataPermissionsConnectedMeetings =
 export type PresetsDeleteResponseDataPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsDeleteResponseDataPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -3184,8 +3153,7 @@ export const PresetsDeleteResponseDataPermissionsMediaAudio =
 export type PresetsDeleteResponseDataPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsDeleteResponseDataPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -3208,8 +3176,7 @@ export const PresetsDeleteResponseDataPermissionsMediaScreenshare =
 export type PresetsDeleteResponseDataPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsDeleteResponseDataPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -3248,7 +3215,7 @@ export const PresetsDeleteResponseDataPermissionsMedia =
   }) as any as S.Schema<PresetsDeleteResponseDataPermissionsMedia>;
 
 export type PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl =
-  "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
+  "FULL_ACCESS" | "VIEW_ONLY";
 export const PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl =
   /*@__PURE__*/ S.String;
 
@@ -3325,24 +3292,21 @@ export const PresetsDeleteResponseDataPermissionsPolls =
 export type PresetsDeleteResponseDataPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsDeleteResponseDataPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsDeleteResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsDeleteResponseDataPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export type PresetsDeleteResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsDeleteResponseDataPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
@@ -3444,16 +3408,14 @@ export type PresetsDeleteResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsDeleteResponseDataUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsDeleteResponseDataUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsDeleteResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -3526,8 +3488,7 @@ export const PresetsDeleteResponseDataUiDesignTokensColors =
 export type PresetsDeleteResponseDataUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsDeleteResponseDataUiDesignTokensTheme =
   /*@__PURE__*/ S.String;
 
@@ -3648,8 +3609,7 @@ export type WebhooksDeleteWebhookResponseDataEventsItem =
   | "recording.statusUpdate"
   | "livestreaming.statusUpdate"
   | "meeting.transcript"
-  | "meeting.summary"
-  | (string & {});
+  | "meeting.summary";
 export const WebhooksDeleteWebhookResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
@@ -3793,12 +3753,12 @@ export type WebhooksEditWebhookRequestEventsItem =
   | "livestreaming.statusUpdate"
   | "meeting.chatSynced"
   | "meeting.transcript"
-  | "meeting.summary"
-  | (string & {});
+  | "meeting.summary";
 export const WebhooksEditWebhookRequestEventsItem = /*@__PURE__*/ S.String;
 
-export type WebhooksEditWebhookRequestEventsList =
-  ReadonlyArray<WebhooksEditWebhookRequestEventsItem>;
+export type WebhooksEditWebhookRequestEventsList = ReadonlyArray<
+  WebhooksEditWebhookRequestEventsItem | (string & {})
+>;
 export const WebhooksEditWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   WebhooksEditWebhookRequestEventsItem,
 ) as any as S.Schema<WebhooksEditWebhookRequestEventsList>;
@@ -3848,8 +3808,7 @@ export type WebhooksEditWebhookResponseDataEventsItem =
   | "recording.statusUpdate"
   | "livestreaming.statusUpdate"
   | "meeting.transcript"
-  | "meeting.summary"
-  | (string & {});
+  | "meeting.summary";
 export const WebhooksEditWebhookResponseDataEventsItem = /*@__PURE__*/ S.String;
 
 export type WebhooksEditWebhookResponseDataEventsList =
@@ -3980,7 +3939,7 @@ export const GetActiveLivestreamsForLivestreamIdLivestreamRequest =
   }) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamRequest>;
 
 export type LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus =
-  "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {});
+  "LIVE" | "IDLE" | "ERRORED" | "INVOKED";
 export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus =
   /*@__PURE__*/ S.String;
 
@@ -4127,8 +4086,7 @@ export type RecordingsGetActiveRecordingsResponseDataStatus =
   | "UPLOADING"
   | "UPLOADED"
   | "ERRORED"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const RecordingsGetActiveRecordingsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -4220,18 +4178,14 @@ export const GetActiveSessionActiveSessionRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetActiveSessionActiveSessionRequest",
 }) as any as S.Schema<GetActiveSessionActiveSessionRequest>;
 
-export type ActiveSessionGetActiveSessionResponseDataStatus =
-  | "LIVE"
-  | "ENDED"
-  | (string & {});
+export type ActiveSessionGetActiveSessionResponseDataStatus = "LIVE" | "ENDED";
 export const ActiveSessionGetActiveSessionResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type ActiveSessionGetActiveSessionResponseDataType =
   | "meeting"
   | "livestream"
-  | "participant"
-  | (string & {});
+  | "participant";
 export const ActiveSessionGetActiveSessionResponseDataType =
   /*@__PURE__*/ S.String;
 
@@ -4312,10 +4266,7 @@ export const GetActiveSessionActiveSessionResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetActiveSessionActiveSessionResponse",
 }) as any as S.Schema<GetActiveSessionActiveSessionResponse>;
 
-export type LivestreamsGetAllLivestreamsRequestSortOrder =
-  | "ASC"
-  | "DSC"
-  | (string & {});
+export type LivestreamsGetAllLivestreamsRequestSortOrder = "ASC" | "DSC";
 export const LivestreamsGetAllLivestreamsRequestSortOrder =
   /*@__PURE__*/ S.String;
 
@@ -4323,8 +4274,7 @@ export type LivestreamsGetAllLivestreamsRequestStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
-  | "INVOKED"
-  | (string & {});
+  | "INVOKED";
 export const LivestreamsGetAllLivestreamsRequestStatus = /*@__PURE__*/ S.String;
 
 export interface GetAllLivestreamsLivestreamRequest {
@@ -4341,11 +4291,11 @@ export interface GetAllLivestreamsLivestreamRequest {
   /** Number of results per page. */
   perPage?: number;
   /** Specifies the sorting order for the results. */
-  sortOrder?: LivestreamsGetAllLivestreamsRequestSortOrder;
+  sortOrder?: LivestreamsGetAllLivestreamsRequestSortOrder | (string & {});
   /** Specify the start time range in ISO format to access the live stream. */
   startTime?: string;
   /** Specifies the status of the operation. */
-  status?: LivestreamsGetAllLivestreamsRequestStatus;
+  status?: LivestreamsGetAllLivestreamsRequestStatus | (string & {});
 }
 export const GetAllLivestreamsLivestreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4395,8 +4345,7 @@ export type LivestreamsGetAllLivestreamsResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
-  | "INVOKED"
-  | (string & {});
+  | "INVOKED";
 export const LivestreamsGetAllLivestreamsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -4453,7 +4402,7 @@ export const GetAllLivestreamsLivestreamResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAllLivestreamsLivestreamResponse",
 }) as any as S.Schema<GetAllLivestreamsLivestreamResponse>;
 
-export type AppsGetRequestSortOrder = "ASC" | "DESC" | (string & {});
+export type AppsGetRequestSortOrder = "ASC" | "DESC";
 export const AppsGetRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface GetAppRequest {
@@ -4466,7 +4415,7 @@ export interface GetAppRequest {
   /** Search string that matches apps by name. */
   search?: string;
   /** Sort order for apps by creation time. */
-  sortOrder?: AppsGetRequestSortOrder;
+  sortOrder?: AppsGetRequestSortOrder | (string & {});
 }
 export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4794,7 +4743,7 @@ export const GetLivestreamSessionForLivestreamIdLivestreamRequest =
   }) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamRequest>;
 
 export type LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus =
-  "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {});
+  "LIVE" | "IDLE" | "ERRORED" | "INVOKED";
 export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus =
   /*@__PURE__*/ S.String;
 
@@ -4933,7 +4882,7 @@ export const GetLivestreamSessionForLivestreamIdLivestreamResponse =
     identifier: "GetLivestreamSessionForLivestreamIdLivestreamResponse",
   }) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamResponse>;
 
-export type MeetingsGetRequestStatus = "ACTIVE" | "INACTIVE" | (string & {});
+export type MeetingsGetRequestStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsGetRequestStatus = /*@__PURE__*/ S.String;
 
 export interface GetMeetingRequest {
@@ -4952,7 +4901,7 @@ export interface GetMeetingRequest {
   /** The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
   startTime?: string;
   /** Filter meetings by status. */
-  status?: MeetingsGetRequestStatus;
+  status?: MeetingsGetRequestStatus | (string & {});
 }
 export const GetMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4979,15 +4928,13 @@ export const GetMeetingRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel =
   | "mono"
-  | "stereo"
-  | (string & {});
+  | "stereo";
 export const MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -5046,15 +4993,13 @@ export type MeetingsGetResponseDataItemRecordingConfigStorageConfigType =
   | "azure"
   | "digitalocean"
   | "gcs"
-  | "sftp"
-  | (string & {});
+  | "sftp";
 export const MeetingsGetResponseDataItemRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -5110,13 +5055,12 @@ export const MeetingsGetResponseDataItemRecordingConfigStorageConfig =
 
 export type MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -5237,10 +5181,7 @@ export const MeetingsGetResponseDataItemRecordingConfig =
     identifier: "MeetingsGetResponseDataItemRecordingConfig",
   }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfig>;
 
-export type MeetingsGetResponseDataItemStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type MeetingsGetResponseDataItemStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsGetResponseDataItemStatus = /*@__PURE__*/ S.String;
 
 export interface MeetingsGetResponseDataItem {
@@ -5361,8 +5302,7 @@ export type LivestreamsGetMeetingActiveLivestreamsResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
-  | "INVOKED"
-  | (string & {});
+  | "INVOKED";
 export const LivestreamsGetMeetingActiveLivestreamsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -5455,15 +5395,13 @@ export type MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType =
     | "daily_standup"
     | "one_on_one_meeting"
     | "lecture"
-    | "code_review"
-    | (string & {});
+    | "code_review";
 export const MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat =
   | "plain_text"
-  | "markdown"
-  | (string & {});
+  | "markdown";
 export const MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -5511,8 +5449,7 @@ export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   | "pl"
   | "el"
   | "fr"
-  | "nl"
-  | (string & {});
+  | "nl";
 export const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -5560,14 +5497,13 @@ export const MeetingsGetMeetingByIdResponseDataAiConfig =
   }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfig>;
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
+  "mono" | "stereo";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -5623,12 +5559,12 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketC
   }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+  "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -5685,13 +5621,12 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig =
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -5812,10 +5747,7 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfig =
     identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfig",
   }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfig>;
 
-export type MeetingsGetMeetingByIdResponseDataStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type MeetingsGetMeetingByIdResponseDataStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsGetMeetingByIdResponseDataStatus = /*@__PURE__*/ S.String;
 
 export interface MeetingsGetMeetingByIdResponseData {
@@ -6093,15 +6025,13 @@ export type RecordingsGetOneRecordingResponseDataStatus =
   | "UPLOADING"
   | "UPLOADED"
   | "ERRORED"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const RecordingsGetOneRecordingResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetOneRecordingResponseDataStartReasonCallerType =
   | "ORGANIZATION"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const RecordingsGetOneRecordingResponseDataStartReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -6128,8 +6058,7 @@ export const RecordingsGetOneRecordingResponseDataStartReasonCaller =
 
 export type RecordingsGetOneRecordingResponseDataStartReasonReason =
   | "API_CALL"
-  | "RECORD_ON_START"
-  | (string & {});
+  | "RECORD_ON_START";
 export const RecordingsGetOneRecordingResponseDataStartReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -6154,8 +6083,7 @@ export const RecordingsGetOneRecordingResponseDataStartReason =
 
 export type RecordingsGetOneRecordingResponseDataStopReasonCallerType =
   | "ORGANIZATION"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const RecordingsGetOneRecordingResponseDataStopReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -6183,8 +6111,7 @@ export const RecordingsGetOneRecordingResponseDataStopReasonCaller =
 export type RecordingsGetOneRecordingResponseDataStopReasonReason =
   | "API_CALL"
   | "INTERNAL_ERROR"
-  | "ALL_PEERS_LEFT"
-  | (string & {});
+  | "ALL_PEERS_LEFT";
 export const RecordingsGetOneRecordingResponseDataStopReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -6208,15 +6135,13 @@ export type RecordingsGetOneRecordingResponseDataStorageConfigType =
   | "azure"
   | "digitalocean"
   | "gcs"
-  | "sftp"
-  | (string & {});
+  | "sftp";
 export const RecordingsGetOneRecordingResponseDataStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetOneRecordingResponseDataStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const RecordingsGetOneRecordingResponseDataStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -6524,8 +6449,7 @@ export type SessionsGetParticipantDataFromPeerIdRequestFilters =
   | "ip_information"
   | "precall_network_information"
   | "events"
-  | "quality_stats"
-  | (string & {});
+  | "quality_stats";
 export const SessionsGetParticipantDataFromPeerIdRequestFilters =
   /*@__PURE__*/ S.String;
 
@@ -6536,7 +6460,7 @@ export interface GetParticipantDataFromPeerIdSessionRequest {
   appId: string;
   peerId: string;
   /** Filter to apply to the peer report. */
-  filters?: SessionsGetParticipantDataFromPeerIdRequestFilters;
+  filters?: SessionsGetParticipantDataFromPeerIdRequestFilters | (string & {});
   /** if true, response includes all the peer events of participant. */
   includePeerEvents?: boolean;
 }
@@ -6566,17 +6490,12 @@ export const GetParticipantDataFromPeerIdSessionRequest =
   }) as any as S.Schema<GetParticipantDataFromPeerIdSessionRequest>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName =
-  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
+  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING";
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType =
-    | "GROUP_CALL"
-    | "WEBINAR"
-    | "AUDIO_ROOM"
-    | "LIVESTREAM"
-    | "CHAT"
-    | (string & {});
+  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | "LIVESTREAM" | "CHAT";
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType =
   /*@__PURE__*/ S.String;
 
@@ -8326,7 +8245,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason =
-  "cpu" | "bandwidth" | "none" | "other" | (string & {});
+  "cpu" | "bandwidth" | "none" | "other";
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason =
   /*@__PURE__*/ S.String;
 
@@ -8860,7 +8779,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason =
-  "cpu" | "bandwidth" | "none" | "other" | (string & {});
+  "cpu" | "bandwidth" | "none" | "other";
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason =
   /*@__PURE__*/ S.String;
 
@@ -9483,8 +9402,7 @@ export type PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -9509,8 +9427,7 @@ export type PresetsGetPresetByIdResponseDataConfigMediaVideoQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsGetPresetByIdResponseDataConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -9574,8 +9491,7 @@ export type PresetsGetPresetByIdResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsGetPresetByIdResponseDataConfigViewType =
   /*@__PURE__*/ S.String;
 
@@ -9696,8 +9612,7 @@ export const PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings =
 export type PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -9718,7 +9633,7 @@ export const PresetsGetPresetByIdResponseDataPermissionsMediaAudio =
   }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaAudio>;
 
 export type PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce =
-  "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+  "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST";
 export const PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -9741,8 +9656,7 @@ export const PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare =
 export type PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -9782,7 +9696,7 @@ export const PresetsGetPresetByIdResponseDataPermissionsMedia =
   }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMedia>;
 
 export type PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl =
-  "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
+  "FULL_ACCESS" | "VIEW_ONLY";
 export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl =
   /*@__PURE__*/ S.String;
 
@@ -9859,24 +9773,21 @@ export const PresetsGetPresetByIdResponseDataPermissionsPolls =
 export type PresetsGetPresetByIdResponseDataPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsGetPresetByIdResponseDataPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export type PresetsGetPresetByIdResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsGetPresetByIdResponseDataPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
@@ -9980,16 +9891,14 @@ export type PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -10064,8 +9973,7 @@ export const PresetsGetPresetByIdResponseDataUiDesignTokensColors =
 export type PresetsGetPresetByIdResponseDataUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsGetPresetByIdResponseDataUiDesignTokensTheme =
   /*@__PURE__*/ S.String;
 
@@ -10157,15 +10065,10 @@ export const GetPresetByIdPresetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPresetByIdPresetResponse",
 }) as any as S.Schema<GetPresetByIdPresetResponse>;
 
-export type RecordingsGetRecordingsRequestSortBy =
-  | "invokedTime"
-  | (string & {});
+export type RecordingsGetRecordingsRequestSortBy = "invokedTime";
 export const RecordingsGetRecordingsRequestSortBy = /*@__PURE__*/ S.String;
 
-export type RecordingsGetRecordingsRequestSortOrder =
-  | "ASC"
-  | "DESC"
-  | (string & {});
+export type RecordingsGetRecordingsRequestSortOrder = "ASC" | "DESC";
 export const RecordingsGetRecordingsRequestSortOrder = /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsRequestStatus =
@@ -10174,12 +10077,12 @@ export type RecordingsGetRecordingsRequestStatus =
   | "UPLOADING"
   | "UPLOADED"
   | "ERRORED"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const RecordingsGetRecordingsRequestStatus = /*@__PURE__*/ S.String;
 
-export type RecordingsGetRecordingsRequestStatusList =
-  ReadonlyArray<RecordingsGetRecordingsRequestStatus>;
+export type RecordingsGetRecordingsRequestStatusList = ReadonlyArray<
+  RecordingsGetRecordingsRequestStatus | (string & {})
+>;
 export const RecordingsGetRecordingsRequestStatusList = /*@__PURE__*/ S.Array(
   RecordingsGetRecordingsRequestStatus,
 ) as any as S.Schema<RecordingsGetRecordingsRequestStatusList>;
@@ -10201,8 +10104,8 @@ export interface GetRecordingsRecordingRequest {
   perPage?: number;
   /** The search query string. You can search using the meeting ID or title. */
   search?: string;
-  sortBy?: RecordingsGetRecordingsRequestSortBy;
-  sortOrder?: RecordingsGetRecordingsRequestSortOrder;
+  sortBy?: RecordingsGetRecordingsRequestSortBy | (string & {});
+  sortOrder?: RecordingsGetRecordingsRequestSortOrder | (string & {});
   /** The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
   startTime?: string;
   /** Filter by one or more recording status */
@@ -10247,18 +10150,17 @@ export type RecordingsGetRecordingsResponseDataItemStatus =
   | "UPLOADING"
   | "UPLOADED"
   | "ERRORED"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const RecordingsGetRecordingsResponseDataItemStatus =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
+  "mono" | "stereo";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec =
-  "MP3" | "AAC" | (string & {});
+  "MP3" | "AAC";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -10315,12 +10217,12 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealti
   }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig>;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+  "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -10376,12 +10278,12 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorag
   }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig>;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec =
-  "H264" | "VP8" | (string & {});
+  "H264" | "VP8";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -10505,8 +10407,7 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig =
 
 export type RecordingsGetRecordingsResponseDataItemMeetingStatus =
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const RecordingsGetRecordingsResponseDataItemMeetingStatus =
   /*@__PURE__*/ S.String;
 
@@ -10569,15 +10470,13 @@ export type RecordingsGetRecordingsResponseDataItemStorageConfigType =
   | "azure"
   | "digitalocean"
   | "gcs"
-  | "sftp"
-  | (string & {});
+  | "sftp";
 export const RecordingsGetRecordingsResponseDataItemStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -10805,18 +10704,14 @@ export const GetSessionDetailsSessionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSessionDetailsSessionRequest",
 }) as any as S.Schema<GetSessionDetailsSessionRequest>;
 
-export type SessionsGetSessionDetailsResponseDataStatus =
-  | "LIVE"
-  | "ENDED"
-  | (string & {});
+export type SessionsGetSessionDetailsResponseDataStatus = "LIVE" | "ENDED";
 export const SessionsGetSessionDetailsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionDetailsResponseDataType =
   | "meeting"
   | "livestream"
-  | "participant"
-  | (string & {});
+  | "participant";
 export const SessionsGetSessionDetailsResponseDataType = /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionDetailsResponseDataBreakoutRoomsList =
@@ -10929,17 +10824,12 @@ export const GetSessionParticipantDetailsSessionRequest =
   }) as any as S.Schema<GetSessionParticipantDetailsSessionRequest>;
 
 export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName =
-  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
+  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING";
 export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType =
-    | "GROUP_CALL"
-    | "WEBINAR"
-    | "AUDIO_ROOM"
-    | "LIVESTREAM"
-    | "CHAT"
-    | (string & {});
+  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | "LIVESTREAM" | "CHAT";
 export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType =
   /*@__PURE__*/ S.String;
 
@@ -11077,22 +10967,15 @@ export const GetSessionParticipantDetailsSessionResponse =
 
 export type SessionsGetSessionParticipantsRequestSortBy =
   | "joinedAt"
-  | "duration"
-  | (string & {});
+  | "duration";
 export const SessionsGetSessionParticipantsRequestSortBy =
   /*@__PURE__*/ S.String;
 
-export type SessionsGetSessionParticipantsRequestSortOrder =
-  | "ASC"
-  | "DESC"
-  | (string & {});
+export type SessionsGetSessionParticipantsRequestSortOrder = "ASC" | "DESC";
 export const SessionsGetSessionParticipantsRequestSortOrder =
   /*@__PURE__*/ S.String;
 
-export type SessionsGetSessionParticipantsRequestView =
-  | "raw"
-  | "consolidated"
-  | (string & {});
+export type SessionsGetSessionParticipantsRequestView = "raw" | "consolidated";
 export const SessionsGetSessionParticipantsRequestView = /*@__PURE__*/ S.String;
 
 export interface GetSessionParticipantsSessionRequest {
@@ -11109,10 +10992,10 @@ export interface GetSessionParticipantsSessionRequest {
   perPage?: number;
   /** The search query string. You can search using participant ID, custom participant ID, or display name. */
   search?: string;
-  sortBy?: SessionsGetSessionParticipantsRequestSortBy;
-  sortOrder?: SessionsGetSessionParticipantsRequestSortOrder;
+  sortBy?: SessionsGetSessionParticipantsRequestSortBy | (string & {});
+  sortOrder?: SessionsGetSessionParticipantsRequestSortOrder | (string & {});
   /** In breakout room sessions, the view parameter can be set to `raw` for session specific duration for participants or `consolidated` to accumulate breakout room durations. */
-  view?: SessionsGetSessionParticipantsRequestView;
+  view?: SessionsGetSessionParticipantsRequestView | (string & {});
 }
 export const GetSessionParticipantsSessionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -11151,17 +11034,12 @@ export const GetSessionParticipantsSessionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetSessionParticipantsSessionRequest>;
 
 export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName =
-  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
+  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING";
 export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType =
-    | "GROUP_CALL"
-    | "WEBINAR"
-    | "AUDIO_ROOM"
-    | "LIVESTREAM"
-    | "CHAT"
-    | (string & {});
+  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | "LIVESTREAM" | "CHAT";
 export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType =
   /*@__PURE__*/ S.String;
 
@@ -11304,19 +11182,13 @@ export const GetSessionParticipantsSessionResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetSessionParticipantsSessionResponse",
 }) as any as S.Schema<GetSessionParticipantsSessionResponse>;
 
-export type SessionsGetSessionsRequestSortBy =
-  | "minutesConsumed"
-  | "createdAt"
-  | (string & {});
+export type SessionsGetSessionsRequestSortBy = "minutesConsumed" | "createdAt";
 export const SessionsGetSessionsRequestSortBy = /*@__PURE__*/ S.String;
 
-export type SessionsGetSessionsRequestSortOrder =
-  | "ASC"
-  | "DESC"
-  | (string & {});
+export type SessionsGetSessionsRequestSortOrder = "ASC" | "DESC";
 export const SessionsGetSessionsRequestSortOrder = /*@__PURE__*/ S.String;
 
-export type SessionsGetSessionsRequestStatus = "LIVE" | "ENDED" | (string & {});
+export type SessionsGetSessionsRequestStatus = "LIVE" | "ENDED";
 export const SessionsGetSessionsRequestStatus = /*@__PURE__*/ S.String;
 
 export interface GetSessionsSessionRequest {
@@ -11335,11 +11207,11 @@ export interface GetSessionsSessionRequest {
   perPage?: number;
   /** Search string that matches sessions based on meeting title, meeting ID, and session ID */
   search?: string;
-  sortBy?: SessionsGetSessionsRequestSortBy;
-  sortOrder?: SessionsGetSessionsRequestSortOrder;
+  sortBy?: SessionsGetSessionsRequestSortBy | (string & {});
+  sortOrder?: SessionsGetSessionsRequestSortOrder | (string & {});
   /** The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
   startTime?: string;
-  status?: SessionsGetSessionsRequestStatus;
+  status?: SessionsGetSessionsRequestStatus | (string & {});
 }
 export const GetSessionsSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11374,16 +11246,14 @@ export const GetSessionsSessionRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SessionsGetSessionsResponseDataSessionsItemStatus =
   | "LIVE"
-  | "ENDED"
-  | (string & {});
+  | "ENDED";
 export const SessionsGetSessionsResponseDataSessionsItemStatus =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionsResponseDataSessionsItemType =
   | "meeting"
   | "livestream"
-  | "participant"
-  | (string & {});
+  | "participant";
 export const SessionsGetSessionsResponseDataSessionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -11557,8 +11427,7 @@ export type SessionsGetSessionTranscriptsRequestFormat =
   | "SRT"
   | "VTT"
   | "JSON"
-  | "CSV"
-  | (string & {});
+  | "CSV";
 export const SessionsGetSessionTranscriptsRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -11569,7 +11438,7 @@ export interface GetSessionTranscriptsSessionRequest {
   appId: string;
   sessionId: string;
   /** Transcript file format to fetch. */
-  format?: SessionsGetSessionTranscriptsRequestFormat;
+  format?: SessionsGetSessionTranscriptsRequestFormat | (string & {});
 }
 export const GetSessionTranscriptsSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11659,8 +11528,7 @@ export type WebhooksGetWebhookByIdResponseDataEventsItem =
   | "recording.statusUpdate"
   | "livestreaming.statusUpdate"
   | "meeting.transcript"
-  | "meeting.summary"
-  | (string & {});
+  | "meeting.summary";
 export const WebhooksGetWebhookByIdResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
@@ -11745,8 +11613,7 @@ export type WebhooksGetWebhooksResponseDataItemEventsItem =
   | "recording.statusUpdate"
   | "livestreaming.statusUpdate"
   | "meeting.transcript"
-  | "meeting.summary"
-  | (string & {});
+  | "meeting.summary";
 export const WebhooksGetWebhooksResponseDataItemEventsItem =
   /*@__PURE__*/ S.String;
 
@@ -12189,8 +12056,7 @@ export type PresetsUpdateRequestConfigMediaScreenshareQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsUpdateRequestConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -12198,7 +12064,7 @@ export interface PresetsUpdateRequestConfigMediaScreenshare {
   /** Frame rate of screen share */
   frameRate?: number;
   /** Quality of screen share */
-  quality?: PresetsUpdateRequestConfigMediaScreenshareQuality;
+  quality?: PresetsUpdateRequestConfigMediaScreenshareQuality | (string & {});
 }
 export const PresetsUpdateRequestConfigMediaScreenshare =
   /*@__PURE__*/ S.suspend(() =>
@@ -12215,8 +12081,7 @@ export type PresetsUpdateRequestConfigMediaVideoQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsUpdateRequestConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -12224,7 +12089,7 @@ export interface PresetsUpdateRequestConfigMediaVideo {
   /** Frame rate of participants' video */
   frameRate?: number;
   /** Video quality of participants */
-  quality?: PresetsUpdateRequestConfigMediaVideoQuality;
+  quality?: PresetsUpdateRequestConfigMediaVideoQuality | (string & {});
   /** Enable simulcast for participant videos. */
   simulcast?: boolean;
 }
@@ -12261,8 +12126,7 @@ export type PresetsUpdateRequestConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsUpdateRequestConfigViewType = /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestConfig {
@@ -12275,7 +12139,7 @@ export interface PresetsUpdateRequestConfig {
   /** Media configuration options. eg: Video quality */
   media?: PresetsUpdateRequestConfigMedia;
   /** Type of the meeting */
-  viewType?: PresetsUpdateRequestConfigViewType;
+  viewType?: PresetsUpdateRequestConfigViewType | (string & {});
 }
 export const PresetsUpdateRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12376,14 +12240,15 @@ export const PresetsUpdateRequestPermissionsConnectedMeetings =
 export type PresetsUpdateRequestPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateRequestPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestPermissionsMediaAudio {
   /** Can produce audio */
-  canProduce?: PresetsUpdateRequestPermissionsMediaAudioCanProduce;
+  canProduce?:
+    | PresetsUpdateRequestPermissionsMediaAudioCanProduce
+    | (string & {});
 }
 export const PresetsUpdateRequestPermissionsMediaAudio =
   /*@__PURE__*/ S.suspend(() =>
@@ -12401,14 +12266,15 @@ export const PresetsUpdateRequestPermissionsMediaAudio =
 export type PresetsUpdateRequestPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateRequestPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestPermissionsMediaScreenshare {
   /** Can produce screen share video */
-  canProduce?: PresetsUpdateRequestPermissionsMediaScreenshareCanProduce;
+  canProduce?:
+    | PresetsUpdateRequestPermissionsMediaScreenshareCanProduce
+    | (string & {});
 }
 export const PresetsUpdateRequestPermissionsMediaScreenshare =
   /*@__PURE__*/ S.suspend(() =>
@@ -12426,14 +12292,15 @@ export const PresetsUpdateRequestPermissionsMediaScreenshare =
 export type PresetsUpdateRequestPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateRequestPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestPermissionsMediaVideo {
   /** Can produce video */
-  canProduce?: PresetsUpdateRequestPermissionsMediaVideoCanProduce;
+  canProduce?:
+    | PresetsUpdateRequestPermissionsMediaVideoCanProduce
+    | (string & {});
 }
 export const PresetsUpdateRequestPermissionsMediaVideo =
   /*@__PURE__*/ S.suspend(() =>
@@ -12469,13 +12336,14 @@ export const PresetsUpdateRequestPermissionsMedia = /*@__PURE__*/ S.suspend(
 
 export type PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl =
   | "FULL_ACCESS"
-  | "VIEW_ONLY"
-  | (string & {});
+  | "VIEW_ONLY";
 export const PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl =
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestPermissionsPluginsConfigValue {
-  accessControl?: PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl;
+  accessControl?:
+    | PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl
+    | (string & {});
   handlesViewOnly?: boolean;
 }
 export const PresetsUpdateRequestPermissionsPluginsConfigValue =
@@ -12545,24 +12413,21 @@ export const PresetsUpdateRequestPermissionsPolls = /*@__PURE__*/ S.suspend(
 export type PresetsUpdateRequestPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsUpdateRequestPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateRequestPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateRequestPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateRequestPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsUpdateRequestPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
@@ -12593,13 +12458,15 @@ export interface PresetsUpdateRequestPermissions {
   /** Poll permissions */
   polls?: PresetsUpdateRequestPermissionsPolls;
   /** Type of the recording peer */
-  recorderType?: PresetsUpdateRequestPermissionsRecorderType;
+  recorderType?: PresetsUpdateRequestPermissionsRecorderType | (string & {});
   showParticipantList?: boolean;
-  stageAccess?: PresetsUpdateRequestPermissionsStageAccess;
+  stageAccess?: PresetsUpdateRequestPermissionsStageAccess | (string & {});
   stageEnabled?: boolean;
   transcriptionEnabled?: boolean;
   /** Waiting room type */
-  waitingRoomType?: PresetsUpdateRequestPermissionsWaitingRoomType;
+  waitingRoomType?:
+    | PresetsUpdateRequestPermissionsWaitingRoomType
+    | (string & {});
 }
 export const PresetsUpdateRequestPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12670,16 +12537,14 @@ export type PresetsUpdateRequestUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsUpdateRequestUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateRequestUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsUpdateRequestUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -12754,19 +12619,18 @@ export const PresetsUpdateRequestUiDesignTokensColors = /*@__PURE__*/ S.suspend(
 export type PresetsUpdateRequestUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsUpdateRequestUiDesignTokensTheme = /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestUiDesignTokens {
-  borderRadius?: PresetsUpdateRequestUiDesignTokensBorderRadius;
-  borderWidth?: PresetsUpdateRequestUiDesignTokensBorderWidth;
+  borderRadius?: PresetsUpdateRequestUiDesignTokensBorderRadius | (string & {});
+  borderWidth?: PresetsUpdateRequestUiDesignTokensBorderWidth | (string & {});
   colors?: PresetsUpdateRequestUiDesignTokensColors;
   fontFamily?: string;
   googleFont?: string;
   logo?: string;
   spacingBase?: number;
-  theme?: PresetsUpdateRequestUiDesignTokensTheme;
+  theme?: PresetsUpdateRequestUiDesignTokensTheme | (string & {});
 }
 export const PresetsUpdateRequestUiDesignTokens = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12859,8 +12723,7 @@ export type PresetsUpdateResponseDataConfigMediaScreenshareQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsUpdateResponseDataConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -12885,8 +12748,7 @@ export type PresetsUpdateResponseDataConfigMediaVideoQuality =
   | "vga"
   | "qvga"
   | "fhd"
-  | "uhd"
-  | (string & {});
+  | "uhd";
 export const PresetsUpdateResponseDataConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -12950,8 +12812,7 @@ export type PresetsUpdateResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsUpdateResponseDataConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
@@ -13067,8 +12928,7 @@ export const PresetsUpdateResponseDataPermissionsConnectedMeetings =
 export type PresetsUpdateResponseDataPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateResponseDataPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -13090,8 +12950,7 @@ export const PresetsUpdateResponseDataPermissionsMediaAudio =
 export type PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -13114,8 +12973,7 @@ export const PresetsUpdateResponseDataPermissionsMediaScreenshare =
 export type PresetsUpdateResponseDataPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateResponseDataPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -13154,7 +13012,7 @@ export const PresetsUpdateResponseDataPermissionsMedia =
   }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMedia>;
 
 export type PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl =
-  "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
+  "FULL_ACCESS" | "VIEW_ONLY";
 export const PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl =
   /*@__PURE__*/ S.String;
 
@@ -13231,24 +13089,21 @@ export const PresetsUpdateResponseDataPermissionsPolls =
 export type PresetsUpdateResponseDataPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsUpdateResponseDataPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsUpdateResponseDataPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateResponseDataPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
@@ -13350,16 +13205,14 @@ export type PresetsUpdateResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsUpdateResponseDataUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateResponseDataUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsUpdateResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -13432,8 +13285,7 @@ export const PresetsUpdateResponseDataUiDesignTokensColors =
 export type PresetsUpdateResponseDataUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsUpdateResponseDataUiDesignTokensTheme =
   /*@__PURE__*/ S.String;
 
@@ -13523,8 +13375,7 @@ export const PatchPresetResponse = /*@__PURE__*/ S.suspend(() =>
 export type RecordingsPauseResumeStopRecordingRequestAction =
   | "stop"
   | "pause"
-  | "resume"
-  | (string & {});
+  | "resume";
 export const RecordingsPauseResumeStopRecordingRequestAction =
   /*@__PURE__*/ S.String;
 
@@ -13533,7 +13384,7 @@ export interface PauseResumeStopRecordingRecordingRequest {
   accountId: string;
   appId: string;
   recordingId: string;
-  action: RecordingsPauseResumeStopRecordingRequestAction;
+  action: RecordingsPauseResumeStopRecordingRequestAction | (string & {});
 }
 export const PauseResumeStopRecordingRecordingRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -13561,13 +13412,12 @@ export type RecordingsPauseResumeStopRecordingResponseDataStatus =
   | "UPLOADING"
   | "UPLOADED"
   | "ERRORED"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const RecordingsPauseResumeStopRecordingResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType =
-  "ORGANIZATION" | "USER" | (string & {});
+  "ORGANIZATION" | "USER";
 export const RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -13595,8 +13445,7 @@ export const RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller =
 
 export type RecordingsPauseResumeStopRecordingResponseDataStartReasonReason =
   | "API_CALL"
-  | "RECORD_ON_START"
-  | (string & {});
+  | "RECORD_ON_START";
 export const RecordingsPauseResumeStopRecordingResponseDataStartReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -13620,7 +13469,7 @@ export const RecordingsPauseResumeStopRecordingResponseDataStartReason =
   }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStartReason>;
 
 export type RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType =
-  "ORGANIZATION" | "USER" | (string & {});
+  "ORGANIZATION" | "USER";
 export const RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -13649,8 +13498,7 @@ export const RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller =
 export type RecordingsPauseResumeStopRecordingResponseDataStopReasonReason =
   | "API_CALL"
   | "INTERNAL_ERROR"
-  | "ALL_PEERS_LEFT"
-  | (string & {});
+  | "ALL_PEERS_LEFT";
 export const RecordingsPauseResumeStopRecordingResponseDataStopReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -13678,13 +13526,12 @@ export type RecordingsPauseResumeStopRecordingResponseDataStorageConfigType =
   | "azure"
   | "digitalocean"
   | "gcs"
-  | "sftp"
-  | (string & {});
+  | "sftp";
 export const RecordingsPauseResumeStopRecordingResponseDataStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -13940,23 +13787,25 @@ export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType =
   | "daily_standup"
   | "one_on_one_meeting"
   | "lecture"
-  | "code_review"
-  | (string & {});
+  | "code_review";
 export const MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat =
   | "plain_text"
-  | "markdown"
-  | (string & {});
+  | "markdown";
 export const MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
 export interface MeetingsReplaceMeetingByIdRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType;
+  summaryType?:
+    | MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType
+    | (string & {});
   /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat;
+  textFormat?:
+    | MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat
+    | (string & {});
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number;
 }
@@ -13996,8 +13845,7 @@ export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
   | "pl"
   | "el"
   | "fr"
-  | "nl"
-  | (string & {});
+  | "nl";
 export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -14005,7 +13853,9 @@ export interface MeetingsReplaceMeetingByIdRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList;
   /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage;
+  language?:
+    | MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage
+    | (string & {});
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean;
 }
@@ -14045,22 +13895,25 @@ export const MeetingsReplaceMeetingByIdRequestAiConfig =
   }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfig>;
 
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
+  "mono" | "stereo";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel;
+  channel?:
+    | MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel
+    | (string & {});
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec;
+  codec?:
+    | MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec
+    | (string & {});
   /** Controls whether to export audio file seperately */
   exportFile?: boolean;
 }
@@ -14112,23 +13965,26 @@ export type MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType =
   | "azure"
   | "digitalocean"
   | "gcs"
-  | "sftp"
-  | (string & {});
+  | "sftp";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig {
   /** Type of storage media. */
-  type: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType;
+  type:
+    | MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType
+    | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
   accessKey?: string;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod;
+  authMethod?:
+    | MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod
+    | (string & {});
   /** Name of the storage medium's bucket. */
   bucket?: string;
   /** SSH destination server host for SFTP type storage medium */
@@ -14174,13 +14030,12 @@ export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig =
 
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -14203,7 +14058,9 @@ export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermar
 
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
-  position?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition;
+  position?:
+    | MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition
+    | (string & {});
   /** Size of the watermark */
   size?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize;
   /** URL of the watermark image */
@@ -14227,7 +14084,9 @@ export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermar
 
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec;
+  codec?:
+    | MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec
+    | (string & {});
   /** Controls whether to export video file seperately */
   exportFile?: boolean;
   /** Height of the recording video in pixels */
@@ -14372,13 +14231,12 @@ export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryTy
     | "daily_standup"
     | "one_on_one_meeting"
     | "lecture"
-    | "code_review"
-    | (string & {});
+    | "code_review";
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat =
-  "plain_text" | "markdown" | (string & {});
+  "plain_text" | "markdown";
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -14417,17 +14275,7 @@ export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywords
   ) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
 
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage =
-    | "en-US"
-    | "en-IN"
-    | "de"
-    | "hi"
-    | "sv"
-    | "ru"
-    | "pl"
-    | "el"
-    | "fr"
-    | "nl"
-    | (string & {});
+  "en-US" | "en-IN" | "de" | "hi" | "sv" | "ru" | "pl" | "el" | "fr" | "nl";
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -14475,12 +14323,12 @@ export const MeetingsReplaceMeetingByIdResponseDataAiConfig =
   }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfig>;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
+  "mono" | "stereo";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
-  "MP3" | "AAC" | (string & {});
+  "MP3" | "AAC";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -14537,12 +14385,12 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBuc
   }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+  "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -14598,12 +14446,12 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig 
   }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig>;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
-  "H264" | "VP8" | (string & {});
+  "H264" | "VP8";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -14727,8 +14575,7 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfig =
 
 export type MeetingsReplaceMeetingByIdResponseDataStatus =
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const MeetingsReplaceMeetingByIdResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -14815,12 +14662,12 @@ export type WebhooksReplaceWebhookRequestEventsItem =
   | "recording.statusUpdate"
   | "livestreaming.statusUpdate"
   | "meeting.transcript"
-  | "meeting.summary"
-  | (string & {});
+  | "meeting.summary";
 export const WebhooksReplaceWebhookRequestEventsItem = /*@__PURE__*/ S.String;
 
-export type WebhooksReplaceWebhookRequestEventsList =
-  ReadonlyArray<WebhooksReplaceWebhookRequestEventsItem>;
+export type WebhooksReplaceWebhookRequestEventsList = ReadonlyArray<
+  WebhooksReplaceWebhookRequestEventsItem | (string & {})
+>;
 export const WebhooksReplaceWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   WebhooksReplaceWebhookRequestEventsItem,
 ) as any as S.Schema<WebhooksReplaceWebhookRequestEventsList>;
@@ -14871,8 +14718,7 @@ export type WebhooksReplaceWebhookResponseDataEventsItem =
   | "recording.statusUpdate"
   | "livestreaming.statusUpdate"
   | "meeting.transcript"
-  | "meeting.summary"
-  | (string & {});
+  | "meeting.summary";
 export const WebhooksReplaceWebhookResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
@@ -14979,8 +14825,7 @@ export type LivestreamsStartLivestreamingAMeetingResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
-  | "INVOKED"
-  | (string & {});
+  | "INVOKED";
 export const LivestreamsStartLivestreamingAMeetingResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -15025,23 +14870,19 @@ export const StartLivestreamingAMeetingLivestreamResponse =
 
 export type RecordingsStartRecordingsRequestAudioConfigChannel =
   | "mono"
-  | "stereo"
-  | (string & {});
+  | "stereo";
 export const RecordingsStartRecordingsRequestAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
-export type RecordingsStartRecordingsRequestAudioConfigCodec =
-  | "MP3"
-  | "AAC"
-  | (string & {});
+export type RecordingsStartRecordingsRequestAudioConfigCodec = "MP3" | "AAC";
 export const RecordingsStartRecordingsRequestAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
 export interface RecordingsStartRecordingsRequestAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: RecordingsStartRecordingsRequestAudioConfigChannel;
+  channel?: RecordingsStartRecordingsRequestAudioConfigChannel | (string & {});
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: RecordingsStartRecordingsRequestAudioConfigCodec;
+  codec?: RecordingsStartRecordingsRequestAudioConfigCodec | (string & {});
   /** Controls whether to export audio file seperately */
   exportFile?: boolean;
 }
@@ -15056,15 +14897,13 @@ export const RecordingsStartRecordingsRequestAudioConfig =
     identifier: "RecordingsStartRecordingsRequestAudioConfig",
   }) as any as S.Schema<RecordingsStartRecordingsRequestAudioConfig>;
 
-export type RecordingsStartRecordingsRequestInteractiveConfigType =
-  | "ID3"
-  | (string & {});
+export type RecordingsStartRecordingsRequestInteractiveConfigType = "ID3";
 export const RecordingsStartRecordingsRequestInteractiveConfigType =
   /*@__PURE__*/ S.String;
 
 export interface RecordingsStartRecordingsRequestInteractiveConfig {
   /** The metadata is presented in the form of ID3 tags. */
-  type?: RecordingsStartRecordingsRequestInteractiveConfigType;
+  type?: RecordingsStartRecordingsRequestInteractiveConfigType | (string & {});
 }
 export const RecordingsStartRecordingsRequestInteractiveConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -15106,25 +14945,25 @@ export type RecordingsStartRecordingsRequestStorageConfigType =
   | "azure"
   | "digitalocean"
   | "gcs"
-  | "sftp"
-  | (string & {});
+  | "sftp";
 export const RecordingsStartRecordingsRequestStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsStartRecordingsRequestStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const RecordingsStartRecordingsRequestStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
 export interface RecordingsStartRecordingsRequestStorageConfig {
   /** Type of storage media. */
-  type: RecordingsStartRecordingsRequestStorageConfigType;
+  type: RecordingsStartRecordingsRequestStorageConfigType | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
   accessKey?: string;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsStartRecordingsRequestStorageConfigAuthMethod;
+  authMethod?:
+    | RecordingsStartRecordingsRequestStorageConfigAuthMethod
+    | (string & {});
   /** Name of the storage medium's bucket. */
   bucket?: string;
   /** SSH destination server host for SFTP type storage medium */
@@ -15168,10 +15007,7 @@ export const RecordingsStartRecordingsRequestStorageConfig =
     identifier: "RecordingsStartRecordingsRequestStorageConfig",
   }) as any as S.Schema<RecordingsStartRecordingsRequestStorageConfig>;
 
-export type RecordingsStartRecordingsRequestVideoConfigCodec =
-  | "H264"
-  | "VP8"
-  | (string & {});
+export type RecordingsStartRecordingsRequestVideoConfigCodec = "H264" | "VP8";
 export const RecordingsStartRecordingsRequestVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -15179,8 +15015,7 @@ export type RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
   | "left bottom"
-  | "right bottom"
-  | (string & {});
+  | "right bottom";
 export const RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -15202,7 +15037,9 @@ export const RecordingsStartRecordingsRequestVideoConfigWatermarkSize =
 
 export interface RecordingsStartRecordingsRequestVideoConfigWatermark {
   /** Position of the watermark */
-  position?: RecordingsStartRecordingsRequestVideoConfigWatermarkPosition;
+  position?:
+    | RecordingsStartRecordingsRequestVideoConfigWatermarkPosition
+    | (string & {});
   /** Size of the watermark */
   size?: RecordingsStartRecordingsRequestVideoConfigWatermarkSize;
   /** URL of the watermark image */
@@ -15225,7 +15062,7 @@ export const RecordingsStartRecordingsRequestVideoConfigWatermark =
 
 export interface RecordingsStartRecordingsRequestVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: RecordingsStartRecordingsRequestVideoConfigCodec;
+  codec?: RecordingsStartRecordingsRequestVideoConfigCodec | (string & {});
   /** Controls whether to export video file seperately */
   exportFile?: boolean;
   /** Height of the recording video in pixels */
@@ -15330,15 +15167,13 @@ export type RecordingsStartRecordingsResponseDataStatus =
   | "UPLOADING"
   | "UPLOADED"
   | "ERRORED"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const RecordingsStartRecordingsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type RecordingsStartRecordingsResponseDataStartReasonCallerType =
   | "ORGANIZATION"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const RecordingsStartRecordingsResponseDataStartReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -15365,8 +15200,7 @@ export const RecordingsStartRecordingsResponseDataStartReasonCaller =
 
 export type RecordingsStartRecordingsResponseDataStartReasonReason =
   | "API_CALL"
-  | "RECORD_ON_START"
-  | (string & {});
+  | "RECORD_ON_START";
 export const RecordingsStartRecordingsResponseDataStartReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -15391,8 +15225,7 @@ export const RecordingsStartRecordingsResponseDataStartReason =
 
 export type RecordingsStartRecordingsResponseDataStopReasonCallerType =
   | "ORGANIZATION"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const RecordingsStartRecordingsResponseDataStopReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -15420,8 +15253,7 @@ export const RecordingsStartRecordingsResponseDataStopReasonCaller =
 export type RecordingsStartRecordingsResponseDataStopReasonReason =
   | "API_CALL"
   | "INTERNAL_ERROR"
-  | "ALL_PEERS_LEFT"
-  | (string & {});
+  | "ALL_PEERS_LEFT";
 export const RecordingsStartRecordingsResponseDataStopReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -15445,15 +15277,13 @@ export type RecordingsStartRecordingsResponseDataStorageConfigType =
   | "azure"
   | "digitalocean"
   | "gcs"
-  | "sftp"
-  | (string & {});
+  | "sftp";
 export const RecordingsStartRecordingsResponseDataStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsStartRecordingsResponseDataStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const RecordingsStartRecordingsResponseDataStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -15586,9 +15416,7 @@ export const StartRecordingsRecordingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartRecordingsRecordingResponse",
 }) as any as S.Schema<StartRecordingsRecordingResponse>;
 
-export type RecordingsStartTrackRecordingRequestLayersValueMediaKind =
-  | "audio"
-  | (string & {});
+export type RecordingsStartTrackRecordingRequestLayersValueMediaKind = "audio";
 export const RecordingsStartTrackRecordingRequestLayersValueMediaKind =
   /*@__PURE__*/ S.String;
 
@@ -15596,7 +15424,9 @@ export interface RecordingsStartTrackRecordingRequestLayersValue {
   /** A file name prefix to apply for files generated from this layer */
   fileNamePrefix?: string;
   /** Media kind to record. Track recording currently supports audio only. */
-  mediaKind?: RecordingsStartTrackRecordingRequestLayersValueMediaKind;
+  mediaKind?:
+    | RecordingsStartTrackRecordingRequestLayersValueMediaKind
+    | (string & {});
 }
 export const RecordingsStartTrackRecordingRequestLayersValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -15668,8 +15498,7 @@ export type RecordingsStartTrackRecordingResponseDataRecordingStatus =
   | "UPLOADING"
   | "UPLOADED"
   | "ERRORED"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const RecordingsStartTrackRecordingResponseDataRecordingStatus =
   /*@__PURE__*/ S.String;
 
@@ -15807,23 +15636,25 @@ export type MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType =
   | "daily_standup"
   | "one_on_one_meeting"
   | "lecture"
-  | "code_review"
-  | (string & {});
+  | "code_review";
 export const MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat =
   | "plain_text"
-  | "markdown"
-  | (string & {});
+  | "markdown";
 export const MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
 export interface MeetingsUpdateMeetingByIdRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType;
+  summaryType?:
+    | MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType
+    | (string & {});
   /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat;
+  textFormat?:
+    | MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat
+    | (string & {});
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number;
 }
@@ -15863,8 +15694,7 @@ export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
   | "pl"
   | "el"
   | "fr"
-  | "nl"
-  | (string & {});
+  | "nl";
 export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -15872,7 +15702,9 @@ export interface MeetingsUpdateMeetingByIdRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList;
   /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage;
+  language?:
+    | MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage
+    | (string & {});
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean;
 }
@@ -15913,23 +15745,25 @@ export const MeetingsUpdateMeetingByIdRequestAiConfig = /*@__PURE__*/ S.suspend(
 
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel =
   | "mono"
-  | "stereo"
-  | (string & {});
+  | "stereo";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel;
+  channel?:
+    | MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel
+    | (string & {});
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec;
+  codec?:
+    | MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec
+    | (string & {});
   /** Controls whether to export audio file seperately */
   exportFile?: boolean;
 }
@@ -15981,23 +15815,26 @@ export type MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType =
   | "azure"
   | "digitalocean"
   | "gcs"
-  | "sftp"
-  | (string & {});
+  | "sftp";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig {
   /** Type of storage media. */
-  type: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType;
+  type:
+    | MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType
+    | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
   accessKey?: string;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod;
+  authMethod?:
+    | MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod
+    | (string & {});
   /** Name of the storage medium's bucket. */
   bucket?: string;
   /** SSH destination server host for SFTP type storage medium */
@@ -16043,13 +15880,12 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig =
 
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -16072,7 +15908,9 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark
 
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
-  position?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition;
+  position?:
+    | MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition
+    | (string & {});
   /** Size of the watermark */
   size?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize;
   /** URL of the watermark image */
@@ -16096,7 +15934,9 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark
 
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec;
+  codec?:
+    | MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec
+    | (string & {});
   /** Controls whether to export video file seperately */
   exportFile?: boolean;
   /** Height of the recording video in pixels */
@@ -16170,10 +16010,7 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfig =
     identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfig",
   }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfig>;
 
-export type MeetingsUpdateMeetingByIdRequestStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type MeetingsUpdateMeetingByIdRequestStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsUpdateMeetingByIdRequestStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateMeetingByIdMeetingRequest {
@@ -16195,7 +16032,7 @@ export interface UpdateMeetingByIdMeetingRequest {
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
   sessionKeepAliveTimeInSecs?: number;
   /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsUpdateMeetingByIdRequestStatus;
+  status?: MeetingsUpdateMeetingByIdRequestStatus | (string & {});
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
   summarizeOnEnd?: boolean;
   /** Title of the meeting */
@@ -16250,13 +16087,12 @@ export type MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryTyp
     | "daily_standup"
     | "one_on_one_meeting"
     | "lecture"
-    | "code_review"
-    | (string & {});
+    | "code_review";
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat =
-  "plain_text" | "markdown" | (string & {});
+  "plain_text" | "markdown";
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -16295,17 +16131,7 @@ export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsL
   ) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
 
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
-    | "en-US"
-    | "en-IN"
-    | "de"
-    | "hi"
-    | "sv"
-    | "ru"
-    | "pl"
-    | "el"
-    | "fr"
-    | "nl"
-    | (string & {});
+  "en-US" | "en-IN" | "de" | "hi" | "sv" | "ru" | "pl" | "el" | "fr" | "nl";
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -16353,12 +16179,12 @@ export const MeetingsUpdateMeetingByIdResponseDataAiConfig =
   }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfig>;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
+  "mono" | "stereo";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
-  "MP3" | "AAC" | (string & {});
+  "MP3" | "AAC";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -16415,12 +16241,12 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBuck
   }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+  "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -16476,12 +16302,12 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig =
   }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig>;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
-  "H264" | "VP8" | (string & {});
+  "H264" | "VP8";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -16603,10 +16429,7 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfig =
     identifier: "MeetingsUpdateMeetingByIdResponseDataRecordingConfig",
   }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfig>;
 
-export type MeetingsUpdateMeetingByIdResponseDataStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type MeetingsUpdateMeetingByIdResponseDataStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsUpdateMeetingByIdResponseDataStatus =
   /*@__PURE__*/ S.String;
 

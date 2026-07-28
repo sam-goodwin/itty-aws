@@ -36,8 +36,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -45,8 +44,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -80,8 +78,7 @@ export type BenefitProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "Pending"
-  | (string & {});
+  | "Pending";
 export const BenefitProvisioningState = /*@__PURE__*/ S.String;
 
 /** Represents the current status of the MACC. */
@@ -96,16 +93,15 @@ export type MaccStatus =
   | "Stopped"
   | "PendingSettlement"
   | "ShortfallCharged"
-  | "ShortfallWaived"
-  | (string & {});
+  | "ShortfallWaived";
 export const MaccStatus = /*@__PURE__*/ S.String;
 
 /** Represents type of the object being operated on. Possible values are primary or contributor. */
-export type MaccEntityType = "Primary" | "Contributor" | (string & {});
+export type MaccEntityType = "Primary" | "Contributor";
 export const MaccEntityType = /*@__PURE__*/ S.String;
 
 /** Grain. */
-export type CommitmentGrain = "Hourly" | "FullTerm" | "Unknown" | (string & {});
+export type CommitmentGrain = "Hourly" | "FullTerm" | "Unknown";
 export const CommitmentGrain = /*@__PURE__*/ S.String;
 
 /** Commitment towards the benefit. */
@@ -125,7 +121,7 @@ export const Commitment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Commitment" }) as any as S.Schema<Commitment>;
 
 /** Represents the enablement status of a feature or settings. */
-export type EnablementMode = "Unknown" | "Enabled" | "Disabled" | (string & {});
+export type EnablementMode = "Unknown" | "Enabled" | "Disabled";
 export const EnablementMode = /*@__PURE__*/ S.String;
 
 /** Optional field to record suppression reason for automatic shortfall. */
@@ -197,8 +193,7 @@ export type MaccMilestoneStatus =
   | "Removed"
   | "PendingSettlement"
   | "ShortfallCharged"
-  | "ShortfallWaived"
-  | (string & {});
+  | "ShortfallWaived";
 export const MaccMilestoneStatus = /*@__PURE__*/ S.String;
 
 /** MACC milestone represents interim targets within the period of MACC. */
@@ -261,8 +256,7 @@ export const ProductDetailsBase = /*@__PURE__*/ S.suspend(() =>
 export type BenefitAppliedScopeType =
   | "BillingAccount"
   | "BillingProfile"
-  | "Customer"
-  | (string & {});
+  | "Customer";
 export const BenefitAppliedScopeType = /*@__PURE__*/ S.String;
 
 /** MACC properties */
@@ -398,14 +392,13 @@ export type BenefitType =
   | "SavingsPlans"
   | "Reservations"
   | "SavingsPlan"
-  | "MACC"
-  | (string & {});
+  | "MACC";
 export const BenefitType = /*@__PURE__*/ S.String;
 
 /** Abstract benefit model to validate. */
 export interface BenefitValidateModel {
   /** Type of benefit to validate. This is used to determine the model type for validation. */
-  benefitType: BenefitType;
+  benefitType: BenefitType | (string & {});
 }
 export const BenefitValidateModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -517,8 +510,7 @@ export type ResourceType =
   | "Discounts"
   | "FreeServices"
   | "SavingsPlans"
-  | "Reservations"
-  | (string & {});
+  | "Reservations";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 /** Manifest-sourced array of search terms for this catalog group. Omitted when empty. */
@@ -793,10 +785,7 @@ export const ConditionalCreditContributorsGetFromPrimaryRequest =
   }) as any as S.Schema<ConditionalCreditContributorsGetFromPrimaryRequest>;
 
 /** Type of conditional credit entity */
-export type ConditionalCreditEntityType =
-  | "Primary"
-  | "Contributor"
-  | (string & {});
+export type ConditionalCreditEntityType = "Primary" | "Contributor";
 export const ConditionalCreditEntityType = /*@__PURE__*/ S.String;
 
 /** The status of the conditional credit */
@@ -809,8 +798,7 @@ export type ConditionalCreditStatus =
   | "Canceled"
   | "Completed"
   | "Stopped"
-  | "PendingSettlement"
-  | (string & {});
+  | "PendingSettlement";
 export const ConditionalCreditStatus = /*@__PURE__*/ S.String;
 
 /** Current status of the milestone */
@@ -824,12 +812,11 @@ export type MilestoneStatus =
   | "Canceled"
   | "Removed"
   | "PendingSettlement"
-  | "Missed"
-  | (string & {});
+  | "Missed";
 export const MilestoneStatus = /*@__PURE__*/ S.String;
 
 /** Represent benefit term in ISO 8601 format. */
-export type Term = "P1M" | "P1Y" | "P3Y" | "P5Y" | (string & {});
+export type Term = "P1M" | "P1Y" | "P3Y" | "P5Y";
 export const Term = /*@__PURE__*/ S.String;
 
 /** Award details for milestone completion */
@@ -1178,8 +1165,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -1232,7 +1218,7 @@ export const ConditionalCreditsCancelResponseIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConditionalCreditsCancelResponseIdentity>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
@@ -1342,13 +1328,13 @@ export const ConditionalCreditsCreateOrUpdateRequestTagsMap =
 /** Properties belonging to conditional credits. */
 export interface ConditionalCreditPropertiesInput {
   /** Type of conditional credit entity */
-  entityType: ConditionalCreditEntityType;
+  entityType: ConditionalCreditEntityType | (string & {});
   /** Display name for the conditional credit */
   displayName?: string;
   /** The billing account resource ID */
   billingAccountResourceId?: string;
   /** The status of the conditional credit */
-  status?: ConditionalCreditStatus;
+  status?: ConditionalCreditStatus | (string & {});
   /** Start date of the conditional credit */
   startAt?: string;
   /** End date of the conditional credit (derived from last milestone) */
@@ -1358,7 +1344,7 @@ export interface ConditionalCreditPropertiesInput {
   /** Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}. */
   resourceId?: string;
   /** Type of the applied scope for the conditional credit. */
-  appliedScopeType?: BenefitAppliedScopeType;
+  appliedScopeType?: BenefitAppliedScopeType | (string & {});
   /** Invitation identifier */
   invitationId?: string;
 }
@@ -1398,7 +1384,7 @@ export const ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentiti
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ConditionalCreditsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -1886,7 +1872,7 @@ export interface AwardInput {
   /** End date when the credit expires */
   endAt?: string;
   /** Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y. */
-  duration?: Term;
+  duration?: Term | (string & {});
 }
 export const AwardInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1904,7 +1890,7 @@ export interface ConditionalCreditMilestoneInput {
   /** Display name for the milestone */
   name?: string;
   /** Current status of the milestone */
-  status?: MilestoneStatus;
+  status?: MilestoneStatus | (string & {});
   /** End date for this milestone */
   endAt?: string;
   /** Spend target for this milestone */
@@ -1940,7 +1926,7 @@ export interface ConditionalCreditPatchRequestPropertiesInput {
   /** End DateTime in UTC. */
   endAt?: string;
   /** Whether this conditional credit allows contributor billing accounts */
-  allowContributors?: EnablementMode;
+  allowContributors?: EnablementMode | (string & {});
   /** Updated milestones list (only applicable for primary conditional credits) */
   milestones?: ConditionalCreditPatchRequestPropertiesInputMilestonesList;
 }
@@ -2118,15 +2104,11 @@ export const ConditionalCreditTransactionsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConditionalCreditTransactionsGetRequest>;
 
 /** The type of charge for a transaction. */
-export type TransactionChargeType =
-  | "Usage"
-  | "Purchase"
-  | "Refund"
-  | (string & {});
+export type TransactionChargeType = "Usage" | "Purchase" | "Refund";
 export const TransactionChargeType = /*@__PURE__*/ S.String;
 
 /** Billing lifecycle status of a transaction. */
-export type TransactionBillingStatus = "Open" | "Closed" | (string & {});
+export type TransactionBillingStatus = "Open" | "Closed";
 export const TransactionBillingStatus = /*@__PURE__*/ S.String;
 
 /** Product details for a transaction */
@@ -2479,8 +2461,7 @@ export type CreditStatus =
   | "Failed"
   | "Expired"
   | "Exhausted"
-  | "NotStarted"
-  | (string & {});
+  | "NotStarted";
 export const CreditStatus = /*@__PURE__*/ S.String;
 
 /** The reason for the credit. Not required if not applicable. */
@@ -2501,15 +2482,11 @@ export const CreditReason = /*@__PURE__*/ S.suspend(() =>
 export type CreditRedemptionPolicy =
   | "NotApplicable"
   | "AutoRedeem"
-  | "ManualRedeem"
-  | (string & {});
+  | "ManualRedeem";
 export const CreditRedemptionPolicy = /*@__PURE__*/ S.String;
 
 /** Expiration policy of the Credit */
-export type CreditExpirationPolicy =
-  | "None"
-  | "SuspendBillingProfile"
-  | (string & {});
+export type CreditExpirationPolicy = "None" | "SuspendBillingProfile";
 export const CreditExpirationPolicy = /*@__PURE__*/ S.String;
 
 /** Credit breakdown item representing a milestone, line-item, or no-charge service */
@@ -2577,7 +2554,7 @@ export const CreditPropertiesBreakdownList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreditPropertiesBreakdownList>;
 
 /** Indicates where the credit benefit is applied */
-export type AppliedOn = "Consumption" | "Invoice" | "External" | (string & {});
+export type AppliedOn = "Consumption" | "Invoice" | "External";
 export const AppliedOn = /*@__PURE__*/ S.String;
 
 /** Indicates where the credit benefit is applied (e.g., consume, invoice, or external application). */
@@ -2843,7 +2820,7 @@ export interface CreditPropertiesInput {
   /** Invitation identifier */
   invitationId?: string;
   /** Type of the applied scope for the credit. */
-  appliedScopeType?: BenefitAppliedScopeType;
+  appliedScopeType?: BenefitAppliedScopeType | (string & {});
 }
 export const CreditPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2878,7 +2855,7 @@ export const CreditsCreateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreditsCreateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreditsCreateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -3651,7 +3628,7 @@ export const DiscountGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DiscountGetResponseTagsMap>;
 
 /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
-export type DiscountEntityType = "Primary" | "Affiliate" | (string & {});
+export type DiscountEntityType = "Primary" | "Affiliate";
 export const DiscountEntityType = /*@__PURE__*/ S.String;
 
 /** Represents the current status of the discount. */
@@ -3660,8 +3637,7 @@ export type DiscountStatus =
   | "Pending"
   | "Failed"
   | "Canceled"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const DiscountStatus = /*@__PURE__*/ S.String;
 
 /** Properties belonging to discounts. */
@@ -3912,7 +3888,7 @@ export const DiscountsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Properties belonging to discounts. */
 export interface DiscountPropertiesInput {
   /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
-  entityType: DiscountEntityType;
+  entityType: DiscountEntityType | (string & {});
   /** This is the catalog UPN for the product. */
   productCode: string;
   /** Start date of the discount. Value is the date the discount started or will start in the future. */
@@ -3926,7 +3902,7 @@ export interface DiscountPropertiesInput {
   /** This defines a user friendly display name for the discount. */
   displayName?: string;
   /** List of applied scopes supported for discounts. */
-  appliedScopeType?: BenefitAppliedScopeType;
+  appliedScopeType?: BenefitAppliedScopeType | (string & {});
 }
 export const DiscountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3965,7 +3941,7 @@ export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ManagedServiceIdentityInput {
   /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
 }
@@ -4380,8 +4356,7 @@ export type FreeServicesStatus =
   | "Pending"
   | "Active"
   | "Canceled"
-  | "Completed"
-  | (string & {});
+  | "Completed";
 export const FreeServicesStatus = /*@__PURE__*/ S.String;
 
 /** Properties of free services */
@@ -4391,7 +4366,7 @@ export interface FreeServicesPropertiesInput {
   /** Display name */
   displayName?: string;
   /** Current status of the free services */
-  status?: FreeServicesStatus;
+  status?: FreeServicesStatus | (string & {});
   /** Date and time when the free services become active */
   startAt?: string;
   /** Expiration date and time of the free services */
@@ -4427,7 +4402,7 @@ export const FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface FreeServicesCreateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -5318,9 +5293,9 @@ export const MaccModelPropertiesInputMilestonesList = /*@__PURE__*/ S.Array(
 /** MACC properties */
 export interface MaccModelPropertiesInput {
   /** Represents the current status of the MACC. */
-  status?: MaccStatus;
+  status?: MaccStatus | (string & {});
   /** Represents type of the object being operated on. Possible values are primary or contributor. */
-  entityType: MaccEntityType;
+  entityType: MaccEntityType | (string & {});
   /** Display name */
   displayName?: string;
   /** Represents catalog UPN. */
@@ -5336,7 +5311,7 @@ export interface MaccModelPropertiesInput {
   /** This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC. */
   systemId?: string;
   /** Setting this to 'Enable' enables automatic shortfall charging when commitment is not met. */
-  automaticShortfall?: EnablementMode;
+  automaticShortfall?: EnablementMode | (string & {});
   /** Optional field to record suppression reason for automatic shortfall. */
   automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
   /** MACC shortfall */
@@ -5352,7 +5327,7 @@ export interface MaccModelPropertiesInput {
   /** Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
   primaryBillingAccountResourceId?: string;
   /** Type of the applied scope for the MACC. */
-  appliedScopeType?: BenefitAppliedScopeType;
+  appliedScopeType?: BenefitAppliedScopeType | (string & {});
   /** Invitation identifier */
   invitationId?: string;
 }
@@ -5396,7 +5371,7 @@ export const MaccsCreateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface MaccsCreateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MaccsCreateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -5852,13 +5827,13 @@ export interface MaccPatchRequestProperties {
   /** Setting this to true means multi-entity. */
   allowContributors?: boolean;
   /** Represents the enablement status of a feature or settings. */
-  automaticShortfall?: EnablementMode;
+  automaticShortfall?: EnablementMode | (string & {});
   /** Optional field to record suppression reason for automatic shortfall. */
   automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
   /** Display name */
   displayName?: string;
   /** Represents the current status of the Milestone. */
-  status?: MaccMilestoneStatus;
+  status?: MaccMilestoneStatus | (string & {});
   /** List of milestones to update or add. */
   milestones?: MaccPatchRequestPropertiesMilestonesList;
   /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
@@ -6287,11 +6262,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -6348,15 +6323,11 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-export type BillingPlan = "P1M" | (string & {});
+export type BillingPlan = "P1M";
 export const BillingPlan = /*@__PURE__*/ S.String;
 
 /** Type of the Applied Scope. */
-export type AppliedScopeType =
-  | "Single"
-  | "Shared"
-  | "ManagementGroup"
-  | (string & {});
+export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
 export const AppliedScopeType = /*@__PURE__*/ S.String;
 
 /** Properties specific to applied scope type. Not required if not applicable. */
@@ -6388,7 +6359,7 @@ export const AppliedScopeProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppliedScopeProperties>;
 
 /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
-export type RenewAction = "CreateNew" | "RenewExisting" | (string & {});
+export type RenewAction = "CreateNew" | "RenewExisting";
 export const RenewAction = /*@__PURE__*/ S.String;
 
 /** The type of the resource that is being reserved. */
@@ -6418,18 +6389,17 @@ export type ReservedResourceType =
   | "NetAppStorage"
   | "AzureFiles"
   | "SqlEdge"
-  | "VirtualMachineSoftware"
-  | (string & {});
+  | "VirtualMachineSoftware";
 export const ReservedResourceType = /*@__PURE__*/ S.String;
 
 /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
-export type InstanceFlexibility = "On" | "Off" | (string & {});
+export type InstanceFlexibility = "On" | "Off";
 export const InstanceFlexibility = /*@__PURE__*/ S.String;
 
 /** Properties specific to each reserved resource type. Not required if not applicable. */
 export interface ReservationOrderAliasRequestPropertiesReservedResourceProperties {
   /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
-  instanceFlexibility?: InstanceFlexibility;
+  instanceFlexibility?: InstanceFlexibility | (string & {});
 }
 export const ReservationOrderAliasRequestPropertiesReservedResourceProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -6448,11 +6418,11 @@ export interface ReservationOrderAliasRequestProperties {
   /** Subscription that will be charged for purchasing the benefit */
   billingScopeId?: string;
   /** Represent benefit term in ISO 8601 format. */
-  term?: Term;
+  term?: Term | (string & {});
   /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan;
+  billingPlan?: BillingPlan | (string & {});
   /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
+  appliedScopeType?: AppliedScopeType | (string & {});
   /** Properties specific to applied scope type. Not required if not applicable. */
   appliedScopeProperties?: AppliedScopeProperties;
   /** Total Quantity of the SKUs purchased in the Reservation. */
@@ -6460,9 +6430,9 @@ export interface ReservationOrderAliasRequestProperties {
   /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
   renew?: boolean;
   /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
-  renewAction?: RenewAction;
+  renewAction?: RenewAction | (string & {});
   /** The type of the resource that is being reserved. */
-  reservedResourceType?: ReservedResourceType;
+  reservedResourceType?: ReservedResourceType | (string & {});
   /** This is the date-time when the Azure Hybrid Benefit needs to be reviewed. */
   reviewDateTime?: string;
   /** This is the DateTime when the reservation benefit started. */
@@ -6530,8 +6500,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Cancelled"
   | "Expired"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties specific to each reserved resource type. Not required if not applicable. */
@@ -7138,11 +7107,11 @@ export interface SavingsPlanOrderAliasPropertiesInput {
   /** Subscription that will be charged for purchasing the benefit */
   billingScopeId?: string;
   /** Represent benefit term in ISO 8601 format. */
-  term?: Term;
+  term?: Term | (string & {});
   /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan;
+  billingPlan?: BillingPlan | (string & {});
   /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
+  appliedScopeType?: AppliedScopeType | (string & {});
   /** Properties specific to applied scope type. Not required if not applicable. */
   appliedScopeProperties?: AppliedScopeProperties;
   /** Commitment towards the benefit. */
@@ -7393,12 +7362,7 @@ export const SavingsPlanOrderGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanOrderGetRequest>;
 
 /** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
-export type PaymentStatus =
-  | "Succeeded"
-  | "Failed"
-  | "Scheduled"
-  | "Cancelled"
-  | (string & {});
+export type PaymentStatus = "Succeeded" | "Failed" | "Scheduled" | "Cancelled";
 export const PaymentStatus = /*@__PURE__*/ S.String;
 
 /** Information about payment related to a savings plan order. */
@@ -7608,17 +7572,17 @@ export interface PurchaseRequestPropertiesInput {
   /** Subscription that will be charged for purchasing the benefit */
   billingScopeId?: string;
   /** Represent benefit term in ISO 8601 format. */
-  term?: Term;
+  term?: Term | (string & {});
   /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan;
+  billingPlan?: BillingPlan | (string & {});
   /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
+  appliedScopeType?: AppliedScopeType | (string & {});
   /** Commitment towards the benefit. */
   commitment?: Commitment;
   /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
   renew?: boolean;
   /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
-  renewAction?: RenewAction;
+  renewAction?: RenewAction | (string & {});
   /** Properties specific to applied scope type. Not required if not applicable. */
   appliedScopeProperties?: AppliedScopeProperties;
 }
@@ -7668,7 +7632,7 @@ export interface SavingsPlanUpdateRequestPropertiesInput {
   /** Display name */
   displayName?: string;
   /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
+  appliedScopeType?: AppliedScopeType | (string & {});
   /** Properties specific to applied scope type. Not required if not applicable. */
   appliedScopeProperties?: AppliedScopeProperties;
   /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
@@ -7904,7 +7868,7 @@ export const SourcesCreateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface SourcesCreateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: SourcesCreateRequestIdentityUserAssignedIdentitiesMap;
 }

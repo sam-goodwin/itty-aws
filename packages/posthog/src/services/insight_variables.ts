@@ -41,8 +41,7 @@ export type InsightVariableTypeEnum =
   | "Number"
   | "Boolean"
   | "List"
-  | "Date"
-  | (string & {});
+  | "Date";
 export const InsightVariableTypeEnum = /*@__PURE__*/ S.String;
 
 export interface InsightVariablesCreateRequest {
@@ -51,7 +50,7 @@ export interface InsightVariablesCreateRequest {
   /** Human-readable name for the SQL variable. */
   name?: string;
   /** Variable type. Controls how the value is rendered and substituted in HogQL. * `String` - String * `Number` - Number * `Boolean` - Boolean * `List` - List * `Date` - Date */
-  type?: InsightVariableTypeEnum;
+  type?: InsightVariableTypeEnum | (string & {});
   /** Default value used when a query references this variable. */
   default_value?: unknown;
   /** Allowed values for List variables. Null for other variable types. */
@@ -188,7 +187,7 @@ export interface InsightVariablesPartialUpdateRequest {
   /** Human-readable name for the SQL variable. */
   name?: string;
   /** Variable type. Controls how the value is rendered and substituted in HogQL. * `String` - String * `Number` - Number * `Boolean` - Boolean * `List` - List * `Date` - Date */
-  type?: InsightVariableTypeEnum;
+  type?: InsightVariableTypeEnum | (string & {});
   /** Default value used when a query references this variable. */
   default_value?: unknown;
   /** Allowed values for List variables. Null for other variable types. */
@@ -243,7 +242,7 @@ export interface InsightVariablesUpdateRequest {
   /** Human-readable name for the SQL variable. */
   name?: string;
   /** Variable type. Controls how the value is rendered and substituted in HogQL. * `String` - String * `Number` - Number * `Boolean` - Boolean * `List` - List * `Date` - Date */
-  type?: InsightVariableTypeEnum;
+  type?: InsightVariableTypeEnum | (string & {});
   /** Default value used when a query references this variable. */
   default_value?: unknown;
   /** Allowed values for List variables. Null for other variable types. */

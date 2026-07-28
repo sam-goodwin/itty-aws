@@ -12,17 +12,13 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `disabled` - Disabled * `dry_run` - Dry Run * `live` - Live */
-export type EventFilterConfigModeEnum =
-  | "disabled"
-  | "dry_run"
-  | "live"
-  | (string & {});
+export type EventFilterConfigModeEnum = "disabled" | "dry_run" | "live";
 export const EventFilterConfigModeEnum = /*@__PURE__*/ S.String;
 
 export interface EventFilterCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  mode?: EventFilterConfigModeEnum;
+  mode?: EventFilterConfigModeEnum | (string & {});
   /** Boolean expression tree. Nodes: {"type": "and"|"or", "children": [...]}, {"type": "not", "child": {...}}, {"type": "condition", "field": "event_name"|"distinct_id", "operator": "exact"|"contains", "value": "<string>"} */
   filter_tree?: unknown;
   /** Test events to validate the filter. Each: {"event_name": "...", "distinct_id": "...", "expected_result": "drop"|"ingest"} */

@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `good` - good * `bad` - bad */
-export type RatingEnum = "good" | "bad" | (string & {});
+export type RatingEnum = "good" | "bad";
 export const RatingEnum = /*@__PURE__*/ S.String;
 
 export interface ConversationsTicketsAiFeedbackCreateRequest {
@@ -47,7 +47,7 @@ export interface ConversationsTicketsAiFeedbackCreateRequest {
   /** ID of the AI message being rated. */
   message_id: string;
   /** Reviewer rating: good or bad. * `good` - good * `bad` - bad */
-  rating: RatingEnum;
+  rating: RatingEnum | (string & {});
   /** Optional text explaining a bad rating. */
   feedback_text?: string;
 }
@@ -90,8 +90,7 @@ export type TicketStatusEnum =
   | "open"
   | "pending"
   | "on_hold"
-  | "resolved"
-  | (string & {});
+  | "resolved";
 export const TicketStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ConversationsTicketsBulkUpdateStatusCreateRequest {
@@ -100,7 +99,7 @@ export interface ConversationsTicketsBulkUpdateStatusCreateRequest {
   /** List of ticket UUIDs to update. */
   ids: ConversationsTicketsBulkUpdateStatusCreateRequestIdsList;
   /** New status to apply to all selected tickets: new, open, pending, on_hold, or resolved. * `new` - New * `open` - Open * `pending` - Pending * `on_hold` - On hold * `resolved` - Resolved */
-  status: TicketStatusEnum;
+  status: TicketStatusEnum | (string & {});
 }
 export const ConversationsTicketsBulkUpdateStatusCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -149,7 +148,7 @@ export const ConversationsTicketsBulkUpdateTagsCreateRequestIdsList =
   ) as any as S.Schema<ConversationsTicketsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set" | (string & {});
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
 export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
@@ -166,7 +165,7 @@ export interface ConversationsTicketsBulkUpdateTagsCreateRequest {
   /** List of object IDs to update tags on. */
   ids?: ConversationsTicketsBulkUpdateTagsCreateRequestIdsList;
   /** 'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags. * `add` - add * `remove` - remove * `set` - set */
-  action?: BulkUpdateTagsActionEnum;
+  action?: BulkUpdateTagsActionEnum | (string & {});
   /** Tag names to add, remove, or set. */
   tags?: ConversationsTicketsBulkUpdateTagsCreateRequestTagsList;
 }
@@ -332,8 +331,7 @@ export type ConversationsTicketsListRequestChannelDetail =
   | "teams_bot_mention"
   | "teams_channel_message"
   | "widget_api"
-  | "widget_embedded"
-  | (string & {});
+  | "widget_embedded";
 export const ConversationsTicketsListRequestChannelDetail =
   /*@__PURE__*/ S.String;
 
@@ -342,8 +340,7 @@ export type ConversationsTicketsListRequestChannelSource =
   | "github"
   | "slack"
   | "teams"
-  | "widget"
-  | (string & {});
+  | "widget";
 export const ConversationsTicketsListRequestChannelSource =
   /*@__PURE__*/ S.String;
 
@@ -355,15 +352,13 @@ export type ConversationsTicketsListRequestOrderBy =
   | "created_at"
   | "sla_due_at"
   | "ticket_number"
-  | "updated_at"
-  | (string & {});
+  | "updated_at";
 export const ConversationsTicketsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export type ConversationsTicketsListRequestSla =
   | "at-risk"
   | "breached"
-  | "on-track"
-  | (string & {});
+  | "on-track";
 export const ConversationsTicketsListRequestSla = /*@__PURE__*/ S.String;
 
 export interface ConversationsTicketsListRequest {
@@ -372,9 +367,9 @@ export interface ConversationsTicketsListRequest {
   /** Filter by assignee. Accepts a single value or a comma-separated list (matches any, max 100 entries). Each entry is `unassigned` (no assignee), `user:<user_id>`, or `role:<role_uuid>`, e.g. `assignee=unassigned,user:123`. */
   assignee?: string;
   /** Filter by the channel sub-type (e.g. `widget_embedded`, `slack_bot_mention`). */
-  channel_detail?: ConversationsTicketsListRequestChannelDetail;
+  channel_detail?: ConversationsTicketsListRequestChannelDetail | (string & {});
   /** Filter by the channel the ticket originated from. */
-  channel_source?: ConversationsTicketsListRequestChannelSource;
+  channel_source?: ConversationsTicketsListRequestChannelSource | (string & {});
   /** Only include tickets updated on or after this date. Accepts absolute dates (`2026-01-01`) or relative ones (`-7d`, `-1mStart`). Pass `all` to disable the filter. */
   date_from?: string;
   /** Only include tickets updated on or before this date. Same format as `date_from`. */
@@ -386,13 +381,13 @@ export interface ConversationsTicketsListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
   /** Sort order. Prefix with `-` for descending. Defaults to `-updated_at`. */
-  order_by?: ConversationsTicketsListRequestOrderBy;
+  order_by?: ConversationsTicketsListRequestOrderBy | (string & {});
   /** Filter by priority. Accepts a single value or a comma-separated list (e.g. `medium,high`). Valid values: `low`, `medium`, `high`, `critical`. */
   priority?: string;
   /** Free-text search. A numeric value matches a ticket number exactly; otherwise matches against the customer's name or email (case-insensitive, partial match). */
   search?: string;
   /** Filter by SLA state. `breached` = past `sla_due_at`, `at-risk` = due within the next hour, `on-track` = more than an hour remaining. */
-  sla?: ConversationsTicketsListRequestSla;
+  sla?: ConversationsTicketsListRequestSla | (string & {});
   /** Filter by status. Accepts a single value or a comma-separated list (e.g. `new,open,pending`). Valid values: `new`, `open`, `pending`, `on_hold`, `resolved`. */
   status?: string;
   /** JSON-encoded array of tag names; returns tickets with ANY of them (OR), e.g. `["billing","urgent"]`. */
@@ -444,8 +439,7 @@ export type ChannelSourceEnum =
   | "email"
   | "slack"
   | "teams"
-  | "github"
-  | (string & {});
+  | "github";
 export const ChannelSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `slack_channel_message` - Channel message * `slack_bot_mention` - Bot mention * `slack_emoji_reaction` - Emoji reaction * `teams_channel_message` - Teams channel message * `teams_bot_mention` - Teams bot mention * `widget_embedded` - Widget * `widget_api` - API * `github_issue` - GitHub issue */
@@ -457,20 +451,14 @@ export type ChannelDetailEnum =
   | "teams_bot_mention"
   | "widget_embedded"
   | "widget_api"
-  | "github_issue"
-  | (string & {});
+  | "github_issue";
 export const ChannelDetailEnum = /*@__PURE__*/ S.String;
 
 /** * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
-export type TicketPriorityEnum =
-  | "low"
-  | "medium"
-  | "high"
-  | "critical"
-  | (string & {});
+export type TicketPriorityEnum = "low" | "medium" | "high" | "critical";
 export const TicketPriorityEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Ticket priority: low, medium, high, or critical. Null if unset. * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
@@ -757,7 +745,7 @@ export interface ConversationsTicketsPartialUpdateRequest {
   /** The ticket's UUID or its numeric ticket number. */
   id: string;
   /** Ticket status: new, open, pending, on_hold, or resolved * `new` - New * `open` - Open * `pending` - Pending * `on_hold` - On hold * `resolved` - Resolved */
-  status?: TicketStatusEnum;
+  status?: TicketStatusEnum | (string & {});
   /** Ticket priority: low, medium, high, or critical. Null if unset. * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
   priority?: ConversationsTicketsPartialUpdateRequestPriority | null;
   /** Customer-provided traits such as name and email */
@@ -865,7 +853,7 @@ export interface ConversationsTicketsUpdateRequest {
   /** The ticket's UUID or its numeric ticket number. */
   id: string;
   /** Ticket status: new, open, pending, on_hold, or resolved * `new` - New * `open` - Open * `pending` - Pending * `on_hold` - On hold * `resolved` - Resolved */
-  status?: TicketStatusEnum;
+  status?: TicketStatusEnum | (string & {});
   /** Ticket priority: low, medium, high, or critical. Null if unset. * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
   priority?: ConversationsTicketsUpdateRequestPriority | null;
   /** Customer-provided traits such as name and email */
@@ -957,8 +945,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

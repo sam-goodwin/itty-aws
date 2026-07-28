@@ -24,12 +24,7 @@ export const IntegrationAccountAgreementsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<IntegrationAccountAgreementsCreateOrUpdateRequestTagsMap>;
 
 /** The agreement type. */
-export type AgreementType =
-  | "NotSpecified"
-  | "AS2"
-  | "X12"
-  | "Edifact"
-  | (string & {});
+export type AgreementType = "NotSpecified" | "AS2" | "X12" | "Edifact";
 export const AgreementType = /*@__PURE__*/ S.String;
 
 /** The integration account partner's business identity. */
@@ -101,8 +96,7 @@ export type HashingAlgorithm =
   | "SHA1"
   | "SHA2256"
   | "SHA2384"
-  | "SHA2512"
-  | (string & {});
+  | "SHA2512";
 export const HashingAlgorithm = /*@__PURE__*/ S.String;
 
 /** The AS2 agreement mdn settings. */
@@ -188,8 +182,7 @@ export type EncryptionAlgorithm =
   | "RC2"
   | "AES128"
   | "AES192"
-  | "AES256"
-  | (string & {});
+  | "AES256";
 export const EncryptionAlgorithm = /*@__PURE__*/ S.String;
 
 /** The signing or hashing algorithm. */
@@ -199,8 +192,7 @@ export type SigningAlgorithm =
   | "SHA1"
   | "SHA2256"
   | "SHA2384"
-  | "SHA2512"
-  | (string & {});
+  | "SHA2512";
 export const SigningAlgorithm = /*@__PURE__*/ S.String;
 
 /** The AS2 agreement validation settings. */
@@ -355,8 +347,7 @@ export type TrailingSeparatorPolicy =
   | "NotSpecified"
   | "NotAllowed"
   | "Optional"
-  | "Mandatory"
-  | (string & {});
+  | "Mandatory";
 export const TrailingSeparatorPolicy = /*@__PURE__*/ S.String;
 
 /** The X12 agreement validation settings. */
@@ -400,12 +391,7 @@ export const X12ValidationSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<X12ValidationSettings>;
 
 /** The X12 character set. */
-export type X12CharacterSet =
-  | "NotSpecified"
-  | "Basic"
-  | "Extended"
-  | "UTF8"
-  | (string & {});
+export type X12CharacterSet = "NotSpecified" | "Basic" | "Extended" | "UTF8";
 export const X12CharacterSet = /*@__PURE__*/ S.String;
 
 /** The segment terminator suffix. */
@@ -414,8 +400,7 @@ export type SegmentTerminatorSuffix =
   | "None"
   | "CR"
   | "LF"
-  | "CRLF"
-  | (string & {});
+  | "CRLF";
 export const SegmentTerminatorSuffix = /*@__PURE__*/ S.String;
 
 /** The X12 agreement framing settings. */
@@ -450,11 +435,7 @@ export const X12FramingSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<X12FramingSettings>;
 
 /** The x12 date format. */
-export type X12DateFormat =
-  | "NotSpecified"
-  | "CCYYMMDD"
-  | "YYMMDD"
-  | (string & {});
+export type X12DateFormat = "NotSpecified" | "CCYYMMDD" | "YYMMDD";
 export const X12DateFormat = /*@__PURE__*/ S.String;
 
 /** The x12 time format. */
@@ -463,8 +444,7 @@ export type X12TimeFormat =
   | "HHMM"
   | "HHMMSS"
   | "HHMMSSdd"
-  | "HHMMSSd"
-  | (string & {});
+  | "HHMMSSd";
 export const X12TimeFormat = /*@__PURE__*/ S.String;
 
 /** The usage indicator. */
@@ -472,8 +452,7 @@ export type UsageIndicator =
   | "NotSpecified"
   | "Test"
   | "Information"
-  | "Production"
-  | (string & {});
+  | "Production";
 export const UsageIndicator = /*@__PURE__*/ S.String;
 
 /** The X12 agreement envelope settings. */
@@ -614,11 +593,7 @@ export const X12AcknowledgementSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<X12AcknowledgementSettings>;
 
 /** The message filter type. */
-export type MessageFilterType =
-  | "NotSpecified"
-  | "Include"
-  | "Exclude"
-  | (string & {});
+export type MessageFilterType = "NotSpecified" | "Include" | "Exclude";
 export const MessageFilterType = /*@__PURE__*/ S.String;
 
 /** The X12 message filter for odata query. */
@@ -1002,16 +977,11 @@ export type EdifactCharacterSet =
   | "UNOK"
   | "UNOX"
   | "UNOY"
-  | "KECA"
-  | (string & {});
+  | "KECA";
 export const EdifactCharacterSet = /*@__PURE__*/ S.String;
 
 /** The edifact decimal indicator. */
-export type EdifactDecimalIndicator =
-  | "NotSpecified"
-  | "Comma"
-  | "Decimal"
-  | (string & {});
+export type EdifactDecimalIndicator = "NotSpecified" | "Comma" | "Decimal";
 export const EdifactDecimalIndicator = /*@__PURE__*/ S.String;
 
 /** The Edifact agreement framing settings. */
@@ -1597,7 +1567,7 @@ export interface IntegrationAccountAgreementPropertiesInput {
   /** The metadata. */
   metadata?: unknown;
   /** The agreement type. */
-  agreementType: AgreementType;
+  agreementType: AgreementType | (string & {});
   /** The integration account partner that is set as host partner for this agreement. */
   hostPartner: string;
   /** The integration account partner that is set as guest partner for this agreement. */
@@ -1939,7 +1909,7 @@ export const IntegrationAccountAgreementListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IntegrationAccountAgreementListResult>;
 
 /** The key type. */
-export type KeyType = "NotSpecified" | "Primary" | "Secondary" | (string & {});
+export type KeyType = "NotSpecified" | "Primary" | "Secondary";
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface IntegrationAccountAgreementsListContentCallbackUrlRequest {
@@ -1954,7 +1924,7 @@ export interface IntegrationAccountAgreementsListContentCallbackUrlRequest {
   /** The expiry time. */
   notAfter?: string;
   /** The key type. */
-  keyType?: KeyType;
+  keyType?: KeyType | (string & {});
 }
 export const IntegrationAccountAgreementsListContentCallbackUrlRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2484,8 +2454,7 @@ export type RecurrenceFrequency =
   | "Day"
   | "Week"
   | "Month"
-  | "Year"
-  | (string & {});
+  | "Year";
 export const RecurrenceFrequency = /*@__PURE__*/ S.String;
 
 /** The minutes. */
@@ -2507,8 +2476,7 @@ export type RecurrenceScheduleWeekDaysItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday"
-  | (string & {});
+  | "Saturday";
 export const RecurrenceScheduleWeekDaysItem = /*@__PURE__*/ S.String;
 
 /** The days of the week. */
@@ -2532,8 +2500,7 @@ export type DayOfWeek =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday"
-  | (string & {});
+  | "Saturday";
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 /** The recurrence schedule occurrence. */
@@ -3325,13 +3292,7 @@ export const IntegrationAccountMapsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<IntegrationAccountMapsCreateOrUpdateRequestTagsMap>;
 
 /** The map type. */
-export type MapType =
-  | "NotSpecified"
-  | "Xslt"
-  | "Xslt20"
-  | "Xslt30"
-  | "Liquid"
-  | (string & {});
+export type MapType = "NotSpecified" | "Xslt" | "Xslt20" | "Xslt30" | "Liquid";
 export const MapType = /*@__PURE__*/ S.String;
 
 /** The parameters schema of integration account map. */
@@ -3351,7 +3312,7 @@ export const IntegrationAccountMapPropertiesInputParametersSchema =
 /** The integration account map. */
 export interface IntegrationAccountMapPropertiesInput {
   /** The map type. */
-  mapType: MapType;
+  mapType: MapType | (string & {});
   /** The parameters schema of integration account map. */
   parametersSchema?: IntegrationAccountMapPropertiesInputParametersSchema;
   /** The content. */
@@ -3704,7 +3665,7 @@ export interface IntegrationAccountMapsListContentCallbackUrlRequest {
   /** The expiry time. */
   notAfter?: string;
   /** The key type. */
-  keyType?: KeyType;
+  keyType?: KeyType | (string & {});
 }
 export const IntegrationAccountMapsListContentCallbackUrlRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3738,7 +3699,7 @@ export const IntegrationAccountPartnersCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<IntegrationAccountPartnersCreateOrUpdateRequestTagsMap>;
 
 /** The partner type. */
-export type PartnerType = "NotSpecified" | "B2B" | (string & {});
+export type PartnerType = "NotSpecified" | "B2B";
 export const PartnerType = /*@__PURE__*/ S.String;
 
 /** The list of partner business identities. */
@@ -3775,7 +3736,7 @@ export const PartnerContent = /*@__PURE__*/ S.suspend(() =>
 /** The integration account partner properties. */
 export interface IntegrationAccountPartnerPropertiesInput {
   /** The partner type. */
-  partnerType: PartnerType;
+  partnerType: PartnerType | (string & {});
   /** The metadata. */
   metadata?: unknown;
   /** The partner content. */
@@ -4101,7 +4062,7 @@ export interface IntegrationAccountPartnersListContentCallbackUrlRequest {
   /** The expiry time. */
   notAfter?: string;
   /** The key type. */
-  keyType?: KeyType;
+  keyType?: KeyType | (string & {});
 }
 export const IntegrationAccountPartnersListContentCallbackUrlRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4135,13 +4096,13 @@ export const IntegrationAccountSchemasCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<IntegrationAccountSchemasCreateOrUpdateRequestTagsMap>;
 
 /** The schema type. */
-export type SchemaType = "NotSpecified" | "Xml" | (string & {});
+export type SchemaType = "NotSpecified" | "Xml";
 export const SchemaType = /*@__PURE__*/ S.String;
 
 /** The integration account schema properties. */
 export interface IntegrationAccountSchemaPropertiesInput {
   /** The schema type. */
-  schemaType: SchemaType;
+  schemaType: SchemaType | (string & {});
   /** The target namespace of the schema. */
   targetNamespace?: string;
   /** The document name. */
@@ -4493,7 +4454,7 @@ export interface IntegrationAccountSchemasListContentCallbackUrlRequest {
   /** The expiry time. */
   notAfter?: string;
   /** The key type. */
-  keyType?: KeyType;
+  keyType?: KeyType | (string & {});
 }
 export const IntegrationAccountSchemasListContentCallbackUrlRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4546,8 +4507,7 @@ export type WorkflowState =
   | "Enabled"
   | "Disabled"
   | "Deleted"
-  | "Suspended"
-  | (string & {});
+  | "Suspended";
 export const WorkflowState = /*@__PURE__*/ S.String;
 
 /** The integration account properties. */
@@ -4555,7 +4515,7 @@ export interface IntegrationAccountPropertiesInput {
   /** The integration service environment. */
   integrationServiceEnvironment?: ResourceReferenceInput;
   /** The workflow state. */
-  state?: WorkflowState;
+  state?: WorkflowState | (string & {});
 }
 export const IntegrationAccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4571,8 +4531,7 @@ export type IntegrationAccountSkuName =
   | "NotSpecified"
   | "Free"
   | "Basic"
-  | "Standard"
-  | (string & {});
+  | "Standard";
 export const IntegrationAccountSkuName = /*@__PURE__*/ S.String;
 
 /** The integration account sku. */
@@ -5233,7 +5192,7 @@ export interface IntegrationAccountsListCallbackUrlRequest {
   /** The expiry time. */
   notAfter?: string;
   /** The key type. */
-  keyType?: KeyType;
+  keyType?: KeyType | (string & {});
 }
 export const IntegrationAccountsListCallbackUrlRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5367,10 +5326,7 @@ export const KeyVaultKeyCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyVaultKeyCollection>;
 
 /** The track events operation options. */
-export type TrackEventsOperationOptions =
-  | "None"
-  | "DisableSourceInfoEnrich"
-  | (string & {});
+export type TrackEventsOperationOptions = "None" | "DisableSourceInfoEnrich";
 export const TrackEventsOperationOptions = /*@__PURE__*/ S.String;
 
 /** The event level. */
@@ -5380,8 +5336,7 @@ export type EventLevel =
   | "Error"
   | "Warning"
   | "Informational"
-  | "Verbose"
-  | (string & {});
+  | "Verbose";
 export const EventLevel = /*@__PURE__*/ S.String;
 
 /** The tracking record type. */
@@ -5401,8 +5356,7 @@ export type TrackingRecordType =
   | "EdifactTransactionSet"
   | "EdifactInterchangeAcknowledgment"
   | "EdifactFunctionalGroupAcknowledgment"
-  | "EdifactTransactionSetAcknowledgment"
-  | (string & {});
+  | "EdifactTransactionSetAcknowledgment";
 export const TrackingRecordType = /*@__PURE__*/ S.String;
 
 /** The tracking event error info. */
@@ -5424,11 +5378,11 @@ export const TrackingEventErrorInfo = /*@__PURE__*/ S.suspend(() =>
 /** The tracking event. */
 export interface TrackingEvent {
   /** The event level. */
-  eventLevel: EventLevel;
+  eventLevel: EventLevel | (string & {});
   /** The event time. */
   eventTime: string;
   /** The record type. */
-  recordType: TrackingRecordType;
+  recordType: TrackingRecordType | (string & {});
   /** The record. */
   record?: unknown;
   /** The error. */
@@ -5462,7 +5416,7 @@ export interface IntegrationAccountsLogTrackingEventsRequest {
   /** The source type. */
   sourceType: string;
   /** The track events options. */
-  trackEventsOptions?: TrackEventsOperationOptions;
+  trackEventsOptions?: TrackEventsOperationOptions | (string & {});
   /** The events. */
   events: IntegrationAccountsLogTrackingEventsRequestEventsList;
 }
@@ -5501,7 +5455,7 @@ export interface IntegrationAccountsRegenerateAccessKeyRequest {
   /** The integration account name. */
   integrationAccountName: string;
   /** The key type. */
-  keyType?: KeyType;
+  keyType?: KeyType | (string & {});
 }
 export const IntegrationAccountsRegenerateAccessKeyRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5685,11 +5639,7 @@ export const ApiOperationTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ApiOperationTagsMap>;
 
 /** The status annotation. */
-export type StatusAnnotation =
-  | "NotSpecified"
-  | "Preview"
-  | "Production"
-  | (string & {});
+export type StatusAnnotation = "NotSpecified" | "Preview" | "Production";
 export const StatusAnnotation = /*@__PURE__*/ S.String;
 
 /** The Api Operation Annotation. */
@@ -5711,12 +5661,7 @@ export const ApiOperationAnnotation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiOperationAnnotation>;
 
 /** The Api tier. */
-export type ApiTier =
-  | "NotSpecified"
-  | "Enterprise"
-  | "Standard"
-  | "Premium"
-  | (string & {});
+export type ApiTier = "NotSpecified" | "Enterprise" | "Standard" | "Premium";
 export const ApiTier = /*@__PURE__*/ S.String;
 
 /** The Api reference. */
@@ -5766,8 +5711,7 @@ export type SwaggerSchemaType =
   | "Array"
   | "File"
   | "Object"
-  | "Null"
-  | (string & {});
+  | "Null";
 export const SwaggerSchemaType = /*@__PURE__*/ S.String;
 
 /** The object properties */
@@ -6308,7 +6252,7 @@ export const ApiResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ApiResourceMetadataTagsMap>;
 
-export type ApiType = "NotSpecified" | "Rest" | "Soap" | (string & {});
+export type ApiType = "NotSpecified" | "Rest" | "Soap";
 export const ApiType = /*@__PURE__*/ S.String;
 
 /** The list of endpoints' qualified names. */
@@ -6335,8 +6279,7 @@ export const WsdlService = /*@__PURE__*/ S.suspend(() =>
 export type WsdlImportMethod =
   | "NotSpecified"
   | "SoapToRest"
-  | "SoapPassThrough"
-  | (string & {});
+  | "SoapPassThrough";
 export const WsdlImportMethod = /*@__PURE__*/ S.String;
 
 /** The workflow provisioning state. */
@@ -6362,16 +6305,14 @@ export type WorkflowProvisioningState =
   | "Renewing"
   | "Pending"
   | "Waiting"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const WorkflowProvisioningState = /*@__PURE__*/ S.String;
 
 /** The Api deployment parameter visibility. */
 export type ApiDeploymentParameterVisibility =
   | "NotSpecified"
   | "Default"
-  | "Internal"
-  | (string & {});
+  | "Internal";
 export const ApiDeploymentParameterVisibility = /*@__PURE__*/ S.String;
 
 /** The API deployment parameter metadata. */
@@ -6906,8 +6847,7 @@ export type IntegrationServiceEnvironmentNetworkDependencyCategoryType =
   | "AccessEndpoints"
   | "RecoveryService"
   | "SQL"
-  | "RegionalService"
-  | (string & {});
+  | "RegionalService";
 export const IntegrationServiceEnvironmentNetworkDependencyCategoryType =
   /*@__PURE__*/ S.String;
 
@@ -6916,8 +6856,7 @@ export type IntegrationServiceEnvironmentNetworkEndPointAccessibilityState =
   | "NotSpecified"
   | "Unknown"
   | "Available"
-  | "NotAvailable"
-  | (string & {});
+  | "NotAvailable";
 export const IntegrationServiceEnvironmentNetworkEndPointAccessibilityState =
   /*@__PURE__*/ S.String;
 
@@ -6996,8 +6935,7 @@ export type ErrorResponseCode =
   | "NotSpecified"
   | "IntegrationServiceEnvironmentNotFound"
   | "InternalServerError"
-  | "InvalidOperationId"
-  | (string & {});
+  | "InvalidOperationId";
 export const ErrorResponseCode = /*@__PURE__*/ S.String;
 
 /** The error message details. */
@@ -7033,8 +6971,7 @@ export type IntegrationServiceEnvironmentNetworkDependencyHealthState =
   | "NotSpecified"
   | "Healthy"
   | "Unhealthy"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const IntegrationServiceEnvironmentNetworkDependencyHealthState =
   /*@__PURE__*/ S.String;
 
@@ -7171,8 +7108,7 @@ export const FlowEndpointsConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type IntegrationServiceEnvironmentAccessEndpointType =
   | "NotSpecified"
   | "External"
-  | "Internal"
-  | (string & {});
+  | "Internal";
 export const IntegrationServiceEnvironmentAccessEndpointType =
   /*@__PURE__*/ S.String;
 
@@ -7255,9 +7191,9 @@ export const IntegrationServiceEnvironmenEncryptionConfigurationInput =
 /** The integration service environment properties. */
 export interface IntegrationServiceEnvironmentPropertiesInput {
   /** The provisioning state. */
-  provisioningState?: WorkflowProvisioningState;
+  provisioningState?: WorkflowProvisioningState | (string & {});
   /** The integration service environment state. */
-  state?: WorkflowState;
+  state?: WorkflowState | (string & {});
   /** Gets the tracking id. */
   integrationServiceEnvironmentId?: string;
   /** The endpoints configuration. */
@@ -7287,8 +7223,7 @@ export const IntegrationServiceEnvironmentPropertiesInput =
 export type IntegrationServiceEnvironmentSkuName =
   | "NotSpecified"
   | "Premium"
-  | "Developer"
-  | (string & {});
+  | "Developer";
 export const IntegrationServiceEnvironmentSkuName = /*@__PURE__*/ S.String;
 
 /** The integration service environment sku. */
@@ -7311,8 +7246,7 @@ export const IntegrationServiceEnvironmentSku = /*@__PURE__*/ S.suspend(() =>
 export type ManagedServiceIdentityInputType =
   | "SystemAssigned"
   | "UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const ManagedServiceIdentityInputType = /*@__PURE__*/ S.String;
 
 /** User Assigned identity properties. */
@@ -7336,7 +7270,7 @@ export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
 /** Managed service identity properties. */
 export interface ManagedServiceIdentityInput {
   /** Type of managed service identity. The type 'SystemAssigned' includes an implicitly created identity. The type 'None' will remove any identities from the resource. */
-  type: ManagedServiceIdentityInputType;
+  type: ManagedServiceIdentityInputType | (string & {});
   /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
   userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
 }
@@ -7499,8 +7433,7 @@ export const IntegrationServiceEnvironmentProperties = /*@__PURE__*/ S.suspend(
 export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User Assigned identity properties. */
@@ -7736,8 +7669,7 @@ export const IntegrationServiceEnvironmentSkuDefinitionSku =
 export type IntegrationServiceEnvironmentSkuScaleType =
   | "Manual"
   | "Automatic"
-  | "None"
-  | (string & {});
+  | "None";
 export const IntegrationServiceEnvironmentSkuScaleType = /*@__PURE__*/ S.String;
 
 /** The integration service environment sku capacity. */
@@ -8209,8 +8141,7 @@ export type WorkflowStatus =
   | "Faulted"
   | "TimedOut"
   | "Aborted"
-  | "Ignored"
-  | (string & {});
+  | "Ignored";
 export const WorkflowStatus = /*@__PURE__*/ S.String;
 
 /** Error properties indicate why the Logic service was not able to process the incoming request. The reason is provided in the error message. */
@@ -9361,8 +9292,7 @@ export type ParameterType =
   | "Bool"
   | "Array"
   | "Object"
-  | "SecureObject"
-  | (string & {});
+  | "SecureObject";
 export const ParameterType = /*@__PURE__*/ S.String;
 
 /** The workflow output parameter. */
@@ -9652,7 +9582,7 @@ export const FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList =
   ) as any as S.Schema<FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList>;
 
 /** Open authentication policy provider type. */
-export type OpenAuthenticationProviderType = "AAD" | (string & {});
+export type OpenAuthenticationProviderType = "AAD";
 export const OpenAuthenticationProviderType = /*@__PURE__*/ S.String;
 
 /** Open authentication policy claim. */
@@ -9792,7 +9722,7 @@ export const WorkflowPropertiesInputParametersMap = /*@__PURE__*/ S.Record(
 /** The workflow properties. */
 export interface WorkflowPropertiesInput {
   /** The state. */
-  state?: WorkflowState;
+  state?: WorkflowState | (string & {});
   /** The endpoints configuration. */
   endpointsConfiguration?: FlowEndpointsConfiguration;
   /** The access control configuration. */
@@ -9872,8 +9802,7 @@ export type SkuName =
   | "Shared"
   | "Basic"
   | "Standard"
-  | "Premium"
-  | (string & {});
+  | "Premium";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The sku type. */
@@ -10289,7 +10218,7 @@ export interface WorkflowsListCallbackUrlRequest {
   /** The expiry time. */
   notAfter?: string;
   /** The key type. */
-  keyType?: KeyType;
+  keyType?: KeyType | (string & {});
 }
 export const WorkflowsListCallbackUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10385,7 +10314,7 @@ export interface WorkflowsRegenerateAccessKeyRequest {
   /** The workflow name. */
   workflowName: string;
   /** The key type. */
-  keyType?: KeyType;
+  keyType?: KeyType | (string & {});
 }
 export const WorkflowsRegenerateAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10844,8 +10773,7 @@ export type WorkflowTriggerProvisioningState =
   | "Registered"
   | "Unregistering"
   | "Unregistered"
-  | "Completed"
-  | (string & {});
+  | "Completed";
 export const WorkflowTriggerProvisioningState = /*@__PURE__*/ S.String;
 
 /** The workflow trigger properties. */
@@ -11398,7 +11326,7 @@ export interface WorkflowVersionTriggersListCallbackUrlRequest {
   /** The expiry time. */
   notAfter?: string;
   /** The key type. */
-  keyType?: KeyType;
+  keyType?: KeyType | (string & {});
 }
 export const WorkflowVersionTriggersListCallbackUrlRequest =
   /*@__PURE__*/ S.suspend(() =>

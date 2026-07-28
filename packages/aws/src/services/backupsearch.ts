@@ -127,11 +127,10 @@ export type SearchJobState =
   | "COMPLETED"
   | "STOPPING"
   | "STOPPED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const SearchJobState = /*@__PURE__*/ S.String;
 
-export type ResourceType = "S3" | "EBS" | (string & {});
+export type ResourceType = "S3" | "EBS";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type ResourceTypeList = ResourceType[];
@@ -182,8 +181,7 @@ export type StringConditionOperator =
   | "BEGINS_WITH"
   | "ENDS_WITH"
   | "DOES_NOT_BEGIN_WITH"
-  | "DOES_NOT_END_WITH"
-  | (string & {});
+  | "DOES_NOT_END_WITH";
 export const StringConditionOperator = /*@__PURE__*/ S.String;
 
 export interface StringCondition {
@@ -201,8 +199,7 @@ export type LongConditionOperator =
   | "EQUALS_TO"
   | "NOT_EQUALS_TO"
   | "LESS_THAN_EQUAL_TO"
-  | "GREATER_THAN_EQUAL_TO"
-  | (string & {});
+  | "GREATER_THAN_EQUAL_TO";
 export const LongConditionOperator = /*@__PURE__*/ S.String;
 
 export interface LongCondition {
@@ -218,8 +215,7 @@ export type TimeConditionOperator =
   | "EQUALS_TO"
   | "NOT_EQUALS_TO"
   | "LESS_THAN_EQUAL_TO"
-  | "GREATER_THAN_EQUAL_TO"
-  | (string & {});
+  | "GREATER_THAN_EQUAL_TO";
 export const TimeConditionOperator = /*@__PURE__*/ S.String;
 
 export interface TimeCondition {
@@ -334,11 +330,7 @@ export const GetSearchResultExportJobInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSearchResultExportJobInput",
 }) as any as S.Schema<GetSearchResultExportJobInput>;
 export type ExportJobArn = string;
-export type ExportJobStatus =
-  | "RUNNING"
-  | "FAILED"
-  | "COMPLETED"
-  | (string & {});
+export type ExportJobStatus = "RUNNING" | "FAILED" | "COMPLETED";
 export const ExportJobStatus = /*@__PURE__*/ S.String;
 
 export interface S3ExportSpecification {
@@ -544,7 +536,7 @@ export const ListSearchJobResultsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSearchJobResultsOutput",
 }) as any as S.Schema<ListSearchJobResultsOutput>;
 export interface ListSearchJobsInput {
-  ByStatus?: SearchJobState;
+  ByStatus?: SearchJobState | (string & {});
   NextToken?: string;
   MaxResults?: number;
 }
@@ -602,7 +594,7 @@ export const ListSearchJobsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSearchJobsOutput",
 }) as any as S.Schema<ListSearchJobsOutput>;
 export interface ListSearchResultExportJobsInput {
-  Status?: ExportJobStatus;
+  Status?: ExportJobStatus | (string & {});
   SearchJobIdentifier?: string;
   NextToken?: string;
   MaxResults?: number;

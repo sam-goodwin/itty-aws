@@ -20,16 +20,14 @@ export type CustomPropertyDisplayTypeEnum =
   | "date"
   | "datetime"
   | "boolean"
-  | "select"
-  | (string & {});
+  | "select";
 export const CustomPropertyDisplayTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `account` - account * `person` - person * `group` - group */
 export type CustomPropertyDefinitionTargetTypeEnum =
   | "account"
   | "person"
-  | "group"
-  | (string & {});
+  | "group";
 export const CustomPropertyDefinitionTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `preset-1` - preset-1 * `preset-2` - preset-2 * `preset-3` - preset-3 * `preset-4` - preset-4 * `preset-5` - preset-5 * `preset-6` - preset-6 * `preset-7` - preset-7 * `preset-8` - preset-8 * `preset-9` - preset-9 * `preset-10` - preset-10 */
@@ -43,8 +41,7 @@ export type CustomPropertyOptionColorEnum =
   | "preset-7"
   | "preset-8"
   | "preset-9"
-  | "preset-10"
-  | (string & {});
+  | "preset-10";
 export const CustomPropertyOptionColorEnum = /*@__PURE__*/ S.String;
 
 /** An allowed value of a select custom property. */
@@ -82,9 +79,9 @@ export interface CustomPropertyDefinitionsCreateRequest {
   /** Optional description of what the property represents. */
   description?: string | null;
   /** How the property is interpreted and rendered: 'text', 'number', 'currency', 'percent', 'date', 'datetime', 'boolean', or 'select'. * `text` - text * `number` - number * `currency` - currency * `percent` - percent * `date` - date * `datetime` - datetime * `boolean` - boolean * `select` - select */
-  display_type: CustomPropertyDisplayTypeEnum;
+  display_type: CustomPropertyDisplayTypeEnum | (string & {});
   /** What entity this property is attached to: 'account' (default), 'person', or 'group'. Person and group properties are populated from a warehouse schema and become usable like any other person/group property (feature flags, cohorts, insights). * `account` - account * `person` - person * `group` - group */
-  target_type?: CustomPropertyDefinitionTargetTypeEnum;
+  target_type?: CustomPropertyDefinitionTargetTypeEnum | (string & {});
   /** For 'group' targets only: which group type (0-4) the property attaches to. Required when target_type is 'group'; must be omitted otherwise. Create-only. */
   group_type_index?: number | null;
   /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */
@@ -394,9 +391,9 @@ export interface CustomPropertyDefinitionsPartialUpdateRequest {
   /** Optional description of what the property represents. */
   description?: string | null;
   /** How the property is interpreted and rendered: 'text', 'number', 'currency', 'percent', 'date', 'datetime', 'boolean', or 'select'. * `text` - text * `number` - number * `currency` - currency * `percent` - percent * `date` - date * `datetime` - datetime * `boolean` - boolean * `select` - select */
-  display_type?: CustomPropertyDisplayTypeEnum;
+  display_type?: CustomPropertyDisplayTypeEnum | (string & {});
   /** What entity this property is attached to: 'account' (default), 'person', or 'group'. Person and group properties are populated from a warehouse schema and become usable like any other person/group property (feature flags, cohorts, insights). * `account` - account * `person` - person * `group` - group */
-  target_type?: CustomPropertyDefinitionTargetTypeEnum;
+  target_type?: CustomPropertyDefinitionTargetTypeEnum | (string & {});
   /** For 'group' targets only: which group type (0-4) the property attaches to. Required when target_type is 'group'; must be omitted otherwise. Create-only. */
   group_type_index?: number | null;
   /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */
@@ -467,9 +464,9 @@ export interface CustomPropertyDefinitionsUpdateRequest {
   /** Optional description of what the property represents. */
   description?: string | null;
   /** How the property is interpreted and rendered: 'text', 'number', 'currency', 'percent', 'date', 'datetime', 'boolean', or 'select'. * `text` - text * `number` - number * `currency` - currency * `percent` - percent * `date` - date * `datetime` - datetime * `boolean` - boolean * `select` - select */
-  display_type: CustomPropertyDisplayTypeEnum;
+  display_type: CustomPropertyDisplayTypeEnum | (string & {});
   /** What entity this property is attached to: 'account' (default), 'person', or 'group'. Person and group properties are populated from a warehouse schema and become usable like any other person/group property (feature flags, cohorts, insights). * `account` - account * `person` - person * `group` - group */
-  target_type?: CustomPropertyDefinitionTargetTypeEnum;
+  target_type?: CustomPropertyDefinitionTargetTypeEnum | (string & {});
   /** For 'group' targets only: which group type (0-4) the property attaches to. Required when target_type is 'group'; must be omitted otherwise. Create-only. */
   group_type_index?: number | null;
   /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */

@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest {
@@ -66,28 +66,15 @@ export interface AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsR
   /** Required. Parent (Batch) resource reference. */
   parent?: string;
 }
-export const AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessEnvironmentInfo",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest>;
+export const AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessEnvironmentInfo","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Resources used per executor used by the application. */
 export interface ExecutorResourceRequest {
@@ -97,23 +84,16 @@ export interface ExecutorResourceRequest {
   discoveryScript?: string;
 }
 export const ExecutorResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(S.String),
-    vendor: S.optional(S.String),
-    resourceName: S.optional(S.String),
-    discoveryScript: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecutorResourceRequest",
-}) as any as S.Schema<ExecutorResourceRequest>;
+S.Struct({
+  "amount": S.optional(S.String),
+  "vendor": S.optional(S.String),
+  "resourceName": S.optional(S.String),
+  "discoveryScript": S.optional(S.String),
+}),
+).annotate({ identifier: "ExecutorResourceRequest" }) as any as S.Schema<ExecutorResourceRequest>;
 
-export type ExecutorResourceRequestMap = {
-  [key: string]: ExecutorResourceRequest | undefined;
-};
-export const ExecutorResourceRequestMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ExecutorResourceRequest,
-) as any as S.Schema<ExecutorResourceRequestMap>;
+export type ExecutorResourceRequestMap = { [key: string]: ExecutorResourceRequest | undefined };
+export const ExecutorResourceRequestMap = /*@__PURE__*/ S.Record(S.String, ExecutorResourceRequest) as any as S.Schema<ExecutorResourceRequestMap>;
 
 /** Resources used per task created by the application. */
 export interface TaskResourceRequest {
@@ -121,21 +101,14 @@ export interface TaskResourceRequest {
   resourceName?: string;
 }
 export const TaskResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(S.Number),
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TaskResourceRequest",
-}) as any as S.Schema<TaskResourceRequest>;
+S.Struct({
+  "amount": S.optional(S.Number),
+  "resourceName": S.optional(S.String),
+}),
+).annotate({ identifier: "TaskResourceRequest" }) as any as S.Schema<TaskResourceRequest>;
 
-export type TaskResourceRequestMap = {
-  [key: string]: TaskResourceRequest | undefined;
-};
-export const TaskResourceRequestMap = /*@__PURE__*/ S.Record(
-  S.String,
-  TaskResourceRequest,
-) as any as S.Schema<TaskResourceRequestMap>;
+export type TaskResourceRequestMap = { [key: string]: TaskResourceRequest | undefined };
+export const TaskResourceRequestMap = /*@__PURE__*/ S.Record(S.String, TaskResourceRequest) as any as S.Schema<TaskResourceRequestMap>;
 
 /** Resource profile that contains information about all the resources required by executors and tasks. */
 export interface ResourceProfileInfo {
@@ -144,19 +117,15 @@ export interface ResourceProfileInfo {
   taskResources?: TaskResourceRequestMap;
 }
 export const ResourceProfileInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executorResources: S.optional(ExecutorResourceRequestMap),
-    resourceProfileId: S.optional(S.Number),
-    taskResources: S.optional(TaskResourceRequestMap),
-  }),
-).annotate({
-  identifier: "ResourceProfileInfo",
-}) as any as S.Schema<ResourceProfileInfo>;
+S.Struct({
+  "executorResources": S.optional(ExecutorResourceRequestMap),
+  "resourceProfileId": S.optional(S.Number),
+  "taskResources": S.optional(TaskResourceRequestMap),
+}),
+).annotate({ identifier: "ResourceProfileInfo" }) as any as S.Schema<ResourceProfileInfo>;
 
 export type ResourceProfileInfoList = ReadonlyArray<ResourceProfileInfo>;
-export const ResourceProfileInfoList = /*@__PURE__*/ S.Array(
-  ResourceProfileInfo,
-) as any as S.Schema<ResourceProfileInfoList>;
+export const ResourceProfileInfoList = /*@__PURE__*/ S.Array(ResourceProfileInfo) as any as S.Schema<ResourceProfileInfoList>;
 
 export interface SparkRuntimeInfo {
   javaHome?: string;
@@ -164,14 +133,12 @@ export interface SparkRuntimeInfo {
   scalaVersion?: string;
 }
 export const SparkRuntimeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    javaHome: S.optional(S.String),
-    javaVersion: S.optional(S.String),
-    scalaVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SparkRuntimeInfo",
-}) as any as S.Schema<SparkRuntimeInfo>;
+S.Struct({
+  "javaHome": S.optional(S.String),
+  "javaVersion": S.optional(S.String),
+  "scalaVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "SparkRuntimeInfo" }) as any as S.Schema<SparkRuntimeInfo>;
 
 /** Details about the Environment that the application is running in. */
 export interface ApplicationEnvironmentInfo {
@@ -184,32 +151,27 @@ export interface ApplicationEnvironmentInfo {
   metricsProperties?: StringMap;
 }
 export const ApplicationEnvironmentInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    classpathEntries: S.optional(StringMap),
-    resourceProfiles: S.optional(ResourceProfileInfoList),
-    runtime: S.optional(SparkRuntimeInfo),
-    sparkProperties: S.optional(StringMap),
-    hadoopProperties: S.optional(StringMap),
-    systemProperties: S.optional(StringMap),
-    metricsProperties: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "ApplicationEnvironmentInfo",
-}) as any as S.Schema<ApplicationEnvironmentInfo>;
+S.Struct({
+  "classpathEntries": S.optional(StringMap),
+  "resourceProfiles": S.optional(ResourceProfileInfoList),
+  "runtime": S.optional(SparkRuntimeInfo),
+  "sparkProperties": S.optional(StringMap),
+  "hadoopProperties": S.optional(StringMap),
+  "systemProperties": S.optional(StringMap),
+  "metricsProperties": S.optional(StringMap),
+}),
+).annotate({ identifier: "ApplicationEnvironmentInfo" }) as any as S.Schema<ApplicationEnvironmentInfo>;
 
 /** Environment details of a Saprk Application. */
 export interface AccessSparkApplicationEnvironmentInfoResponse {
   /** Details about the Environment that the application is running in. */
   applicationEnvironmentInfo?: ApplicationEnvironmentInfo;
 }
-export const AccessSparkApplicationEnvironmentInfoResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationEnvironmentInfo: S.optional(ApplicationEnvironmentInfo),
-    }),
-  ).annotate({
-    identifier: "AccessSparkApplicationEnvironmentInfoResponse",
-  }) as any as S.Schema<AccessSparkApplicationEnvironmentInfoResponse>;
+export const AccessSparkApplicationEnvironmentInfoResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "applicationEnvironmentInfo": S.optional(ApplicationEnvironmentInfo),
+}),
+).annotate({ identifier: "AccessSparkApplicationEnvironmentInfoResponse" }) as any as S.Schema<AccessSparkApplicationEnvironmentInfoResponse>;
 
 export interface AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
@@ -217,36 +179,23 @@ export interface AccessEnvironmentInfoProjectsLocationsSessionsSparkApplications
   /** Required. Parent (Session) resource reference. */
   parent?: string;
 }
-export const AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessEnvironmentInfo",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest>;
+export const AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessEnvironmentInfo","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** Environment details of a Saprk Application. */
 export interface AccessSessionSparkApplicationEnvironmentInfoResponse {
   /** Details about the Environment that the application is running in. */
   applicationEnvironmentInfo?: ApplicationEnvironmentInfo;
 }
-export const AccessSessionSparkApplicationEnvironmentInfoResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationEnvironmentInfo: S.optional(ApplicationEnvironmentInfo),
-    }),
-  ).annotate({
-    identifier: "AccessSessionSparkApplicationEnvironmentInfoResponse",
-  }) as any as S.Schema<AccessSessionSparkApplicationEnvironmentInfoResponse>;
+export const AccessSessionSparkApplicationEnvironmentInfoResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "applicationEnvironmentInfo": S.optional(ApplicationEnvironmentInfo),
+}),
+).annotate({ identifier: "AccessSessionSparkApplicationEnvironmentInfoResponse" }) as any as S.Schema<AccessSessionSparkApplicationEnvironmentInfoResponse>;
 
 export interface AccessJobProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -256,47 +205,25 @@ export interface AccessJobProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Job ID to fetch data for. */
   jobId?: string;
 }
-export const AccessJobProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-      jobId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessJob",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AccessJobProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<AccessJobProjectsLocationsBatchesSparkApplicationsRequest>;
+export const AccessJobProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "jobId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessJob","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessJobProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<AccessJobProjectsLocationsBatchesSparkApplicationsRequest>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
-export type JobDataStatusEnum =
-  | "JOB_EXECUTION_STATUS_UNSPECIFIED"
-  | "JOB_EXECUTION_STATUS_RUNNING"
-  | "JOB_EXECUTION_STATUS_SUCCEEDED"
-  | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN"
-  | (string & {});
+export type JobDataStatusEnum = "JOB_EXECUTION_STATUS_UNSPECIFIED" | "JOB_EXECUTION_STATUS_RUNNING" | "JOB_EXECUTION_STATUS_SUCCEEDED" | "JOB_EXECUTION_STATUS_FAILED" | "JOB_EXECUTION_STATUS_UNKNOWN";
 export const JobDataStatusEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type IntegerMap = { [key: string]: number | undefined };
-export const IntegerMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<IntegerMap>;
+export const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
 
 /** Data corresponding to a spark job. */
 export interface JobData {
@@ -324,30 +251,30 @@ export interface JobData {
   numSkippedStages?: number;
 }
 export const JobData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skippedStages: S.optional(IntegerList),
-    jobId: S.optional(S.String),
-    description: S.optional(S.String),
-    submissionTime: S.optional(S.String),
-    numCompletedIndices: S.optional(S.Number),
-    numFailedStages: S.optional(S.Number),
-    status: S.optional(JobDataStatusEnum),
-    name: S.optional(S.String),
-    numTasks: S.optional(S.Number),
-    sqlExecutionId: S.optional(S.String),
-    stageIds: S.optional(StringList),
-    numKilledTasks: S.optional(S.Number),
-    numCompletedTasks: S.optional(S.Number),
-    jobGroup: S.optional(S.String),
-    numFailedTasks: S.optional(S.Number),
-    killTasksSummary: S.optional(IntegerMap),
-    completionTime: S.optional(S.String),
-    numActiveTasks: S.optional(S.Number),
-    numCompletedStages: S.optional(S.Number),
-    numSkippedTasks: S.optional(S.Number),
-    numActiveStages: S.optional(S.Number),
-    numSkippedStages: S.optional(S.Number),
-  }),
+S.Struct({
+  "skippedStages": S.optional(IntegerList),
+  "jobId": S.optional(S.String),
+  "description": S.optional(S.String),
+  "submissionTime": S.optional(S.String),
+  "numCompletedIndices": S.optional(S.Number),
+  "numFailedStages": S.optional(S.Number),
+  "status": S.optional(JobDataStatusEnum),
+  "name": S.optional(S.String),
+  "numTasks": S.optional(S.Number),
+  "sqlExecutionId": S.optional(S.String),
+  "stageIds": S.optional(StringList),
+  "numKilledTasks": S.optional(S.Number),
+  "numCompletedTasks": S.optional(S.Number),
+  "jobGroup": S.optional(S.String),
+  "numFailedTasks": S.optional(S.Number),
+  "killTasksSummary": S.optional(IntegerMap),
+  "completionTime": S.optional(S.String),
+  "numActiveTasks": S.optional(S.Number),
+  "numCompletedStages": S.optional(S.Number),
+  "numSkippedTasks": S.optional(S.Number),
+  "numActiveStages": S.optional(S.Number),
+  "numSkippedStages": S.optional(S.Number),
+}),
 ).annotate({ identifier: "JobData" }) as any as S.Schema<JobData>;
 
 /** Details of a particular job associated with Spark Application */
@@ -356,12 +283,10 @@ export interface AccessSparkApplicationJobResponse {
   jobData?: JobData;
 }
 export const AccessSparkApplicationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobData: S.optional(JobData),
-  }),
-).annotate({
-  identifier: "AccessSparkApplicationJobResponse",
-}) as any as S.Schema<AccessSparkApplicationJobResponse>;
+S.Struct({
+  "jobData": S.optional(JobData),
+}),
+).annotate({ identifier: "AccessSparkApplicationJobResponse" }) as any as S.Schema<AccessSparkApplicationJobResponse>;
 
 export interface AccessJobProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. Parent (Session) resource reference. */
@@ -371,36 +296,24 @@ export interface AccessJobProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
   name: string;
 }
-export const AccessJobProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String.pipe(T.Query())),
-      jobId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessJob",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AccessJobProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<AccessJobProjectsLocationsSessionsSparkApplicationsRequest>;
+export const AccessJobProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "jobId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessJob","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessJobProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<AccessJobProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** Details of a particular job associated with Spark Application */
 export interface AccessSessionSparkApplicationJobResponse {
   /** Output only. Data corresponding to a spark job. */
   jobData?: JobData;
 }
-export const AccessSessionSparkApplicationJobResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      jobData: S.optional(JobData),
-    }),
-).annotate({
-  identifier: "AccessSessionSparkApplicationJobResponse",
-}) as any as S.Schema<AccessSessionSparkApplicationJobResponse>;
+export const AccessSessionSparkApplicationJobResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "jobData": S.optional(JobData),
+}),
+).annotate({ identifier: "AccessSessionSparkApplicationJobResponse" }) as any as S.Schema<AccessSessionSparkApplicationJobResponse>;
 
 export interface AccessProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -408,35 +321,18 @@ export interface AccessProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
   parent?: string;
 }
-export const AccessProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:access",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AccessProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<AccessProjectsLocationsBatchesSparkApplicationsRequest>;
+export const AccessProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:access","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<AccessProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type ApplicationInfoQuantileDataStatusEnum =
-  | "QUANTILE_DATA_STATUS_UNSPECIFIED"
-  | "QUANTILE_DATA_STATUS_COMPLETED"
-  | "QUANTILE_DATA_STATUS_FAILED"
-  | (string & {});
+export type ApplicationInfoQuantileDataStatusEnum = "QUANTILE_DATA_STATUS_UNSPECIFIED" | "QUANTILE_DATA_STATUS_COMPLETED" | "QUANTILE_DATA_STATUS_FAILED";
 export const ApplicationInfoQuantileDataStatusEnum = /*@__PURE__*/ S.String;
 
-export type ApplicationInfoApplicationContextIngestionStatusEnum =
-  | "APPLICATION_CONTEXT_INGESTION_STATUS_UNSPECIFIED"
-  | "APPLICATION_CONTEXT_INGESTION_STATUS_COMPLETED"
-  | (string & {});
-export const ApplicationInfoApplicationContextIngestionStatusEnum =
-  /*@__PURE__*/ S.String;
+export type ApplicationInfoApplicationContextIngestionStatusEnum = "APPLICATION_CONTEXT_INGESTION_STATUS_UNSPECIFIED" | "APPLICATION_CONTEXT_INGESTION_STATUS_COMPLETED";
+export const ApplicationInfoApplicationContextIngestionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Specific attempt of an application. */
 export interface ApplicationAttemptInfo {
@@ -450,24 +346,20 @@ export interface ApplicationAttemptInfo {
   startTime?: string;
 }
 export const ApplicationAttemptInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attemptId: S.optional(S.String),
-    endTime: S.optional(S.String),
-    durationMillis: S.optional(S.String),
-    appSparkVersion: S.optional(S.String),
-    sparkUser: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    completed: S.optional(S.Boolean),
-    startTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationAttemptInfo",
-}) as any as S.Schema<ApplicationAttemptInfo>;
+S.Struct({
+  "attemptId": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "durationMillis": S.optional(S.String),
+  "appSparkVersion": S.optional(S.String),
+  "sparkUser": S.optional(S.String),
+  "lastUpdated": S.optional(S.String),
+  "completed": S.optional(S.Boolean),
+  "startTime": S.optional(S.String),
+}),
+).annotate({ identifier: "ApplicationAttemptInfo" }) as any as S.Schema<ApplicationAttemptInfo>;
 
 export type ApplicationAttemptInfoList = ReadonlyArray<ApplicationAttemptInfo>;
-export const ApplicationAttemptInfoList = /*@__PURE__*/ S.Array(
-  ApplicationAttemptInfo,
-) as any as S.Schema<ApplicationAttemptInfoList>;
+export const ApplicationAttemptInfoList = /*@__PURE__*/ S.Array(ApplicationAttemptInfo) as any as S.Schema<ApplicationAttemptInfoList>;
 
 /** High level information corresponding to an application. */
 export interface ApplicationInfo {
@@ -482,22 +374,18 @@ export interface ApplicationInfo {
   coresGranted?: number;
 }
 export const ApplicationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    maxCores: S.optional(S.Number),
-    memoryPerExecutorMb: S.optional(S.Number),
-    coresPerExecutor: S.optional(S.Number),
-    quantileDataStatus: S.optional(ApplicationInfoQuantileDataStatusEnum),
-    applicationId: S.optional(S.String),
-    applicationContextIngestionStatus: S.optional(
-      ApplicationInfoApplicationContextIngestionStatusEnum,
-    ),
-    attempts: S.optional(ApplicationAttemptInfoList),
-    coresGranted: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ApplicationInfo",
-}) as any as S.Schema<ApplicationInfo>;
+S.Struct({
+  "name": S.optional(S.String),
+  "maxCores": S.optional(S.Number),
+  "memoryPerExecutorMb": S.optional(S.Number),
+  "coresPerExecutor": S.optional(S.Number),
+  "quantileDataStatus": S.optional(ApplicationInfoQuantileDataStatusEnum),
+  "applicationId": S.optional(S.String),
+  "applicationContextIngestionStatus": S.optional(ApplicationInfoApplicationContextIngestionStatusEnum),
+  "attempts": S.optional(ApplicationAttemptInfoList),
+  "coresGranted": S.optional(S.Number),
+}),
+).annotate({ identifier: "ApplicationInfo" }) as any as S.Schema<ApplicationInfo>;
 
 /** A summary of Spark Application */
 export interface AccessSparkApplicationResponse {
@@ -505,12 +393,10 @@ export interface AccessSparkApplicationResponse {
   application?: ApplicationInfo;
 }
 export const AccessSparkApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    application: S.optional(ApplicationInfo),
-  }),
-).annotate({
-  identifier: "AccessSparkApplicationResponse",
-}) as any as S.Schema<AccessSparkApplicationResponse>;
+S.Struct({
+  "application": S.optional(ApplicationInfo),
+}),
+).annotate({ identifier: "AccessSparkApplicationResponse" }) as any as S.Schema<AccessSparkApplicationResponse>;
 
 export interface AccessProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
@@ -518,35 +404,23 @@ export interface AccessProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. Parent (Session) resource reference. */
   parent?: string;
 }
-export const AccessProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:access",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AccessProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<AccessProjectsLocationsSessionsSparkApplicationsRequest>;
+export const AccessProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:access","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<AccessProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** A summary of Spark Application */
 export interface AccessSessionSparkApplicationResponse {
   /** Output only. High level information corresponding to an application. */
   application?: ApplicationInfo;
 }
-export const AccessSessionSparkApplicationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      application: S.optional(ApplicationInfo),
-    }),
-).annotate({
-  identifier: "AccessSessionSparkApplicationResponse",
-}) as any as S.Schema<AccessSessionSparkApplicationResponse>;
+export const AccessSessionSparkApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "application": S.optional(ApplicationInfo),
+}),
+).annotate({ identifier: "AccessSessionSparkApplicationResponse" }) as any as S.Schema<AccessSessionSparkApplicationResponse>;
 
 export interface AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
@@ -556,22 +430,13 @@ export interface AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
   name: string;
 }
-export const AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String.pipe(T.Query())),
-      executionId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessSqlPlan",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest>;
+export const AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "executionId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessSqlPlan","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest>;
 
 /** Metrics related to SQL execution. */
 export interface SqlPlanMetric {
@@ -580,17 +445,15 @@ export interface SqlPlanMetric {
   name?: string;
 }
 export const SqlPlanMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accumulatorId: S.optional(S.String),
-    metricType: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "accumulatorId": S.optional(S.String),
+  "metricType": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "SqlPlanMetric" }) as any as S.Schema<SqlPlanMetric>;
 
 export type SqlPlanMetricList = ReadonlyArray<SqlPlanMetric>;
-export const SqlPlanMetricList = /*@__PURE__*/ S.Array(
-  SqlPlanMetric,
-) as any as S.Schema<SqlPlanMetricList>;
+export const SqlPlanMetricList = /*@__PURE__*/ S.Array(SqlPlanMetric) as any as S.Schema<SqlPlanMetricList>;
 
 /** Represents a node in the spark plan tree. */
 export interface SparkPlanGraphNode {
@@ -602,16 +465,14 @@ export interface SparkPlanGraphNode {
   desc?: string;
 }
 export const SparkPlanGraphNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    metadata: S.optional(StringMap),
-    metrics: S.optional(SqlPlanMetricList),
-    sparkPlanGraphNodeId: S.optional(S.String),
-    desc: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SparkPlanGraphNode",
-}) as any as S.Schema<SparkPlanGraphNode>;
+S.Struct({
+  "name": S.optional(S.String),
+  "metadata": S.optional(StringMap),
+  "metrics": S.optional(SqlPlanMetricList),
+  "sparkPlanGraphNodeId": S.optional(S.String),
+  "desc": S.optional(S.String),
+}),
+).annotate({ identifier: "SparkPlanGraphNode" }) as any as S.Schema<SparkPlanGraphNode>;
 
 /** Represents a tree of spark plan. */
 export interface SparkPlanGraphCluster {
@@ -624,17 +485,15 @@ export interface SparkPlanGraphCluster {
   metadata?: StringMap;
 }
 export const SparkPlanGraphCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sparkPlanGraphClusterId: S.optional(S.String),
-    metrics: S.optional(SqlPlanMetricList),
-    nodes: S.optional(S.suspend(() => SparkPlanGraphNodeWrapperList)),
-    desc: S.optional(S.String),
-    name: S.optional(S.String),
-    metadata: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "SparkPlanGraphCluster",
-}) as any as S.Schema<SparkPlanGraphCluster>;
+S.Struct({
+  "sparkPlanGraphClusterId": S.optional(S.String),
+  "metrics": S.optional(SqlPlanMetricList),
+  "nodes": S.optional(S.suspend(() => SparkPlanGraphNodeWrapperList)),
+  "desc": S.optional(S.String),
+  "name": S.optional(S.String),
+  "metadata": S.optional(StringMap),
+}),
+).annotate({ identifier: "SparkPlanGraphCluster" }) as any as S.Schema<SparkPlanGraphCluster>;
 
 /** Wrapper user to represent either a node or a cluster. */
 export interface SparkPlanGraphNodeWrapper {
@@ -642,19 +501,14 @@ export interface SparkPlanGraphNodeWrapper {
   cluster?: SparkPlanGraphCluster;
 }
 export const SparkPlanGraphNodeWrapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    node: S.optional(SparkPlanGraphNode),
-    cluster: S.optional(SparkPlanGraphCluster),
-  }),
-).annotate({
-  identifier: "SparkPlanGraphNodeWrapper",
-}) as any as S.Schema<SparkPlanGraphNodeWrapper>;
+S.Struct({
+  "node": S.optional(SparkPlanGraphNode),
+  "cluster": S.optional(SparkPlanGraphCluster),
+}),
+).annotate({ identifier: "SparkPlanGraphNodeWrapper" }) as any as S.Schema<SparkPlanGraphNodeWrapper>;
 
-export type SparkPlanGraphNodeWrapperList =
-  ReadonlyArray<SparkPlanGraphNodeWrapper>;
-export const SparkPlanGraphNodeWrapperList = /*@__PURE__*/ S.Array(
-  SparkPlanGraphNodeWrapper,
-) as any as S.Schema<SparkPlanGraphNodeWrapperList>;
+export type SparkPlanGraphNodeWrapperList = ReadonlyArray<SparkPlanGraphNodeWrapper>;
+export const SparkPlanGraphNodeWrapperList = /*@__PURE__*/ S.Array(SparkPlanGraphNodeWrapper) as any as S.Schema<SparkPlanGraphNodeWrapperList>;
 
 /** Represents a directed edge in the spark plan tree from child to parent. */
 export interface SparkPlanGraphEdge {
@@ -662,18 +516,14 @@ export interface SparkPlanGraphEdge {
   toId?: string;
 }
 export const SparkPlanGraphEdge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromId: S.optional(S.String),
-    toId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SparkPlanGraphEdge",
-}) as any as S.Schema<SparkPlanGraphEdge>;
+S.Struct({
+  "fromId": S.optional(S.String),
+  "toId": S.optional(S.String),
+}),
+).annotate({ identifier: "SparkPlanGraphEdge" }) as any as S.Schema<SparkPlanGraphEdge>;
 
 export type SparkPlanGraphEdgeList = ReadonlyArray<SparkPlanGraphEdge>;
-export const SparkPlanGraphEdgeList = /*@__PURE__*/ S.Array(
-  SparkPlanGraphEdge,
-) as any as S.Schema<SparkPlanGraphEdgeList>;
+export const SparkPlanGraphEdgeList = /*@__PURE__*/ S.Array(SparkPlanGraphEdge) as any as S.Schema<SparkPlanGraphEdgeList>;
 
 /** A graph used for storing information of an executionPlan of DataFrame. */
 export interface SparkPlanGraph {
@@ -682,11 +532,11 @@ export interface SparkPlanGraph {
   edges?: SparkPlanGraphEdgeList;
 }
 export const SparkPlanGraph = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionId: S.optional(S.String),
-    nodes: S.optional(SparkPlanGraphNodeWrapperList),
-    edges: S.optional(SparkPlanGraphEdgeList),
-  }),
+S.Struct({
+  "executionId": S.optional(S.String),
+  "nodes": S.optional(SparkPlanGraphNodeWrapperList),
+  "edges": S.optional(SparkPlanGraphEdgeList),
+}),
 ).annotate({ identifier: "SparkPlanGraph" }) as any as S.Schema<SparkPlanGraph>;
 
 /** SparkPlanGraph for a Spark Application execution limited to maximum 10000 clusters. */
@@ -694,14 +544,11 @@ export interface AccessSparkApplicationSqlSparkPlanGraphResponse {
   /** SparkPlanGraph for a Spark Application execution. */
   sparkPlanGraph?: SparkPlanGraph;
 }
-export const AccessSparkApplicationSqlSparkPlanGraphResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sparkPlanGraph: S.optional(SparkPlanGraph),
-    }),
-  ).annotate({
-    identifier: "AccessSparkApplicationSqlSparkPlanGraphResponse",
-  }) as any as S.Schema<AccessSparkApplicationSqlSparkPlanGraphResponse>;
+export const AccessSparkApplicationSqlSparkPlanGraphResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkPlanGraph": S.optional(SparkPlanGraph),
+}),
+).annotate({ identifier: "AccessSparkApplicationSqlSparkPlanGraphResponse" }) as any as S.Schema<AccessSparkApplicationSqlSparkPlanGraphResponse>;
 
 export interface AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. Parent (Session) resource reference. */
@@ -711,37 +558,24 @@ export interface AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest 
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
   name: string;
 }
-export const AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String.pipe(T.Query())),
-      executionId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessSqlPlan",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest>;
+export const AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "executionId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessSqlPlan","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** SparkPlanGraph for a Spark Application execution limited to maximum 10000 clusters. */
 export interface AccessSessionSparkApplicationSqlSparkPlanGraphResponse {
   /** SparkPlanGraph for a Spark Application execution. */
   sparkPlanGraph?: SparkPlanGraph;
 }
-export const AccessSessionSparkApplicationSqlSparkPlanGraphResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sparkPlanGraph: S.optional(SparkPlanGraph),
-    }),
-  ).annotate({
-    identifier: "AccessSessionSparkApplicationSqlSparkPlanGraphResponse",
-  }) as any as S.Schema<AccessSessionSparkApplicationSqlSparkPlanGraphResponse>;
+export const AccessSessionSparkApplicationSqlSparkPlanGraphResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkPlanGraph": S.optional(SparkPlanGraph),
+}),
+).annotate({ identifier: "AccessSessionSparkApplicationSqlSparkPlanGraphResponse" }) as any as S.Schema<AccessSessionSparkApplicationSqlSparkPlanGraphResponse>;
 
 export interface AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -755,42 +589,21 @@ export interface AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest 
   /** Optional. Lists/ hides details of Spark plan nodes. True is set to list and false to hide. */
   details?: boolean;
 }
-export const AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-      executionId: S.optional(S.String.pipe(T.Query())),
-      planDescription: S.optional(S.Boolean.pipe(T.Query())),
-      details: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessSqlQuery",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest>;
+export const AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "executionId": S.optional(S.String.pipe(T.Query())),
+  "planDescription": S.optional(S.Boolean.pipe(T.Query())),
+  "details": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessSqlQuery","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type SqlExecutionUiDataJobsValueEnum =
-  | "JOB_EXECUTION_STATUS_UNSPECIFIED"
-  | "JOB_EXECUTION_STATUS_RUNNING"
-  | "JOB_EXECUTION_STATUS_SUCCEEDED"
-  | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN"
-  | (string & {});
+export type SqlExecutionUiDataJobsValueEnum = "JOB_EXECUTION_STATUS_UNSPECIFIED" | "JOB_EXECUTION_STATUS_RUNNING" | "JOB_EXECUTION_STATUS_SUCCEEDED" | "JOB_EXECUTION_STATUS_FAILED" | "JOB_EXECUTION_STATUS_UNKNOWN";
 export const SqlExecutionUiDataJobsValueEnum = /*@__PURE__*/ S.String;
 
-export type SqlExecutionUiDataJobsValueEnumMap = {
-  [key: string]: SqlExecutionUiDataJobsValueEnum | undefined;
-};
-export const SqlExecutionUiDataJobsValueEnumMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SqlExecutionUiDataJobsValueEnum,
-) as any as S.Schema<SqlExecutionUiDataJobsValueEnumMap>;
+export type SqlExecutionUiDataJobsValueEnumMap = { [key: string]: SqlExecutionUiDataJobsValueEnum | undefined };
+export const SqlExecutionUiDataJobsValueEnumMap = /*@__PURE__*/ S.Record(S.String, SqlExecutionUiDataJobsValueEnum) as any as S.Schema<SqlExecutionUiDataJobsValueEnumMap>;
 
 /** SQL Execution Data */
 export interface SqlExecutionUiData {
@@ -810,39 +623,34 @@ export interface SqlExecutionUiData {
   metricValuesIsNull?: boolean;
 }
 export const SqlExecutionUiData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(S.String),
-    stages: S.optional(StringList),
-    submissionTime: S.optional(S.String),
-    executionId: S.optional(S.String),
-    modifiedConfigs: S.optional(StringMap),
-    description: S.optional(S.String),
-    physicalPlanDescription: S.optional(S.String),
-    metricValues: S.optional(StringMap),
-    rootExecutionId: S.optional(S.String),
-    completionTime: S.optional(S.String),
-    metrics: S.optional(SqlPlanMetricList),
-    errorMessage: S.optional(S.String),
-    jobs: S.optional(SqlExecutionUiDataJobsValueEnumMap),
-    metricValuesIsNull: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SqlExecutionUiData",
-}) as any as S.Schema<SqlExecutionUiData>;
+S.Struct({
+  "details": S.optional(S.String),
+  "stages": S.optional(StringList),
+  "submissionTime": S.optional(S.String),
+  "executionId": S.optional(S.String),
+  "modifiedConfigs": S.optional(StringMap),
+  "description": S.optional(S.String),
+  "physicalPlanDescription": S.optional(S.String),
+  "metricValues": S.optional(StringMap),
+  "rootExecutionId": S.optional(S.String),
+  "completionTime": S.optional(S.String),
+  "metrics": S.optional(SqlPlanMetricList),
+  "errorMessage": S.optional(S.String),
+  "jobs": S.optional(SqlExecutionUiDataJobsValueEnumMap),
+  "metricValuesIsNull": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SqlExecutionUiData" }) as any as S.Schema<SqlExecutionUiData>;
 
 /** Details of a query for a Spark Application */
 export interface AccessSparkApplicationSqlQueryResponse {
   /** SQL Execution Data */
   executionData?: SqlExecutionUiData;
 }
-export const AccessSparkApplicationSqlQueryResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionData: S.optional(SqlExecutionUiData),
-    }),
-).annotate({
-  identifier: "AccessSparkApplicationSqlQueryResponse",
-}) as any as S.Schema<AccessSparkApplicationSqlQueryResponse>;
+export const AccessSparkApplicationSqlQueryResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "executionData": S.optional(SqlExecutionUiData),
+}),
+).annotate({ identifier: "AccessSparkApplicationSqlQueryResponse" }) as any as S.Schema<AccessSparkApplicationSqlQueryResponse>;
 
 export interface AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
@@ -856,39 +664,26 @@ export interface AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest
   /** Optional. Lists/ hides details of Spark plan nodes. True is set to list and false to hide. */
   details?: boolean;
 }
-export const AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-      executionId: S.optional(S.String.pipe(T.Query())),
-      planDescription: S.optional(S.Boolean.pipe(T.Query())),
-      details: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessSqlQuery",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest>;
+export const AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "executionId": S.optional(S.String.pipe(T.Query())),
+  "planDescription": S.optional(S.Boolean.pipe(T.Query())),
+  "details": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessSqlQuery","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** Details of a query for a Spark Application */
 export interface AccessSessionSparkApplicationSqlQueryResponse {
   /** SQL Execution Data */
   executionData?: SqlExecutionUiData;
 }
-export const AccessSessionSparkApplicationSqlQueryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      executionData: S.optional(SqlExecutionUiData),
-    }),
-  ).annotate({
-    identifier: "AccessSessionSparkApplicationSqlQueryResponse",
-  }) as any as S.Schema<AccessSessionSparkApplicationSqlQueryResponse>;
+export const AccessSessionSparkApplicationSqlQueryResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "executionData": S.optional(SqlExecutionUiData),
+}),
+).annotate({ identifier: "AccessSessionSparkApplicationSqlQueryResponse" }) as any as S.Schema<AccessSessionSparkApplicationSqlQueryResponse>;
 
 export interface AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
@@ -902,25 +697,15 @@ export interface AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequ
   /** Required. Stage Attempt ID */
   stageAttemptId?: number;
 }
-export const AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      stageId: S.optional(S.String.pipe(T.Query())),
-      summaryMetricsMask: S.optional(S.String.pipe(T.Query())),
-      stageAttemptId: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessStageAttempt",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest>;
+export const AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "stageId": S.optional(S.String.pipe(T.Query())),
+  "summaryMetricsMask": S.optional(S.String.pipe(T.Query())),
+  "stageAttemptId": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessStageAttempt","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest>;
 
 /** Metrics about the output written by the stage. */
 export interface StageOutputMetrics {
@@ -928,13 +713,11 @@ export interface StageOutputMetrics {
   recordsWritten?: string;
 }
 export const StageOutputMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytesWritten: S.optional(S.String),
-    recordsWritten: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StageOutputMetrics",
-}) as any as S.Schema<StageOutputMetrics>;
+S.Struct({
+  "bytesWritten": S.optional(S.String),
+  "recordsWritten": S.optional(S.String),
+}),
+).annotate({ identifier: "StageOutputMetrics" }) as any as S.Schema<StageOutputMetrics>;
 
 /** Shuffle data written for the stage. */
 export interface StageShuffleWriteMetrics {
@@ -943,14 +726,12 @@ export interface StageShuffleWriteMetrics {
   writeTimeNanos?: string;
 }
 export const StageShuffleWriteMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recordsWritten: S.optional(S.String),
-    bytesWritten: S.optional(S.String),
-    writeTimeNanos: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StageShuffleWriteMetrics",
-}) as any as S.Schema<StageShuffleWriteMetrics>;
+S.Struct({
+  "recordsWritten": S.optional(S.String),
+  "bytesWritten": S.optional(S.String),
+  "writeTimeNanos": S.optional(S.String),
+}),
+).annotate({ identifier: "StageShuffleWriteMetrics" }) as any as S.Schema<StageShuffleWriteMetrics>;
 
 /** Metrics about the input read by the stage. */
 export interface StageInputMetrics {
@@ -958,13 +739,11 @@ export interface StageInputMetrics {
   recordsRead?: string;
 }
 export const StageInputMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytesRead: S.optional(S.String),
-    recordsRead: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StageInputMetrics",
-}) as any as S.Schema<StageInputMetrics>;
+S.Struct({
+  "bytesRead": S.optional(S.String),
+  "recordsRead": S.optional(S.String),
+}),
+).annotate({ identifier: "StageInputMetrics" }) as any as S.Schema<StageInputMetrics>;
 
 export interface StageShufflePushReadMetrics {
   remoteMergedBytesRead?: string;
@@ -978,20 +757,18 @@ export interface StageShufflePushReadMetrics {
   corruptMergedBlockChunks?: string;
 }
 export const StageShufflePushReadMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remoteMergedBytesRead: S.optional(S.String),
-    remoteMergedChunksFetched: S.optional(S.String),
-    remoteMergedBlocksFetched: S.optional(S.String),
-    remoteMergedReqsDuration: S.optional(S.String),
-    mergedFetchFallbackCount: S.optional(S.String),
-    localMergedChunksFetched: S.optional(S.String),
-    localMergedBlocksFetched: S.optional(S.String),
-    localMergedBytesRead: S.optional(S.String),
-    corruptMergedBlockChunks: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StageShufflePushReadMetrics",
-}) as any as S.Schema<StageShufflePushReadMetrics>;
+S.Struct({
+  "remoteMergedBytesRead": S.optional(S.String),
+  "remoteMergedChunksFetched": S.optional(S.String),
+  "remoteMergedBlocksFetched": S.optional(S.String),
+  "remoteMergedReqsDuration": S.optional(S.String),
+  "mergedFetchFallbackCount": S.optional(S.String),
+  "localMergedChunksFetched": S.optional(S.String),
+  "localMergedBlocksFetched": S.optional(S.String),
+  "localMergedBytesRead": S.optional(S.String),
+  "corruptMergedBlockChunks": S.optional(S.String),
+}),
+).annotate({ identifier: "StageShufflePushReadMetrics" }) as any as S.Schema<StageShufflePushReadMetrics>;
 
 /** Shuffle data read for the stage. */
 export interface StageShuffleReadMetrics {
@@ -1007,21 +784,19 @@ export interface StageShuffleReadMetrics {
   bytesRead?: string;
 }
 export const StageShuffleReadMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localBlocksFetched: S.optional(S.String),
-    localBytesRead: S.optional(S.String),
-    remoteBlocksFetched: S.optional(S.String),
-    remoteBytesRead: S.optional(S.String),
-    remoteReqsDuration: S.optional(S.String),
-    fetchWaitTimeMillis: S.optional(S.String),
-    recordsRead: S.optional(S.String),
-    stageShufflePushReadMetrics: S.optional(StageShufflePushReadMetrics),
-    remoteBytesReadToDisk: S.optional(S.String),
-    bytesRead: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StageShuffleReadMetrics",
-}) as any as S.Schema<StageShuffleReadMetrics>;
+S.Struct({
+  "localBlocksFetched": S.optional(S.String),
+  "localBytesRead": S.optional(S.String),
+  "remoteBlocksFetched": S.optional(S.String),
+  "remoteBytesRead": S.optional(S.String),
+  "remoteReqsDuration": S.optional(S.String),
+  "fetchWaitTimeMillis": S.optional(S.String),
+  "recordsRead": S.optional(S.String),
+  "stageShufflePushReadMetrics": S.optional(StageShufflePushReadMetrics),
+  "remoteBytesReadToDisk": S.optional(S.String),
+  "bytesRead": S.optional(S.String),
+}),
+).annotate({ identifier: "StageShuffleReadMetrics" }) as any as S.Schema<StageShuffleReadMetrics>;
 
 /** Stage Level Aggregated Metrics */
 export interface StageMetrics {
@@ -1041,22 +816,22 @@ export interface StageMetrics {
   resultSize?: string;
 }
 export const StageMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jvmGcTimeMillis: S.optional(S.String),
-    executorCpuTimeNanos: S.optional(S.String),
-    diskBytesSpilled: S.optional(S.String),
-    resultSerializationTimeMillis: S.optional(S.String),
-    stageOutputMetrics: S.optional(StageOutputMetrics),
-    memoryBytesSpilled: S.optional(S.String),
-    executorDeserializeTimeMillis: S.optional(S.String),
-    stageShuffleWriteMetrics: S.optional(StageShuffleWriteMetrics),
-    stageInputMetrics: S.optional(StageInputMetrics),
-    executorRunTimeMillis: S.optional(S.String),
-    peakExecutionMemoryBytes: S.optional(S.String),
-    executorDeserializeCpuTimeNanos: S.optional(S.String),
-    stageShuffleReadMetrics: S.optional(StageShuffleReadMetrics),
-    resultSize: S.optional(S.String),
-  }),
+S.Struct({
+  "jvmGcTimeMillis": S.optional(S.String),
+  "executorCpuTimeNanos": S.optional(S.String),
+  "diskBytesSpilled": S.optional(S.String),
+  "resultSerializationTimeMillis": S.optional(S.String),
+  "stageOutputMetrics": S.optional(StageOutputMetrics),
+  "memoryBytesSpilled": S.optional(S.String),
+  "executorDeserializeTimeMillis": S.optional(S.String),
+  "stageShuffleWriteMetrics": S.optional(StageShuffleWriteMetrics),
+  "stageInputMetrics": S.optional(StageInputMetrics),
+  "executorRunTimeMillis": S.optional(S.String),
+  "peakExecutionMemoryBytes": S.optional(S.String),
+  "executorDeserializeCpuTimeNanos": S.optional(S.String),
+  "stageShuffleReadMetrics": S.optional(StageShuffleReadMetrics),
+  "resultSize": S.optional(S.String),
+}),
 ).annotate({ identifier: "StageMetrics" }) as any as S.Schema<StageMetrics>;
 
 /** Quantile metrics data related to Tasks. Units can be seconds, bytes, milliseconds, etc depending on the message type. */
@@ -1070,15 +845,15 @@ export interface Quantiles {
   percentile75?: string;
 }
 export const Quantiles = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    percentile25: S.optional(S.String),
-    maximum: S.optional(S.String),
-    percentile50: S.optional(S.String),
-    count: S.optional(S.String),
-    minimum: S.optional(S.String),
-    sum: S.optional(S.String),
-    percentile75: S.optional(S.String),
-  }),
+S.Struct({
+  "percentile25": S.optional(S.String),
+  "maximum": S.optional(S.String),
+  "percentile50": S.optional(S.String),
+  "count": S.optional(S.String),
+  "minimum": S.optional(S.String),
+  "sum": S.optional(S.String),
+  "percentile75": S.optional(S.String),
+}),
 ).annotate({ identifier: "Quantiles" }) as any as S.Schema<Quantiles>;
 
 export interface InputQuantileMetrics {
@@ -1086,13 +861,11 @@ export interface InputQuantileMetrics {
   recordsRead?: Quantiles;
 }
 export const InputQuantileMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytesRead: S.optional(Quantiles),
-    recordsRead: S.optional(Quantiles),
-  }),
-).annotate({
-  identifier: "InputQuantileMetrics",
-}) as any as S.Schema<InputQuantileMetrics>;
+S.Struct({
+  "bytesRead": S.optional(Quantiles),
+  "recordsRead": S.optional(Quantiles),
+}),
+).annotate({ identifier: "InputQuantileMetrics" }) as any as S.Schema<InputQuantileMetrics>;
 
 export interface ShuffleWriteQuantileMetrics {
   writeRecords?: Quantiles;
@@ -1100,14 +873,12 @@ export interface ShuffleWriteQuantileMetrics {
   writeTimeNanos?: Quantiles;
 }
 export const ShuffleWriteQuantileMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    writeRecords: S.optional(Quantiles),
-    writeBytes: S.optional(Quantiles),
-    writeTimeNanos: S.optional(Quantiles),
-  }),
-).annotate({
-  identifier: "ShuffleWriteQuantileMetrics",
-}) as any as S.Schema<ShuffleWriteQuantileMetrics>;
+S.Struct({
+  "writeRecords": S.optional(Quantiles),
+  "writeBytes": S.optional(Quantiles),
+  "writeTimeNanos": S.optional(Quantiles),
+}),
+).annotate({ identifier: "ShuffleWriteQuantileMetrics" }) as any as S.Schema<ShuffleWriteQuantileMetrics>;
 
 export interface ShufflePushReadQuantileMetrics {
   localMergedBlocksFetched?: Quantiles;
@@ -1121,20 +892,18 @@ export interface ShufflePushReadQuantileMetrics {
   remoteMergedChunksFetched?: Quantiles;
 }
 export const ShufflePushReadQuantileMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localMergedBlocksFetched: S.optional(Quantiles),
-    localMergedBytesRead: S.optional(Quantiles),
-    corruptMergedBlockChunks: S.optional(Quantiles),
-    localMergedChunksFetched: S.optional(Quantiles),
-    mergedFetchFallbackCount: S.optional(Quantiles),
-    remoteMergedReqsDuration: S.optional(Quantiles),
-    remoteMergedBlocksFetched: S.optional(Quantiles),
-    remoteMergedBytesRead: S.optional(Quantiles),
-    remoteMergedChunksFetched: S.optional(Quantiles),
-  }),
-).annotate({
-  identifier: "ShufflePushReadQuantileMetrics",
-}) as any as S.Schema<ShufflePushReadQuantileMetrics>;
+S.Struct({
+  "localMergedBlocksFetched": S.optional(Quantiles),
+  "localMergedBytesRead": S.optional(Quantiles),
+  "corruptMergedBlockChunks": S.optional(Quantiles),
+  "localMergedChunksFetched": S.optional(Quantiles),
+  "mergedFetchFallbackCount": S.optional(Quantiles),
+  "remoteMergedReqsDuration": S.optional(Quantiles),
+  "remoteMergedBlocksFetched": S.optional(Quantiles),
+  "remoteMergedBytesRead": S.optional(Quantiles),
+  "remoteMergedChunksFetched": S.optional(Quantiles),
+}),
+).annotate({ identifier: "ShufflePushReadQuantileMetrics" }) as any as S.Schema<ShufflePushReadQuantileMetrics>;
 
 export interface ShuffleReadQuantileMetrics {
   localBlocksFetched?: Quantiles;
@@ -1149,34 +918,30 @@ export interface ShuffleReadQuantileMetrics {
   totalBlocksFetched?: Quantiles;
 }
 export const ShuffleReadQuantileMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localBlocksFetched: S.optional(Quantiles),
-    readBytes: S.optional(Quantiles),
-    readRecords: S.optional(Quantiles),
-    fetchWaitTimeMillis: S.optional(Quantiles),
-    remoteBlocksFetched: S.optional(Quantiles),
-    remoteBytesRead: S.optional(Quantiles),
-    remoteReqsDuration: S.optional(Quantiles),
-    remoteBytesReadToDisk: S.optional(Quantiles),
-    shufflePushReadMetrics: S.optional(ShufflePushReadQuantileMetrics),
-    totalBlocksFetched: S.optional(Quantiles),
-  }),
-).annotate({
-  identifier: "ShuffleReadQuantileMetrics",
-}) as any as S.Schema<ShuffleReadQuantileMetrics>;
+S.Struct({
+  "localBlocksFetched": S.optional(Quantiles),
+  "readBytes": S.optional(Quantiles),
+  "readRecords": S.optional(Quantiles),
+  "fetchWaitTimeMillis": S.optional(Quantiles),
+  "remoteBlocksFetched": S.optional(Quantiles),
+  "remoteBytesRead": S.optional(Quantiles),
+  "remoteReqsDuration": S.optional(Quantiles),
+  "remoteBytesReadToDisk": S.optional(Quantiles),
+  "shufflePushReadMetrics": S.optional(ShufflePushReadQuantileMetrics),
+  "totalBlocksFetched": S.optional(Quantiles),
+}),
+).annotate({ identifier: "ShuffleReadQuantileMetrics" }) as any as S.Schema<ShuffleReadQuantileMetrics>;
 
 export interface OutputQuantileMetrics {
   bytesWritten?: Quantiles;
   recordsWritten?: Quantiles;
 }
 export const OutputQuantileMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytesWritten: S.optional(Quantiles),
-    recordsWritten: S.optional(Quantiles),
-  }),
-).annotate({
-  identifier: "OutputQuantileMetrics",
-}) as any as S.Schema<OutputQuantileMetrics>;
+S.Struct({
+  "bytesWritten": S.optional(Quantiles),
+  "recordsWritten": S.optional(Quantiles),
+}),
+).annotate({ identifier: "OutputQuantileMetrics" }) as any as S.Schema<OutputQuantileMetrics>;
 
 export interface TaskQuantileMetrics {
   executorDeserializeTimeMillis?: Quantiles;
@@ -1198,39 +963,35 @@ export interface TaskQuantileMetrics {
   peakExecutionMemoryBytes?: Quantiles;
 }
 export const TaskQuantileMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executorDeserializeTimeMillis: S.optional(Quantiles),
-    durationMillis: S.optional(Quantiles),
-    schedulerDelayMillis: S.optional(Quantiles),
-    inputMetrics: S.optional(InputQuantileMetrics),
-    shuffleWriteMetrics: S.optional(ShuffleWriteQuantileMetrics),
-    memoryBytesSpilled: S.optional(Quantiles),
-    executorCpuTimeNanos: S.optional(Quantiles),
-    diskBytesSpilled: S.optional(Quantiles),
-    gettingResultTimeMillis: S.optional(Quantiles),
-    resultSerializationTimeMillis: S.optional(Quantiles),
-    jvmGcTimeMillis: S.optional(Quantiles),
-    shuffleReadMetrics: S.optional(ShuffleReadQuantileMetrics),
-    resultSize: S.optional(Quantiles),
-    executorDeserializeCpuTimeNanos: S.optional(Quantiles),
-    outputMetrics: S.optional(OutputQuantileMetrics),
-    executorRunTimeMillis: S.optional(Quantiles),
-    peakExecutionMemoryBytes: S.optional(Quantiles),
-  }),
-).annotate({
-  identifier: "TaskQuantileMetrics",
-}) as any as S.Schema<TaskQuantileMetrics>;
+S.Struct({
+  "executorDeserializeTimeMillis": S.optional(Quantiles),
+  "durationMillis": S.optional(Quantiles),
+  "schedulerDelayMillis": S.optional(Quantiles),
+  "inputMetrics": S.optional(InputQuantileMetrics),
+  "shuffleWriteMetrics": S.optional(ShuffleWriteQuantileMetrics),
+  "memoryBytesSpilled": S.optional(Quantiles),
+  "executorCpuTimeNanos": S.optional(Quantiles),
+  "diskBytesSpilled": S.optional(Quantiles),
+  "gettingResultTimeMillis": S.optional(Quantiles),
+  "resultSerializationTimeMillis": S.optional(Quantiles),
+  "jvmGcTimeMillis": S.optional(Quantiles),
+  "shuffleReadMetrics": S.optional(ShuffleReadQuantileMetrics),
+  "resultSize": S.optional(Quantiles),
+  "executorDeserializeCpuTimeNanos": S.optional(Quantiles),
+  "outputMetrics": S.optional(OutputQuantileMetrics),
+  "executorRunTimeMillis": S.optional(Quantiles),
+  "peakExecutionMemoryBytes": S.optional(Quantiles),
+}),
+).annotate({ identifier: "TaskQuantileMetrics" }) as any as S.Schema<TaskQuantileMetrics>;
 
 export interface ExecutorMetrics {
   metrics?: StringMap;
 }
 export const ExecutorMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metrics: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "ExecutorMetrics",
-}) as any as S.Schema<ExecutorMetrics>;
+S.Struct({
+  "metrics": S.optional(StringMap),
+}),
+).annotate({ identifier: "ExecutorMetrics" }) as any as S.Schema<ExecutorMetrics>;
 
 export interface AccumulableInfo {
   name?: string;
@@ -1239,20 +1000,16 @@ export interface AccumulableInfo {
   value?: string;
 }
 export const AccumulableInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    update: S.optional(S.String),
-    accumullableInfoId: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccumulableInfo",
-}) as any as S.Schema<AccumulableInfo>;
+S.Struct({
+  "name": S.optional(S.String),
+  "update": S.optional(S.String),
+  "accumullableInfoId": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "AccumulableInfo" }) as any as S.Schema<AccumulableInfo>;
 
 export type AccumulableInfoList = ReadonlyArray<AccumulableInfo>;
-export const AccumulableInfoList = /*@__PURE__*/ S.Array(
-  AccumulableInfo,
-) as any as S.Schema<AccumulableInfoList>;
+export const AccumulableInfoList = /*@__PURE__*/ S.Array(AccumulableInfo) as any as S.Schema<AccumulableInfoList>;
 
 /** Metrics about the data written by the task. */
 export interface OutputMetrics {
@@ -1260,10 +1017,10 @@ export interface OutputMetrics {
   bytesWritten?: string;
 }
 export const OutputMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recordsWritten: S.optional(S.String),
-    bytesWritten: S.optional(S.String),
-  }),
+S.Struct({
+  "recordsWritten": S.optional(S.String),
+  "bytesWritten": S.optional(S.String),
+}),
 ).annotate({ identifier: "OutputMetrics" }) as any as S.Schema<OutputMetrics>;
 
 export interface ShufflePushReadMetrics {
@@ -1278,20 +1035,18 @@ export interface ShufflePushReadMetrics {
   localMergedChunksFetched?: string;
 }
 export const ShufflePushReadMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remoteMergedReqsDuration: S.optional(S.String),
-    remoteMergedChunksFetched: S.optional(S.String),
-    remoteMergedBytesRead: S.optional(S.String),
-    remoteMergedBlocksFetched: S.optional(S.String),
-    corruptMergedBlockChunks: S.optional(S.String),
-    localMergedBlocksFetched: S.optional(S.String),
-    localMergedBytesRead: S.optional(S.String),
-    mergedFetchFallbackCount: S.optional(S.String),
-    localMergedChunksFetched: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ShufflePushReadMetrics",
-}) as any as S.Schema<ShufflePushReadMetrics>;
+S.Struct({
+  "remoteMergedReqsDuration": S.optional(S.String),
+  "remoteMergedChunksFetched": S.optional(S.String),
+  "remoteMergedBytesRead": S.optional(S.String),
+  "remoteMergedBlocksFetched": S.optional(S.String),
+  "corruptMergedBlockChunks": S.optional(S.String),
+  "localMergedBlocksFetched": S.optional(S.String),
+  "localMergedBytesRead": S.optional(S.String),
+  "mergedFetchFallbackCount": S.optional(S.String),
+  "localMergedChunksFetched": S.optional(S.String),
+}),
+).annotate({ identifier: "ShufflePushReadMetrics" }) as any as S.Schema<ShufflePushReadMetrics>;
 
 /** Shuffle data read by the task. */
 export interface ShuffleReadMetrics {
@@ -1306,20 +1061,18 @@ export interface ShuffleReadMetrics {
   localBytesRead?: string;
 }
 export const ShuffleReadMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remoteBytesReadToDisk: S.optional(S.String),
-    shufflePushReadMetrics: S.optional(ShufflePushReadMetrics),
-    recordsRead: S.optional(S.String),
-    fetchWaitTimeMillis: S.optional(S.String),
-    remoteBlocksFetched: S.optional(S.String),
-    remoteBytesRead: S.optional(S.String),
-    remoteReqsDuration: S.optional(S.String),
-    localBlocksFetched: S.optional(S.String),
-    localBytesRead: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ShuffleReadMetrics",
-}) as any as S.Schema<ShuffleReadMetrics>;
+S.Struct({
+  "remoteBytesReadToDisk": S.optional(S.String),
+  "shufflePushReadMetrics": S.optional(ShufflePushReadMetrics),
+  "recordsRead": S.optional(S.String),
+  "fetchWaitTimeMillis": S.optional(S.String),
+  "remoteBlocksFetched": S.optional(S.String),
+  "remoteBytesRead": S.optional(S.String),
+  "remoteReqsDuration": S.optional(S.String),
+  "localBlocksFetched": S.optional(S.String),
+  "localBytesRead": S.optional(S.String),
+}),
+).annotate({ identifier: "ShuffleReadMetrics" }) as any as S.Schema<ShuffleReadMetrics>;
 
 /** Metrics about the input data read by the task. */
 export interface InputMetrics {
@@ -1327,10 +1080,10 @@ export interface InputMetrics {
   recordsRead?: string;
 }
 export const InputMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytesRead: S.optional(S.String),
-    recordsRead: S.optional(S.String),
-  }),
+S.Struct({
+  "bytesRead": S.optional(S.String),
+  "recordsRead": S.optional(S.String),
+}),
 ).annotate({ identifier: "InputMetrics" }) as any as S.Schema<InputMetrics>;
 
 /** Shuffle data written by task. */
@@ -1340,14 +1093,12 @@ export interface ShuffleWriteMetrics {
   recordsWritten?: string;
 }
 export const ShuffleWriteMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    writeTimeNanos: S.optional(S.String),
-    bytesWritten: S.optional(S.String),
-    recordsWritten: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ShuffleWriteMetrics",
-}) as any as S.Schema<ShuffleWriteMetrics>;
+S.Struct({
+  "writeTimeNanos": S.optional(S.String),
+  "bytesWritten": S.optional(S.String),
+  "recordsWritten": S.optional(S.String),
+}),
+).annotate({ identifier: "ShuffleWriteMetrics" }) as any as S.Schema<ShuffleWriteMetrics>;
 
 /** Executor Task Metrics */
 export interface TaskMetrics {
@@ -1367,22 +1118,22 @@ export interface TaskMetrics {
   memoryBytesSpilled?: string;
 }
 export const TaskMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outputMetrics: S.optional(OutputMetrics),
-    executorRunTimeMillis: S.optional(S.String),
-    peakExecutionMemoryBytes: S.optional(S.String),
-    resultSize: S.optional(S.String),
-    executorDeserializeCpuTimeNanos: S.optional(S.String),
-    executorCpuTimeNanos: S.optional(S.String),
-    diskBytesSpilled: S.optional(S.String),
-    resultSerializationTimeMillis: S.optional(S.String),
-    jvmGcTimeMillis: S.optional(S.String),
-    shuffleReadMetrics: S.optional(ShuffleReadMetrics),
-    executorDeserializeTimeMillis: S.optional(S.String),
-    inputMetrics: S.optional(InputMetrics),
-    shuffleWriteMetrics: S.optional(ShuffleWriteMetrics),
-    memoryBytesSpilled: S.optional(S.String),
-  }),
+S.Struct({
+  "outputMetrics": S.optional(OutputMetrics),
+  "executorRunTimeMillis": S.optional(S.String),
+  "peakExecutionMemoryBytes": S.optional(S.String),
+  "resultSize": S.optional(S.String),
+  "executorDeserializeCpuTimeNanos": S.optional(S.String),
+  "executorCpuTimeNanos": S.optional(S.String),
+  "diskBytesSpilled": S.optional(S.String),
+  "resultSerializationTimeMillis": S.optional(S.String),
+  "jvmGcTimeMillis": S.optional(S.String),
+  "shuffleReadMetrics": S.optional(ShuffleReadMetrics),
+  "executorDeserializeTimeMillis": S.optional(S.String),
+  "inputMetrics": S.optional(InputMetrics),
+  "shuffleWriteMetrics": S.optional(ShuffleWriteMetrics),
+  "memoryBytesSpilled": S.optional(S.String),
+}),
 ).annotate({ identifier: "TaskMetrics" }) as any as S.Schema<TaskMetrics>;
 
 /** Data corresponding to tasks created by spark. */
@@ -1410,45 +1161,35 @@ export interface TaskData {
   gettingResultTimeMillis?: string;
 }
 export const TaskData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attempt: S.optional(S.Number),
-    speculative: S.optional(S.Boolean),
-    index: S.optional(S.Number),
-    partitionId: S.optional(S.Number),
-    errorMessage: S.optional(S.String),
-    accumulatorUpdates: S.optional(AccumulableInfoList),
-    hasMetrics: S.optional(S.Boolean),
-    host: S.optional(S.String),
-    taskMetrics: S.optional(TaskMetrics),
-    taskId: S.optional(S.String),
-    executorId: S.optional(S.String),
-    durationMillis: S.optional(S.String),
-    schedulerDelayMillis: S.optional(S.String),
-    stageAttemptId: S.optional(S.Number),
-    executorLogs: S.optional(StringMap),
-    launchTime: S.optional(S.String),
-    status: S.optional(S.String),
-    stageId: S.optional(S.String),
-    resultFetchStart: S.optional(S.String),
-    taskLocality: S.optional(S.String),
-    gettingResultTimeMillis: S.optional(S.String),
-  }),
+S.Struct({
+  "attempt": S.optional(S.Number),
+  "speculative": S.optional(S.Boolean),
+  "index": S.optional(S.Number),
+  "partitionId": S.optional(S.Number),
+  "errorMessage": S.optional(S.String),
+  "accumulatorUpdates": S.optional(AccumulableInfoList),
+  "hasMetrics": S.optional(S.Boolean),
+  "host": S.optional(S.String),
+  "taskMetrics": S.optional(TaskMetrics),
+  "taskId": S.optional(S.String),
+  "executorId": S.optional(S.String),
+  "durationMillis": S.optional(S.String),
+  "schedulerDelayMillis": S.optional(S.String),
+  "stageAttemptId": S.optional(S.Number),
+  "executorLogs": S.optional(StringMap),
+  "launchTime": S.optional(S.String),
+  "status": S.optional(S.String),
+  "stageId": S.optional(S.String),
+  "resultFetchStart": S.optional(S.String),
+  "taskLocality": S.optional(S.String),
+  "gettingResultTimeMillis": S.optional(S.String),
+}),
 ).annotate({ identifier: "TaskData" }) as any as S.Schema<TaskData>;
 
 export type TaskDataMap = { [key: string]: TaskData | undefined };
-export const TaskDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  TaskData,
-) as any as S.Schema<TaskDataMap>;
+export const TaskDataMap = /*@__PURE__*/ S.Record(S.String, TaskData) as any as S.Schema<TaskDataMap>;
 
-export type StageDataStatusEnum =
-  | "STAGE_STATUS_UNSPECIFIED"
-  | "STAGE_STATUS_ACTIVE"
-  | "STAGE_STATUS_COMPLETE"
-  | "STAGE_STATUS_FAILED"
-  | "STAGE_STATUS_PENDING"
-  | "STAGE_STATUS_SKIPPED"
-  | (string & {});
+export type StageDataStatusEnum = "STAGE_STATUS_UNSPECIFIED" | "STAGE_STATUS_ACTIVE" | "STAGE_STATUS_COMPLETE" | "STAGE_STATUS_FAILED" | "STAGE_STATUS_PENDING" | "STAGE_STATUS_SKIPPED";
 export const StageDataStatusEnum = /*@__PURE__*/ S.String;
 
 /** Executor resources consumed by a stage. */
@@ -1474,61 +1215,48 @@ export interface ExecutorStageSummary {
   stageAttemptId?: number;
 }
 export const ExecutorStageSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskTimeMillis: S.optional(S.String),
-    outputBytes: S.optional(S.String),
-    shuffleWriteRecords: S.optional(S.String),
-    executorId: S.optional(S.String),
-    isExcludedForStage: S.optional(S.Boolean),
-    outputRecords: S.optional(S.String),
-    succeededTasks: S.optional(S.Number),
-    failedTasks: S.optional(S.Number),
-    killedTasks: S.optional(S.Number),
-    peakMemoryMetrics: S.optional(ExecutorMetrics),
-    stageId: S.optional(S.String),
-    shuffleRead: S.optional(S.String),
-    shuffleWrite: S.optional(S.String),
-    diskBytesSpilled: S.optional(S.String),
-    memoryBytesSpilled: S.optional(S.String),
-    inputBytes: S.optional(S.String),
-    inputRecords: S.optional(S.String),
-    shuffleReadRecords: S.optional(S.String),
-    stageAttemptId: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ExecutorStageSummary",
-}) as any as S.Schema<ExecutorStageSummary>;
+S.Struct({
+  "taskTimeMillis": S.optional(S.String),
+  "outputBytes": S.optional(S.String),
+  "shuffleWriteRecords": S.optional(S.String),
+  "executorId": S.optional(S.String),
+  "isExcludedForStage": S.optional(S.Boolean),
+  "outputRecords": S.optional(S.String),
+  "succeededTasks": S.optional(S.Number),
+  "failedTasks": S.optional(S.Number),
+  "killedTasks": S.optional(S.Number),
+  "peakMemoryMetrics": S.optional(ExecutorMetrics),
+  "stageId": S.optional(S.String),
+  "shuffleRead": S.optional(S.String),
+  "shuffleWrite": S.optional(S.String),
+  "diskBytesSpilled": S.optional(S.String),
+  "memoryBytesSpilled": S.optional(S.String),
+  "inputBytes": S.optional(S.String),
+  "inputRecords": S.optional(S.String),
+  "shuffleReadRecords": S.optional(S.String),
+  "stageAttemptId": S.optional(S.Number),
+}),
+).annotate({ identifier: "ExecutorStageSummary" }) as any as S.Schema<ExecutorStageSummary>;
 
-export type ExecutorStageSummaryMap = {
-  [key: string]: ExecutorStageSummary | undefined;
-};
-export const ExecutorStageSummaryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ExecutorStageSummary,
-) as any as S.Schema<ExecutorStageSummaryMap>;
+export type ExecutorStageSummaryMap = { [key: string]: ExecutorStageSummary | undefined };
+export const ExecutorStageSummaryMap = /*@__PURE__*/ S.Record(S.String, ExecutorStageSummary) as any as S.Schema<ExecutorStageSummaryMap>;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 export type ExecutorMetricsList = ReadonlyArray<ExecutorMetrics>;
-export const ExecutorMetricsList = /*@__PURE__*/ S.Array(
-  ExecutorMetrics,
-) as any as S.Schema<ExecutorMetricsList>;
+export const ExecutorMetricsList = /*@__PURE__*/ S.Array(ExecutorMetrics) as any as S.Schema<ExecutorMetricsList>;
 
 export interface ExecutorPeakMetricsDistributions {
   quantiles?: DoubleList;
   executorMetrics?: ExecutorMetricsList;
 }
 export const ExecutorPeakMetricsDistributions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    quantiles: S.optional(DoubleList),
-    executorMetrics: S.optional(ExecutorMetricsList),
-  }),
-).annotate({
-  identifier: "ExecutorPeakMetricsDistributions",
-}) as any as S.Schema<ExecutorPeakMetricsDistributions>;
+S.Struct({
+  "quantiles": S.optional(DoubleList),
+  "executorMetrics": S.optional(ExecutorMetricsList),
+}),
+).annotate({ identifier: "ExecutorPeakMetricsDistributions" }) as any as S.Schema<ExecutorPeakMetricsDistributions>;
 
 export interface ExecutorMetricsDistributions {
   taskTimeMillis?: DoubleList;
@@ -1549,27 +1277,25 @@ export interface ExecutorMetricsDistributions {
   shuffleReadRecords?: DoubleList;
 }
 export const ExecutorMetricsDistributions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskTimeMillis: S.optional(DoubleList),
-    quantiles: S.optional(DoubleList),
-    outputBytes: S.optional(DoubleList),
-    shuffleWriteRecords: S.optional(DoubleList),
-    outputRecords: S.optional(DoubleList),
-    succeededTasks: S.optional(DoubleList),
-    killedTasks: S.optional(DoubleList),
-    failedTasks: S.optional(DoubleList),
-    shuffleWrite: S.optional(DoubleList),
-    diskBytesSpilled: S.optional(DoubleList),
-    peakMemoryMetrics: S.optional(ExecutorPeakMetricsDistributions),
-    shuffleRead: S.optional(DoubleList),
-    memoryBytesSpilled: S.optional(DoubleList),
-    inputBytes: S.optional(DoubleList),
-    inputRecords: S.optional(DoubleList),
-    shuffleReadRecords: S.optional(DoubleList),
-  }),
-).annotate({
-  identifier: "ExecutorMetricsDistributions",
-}) as any as S.Schema<ExecutorMetricsDistributions>;
+S.Struct({
+  "taskTimeMillis": S.optional(DoubleList),
+  "quantiles": S.optional(DoubleList),
+  "outputBytes": S.optional(DoubleList),
+  "shuffleWriteRecords": S.optional(DoubleList),
+  "outputRecords": S.optional(DoubleList),
+  "succeededTasks": S.optional(DoubleList),
+  "killedTasks": S.optional(DoubleList),
+  "failedTasks": S.optional(DoubleList),
+  "shuffleWrite": S.optional(DoubleList),
+  "diskBytesSpilled": S.optional(DoubleList),
+  "peakMemoryMetrics": S.optional(ExecutorPeakMetricsDistributions),
+  "shuffleRead": S.optional(DoubleList),
+  "memoryBytesSpilled": S.optional(DoubleList),
+  "inputBytes": S.optional(DoubleList),
+  "inputRecords": S.optional(DoubleList),
+  "shuffleReadRecords": S.optional(DoubleList),
+}),
+).annotate({ identifier: "ExecutorMetricsDistributions" }) as any as S.Schema<ExecutorMetricsDistributions>;
 
 /** Details of the speculation task when speculative execution is enabled. */
 export interface SpeculationStageSummary {
@@ -1582,18 +1308,16 @@ export interface SpeculationStageSummary {
   numKilledTasks?: number;
 }
 export const SpeculationStageSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stageAttemptId: S.optional(S.Number),
-    numFailedTasks: S.optional(S.Number),
-    numCompletedTasks: S.optional(S.Number),
-    stageId: S.optional(S.String),
-    numTasks: S.optional(S.Number),
-    numActiveTasks: S.optional(S.Number),
-    numKilledTasks: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SpeculationStageSummary",
-}) as any as S.Schema<SpeculationStageSummary>;
+S.Struct({
+  "stageAttemptId": S.optional(S.Number),
+  "numFailedTasks": S.optional(S.Number),
+  "numCompletedTasks": S.optional(S.Number),
+  "stageId": S.optional(S.String),
+  "numTasks": S.optional(S.Number),
+  "numActiveTasks": S.optional(S.Number),
+  "numKilledTasks": S.optional(S.Number),
+}),
+).annotate({ identifier: "SpeculationStageSummary" }) as any as S.Schema<SpeculationStageSummary>;
 
 /** Data corresponding to a stage. */
 export interface StageData {
@@ -1633,41 +1357,41 @@ export interface StageData {
   numFailedTasks?: number;
 }
 export const StageData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parentStageIds: S.optional(StringList),
-    numTasks: S.optional(S.Number),
-    name: S.optional(S.String),
-    resourceProfileId: S.optional(S.Number),
-    numCompletedIndices: S.optional(S.Number),
-    submissionTime: S.optional(S.String),
-    locality: S.optional(StringMap),
-    details: S.optional(S.String),
-    isShufflePushEnabled: S.optional(S.Boolean),
-    stageMetrics: S.optional(StageMetrics),
-    firstTaskLaunchedTime: S.optional(S.String),
-    taskQuantileMetrics: S.optional(TaskQuantileMetrics),
-    stageAttemptId: S.optional(S.Number),
-    description: S.optional(S.String),
-    peakExecutorMetrics: S.optional(ExecutorMetrics),
-    jobIds: S.optional(StringList),
-    numActiveTasks: S.optional(S.Number),
-    tasks: S.optional(TaskDataMap),
-    killedTasksSummary: S.optional(IntegerMap),
-    accumulatorUpdates: S.optional(AccumulableInfoList),
-    shuffleMergersCount: S.optional(S.Number),
-    status: S.optional(StageDataStatusEnum),
-    failureReason: S.optional(S.String),
-    stageId: S.optional(S.String),
-    schedulingPool: S.optional(S.String),
-    rddIds: S.optional(StringList),
-    completionTime: S.optional(S.String),
-    executorSummary: S.optional(ExecutorStageSummaryMap),
-    executorMetricsDistributions: S.optional(ExecutorMetricsDistributions),
-    speculationSummary: S.optional(SpeculationStageSummary),
-    numKilledTasks: S.optional(S.Number),
-    numCompleteTasks: S.optional(S.Number),
-    numFailedTasks: S.optional(S.Number),
-  }),
+S.Struct({
+  "parentStageIds": S.optional(StringList),
+  "numTasks": S.optional(S.Number),
+  "name": S.optional(S.String),
+  "resourceProfileId": S.optional(S.Number),
+  "numCompletedIndices": S.optional(S.Number),
+  "submissionTime": S.optional(S.String),
+  "locality": S.optional(StringMap),
+  "details": S.optional(S.String),
+  "isShufflePushEnabled": S.optional(S.Boolean),
+  "stageMetrics": S.optional(StageMetrics),
+  "firstTaskLaunchedTime": S.optional(S.String),
+  "taskQuantileMetrics": S.optional(TaskQuantileMetrics),
+  "stageAttemptId": S.optional(S.Number),
+  "description": S.optional(S.String),
+  "peakExecutorMetrics": S.optional(ExecutorMetrics),
+  "jobIds": S.optional(StringList),
+  "numActiveTasks": S.optional(S.Number),
+  "tasks": S.optional(TaskDataMap),
+  "killedTasksSummary": S.optional(IntegerMap),
+  "accumulatorUpdates": S.optional(AccumulableInfoList),
+  "shuffleMergersCount": S.optional(S.Number),
+  "status": S.optional(StageDataStatusEnum),
+  "failureReason": S.optional(S.String),
+  "stageId": S.optional(S.String),
+  "schedulingPool": S.optional(S.String),
+  "rddIds": S.optional(StringList),
+  "completionTime": S.optional(S.String),
+  "executorSummary": S.optional(ExecutorStageSummaryMap),
+  "executorMetricsDistributions": S.optional(ExecutorMetricsDistributions),
+  "speculationSummary": S.optional(SpeculationStageSummary),
+  "numKilledTasks": S.optional(S.Number),
+  "numCompleteTasks": S.optional(S.Number),
+  "numFailedTasks": S.optional(S.Number),
+}),
 ).annotate({ identifier: "StageData" }) as any as S.Schema<StageData>;
 
 /** Stage Attempt for a Stage of a Spark Application */
@@ -1675,14 +1399,11 @@ export interface AccessSparkApplicationStageAttemptResponse {
   /** Output only. Data corresponding to a stage. */
   stageData?: StageData;
 }
-export const AccessSparkApplicationStageAttemptResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageData: S.optional(StageData),
-    }),
-  ).annotate({
-    identifier: "AccessSparkApplicationStageAttemptResponse",
-  }) as any as S.Schema<AccessSparkApplicationStageAttemptResponse>;
+export const AccessSparkApplicationStageAttemptResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageData": S.optional(StageData),
+}),
+).annotate({ identifier: "AccessSparkApplicationStageAttemptResponse" }) as any as S.Schema<AccessSparkApplicationStageAttemptResponse>;
 
 export interface AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest {
   /** Optional. The list of summary metrics fields to include. Empty list will default to skip all summary metrics fields. Example, if the response should include TaskQuantileMetrics, the request should have task_quantile_metrics in summary_metrics_mask field */
@@ -1696,39 +1417,26 @@ export interface AccessStageAttemptProjectsLocationsSessionsSparkApplicationsReq
   /** Required. Parent (Session) resource reference. */
   parent?: string;
 }
-export const AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summaryMetricsMask: S.optional(S.String.pipe(T.Query())),
-      stageAttemptId: S.optional(S.Number.pipe(T.Query())),
-      stageId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessStageAttempt",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest>;
+export const AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "summaryMetricsMask": S.optional(S.String.pipe(T.Query())),
+  "stageAttemptId": S.optional(S.Number.pipe(T.Query())),
+  "stageId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessStageAttempt","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** Stage Attempt for a Stage of a Spark Application */
 export interface AccessSessionSparkApplicationStageAttemptResponse {
   /** Output only. Data corresponding to a stage. */
   stageData?: StageData;
 }
-export const AccessSessionSparkApplicationStageAttemptResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageData: S.optional(StageData),
-    }),
-  ).annotate({
-    identifier: "AccessSessionSparkApplicationStageAttemptResponse",
-  }) as any as S.Schema<AccessSessionSparkApplicationStageAttemptResponse>;
+export const AccessSessionSparkApplicationStageAttemptResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageData": S.optional(StageData),
+}),
+).annotate({ identifier: "AccessSessionSparkApplicationStageAttemptResponse" }) as any as S.Schema<AccessSessionSparkApplicationStageAttemptResponse>;
 
 export interface AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -1738,37 +1446,19 @@ export interface AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsReq
   /** Required. Stage ID */
   stageId?: string;
 }
-export const AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-      stageId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessStageRddGraph",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest>;
+export const AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "stageId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessStageRddGraph","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest>;
 
 export type RddOperationClusterList = ReadonlyArray<RddOperationCluster>;
-export const RddOperationClusterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => RddOperationCluster),
-) as any as S.Schema<RddOperationClusterList>;
+export const RddOperationClusterList = /*@__PURE__*/ S.Array(S.suspend(() => RddOperationCluster)) as any as S.Schema<RddOperationClusterList>;
 
-export type RddOperationNodeOutputDeterministicLevelEnum =
-  | "DETERMINISTIC_LEVEL_UNSPECIFIED"
-  | "DETERMINISTIC_LEVEL_DETERMINATE"
-  | "DETERMINISTIC_LEVEL_UNORDERED"
-  | "DETERMINISTIC_LEVEL_INDETERMINATE"
-  | (string & {});
-export const RddOperationNodeOutputDeterministicLevelEnum =
-  /*@__PURE__*/ S.String;
+export type RddOperationNodeOutputDeterministicLevelEnum = "DETERMINISTIC_LEVEL_UNSPECIFIED" | "DETERMINISTIC_LEVEL_DETERMINATE" | "DETERMINISTIC_LEVEL_UNORDERED" | "DETERMINISTIC_LEVEL_INDETERMINATE";
+export const RddOperationNodeOutputDeterministicLevelEnum = /*@__PURE__*/ S.String;
 
 /** A node in the RDD operation graph. Corresponds to a single RDD. */
 export interface RddOperationNode {
@@ -1780,24 +1470,18 @@ export interface RddOperationNode {
   barrier?: boolean;
 }
 export const RddOperationNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outputDeterministicLevel: S.optional(
-      RddOperationNodeOutputDeterministicLevelEnum,
-    ),
-    name: S.optional(S.String),
-    callsite: S.optional(S.String),
-    nodeId: S.optional(S.Number),
-    cached: S.optional(S.Boolean),
-    barrier: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RddOperationNode",
-}) as any as S.Schema<RddOperationNode>;
+S.Struct({
+  "outputDeterministicLevel": S.optional(RddOperationNodeOutputDeterministicLevelEnum),
+  "name": S.optional(S.String),
+  "callsite": S.optional(S.String),
+  "nodeId": S.optional(S.Number),
+  "cached": S.optional(S.Boolean),
+  "barrier": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "RddOperationNode" }) as any as S.Schema<RddOperationNode>;
 
 export type RddOperationNodeList = ReadonlyArray<RddOperationNode>;
-export const RddOperationNodeList = /*@__PURE__*/ S.Array(
-  RddOperationNode,
-) as any as S.Schema<RddOperationNodeList>;
+export const RddOperationNodeList = /*@__PURE__*/ S.Array(RddOperationNode) as any as S.Schema<RddOperationNodeList>;
 
 /** A grouping of nodes representing higher level constructs (stage, job etc.). */
 export interface RddOperationCluster {
@@ -1807,15 +1491,13 @@ export interface RddOperationCluster {
   name?: string;
 }
 export const RddOperationCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    childClusters: S.optional(RddOperationClusterList),
-    childNodes: S.optional(RddOperationNodeList),
-    rddClusterId: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RddOperationCluster",
-}) as any as S.Schema<RddOperationCluster>;
+S.Struct({
+  "childClusters": S.optional(RddOperationClusterList),
+  "childNodes": S.optional(RddOperationNodeList),
+  "rddClusterId": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "RddOperationCluster" }) as any as S.Schema<RddOperationCluster>;
 
 /** A directed edge representing dependency between two RDDs. */
 export interface RddOperationEdge {
@@ -1823,18 +1505,14 @@ export interface RddOperationEdge {
   toId?: number;
 }
 export const RddOperationEdge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromId: S.optional(S.Number),
-    toId: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RddOperationEdge",
-}) as any as S.Schema<RddOperationEdge>;
+S.Struct({
+  "fromId": S.optional(S.Number),
+  "toId": S.optional(S.Number),
+}),
+).annotate({ identifier: "RddOperationEdge" }) as any as S.Schema<RddOperationEdge>;
 
 export type RddOperationEdgeList = ReadonlyArray<RddOperationEdge>;
-export const RddOperationEdgeList = /*@__PURE__*/ S.Array(
-  RddOperationEdge,
-) as any as S.Schema<RddOperationEdgeList>;
+export const RddOperationEdgeList = /*@__PURE__*/ S.Array(RddOperationEdge) as any as S.Schema<RddOperationEdgeList>;
 
 /** Graph representing RDD dependencies. Consists of edges and a root cluster. */
 export interface RddOperationGraph {
@@ -1845,30 +1523,25 @@ export interface RddOperationGraph {
   outgoingEdges?: RddOperationEdgeList;
 }
 export const RddOperationGraph = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rootCluster: S.optional(RddOperationCluster),
-    edges: S.optional(RddOperationEdgeList),
-    stageId: S.optional(S.String),
-    incomingEdges: S.optional(RddOperationEdgeList),
-    outgoingEdges: S.optional(RddOperationEdgeList),
-  }),
-).annotate({
-  identifier: "RddOperationGraph",
-}) as any as S.Schema<RddOperationGraph>;
+S.Struct({
+  "rootCluster": S.optional(RddOperationCluster),
+  "edges": S.optional(RddOperationEdgeList),
+  "stageId": S.optional(S.String),
+  "incomingEdges": S.optional(RddOperationEdgeList),
+  "outgoingEdges": S.optional(RddOperationEdgeList),
+}),
+).annotate({ identifier: "RddOperationGraph" }) as any as S.Schema<RddOperationGraph>;
 
 /** RDD operation graph for a Spark Application Stage limited to maximum 10000 clusters. */
 export interface AccessSparkApplicationStageRddOperationGraphResponse {
   /** RDD operation graph for a Spark Application Stage. */
   rddOperationGraph?: RddOperationGraph;
 }
-export const AccessSparkApplicationStageRddOperationGraphResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rddOperationGraph: S.optional(RddOperationGraph),
-    }),
-  ).annotate({
-    identifier: "AccessSparkApplicationStageRddOperationGraphResponse",
-  }) as any as S.Schema<AccessSparkApplicationStageRddOperationGraphResponse>;
+export const AccessSparkApplicationStageRddOperationGraphResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "rddOperationGraph": S.optional(RddOperationGraph),
+}),
+).annotate({ identifier: "AccessSparkApplicationStageRddOperationGraphResponse" }) as any as S.Schema<AccessSparkApplicationStageRddOperationGraphResponse>;
 
 export interface AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
@@ -1878,37 +1551,24 @@ export interface AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRe
   /** Required. Stage ID */
   stageId?: string;
 }
-export const AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-      stageId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:accessStageRddGraph",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest>;
+export const AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "stageId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:accessStageRddGraph","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** RDD operation graph for a Spark Application Stage limited to maximum 10000 clusters. */
 export interface AccessSessionSparkApplicationStageRddOperationGraphResponse {
   /** RDD operation graph for a Spark Application Stage. */
   rddOperationGraph?: RddOperationGraph;
 }
-export const AccessSessionSparkApplicationStageRddOperationGraphResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rddOperationGraph: S.optional(RddOperationGraph),
-    }),
-  ).annotate({
-    identifier: "AccessSessionSparkApplicationStageRddOperationGraphResponse",
-  }) as any as S.Schema<AccessSessionSparkApplicationStageRddOperationGraphResponse>;
+export const AccessSessionSparkApplicationStageRddOperationGraphResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "rddOperationGraph": S.optional(RddOperationGraph),
+}),
+).annotate({ identifier: "AccessSessionSparkApplicationStageRddOperationGraphResponse" }) as any as S.Schema<AccessSessionSparkApplicationStageRddOperationGraphResponse>;
 
 /** A request to analyze a batch workload. */
 export interface AnalyzeBatchRequest {
@@ -1918,13 +1578,11 @@ export interface AnalyzeBatchRequest {
   requestorId?: string;
 }
 export const AnalyzeBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-    requestorId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AnalyzeBatchRequest",
-}) as any as S.Schema<AnalyzeBatchRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+  "requestorId": S.optional(S.String),
+}),
+).annotate({ identifier: "AnalyzeBatchRequest" }) as any as S.Schema<AnalyzeBatchRequest>;
 
 export interface AnalyzeProjectsLocationsBatchesRequest {
   /** Required. The fully qualified name of the batch to analyze in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID" */
@@ -1932,32 +1590,18 @@ export interface AnalyzeProjectsLocationsBatchesRequest {
   /** Request body */
   body?: AnalyzeBatchRequest;
 }
-export const AnalyzeProjectsLocationsBatchesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AnalyzeBatchRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:analyze",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "AnalyzeProjectsLocationsBatchesRequest",
-}) as any as S.Schema<AnalyzeProjectsLocationsBatchesRequest>;
+export const AnalyzeProjectsLocationsBatchesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(AnalyzeBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:analyze","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "AnalyzeProjectsLocationsBatchesRequest" }) as any as S.Schema<AnalyzeProjectsLocationsBatchesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -1969,11 +1613,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -1990,47 +1634,36 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    done: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "done": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** A request to cancel a job. */
 export interface CancelJobRequest {}
 export const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelJobRequest",
-}) as any as S.Schema<CancelJobRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelJobRequest" }) as any as S.Schema<CancelJobRequest>;
 
 export interface CancelProjectsRegionsJobsRequest {
   /** Required. The ID of the Google Cloud Platform project that the job belongs to. */
@@ -2043,21 +1676,13 @@ export interface CancelProjectsRegionsJobsRequest {
   body?: CancelJobRequest;
 }
 export const CancelProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    jobId: S.String.pipe(T.Label()),
-    region: S.String.pipe(T.Label()),
-    body: S.optional(CancelJobRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelProjectsRegionsJobsRequest",
-}) as any as S.Schema<CancelProjectsRegionsJobsRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "jobId": S.String.pipe(T.Label()),
+  "region": S.String.pipe(T.Label()),
+  "body": S.optional(CancelJobRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsRegionsJobsRequest" }) as any as S.Schema<CancelProjectsRegionsJobsRequest>;
 
 /** A list of queries to run on a cluster. */
 export interface QueryList {
@@ -2065,9 +1690,9 @@ export interface QueryList {
   queries?: StringList;
 }
 export const QueryList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queries: S.optional(StringList),
-  }),
+S.Struct({
+  "queries": S.optional(StringList),
+}),
 ).annotate({ identifier: "QueryList" }) as any as S.Schema<QueryList>;
 
 /** A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN. */
@@ -2086,36 +1711,21 @@ export interface HiveJob {
   queryList?: QueryList;
 }
 export const HiveJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jarFileUris: S.optional(StringList),
-    scriptVariables: S.optional(StringMap),
-    queryFileUri: S.optional(S.String),
-    continueOnFailure: S.optional(S.Boolean),
-    properties: S.optional(StringMap),
-    queryList: S.optional(QueryList),
-  }),
+S.Struct({
+  "jarFileUris": S.optional(StringList),
+  "scriptVariables": S.optional(StringMap),
+  "queryFileUri": S.optional(S.String),
+  "continueOnFailure": S.optional(S.Boolean),
+  "properties": S.optional(StringMap),
+  "queryList": S.optional(QueryList),
+}),
 ).annotate({ identifier: "HiveJob" }) as any as S.Schema<HiveJob>;
 
-export type LoggingConfigDriverLogLevelsValueEnum =
-  | "LEVEL_UNSPECIFIED"
-  | "ALL"
-  | "TRACE"
-  | "DEBUG"
-  | "INFO"
-  | "WARN"
-  | "ERROR"
-  | "FATAL"
-  | "OFF"
-  | (string & {});
+export type LoggingConfigDriverLogLevelsValueEnum = "LEVEL_UNSPECIFIED" | "ALL" | "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL" | "OFF";
 export const LoggingConfigDriverLogLevelsValueEnum = /*@__PURE__*/ S.String;
 
-export type LoggingConfigDriverLogLevelsValueEnumMap = {
-  [key: string]: LoggingConfigDriverLogLevelsValueEnum | undefined;
-};
-export const LoggingConfigDriverLogLevelsValueEnumMap = /*@__PURE__*/ S.Record(
-  S.String,
-  LoggingConfigDriverLogLevelsValueEnum,
-) as any as S.Schema<LoggingConfigDriverLogLevelsValueEnumMap>;
+export type LoggingConfigDriverLogLevelsValueEnumMap = { [key: string]: LoggingConfigDriverLogLevelsValueEnum | undefined };
+export const LoggingConfigDriverLogLevelsValueEnumMap = /*@__PURE__*/ S.Record(S.String, LoggingConfigDriverLogLevelsValueEnum) as any as S.Schema<LoggingConfigDriverLogLevelsValueEnumMap>;
 
 /** The runtime logging config of the job. */
 export interface LoggingConfig {
@@ -2123,9 +1733,9 @@ export interface LoggingConfig {
   driverLogLevels?: LoggingConfigDriverLogLevelsValueEnumMap;
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    driverLogLevels: S.optional(LoggingConfigDriverLogLevelsValueEnumMap),
-  }),
+S.Struct({
+  "driverLogLevels": S.optional(LoggingConfigDriverLogLevelsValueEnumMap),
+}),
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
 
 /** A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN. */
@@ -2144,14 +1754,14 @@ export interface SparkRJob {
   mainRFileUri?: string;
 }
 export const SparkRJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileUris: S.optional(StringList),
-    archiveUris: S.optional(StringList),
-    properties: S.optional(StringMap),
-    args: S.optional(StringList),
-    loggingConfig: S.optional(LoggingConfig),
-    mainRFileUri: S.optional(S.String),
-  }),
+S.Struct({
+  "fileUris": S.optional(StringList),
+  "archiveUris": S.optional(StringList),
+  "properties": S.optional(StringMap),
+  "args": S.optional(StringList),
+  "loggingConfig": S.optional(LoggingConfig),
+  "mainRFileUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "SparkRJob" }) as any as S.Schema<SparkRJob>;
 
 /** Driver scheduling configuration. */
@@ -2162,13 +1772,11 @@ export interface DriverSchedulingConfig {
   memoryMb?: number;
 }
 export const DriverSchedulingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vcores: S.optional(S.Number),
-    memoryMb: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DriverSchedulingConfig",
-}) as any as S.Schema<DriverSchedulingConfig>;
+S.Struct({
+  "vcores": S.optional(S.Number),
+  "memoryMb": S.optional(S.Number),
+}),
+).annotate({ identifier: "DriverSchedulingConfig" }) as any as S.Schema<DriverSchedulingConfig>;
 
 /** A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries. */
 export interface SparkSqlJob {
@@ -2186,14 +1794,14 @@ export interface SparkSqlJob {
   loggingConfig?: LoggingConfig;
 }
 export const SparkSqlJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(StringMap),
-    queryList: S.optional(QueryList),
-    queryFileUri: S.optional(S.String),
-    jarFileUris: S.optional(StringList),
-    scriptVariables: S.optional(StringMap),
-    loggingConfig: S.optional(LoggingConfig),
-  }),
+S.Struct({
+  "properties": S.optional(StringMap),
+  "queryList": S.optional(QueryList),
+  "queryFileUri": S.optional(S.String),
+  "jarFileUris": S.optional(StringList),
+  "scriptVariables": S.optional(StringMap),
+  "loggingConfig": S.optional(LoggingConfig),
+}),
 ).annotate({ identifier: "SparkSqlJob" }) as any as S.Schema<SparkSqlJob>;
 
 /** A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created to submit a Trino job to the cluster. */
@@ -2214,15 +1822,15 @@ export interface TrinoJob {
   loggingConfig?: LoggingConfig;
 }
 export const TrinoJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queryList: S.optional(QueryList),
-    clientTags: S.optional(StringList),
-    properties: S.optional(StringMap),
-    queryFileUri: S.optional(S.String),
-    continueOnFailure: S.optional(S.Boolean),
-    outputFormat: S.optional(S.String),
-    loggingConfig: S.optional(LoggingConfig),
-  }),
+S.Struct({
+  "queryList": S.optional(QueryList),
+  "clientTags": S.optional(StringList),
+  "properties": S.optional(StringMap),
+  "queryFileUri": S.optional(S.String),
+  "continueOnFailure": S.optional(S.Boolean),
+  "outputFormat": S.optional(S.String),
+  "loggingConfig": S.optional(LoggingConfig),
+}),
 ).annotate({ identifier: "TrinoJob" }) as any as S.Schema<TrinoJob>;
 
 /** A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/latest/api/python/index.html#pyspark-overview) applications on YARN. */
@@ -2245,16 +1853,16 @@ export interface PySparkJob {
   loggingConfig?: LoggingConfig;
 }
 export const PySparkJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileUris: S.optional(StringList),
-    archiveUris: S.optional(StringList),
-    properties: S.optional(StringMap),
-    jarFileUris: S.optional(StringList),
-    mainPythonFileUri: S.optional(S.String),
-    pythonFileUris: S.optional(StringList),
-    args: S.optional(StringList),
-    loggingConfig: S.optional(LoggingConfig),
-  }),
+S.Struct({
+  "fileUris": S.optional(StringList),
+  "archiveUris": S.optional(StringList),
+  "properties": S.optional(StringMap),
+  "jarFileUris": S.optional(StringList),
+  "mainPythonFileUri": S.optional(S.String),
+  "pythonFileUris": S.optional(StringList),
+  "args": S.optional(StringList),
+  "loggingConfig": S.optional(LoggingConfig),
+}),
 ).annotate({ identifier: "PySparkJob" }) as any as S.Schema<PySparkJob>;
 
 /** A Dataproc job for running Apache Flink applications on YARN. */
@@ -2275,37 +1883,21 @@ export interface FlinkJob {
   jarFileUris?: StringList;
 }
 export const FlinkJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savepointUri: S.optional(S.String),
-    properties: S.optional(StringMap),
-    mainJarFileUri: S.optional(S.String),
-    args: S.optional(StringList),
-    loggingConfig: S.optional(LoggingConfig),
-    mainClass: S.optional(S.String),
-    jarFileUris: S.optional(StringList),
-  }),
+S.Struct({
+  "savepointUri": S.optional(S.String),
+  "properties": S.optional(StringMap),
+  "mainJarFileUri": S.optional(S.String),
+  "args": S.optional(StringList),
+  "loggingConfig": S.optional(LoggingConfig),
+  "mainClass": S.optional(S.String),
+  "jarFileUris": S.optional(StringList),
+}),
 ).annotate({ identifier: "FlinkJob" }) as any as S.Schema<FlinkJob>;
 
-export type JobStatusSubstateEnum =
-  | "UNSPECIFIED"
-  | "SUBMITTED"
-  | "QUEUED"
-  | "STALE_STATUS"
-  | (string & {});
+export type JobStatusSubstateEnum = "UNSPECIFIED" | "SUBMITTED" | "QUEUED" | "STALE_STATUS";
 export const JobStatusSubstateEnum = /*@__PURE__*/ S.String;
 
-export type JobStatusStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "SETUP_DONE"
-  | "RUNNING"
-  | "CANCEL_PENDING"
-  | "CANCEL_STARTED"
-  | "CANCELLED"
-  | "DONE"
-  | "ERROR"
-  | "ATTEMPT_FAILURE"
-  | (string & {});
+export type JobStatusStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "SETUP_DONE" | "RUNNING" | "CANCEL_PENDING" | "CANCEL_STARTED" | "CANCELLED" | "DONE" | "ERROR" | "ATTEMPT_FAILURE";
 export const JobStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Dataproc job status. */
@@ -2320,18 +1912,16 @@ export interface JobStatus {
   stateStartTime?: string;
 }
 export const JobStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    substate: S.optional(JobStatusSubstateEnum),
-    state: S.optional(JobStatusStateEnum),
-    details: S.optional(S.String),
-    stateStartTime: S.optional(S.String),
-  }),
+S.Struct({
+  "substate": S.optional(JobStatusSubstateEnum),
+  "state": S.optional(JobStatusStateEnum),
+  "details": S.optional(S.String),
+  "stateStartTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "JobStatus" }) as any as S.Schema<JobStatus>;
 
 export type JobStatusList = ReadonlyArray<JobStatus>;
-export const JobStatusList = /*@__PURE__*/ S.Array(
-  JobStatus,
-) as any as S.Schema<JobStatusList>;
+export const JobStatusList = /*@__PURE__*/ S.Array(JobStatus) as any as S.Schema<JobStatusList>;
 
 /** Job scheduling options. */
 export interface JobScheduling {
@@ -2341,10 +1931,10 @@ export interface JobScheduling {
   maxFailuresTotal?: number;
 }
 export const JobScheduling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxFailuresPerHour: S.optional(S.Number),
-    maxFailuresTotal: S.optional(S.Number),
-  }),
+S.Struct({
+  "maxFailuresPerHour": S.optional(S.Number),
+  "maxFailuresTotal": S.optional(S.Number),
+}),
 ).annotate({ identifier: "JobScheduling" }) as any as S.Schema<JobScheduling>;
 
 /** A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster. */
@@ -2365,15 +1955,15 @@ export interface PrestoJob {
   loggingConfig?: LoggingConfig;
 }
 export const PrestoJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientTags: S.optional(StringList),
-    properties: S.optional(StringMap),
-    queryList: S.optional(QueryList),
-    queryFileUri: S.optional(S.String),
-    continueOnFailure: S.optional(S.Boolean),
-    outputFormat: S.optional(S.String),
-    loggingConfig: S.optional(LoggingConfig),
-  }),
+S.Struct({
+  "clientTags": S.optional(StringList),
+  "properties": S.optional(StringMap),
+  "queryList": S.optional(QueryList),
+  "queryFileUri": S.optional(S.String),
+  "continueOnFailure": S.optional(S.Boolean),
+  "outputFormat": S.optional(S.String),
+  "loggingConfig": S.optional(LoggingConfig),
+}),
 ).annotate({ identifier: "PrestoJob" }) as any as S.Schema<PrestoJob>;
 
 /** Dataproc job config. */
@@ -2386,11 +1976,11 @@ export interface JobPlacement {
   clusterName?: string;
 }
 export const JobPlacement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterUuid: S.optional(S.String),
-    clusterLabels: S.optional(StringMap),
-    clusterName: S.optional(S.String),
-  }),
+S.Struct({
+  "clusterUuid": S.optional(S.String),
+  "clusterLabels": S.optional(StringMap),
+  "clusterName": S.optional(S.String),
+}),
 ).annotate({ identifier: "JobPlacement" }) as any as S.Schema<JobPlacement>;
 
 /** A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html). */
@@ -2413,16 +2003,16 @@ export interface HadoopJob {
   loggingConfig?: LoggingConfig;
 }
 export const HadoopJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileUris: S.optional(StringList),
-    archiveUris: S.optional(StringList),
-    properties: S.optional(StringMap),
-    mainClass: S.optional(S.String),
-    jarFileUris: S.optional(StringList),
-    mainJarFileUri: S.optional(S.String),
-    args: S.optional(StringList),
-    loggingConfig: S.optional(LoggingConfig),
-  }),
+S.Struct({
+  "fileUris": S.optional(StringList),
+  "archiveUris": S.optional(StringList),
+  "properties": S.optional(StringMap),
+  "mainClass": S.optional(S.String),
+  "jarFileUris": S.optional(StringList),
+  "mainJarFileUri": S.optional(S.String),
+  "args": S.optional(StringList),
+  "loggingConfig": S.optional(LoggingConfig),
+}),
 ).annotate({ identifier: "HadoopJob" }) as any as S.Schema<HadoopJob>;
 
 /** A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN. */
@@ -2445,16 +2035,16 @@ export interface SparkJob {
   properties?: StringMap;
 }
 export const SparkJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mainJarFileUri: S.optional(S.String),
-    args: S.optional(StringList),
-    loggingConfig: S.optional(LoggingConfig),
-    mainClass: S.optional(S.String),
-    jarFileUris: S.optional(StringList),
-    fileUris: S.optional(StringList),
-    archiveUris: S.optional(StringList),
-    properties: S.optional(StringMap),
-  }),
+S.Struct({
+  "mainJarFileUri": S.optional(S.String),
+  "args": S.optional(StringList),
+  "loggingConfig": S.optional(LoggingConfig),
+  "mainClass": S.optional(S.String),
+  "jarFileUris": S.optional(StringList),
+  "fileUris": S.optional(StringList),
+  "archiveUris": S.optional(StringList),
+  "properties": S.optional(StringMap),
+}),
 ).annotate({ identifier: "SparkJob" }) as any as S.Schema<SparkJob>;
 
 /** A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN. */
@@ -2475,28 +2065,18 @@ export interface PigJob {
   properties?: StringMap;
 }
 export const PigJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loggingConfig: S.optional(LoggingConfig),
-    scriptVariables: S.optional(StringMap),
-    jarFileUris: S.optional(StringList),
-    queryFileUri: S.optional(S.String),
-    continueOnFailure: S.optional(S.Boolean),
-    queryList: S.optional(QueryList),
-    properties: S.optional(StringMap),
-  }),
+S.Struct({
+  "loggingConfig": S.optional(LoggingConfig),
+  "scriptVariables": S.optional(StringMap),
+  "jarFileUris": S.optional(StringList),
+  "queryFileUri": S.optional(S.String),
+  "continueOnFailure": S.optional(S.Boolean),
+  "queryList": S.optional(QueryList),
+  "properties": S.optional(StringMap),
+}),
 ).annotate({ identifier: "PigJob" }) as any as S.Schema<PigJob>;
 
-export type YarnApplicationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "NEW"
-  | "NEW_SAVING"
-  | "SUBMITTED"
-  | "ACCEPTED"
-  | "RUNNING"
-  | "FINISHED"
-  | "FAILED"
-  | "KILLED"
-  | (string & {});
+export type YarnApplicationStateEnum = "STATE_UNSPECIFIED" | "NEW" | "NEW_SAVING" | "SUBMITTED" | "ACCEPTED" | "RUNNING" | "FINISHED" | "FAILED" | "KILLED";
 export const YarnApplicationStateEnum = /*@__PURE__*/ S.String;
 
 /** A YARN application created by a job. Application information is a subset of org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature: This report is available for testing purposes only. It may be changed before final release. */
@@ -2515,22 +2095,18 @@ export interface YarnApplication {
   progress?: number;
 }
 export const YarnApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryMbSeconds: S.optional(S.String),
-    name: S.optional(S.String),
-    trackingUrl: S.optional(S.String),
-    vcoreSeconds: S.optional(S.String),
-    state: S.optional(YarnApplicationStateEnum),
-    progress: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "YarnApplication",
-}) as any as S.Schema<YarnApplication>;
+S.Struct({
+  "memoryMbSeconds": S.optional(S.String),
+  "name": S.optional(S.String),
+  "trackingUrl": S.optional(S.String),
+  "vcoreSeconds": S.optional(S.String),
+  "state": S.optional(YarnApplicationStateEnum),
+  "progress": S.optional(S.Number),
+}),
+).annotate({ identifier: "YarnApplication" }) as any as S.Schema<YarnApplication>;
 
 export type YarnApplicationList = ReadonlyArray<YarnApplication>;
-export const YarnApplicationList = /*@__PURE__*/ S.Array(
-  YarnApplication,
-) as any as S.Schema<YarnApplicationList>;
+export const YarnApplicationList = /*@__PURE__*/ S.Array(YarnApplication) as any as S.Schema<YarnApplicationList>;
 
 /** Encapsulates the full scoping used to reference a job. */
 export interface JobReference {
@@ -2540,10 +2116,10 @@ export interface JobReference {
   jobId?: string;
 }
 export const JobReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    jobId: S.optional(S.String),
-  }),
+S.Struct({
+  "projectId": S.optional(S.String),
+  "jobId": S.optional(S.String),
+}),
 ).annotate({ identifier: "JobReference" }) as any as S.Schema<JobReference>;
 
 /** A Dataproc job resource. */
@@ -2594,50 +2170,41 @@ export interface Job {
   reference?: JobReference;
 }
 export const Job = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hiveJob: S.optional(HiveJob),
-    labels: S.optional(StringMap),
-    sparkRJob: S.optional(SparkRJob),
-    done: S.optional(S.Boolean),
-    driverSchedulingConfig: S.optional(DriverSchedulingConfig),
-    sparkSqlJob: S.optional(SparkSqlJob),
-    trinoJob: S.optional(TrinoJob),
-    pysparkJob: S.optional(PySparkJob),
-    flinkJob: S.optional(FlinkJob),
-    statusHistory: S.optional(JobStatusList),
-    driverOutputResourceUri: S.optional(S.String),
-    scheduling: S.optional(JobScheduling),
-    prestoJob: S.optional(PrestoJob),
-    status: S.optional(JobStatus),
-    placement: S.optional(JobPlacement),
-    jobUuid: S.optional(S.String),
-    hadoopJob: S.optional(HadoopJob),
-    sparkJob: S.optional(SparkJob),
-    pigJob: S.optional(PigJob),
-    driverControlFilesUri: S.optional(S.String),
-    yarnApplications: S.optional(YarnApplicationList),
-    reference: S.optional(JobReference),
-  }),
+S.Struct({
+  "hiveJob": S.optional(HiveJob),
+  "labels": S.optional(StringMap),
+  "sparkRJob": S.optional(SparkRJob),
+  "done": S.optional(S.Boolean),
+  "driverSchedulingConfig": S.optional(DriverSchedulingConfig),
+  "sparkSqlJob": S.optional(SparkSqlJob),
+  "trinoJob": S.optional(TrinoJob),
+  "pysparkJob": S.optional(PySparkJob),
+  "flinkJob": S.optional(FlinkJob),
+  "statusHistory": S.optional(JobStatusList),
+  "driverOutputResourceUri": S.optional(S.String),
+  "scheduling": S.optional(JobScheduling),
+  "prestoJob": S.optional(PrestoJob),
+  "status": S.optional(JobStatus),
+  "placement": S.optional(JobPlacement),
+  "jobUuid": S.optional(S.String),
+  "hadoopJob": S.optional(HadoopJob),
+  "sparkJob": S.optional(SparkJob),
+  "pigJob": S.optional(PigJob),
+  "driverControlFilesUri": S.optional(S.String),
+  "yarnApplications": S.optional(YarnApplicationList),
+  "reference": S.optional(JobReference),
+}),
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 export interface CancelProjectsRegionsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsRegionsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsRegionsOperationsRequest",
-}) as any as S.Schema<CancelProjectsRegionsOperationsRequest>;
+export const CancelProjectsRegionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsRegionsOperationsRequest" }) as any as S.Schema<CancelProjectsRegionsOperationsRequest>;
 
 /** Basic autoscaling configurations for Spark Standalone. */
 export interface SparkStandaloneAutoscalingConfig {
@@ -2655,17 +2222,15 @@ export interface SparkStandaloneAutoscalingConfig {
   scaleUpMinWorkerFraction?: number;
 }
 export const SparkStandaloneAutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    removeOnlyIdleWorkers: S.optional(S.Boolean),
-    gracefulDecommissionTimeout: S.optional(S.String),
-    scaleDownMinWorkerFraction: S.optional(S.Number),
-    scaleUpFactor: S.optional(S.Number),
-    scaleDownFactor: S.optional(S.Number),
-    scaleUpMinWorkerFraction: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SparkStandaloneAutoscalingConfig",
-}) as any as S.Schema<SparkStandaloneAutoscalingConfig>;
+S.Struct({
+  "removeOnlyIdleWorkers": S.optional(S.Boolean),
+  "gracefulDecommissionTimeout": S.optional(S.String),
+  "scaleDownMinWorkerFraction": S.optional(S.Number),
+  "scaleUpFactor": S.optional(S.Number),
+  "scaleDownFactor": S.optional(S.Number),
+  "scaleUpMinWorkerFraction": S.optional(S.Number),
+}),
+).annotate({ identifier: "SparkStandaloneAutoscalingConfig" }) as any as S.Schema<SparkStandaloneAutoscalingConfig>;
 
 /** Basic autoscaling configurations for YARN. */
 export interface BasicYarnAutoscalingConfig {
@@ -2681,16 +2246,14 @@ export interface BasicYarnAutoscalingConfig {
   gracefulDecommissionTimeout?: string;
 }
 export const BasicYarnAutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scaleUpFactor: S.optional(S.Number),
-    scaleDownFactor: S.optional(S.Number),
-    scaleUpMinWorkerFraction: S.optional(S.Number),
-    scaleDownMinWorkerFraction: S.optional(S.Number),
-    gracefulDecommissionTimeout: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BasicYarnAutoscalingConfig",
-}) as any as S.Schema<BasicYarnAutoscalingConfig>;
+S.Struct({
+  "scaleUpFactor": S.optional(S.Number),
+  "scaleDownFactor": S.optional(S.Number),
+  "scaleUpMinWorkerFraction": S.optional(S.Number),
+  "scaleDownMinWorkerFraction": S.optional(S.Number),
+  "gracefulDecommissionTimeout": S.optional(S.String),
+}),
+).annotate({ identifier: "BasicYarnAutoscalingConfig" }) as any as S.Schema<BasicYarnAutoscalingConfig>;
 
 /** Basic algorithm for autoscaling. */
 export interface BasicAutoscalingAlgorithm {
@@ -2702,20 +2265,14 @@ export interface BasicAutoscalingAlgorithm {
   yarnConfig?: BasicYarnAutoscalingConfig;
 }
 export const BasicAutoscalingAlgorithm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sparkStandaloneConfig: S.optional(SparkStandaloneAutoscalingConfig),
-    cooldownPeriod: S.optional(S.String),
-    yarnConfig: S.optional(BasicYarnAutoscalingConfig),
-  }),
-).annotate({
-  identifier: "BasicAutoscalingAlgorithm",
-}) as any as S.Schema<BasicAutoscalingAlgorithm>;
+S.Struct({
+  "sparkStandaloneConfig": S.optional(SparkStandaloneAutoscalingConfig),
+  "cooldownPeriod": S.optional(S.String),
+  "yarnConfig": S.optional(BasicYarnAutoscalingConfig),
+}),
+).annotate({ identifier: "BasicAutoscalingAlgorithm" }) as any as S.Schema<BasicAutoscalingAlgorithm>;
 
-export type AutoscalingPolicyClusterTypeEnum =
-  | "CLUSTER_TYPE_UNSPECIFIED"
-  | "STANDARD"
-  | "ZERO_SCALE"
-  | (string & {});
+export type AutoscalingPolicyClusterTypeEnum = "CLUSTER_TYPE_UNSPECIFIED" | "STANDARD" | "ZERO_SCALE";
 export const AutoscalingPolicyClusterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the size bounds of an instance group, including its proportional size to other groups. */
@@ -2727,16 +2284,13 @@ export interface InstanceGroupAutoscalingPolicyConfig {
   /** Optional. Weight for the instance group, which is used to determine the fraction of total workers in the cluster from this instance group. For example, if primary workers have weight 2, and secondary workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker.The cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings. For example, if max_instances for secondary workers is 0, then only primary workers will be added. The cluster can also be out of balance when created.If weight is not set on any instance group, the cluster will default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in each group within the configured size bounds for each group. If weight is set for one group only, the cluster will default to zero weight on the unset group. For example if weight is set only on primary workers, the cluster will use primary workers only and no secondary workers. */
   weight?: number;
 }
-export const InstanceGroupAutoscalingPolicyConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      minInstances: S.optional(S.Number),
-      maxInstances: S.optional(S.Number),
-      weight: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "InstanceGroupAutoscalingPolicyConfig",
-}) as any as S.Schema<InstanceGroupAutoscalingPolicyConfig>;
+export const InstanceGroupAutoscalingPolicyConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "minInstances": S.optional(S.Number),
+  "maxInstances": S.optional(S.Number),
+  "weight": S.optional(S.Number),
+}),
+).annotate({ identifier: "InstanceGroupAutoscalingPolicyConfig" }) as any as S.Schema<InstanceGroupAutoscalingPolicyConfig>;
 
 /** Describes an autoscaling policy for Dataproc cluster autoscaler. */
 export interface AutoscalingPolicy {
@@ -2755,18 +2309,16 @@ export interface AutoscalingPolicy {
   workerConfig?: InstanceGroupAutoscalingPolicyConfig;
 }
 export const AutoscalingPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    basicAlgorithm: S.optional(BasicAutoscalingAlgorithm),
-    labels: S.optional(StringMap),
-    clusterType: S.optional(AutoscalingPolicyClusterTypeEnum),
-    id: S.optional(S.String),
-    secondaryWorkerConfig: S.optional(InstanceGroupAutoscalingPolicyConfig),
-    workerConfig: S.optional(InstanceGroupAutoscalingPolicyConfig),
-  }),
-).annotate({
-  identifier: "AutoscalingPolicy",
-}) as any as S.Schema<AutoscalingPolicy>;
+S.Struct({
+  "name": S.optional(S.String),
+  "basicAlgorithm": S.optional(BasicAutoscalingAlgorithm),
+  "labels": S.optional(StringMap),
+  "clusterType": S.optional(AutoscalingPolicyClusterTypeEnum),
+  "id": S.optional(S.String),
+  "secondaryWorkerConfig": S.optional(InstanceGroupAutoscalingPolicyConfig),
+  "workerConfig": S.optional(InstanceGroupAutoscalingPolicyConfig),
+}),
+).annotate({ identifier: "AutoscalingPolicy" }) as any as S.Schema<AutoscalingPolicy>;
 
 export interface CreateProjectsLocationsAutoscalingPoliciesRequest {
   /** Required. The "resource name" of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.create, the resource name of the location has the following format: projects/{project_id}/locations/{location} */
@@ -2774,21 +2326,12 @@ export interface CreateProjectsLocationsAutoscalingPoliciesRequest {
   /** Request body */
   body?: AutoscalingPolicy;
 }
-export const CreateProjectsLocationsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(AutoscalingPolicy.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/autoscalingPolicies",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsAutoscalingPoliciesRequest>;
+export const CreateProjectsLocationsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AutoscalingPolicy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/autoscalingPolicies","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsAutoscalingPoliciesRequest" }) as any as S.Schema<CreateProjectsLocationsAutoscalingPoliciesRequest>;
 
 /** A configuration for running a PySpark Notebook batch workload. */
 export interface PySparkNotebookBatch {
@@ -2806,27 +2349,17 @@ export interface PySparkNotebookBatch {
   jarFileUris?: StringList;
 }
 export const PySparkNotebookBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    params: S.optional(StringMap),
-    fileUris: S.optional(StringList),
-    archiveUris: S.optional(StringList),
-    pythonFileUris: S.optional(StringList),
-    notebookFileUri: S.optional(S.String),
-    jarFileUris: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "PySparkNotebookBatch",
-}) as any as S.Schema<PySparkNotebookBatch>;
+S.Struct({
+  "params": S.optional(StringMap),
+  "fileUris": S.optional(StringList),
+  "archiveUris": S.optional(StringList),
+  "pythonFileUris": S.optional(StringList),
+  "notebookFileUri": S.optional(S.String),
+  "jarFileUris": S.optional(StringList),
+}),
+).annotate({ identifier: "PySparkNotebookBatch" }) as any as S.Schema<PySparkNotebookBatch>;
 
-export type BatchStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "RUNNING"
-  | "CANCELLING"
-  | "CANCELLED"
-  | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+export type BatchStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "CANCELLING" | "CANCELLED" | "SUCCEEDED" | "FAILED";
 export const BatchStateEnum = /*@__PURE__*/ S.String;
 
 /** A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload. */
@@ -2845,25 +2378,17 @@ export interface PySparkBatch {
   jarFileUris?: StringList;
 }
 export const PySparkBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileUris: S.optional(StringList),
-    archiveUris: S.optional(StringList),
-    args: S.optional(StringList),
-    pythonFileUris: S.optional(StringList),
-    mainPythonFileUri: S.optional(S.String),
-    jarFileUris: S.optional(StringList),
-  }),
+S.Struct({
+  "fileUris": S.optional(StringList),
+  "archiveUris": S.optional(StringList),
+  "args": S.optional(StringList),
+  "pythonFileUris": S.optional(StringList),
+  "mainPythonFileUri": S.optional(S.String),
+  "jarFileUris": S.optional(StringList),
+}),
 ).annotate({ identifier: "PySparkBatch" }) as any as S.Schema<PySparkBatch>;
 
-export type StateHistoryStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "RUNNING"
-  | "CANCELLING"
-  | "CANCELLED"
-  | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+export type StateHistoryStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "CANCELLING" | "CANCELLED" | "SUCCEEDED" | "FAILED";
 export const StateHistoryStateEnum = /*@__PURE__*/ S.String;
 
 /** Historical state information. */
@@ -2876,33 +2401,21 @@ export interface StateHistory {
   stateStartTime?: string;
 }
 export const StateHistory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMessage: S.optional(S.String),
-    state: S.optional(StateHistoryStateEnum),
-    stateStartTime: S.optional(S.String),
-  }),
+S.Struct({
+  "stateMessage": S.optional(S.String),
+  "state": S.optional(StateHistoryStateEnum),
+  "stateStartTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "StateHistory" }) as any as S.Schema<StateHistory>;
 
 export type StateHistoryList = ReadonlyArray<StateHistory>;
-export const StateHistoryList = /*@__PURE__*/ S.Array(
-  StateHistory,
-) as any as S.Schema<StateHistoryList>;
+export const StateHistoryList = /*@__PURE__*/ S.Array(StateHistory) as any as S.Schema<StateHistoryList>;
 
-export type AutotuningConfigScenariosItemEnum =
-  | "SCENARIO_UNSPECIFIED"
-  | "SCALING"
-  | "BROADCAST_HASH_JOIN"
-  | "MEMORY"
-  | "NONE"
-  | "AUTO"
-  | (string & {});
+export type AutotuningConfigScenariosItemEnum = "SCENARIO_UNSPECIFIED" | "SCALING" | "BROADCAST_HASH_JOIN" | "MEMORY" | "NONE" | "AUTO";
 export const AutotuningConfigScenariosItemEnum = /*@__PURE__*/ S.String;
 
-export type AutotuningConfigScenariosItemEnumList =
-  ReadonlyArray<AutotuningConfigScenariosItemEnum>;
-export const AutotuningConfigScenariosItemEnumList = /*@__PURE__*/ S.Array(
-  AutotuningConfigScenariosItemEnum,
-) as any as S.Schema<AutotuningConfigScenariosItemEnumList>;
+export type AutotuningConfigScenariosItemEnumList = ReadonlyArray<AutotuningConfigScenariosItemEnum>;
+export const AutotuningConfigScenariosItemEnumList = /*@__PURE__*/ S.Array(AutotuningConfigScenariosItemEnum) as any as S.Schema<AutotuningConfigScenariosItemEnumList>;
 
 /** Autotuning configuration of the workload. */
 export interface AutotuningConfig {
@@ -2910,12 +2423,10 @@ export interface AutotuningConfig {
   scenarios?: AutotuningConfigScenariosItemEnumList;
 }
 export const AutotuningConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scenarios: S.optional(AutotuningConfigScenariosItemEnumList),
-  }),
-).annotate({
-  identifier: "AutotuningConfig",
-}) as any as S.Schema<AutotuningConfig>;
+S.Struct({
+  "scenarios": S.optional(AutotuningConfigScenariosItemEnumList),
+}),
+).annotate({ identifier: "AutotuningConfig" }) as any as S.Schema<AutotuningConfig>;
 
 /** Configuration for PyPi repository */
 export interface PyPiRepositoryConfig {
@@ -2923,12 +2434,10 @@ export interface PyPiRepositoryConfig {
   pypiRepository?: string;
 }
 export const PyPiRepositoryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pypiRepository: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PyPiRepositoryConfig",
-}) as any as S.Schema<PyPiRepositoryConfig>;
+S.Struct({
+  "pypiRepository": S.optional(S.String),
+}),
+).annotate({ identifier: "PyPiRepositoryConfig" }) as any as S.Schema<PyPiRepositoryConfig>;
 
 /** Configuration for dependency repositories */
 export interface RepositoryConfig {
@@ -2936,12 +2445,10 @@ export interface RepositoryConfig {
   pypiRepositoryConfig?: PyPiRepositoryConfig;
 }
 export const RepositoryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pypiRepositoryConfig: S.optional(PyPiRepositoryConfig),
-  }),
-).annotate({
-  identifier: "RepositoryConfig",
-}) as any as S.Schema<RepositoryConfig>;
+S.Struct({
+  "pypiRepositoryConfig": S.optional(PyPiRepositoryConfig),
+}),
+).annotate({ identifier: "RepositoryConfig" }) as any as S.Schema<RepositoryConfig>;
 
 /** Runtime configuration for a workload. */
 export interface RuntimeConfig {
@@ -2959,23 +2466,18 @@ export interface RuntimeConfig {
   repositoryConfig?: RepositoryConfig;
 }
 export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    autotuningConfig: S.optional(AutotuningConfig),
-    containerImage: S.optional(S.String),
-    properties: S.optional(StringMap),
-    cohort: S.optional(S.String),
-    repositoryConfig: S.optional(RepositoryConfig),
-  }),
+S.Struct({
+  "version": S.optional(S.String),
+  "autotuningConfig": S.optional(AutotuningConfig),
+  "containerImage": S.optional(S.String),
+  "properties": S.optional(StringMap),
+  "cohort": S.optional(S.String),
+  "repositoryConfig": S.optional(RepositoryConfig),
+}),
 ).annotate({ identifier: "RuntimeConfig" }) as any as S.Schema<RuntimeConfig>;
 
-export type AuthenticationConfigUserWorkloadAuthenticationTypeEnum =
-  | "AUTHENTICATION_TYPE_UNSPECIFIED"
-  | "SERVICE_ACCOUNT"
-  | "END_USER_CREDENTIALS"
-  | (string & {});
-export const AuthenticationConfigUserWorkloadAuthenticationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type AuthenticationConfigUserWorkloadAuthenticationTypeEnum = "AUTHENTICATION_TYPE_UNSPECIFIED" | "SERVICE_ACCOUNT" | "END_USER_CREDENTIALS";
+export const AuthenticationConfigUserWorkloadAuthenticationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Authentication configuration for a workload is used to set the default identity for the workload execution. The config specifies the type of identity (service account or user) that will be used by workloads to access resources on the project(s). */
 export interface AuthenticationConfig {
@@ -2983,14 +2485,10 @@ export interface AuthenticationConfig {
   userWorkloadAuthenticationType?: AuthenticationConfigUserWorkloadAuthenticationTypeEnum;
 }
 export const AuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userWorkloadAuthenticationType: S.optional(
-      AuthenticationConfigUserWorkloadAuthenticationTypeEnum,
-    ),
-  }),
-).annotate({
-  identifier: "AuthenticationConfig",
-}) as any as S.Schema<AuthenticationConfig>;
+S.Struct({
+  "userWorkloadAuthenticationType": S.optional(AuthenticationConfigUserWorkloadAuthenticationTypeEnum),
+}),
+).annotate({ identifier: "AuthenticationConfig" }) as any as S.Schema<AuthenticationConfig>;
 
 /** Execution configuration for a workload. */
 export interface ExecutionConfig {
@@ -3016,21 +2514,19 @@ export interface ExecutionConfig {
   ttl?: string;
 }
 export const ExecutionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkTags: S.optional(StringList),
-    networkUri: S.optional(S.String),
-    resourceManagerTags: S.optional(StringMap),
-    idleTtl: S.optional(S.String),
-    subnetworkUri: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    kmsKey: S.optional(S.String),
-    stagingBucket: S.optional(S.String),
-    authenticationConfig: S.optional(AuthenticationConfig),
-    ttl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecutionConfig",
-}) as any as S.Schema<ExecutionConfig>;
+S.Struct({
+  "networkTags": S.optional(StringList),
+  "networkUri": S.optional(S.String),
+  "resourceManagerTags": S.optional(StringMap),
+  "idleTtl": S.optional(S.String),
+  "subnetworkUri": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "kmsKey": S.optional(S.String),
+  "stagingBucket": S.optional(S.String),
+  "authenticationConfig": S.optional(AuthenticationConfig),
+  "ttl": S.optional(S.String),
+}),
+).annotate({ identifier: "ExecutionConfig" }) as any as S.Schema<ExecutionConfig>;
 
 /** Spark History Server configuration for the workload. */
 export interface SparkHistoryServerConfig {
@@ -3038,12 +2534,10 @@ export interface SparkHistoryServerConfig {
   dataprocCluster?: string;
 }
 export const SparkHistoryServerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataprocCluster: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SparkHistoryServerConfig",
-}) as any as S.Schema<SparkHistoryServerConfig>;
+S.Struct({
+  "dataprocCluster": S.optional(S.String),
+}),
+).annotate({ identifier: "SparkHistoryServerConfig" }) as any as S.Schema<SparkHistoryServerConfig>;
 
 /** Auxiliary services configuration for a workload. */
 export interface PeripheralsConfig {
@@ -3053,13 +2547,11 @@ export interface PeripheralsConfig {
   sparkHistoryServerConfig?: SparkHistoryServerConfig;
 }
 export const PeripheralsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metastoreService: S.optional(S.String),
-    sparkHistoryServerConfig: S.optional(SparkHistoryServerConfig),
-  }),
-).annotate({
-  identifier: "PeripheralsConfig",
-}) as any as S.Schema<PeripheralsConfig>;
+S.Struct({
+  "metastoreService": S.optional(S.String),
+  "sparkHistoryServerConfig": S.optional(SparkHistoryServerConfig),
+}),
+).annotate({ identifier: "PeripheralsConfig" }) as any as S.Schema<PeripheralsConfig>;
 
 /** Environment configuration for a workload. */
 export interface EnvironmentConfig {
@@ -3069,13 +2561,11 @@ export interface EnvironmentConfig {
   peripheralsConfig?: PeripheralsConfig;
 }
 export const EnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionConfig: S.optional(ExecutionConfig),
-    peripheralsConfig: S.optional(PeripheralsConfig),
-  }),
-).annotate({
-  identifier: "EnvironmentConfig",
-}) as any as S.Schema<EnvironmentConfig>;
+S.Struct({
+  "executionConfig": S.optional(ExecutionConfig),
+  "peripheralsConfig": S.optional(PeripheralsConfig),
+}),
+).annotate({ identifier: "EnvironmentConfig" }) as any as S.Schema<EnvironmentConfig>;
 
 /** The usage snapshot represents the resources consumed by a workload at a specified time. */
 export interface UsageSnapshot {
@@ -3101,18 +2591,18 @@ export interface UsageSnapshot {
   milliAcceleratorA10080?: string;
 }
 export const UsageSnapshot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    milliAcceleratorA10040: S.optional(S.String),
-    milliDcu: S.optional(S.String),
-    shuffleStorageGb: S.optional(S.String),
-    milliDcuPremium: S.optional(S.String),
-    milliAccelerator: S.optional(S.String),
-    snapshotTime: S.optional(S.String),
-    acceleratorType: S.optional(S.String),
-    shuffleStorageGbPremium: S.optional(S.String),
-    milliAcceleratorL4: S.optional(S.String),
-    milliAcceleratorA10080: S.optional(S.String),
-  }),
+S.Struct({
+  "milliAcceleratorA10040": S.optional(S.String),
+  "milliDcu": S.optional(S.String),
+  "shuffleStorageGb": S.optional(S.String),
+  "milliDcuPremium": S.optional(S.String),
+  "milliAccelerator": S.optional(S.String),
+  "snapshotTime": S.optional(S.String),
+  "acceleratorType": S.optional(S.String),
+  "shuffleStorageGbPremium": S.optional(S.String),
+  "milliAcceleratorL4": S.optional(S.String),
+  "milliAcceleratorA10080": S.optional(S.String),
+}),
 ).annotate({ identifier: "UsageSnapshot" }) as any as S.Schema<UsageSnapshot>;
 
 /** Usage metrics represent approximate total resources consumed by a workload. */
@@ -3135,23 +2625,19 @@ export interface UsageMetrics {
   milliDcuSeconds?: string;
 }
 export const UsageMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shuffleStorageGbSeconds: S.optional(S.String),
-    milliAcceleratorSeconds: S.optional(S.String),
-    milliAcceleratorSecondsA10040: S.optional(S.String),
-    acceleratorType: S.optional(S.String),
-    milliAcceleratorSecondsL4: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    milliAcceleratorSecondsA10080: S.optional(S.String),
-    milliDcuSeconds: S.optional(S.String),
-  }),
+S.Struct({
+  "shuffleStorageGbSeconds": S.optional(S.String),
+  "milliAcceleratorSeconds": S.optional(S.String),
+  "milliAcceleratorSecondsA10040": S.optional(S.String),
+  "acceleratorType": S.optional(S.String),
+  "milliAcceleratorSecondsL4": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "milliAcceleratorSecondsA10080": S.optional(S.String),
+  "milliDcuSeconds": S.optional(S.String),
+}),
 ).annotate({ identifier: "UsageMetrics" }) as any as S.Schema<UsageMetrics>;
 
-export type CohortInfoCohortSourceEnum =
-  | "COHORT_SOURCE_UNSPECIFIED"
-  | "USER_PROVIDED"
-  | "AIRFLOW"
-  | (string & {});
+export type CohortInfoCohortSourceEnum = "COHORT_SOURCE_UNSPECIFIED" | "USER_PROVIDED" | "AIRFLOW";
 export const CohortInfoCohortSourceEnum = /*@__PURE__*/ S.String;
 
 /** Information about the cohort that the workload belongs to. */
@@ -3162,10 +2648,10 @@ export interface CohortInfo {
   cohortSource?: CohortInfoCohortSourceEnum;
 }
 export const CohortInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cohort: S.optional(S.String),
-    cohortSource: S.optional(CohortInfoCohortSourceEnum),
-  }),
+S.Struct({
+  "cohort": S.optional(S.String),
+  "cohortSource": S.optional(CohortInfoCohortSourceEnum),
+}),
 ).annotate({ identifier: "CohortInfo" }) as any as S.Schema<CohortInfo>;
 
 /** Annotatated property value. */
@@ -3178,18 +2664,15 @@ export interface ValueInfo {
   overriddenValue?: string;
 }
 export const ValueInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    annotation: S.optional(S.String),
-    overriddenValue: S.optional(S.String),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+  "annotation": S.optional(S.String),
+  "overriddenValue": S.optional(S.String),
+}),
 ).annotate({ identifier: "ValueInfo" }) as any as S.Schema<ValueInfo>;
 
 export type ValueInfoMap = { [key: string]: ValueInfo | undefined };
-export const ValueInfoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ValueInfo,
-) as any as S.Schema<ValueInfoMap>;
+export const ValueInfoMap = /*@__PURE__*/ S.Record(S.String, ValueInfo) as any as S.Schema<ValueInfoMap>;
 
 /** Properties of the workload organized by origin. */
 export interface PropertiesInfo {
@@ -3197,9 +2680,9 @@ export interface PropertiesInfo {
   autotuningProperties?: ValueInfoMap;
 }
 export const PropertiesInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autotuningProperties: S.optional(ValueInfoMap),
-  }),
+S.Struct({
+  "autotuningProperties": S.optional(ValueInfoMap),
+}),
 ).annotate({ identifier: "PropertiesInfo" }) as any as S.Schema<PropertiesInfo>;
 
 /** Runtime information about workload execution. */
@@ -3220,15 +2703,15 @@ export interface RuntimeInfo {
   propertiesInfo?: PropertiesInfo;
 }
 export const RuntimeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diagnosticOutputUri: S.optional(S.String),
-    currentUsage: S.optional(UsageSnapshot),
-    approximateUsage: S.optional(UsageMetrics),
-    cohortInfo: S.optional(CohortInfo),
-    endpoints: S.optional(StringMap),
-    outputUri: S.optional(S.String),
-    propertiesInfo: S.optional(PropertiesInfo),
-  }),
+S.Struct({
+  "diagnosticOutputUri": S.optional(S.String),
+  "currentUsage": S.optional(UsageSnapshot),
+  "approximateUsage": S.optional(UsageMetrics),
+  "cohortInfo": S.optional(CohortInfo),
+  "endpoints": S.optional(StringMap),
+  "outputUri": S.optional(S.String),
+  "propertiesInfo": S.optional(PropertiesInfo),
+}),
 ).annotate({ identifier: "RuntimeInfo" }) as any as S.Schema<RuntimeInfo>;
 
 /** A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload. */
@@ -3243,12 +2726,12 @@ export interface SparkRBatch {
   mainRFileUri?: string;
 }
 export const SparkRBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileUris: S.optional(StringList),
-    archiveUris: S.optional(StringList),
-    args: S.optional(StringList),
-    mainRFileUri: S.optional(S.String),
-  }),
+S.Struct({
+  "fileUris": S.optional(StringList),
+  "archiveUris": S.optional(StringList),
+  "args": S.optional(StringList),
+  "mainRFileUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "SparkRBatch" }) as any as S.Schema<SparkRBatch>;
 
 /** A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload. */
@@ -3261,11 +2744,11 @@ export interface SparkSqlBatch {
   queryFileUri?: string;
 }
 export const SparkSqlBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queryVariables: S.optional(StringMap),
-    jarFileUris: S.optional(StringList),
-    queryFileUri: S.optional(S.String),
-  }),
+S.Struct({
+  "queryVariables": S.optional(StringMap),
+  "jarFileUris": S.optional(StringList),
+  "queryFileUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "SparkSqlBatch" }) as any as S.Schema<SparkSqlBatch>;
 
 /** A configuration for running an Apache Spark (https://spark.apache.org/) batch workload. */
@@ -3284,14 +2767,14 @@ export interface SparkBatch {
   archiveUris?: StringList;
 }
 export const SparkBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mainJarFileUri: S.optional(S.String),
-    args: S.optional(StringList),
-    mainClass: S.optional(S.String),
-    jarFileUris: S.optional(StringList),
-    fileUris: S.optional(StringList),
-    archiveUris: S.optional(StringList),
-  }),
+S.Struct({
+  "mainJarFileUri": S.optional(S.String),
+  "args": S.optional(StringList),
+  "mainClass": S.optional(S.String),
+  "jarFileUris": S.optional(StringList),
+  "fileUris": S.optional(StringList),
+  "archiveUris": S.optional(StringList),
+}),
 ).annotate({ identifier: "SparkBatch" }) as any as S.Schema<SparkBatch>;
 
 /** A representation of a batch workload in the service. */
@@ -3334,26 +2817,26 @@ export interface Batch {
   uuid?: string;
 }
 export const Batch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(S.String),
-    pysparkNotebookBatch: S.optional(PySparkNotebookBatch),
-    state: S.optional(BatchStateEnum),
-    createTime: S.optional(S.String),
-    pysparkBatch: S.optional(PySparkBatch),
-    stateHistory: S.optional(StateHistoryList),
-    name: S.optional(S.String),
-    creator: S.optional(S.String),
-    runtimeConfig: S.optional(RuntimeConfig),
-    environmentConfig: S.optional(EnvironmentConfig),
-    runtimeInfo: S.optional(RuntimeInfo),
-    sparkRBatch: S.optional(SparkRBatch),
-    sparkSqlBatch: S.optional(SparkSqlBatch),
-    sparkBatch: S.optional(SparkBatch),
-    stateMessage: S.optional(S.String),
-    stateTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    uuid: S.optional(S.String),
-  }),
+S.Struct({
+  "operation": S.optional(S.String),
+  "pysparkNotebookBatch": S.optional(PySparkNotebookBatch),
+  "state": S.optional(BatchStateEnum),
+  "createTime": S.optional(S.String),
+  "pysparkBatch": S.optional(PySparkBatch),
+  "stateHistory": S.optional(StateHistoryList),
+  "name": S.optional(S.String),
+  "creator": S.optional(S.String),
+  "runtimeConfig": S.optional(RuntimeConfig),
+  "environmentConfig": S.optional(EnvironmentConfig),
+  "runtimeInfo": S.optional(RuntimeInfo),
+  "sparkRBatch": S.optional(SparkRBatch),
+  "sparkSqlBatch": S.optional(SparkSqlBatch),
+  "sparkBatch": S.optional(SparkBatch),
+  "stateMessage": S.optional(S.String),
+  "stateTime": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "uuid": S.optional(S.String),
+}),
 ).annotate({ identifier: "Batch" }) as any as S.Schema<Batch>;
 
 export interface CreateProjectsLocationsBatchesRequest {
@@ -3366,40 +2849,22 @@ export interface CreateProjectsLocationsBatchesRequest {
   /** Request body */
   body?: Batch;
 }
-export const CreateProjectsLocationsBatchesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      batchId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Batch.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/batches",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsBatchesRequest",
-}) as any as S.Schema<CreateProjectsLocationsBatchesRequest>;
+export const CreateProjectsLocationsBatchesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "batchId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Batch.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/batches","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBatchesRequest" }) as any as S.Schema<CreateProjectsLocationsBatchesRequest>;
 
 /** Spark connect configuration for an interactive session. */
 export interface SparkConnectConfig {}
 export const SparkConnectConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SparkConnectConfig",
-}) as any as S.Schema<SparkConnectConfig>;
+S.Struct({}),
+).annotate({ identifier: "SparkConnectConfig" }) as any as S.Schema<SparkConnectConfig>;
 
-export type SessionStateHistoryStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "TERMINATING"
-  | "TERMINATED"
-  | "FAILED"
-  | (string & {});
+export type SessionStateHistoryStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "TERMINATING" | "TERMINATED" | "FAILED";
 export const SessionStateHistoryStateEnum = /*@__PURE__*/ S.String;
 
 /** Historical state information. */
@@ -3412,25 +2877,17 @@ export interface SessionStateHistory {
   stateMessage?: string;
 }
 export const SessionStateHistory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(SessionStateHistoryStateEnum),
-    stateStartTime: S.optional(S.String),
-    stateMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SessionStateHistory",
-}) as any as S.Schema<SessionStateHistory>;
+S.Struct({
+  "state": S.optional(SessionStateHistoryStateEnum),
+  "stateStartTime": S.optional(S.String),
+  "stateMessage": S.optional(S.String),
+}),
+).annotate({ identifier: "SessionStateHistory" }) as any as S.Schema<SessionStateHistory>;
 
 export type SessionStateHistoryList = ReadonlyArray<SessionStateHistory>;
-export const SessionStateHistoryList = /*@__PURE__*/ S.Array(
-  SessionStateHistory,
-) as any as S.Schema<SessionStateHistoryList>;
+export const SessionStateHistoryList = /*@__PURE__*/ S.Array(SessionStateHistory) as any as S.Schema<SessionStateHistoryList>;
 
-export type JupyterConfigKernelEnum =
-  | "KERNEL_UNSPECIFIED"
-  | "PYTHON"
-  | "SCALA"
-  | (string & {});
+export type JupyterConfigKernelEnum = "KERNEL_UNSPECIFIED" | "PYTHON" | "SCALA";
 export const JupyterConfigKernelEnum = /*@__PURE__*/ S.String;
 
 /** Jupyter configuration for an interactive session. */
@@ -3441,20 +2898,13 @@ export interface JupyterConfig {
   displayName?: string;
 }
 export const JupyterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kernel: S.optional(JupyterConfigKernelEnum),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "kernel": S.optional(JupyterConfigKernelEnum),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "JupyterConfig" }) as any as S.Schema<JupyterConfig>;
 
-export type SessionStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "TERMINATING"
-  | "TERMINATED"
-  | "FAILED"
-  | (string & {});
+export type SessionStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "TERMINATING" | "TERMINATED" | "FAILED";
 export const SessionStateEnum = /*@__PURE__*/ S.String;
 
 /** A representation of a session. */
@@ -3493,24 +2943,24 @@ export interface Session {
   state?: SessionStateEnum;
 }
 export const Session = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMessage: S.optional(S.String),
-    uuid: S.optional(S.String),
-    sparkConnectSession: S.optional(SparkConnectConfig),
-    stateTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    runtimeInfo: S.optional(RuntimeInfo),
-    environmentConfig: S.optional(EnvironmentConfig),
-    stateHistory: S.optional(SessionStateHistoryList),
-    sessionTemplate: S.optional(S.String),
-    creator: S.optional(S.String),
-    runtimeConfig: S.optional(RuntimeConfig),
-    name: S.optional(S.String),
-    jupyterSession: S.optional(JupyterConfig),
-    user: S.optional(S.String),
-    createTime: S.optional(S.String),
-    state: S.optional(SessionStateEnum),
-  }),
+S.Struct({
+  "stateMessage": S.optional(S.String),
+  "uuid": S.optional(S.String),
+  "sparkConnectSession": S.optional(SparkConnectConfig),
+  "stateTime": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "runtimeInfo": S.optional(RuntimeInfo),
+  "environmentConfig": S.optional(EnvironmentConfig),
+  "stateHistory": S.optional(SessionStateHistoryList),
+  "sessionTemplate": S.optional(S.String),
+  "creator": S.optional(S.String),
+  "runtimeConfig": S.optional(RuntimeConfig),
+  "name": S.optional(S.String),
+  "jupyterSession": S.optional(JupyterConfig),
+  "user": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "state": S.optional(SessionStateEnum),
+}),
 ).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
 
 export interface CreateProjectsLocationsSessionsRequest {
@@ -3523,23 +2973,14 @@ export interface CreateProjectsLocationsSessionsRequest {
   /** Request body */
   body?: Session;
 }
-export const CreateProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sessionId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Session.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/sessions",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsSessionsRequest",
-}) as any as S.Schema<CreateProjectsLocationsSessionsRequest>;
+export const CreateProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sessionId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Session.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/sessions","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsSessionsRequest" }) as any as S.Schema<CreateProjectsLocationsSessionsRequest>;
 
 /** A representation of a session template. */
 export interface SessionTemplate {
@@ -3567,22 +3008,20 @@ export interface SessionTemplate {
   labels?: StringMap;
 }
 export const SessionTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    description: S.optional(S.String),
-    environmentConfig: S.optional(EnvironmentConfig),
-    sparkConnectSession: S.optional(SparkConnectConfig),
-    creator: S.optional(S.String),
-    runtimeConfig: S.optional(RuntimeConfig),
-    uuid: S.optional(S.String),
-    name: S.optional(S.String),
-    jupyterSession: S.optional(JupyterConfig),
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "SessionTemplate",
-}) as any as S.Schema<SessionTemplate>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "description": S.optional(S.String),
+  "environmentConfig": S.optional(EnvironmentConfig),
+  "sparkConnectSession": S.optional(SparkConnectConfig),
+  "creator": S.optional(S.String),
+  "runtimeConfig": S.optional(RuntimeConfig),
+  "uuid": S.optional(S.String),
+  "name": S.optional(S.String),
+  "jupyterSession": S.optional(JupyterConfig),
+  "labels": S.optional(StringMap),
+}),
+).annotate({ identifier: "SessionTemplate" }) as any as S.Schema<SessionTemplate>;
 
 export interface CreateProjectsLocationsSessionTemplatesRequest {
   /** Required. The parent resource where this session template will be created. */
@@ -3590,21 +3029,12 @@ export interface CreateProjectsLocationsSessionTemplatesRequest {
   /** Request body */
   body?: SessionTemplate;
 }
-export const CreateProjectsLocationsSessionTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(SessionTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/sessionTemplates",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsSessionTemplatesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsSessionTemplatesRequest>;
+export const CreateProjectsLocationsSessionTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(SessionTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/sessionTemplates","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsSessionTemplatesRequest" }) as any as S.Schema<CreateProjectsLocationsSessionTemplatesRequest>;
 
 /** Validation based on regular expressions. */
 export interface RegexValidation {
@@ -3612,12 +3042,10 @@ export interface RegexValidation {
   regexes?: StringList;
 }
 export const RegexValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regexes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "RegexValidation",
-}) as any as S.Schema<RegexValidation>;
+S.Struct({
+  "regexes": S.optional(StringList),
+}),
+).annotate({ identifier: "RegexValidation" }) as any as S.Schema<RegexValidation>;
 
 /** Validation based on a list of allowed values. */
 export interface ValueValidation {
@@ -3625,12 +3053,10 @@ export interface ValueValidation {
   values?: StringList;
 }
 export const ValueValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ValueValidation",
-}) as any as S.Schema<ValueValidation>;
+S.Struct({
+  "values": S.optional(StringList),
+}),
+).annotate({ identifier: "ValueValidation" }) as any as S.Schema<ValueValidation>;
 
 /** Configuration for parameter validation. */
 export interface ParameterValidation {
@@ -3640,13 +3066,11 @@ export interface ParameterValidation {
   values?: ValueValidation;
 }
 export const ParameterValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regex: S.optional(RegexValidation),
-    values: S.optional(ValueValidation),
-  }),
-).annotate({
-  identifier: "ParameterValidation",
-}) as any as S.Schema<ParameterValidation>;
+S.Struct({
+  "regex": S.optional(RegexValidation),
+  "values": S.optional(ValueValidation),
+}),
+).annotate({ identifier: "ParameterValidation" }) as any as S.Schema<ParameterValidation>;
 
 /** A configurable parameter that replaces one or more fields in the template. Parameterizable fields: - Labels - File uris - Job properties - Job arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector) */
 export interface TemplateParameter {
@@ -3660,20 +3084,16 @@ export interface TemplateParameter {
   validation?: ParameterValidation;
 }
 export const TemplateParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    fields: S.optional(StringList),
-    validation: S.optional(ParameterValidation),
-  }),
-).annotate({
-  identifier: "TemplateParameter",
-}) as any as S.Schema<TemplateParameter>;
+S.Struct({
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "fields": S.optional(StringList),
+  "validation": S.optional(ParameterValidation),
+}),
+).annotate({ identifier: "TemplateParameter" }) as any as S.Schema<TemplateParameter>;
 
 export type TemplateParameterList = ReadonlyArray<TemplateParameter>;
-export const TemplateParameterList = /*@__PURE__*/ S.Array(
-  TemplateParameter,
-) as any as S.Schema<TemplateParameterList>;
+export const TemplateParameterList = /*@__PURE__*/ S.Array(TemplateParameter) as any as S.Schema<TemplateParameterList>;
 
 /** A selector that chooses target cluster for jobs based on metadata. */
 export interface ClusterSelector {
@@ -3683,13 +3103,11 @@ export interface ClusterSelector {
   clusterLabels?: StringMap;
 }
 export const ClusterSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.String),
-    clusterLabels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "ClusterSelector",
-}) as any as S.Schema<ClusterSelector>;
+S.Struct({
+  "zone": S.optional(S.String),
+  "clusterLabels": S.optional(StringMap),
+}),
+).annotate({ identifier: "ClusterSelector" }) as any as S.Schema<ClusterSelector>;
 
 /** Specifies the type and number of accelerator cards attached to the instances of an instance. See GPUs on Compute Engine (https://cloud.google.com/compute/docs/gpus/). */
 export interface AcceleratorConfig {
@@ -3699,18 +3117,14 @@ export interface AcceleratorConfig {
   acceleratorCount?: number;
 }
 export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acceleratorTypeUri: S.optional(S.String),
-    acceleratorCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AcceleratorConfig",
-}) as any as S.Schema<AcceleratorConfig>;
+S.Struct({
+  "acceleratorTypeUri": S.optional(S.String),
+  "acceleratorCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "AcceleratorConfig" }) as any as S.Schema<AcceleratorConfig>;
 
 export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
-export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
-  AcceleratorConfig,
-) as any as S.Schema<AcceleratorConfigList>;
+export const AcceleratorConfigList = /*@__PURE__*/ S.Array(AcceleratorConfig) as any as S.Schema<AcceleratorConfigList>;
 
 /** Configuration to handle the startup of instances during cluster create and update process. */
 export interface StartupConfig {
@@ -3718,9 +3132,9 @@ export interface StartupConfig {
   requiredRegistrationFraction?: number;
 }
 export const StartupConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requiredRegistrationFraction: S.optional(S.Number),
-  }),
+S.Struct({
+  "requiredRegistrationFraction": S.optional(S.Number),
+}),
 ).annotate({ identifier: "StartupConfig" }) as any as S.Schema<StartupConfig>;
 
 /** Defines a mapping from machine types to the number of VMs that are created with each machine type. */
@@ -3731,19 +3145,14 @@ export interface InstanceSelectionResult {
   vmCount?: number;
 }
 export const InstanceSelectionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machineType: S.optional(S.String),
-    vmCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InstanceSelectionResult",
-}) as any as S.Schema<InstanceSelectionResult>;
+S.Struct({
+  "machineType": S.optional(S.String),
+  "vmCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "InstanceSelectionResult" }) as any as S.Schema<InstanceSelectionResult>;
 
-export type InstanceSelectionResultList =
-  ReadonlyArray<InstanceSelectionResult>;
-export const InstanceSelectionResultList = /*@__PURE__*/ S.Array(
-  InstanceSelectionResult,
-) as any as S.Schema<InstanceSelectionResultList>;
+export type InstanceSelectionResultList = ReadonlyArray<InstanceSelectionResult>;
+export const InstanceSelectionResultList = /*@__PURE__*/ S.Array(InstanceSelectionResult) as any as S.Schema<InstanceSelectionResultList>;
 
 /** Defines how to create VMs with a mixture of provisioning models. */
 export interface ProvisioningModelMix {
@@ -3753,21 +3162,13 @@ export interface ProvisioningModelMix {
   standardCapacityBase?: number;
 }
 export const ProvisioningModelMix = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    standardCapacityPercentAboveBase: S.optional(S.Number),
-    standardCapacityBase: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ProvisioningModelMix",
-}) as any as S.Schema<ProvisioningModelMix>;
+S.Struct({
+  "standardCapacityPercentAboveBase": S.optional(S.Number),
+  "standardCapacityBase": S.optional(S.Number),
+}),
+).annotate({ identifier: "ProvisioningModelMix" }) as any as S.Schema<ProvisioningModelMix>;
 
-export type AttachedDiskConfigDiskTypeEnum =
-  | "DISK_TYPE_UNSPECIFIED"
-  | "HYPERDISK_BALANCED"
-  | "HYPERDISK_EXTREME"
-  | "HYPERDISK_ML"
-  | "HYPERDISK_THROUGHPUT"
-  | (string & {});
+export type AttachedDiskConfigDiskTypeEnum = "DISK_TYPE_UNSPECIFIED" | "HYPERDISK_BALANCED" | "HYPERDISK_EXTREME" | "HYPERDISK_ML" | "HYPERDISK_THROUGHPUT";
 export const AttachedDiskConfigDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the config of attached disk options for single VM instance. */
@@ -3782,20 +3183,16 @@ export interface AttachedDiskConfig {
   provisionedThroughput?: string;
 }
 export const AttachedDiskConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskType: S.optional(AttachedDiskConfigDiskTypeEnum),
-    diskSizeGb: S.optional(S.Number),
-    provisionedIops: S.optional(S.String),
-    provisionedThroughput: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AttachedDiskConfig",
-}) as any as S.Schema<AttachedDiskConfig>;
+S.Struct({
+  "diskType": S.optional(AttachedDiskConfigDiskTypeEnum),
+  "diskSizeGb": S.optional(S.Number),
+  "provisionedIops": S.optional(S.String),
+  "provisionedThroughput": S.optional(S.String),
+}),
+).annotate({ identifier: "AttachedDiskConfig" }) as any as S.Schema<AttachedDiskConfig>;
 
 export type AttachedDiskConfigList = ReadonlyArray<AttachedDiskConfig>;
-export const AttachedDiskConfigList = /*@__PURE__*/ S.Array(
-  AttachedDiskConfig,
-) as any as S.Schema<AttachedDiskConfigList>;
+export const AttachedDiskConfigList = /*@__PURE__*/ S.Array(AttachedDiskConfig) as any as S.Schema<AttachedDiskConfigList>;
 
 /** Specifies the config of boot disk and attached disk options for a group of VM instances. */
 export interface DiskConfig {
@@ -3815,15 +3212,15 @@ export interface DiskConfig {
   bootDiskType?: string;
 }
 export const DiskConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localSsdInterface: S.optional(S.String),
-    bootDiskSizeGb: S.optional(S.Number),
-    numLocalSsds: S.optional(S.Number),
-    bootDiskProvisionedIops: S.optional(S.String),
-    bootDiskProvisionedThroughput: S.optional(S.String),
-    attachedDiskConfigs: S.optional(AttachedDiskConfigList),
-    bootDiskType: S.optional(S.String),
-  }),
+S.Struct({
+  "localSsdInterface": S.optional(S.String),
+  "bootDiskSizeGb": S.optional(S.Number),
+  "numLocalSsds": S.optional(S.Number),
+  "bootDiskProvisionedIops": S.optional(S.String),
+  "bootDiskProvisionedThroughput": S.optional(S.String),
+  "attachedDiskConfigs": S.optional(AttachedDiskConfigList),
+  "bootDiskType": S.optional(S.String),
+}),
 ).annotate({ identifier: "DiskConfig" }) as any as S.Schema<DiskConfig>;
 
 /** Defines machines types and a rank to which the machines types belong. */
@@ -3836,19 +3233,15 @@ export interface InstanceSelection {
   rank?: number;
 }
 export const InstanceSelection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskConfig: S.optional(DiskConfig),
-    machineTypes: S.optional(StringList),
-    rank: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InstanceSelection",
-}) as any as S.Schema<InstanceSelection>;
+S.Struct({
+  "diskConfig": S.optional(DiskConfig),
+  "machineTypes": S.optional(StringList),
+  "rank": S.optional(S.Number),
+}),
+).annotate({ identifier: "InstanceSelection" }) as any as S.Schema<InstanceSelection>;
 
 export type InstanceSelectionList = ReadonlyArray<InstanceSelection>;
-export const InstanceSelectionList = /*@__PURE__*/ S.Array(
-  InstanceSelection,
-) as any as S.Schema<InstanceSelectionList>;
+export const InstanceSelectionList = /*@__PURE__*/ S.Array(InstanceSelection) as any as S.Schema<InstanceSelectionList>;
 
 /** Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. */
 export interface InstanceFlexibilityPolicy {
@@ -3862,15 +3255,13 @@ export interface InstanceFlexibilityPolicy {
   instanceMachineTypes?: StringMap;
 }
 export const InstanceFlexibilityPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceSelectionResults: S.optional(InstanceSelectionResultList),
-    provisioningModelMix: S.optional(ProvisioningModelMix),
-    instanceSelectionList: S.optional(InstanceSelectionList),
-    instanceMachineTypes: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "InstanceFlexibilityPolicy",
-}) as any as S.Schema<InstanceFlexibilityPolicy>;
+S.Struct({
+  "instanceSelectionResults": S.optional(InstanceSelectionResultList),
+  "provisioningModelMix": S.optional(ProvisioningModelMix),
+  "instanceSelectionList": S.optional(InstanceSelectionList),
+  "instanceMachineTypes": S.optional(StringMap),
+}),
+).annotate({ identifier: "InstanceFlexibilityPolicy" }) as any as S.Schema<InstanceFlexibilityPolicy>;
 
 /** A reference to a Compute Engine instance. */
 export interface InstanceReference {
@@ -3884,20 +3275,16 @@ export interface InstanceReference {
   instanceId?: string;
 }
 export const InstanceReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicKey: S.optional(S.String),
-    publicEciesKey: S.optional(S.String),
-    instanceName: S.optional(S.String),
-    instanceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InstanceReference",
-}) as any as S.Schema<InstanceReference>;
+S.Struct({
+  "publicKey": S.optional(S.String),
+  "publicEciesKey": S.optional(S.String),
+  "instanceName": S.optional(S.String),
+  "instanceId": S.optional(S.String),
+}),
+).annotate({ identifier: "InstanceReference" }) as any as S.Schema<InstanceReference>;
 
 export type InstanceReferenceList = ReadonlyArray<InstanceReference>;
-export const InstanceReferenceList = /*@__PURE__*/ S.Array(
-  InstanceReference,
-) as any as S.Schema<InstanceReferenceList>;
+export const InstanceReferenceList = /*@__PURE__*/ S.Array(InstanceReference) as any as S.Schema<InstanceReferenceList>;
 
 /** Specifies the resources used to actively manage an instance group. */
 export interface ManagedGroupConfig {
@@ -3909,21 +3296,14 @@ export interface ManagedGroupConfig {
   instanceGroupManagerUri?: string;
 }
 export const ManagedGroupConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceTemplateName: S.optional(S.String),
-    instanceGroupManagerName: S.optional(S.String),
-    instanceGroupManagerUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedGroupConfig",
-}) as any as S.Schema<ManagedGroupConfig>;
+S.Struct({
+  "instanceTemplateName": S.optional(S.String),
+  "instanceGroupManagerName": S.optional(S.String),
+  "instanceGroupManagerUri": S.optional(S.String),
+}),
+).annotate({ identifier: "ManagedGroupConfig" }) as any as S.Schema<ManagedGroupConfig>;
 
-export type InstanceGroupConfigPreemptibilityEnum =
-  | "PREEMPTIBILITY_UNSPECIFIED"
-  | "NON_PREEMPTIBLE"
-  | "PREEMPTIBLE"
-  | "SPOT"
-  | (string & {});
+export type InstanceGroupConfigPreemptibilityEnum = "PREEMPTIBILITY_UNSPECIFIED" | "NON_PREEMPTIBLE" | "PREEMPTIBLE" | "SPOT";
 export const InstanceGroupConfigPreemptibilityEnum = /*@__PURE__*/ S.String;
 
 /** The config settings for Compute Engine resources in an instance group, such as a master or worker group. */
@@ -3958,25 +3338,23 @@ export interface InstanceGroupConfig {
   minNumInstances?: number;
 }
 export const InstanceGroupConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accelerators: S.optional(AcceleratorConfigList),
-    minCpuPlatform: S.optional(S.String),
-    startupConfig: S.optional(StartupConfig),
-    instanceFlexibilityPolicy: S.optional(InstanceFlexibilityPolicy),
-    machineTypeUri: S.optional(S.String),
-    instanceReferences: S.optional(InstanceReferenceList),
-    managedGroupConfig: S.optional(ManagedGroupConfig),
-    numInstances: S.optional(S.Number),
-    instanceNames: S.optional(StringList),
-    imageUri: S.optional(S.String),
-    preemptibility: S.optional(InstanceGroupConfigPreemptibilityEnum),
-    isPreemptible: S.optional(S.Boolean),
-    diskConfig: S.optional(DiskConfig),
-    minNumInstances: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InstanceGroupConfig",
-}) as any as S.Schema<InstanceGroupConfig>;
+S.Struct({
+  "accelerators": S.optional(AcceleratorConfigList),
+  "minCpuPlatform": S.optional(S.String),
+  "startupConfig": S.optional(StartupConfig),
+  "instanceFlexibilityPolicy": S.optional(InstanceFlexibilityPolicy),
+  "machineTypeUri": S.optional(S.String),
+  "instanceReferences": S.optional(InstanceReferenceList),
+  "managedGroupConfig": S.optional(ManagedGroupConfig),
+  "numInstances": S.optional(S.Number),
+  "instanceNames": S.optional(StringList),
+  "imageUri": S.optional(S.String),
+  "preemptibility": S.optional(InstanceGroupConfigPreemptibilityEnum),
+  "isPreemptible": S.optional(S.Boolean),
+  "diskConfig": S.optional(DiskConfig),
+  "minNumInstances": S.optional(S.Number),
+}),
+).annotate({ identifier: "InstanceGroupConfig" }) as any as S.Schema<InstanceGroupConfig>;
 
 /** Specifies an executable to run on a fully configured node and a timeout period for executable completion. */
 export interface NodeInitializationAction {
@@ -3986,46 +3364,22 @@ export interface NodeInitializationAction {
   executableFile?: string;
 }
 export const NodeInitializationAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionTimeout: S.optional(S.String),
-    executableFile: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NodeInitializationAction",
-}) as any as S.Schema<NodeInitializationAction>;
+S.Struct({
+  "executionTimeout": S.optional(S.String),
+  "executableFile": S.optional(S.String),
+}),
+).annotate({ identifier: "NodeInitializationAction" }) as any as S.Schema<NodeInitializationAction>;
 
-export type NodeInitializationActionList =
-  ReadonlyArray<NodeInitializationAction>;
-export const NodeInitializationActionList = /*@__PURE__*/ S.Array(
-  NodeInitializationAction,
-) as any as S.Schema<NodeInitializationActionList>;
+export type NodeInitializationActionList = ReadonlyArray<NodeInitializationAction>;
+export const NodeInitializationActionList = /*@__PURE__*/ S.Array(NodeInitializationAction) as any as S.Schema<NodeInitializationActionList>;
 
-export type ClusterConfigEngineEnum =
-  | "ENGINE_UNSPECIFIED"
-  | "DEFAULT"
-  | "LIGHTNING"
-  | (string & {});
+export type ClusterConfigEngineEnum = "ENGINE_UNSPECIFIED" | "DEFAULT" | "LIGHTNING";
 export const ClusterConfigEngineEnum = /*@__PURE__*/ S.String;
 
-export type ClusterConfigClusterTypeEnum =
-  | "CLUSTER_TYPE_UNSPECIFIED"
-  | "STANDARD"
-  | "SINGLE_NODE"
-  | "ZERO_SCALE"
-  | (string & {});
+export type ClusterConfigClusterTypeEnum = "CLUSTER_TYPE_UNSPECIFIED" | "STANDARD" | "SINGLE_NODE" | "ZERO_SCALE";
 export const ClusterConfigClusterTypeEnum = /*@__PURE__*/ S.String;
 
-export type MetricMetricSourceEnum =
-  | "METRIC_SOURCE_UNSPECIFIED"
-  | "MONITORING_AGENT_DEFAULTS"
-  | "HDFS"
-  | "SPARK"
-  | "YARN"
-  | "SPARK_HISTORY_SERVER"
-  | "HIVESERVER2"
-  | "HIVEMETASTORE"
-  | "FLINK"
-  | (string & {});
+export type MetricMetricSourceEnum = "METRIC_SOURCE_UNSPECIFIED" | "MONITORING_AGENT_DEFAULTS" | "HDFS" | "SPARK" | "YARN" | "SPARK_HISTORY_SERVER" | "HIVESERVER2" | "HIVEMETASTORE" | "FLINK";
 export const MetricMetricSourceEnum = /*@__PURE__*/ S.String;
 
 /** A custom metric. */
@@ -4036,16 +3390,14 @@ export interface Metric {
   metricOverrides?: StringList;
 }
 export const Metric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSource: S.optional(MetricMetricSourceEnum),
-    metricOverrides: S.optional(StringList),
-  }),
+S.Struct({
+  "metricSource": S.optional(MetricMetricSourceEnum),
+  "metricOverrides": S.optional(StringList),
+}),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
 export type MetricList = ReadonlyArray<Metric>;
-export const MetricList = /*@__PURE__*/ S.Array(
-  Metric,
-) as any as S.Schema<MetricList>;
+export const MetricList = /*@__PURE__*/ S.Array(Metric) as any as S.Schema<MetricList>;
 
 /** Metric config. */
 export interface DataprocMetricConfig {
@@ -4053,12 +3405,10 @@ export interface DataprocMetricConfig {
   metrics?: MetricList;
 }
 export const DataprocMetricConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metrics: S.optional(MetricList),
-  }),
-).annotate({
-  identifier: "DataprocMetricConfig",
-}) as any as S.Schema<DataprocMetricConfig>;
+S.Struct({
+  "metrics": S.optional(MetricList),
+}),
+).annotate({ identifier: "DataprocMetricConfig" }) as any as S.Schema<DataprocMetricConfig>;
 
 /** Node Group Affinity for clusters using sole-tenant node groups. The NodeGroupAffinity resource is not related to the NodeGroup resource. */
 export interface NodeGroupAffinity {
@@ -4066,21 +3416,13 @@ export interface NodeGroupAffinity {
   nodeGroupUri?: string;
 }
 export const NodeGroupAffinity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeGroupUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NodeGroupAffinity",
-}) as any as S.Schema<NodeGroupAffinity>;
+S.Struct({
+  "nodeGroupUri": S.optional(S.String),
+}),
+).annotate({ identifier: "NodeGroupAffinity" }) as any as S.Schema<NodeGroupAffinity>;
 
-export type ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
-  | "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"
-  | "SEV"
-  | "SEV_SNP"
-  | "TDX"
-  | (string & {});
-export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ConfidentialInstanceConfigConfidentialInstanceTypeEnum = "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED" | "SEV" | "SEV_SNP" | "TDX";
+export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/confidential-computing/confidential-vm/docs) */
 export interface ConfidentialInstanceConfig {
@@ -4090,24 +3432,14 @@ export interface ConfidentialInstanceConfig {
   confidentialInstanceType?: ConfidentialInstanceConfigConfidentialInstanceTypeEnum;
 }
 export const ConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableConfidentialCompute: S.optional(S.Boolean),
-    confidentialInstanceType: S.optional(
-      ConfidentialInstanceConfigConfidentialInstanceTypeEnum,
-    ),
-  }),
-).annotate({
-  identifier: "ConfidentialInstanceConfig",
-}) as any as S.Schema<ConfidentialInstanceConfig>;
+S.Struct({
+  "enableConfidentialCompute": S.optional(S.Boolean),
+  "confidentialInstanceType": S.optional(ConfidentialInstanceConfigConfidentialInstanceTypeEnum),
+}),
+).annotate({ identifier: "ConfidentialInstanceConfig" }) as any as S.Schema<ConfidentialInstanceConfig>;
 
-export type ReservationAffinityConsumeReservationTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "NO_RESERVATION"
-  | "ANY_RESERVATION"
-  | "SPECIFIC_RESERVATION"
-  | (string & {});
-export const ReservationAffinityConsumeReservationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ReservationAffinityConsumeReservationTypeEnum = "TYPE_UNSPECIFIED" | "NO_RESERVATION" | "ANY_RESERVATION" | "SPECIFIC_RESERVATION";
+export const ReservationAffinityConsumeReservationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Reservation Affinity for consuming Zonal reservation. */
 export interface ReservationAffinity {
@@ -4119,25 +3451,15 @@ export interface ReservationAffinity {
   values?: StringList;
 }
 export const ReservationAffinity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumeReservationType: S.optional(
-      ReservationAffinityConsumeReservationTypeEnum,
-    ),
-    key: S.optional(S.String),
-    values: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ReservationAffinity",
-}) as any as S.Schema<ReservationAffinity>;
+S.Struct({
+  "consumeReservationType": S.optional(ReservationAffinityConsumeReservationTypeEnum),
+  "key": S.optional(S.String),
+  "values": S.optional(StringList),
+}),
+).annotate({ identifier: "ReservationAffinity" }) as any as S.Schema<ReservationAffinity>;
 
-export type GceClusterConfigPrivateIpv6GoogleAccessEnum =
-  | "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"
-  | "INHERIT_FROM_SUBNETWORK"
-  | "OUTBOUND"
-  | "BIDIRECTIONAL"
-  | (string & {});
-export const GceClusterConfigPrivateIpv6GoogleAccessEnum =
-  /*@__PURE__*/ S.String;
+export type GceClusterConfigPrivateIpv6GoogleAccessEnum = "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED" | "INHERIT_FROM_SUBNETWORK" | "OUTBOUND" | "BIDIRECTIONAL";
+export const GceClusterConfigPrivateIpv6GoogleAccessEnum = /*@__PURE__*/ S.String;
 
 /** Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm). */
 export interface ShieldedInstanceConfig {
@@ -4149,14 +3471,12 @@ export interface ShieldedInstanceConfig {
   enableIntegrityMonitoring?: boolean;
 }
 export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableSecureBoot: S.optional(S.Boolean),
-    enableVtpm: S.optional(S.Boolean),
-    enableIntegrityMonitoring: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ShieldedInstanceConfig",
-}) as any as S.Schema<ShieldedInstanceConfig>;
+S.Struct({
+  "enableSecureBoot": S.optional(S.Boolean),
+  "enableVtpm": S.optional(S.Boolean),
+  "enableIntegrityMonitoring": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ShieldedInstanceConfig" }) as any as S.Schema<ShieldedInstanceConfig>;
 
 /** Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster. */
 export interface GceClusterConfig {
@@ -4192,28 +3512,24 @@ export interface GceClusterConfig {
   serviceAccountScopes?: StringList;
 }
 export const GceClusterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeGroupAffinity: S.optional(NodeGroupAffinity),
-    subnetworkUri: S.optional(S.String),
-    internalIpOnly: S.optional(S.Boolean),
-    confidentialInstanceConfig: S.optional(ConfidentialInstanceConfig),
-    reservationAffinity: S.optional(ReservationAffinity),
-    zoneUri: S.optional(S.String),
-    privateIpv6GoogleAccess: S.optional(
-      GceClusterConfigPrivateIpv6GoogleAccessEnum,
-    ),
-    autoZoneExcludeZoneUris: S.optional(StringList),
-    serviceAccount: S.optional(S.String),
-    resourceManagerTags: S.optional(StringMap),
-    metadata: S.optional(StringMap),
-    networkUri: S.optional(S.String),
-    tags: S.optional(StringList),
-    shieldedInstanceConfig: S.optional(ShieldedInstanceConfig),
-    serviceAccountScopes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GceClusterConfig",
-}) as any as S.Schema<GceClusterConfig>;
+S.Struct({
+  "nodeGroupAffinity": S.optional(NodeGroupAffinity),
+  "subnetworkUri": S.optional(S.String),
+  "internalIpOnly": S.optional(S.Boolean),
+  "confidentialInstanceConfig": S.optional(ConfidentialInstanceConfig),
+  "reservationAffinity": S.optional(ReservationAffinity),
+  "zoneUri": S.optional(S.String),
+  "privateIpv6GoogleAccess": S.optional(GceClusterConfigPrivateIpv6GoogleAccessEnum),
+  "autoZoneExcludeZoneUris": S.optional(StringList),
+  "serviceAccount": S.optional(S.String),
+  "resourceManagerTags": S.optional(StringMap),
+  "metadata": S.optional(StringMap),
+  "networkUri": S.optional(S.String),
+  "tags": S.optional(StringList),
+  "shieldedInstanceConfig": S.optional(ShieldedInstanceConfig),
+  "serviceAccountScopes": S.optional(StringList),
+}),
+).annotate({ identifier: "GceClusterConfig" }) as any as S.Schema<GceClusterConfig>;
 
 /** Specifies the cluster auto-delete schedule configuration. */
 export interface LifecycleConfig {
@@ -4233,29 +3549,22 @@ export interface LifecycleConfig {
   autoDeleteTime?: string;
 }
 export const LifecycleConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoDeleteTtl: S.optional(S.String),
-    idleStartTime: S.optional(S.String),
-    idleDeleteTtl: S.optional(S.String),
-    autoStopTime: S.optional(S.String),
-    idleStopTtl: S.optional(S.String),
-    autoStopTtl: S.optional(S.String),
-    autoDeleteTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LifecycleConfig",
-}) as any as S.Schema<LifecycleConfig>;
+S.Struct({
+  "autoDeleteTtl": S.optional(S.String),
+  "idleStartTime": S.optional(S.String),
+  "idleDeleteTtl": S.optional(S.String),
+  "autoStopTime": S.optional(S.String),
+  "idleStopTtl": S.optional(S.String),
+  "autoStopTtl": S.optional(S.String),
+  "autoDeleteTime": S.optional(S.String),
+}),
+).annotate({ identifier: "LifecycleConfig" }) as any as S.Schema<LifecycleConfig>;
 
-export type NodeGroupRolesItemEnum =
-  | "ROLE_UNSPECIFIED"
-  | "DRIVER"
-  | (string & {});
+export type NodeGroupRolesItemEnum = "ROLE_UNSPECIFIED" | "DRIVER";
 export const NodeGroupRolesItemEnum = /*@__PURE__*/ S.String;
 
 export type NodeGroupRolesItemEnumList = ReadonlyArray<NodeGroupRolesItemEnum>;
-export const NodeGroupRolesItemEnumList = /*@__PURE__*/ S.Array(
-  NodeGroupRolesItemEnum,
-) as any as S.Schema<NodeGroupRolesItemEnumList>;
+export const NodeGroupRolesItemEnumList = /*@__PURE__*/ S.Array(NodeGroupRolesItemEnum) as any as S.Schema<NodeGroupRolesItemEnumList>;
 
 /** Node Group. The NodeGroup resource is not related to the NodeGroupAffinity resource. */
 export interface NodeGroup {
@@ -4269,12 +3578,12 @@ export interface NodeGroup {
   nodeGroupConfig?: InstanceGroupConfig;
 }
 export const NodeGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    roles: S.optional(NodeGroupRolesItemEnumList),
-    nodeGroupConfig: S.optional(InstanceGroupConfig),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "roles": S.optional(NodeGroupRolesItemEnumList),
+  "nodeGroupConfig": S.optional(InstanceGroupConfig),
+}),
 ).annotate({ identifier: "NodeGroup" }) as any as S.Schema<NodeGroup>;
 
 /** Node group identification and configuration information. */
@@ -4285,48 +3594,20 @@ export interface AuxiliaryNodeGroup {
   nodeGroupId?: string;
 }
 export const AuxiliaryNodeGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeGroup: S.optional(NodeGroup),
-    nodeGroupId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuxiliaryNodeGroup",
-}) as any as S.Schema<AuxiliaryNodeGroup>;
+S.Struct({
+  "nodeGroup": S.optional(NodeGroup),
+  "nodeGroupId": S.optional(S.String),
+}),
+).annotate({ identifier: "AuxiliaryNodeGroup" }) as any as S.Schema<AuxiliaryNodeGroup>;
 
 export type AuxiliaryNodeGroupList = ReadonlyArray<AuxiliaryNodeGroup>;
-export const AuxiliaryNodeGroupList = /*@__PURE__*/ S.Array(
-  AuxiliaryNodeGroup,
-) as any as S.Schema<AuxiliaryNodeGroupList>;
+export const AuxiliaryNodeGroupList = /*@__PURE__*/ S.Array(AuxiliaryNodeGroup) as any as S.Schema<AuxiliaryNodeGroupList>;
 
-export type SoftwareConfigOptionalComponentsItemEnum =
-  | "COMPONENT_UNSPECIFIED"
-  | "ANACONDA"
-  | "DELTA"
-  | "DOCKER"
-  | "DRUID"
-  | "FLINK"
-  | "HBASE"
-  | "HIVE_WEBHCAT"
-  | "HUDI"
-  | "ICEBERG"
-  | "JUPYTER"
-  | "PIG"
-  | "PRESTO"
-  | "TRINO"
-  | "RANGER"
-  | "SOLR"
-  | "ZEPPELIN"
-  | "ZOOKEEPER"
-  | "JUPYTER_KERNEL_GATEWAY"
-  | (string & {});
+export type SoftwareConfigOptionalComponentsItemEnum = "COMPONENT_UNSPECIFIED" | "ANACONDA" | "DELTA" | "DOCKER" | "DRUID" | "FLINK" | "HBASE" | "HIVE_WEBHCAT" | "HUDI" | "ICEBERG" | "JUPYTER" | "PIG" | "PRESTO" | "TRINO" | "RANGER" | "SOLR" | "ZEPPELIN" | "ZOOKEEPER" | "JUPYTER_KERNEL_GATEWAY";
 export const SoftwareConfigOptionalComponentsItemEnum = /*@__PURE__*/ S.String;
 
-export type SoftwareConfigOptionalComponentsItemEnumList =
-  ReadonlyArray<SoftwareConfigOptionalComponentsItemEnum>;
-export const SoftwareConfigOptionalComponentsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    SoftwareConfigOptionalComponentsItemEnum,
-  ) as any as S.Schema<SoftwareConfigOptionalComponentsItemEnumList>;
+export type SoftwareConfigOptionalComponentsItemEnumList = ReadonlyArray<SoftwareConfigOptionalComponentsItemEnum>;
+export const SoftwareConfigOptionalComponentsItemEnumList = /*@__PURE__*/ S.Array(SoftwareConfigOptionalComponentsItemEnum) as any as S.Schema<SoftwareConfigOptionalComponentsItemEnumList>;
 
 /** Specifies the selection and config of software inside the cluster. */
 export interface SoftwareConfig {
@@ -4338,20 +3619,14 @@ export interface SoftwareConfig {
   properties?: StringMap;
 }
 export const SoftwareConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    optionalComponents: S.optional(
-      SoftwareConfigOptionalComponentsItemEnumList,
-    ),
-    imageVersion: S.optional(S.String),
-    properties: S.optional(StringMap),
-  }),
+S.Struct({
+  "optionalComponents": S.optional(SoftwareConfigOptionalComponentsItemEnumList),
+  "imageVersion": S.optional(S.String),
+  "properties": S.optional(StringMap),
+}),
 ).annotate({ identifier: "SoftwareConfig" }) as any as S.Schema<SoftwareConfig>;
 
-export type ClusterConfigClusterTierEnum =
-  | "CLUSTER_TIER_UNSPECIFIED"
-  | "CLUSTER_TIER_STANDARD"
-  | "CLUSTER_TIER_PREMIUM"
-  | (string & {});
+export type ClusterConfigClusterTierEnum = "CLUSTER_TIER_UNSPECIFIED" | "CLUSTER_TIER_STANDARD" | "CLUSTER_TIER_PREMIUM";
 export const ClusterConfigClusterTierEnum = /*@__PURE__*/ S.String;
 
 /** Encryption settings for the cluster. */
@@ -4362,13 +3637,11 @@ export interface EncryptionConfig {
   kmsKey?: string;
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcePdKmsKeyName: S.optional(S.String),
-    kmsKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EncryptionConfig",
-}) as any as S.Schema<EncryptionConfig>;
+S.Struct({
+  "gcePdKmsKeyName": S.optional(S.String),
+  "kmsKey": S.optional(S.String),
+}),
+).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
 
 /** Autoscaling Policy config associated with the cluster. */
 export interface AutoscalingConfig {
@@ -4376,12 +3649,10 @@ export interface AutoscalingConfig {
   policyUri?: string;
 }
 export const AutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutoscalingConfig",
-}) as any as S.Schema<AutoscalingConfig>;
+S.Struct({
+  "policyUri": S.optional(S.String),
+}),
+).annotate({ identifier: "AutoscalingConfig" }) as any as S.Schema<AutoscalingConfig>;
 
 /** Specifies a Metastore configuration. */
 export interface MetastoreConfig {
@@ -4389,12 +3660,10 @@ export interface MetastoreConfig {
   dataprocMetastoreService?: string;
 }
 export const MetastoreConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataprocMetastoreService: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MetastoreConfig",
-}) as any as S.Schema<MetastoreConfig>;
+S.Struct({
+  "dataprocMetastoreService": S.optional(S.String),
+}),
+).annotate({ identifier: "MetastoreConfig" }) as any as S.Schema<MetastoreConfig>;
 
 /** Endpoint config for this cluster */
 export interface EndpointConfig {
@@ -4404,10 +3673,10 @@ export interface EndpointConfig {
   enableHttpPortAccess?: boolean;
 }
 export const EndpointConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    httpPorts: S.optional(StringMap),
-    enableHttpPortAccess: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "httpPorts": S.optional(StringMap),
+  "enableHttpPortAccess": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "EndpointConfig" }) as any as S.Schema<EndpointConfig>;
 
 /** Deprecated. Used only for the deprecated beta. A full, namespace-isolated deployment target for an existing GKE cluster. */
@@ -4418,28 +3687,17 @@ export interface NamespacedGkeDeploymentTarget {
   clusterNamespace?: string;
 }
 export const NamespacedGkeDeploymentTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetGkeCluster: S.optional(S.String),
-    clusterNamespace: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NamespacedGkeDeploymentTarget",
-}) as any as S.Schema<NamespacedGkeDeploymentTarget>;
+S.Struct({
+  "targetGkeCluster": S.optional(S.String),
+  "clusterNamespace": S.optional(S.String),
+}),
+).annotate({ identifier: "NamespacedGkeDeploymentTarget" }) as any as S.Schema<NamespacedGkeDeploymentTarget>;
 
-export type GkeNodePoolTargetRolesItemEnum =
-  | "ROLE_UNSPECIFIED"
-  | "DEFAULT"
-  | "CONTROLLER"
-  | "SPARK_DRIVER"
-  | "SPARK_EXECUTOR"
-  | (string & {});
+export type GkeNodePoolTargetRolesItemEnum = "ROLE_UNSPECIFIED" | "DEFAULT" | "CONTROLLER" | "SPARK_DRIVER" | "SPARK_EXECUTOR";
 export const GkeNodePoolTargetRolesItemEnum = /*@__PURE__*/ S.String;
 
-export type GkeNodePoolTargetRolesItemEnumList =
-  ReadonlyArray<GkeNodePoolTargetRolesItemEnum>;
-export const GkeNodePoolTargetRolesItemEnumList = /*@__PURE__*/ S.Array(
-  GkeNodePoolTargetRolesItemEnum,
-) as any as S.Schema<GkeNodePoolTargetRolesItemEnumList>;
+export type GkeNodePoolTargetRolesItemEnumList = ReadonlyArray<GkeNodePoolTargetRolesItemEnum>;
+export const GkeNodePoolTargetRolesItemEnumList = /*@__PURE__*/ S.Array(GkeNodePoolTargetRolesItemEnum) as any as S.Schema<GkeNodePoolTargetRolesItemEnumList>;
 
 /** GkeNodePoolAutoscaling contains information the cluster autoscaler needs to adjust the size of the node pool to the current cluster usage. */
 export interface GkeNodePoolAutoscalingConfig {
@@ -4449,13 +3707,11 @@ export interface GkeNodePoolAutoscalingConfig {
   minNodeCount?: number;
 }
 export const GkeNodePoolAutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxNodeCount: S.optional(S.Number),
-    minNodeCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GkeNodePoolAutoscalingConfig",
-}) as any as S.Schema<GkeNodePoolAutoscalingConfig>;
+S.Struct({
+  "maxNodeCount": S.optional(S.Number),
+  "minNodeCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "GkeNodePoolAutoscalingConfig" }) as any as S.Schema<GkeNodePoolAutoscalingConfig>;
 
 /** A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a node pool. */
 export interface GkeNodePoolAcceleratorConfig {
@@ -4467,20 +3723,15 @@ export interface GkeNodePoolAcceleratorConfig {
   acceleratorType?: string;
 }
 export const GkeNodePoolAcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acceleratorCount: S.optional(S.String),
-    gpuPartitionSize: S.optional(S.String),
-    acceleratorType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GkeNodePoolAcceleratorConfig",
-}) as any as S.Schema<GkeNodePoolAcceleratorConfig>;
+S.Struct({
+  "acceleratorCount": S.optional(S.String),
+  "gpuPartitionSize": S.optional(S.String),
+  "acceleratorType": S.optional(S.String),
+}),
+).annotate({ identifier: "GkeNodePoolAcceleratorConfig" }) as any as S.Schema<GkeNodePoolAcceleratorConfig>;
 
-export type GkeNodePoolAcceleratorConfigList =
-  ReadonlyArray<GkeNodePoolAcceleratorConfig>;
-export const GkeNodePoolAcceleratorConfigList = /*@__PURE__*/ S.Array(
-  GkeNodePoolAcceleratorConfig,
-) as any as S.Schema<GkeNodePoolAcceleratorConfigList>;
+export type GkeNodePoolAcceleratorConfigList = ReadonlyArray<GkeNodePoolAcceleratorConfig>;
+export const GkeNodePoolAcceleratorConfigList = /*@__PURE__*/ S.Array(GkeNodePoolAcceleratorConfig) as any as S.Schema<GkeNodePoolAcceleratorConfigList>;
 
 /** Parameters that describe cluster nodes. */
 export interface GkeNodeConfig {
@@ -4502,16 +3753,16 @@ export interface GkeNodeConfig {
   bootDiskKmsKey?: string;
 }
 export const GkeNodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machineType: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    localSsdCount: S.optional(S.Number),
-    preemptible: S.optional(S.Boolean),
-    spot: S.optional(S.Boolean),
-    accelerators: S.optional(GkeNodePoolAcceleratorConfigList),
-    minCpuPlatform: S.optional(S.String),
-    bootDiskKmsKey: S.optional(S.String),
-  }),
+S.Struct({
+  "machineType": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "localSsdCount": S.optional(S.Number),
+  "preemptible": S.optional(S.Boolean),
+  "spot": S.optional(S.Boolean),
+  "accelerators": S.optional(GkeNodePoolAcceleratorConfigList),
+  "minCpuPlatform": S.optional(S.String),
+  "bootDiskKmsKey": S.optional(S.String),
+}),
 ).annotate({ identifier: "GkeNodeConfig" }) as any as S.Schema<GkeNodeConfig>;
 
 /** The configuration of a GKE node pool used by a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). */
@@ -4524,14 +3775,12 @@ export interface GkeNodePoolConfig {
   config?: GkeNodeConfig;
 }
 export const GkeNodePoolConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(StringList),
-    autoscaling: S.optional(GkeNodePoolAutoscalingConfig),
-    config: S.optional(GkeNodeConfig),
-  }),
-).annotate({
-  identifier: "GkeNodePoolConfig",
-}) as any as S.Schema<GkeNodePoolConfig>;
+S.Struct({
+  "locations": S.optional(StringList),
+  "autoscaling": S.optional(GkeNodePoolAutoscalingConfig),
+  "config": S.optional(GkeNodeConfig),
+}),
+).annotate({ identifier: "GkeNodePoolConfig" }) as any as S.Schema<GkeNodePoolConfig>;
 
 /** GKE node pools that Dataproc workloads run on. */
 export interface GkeNodePoolTarget {
@@ -4543,19 +3792,15 @@ export interface GkeNodePoolTarget {
   nodePoolConfig?: GkeNodePoolConfig;
 }
 export const GkeNodePoolTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodePool: S.optional(S.String),
-    roles: S.optional(GkeNodePoolTargetRolesItemEnumList),
-    nodePoolConfig: S.optional(GkeNodePoolConfig),
-  }),
-).annotate({
-  identifier: "GkeNodePoolTarget",
-}) as any as S.Schema<GkeNodePoolTarget>;
+S.Struct({
+  "nodePool": S.optional(S.String),
+  "roles": S.optional(GkeNodePoolTargetRolesItemEnumList),
+  "nodePoolConfig": S.optional(GkeNodePoolConfig),
+}),
+).annotate({ identifier: "GkeNodePoolTarget" }) as any as S.Schema<GkeNodePoolTarget>;
 
 export type GkeNodePoolTargetList = ReadonlyArray<GkeNodePoolTarget>;
-export const GkeNodePoolTargetList = /*@__PURE__*/ S.Array(
-  GkeNodePoolTarget,
-) as any as S.Schema<GkeNodePoolTargetList>;
+export const GkeNodePoolTargetList = /*@__PURE__*/ S.Array(GkeNodePoolTarget) as any as S.Schema<GkeNodePoolTargetList>;
 
 /** The cluster's GKE config. */
 export interface GkeClusterConfig {
@@ -4567,14 +3812,12 @@ export interface GkeClusterConfig {
   nodePoolTarget?: GkeNodePoolTargetList;
 }
 export const GkeClusterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gkeClusterTarget: S.optional(S.String),
-    namespacedGkeDeploymentTarget: S.optional(NamespacedGkeDeploymentTarget),
-    nodePoolTarget: S.optional(GkeNodePoolTargetList),
-  }),
-).annotate({
-  identifier: "GkeClusterConfig",
-}) as any as S.Schema<GkeClusterConfig>;
+S.Struct({
+  "gkeClusterTarget": S.optional(S.String),
+  "namespacedGkeDeploymentTarget": S.optional(NamespacedGkeDeploymentTarget),
+  "nodePoolTarget": S.optional(GkeNodePoolTargetList),
+}),
+).annotate({ identifier: "GkeClusterConfig" }) as any as S.Schema<GkeClusterConfig>;
 
 /** Specifies Kerberos related configuration. */
 export interface KerberosConfig {
@@ -4610,23 +3853,23 @@ export interface KerberosConfig {
   keystoreUri?: string;
 }
 export const KerberosConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    crossRealmTrustRealm: S.optional(S.String),
-    crossRealmTrustKdc: S.optional(S.String),
-    keyPasswordUri: S.optional(S.String),
-    crossRealmTrustSharedPasswordUri: S.optional(S.String),
-    kdcDbKeyUri: S.optional(S.String),
-    rootPrincipalPasswordUri: S.optional(S.String),
-    keystorePasswordUri: S.optional(S.String),
-    realm: S.optional(S.String),
-    kmsKeyUri: S.optional(S.String),
-    crossRealmTrustAdminServer: S.optional(S.String),
-    tgtLifetimeHours: S.optional(S.Number),
-    truststorePasswordUri: S.optional(S.String),
-    truststoreUri: S.optional(S.String),
-    enableKerberos: S.optional(S.Boolean),
-    keystoreUri: S.optional(S.String),
-  }),
+S.Struct({
+  "crossRealmTrustRealm": S.optional(S.String),
+  "crossRealmTrustKdc": S.optional(S.String),
+  "keyPasswordUri": S.optional(S.String),
+  "crossRealmTrustSharedPasswordUri": S.optional(S.String),
+  "kdcDbKeyUri": S.optional(S.String),
+  "rootPrincipalPasswordUri": S.optional(S.String),
+  "keystorePasswordUri": S.optional(S.String),
+  "realm": S.optional(S.String),
+  "kmsKeyUri": S.optional(S.String),
+  "crossRealmTrustAdminServer": S.optional(S.String),
+  "tgtLifetimeHours": S.optional(S.Number),
+  "truststorePasswordUri": S.optional(S.String),
+  "truststoreUri": S.optional(S.String),
+  "enableKerberos": S.optional(S.Boolean),
+  "keystoreUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "KerberosConfig" }) as any as S.Schema<KerberosConfig>;
 
 /** Identity related configuration, including service account based secure multi-tenancy user mappings. */
@@ -4635,9 +3878,9 @@ export interface IdentityConfig {
   userServiceAccountMapping?: StringMap;
 }
 export const IdentityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userServiceAccountMapping: S.optional(StringMap),
-  }),
+S.Struct({
+  "userServiceAccountMapping": S.optional(StringMap),
+}),
 ).annotate({ identifier: "IdentityConfig" }) as any as S.Schema<IdentityConfig>;
 
 /** Security related configuration, including encryption, Kerberos, etc. */
@@ -4648,10 +3891,10 @@ export interface SecurityConfig {
   identityConfig?: IdentityConfig;
 }
 export const SecurityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kerberosConfig: S.optional(KerberosConfig),
-    identityConfig: S.optional(IdentityConfig),
-  }),
+S.Struct({
+  "kerberosConfig": S.optional(KerberosConfig),
+  "identityConfig": S.optional(IdentityConfig),
+}),
 ).annotate({ identifier: "SecurityConfig" }) as any as S.Schema<SecurityConfig>;
 
 /** The cluster config. */
@@ -4700,29 +3943,29 @@ export interface ClusterConfig {
   diagnosticBucket?: string;
 }
 export const ClusterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workerConfig: S.optional(InstanceGroupConfig),
-    initializationActions: S.optional(NodeInitializationActionList),
-    engine: S.optional(ClusterConfigEngineEnum),
-    clusterType: S.optional(ClusterConfigClusterTypeEnum),
-    dataprocMetricConfig: S.optional(DataprocMetricConfig),
-    masterConfig: S.optional(InstanceGroupConfig),
-    gceClusterConfig: S.optional(GceClusterConfig),
-    configBucket: S.optional(S.String),
-    lifecycleConfig: S.optional(LifecycleConfig),
-    auxiliaryNodeGroups: S.optional(AuxiliaryNodeGroupList),
-    softwareConfig: S.optional(SoftwareConfig),
-    secondaryWorkerConfig: S.optional(InstanceGroupConfig),
-    tempBucket: S.optional(S.String),
-    clusterTier: S.optional(ClusterConfigClusterTierEnum),
-    encryptionConfig: S.optional(EncryptionConfig),
-    autoscalingConfig: S.optional(AutoscalingConfig),
-    metastoreConfig: S.optional(MetastoreConfig),
-    endpointConfig: S.optional(EndpointConfig),
-    gkeClusterConfig: S.optional(GkeClusterConfig),
-    securityConfig: S.optional(SecurityConfig),
-    diagnosticBucket: S.optional(S.String),
-  }),
+S.Struct({
+  "workerConfig": S.optional(InstanceGroupConfig),
+  "initializationActions": S.optional(NodeInitializationActionList),
+  "engine": S.optional(ClusterConfigEngineEnum),
+  "clusterType": S.optional(ClusterConfigClusterTypeEnum),
+  "dataprocMetricConfig": S.optional(DataprocMetricConfig),
+  "masterConfig": S.optional(InstanceGroupConfig),
+  "gceClusterConfig": S.optional(GceClusterConfig),
+  "configBucket": S.optional(S.String),
+  "lifecycleConfig": S.optional(LifecycleConfig),
+  "auxiliaryNodeGroups": S.optional(AuxiliaryNodeGroupList),
+  "softwareConfig": S.optional(SoftwareConfig),
+  "secondaryWorkerConfig": S.optional(InstanceGroupConfig),
+  "tempBucket": S.optional(S.String),
+  "clusterTier": S.optional(ClusterConfigClusterTierEnum),
+  "encryptionConfig": S.optional(EncryptionConfig),
+  "autoscalingConfig": S.optional(AutoscalingConfig),
+  "metastoreConfig": S.optional(MetastoreConfig),
+  "endpointConfig": S.optional(EndpointConfig),
+  "gkeClusterConfig": S.optional(GkeClusterConfig),
+  "securityConfig": S.optional(SecurityConfig),
+  "diagnosticBucket": S.optional(S.String),
+}),
 ).annotate({ identifier: "ClusterConfig" }) as any as S.Schema<ClusterConfig>;
 
 /** Cluster that is managed by the workflow. */
@@ -4735,11 +3978,11 @@ export interface ManagedCluster {
   labels?: StringMap;
 }
 export const ManagedCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(ClusterConfig),
-    clusterName: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "config": S.optional(ClusterConfig),
+  "clusterName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "ManagedCluster" }) as any as S.Schema<ManagedCluster>;
 
 /** Specifies workflow execution target.Either managed_cluster or cluster_selector is required. */
@@ -4750,13 +3993,11 @@ export interface WorkflowTemplatePlacement {
   managedCluster?: ManagedCluster;
 }
 export const WorkflowTemplatePlacement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterSelector: S.optional(ClusterSelector),
-    managedCluster: S.optional(ManagedCluster),
-  }),
-).annotate({
-  identifier: "WorkflowTemplatePlacement",
-}) as any as S.Schema<WorkflowTemplatePlacement>;
+S.Struct({
+  "clusterSelector": S.optional(ClusterSelector),
+  "managedCluster": S.optional(ManagedCluster),
+}),
+).annotate({ identifier: "WorkflowTemplatePlacement" }) as any as S.Schema<WorkflowTemplatePlacement>;
 
 /** A job executed by the workflow. */
 export interface OrderedJob {
@@ -4790,42 +4031,37 @@ export interface OrderedJob {
   trinoJob?: TrinoJob;
 }
 export const OrderedJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prestoJob: S.optional(PrestoJob),
-    scheduling: S.optional(JobScheduling),
-    sparkJob: S.optional(SparkJob),
-    pigJob: S.optional(PigJob),
-    hadoopJob: S.optional(HadoopJob),
-    prerequisiteStepIds: S.optional(StringList),
-    stepId: S.optional(S.String),
-    sparkRJob: S.optional(SparkRJob),
-    hiveJob: S.optional(HiveJob),
-    labels: S.optional(StringMap),
-    flinkJob: S.optional(FlinkJob),
-    pysparkJob: S.optional(PySparkJob),
-    sparkSqlJob: S.optional(SparkSqlJob),
-    trinoJob: S.optional(TrinoJob),
-  }),
+S.Struct({
+  "prestoJob": S.optional(PrestoJob),
+  "scheduling": S.optional(JobScheduling),
+  "sparkJob": S.optional(SparkJob),
+  "pigJob": S.optional(PigJob),
+  "hadoopJob": S.optional(HadoopJob),
+  "prerequisiteStepIds": S.optional(StringList),
+  "stepId": S.optional(S.String),
+  "sparkRJob": S.optional(SparkRJob),
+  "hiveJob": S.optional(HiveJob),
+  "labels": S.optional(StringMap),
+  "flinkJob": S.optional(FlinkJob),
+  "pysparkJob": S.optional(PySparkJob),
+  "sparkSqlJob": S.optional(SparkSqlJob),
+  "trinoJob": S.optional(TrinoJob),
+}),
 ).annotate({ identifier: "OrderedJob" }) as any as S.Schema<OrderedJob>;
 
 export type OrderedJobList = ReadonlyArray<OrderedJob>;
-export const OrderedJobList = /*@__PURE__*/ S.Array(
-  OrderedJob,
-) as any as S.Schema<OrderedJobList>;
+export const OrderedJobList = /*@__PURE__*/ S.Array(OrderedJob) as any as S.Schema<OrderedJobList>;
 
 /** Encryption settings for encrypting workflow template job arguments. */
 export interface GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig {
   /** Optional. The Cloud KMS key name to use for encrypting workflow template job arguments.When this this key is provided, the following workflow template job arguments (https://cloud.google.com/dataproc/docs/concepts/workflows/use-workflows#adding_jobs_to_a_template), if present, are CMEK encrypted (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data): FlinkJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob) HadoopJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob) SparkJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob) SparkRJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob) PySparkJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob) SparkSqlJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries HiveJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries PigJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables and queryList.queries PrestoJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries */
   kmsKey?: string;
 }
-export const GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kmsKey: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig",
-  }) as any as S.Schema<GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig>;
+export const GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kmsKey": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig" }) as any as S.Schema<GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig>;
 
 /** A Dataproc workflow template resource. */
 export interface WorkflowTemplate {
@@ -4852,24 +4088,20 @@ export interface WorkflowTemplate {
   encryptionConfig?: GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig;
 }
 export const WorkflowTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    version: S.optional(S.Number),
-    labels: S.optional(StringMap),
-    parameters: S.optional(TemplateParameterList),
-    placement: S.optional(WorkflowTemplatePlacement),
-    createTime: S.optional(S.String),
-    jobs: S.optional(OrderedJobList),
-    updateTime: S.optional(S.String),
-    id: S.optional(S.String),
-    dagTimeout: S.optional(S.String),
-    encryptionConfig: S.optional(
-      GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig,
-    ),
-  }),
-).annotate({
-  identifier: "WorkflowTemplate",
-}) as any as S.Schema<WorkflowTemplate>;
+S.Struct({
+  "name": S.optional(S.String),
+  "version": S.optional(S.Number),
+  "labels": S.optional(StringMap),
+  "parameters": S.optional(TemplateParameterList),
+  "placement": S.optional(WorkflowTemplatePlacement),
+  "createTime": S.optional(S.String),
+  "jobs": S.optional(OrderedJobList),
+  "updateTime": S.optional(S.String),
+  "id": S.optional(S.String),
+  "dagTimeout": S.optional(S.String),
+  "encryptionConfig": S.optional(GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig),
+}),
+).annotate({ identifier: "WorkflowTemplate" }) as any as S.Schema<WorkflowTemplate>;
 
 export interface CreateProjectsLocationsWorkflowTemplatesRequest {
   /** Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create, the resource name of the location has the following format: projects/{project_id}/locations/{location} */
@@ -4877,21 +4109,12 @@ export interface CreateProjectsLocationsWorkflowTemplatesRequest {
   /** Request body */
   body?: WorkflowTemplate;
 }
-export const CreateProjectsLocationsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(WorkflowTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workflowTemplates",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsWorkflowTemplatesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsWorkflowTemplatesRequest>;
+export const CreateProjectsLocationsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(WorkflowTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/workflowTemplates","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsWorkflowTemplatesRequest" }) as any as S.Schema<CreateProjectsLocationsWorkflowTemplatesRequest>;
 
 export interface CreateProjectsRegionsAutoscalingPoliciesRequest {
   /** Required. The "resource name" of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.create, the resource name of the location has the following format: projects/{project_id}/locations/{location} */
@@ -4899,51 +4122,20 @@ export interface CreateProjectsRegionsAutoscalingPoliciesRequest {
   /** Request body */
   body?: AutoscalingPolicy;
 }
-export const CreateProjectsRegionsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(AutoscalingPolicy.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/autoscalingPolicies",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsRegionsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<CreateProjectsRegionsAutoscalingPoliciesRequest>;
+export const CreateProjectsRegionsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AutoscalingPolicy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/autoscalingPolicies","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsRegionsAutoscalingPoliciesRequest" }) as any as S.Schema<CreateProjectsRegionsAutoscalingPoliciesRequest>;
 
-export type CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum =
-  | "FAILURE_ACTION_UNSPECIFIED"
-  | "NO_ACTION"
-  | "DELETE"
-  | (string & {});
-export const CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum =
-  /*@__PURE__*/ S.String;
+export type CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum = "FAILURE_ACTION_UNSPECIFIED" | "NO_ACTION" | "DELETE";
+export const CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum = /*@__PURE__*/ S.String;
 
-export type ClusterStatusSubstateEnum =
-  | "UNSPECIFIED"
-  | "UNHEALTHY"
-  | "STALE_STATUS"
-  | (string & {});
+export type ClusterStatusSubstateEnum = "UNSPECIFIED" | "UNHEALTHY" | "STALE_STATUS";
 export const ClusterStatusSubstateEnum = /*@__PURE__*/ S.String;
 
-export type ClusterStatusStateEnum =
-  | "UNKNOWN"
-  | "CREATING"
-  | "RUNNING"
-  | "ERROR"
-  | "ERROR_DUE_TO_UPDATE"
-  | "DELETING"
-  | "UPDATING"
-  | "STOPPING"
-  | "STOPPED"
-  | "STARTING"
-  | "REPAIRING"
-  | "SCHEDULED"
-  | (string & {});
+export type ClusterStatusStateEnum = "UNKNOWN" | "CREATING" | "RUNNING" | "ERROR" | "ERROR_DUE_TO_UPDATE" | "DELETING" | "UPDATING" | "STOPPING" | "STOPPED" | "STARTING" | "REPAIRING" | "SCHEDULED";
 export const ClusterStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The status of a cluster and its instances. */
@@ -4958,12 +4150,12 @@ export interface ClusterStatus {
   stateStartTime?: string;
 }
 export const ClusterStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    substate: S.optional(ClusterStatusSubstateEnum),
-    detail: S.optional(S.String),
-    state: S.optional(ClusterStatusStateEnum),
-    stateStartTime: S.optional(S.String),
-  }),
+S.Struct({
+  "substate": S.optional(ClusterStatusSubstateEnum),
+  "detail": S.optional(S.String),
+  "state": S.optional(ClusterStatusStateEnum),
+  "stateStartTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "ClusterStatus" }) as any as S.Schema<ClusterStatus>;
 
 /** Auxiliary services configuration for a Cluster. */
@@ -4974,13 +4166,11 @@ export interface AuxiliaryServicesConfig {
   sparkHistoryServerConfig?: SparkHistoryServerConfig;
 }
 export const AuxiliaryServicesConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metastoreConfig: S.optional(MetastoreConfig),
-    sparkHistoryServerConfig: S.optional(SparkHistoryServerConfig),
-  }),
-).annotate({
-  identifier: "AuxiliaryServicesConfig",
-}) as any as S.Schema<AuxiliaryServicesConfig>;
+S.Struct({
+  "metastoreConfig": S.optional(MetastoreConfig),
+  "sparkHistoryServerConfig": S.optional(SparkHistoryServerConfig),
+}),
+).annotate({ identifier: "AuxiliaryServicesConfig" }) as any as S.Schema<AuxiliaryServicesConfig>;
 
 /** The software configuration for this Dataproc cluster running on Kubernetes. */
 export interface KubernetesSoftwareConfig {
@@ -4990,13 +4180,11 @@ export interface KubernetesSoftwareConfig {
   properties?: StringMap;
 }
 export const KubernetesSoftwareConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    componentVersion: S.optional(StringMap),
-    properties: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "KubernetesSoftwareConfig",
-}) as any as S.Schema<KubernetesSoftwareConfig>;
+S.Struct({
+  "componentVersion": S.optional(StringMap),
+  "properties": S.optional(StringMap),
+}),
+).annotate({ identifier: "KubernetesSoftwareConfig" }) as any as S.Schema<KubernetesSoftwareConfig>;
 
 /** The configuration for running the Dataproc cluster on Kubernetes. */
 export interface KubernetesClusterConfig {
@@ -5008,14 +4196,12 @@ export interface KubernetesClusterConfig {
   gkeClusterConfig?: GkeClusterConfig;
 }
 export const KubernetesClusterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kubernetesSoftwareConfig: S.optional(KubernetesSoftwareConfig),
-    kubernetesNamespace: S.optional(S.String),
-    gkeClusterConfig: S.optional(GkeClusterConfig),
-  }),
-).annotate({
-  identifier: "KubernetesClusterConfig",
-}) as any as S.Schema<KubernetesClusterConfig>;
+S.Struct({
+  "kubernetesSoftwareConfig": S.optional(KubernetesSoftwareConfig),
+  "kubernetesNamespace": S.optional(S.String),
+  "gkeClusterConfig": S.optional(GkeClusterConfig),
+}),
+).annotate({ identifier: "KubernetesClusterConfig" }) as any as S.Schema<KubernetesClusterConfig>;
 
 /** The cluster config for a cluster that does not directly control the underlying compute resources, such as a GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). */
 export interface VirtualClusterConfig {
@@ -5027,19 +4213,15 @@ export interface VirtualClusterConfig {
   kubernetesClusterConfig?: KubernetesClusterConfig;
 }
 export const VirtualClusterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auxiliaryServicesConfig: S.optional(AuxiliaryServicesConfig),
-    stagingBucket: S.optional(S.String),
-    kubernetesClusterConfig: S.optional(KubernetesClusterConfig),
-  }),
-).annotate({
-  identifier: "VirtualClusterConfig",
-}) as any as S.Schema<VirtualClusterConfig>;
+S.Struct({
+  "auxiliaryServicesConfig": S.optional(AuxiliaryServicesConfig),
+  "stagingBucket": S.optional(S.String),
+  "kubernetesClusterConfig": S.optional(KubernetesClusterConfig),
+}),
+).annotate({ identifier: "VirtualClusterConfig" }) as any as S.Schema<VirtualClusterConfig>;
 
 export type ClusterStatusList = ReadonlyArray<ClusterStatus>;
-export const ClusterStatusList = /*@__PURE__*/ S.Array(
-  ClusterStatus,
-) as any as S.Schema<ClusterStatusList>;
+export const ClusterStatusList = /*@__PURE__*/ S.Array(ClusterStatus) as any as S.Schema<ClusterStatusList>;
 
 /** Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release. */
 export interface ClusterMetrics {
@@ -5049,10 +4231,10 @@ export interface ClusterMetrics {
   yarnMetrics?: StringMap;
 }
 export const ClusterMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hdfsMetrics: S.optional(StringMap),
-    yarnMetrics: S.optional(StringMap),
-  }),
+S.Struct({
+  "hdfsMetrics": S.optional(StringMap),
+  "yarnMetrics": S.optional(StringMap),
+}),
 ).annotate({ identifier: "ClusterMetrics" }) as any as S.Schema<ClusterMetrics>;
 
 /** Describes the identifying information, config, and status of a cluster */
@@ -5077,17 +4259,17 @@ export interface Cluster {
   metrics?: ClusterMetrics;
 }
 export const Cluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    labels: S.optional(StringMap),
-    status: S.optional(ClusterStatus),
-    virtualClusterConfig: S.optional(VirtualClusterConfig),
-    config: S.optional(ClusterConfig),
-    clusterUuid: S.optional(S.String),
-    clusterName: S.optional(S.String),
-    statusHistory: S.optional(ClusterStatusList),
-    metrics: S.optional(ClusterMetrics),
-  }),
+S.Struct({
+  "projectId": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "status": S.optional(ClusterStatus),
+  "virtualClusterConfig": S.optional(VirtualClusterConfig),
+  "config": S.optional(ClusterConfig),
+  "clusterUuid": S.optional(S.String),
+  "clusterName": S.optional(S.String),
+  "statusHistory": S.optional(ClusterStatusList),
+  "metrics": S.optional(ClusterMetrics),
+}),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 export interface CreateProjectsRegionsClustersRequest {
@@ -5098,32 +4280,19 @@ export interface CreateProjectsRegionsClustersRequest {
   /** Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
   /** Optional. Failure action when primary worker creation fails. */
-  actionOnFailedPrimaryWorkers?: CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum;
+  actionOnFailedPrimaryWorkers?: CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum | (string & {});
   /** Request body */
   body?: Cluster;
 }
-export const CreateProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      region: S.String.pipe(T.Label()),
-      projectId: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      actionOnFailedPrimaryWorkers: S.optional(
-        CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      body: S.optional(Cluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/projects/{projectId}/regions/{region}/clusters",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsRegionsClustersRequest",
-}) as any as S.Schema<CreateProjectsRegionsClustersRequest>;
+export const CreateProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "region": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "actionOnFailedPrimaryWorkers": S.optional(CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum.pipe(T.Query())),
+  "body": S.optional(Cluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/regions/{region}/clusters","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsRegionsClustersRequest" }) as any as S.Schema<CreateProjectsRegionsClustersRequest>;
 
 export interface CreateProjectsRegionsClustersNodeGroupsRequest {
   /** Required. The parent resource where this node group will be created. Format: projects/{project}/regions/{region}/clusters/{cluster} */
@@ -5137,24 +4306,15 @@ export interface CreateProjectsRegionsClustersNodeGroupsRequest {
   /** Request body */
   body?: NodeGroup;
 }
-export const CreateProjectsRegionsClustersNodeGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      nodeGroupId: S.optional(S.String.pipe(T.Query())),
-      parentOperationId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(NodeGroup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/nodeGroups",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsRegionsClustersNodeGroupsRequest",
-  }) as any as S.Schema<CreateProjectsRegionsClustersNodeGroupsRequest>;
+export const CreateProjectsRegionsClustersNodeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "nodeGroupId": S.optional(S.String.pipe(T.Query())),
+  "parentOperationId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(NodeGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/nodeGroups","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsRegionsClustersNodeGroupsRequest" }) as any as S.Schema<CreateProjectsRegionsClustersNodeGroupsRequest>;
 
 export interface CreateProjectsRegionsWorkflowTemplatesRequest {
   /** Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create, the resource name of the location has the following format: projects/{project_id}/locations/{location} */
@@ -5162,78 +4322,42 @@ export interface CreateProjectsRegionsWorkflowTemplatesRequest {
   /** Request body */
   body?: WorkflowTemplate;
 }
-export const CreateProjectsRegionsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(WorkflowTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workflowTemplates",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsRegionsWorkflowTemplatesRequest",
-  }) as any as S.Schema<CreateProjectsRegionsWorkflowTemplatesRequest>;
+export const CreateProjectsRegionsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(WorkflowTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/workflowTemplates","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsRegionsWorkflowTemplatesRequest" }) as any as S.Schema<CreateProjectsRegionsWorkflowTemplatesRequest>;
 
 export interface DeleteProjectsLocationsAutoscalingPoliciesRequest {
   /** Required. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.delete, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies.delete, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id} */
   name: string;
 }
-export const DeleteProjectsLocationsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsAutoscalingPoliciesRequest>;
+export const DeleteProjectsLocationsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsAutoscalingPoliciesRequest" }) as any as S.Schema<DeleteProjectsLocationsAutoscalingPoliciesRequest>;
 
 export interface DeleteProjectsLocationsBatchesRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID" */
   name: string;
 }
-export const DeleteProjectsLocationsBatchesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsBatchesRequest",
-}) as any as S.Schema<DeleteProjectsLocationsBatchesRequest>;
+export const DeleteProjectsLocationsBatchesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBatchesRequest" }) as any as S.Schema<DeleteProjectsLocationsBatchesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsSessionsRequest {
   /** Required. The name of the session resource to delete. */
@@ -5241,40 +4365,22 @@ export interface DeleteProjectsLocationsSessionsRequest {
   /** Optional. A unique ID used to identify the request. If the service receives two DeleteSessionRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.DeleteSessionRequest)s with the same ID, the second request is ignored.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsSessionsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsSessionsRequest>;
+export const DeleteProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsSessionsRequest" }) as any as S.Schema<DeleteProjectsLocationsSessionsRequest>;
 
 export interface DeleteProjectsLocationsSessionTemplatesRequest {
   /** Required. The name of the session template resource to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsSessionTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsSessionTemplatesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsSessionTemplatesRequest>;
+export const DeleteProjectsLocationsSessionTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsSessionTemplatesRequest" }) as any as S.Schema<DeleteProjectsLocationsSessionTemplatesRequest>;
 
 export interface DeleteProjectsLocationsWorkflowTemplatesRequest {
   /** Required. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.delete, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates.instantiate, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} */
@@ -5282,40 +4388,22 @@ export interface DeleteProjectsLocationsWorkflowTemplatesRequest {
   /** Optional. The version of workflow template to delete. If specified, will only delete the template if the current server version matches specified version. */
   version?: number;
 }
-export const DeleteProjectsLocationsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      version: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsWorkflowTemplatesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsWorkflowTemplatesRequest>;
+export const DeleteProjectsLocationsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "version": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsWorkflowTemplatesRequest" }) as any as S.Schema<DeleteProjectsLocationsWorkflowTemplatesRequest>;
 
 export interface DeleteProjectsRegionsAutoscalingPoliciesRequest {
   /** Required. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.delete, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies.delete, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id} */
   name: string;
 }
-export const DeleteProjectsRegionsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsRegionsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<DeleteProjectsRegionsAutoscalingPoliciesRequest>;
+export const DeleteProjectsRegionsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsRegionsAutoscalingPoliciesRequest" }) as any as S.Schema<DeleteProjectsRegionsAutoscalingPoliciesRequest>;
 
 export interface DeleteProjectsRegionsClustersRequest {
   /** Optional. The graceful termination timeout for the deletion of the cluster. Indicate the time the request will wait to complete the running jobs on the cluster before its forceful deletion. Default value is 0 indicating that the user has not enabled the graceful termination. Value can be between 60 second and 6 Hours, in case the graceful termination is enabled. (There is no separate flag to check the enabling or disabling of graceful termination, it can be checked by the values in the field). */
@@ -5331,25 +4419,16 @@ export interface DeleteProjectsRegionsClustersRequest {
   /** Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND) if cluster with specified UUID does not exist. */
   clusterUuid?: string;
 }
-export const DeleteProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      gracefulTerminationTimeout: S.optional(S.String.pipe(T.Query())),
-      projectId: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      region: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      clusterUuid: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsRegionsClustersRequest",
-}) as any as S.Schema<DeleteProjectsRegionsClustersRequest>;
+export const DeleteProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "gracefulTerminationTimeout": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "region": S.String.pipe(T.Label()),
+  "clusterName": S.String.pipe(T.Label()),
+  "clusterUuid": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/projects/{projectId}/regions/{region}/clusters/{clusterName}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsRegionsClustersRequest" }) as any as S.Schema<DeleteProjectsRegionsClustersRequest>;
 
 export interface DeleteProjectsRegionsJobsRequest {
   /** Required. The Dataproc region in which to handle the request. */
@@ -5360,39 +4439,22 @@ export interface DeleteProjectsRegionsJobsRequest {
   jobId: string;
 }
 export const DeleteProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.String.pipe(T.Label()),
-    projectId: S.String.pipe(T.Label()),
-    jobId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsRegionsJobsRequest",
-}) as any as S.Schema<DeleteProjectsRegionsJobsRequest>;
+S.Struct({
+  "region": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "jobId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/projects/{projectId}/regions/{region}/jobs/{jobId}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsRegionsJobsRequest" }) as any as S.Schema<DeleteProjectsRegionsJobsRequest>;
 
 export interface DeleteProjectsRegionsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsRegionsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsRegionsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsRegionsOperationsRequest>;
+export const DeleteProjectsRegionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsRegionsOperationsRequest" }) as any as S.Schema<DeleteProjectsRegionsOperationsRequest>;
 
 export interface DeleteProjectsRegionsWorkflowTemplatesRequest {
   /** Required. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.delete, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates.instantiate, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} */
@@ -5400,27 +4462,14 @@ export interface DeleteProjectsRegionsWorkflowTemplatesRequest {
   /** Optional. The version of workflow template to delete. If specified, will only delete the template if the current server version matches specified version. */
   version?: number;
 }
-export const DeleteProjectsRegionsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      version: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsRegionsWorkflowTemplatesRequest",
-  }) as any as S.Schema<DeleteProjectsRegionsWorkflowTemplatesRequest>;
+export const DeleteProjectsRegionsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "version": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsRegionsWorkflowTemplatesRequest" }) as any as S.Schema<DeleteProjectsRegionsWorkflowTemplatesRequest>;
 
-export type DiagnoseClusterRequestTarballAccessEnum =
-  | "TARBALL_ACCESS_UNSPECIFIED"
-  | "GOOGLE_CLOUD_SUPPORT"
-  | "GOOGLE_DATAPROC_DIAGNOSE"
-  | (string & {});
+export type DiagnoseClusterRequestTarballAccessEnum = "TARBALL_ACCESS_UNSPECIFIED" | "GOOGLE_CLOUD_SUPPORT" | "GOOGLE_DATAPROC_DIAGNOSE";
 export const DiagnoseClusterRequestTarballAccessEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
@@ -5431,16 +4480,16 @@ export interface Interval {
   endTime?: string;
 }
 export const Interval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
 /** A request to collect cluster diagnostic information. */
 export interface DiagnoseClusterRequest {
   /** Optional. (Optional) The access type to the diagnostic tarball. If not specified, falls back to default access of the bucket */
-  tarballAccess?: DiagnoseClusterRequestTarballAccessEnum;
+  tarballAccess?: DiagnoseClusterRequestTarballAccessEnum | (string & {});
   /** Optional. DEPRECATED Specifies the job on which diagnosis is to be performed. Format: projects/{project}/regions/{region}/jobs/{job} */
   job?: string;
   /** Optional. DEPRECATED Specifies the yarn application on which diagnosis is to be performed. */
@@ -5455,18 +4504,16 @@ export interface DiagnoseClusterRequest {
   tarballGcsDir?: string;
 }
 export const DiagnoseClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tarballAccess: S.optional(DiagnoseClusterRequestTarballAccessEnum),
-    job: S.optional(S.String),
-    yarnApplicationId: S.optional(S.String),
-    jobs: S.optional(StringList),
-    yarnApplicationIds: S.optional(StringList),
-    diagnosisInterval: S.optional(Interval),
-    tarballGcsDir: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DiagnoseClusterRequest",
-}) as any as S.Schema<DiagnoseClusterRequest>;
+S.Struct({
+  "tarballAccess": S.optional(DiagnoseClusterRequestTarballAccessEnum),
+  "job": S.optional(S.String),
+  "yarnApplicationId": S.optional(S.String),
+  "jobs": S.optional(StringList),
+  "yarnApplicationIds": S.optional(StringList),
+  "diagnosisInterval": S.optional(Interval),
+  "tarballGcsDir": S.optional(S.String),
+}),
+).annotate({ identifier: "DiagnoseClusterRequest" }) as any as S.Schema<DiagnoseClusterRequest>;
 
 export interface DiagnoseProjectsRegionsClustersRequest {
   /** Required. The region in which to handle the request. */
@@ -5478,23 +4525,14 @@ export interface DiagnoseProjectsRegionsClustersRequest {
   /** Request body */
   body?: DiagnoseClusterRequest;
 }
-export const DiagnoseProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      region: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      projectId: S.String.pipe(T.Label()),
-      body: S.optional(DiagnoseClusterRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DiagnoseProjectsRegionsClustersRequest",
-}) as any as S.Schema<DiagnoseProjectsRegionsClustersRequest>;
+export const DiagnoseProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "region": S.String.pipe(T.Label()),
+  "clusterName": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(DiagnoseClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "DiagnoseProjectsRegionsClustersRequest" }) as any as S.Schema<DiagnoseProjectsRegionsClustersRequest>;
 
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
@@ -5502,12 +4540,10 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestedPolicyVersion: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetPolicyOptions",
-}) as any as S.Schema<GetPolicyOptions>;
+S.Struct({
+  "requestedPolicyVersion": S.optional(S.Number),
+}),
+).annotate({ identifier: "GetPolicyOptions" }) as any as S.Schema<GetPolicyOptions>;
 
 /** Request message for GetIamPolicy method. */
 export interface GetIamPolicyRequest {
@@ -5515,12 +4551,10 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(GetPolicyOptions),
-  }),
-).annotate({
-  identifier: "GetIamPolicyRequest",
-}) as any as S.Schema<GetIamPolicyRequest>;
+S.Struct({
+  "options": S.optional(GetPolicyOptions),
+}),
+).annotate({ identifier: "GetIamPolicyRequest" }) as any as S.Schema<GetIamPolicyRequest>;
 
 export interface GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5528,21 +4562,12 @@ export interface GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest>;
+export const GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -5556,12 +4581,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates members, or principals, with a role. */
@@ -5574,17 +4599,15 @@ export interface Binding {
   members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    condition: S.optional(Expr),
-    members: S.optional(StringList),
-  }),
+S.Struct({
+  "role": S.optional(S.String),
+  "condition": S.optional(Expr),
+  "members": S.optional(StringList),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources.A Policy is a collection of bindings. A binding binds one or more members, or principals, to a single role. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A role is a named list of permissions; each role can be an IAM predefined role or a user-created custom role.For some types of Google Cloud resources, a binding can also specify a condition, which is a logical expression that allows access to a resource only if the expression evaluates to true. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).JSON example: { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } YAML example: bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the IAM documentation (https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -5596,11 +4619,11 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsWorkflowTemplatesRequest {
@@ -5609,21 +4632,12 @@ export interface GetIamPolicyProjectsLocationsWorkflowTemplatesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsWorkflowTemplatesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsWorkflowTemplatesRequest>;
+export const GetIamPolicyProjectsLocationsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsWorkflowTemplatesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsWorkflowTemplatesRequest>;
 
 export interface GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5631,21 +4645,12 @@ export interface GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest>;
+export const GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest" }) as any as S.Schema<GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest>;
 
 export interface GetIamPolicyProjectsRegionsClustersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5653,21 +4658,12 @@ export interface GetIamPolicyProjectsRegionsClustersRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsRegionsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsRegionsClustersRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsRegionsClustersRequest>;
+export const GetIamPolicyProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsRegionsClustersRequest" }) as any as S.Schema<GetIamPolicyProjectsRegionsClustersRequest>;
 
 export interface GetIamPolicyProjectsRegionsJobsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5675,21 +4671,12 @@ export interface GetIamPolicyProjectsRegionsJobsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetIamPolicyProjectsRegionsJobsRequest",
-}) as any as S.Schema<GetIamPolicyProjectsRegionsJobsRequest>;
+export const GetIamPolicyProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsRegionsJobsRequest" }) as any as S.Schema<GetIamPolicyProjectsRegionsJobsRequest>;
 
 export interface GetIamPolicyProjectsRegionsOperationsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5697,21 +4684,12 @@ export interface GetIamPolicyProjectsRegionsOperationsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsRegionsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsRegionsOperationsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsRegionsOperationsRequest>;
+export const GetIamPolicyProjectsRegionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsRegionsOperationsRequest" }) as any as S.Schema<GetIamPolicyProjectsRegionsOperationsRequest>;
 
 export interface GetIamPolicyProjectsRegionsWorkflowTemplatesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5719,114 +4697,62 @@ export interface GetIamPolicyProjectsRegionsWorkflowTemplatesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsRegionsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsRegionsWorkflowTemplatesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsRegionsWorkflowTemplatesRequest>;
+export const GetIamPolicyProjectsRegionsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsRegionsWorkflowTemplatesRequest" }) as any as S.Schema<GetIamPolicyProjectsRegionsWorkflowTemplatesRequest>;
 
 export interface GetProjectsLocationsAutoscalingPoliciesRequest {
   /** Required. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.get, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies.get, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id} */
   name: string;
 }
-export const GetProjectsLocationsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<GetProjectsLocationsAutoscalingPoliciesRequest>;
+export const GetProjectsLocationsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsAutoscalingPoliciesRequest" }) as any as S.Schema<GetProjectsLocationsAutoscalingPoliciesRequest>;
 
 export interface GetProjectsLocationsBatchesRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID" */
   name: string;
 }
 export const GetProjectsLocationsBatchesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsBatchesRequest",
-}) as any as S.Schema<GetProjectsLocationsBatchesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBatchesRequest" }) as any as S.Schema<GetProjectsLocationsBatchesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsSessionsRequest {
   /** Required. The name of the session to retrieve. */
   name: string;
 }
 export const GetProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsSessionsRequest",
-}) as any as S.Schema<GetProjectsLocationsSessionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsSessionsRequest" }) as any as S.Schema<GetProjectsLocationsSessionsRequest>;
 
 export interface GetProjectsLocationsSessionTemplatesRequest {
   /** Required. The name of the session template to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsSessionTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsSessionTemplatesRequest",
-  }) as any as S.Schema<GetProjectsLocationsSessionTemplatesRequest>;
+export const GetProjectsLocationsSessionTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsSessionTemplatesRequest" }) as any as S.Schema<GetProjectsLocationsSessionTemplatesRequest>;
 
 export interface GetProjectsLocationsWorkflowTemplatesRequest {
   /** Required. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.get, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates.get, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} */
@@ -5834,40 +4760,22 @@ export interface GetProjectsLocationsWorkflowTemplatesRequest {
   /** Optional. The version of workflow template to retrieve. Only previously instantiated versions can be retrieved.If unspecified, retrieves the current version. */
   version?: number;
 }
-export const GetProjectsLocationsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      version: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsWorkflowTemplatesRequest",
-  }) as any as S.Schema<GetProjectsLocationsWorkflowTemplatesRequest>;
+export const GetProjectsLocationsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "version": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsWorkflowTemplatesRequest" }) as any as S.Schema<GetProjectsLocationsWorkflowTemplatesRequest>;
 
 export interface GetProjectsRegionsAutoscalingPoliciesRequest {
   /** Required. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.get, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies.get, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id} */
   name: string;
 }
-export const GetProjectsRegionsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsRegionsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<GetProjectsRegionsAutoscalingPoliciesRequest>;
+export const GetProjectsRegionsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsRegionsAutoscalingPoliciesRequest" }) as any as S.Schema<GetProjectsRegionsAutoscalingPoliciesRequest>;
 
 export interface GetProjectsRegionsClustersRequest {
   /** Required. The ID of the Google Cloud Platform project that the cluster belongs to. */
@@ -5878,39 +4786,22 @@ export interface GetProjectsRegionsClustersRequest {
   clusterName: string;
 }
 export const GetProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    region: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsRegionsClustersRequest",
-}) as any as S.Schema<GetProjectsRegionsClustersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "region": S.String.pipe(T.Label()),
+  "clusterName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/projects/{projectId}/regions/{region}/clusters/{clusterName}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsRegionsClustersRequest" }) as any as S.Schema<GetProjectsRegionsClustersRequest>;
 
 export interface GetProjectsRegionsClustersNodeGroupsRequest {
   /** Required. The name of the node group to retrieve. Format: projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup} */
   name: string;
 }
-export const GetProjectsRegionsClustersNodeGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsRegionsClustersNodeGroupsRequest",
-  }) as any as S.Schema<GetProjectsRegionsClustersNodeGroupsRequest>;
+export const GetProjectsRegionsClustersNodeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsRegionsClustersNodeGroupsRequest" }) as any as S.Schema<GetProjectsRegionsClustersNodeGroupsRequest>;
 
 export interface GetProjectsRegionsJobsRequest {
   /** Required. The ID of the Google Cloud Platform project that the job belongs to. */
@@ -5921,38 +4812,22 @@ export interface GetProjectsRegionsJobsRequest {
   region: string;
 }
 export const GetProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    jobId: S.String.pipe(T.Label()),
-    region: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsRegionsJobsRequest",
-}) as any as S.Schema<GetProjectsRegionsJobsRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "jobId": S.String.pipe(T.Label()),
+  "region": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/projects/{projectId}/regions/{region}/jobs/{jobId}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsRegionsJobsRequest" }) as any as S.Schema<GetProjectsRegionsJobsRequest>;
 
 export interface GetProjectsRegionsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetProjectsRegionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsRegionsOperationsRequest",
-}) as any as S.Schema<GetProjectsRegionsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsRegionsOperationsRequest" }) as any as S.Schema<GetProjectsRegionsOperationsRequest>;
 
 export interface GetProjectsRegionsWorkflowTemplatesRequest {
   /** Required. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.get, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates.get, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} */
@@ -5960,21 +4835,12 @@ export interface GetProjectsRegionsWorkflowTemplatesRequest {
   /** Optional. The version of workflow template to retrieve. Only previously instantiated versions can be retrieved.If unspecified, retrieves the current version. */
   version?: number;
 }
-export const GetProjectsRegionsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      version: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsRegionsWorkflowTemplatesRequest",
-  }) as any as S.Schema<GetProjectsRegionsWorkflowTemplatesRequest>;
+export const GetProjectsRegionsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "version": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsRegionsWorkflowTemplatesRequest" }) as any as S.Schema<GetProjectsRegionsWorkflowTemplatesRequest>;
 
 /** A request to inject credentials into a cluster. */
 export interface InjectCredentialsRequest {
@@ -5984,13 +4850,11 @@ export interface InjectCredentialsRequest {
   clusterUuid?: string;
 }
 export const InjectCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentialsCiphertext: S.optional(S.String),
-    clusterUuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InjectCredentialsRequest",
-}) as any as S.Schema<InjectCredentialsRequest>;
+S.Struct({
+  "credentialsCiphertext": S.optional(S.String),
+  "clusterUuid": S.optional(S.String),
+}),
+).annotate({ identifier: "InjectCredentialsRequest" }) as any as S.Schema<InjectCredentialsRequest>;
 
 export interface InjectCredentialsProjectsRegionsClustersRequest {
   /** Required. The region containing the cluster, of the form regions/. */
@@ -6002,23 +4866,14 @@ export interface InjectCredentialsProjectsRegionsClustersRequest {
   /** Request body */
   body?: InjectCredentialsRequest;
 }
-export const InjectCredentialsProjectsRegionsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.String.pipe(T.Label()),
-      project: S.String.pipe(T.Label()),
-      cluster: S.String.pipe(T.Label()),
-      body: S.optional(InjectCredentialsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+project}/{+region}/{+cluster}:injectCredentials",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "InjectCredentialsProjectsRegionsClustersRequest",
-  }) as any as S.Schema<InjectCredentialsProjectsRegionsClustersRequest>;
+export const InjectCredentialsProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "region": S.String.pipe(T.Label()),
+  "project": S.String.pipe(T.Label()),
+  "cluster": S.String.pipe(T.Label()),
+  "body": S.optional(InjectCredentialsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+project}/{+region}/{+cluster}:injectCredentials","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "InjectCredentialsProjectsRegionsClustersRequest" }) as any as S.Schema<InjectCredentialsProjectsRegionsClustersRequest>;
 
 export interface InstantiateInlineProjectsLocationsWorkflowTemplatesRequest {
   /** Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.instantiateinline, the resource name of the location has the following format: projects/{project_id}/locations/{location} */
@@ -6028,22 +4883,13 @@ export interface InstantiateInlineProjectsLocationsWorkflowTemplatesRequest {
   /** Request body */
   body?: WorkflowTemplate;
 }
-export const InstantiateInlineProjectsLocationsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WorkflowTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workflowTemplates:instantiateInline",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "InstantiateInlineProjectsLocationsWorkflowTemplatesRequest",
-  }) as any as S.Schema<InstantiateInlineProjectsLocationsWorkflowTemplatesRequest>;
+export const InstantiateInlineProjectsLocationsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(WorkflowTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/workflowTemplates:instantiateInline","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "InstantiateInlineProjectsLocationsWorkflowTemplatesRequest" }) as any as S.Schema<InstantiateInlineProjectsLocationsWorkflowTemplatesRequest>;
 
 export interface InstantiateInlineProjectsRegionsWorkflowTemplatesRequest {
   /** Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.instantiateinline, the resource name of the location has the following format: projects/{project_id}/locations/{location} */
@@ -6053,22 +4899,13 @@ export interface InstantiateInlineProjectsRegionsWorkflowTemplatesRequest {
   /** Request body */
   body?: WorkflowTemplate;
 }
-export const InstantiateInlineProjectsRegionsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WorkflowTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workflowTemplates:instantiateInline",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "InstantiateInlineProjectsRegionsWorkflowTemplatesRequest",
-  }) as any as S.Schema<InstantiateInlineProjectsRegionsWorkflowTemplatesRequest>;
+export const InstantiateInlineProjectsRegionsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(WorkflowTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/workflowTemplates:instantiateInline","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "InstantiateInlineProjectsRegionsWorkflowTemplatesRequest" }) as any as S.Schema<InstantiateInlineProjectsRegionsWorkflowTemplatesRequest>;
 
 /** A request to instantiate a workflow template. */
 export interface InstantiateWorkflowTemplateRequest {
@@ -6080,14 +4917,12 @@ export interface InstantiateWorkflowTemplateRequest {
   parameters?: StringMap;
 }
 export const InstantiateWorkflowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    requestId: S.optional(S.String),
-    parameters: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "InstantiateWorkflowTemplateRequest",
-}) as any as S.Schema<InstantiateWorkflowTemplateRequest>;
+S.Struct({
+  "version": S.optional(S.Number),
+  "requestId": S.optional(S.String),
+  "parameters": S.optional(StringMap),
+}),
+).annotate({ identifier: "InstantiateWorkflowTemplateRequest" }) as any as S.Schema<InstantiateWorkflowTemplateRequest>;
 
 export interface InstantiateProjectsLocationsWorkflowTemplatesRequest {
   /** Required. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates.instantiate, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} */
@@ -6095,21 +4930,12 @@ export interface InstantiateProjectsLocationsWorkflowTemplatesRequest {
   /** Request body */
   body?: InstantiateWorkflowTemplateRequest;
 }
-export const InstantiateProjectsLocationsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(InstantiateWorkflowTemplateRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:instantiate",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "InstantiateProjectsLocationsWorkflowTemplatesRequest",
-  }) as any as S.Schema<InstantiateProjectsLocationsWorkflowTemplatesRequest>;
+export const InstantiateProjectsLocationsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(InstantiateWorkflowTemplateRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:instantiate","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "InstantiateProjectsLocationsWorkflowTemplatesRequest" }) as any as S.Schema<InstantiateProjectsLocationsWorkflowTemplatesRequest>;
 
 export interface InstantiateProjectsRegionsWorkflowTemplatesRequest {
   /** Required. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates.instantiate, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} */
@@ -6117,21 +4943,12 @@ export interface InstantiateProjectsRegionsWorkflowTemplatesRequest {
   /** Request body */
   body?: InstantiateWorkflowTemplateRequest;
 }
-export const InstantiateProjectsRegionsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(InstantiateWorkflowTemplateRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:instantiate",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "InstantiateProjectsRegionsWorkflowTemplatesRequest",
-  }) as any as S.Schema<InstantiateProjectsRegionsWorkflowTemplatesRequest>;
+export const InstantiateProjectsRegionsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(InstantiateWorkflowTemplateRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:instantiate","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "InstantiateProjectsRegionsWorkflowTemplatesRequest" }) as any as S.Schema<InstantiateProjectsRegionsWorkflowTemplatesRequest>;
 
 export interface ListProjectsLocationsAutoscalingPoliciesRequest {
   /** Required. The "resource name" of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.list, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.list, the resource name of the location has the following format: projects/{project_id}/locations/{location} */
@@ -6141,27 +4958,16 @@ export interface ListProjectsLocationsAutoscalingPoliciesRequest {
   /** Optional. The page token, returned by a previous call, to request the next page of results. */
   pageToken?: string;
 }
-export const ListProjectsLocationsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/autoscalingPolicies",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<ListProjectsLocationsAutoscalingPoliciesRequest>;
+export const ListProjectsLocationsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/autoscalingPolicies","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsAutoscalingPoliciesRequest" }) as any as S.Schema<ListProjectsLocationsAutoscalingPoliciesRequest>;
 
 export type AutoscalingPolicyList = ReadonlyArray<AutoscalingPolicy>;
-export const AutoscalingPolicyList = /*@__PURE__*/ S.Array(
-  AutoscalingPolicy,
-) as any as S.Schema<AutoscalingPolicyList>;
+export const AutoscalingPolicyList = /*@__PURE__*/ S.Array(AutoscalingPolicy) as any as S.Schema<AutoscalingPolicyList>;
 
 /** A response to a request to list autoscaling policies in a project. */
 export interface ListAutoscalingPoliciesResponse {
@@ -6171,13 +4977,11 @@ export interface ListAutoscalingPoliciesResponse {
   nextPageToken?: string;
 }
 export const ListAutoscalingPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policies: S.optional(AutoscalingPolicyList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAutoscalingPoliciesResponse",
-}) as any as S.Schema<ListAutoscalingPoliciesResponse>;
+S.Struct({
+  "policies": S.optional(AutoscalingPolicyList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAutoscalingPoliciesResponse" }) as any as S.Schema<ListAutoscalingPoliciesResponse>;
 
 export interface ListProjectsLocationsBatchesRequest {
   /** Optional. Field(s) on which to sort the list of batches.Currently the only supported sort orders are unspecified (empty) and create_time desc to sort by most recently created batches first.See https://google.aip.dev/132#ordering for more details. */
@@ -6192,27 +4996,17 @@ export interface ListProjectsLocationsBatchesRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsBatchesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/batches",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsBatchesRequest",
-}) as any as S.Schema<ListProjectsLocationsBatchesRequest>;
+S.Struct({
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/batches","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBatchesRequest" }) as any as S.Schema<ListProjectsLocationsBatchesRequest>;
 
 export type BatchList = ReadonlyArray<Batch>;
-export const BatchList = /*@__PURE__*/ S.Array(
-  Batch,
-) as any as S.Schema<BatchList>;
+export const BatchList = /*@__PURE__*/ S.Array(Batch) as any as S.Schema<BatchList>;
 
 /** A list of batch workloads. */
 export interface ListBatchesResponse {
@@ -6224,14 +5018,12 @@ export interface ListBatchesResponse {
   unreachable?: StringList;
 }
 export const ListBatchesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batches: S.optional(BatchList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListBatchesResponse",
-}) as any as S.Schema<ListBatchesResponse>;
+S.Struct({
+  "batches": S.optional(BatchList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListBatchesResponse" }) as any as S.Schema<ListBatchesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -6245,29 +5037,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -6279,14 +5060,12 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsSessionsRequest {
   /** Required. The parent, which owns this collection of sessions. */
@@ -6298,28 +5077,17 @@ export interface ListProjectsLocationsSessionsRequest {
   /** Optional. A filter for the sessions to return in the response.A filter is a logical expression constraining the values of various fields in each session resource. Filters are case sensitive, and may contain multiple clauses combined with logical operators (AND, OR). Supported fields are session_id, session_uuid, state, create_time, and labels.Example: state = ACTIVE and create_time < "2023-01-01T00:00:00Z" is a filter for sessions in an ACTIVE state that were created before 2023-01-01. state = ACTIVE and labels.environment=production is a filter for sessions in an ACTIVE state that have a production environment label.See https://google.aip.dev/assets/misc/ebnf-filtering.txt for a detailed description of the filter syntax and a list of supported comparators. */
   filter?: string;
 }
-export const ListProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/sessions",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsSessionsRequest",
-}) as any as S.Schema<ListProjectsLocationsSessionsRequest>;
+export const ListProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/sessions","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsSessionsRequest" }) as any as S.Schema<ListProjectsLocationsSessionsRequest>;
 
 export type SessionList = ReadonlyArray<Session>;
-export const SessionList = /*@__PURE__*/ S.Array(
-  Session,
-) as any as S.Schema<SessionList>;
+export const SessionList = /*@__PURE__*/ S.Array(Session) as any as S.Schema<SessionList>;
 
 /** A list of interactive sessions. */
 export interface ListSessionsResponse {
@@ -6329,13 +5097,11 @@ export interface ListSessionsResponse {
   sessions?: SessionList;
 }
 export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    sessions: S.optional(SessionList),
-  }),
-).annotate({
-  identifier: "ListSessionsResponse",
-}) as any as S.Schema<ListSessionsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "sessions": S.optional(SessionList),
+}),
+).annotate({ identifier: "ListSessionsResponse" }) as any as S.Schema<ListSessionsResponse>;
 
 export interface ListProjectsLocationsSessionTemplatesRequest {
   /** Required. The parent that owns this collection of session templates. */
@@ -6347,28 +5113,17 @@ export interface ListProjectsLocationsSessionTemplatesRequest {
   /** Optional. The maximum number of sessions to return in each response. The service may return fewer than this value. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSessionTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/sessionTemplates",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsSessionTemplatesRequest",
-  }) as any as S.Schema<ListProjectsLocationsSessionTemplatesRequest>;
+export const ListProjectsLocationsSessionTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/sessionTemplates","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsSessionTemplatesRequest" }) as any as S.Schema<ListProjectsLocationsSessionTemplatesRequest>;
 
 export type SessionTemplateList = ReadonlyArray<SessionTemplate>;
-export const SessionTemplateList = /*@__PURE__*/ S.Array(
-  SessionTemplate,
-) as any as S.Schema<SessionTemplateList>;
+export const SessionTemplateList = /*@__PURE__*/ S.Array(SessionTemplate) as any as S.Schema<SessionTemplateList>;
 
 /** A list of session templates. */
 export interface ListSessionTemplatesResponse {
@@ -6378,13 +5133,11 @@ export interface ListSessionTemplatesResponse {
   sessionTemplates?: SessionTemplateList;
 }
 export const ListSessionTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    sessionTemplates: S.optional(SessionTemplateList),
-  }),
-).annotate({
-  identifier: "ListSessionTemplatesResponse",
-}) as any as S.Schema<ListSessionTemplatesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "sessionTemplates": S.optional(SessionTemplateList),
+}),
+).annotate({ identifier: "ListSessionTemplatesResponse" }) as any as S.Schema<ListSessionTemplatesResponse>;
 
 export interface ListProjectsLocationsWorkflowTemplatesRequest {
   /** Optional. The maximum number of results to return in each response. */
@@ -6394,27 +5147,16 @@ export interface ListProjectsLocationsWorkflowTemplatesRequest {
   /** Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,list, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.list, the resource name of the location has the following format: projects/{project_id}/locations/{location} */
   parent: string;
 }
-export const ListProjectsLocationsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workflowTemplates",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsWorkflowTemplatesRequest",
-  }) as any as S.Schema<ListProjectsLocationsWorkflowTemplatesRequest>;
+export const ListProjectsLocationsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workflowTemplates","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsWorkflowTemplatesRequest" }) as any as S.Schema<ListProjectsLocationsWorkflowTemplatesRequest>;
 
 export type WorkflowTemplateList = ReadonlyArray<WorkflowTemplate>;
-export const WorkflowTemplateList = /*@__PURE__*/ S.Array(
-  WorkflowTemplate,
-) as any as S.Schema<WorkflowTemplateList>;
+export const WorkflowTemplateList = /*@__PURE__*/ S.Array(WorkflowTemplate) as any as S.Schema<WorkflowTemplateList>;
 
 /** A response to a request to list workflow templates in a project. */
 export interface ListWorkflowTemplatesResponse {
@@ -6426,14 +5168,12 @@ export interface ListWorkflowTemplatesResponse {
   unreachable?: StringList;
 }
 export const ListWorkflowTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templates: S.optional(WorkflowTemplateList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListWorkflowTemplatesResponse",
-}) as any as S.Schema<ListWorkflowTemplatesResponse>;
+S.Struct({
+  "templates": S.optional(WorkflowTemplateList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListWorkflowTemplatesResponse" }) as any as S.Schema<ListWorkflowTemplatesResponse>;
 
 export interface ListProjectsRegionsAutoscalingPoliciesRequest {
   /** Required. The "resource name" of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.list, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.list, the resource name of the location has the following format: projects/{project_id}/locations/{location} */
@@ -6443,22 +5183,13 @@ export interface ListProjectsRegionsAutoscalingPoliciesRequest {
   /** Optional. The maximum number of results to return in each response. Must be less than or equal to 1000. Defaults to 100. */
   pageSize?: number;
 }
-export const ListProjectsRegionsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/autoscalingPolicies",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsRegionsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<ListProjectsRegionsAutoscalingPoliciesRequest>;
+export const ListProjectsRegionsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/autoscalingPolicies","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsRegionsAutoscalingPoliciesRequest" }) as any as S.Schema<ListProjectsRegionsAutoscalingPoliciesRequest>;
 
 export interface ListProjectsRegionsClustersRequest {
   /** Optional. A filter constraining the clusters to list. Filters are case-sensitive and have the following syntax:field = value AND field = value ...where field is one of status.state, clusterName, or labels.[KEY], and [KEY] is a label key. value can be "*" to match all values. status.state can be one of the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR, DELETING, UPDATING, STOPPING, or STOPPED. ACTIVE contains the CREATING, UPDATING, and RUNNING states. INACTIVE contains the DELETING, ERROR, STOPPING, and STOPPED states. clusterName is the name of the cluster provided at creation time. Only the logical AND operator is supported; space-separated items are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND clusterName = mycluster AND labels.env = staging AND labels.starred = * */
@@ -6473,27 +5204,17 @@ export interface ListProjectsRegionsClustersRequest {
   projectId: string;
 }
 export const ListProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    region: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    projectId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/projects/{projectId}/regions/{region}/clusters",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsRegionsClustersRequest",
-}) as any as S.Schema<ListProjectsRegionsClustersRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "region": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/projects/{projectId}/regions/{region}/clusters","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsRegionsClustersRequest" }) as any as S.Schema<ListProjectsRegionsClustersRequest>;
 
 export type ClusterList = ReadonlyArray<Cluster>;
-export const ClusterList = /*@__PURE__*/ S.Array(
-  Cluster,
-) as any as S.Schema<ClusterList>;
+export const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
 
 /** The list of all clusters in a project. */
 export interface ListClustersResponse {
@@ -6503,21 +5224,14 @@ export interface ListClustersResponse {
   nextPageToken?: string;
 }
 export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusters: S.optional(ClusterList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListClustersResponse",
-}) as any as S.Schema<ListClustersResponse>;
+S.Struct({
+  "clusters": S.optional(ClusterList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListClustersResponse" }) as any as S.Schema<ListClustersResponse>;
 
-export type ListProjectsRegionsJobsJobStateMatcherEnum =
-  | "ALL"
-  | "ACTIVE"
-  | "NON_ACTIVE"
-  | (string & {});
-export const ListProjectsRegionsJobsJobStateMatcherEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsRegionsJobsJobStateMatcherEnum = "ALL" | "ACTIVE" | "NON_ACTIVE";
+export const ListProjectsRegionsJobsJobStateMatcherEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsRegionsJobsRequest {
   /** Required. The ID of the Google Cloud Platform project that the job belongs to. */
@@ -6533,29 +5247,19 @@ export interface ListProjectsRegionsJobsRequest {
   /** Optional. If set, the returned jobs list includes only jobs that were submitted to the named cluster. */
   clusterName?: string;
   /** Optional. Specifies enumerated categories of jobs to list. (default = match ALL jobs).If filter is provided, jobStateMatcher will be ignored. */
-  jobStateMatcher?: ListProjectsRegionsJobsJobStateMatcherEnum;
+  jobStateMatcher?: ListProjectsRegionsJobsJobStateMatcherEnum | (string & {});
 }
 export const ListProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    region: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    clusterName: S.optional(S.String.pipe(T.Query())),
-    jobStateMatcher: S.optional(
-      ListProjectsRegionsJobsJobStateMatcherEnum.pipe(T.Query()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/projects/{projectId}/regions/{region}/jobs",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsRegionsJobsRequest",
-}) as any as S.Schema<ListProjectsRegionsJobsRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "region": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "clusterName": S.optional(S.String.pipe(T.Query())),
+  "jobStateMatcher": S.optional(ListProjectsRegionsJobsJobStateMatcherEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/projects/{projectId}/regions/{region}/jobs","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsRegionsJobsRequest" }) as any as S.Schema<ListProjectsRegionsJobsRequest>;
 
 export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
@@ -6570,14 +5274,12 @@ export interface ListJobsResponse {
   unreachable?: StringList;
 }
 export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobs: S.optional(JobList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListJobsResponse",
-}) as any as S.Schema<ListJobsResponse>;
+S.Struct({
+  "jobs": S.optional(JobList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListJobsResponse" }) as any as S.Schema<ListJobsResponse>;
 
 export interface ListProjectsRegionsOperationsRequest {
   /** The standard list page size. */
@@ -6591,24 +5293,15 @@ export interface ListProjectsRegionsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsRegionsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsRegionsOperationsRequest",
-}) as any as S.Schema<ListProjectsRegionsOperationsRequest>;
+export const ListProjectsRegionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsRegionsOperationsRequest" }) as any as S.Schema<ListProjectsRegionsOperationsRequest>;
 
 export interface ListProjectsRegionsWorkflowTemplatesRequest {
   /** Optional. The page token, returned by a previous call, to request the next page of results. */
@@ -6618,22 +5311,13 @@ export interface ListProjectsRegionsWorkflowTemplatesRequest {
   /** Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,list, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.list, the resource name of the location has the following format: projects/{project_id}/locations/{location} */
   parent: string;
 }
-export const ListProjectsRegionsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workflowTemplates",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsRegionsWorkflowTemplatesRequest",
-  }) as any as S.Schema<ListProjectsRegionsWorkflowTemplatesRequest>;
+export const ListProjectsRegionsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workflowTemplates","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsRegionsWorkflowTemplatesRequest" }) as any as S.Schema<ListProjectsRegionsWorkflowTemplatesRequest>;
 
 export interface PatchProjectsLocationsSessionTemplatesRequest {
   /** Required. Identifier. The resource name of the session template. */
@@ -6641,21 +5325,12 @@ export interface PatchProjectsLocationsSessionTemplatesRequest {
   /** Request body */
   body?: SessionTemplate;
 }
-export const PatchProjectsLocationsSessionTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SessionTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsSessionTemplatesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsSessionTemplatesRequest>;
+export const PatchProjectsLocationsSessionTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SessionTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsSessionTemplatesRequest" }) as any as S.Schema<PatchProjectsLocationsSessionTemplatesRequest>;
 
 export interface PatchProjectsRegionsClustersRequest {
   /** Required. The region in which to handle the request. */
@@ -6674,24 +5349,16 @@ export interface PatchProjectsRegionsClustersRequest {
   body?: Cluster;
 }
 export const PatchProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    projectId: S.String.pipe(T.Label()),
-    gracefulDecommissionTimeout: S.optional(S.String.pipe(T.Query())),
-    requestId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Cluster.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsRegionsClustersRequest",
-}) as any as S.Schema<PatchProjectsRegionsClustersRequest>;
+S.Struct({
+  "region": S.String.pipe(T.Label()),
+  "clusterName": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.String.pipe(T.Label()),
+  "gracefulDecommissionTimeout": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Cluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/projects/{projectId}/regions/{region}/clusters/{clusterName}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsRegionsClustersRequest" }) as any as S.Schema<PatchProjectsRegionsClustersRequest>;
 
 export interface PatchProjectsRegionsJobsRequest {
   /** Required. Specifies the path, relative to Job, of the field to update. For example, to update the labels of a Job the update_mask parameter would be specified as labels, and the PATCH request body would specify the new value. *Note:* Currently, labels is the only field that can be updated. */
@@ -6706,27 +5373,16 @@ export interface PatchProjectsRegionsJobsRequest {
   body?: Job;
 }
 export const PatchProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    projectId: S.String.pipe(T.Label()),
-    jobId: S.String.pipe(T.Label()),
-    region: S.String.pipe(T.Label()),
-    body: S.optional(Job.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsRegionsJobsRequest",
-}) as any as S.Schema<PatchProjectsRegionsJobsRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.String.pipe(T.Label()),
+  "jobId": S.String.pipe(T.Label()),
+  "region": S.String.pipe(T.Label()),
+  "body": S.optional(Job.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/projects/{projectId}/regions/{region}/jobs/{jobId}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsRegionsJobsRequest" }) as any as S.Schema<PatchProjectsRegionsJobsRequest>;
 
-export type NodePoolRepairActionEnum =
-  | "REPAIR_ACTION_UNSPECIFIED"
-  | "DELETE"
-  | (string & {});
+export type NodePoolRepairActionEnum = "REPAIR_ACTION_UNSPECIFIED" | "DELETE";
 export const NodePoolRepairActionEnum = /*@__PURE__*/ S.String;
 
 /** indicating a list of workers of same type */
@@ -6734,41 +5390,34 @@ export interface NodePool {
   /** Name of instances to be repaired. These instances must belong to specified node pool. */
   instanceNames?: StringList;
   /** Required. Repair action to take on specified resources of the node pool. */
-  repairAction?: NodePoolRepairActionEnum;
+  repairAction?: NodePoolRepairActionEnum | (string & {});
   /** Required. A unique id of the node pool. Primary and Secondary workers can be specified using special reserved ids PRIMARY_WORKER_POOL and SECONDARY_WORKER_POOL respectively. Aux node pools can be referenced using corresponding pool id. */
   id?: string;
 }
 export const NodePool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceNames: S.optional(StringList),
-    repairAction: S.optional(NodePoolRepairActionEnum),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "instanceNames": S.optional(StringList),
+  "repairAction": S.optional(NodePoolRepairActionEnum),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "NodePool" }) as any as S.Schema<NodePool>;
 
 export type NodePoolList = ReadonlyArray<NodePool>;
-export const NodePoolList = /*@__PURE__*/ S.Array(
-  NodePool,
-) as any as S.Schema<NodePoolList>;
+export const NodePoolList = /*@__PURE__*/ S.Array(NodePool) as any as S.Schema<NodePoolList>;
 
-export type ClusterToRepairClusterRepairActionEnum =
-  | "CLUSTER_REPAIR_ACTION_UNSPECIFIED"
-  | "REPAIR_ERROR_DUE_TO_UPDATE_CLUSTER"
-  | (string & {});
+export type ClusterToRepairClusterRepairActionEnum = "CLUSTER_REPAIR_ACTION_UNSPECIFIED" | "REPAIR_ERROR_DUE_TO_UPDATE_CLUSTER";
 export const ClusterToRepairClusterRepairActionEnum = /*@__PURE__*/ S.String;
 
 /** Cluster to be repaired */
 export interface ClusterToRepair {
   /** Required. Repair action to take on the cluster resource. */
-  clusterRepairAction?: ClusterToRepairClusterRepairActionEnum;
+  clusterRepairAction?: ClusterToRepairClusterRepairActionEnum | (string & {});
 }
 export const ClusterToRepair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterRepairAction: S.optional(ClusterToRepairClusterRepairActionEnum),
-  }),
-).annotate({
-  identifier: "ClusterToRepair",
-}) as any as S.Schema<ClusterToRepair>;
+S.Struct({
+  "clusterRepairAction": S.optional(ClusterToRepairClusterRepairActionEnum),
+}),
+).annotate({ identifier: "ClusterToRepair" }) as any as S.Schema<ClusterToRepair>;
 
 /** A request to repair a cluster. */
 export interface RepairClusterRequest {
@@ -6788,18 +5437,16 @@ export interface RepairClusterRequest {
   dataprocSuperUser?: boolean;
 }
 export const RepairClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parentOperationId: S.optional(S.String),
-    requestId: S.optional(S.String),
-    nodePools: S.optional(NodePoolList),
-    gracefulDecommissionTimeout: S.optional(S.String),
-    cluster: S.optional(ClusterToRepair),
-    clusterUuid: S.optional(S.String),
-    dataprocSuperUser: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RepairClusterRequest",
-}) as any as S.Schema<RepairClusterRequest>;
+S.Struct({
+  "parentOperationId": S.optional(S.String),
+  "requestId": S.optional(S.String),
+  "nodePools": S.optional(NodePoolList),
+  "gracefulDecommissionTimeout": S.optional(S.String),
+  "cluster": S.optional(ClusterToRepair),
+  "clusterUuid": S.optional(S.String),
+  "dataprocSuperUser": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "RepairClusterRequest" }) as any as S.Schema<RepairClusterRequest>;
 
 export interface RepairProjectsRegionsClustersRequest {
   /** Required. The region in which to handle the request. */
@@ -6811,47 +5458,33 @@ export interface RepairProjectsRegionsClustersRequest {
   /** Request body */
   body?: RepairClusterRequest;
 }
-export const RepairProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      region: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      projectId: S.String.pipe(T.Label()),
-      body: S.optional(RepairClusterRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:repair",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "RepairProjectsRegionsClustersRequest",
-}) as any as S.Schema<RepairProjectsRegionsClustersRequest>;
+export const RepairProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "region": S.String.pipe(T.Label()),
+  "clusterName": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(RepairClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:repair","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "RepairProjectsRegionsClustersRequest" }) as any as S.Schema<RepairProjectsRegionsClustersRequest>;
 
-export type RepairNodeGroupRequestRepairActionEnum =
-  | "REPAIR_ACTION_UNSPECIFIED"
-  | "REPLACE"
-  | (string & {});
+export type RepairNodeGroupRequestRepairActionEnum = "REPAIR_ACTION_UNSPECIFIED" | "REPLACE";
 export const RepairNodeGroupRequestRepairActionEnum = /*@__PURE__*/ S.String;
 
 export interface RepairNodeGroupRequest {
   /** Required. Name of instances to be repaired. These instances must belong to specified node pool. */
   instanceNames?: StringList;
   /** Required. Repair action to take on specified resources of the node pool. */
-  repairAction?: RepairNodeGroupRequestRepairActionEnum;
+  repairAction?: RepairNodeGroupRequestRepairActionEnum | (string & {});
   /** Optional. A unique ID used to identify the request. If the server receives two RepairNodeGroupRequest with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
 }
 export const RepairNodeGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceNames: S.optional(StringList),
-    repairAction: S.optional(RepairNodeGroupRequestRepairActionEnum),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RepairNodeGroupRequest",
-}) as any as S.Schema<RepairNodeGroupRequest>;
+S.Struct({
+  "instanceNames": S.optional(StringList),
+  "repairAction": S.optional(RepairNodeGroupRequestRepairActionEnum),
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "RepairNodeGroupRequest" }) as any as S.Schema<RepairNodeGroupRequest>;
 
 export interface RepairProjectsRegionsClustersNodeGroupsRequest {
   /** Required. The name of the node group to resize. Format: projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup} */
@@ -6859,21 +5492,12 @@ export interface RepairProjectsRegionsClustersNodeGroupsRequest {
   /** Request body */
   body?: RepairNodeGroupRequest;
 }
-export const RepairProjectsRegionsClustersNodeGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RepairNodeGroupRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:repair",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RepairProjectsRegionsClustersNodeGroupsRequest",
-  }) as any as S.Schema<RepairProjectsRegionsClustersNodeGroupsRequest>;
+export const RepairProjectsRegionsClustersNodeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RepairNodeGroupRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:repair","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "RepairProjectsRegionsClustersNodeGroupsRequest" }) as any as S.Schema<RepairProjectsRegionsClustersNodeGroupsRequest>;
 
 /** A request to resize a node group. */
 export interface ResizeNodeGroupRequest {
@@ -6887,15 +5511,13 @@ export interface ResizeNodeGroupRequest {
   size?: number;
 }
 export const ResizeNodeGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-    gracefulDecommissionTimeout: S.optional(S.String),
-    parentOperationId: S.optional(S.String),
-    size: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ResizeNodeGroupRequest",
-}) as any as S.Schema<ResizeNodeGroupRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+  "gracefulDecommissionTimeout": S.optional(S.String),
+  "parentOperationId": S.optional(S.String),
+  "size": S.optional(S.Number),
+}),
+).annotate({ identifier: "ResizeNodeGroupRequest" }) as any as S.Schema<ResizeNodeGroupRequest>;
 
 export interface ResizeProjectsRegionsClustersNodeGroupsRequest {
   /** Required. The name of the node group to resize. Format: projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup} */
@@ -6903,33 +5525,19 @@ export interface ResizeProjectsRegionsClustersNodeGroupsRequest {
   /** Request body */
   body?: ResizeNodeGroupRequest;
 }
-export const ResizeProjectsRegionsClustersNodeGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ResizeNodeGroupRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:resize",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ResizeProjectsRegionsClustersNodeGroupsRequest",
-  }) as any as S.Schema<ResizeProjectsRegionsClustersNodeGroupsRequest>;
+export const ResizeProjectsRegionsClustersNodeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ResizeNodeGroupRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:resize","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "ResizeProjectsRegionsClustersNodeGroupsRequest" }) as any as S.Schema<ResizeProjectsRegionsClustersNodeGroupsRequest>;
 
-export type SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum =
-    | "EXECUTOR_STATUS_UNSPECIFIED"
-    | "EXECUTOR_STATUS_ACTIVE"
-    | "EXECUTOR_STATUS_DEAD"
-    | (string & {});
-export const SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum =
-  /*@__PURE__*/ S.String;
+export type SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum = "EXECUTOR_STATUS_UNSPECIFIED" | "EXECUTOR_STATUS_ACTIVE" | "EXECUTOR_STATUS_DEAD";
+export const SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest {
   /** Optional. Filter to select whether active/ dead or all executors should be selected. */
-  executorStatus?: SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum;
+  executorStatus?: SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum | (string & {});
   /** Optional. Maximum number of executors to return in each response. The service may return fewer than this. The default page size is 10; the maximum page size is 100. */
   pageSize?: number;
   /** Required. Parent (Batch) resource reference. */
@@ -6939,29 +5547,15 @@ export interface SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest
   /** Optional. A page token received from a previous AccessSparkApplicationExecutorsList call. Provide this token to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      executorStatus: S.optional(
-        SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchExecutors",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "executorStatus": S.optional(SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchExecutors","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest>;
 
 export interface MemoryMetrics {
   usedOnHeapStorageMemory?: string;
@@ -6970,12 +5564,12 @@ export interface MemoryMetrics {
   usedOffHeapStorageMemory?: string;
 }
 export const MemoryMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    usedOnHeapStorageMemory: S.optional(S.String),
-    totalOffHeapStorageMemory: S.optional(S.String),
-    totalOnHeapStorageMemory: S.optional(S.String),
-    usedOffHeapStorageMemory: S.optional(S.String),
-  }),
+S.Struct({
+  "usedOnHeapStorageMemory": S.optional(S.String),
+  "totalOffHeapStorageMemory": S.optional(S.String),
+  "totalOnHeapStorageMemory": S.optional(S.String),
+  "usedOffHeapStorageMemory": S.optional(S.String),
+}),
 ).annotate({ identifier: "MemoryMetrics" }) as any as S.Schema<MemoryMetrics>;
 
 export interface ResourceInformation {
@@ -6983,21 +5577,14 @@ export interface ResourceInformation {
   addresses?: StringList;
 }
 export const ResourceInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    addresses: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ResourceInformation",
-}) as any as S.Schema<ResourceInformation>;
+S.Struct({
+  "name": S.optional(S.String),
+  "addresses": S.optional(StringList),
+}),
+).annotate({ identifier: "ResourceInformation" }) as any as S.Schema<ResourceInformation>;
 
-export type ResourceInformationMap = {
-  [key: string]: ResourceInformation | undefined;
-};
-export const ResourceInformationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ResourceInformation,
-) as any as S.Schema<ResourceInformationMap>;
+export type ResourceInformationMap = { [key: string]: ResourceInformation | undefined };
+export const ResourceInformationMap = /*@__PURE__*/ S.Record(S.String, ResourceInformation) as any as S.Schema<ResourceInformationMap>;
 
 /** Details about executors used by the application. */
 export interface ExecutorSummary {
@@ -7032,45 +5619,41 @@ export interface ExecutorSummary {
   maxTasks?: number;
 }
 export const ExecutorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    totalTasks: S.optional(S.Number),
-    memoryUsed: S.optional(S.String),
-    memoryMetrics: S.optional(MemoryMetrics),
-    completedTasks: S.optional(S.Number),
-    removeTime: S.optional(S.String),
-    executorId: S.optional(S.String),
-    maxMemory: S.optional(S.String),
-    addTime: S.optional(S.String),
-    diskUsed: S.optional(S.String),
-    totalDurationMillis: S.optional(S.String),
-    totalGcTimeMillis: S.optional(S.String),
-    attributes: S.optional(StringMap),
-    resources: S.optional(ResourceInformationMap),
-    totalShuffleRead: S.optional(S.String),
-    removeReason: S.optional(S.String),
-    activeTasks: S.optional(S.Number),
-    totalCores: S.optional(S.Number),
-    failedTasks: S.optional(S.Number),
-    executorLogs: S.optional(StringMap),
-    totalShuffleWrite: S.optional(S.String),
-    excludedInStages: S.optional(StringList),
-    totalInputBytes: S.optional(S.String),
-    isExcluded: S.optional(S.Boolean),
-    isActive: S.optional(S.Boolean),
-    hostPort: S.optional(S.String),
-    rddBlocks: S.optional(S.Number),
-    peakMemoryMetrics: S.optional(ExecutorMetrics),
-    resourceProfileId: S.optional(S.Number),
-    maxTasks: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ExecutorSummary",
-}) as any as S.Schema<ExecutorSummary>;
+S.Struct({
+  "totalTasks": S.optional(S.Number),
+  "memoryUsed": S.optional(S.String),
+  "memoryMetrics": S.optional(MemoryMetrics),
+  "completedTasks": S.optional(S.Number),
+  "removeTime": S.optional(S.String),
+  "executorId": S.optional(S.String),
+  "maxMemory": S.optional(S.String),
+  "addTime": S.optional(S.String),
+  "diskUsed": S.optional(S.String),
+  "totalDurationMillis": S.optional(S.String),
+  "totalGcTimeMillis": S.optional(S.String),
+  "attributes": S.optional(StringMap),
+  "resources": S.optional(ResourceInformationMap),
+  "totalShuffleRead": S.optional(S.String),
+  "removeReason": S.optional(S.String),
+  "activeTasks": S.optional(S.Number),
+  "totalCores": S.optional(S.Number),
+  "failedTasks": S.optional(S.Number),
+  "executorLogs": S.optional(StringMap),
+  "totalShuffleWrite": S.optional(S.String),
+  "excludedInStages": S.optional(StringList),
+  "totalInputBytes": S.optional(S.String),
+  "isExcluded": S.optional(S.Boolean),
+  "isActive": S.optional(S.Boolean),
+  "hostPort": S.optional(S.String),
+  "rddBlocks": S.optional(S.Number),
+  "peakMemoryMetrics": S.optional(ExecutorMetrics),
+  "resourceProfileId": S.optional(S.Number),
+  "maxTasks": S.optional(S.Number),
+}),
+).annotate({ identifier: "ExecutorSummary" }) as any as S.Schema<ExecutorSummary>;
 
 export type ExecutorSummaryList = ReadonlyArray<ExecutorSummary>;
-export const ExecutorSummaryList = /*@__PURE__*/ S.Array(
-  ExecutorSummary,
-) as any as S.Schema<ExecutorSummaryList>;
+export const ExecutorSummaryList = /*@__PURE__*/ S.Array(ExecutorSummary) as any as S.Schema<ExecutorSummaryList>;
 
 /** List of Executors associated with a Spark Application. */
 export interface SearchSparkApplicationExecutorsResponse {
@@ -7079,23 +5662,15 @@ export interface SearchSparkApplicationExecutorsResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSparkApplicationExecutorsListRequest. */
   nextPageToken?: string;
 }
-export const SearchSparkApplicationExecutorsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sparkApplicationExecutors: S.optional(ExecutorSummaryList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SearchSparkApplicationExecutorsResponse",
-}) as any as S.Schema<SearchSparkApplicationExecutorsResponse>;
+export const SearchSparkApplicationExecutorsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkApplicationExecutors": S.optional(ExecutorSummaryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSparkApplicationExecutorsResponse" }) as any as S.Schema<SearchSparkApplicationExecutorsResponse>;
 
-export type SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum =
-    | "EXECUTOR_STATUS_UNSPECIFIED"
-    | "EXECUTOR_STATUS_ACTIVE"
-    | "EXECUTOR_STATUS_DEAD"
-    | (string & {});
-export const SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum =
-  /*@__PURE__*/ S.String;
+export type SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum = "EXECUTOR_STATUS_UNSPECIFIED" | "EXECUTOR_STATUS_ACTIVE" | "EXECUTOR_STATUS_DEAD";
+export const SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. Parent (Session) resource reference. */
@@ -7105,33 +5680,19 @@ export interface SearchExecutorsProjectsLocationsSessionsSparkApplicationsReques
   /** Optional. A page token received from a previous SearchSessionSparkApplicationExecutors call. Provide this token to retrieve the subsequent page. */
   pageToken?: string;
   /** Optional. Filter to select whether active/ dead or all executors should be selected. */
-  executorStatus?: SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum;
+  executorStatus?: SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum | (string & {});
   /** Optional. Maximum number of executors to return in each response. The service may return fewer than this. The default page size is 10; the maximum page size is 100. */
   pageSize?: number;
 }
-export const SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      executorStatus: S.optional(
-        SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchExecutors",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "executorStatus": S.optional(SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchExecutors","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** List of Executors associated with a Spark Application. */
 export interface SearchSessionSparkApplicationExecutorsResponse {
@@ -7140,15 +5701,12 @@ export interface SearchSessionSparkApplicationExecutorsResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationExecutorsRequest. */
   nextPageToken?: string;
 }
-export const SearchSessionSparkApplicationExecutorsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sparkApplicationExecutors: S.optional(ExecutorSummaryList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationExecutorsResponse",
-  }) as any as S.Schema<SearchSessionSparkApplicationExecutorsResponse>;
+export const SearchSessionSparkApplicationExecutorsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkApplicationExecutors": S.optional(ExecutorSummaryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSessionSparkApplicationExecutorsResponse" }) as any as S.Schema<SearchSessionSparkApplicationExecutorsResponse>;
 
 export interface SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -7164,31 +5722,19 @@ export interface SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicat
   /** Required. Stage ID */
   stageId?: string;
 }
-export const SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-      stageAttemptId: S.optional(S.Number.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      stageId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchExecutorStageSummary",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "stageAttemptId": S.optional(S.Number.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "stageId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchExecutorStageSummary","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest>;
 
 export type ExecutorStageSummaryList = ReadonlyArray<ExecutorStageSummary>;
-export const ExecutorStageSummaryList = /*@__PURE__*/ S.Array(
-  ExecutorStageSummary,
-) as any as S.Schema<ExecutorStageSummaryList>;
+export const ExecutorStageSummaryList = /*@__PURE__*/ S.Array(ExecutorStageSummary) as any as S.Schema<ExecutorStageSummaryList>;
 
 /** List of Executors associated with a Spark Application Stage. */
 export interface SearchSparkApplicationExecutorStageSummaryResponse {
@@ -7197,15 +5743,12 @@ export interface SearchSparkApplicationExecutorStageSummaryResponse {
   /** Details about executors used by the application stage. */
   sparkApplicationStageExecutors?: ExecutorStageSummaryList;
 }
-export const SearchSparkApplicationExecutorStageSummaryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      sparkApplicationStageExecutors: S.optional(ExecutorStageSummaryList),
-    }),
-  ).annotate({
-    identifier: "SearchSparkApplicationExecutorStageSummaryResponse",
-  }) as any as S.Schema<SearchSparkApplicationExecutorStageSummaryResponse>;
+export const SearchSparkApplicationExecutorStageSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "sparkApplicationStageExecutors": S.optional(ExecutorStageSummaryList),
+}),
+).annotate({ identifier: "SearchSparkApplicationExecutorStageSummaryResponse" }) as any as S.Schema<SearchSparkApplicationExecutorStageSummaryResponse>;
 
 export interface SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. Stage Attempt ID */
@@ -7221,26 +5764,16 @@ export interface SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplica
   /** Required. Parent (Session) resource reference. */
   parent?: string;
 }
-export const SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageAttemptId: S.optional(S.Number.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      stageId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchExecutorStageSummary",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageAttemptId": S.optional(S.Number.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "stageId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchExecutorStageSummary","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** List of Executors associated with a Spark Application Stage. */
 export interface SearchSessionSparkApplicationExecutorStageSummaryResponse {
@@ -7249,25 +5782,15 @@ export interface SearchSessionSparkApplicationExecutorStageSummaryResponse {
   /** Details about executors used by the application stage. */
   sparkApplicationStageExecutors?: ExecutorStageSummaryList;
 }
-export const SearchSessionSparkApplicationExecutorStageSummaryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      sparkApplicationStageExecutors: S.optional(ExecutorStageSummaryList),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationExecutorStageSummaryResponse",
-  }) as any as S.Schema<SearchSessionSparkApplicationExecutorStageSummaryResponse>;
+export const SearchSessionSparkApplicationExecutorStageSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "sparkApplicationStageExecutors": S.optional(ExecutorStageSummaryList),
+}),
+).annotate({ identifier: "SearchSessionSparkApplicationExecutorStageSummaryResponse" }) as any as S.Schema<SearchSessionSparkApplicationExecutorStageSummaryResponse>;
 
-export type SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum =
-  | "JOB_EXECUTION_STATUS_UNSPECIFIED"
-  | "JOB_EXECUTION_STATUS_RUNNING"
-  | "JOB_EXECUTION_STATUS_SUCCEEDED"
-  | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN"
-  | (string & {});
-export const SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum =
-  /*@__PURE__*/ S.String;
+export type SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum = "JOB_EXECUTION_STATUS_UNSPECIFIED" | "JOB_EXECUTION_STATUS_RUNNING" | "JOB_EXECUTION_STATUS_SUCCEEDED" | "JOB_EXECUTION_STATUS_FAILED" | "JOB_EXECUTION_STATUS_UNKNOWN";
+export const SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SearchJobsProjectsLocationsBatchesSparkApplicationsRequest {
   /** Optional. Maximum number of jobs to return in each response. The service may return fewer than this. The default page size is 10; the maximum page size is 100. */
@@ -7277,37 +5800,22 @@ export interface SearchJobsProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
   name: string;
   /** Optional. List only jobs in the specific state. */
-  jobStatus?: SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum;
+  jobStatus?: SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum | (string & {});
   /** Optional. A page token received from a previous SearchSparkApplicationJobs call. Provide this token to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const SearchJobsProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      jobStatus: S.optional(
-        SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchJobs",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchJobsProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SearchJobsProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SearchJobsProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "jobStatus": S.optional(SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchJobs","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchJobsProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SearchJobsProjectsLocationsBatchesSparkApplicationsRequest>;
 
 export type JobDataList = ReadonlyArray<JobData>;
-export const JobDataList = /*@__PURE__*/ S.Array(
-  JobData,
-) as any as S.Schema<JobDataList>;
+export const JobDataList = /*@__PURE__*/ S.Array(JobData) as any as S.Schema<JobDataList>;
 
 /** A list of Jobs associated with a Spark Application. */
 export interface SearchSparkApplicationJobsResponse {
@@ -7317,23 +5825,14 @@ export interface SearchSparkApplicationJobsResponse {
   nextPageToken?: string;
 }
 export const SearchSparkApplicationJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sparkApplicationJobs: S.optional(JobDataList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchSparkApplicationJobsResponse",
-}) as any as S.Schema<SearchSparkApplicationJobsResponse>;
+S.Struct({
+  "sparkApplicationJobs": S.optional(JobDataList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSparkApplicationJobsResponse" }) as any as S.Schema<SearchSparkApplicationJobsResponse>;
 
-export type SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum =
-  | "JOB_EXECUTION_STATUS_UNSPECIFIED"
-  | "JOB_EXECUTION_STATUS_RUNNING"
-  | "JOB_EXECUTION_STATUS_SUCCEEDED"
-  | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN"
-  | (string & {});
-export const SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum =
-  /*@__PURE__*/ S.String;
+export type SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum = "JOB_EXECUTION_STATUS_UNSPECIFIED" | "JOB_EXECUTION_STATUS_RUNNING" | "JOB_EXECUTION_STATUS_SUCCEEDED" | "JOB_EXECUTION_STATUS_FAILED" | "JOB_EXECUTION_STATUS_UNKNOWN";
+export const SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SearchJobsProjectsLocationsSessionsSparkApplicationsRequest {
   /** Optional. Maximum number of jobs to return in each response. The service may return fewer than this. The default page size is 10; the maximum page size is 100. */
@@ -7341,7 +5840,7 @@ export interface SearchJobsProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
   name: string;
   /** Optional. List only jobs in the specific state. */
-  jobStatus?: SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum;
+  jobStatus?: SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum | (string & {});
   /** Optional. A page token received from a previous SearchSessionSparkApplicationJobs call. Provide this token to retrieve the subsequent page. */
   pageToken?: string;
   /** Optional. List of Job IDs to filter by if provided. */
@@ -7349,29 +5848,16 @@ export interface SearchJobsProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. Parent (Session) resource reference. */
   parent?: string;
 }
-export const SearchJobsProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      jobStatus: S.optional(
-        SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      jobIds: S.optional(StringList.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchJobs",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchJobsProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SearchJobsProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SearchJobsProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "jobStatus": S.optional(SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "jobIds": S.optional(StringList.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchJobs","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchJobsProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SearchJobsProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** A list of Jobs associated with a Spark Application. */
 export interface SearchSessionSparkApplicationJobsResponse {
@@ -7380,23 +5866,15 @@ export interface SearchSessionSparkApplicationJobsResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationJobsRequest. */
   nextPageToken?: string;
 }
-export const SearchSessionSparkApplicationJobsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sparkApplicationJobs: S.optional(JobDataList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationJobsResponse",
-  }) as any as S.Schema<SearchSessionSparkApplicationJobsResponse>;
+export const SearchSessionSparkApplicationJobsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkApplicationJobs": S.optional(JobDataList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSessionSparkApplicationJobsResponse" }) as any as S.Schema<SearchSessionSparkApplicationJobsResponse>;
 
-export type SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum =
-    | "APPLICATION_STATUS_UNSPECIFIED"
-    | "APPLICATION_STATUS_RUNNING"
-    | "APPLICATION_STATUS_COMPLETED"
-    | (string & {});
-export const SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum =
-  /*@__PURE__*/ S.String;
+export type SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum = "APPLICATION_STATUS_UNSPECIFIED" | "APPLICATION_STATUS_RUNNING" | "APPLICATION_STATUS_COMPLETED";
+export const SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SearchProjectsLocationsBatchesSparkApplicationsRequest {
   /** Optional. Latest start timestamp to list. */
@@ -7404,7 +5882,7 @@ export interface SearchProjectsLocationsBatchesSparkApplicationsRequest {
   /** Optional. Maximum number of applications to return in each response. The service may return fewer than this. The default page size is 10; the maximum page size is 100. */
   pageSize?: number;
   /** Optional. Search only applications in the chosen state. */
-  applicationStatus?: SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum;
+  applicationStatus?: SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum | (string & {});
   /** Optional. Earliest start timestamp to list. */
   minTime?: string;
   /** Optional. Earliest end timestamp to list. */
@@ -7416,31 +5894,18 @@ export interface SearchProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID" */
   parent: string;
 }
-export const SearchProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxTime: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      applicationStatus: S.optional(
-        SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      minTime: S.optional(S.String.pipe(T.Query())),
-      minEndTime: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      maxEndTime: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/sparkApplications:search",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SearchProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SearchProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "maxTime": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "applicationStatus": S.optional(SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum.pipe(T.Query())),
+  "minTime": S.optional(S.String.pipe(T.Query())),
+  "minEndTime": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxEndTime": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/sparkApplications:search","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SearchProjectsLocationsBatchesSparkApplicationsRequest>;
 
 /** A summary of Spark Application */
 export interface SparkApplication {
@@ -7450,18 +5915,14 @@ export interface SparkApplication {
   application?: ApplicationInfo;
 }
 export const SparkApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    application: S.optional(ApplicationInfo),
-  }),
-).annotate({
-  identifier: "SparkApplication",
-}) as any as S.Schema<SparkApplication>;
+S.Struct({
+  "name": S.optional(S.String),
+  "application": S.optional(ApplicationInfo),
+}),
+).annotate({ identifier: "SparkApplication" }) as any as S.Schema<SparkApplication>;
 
 export type SparkApplicationList = ReadonlyArray<SparkApplication>;
-export const SparkApplicationList = /*@__PURE__*/ S.Array(
-  SparkApplication,
-) as any as S.Schema<SparkApplicationList>;
+export const SparkApplicationList = /*@__PURE__*/ S.Array(SparkApplication) as any as S.Schema<SparkApplicationList>;
 
 /** A list of summary of Spark Applications */
 export interface SearchSparkApplicationsResponse {
@@ -7471,25 +5932,18 @@ export interface SearchSparkApplicationsResponse {
   nextPageToken?: string;
 }
 export const SearchSparkApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sparkApplications: S.optional(SparkApplicationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchSparkApplicationsResponse",
-}) as any as S.Schema<SearchSparkApplicationsResponse>;
+S.Struct({
+  "sparkApplications": S.optional(SparkApplicationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSparkApplicationsResponse" }) as any as S.Schema<SearchSparkApplicationsResponse>;
 
-export type SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum =
-    | "APPLICATION_STATUS_UNSPECIFIED"
-    | "APPLICATION_STATUS_RUNNING"
-    | "APPLICATION_STATUS_COMPLETED"
-    | (string & {});
-export const SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum =
-  /*@__PURE__*/ S.String;
+export type SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum = "APPLICATION_STATUS_UNSPECIFIED" | "APPLICATION_STATUS_RUNNING" | "APPLICATION_STATUS_COMPLETED";
+export const SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SearchProjectsLocationsSessionsSparkApplicationsRequest {
   /** Optional. Search only applications in the chosen state. */
-  applicationStatus?: SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum;
+  applicationStatus?: SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum | (string & {});
   /** Optional. Earliest start timestamp to list. */
   minTime?: string;
   /** Optional. Latest start timestamp to list. */
@@ -7505,31 +5959,18 @@ export interface SearchProjectsLocationsSessionsSparkApplicationsRequest {
   /** Optional. Latest end timestamp to list. */
   maxEndTime?: string;
 }
-export const SearchProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationStatus: S.optional(
-        SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      minTime: S.optional(S.String.pipe(T.Query())),
-      maxTime: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      minEndTime: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      maxEndTime: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/sparkApplications:search",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SearchProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SearchProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "applicationStatus": S.optional(SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum.pipe(T.Query())),
+  "minTime": S.optional(S.String.pipe(T.Query())),
+  "maxTime": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "minEndTime": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "maxEndTime": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/sparkApplications:search","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SearchProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** A list of summary of Spark Applications */
 export interface SearchSessionSparkApplicationsResponse {
@@ -7538,15 +5979,12 @@ export interface SearchSessionSparkApplicationsResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationsRequest. */
   nextPageToken?: string;
 }
-export const SearchSessionSparkApplicationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sparkApplications: S.optional(SparkApplicationList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SearchSessionSparkApplicationsResponse",
-}) as any as S.Schema<SearchSessionSparkApplicationsResponse>;
+export const SearchSessionSparkApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkApplications": S.optional(SparkApplicationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSessionSparkApplicationsResponse" }) as any as S.Schema<SearchSessionSparkApplicationsResponse>;
 
 export interface SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest {
   /** Optional. Lists/ hides details of Spark plan nodes. True is set to list and false to hide. */
@@ -7562,31 +6000,19 @@ export interface SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsReques
   /** Optional. Enables/ disables physical plan description on demand */
   planDescription?: boolean;
 }
-export const SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      details: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-      planDescription: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchSqlQueries",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "details": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "planDescription": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchSqlQueries","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest>;
 
 export type SqlExecutionUiDataList = ReadonlyArray<SqlExecutionUiData>;
-export const SqlExecutionUiDataList = /*@__PURE__*/ S.Array(
-  SqlExecutionUiData,
-) as any as S.Schema<SqlExecutionUiDataList>;
+export const SqlExecutionUiDataList = /*@__PURE__*/ S.Array(SqlExecutionUiData) as any as S.Schema<SqlExecutionUiDataList>;
 
 /** List of all queries for a Spark Application. */
 export interface SearchSparkApplicationSqlQueriesResponse {
@@ -7595,15 +6021,12 @@ export interface SearchSparkApplicationSqlQueriesResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSparkApplicationSqlQueriesRequest. */
   nextPageToken?: string;
 }
-export const SearchSparkApplicationSqlQueriesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sparkApplicationSqlQueries: S.optional(SqlExecutionUiDataList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SearchSparkApplicationSqlQueriesResponse",
-}) as any as S.Schema<SearchSparkApplicationSqlQueriesResponse>;
+export const SearchSparkApplicationSqlQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkApplicationSqlQueries": S.optional(SqlExecutionUiDataList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSparkApplicationSqlQueriesResponse" }) as any as S.Schema<SearchSparkApplicationSqlQueriesResponse>;
 
 export interface SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. Parent (Session) resource reference. */
@@ -7621,27 +6044,17 @@ export interface SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsReque
   /** Optional. Maximum number of queries to return in each response. The service may return fewer than this. The default page size is 10; the maximum page size is 100. */
   pageSize?: number;
 }
-export const SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String.pipe(T.Query())),
-      planDescription: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      operationIds: S.optional(StringList.pipe(T.Query())),
-      details: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchSqlQueries",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "planDescription": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "operationIds": S.optional(StringList.pipe(T.Query())),
+  "details": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchSqlQueries","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** List of all queries for a Spark Application. */
 export interface SearchSessionSparkApplicationSqlQueriesResponse {
@@ -7650,15 +6063,12 @@ export interface SearchSessionSparkApplicationSqlQueriesResponse {
   /** Output only. SQL Execution Data */
   sparkApplicationSqlQueries?: SqlExecutionUiDataList;
 }
-export const SearchSessionSparkApplicationSqlQueriesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      sparkApplicationSqlQueries: S.optional(SqlExecutionUiDataList),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationSqlQueriesResponse",
-  }) as any as S.Schema<SearchSessionSparkApplicationSqlQueriesResponse>;
+export const SearchSessionSparkApplicationSqlQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "sparkApplicationSqlQueries": S.optional(SqlExecutionUiDataList),
+}),
+).annotate({ identifier: "SearchSessionSparkApplicationSqlQueriesResponse" }) as any as S.Schema<SearchSessionSparkApplicationSqlQueriesResponse>;
 
 export interface SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Stage ID for which attempts are to be fetched */
@@ -7674,31 +6084,19 @@ export interface SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsReq
   /** Optional. A page token received from a previous SearchSparkApplicationStageAttempts call. Provide this token to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageId: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      summaryMetricsMask: S.optional(S.String.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchStageAttempts",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageId": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "summaryMetricsMask": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchStageAttempts","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest>;
 
 export type StageDataList = ReadonlyArray<StageData>;
-export const StageDataList = /*@__PURE__*/ S.Array(
-  StageData,
-) as any as S.Schema<StageDataList>;
+export const StageDataList = /*@__PURE__*/ S.Array(StageData) as any as S.Schema<StageDataList>;
 
 /** A list of Stage Attempts for a Stage of a Spark Application. */
 export interface SearchSparkApplicationStageAttemptsResponse {
@@ -7707,15 +6105,12 @@ export interface SearchSparkApplicationStageAttemptsResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListSparkApplicationStageAttemptsRequest. */
   nextPageToken?: string;
 }
-export const SearchSparkApplicationStageAttemptsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sparkApplicationStageAttempts: S.optional(StageDataList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchSparkApplicationStageAttemptsResponse",
-  }) as any as S.Schema<SearchSparkApplicationStageAttemptsResponse>;
+export const SearchSparkApplicationStageAttemptsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkApplicationStageAttempts": S.optional(StageDataList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSparkApplicationStageAttemptsResponse" }) as any as S.Schema<SearchSparkApplicationStageAttemptsResponse>;
 
 export interface SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. Stage ID for which attempts are to be fetched */
@@ -7731,26 +6126,16 @@ export interface SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRe
   /** Optional. A page token received from a previous SearchSessionSparkApplicationStageAttempts call. Provide this token to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageId: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      summaryMetricsMask: S.optional(S.String.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchStageAttempts",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageId": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "summaryMetricsMask": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchStageAttempts","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** A list of Stage Attempts for a Stage of a Spark Application. */
 export interface SearchSessionSparkApplicationStageAttemptsResponse {
@@ -7759,26 +6144,15 @@ export interface SearchSessionSparkApplicationStageAttemptsResponse {
   /** Output only. Data corresponding to a stage attempts */
   sparkApplicationStageAttempts?: StageDataList;
 }
-export const SearchSessionSparkApplicationStageAttemptsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      sparkApplicationStageAttempts: S.optional(StageDataList),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationStageAttemptsResponse",
-  }) as any as S.Schema<SearchSessionSparkApplicationStageAttemptsResponse>;
+export const SearchSessionSparkApplicationStageAttemptsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "sparkApplicationStageAttempts": S.optional(StageDataList),
+}),
+).annotate({ identifier: "SearchSessionSparkApplicationStageAttemptsResponse" }) as any as S.Schema<SearchSessionSparkApplicationStageAttemptsResponse>;
 
-export type SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum =
-    | "TASK_STATUS_UNSPECIFIED"
-    | "TASK_STATUS_RUNNING"
-    | "TASK_STATUS_SUCCESS"
-    | "TASK_STATUS_FAILED"
-    | "TASK_STATUS_KILLED"
-    | "TASK_STATUS_PENDING"
-    | (string & {});
-export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum =
-  /*@__PURE__*/ S.String;
+export type SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum = "TASK_STATUS_UNSPECIFIED" | "TASK_STATUS_RUNNING" | "TASK_STATUS_SUCCESS" | "TASK_STATUS_FAILED" | "TASK_STATUS_KILLED" | "TASK_STATUS_PENDING";
+export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest {
   /** Optional. Stage ID */
@@ -7790,7 +6164,7 @@ export interface SearchStageAttemptTasksProjectsLocationsBatchesSparkApplication
   /** Optional. Maximum number of tasks to return in each response. The service may return fewer than this. The default page size is 10; the maximum page size is 100. */
   pageSize?: number;
   /** Optional. List only tasks in the state. */
-  taskStatus?: SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum;
+  taskStatus?: SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum | (string & {});
   /** Required. Parent (Batch) resource reference. */
   parent?: string;
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -7798,37 +6172,21 @@ export interface SearchStageAttemptTasksProjectsLocationsBatchesSparkApplication
   /** Optional. A page token received from a previous ListSparkApplicationStageAttemptTasks call. Provide this token to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageId: S.optional(S.String.pipe(T.Query())),
-      sortRuntime: S.optional(S.Boolean.pipe(T.Query())),
-      stageAttemptId: S.optional(S.Number.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      taskStatus: S.optional(
-        SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      parent: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchStageAttemptTasks",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageId": S.optional(S.String.pipe(T.Query())),
+  "sortRuntime": S.optional(S.Boolean.pipe(T.Query())),
+  "stageAttemptId": S.optional(S.Number.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "taskStatus": S.optional(SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchStageAttemptTasks","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest>;
 
 export type TaskDataList = ReadonlyArray<TaskData>;
-export const TaskDataList = /*@__PURE__*/ S.Array(
-  TaskData,
-) as any as S.Schema<TaskDataList>;
+export const TaskDataList = /*@__PURE__*/ S.Array(TaskData) as any as S.Schema<TaskDataList>;
 
 /** List of tasks for a stage of a Spark Application */
 export interface SearchSparkApplicationStageAttemptTasksResponse {
@@ -7837,26 +6195,15 @@ export interface SearchSparkApplicationStageAttemptTasksResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListSparkApplicationStageAttemptTasksRequest. */
   nextPageToken?: string;
 }
-export const SearchSparkApplicationStageAttemptTasksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sparkApplicationStageAttemptTasks: S.optional(TaskDataList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchSparkApplicationStageAttemptTasksResponse",
-  }) as any as S.Schema<SearchSparkApplicationStageAttemptTasksResponse>;
+export const SearchSparkApplicationStageAttemptTasksResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkApplicationStageAttemptTasks": S.optional(TaskDataList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSparkApplicationStageAttemptTasksResponse" }) as any as S.Schema<SearchSparkApplicationStageAttemptTasksResponse>;
 
-export type SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTaskStatusEnum =
-    | "TASK_STATUS_UNSPECIFIED"
-    | "TASK_STATUS_RUNNING"
-    | "TASK_STATUS_SUCCESS"
-    | "TASK_STATUS_FAILED"
-    | "TASK_STATUS_KILLED"
-    | "TASK_STATUS_PENDING"
-    | (string & {});
-export const SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTaskStatusEnum =
-  /*@__PURE__*/ S.String;
+export type SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTaskStatusEnum = "TASK_STATUS_UNSPECIFIED" | "TASK_STATUS_RUNNING" | "TASK_STATUS_SUCCESS" | "TASK_STATUS_FAILED" | "TASK_STATUS_KILLED" | "TASK_STATUS_PENDING";
+export const SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTaskStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest {
   /** Optional. Stage ID */
@@ -7870,38 +6217,24 @@ export interface SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicatio
   /** Required. Parent (Session) resource reference. */
   parent?: string;
   /** Optional. List only tasks in the state. */
-  taskStatus?: SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTaskStatusEnum;
+  taskStatus?: SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTaskStatusEnum | (string & {});
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
   name: string;
   /** Optional. A page token received from a previous SearchSessionSparkApplicationStageAttemptTasks call. Provide this token to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageId: S.optional(S.String.pipe(T.Query())),
-      sortRuntime: S.optional(S.Boolean.pipe(T.Query())),
-      stageAttemptId: S.optional(S.Number.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-      taskStatus: S.optional(
-        SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTaskStatusEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchStageAttemptTasks",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageId": S.optional(S.String.pipe(T.Query())),
+  "sortRuntime": S.optional(S.Boolean.pipe(T.Query())),
+  "stageAttemptId": S.optional(S.Number.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "taskStatus": S.optional(SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTaskStatusEnum.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchStageAttemptTasks","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** List of tasks for a stage of a Spark Application */
 export interface SearchSessionSparkApplicationStageAttemptTasksResponse {
@@ -7910,26 +6243,15 @@ export interface SearchSessionSparkApplicationStageAttemptTasksResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationStageAttemptTasksRequest. */
   nextPageToken?: string;
 }
-export const SearchSessionSparkApplicationStageAttemptTasksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sparkApplicationStageAttemptTasks: S.optional(TaskDataList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationStageAttemptTasksResponse",
-  }) as any as S.Schema<SearchSessionSparkApplicationStageAttemptTasksResponse>;
+export const SearchSessionSparkApplicationStageAttemptTasksResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkApplicationStageAttemptTasks": S.optional(TaskDataList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSessionSparkApplicationStageAttemptTasksResponse" }) as any as S.Schema<SearchSessionSparkApplicationStageAttemptTasksResponse>;
 
-export type SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum =
-    | "STAGE_STATUS_UNSPECIFIED"
-    | "STAGE_STATUS_ACTIVE"
-    | "STAGE_STATUS_COMPLETE"
-    | "STAGE_STATUS_FAILED"
-    | "STAGE_STATUS_PENDING"
-    | "STAGE_STATUS_SKIPPED"
-    | (string & {});
-export const SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum =
-  /*@__PURE__*/ S.String;
+export type SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum = "STAGE_STATUS_UNSPECIFIED" | "STAGE_STATUS_ACTIVE" | "STAGE_STATUS_COMPLETE" | "STAGE_STATUS_FAILED" | "STAGE_STATUS_PENDING" | "STAGE_STATUS_SKIPPED";
+export const SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SearchStagesProjectsLocationsBatchesSparkApplicationsRequest {
   /** Optional. Maximum number of stages (paging based on stage_id) to return in each response. The service may return fewer than this. The default page size is 10; the maximum page size is 100. */
@@ -7939,35 +6261,22 @@ export interface SearchStagesProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
   parent?: string;
   /** Optional. List only stages in the given state. */
-  stageStatus?: SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum;
+  stageStatus?: SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum | (string & {});
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
   name: string;
   /** Optional. A page token received from a previous FetchSparkApplicationStagesList call. Provide this token to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const SearchStagesProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      summaryMetricsMask: S.optional(S.String.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-      stageStatus: S.optional(
-        SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchStages",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchStagesProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SearchStagesProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SearchStagesProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "summaryMetricsMask": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "stageStatus": S.optional(SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchStages","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchStagesProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SearchStagesProjectsLocationsBatchesSparkApplicationsRequest>;
 
 /** A list of stages associated with a Spark Application. */
 export interface SearchSparkApplicationStagesResponse {
@@ -7976,30 +6285,19 @@ export interface SearchSparkApplicationStagesResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSparkApplicationStages. */
   nextPageToken?: string;
 }
-export const SearchSparkApplicationStagesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sparkApplicationStages: S.optional(StageDataList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SearchSparkApplicationStagesResponse",
-}) as any as S.Schema<SearchSparkApplicationStagesResponse>;
+export const SearchSparkApplicationStagesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkApplicationStages": S.optional(StageDataList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSparkApplicationStagesResponse" }) as any as S.Schema<SearchSparkApplicationStagesResponse>;
 
-export type SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnum =
-    | "STAGE_STATUS_UNSPECIFIED"
-    | "STAGE_STATUS_ACTIVE"
-    | "STAGE_STATUS_COMPLETE"
-    | "STAGE_STATUS_FAILED"
-    | "STAGE_STATUS_PENDING"
-    | "STAGE_STATUS_SKIPPED"
-    | (string & {});
-export const SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnum =
-  /*@__PURE__*/ S.String;
+export type SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnum = "STAGE_STATUS_UNSPECIFIED" | "STAGE_STATUS_ACTIVE" | "STAGE_STATUS_COMPLETE" | "STAGE_STATUS_FAILED" | "STAGE_STATUS_PENDING" | "STAGE_STATUS_SKIPPED";
+export const SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SearchStagesProjectsLocationsSessionsSparkApplicationsRequest {
   /** Optional. List only stages in the given state. */
-  stageStatus?: SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnum;
+  stageStatus?: SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnum | (string & {});
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
   name: string;
   /** Optional. A page token received from a previous SearchSessionSparkApplicationStages call. Provide this token to retrieve the subsequent page. */
@@ -8013,30 +6311,17 @@ export interface SearchStagesProjectsLocationsSessionsSparkApplicationsRequest {
   /** Optional. List of Stage IDs to filter by if provided. */
   stageIds?: StringList;
 }
-export const SearchStagesProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageStatus: S.optional(
-        SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      summaryMetricsMask: S.optional(S.String.pipe(T.Query())),
-      stageIds: S.optional(StringList.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:searchStages",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchStagesProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SearchStagesProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SearchStagesProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageStatus": S.optional(SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnum.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "summaryMetricsMask": S.optional(S.String.pipe(T.Query())),
+  "stageIds": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:searchStages","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SearchStagesProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SearchStagesProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** A list of stages associated with a Spark Application. */
 export interface SearchSessionSparkApplicationStagesResponse {
@@ -8045,15 +6330,12 @@ export interface SearchSessionSparkApplicationStagesResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationStages. */
   nextPageToken?: string;
 }
-export const SearchSessionSparkApplicationStagesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sparkApplicationStages: S.optional(StageDataList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationStagesResponse",
-  }) as any as S.Schema<SearchSessionSparkApplicationStagesResponse>;
+export const SearchSessionSparkApplicationStagesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sparkApplicationStages": S.optional(StageDataList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchSessionSparkApplicationStagesResponse" }) as any as S.Schema<SearchSessionSparkApplicationStagesResponse>;
 
 /** Request message for SetIamPolicy method. */
 export interface SetIamPolicyRequest {
@@ -8061,12 +6343,10 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8074,21 +6354,12 @@ export interface SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest>;
+export const SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest>;
 
 export interface SetIamPolicyProjectsLocationsWorkflowTemplatesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8096,21 +6367,12 @@ export interface SetIamPolicyProjectsLocationsWorkflowTemplatesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsWorkflowTemplatesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsWorkflowTemplatesRequest>;
+export const SetIamPolicyProjectsLocationsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsWorkflowTemplatesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsWorkflowTemplatesRequest>;
 
 export interface SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8118,21 +6380,12 @@ export interface SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest>;
+export const SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest" }) as any as S.Schema<SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest>;
 
 export interface SetIamPolicyProjectsRegionsClustersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8140,21 +6393,12 @@ export interface SetIamPolicyProjectsRegionsClustersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsRegionsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsRegionsClustersRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsRegionsClustersRequest>;
+export const SetIamPolicyProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsRegionsClustersRequest" }) as any as S.Schema<SetIamPolicyProjectsRegionsClustersRequest>;
 
 export interface SetIamPolicyProjectsRegionsJobsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8162,21 +6406,12 @@ export interface SetIamPolicyProjectsRegionsJobsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SetIamPolicyProjectsRegionsJobsRequest",
-}) as any as S.Schema<SetIamPolicyProjectsRegionsJobsRequest>;
+export const SetIamPolicyProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsRegionsJobsRequest" }) as any as S.Schema<SetIamPolicyProjectsRegionsJobsRequest>;
 
 export interface SetIamPolicyProjectsRegionsOperationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8184,21 +6419,12 @@ export interface SetIamPolicyProjectsRegionsOperationsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsRegionsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsRegionsOperationsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsRegionsOperationsRequest>;
+export const SetIamPolicyProjectsRegionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsRegionsOperationsRequest" }) as any as S.Schema<SetIamPolicyProjectsRegionsOperationsRequest>;
 
 export interface SetIamPolicyProjectsRegionsWorkflowTemplatesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8206,21 +6432,12 @@ export interface SetIamPolicyProjectsRegionsWorkflowTemplatesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsRegionsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsRegionsWorkflowTemplatesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsRegionsWorkflowTemplatesRequest>;
+export const SetIamPolicyProjectsRegionsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsRegionsWorkflowTemplatesRequest" }) as any as S.Schema<SetIamPolicyProjectsRegionsWorkflowTemplatesRequest>;
 
 /** A request to start a cluster. */
 export interface StartClusterRequest {
@@ -8230,13 +6447,11 @@ export interface StartClusterRequest {
   requestId?: string;
 }
 export const StartClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterUuid: S.optional(S.String),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartClusterRequest",
-}) as any as S.Schema<StartClusterRequest>;
+S.Struct({
+  "clusterUuid": S.optional(S.String),
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "StartClusterRequest" }) as any as S.Schema<StartClusterRequest>;
 
 export interface StartProjectsRegionsClustersRequest {
   /** Required. The ID of the Google Cloud Platform project the cluster belongs to. */
@@ -8249,21 +6464,13 @@ export interface StartProjectsRegionsClustersRequest {
   body?: StartClusterRequest;
 }
 export const StartProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    region: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    body: S.optional(StartClusterRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:start",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "StartProjectsRegionsClustersRequest",
-}) as any as S.Schema<StartProjectsRegionsClustersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "region": S.String.pipe(T.Label()),
+  "clusterName": S.String.pipe(T.Label()),
+  "body": S.optional(StartClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:start","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "StartProjectsRegionsClustersRequest" }) as any as S.Schema<StartProjectsRegionsClustersRequest>;
 
 /** A request to stop a cluster. */
 export interface StopClusterRequest {
@@ -8273,13 +6480,11 @@ export interface StopClusterRequest {
   requestId?: string;
 }
 export const StopClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterUuid: S.optional(S.String),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StopClusterRequest",
-}) as any as S.Schema<StopClusterRequest>;
+S.Struct({
+  "clusterUuid": S.optional(S.String),
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "StopClusterRequest" }) as any as S.Schema<StopClusterRequest>;
 
 export interface StopProjectsRegionsClustersRequest {
   /** Required. The region in which to handle the request. */
@@ -8292,21 +6497,13 @@ export interface StopProjectsRegionsClustersRequest {
   body?: StopClusterRequest;
 }
 export const StopProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    projectId: S.String.pipe(T.Label()),
-    body: S.optional(StopClusterRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:stop",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "StopProjectsRegionsClustersRequest",
-}) as any as S.Schema<StopProjectsRegionsClustersRequest>;
+S.Struct({
+  "region": S.String.pipe(T.Label()),
+  "clusterName": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(StopClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:stop","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "StopProjectsRegionsClustersRequest" }) as any as S.Schema<StopProjectsRegionsClustersRequest>;
 
 /** A request to submit a job. */
 export interface SubmitJobRequest {
@@ -8316,13 +6513,11 @@ export interface SubmitJobRequest {
   requestId?: string;
 }
 export const SubmitJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job: S.optional(Job),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubmitJobRequest",
-}) as any as S.Schema<SubmitJobRequest>;
+S.Struct({
+  "job": S.optional(Job),
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "SubmitJobRequest" }) as any as S.Schema<SubmitJobRequest>;
 
 export interface SubmitAsOperationProjectsRegionsJobsRequest {
   /** Required. The Dataproc region in which to handle the request. */
@@ -8332,22 +6527,13 @@ export interface SubmitAsOperationProjectsRegionsJobsRequest {
   /** Request body */
   body?: SubmitJobRequest;
 }
-export const SubmitAsOperationProjectsRegionsJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.String.pipe(T.Label()),
-      projectId: S.String.pipe(T.Label()),
-      body: S.optional(SubmitJobRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/projects/{projectId}/regions/{region}/jobs:submitAsOperation",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SubmitAsOperationProjectsRegionsJobsRequest",
-  }) as any as S.Schema<SubmitAsOperationProjectsRegionsJobsRequest>;
+export const SubmitAsOperationProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "region": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(SubmitJobRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/regions/{region}/jobs:submitAsOperation","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SubmitAsOperationProjectsRegionsJobsRequest" }) as any as S.Schema<SubmitAsOperationProjectsRegionsJobsRequest>;
 
 export interface SubmitProjectsRegionsJobsRequest {
   /** Required. The Dataproc region in which to handle the request. */
@@ -8358,20 +6544,12 @@ export interface SubmitProjectsRegionsJobsRequest {
   body?: SubmitJobRequest;
 }
 export const SubmitProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.String.pipe(T.Label()),
-    projectId: S.String.pipe(T.Label()),
-    body: S.optional(SubmitJobRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/projects/{projectId}/regions/{region}/jobs:submit",
-      baseUrl: "https://dataproc.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SubmitProjectsRegionsJobsRequest",
-}) as any as S.Schema<SubmitProjectsRegionsJobsRequest>;
+S.Struct({
+  "region": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(SubmitJobRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/regions/{region}/jobs:submit","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SubmitProjectsRegionsJobsRequest" }) as any as S.Schema<SubmitProjectsRegionsJobsRequest>;
 
 export interface SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -8379,22 +6557,12 @@ export interface SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequ
   /** Required. Parent (Batch) resource reference. */
   parent?: string;
 }
-export const SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:summarizeExecutors",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:summarizeExecutors","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest>;
 
 /** Consolidated summary about executors used by the application. */
 export interface ConsolidatedExecutorSummary {
@@ -8417,28 +6585,26 @@ export interface ConsolidatedExecutorSummary {
   totalInputBytes?: string;
 }
 export const ConsolidatedExecutorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    totalShuffleRead: S.optional(S.String),
-    totalGcTimeMillis: S.optional(S.String),
-    totalDurationMillis: S.optional(S.String),
-    isExcluded: S.optional(S.Number),
-    failedTasks: S.optional(S.Number),
-    activeTasks: S.optional(S.Number),
-    rddBlocks: S.optional(S.Number),
-    totalCores: S.optional(S.Number),
-    completedTasks: S.optional(S.Number),
-    memoryUsed: S.optional(S.String),
-    memoryMetrics: S.optional(MemoryMetrics),
-    count: S.optional(S.Number),
-    totalTasks: S.optional(S.Number),
-    totalShuffleWrite: S.optional(S.String),
-    diskUsed: S.optional(S.String),
-    maxMemory: S.optional(S.String),
-    totalInputBytes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConsolidatedExecutorSummary",
-}) as any as S.Schema<ConsolidatedExecutorSummary>;
+S.Struct({
+  "totalShuffleRead": S.optional(S.String),
+  "totalGcTimeMillis": S.optional(S.String),
+  "totalDurationMillis": S.optional(S.String),
+  "isExcluded": S.optional(S.Number),
+  "failedTasks": S.optional(S.Number),
+  "activeTasks": S.optional(S.Number),
+  "rddBlocks": S.optional(S.Number),
+  "totalCores": S.optional(S.Number),
+  "completedTasks": S.optional(S.Number),
+  "memoryUsed": S.optional(S.String),
+  "memoryMetrics": S.optional(MemoryMetrics),
+  "count": S.optional(S.Number),
+  "totalTasks": S.optional(S.Number),
+  "totalShuffleWrite": S.optional(S.String),
+  "diskUsed": S.optional(S.String),
+  "maxMemory": S.optional(S.String),
+  "totalInputBytes": S.optional(S.String),
+}),
+).annotate({ identifier: "ConsolidatedExecutorSummary" }) as any as S.Schema<ConsolidatedExecutorSummary>;
 
 /** Consolidated summary of executors for a Spark Application. */
 export interface SummarizeSparkApplicationExecutorsResponse {
@@ -8451,17 +6617,14 @@ export interface SummarizeSparkApplicationExecutorsResponse {
   /** Consolidated summary for dead executors. */
   deadExecutorSummary?: ConsolidatedExecutorSummary;
 }
-export const SummarizeSparkApplicationExecutorsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      activeExecutorSummary: S.optional(ConsolidatedExecutorSummary),
-      applicationId: S.optional(S.String),
-      totalExecutorSummary: S.optional(ConsolidatedExecutorSummary),
-      deadExecutorSummary: S.optional(ConsolidatedExecutorSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSparkApplicationExecutorsResponse",
-  }) as any as S.Schema<SummarizeSparkApplicationExecutorsResponse>;
+export const SummarizeSparkApplicationExecutorsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "activeExecutorSummary": S.optional(ConsolidatedExecutorSummary),
+  "applicationId": S.optional(S.String),
+  "totalExecutorSummary": S.optional(ConsolidatedExecutorSummary),
+  "deadExecutorSummary": S.optional(ConsolidatedExecutorSummary),
+}),
+).annotate({ identifier: "SummarizeSparkApplicationExecutorsResponse" }) as any as S.Schema<SummarizeSparkApplicationExecutorsResponse>;
 
 export interface SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
@@ -8469,22 +6632,12 @@ export interface SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsReq
   /** Required. Parent (Session) resource reference. */
   parent?: string;
 }
-export const SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:summarizeExecutors",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:summarizeExecutors","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** Consolidated summary of executors for a Spark Application. */
 export interface SummarizeSessionSparkApplicationExecutorsResponse {
@@ -8497,17 +6650,14 @@ export interface SummarizeSessionSparkApplicationExecutorsResponse {
   /** Overall consolidated summary for all executors. */
   totalExecutorSummary?: ConsolidatedExecutorSummary;
 }
-export const SummarizeSessionSparkApplicationExecutorsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationId: S.optional(S.String),
-      activeExecutorSummary: S.optional(ConsolidatedExecutorSummary),
-      deadExecutorSummary: S.optional(ConsolidatedExecutorSummary),
-      totalExecutorSummary: S.optional(ConsolidatedExecutorSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSessionSparkApplicationExecutorsResponse",
-  }) as any as S.Schema<SummarizeSessionSparkApplicationExecutorsResponse>;
+export const SummarizeSessionSparkApplicationExecutorsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "applicationId": S.optional(S.String),
+  "activeExecutorSummary": S.optional(ConsolidatedExecutorSummary),
+  "deadExecutorSummary": S.optional(ConsolidatedExecutorSummary),
+  "totalExecutorSummary": S.optional(ConsolidatedExecutorSummary),
+}),
+).annotate({ identifier: "SummarizeSessionSparkApplicationExecutorsResponse" }) as any as S.Schema<SummarizeSessionSparkApplicationExecutorsResponse>;
 
 export interface SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -8515,21 +6665,12 @@ export interface SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
   parent?: string;
 }
-export const SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:summarizeJobs",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:summarizeJobs","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest>;
 
 /** Data related to Jobs page summary */
 export interface JobsSummary {
@@ -8547,14 +6688,14 @@ export interface JobsSummary {
   attempts?: ApplicationAttemptInfoList;
 }
 export const JobsSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activeJobs: S.optional(S.Number),
-    failedJobs: S.optional(S.Number),
-    schedulingMode: S.optional(S.String),
-    completedJobs: S.optional(S.Number),
-    applicationId: S.optional(S.String),
-    attempts: S.optional(ApplicationAttemptInfoList),
-  }),
+S.Struct({
+  "activeJobs": S.optional(S.Number),
+  "failedJobs": S.optional(S.Number),
+  "schedulingMode": S.optional(S.String),
+  "completedJobs": S.optional(S.Number),
+  "applicationId": S.optional(S.String),
+  "attempts": S.optional(ApplicationAttemptInfoList),
+}),
 ).annotate({ identifier: "JobsSummary" }) as any as S.Schema<JobsSummary>;
 
 /** Summary of a Spark Application jobs. */
@@ -8562,14 +6703,11 @@ export interface SummarizeSparkApplicationJobsResponse {
   /** Summary of a Spark Application Jobs */
   jobsSummary?: JobsSummary;
 }
-export const SummarizeSparkApplicationJobsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      jobsSummary: S.optional(JobsSummary),
-    }),
-).annotate({
-  identifier: "SummarizeSparkApplicationJobsResponse",
-}) as any as S.Schema<SummarizeSparkApplicationJobsResponse>;
+export const SummarizeSparkApplicationJobsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "jobsSummary": S.optional(JobsSummary),
+}),
+).annotate({ identifier: "SummarizeSparkApplicationJobsResponse" }) as any as S.Schema<SummarizeSparkApplicationJobsResponse>;
 
 export interface SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
@@ -8579,37 +6717,24 @@ export interface SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest 
   /** Required. Parent (Session) resource reference. */
   parent?: string;
 }
-export const SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      jobIds: S.optional(StringList.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:summarizeJobs",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "jobIds": S.optional(StringList.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:summarizeJobs","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** Summary of a Spark Application jobs. */
 export interface SummarizeSessionSparkApplicationJobsResponse {
   /** Summary of a Spark Application Jobs */
   jobsSummary?: JobsSummary;
 }
-export const SummarizeSessionSparkApplicationJobsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobsSummary: S.optional(JobsSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSessionSparkApplicationJobsResponse",
-  }) as any as S.Schema<SummarizeSessionSparkApplicationJobsResponse>;
+export const SummarizeSessionSparkApplicationJobsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "jobsSummary": S.optional(JobsSummary),
+}),
+).annotate({ identifier: "SummarizeSessionSparkApplicationJobsResponse" }) as any as S.Schema<SummarizeSessionSparkApplicationJobsResponse>;
 
 export interface SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Stage Attempt ID */
@@ -8621,24 +6746,14 @@ export interface SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicat
   /** Required. Stage ID */
   stageId?: string;
 }
-export const SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageAttemptId: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-      stageId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:summarizeStageAttemptTasks",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageAttemptId": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "stageId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:summarizeStageAttemptTasks","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest>;
 
 /** Data related to tasks summary for a Spark Stage Attempt */
 export interface StageAttemptTasksSummary {
@@ -8653,34 +6768,29 @@ export interface StageAttemptTasksSummary {
   numPendingTasks?: number;
 }
 export const StageAttemptTasksSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numTasks: S.optional(S.Number),
-    numSuccessTasks: S.optional(S.Number),
-    stageId: S.optional(S.String),
-    numRunningTasks: S.optional(S.Number),
-    numKilledTasks: S.optional(S.Number),
-    applicationId: S.optional(S.String),
-    stageAttemptId: S.optional(S.Number),
-    numFailedTasks: S.optional(S.Number),
-    numPendingTasks: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StageAttemptTasksSummary",
-}) as any as S.Schema<StageAttemptTasksSummary>;
+S.Struct({
+  "numTasks": S.optional(S.Number),
+  "numSuccessTasks": S.optional(S.Number),
+  "stageId": S.optional(S.String),
+  "numRunningTasks": S.optional(S.Number),
+  "numKilledTasks": S.optional(S.Number),
+  "applicationId": S.optional(S.String),
+  "stageAttemptId": S.optional(S.Number),
+  "numFailedTasks": S.optional(S.Number),
+  "numPendingTasks": S.optional(S.Number),
+}),
+).annotate({ identifier: "StageAttemptTasksSummary" }) as any as S.Schema<StageAttemptTasksSummary>;
 
 /** Summary of tasks for a Spark Application stage attempt. */
 export interface SummarizeSparkApplicationStageAttemptTasksResponse {
   /** Summary of tasks for a Spark Application Stage Attempt */
   stageAttemptTasksSummary?: StageAttemptTasksSummary;
 }
-export const SummarizeSparkApplicationStageAttemptTasksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageAttemptTasksSummary: S.optional(StageAttemptTasksSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSparkApplicationStageAttemptTasksResponse",
-  }) as any as S.Schema<SummarizeSparkApplicationStageAttemptTasksResponse>;
+export const SummarizeSparkApplicationStageAttemptTasksResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageAttemptTasksSummary": S.optional(StageAttemptTasksSummary),
+}),
+).annotate({ identifier: "SummarizeSparkApplicationStageAttemptTasksResponse" }) as any as S.Schema<SummarizeSparkApplicationStageAttemptTasksResponse>;
 
 export interface SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
@@ -8692,38 +6802,25 @@ export interface SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplica
   /** Required. Stage ID */
   stageId?: string;
 }
-export const SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      stageAttemptId: S.optional(S.Number.pipe(T.Query())),
-      parent: S.optional(S.String.pipe(T.Query())),
-      stageId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:summarizeStageAttemptTasks",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "stageAttemptId": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "stageId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:summarizeStageAttemptTasks","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** Summary of tasks for a Spark Application stage attempt. */
 export interface SummarizeSessionSparkApplicationStageAttemptTasksResponse {
   /** Summary of tasks for a Spark Application Stage Attempt */
   stageAttemptTasksSummary?: StageAttemptTasksSummary;
 }
-export const SummarizeSessionSparkApplicationStageAttemptTasksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stageAttemptTasksSummary: S.optional(StageAttemptTasksSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSessionSparkApplicationStageAttemptTasksResponse",
-  }) as any as S.Schema<SummarizeSessionSparkApplicationStageAttemptTasksResponse>;
+export const SummarizeSessionSparkApplicationStageAttemptTasksResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stageAttemptTasksSummary": S.optional(StageAttemptTasksSummary),
+}),
+).annotate({ identifier: "SummarizeSessionSparkApplicationStageAttemptTasksResponse" }) as any as S.Schema<SummarizeSessionSparkApplicationStageAttemptTasksResponse>;
 
 export interface SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -8731,22 +6828,12 @@ export interface SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest
   /** Required. Parent (Batch) resource reference. */
   parent?: string;
 }
-export const SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:summarizeStages",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest>;
+export const SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:summarizeStages","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest>;
 
 /** Data related to Stages page summary */
 export interface StagesSummary {
@@ -8758,14 +6845,14 @@ export interface StagesSummary {
   numActiveStages?: number;
 }
 export const StagesSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numPendingStages: S.optional(S.Number),
-    applicationId: S.optional(S.String),
-    numSkippedStages: S.optional(S.Number),
-    numCompletedStages: S.optional(S.Number),
-    numFailedStages: S.optional(S.Number),
-    numActiveStages: S.optional(S.Number),
-  }),
+S.Struct({
+  "numPendingStages": S.optional(S.Number),
+  "applicationId": S.optional(S.String),
+  "numSkippedStages": S.optional(S.Number),
+  "numCompletedStages": S.optional(S.Number),
+  "numFailedStages": S.optional(S.Number),
+  "numActiveStages": S.optional(S.Number),
+}),
 ).annotate({ identifier: "StagesSummary" }) as any as S.Schema<StagesSummary>;
 
 /** Summary of a Spark Application stages. */
@@ -8773,14 +6860,11 @@ export interface SummarizeSparkApplicationStagesResponse {
   /** Summary of a Spark Application Stages */
   stagesSummary?: StagesSummary;
 }
-export const SummarizeSparkApplicationStagesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stagesSummary: S.optional(StagesSummary),
-    }),
-).annotate({
-  identifier: "SummarizeSparkApplicationStagesResponse",
-}) as any as S.Schema<SummarizeSparkApplicationStagesResponse>;
+export const SummarizeSparkApplicationStagesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stagesSummary": S.optional(StagesSummary),
+}),
+).annotate({ identifier: "SummarizeSparkApplicationStagesResponse" }) as any as S.Schema<SummarizeSparkApplicationStagesResponse>;
 
 export interface SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the session to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
@@ -8790,37 +6874,24 @@ export interface SummarizeStagesProjectsLocationsSessionsSparkApplicationsReques
   /** Optional. List of Stage IDs to filter by if provided. */
   stageIds?: StringList;
 }
-export const SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-      stageIds: S.optional(StringList.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:summarizeStages",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest>;
+export const SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "stageIds": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:summarizeStages","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** Summary of a Spark Application stages. */
 export interface SummarizeSessionSparkApplicationStagesResponse {
   /** Summary of a Spark Application Stages */
   stagesSummary?: StagesSummary;
 }
-export const SummarizeSessionSparkApplicationStagesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stagesSummary: S.optional(StagesSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSessionSparkApplicationStagesResponse",
-  }) as any as S.Schema<SummarizeSessionSparkApplicationStagesResponse>;
+export const SummarizeSessionSparkApplicationStagesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "stagesSummary": S.optional(StagesSummary),
+}),
+).annotate({ identifier: "SummarizeSessionSparkApplicationStagesResponse" }) as any as S.Schema<SummarizeSessionSparkApplicationStagesResponse>;
 
 /** A request to terminate an interactive session. */
 export interface TerminateSessionRequest {
@@ -8828,12 +6899,10 @@ export interface TerminateSessionRequest {
   requestId?: string;
 }
 export const TerminateSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TerminateSessionRequest",
-}) as any as S.Schema<TerminateSessionRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "TerminateSessionRequest" }) as any as S.Schema<TerminateSessionRequest>;
 
 export interface TerminateProjectsLocationsSessionsRequest {
   /** Required. The name of the session resource to terminate. */
@@ -8841,21 +6910,12 @@ export interface TerminateProjectsLocationsSessionsRequest {
   /** Request body */
   body?: TerminateSessionRequest;
 }
-export const TerminateProjectsLocationsSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(TerminateSessionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:terminate",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TerminateProjectsLocationsSessionsRequest",
-  }) as any as S.Schema<TerminateProjectsLocationsSessionsRequest>;
+export const TerminateProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(TerminateSessionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:terminate","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "TerminateProjectsLocationsSessionsRequest" }) as any as S.Schema<TerminateProjectsLocationsSessionsRequest>;
 
 /** Request message for TestIamPermissions method. */
 export interface TestIamPermissionsRequest {
@@ -8863,12 +6923,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8876,21 +6934,12 @@ export interface TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest>;
+export const TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest>;
 
 /** Response message for TestIamPermissions method. */
 export interface TestIamPermissionsResponse {
@@ -8898,12 +6947,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8911,21 +6958,12 @@ export interface TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest>;
+export const TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest>;
 
 export interface TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8933,21 +6971,12 @@ export interface TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest>;
+export const TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest" }) as any as S.Schema<TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest>;
 
 export interface TestIamPermissionsProjectsRegionsClustersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8955,21 +6984,12 @@ export interface TestIamPermissionsProjectsRegionsClustersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsRegionsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsRegionsClustersRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsRegionsClustersRequest>;
+export const TestIamPermissionsProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsRegionsClustersRequest" }) as any as S.Schema<TestIamPermissionsProjectsRegionsClustersRequest>;
 
 export interface TestIamPermissionsProjectsRegionsJobsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8977,21 +6997,12 @@ export interface TestIamPermissionsProjectsRegionsJobsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsRegionsJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsRegionsJobsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsRegionsJobsRequest>;
+export const TestIamPermissionsProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsRegionsJobsRequest" }) as any as S.Schema<TestIamPermissionsProjectsRegionsJobsRequest>;
 
 export interface TestIamPermissionsProjectsRegionsOperationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -8999,21 +7010,12 @@ export interface TestIamPermissionsProjectsRegionsOperationsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsRegionsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsRegionsOperationsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsRegionsOperationsRequest>;
+export const TestIamPermissionsProjectsRegionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsRegionsOperationsRequest" }) as any as S.Schema<TestIamPermissionsProjectsRegionsOperationsRequest>;
 
 export interface TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -9021,21 +7023,12 @@ export interface TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest>;
+export const TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest" }) as any as S.Schema<TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest>;
 
 export interface UpdateProjectsLocationsAutoscalingPoliciesRequest {
   /** Output only. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id} */
@@ -9043,21 +7036,12 @@ export interface UpdateProjectsLocationsAutoscalingPoliciesRequest {
   /** Request body */
   body?: AutoscalingPolicy;
 }
-export const UpdateProjectsLocationsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AutoscalingPolicy.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateProjectsLocationsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<UpdateProjectsLocationsAutoscalingPoliciesRequest>;
+export const UpdateProjectsLocationsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(AutoscalingPolicy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsLocationsAutoscalingPoliciesRequest" }) as any as S.Schema<UpdateProjectsLocationsAutoscalingPoliciesRequest>;
 
 export interface UpdateProjectsLocationsWorkflowTemplatesRequest {
   /** Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} */
@@ -9065,21 +7049,12 @@ export interface UpdateProjectsLocationsWorkflowTemplatesRequest {
   /** Request body */
   body?: WorkflowTemplate;
 }
-export const UpdateProjectsLocationsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(WorkflowTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateProjectsLocationsWorkflowTemplatesRequest",
-  }) as any as S.Schema<UpdateProjectsLocationsWorkflowTemplatesRequest>;
+export const UpdateProjectsLocationsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(WorkflowTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsLocationsWorkflowTemplatesRequest" }) as any as S.Schema<UpdateProjectsLocationsWorkflowTemplatesRequest>;
 
 export interface UpdateProjectsRegionsAutoscalingPoliciesRequest {
   /** Output only. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id} */
@@ -9087,21 +7062,12 @@ export interface UpdateProjectsRegionsAutoscalingPoliciesRequest {
   /** Request body */
   body?: AutoscalingPolicy;
 }
-export const UpdateProjectsRegionsAutoscalingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AutoscalingPolicy.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateProjectsRegionsAutoscalingPoliciesRequest",
-  }) as any as S.Schema<UpdateProjectsRegionsAutoscalingPoliciesRequest>;
+export const UpdateProjectsRegionsAutoscalingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(AutoscalingPolicy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsRegionsAutoscalingPoliciesRequest" }) as any as S.Schema<UpdateProjectsRegionsAutoscalingPoliciesRequest>;
 
 export interface UpdateProjectsRegionsWorkflowTemplatesRequest {
   /** Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} */
@@ -9109,21 +7075,12 @@ export interface UpdateProjectsRegionsWorkflowTemplatesRequest {
   /** Request body */
   body?: WorkflowTemplate;
 }
-export const UpdateProjectsRegionsWorkflowTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(WorkflowTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateProjectsRegionsWorkflowTemplatesRequest",
-  }) as any as S.Schema<UpdateProjectsRegionsWorkflowTemplatesRequest>;
+export const UpdateProjectsRegionsWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(WorkflowTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1/{+name}","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsRegionsWorkflowTemplatesRequest" }) as any as S.Schema<UpdateProjectsRegionsWorkflowTemplatesRequest>;
 
 /** Native SQL Execution Data */
 export interface FallbackReason {
@@ -9133,16 +7090,14 @@ export interface FallbackReason {
   fallbackReason?: string;
 }
 export const FallbackReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fallbackNode: S.optional(S.String),
-    fallbackReason: S.optional(S.String),
-  }),
+S.Struct({
+  "fallbackNode": S.optional(S.String),
+  "fallbackReason": S.optional(S.String),
+}),
 ).annotate({ identifier: "FallbackReason" }) as any as S.Schema<FallbackReason>;
 
 export type FallbackReasonList = ReadonlyArray<FallbackReason>;
-export const FallbackReasonList = /*@__PURE__*/ S.Array(
-  FallbackReason,
-) as any as S.Schema<FallbackReasonList>;
+export const FallbackReasonList = /*@__PURE__*/ S.Array(FallbackReason) as any as S.Schema<FallbackReasonList>;
 
 /** Native SQL Execution Data */
 export interface NativeSqlExecutionUiData {
@@ -9160,17 +7115,15 @@ export interface NativeSqlExecutionUiData {
   executionId?: string;
 }
 export const NativeSqlExecutionUiData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    numNativeNodes: S.optional(S.Number),
-    numFallbackNodes: S.optional(S.Number),
-    fallbackDescription: S.optional(S.String),
-    fallbackNodeToReason: S.optional(FallbackReasonList),
-    executionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NativeSqlExecutionUiData",
-}) as any as S.Schema<NativeSqlExecutionUiData>;
+S.Struct({
+  "description": S.optional(S.String),
+  "numNativeNodes": S.optional(S.Number),
+  "numFallbackNodes": S.optional(S.Number),
+  "fallbackDescription": S.optional(S.String),
+  "fallbackNodeToReason": S.optional(FallbackReasonList),
+  "executionId": S.optional(S.String),
+}),
+).annotate({ identifier: "NativeSqlExecutionUiData" }) as any as S.Schema<NativeSqlExecutionUiData>;
 
 /** Represents session-level information for Spark Connect */
 export interface SparkConnectSessionInfo {
@@ -9186,16 +7139,14 @@ export interface SparkConnectSessionInfo {
   sessionId?: string;
 }
 export const SparkConnectSessionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String),
-    finishTimestamp: S.optional(S.String),
-    totalExecution: S.optional(S.String),
-    startTimestamp: S.optional(S.String),
-    sessionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SparkConnectSessionInfo",
-}) as any as S.Schema<SparkConnectSessionInfo>;
+S.Struct({
+  "userId": S.optional(S.String),
+  "finishTimestamp": S.optional(S.String),
+  "totalExecution": S.optional(S.String),
+  "startTimestamp": S.optional(S.String),
+  "sessionId": S.optional(S.String),
+}),
+).annotate({ identifier: "SparkConnectSessionInfo" }) as any as S.Schema<SparkConnectSessionInfo>;
 
 /** Information about RDD partitions. */
 export interface RddPartitionInfo {
@@ -9206,21 +7157,17 @@ export interface RddPartitionInfo {
   diskUsed?: string;
 }
 export const RddPartitionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executors: S.optional(StringList),
-    storageLevel: S.optional(S.String),
-    memoryUsed: S.optional(S.String),
-    blockName: S.optional(S.String),
-    diskUsed: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RddPartitionInfo",
-}) as any as S.Schema<RddPartitionInfo>;
+S.Struct({
+  "executors": S.optional(StringList),
+  "storageLevel": S.optional(S.String),
+  "memoryUsed": S.optional(S.String),
+  "blockName": S.optional(S.String),
+  "diskUsed": S.optional(S.String),
+}),
+).annotate({ identifier: "RddPartitionInfo" }) as any as S.Schema<RddPartitionInfo>;
 
 export type RddPartitionInfoList = ReadonlyArray<RddPartitionInfo>;
-export const RddPartitionInfoList = /*@__PURE__*/ S.Array(
-  RddPartitionInfo,
-) as any as S.Schema<RddPartitionInfoList>;
+export const RddPartitionInfoList = /*@__PURE__*/ S.Array(RddPartitionInfo) as any as S.Schema<RddPartitionInfoList>;
 
 /** Details about RDD usage. */
 export interface RddDataDistribution {
@@ -9234,24 +7181,20 @@ export interface RddDataDistribution {
   offHeapMemoryRemaining?: string;
 }
 export const RddDataDistribution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    memoryUsed: S.optional(S.String),
-    offHeapMemoryUsed: S.optional(S.String),
-    diskUsed: S.optional(S.String),
-    memoryRemaining: S.optional(S.String),
-    onHeapMemoryUsed: S.optional(S.String),
-    onHeapMemoryRemaining: S.optional(S.String),
-    offHeapMemoryRemaining: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RddDataDistribution",
-}) as any as S.Schema<RddDataDistribution>;
+S.Struct({
+  "address": S.optional(S.String),
+  "memoryUsed": S.optional(S.String),
+  "offHeapMemoryUsed": S.optional(S.String),
+  "diskUsed": S.optional(S.String),
+  "memoryRemaining": S.optional(S.String),
+  "onHeapMemoryUsed": S.optional(S.String),
+  "onHeapMemoryRemaining": S.optional(S.String),
+  "offHeapMemoryRemaining": S.optional(S.String),
+}),
+).annotate({ identifier: "RddDataDistribution" }) as any as S.Schema<RddDataDistribution>;
 
 export type RddDataDistributionList = ReadonlyArray<RddDataDistribution>;
-export const RddDataDistributionList = /*@__PURE__*/ S.Array(
-  RddDataDistribution,
-) as any as S.Schema<RddDataDistributionList>;
+export const RddDataDistributionList = /*@__PURE__*/ S.Array(RddDataDistribution) as any as S.Schema<RddDataDistributionList>;
 
 /** Overall data about RDD storage. */
 export interface RddStorageInfo {
@@ -9266,17 +7209,17 @@ export interface RddStorageInfo {
   memoryUsed?: string;
 }
 export const RddStorageInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numCachedPartitions: S.optional(S.Number),
-    numPartitions: S.optional(S.Number),
-    name: S.optional(S.String),
-    storageLevel: S.optional(S.String),
-    rddStorageId: S.optional(S.Number),
-    diskUsed: S.optional(S.String),
-    partitions: S.optional(RddPartitionInfoList),
-    dataDistribution: S.optional(RddDataDistributionList),
-    memoryUsed: S.optional(S.String),
-  }),
+S.Struct({
+  "numCachedPartitions": S.optional(S.Number),
+  "numPartitions": S.optional(S.Number),
+  "name": S.optional(S.String),
+  "storageLevel": S.optional(S.String),
+  "rddStorageId": S.optional(S.Number),
+  "diskUsed": S.optional(S.String),
+  "partitions": S.optional(RddPartitionInfoList),
+  "dataDistribution": S.optional(RddDataDistributionList),
+  "memoryUsed": S.optional(S.String),
+}),
 ).annotate({ identifier: "RddStorageInfo" }) as any as S.Schema<RddStorageInfo>;
 
 export interface StateOperatorProgress {
@@ -9294,28 +7237,24 @@ export interface StateOperatorProgress {
   numRowsRemoved?: string;
 }
 export const StateOperatorProgress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryUsedBytes: S.optional(S.String),
-    numRowsDroppedByWatermark: S.optional(S.String),
-    numRowsUpdated: S.optional(S.String),
-    allRemovalsTimeMs: S.optional(S.String),
-    numRowsTotal: S.optional(S.String),
-    customMetrics: S.optional(StringMap),
-    allUpdatesTimeMs: S.optional(S.String),
-    numStateStoreInstances: S.optional(S.String),
-    commitTimeMs: S.optional(S.String),
-    numShufflePartitions: S.optional(S.String),
-    operatorName: S.optional(S.String),
-    numRowsRemoved: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StateOperatorProgress",
-}) as any as S.Schema<StateOperatorProgress>;
+S.Struct({
+  "memoryUsedBytes": S.optional(S.String),
+  "numRowsDroppedByWatermark": S.optional(S.String),
+  "numRowsUpdated": S.optional(S.String),
+  "allRemovalsTimeMs": S.optional(S.String),
+  "numRowsTotal": S.optional(S.String),
+  "customMetrics": S.optional(StringMap),
+  "allUpdatesTimeMs": S.optional(S.String),
+  "numStateStoreInstances": S.optional(S.String),
+  "commitTimeMs": S.optional(S.String),
+  "numShufflePartitions": S.optional(S.String),
+  "operatorName": S.optional(S.String),
+  "numRowsRemoved": S.optional(S.String),
+}),
+).annotate({ identifier: "StateOperatorProgress" }) as any as S.Schema<StateOperatorProgress>;
 
 export type StateOperatorProgressList = ReadonlyArray<StateOperatorProgress>;
-export const StateOperatorProgressList = /*@__PURE__*/ S.Array(
-  StateOperatorProgress,
-) as any as S.Schema<StateOperatorProgressList>;
+export const StateOperatorProgressList = /*@__PURE__*/ S.Array(StateOperatorProgress) as any as S.Schema<StateOperatorProgressList>;
 
 export interface SourceProgress {
   latestOffset?: string;
@@ -9328,22 +7267,20 @@ export interface SourceProgress {
   metrics?: StringMap;
 }
 export const SourceProgress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latestOffset: S.optional(S.String),
-    processedRowsPerSecond: S.optional(S.Number),
-    startOffset: S.optional(S.String),
-    endOffset: S.optional(S.String),
-    numInputRows: S.optional(S.String),
-    inputRowsPerSecond: S.optional(S.Number),
-    description: S.optional(S.String),
-    metrics: S.optional(StringMap),
-  }),
+S.Struct({
+  "latestOffset": S.optional(S.String),
+  "processedRowsPerSecond": S.optional(S.Number),
+  "startOffset": S.optional(S.String),
+  "endOffset": S.optional(S.String),
+  "numInputRows": S.optional(S.String),
+  "inputRowsPerSecond": S.optional(S.Number),
+  "description": S.optional(S.String),
+  "metrics": S.optional(StringMap),
+}),
 ).annotate({ identifier: "SourceProgress" }) as any as S.Schema<SourceProgress>;
 
 export type SourceProgressList = ReadonlyArray<SourceProgress>;
-export const SourceProgressList = /*@__PURE__*/ S.Array(
-  SourceProgress,
-) as any as S.Schema<SourceProgressList>;
+export const SourceProgressList = /*@__PURE__*/ S.Array(SourceProgress) as any as S.Schema<SourceProgressList>;
 
 export interface SinkProgress {
   description?: string;
@@ -9351,11 +7288,11 @@ export interface SinkProgress {
   metrics?: StringMap;
 }
 export const SinkProgress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    numOutputRows: S.optional(S.String),
-    metrics: S.optional(StringMap),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "numOutputRows": S.optional(S.String),
+  "metrics": S.optional(StringMap),
+}),
 ).annotate({ identifier: "SinkProgress" }) as any as S.Schema<SinkProgress>;
 
 export interface StreamingQueryProgress {
@@ -9373,23 +7310,21 @@ export interface StreamingQueryProgress {
   observedMetrics?: StringMap;
 }
 export const StreamingQueryProgress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    streamingQueryProgressId: S.optional(S.String),
-    eventTime: S.optional(StringMap),
-    stateOperators: S.optional(StateOperatorProgressList),
-    batchId: S.optional(S.String),
-    runId: S.optional(S.String),
-    name: S.optional(S.String),
-    sources: S.optional(SourceProgressList),
-    durationMillis: S.optional(StringMap),
-    sink: S.optional(SinkProgress),
-    batchDuration: S.optional(S.String),
-    timestamp: S.optional(S.String),
-    observedMetrics: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "StreamingQueryProgress",
-}) as any as S.Schema<StreamingQueryProgress>;
+S.Struct({
+  "streamingQueryProgressId": S.optional(S.String),
+  "eventTime": S.optional(StringMap),
+  "stateOperators": S.optional(StateOperatorProgressList),
+  "batchId": S.optional(S.String),
+  "runId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "sources": S.optional(SourceProgressList),
+  "durationMillis": S.optional(StringMap),
+  "sink": S.optional(SinkProgress),
+  "batchDuration": S.optional(S.String),
+  "timestamp": S.optional(S.String),
+  "observedMetrics": S.optional(StringMap),
+}),
+).annotate({ identifier: "StreamingQueryProgress" }) as any as S.Schema<StreamingQueryProgress>;
 
 /** Process Summary */
 export interface ProcessSummary {
@@ -9402,15 +7337,15 @@ export interface ProcessSummary {
   processLogs?: StringMap;
 }
 export const ProcessSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    processId: S.optional(S.String),
-    removeTime: S.optional(S.String),
-    hostPort: S.optional(S.String),
-    isActive: S.optional(S.Boolean),
-    totalCores: S.optional(S.Number),
-    addTime: S.optional(S.String),
-    processLogs: S.optional(StringMap),
-  }),
+S.Struct({
+  "processId": S.optional(S.String),
+  "removeTime": S.optional(S.String),
+  "hostPort": S.optional(S.String),
+  "isActive": S.optional(S.Boolean),
+  "totalCores": S.optional(S.Number),
+  "addTime": S.optional(S.String),
+  "processLogs": S.optional(StringMap),
+}),
 ).annotate({ identifier: "ProcessSummary" }) as any as S.Schema<ProcessSummary>;
 
 export interface AppSummary {
@@ -9418,10 +7353,10 @@ export interface AppSummary {
   numCompletedStages?: number;
 }
 export const AppSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numCompletedJobs: S.optional(S.Number),
-    numCompletedStages: S.optional(S.Number),
-  }),
+S.Struct({
+  "numCompletedJobs": S.optional(S.Number),
+  "numCompletedStages": S.optional(S.Number),
+}),
 ).annotate({ identifier: "AppSummary" }) as any as S.Schema<AppSummary>;
 
 /** Stream Block Data. */
@@ -9437,20 +7372,18 @@ export interface StreamBlockData {
   storageLevel?: string;
 }
 export const StreamBlockData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostPort: S.optional(S.String),
-    useDisk: S.optional(S.Boolean),
-    diskSize: S.optional(S.String),
-    deserialized: S.optional(S.Boolean),
-    memSize: S.optional(S.String),
-    executorId: S.optional(S.String),
-    useMemory: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    storageLevel: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StreamBlockData",
-}) as any as S.Schema<StreamBlockData>;
+S.Struct({
+  "hostPort": S.optional(S.String),
+  "useDisk": S.optional(S.Boolean),
+  "diskSize": S.optional(S.String),
+  "deserialized": S.optional(S.Boolean),
+  "memSize": S.optional(S.String),
+  "executorId": S.optional(S.String),
+  "useMemory": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "storageLevel": S.optional(S.String),
+}),
+).annotate({ identifier: "StreamBlockData" }) as any as S.Schema<StreamBlockData>;
 
 /** Pool Data */
 export interface PoolData {
@@ -9458,10 +7391,10 @@ export interface PoolData {
   stageIds?: StringList;
 }
 export const PoolData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    stageIds: S.optional(StringList),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "stageIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "PoolData" }) as any as S.Schema<PoolData>;
 
 /** Streaming */
@@ -9475,18 +7408,16 @@ export interface StreamingQueryData {
   startTimestamp?: string;
 }
 export const StreamingQueryData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exception: S.optional(S.String),
-    streamingQueryId: S.optional(S.String),
-    name: S.optional(S.String),
-    runId: S.optional(S.String),
-    isActive: S.optional(S.Boolean),
-    endTimestamp: S.optional(S.String),
-    startTimestamp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StreamingQueryData",
-}) as any as S.Schema<StreamingQueryData>;
+S.Struct({
+  "exception": S.optional(S.String),
+  "streamingQueryId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "runId": S.optional(S.String),
+  "isActive": S.optional(S.Boolean),
+  "endTimestamp": S.optional(S.String),
+  "startTimestamp": S.optional(S.String),
+}),
+).annotate({ identifier: "StreamingQueryData" }) as any as S.Schema<StreamingQueryData>;
 
 /** Native Build Info */
 export interface BuildInfo {
@@ -9496,16 +7427,14 @@ export interface BuildInfo {
   buildValue?: string;
 }
 export const BuildInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildKey: S.optional(S.String),
-    buildValue: S.optional(S.String),
-  }),
+S.Struct({
+  "buildKey": S.optional(S.String),
+  "buildValue": S.optional(S.String),
+}),
 ).annotate({ identifier: "BuildInfo" }) as any as S.Schema<BuildInfo>;
 
 export type BuildInfoList = ReadonlyArray<BuildInfo>;
-export const BuildInfoList = /*@__PURE__*/ S.Array(
-  BuildInfo,
-) as any as S.Schema<BuildInfoList>;
+export const BuildInfoList = /*@__PURE__*/ S.Array(BuildInfo) as any as S.Schema<BuildInfoList>;
 
 export interface NativeBuildInfoUiData {
   /** Optional. Build related details. */
@@ -9514,24 +7443,13 @@ export interface NativeBuildInfoUiData {
   buildClass?: string;
 }
 export const NativeBuildInfoUiData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildInfo: S.optional(BuildInfoList),
-    buildClass: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NativeBuildInfoUiData",
-}) as any as S.Schema<NativeBuildInfoUiData>;
+S.Struct({
+  "buildInfo": S.optional(BuildInfoList),
+  "buildClass": S.optional(S.String),
+}),
+).annotate({ identifier: "NativeBuildInfoUiData" }) as any as S.Schema<NativeBuildInfoUiData>;
 
-export type SparkConnectExecutionInfoStateEnum =
-  | "EXECUTION_STATE_UNKNOWN"
-  | "EXECUTION_STATE_STARTED"
-  | "EXECUTION_STATE_COMPILED"
-  | "EXECUTION_STATE_READY"
-  | "EXECUTION_STATE_CANCELED"
-  | "EXECUTION_STATE_FAILED"
-  | "EXECUTION_STATE_FINISHED"
-  | "EXECUTION_STATE_CLOSED"
-  | (string & {});
+export type SparkConnectExecutionInfoStateEnum = "EXECUTION_STATE_UNKNOWN" | "EXECUTION_STATE_STARTED" | "EXECUTION_STATE_COMPILED" | "EXECUTION_STATE_READY" | "EXECUTION_STATE_CANCELED" | "EXECUTION_STATE_FAILED" | "EXECUTION_STATE_FINISHED" | "EXECUTION_STATE_CLOSED";
 export const SparkConnectExecutionInfoStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the lifecycle and details of an Execution via Spark Connect */
@@ -9545,7 +7463,7 @@ export interface SparkConnectExecutionInfo {
   /** Unique identifier for the operation. */
   operationId?: string;
   /** Output only. Current state of the execution. */
-  state?: SparkConnectExecutionInfoStateEnum;
+  state?: SparkConnectExecutionInfoStateEnum | (string & {});
   /** Timestamp when the execution finished. */
   finishTimestamp?: string;
   /** User ID of the user who started the execution. */
@@ -9564,24 +7482,22 @@ export interface SparkConnectExecutionInfo {
   jobIds?: StringList;
 }
 export const SparkConnectExecutionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobTag: S.optional(S.String),
-    sparkSessionTags: S.optional(StringList),
-    sqlExecIds: S.optional(StringList),
-    operationId: S.optional(S.String),
-    state: S.optional(SparkConnectExecutionInfoStateEnum),
-    finishTimestamp: S.optional(S.String),
-    userId: S.optional(S.String),
-    sessionId: S.optional(S.String),
-    detail: S.optional(S.String),
-    statement: S.optional(S.String),
-    startTimestamp: S.optional(S.String),
-    closeTimestamp: S.optional(S.String),
-    jobIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "SparkConnectExecutionInfo",
-}) as any as S.Schema<SparkConnectExecutionInfo>;
+S.Struct({
+  "jobTag": S.optional(S.String),
+  "sparkSessionTags": S.optional(StringList),
+  "sqlExecIds": S.optional(StringList),
+  "operationId": S.optional(S.String),
+  "state": S.optional(SparkConnectExecutionInfoStateEnum),
+  "finishTimestamp": S.optional(S.String),
+  "userId": S.optional(S.String),
+  "sessionId": S.optional(S.String),
+  "detail": S.optional(S.String),
+  "statement": S.optional(S.String),
+  "startTimestamp": S.optional(S.String),
+  "closeTimestamp": S.optional(S.String),
+  "jobIds": S.optional(StringList),
+}),
+).annotate({ identifier: "SparkConnectExecutionInfo" }) as any as S.Schema<SparkConnectExecutionInfo>;
 
 /** Outer message that contains the data obtained from spark listener, packaged with information that is required to process it. */
 export interface SparkWrapperObject {
@@ -9618,41 +7534,37 @@ export interface SparkWrapperObject {
   resourceProfileInfo?: ResourceProfileInfo;
 }
 export const SparkWrapperObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationEnvironmentInfo: S.optional(ApplicationEnvironmentInfo),
-    eventTimestamp: S.optional(S.String),
-    executorSummary: S.optional(ExecutorSummary),
-    sqlExecutionUiData: S.optional(SqlExecutionUiData),
-    nativeSqlExecutionUiData: S.optional(NativeSqlExecutionUiData),
-    sparkConnectSessionInfo: S.optional(SparkConnectSessionInfo),
-    applicationInfo: S.optional(ApplicationInfo),
-    rddStorageInfo: S.optional(RddStorageInfo),
-    applicationId: S.optional(S.String),
-    streamingQueryProgress: S.optional(StreamingQueryProgress),
-    stageData: S.optional(StageData),
-    processSummary: S.optional(ProcessSummary),
-    rddOperationGraph: S.optional(RddOperationGraph),
-    speculationStageSummary: S.optional(SpeculationStageSummary),
-    appSummary: S.optional(AppSummary),
-    streamBlockData: S.optional(StreamBlockData),
-    poolData: S.optional(PoolData),
-    jobData: S.optional(JobData),
-    executorStageSummary: S.optional(ExecutorStageSummary),
-    streamingQueryData: S.optional(StreamingQueryData),
-    sparkPlanGraph: S.optional(SparkPlanGraph),
-    nativeBuildInfoUiData: S.optional(NativeBuildInfoUiData),
-    taskData: S.optional(TaskData),
-    sparkConnectExecutionInfo: S.optional(SparkConnectExecutionInfo),
-    resourceProfileInfo: S.optional(ResourceProfileInfo),
-  }),
-).annotate({
-  identifier: "SparkWrapperObject",
-}) as any as S.Schema<SparkWrapperObject>;
+S.Struct({
+  "applicationEnvironmentInfo": S.optional(ApplicationEnvironmentInfo),
+  "eventTimestamp": S.optional(S.String),
+  "executorSummary": S.optional(ExecutorSummary),
+  "sqlExecutionUiData": S.optional(SqlExecutionUiData),
+  "nativeSqlExecutionUiData": S.optional(NativeSqlExecutionUiData),
+  "sparkConnectSessionInfo": S.optional(SparkConnectSessionInfo),
+  "applicationInfo": S.optional(ApplicationInfo),
+  "rddStorageInfo": S.optional(RddStorageInfo),
+  "applicationId": S.optional(S.String),
+  "streamingQueryProgress": S.optional(StreamingQueryProgress),
+  "stageData": S.optional(StageData),
+  "processSummary": S.optional(ProcessSummary),
+  "rddOperationGraph": S.optional(RddOperationGraph),
+  "speculationStageSummary": S.optional(SpeculationStageSummary),
+  "appSummary": S.optional(AppSummary),
+  "streamBlockData": S.optional(StreamBlockData),
+  "poolData": S.optional(PoolData),
+  "jobData": S.optional(JobData),
+  "executorStageSummary": S.optional(ExecutorStageSummary),
+  "streamingQueryData": S.optional(StreamingQueryData),
+  "sparkPlanGraph": S.optional(SparkPlanGraph),
+  "nativeBuildInfoUiData": S.optional(NativeBuildInfoUiData),
+  "taskData": S.optional(TaskData),
+  "sparkConnectExecutionInfo": S.optional(SparkConnectExecutionInfo),
+  "resourceProfileInfo": S.optional(ResourceProfileInfo),
+}),
+).annotate({ identifier: "SparkWrapperObject" }) as any as S.Schema<SparkWrapperObject>;
 
 export type SparkWrapperObjectList = ReadonlyArray<SparkWrapperObject>;
-export const SparkWrapperObjectList = /*@__PURE__*/ S.Array(
-  SparkWrapperObject,
-) as any as S.Schema<SparkWrapperObjectList>;
+export const SparkWrapperObjectList = /*@__PURE__*/ S.Array(SparkWrapperObject) as any as S.Schema<SparkWrapperObjectList>;
 
 /** Write Spark Application data to internal storage systems */
 export interface WriteSparkApplicationContextRequest {
@@ -9661,13 +7573,11 @@ export interface WriteSparkApplicationContextRequest {
   sparkWrapperObjects?: SparkWrapperObjectList;
 }
 export const WriteSparkApplicationContextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(S.String),
-    sparkWrapperObjects: S.optional(SparkWrapperObjectList),
-  }),
-).annotate({
-  identifier: "WriteSparkApplicationContextRequest",
-}) as any as S.Schema<WriteSparkApplicationContextRequest>;
+S.Struct({
+  "parent": S.optional(S.String),
+  "sparkWrapperObjects": S.optional(SparkWrapperObjectList),
+}),
+).annotate({ identifier: "WriteSparkApplicationContextRequest" }) as any as S.Schema<WriteSparkApplicationContextRequest>;
 
 export interface WriteProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the spark application to write data about in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -9675,29 +7585,18 @@ export interface WriteProjectsLocationsBatchesSparkApplicationsRequest {
   /** Request body */
   body?: WriteSparkApplicationContextRequest;
 }
-export const WriteProjectsLocationsBatchesSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(WriteSparkApplicationContextRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:write",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "WriteProjectsLocationsBatchesSparkApplicationsRequest",
-  }) as any as S.Schema<WriteProjectsLocationsBatchesSparkApplicationsRequest>;
+export const WriteProjectsLocationsBatchesSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(WriteSparkApplicationContextRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:write","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "WriteProjectsLocationsBatchesSparkApplicationsRequest" }) as any as S.Schema<WriteProjectsLocationsBatchesSparkApplicationsRequest>;
 
 /** Response returned as an acknowledgement of receipt of data. */
 export interface WriteSparkApplicationContextResponse {}
-export const WriteSparkApplicationContextResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "WriteSparkApplicationContextResponse",
-}) as any as S.Schema<WriteSparkApplicationContextResponse>;
+export const WriteSparkApplicationContextResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "WriteSparkApplicationContextResponse" }) as any as S.Schema<WriteSparkApplicationContextResponse>;
 
 /** Write Spark Application data to internal storage systems */
 export interface WriteSessionSparkApplicationContextRequest {
@@ -9706,15 +7605,12 @@ export interface WriteSessionSparkApplicationContextRequest {
   /** Required. The batch of spark application context objects sent for ingestion. */
   sparkWrapperObjects?: SparkWrapperObjectList;
 }
-export const WriteSessionSparkApplicationContextRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String),
-      sparkWrapperObjects: S.optional(SparkWrapperObjectList),
-    }),
-  ).annotate({
-    identifier: "WriteSessionSparkApplicationContextRequest",
-  }) as any as S.Schema<WriteSessionSparkApplicationContextRequest>;
+export const WriteSessionSparkApplicationContextRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.optional(S.String),
+  "sparkWrapperObjects": S.optional(SparkWrapperObjectList),
+}),
+).annotate({ identifier: "WriteSessionSparkApplicationContextRequest" }) as any as S.Schema<WriteSessionSparkApplicationContextRequest>;
 
 export interface WriteProjectsLocationsSessionsSparkApplicationsRequest {
   /** Required. The fully qualified name of the spark application to write data about in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" */
@@ -9722,33 +7618,20 @@ export interface WriteProjectsLocationsSessionsSparkApplicationsRequest {
   /** Request body */
   body?: WriteSessionSparkApplicationContextRequest;
 }
-export const WriteProjectsLocationsSessionsSparkApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        WriteSessionSparkApplicationContextRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:write",
-        baseUrl: "https://dataproc.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "WriteProjectsLocationsSessionsSparkApplicationsRequest",
-  }) as any as S.Schema<WriteProjectsLocationsSessionsSparkApplicationsRequest>;
+export const WriteProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(WriteSessionSparkApplicationContextRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:write","baseUrl":"https://dataproc.googleapis.com/"})),
+).annotate({ identifier: "WriteProjectsLocationsSessionsSparkApplicationsRequest" }) as any as S.Schema<WriteProjectsLocationsSessionsSparkApplicationsRequest>;
 
 /** Response returned as an acknowledgement of receipt of data. */
 export interface WriteSessionSparkApplicationContextResponse {}
-export const WriteSessionSparkApplicationContextResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "WriteSessionSparkApplicationContextResponse",
-  }) as any as S.Schema<WriteSessionSparkApplicationContextResponse>;
+export const WriteSessionSparkApplicationContextResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "WriteSessionSparkApplicationContextResponse" }) as any as S.Schema<WriteSessionSparkApplicationContextResponse>;
 
-export type AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsError =
-  NotFound | Forbidden | GcpOpError;
+export type AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain environment details for a Spark Application */
 export const accessEnvironmentInfoProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest,
@@ -9763,8 +7646,7 @@ export const accessEnvironmentInfoProjectsLocationsBatchesSparkApplications: API
   retry: Retry.Retry,
 }));
 
-export type AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsError =
-  NotFound | Forbidden | GcpOpError;
+export type AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain environment details for a Spark Application */
 export const accessEnvironmentInfoProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest,
@@ -9779,10 +7661,7 @@ export const accessEnvironmentInfoProjectsLocationsSessionsSparkApplications: AP
   retry: Retry.Retry,
 }));
 
-export type AccessJobProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessJobProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to a spark job for a Spark Application. */
 export const accessJobProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   AccessJobProjectsLocationsBatchesSparkApplicationsRequest,
@@ -9797,10 +7676,7 @@ export const accessJobProjectsLocationsBatchesSparkApplications: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type AccessJobProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessJobProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to a spark job for a Spark Application. */
 export const accessJobProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   AccessJobProjectsLocationsSessionsSparkApplicationsRequest,
@@ -9815,10 +7691,7 @@ export const accessJobProjectsLocationsSessionsSparkApplications: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type AccessProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain high level information corresponding to a single Spark Application. */
 export const accessProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   AccessProjectsLocationsBatchesSparkApplicationsRequest,
@@ -9833,10 +7706,7 @@ export const accessProjectsLocationsBatchesSparkApplications: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type AccessProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain high level information corresponding to a single Spark Application. */
 export const accessProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   AccessProjectsLocationsSessionsSparkApplicationsRequest,
@@ -9851,10 +7721,7 @@ export const accessProjectsLocationsSessionsSparkApplications: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type AccessSqlPlanProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessSqlPlanProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the number of clusters returned as part of the graph to 10000. */
 export const accessSqlPlanProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest,
@@ -9869,10 +7736,7 @@ export const accessSqlPlanProjectsLocationsBatchesSparkApplications: API.Operati
   retry: Retry.Retry,
 }));
 
-export type AccessSqlPlanProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessSqlPlanProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the number of clusters returned as part of the graph to 10000. */
 export const accessSqlPlanProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest,
@@ -9887,10 +7751,7 @@ export const accessSqlPlanProjectsLocationsSessionsSparkApplications: API.Operat
   retry: Retry.Retry,
 }));
 
-export type AccessSqlQueryProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessSqlQueryProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to a particular SQL Query for a Spark Application. */
 export const accessSqlQueryProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest,
@@ -9905,10 +7766,7 @@ export const accessSqlQueryProjectsLocationsBatchesSparkApplications: API.Operat
   retry: Retry.Retry,
 }));
 
-export type AccessSqlQueryProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessSqlQueryProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to a particular SQL Query for a Spark Application. */
 export const accessSqlQueryProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest,
@@ -9923,10 +7781,7 @@ export const accessSqlQueryProjectsLocationsSessionsSparkApplications: API.Opera
   retry: Retry.Retry,
 }));
 
-export type AccessStageAttemptProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessStageAttemptProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to a spark stage attempt for a Spark Application. */
 export const accessStageAttemptProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest,
@@ -9941,10 +7796,7 @@ export const accessStageAttemptProjectsLocationsBatchesSparkApplications: API.Op
   retry: Retry.Retry,
 }));
 
-export type AccessStageAttemptProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessStageAttemptProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to a spark stage attempt for a Spark Application. */
 export const accessStageAttemptProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest,
@@ -9959,10 +7811,7 @@ export const accessStageAttemptProjectsLocationsSessionsSparkApplications: API.O
   retry: Retry.Retry,
 }));
 
-export type AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain RDD operation graph for a Spark Application Stage. Limits the number of clusters returned as part of the graph to 10000. */
 export const accessStageRddGraphProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest,
@@ -9977,8 +7826,7 @@ export const accessStageRddGraphProjectsLocationsBatchesSparkApplications: API.O
   retry: Retry.Retry,
 }));
 
-export type AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsError =
-  NotFound | Forbidden | GcpOpError;
+export type AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain RDD operation graph for a Spark Application Stage. Limits the number of clusters returned as part of the graph to 10000. */
 export const accessStageRddGraphProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest,
@@ -9993,12 +7841,7 @@ export const accessStageRddGraphProjectsLocationsSessionsSparkApplications: API.
   retry: Retry.Retry,
 }));
 
-export type AnalyzeProjectsLocationsBatchesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AnalyzeProjectsLocationsBatchesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Analyze a Batch for possible recommendations and insights. */
 export const analyzeProjectsLocationsBatches: API.OperationMethod<
   AnalyzeProjectsLocationsBatchesRequest,
@@ -10013,12 +7856,7 @@ export const analyzeProjectsLocationsBatches: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -10033,12 +7871,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsRegionsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsRegionsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list) or regions/{region}/jobs.get (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get). */
 export const cancelProjectsRegionsJobs: API.OperationMethod<
   CancelProjectsRegionsJobsRequest,
@@ -10053,12 +7886,7 @@ export const cancelProjectsRegionsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsRegionsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsRegionsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
 export const cancelProjectsRegionsOperations: API.OperationMethod<
   CancelProjectsRegionsOperationsRequest,
@@ -10073,12 +7901,7 @@ export const cancelProjectsRegionsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates new autoscaling policy. */
 export const createProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   CreateProjectsLocationsAutoscalingPoliciesRequest,
@@ -10093,12 +7916,7 @@ export const createProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBatchesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBatchesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a batch workload that executes asynchronously. */
 export const createProjectsLocationsBatches: API.OperationMethod<
   CreateProjectsLocationsBatchesRequest,
@@ -10113,12 +7931,7 @@ export const createProjectsLocationsBatches: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create an interactive session asynchronously. */
 export const createProjectsLocationsSessions: API.OperationMethod<
   CreateProjectsLocationsSessionsRequest,
@@ -10133,12 +7946,7 @@ export const createProjectsLocationsSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSessionTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsSessionTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a session template synchronously. */
 export const createProjectsLocationsSessionTemplates: API.OperationMethod<
   CreateProjectsLocationsSessionTemplatesRequest,
@@ -10153,12 +7961,7 @@ export const createProjectsLocationsSessionTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates new workflow template. */
 export const createProjectsLocationsWorkflowTemplates: API.OperationMethod<
   CreateProjectsLocationsWorkflowTemplatesRequest,
@@ -10173,12 +7976,7 @@ export const createProjectsLocationsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsRegionsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsRegionsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates new autoscaling policy. */
 export const createProjectsRegionsAutoscalingPolicies: API.OperationMethod<
   CreateProjectsRegionsAutoscalingPoliciesRequest,
@@ -10193,12 +7991,7 @@ export const createProjectsRegionsAutoscalingPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata). */
 export const createProjectsRegionsClusters: API.OperationMethod<
   CreateProjectsRegionsClustersRequest,
@@ -10213,12 +8006,7 @@ export const createProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsRegionsClustersNodeGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsRegionsClustersNodeGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a node group in a cluster. The returned Operation.metadata is NodeGroupOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata). */
 export const createProjectsRegionsClustersNodeGroups: API.OperationMethod<
   CreateProjectsRegionsClustersNodeGroupsRequest,
@@ -10233,12 +8021,7 @@ export const createProjectsRegionsClustersNodeGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsRegionsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsRegionsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates new workflow template. */
 export const createProjectsRegionsWorkflowTemplates: API.OperationMethod<
   CreateProjectsRegionsWorkflowTemplatesRequest,
@@ -10253,12 +8036,7 @@ export const createProjectsRegionsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an autoscaling policy. It is an error to delete an autoscaling policy that is in use by one or more clusters. */
 export const deleteProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   DeleteProjectsLocationsAutoscalingPoliciesRequest,
@@ -10273,12 +8051,7 @@ export const deleteProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBatchesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBatchesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the batch workload resource. If the batch is not in a CANCELLED, SUCCEEDED or FAILED State, the delete operation fails and the response returns FAILED_PRECONDITION. */
 export const deleteProjectsLocationsBatches: API.OperationMethod<
   DeleteProjectsLocationsBatchesRequest,
@@ -10293,12 +8066,7 @@ export const deleteProjectsLocationsBatches: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -10313,12 +8081,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the interactive session resource. If the session is not in terminal state, it is terminated, and then deleted. */
 export const deleteProjectsLocationsSessions: API.OperationMethod<
   DeleteProjectsLocationsSessionsRequest,
@@ -10333,12 +8096,7 @@ export const deleteProjectsLocationsSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsSessionTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsSessionTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a session template. */
 export const deleteProjectsLocationsSessionTemplates: API.OperationMethod<
   DeleteProjectsLocationsSessionTemplatesRequest,
@@ -10353,12 +8111,7 @@ export const deleteProjectsLocationsSessionTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a workflow template. It does not cancel in-progress workflows. */
 export const deleteProjectsLocationsWorkflowTemplates: API.OperationMethod<
   DeleteProjectsLocationsWorkflowTemplatesRequest,
@@ -10373,12 +8126,7 @@ export const deleteProjectsLocationsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsRegionsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsRegionsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an autoscaling policy. It is an error to delete an autoscaling policy that is in use by one or more clusters. */
 export const deleteProjectsRegionsAutoscalingPolicies: API.OperationMethod<
   DeleteProjectsRegionsAutoscalingPoliciesRequest,
@@ -10393,12 +8141,7 @@ export const deleteProjectsRegionsAutoscalingPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata). */
 export const deleteProjectsRegionsClusters: API.OperationMethod<
   DeleteProjectsRegionsClustersRequest,
@@ -10413,12 +8156,7 @@ export const deleteProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsRegionsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsRegionsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the job from the project. If the job is active, the delete fails, and the response returns FAILED_PRECONDITION. */
 export const deleteProjectsRegionsJobs: API.OperationMethod<
   DeleteProjectsRegionsJobsRequest,
@@ -10433,12 +8171,7 @@ export const deleteProjectsRegionsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsRegionsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsRegionsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. */
 export const deleteProjectsRegionsOperations: API.OperationMethod<
   DeleteProjectsRegionsOperationsRequest,
@@ -10453,12 +8186,7 @@ export const deleteProjectsRegionsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsRegionsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsRegionsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a workflow template. It does not cancel in-progress workflows. */
 export const deleteProjectsRegionsWorkflowTemplates: API.OperationMethod<
   DeleteProjectsRegionsWorkflowTemplatesRequest,
@@ -10473,12 +8201,7 @@ export const deleteProjectsRegionsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DiagnoseProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DiagnoseProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets cluster diagnostic information. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata). After the operation completes, Operation.response contains DiagnoseClusterResults (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#diagnoseclusterresults). */
 export const diagnoseProjectsRegionsClusters: API.OperationMethod<
   DiagnoseProjectsRegionsClustersRequest,
@@ -10493,12 +8216,7 @@ export const diagnoseProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest,
@@ -10513,12 +8231,7 @@ export const getIamPolicyProjectsLocationsAutoscalingPolicies: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsWorkflowTemplates: API.OperationMethod<
   GetIamPolicyProjectsLocationsWorkflowTemplatesRequest,
@@ -10533,12 +8246,7 @@ export const getIamPolicyProjectsLocationsWorkflowTemplates: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsRegionsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsRegionsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsRegionsAutoscalingPolicies: API.OperationMethod<
   GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest,
@@ -10553,12 +8261,7 @@ export const getIamPolicyProjectsRegionsAutoscalingPolicies: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsRegionsClusters: API.OperationMethod<
   GetIamPolicyProjectsRegionsClustersRequest,
@@ -10573,12 +8276,7 @@ export const getIamPolicyProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsRegionsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsRegionsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsRegionsJobs: API.OperationMethod<
   GetIamPolicyProjectsRegionsJobsRequest,
@@ -10593,12 +8291,7 @@ export const getIamPolicyProjectsRegionsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsRegionsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsRegionsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsRegionsOperations: API.OperationMethod<
   GetIamPolicyProjectsRegionsOperationsRequest,
@@ -10613,12 +8306,7 @@ export const getIamPolicyProjectsRegionsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsRegionsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsRegionsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsRegionsWorkflowTemplates: API.OperationMethod<
   GetIamPolicyProjectsRegionsWorkflowTemplatesRequest,
@@ -10633,10 +8321,7 @@ export const getIamPolicyProjectsRegionsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsAutoscalingPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves autoscaling policy. */
 export const getProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   GetProjectsLocationsAutoscalingPoliciesRequest,
@@ -10651,10 +8336,7 @@ export const getProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBatchesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBatchesError = NotFound | Forbidden | GcpOpError;
 /** Gets the batch workload resource representation. */
 export const getProjectsLocationsBatches: API.OperationMethod<
   GetProjectsLocationsBatchesRequest,
@@ -10669,10 +8351,7 @@ export const getProjectsLocationsBatches: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -10687,10 +8366,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSessionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsSessionsError = NotFound | Forbidden | GcpOpError;
 /** Gets the resource representation for an interactive session. */
 export const getProjectsLocationsSessions: API.OperationMethod<
   GetProjectsLocationsSessionsRequest,
@@ -10705,10 +8381,7 @@ export const getProjectsLocationsSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSessionTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsSessionTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Gets the resource representation for a session template. */
 export const getProjectsLocationsSessionTemplates: API.OperationMethod<
   GetProjectsLocationsSessionTemplatesRequest,
@@ -10723,10 +8396,7 @@ export const getProjectsLocationsSessionTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsWorkflowTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter. */
 export const getProjectsLocationsWorkflowTemplates: API.OperationMethod<
   GetProjectsLocationsWorkflowTemplatesRequest,
@@ -10741,10 +8411,7 @@ export const getProjectsLocationsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsRegionsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsRegionsAutoscalingPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves autoscaling policy. */
 export const getProjectsRegionsAutoscalingPolicies: API.OperationMethod<
   GetProjectsRegionsAutoscalingPoliciesRequest,
@@ -10774,10 +8441,7 @@ export const getProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsRegionsClustersNodeGroupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsRegionsClustersNodeGroupsError = NotFound | Forbidden | GcpOpError;
 /** Gets the resource representation for a node group in a cluster. */
 export const getProjectsRegionsClustersNodeGroups: API.OperationMethod<
   GetProjectsRegionsClustersNodeGroupsRequest,
@@ -10807,10 +8471,7 @@ export const getProjectsRegionsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsRegionsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsRegionsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsRegionsOperations: API.OperationMethod<
   GetProjectsRegionsOperationsRequest,
@@ -10825,10 +8486,7 @@ export const getProjectsRegionsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsRegionsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsRegionsWorkflowTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter. */
 export const getProjectsRegionsWorkflowTemplates: API.OperationMethod<
   GetProjectsRegionsWorkflowTemplatesRequest,
@@ -10843,12 +8501,7 @@ export const getProjectsRegionsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InjectCredentialsProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InjectCredentialsProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inject encrypted credentials into all of the VMs in a cluster.The target cluster must be a personal auth cluster assigned to the user who is issuing the RPC. */
 export const injectCredentialsProjectsRegionsClusters: API.OperationMethod<
   InjectCredentialsProjectsRegionsClustersRequest,
@@ -10863,12 +8516,7 @@ export const injectCredentialsProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InstantiateInlineProjectsLocationsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InstantiateInlineProjectsLocationsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty. */
 export const instantiateInlineProjectsLocationsWorkflowTemplates: API.OperationMethod<
   InstantiateInlineProjectsLocationsWorkflowTemplatesRequest,
@@ -10883,12 +8531,7 @@ export const instantiateInlineProjectsLocationsWorkflowTemplates: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type InstantiateInlineProjectsRegionsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InstantiateInlineProjectsRegionsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty. */
 export const instantiateInlineProjectsRegionsWorkflowTemplates: API.OperationMethod<
   InstantiateInlineProjectsRegionsWorkflowTemplatesRequest,
@@ -10903,12 +8546,7 @@ export const instantiateInlineProjectsRegionsWorkflowTemplates: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type InstantiateProjectsLocationsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InstantiateProjectsLocationsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty. */
 export const instantiateProjectsLocationsWorkflowTemplates: API.OperationMethod<
   InstantiateProjectsLocationsWorkflowTemplatesRequest,
@@ -10923,12 +8561,7 @@ export const instantiateProjectsLocationsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InstantiateProjectsRegionsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InstantiateProjectsRegionsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty. */
 export const instantiateProjectsRegionsWorkflowTemplates: API.OperationMethod<
   InstantiateProjectsRegionsWorkflowTemplatesRequest,
@@ -10943,10 +8576,7 @@ export const instantiateProjectsRegionsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsAutoscalingPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Lists autoscaling policies in the project. */
 export const listProjectsLocationsAutoscalingPolicies: API.PaginatedOperationMethod<
   ListProjectsLocationsAutoscalingPoliciesRequest,
@@ -10959,16 +8589,10 @@ export const listProjectsLocationsAutoscalingPolicies: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBatchesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBatchesError = NotFound | Forbidden | GcpOpError;
 /** Lists batch workloads. */
 export const listProjectsLocationsBatches: API.PaginatedOperationMethod<
   ListProjectsLocationsBatchesRequest,
@@ -10981,16 +8605,10 @@ export const listProjectsLocationsBatches: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -11003,16 +8621,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsSessionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsSessionsError = NotFound | Forbidden | GcpOpError;
 /** Lists interactive sessions. */
 export const listProjectsLocationsSessions: API.PaginatedOperationMethod<
   ListProjectsLocationsSessionsRequest,
@@ -11025,16 +8637,10 @@ export const listProjectsLocationsSessions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsSessionTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsSessionTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Lists session templates. */
 export const listProjectsLocationsSessionTemplates: API.PaginatedOperationMethod<
   ListProjectsLocationsSessionTemplatesRequest,
@@ -11047,16 +8653,10 @@ export const listProjectsLocationsSessionTemplates: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsWorkflowTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Lists workflows that match the specified filter in the request. */
 export const listProjectsLocationsWorkflowTemplates: API.PaginatedOperationMethod<
   ListProjectsLocationsWorkflowTemplatesRequest,
@@ -11069,16 +8669,10 @@ export const listProjectsLocationsWorkflowTemplates: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsRegionsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsRegionsAutoscalingPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Lists autoscaling policies in the project. */
 export const listProjectsRegionsAutoscalingPolicies: API.PaginatedOperationMethod<
   ListProjectsRegionsAutoscalingPoliciesRequest,
@@ -11091,16 +8685,10 @@ export const listProjectsRegionsAutoscalingPolicies: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsRegionsClustersError = NotFound | Forbidden | GcpOpError;
 /** Lists all regions/{region}/clusters in a project alphabetically. */
 export const listProjectsRegionsClusters: API.PaginatedOperationMethod<
   ListProjectsRegionsClustersRequest,
@@ -11113,10 +8701,7 @@ export const listProjectsRegionsClusters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsRegionsJobsError = NotFound | Forbidden | GcpOpError;
@@ -11132,16 +8717,10 @@ export const listProjectsRegionsJobs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsRegionsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsRegionsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listProjectsRegionsOperations: API.PaginatedOperationMethod<
   ListProjectsRegionsOperationsRequest,
@@ -11154,16 +8733,10 @@ export const listProjectsRegionsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsRegionsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsRegionsWorkflowTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Lists workflows that match the specified filter in the request. */
 export const listProjectsRegionsWorkflowTemplates: API.PaginatedOperationMethod<
   ListProjectsRegionsWorkflowTemplatesRequest,
@@ -11176,18 +8749,10 @@ export const listProjectsRegionsWorkflowTemplates: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsSessionTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsSessionTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the session template synchronously. */
 export const patchProjectsLocationsSessionTemplates: API.OperationMethod<
   PatchProjectsLocationsSessionTemplatesRequest,
@@ -11202,12 +8767,7 @@ export const patchProjectsLocationsSessionTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata). The cluster must be in a RUNNING state or an error is returned. */
 export const patchProjectsRegionsClusters: API.OperationMethod<
   PatchProjectsRegionsClustersRequest,
@@ -11222,12 +8782,7 @@ export const patchProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsRegionsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsRegionsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a job in a project. */
 export const patchProjectsRegionsJobs: API.OperationMethod<
   PatchProjectsRegionsJobsRequest,
@@ -11242,12 +8797,7 @@ export const patchProjectsRegionsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RepairProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RepairProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Repairs a cluster. */
 export const repairProjectsRegionsClusters: API.OperationMethod<
   RepairProjectsRegionsClustersRequest,
@@ -11262,12 +8812,7 @@ export const repairProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RepairProjectsRegionsClustersNodeGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RepairProjectsRegionsClustersNodeGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Repair nodes in a node group. */
 export const repairProjectsRegionsClustersNodeGroups: API.OperationMethod<
   RepairProjectsRegionsClustersNodeGroupsRequest,
@@ -11282,12 +8827,7 @@ export const repairProjectsRegionsClustersNodeGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResizeProjectsRegionsClustersNodeGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResizeProjectsRegionsClustersNodeGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resizes a node group in a cluster. The returned Operation.metadata is NodeGroupOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata). */
 export const resizeProjectsRegionsClustersNodeGroups: API.OperationMethod<
   ResizeProjectsRegionsClustersNodeGroupsRequest,
@@ -11302,10 +8842,7 @@ export const resizeProjectsRegionsClustersNodeGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchExecutorsProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchExecutorsProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to executors for a Spark Application. */
 export const searchExecutorsProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
   SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11318,16 +8855,10 @@ export const searchExecutorsProjectsLocationsBatchesSparkApplications: API.Pagin
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchExecutorsProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchExecutorsProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to executors for a Spark Application. */
 export const searchExecutorsProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
   SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11340,14 +8871,10 @@ export const searchExecutorsProjectsLocationsSessionsSparkApplications: API.Pagi
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsError =
-  NotFound | Forbidden | GcpOpError;
+export type SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain executor summary with respect to a spark stage attempt. */
 export const searchExecutorStageSummaryProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
   SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11355,20 +8882,15 @@ export const searchExecutorStageSummaryProjectsLocationsBatchesSparkApplications
   SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest,
+  input: SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchSparkApplicationExecutorStageSummaryResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsError =
-  NotFound | Forbidden | GcpOpError;
+export type SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain executor summary with respect to a spark stage attempt. */
 export const searchExecutorStageSummaryProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
   SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11376,22 +8898,15 @@ export const searchExecutorStageSummaryProjectsLocationsSessionsSparkApplication
   SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest,
+  input: SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchSessionSparkApplicationExecutorStageSummaryResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchJobsProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchJobsProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain list of spark jobs corresponding to a Spark Application. */
 export const searchJobsProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
   SearchJobsProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11404,16 +8919,10 @@ export const searchJobsProjectsLocationsBatchesSparkApplications: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchJobsProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchJobsProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain list of spark jobs corresponding to a Spark Application. */
 export const searchJobsProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
   SearchJobsProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11426,16 +8935,10 @@ export const searchJobsProjectsLocationsSessionsSparkApplications: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain high level information and list of Spark Applications corresponding to a batch */
 export const searchProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
   SearchProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11448,16 +8951,10 @@ export const searchProjectsLocationsBatchesSparkApplications: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain high level information and list of Spark Applications corresponding to a batch */
 export const searchProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
   SearchProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11470,16 +8967,10 @@ export const searchProjectsLocationsSessionsSparkApplications: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to SQL Queries for a Spark Application. */
 export const searchSqlQueriesProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
   SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11492,16 +8983,10 @@ export const searchSqlQueriesProjectsLocationsBatchesSparkApplications: API.Pagi
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to SQL Queries for a Spark Application. */
 export const searchSqlQueriesProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
   SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11514,16 +8999,10 @@ export const searchSqlQueriesProjectsLocationsSessionsSparkApplications: API.Pag
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to a spark stage attempts for a Spark Application. */
 export const searchStageAttemptsProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
   SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11536,14 +9015,10 @@ export const searchStageAttemptsProjectsLocationsBatchesSparkApplications: API.P
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsError =
-  NotFound | Forbidden | GcpOpError;
+export type SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to a spark stage attempts for a Spark Application. */
 export const searchStageAttemptsProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
   SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11556,14 +9031,10 @@ export const searchStageAttemptsProjectsLocationsSessionsSparkApplications: API.
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError =
-  NotFound | Forbidden | GcpOpError;
+export type SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to tasks for a spark stage attempt for a Spark Application. */
 export const searchStageAttemptTasksProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
   SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11571,20 +9042,15 @@ export const searchStageAttemptTasksProjectsLocationsBatchesSparkApplications: A
   SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest,
+  input: SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchSparkApplicationStageAttemptTasksResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError =
-  NotFound | Forbidden | GcpOpError;
+export type SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to tasks for a spark stage attempt for a Spark Application. */
 export const searchStageAttemptTasksProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
   SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11592,22 +9058,15 @@ export const searchStageAttemptTasksProjectsLocationsSessionsSparkApplications: 
   SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest,
+  input: SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchSessionSparkApplicationStageAttemptTasksResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchStagesProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchStagesProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to stages for a Spark Application. */
 export const searchStagesProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
   SearchStagesProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11620,16 +9079,10 @@ export const searchStagesProjectsLocationsBatchesSparkApplications: API.Paginate
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchStagesProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchStagesProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain data corresponding to stages for a Spark Application. */
 export const searchStagesProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
   SearchStagesProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11642,18 +9095,10 @@ export const searchStagesProjectsLocationsSessionsSparkApplications: API.Paginat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SetIamPolicyProjectsLocationsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest,
@@ -11668,12 +9113,7 @@ export const setIamPolicyProjectsLocationsAutoscalingPolicies: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsLocationsWorkflowTemplates: API.OperationMethod<
   SetIamPolicyProjectsLocationsWorkflowTemplatesRequest,
@@ -11688,12 +9128,7 @@ export const setIamPolicyProjectsLocationsWorkflowTemplates: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsRegionsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsRegionsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsRegionsAutoscalingPolicies: API.OperationMethod<
   SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest,
@@ -11708,12 +9143,7 @@ export const setIamPolicyProjectsRegionsAutoscalingPolicies: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsRegionsClusters: API.OperationMethod<
   SetIamPolicyProjectsRegionsClustersRequest,
@@ -11728,12 +9158,7 @@ export const setIamPolicyProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsRegionsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsRegionsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsRegionsJobs: API.OperationMethod<
   SetIamPolicyProjectsRegionsJobsRequest,
@@ -11748,12 +9173,7 @@ export const setIamPolicyProjectsRegionsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsRegionsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsRegionsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsRegionsOperations: API.OperationMethod<
   SetIamPolicyProjectsRegionsOperationsRequest,
@@ -11768,12 +9188,7 @@ export const setIamPolicyProjectsRegionsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsRegionsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsRegionsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsRegionsWorkflowTemplates: API.OperationMethod<
   SetIamPolicyProjectsRegionsWorkflowTemplatesRequest,
@@ -11788,12 +9203,7 @@ export const setIamPolicyProjectsRegionsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StartProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts a cluster in a project. */
 export const startProjectsRegionsClusters: API.OperationMethod<
   StartProjectsRegionsClustersRequest,
@@ -11808,12 +9218,7 @@ export const startProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StopProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Stops a cluster in a project. */
 export const stopProjectsRegionsClusters: API.OperationMethod<
   StopProjectsRegionsClustersRequest,
@@ -11828,12 +9233,7 @@ export const stopProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SubmitAsOperationProjectsRegionsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SubmitAsOperationProjectsRegionsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Submits job to a cluster. */
 export const submitAsOperationProjectsRegionsJobs: API.OperationMethod<
   SubmitAsOperationProjectsRegionsJobsRequest,
@@ -11848,12 +9248,7 @@ export const submitAsOperationProjectsRegionsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SubmitProjectsRegionsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SubmitProjectsRegionsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Submits a job to a cluster. */
 export const submitProjectsRegionsJobs: API.OperationMethod<
   SubmitProjectsRegionsJobsRequest,
@@ -11868,10 +9263,7 @@ export const submitProjectsRegionsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain summary of Executor Summary for a Spark Application */
 export const summarizeExecutorsProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11886,10 +9278,7 @@ export const summarizeExecutorsProjectsLocationsBatchesSparkApplications: API.Op
   retry: Retry.Retry,
 }));
 
-export type SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain summary of Executor Summary for a Spark Application */
 export const summarizeExecutorsProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11904,10 +9293,7 @@ export const summarizeExecutorsProjectsLocationsSessionsSparkApplications: API.O
   retry: Retry.Retry,
 }));
 
-export type SummarizeJobsProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SummarizeJobsProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain summary of Jobs for a Spark Application */
 export const summarizeJobsProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11922,10 +9308,7 @@ export const summarizeJobsProjectsLocationsBatchesSparkApplications: API.Operati
   retry: Retry.Retry,
 }));
 
-export type SummarizeJobsProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SummarizeJobsProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain summary of Jobs for a Spark Application */
 export const summarizeJobsProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11940,8 +9323,7 @@ export const summarizeJobsProjectsLocationsSessionsSparkApplications: API.Operat
   retry: Retry.Retry,
 }));
 
-export type SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError =
-  NotFound | Forbidden | GcpOpError;
+export type SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain summary of Tasks for a Spark Application Stage Attempt */
 export const summarizeStageAttemptTasksProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11949,16 +9331,14 @@ export const summarizeStageAttemptTasksProjectsLocationsBatchesSparkApplications
   SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest,
+  input: SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest,
   output: SummarizeSparkApplicationStageAttemptTasksResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError =
-  NotFound | Forbidden | GcpOpError;
+export type SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain summary of Tasks for a Spark Application Stage Attempt */
 export const summarizeStageAttemptTasksProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11966,18 +9346,14 @@ export const summarizeStageAttemptTasksProjectsLocationsSessionsSparkApplication
   SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest,
+  input: SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest,
   output: SummarizeSessionSparkApplicationStageAttemptTasksResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type SummarizeStagesProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SummarizeStagesProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain summary of Stages for a Spark Application */
 export const summarizeStagesProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11992,10 +9368,7 @@ export const summarizeStagesProjectsLocationsBatchesSparkApplications: API.Opera
   retry: Retry.Retry,
 }));
 
-export type SummarizeStagesProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SummarizeStagesProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Obtain summary of Stages for a Spark Application */
 export const summarizeStagesProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest,
@@ -12010,12 +9383,7 @@ export const summarizeStagesProjectsLocationsSessionsSparkApplications: API.Oper
   retry: Retry.Retry,
 }));
 
-export type TerminateProjectsLocationsSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TerminateProjectsLocationsSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Terminates the interactive session. */
 export const terminateProjectsLocationsSessions: API.OperationMethod<
   TerminateProjectsLocationsSessionsRequest,
@@ -12030,12 +9398,7 @@ export const terminateProjectsLocationsSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest,
@@ -12050,12 +9413,7 @@ export const testIamPermissionsProjectsLocationsAutoscalingPolicies: API.Operati
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsWorkflowTemplates: API.OperationMethod<
   TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest,
@@ -12070,12 +9428,7 @@ export const testIamPermissionsProjectsLocationsWorkflowTemplates: API.Operation
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsRegionsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsRegionsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsRegionsAutoscalingPolicies: API.OperationMethod<
   TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest,
@@ -12090,12 +9443,7 @@ export const testIamPermissionsProjectsRegionsAutoscalingPolicies: API.Operation
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsRegionsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsRegionsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsRegionsClusters: API.OperationMethod<
   TestIamPermissionsProjectsRegionsClustersRequest,
@@ -12110,12 +9458,7 @@ export const testIamPermissionsProjectsRegionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsRegionsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsRegionsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsRegionsJobs: API.OperationMethod<
   TestIamPermissionsProjectsRegionsJobsRequest,
@@ -12130,12 +9473,7 @@ export const testIamPermissionsProjectsRegionsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsRegionsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsRegionsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsRegionsOperations: API.OperationMethod<
   TestIamPermissionsProjectsRegionsOperationsRequest,
@@ -12150,12 +9488,7 @@ export const testIamPermissionsProjectsRegionsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsRegionsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsRegionsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsRegionsWorkflowTemplates: API.OperationMethod<
   TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest,
@@ -12170,12 +9503,7 @@ export const testIamPermissionsProjectsRegionsWorkflowTemplates: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsLocationsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsLocationsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates (replaces) autoscaling policy.Disabled check for update_mask, because all updates will be full replacements. */
 export const updateProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   UpdateProjectsLocationsAutoscalingPoliciesRequest,
@@ -12190,12 +9518,7 @@ export const updateProjectsLocationsAutoscalingPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsLocationsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsLocationsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates (replaces) workflow template. The updated template must contain version that matches the current server version. */
 export const updateProjectsLocationsWorkflowTemplates: API.OperationMethod<
   UpdateProjectsLocationsWorkflowTemplatesRequest,
@@ -12210,12 +9533,7 @@ export const updateProjectsLocationsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsRegionsAutoscalingPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsRegionsAutoscalingPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates (replaces) autoscaling policy.Disabled check for update_mask, because all updates will be full replacements. */
 export const updateProjectsRegionsAutoscalingPolicies: API.OperationMethod<
   UpdateProjectsRegionsAutoscalingPoliciesRequest,
@@ -12230,12 +9548,7 @@ export const updateProjectsRegionsAutoscalingPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsRegionsWorkflowTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsRegionsWorkflowTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates (replaces) workflow template. The updated template must contain version that matches the current server version. */
 export const updateProjectsRegionsWorkflowTemplates: API.OperationMethod<
   UpdateProjectsRegionsWorkflowTemplatesRequest,
@@ -12250,12 +9563,7 @@ export const updateProjectsRegionsWorkflowTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WriteProjectsLocationsBatchesSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WriteProjectsLocationsBatchesSparkApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Write wrapper objects from dataplane to spanner */
 export const writeProjectsLocationsBatchesSparkApplications: API.OperationMethod<
   WriteProjectsLocationsBatchesSparkApplicationsRequest,
@@ -12270,12 +9578,7 @@ export const writeProjectsLocationsBatchesSparkApplications: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type WriteProjectsLocationsSessionsSparkApplicationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WriteProjectsLocationsSessionsSparkApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Write wrapper objects from dataplane to spanner */
 export const writeProjectsLocationsSessionsSparkApplications: API.OperationMethod<
   WriteProjectsLocationsSessionsSparkApplicationsRequest,
@@ -12289,3 +9592,4 @@ export const writeProjectsLocationsSessionsSparkApplications: API.OperationMetho
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

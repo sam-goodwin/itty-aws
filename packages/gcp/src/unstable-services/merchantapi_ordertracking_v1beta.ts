@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
@@ -68,10 +68,10 @@ export interface TimeZone {
   version?: string;
 }
 export const TimeZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
@@ -96,24 +96,20 @@ export interface DateTime {
   nanos?: number;
 }
 export const DateTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minutes: S.optional(S.Number),
-    month: S.optional(S.Number),
-    seconds: S.optional(S.Number),
-    utcOffset: S.optional(S.String),
-    day: S.optional(S.Number),
-    year: S.optional(S.Number),
-    timeZone: S.optional(TimeZone),
-    hours: S.optional(S.Number),
-    nanos: S.optional(S.Number),
-  }),
+S.Struct({
+  "minutes": S.optional(S.Number),
+  "month": S.optional(S.Number),
+  "seconds": S.optional(S.Number),
+  "utcOffset": S.optional(S.String),
+  "day": S.optional(S.Number),
+  "year": S.optional(S.Number),
+  "timeZone": S.optional(TimeZone),
+  "hours": S.optional(S.Number),
+  "nanos": S.optional(S.Number),
+}),
 ).annotate({ identifier: "DateTime" }) as any as S.Schema<DateTime>;
 
-export type ShippingInfoShippingStatusEnum =
-  | "SHIPPING_STATE_UNSPECIFIED"
-  | "SHIPPED"
-  | "DELIVERED"
-  | (string & {});
+export type ShippingInfoShippingStatusEnum = "SHIPPING_STATE_UNSPECIFIED" | "SHIPPED" | "DELIVERED";
 export const ShippingInfoShippingStatusEnum = /*@__PURE__*/ S.String;
 
 /** The shipping information for the order. */
@@ -142,25 +138,23 @@ export interface ShippingInfo {
   shippingStatus?: ShippingInfoShippingStatusEnum;
 }
 export const ShippingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    carrierService: S.optional(S.String),
-    earliestDeliveryPromiseTime: S.optional(DateTime),
-    shippedTime: S.optional(DateTime),
-    carrier: S.optional(S.String),
-    originRegionCode: S.optional(S.String),
-    originPostalCode: S.optional(S.String),
-    shipmentId: S.optional(S.String),
-    latestDeliveryPromiseTime: S.optional(DateTime),
-    actualDeliveryTime: S.optional(DateTime),
-    trackingId: S.optional(S.String),
-    shippingStatus: S.optional(ShippingInfoShippingStatusEnum),
-  }),
+S.Struct({
+  "carrierService": S.optional(S.String),
+  "earliestDeliveryPromiseTime": S.optional(DateTime),
+  "shippedTime": S.optional(DateTime),
+  "carrier": S.optional(S.String),
+  "originRegionCode": S.optional(S.String),
+  "originPostalCode": S.optional(S.String),
+  "shipmentId": S.optional(S.String),
+  "latestDeliveryPromiseTime": S.optional(DateTime),
+  "actualDeliveryTime": S.optional(DateTime),
+  "trackingId": S.optional(S.String),
+  "shippingStatus": S.optional(ShippingInfoShippingStatusEnum),
+}),
 ).annotate({ identifier: "ShippingInfo" }) as any as S.Schema<ShippingInfo>;
 
 export type ShippingInfoList = ReadonlyArray<ShippingInfo>;
-export const ShippingInfoList = /*@__PURE__*/ S.Array(
-  ShippingInfo,
-) as any as S.Schema<ShippingInfoList>;
+export const ShippingInfoList = /*@__PURE__*/ S.Array(ShippingInfo) as any as S.Schema<ShippingInfoList>;
 
 /** The price represented as a number and currency. */
 export interface Price {
@@ -170,16 +164,14 @@ export interface Price {
   currencyCode?: string;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amountMicros: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-  }),
+S.Struct({
+  "amountMicros": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The line items of the order. */
 export interface LineItemDetails {
@@ -201,24 +193,20 @@ export interface LineItemDetails {
   brand?: string;
 }
 export const LineItemDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    lineItemId: S.optional(S.String),
-    gtin: S.optional(S.String),
-    productTitle: S.optional(S.String),
-    mpn: S.optional(S.String),
-    quantity: S.optional(S.String),
-    gtins: S.optional(StringList),
-    brand: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LineItemDetails",
-}) as any as S.Schema<LineItemDetails>;
+S.Struct({
+  "productId": S.optional(S.String),
+  "lineItemId": S.optional(S.String),
+  "gtin": S.optional(S.String),
+  "productTitle": S.optional(S.String),
+  "mpn": S.optional(S.String),
+  "quantity": S.optional(S.String),
+  "gtins": S.optional(StringList),
+  "brand": S.optional(S.String),
+}),
+).annotate({ identifier: "LineItemDetails" }) as any as S.Schema<LineItemDetails>;
 
 export type LineItemDetailsList = ReadonlyArray<LineItemDetails>;
-export const LineItemDetailsList = /*@__PURE__*/ S.Array(
-  LineItemDetails,
-) as any as S.Schema<LineItemDetailsList>;
+export const LineItemDetailsList = /*@__PURE__*/ S.Array(LineItemDetails) as any as S.Schema<LineItemDetailsList>;
 
 /** Represents how many items are in the shipment for the given shipment_id and line_item_id. */
 export interface ShipmentLineItemMapping {
@@ -230,20 +218,15 @@ export interface ShipmentLineItemMapping {
   shipmentId?: string;
 }
 export const ShipmentLineItemMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lineItemId: S.optional(S.String),
-    quantity: S.optional(S.String),
-    shipmentId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ShipmentLineItemMapping",
-}) as any as S.Schema<ShipmentLineItemMapping>;
+S.Struct({
+  "lineItemId": S.optional(S.String),
+  "quantity": S.optional(S.String),
+  "shipmentId": S.optional(S.String),
+}),
+).annotate({ identifier: "ShipmentLineItemMapping" }) as any as S.Schema<ShipmentLineItemMapping>;
 
-export type ShipmentLineItemMappingList =
-  ReadonlyArray<ShipmentLineItemMapping>;
-export const ShipmentLineItemMappingList = /*@__PURE__*/ S.Array(
-  ShipmentLineItemMapping,
-) as any as S.Schema<ShipmentLineItemMappingList>;
+export type ShipmentLineItemMappingList = ReadonlyArray<ShipmentLineItemMapping>;
+export const ShipmentLineItemMappingList = /*@__PURE__*/ S.Array(ShipmentLineItemMapping) as any as S.Schema<ShipmentLineItemMappingList>;
 
 /** Represents a business trade from which signals are extracted, such as shipping. */
 export interface OrderTrackingSignal {
@@ -269,21 +252,19 @@ export interface OrderTrackingSignal {
   shipmentLineItemMapping?: ShipmentLineItemMappingList;
 }
 export const OrderTrackingSignal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shippingInfo: S.optional(ShippingInfoList),
-    deliveryPostalCode: S.optional(S.String),
-    merchantId: S.optional(S.String),
-    orderId: S.optional(S.String),
-    customerShippingFee: S.optional(Price),
-    orderTrackingSignalId: S.optional(S.String),
-    deliveryRegionCode: S.optional(S.String),
-    orderCreatedTime: S.optional(DateTime),
-    lineItems: S.optional(LineItemDetailsList),
-    shipmentLineItemMapping: S.optional(ShipmentLineItemMappingList),
-  }),
-).annotate({
-  identifier: "OrderTrackingSignal",
-}) as any as S.Schema<OrderTrackingSignal>;
+S.Struct({
+  "shippingInfo": S.optional(ShippingInfoList),
+  "deliveryPostalCode": S.optional(S.String),
+  "merchantId": S.optional(S.String),
+  "orderId": S.optional(S.String),
+  "customerShippingFee": S.optional(Price),
+  "orderTrackingSignalId": S.optional(S.String),
+  "deliveryRegionCode": S.optional(S.String),
+  "orderCreatedTime": S.optional(DateTime),
+  "lineItems": S.optional(LineItemDetailsList),
+  "shipmentLineItemMapping": S.optional(ShipmentLineItemMappingList),
+}),
+).annotate({ identifier: "OrderTrackingSignal" }) as any as S.Schema<OrderTrackingSignal>;
 
 export interface CreateAccountsOrderTrackingSignalsRequest {
   /** Output only. The ID that uniquely identifies this order tracking signal. */
@@ -293,29 +274,15 @@ export interface CreateAccountsOrderTrackingSignalsRequest {
   /** Request body */
   body?: OrderTrackingSignal;
 }
-export const CreateAccountsOrderTrackingSignalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      orderTrackingSignalId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(OrderTrackingSignal.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "ordertracking/v1beta/{+parent}/orderTrackingSignals",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateAccountsOrderTrackingSignalsRequest",
-  }) as any as S.Schema<CreateAccountsOrderTrackingSignalsRequest>;
+export const CreateAccountsOrderTrackingSignalsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orderTrackingSignalId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(OrderTrackingSignal.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"ordertracking/v1beta/{+parent}/orderTrackingSignals","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsOrderTrackingSignalsRequest" }) as any as S.Schema<CreateAccountsOrderTrackingSignalsRequest>;
 
-export type CreateAccountsOrderTrackingSignalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsOrderTrackingSignalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates new order tracking signal. */
 export const createAccountsOrderTrackingSignals: API.OperationMethod<
   CreateAccountsOrderTrackingSignalsRequest,
@@ -329,3 +296,4 @@ export const createAccountsOrderTrackingSignals: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -130,8 +130,7 @@ export type Protocol =
   | "MqttV3_1_1"
   | "MqttV5"
   | "MqttV3_1_1_OverWebSocket"
-  | "MqttV5_OverWebSocket"
-  | (string & {});
+  | "MqttV5_OverWebSocket";
 export const Protocol = /*@__PURE__*/ S.String;
 
 export interface SuiteDefinitionConfiguration {
@@ -234,15 +233,14 @@ export const DeleteSuiteDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSuiteDefinitionResponse>;
 export type AuthenticationMethod =
   | "X509ClientCertificate"
-  | "SignatureVersion4"
-  | (string & {});
+  | "SignatureVersion4";
 export const AuthenticationMethod = /*@__PURE__*/ S.String;
 
 export interface GetEndpointRequest {
   thingArn?: string;
   certificateArn?: string;
   deviceRoleArn?: string;
-  authenticationMethod?: AuthenticationMethod;
+  authenticationMethod?: AuthenticationMethod | (string & {});
 }
 export const GetEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -378,15 +376,14 @@ export type Status =
   | "STOPPING"
   | "STOPPED"
   | "PASS_WITH_WARNINGS"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const Status = /*@__PURE__*/ S.String;
 
 export type LogUrl = string;
 export type Warnings = string;
 export type Failure = string;
 export type TestCaseScenarioId = string;
-export type TestCaseScenarioType = "Advanced" | "Basic" | (string & {});
+export type TestCaseScenarioType = "Advanced" | "Basic";
 export const TestCaseScenarioType = /*@__PURE__*/ S.String;
 
 export type TestCaseScenarioStatus =
@@ -398,8 +395,7 @@ export type TestCaseScenarioStatus =
   | "STOPPING"
   | "STOPPED"
   | "PASS_WITH_WARNINGS"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const TestCaseScenarioStatus = /*@__PURE__*/ S.String;
 
 export type SystemMessage = string;
@@ -480,8 +476,7 @@ export type SuiteRunStatus =
   | "STOPPING"
   | "STOPPED"
   | "PASS_WITH_WARNINGS"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const SuiteRunStatus = /*@__PURE__*/ S.String;
 
 export type ErrorReason = string;

@@ -63,7 +63,7 @@ export const EventDefinitionRecordTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EventDefinitionRecordTagsList>;
 
 /** * `allow` - Allow * `reject` - Reject */
-export type EnforcementModeEnum = "allow" | "reject" | (string & {});
+export type EnforcementModeEnum = "allow" | "reject";
 export const EnforcementModeEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -81,11 +81,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -177,7 +176,7 @@ export interface EventDefinitionsCreateRequest {
   tags?: EventDefinitionsCreateRequestTagsList;
   verified?: boolean;
   hidden?: boolean | null;
-  enforcement_mode?: EnforcementModeEnum;
+  enforcement_mode?: EnforcementModeEnum | (string & {});
   /** Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event. */
   primary_property?: string | null;
   post_to_slack?: boolean;
@@ -422,7 +421,7 @@ export interface EventDefinitionsPartialUpdateRequest {
   tags?: EventDefinitionsPartialUpdateRequestTagsList;
   verified?: boolean;
   hidden?: boolean | null;
-  enforcement_mode?: EnforcementModeEnum;
+  enforcement_mode?: EnforcementModeEnum | (string & {});
   /** Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event. */
   primary_property?: string | null;
   post_to_slack?: boolean;
@@ -606,7 +605,7 @@ export interface EventDefinitionsUpdateRequest {
   tags?: EventDefinitionsUpdateRequestTagsList;
   verified?: boolean;
   hidden?: boolean | null;
-  enforcement_mode?: EnforcementModeEnum;
+  enforcement_mode?: EnforcementModeEnum | (string & {});
   /** Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event. */
   primary_property?: string | null;
   post_to_slack?: boolean;

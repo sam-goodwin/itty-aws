@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,27 +72,18 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://cloudscheduler.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** Settings that determine the retry behavior. For more information, see [Retry jobs](/scheduler/docs/configuring/retry-jobs). By default, if a job does not complete successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with exponential backoff according to the settings in RetryConfig. */
 export interface RetryConfig {
@@ -110,25 +99,20 @@ export interface RetryConfig {
   maxDoublings?: number;
 }
 export const RetryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxRetryDuration: S.optional(S.String),
-    retryCount: S.optional(S.Number),
-    minBackoffDuration: S.optional(S.String),
-    maxBackoffDuration: S.optional(S.String),
-    maxDoublings: S.optional(S.Number),
-  }),
+S.Struct({
+  "maxRetryDuration": S.optional(S.String),
+  "retryCount": S.optional(S.Number),
+  "minBackoffDuration": S.optional(S.String),
+  "maxBackoffDuration": S.optional(S.String),
+  "maxDoublings": S.optional(S.Number),
+}),
 ).annotate({ identifier: "RetryConfig" }) as any as S.Schema<RetryConfig>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -140,30 +124,18 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type AppEngineHttpTargetHttpMethodEnum =
-  | "HTTP_METHOD_UNSPECIFIED"
-  | "POST"
-  | "GET"
-  | "HEAD"
-  | "PUT"
-  | "DELETE"
-  | "PATCH"
-  | "OPTIONS"
-  | (string & {});
+export type AppEngineHttpTargetHttpMethodEnum = "HTTP_METHOD_UNSPECIFIED" | "POST" | "GET" | "HEAD" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
 export const AppEngineHttpTargetHttpMethodEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** App Engine Routing. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed). */
 export interface AppEngineRouting {
@@ -177,15 +149,13 @@ export interface AppEngineRouting {
   host?: string;
 }
 export const AppEngineRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instance: S.optional(S.String),
-    service: S.optional(S.String),
-    version: S.optional(S.String),
-    host: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppEngineRouting",
-}) as any as S.Schema<AppEngineRouting>;
+S.Struct({
+  "instance": S.optional(S.String),
+  "service": S.optional(S.String),
+  "version": S.optional(S.String),
+  "host": S.optional(S.String),
+}),
+).annotate({ identifier: "AppEngineRouting" }) as any as S.Schema<AppEngineRouting>;
 
 /** App Engine target. The job will be pushed to a job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. Error 503 is considered an App Engine system error instead of an application error. Requests returning error 503 will be retried regardless of retry configuration and not counted against retry counts. Any other response code, or a failure to receive a response before the deadline, constitutes a failed attempt. */
 export interface AppEngineHttpTarget {
@@ -201,27 +171,16 @@ export interface AppEngineHttpTarget {
   relativeUri?: string;
 }
 export const AppEngineHttpTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    httpMethod: S.optional(AppEngineHttpTargetHttpMethodEnum),
-    headers: S.optional(StringMap),
-    appEngineRouting: S.optional(AppEngineRouting),
-    body: S.optional(S.String),
-    relativeUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppEngineHttpTarget",
-}) as any as S.Schema<AppEngineHttpTarget>;
+S.Struct({
+  "httpMethod": S.optional(AppEngineHttpTargetHttpMethodEnum),
+  "headers": S.optional(StringMap),
+  "appEngineRouting": S.optional(AppEngineRouting),
+  "body": S.optional(S.String),
+  "relativeUri": S.optional(S.String),
+}),
+).annotate({ identifier: "AppEngineHttpTarget" }) as any as S.Schema<AppEngineHttpTarget>;
 
-export type HttpTargetHttpMethodEnum =
-  | "HTTP_METHOD_UNSPECIFIED"
-  | "POST"
-  | "GET"
-  | "HEAD"
-  | "PUT"
-  | "DELETE"
-  | "PATCH"
-  | "OPTIONS"
-  | (string & {});
+export type HttpTargetHttpMethodEnum = "HTTP_METHOD_UNSPECIFIED" | "POST" | "GET" | "HEAD" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
 export const HttpTargetHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself. */
@@ -232,10 +191,10 @@ export interface OidcToken {
   audience?: string;
 }
 export const OidcToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceAccountEmail: S.optional(S.String),
-    audience: S.optional(S.String),
-  }),
+S.Struct({
+  "serviceAccountEmail": S.optional(S.String),
+  "audience": S.optional(S.String),
+}),
 ).annotate({ identifier: "OidcToken" }) as any as S.Schema<OidcToken>;
 
 /** Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com. */
@@ -246,10 +205,10 @@ export interface OAuthToken {
   scope?: string;
 }
 export const OAuthToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceAccountEmail: S.optional(S.String),
-    scope: S.optional(S.String),
-  }),
+S.Struct({
+  "serviceAccountEmail": S.optional(S.String),
+  "scope": S.optional(S.String),
+}),
 ).annotate({ identifier: "OAuthToken" }) as any as S.Schema<OAuthToken>;
 
 /** Http target. The job will be pushed to the job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. A failure to receive a response constitutes a failed execution. For a redirected request, the response returned by the redirected request is considered. */
@@ -268,14 +227,14 @@ export interface HttpTarget {
   oauthToken?: OAuthToken;
 }
 export const HttpTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    httpMethod: S.optional(HttpTargetHttpMethodEnum),
-    headers: S.optional(StringMap),
-    uri: S.optional(S.String),
-    oidcToken: S.optional(OidcToken),
-    oauthToken: S.optional(OAuthToken),
-  }),
+S.Struct({
+  "body": S.optional(S.String),
+  "httpMethod": S.optional(HttpTargetHttpMethodEnum),
+  "headers": S.optional(StringMap),
+  "uri": S.optional(S.String),
+  "oidcToken": S.optional(OidcToken),
+  "oauthToken": S.optional(OAuthToken),
+}),
 ).annotate({ identifier: "HttpTarget" }) as any as S.Schema<HttpTarget>;
 
 /** Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic. */
@@ -288,20 +247,14 @@ export interface PubsubTarget {
   data?: string;
 }
 export const PubsubTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(StringMap),
-    topicName: S.optional(S.String),
-    data: S.optional(S.String),
-  }),
+S.Struct({
+  "attributes": S.optional(StringMap),
+  "topicName": S.optional(S.String),
+  "data": S.optional(S.String),
+}),
 ).annotate({ identifier: "PubsubTarget" }) as any as S.Schema<PubsubTarget>;
 
-export type JobStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "PAUSED"
-  | "DISABLED"
-  | "UPDATE_FAILED"
-  | (string & {});
+export type JobStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "PAUSED" | "DISABLED" | "UPDATE_FAILED";
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a job. The maximum allowed size for a job is 1MB. */
@@ -338,23 +291,23 @@ export interface Job {
   lastAttemptTime?: string;
 }
 export const Job = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retryConfig: S.optional(RetryConfig),
-    status: S.optional(Status),
-    scheduleTime: S.optional(S.String),
-    attemptDeadline: S.optional(S.String),
-    appEngineHttpTarget: S.optional(AppEngineHttpTarget),
-    name: S.optional(S.String),
-    userUpdateTime: S.optional(S.String),
-    httpTarget: S.optional(HttpTarget),
-    schedule: S.optional(S.String),
-    pubsubTarget: S.optional(PubsubTarget),
-    satisfiesPzs: S.optional(S.Boolean),
-    timeZone: S.optional(S.String),
-    description: S.optional(S.String),
-    state: S.optional(JobStateEnum),
-    lastAttemptTime: S.optional(S.String),
-  }),
+S.Struct({
+  "retryConfig": S.optional(RetryConfig),
+  "status": S.optional(Status),
+  "scheduleTime": S.optional(S.String),
+  "attemptDeadline": S.optional(S.String),
+  "appEngineHttpTarget": S.optional(AppEngineHttpTarget),
+  "name": S.optional(S.String),
+  "userUpdateTime": S.optional(S.String),
+  "httpTarget": S.optional(HttpTarget),
+  "schedule": S.optional(S.String),
+  "pubsubTarget": S.optional(PubsubTarget),
+  "satisfiesPzs": S.optional(S.Boolean),
+  "timeZone": S.optional(S.String),
+  "description": S.optional(S.String),
+  "state": S.optional(JobStateEnum),
+  "lastAttemptTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 export interface CreateProjectsLocationsJobsRequest {
@@ -364,75 +317,41 @@ export interface CreateProjectsLocationsJobsRequest {
   body?: Job;
 }
 export const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Job.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/jobs",
-      baseUrl: "https://cloudscheduler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsLocationsJobsRequest",
-}) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Job.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/jobs","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsJobsRequest" }) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
 
 export interface DeleteProjectsLocationsJobsRequest {
   /** Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. */
   name: string;
 }
 export const DeleteProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudscheduler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsLocationsJobsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsJobsRequest" }) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudscheduler.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetCmekConfigProjectsLocationsRequest {
   /** Required. The config name. For example: projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig */
   name: string;
 }
-export const GetCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudscheduler.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetCmekConfigProjectsLocationsRequest",
-}) as any as S.Schema<GetCmekConfigProjectsLocationsRequest>;
+export const GetCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "GetCmekConfigProjectsLocationsRequest" }) as any as S.Schema<GetCmekConfigProjectsLocationsRequest>;
 
 /** Describes the project/location configuration of Cloud Scheduler Resources. */
 export interface CmekConfig {
@@ -442,10 +361,10 @@ export interface CmekConfig {
   kmsKeyName?: string;
 }
 export const CmekConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    kmsKeyName: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "kmsKeyName": S.optional(S.String),
+}),
 ).annotate({ identifier: "CmekConfig" }) as any as S.Schema<CmekConfig>;
 
 export interface GetProjectsLocationsRequest {
@@ -453,18 +372,10 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudscheduler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -480,13 +391,13 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-    metadata: S.optional(DocumentMap),
-    locationId: S.optional(S.String),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "labels": S.optional(StringMap),
+  "metadata": S.optional(DocumentMap),
+  "locationId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsJobsRequest {
@@ -494,37 +405,20 @@ export interface GetProjectsLocationsJobsRequest {
   name: string;
 }
 export const GetProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudscheduler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsJobsRequest",
-}) as any as S.Schema<GetProjectsLocationsJobsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsJobsRequest" }) as any as S.Schema<GetProjectsLocationsJobsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudscheduler.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
@@ -540,19 +434,17 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    done: S.optional(S.Boolean),
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-  }),
+S.Struct({
+  "done": S.optional(S.Boolean),
+  "response": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(Status),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -567,27 +459,17 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://cloudscheduler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -597,13 +479,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsJobsRequest {
   /** Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`. */
@@ -614,20 +494,12 @@ export interface ListProjectsLocationsJobsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/jobs",
-      baseUrl: "https://cloudscheduler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsJobsRequest",
-}) as any as S.Schema<ListProjectsLocationsJobsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/jobs","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsJobsRequest" }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
 export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
@@ -640,13 +512,11 @@ export interface ListJobsResponse {
   nextPageToken?: string;
 }
 export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobs: S.optional(JobList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListJobsResponse",
-}) as any as S.Schema<ListJobsResponse>;
+S.Struct({
+  "jobs": S.optional(JobList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListJobsResponse" }) as any as S.Schema<ListJobsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -660,29 +530,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://cloudscheduler.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -694,14 +553,12 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsJobsRequest {
   /** Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling [locations.list](/scheduler/docs/reference/rest/v1/projects.locations/list). For more information, see [Cloud Scheduler locations](/scheduler/docs/locations). * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters. */
@@ -712,28 +569,18 @@ export interface PatchProjectsLocationsJobsRequest {
   body?: Job;
 }
 export const PatchProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Job.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudscheduler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsLocationsJobsRequest",
-}) as any as S.Schema<PatchProjectsLocationsJobsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Job.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsJobsRequest" }) as any as S.Schema<PatchProjectsLocationsJobsRequest>;
 
 /** Request message for PauseJob. */
 export interface PauseJobRequest {}
 export const PauseJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PauseJobRequest",
-}) as any as S.Schema<PauseJobRequest>;
+S.Struct({}),
+).annotate({ identifier: "PauseJobRequest" }) as any as S.Schema<PauseJobRequest>;
 
 export interface PauseProjectsLocationsJobsRequest {
   /** Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. */
@@ -742,27 +589,17 @@ export interface PauseProjectsLocationsJobsRequest {
   body?: PauseJobRequest;
 }
 export const PauseProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(PauseJobRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:pause",
-      baseUrl: "https://cloudscheduler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PauseProjectsLocationsJobsRequest",
-}) as any as S.Schema<PauseProjectsLocationsJobsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(PauseJobRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:pause","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "PauseProjectsLocationsJobsRequest" }) as any as S.Schema<PauseProjectsLocationsJobsRequest>;
 
 /** Request message for ResumeJob. */
 export interface ResumeJobRequest {}
 export const ResumeJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResumeJobRequest",
-}) as any as S.Schema<ResumeJobRequest>;
+S.Struct({}),
+).annotate({ identifier: "ResumeJobRequest" }) as any as S.Schema<ResumeJobRequest>;
 
 export interface ResumeProjectsLocationsJobsRequest {
   /** Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. */
@@ -771,24 +608,16 @@ export interface ResumeProjectsLocationsJobsRequest {
   body?: ResumeJobRequest;
 }
 export const ResumeProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(ResumeJobRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:resume",
-      baseUrl: "https://cloudscheduler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResumeProjectsLocationsJobsRequest",
-}) as any as S.Schema<ResumeProjectsLocationsJobsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ResumeJobRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:resume","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "ResumeProjectsLocationsJobsRequest" }) as any as S.Schema<ResumeProjectsLocationsJobsRequest>;
 
 /** Request message for forcing a job to run now using RunJob. */
 export interface RunJobRequest {}
 export const RunJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+S.Struct({}),
 ).annotate({ identifier: "RunJobRequest" }) as any as S.Schema<RunJobRequest>;
 
 export interface RunProjectsLocationsJobsRequest {
@@ -798,19 +627,11 @@ export interface RunProjectsLocationsJobsRequest {
   body?: RunJobRequest;
 }
 export const RunProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(RunJobRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:run",
-      baseUrl: "https://cloudscheduler.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RunProjectsLocationsJobsRequest",
-}) as any as S.Schema<RunProjectsLocationsJobsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RunJobRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:run","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "RunProjectsLocationsJobsRequest" }) as any as S.Schema<RunProjectsLocationsJobsRequest>;
 
 export interface UpdateCmekConfigProjectsLocationsRequest {
   /** Identifier. The config resource name which includes the project and location and must end in 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig` */
@@ -820,29 +641,15 @@ export interface UpdateCmekConfigProjectsLocationsRequest {
   /** Request body */
   body?: CmekConfig;
 }
-export const UpdateCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CmekConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudscheduler.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateCmekConfigProjectsLocationsRequest",
-}) as any as S.Schema<UpdateCmekConfigProjectsLocationsRequest>;
+export const UpdateCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(CmekConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudscheduler.googleapis.com/"})),
+).annotate({ identifier: "UpdateCmekConfigProjectsLocationsRequest" }) as any as S.Schema<UpdateCmekConfigProjectsLocationsRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -857,12 +664,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a job. */
 export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsRequest,
@@ -877,12 +679,7 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a job. */
 export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsRequest,
@@ -897,12 +694,7 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -917,10 +709,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCmekConfigProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetCmekConfigProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the Scheduler config in the project/region. */
 export const getCmekConfigProjectsLocations: API.OperationMethod<
   GetCmekConfigProjectsLocationsRequest,
@@ -965,10 +754,7 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -996,10 +782,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsLocationsJobsError = NotFound | Forbidden | GcpOpError;
@@ -1015,16 +798,10 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1037,18 +814,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a job. If successful, the updated Job is returned. If the job does not exist, `NOT_FOUND` is returned. If UpdateJob does not successfully return, it is possible for the job to be in an Job.State.UPDATE_FAILED state. A job in this state may not be executed. If this happens, retry the UpdateJob request until a successful response is received. */
 export const patchProjectsLocationsJobs: API.OperationMethod<
   PatchProjectsLocationsJobsRequest,
@@ -1063,12 +832,7 @@ export const patchProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PauseProjectsLocationsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PauseProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Pauses a job. If a job is paused then the system will stop executing the job until it is re-enabled via ResumeJob. The state of the job is stored in state; if paused it will be set to Job.State.PAUSED. A job must be in Job.State.ENABLED to be paused. */
 export const pauseProjectsLocationsJobs: API.OperationMethod<
   PauseProjectsLocationsJobsRequest,
@@ -1083,12 +847,7 @@ export const pauseProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResumeProjectsLocationsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResumeProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resume a job. This method reenables a job after it has been Job.State.PAUSED. The state of a job is stored in Job.state; after calling this method it will be set to Job.State.ENABLED. A job must be in Job.State.PAUSED to be resumed. */
 export const resumeProjectsLocationsJobs: API.OperationMethod<
   ResumeProjectsLocationsJobsRequest,
@@ -1103,12 +862,7 @@ export const resumeProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunProjectsLocationsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RunProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Forces a job to run now. When this method is called, Cloud Scheduler will dispatch the job, even if the job is already running. */
 export const runProjectsLocationsJobs: API.OperationMethod<
   RunProjectsLocationsJobsRequest,
@@ -1123,12 +877,7 @@ export const runProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCmekConfigProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCmekConfigProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Initializes or Updates the a scheduler config. */
 export const updateCmekConfigProjectsLocations: API.OperationMethod<
   UpdateCmekConfigProjectsLocationsRequest,
@@ -1142,3 +891,4 @@ export const updateCmekConfigProjectsLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

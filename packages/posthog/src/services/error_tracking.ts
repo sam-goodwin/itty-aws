@@ -35,7 +35,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type FilterLogicalOperator = "AND" | "OR" | (string & {});
+export type FilterLogicalOperator = "AND" | "OR";
 export const FilterLogicalOperator = /*@__PURE__*/ S.String;
 
 export type PropertyOperator =
@@ -72,8 +72,7 @@ export type PropertyOperator =
   | "semver_caret"
   | "semver_wildcard"
   | "icontains_multi"
-  | "not_icontains_multi"
-  | (string & {});
+  | "not_icontains_multi";
 export const PropertyOperator = /*@__PURE__*/ S.String;
 
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
@@ -97,7 +96,7 @@ export const EventPropertyFilterValue =
 export interface EventPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator | null;
+  operator?: PropertyOperator | (string & {}) | null;
   /** Event properties */
   type?: string;
   value?: EventPropertyFilterValue | null;
@@ -135,7 +134,7 @@ export const PersonPropertyFilterValue =
 export interface PersonPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   /** Person properties */
   type?: string;
   value?: PersonPropertyFilterValue | null;
@@ -176,7 +175,7 @@ export const PersonMetadataPropertyFilterValue =
 export interface PersonMetadataPropertyFilter {
   key: string;
   label?: string | null;
-  operator: PropertyOperator;
+  operator: PropertyOperator | (string & {});
   /** Top-level columns on the persons table (e.g. created_at), not properties JSON */
   type?: string;
   value?: PersonMetadataPropertyFilterValue | null;
@@ -193,7 +192,7 @@ export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonMetadataPropertyFilter",
 }) as any as S.Schema<PersonMetadataPropertyFilter>;
 
-export type Key10 = "tag_name" | "text" | "href" | "selector" | (string & {});
+export type Key10 = "tag_name" | "text" | "href" | "selector";
 export const Key10 = /*@__PURE__*/ S.String;
 
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
@@ -215,9 +214,9 @@ export const ElementPropertyFilterValue =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValue>;
 
 export interface ElementPropertyFilter {
-  key?: Key10;
+  key?: Key10 | (string & {});
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: ElementPropertyFilterValue | null;
 }
@@ -257,7 +256,7 @@ export const EventMetadataPropertyFilterValue =
 export interface EventMetadataPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: EventMetadataPropertyFilterValue | null;
 }
@@ -294,7 +293,7 @@ export const SessionPropertyFilterValue =
 export interface SessionPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: SessionPropertyFilterValue | null;
 }
@@ -314,7 +313,7 @@ export interface CohortPropertyFilter {
   cohort_name?: string | null;
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator | null;
+  operator?: PropertyOperator | (string & {}) | null;
   type?: string;
   value?: number;
 }
@@ -331,11 +330,7 @@ export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortPropertyFilter",
 }) as any as S.Schema<CohortPropertyFilter>;
 
-export type DurationType =
-  | "duration"
-  | "active_seconds"
-  | "inactive_seconds"
-  | (string & {});
+export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
 export const DurationType = /*@__PURE__*/ S.String;
 
 export type RecordingPropertyFilterKey = DurationType | string;
@@ -363,7 +358,7 @@ export const RecordingPropertyFilterValue =
 export interface RecordingPropertyFilter {
   key?: RecordingPropertyFilterKey;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: RecordingPropertyFilterValue | null;
 }
@@ -400,7 +395,7 @@ export const LogEntryPropertyFilterValue =
 export interface LogEntryPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: LogEntryPropertyFilterValue | null;
 }
@@ -447,7 +442,7 @@ export interface GroupPropertyFilter {
   group_type_index?: number | null;
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: GroupPropertyFilterValue | null;
 }
@@ -486,7 +481,7 @@ export const FeaturePropertyFilterValue =
 export interface FeaturePropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   /** Event property with "$feature/" prepended */
   type?: string;
   value?: FeaturePropertyFilterValue | null;
@@ -601,7 +596,7 @@ export const DataWarehousePropertyFilterValue =
 export interface DataWarehousePropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: DataWarehousePropertyFilterValue | null;
 }
@@ -642,7 +637,7 @@ export const DataWarehousePersonPropertyFilterValue =
 export interface DataWarehousePersonPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: DataWarehousePersonPropertyFilterValue | null;
 }
@@ -679,7 +674,7 @@ export const ErrorTrackingIssueFilterValue =
 export interface ErrorTrackingIssueFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: ErrorTrackingIssueFilterValue | null;
 }
@@ -698,8 +693,7 @@ export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
 export type LogPropertyFilterType =
   | "log"
   | "log_attribute"
-  | "log_resource_attribute"
-  | (string & {});
+  | "log_resource_attribute";
 export const LogPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
@@ -723,8 +717,8 @@ export const LogPropertyFilterValue =
 export interface LogPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
-  type?: LogPropertyFilterType;
+  operator?: PropertyOperator | (string & {});
+  type?: LogPropertyFilterType | (string & {});
   value?: LogPropertyFilterValue | null;
 }
 export const LogPropertyFilter = /*@__PURE__*/ S.suspend(() =>
@@ -760,7 +754,7 @@ export const MetricPropertyFilterValue =
 export interface MetricPropertyFilter {
   key: string;
   label?: string | null;
-  operator: PropertyOperator;
+  operator: PropertyOperator | (string & {});
   type?: string;
   value?: MetricPropertyFilterValue | null;
 }
@@ -779,8 +773,7 @@ export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type SpanPropertyFilterType =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute"
-  | (string & {});
+  | "span_resource_attribute";
 export const SpanPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
@@ -804,8 +797,8 @@ export const SpanPropertyFilterValue =
 export interface SpanPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
-  type?: SpanPropertyFilterType;
+  operator?: PropertyOperator | (string & {});
+  type?: SpanPropertyFilterType | (string & {});
   value?: SpanPropertyFilterValue | null;
 }
 export const SpanPropertyFilter = /*@__PURE__*/ S.suspend(() =>
@@ -845,7 +838,7 @@ export const RevenueAnalyticsPropertyFilterValue =
 export interface RevenueAnalyticsPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: RevenueAnalyticsPropertyFilterValue | null;
 }
@@ -885,7 +878,7 @@ export const AccountCustomPropertyFilterValue =
 export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
-  operator: PropertyOperator;
+  operator: PropertyOperator | (string & {});
   /** Customer analytics account custom property — the key is the property definition id */
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
@@ -927,7 +920,7 @@ export const WorkflowVariablePropertyFilterValue =
 export interface WorkflowVariablePropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: WorkflowVariablePropertyFilterValue | null;
 }
@@ -978,7 +971,7 @@ export const PropertyGroupFilterValueValuesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PropertyGroupFilterValueValuesList>;
 
 export interface PropertyGroupFilterValue {
-  type?: FilterLogicalOperator;
+  type?: FilterLogicalOperator | (string & {});
   values?: PropertyGroupFilterValueValuesList;
 }
 export const PropertyGroupFilterValue = /*@__PURE__*/ S.suspend(() =>
@@ -991,7 +984,7 @@ export const PropertyGroupFilterValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PropertyGroupFilterValue>;
 
 /** * `user` - user * `role` - role */
-export type AssigneeTypeEnum = "user" | "role" | (string & {});
+export type AssigneeTypeEnum = "user" | "role";
 export const AssigneeTypeEnum = /*@__PURE__*/ S.String;
 
 /** User ID when `type` is `user`, or role UUID when `type` is `role`. */
@@ -1001,7 +994,7 @@ export const ErrorTrackingAssignmentRuleAssigneeRequestId =
 
 export interface ErrorTrackingAssignmentRuleAssigneeRequest {
   /** Assignee type. Use `user` for a user ID or `role` for a role UUID. * `user` - user * `role` - role */
-  type?: AssigneeTypeEnum;
+  type?: AssigneeTypeEnum | (string & {});
   /** User ID when `type` is `user`, or role UUID when `type` is `role`. */
   id?: ErrorTrackingAssignmentRuleAssigneeRequestId;
 }
@@ -1043,10 +1036,7 @@ export const ErrorTrackingAssignmentRulesCreateRequest =
     identifier: "ErrorTrackingAssignmentRulesCreateRequest",
   }) as any as S.Schema<ErrorTrackingAssignmentRulesCreateRequest>;
 
-export type ErrorTrackingAssignmentRuleAssigneeType =
-  | "user"
-  | "role"
-  | (string & {});
+export type ErrorTrackingAssignmentRuleAssigneeType = "user" | "role";
 export const ErrorTrackingAssignmentRuleAssigneeType = /*@__PURE__*/ S.String;
 
 export type ErrorTrackingAssignmentRuleAssigneeId = number | string;
@@ -1935,7 +1925,7 @@ export const ErrorTrackingGroupingRuleAssigneeRequestId =
 
 export interface ErrorTrackingGroupingRuleAssigneeRequest {
   /** Assignee type. Use `user` for a user ID or `role` for a role UUID. * `user` - user * `role` - role */
-  type?: AssigneeTypeEnum;
+  type?: AssigneeTypeEnum | (string & {});
   /** User ID when `type` is `user`, or role UUID when `type` is `role`. */
   id?: ErrorTrackingGroupingRuleAssigneeRequestId;
 }
@@ -1977,10 +1967,7 @@ export const ErrorTrackingGroupingRulesCreateRequest = /*@__PURE__*/ S.suspend(
   identifier: "ErrorTrackingGroupingRulesCreateRequest",
 }) as any as S.Schema<ErrorTrackingGroupingRulesCreateRequest>;
 
-export type ErrorTrackingGroupingRuleAssigneeType =
-  | "user"
-  | "role"
-  | (string & {});
+export type ErrorTrackingGroupingRuleAssigneeType = "user" | "role";
 export const ErrorTrackingGroupingRuleAssigneeType = /*@__PURE__*/ S.String;
 
 export type ErrorTrackingGroupingRuleAssigneeId = number | string;
@@ -2669,8 +2656,7 @@ export const ErrorTrackingIssueMergeResponse = /*@__PURE__*/ S.suspend(() =>
 export type ErrorTrackingIssueWriteStatusEnum =
   | "active"
   | "resolved"
-  | "suppressed"
-  | (string & {});
+  | "suppressed";
 export const ErrorTrackingIssueWriteStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingIssuesPartialUpdateRequest {
@@ -2678,7 +2664,7 @@ export interface ErrorTrackingIssuesPartialUpdateRequest {
   project_id: string;
   id: string;
   /** Issue status to set. Deprecated archived and pending_release values are rejected. * `active` - active * `resolved` - resolved * `suppressed` - suppressed */
-  status?: ErrorTrackingIssueWriteStatusEnum;
+  status?: ErrorTrackingIssueWriteStatusEnum | (string & {});
   /** Optional issue display name. */
   name?: string | null;
   /** Optional issue description. */
@@ -2803,7 +2789,7 @@ export interface ErrorTrackingIssuesUpdateRequest {
   project_id: string;
   id: string;
   /** Issue status to set. Deprecated archived and pending_release values are rejected. * `active` - active * `resolved` - resolved * `suppressed` - suppressed */
-  status?: ErrorTrackingIssueWriteStatusEnum;
+  status?: ErrorTrackingIssueWriteStatusEnum | (string & {});
   /** Optional issue display name. */
   name?: string | null;
   /** Optional issue description. */
@@ -3139,11 +3125,10 @@ export type PropertyItemOperatorEnum =
   | "is_date_after"
   | "is_date_before"
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const PropertyItemOperatorEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemOperator = PropertyItemOperatorEnum | BlankEnum;
@@ -3181,8 +3166,7 @@ export type PropertyFilterTypeEnum =
   | "revenue_analytics"
   | "account_custom_property"
   | "flag"
-  | "workflow_variable"
-  | (string & {});
+  | "workflow_variable";
 export const PropertyFilterTypeEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemType = PropertyFilterTypeEnum | BlankEnum;
@@ -3215,7 +3199,7 @@ export const ErrorTrackingQueryIssueEventsCreateRequestFilterGroupList =
   ) as any as S.Schema<ErrorTrackingQueryIssueEventsCreateRequestFilterGroupList>;
 
 /** * `ASC` - ASC * `DESC` - DESC */
-export type OrderDirectionEnum = "ASC" | "DESC" | (string & {});
+export type OrderDirectionEnum = "ASC" | "DESC";
 export const OrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** * `exception` - exception * `stacktrace` - stacktrace * `code_variables` - code_variables * `environment` - environment * `release` - release * `navigation` - navigation * `correlation` - correlation * `diagnostics` - diagnostics */
@@ -3227,13 +3211,12 @@ export type IncludeEnum =
   | "release"
   | "navigation"
   | "correlation"
-  | "diagnostics"
-  | (string & {});
+  | "diagnostics";
 export const IncludeEnum = /*@__PURE__*/ S.String;
 
 /** Context groups to return. Defaults to exception, environment, navigation, and correlation. Request stacktrace for frames, code_variables for captured and SDK-masked frame variables, release for release metadata, or diagnostics for ingestion errors. code_variables implies stacktrace. */
 export type ErrorTrackingQueryIssueEventsCreateRequestIncludeList =
-  ReadonlyArray<IncludeEnum>;
+  ReadonlyArray<IncludeEnum | (string & {})>;
 export const ErrorTrackingQueryIssueEventsCreateRequestIncludeList =
   /*@__PURE__*/ S.Array(
     IncludeEnum,
@@ -3253,7 +3236,7 @@ export interface ErrorTrackingQueryIssueEventsCreateRequest {
   /** Search exception types, exception values, and current URL among sampled events. */
   searchQuery?: string;
   /** Timestamp sort direction. Defaults to DESC. * `ASC` - ASC * `DESC` - DESC */
-  orderDirection?: OrderDirectionEnum;
+  orderDirection?: OrderDirectionEnum | (string & {});
   /** Page size. */
   limit?: number;
   /** Pagination offset. */
@@ -3361,8 +3344,7 @@ export type ErrorTrackingIssueStatusEnum =
   | "resolved"
   | "pending_release"
   | "suppressed"
-  | "all"
-  | (string & {});
+  | "all";
 export const ErrorTrackingIssueStatusEnum = /*@__PURE__*/ S.String;
 
 /** User ID or role UUID to filter by. */
@@ -3374,7 +3356,7 @@ export interface ErrorTrackingAssignee {
   /** User ID or role UUID to filter by. */
   id: ErrorTrackingAssigneeId | null;
   /** Assignee target type: user or role. * `user` - user * `role` - role */
-  type: AssigneeTypeEnum;
+  type: AssigneeTypeEnum | (string & {});
 }
 export const ErrorTrackingAssignee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3399,8 +3381,7 @@ export type ErrorTrackingIssueOrderByEnum =
   | "first_seen"
   | "occurrences"
   | "users"
-  | "sessions"
-  | (string & {});
+  | "sessions";
 export const ErrorTrackingIssueOrderByEnum = /*@__PURE__*/ S.String;
 
 export type ErrorTrackingQueryIssuesListCreateRequestLibraryCase1List =
@@ -3437,7 +3418,7 @@ export interface ErrorTrackingQueryIssuesListCreateRequest {
   /** Date range for issue aggregates. Defaults to the last 7 days. */
   dateRange?: ErrorTrackingDateRange;
   /** Filter by issue status. Defaults to active. * `archived` - archived * `active` - active * `resolved` - resolved * `pending_release` - pending_release * `suppressed` - suppressed * `all` - all */
-  status?: ErrorTrackingIssueStatusEnum;
+  status?: ErrorTrackingIssueStatusEnum | (string & {});
   /** Filter by issue assignee. Omit to include all assignees. */
   assignee?: ErrorTrackingAssignee | null;
   /** When true, exclude internal/test account data from results. Defaults to true. */
@@ -3447,9 +3428,9 @@ export interface ErrorTrackingQueryIssuesListCreateRequest {
   /** Advanced flat AND property filters. Prefer typed shortcut fields when they fit. HogQL filters are rejected. */
   filterGroup?: ErrorTrackingQueryIssuesListCreateRequestFilterGroupList;
   /** Field used to sort issues. Defaults to occurrences. * `last_seen` - last_seen * `first_seen` - first_seen * `occurrences` - occurrences * `users` - users * `sessions` - sessions */
-  orderBy?: ErrorTrackingIssueOrderByEnum;
+  orderBy?: ErrorTrackingIssueOrderByEnum | (string & {});
   /** Sort direction. Defaults to DESC. * `ASC` - ASC * `DESC` - DESC */
-  orderDirection?: OrderDirectionEnum;
+  orderDirection?: OrderDirectionEnum | (string & {});
   /** Page size. */
   limit?: number;
   /** Pagination offset. */
@@ -4950,15 +4931,13 @@ export type ErrorTrackingSymbolSetsListRequestOrderBy =
   | "ref"
   | "-ref"
   | "last_used"
-  | "-last_used"
-  | (string & {});
+  | "-last_used";
 export const ErrorTrackingSymbolSetsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export type ErrorTrackingSymbolSetsListRequestStatus =
   | "all"
   | "valid"
-  | "invalid"
-  | (string & {});
+  | "invalid";
 export const ErrorTrackingSymbolSetsListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingSymbolSetsListRequest {
@@ -4969,13 +4948,13 @@ export interface ErrorTrackingSymbolSetsListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
   /** Sort order for symbol sets. Prefix with `-` for descending order. * `created_at` - created_at * `-created_at` - -created_at * `ref` - ref * `-ref` - -ref * `last_used` - last_used * `-last_used` - -last_used */
-  order_by?: ErrorTrackingSymbolSetsListRequestOrderBy;
+  order_by?: ErrorTrackingSymbolSetsListRequestOrderBy | (string & {});
   /** Exact symbol set reference to filter by. */
   ref?: string;
   /** Case-insensitive substring search across reference, release version, release project, and release commit SHA. */
   search?: string;
   /** Upload status filter: `valid` has an uploaded file, `invalid` is missing a file, `all` returns both. * `all` - all * `valid` - valid * `invalid` - invalid */
-  status?: ErrorTrackingSymbolSetsListRequestStatus;
+  status?: ErrorTrackingSymbolSetsListRequestStatus | (string & {});
 }
 export const ErrorTrackingSymbolSetsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

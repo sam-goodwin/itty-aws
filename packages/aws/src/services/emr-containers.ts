@@ -294,7 +294,7 @@ export const JobDriver = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobDriver" }) as any as S.Schema<JobDriver>;
 export type TemplateParameterName = string;
-export type TemplateParameterDataType = "NUMBER" | "STRING" | (string & {});
+export type TemplateParameterDataType = "NUMBER" | "STRING";
 export const TemplateParameterDataType = /*@__PURE__*/ S.String;
 
 export interface TemplateParameterConfiguration {
@@ -396,7 +396,7 @@ export type EndpointType = string;
 export type ReleaseLabel = string;
 export type IAMRoleArn = string;
 export type ACMCertArn = string;
-export type AllowAWSToRetainLogs = "ENABLED" | "DISABLED" | (string & {});
+export type AllowAWSToRetainLogs = "ENABLED" | "DISABLED";
 export const AllowAWSToRetainLogs = /*@__PURE__*/ S.String;
 
 export interface ManagedLogs {
@@ -409,7 +409,7 @@ export const ManagedLogs = /*@__PURE__*/ S.suspend(() =>
     encryptionKeyArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "ManagedLogs" }) as any as S.Schema<ManagedLogs>;
-export type PersistentAppUI = "ENABLED" | "DISABLED" | (string & {});
+export type PersistentAppUI = "ENABLED" | "DISABLED";
 export const PersistentAppUI = /*@__PURE__*/ S.String;
 
 export type LogGroupName = string;
@@ -533,7 +533,7 @@ export const CreateManagedEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateManagedEndpointResponse",
 }) as any as S.Schema<CreateManagedEndpointResponse>;
-export type ContainerProviderType = "EKS" | (string & {});
+export type ContainerProviderType = "EKS";
 export const ContainerProviderType = /*@__PURE__*/ S.String;
 
 export type ClusterId = string;
@@ -593,7 +593,7 @@ export const LakeFormationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LakeFormationConfiguration",
 }) as any as S.Schema<LakeFormationConfiguration>;
-export type CertificateProviderType = "PEM" | (string & {});
+export type CertificateProviderType = "PEM";
 export const CertificateProviderType = /*@__PURE__*/ S.String;
 
 export type SecretsManagerArn = string;
@@ -857,8 +857,7 @@ export type JobRunState =
   | "FAILED"
   | "CANCELLED"
   | "CANCEL_PENDING"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const JobRunState = /*@__PURE__*/ S.String;
 
 export type RequestIdentityUserArn = string;
@@ -866,8 +865,7 @@ export type FailureReason =
   | "INTERNAL_ERROR"
   | "USER_ERROR"
   | "VALIDATION_ERROR"
-  | "CLUSTER_UNAVAILABLE"
-  | (string & {});
+  | "CLUSTER_UNAVAILABLE";
 export const FailureReason = /*@__PURE__*/ S.String;
 
 export type JavaInteger = number;
@@ -1022,8 +1020,7 @@ export type EndpointState =
   | "ACTIVE"
   | "TERMINATING"
   | "TERMINATED"
-  | "TERMINATED_WITH_ERRORS"
-  | (string & {});
+  | "TERMINATED_WITH_ERRORS";
 export const EndpointState = /*@__PURE__*/ S.String;
 
 export type Base64Encoded = string;
@@ -1162,8 +1159,7 @@ export type VirtualClusterState =
   | "RUNNING"
   | "TERMINATING"
   | "TERMINATED"
-  | "ARRESTED"
-  | (string & {});
+  | "ARRESTED";
 export const VirtualClusterState = /*@__PURE__*/ S.String;
 
 export interface VirtualCluster {
@@ -1259,7 +1255,7 @@ export const GetManagedEndpointSessionCredentialsResponse =
   ).annotate({
     identifier: "GetManagedEndpointSessionCredentialsResponse",
   }) as any as S.Schema<GetManagedEndpointSessionCredentialsResponse>;
-export type JobRunStates = JobRunState[];
+export type JobRunStates = (JobRunState | (string & {}))[];
 export const JobRunStates = /*@__PURE__*/ S.Array(JobRunState);
 export type NextToken = string;
 export interface ListJobRunsRequest {
@@ -1356,7 +1352,7 @@ export const ListJobTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListJobTemplatesResponse>;
 export type EndpointTypes = string[];
 export const EndpointTypes = /*@__PURE__*/ S.Array(S.String);
-export type EndpointStates = EndpointState[];
+export type EndpointStates = (EndpointState | (string & {}))[];
 export const EndpointStates = /*@__PURE__*/ S.Array(EndpointState);
 export interface ListManagedEndpointsRequest {
   virtualClusterId: string;
@@ -1481,11 +1477,11 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
-export type VirtualClusterStates = VirtualClusterState[];
+export type VirtualClusterStates = (VirtualClusterState | (string & {}))[];
 export const VirtualClusterStates = /*@__PURE__*/ S.Array(VirtualClusterState);
 export interface ListVirtualClustersRequest {
   containerProviderId?: string;
-  containerProviderType?: ContainerProviderType;
+  containerProviderType?: ContainerProviderType | (string & {});
   createdAfter?: Date;
   createdBefore?: Date;
   states?: VirtualClusterState[];

@@ -13,7 +13,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** Application Group Policy types */
-export type ApplicationGroupPolicyType = "ThrottlingPolicy" | (string & {});
+export type ApplicationGroupPolicyType = "ThrottlingPolicy";
 export const ApplicationGroupPolicyType = /*@__PURE__*/ S.String;
 
 /** Properties of the Application Group policy */
@@ -93,8 +93,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -102,8 +101,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -325,7 +323,7 @@ export const ApplicationGroupListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationGroupListResult>;
 
 /** Setting to Enable or Disable Confidential Compute */
-export type Mode = "Disabled" | "Enabled" | (string & {});
+export type Mode = "Disabled" | "Enabled";
 export const Mode = /*@__PURE__*/ S.String;
 
 export interface ConfidentialCompute {
@@ -370,7 +368,7 @@ export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterPropertiesInput>;
 
 /** Name of this SKU. */
-export type ClusterSkuName = "Dedicated" | (string & {});
+export type ClusterSkuName = "Dedicated";
 export const ClusterSkuName = /*@__PURE__*/ S.String;
 
 /** SKU parameters particular to a cluster instance. */
@@ -442,8 +440,7 @@ export type ProvisioningState =
   | "Active"
   | "Failed"
   | "Succeeded"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Event Hubs Cluster properties supplied in responses in List or Get operations. */
@@ -1346,8 +1343,7 @@ export type UnavailableReason =
   | "SubscriptionIsDisabled"
   | "NameInUse"
   | "NameInLockdown"
-  | "TooManyNamespaceInCurrentSubscription"
-  | (string & {});
+  | "TooManyNamespaceInCurrentSubscription";
 export const UnavailableReason = /*@__PURE__*/ S.String;
 
 /** The Result of the CheckNameAvailability operation */
@@ -1418,19 +1414,14 @@ export const DisasterRecoveryConfigsCreateOrUpdateRequest =
   }) as any as S.Schema<DisasterRecoveryConfigsCreateOrUpdateRequest>;
 
 /** Provisioning state of the Alias(Disaster Recovery configuration) - possible values 'Accepted' or 'Succeeded' or 'Failed' */
-export type ProvisioningStateDR =
-  | "Accepted"
-  | "Succeeded"
-  | "Failed"
-  | (string & {});
+export type ProvisioningStateDR = "Accepted" | "Succeeded" | "Failed";
 export const ProvisioningStateDR = /*@__PURE__*/ S.String;
 
 /** role of namespace in GEO DR - possible values 'Primary' or 'PrimaryNotReplicating' or 'Secondary' */
 export type RoleDisasterRecovery =
   | "Primary"
   | "PrimaryNotReplicating"
-  | "Secondary"
-  | (string & {});
+  | "Secondary";
 export const RoleDisasterRecovery = /*@__PURE__*/ S.String;
 
 /** Properties required to the Create Or Update Alias(Disaster Recovery configurations) */
@@ -1645,7 +1636,7 @@ export const DisasterRecoveryConfigsGetAuthorizationRuleRequest =
     identifier: "DisasterRecoveryConfigsGetAuthorizationRuleRequest",
   }) as any as S.Schema<DisasterRecoveryConfigsGetAuthorizationRuleRequest>;
 
-export type AccessRights = "Manage" | "Send" | "Listen" | (string & {});
+export type AccessRights = "Manage" | "Send" | "Listen";
 export const AccessRights = /*@__PURE__*/ S.String;
 
 /** The rights associated with the rule. */
@@ -1922,19 +1913,15 @@ export type EntityStatus =
   | "Creating"
   | "Deleting"
   | "Renaming"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const EntityStatus = /*@__PURE__*/ S.String;
 
 /** Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version */
-export type EncodingCaptureDescription = "Avro" | "AvroDeflate" | (string & {});
+export type EncodingCaptureDescription = "Avro" | "AvroDeflate";
 export const EncodingCaptureDescription = /*@__PURE__*/ S.String;
 
 /** Type of Azure Active Directory Managed Identity. */
-export type CaptureIdentityType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
+export type CaptureIdentityType = "SystemAssigned" | "UserAssigned";
 export const CaptureIdentityType = /*@__PURE__*/ S.String;
 
 /** A value that indicates whether capture description is enabled. */
@@ -2030,8 +2017,7 @@ export const CaptureDescription = /*@__PURE__*/ S.suspend(() =>
 export type CleanupPolicyRetentionDescription =
   | "Delete"
   | "Compact"
-  | "DeleteOrCompact"
-  | (string & {});
+  | "DeleteOrCompact";
 export const CleanupPolicyRetentionDescription = /*@__PURE__*/ S.String;
 
 /** Properties to configure retention settings for the eventhub */
@@ -2057,7 +2043,7 @@ export const RetentionDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetentionDescription>;
 
 /** Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same. */
-export type TimestampType = "LogAppend" | "Create" | (string & {});
+export type TimestampType = "LogAppend" | "Create";
 export const TimestampType = /*@__PURE__*/ S.String;
 
 /** Properties of MessageTimestamp Description */
@@ -2080,7 +2066,7 @@ export interface EventhubPropertiesInput {
   /** Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions. */
   partitionCount?: number;
   /** Enumerates the possible values for the status of the Event Hub. */
-  status?: EntityStatus;
+  status?: EntityStatus | (string & {});
   /** Properties of capture description */
   captureDescription?: CaptureDescription;
   /** Event Hub retention settings */
@@ -2603,7 +2589,7 @@ export const EventHubsListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventHubsListKeysRequest>;
 
 /** The access key to regenerate. */
-export type KeyType = "PrimaryKey" | "SecondaryKey" | (string & {});
+export type KeyType = "PrimaryKey" | "SecondaryKey";
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface EventHubsRegenerateKeysRequest {
@@ -2618,7 +2604,7 @@ export interface EventHubsRegenerateKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
   /** The access key to regenerate. */
-  keyType: KeyType;
+  keyType: KeyType | (string & {});
   /** Optional, if the key value provided, is set for KeyType or autogenerated Key value set for keyType */
   key?: string;
 }
@@ -2667,15 +2653,14 @@ export const NamespacesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesCheckNameAvailabilityRequest>;
 
 /** The minimum TLS version for the cluster to support, e.g. '1.2' */
-export type TlsVersion = "1.0" | "1.1" | "1.2" | "1.3" | (string & {});
+export type TlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
 export const TlsVersion = /*@__PURE__*/ S.String;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. */
 export type EHNamespacePropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const EHNamespacePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -2720,7 +2705,7 @@ export const EncryptionKeyVaultPropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EncryptionKeyVaultPropertiesList>;
 
 /** Enumerates the possible value of keySource for Encryption */
-export type EncryptionKeySource = "Microsoft.KeyVault" | (string & {});
+export type EncryptionKeySource = "Microsoft.KeyVault";
 export const EncryptionKeySource = /*@__PURE__*/ S.String;
 
 /** Properties to configure Encryption */
@@ -2758,8 +2743,7 @@ export type PrivateLinkConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const PrivateLinkConnectionStatus = /*@__PURE__*/ S.String;
 
 /** ConnectionState information. */
@@ -2785,8 +2769,7 @@ export type EndPointProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Canceled"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const EndPointProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the private endpoint connection resource. */
@@ -2830,7 +2813,7 @@ export const EHNamespacePropertiesInputPrivateEndpointConnectionsList =
   ) as any as S.Schema<EHNamespacePropertiesInputPrivateEndpointConnectionsList>;
 
 /** GeoDR Role Types */
-export type GeoDRRoleType = "Primary" | "Secondary" | (string & {});
+export type GeoDRRoleType = "Primary" | "Secondary";
 export const GeoDRRoleType = /*@__PURE__*/ S.String;
 
 /** Namespace replication properties */
@@ -2838,7 +2821,7 @@ export interface NamespaceReplicaLocationInput {
   /** Azure regions where a replica of the namespace is maintained */
   locationName?: string;
   /** GeoDR Role Types */
-  roleType?: GeoDRRoleType;
+  roleType?: GeoDRRoleType | (string & {});
   /** Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster */
   clusterArmId?: string;
 }
@@ -2877,19 +2860,21 @@ export const GeoDataReplicationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeoDataReplicationPropertiesInput>;
 
 /** The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack). */
-export type IpAddressType = "IPv4" | "DualStack" | (string & {});
+export type IpAddressType = "IPv4" | "DualStack";
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 /** Namespace properties supplied for create namespace operation. */
 export interface EHNamespacePropertiesInput {
   /** The minimum TLS version for the cluster to support, e.g. '1.2' */
-  minimumTlsVersion?: TlsVersion;
+  minimumTlsVersion?: TlsVersion | (string & {});
   /** Cluster ARM ID of the Namespace. */
   clusterArmId?: string;
   /** Value that indicates whether AutoInflate is enabled for eventhub namespace. */
   isAutoInflateEnabled?: boolean;
   /** This determines if traffic is allowed over public network. By default it is enabled. */
-  publicNetworkAccess?: EHNamespacePropertiesInputPublicNetworkAccess;
+  publicNetworkAccess?:
+    | EHNamespacePropertiesInputPublicNetworkAccess
+    | (string & {});
   /** Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true) */
   maximumThroughputUnits?: number;
   /** Value that indicates whether Kafka is enabled for eventhub namespace. */
@@ -2908,7 +2893,7 @@ export interface EHNamespacePropertiesInput {
   /** Geo Data Replication settings for the namespace */
   geoDataReplication?: GeoDataReplicationPropertiesInput;
   /** The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack). */
-  ipAddressType?: IpAddressType;
+  ipAddressType?: IpAddressType | (string & {});
 }
 export const EHNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2936,11 +2921,11 @@ export const EHNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EHNamespacePropertiesInput>;
 
 /** Name of this SKU. */
-export type SkuName = "Basic" | "Standard" | "Premium" | (string & {});
+export type SkuName = "Basic" | "Standard" | "Premium";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The billing tier of this particular SKU. */
-export type SkuTier = "Basic" | "Standard" | "Premium" | (string & {});
+export type SkuTier = "Basic" | "Standard" | "Premium";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** SKU parameters supplied to the create namespace operation */
@@ -2965,8 +2950,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Recognized Dictionary value. */
@@ -2989,7 +2973,7 @@ export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
 /** Properties to configure Identity for Bring your Own Keys */
 export interface IdentityInput {
   /** Type of managed service identity. */
-  type?: ManagedServiceIdentityType;
+  type?: ManagedServiceIdentityType | (string & {});
   /** Properties for User Assigned Identities */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
@@ -3053,8 +3037,7 @@ export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export type EHNamespacePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const EHNamespacePropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Properties of the PrivateEndpointConnection. */
@@ -3360,7 +3343,7 @@ export const NamespacesCreateOrUpdateAuthorizationRuleResponse =
   }) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
 
 /** Default Action for Network Rule Set */
-export type DefaultAction = "Allow" | "Deny" | (string & {});
+export type DefaultAction = "Allow" | "Deny";
 export const DefaultAction = /*@__PURE__*/ S.String;
 
 /** Properties supplied for Subnet */
@@ -3399,7 +3382,7 @@ export const NetworkRuleSetPropertiesVirtualNetworkRulesList =
   ) as any as S.Schema<NetworkRuleSetPropertiesVirtualNetworkRulesList>;
 
 /** The IP Filter Action */
-export type NetworkRuleIPAction = "Allow" | (string & {});
+export type NetworkRuleIPAction = "Allow";
 export const NetworkRuleIPAction = /*@__PURE__*/ S.String;
 
 /** The response from the List namespace operation. */
@@ -3429,8 +3412,7 @@ export const NetworkRuleSetPropertiesIpRulesList = /*@__PURE__*/ S.Array(
 export type NetworkRuleSetPropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const NetworkRuleSetPropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -4058,7 +4040,7 @@ export interface NamespacesRegenerateKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
   /** The access key to regenerate. */
-  keyType: KeyType;
+  keyType: KeyType | (string & {});
   /** Optional, if the key value provided, is set for KeyType or autogenerated Key value set for keyType */
   key?: string;
 }
@@ -4214,8 +4196,7 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Failed"
   | "Deleting"
   | "Deleted"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const NetworkSecurityPerimeterConfigurationProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -4284,8 +4265,7 @@ export type ResourceAssociationAccessMode =
   | "EnforcedMode"
   | "LearningMode"
   | "AuditMode"
-  | "UnspecifiedMode"
-  | (string & {});
+  | "UnspecifiedMode";
 export const ResourceAssociationAccessMode = /*@__PURE__*/ S.String;
 
 /** Information about resource association */
@@ -4307,7 +4287,7 @@ export const NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation 
   }) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation>;
 
 /** Direction of Access Rule */
-export type NspAccessRuleDirection = "Inbound" | "Outbound" | (string & {});
+export type NspAccessRuleDirection = "Inbound" | "Outbound";
 export const NspAccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
@@ -5036,26 +5016,17 @@ export const SchemaGroupPropertiesInputGroupPropertiesMap =
     S.String,
   ) as any as S.Schema<SchemaGroupPropertiesInputGroupPropertiesMap>;
 
-export type SchemaCompatibility =
-  | "None"
-  | "Backward"
-  | "Forward"
-  | (string & {});
+export type SchemaCompatibility = "None" | "Backward" | "Forward";
 export const SchemaCompatibility = /*@__PURE__*/ S.String;
 
-export type SchemaType =
-  | "Unknown"
-  | "Avro"
-  | "ProtoBuf"
-  | "Json"
-  | (string & {});
+export type SchemaType = "Unknown" | "Avro" | "ProtoBuf" | "Json";
 export const SchemaType = /*@__PURE__*/ S.String;
 
 export interface SchemaGroupPropertiesInput {
   /** dictionary object for SchemaGroup group properties */
   groupProperties?: SchemaGroupPropertiesInputGroupPropertiesMap;
-  schemaCompatibility?: SchemaCompatibility;
-  schemaType?: SchemaType;
+  schemaCompatibility?: SchemaCompatibility | (string & {});
+  schemaType?: SchemaType | (string & {});
 }
 export const SchemaGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

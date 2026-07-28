@@ -148,15 +148,14 @@ export type AwsLogSourceName =
   | "LAMBDA_EXECUTION"
   | "S3_DATA"
   | "EKS_AUDIT"
-  | "WAF"
-  | (string & {});
+  | "WAF";
 export const AwsLogSourceName = /*@__PURE__*/ S.String;
 
 export type AwsLogSourceVersion = string;
 export interface AwsLogSourceConfiguration {
   accounts?: string[];
   regions: string[];
-  sourceName: AwsLogSourceName;
+  sourceName: AwsLogSourceName | (string & {});
   sourceVersion?: string;
 }
 export const AwsLogSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -413,12 +412,7 @@ export const CreateDataLakeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDataLakeRequest",
 }) as any as S.Schema<CreateDataLakeRequest>;
 export type S3BucketArn = string;
-export type DataLakeStatus =
-  | "INITIALIZED"
-  | "PENDING"
-  | "COMPLETED"
-  | "FAILED"
-  | (string & {});
+export type DataLakeStatus = "INITIALIZED" | "PENDING" | "COMPLETED" | "FAILED";
 export const DataLakeStatus = /*@__PURE__*/ S.String;
 
 export interface DataLakeUpdateException {
@@ -578,7 +572,7 @@ export const LogSourceResource = /*@__PURE__*/ S.Union([
 ]);
 export type LogSourceResourceList = LogSourceResource[];
 export const LogSourceResourceList = /*@__PURE__*/ S.Array(LogSourceResource);
-export type AccessType = "LAKEFORMATION" | "S3" | (string & {});
+export type AccessType = "LAKEFORMATION" | "S3";
 export const AccessType = /*@__PURE__*/ S.String;
 
 export type AccessTypeList = AccessType[];
@@ -613,12 +607,7 @@ export const CreateSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSubscriberRequest",
 }) as any as S.Schema<CreateSubscriberRequest>;
 export type UUID = string;
-export type SubscriberStatus =
-  | "ACTIVE"
-  | "DEACTIVATED"
-  | "PENDING"
-  | "READY"
-  | (string & {});
+export type SubscriberStatus = "ACTIVE" | "DEACTIVATED" | "PENDING" | "READY";
 export const SubscriberStatus = /*@__PURE__*/ S.String;
 
 export type ResourceShareArn = string;
@@ -679,14 +668,14 @@ export const SqsNotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SqsNotificationConfiguration",
 }) as any as S.Schema<SqsNotificationConfiguration>;
-export type HttpMethod = "POST" | "PUT" | (string & {});
+export type HttpMethod = "POST" | "PUT";
 export const HttpMethod = /*@__PURE__*/ S.String;
 
 export interface HttpsNotificationConfiguration {
   endpoint: string;
   authorizationApiKeyName?: string;
   authorizationApiKeyValue?: string | redacted.Redacted<string>;
-  httpMethod?: HttpMethod;
+  httpMethod?: HttpMethod | (string & {});
   targetRoleArn: string;
 }
 export const HttpsNotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1038,8 +1027,7 @@ export const GetDataLakeSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 export type SourceCollectionStatus =
   | "COLLECTING"
   | "MISCONFIGURED"
-  | "NOT_COLLECTING"
-  | (string & {});
+  | "NOT_COLLECTING";
 export const SourceCollectionStatus = /*@__PURE__*/ S.String;
 
 export interface DataLakeSourceStatus {

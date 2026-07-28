@@ -47,8 +47,7 @@ export type CustomizationHostNameType =
   | "PREFIX_BASED"
   | "FIXED"
   | "VIRTUAL_MACHINE_NAME"
-  | "CUSTOM_NAME"
-  | (string & {});
+  | "CUSTOM_NAME";
 export const CustomizationHostNameType = /*@__PURE__*/ S.String;
 
 /** Host name model */
@@ -68,11 +67,7 @@ export const CustomizationHostName = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationHostName>;
 
 /** Identity type */
-export type CustomizationIdentityType =
-  | "WINDOWS_TEXT"
-  | "WINDOWS"
-  | "LINUX"
-  | (string & {});
+export type CustomizationIdentityType = "WINDOWS_TEXT" | "WINDOWS" | "LINUX";
 export const CustomizationIdentityType = /*@__PURE__*/ S.String;
 
 /** Windows Identity. User data customization */
@@ -120,8 +115,7 @@ export type CustomizationIPAddressType =
   | "CUSTOM"
   | "DHCP_IP"
   | "FIXED_IP"
-  | "USER_DEFINED"
-  | (string & {});
+  | "USER_DEFINED";
 export const CustomizationIPAddressType = /*@__PURE__*/ S.String;
 
 export interface CustomizationIPAddress {
@@ -199,10 +193,7 @@ export const CustomizationSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationSpecification>;
 
 /** The type of customization (Linux or Windows) */
-export type CustomizationPolicyPropertiesType =
-  | "LINUX"
-  | "WINDOWS"
-  | (string & {});
+export type CustomizationPolicyPropertiesType = "LINUX" | "WINDOWS";
 export const CustomizationPolicyPropertiesType = /*@__PURE__*/ S.String;
 
 /** The properties of Customization policy */
@@ -413,10 +404,7 @@ export const DedicatedCloudNodesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DedicatedCloudNodesCreateOrUpdateRequest>;
 
 /** Node status, indicates is private cloud set up on this node or not */
-export type DedicatedCloudNodePropertiesStatus =
-  | "unused"
-  | "used"
-  | (string & {});
+export type DedicatedCloudNodePropertiesStatus = "unused" | "used";
 export const DedicatedCloudNodePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** Properties of dedicated cloud node */
@@ -725,8 +713,7 @@ export type DedicatedCloudServicePropertiesIsAccountOnboarded =
   | "notOnBoarded"
   | "onBoarded"
   | "onBoardingFailed"
-  | "onBoarding"
-  | (string & {});
+  | "onBoarding";
 export const DedicatedCloudServicePropertiesIsAccountOnboarded =
   /*@__PURE__*/ S.String;
 
@@ -1055,16 +1042,12 @@ export const AvailableOperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableOperationDisplay>;
 
 /** The origin of operation */
-export type AvailableOperationOrigin =
-  | "user"
-  | "system"
-  | "user,system"
-  | (string & {});
+export type AvailableOperationOrigin = "user" | "system" | "user,system";
 export const AvailableOperationOrigin = /*@__PURE__*/ S.String;
 
 /** Metric's aggregation type for e.g. (Average, Total) */
 export type AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType =
-  "Average" | "Total" | (string & {});
+  "Average" | "Total";
 export const AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType =
   /*@__PURE__*/ S.String;
 
@@ -1298,8 +1281,7 @@ export const VirtualMachineTemplatePropertiesControllersList =
 export type VirtualDiskIndependenceMode =
   | "persistent"
   | "independent_persistent"
-  | "independent_nonpersistent"
-  | (string & {});
+  | "independent_nonpersistent";
 export const VirtualDiskIndependenceMode = /*@__PURE__*/ S.String;
 
 /** Virtual disk model */
@@ -1333,10 +1315,7 @@ export const VirtualMachineTemplatePropertiesDisksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VirtualMachineTemplatePropertiesDisksList>;
 
 /** IP address allocation method */
-export type GuestOSNICCustomizationAllocation =
-  | "static"
-  | "dynamic"
-  | (string & {});
+export type GuestOSNICCustomizationAllocation = "static" | "dynamic";
 export const GuestOSNICCustomizationAllocation = /*@__PURE__*/ S.String;
 
 /** List of dns servers to use */
@@ -1434,8 +1413,7 @@ export type VirtualNicNicType =
   | "PCNET32"
   | "VMXNET"
   | "VMXNET2"
-  | "VMXNET3"
-  | (string & {});
+  | "VMXNET3";
 export const VirtualNicNicType = /*@__PURE__*/ S.String;
 
 /** Virtual NIC model */
@@ -1672,9 +1650,7 @@ export const PrivateCloudProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudProperties>;
 
 /** Azure Resource type */
-export type PrivateCloudType =
-  | "Microsoft.VMwareCloudSimple/privateClouds"
-  | (string & {});
+export type PrivateCloudType = "Microsoft.VMwareCloudSimple/privateClouds";
 export const PrivateCloudType = /*@__PURE__*/ S.String;
 
 /** Private cloud model */
@@ -1947,8 +1923,7 @@ export type UsageUnit =
   | "Seconds"
   | "Percent"
   | "CountPerSecond"
-  | "BytesPerSecond"
-  | (string & {});
+  | "BytesPerSecond";
 export const UsageUnit = /*@__PURE__*/ S.String;
 
 /** Usage model */
@@ -2028,8 +2003,7 @@ export const GuestOSCustomization = /*@__PURE__*/ S.suspend(() =>
 export type VirtualDiskInputIndependenceMode =
   | "persistent"
   | "independent_persistent"
-  | "independent_nonpersistent"
-  | (string & {});
+  | "independent_nonpersistent";
 export const VirtualDiskInputIndependenceMode = /*@__PURE__*/ S.String;
 
 /** Virtual disk model */
@@ -2037,7 +2011,7 @@ export interface VirtualDiskInput {
   /** Disk's Controller id */
   controllerId: string;
   /** Disk's independence mode type */
-  independenceMode: VirtualDiskInputIndependenceMode;
+  independenceMode: VirtualDiskInputIndependenceMode | (string & {});
   /** Disk's total size */
   totalSize: number;
   /** Disk's id */
@@ -2098,8 +2072,7 @@ export type VirtualNicInputNicType =
   | "PCNET32"
   | "VMXNET"
   | "VMXNET2"
-  | "VMXNET3"
-  | (string & {});
+  | "VMXNET3";
 export const VirtualNicInputNicType = /*@__PURE__*/ S.String;
 
 /** Virtual NIC model */
@@ -2113,7 +2086,7 @@ export interface VirtualNicInput {
   /** Virtual Network */
   network: VirtualNetworkInput;
   /** NIC type */
-  nicType: VirtualNicInputNicType;
+  nicType: VirtualNicInputNicType | (string & {});
   /** Is NIC powered on/off on boot */
   powerOnBoot?: boolean;
   /** NIC id */
@@ -2269,11 +2242,7 @@ export const VirtualMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VirtualMachinePropertiesDisksList>;
 
 /** The Guest OS type */
-export type VirtualMachinePropertiesGuestOSType =
-  | "linux"
-  | "windows"
-  | "other"
-  | (string & {});
+export type VirtualMachinePropertiesGuestOSType = "linux" | "windows" | "other";
 export const VirtualMachinePropertiesGuestOSType = /*@__PURE__*/ S.String;
 
 /** The list of Virtual NICs */
@@ -2289,8 +2258,7 @@ export type VirtualMachinePropertiesStatus =
   | "poweredoff"
   | "updating"
   | "deallocating"
-  | "deleting"
-  | (string & {});
+  | "deleting";
 export const VirtualMachinePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** The list of Virtual VSphere Networks */
@@ -2578,8 +2546,7 @@ export type VirtualMachinesStopRequestMode =
   | "reboot"
   | "suspend"
   | "shutdown"
-  | "poweroff"
-  | (string & {});
+  | "poweroff";
 export const VirtualMachinesStopRequestMode = /*@__PURE__*/ S.String;
 
 export interface VirtualMachinesStopRequest {
@@ -2590,7 +2557,7 @@ export interface VirtualMachinesStopRequest {
   /** virtual machine name */
   virtualMachineName: string;
   /** query stop mode parameter (reboot, shutdown, etc...) */
-  mode?: VirtualMachinesStopRequestMode;
+  mode?: VirtualMachinesStopRequestMode | (string & {});
 }
 export const VirtualMachinesStopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

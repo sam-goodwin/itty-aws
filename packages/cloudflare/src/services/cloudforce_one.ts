@@ -272,8 +272,7 @@ export type RequestsCreateRequestTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsCreateRequestTlp = /*@__PURE__*/ S.String;
 
 export interface CreateRequestRequest {
@@ -288,7 +287,7 @@ export interface CreateRequestRequest {
   /** Brief description of the request. */
   summary?: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp?: RequestsCreateRequestTlp;
+  tlp?: RequestsCreateRequestTlp | (string & {});
 }
 export const CreateRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -316,8 +315,7 @@ export type RequestsCreateResponseTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsCreateResponseTlp = /*@__PURE__*/ S.String;
 
 export type RequestsCreateResponseStatus =
@@ -326,8 +324,7 @@ export type RequestsCreateResponseStatus =
   | "reported"
   | "approved"
   | "completed"
-  | "declined"
-  | (string & {});
+  | "declined";
 export const RequestsCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -513,8 +510,7 @@ export type RequestsPriorityCreateRequestTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsPriorityCreateRequestTlp = /*@__PURE__*/ S.String;
 
 export interface CreateRequestPriorityRequest {
@@ -527,7 +523,7 @@ export interface CreateRequestPriorityRequest {
   /** Requirement. */
   requirement: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: RequestsPriorityCreateRequestTlp;
+  tlp: RequestsPriorityCreateRequestTlp | (string & {});
 }
 export const CreateRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -559,8 +555,7 @@ export type RequestsPriorityCreateResponseTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsPriorityCreateResponseTlp = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1045,15 +1040,14 @@ export type ThreatEventsTagsCreateRequestAliasesItemTlp =
   | "red"
   | "amber"
   | "green"
-  | "white"
-  | (string & {});
+  | "white";
 export const ThreatEventsTagsCreateRequestAliasesItemTlp =
   /*@__PURE__*/ S.String;
 
 export interface ThreatEventsTagsCreateRequestAliasesItem {
   value: string;
   confidence?: number;
-  tlp?: ThreatEventsTagsCreateRequestAliasesItemTlp;
+  tlp?: ThreatEventsTagsCreateRequestAliasesItemTlp | (string & {});
 }
 export const ThreatEventsTagsCreateRequestAliasesItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -1118,15 +1112,14 @@ export type ThreatEventsTagsCreateRequestInternalAliasesItemTlp =
   | "red"
   | "amber"
   | "green"
-  | "white"
-  | (string & {});
+  | "white";
 export const ThreatEventsTagsCreateRequestInternalAliasesItemTlp =
   /*@__PURE__*/ S.String;
 
 export interface ThreatEventsTagsCreateRequestInternalAliasesItem {
   value: string;
   confidence?: number;
-  tlp?: ThreatEventsTagsCreateRequestInternalAliasesItemTlp;
+  tlp?: ThreatEventsTagsCreateRequestInternalAliasesItemTlp | (string & {});
 }
 export const ThreatEventsTagsCreateRequestInternalAliasesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1150,8 +1143,7 @@ export type ThreatEventsTagsCreateRequestOriginCountryTlp =
   | "red"
   | "amber"
   | "green"
-  | "white"
-  | (string & {});
+  | "white";
 export const ThreatEventsTagsCreateRequestOriginCountryTlp =
   /*@__PURE__*/ S.String;
 
@@ -1190,7 +1182,9 @@ export interface CreateThreatEventTagRequest {
   originCountryConfidence?: number;
   originCountryISO?: string;
   /** TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts. */
-  originCountryTlp?: ThreatEventsTagsCreateRequestOriginCountryTlp;
+  originCountryTlp?:
+    | ThreatEventsTagsCreateRequestOriginCountryTlp
+    | (string & {});
   priority?: number;
   sophisticationLevel?: string;
 }
@@ -1249,8 +1243,7 @@ export type ThreatEventsTagsCreateResponseAliasesItemTlp =
   | "red"
   | "amber"
   | "green"
-  | "white"
-  | (string & {});
+  | "white";
 export const ThreatEventsTagsCreateResponseAliasesItemTlp =
   /*@__PURE__*/ S.String;
 
@@ -1322,8 +1315,7 @@ export type ThreatEventsTagsCreateResponseInternalAliasesItemTlp =
   | "red"
   | "amber"
   | "green"
-  | "white"
-  | (string & {});
+  | "white";
 export const ThreatEventsTagsCreateResponseInternalAliasesItemTlp =
   /*@__PURE__*/ S.String;
 
@@ -1354,8 +1346,7 @@ export type ThreatEventsTagsCreateResponseOriginCountryTlp =
   | "red"
   | "amber"
   | "green"
-  | "white"
-  | (string & {});
+  | "white";
 export const ThreatEventsTagsCreateResponseOriginCountryTlp =
   /*@__PURE__*/ S.String;
 
@@ -1732,8 +1723,7 @@ export type RequestsGetResponseTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsGetResponseTlp = /*@__PURE__*/ S.String;
 
 export type RequestsGetResponseStatus =
@@ -1742,8 +1732,7 @@ export type RequestsGetResponseStatus =
   | "reported"
   | "approved"
   | "completed"
-  | "declined"
-  | (string & {});
+  | "declined";
 export const RequestsGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1791,7 +1780,7 @@ export const GetRequestResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRequestResponse",
 }) as any as S.Schema<GetRequestResponse>;
 
-export type RequestsMessageGetRequestSortOrder = "asc" | "desc" | (string & {});
+export type RequestsMessageGetRequestSortOrder = "asc" | "desc";
 export const RequestsMessageGetRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface GetRequestMessageRequest {
@@ -1810,7 +1799,7 @@ export interface GetRequestMessageRequest {
   /** Field to sort results by. */
   sortBy?: string;
   /** Sort order (asc or desc). */
-  sortOrder?: RequestsMessageGetRequestSortOrder;
+  sortOrder?: RequestsMessageGetRequestSortOrder | (string & {});
 }
 export const GetRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1913,8 +1902,7 @@ export type RequestsPriorityGetResponseTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsPriorityGetResponseTlp = /*@__PURE__*/ S.String;
 
 export type RequestsPriorityGetResponseStatus =
@@ -1923,8 +1911,7 @@ export type RequestsPriorityGetResponseStatus =
   | "reported"
   | "approved"
   | "completed"
-  | "declined"
-  | (string & {});
+  | "declined";
 export const RequestsPriorityGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2645,14 +2632,10 @@ export const ThreatEventsListRequestDatasetIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsListRequestDatasetIdList>;
 
-export type ThreatEventsListRequestFormat =
-  | "json"
-  | "stix2"
-  | "taxii"
-  | (string & {});
+export type ThreatEventsListRequestFormat = "json" | "stix2" | "taxii";
 export const ThreatEventsListRequestFormat = /*@__PURE__*/ S.String;
 
-export type ThreatEventsListRequestOrder = "asc" | "desc" | (string & {});
+export type ThreatEventsListRequestOrder = "asc" | "desc";
 export const ThreatEventsListRequestOrder = /*@__PURE__*/ S.String;
 
 export type ThreatEventsListRequestSearchList = ReadonlyArray<string>;
@@ -2660,7 +2643,7 @@ export const ThreatEventsListRequestSearchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsListRequestSearchList>;
 
-export type ThreatEventsListRequestSource = "do" | "r2catalog" | (string & {});
+export type ThreatEventsListRequestSource = "do" | "r2catalog";
 export const ThreatEventsListRequestSource = /*@__PURE__*/ S.String;
 
 export interface ListThreatEventsRequest {
@@ -2671,8 +2654,8 @@ export interface ListThreatEventsRequest {
   /** Dataset IDs to query events from (array of UUIDs), or special value 'all' or '*' to query all event datasets for the account. If not provided, uses the default dataset. */
   datasetId?: ThreatEventsListRequestDatasetIdList;
   forceRefresh?: boolean;
-  format?: ThreatEventsListRequestFormat;
-  order?: ThreatEventsListRequestOrder;
+  format?: ThreatEventsListRequestFormat | (string & {});
+  order?: ThreatEventsListRequestOrder | (string & {});
   orderBy?: string;
   /** Page number (1-indexed) for offset-based pagination. Limited to offset of 100,000 records. For deep pagination, use cursor-based pagination instead. */
   page?: number;
@@ -2680,7 +2663,7 @@ export interface ListThreatEventsRequest {
   pageSize?: number;
   search?: ThreatEventsListRequestSearchList;
   /** Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields — no 'tags'). */
-  source?: ThreatEventsListRequestSource;
+  source?: ThreatEventsListRequestSource | (string & {});
 }
 export const ListThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3479,8 +3462,7 @@ export const RequestsConstantsRequest = /*@__PURE__*/ S.suspend(() =>
 export type RequestsConstantsResponsePriorityItem =
   | "routine"
   | "high"
-  | "urgent"
-  | (string & {});
+  | "urgent";
 export const RequestsConstantsResponsePriorityItem = /*@__PURE__*/ S.String;
 
 export type RequestsConstantsResponsePriorityList =
@@ -3495,8 +3477,7 @@ export type RequestsConstantsResponseStatusItem =
   | "reported"
   | "approved"
   | "completed"
-  | "declined"
-  | (string & {});
+  | "declined";
 export const RequestsConstantsResponseStatusItem = /*@__PURE__*/ S.String;
 
 export type RequestsConstantsResponseStatusList =
@@ -3510,8 +3491,7 @@ export type RequestsConstantsResponseTlpItem =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsConstantsResponseTlpItem = /*@__PURE__*/ S.String;
 
 export type RequestsConstantsResponseTlpList =
@@ -3566,7 +3546,7 @@ export const RequestsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestsDeleteResponse",
 }) as any as S.Schema<RequestsDeleteResponse>;
 
-export type RequestsListRequestSortOrder = "asc" | "desc" | (string & {});
+export type RequestsListRequestSortOrder = "asc" | "desc";
 export const RequestsListRequestSortOrder = /*@__PURE__*/ S.String;
 
 export type RequestsListRequestStatus =
@@ -3575,8 +3555,7 @@ export type RequestsListRequestStatus =
   | "reported"
   | "approved"
   | "completed"
-  | "declined"
-  | (string & {});
+  | "declined";
 export const RequestsListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface RequestsListRequest {
@@ -3599,9 +3578,9 @@ export interface RequestsListRequest {
   /** Field to sort results by. */
   sortBy?: string;
   /** Sort order (asc or desc). */
-  sortOrder?: RequestsListRequestSortOrder;
+  sortOrder?: RequestsListRequestSortOrder | (string & {});
   /** Request Status. */
-  status?: RequestsListRequestStatus;
+  status?: RequestsListRequestStatus | (string & {});
 }
 export const RequestsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3631,11 +3610,7 @@ export const RequestsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestsListRequest",
 }) as any as S.Schema<RequestsListRequest>;
 
-export type RequestsListResultItemPriority =
-  | "routine"
-  | "high"
-  | "urgent"
-  | (string & {});
+export type RequestsListResultItemPriority = "routine" | "high" | "urgent";
 export const RequestsListResultItemPriority = /*@__PURE__*/ S.String;
 
 export type RequestsListResultItemTlp =
@@ -3643,8 +3618,7 @@ export type RequestsListResultItemTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsListResultItemTlp = /*@__PURE__*/ S.String;
 
 export type RequestsListResultItemStatus =
@@ -3653,8 +3627,7 @@ export type RequestsListResultItemStatus =
   | "reported"
   | "approved"
   | "completed"
-  | "declined"
-  | (string & {});
+  | "declined";
 export const RequestsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface RequestsListResultItem {
@@ -3789,8 +3762,7 @@ export type RequestsUpdateRequestTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsUpdateRequestTlp = /*@__PURE__*/ S.String;
 
 export interface RequestsUpdateRequest {
@@ -3807,7 +3779,7 @@ export interface RequestsUpdateRequest {
   /** Brief description of the request. */
   summary?: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp?: RequestsUpdateRequestTlp;
+  tlp?: RequestsUpdateRequestTlp | (string & {});
 }
 export const RequestsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3836,8 +3808,7 @@ export type RequestsUpdateResponseTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsUpdateResponseTlp = /*@__PURE__*/ S.String;
 
 export type RequestsUpdateResponseStatus =
@@ -3846,8 +3817,7 @@ export type RequestsUpdateResponseStatus =
   | "reported"
   | "approved"
   | "completed"
-  | "declined"
-  | (string & {});
+  | "declined";
 export const RequestsUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4015,8 +3985,7 @@ export type RequestsPriorityUpdateRequestTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsPriorityUpdateRequestTlp = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestPriorityRequest {
@@ -4031,7 +4000,7 @@ export interface UpdateRequestPriorityRequest {
   /** Requirement. */
   requirement: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: RequestsPriorityUpdateRequestTlp;
+  tlp: RequestsPriorityUpdateRequestTlp | (string & {});
 }
 export const UpdateRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4059,8 +4028,7 @@ export type RequestsPriorityUpdateResponseTlp =
   | "amber"
   | "amber-strict"
   | "green"
-  | "red"
-  | (string & {});
+  | "red";
 export const RequestsPriorityUpdateResponseTlp = /*@__PURE__*/ S.String;
 
 export type RequestsPriorityUpdateResponseStatus =
@@ -4069,8 +4037,7 @@ export type RequestsPriorityUpdateResponseStatus =
   | "reported"
   | "approved"
   | "completed"
-  | "declined"
-  | (string & {});
+  | "declined";
 export const RequestsPriorityUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

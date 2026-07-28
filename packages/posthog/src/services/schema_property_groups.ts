@@ -41,14 +41,13 @@ export type SchemaPropertyGroupPropertyPropertyTypeEnum =
   | "String"
   | "Numeric"
   | "Boolean"
-  | "Object"
-  | (string & {});
+  | "Object";
 export const SchemaPropertyGroupPropertyPropertyTypeEnum =
   /*@__PURE__*/ S.String;
 
 export interface SchemaPropertyGroupPropertyInput {
   name?: string;
-  property_type?: SchemaPropertyGroupPropertyPropertyTypeEnum;
+  property_type?: SchemaPropertyGroupPropertyPropertyTypeEnum | (string & {});
   is_required?: boolean;
   is_optional_in_types?: boolean;
   description?: string;
@@ -160,11 +159,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

@@ -135,15 +135,14 @@ export type GetEntitlementFilterName =
   | "CUSTOMER_IDENTIFIER"
   | "DIMENSION"
   | "CUSTOMER_AWS_ACCOUNT_ID"
-  | "LICENSE_ARN"
-  | (string & {});
+  | "LICENSE_ARN";
 export const GetEntitlementFilterName = /*@__PURE__*/ S.String;
 
 export type FilterValue = string;
 export type FilterValueList = string[];
 export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
 export type GetEntitlementFilters = {
-  [key in GetEntitlementFilterName]?: string[];
+  [key in GetEntitlementFilterName | (string & {})]?: string[];
 };
 export const GetEntitlementFilters = /*@__PURE__*/ S.Record(
   GetEntitlementFilterName,

@@ -13,59 +13,55 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type GoogleCloudRecaptchaenterpriseV1IpOverrideDataOverrideTypeEnum =
-  | "OVERRIDE_TYPE_UNSPECIFIED"
-  | "ALLOW"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1IpOverrideDataOverrideTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1IpOverrideDataOverrideTypeEnum = "OVERRIDE_TYPE_UNSPECIFIED" | "ALLOW";
+export const GoogleCloudRecaptchaenterpriseV1IpOverrideDataOverrideTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the IP or IP range override. */
 export interface GoogleCloudRecaptchaenterpriseV1IpOverrideData {
@@ -74,33 +70,23 @@ export interface GoogleCloudRecaptchaenterpriseV1IpOverrideData {
   /** Required. Describes the type of IP override. */
   overrideType?: GoogleCloudRecaptchaenterpriseV1IpOverrideDataOverrideTypeEnum;
 }
-export const GoogleCloudRecaptchaenterpriseV1IpOverrideData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ip: S.optional(S.String),
-      overrideType: S.optional(
-        GoogleCloudRecaptchaenterpriseV1IpOverrideDataOverrideTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1IpOverrideData",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1IpOverrideData>;
+export const GoogleCloudRecaptchaenterpriseV1IpOverrideData = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ip": S.optional(S.String),
+  "overrideType": S.optional(GoogleCloudRecaptchaenterpriseV1IpOverrideDataOverrideTypeEnum),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1IpOverrideData" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1IpOverrideData>;
 
 /** The AddIpOverride request message. */
 export interface GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest {
   /** Required. IP override added to the key. */
   ipOverrideData?: GoogleCloudRecaptchaenterpriseV1IpOverrideData;
 }
-export const GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipOverrideData: S.optional(
-        GoogleCloudRecaptchaenterpriseV1IpOverrideData,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest>;
+export const GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ipOverrideData": S.optional(GoogleCloudRecaptchaenterpriseV1IpOverrideData),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest>;
 
 export interface AddIpOverrideProjectsKeysRequest {
   /** Required. The name of the key to which the IP override is added, in the format `projects/{project}/keys/{key}`. */
@@ -109,55 +95,23 @@ export interface AddIpOverrideProjectsKeysRequest {
   body?: GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest;
 }
 export const AddIpOverrideProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:addIpOverride",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AddIpOverrideProjectsKeysRequest",
-}) as any as S.Schema<AddIpOverrideProjectsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:addIpOverride","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "AddIpOverrideProjectsKeysRequest" }) as any as S.Schema<AddIpOverrideProjectsKeysRequest>;
 
 /** Response for AddIpOverride. */
 export interface GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse {}
-export const GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse>;
+export const GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse>;
 
-export type GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum =
-    | "REASON_UNSPECIFIED"
-    | "CHARGEBACK"
-    | "CHARGEBACK_FRAUD"
-    | "CHARGEBACK_DISPUTE"
-    | "REFUND"
-    | "REFUND_FRAUD"
-    | "TRANSACTION_ACCEPTED"
-    | "TRANSACTION_DECLINED"
-    | "PAYMENT_HEURISTICS"
-    | "INITIATED_TWO_FACTOR"
-    | "PASSED_TWO_FACTOR"
-    | "FAILED_TWO_FACTOR"
-    | "CORRECT_PASSWORD"
-    | "INCORRECT_PASSWORD"
-    | "SOCIAL_SPAM"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum = "REASON_UNSPECIFIED" | "CHARGEBACK" | "CHARGEBACK_FRAUD" | "CHARGEBACK_DISPUTE" | "REFUND" | "REFUND_FRAUD" | "TRANSACTION_ACCEPTED" | "TRANSACTION_DECLINED" | "PAYMENT_HEURISTICS" | "INITIATED_TWO_FACTOR" | "PASSED_TWO_FACTOR" | "FAILED_TWO_FACTOR" | "CORRECT_PASSWORD" | "INCORRECT_PASSWORD" | "SOCIAL_SPAM";
+export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum>;
-export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList>;
+export type GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum | (string & {})>;
+export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList>;
 
 /** Details on a phone authentication event */
 export interface GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent {
@@ -166,49 +120,18 @@ export interface GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent {
   /** Optional. The time at which the multi-factor authentication event (challenge or verification) occurred. */
   eventTime?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      phoneNumber: S.optional(S.String),
-      eventTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent>;
+export const GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "phoneNumber": S.optional(S.String),
+  "eventTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent>;
 
-export type GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestAnnotationEnum =
-    | "ANNOTATION_UNSPECIFIED"
-    | "LEGITIMATE"
-    | "FRAUDULENT"
-    | "PASSWORD_CORRECT"
-    | "PASSWORD_INCORRECT"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestAnnotationEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestAnnotationEnum = "ANNOTATION_UNSPECIFIED" | "LEGITIMATE" | "FRAUDULENT" | "PASSWORD_CORRECT" | "PASSWORD_INCORRECT";
+export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestAnnotationEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecaptchaenterpriseV1TransactionEventEventTypeEnum =
-  | "TRANSACTION_EVENT_TYPE_UNSPECIFIED"
-  | "MERCHANT_APPROVE"
-  | "MERCHANT_DENY"
-  | "MANUAL_REVIEW"
-  | "AUTHORIZATION"
-  | "AUTHORIZATION_DECLINE"
-  | "PAYMENT_CAPTURE"
-  | "PAYMENT_CAPTURE_DECLINE"
-  | "CANCEL"
-  | "CHARGEBACK_INQUIRY"
-  | "CHARGEBACK_ALERT"
-  | "FRAUD_NOTIFICATION"
-  | "CHARGEBACK"
-  | "CHARGEBACK_REPRESENTMENT"
-  | "CHARGEBACK_REVERSE"
-  | "REFUND_REQUEST"
-  | "REFUND_DECLINE"
-  | "REFUND"
-  | "REFUND_REVERSE"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1TransactionEventEventTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1TransactionEventEventTypeEnum = "TRANSACTION_EVENT_TYPE_UNSPECIFIED" | "MERCHANT_APPROVE" | "MERCHANT_DENY" | "MANUAL_REVIEW" | "AUTHORIZATION" | "AUTHORIZATION_DECLINE" | "PAYMENT_CAPTURE" | "PAYMENT_CAPTURE_DECLINE" | "CANCEL" | "CHARGEBACK_INQUIRY" | "CHARGEBACK_ALERT" | "FRAUD_NOTIFICATION" | "CHARGEBACK" | "CHARGEBACK_REPRESENTMENT" | "CHARGEBACK_REVERSE" | "REFUND_REQUEST" | "REFUND_DECLINE" | "REFUND" | "REFUND_REVERSE";
+export const GoogleCloudRecaptchaenterpriseV1TransactionEventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes an event in the lifecycle of a payment transaction. */
 export interface GoogleCloudRecaptchaenterpriseV1TransactionEvent {
@@ -219,21 +142,16 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionEvent {
   /** Optional. Timestamp when this transaction event occurred; otherwise assumed to be the time of the API call. */
   eventTime?: string;
   /** Optional. The type of this transaction event. */
-  eventType?: GoogleCloudRecaptchaenterpriseV1TransactionEventEventTypeEnum;
+  eventType?: GoogleCloudRecaptchaenterpriseV1TransactionEventEventTypeEnum | (string & {});
 }
-export const GoogleCloudRecaptchaenterpriseV1TransactionEvent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(S.String),
-      value: S.optional(S.Number),
-      eventTime: S.optional(S.String),
-      eventType: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TransactionEventEventTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1TransactionEvent",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionEvent>;
+export const GoogleCloudRecaptchaenterpriseV1TransactionEvent = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "reason": S.optional(S.String),
+  "value": S.optional(S.Number),
+  "eventTime": S.optional(S.String),
+  "eventType": S.optional(GoogleCloudRecaptchaenterpriseV1TransactionEventEventTypeEnum),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1TransactionEvent" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionEvent>;
 
 /** The request message to annotate an Assessment. */
 export interface GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
@@ -244,33 +162,22 @@ export interface GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   /** Optional. If using an external multi-factor authentication provider, provide phone authentication details for fraud detection purposes. */
   phoneAuthenticationEvent?: GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent;
   /** Optional. The annotation that is assigned to the Event. This field can be left empty to provide reasons that apply to an event without concluding whether the event is legitimate or fraudulent. */
-  annotation?: GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestAnnotationEnum;
+  annotation?: GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestAnnotationEnum | (string & {});
   /** Optional. If the assessment is part of a payment transaction, provide details on payment lifecycle events that occur in the transaction. */
   transactionEvent?: GoogleCloudRecaptchaenterpriseV1TransactionEvent;
   /** Optional. A stable account identifier to apply to the assessment. This is an alternative to setting `account_id` in `CreateAssessment`, for example when a stable account identifier is not yet known in the initial request. */
   accountId?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hashedAccountId: S.optional(S.String),
-      reasons: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList,
-      ),
-      phoneAuthenticationEvent: S.optional(
-        GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent,
-      ),
-      annotation: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestAnnotationEnum,
-      ),
-      transactionEvent: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TransactionEvent,
-      ),
-      accountId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest>;
+export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "hashedAccountId": S.optional(S.String),
+  "reasons": S.optional(GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList),
+  "phoneAuthenticationEvent": S.optional(GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent),
+  "annotation": S.optional(GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestAnnotationEnum),
+  "transactionEvent": S.optional(GoogleCloudRecaptchaenterpriseV1TransactionEvent),
+  "accountId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest>;
 
 export interface AnnotateProjectsAssessmentsRequest {
   /** Required. The resource name of the Assessment, in the format `projects/{project}/assessments/{assessment}`. */
@@ -279,62 +186,34 @@ export interface AnnotateProjectsAssessmentsRequest {
   body?: GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest;
 }
 export const AnnotateProjectsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.pipe(
-        T.HttpBody(),
-      ),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:annotate",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AnnotateProjectsAssessmentsRequest",
-}) as any as S.Schema<AnnotateProjectsAssessmentsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:annotate","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "AnnotateProjectsAssessmentsRequest" }) as any as S.Schema<AnnotateProjectsAssessmentsRequest>;
 
 /** Empty response for AnnotateAssessment. */
 export interface GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse {}
-export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse>;
+export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse>;
 
-export type GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum =
-    | "CARD_LABEL_UNSPECIFIED"
-    | "PREPAID"
-    | "VIRTUAL"
-    | "UNEXPECTED_LOCATION"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum = "CARD_LABEL_UNSPECIFIED" | "PREPAID" | "VIRTUAL" | "UNEXPECTED_LOCATION";
+export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum>;
-export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList>;
+export type GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum>;
+export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList>;
 
 /** Signals describing the payment card used in this transaction. */
 export interface GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals {
   /** Output only. The labels for the payment card in this transaction. */
   cardLabels?: GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList;
 }
-export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cardLabels: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals>;
+export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "cardLabels": S.optional(GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals>;
 
 /** Signals describing the user involved in this transaction. */
 export interface GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals {
@@ -343,15 +222,12 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals {
   /** Output only. Likelihood (from 0.0 to 1.0) this user includes synthetic components in their identity, such as a randomly generated email address, temporary phone number, or fake shipping address. */
   syntheticRisk?: number;
 }
-export const GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      activeDaysLowerBound: S.optional(S.Number),
-      syntheticRisk: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals>;
+export const GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "activeDaysLowerBound": S.optional(S.Number),
+  "syntheticRisk": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals>;
 
 /** Fraud signals describing users and cards involved in the transaction. */
 export interface GoogleCloudRecaptchaenterpriseV1FraudSignals {
@@ -360,104 +236,52 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudSignals {
   /** Output only. Signals describing the end user in this transaction. */
   userSignals?: GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals;
 }
-export const GoogleCloudRecaptchaenterpriseV1FraudSignals =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cardSignals: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals,
-      ),
-      userSignals: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignals",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignals>;
+export const GoogleCloudRecaptchaenterpriseV1FraudSignals = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "cardSignals": S.optional(GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals),
+  "userSignals": S.optional(GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FraudSignals" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignals>;
 
-export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum =
-    | "ACCOUNT_DEFENDER_LABEL_UNSPECIFIED"
-    | "PROFILE_MATCH"
-    | "SUSPICIOUS_LOGIN_ACTIVITY"
-    | "SUSPICIOUS_ACCOUNT_CREATION"
-    | "RELATED_ACCOUNTS_NUMBER_HIGH"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum = "ACCOUNT_DEFENDER_LABEL_UNSPECIFIED" | "PROFILE_MATCH" | "SUSPICIOUS_LOGIN_ACTIVITY" | "SUSPICIOUS_ACCOUNT_CREATION" | "RELATED_ACCOUNTS_NUMBER_HIGH";
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum>;
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList>;
+export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum>;
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList>;
 
-export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonReasonEnum =
-    | "RISK_REASON_UNSPECIFIED"
-    | "CLIENT_HISTORICAL_BOT_ACTIVITY"
-    | "ACCOUNT_IN_LARGE_RELATED_GROUP"
-    | "CLIENT_ACCESSED_MANY_ACCOUNTS"
-    | "DISPOSABLE_EMAIL_DOMAIN"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonReasonEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonReasonEnum = "RISK_REASON_UNSPECIFIED" | "CLIENT_HISTORICAL_BOT_ACTIVITY" | "ACCOUNT_IN_LARGE_RELATED_GROUP" | "CLIENT_ACCESSED_MANY_ACCOUNTS" | "DISPOSABLE_EMAIL_DOMAIN";
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonReasonEnum = /*@__PURE__*/ S.String;
 
 /** Risk explainability reasons for Account defense. */
 export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason {
   /** Output only. A risk reason associated with this request. */
   reason?: GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonReasonEnum;
 }
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonReasonEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "reason": S.optional(GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonReasonEnum),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
 
-export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList>;
+export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList>;
 
-export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonReasonEnum =
-    | "TRUST_REASON_UNSPECIFIED"
-    | "PROFILE_MATCH"
-    | "ACCOUNT_HISTORY_REPUTABLE"
-    | "IDENTITY_GLOBAL_ACTIVITY_REPUTABLE"
-    | "IDENTITY_HISTORY_REPUTABLE"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonReasonEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonReasonEnum = "TRUST_REASON_UNSPECIFIED" | "PROFILE_MATCH" | "ACCOUNT_HISTORY_REPUTABLE" | "IDENTITY_GLOBAL_ACTIVITY_REPUTABLE" | "IDENTITY_HISTORY_REPUTABLE";
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonReasonEnum = /*@__PURE__*/ S.String;
 
 /** Trust explainability reasons for Account defense. */
 export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason {
   /** Output only. A trust reason associated with this request. */
   reason?: GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonReasonEnum;
 }
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonReasonEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>;
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "reason": S.optional(GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonReasonEnum),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>;
 
-export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>;
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList>;
+export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>;
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList>;
 
 /** Account takeover risk assessment. */
 export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict {
@@ -468,21 +292,13 @@ export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccoun
   /** Output only. Unordered list. Reasons why the request appears trustworthy. Trust reasons can be returned even if the risk is high, as risky requests can still have some trust signals. */
   trustReasons?: GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList;
 }
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      riskReasons: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList,
-      ),
-      risk: S.optional(S.Number),
-      trustReasons: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict>;
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "riskReasons": S.optional(GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList),
+  "risk": S.optional(S.Number),
+  "trustReasons": S.optional(GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict>;
 
 /** Account defense risk assessment. */
 export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
@@ -491,19 +307,12 @@ export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
   /** Output only. Account takeover risk assessment for this request. */
   accountTakeoverVerdict?: GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict;
 }
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      labels: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList,
-      ),
-      accountTakeoverVerdict: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment>;
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "labels": S.optional(GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList),
+  "accountTakeoverVerdict": S.optional(GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment>;
 
 /** The environment creating the assessment. This describes your environment (the system invoking CreateAssessment), NOT the environment of your user. */
 export interface GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment {
@@ -512,41 +321,21 @@ export interface GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment {
   /** Optional. Identifies the client module initiating the CreateAssessment request. This can be the link to the client module's project. Examples include: - "github.com/GoogleCloudPlatform/recaptcha-enterprise-google-tag-manager" - "wordpress.org/plugins/recaptcha-something" */
   client?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      version: S.optional(S.String),
-      client: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment>;
+export const GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "version": S.optional(S.String),
+  "client": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment>;
 
-export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisChallengeEnum =
-  | "CHALLENGE_UNSPECIFIED"
-  | "NOCAPTCHA"
-  | "PASSED"
-  | "FAILED"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisChallengeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisChallengeEnum = "CHALLENGE_UNSPECIFIED" | "NOCAPTCHA" | "PASSED" | "FAILED";
+export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisChallengeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisLastChallengeTypeEnum =
-  | "CHALLENGE_TYPE_UNSPECIFIED"
-  | "CHALLENGE_TYPE_VISUAL"
-  | "CHALLENGE_TYPE_AUDIO"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisLastChallengeTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisLastChallengeTypeEnum = "CHALLENGE_TYPE_UNSPECIFIED" | "CHALLENGE_TYPE_VISUAL" | "CHALLENGE_TYPE_AUDIO";
+export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisLastChallengeTypeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecaptchaenterpriseV1BotBotTypeEnum =
-  | "BOT_TYPE_UNSPECIFIED"
-  | "AI_AGENT"
-  | "CONTENT_SCRAPER"
-  | "SEARCH_INDEXER"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1BotBotTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1BotBotTypeEnum = "BOT_TYPE_UNSPECIFIED" | "AI_AGENT" | "CONTENT_SCRAPER" | "SEARCH_INDEXER";
+export const GoogleCloudRecaptchaenterpriseV1BotBotTypeEnum = /*@__PURE__*/ S.String;
 
 /** Bot information and metadata. */
 export interface GoogleCloudRecaptchaenterpriseV1Bot {
@@ -556,44 +345,23 @@ export interface GoogleCloudRecaptchaenterpriseV1Bot {
   name?: string;
 }
 export const GoogleCloudRecaptchaenterpriseV1Bot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botType: S.optional(GoogleCloudRecaptchaenterpriseV1BotBotTypeEnum),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRecaptchaenterpriseV1Bot",
-}) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Bot>;
+S.Struct({
+  "botType": S.optional(GoogleCloudRecaptchaenterpriseV1BotBotTypeEnum),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1Bot" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Bot>;
 
-export type GoogleCloudRecaptchaenterpriseV1BotList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1Bot>;
-export const GoogleCloudRecaptchaenterpriseV1BotList = /*@__PURE__*/ S.Array(
-  GoogleCloudRecaptchaenterpriseV1Bot,
-) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1BotList>;
+export type GoogleCloudRecaptchaenterpriseV1BotList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1Bot>;
+export const GoogleCloudRecaptchaenterpriseV1BotList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1Bot) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1BotList>;
 
-export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum =
-  | "CLASSIFICATION_REASON_UNSPECIFIED"
-  | "AUTOMATION"
-  | "UNEXPECTED_ENVIRONMENT"
-  | "TOO_MUCH_TRAFFIC"
-  | "UNEXPECTED_USAGE_PATTERNS"
-  | "LOW_CONFIDENCE_SCORE"
-  | "SUSPECTED_CARDING"
-  | "SUSPECTED_CHARGEBACK"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum = "CLASSIFICATION_REASON_UNSPECIFIED" | "AUTOMATION" | "UNEXPECTED_ENVIRONMENT" | "TOO_MUCH_TRAFFIC" | "UNEXPECTED_USAGE_PATTERNS" | "LOW_CONFIDENCE_SCORE" | "SUSPECTED_CARDING" | "SUSPECTED_CHARGEBACK";
+export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum>;
-export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList>;
+export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum>;
+export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Risk analysis result for an event. */
 export interface GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
@@ -610,40 +378,19 @@ export interface GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   /** Output only. Additional reasons contributing to the risk analysis verdict. These reasons are available to Enterprise tier projects only. Contact sales for more information. The set of reasons is subject to change. */
   extendedVerdictReasons?: StringList;
 }
-export const GoogleCloudRecaptchaenterpriseV1RiskAnalysis =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      challenge: S.optional(
-        GoogleCloudRecaptchaenterpriseV1RiskAnalysisChallengeEnum,
-      ),
-      lastChallengeType: S.optional(
-        GoogleCloudRecaptchaenterpriseV1RiskAnalysisLastChallengeTypeEnum,
-      ),
-      verifiedBots: S.optional(GoogleCloudRecaptchaenterpriseV1BotList),
-      score: S.optional(S.Number),
-      reasons: S.optional(
-        GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList,
-      ),
-      extendedVerdictReasons: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1RiskAnalysis",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RiskAnalysis>;
+export const GoogleCloudRecaptchaenterpriseV1RiskAnalysis = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "challenge": S.optional(GoogleCloudRecaptchaenterpriseV1RiskAnalysisChallengeEnum),
+  "lastChallengeType": S.optional(GoogleCloudRecaptchaenterpriseV1RiskAnalysisLastChallengeTypeEnum),
+  "verifiedBots": S.optional(GoogleCloudRecaptchaenterpriseV1BotList),
+  "score": S.optional(S.Number),
+  "reasons": S.optional(GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList),
+  "extendedVerdictReasons": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1RiskAnalysis" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RiskAnalysis>;
 
-export type GoogleCloudRecaptchaenterpriseV1AccountVerificationInfoLatestVerificationResultEnum =
-    | "RESULT_UNSPECIFIED"
-    | "SUCCESS_USER_VERIFIED"
-    | "ERROR_USER_NOT_VERIFIED"
-    | "ERROR_SITE_ONBOARDING_INCOMPLETE"
-    | "ERROR_RECIPIENT_NOT_ALLOWED"
-    | "ERROR_RECIPIENT_ABUSE_LIMIT_EXHAUSTED"
-    | "ERROR_CRITICAL_INTERNAL"
-    | "ERROR_CUSTOMER_QUOTA_EXHAUSTED"
-    | "ERROR_VERIFICATION_BYPASSED"
-    | "ERROR_VERDICT_MISMATCH"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1AccountVerificationInfoLatestVerificationResultEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1AccountVerificationInfoLatestVerificationResultEnum = "RESULT_UNSPECIFIED" | "SUCCESS_USER_VERIFIED" | "ERROR_USER_NOT_VERIFIED" | "ERROR_SITE_ONBOARDING_INCOMPLETE" | "ERROR_RECIPIENT_NOT_ALLOWED" | "ERROR_RECIPIENT_ABUSE_LIMIT_EXHAUSTED" | "ERROR_CRITICAL_INTERNAL" | "ERROR_CUSTOMER_QUOTA_EXHAUSTED" | "ERROR_VERIFICATION_BYPASSED" | "ERROR_VERDICT_MISMATCH";
+export const GoogleCloudRecaptchaenterpriseV1AccountVerificationInfoLatestVerificationResultEnum = /*@__PURE__*/ S.String;
 
 /** Information about a verification endpoint that can be used for 2FA. */
 export interface GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo {
@@ -656,24 +403,17 @@ export interface GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo {
   /** Output only. Timestamp of the last successful verification for the endpoint, if any. */
   lastVerificationTime?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestToken: S.optional(S.String),
-      emailAddress: S.optional(S.String),
-      phoneNumber: S.optional(S.String),
-      lastVerificationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>;
+export const GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestToken": S.optional(S.String),
+  "emailAddress": S.optional(S.String),
+  "phoneNumber": S.optional(S.String),
+  "lastVerificationTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>;
 
-export type GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfoList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>;
-export const GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfoList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfoList>;
+export type GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfoList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>;
+export const GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfoList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfoList>;
 
 /** Information about account verification, used for identity verification. */
 export interface GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
@@ -686,124 +426,81 @@ export interface GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
   /** Optional. Language code preference for the verification message, set as a IETF BCP 47 language code. */
   languageCode?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      latestVerificationResult: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AccountVerificationInfoLatestVerificationResultEnum,
-      ),
-      endpoints: S.optional(
-        GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfoList,
-      ),
-      username: S.optional(S.String),
-      languageCode: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo>;
+export const GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "latestVerificationResult": S.optional(GoogleCloudRecaptchaenterpriseV1AccountVerificationInfoLatestVerificationResultEnum),
+  "endpoints": S.optional(GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfoList),
+  "username": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo>;
 
 /** Information about the evaluation of a `ChallengeRule`. */
 export interface GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation {}
-export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation>;
+export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation>;
 
 /** Information about the policy evaluation. */
 export interface GoogleCloudRecaptchaenterpriseV1PolicyEvaluation {
   /** Output only. Populated if one or more Challenge rules were matched. Its presence in the assessment indicates that at least one challenge rule was matched and determined whether a challenge was presented to the user. */
   challengeRuleEvaluation?: GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation;
 }
-export const GoogleCloudRecaptchaenterpriseV1PolicyEvaluation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      challengeRuleEvaluation: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1PolicyEvaluation",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1PolicyEvaluation>;
+export const GoogleCloudRecaptchaenterpriseV1PolicyEvaluation = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "challengeRuleEvaluation": S.optional(GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1PolicyEvaluation" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1PolicyEvaluation>;
 
 /** Information about behavioral trust of the transaction. */
 export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict {
   /** Output only. Probability of this transaction attempt being executed in a behaviorally trustworthy way. Values are from 0.0 (lowest) to 1.0 (highest). */
   trust?: number;
 }
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      trust: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict>;
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "trust": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict>;
 
-export type GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonReasonEnum =
-    | "REASON_UNSPECIFIED"
-    | "HIGH_TRANSACTION_VELOCITY"
-    | "EXCESSIVE_ENUMERATION_PATTERN"
-    | "SHORT_IDENTITY_HISTORY"
-    | "GEOLOCATION_DISCREPANCY"
-    | "ASSOCIATED_WITH_FRAUD_CLUSTER"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonReasonEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonReasonEnum = "REASON_UNSPECIFIED" | "HIGH_TRANSACTION_VELOCITY" | "EXCESSIVE_ENUMERATION_PATTERN" | "SHORT_IDENTITY_HISTORY" | "GEOLOCATION_DISCREPANCY" | "ASSOCIATED_WITH_FRAUD_CLUSTER";
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonReasonEnum = /*@__PURE__*/ S.String;
 
 /** Risk reasons applicable to the Fraud Prevention assessment. */
 export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason {
   /** Output only. Risk reasons applicable to the Fraud Prevention assessment. */
   reason?: GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonReasonEnum;
 }
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonReasonEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "reason": S.optional(GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonReasonEnum),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
 
-export type GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList>;
+export type GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList>;
 
 /** Information about card testing fraud, where an adversary is testing fraudulently obtained cards or brute forcing their details. */
 export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict {
   /** Output only. Probability of this transaction attempt being part of a card testing attack. Values are from 0.0 (lowest) to 1.0 (highest). */
   risk?: number;
 }
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      risk: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict>;
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "risk": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict>;
 
 /** Information about stolen instrument fraud, where the user is not the legitimate owner of the instrument being used for the purchase. */
 export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict {
   /** Output only. Probability of this transaction being executed with a stolen instrument. Values are from 0.0 (lowest) to 1.0 (highest). */
   risk?: number;
 }
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      risk: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict>;
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "risk": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict>;
 
 /** Assessment for Fraud Prevention. */
 export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
@@ -818,37 +515,21 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   /** Output only. Assessment of this transaction for risk of a stolen instrument. */
   stolenInstrumentVerdict?: GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict;
 }
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      behavioralTrustVerdict: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict,
-      ),
-      riskReasons: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList,
-      ),
-      transactionRisk: S.optional(S.Number),
-      cardTestingVerdict: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict,
-      ),
-      stolenInstrumentVerdict: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment>;
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "behavioralTrustVerdict": S.optional(GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict),
+  "riskReasons": S.optional(GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList),
+  "transactionRisk": S.optional(S.Number),
+  "cardTestingVerdict": S.optional(GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict),
+  "stolenInstrumentVerdict": S.optional(GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -860,36 +541,29 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleRpcStatus",
-}) as any as S.Schema<GoogleRpcStatus>;
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
 
 /** A redirect action returns a 307 (temporary redirect) response, pointing the user to a reCAPTCHA interstitial page to attach a token. */
 export interface GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction {}
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction>;
 
 /** A substitute action transparently serves a different page than the one requested. */
 export interface GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
   /** Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html". */
   path?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction>;
 
 /** A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend. */
 export interface GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
@@ -898,37 +572,30 @@ export interface GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
   /** Optional. The header value to set in the request to the backend server. */
   value?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction>;
 
 /** An allow action continues processing a request unimpeded. */
 export interface GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction {}
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction>;
 
 /** An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests. */
 export interface GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction {}
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction>;
 
 /** A block action serves an HTTP error code a prevents the request from hitting the backend. */
 export interface GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction {}
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction>;
 
 /** An individual action. Each action represents what to do if a policy matches. */
 export interface GoogleCloudRecaptchaenterpriseV1FirewallAction {
@@ -945,38 +612,19 @@ export interface GoogleCloudRecaptchaenterpriseV1FirewallAction {
   /** This action denies access to a given page. The user gets an HTTP error code. */
   block?: GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction;
 }
-export const GoogleCloudRecaptchaenterpriseV1FirewallAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      redirect: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction,
-      ),
-      substitute: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction,
-      ),
-      setHeader: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction,
-      ),
-      allow: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction,
-      ),
-      includeRecaptchaScript: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction,
-      ),
-      block: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FirewallAction",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallAction>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallAction = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "redirect": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction),
+  "substitute": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction),
+  "setHeader": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction),
+  "allow": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction),
+  "includeRecaptchaScript": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction),
+  "block": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FirewallAction" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallAction>;
 
-export type GoogleCloudRecaptchaenterpriseV1FirewallActionList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FirewallAction>;
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1FirewallAction,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionList>;
+export type GoogleCloudRecaptchaenterpriseV1FirewallActionList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FirewallAction>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1FirewallAction) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionList>;
 
 /** A FirewallPolicy represents a single matching pattern and resulting actions to take. */
 export interface GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
@@ -991,18 +639,15 @@ export interface GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
   /** Optional. A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters. */
   description?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1FirewallPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-      name: S.optional(S.String),
-      condition: S.optional(S.String),
-      actions: S.optional(GoogleCloudRecaptchaenterpriseV1FirewallActionList),
-      description: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FirewallPolicy",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallPolicy = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "path": S.optional(S.String),
+  "name": S.optional(S.String),
+  "condition": S.optional(S.String),
+  "actions": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallActionList),
+  "description": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FirewallPolicy" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>;
 
 /** Policy config assessment. */
 export interface GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
@@ -1011,17 +656,12 @@ export interface GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
   /** Output only. The policy that matched the request. If more than one policy may match, this is the first match. If no policy matches the incoming request, the policy field is left empty. */
   firewallPolicy?: GoogleCloudRecaptchaenterpriseV1FirewallPolicy;
 }
-export const GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      error: S.optional(GoogleRpcStatus),
-      firewallPolicy: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallPolicy,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "error": S.optional(GoogleRpcStatus),
+  "firewallPolicy": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallPolicy),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment>;
 
 /** An identifier associated with a user. */
 export interface GoogleCloudRecaptchaenterpriseV1UserId {
@@ -1032,22 +672,16 @@ export interface GoogleCloudRecaptchaenterpriseV1UserId {
   /** Optional. An email address. */
   email?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1UserId = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      phoneNumber: S.optional(S.String),
-      username: S.optional(S.String),
-      email: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRecaptchaenterpriseV1UserId",
-}) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1UserId>;
+export const GoogleCloudRecaptchaenterpriseV1UserId = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "phoneNumber": S.optional(S.String),
+  "username": S.optional(S.String),
+  "email": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1UserId" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1UserId>;
 
-export type GoogleCloudRecaptchaenterpriseV1UserIdList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1UserId>;
-export const GoogleCloudRecaptchaenterpriseV1UserIdList = /*@__PURE__*/ S.Array(
-  GoogleCloudRecaptchaenterpriseV1UserId,
-) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1UserIdList>;
+export type GoogleCloudRecaptchaenterpriseV1UserIdList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1UserId>;
+export const GoogleCloudRecaptchaenterpriseV1UserIdList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1UserId) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1UserIdList>;
 
 /** User information associated with a request protected by reCAPTCHA Enterprise. */
 export interface GoogleCloudRecaptchaenterpriseV1UserInfo {
@@ -1058,16 +692,13 @@ export interface GoogleCloudRecaptchaenterpriseV1UserInfo {
   /** Optional. Creation time for this account associated with this user. Leave blank for non logged-in actions, guest checkout, or when there is no account associated with the current user. */
   createAccountTime?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1UserInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.optional(S.String),
-      userIds: S.optional(GoogleCloudRecaptchaenterpriseV1UserIdList),
-      createAccountTime: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRecaptchaenterpriseV1UserInfo",
-}) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1UserInfo>;
+export const GoogleCloudRecaptchaenterpriseV1UserInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accountId": S.optional(S.String),
+  "userIds": S.optional(GoogleCloudRecaptchaenterpriseV1UserIdList),
+  "createAccountTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1UserInfo" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1UserInfo>;
 
 /** Details about a user's account involved in the transaction. */
 export interface GoogleCloudRecaptchaenterpriseV1TransactionDataUser {
@@ -1084,26 +715,19 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionDataUser {
   /** Optional. Whether the phone number has been verified to be accessible by the user (OTP or similar). */
   phoneVerified?: boolean;
 }
-export const GoogleCloudRecaptchaenterpriseV1TransactionDataUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.optional(S.String),
-      email: S.optional(S.String),
-      phoneNumber: S.optional(S.String),
-      emailVerified: S.optional(S.Boolean),
-      creationMs: S.optional(S.String),
-      phoneVerified: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataUser",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>;
+export const GoogleCloudRecaptchaenterpriseV1TransactionDataUser = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accountId": S.optional(S.String),
+  "email": S.optional(S.String),
+  "phoneNumber": S.optional(S.String),
+  "emailVerified": S.optional(S.Boolean),
+  "creationMs": S.optional(S.String),
+  "phoneVerified": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataUser" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>;
 
-export type GoogleCloudRecaptchaenterpriseV1TransactionDataUserList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>;
-export const GoogleCloudRecaptchaenterpriseV1TransactionDataUserList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1TransactionDataUser,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataUserList>;
+export type GoogleCloudRecaptchaenterpriseV1TransactionDataUserList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>;
+export const GoogleCloudRecaptchaenterpriseV1TransactionDataUserList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1TransactionDataUser) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataUserList>;
 
 /** Details about the transaction from the gateway. */
 export interface GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo {
@@ -1116,17 +740,14 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo {
   /** Optional. Gateway response code describing the state of the transaction. */
   gatewayResponseCode?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cvvResponseCode: S.optional(S.String),
-      name: S.optional(S.String),
-      avsResponseCode: S.optional(S.String),
-      gatewayResponseCode: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo>;
+export const GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "cvvResponseCode": S.optional(S.String),
+  "name": S.optional(S.String),
+  "avsResponseCode": S.optional(S.String),
+  "gatewayResponseCode": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo>;
 
 /** Structured address format for billing and shipping addresses. */
 export interface GoogleCloudRecaptchaenterpriseV1TransactionDataAddress {
@@ -1143,19 +764,16 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionDataAddress {
   /** Optional. The CLDR country/region of the address. */
   regionCode?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1TransactionDataAddress =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      locality: S.optional(S.String),
-      address: S.optional(StringList),
-      administrativeArea: S.optional(S.String),
-      postalCode: S.optional(S.String),
-      recipient: S.optional(S.String),
-      regionCode: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataAddress",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataAddress>;
+export const GoogleCloudRecaptchaenterpriseV1TransactionDataAddress = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "locality": S.optional(S.String),
+  "address": S.optional(StringList),
+  "administrativeArea": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+  "recipient": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataAddress" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataAddress>;
 
 /** Line items being purchased in this transaction. */
 export interface GoogleCloudRecaptchaenterpriseV1TransactionDataItem {
@@ -1168,24 +786,17 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionDataItem {
   /** Optional. The quantity of this item that is being purchased. */
   quantity?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1TransactionDataItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      value: S.optional(S.Number),
-      merchantAccountId: S.optional(S.String),
-      quantity: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataItem",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>;
+export const GoogleCloudRecaptchaenterpriseV1TransactionDataItem = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "value": S.optional(S.Number),
+  "merchantAccountId": S.optional(S.String),
+  "quantity": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1TransactionDataItem" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>;
 
-export type GoogleCloudRecaptchaenterpriseV1TransactionDataItemList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>;
-export const GoogleCloudRecaptchaenterpriseV1TransactionDataItemList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1TransactionDataItem,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataItemList>;
+export type GoogleCloudRecaptchaenterpriseV1TransactionDataItemList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>;
+export const GoogleCloudRecaptchaenterpriseV1TransactionDataItemList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1TransactionDataItem) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataItemList>;
 
 /** Transaction data associated with a payment protected by reCAPTCHA Enterprise. */
 export interface GoogleCloudRecaptchaenterpriseV1TransactionData {
@@ -1216,44 +827,26 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionData {
   /** Optional. Destination address if this transaction involves shipping a physical item. */
   shippingAddress?: GoogleCloudRecaptchaenterpriseV1TransactionDataAddress;
 }
-export const GoogleCloudRecaptchaenterpriseV1TransactionData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchants: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TransactionDataUserList,
-      ),
-      gatewayInfo: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo,
-      ),
-      value: S.optional(S.Number),
-      shippingValue: S.optional(S.Number),
-      cardLastFour: S.optional(S.String),
-      transactionId: S.optional(S.String),
-      paymentMethod: S.optional(S.String),
-      billingAddress: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TransactionDataAddress,
-      ),
-      currencyCode: S.optional(S.String),
-      items: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TransactionDataItemList,
-      ),
-      cardBin: S.optional(S.String),
-      user: S.optional(GoogleCloudRecaptchaenterpriseV1TransactionDataUser),
-      shippingAddress: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TransactionDataAddress,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1TransactionData",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionData>;
+export const GoogleCloudRecaptchaenterpriseV1TransactionData = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchants": S.optional(GoogleCloudRecaptchaenterpriseV1TransactionDataUserList),
+  "gatewayInfo": S.optional(GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo),
+  "value": S.optional(S.Number),
+  "shippingValue": S.optional(S.Number),
+  "cardLastFour": S.optional(S.String),
+  "transactionId": S.optional(S.String),
+  "paymentMethod": S.optional(S.String),
+  "billingAddress": S.optional(GoogleCloudRecaptchaenterpriseV1TransactionDataAddress),
+  "currencyCode": S.optional(S.String),
+  "items": S.optional(GoogleCloudRecaptchaenterpriseV1TransactionDataItemList),
+  "cardBin": S.optional(S.String),
+  "user": S.optional(GoogleCloudRecaptchaenterpriseV1TransactionDataUser),
+  "shippingAddress": S.optional(GoogleCloudRecaptchaenterpriseV1TransactionDataAddress),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1TransactionData" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionData>;
 
-export type GoogleCloudRecaptchaenterpriseV1EventFraudPreventionEnum =
-  | "FRAUD_PREVENTION_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1EventFraudPreventionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1EventFraudPreventionEnum = "FRAUD_PREVENTION_UNSPECIFIED" | "ENABLED" | "DISABLED";
+export const GoogleCloudRecaptchaenterpriseV1EventFraudPreventionEnum = /*@__PURE__*/ S.String;
 
 /** The event being assessed. */
 export interface GoogleCloudRecaptchaenterpriseV1Event {
@@ -1290,45 +883,32 @@ export interface GoogleCloudRecaptchaenterpriseV1Event {
   /** Optional. Flag for running Web Application Firewall (WAF) token assessment. If enabled, the token must be specified, and have been created by a WAF-enabled key. */
   wafTokenAssessment?: boolean;
 }
-export const GoogleCloudRecaptchaenterpriseV1Event = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ja4: S.optional(S.String),
-      hashedAccountId: S.optional(S.String),
-      express: S.optional(S.Boolean),
-      requestedUri: S.optional(S.String),
-      userInfo: S.optional(GoogleCloudRecaptchaenterpriseV1UserInfo),
-      siteKey: S.optional(S.String),
-      token: S.optional(S.String),
-      headers: S.optional(StringList),
-      userAgent: S.optional(S.String),
-      transactionData: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TransactionData,
-      ),
-      ja3: S.optional(S.String),
-      userIpAddress: S.optional(S.String),
-      expectedAction: S.optional(S.String),
-      firewallPolicyEvaluation: S.optional(S.Boolean),
-      fraudPrevention: S.optional(
-        GoogleCloudRecaptchaenterpriseV1EventFraudPreventionEnum,
-      ),
-      wafTokenAssessment: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "GoogleCloudRecaptchaenterpriseV1Event",
-}) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Event>;
+export const GoogleCloudRecaptchaenterpriseV1Event = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ja4": S.optional(S.String),
+  "hashedAccountId": S.optional(S.String),
+  "express": S.optional(S.Boolean),
+  "requestedUri": S.optional(S.String),
+  "userInfo": S.optional(GoogleCloudRecaptchaenterpriseV1UserInfo),
+  "siteKey": S.optional(S.String),
+  "token": S.optional(S.String),
+  "headers": S.optional(StringList),
+  "userAgent": S.optional(S.String),
+  "transactionData": S.optional(GoogleCloudRecaptchaenterpriseV1TransactionData),
+  "ja3": S.optional(S.String),
+  "userIpAddress": S.optional(S.String),
+  "expectedAction": S.optional(S.String),
+  "firewallPolicyEvaluation": S.optional(S.Boolean),
+  "fraudPrevention": S.optional(GoogleCloudRecaptchaenterpriseV1EventFraudPreventionEnum),
+  "wafTokenAssessment": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1Event" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Event>;
 
-export type GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum =
-  "SMS_TOLL_FRAUD_REASON_UNSPECIFIED" | "INVALID_PHONE_NUMBER" | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum = "SMS_TOLL_FRAUD_REASON_UNSPECIFIED" | "INVALID_PHONE_NUMBER";
+export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum>;
-export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList>;
+export type GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum>;
+export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList>;
 
 /** Information about SMS toll fraud. */
 export interface GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict {
@@ -1337,33 +917,23 @@ export interface GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict {
   /** Output only. Reasons contributing to the SMS toll fraud verdict. */
   reasons?: GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList;
 }
-export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      risk: S.optional(S.Number),
-      reasons: S.optional(
-        GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict>;
+export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "risk": S.optional(S.Number),
+  "reasons": S.optional(GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict>;
 
 /** Assessment for Phone Fraud */
 export interface GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment {
   /** Output only. Assessment of this phone event for risk of SMS toll fraud. */
   smsTollFraudVerdict?: GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict;
 }
-export const GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      smsTollFraudVerdict: S.optional(
-        GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment>;
+export const GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "smsTollFraudVerdict": S.optional(GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment>;
 
 /** Private password leak verification info. */
 export interface GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
@@ -1376,33 +946,17 @@ export interface GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
   /** Required. Exactly 26-bit prefix of the SHA-256 hash of the canonicalized username. It is used to look up password leaks associated with that hash prefix. */
   lookupHashPrefix?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      encryptedLeakMatchPrefixes: S.optional(StringList),
-      encryptedUserCredentialsHash: S.optional(S.String),
-      reencryptedUserCredentialsHash: S.optional(S.String),
-      lookupHashPrefix: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification>;
+export const GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "encryptedLeakMatchPrefixes": S.optional(StringList),
+  "encryptedUserCredentialsHash": S.optional(S.String),
+  "reencryptedUserCredentialsHash": S.optional(S.String),
+  "lookupHashPrefix": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification>;
 
-export type GoogleCloudRecaptchaenterpriseV1TokenPropertiesInvalidReasonEnum =
-  | "INVALID_REASON_UNSPECIFIED"
-  | "UNKNOWN_INVALID_REASON"
-  | "MALFORMED"
-  | "EXPIRED"
-  | "DUPE"
-  | "MISSING"
-  | "BROWSER_ERROR"
-  | "UNEXPECTED_ACTION"
-  | "KEY_MISMATCH"
-  | "DOMAIN_MISMATCH"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1TokenPropertiesInvalidReasonEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1TokenPropertiesInvalidReasonEnum = "INVALID_REASON_UNSPECIFIED" | "UNKNOWN_INVALID_REASON" | "MALFORMED" | "EXPIRED" | "DUPE" | "MISSING" | "BROWSER_ERROR" | "UNEXPECTED_ACTION" | "KEY_MISMATCH" | "DOMAIN_MISMATCH";
+export const GoogleCloudRecaptchaenterpriseV1TokenPropertiesInvalidReasonEnum = /*@__PURE__*/ S.String;
 
 /** Properties of the provided event token. */
 export interface GoogleCloudRecaptchaenterpriseV1TokenProperties {
@@ -1421,22 +975,17 @@ export interface GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /** Output only. The ID of the iOS bundle with which the token was generated (iOS keys only). */
   iosBundleId?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1TokenProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      valid: S.optional(S.Boolean),
-      action: S.optional(S.String),
-      hostname: S.optional(S.String),
-      androidPackageName: S.optional(S.String),
-      invalidReason: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TokenPropertiesInvalidReasonEnum,
-      ),
-      createTime: S.optional(S.String),
-      iosBundleId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1TokenProperties",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TokenProperties>;
+export const GoogleCloudRecaptchaenterpriseV1TokenProperties = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "valid": S.optional(S.Boolean),
+  "action": S.optional(S.String),
+  "hostname": S.optional(S.String),
+  "androidPackageName": S.optional(S.String),
+  "invalidReason": S.optional(GoogleCloudRecaptchaenterpriseV1TokenPropertiesInvalidReasonEnum),
+  "createTime": S.optional(S.String),
+  "iosBundleId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1TokenProperties" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TokenProperties>;
 
 /** A reCAPTCHA Enterprise assessment resource. */
 export interface GoogleCloudRecaptchaenterpriseV1Assessment {
@@ -1467,44 +1016,23 @@ export interface GoogleCloudRecaptchaenterpriseV1Assessment {
   /** Output only. Properties of the provided event token. */
   tokenProperties?: GoogleCloudRecaptchaenterpriseV1TokenProperties;
 }
-export const GoogleCloudRecaptchaenterpriseV1Assessment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fraudSignals: S.optional(GoogleCloudRecaptchaenterpriseV1FraudSignals),
-      name: S.optional(S.String),
-      accountDefenderAssessment: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment,
-      ),
-      assessmentEnvironment: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment,
-      ),
-      riskAnalysis: S.optional(GoogleCloudRecaptchaenterpriseV1RiskAnalysis),
-      accountVerification: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo,
-      ),
-      policyEvaluation: S.optional(
-        GoogleCloudRecaptchaenterpriseV1PolicyEvaluation,
-      ),
-      fraudPreventionAssessment: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment,
-      ),
-      firewallPolicyAssessment: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment,
-      ),
-      event: S.optional(GoogleCloudRecaptchaenterpriseV1Event),
-      phoneFraudAssessment: S.optional(
-        GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment,
-      ),
-      privatePasswordLeakVerification: S.optional(
-        GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification,
-      ),
-      tokenProperties: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TokenProperties,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1Assessment",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Assessment>;
+export const GoogleCloudRecaptchaenterpriseV1Assessment = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "fraudSignals": S.optional(GoogleCloudRecaptchaenterpriseV1FraudSignals),
+  "name": S.optional(S.String),
+  "accountDefenderAssessment": S.optional(GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment),
+  "assessmentEnvironment": S.optional(GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment),
+  "riskAnalysis": S.optional(GoogleCloudRecaptchaenterpriseV1RiskAnalysis),
+  "accountVerification": S.optional(GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo),
+  "policyEvaluation": S.optional(GoogleCloudRecaptchaenterpriseV1PolicyEvaluation),
+  "fraudPreventionAssessment": S.optional(GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment),
+  "firewallPolicyAssessment": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment),
+  "event": S.optional(GoogleCloudRecaptchaenterpriseV1Event),
+  "phoneFraudAssessment": S.optional(GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment),
+  "privatePasswordLeakVerification": S.optional(GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification),
+  "tokenProperties": S.optional(GoogleCloudRecaptchaenterpriseV1TokenProperties),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1Assessment" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Assessment>;
 
 export interface CreateProjectsAssessmentsRequest {
   /** Required. The name of the project in which the assessment is created, in the format `projects/{project}`. */
@@ -1513,21 +1041,11 @@ export interface CreateProjectsAssessmentsRequest {
   body?: GoogleCloudRecaptchaenterpriseV1Assessment;
 }
 export const CreateProjectsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleCloudRecaptchaenterpriseV1Assessment.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/assessments",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsAssessmentsRequest",
-}) as any as S.Schema<CreateProjectsAssessmentsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1Assessment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/assessments","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsAssessmentsRequest" }) as any as S.Schema<CreateProjectsAssessmentsRequest>;
 
 export interface CreateProjectsFirewallpoliciesRequest {
   /** Required. The name of the project this policy applies to, in the format `projects/{project}`. */
@@ -1535,23 +1053,12 @@ export interface CreateProjectsFirewallpoliciesRequest {
   /** Request body */
   body?: GoogleCloudRecaptchaenterpriseV1FirewallPolicy;
 }
-export const CreateProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallPolicy.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/firewallpolicies",
-        baseUrl: "https://recaptchaenterprise.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsFirewallpoliciesRequest",
-}) as any as S.Schema<CreateProjectsFirewallpoliciesRequest>;
+export const CreateProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallPolicy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/firewallpolicies","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsFirewallpoliciesRequest" }) as any as S.Schema<CreateProjectsFirewallpoliciesRequest>;
 
 /** Settings specific to keys that can be used by Android apps. */
 export interface GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
@@ -1562,42 +1069,22 @@ export interface GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /** Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store. */
   supportNonGoogleAppStoreDistribution?: boolean;
 }
-export const GoogleCloudRecaptchaenterpriseV1AndroidKeySettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowAllPackageNames: S.optional(S.Boolean),
-      allowedPackageNames: S.optional(StringList),
-      supportNonGoogleAppStoreDistribution: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1AndroidKeySettings",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AndroidKeySettings>;
+export const GoogleCloudRecaptchaenterpriseV1AndroidKeySettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowAllPackageNames": S.optional(S.Boolean),
+  "allowedPackageNames": S.optional(StringList),
+  "supportNonGoogleAppStoreDistribution": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AndroidKeySettings" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AndroidKeySettings>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
-export type GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceEnum =
-  | "WAF_SERVICE_UNSPECIFIED"
-  | "CA"
-  | "FASTLY"
-  | "CLOUDFLARE"
-  | "AKAMAI"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceEnum = "WAF_SERVICE_UNSPECIFIED" | "CA" | "FASTLY" | "CLOUDFLARE" | "AKAMAI";
+export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureEnum =
-  | "WAF_FEATURE_UNSPECIFIED"
-  | "CHALLENGE_PAGE"
-  | "SESSION_TOKEN"
-  | "ACTION_TOKEN"
-  | "EXPRESS"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureEnum = "WAF_FEATURE_UNSPECIFIED" | "CHALLENGE_PAGE" | "SESSION_TOKEN" | "ACTION_TOKEN" | "EXPRESS";
+export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureEnum = /*@__PURE__*/ S.String;
 
 /** Settings specific to keys that can be used for WAF (Web Application Firewall). */
 export interface GoogleCloudRecaptchaenterpriseV1WafSettings {
@@ -1606,68 +1093,41 @@ export interface GoogleCloudRecaptchaenterpriseV1WafSettings {
   /** Required. The Web Application Firewall (WAF) feature for which this key is enabled. */
   wafFeature?: GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureEnum;
 }
-export const GoogleCloudRecaptchaenterpriseV1WafSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      wafService: S.optional(
-        GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceEnum,
-      ),
-      wafFeature: S.optional(
-        GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1WafSettings",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WafSettings>;
+export const GoogleCloudRecaptchaenterpriseV1WafSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "wafService": S.optional(GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceEnum),
+  "wafFeature": S.optional(GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureEnum),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1WafSettings" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WafSettings>;
 
 /** Settings specific to keys that can be used for reCAPTCHA Express. */
 export interface GoogleCloudRecaptchaenterpriseV1ExpressKeySettings {}
-export const GoogleCloudRecaptchaenterpriseV1ExpressKeySettings =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ExpressKeySettings",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ExpressKeySettings>;
+export const GoogleCloudRecaptchaenterpriseV1ExpressKeySettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ExpressKeySettings" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ExpressKeySettings>;
 
 /** Settings for keys that are configured through their Policy. */
 export interface GoogleCloudRecaptchaenterpriseV1UniversalKeySettings {}
-export const GoogleCloudRecaptchaenterpriseV1UniversalKeySettings =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1UniversalKeySettings",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1UniversalKeySettings>;
+export const GoogleCloudRecaptchaenterpriseV1UniversalKeySettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1UniversalKeySettings" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1UniversalKeySettings>;
 
-export type GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeEnum =
-  | "INTEGRATION_TYPE_UNSPECIFIED"
-  | "SCORE"
-  | "CHECKBOX"
-  | "INVISIBLE"
-  | "POLICY_BASED_CHALLENGE"
-  | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeEnum = "INTEGRATION_TYPE_UNSPECIFIED" | "SCORE" | "CHECKBOX" | "INVISIBLE" | "POLICY_BASED_CHALLENGE";
+export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Per-action challenge settings. */
 export interface GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings {
   /** Required. A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive). */
   scoreThreshold?: number;
 }
-export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      scoreThreshold: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings>;
+export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "scoreThreshold": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings>;
 
-export type GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettingsMap = {
-  [key: string]:
-    | GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings
-    | undefined;
-};
-export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettingsMap>;
+export type GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettingsMap = { [key: string]: GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings | undefined };
+export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettingsMap = /*@__PURE__*/ S.Record(S.String, GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettingsMap>;
 
 /** Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered. */
 export interface GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings {
@@ -1676,29 +1136,15 @@ export interface GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings
   /** Optional. The action to score threshold map. The action name should be the same as the action name passed in the `data-action` attribute (see https://cloud.google.com/recaptcha/docs/actions-website). Action names are case-insensitive. There is a maximum of 100 action settings. An action name has a maximum length of 100. */
   actionSettings?: GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettingsMap;
 }
-export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      defaultSettings: S.optional(
-        GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings,
-      ),
-      actionSettings: S.optional(
-        GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettingsMap,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings>;
+export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "defaultSettings": S.optional(GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings),
+  "actionSettings": S.optional(GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettingsMap),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings>;
 
-export type GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceEnum =
-    | "CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED"
-    | "USABILITY"
-    | "BALANCE"
-    | "SECURITY"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceEnum = "CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED" | "USABILITY" | "BALANCE" | "SECURITY";
+export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceEnum = /*@__PURE__*/ S.String;
 
 /** Settings specific to keys that can be used by websites. */
 export interface GoogleCloudRecaptchaenterpriseV1WebKeySettings {
@@ -1715,33 +1161,19 @@ export interface GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /** Optional. Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com' Each key supports a maximum of 250 domains. To use a key on more domains, set `allow_all_domains` to true. When this is set, you are responsible for validating the hostname by checking the `token_properties.hostname` field in each assessment response against your list of allowed domains. */
   allowedDomains?: StringList;
 }
-export const GoogleCloudRecaptchaenterpriseV1WebKeySettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowAllDomains: S.optional(S.Boolean),
-      allowAmpTraffic: S.optional(S.Boolean),
-      integrationType: S.optional(
-        GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeEnum,
-      ),
-      challengeSettings: S.optional(
-        GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings,
-      ),
-      challengeSecurityPreference: S.optional(
-        GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceEnum,
-      ),
-      allowedDomains: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettings",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettings>;
+export const GoogleCloudRecaptchaenterpriseV1WebKeySettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowAllDomains": S.optional(S.Boolean),
+  "allowAmpTraffic": S.optional(S.Boolean),
+  "integrationType": S.optional(GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeEnum),
+  "challengeSettings": S.optional(GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings),
+  "challengeSecurityPreference": S.optional(GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceEnum),
+  "allowedDomains": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1WebKeySettings" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettings>;
 
-export type GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeEnum =
-    | "TESTING_CHALLENGE_UNSPECIFIED"
-    | "NOCAPTCHA"
-    | "UNSOLVABLE_CHALLENGE"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeEnum = "TESTING_CHALLENGE_UNSPECIFIED" | "NOCAPTCHA" | "UNSOLVABLE_CHALLENGE";
+export const GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeEnum = /*@__PURE__*/ S.String;
 
 /** Options for user acceptance testing. */
 export interface GoogleCloudRecaptchaenterpriseV1TestingOptions {
@@ -1750,17 +1182,12 @@ export interface GoogleCloudRecaptchaenterpriseV1TestingOptions {
   /** Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE. */
   testingChallenge?: GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeEnum;
 }
-export const GoogleCloudRecaptchaenterpriseV1TestingOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      testingScore: S.optional(S.Number),
-      testingChallenge: S.optional(
-        GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1TestingOptions",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TestingOptions>;
+export const GoogleCloudRecaptchaenterpriseV1TestingOptions = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "testingScore": S.optional(S.Number),
+  "testingChallenge": S.optional(GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeEnum),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1TestingOptions" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TestingOptions>;
 
 /** Contains fields that are required to perform Apple-specific integrity checks. */
 export interface GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
@@ -1771,16 +1198,13 @@ export interface GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
   /** Required. The Apple team ID (10-character string) owning the provisioning profile used to build your application. */
   teamId?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1AppleDeveloperId =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyId: S.optional(S.String),
-      privateKey: S.optional(S.String),
-      teamId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1AppleDeveloperId",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AppleDeveloperId>;
+export const GoogleCloudRecaptchaenterpriseV1AppleDeveloperId = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "keyId": S.optional(S.String),
+  "privateKey": S.optional(S.String),
+  "teamId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1AppleDeveloperId" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AppleDeveloperId>;
 
 /** Settings specific to keys that can be used by iOS apps. */
 export interface GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
@@ -1791,18 +1215,13 @@ export interface GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /** Optional. iOS bundle IDs of apps allowed to use the key. Example: 'com.companyname.productname.appname' Each key supports a maximum of 250 bundle IDs. To use a key on more apps, set `allow_all_bundle_ids` to true. When this is set, you are responsible for validating the bundle id by checking the `token_properties.ios_bundle_id` field in each assessment response against your list of allowed bundle IDs. */
   allowedBundleIds?: StringList;
 }
-export const GoogleCloudRecaptchaenterpriseV1IOSKeySettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appleDeveloperId: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AppleDeveloperId,
-      ),
-      allowAllBundleIds: S.optional(S.Boolean),
-      allowedBundleIds: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1IOSKeySettings",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1IOSKeySettings>;
+export const GoogleCloudRecaptchaenterpriseV1IOSKeySettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "appleDeveloperId": S.optional(GoogleCloudRecaptchaenterpriseV1AppleDeveloperId),
+  "allowAllBundleIds": S.optional(S.Boolean),
+  "allowedBundleIds": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1IOSKeySettings" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1IOSKeySettings>;
 
 /** A key used to identify and configure applications (web and/or mobile) that use reCAPTCHA Enterprise. */
 export interface GoogleCloudRecaptchaenterpriseV1Key {
@@ -1830,28 +1249,20 @@ export interface GoogleCloudRecaptchaenterpriseV1Key {
   iosSettings?: GoogleCloudRecaptchaenterpriseV1IOSKeySettings;
 }
 export const GoogleCloudRecaptchaenterpriseV1Key = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    androidSettings: S.optional(
-      GoogleCloudRecaptchaenterpriseV1AndroidKeySettings,
-    ),
-    labels: S.optional(StringMap),
-    createTime: S.optional(S.String),
-    wafSettings: S.optional(GoogleCloudRecaptchaenterpriseV1WafSettings),
-    expressSettings: S.optional(
-      GoogleCloudRecaptchaenterpriseV1ExpressKeySettings,
-    ),
-    displayName: S.optional(S.String),
-    universalSettings: S.optional(
-      GoogleCloudRecaptchaenterpriseV1UniversalKeySettings,
-    ),
-    webSettings: S.optional(GoogleCloudRecaptchaenterpriseV1WebKeySettings),
-    name: S.optional(S.String),
-    testingOptions: S.optional(GoogleCloudRecaptchaenterpriseV1TestingOptions),
-    iosSettings: S.optional(GoogleCloudRecaptchaenterpriseV1IOSKeySettings),
-  }),
-).annotate({
-  identifier: "GoogleCloudRecaptchaenterpriseV1Key",
-}) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Key>;
+S.Struct({
+  "androidSettings": S.optional(GoogleCloudRecaptchaenterpriseV1AndroidKeySettings),
+  "labels": S.optional(StringMap),
+  "createTime": S.optional(S.String),
+  "wafSettings": S.optional(GoogleCloudRecaptchaenterpriseV1WafSettings),
+  "expressSettings": S.optional(GoogleCloudRecaptchaenterpriseV1ExpressKeySettings),
+  "displayName": S.optional(S.String),
+  "universalSettings": S.optional(GoogleCloudRecaptchaenterpriseV1UniversalKeySettings),
+  "webSettings": S.optional(GoogleCloudRecaptchaenterpriseV1WebKeySettings),
+  "name": S.optional(S.String),
+  "testingOptions": S.optional(GoogleCloudRecaptchaenterpriseV1TestingOptions),
+  "iosSettings": S.optional(GoogleCloudRecaptchaenterpriseV1IOSKeySettings),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1Key" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Key>;
 
 export interface CreateProjectsKeysRequest {
   /** Required. The name of the project in which the key is created, in the format `projects/{project}`. */
@@ -1860,105 +1271,61 @@ export interface CreateProjectsKeysRequest {
   body?: GoogleCloudRecaptchaenterpriseV1Key;
 }
 export const CreateProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(GoogleCloudRecaptchaenterpriseV1Key.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/keys",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsKeysRequest",
-}) as any as S.Schema<CreateProjectsKeysRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1Key.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/keys","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsKeysRequest" }) as any as S.Schema<CreateProjectsKeysRequest>;
 
 export interface DeleteProjectsFirewallpoliciesRequest {
   /** Required. The name of the policy to be deleted, in the format `projects/{project}/firewallpolicies/{firewallpolicy}`. */
   name: string;
 }
-export const DeleteProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://recaptchaenterprise.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsFirewallpoliciesRequest",
-}) as any as S.Schema<DeleteProjectsFirewallpoliciesRequest>;
+export const DeleteProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsFirewallpoliciesRequest" }) as any as S.Schema<DeleteProjectsFirewallpoliciesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
 export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
+S.Struct({}),
+).annotate({ identifier: "GoogleProtobufEmpty" }) as any as S.Schema<GoogleProtobufEmpty>;
 
 export interface DeleteProjectsKeysRequest {
   /** Required. The name of the key to be deleted, in the format `projects/{project}/keys/{key}`. */
   name: string;
 }
 export const DeleteProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsKeysRequest",
-}) as any as S.Schema<DeleteProjectsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsKeysRequest" }) as any as S.Schema<DeleteProjectsKeysRequest>;
 
 export interface GetMetricsProjectsKeysRequest {
   /** Required. The name of the requested metrics, in the format `projects/{project}/keys/{key}/metrics`. */
   name: string;
 }
 export const GetMetricsProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetMetricsProjectsKeysRequest",
-}) as any as S.Schema<GetMetricsProjectsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "GetMetricsProjectsKeysRequest" }) as any as S.Schema<GetMetricsProjectsKeysRequest>;
 
 /** Score distribution. */
 export interface GoogleCloudRecaptchaenterpriseV1ScoreDistribution {
   /** Map key is score value multiplied by 100. The scores are discrete values between [0, 1]. The maximum number of buckets is on order of a few dozen, but typically much lower (ie. 10). */
   scoreBuckets?: StringMap;
 }
-export const GoogleCloudRecaptchaenterpriseV1ScoreDistribution =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      scoreBuckets: S.optional(StringMap),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ScoreDistribution",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ScoreDistribution>;
+export const GoogleCloudRecaptchaenterpriseV1ScoreDistribution = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "scoreBuckets": S.optional(StringMap),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ScoreDistribution" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ScoreDistribution>;
 
-export type GoogleCloudRecaptchaenterpriseV1ScoreDistributionMap = {
-  [key: string]: GoogleCloudRecaptchaenterpriseV1ScoreDistribution | undefined;
-};
-export const GoogleCloudRecaptchaenterpriseV1ScoreDistributionMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudRecaptchaenterpriseV1ScoreDistribution,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ScoreDistributionMap>;
+export type GoogleCloudRecaptchaenterpriseV1ScoreDistributionMap = { [key: string]: GoogleCloudRecaptchaenterpriseV1ScoreDistribution | undefined };
+export const GoogleCloudRecaptchaenterpriseV1ScoreDistributionMap = /*@__PURE__*/ S.Record(S.String, GoogleCloudRecaptchaenterpriseV1ScoreDistribution) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ScoreDistributionMap>;
 
 /** Metrics related to scoring. */
 export interface GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
@@ -1967,26 +1334,15 @@ export interface GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
   /** Aggregated score metrics for all traffic. */
   overallMetrics?: GoogleCloudRecaptchaenterpriseV1ScoreDistribution;
 }
-export const GoogleCloudRecaptchaenterpriseV1ScoreMetrics =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      actionMetrics: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ScoreDistributionMap,
-      ),
-      overallMetrics: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ScoreDistribution,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ScoreMetrics",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>;
+export const GoogleCloudRecaptchaenterpriseV1ScoreMetrics = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "actionMetrics": S.optional(GoogleCloudRecaptchaenterpriseV1ScoreDistributionMap),
+  "overallMetrics": S.optional(GoogleCloudRecaptchaenterpriseV1ScoreDistribution),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ScoreMetrics" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>;
 
-export type GoogleCloudRecaptchaenterpriseV1ScoreMetricsList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>;
-export const GoogleCloudRecaptchaenterpriseV1ScoreMetricsList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1ScoreMetrics,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ScoreMetricsList>;
+export type GoogleCloudRecaptchaenterpriseV1ScoreMetricsList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>;
+export const GoogleCloudRecaptchaenterpriseV1ScoreMetricsList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1ScoreMetrics) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ScoreMetricsList>;
 
 /** Metrics related to challenges. */
 export interface GoogleCloudRecaptchaenterpriseV1ChallengeMetrics {
@@ -1999,24 +1355,17 @@ export interface GoogleCloudRecaptchaenterpriseV1ChallengeMetrics {
   /** Count of nocaptchas (successful verification without a challenge) plus submitted challenge solutions that were correct and resulted in verification. */
   passedCount?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1ChallengeMetrics =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      failedCount: S.optional(S.String),
-      pageloadCount: S.optional(S.String),
-      nocaptchaCount: S.optional(S.String),
-      passedCount: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeMetrics",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>;
+export const GoogleCloudRecaptchaenterpriseV1ChallengeMetrics = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "failedCount": S.optional(S.String),
+  "pageloadCount": S.optional(S.String),
+  "nocaptchaCount": S.optional(S.String),
+  "passedCount": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeMetrics" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>;
 
-export type GoogleCloudRecaptchaenterpriseV1ChallengeMetricsList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>;
-export const GoogleCloudRecaptchaenterpriseV1ChallengeMetricsList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1ChallengeMetrics,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeMetricsList>;
+export type GoogleCloudRecaptchaenterpriseV1ChallengeMetricsList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>;
+export const GoogleCloudRecaptchaenterpriseV1ChallengeMetricsList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1ChallengeMetrics) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeMetricsList>;
 
 /** Metrics for a single Key. */
 export interface GoogleCloudRecaptchaenterpriseV1Metrics {
@@ -2029,39 +1378,24 @@ export interface GoogleCloudRecaptchaenterpriseV1Metrics {
   /** Inclusive start time aligned to a day in the America/Los_Angeles (Pacific) timezone. */
   startTime?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1Metrics = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scoreMetrics: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ScoreMetricsList,
-      ),
-      challengeMetrics: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ChallengeMetricsList,
-      ),
-      name: S.optional(S.String),
-      startTime: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudRecaptchaenterpriseV1Metrics",
-}) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Metrics>;
+export const GoogleCloudRecaptchaenterpriseV1Metrics = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "scoreMetrics": S.optional(GoogleCloudRecaptchaenterpriseV1ScoreMetricsList),
+  "challengeMetrics": S.optional(GoogleCloudRecaptchaenterpriseV1ChallengeMetricsList),
+  "name": S.optional(S.String),
+  "startTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1Metrics" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Metrics>;
 
 export interface GetPolicyProjectsKeysRequest {
   /** Required. The name of the policy to get, in the format `projects/{project}/keys/{key}/policy`. */
   name: string;
 }
 export const GetPolicyProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPolicyProjectsKeysRequest",
-}) as any as S.Schema<GetPolicyProjectsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "GetPolicyProjectsKeysRequest" }) as any as S.Schema<GetPolicyProjectsKeysRequest>;
 
 /** Configuration for an API endpoint to protect with reCAPTCHA. */
 export interface GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint {
@@ -2070,38 +1404,26 @@ export interface GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint {
   /** Required. Action name to be used for token generation for this endpoint. The action name can only contain alphanumeric characters, slashes, and underscores. */
   action?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-      action: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint>;
+export const GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "path": S.optional(S.String),
+  "action": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint>;
 
-export type GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint>;
-export const GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList>;
+export type GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint>;
+export const GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList>;
 
 /** Configuration for API endpoints to protect with reCAPTCHA. */
 export interface GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup {
   /** Optional. List of API endpoints to automatically protect with reCAPTCHA. If any of these endpoints is invoked from a page where a key bound to this policy is installed, a reCAPTCHA token is automatically generated and attached to the request. If multiple protected endpoints match a given API endpoint, the first one in the list is used. */
   protectedEndpoints?: GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList;
 }
-export const GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      protectedEndpoints: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup>;
+export const GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "protectedEndpoints": S.optional(GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup>;
 
 /** Configuration for clients to protect with reCAPTCHA. */
 export interface GoogleCloudRecaptchaenterpriseV1ClientSettings {
@@ -2112,51 +1434,33 @@ export interface GoogleCloudRecaptchaenterpriseV1ClientSettings {
   /** Optional. Domains or subdomains of websites allowed to use the policy. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com' Each policy supports a maximum of 250 domains. To use a policy on more domains, set `allow_all_domains` to true. When this is set, you are responsible for validating the hostname by checking the `token_properties.hostname` field in each assessment response against your list of allowed domains. */
   allowedDomains?: StringList;
 }
-export const GoogleCloudRecaptchaenterpriseV1ClientSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowAllDomains: S.optional(S.Boolean),
-      protectedEndpointGroup: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup,
-      ),
-      allowedDomains: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ClientSettings",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ClientSettings>;
+export const GoogleCloudRecaptchaenterpriseV1ClientSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowAllDomains": S.optional(S.Boolean),
+  "protectedEndpointGroup": S.optional(GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup),
+  "allowedDomains": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ClientSettings" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ClientSettings>;
 
 /** An outcome that indicates that no challenge should be presented to the user. */
 export interface GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome {}
-export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome>;
+export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome>;
 
-export type GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcomeDifficultyEnum =
-    | "CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED"
-    | "USABILITY"
-    | "BALANCE"
-    | "SECURITY"
-    | (string & {});
-export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcomeDifficultyEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcomeDifficultyEnum = "CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED" | "USABILITY" | "BALANCE" | "SECURITY";
+export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcomeDifficultyEnum = /*@__PURE__*/ S.String;
 
 /** An outcome that indicates that a challenge of a specified difficulty should be presented to the user. */
 export interface GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome {
   /** Optional. The difficulty of the challenge to present to the user. If unspecified, `BALANCE` is used. */
   difficulty?: GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcomeDifficultyEnum;
 }
-export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      difficulty: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcomeDifficultyEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome>;
+export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "difficulty": S.optional(GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcomeDifficultyEnum),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome>;
 
 /** A rule to configure the behavior of reCAPTCHA for conditionally presenting a challenge. */
 export interface GoogleCloudRecaptchaenterpriseV1ChallengeRule {
@@ -2167,27 +1471,16 @@ export interface GoogleCloudRecaptchaenterpriseV1ChallengeRule {
   /** Present a challenge to the user. */
   challenge?: GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome;
 }
-export const GoogleCloudRecaptchaenterpriseV1ChallengeRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      noChallenge: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome,
-      ),
-      condition: S.optional(S.String),
-      challenge: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRule",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRule>;
+export const GoogleCloudRecaptchaenterpriseV1ChallengeRule = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "noChallenge": S.optional(GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome),
+  "condition": S.optional(S.String),
+  "challenge": S.optional(GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRule" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRule>;
 
-export type GoogleCloudRecaptchaenterpriseV1ChallengeRuleList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ChallengeRule>;
-export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1ChallengeRule,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleList>;
+export type GoogleCloudRecaptchaenterpriseV1ChallengeRuleList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ChallengeRule>;
+export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1ChallengeRule) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleList>;
 
 /** A collection of challenge rules that applies to one or more actions. */
 export interface GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup {
@@ -2196,24 +1489,15 @@ export interface GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup {
   /** Required. Action name provided at token generation. The action name is not case-sensitive and can only contain alphanumeric characters, slashes, and underscores. If "*" is provided, the rule group applies to all actions. If multiple actions are provided, the rule group is applied to all of them. This field is required. */
   actions?: StringList;
 }
-export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      challengeRules: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ChallengeRuleList,
-      ),
-      actions: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup>;
+export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "challengeRules": S.optional(GoogleCloudRecaptchaenterpriseV1ChallengeRuleList),
+  "actions": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup>;
 
-export type GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup>;
-export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList>;
+export type GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup>;
+export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList>;
 
 /** A complete configuration set containing multiple grouped rules defining the behavior of reCAPTCHA for fraud detection and prevention. */
 export interface GoogleCloudRecaptchaenterpriseV1Policy {
@@ -2224,56 +1508,33 @@ export interface GoogleCloudRecaptchaenterpriseV1Policy {
   /** Optional. Rules to configure the behavior of reCAPTCHA for showing a challenge. Rule groups are evaluated in order. Evaluation stops when the first matching rule group is found. */
   challengeRuleGroups?: GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList;
 }
-export const GoogleCloudRecaptchaenterpriseV1Policy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      clientSettings: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ClientSettings,
-      ),
-      challengeRuleGroups: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList,
-      ),
-    }),
-).annotate({
-  identifier: "GoogleCloudRecaptchaenterpriseV1Policy",
-}) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Policy>;
+export const GoogleCloudRecaptchaenterpriseV1Policy = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "clientSettings": S.optional(GoogleCloudRecaptchaenterpriseV1ClientSettings),
+  "challengeRuleGroups": S.optional(GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1Policy" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Policy>;
 
 export interface GetProjectsFirewallpoliciesRequest {
   /** Required. The name of the requested policy, in the format `projects/{project}/firewallpolicies/{firewallpolicy}`. */
   name: string;
 }
 export const GetProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsFirewallpoliciesRequest",
-}) as any as S.Schema<GetProjectsFirewallpoliciesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsFirewallpoliciesRequest" }) as any as S.Schema<GetProjectsFirewallpoliciesRequest>;
 
 export interface GetProjectsKeysRequest {
   /** Required. The name of the requested key, in the format `projects/{project}/keys/{key}`. */
   name: string;
 }
 export const GetProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsKeysRequest",
-}) as any as S.Schema<GetProjectsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsKeysRequest" }) as any as S.Schema<GetProjectsKeysRequest>;
 
 export interface ListIpOverridesProjectsKeysRequest {
   /** Optional. The next_page_token value returned from a previous ListIpOverridesRequest, if any. */
@@ -2284,27 +1545,15 @@ export interface ListIpOverridesProjectsKeysRequest {
   pageSize?: number;
 }
 export const ListIpOverridesProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}:listIpOverrides",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListIpOverridesProjectsKeysRequest",
-}) as any as S.Schema<ListIpOverridesProjectsKeysRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}:listIpOverrides","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "ListIpOverridesProjectsKeysRequest" }) as any as S.Schema<ListIpOverridesProjectsKeysRequest>;
 
-export type GoogleCloudRecaptchaenterpriseV1IpOverrideDataList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1IpOverrideData>;
-export const GoogleCloudRecaptchaenterpriseV1IpOverrideDataList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1IpOverrideData,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1IpOverrideDataList>;
+export type GoogleCloudRecaptchaenterpriseV1IpOverrideDataList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1IpOverrideData>;
+export const GoogleCloudRecaptchaenterpriseV1IpOverrideDataList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1IpOverrideData) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1IpOverrideDataList>;
 
 /** Response for ListIpOverrides. */
 export interface GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse {
@@ -2313,17 +1562,12 @@ export interface GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse {
   /** IP Overrides details. */
   ipOverrides?: GoogleCloudRecaptchaenterpriseV1IpOverrideDataList;
 }
-export const GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      ipOverrides: S.optional(
-        GoogleCloudRecaptchaenterpriseV1IpOverrideDataList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse>;
+export const GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "ipOverrides": S.optional(GoogleCloudRecaptchaenterpriseV1IpOverrideDataList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse>;
 
 export interface ListProjectsFirewallpoliciesRequest {
   /** Required. The name of the project to list the policies for, in the format `projects/{project}`. */
@@ -2334,27 +1578,15 @@ export interface ListProjectsFirewallpoliciesRequest {
   pageToken?: string;
 }
 export const ListProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/firewallpolicies",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsFirewallpoliciesRequest",
-}) as any as S.Schema<ListProjectsFirewallpoliciesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/firewallpolicies","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsFirewallpoliciesRequest" }) as any as S.Schema<ListProjectsFirewallpoliciesRequest>;
 
-export type GoogleCloudRecaptchaenterpriseV1FirewallPolicyList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>;
-export const GoogleCloudRecaptchaenterpriseV1FirewallPolicyList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1FirewallPolicy,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicyList>;
+export type GoogleCloudRecaptchaenterpriseV1FirewallPolicyList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>;
+export const GoogleCloudRecaptchaenterpriseV1FirewallPolicyList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1FirewallPolicy) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicyList>;
 
 /** Response to request to list firewall policies belonging to a project. */
 export interface GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse {
@@ -2363,17 +1595,12 @@ export interface GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse {
   /** Token to retrieve the next page of results. It is set to empty if no policies remain in results. */
   nextPageToken?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      firewallPolicies: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallPolicyList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse>;
+export const GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "firewallPolicies": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallPolicyList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse>;
 
 export interface ListProjectsKeysRequest {
   /** Optional. The next_page_token value returned from a previous. ListKeysRequest, if any. */
@@ -2384,26 +1611,15 @@ export interface ListProjectsKeysRequest {
   pageSize?: number;
 }
 export const ListProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/keys",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsKeysRequest",
-}) as any as S.Schema<ListProjectsKeysRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/keys","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsKeysRequest" }) as any as S.Schema<ListProjectsKeysRequest>;
 
-export type GoogleCloudRecaptchaenterpriseV1KeyList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1Key>;
-export const GoogleCloudRecaptchaenterpriseV1KeyList = /*@__PURE__*/ S.Array(
-  GoogleCloudRecaptchaenterpriseV1Key,
-) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1KeyList>;
+export type GoogleCloudRecaptchaenterpriseV1KeyList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1Key>;
+export const GoogleCloudRecaptchaenterpriseV1KeyList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1Key) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1KeyList>;
 
 /** Response to request to list keys in a project. */
 export interface GoogleCloudRecaptchaenterpriseV1ListKeysResponse {
@@ -2412,15 +1628,12 @@ export interface GoogleCloudRecaptchaenterpriseV1ListKeysResponse {
   /** Token to retrieve the next page of results. It is set to empty if no keys remain in results. */
   nextPageToken?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1ListKeysResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keys: S.optional(GoogleCloudRecaptchaenterpriseV1KeyList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1ListKeysResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListKeysResponse>;
+export const GoogleCloudRecaptchaenterpriseV1ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "keys": S.optional(GoogleCloudRecaptchaenterpriseV1KeyList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ListKeysResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListKeysResponse>;
 
 export interface ListProjectsRelatedaccountgroupsRequest {
   /** Optional. The maximum number of groups to return. The service might return fewer than this value. If unspecified, at most 50 groups are returned. The maximum value is 1000; values above 1000 are coerced to 1000. */
@@ -2430,43 +1643,27 @@ export interface ListProjectsRelatedaccountgroupsRequest {
   /** Optional. A page token, received from a previous `ListRelatedAccountGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRelatedAccountGroups` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsRelatedaccountgroupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/relatedaccountgroups",
-        baseUrl: "https://recaptchaenterprise.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsRelatedaccountgroupsRequest",
-}) as any as S.Schema<ListProjectsRelatedaccountgroupsRequest>;
+export const ListProjectsRelatedaccountgroupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/relatedaccountgroups","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsRelatedaccountgroupsRequest" }) as any as S.Schema<ListProjectsRelatedaccountgroupsRequest>;
 
 /** A group of related accounts. */
 export interface GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup {
   /** Required. Identifier. The resource name for the related account group in the format `projects/{project}/relatedaccountgroups/{related_account_group}`. */
   name?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>;
+export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>;
 
-export type GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>;
-export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupList>;
+export type GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>;
+export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupList>;
 
 /** The response to a `ListRelatedAccountGroups` call. */
 export interface GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse {
@@ -2475,18 +1672,12 @@ export interface GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsRespons
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relatedAccountGroups: S.optional(
-        GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse>;
+export const GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "relatedAccountGroups": S.optional(GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse>;
 
 export interface ListProjectsRelatedaccountgroupsMembershipsRequest {
   /** Optional. A page token, received from a previous `ListRelatedAccountGroupMemberships` call. When paginating, all other parameters provided to `ListRelatedAccountGroupMemberships` must match the call that provided the page token. */
@@ -2496,22 +1687,13 @@ export interface ListProjectsRelatedaccountgroupsMembershipsRequest {
   /** Required. The resource name for the related account group in the format `projects/{project}/relatedaccountgroups/{relatedaccountgroup}`. */
   parent: string;
 }
-export const ListProjectsRelatedaccountgroupsMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/memberships",
-        baseUrl: "https://recaptchaenterprise.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsRelatedaccountgroupsMembershipsRequest",
-  }) as any as S.Schema<ListProjectsRelatedaccountgroupsMembershipsRequest>;
+export const ListProjectsRelatedaccountgroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/memberships","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsRelatedaccountgroupsMembershipsRequest" }) as any as S.Schema<ListProjectsRelatedaccountgroupsMembershipsRequest>;
 
 /** A membership in a group of related accounts. */
 export interface GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
@@ -2522,23 +1704,16 @@ export interface GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
   /** The unique stable account identifier of the member. The identifier corresponds to an `account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call. */
   accountId?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hashedAccountId: S.optional(S.String),
-      name: S.optional(S.String),
-      accountId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>;
+export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "hashedAccountId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "accountId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>;
 
-export type GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList =
-  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>;
-export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList>;
+export type GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList = ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>;
+export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList = /*@__PURE__*/ S.Array(GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList>;
 
 /** The response to a `ListRelatedAccountGroupMemberships` call. */
 export interface GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse {
@@ -2547,32 +1722,23 @@ export interface GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembersh
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relatedAccountGroupMemberships: S.optional(
-        GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse>;
+export const GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "relatedAccountGroupMemberships": S.optional(GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse>;
 
 /** The migrate key request message. */
 export interface GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest {
   /** Optional. If true, skips the billing check. A reCAPTCHA Enterprise key or migrated key behaves differently than a reCAPTCHA (non-Enterprise version) key when you reach a quota limit (see https://docs.cloud.google.com/recaptcha/quotas#quota_limit). To avoid any disruption of your usage, we check that a billing account is present. If your usage of reCAPTCHA is under the free quota, you can safely skip the billing check and proceed with the migration. See https://cloud.google.com/recaptcha/docs/billing-information. */
   skipBillingCheck?: boolean;
 }
-export const GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      skipBillingCheck: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest>;
+export const GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "skipBillingCheck": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest>;
 
 export interface MigrateProjectsKeysRequest {
   /** Required. The name of the key to be migrated, in the format `projects/{project}/keys/{key}`. */
@@ -2581,21 +1747,11 @@ export interface MigrateProjectsKeysRequest {
   body?: GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest;
 }
 export const MigrateProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:migrate",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "MigrateProjectsKeysRequest",
-}) as any as S.Schema<MigrateProjectsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:migrate","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "MigrateProjectsKeysRequest" }) as any as S.Schema<MigrateProjectsKeysRequest>;
 
 export interface PatchProjectsFirewallpoliciesRequest {
   /** Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`. */
@@ -2605,24 +1761,13 @@ export interface PatchProjectsFirewallpoliciesRequest {
   /** Request body */
   body?: GoogleCloudRecaptchaenterpriseV1FirewallPolicy;
 }
-export const PatchProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FirewallPolicy.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://recaptchaenterprise.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsFirewallpoliciesRequest",
-}) as any as S.Schema<PatchProjectsFirewallpoliciesRequest>;
+export const PatchProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1FirewallPolicy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsFirewallpoliciesRequest" }) as any as S.Schema<PatchProjectsFirewallpoliciesRequest>;
 
 export interface PatchProjectsKeysRequest {
   /** Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`. */
@@ -2633,36 +1778,23 @@ export interface PatchProjectsKeysRequest {
   body?: GoogleCloudRecaptchaenterpriseV1Key;
 }
 export const PatchProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(GoogleCloudRecaptchaenterpriseV1Key.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsKeysRequest",
-}) as any as S.Schema<PatchProjectsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1Key.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsKeysRequest" }) as any as S.Schema<PatchProjectsKeysRequest>;
 
 /** The RemoveIpOverride request message. */
 export interface GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest {
   /** Required. IP override to be removed from the key. */
   ipOverrideData?: GoogleCloudRecaptchaenterpriseV1IpOverrideData;
 }
-export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipOverrideData: S.optional(
-        GoogleCloudRecaptchaenterpriseV1IpOverrideData,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest>;
+export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ipOverrideData": S.optional(GoogleCloudRecaptchaenterpriseV1IpOverrideData),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest>;
 
 export interface RemoveIpOverrideProjectsKeysRequest {
   /** Required. The name of the key from which the IP override is removed, in the format `projects/{project}/keys/{key}`. */
@@ -2671,45 +1803,28 @@ export interface RemoveIpOverrideProjectsKeysRequest {
   body?: GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest;
 }
 export const RemoveIpOverrideProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest.pipe(
-        T.HttpBody(),
-      ),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:removeIpOverride",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RemoveIpOverrideProjectsKeysRequest",
-}) as any as S.Schema<RemoveIpOverrideProjectsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:removeIpOverride","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "RemoveIpOverrideProjectsKeysRequest" }) as any as S.Schema<RemoveIpOverrideProjectsKeysRequest>;
 
 /** Response for RemoveIpOverride. */
 export interface GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse {}
-export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse>;
+export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse>;
 
 /** The reorder firewall policies request message. */
 export interface GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest {
   /** Required. A list containing all policy names, in the new order. Each name is in the format `projects/{project}/firewallpolicies/{firewallpolicy}`. */
   names?: StringList;
 }
-export const GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      names: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest>;
+export const GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "names": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest>;
 
 export interface ReorderProjectsFirewallpoliciesRequest {
   /** Required. The name of the project to list the policies for, in the format `projects/{project}`. */
@@ -2717,62 +1832,34 @@ export interface ReorderProjectsFirewallpoliciesRequest {
   /** Request body */
   body?: GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest;
 }
-export const ReorderProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/firewallpolicies:reorder",
-        baseUrl: "https://recaptchaenterprise.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ReorderProjectsFirewallpoliciesRequest",
-}) as any as S.Schema<ReorderProjectsFirewallpoliciesRequest>;
+export const ReorderProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/firewallpolicies:reorder","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "ReorderProjectsFirewallpoliciesRequest" }) as any as S.Schema<ReorderProjectsFirewallpoliciesRequest>;
 
 /** The reorder firewall policies response message. */
 export interface GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse {}
-export const GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse>;
+export const GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse>;
 
 export interface RetrieveLegacySecretKeyProjectsKeysRequest {}
-export const RetrieveLegacySecretKeyProjectsKeysRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+key}:retrieveLegacySecretKey",
-        baseUrl: "https://recaptchaenterprise.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RetrieveLegacySecretKeyProjectsKeysRequest",
-  }) as any as S.Schema<RetrieveLegacySecretKeyProjectsKeysRequest>;
+export const RetrieveLegacySecretKeyProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}).pipe(T.Http({"method":"GET","uri":"v1/{+key}:retrieveLegacySecretKey","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "RetrieveLegacySecretKeyProjectsKeysRequest" }) as any as S.Schema<RetrieveLegacySecretKeyProjectsKeysRequest>;
 
 /** Secret key is used only in legacy reCAPTCHA. It must be used in a 3rd party integration with legacy reCAPTCHA. */
 export interface GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse {
   /** The secret key (also known as shared secret) authorizes communication between your application backend and the reCAPTCHA Enterprise server to create an assessment. The secret key needs to be kept safe for security purposes. */
   legacySecretKey?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      legacySecretKey: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse>;
+export const GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "legacySecretKey": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse>;
 
 /** The request message to search related account group memberships. */
 export interface GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest {
@@ -2785,18 +1872,14 @@ export interface GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMember
   /** Optional. Deprecated: use `account_id` instead. The unique stable hashed account identifier used to search connections. The identifier should correspond to a `hashed_account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call. Either hashed_account_id or account_id must be set, but not both. */
   hashedAccountId?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.optional(S.String),
-      pageToken: S.optional(S.String),
-      pageSize: S.optional(S.Number),
-      hashedAccountId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest>;
+export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accountId": S.optional(S.String),
+  "pageToken": S.optional(S.String),
+  "pageSize": S.optional(S.Number),
+  "hashedAccountId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest>;
 
 export interface SearchProjectsRelatedaccountgroupmembershipsRequest {
   /** Required. The name of the project to search related account group memberships from. Specify the project name in the following format: `projects/{project}`. */
@@ -2804,25 +1887,12 @@ export interface SearchProjectsRelatedaccountgroupmembershipsRequest {
   /** Request body */
   body?: GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest;
 }
-export const SearchProjectsRelatedaccountgroupmembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+project}/relatedaccountgroupmemberships:search",
-        baseUrl: "https://recaptchaenterprise.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchProjectsRelatedaccountgroupmembershipsRequest",
-  }) as any as S.Schema<SearchProjectsRelatedaccountgroupmembershipsRequest>;
+export const SearchProjectsRelatedaccountgroupmembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+project}/relatedaccountgroupmemberships:search","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "SearchProjectsRelatedaccountgroupmembershipsRequest" }) as any as S.Schema<SearchProjectsRelatedaccountgroupmembershipsRequest>;
 
 /** The response to a `SearchRelatedAccountGroupMemberships` call. */
 export interface GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse {
@@ -2831,18 +1901,12 @@ export interface GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMember
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relatedAccountGroupMemberships: S.optional(
-        GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse>;
+export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "relatedAccountGroupMemberships": S.optional(GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse" }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse>;
 
 export interface UpdatePolicyProjectsKeysRequest {
   /** Identifier. Resource name for this policy. Format: "projects/{project}/keys/{key}/policy" for a policy under a key. */
@@ -2853,27 +1917,14 @@ export interface UpdatePolicyProjectsKeysRequest {
   body?: GoogleCloudRecaptchaenterpriseV1Policy;
 }
 export const UpdatePolicyProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(GoogleCloudRecaptchaenterpriseV1Policy.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://recaptchaenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdatePolicyProjectsKeysRequest",
-}) as any as S.Schema<UpdatePolicyProjectsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudRecaptchaenterpriseV1Policy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://recaptchaenterprise.googleapis.com/"})),
+).annotate({ identifier: "UpdatePolicyProjectsKeysRequest" }) as any as S.Schema<UpdatePolicyProjectsKeysRequest>;
 
-export type AddIpOverrideProjectsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddIpOverrideProjectsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds an IP override to a key. The following restrictions hold: * The maximum number of IP overrides per key is 1000. * For any conflict (such as IP already exists or IP part of an existing IP range), an error is returned. */
 export const addIpOverrideProjectsKeys: API.OperationMethod<
   AddIpOverrideProjectsKeysRequest,
@@ -2888,12 +1939,7 @@ export const addIpOverrideProjectsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AnnotateProjectsAssessmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AnnotateProjectsAssessmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Annotates a previously created Assessment to provide additional information on whether the event turned out to be authentic or fraudulent. */
 export const annotateProjectsAssessments: API.OperationMethod<
   AnnotateProjectsAssessmentsRequest,
@@ -2908,12 +1954,7 @@ export const annotateProjectsAssessments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsAssessmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsAssessmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an Assessment of the likelihood an event is legitimate. */
 export const createProjectsAssessments: API.OperationMethod<
   CreateProjectsAssessmentsRequest,
@@ -2928,12 +1969,7 @@ export const createProjectsAssessments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsFirewallpoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsFirewallpoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new FirewallPolicy, specifying conditions at which reCAPTCHA Enterprise actions can be executed. A project may have a maximum of 1000 policies. */
 export const createProjectsFirewallpolicies: API.OperationMethod<
   CreateProjectsFirewallpoliciesRequest,
@@ -2948,12 +1984,7 @@ export const createProjectsFirewallpolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new reCAPTCHA Enterprise key. */
 export const createProjectsKeys: API.OperationMethod<
   CreateProjectsKeysRequest,
@@ -2968,12 +1999,7 @@ export const createProjectsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsFirewallpoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsFirewallpoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified firewall policy. */
 export const deleteProjectsFirewallpolicies: API.OperationMethod<
   DeleteProjectsFirewallpoliciesRequest,
@@ -2988,12 +2014,7 @@ export const deleteProjectsFirewallpolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified key. */
 export const deleteProjectsKeys: API.OperationMethod<
   DeleteProjectsKeysRequest,
@@ -3038,10 +2059,7 @@ export const getPolicyProjectsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsFirewallpoliciesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsFirewallpoliciesError = NotFound | Forbidden | GcpOpError;
 /** Returns the specified firewall policy. */
 export const getProjectsFirewallpolicies: API.OperationMethod<
   GetProjectsFirewallpoliciesRequest,
@@ -3071,10 +2089,7 @@ export const getProjectsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListIpOverridesProjectsKeysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListIpOverridesProjectsKeysError = NotFound | Forbidden | GcpOpError;
 /** Lists all IP overrides for a key. */
 export const listIpOverridesProjectsKeys: API.PaginatedOperationMethod<
   ListIpOverridesProjectsKeysRequest,
@@ -3087,16 +2102,10 @@ export const listIpOverridesProjectsKeys: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsFirewallpoliciesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsFirewallpoliciesError = NotFound | Forbidden | GcpOpError;
 /** Returns the list of all firewall policies that belong to a project. */
 export const listProjectsFirewallpolicies: API.PaginatedOperationMethod<
   ListProjectsFirewallpoliciesRequest,
@@ -3109,10 +2118,7 @@ export const listProjectsFirewallpolicies: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsKeysError = NotFound | Forbidden | GcpOpError;
@@ -3128,16 +2134,10 @@ export const listProjectsKeys: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsRelatedaccountgroupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsRelatedaccountgroupsError = NotFound | Forbidden | GcpOpError;
 /** List groups of related accounts. */
 export const listProjectsRelatedaccountgroups: API.PaginatedOperationMethod<
   ListProjectsRelatedaccountgroupsRequest,
@@ -3150,16 +2150,10 @@ export const listProjectsRelatedaccountgroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsRelatedaccountgroupsMembershipsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsRelatedaccountgroupsMembershipsError = NotFound | Forbidden | GcpOpError;
 /** Get memberships in a group of related accounts. */
 export const listProjectsRelatedaccountgroupsMemberships: API.PaginatedOperationMethod<
   ListProjectsRelatedaccountgroupsMembershipsRequest,
@@ -3168,23 +2162,14 @@ export const listProjectsRelatedaccountgroupsMemberships: API.PaginatedOperation
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRelatedaccountgroupsMembershipsRequest,
-  output:
-    GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse,
+  output: GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type MigrateProjectsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MigrateProjectsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise. Once a key is migrated, it can be used from either product. SiteVerify requests are billed as CreateAssessment calls. You must be authenticated as one of the current owners of the reCAPTCHA Key, and your user must have the reCAPTCHA Enterprise Admin IAM role in the destination project. */
 export const migrateProjectsKeys: API.OperationMethod<
   MigrateProjectsKeysRequest,
@@ -3199,12 +2184,7 @@ export const migrateProjectsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsFirewallpoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsFirewallpoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the specified firewall policy. */
 export const patchProjectsFirewallpolicies: API.OperationMethod<
   PatchProjectsFirewallpoliciesRequest,
@@ -3219,12 +2199,7 @@ export const patchProjectsFirewallpolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the specified key. */
 export const patchProjectsKeys: API.OperationMethod<
   PatchProjectsKeysRequest,
@@ -3239,12 +2214,7 @@ export const patchProjectsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveIpOverrideProjectsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemoveIpOverrideProjectsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes an IP override from a key. The following restrictions hold: * If the IP isn't found in an existing IP override, a `NOT_FOUND` error is returned. * If the IP is found in an existing IP override, but the override type does not match, a `NOT_FOUND` error is returned. */
 export const removeIpOverrideProjectsKeys: API.OperationMethod<
   RemoveIpOverrideProjectsKeysRequest,
@@ -3259,12 +2229,7 @@ export const removeIpOverrideProjectsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReorderProjectsFirewallpoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ReorderProjectsFirewallpoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Reorders all firewall policies. */
 export const reorderProjectsFirewallpolicies: API.OperationMethod<
   ReorderProjectsFirewallpoliciesRequest,
@@ -3279,10 +2244,7 @@ export const reorderProjectsFirewallpolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RetrieveLegacySecretKeyProjectsKeysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type RetrieveLegacySecretKeyProjectsKeysError = NotFound | Forbidden | GcpOpError;
 /** Returns the secret key related to the specified public key. You must use the legacy secret key only in a 3rd party integration with legacy reCAPTCHA. */
 export const retrieveLegacySecretKeyProjectsKeys: API.OperationMethod<
   RetrieveLegacySecretKeyProjectsKeysRequest,
@@ -3297,12 +2259,7 @@ export const retrieveLegacySecretKeyProjectsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchProjectsRelatedaccountgroupmembershipsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SearchProjectsRelatedaccountgroupmembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Search group memberships related to a given account. */
 export const searchProjectsRelatedaccountgroupmemberships: API.OperationMethod<
   SearchProjectsRelatedaccountgroupmembershipsRequest,
@@ -3311,19 +2268,13 @@ export const searchProjectsRelatedaccountgroupmemberships: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchProjectsRelatedaccountgroupmembershipsRequest,
-  output:
-    GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse,
+  output: GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type UpdatePolicyProjectsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdatePolicyProjectsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the policy for a key. */
 export const updatePolicyProjectsKeys: API.OperationMethod<
   UpdatePolicyProjectsKeysRequest,
@@ -3337,3 +2288,4 @@ export const updatePolicyProjectsKeys: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

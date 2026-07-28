@@ -14,7 +14,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 export type AzureADOnlyAuthenticationsCreateRequestAzureADOnlyAuthenticationName =
-  "default" | (string & {});
+  "default";
 export const AzureADOnlyAuthenticationsCreateRequestAzureADOnlyAuthenticationName =
   /*@__PURE__*/ S.String;
 
@@ -40,7 +40,9 @@ export interface AzureADOnlyAuthenticationsCreateRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** name of the property */
-  azureADOnlyAuthenticationName: AzureADOnlyAuthenticationsCreateRequestAzureADOnlyAuthenticationName;
+  azureADOnlyAuthenticationName:
+    | AzureADOnlyAuthenticationsCreateRequestAzureADOnlyAuthenticationName
+    | (string & {});
   /** azureADOnlyAuthentication resource properties */
   properties?: AzureADOnlyAuthenticationPropertiesInput;
 }
@@ -71,8 +73,7 @@ export const AzureADOnlyAuthenticationsCreateRequest = /*@__PURE__*/ S.suspend(
 export type AzureADOnlyAuthenticationPropertiesState =
   | "Consistent"
   | "InConsistent"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const AzureADOnlyAuthenticationPropertiesState = /*@__PURE__*/ S.String;
 
 /** Properties of a active directory only authentication. */
@@ -117,8 +118,7 @@ export const AzureADOnlyAuthenticationsCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AzureADOnlyAuthenticationsCreateResponse>;
 
 export type AzureADOnlyAuthenticationsGetRequestAzureADOnlyAuthenticationName =
-  | "default"
-  | (string & {});
+  "default";
 export const AzureADOnlyAuthenticationsGetRequestAzureADOnlyAuthenticationName =
   /*@__PURE__*/ S.String;
 
@@ -130,7 +130,9 @@ export interface AzureADOnlyAuthenticationsGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** name of the property */
-  azureADOnlyAuthenticationName: AzureADOnlyAuthenticationsGetRequestAzureADOnlyAuthenticationName;
+  azureADOnlyAuthenticationName:
+    | AzureADOnlyAuthenticationsGetRequestAzureADOnlyAuthenticationName
+    | (string & {});
 }
 export const AzureADOnlyAuthenticationsGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -359,10 +361,7 @@ export const BigDataPoolResourcePropertiesInputCustomLibrariesList =
   ) as any as S.Schema<BigDataPoolResourcePropertiesInputCustomLibrariesList>;
 
 /** The type of the spark config properties file. */
-export type SparkConfigPropertiesInputConfigurationType =
-  | "File"
-  | "Artifact"
-  | (string & {});
+export type SparkConfigPropertiesInputConfigurationType = "File" | "Artifact";
 export const SparkConfigPropertiesInputConfigurationType =
   /*@__PURE__*/ S.String;
 
@@ -373,7 +372,9 @@ export interface SparkConfigPropertiesInput {
   /** The filename of the spark config properties file. */
   filename?: string;
   /** The type of the spark config properties file. */
-  configurationType?: SparkConfigPropertiesInputConfigurationType;
+  configurationType?:
+    | SparkConfigPropertiesInputConfigurationType
+    | (string & {});
 }
 export const SparkConfigPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -393,8 +394,7 @@ export type BigDataPoolResourcePropertiesInputNodeSize =
   | "Large"
   | "XLarge"
   | "XXLarge"
-  | "XXXLarge"
-  | (string & {});
+  | "XXXLarge";
 export const BigDataPoolResourcePropertiesInputNodeSize =
   /*@__PURE__*/ S.String;
 
@@ -403,8 +403,7 @@ export type BigDataPoolResourcePropertiesInputNodeSizeFamily =
   | "None"
   | "MemoryOptimized"
   | "HardwareAcceleratedFPGA"
-  | "HardwareAcceleratedGPU"
-  | (string & {});
+  | "HardwareAcceleratedGPU";
 export const BigDataPoolResourcePropertiesInputNodeSizeFamily =
   /*@__PURE__*/ S.String;
 
@@ -441,9 +440,11 @@ export interface BigDataPoolResourcePropertiesInput {
   /** The default folder where Spark logs will be written. */
   defaultSparkLogFolder?: string;
   /** The level of compute power that each node in the Big Data pool has. */
-  nodeSize?: BigDataPoolResourcePropertiesInputNodeSize;
+  nodeSize?: BigDataPoolResourcePropertiesInputNodeSize | (string & {});
   /** The kind of nodes that the Big Data pool provides. */
-  nodeSizeFamily?: BigDataPoolResourcePropertiesInputNodeSizeFamily;
+  nodeSizeFamily?:
+    | BigDataPoolResourcePropertiesInputNodeSizeFamily
+    | (string & {});
 }
 export const BigDataPoolResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -582,10 +583,7 @@ export const BigDataPoolResourcePropertiesCustomLibrariesList =
   ) as any as S.Schema<BigDataPoolResourcePropertiesCustomLibrariesList>;
 
 /** The type of the spark config properties file. */
-export type SparkConfigPropertiesConfigurationType =
-  | "File"
-  | "Artifact"
-  | (string & {});
+export type SparkConfigPropertiesConfigurationType = "File" | "Artifact";
 export const SparkConfigPropertiesConfigurationType = /*@__PURE__*/ S.String;
 
 /** SparkConfig Properties for a Big Data pool powered by Apache Spark */
@@ -618,8 +616,7 @@ export type BigDataPoolResourcePropertiesNodeSize =
   | "Large"
   | "XLarge"
   | "XXLarge"
-  | "XXXLarge"
-  | (string & {});
+  | "XXXLarge";
 export const BigDataPoolResourcePropertiesNodeSize = /*@__PURE__*/ S.String;
 
 /** The kind of nodes that the Big Data pool provides. */
@@ -627,8 +624,7 @@ export type BigDataPoolResourcePropertiesNodeSizeFamily =
   | "None"
   | "MemoryOptimized"
   | "HardwareAcceleratedFPGA"
-  | "HardwareAcceleratedGPU"
-  | (string & {});
+  | "HardwareAcceleratedGPU";
 export const BigDataPoolResourcePropertiesNodeSizeFamily =
   /*@__PURE__*/ S.String;
 
@@ -1018,23 +1014,23 @@ export const BigDataPoolsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BigDataPoolsUpdateResponse>;
 
 export type DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName =
-  | "Default"
-  | (string & {});
+  "Default";
 export const DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The state of the data masking policy. */
 export type DataMaskingPolicyPropertiesInputDataMaskingState =
   | "Disabled"
-  | "Enabled"
-  | (string & {});
+  | "Enabled";
 export const DataMaskingPolicyPropertiesInputDataMaskingState =
   /*@__PURE__*/ S.String;
 
 /** The properties of a database data masking policy. */
 export interface DataMaskingPolicyPropertiesInput {
   /** The state of the data masking policy. */
-  dataMaskingState: DataMaskingPolicyPropertiesInputDataMaskingState;
+  dataMaskingState:
+    | DataMaskingPolicyPropertiesInputDataMaskingState
+    | (string & {});
   /** The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries. */
   exemptPrincipals?: string;
 }
@@ -1057,7 +1053,9 @@ export interface DataMaskingPoliciesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the data masking policy for which the masking rule applies. */
-  dataMaskingPolicyName: DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName;
+  dataMaskingPolicyName:
+    | DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName
+    | (string & {});
   /** The properties of the data masking policy. */
   properties?: DataMaskingPolicyPropertiesInput;
 }
@@ -1088,8 +1086,7 @@ export const DataMaskingPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 /** The state of the data masking policy. */
 export type DataMaskingPolicyPropertiesDataMaskingState =
   | "Disabled"
-  | "Enabled"
-  | (string & {});
+  | "Enabled";
 export const DataMaskingPolicyPropertiesDataMaskingState =
   /*@__PURE__*/ S.String;
 
@@ -1146,9 +1143,7 @@ export const DataMaskingPoliciesCreateOrUpdateResponse =
     identifier: "DataMaskingPoliciesCreateOrUpdateResponse",
   }) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateResponse>;
 
-export type DataMaskingPoliciesGetRequestDataMaskingPolicyName =
-  | "Default"
-  | (string & {});
+export type DataMaskingPoliciesGetRequestDataMaskingPolicyName = "Default";
 export const DataMaskingPoliciesGetRequestDataMaskingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -1162,7 +1157,9 @@ export interface DataMaskingPoliciesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the data masking policy for which the masking rule applies. */
-  dataMaskingPolicyName: DataMaskingPoliciesGetRequestDataMaskingPolicyName;
+  dataMaskingPolicyName:
+    | DataMaskingPoliciesGetRequestDataMaskingPolicyName
+    | (string & {});
 }
 export const DataMaskingPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1215,16 +1212,12 @@ export const DataMaskingPoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataMaskingPoliciesGetResponse>;
 
 export type DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName =
-  | "Default"
-  | (string & {});
+  "Default";
 export const DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The rule state. Used to delete a rule. To delete an existing rule, specify the schemaName, tableName, columnName, maskingFunction, and specify ruleState as disabled. However, if the rule doesn't already exist, the rule will be created with ruleState set to enabled, regardless of the provided value of ruleState. */
-export type DataMaskingRulePropertiesInputRuleState =
-  | "Disabled"
-  | "Enabled"
-  | (string & {});
+export type DataMaskingRulePropertiesInputRuleState = "Disabled" | "Enabled";
 export const DataMaskingRulePropertiesInputRuleState = /*@__PURE__*/ S.String;
 
 /** The masking function that is used for the data masking rule. */
@@ -1234,8 +1227,7 @@ export type DataMaskingRulePropertiesInputMaskingFunction =
   | "Email"
   | "Number"
   | "SSN"
-  | "Text"
-  | (string & {});
+  | "Text";
 export const DataMaskingRulePropertiesInputMaskingFunction =
   /*@__PURE__*/ S.String;
 
@@ -1244,7 +1236,7 @@ export interface DataMaskingRulePropertiesInput {
   /** The alias name. This is a legacy parameter and is no longer used. */
   aliasName?: string;
   /** The rule state. Used to delete a rule. To delete an existing rule, specify the schemaName, tableName, columnName, maskingFunction, and specify ruleState as disabled. However, if the rule doesn't already exist, the rule will be created with ruleState set to enabled, regardless of the provided value of ruleState. */
-  ruleState?: DataMaskingRulePropertiesInputRuleState;
+  ruleState?: DataMaskingRulePropertiesInputRuleState | (string & {});
   /** The schema name on which the data masking rule is applied. */
   schemaName: string;
   /** The table name on which the data masking rule is applied. */
@@ -1252,7 +1244,9 @@ export interface DataMaskingRulePropertiesInput {
   /** The column name on which the data masking rule is applied. */
   columnName: string;
   /** The masking function that is used for the data masking rule. */
-  maskingFunction: DataMaskingRulePropertiesInputMaskingFunction;
+  maskingFunction:
+    | DataMaskingRulePropertiesInputMaskingFunction
+    | (string & {});
   /** The numberFrom property of the masking rule. Required if maskingFunction is set to Number, otherwise this parameter will be ignored. */
   numberFrom?: string;
   /** The numberTo property of the data masking rule. Required if maskingFunction is set to Number, otherwise this parameter will be ignored. */
@@ -1292,7 +1286,9 @@ export interface DataMaskingRulesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the data masking policy for which the masking rule applies. */
-  dataMaskingPolicyName: DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName;
+  dataMaskingPolicyName:
+    | DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName
+    | (string & {});
   /** The name of the data masking rule. */
   dataMaskingRuleName: string;
   /** The properties of the resource. */
@@ -1324,10 +1320,7 @@ export const DataMaskingRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataMaskingRulesCreateOrUpdateRequest>;
 
 /** The rule state. Used to delete a rule. To delete an existing rule, specify the schemaName, tableName, columnName, maskingFunction, and specify ruleState as disabled. However, if the rule doesn't already exist, the rule will be created with ruleState set to enabled, regardless of the provided value of ruleState. */
-export type DataMaskingRulePropertiesRuleState =
-  | "Disabled"
-  | "Enabled"
-  | (string & {});
+export type DataMaskingRulePropertiesRuleState = "Disabled" | "Enabled";
 export const DataMaskingRulePropertiesRuleState = /*@__PURE__*/ S.String;
 
 /** The masking function that is used for the data masking rule. */
@@ -1337,8 +1330,7 @@ export type DataMaskingRulePropertiesMaskingFunction =
   | "Email"
   | "Number"
   | "SSN"
-  | "Text"
-  | (string & {});
+  | "Text";
 export const DataMaskingRulePropertiesMaskingFunction = /*@__PURE__*/ S.String;
 
 /** The properties of a Sql pool data masking rule. */
@@ -1415,9 +1407,7 @@ export const DataMaskingRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "DataMaskingRulesCreateOrUpdateResponse",
 }) as any as S.Schema<DataMaskingRulesCreateOrUpdateResponse>;
 
-export type DataMaskingRulesGetRequestDataMaskingPolicyName =
-  | "Default"
-  | (string & {});
+export type DataMaskingRulesGetRequestDataMaskingPolicyName = "Default";
 export const DataMaskingRulesGetRequestDataMaskingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -1431,7 +1421,9 @@ export interface DataMaskingRulesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the data masking policy for which the masking rule applies. */
-  dataMaskingPolicyName: DataMaskingRulesGetRequestDataMaskingPolicyName;
+  dataMaskingPolicyName:
+    | DataMaskingRulesGetRequestDataMaskingPolicyName
+    | (string & {});
   /** The name of the data masking rule. */
   dataMaskingRuleName: string;
 }
@@ -1485,8 +1477,7 @@ export const DataMaskingRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataMaskingRulesGetResponse>;
 
 export type DataMaskingRulesListBySqlPoolRequestDataMaskingPolicyName =
-  | "Default"
-  | (string & {});
+  "Default";
 export const DataMaskingRulesListBySqlPoolRequestDataMaskingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -1500,7 +1491,9 @@ export interface DataMaskingRulesListBySqlPoolRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the data masking policy for which the masking rule applies. */
-  dataMaskingPolicyName: DataMaskingRulesListBySqlPoolRequestDataMaskingPolicyName;
+  dataMaskingPolicyName:
+    | DataMaskingRulesListBySqlPoolRequestDataMaskingPolicyName
+    | (string & {});
 }
 export const DataMaskingRulesListBySqlPoolRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1573,15 +1566,14 @@ export const DataMaskingRuleListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataMaskingRuleListResult>;
 
 export type ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
-  "default" | (string & {});
+  "default";
 export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
 export type ExtendedSqlPoolBlobAuditingPolicyPropertiesState =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ExtendedSqlPoolBlobAuditingPolicyPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -1646,7 +1638,9 @@ export interface ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName: ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
+  blobAuditingPolicyName:
+    | ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
+    | (string & {});
   /** Resource properties. */
   properties?: ExtendedSqlPoolBlobAuditingPolicyProperties;
 }
@@ -1697,7 +1691,7 @@ export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type ExtendedSqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
-  "default" | (string & {});
+  "default";
 export const ExtendedSqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -1711,7 +1705,9 @@ export interface ExtendedSqlPoolBlobAuditingPoliciesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName: ExtendedSqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
+  blobAuditingPolicyName:
+    | ExtendedSqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
+    | (string & {});
 }
 export const ExtendedSqlPoolBlobAuditingPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1882,8 +1878,7 @@ export const IntegrationRuntimeAuthKeys = /*@__PURE__*/ S.suspend(() =>
 /** The name of the authentication key to regenerate. */
 export type IntegrationRuntimeAuthKeysRegenerateRequestKeyName =
   | "authKey1"
-  | "authKey2"
-  | (string & {});
+  | "authKey2";
 export const IntegrationRuntimeAuthKeysRegenerateRequestKeyName =
   /*@__PURE__*/ S.String;
 
@@ -1897,7 +1892,7 @@ export interface IntegrationRuntimeAuthKeysRegenerateRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
   /** The name of the authentication key to regenerate. */
-  keyName?: IntegrationRuntimeAuthKeysRegenerateRequestKeyName;
+  keyName?: IntegrationRuntimeAuthKeysRegenerateRequestKeyName | (string & {});
 }
 export const IntegrationRuntimeAuthKeysRegenerateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2221,8 +2216,7 @@ export type SelfHostedIntegrationRuntimeNodeStatus =
   | "Offline"
   | "Upgrading"
   | "Initializing"
-  | "InitializeFailed"
-  | (string & {});
+  | "InitializeFailed";
 export const SelfHostedIntegrationRuntimeNodeStatus = /*@__PURE__*/ S.String;
 
 /** The integration runtime capabilities dictionary */
@@ -2239,8 +2233,7 @@ export const SelfHostedIntegrationRuntimeNodeCapabilitiesMap =
 export type SelfHostedIntegrationRuntimeNodeLastUpdateResult =
   | "None"
   | "Succeed"
-  | "Fail"
-  | (string & {});
+  | "Fail";
 export const SelfHostedIntegrationRuntimeNodeLastUpdateResult =
   /*@__PURE__*/ S.String;
 
@@ -2382,8 +2375,7 @@ export type SsisObjectMetadataType =
   | "Folder"
   | "Project"
   | "Package"
-  | "Environment"
-  | (string & {});
+  | "Environment";
 export const SsisObjectMetadataType = /*@__PURE__*/ S.String;
 
 /** SSIS object metadata. */
@@ -2483,7 +2475,7 @@ export const SsisObjectMetadataStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsisObjectMetadataStatusResponse>;
 
 /** The type of integration runtime. */
-export type IntegrationRuntimeType = "Managed" | "SelfHosted" | (string & {});
+export type IntegrationRuntimeType = "Managed" | "SelfHosted";
 export const IntegrationRuntimeType = /*@__PURE__*/ S.String;
 
 /** Azure Synapse nested object which serves as a compute resource for activities. */
@@ -2950,8 +2942,7 @@ export type IntegrationRuntimeState =
   | "Online"
   | "Limited"
   | "Offline"
-  | "AccessDenied"
-  | (string & {});
+  | "AccessDenied";
 export const IntegrationRuntimeState = /*@__PURE__*/ S.String;
 
 /** Integration runtime status. */
@@ -3053,7 +3044,7 @@ export const IntegrationRuntimeStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationRuntimeStatusGetRequest>;
 
 /** The state of integration runtime auto update. */
-export type IntegrationRuntimeAutoUpdate = "On" | "Off" | (string & {});
+export type IntegrationRuntimeAutoUpdate = "On" | "Off";
 export const IntegrationRuntimeAutoUpdate = /*@__PURE__*/ S.String;
 
 export interface IntegrationRuntimesUpdateRequest {
@@ -3066,7 +3057,7 @@ export interface IntegrationRuntimesUpdateRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
   /** Enables or disables the auto-update feature of the self-hosted integration runtime. See https://go.microsoft.com/fwlink/?linkid=854189. */
-  autoUpdate?: IntegrationRuntimeAutoUpdate;
+  autoUpdate?: IntegrationRuntimeAutoUpdate | (string & {});
   /** The time offset (in hours) in the day, e.g., PT03H is 3 hours. The integration runtime auto update will happen on that time. */
   updateDelayOffset?: string;
 }
@@ -3203,8 +3194,7 @@ export type IpFirewallRulePropertiesProvisioningState =
   | "Succeeded"
   | "Deleting"
   | "Failed"
-  | "DeleteError"
-  | (string & {});
+  | "DeleteError";
 export const IpFirewallRulePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** IP firewall rule properties */
@@ -3968,8 +3958,7 @@ export type OperationsGetAzureAsyncHeaderResultResponseStatus =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const OperationsGetAzureAsyncHeaderResultResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -5650,15 +5639,12 @@ export const RestorableDroppedSqlPoolListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorableDroppedSqlPoolListResult>;
 
 export type SqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-export type SqlPoolBlobAuditingPolicyPropertiesState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type SqlPoolBlobAuditingPolicyPropertiesState = "Enabled" | "Disabled";
 export const SqlPoolBlobAuditingPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
@@ -5715,7 +5701,9 @@ export interface SqlPoolBlobAuditingPoliciesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName: SqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
+  blobAuditingPolicyName:
+    | SqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
+    | (string & {});
   /** Resource properties. */
   properties?: SqlPoolBlobAuditingPolicyProperties;
 }
@@ -5769,8 +5757,7 @@ export const SqlPoolBlobAuditingPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<SqlPoolBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type SqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
-  | "default"
-  | (string & {});
+  "default";
 export const SqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -5784,7 +5771,9 @@ export interface SqlPoolBlobAuditingPoliciesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName: SqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
+  blobAuditingPolicyName:
+    | SqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
+    | (string & {});
 }
 export const SqlPoolBlobAuditingPoliciesGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5984,8 +5973,7 @@ export type SqlPoolColumnPropertiesColumnType =
   | "nvarchar"
   | "nchar"
   | "xml"
-  | "sysname"
-  | (string & {});
+  | "sysname";
 export const SqlPoolColumnPropertiesColumnType = /*@__PURE__*/ S.String;
 
 /** Sql pool column properties. */
@@ -6026,7 +6014,7 @@ export const SqlPoolColumnsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlPoolColumnsGetResponse>;
 
 export type SqlPoolDataWarehouseUserActivitiesGetRequestDataWarehouseUserActivityName =
-  "current" | (string & {});
+  "current";
 export const SqlPoolDataWarehouseUserActivitiesGetRequestDataWarehouseUserActivityName =
   /*@__PURE__*/ S.String;
 
@@ -6040,7 +6028,9 @@ export interface SqlPoolDataWarehouseUserActivitiesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The activity name of the Sql pool. */
-  dataWarehouseUserActivityName: SqlPoolDataWarehouseUserActivitiesGetRequestDataWarehouseUserActivityName;
+  dataWarehouseUserActivityName:
+    | SqlPoolDataWarehouseUserActivitiesGetRequestDataWarehouseUserActivityName
+    | (string & {});
 }
 export const SqlPoolDataWarehouseUserActivitiesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6102,22 +6092,18 @@ export const SqlPoolDataWarehouseUserActivitiesGetResponse =
   }) as any as S.Schema<SqlPoolDataWarehouseUserActivitiesGetResponse>;
 
 export type SqlPoolGeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName =
-  | "Default"
-  | (string & {});
+  "Default";
 export const SqlPoolGeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The state of the geo backup policy. */
-export type GeoBackupPolicyPropertiesInputState =
-  | "Disabled"
-  | "Enabled"
-  | (string & {});
+export type GeoBackupPolicyPropertiesInputState = "Disabled" | "Enabled";
 export const GeoBackupPolicyPropertiesInputState = /*@__PURE__*/ S.String;
 
 /** The properties of the geo backup policy. */
 export interface GeoBackupPolicyPropertiesInput {
   /** The state of the geo backup policy. */
-  state: GeoBackupPolicyPropertiesInputState;
+  state: GeoBackupPolicyPropertiesInputState | (string & {});
 }
 export const GeoBackupPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6137,7 +6123,9 @@ export interface SqlPoolGeoBackupPoliciesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the geo backup policy. */
-  geoBackupPolicyName: SqlPoolGeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName;
+  geoBackupPolicyName:
+    | SqlPoolGeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName
+    | (string & {});
   /** The properties of the geo backup policy. */
   properties: GeoBackupPolicyPropertiesInput;
 }
@@ -6166,10 +6154,7 @@ export const SqlPoolGeoBackupPoliciesCreateOrUpdateRequest =
   }) as any as S.Schema<SqlPoolGeoBackupPoliciesCreateOrUpdateRequest>;
 
 /** The state of the geo backup policy. */
-export type GeoBackupPolicyPropertiesState =
-  | "Disabled"
-  | "Enabled"
-  | (string & {});
+export type GeoBackupPolicyPropertiesState = "Disabled" | "Enabled";
 export const GeoBackupPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** The properties of the geo backup policy. */
@@ -6216,9 +6201,7 @@ export const SqlPoolGeoBackupPoliciesCreateOrUpdateResponse =
     identifier: "SqlPoolGeoBackupPoliciesCreateOrUpdateResponse",
   }) as any as S.Schema<SqlPoolGeoBackupPoliciesCreateOrUpdateResponse>;
 
-export type SqlPoolGeoBackupPoliciesGetRequestGeoBackupPolicyName =
-  | "Default"
-  | (string & {});
+export type SqlPoolGeoBackupPoliciesGetRequestGeoBackupPolicyName = "Default";
 export const SqlPoolGeoBackupPoliciesGetRequestGeoBackupPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -6232,7 +6215,9 @@ export interface SqlPoolGeoBackupPoliciesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the geo backup policy. */
-  geoBackupPolicyName: SqlPoolGeoBackupPoliciesGetRequestGeoBackupPolicyName;
+  geoBackupPolicyName:
+    | SqlPoolGeoBackupPoliciesGetRequestGeoBackupPolicyName
+    | (string & {});
 }
 export const SqlPoolGeoBackupPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6396,8 +6381,7 @@ export type MaintenanceWindowTimeRangeDayOfWeek =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday"
-  | (string & {});
+  | "Saturday";
 export const MaintenanceWindowTimeRangeDayOfWeek = /*@__PURE__*/ S.String;
 
 /** Maintenance window time range. */
@@ -6658,15 +6642,11 @@ export type SqlPoolResourcePropertiesCreateMode =
   | "Default"
   | "PointInTimeRestore"
   | "Recovery"
-  | "Restore"
-  | (string & {});
+  | "Restore";
 export const SqlPoolResourcePropertiesCreateMode = /*@__PURE__*/ S.String;
 
 /** The storage account type used to store backups for this sql pool. */
-export type SqlPoolResourcePropertiesStorageAccountType =
-  | "GRS"
-  | "LRS"
-  | (string & {});
+export type SqlPoolResourcePropertiesStorageAccountType = "GRS" | "LRS";
 export const SqlPoolResourcePropertiesStorageAccountType =
   /*@__PURE__*/ S.String;
 
@@ -6781,8 +6761,7 @@ export type SqlPoolOperationPropertiesState =
   | "Succeeded"
   | "Failed"
   | "CancelInProgress"
-  | "Cancelled"
-  | (string & {});
+  | "Cancelled";
 export const SqlPoolOperationPropertiesState = /*@__PURE__*/ S.String;
 
 /** The properties of a Sql pool operation. */
@@ -6888,14 +6867,13 @@ export const SqlPoolBlobAuditingPolicySqlPoolOperationListResult =
 
 export type RecommendedSensitivityLabelUpdatePropertiesOp =
   | "enable"
-  | "disable"
-  | (string & {});
+  | "disable";
 export const RecommendedSensitivityLabelUpdatePropertiesOp =
   /*@__PURE__*/ S.String;
 
 /** Properties of an operation executed on a recommended sensitivity label. */
 export interface RecommendedSensitivityLabelUpdateProperties {
-  op: RecommendedSensitivityLabelUpdatePropertiesOp;
+  op: RecommendedSensitivityLabelUpdatePropertiesOp | (string & {});
   /** Schema name of the column to update. */
   schema: string;
   /** Table name of the column to update. */
@@ -7013,8 +6991,7 @@ export type ReplicationLinkPropertiesRole =
   | "Secondary"
   | "NonReadableSecondary"
   | "Source"
-  | "Copy"
-  | (string & {});
+  | "Copy";
 export const ReplicationLinkPropertiesRole = /*@__PURE__*/ S.String;
 
 /** The role of the partner Sql pool in the replication link. */
@@ -7023,8 +7000,7 @@ export type ReplicationLinkPropertiesPartnerRole =
   | "Secondary"
   | "NonReadableSecondary"
   | "Source"
-  | "Copy"
-  | (string & {});
+  | "Copy";
 export const ReplicationLinkPropertiesPartnerRole = /*@__PURE__*/ S.String;
 
 /** The replication state for the replication link. */
@@ -7032,8 +7008,7 @@ export type ReplicationLinkPropertiesReplicationState =
   | "PENDING"
   | "SEEDING"
   | "CATCH_UP"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const ReplicationLinkPropertiesReplicationState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of a Sql pool replication link. */
@@ -7208,10 +7183,7 @@ export const SqlPoolRestorePointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlPoolRestorePointsCreateRequest>;
 
 /** The type of restore point */
-export type RestorePointPropertiesRestorePointType =
-  | "CONTINUOUS"
-  | "DISCRETE"
-  | (string & {});
+export type RestorePointPropertiesRestorePointType = "CONTINUOUS" | "DISCRETE";
 export const RestorePointPropertiesRestorePointType = /*@__PURE__*/ S.String;
 
 /** Properties of a database restore point */
@@ -7559,15 +7531,11 @@ export type SqlPoolResourcePropertiesInputCreateMode =
   | "Default"
   | "PointInTimeRestore"
   | "Recovery"
-  | "Restore"
-  | (string & {});
+  | "Restore";
 export const SqlPoolResourcePropertiesInputCreateMode = /*@__PURE__*/ S.String;
 
 /** The storage account type used to store backups for this sql pool. */
-export type SqlPoolResourcePropertiesInputStorageAccountType =
-  | "GRS"
-  | "LRS"
-  | (string & {});
+export type SqlPoolResourcePropertiesInputStorageAccountType = "GRS" | "LRS";
 export const SqlPoolResourcePropertiesInputStorageAccountType =
   /*@__PURE__*/ S.String;
 
@@ -7586,9 +7554,11 @@ export interface SqlPoolResourcePropertiesInput {
   /** Snapshot time to restore */
   restorePointInTime?: string;
   /** Specifies the mode of sql pool creation. Default: regular sql pool creation. PointInTimeRestore: Creates a sql pool by restoring a point in time backup of an existing sql pool. sourceDatabaseId must be specified as the resource ID of the existing sql pool, and restorePointInTime must be specified. Recovery: Creates a sql pool by a geo-replicated backup. sourceDatabaseId must be specified as the recoverableDatabaseId to restore. Restore: Creates a sql pool by restoring a backup of a deleted sql pool. SourceDatabaseId should be the sql pool's original resource ID. SourceDatabaseId and sourceDatabaseDeletionDate must be specified. */
-  createMode?: SqlPoolResourcePropertiesInputCreateMode;
+  createMode?: SqlPoolResourcePropertiesInputCreateMode | (string & {});
   /** The storage account type used to store backups for this sql pool. */
-  storageAccountType?: SqlPoolResourcePropertiesInputStorageAccountType;
+  storageAccountType?:
+    | SqlPoolResourcePropertiesInputStorageAccountType
+    | (string & {});
   /** Specifies the time that the sql pool was deleted */
   sourceDatabaseDeletionDate?: string;
 }
@@ -7757,7 +7727,7 @@ export const SqlPoolsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlPoolsDeleteResponse>;
 
 export type SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -7765,8 +7735,7 @@ export const SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolic
 export type SecurityAlertPolicyPropertiesInputState =
   | "New"
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const SecurityAlertPolicyPropertiesInputState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
@@ -7788,7 +7757,7 @@ export const SecurityAlertPolicyPropertiesInputEmailAddressesList =
 /** Properties of a security alert policy. */
 export interface SecurityAlertPolicyPropertiesInput {
   /** Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific Sql pool. */
-  state: SecurityAlertPolicyPropertiesInputState;
+  state: SecurityAlertPolicyPropertiesInputState | (string & {});
   /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
   disabledAlerts?: SecurityAlertPolicyPropertiesInputDisabledAlertsList;
   /** Specifies an array of e-mail addresses to which the alert is sent. */
@@ -7830,7 +7799,9 @@ export interface SqlPoolSecurityAlertPoliciesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName: SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName;
+  securityAlertPolicyName:
+    | SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName
+    | (string & {});
   /** Resource properties. */
   properties?: SecurityAlertPolicyPropertiesInput;
 }
@@ -7859,11 +7830,7 @@ export const SqlPoolSecurityAlertPoliciesCreateOrUpdateRequest =
   }) as any as S.Schema<SqlPoolSecurityAlertPoliciesCreateOrUpdateRequest>;
 
 /** Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific Sql pool. */
-export type SecurityAlertPolicyPropertiesState =
-  | "New"
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type SecurityAlertPolicyPropertiesState = "New" | "Enabled" | "Disabled";
 export const SecurityAlertPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
@@ -7939,8 +7906,7 @@ export const SqlPoolSecurityAlertPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<SqlPoolSecurityAlertPoliciesCreateOrUpdateResponse>;
 
 export type SqlPoolSecurityAlertPoliciesGetRequestSecurityAlertPolicyName =
-  | "default"
-  | (string & {});
+  "default";
 export const SqlPoolSecurityAlertPoliciesGetRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -7954,7 +7920,9 @@ export interface SqlPoolSecurityAlertPoliciesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName: SqlPoolSecurityAlertPoliciesGetRequestSecurityAlertPolicyName;
+  securityAlertPolicyName:
+    | SqlPoolSecurityAlertPoliciesGetRequestSecurityAlertPolicyName
+    | (string & {});
 }
 export const SqlPoolSecurityAlertPoliciesGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -8076,7 +8044,7 @@ export const ListSqlPoolSecurityAlertPolicies = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSqlPoolSecurityAlertPolicies>;
 
 export type SqlPoolSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource =
-  "current" | (string & {});
+  "current";
 export const SqlPoolSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -8085,8 +8053,7 @@ export type SensitivityLabelPropertiesInputRank =
   | "Low"
   | "Medium"
   | "High"
-  | "Critical"
-  | (string & {});
+  | "Critical";
 export const SensitivityLabelPropertiesInputRank = /*@__PURE__*/ S.String;
 
 /** Properties of a sensitivity label. */
@@ -8099,7 +8066,7 @@ export interface SensitivityLabelPropertiesInput {
   informationType?: string;
   /** The information type ID. */
   informationTypeId?: string;
-  rank?: SensitivityLabelPropertiesInputRank;
+  rank?: SensitivityLabelPropertiesInputRank | (string & {});
 }
 export const SensitivityLabelPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8129,7 +8096,9 @@ export interface SqlPoolSensitivityLabelsCreateOrUpdateRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource: SqlPoolSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource;
+  sensitivityLabelSource:
+    | SqlPoolSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource
+    | (string & {});
   /** Resource properties. */
   properties?: SensitivityLabelPropertiesInput;
 }
@@ -8165,8 +8134,7 @@ export type SensitivityLabelPropertiesRank =
   | "Low"
   | "Medium"
   | "High"
-  | "Critical"
-  | (string & {});
+  | "Critical";
 export const SensitivityLabelPropertiesRank = /*@__PURE__*/ S.String;
 
 /** Properties of a sensitivity label. */
@@ -8231,8 +8199,7 @@ export const SqlPoolSensitivityLabelsCreateOrUpdateResponse =
   }) as any as S.Schema<SqlPoolSensitivityLabelsCreateOrUpdateResponse>;
 
 export type SqlPoolSensitivityLabelsDeleteRequestSensitivityLabelSource =
-  | "current"
-  | (string & {});
+  "current";
 export const SqlPoolSensitivityLabelsDeleteRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -8252,7 +8219,9 @@ export interface SqlPoolSensitivityLabelsDeleteRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource: SqlPoolSensitivityLabelsDeleteRequestSensitivityLabelSource;
+  sensitivityLabelSource:
+    | SqlPoolSensitivityLabelsDeleteRequestSensitivityLabelSource
+    | (string & {});
 }
 export const SqlPoolSensitivityLabelsDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -8288,7 +8257,7 @@ export const SqlPoolSensitivityLabelsDeleteResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SqlPoolSensitivityLabelsDeleteResponse>;
 
 export type SqlPoolSensitivityLabelsDisableRecommendationRequestSensitivityLabelSource =
-  "recommended" | (string & {});
+  "recommended";
 export const SqlPoolSensitivityLabelsDisableRecommendationRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -8308,7 +8277,9 @@ export interface SqlPoolSensitivityLabelsDisableRecommendationRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource: SqlPoolSensitivityLabelsDisableRecommendationRequestSensitivityLabelSource;
+  sensitivityLabelSource:
+    | SqlPoolSensitivityLabelsDisableRecommendationRequestSensitivityLabelSource
+    | (string & {});
 }
 export const SqlPoolSensitivityLabelsDisableRecommendationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8343,7 +8314,7 @@ export const SqlPoolSensitivityLabelsDisableRecommendationResponse =
   }) as any as S.Schema<SqlPoolSensitivityLabelsDisableRecommendationResponse>;
 
 export type SqlPoolSensitivityLabelsEnableRecommendationRequestSensitivityLabelSource =
-  "recommended" | (string & {});
+  "recommended";
 export const SqlPoolSensitivityLabelsEnableRecommendationRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -8363,7 +8334,9 @@ export interface SqlPoolSensitivityLabelsEnableRecommendationRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource: SqlPoolSensitivityLabelsEnableRecommendationRequestSensitivityLabelSource;
+  sensitivityLabelSource:
+    | SqlPoolSensitivityLabelsEnableRecommendationRequestSensitivityLabelSource
+    | (string & {});
 }
 export const SqlPoolSensitivityLabelsEnableRecommendationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8399,8 +8372,7 @@ export const SqlPoolSensitivityLabelsEnableRecommendationResponse =
 
 export type SqlPoolSensitivityLabelsGetRequestSensitivityLabelSource =
   | "current"
-  | "recommended"
-  | (string & {});
+  | "recommended";
 export const SqlPoolSensitivityLabelsGetRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -8420,7 +8392,9 @@ export interface SqlPoolSensitivityLabelsGetRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource: SqlPoolSensitivityLabelsGetRequestSensitivityLabelSource;
+  sensitivityLabelSource:
+    | SqlPoolSensitivityLabelsGetRequestSensitivityLabelSource
+    | (string & {});
 }
 export const SqlPoolSensitivityLabelsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8587,10 +8561,7 @@ export const SqlPoolSensitivityLabelsListRecommendedRequest =
     identifier: "SqlPoolSensitivityLabelsListRecommendedRequest",
   }) as any as S.Schema<SqlPoolSensitivityLabelsListRecommendedRequest>;
 
-export type SensitivityLabelUpdatePropertiesInputOp =
-  | "set"
-  | "remove"
-  | (string & {});
+export type SensitivityLabelUpdatePropertiesInputOp = "set" | "remove";
 export const SensitivityLabelUpdatePropertiesInputOp = /*@__PURE__*/ S.String;
 
 /** A sensitivity label. */
@@ -8608,7 +8579,7 @@ export const SensitivityLabelInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of an operation executed on a sensitivity label. */
 export interface SensitivityLabelUpdatePropertiesInput {
-  op: SensitivityLabelUpdatePropertiesInputOp;
+  op: SensitivityLabelUpdatePropertiesInputOp | (string & {});
   /** Schema name of the column to update. */
   schema: string;
   /** Table name of the column to update. */
@@ -9250,15 +9221,12 @@ export const SqlPoolTableListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlPoolTableListResult>;
 
 export type SqlPoolTransparentDataEncryptionsCreateOrUpdateRequestTransparentDataEncryptionName =
-  "current" | (string & {});
+  "current";
 export const SqlPoolTransparentDataEncryptionsCreateOrUpdateRequestTransparentDataEncryptionName =
   /*@__PURE__*/ S.String;
 
 /** The status of the database transparent data encryption. */
-export type TransparentDataEncryptionPropertiesStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type TransparentDataEncryptionPropertiesStatus = "Enabled" | "Disabled";
 export const TransparentDataEncryptionPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** Represents the properties of a database transparent data encryption. */
@@ -9284,7 +9252,9 @@ export interface SqlPoolTransparentDataEncryptionsCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the transparent data encryption configuration. */
-  transparentDataEncryptionName: SqlPoolTransparentDataEncryptionsCreateOrUpdateRequestTransparentDataEncryptionName;
+  transparentDataEncryptionName:
+    | SqlPoolTransparentDataEncryptionsCreateOrUpdateRequestTransparentDataEncryptionName
+    | (string & {});
   /** Represents the properties of the resource. */
   properties?: TransparentDataEncryptionProperties;
 }
@@ -9338,7 +9308,7 @@ export const SqlPoolTransparentDataEncryptionsCreateOrUpdateResponse =
   }) as any as S.Schema<SqlPoolTransparentDataEncryptionsCreateOrUpdateResponse>;
 
 export type SqlPoolTransparentDataEncryptionsGetRequestTransparentDataEncryptionName =
-  "current" | (string & {});
+  "current";
 export const SqlPoolTransparentDataEncryptionsGetRequestTransparentDataEncryptionName =
   /*@__PURE__*/ S.String;
 
@@ -9352,7 +9322,9 @@ export interface SqlPoolTransparentDataEncryptionsGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the transparent data encryption configuration. */
-  transparentDataEncryptionName: SqlPoolTransparentDataEncryptionsGetRequestTransparentDataEncryptionName;
+  transparentDataEncryptionName:
+    | SqlPoolTransparentDataEncryptionsGetRequestTransparentDataEncryptionName
+    | (string & {});
 }
 export const SqlPoolTransparentDataEncryptionsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9560,12 +9532,12 @@ export const SqlPoolUsageListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlPoolUsageListResult>;
 
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
-  "master" | "default" | (string & {});
+  "master" | "default";
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -9624,11 +9596,15 @@ export interface SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateReques
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName
+    | (string & {});
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for workspace level rule). */
-  baselineName: SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName;
+  baselineName:
+    | SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName
+    | (string & {});
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentRuleBaselineProperties;
 }
@@ -9690,12 +9666,12 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse =
   }) as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse>;
 
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
-  "master" | "default" | (string & {});
+  "master" | "default";
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -9709,11 +9685,15 @@ export interface SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName
+    | (string & {});
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for workspace level rule). */
-  baselineName: SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName;
+  baselineName:
+    | SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName
+    | (string & {});
 }
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9750,14 +9730,13 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteResponse =
   }) as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteResponse>;
 
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
   | "master"
-  | "default"
-  | (string & {});
+  | "default";
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -9771,11 +9750,15 @@ export interface SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName
+    | (string & {});
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for server level rule). */
-  baselineName: SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName;
+  baselineName:
+    | SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName
+    | (string & {});
 }
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9830,7 +9813,7 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesGetResponse =
   }) as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselinesGetResponse>;
 
 export type SqlPoolVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -9844,7 +9827,9 @@ export interface SqlPoolVulnerabilityAssessmentScansExportRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | SqlPoolVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName
+    | (string & {});
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -9911,7 +9896,7 @@ export const SqlPoolVulnerabilityAssessmentScansExportResponse =
   }) as any as S.Schema<SqlPoolVulnerabilityAssessmentScansExportResponse>;
 
 export type SqlPoolVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -9925,7 +9910,9 @@ export interface SqlPoolVulnerabilityAssessmentScansGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | SqlPoolVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName
+    | (string & {});
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -9956,8 +9943,7 @@ export const SqlPoolVulnerabilityAssessmentScansGetRequest =
 /** The scan trigger type. */
 export type VulnerabilityAssessmentScanRecordPropertiesTriggerType =
   | "OnDemand"
-  | "Recurring"
-  | (string & {});
+  | "Recurring";
 export const VulnerabilityAssessmentScanRecordPropertiesTriggerType =
   /*@__PURE__*/ S.String;
 
@@ -9966,8 +9952,7 @@ export type VulnerabilityAssessmentScanRecordPropertiesState =
   | "Passed"
   | "Failed"
   | "FailedToRun"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const VulnerabilityAssessmentScanRecordPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -10055,7 +10040,7 @@ export const SqlPoolVulnerabilityAssessmentScansGetResponse =
   }) as any as S.Schema<SqlPoolVulnerabilityAssessmentScansGetResponse>;
 
 export type SqlPoolVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -10069,7 +10054,9 @@ export interface SqlPoolVulnerabilityAssessmentScansInitiateScanRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | SqlPoolVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName
+    | (string & {});
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -10104,7 +10091,7 @@ export const SqlPoolVulnerabilityAssessmentScansInitiateScanResponse =
   }) as any as S.Schema<SqlPoolVulnerabilityAssessmentScansInitiateScanResponse>;
 
 export type SqlPoolVulnerabilityAssessmentScansListRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolVulnerabilityAssessmentScansListRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -10118,7 +10105,9 @@ export interface SqlPoolVulnerabilityAssessmentScansListRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentScansListRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | SqlPoolVulnerabilityAssessmentScansListRequestVulnerabilityAssessmentName
+    | (string & {});
 }
 export const SqlPoolVulnerabilityAssessmentScansListRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10191,7 +10180,7 @@ export const VulnerabilityAssessmentScanRecordListResult =
   }) as any as S.Schema<VulnerabilityAssessmentScanRecordListResult>;
 
 export type SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -10260,7 +10249,9 @@ export interface SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName
+    | (string & {});
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentProperties;
 }
@@ -10311,7 +10302,7 @@ export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateResponse =
   }) as any as S.Schema<SqlPoolVulnerabilityAssessmentsCreateOrUpdateResponse>;
 
 export type SqlPoolVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -10325,7 +10316,9 @@ export interface SqlPoolVulnerabilityAssessmentsDeleteRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | SqlPoolVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName
+    | (string & {});
 }
 export const SqlPoolVulnerabilityAssessmentsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10357,7 +10350,7 @@ export const SqlPoolVulnerabilityAssessmentsDeleteResponse =
   }) as any as S.Schema<SqlPoolVulnerabilityAssessmentsDeleteResponse>;
 
 export type SqlPoolVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const SqlPoolVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -10371,7 +10364,9 @@ export interface SqlPoolVulnerabilityAssessmentsGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | SqlPoolVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName
+    | (string & {});
 }
 export const SqlPoolVulnerabilityAssessmentsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -11155,14 +11150,16 @@ export const WorkspaceAadAdminsGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Desired state */
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState =
-  "Enabled" | "Disabled" | (string & {});
+  "Enabled" | "Disabled";
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState =
   /*@__PURE__*/ S.String;
 
 /** Grant sql control to managed identity */
 export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentity {
   /** Desired state */
-  desiredState?: WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState;
+  desiredState?:
+    | WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState
+    | (string & {});
 }
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentity =
   /*@__PURE__*/ S.suspend(() =>
@@ -11227,13 +11224,13 @@ export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest =
 
 /** Desired state */
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
-  "Enabled" | "Disabled" | (string & {});
+  "Enabled" | "Disabled";
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
   /*@__PURE__*/ S.String;
 
 /** Actual state */
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityActualState =
-  "Enabling" | "Enabled" | "Disabling" | "Disabled" | "Unknown" | (string & {});
+  "Enabling" | "Enabled" | "Disabling" | "Disabled" | "Unknown";
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityActualState =
   /*@__PURE__*/ S.String;
 
@@ -11329,13 +11326,13 @@ export const WorkspaceManagedIdentitySqlControlSettingsGetRequest =
 
 /** Desired state */
 export type WorkspaceManagedIdentitySqlControlSettingsGetResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
-  "Enabled" | "Disabled" | (string & {});
+  "Enabled" | "Disabled";
 export const WorkspaceManagedIdentitySqlControlSettingsGetResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
   /*@__PURE__*/ S.String;
 
 /** Actual state */
 export type WorkspaceManagedIdentitySqlControlSettingsGetResponsePropertiesGrantSqlControlToManagedIdentityActualState =
-  "Enabling" | "Enabled" | "Disabling" | "Disabled" | "Unknown" | (string & {});
+  "Enabling" | "Enabled" | "Disabling" | "Disabled" | "Unknown";
 export const WorkspaceManagedIdentitySqlControlSettingsGetResponsePropertiesGrantSqlControlToManagedIdentityActualState =
   /*@__PURE__*/ S.String;
 
@@ -11403,15 +11400,12 @@ export const WorkspaceManagedIdentitySqlControlSettingsGetResponse =
   }) as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsGetResponse>;
 
 export type WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
-  "default" | (string & {});
+  "default";
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-export type ServerBlobAuditingPolicyPropertiesState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type ServerBlobAuditingPolicyPropertiesState = "Enabled" | "Disabled";
 export const ServerBlobAuditingPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
@@ -11472,7 +11466,9 @@ export interface WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequ
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName: WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
+  blobAuditingPolicyName:
+    | WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
+    | (string & {});
   /** Resource properties. */
   properties?: ServerBlobAuditingPolicyProperties;
 }
@@ -11524,7 +11520,7 @@ export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse
   }) as any as S.Schema<WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type WorkspaceManagedSqlServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
-  "default" | (string & {});
+  "default";
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -11536,7 +11532,9 @@ export interface WorkspaceManagedSqlServerBlobAuditingPoliciesGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName: WorkspaceManagedSqlServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
+  blobAuditingPolicyName:
+    | WorkspaceManagedSqlServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
+    | (string & {});
 }
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -11803,7 +11801,7 @@ export const DedicatedSQLminimalTlsSettingsListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DedicatedSQLminimalTlsSettingsListResult>;
 
 export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateRequestDedicatedSQLminimalTlsSettingsName =
-  "default" | (string & {});
+  "default";
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateRequestDedicatedSQLminimalTlsSettingsName =
   /*@__PURE__*/ S.String;
 
@@ -11815,7 +11813,9 @@ export interface WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateRe
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the dedicated sql minimal tls settings. */
-  dedicatedSQLminimalTlsSettingsName: WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateRequestDedicatedSQLminimalTlsSettingsName;
+  dedicatedSQLminimalTlsSettingsName:
+    | WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateRequestDedicatedSQLminimalTlsSettingsName
+    | (string & {});
   /** Resource properties. */
   properties?: DedicatedSQLminimalTlsSettingsProperties;
 }
@@ -11870,15 +11870,14 @@ export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateRespon
   }) as any as S.Schema<WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateResponse>;
 
 export type WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequestEncryptionProtectorName =
-  "current" | (string & {});
+  "current";
 export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type EncryptionProtectorPropertiesInputServerKeyType =
   | "ServiceManaged"
-  | "AzureKeyVault"
-  | (string & {});
+  | "AzureKeyVault";
 export const EncryptionProtectorPropertiesInputServerKeyType =
   /*@__PURE__*/ S.String;
 
@@ -11887,7 +11886,9 @@ export interface EncryptionProtectorPropertiesInput {
   /** The name of the server key. */
   serverKeyName?: string;
   /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
-  serverKeyType: EncryptionProtectorPropertiesInputServerKeyType;
+  serverKeyType:
+    | EncryptionProtectorPropertiesInputServerKeyType
+    | (string & {});
 }
 export const EncryptionProtectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11906,7 +11907,9 @@ export interface WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateReque
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the encryption protector. */
-  encryptionProtectorName: WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequestEncryptionProtectorName;
+  encryptionProtectorName:
+    | WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequestEncryptionProtectorName
+    | (string & {});
   /** Resource properties. */
   properties?: EncryptionProtectorPropertiesInput;
 }
@@ -11937,8 +11940,7 @@ export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequest =
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type EncryptionProtectorPropertiesServerKeyType =
   | "ServiceManaged"
-  | "AzureKeyVault"
-  | (string & {});
+  | "AzureKeyVault";
 export const EncryptionProtectorPropertiesServerKeyType =
   /*@__PURE__*/ S.String;
 
@@ -11997,7 +11999,7 @@ export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse 
   }) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse>;
 
 export type WorkspaceManagedSqlServerEncryptionProtectorGetRequestEncryptionProtectorName =
-  "current" | (string & {});
+  "current";
 export const WorkspaceManagedSqlServerEncryptionProtectorGetRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
@@ -12009,7 +12011,9 @@ export interface WorkspaceManagedSqlServerEncryptionProtectorGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the encryption protector. */
-  encryptionProtectorName: WorkspaceManagedSqlServerEncryptionProtectorGetRequestEncryptionProtectorName;
+  encryptionProtectorName:
+    | WorkspaceManagedSqlServerEncryptionProtectorGetRequestEncryptionProtectorName
+    | (string & {});
 }
 export const WorkspaceManagedSqlServerEncryptionProtectorGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12139,7 +12143,7 @@ export const EncryptionProtectorListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionProtectorListResult>;
 
 export type WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName =
-  "current" | (string & {});
+  "current";
 export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
@@ -12151,7 +12155,9 @@ export interface WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the encryption protector. */
-  encryptionProtectorName: WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName;
+  encryptionProtectorName:
+    | WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName
+    | (string & {});
 }
 export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12183,15 +12189,14 @@ export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateResponse =
   }) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorRevalidateResponse>;
 
 export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
-  "default" | (string & {});
+  "default";
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
 export type ExtendedServerBlobAuditingPolicyPropertiesState =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ExtendedServerBlobAuditingPolicyPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -12257,7 +12262,9 @@ export interface WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUp
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName: WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
+  blobAuditingPolicyName:
+    | WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
+    | (string & {});
   /** Resource properties. */
   properties?: ExtendedServerBlobAuditingPolicyProperties;
 }
@@ -12309,7 +12316,7 @@ export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdate
   }) as any as S.Schema<WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
-  "default" | (string & {});
+  "default";
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -12321,7 +12328,9 @@ export interface WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetRequest
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName: WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
+  blobAuditingPolicyName:
+    | WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
+    | (string & {});
 }
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12588,7 +12597,7 @@ export const RecoverableSqlPoolListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoverableSqlPoolListResult>;
 
 export type WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSecurityAlertPolicyName =
-  "Default" | (string & {});
+  "Default";
 export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -12596,8 +12605,7 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSe
 export type ServerSecurityAlertPolicyPropertiesInputState =
   | "New"
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ServerSecurityAlertPolicyPropertiesInputState =
   /*@__PURE__*/ S.String;
 
@@ -12620,7 +12628,7 @@ export const ServerSecurityAlertPolicyPropertiesInputEmailAddressesList =
 /** Properties of a security alert policy. */
 export interface ServerSecurityAlertPolicyPropertiesInput {
   /** Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific server */
-  state: ServerSecurityAlertPolicyPropertiesInputState;
+  state: ServerSecurityAlertPolicyPropertiesInputState | (string & {});
   /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
   disabledAlerts?: ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList;
   /** Specifies an array of e-mail addresses to which the alert is sent. */
@@ -12661,7 +12669,9 @@ export interface WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateReque
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName: WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSecurityAlertPolicyName;
+  securityAlertPolicyName:
+    | WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSecurityAlertPolicyName
+    | (string & {});
   /** Resource properties. */
   properties?: ServerSecurityAlertPolicyPropertiesInput;
 }
@@ -12693,8 +12703,7 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequest =
 export type ServerSecurityAlertPolicyPropertiesState =
   | "New"
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ServerSecurityAlertPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
@@ -12775,7 +12784,7 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse 
   }) as any as S.Schema<WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse>;
 
 export type WorkspaceManagedSqlServerSecurityAlertPolicyGetRequestSecurityAlertPolicyName =
-  "Default" | (string & {});
+  "Default";
 export const WorkspaceManagedSqlServerSecurityAlertPolicyGetRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -12787,7 +12796,9 @@ export interface WorkspaceManagedSqlServerSecurityAlertPolicyGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName: WorkspaceManagedSqlServerSecurityAlertPolicyGetRequestSecurityAlertPolicyName;
+  securityAlertPolicyName:
+    | WorkspaceManagedSqlServerSecurityAlertPolicyGetRequestSecurityAlertPolicyName
+    | (string & {});
 }
 export const WorkspaceManagedSqlServerSecurityAlertPolicyGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12983,7 +12994,7 @@ export const ServerUsageListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerUsageListResult>;
 
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -13020,7 +13031,9 @@ export interface WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdate
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName
+    | (string & {});
   /** Resource properties. */
   properties?: ServerVulnerabilityAssessmentProperties;
 }
@@ -13072,7 +13085,7 @@ export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateResp
   }) as any as S.Schema<WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateResponse>;
 
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -13084,7 +13097,9 @@ export interface WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteRequest 
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName
+    | (string & {});
 }
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -13117,7 +13132,7 @@ export const WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteResponse =
   }) as any as S.Schema<WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteResponse>;
 
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
-  "default" | (string & {});
+  "default";
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -13129,7 +13144,9 @@ export interface WorkspaceManagedSqlServerVulnerabilityAssessmentsGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName: WorkspaceManagedSqlServerVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName;
+  vulnerabilityAssessmentName:
+    | WorkspaceManagedSqlServerVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName
+    | (string & {});
 }
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -13457,8 +13474,7 @@ export const PurviewConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** Enable or Disable public network access to workspace */
 export type WorkspacePropertiesInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const WorkspacePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -13500,7 +13516,9 @@ export interface WorkspacePropertiesInput {
   /** Purview Configuration */
   purviewConfiguration?: PurviewConfiguration;
   /** Enable or Disable public network access to workspace */
-  publicNetworkAccess?: WorkspacePropertiesInputPublicNetworkAccess;
+  publicNetworkAccess?:
+    | WorkspacePropertiesInputPublicNetworkAccess
+    | (string & {});
   /** Initial workspace AAD admin properties for a CSP subscription */
   cspWorkspaceAdminProperties?: CspWorkspaceAdminProperties;
   /** Enable or Disable AzureADOnlyAuthentication on All Workspace subresource */
@@ -13542,8 +13560,7 @@ export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type ManagedIdentityInputType =
   | "None"
   | "SystemAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedIdentityInputType = /*@__PURE__*/ S.String;
 
 /** User Assigned Managed Identity */
@@ -13566,7 +13583,7 @@ export const UserAssignedManagedIdentitiesInput = /*@__PURE__*/ S.Record(
 /** The workspace managed identity */
 export interface ManagedIdentityInput {
   /** The type of managed identity for the workspace */
-  type?: ManagedIdentityInputType;
+  type?: ManagedIdentityInputType | (string & {});
   /** The user assigned managed identities. */
   userAssignedIdentities?: UserAssignedManagedIdentitiesInput;
 }
@@ -13702,10 +13719,7 @@ export const EncryptionDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionDetails>;
 
 /** Enable or Disable public network access to workspace */
-export type WorkspacePropertiesPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type WorkspacePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const WorkspacePropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Workspace settings */
@@ -13802,8 +13816,7 @@ export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
 export type ManagedIdentityType =
   | "None"
   | "SystemAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedIdentityType = /*@__PURE__*/ S.String;
 
 /** User Assigned Managed Identity */
@@ -14252,8 +14265,7 @@ export const WorkspacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Enable or Disable public network access to workspace */
 export type WorkspacePatchPropertiesInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const WorkspacePatchPropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -14270,7 +14282,9 @@ export interface WorkspacePatchPropertiesInput {
   /** The encryption details of the workspace */
   encryption?: EncryptionDetailsInput;
   /** Enable or Disable public network access to workspace */
-  publicNetworkAccess?: WorkspacePatchPropertiesInputPublicNetworkAccess;
+  publicNetworkAccess?:
+    | WorkspacePatchPropertiesInputPublicNetworkAccess
+    | (string & {});
 }
 export const WorkspacePatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

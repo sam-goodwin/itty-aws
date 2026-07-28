@@ -13,155 +13,54 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type CustomFloodlightVariableTypeEnum =
-  | "U1"
-  | "U2"
-  | "U3"
-  | "U4"
-  | "U5"
-  | "U6"
-  | "U7"
-  | "U8"
-  | "U9"
-  | "U10"
-  | "U11"
-  | "U12"
-  | "U13"
-  | "U14"
-  | "U15"
-  | "U16"
-  | "U17"
-  | "U18"
-  | "U19"
-  | "U20"
-  | "U21"
-  | "U22"
-  | "U23"
-  | "U24"
-  | "U25"
-  | "U26"
-  | "U27"
-  | "U28"
-  | "U29"
-  | "U30"
-  | "U31"
-  | "U32"
-  | "U33"
-  | "U34"
-  | "U35"
-  | "U36"
-  | "U37"
-  | "U38"
-  | "U39"
-  | "U40"
-  | "U41"
-  | "U42"
-  | "U43"
-  | "U44"
-  | "U45"
-  | "U46"
-  | "U47"
-  | "U48"
-  | "U49"
-  | "U50"
-  | "U51"
-  | "U52"
-  | "U53"
-  | "U54"
-  | "U55"
-  | "U56"
-  | "U57"
-  | "U58"
-  | "U59"
-  | "U60"
-  | "U61"
-  | "U62"
-  | "U63"
-  | "U64"
-  | "U65"
-  | "U66"
-  | "U67"
-  | "U68"
-  | "U69"
-  | "U70"
-  | "U71"
-  | "U72"
-  | "U73"
-  | "U74"
-  | "U75"
-  | "U76"
-  | "U77"
-  | "U78"
-  | "U79"
-  | "U80"
-  | "U81"
-  | "U82"
-  | "U83"
-  | "U84"
-  | "U85"
-  | "U86"
-  | "U87"
-  | "U88"
-  | "U89"
-  | "U90"
-  | "U91"
-  | "U92"
-  | "U93"
-  | "U94"
-  | "U95"
-  | "U96"
-  | "U97"
-  | "U98"
-  | "U99"
-  | "U100"
-  | (string & {});
+export type CustomFloodlightVariableTypeEnum = "U1" | "U2" | "U3" | "U4" | "U5" | "U6" | "U7" | "U8" | "U9" | "U10" | "U11" | "U12" | "U13" | "U14" | "U15" | "U16" | "U17" | "U18" | "U19" | "U20" | "U21" | "U22" | "U23" | "U24" | "U25" | "U26" | "U27" | "U28" | "U29" | "U30" | "U31" | "U32" | "U33" | "U34" | "U35" | "U36" | "U37" | "U38" | "U39" | "U40" | "U41" | "U42" | "U43" | "U44" | "U45" | "U46" | "U47" | "U48" | "U49" | "U50" | "U51" | "U52" | "U53" | "U54" | "U55" | "U56" | "U57" | "U58" | "U59" | "U60" | "U61" | "U62" | "U63" | "U64" | "U65" | "U66" | "U67" | "U68" | "U69" | "U70" | "U71" | "U72" | "U73" | "U74" | "U75" | "U76" | "U77" | "U78" | "U79" | "U80" | "U81" | "U82" | "U83" | "U84" | "U85" | "U86" | "U87" | "U88" | "U89" | "U90" | "U91" | "U92" | "U93" | "U94" | "U95" | "U96" | "U97" | "U98" | "U99" | "U100";
 export const CustomFloodlightVariableTypeEnum = /*@__PURE__*/ S.String;
 
 /** A custom floodlight variable. Can be used in both batchinsert and batchupdate. Adding this in batchupdate will update or append the variable to the existing list. */
@@ -174,25 +73,17 @@ export interface CustomFloodlightVariable {
   type?: CustomFloodlightVariableTypeEnum;
 }
 export const CustomFloodlightVariable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(CustomFloodlightVariableTypeEnum),
-  }),
-).annotate({
-  identifier: "CustomFloodlightVariable",
-}) as any as S.Schema<CustomFloodlightVariable>;
+S.Struct({
+  "value": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "type": S.optional(CustomFloodlightVariableTypeEnum),
+}),
+).annotate({ identifier: "CustomFloodlightVariable" }) as any as S.Schema<CustomFloodlightVariable>;
 
-export type CustomFloodlightVariableList =
-  ReadonlyArray<CustomFloodlightVariable>;
-export const CustomFloodlightVariableList = /*@__PURE__*/ S.Array(
-  CustomFloodlightVariable,
-) as any as S.Schema<CustomFloodlightVariableList>;
+export type CustomFloodlightVariableList = ReadonlyArray<CustomFloodlightVariable>;
+export const CustomFloodlightVariableList = /*@__PURE__*/ S.Array(CustomFloodlightVariable) as any as S.Schema<CustomFloodlightVariableList>;
 
-export type ConversionAdUserDataConsentEnum =
-  | "GRANTED"
-  | "DENIED"
-  | (string & {});
+export type ConversionAdUserDataConsentEnum = "GRANTED" | "DENIED";
 export const ConversionAdUserDataConsentEnum = /*@__PURE__*/ S.String;
 
 /** Identify a user by name and address. */
@@ -213,18 +104,16 @@ export interface OfflineUserAddressInfo {
   state?: string;
 }
 export const OfflineUserAddressInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hashedStreetAddress: S.optional(S.String),
-    countryCode: S.optional(S.String),
-    hashedLastName: S.optional(S.String),
-    city: S.optional(S.String),
-    hashedFirstName: S.optional(S.String),
-    postalCode: S.optional(S.String),
-    state: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OfflineUserAddressInfo",
-}) as any as S.Schema<OfflineUserAddressInfo>;
+S.Struct({
+  "hashedStreetAddress": S.optional(S.String),
+  "countryCode": S.optional(S.String),
+  "hashedLastName": S.optional(S.String),
+  "city": S.optional(S.String),
+  "hashedFirstName": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+  "state": S.optional(S.String),
+}),
+).annotate({ identifier: "OfflineUserAddressInfo" }) as any as S.Schema<OfflineUserAddressInfo>;
 
 /** User identifying information. Exactly one type of identifier must be specified. */
 export interface UserIdentifier {
@@ -236,17 +125,15 @@ export interface UserIdentifier {
   hashedEmail?: string;
 }
 export const UserIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hashedPhoneNumber: S.optional(S.String),
-    addressInfo: S.optional(OfflineUserAddressInfo),
-    hashedEmail: S.optional(S.String),
-  }),
+S.Struct({
+  "hashedPhoneNumber": S.optional(S.String),
+  "addressInfo": S.optional(OfflineUserAddressInfo),
+  "hashedEmail": S.optional(S.String),
+}),
 ).annotate({ identifier: "UserIdentifier" }) as any as S.Schema<UserIdentifier>;
 
 export type UserIdentifierList = ReadonlyArray<UserIdentifier>;
-export const UserIdentifierList = /*@__PURE__*/ S.Array(
-  UserIdentifier,
-) as any as S.Schema<UserIdentifierList>;
+export const UserIdentifierList = /*@__PURE__*/ S.Array(UserIdentifier) as any as S.Schema<UserIdentifierList>;
 
 /** Contains data of the items purchased. */
 export interface CartDataItem {
@@ -258,17 +145,15 @@ export interface CartDataItem {
   unitPrice?: number;
 }
 export const CartDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemId: S.optional(S.String),
-    quantity: S.optional(S.Number),
-    unitPrice: S.optional(S.Number),
-  }),
+S.Struct({
+  "itemId": S.optional(S.String),
+  "quantity": S.optional(S.Number),
+  "unitPrice": S.optional(S.Number),
+}),
 ).annotate({ identifier: "CartDataItem" }) as any as S.Schema<CartDataItem>;
 
 export type CartDataItemList = ReadonlyArray<CartDataItem>;
-export const CartDataItemList = /*@__PURE__*/ S.Array(
-  CartDataItem,
-) as any as S.Schema<CartDataItemList>;
+export const CartDataItemList = /*@__PURE__*/ S.Array(CartDataItem) as any as S.Schema<CartDataItemList>;
 
 /** Contains additional information about cart data. This field may only be used when calling batchinsert; it is not supported by batchupdate. Cart data reporting is only supported in SA360. [Learn more](https://support.google.com/sa360/topic/13425788) */
 export interface CartData {
@@ -282,18 +167,16 @@ export interface CartData {
   merchantId?: string;
 }
 export const CartData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantFeedLabel: S.optional(S.String),
-    merchantFeedLanguage: S.optional(S.String),
-    items: S.optional(CartDataItemList),
-    merchantId: S.optional(S.String),
-  }),
+S.Struct({
+  "merchantFeedLabel": S.optional(S.String),
+  "merchantFeedLanguage": S.optional(S.String),
+  "items": S.optional(CartDataItemList),
+  "merchantId": S.optional(S.String),
+}),
 ).annotate({ identifier: "CartData" }) as any as S.Schema<CartData>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A Conversion represents when a user successfully performs a desired action after seeing an ad. */
 export interface Conversion {
@@ -345,54 +228,40 @@ export interface Conversion {
   floodlightConfigurationId?: string;
 }
 export const Conversion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limitAdTracking: S.optional(S.Boolean),
-    encryptedUserId: S.optional(S.String),
-    customVariables: S.optional(CustomFloodlightVariableList),
-    value: S.optional(S.Number),
-    quantity: S.optional(S.String),
-    adUserDataConsent: S.optional(ConversionAdUserDataConsentEnum),
-    floodlightActivityId: S.optional(S.String),
-    kind: S.optional(S.String),
-    mobileDeviceId: S.optional(S.String),
-    timestampMicros: S.optional(S.String),
-    userIdentifiers: S.optional(UserIdentifierList),
-    cartData: S.optional(CartData),
-    childDirectedTreatment: S.optional(S.Boolean),
-    encryptedUserIdCandidates: S.optional(StringList),
-    sessionAttributesEncoded: S.optional(S.String),
-    gclid: S.optional(S.String),
-    matchId: S.optional(S.String),
-    nonPersonalizedAd: S.optional(S.Boolean),
-    dclid: S.optional(S.String),
-    ordinal: S.optional(S.String),
-    impressionId: S.optional(S.String),
-    treatmentForUnderage: S.optional(S.Boolean),
-    floodlightConfigurationId: S.optional(S.String),
-  }),
+S.Struct({
+  "limitAdTracking": S.optional(S.Boolean),
+  "encryptedUserId": S.optional(S.String),
+  "customVariables": S.optional(CustomFloodlightVariableList),
+  "value": S.optional(S.Number),
+  "quantity": S.optional(S.String),
+  "adUserDataConsent": S.optional(ConversionAdUserDataConsentEnum),
+  "floodlightActivityId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "mobileDeviceId": S.optional(S.String),
+  "timestampMicros": S.optional(S.String),
+  "userIdentifiers": S.optional(UserIdentifierList),
+  "cartData": S.optional(CartData),
+  "childDirectedTreatment": S.optional(S.Boolean),
+  "encryptedUserIdCandidates": S.optional(StringList),
+  "sessionAttributesEncoded": S.optional(S.String),
+  "gclid": S.optional(S.String),
+  "matchId": S.optional(S.String),
+  "nonPersonalizedAd": S.optional(S.Boolean),
+  "dclid": S.optional(S.String),
+  "ordinal": S.optional(S.String),
+  "impressionId": S.optional(S.String),
+  "treatmentForUnderage": S.optional(S.Boolean),
+  "floodlightConfigurationId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Conversion" }) as any as S.Schema<Conversion>;
 
 export type ConversionList = ReadonlyArray<Conversion>;
-export const ConversionList = /*@__PURE__*/ S.Array(
-  Conversion,
-) as any as S.Schema<ConversionList>;
+export const ConversionList = /*@__PURE__*/ S.Array(Conversion) as any as S.Schema<ConversionList>;
 
-export type EncryptionInfoEncryptionEntityTypeEnum =
-  | "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
-  | "DCM_ACCOUNT"
-  | "DCM_ADVERTISER"
-  | "DBM_PARTNER"
-  | "DBM_ADVERTISER"
-  | "ADWORDS_CUSTOMER"
-  | "DFP_NETWORK_CODE"
-  | (string & {});
+export type EncryptionInfoEncryptionEntityTypeEnum = "ENCRYPTION_ENTITY_TYPE_UNKNOWN" | "DCM_ACCOUNT" | "DCM_ADVERTISER" | "DBM_PARTNER" | "DBM_ADVERTISER" | "ADWORDS_CUSTOMER" | "DFP_NETWORK_CODE";
 export const EncryptionInfoEncryptionEntityTypeEnum = /*@__PURE__*/ S.String;
 
-export type EncryptionInfoEncryptionSourceEnum =
-  | "ENCRYPTION_SCOPE_UNKNOWN"
-  | "AD_SERVING"
-  | "DATA_TRANSFER"
-  | (string & {});
+export type EncryptionInfoEncryptionSourceEnum = "ENCRYPTION_SCOPE_UNKNOWN" | "AD_SERVING" | "DATA_TRANSFER";
 export const EncryptionInfoEncryptionSourceEnum = /*@__PURE__*/ S.String;
 
 /** A description of how user IDs are encrypted. */
@@ -400,19 +269,19 @@ export interface EncryptionInfo {
   /** The encryption entity ID. This should match the encryption configuration for ad serving or Data Transfer. */
   encryptionEntityId?: string;
   /** The encryption entity type. This should match the encryption configuration for ad serving or Data Transfer. */
-  encryptionEntityType?: EncryptionInfoEncryptionEntityTypeEnum;
+  encryptionEntityType?: EncryptionInfoEncryptionEntityTypeEnum | (string & {});
   /** Describes whether the encrypted cookie was received from ad serving (the %m macro) or from Data Transfer. */
-  encryptionSource?: EncryptionInfoEncryptionSourceEnum;
+  encryptionSource?: EncryptionInfoEncryptionSourceEnum | (string & {});
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#encryptionInfo". */
   kind?: string;
 }
 export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionEntityId: S.optional(S.String),
-    encryptionEntityType: S.optional(EncryptionInfoEncryptionEntityTypeEnum),
-    encryptionSource: S.optional(EncryptionInfoEncryptionSourceEnum),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "encryptionEntityId": S.optional(S.String),
+  "encryptionEntityType": S.optional(EncryptionInfoEncryptionEntityTypeEnum),
+  "encryptionSource": S.optional(EncryptionInfoEncryptionSourceEnum),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "EncryptionInfo" }) as any as S.Schema<EncryptionInfo>;
 
 /** Insert Conversions Request. */
@@ -425,14 +294,12 @@ export interface ConversionsBatchInsertRequest {
   encryptionInfo?: EncryptionInfo;
 }
 export const ConversionsBatchInsertRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    conversions: S.optional(ConversionList),
-    encryptionInfo: S.optional(EncryptionInfo),
-  }),
-).annotate({
-  identifier: "ConversionsBatchInsertRequest",
-}) as any as S.Schema<ConversionsBatchInsertRequest>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "conversions": S.optional(ConversionList),
+  "encryptionInfo": S.optional(EncryptionInfo),
+}),
+).annotate({ identifier: "ConversionsBatchInsertRequest" }) as any as S.Schema<ConversionsBatchInsertRequest>;
 
 export interface BatchinsertConversionsRequest {
   /** User profile ID associated with this request. */
@@ -441,26 +308,13 @@ export interface BatchinsertConversionsRequest {
   body?: ConversionsBatchInsertRequest;
 }
 export const BatchinsertConversionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(ConversionsBatchInsertRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{profileId}/conversions/batchinsert",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchinsertConversionsRequest",
-}) as any as S.Schema<BatchinsertConversionsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(ConversionsBatchInsertRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{profileId}/conversions/batchinsert","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "BatchinsertConversionsRequest" }) as any as S.Schema<BatchinsertConversionsRequest>;
 
-export type ConversionErrorCodeEnum =
-  | "INVALID_ARGUMENT"
-  | "INTERNAL"
-  | "PERMISSION_DENIED"
-  | "NOT_FOUND"
-  | (string & {});
+export type ConversionErrorCodeEnum = "INVALID_ARGUMENT" | "INTERNAL" | "PERMISSION_DENIED" | "NOT_FOUND";
 export const ConversionErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** The error code and description for a conversion that failed to insert or update. */
@@ -473,19 +327,15 @@ export interface ConversionError {
   code?: ConversionErrorCodeEnum;
 }
 export const ConversionError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    kind: S.optional(S.String),
-    code: S.optional(ConversionErrorCodeEnum),
-  }),
-).annotate({
-  identifier: "ConversionError",
-}) as any as S.Schema<ConversionError>;
+S.Struct({
+  "message": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "code": S.optional(ConversionErrorCodeEnum),
+}),
+).annotate({ identifier: "ConversionError" }) as any as S.Schema<ConversionError>;
 
 export type ConversionErrorList = ReadonlyArray<ConversionError>;
-export const ConversionErrorList = /*@__PURE__*/ S.Array(
-  ConversionError,
-) as any as S.Schema<ConversionErrorList>;
+export const ConversionErrorList = /*@__PURE__*/ S.Array(ConversionError) as any as S.Schema<ConversionErrorList>;
 
 /** The original conversion that was inserted or updated and whether there were any errors. */
 export interface ConversionStatus {
@@ -497,19 +347,15 @@ export interface ConversionStatus {
   conversion?: Conversion;
 }
 export const ConversionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(ConversionErrorList),
-    kind: S.optional(S.String),
-    conversion: S.optional(Conversion),
-  }),
-).annotate({
-  identifier: "ConversionStatus",
-}) as any as S.Schema<ConversionStatus>;
+S.Struct({
+  "errors": S.optional(ConversionErrorList),
+  "kind": S.optional(S.String),
+  "conversion": S.optional(Conversion),
+}),
+).annotate({ identifier: "ConversionStatus" }) as any as S.Schema<ConversionStatus>;
 
 export type ConversionStatusList = ReadonlyArray<ConversionStatus>;
-export const ConversionStatusList = /*@__PURE__*/ S.Array(
-  ConversionStatus,
-) as any as S.Schema<ConversionStatusList>;
+export const ConversionStatusList = /*@__PURE__*/ S.Array(ConversionStatus) as any as S.Schema<ConversionStatusList>;
 
 /** Insert Conversions Response. */
 export interface ConversionsBatchInsertResponse {
@@ -521,14 +367,12 @@ export interface ConversionsBatchInsertResponse {
   kind?: string;
 }
 export const ConversionsBatchInsertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hasFailures: S.optional(S.Boolean),
-    status: S.optional(ConversionStatusList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConversionsBatchInsertResponse",
-}) as any as S.Schema<ConversionsBatchInsertResponse>;
+S.Struct({
+  "hasFailures": S.optional(S.Boolean),
+  "status": S.optional(ConversionStatusList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ConversionsBatchInsertResponse" }) as any as S.Schema<ConversionsBatchInsertResponse>;
 
 /** Update Conversions Request. */
 export interface ConversionsBatchUpdateRequest {
@@ -540,14 +384,12 @@ export interface ConversionsBatchUpdateRequest {
   encryptionInfo?: EncryptionInfo;
 }
 export const ConversionsBatchUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversions: S.optional(ConversionList),
-    kind: S.optional(S.String),
-    encryptionInfo: S.optional(EncryptionInfo),
-  }),
-).annotate({
-  identifier: "ConversionsBatchUpdateRequest",
-}) as any as S.Schema<ConversionsBatchUpdateRequest>;
+S.Struct({
+  "conversions": S.optional(ConversionList),
+  "kind": S.optional(S.String),
+  "encryptionInfo": S.optional(EncryptionInfo),
+}),
+).annotate({ identifier: "ConversionsBatchUpdateRequest" }) as any as S.Schema<ConversionsBatchUpdateRequest>;
 
 export interface BatchupdateConversionsRequest {
   /** User profile ID associated with this request. */
@@ -556,19 +398,11 @@ export interface BatchupdateConversionsRequest {
   body?: ConversionsBatchUpdateRequest;
 }
 export const BatchupdateConversionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(ConversionsBatchUpdateRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{profileId}/conversions/batchupdate",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchupdateConversionsRequest",
-}) as any as S.Schema<BatchupdateConversionsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(ConversionsBatchUpdateRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{profileId}/conversions/batchupdate","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "BatchupdateConversionsRequest" }) as any as S.Schema<BatchupdateConversionsRequest>;
 
 /** Update Conversions Response. */
 export interface ConversionsBatchUpdateResponse {
@@ -580,14 +414,12 @@ export interface ConversionsBatchUpdateResponse {
   kind?: string;
 }
 export const ConversionsBatchUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hasFailures: S.optional(S.Boolean),
-    status: S.optional(ConversionStatusList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConversionsBatchUpdateResponse",
-}) as any as S.Schema<ConversionsBatchUpdateResponse>;
+S.Struct({
+  "hasFailures": S.optional(S.Boolean),
+  "status": S.optional(ConversionStatusList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ConversionsBatchUpdateResponse" }) as any as S.Schema<ConversionsBatchUpdateResponse>;
 
 export interface DeleteAdvertiserGroupsRequest {
   /** User profile ID associated with this request. */
@@ -596,26 +428,16 @@ export interface DeleteAdvertiserGroupsRequest {
   id: string;
 }
 export const DeleteAdvertiserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "userprofiles/{+profileId}/advertiserGroups/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAdvertiserGroupsRequest",
-}) as any as S.Schema<DeleteAdvertiserGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"userprofiles/{+profileId}/advertiserGroups/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "DeleteAdvertiserGroupsRequest" }) as any as S.Schema<DeleteAdvertiserGroupsRequest>;
 
 export interface DeleteAdvertiserGroupsResponse {}
 export const DeleteAdvertiserGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAdvertiserGroupsResponse",
-}) as any as S.Schema<DeleteAdvertiserGroupsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteAdvertiserGroupsResponse" }) as any as S.Schema<DeleteAdvertiserGroupsResponse>;
 
 export interface DeleteContentCategoriesRequest {
   /** User profile ID associated with this request. */
@@ -624,26 +446,16 @@ export interface DeleteContentCategoriesRequest {
   id: string;
 }
 export const DeleteContentCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "userprofiles/{+profileId}/contentCategories/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteContentCategoriesRequest",
-}) as any as S.Schema<DeleteContentCategoriesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"userprofiles/{+profileId}/contentCategories/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "DeleteContentCategoriesRequest" }) as any as S.Schema<DeleteContentCategoriesRequest>;
 
 export interface DeleteContentCategoriesResponse {}
 export const DeleteContentCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteContentCategoriesResponse",
-}) as any as S.Schema<DeleteContentCategoriesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteContentCategoriesResponse" }) as any as S.Schema<DeleteContentCategoriesResponse>;
 
 export interface DeleteCreativeFieldsRequest {
   /** User profile ID associated with this request. */
@@ -652,26 +464,16 @@ export interface DeleteCreativeFieldsRequest {
   id: string;
 }
 export const DeleteCreativeFieldsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "userprofiles/{+profileId}/creativeFields/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteCreativeFieldsRequest",
-}) as any as S.Schema<DeleteCreativeFieldsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"userprofiles/{+profileId}/creativeFields/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "DeleteCreativeFieldsRequest" }) as any as S.Schema<DeleteCreativeFieldsRequest>;
 
 export interface DeleteCreativeFieldsResponse {}
 export const DeleteCreativeFieldsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCreativeFieldsResponse",
-}) as any as S.Schema<DeleteCreativeFieldsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteCreativeFieldsResponse" }) as any as S.Schema<DeleteCreativeFieldsResponse>;
 
 export interface DeleteCreativeFieldValuesRequest {
   /** Creative field ID for this creative field value. */
@@ -682,34 +484,19 @@ export interface DeleteCreativeFieldValuesRequest {
   id: string;
 }
 export const DeleteCreativeFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeFieldId: S.String.pipe(T.Label()),
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteCreativeFieldValuesRequest",
-}) as any as S.Schema<DeleteCreativeFieldValuesRequest>;
+S.Struct({
+  "creativeFieldId": S.String.pipe(T.Label()),
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "DeleteCreativeFieldValuesRequest" }) as any as S.Schema<DeleteCreativeFieldValuesRequest>;
 
 export interface DeleteCreativeFieldValuesResponse {}
 export const DeleteCreativeFieldValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCreativeFieldValuesResponse",
-}) as any as S.Schema<DeleteCreativeFieldValuesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteCreativeFieldValuesResponse" }) as any as S.Schema<DeleteCreativeFieldValuesResponse>;
 
-export type DeleteDynamicTargetingKeysObjectTypeEnum =
-  | "OBJECT_ADVERTISER"
-  | "OBJECT_AD"
-  | "OBJECT_CREATIVE"
-  | "OBJECT_PLACEMENT"
-  | (string & {});
+export type DeleteDynamicTargetingKeysObjectTypeEnum = "OBJECT_ADVERTISER" | "OBJECT_AD" | "OBJECT_CREATIVE" | "OBJECT_PLACEMENT";
 export const DeleteDynamicTargetingKeysObjectTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteDynamicTargetingKeysRequest {
@@ -720,31 +507,21 @@ export interface DeleteDynamicTargetingKeysRequest {
   /** Required. Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and cannot contain commas. All characters are converted to lowercase. */
   name: string;
   /** Required. Type of the object of this dynamic targeting key. This is a required field. */
-  objectType: DeleteDynamicTargetingKeysObjectTypeEnum;
+  objectType: DeleteDynamicTargetingKeysObjectTypeEnum | (string & {});
 }
 export const DeleteDynamicTargetingKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.String.pipe(T.Label()),
-    profileId: S.String.pipe(T.Label()),
-    name: S.String.pipe(T.Query()),
-    objectType: DeleteDynamicTargetingKeysObjectTypeEnum.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "userprofiles/{+profileId}/dynamicTargetingKeys/{+objectId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteDynamicTargetingKeysRequest",
-}) as any as S.Schema<DeleteDynamicTargetingKeysRequest>;
+S.Struct({
+  "objectId": S.String.pipe(T.Label()),
+  "profileId": S.String.pipe(T.Label()),
+  "name": S.String.pipe(T.Query()),
+  "objectType": DeleteDynamicTargetingKeysObjectTypeEnum.pipe(T.Query()),
+}).pipe(T.Http({"method":"DELETE","uri":"userprofiles/{+profileId}/dynamicTargetingKeys/{+objectId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "DeleteDynamicTargetingKeysRequest" }) as any as S.Schema<DeleteDynamicTargetingKeysRequest>;
 
 export interface DeleteDynamicTargetingKeysResponse {}
 export const DeleteDynamicTargetingKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDynamicTargetingKeysResponse",
-}) as any as S.Schema<DeleteDynamicTargetingKeysResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteDynamicTargetingKeysResponse" }) as any as S.Schema<DeleteDynamicTargetingKeysResponse>;
 
 export interface DeleteEventTagsRequest {
   /** User profile ID associated with this request. */
@@ -753,26 +530,16 @@ export interface DeleteEventTagsRequest {
   id: string;
 }
 export const DeleteEventTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "userprofiles/{+profileId}/eventTags/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteEventTagsRequest",
-}) as any as S.Schema<DeleteEventTagsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"userprofiles/{+profileId}/eventTags/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "DeleteEventTagsRequest" }) as any as S.Schema<DeleteEventTagsRequest>;
 
 export interface DeleteEventTagsResponse {}
 export const DeleteEventTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEventTagsResponse",
-}) as any as S.Schema<DeleteEventTagsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteEventTagsResponse" }) as any as S.Schema<DeleteEventTagsResponse>;
 
 export interface DeleteFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
@@ -781,26 +548,16 @@ export interface DeleteFloodlightActivitiesRequest {
   id: string;
 }
 export const DeleteFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "userprofiles/{+profileId}/floodlightActivities/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteFloodlightActivitiesRequest",
-}) as any as S.Schema<DeleteFloodlightActivitiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"userprofiles/{+profileId}/floodlightActivities/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "DeleteFloodlightActivitiesRequest" }) as any as S.Schema<DeleteFloodlightActivitiesRequest>;
 
 export interface DeleteFloodlightActivitiesResponse {}
 export const DeleteFloodlightActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFloodlightActivitiesResponse",
-}) as any as S.Schema<DeleteFloodlightActivitiesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteFloodlightActivitiesResponse" }) as any as S.Schema<DeleteFloodlightActivitiesResponse>;
 
 export interface DeletePlacementStrategiesRequest {
   /** User profile ID associated with this request. */
@@ -809,26 +566,16 @@ export interface DeletePlacementStrategiesRequest {
   id: string;
 }
 export const DeletePlacementStrategiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "userprofiles/{+profileId}/placementStrategies/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "DeletePlacementStrategiesRequest",
-}) as any as S.Schema<DeletePlacementStrategiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"userprofiles/{+profileId}/placementStrategies/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "DeletePlacementStrategiesRequest" }) as any as S.Schema<DeletePlacementStrategiesRequest>;
 
 export interface DeletePlacementStrategiesResponse {}
 export const DeletePlacementStrategiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePlacementStrategiesResponse",
-}) as any as S.Schema<DeletePlacementStrategiesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeletePlacementStrategiesResponse" }) as any as S.Schema<DeletePlacementStrategiesResponse>;
 
 export interface DeleteReportsRequest {
   /** The ID of the report. */
@@ -837,26 +584,16 @@ export interface DeleteReportsRequest {
   profileId: string;
 }
 export const DeleteReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportId: S.String.pipe(T.Label()),
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "userprofiles/{profileId}/reports/{reportId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteReportsRequest",
-}) as any as S.Schema<DeleteReportsRequest>;
+S.Struct({
+  "reportId": S.String.pipe(T.Label()),
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"userprofiles/{profileId}/reports/{reportId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "DeleteReportsRequest" }) as any as S.Schema<DeleteReportsRequest>;
 
 export interface DeleteReportsResponse {}
 export const DeleteReportsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReportsResponse",
-}) as any as S.Schema<DeleteReportsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteReportsResponse" }) as any as S.Schema<DeleteReportsResponse>;
 
 export interface DeleteUserRolesRequest {
   /** User profile ID associated with this request. */
@@ -865,44 +602,26 @@ export interface DeleteUserRolesRequest {
   id: string;
 }
 export const DeleteUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "userprofiles/{+profileId}/userRoles/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteUserRolesRequest",
-}) as any as S.Schema<DeleteUserRolesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"userprofiles/{+profileId}/userRoles/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "DeleteUserRolesRequest" }) as any as S.Schema<DeleteUserRolesRequest>;
 
 export interface DeleteUserRolesResponse {}
 export const DeleteUserRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUserRolesResponse",
-}) as any as S.Schema<DeleteUserRolesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteUserRolesResponse" }) as any as S.Schema<DeleteUserRolesResponse>;
 
 export interface GenerateCodeDynamicProfilesRequest {
   /** Required. Dynamic profile ID. */
   dynamicProfileId: string;
 }
 export const GenerateCodeDynamicProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dynamicProfileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "studio/dynamicProfiles/{+dynamicProfileId}/generateCode",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GenerateCodeDynamicProfilesRequest",
-}) as any as S.Schema<GenerateCodeDynamicProfilesRequest>;
+S.Struct({
+  "dynamicProfileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"studio/dynamicProfiles/{+dynamicProfileId}/generateCode","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GenerateCodeDynamicProfilesRequest" }) as any as S.Schema<GenerateCodeDynamicProfilesRequest>;
 
 /** Response message for DfareportingDynamicProfiles.GenerateCode. */
 export interface DynamicProfileGenerateCodeResponse {
@@ -910,12 +629,10 @@ export interface DynamicProfileGenerateCodeResponse {
   code?: string;
 }
 export const DynamicProfileGenerateCodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DynamicProfileGenerateCodeResponse",
-}) as any as S.Schema<DynamicProfileGenerateCodeResponse>;
+S.Struct({
+  "code": S.optional(S.String),
+}),
+).annotate({ identifier: "DynamicProfileGenerateCodeResponse" }) as any as S.Schema<DynamicProfileGenerateCodeResponse>;
 
 export interface GeneratetagFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
@@ -923,21 +640,12 @@ export interface GeneratetagFloodlightActivitiesRequest {
   /** Floodlight activity ID for which we want to generate a tag. */
   floodlightActivityId?: string;
 }
-export const GeneratetagFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      profileId: S.String.pipe(T.Label()),
-      floodlightActivityId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "userprofiles/{+profileId}/floodlightActivities/generatetag",
-        baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-      }),
-    ),
-).annotate({
-  identifier: "GeneratetagFloodlightActivitiesRequest",
-}) as any as S.Schema<GeneratetagFloodlightActivitiesRequest>;
+export const GeneratetagFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "floodlightActivityId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/floodlightActivities/generatetag","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GeneratetagFloodlightActivitiesRequest" }) as any as S.Schema<GeneratetagFloodlightActivitiesRequest>;
 
 /** Floodlight Activity GenerateTag Response */
 export interface FloodlightActivitiesGenerateTagResponse {
@@ -948,46 +656,19 @@ export interface FloodlightActivitiesGenerateTagResponse {
   /** Generated tag for this Floodlight activity. For Google tags, this is the event snippet. */
   floodlightActivityTag?: string;
 }
-export const FloodlightActivitiesGenerateTagResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      globalSiteTagGlobalSnippet: S.optional(S.String),
-      kind: S.optional(S.String),
-      floodlightActivityTag: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "FloodlightActivitiesGenerateTagResponse",
-}) as any as S.Schema<FloodlightActivitiesGenerateTagResponse>;
+export const FloodlightActivitiesGenerateTagResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "globalSiteTagGlobalSnippet": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "floodlightActivityTag": S.optional(S.String),
+}),
+).annotate({ identifier: "FloodlightActivitiesGenerateTagResponse" }) as any as S.Schema<FloodlightActivitiesGenerateTagResponse>;
 
-export type GeneratetagsPlacementsTagFormatsEnum =
-  | "PLACEMENT_TAG_STANDARD"
-  | "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
-  | "PLACEMENT_TAG_IFRAME_ILAYER"
-  | "PLACEMENT_TAG_INTERNAL_REDIRECT"
-  | "PLACEMENT_TAG_JAVASCRIPT"
-  | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
-  | "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
-  | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
-  | "PLACEMENT_TAG_CLICK_COMMANDS"
-  | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
-  | "PLACEMENT_TAG_TRACKING"
-  | "PLACEMENT_TAG_TRACKING_IFRAME"
-  | "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
-  | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
-  | "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
-  | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT"
-  | (string & {});
+export type GeneratetagsPlacementsTagFormatsEnum = "PLACEMENT_TAG_STANDARD" | "PLACEMENT_TAG_IFRAME_JAVASCRIPT" | "PLACEMENT_TAG_IFRAME_ILAYER" | "PLACEMENT_TAG_INTERNAL_REDIRECT" | "PLACEMENT_TAG_JAVASCRIPT" | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" | "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" | "PLACEMENT_TAG_CLICK_COMMANDS" | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" | "PLACEMENT_TAG_TRACKING" | "PLACEMENT_TAG_TRACKING_IFRAME" | "PLACEMENT_TAG_TRACKING_JAVASCRIPT" | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" | "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
 export const GeneratetagsPlacementsTagFormatsEnum = /*@__PURE__*/ S.String;
 
-export type GeneratetagsPlacementsTagFormatsEnumList =
-  ReadonlyArray<GeneratetagsPlacementsTagFormatsEnum>;
-export const GeneratetagsPlacementsTagFormatsEnumList = /*@__PURE__*/ S.Array(
-  GeneratetagsPlacementsTagFormatsEnum,
-) as any as S.Schema<GeneratetagsPlacementsTagFormatsEnumList>;
+export type GeneratetagsPlacementsTagFormatsEnumList = ReadonlyArray<GeneratetagsPlacementsTagFormatsEnum | (string & {})>;
+export const GeneratetagsPlacementsTagFormatsEnumList = /*@__PURE__*/ S.Array(GeneratetagsPlacementsTagFormatsEnum) as any as S.Schema<GeneratetagsPlacementsTagFormatsEnumList>;
 
 export interface GeneratetagsPlacementsRequest {
   /** Generate placements belonging to this campaign. This is a required field. */
@@ -1006,51 +687,18 @@ export interface GeneratetagsPlacementsRequest {
   placementIds?: StringList;
 }
 export const GeneratetagsPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    campaignId: S.optional(S.String.pipe(T.Query())),
-    tagFormats: S.optional(
-      GeneratetagsPlacementsTagFormatsEnumList.pipe(T.Query()),
-    ),
-    "tagProperties.dcDbmMacroIncluded": S.optional(S.Boolean.pipe(T.Query())),
-    "tagProperties.gppMacrosIncluded": S.optional(S.Boolean.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    "tagProperties.tcfGdprMacrosIncluded": S.optional(
-      S.Boolean.pipe(T.Query()),
-    ),
-    placementIds: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/placements/generatetags",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GeneratetagsPlacementsRequest",
-}) as any as S.Schema<GeneratetagsPlacementsRequest>;
+S.Struct({
+  "campaignId": S.optional(S.String.pipe(T.Query())),
+  "tagFormats": S.optional(GeneratetagsPlacementsTagFormatsEnumList.pipe(T.Query())),
+  "tagProperties.dcDbmMacroIncluded": S.optional(S.Boolean.pipe(T.Query())),
+  "tagProperties.gppMacrosIncluded": S.optional(S.Boolean.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "tagProperties.tcfGdprMacrosIncluded": S.optional(S.Boolean.pipe(T.Query())),
+  "placementIds": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/placements/generatetags","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GeneratetagsPlacementsRequest" }) as any as S.Schema<GeneratetagsPlacementsRequest>;
 
-export type TagDataFormatEnum =
-  | "PLACEMENT_TAG_STANDARD"
-  | "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
-  | "PLACEMENT_TAG_IFRAME_ILAYER"
-  | "PLACEMENT_TAG_INTERNAL_REDIRECT"
-  | "PLACEMENT_TAG_JAVASCRIPT"
-  | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
-  | "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
-  | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
-  | "PLACEMENT_TAG_CLICK_COMMANDS"
-  | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
-  | "PLACEMENT_TAG_TRACKING"
-  | "PLACEMENT_TAG_TRACKING_IFRAME"
-  | "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
-  | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
-  | "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
-  | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT"
-  | (string & {});
+export type TagDataFormatEnum = "PLACEMENT_TAG_STANDARD" | "PLACEMENT_TAG_IFRAME_JAVASCRIPT" | "PLACEMENT_TAG_IFRAME_ILAYER" | "PLACEMENT_TAG_INTERNAL_REDIRECT" | "PLACEMENT_TAG_JAVASCRIPT" | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" | "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" | "PLACEMENT_TAG_CLICK_COMMANDS" | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" | "PLACEMENT_TAG_TRACKING" | "PLACEMENT_TAG_TRACKING_IFRAME" | "PLACEMENT_TAG_TRACKING_JAVASCRIPT" | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" | "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
 export const TagDataFormatEnum = /*@__PURE__*/ S.String;
 
 /** Placement Tag Data */
@@ -1067,19 +715,17 @@ export interface TagData {
   adId?: string;
 }
 export const TagData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeId: S.optional(S.String),
-    impressionTag: S.optional(S.String),
-    clickTag: S.optional(S.String),
-    format: S.optional(TagDataFormatEnum),
-    adId: S.optional(S.String),
-  }),
+S.Struct({
+  "creativeId": S.optional(S.String),
+  "impressionTag": S.optional(S.String),
+  "clickTag": S.optional(S.String),
+  "format": S.optional(TagDataFormatEnum),
+  "adId": S.optional(S.String),
+}),
 ).annotate({ identifier: "TagData" }) as any as S.Schema<TagData>;
 
 export type TagDataList = ReadonlyArray<TagData>;
-export const TagDataList = /*@__PURE__*/ S.Array(
-  TagData,
-) as any as S.Schema<TagDataList>;
+export const TagDataList = /*@__PURE__*/ S.Array(TagData) as any as S.Schema<TagDataList>;
 
 /** Placement Tag */
 export interface PlacementTag {
@@ -1089,16 +735,14 @@ export interface PlacementTag {
   tagDatas?: TagDataList;
 }
 export const PlacementTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    placementId: S.optional(S.String),
-    tagDatas: S.optional(TagDataList),
-  }),
+S.Struct({
+  "placementId": S.optional(S.String),
+  "tagDatas": S.optional(TagDataList),
+}),
 ).annotate({ identifier: "PlacementTag" }) as any as S.Schema<PlacementTag>;
 
 export type PlacementTagList = ReadonlyArray<PlacementTag>;
-export const PlacementTagList = /*@__PURE__*/ S.Array(
-  PlacementTag,
-) as any as S.Schema<PlacementTagList>;
+export const PlacementTagList = /*@__PURE__*/ S.Array(PlacementTag) as any as S.Schema<PlacementTagList>;
 
 /** Placement GenerateTags Response */
 export interface PlacementsGenerateTagsResponse {
@@ -1108,13 +752,11 @@ export interface PlacementsGenerateTagsResponse {
   kind?: string;
 }
 export const PlacementsGenerateTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    placementTags: S.optional(PlacementTagList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PlacementsGenerateTagsResponse",
-}) as any as S.Schema<PlacementsGenerateTagsResponse>;
+S.Struct({
+  "placementTags": S.optional(PlacementTagList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "PlacementsGenerateTagsResponse" }) as any as S.Schema<PlacementsGenerateTagsResponse>;
 
 export interface GetAccountActiveAdSummariesRequest {
   /** Account ID. */
@@ -1123,32 +765,14 @@ export interface GetAccountActiveAdSummariesRequest {
   profileId: string;
 }
 export const GetAccountActiveAdSummariesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    summaryAccountId: S.String.pipe(T.Label()),
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/accountActiveAdSummaries/{+summaryAccountId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountActiveAdSummariesRequest",
-}) as any as S.Schema<GetAccountActiveAdSummariesRequest>;
+S.Struct({
+  "summaryAccountId": S.String.pipe(T.Label()),
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/accountActiveAdSummaries/{+summaryAccountId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetAccountActiveAdSummariesRequest" }) as any as S.Schema<GetAccountActiveAdSummariesRequest>;
 
-export type AccountActiveAdSummaryActiveAdsLimitTierEnum =
-  | "ACTIVE_ADS_TIER_40K"
-  | "ACTIVE_ADS_TIER_75K"
-  | "ACTIVE_ADS_TIER_100K"
-  | "ACTIVE_ADS_TIER_200K"
-  | "ACTIVE_ADS_TIER_300K"
-  | "ACTIVE_ADS_TIER_500K"
-  | "ACTIVE_ADS_TIER_750K"
-  | "ACTIVE_ADS_TIER_1M"
-  | (string & {});
-export const AccountActiveAdSummaryActiveAdsLimitTierEnum =
-  /*@__PURE__*/ S.String;
+export type AccountActiveAdSummaryActiveAdsLimitTierEnum = "ACTIVE_ADS_TIER_40K" | "ACTIVE_ADS_TIER_75K" | "ACTIVE_ADS_TIER_100K" | "ACTIVE_ADS_TIER_200K" | "ACTIVE_ADS_TIER_300K" | "ACTIVE_ADS_TIER_500K" | "ACTIVE_ADS_TIER_750K" | "ACTIVE_ADS_TIER_1M";
+export const AccountActiveAdSummaryActiveAdsLimitTierEnum = /*@__PURE__*/ S.String;
 
 /** Gets a summary of active ads in an account. */
 export interface AccountActiveAdSummary {
@@ -1164,18 +788,14 @@ export interface AccountActiveAdSummary {
   activeAdsLimitTier?: AccountActiveAdSummaryActiveAdsLimitTierEnum;
 }
 export const AccountActiveAdSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-    activeAds: S.optional(S.String),
-    availableAds: S.optional(S.String),
-    activeAdsLimitTier: S.optional(
-      AccountActiveAdSummaryActiveAdsLimitTierEnum,
-    ),
-  }),
-).annotate({
-  identifier: "AccountActiveAdSummary",
-}) as any as S.Schema<AccountActiveAdSummary>;
+S.Struct({
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "activeAds": S.optional(S.String),
+  "availableAds": S.optional(S.String),
+  "activeAdsLimitTier": S.optional(AccountActiveAdSummaryActiveAdsLimitTierEnum),
+}),
+).annotate({ identifier: "AccountActiveAdSummary" }) as any as S.Schema<AccountActiveAdSummary>;
 
 export interface GetAccountPermissionGroupsRequest {
   /** User profile ID associated with this request. */
@@ -1184,19 +804,11 @@ export interface GetAccountPermissionGroupsRequest {
   id: string;
 }
 export const GetAccountPermissionGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/accountPermissionGroups/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountPermissionGroupsRequest",
-}) as any as S.Schema<GetAccountPermissionGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/accountPermissionGroups/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetAccountPermissionGroupsRequest" }) as any as S.Schema<GetAccountPermissionGroupsRequest>;
 
 /** AccountPermissionGroups contains a mapping of permission group IDs to names. A permission group is a grouping of account permissions. */
 export interface AccountPermissionGroup {
@@ -1208,14 +820,12 @@ export interface AccountPermissionGroup {
   kind?: string;
 }
 export const AccountPermissionGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountPermissionGroup",
-}) as any as S.Schema<AccountPermissionGroup>;
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountPermissionGroup" }) as any as S.Schema<AccountPermissionGroup>;
 
 export interface GetAccountPermissionsRequest {
   /** User profile ID associated with this request. */
@@ -1224,37 +834,19 @@ export interface GetAccountPermissionsRequest {
   id: string;
 }
 export const GetAccountPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/accountPermissions/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountPermissionsRequest",
-}) as any as S.Schema<GetAccountPermissionsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/accountPermissions/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetAccountPermissionsRequest" }) as any as S.Schema<GetAccountPermissionsRequest>;
 
-export type AccountPermissionAccountProfilesItemEnum =
-  | "ACCOUNT_PROFILE_BASIC"
-  | "ACCOUNT_PROFILE_STANDARD"
-  | (string & {});
+export type AccountPermissionAccountProfilesItemEnum = "ACCOUNT_PROFILE_BASIC" | "ACCOUNT_PROFILE_STANDARD";
 export const AccountPermissionAccountProfilesItemEnum = /*@__PURE__*/ S.String;
 
-export type AccountPermissionAccountProfilesItemEnumList =
-  ReadonlyArray<AccountPermissionAccountProfilesItemEnum>;
-export const AccountPermissionAccountProfilesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    AccountPermissionAccountProfilesItemEnum,
-  ) as any as S.Schema<AccountPermissionAccountProfilesItemEnumList>;
+export type AccountPermissionAccountProfilesItemEnumList = ReadonlyArray<AccountPermissionAccountProfilesItemEnum>;
+export const AccountPermissionAccountProfilesItemEnumList = /*@__PURE__*/ S.Array(AccountPermissionAccountProfilesItemEnum) as any as S.Schema<AccountPermissionAccountProfilesItemEnumList>;
 
-export type AccountPermissionLevelEnum =
-  | "USER"
-  | "ADMINISTRATOR"
-  | (string & {});
+export type AccountPermissionLevelEnum = "USER" | "ADMINISTRATOR";
 export const AccountPermissionLevelEnum = /*@__PURE__*/ S.String;
 
 /** AccountPermissions contains information about a particular account permission. Some features of Campaign Manager require an account permission to be present in the account. */
@@ -1273,17 +865,15 @@ export interface AccountPermission {
   kind?: string;
 }
 export const AccountPermission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    accountProfiles: S.optional(AccountPermissionAccountProfilesItemEnumList),
-    level: S.optional(AccountPermissionLevelEnum),
-    permissionGroupId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountPermission",
-}) as any as S.Schema<AccountPermission>;
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "accountProfiles": S.optional(AccountPermissionAccountProfilesItemEnumList),
+  "level": S.optional(AccountPermissionLevelEnum),
+  "permissionGroupId": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountPermission" }) as any as S.Schema<AccountPermission>;
 
 export interface GetAccountsRequest {
   /** User profile ID associated with this request. */
@@ -1292,36 +882,16 @@ export interface GetAccountsRequest {
   id: string;
 }
 export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/accounts/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsRequest",
-}) as any as S.Schema<GetAccountsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/accounts/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetAccountsRequest" }) as any as S.Schema<GetAccountsRequest>;
 
-export type AccountActiveAdsLimitTierEnum =
-  | "ACTIVE_ADS_TIER_40K"
-  | "ACTIVE_ADS_TIER_75K"
-  | "ACTIVE_ADS_TIER_100K"
-  | "ACTIVE_ADS_TIER_200K"
-  | "ACTIVE_ADS_TIER_300K"
-  | "ACTIVE_ADS_TIER_500K"
-  | "ACTIVE_ADS_TIER_750K"
-  | "ACTIVE_ADS_TIER_1M"
-  | (string & {});
+export type AccountActiveAdsLimitTierEnum = "ACTIVE_ADS_TIER_40K" | "ACTIVE_ADS_TIER_75K" | "ACTIVE_ADS_TIER_100K" | "ACTIVE_ADS_TIER_200K" | "ACTIVE_ADS_TIER_300K" | "ACTIVE_ADS_TIER_500K" | "ACTIVE_ADS_TIER_750K" | "ACTIVE_ADS_TIER_1M";
 export const AccountActiveAdsLimitTierEnum = /*@__PURE__*/ S.String;
 
-export type AccountAccountProfileEnum =
-  | "ACCOUNT_PROFILE_BASIC"
-  | "ACCOUNT_PROFILE_STANDARD"
-  | (string & {});
+export type AccountAccountProfileEnum = "ACCOUNT_PROFILE_BASIC" | "ACCOUNT_PROFILE_STANDARD";
 export const AccountAccountProfileEnum = /*@__PURE__*/ S.String;
 
 /** Lookback configuration settings. */
@@ -1332,13 +902,11 @@ export interface LookbackConfiguration {
   postImpressionActivitiesDuration?: number;
 }
 export const LookbackConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clickDuration: S.optional(S.Number),
-    postImpressionActivitiesDuration: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "LookbackConfiguration",
-}) as any as S.Schema<LookbackConfiguration>;
+S.Struct({
+  "clickDuration": S.optional(S.Number),
+  "postImpressionActivitiesDuration": S.optional(S.Number),
+}),
+).annotate({ identifier: "LookbackConfiguration" }) as any as S.Schema<LookbackConfiguration>;
 
 /** Reporting Configuration */
 export interface ReportsConfiguration {
@@ -1350,14 +918,12 @@ export interface ReportsConfiguration {
   exposureToConversionEnabled?: boolean;
 }
 export const ReportsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportGenerationTimeZoneId: S.optional(S.String),
-    lookbackConfiguration: S.optional(LookbackConfiguration),
-    exposureToConversionEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ReportsConfiguration",
-}) as any as S.Schema<ReportsConfiguration>;
+S.Struct({
+  "reportGenerationTimeZoneId": S.optional(S.String),
+  "lookbackConfiguration": S.optional(LookbackConfiguration),
+  "exposureToConversionEnabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ReportsConfiguration" }) as any as S.Schema<ReportsConfiguration>;
 
 /** Contains properties of a Campaign Manager account. */
 export interface Account {
@@ -1401,27 +967,27 @@ export interface Account {
   description?: string;
 }
 export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shareReportsWithTwitter: S.optional(S.Boolean),
-    active: S.optional(S.Boolean),
-    activeAdsLimitTier: S.optional(AccountActiveAdsLimitTierEnum),
-    id: S.optional(S.String),
-    accountProfile: S.optional(AccountAccountProfileEnum),
-    kind: S.optional(S.String),
-    availablePermissionIds: S.optional(StringList),
-    nielsenOcrEnabled: S.optional(S.Boolean),
-    currencyId: S.optional(S.String),
-    countryId: S.optional(S.String),
-    locale: S.optional(S.String),
-    accountPermissionIds: S.optional(StringList),
-    teaserSizeLimit: S.optional(S.String),
-    activeViewOptOut: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    defaultCreativeSizeId: S.optional(S.String),
-    reportsConfiguration: S.optional(ReportsConfiguration),
-    maximumImageSize: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
+S.Struct({
+  "shareReportsWithTwitter": S.optional(S.Boolean),
+  "active": S.optional(S.Boolean),
+  "activeAdsLimitTier": S.optional(AccountActiveAdsLimitTierEnum),
+  "id": S.optional(S.String),
+  "accountProfile": S.optional(AccountAccountProfileEnum),
+  "kind": S.optional(S.String),
+  "availablePermissionIds": S.optional(StringList),
+  "nielsenOcrEnabled": S.optional(S.Boolean),
+  "currencyId": S.optional(S.String),
+  "countryId": S.optional(S.String),
+  "locale": S.optional(S.String),
+  "accountPermissionIds": S.optional(StringList),
+  "teaserSizeLimit": S.optional(S.String),
+  "activeViewOptOut": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "defaultCreativeSizeId": S.optional(S.String),
+  "reportsConfiguration": S.optional(ReportsConfiguration),
+  "maximumImageSize": S.optional(S.String),
+  "description": S.optional(S.String),
+}),
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 export interface GetAccountUserProfilesRequest {
@@ -1431,32 +997,16 @@ export interface GetAccountUserProfilesRequest {
   id: string;
 }
 export const GetAccountUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{profileId}/accountUserProfiles/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountUserProfilesRequest",
-}) as any as S.Schema<GetAccountUserProfilesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{profileId}/accountUserProfiles/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetAccountUserProfilesRequest" }) as any as S.Schema<GetAccountUserProfilesRequest>;
 
-export type AccountUserProfileTraffickerTypeEnum =
-  | "INTERNAL_NON_TRAFFICKER"
-  | "INTERNAL_TRAFFICKER"
-  | "EXTERNAL_TRAFFICKER"
-  | (string & {});
+export type AccountUserProfileTraffickerTypeEnum = "INTERNAL_NON_TRAFFICKER" | "INTERNAL_TRAFFICKER" | "EXTERNAL_TRAFFICKER";
 export const AccountUserProfileTraffickerTypeEnum = /*@__PURE__*/ S.String;
 
-export type ObjectFilterStatusEnum =
-  | "NONE"
-  | "ASSIGNED"
-  | "ALL"
-  | (string & {});
+export type ObjectFilterStatusEnum = "NONE" | "ASSIGNED" | "ALL";
 export const ObjectFilterStatusEnum = /*@__PURE__*/ S.String;
 
 /** Object Filter. */
@@ -1469,19 +1019,14 @@ export interface ObjectFilter {
   kind?: string;
 }
 export const ObjectFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectIds: S.optional(StringList),
-    status: S.optional(ObjectFilterStatusEnum),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "objectIds": S.optional(StringList),
+  "status": S.optional(ObjectFilterStatusEnum),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "ObjectFilter" }) as any as S.Schema<ObjectFilter>;
 
-export type AccountUserProfileUserAccessTypeEnum =
-  | "NORMAL_USER"
-  | "SUPER_USER"
-  | "INTERNAL_ADMINISTRATOR"
-  | "READ_ONLY_SUPER_USER"
-  | (string & {});
+export type AccountUserProfileUserAccessTypeEnum = "NORMAL_USER" | "SUPER_USER" | "INTERNAL_ADMINISTRATOR" | "READ_ONLY_SUPER_USER";
 export const AccountUserProfileUserAccessTypeEnum = /*@__PURE__*/ S.String;
 
 /** AccountUserProfiles contains properties of a Campaign Manager user profile. This resource is specifically for managing user profiles, whereas UserProfiles is for accessing the API. */
@@ -1520,27 +1065,25 @@ export interface AccountUserProfile {
   campaignFilter?: ObjectFilter;
 }
 export const AccountUserProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userRoleId: S.optional(S.String),
-    id: S.optional(S.String),
-    email: S.optional(S.String),
-    comments: S.optional(S.String),
-    traffickerType: S.optional(AccountUserProfileTraffickerTypeEnum),
-    siteFilter: S.optional(ObjectFilter),
-    active: S.optional(S.Boolean),
-    userAccessType: S.optional(AccountUserProfileUserAccessTypeEnum),
-    kind: S.optional(S.String),
-    name: S.optional(S.String),
-    userRoleFilter: S.optional(ObjectFilter),
-    accountId: S.optional(S.String),
-    locale: S.optional(S.String),
-    advertiserFilter: S.optional(ObjectFilter),
-    subaccountId: S.optional(S.String),
-    campaignFilter: S.optional(ObjectFilter),
-  }),
-).annotate({
-  identifier: "AccountUserProfile",
-}) as any as S.Schema<AccountUserProfile>;
+S.Struct({
+  "userRoleId": S.optional(S.String),
+  "id": S.optional(S.String),
+  "email": S.optional(S.String),
+  "comments": S.optional(S.String),
+  "traffickerType": S.optional(AccountUserProfileTraffickerTypeEnum),
+  "siteFilter": S.optional(ObjectFilter),
+  "active": S.optional(S.Boolean),
+  "userAccessType": S.optional(AccountUserProfileUserAccessTypeEnum),
+  "kind": S.optional(S.String),
+  "name": S.optional(S.String),
+  "userRoleFilter": S.optional(ObjectFilter),
+  "accountId": S.optional(S.String),
+  "locale": S.optional(S.String),
+  "advertiserFilter": S.optional(ObjectFilter),
+  "subaccountId": S.optional(S.String),
+  "campaignFilter": S.optional(ObjectFilter),
+}),
+).annotate({ identifier: "AccountUserProfile" }) as any as S.Schema<AccountUserProfile>;
 
 export interface GetAdsRequest {
   /** User profile ID associated with this request. */
@@ -1549,16 +1092,10 @@ export interface GetAdsRequest {
   id: string;
 }
 export const GetAdsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/ads/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/ads/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
 ).annotate({ identifier: "GetAdsRequest" }) as any as S.Schema<GetAdsRequest>;
 
 /** Event tag override information. */
@@ -1569,25 +1106,16 @@ export interface EventTagOverride {
   enabled?: boolean;
 }
 export const EventTagOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EventTagOverride",
-}) as any as S.Schema<EventTagOverride>;
+S.Struct({
+  "id": S.optional(S.String),
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "EventTagOverride" }) as any as S.Schema<EventTagOverride>;
 
 export type EventTagOverrideList = ReadonlyArray<EventTagOverride>;
-export const EventTagOverrideList = /*@__PURE__*/ S.Array(
-  EventTagOverride,
-) as any as S.Schema<EventTagOverrideList>;
+export const EventTagOverrideList = /*@__PURE__*/ S.Array(EventTagOverride) as any as S.Schema<EventTagOverrideList>;
 
-export type DimensionValueMatchTypeEnum =
-  | "EXACT"
-  | "BEGINS_WITH"
-  | "CONTAINS"
-  | "WILDCARD_EXPRESSION"
-  | (string & {});
+export type DimensionValueMatchTypeEnum = "EXACT" | "BEGINS_WITH" | "CONTAINS" | "WILDCARD_EXPRESSION";
 export const DimensionValueMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a DimensionValue resource. */
@@ -1606,14 +1134,14 @@ export interface DimensionValue {
   etag?: string;
 }
 export const DimensionValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matchType: S.optional(DimensionValueMatchTypeEnum),
-    kind: S.optional(S.String),
-    value: S.optional(S.String),
-    id: S.optional(S.String),
-    dimensionName: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "matchType": S.optional(DimensionValueMatchTypeEnum),
+  "kind": S.optional(S.String),
+  "value": S.optional(S.String),
+  "id": S.optional(S.String),
+  "dimensionName": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "DimensionValue" }) as any as S.Schema<DimensionValue>;
 
 /** Placement Assignment. */
@@ -1628,20 +1156,16 @@ export interface PlacementAssignment {
   placementIdDimensionValue?: DimensionValue;
 }
 export const PlacementAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.optional(S.Boolean),
-    sslRequired: S.optional(S.Boolean),
-    placementId: S.optional(S.String),
-    placementIdDimensionValue: S.optional(DimensionValue),
-  }),
-).annotate({
-  identifier: "PlacementAssignment",
-}) as any as S.Schema<PlacementAssignment>;
+S.Struct({
+  "active": S.optional(S.Boolean),
+  "sslRequired": S.optional(S.Boolean),
+  "placementId": S.optional(S.String),
+  "placementIdDimensionValue": S.optional(DimensionValue),
+}),
+).annotate({ identifier: "PlacementAssignment" }) as any as S.Schema<PlacementAssignment>;
 
 export type PlacementAssignmentList = ReadonlyArray<PlacementAssignment>;
-export const PlacementAssignmentList = /*@__PURE__*/ S.Array(
-  PlacementAssignment,
-) as any as S.Schema<PlacementAssignmentList>;
+export const PlacementAssignmentList = /*@__PURE__*/ S.Array(PlacementAssignment) as any as S.Schema<PlacementAssignmentList>;
 
 /** Frequency Cap. */
 export interface FrequencyCap {
@@ -1651,30 +1175,13 @@ export interface FrequencyCap {
   impressions?: string;
 }
 export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    duration: S.optional(S.String),
-    impressions: S.optional(S.String),
-  }),
+S.Struct({
+  "duration": S.optional(S.String),
+  "impressions": S.optional(S.String),
+}),
 ).annotate({ identifier: "FrequencyCap" }) as any as S.Schema<FrequencyCap>;
 
-export type DeliverySchedulePriorityEnum =
-  | "AD_PRIORITY_01"
-  | "AD_PRIORITY_02"
-  | "AD_PRIORITY_03"
-  | "AD_PRIORITY_04"
-  | "AD_PRIORITY_05"
-  | "AD_PRIORITY_06"
-  | "AD_PRIORITY_07"
-  | "AD_PRIORITY_08"
-  | "AD_PRIORITY_09"
-  | "AD_PRIORITY_10"
-  | "AD_PRIORITY_11"
-  | "AD_PRIORITY_12"
-  | "AD_PRIORITY_13"
-  | "AD_PRIORITY_14"
-  | "AD_PRIORITY_15"
-  | "AD_PRIORITY_16"
-  | (string & {});
+export type DeliverySchedulePriorityEnum = "AD_PRIORITY_01" | "AD_PRIORITY_02" | "AD_PRIORITY_03" | "AD_PRIORITY_04" | "AD_PRIORITY_05" | "AD_PRIORITY_06" | "AD_PRIORITY_07" | "AD_PRIORITY_08" | "AD_PRIORITY_09" | "AD_PRIORITY_10" | "AD_PRIORITY_11" | "AD_PRIORITY_12" | "AD_PRIORITY_13" | "AD_PRIORITY_14" | "AD_PRIORITY_15" | "AD_PRIORITY_16";
 export const DeliverySchedulePriorityEnum = /*@__PURE__*/ S.String;
 
 /** Delivery Schedule. */
@@ -1689,15 +1196,13 @@ export interface DeliverySchedule {
   impressionRatio?: string;
 }
 export const DeliverySchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frequencyCap: S.optional(FrequencyCap),
-    hardCutoff: S.optional(S.Boolean),
-    priority: S.optional(DeliverySchedulePriorityEnum),
-    impressionRatio: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeliverySchedule",
-}) as any as S.Schema<DeliverySchedule>;
+S.Struct({
+  "frequencyCap": S.optional(FrequencyCap),
+  "hardCutoff": S.optional(S.Boolean),
+  "priority": S.optional(DeliverySchedulePriorityEnum),
+  "impressionRatio": S.optional(S.String),
+}),
+).annotate({ identifier: "DeliverySchedule" }) as any as S.Schema<DeliverySchedule>;
 
 /** Contains information about a Contextual Keyword that can be targeted by ads. */
 export interface ContextualKeyword {
@@ -1705,17 +1210,13 @@ export interface ContextualKeyword {
   keyword?: string;
 }
 export const ContextualKeyword = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyword: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContextualKeyword",
-}) as any as S.Schema<ContextualKeyword>;
+S.Struct({
+  "keyword": S.optional(S.String),
+}),
+).annotate({ identifier: "ContextualKeyword" }) as any as S.Schema<ContextualKeyword>;
 
 export type ContextualKeywordList = ReadonlyArray<ContextualKeyword>;
-export const ContextualKeywordList = /*@__PURE__*/ S.Array(
-  ContextualKeyword,
-) as any as S.Schema<ContextualKeywordList>;
+export const ContextualKeywordList = /*@__PURE__*/ S.Array(ContextualKeyword) as any as S.Schema<ContextualKeywordList>;
 
 /** Contextual Keyword Targeting. */
 export interface ContextualKeywordTargeting {
@@ -1723,12 +1224,10 @@ export interface ContextualKeywordTargeting {
   keywords?: ContextualKeywordList;
 }
 export const ContextualKeywordTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywords: S.optional(ContextualKeywordList),
-  }),
-).annotate({
-  identifier: "ContextualKeywordTargeting",
-}) as any as S.Schema<ContextualKeywordTargeting>;
+S.Struct({
+  "keywords": S.optional(ContextualKeywordList),
+}),
+).annotate({ identifier: "ContextualKeywordTargeting" }) as any as S.Schema<ContextualKeywordTargeting>;
 
 /** Represents the dimensions of ads, placements, creatives, or creative assets. */
 export interface Size {
@@ -1744,13 +1243,13 @@ export interface Size {
   iab?: boolean;
 }
 export const Size = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    kind: S.optional(S.String),
-    width: S.optional(S.Number),
-    height: S.optional(S.Number),
-    iab: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "width": S.optional(S.Number),
+  "height": S.optional(S.Number),
+  "iab": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
 
 /** Modification timestamp. */
@@ -1759,12 +1258,10 @@ export interface LastModifiedInfo {
   time?: string;
 }
 export const LastModifiedInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    time: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LastModifiedInfo",
-}) as any as S.Schema<LastModifiedInfo>;
+S.Struct({
+  "time": S.optional(S.String),
+}),
+).annotate({ identifier: "LastModifiedInfo" }) as any as S.Schema<LastModifiedInfo>;
 
 /** Click-through URL */
 export interface ClickThroughUrl {
@@ -1778,15 +1275,13 @@ export interface ClickThroughUrl {
   computedClickThroughUrl?: string;
 }
 export const ClickThroughUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    landingPageId: S.optional(S.String),
-    customClickThroughUrl: S.optional(S.String),
-    defaultLandingPage: S.optional(S.Boolean),
-    computedClickThroughUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ClickThroughUrl",
-}) as any as S.Schema<ClickThroughUrl>;
+S.Struct({
+  "landingPageId": S.optional(S.String),
+  "customClickThroughUrl": S.optional(S.String),
+  "defaultLandingPage": S.optional(S.Boolean),
+  "computedClickThroughUrl": S.optional(S.String),
+}),
+).annotate({ identifier: "ClickThroughUrl" }) as any as S.Schema<ClickThroughUrl>;
 
 /** Click Through URL Suffix settings. */
 export interface ClickThroughUrlSuffixProperties {
@@ -1796,26 +1291,17 @@ export interface ClickThroughUrlSuffixProperties {
   overrideInheritedSuffix?: boolean;
 }
 export const ClickThroughUrlSuffixProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clickThroughUrlSuffix: S.optional(S.String),
-    overrideInheritedSuffix: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClickThroughUrlSuffixProperties",
-}) as any as S.Schema<ClickThroughUrlSuffixProperties>;
+S.Struct({
+  "clickThroughUrlSuffix": S.optional(S.String),
+  "overrideInheritedSuffix": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ClickThroughUrlSuffixProperties" }) as any as S.Schema<ClickThroughUrlSuffixProperties>;
 
-export type CreativeRotationTypeEnum =
-  | "CREATIVE_ROTATION_TYPE_SEQUENTIAL"
-  | "CREATIVE_ROTATION_TYPE_RANDOM"
-  | (string & {});
+export type CreativeRotationTypeEnum = "CREATIVE_ROTATION_TYPE_SEQUENTIAL" | "CREATIVE_ROTATION_TYPE_RANDOM";
 export const CreativeRotationTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeGroupAssignmentCreativeGroupNumberEnum =
-  | "CREATIVE_GROUP_ONE"
-  | "CREATIVE_GROUP_TWO"
-  | (string & {});
-export const CreativeGroupAssignmentCreativeGroupNumberEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeGroupAssignmentCreativeGroupNumberEnum = "CREATIVE_GROUP_ONE" | "CREATIVE_GROUP_TWO";
+export const CreativeGroupAssignmentCreativeGroupNumberEnum = /*@__PURE__*/ S.String;
 
 /** Creative Group Assignment. */
 export interface CreativeGroupAssignment {
@@ -1825,21 +1311,14 @@ export interface CreativeGroupAssignment {
   creativeGroupNumber?: CreativeGroupAssignmentCreativeGroupNumberEnum;
 }
 export const CreativeGroupAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeGroupId: S.optional(S.String),
-    creativeGroupNumber: S.optional(
-      CreativeGroupAssignmentCreativeGroupNumberEnum,
-    ),
-  }),
-).annotate({
-  identifier: "CreativeGroupAssignment",
-}) as any as S.Schema<CreativeGroupAssignment>;
+S.Struct({
+  "creativeGroupId": S.optional(S.String),
+  "creativeGroupNumber": S.optional(CreativeGroupAssignmentCreativeGroupNumberEnum),
+}),
+).annotate({ identifier: "CreativeGroupAssignment" }) as any as S.Schema<CreativeGroupAssignment>;
 
-export type CreativeGroupAssignmentList =
-  ReadonlyArray<CreativeGroupAssignment>;
-export const CreativeGroupAssignmentList = /*@__PURE__*/ S.Array(
-  CreativeGroupAssignment,
-) as any as S.Schema<CreativeGroupAssignmentList>;
+export type CreativeGroupAssignmentList = ReadonlyArray<CreativeGroupAssignment>;
+export const CreativeGroupAssignmentList = /*@__PURE__*/ S.Array(CreativeGroupAssignment) as any as S.Schema<CreativeGroupAssignmentList>;
 
 /** Companion Click-through override. */
 export interface CompanionClickThroughOverride {
@@ -1849,19 +1328,14 @@ export interface CompanionClickThroughOverride {
   creativeId?: string;
 }
 export const CompanionClickThroughOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clickThroughUrl: S.optional(ClickThroughUrl),
-    creativeId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CompanionClickThroughOverride",
-}) as any as S.Schema<CompanionClickThroughOverride>;
+S.Struct({
+  "clickThroughUrl": S.optional(ClickThroughUrl),
+  "creativeId": S.optional(S.String),
+}),
+).annotate({ identifier: "CompanionClickThroughOverride" }) as any as S.Schema<CompanionClickThroughOverride>;
 
-export type CompanionClickThroughOverrideList =
-  ReadonlyArray<CompanionClickThroughOverride>;
-export const CompanionClickThroughOverrideList = /*@__PURE__*/ S.Array(
-  CompanionClickThroughOverride,
-) as any as S.Schema<CompanionClickThroughOverrideList>;
+export type CompanionClickThroughOverrideList = ReadonlyArray<CompanionClickThroughOverride>;
+export const CompanionClickThroughOverrideList = /*@__PURE__*/ S.Array(CompanionClickThroughOverride) as any as S.Schema<CompanionClickThroughOverrideList>;
 
 /** Rich Media Exit Override. */
 export interface RichMediaExitOverride {
@@ -1873,19 +1347,15 @@ export interface RichMediaExitOverride {
   clickThroughUrl?: ClickThroughUrl;
 }
 export const RichMediaExitOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exitId: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    clickThroughUrl: S.optional(ClickThroughUrl),
-  }),
-).annotate({
-  identifier: "RichMediaExitOverride",
-}) as any as S.Schema<RichMediaExitOverride>;
+S.Struct({
+  "exitId": S.optional(S.String),
+  "enabled": S.optional(S.Boolean),
+  "clickThroughUrl": S.optional(ClickThroughUrl),
+}),
+).annotate({ identifier: "RichMediaExitOverride" }) as any as S.Schema<RichMediaExitOverride>;
 
 export type RichMediaExitOverrideList = ReadonlyArray<RichMediaExitOverride>;
-export const RichMediaExitOverrideList = /*@__PURE__*/ S.Array(
-  RichMediaExitOverride,
-) as any as S.Schema<RichMediaExitOverrideList>;
+export const RichMediaExitOverrideList = /*@__PURE__*/ S.Array(RichMediaExitOverride) as any as S.Schema<RichMediaExitOverrideList>;
 
 /** Creative Assignment. */
 export interface CreativeAssignment {
@@ -1915,38 +1385,28 @@ export interface CreativeAssignment {
   creativeId?: string;
 }
 export const CreativeAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clickThroughUrl: S.optional(ClickThroughUrl),
-    applyEventTags: S.optional(S.Boolean),
-    creativeIdDimensionValue: S.optional(DimensionValue),
-    sequence: S.optional(S.Number),
-    creativeGroupAssignments: S.optional(CreativeGroupAssignmentList),
-    weight: S.optional(S.Number),
-    companionCreativeOverrides: S.optional(CompanionClickThroughOverrideList),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    sslCompliant: S.optional(S.Boolean),
-    richMediaExitOverrides: S.optional(RichMediaExitOverrideList),
-    active: S.optional(S.Boolean),
-    creativeId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeAssignment",
-}) as any as S.Schema<CreativeAssignment>;
+S.Struct({
+  "clickThroughUrl": S.optional(ClickThroughUrl),
+  "applyEventTags": S.optional(S.Boolean),
+  "creativeIdDimensionValue": S.optional(DimensionValue),
+  "sequence": S.optional(S.Number),
+  "creativeGroupAssignments": S.optional(CreativeGroupAssignmentList),
+  "weight": S.optional(S.Number),
+  "companionCreativeOverrides": S.optional(CompanionClickThroughOverrideList),
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "sslCompliant": S.optional(S.Boolean),
+  "richMediaExitOverrides": S.optional(RichMediaExitOverrideList),
+  "active": S.optional(S.Boolean),
+  "creativeId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeAssignment" }) as any as S.Schema<CreativeAssignment>;
 
 export type CreativeAssignmentList = ReadonlyArray<CreativeAssignment>;
-export const CreativeAssignmentList = /*@__PURE__*/ S.Array(
-  CreativeAssignment,
-) as any as S.Schema<CreativeAssignmentList>;
+export const CreativeAssignmentList = /*@__PURE__*/ S.Array(CreativeAssignment) as any as S.Schema<CreativeAssignmentList>;
 
-export type CreativeRotationWeightCalculationStrategyEnum =
-  | "WEIGHT_STRATEGY_EQUAL"
-  | "WEIGHT_STRATEGY_CUSTOM"
-  | "WEIGHT_STRATEGY_HIGHEST_CTR"
-  | "WEIGHT_STRATEGY_OPTIMIZED"
-  | (string & {});
-export const CreativeRotationWeightCalculationStrategyEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeRotationWeightCalculationStrategyEnum = "WEIGHT_STRATEGY_EQUAL" | "WEIGHT_STRATEGY_CUSTOM" | "WEIGHT_STRATEGY_HIGHEST_CTR" | "WEIGHT_STRATEGY_OPTIMIZED";
+export const CreativeRotationWeightCalculationStrategyEnum = /*@__PURE__*/ S.String;
 
 /** Creative Rotation. */
 export interface CreativeRotation {
@@ -1960,39 +1420,22 @@ export interface CreativeRotation {
   creativeOptimizationConfigurationId?: string;
 }
 export const CreativeRotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CreativeRotationTypeEnum),
-    creativeAssignments: S.optional(CreativeAssignmentList),
-    weightCalculationStrategy: S.optional(
-      CreativeRotationWeightCalculationStrategyEnum,
-    ),
-    creativeOptimizationConfigurationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeRotation",
-}) as any as S.Schema<CreativeRotation>;
+S.Struct({
+  "type": S.optional(CreativeRotationTypeEnum),
+  "creativeAssignments": S.optional(CreativeAssignmentList),
+  "weightCalculationStrategy": S.optional(CreativeRotationWeightCalculationStrategyEnum),
+  "creativeOptimizationConfigurationId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeRotation" }) as any as S.Schema<CreativeRotation>;
 
-export type DayPartTargetingDaysOfWeekItemEnum =
-  | "SUNDAY"
-  | "MONDAY"
-  | "TUESDAY"
-  | "WEDNESDAY"
-  | "THURSDAY"
-  | "FRIDAY"
-  | "SATURDAY"
-  | (string & {});
+export type DayPartTargetingDaysOfWeekItemEnum = "SUNDAY" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY";
 export const DayPartTargetingDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
-export type DayPartTargetingDaysOfWeekItemEnumList =
-  ReadonlyArray<DayPartTargetingDaysOfWeekItemEnum>;
-export const DayPartTargetingDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
-  DayPartTargetingDaysOfWeekItemEnum,
-) as any as S.Schema<DayPartTargetingDaysOfWeekItemEnumList>;
+export type DayPartTargetingDaysOfWeekItemEnumList = ReadonlyArray<DayPartTargetingDaysOfWeekItemEnum>;
+export const DayPartTargetingDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(DayPartTargetingDaysOfWeekItemEnum) as any as S.Schema<DayPartTargetingDaysOfWeekItemEnumList>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Day Part Targeting. */
 export interface DayPartTargeting {
@@ -2004,22 +1447,14 @@ export interface DayPartTargeting {
   userLocalTime?: boolean;
 }
 export const DayPartTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daysOfWeek: S.optional(DayPartTargetingDaysOfWeekItemEnumList),
-    hoursOfDay: S.optional(IntegerList),
-    userLocalTime: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DayPartTargeting",
-}) as any as S.Schema<DayPartTargeting>;
+S.Struct({
+  "daysOfWeek": S.optional(DayPartTargetingDaysOfWeekItemEnumList),
+  "hoursOfDay": S.optional(IntegerList),
+  "userLocalTime": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DayPartTargeting" }) as any as S.Schema<DayPartTargeting>;
 
-export type AdTypeEnum =
-  | "AD_SERVING_STANDARD_AD"
-  | "AD_SERVING_DEFAULT_AD"
-  | "AD_SERVING_CLICK_TRACKER"
-  | "AD_SERVING_TRACKING"
-  | "AD_SERVING_BRAND_SAFE_AD"
-  | (string & {});
+export type AdTypeEnum = "AD_SERVING_STANDARD_AD" | "AD_SERVING_DEFAULT_AD" | "AD_SERVING_CLICK_TRACKER" | "AD_SERVING_TRACKING" | "AD_SERVING_BRAND_SAFE_AD";
 export const AdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Key Value Targeting Expression. */
@@ -2028,32 +1463,16 @@ export interface KeyValueTargetingExpression {
   expression?: string;
 }
 export const KeyValueTargetingExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KeyValueTargetingExpression",
-}) as any as S.Schema<KeyValueTargetingExpression>;
+S.Struct({
+  "expression": S.optional(S.String),
+}),
+).annotate({ identifier: "KeyValueTargetingExpression" }) as any as S.Schema<KeyValueTargetingExpression>;
 
-export type CountryTvDataProvidersItemEnum =
-  | "INVALID_TV_DATA_PROVIDER"
-  | "INTAGE_JP"
-  | "IBOPE_AR"
-  | "IBOPE_BR"
-  | "IBOPE_CL"
-  | "IBOPE_CO"
-  | "TNS_VN"
-  | "COMSCORE_NATIONAL_US"
-  | "COMSCORE_CA"
-  | "SAMBA_AU"
-  | (string & {});
+export type CountryTvDataProvidersItemEnum = "INVALID_TV_DATA_PROVIDER" | "INTAGE_JP" | "IBOPE_AR" | "IBOPE_BR" | "IBOPE_CL" | "IBOPE_CO" | "TNS_VN" | "COMSCORE_NATIONAL_US" | "COMSCORE_CA" | "SAMBA_AU";
 export const CountryTvDataProvidersItemEnum = /*@__PURE__*/ S.String;
 
-export type CountryTvDataProvidersItemEnumList =
-  ReadonlyArray<CountryTvDataProvidersItemEnum>;
-export const CountryTvDataProvidersItemEnumList = /*@__PURE__*/ S.Array(
-  CountryTvDataProvidersItemEnum,
-) as any as S.Schema<CountryTvDataProvidersItemEnumList>;
+export type CountryTvDataProvidersItemEnumList = ReadonlyArray<CountryTvDataProvidersItemEnum>;
+export const CountryTvDataProvidersItemEnumList = /*@__PURE__*/ S.Array(CountryTvDataProvidersItemEnum) as any as S.Schema<CountryTvDataProvidersItemEnumList>;
 
 /** Contains information about a country that can be targeted by ads. */
 export interface Country {
@@ -2071,20 +1490,18 @@ export interface Country {
   kind?: string;
 }
 export const Country = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dartId: S.optional(S.String),
-    name: S.optional(S.String),
-    countryCode: S.optional(S.String),
-    tvDataProviders: S.optional(CountryTvDataProvidersItemEnumList),
-    sslEnabled: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "dartId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "countryCode": S.optional(S.String),
+  "tvDataProviders": S.optional(CountryTvDataProvidersItemEnumList),
+  "sslEnabled": S.optional(S.Boolean),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Country" }) as any as S.Schema<Country>;
 
 export type CountryList = ReadonlyArray<Country>;
-export const CountryList = /*@__PURE__*/ S.Array(
-  Country,
-) as any as S.Schema<CountryList>;
+export const CountryList = /*@__PURE__*/ S.Array(Country) as any as S.Schema<CountryList>;
 
 /** Contains information about a postal code that can be targeted by ads. */
 export interface PostalCode {
@@ -2100,19 +1517,17 @@ export interface PostalCode {
   code?: string;
 }
 export const PostalCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countryCode: S.optional(S.String),
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    countryDartId: S.optional(S.String),
-    code: S.optional(S.String),
-  }),
+S.Struct({
+  "countryCode": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "countryDartId": S.optional(S.String),
+  "code": S.optional(S.String),
+}),
 ).annotate({ identifier: "PostalCode" }) as any as S.Schema<PostalCode>;
 
 export type PostalCodeList = ReadonlyArray<PostalCode>;
-export const PostalCodeList = /*@__PURE__*/ S.Array(
-  PostalCode,
-) as any as S.Schema<PostalCodeList>;
+export const PostalCodeList = /*@__PURE__*/ S.Array(PostalCode) as any as S.Schema<PostalCodeList>;
 
 /** Contains information about a metro region that can be targeted by ads. */
 export interface Metro {
@@ -2132,21 +1547,19 @@ export interface Metro {
   countryDartId?: string;
 }
 export const Metro = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countryCode: S.optional(S.String),
-    dmaId: S.optional(S.String),
-    kind: S.optional(S.String),
-    dartId: S.optional(S.String),
-    name: S.optional(S.String),
-    metroCode: S.optional(S.String),
-    countryDartId: S.optional(S.String),
-  }),
+S.Struct({
+  "countryCode": S.optional(S.String),
+  "dmaId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "dartId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "metroCode": S.optional(S.String),
+  "countryDartId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Metro" }) as any as S.Schema<Metro>;
 
 export type MetroList = ReadonlyArray<Metro>;
-export const MetroList = /*@__PURE__*/ S.Array(
-  Metro,
-) as any as S.Schema<MetroList>;
+export const MetroList = /*@__PURE__*/ S.Array(Metro) as any as S.Schema<MetroList>;
 
 /** Contains information about a region that can be targeted by ads. */
 export interface Region {
@@ -2164,20 +1577,18 @@ export interface Region {
   kind?: string;
 }
 export const Region = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dartId: S.optional(S.String),
-    name: S.optional(S.String),
-    countryDartId: S.optional(S.String),
-    countryCode: S.optional(S.String),
-    regionCode: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "dartId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "countryDartId": S.optional(S.String),
+  "countryCode": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
 export type RegionList = ReadonlyArray<Region>;
-export const RegionList = /*@__PURE__*/ S.Array(
-  Region,
-) as any as S.Schema<RegionList>;
+export const RegionList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionList>;
 
 /** Contains information about a city that can be targeted by ads. */
 export interface City {
@@ -2201,23 +1612,21 @@ export interface City {
   regionCode?: string;
 }
 export const City = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metroDmaId: S.optional(S.String),
-    countryDartId: S.optional(S.String),
-    kind: S.optional(S.String),
-    dartId: S.optional(S.String),
-    name: S.optional(S.String),
-    regionDartId: S.optional(S.String),
-    metroCode: S.optional(S.String),
-    countryCode: S.optional(S.String),
-    regionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "metroDmaId": S.optional(S.String),
+  "countryDartId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "dartId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "regionDartId": S.optional(S.String),
+  "metroCode": S.optional(S.String),
+  "countryCode": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "City" }) as any as S.Schema<City>;
 
 export type CityList = ReadonlyArray<City>;
-export const CityList = /*@__PURE__*/ S.Array(
-  City,
-) as any as S.Schema<CityList>;
+export const CityList = /*@__PURE__*/ S.Array(City) as any as S.Schema<CityList>;
 
 /** Geographical Targeting. */
 export interface GeoTargeting {
@@ -2235,14 +1644,14 @@ export interface GeoTargeting {
   excludeCountries?: boolean;
 }
 export const GeoTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countries: S.optional(CountryList),
-    postalCodes: S.optional(PostalCodeList),
-    metros: S.optional(MetroList),
-    regions: S.optional(RegionList),
-    cities: S.optional(CityList),
-    excludeCountries: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "countries": S.optional(CountryList),
+  "postalCodes": S.optional(PostalCodeList),
+  "metros": S.optional(MetroList),
+  "regions": S.optional(RegionList),
+  "cities": S.optional(CityList),
+  "excludeCountries": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "GeoTargeting" }) as any as S.Schema<GeoTargeting>;
 
 /** Remarketing List Targeting Expression. */
@@ -2251,12 +1660,10 @@ export interface ListTargetingExpression {
   expression?: string;
 }
 export const ListTargetingExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListTargetingExpression",
-}) as any as S.Schema<ListTargetingExpression>;
+S.Struct({
+  "expression": S.optional(S.String),
+}),
+).annotate({ identifier: "ListTargetingExpression" }) as any as S.Schema<ListTargetingExpression>;
 
 /** Properties of inheriting and overriding the default click-through event tag. A campaign may override the event tag defined at the advertiser level, and an ad may also override the campaign's setting further. */
 export interface DefaultClickThroughEventTagProperties {
@@ -2265,24 +1672,14 @@ export interface DefaultClickThroughEventTagProperties {
   /** ID of the click-through event tag to apply to all ads in this entity's scope. */
   defaultClickThroughEventTagId?: string;
 }
-export const DefaultClickThroughEventTagProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      overrideInheritedEventTag: S.optional(S.Boolean),
-      defaultClickThroughEventTagId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "DefaultClickThroughEventTagProperties",
-}) as any as S.Schema<DefaultClickThroughEventTagProperties>;
+export const DefaultClickThroughEventTagProperties = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "overrideInheritedEventTag": S.optional(S.Boolean),
+  "defaultClickThroughEventTagId": S.optional(S.String),
+}),
+).annotate({ identifier: "DefaultClickThroughEventTagProperties" }) as any as S.Schema<DefaultClickThroughEventTagProperties>;
 
-export type AdCompatibilityEnum =
-  | "DISPLAY"
-  | "DISPLAY_INTERSTITIAL"
-  | "APP"
-  | "APP_INTERSTITIAL"
-  | "IN_STREAM_VIDEO"
-  | "IN_STREAM_AUDIO"
-  | (string & {});
+export type AdCompatibilityEnum = "DISPLAY" | "DISPLAY_INTERSTITIAL" | "APP" | "APP_INTERSTITIAL" | "IN_STREAM_VIDEO" | "IN_STREAM_AUDIO";
 export const AdCompatibilityEnum = /*@__PURE__*/ S.String;
 
 /** Contains information about a language that can be targeted by ads. */
@@ -2297,18 +1694,16 @@ export interface Language {
   kind?: string;
 }
 export const Language = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    languageCode: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Language" }) as any as S.Schema<Language>;
 
 export type LanguageList = ReadonlyArray<Language>;
-export const LanguageList = /*@__PURE__*/ S.Array(
-  Language,
-) as any as S.Schema<LanguageList>;
+export const LanguageList = /*@__PURE__*/ S.Array(Language) as any as S.Schema<LanguageList>;
 
 /** Language Targeting. */
 export interface LanguageTargeting {
@@ -2316,12 +1711,10 @@ export interface LanguageTargeting {
   languages?: LanguageList;
 }
 export const LanguageTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languages: S.optional(LanguageList),
-  }),
-).annotate({
-  identifier: "LanguageTargeting",
-}) as any as S.Schema<LanguageTargeting>;
+S.Struct({
+  "languages": S.optional(LanguageList),
+}),
+).annotate({ identifier: "LanguageTargeting" }) as any as S.Schema<LanguageTargeting>;
 
 /** Contains information about an operating system that can be targeted by ads. */
 export interface OperatingSystem {
@@ -2337,21 +1730,17 @@ export interface OperatingSystem {
   mobile?: boolean;
 }
 export const OperatingSystem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    desktop: S.optional(S.Boolean),
-    dartId: S.optional(S.String),
-    name: S.optional(S.String),
-    mobile: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "OperatingSystem",
-}) as any as S.Schema<OperatingSystem>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "desktop": S.optional(S.Boolean),
+  "dartId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "mobile": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "OperatingSystem" }) as any as S.Schema<OperatingSystem>;
 
 export type OperatingSystemList = ReadonlyArray<OperatingSystem>;
-export const OperatingSystemList = /*@__PURE__*/ S.Array(
-  OperatingSystem,
-) as any as S.Schema<OperatingSystemList>;
+export const OperatingSystemList = /*@__PURE__*/ S.Array(OperatingSystem) as any as S.Schema<OperatingSystemList>;
 
 /** Contains information about a mobile carrier that can be targeted by ads. */
 export interface MobileCarrier {
@@ -2367,19 +1756,17 @@ export interface MobileCarrier {
   countryCode?: string;
 }
 export const MobileCarrier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    countryDartId: S.optional(S.String),
-    kind: S.optional(S.String),
-    countryCode: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "countryDartId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "countryCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "MobileCarrier" }) as any as S.Schema<MobileCarrier>;
 
 export type MobileCarrierList = ReadonlyArray<MobileCarrier>;
-export const MobileCarrierList = /*@__PURE__*/ S.Array(
-  MobileCarrier,
-) as any as S.Schema<MobileCarrierList>;
+export const MobileCarrierList = /*@__PURE__*/ S.Array(MobileCarrier) as any as S.Schema<MobileCarrierList>;
 
 /** Contains information about a particular version of an operating system that can be targeted by ads. */
 export interface OperatingSystemVersion {
@@ -2397,22 +1784,18 @@ export interface OperatingSystemVersion {
   name?: string;
 }
 export const OperatingSystemVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatingSystem: S.optional(OperatingSystem),
-    minorVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    majorVersion: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperatingSystemVersion",
-}) as any as S.Schema<OperatingSystemVersion>;
+S.Struct({
+  "operatingSystem": S.optional(OperatingSystem),
+  "minorVersion": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "majorVersion": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "OperatingSystemVersion" }) as any as S.Schema<OperatingSystemVersion>;
 
 export type OperatingSystemVersionList = ReadonlyArray<OperatingSystemVersion>;
-export const OperatingSystemVersionList = /*@__PURE__*/ S.Array(
-  OperatingSystemVersion,
-) as any as S.Schema<OperatingSystemVersionList>;
+export const OperatingSystemVersionList = /*@__PURE__*/ S.Array(OperatingSystemVersion) as any as S.Schema<OperatingSystemVersionList>;
 
 /** Contains information about an internet connection type that can be targeted by ads. Clients can use the connection type to target mobile vs. broadband users. */
 export interface ConnectionType {
@@ -2424,17 +1807,15 @@ export interface ConnectionType {
   kind?: string;
 }
 export const ConnectionType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "ConnectionType" }) as any as S.Schema<ConnectionType>;
 
 export type ConnectionTypeList = ReadonlyArray<ConnectionType>;
-export const ConnectionTypeList = /*@__PURE__*/ S.Array(
-  ConnectionType,
-) as any as S.Schema<ConnectionTypeList>;
+export const ConnectionTypeList = /*@__PURE__*/ S.Array(ConnectionType) as any as S.Schema<ConnectionTypeList>;
 
 /** Contains information about a browser that can be targeted by ads. */
 export interface Browser {
@@ -2452,20 +1833,18 @@ export interface Browser {
   kind?: string;
 }
 export const Browser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dartId: S.optional(S.String),
-    name: S.optional(S.String),
-    majorVersion: S.optional(S.String),
-    browserVersionId: S.optional(S.String),
-    minorVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "dartId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "majorVersion": S.optional(S.String),
+  "browserVersionId": S.optional(S.String),
+  "minorVersion": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Browser" }) as any as S.Schema<Browser>;
 
 export type BrowserList = ReadonlyArray<Browser>;
-export const BrowserList = /*@__PURE__*/ S.Array(
-  Browser,
-) as any as S.Schema<BrowserList>;
+export const BrowserList = /*@__PURE__*/ S.Array(Browser) as any as S.Schema<BrowserList>;
 
 /** Contains information about a platform type that can be targeted by ads. */
 export interface PlatformType {
@@ -2477,17 +1856,15 @@ export interface PlatformType {
   name?: string;
 }
 export const PlatformType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "PlatformType" }) as any as S.Schema<PlatformType>;
 
 export type PlatformTypeList = ReadonlyArray<PlatformType>;
-export const PlatformTypeList = /*@__PURE__*/ S.Array(
-  PlatformType,
-) as any as S.Schema<PlatformTypeList>;
+export const PlatformTypeList = /*@__PURE__*/ S.Array(PlatformType) as any as S.Schema<PlatformTypeList>;
 
 /** Technology Targeting. */
 export interface TechnologyTargeting {
@@ -2505,17 +1882,15 @@ export interface TechnologyTargeting {
   platformTypes?: PlatformTypeList;
 }
 export const TechnologyTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatingSystems: S.optional(OperatingSystemList),
-    mobileCarriers: S.optional(MobileCarrierList),
-    operatingSystemVersions: S.optional(OperatingSystemVersionList),
-    connectionTypes: S.optional(ConnectionTypeList),
-    browsers: S.optional(BrowserList),
-    platformTypes: S.optional(PlatformTypeList),
-  }),
-).annotate({
-  identifier: "TechnologyTargeting",
-}) as any as S.Schema<TechnologyTargeting>;
+S.Struct({
+  "operatingSystems": S.optional(OperatingSystemList),
+  "mobileCarriers": S.optional(MobileCarrierList),
+  "operatingSystemVersions": S.optional(OperatingSystemVersionList),
+  "connectionTypes": S.optional(ConnectionTypeList),
+  "browsers": S.optional(BrowserList),
+  "platformTypes": S.optional(PlatformTypeList),
+}),
+).annotate({ identifier: "TechnologyTargeting" }) as any as S.Schema<TechnologyTargeting>;
 
 /** Contains properties of a Campaign Manager ad. */
 export interface Ad {
@@ -2599,52 +1974,48 @@ export interface Ad {
   campaignIdDimensionValue?: DimensionValue;
 }
 export const Ad = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    audienceSegmentId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    eventTagOverrides: S.optional(EventTagOverrideList),
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    placementAssignments: S.optional(PlacementAssignmentList),
-    deliverySchedule: S.optional(DeliverySchedule),
-    contextualKeywordTargeting: S.optional(ContextualKeywordTargeting),
-    size: S.optional(Size),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-    archived: S.optional(S.Boolean),
-    clickThroughUrl: S.optional(ClickThroughUrl),
-    active: S.optional(S.Boolean),
-    clickThroughUrlSuffixProperties: S.optional(
-      ClickThroughUrlSuffixProperties,
-    ),
-    creativeRotation: S.optional(CreativeRotation),
-    id: S.optional(S.String),
-    dynamicClickTracker: S.optional(S.Boolean),
-    campaignId: S.optional(S.String),
-    endTime: S.optional(S.String),
-    advertiserId: S.optional(S.String),
-    dayPartTargeting: S.optional(DayPartTargeting),
-    type: S.optional(AdTypeEnum),
-    name: S.optional(S.String),
-    createInfo: S.optional(LastModifiedInfo),
-    keyValueTargetingExpression: S.optional(KeyValueTargetingExpression),
-    creativeGroupAssignments: S.optional(CreativeGroupAssignmentList),
-    geoTargeting: S.optional(GeoTargeting),
-    remarketingListExpression: S.optional(ListTargetingExpression),
-    comments: S.optional(S.String),
-    defaultClickThroughEventTagProperties: S.optional(
-      DefaultClickThroughEventTagProperties,
-    ),
-    compatibility: S.optional(AdCompatibilityEnum),
-    kind: S.optional(S.String),
-    idDimensionValue: S.optional(DimensionValue),
-    languageTargeting: S.optional(LanguageTargeting),
-    targetingTemplateId: S.optional(S.String),
-    sslCompliant: S.optional(S.Boolean),
-    technologyTargeting: S.optional(TechnologyTargeting),
-    sslRequired: S.optional(S.Boolean),
-    campaignIdDimensionValue: S.optional(DimensionValue),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "audienceSegmentId": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "eventTagOverrides": S.optional(EventTagOverrideList),
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "placementAssignments": S.optional(PlacementAssignmentList),
+  "deliverySchedule": S.optional(DeliverySchedule),
+  "contextualKeywordTargeting": S.optional(ContextualKeywordTargeting),
+  "size": S.optional(Size),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+  "archived": S.optional(S.Boolean),
+  "clickThroughUrl": S.optional(ClickThroughUrl),
+  "active": S.optional(S.Boolean),
+  "clickThroughUrlSuffixProperties": S.optional(ClickThroughUrlSuffixProperties),
+  "creativeRotation": S.optional(CreativeRotation),
+  "id": S.optional(S.String),
+  "dynamicClickTracker": S.optional(S.Boolean),
+  "campaignId": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "advertiserId": S.optional(S.String),
+  "dayPartTargeting": S.optional(DayPartTargeting),
+  "type": S.optional(AdTypeEnum),
+  "name": S.optional(S.String),
+  "createInfo": S.optional(LastModifiedInfo),
+  "keyValueTargetingExpression": S.optional(KeyValueTargetingExpression),
+  "creativeGroupAssignments": S.optional(CreativeGroupAssignmentList),
+  "geoTargeting": S.optional(GeoTargeting),
+  "remarketingListExpression": S.optional(ListTargetingExpression),
+  "comments": S.optional(S.String),
+  "defaultClickThroughEventTagProperties": S.optional(DefaultClickThroughEventTagProperties),
+  "compatibility": S.optional(AdCompatibilityEnum),
+  "kind": S.optional(S.String),
+  "idDimensionValue": S.optional(DimensionValue),
+  "languageTargeting": S.optional(LanguageTargeting),
+  "targetingTemplateId": S.optional(S.String),
+  "sslCompliant": S.optional(S.Boolean),
+  "technologyTargeting": S.optional(TechnologyTargeting),
+  "sslRequired": S.optional(S.Boolean),
+  "campaignIdDimensionValue": S.optional(DimensionValue),
+}),
 ).annotate({ identifier: "Ad" }) as any as S.Schema<Ad>;
 
 export interface GetAdvertiserGroupsRequest {
@@ -2654,19 +2025,11 @@ export interface GetAdvertiserGroupsRequest {
   id: string;
 }
 export const GetAdvertiserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/advertiserGroups/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAdvertiserGroupsRequest",
-}) as any as S.Schema<GetAdvertiserGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/advertiserGroups/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetAdvertiserGroupsRequest" }) as any as S.Schema<GetAdvertiserGroupsRequest>;
 
 /** Groups advertisers together so that reports can be generated for the entire group at once. */
 export interface AdvertiserGroup {
@@ -2680,15 +2043,13 @@ export interface AdvertiserGroup {
   kind?: string;
 }
 export const AdvertiserGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AdvertiserGroup",
-}) as any as S.Schema<AdvertiserGroup>;
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AdvertiserGroup" }) as any as S.Schema<AdvertiserGroup>;
 
 export interface GetAdvertiserLandingPagesRequest {
   /** User profile ID associated with this request. */
@@ -2697,33 +2058,13 @@ export interface GetAdvertiserLandingPagesRequest {
   id: string;
 }
 export const GetAdvertiserLandingPagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/advertiserLandingPages/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAdvertiserLandingPagesRequest",
-}) as any as S.Schema<GetAdvertiserLandingPagesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/advertiserLandingPages/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetAdvertiserLandingPagesRequest" }) as any as S.Schema<GetAdvertiserLandingPagesRequest>;
 
-export type MobileAppDirectoryEnum =
-  | "UNKNOWN"
-  | "APPLE_APP_STORE"
-  | "GOOGLE_PLAY_STORE"
-  | "ROKU_APP_STORE"
-  | "AMAZON_FIRETV_APP_STORE"
-  | "PLAYSTATION_APP_STORE"
-  | "APPLE_TV_APP_STORE"
-  | "XBOX_APP_STORE"
-  | "SAMSUNG_TV_APP_STORE"
-  | "ANDROID_TV_APP_STORE"
-  | "GENERIC_CTV_APP_STORE"
-  | (string & {});
+export type MobileAppDirectoryEnum = "UNKNOWN" | "APPLE_APP_STORE" | "GOOGLE_PLAY_STORE" | "ROKU_APP_STORE" | "AMAZON_FIRETV_APP_STORE" | "PLAYSTATION_APP_STORE" | "APPLE_TV_APP_STORE" | "XBOX_APP_STORE" | "SAMSUNG_TV_APP_STORE" | "ANDROID_TV_APP_STORE" | "GENERIC_CTV_APP_STORE";
 export const MobileAppDirectoryEnum = /*@__PURE__*/ S.String;
 
 /** Contains information about a mobile app. Used as a landing page deep link. */
@@ -2740,13 +2081,13 @@ export interface MobileApp {
   directory?: MobileAppDirectoryEnum;
 }
 export const MobileApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    publisherName: S.optional(S.String),
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    directory: S.optional(MobileAppDirectoryEnum),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "publisherName": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "directory": S.optional(MobileAppDirectoryEnum),
+}),
 ).annotate({ identifier: "MobileApp" }) as any as S.Schema<MobileApp>;
 
 /** Contains information about a landing page deep link. */
@@ -2763,19 +2104,17 @@ export interface DeepLink {
   fallbackUrl?: string;
 }
 export const DeepLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    mobileApp: S.optional(MobileApp),
-    appUrl: S.optional(S.String),
-    remarketingListIds: S.optional(StringList),
-    fallbackUrl: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "mobileApp": S.optional(MobileApp),
+  "appUrl": S.optional(S.String),
+  "remarketingListIds": S.optional(StringList),
+  "fallbackUrl": S.optional(S.String),
+}),
 ).annotate({ identifier: "DeepLink" }) as any as S.Schema<DeepLink>;
 
 export type DeepLinkList = ReadonlyArray<DeepLink>;
-export const DeepLinkList = /*@__PURE__*/ S.Array(
-  DeepLink,
-) as any as S.Schema<DeepLinkList>;
+export const DeepLinkList = /*@__PURE__*/ S.Array(DeepLink) as any as S.Schema<DeepLinkList>;
 
 /** Contains information about where a user's browser is taken after the user clicks an ad. */
 export interface LandingPage {
@@ -2795,15 +2134,15 @@ export interface LandingPage {
   advertiserId?: string;
 }
 export const LandingPage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    deepLinks: S.optional(DeepLinkList),
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    archived: S.optional(S.Boolean),
-    advertiserId: S.optional(S.String),
-  }),
+S.Struct({
+  "url": S.optional(S.String),
+  "deepLinks": S.optional(DeepLinkList),
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "archived": S.optional(S.Boolean),
+  "advertiserId": S.optional(S.String),
+}),
 ).annotate({ identifier: "LandingPage" }) as any as S.Schema<LandingPage>;
 
 export interface GetAdvertisersRequest {
@@ -2813,50 +2152,23 @@ export interface GetAdvertisersRequest {
   id: string;
 }
 export const GetAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/advertisers/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAdvertisersRequest",
-}) as any as S.Schema<GetAdvertisersRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/advertisers/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetAdvertisersRequest" }) as any as S.Schema<GetAdvertisersRequest>;
 
-export type AdvertiserEuPoliticalAdsDeclarationEnum =
-  | "ADVERTISER_PLANS_TO_SERVE_EU_POLITICAL_ADS"
-  | "ADVERTISER_DOES_NOT_PLAN_TO_SERVE_EU_POLITICAL_ADS"
-  | (string & {});
+export type AdvertiserEuPoliticalAdsDeclarationEnum = "ADVERTISER_PLANS_TO_SERVE_EU_POLITICAL_ADS" | "ADVERTISER_DOES_NOT_PLAN_TO_SERVE_EU_POLITICAL_ADS";
 export const AdvertiserEuPoliticalAdsDeclarationEnum = /*@__PURE__*/ S.String;
 
-export type AdvertiserStatusEnum = "APPROVED" | "ON_HOLD" | (string & {});
+export type AdvertiserStatusEnum = "APPROVED" | "ON_HOLD";
 export const AdvertiserStatusEnum = /*@__PURE__*/ S.String;
 
-export type MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum =
-  | "NONE"
-  | "INTEGRAL_AD_SCIENCE"
-  | "DOUBLE_VERIFY"
-  | (string & {});
-export const MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum =
-  /*@__PURE__*/ S.String;
+export type MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum = "NONE" | "INTEGRAL_AD_SCIENCE" | "DOUBLE_VERIFY";
+export const MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum = /*@__PURE__*/ S.String;
 
-export type MeasurementPartnerAdvertiserLinkLinkStatusEnum =
-  | "MEASUREMENT_PARTNER_UNLINKED"
-  | "MEASUREMENT_PARTNER_LINKED"
-  | "MEASUREMENT_PARTNER_LINK_PENDING"
-  | "MEASUREMENT_PARTNER_LINK_FAILURE"
-  | "MEASUREMENT_PARTNER_LINK_OPT_OUT"
-  | "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING"
-  | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING"
-  | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING"
-  | "MEASUREMENT_PARTNER_UNLINK_PENDING"
-  | (string & {});
-export const MeasurementPartnerAdvertiserLinkLinkStatusEnum =
-  /*@__PURE__*/ S.String;
+export type MeasurementPartnerAdvertiserLinkLinkStatusEnum = "MEASUREMENT_PARTNER_UNLINKED" | "MEASUREMENT_PARTNER_LINKED" | "MEASUREMENT_PARTNER_LINK_PENDING" | "MEASUREMENT_PARTNER_LINK_FAILURE" | "MEASUREMENT_PARTNER_LINK_OPT_OUT" | "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" | "MEASUREMENT_PARTNER_UNLINK_PENDING";
+export const MeasurementPartnerAdvertiserLinkLinkStatusEnum = /*@__PURE__*/ S.String;
 
 export interface MeasurementPartnerAdvertiserLink {
   /** partner Advertiser Id. */
@@ -2867,16 +2179,12 @@ export interface MeasurementPartnerAdvertiserLink {
   linkStatus?: MeasurementPartnerAdvertiserLinkLinkStatusEnum;
 }
 export const MeasurementPartnerAdvertiserLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partnerAdvertiserId: S.optional(S.String),
-    measurementPartner: S.optional(
-      MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum,
-    ),
-    linkStatus: S.optional(MeasurementPartnerAdvertiserLinkLinkStatusEnum),
-  }),
-).annotate({
-  identifier: "MeasurementPartnerAdvertiserLink",
-}) as any as S.Schema<MeasurementPartnerAdvertiserLink>;
+S.Struct({
+  "partnerAdvertiserId": S.optional(S.String),
+  "measurementPartner": S.optional(MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum),
+  "linkStatus": S.optional(MeasurementPartnerAdvertiserLinkLinkStatusEnum),
+}),
+).annotate({ identifier: "MeasurementPartnerAdvertiserLink" }) as any as S.Schema<MeasurementPartnerAdvertiserLink>;
 
 /** Contains properties of a Campaign Manager advertiser. */
 export interface Advertiser {
@@ -2916,27 +2224,25 @@ export interface Advertiser {
   accountId?: string;
 }
 export const Advertiser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idDimensionValue: S.optional(DimensionValue),
-    suspended: S.optional(S.Boolean),
-    floodlightConfigurationIdDimensionValue: S.optional(DimensionValue),
-    kind: S.optional(S.String),
-    euPoliticalAdsDeclaration: S.optional(
-      AdvertiserEuPoliticalAdsDeclarationEnum,
-    ),
-    id: S.optional(S.String),
-    defaultClickThroughEventTagId: S.optional(S.String),
-    status: S.optional(AdvertiserStatusEnum),
-    floodlightConfigurationId: S.optional(S.String),
-    defaultEmail: S.optional(S.String),
-    originalFloodlightConfigurationId: S.optional(S.String),
-    clickThroughUrlSuffix: S.optional(S.String),
-    name: S.optional(S.String),
-    measurementPartnerLink: S.optional(MeasurementPartnerAdvertiserLink),
-    subaccountId: S.optional(S.String),
-    advertiserGroupId: S.optional(S.String),
-    accountId: S.optional(S.String),
-  }),
+S.Struct({
+  "idDimensionValue": S.optional(DimensionValue),
+  "suspended": S.optional(S.Boolean),
+  "floodlightConfigurationIdDimensionValue": S.optional(DimensionValue),
+  "kind": S.optional(S.String),
+  "euPoliticalAdsDeclaration": S.optional(AdvertiserEuPoliticalAdsDeclarationEnum),
+  "id": S.optional(S.String),
+  "defaultClickThroughEventTagId": S.optional(S.String),
+  "status": S.optional(AdvertiserStatusEnum),
+  "floodlightConfigurationId": S.optional(S.String),
+  "defaultEmail": S.optional(S.String),
+  "originalFloodlightConfigurationId": S.optional(S.String),
+  "clickThroughUrlSuffix": S.optional(S.String),
+  "name": S.optional(S.String),
+  "measurementPartnerLink": S.optional(MeasurementPartnerAdvertiserLink),
+  "subaccountId": S.optional(S.String),
+  "advertiserGroupId": S.optional(S.String),
+  "accountId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Advertiser" }) as any as S.Schema<Advertiser>;
 
 export interface GetBillingProfilesRequest {
@@ -2946,32 +2252,16 @@ export interface GetBillingProfilesRequest {
   id: string;
 }
 export const GetBillingProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/billingProfiles/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBillingProfilesRequest",
-}) as any as S.Schema<GetBillingProfilesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/billingProfiles/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetBillingProfilesRequest" }) as any as S.Schema<GetBillingProfilesRequest>;
 
-export type BillingProfileStatusEnum =
-  | "UNDER_REVIEW"
-  | "ACTIVE"
-  | "ARCHIVED"
-  | (string & {});
+export type BillingProfileStatusEnum = "UNDER_REVIEW" | "ACTIVE" | "ARCHIVED";
 export const BillingProfileStatusEnum = /*@__PURE__*/ S.String;
 
-export type BillingProfileInvoiceLevelEnum =
-  | "ACCOUNT_LEVEL"
-  | "ADVERTISER_LEVEL"
-  | "CAMPAIGN_LEVEL"
-  | (string & {});
+export type BillingProfileInvoiceLevelEnum = "ACCOUNT_LEVEL" | "ADVERTISER_LEVEL" | "CAMPAIGN_LEVEL";
 export const BillingProfileInvoiceLevelEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a Campaign Manager Billing Profile. */
@@ -3004,21 +2294,21 @@ export interface BillingProfile {
   paymentsCustomerId?: string;
 }
 export const BillingProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countryCode: S.optional(S.String),
-    isDefault: S.optional(S.Boolean),
-    status: S.optional(BillingProfileStatusEnum),
-    id: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-    kind: S.optional(S.String),
-    consolidatedInvoice: S.optional(S.Boolean),
-    purchaseOrder: S.optional(S.String),
-    paymentsAccountId: S.optional(S.String),
-    invoiceLevel: S.optional(BillingProfileInvoiceLevelEnum),
-    name: S.optional(S.String),
-    secondaryPaymentsCustomerId: S.optional(S.String),
-    paymentsCustomerId: S.optional(S.String),
-  }),
+S.Struct({
+  "countryCode": S.optional(S.String),
+  "isDefault": S.optional(S.Boolean),
+  "status": S.optional(BillingProfileStatusEnum),
+  "id": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "consolidatedInvoice": S.optional(S.Boolean),
+  "purchaseOrder": S.optional(S.String),
+  "paymentsAccountId": S.optional(S.String),
+  "invoiceLevel": S.optional(BillingProfileInvoiceLevelEnum),
+  "name": S.optional(S.String),
+  "secondaryPaymentsCustomerId": S.optional(S.String),
+  "paymentsCustomerId": S.optional(S.String),
+}),
 ).annotate({ identifier: "BillingProfile" }) as any as S.Schema<BillingProfile>;
 
 export interface GetCampaignsRequest {
@@ -3028,29 +2318,14 @@ export interface GetCampaignsRequest {
   id: string;
 }
 export const GetCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/campaigns/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCampaignsRequest",
-}) as any as S.Schema<GetCampaignsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/campaigns/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetCampaignsRequest" }) as any as S.Schema<GetCampaignsRequest>;
 
-export type CreativeOptimizationConfigurationOptimizationModelEnum =
-  | "CLICK"
-  | "POST_CLICK"
-  | "POST_IMPRESSION"
-  | "POST_CLICK_AND_IMPRESSION"
-  | "VIDEO_COMPLETION"
-  | (string & {});
-export const CreativeOptimizationConfigurationOptimizationModelEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeOptimizationConfigurationOptimizationModelEnum = "CLICK" | "POST_CLICK" | "POST_IMPRESSION" | "POST_CLICK_AND_IMPRESSION" | "VIDEO_COMPLETION";
+export const CreativeOptimizationConfigurationOptimizationModelEnum = /*@__PURE__*/ S.String;
 
 /** Creative optimization activity. */
 export interface OptimizationActivity {
@@ -3062,19 +2337,15 @@ export interface OptimizationActivity {
   weight?: number;
 }
 export const OptimizationActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    floodlightActivityIdDimensionValue: S.optional(DimensionValue),
-    floodlightActivityId: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "OptimizationActivity",
-}) as any as S.Schema<OptimizationActivity>;
+S.Struct({
+  "floodlightActivityIdDimensionValue": S.optional(DimensionValue),
+  "floodlightActivityId": S.optional(S.String),
+  "weight": S.optional(S.Number),
+}),
+).annotate({ identifier: "OptimizationActivity" }) as any as S.Schema<OptimizationActivity>;
 
 export type OptimizationActivityList = ReadonlyArray<OptimizationActivity>;
-export const OptimizationActivityList = /*@__PURE__*/ S.Array(
-  OptimizationActivity,
-) as any as S.Schema<OptimizationActivityList>;
+export const OptimizationActivityList = /*@__PURE__*/ S.Array(OptimizationActivity) as any as S.Schema<OptimizationActivityList>;
 
 /** Creative optimization settings. */
 export interface CreativeOptimizationConfiguration {
@@ -3088,17 +2359,13 @@ export interface CreativeOptimizationConfiguration {
   optimizationActivitys?: OptimizationActivityList;
 }
 export const CreativeOptimizationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    optimizationModel: S.optional(
-      CreativeOptimizationConfigurationOptimizationModelEnum,
-    ),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    optimizationActivitys: S.optional(OptimizationActivityList),
-  }),
-).annotate({
-  identifier: "CreativeOptimizationConfiguration",
-}) as any as S.Schema<CreativeOptimizationConfiguration>;
+S.Struct({
+  "optimizationModel": S.optional(CreativeOptimizationConfigurationOptimizationModelEnum),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "optimizationActivitys": S.optional(OptimizationActivityList),
+}),
+).annotate({ identifier: "CreativeOptimizationConfiguration" }) as any as S.Schema<CreativeOptimizationConfiguration>;
 
 /** Campaign ad blocking settings. */
 export interface AdBlockingConfiguration {
@@ -3106,40 +2373,19 @@ export interface AdBlockingConfiguration {
   enabled?: boolean;
 }
 export const AdBlockingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdBlockingConfiguration",
-}) as any as S.Schema<AdBlockingConfiguration>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AdBlockingConfiguration" }) as any as S.Schema<AdBlockingConfiguration>;
 
-export type CampaignEuPoliticalAdsDeclarationEnum =
-  | "CONTAINS_EU_POLITICAL_ADS"
-  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADS"
-  | (string & {});
+export type CampaignEuPoliticalAdsDeclarationEnum = "CONTAINS_EU_POLITICAL_ADS" | "DOES_NOT_CONTAIN_EU_POLITICAL_ADS";
 export const CampaignEuPoliticalAdsDeclarationEnum = /*@__PURE__*/ S.String;
 
-export type MeasurementPartnerCampaignLinkMeasurementPartnerEnum =
-  | "NONE"
-  | "INTEGRAL_AD_SCIENCE"
-  | "DOUBLE_VERIFY"
-  | (string & {});
-export const MeasurementPartnerCampaignLinkMeasurementPartnerEnum =
-  /*@__PURE__*/ S.String;
+export type MeasurementPartnerCampaignLinkMeasurementPartnerEnum = "NONE" | "INTEGRAL_AD_SCIENCE" | "DOUBLE_VERIFY";
+export const MeasurementPartnerCampaignLinkMeasurementPartnerEnum = /*@__PURE__*/ S.String;
 
-export type MeasurementPartnerCampaignLinkLinkStatusEnum =
-  | "MEASUREMENT_PARTNER_UNLINKED"
-  | "MEASUREMENT_PARTNER_LINKED"
-  | "MEASUREMENT_PARTNER_LINK_PENDING"
-  | "MEASUREMENT_PARTNER_LINK_FAILURE"
-  | "MEASUREMENT_PARTNER_LINK_OPT_OUT"
-  | "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING"
-  | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING"
-  | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING"
-  | "MEASUREMENT_PARTNER_UNLINK_PENDING"
-  | (string & {});
-export const MeasurementPartnerCampaignLinkLinkStatusEnum =
-  /*@__PURE__*/ S.String;
+export type MeasurementPartnerCampaignLinkLinkStatusEnum = "MEASUREMENT_PARTNER_UNLINKED" | "MEASUREMENT_PARTNER_LINKED" | "MEASUREMENT_PARTNER_LINK_PENDING" | "MEASUREMENT_PARTNER_LINK_FAILURE" | "MEASUREMENT_PARTNER_LINK_OPT_OUT" | "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" | "MEASUREMENT_PARTNER_UNLINK_PENDING";
+export const MeasurementPartnerCampaignLinkLinkStatusEnum = /*@__PURE__*/ S.String;
 
 export interface MeasurementPartnerCampaignLink {
   /** Measurement partner used for tag wrapping. */
@@ -3150,16 +2396,12 @@ export interface MeasurementPartnerCampaignLink {
   partnerCampaignId?: string;
 }
 export const MeasurementPartnerCampaignLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    measurementPartner: S.optional(
-      MeasurementPartnerCampaignLinkMeasurementPartnerEnum,
-    ),
-    linkStatus: S.optional(MeasurementPartnerCampaignLinkLinkStatusEnum),
-    partnerCampaignId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MeasurementPartnerCampaignLink",
-}) as any as S.Schema<MeasurementPartnerCampaignLink>;
+S.Struct({
+  "measurementPartner": S.optional(MeasurementPartnerCampaignLinkMeasurementPartnerEnum),
+  "linkStatus": S.optional(MeasurementPartnerCampaignLinkLinkStatusEnum),
+  "partnerCampaignId": S.optional(S.String),
+}),
+).annotate({ identifier: "MeasurementPartnerCampaignLink" }) as any as S.Schema<MeasurementPartnerCampaignLink>;
 
 /** Audience Segment. */
 export interface AudienceSegment {
@@ -3171,19 +2413,15 @@ export interface AudienceSegment {
   name?: string;
 }
 export const AudienceSegment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allocation: S.optional(S.Number),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AudienceSegment",
-}) as any as S.Schema<AudienceSegment>;
+S.Struct({
+  "allocation": S.optional(S.Number),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "AudienceSegment" }) as any as S.Schema<AudienceSegment>;
 
 export type AudienceSegmentList = ReadonlyArray<AudienceSegment>;
-export const AudienceSegmentList = /*@__PURE__*/ S.Array(
-  AudienceSegment,
-) as any as S.Schema<AudienceSegmentList>;
+export const AudienceSegmentList = /*@__PURE__*/ S.Array(AudienceSegment) as any as S.Schema<AudienceSegmentList>;
 
 /** Audience Segment Group. */
 export interface AudienceSegmentGroup {
@@ -3195,25 +2433,18 @@ export interface AudienceSegmentGroup {
   name?: string;
 }
 export const AudienceSegmentGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audienceSegments: S.optional(AudienceSegmentList),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AudienceSegmentGroup",
-}) as any as S.Schema<AudienceSegmentGroup>;
+S.Struct({
+  "audienceSegments": S.optional(AudienceSegmentList),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "AudienceSegmentGroup" }) as any as S.Schema<AudienceSegmentGroup>;
 
 export type AudienceSegmentGroupList = ReadonlyArray<AudienceSegmentGroup>;
-export const AudienceSegmentGroupList = /*@__PURE__*/ S.Array(
-  AudienceSegmentGroup,
-) as any as S.Schema<AudienceSegmentGroupList>;
+export const AudienceSegmentGroupList = /*@__PURE__*/ S.Array(AudienceSegmentGroup) as any as S.Schema<AudienceSegmentGroupList>;
 
-export type CreativeOptimizationConfigurationList =
-  ReadonlyArray<CreativeOptimizationConfiguration>;
-export const CreativeOptimizationConfigurationList = /*@__PURE__*/ S.Array(
-  CreativeOptimizationConfiguration,
-) as any as S.Schema<CreativeOptimizationConfigurationList>;
+export type CreativeOptimizationConfigurationList = ReadonlyArray<CreativeOptimizationConfiguration>;
+export const CreativeOptimizationConfigurationList = /*@__PURE__*/ S.Array(CreativeOptimizationConfiguration) as any as S.Schema<CreativeOptimizationConfigurationList>;
 
 /** Contains properties of a Campaign Manager campaign. */
 export interface Campaign {
@@ -3273,46 +2504,36 @@ export interface Campaign {
   additionalCreativeOptimizationConfigurations?: CreativeOptimizationConfigurationList;
 }
 export const Campaign = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    eventTagOverrides: S.optional(EventTagOverrideList),
-    accountId: S.optional(S.String),
-    creativeGroupIds: S.optional(StringList),
-    startDate: S.optional(S.String),
-    defaultLandingPageId: S.optional(S.String),
-    creativeOptimizationConfiguration: S.optional(
-      CreativeOptimizationConfiguration,
-    ),
-    comment: S.optional(S.String),
-    archived: S.optional(S.Boolean),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-    clickThroughUrlSuffixProperties: S.optional(
-      ClickThroughUrlSuffixProperties,
-    ),
-    adBlockingConfiguration: S.optional(AdBlockingConfiguration),
-    euPoliticalAdsDeclaration: S.optional(
-      CampaignEuPoliticalAdsDeclarationEnum,
-    ),
-    id: S.optional(S.String),
-    endDate: S.optional(S.String),
-    externalId: S.optional(S.String),
-    advertiserId: S.optional(S.String),
-    advertiserGroupId: S.optional(S.String),
-    name: S.optional(S.String),
-    createInfo: S.optional(LastModifiedInfo),
-    measurementPartnerLink: S.optional(MeasurementPartnerCampaignLink),
-    billingInvoiceCode: S.optional(S.String),
-    defaultClickThroughEventTagProperties: S.optional(
-      DefaultClickThroughEventTagProperties,
-    ),
-    idDimensionValue: S.optional(DimensionValue),
-    kind: S.optional(S.String),
-    audienceSegmentGroups: S.optional(AudienceSegmentGroupList),
-    additionalCreativeOptimizationConfigurations: S.optional(
-      CreativeOptimizationConfigurationList,
-    ),
-  }),
+S.Struct({
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "eventTagOverrides": S.optional(EventTagOverrideList),
+  "accountId": S.optional(S.String),
+  "creativeGroupIds": S.optional(StringList),
+  "startDate": S.optional(S.String),
+  "defaultLandingPageId": S.optional(S.String),
+  "creativeOptimizationConfiguration": S.optional(CreativeOptimizationConfiguration),
+  "comment": S.optional(S.String),
+  "archived": S.optional(S.Boolean),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+  "clickThroughUrlSuffixProperties": S.optional(ClickThroughUrlSuffixProperties),
+  "adBlockingConfiguration": S.optional(AdBlockingConfiguration),
+  "euPoliticalAdsDeclaration": S.optional(CampaignEuPoliticalAdsDeclarationEnum),
+  "id": S.optional(S.String),
+  "endDate": S.optional(S.String),
+  "externalId": S.optional(S.String),
+  "advertiserId": S.optional(S.String),
+  "advertiserGroupId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "createInfo": S.optional(LastModifiedInfo),
+  "measurementPartnerLink": S.optional(MeasurementPartnerCampaignLink),
+  "billingInvoiceCode": S.optional(S.String),
+  "defaultClickThroughEventTagProperties": S.optional(DefaultClickThroughEventTagProperties),
+  "idDimensionValue": S.optional(DimensionValue),
+  "kind": S.optional(S.String),
+  "audienceSegmentGroups": S.optional(AudienceSegmentGroupList),
+  "additionalCreativeOptimizationConfigurations": S.optional(CreativeOptimizationConfigurationList),
+}),
 ).annotate({ identifier: "Campaign" }) as any as S.Schema<Campaign>;
 
 export interface GetChangeLogsRequest {
@@ -3322,19 +2543,11 @@ export interface GetChangeLogsRequest {
   id: string;
 }
 export const GetChangeLogsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/changeLogs/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetChangeLogsRequest",
-}) as any as S.Schema<GetChangeLogsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/changeLogs/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetChangeLogsRequest" }) as any as S.Schema<GetChangeLogsRequest>;
 
 /** Describes a change that a user has made to a resource. */
 export interface ChangeLog {
@@ -3367,22 +2580,22 @@ export interface ChangeLog {
   fieldName?: string;
 }
 export const ChangeLog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changeTime: S.optional(S.String),
-    action: S.optional(S.String),
-    newValue: S.optional(S.String),
-    userProfileId: S.optional(S.String),
-    userProfileName: S.optional(S.String),
-    subaccountId: S.optional(S.String),
-    objectId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    objectType: S.optional(S.String),
-    oldValue: S.optional(S.String),
-    transactionId: S.optional(S.String),
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    fieldName: S.optional(S.String),
-  }),
+S.Struct({
+  "changeTime": S.optional(S.String),
+  "action": S.optional(S.String),
+  "newValue": S.optional(S.String),
+  "userProfileId": S.optional(S.String),
+  "userProfileName": S.optional(S.String),
+  "subaccountId": S.optional(S.String),
+  "objectId": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "objectType": S.optional(S.String),
+  "oldValue": S.optional(S.String),
+  "transactionId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "fieldName": S.optional(S.String),
+}),
 ).annotate({ identifier: "ChangeLog" }) as any as S.Schema<ChangeLog>;
 
 export interface GetConnectionTypesRequest {
@@ -3392,19 +2605,11 @@ export interface GetConnectionTypesRequest {
   id: string;
 }
 export const GetConnectionTypesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/connectionTypes/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetConnectionTypesRequest",
-}) as any as S.Schema<GetConnectionTypesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/connectionTypes/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetConnectionTypesRequest" }) as any as S.Schema<GetConnectionTypesRequest>;
 
 export interface GetContentCategoriesRequest {
   /** User profile ID associated with this request. */
@@ -3413,19 +2618,11 @@ export interface GetContentCategoriesRequest {
   id: string;
 }
 export const GetContentCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/contentCategories/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetContentCategoriesRequest",
-}) as any as S.Schema<GetContentCategoriesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/contentCategories/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetContentCategoriesRequest" }) as any as S.Schema<GetContentCategoriesRequest>;
 
 export interface ContentCategory {
   /** ID of this content category. This is a read-only, auto-generated field. */
@@ -3438,15 +2635,13 @@ export interface ContentCategory {
   kind?: string;
 }
 export const ContentCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContentCategory",
-}) as any as S.Schema<ContentCategory>;
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ContentCategory" }) as any as S.Schema<ContentCategory>;
 
 export interface GetCountriesRequest {
   /** User profile ID associated with this request. */
@@ -3455,19 +2650,11 @@ export interface GetCountriesRequest {
   dartId: string;
 }
 export const GetCountriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    dartId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/countries/{+dartId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCountriesRequest",
-}) as any as S.Schema<GetCountriesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "dartId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/countries/{+dartId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetCountriesRequest" }) as any as S.Schema<GetCountriesRequest>;
 
 export interface GetCreativeFieldsRequest {
   /** User profile ID associated with this request. */
@@ -3476,19 +2663,11 @@ export interface GetCreativeFieldsRequest {
   id: string;
 }
 export const GetCreativeFieldsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/creativeFields/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCreativeFieldsRequest",
-}) as any as S.Schema<GetCreativeFieldsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/creativeFields/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetCreativeFieldsRequest" }) as any as S.Schema<GetCreativeFieldsRequest>;
 
 /** Contains properties of a creative field. */
 export interface CreativeField {
@@ -3508,15 +2687,15 @@ export interface CreativeField {
   advertiserIdDimensionValue?: DimensionValue;
 }
 export const CreativeField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    advertiserId: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-  }),
+S.Struct({
+  "advertiserId": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+}),
 ).annotate({ identifier: "CreativeField" }) as any as S.Schema<CreativeField>;
 
 export interface GetCreativeFieldValuesRequest {
@@ -3528,20 +2707,12 @@ export interface GetCreativeFieldValuesRequest {
   creativeFieldId: string;
 }
 export const GetCreativeFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    creativeFieldId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCreativeFieldValuesRequest",
-}) as any as S.Schema<GetCreativeFieldValuesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+  "creativeFieldId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetCreativeFieldValuesRequest" }) as any as S.Schema<GetCreativeFieldValuesRequest>;
 
 /** Contains properties of a creative field value. */
 export interface CreativeFieldValue {
@@ -3553,14 +2724,12 @@ export interface CreativeFieldValue {
   value?: string;
 }
 export const CreativeFieldValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeFieldValue",
-}) as any as S.Schema<CreativeFieldValue>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeFieldValue" }) as any as S.Schema<CreativeFieldValue>;
 
 export interface GetCreativeGroupsRequest {
   /** User profile ID associated with this request. */
@@ -3569,19 +2738,11 @@ export interface GetCreativeGroupsRequest {
   id: string;
 }
 export const GetCreativeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/creativeGroups/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCreativeGroupsRequest",
-}) as any as S.Schema<GetCreativeGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/creativeGroups/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetCreativeGroupsRequest" }) as any as S.Schema<GetCreativeGroupsRequest>;
 
 /** Contains properties of a creative group. */
 export interface CreativeGroup {
@@ -3603,16 +2764,16 @@ export interface CreativeGroup {
   kind?: string;
 }
 export const CreativeGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    advertiserId: S.optional(S.String),
-    subaccountId: S.optional(S.String),
-    groupNumber: S.optional(S.Number),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "advertiserId": S.optional(S.String),
+  "subaccountId": S.optional(S.String),
+  "groupNumber": S.optional(S.Number),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "CreativeGroup" }) as any as S.Schema<CreativeGroup>;
 
 export interface GetCreativesRequest {
@@ -3622,43 +2783,14 @@ export interface GetCreativesRequest {
   id: string;
 }
 export const GetCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/creatives/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCreativesRequest",
-}) as any as S.Schema<GetCreativesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/creatives/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetCreativesRequest" }) as any as S.Schema<GetCreativesRequest>;
 
-export type ThirdPartyTrackingUrlThirdPartyUrlTypeEnum =
-  | "IMPRESSION"
-  | "CLICK_TRACKING"
-  | "VIDEO_START"
-  | "VIDEO_FIRST_QUARTILE"
-  | "VIDEO_MIDPOINT"
-  | "VIDEO_THIRD_QUARTILE"
-  | "VIDEO_COMPLETE"
-  | "VIDEO_MUTE"
-  | "VIDEO_PAUSE"
-  | "VIDEO_REWIND"
-  | "VIDEO_FULLSCREEN"
-  | "VIDEO_STOP"
-  | "VIDEO_CUSTOM"
-  | "SURVEY"
-  | "RICH_MEDIA_IMPRESSION"
-  | "RICH_MEDIA_RM_IMPRESSION"
-  | "RICH_MEDIA_BACKUP_IMPRESSION"
-  | "VIDEO_SKIP"
-  | "VIDEO_PROGRESS"
-  | (string & {});
-export const ThirdPartyTrackingUrlThirdPartyUrlTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ThirdPartyTrackingUrlThirdPartyUrlTypeEnum = "IMPRESSION" | "CLICK_TRACKING" | "VIDEO_START" | "VIDEO_FIRST_QUARTILE" | "VIDEO_MIDPOINT" | "VIDEO_THIRD_QUARTILE" | "VIDEO_COMPLETE" | "VIDEO_MUTE" | "VIDEO_PAUSE" | "VIDEO_REWIND" | "VIDEO_FULLSCREEN" | "VIDEO_STOP" | "VIDEO_CUSTOM" | "SURVEY" | "RICH_MEDIA_IMPRESSION" | "RICH_MEDIA_RM_IMPRESSION" | "RICH_MEDIA_BACKUP_IMPRESSION" | "VIDEO_SKIP" | "VIDEO_PROGRESS";
+export const ThirdPartyTrackingUrlThirdPartyUrlTypeEnum = /*@__PURE__*/ S.String;
 
 /** Third-party Tracking URL. */
 export interface ThirdPartyTrackingUrl {
@@ -3668,20 +2800,16 @@ export interface ThirdPartyTrackingUrl {
   url?: string;
 }
 export const ThirdPartyTrackingUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thirdPartyUrlType: S.optional(ThirdPartyTrackingUrlThirdPartyUrlTypeEnum),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ThirdPartyTrackingUrl",
-}) as any as S.Schema<ThirdPartyTrackingUrl>;
+S.Struct({
+  "thirdPartyUrlType": S.optional(ThirdPartyTrackingUrlThirdPartyUrlTypeEnum),
+  "url": S.optional(S.String),
+}),
+).annotate({ identifier: "ThirdPartyTrackingUrl" }) as any as S.Schema<ThirdPartyTrackingUrl>;
 
 export type ThirdPartyTrackingUrlList = ReadonlyArray<ThirdPartyTrackingUrl>;
-export const ThirdPartyTrackingUrlList = /*@__PURE__*/ S.Array(
-  ThirdPartyTrackingUrl,
-) as any as S.Schema<ThirdPartyTrackingUrlList>;
+export const ThirdPartyTrackingUrlList = /*@__PURE__*/ S.Array(ThirdPartyTrackingUrl) as any as S.Schema<ThirdPartyTrackingUrlList>;
 
-export type CreativeAuthoringToolEnum = "NINJA" | "SWIFFY" | (string & {});
+export type CreativeAuthoringToolEnum = "NINJA" | "SWIFFY";
 export const CreativeAuthoringToolEnum = /*@__PURE__*/ S.String;
 
 /** Click-through URL */
@@ -3694,20 +2822,14 @@ export interface CreativeClickThroughUrl {
   landingPageId?: string;
 }
 export const CreativeClickThroughUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    computedClickThroughUrl: S.optional(S.String),
-    customClickThroughUrl: S.optional(S.String),
-    landingPageId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeClickThroughUrl",
-}) as any as S.Schema<CreativeClickThroughUrl>;
+S.Struct({
+  "computedClickThroughUrl": S.optional(S.String),
+  "customClickThroughUrl": S.optional(S.String),
+  "landingPageId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeClickThroughUrl" }) as any as S.Schema<CreativeClickThroughUrl>;
 
-export type TargetWindowTargetWindowOptionEnum =
-  | "NEW_WINDOW"
-  | "CURRENT_WINDOW"
-  | "CUSTOM"
-  | (string & {});
+export type TargetWindowTargetWindowOptionEnum = "NEW_WINDOW" | "CURRENT_WINDOW" | "CUSTOM";
 export const TargetWindowTargetWindowOptionEnum = /*@__PURE__*/ S.String;
 
 /** Target Window. */
@@ -3718,10 +2840,10 @@ export interface TargetWindow {
   targetWindowOption?: TargetWindowTargetWindowOptionEnum;
 }
 export const TargetWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customHtml: S.optional(S.String),
-    targetWindowOption: S.optional(TargetWindowTargetWindowOptionEnum),
-  }),
+S.Struct({
+  "customHtml": S.optional(S.String),
+  "targetWindowOption": S.optional(TargetWindowTargetWindowOptionEnum),
+}),
 ).annotate({ identifier: "TargetWindow" }) as any as S.Schema<TargetWindow>;
 
 /** Creative Click Tag. */
@@ -3734,17 +2856,15 @@ export interface ClickTag {
   eventName?: string;
 }
 export const ClickTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clickThroughUrl: S.optional(CreativeClickThroughUrl),
-    name: S.optional(S.String),
-    eventName: S.optional(S.String),
-  }),
+S.Struct({
+  "clickThroughUrl": S.optional(CreativeClickThroughUrl),
+  "name": S.optional(S.String),
+  "eventName": S.optional(S.String),
+}),
 ).annotate({ identifier: "ClickTag" }) as any as S.Schema<ClickTag>;
 
 export type ClickTagList = ReadonlyArray<ClickTag>;
-export const ClickTagList = /*@__PURE__*/ S.Array(
-  ClickTag,
-) as any as S.Schema<ClickTagList>;
+export const ClickTagList = /*@__PURE__*/ S.Array(ClickTag) as any as S.Schema<ClickTagList>;
 
 /** Video Offset */
 export interface VideoOffset {
@@ -3754,16 +2874,13 @@ export interface VideoOffset {
   offsetPercentage?: number;
 }
 export const VideoOffset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offsetSeconds: S.optional(S.Number),
-    offsetPercentage: S.optional(S.Number),
-  }),
+S.Struct({
+  "offsetSeconds": S.optional(S.Number),
+  "offsetPercentage": S.optional(S.Number),
+}),
 ).annotate({ identifier: "VideoOffset" }) as any as S.Schema<VideoOffset>;
 
-export type FsCommandPositionOptionEnum =
-  | "CENTERED"
-  | "DISTANCE_FROM_TOP_LEFT_CORNER"
-  | (string & {});
+export type FsCommandPositionOptionEnum = "CENTERED" | "DISTANCE_FROM_TOP_LEFT_CORNER";
 export const FsCommandPositionOptionEnum = /*@__PURE__*/ S.String;
 
 /** FsCommand. */
@@ -3780,22 +2897,17 @@ export interface FsCommand {
   windowHeight?: number;
 }
 export const FsCommand = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    windowWidth: S.optional(S.Number),
-    positionOption: S.optional(FsCommandPositionOptionEnum),
-    top: S.optional(S.Number),
-    left: S.optional(S.Number),
-    windowHeight: S.optional(S.Number),
-  }),
+S.Struct({
+  "windowWidth": S.optional(S.Number),
+  "positionOption": S.optional(FsCommandPositionOptionEnum),
+  "top": S.optional(S.Number),
+  "left": S.optional(S.Number),
+  "windowHeight": S.optional(S.Number),
+}),
 ).annotate({ identifier: "FsCommand" }) as any as S.Schema<FsCommand>;
 
-export type CreativeCustomEventAdvertiserCustomEventTypeEnum =
-  | "ADVERTISER_EVENT_TIMER"
-  | "ADVERTISER_EVENT_EXIT"
-  | "ADVERTISER_EVENT_COUNTER"
-  | (string & {});
-export const CreativeCustomEventAdvertiserCustomEventTypeEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeCustomEventAdvertiserCustomEventTypeEnum = "ADVERTISER_EVENT_TIMER" | "ADVERTISER_EVENT_EXIT" | "ADVERTISER_EVENT_COUNTER";
+export const CreativeCustomEventAdvertiserCustomEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** Offset Position. */
 export interface OffsetPosition {
@@ -3805,16 +2917,13 @@ export interface OffsetPosition {
   left?: number;
 }
 export const OffsetPosition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    top: S.optional(S.Number),
-    left: S.optional(S.Number),
-  }),
+S.Struct({
+  "top": S.optional(S.Number),
+  "left": S.optional(S.Number),
+}),
 ).annotate({ identifier: "OffsetPosition" }) as any as S.Schema<OffsetPosition>;
 
-export type PopupWindowPropertiesPositionTypeEnum =
-  | "CENTER"
-  | "COORDINATES"
-  | (string & {});
+export type PopupWindowPropertiesPositionTypeEnum = "CENTER" | "COORDINATES";
 export const PopupWindowPropertiesPositionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Popup Window Properties. */
@@ -3839,36 +2948,23 @@ export interface PopupWindowProperties {
   title?: string;
 }
 export const PopupWindowProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    showToolBar: S.optional(S.Boolean),
-    showScrollBar: S.optional(S.Boolean),
-    dimension: S.optional(Size),
-    offset: S.optional(OffsetPosition),
-    showMenuBar: S.optional(S.Boolean),
-    showAddressBar: S.optional(S.Boolean),
-    positionType: S.optional(PopupWindowPropertiesPositionTypeEnum),
-    showStatusBar: S.optional(S.Boolean),
-    title: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PopupWindowProperties",
-}) as any as S.Schema<PopupWindowProperties>;
+S.Struct({
+  "showToolBar": S.optional(S.Boolean),
+  "showScrollBar": S.optional(S.Boolean),
+  "dimension": S.optional(Size),
+  "offset": S.optional(OffsetPosition),
+  "showMenuBar": S.optional(S.Boolean),
+  "showAddressBar": S.optional(S.Boolean),
+  "positionType": S.optional(PopupWindowPropertiesPositionTypeEnum),
+  "showStatusBar": S.optional(S.Boolean),
+  "title": S.optional(S.String),
+}),
+).annotate({ identifier: "PopupWindowProperties" }) as any as S.Schema<PopupWindowProperties>;
 
-export type CreativeCustomEventArtworkTypeEnum =
-  | "ARTWORK_TYPE_FLASH"
-  | "ARTWORK_TYPE_HTML5"
-  | "ARTWORK_TYPE_MIXED"
-  | "ARTWORK_TYPE_IMAGE"
-  | (string & {});
+export type CreativeCustomEventArtworkTypeEnum = "ARTWORK_TYPE_FLASH" | "ARTWORK_TYPE_HTML5" | "ARTWORK_TYPE_MIXED" | "ARTWORK_TYPE_IMAGE";
 export const CreativeCustomEventArtworkTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeCustomEventTargetTypeEnum =
-  | "TARGET_BLANK"
-  | "TARGET_TOP"
-  | "TARGET_SELF"
-  | "TARGET_PARENT"
-  | "TARGET_POPUP"
-  | (string & {});
+export type CreativeCustomEventTargetTypeEnum = "TARGET_BLANK" | "TARGET_TOP" | "TARGET_SELF" | "TARGET_PARENT" | "TARGET_POPUP";
 export const CreativeCustomEventTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative Custom Event. */
@@ -3895,28 +2991,22 @@ export interface CreativeCustomEvent {
   targetType?: CreativeCustomEventTargetTypeEnum;
 }
 export const CreativeCustomEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    advertiserCustomEventType: S.optional(
-      CreativeCustomEventAdvertiserCustomEventTypeEnum,
-    ),
-    popupWindowProperties: S.optional(PopupWindowProperties),
-    videoReportingId: S.optional(S.String),
-    artworkLabel: S.optional(S.String),
-    advertiserCustomEventName: S.optional(S.String),
-    advertiserCustomEventId: S.optional(S.String),
-    artworkType: S.optional(CreativeCustomEventArtworkTypeEnum),
-    exitClickThroughUrl: S.optional(CreativeClickThroughUrl),
-    id: S.optional(S.String),
-    targetType: S.optional(CreativeCustomEventTargetTypeEnum),
-  }),
-).annotate({
-  identifier: "CreativeCustomEvent",
-}) as any as S.Schema<CreativeCustomEvent>;
+S.Struct({
+  "advertiserCustomEventType": S.optional(CreativeCustomEventAdvertiserCustomEventTypeEnum),
+  "popupWindowProperties": S.optional(PopupWindowProperties),
+  "videoReportingId": S.optional(S.String),
+  "artworkLabel": S.optional(S.String),
+  "advertiserCustomEventName": S.optional(S.String),
+  "advertiserCustomEventId": S.optional(S.String),
+  "artworkType": S.optional(CreativeCustomEventArtworkTypeEnum),
+  "exitClickThroughUrl": S.optional(CreativeClickThroughUrl),
+  "id": S.optional(S.String),
+  "targetType": S.optional(CreativeCustomEventTargetTypeEnum),
+}),
+).annotate({ identifier: "CreativeCustomEvent" }) as any as S.Schema<CreativeCustomEvent>;
 
 export type CreativeCustomEventList = ReadonlyArray<CreativeCustomEvent>;
-export const CreativeCustomEventList = /*@__PURE__*/ S.Array(
-  CreativeCustomEvent,
-) as any as S.Schema<CreativeCustomEventList>;
+export const CreativeCustomEventList = /*@__PURE__*/ S.Array(CreativeCustomEvent) as any as S.Schema<CreativeCustomEventList>;
 
 /** Creative Field Assignment. */
 export interface CreativeFieldAssignment {
@@ -3926,27 +3016,17 @@ export interface CreativeFieldAssignment {
   creativeFieldValueId?: string;
 }
 export const CreativeFieldAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeFieldId: S.optional(S.String),
-    creativeFieldValueId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeFieldAssignment",
-}) as any as S.Schema<CreativeFieldAssignment>;
+S.Struct({
+  "creativeFieldId": S.optional(S.String),
+  "creativeFieldValueId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeFieldAssignment" }) as any as S.Schema<CreativeFieldAssignment>;
 
-export type CreativeFieldAssignmentList =
-  ReadonlyArray<CreativeFieldAssignment>;
-export const CreativeFieldAssignmentList = /*@__PURE__*/ S.Array(
-  CreativeFieldAssignment,
-) as any as S.Schema<CreativeFieldAssignmentList>;
+export type CreativeFieldAssignmentList = ReadonlyArray<CreativeFieldAssignment>;
+export const CreativeFieldAssignmentList = /*@__PURE__*/ S.Array(CreativeFieldAssignment) as any as S.Schema<CreativeFieldAssignmentList>;
 
-export type CreativeSyntheticContentAttestationStatusEnum =
-  | "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED"
-  | "IS_SYNTHETIC"
-  | "NOT_SYNTHETIC"
-  | (string & {});
-export const CreativeSyntheticContentAttestationStatusEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeSyntheticContentAttestationStatusEnum = "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED" | "IS_SYNTHETIC" | "NOT_SYNTHETIC";
+export const CreativeSyntheticContentAttestationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Online Behavioral Advertiser icon. */
 export interface ObaIcon {
@@ -3968,26 +3048,19 @@ export interface ObaIcon {
   iconViewTrackingUrl?: string;
 }
 export const ObaIcon = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    program: S.optional(S.String),
-    yPosition: S.optional(S.String),
-    iconClickTrackingUrl: S.optional(S.String),
-    iconClickThroughUrl: S.optional(S.String),
-    resourceUrl: S.optional(S.String),
-    xPosition: S.optional(S.String),
-    size: S.optional(Size),
-    iconViewTrackingUrl: S.optional(S.String),
-  }),
+S.Struct({
+  "program": S.optional(S.String),
+  "yPosition": S.optional(S.String),
+  "iconClickTrackingUrl": S.optional(S.String),
+  "iconClickThroughUrl": S.optional(S.String),
+  "resourceUrl": S.optional(S.String),
+  "xPosition": S.optional(S.String),
+  "size": S.optional(Size),
+  "iconViewTrackingUrl": S.optional(S.String),
+}),
 ).annotate({ identifier: "ObaIcon" }) as any as S.Schema<ObaIcon>;
 
-export type UniversalAdIdRegistryEnum =
-  | "OTHER"
-  | "AD_ID_OFFICIAL"
-  | "CLEARCAST"
-  | "DCM"
-  | "ARPP"
-  | "CUSV"
-  | (string & {});
+export type UniversalAdIdRegistryEnum = "OTHER" | "AD_ID_OFFICIAL" | "CLEARCAST" | "DCM" | "ARPP" | "CUSV";
 export const UniversalAdIdRegistryEnum = /*@__PURE__*/ S.String;
 
 /** A Universal Ad ID as per the VAST 4.0 spec. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID. */
@@ -3998,303 +3071,64 @@ export interface UniversalAdId {
   value?: string;
 }
 export const UniversalAdId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registry: S.optional(UniversalAdIdRegistryEnum),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "registry": S.optional(UniversalAdIdRegistryEnum),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "UniversalAdId" }) as any as S.Schema<UniversalAdId>;
 
-export type CreativeTypeEnum =
-  | "IMAGE"
-  | "DISPLAY_REDIRECT"
-  | "CUSTOM_DISPLAY"
-  | "INTERNAL_REDIRECT"
-  | "CUSTOM_DISPLAY_INTERSTITIAL"
-  | "INTERSTITIAL_INTERNAL_REDIRECT"
-  | "TRACKING_TEXT"
-  | "RICH_MEDIA_DISPLAY_BANNER"
-  | "RICH_MEDIA_INPAGE_FLOATING"
-  | "RICH_MEDIA_IM_EXPAND"
-  | "RICH_MEDIA_DISPLAY_EXPANDING"
-  | "RICH_MEDIA_DISPLAY_INTERSTITIAL"
-  | "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL"
-  | "RICH_MEDIA_MOBILE_IN_APP"
-  | "FLASH_INPAGE"
-  | "INSTREAM_VIDEO"
-  | "VPAID_LINEAR_VIDEO"
-  | "VPAID_NON_LINEAR_VIDEO"
-  | "INSTREAM_VIDEO_REDIRECT"
-  | "RICH_MEDIA_PEEL_DOWN"
-  | "HTML5_BANNER"
-  | "DISPLAY"
-  | "DISPLAY_IMAGE_GALLERY"
-  | "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO"
-  | "INSTREAM_AUDIO"
-  | (string & {});
+export type CreativeTypeEnum = "IMAGE" | "DISPLAY_REDIRECT" | "CUSTOM_DISPLAY" | "INTERNAL_REDIRECT" | "CUSTOM_DISPLAY_INTERSTITIAL" | "INTERSTITIAL_INTERNAL_REDIRECT" | "TRACKING_TEXT" | "RICH_MEDIA_DISPLAY_BANNER" | "RICH_MEDIA_INPAGE_FLOATING" | "RICH_MEDIA_IM_EXPAND" | "RICH_MEDIA_DISPLAY_EXPANDING" | "RICH_MEDIA_DISPLAY_INTERSTITIAL" | "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL" | "RICH_MEDIA_MOBILE_IN_APP" | "FLASH_INPAGE" | "INSTREAM_VIDEO" | "VPAID_LINEAR_VIDEO" | "VPAID_NON_LINEAR_VIDEO" | "INSTREAM_VIDEO_REDIRECT" | "RICH_MEDIA_PEEL_DOWN" | "HTML5_BANNER" | "DISPLAY" | "DISPLAY_IMAGE_GALLERY" | "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO" | "INSTREAM_AUDIO";
 export const CreativeTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeBackupImageFeaturesItemEnum =
-  | "CSS_FONT_FACE"
-  | "CSS_BACKGROUND_SIZE"
-  | "CSS_BORDER_IMAGE"
-  | "CSS_BORDER_RADIUS"
-  | "CSS_BOX_SHADOW"
-  | "CSS_FLEX_BOX"
-  | "CSS_HSLA"
-  | "CSS_MULTIPLE_BGS"
-  | "CSS_OPACITY"
-  | "CSS_RGBA"
-  | "CSS_TEXT_SHADOW"
-  | "CSS_ANIMATIONS"
-  | "CSS_COLUMNS"
-  | "CSS_GENERATED_CONTENT"
-  | "CSS_GRADIENTS"
-  | "CSS_REFLECTIONS"
-  | "CSS_TRANSFORMS"
-  | "CSS_TRANSFORMS3D"
-  | "CSS_TRANSITIONS"
-  | "APPLICATION_CACHE"
-  | "CANVAS"
-  | "CANVAS_TEXT"
-  | "DRAG_AND_DROP"
-  | "HASH_CHANGE"
-  | "HISTORY"
-  | "AUDIO"
-  | "VIDEO"
-  | "INDEXED_DB"
-  | "INPUT_ATTR_AUTOCOMPLETE"
-  | "INPUT_ATTR_AUTOFOCUS"
-  | "INPUT_ATTR_LIST"
-  | "INPUT_ATTR_PLACEHOLDER"
-  | "INPUT_ATTR_MAX"
-  | "INPUT_ATTR_MIN"
-  | "INPUT_ATTR_MULTIPLE"
-  | "INPUT_ATTR_PATTERN"
-  | "INPUT_ATTR_REQUIRED"
-  | "INPUT_ATTR_STEP"
-  | "INPUT_TYPE_SEARCH"
-  | "INPUT_TYPE_TEL"
-  | "INPUT_TYPE_URL"
-  | "INPUT_TYPE_EMAIL"
-  | "INPUT_TYPE_DATETIME"
-  | "INPUT_TYPE_DATE"
-  | "INPUT_TYPE_MONTH"
-  | "INPUT_TYPE_WEEK"
-  | "INPUT_TYPE_TIME"
-  | "INPUT_TYPE_DATETIME_LOCAL"
-  | "INPUT_TYPE_NUMBER"
-  | "INPUT_TYPE_RANGE"
-  | "INPUT_TYPE_COLOR"
-  | "LOCAL_STORAGE"
-  | "POST_MESSAGE"
-  | "SESSION_STORAGE"
-  | "WEB_SOCKETS"
-  | "WEB_SQL_DATABASE"
-  | "WEB_WORKERS"
-  | "GEO_LOCATION"
-  | "INLINE_SVG"
-  | "SMIL"
-  | "SVG_HREF"
-  | "SVG_CLIP_PATHS"
-  | "TOUCH"
-  | "WEBGL"
-  | "SVG_FILTERS"
-  | "SVG_FE_IMAGE"
-  | (string & {});
+export type CreativeBackupImageFeaturesItemEnum = "CSS_FONT_FACE" | "CSS_BACKGROUND_SIZE" | "CSS_BORDER_IMAGE" | "CSS_BORDER_RADIUS" | "CSS_BOX_SHADOW" | "CSS_FLEX_BOX" | "CSS_HSLA" | "CSS_MULTIPLE_BGS" | "CSS_OPACITY" | "CSS_RGBA" | "CSS_TEXT_SHADOW" | "CSS_ANIMATIONS" | "CSS_COLUMNS" | "CSS_GENERATED_CONTENT" | "CSS_GRADIENTS" | "CSS_REFLECTIONS" | "CSS_TRANSFORMS" | "CSS_TRANSFORMS3D" | "CSS_TRANSITIONS" | "APPLICATION_CACHE" | "CANVAS" | "CANVAS_TEXT" | "DRAG_AND_DROP" | "HASH_CHANGE" | "HISTORY" | "AUDIO" | "VIDEO" | "INDEXED_DB" | "INPUT_ATTR_AUTOCOMPLETE" | "INPUT_ATTR_AUTOFOCUS" | "INPUT_ATTR_LIST" | "INPUT_ATTR_PLACEHOLDER" | "INPUT_ATTR_MAX" | "INPUT_ATTR_MIN" | "INPUT_ATTR_MULTIPLE" | "INPUT_ATTR_PATTERN" | "INPUT_ATTR_REQUIRED" | "INPUT_ATTR_STEP" | "INPUT_TYPE_SEARCH" | "INPUT_TYPE_TEL" | "INPUT_TYPE_URL" | "INPUT_TYPE_EMAIL" | "INPUT_TYPE_DATETIME" | "INPUT_TYPE_DATE" | "INPUT_TYPE_MONTH" | "INPUT_TYPE_WEEK" | "INPUT_TYPE_TIME" | "INPUT_TYPE_DATETIME_LOCAL" | "INPUT_TYPE_NUMBER" | "INPUT_TYPE_RANGE" | "INPUT_TYPE_COLOR" | "LOCAL_STORAGE" | "POST_MESSAGE" | "SESSION_STORAGE" | "WEB_SOCKETS" | "WEB_SQL_DATABASE" | "WEB_WORKERS" | "GEO_LOCATION" | "INLINE_SVG" | "SMIL" | "SVG_HREF" | "SVG_CLIP_PATHS" | "TOUCH" | "WEBGL" | "SVG_FILTERS" | "SVG_FE_IMAGE";
 export const CreativeBackupImageFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeBackupImageFeaturesItemEnumList =
-  ReadonlyArray<CreativeBackupImageFeaturesItemEnum>;
-export const CreativeBackupImageFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeBackupImageFeaturesItemEnum,
-) as any as S.Schema<CreativeBackupImageFeaturesItemEnumList>;
+export type CreativeBackupImageFeaturesItemEnumList = ReadonlyArray<CreativeBackupImageFeaturesItemEnum>;
+export const CreativeBackupImageFeaturesItemEnumList = /*@__PURE__*/ S.Array(CreativeBackupImageFeaturesItemEnum) as any as S.Schema<CreativeBackupImageFeaturesItemEnumList>;
 
-export type CreativeCompatibilityItemEnum =
-  | "DISPLAY"
-  | "DISPLAY_INTERSTITIAL"
-  | "APP"
-  | "APP_INTERSTITIAL"
-  | "IN_STREAM_VIDEO"
-  | "IN_STREAM_AUDIO"
-  | (string & {});
+export type CreativeCompatibilityItemEnum = "DISPLAY" | "DISPLAY_INTERSTITIAL" | "APP" | "APP_INTERSTITIAL" | "IN_STREAM_VIDEO" | "IN_STREAM_AUDIO";
 export const CreativeCompatibilityItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeCompatibilityItemEnumList =
-  ReadonlyArray<CreativeCompatibilityItemEnum>;
-export const CreativeCompatibilityItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeCompatibilityItemEnum,
-) as any as S.Schema<CreativeCompatibilityItemEnumList>;
+export type CreativeCompatibilityItemEnumList = ReadonlyArray<CreativeCompatibilityItemEnum>;
+export const CreativeCompatibilityItemEnumList = /*@__PURE__*/ S.Array(CreativeCompatibilityItemEnum) as any as S.Schema<CreativeCompatibilityItemEnumList>;
 
-export type CreativeAuthoringSourceEnum =
-  | "CREATIVE_AUTHORING_SOURCE_DCM"
-  | "CREATIVE_AUTHORING_SOURCE_DBM"
-  | "CREATIVE_AUTHORING_SOURCE_STUDIO"
-  | "CREATIVE_AUTHORING_SOURCE_GWD"
-  | "CREATIVE_AUTHORING_SOURCE_ACS"
-  | "CREATIVE_AUTHORING_SOURCE_ADOBE"
-  | "CREATIVE_AUTHORING_SOURCE_TYPEFACE_AI"
-  | "CREATIVE_AUTHORING_SOURCE_REMBRAND"
-  | "CREATIVE_AUTHORING_SOURCE_TRACKTO_STUDIO"
-  | "CREATIVE_AUTHORING_SOURCE_BORNLOGIC"
-  | "CREATIVE_AUTHORING_SOURCE_BEGEN_AI"
-  | (string & {});
+export type CreativeAuthoringSourceEnum = "CREATIVE_AUTHORING_SOURCE_DCM" | "CREATIVE_AUTHORING_SOURCE_DBM" | "CREATIVE_AUTHORING_SOURCE_STUDIO" | "CREATIVE_AUTHORING_SOURCE_GWD" | "CREATIVE_AUTHORING_SOURCE_ACS" | "CREATIVE_AUTHORING_SOURCE_ADOBE" | "CREATIVE_AUTHORING_SOURCE_TYPEFACE_AI" | "CREATIVE_AUTHORING_SOURCE_REMBRAND" | "CREATIVE_AUTHORING_SOURCE_TRACKTO_STUDIO" | "CREATIVE_AUTHORING_SOURCE_BORNLOGIC" | "CREATIVE_AUTHORING_SOURCE_BEGEN_AI";
 export const CreativeAuthoringSourceEnum = /*@__PURE__*/ S.String;
 
-export type CreativeArtworkTypeEnum =
-  | "ARTWORK_TYPE_FLASH"
-  | "ARTWORK_TYPE_HTML5"
-  | "ARTWORK_TYPE_MIXED"
-  | "ARTWORK_TYPE_IMAGE"
-  | (string & {});
+export type CreativeArtworkTypeEnum = "ARTWORK_TYPE_FLASH" | "ARTWORK_TYPE_HTML5" | "ARTWORK_TYPE_MIXED" | "ARTWORK_TYPE_IMAGE";
 export const CreativeArtworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type SizeList = ReadonlyArray<Size>;
-export const SizeList = /*@__PURE__*/ S.Array(
-  Size,
-) as any as S.Schema<SizeList>;
+export const SizeList = /*@__PURE__*/ S.Array(Size) as any as S.Schema<SizeList>;
 
-export type CreativeAssetStartTimeTypeEnum =
-  | "ASSET_START_TIME_TYPE_NONE"
-  | "ASSET_START_TIME_TYPE_CUSTOM"
-  | (string & {});
+export type CreativeAssetStartTimeTypeEnum = "ASSET_START_TIME_TYPE_NONE" | "ASSET_START_TIME_TYPE_CUSTOM";
 export const CreativeAssetStartTimeTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetArtworkTypeEnum =
-  | "ARTWORK_TYPE_FLASH"
-  | "ARTWORK_TYPE_HTML5"
-  | "ARTWORK_TYPE_MIXED"
-  | "ARTWORK_TYPE_IMAGE"
-  | (string & {});
+export type CreativeAssetArtworkTypeEnum = "ARTWORK_TYPE_FLASH" | "ARTWORK_TYPE_HTML5" | "ARTWORK_TYPE_MIXED" | "ARTWORK_TYPE_IMAGE";
 export const CreativeAssetArtworkTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetPositionLeftUnitEnum =
-  | "OFFSET_UNIT_PIXEL"
-  | "OFFSET_UNIT_PERCENT"
-  | "OFFSET_UNIT_PIXEL_FROM_CENTER"
-  | (string & {});
+export type CreativeAssetPositionLeftUnitEnum = "OFFSET_UNIT_PIXEL" | "OFFSET_UNIT_PERCENT" | "OFFSET_UNIT_PIXEL_FROM_CENTER";
 export const CreativeAssetPositionLeftUnitEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetDetectedFeaturesItemEnum =
-  | "CSS_FONT_FACE"
-  | "CSS_BACKGROUND_SIZE"
-  | "CSS_BORDER_IMAGE"
-  | "CSS_BORDER_RADIUS"
-  | "CSS_BOX_SHADOW"
-  | "CSS_FLEX_BOX"
-  | "CSS_HSLA"
-  | "CSS_MULTIPLE_BGS"
-  | "CSS_OPACITY"
-  | "CSS_RGBA"
-  | "CSS_TEXT_SHADOW"
-  | "CSS_ANIMATIONS"
-  | "CSS_COLUMNS"
-  | "CSS_GENERATED_CONTENT"
-  | "CSS_GRADIENTS"
-  | "CSS_REFLECTIONS"
-  | "CSS_TRANSFORMS"
-  | "CSS_TRANSFORMS3D"
-  | "CSS_TRANSITIONS"
-  | "APPLICATION_CACHE"
-  | "CANVAS"
-  | "CANVAS_TEXT"
-  | "DRAG_AND_DROP"
-  | "HASH_CHANGE"
-  | "HISTORY"
-  | "AUDIO"
-  | "VIDEO"
-  | "INDEXED_DB"
-  | "INPUT_ATTR_AUTOCOMPLETE"
-  | "INPUT_ATTR_AUTOFOCUS"
-  | "INPUT_ATTR_LIST"
-  | "INPUT_ATTR_PLACEHOLDER"
-  | "INPUT_ATTR_MAX"
-  | "INPUT_ATTR_MIN"
-  | "INPUT_ATTR_MULTIPLE"
-  | "INPUT_ATTR_PATTERN"
-  | "INPUT_ATTR_REQUIRED"
-  | "INPUT_ATTR_STEP"
-  | "INPUT_TYPE_SEARCH"
-  | "INPUT_TYPE_TEL"
-  | "INPUT_TYPE_URL"
-  | "INPUT_TYPE_EMAIL"
-  | "INPUT_TYPE_DATETIME"
-  | "INPUT_TYPE_DATE"
-  | "INPUT_TYPE_MONTH"
-  | "INPUT_TYPE_WEEK"
-  | "INPUT_TYPE_TIME"
-  | "INPUT_TYPE_DATETIME_LOCAL"
-  | "INPUT_TYPE_NUMBER"
-  | "INPUT_TYPE_RANGE"
-  | "INPUT_TYPE_COLOR"
-  | "LOCAL_STORAGE"
-  | "POST_MESSAGE"
-  | "SESSION_STORAGE"
-  | "WEB_SOCKETS"
-  | "WEB_SQL_DATABASE"
-  | "WEB_WORKERS"
-  | "GEO_LOCATION"
-  | "INLINE_SVG"
-  | "SMIL"
-  | "SVG_HREF"
-  | "SVG_CLIP_PATHS"
-  | "TOUCH"
-  | "WEBGL"
-  | "SVG_FILTERS"
-  | "SVG_FE_IMAGE"
-  | (string & {});
+export type CreativeAssetDetectedFeaturesItemEnum = "CSS_FONT_FACE" | "CSS_BACKGROUND_SIZE" | "CSS_BORDER_IMAGE" | "CSS_BORDER_RADIUS" | "CSS_BOX_SHADOW" | "CSS_FLEX_BOX" | "CSS_HSLA" | "CSS_MULTIPLE_BGS" | "CSS_OPACITY" | "CSS_RGBA" | "CSS_TEXT_SHADOW" | "CSS_ANIMATIONS" | "CSS_COLUMNS" | "CSS_GENERATED_CONTENT" | "CSS_GRADIENTS" | "CSS_REFLECTIONS" | "CSS_TRANSFORMS" | "CSS_TRANSFORMS3D" | "CSS_TRANSITIONS" | "APPLICATION_CACHE" | "CANVAS" | "CANVAS_TEXT" | "DRAG_AND_DROP" | "HASH_CHANGE" | "HISTORY" | "AUDIO" | "VIDEO" | "INDEXED_DB" | "INPUT_ATTR_AUTOCOMPLETE" | "INPUT_ATTR_AUTOFOCUS" | "INPUT_ATTR_LIST" | "INPUT_ATTR_PLACEHOLDER" | "INPUT_ATTR_MAX" | "INPUT_ATTR_MIN" | "INPUT_ATTR_MULTIPLE" | "INPUT_ATTR_PATTERN" | "INPUT_ATTR_REQUIRED" | "INPUT_ATTR_STEP" | "INPUT_TYPE_SEARCH" | "INPUT_TYPE_TEL" | "INPUT_TYPE_URL" | "INPUT_TYPE_EMAIL" | "INPUT_TYPE_DATETIME" | "INPUT_TYPE_DATE" | "INPUT_TYPE_MONTH" | "INPUT_TYPE_WEEK" | "INPUT_TYPE_TIME" | "INPUT_TYPE_DATETIME_LOCAL" | "INPUT_TYPE_NUMBER" | "INPUT_TYPE_RANGE" | "INPUT_TYPE_COLOR" | "LOCAL_STORAGE" | "POST_MESSAGE" | "SESSION_STORAGE" | "WEB_SOCKETS" | "WEB_SQL_DATABASE" | "WEB_WORKERS" | "GEO_LOCATION" | "INLINE_SVG" | "SMIL" | "SVG_HREF" | "SVG_CLIP_PATHS" | "TOUCH" | "WEBGL" | "SVG_FILTERS" | "SVG_FE_IMAGE";
 export const CreativeAssetDetectedFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetDetectedFeaturesItemEnumList =
-  ReadonlyArray<CreativeAssetDetectedFeaturesItemEnum>;
-export const CreativeAssetDetectedFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeAssetDetectedFeaturesItemEnum,
-) as any as S.Schema<CreativeAssetDetectedFeaturesItemEnumList>;
+export type CreativeAssetDetectedFeaturesItemEnumList = ReadonlyArray<CreativeAssetDetectedFeaturesItemEnum>;
+export const CreativeAssetDetectedFeaturesItemEnumList = /*@__PURE__*/ S.Array(CreativeAssetDetectedFeaturesItemEnum) as any as S.Schema<CreativeAssetDetectedFeaturesItemEnumList>;
 
-export type CreativeAssetChildAssetTypeEnum =
-  | "CHILD_ASSET_TYPE_FLASH"
-  | "CHILD_ASSET_TYPE_VIDEO"
-  | "CHILD_ASSET_TYPE_IMAGE"
-  | "CHILD_ASSET_TYPE_DATA"
-  | (string & {});
+export type CreativeAssetChildAssetTypeEnum = "CHILD_ASSET_TYPE_FLASH" | "CHILD_ASSET_TYPE_VIDEO" | "CHILD_ASSET_TYPE_IMAGE" | "CHILD_ASSET_TYPE_DATA";
 export const CreativeAssetChildAssetTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetPositionTopUnitEnum =
-  | "OFFSET_UNIT_PIXEL"
-  | "OFFSET_UNIT_PERCENT"
-  | "OFFSET_UNIT_PIXEL_FROM_CENTER"
-  | (string & {});
+export type CreativeAssetPositionTopUnitEnum = "OFFSET_UNIT_PIXEL" | "OFFSET_UNIT_PERCENT" | "OFFSET_UNIT_PIXEL_FROM_CENTER";
 export const CreativeAssetPositionTopUnitEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetRoleEnum =
-  | "PRIMARY"
-  | "BACKUP_IMAGE"
-  | "ADDITIONAL_IMAGE"
-  | "ADDITIONAL_FLASH"
-  | "PARENT_VIDEO"
-  | "TRANSCODED_VIDEO"
-  | "OTHER"
-  | "ALTERNATE_VIDEO"
-  | "PARENT_AUDIO"
-  | "TRANSCODED_AUDIO"
-  | (string & {});
+export type CreativeAssetRoleEnum = "PRIMARY" | "BACKUP_IMAGE" | "ADDITIONAL_IMAGE" | "ADDITIONAL_FLASH" | "PARENT_VIDEO" | "TRANSCODED_VIDEO" | "OTHER" | "ALTERNATE_VIDEO" | "PARENT_AUDIO" | "TRANSCODED_AUDIO";
 export const CreativeAssetRoleEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetAlignmentEnum =
-  | "ALIGNMENT_TOP"
-  | "ALIGNMENT_RIGHT"
-  | "ALIGNMENT_BOTTOM"
-  | "ALIGNMENT_LEFT"
-  | (string & {});
+export type CreativeAssetAlignmentEnum = "ALIGNMENT_TOP" | "ALIGNMENT_RIGHT" | "ALIGNMENT_BOTTOM" | "ALIGNMENT_LEFT";
 export const CreativeAssetAlignmentEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetIdTypeEnum =
-  | "IMAGE"
-  | "FLASH"
-  | "VIDEO"
-  | "HTML"
-  | "HTML_IMAGE"
-  | "AUDIO"
-  | (string & {});
+export type CreativeAssetIdTypeEnum = "IMAGE" | "FLASH" | "VIDEO" | "HTML" | "HTML_IMAGE" | "AUDIO";
 export const CreativeAssetIdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative Asset ID. */
@@ -4305,47 +3139,22 @@ export interface CreativeAssetId {
   name?: string;
 }
 export const CreativeAssetId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CreativeAssetIdTypeEnum),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeAssetId",
-}) as any as S.Schema<CreativeAssetId>;
+S.Struct({
+  "type": S.optional(CreativeAssetIdTypeEnum),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeAssetId" }) as any as S.Schema<CreativeAssetId>;
 
-export type CreativeAssetDisplayTypeEnum =
-  | "ASSET_DISPLAY_TYPE_INPAGE"
-  | "ASSET_DISPLAY_TYPE_FLOATING"
-  | "ASSET_DISPLAY_TYPE_OVERLAY"
-  | "ASSET_DISPLAY_TYPE_EXPANDING"
-  | "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH"
-  | "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH_EXPANDING"
-  | "ASSET_DISPLAY_TYPE_PEEL_DOWN"
-  | "ASSET_DISPLAY_TYPE_VPAID_LINEAR"
-  | "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR"
-  | "ASSET_DISPLAY_TYPE_BACKDROP"
-  | (string & {});
+export type CreativeAssetDisplayTypeEnum = "ASSET_DISPLAY_TYPE_INPAGE" | "ASSET_DISPLAY_TYPE_FLOATING" | "ASSET_DISPLAY_TYPE_OVERLAY" | "ASSET_DISPLAY_TYPE_EXPANDING" | "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH" | "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH_EXPANDING" | "ASSET_DISPLAY_TYPE_PEEL_DOWN" | "ASSET_DISPLAY_TYPE_VPAID_LINEAR" | "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR" | "ASSET_DISPLAY_TYPE_BACKDROP";
 export const CreativeAssetDisplayTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetOrientationEnum =
-  | "LANDSCAPE"
-  | "PORTRAIT"
-  | "SQUARE"
-  | (string & {});
+export type CreativeAssetOrientationEnum = "LANDSCAPE" | "PORTRAIT" | "SQUARE";
 export const CreativeAssetOrientationEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetDurationTypeEnum =
-  | "ASSET_DURATION_TYPE_AUTO"
-  | "ASSET_DURATION_TYPE_NONE"
-  | "ASSET_DURATION_TYPE_CUSTOM"
-  | (string & {});
+export type CreativeAssetDurationTypeEnum = "ASSET_DURATION_TYPE_AUTO" | "ASSET_DURATION_TYPE_NONE" | "ASSET_DURATION_TYPE_CUSTOM";
 export const CreativeAssetDurationTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetWindowModeEnum =
-  | "OPAQUE"
-  | "WINDOW"
-  | "TRANSPARENT"
-  | (string & {});
+export type CreativeAssetWindowModeEnum = "OPAQUE" | "WINDOW" | "TRANSPARENT";
 export const CreativeAssetWindowModeEnum = /*@__PURE__*/ S.String;
 
 /** Creative Asset. */
@@ -4452,64 +3261,62 @@ export interface CreativeAsset {
   companionCreativeIds?: StringList;
 }
 export const CreativeAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    startTimeType: S.optional(CreativeAssetStartTimeTypeEnum),
-    pushdown: S.optional(S.Boolean),
-    active: S.optional(S.Boolean),
-    additionalSizes: S.optional(SizeList),
-    artworkType: S.optional(CreativeAssetArtworkTypeEnum),
-    audioBitRate: S.optional(S.Number),
-    audioSampleRate: S.optional(S.Number),
-    politeLoad: S.optional(S.Boolean),
-    positionLeftUnit: S.optional(CreativeAssetPositionLeftUnitEnum),
-    progressiveServingUrl: S.optional(S.String),
-    expandedDimension: S.optional(Size),
-    detectedFeatures: S.optional(CreativeAssetDetectedFeaturesItemEnumList),
-    childAssetType: S.optional(CreativeAssetChildAssetTypeEnum),
-    size: S.optional(Size),
-    fileSize: S.optional(S.String),
-    streamingServingUrl: S.optional(S.String),
-    offset: S.optional(OffsetPosition),
-    sslCompliant: S.optional(S.Boolean),
-    transparency: S.optional(S.Boolean),
-    idDimensionValue: S.optional(DimensionValue),
-    bitRate: S.optional(S.Number),
-    positionTopUnit: S.optional(CreativeAssetPositionTopUnitEnum),
-    duration: S.optional(S.Number),
-    zipFilesize: S.optional(S.String),
-    role: S.optional(CreativeAssetRoleEnum),
-    flashVersion: S.optional(S.Number),
-    backupImageExit: S.optional(CreativeCustomEvent),
-    originalBackup: S.optional(S.Boolean),
-    hideSelectionBoxes: S.optional(S.Boolean),
-    mediaDuration: S.optional(S.Number),
-    horizontallyLocked: S.optional(S.Boolean),
-    alignment: S.optional(CreativeAssetAlignmentEnum),
-    assetIdentifier: S.optional(CreativeAssetId),
-    displayType: S.optional(CreativeAssetDisplayTypeEnum),
-    frameRate: S.optional(S.Number),
-    hideFlashObjects: S.optional(S.Boolean),
-    zIndex: S.optional(S.Number),
-    collapsedSize: S.optional(Size),
-    pushdownDuration: S.optional(S.Number),
-    customStartTimeValue: S.optional(S.Number),
-    orientation: S.optional(CreativeAssetOrientationEnum),
-    verticallyLocked: S.optional(S.Boolean),
-    durationType: S.optional(CreativeAssetDurationTypeEnum),
-    zipFilename: S.optional(S.String),
-    actionScript3: S.optional(S.Boolean),
-    position: S.optional(OffsetPosition),
-    mimeType: S.optional(S.String),
-    windowMode: S.optional(CreativeAssetWindowModeEnum),
-    companionCreativeIds: S.optional(StringList),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "startTimeType": S.optional(CreativeAssetStartTimeTypeEnum),
+  "pushdown": S.optional(S.Boolean),
+  "active": S.optional(S.Boolean),
+  "additionalSizes": S.optional(SizeList),
+  "artworkType": S.optional(CreativeAssetArtworkTypeEnum),
+  "audioBitRate": S.optional(S.Number),
+  "audioSampleRate": S.optional(S.Number),
+  "politeLoad": S.optional(S.Boolean),
+  "positionLeftUnit": S.optional(CreativeAssetPositionLeftUnitEnum),
+  "progressiveServingUrl": S.optional(S.String),
+  "expandedDimension": S.optional(Size),
+  "detectedFeatures": S.optional(CreativeAssetDetectedFeaturesItemEnumList),
+  "childAssetType": S.optional(CreativeAssetChildAssetTypeEnum),
+  "size": S.optional(Size),
+  "fileSize": S.optional(S.String),
+  "streamingServingUrl": S.optional(S.String),
+  "offset": S.optional(OffsetPosition),
+  "sslCompliant": S.optional(S.Boolean),
+  "transparency": S.optional(S.Boolean),
+  "idDimensionValue": S.optional(DimensionValue),
+  "bitRate": S.optional(S.Number),
+  "positionTopUnit": S.optional(CreativeAssetPositionTopUnitEnum),
+  "duration": S.optional(S.Number),
+  "zipFilesize": S.optional(S.String),
+  "role": S.optional(CreativeAssetRoleEnum),
+  "flashVersion": S.optional(S.Number),
+  "backupImageExit": S.optional(CreativeCustomEvent),
+  "originalBackup": S.optional(S.Boolean),
+  "hideSelectionBoxes": S.optional(S.Boolean),
+  "mediaDuration": S.optional(S.Number),
+  "horizontallyLocked": S.optional(S.Boolean),
+  "alignment": S.optional(CreativeAssetAlignmentEnum),
+  "assetIdentifier": S.optional(CreativeAssetId),
+  "displayType": S.optional(CreativeAssetDisplayTypeEnum),
+  "frameRate": S.optional(S.Number),
+  "hideFlashObjects": S.optional(S.Boolean),
+  "zIndex": S.optional(S.Number),
+  "collapsedSize": S.optional(Size),
+  "pushdownDuration": S.optional(S.Number),
+  "customStartTimeValue": S.optional(S.Number),
+  "orientation": S.optional(CreativeAssetOrientationEnum),
+  "verticallyLocked": S.optional(S.Boolean),
+  "durationType": S.optional(CreativeAssetDurationTypeEnum),
+  "zipFilename": S.optional(S.String),
+  "actionScript3": S.optional(S.Boolean),
+  "position": S.optional(OffsetPosition),
+  "mimeType": S.optional(S.String),
+  "windowMode": S.optional(CreativeAssetWindowModeEnum),
+  "companionCreativeIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "CreativeAsset" }) as any as S.Schema<CreativeAsset>;
 
 export type CreativeAssetList = ReadonlyArray<CreativeAsset>;
-export const CreativeAssetList = /*@__PURE__*/ S.Array(
-  CreativeAsset,
-) as any as S.Schema<CreativeAssetList>;
+export const CreativeAssetList = /*@__PURE__*/ S.Array(CreativeAsset) as any as S.Schema<CreativeAssetList>;
 
 /** Contains properties of a Creative. */
 export interface Creative {
@@ -4643,74 +3450,72 @@ export interface Creative {
   creativeAssets?: CreativeAssetList;
 }
 export const Creative = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    renderingIdDimensionValue: S.optional(DimensionValue),
-    mediaDescription: S.optional(S.String),
-    totalFileSize: S.optional(S.String),
-    thirdPartyUrls: S.optional(ThirdPartyTrackingUrlList),
-    thirdPartyBackupImageImpressionsUrl: S.optional(S.String),
-    commercialId: S.optional(S.String),
-    authoringTool: S.optional(CreativeAuthoringToolEnum),
-    customKeyValues: S.optional(StringList),
-    renderingId: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    backupImageClickThroughUrl: S.optional(CreativeClickThroughUrl),
-    studioTraffickedCreativeId: S.optional(S.String),
-    backupImageTargetWindow: S.optional(TargetWindow),
-    clickTags: S.optional(ClickTagList),
-    htmlCodeLocked: S.optional(S.Boolean),
-    skipOffset: S.optional(VideoOffset),
-    backgroundColor: S.optional(S.String),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-    fsCommand: S.optional(FsCommand),
-    timerCustomEvents: S.optional(CreativeCustomEventList),
-    companionCreatives: S.optional(StringList),
-    creativeFieldAssignments: S.optional(CreativeFieldAssignmentList),
-    accountId: S.optional(S.String),
-    syntheticContentAttestationStatus: S.optional(
-      CreativeSyntheticContentAttestationStatusEnum,
-    ),
-    mediaDuration: S.optional(S.Number),
-    convertFlashToHtml5: S.optional(S.Boolean),
-    adTagKeys: S.optional(StringList),
-    adParameters: S.optional(S.String),
-    version: S.optional(S.Number),
-    requiredFlashVersion: S.optional(S.Number),
-    studioCreativeId: S.optional(S.String),
-    obaIcon: S.optional(ObaIcon),
-    counterCustomEvents: S.optional(CreativeCustomEventList),
-    skippable: S.optional(S.Boolean),
-    universalAdId: S.optional(UniversalAdId),
-    type: S.optional(CreativeTypeEnum),
-    backupImageFeatures: S.optional(CreativeBackupImageFeaturesItemEnumList),
-    latestTraffickedCreativeId: S.optional(S.String),
-    requiredFlashPluginVersion: S.optional(S.String),
-    exitCustomEvents: S.optional(CreativeCustomEventList),
-    idDimensionValue: S.optional(DimensionValue),
-    progressOffset: S.optional(VideoOffset),
-    sslCompliant: S.optional(S.Boolean),
-    autoAdvanceImages: S.optional(S.Boolean),
-    compatibility: S.optional(CreativeCompatibilityItemEnumList),
-    redirectUrl: S.optional(S.String),
-    authoringSource: S.optional(CreativeAuthoringSourceEnum),
-    size: S.optional(Size),
-    archived: S.optional(S.Boolean),
-    subaccountId: S.optional(S.String),
-    thirdPartyRichMediaImpressionsUrl: S.optional(S.String),
-    overrideCss: S.optional(S.String),
-    sslOverride: S.optional(S.Boolean),
-    allowScriptAccess: S.optional(S.Boolean),
-    backupImageReportingLabel: S.optional(S.String),
-    advertiserId: S.optional(S.String),
-    htmlCode: S.optional(S.String),
-    artworkType: S.optional(CreativeArtworkTypeEnum),
-    active: S.optional(S.Boolean),
-    additionalSizes: S.optional(SizeList),
-    studioAdvertiserId: S.optional(S.String),
-    id: S.optional(S.String),
-    creativeAssets: S.optional(CreativeAssetList),
-  }),
+S.Struct({
+  "renderingIdDimensionValue": S.optional(DimensionValue),
+  "mediaDescription": S.optional(S.String),
+  "totalFileSize": S.optional(S.String),
+  "thirdPartyUrls": S.optional(ThirdPartyTrackingUrlList),
+  "thirdPartyBackupImageImpressionsUrl": S.optional(S.String),
+  "commercialId": S.optional(S.String),
+  "authoringTool": S.optional(CreativeAuthoringToolEnum),
+  "customKeyValues": S.optional(StringList),
+  "renderingId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "backupImageClickThroughUrl": S.optional(CreativeClickThroughUrl),
+  "studioTraffickedCreativeId": S.optional(S.String),
+  "backupImageTargetWindow": S.optional(TargetWindow),
+  "clickTags": S.optional(ClickTagList),
+  "htmlCodeLocked": S.optional(S.Boolean),
+  "skipOffset": S.optional(VideoOffset),
+  "backgroundColor": S.optional(S.String),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+  "fsCommand": S.optional(FsCommand),
+  "timerCustomEvents": S.optional(CreativeCustomEventList),
+  "companionCreatives": S.optional(StringList),
+  "creativeFieldAssignments": S.optional(CreativeFieldAssignmentList),
+  "accountId": S.optional(S.String),
+  "syntheticContentAttestationStatus": S.optional(CreativeSyntheticContentAttestationStatusEnum),
+  "mediaDuration": S.optional(S.Number),
+  "convertFlashToHtml5": S.optional(S.Boolean),
+  "adTagKeys": S.optional(StringList),
+  "adParameters": S.optional(S.String),
+  "version": S.optional(S.Number),
+  "requiredFlashVersion": S.optional(S.Number),
+  "studioCreativeId": S.optional(S.String),
+  "obaIcon": S.optional(ObaIcon),
+  "counterCustomEvents": S.optional(CreativeCustomEventList),
+  "skippable": S.optional(S.Boolean),
+  "universalAdId": S.optional(UniversalAdId),
+  "type": S.optional(CreativeTypeEnum),
+  "backupImageFeatures": S.optional(CreativeBackupImageFeaturesItemEnumList),
+  "latestTraffickedCreativeId": S.optional(S.String),
+  "requiredFlashPluginVersion": S.optional(S.String),
+  "exitCustomEvents": S.optional(CreativeCustomEventList),
+  "idDimensionValue": S.optional(DimensionValue),
+  "progressOffset": S.optional(VideoOffset),
+  "sslCompliant": S.optional(S.Boolean),
+  "autoAdvanceImages": S.optional(S.Boolean),
+  "compatibility": S.optional(CreativeCompatibilityItemEnumList),
+  "redirectUrl": S.optional(S.String),
+  "authoringSource": S.optional(CreativeAuthoringSourceEnum),
+  "size": S.optional(Size),
+  "archived": S.optional(S.Boolean),
+  "subaccountId": S.optional(S.String),
+  "thirdPartyRichMediaImpressionsUrl": S.optional(S.String),
+  "overrideCss": S.optional(S.String),
+  "sslOverride": S.optional(S.Boolean),
+  "allowScriptAccess": S.optional(S.Boolean),
+  "backupImageReportingLabel": S.optional(S.String),
+  "advertiserId": S.optional(S.String),
+  "htmlCode": S.optional(S.String),
+  "artworkType": S.optional(CreativeArtworkTypeEnum),
+  "active": S.optional(S.Boolean),
+  "additionalSizes": S.optional(SizeList),
+  "studioAdvertiserId": S.optional(S.String),
+  "id": S.optional(S.String),
+  "creativeAssets": S.optional(CreativeAssetList),
+}),
 ).annotate({ identifier: "Creative" }) as any as S.Schema<Creative>;
 
 export interface GetDirectorySitesRequest {
@@ -4720,33 +3525,17 @@ export interface GetDirectorySitesRequest {
   id: string;
 }
 export const GetDirectorySitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/directorySites/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetDirectorySitesRequest",
-}) as any as S.Schema<GetDirectorySitesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/directorySites/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetDirectorySitesRequest" }) as any as S.Schema<GetDirectorySitesRequest>;
 
-export type DirectorySiteInpageTagFormatsItemEnum =
-  | "STANDARD"
-  | "IFRAME_JAVASCRIPT_INPAGE"
-  | "INTERNAL_REDIRECT_INPAGE"
-  | "JAVASCRIPT_INPAGE"
-  | (string & {});
+export type DirectorySiteInpageTagFormatsItemEnum = "STANDARD" | "IFRAME_JAVASCRIPT_INPAGE" | "INTERNAL_REDIRECT_INPAGE" | "JAVASCRIPT_INPAGE";
 export const DirectorySiteInpageTagFormatsItemEnum = /*@__PURE__*/ S.String;
 
-export type DirectorySiteInpageTagFormatsItemEnumList =
-  ReadonlyArray<DirectorySiteInpageTagFormatsItemEnum>;
-export const DirectorySiteInpageTagFormatsItemEnumList = /*@__PURE__*/ S.Array(
-  DirectorySiteInpageTagFormatsItemEnum,
-) as any as S.Schema<DirectorySiteInpageTagFormatsItemEnumList>;
+export type DirectorySiteInpageTagFormatsItemEnumList = ReadonlyArray<DirectorySiteInpageTagFormatsItemEnum>;
+export const DirectorySiteInpageTagFormatsItemEnumList = /*@__PURE__*/ S.Array(DirectorySiteInpageTagFormatsItemEnum) as any as S.Schema<DirectorySiteInpageTagFormatsItemEnumList>;
 
 /** Google Ad Manager Settings */
 export interface DfpSettings {
@@ -4762,13 +3551,13 @@ export interface DfpSettings {
   pubPaidPlacementAccepted?: boolean;
 }
 export const DfpSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publisherPortalOnly: S.optional(S.Boolean),
-    programmaticPlacementAccepted: S.optional(S.Boolean),
-    dfpNetworkCode: S.optional(S.String),
-    dfpNetworkName: S.optional(S.String),
-    pubPaidPlacementAccepted: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "publisherPortalOnly": S.optional(S.Boolean),
+  "programmaticPlacementAccepted": S.optional(S.Boolean),
+  "dfpNetworkCode": S.optional(S.String),
+  "dfpNetworkName": S.optional(S.String),
+  "pubPaidPlacementAccepted": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "DfpSettings" }) as any as S.Schema<DfpSettings>;
 
 /** Directory Site Settings */
@@ -4783,30 +3572,19 @@ export interface DirectorySiteSettings {
   activeViewOptOut?: boolean;
 }
 export const DirectorySiteSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instreamVideoPlacementAccepted: S.optional(S.Boolean),
-    dfpSettings: S.optional(DfpSettings),
-    interstitialPlacementAccepted: S.optional(S.Boolean),
-    activeViewOptOut: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DirectorySiteSettings",
-}) as any as S.Schema<DirectorySiteSettings>;
+S.Struct({
+  "instreamVideoPlacementAccepted": S.optional(S.Boolean),
+  "dfpSettings": S.optional(DfpSettings),
+  "interstitialPlacementAccepted": S.optional(S.Boolean),
+  "activeViewOptOut": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DirectorySiteSettings" }) as any as S.Schema<DirectorySiteSettings>;
 
-export type DirectorySiteInterstitialTagFormatsItemEnum =
-  | "IFRAME_JAVASCRIPT_INTERSTITIAL"
-  | "INTERNAL_REDIRECT_INTERSTITIAL"
-  | "JAVASCRIPT_INTERSTITIAL"
-  | (string & {});
-export const DirectorySiteInterstitialTagFormatsItemEnum =
-  /*@__PURE__*/ S.String;
+export type DirectorySiteInterstitialTagFormatsItemEnum = "IFRAME_JAVASCRIPT_INTERSTITIAL" | "INTERNAL_REDIRECT_INTERSTITIAL" | "JAVASCRIPT_INTERSTITIAL";
+export const DirectorySiteInterstitialTagFormatsItemEnum = /*@__PURE__*/ S.String;
 
-export type DirectorySiteInterstitialTagFormatsItemEnumList =
-  ReadonlyArray<DirectorySiteInterstitialTagFormatsItemEnum>;
-export const DirectorySiteInterstitialTagFormatsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    DirectorySiteInterstitialTagFormatsItemEnum,
-  ) as any as S.Schema<DirectorySiteInterstitialTagFormatsItemEnumList>;
+export type DirectorySiteInterstitialTagFormatsItemEnumList = ReadonlyArray<DirectorySiteInterstitialTagFormatsItemEnum>;
+export const DirectorySiteInterstitialTagFormatsItemEnumList = /*@__PURE__*/ S.Array(DirectorySiteInterstitialTagFormatsItemEnum) as any as S.Schema<DirectorySiteInterstitialTagFormatsItemEnumList>;
 
 /** DirectorySites contains properties of a website from the Site Directory. Sites need to be added to an account via the Sites resource before they can be assigned to a placement. */
 export interface DirectorySite {
@@ -4830,19 +3608,17 @@ export interface DirectorySite {
   interstitialTagFormats?: DirectorySiteInterstitialTagFormatsItemEnumList;
 }
 export const DirectorySite = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inpageTagFormats: S.optional(DirectorySiteInpageTagFormatsItemEnumList),
-    idDimensionValue: S.optional(DimensionValue),
-    kind: S.optional(S.String),
-    publisherSpecificationId: S.optional(S.String),
-    settings: S.optional(DirectorySiteSettings),
-    url: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    interstitialTagFormats: S.optional(
-      DirectorySiteInterstitialTagFormatsItemEnumList,
-    ),
-  }),
+S.Struct({
+  "inpageTagFormats": S.optional(DirectorySiteInpageTagFormatsItemEnumList),
+  "idDimensionValue": S.optional(DimensionValue),
+  "kind": S.optional(S.String),
+  "publisherSpecificationId": S.optional(S.String),
+  "settings": S.optional(DirectorySiteSettings),
+  "url": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "interstitialTagFormats": S.optional(DirectorySiteInterstitialTagFormatsItemEnumList),
+}),
 ).annotate({ identifier: "DirectorySite" }) as any as S.Schema<DirectorySite>;
 
 export interface GetDynamicFeedsRequest {
@@ -4850,18 +3626,10 @@ export interface GetDynamicFeedsRequest {
   dynamicFeedId: string;
 }
 export const GetDynamicFeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dynamicFeedId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "studio/dynamicFeeds/{+dynamicFeedId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetDynamicFeedsRequest",
-}) as any as S.Schema<GetDynamicFeedsRequest>;
+S.Struct({
+  "dynamicFeedId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"studio/dynamicFeeds/{+dynamicFeedId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetDynamicFeedsRequest" }) as any as S.Schema<GetDynamicFeedsRequest>;
 
 /** Contains the schedule of the dynamic feed. */
 export interface FeedSchedule {
@@ -4877,51 +3645,16 @@ export interface FeedSchedule {
   startMinute?: string;
 }
 export const FeedSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repeatValue: S.optional(S.String),
-    scheduleEnabled: S.optional(S.Boolean),
-    startHour: S.optional(S.String),
-    timeZone: S.optional(S.String),
-    startMinute: S.optional(S.String),
-  }),
+S.Struct({
+  "repeatValue": S.optional(S.String),
+  "scheduleEnabled": S.optional(S.Boolean),
+  "startHour": S.optional(S.String),
+  "timeZone": S.optional(S.String),
+  "startMinute": S.optional(S.String),
+}),
 ).annotate({ identifier: "FeedSchedule" }) as any as S.Schema<FeedSchedule>;
 
-export type FeedFieldTypeEnum =
-  | "TYPE_UNKNOWN"
-  | "STRING"
-  | "LONG"
-  | "GPA_SERVED_IMAGE_URL"
-  | "GPA_SERVED_ASSET_URL"
-  | "COUNTRY_CODE_ISO"
-  | "FLOAT"
-  | "CM360_KEYWORD"
-  | "CM360_SITE_ID"
-  | "BOOL"
-  | "EXIT_URL"
-  | "DATETIME"
-  | "CM360_CREATIVE_ID"
-  | "CM360_PLACEMENT_ID"
-  | "CM360_AD_ID"
-  | "CM360_ADVERTISER_ID"
-  | "CM360_CAMPAIGN_ID"
-  | "CITY"
-  | "REGION"
-  | "POSTAL_CODE"
-  | "METRO"
-  | "CUSTOM_VALUE"
-  | "REMARKETING_VALUE"
-  | "GEO_CANONICAL"
-  | "WEIGHT"
-  | "STRING_LIST"
-  | "CREATIVE_DIMENSION"
-  | "USERLIST_ID"
-  | "ASSET_LIBRARY_DIRECTORY_HANDLE"
-  | "ASSET_LIBRARY_VIDEO_HANDLE"
-  | "ASSET_LIBRARY_HANDLE"
-  | "THIRD_PARTY_SERVED_URL"
-  | "CM360_DYNAMIC_TARGETING_KEY"
-  | "DV360_LINE_ITEM_ID"
-  | (string & {});
+export type FeedFieldTypeEnum = "TYPE_UNKNOWN" | "STRING" | "LONG" | "GPA_SERVED_IMAGE_URL" | "GPA_SERVED_ASSET_URL" | "COUNTRY_CODE_ISO" | "FLOAT" | "CM360_KEYWORD" | "CM360_SITE_ID" | "BOOL" | "EXIT_URL" | "DATETIME" | "CM360_CREATIVE_ID" | "CM360_PLACEMENT_ID" | "CM360_AD_ID" | "CM360_ADVERTISER_ID" | "CM360_CAMPAIGN_ID" | "CITY" | "REGION" | "POSTAL_CODE" | "METRO" | "CUSTOM_VALUE" | "REMARKETING_VALUE" | "GEO_CANONICAL" | "WEIGHT" | "STRING_LIST" | "CREATIVE_DIMENSION" | "USERLIST_ID" | "ASSET_LIBRARY_DIRECTORY_HANDLE" | "ASSET_LIBRARY_VIDEO_HANDLE" | "ASSET_LIBRARY_HANDLE" | "THIRD_PARTY_SERVED_URL" | "CM360_DYNAMIC_TARGETING_KEY" | "DV360_LINE_ITEM_ID";
 export const FeedFieldTypeEnum = /*@__PURE__*/ S.String;
 
 /** Each field of the element. This is a required field. */
@@ -4942,21 +3675,19 @@ export interface FeedField {
   required?: boolean;
 }
 export const FeedField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    defaultValue: S.optional(S.String),
-    type: S.optional(FeedFieldTypeEnum),
-    renderable: S.optional(S.Boolean),
-    filterable: S.optional(S.Boolean),
-    required: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "id": S.optional(S.Number),
+  "name": S.optional(S.String),
+  "defaultValue": S.optional(S.String),
+  "type": S.optional(FeedFieldTypeEnum),
+  "renderable": S.optional(S.Boolean),
+  "filterable": S.optional(S.Boolean),
+  "required": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "FeedField" }) as any as S.Schema<FeedField>;
 
 export type FeedFieldList = ReadonlyArray<FeedField>;
-export const FeedFieldList = /*@__PURE__*/ S.Array(
-  FeedField,
-) as any as S.Schema<FeedFieldList>;
+export const FeedFieldList = /*@__PURE__*/ S.Array(FeedField) as any as S.Schema<FeedFieldList>;
 
 /** Contains the element of the dynamic feed. */
 export interface Element {
@@ -4986,80 +3717,26 @@ export interface Element {
   createInfo?: LastModifiedInfo;
 }
 export const Element = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isLocalTimestamp: S.optional(S.Boolean),
-    elementName: S.optional(S.String),
-    externalIdFieldId: S.optional(S.Number),
-    endTimestampFieldId: S.optional(S.Number),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-    startTimestampFieldId: S.optional(S.Number),
-    proximityTargetingFieldId: S.optional(S.Number),
-    activeFieldId: S.optional(S.Number),
-    feedFields: S.optional(FeedFieldList),
-    defaultFieldId: S.optional(S.Number),
-    reportingLabelFieldId: S.optional(S.Number),
-    createInfo: S.optional(LastModifiedInfo),
-  }),
+S.Struct({
+  "isLocalTimestamp": S.optional(S.Boolean),
+  "elementName": S.optional(S.String),
+  "externalIdFieldId": S.optional(S.Number),
+  "endTimestampFieldId": S.optional(S.Number),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+  "startTimestampFieldId": S.optional(S.Number),
+  "proximityTargetingFieldId": S.optional(S.Number),
+  "activeFieldId": S.optional(S.Number),
+  "feedFields": S.optional(FeedFieldList),
+  "defaultFieldId": S.optional(S.Number),
+  "reportingLabelFieldId": S.optional(S.Number),
+  "createInfo": S.optional(LastModifiedInfo),
+}),
 ).annotate({ identifier: "Element" }) as any as S.Schema<Element>;
 
-export type FeedIngestionStatusStateEnum =
-  | "FEED_PROCESSING_STATE_UNKNOWN"
-  | "CANCELLED"
-  | "INGESTING_QUEUED"
-  | "INGESTING"
-  | "INGESTED_SUCCESS"
-  | "INGESTED_FAILURE"
-  | "REQUEST_TO_PUBLISH"
-  | "PUBLISHING"
-  | "PUBLISHED_SUCCESS"
-  | "PUBLISHED_FAILURE"
-  | (string & {});
+export type FeedIngestionStatusStateEnum = "FEED_PROCESSING_STATE_UNKNOWN" | "CANCELLED" | "INGESTING_QUEUED" | "INGESTING" | "INGESTED_SUCCESS" | "INGESTED_FAILURE" | "REQUEST_TO_PUBLISH" | "PUBLISHING" | "PUBLISHED_SUCCESS" | "PUBLISHED_FAILURE";
 export const FeedIngestionStatusStateEnum = /*@__PURE__*/ S.String;
 
-export type FieldErrorIngestionErrorEnum =
-  | "UNKNOWN_PARSING_ERROR"
-  | "MISSING_ID"
-  | "MISSING_REPORTING_LABEL"
-  | "EMPTY_VALUE"
-  | "ASSET_DOWNLOAD_ERROR"
-  | "ID_TOO_LONG"
-  | "DUPLICATE_ID"
-  | "PARSING_ERROR"
-  | "COUNTRY_PARSING_ERROR"
-  | "LONG_PARSING_ERROR"
-  | "BOOL_PARSING_ERROR"
-  | "EXPANDED_URL_PARSING_ERROR"
-  | "FLOAT_PARSING_ERROR"
-  | "DATETIME_PARSING_ERROR"
-  | "INVALID_PREFERENCE_VALUE"
-  | "GEO_NOT_FOUND_ERROR"
-  | "GEO_PARSING_ERROR"
-  | "GEO_PROXIMITY_TARGETING_MULTIPLE_LOCATION_ERROR"
-  | "POSTAL_CODE_PARSING_ERROR"
-  | "METRO_CODE_PARSING_ERROR"
-  | "DATETIME_WITHOUT_TIMEZONE_PARSING_ERROR"
-  | "WEIGHT_PARSING_ERROR"
-  | "CREATIVE_DIMENSION_PARSING_ERROR"
-  | "MULTIVALUE_ID"
-  | "ENDTIME_BEFORE_STARTTIME"
-  | "INVALID_ASSET_LIBRARY_HANDLE"
-  | "INVALID_ASSET_LIBRARY_VIDEO_HANDLE"
-  | "INVALID_ASSET_LIBRARY_DIRECTORY_HANDLE"
-  | "DYNAMIC_TARGETING_KEY_NOT_DEFINED_FOR_ADVERTISER"
-  | "USERLIST_ID_NOT_ACCESSIBLE_FOR_ADVERTISER"
-  | "ENDTIME_PASSED"
-  | "ENDTIME_TOO_SOON"
-  | "TEXT_ASSET_REFERENCE"
-  | "IMAGE_ASSET_SCS_REFERENCE"
-  | "AIRPORT_GEO_TARGET"
-  | "CANONICAL_NAME_QUERY_MISMATCH"
-  | "NO_DEFAULT_ROW"
-  | "NO_ACTIVE_DEFAULT_ROW"
-  | "NO_DEFAULT_ROW_IN_DATE_RANGE"
-  | "NO_ACTIVE_DEFAULT_ROW_IN_DATE_RANGE"
-  | "PAYLOAD_LIMIT_EXCEEDED"
-  | "SSL_NOT_COMPLIANT"
-  | (string & {});
+export type FieldErrorIngestionErrorEnum = "UNKNOWN_PARSING_ERROR" | "MISSING_ID" | "MISSING_REPORTING_LABEL" | "EMPTY_VALUE" | "ASSET_DOWNLOAD_ERROR" | "ID_TOO_LONG" | "DUPLICATE_ID" | "PARSING_ERROR" | "COUNTRY_PARSING_ERROR" | "LONG_PARSING_ERROR" | "BOOL_PARSING_ERROR" | "EXPANDED_URL_PARSING_ERROR" | "FLOAT_PARSING_ERROR" | "DATETIME_PARSING_ERROR" | "INVALID_PREFERENCE_VALUE" | "GEO_NOT_FOUND_ERROR" | "GEO_PARSING_ERROR" | "GEO_PROXIMITY_TARGETING_MULTIPLE_LOCATION_ERROR" | "POSTAL_CODE_PARSING_ERROR" | "METRO_CODE_PARSING_ERROR" | "DATETIME_WITHOUT_TIMEZONE_PARSING_ERROR" | "WEIGHT_PARSING_ERROR" | "CREATIVE_DIMENSION_PARSING_ERROR" | "MULTIVALUE_ID" | "ENDTIME_BEFORE_STARTTIME" | "INVALID_ASSET_LIBRARY_HANDLE" | "INVALID_ASSET_LIBRARY_VIDEO_HANDLE" | "INVALID_ASSET_LIBRARY_DIRECTORY_HANDLE" | "DYNAMIC_TARGETING_KEY_NOT_DEFINED_FOR_ADVERTISER" | "USERLIST_ID_NOT_ACCESSIBLE_FOR_ADVERTISER" | "ENDTIME_PASSED" | "ENDTIME_TOO_SOON" | "TEXT_ASSET_REFERENCE" | "IMAGE_ASSET_SCS_REFERENCE" | "AIRPORT_GEO_TARGET" | "CANONICAL_NAME_QUERY_MISMATCH" | "NO_DEFAULT_ROW" | "NO_ACTIVE_DEFAULT_ROW" | "NO_DEFAULT_ROW_IN_DATE_RANGE" | "NO_ACTIVE_DEFAULT_ROW_IN_DATE_RANGE" | "PAYLOAD_LIMIT_EXCEEDED" | "SSL_NOT_COMPLIANT";
 export const FieldErrorIngestionErrorEnum = /*@__PURE__*/ S.String;
 
 /** Contains the field error of the dynamic feed. */
@@ -5076,19 +3753,17 @@ export interface FieldError {
   fieldValues?: StringList;
 }
 export const FieldError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ingestionError: S.optional(FieldErrorIngestionErrorEnum),
-    fieldId: S.optional(S.Number),
-    isError: S.optional(S.Boolean),
-    fieldName: S.optional(S.String),
-    fieldValues: S.optional(StringList),
-  }),
+S.Struct({
+  "ingestionError": S.optional(FieldErrorIngestionErrorEnum),
+  "fieldId": S.optional(S.Number),
+  "isError": S.optional(S.Boolean),
+  "fieldName": S.optional(S.String),
+  "fieldValues": S.optional(StringList),
+}),
 ).annotate({ identifier: "FieldError" }) as any as S.Schema<FieldError>;
 
 export type FieldErrorList = ReadonlyArray<FieldError>;
-export const FieldErrorList = /*@__PURE__*/ S.Array(
-  FieldError,
-) as any as S.Schema<FieldErrorList>;
+export const FieldErrorList = /*@__PURE__*/ S.Array(FieldError) as any as S.Schema<FieldErrorList>;
 
 /** Contains the ingestion error record of the dynamic feed. limited to 100 records. */
 export interface IngestionErrorRecord {
@@ -5098,18 +3773,14 @@ export interface IngestionErrorRecord {
   recordId?: string;
 }
 export const IngestionErrorRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(FieldErrorList),
-    recordId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IngestionErrorRecord",
-}) as any as S.Schema<IngestionErrorRecord>;
+S.Struct({
+  "errors": S.optional(FieldErrorList),
+  "recordId": S.optional(S.String),
+}),
+).annotate({ identifier: "IngestionErrorRecord" }) as any as S.Schema<IngestionErrorRecord>;
 
 export type IngestionErrorRecordList = ReadonlyArray<IngestionErrorRecord>;
-export const IngestionErrorRecordList = /*@__PURE__*/ S.Array(
-  IngestionErrorRecord,
-) as any as S.Schema<IngestionErrorRecordList>;
+export const IngestionErrorRecordList = /*@__PURE__*/ S.Array(IngestionErrorRecord) as any as S.Schema<IngestionErrorRecordList>;
 
 /** Contains the ingestion status of the dynamic feed. */
 export interface IngestionStatus {
@@ -5125,16 +3796,14 @@ export interface IngestionStatus {
   numRowsProcessed?: string;
 }
 export const IngestionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numRowsWithErrors: S.optional(S.String),
-    numWarningsTotal: S.optional(S.String),
-    numRowsTotal: S.optional(S.String),
-    numActiveRows: S.optional(S.String),
-    numRowsProcessed: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IngestionStatus",
-}) as any as S.Schema<IngestionStatus>;
+S.Struct({
+  "numRowsWithErrors": S.optional(S.String),
+  "numWarningsTotal": S.optional(S.String),
+  "numRowsTotal": S.optional(S.String),
+  "numActiveRows": S.optional(S.String),
+  "numRowsProcessed": S.optional(S.String),
+}),
+).annotate({ identifier: "IngestionStatus" }) as any as S.Schema<IngestionStatus>;
 
 /** Contains the ingestion status of the dynamic feed. Feed ingestion is an asynchronous process. If the feed create request is successful, feed ingestion will be processed in the background, including validation, assets retrieval, and saving the data from the resource link. The processing time is dependent on the data size in the resource link. This read-only status field contains the current stage of that processing and its ingestion state. */
 export interface FeedIngestionStatus {
@@ -5146,21 +3815,14 @@ export interface FeedIngestionStatus {
   ingestionStatus?: IngestionStatus;
 }
 export const FeedIngestionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(FeedIngestionStatusStateEnum),
-    ingestionErrorRecords: S.optional(IngestionErrorRecordList),
-    ingestionStatus: S.optional(IngestionStatus),
-  }),
-).annotate({
-  identifier: "FeedIngestionStatus",
-}) as any as S.Schema<FeedIngestionStatus>;
+S.Struct({
+  "state": S.optional(FeedIngestionStatusStateEnum),
+  "ingestionErrorRecords": S.optional(IngestionErrorRecordList),
+  "ingestionStatus": S.optional(IngestionStatus),
+}),
+).annotate({ identifier: "FeedIngestionStatus" }) as any as S.Schema<FeedIngestionStatus>;
 
-export type DynamicFeedStatusEnum =
-  | "STATUS_UNKNOWN"
-  | "ACTIVE"
-  | "INACTIVE"
-  | "DELETED"
-  | (string & {});
+export type DynamicFeedStatusEnum = "STATUS_UNKNOWN" | "ACTIVE" | "INACTIVE" | "DELETED";
 export const DynamicFeedStatusEnum = /*@__PURE__*/ S.String;
 
 /** Contains the meta data of the content source. This is a read-only field. */
@@ -5175,21 +3837,15 @@ export interface ContentSourceMetaData {
   rowNumber?: number;
 }
 export const ContentSourceMetaData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    charset: S.optional(S.String),
-    separator: S.optional(S.String),
-    fieldNames: S.optional(StringList),
-    rowNumber: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ContentSourceMetaData",
-}) as any as S.Schema<ContentSourceMetaData>;
+S.Struct({
+  "charset": S.optional(S.String),
+  "separator": S.optional(S.String),
+  "fieldNames": S.optional(StringList),
+  "rowNumber": S.optional(S.Number),
+}),
+).annotate({ identifier: "ContentSourceMetaData" }) as any as S.Schema<ContentSourceMetaData>;
 
-export type ContentSourceResourceTypeEnum =
-  | "RESOURCE_TYPE_UNSPECIFIED"
-  | "RESOURCE_TYPE_GOOGLE_SPREADSHEET"
-  | "RESOURCE_TYPE_REMOTE_FILE"
-  | (string & {});
+export type ContentSourceResourceTypeEnum = "RESOURCE_TYPE_UNSPECIFIED" | "RESOURCE_TYPE_GOOGLE_SPREADSHEET" | "RESOURCE_TYPE_REMOTE_FILE";
 export const ContentSourceResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains the content source of the dynamic feed. */
@@ -5208,14 +3864,14 @@ export interface ContentSource {
   lastModifiedInfo?: LastModifiedInfo;
 }
 export const ContentSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metaData: S.optional(ContentSourceMetaData),
-    resourceType: S.optional(ContentSourceResourceTypeEnum),
-    resourceLink: S.optional(S.String),
-    contentSourceName: S.optional(S.String),
-    createInfo: S.optional(LastModifiedInfo),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-  }),
+S.Struct({
+  "metaData": S.optional(ContentSourceMetaData),
+  "resourceType": S.optional(ContentSourceResourceTypeEnum),
+  "resourceLink": S.optional(S.String),
+  "contentSourceName": S.optional(S.String),
+  "createInfo": S.optional(LastModifiedInfo),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+}),
 ).annotate({ identifier: "ContentSource" }) as any as S.Schema<ContentSource>;
 
 /** *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this resource, please reach out to your Google sales representative. Contains dynamic feed information. */
@@ -5244,19 +3900,19 @@ export interface DynamicFeed {
   createInfo?: LastModifiedInfo;
 }
 export const DynamicFeed = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    feedSchedule: S.optional(FeedSchedule),
-    element: S.optional(Element),
-    hasPublished: S.optional(S.Boolean),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-    feedIngestionStatus: S.optional(FeedIngestionStatus),
-    status: S.optional(DynamicFeedStatusEnum),
-    contentSource: S.optional(ContentSource),
-    dynamicFeedName: S.optional(S.String),
-    studioAdvertiserId: S.optional(S.String),
-    dynamicFeedId: S.optional(S.String),
-    createInfo: S.optional(LastModifiedInfo),
-  }),
+S.Struct({
+  "feedSchedule": S.optional(FeedSchedule),
+  "element": S.optional(Element),
+  "hasPublished": S.optional(S.Boolean),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+  "feedIngestionStatus": S.optional(FeedIngestionStatus),
+  "status": S.optional(DynamicFeedStatusEnum),
+  "contentSource": S.optional(ContentSource),
+  "dynamicFeedName": S.optional(S.String),
+  "studioAdvertiserId": S.optional(S.String),
+  "dynamicFeedId": S.optional(S.String),
+  "createInfo": S.optional(LastModifiedInfo),
+}),
 ).annotate({ identifier: "DynamicFeed" }) as any as S.Schema<DynamicFeed>;
 
 export interface GetDynamicProfilesRequest {
@@ -5264,33 +3920,15 @@ export interface GetDynamicProfilesRequest {
   dynamicProfileId: string;
 }
 export const GetDynamicProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dynamicProfileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "studio/dynamicProfiles/{+dynamicProfileId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetDynamicProfilesRequest",
-}) as any as S.Schema<GetDynamicProfilesRequest>;
+S.Struct({
+  "dynamicProfileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"studio/dynamicProfiles/{+dynamicProfileId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetDynamicProfilesRequest" }) as any as S.Schema<GetDynamicProfilesRequest>;
 
-export type DynamicProfileArchiveStatusEnum =
-  | "ARCHIVE_STATUS_UNKNOWN"
-  | "UNARCHIVED"
-  | "ARCHIVED"
-  | (string & {});
+export type DynamicProfileArchiveStatusEnum = "ARCHIVE_STATUS_UNKNOWN" | "UNARCHIVED" | "ARCHIVED";
 export const DynamicProfileArchiveStatusEnum = /*@__PURE__*/ S.String;
 
-export type DynamicRulesRuleTypeEnum =
-  | "RULE_SET_TYPE_UNKNOWN"
-  | "OPEN"
-  | "AUTO"
-  | "CUSTOM"
-  | "PROXIMITY_TARGETING"
-  | (string & {});
+export type DynamicRulesRuleTypeEnum = "RULE_SET_TYPE_UNKNOWN" | "OPEN" | "AUTO" | "CUSTOM" | "PROXIMITY_TARGETING";
 export const DynamicRulesRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains request value information. */
@@ -5303,20 +3941,14 @@ export interface RequestValue {
   excludeFromUserAttributeIds?: StringList;
 }
 export const RequestValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    userAttributeIds: S.optional(StringList),
-    excludeFromUserAttributeIds: S.optional(StringList),
-  }),
+S.Struct({
+  "key": S.optional(S.String),
+  "userAttributeIds": S.optional(StringList),
+  "excludeFromUserAttributeIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "RequestValue" }) as any as S.Schema<RequestValue>;
 
-export type FieldFilterMatchTypeEnum =
-  | "LHS_MATCH_TYPE_UNKNOWN"
-  | "EQUALS_OR_UNRESTRICTED"
-  | "EQUALS"
-  | "UNRESTRICTED"
-  | "NOT_EQUALS"
-  | (string & {});
+export type FieldFilterMatchTypeEnum = "LHS_MATCH_TYPE_UNKNOWN" | "EQUALS_OR_UNRESTRICTED" | "EQUALS" | "UNRESTRICTED" | "NOT_EQUALS";
 export const FieldFilterMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains dependent field value information. */
@@ -5329,22 +3961,14 @@ export interface DependentFieldValue {
   fieldId?: number;
 }
 export const DependentFieldValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    elementId: S.optional(S.String),
-    dynamicFeedId: S.optional(S.String),
-    fieldId: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DependentFieldValue",
-}) as any as S.Schema<DependentFieldValue>;
+S.Struct({
+  "elementId": S.optional(S.String),
+  "dynamicFeedId": S.optional(S.String),
+  "fieldId": S.optional(S.Number),
+}),
+).annotate({ identifier: "DependentFieldValue" }) as any as S.Schema<DependentFieldValue>;
 
-export type FieldFilterValueTypeEnum =
-  | "RHS_VALUE_TYPE_UNKNOWN"
-  | "STRING"
-  | "REQUEST"
-  | "BOOL"
-  | "DEPENDENT"
-  | (string & {});
+export type FieldFilterValueTypeEnum = "RHS_VALUE_TYPE_UNKNOWN" | "STRING" | "REQUEST" | "BOOL" | "DEPENDENT";
 export const FieldFilterValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains field filter information. */
@@ -5365,21 +3989,19 @@ export interface FieldFilter {
   valueType?: FieldFilterValueTypeEnum;
 }
 export const FieldFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestValue: S.optional(RequestValue),
-    fieldId: S.optional(S.Number),
-    matchType: S.optional(FieldFilterMatchTypeEnum),
-    stringValue: S.optional(S.String),
-    boolValue: S.optional(S.Boolean),
-    dependentFieldValue: S.optional(DependentFieldValue),
-    valueType: S.optional(FieldFilterValueTypeEnum),
-  }),
+S.Struct({
+  "requestValue": S.optional(RequestValue),
+  "fieldId": S.optional(S.Number),
+  "matchType": S.optional(FieldFilterMatchTypeEnum),
+  "stringValue": S.optional(S.String),
+  "boolValue": S.optional(S.Boolean),
+  "dependentFieldValue": S.optional(DependentFieldValue),
+  "valueType": S.optional(FieldFilterValueTypeEnum),
+}),
 ).annotate({ identifier: "FieldFilter" }) as any as S.Schema<FieldFilter>;
 
 export type FieldFilterList = ReadonlyArray<FieldFilter>;
-export const FieldFilterList = /*@__PURE__*/ S.Array(
-  FieldFilter,
-) as any as S.Schema<FieldFilterList>;
+export const FieldFilterList = /*@__PURE__*/ S.Array(FieldFilter) as any as S.Schema<FieldFilterList>;
 
 /** Contains a list of field filters that the given custom rule will apply. */
 export interface RuleBlock {
@@ -5387,15 +4009,13 @@ export interface RuleBlock {
   fieldFilter?: FieldFilterList;
 }
 export const RuleBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldFilter: S.optional(FieldFilterList),
-  }),
+S.Struct({
+  "fieldFilter": S.optional(FieldFilterList),
+}),
 ).annotate({ identifier: "RuleBlock" }) as any as S.Schema<RuleBlock>;
 
 export type RuleBlockList = ReadonlyArray<RuleBlock>;
-export const RuleBlockList = /*@__PURE__*/ S.Array(
-  RuleBlock,
-) as any as S.Schema<RuleBlockList>;
+export const RuleBlockList = /*@__PURE__*/ S.Array(RuleBlock) as any as S.Schema<RuleBlockList>;
 
 /** Contains custom rule information. */
 export interface CustomRule {
@@ -5407,17 +4027,15 @@ export interface CustomRule {
   name?: string;
 }
 export const CustomRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priority: S.optional(S.Number),
-    ruleBlocks: S.optional(RuleBlockList),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "priority": S.optional(S.Number),
+  "ruleBlocks": S.optional(RuleBlockList),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "CustomRule" }) as any as S.Schema<CustomRule>;
 
 export type CustomRuleList = ReadonlyArray<CustomRule>;
-export const CustomRuleList = /*@__PURE__*/ S.Array(
-  CustomRule,
-) as any as S.Schema<CustomRuleList>;
+export const CustomRuleList = /*@__PURE__*/ S.Array(CustomRule) as any as S.Schema<CustomRuleList>;
 
 /** Contains remarketing value attribute information. */
 export interface RemarketingValueAttribute {
@@ -5427,43 +4045,22 @@ export interface RemarketingValueAttribute {
   userAttributeIds?: StringList;
 }
 export const RemarketingValueAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldId: S.optional(S.Number),
-    userAttributeIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "RemarketingValueAttribute",
-}) as any as S.Schema<RemarketingValueAttribute>;
+S.Struct({
+  "fieldId": S.optional(S.Number),
+  "userAttributeIds": S.optional(StringList),
+}),
+).annotate({ identifier: "RemarketingValueAttribute" }) as any as S.Schema<RemarketingValueAttribute>;
 
-export type RemarketingValueAttributeList =
-  ReadonlyArray<RemarketingValueAttribute>;
-export const RemarketingValueAttributeList = /*@__PURE__*/ S.Array(
-  RemarketingValueAttribute,
-) as any as S.Schema<RemarketingValueAttributeList>;
+export type RemarketingValueAttributeList = ReadonlyArray<RemarketingValueAttribute>;
+export const RemarketingValueAttributeList = /*@__PURE__*/ S.Array(RemarketingValueAttribute) as any as S.Schema<RemarketingValueAttributeList>;
 
-export type DynamicRulesRotationTypeEnum =
-  | "ROTATION_TYPE_UNKNOWN"
-  | "RANDOM"
-  | "OPTIMIZED"
-  | "WEIGHTED"
-  | (string & {});
+export type DynamicRulesRotationTypeEnum = "ROTATION_TYPE_UNKNOWN" | "RANDOM" | "OPTIMIZED" | "WEIGHTED";
 export const DynamicRulesRotationTypeEnum = /*@__PURE__*/ S.String;
 
-export type ProximityFilterRadiusBucketTypeEnum =
-  | "RADIUS_BUCKET_TYPE_UNKNOWN"
-  | "SMALL"
-  | "MEDIUM"
-  | "LARGE"
-  | "MULTI_REGIONAL"
-  | "NATIONAL"
-  | (string & {});
+export type ProximityFilterRadiusBucketTypeEnum = "RADIUS_BUCKET_TYPE_UNKNOWN" | "SMALL" | "MEDIUM" | "LARGE" | "MULTI_REGIONAL" | "NATIONAL";
 export const ProximityFilterRadiusBucketTypeEnum = /*@__PURE__*/ S.String;
 
-export type ProximityFilterRadiusUnitTypeEnum =
-  | "RADIUS_UNIT_TYPE_UNKNOWN"
-  | "KILOMETERS"
-  | "MILES"
-  | (string & {});
+export type ProximityFilterRadiusUnitTypeEnum = "RADIUS_UNIT_TYPE_UNKNOWN" | "KILOMETERS" | "MILES";
 export const ProximityFilterRadiusUnitTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains proximity filter information. */
@@ -5478,15 +4075,13 @@ export interface ProximityFilter {
   radiusUnitType?: ProximityFilterRadiusUnitTypeEnum;
 }
 export const ProximityFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    radiusValue: S.optional(S.Number),
-    radiusBucketType: S.optional(ProximityFilterRadiusBucketTypeEnum),
-    fieldId: S.optional(S.Number),
-    radiusUnitType: S.optional(ProximityFilterRadiusUnitTypeEnum),
-  }),
-).annotate({
-  identifier: "ProximityFilter",
-}) as any as S.Schema<ProximityFilter>;
+S.Struct({
+  "radiusValue": S.optional(S.Number),
+  "radiusBucketType": S.optional(ProximityFilterRadiusBucketTypeEnum),
+  "fieldId": S.optional(S.Number),
+  "radiusUnitType": S.optional(ProximityFilterRadiusUnitTypeEnum),
+}),
+).annotate({ identifier: "ProximityFilter" }) as any as S.Schema<ProximityFilter>;
 
 /** Contains custom value field information. */
 export interface CustomValueField {
@@ -5496,18 +4091,14 @@ export interface CustomValueField {
   requestKey?: string;
 }
 export const CustomValueField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldId: S.optional(S.Number),
-    requestKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomValueField",
-}) as any as S.Schema<CustomValueField>;
+S.Struct({
+  "fieldId": S.optional(S.Number),
+  "requestKey": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomValueField" }) as any as S.Schema<CustomValueField>;
 
 export type CustomValueFieldList = ReadonlyArray<CustomValueField>;
-export const CustomValueFieldList = /*@__PURE__*/ S.Array(
-  CustomValueField,
-) as any as S.Schema<CustomValueFieldList>;
+export const CustomValueFieldList = /*@__PURE__*/ S.Array(CustomValueField) as any as S.Schema<CustomValueFieldList>;
 
 /** Contains dynamic rules information. */
 export interface DynamicRules {
@@ -5529,16 +4120,16 @@ export interface DynamicRules {
   customValueFields?: CustomValueFieldList;
 }
 export const DynamicRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    weightFieldId: S.optional(S.Number),
-    ruleType: S.optional(DynamicRulesRuleTypeEnum),
-    customRules: S.optional(CustomRuleList),
-    autoTargetedFieldIds: S.optional(IntegerList),
-    remarketingValueAttributes: S.optional(RemarketingValueAttributeList),
-    rotationType: S.optional(DynamicRulesRotationTypeEnum),
-    proximityFilter: S.optional(ProximityFilter),
-    customValueFields: S.optional(CustomValueFieldList),
-  }),
+S.Struct({
+  "weightFieldId": S.optional(S.Number),
+  "ruleType": S.optional(DynamicRulesRuleTypeEnum),
+  "customRules": S.optional(CustomRuleList),
+  "autoTargetedFieldIds": S.optional(IntegerList),
+  "remarketingValueAttributes": S.optional(RemarketingValueAttributeList),
+  "rotationType": S.optional(DynamicRulesRotationTypeEnum),
+  "proximityFilter": S.optional(ProximityFilter),
+  "customValueFields": S.optional(CustomValueFieldList),
+}),
 ).annotate({ identifier: "DynamicRules" }) as any as S.Schema<DynamicRules>;
 
 /** Contains dynamic profile specific settings for an associated dynamic feed. */
@@ -5551,20 +4142,15 @@ export interface DynamicProfileFeedSettings {
   dynamicRules?: DynamicRules;
 }
 export const DynamicProfileFeedSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dynamicFeedId: S.optional(S.String),
-    quantity: S.optional(S.Number),
-    dynamicRules: S.optional(DynamicRules),
-  }),
-).annotate({
-  identifier: "DynamicProfileFeedSettings",
-}) as any as S.Schema<DynamicProfileFeedSettings>;
+S.Struct({
+  "dynamicFeedId": S.optional(S.String),
+  "quantity": S.optional(S.Number),
+  "dynamicRules": S.optional(DynamicRules),
+}),
+).annotate({ identifier: "DynamicProfileFeedSettings" }) as any as S.Schema<DynamicProfileFeedSettings>;
 
-export type DynamicProfileFeedSettingsList =
-  ReadonlyArray<DynamicProfileFeedSettings>;
-export const DynamicProfileFeedSettingsList = /*@__PURE__*/ S.Array(
-  DynamicProfileFeedSettings,
-) as any as S.Schema<DynamicProfileFeedSettingsList>;
+export type DynamicProfileFeedSettingsList = ReadonlyArray<DynamicProfileFeedSettings>;
+export const DynamicProfileFeedSettingsList = /*@__PURE__*/ S.Array(DynamicProfileFeedSettings) as any as S.Schema<DynamicProfileFeedSettingsList>;
 
 /** Contains dynamic profile version information. */
 export interface DynamicProfileVersion {
@@ -5574,20 +4160,13 @@ export interface DynamicProfileVersion {
   dynamicProfileFeedSettings?: DynamicProfileFeedSettingsList;
 }
 export const DynamicProfileVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionId: S.optional(S.String),
-    dynamicProfileFeedSettings: S.optional(DynamicProfileFeedSettingsList),
-  }),
-).annotate({
-  identifier: "DynamicProfileVersion",
-}) as any as S.Schema<DynamicProfileVersion>;
+S.Struct({
+  "versionId": S.optional(S.String),
+  "dynamicProfileFeedSettings": S.optional(DynamicProfileFeedSettingsList),
+}),
+).annotate({ identifier: "DynamicProfileVersion" }) as any as S.Schema<DynamicProfileVersion>;
 
-export type DynamicProfileStatusEnum =
-  | "STATUS_UNKNOWN"
-  | "ACTIVE"
-  | "INACTIVE"
-  | "DELETED"
-  | (string & {});
+export type DynamicProfileStatusEnum = "STATUS_UNKNOWN" | "ACTIVE" | "INACTIVE" | "DELETED";
 export const DynamicProfileStatusEnum = /*@__PURE__*/ S.String;
 
 /** *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this resource, please reach out to your Google sales representative. Contains dynamic profile information. */
@@ -5616,19 +4195,19 @@ export interface DynamicProfile {
   kind?: string;
 }
 export const DynamicProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    archiveStatus: S.optional(DynamicProfileArchiveStatusEnum),
-    createInfo: S.optional(LastModifiedInfo),
-    draft: S.optional(DynamicProfileVersion),
-    studioAdvertiserId: S.optional(S.String),
-    active: S.optional(DynamicProfileVersion),
-    status: S.optional(DynamicProfileStatusEnum),
-    dynamicProfileId: S.optional(S.String),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-    description: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "archiveStatus": S.optional(DynamicProfileArchiveStatusEnum),
+  "createInfo": S.optional(LastModifiedInfo),
+  "draft": S.optional(DynamicProfileVersion),
+  "studioAdvertiserId": S.optional(S.String),
+  "active": S.optional(DynamicProfileVersion),
+  "status": S.optional(DynamicProfileStatusEnum),
+  "dynamicProfileId": S.optional(S.String),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+  "description": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "DynamicProfile" }) as any as S.Schema<DynamicProfile>;
 
 export interface GetEventTagsRequest {
@@ -5638,34 +4217,19 @@ export interface GetEventTagsRequest {
   id: string;
 }
 export const GetEventTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/eventTags/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEventTagsRequest",
-}) as any as S.Schema<GetEventTagsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/eventTags/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetEventTagsRequest" }) as any as S.Schema<GetEventTagsRequest>;
 
-export type EventTagTypeEnum =
-  | "IMPRESSION_IMAGE_EVENT_TAG"
-  | "IMPRESSION_JAVASCRIPT_EVENT_TAG"
-  | "CLICK_THROUGH_EVENT_TAG"
-  | (string & {});
+export type EventTagTypeEnum = "IMPRESSION_IMAGE_EVENT_TAG" | "IMPRESSION_JAVASCRIPT_EVENT_TAG" | "CLICK_THROUGH_EVENT_TAG";
 export const EventTagTypeEnum = /*@__PURE__*/ S.String;
 
-export type EventTagStatusEnum = "ENABLED" | "DISABLED" | (string & {});
+export type EventTagStatusEnum = "ENABLED" | "DISABLED";
 export const EventTagStatusEnum = /*@__PURE__*/ S.String;
 
-export type EventTagSiteFilterTypeEnum =
-  | "ALLOWLIST"
-  | "BLOCKLIST"
-  | (string & {});
+export type EventTagSiteFilterTypeEnum = "ALLOWLIST" | "BLOCKLIST";
 export const EventTagSiteFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of an event tag. */
@@ -5708,26 +4272,26 @@ export interface EventTag {
   sslCompliant?: boolean;
 }
 export const EventTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    accountId: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(EventTagTypeEnum),
-    excludeFromAdxRequests: S.optional(S.Boolean),
-    url: S.optional(S.String),
-    status: S.optional(EventTagStatusEnum),
-    id: S.optional(S.String),
-    urlEscapeLevels: S.optional(S.Number),
-    enabledByDefault: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-    siteIds: S.optional(StringList),
-    siteFilterType: S.optional(EventTagSiteFilterTypeEnum),
-    campaignIdDimensionValue: S.optional(DimensionValue),
-    campaignId: S.optional(S.String),
-    advertiserId: S.optional(S.String),
-    sslCompliant: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "accountId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "type": S.optional(EventTagTypeEnum),
+  "excludeFromAdxRequests": S.optional(S.Boolean),
+  "url": S.optional(S.String),
+  "status": S.optional(EventTagStatusEnum),
+  "id": S.optional(S.String),
+  "urlEscapeLevels": S.optional(S.Number),
+  "enabledByDefault": S.optional(S.Boolean),
+  "kind": S.optional(S.String),
+  "siteIds": S.optional(StringList),
+  "siteFilterType": S.optional(EventTagSiteFilterTypeEnum),
+  "campaignIdDimensionValue": S.optional(DimensionValue),
+  "campaignId": S.optional(S.String),
+  "advertiserId": S.optional(S.String),
+  "sslCompliant": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "EventTag" }) as any as S.Schema<EventTag>;
 
 export interface GetFilesRequest {
@@ -5737,51 +4301,19 @@ export interface GetFilesRequest {
   fileId: string;
 }
 export const GetFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportId: S.String.pipe(T.Label()),
-    fileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "reports/{reportId}/files/{fileId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetFilesRequest",
-}) as any as S.Schema<GetFilesRequest>;
+S.Struct({
+  "reportId": S.String.pipe(T.Label()),
+  "fileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"reports/{reportId}/files/{fileId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetFilesRequest" }) as any as S.Schema<GetFilesRequest>;
 
-export type FileStatusEnum =
-  | "PROCESSING"
-  | "REPORT_AVAILABLE"
-  | "FAILED"
-  | "CANCELLED"
-  | "QUEUED"
-  | (string & {});
+export type FileStatusEnum = "PROCESSING" | "REPORT_AVAILABLE" | "FAILED" | "CANCELLED" | "QUEUED";
 export const FileStatusEnum = /*@__PURE__*/ S.String;
 
-export type FileFormatEnum = "CSV" | "EXCEL" | (string & {});
+export type FileFormatEnum = "CSV" | "EXCEL";
 export const FileFormatEnum = /*@__PURE__*/ S.String;
 
-export type DateRangeRelativeDateRangeEnum =
-  | "TODAY"
-  | "YESTERDAY"
-  | "WEEK_TO_DATE"
-  | "MONTH_TO_DATE"
-  | "QUARTER_TO_DATE"
-  | "YEAR_TO_DATE"
-  | "PREVIOUS_WEEK"
-  | "PREVIOUS_MONTH"
-  | "PREVIOUS_QUARTER"
-  | "PREVIOUS_YEAR"
-  | "LAST_7_DAYS"
-  | "LAST_30_DAYS"
-  | "LAST_90_DAYS"
-  | "LAST_365_DAYS"
-  | "LAST_24_MONTHS"
-  | "LAST_14_DAYS"
-  | "LAST_60_DAYS"
-  | (string & {});
+export type DateRangeRelativeDateRangeEnum = "TODAY" | "YESTERDAY" | "WEEK_TO_DATE" | "MONTH_TO_DATE" | "QUARTER_TO_DATE" | "YEAR_TO_DATE" | "PREVIOUS_WEEK" | "PREVIOUS_MONTH" | "PREVIOUS_QUARTER" | "PREVIOUS_YEAR" | "LAST_7_DAYS" | "LAST_30_DAYS" | "LAST_90_DAYS" | "LAST_365_DAYS" | "LAST_24_MONTHS" | "LAST_14_DAYS" | "LAST_60_DAYS";
 export const DateRangeRelativeDateRangeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a date range. */
@@ -5794,12 +4326,12 @@ export interface DateRange {
   kind?: string;
 }
 export const DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startDate: S.optional(S.String),
-    relativeDateRange: S.optional(DateRangeRelativeDateRangeEnum),
-    endDate: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "startDate": S.optional(S.String),
+  "relativeDateRange": S.optional(DateRangeRelativeDateRangeEnum),
+  "endDate": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
 
 export interface FileUrls {
@@ -5809,10 +4341,10 @@ export interface FileUrls {
   apiUrl?: string;
 }
 export const FileUrls = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserUrl: S.optional(S.String),
-    apiUrl: S.optional(S.String),
-  }),
+S.Struct({
+  "browserUrl": S.optional(S.String),
+  "apiUrl": S.optional(S.String),
+}),
 ).annotate({ identifier: "FileUrls" }) as any as S.Schema<FileUrls>;
 
 /** Represents a File resource. A file contains the metadata for a report run. It shows the status of the run and holds the URLs to the generated report data if the run is finished and the status is "REPORT_AVAILABLE". */
@@ -5839,18 +4371,18 @@ export interface File {
   kind?: string;
 }
 export const File = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-    status: S.optional(FileStatusEnum),
-    fileName: S.optional(S.String),
-    reportId: S.optional(S.String),
-    etag: S.optional(S.String),
-    format: S.optional(FileFormatEnum),
-    dateRange: S.optional(DateRange),
-    urls: S.optional(FileUrls),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "lastModifiedTime": S.optional(S.String),
+  "status": S.optional(FileStatusEnum),
+  "fileName": S.optional(S.String),
+  "reportId": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "format": S.optional(FileFormatEnum),
+  "dateRange": S.optional(DateRange),
+  "urls": S.optional(FileUrls),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
 export interface GetFloodlightActivitiesRequest {
@@ -5860,137 +4392,19 @@ export interface GetFloodlightActivitiesRequest {
   id: string;
 }
 export const GetFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/floodlightActivities/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetFloodlightActivitiesRequest",
-}) as any as S.Schema<GetFloodlightActivitiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/floodlightActivities/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetFloodlightActivitiesRequest" }) as any as S.Schema<GetFloodlightActivitiesRequest>;
 
-export type FloodlightActivityUserDefinedVariableTypesItemEnum =
-  | "U1"
-  | "U2"
-  | "U3"
-  | "U4"
-  | "U5"
-  | "U6"
-  | "U7"
-  | "U8"
-  | "U9"
-  | "U10"
-  | "U11"
-  | "U12"
-  | "U13"
-  | "U14"
-  | "U15"
-  | "U16"
-  | "U17"
-  | "U18"
-  | "U19"
-  | "U20"
-  | "U21"
-  | "U22"
-  | "U23"
-  | "U24"
-  | "U25"
-  | "U26"
-  | "U27"
-  | "U28"
-  | "U29"
-  | "U30"
-  | "U31"
-  | "U32"
-  | "U33"
-  | "U34"
-  | "U35"
-  | "U36"
-  | "U37"
-  | "U38"
-  | "U39"
-  | "U40"
-  | "U41"
-  | "U42"
-  | "U43"
-  | "U44"
-  | "U45"
-  | "U46"
-  | "U47"
-  | "U48"
-  | "U49"
-  | "U50"
-  | "U51"
-  | "U52"
-  | "U53"
-  | "U54"
-  | "U55"
-  | "U56"
-  | "U57"
-  | "U58"
-  | "U59"
-  | "U60"
-  | "U61"
-  | "U62"
-  | "U63"
-  | "U64"
-  | "U65"
-  | "U66"
-  | "U67"
-  | "U68"
-  | "U69"
-  | "U70"
-  | "U71"
-  | "U72"
-  | "U73"
-  | "U74"
-  | "U75"
-  | "U76"
-  | "U77"
-  | "U78"
-  | "U79"
-  | "U80"
-  | "U81"
-  | "U82"
-  | "U83"
-  | "U84"
-  | "U85"
-  | "U86"
-  | "U87"
-  | "U88"
-  | "U89"
-  | "U90"
-  | "U91"
-  | "U92"
-  | "U93"
-  | "U94"
-  | "U95"
-  | "U96"
-  | "U97"
-  | "U98"
-  | "U99"
-  | "U100"
-  | (string & {});
-export const FloodlightActivityUserDefinedVariableTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type FloodlightActivityUserDefinedVariableTypesItemEnum = "U1" | "U2" | "U3" | "U4" | "U5" | "U6" | "U7" | "U8" | "U9" | "U10" | "U11" | "U12" | "U13" | "U14" | "U15" | "U16" | "U17" | "U18" | "U19" | "U20" | "U21" | "U22" | "U23" | "U24" | "U25" | "U26" | "U27" | "U28" | "U29" | "U30" | "U31" | "U32" | "U33" | "U34" | "U35" | "U36" | "U37" | "U38" | "U39" | "U40" | "U41" | "U42" | "U43" | "U44" | "U45" | "U46" | "U47" | "U48" | "U49" | "U50" | "U51" | "U52" | "U53" | "U54" | "U55" | "U56" | "U57" | "U58" | "U59" | "U60" | "U61" | "U62" | "U63" | "U64" | "U65" | "U66" | "U67" | "U68" | "U69" | "U70" | "U71" | "U72" | "U73" | "U74" | "U75" | "U76" | "U77" | "U78" | "U79" | "U80" | "U81" | "U82" | "U83" | "U84" | "U85" | "U86" | "U87" | "U88" | "U89" | "U90" | "U91" | "U92" | "U93" | "U94" | "U95" | "U96" | "U97" | "U98" | "U99" | "U100";
+export const FloodlightActivityUserDefinedVariableTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type FloodlightActivityUserDefinedVariableTypesItemEnumList =
-  ReadonlyArray<FloodlightActivityUserDefinedVariableTypesItemEnum>;
-export const FloodlightActivityUserDefinedVariableTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    FloodlightActivityUserDefinedVariableTypesItemEnum,
-  ) as any as S.Schema<FloodlightActivityUserDefinedVariableTypesItemEnumList>;
+export type FloodlightActivityUserDefinedVariableTypesItemEnumList = ReadonlyArray<FloodlightActivityUserDefinedVariableTypesItemEnum>;
+export const FloodlightActivityUserDefinedVariableTypesItemEnumList = /*@__PURE__*/ S.Array(FloodlightActivityUserDefinedVariableTypesItemEnum) as any as S.Schema<FloodlightActivityUserDefinedVariableTypesItemEnumList>;
 
-export type FloodlightActivityFloodlightTagTypeEnum =
-  | "IFRAME"
-  | "IMAGE"
-  | "GLOBAL_SITE_TAG"
-  | (string & {});
+export type FloodlightActivityFloodlightTagTypeEnum = "IFRAME" | "IMAGE" | "GLOBAL_SITE_TAG";
 export const FloodlightActivityFloodlightTagTypeEnum = /*@__PURE__*/ S.String;
 
 /** Dynamic Tag */
@@ -6003,49 +4417,20 @@ export interface FloodlightActivityDynamicTag {
   name?: string;
 }
 export const FloodlightActivityDynamicTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tag: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FloodlightActivityDynamicTag",
-}) as any as S.Schema<FloodlightActivityDynamicTag>;
+S.Struct({
+  "tag": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "FloodlightActivityDynamicTag" }) as any as S.Schema<FloodlightActivityDynamicTag>;
 
-export type FloodlightActivityDynamicTagList =
-  ReadonlyArray<FloodlightActivityDynamicTag>;
-export const FloodlightActivityDynamicTagList = /*@__PURE__*/ S.Array(
-  FloodlightActivityDynamicTag,
-) as any as S.Schema<FloodlightActivityDynamicTagList>;
+export type FloodlightActivityDynamicTagList = ReadonlyArray<FloodlightActivityDynamicTag>;
+export const FloodlightActivityDynamicTagList = /*@__PURE__*/ S.Array(FloodlightActivityDynamicTag) as any as S.Schema<FloodlightActivityDynamicTagList>;
 
-export type FloodlightActivityCacheBustingTypeEnum =
-  | "JAVASCRIPT"
-  | "ACTIVE_SERVER_PAGE"
-  | "JSP"
-  | "PHP"
-  | "COLD_FUSION"
-  | (string & {});
+export type FloodlightActivityCacheBustingTypeEnum = "JAVASCRIPT" | "ACTIVE_SERVER_PAGE" | "JSP" | "PHP" | "COLD_FUSION";
 export const FloodlightActivityCacheBustingTypeEnum = /*@__PURE__*/ S.String;
 
-export type FloodlightActivityConversionCategoryEnum =
-  | "CONVERSION_CATEGORY_DEFAULT"
-  | "CONVERSION_CATEGORY_PURCHASE"
-  | "CONVERSION_CATEGORY_SIGNUP"
-  | "CONVERSION_CATEGORY_PAGE_VIEW"
-  | "CONVERSION_CATEGORY_DOWNLOAD"
-  | "CONVERSION_CATEGORY_ADD_TO_CART"
-  | "CONVERSION_CATEGORY_BEGIN_CHECKOUT"
-  | "CONVERSION_CATEGORY_SUBSCRIBE_PAID"
-  | "CONVERSION_CATEGORY_SUBMIT_LEAD_FORM"
-  | "CONVERSION_CATEGORY_BOOK_APPOINTMENT"
-  | "CONVERSION_CATEGORY_REQUEST_QUOTE"
-  | "CONVERSION_CATEGORY_GET_DIRECTIONS"
-  | "CONVERSION_CATEGORY_OUTBOUND_CLICK"
-  | "CONVERSION_CATEGORY_CONTACT"
-  | "CONVERSION_CATEGORY_QUALIFIED_LEAD"
-  | "CONVERSION_CATEGORY_CONVERTED_LEAD"
-  | "CONVERSION_CATEGORY_IN_APP_AD_REVENUE"
-  | (string & {});
+export type FloodlightActivityConversionCategoryEnum = "CONVERSION_CATEGORY_DEFAULT" | "CONVERSION_CATEGORY_PURCHASE" | "CONVERSION_CATEGORY_SIGNUP" | "CONVERSION_CATEGORY_PAGE_VIEW" | "CONVERSION_CATEGORY_DOWNLOAD" | "CONVERSION_CATEGORY_ADD_TO_CART" | "CONVERSION_CATEGORY_BEGIN_CHECKOUT" | "CONVERSION_CATEGORY_SUBSCRIBE_PAID" | "CONVERSION_CATEGORY_SUBMIT_LEAD_FORM" | "CONVERSION_CATEGORY_BOOK_APPOINTMENT" | "CONVERSION_CATEGORY_REQUEST_QUOTE" | "CONVERSION_CATEGORY_GET_DIRECTIONS" | "CONVERSION_CATEGORY_OUTBOUND_CLICK" | "CONVERSION_CATEGORY_CONTACT" | "CONVERSION_CATEGORY_QUALIFIED_LEAD" | "CONVERSION_CATEGORY_CONVERTED_LEAD" | "CONVERSION_CATEGORY_IN_APP_AD_REVENUE";
 export const FloodlightActivityConversionCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Publisher Dynamic Tag */
@@ -6063,51 +4448,30 @@ export interface FloodlightActivityPublisherDynamicTag {
   /** Whether this tag is applicable only for click-throughs. */
   clickThrough?: boolean;
 }
-export const FloodlightActivityPublisherDynamicTag = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      siteIdDimensionValue: S.optional(DimensionValue),
-      viewThrough: S.optional(S.Boolean),
-      siteId: S.optional(S.String),
-      dynamicTag: S.optional(FloodlightActivityDynamicTag),
-      directorySiteId: S.optional(S.String),
-      clickThrough: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "FloodlightActivityPublisherDynamicTag",
-}) as any as S.Schema<FloodlightActivityPublisherDynamicTag>;
+export const FloodlightActivityPublisherDynamicTag = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "siteIdDimensionValue": S.optional(DimensionValue),
+  "viewThrough": S.optional(S.Boolean),
+  "siteId": S.optional(S.String),
+  "dynamicTag": S.optional(FloodlightActivityDynamicTag),
+  "directorySiteId": S.optional(S.String),
+  "clickThrough": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "FloodlightActivityPublisherDynamicTag" }) as any as S.Schema<FloodlightActivityPublisherDynamicTag>;
 
-export type FloodlightActivityPublisherDynamicTagList =
-  ReadonlyArray<FloodlightActivityPublisherDynamicTag>;
-export const FloodlightActivityPublisherDynamicTagList = /*@__PURE__*/ S.Array(
-  FloodlightActivityPublisherDynamicTag,
-) as any as S.Schema<FloodlightActivityPublisherDynamicTagList>;
+export type FloodlightActivityPublisherDynamicTagList = ReadonlyArray<FloodlightActivityPublisherDynamicTag>;
+export const FloodlightActivityPublisherDynamicTagList = /*@__PURE__*/ S.Array(FloodlightActivityPublisherDynamicTag) as any as S.Schema<FloodlightActivityPublisherDynamicTagList>;
 
-export type FloodlightActivityCountingMethodEnum =
-  | "STANDARD_COUNTING"
-  | "UNIQUE_COUNTING"
-  | "SESSION_COUNTING"
-  | "TRANSACTIONS_COUNTING"
-  | "ITEMS_SOLD_COUNTING"
-  | (string & {});
+export type FloodlightActivityCountingMethodEnum = "STANDARD_COUNTING" | "UNIQUE_COUNTING" | "SESSION_COUNTING" | "TRANSACTIONS_COUNTING" | "ITEMS_SOLD_COUNTING";
 export const FloodlightActivityCountingMethodEnum = /*@__PURE__*/ S.String;
 
-export type FloodlightActivityFloodlightActivityGroupTypeEnum =
-  | "COUNTER"
-  | "SALE"
-  | (string & {});
-export const FloodlightActivityFloodlightActivityGroupTypeEnum =
-  /*@__PURE__*/ S.String;
+export type FloodlightActivityFloodlightActivityGroupTypeEnum = "COUNTER" | "SALE";
+export const FloodlightActivityFloodlightActivityGroupTypeEnum = /*@__PURE__*/ S.String;
 
-export type FloodlightActivityStatusEnum =
-  | "ACTIVE"
-  | "ARCHIVED_AND_DISABLED"
-  | "ARCHIVED"
-  | "DISABLED_POLICY"
-  | (string & {});
+export type FloodlightActivityStatusEnum = "ACTIVE" | "ARCHIVED_AND_DISABLED" | "ARCHIVED" | "DISABLED_POLICY";
 export const FloodlightActivityStatusEnum = /*@__PURE__*/ S.String;
 
-export type FloodlightActivityTagFormatEnum = "HTML" | "XHTML" | (string & {});
+export type FloodlightActivityTagFormatEnum = "HTML" | "XHTML";
 export const FloodlightActivityTagFormatEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a Floodlight activity. */
@@ -6174,45 +4538,39 @@ export interface FloodlightActivity {
   advertiserIdDimensionValue?: DimensionValue;
 }
 export const FloodlightActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    idDimensionValue: S.optional(DimensionValue),
-    sslCompliant: S.optional(S.Boolean),
-    sslRequired: S.optional(S.Boolean),
-    userDefinedVariableTypes: S.optional(
-      FloodlightActivityUserDefinedVariableTypesItemEnumList,
-    ),
-    expectedUrl: S.optional(S.String),
-    floodlightTagType: S.optional(FloodlightActivityFloodlightTagTypeEnum),
-    defaultTags: S.optional(FloodlightActivityDynamicTagList),
-    cacheBustingType: S.optional(FloodlightActivityCacheBustingTypeEnum),
-    attributionEnabled: S.optional(S.Boolean),
-    conversionCategory: S.optional(FloodlightActivityConversionCategoryEnum),
-    name: S.optional(S.String),
-    publisherTags: S.optional(FloodlightActivityPublisherDynamicTagList),
-    secure: S.optional(S.Boolean),
-    floodlightConfigurationIdDimensionValue: S.optional(DimensionValue),
-    countingMethod: S.optional(FloodlightActivityCountingMethodEnum),
-    advertiserId: S.optional(S.String),
-    floodlightActivityGroupType: S.optional(
-      FloodlightActivityFloodlightActivityGroupTypeEnum,
-    ),
-    notes: S.optional(S.String),
-    status: S.optional(FloodlightActivityStatusEnum),
-    tagFormat: S.optional(FloodlightActivityTagFormatEnum),
-    id: S.optional(S.String),
-    floodlightActivityGroupTagString: S.optional(S.String),
-    tagString: S.optional(S.String),
-    floodlightActivityGroupName: S.optional(S.String),
-    floodlightConfigurationId: S.optional(S.String),
-    floodlightActivityGroupId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-  }),
-).annotate({
-  identifier: "FloodlightActivity",
-}) as any as S.Schema<FloodlightActivity>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "idDimensionValue": S.optional(DimensionValue),
+  "sslCompliant": S.optional(S.Boolean),
+  "sslRequired": S.optional(S.Boolean),
+  "userDefinedVariableTypes": S.optional(FloodlightActivityUserDefinedVariableTypesItemEnumList),
+  "expectedUrl": S.optional(S.String),
+  "floodlightTagType": S.optional(FloodlightActivityFloodlightTagTypeEnum),
+  "defaultTags": S.optional(FloodlightActivityDynamicTagList),
+  "cacheBustingType": S.optional(FloodlightActivityCacheBustingTypeEnum),
+  "attributionEnabled": S.optional(S.Boolean),
+  "conversionCategory": S.optional(FloodlightActivityConversionCategoryEnum),
+  "name": S.optional(S.String),
+  "publisherTags": S.optional(FloodlightActivityPublisherDynamicTagList),
+  "secure": S.optional(S.Boolean),
+  "floodlightConfigurationIdDimensionValue": S.optional(DimensionValue),
+  "countingMethod": S.optional(FloodlightActivityCountingMethodEnum),
+  "advertiserId": S.optional(S.String),
+  "floodlightActivityGroupType": S.optional(FloodlightActivityFloodlightActivityGroupTypeEnum),
+  "notes": S.optional(S.String),
+  "status": S.optional(FloodlightActivityStatusEnum),
+  "tagFormat": S.optional(FloodlightActivityTagFormatEnum),
+  "id": S.optional(S.String),
+  "floodlightActivityGroupTagString": S.optional(S.String),
+  "tagString": S.optional(S.String),
+  "floodlightActivityGroupName": S.optional(S.String),
+  "floodlightConfigurationId": S.optional(S.String),
+  "floodlightActivityGroupId": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+}),
+).annotate({ identifier: "FloodlightActivity" }) as any as S.Schema<FloodlightActivity>;
 
 export interface GetFloodlightActivityGroupsRequest {
   /** User profile ID associated with this request. */
@@ -6221,24 +4579,13 @@ export interface GetFloodlightActivityGroupsRequest {
   id: string;
 }
 export const GetFloodlightActivityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/floodlightActivityGroups/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetFloodlightActivityGroupsRequest",
-}) as any as S.Schema<GetFloodlightActivityGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/floodlightActivityGroups/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetFloodlightActivityGroupsRequest" }) as any as S.Schema<GetFloodlightActivityGroupsRequest>;
 
-export type FloodlightActivityGroupTypeEnum =
-  | "COUNTER"
-  | "SALE"
-  | (string & {});
+export type FloodlightActivityGroupTypeEnum = "COUNTER" | "SALE";
 export const FloodlightActivityGroupTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a Floodlight activity group. */
@@ -6269,23 +4616,21 @@ export interface FloodlightActivityGroup {
   floodlightConfigurationId?: string;
 }
 export const FloodlightActivityGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    accountId: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(FloodlightActivityGroupTypeEnum),
-    idDimensionValue: S.optional(DimensionValue),
-    tagString: S.optional(S.String),
-    floodlightConfigurationIdDimensionValue: S.optional(DimensionValue),
-    kind: S.optional(S.String),
-    advertiserId: S.optional(S.String),
-    floodlightConfigurationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FloodlightActivityGroup",
-}) as any as S.Schema<FloodlightActivityGroup>;
+S.Struct({
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "accountId": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "type": S.optional(FloodlightActivityGroupTypeEnum),
+  "idDimensionValue": S.optional(DimensionValue),
+  "tagString": S.optional(S.String),
+  "floodlightConfigurationIdDimensionValue": S.optional(DimensionValue),
+  "kind": S.optional(S.String),
+  "advertiserId": S.optional(S.String),
+  "floodlightConfigurationId": S.optional(S.String),
+}),
+).annotate({ identifier: "FloodlightActivityGroup" }) as any as S.Schema<FloodlightActivityGroup>;
 
 export interface GetFloodlightConfigurationsRequest {
   /** User profile ID associated with this request. */
@@ -6294,131 +4639,17 @@ export interface GetFloodlightConfigurationsRequest {
   id: string;
 }
 export const GetFloodlightConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/floodlightConfigurations/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetFloodlightConfigurationsRequest",
-}) as any as S.Schema<GetFloodlightConfigurationsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/floodlightConfigurations/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetFloodlightConfigurationsRequest" }) as any as S.Schema<GetFloodlightConfigurationsRequest>;
 
-export type UserDefinedVariableConfigurationDataTypeEnum =
-  | "STRING"
-  | "NUMBER"
-  | (string & {});
-export const UserDefinedVariableConfigurationDataTypeEnum =
-  /*@__PURE__*/ S.String;
+export type UserDefinedVariableConfigurationDataTypeEnum = "STRING" | "NUMBER";
+export const UserDefinedVariableConfigurationDataTypeEnum = /*@__PURE__*/ S.String;
 
-export type UserDefinedVariableConfigurationVariableTypeEnum =
-  | "U1"
-  | "U2"
-  | "U3"
-  | "U4"
-  | "U5"
-  | "U6"
-  | "U7"
-  | "U8"
-  | "U9"
-  | "U10"
-  | "U11"
-  | "U12"
-  | "U13"
-  | "U14"
-  | "U15"
-  | "U16"
-  | "U17"
-  | "U18"
-  | "U19"
-  | "U20"
-  | "U21"
-  | "U22"
-  | "U23"
-  | "U24"
-  | "U25"
-  | "U26"
-  | "U27"
-  | "U28"
-  | "U29"
-  | "U30"
-  | "U31"
-  | "U32"
-  | "U33"
-  | "U34"
-  | "U35"
-  | "U36"
-  | "U37"
-  | "U38"
-  | "U39"
-  | "U40"
-  | "U41"
-  | "U42"
-  | "U43"
-  | "U44"
-  | "U45"
-  | "U46"
-  | "U47"
-  | "U48"
-  | "U49"
-  | "U50"
-  | "U51"
-  | "U52"
-  | "U53"
-  | "U54"
-  | "U55"
-  | "U56"
-  | "U57"
-  | "U58"
-  | "U59"
-  | "U60"
-  | "U61"
-  | "U62"
-  | "U63"
-  | "U64"
-  | "U65"
-  | "U66"
-  | "U67"
-  | "U68"
-  | "U69"
-  | "U70"
-  | "U71"
-  | "U72"
-  | "U73"
-  | "U74"
-  | "U75"
-  | "U76"
-  | "U77"
-  | "U78"
-  | "U79"
-  | "U80"
-  | "U81"
-  | "U82"
-  | "U83"
-  | "U84"
-  | "U85"
-  | "U86"
-  | "U87"
-  | "U88"
-  | "U89"
-  | "U90"
-  | "U91"
-  | "U92"
-  | "U93"
-  | "U94"
-  | "U95"
-  | "U96"
-  | "U97"
-  | "U98"
-  | "U99"
-  | "U100"
-  | (string & {});
-export const UserDefinedVariableConfigurationVariableTypeEnum =
-  /*@__PURE__*/ S.String;
+export type UserDefinedVariableConfigurationVariableTypeEnum = "U1" | "U2" | "U3" | "U4" | "U5" | "U6" | "U7" | "U8" | "U9" | "U10" | "U11" | "U12" | "U13" | "U14" | "U15" | "U16" | "U17" | "U18" | "U19" | "U20" | "U21" | "U22" | "U23" | "U24" | "U25" | "U26" | "U27" | "U28" | "U29" | "U30" | "U31" | "U32" | "U33" | "U34" | "U35" | "U36" | "U37" | "U38" | "U39" | "U40" | "U41" | "U42" | "U43" | "U44" | "U45" | "U46" | "U47" | "U48" | "U49" | "U50" | "U51" | "U52" | "U53" | "U54" | "U55" | "U56" | "U57" | "U58" | "U59" | "U60" | "U61" | "U62" | "U63" | "U64" | "U65" | "U66" | "U67" | "U68" | "U69" | "U70" | "U71" | "U72" | "U73" | "U74" | "U75" | "U76" | "U77" | "U78" | "U79" | "U80" | "U81" | "U82" | "U83" | "U84" | "U85" | "U86" | "U87" | "U88" | "U89" | "U90" | "U91" | "U92" | "U93" | "U94" | "U95" | "U96" | "U97" | "U98" | "U99" | "U100";
+export const UserDefinedVariableConfigurationVariableTypeEnum = /*@__PURE__*/ S.String;
 
 /** User Defined Variable configuration. */
 export interface UserDefinedVariableConfiguration {
@@ -6430,28 +4661,18 @@ export interface UserDefinedVariableConfiguration {
   reportName?: string;
 }
 export const UserDefinedVariableConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: S.optional(UserDefinedVariableConfigurationDataTypeEnum),
-    variableType: S.optional(UserDefinedVariableConfigurationVariableTypeEnum),
-    reportName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserDefinedVariableConfiguration",
-}) as any as S.Schema<UserDefinedVariableConfiguration>;
+S.Struct({
+  "dataType": S.optional(UserDefinedVariableConfigurationDataTypeEnum),
+  "variableType": S.optional(UserDefinedVariableConfigurationVariableTypeEnum),
+  "reportName": S.optional(S.String),
+}),
+).annotate({ identifier: "UserDefinedVariableConfiguration" }) as any as S.Schema<UserDefinedVariableConfiguration>;
 
-export type UserDefinedVariableConfigurationList =
-  ReadonlyArray<UserDefinedVariableConfiguration>;
-export const UserDefinedVariableConfigurationList = /*@__PURE__*/ S.Array(
-  UserDefinedVariableConfiguration,
-) as any as S.Schema<UserDefinedVariableConfigurationList>;
+export type UserDefinedVariableConfigurationList = ReadonlyArray<UserDefinedVariableConfiguration>;
+export const UserDefinedVariableConfigurationList = /*@__PURE__*/ S.Array(UserDefinedVariableConfiguration) as any as S.Schema<UserDefinedVariableConfigurationList>;
 
-export type FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum =
-    | "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION"
-    | "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION"
-    | "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION"
-    | (string & {});
-export const FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum =
-  /*@__PURE__*/ S.String;
+export type FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum = "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" | "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" | "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION";
+export const FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum = /*@__PURE__*/ S.String;
 
 /** Dynamic and Image Tag Settings. */
 export interface TagSettings {
@@ -6461,10 +4682,10 @@ export interface TagSettings {
   imageTagEnabled?: boolean;
 }
 export const TagSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dynamicTagEnabled: S.optional(S.Boolean),
-    imageTagEnabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "dynamicTagEnabled": S.optional(S.Boolean),
+  "imageTagEnabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "TagSettings" }) as any as S.Schema<TagSettings>;
 
 /** The attributes, like playtime and percent onscreen, that define the Custom Viewability Metric. */
@@ -6478,17 +4699,14 @@ export interface CustomViewabilityMetricConfiguration {
   /** Whether the video must be audible to count an impression. */
   audible?: boolean;
 }
-export const CustomViewabilityMetricConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      timeMillis: S.optional(S.Number),
-      timePercent: S.optional(S.Number),
-      viewabilityPercent: S.optional(S.Number),
-      audible: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "CustomViewabilityMetricConfiguration",
-}) as any as S.Schema<CustomViewabilityMetricConfiguration>;
+export const CustomViewabilityMetricConfiguration = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "timeMillis": S.optional(S.Number),
+  "timePercent": S.optional(S.Number),
+  "viewabilityPercent": S.optional(S.Number),
+  "audible": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CustomViewabilityMetricConfiguration" }) as any as S.Schema<CustomViewabilityMetricConfiguration>;
 
 /** Custom Viewability Metric */
 export interface CustomViewabilityMetric {
@@ -6500,14 +4718,12 @@ export interface CustomViewabilityMetric {
   configuration?: CustomViewabilityMetricConfiguration;
 }
 export const CustomViewabilityMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    configuration: S.optional(CustomViewabilityMetricConfiguration),
-  }),
-).annotate({
-  identifier: "CustomViewabilityMetric",
-}) as any as S.Schema<CustomViewabilityMetric>;
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "configuration": S.optional(CustomViewabilityMetricConfiguration),
+}),
+).annotate({ identifier: "CustomViewabilityMetric" }) as any as S.Schema<CustomViewabilityMetric>;
 
 /** Third Party Authentication Token */
 export interface ThirdPartyAuthenticationToken {
@@ -6517,24 +4733,16 @@ export interface ThirdPartyAuthenticationToken {
   value?: string;
 }
 export const ThirdPartyAuthenticationToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ThirdPartyAuthenticationToken",
-}) as any as S.Schema<ThirdPartyAuthenticationToken>;
+S.Struct({
+  "name": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "ThirdPartyAuthenticationToken" }) as any as S.Schema<ThirdPartyAuthenticationToken>;
 
-export type ThirdPartyAuthenticationTokenList =
-  ReadonlyArray<ThirdPartyAuthenticationToken>;
-export const ThirdPartyAuthenticationTokenList = /*@__PURE__*/ S.Array(
-  ThirdPartyAuthenticationToken,
-) as any as S.Schema<ThirdPartyAuthenticationTokenList>;
+export type ThirdPartyAuthenticationTokenList = ReadonlyArray<ThirdPartyAuthenticationToken>;
+export const ThirdPartyAuthenticationTokenList = /*@__PURE__*/ S.Array(ThirdPartyAuthenticationToken) as any as S.Schema<ThirdPartyAuthenticationTokenList>;
 
-export type FloodlightConfigurationFirstDayOfWeekEnum =
-  | "SUNDAY"
-  | "MONDAY"
-  | (string & {});
+export type FloodlightConfigurationFirstDayOfWeekEnum = "SUNDAY" | "MONDAY";
 export const FloodlightConfigurationFirstDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Omniture Integration Settings. */
@@ -6545,13 +4753,11 @@ export interface OmnitureSettings {
   omnitureCostDataEnabled?: boolean;
 }
 export const OmnitureSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    omnitureIntegrationEnabled: S.optional(S.Boolean),
-    omnitureCostDataEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "OmnitureSettings",
-}) as any as S.Schema<OmnitureSettings>;
+S.Struct({
+  "omnitureIntegrationEnabled": S.optional(S.Boolean),
+  "omnitureCostDataEnabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "OmnitureSettings" }) as any as S.Schema<OmnitureSettings>;
 
 /** Contains properties of a Floodlight configuration. */
 export interface FloodlightConfiguration {
@@ -6592,35 +4798,27 @@ export interface FloodlightConfiguration {
   id?: string;
 }
 export const FloodlightConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    userDefinedVariableConfigurations: S.optional(
-      UserDefinedVariableConfigurationList,
-    ),
-    inAppAttributionTrackingEnabled: S.optional(S.Boolean),
-    naturalSearchConversionAttributionOption: S.optional(
-      FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum,
-    ),
-    tagSettings: S.optional(TagSettings),
-    kind: S.optional(S.String),
-    analyticsDataSharingEnabled: S.optional(S.Boolean),
-    customViewabilityMetric: S.optional(CustomViewabilityMetric),
-    idDimensionValue: S.optional(DimensionValue),
-    exposureToConversionEnabled: S.optional(S.Boolean),
-    advertiserId: S.optional(S.String),
-    thirdPartyAuthenticationTokens: S.optional(
-      ThirdPartyAuthenticationTokenList,
-    ),
-    firstDayOfWeek: S.optional(FloodlightConfigurationFirstDayOfWeekEnum),
-    omnitureSettings: S.optional(OmnitureSettings),
-    lookbackConfiguration: S.optional(LookbackConfiguration),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FloodlightConfiguration",
-}) as any as S.Schema<FloodlightConfiguration>;
+S.Struct({
+  "accountId": S.optional(S.String),
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "userDefinedVariableConfigurations": S.optional(UserDefinedVariableConfigurationList),
+  "inAppAttributionTrackingEnabled": S.optional(S.Boolean),
+  "naturalSearchConversionAttributionOption": S.optional(FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum),
+  "tagSettings": S.optional(TagSettings),
+  "kind": S.optional(S.String),
+  "analyticsDataSharingEnabled": S.optional(S.Boolean),
+  "customViewabilityMetric": S.optional(CustomViewabilityMetric),
+  "idDimensionValue": S.optional(DimensionValue),
+  "exposureToConversionEnabled": S.optional(S.Boolean),
+  "advertiserId": S.optional(S.String),
+  "thirdPartyAuthenticationTokens": S.optional(ThirdPartyAuthenticationTokenList),
+  "firstDayOfWeek": S.optional(FloodlightConfigurationFirstDayOfWeekEnum),
+  "omnitureSettings": S.optional(OmnitureSettings),
+  "lookbackConfiguration": S.optional(LookbackConfiguration),
+  "id": S.optional(S.String),
+}),
+).annotate({ identifier: "FloodlightConfiguration" }) as any as S.Schema<FloodlightConfiguration>;
 
 export interface GetMobileAppsRequest {
   /** User profile ID associated with this request. */
@@ -6629,19 +4827,11 @@ export interface GetMobileAppsRequest {
   id: string;
 }
 export const GetMobileAppsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/mobileApps/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetMobileAppsRequest",
-}) as any as S.Schema<GetMobileAppsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/mobileApps/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetMobileAppsRequest" }) as any as S.Schema<GetMobileAppsRequest>;
 
 export interface GetMobileCarriersRequest {
   /** User profile ID associated with this request. */
@@ -6650,19 +4840,11 @@ export interface GetMobileCarriersRequest {
   id: string;
 }
 export const GetMobileCarriersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/mobileCarriers/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetMobileCarriersRequest",
-}) as any as S.Schema<GetMobileCarriersRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/mobileCarriers/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetMobileCarriersRequest" }) as any as S.Schema<GetMobileCarriersRequest>;
 
 export interface GetOperatingSystemsRequest {
   /** User profile ID associated with this request. */
@@ -6671,19 +4853,11 @@ export interface GetOperatingSystemsRequest {
   dartId: string;
 }
 export const GetOperatingSystemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    dartId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/operatingSystems/{+dartId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperatingSystemsRequest",
-}) as any as S.Schema<GetOperatingSystemsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "dartId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/operatingSystems/{+dartId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetOperatingSystemsRequest" }) as any as S.Schema<GetOperatingSystemsRequest>;
 
 export interface GetOperatingSystemVersionsRequest {
   /** User profile ID associated with this request. */
@@ -6692,19 +4866,11 @@ export interface GetOperatingSystemVersionsRequest {
   id: string;
 }
 export const GetOperatingSystemVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/operatingSystemVersions/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperatingSystemVersionsRequest",
-}) as any as S.Schema<GetOperatingSystemVersionsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/operatingSystemVersions/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetOperatingSystemVersionsRequest" }) as any as S.Schema<GetOperatingSystemVersionsRequest>;
 
 export interface GetPlacementGroupsRequest {
   /** User profile ID associated with this request. */
@@ -6713,31 +4879,16 @@ export interface GetPlacementGroupsRequest {
   id: string;
 }
 export const GetPlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/placementGroups/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPlacementGroupsRequest",
-}) as any as S.Schema<GetPlacementGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/placementGroups/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetPlacementGroupsRequest" }) as any as S.Schema<GetPlacementGroupsRequest>;
 
-export type PlacementGroupPlacementGroupTypeEnum =
-  | "PLACEMENT_PACKAGE"
-  | "PLACEMENT_ROADBLOCK"
-  | (string & {});
+export type PlacementGroupPlacementGroupTypeEnum = "PLACEMENT_PACKAGE" | "PLACEMENT_ROADBLOCK";
 export const PlacementGroupPlacementGroupTypeEnum = /*@__PURE__*/ S.String;
 
-export type PricingScheduleCapCostOptionEnum =
-  | "CAP_COST_NONE"
-  | "CAP_COST_MONTHLY"
-  | "CAP_COST_CUMULATIVE"
-  | (string & {});
+export type PricingScheduleCapCostOptionEnum = "CAP_COST_NONE" | "CAP_COST_MONTHLY" | "CAP_COST_CUMULATIVE";
 export const PricingScheduleCapCostOptionEnum = /*@__PURE__*/ S.String;
 
 /** Pricing Period */
@@ -6752,31 +4903,19 @@ export interface PricingSchedulePricingPeriod {
   units?: string;
 }
 export const PricingSchedulePricingPeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rateOrCostNanos: S.optional(S.String),
-    pricingComment: S.optional(S.String),
-    endDate: S.optional(S.String),
-    startDate: S.optional(S.String),
-    units: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PricingSchedulePricingPeriod",
-}) as any as S.Schema<PricingSchedulePricingPeriod>;
+S.Struct({
+  "rateOrCostNanos": S.optional(S.String),
+  "pricingComment": S.optional(S.String),
+  "endDate": S.optional(S.String),
+  "startDate": S.optional(S.String),
+  "units": S.optional(S.String),
+}),
+).annotate({ identifier: "PricingSchedulePricingPeriod" }) as any as S.Schema<PricingSchedulePricingPeriod>;
 
-export type PricingSchedulePricingPeriodList =
-  ReadonlyArray<PricingSchedulePricingPeriod>;
-export const PricingSchedulePricingPeriodList = /*@__PURE__*/ S.Array(
-  PricingSchedulePricingPeriod,
-) as any as S.Schema<PricingSchedulePricingPeriodList>;
+export type PricingSchedulePricingPeriodList = ReadonlyArray<PricingSchedulePricingPeriod>;
+export const PricingSchedulePricingPeriodList = /*@__PURE__*/ S.Array(PricingSchedulePricingPeriod) as any as S.Schema<PricingSchedulePricingPeriodList>;
 
-export type PricingSchedulePricingTypeEnum =
-  | "PRICING_TYPE_CPM"
-  | "PRICING_TYPE_CPC"
-  | "PRICING_TYPE_CPA"
-  | "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
-  | "PRICING_TYPE_FLAT_RATE_CLICKS"
-  | "PRICING_TYPE_CPM_ACTIVEVIEW"
-  | (string & {});
+export type PricingSchedulePricingTypeEnum = "PRICING_TYPE_CPM" | "PRICING_TYPE_CPC" | "PRICING_TYPE_CPA" | "PRICING_TYPE_FLAT_RATE_IMPRESSIONS" | "PRICING_TYPE_FLAT_RATE_CLICKS" | "PRICING_TYPE_CPM_ACTIVEVIEW";
 export const PricingSchedulePricingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Pricing Schedule */
@@ -6796,27 +4935,19 @@ export interface PricingSchedule {
   flighted?: boolean;
 }
 export const PricingSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capCostOption: S.optional(PricingScheduleCapCostOptionEnum),
-    pricingPeriods: S.optional(PricingSchedulePricingPeriodList),
-    testingStartDate: S.optional(S.String),
-    endDate: S.optional(S.String),
-    pricingType: S.optional(PricingSchedulePricingTypeEnum),
-    floodlightActivityId: S.optional(S.String),
-    startDate: S.optional(S.String),
-    flighted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PricingSchedule",
-}) as any as S.Schema<PricingSchedule>;
+S.Struct({
+  "capCostOption": S.optional(PricingScheduleCapCostOptionEnum),
+  "pricingPeriods": S.optional(PricingSchedulePricingPeriodList),
+  "testingStartDate": S.optional(S.String),
+  "endDate": S.optional(S.String),
+  "pricingType": S.optional(PricingSchedulePricingTypeEnum),
+  "floodlightActivityId": S.optional(S.String),
+  "startDate": S.optional(S.String),
+  "flighted": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PricingSchedule" }) as any as S.Schema<PricingSchedule>;
 
-export type PlacementGroupActiveStatusEnum =
-  | "PLACEMENT_STATUS_UNKNOWN"
-  | "PLACEMENT_STATUS_ACTIVE"
-  | "PLACEMENT_STATUS_INACTIVE"
-  | "PLACEMENT_STATUS_ARCHIVED"
-  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED"
-  | (string & {});
+export type PlacementGroupActiveStatusEnum = "PLACEMENT_STATUS_UNKNOWN" | "PLACEMENT_STATUS_ACTIVE" | "PLACEMENT_STATUS_INACTIVE" | "PLACEMENT_STATUS_ARCHIVED" | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
 export const PlacementGroupActiveStatusEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a package or roadblock. */
@@ -6875,34 +5006,34 @@ export interface PlacementGroup {
   activeStatus?: PlacementGroupActiveStatusEnum;
 }
 export const PlacementGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    siteId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    childPlacementIds: S.optional(StringList),
-    siteIdDimensionValue: S.optional(DimensionValue),
-    directorySiteId: S.optional(S.String),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-    comment: S.optional(S.String),
-    id: S.optional(S.String),
-    advertiserId: S.optional(S.String),
-    campaignId: S.optional(S.String),
-    externalId: S.optional(S.String),
-    name: S.optional(S.String),
-    createInfo: S.optional(LastModifiedInfo),
-    placementGroupType: S.optional(PlacementGroupPlacementGroupTypeEnum),
-    primaryPlacementId: S.optional(S.String),
-    primaryPlacementIdDimensionValue: S.optional(DimensionValue),
-    contentCategoryId: S.optional(S.String),
-    pricingSchedule: S.optional(PricingSchedule),
-    placementStrategyId: S.optional(S.String),
-    campaignIdDimensionValue: S.optional(DimensionValue),
-    directorySiteIdDimensionValue: S.optional(DimensionValue),
-    idDimensionValue: S.optional(DimensionValue),
-    kind: S.optional(S.String),
-    activeStatus: S.optional(PlacementGroupActiveStatusEnum),
-  }),
+S.Struct({
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "siteId": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "childPlacementIds": S.optional(StringList),
+  "siteIdDimensionValue": S.optional(DimensionValue),
+  "directorySiteId": S.optional(S.String),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+  "comment": S.optional(S.String),
+  "id": S.optional(S.String),
+  "advertiserId": S.optional(S.String),
+  "campaignId": S.optional(S.String),
+  "externalId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "createInfo": S.optional(LastModifiedInfo),
+  "placementGroupType": S.optional(PlacementGroupPlacementGroupTypeEnum),
+  "primaryPlacementId": S.optional(S.String),
+  "primaryPlacementIdDimensionValue": S.optional(DimensionValue),
+  "contentCategoryId": S.optional(S.String),
+  "pricingSchedule": S.optional(PricingSchedule),
+  "placementStrategyId": S.optional(S.String),
+  "campaignIdDimensionValue": S.optional(DimensionValue),
+  "directorySiteIdDimensionValue": S.optional(DimensionValue),
+  "idDimensionValue": S.optional(DimensionValue),
+  "kind": S.optional(S.String),
+  "activeStatus": S.optional(PlacementGroupActiveStatusEnum),
+}),
 ).annotate({ identifier: "PlacementGroup" }) as any as S.Schema<PlacementGroup>;
 
 export interface GetPlacementsRequest {
@@ -6912,69 +5043,25 @@ export interface GetPlacementsRequest {
   id: string;
 }
 export const GetPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/placements/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPlacementsRequest",
-}) as any as S.Schema<GetPlacementsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/placements/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetPlacementsRequest" }) as any as S.Schema<GetPlacementsRequest>;
 
-export type PlacementVpaidAdapterChoiceEnum =
-  | "DEFAULT"
-  | "FLASH"
-  | "HTML5"
-  | "BOTH"
-  | (string & {});
+export type PlacementVpaidAdapterChoiceEnum = "DEFAULT" | "FLASH" | "HTML5" | "BOTH";
 export const PlacementVpaidAdapterChoiceEnum = /*@__PURE__*/ S.String;
 
-export type PlacementTagFormatsItemEnum =
-  | "PLACEMENT_TAG_STANDARD"
-  | "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
-  | "PLACEMENT_TAG_IFRAME_ILAYER"
-  | "PLACEMENT_TAG_INTERNAL_REDIRECT"
-  | "PLACEMENT_TAG_JAVASCRIPT"
-  | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
-  | "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
-  | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
-  | "PLACEMENT_TAG_CLICK_COMMANDS"
-  | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
-  | "PLACEMENT_TAG_TRACKING"
-  | "PLACEMENT_TAG_TRACKING_IFRAME"
-  | "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
-  | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
-  | "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
-  | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
-  | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT"
-  | (string & {});
+export type PlacementTagFormatsItemEnum = "PLACEMENT_TAG_STANDARD" | "PLACEMENT_TAG_IFRAME_JAVASCRIPT" | "PLACEMENT_TAG_IFRAME_ILAYER" | "PLACEMENT_TAG_INTERNAL_REDIRECT" | "PLACEMENT_TAG_JAVASCRIPT" | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" | "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" | "PLACEMENT_TAG_CLICK_COMMANDS" | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" | "PLACEMENT_TAG_TRACKING" | "PLACEMENT_TAG_TRACKING_IFRAME" | "PLACEMENT_TAG_TRACKING_JAVASCRIPT" | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" | "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY" | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
 export const PlacementTagFormatsItemEnum = /*@__PURE__*/ S.String;
 
-export type PlacementTagFormatsItemEnumList =
-  ReadonlyArray<PlacementTagFormatsItemEnum>;
-export const PlacementTagFormatsItemEnumList = /*@__PURE__*/ S.Array(
-  PlacementTagFormatsItemEnum,
-) as any as S.Schema<PlacementTagFormatsItemEnumList>;
+export type PlacementTagFormatsItemEnumList = ReadonlyArray<PlacementTagFormatsItemEnum>;
+export const PlacementTagFormatsItemEnumList = /*@__PURE__*/ S.Array(PlacementTagFormatsItemEnum) as any as S.Schema<PlacementTagFormatsItemEnumList>;
 
-export type PlacementPaymentSourceEnum =
-  | "PLACEMENT_AGENCY_PAID"
-  | "PLACEMENT_PUBLISHER_PAID"
-  | (string & {});
+export type PlacementPaymentSourceEnum = "PLACEMENT_AGENCY_PAID" | "PLACEMENT_PUBLISHER_PAID";
 export const PlacementPaymentSourceEnum = /*@__PURE__*/ S.String;
 
-export type TagSettingKeywordOptionEnum =
-  | "PLACEHOLDER_WITH_LIST_OF_KEYWORDS"
-  | "IGNORE"
-  | "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD"
-  | (string & {});
+export type TagSettingKeywordOptionEnum = "PLACEHOLDER_WITH_LIST_OF_KEYWORDS" | "IGNORE" | "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD";
 export const TagSettingKeywordOptionEnum = /*@__PURE__*/ S.String;
 
 /** Tag Settings */
@@ -6991,58 +5078,23 @@ export interface TagSetting {
   additionalKeyValues?: string;
 }
 export const TagSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeUnescapedlpurlMacro: S.optional(S.Boolean),
-    includeClickThroughUrls: S.optional(S.Boolean),
-    includeClickTracking: S.optional(S.Boolean),
-    keywordOption: S.optional(TagSettingKeywordOptionEnum),
-    additionalKeyValues: S.optional(S.String),
-  }),
+S.Struct({
+  "includeUnescapedlpurlMacro": S.optional(S.Boolean),
+  "includeClickThroughUrls": S.optional(S.Boolean),
+  "includeClickTracking": S.optional(S.Boolean),
+  "keywordOption": S.optional(TagSettingKeywordOptionEnum),
+  "additionalKeyValues": S.optional(S.String),
+}),
 ).annotate({ identifier: "TagSetting" }) as any as S.Schema<TagSetting>;
 
-export type PlacementCompatibilityEnum =
-  | "DISPLAY"
-  | "DISPLAY_INTERSTITIAL"
-  | "APP"
-  | "APP_INTERSTITIAL"
-  | "IN_STREAM_VIDEO"
-  | "IN_STREAM_AUDIO"
-  | (string & {});
+export type PlacementCompatibilityEnum = "DISPLAY" | "DISPLAY_INTERSTITIAL" | "APP" | "APP_INTERSTITIAL" | "IN_STREAM_VIDEO" | "IN_STREAM_AUDIO";
 export const PlacementCompatibilityEnum = /*@__PURE__*/ S.String;
 
-export type YoutubeSettingsCallToActionsItemEnum =
-  | "CALL_TO_ACTION_UNKNOWN"
-  | "CALL_TO_ACTION_LEARN_MORE"
-  | "CALL_TO_ACTION_GET_QUOTE"
-  | "CALL_TO_ACTION_APPLY_NOW"
-  | "CALL_TO_ACTION_SIGN_UP"
-  | "CALL_TO_ACTION_CONTACT_US"
-  | "CALL_TO_ACTION_SUBSCRIBE"
-  | "CALL_TO_ACTION_DOWNLOAD"
-  | "CALL_TO_ACTION_BOOK_NOW"
-  | "CALL_TO_ACTION_GET_OFFER"
-  | "CALL_TO_ACTION_SHOP_NOW"
-  | "CALL_TO_ACTION_VISIT_STORE"
-  | "CALL_TO_ACTION_CALL_NOW"
-  | "CALL_TO_ACTION_VIEW_MENU"
-  | "CALL_TO_ACTION_TEST_DRIVE"
-  | "CALL_TO_ACTION_SCHEDULE_NOW"
-  | "CALL_TO_ACTION_BUY_NOW"
-  | "CALL_TO_ACTION_DONATE_NOW"
-  | "CALL_TO_ACTION_ORDER_NOW"
-  | "CALL_TO_ACTION_PLAY_NOW"
-  | "CALL_TO_ACTION_SEE_MORE"
-  | "CALL_TO_ACTION_START_NOW"
-  | "CALL_TO_ACTION_VISIT_SITE"
-  | "CALL_TO_ACTION_WATCH_NOW"
-  | (string & {});
+export type YoutubeSettingsCallToActionsItemEnum = "CALL_TO_ACTION_UNKNOWN" | "CALL_TO_ACTION_LEARN_MORE" | "CALL_TO_ACTION_GET_QUOTE" | "CALL_TO_ACTION_APPLY_NOW" | "CALL_TO_ACTION_SIGN_UP" | "CALL_TO_ACTION_CONTACT_US" | "CALL_TO_ACTION_SUBSCRIBE" | "CALL_TO_ACTION_DOWNLOAD" | "CALL_TO_ACTION_BOOK_NOW" | "CALL_TO_ACTION_GET_OFFER" | "CALL_TO_ACTION_SHOP_NOW" | "CALL_TO_ACTION_VISIT_STORE" | "CALL_TO_ACTION_CALL_NOW" | "CALL_TO_ACTION_VIEW_MENU" | "CALL_TO_ACTION_TEST_DRIVE" | "CALL_TO_ACTION_SCHEDULE_NOW" | "CALL_TO_ACTION_BUY_NOW" | "CALL_TO_ACTION_DONATE_NOW" | "CALL_TO_ACTION_ORDER_NOW" | "CALL_TO_ACTION_PLAY_NOW" | "CALL_TO_ACTION_SEE_MORE" | "CALL_TO_ACTION_START_NOW" | "CALL_TO_ACTION_VISIT_SITE" | "CALL_TO_ACTION_WATCH_NOW";
 export const YoutubeSettingsCallToActionsItemEnum = /*@__PURE__*/ S.String;
 
-export type YoutubeSettingsCallToActionsItemEnumList =
-  ReadonlyArray<YoutubeSettingsCallToActionsItemEnum>;
-export const YoutubeSettingsCallToActionsItemEnumList = /*@__PURE__*/ S.Array(
-  YoutubeSettingsCallToActionsItemEnum,
-) as any as S.Schema<YoutubeSettingsCallToActionsItemEnumList>;
+export type YoutubeSettingsCallToActionsItemEnumList = ReadonlyArray<YoutubeSettingsCallToActionsItemEnum>;
+export const YoutubeSettingsCallToActionsItemEnumList = /*@__PURE__*/ S.Array(YoutubeSettingsCallToActionsItemEnum) as any as S.Schema<YoutubeSettingsCallToActionsItemEnumList>;
 
 /** Contains the YouTube settings. */
 export interface YoutubeSettings {
@@ -7060,25 +5112,17 @@ export interface YoutubeSettings {
   headlines?: StringList;
 }
 export const YoutubeSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessName: S.optional(S.String),
-    longHeadlines: S.optional(StringList),
-    callToActions: S.optional(YoutubeSettingsCallToActionsItemEnumList),
-    descriptions: S.optional(StringList),
-    businessLogoCreativeIds: S.optional(StringList),
-    headlines: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "YoutubeSettings",
-}) as any as S.Schema<YoutubeSettings>;
+S.Struct({
+  "businessName": S.optional(S.String),
+  "longHeadlines": S.optional(StringList),
+  "callToActions": S.optional(YoutubeSettingsCallToActionsItemEnumList),
+  "descriptions": S.optional(StringList),
+  "businessLogoCreativeIds": S.optional(StringList),
+  "headlines": S.optional(StringList),
+}),
+).annotate({ identifier: "YoutubeSettings" }) as any as S.Schema<YoutubeSettings>;
 
-export type PlacementActiveStatusEnum =
-  | "PLACEMENT_STATUS_UNKNOWN"
-  | "PLACEMENT_STATUS_ACTIVE"
-  | "PLACEMENT_STATUS_INACTIVE"
-  | "PLACEMENT_STATUS_ARCHIVED"
-  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED"
-  | (string & {});
+export type PlacementActiveStatusEnum = "PLACEMENT_STATUS_UNKNOWN" | "PLACEMENT_STATUS_ACTIVE" | "PLACEMENT_STATUS_INACTIVE" | "PLACEMENT_STATUS_ARCHIVED" | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
 export const PlacementActiveStatusEnum = /*@__PURE__*/ S.String;
 
 /** Skippable Settings */
@@ -7093,21 +5137,15 @@ export interface SkippableSetting {
   kind?: string;
 }
 export const SkippableSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    progressOffset: S.optional(VideoOffset),
-    skipOffset: S.optional(VideoOffset),
-    skippable: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SkippableSetting",
-}) as any as S.Schema<SkippableSetting>;
+S.Struct({
+  "progressOffset": S.optional(VideoOffset),
+  "skipOffset": S.optional(VideoOffset),
+  "skippable": S.optional(S.Boolean),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "SkippableSetting" }) as any as S.Schema<SkippableSetting>;
 
-export type VideoSettingsOrientationEnum =
-  | "ANY"
-  | "LANDSCAPE"
-  | "PORTRAIT"
-  | (string & {});
+export type VideoSettingsOrientationEnum = "ANY" | "LANDSCAPE" | "PORTRAIT";
 export const VideoSettingsOrientationEnum = /*@__PURE__*/ S.String;
 
 /** Transcode Settings */
@@ -7118,13 +5156,11 @@ export interface TranscodeSetting {
   kind?: string;
 }
 export const TranscodeSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabledVideoFormats: S.optional(IntegerList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TranscodeSetting",
-}) as any as S.Schema<TranscodeSetting>;
+S.Struct({
+  "enabledVideoFormats": S.optional(IntegerList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "TranscodeSetting" }) as any as S.Schema<TranscodeSetting>;
 
 /** Companion Settings */
 export interface CompanionSetting {
@@ -7138,15 +5174,13 @@ export interface CompanionSetting {
   companionsDisabled?: boolean;
 }
 export const CompanionSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabledSizes: S.optional(SizeList),
-    imageOnly: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-    companionsDisabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CompanionSetting",
-}) as any as S.Schema<CompanionSetting>;
+S.Struct({
+  "enabledSizes": S.optional(SizeList),
+  "imageOnly": S.optional(S.Boolean),
+  "kind": S.optional(S.String),
+  "companionsDisabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CompanionSetting" }) as any as S.Schema<CompanionSetting>;
 
 /** Video Settings */
 export interface VideoSettings {
@@ -7170,61 +5204,27 @@ export interface VideoSettings {
   durationSeconds?: number;
 }
 export const VideoSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skippableSettings: S.optional(SkippableSetting),
-    kind: S.optional(S.String),
-    publisherSpecificationId: S.optional(S.String),
-    orientation: S.optional(VideoSettingsOrientationEnum),
-    transcodeSettings: S.optional(TranscodeSetting),
-    obaSettings: S.optional(ObaIcon),
-    obaEnabled: S.optional(S.Boolean),
-    companionSettings: S.optional(CompanionSetting),
-    durationSeconds: S.optional(S.Number),
-  }),
+S.Struct({
+  "skippableSettings": S.optional(SkippableSetting),
+  "kind": S.optional(S.String),
+  "publisherSpecificationId": S.optional(S.String),
+  "orientation": S.optional(VideoSettingsOrientationEnum),
+  "transcodeSettings": S.optional(TranscodeSetting),
+  "obaSettings": S.optional(ObaIcon),
+  "obaEnabled": S.optional(S.Boolean),
+  "companionSettings": S.optional(CompanionSetting),
+  "durationSeconds": S.optional(S.Number),
+}),
 ).annotate({ identifier: "VideoSettings" }) as any as S.Schema<VideoSettings>;
 
-export type MeasurementPartnerWrappingDataTagWrappingModeEnum =
-  | "NONE"
-  | "BLOCKING"
-  | "MONITORING"
-  | "MONITORING_READ_ONLY"
-  | "VIDEO_PIXEL_MONITORING"
-  | "TRACKING"
-  | "VPAID_MONITORING"
-  | "VPAID_BLOCKING"
-  | "NON_VPAID_MONITORING"
-  | "VPAID_ONLY_MONITORING"
-  | "VPAID_ONLY_BLOCKING"
-  | "VPAID_ONLY_FILTERING"
-  | "VPAID_FILTERING"
-  | "NON_VPAID_FILTERING"
-  | "BLOCKING_FILTERING_VPAID"
-  | "BLOCKING_FILTERING_VPAID_ONLY"
-  | (string & {});
-export const MeasurementPartnerWrappingDataTagWrappingModeEnum =
-  /*@__PURE__*/ S.String;
+export type MeasurementPartnerWrappingDataTagWrappingModeEnum = "NONE" | "BLOCKING" | "MONITORING" | "MONITORING_READ_ONLY" | "VIDEO_PIXEL_MONITORING" | "TRACKING" | "VPAID_MONITORING" | "VPAID_BLOCKING" | "NON_VPAID_MONITORING" | "VPAID_ONLY_MONITORING" | "VPAID_ONLY_BLOCKING" | "VPAID_ONLY_FILTERING" | "VPAID_FILTERING" | "NON_VPAID_FILTERING" | "BLOCKING_FILTERING_VPAID" | "BLOCKING_FILTERING_VPAID_ONLY";
+export const MeasurementPartnerWrappingDataTagWrappingModeEnum = /*@__PURE__*/ S.String;
 
-export type MeasurementPartnerWrappingDataMeasurementPartnerEnum =
-  | "NONE"
-  | "INTEGRAL_AD_SCIENCE"
-  | "DOUBLE_VERIFY"
-  | (string & {});
-export const MeasurementPartnerWrappingDataMeasurementPartnerEnum =
-  /*@__PURE__*/ S.String;
+export type MeasurementPartnerWrappingDataMeasurementPartnerEnum = "NONE" | "INTEGRAL_AD_SCIENCE" | "DOUBLE_VERIFY";
+export const MeasurementPartnerWrappingDataMeasurementPartnerEnum = /*@__PURE__*/ S.String;
 
-export type MeasurementPartnerWrappingDataLinkStatusEnum =
-  | "MEASUREMENT_PARTNER_UNLINKED"
-  | "MEASUREMENT_PARTNER_LINKED"
-  | "MEASUREMENT_PARTNER_LINK_PENDING"
-  | "MEASUREMENT_PARTNER_LINK_FAILURE"
-  | "MEASUREMENT_PARTNER_LINK_OPT_OUT"
-  | "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING"
-  | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING"
-  | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING"
-  | "MEASUREMENT_PARTNER_UNLINK_PENDING"
-  | (string & {});
-export const MeasurementPartnerWrappingDataLinkStatusEnum =
-  /*@__PURE__*/ S.String;
+export type MeasurementPartnerWrappingDataLinkStatusEnum = "MEASUREMENT_PARTNER_UNLINKED" | "MEASUREMENT_PARTNER_LINKED" | "MEASUREMENT_PARTNER_LINK_PENDING" | "MEASUREMENT_PARTNER_LINK_FAILURE" | "MEASUREMENT_PARTNER_LINK_OPT_OUT" | "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" | "MEASUREMENT_PARTNER_UNLINK_PENDING";
+export const MeasurementPartnerWrappingDataLinkStatusEnum = /*@__PURE__*/ S.String;
 
 /** Placement tag wrapping */
 export interface MeasurementPartnerWrappingData {
@@ -7238,28 +5238,15 @@ export interface MeasurementPartnerWrappingData {
   wrappedTag?: string;
 }
 export const MeasurementPartnerWrappingData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tagWrappingMode: S.optional(
-      MeasurementPartnerWrappingDataTagWrappingModeEnum,
-    ),
-    measurementPartner: S.optional(
-      MeasurementPartnerWrappingDataMeasurementPartnerEnum,
-    ),
-    linkStatus: S.optional(MeasurementPartnerWrappingDataLinkStatusEnum),
-    wrappedTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MeasurementPartnerWrappingData",
-}) as any as S.Schema<MeasurementPartnerWrappingData>;
+S.Struct({
+  "tagWrappingMode": S.optional(MeasurementPartnerWrappingDataTagWrappingModeEnum),
+  "measurementPartner": S.optional(MeasurementPartnerWrappingDataMeasurementPartnerEnum),
+  "linkStatus": S.optional(MeasurementPartnerWrappingDataLinkStatusEnum),
+  "wrappedTag": S.optional(S.String),
+}),
+).annotate({ identifier: "MeasurementPartnerWrappingData" }) as any as S.Schema<MeasurementPartnerWrappingData>;
 
-export type PlacementStatusEnum =
-  | "PENDING_REVIEW"
-  | "PAYMENT_ACCEPTED"
-  | "PAYMENT_REJECTED"
-  | "ACKNOWLEDGE_REJECTION"
-  | "ACKNOWLEDGE_ACCEPTANCE"
-  | "DRAFT"
-  | (string & {});
+export type PlacementStatusEnum = "PENDING_REVIEW" | "PAYMENT_ACCEPTED" | "PAYMENT_REJECTED" | "ACKNOWLEDGE_REJECTION" | "ACKNOWLEDGE_ACCEPTANCE" | "DRAFT";
 export const PlacementStatusEnum = /*@__PURE__*/ S.String;
 
 export interface PlacementSingleConversionDomain {
@@ -7267,30 +5254,23 @@ export interface PlacementSingleConversionDomain {
   conversionDomainValue?: string;
 }
 export const PlacementSingleConversionDomain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversionDomainId: S.optional(S.String),
-    conversionDomainValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PlacementSingleConversionDomain",
-}) as any as S.Schema<PlacementSingleConversionDomain>;
+S.Struct({
+  "conversionDomainId": S.optional(S.String),
+  "conversionDomainValue": S.optional(S.String),
+}),
+).annotate({ identifier: "PlacementSingleConversionDomain" }) as any as S.Schema<PlacementSingleConversionDomain>;
 
-export type PlacementSingleConversionDomainList =
-  ReadonlyArray<PlacementSingleConversionDomain>;
-export const PlacementSingleConversionDomainList = /*@__PURE__*/ S.Array(
-  PlacementSingleConversionDomain,
-) as any as S.Schema<PlacementSingleConversionDomainList>;
+export type PlacementSingleConversionDomainList = ReadonlyArray<PlacementSingleConversionDomain>;
+export const PlacementSingleConversionDomainList = /*@__PURE__*/ S.Array(PlacementSingleConversionDomain) as any as S.Schema<PlacementSingleConversionDomainList>;
 
 export interface PlacementConversionDomainOverride {
   conversionDomains?: PlacementSingleConversionDomainList;
 }
 export const PlacementConversionDomainOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversionDomains: S.optional(PlacementSingleConversionDomainList),
-  }),
-).annotate({
-  identifier: "PlacementConversionDomainOverride",
-}) as any as S.Schema<PlacementConversionDomainOverride>;
+S.Struct({
+  "conversionDomains": S.optional(PlacementSingleConversionDomainList),
+}),
+).annotate({ identifier: "PlacementConversionDomainOverride" }) as any as S.Schema<PlacementConversionDomainOverride>;
 
 /** Contains properties of a placement. */
 export interface Placement {
@@ -7392,56 +5372,56 @@ export interface Placement {
   wrappingOptOut?: boolean;
 }
 export const Placement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publisherUpdateInfo: S.optional(LastModifiedInfo),
-    adServingPlatformId: S.optional(S.String),
-    vpaidAdapterChoice: S.optional(PlacementVpaidAdapterChoiceEnum),
-    name: S.optional(S.String),
-    createInfo: S.optional(LastModifiedInfo),
-    tagFormats: S.optional(PlacementTagFormatsItemEnumList),
-    paymentSource: S.optional(PlacementPaymentSourceEnum),
-    tagSetting: S.optional(TagSetting),
-    pricingSchedule: S.optional(PricingSchedule),
-    compatibility: S.optional(PlacementCompatibilityEnum),
-    lookbackConfiguration: S.optional(LookbackConfiguration),
-    contentCategoryId: S.optional(S.String),
-    youtubeSettings: S.optional(YoutubeSettings),
-    activeStatus: S.optional(PlacementActiveStatusEnum),
-    kind: S.optional(S.String),
-    videoSettings: S.optional(VideoSettings),
-    allowOnYoutube: S.optional(S.Boolean),
-    idDimensionValue: S.optional(DimensionValue),
-    keyName: S.optional(S.String),
-    directorySiteIdDimensionValue: S.optional(DimensionValue),
-    paymentApproved: S.optional(S.Boolean),
-    placementStrategyId: S.optional(S.String),
-    sslRequired: S.optional(S.Boolean),
-    campaignIdDimensionValue: S.optional(DimensionValue),
-    siteIdDimensionValue: S.optional(DimensionValue),
-    accountId: S.optional(S.String),
-    siteId: S.optional(S.String),
-    primary: S.optional(S.Boolean),
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    placementGroupIdDimensionValue: S.optional(DimensionValue),
-    videoActiveViewOptOut: S.optional(S.Boolean),
-    comment: S.optional(S.String),
-    size: S.optional(Size),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-    siteServed: S.optional(S.Boolean),
-    directorySiteId: S.optional(S.String),
-    partnerWrappingData: S.optional(MeasurementPartnerWrappingData),
-    status: S.optional(PlacementStatusEnum),
-    additionalSizes: S.optional(SizeList),
-    placementGroupId: S.optional(S.String),
-    id: S.optional(S.String),
-    adBlockingOptOut: S.optional(S.Boolean),
-    externalId: S.optional(S.String),
-    campaignId: S.optional(S.String),
-    conversionDomainOverride: S.optional(PlacementConversionDomainOverride),
-    advertiserId: S.optional(S.String),
-    wrappingOptOut: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "publisherUpdateInfo": S.optional(LastModifiedInfo),
+  "adServingPlatformId": S.optional(S.String),
+  "vpaidAdapterChoice": S.optional(PlacementVpaidAdapterChoiceEnum),
+  "name": S.optional(S.String),
+  "createInfo": S.optional(LastModifiedInfo),
+  "tagFormats": S.optional(PlacementTagFormatsItemEnumList),
+  "paymentSource": S.optional(PlacementPaymentSourceEnum),
+  "tagSetting": S.optional(TagSetting),
+  "pricingSchedule": S.optional(PricingSchedule),
+  "compatibility": S.optional(PlacementCompatibilityEnum),
+  "lookbackConfiguration": S.optional(LookbackConfiguration),
+  "contentCategoryId": S.optional(S.String),
+  "youtubeSettings": S.optional(YoutubeSettings),
+  "activeStatus": S.optional(PlacementActiveStatusEnum),
+  "kind": S.optional(S.String),
+  "videoSettings": S.optional(VideoSettings),
+  "allowOnYoutube": S.optional(S.Boolean),
+  "idDimensionValue": S.optional(DimensionValue),
+  "keyName": S.optional(S.String),
+  "directorySiteIdDimensionValue": S.optional(DimensionValue),
+  "paymentApproved": S.optional(S.Boolean),
+  "placementStrategyId": S.optional(S.String),
+  "sslRequired": S.optional(S.Boolean),
+  "campaignIdDimensionValue": S.optional(DimensionValue),
+  "siteIdDimensionValue": S.optional(DimensionValue),
+  "accountId": S.optional(S.String),
+  "siteId": S.optional(S.String),
+  "primary": S.optional(S.Boolean),
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "placementGroupIdDimensionValue": S.optional(DimensionValue),
+  "videoActiveViewOptOut": S.optional(S.Boolean),
+  "comment": S.optional(S.String),
+  "size": S.optional(Size),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+  "siteServed": S.optional(S.Boolean),
+  "directorySiteId": S.optional(S.String),
+  "partnerWrappingData": S.optional(MeasurementPartnerWrappingData),
+  "status": S.optional(PlacementStatusEnum),
+  "additionalSizes": S.optional(SizeList),
+  "placementGroupId": S.optional(S.String),
+  "id": S.optional(S.String),
+  "adBlockingOptOut": S.optional(S.Boolean),
+  "externalId": S.optional(S.String),
+  "campaignId": S.optional(S.String),
+  "conversionDomainOverride": S.optional(PlacementConversionDomainOverride),
+  "advertiserId": S.optional(S.String),
+  "wrappingOptOut": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Placement" }) as any as S.Schema<Placement>;
 
 export interface GetPlacementStrategiesRequest {
@@ -7451,19 +5431,11 @@ export interface GetPlacementStrategiesRequest {
   id: string;
 }
 export const GetPlacementStrategiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/placementStrategies/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPlacementStrategiesRequest",
-}) as any as S.Schema<GetPlacementStrategiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/placementStrategies/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetPlacementStrategiesRequest" }) as any as S.Schema<GetPlacementStrategiesRequest>;
 
 /** Contains properties of a placement strategy. */
 export interface PlacementStrategy {
@@ -7477,15 +5449,13 @@ export interface PlacementStrategy {
   name?: string;
 }
 export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PlacementStrategy",
-}) as any as S.Schema<PlacementStrategy>;
+S.Struct({
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "PlacementStrategy" }) as any as S.Schema<PlacementStrategy>;
 
 export interface GetPlatformTypesRequest {
   /** User profile ID associated with this request. */
@@ -7494,19 +5464,11 @@ export interface GetPlatformTypesRequest {
   id: string;
 }
 export const GetPlatformTypesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/platformTypes/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPlatformTypesRequest",
-}) as any as S.Schema<GetPlatformTypesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/platformTypes/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetPlatformTypesRequest" }) as any as S.Schema<GetPlatformTypesRequest>;
 
 export interface GetPostalCodesRequest {
   /** User profile ID associated with this request. */
@@ -7515,19 +5477,11 @@ export interface GetPostalCodesRequest {
   code: string;
 }
 export const GetPostalCodesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    code: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/postalCodes/{+code}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPostalCodesRequest",
-}) as any as S.Schema<GetPostalCodesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "code": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/postalCodes/{+code}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetPostalCodesRequest" }) as any as S.Schema<GetPostalCodesRequest>;
 
 export interface GetRemarketingListsRequest {
   /** User profile ID associated with this request. */
@@ -7536,36 +5490,16 @@ export interface GetRemarketingListsRequest {
   id: string;
 }
 export const GetRemarketingListsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/remarketingLists/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetRemarketingListsRequest",
-}) as any as S.Schema<GetRemarketingListsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/remarketingLists/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetRemarketingListsRequest" }) as any as S.Schema<GetRemarketingListsRequest>;
 
-export type ListPopulationTermOperatorEnum =
-  | "NUM_EQUALS"
-  | "NUM_LESS_THAN"
-  | "NUM_LESS_THAN_EQUAL"
-  | "NUM_GREATER_THAN"
-  | "NUM_GREATER_THAN_EQUAL"
-  | "STRING_EQUALS"
-  | "STRING_CONTAINS"
-  | (string & {});
+export type ListPopulationTermOperatorEnum = "NUM_EQUALS" | "NUM_LESS_THAN" | "NUM_LESS_THAN_EQUAL" | "NUM_GREATER_THAN" | "NUM_GREATER_THAN_EQUAL" | "STRING_EQUALS" | "STRING_CONTAINS";
 export const ListPopulationTermOperatorEnum = /*@__PURE__*/ S.String;
 
-export type ListPopulationTermTypeEnum =
-  | "CUSTOM_VARIABLE_TERM"
-  | "LIST_MEMBERSHIP_TERM"
-  | "REFERRER_TERM"
-  | (string & {});
+export type ListPopulationTermTypeEnum = "CUSTOM_VARIABLE_TERM" | "LIST_MEMBERSHIP_TERM" | "REFERRER_TERM";
 export const ListPopulationTermTypeEnum = /*@__PURE__*/ S.String;
 
 /** Remarketing List Population Rule Term. */
@@ -7588,24 +5522,20 @@ export interface ListPopulationTerm {
   remarketingListId?: string;
 }
 export const ListPopulationTerm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variableName: S.optional(S.String),
-    value: S.optional(S.String),
-    contains: S.optional(S.Boolean),
-    operator: S.optional(ListPopulationTermOperatorEnum),
-    type: S.optional(ListPopulationTermTypeEnum),
-    negation: S.optional(S.Boolean),
-    variableFriendlyName: S.optional(S.String),
-    remarketingListId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPopulationTerm",
-}) as any as S.Schema<ListPopulationTerm>;
+S.Struct({
+  "variableName": S.optional(S.String),
+  "value": S.optional(S.String),
+  "contains": S.optional(S.Boolean),
+  "operator": S.optional(ListPopulationTermOperatorEnum),
+  "type": S.optional(ListPopulationTermTypeEnum),
+  "negation": S.optional(S.Boolean),
+  "variableFriendlyName": S.optional(S.String),
+  "remarketingListId": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPopulationTerm" }) as any as S.Schema<ListPopulationTerm>;
 
 export type ListPopulationTermList = ReadonlyArray<ListPopulationTerm>;
-export const ListPopulationTermList = /*@__PURE__*/ S.Array(
-  ListPopulationTerm,
-) as any as S.Schema<ListPopulationTermList>;
+export const ListPopulationTermList = /*@__PURE__*/ S.Array(ListPopulationTerm) as any as S.Schema<ListPopulationTermList>;
 
 /** A group clause made up of list population terms representing constraints joined by ORs. */
 export interface ListPopulationClause {
@@ -7613,17 +5543,13 @@ export interface ListPopulationClause {
   terms?: ListPopulationTermList;
 }
 export const ListPopulationClause = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    terms: S.optional(ListPopulationTermList),
-  }),
-).annotate({
-  identifier: "ListPopulationClause",
-}) as any as S.Schema<ListPopulationClause>;
+S.Struct({
+  "terms": S.optional(ListPopulationTermList),
+}),
+).annotate({ identifier: "ListPopulationClause" }) as any as S.Schema<ListPopulationClause>;
 
 export type ListPopulationClauseList = ReadonlyArray<ListPopulationClause>;
-export const ListPopulationClauseList = /*@__PURE__*/ S.Array(
-  ListPopulationClause,
-) as any as S.Schema<ListPopulationClauseList>;
+export const ListPopulationClauseList = /*@__PURE__*/ S.Array(ListPopulationClause) as any as S.Schema<ListPopulationClauseList>;
 
 /** Remarketing List Population Rule. */
 export interface ListPopulationRule {
@@ -7635,28 +5561,14 @@ export interface ListPopulationRule {
   listPopulationClauses?: ListPopulationClauseList;
 }
 export const ListPopulationRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    floodlightActivityId: S.optional(S.String),
-    floodlightActivityName: S.optional(S.String),
-    listPopulationClauses: S.optional(ListPopulationClauseList),
-  }),
-).annotate({
-  identifier: "ListPopulationRule",
-}) as any as S.Schema<ListPopulationRule>;
+S.Struct({
+  "floodlightActivityId": S.optional(S.String),
+  "floodlightActivityName": S.optional(S.String),
+  "listPopulationClauses": S.optional(ListPopulationClauseList),
+}),
+).annotate({ identifier: "ListPopulationRule" }) as any as S.Schema<ListPopulationRule>;
 
-export type RemarketingListListSourceEnum =
-  | "REMARKETING_LIST_SOURCE_OTHER"
-  | "REMARKETING_LIST_SOURCE_ADX"
-  | "REMARKETING_LIST_SOURCE_DFP"
-  | "REMARKETING_LIST_SOURCE_XFP"
-  | "REMARKETING_LIST_SOURCE_DFA"
-  | "REMARKETING_LIST_SOURCE_GA"
-  | "REMARKETING_LIST_SOURCE_YOUTUBE"
-  | "REMARKETING_LIST_SOURCE_DBM"
-  | "REMARKETING_LIST_SOURCE_GPLUS"
-  | "REMARKETING_LIST_SOURCE_DMP"
-  | "REMARKETING_LIST_SOURCE_PLAY_STORE"
-  | (string & {});
+export type RemarketingListListSourceEnum = "REMARKETING_LIST_SOURCE_OTHER" | "REMARKETING_LIST_SOURCE_ADX" | "REMARKETING_LIST_SOURCE_DFP" | "REMARKETING_LIST_SOURCE_XFP" | "REMARKETING_LIST_SOURCE_DFA" | "REMARKETING_LIST_SOURCE_GA" | "REMARKETING_LIST_SOURCE_YOUTUBE" | "REMARKETING_LIST_SOURCE_DBM" | "REMARKETING_LIST_SOURCE_GPLUS" | "REMARKETING_LIST_SOURCE_DMP" | "REMARKETING_LIST_SOURCE_PLAY_STORE";
 export const RemarketingListListSourceEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a remarketing list. Remarketing enables you to create lists of users who have performed specific actions on a site, then target ads to members of those lists. This resource can be used to manage remarketing lists that are owned by your advertisers. To see all remarketing lists that are visible to your advertisers, including those that are shared to your advertiser or account, use the TargetableRemarketingLists resource. */
@@ -7689,24 +5601,22 @@ export interface RemarketingList {
   advertiserId?: string;
 }
 export const RemarketingList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    name: S.optional(S.String),
-    listSize: S.optional(S.String),
-    description: S.optional(S.String),
-    listPopulationRule: S.optional(ListPopulationRule),
-    lifeSpan: S.optional(S.String),
-    active: S.optional(S.Boolean),
-    id: S.optional(S.String),
-    listSource: S.optional(RemarketingListListSourceEnum),
-    kind: S.optional(S.String),
-    advertiserId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemarketingList",
-}) as any as S.Schema<RemarketingList>;
+S.Struct({
+  "accountId": S.optional(S.String),
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "name": S.optional(S.String),
+  "listSize": S.optional(S.String),
+  "description": S.optional(S.String),
+  "listPopulationRule": S.optional(ListPopulationRule),
+  "lifeSpan": S.optional(S.String),
+  "active": S.optional(S.Boolean),
+  "id": S.optional(S.String),
+  "listSource": S.optional(RemarketingListListSourceEnum),
+  "kind": S.optional(S.String),
+  "advertiserId": S.optional(S.String),
+}),
+).annotate({ identifier: "RemarketingList" }) as any as S.Schema<RemarketingList>;
 
 export interface GetRemarketingListSharesRequest {
   /** Remarketing list ID. */
@@ -7715,19 +5625,11 @@ export interface GetRemarketingListSharesRequest {
   profileId: string;
 }
 export const GetRemarketingListSharesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remarketingListId: S.String.pipe(T.Label()),
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/remarketingListShares/{+remarketingListId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetRemarketingListSharesRequest",
-}) as any as S.Schema<GetRemarketingListSharesRequest>;
+S.Struct({
+  "remarketingListId": S.String.pipe(T.Label()),
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/remarketingListShares/{+remarketingListId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetRemarketingListSharesRequest" }) as any as S.Schema<GetRemarketingListSharesRequest>;
 
 /** Contains properties of a remarketing list's sharing information. Sharing allows other accounts or advertisers to target to your remarketing lists. This resource can be used to manage remarketing list sharing to other accounts and advertisers. */
 export interface RemarketingListShare {
@@ -7741,15 +5643,13 @@ export interface RemarketingListShare {
   kind?: string;
 }
 export const RemarketingListShare = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sharedAdvertiserIds: S.optional(StringList),
-    remarketingListId: S.optional(S.String),
-    sharedAccountIds: S.optional(StringList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemarketingListShare",
-}) as any as S.Schema<RemarketingListShare>;
+S.Struct({
+  "sharedAdvertiserIds": S.optional(StringList),
+  "remarketingListId": S.optional(S.String),
+  "sharedAccountIds": S.optional(StringList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "RemarketingListShare" }) as any as S.Schema<RemarketingListShare>;
 
 export interface GetReportsRequest {
   /** The Campaign Manager 360 user profile ID. */
@@ -7758,24 +5658,13 @@ export interface GetReportsRequest {
   reportId: string;
 }
 export const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    reportId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{profileId}/reports/{reportId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetReportsRequest",
-}) as any as S.Schema<GetReportsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "reportId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{profileId}/reports/{reportId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetReportsRequest" }) as any as S.Schema<GetReportsRequest>;
 
-export type SortedDimensionSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type SortedDimensionSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const SortedDimensionSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** Represents a sorted dimension. */
@@ -7788,24 +5677,18 @@ export interface SortedDimension {
   kind?: string;
 }
 export const SortedDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    sortOrder: S.optional(SortedDimensionSortOrderEnum),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SortedDimension",
-}) as any as S.Schema<SortedDimension>;
+S.Struct({
+  "name": S.optional(S.String),
+  "sortOrder": S.optional(SortedDimensionSortOrderEnum),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "SortedDimension" }) as any as S.Schema<SortedDimension>;
 
 export type SortedDimensionList = ReadonlyArray<SortedDimension>;
-export const SortedDimensionList = /*@__PURE__*/ S.Array(
-  SortedDimension,
-) as any as S.Schema<SortedDimensionList>;
+export const SortedDimensionList = /*@__PURE__*/ S.Array(SortedDimension) as any as S.Schema<SortedDimensionList>;
 
 export type DimensionValueList_ = ReadonlyArray<DimensionValue>;
-export const DimensionValueList_ = /*@__PURE__*/ S.Array(
-  DimensionValue,
-) as any as S.Schema<DimensionValueList_>;
+export const DimensionValueList_ = /*@__PURE__*/ S.Array(DimensionValue) as any as S.Schema<DimensionValueList_>;
 
 /** Represents a Custom Rich Media Events group. */
 export interface CustomRichMediaEvents {
@@ -7815,13 +5698,11 @@ export interface CustomRichMediaEvents {
   kind?: string;
 }
 export const CustomRichMediaEvents = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filteredEventIds: S.optional(DimensionValueList_),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomRichMediaEvents",
-}) as any as S.Schema<CustomRichMediaEvents>;
+S.Struct({
+  "filteredEventIds": S.optional(DimensionValueList_),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomRichMediaEvents" }) as any as S.Schema<CustomRichMediaEvents>;
 
 /** Represents an activity group. */
 export interface Activities {
@@ -7833,11 +5714,11 @@ export interface Activities {
   metricNames?: StringList;
 }
 export const Activities = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filters: S.optional(DimensionValueList_),
-    kind: S.optional(S.String),
-    metricNames: S.optional(StringList),
-  }),
+S.Struct({
+  "filters": S.optional(DimensionValueList_),
+  "kind": S.optional(S.String),
+  "metricNames": S.optional(StringList),
+}),
 ).annotate({ identifier: "Activities" }) as any as S.Schema<Activities>;
 
 export interface ReportCriteria {
@@ -7855,39 +5736,24 @@ export interface ReportCriteria {
   dimensionFilters?: DimensionValueList_;
 }
 export const ReportCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: S.optional(SortedDimensionList),
-    metricNames: S.optional(StringList),
-    dateRange: S.optional(DateRange),
-    customRichMediaEvents: S.optional(CustomRichMediaEvents),
-    activities: S.optional(Activities),
-    dimensionFilters: S.optional(DimensionValueList_),
-  }),
+S.Struct({
+  "dimensions": S.optional(SortedDimensionList),
+  "metricNames": S.optional(StringList),
+  "dateRange": S.optional(DateRange),
+  "customRichMediaEvents": S.optional(CustomRichMediaEvents),
+  "activities": S.optional(Activities),
+  "dimensionFilters": S.optional(DimensionValueList_),
+}),
 ).annotate({ identifier: "ReportCriteria" }) as any as S.Schema<ReportCriteria>;
 
-export type ReportScheduleRunsOnDayOfMonthEnum =
-  | "DAY_OF_MONTH"
-  | "WEEK_OF_MONTH"
-  | (string & {});
+export type ReportScheduleRunsOnDayOfMonthEnum = "DAY_OF_MONTH" | "WEEK_OF_MONTH";
 export const ReportScheduleRunsOnDayOfMonthEnum = /*@__PURE__*/ S.String;
 
-export type ReportScheduleRepeatsOnWeekDaysItemEnum =
-  | "SUNDAY"
-  | "MONDAY"
-  | "TUESDAY"
-  | "WEDNESDAY"
-  | "THURSDAY"
-  | "FRIDAY"
-  | "SATURDAY"
-  | (string & {});
+export type ReportScheduleRepeatsOnWeekDaysItemEnum = "SUNDAY" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY";
 export const ReportScheduleRepeatsOnWeekDaysItemEnum = /*@__PURE__*/ S.String;
 
-export type ReportScheduleRepeatsOnWeekDaysItemEnumList =
-  ReadonlyArray<ReportScheduleRepeatsOnWeekDaysItemEnum>;
-export const ReportScheduleRepeatsOnWeekDaysItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ReportScheduleRepeatsOnWeekDaysItemEnum,
-  ) as any as S.Schema<ReportScheduleRepeatsOnWeekDaysItemEnumList>;
+export type ReportScheduleRepeatsOnWeekDaysItemEnumList = ReadonlyArray<ReportScheduleRepeatsOnWeekDaysItemEnum>;
+export const ReportScheduleRepeatsOnWeekDaysItemEnumList = /*@__PURE__*/ S.Array(ReportScheduleRepeatsOnWeekDaysItemEnum) as any as S.Schema<ReportScheduleRepeatsOnWeekDaysItemEnumList>;
 
 export interface ReportSchedule {
   /** Whether the schedule is active or not. Must be set to either true or false. */
@@ -7906,16 +5772,16 @@ export interface ReportSchedule {
   repeatsOnWeekDays?: ReportScheduleRepeatsOnWeekDaysItemEnumList;
 }
 export const ReportSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.optional(S.Boolean),
-    repeats: S.optional(S.String),
-    startDate: S.optional(S.String),
-    expirationDate: S.optional(S.String),
-    runsOnDayOfMonth: S.optional(ReportScheduleRunsOnDayOfMonthEnum),
-    every: S.optional(S.Number),
-    timezone: S.optional(S.String),
-    repeatsOnWeekDays: S.optional(ReportScheduleRepeatsOnWeekDaysItemEnumList),
-  }),
+S.Struct({
+  "active": S.optional(S.Boolean),
+  "repeats": S.optional(S.String),
+  "startDate": S.optional(S.String),
+  "expirationDate": S.optional(S.String),
+  "runsOnDayOfMonth": S.optional(ReportScheduleRunsOnDayOfMonthEnum),
+  "every": S.optional(S.Number),
+  "timezone": S.optional(S.String),
+  "repeatsOnWeekDays": S.optional(ReportScheduleRepeatsOnWeekDaysItemEnumList),
+}),
 ).annotate({ identifier: "ReportSchedule" }) as any as S.Schema<ReportSchedule>;
 
 export interface ReportReachCriteria {
@@ -7935,18 +5801,16 @@ export interface ReportReachCriteria {
   dimensionFilters?: DimensionValueList_;
 }
 export const ReportReachCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: S.optional(SortedDimensionList),
-    metricNames: S.optional(StringList),
-    reachByFrequencyMetricNames: S.optional(StringList),
-    dateRange: S.optional(DateRange),
-    customRichMediaEvents: S.optional(CustomRichMediaEvents),
-    activities: S.optional(Activities),
-    dimensionFilters: S.optional(DimensionValueList_),
-  }),
-).annotate({
-  identifier: "ReportReachCriteria",
-}) as any as S.Schema<ReportReachCriteria>;
+S.Struct({
+  "dimensions": S.optional(SortedDimensionList),
+  "metricNames": S.optional(StringList),
+  "reachByFrequencyMetricNames": S.optional(StringList),
+  "dateRange": S.optional(DateRange),
+  "customRichMediaEvents": S.optional(CustomRichMediaEvents),
+  "activities": S.optional(Activities),
+  "dimensionFilters": S.optional(DimensionValueList_),
+}),
+).annotate({ identifier: "ReportReachCriteria" }) as any as S.Schema<ReportReachCriteria>;
 
 export interface ReportCrossMediaReachCriteria {
   /** Required. The list of filters on which dimensions are filtered. Filters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed. */
@@ -7959,23 +5823,15 @@ export interface ReportCrossMediaReachCriteria {
   metricNames?: StringList;
 }
 export const ReportCrossMediaReachCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionFilters: S.optional(DimensionValueList_),
-    dateRange: S.optional(DateRange),
-    dimensions: S.optional(SortedDimensionList),
-    metricNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ReportCrossMediaReachCriteria",
-}) as any as S.Schema<ReportCrossMediaReachCriteria>;
+S.Struct({
+  "dimensionFilters": S.optional(DimensionValueList_),
+  "dateRange": S.optional(DateRange),
+  "dimensions": S.optional(SortedDimensionList),
+  "metricNames": S.optional(StringList),
+}),
+).annotate({ identifier: "ReportCrossMediaReachCriteria" }) as any as S.Schema<ReportCrossMediaReachCriteria>;
 
-export type ReportTypeEnum =
-  | "STANDARD"
-  | "REACH"
-  | "PATH_TO_CONVERSION"
-  | "FLOODLIGHT"
-  | "CROSS_MEDIA_REACH"
-  | (string & {});
+export type ReportTypeEnum = "STANDARD" | "REACH" | "PATH_TO_CONVERSION" | "FLOODLIGHT" | "CROSS_MEDIA_REACH";
 export const ReportTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ReportPathToConversionCriteriaReportProperties {
@@ -7998,22 +5854,19 @@ export interface ReportPathToConversionCriteriaReportProperties {
   /** The maximum number of click interactions to include in the report. Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100 impressions). If another advertiser in your network is paying for E2C, you can have up to 5 total exposures per report. */
   maximumImpressionInteractions?: number;
 }
-export const ReportPathToConversionCriteriaReportProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maximumInteractionGap: S.optional(S.Number),
-      clicksLookbackWindow: S.optional(S.Number),
-      includeUnattributedCookieConversions: S.optional(S.Boolean),
-      pivotOnInteractionPath: S.optional(S.Boolean),
-      maximumClickInteractions: S.optional(S.Number),
-      includeUnattributedIPConversions: S.optional(S.Boolean),
-      impressionsLookbackWindow: S.optional(S.Number),
-      includeAttributedIPConversions: S.optional(S.Boolean),
-      maximumImpressionInteractions: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ReportPathToConversionCriteriaReportProperties",
-  }) as any as S.Schema<ReportPathToConversionCriteriaReportProperties>;
+export const ReportPathToConversionCriteriaReportProperties = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "maximumInteractionGap": S.optional(S.Number),
+  "clicksLookbackWindow": S.optional(S.Number),
+  "includeUnattributedCookieConversions": S.optional(S.Boolean),
+  "pivotOnInteractionPath": S.optional(S.Boolean),
+  "maximumClickInteractions": S.optional(S.Number),
+  "includeUnattributedIPConversions": S.optional(S.Boolean),
+  "impressionsLookbackWindow": S.optional(S.Number),
+  "includeAttributedIPConversions": S.optional(S.Boolean),
+  "maximumImpressionInteractions": S.optional(S.Number),
+}),
+).annotate({ identifier: "ReportPathToConversionCriteriaReportProperties" }) as any as S.Schema<ReportPathToConversionCriteriaReportProperties>;
 
 export interface ReportPathToConversionCriteria {
   /** The date range this report should be run for. */
@@ -8036,24 +5889,20 @@ export interface ReportPathToConversionCriteria {
   activityFilters?: DimensionValueList_;
 }
 export const ReportPathToConversionCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateRange: S.optional(DateRange),
-    perInteractionDimensions: S.optional(SortedDimensionList),
-    floodlightConfigId: S.optional(DimensionValue),
-    reportProperties: S.optional(
-      ReportPathToConversionCriteriaReportProperties,
-    ),
-    metricNames: S.optional(StringList),
-    customFloodlightVariables: S.optional(SortedDimensionList),
-    customRichMediaEvents: S.optional(DimensionValueList_),
-    conversionDimensions: S.optional(SortedDimensionList),
-    activityFilters: S.optional(DimensionValueList_),
-  }),
-).annotate({
-  identifier: "ReportPathToConversionCriteria",
-}) as any as S.Schema<ReportPathToConversionCriteria>;
+S.Struct({
+  "dateRange": S.optional(DateRange),
+  "perInteractionDimensions": S.optional(SortedDimensionList),
+  "floodlightConfigId": S.optional(DimensionValue),
+  "reportProperties": S.optional(ReportPathToConversionCriteriaReportProperties),
+  "metricNames": S.optional(StringList),
+  "customFloodlightVariables": S.optional(SortedDimensionList),
+  "customRichMediaEvents": S.optional(DimensionValueList_),
+  "conversionDimensions": S.optional(SortedDimensionList),
+  "activityFilters": S.optional(DimensionValueList_),
+}),
+).annotate({ identifier: "ReportPathToConversionCriteria" }) as any as S.Schema<ReportPathToConversionCriteria>;
 
-export type ReportFormatEnum = "CSV" | "EXCEL" | (string & {});
+export type ReportFormatEnum = "CSV" | "EXCEL";
 export const ReportFormatEnum = /*@__PURE__*/ S.String;
 
 export interface ReportFloodlightCriteriaReportProperties {
@@ -8064,16 +5913,13 @@ export interface ReportFloodlightCriteriaReportProperties {
   /** Include conversions of users with a DoubleClick cookie but without an exposure. That means the user did not click or see an ad from the advertiser within the Floodlight group, or that the interaction happened outside the lookback window. */
   includeUnattributedCookieConversions?: boolean;
 }
-export const ReportFloodlightCriteriaReportProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      includeUnattributedIPConversions: S.optional(S.Boolean),
-      includeAttributedIPConversions: S.optional(S.Boolean),
-      includeUnattributedCookieConversions: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "ReportFloodlightCriteriaReportProperties",
-}) as any as S.Schema<ReportFloodlightCriteriaReportProperties>;
+export const ReportFloodlightCriteriaReportProperties = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "includeUnattributedIPConversions": S.optional(S.Boolean),
+  "includeAttributedIPConversions": S.optional(S.Boolean),
+  "includeUnattributedCookieConversions": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ReportFloodlightCriteriaReportProperties" }) as any as S.Schema<ReportFloodlightCriteriaReportProperties>;
 
 export interface ReportFloodlightCriteria {
   /** The list of dimensions the report should include. */
@@ -8092,26 +5938,21 @@ export interface ReportFloodlightCriteria {
   dimensionFilters?: DimensionValueList_;
 }
 export const ReportFloodlightCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: S.optional(SortedDimensionList),
-    metricNames: S.optional(StringList),
-    reportProperties: S.optional(ReportFloodlightCriteriaReportProperties),
-    dateRange: S.optional(DateRange),
-    customRichMediaEvents: S.optional(DimensionValueList_),
-    floodlightConfigId: S.optional(DimensionValue),
-    dimensionFilters: S.optional(DimensionValueList_),
-  }),
-).annotate({
-  identifier: "ReportFloodlightCriteria",
-}) as any as S.Schema<ReportFloodlightCriteria>;
+S.Struct({
+  "dimensions": S.optional(SortedDimensionList),
+  "metricNames": S.optional(StringList),
+  "reportProperties": S.optional(ReportFloodlightCriteriaReportProperties),
+  "dateRange": S.optional(DateRange),
+  "customRichMediaEvents": S.optional(DimensionValueList_),
+  "floodlightConfigId": S.optional(DimensionValue),
+  "dimensionFilters": S.optional(DimensionValueList_),
+}),
+).annotate({ identifier: "ReportFloodlightCriteria" }) as any as S.Schema<ReportFloodlightCriteria>;
 
-export type ReportDeliveryEmailOwnerDeliveryTypeEnum =
-  | "LINK"
-  | "ATTACHMENT"
-  | (string & {});
+export type ReportDeliveryEmailOwnerDeliveryTypeEnum = "LINK" | "ATTACHMENT";
 export const ReportDeliveryEmailOwnerDeliveryTypeEnum = /*@__PURE__*/ S.String;
 
-export type RecipientDeliveryTypeEnum = "LINK" | "ATTACHMENT" | (string & {});
+export type RecipientDeliveryTypeEnum = "LINK" | "ATTACHMENT";
 export const RecipientDeliveryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a recipient. */
@@ -8124,17 +5965,15 @@ export interface Recipient {
   deliveryType?: RecipientDeliveryTypeEnum;
 }
 export const Recipient = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    email: S.optional(S.String),
-    deliveryType: S.optional(RecipientDeliveryTypeEnum),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "email": S.optional(S.String),
+  "deliveryType": S.optional(RecipientDeliveryTypeEnum),
+}),
 ).annotate({ identifier: "Recipient" }) as any as S.Schema<Recipient>;
 
 export type RecipientList = ReadonlyArray<Recipient>;
-export const RecipientList = /*@__PURE__*/ S.Array(
-  Recipient,
-) as any as S.Schema<RecipientList>;
+export const RecipientList = /*@__PURE__*/ S.Array(Recipient) as any as S.Schema<RecipientList>;
 
 export interface ReportDelivery {
   /** Whether the report should be emailed to the report owner. */
@@ -8147,14 +5986,12 @@ export interface ReportDelivery {
   recipients?: RecipientList;
 }
 export const ReportDelivery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    emailOwner: S.optional(S.Boolean),
-    emailOwnerDeliveryType: S.optional(
-      ReportDeliveryEmailOwnerDeliveryTypeEnum,
-    ),
-    message: S.optional(S.String),
-    recipients: S.optional(RecipientList),
-  }),
+S.Struct({
+  "emailOwner": S.optional(S.Boolean),
+  "emailOwnerDeliveryType": S.optional(ReportDeliveryEmailOwnerDeliveryTypeEnum),
+  "message": S.optional(S.String),
+  "recipients": S.optional(RecipientList),
+}),
 ).annotate({ identifier: "ReportDelivery" }) as any as S.Schema<ReportDelivery>;
 
 /** Represents a Report resource. */
@@ -8197,26 +6034,26 @@ export interface Report {
   lastModifiedTime?: string;
 }
 export const Report = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    criteria: S.optional(ReportCriteria),
-    ownerProfileId: S.optional(S.String),
-    schedule: S.optional(ReportSchedule),
-    reachCriteria: S.optional(ReportReachCriteria),
-    crossMediaReachCriteria: S.optional(ReportCrossMediaReachCriteria),
-    type: S.optional(ReportTypeEnum),
-    subAccountId: S.optional(S.String),
-    name: S.optional(S.String),
-    accountId: S.optional(S.String),
-    pathToConversionCriteria: S.optional(ReportPathToConversionCriteria),
-    format: S.optional(ReportFormatEnum),
-    fileName: S.optional(S.String),
-    kind: S.optional(S.String),
-    floodlightCriteria: S.optional(ReportFloodlightCriteria),
-    id: S.optional(S.String),
-    delivery: S.optional(ReportDelivery),
-    lastModifiedTime: S.optional(S.String),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "criteria": S.optional(ReportCriteria),
+  "ownerProfileId": S.optional(S.String),
+  "schedule": S.optional(ReportSchedule),
+  "reachCriteria": S.optional(ReportReachCriteria),
+  "crossMediaReachCriteria": S.optional(ReportCrossMediaReachCriteria),
+  "type": S.optional(ReportTypeEnum),
+  "subAccountId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "pathToConversionCriteria": S.optional(ReportPathToConversionCriteria),
+  "format": S.optional(ReportFormatEnum),
+  "fileName": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "floodlightCriteria": S.optional(ReportFloodlightCriteria),
+  "id": S.optional(S.String),
+  "delivery": S.optional(ReportDelivery),
+  "lastModifiedTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
 export interface GetReportsFilesRequest {
@@ -8228,20 +6065,12 @@ export interface GetReportsFilesRequest {
   fileId: string;
 }
 export const GetReportsFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportId: S.String.pipe(T.Label()),
-    profileId: S.String.pipe(T.Label()),
-    fileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{profileId}/reports/{reportId}/files/{fileId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetReportsFilesRequest",
-}) as any as S.Schema<GetReportsFilesRequest>;
+S.Struct({
+  "reportId": S.String.pipe(T.Label()),
+  "profileId": S.String.pipe(T.Label()),
+  "fileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{profileId}/reports/{reportId}/files/{fileId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetReportsFilesRequest" }) as any as S.Schema<GetReportsFilesRequest>;
 
 export interface GetSitesRequest {
   /** User profile ID associated with this request. */
@@ -8250,24 +6079,13 @@ export interface GetSitesRequest {
   id: string;
 }
 export const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/sites/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSitesRequest",
-}) as any as S.Schema<GetSitesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/sites/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetSitesRequest" }) as any as S.Schema<GetSitesRequest>;
 
-export type SiteContactContactTypeEnum =
-  | "SALES_PERSON"
-  | "TRAFFICKER"
-  | (string & {});
+export type SiteContactContactTypeEnum = "SALES_PERSON" | "TRAFFICKER";
 export const SiteContactContactTypeEnum = /*@__PURE__*/ S.String;
 
 /** Site Contact */
@@ -8290,28 +6108,22 @@ export interface SiteContact {
   contactType?: SiteContactContactTypeEnum;
 }
 export const SiteContact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstName: S.optional(S.String),
-    phone: S.optional(S.String),
-    id: S.optional(S.String),
-    lastName: S.optional(S.String),
-    address: S.optional(S.String),
-    email: S.optional(S.String),
-    title: S.optional(S.String),
-    contactType: S.optional(SiteContactContactTypeEnum),
-  }),
+S.Struct({
+  "firstName": S.optional(S.String),
+  "phone": S.optional(S.String),
+  "id": S.optional(S.String),
+  "lastName": S.optional(S.String),
+  "address": S.optional(S.String),
+  "email": S.optional(S.String),
+  "title": S.optional(S.String),
+  "contactType": S.optional(SiteContactContactTypeEnum),
+}),
 ).annotate({ identifier: "SiteContact" }) as any as S.Schema<SiteContact>;
 
 export type SiteContactList = ReadonlyArray<SiteContact>;
-export const SiteContactList = /*@__PURE__*/ S.Array(
-  SiteContact,
-) as any as S.Schema<SiteContactList>;
+export const SiteContactList = /*@__PURE__*/ S.Array(SiteContact) as any as S.Schema<SiteContactList>;
 
-export type SiteVideoSettingsOrientationEnum =
-  | "ANY"
-  | "LANDSCAPE"
-  | "PORTRAIT"
-  | (string & {});
+export type SiteVideoSettingsOrientationEnum = "ANY" | "LANDSCAPE" | "PORTRAIT";
 export const SiteVideoSettingsOrientationEnum = /*@__PURE__*/ S.String;
 
 /** Companion Settings */
@@ -8326,15 +6138,13 @@ export interface SiteCompanionSetting {
   kind?: string;
 }
 export const SiteCompanionSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    companionsDisabled: S.optional(S.Boolean),
-    enabledSizes: S.optional(SizeList),
-    imageOnly: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SiteCompanionSetting",
-}) as any as S.Schema<SiteCompanionSetting>;
+S.Struct({
+  "companionsDisabled": S.optional(S.Boolean),
+  "enabledSizes": S.optional(SizeList),
+  "imageOnly": S.optional(S.Boolean),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "SiteCompanionSetting" }) as any as S.Schema<SiteCompanionSetting>;
 
 /** Transcode Settings */
 export interface SiteTranscodeSetting {
@@ -8344,13 +6154,11 @@ export interface SiteTranscodeSetting {
   enabledVideoFormats?: IntegerList;
 }
 export const SiteTranscodeSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    enabledVideoFormats: S.optional(IntegerList),
-  }),
-).annotate({
-  identifier: "SiteTranscodeSetting",
-}) as any as S.Schema<SiteTranscodeSetting>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "enabledVideoFormats": S.optional(IntegerList),
+}),
+).annotate({ identifier: "SiteTranscodeSetting" }) as any as S.Schema<SiteTranscodeSetting>;
 
 /** Skippable Settings */
 export interface SiteSkippableSetting {
@@ -8364,15 +6172,13 @@ export interface SiteSkippableSetting {
   kind?: string;
 }
 export const SiteSkippableSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    progressOffset: S.optional(VideoOffset),
-    skipOffset: S.optional(VideoOffset),
-    skippable: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SiteSkippableSetting",
-}) as any as S.Schema<SiteSkippableSetting>;
+S.Struct({
+  "progressOffset": S.optional(VideoOffset),
+  "skipOffset": S.optional(VideoOffset),
+  "skippable": S.optional(S.Boolean),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "SiteSkippableSetting" }) as any as S.Schema<SiteSkippableSetting>;
 
 /** Video Settings */
 export interface SiteVideoSettings {
@@ -8394,28 +6200,20 @@ export interface SiteVideoSettings {
   publisherSpecificationId?: string;
 }
 export const SiteVideoSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orientation: S.optional(SiteVideoSettingsOrientationEnum),
-    companionSettings: S.optional(SiteCompanionSetting),
-    transcodeSettings: S.optional(SiteTranscodeSetting),
-    obaSettings: S.optional(ObaIcon),
-    obaEnabled: S.optional(S.Boolean),
-    skippableSettings: S.optional(SiteSkippableSetting),
-    kind: S.optional(S.String),
-    publisherSpecificationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SiteVideoSettings",
-}) as any as S.Schema<SiteVideoSettings>;
+S.Struct({
+  "orientation": S.optional(SiteVideoSettingsOrientationEnum),
+  "companionSettings": S.optional(SiteCompanionSetting),
+  "transcodeSettings": S.optional(SiteTranscodeSetting),
+  "obaSettings": S.optional(ObaIcon),
+  "obaEnabled": S.optional(S.Boolean),
+  "skippableSettings": S.optional(SiteSkippableSetting),
+  "kind": S.optional(S.String),
+  "publisherSpecificationId": S.optional(S.String),
+}),
+).annotate({ identifier: "SiteVideoSettings" }) as any as S.Schema<SiteVideoSettings>;
 
-export type SiteSettingsVpaidAdapterChoiceTemplateEnum =
-  | "DEFAULT"
-  | "FLASH"
-  | "HTML5"
-  | "BOTH"
-  | (string & {});
-export const SiteSettingsVpaidAdapterChoiceTemplateEnum =
-  /*@__PURE__*/ S.String;
+export type SiteSettingsVpaidAdapterChoiceTemplateEnum = "DEFAULT" | "FLASH" | "HTML5" | "BOTH";
+export const SiteSettingsVpaidAdapterChoiceTemplateEnum = /*@__PURE__*/ S.String;
 
 /** Site Settings */
 export interface SiteSettings {
@@ -8433,16 +6231,14 @@ export interface SiteSettings {
   tagSetting?: TagSetting;
 }
 export const SiteSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adBlockingOptOut: S.optional(S.Boolean),
-    disableNewCookie: S.optional(S.Boolean),
-    videoActiveViewOptOutTemplate: S.optional(S.Boolean),
-    activeViewOptOut: S.optional(S.Boolean),
-    vpaidAdapterChoiceTemplate: S.optional(
-      SiteSettingsVpaidAdapterChoiceTemplateEnum,
-    ),
-    tagSetting: S.optional(TagSetting),
-  }),
+S.Struct({
+  "adBlockingOptOut": S.optional(S.Boolean),
+  "disableNewCookie": S.optional(S.Boolean),
+  "videoActiveViewOptOutTemplate": S.optional(S.Boolean),
+  "activeViewOptOut": S.optional(S.Boolean),
+  "vpaidAdapterChoiceTemplate": S.optional(SiteSettingsVpaidAdapterChoiceTemplateEnum),
+  "tagSetting": S.optional(TagSetting),
+}),
 ).annotate({ identifier: "SiteSettings" }) as any as S.Schema<SiteSettings>;
 
 /** Contains properties of a site. */
@@ -8477,22 +6273,22 @@ export interface Site {
   id?: string;
 }
 export const Site = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    directorySiteId: S.optional(S.String),
-    subaccountId: S.optional(S.String),
-    approved: S.optional(S.Boolean),
-    siteContacts: S.optional(SiteContactList),
-    accountId: S.optional(S.String),
-    adServingPlatformId: S.optional(S.String),
-    name: S.optional(S.String),
-    idDimensionValue: S.optional(DimensionValue),
-    videoSettings: S.optional(SiteVideoSettings),
-    kind: S.optional(S.String),
-    keyName: S.optional(S.String),
-    directorySiteIdDimensionValue: S.optional(DimensionValue),
-    siteSettings: S.optional(SiteSettings),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "directorySiteId": S.optional(S.String),
+  "subaccountId": S.optional(S.String),
+  "approved": S.optional(S.Boolean),
+  "siteContacts": S.optional(SiteContactList),
+  "accountId": S.optional(S.String),
+  "adServingPlatformId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "idDimensionValue": S.optional(DimensionValue),
+  "videoSettings": S.optional(SiteVideoSettings),
+  "kind": S.optional(S.String),
+  "keyName": S.optional(S.String),
+  "directorySiteIdDimensionValue": S.optional(DimensionValue),
+  "siteSettings": S.optional(SiteSettings),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 export interface GetSizesRequest {
@@ -8502,37 +6298,21 @@ export interface GetSizesRequest {
   id: string;
 }
 export const GetSizesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/sizes/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSizesRequest",
-}) as any as S.Schema<GetSizesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/sizes/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetSizesRequest" }) as any as S.Schema<GetSizesRequest>;
 
 export interface GetStudioCreativesRequest {
   /** Required. Studio creative ID. */
   studioCreativeId: string;
 }
 export const GetStudioCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    studioCreativeId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "studio/creatives/{+studioCreativeId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetStudioCreativesRequest",
-}) as any as S.Schema<GetStudioCreativesRequest>;
+S.Struct({
+  "studioCreativeId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"studio/creatives/{+studioCreativeId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetStudioCreativesRequest" }) as any as S.Schema<GetStudioCreativesRequest>;
 
 /** Dimension information for a studio creative. */
 export interface StudioCreativeDimension {
@@ -8542,31 +6322,16 @@ export interface StudioCreativeDimension {
   height?: number;
 }
 export const StudioCreativeDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(S.Number),
-    height: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StudioCreativeDimension",
-}) as any as S.Schema<StudioCreativeDimension>;
+S.Struct({
+  "width": S.optional(S.Number),
+  "height": S.optional(S.Number),
+}),
+).annotate({ identifier: "StudioCreativeDimension" }) as any as S.Schema<StudioCreativeDimension>;
 
-export type StudioCreativeStatusEnum =
-  | "UNKNOWN_STATUS"
-  | "IN_DEVELOPMENT"
-  | "PUBLISHED"
-  | "QA_REJECTED"
-  | "QA_APPROVED"
-  | "TRAFFICKED"
-  | (string & {});
+export type StudioCreativeStatusEnum = "UNKNOWN_STATUS" | "IN_DEVELOPMENT" | "PUBLISHED" | "QA_REJECTED" | "QA_APPROVED" | "TRAFFICKED";
 export const StudioCreativeStatusEnum = /*@__PURE__*/ S.String;
 
-export type StudioCreativeFormatEnum =
-  | "UNKNOWN"
-  | "BANNER"
-  | "EXPANDING"
-  | "INTERSTITIAL"
-  | "VPAID_LINEAR_VIDEO"
-  | (string & {});
+export type StudioCreativeFormatEnum = "UNKNOWN" | "BANNER" | "EXPANDING" | "INTERSTITIAL" | "VPAID_LINEAR_VIDEO";
 export const StudioCreativeFormatEnum = /*@__PURE__*/ S.String;
 
 /** *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this resource, please reach out to your Google sales representative. Contains studio creative information. */
@@ -8599,21 +6364,21 @@ export interface StudioCreative {
   backupImageAssetId?: string;
 }
 export const StudioCreative = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    dimension: S.optional(StudioCreativeDimension),
-    studioAccountId: S.optional(S.String),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-    studioCampaignId: S.optional(S.String),
-    createdInfo: S.optional(LastModifiedInfo),
-    studioAdvertiserId: S.optional(S.String),
-    id: S.optional(S.String),
-    status: S.optional(StudioCreativeStatusEnum),
-    assetIds: S.optional(StringList),
-    format: S.optional(StudioCreativeFormatEnum),
-    dynamicProfileId: S.optional(S.String),
-    backupImageAssetId: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "dimension": S.optional(StudioCreativeDimension),
+  "studioAccountId": S.optional(S.String),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+  "studioCampaignId": S.optional(S.String),
+  "createdInfo": S.optional(LastModifiedInfo),
+  "studioAdvertiserId": S.optional(S.String),
+  "id": S.optional(S.String),
+  "status": S.optional(StudioCreativeStatusEnum),
+  "assetIds": S.optional(StringList),
+  "format": S.optional(StudioCreativeFormatEnum),
+  "dynamicProfileId": S.optional(S.String),
+  "backupImageAssetId": S.optional(S.String),
+}),
 ).annotate({ identifier: "StudioCreative" }) as any as S.Schema<StudioCreative>;
 
 export interface GetSubaccountsRequest {
@@ -8623,19 +6388,11 @@ export interface GetSubaccountsRequest {
   id: string;
 }
 export const GetSubaccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/subaccounts/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSubaccountsRequest",
-}) as any as S.Schema<GetSubaccountsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/subaccounts/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetSubaccountsRequest" }) as any as S.Schema<GetSubaccountsRequest>;
 
 /** Contains properties of a Campaign Manager subaccount. */
 export interface Subaccount {
@@ -8651,13 +6408,13 @@ export interface Subaccount {
   kind?: string;
 }
 export const Subaccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    availablePermissionIds: S.optional(StringList),
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "availablePermissionIds": S.optional(StringList),
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Subaccount" }) as any as S.Schema<Subaccount>;
 
 export interface GetTargetableRemarketingListsRequest {
@@ -8666,35 +6423,14 @@ export interface GetTargetableRemarketingListsRequest {
   /** Remarketing list ID. */
   id: string;
 }
-export const GetTargetableRemarketingListsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      profileId: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "userprofiles/{+profileId}/targetableRemarketingLists/{+id}",
-        baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-      }),
-    ),
-).annotate({
-  identifier: "GetTargetableRemarketingListsRequest",
-}) as any as S.Schema<GetTargetableRemarketingListsRequest>;
+export const GetTargetableRemarketingListsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/targetableRemarketingLists/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetTargetableRemarketingListsRequest" }) as any as S.Schema<GetTargetableRemarketingListsRequest>;
 
-export type TargetableRemarketingListListSourceEnum =
-  | "REMARKETING_LIST_SOURCE_OTHER"
-  | "REMARKETING_LIST_SOURCE_ADX"
-  | "REMARKETING_LIST_SOURCE_DFP"
-  | "REMARKETING_LIST_SOURCE_XFP"
-  | "REMARKETING_LIST_SOURCE_DFA"
-  | "REMARKETING_LIST_SOURCE_GA"
-  | "REMARKETING_LIST_SOURCE_YOUTUBE"
-  | "REMARKETING_LIST_SOURCE_DBM"
-  | "REMARKETING_LIST_SOURCE_GPLUS"
-  | "REMARKETING_LIST_SOURCE_DMP"
-  | "REMARKETING_LIST_SOURCE_PLAY_STORE"
-  | (string & {});
+export type TargetableRemarketingListListSourceEnum = "REMARKETING_LIST_SOURCE_OTHER" | "REMARKETING_LIST_SOURCE_ADX" | "REMARKETING_LIST_SOURCE_DFP" | "REMARKETING_LIST_SOURCE_XFP" | "REMARKETING_LIST_SOURCE_DFA" | "REMARKETING_LIST_SOURCE_GA" | "REMARKETING_LIST_SOURCE_YOUTUBE" | "REMARKETING_LIST_SOURCE_DBM" | "REMARKETING_LIST_SOURCE_GPLUS" | "REMARKETING_LIST_SOURCE_DMP" | "REMARKETING_LIST_SOURCE_PLAY_STORE";
 export const TargetableRemarketingListListSourceEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a targetable remarketing list. Remarketing enables you to create lists of users who have performed specific actions on a site, then target ads to members of those lists. This resource is a read-only view of a remarketing list to be used to facilitate targeting ads to specific lists. Remarketing lists that are owned by your advertisers and those that are shared to your advertisers or account are accessible via this resource. To manage remarketing lists that are owned by your advertisers, use the RemarketingLists resource. */
@@ -8725,23 +6461,21 @@ export interface TargetableRemarketingList {
   lifeSpan?: string;
 }
 export const TargetableRemarketingList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    active: S.optional(S.Boolean),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    listSource: S.optional(TargetableRemarketingListListSourceEnum),
-    kind: S.optional(S.String),
-    listSize: S.optional(S.String),
-    description: S.optional(S.String),
-    advertiserId: S.optional(S.String),
-    lifeSpan: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TargetableRemarketingList",
-}) as any as S.Schema<TargetableRemarketingList>;
+S.Struct({
+  "accountId": S.optional(S.String),
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "active": S.optional(S.Boolean),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "listSource": S.optional(TargetableRemarketingListListSourceEnum),
+  "kind": S.optional(S.String),
+  "listSize": S.optional(S.String),
+  "description": S.optional(S.String),
+  "advertiserId": S.optional(S.String),
+  "lifeSpan": S.optional(S.String),
+}),
+).annotate({ identifier: "TargetableRemarketingList" }) as any as S.Schema<TargetableRemarketingList>;
 
 export interface GetTargetingTemplatesRequest {
   /** User profile ID associated with this request. */
@@ -8750,19 +6484,11 @@ export interface GetTargetingTemplatesRequest {
   id: string;
 }
 export const GetTargetingTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/targetingTemplates/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetTargetingTemplatesRequest",
-}) as any as S.Schema<GetTargetingTemplatesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/targetingTemplates/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetTargetingTemplatesRequest" }) as any as S.Schema<GetTargetingTemplatesRequest>;
 
 /** Contains properties of a targeting template. A targeting template encapsulates targeting information which can be reused across multiple ads. */
 export interface TargetingTemplate {
@@ -8796,38 +6522,25 @@ export interface TargetingTemplate {
   dayPartTargeting?: DayPartTargeting;
 }
 export const TargetingTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    advertiserId: S.optional(S.String),
-    technologyTargeting: S.optional(TechnologyTargeting),
-    languageTargeting: S.optional(LanguageTargeting),
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    listTargetingExpression: S.optional(ListTargetingExpression),
-    geoTargeting: S.optional(GeoTargeting),
-    contextualKeywordTargeting: S.optional(ContextualKeywordTargeting),
-    keyValueTargetingExpression: S.optional(KeyValueTargetingExpression),
-    name: S.optional(S.String),
-    subaccountId: S.optional(S.String),
-    advertiserIdDimensionValue: S.optional(DimensionValue),
-    accountId: S.optional(S.String),
-    dayPartTargeting: S.optional(DayPartTargeting),
-  }),
-).annotate({
-  identifier: "TargetingTemplate",
-}) as any as S.Schema<TargetingTemplate>;
+S.Struct({
+  "advertiserId": S.optional(S.String),
+  "technologyTargeting": S.optional(TechnologyTargeting),
+  "languageTargeting": S.optional(LanguageTargeting),
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "listTargetingExpression": S.optional(ListTargetingExpression),
+  "geoTargeting": S.optional(GeoTargeting),
+  "contextualKeywordTargeting": S.optional(ContextualKeywordTargeting),
+  "keyValueTargetingExpression": S.optional(KeyValueTargetingExpression),
+  "name": S.optional(S.String),
+  "subaccountId": S.optional(S.String),
+  "advertiserIdDimensionValue": S.optional(DimensionValue),
+  "accountId": S.optional(S.String),
+  "dayPartTargeting": S.optional(DayPartTargeting),
+}),
+).annotate({ identifier: "TargetingTemplate" }) as any as S.Schema<TargetingTemplate>;
 
-export type GetTvCampaignDetailsTvDataProviderEnum =
-  | "INVALID_TV_DATA_PROVIDER"
-  | "INTAGE_JP"
-  | "IBOPE_AR"
-  | "IBOPE_BR"
-  | "IBOPE_CL"
-  | "IBOPE_CO"
-  | "TNS_VN"
-  | "COMSCORE_NATIONAL_US"
-  | "COMSCORE_CA"
-  | "SAMBA_AU"
-  | (string & {});
+export type GetTvCampaignDetailsTvDataProviderEnum = "INVALID_TV_DATA_PROVIDER" | "INTAGE_JP" | "IBOPE_AR" | "IBOPE_BR" | "IBOPE_CL" | "IBOPE_CO" | "TNS_VN" | "COMSCORE_NATIONAL_US" | "COMSCORE_CA" | "SAMBA_AU";
 export const GetTvCampaignDetailsTvDataProviderEnum = /*@__PURE__*/ S.String;
 
 export interface GetTvCampaignDetailsRequest {
@@ -8836,40 +6549,23 @@ export interface GetTvCampaignDetailsRequest {
   /** Optional. Country Dart ID. If not specified, defaults to 256 (US). */
   countryDartId?: string;
   /** Optional. TV data provider. If not specified, defaults to `COMSCORE_NATIONAL_US`. */
-  tvDataProvider?: GetTvCampaignDetailsTvDataProviderEnum;
+  tvDataProvider?: GetTvCampaignDetailsTvDataProviderEnum | (string & {});
   /** Required. Account ID associated with this request. */
   accountId?: string;
   /** Required. User profile ID associated with this request. */
   profileId: string;
 }
 export const GetTvCampaignDetailsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String.pipe(T.Label()),
-    countryDartId: S.optional(S.String.pipe(T.Query())),
-    tvDataProvider: S.optional(
-      GetTvCampaignDetailsTvDataProviderEnum.pipe(T.Query()),
-    ),
-    accountId: S.optional(S.String.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/tvCampaignDetails/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetTvCampaignDetailsRequest",
-}) as any as S.Schema<GetTvCampaignDetailsRequest>;
+S.Struct({
+  "id": S.String.pipe(T.Label()),
+  "countryDartId": S.optional(S.String.pipe(T.Query())),
+  "tvDataProvider": S.optional(GetTvCampaignDetailsTvDataProviderEnum.pipe(T.Query())),
+  "accountId": S.optional(S.String.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/tvCampaignDetails/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetTvCampaignDetailsRequest" }) as any as S.Schema<GetTvCampaignDetailsRequest>;
 
-export type TvCampaignTimepointDateWindowEnum =
-  | "WEEKS_UNSPECIFIED"
-  | "DAYS_ONE"
-  | "WEEKS_ONE"
-  | "WEEKS_FOUR"
-  | "WEEKS_EIGHT"
-  | "WEEKS_TWELVE"
-  | (string & {});
+export type TvCampaignTimepointDateWindowEnum = "WEEKS_UNSPECIFIED" | "DAYS_ONE" | "WEEKS_ONE" | "WEEKS_FOUR" | "WEEKS_EIGHT" | "WEEKS_TWELVE";
 export const TvCampaignTimepointDateWindowEnum = /*@__PURE__*/ S.String;
 
 /** A single data point for TvCampaignDetail, which holds information about the TV campaign for a specific start date and date window. */
@@ -8882,19 +6578,15 @@ export interface TvCampaignTimepoint {
   spend?: number;
 }
 export const TvCampaignTimepoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startDate: S.optional(S.String),
-    dateWindow: S.optional(TvCampaignTimepointDateWindowEnum),
-    spend: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TvCampaignTimepoint",
-}) as any as S.Schema<TvCampaignTimepoint>;
+S.Struct({
+  "startDate": S.optional(S.String),
+  "dateWindow": S.optional(TvCampaignTimepointDateWindowEnum),
+  "spend": S.optional(S.Number),
+}),
+).annotate({ identifier: "TvCampaignTimepoint" }) as any as S.Schema<TvCampaignTimepoint>;
 
 export type TvCampaignTimepointList = ReadonlyArray<TvCampaignTimepoint>;
-export const TvCampaignTimepointList = /*@__PURE__*/ S.Array(
-  TvCampaignTimepoint,
-) as any as S.Schema<TvCampaignTimepointList>;
+export const TvCampaignTimepointList = /*@__PURE__*/ S.Array(TvCampaignTimepoint) as any as S.Schema<TvCampaignTimepointList>;
 
 /** TvCampaignDetail contains data from a TV campaign for specific start dates and date windows. */
 export interface TvCampaignDetail {
@@ -8906,32 +6598,22 @@ export interface TvCampaignDetail {
   timepoints?: TvCampaignTimepointList;
 }
 export const TvCampaignDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    kind: S.optional(S.String),
-    timepoints: S.optional(TvCampaignTimepointList),
-  }),
-).annotate({
-  identifier: "TvCampaignDetail",
-}) as any as S.Schema<TvCampaignDetail>;
+S.Struct({
+  "id": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "timepoints": S.optional(TvCampaignTimepointList),
+}),
+).annotate({ identifier: "TvCampaignDetail" }) as any as S.Schema<TvCampaignDetail>;
 
 export interface GetUserProfilesRequest {
   /** The user profile ID. */
   profileId: string;
 }
 export const GetUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{profileId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetUserProfilesRequest",
-}) as any as S.Schema<GetUserProfilesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{profileId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetUserProfilesRequest" }) as any as S.Schema<GetUserProfilesRequest>;
 
 /** A UserProfile resource lets you list all DFA user profiles that are associated with a Google user account. The profile_id needs to be specified in other API requests. */
 export interface UserProfile {
@@ -8953,16 +6635,16 @@ export interface UserProfile {
   subAccountName?: string;
 }
 export const UserProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    userName: S.optional(S.String),
-    accountId: S.optional(S.String),
-    profileId: S.optional(S.String),
-    etag: S.optional(S.String),
-    accountName: S.optional(S.String),
-    subAccountId: S.optional(S.String),
-    subAccountName: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "userName": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "profileId": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "accountName": S.optional(S.String),
+  "subAccountId": S.optional(S.String),
+  "subAccountName": S.optional(S.String),
+}),
 ).annotate({ identifier: "UserProfile" }) as any as S.Schema<UserProfile>;
 
 export interface GetUserRolePermissionGroupsRequest {
@@ -8972,19 +6654,11 @@ export interface GetUserRolePermissionGroupsRequest {
   id: string;
 }
 export const GetUserRolePermissionGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/userRolePermissionGroups/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetUserRolePermissionGroupsRequest",
-}) as any as S.Schema<GetUserRolePermissionGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/userRolePermissionGroups/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetUserRolePermissionGroupsRequest" }) as any as S.Schema<GetUserRolePermissionGroupsRequest>;
 
 /** Represents a grouping of related user role permissions. */
 export interface UserRolePermissionGroup {
@@ -8996,14 +6670,12 @@ export interface UserRolePermissionGroup {
   name?: string;
 }
 export const UserRolePermissionGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserRolePermissionGroup",
-}) as any as S.Schema<UserRolePermissionGroup>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "UserRolePermissionGroup" }) as any as S.Schema<UserRolePermissionGroup>;
 
 export interface GetUserRolePermissionsRequest {
   /** User profile ID associated with this request. */
@@ -9012,28 +6684,13 @@ export interface GetUserRolePermissionsRequest {
   id: string;
 }
 export const GetUserRolePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/userRolePermissions/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetUserRolePermissionsRequest",
-}) as any as S.Schema<GetUserRolePermissionsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/userRolePermissions/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetUserRolePermissionsRequest" }) as any as S.Schema<GetUserRolePermissionsRequest>;
 
-export type UserRolePermissionAvailabilityEnum =
-  | "NOT_AVAILABLE_BY_DEFAULT"
-  | "ACCOUNT_BY_DEFAULT"
-  | "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT"
-  | "ACCOUNT_ALWAYS"
-  | "SUBACCOUNT_AND_ACCOUNT_ALWAYS"
-  | "USER_PROFILE_ONLY"
-  | (string & {});
+export type UserRolePermissionAvailabilityEnum = "NOT_AVAILABLE_BY_DEFAULT" | "ACCOUNT_BY_DEFAULT" | "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT" | "ACCOUNT_ALWAYS" | "SUBACCOUNT_AND_ACCOUNT_ALWAYS" | "USER_PROFILE_ONLY";
 export const UserRolePermissionAvailabilityEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a user role permission. */
@@ -9050,16 +6707,14 @@ export interface UserRolePermission {
   kind?: string;
 }
 export const UserRolePermission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availability: S.optional(UserRolePermissionAvailabilityEnum),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    permissionGroupId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserRolePermission",
-}) as any as S.Schema<UserRolePermission>;
+S.Struct({
+  "availability": S.optional(UserRolePermissionAvailabilityEnum),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "permissionGroupId": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "UserRolePermission" }) as any as S.Schema<UserRolePermission>;
 
 export interface GetUserRolesRequest {
   /** User profile ID associated with this request. */
@@ -9068,24 +6723,14 @@ export interface GetUserRolesRequest {
   id: string;
 }
 export const GetUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/userRoles/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetUserRolesRequest",
-}) as any as S.Schema<GetUserRolesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/userRoles/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetUserRolesRequest" }) as any as S.Schema<GetUserRolesRequest>;
 
 export type UserRolePermissionList = ReadonlyArray<UserRolePermission>;
-export const UserRolePermissionList = /*@__PURE__*/ S.Array(
-  UserRolePermission,
-) as any as S.Schema<UserRolePermissionList>;
+export const UserRolePermissionList = /*@__PURE__*/ S.Array(UserRolePermission) as any as S.Schema<UserRolePermissionList>;
 
 /** Contains properties of auser role, which is used to manage user access. */
 export interface UserRole {
@@ -9107,16 +6752,16 @@ export interface UserRole {
   permissions?: UserRolePermissionList;
 }
 export const UserRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subaccountId: S.optional(S.String),
-    defaultUserRole: S.optional(S.Boolean),
-    parentUserRoleId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    permissions: S.optional(UserRolePermissionList),
-  }),
+S.Struct({
+  "subaccountId": S.optional(S.String),
+  "defaultUserRole": S.optional(S.Boolean),
+  "parentUserRoleId": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "permissions": S.optional(UserRolePermissionList),
+}),
 ).annotate({ identifier: "UserRole" }) as any as S.Schema<UserRole>;
 
 export interface GetVideoFormatsRequest {
@@ -9126,27 +6771,13 @@ export interface GetVideoFormatsRequest {
   id: number;
 }
 export const GetVideoFormatsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/videoFormats/{+id}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "GetVideoFormatsRequest",
-}) as any as S.Schema<GetVideoFormatsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.Number.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/videoFormats/{+id}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "GetVideoFormatsRequest" }) as any as S.Schema<GetVideoFormatsRequest>;
 
-export type VideoFormatFileTypeEnum =
-  | "FLV"
-  | "THREEGPP"
-  | "MP4"
-  | "WEBM"
-  | "M3U8"
-  | (string & {});
+export type VideoFormatFileTypeEnum = "FLV" | "THREEGPP" | "MP4" | "WEBM" | "M3U8";
 export const VideoFormatFileTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains information about supported video formats. */
@@ -9163,13 +6794,13 @@ export interface VideoFormat {
   resolution?: Size;
 }
 export const VideoFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    fileType: S.optional(VideoFormatFileTypeEnum),
-    kind: S.optional(S.String),
-    targetBitRate: S.optional(S.Number),
-    resolution: S.optional(Size),
-  }),
+S.Struct({
+  "id": S.optional(S.Number),
+  "fileType": S.optional(VideoFormatFileTypeEnum),
+  "kind": S.optional(S.String),
+  "targetBitRate": S.optional(S.Number),
+  "resolution": S.optional(Size),
+}),
 ).annotate({ identifier: "VideoFormat" }) as any as S.Schema<VideoFormat>;
 
 export interface InsertAccountUserProfilesRequest {
@@ -9179,19 +6810,11 @@ export interface InsertAccountUserProfilesRequest {
   body?: AccountUserProfile;
 }
 export const InsertAccountUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(AccountUserProfile.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/accountUserProfiles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertAccountUserProfilesRequest",
-}) as any as S.Schema<InsertAccountUserProfilesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(AccountUserProfile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/accountUserProfiles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertAccountUserProfilesRequest" }) as any as S.Schema<InsertAccountUserProfilesRequest>;
 
 export interface InsertAdsRequest {
   /** User profile ID associated with this request. */
@@ -9200,19 +6823,11 @@ export interface InsertAdsRequest {
   body?: Ad;
 }
 export const InsertAdsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Ad.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/ads",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertAdsRequest",
-}) as any as S.Schema<InsertAdsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Ad.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/ads","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertAdsRequest" }) as any as S.Schema<InsertAdsRequest>;
 
 export interface InsertAdvertiserGroupsRequest {
   /** User profile ID associated with this request. */
@@ -9221,19 +6836,11 @@ export interface InsertAdvertiserGroupsRequest {
   body?: AdvertiserGroup;
 }
 export const InsertAdvertiserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(AdvertiserGroup.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/advertiserGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertAdvertiserGroupsRequest",
-}) as any as S.Schema<InsertAdvertiserGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(AdvertiserGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/advertiserGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertAdvertiserGroupsRequest" }) as any as S.Schema<InsertAdvertiserGroupsRequest>;
 
 export interface InsertAdvertiserLandingPagesRequest {
   /** User profile ID associated with this request. */
@@ -9242,19 +6849,11 @@ export interface InsertAdvertiserLandingPagesRequest {
   body?: LandingPage;
 }
 export const InsertAdvertiserLandingPagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(LandingPage.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/advertiserLandingPages",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertAdvertiserLandingPagesRequest",
-}) as any as S.Schema<InsertAdvertiserLandingPagesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(LandingPage.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/advertiserLandingPages","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertAdvertiserLandingPagesRequest" }) as any as S.Schema<InsertAdvertiserLandingPagesRequest>;
 
 export interface InsertAdvertisersRequest {
   /** User profile ID associated with this request. */
@@ -9263,19 +6862,11 @@ export interface InsertAdvertisersRequest {
   body?: Advertiser;
 }
 export const InsertAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Advertiser.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/advertisers",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertAdvertisersRequest",
-}) as any as S.Schema<InsertAdvertisersRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Advertiser.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/advertisers","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertAdvertisersRequest" }) as any as S.Schema<InsertAdvertisersRequest>;
 
 /** List account, subaccount, advertiser, and campaign associated with a given Billing Profile. */
 export interface BillingAssignment {
@@ -9291,16 +6882,14 @@ export interface BillingAssignment {
   campaignId?: string;
 }
 export const BillingAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-    subaccountId: S.optional(S.String),
-    advertiserId: S.optional(S.String),
-    campaignId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BillingAssignment",
-}) as any as S.Schema<BillingAssignment>;
+S.Struct({
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "subaccountId": S.optional(S.String),
+  "advertiserId": S.optional(S.String),
+  "campaignId": S.optional(S.String),
+}),
+).annotate({ identifier: "BillingAssignment" }) as any as S.Schema<BillingAssignment>;
 
 export interface InsertBillingAssignmentsRequest {
   /** User profile ID associated with this request. */
@@ -9311,20 +6900,12 @@ export interface InsertBillingAssignmentsRequest {
   body?: BillingAssignment;
 }
 export const InsertBillingAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    billingProfileId: S.String.pipe(T.Label()),
-    body: S.optional(BillingAssignment.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingAssignments",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertBillingAssignmentsRequest",
-}) as any as S.Schema<InsertBillingAssignmentsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "billingProfileId": S.String.pipe(T.Label()),
+  "body": S.optional(BillingAssignment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingAssignments","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertBillingAssignmentsRequest" }) as any as S.Schema<InsertBillingAssignmentsRequest>;
 
 /** Identifies a creative which has been associated with a given campaign. */
 export interface CampaignCreativeAssociation {
@@ -9334,13 +6915,11 @@ export interface CampaignCreativeAssociation {
   kind?: string;
 }
 export const CampaignCreativeAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CampaignCreativeAssociation",
-}) as any as S.Schema<CampaignCreativeAssociation>;
+S.Struct({
+  "creativeId": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "CampaignCreativeAssociation" }) as any as S.Schema<CampaignCreativeAssociation>;
 
 export interface InsertCampaignCreativeAssociationsRequest {
   /** User profile ID associated with this request. */
@@ -9350,22 +6929,13 @@ export interface InsertCampaignCreativeAssociationsRequest {
   /** Request body */
   body?: CampaignCreativeAssociation;
 }
-export const InsertCampaignCreativeAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      profileId: S.String.pipe(T.Label()),
-      campaignId: S.String.pipe(T.Label()),
-      body: S.optional(CampaignCreativeAssociation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "userprofiles/{+profileId}/campaigns/{+campaignId}/campaignCreativeAssociations",
-        baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-      }),
-    ),
-  ).annotate({
-    identifier: "InsertCampaignCreativeAssociationsRequest",
-  }) as any as S.Schema<InsertCampaignCreativeAssociationsRequest>;
+export const InsertCampaignCreativeAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "campaignId": S.String.pipe(T.Label()),
+  "body": S.optional(CampaignCreativeAssociation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/campaigns/{+campaignId}/campaignCreativeAssociations","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertCampaignCreativeAssociationsRequest" }) as any as S.Schema<InsertCampaignCreativeAssociationsRequest>;
 
 export interface InsertCampaignsRequest {
   /** User profile ID associated with this request. */
@@ -9374,19 +6944,11 @@ export interface InsertCampaignsRequest {
   body?: Campaign;
 }
 export const InsertCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Campaign.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/campaigns",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertCampaignsRequest",
-}) as any as S.Schema<InsertCampaignsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Campaign.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/campaigns","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertCampaignsRequest" }) as any as S.Schema<InsertCampaignsRequest>;
 
 export interface InsertContentCategoriesRequest {
   /** User profile ID associated with this request. */
@@ -9395,135 +6957,23 @@ export interface InsertContentCategoriesRequest {
   body?: ContentCategory;
 }
 export const InsertContentCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(ContentCategory.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/contentCategories",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertContentCategoriesRequest",
-}) as any as S.Schema<InsertContentCategoriesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(ContentCategory.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/contentCategories","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertContentCategoriesRequest" }) as any as S.Schema<InsertContentCategoriesRequest>;
 
-export type CreativeAssetMetadataDetectedFeaturesItemEnum =
-  | "CSS_FONT_FACE"
-  | "CSS_BACKGROUND_SIZE"
-  | "CSS_BORDER_IMAGE"
-  | "CSS_BORDER_RADIUS"
-  | "CSS_BOX_SHADOW"
-  | "CSS_FLEX_BOX"
-  | "CSS_HSLA"
-  | "CSS_MULTIPLE_BGS"
-  | "CSS_OPACITY"
-  | "CSS_RGBA"
-  | "CSS_TEXT_SHADOW"
-  | "CSS_ANIMATIONS"
-  | "CSS_COLUMNS"
-  | "CSS_GENERATED_CONTENT"
-  | "CSS_GRADIENTS"
-  | "CSS_REFLECTIONS"
-  | "CSS_TRANSFORMS"
-  | "CSS_TRANSFORMS3D"
-  | "CSS_TRANSITIONS"
-  | "APPLICATION_CACHE"
-  | "CANVAS"
-  | "CANVAS_TEXT"
-  | "DRAG_AND_DROP"
-  | "HASH_CHANGE"
-  | "HISTORY"
-  | "AUDIO"
-  | "VIDEO"
-  | "INDEXED_DB"
-  | "INPUT_ATTR_AUTOCOMPLETE"
-  | "INPUT_ATTR_AUTOFOCUS"
-  | "INPUT_ATTR_LIST"
-  | "INPUT_ATTR_PLACEHOLDER"
-  | "INPUT_ATTR_MAX"
-  | "INPUT_ATTR_MIN"
-  | "INPUT_ATTR_MULTIPLE"
-  | "INPUT_ATTR_PATTERN"
-  | "INPUT_ATTR_REQUIRED"
-  | "INPUT_ATTR_STEP"
-  | "INPUT_TYPE_SEARCH"
-  | "INPUT_TYPE_TEL"
-  | "INPUT_TYPE_URL"
-  | "INPUT_TYPE_EMAIL"
-  | "INPUT_TYPE_DATETIME"
-  | "INPUT_TYPE_DATE"
-  | "INPUT_TYPE_MONTH"
-  | "INPUT_TYPE_WEEK"
-  | "INPUT_TYPE_TIME"
-  | "INPUT_TYPE_DATETIME_LOCAL"
-  | "INPUT_TYPE_NUMBER"
-  | "INPUT_TYPE_RANGE"
-  | "INPUT_TYPE_COLOR"
-  | "LOCAL_STORAGE"
-  | "POST_MESSAGE"
-  | "SESSION_STORAGE"
-  | "WEB_SOCKETS"
-  | "WEB_SQL_DATABASE"
-  | "WEB_WORKERS"
-  | "GEO_LOCATION"
-  | "INLINE_SVG"
-  | "SMIL"
-  | "SVG_HREF"
-  | "SVG_CLIP_PATHS"
-  | "TOUCH"
-  | "WEBGL"
-  | "SVG_FILTERS"
-  | "SVG_FE_IMAGE"
-  | (string & {});
-export const CreativeAssetMetadataDetectedFeaturesItemEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeAssetMetadataDetectedFeaturesItemEnum = "CSS_FONT_FACE" | "CSS_BACKGROUND_SIZE" | "CSS_BORDER_IMAGE" | "CSS_BORDER_RADIUS" | "CSS_BOX_SHADOW" | "CSS_FLEX_BOX" | "CSS_HSLA" | "CSS_MULTIPLE_BGS" | "CSS_OPACITY" | "CSS_RGBA" | "CSS_TEXT_SHADOW" | "CSS_ANIMATIONS" | "CSS_COLUMNS" | "CSS_GENERATED_CONTENT" | "CSS_GRADIENTS" | "CSS_REFLECTIONS" | "CSS_TRANSFORMS" | "CSS_TRANSFORMS3D" | "CSS_TRANSITIONS" | "APPLICATION_CACHE" | "CANVAS" | "CANVAS_TEXT" | "DRAG_AND_DROP" | "HASH_CHANGE" | "HISTORY" | "AUDIO" | "VIDEO" | "INDEXED_DB" | "INPUT_ATTR_AUTOCOMPLETE" | "INPUT_ATTR_AUTOFOCUS" | "INPUT_ATTR_LIST" | "INPUT_ATTR_PLACEHOLDER" | "INPUT_ATTR_MAX" | "INPUT_ATTR_MIN" | "INPUT_ATTR_MULTIPLE" | "INPUT_ATTR_PATTERN" | "INPUT_ATTR_REQUIRED" | "INPUT_ATTR_STEP" | "INPUT_TYPE_SEARCH" | "INPUT_TYPE_TEL" | "INPUT_TYPE_URL" | "INPUT_TYPE_EMAIL" | "INPUT_TYPE_DATETIME" | "INPUT_TYPE_DATE" | "INPUT_TYPE_MONTH" | "INPUT_TYPE_WEEK" | "INPUT_TYPE_TIME" | "INPUT_TYPE_DATETIME_LOCAL" | "INPUT_TYPE_NUMBER" | "INPUT_TYPE_RANGE" | "INPUT_TYPE_COLOR" | "LOCAL_STORAGE" | "POST_MESSAGE" | "SESSION_STORAGE" | "WEB_SOCKETS" | "WEB_SQL_DATABASE" | "WEB_WORKERS" | "GEO_LOCATION" | "INLINE_SVG" | "SMIL" | "SVG_HREF" | "SVG_CLIP_PATHS" | "TOUCH" | "WEBGL" | "SVG_FILTERS" | "SVG_FE_IMAGE";
+export const CreativeAssetMetadataDetectedFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetMetadataDetectedFeaturesItemEnumList =
-  ReadonlyArray<CreativeAssetMetadataDetectedFeaturesItemEnum>;
-export const CreativeAssetMetadataDetectedFeaturesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    CreativeAssetMetadataDetectedFeaturesItemEnum,
-  ) as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
+export type CreativeAssetMetadataDetectedFeaturesItemEnumList = ReadonlyArray<CreativeAssetMetadataDetectedFeaturesItemEnum>;
+export const CreativeAssetMetadataDetectedFeaturesItemEnumList = /*@__PURE__*/ S.Array(CreativeAssetMetadataDetectedFeaturesItemEnum) as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
 
-export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
-  | "CLICK_TAG_NON_TOP_LEVEL"
-  | "CLICK_TAG_MISSING"
-  | "CLICK_TAG_MORE_THAN_ONE"
-  | "CLICK_TAG_INVALID"
-  | "ORPHANED_ASSET"
-  | "PRIMARY_HTML_MISSING"
-  | "EXTERNAL_FILE_REFERENCED"
-  | "MRAID_REFERENCED"
-  | "ADMOB_REFERENCED"
-  | "FILE_TYPE_INVALID"
-  | "ZIP_INVALID"
-  | "LINKED_FILE_NOT_FOUND"
-  | "MAX_FLASH_VERSION_11"
-  | "NOT_SSL_COMPLIANT"
-  | "FILE_DETAIL_EMPTY"
-  | "ASSET_INVALID"
-  | "GWD_PROPERTIES_INVALID"
-  | "ENABLER_UNSUPPORTED_METHOD_DCM"
-  | "ASSET_FORMAT_UNSUPPORTED_DCM"
-  | "COMPONENT_UNSUPPORTED_DCM"
-  | "HTML5_FEATURE_UNSUPPORTED"
-  | "CLICK_TAG_IN_GWD"
-  | "CLICK_TAG_HARD_CODED"
-  | "SVG_INVALID"
-  | "CLICK_TAG_IN_RICH_MEDIA"
-  | "MISSING_ENABLER_REFERENCE"
-  | (string & {});
-export const CreativeAssetMetadataWarnedValidationRulesItemEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeAssetMetadataWarnedValidationRulesItemEnum = "CLICK_TAG_NON_TOP_LEVEL" | "CLICK_TAG_MISSING" | "CLICK_TAG_MORE_THAN_ONE" | "CLICK_TAG_INVALID" | "ORPHANED_ASSET" | "PRIMARY_HTML_MISSING" | "EXTERNAL_FILE_REFERENCED" | "MRAID_REFERENCED" | "ADMOB_REFERENCED" | "FILE_TYPE_INVALID" | "ZIP_INVALID" | "LINKED_FILE_NOT_FOUND" | "MAX_FLASH_VERSION_11" | "NOT_SSL_COMPLIANT" | "FILE_DETAIL_EMPTY" | "ASSET_INVALID" | "GWD_PROPERTIES_INVALID" | "ENABLER_UNSUPPORTED_METHOD_DCM" | "ASSET_FORMAT_UNSUPPORTED_DCM" | "COMPONENT_UNSUPPORTED_DCM" | "HTML5_FEATURE_UNSUPPORTED" | "CLICK_TAG_IN_GWD" | "CLICK_TAG_HARD_CODED" | "SVG_INVALID" | "CLICK_TAG_IN_RICH_MEDIA" | "MISSING_ENABLER_REFERENCE";
+export const CreativeAssetMetadataWarnedValidationRulesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetMetadataWarnedValidationRulesItemEnumList =
-  ReadonlyArray<CreativeAssetMetadataWarnedValidationRulesItemEnum>;
-export const CreativeAssetMetadataWarnedValidationRulesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    CreativeAssetMetadataWarnedValidationRulesItemEnum,
-  ) as any as S.Schema<CreativeAssetMetadataWarnedValidationRulesItemEnumList>;
+export type CreativeAssetMetadataWarnedValidationRulesItemEnumList = ReadonlyArray<CreativeAssetMetadataWarnedValidationRulesItemEnum>;
+export const CreativeAssetMetadataWarnedValidationRulesItemEnumList = /*@__PURE__*/ S.Array(CreativeAssetMetadataWarnedValidationRulesItemEnum) as any as S.Schema<CreativeAssetMetadataWarnedValidationRulesItemEnumList>;
 
 /** CreativeAssets contains properties of a creative asset file which will be uploaded or has already been uploaded. Refer to the creative sample code for how to upload assets and insert a creative. */
 export interface CreativeAssetMetadata {
@@ -9551,26 +7001,20 @@ export interface CreativeAssetMetadata {
   id?: string;
 }
 export const CreativeAssetMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    idDimensionValue: S.optional(DimensionValue),
-    exitCustomEvents: S.optional(CreativeCustomEventList),
-    timerCustomEvents: S.optional(CreativeCustomEventList),
-    richMedia: S.optional(S.Boolean),
-    counterCustomEvents: S.optional(CreativeCustomEventList),
-    assetIdentifier: S.optional(CreativeAssetId),
-    detectedFeatures: S.optional(
-      CreativeAssetMetadataDetectedFeaturesItemEnumList,
-    ),
-    clickTags: S.optional(ClickTagList),
-    warnedValidationRules: S.optional(
-      CreativeAssetMetadataWarnedValidationRulesItemEnumList,
-    ),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeAssetMetadata",
-}) as any as S.Schema<CreativeAssetMetadata>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "idDimensionValue": S.optional(DimensionValue),
+  "exitCustomEvents": S.optional(CreativeCustomEventList),
+  "timerCustomEvents": S.optional(CreativeCustomEventList),
+  "richMedia": S.optional(S.Boolean),
+  "counterCustomEvents": S.optional(CreativeCustomEventList),
+  "assetIdentifier": S.optional(CreativeAssetId),
+  "detectedFeatures": S.optional(CreativeAssetMetadataDetectedFeaturesItemEnumList),
+  "clickTags": S.optional(ClickTagList),
+  "warnedValidationRules": S.optional(CreativeAssetMetadataWarnedValidationRulesItemEnumList),
+  "id": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeAssetMetadata" }) as any as S.Schema<CreativeAssetMetadata>;
 
 export interface InsertCreativeAssetsRequest {
   /** Advertiser ID of this creative. This is a required field. */
@@ -9581,20 +7025,12 @@ export interface InsertCreativeAssetsRequest {
   body?: CreativeAssetMetadata;
 }
 export const InsertCreativeAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    advertiserId: S.String.pipe(T.Label()),
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(CreativeAssetMetadata.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/creativeAssets/{+advertiserId}/creativeAssets",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertCreativeAssetsRequest",
-}) as any as S.Schema<InsertCreativeAssetsRequest>;
+S.Struct({
+  "advertiserId": S.String.pipe(T.Label()),
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(CreativeAssetMetadata.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/creativeAssets/{+advertiserId}/creativeAssets","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertCreativeAssetsRequest" }) as any as S.Schema<InsertCreativeAssetsRequest>;
 
 export interface InsertCreativeFieldsRequest {
   /** User profile ID associated with this request. */
@@ -9603,19 +7039,11 @@ export interface InsertCreativeFieldsRequest {
   body?: CreativeField;
 }
 export const InsertCreativeFieldsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(CreativeField.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/creativeFields",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertCreativeFieldsRequest",
-}) as any as S.Schema<InsertCreativeFieldsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(CreativeField.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/creativeFields","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertCreativeFieldsRequest" }) as any as S.Schema<InsertCreativeFieldsRequest>;
 
 export interface InsertCreativeFieldValuesRequest {
   /** Creative field ID for this creative field value. */
@@ -9626,20 +7054,12 @@ export interface InsertCreativeFieldValuesRequest {
   body?: CreativeFieldValue;
 }
 export const InsertCreativeFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeFieldId: S.String.pipe(T.Label()),
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(CreativeFieldValue.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertCreativeFieldValuesRequest",
-}) as any as S.Schema<InsertCreativeFieldValuesRequest>;
+S.Struct({
+  "creativeFieldId": S.String.pipe(T.Label()),
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(CreativeFieldValue.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertCreativeFieldValuesRequest" }) as any as S.Schema<InsertCreativeFieldValuesRequest>;
 
 export interface InsertCreativeGroupsRequest {
   /** User profile ID associated with this request. */
@@ -9648,19 +7068,11 @@ export interface InsertCreativeGroupsRequest {
   body?: CreativeGroup;
 }
 export const InsertCreativeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(CreativeGroup.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/creativeGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertCreativeGroupsRequest",
-}) as any as S.Schema<InsertCreativeGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(CreativeGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/creativeGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertCreativeGroupsRequest" }) as any as S.Schema<InsertCreativeGroupsRequest>;
 
 export interface InsertCreativesRequest {
   /** User profile ID associated with this request. */
@@ -9669,19 +7081,11 @@ export interface InsertCreativesRequest {
   body?: Creative;
 }
 export const InsertCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Creative.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/creatives",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertCreativesRequest",
-}) as any as S.Schema<InsertCreativesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Creative.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/creatives","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertCreativesRequest" }) as any as S.Schema<InsertCreativesRequest>;
 
 export interface InsertDirectorySitesRequest {
   /** User profile ID associated with this request. */
@@ -9690,19 +7094,11 @@ export interface InsertDirectorySitesRequest {
   body?: DirectorySite;
 }
 export const InsertDirectorySitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(DirectorySite.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/directorySites",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertDirectorySitesRequest",
-}) as any as S.Schema<InsertDirectorySitesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(DirectorySite.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/directorySites","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertDirectorySitesRequest" }) as any as S.Schema<InsertDirectorySitesRequest>;
 
 /** Dynamic profile ID is required for dynamic feed insert as the current GPA API only can create a dynamic feed under profile context,even though the dynamic feed itself don't need the dynamic profile id. */
 export interface DynamicFeedsInsertRequest {
@@ -9712,56 +7108,33 @@ export interface DynamicFeedsInsertRequest {
   dynamicFeed?: DynamicFeed;
 }
 export const DynamicFeedsInsertRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dynamicProfileId: S.optional(S.String),
-    dynamicFeed: S.optional(DynamicFeed),
-  }),
-).annotate({
-  identifier: "DynamicFeedsInsertRequest",
-}) as any as S.Schema<DynamicFeedsInsertRequest>;
+S.Struct({
+  "dynamicProfileId": S.optional(S.String),
+  "dynamicFeed": S.optional(DynamicFeed),
+}),
+).annotate({ identifier: "DynamicFeedsInsertRequest" }) as any as S.Schema<DynamicFeedsInsertRequest>;
 
 export interface InsertDynamicFeedsRequest {
   /** Request body */
   body?: DynamicFeedsInsertRequest;
 }
 export const InsertDynamicFeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DynamicFeedsInsertRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "studio/dynamicFeeds",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertDynamicFeedsRequest",
-}) as any as S.Schema<InsertDynamicFeedsRequest>;
+S.Struct({
+  "body": S.optional(DynamicFeedsInsertRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"studio/dynamicFeeds","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertDynamicFeedsRequest" }) as any as S.Schema<InsertDynamicFeedsRequest>;
 
 export interface InsertDynamicProfilesRequest {
   /** Request body */
   body?: DynamicProfile;
 }
 export const InsertDynamicProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DynamicProfile.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "studio/dynamicProfiles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertDynamicProfilesRequest",
-}) as any as S.Schema<InsertDynamicProfilesRequest>;
+S.Struct({
+  "body": S.optional(DynamicProfile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"studio/dynamicProfiles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertDynamicProfilesRequest" }) as any as S.Schema<InsertDynamicProfilesRequest>;
 
-export type DynamicTargetingKeyObjectTypeEnum =
-  | "OBJECT_ADVERTISER"
-  | "OBJECT_AD"
-  | "OBJECT_CREATIVE"
-  | "OBJECT_PLACEMENT"
-  | (string & {});
+export type DynamicTargetingKeyObjectTypeEnum = "OBJECT_ADVERTISER" | "OBJECT_AD" | "OBJECT_CREATIVE" | "OBJECT_PLACEMENT";
 export const DynamicTargetingKeyObjectTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a dynamic targeting key. Dynamic targeting keys are unique, user-friendly labels, created at the advertiser level in DCM, that can be assigned to ads, creatives, and placements and used for targeting with Studio dynamic creatives. Use these labels instead of numeric Campaign Manager IDs (such as placement IDs) to save time and avoid errors in your dynamic feeds. */
@@ -9776,15 +7149,13 @@ export interface DynamicTargetingKey {
   objectId?: string;
 }
 export const DynamicTargetingKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    objectType: S.optional(DynamicTargetingKeyObjectTypeEnum),
-    kind: S.optional(S.String),
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DynamicTargetingKey",
-}) as any as S.Schema<DynamicTargetingKey>;
+S.Struct({
+  "name": S.optional(S.String),
+  "objectType": S.optional(DynamicTargetingKeyObjectTypeEnum),
+  "kind": S.optional(S.String),
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "DynamicTargetingKey" }) as any as S.Schema<DynamicTargetingKey>;
 
 export interface InsertDynamicTargetingKeysRequest {
   /** User profile ID associated with this request. */
@@ -9793,19 +7164,11 @@ export interface InsertDynamicTargetingKeysRequest {
   body?: DynamicTargetingKey;
 }
 export const InsertDynamicTargetingKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(DynamicTargetingKey.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/dynamicTargetingKeys",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertDynamicTargetingKeysRequest",
-}) as any as S.Schema<InsertDynamicTargetingKeysRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(DynamicTargetingKey.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/dynamicTargetingKeys","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertDynamicTargetingKeysRequest" }) as any as S.Schema<InsertDynamicTargetingKeysRequest>;
 
 export interface InsertEventTagsRequest {
   /** User profile ID associated with this request. */
@@ -9814,19 +7177,11 @@ export interface InsertEventTagsRequest {
   body?: EventTag;
 }
 export const InsertEventTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(EventTag.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/eventTags",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertEventTagsRequest",
-}) as any as S.Schema<InsertEventTagsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(EventTag.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/eventTags","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertEventTagsRequest" }) as any as S.Schema<InsertEventTagsRequest>;
 
 export interface InsertFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
@@ -9835,19 +7190,11 @@ export interface InsertFloodlightActivitiesRequest {
   body?: FloodlightActivity;
 }
 export const InsertFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(FloodlightActivity.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/floodlightActivities",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertFloodlightActivitiesRequest",
-}) as any as S.Schema<InsertFloodlightActivitiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(FloodlightActivity.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/floodlightActivities","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertFloodlightActivitiesRequest" }) as any as S.Schema<InsertFloodlightActivitiesRequest>;
 
 export interface InsertFloodlightActivityGroupsRequest {
   /** User profile ID associated with this request. */
@@ -9855,21 +7202,12 @@ export interface InsertFloodlightActivityGroupsRequest {
   /** Request body */
   body?: FloodlightActivityGroup;
 }
-export const InsertFloodlightActivityGroupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      profileId: S.String.pipe(T.Label()),
-      body: S.optional(FloodlightActivityGroup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "userprofiles/{+profileId}/floodlightActivityGroups",
-        baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-      }),
-    ),
-).annotate({
-  identifier: "InsertFloodlightActivityGroupsRequest",
-}) as any as S.Schema<InsertFloodlightActivityGroupsRequest>;
+export const InsertFloodlightActivityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(FloodlightActivityGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/floodlightActivityGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertFloodlightActivityGroupsRequest" }) as any as S.Schema<InsertFloodlightActivityGroupsRequest>;
 
 export interface InsertPlacementGroupsRequest {
   /** User profile ID associated with this request. */
@@ -9878,19 +7216,11 @@ export interface InsertPlacementGroupsRequest {
   body?: PlacementGroup;
 }
 export const InsertPlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(PlacementGroup.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/placementGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertPlacementGroupsRequest",
-}) as any as S.Schema<InsertPlacementGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(PlacementGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/placementGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertPlacementGroupsRequest" }) as any as S.Schema<InsertPlacementGroupsRequest>;
 
 export interface InsertPlacementsRequest {
   /** User profile ID associated with this request. */
@@ -9899,19 +7229,11 @@ export interface InsertPlacementsRequest {
   body?: Placement;
 }
 export const InsertPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Placement.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/placements",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertPlacementsRequest",
-}) as any as S.Schema<InsertPlacementsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Placement.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/placements","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertPlacementsRequest" }) as any as S.Schema<InsertPlacementsRequest>;
 
 export interface InsertPlacementStrategiesRequest {
   /** User profile ID associated with this request. */
@@ -9920,19 +7242,11 @@ export interface InsertPlacementStrategiesRequest {
   body?: PlacementStrategy;
 }
 export const InsertPlacementStrategiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(PlacementStrategy.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/placementStrategies",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertPlacementStrategiesRequest",
-}) as any as S.Schema<InsertPlacementStrategiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(PlacementStrategy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/placementStrategies","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertPlacementStrategiesRequest" }) as any as S.Schema<InsertPlacementStrategiesRequest>;
 
 export interface InsertRemarketingListsRequest {
   /** User profile ID associated with this request. */
@@ -9941,19 +7255,11 @@ export interface InsertRemarketingListsRequest {
   body?: RemarketingList;
 }
 export const InsertRemarketingListsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(RemarketingList.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/remarketingLists",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertRemarketingListsRequest",
-}) as any as S.Schema<InsertRemarketingListsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(RemarketingList.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/remarketingLists","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertRemarketingListsRequest" }) as any as S.Schema<InsertRemarketingListsRequest>;
 
 export interface InsertReportsRequest {
   /** The Campaign Manager 360 user profile ID. */
@@ -9962,19 +7268,11 @@ export interface InsertReportsRequest {
   body?: Report;
 }
 export const InsertReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Report.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{profileId}/reports",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertReportsRequest",
-}) as any as S.Schema<InsertReportsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Report.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{profileId}/reports","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertReportsRequest" }) as any as S.Schema<InsertReportsRequest>;
 
 export interface InsertSitesRequest {
   /** User profile ID associated with this request. */
@@ -9983,19 +7281,11 @@ export interface InsertSitesRequest {
   body?: Site;
 }
 export const InsertSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Site.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/sites",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertSitesRequest",
-}) as any as S.Schema<InsertSitesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Site.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/sites","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertSitesRequest" }) as any as S.Schema<InsertSitesRequest>;
 
 export interface InsertSizesRequest {
   /** User profile ID associated with this request. */
@@ -10004,19 +7294,11 @@ export interface InsertSizesRequest {
   body?: Size;
 }
 export const InsertSizesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Size.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/sizes",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertSizesRequest",
-}) as any as S.Schema<InsertSizesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Size.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/sizes","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertSizesRequest" }) as any as S.Schema<InsertSizesRequest>;
 
 /** Request message for DfareportingStudioCreativeAssets.Insert. */
 export interface DfareportingStudioCreativeAssetsInsertRequest {
@@ -10027,52 +7309,28 @@ export interface DfareportingStudioCreativeAssetsInsertRequest {
   /** Optional. Studio creative ID of the studio creative asset. It is a optional field. If it is set, the asset will be associated to the creative. */
   studioCreativeId?: string;
 }
-export const DfareportingStudioCreativeAssetsInsertRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      studioAdvertiserId: S.optional(S.String),
-      studioAccountId: S.optional(S.String),
-      studioCreativeId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DfareportingStudioCreativeAssetsInsertRequest",
-  }) as any as S.Schema<DfareportingStudioCreativeAssetsInsertRequest>;
+export const DfareportingStudioCreativeAssetsInsertRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "studioAdvertiserId": S.optional(S.String),
+  "studioAccountId": S.optional(S.String),
+  "studioCreativeId": S.optional(S.String),
+}),
+).annotate({ identifier: "DfareportingStudioCreativeAssetsInsertRequest" }) as any as S.Schema<DfareportingStudioCreativeAssetsInsertRequest>;
 
 export interface InsertStudioCreativeAssetsRequest {
   /** Request body */
   body?: DfareportingStudioCreativeAssetsInsertRequest;
 }
 export const InsertStudioCreativeAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(
-      DfareportingStudioCreativeAssetsInsertRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "studio/creativeAssets",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertStudioCreativeAssetsRequest",
-}) as any as S.Schema<InsertStudioCreativeAssetsRequest>;
+S.Struct({
+  "body": S.optional(DfareportingStudioCreativeAssetsInsertRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"studio/creativeAssets","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertStudioCreativeAssetsRequest" }) as any as S.Schema<InsertStudioCreativeAssetsRequest>;
 
-export type StudioCreativeAssetTypeEnum =
-  | "UNKNOWN_TYPE"
-  | "HTML"
-  | "VIDEO"
-  | "IMAGE"
-  | "FONT"
-  | (string & {});
+export type StudioCreativeAssetTypeEnum = "UNKNOWN_TYPE" | "HTML" | "VIDEO" | "IMAGE" | "FONT";
 export const StudioCreativeAssetTypeEnum = /*@__PURE__*/ S.String;
 
-export type VideoProcessingDataProcessingStateEnum =
-  | "UNKNOWN"
-  | "PROCESSING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+export type VideoProcessingDataProcessingStateEnum = "UNKNOWN" | "PROCESSING" | "SUCCEEDED" | "FAILED";
 export const VideoProcessingDataProcessingStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains processing data for a video asset. */
@@ -10083,13 +7341,11 @@ export interface VideoProcessingData {
   errorReason?: string;
 }
 export const VideoProcessingData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    processingState: S.optional(VideoProcessingDataProcessingStateEnum),
-    errorReason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VideoProcessingData",
-}) as any as S.Schema<VideoProcessingData>;
+S.Struct({
+  "processingState": S.optional(VideoProcessingDataProcessingStateEnum),
+  "errorReason": S.optional(S.String),
+}),
+).annotate({ identifier: "VideoProcessingData" }) as any as S.Schema<VideoProcessingData>;
 
 /** *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this resource, please reach out to your Google sales representative. Contains studio creative asset information. */
 export interface StudioCreativeAsset {
@@ -10115,26 +7371,22 @@ export interface StudioCreativeAsset {
   studioAccountId?: string;
 }
 export const StudioCreativeAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filename: S.optional(S.String),
-    type: S.optional(StudioCreativeAssetTypeEnum),
-    studioAdvertiserId: S.optional(S.String),
-    videoProcessingData: S.optional(VideoProcessingData),
-    id: S.optional(S.String),
-    createInfo: S.optional(LastModifiedInfo),
-    studioCreativeId: S.optional(S.String),
-    filesize: S.optional(S.String),
-    lastModifiedInfo: S.optional(LastModifiedInfo),
-    studioAccountId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StudioCreativeAsset",
-}) as any as S.Schema<StudioCreativeAsset>;
+S.Struct({
+  "filename": S.optional(S.String),
+  "type": S.optional(StudioCreativeAssetTypeEnum),
+  "studioAdvertiserId": S.optional(S.String),
+  "videoProcessingData": S.optional(VideoProcessingData),
+  "id": S.optional(S.String),
+  "createInfo": S.optional(LastModifiedInfo),
+  "studioCreativeId": S.optional(S.String),
+  "filesize": S.optional(S.String),
+  "lastModifiedInfo": S.optional(LastModifiedInfo),
+  "studioAccountId": S.optional(S.String),
+}),
+).annotate({ identifier: "StudioCreativeAsset" }) as any as S.Schema<StudioCreativeAsset>;
 
 export type StudioCreativeAssetList = ReadonlyArray<StudioCreativeAsset>;
-export const StudioCreativeAssetList = /*@__PURE__*/ S.Array(
-  StudioCreativeAsset,
-) as any as S.Schema<StudioCreativeAssetList>;
+export const StudioCreativeAssetList = /*@__PURE__*/ S.Array(StudioCreativeAsset) as any as S.Schema<StudioCreativeAssetList>;
 
 /** Response message for DfareportingStudioCreativeAssets.Insert. */
 export interface StudioCreativeAssetsResponse {
@@ -10142,30 +7394,20 @@ export interface StudioCreativeAssetsResponse {
   assets?: StudioCreativeAssetList;
 }
 export const StudioCreativeAssetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assets: S.optional(StudioCreativeAssetList),
-  }),
-).annotate({
-  identifier: "StudioCreativeAssetsResponse",
-}) as any as S.Schema<StudioCreativeAssetsResponse>;
+S.Struct({
+  "assets": S.optional(StudioCreativeAssetList),
+}),
+).annotate({ identifier: "StudioCreativeAssetsResponse" }) as any as S.Schema<StudioCreativeAssetsResponse>;
 
 export interface InsertStudioCreativesRequest {
   /** Request body */
   body?: StudioCreative;
 }
 export const InsertStudioCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(StudioCreative.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "studio/creatives",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertStudioCreativesRequest",
-}) as any as S.Schema<InsertStudioCreativesRequest>;
+S.Struct({
+  "body": S.optional(StudioCreative.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"studio/creatives","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertStudioCreativesRequest" }) as any as S.Schema<InsertStudioCreativesRequest>;
 
 export interface InsertSubaccountsRequest {
   /** User profile ID associated with this request. */
@@ -10174,19 +7416,11 @@ export interface InsertSubaccountsRequest {
   body?: Subaccount;
 }
 export const InsertSubaccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Subaccount.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/subaccounts",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertSubaccountsRequest",
-}) as any as S.Schema<InsertSubaccountsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Subaccount.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/subaccounts","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertSubaccountsRequest" }) as any as S.Schema<InsertSubaccountsRequest>;
 
 export interface InsertTargetingTemplatesRequest {
   /** User profile ID associated with this request. */
@@ -10195,19 +7429,11 @@ export interface InsertTargetingTemplatesRequest {
   body?: TargetingTemplate;
 }
 export const InsertTargetingTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(TargetingTemplate.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/targetingTemplates",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertTargetingTemplatesRequest",
-}) as any as S.Schema<InsertTargetingTemplatesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(TargetingTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/targetingTemplates","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertTargetingTemplatesRequest" }) as any as S.Schema<InsertTargetingTemplatesRequest>;
 
 export interface InsertUserRolesRequest {
   /** User profile ID associated with this request. */
@@ -10216,42 +7442,24 @@ export interface InsertUserRolesRequest {
   body?: UserRole;
 }
 export const InsertUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(UserRole.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{+profileId}/userRoles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertUserRolesRequest",
-}) as any as S.Schema<InsertUserRolesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(UserRole.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{+profileId}/userRoles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "InsertUserRolesRequest" }) as any as S.Schema<InsertUserRolesRequest>;
 
 export interface ListAccountPermissionGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListAccountPermissionGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/accountPermissionGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountPermissionGroupsRequest",
-}) as any as S.Schema<ListAccountPermissionGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/accountPermissionGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListAccountPermissionGroupsRequest" }) as any as S.Schema<ListAccountPermissionGroupsRequest>;
 
 export type AccountPermissionGroupList = ReadonlyArray<AccountPermissionGroup>;
-export const AccountPermissionGroupList = /*@__PURE__*/ S.Array(
-  AccountPermissionGroup,
-) as any as S.Schema<AccountPermissionGroupList>;
+export const AccountPermissionGroupList = /*@__PURE__*/ S.Array(AccountPermissionGroup) as any as S.Schema<AccountPermissionGroupList>;
 
 /** Account Permission Group List Response */
 export interface AccountPermissionGroupsListResponse {
@@ -10261,36 +7469,24 @@ export interface AccountPermissionGroupsListResponse {
   accountPermissionGroups?: AccountPermissionGroupList;
 }
 export const AccountPermissionGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    accountPermissionGroups: S.optional(AccountPermissionGroupList),
-  }),
-).annotate({
-  identifier: "AccountPermissionGroupsListResponse",
-}) as any as S.Schema<AccountPermissionGroupsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "accountPermissionGroups": S.optional(AccountPermissionGroupList),
+}),
+).annotate({ identifier: "AccountPermissionGroupsListResponse" }) as any as S.Schema<AccountPermissionGroupsListResponse>;
 
 export interface ListAccountPermissionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListAccountPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/accountPermissions",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountPermissionsRequest",
-}) as any as S.Schema<ListAccountPermissionsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/accountPermissions","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListAccountPermissionsRequest" }) as any as S.Schema<ListAccountPermissionsRequest>;
 
 export type AccountPermissionList = ReadonlyArray<AccountPermission>;
-export const AccountPermissionList = /*@__PURE__*/ S.Array(
-  AccountPermission,
-) as any as S.Schema<AccountPermissionList>;
+export const AccountPermissionList = /*@__PURE__*/ S.Array(AccountPermission) as any as S.Schema<AccountPermissionList>;
 
 /** Account Permission List Response */
 export interface AccountPermissionsListResponse {
@@ -10300,32 +7496,27 @@ export interface AccountPermissionsListResponse {
   accountPermissions?: AccountPermissionList;
 }
 export const AccountPermissionsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    accountPermissions: S.optional(AccountPermissionList),
-  }),
-).annotate({
-  identifier: "AccountPermissionsListResponse",
-}) as any as S.Schema<AccountPermissionsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "accountPermissions": S.optional(AccountPermissionList),
+}),
+).annotate({ identifier: "AccountPermissionsListResponse" }) as any as S.Schema<AccountPermissionsListResponse>;
 
-export type ListAccountsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListAccountsSortFieldEnum = "ID" | "NAME";
 export const ListAccountsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListAccountsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListAccountsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListAccountsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountsRequest {
   /** Select only accounts with these IDs. */
   ids?: StringList;
   /** Field by which to sort the list. */
-  sortField?: ListAccountsSortFieldEnum;
+  sortField?: ListAccountsSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListAccountsSortOrderEnum;
+  sortOrder?: ListAccountsSortOrderEnum | (string & {});
   /** User profile ID associated with this request. */
   profileId: string;
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "account*2015" will return objects with names like "account June 2015", "account April 2015", or simply "account 2015". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "account" will match objects with name "my account", "account 2015", or simply "account". */
@@ -10336,30 +7527,20 @@ export interface ListAccountsRequest {
   active?: boolean;
 }
 export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList.pipe(T.Query())),
-    sortField: S.optional(ListAccountsSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortOrder: S.optional(ListAccountsSortOrderEnum.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    active: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/accounts",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsRequest",
-}) as any as S.Schema<ListAccountsRequest>;
+S.Struct({
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "sortField": S.optional(ListAccountsSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListAccountsSortOrderEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "active": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/accounts","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type AccountList = ReadonlyArray<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(
-  Account,
-) as any as S.Schema<AccountList>;
+export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 /** Account List Response */
 export interface AccountsListResponse {
@@ -10371,25 +7552,17 @@ export interface AccountsListResponse {
   accounts?: AccountList;
 }
 export const AccountsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    accounts: S.optional(AccountList),
-  }),
-).annotate({
-  identifier: "AccountsListResponse",
-}) as any as S.Schema<AccountsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "accounts": S.optional(AccountList),
+}),
+).annotate({ identifier: "AccountsListResponse" }) as any as S.Schema<AccountsListResponse>;
 
-export type ListAccountUserProfilesSortFieldEnum =
-  | "ID"
-  | "NAME"
-  | (string & {});
+export type ListAccountUserProfilesSortFieldEnum = "ID" | "NAME";
 export const ListAccountUserProfilesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListAccountUserProfilesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListAccountUserProfilesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListAccountUserProfilesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountUserProfilesRequest {
@@ -10402,7 +7575,7 @@ export interface ListAccountUserProfilesRequest {
   /** Select only active user profiles. */
   active?: boolean;
   /** Field by which to sort the list. */
-  sortField?: ListAccountUserProfilesSortFieldEnum;
+  sortField?: ListAccountUserProfilesSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Select only user profiles with the specified user role ID. */
@@ -10410,37 +7583,27 @@ export interface ListAccountUserProfilesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Order of sorted results. */
-  sortOrder?: ListAccountUserProfilesSortOrderEnum;
+  sortOrder?: ListAccountUserProfilesSortOrderEnum | (string & {});
   /** Select only user profiles with these IDs. */
   ids?: StringList;
 }
 export const ListAccountUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    subaccountId: S.optional(S.String.pipe(T.Query())),
-    active: S.optional(S.Boolean.pipe(T.Query())),
-    sortField: S.optional(ListAccountUserProfilesSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    userRoleId: S.optional(S.String.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    sortOrder: S.optional(ListAccountUserProfilesSortOrderEnum.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/accountUserProfiles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountUserProfilesRequest",
-}) as any as S.Schema<ListAccountUserProfilesRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "subaccountId": S.optional(S.String.pipe(T.Query())),
+  "active": S.optional(S.Boolean.pipe(T.Query())),
+  "sortField": S.optional(ListAccountUserProfilesSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "userRoleId": S.optional(S.String.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "sortOrder": S.optional(ListAccountUserProfilesSortOrderEnum.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/accountUserProfiles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListAccountUserProfilesRequest" }) as any as S.Schema<ListAccountUserProfilesRequest>;
 
 export type AccountUserProfileList = ReadonlyArray<AccountUserProfile>;
-export const AccountUserProfileList = /*@__PURE__*/ S.Array(
-  AccountUserProfile,
-) as any as S.Schema<AccountUserProfileList>;
+export const AccountUserProfileList = /*@__PURE__*/ S.Array(AccountUserProfile) as any as S.Schema<AccountUserProfileList>;
 
 /** Account User Profile List Response */
 export interface AccountUserProfilesListResponse {
@@ -10452,43 +7615,26 @@ export interface AccountUserProfilesListResponse {
   nextPageToken?: string;
 }
 export const AccountUserProfilesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    accountUserProfiles: S.optional(AccountUserProfileList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountUserProfilesListResponse",
-}) as any as S.Schema<AccountUserProfilesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "accountUserProfiles": S.optional(AccountUserProfileList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountUserProfilesListResponse" }) as any as S.Schema<AccountUserProfilesListResponse>;
 
-export type ListAdsTypeEnum =
-  | "AD_SERVING_STANDARD_AD"
-  | "AD_SERVING_DEFAULT_AD"
-  | "AD_SERVING_CLICK_TRACKER"
-  | "AD_SERVING_TRACKING"
-  | "AD_SERVING_BRAND_SAFE_AD"
-  | (string & {});
+export type ListAdsTypeEnum = "AD_SERVING_STANDARD_AD" | "AD_SERVING_DEFAULT_AD" | "AD_SERVING_CLICK_TRACKER" | "AD_SERVING_TRACKING" | "AD_SERVING_BRAND_SAFE_AD";
 export const ListAdsTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListAdsTypeEnumList = ReadonlyArray<ListAdsTypeEnum>;
-export const ListAdsTypeEnumList = /*@__PURE__*/ S.Array(
-  ListAdsTypeEnum,
-) as any as S.Schema<ListAdsTypeEnumList>;
+export type ListAdsTypeEnumList = ReadonlyArray<ListAdsTypeEnum | (string & {})>;
+export const ListAdsTypeEnumList = /*@__PURE__*/ S.Array(ListAdsTypeEnum) as any as S.Schema<ListAdsTypeEnumList>;
 
-export type ListAdsSortOrderEnum = "ASCENDING" | "DESCENDING" | (string & {});
+export type ListAdsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListAdsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListAdsCompatibilityEnum =
-  | "DISPLAY"
-  | "DISPLAY_INTERSTITIAL"
-  | "APP"
-  | "APP_INTERSTITIAL"
-  | "IN_STREAM_VIDEO"
-  | "IN_STREAM_AUDIO"
-  | (string & {});
+export type ListAdsCompatibilityEnum = "DISPLAY" | "DISPLAY_INTERSTITIAL" | "APP" | "APP_INTERSTITIAL" | "IN_STREAM_VIDEO" | "IN_STREAM_AUDIO";
 export const ListAdsCompatibilityEnum = /*@__PURE__*/ S.String;
 
-export type ListAdsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListAdsSortFieldEnum = "ID" | "NAME";
 export const ListAdsSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListAdsRequest {
@@ -10515,7 +7661,7 @@ export interface ListAdsRequest {
   /** Select only ads with these landing page IDs. */
   landingPageIds?: StringList;
   /** Order of sorted results. */
-  sortOrder?: ListAdsSortOrderEnum;
+  sortOrder?: ListAdsSortOrderEnum | (string & {});
   /** Select only ads with these audience segment IDs. */
   audienceSegmentIds?: StringList;
   /** Select only ads that require SSL. */
@@ -10529,7 +7675,7 @@ export interface ListAdsRequest {
   /** Select only active ads. */
   active?: boolean;
   /** Select default ads with the specified compatibility. Applicable when type is AD_SERVING_DEFAULT_AD. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering an in-stream video ads developed with the VAST standard. */
-  compatibility?: ListAdsCompatibilityEnum;
+  compatibility?: ListAdsCompatibilityEnum | (string & {});
   /** Select only ads with these creative optimization configuration IDs. */
   creativeOptimizationConfigurationIds?: StringList;
   /** Select only ads with these creative IDs assigned. */
@@ -10539,43 +7685,35 @@ export interface ListAdsRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Field by which to sort the list. */
-  sortField?: ListAdsSortFieldEnum;
+  sortField?: ListAdsSortFieldEnum | (string & {});
 }
 export const ListAdsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    archived: S.optional(S.Boolean.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    remarketingListIds: S.optional(StringList.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    campaignIds: S.optional(StringList.pipe(T.Query())),
-    type: S.optional(ListAdsTypeEnumList.pipe(T.Query())),
-    dynamicClickTracker: S.optional(S.Boolean.pipe(T.Query())),
-    sizeIds: S.optional(StringList.pipe(T.Query())),
-    placementIds: S.optional(StringList.pipe(T.Query())),
-    landingPageIds: S.optional(StringList.pipe(T.Query())),
-    sortOrder: S.optional(ListAdsSortOrderEnum.pipe(T.Query())),
-    audienceSegmentIds: S.optional(StringList.pipe(T.Query())),
-    sslRequired: S.optional(S.Boolean.pipe(T.Query())),
-    advertiserId: S.optional(S.String.pipe(T.Query())),
-    overriddenEventTagId: S.optional(S.String.pipe(T.Query())),
-    sslCompliant: S.optional(S.Boolean.pipe(T.Query())),
-    active: S.optional(S.Boolean.pipe(T.Query())),
-    compatibility: S.optional(ListAdsCompatibilityEnum.pipe(T.Query())),
-    creativeOptimizationConfigurationIds: S.optional(
-      StringList.pipe(T.Query()),
-    ),
-    creativeIds: S.optional(StringList.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortField: S.optional(ListAdsSortFieldEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/ads",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "archived": S.optional(S.Boolean.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "remarketingListIds": S.optional(StringList.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "campaignIds": S.optional(StringList.pipe(T.Query())),
+  "type": S.optional(ListAdsTypeEnumList.pipe(T.Query())),
+  "dynamicClickTracker": S.optional(S.Boolean.pipe(T.Query())),
+  "sizeIds": S.optional(StringList.pipe(T.Query())),
+  "placementIds": S.optional(StringList.pipe(T.Query())),
+  "landingPageIds": S.optional(StringList.pipe(T.Query())),
+  "sortOrder": S.optional(ListAdsSortOrderEnum.pipe(T.Query())),
+  "audienceSegmentIds": S.optional(StringList.pipe(T.Query())),
+  "sslRequired": S.optional(S.Boolean.pipe(T.Query())),
+  "advertiserId": S.optional(S.String.pipe(T.Query())),
+  "overriddenEventTagId": S.optional(S.String.pipe(T.Query())),
+  "sslCompliant": S.optional(S.Boolean.pipe(T.Query())),
+  "active": S.optional(S.Boolean.pipe(T.Query())),
+  "compatibility": S.optional(ListAdsCompatibilityEnum.pipe(T.Query())),
+  "creativeOptimizationConfigurationIds": S.optional(StringList.pipe(T.Query())),
+  "creativeIds": S.optional(StringList.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortField": S.optional(ListAdsSortFieldEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/ads","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
 ).annotate({ identifier: "ListAdsRequest" }) as any as S.Schema<ListAdsRequest>;
 
 export type AdList = ReadonlyArray<Ad>;
@@ -10591,22 +7729,17 @@ export interface AdsListResponse {
   nextPageToken?: string;
 }
 export const AdsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ads: S.optional(AdList),
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AdsListResponse",
-}) as any as S.Schema<AdsListResponse>;
+S.Struct({
+  "ads": S.optional(AdList),
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "AdsListResponse" }) as any as S.Schema<AdsListResponse>;
 
-export type ListAdvertiserGroupsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListAdvertiserGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListAdvertiserGroupsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListAdvertiserGroupsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListAdvertiserGroupsSortFieldEnum = "ID" | "NAME";
 export const ListAdvertiserGroupsSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListAdvertiserGroupsRequest {
@@ -10621,34 +7754,24 @@ export interface ListAdvertiserGroupsRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListAdvertiserGroupsSortOrderEnum;
+  sortOrder?: ListAdvertiserGroupsSortOrderEnum | (string & {});
   /** Field by which to sort the list. */
-  sortField?: ListAdvertiserGroupsSortFieldEnum;
+  sortField?: ListAdvertiserGroupsSortFieldEnum | (string & {});
 }
 export const ListAdvertiserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortOrder: S.optional(ListAdvertiserGroupsSortOrderEnum.pipe(T.Query())),
-    sortField: S.optional(ListAdvertiserGroupsSortFieldEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/advertiserGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAdvertiserGroupsRequest",
-}) as any as S.Schema<ListAdvertiserGroupsRequest>;
+S.Struct({
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListAdvertiserGroupsSortOrderEnum.pipe(T.Query())),
+  "sortField": S.optional(ListAdvertiserGroupsSortFieldEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/advertiserGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListAdvertiserGroupsRequest" }) as any as S.Schema<ListAdvertiserGroupsRequest>;
 
 export type AdvertiserGroupList = ReadonlyArray<AdvertiserGroup>;
-export const AdvertiserGroupList = /*@__PURE__*/ S.Array(
-  AdvertiserGroup,
-) as any as S.Schema<AdvertiserGroupList>;
+export const AdvertiserGroupList = /*@__PURE__*/ S.Array(AdvertiserGroup) as any as S.Schema<AdvertiserGroupList>;
 
 /** Advertiser Group List Response */
 export interface AdvertiserGroupsListResponse {
@@ -10660,14 +7783,12 @@ export interface AdvertiserGroupsListResponse {
   nextPageToken?: string;
 }
 export const AdvertiserGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    advertiserGroups: S.optional(AdvertiserGroupList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AdvertiserGroupsListResponse",
-}) as any as S.Schema<AdvertiserGroupsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "advertiserGroups": S.optional(AdvertiserGroupList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "AdvertiserGroupsListResponse" }) as any as S.Schema<AdvertiserGroupsListResponse>;
 
 export interface ListAdvertiserInvoicesRequest {
   /** Advertiser ID of this invoice. */
@@ -10682,22 +7803,14 @@ export interface ListAdvertiserInvoicesRequest {
   issueMonth?: string;
 }
 export const ListAdvertiserInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    advertiserId: S.String.pipe(T.Label()),
-    profileId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    issueMonth: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/advertisers/{+advertiserId}/invoices",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAdvertiserInvoicesRequest",
-}) as any as S.Schema<ListAdvertiserInvoicesRequest>;
+S.Struct({
+  "advertiserId": S.String.pipe(T.Label()),
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "issueMonth": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/advertisers/{+advertiserId}/invoices","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListAdvertiserInvoicesRequest" }) as any as S.Schema<ListAdvertiserInvoicesRequest>;
 
 /** Represents a summarized campaign information associated with this invoice. */
 export interface CampaignSummary {
@@ -10713,27 +7826,19 @@ export interface CampaignSummary {
   taxAmountMicros?: string;
 }
 export const CampaignSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    campaignId: S.optional(S.String),
-    billingInvoiceCode: S.optional(S.String),
-    totalAmountMicros: S.optional(S.String),
-    preTaxAmountMicros: S.optional(S.String),
-    taxAmountMicros: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CampaignSummary",
-}) as any as S.Schema<CampaignSummary>;
+S.Struct({
+  "campaignId": S.optional(S.String),
+  "billingInvoiceCode": S.optional(S.String),
+  "totalAmountMicros": S.optional(S.String),
+  "preTaxAmountMicros": S.optional(S.String),
+  "taxAmountMicros": S.optional(S.String),
+}),
+).annotate({ identifier: "CampaignSummary" }) as any as S.Schema<CampaignSummary>;
 
 export type CampaignSummaryList = ReadonlyArray<CampaignSummary>;
-export const CampaignSummaryList = /*@__PURE__*/ S.Array(
-  CampaignSummary,
-) as any as S.Schema<CampaignSummaryList>;
+export const CampaignSummaryList = /*@__PURE__*/ S.Array(CampaignSummary) as any as S.Schema<CampaignSummaryList>;
 
-export type InvoiceInvoiceTypeEnum =
-  | "INVOICE_TYPE_UNSPECIFIED"
-  | "INVOICE_TYPE_CREDIT"
-  | "INVOICE_TYPE_INVOICE"
-  | (string & {});
+export type InvoiceInvoiceTypeEnum = "INVOICE_TYPE_UNSPECIFIED" | "INVOICE_TYPE_CREDIT" | "INVOICE_TYPE_INVOICE";
 export const InvoiceInvoiceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains information about a single invoice */
@@ -10776,32 +7881,30 @@ export interface Invoice {
   kind?: string;
 }
 export const Invoice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replacedInvoiceIds: S.optional(StringList),
-    paymentsAccountId: S.optional(S.String),
-    campaign_summaries: S.optional(CampaignSummaryList),
-    dueDate: S.optional(S.String),
-    subtotalAmountMicros: S.optional(S.String),
-    issueDate: S.optional(S.String),
-    correctedInvoiceId: S.optional(S.String),
-    paymentsProfileId: S.optional(S.String),
-    totalTaxAmountMicros: S.optional(S.String),
-    id: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-    totalAmountMicros: S.optional(S.String),
-    invoiceType: S.optional(InvoiceInvoiceTypeEnum),
-    serviceStartDate: S.optional(S.String),
-    purchaseOrderNumber: S.optional(S.String),
-    serviceEndDate: S.optional(S.String),
-    pdfUrl: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "replacedInvoiceIds": S.optional(StringList),
+  "paymentsAccountId": S.optional(S.String),
+  "campaign_summaries": S.optional(CampaignSummaryList),
+  "dueDate": S.optional(S.String),
+  "subtotalAmountMicros": S.optional(S.String),
+  "issueDate": S.optional(S.String),
+  "correctedInvoiceId": S.optional(S.String),
+  "paymentsProfileId": S.optional(S.String),
+  "totalTaxAmountMicros": S.optional(S.String),
+  "id": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+  "totalAmountMicros": S.optional(S.String),
+  "invoiceType": S.optional(InvoiceInvoiceTypeEnum),
+  "serviceStartDate": S.optional(S.String),
+  "purchaseOrderNumber": S.optional(S.String),
+  "serviceEndDate": S.optional(S.String),
+  "pdfUrl": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Invoice" }) as any as S.Schema<Invoice>;
 
 export type InvoiceList = ReadonlyArray<Invoice>;
-export const InvoiceList = /*@__PURE__*/ S.Array(
-  Invoice,
-) as any as S.Schema<InvoiceList>;
+export const InvoiceList = /*@__PURE__*/ S.Array(Invoice) as any as S.Schema<InvoiceList>;
 
 /** Invoice List Response */
 export interface AdvertiserInvoicesListResponse {
@@ -10813,32 +7916,24 @@ export interface AdvertiserInvoicesListResponse {
   invoices?: InvoiceList;
 }
 export const AdvertiserInvoicesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    invoices: S.optional(InvoiceList),
-  }),
-).annotate({
-  identifier: "AdvertiserInvoicesListResponse",
-}) as any as S.Schema<AdvertiserInvoicesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "invoices": S.optional(InvoiceList),
+}),
+).annotate({ identifier: "AdvertiserInvoicesListResponse" }) as any as S.Schema<AdvertiserInvoicesListResponse>;
 
-export type ListAdvertiserLandingPagesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListAdvertiserLandingPagesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListAdvertiserLandingPagesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListAdvertiserLandingPagesSortFieldEnum =
-  | "ID"
-  | "NAME"
-  | (string & {});
+export type ListAdvertiserLandingPagesSortFieldEnum = "ID" | "NAME";
 export const ListAdvertiserLandingPagesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListAdvertiserLandingPagesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Order of sorted results. */
-  sortOrder?: ListAdvertiserLandingPagesSortOrderEnum;
+  sortOrder?: ListAdvertiserLandingPagesSortOrderEnum | (string & {});
   /** Select only archived landing pages. Don't set this field to select both archived and non-archived landing pages. */
   archived?: boolean;
   /** Select only landing pages with these IDs. */
@@ -10854,42 +7949,28 @@ export interface ListAdvertiserLandingPagesRequest {
   /** Select only landing pages that are associated with these campaigns. */
   campaignIds?: StringList;
   /** Field by which to sort the list. */
-  sortField?: ListAdvertiserLandingPagesSortFieldEnum;
+  sortField?: ListAdvertiserLandingPagesSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
 }
 export const ListAdvertiserLandingPagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    sortOrder: S.optional(
-      ListAdvertiserLandingPagesSortOrderEnum.pipe(T.Query()),
-    ),
-    archived: S.optional(S.Boolean.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    advertiserIds: S.optional(StringList.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    subaccountId: S.optional(S.String.pipe(T.Query())),
-    campaignIds: S.optional(StringList.pipe(T.Query())),
-    sortField: S.optional(
-      ListAdvertiserLandingPagesSortFieldEnum.pipe(T.Query()),
-    ),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/advertiserLandingPages",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAdvertiserLandingPagesRequest",
-}) as any as S.Schema<ListAdvertiserLandingPagesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "sortOrder": S.optional(ListAdvertiserLandingPagesSortOrderEnum.pipe(T.Query())),
+  "archived": S.optional(S.Boolean.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "advertiserIds": S.optional(StringList.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "subaccountId": S.optional(S.String.pipe(T.Query())),
+  "campaignIds": S.optional(StringList.pipe(T.Query())),
+  "sortField": S.optional(ListAdvertiserLandingPagesSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/advertiserLandingPages","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListAdvertiserLandingPagesRequest" }) as any as S.Schema<ListAdvertiserLandingPagesRequest>;
 
 export type LandingPageList = ReadonlyArray<LandingPage>;
-export const LandingPageList = /*@__PURE__*/ S.Array(
-  LandingPage,
-) as any as S.Schema<LandingPageList>;
+export const LandingPageList = /*@__PURE__*/ S.Array(LandingPage) as any as S.Schema<LandingPageList>;
 
 /** Landing Page List Response */
 export interface AdvertiserLandingPagesListResponse {
@@ -10901,40 +7982,35 @@ export interface AdvertiserLandingPagesListResponse {
   landingPages?: LandingPageList;
 }
 export const AdvertiserLandingPagesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    landingPages: S.optional(LandingPageList),
-  }),
-).annotate({
-  identifier: "AdvertiserLandingPagesListResponse",
-}) as any as S.Schema<AdvertiserLandingPagesListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "landingPages": S.optional(LandingPageList),
+}),
+).annotate({ identifier: "AdvertiserLandingPagesListResponse" }) as any as S.Schema<AdvertiserLandingPagesListResponse>;
 
-export type ListAdvertisersSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListAdvertisersSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListAdvertisersSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListAdvertisersSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListAdvertisersSortFieldEnum = "ID" | "NAME";
 export const ListAdvertisersSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListAdvertisersStatusEnum = "APPROVED" | "ON_HOLD" | (string & {});
+export type ListAdvertisersStatusEnum = "APPROVED" | "ON_HOLD";
 export const ListAdvertisersStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ListAdvertisersRequest {
   /** Select only advertisers which do not belong to any advertiser group. */
   includeAdvertisersWithoutGroupsOnly?: boolean;
   /** Order of sorted results. */
-  sortOrder?: ListAdvertisersSortOrderEnum;
+  sortOrder?: ListAdvertisersSortOrderEnum | (string & {});
   /** Value of the nextPageToken from the previous result page. */
   pageToken?: string;
   /** Field by which to sort the list. */
-  sortField?: ListAdvertisersSortFieldEnum;
+  sortField?: ListAdvertisersSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Select only advertisers with the specified status. */
-  status?: ListAdvertisersStatusEnum;
+  status?: ListAdvertisersStatusEnum | (string & {});
   /** Select only advertisers with these IDs. */
   ids?: StringList;
   /** User profile ID associated with this request. */
@@ -10951,35 +8027,25 @@ export interface ListAdvertisersRequest {
   subaccountId?: string;
 }
 export const ListAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeAdvertisersWithoutGroupsOnly: S.optional(S.Boolean.pipe(T.Query())),
-    sortOrder: S.optional(ListAdvertisersSortOrderEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    sortField: S.optional(ListAdvertisersSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    status: S.optional(ListAdvertisersStatusEnum.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    advertiserGroupIds: S.optional(StringList.pipe(T.Query())),
-    onlyParent: S.optional(S.Boolean.pipe(T.Query())),
-    floodlightConfigurationIds: S.optional(StringList.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    subaccountId: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/advertisers",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAdvertisersRequest",
-}) as any as S.Schema<ListAdvertisersRequest>;
+S.Struct({
+  "includeAdvertisersWithoutGroupsOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "sortOrder": S.optional(ListAdvertisersSortOrderEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "sortField": S.optional(ListAdvertisersSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "status": S.optional(ListAdvertisersStatusEnum.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "advertiserGroupIds": S.optional(StringList.pipe(T.Query())),
+  "onlyParent": S.optional(S.Boolean.pipe(T.Query())),
+  "floodlightConfigurationIds": S.optional(StringList.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "subaccountId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/advertisers","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListAdvertisersRequest" }) as any as S.Schema<ListAdvertisersRequest>;
 
 export type AdvertiserList = ReadonlyArray<Advertiser>;
-export const AdvertiserList = /*@__PURE__*/ S.Array(
-  Advertiser,
-) as any as S.Schema<AdvertiserList>;
+export const AdvertiserList = /*@__PURE__*/ S.Array(Advertiser) as any as S.Schema<AdvertiserList>;
 
 /** Advertiser List Response */
 export interface AdvertisersListResponse {
@@ -10991,14 +8057,12 @@ export interface AdvertisersListResponse {
   nextPageToken?: string;
 }
 export const AdvertisersListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    advertisers: S.optional(AdvertiserList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AdvertisersListResponse",
-}) as any as S.Schema<AdvertisersListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "advertisers": S.optional(AdvertiserList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "AdvertisersListResponse" }) as any as S.Schema<AdvertisersListResponse>;
 
 export interface ListBillingAssignmentsRequest {
   /** User profile ID associated with this request. */
@@ -11007,24 +8071,14 @@ export interface ListBillingAssignmentsRequest {
   billingProfileId: string;
 }
 export const ListBillingAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    billingProfileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingAssignments",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBillingAssignmentsRequest",
-}) as any as S.Schema<ListBillingAssignmentsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "billingProfileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingAssignments","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListBillingAssignmentsRequest" }) as any as S.Schema<ListBillingAssignmentsRequest>;
 
 export type BillingAssignmentList = ReadonlyArray<BillingAssignment>;
-export const BillingAssignmentList = /*@__PURE__*/ S.Array(
-  BillingAssignment,
-) as any as S.Schema<BillingAssignmentList>;
+export const BillingAssignmentList = /*@__PURE__*/ S.Array(BillingAssignment) as any as S.Schema<BillingAssignmentList>;
 
 /** Billing assignment List Response */
 export interface BillingAssignmentsListResponse {
@@ -11034,41 +8088,29 @@ export interface BillingAssignmentsListResponse {
   billingAssignments?: BillingAssignmentList;
 }
 export const BillingAssignmentsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    billingAssignments: S.optional(BillingAssignmentList),
-  }),
-).annotate({
-  identifier: "BillingAssignmentsListResponse",
-}) as any as S.Schema<BillingAssignmentsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "billingAssignments": S.optional(BillingAssignmentList),
+}),
+).annotate({ identifier: "BillingAssignmentsListResponse" }) as any as S.Schema<BillingAssignmentsListResponse>;
 
-export type ListBillingProfilesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListBillingProfilesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListBillingProfilesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListBillingProfilesStatusEnum =
-  | "UNDER_REVIEW"
-  | "ACTIVE"
-  | "ARCHIVED"
-  | (string & {});
+export type ListBillingProfilesStatusEnum = "UNDER_REVIEW" | "ACTIVE" | "ARCHIVED";
 export const ListBillingProfilesStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListBillingProfilesStatusEnumList =
-  ReadonlyArray<ListBillingProfilesStatusEnum>;
-export const ListBillingProfilesStatusEnumList = /*@__PURE__*/ S.Array(
-  ListBillingProfilesStatusEnum,
-) as any as S.Schema<ListBillingProfilesStatusEnumList>;
+export type ListBillingProfilesStatusEnumList = ReadonlyArray<ListBillingProfilesStatusEnum | (string & {})>;
+export const ListBillingProfilesStatusEnumList = /*@__PURE__*/ S.Array(ListBillingProfilesStatusEnum) as any as S.Schema<ListBillingProfilesStatusEnumList>;
 
-export type ListBillingProfilesSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListBillingProfilesSortFieldEnum = "ID" | "NAME";
 export const ListBillingProfilesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListBillingProfilesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Order of sorted results. */
-  sortOrder?: ListBillingProfilesSortOrderEnum;
+  sortOrder?: ListBillingProfilesSortOrderEnum | (string & {});
   /** Select only billing profile which is suggested for the currency_code & subaccount_id using the Billing Suggestion API. */
   onlySuggestion?: boolean;
   /** Select only billing profile with these IDs. */
@@ -11084,38 +8126,28 @@ export interface ListBillingProfilesRequest {
   /** Select only billing profile with the specified status. */
   status?: ListBillingProfilesStatusEnumList;
   /** Field by which to sort the list. */
-  sortField?: ListBillingProfilesSortFieldEnum;
+  sortField?: ListBillingProfilesSortFieldEnum | (string & {});
   /** Allows searching for billing profiles by name. Wildcards (*) are allowed. For example, "profile*2020" will return objects with names like "profile June 2020", "profile April 2020", or simply "profile 2020". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "profile" will match objects with name "my profile", "profile 2021", or simply "profile". */
   name?: string;
 }
 export const ListBillingProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    sortOrder: S.optional(ListBillingProfilesSortOrderEnum.pipe(T.Query())),
-    onlySuggestion: S.optional(S.Boolean.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    subaccountIds: S.optional(StringList.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    currency_code: S.optional(S.String.pipe(T.Query())),
-    status: S.optional(ListBillingProfilesStatusEnumList.pipe(T.Query())),
-    sortField: S.optional(ListBillingProfilesSortFieldEnum.pipe(T.Query())),
-    name: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/billingProfiles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBillingProfilesRequest",
-}) as any as S.Schema<ListBillingProfilesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "sortOrder": S.optional(ListBillingProfilesSortOrderEnum.pipe(T.Query())),
+  "onlySuggestion": S.optional(S.Boolean.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "subaccountIds": S.optional(StringList.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "currency_code": S.optional(S.String.pipe(T.Query())),
+  "status": S.optional(ListBillingProfilesStatusEnumList.pipe(T.Query())),
+  "sortField": S.optional(ListBillingProfilesSortFieldEnum.pipe(T.Query())),
+  "name": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/billingProfiles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListBillingProfilesRequest" }) as any as S.Schema<ListBillingProfilesRequest>;
 
 export type BillingProfileList = ReadonlyArray<BillingProfile>;
-export const BillingProfileList = /*@__PURE__*/ S.Array(
-  BillingProfile,
-) as any as S.Schema<BillingProfileList>;
+export const BillingProfileList = /*@__PURE__*/ S.Array(BillingProfile) as any as S.Schema<BillingProfileList>;
 
 /** Billing profile List Response */
 export interface BillingProfilesListResponse {
@@ -11127,14 +8159,12 @@ export interface BillingProfilesListResponse {
   kind?: string;
 }
 export const BillingProfilesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    billingProfiles: S.optional(BillingProfileList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BillingProfilesListResponse",
-}) as any as S.Schema<BillingProfilesListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "billingProfiles": S.optional(BillingProfileList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "BillingProfilesListResponse" }) as any as S.Schema<BillingProfilesListResponse>;
 
 export interface ListBillingRatesRequest {
   /** User profile ID associated with this request. */
@@ -11143,26 +8173,13 @@ export interface ListBillingRatesRequest {
   billingProfileId: string;
 }
 export const ListBillingRatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    billingProfileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingRates",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBillingRatesRequest",
-}) as any as S.Schema<ListBillingRatesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "billingProfileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingRates","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListBillingRatesRequest" }) as any as S.Schema<ListBillingRatesRequest>;
 
-export type BillingRateUnitOfMeasureEnum =
-  | "CPM"
-  | "CPC"
-  | "EA"
-  | "P2C"
-  | (string & {});
+export type BillingRateUnitOfMeasureEnum = "CPM" | "CPC" | "EA" | "P2C";
 export const BillingRateUnitOfMeasureEnum = /*@__PURE__*/ S.String;
 
 export interface BillingRateTieredRate {
@@ -11174,54 +8191,17 @@ export interface BillingRateTieredRate {
   rateInMicros?: string;
 }
 export const BillingRateTieredRate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lowValue: S.optional(S.String),
-    highValue: S.optional(S.String),
-    rateInMicros: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BillingRateTieredRate",
-}) as any as S.Schema<BillingRateTieredRate>;
+S.Struct({
+  "lowValue": S.optional(S.String),
+  "highValue": S.optional(S.String),
+  "rateInMicros": S.optional(S.String),
+}),
+).annotate({ identifier: "BillingRateTieredRate" }) as any as S.Schema<BillingRateTieredRate>;
 
 export type BillingRateTieredRateList = ReadonlyArray<BillingRateTieredRate>;
-export const BillingRateTieredRateList = /*@__PURE__*/ S.Array(
-  BillingRateTieredRate,
-) as any as S.Schema<BillingRateTieredRateList>;
+export const BillingRateTieredRateList = /*@__PURE__*/ S.Array(BillingRateTieredRate) as any as S.Schema<BillingRateTieredRateList>;
 
-export type BillingRateTypeEnum =
-  | "AD_SERVING"
-  | "CLICKS"
-  | "MINIMUM_SERVICE"
-  | "PATH_TO_CONVERSION"
-  | "RICH_MEDIA_INPAGE"
-  | "RICH_MEDIA_EXPANDING"
-  | "RICH_MEDIA_FLOATING"
-  | "RICH_MEDIA_VIDEO"
-  | "RICH_MEDIA_TEASER"
-  | "RICH_MEDIA_VPAID"
-  | "INSTREAM_VIDEO"
-  | "PIXEL"
-  | "TRACKING"
-  | "TRAFFICKING_FEATURE"
-  | "CUSTOM_REPORTS"
-  | "EXPOSURE_TO_CONVERSION"
-  | "DATA_TRANSFER"
-  | "DATA_TRANSFER_SETUP"
-  | "STARTUP"
-  | "STATEMENT_OF_WORK"
-  | "PROVIDED_LIST"
-  | "PROVIDED_LIST_SETUP"
-  | "ENHANCED_FORMATS"
-  | "TRACKING_AD_IMPRESSIONS"
-  | "TRACKING_AD_CLICKS"
-  | "NIELSEN_DIGITAL_AD_RATINGS_FEE"
-  | "INSTREAM_VIDEO_REDIRECT"
-  | "INSTREAM_VIDEO_VPAID"
-  | "DISPLAY_AD_SERVING"
-  | "VIDEO_AD_SERVING"
-  | "AUDIO_AD_SERVING"
-  | "ADVANCED_DISPLAY_AD_SERVING"
-  | (string & {});
+export type BillingRateTypeEnum = "AD_SERVING" | "CLICKS" | "MINIMUM_SERVICE" | "PATH_TO_CONVERSION" | "RICH_MEDIA_INPAGE" | "RICH_MEDIA_EXPANDING" | "RICH_MEDIA_FLOATING" | "RICH_MEDIA_VIDEO" | "RICH_MEDIA_TEASER" | "RICH_MEDIA_VPAID" | "INSTREAM_VIDEO" | "PIXEL" | "TRACKING" | "TRAFFICKING_FEATURE" | "CUSTOM_REPORTS" | "EXPOSURE_TO_CONVERSION" | "DATA_TRANSFER" | "DATA_TRANSFER_SETUP" | "STARTUP" | "STATEMENT_OF_WORK" | "PROVIDED_LIST" | "PROVIDED_LIST_SETUP" | "ENHANCED_FORMATS" | "TRACKING_AD_IMPRESSIONS" | "TRACKING_AD_CLICKS" | "NIELSEN_DIGITAL_AD_RATINGS_FEE" | "INSTREAM_VIDEO_REDIRECT" | "INSTREAM_VIDEO_VPAID" | "DISPLAY_AD_SERVING" | "VIDEO_AD_SERVING" | "AUDIO_AD_SERVING" | "ADVANCED_DISPLAY_AD_SERVING";
 export const BillingRateTypeEnum = /*@__PURE__*/ S.String;
 
 export interface BillingRate {
@@ -11245,23 +8225,21 @@ export interface BillingRate {
   endDate?: string;
 }
 export const BillingRate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unitOfMeasure: S.optional(BillingRateUnitOfMeasureEnum),
-    tieredRates: S.optional(BillingRateTieredRateList),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-    rateInMicros: S.optional(S.String),
-    type: S.optional(BillingRateTypeEnum),
-    startDate: S.optional(S.String),
-    endDate: S.optional(S.String),
-  }),
+S.Struct({
+  "unitOfMeasure": S.optional(BillingRateUnitOfMeasureEnum),
+  "tieredRates": S.optional(BillingRateTieredRateList),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+  "rateInMicros": S.optional(S.String),
+  "type": S.optional(BillingRateTypeEnum),
+  "startDate": S.optional(S.String),
+  "endDate": S.optional(S.String),
+}),
 ).annotate({ identifier: "BillingRate" }) as any as S.Schema<BillingRate>;
 
 export type BillingRateList = ReadonlyArray<BillingRate>;
-export const BillingRateList = /*@__PURE__*/ S.Array(
-  BillingRate,
-) as any as S.Schema<BillingRateList>;
+export const BillingRateList = /*@__PURE__*/ S.Array(BillingRate) as any as S.Schema<BillingRateList>;
 
 /** Billing Rate List Response */
 export interface BillingRatesListResponse {
@@ -11273,32 +8251,22 @@ export interface BillingRatesListResponse {
   nextPageToken?: string;
 }
 export const BillingRatesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    billingRates: S.optional(BillingRateList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BillingRatesListResponse",
-}) as any as S.Schema<BillingRatesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "billingRates": S.optional(BillingRateList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "BillingRatesListResponse" }) as any as S.Schema<BillingRatesListResponse>;
 
 export interface ListBrowsersRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListBrowsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/browsers",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBrowsersRequest",
-}) as any as S.Schema<ListBrowsersRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/browsers","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListBrowsersRequest" }) as any as S.Schema<ListBrowsersRequest>;
 
 /** Browser List Response */
 export interface BrowsersListResponse {
@@ -11308,26 +8276,20 @@ export interface BrowsersListResponse {
   kind?: string;
 }
 export const BrowsersListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browsers: S.optional(BrowserList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BrowsersListResponse",
-}) as any as S.Schema<BrowsersListResponse>;
+S.Struct({
+  "browsers": S.optional(BrowserList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "BrowsersListResponse" }) as any as S.Schema<BrowsersListResponse>;
 
-export type ListCampaignCreativeAssociationsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
-export const ListCampaignCreativeAssociationsSortOrderEnum =
-  /*@__PURE__*/ S.String;
+export type ListCampaignCreativeAssociationsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export const ListCampaignCreativeAssociationsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListCampaignCreativeAssociationsRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListCampaignCreativeAssociationsSortOrderEnum;
+  sortOrder?: ListCampaignCreativeAssociationsSortOrderEnum | (string & {});
   /** User profile ID associated with this request. */
   profileId: string;
   /** Value of the nextPageToken from the previous result page. */
@@ -11335,32 +8297,18 @@ export interface ListCampaignCreativeAssociationsRequest {
   /** Campaign ID in this association. */
   campaignId: string;
 }
-export const ListCampaignCreativeAssociationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number.pipe(T.Query())),
-      sortOrder: S.optional(
-        ListCampaignCreativeAssociationsSortOrderEnum.pipe(T.Query()),
-      ),
-      profileId: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      campaignId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "userprofiles/{+profileId}/campaigns/{+campaignId}/campaignCreativeAssociations",
-        baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-      }),
-    ),
-).annotate({
-  identifier: "ListCampaignCreativeAssociationsRequest",
-}) as any as S.Schema<ListCampaignCreativeAssociationsRequest>;
+export const ListCampaignCreativeAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListCampaignCreativeAssociationsSortOrderEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "campaignId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/campaigns/{+campaignId}/campaignCreativeAssociations","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListCampaignCreativeAssociationsRequest" }) as any as S.Schema<ListCampaignCreativeAssociationsRequest>;
 
-export type CampaignCreativeAssociationList =
-  ReadonlyArray<CampaignCreativeAssociation>;
-export const CampaignCreativeAssociationList = /*@__PURE__*/ S.Array(
-  CampaignCreativeAssociation,
-) as any as S.Schema<CampaignCreativeAssociationList>;
+export type CampaignCreativeAssociationList = ReadonlyArray<CampaignCreativeAssociation>;
+export const CampaignCreativeAssociationList = /*@__PURE__*/ S.Array(CampaignCreativeAssociation) as any as S.Schema<CampaignCreativeAssociationList>;
 
 /** Campaign Creative Association List Response */
 export interface CampaignCreativeAssociationsListResponse {
@@ -11371,24 +8319,18 @@ export interface CampaignCreativeAssociationsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#campaignCreativeAssociationsListResponse". */
   kind?: string;
 }
-export const CampaignCreativeAssociationsListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      campaignCreativeAssociations: S.optional(CampaignCreativeAssociationList),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "CampaignCreativeAssociationsListResponse",
-}) as any as S.Schema<CampaignCreativeAssociationsListResponse>;
+export const CampaignCreativeAssociationsListResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "campaignCreativeAssociations": S.optional(CampaignCreativeAssociationList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "CampaignCreativeAssociationsListResponse" }) as any as S.Schema<CampaignCreativeAssociationsListResponse>;
 
-export type ListCampaignsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListCampaignsSortFieldEnum = "ID" | "NAME";
 export const ListCampaignsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListCampaignsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListCampaignsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListCampaignsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListCampaignsRequest {
@@ -11409,7 +8351,7 @@ export interface ListCampaignsRequest {
   /** Exclude campaigns with these IDs. */
   excludedIds?: StringList;
   /** Field by which to sort the list. */
-  sortField?: ListCampaignsSortFieldEnum;
+  sortField?: ListCampaignsSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Value of the nextPageToken from the previous result page. */
@@ -11419,39 +8361,29 @@ export interface ListCampaignsRequest {
   /** Select only campaigns that have at least one optimization activity. */
   atLeastOneOptimizationActivity?: boolean;
   /** Order of sorted results. */
-  sortOrder?: ListCampaignsSortOrderEnum;
+  sortOrder?: ListCampaignsSortOrderEnum | (string & {});
 }
 export const ListCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    searchString: S.optional(S.String.pipe(T.Query())),
-    subaccountId: S.optional(S.String.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    advertiserIds: S.optional(StringList.pipe(T.Query())),
-    archived: S.optional(S.Boolean.pipe(T.Query())),
-    advertiserGroupIds: S.optional(StringList.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    excludedIds: S.optional(StringList.pipe(T.Query())),
-    sortField: S.optional(ListCampaignsSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    overriddenEventTagId: S.optional(S.String.pipe(T.Query())),
-    atLeastOneOptimizationActivity: S.optional(S.Boolean.pipe(T.Query())),
-    sortOrder: S.optional(ListCampaignsSortOrderEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/campaigns",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCampaignsRequest",
-}) as any as S.Schema<ListCampaignsRequest>;
+S.Struct({
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "subaccountId": S.optional(S.String.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "advertiserIds": S.optional(StringList.pipe(T.Query())),
+  "archived": S.optional(S.Boolean.pipe(T.Query())),
+  "advertiserGroupIds": S.optional(StringList.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "excludedIds": S.optional(StringList.pipe(T.Query())),
+  "sortField": S.optional(ListCampaignsSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "overriddenEventTagId": S.optional(S.String.pipe(T.Query())),
+  "atLeastOneOptimizationActivity": S.optional(S.Boolean.pipe(T.Query())),
+  "sortOrder": S.optional(ListCampaignsSortOrderEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/campaigns","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListCampaignsRequest" }) as any as S.Schema<ListCampaignsRequest>;
 
 export type CampaignList = ReadonlyArray<Campaign>;
-export const CampaignList = /*@__PURE__*/ S.Array(
-  Campaign,
-) as any as S.Schema<CampaignList>;
+export const CampaignList = /*@__PURE__*/ S.Array(Campaign) as any as S.Schema<CampaignList>;
 
 /** Campaign List Response */
 export interface CampaignsListResponse {
@@ -11463,90 +8395,26 @@ export interface CampaignsListResponse {
   campaigns?: CampaignList;
 }
 export const CampaignsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    campaigns: S.optional(CampaignList),
-  }),
-).annotate({
-  identifier: "CampaignsListResponse",
-}) as any as S.Schema<CampaignsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "campaigns": S.optional(CampaignList),
+}),
+).annotate({ identifier: "CampaignsListResponse" }) as any as S.Schema<CampaignsListResponse>;
 
-export type ListChangeLogsObjectTypeEnum =
-  | "OBJECT_ADVERTISER"
-  | "OBJECT_FLOODLIGHT_CONFIGURATION"
-  | "OBJECT_AD"
-  | "OBJECT_FLOODLIGHT_ACTVITY"
-  | "OBJECT_CAMPAIGN"
-  | "OBJECT_FLOODLIGHT_ACTIVITY_GROUP"
-  | "OBJECT_CREATIVE"
-  | "OBJECT_PLACEMENT"
-  | "OBJECT_DFA_SITE"
-  | "OBJECT_USER_ROLE"
-  | "OBJECT_USER_PROFILE"
-  | "OBJECT_ADVERTISER_GROUP"
-  | "OBJECT_ACCOUNT"
-  | "OBJECT_SUBACCOUNT"
-  | "OBJECT_RICHMEDIA_CREATIVE"
-  | "OBJECT_INSTREAM_CREATIVE"
-  | "OBJECT_MEDIA_ORDER"
-  | "OBJECT_CONTENT_CATEGORY"
-  | "OBJECT_PLACEMENT_STRATEGY"
-  | "OBJECT_SD_SITE"
-  | "OBJECT_SIZE"
-  | "OBJECT_CREATIVE_GROUP"
-  | "OBJECT_CREATIVE_ASSET"
-  | "OBJECT_USER_PROFILE_FILTER"
-  | "OBJECT_LANDING_PAGE"
-  | "OBJECT_CREATIVE_FIELD"
-  | "OBJECT_REMARKETING_LIST"
-  | "OBJECT_PROVIDED_LIST_CLIENT"
-  | "OBJECT_EVENT_TAG"
-  | "OBJECT_CREATIVE_BUNDLE"
-  | "OBJECT_BILLING_ACCOUNT_GROUP"
-  | "OBJECT_BILLING_FEATURE"
-  | "OBJECT_RATE_CARD"
-  | "OBJECT_ACCOUNT_BILLING_FEATURE"
-  | "OBJECT_BILLING_MINIMUM_FEE"
-  | "OBJECT_BILLING_PROFILE"
-  | "OBJECT_PLAYSTORE_LINK"
-  | "OBJECT_TARGETING_TEMPLATE"
-  | "OBJECT_SEARCH_LIFT_STUDY"
-  | "OBJECT_FLOODLIGHT_DV360_LINK"
-  | "OBJECT_ADVERTISER_CUSTOMER_LINK"
-  | "OBJECT_CONVERSION_DOMAIN"
-  | "OBJECT_ACCOUNT_CONVERSION_DOMAIN"
-  | (string & {});
+export type ListChangeLogsObjectTypeEnum = "OBJECT_ADVERTISER" | "OBJECT_FLOODLIGHT_CONFIGURATION" | "OBJECT_AD" | "OBJECT_FLOODLIGHT_ACTVITY" | "OBJECT_CAMPAIGN" | "OBJECT_FLOODLIGHT_ACTIVITY_GROUP" | "OBJECT_CREATIVE" | "OBJECT_PLACEMENT" | "OBJECT_DFA_SITE" | "OBJECT_USER_ROLE" | "OBJECT_USER_PROFILE" | "OBJECT_ADVERTISER_GROUP" | "OBJECT_ACCOUNT" | "OBJECT_SUBACCOUNT" | "OBJECT_RICHMEDIA_CREATIVE" | "OBJECT_INSTREAM_CREATIVE" | "OBJECT_MEDIA_ORDER" | "OBJECT_CONTENT_CATEGORY" | "OBJECT_PLACEMENT_STRATEGY" | "OBJECT_SD_SITE" | "OBJECT_SIZE" | "OBJECT_CREATIVE_GROUP" | "OBJECT_CREATIVE_ASSET" | "OBJECT_USER_PROFILE_FILTER" | "OBJECT_LANDING_PAGE" | "OBJECT_CREATIVE_FIELD" | "OBJECT_REMARKETING_LIST" | "OBJECT_PROVIDED_LIST_CLIENT" | "OBJECT_EVENT_TAG" | "OBJECT_CREATIVE_BUNDLE" | "OBJECT_BILLING_ACCOUNT_GROUP" | "OBJECT_BILLING_FEATURE" | "OBJECT_RATE_CARD" | "OBJECT_ACCOUNT_BILLING_FEATURE" | "OBJECT_BILLING_MINIMUM_FEE" | "OBJECT_BILLING_PROFILE" | "OBJECT_PLAYSTORE_LINK" | "OBJECT_TARGETING_TEMPLATE" | "OBJECT_SEARCH_LIFT_STUDY" | "OBJECT_FLOODLIGHT_DV360_LINK" | "OBJECT_ADVERTISER_CUSTOMER_LINK" | "OBJECT_CONVERSION_DOMAIN" | "OBJECT_ACCOUNT_CONVERSION_DOMAIN";
 export const ListChangeLogsObjectTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListChangeLogsActionEnum =
-  | "ACTION_CREATE"
-  | "ACTION_UPDATE"
-  | "ACTION_DELETE"
-  | "ACTION_ENABLE"
-  | "ACTION_DISABLE"
-  | "ACTION_ADD"
-  | "ACTION_REMOVE"
-  | "ACTION_MARK_AS_DEFAULT"
-  | "ACTION_ASSOCIATE"
-  | "ACTION_ASSIGN"
-  | "ACTION_UNASSIGN"
-  | "ACTION_SEND"
-  | "ACTION_LINK"
-  | "ACTION_UNLINK"
-  | "ACTION_PUSH"
-  | "ACTION_EMAIL_TAGS"
-  | "ACTION_SHARE"
-  | (string & {});
+export type ListChangeLogsActionEnum = "ACTION_CREATE" | "ACTION_UPDATE" | "ACTION_DELETE" | "ACTION_ENABLE" | "ACTION_DISABLE" | "ACTION_ADD" | "ACTION_REMOVE" | "ACTION_MARK_AS_DEFAULT" | "ACTION_ASSOCIATE" | "ACTION_ASSIGN" | "ACTION_UNASSIGN" | "ACTION_SEND" | "ACTION_LINK" | "ACTION_UNLINK" | "ACTION_PUSH" | "ACTION_EMAIL_TAGS" | "ACTION_SHARE";
 export const ListChangeLogsActionEnum = /*@__PURE__*/ S.String;
 
 export interface ListChangeLogsRequest {
   /** Select only change logs with these IDs. */
   ids?: StringList;
   /** Select only change logs with the specified object type. */
-  objectType?: ListChangeLogsObjectTypeEnum;
+  objectType?: ListChangeLogsObjectTypeEnum | (string & {});
   /** Select only change logs with the specified action. */
-  action?: ListChangeLogsActionEnum;
+  action?: ListChangeLogsActionEnum | (string & {});
   /** Select only change logs with these user profile IDs. */
   userProfileIds?: StringList;
   /** User profile ID associated with this request. */
@@ -11565,33 +8433,23 @@ export interface ListChangeLogsRequest {
   pageToken?: string;
 }
 export const ListChangeLogsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList.pipe(T.Query())),
-    objectType: S.optional(ListChangeLogsObjectTypeEnum.pipe(T.Query())),
-    action: S.optional(ListChangeLogsActionEnum.pipe(T.Query())),
-    userProfileIds: S.optional(StringList.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    objectIds: S.optional(StringList.pipe(T.Query())),
-    maxChangeTime: S.optional(S.String.pipe(T.Query())),
-    minChangeTime: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/changeLogs",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListChangeLogsRequest",
-}) as any as S.Schema<ListChangeLogsRequest>;
+S.Struct({
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "objectType": S.optional(ListChangeLogsObjectTypeEnum.pipe(T.Query())),
+  "action": S.optional(ListChangeLogsActionEnum.pipe(T.Query())),
+  "userProfileIds": S.optional(StringList.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "objectIds": S.optional(StringList.pipe(T.Query())),
+  "maxChangeTime": S.optional(S.String.pipe(T.Query())),
+  "minChangeTime": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/changeLogs","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListChangeLogsRequest" }) as any as S.Schema<ListChangeLogsRequest>;
 
 export type ChangeLogList = ReadonlyArray<ChangeLog>;
-export const ChangeLogList = /*@__PURE__*/ S.Array(
-  ChangeLog,
-) as any as S.Schema<ChangeLogList>;
+export const ChangeLogList = /*@__PURE__*/ S.Array(ChangeLog) as any as S.Schema<ChangeLogList>;
 
 /** Change Log List Response */
 export interface ChangeLogsListResponse {
@@ -11603,14 +8461,12 @@ export interface ChangeLogsListResponse {
   changeLogs?: ChangeLogList;
 }
 export const ChangeLogsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    changeLogs: S.optional(ChangeLogList),
-  }),
-).annotate({
-  identifier: "ChangeLogsListResponse",
-}) as any as S.Schema<ChangeLogsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "changeLogs": S.optional(ChangeLogList),
+}),
+).annotate({ identifier: "ChangeLogsListResponse" }) as any as S.Schema<ChangeLogsListResponse>;
 
 export interface ListCitiesRequest {
   /** Select only cities from these regions. */
@@ -11625,22 +8481,14 @@ export interface ListCitiesRequest {
   countryDartIds?: StringList;
 }
 export const ListCitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionDartIds: S.optional(StringList.pipe(T.Query())),
-    namePrefix: S.optional(S.String.pipe(T.Query())),
-    dartIds: S.optional(StringList.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    countryDartIds: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/cities",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCitiesRequest",
-}) as any as S.Schema<ListCitiesRequest>;
+S.Struct({
+  "regionDartIds": S.optional(StringList.pipe(T.Query())),
+  "namePrefix": S.optional(S.String.pipe(T.Query())),
+  "dartIds": S.optional(StringList.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "countryDartIds": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/cities","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListCitiesRequest" }) as any as S.Schema<ListCitiesRequest>;
 
 /** City List Response */
 export interface CitiesListResponse {
@@ -11650,31 +8498,21 @@ export interface CitiesListResponse {
   cities?: CityList;
 }
 export const CitiesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    cities: S.optional(CityList),
-  }),
-).annotate({
-  identifier: "CitiesListResponse",
-}) as any as S.Schema<CitiesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "cities": S.optional(CityList),
+}),
+).annotate({ identifier: "CitiesListResponse" }) as any as S.Schema<CitiesListResponse>;
 
 export interface ListConnectionTypesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListConnectionTypesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/connectionTypes",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListConnectionTypesRequest",
-}) as any as S.Schema<ListConnectionTypesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/connectionTypes","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListConnectionTypesRequest" }) as any as S.Schema<ListConnectionTypesRequest>;
 
 /** Connection Type List Response */
 export interface ConnectionTypesListResponse {
@@ -11684,21 +8522,16 @@ export interface ConnectionTypesListResponse {
   kind?: string;
 }
 export const ConnectionTypesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionTypes: S.optional(ConnectionTypeList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectionTypesListResponse",
-}) as any as S.Schema<ConnectionTypesListResponse>;
+S.Struct({
+  "connectionTypes": S.optional(ConnectionTypeList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ConnectionTypesListResponse" }) as any as S.Schema<ConnectionTypesListResponse>;
 
-export type ListContentCategoriesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListContentCategoriesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListContentCategoriesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListContentCategoriesSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListContentCategoriesSortFieldEnum = "ID" | "NAME";
 export const ListContentCategoriesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListContentCategoriesRequest {
@@ -11713,34 +8546,24 @@ export interface ListContentCategoriesRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListContentCategoriesSortOrderEnum;
+  sortOrder?: ListContentCategoriesSortOrderEnum | (string & {});
   /** Field by which to sort the list. */
-  sortField?: ListContentCategoriesSortFieldEnum;
+  sortField?: ListContentCategoriesSortFieldEnum | (string & {});
 }
 export const ListContentCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortOrder: S.optional(ListContentCategoriesSortOrderEnum.pipe(T.Query())),
-    sortField: S.optional(ListContentCategoriesSortFieldEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/contentCategories",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListContentCategoriesRequest",
-}) as any as S.Schema<ListContentCategoriesRequest>;
+S.Struct({
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListContentCategoriesSortOrderEnum.pipe(T.Query())),
+  "sortField": S.optional(ListContentCategoriesSortFieldEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/contentCategories","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListContentCategoriesRequest" }) as any as S.Schema<ListContentCategoriesRequest>;
 
 export type ContentCategoryList = ReadonlyArray<ContentCategory>;
-export const ContentCategoryList = /*@__PURE__*/ S.Array(
-  ContentCategory,
-) as any as S.Schema<ContentCategoryList>;
+export const ContentCategoryList = /*@__PURE__*/ S.Array(ContentCategory) as any as S.Schema<ContentCategoryList>;
 
 /** Content Category List Response */
 export interface ContentCategoriesListResponse {
@@ -11752,32 +8575,22 @@ export interface ContentCategoriesListResponse {
   nextPageToken?: string;
 }
 export const ContentCategoriesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    contentCategories: S.optional(ContentCategoryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContentCategoriesListResponse",
-}) as any as S.Schema<ContentCategoriesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "contentCategories": S.optional(ContentCategoryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ContentCategoriesListResponse" }) as any as S.Schema<ContentCategoriesListResponse>;
 
 export interface ListCountriesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListCountriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/countries",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCountriesRequest",
-}) as any as S.Schema<ListCountriesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/countries","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListCountriesRequest" }) as any as S.Schema<ListCountriesRequest>;
 
 /** Country List Response */
 export interface CountriesListResponse {
@@ -11787,21 +8600,16 @@ export interface CountriesListResponse {
   countries?: CountryList;
 }
 export const CountriesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    countries: S.optional(CountryList),
-  }),
-).annotate({
-  identifier: "CountriesListResponse",
-}) as any as S.Schema<CountriesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "countries": S.optional(CountryList),
+}),
+).annotate({ identifier: "CountriesListResponse" }) as any as S.Schema<CountriesListResponse>;
 
-export type ListCreativeFieldsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListCreativeFieldsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListCreativeFieldsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListCreativeFieldsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListCreativeFieldsSortFieldEnum = "ID" | "NAME";
 export const ListCreativeFieldsSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListCreativeFieldsRequest {
@@ -11818,35 +8626,25 @@ export interface ListCreativeFieldsRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListCreativeFieldsSortOrderEnum;
+  sortOrder?: ListCreativeFieldsSortOrderEnum | (string & {});
   /** Field by which to sort the list. */
-  sortField?: ListCreativeFieldsSortFieldEnum;
+  sortField?: ListCreativeFieldsSortFieldEnum | (string & {});
 }
 export const ListCreativeFieldsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList.pipe(T.Query())),
-    advertiserIds: S.optional(StringList.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortOrder: S.optional(ListCreativeFieldsSortOrderEnum.pipe(T.Query())),
-    sortField: S.optional(ListCreativeFieldsSortFieldEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/creativeFields",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCreativeFieldsRequest",
-}) as any as S.Schema<ListCreativeFieldsRequest>;
+S.Struct({
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "advertiserIds": S.optional(StringList.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListCreativeFieldsSortOrderEnum.pipe(T.Query())),
+  "sortField": S.optional(ListCreativeFieldsSortFieldEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/creativeFields","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListCreativeFieldsRequest" }) as any as S.Schema<ListCreativeFieldsRequest>;
 
 export type CreativeFieldList = ReadonlyArray<CreativeField>;
-export const CreativeFieldList = /*@__PURE__*/ S.Array(
-  CreativeField,
-) as any as S.Schema<CreativeFieldList>;
+export const CreativeFieldList = /*@__PURE__*/ S.Array(CreativeField) as any as S.Schema<CreativeFieldList>;
 
 /** Creative Field List Response */
 export interface CreativeFieldsListResponse {
@@ -11858,34 +8656,26 @@ export interface CreativeFieldsListResponse {
   kind?: string;
 }
 export const CreativeFieldsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeFields: S.optional(CreativeFieldList),
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeFieldsListResponse",
-}) as any as S.Schema<CreativeFieldsListResponse>;
+S.Struct({
+  "creativeFields": S.optional(CreativeFieldList),
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeFieldsListResponse" }) as any as S.Schema<CreativeFieldsListResponse>;
 
-export type ListCreativeFieldValuesSortFieldEnum =
-  | "ID"
-  | "VALUE"
-  | (string & {});
+export type ListCreativeFieldValuesSortFieldEnum = "ID" | "VALUE";
 export const ListCreativeFieldValuesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListCreativeFieldValuesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListCreativeFieldValuesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListCreativeFieldValuesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListCreativeFieldValuesRequest {
   /** Field by which to sort the list. */
-  sortField?: ListCreativeFieldValuesSortFieldEnum;
+  sortField?: ListCreativeFieldValuesSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListCreativeFieldValuesSortOrderEnum;
+  sortOrder?: ListCreativeFieldValuesSortOrderEnum | (string & {});
   /** User profile ID associated with this request. */
   profileId: string;
   /** Allows searching for creative field values by their values. Wildcards (e.g. *) are not allowed. */
@@ -11898,30 +8688,20 @@ export interface ListCreativeFieldValuesRequest {
   creativeFieldId: string;
 }
 export const ListCreativeFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sortField: S.optional(ListCreativeFieldValuesSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortOrder: S.optional(ListCreativeFieldValuesSortOrderEnum.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    creativeFieldId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCreativeFieldValuesRequest",
-}) as any as S.Schema<ListCreativeFieldValuesRequest>;
+S.Struct({
+  "sortField": S.optional(ListCreativeFieldValuesSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListCreativeFieldValuesSortOrderEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "creativeFieldId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListCreativeFieldValuesRequest" }) as any as S.Schema<ListCreativeFieldValuesRequest>;
 
 export type CreativeFieldValueList = ReadonlyArray<CreativeFieldValue>;
-export const CreativeFieldValueList = /*@__PURE__*/ S.Array(
-  CreativeFieldValue,
-) as any as S.Schema<CreativeFieldValueList>;
+export const CreativeFieldValueList = /*@__PURE__*/ S.Array(CreativeFieldValue) as any as S.Schema<CreativeFieldValueList>;
 
 /** Creative Field Value List Response */
 export interface CreativeFieldValuesListResponse {
@@ -11933,27 +8713,22 @@ export interface CreativeFieldValuesListResponse {
   nextPageToken?: string;
 }
 export const CreativeFieldValuesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    creativeFieldValues: S.optional(CreativeFieldValueList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeFieldValuesListResponse",
-}) as any as S.Schema<CreativeFieldValuesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "creativeFieldValues": S.optional(CreativeFieldValueList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeFieldValuesListResponse" }) as any as S.Schema<CreativeFieldValuesListResponse>;
 
-export type ListCreativeGroupsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListCreativeGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListCreativeGroupsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListCreativeGroupsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListCreativeGroupsSortFieldEnum = "ID" | "NAME";
 export const ListCreativeGroupsSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListCreativeGroupsRequest {
   /** Order of sorted results. */
-  sortOrder?: ListCreativeGroupsSortOrderEnum;
+  sortOrder?: ListCreativeGroupsSortOrderEnum | (string & {});
   /** User profile ID associated with this request. */
   profileId: string;
   /** Select only creative groups that belong to this subgroup. */
@@ -11963,7 +8738,7 @@ export interface ListCreativeGroupsRequest {
   /** Select only creative groups that belong to these advertisers. */
   advertiserIds?: StringList;
   /** Field by which to sort the list. */
-  sortField?: ListCreativeGroupsSortFieldEnum;
+  sortField?: ListCreativeGroupsSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Allows searching for creative groups by name or ID. Wildcards (*) are allowed. For example, "creativegroup*2015" will return creative groups with names like "creativegroup June 2015", "creativegroup April 2015", or simply "creativegroup 2015". Most of the searches also add wild-cards implicitly at the start and the end of the search string. For example, a search string of "creativegroup" will match creative groups with the name "my creativegroup", "creativegroup 2015", or simply "creativegroup". */
@@ -11972,31 +8747,21 @@ export interface ListCreativeGroupsRequest {
   pageToken?: string;
 }
 export const ListCreativeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sortOrder: S.optional(ListCreativeGroupsSortOrderEnum.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    groupNumber: S.optional(S.Number.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    advertiserIds: S.optional(StringList.pipe(T.Query())),
-    sortField: S.optional(ListCreativeGroupsSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/creativeGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCreativeGroupsRequest",
-}) as any as S.Schema<ListCreativeGroupsRequest>;
+S.Struct({
+  "sortOrder": S.optional(ListCreativeGroupsSortOrderEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "groupNumber": S.optional(S.Number.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "advertiserIds": S.optional(StringList.pipe(T.Query())),
+  "sortField": S.optional(ListCreativeGroupsSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/creativeGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListCreativeGroupsRequest" }) as any as S.Schema<ListCreativeGroupsRequest>;
 
 export type CreativeGroupList = ReadonlyArray<CreativeGroup>;
-export const CreativeGroupList = /*@__PURE__*/ S.Array(
-  CreativeGroup,
-) as any as S.Schema<CreativeGroupList>;
+export const CreativeGroupList = /*@__PURE__*/ S.Array(CreativeGroup) as any as S.Schema<CreativeGroupList>;
 
 /** Creative Group List Response */
 export interface CreativeGroupsListResponse {
@@ -12008,56 +8773,23 @@ export interface CreativeGroupsListResponse {
   nextPageToken?: string;
 }
 export const CreativeGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    creativeGroups: S.optional(CreativeGroupList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreativeGroupsListResponse",
-}) as any as S.Schema<CreativeGroupsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "creativeGroups": S.optional(CreativeGroupList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "CreativeGroupsListResponse" }) as any as S.Schema<CreativeGroupsListResponse>;
 
-export type ListCreativesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListCreativesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListCreativesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListCreativesTypesEnum =
-  | "IMAGE"
-  | "DISPLAY_REDIRECT"
-  | "CUSTOM_DISPLAY"
-  | "INTERNAL_REDIRECT"
-  | "CUSTOM_DISPLAY_INTERSTITIAL"
-  | "INTERSTITIAL_INTERNAL_REDIRECT"
-  | "TRACKING_TEXT"
-  | "RICH_MEDIA_DISPLAY_BANNER"
-  | "RICH_MEDIA_INPAGE_FLOATING"
-  | "RICH_MEDIA_IM_EXPAND"
-  | "RICH_MEDIA_DISPLAY_EXPANDING"
-  | "RICH_MEDIA_DISPLAY_INTERSTITIAL"
-  | "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL"
-  | "RICH_MEDIA_MOBILE_IN_APP"
-  | "FLASH_INPAGE"
-  | "INSTREAM_VIDEO"
-  | "VPAID_LINEAR_VIDEO"
-  | "VPAID_NON_LINEAR_VIDEO"
-  | "INSTREAM_VIDEO_REDIRECT"
-  | "RICH_MEDIA_PEEL_DOWN"
-  | "HTML5_BANNER"
-  | "DISPLAY"
-  | "DISPLAY_IMAGE_GALLERY"
-  | "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO"
-  | "INSTREAM_AUDIO"
-  | (string & {});
+export type ListCreativesTypesEnum = "IMAGE" | "DISPLAY_REDIRECT" | "CUSTOM_DISPLAY" | "INTERNAL_REDIRECT" | "CUSTOM_DISPLAY_INTERSTITIAL" | "INTERSTITIAL_INTERNAL_REDIRECT" | "TRACKING_TEXT" | "RICH_MEDIA_DISPLAY_BANNER" | "RICH_MEDIA_INPAGE_FLOATING" | "RICH_MEDIA_IM_EXPAND" | "RICH_MEDIA_DISPLAY_EXPANDING" | "RICH_MEDIA_DISPLAY_INTERSTITIAL" | "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL" | "RICH_MEDIA_MOBILE_IN_APP" | "FLASH_INPAGE" | "INSTREAM_VIDEO" | "VPAID_LINEAR_VIDEO" | "VPAID_NON_LINEAR_VIDEO" | "INSTREAM_VIDEO_REDIRECT" | "RICH_MEDIA_PEEL_DOWN" | "HTML5_BANNER" | "DISPLAY" | "DISPLAY_IMAGE_GALLERY" | "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO" | "INSTREAM_AUDIO";
 export const ListCreativesTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListCreativesTypesEnumList = ReadonlyArray<ListCreativesTypesEnum>;
-export const ListCreativesTypesEnumList = /*@__PURE__*/ S.Array(
-  ListCreativesTypesEnum,
-) as any as S.Schema<ListCreativesTypesEnumList>;
+export type ListCreativesTypesEnumList = ReadonlyArray<ListCreativesTypesEnum | (string & {})>;
+export const ListCreativesTypesEnumList = /*@__PURE__*/ S.Array(ListCreativesTypesEnum) as any as S.Schema<ListCreativesTypesEnumList>;
 
-export type ListCreativesSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListCreativesSortFieldEnum = "ID" | "NAME";
 export const ListCreativesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListCreativesRequest {
@@ -12074,7 +8806,7 @@ export interface ListCreativesRequest {
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "creative*2015" will return objects with names like "creative June 2015", "creative April 2015", or simply "creative 2015". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "creative" will match objects with name "my creative", "creative 2015", or simply "creative". */
   searchString?: string;
   /** Order of sorted results. */
-  sortOrder?: ListCreativesSortOrderEnum;
+  sortOrder?: ListCreativesSortOrderEnum | (string & {});
   /** Select only creatives with these size IDs. */
   sizeIds?: StringList;
   /** Select only creatives with these creative types. */
@@ -12086,7 +8818,7 @@ export interface ListCreativesRequest {
   /** Select only creatives with this advertiser ID. */
   advertiserId?: string;
   /** Field by which to sort the list. */
-  sortField?: ListCreativesSortFieldEnum;
+  sortField?: ListCreativesSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Value of the nextPageToken from the previous result page. */
@@ -12097,39 +8829,29 @@ export interface ListCreativesRequest {
   creativeFieldIds?: StringList;
 }
 export const ListCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    companionCreativeIds: S.optional(StringList.pipe(T.Query())),
-    studioCreativeId: S.optional(S.String.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    archived: S.optional(S.Boolean.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    sortOrder: S.optional(ListCreativesSortOrderEnum.pipe(T.Query())),
-    sizeIds: S.optional(StringList.pipe(T.Query())),
-    types: S.optional(ListCreativesTypesEnumList.pipe(T.Query())),
-    campaignId: S.optional(S.String.pipe(T.Query())),
-    renderingIds: S.optional(StringList.pipe(T.Query())),
-    advertiserId: S.optional(S.String.pipe(T.Query())),
-    sortField: S.optional(ListCreativesSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    active: S.optional(S.Boolean.pipe(T.Query())),
-    creativeFieldIds: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/creatives",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCreativesRequest",
-}) as any as S.Schema<ListCreativesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "companionCreativeIds": S.optional(StringList.pipe(T.Query())),
+  "studioCreativeId": S.optional(S.String.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "archived": S.optional(S.Boolean.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "sortOrder": S.optional(ListCreativesSortOrderEnum.pipe(T.Query())),
+  "sizeIds": S.optional(StringList.pipe(T.Query())),
+  "types": S.optional(ListCreativesTypesEnumList.pipe(T.Query())),
+  "campaignId": S.optional(S.String.pipe(T.Query())),
+  "renderingIds": S.optional(StringList.pipe(T.Query())),
+  "advertiserId": S.optional(S.String.pipe(T.Query())),
+  "sortField": S.optional(ListCreativesSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "active": S.optional(S.Boolean.pipe(T.Query())),
+  "creativeFieldIds": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/creatives","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListCreativesRequest" }) as any as S.Schema<ListCreativesRequest>;
 
 export type CreativeList = ReadonlyArray<Creative>;
-export const CreativeList = /*@__PURE__*/ S.Array(
-  Creative,
-) as any as S.Schema<CreativeList>;
+export const CreativeList = /*@__PURE__*/ S.Array(Creative) as any as S.Schema<CreativeList>;
 
 /** Creative List Response */
 export interface CreativesListResponse {
@@ -12141,27 +8863,22 @@ export interface CreativesListResponse {
   creatives?: CreativeList;
 }
 export const CreativesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    creatives: S.optional(CreativeList),
-  }),
-).annotate({
-  identifier: "CreativesListResponse",
-}) as any as S.Schema<CreativesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "creatives": S.optional(CreativeList),
+}),
+).annotate({ identifier: "CreativesListResponse" }) as any as S.Schema<CreativesListResponse>;
 
-export type ListDirectorySitesSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListDirectorySitesSortFieldEnum = "ID" | "NAME";
 export const ListDirectorySitesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListDirectorySitesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListDirectorySitesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListDirectorySitesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListDirectorySitesRequest {
   /** Field by which to sort the list. */
-  sortField?: ListDirectorySitesSortFieldEnum;
+  sortField?: ListDirectorySitesSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Select only directory sites that accept publisher paid placements. This field can be left blank. */
@@ -12179,41 +8896,31 @@ export interface ListDirectorySitesRequest {
   /** Select only directory sites with this Ad Manager network code. */
   dfpNetworkCode?: string;
   /** Order of sorted results. */
-  sortOrder?: ListDirectorySitesSortOrderEnum;
+  sortOrder?: ListDirectorySitesSortOrderEnum | (string & {});
   /** User profile ID associated with this request. */
   profileId: string;
   /** Select only directory sites with these IDs. */
   ids?: StringList;
 }
 export const ListDirectorySitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sortField: S.optional(ListDirectorySitesSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    acceptsPublisherPaidPlacements: S.optional(S.Boolean.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    active: S.optional(S.Boolean.pipe(T.Query())),
-    acceptsInStreamVideoPlacements: S.optional(S.Boolean.pipe(T.Query())),
-    acceptsInterstitialPlacements: S.optional(S.Boolean.pipe(T.Query())),
-    dfpNetworkCode: S.optional(S.String.pipe(T.Query())),
-    sortOrder: S.optional(ListDirectorySitesSortOrderEnum.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    ids: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/directorySites",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListDirectorySitesRequest",
-}) as any as S.Schema<ListDirectorySitesRequest>;
+S.Struct({
+  "sortField": S.optional(ListDirectorySitesSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "acceptsPublisherPaidPlacements": S.optional(S.Boolean.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "active": S.optional(S.Boolean.pipe(T.Query())),
+  "acceptsInStreamVideoPlacements": S.optional(S.Boolean.pipe(T.Query())),
+  "acceptsInterstitialPlacements": S.optional(S.Boolean.pipe(T.Query())),
+  "dfpNetworkCode": S.optional(S.String.pipe(T.Query())),
+  "sortOrder": S.optional(ListDirectorySitesSortOrderEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "ids": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/directorySites","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListDirectorySitesRequest" }) as any as S.Schema<ListDirectorySitesRequest>;
 
 export type DirectorySiteList = ReadonlyArray<DirectorySite>;
-export const DirectorySiteList = /*@__PURE__*/ S.Array(
-  DirectorySite,
-) as any as S.Schema<DirectorySiteList>;
+export const DirectorySiteList = /*@__PURE__*/ S.Array(DirectorySite) as any as S.Schema<DirectorySiteList>;
 
 /** Directory Site List Response */
 export interface DirectorySitesListResponse {
@@ -12225,26 +8932,19 @@ export interface DirectorySitesListResponse {
   kind?: string;
 }
 export const DirectorySitesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    directorySites: S.optional(DirectorySiteList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DirectorySitesListResponse",
-}) as any as S.Schema<DirectorySitesListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "directorySites": S.optional(DirectorySiteList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "DirectorySitesListResponse" }) as any as S.Schema<DirectorySitesListResponse>;
 
-export type ListDynamicTargetingKeysObjectTypeEnum =
-  | "OBJECT_ADVERTISER"
-  | "OBJECT_AD"
-  | "OBJECT_CREATIVE"
-  | "OBJECT_PLACEMENT"
-  | (string & {});
+export type ListDynamicTargetingKeysObjectTypeEnum = "OBJECT_ADVERTISER" | "OBJECT_AD" | "OBJECT_CREATIVE" | "OBJECT_PLACEMENT";
 export const ListDynamicTargetingKeysObjectTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListDynamicTargetingKeysRequest {
   /** Select only dynamic targeting keys with this object type. */
-  objectType?: ListDynamicTargetingKeysObjectTypeEnum;
+  objectType?: ListDynamicTargetingKeysObjectTypeEnum | (string & {});
   /** Select only dynamic targeting keys whose object has this advertiser ID. */
   advertiserId?: string;
   /** User profile ID associated with this request. */
@@ -12255,29 +8955,17 @@ export interface ListDynamicTargetingKeysRequest {
   objectId?: string;
 }
 export const ListDynamicTargetingKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.optional(
-      ListDynamicTargetingKeysObjectTypeEnum.pipe(T.Query()),
-    ),
-    advertiserId: S.optional(S.String.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    names: S.optional(StringList.pipe(T.Query())),
-    objectId: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/dynamicTargetingKeys",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListDynamicTargetingKeysRequest",
-}) as any as S.Schema<ListDynamicTargetingKeysRequest>;
+S.Struct({
+  "objectType": S.optional(ListDynamicTargetingKeysObjectTypeEnum.pipe(T.Query())),
+  "advertiserId": S.optional(S.String.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "names": S.optional(StringList.pipe(T.Query())),
+  "objectId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/dynamicTargetingKeys","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListDynamicTargetingKeysRequest" }) as any as S.Schema<ListDynamicTargetingKeysRequest>;
 
 export type DynamicTargetingKeyList = ReadonlyArray<DynamicTargetingKey>;
-export const DynamicTargetingKeyList = /*@__PURE__*/ S.Array(
-  DynamicTargetingKey,
-) as any as S.Schema<DynamicTargetingKeyList>;
+export const DynamicTargetingKeyList = /*@__PURE__*/ S.Array(DynamicTargetingKey) as any as S.Schema<DynamicTargetingKeyList>;
 
 /** Dynamic Targeting Key List Response */
 export interface DynamicTargetingKeysListResponse {
@@ -12287,35 +8975,23 @@ export interface DynamicTargetingKeysListResponse {
   dynamicTargetingKeys?: DynamicTargetingKeyList;
 }
 export const DynamicTargetingKeysListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    dynamicTargetingKeys: S.optional(DynamicTargetingKeyList),
-  }),
-).annotate({
-  identifier: "DynamicTargetingKeysListResponse",
-}) as any as S.Schema<DynamicTargetingKeysListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "dynamicTargetingKeys": S.optional(DynamicTargetingKeyList),
+}),
+).annotate({ identifier: "DynamicTargetingKeysListResponse" }) as any as S.Schema<DynamicTargetingKeysListResponse>;
 
-export type ListEventTagsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListEventTagsSortFieldEnum = "ID" | "NAME";
 export const ListEventTagsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListEventTagsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListEventTagsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListEventTagsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListEventTagsEventTagTypesEnum =
-  | "IMPRESSION_IMAGE_EVENT_TAG"
-  | "IMPRESSION_JAVASCRIPT_EVENT_TAG"
-  | "CLICK_THROUGH_EVENT_TAG"
-  | (string & {});
+export type ListEventTagsEventTagTypesEnum = "IMPRESSION_IMAGE_EVENT_TAG" | "IMPRESSION_JAVASCRIPT_EVENT_TAG" | "CLICK_THROUGH_EVENT_TAG";
 export const ListEventTagsEventTagTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListEventTagsEventTagTypesEnumList =
-  ReadonlyArray<ListEventTagsEventTagTypesEnum>;
-export const ListEventTagsEventTagTypesEnumList = /*@__PURE__*/ S.Array(
-  ListEventTagsEventTagTypesEnum,
-) as any as S.Schema<ListEventTagsEventTagTypesEnumList>;
+export type ListEventTagsEventTagTypesEnumList = ReadonlyArray<ListEventTagsEventTagTypesEnum | (string & {})>;
+export const ListEventTagsEventTagTypesEnumList = /*@__PURE__*/ S.Array(ListEventTagsEventTagTypesEnum) as any as S.Schema<ListEventTagsEventTagTypesEnumList>;
 
 export interface ListEventTagsRequest {
   /** Select only enabled event tags. What is considered enabled or disabled depends on the definitionsOnly parameter. When definitionsOnly is set to true, only the specified advertiser or campaign's event tags' enabledByDefault field is examined. When definitionsOnly is set to false, the specified ad or specified campaign's parent advertiser's or parent campaign's event tags' enabledByDefault and status fields are examined as well. */
@@ -12325,11 +9001,11 @@ export interface ListEventTagsRequest {
   /** Examine only the specified campaign or advertiser's event tags for matching selector criteria. When set to false, the parent advertiser and parent campaign of the specified ad or campaign is examined as well. In addition, when set to false, the status field is examined as well, along with the enabledByDefault field. This parameter can not be set to true when adId is specified as ads do not define their own even tags. */
   definitionsOnly?: boolean;
   /** Field by which to sort the list. */
-  sortField?: ListEventTagsSortFieldEnum;
+  sortField?: ListEventTagsSortFieldEnum | (string & {});
   /** User profile ID associated with this request. */
   profileId: string;
   /** Order of sorted results. */
-  sortOrder?: ListEventTagsSortOrderEnum;
+  sortOrder?: ListEventTagsSortOrderEnum | (string & {});
   /** Select only event tags that belong to this ad. */
   adId?: string;
   /** Select only event tags with the specified event tag types. Event tag types can be used to specify whether to use a third-party pixel, a third-party JavaScript URL, or a third-party click-through URL for either impression or click tracking. */
@@ -12342,35 +9018,23 @@ export interface ListEventTagsRequest {
   campaignId?: string;
 }
 export const ListEventTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    definitionsOnly: S.optional(S.Boolean.pipe(T.Query())),
-    sortField: S.optional(ListEventTagsSortFieldEnum.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    sortOrder: S.optional(ListEventTagsSortOrderEnum.pipe(T.Query())),
-    adId: S.optional(S.String.pipe(T.Query())),
-    eventTagTypes: S.optional(
-      ListEventTagsEventTagTypesEnumList.pipe(T.Query()),
-    ),
-    ids: S.optional(StringList.pipe(T.Query())),
-    advertiserId: S.optional(S.String.pipe(T.Query())),
-    campaignId: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/eventTags",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListEventTagsRequest",
-}) as any as S.Schema<ListEventTagsRequest>;
+S.Struct({
+  "enabled": S.optional(S.Boolean.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "definitionsOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "sortField": S.optional(ListEventTagsSortFieldEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "sortOrder": S.optional(ListEventTagsSortOrderEnum.pipe(T.Query())),
+  "adId": S.optional(S.String.pipe(T.Query())),
+  "eventTagTypes": S.optional(ListEventTagsEventTagTypesEnumList.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "advertiserId": S.optional(S.String.pipe(T.Query())),
+  "campaignId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/eventTags","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListEventTagsRequest" }) as any as S.Schema<ListEventTagsRequest>;
 
 export type EventTagList = ReadonlyArray<EventTag>;
-export const EventTagList = /*@__PURE__*/ S.Array(
-  EventTag,
-) as any as S.Schema<EventTagList>;
+export const EventTagList = /*@__PURE__*/ S.Array(EventTag) as any as S.Schema<EventTagList>;
 
 /** Event Tag List Response */
 export interface EventTagsListResponse {
@@ -12380,67 +9044,48 @@ export interface EventTagsListResponse {
   eventTags?: EventTagList;
 }
 export const EventTagsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    eventTags: S.optional(EventTagList),
-  }),
-).annotate({
-  identifier: "EventTagsListResponse",
-}) as any as S.Schema<EventTagsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "eventTags": S.optional(EventTagList),
+}),
+).annotate({ identifier: "EventTagsListResponse" }) as any as S.Schema<EventTagsListResponse>;
 
-export type ListFilesSortFieldEnum =
-  | "ID"
-  | "LAST_MODIFIED_TIME"
-  | (string & {});
+export type ListFilesSortFieldEnum = "ID" | "LAST_MODIFIED_TIME";
 export const ListFilesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListFilesSortOrderEnum = "ASCENDING" | "DESCENDING" | (string & {});
+export type ListFilesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListFilesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListFilesScopeEnum =
-  | "ALL"
-  | "MINE"
-  | "SHARED_WITH_ME"
-  | (string & {});
+export type ListFilesScopeEnum = "ALL" | "MINE" | "SHARED_WITH_ME";
 export const ListFilesScopeEnum = /*@__PURE__*/ S.String;
 
 export interface ListFilesRequest {
   /** The field by which to sort the list. */
-  sortField?: ListFilesSortFieldEnum;
+  sortField?: ListFilesSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListFilesSortOrderEnum;
+  sortOrder?: ListFilesSortOrderEnum | (string & {});
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
   /** The value of the nextToken from the previous result page. */
   pageToken?: string;
   /** The scope that defines which results are returned. */
-  scope?: ListFilesScopeEnum;
+  scope?: ListFilesScopeEnum | (string & {});
 }
 export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sortField: S.optional(ListFilesSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortOrder: S.optional(ListFilesSortOrderEnum.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    scope: S.optional(ListFilesScopeEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{profileId}/files",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListFilesRequest",
-}) as any as S.Schema<ListFilesRequest>;
+S.Struct({
+  "sortField": S.optional(ListFilesSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListFilesSortOrderEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "scope": S.optional(ListFilesScopeEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{profileId}/files","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListFilesRequest" }) as any as S.Schema<ListFilesRequest>;
 
 export type FileList_ = ReadonlyArray<File>;
-export const FileList_ = /*@__PURE__*/ S.Array(
-  File,
-) as any as S.Schema<FileList_>;
+export const FileList_ = /*@__PURE__*/ S.Array(File) as any as S.Schema<FileList_>;
 
 /** List of files for a report. */
 export interface FileList {
@@ -12454,31 +9099,21 @@ export interface FileList {
   items: FileList_;
 }
 export const FileList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    items: FileList_,
-  }),
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "items": FileList_,
+}),
 ).annotate({ identifier: "FileList" }) as any as S.Schema<FileList>;
 
-export type ListFloodlightActivitiesFloodlightActivityGroupTypeEnum =
-  | "COUNTER"
-  | "SALE"
-  | (string & {});
-export const ListFloodlightActivitiesFloodlightActivityGroupTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ListFloodlightActivitiesFloodlightActivityGroupTypeEnum = "COUNTER" | "SALE";
+export const ListFloodlightActivitiesFloodlightActivityGroupTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListFloodlightActivitiesSortFieldEnum =
-  | "ID"
-  | "NAME"
-  | (string & {});
+export type ListFloodlightActivitiesSortFieldEnum = "ID" | "NAME";
 export const ListFloodlightActivitiesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListFloodlightActivitiesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListFloodlightActivitiesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListFloodlightActivitiesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListFloodlightActivitiesRequest {
@@ -12497,9 +9132,9 @@ export interface ListFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Select only floodlight activities with the specified floodlight activity group type. */
-  floodlightActivityGroupType?: ListFloodlightActivitiesFloodlightActivityGroupTypeEnum;
+  floodlightActivityGroupType?: ListFloodlightActivitiesFloodlightActivityGroupTypeEnum | (string & {});
   /** Field by which to sort the list. */
-  sortField?: ListFloodlightActivitiesSortFieldEnum;
+  sortField?: ListFloodlightActivitiesSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Value of the nextPageToken from the previous result page. */
@@ -12509,45 +9144,29 @@ export interface ListFloodlightActivitiesRequest {
   /** Select only floodlight activities with the specified floodlight activity group IDs. */
   floodlightActivityGroupIds?: StringList;
   /** Order of sorted results. */
-  sortOrder?: ListFloodlightActivitiesSortOrderEnum;
+  sortOrder?: ListFloodlightActivitiesSortOrderEnum | (string & {});
 }
 export const ListFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    searchString: S.optional(S.String.pipe(T.Query())),
-    floodlightConfigurationId: S.optional(S.String.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    floodlightActivityGroupTagString: S.optional(S.String.pipe(T.Query())),
-    tagString: S.optional(S.String.pipe(T.Query())),
-    floodlightActivityGroupName: S.optional(S.String.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    floodlightActivityGroupType: S.optional(
-      ListFloodlightActivitiesFloodlightActivityGroupTypeEnum.pipe(T.Query()),
-    ),
-    sortField: S.optional(
-      ListFloodlightActivitiesSortFieldEnum.pipe(T.Query()),
-    ),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    advertiserId: S.optional(S.String.pipe(T.Query())),
-    floodlightActivityGroupIds: S.optional(StringList.pipe(T.Query())),
-    sortOrder: S.optional(
-      ListFloodlightActivitiesSortOrderEnum.pipe(T.Query()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/floodlightActivities",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListFloodlightActivitiesRequest",
-}) as any as S.Schema<ListFloodlightActivitiesRequest>;
+S.Struct({
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "floodlightConfigurationId": S.optional(S.String.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "floodlightActivityGroupTagString": S.optional(S.String.pipe(T.Query())),
+  "tagString": S.optional(S.String.pipe(T.Query())),
+  "floodlightActivityGroupName": S.optional(S.String.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "floodlightActivityGroupType": S.optional(ListFloodlightActivitiesFloodlightActivityGroupTypeEnum.pipe(T.Query())),
+  "sortField": S.optional(ListFloodlightActivitiesSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "advertiserId": S.optional(S.String.pipe(T.Query())),
+  "floodlightActivityGroupIds": S.optional(StringList.pipe(T.Query())),
+  "sortOrder": S.optional(ListFloodlightActivitiesSortOrderEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/floodlightActivities","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListFloodlightActivitiesRequest" }) as any as S.Schema<ListFloodlightActivitiesRequest>;
 
 export type FloodlightActivityList = ReadonlyArray<FloodlightActivity>;
-export const FloodlightActivityList = /*@__PURE__*/ S.Array(
-  FloodlightActivity,
-) as any as S.Schema<FloodlightActivityList>;
+export const FloodlightActivityList = /*@__PURE__*/ S.Array(FloodlightActivity) as any as S.Schema<FloodlightActivityList>;
 
 /** Floodlight Activity List Response */
 export interface FloodlightActivitiesListResponse {
@@ -12559,42 +9178,31 @@ export interface FloodlightActivitiesListResponse {
   floodlightActivities?: FloodlightActivityList;
 }
 export const FloodlightActivitiesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    floodlightActivities: S.optional(FloodlightActivityList),
-  }),
-).annotate({
-  identifier: "FloodlightActivitiesListResponse",
-}) as any as S.Schema<FloodlightActivitiesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "floodlightActivities": S.optional(FloodlightActivityList),
+}),
+).annotate({ identifier: "FloodlightActivitiesListResponse" }) as any as S.Schema<FloodlightActivitiesListResponse>;
 
-export type ListFloodlightActivityGroupsTypeEnum =
-  | "COUNTER"
-  | "SALE"
-  | (string & {});
+export type ListFloodlightActivityGroupsTypeEnum = "COUNTER" | "SALE";
 export const ListFloodlightActivityGroupsTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListFloodlightActivityGroupsSortFieldEnum =
-  | "ID"
-  | "NAME"
-  | (string & {});
+export type ListFloodlightActivityGroupsSortFieldEnum = "ID" | "NAME";
 export const ListFloodlightActivityGroupsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListFloodlightActivityGroupsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListFloodlightActivityGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListFloodlightActivityGroupsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListFloodlightActivityGroupsRequest {
   /** Select only floodlight activity groups with the specified floodlight activity group type. */
-  type?: ListFloodlightActivityGroupsTypeEnum;
+  type?: ListFloodlightActivityGroupsTypeEnum | (string & {});
   /** Value of the nextPageToken from the previous result page. */
   pageToken?: string;
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "floodlightactivitygroup*2015" will return objects with names like "floodlightactivitygroup June 2015", "floodlightactivitygroup April 2015", or simply "floodlightactivitygroup 2015". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "floodlightactivitygroup" will match objects with name "my floodlightactivitygroup activity", "floodlightactivitygroup 2015", or simply "floodlightactivitygroup". */
   searchString?: string;
   /** Field by which to sort the list. */
-  sortField?: ListFloodlightActivityGroupsSortFieldEnum;
+  sortField?: ListFloodlightActivityGroupsSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Select only floodlight activity groups with the specified floodlight configuration ID. Must specify either advertiserId, or floodlightConfigurationId for a non-empty result. */
@@ -12606,40 +9214,25 @@ export interface ListFloodlightActivityGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Order of sorted results. */
-  sortOrder?: ListFloodlightActivityGroupsSortOrderEnum;
+  sortOrder?: ListFloodlightActivityGroupsSortOrderEnum | (string & {});
 }
 export const ListFloodlightActivityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ListFloodlightActivityGroupsTypeEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    sortField: S.optional(
-      ListFloodlightActivityGroupsSortFieldEnum.pipe(T.Query()),
-    ),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    floodlightConfigurationId: S.optional(S.String.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    advertiserId: S.optional(S.String.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    sortOrder: S.optional(
-      ListFloodlightActivityGroupsSortOrderEnum.pipe(T.Query()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/floodlightActivityGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListFloodlightActivityGroupsRequest",
-}) as any as S.Schema<ListFloodlightActivityGroupsRequest>;
+S.Struct({
+  "type": S.optional(ListFloodlightActivityGroupsTypeEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "sortField": S.optional(ListFloodlightActivityGroupsSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "floodlightConfigurationId": S.optional(S.String.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "advertiserId": S.optional(S.String.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "sortOrder": S.optional(ListFloodlightActivityGroupsSortOrderEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/floodlightActivityGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListFloodlightActivityGroupsRequest" }) as any as S.Schema<ListFloodlightActivityGroupsRequest>;
 
-export type FloodlightActivityGroupList =
-  ReadonlyArray<FloodlightActivityGroup>;
-export const FloodlightActivityGroupList = /*@__PURE__*/ S.Array(
-  FloodlightActivityGroup,
-) as any as S.Schema<FloodlightActivityGroupList>;
+export type FloodlightActivityGroupList = ReadonlyArray<FloodlightActivityGroup>;
+export const FloodlightActivityGroupList = /*@__PURE__*/ S.Array(FloodlightActivityGroup) as any as S.Schema<FloodlightActivityGroupList>;
 
 /** Floodlight Activity Group List Response */
 export interface FloodlightActivityGroupsListResponse {
@@ -12650,16 +9243,13 @@ export interface FloodlightActivityGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightActivityGroupsListResponse". */
   kind?: string;
 }
-export const FloodlightActivityGroupsListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      floodlightActivityGroups: S.optional(FloodlightActivityGroupList),
-      nextPageToken: S.optional(S.String),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "FloodlightActivityGroupsListResponse",
-}) as any as S.Schema<FloodlightActivityGroupsListResponse>;
+export const FloodlightActivityGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "floodlightActivityGroups": S.optional(FloodlightActivityGroupList),
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "FloodlightActivityGroupsListResponse" }) as any as S.Schema<FloodlightActivityGroupsListResponse>;
 
 export interface ListFloodlightConfigurationsRequest {
   /** Set of IDs of floodlight configurations to retrieve. Required field; otherwise an empty list will be returned. */
@@ -12668,25 +9258,14 @@ export interface ListFloodlightConfigurationsRequest {
   profileId: string;
 }
 export const ListFloodlightConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/floodlightConfigurations",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListFloodlightConfigurationsRequest",
-}) as any as S.Schema<ListFloodlightConfigurationsRequest>;
+S.Struct({
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/floodlightConfigurations","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListFloodlightConfigurationsRequest" }) as any as S.Schema<ListFloodlightConfigurationsRequest>;
 
-export type FloodlightConfigurationList =
-  ReadonlyArray<FloodlightConfiguration>;
-export const FloodlightConfigurationList = /*@__PURE__*/ S.Array(
-  FloodlightConfiguration,
-) as any as S.Schema<FloodlightConfigurationList>;
+export type FloodlightConfigurationList = ReadonlyArray<FloodlightConfiguration>;
+export const FloodlightConfigurationList = /*@__PURE__*/ S.Array(FloodlightConfiguration) as any as S.Schema<FloodlightConfigurationList>;
 
 /** Floodlight Configuration List Response */
 export interface FloodlightConfigurationsListResponse {
@@ -12695,33 +9274,22 @@ export interface FloodlightConfigurationsListResponse {
   /** Floodlight configuration collection. */
   floodlightConfigurations?: FloodlightConfigurationList;
 }
-export const FloodlightConfigurationsListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: S.optional(S.String),
-      floodlightConfigurations: S.optional(FloodlightConfigurationList),
-    }),
-).annotate({
-  identifier: "FloodlightConfigurationsListResponse",
-}) as any as S.Schema<FloodlightConfigurationsListResponse>;
+export const FloodlightConfigurationsListResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kind": S.optional(S.String),
+  "floodlightConfigurations": S.optional(FloodlightConfigurationList),
+}),
+).annotate({ identifier: "FloodlightConfigurationsListResponse" }) as any as S.Schema<FloodlightConfigurationsListResponse>;
 
 export interface ListLanguagesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/languages",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListLanguagesRequest",
-}) as any as S.Schema<ListLanguagesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/languages","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListLanguagesRequest" }) as any as S.Schema<ListLanguagesRequest>;
 
 /** Language List Response */
 export interface LanguagesListResponse {
@@ -12731,31 +9299,21 @@ export interface LanguagesListResponse {
   languages?: LanguageList;
 }
 export const LanguagesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    languages: S.optional(LanguageList),
-  }),
-).annotate({
-  identifier: "LanguagesListResponse",
-}) as any as S.Schema<LanguagesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "languages": S.optional(LanguageList),
+}),
+).annotate({ identifier: "LanguagesListResponse" }) as any as S.Schema<LanguagesListResponse>;
 
 export interface ListMetrosRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListMetrosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/metros",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListMetrosRequest",
-}) as any as S.Schema<ListMetrosRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/metros","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListMetrosRequest" }) as any as S.Schema<ListMetrosRequest>;
 
 /** Metro List Response */
 export interface MetrosListResponse {
@@ -12765,34 +9323,17 @@ export interface MetrosListResponse {
   metros?: MetroList;
 }
 export const MetrosListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    metros: S.optional(MetroList),
-  }),
-).annotate({
-  identifier: "MetrosListResponse",
-}) as any as S.Schema<MetrosListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "metros": S.optional(MetroList),
+}),
+).annotate({ identifier: "MetrosListResponse" }) as any as S.Schema<MetrosListResponse>;
 
-export type ListMobileAppsDirectoriesEnum =
-  | "UNKNOWN"
-  | "APPLE_APP_STORE"
-  | "GOOGLE_PLAY_STORE"
-  | "ROKU_APP_STORE"
-  | "AMAZON_FIRETV_APP_STORE"
-  | "PLAYSTATION_APP_STORE"
-  | "APPLE_TV_APP_STORE"
-  | "XBOX_APP_STORE"
-  | "SAMSUNG_TV_APP_STORE"
-  | "ANDROID_TV_APP_STORE"
-  | "GENERIC_CTV_APP_STORE"
-  | (string & {});
+export type ListMobileAppsDirectoriesEnum = "UNKNOWN" | "APPLE_APP_STORE" | "GOOGLE_PLAY_STORE" | "ROKU_APP_STORE" | "AMAZON_FIRETV_APP_STORE" | "PLAYSTATION_APP_STORE" | "APPLE_TV_APP_STORE" | "XBOX_APP_STORE" | "SAMSUNG_TV_APP_STORE" | "ANDROID_TV_APP_STORE" | "GENERIC_CTV_APP_STORE";
 export const ListMobileAppsDirectoriesEnum = /*@__PURE__*/ S.String;
 
-export type ListMobileAppsDirectoriesEnumList =
-  ReadonlyArray<ListMobileAppsDirectoriesEnum>;
-export const ListMobileAppsDirectoriesEnumList = /*@__PURE__*/ S.Array(
-  ListMobileAppsDirectoriesEnum,
-) as any as S.Schema<ListMobileAppsDirectoriesEnumList>;
+export type ListMobileAppsDirectoriesEnumList = ReadonlyArray<ListMobileAppsDirectoriesEnum | (string & {})>;
+export const ListMobileAppsDirectoriesEnumList = /*@__PURE__*/ S.Array(ListMobileAppsDirectoriesEnum) as any as S.Schema<ListMobileAppsDirectoriesEnumList>;
 
 export interface ListMobileAppsRequest {
   /** Select only apps from these directories. */
@@ -12809,28 +9350,18 @@ export interface ListMobileAppsRequest {
   ids?: StringList;
 }
 export const ListMobileAppsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    directories: S.optional(ListMobileAppsDirectoriesEnumList.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/mobileApps",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListMobileAppsRequest",
-}) as any as S.Schema<ListMobileAppsRequest>;
+S.Struct({
+  "directories": S.optional(ListMobileAppsDirectoriesEnumList.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/mobileApps","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListMobileAppsRequest" }) as any as S.Schema<ListMobileAppsRequest>;
 
 export type MobileAppList = ReadonlyArray<MobileApp>;
-export const MobileAppList = /*@__PURE__*/ S.Array(
-  MobileApp,
-) as any as S.Schema<MobileAppList>;
+export const MobileAppList = /*@__PURE__*/ S.Array(MobileApp) as any as S.Schema<MobileAppList>;
 
 /** Mobile app List Response */
 export interface MobileAppsListResponse {
@@ -12842,32 +9373,22 @@ export interface MobileAppsListResponse {
   mobileApps?: MobileAppList;
 }
 export const MobileAppsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    mobileApps: S.optional(MobileAppList),
-  }),
-).annotate({
-  identifier: "MobileAppsListResponse",
-}) as any as S.Schema<MobileAppsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "mobileApps": S.optional(MobileAppList),
+}),
+).annotate({ identifier: "MobileAppsListResponse" }) as any as S.Schema<MobileAppsListResponse>;
 
 export interface ListMobileCarriersRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListMobileCarriersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/mobileCarriers",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListMobileCarriersRequest",
-}) as any as S.Schema<ListMobileCarriersRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/mobileCarriers","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListMobileCarriersRequest" }) as any as S.Schema<ListMobileCarriersRequest>;
 
 /** Mobile Carrier List Response */
 export interface MobileCarriersListResponse {
@@ -12877,31 +9398,21 @@ export interface MobileCarriersListResponse {
   mobileCarriers?: MobileCarrierList;
 }
 export const MobileCarriersListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    mobileCarriers: S.optional(MobileCarrierList),
-  }),
-).annotate({
-  identifier: "MobileCarriersListResponse",
-}) as any as S.Schema<MobileCarriersListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "mobileCarriers": S.optional(MobileCarrierList),
+}),
+).annotate({ identifier: "MobileCarriersListResponse" }) as any as S.Schema<MobileCarriersListResponse>;
 
 export interface ListOperatingSystemsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListOperatingSystemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/operatingSystems",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListOperatingSystemsRequest",
-}) as any as S.Schema<ListOperatingSystemsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/operatingSystems","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListOperatingSystemsRequest" }) as any as S.Schema<ListOperatingSystemsRequest>;
 
 /** Operating System List Response */
 export interface OperatingSystemsListResponse {
@@ -12911,31 +9422,21 @@ export interface OperatingSystemsListResponse {
   kind?: string;
 }
 export const OperatingSystemsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatingSystems: S.optional(OperatingSystemList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperatingSystemsListResponse",
-}) as any as S.Schema<OperatingSystemsListResponse>;
+S.Struct({
+  "operatingSystems": S.optional(OperatingSystemList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "OperatingSystemsListResponse" }) as any as S.Schema<OperatingSystemsListResponse>;
 
 export interface ListOperatingSystemVersionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListOperatingSystemVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/operatingSystemVersions",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListOperatingSystemVersionsRequest",
-}) as any as S.Schema<ListOperatingSystemVersionsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/operatingSystemVersions","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListOperatingSystemVersionsRequest" }) as any as S.Schema<ListOperatingSystemVersionsRequest>;
 
 /** Operating System Version List Response */
 export interface OperatingSystemVersionsListResponse {
@@ -12945,58 +9446,31 @@ export interface OperatingSystemVersionsListResponse {
   operatingSystemVersions?: OperatingSystemVersionList;
 }
 export const OperatingSystemVersionsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    operatingSystemVersions: S.optional(OperatingSystemVersionList),
-  }),
-).annotate({
-  identifier: "OperatingSystemVersionsListResponse",
-}) as any as S.Schema<OperatingSystemVersionsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "operatingSystemVersions": S.optional(OperatingSystemVersionList),
+}),
+).annotate({ identifier: "OperatingSystemVersionsListResponse" }) as any as S.Schema<OperatingSystemVersionsListResponse>;
 
-export type ListPlacementGroupsActiveStatusEnum =
-  | "PLACEMENT_STATUS_UNKNOWN"
-  | "PLACEMENT_STATUS_ACTIVE"
-  | "PLACEMENT_STATUS_INACTIVE"
-  | "PLACEMENT_STATUS_ARCHIVED"
-  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED"
-  | (string & {});
+export type ListPlacementGroupsActiveStatusEnum = "PLACEMENT_STATUS_UNKNOWN" | "PLACEMENT_STATUS_ACTIVE" | "PLACEMENT_STATUS_INACTIVE" | "PLACEMENT_STATUS_ARCHIVED" | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
 export const ListPlacementGroupsActiveStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementGroupsActiveStatusEnumList =
-  ReadonlyArray<ListPlacementGroupsActiveStatusEnum>;
-export const ListPlacementGroupsActiveStatusEnumList = /*@__PURE__*/ S.Array(
-  ListPlacementGroupsActiveStatusEnum,
-) as any as S.Schema<ListPlacementGroupsActiveStatusEnumList>;
+export type ListPlacementGroupsActiveStatusEnumList = ReadonlyArray<ListPlacementGroupsActiveStatusEnum | (string & {})>;
+export const ListPlacementGroupsActiveStatusEnumList = /*@__PURE__*/ S.Array(ListPlacementGroupsActiveStatusEnum) as any as S.Schema<ListPlacementGroupsActiveStatusEnumList>;
 
-export type ListPlacementGroupsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListPlacementGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListPlacementGroupsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementGroupsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListPlacementGroupsSortFieldEnum = "ID" | "NAME";
 export const ListPlacementGroupsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementGroupsPricingTypesEnum =
-  | "PRICING_TYPE_CPM"
-  | "PRICING_TYPE_CPC"
-  | "PRICING_TYPE_CPA"
-  | "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
-  | "PRICING_TYPE_FLAT_RATE_CLICKS"
-  | "PRICING_TYPE_CPM_ACTIVEVIEW"
-  | (string & {});
+export type ListPlacementGroupsPricingTypesEnum = "PRICING_TYPE_CPM" | "PRICING_TYPE_CPC" | "PRICING_TYPE_CPA" | "PRICING_TYPE_FLAT_RATE_IMPRESSIONS" | "PRICING_TYPE_FLAT_RATE_CLICKS" | "PRICING_TYPE_CPM_ACTIVEVIEW";
 export const ListPlacementGroupsPricingTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementGroupsPricingTypesEnumList =
-  ReadonlyArray<ListPlacementGroupsPricingTypesEnum>;
-export const ListPlacementGroupsPricingTypesEnumList = /*@__PURE__*/ S.Array(
-  ListPlacementGroupsPricingTypesEnum,
-) as any as S.Schema<ListPlacementGroupsPricingTypesEnumList>;
+export type ListPlacementGroupsPricingTypesEnumList = ReadonlyArray<ListPlacementGroupsPricingTypesEnum | (string & {})>;
+export const ListPlacementGroupsPricingTypesEnumList = /*@__PURE__*/ S.Array(ListPlacementGroupsPricingTypesEnum) as any as S.Schema<ListPlacementGroupsPricingTypesEnumList>;
 
-export type ListPlacementGroupsPlacementGroupTypeEnum =
-  | "PLACEMENT_PACKAGE"
-  | "PLACEMENT_ROADBLOCK"
-  | (string & {});
+export type ListPlacementGroupsPlacementGroupTypeEnum = "PLACEMENT_PACKAGE" | "PLACEMENT_ROADBLOCK";
 export const ListPlacementGroupsPlacementGroupTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListPlacementGroupsRequest {
@@ -13005,13 +9479,13 @@ export interface ListPlacementGroupsRequest {
   /** Select only placements with these active statuses. */
   activeStatus?: ListPlacementGroupsActiveStatusEnumList;
   /** Order of sorted results. */
-  sortOrder?: ListPlacementGroupsSortOrderEnum;
+  sortOrder?: ListPlacementGroupsSortOrderEnum | (string & {});
   /** Select only placement groups that are associated with these sites. */
   siteIds?: StringList;
   /** Value of the nextPageToken from the previous result page. */
   pageToken?: string;
   /** Field by which to sort the list. */
-  sortField?: ListPlacementGroupsSortFieldEnum;
+  sortField?: ListPlacementGroupsSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Select only placements or placement groups whose start date is on or before the specified maxStartDate. The date should be formatted as "yyyy-MM-dd". */
@@ -13039,51 +9513,35 @@ export interface ListPlacementGroupsRequest {
   /** Select only placement groups that belong to these campaigns. */
   campaignIds?: StringList;
   /** Select only placement groups belonging with this group type. A package is a simple group of placements that acts as a single pricing point for a group of tags. A roadblock is a group of placements that not only acts as a single pricing point but also assumes that all the tags in it will be served at the same time. A roadblock requires one of its assigned placements to be marked as primary for reporting. */
-  placementGroupType?: ListPlacementGroupsPlacementGroupTypeEnum;
+  placementGroupType?: ListPlacementGroupsPlacementGroupTypeEnum | (string & {});
 }
 export const ListPlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    directorySiteIds: S.optional(StringList.pipe(T.Query())),
-    activeStatus: S.optional(
-      ListPlacementGroupsActiveStatusEnumList.pipe(T.Query()),
-    ),
-    sortOrder: S.optional(ListPlacementGroupsSortOrderEnum.pipe(T.Query())),
-    siteIds: S.optional(StringList.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    sortField: S.optional(ListPlacementGroupsSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    maxStartDate: S.optional(S.String.pipe(T.Query())),
-    placementStrategyIds: S.optional(StringList.pipe(T.Query())),
-    minEndDate: S.optional(S.String.pipe(T.Query())),
-    contentCategoryIds: S.optional(StringList.pipe(T.Query())),
-    maxEndDate: S.optional(S.String.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    minStartDate: S.optional(S.String.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    advertiserIds: S.optional(StringList.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    pricingTypes: S.optional(
-      ListPlacementGroupsPricingTypesEnumList.pipe(T.Query()),
-    ),
-    campaignIds: S.optional(StringList.pipe(T.Query())),
-    placementGroupType: S.optional(
-      ListPlacementGroupsPlacementGroupTypeEnum.pipe(T.Query()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/placementGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListPlacementGroupsRequest",
-}) as any as S.Schema<ListPlacementGroupsRequest>;
+S.Struct({
+  "directorySiteIds": S.optional(StringList.pipe(T.Query())),
+  "activeStatus": S.optional(ListPlacementGroupsActiveStatusEnumList.pipe(T.Query())),
+  "sortOrder": S.optional(ListPlacementGroupsSortOrderEnum.pipe(T.Query())),
+  "siteIds": S.optional(StringList.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "sortField": S.optional(ListPlacementGroupsSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "maxStartDate": S.optional(S.String.pipe(T.Query())),
+  "placementStrategyIds": S.optional(StringList.pipe(T.Query())),
+  "minEndDate": S.optional(S.String.pipe(T.Query())),
+  "contentCategoryIds": S.optional(StringList.pipe(T.Query())),
+  "maxEndDate": S.optional(S.String.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "minStartDate": S.optional(S.String.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "advertiserIds": S.optional(StringList.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "pricingTypes": S.optional(ListPlacementGroupsPricingTypesEnumList.pipe(T.Query())),
+  "campaignIds": S.optional(StringList.pipe(T.Query())),
+  "placementGroupType": S.optional(ListPlacementGroupsPlacementGroupTypeEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/placementGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListPlacementGroupsRequest" }) as any as S.Schema<ListPlacementGroupsRequest>;
 
 export type PlacementGroupList = ReadonlyArray<PlacementGroup>;
-export const PlacementGroupList = /*@__PURE__*/ S.Array(
-  PlacementGroup,
-) as any as S.Schema<PlacementGroupList>;
+export const PlacementGroupList = /*@__PURE__*/ S.Array(PlacementGroup) as any as S.Schema<PlacementGroupList>;
 
 /** Placement Group List Response */
 export interface PlacementGroupsListResponse {
@@ -13095,76 +9553,39 @@ export interface PlacementGroupsListResponse {
   nextPageToken?: string;
 }
 export const PlacementGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    placementGroups: S.optional(PlacementGroupList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PlacementGroupsListResponse",
-}) as any as S.Schema<PlacementGroupsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "placementGroups": S.optional(PlacementGroupList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "PlacementGroupsListResponse" }) as any as S.Schema<PlacementGroupsListResponse>;
 
-export type ListPlacementsCompatibilitiesEnum =
-  | "DISPLAY"
-  | "DISPLAY_INTERSTITIAL"
-  | "APP"
-  | "APP_INTERSTITIAL"
-  | "IN_STREAM_VIDEO"
-  | "IN_STREAM_AUDIO"
-  | (string & {});
+export type ListPlacementsCompatibilitiesEnum = "DISPLAY" | "DISPLAY_INTERSTITIAL" | "APP" | "APP_INTERSTITIAL" | "IN_STREAM_VIDEO" | "IN_STREAM_AUDIO";
 export const ListPlacementsCompatibilitiesEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsCompatibilitiesEnumList =
-  ReadonlyArray<ListPlacementsCompatibilitiesEnum>;
-export const ListPlacementsCompatibilitiesEnumList = /*@__PURE__*/ S.Array(
-  ListPlacementsCompatibilitiesEnum,
-) as any as S.Schema<ListPlacementsCompatibilitiesEnumList>;
+export type ListPlacementsCompatibilitiesEnumList = ReadonlyArray<ListPlacementsCompatibilitiesEnum | (string & {})>;
+export const ListPlacementsCompatibilitiesEnumList = /*@__PURE__*/ S.Array(ListPlacementsCompatibilitiesEnum) as any as S.Schema<ListPlacementsCompatibilitiesEnumList>;
 
-export type ListPlacementsPricingTypesEnum =
-  | "PRICING_TYPE_CPM"
-  | "PRICING_TYPE_CPC"
-  | "PRICING_TYPE_CPA"
-  | "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
-  | "PRICING_TYPE_FLAT_RATE_CLICKS"
-  | "PRICING_TYPE_CPM_ACTIVEVIEW"
-  | (string & {});
+export type ListPlacementsPricingTypesEnum = "PRICING_TYPE_CPM" | "PRICING_TYPE_CPC" | "PRICING_TYPE_CPA" | "PRICING_TYPE_FLAT_RATE_IMPRESSIONS" | "PRICING_TYPE_FLAT_RATE_CLICKS" | "PRICING_TYPE_CPM_ACTIVEVIEW";
 export const ListPlacementsPricingTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsPricingTypesEnumList =
-  ReadonlyArray<ListPlacementsPricingTypesEnum>;
-export const ListPlacementsPricingTypesEnumList = /*@__PURE__*/ S.Array(
-  ListPlacementsPricingTypesEnum,
-) as any as S.Schema<ListPlacementsPricingTypesEnumList>;
+export type ListPlacementsPricingTypesEnumList = ReadonlyArray<ListPlacementsPricingTypesEnum | (string & {})>;
+export const ListPlacementsPricingTypesEnumList = /*@__PURE__*/ S.Array(ListPlacementsPricingTypesEnum) as any as S.Schema<ListPlacementsPricingTypesEnumList>;
 
-export type ListPlacementsPaymentSourceEnum =
-  | "PLACEMENT_AGENCY_PAID"
-  | "PLACEMENT_PUBLISHER_PAID"
-  | (string & {});
+export type ListPlacementsPaymentSourceEnum = "PLACEMENT_AGENCY_PAID" | "PLACEMENT_PUBLISHER_PAID";
 export const ListPlacementsPaymentSourceEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListPlacementsSortFieldEnum = "ID" | "NAME";
 export const ListPlacementsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListPlacementsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListPlacementsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsActiveStatusEnum =
-  | "PLACEMENT_STATUS_UNKNOWN"
-  | "PLACEMENT_STATUS_ACTIVE"
-  | "PLACEMENT_STATUS_INACTIVE"
-  | "PLACEMENT_STATUS_ARCHIVED"
-  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED"
-  | (string & {});
+export type ListPlacementsActiveStatusEnum = "PLACEMENT_STATUS_UNKNOWN" | "PLACEMENT_STATUS_ACTIVE" | "PLACEMENT_STATUS_INACTIVE" | "PLACEMENT_STATUS_ARCHIVED" | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
 export const ListPlacementsActiveStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsActiveStatusEnumList =
-  ReadonlyArray<ListPlacementsActiveStatusEnum>;
-export const ListPlacementsActiveStatusEnumList = /*@__PURE__*/ S.Array(
-  ListPlacementsActiveStatusEnum,
-) as any as S.Schema<ListPlacementsActiveStatusEnumList>;
+export type ListPlacementsActiveStatusEnumList = ReadonlyArray<ListPlacementsActiveStatusEnum | (string & {})>;
+export const ListPlacementsActiveStatusEnumList = /*@__PURE__*/ S.Array(ListPlacementsActiveStatusEnum) as any as S.Schema<ListPlacementsActiveStatusEnumList>;
 
 export interface ListPlacementsRequest {
   /** Select only placements that are associated with these compatibilities. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. */
@@ -13182,7 +9603,7 @@ export interface ListPlacementsRequest {
   /** Select only placements or placement groups whose start date is on or after the specified minStartDate. The date should be formatted as "yyyy-MM-dd". */
   minStartDate?: string;
   /** Select only placements with this payment source. */
-  paymentSource?: ListPlacementsPaymentSourceEnum;
+  paymentSource?: ListPlacementsPaymentSourceEnum | (string & {});
   /** User profile ID associated with this request. */
   profileId: string;
   /** Select only placements that are associated with these content categories. */
@@ -13200,13 +9621,13 @@ export interface ListPlacementsRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Field by which to sort the list. */
-  sortField?: ListPlacementsSortFieldEnum;
+  sortField?: ListPlacementsSortFieldEnum | (string & {});
   /** Value of the nextPageToken from the previous result page. */
   pageToken?: string;
   /** Select only placements that are associated with these sites. */
   siteIds?: StringList;
   /** Order of sorted results. */
-  sortOrder?: ListPlacementsSortOrderEnum;
+  sortOrder?: ListPlacementsSortOrderEnum | (string & {});
   /** Select only placements with these active statuses. */
   activeStatus?: ListPlacementsActiveStatusEnumList;
   /** Select only placements that are associated with these directory sites. */
@@ -13215,51 +9636,35 @@ export interface ListPlacementsRequest {
   sizeIds?: StringList;
 }
 export const ListPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compatibilities: S.optional(
-      ListPlacementsCompatibilitiesEnumList.pipe(T.Query()),
-    ),
-    campaignIds: S.optional(StringList.pipe(T.Query())),
-    pricingTypes: S.optional(
-      ListPlacementsPricingTypesEnumList.pipe(T.Query()),
-    ),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    advertiserIds: S.optional(StringList.pipe(T.Query())),
-    minStartDate: S.optional(S.String.pipe(T.Query())),
-    paymentSource: S.optional(ListPlacementsPaymentSourceEnum.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    contentCategoryIds: S.optional(StringList.pipe(T.Query())),
-    maxEndDate: S.optional(S.String.pipe(T.Query())),
-    placementStrategyIds: S.optional(StringList.pipe(T.Query())),
-    minEndDate: S.optional(S.String.pipe(T.Query())),
-    groupIds: S.optional(StringList.pipe(T.Query())),
-    maxStartDate: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortField: S.optional(ListPlacementsSortFieldEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    siteIds: S.optional(StringList.pipe(T.Query())),
-    sortOrder: S.optional(ListPlacementsSortOrderEnum.pipe(T.Query())),
-    activeStatus: S.optional(
-      ListPlacementsActiveStatusEnumList.pipe(T.Query()),
-    ),
-    directorySiteIds: S.optional(StringList.pipe(T.Query())),
-    sizeIds: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/placements",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListPlacementsRequest",
-}) as any as S.Schema<ListPlacementsRequest>;
+S.Struct({
+  "compatibilities": S.optional(ListPlacementsCompatibilitiesEnumList.pipe(T.Query())),
+  "campaignIds": S.optional(StringList.pipe(T.Query())),
+  "pricingTypes": S.optional(ListPlacementsPricingTypesEnumList.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "advertiserIds": S.optional(StringList.pipe(T.Query())),
+  "minStartDate": S.optional(S.String.pipe(T.Query())),
+  "paymentSource": S.optional(ListPlacementsPaymentSourceEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "contentCategoryIds": S.optional(StringList.pipe(T.Query())),
+  "maxEndDate": S.optional(S.String.pipe(T.Query())),
+  "placementStrategyIds": S.optional(StringList.pipe(T.Query())),
+  "minEndDate": S.optional(S.String.pipe(T.Query())),
+  "groupIds": S.optional(StringList.pipe(T.Query())),
+  "maxStartDate": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortField": S.optional(ListPlacementsSortFieldEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "siteIds": S.optional(StringList.pipe(T.Query())),
+  "sortOrder": S.optional(ListPlacementsSortOrderEnum.pipe(T.Query())),
+  "activeStatus": S.optional(ListPlacementsActiveStatusEnumList.pipe(T.Query())),
+  "directorySiteIds": S.optional(StringList.pipe(T.Query())),
+  "sizeIds": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/placements","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListPlacementsRequest" }) as any as S.Schema<ListPlacementsRequest>;
 
 export type PlacementList = ReadonlyArray<Placement>;
-export const PlacementList = /*@__PURE__*/ S.Array(
-  Placement,
-) as any as S.Schema<PlacementList>;
+export const PlacementList = /*@__PURE__*/ S.Array(Placement) as any as S.Schema<PlacementList>;
 
 /** Placement List Response */
 export interface PlacementsListResponse {
@@ -13271,25 +9676,17 @@ export interface PlacementsListResponse {
   nextPageToken?: string;
 }
 export const PlacementsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    placements: S.optional(PlacementList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PlacementsListResponse",
-}) as any as S.Schema<PlacementsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "placements": S.optional(PlacementList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "PlacementsListResponse" }) as any as S.Schema<PlacementsListResponse>;
 
-export type ListPlacementStrategiesSortFieldEnum =
-  | "ID"
-  | "NAME"
-  | (string & {});
+export type ListPlacementStrategiesSortFieldEnum = "ID" | "NAME";
 export const ListPlacementStrategiesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementStrategiesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListPlacementStrategiesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListPlacementStrategiesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListPlacementStrategiesRequest {
@@ -13300,38 +9697,28 @@ export interface ListPlacementStrategiesRequest {
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "placementstrategy*2015" will return objects with names like "placementstrategy June 2015", "placementstrategy April 2015", or simply "placementstrategy 2015". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "placementstrategy" will match objects with name "my placementstrategy", "placementstrategy 2015", or simply "placementstrategy". */
   searchString?: string;
   /** Field by which to sort the list. */
-  sortField?: ListPlacementStrategiesSortFieldEnum;
+  sortField?: ListPlacementStrategiesSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListPlacementStrategiesSortOrderEnum;
+  sortOrder?: ListPlacementStrategiesSortOrderEnum | (string & {});
   /** Select only placement strategies with these IDs. */
   ids?: StringList;
 }
 export const ListPlacementStrategiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    sortField: S.optional(ListPlacementStrategiesSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortOrder: S.optional(ListPlacementStrategiesSortOrderEnum.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/placementStrategies",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListPlacementStrategiesRequest",
-}) as any as S.Schema<ListPlacementStrategiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "sortField": S.optional(ListPlacementStrategiesSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListPlacementStrategiesSortOrderEnum.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/placementStrategies","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListPlacementStrategiesRequest" }) as any as S.Schema<ListPlacementStrategiesRequest>;
 
 export type PlacementStrategyList = ReadonlyArray<PlacementStrategy>;
-export const PlacementStrategyList = /*@__PURE__*/ S.Array(
-  PlacementStrategy,
-) as any as S.Schema<PlacementStrategyList>;
+export const PlacementStrategyList = /*@__PURE__*/ S.Array(PlacementStrategy) as any as S.Schema<PlacementStrategyList>;
 
 /** Placement Strategy List Response */
 export interface PlacementStrategiesListResponse {
@@ -13343,32 +9730,22 @@ export interface PlacementStrategiesListResponse {
   placementStrategies?: PlacementStrategyList;
 }
 export const PlacementStrategiesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    placementStrategies: S.optional(PlacementStrategyList),
-  }),
-).annotate({
-  identifier: "PlacementStrategiesListResponse",
-}) as any as S.Schema<PlacementStrategiesListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "placementStrategies": S.optional(PlacementStrategyList),
+}),
+).annotate({ identifier: "PlacementStrategiesListResponse" }) as any as S.Schema<PlacementStrategiesListResponse>;
 
 export interface ListPlatformTypesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListPlatformTypesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/platformTypes",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListPlatformTypesRequest",
-}) as any as S.Schema<ListPlatformTypesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/platformTypes","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListPlatformTypesRequest" }) as any as S.Schema<ListPlatformTypesRequest>;
 
 /** Platform Type List Response */
 export interface PlatformTypesListResponse {
@@ -13378,31 +9755,21 @@ export interface PlatformTypesListResponse {
   platformTypes?: PlatformTypeList;
 }
 export const PlatformTypesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    platformTypes: S.optional(PlatformTypeList),
-  }),
-).annotate({
-  identifier: "PlatformTypesListResponse",
-}) as any as S.Schema<PlatformTypesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "platformTypes": S.optional(PlatformTypeList),
+}),
+).annotate({ identifier: "PlatformTypesListResponse" }) as any as S.Schema<PlatformTypesListResponse>;
 
 export interface ListPostalCodesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListPostalCodesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/postalCodes",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListPostalCodesRequest",
-}) as any as S.Schema<ListPostalCodesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/postalCodes","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListPostalCodesRequest" }) as any as S.Schema<ListPostalCodesRequest>;
 
 /** Postal Code List Response */
 export interface PostalCodesListResponse {
@@ -13412,31 +9779,21 @@ export interface PostalCodesListResponse {
   postalCodes?: PostalCodeList;
 }
 export const PostalCodesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    postalCodes: S.optional(PostalCodeList),
-  }),
-).annotate({
-  identifier: "PostalCodesListResponse",
-}) as any as S.Schema<PostalCodesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "postalCodes": S.optional(PostalCodeList),
+}),
+).annotate({ identifier: "PostalCodesListResponse" }) as any as S.Schema<PostalCodesListResponse>;
 
 export interface ListRegionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/regions",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListRegionsRequest",
-}) as any as S.Schema<ListRegionsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/regions","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListRegionsRequest" }) as any as S.Schema<ListRegionsRequest>;
 
 /** Region List Response */
 export interface RegionsListResponse {
@@ -13446,28 +9803,23 @@ export interface RegionsListResponse {
   regions?: RegionList;
 }
 export const RegionsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    regions: S.optional(RegionList),
-  }),
-).annotate({
-  identifier: "RegionsListResponse",
-}) as any as S.Schema<RegionsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "regions": S.optional(RegionList),
+}),
+).annotate({ identifier: "RegionsListResponse" }) as any as S.Schema<RegionsListResponse>;
 
-export type ListRemarketingListsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListRemarketingListsSortFieldEnum = "ID" | "NAME";
 export const ListRemarketingListsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListRemarketingListsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListRemarketingListsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListRemarketingListsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListRemarketingListsRequest {
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "remarketing list*2015" will return objects with names like "remarketing list June 2015", "remarketing list April 2015", or simply "remarketing list 2015". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "remarketing list" will match objects with name "my remarketing list", "remarketing list 2015", or simply "remarketing list". */
   name?: string;
   /** Field by which to sort the list. */
-  sortField?: ListRemarketingListsSortFieldEnum;
+  sortField?: ListRemarketingListsSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Value of the nextPageToken from the previous result page. */
@@ -13479,36 +9831,26 @@ export interface ListRemarketingListsRequest {
   /** Select only remarketing lists that have this floodlight activity ID. */
   floodlightActivityId?: string;
   /** Order of sorted results. */
-  sortOrder?: ListRemarketingListsSortOrderEnum;
+  sortOrder?: ListRemarketingListsSortOrderEnum | (string & {});
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListRemarketingListsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String.pipe(T.Query())),
-    sortField: S.optional(ListRemarketingListsSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    active: S.optional(S.Boolean.pipe(T.Query())),
-    advertiserId: S.String.pipe(T.Query()),
-    floodlightActivityId: S.optional(S.String.pipe(T.Query())),
-    sortOrder: S.optional(ListRemarketingListsSortOrderEnum.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/remarketingLists",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListRemarketingListsRequest",
-}) as any as S.Schema<ListRemarketingListsRequest>;
+S.Struct({
+  "name": S.optional(S.String.pipe(T.Query())),
+  "sortField": S.optional(ListRemarketingListsSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "active": S.optional(S.Boolean.pipe(T.Query())),
+  "advertiserId": S.String.pipe(T.Query()),
+  "floodlightActivityId": S.optional(S.String.pipe(T.Query())),
+  "sortOrder": S.optional(ListRemarketingListsSortOrderEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/remarketingLists","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListRemarketingListsRequest" }) as any as S.Schema<ListRemarketingListsRequest>;
 
 export type RemarketingListList = ReadonlyArray<RemarketingList>;
-export const RemarketingListList = /*@__PURE__*/ S.Array(
-  RemarketingList,
-) as any as S.Schema<RemarketingListList>;
+export const RemarketingListList = /*@__PURE__*/ S.Array(RemarketingList) as any as S.Schema<RemarketingListList>;
 
 /** Remarketing list response */
 export interface RemarketingListsListResponse {
@@ -13520,68 +9862,49 @@ export interface RemarketingListsListResponse {
   remarketingLists?: RemarketingListList;
 }
 export const RemarketingListsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    remarketingLists: S.optional(RemarketingListList),
-  }),
-).annotate({
-  identifier: "RemarketingListsListResponse",
-}) as any as S.Schema<RemarketingListsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "remarketingLists": S.optional(RemarketingListList),
+}),
+).annotate({ identifier: "RemarketingListsListResponse" }) as any as S.Schema<RemarketingListsListResponse>;
 
-export type ListReportsSortFieldEnum =
-  | "ID"
-  | "LAST_MODIFIED_TIME"
-  | "NAME"
-  | (string & {});
+export type ListReportsSortFieldEnum = "ID" | "LAST_MODIFIED_TIME" | "NAME";
 export const ListReportsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListReportsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListReportsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListReportsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListReportsScopeEnum = "ALL" | "MINE" | (string & {});
+export type ListReportsScopeEnum = "ALL" | "MINE";
 export const ListReportsScopeEnum = /*@__PURE__*/ S.String;
 
 export interface ListReportsRequest {
   /** The field by which to sort the list. */
-  sortField?: ListReportsSortFieldEnum;
+  sortField?: ListReportsSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListReportsSortOrderEnum;
+  sortOrder?: ListReportsSortOrderEnum | (string & {});
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
   /** The value of the nextToken from the previous result page. */
   pageToken?: string;
   /** The scope that defines which results are returned. */
-  scope?: ListReportsScopeEnum;
+  scope?: ListReportsScopeEnum | (string & {});
 }
 export const ListReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sortField: S.optional(ListReportsSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortOrder: S.optional(ListReportsSortOrderEnum.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    scope: S.optional(ListReportsScopeEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{profileId}/reports",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListReportsRequest",
-}) as any as S.Schema<ListReportsRequest>;
+S.Struct({
+  "sortField": S.optional(ListReportsSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListReportsSortOrderEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "scope": S.optional(ListReportsScopeEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{profileId}/reports","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListReportsRequest" }) as any as S.Schema<ListReportsRequest>;
 
 export type ReportList_ = ReadonlyArray<Report>;
-export const ReportList_ = /*@__PURE__*/ S.Array(
-  Report,
-) as any as S.Schema<ReportList_>;
+export const ReportList_ = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportList_>;
 
 /** Represents the list of reports. */
 export interface ReportList {
@@ -13595,68 +9918,54 @@ export interface ReportList {
   nextPageToken?: string;
 }
 export const ReportList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    items: ReportList_,
-    nextPageToken: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "items": ReportList_,
+  "nextPageToken": S.optional(S.String),
+}),
 ).annotate({ identifier: "ReportList" }) as any as S.Schema<ReportList>;
 
-export type ListReportsFilesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListReportsFilesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListReportsFilesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListReportsFilesSortFieldEnum =
-  | "ID"
-  | "LAST_MODIFIED_TIME"
-  | (string & {});
+export type ListReportsFilesSortFieldEnum = "ID" | "LAST_MODIFIED_TIME";
 export const ListReportsFilesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListReportsFilesRequest {
   /** The ID of the parent report. */
   reportId: string;
   /** Order of sorted results. */
-  sortOrder?: ListReportsFilesSortOrderEnum;
+  sortOrder?: ListReportsFilesSortOrderEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** The field by which to sort the list. */
-  sortField?: ListReportsFilesSortFieldEnum;
+  sortField?: ListReportsFilesSortFieldEnum | (string & {});
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
   /** The value of the nextToken from the previous result page. */
   pageToken?: string;
 }
 export const ListReportsFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportId: S.String.pipe(T.Label()),
-    sortOrder: S.optional(ListReportsFilesSortOrderEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortField: S.optional(ListReportsFilesSortFieldEnum.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{profileId}/reports/{reportId}/files",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListReportsFilesRequest",
-}) as any as S.Schema<ListReportsFilesRequest>;
+S.Struct({
+  "reportId": S.String.pipe(T.Label()),
+  "sortOrder": S.optional(ListReportsFilesSortOrderEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortField": S.optional(ListReportsFilesSortFieldEnum.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{profileId}/reports/{reportId}/files","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListReportsFilesRequest" }) as any as S.Schema<ListReportsFilesRequest>;
 
-export type ListSitesSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListSitesSortFieldEnum = "ID" | "NAME";
 export const ListSitesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListSitesSortOrderEnum = "ASCENDING" | "DESCENDING" | (string & {});
+export type ListSitesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListSitesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListSitesRequest {
   /** Field by which to sort the list. */
-  sortField?: ListSitesSortFieldEnum;
+  sortField?: ListSitesSortFieldEnum | (string & {});
   /** Select only sites that accept publisher paid placements. */
   acceptsPublisherPaidPlacements?: boolean;
   /** Maximum number of results to return. */
@@ -13664,7 +9973,7 @@ export interface ListSitesRequest {
   /** Value of the nextPageToken from the previous result page. */
   pageToken?: string;
   /** Order of sorted results. */
-  sortOrder?: ListSitesSortOrderEnum;
+  sortOrder?: ListSitesSortOrderEnum | (string & {});
   /** Select only sites with these directory site IDs. */
   directorySiteIds?: StringList;
   /** Select only sites that have not been mapped to a directory site. */
@@ -13689,38 +9998,28 @@ export interface ListSitesRequest {
   ids?: StringList;
 }
 export const ListSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sortField: S.optional(ListSitesSortFieldEnum.pipe(T.Query())),
-    acceptsPublisherPaidPlacements: S.optional(S.Boolean.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    sortOrder: S.optional(ListSitesSortOrderEnum.pipe(T.Query())),
-    directorySiteIds: S.optional(StringList.pipe(T.Query())),
-    unmappedSite: S.optional(S.Boolean.pipe(T.Query())),
-    campaignIds: S.optional(StringList.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    subaccountId: S.optional(S.String.pipe(T.Query())),
-    approved: S.optional(S.Boolean.pipe(T.Query())),
-    acceptsInStreamVideoPlacements: S.optional(S.Boolean.pipe(T.Query())),
-    acceptsInterstitialPlacements: S.optional(S.Boolean.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    adWordsSite: S.optional(S.Boolean.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/sites",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSitesRequest",
-}) as any as S.Schema<ListSitesRequest>;
+S.Struct({
+  "sortField": S.optional(ListSitesSortFieldEnum.pipe(T.Query())),
+  "acceptsPublisherPaidPlacements": S.optional(S.Boolean.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "sortOrder": S.optional(ListSitesSortOrderEnum.pipe(T.Query())),
+  "directorySiteIds": S.optional(StringList.pipe(T.Query())),
+  "unmappedSite": S.optional(S.Boolean.pipe(T.Query())),
+  "campaignIds": S.optional(StringList.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "subaccountId": S.optional(S.String.pipe(T.Query())),
+  "approved": S.optional(S.Boolean.pipe(T.Query())),
+  "acceptsInStreamVideoPlacements": S.optional(S.Boolean.pipe(T.Query())),
+  "acceptsInterstitialPlacements": S.optional(S.Boolean.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "adWordsSite": S.optional(S.Boolean.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/sites","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListSitesRequest" }) as any as S.Schema<ListSitesRequest>;
 
 export type SiteList = ReadonlyArray<Site>;
-export const SiteList = /*@__PURE__*/ S.Array(
-  Site,
-) as any as S.Schema<SiteList>;
+export const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
 
 /** Site List Response */
 export interface SitesListResponse {
@@ -13732,14 +10031,12 @@ export interface SitesListResponse {
   kind?: string;
 }
 export const SitesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    sites: S.optional(SiteList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SitesListResponse",
-}) as any as S.Schema<SitesListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "sites": S.optional(SiteList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "SitesListResponse" }) as any as S.Schema<SitesListResponse>;
 
 export interface ListSizesRequest {
   /** Select only sizes with these IDs. */
@@ -13754,22 +10051,14 @@ export interface ListSizesRequest {
   profileId: string;
 }
 export const ListSizesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList.pipe(T.Query())),
-    iabStandard: S.optional(S.Boolean.pipe(T.Query())),
-    height: S.optional(S.Number.pipe(T.Query())),
-    width: S.optional(S.Number.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/sizes",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSizesRequest",
-}) as any as S.Schema<ListSizesRequest>;
+S.Struct({
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "iabStandard": S.optional(S.Boolean.pipe(T.Query())),
+  "height": S.optional(S.Number.pipe(T.Query())),
+  "width": S.optional(S.Number.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/sizes","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListSizesRequest" }) as any as S.Schema<ListSizesRequest>;
 
 /** Size List Response */
 export interface SizesListResponse {
@@ -13779,21 +10068,16 @@ export interface SizesListResponse {
   sizes?: SizeList;
 }
 export const SizesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    sizes: S.optional(SizeList),
-  }),
-).annotate({
-  identifier: "SizesListResponse",
-}) as any as S.Schema<SizesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "sizes": S.optional(SizeList),
+}),
+).annotate({ identifier: "SizesListResponse" }) as any as S.Schema<SizesListResponse>;
 
-export type ListSubaccountsSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListSubaccountsSortFieldEnum = "ID" | "NAME";
 export const ListSubaccountsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListSubaccountsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListSubaccountsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListSubaccountsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListSubaccountsRequest {
@@ -13806,36 +10090,26 @@ export interface ListSubaccountsRequest {
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "subaccount*2015" will return objects with names like "subaccount June 2015", "subaccount April 2015", or simply "subaccount 2015". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "subaccount" will match objects with name "my subaccount", "subaccount 2015", or simply "subaccount" . */
   searchString?: string;
   /** Field by which to sort the list. */
-  sortField?: ListSubaccountsSortFieldEnum;
+  sortField?: ListSubaccountsSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListSubaccountsSortOrderEnum;
+  sortOrder?: ListSubaccountsSortOrderEnum | (string & {});
 }
 export const ListSubaccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    sortField: S.optional(ListSubaccountsSortFieldEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortOrder: S.optional(ListSubaccountsSortOrderEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/subaccounts",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSubaccountsRequest",
-}) as any as S.Schema<ListSubaccountsRequest>;
+S.Struct({
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "sortField": S.optional(ListSubaccountsSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListSubaccountsSortOrderEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/subaccounts","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListSubaccountsRequest" }) as any as S.Schema<ListSubaccountsRequest>;
 
 export type SubaccountList = ReadonlyArray<Subaccount>;
-export const SubaccountList = /*@__PURE__*/ S.Array(
-  Subaccount,
-) as any as S.Schema<SubaccountList>;
+export const SubaccountList = /*@__PURE__*/ S.Array(Subaccount) as any as S.Schema<SubaccountList>;
 
 /** Subaccount List Response */
 export interface SubaccountsListResponse {
@@ -13847,28 +10121,18 @@ export interface SubaccountsListResponse {
   subaccounts?: SubaccountList;
 }
 export const SubaccountsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    subaccounts: S.optional(SubaccountList),
-  }),
-).annotate({
-  identifier: "SubaccountsListResponse",
-}) as any as S.Schema<SubaccountsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "subaccounts": S.optional(SubaccountList),
+}),
+).annotate({ identifier: "SubaccountsListResponse" }) as any as S.Schema<SubaccountsListResponse>;
 
-export type ListTargetableRemarketingListsSortFieldEnum =
-  | "ID"
-  | "NAME"
-  | (string & {});
-export const ListTargetableRemarketingListsSortFieldEnum =
-  /*@__PURE__*/ S.String;
+export type ListTargetableRemarketingListsSortFieldEnum = "ID" | "NAME";
+export const ListTargetableRemarketingListsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListTargetableRemarketingListsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
-export const ListTargetableRemarketingListsSortOrderEnum =
-  /*@__PURE__*/ S.String;
+export type ListTargetableRemarketingListsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export const ListTargetableRemarketingListsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListTargetableRemarketingListsRequest {
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "remarketing list*2015" will return objects with names like "remarketing list June 2015", "remarketing list April 2015", or simply "remarketing list 2015". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "remarketing list" will match objects with name "my remarketing list", "remarketing list 2015", or simply "remarketing list". */
@@ -13882,43 +10146,27 @@ export interface ListTargetableRemarketingListsRequest {
   /** Select only active or only inactive targetable remarketing lists. */
   active?: boolean;
   /** Field by which to sort the list. */
-  sortField?: ListTargetableRemarketingListsSortFieldEnum;
+  sortField?: ListTargetableRemarketingListsSortFieldEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListTargetableRemarketingListsSortOrderEnum;
+  sortOrder?: ListTargetableRemarketingListsSortOrderEnum | (string & {});
 }
-export const ListTargetableRemarketingListsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String.pipe(T.Query())),
-      advertiserId: S.String.pipe(T.Query()),
-      profileId: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      active: S.optional(S.Boolean.pipe(T.Query())),
-      sortField: S.optional(
-        ListTargetableRemarketingListsSortFieldEnum.pipe(T.Query()),
-      ),
-      maxResults: S.optional(S.Number.pipe(T.Query())),
-      sortOrder: S.optional(
-        ListTargetableRemarketingListsSortOrderEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "userprofiles/{+profileId}/targetableRemarketingLists",
-        baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-      }),
-    ),
-).annotate({
-  identifier: "ListTargetableRemarketingListsRequest",
-}) as any as S.Schema<ListTargetableRemarketingListsRequest>;
+export const ListTargetableRemarketingListsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String.pipe(T.Query())),
+  "advertiserId": S.String.pipe(T.Query()),
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "active": S.optional(S.Boolean.pipe(T.Query())),
+  "sortField": S.optional(ListTargetableRemarketingListsSortFieldEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListTargetableRemarketingListsSortOrderEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/targetableRemarketingLists","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListTargetableRemarketingListsRequest" }) as any as S.Schema<ListTargetableRemarketingListsRequest>;
 
-export type TargetableRemarketingListList =
-  ReadonlyArray<TargetableRemarketingList>;
-export const TargetableRemarketingListList = /*@__PURE__*/ S.Array(
-  TargetableRemarketingList,
-) as any as S.Schema<TargetableRemarketingListList>;
+export type TargetableRemarketingListList = ReadonlyArray<TargetableRemarketingList>;
+export const TargetableRemarketingListList = /*@__PURE__*/ S.Array(TargetableRemarketingList) as any as S.Schema<TargetableRemarketingListList>;
 
 /** Targetable remarketing list response */
 export interface TargetableRemarketingListsListResponse {
@@ -13929,24 +10177,18 @@ export interface TargetableRemarketingListsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#targetableRemarketingListsListResponse". */
   kind?: string;
 }
-export const TargetableRemarketingListsListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetableRemarketingLists: S.optional(TargetableRemarketingListList),
-      nextPageToken: S.optional(S.String),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "TargetableRemarketingListsListResponse",
-}) as any as S.Schema<TargetableRemarketingListsListResponse>;
+export const TargetableRemarketingListsListResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "targetableRemarketingLists": S.optional(TargetableRemarketingListList),
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "TargetableRemarketingListsListResponse" }) as any as S.Schema<TargetableRemarketingListsListResponse>;
 
-export type ListTargetingTemplatesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListTargetingTemplatesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListTargetingTemplatesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListTargetingTemplatesSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListTargetingTemplatesSortFieldEnum = "ID" | "NAME";
 export const ListTargetingTemplatesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListTargetingTemplatesRequest {
@@ -13963,35 +10205,25 @@ export interface ListTargetingTemplatesRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Order of sorted results. */
-  sortOrder?: ListTargetingTemplatesSortOrderEnum;
+  sortOrder?: ListTargetingTemplatesSortOrderEnum | (string & {});
   /** Field by which to sort the list. */
-  sortField?: ListTargetingTemplatesSortFieldEnum;
+  sortField?: ListTargetingTemplatesSortFieldEnum | (string & {});
 }
 export const ListTargetingTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList.pipe(T.Query())),
-    advertiserId: S.optional(S.String.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortOrder: S.optional(ListTargetingTemplatesSortOrderEnum.pipe(T.Query())),
-    sortField: S.optional(ListTargetingTemplatesSortFieldEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/targetingTemplates",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListTargetingTemplatesRequest",
-}) as any as S.Schema<ListTargetingTemplatesRequest>;
+S.Struct({
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "advertiserId": S.optional(S.String.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortOrder": S.optional(ListTargetingTemplatesSortOrderEnum.pipe(T.Query())),
+  "sortField": S.optional(ListTargetingTemplatesSortFieldEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/targetingTemplates","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListTargetingTemplatesRequest" }) as any as S.Schema<ListTargetingTemplatesRequest>;
 
 export type TargetingTemplateList = ReadonlyArray<TargetingTemplate>;
-export const TargetingTemplateList = /*@__PURE__*/ S.Array(
-  TargetingTemplate,
-) as any as S.Schema<TargetingTemplateList>;
+export const TargetingTemplateList = /*@__PURE__*/ S.Array(TargetingTemplate) as any as S.Schema<TargetingTemplateList>;
 
 /** Targeting Template List Response */
 export interface TargetingTemplatesListResponse {
@@ -14003,27 +10235,14 @@ export interface TargetingTemplatesListResponse {
   targetingTemplates?: TargetingTemplateList;
 }
 export const TargetingTemplatesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    targetingTemplates: S.optional(TargetingTemplateList),
-  }),
-).annotate({
-  identifier: "TargetingTemplatesListResponse",
-}) as any as S.Schema<TargetingTemplatesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "targetingTemplates": S.optional(TargetingTemplateList),
+}),
+).annotate({ identifier: "TargetingTemplatesListResponse" }) as any as S.Schema<TargetingTemplatesListResponse>;
 
-export type ListTvCampaignSummariesTvDataProviderEnum =
-  | "INVALID_TV_DATA_PROVIDER"
-  | "INTAGE_JP"
-  | "IBOPE_AR"
-  | "IBOPE_BR"
-  | "IBOPE_CL"
-  | "IBOPE_CO"
-  | "TNS_VN"
-  | "COMSCORE_NATIONAL_US"
-  | "COMSCORE_CA"
-  | "SAMBA_AU"
-  | (string & {});
+export type ListTvCampaignSummariesTvDataProviderEnum = "INVALID_TV_DATA_PROVIDER" | "INTAGE_JP" | "IBOPE_AR" | "IBOPE_BR" | "IBOPE_CL" | "IBOPE_CO" | "TNS_VN" | "COMSCORE_NATIONAL_US" | "COMSCORE_CA" | "SAMBA_AU";
 export const ListTvCampaignSummariesTvDataProviderEnum = /*@__PURE__*/ S.String;
 
 export interface ListTvCampaignSummariesRequest {
@@ -14036,35 +10255,19 @@ export interface ListTvCampaignSummariesRequest {
   /** Optional. Country Dart ID. If not specified, defaults to 256 (US). */
   countryDartId?: string;
   /** Optional. TV data provider. If not specified, defaults to `COMSCORE_NATIONAL_US`. */
-  tvDataProvider?: ListTvCampaignSummariesTvDataProviderEnum;
+  tvDataProvider?: ListTvCampaignSummariesTvDataProviderEnum | (string & {});
 }
 export const ListTvCampaignSummariesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    accountId: S.optional(S.String.pipe(T.Query())),
-    name: S.optional(S.String.pipe(T.Query())),
-    countryDartId: S.optional(S.String.pipe(T.Query())),
-    tvDataProvider: S.optional(
-      ListTvCampaignSummariesTvDataProviderEnum.pipe(T.Query()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/tvCampaignSummaries",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListTvCampaignSummariesRequest",
-}) as any as S.Schema<ListTvCampaignSummariesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "accountId": S.optional(S.String.pipe(T.Query())),
+  "name": S.optional(S.String.pipe(T.Query())),
+  "countryDartId": S.optional(S.String.pipe(T.Query())),
+  "tvDataProvider": S.optional(ListTvCampaignSummariesTvDataProviderEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/tvCampaignSummaries","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListTvCampaignSummariesRequest" }) as any as S.Schema<ListTvCampaignSummariesRequest>;
 
-export type TvCampaignSummaryTypeEnum =
-  | "CAMPAIGN_COMPONENT_TYPE_UNSPECIFIED"
-  | "COMPANY"
-  | "BRAND"
-  | "PRODUCT"
-  | "CAMPAIGN"
-  | (string & {});
+export type TvCampaignSummaryTypeEnum = "CAMPAIGN_COMPONENT_TYPE_UNSPECIFIED" | "COMPANY" | "BRAND" | "PRODUCT" | "CAMPAIGN";
 export const TvCampaignSummaryTypeEnum = /*@__PURE__*/ S.String;
 
 /** TvCampaignSummary contains aggregate data from a TV campaign. */
@@ -14089,25 +10292,21 @@ export interface TvCampaignSummary {
   kind?: string;
 }
 export const TvCampaignSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(TvCampaignSummaryTypeEnum),
-    grp: S.optional(S.String),
-    impressions: S.optional(S.String),
-    startDate: S.optional(S.String),
-    spend: S.optional(S.Number),
-    endDate: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TvCampaignSummary",
-}) as any as S.Schema<TvCampaignSummary>;
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "type": S.optional(TvCampaignSummaryTypeEnum),
+  "grp": S.optional(S.String),
+  "impressions": S.optional(S.String),
+  "startDate": S.optional(S.String),
+  "spend": S.optional(S.Number),
+  "endDate": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "TvCampaignSummary" }) as any as S.Schema<TvCampaignSummary>;
 
 export type TvCampaignSummaryList = ReadonlyArray<TvCampaignSummary>;
-export const TvCampaignSummaryList = /*@__PURE__*/ S.Array(
-  TvCampaignSummary,
-) as any as S.Schema<TvCampaignSummaryList>;
+export const TvCampaignSummaryList = /*@__PURE__*/ S.Array(TvCampaignSummary) as any as S.Schema<TvCampaignSummaryList>;
 
 /** Response message for TvCampaignSummariesService.List. */
 export interface TvCampaignSummariesListResponse {
@@ -14117,31 +10316,19 @@ export interface TvCampaignSummariesListResponse {
   tvCampaignSummaries?: TvCampaignSummaryList;
 }
 export const TvCampaignSummariesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    tvCampaignSummaries: S.optional(TvCampaignSummaryList),
-  }),
-).annotate({
-  identifier: "TvCampaignSummariesListResponse",
-}) as any as S.Schema<TvCampaignSummariesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "tvCampaignSummaries": S.optional(TvCampaignSummaryList),
+}),
+).annotate({ identifier: "TvCampaignSummariesListResponse" }) as any as S.Schema<TvCampaignSummariesListResponse>;
 
 export interface ListUserProfilesRequest {}
 export const ListUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListUserProfilesRequest",
-}) as any as S.Schema<ListUserProfilesRequest>;
+S.Struct({}).pipe(T.Http({"method":"GET","uri":"userprofiles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListUserProfilesRequest" }) as any as S.Schema<ListUserProfilesRequest>;
 
 export type UserProfileList_ = ReadonlyArray<UserProfile>;
-export const UserProfileList_ = /*@__PURE__*/ S.Array(
-  UserProfile,
-) as any as S.Schema<UserProfileList_>;
+export const UserProfileList_ = /*@__PURE__*/ S.Array(UserProfile) as any as S.Schema<UserProfileList_>;
 
 /** Represents the list of user profiles. */
 export interface UserProfileList {
@@ -14153,38 +10340,25 @@ export interface UserProfileList {
   items?: UserProfileList_;
 }
 export const UserProfileList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    items: S.optional(UserProfileList_),
-  }),
-).annotate({
-  identifier: "UserProfileList",
-}) as any as S.Schema<UserProfileList>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "items": S.optional(UserProfileList_),
+}),
+).annotate({ identifier: "UserProfileList" }) as any as S.Schema<UserProfileList>;
 
 export interface ListUserRolePermissionGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListUserRolePermissionGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/userRolePermissionGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListUserRolePermissionGroupsRequest",
-}) as any as S.Schema<ListUserRolePermissionGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/userRolePermissionGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListUserRolePermissionGroupsRequest" }) as any as S.Schema<ListUserRolePermissionGroupsRequest>;
 
-export type UserRolePermissionGroupList =
-  ReadonlyArray<UserRolePermissionGroup>;
-export const UserRolePermissionGroupList = /*@__PURE__*/ S.Array(
-  UserRolePermissionGroup,
-) as any as S.Schema<UserRolePermissionGroupList>;
+export type UserRolePermissionGroupList = ReadonlyArray<UserRolePermissionGroup>;
+export const UserRolePermissionGroupList = /*@__PURE__*/ S.Array(UserRolePermissionGroup) as any as S.Schema<UserRolePermissionGroupList>;
 
 /** User Role Permission Group List Response */
 export interface UserRolePermissionGroupsListResponse {
@@ -14193,15 +10367,12 @@ export interface UserRolePermissionGroupsListResponse {
   /** User role permission group collection. */
   userRolePermissionGroups?: UserRolePermissionGroupList;
 }
-export const UserRolePermissionGroupsListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: S.optional(S.String),
-      userRolePermissionGroups: S.optional(UserRolePermissionGroupList),
-    }),
-).annotate({
-  identifier: "UserRolePermissionGroupsListResponse",
-}) as any as S.Schema<UserRolePermissionGroupsListResponse>;
+export const UserRolePermissionGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kind": S.optional(S.String),
+  "userRolePermissionGroups": S.optional(UserRolePermissionGroupList),
+}),
+).annotate({ identifier: "UserRolePermissionGroupsListResponse" }) as any as S.Schema<UserRolePermissionGroupsListResponse>;
 
 export interface ListUserRolePermissionsRequest {
   /** Select only user role permissions with these IDs. */
@@ -14210,19 +10381,11 @@ export interface ListUserRolePermissionsRequest {
   profileId: string;
 }
 export const ListUserRolePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList.pipe(T.Query())),
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/userRolePermissions",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListUserRolePermissionsRequest",
-}) as any as S.Schema<ListUserRolePermissionsRequest>;
+S.Struct({
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/userRolePermissions","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListUserRolePermissionsRequest" }) as any as S.Schema<ListUserRolePermissionsRequest>;
 
 /** User Role Permission List Response */
 export interface UserRolePermissionsListResponse {
@@ -14232,28 +10395,23 @@ export interface UserRolePermissionsListResponse {
   userRolePermissions?: UserRolePermissionList;
 }
 export const UserRolePermissionsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    userRolePermissions: S.optional(UserRolePermissionList),
-  }),
-).annotate({
-  identifier: "UserRolePermissionsListResponse",
-}) as any as S.Schema<UserRolePermissionsListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "userRolePermissions": S.optional(UserRolePermissionList),
+}),
+).annotate({ identifier: "UserRolePermissionsListResponse" }) as any as S.Schema<UserRolePermissionsListResponse>;
 
-export type ListUserRolesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListUserRolesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListUserRolesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListUserRolesSortFieldEnum = "ID" | "NAME" | (string & {});
+export type ListUserRolesSortFieldEnum = "ID" | "NAME";
 export const ListUserRolesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListUserRolesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Order of sorted results. */
-  sortOrder?: ListUserRolesSortOrderEnum;
+  sortOrder?: ListUserRolesSortOrderEnum | (string & {});
   /** Select only account level user roles not associated with any specific subaccount. */
   accountUserRoleOnly?: boolean;
   /** Select only user roles with the specified IDs. */
@@ -14267,34 +10425,24 @@ export interface ListUserRolesRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Field by which to sort the list. */
-  sortField?: ListUserRolesSortFieldEnum;
+  sortField?: ListUserRolesSortFieldEnum | (string & {});
 }
 export const ListUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    sortOrder: S.optional(ListUserRolesSortOrderEnum.pipe(T.Query())),
-    accountUserRoleOnly: S.optional(S.Boolean.pipe(T.Query())),
-    ids: S.optional(StringList.pipe(T.Query())),
-    subaccountId: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    searchString: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    sortField: S.optional(ListUserRolesSortFieldEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/userRoles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListUserRolesRequest",
-}) as any as S.Schema<ListUserRolesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "sortOrder": S.optional(ListUserRolesSortOrderEnum.pipe(T.Query())),
+  "accountUserRoleOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "ids": S.optional(StringList.pipe(T.Query())),
+  "subaccountId": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "searchString": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "sortField": S.optional(ListUserRolesSortFieldEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/userRoles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListUserRolesRequest" }) as any as S.Schema<ListUserRolesRequest>;
 
 export type UserRoleList = ReadonlyArray<UserRole>;
-export const UserRoleList = /*@__PURE__*/ S.Array(
-  UserRole,
-) as any as S.Schema<UserRoleList>;
+export const UserRoleList = /*@__PURE__*/ S.Array(UserRole) as any as S.Schema<UserRoleList>;
 
 /** User Role List Response */
 export interface UserRolesListResponse {
@@ -14306,37 +10454,25 @@ export interface UserRolesListResponse {
   kind?: string;
 }
 export const UserRolesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    userRoles: S.optional(UserRoleList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserRolesListResponse",
-}) as any as S.Schema<UserRolesListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "userRoles": S.optional(UserRoleList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "UserRolesListResponse" }) as any as S.Schema<UserRolesListResponse>;
 
 export interface ListVideoFormatsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
 export const ListVideoFormatsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "userprofiles/{+profileId}/videoFormats",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "ListVideoFormatsRequest",
-}) as any as S.Schema<ListVideoFormatsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"userprofiles/{+profileId}/videoFormats","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "ListVideoFormatsRequest" }) as any as S.Schema<ListVideoFormatsRequest>;
 
 export type VideoFormatList = ReadonlyArray<VideoFormat>;
-export const VideoFormatList = /*@__PURE__*/ S.Array(
-  VideoFormat,
-) as any as S.Schema<VideoFormatList>;
+export const VideoFormatList = /*@__PURE__*/ S.Array(VideoFormat) as any as S.Schema<VideoFormatList>;
 
 /** Video Format List Response */
 export interface VideoFormatsListResponse {
@@ -14346,13 +10482,11 @@ export interface VideoFormatsListResponse {
   kind?: string;
 }
 export const VideoFormatsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    videoFormats: S.optional(VideoFormatList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VideoFormatsListResponse",
-}) as any as S.Schema<VideoFormatsListResponse>;
+S.Struct({
+  "videoFormats": S.optional(VideoFormatList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "VideoFormatsListResponse" }) as any as S.Schema<VideoFormatsListResponse>;
 
 export interface PatchAccountsRequest {
   /** User profile ID associated with this request. */
@@ -14363,20 +10497,12 @@ export interface PatchAccountsRequest {
   body?: Account;
 }
 export const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(Account.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/accounts",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAccountsRequest",
-}) as any as S.Schema<PatchAccountsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(Account.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/accounts","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchAccountsRequest" }) as any as S.Schema<PatchAccountsRequest>;
 
 export interface PatchAccountUserProfilesRequest {
   /** User profile ID associated with this request. */
@@ -14387,20 +10513,12 @@ export interface PatchAccountUserProfilesRequest {
   body?: AccountUserProfile;
 }
 export const PatchAccountUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(AccountUserProfile.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/accountUserProfiles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAccountUserProfilesRequest",
-}) as any as S.Schema<PatchAccountUserProfilesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(AccountUserProfile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/accountUserProfiles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchAccountUserProfilesRequest" }) as any as S.Schema<PatchAccountUserProfilesRequest>;
 
 export interface PatchAdsRequest {
   /** User profile ID associated with this request. */
@@ -14411,20 +10529,12 @@ export interface PatchAdsRequest {
   body?: Ad;
 }
 export const PatchAdsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(Ad.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/ads",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAdsRequest",
-}) as any as S.Schema<PatchAdsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(Ad.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/ads","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchAdsRequest" }) as any as S.Schema<PatchAdsRequest>;
 
 export interface PatchAdvertiserGroupsRequest {
   /** User profile ID associated with this request. */
@@ -14435,20 +10545,12 @@ export interface PatchAdvertiserGroupsRequest {
   body?: AdvertiserGroup;
 }
 export const PatchAdvertiserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(AdvertiserGroup.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/advertiserGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAdvertiserGroupsRequest",
-}) as any as S.Schema<PatchAdvertiserGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(AdvertiserGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/advertiserGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchAdvertiserGroupsRequest" }) as any as S.Schema<PatchAdvertiserGroupsRequest>;
 
 export interface PatchAdvertiserLandingPagesRequest {
   /** User profile ID associated with this request. */
@@ -14459,20 +10561,12 @@ export interface PatchAdvertiserLandingPagesRequest {
   body?: LandingPage;
 }
 export const PatchAdvertiserLandingPagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(LandingPage.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/advertiserLandingPages",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAdvertiserLandingPagesRequest",
-}) as any as S.Schema<PatchAdvertiserLandingPagesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(LandingPage.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/advertiserLandingPages","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchAdvertiserLandingPagesRequest" }) as any as S.Schema<PatchAdvertiserLandingPagesRequest>;
 
 export interface PatchAdvertisersRequest {
   /** User profile ID associated with this request. */
@@ -14483,20 +10577,12 @@ export interface PatchAdvertisersRequest {
   body?: Advertiser;
 }
 export const PatchAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(Advertiser.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/advertisers",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAdvertisersRequest",
-}) as any as S.Schema<PatchAdvertisersRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(Advertiser.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/advertisers","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchAdvertisersRequest" }) as any as S.Schema<PatchAdvertisersRequest>;
 
 export interface PatchCampaignsRequest {
   /** User profile ID associated with this request. */
@@ -14507,20 +10593,12 @@ export interface PatchCampaignsRequest {
   body?: Campaign;
 }
 export const PatchCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(Campaign.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/campaigns",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchCampaignsRequest",
-}) as any as S.Schema<PatchCampaignsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(Campaign.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/campaigns","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchCampaignsRequest" }) as any as S.Schema<PatchCampaignsRequest>;
 
 export interface PatchContentCategoriesRequest {
   /** User profile ID associated with this request. */
@@ -14531,20 +10609,12 @@ export interface PatchContentCategoriesRequest {
   body?: ContentCategory;
 }
 export const PatchContentCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(ContentCategory.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/contentCategories",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchContentCategoriesRequest",
-}) as any as S.Schema<PatchContentCategoriesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(ContentCategory.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/contentCategories","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchContentCategoriesRequest" }) as any as S.Schema<PatchContentCategoriesRequest>;
 
 export interface PatchCreativeFieldsRequest {
   /** User profile ID associated with this request. */
@@ -14555,20 +10625,12 @@ export interface PatchCreativeFieldsRequest {
   body?: CreativeField;
 }
 export const PatchCreativeFieldsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(CreativeField.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/creativeFields",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchCreativeFieldsRequest",
-}) as any as S.Schema<PatchCreativeFieldsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(CreativeField.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/creativeFields","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchCreativeFieldsRequest" }) as any as S.Schema<PatchCreativeFieldsRequest>;
 
 export interface PatchCreativeFieldValuesRequest {
   /** User profile ID associated with this request. */
@@ -14581,21 +10643,13 @@ export interface PatchCreativeFieldValuesRequest {
   body?: CreativeFieldValue;
 }
 export const PatchCreativeFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    creativeFieldId: S.String.pipe(T.Label()),
-    body: S.optional(CreativeFieldValue.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchCreativeFieldValuesRequest",
-}) as any as S.Schema<PatchCreativeFieldValuesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "creativeFieldId": S.String.pipe(T.Label()),
+  "body": S.optional(CreativeFieldValue.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchCreativeFieldValuesRequest" }) as any as S.Schema<PatchCreativeFieldValuesRequest>;
 
 export interface PatchCreativeGroupsRequest {
   /** User profile ID associated with this request. */
@@ -14606,20 +10660,12 @@ export interface PatchCreativeGroupsRequest {
   body?: CreativeGroup;
 }
 export const PatchCreativeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(CreativeGroup.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/creativeGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchCreativeGroupsRequest",
-}) as any as S.Schema<PatchCreativeGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(CreativeGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/creativeGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchCreativeGroupsRequest" }) as any as S.Schema<PatchCreativeGroupsRequest>;
 
 export interface PatchCreativesRequest {
   /** User profile ID associated with this request. */
@@ -14630,20 +10676,12 @@ export interface PatchCreativesRequest {
   body?: Creative;
 }
 export const PatchCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(Creative.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/creatives",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchCreativesRequest",
-}) as any as S.Schema<PatchCreativesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(Creative.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/creatives","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchCreativesRequest" }) as any as S.Schema<PatchCreativesRequest>;
 
 export interface PatchEventTagsRequest {
   /** User profile ID associated with this request. */
@@ -14654,20 +10692,12 @@ export interface PatchEventTagsRequest {
   body?: EventTag;
 }
 export const PatchEventTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(EventTag.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/eventTags",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchEventTagsRequest",
-}) as any as S.Schema<PatchEventTagsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(EventTag.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/eventTags","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchEventTagsRequest" }) as any as S.Schema<PatchEventTagsRequest>;
 
 export interface PatchFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
@@ -14678,20 +10708,12 @@ export interface PatchFloodlightActivitiesRequest {
   body?: FloodlightActivity;
 }
 export const PatchFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(FloodlightActivity.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/floodlightActivities",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchFloodlightActivitiesRequest",
-}) as any as S.Schema<PatchFloodlightActivitiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(FloodlightActivity.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/floodlightActivities","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchFloodlightActivitiesRequest" }) as any as S.Schema<PatchFloodlightActivitiesRequest>;
 
 export interface PatchFloodlightActivityGroupsRequest {
   /** User profile ID associated with this request. */
@@ -14701,22 +10723,13 @@ export interface PatchFloodlightActivityGroupsRequest {
   /** Request body */
   body?: FloodlightActivityGroup;
 }
-export const PatchFloodlightActivityGroupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      profileId: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Query()),
-      body: S.optional(FloodlightActivityGroup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "userprofiles/{+profileId}/floodlightActivityGroups",
-        baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchFloodlightActivityGroupsRequest",
-}) as any as S.Schema<PatchFloodlightActivityGroupsRequest>;
+export const PatchFloodlightActivityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(FloodlightActivityGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/floodlightActivityGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchFloodlightActivityGroupsRequest" }) as any as S.Schema<PatchFloodlightActivityGroupsRequest>;
 
 export interface PatchFloodlightConfigurationsRequest {
   /** User profile ID associated with this request. */
@@ -14726,22 +10739,13 @@ export interface PatchFloodlightConfigurationsRequest {
   /** Request body */
   body?: FloodlightConfiguration;
 }
-export const PatchFloodlightConfigurationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      profileId: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Query()),
-      body: S.optional(FloodlightConfiguration.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "userprofiles/{+profileId}/floodlightConfigurations",
-        baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchFloodlightConfigurationsRequest",
-}) as any as S.Schema<PatchFloodlightConfigurationsRequest>;
+export const PatchFloodlightConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(FloodlightConfiguration.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/floodlightConfigurations","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchFloodlightConfigurationsRequest" }) as any as S.Schema<PatchFloodlightConfigurationsRequest>;
 
 export interface PatchPlacementGroupsRequest {
   /** User profile ID associated with this request. */
@@ -14752,20 +10756,12 @@ export interface PatchPlacementGroupsRequest {
   body?: PlacementGroup;
 }
 export const PatchPlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(PlacementGroup.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/placementGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchPlacementGroupsRequest",
-}) as any as S.Schema<PatchPlacementGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(PlacementGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/placementGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchPlacementGroupsRequest" }) as any as S.Schema<PatchPlacementGroupsRequest>;
 
 export interface PatchPlacementsRequest {
   /** User profile ID associated with this request. */
@@ -14776,20 +10772,12 @@ export interface PatchPlacementsRequest {
   body?: Placement;
 }
 export const PatchPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(Placement.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/placements",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchPlacementsRequest",
-}) as any as S.Schema<PatchPlacementsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(Placement.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/placements","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchPlacementsRequest" }) as any as S.Schema<PatchPlacementsRequest>;
 
 export interface PatchPlacementStrategiesRequest {
   /** User profile ID associated with this request. */
@@ -14800,20 +10788,12 @@ export interface PatchPlacementStrategiesRequest {
   body?: PlacementStrategy;
 }
 export const PatchPlacementStrategiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(PlacementStrategy.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/placementStrategies",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchPlacementStrategiesRequest",
-}) as any as S.Schema<PatchPlacementStrategiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(PlacementStrategy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/placementStrategies","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchPlacementStrategiesRequest" }) as any as S.Schema<PatchPlacementStrategiesRequest>;
 
 export interface PatchRemarketingListsRequest {
   /** User profile ID associated with this request. */
@@ -14824,20 +10804,12 @@ export interface PatchRemarketingListsRequest {
   body?: RemarketingList;
 }
 export const PatchRemarketingListsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(RemarketingList.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/remarketingLists",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchRemarketingListsRequest",
-}) as any as S.Schema<PatchRemarketingListsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(RemarketingList.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/remarketingLists","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchRemarketingListsRequest" }) as any as S.Schema<PatchRemarketingListsRequest>;
 
 export interface PatchRemarketingListSharesRequest {
   /** User profile ID associated with this request. */
@@ -14848,20 +10820,12 @@ export interface PatchRemarketingListSharesRequest {
   body?: RemarketingListShare;
 }
 export const PatchRemarketingListSharesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(RemarketingListShare.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/remarketingListShares",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchRemarketingListSharesRequest",
-}) as any as S.Schema<PatchRemarketingListSharesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(RemarketingListShare.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/remarketingListShares","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchRemarketingListSharesRequest" }) as any as S.Schema<PatchRemarketingListSharesRequest>;
 
 export interface PatchSitesRequest {
   /** User profile ID associated with this request. */
@@ -14872,20 +10836,12 @@ export interface PatchSitesRequest {
   body?: Site;
 }
 export const PatchSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(Site.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/sites",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchSitesRequest",
-}) as any as S.Schema<PatchSitesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(Site.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/sites","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchSitesRequest" }) as any as S.Schema<PatchSitesRequest>;
 
 export interface PatchSubaccountsRequest {
   /** User profile ID associated with this request. */
@@ -14896,20 +10852,12 @@ export interface PatchSubaccountsRequest {
   body?: Subaccount;
 }
 export const PatchSubaccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(Subaccount.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/subaccounts",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchSubaccountsRequest",
-}) as any as S.Schema<PatchSubaccountsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(Subaccount.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/subaccounts","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchSubaccountsRequest" }) as any as S.Schema<PatchSubaccountsRequest>;
 
 export interface PatchTargetingTemplatesRequest {
   /** User profile ID associated with this request. */
@@ -14920,20 +10868,12 @@ export interface PatchTargetingTemplatesRequest {
   body?: TargetingTemplate;
 }
 export const PatchTargetingTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(TargetingTemplate.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/targetingTemplates",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchTargetingTemplatesRequest",
-}) as any as S.Schema<PatchTargetingTemplatesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(TargetingTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/targetingTemplates","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchTargetingTemplatesRequest" }) as any as S.Schema<PatchTargetingTemplatesRequest>;
 
 export interface PatchUserRolesRequest {
   /** User profile ID associated with this request. */
@@ -14944,70 +10884,42 @@ export interface PatchUserRolesRequest {
   body?: UserRole;
 }
 export const PatchUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Query()),
-    body: S.optional(UserRole.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "userprofiles/{+profileId}/userRoles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchUserRolesRequest",
-}) as any as S.Schema<PatchUserRolesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Query()),
+  "body": S.optional(UserRole.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"userprofiles/{+profileId}/userRoles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PatchUserRolesRequest" }) as any as S.Schema<PatchUserRolesRequest>;
 
 export interface PublishDynamicProfilesRequest {
   /** Required. Dynamic profile ID. */
   dynamicProfileId: string;
 }
 export const PublishDynamicProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dynamicProfileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "studio/dynamicProfiles/{+dynamicProfileId}/publish",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PublishDynamicProfilesRequest",
-}) as any as S.Schema<PublishDynamicProfilesRequest>;
+S.Struct({
+  "dynamicProfileId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"studio/dynamicProfiles/{+dynamicProfileId}/publish","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PublishDynamicProfilesRequest" }) as any as S.Schema<PublishDynamicProfilesRequest>;
 
 export interface PublishDynamicProfilesResponse {}
 export const PublishDynamicProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PublishDynamicProfilesResponse",
-}) as any as S.Schema<PublishDynamicProfilesResponse>;
+S.Struct({}),
+).annotate({ identifier: "PublishDynamicProfilesResponse" }) as any as S.Schema<PublishDynamicProfilesResponse>;
 
 export interface PublishStudioCreativesRequest {
   /** Required. Studio creative ID. */
   studioCreativeId: string;
 }
 export const PublishStudioCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    studioCreativeId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "studio/creatives/{+studioCreativeId}/publish",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "PublishStudioCreativesRequest",
-}) as any as S.Schema<PublishStudioCreativesRequest>;
+S.Struct({
+  "studioCreativeId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"studio/creatives/{+studioCreativeId}/publish","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "PublishStudioCreativesRequest" }) as any as S.Schema<PublishStudioCreativesRequest>;
 
 export interface PublishStudioCreativesResponse {}
 export const PublishStudioCreativesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PublishStudioCreativesResponse",
-}) as any as S.Schema<PublishStudioCreativesResponse>;
+S.Struct({}),
+).annotate({ identifier: "PublishStudioCreativesResponse" }) as any as S.Schema<PublishStudioCreativesResponse>;
 
 /** Represents a dimension filter. */
 export interface DimensionFilter {
@@ -15019,19 +10931,15 @@ export interface DimensionFilter {
   value?: string;
 }
 export const DimensionFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionName: S.optional(S.String),
-    kind: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DimensionFilter",
-}) as any as S.Schema<DimensionFilter>;
+S.Struct({
+  "dimensionName": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "DimensionFilter" }) as any as S.Schema<DimensionFilter>;
 
 export type DimensionFilterList = ReadonlyArray<DimensionFilter>;
-export const DimensionFilterList = /*@__PURE__*/ S.Array(
-  DimensionFilter,
-) as any as S.Schema<DimensionFilterList>;
+export const DimensionFilterList = /*@__PURE__*/ S.Array(DimensionFilter) as any as S.Schema<DimensionFilterList>;
 
 /** Represents a DimensionValuesRequest. */
 export interface DimensionValueRequest {
@@ -15045,16 +10953,14 @@ export interface DimensionValueRequest {
   filters?: DimensionFilterList;
 }
 export const DimensionValueRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endDate: S.optional(S.String),
-    kind: S.optional(S.String),
-    startDate: S.optional(S.String),
-    dimensionName: S.optional(S.String),
-    filters: S.optional(DimensionFilterList),
-  }),
-).annotate({
-  identifier: "DimensionValueRequest",
-}) as any as S.Schema<DimensionValueRequest>;
+S.Struct({
+  "endDate": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "startDate": S.optional(S.String),
+  "dimensionName": S.optional(S.String),
+  "filters": S.optional(DimensionFilterList),
+}),
+).annotate({ identifier: "DimensionValueRequest" }) as any as S.Schema<DimensionValueRequest>;
 
 export interface QueryDimensionValuesRequest {
   /** The Campaign Manager 360 user profile ID. */
@@ -15067,21 +10973,13 @@ export interface QueryDimensionValuesRequest {
   body?: DimensionValueRequest;
 }
 export const QueryDimensionValuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    body: S.optional(DimensionValueRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{profileId}/dimensionvalues/query",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "QueryDimensionValuesRequest",
-}) as any as S.Schema<QueryDimensionValuesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "body": S.optional(DimensionValueRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{profileId}/dimensionvalues/query","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "QueryDimensionValuesRequest" }) as any as S.Schema<QueryDimensionValuesRequest>;
 
 /** Represents the list of DimensionValue resources. */
 export interface DimensionValueList {
@@ -15095,37 +10993,33 @@ export interface DimensionValueList {
   nextPageToken?: string;
 }
 export const DimensionValueList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: DimensionValueList_,
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DimensionValueList",
-}) as any as S.Schema<DimensionValueList>;
+S.Struct({
+  "items": DimensionValueList_,
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "DimensionValueList" }) as any as S.Schema<DimensionValueList>;
 
-export type SortBySortOrderEnum = "ASCENDING" | "DESCENDING" | (string & {});
+export type SortBySortOrderEnum = "ASCENDING" | "DESCENDING";
 export const SortBySortOrderEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the sort configuration for a specific field in the report. */
 export interface SortBy {
   /** Optional. The sort order of this column. */
-  sortOrder?: SortBySortOrderEnum;
+  sortOrder?: SortBySortOrderEnum | (string & {});
   /** Required. The dimension or metric field name to sort on. */
   name?: string;
 }
 export const SortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sortOrder: S.optional(SortBySortOrderEnum),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "sortOrder": S.optional(SortBySortOrderEnum),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "SortBy" }) as any as S.Schema<SortBy>;
 
 export type SortByList = ReadonlyArray<SortBy>;
-export const SortByList = /*@__PURE__*/ S.Array(
-  SortBy,
-) as any as S.Schema<SortByList>;
+export const SortByList = /*@__PURE__*/ S.Array(SortBy) as any as S.Schema<SortByList>;
 
 /** The request body containing ad-hoc query parameters. */
 export interface ReportDataQueryRequest {
@@ -15145,18 +11039,16 @@ export interface ReportDataQueryRequest {
   metricNames?: StringList;
 }
 export const ReportDataQueryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionFilters: S.optional(DimensionValueList_),
-    maxResults: S.optional(S.Number),
-    dateRange: S.optional(DateRange),
-    dimensionNames: S.optional(StringList),
-    pageToken: S.optional(S.String),
-    sortBys: S.optional(SortByList),
-    metricNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ReportDataQueryRequest",
-}) as any as S.Schema<ReportDataQueryRequest>;
+S.Struct({
+  "dimensionFilters": S.optional(DimensionValueList_),
+  "maxResults": S.optional(S.Number),
+  "dateRange": S.optional(DateRange),
+  "dimensionNames": S.optional(StringList),
+  "pageToken": S.optional(S.String),
+  "sortBys": S.optional(SortByList),
+  "metricNames": S.optional(StringList),
+}),
+).annotate({ identifier: "ReportDataQueryRequest" }) as any as S.Schema<ReportDataQueryRequest>;
 
 export interface QueryReportDataRequest {
   /** Required. The Campaign Manager 360 user profile ID. */
@@ -15165,19 +11057,11 @@ export interface QueryReportDataRequest {
   body?: ReportDataQueryRequest;
 }
 export const QueryReportDataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(ReportDataQueryRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{profileId}/reportdata/query",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "QueryReportDataRequest",
-}) as any as S.Schema<QueryReportDataRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(ReportDataQueryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{profileId}/reportdata/query","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "QueryReportDataRequest" }) as any as S.Schema<QueryReportDataRequest>;
 
 /** A row of report data. */
 export interface ReportDataRow {
@@ -15185,21 +11069,15 @@ export interface ReportDataRow {
   values?: StringList;
 }
 export const ReportDataRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
+S.Struct({
+  "values": S.optional(StringList),
+}),
 ).annotate({ identifier: "ReportDataRow" }) as any as S.Schema<ReportDataRow>;
 
 export type ReportDataRowList = ReadonlyArray<ReportDataRow>;
-export const ReportDataRowList = /*@__PURE__*/ S.Array(
-  ReportDataRow,
-) as any as S.Schema<ReportDataRowList>;
+export const ReportDataRowList = /*@__PURE__*/ S.Array(ReportDataRow) as any as S.Schema<ReportDataRowList>;
 
-export type ColumnHeaderTypeEnum =
-  | "COLUMN_TYPE_UNSPECIFIED"
-  | "DIMENSION"
-  | "METRIC"
-  | (string & {});
+export type ColumnHeaderTypeEnum = "COLUMN_TYPE_UNSPECIFIED" | "DIMENSION" | "METRIC";
 export const ColumnHeaderTypeEnum = /*@__PURE__*/ S.String;
 
 /** A column header in the report. */
@@ -15210,16 +11088,14 @@ export interface ColumnHeader {
   type?: ColumnHeaderTypeEnum;
 }
 export const ColumnHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ColumnHeaderTypeEnum),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "type": S.optional(ColumnHeaderTypeEnum),
+}),
 ).annotate({ identifier: "ColumnHeader" }) as any as S.Schema<ColumnHeader>;
 
 export type ColumnHeaderList = ReadonlyArray<ColumnHeader>;
-export const ColumnHeaderList = /*@__PURE__*/ S.Array(
-  ColumnHeader,
-) as any as S.Schema<ColumnHeaderList>;
+export const ColumnHeaderList = /*@__PURE__*/ S.Array(ColumnHeader) as any as S.Schema<ColumnHeaderList>;
 
 /** Represents a response to report data request. */
 export interface ReportDataResponse {
@@ -15233,15 +11109,13 @@ export interface ReportDataResponse {
   columnHeaders?: ColumnHeaderList;
 }
 export const ReportDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rows: S.optional(ReportDataRowList),
-    totalRow: S.optional(ReportDataRow),
-    nextPageToken: S.optional(S.String),
-    columnHeaders: S.optional(ColumnHeaderList),
-  }),
-).annotate({
-  identifier: "ReportDataResponse",
-}) as any as S.Schema<ReportDataResponse>;
+S.Struct({
+  "rows": S.optional(ReportDataRowList),
+  "totalRow": S.optional(ReportDataRow),
+  "nextPageToken": S.optional(S.String),
+  "columnHeaders": S.optional(ColumnHeaderList),
+}),
+).annotate({ identifier: "ReportDataResponse" }) as any as S.Schema<ReportDataResponse>;
 
 export interface QueryReportsCompatibleFieldsRequest {
   /** The Campaign Manager 360 user profile ID. */
@@ -15250,19 +11124,11 @@ export interface QueryReportsCompatibleFieldsRequest {
   body?: Report;
 }
 export const QueryReportsCompatibleFieldsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Report.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{profileId}/reports/compatiblefields/query",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "QueryReportsCompatibleFieldsRequest",
-}) as any as S.Schema<QueryReportsCompatibleFieldsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Report.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{profileId}/reports/compatiblefields/query","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "QueryReportsCompatibleFieldsRequest" }) as any as S.Schema<QueryReportsCompatibleFieldsRequest>;
 
 /** Represents a dimension. */
 export interface Dimension {
@@ -15272,16 +11138,14 @@ export interface Dimension {
   kind?: string;
 }
 export const Dimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 export type DimensionList = ReadonlyArray<Dimension>;
-export const DimensionList = /*@__PURE__*/ S.Array(
-  Dimension,
-) as any as S.Schema<DimensionList>;
+export const DimensionList = /*@__PURE__*/ S.Array(Dimension) as any as S.Schema<DimensionList>;
 
 /** Represents a metric. */
 export interface Metric {
@@ -15291,16 +11155,14 @@ export interface Metric {
   name?: string;
 }
 export const Metric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
 export type MetricList = ReadonlyArray<Metric>;
-export const MetricList = /*@__PURE__*/ S.Array(
-  Metric,
-) as any as S.Schema<MetricList>;
+export const MetricList = /*@__PURE__*/ S.Array(Metric) as any as S.Schema<MetricList>;
 
 /** Represents fields that are compatible to be selected for a report of type "PATH_TO_CONVERSION". */
 export interface PathToConversionReportCompatibleFields {
@@ -15315,18 +11177,15 @@ export interface PathToConversionReportCompatibleFields {
   /** The kind of resource this is, in this case dfareporting#pathToConversionReportCompatibleFields. */
   kind?: string;
 }
-export const PathToConversionReportCompatibleFields = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      conversionDimensions: S.optional(DimensionList),
-      metrics: S.optional(MetricList),
-      perInteractionDimensions: S.optional(DimensionList),
-      customFloodlightVariables: S.optional(DimensionList),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PathToConversionReportCompatibleFields",
-}) as any as S.Schema<PathToConversionReportCompatibleFields>;
+export const PathToConversionReportCompatibleFields = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "conversionDimensions": S.optional(DimensionList),
+  "metrics": S.optional(MetricList),
+  "perInteractionDimensions": S.optional(DimensionList),
+  "customFloodlightVariables": S.optional(DimensionList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "PathToConversionReportCompatibleFields" }) as any as S.Schema<PathToConversionReportCompatibleFields>;
 
 /** Represents fields that are compatible to be selected for a report of type "CROSS_MEDIA_REACH". */
 export interface CrossMediaReachReportCompatibleFields {
@@ -15339,17 +11198,14 @@ export interface CrossMediaReachReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
   dimensions?: DimensionList;
 }
-export const CrossMediaReachReportCompatibleFields = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      metrics: S.optional(MetricList),
-      kind: S.optional(S.String),
-      dimensionFilters: S.optional(DimensionList),
-      dimensions: S.optional(DimensionList),
-    }),
-).annotate({
-  identifier: "CrossMediaReachReportCompatibleFields",
-}) as any as S.Schema<CrossMediaReachReportCompatibleFields>;
+export const CrossMediaReachReportCompatibleFields = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "metrics": S.optional(MetricList),
+  "kind": S.optional(S.String),
+  "dimensionFilters": S.optional(DimensionList),
+  "dimensions": S.optional(DimensionList),
+}),
+).annotate({ identifier: "CrossMediaReachReportCompatibleFields" }) as any as S.Schema<CrossMediaReachReportCompatibleFields>;
 
 /** Represents fields that are compatible to be selected for a report of type "FlOODLIGHT". */
 export interface FloodlightReportCompatibleFields {
@@ -15363,15 +11219,13 @@ export interface FloodlightReportCompatibleFields {
   dimensionFilters?: DimensionList;
 }
 export const FloodlightReportCompatibleFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: S.optional(DimensionList),
-    metrics: S.optional(MetricList),
-    kind: S.optional(S.String),
-    dimensionFilters: S.optional(DimensionList),
-  }),
-).annotate({
-  identifier: "FloodlightReportCompatibleFields",
-}) as any as S.Schema<FloodlightReportCompatibleFields>;
+S.Struct({
+  "dimensions": S.optional(DimensionList),
+  "metrics": S.optional(MetricList),
+  "kind": S.optional(S.String),
+  "dimensionFilters": S.optional(DimensionList),
+}),
+).annotate({ identifier: "FloodlightReportCompatibleFields" }) as any as S.Schema<FloodlightReportCompatibleFields>;
 
 /** Represents fields that are compatible to be selected for a report of type "REACH". */
 export interface ReachReportCompatibleFields {
@@ -15389,17 +11243,15 @@ export interface ReachReportCompatibleFields {
   pivotedActivityMetrics?: MetricList;
 }
 export const ReachReportCompatibleFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metrics: S.optional(MetricList),
-    dimensions: S.optional(DimensionList),
-    dimensionFilters: S.optional(DimensionList),
-    kind: S.optional(S.String),
-    reachByFrequencyMetrics: S.optional(MetricList),
-    pivotedActivityMetrics: S.optional(MetricList),
-  }),
-).annotate({
-  identifier: "ReachReportCompatibleFields",
-}) as any as S.Schema<ReachReportCompatibleFields>;
+S.Struct({
+  "metrics": S.optional(MetricList),
+  "dimensions": S.optional(DimensionList),
+  "dimensionFilters": S.optional(DimensionList),
+  "kind": S.optional(S.String),
+  "reachByFrequencyMetrics": S.optional(MetricList),
+  "pivotedActivityMetrics": S.optional(MetricList),
+}),
+).annotate({ identifier: "ReachReportCompatibleFields" }) as any as S.Schema<ReachReportCompatibleFields>;
 
 /** Represents fields that are compatible to be selected for a report of type "STANDARD". */
 export interface ReportCompatibleFields {
@@ -15415,16 +11267,14 @@ export interface ReportCompatibleFields {
   dimensions?: DimensionList;
 }
 export const ReportCompatibleFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionFilters: S.optional(DimensionList),
-    kind: S.optional(S.String),
-    pivotedActivityMetrics: S.optional(MetricList),
-    metrics: S.optional(MetricList),
-    dimensions: S.optional(DimensionList),
-  }),
-).annotate({
-  identifier: "ReportCompatibleFields",
-}) as any as S.Schema<ReportCompatibleFields>;
+S.Struct({
+  "dimensionFilters": S.optional(DimensionList),
+  "kind": S.optional(S.String),
+  "pivotedActivityMetrics": S.optional(MetricList),
+  "metrics": S.optional(MetricList),
+  "dimensions": S.optional(DimensionList),
+}),
+).annotate({ identifier: "ReportCompatibleFields" }) as any as S.Schema<ReportCompatibleFields>;
 
 /** Represents fields that are compatible to be selected for a report of type "CROSS_DIMENSION_REACH". */
 export interface CrossDimensionReachReportCompatibleFields {
@@ -15439,18 +11289,15 @@ export interface CrossDimensionReachReportCompatibleFields {
   /** Metrics which are compatible to be selected in the "overlapMetricNames" section of the report. */
   overlapMetrics?: MetricList;
 }
-export const CrossDimensionReachReportCompatibleFields =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionFilters: S.optional(DimensionList),
-      kind: S.optional(S.String),
-      breakdown: S.optional(DimensionList),
-      metrics: S.optional(MetricList),
-      overlapMetrics: S.optional(MetricList),
-    }),
-  ).annotate({
-    identifier: "CrossDimensionReachReportCompatibleFields",
-  }) as any as S.Schema<CrossDimensionReachReportCompatibleFields>;
+export const CrossDimensionReachReportCompatibleFields = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "dimensionFilters": S.optional(DimensionList),
+  "kind": S.optional(S.String),
+  "breakdown": S.optional(DimensionList),
+  "metrics": S.optional(MetricList),
+  "overlapMetrics": S.optional(MetricList),
+}),
+).annotate({ identifier: "CrossDimensionReachReportCompatibleFields" }) as any as S.Schema<CrossDimensionReachReportCompatibleFields>;
 
 /** Represents a response to the queryCompatibleFields method. Next ID: 10 */
 export interface CompatibleFields {
@@ -15470,44 +11317,26 @@ export interface CompatibleFields {
   crossDimensionReachReportCompatibleFields?: CrossDimensionReachReportCompatibleFields;
 }
 export const CompatibleFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pathToConversionReportCompatibleFields: S.optional(
-      PathToConversionReportCompatibleFields,
-    ),
-    crossMediaReachReportCompatibleFields: S.optional(
-      CrossMediaReachReportCompatibleFields,
-    ),
-    floodlightReportCompatibleFields: S.optional(
-      FloodlightReportCompatibleFields,
-    ),
-    kind: S.optional(S.String),
-    reachReportCompatibleFields: S.optional(ReachReportCompatibleFields),
-    reportCompatibleFields: S.optional(ReportCompatibleFields),
-    crossDimensionReachReportCompatibleFields: S.optional(
-      CrossDimensionReachReportCompatibleFields,
-    ),
-  }),
-).annotate({
-  identifier: "CompatibleFields",
-}) as any as S.Schema<CompatibleFields>;
+S.Struct({
+  "pathToConversionReportCompatibleFields": S.optional(PathToConversionReportCompatibleFields),
+  "crossMediaReachReportCompatibleFields": S.optional(CrossMediaReachReportCompatibleFields),
+  "floodlightReportCompatibleFields": S.optional(FloodlightReportCompatibleFields),
+  "kind": S.optional(S.String),
+  "reachReportCompatibleFields": S.optional(ReachReportCompatibleFields),
+  "reportCompatibleFields": S.optional(ReportCompatibleFields),
+  "crossDimensionReachReportCompatibleFields": S.optional(CrossDimensionReachReportCompatibleFields),
+}),
+).annotate({ identifier: "CompatibleFields" }) as any as S.Schema<CompatibleFields>;
 
 export interface RetransformDynamicFeedsRequest {
   /** Required. Dynamic feed ID. */
   dynamicFeedId: string;
 }
 export const RetransformDynamicFeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dynamicFeedId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "studio/dynamicFeeds/{+dynamicFeedId}/retransform",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "RetransformDynamicFeedsRequest",
-}) as any as S.Schema<RetransformDynamicFeedsRequest>;
+S.Struct({
+  "dynamicFeedId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"studio/dynamicFeeds/{+dynamicFeedId}/retransform","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "RetransformDynamicFeedsRequest" }) as any as S.Schema<RetransformDynamicFeedsRequest>;
 
 export interface RunReportsRequest {
   /** The Campaign Manager 360 user profile ID. */
@@ -15518,20 +11347,12 @@ export interface RunReportsRequest {
   synchronous?: boolean;
 }
 export const RunReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    reportId: S.String.pipe(T.Label()),
-    synchronous: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "userprofiles/{profileId}/reports/{reportId}/run",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "RunReportsRequest",
-}) as any as S.Schema<RunReportsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "reportId": S.String.pipe(T.Label()),
+  "synchronous": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"userprofiles/{profileId}/reports/{reportId}/run","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "RunReportsRequest" }) as any as S.Schema<RunReportsRequest>;
 
 export interface UpdateAccountsRequest {
   /** User profile ID associated with this request. */
@@ -15540,19 +11361,11 @@ export interface UpdateAccountsRequest {
   body?: Account;
 }
 export const UpdateAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Account.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/accounts",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAccountsRequest",
-}) as any as S.Schema<UpdateAccountsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Account.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/accounts","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateAccountsRequest" }) as any as S.Schema<UpdateAccountsRequest>;
 
 export interface UpdateAccountUserProfilesRequest {
   /** User profile ID associated with this request. */
@@ -15561,19 +11374,11 @@ export interface UpdateAccountUserProfilesRequest {
   body?: AccountUserProfile;
 }
 export const UpdateAccountUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(AccountUserProfile.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/accountUserProfiles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAccountUserProfilesRequest",
-}) as any as S.Schema<UpdateAccountUserProfilesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(AccountUserProfile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/accountUserProfiles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateAccountUserProfilesRequest" }) as any as S.Schema<UpdateAccountUserProfilesRequest>;
 
 export interface UpdateAdsRequest {
   /** User profile ID associated with this request. */
@@ -15582,19 +11387,11 @@ export interface UpdateAdsRequest {
   body?: Ad;
 }
 export const UpdateAdsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Ad.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/ads",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAdsRequest",
-}) as any as S.Schema<UpdateAdsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Ad.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/ads","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateAdsRequest" }) as any as S.Schema<UpdateAdsRequest>;
 
 export interface UpdateAdvertiserGroupsRequest {
   /** User profile ID associated with this request. */
@@ -15603,19 +11400,11 @@ export interface UpdateAdvertiserGroupsRequest {
   body?: AdvertiserGroup;
 }
 export const UpdateAdvertiserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(AdvertiserGroup.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/advertiserGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAdvertiserGroupsRequest",
-}) as any as S.Schema<UpdateAdvertiserGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(AdvertiserGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/advertiserGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateAdvertiserGroupsRequest" }) as any as S.Schema<UpdateAdvertiserGroupsRequest>;
 
 export interface UpdateAdvertiserLandingPagesRequest {
   /** User profile ID associated with this request. */
@@ -15624,19 +11413,11 @@ export interface UpdateAdvertiserLandingPagesRequest {
   body?: LandingPage;
 }
 export const UpdateAdvertiserLandingPagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(LandingPage.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/advertiserLandingPages",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAdvertiserLandingPagesRequest",
-}) as any as S.Schema<UpdateAdvertiserLandingPagesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(LandingPage.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/advertiserLandingPages","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateAdvertiserLandingPagesRequest" }) as any as S.Schema<UpdateAdvertiserLandingPagesRequest>;
 
 export interface UpdateAdvertisersRequest {
   /** User profile ID associated with this request. */
@@ -15645,19 +11426,11 @@ export interface UpdateAdvertisersRequest {
   body?: Advertiser;
 }
 export const UpdateAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Advertiser.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/advertisers",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAdvertisersRequest",
-}) as any as S.Schema<UpdateAdvertisersRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Advertiser.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/advertisers","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateAdvertisersRequest" }) as any as S.Schema<UpdateAdvertisersRequest>;
 
 export interface UpdateBillingProfilesRequest {
   /** User profile ID associated with this request. */
@@ -15666,19 +11439,11 @@ export interface UpdateBillingProfilesRequest {
   body?: BillingProfile;
 }
 export const UpdateBillingProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(BillingProfile.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/billingProfiles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateBillingProfilesRequest",
-}) as any as S.Schema<UpdateBillingProfilesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(BillingProfile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/billingProfiles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateBillingProfilesRequest" }) as any as S.Schema<UpdateBillingProfilesRequest>;
 
 export interface UpdateCampaignsRequest {
   /** User profile ID associated with this request. */
@@ -15687,19 +11452,11 @@ export interface UpdateCampaignsRequest {
   body?: Campaign;
 }
 export const UpdateCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Campaign.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/campaigns",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateCampaignsRequest",
-}) as any as S.Schema<UpdateCampaignsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Campaign.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/campaigns","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateCampaignsRequest" }) as any as S.Schema<UpdateCampaignsRequest>;
 
 export interface UpdateContentCategoriesRequest {
   /** User profile ID associated with this request. */
@@ -15708,19 +11465,11 @@ export interface UpdateContentCategoriesRequest {
   body?: ContentCategory;
 }
 export const UpdateContentCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(ContentCategory.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/contentCategories",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateContentCategoriesRequest",
-}) as any as S.Schema<UpdateContentCategoriesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(ContentCategory.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/contentCategories","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateContentCategoriesRequest" }) as any as S.Schema<UpdateContentCategoriesRequest>;
 
 export interface UpdateCreativeFieldsRequest {
   /** User profile ID associated with this request. */
@@ -15729,19 +11478,11 @@ export interface UpdateCreativeFieldsRequest {
   body?: CreativeField;
 }
 export const UpdateCreativeFieldsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(CreativeField.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/creativeFields",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateCreativeFieldsRequest",
-}) as any as S.Schema<UpdateCreativeFieldsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(CreativeField.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/creativeFields","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateCreativeFieldsRequest" }) as any as S.Schema<UpdateCreativeFieldsRequest>;
 
 export interface UpdateCreativeFieldValuesRequest {
   /** User profile ID associated with this request. */
@@ -15752,20 +11493,12 @@ export interface UpdateCreativeFieldValuesRequest {
   body?: CreativeFieldValue;
 }
 export const UpdateCreativeFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    creativeFieldId: S.String.pipe(T.Label()),
-    body: S.optional(CreativeFieldValue.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateCreativeFieldValuesRequest",
-}) as any as S.Schema<UpdateCreativeFieldValuesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "creativeFieldId": S.String.pipe(T.Label()),
+  "body": S.optional(CreativeFieldValue.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateCreativeFieldValuesRequest" }) as any as S.Schema<UpdateCreativeFieldValuesRequest>;
 
 export interface UpdateCreativeGroupsRequest {
   /** User profile ID associated with this request. */
@@ -15774,19 +11507,11 @@ export interface UpdateCreativeGroupsRequest {
   body?: CreativeGroup;
 }
 export const UpdateCreativeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(CreativeGroup.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/creativeGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateCreativeGroupsRequest",
-}) as any as S.Schema<UpdateCreativeGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(CreativeGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/creativeGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateCreativeGroupsRequest" }) as any as S.Schema<UpdateCreativeGroupsRequest>;
 
 export interface UpdateCreativesRequest {
   /** User profile ID associated with this request. */
@@ -15795,55 +11520,31 @@ export interface UpdateCreativesRequest {
   body?: Creative;
 }
 export const UpdateCreativesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Creative.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/creatives",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateCreativesRequest",
-}) as any as S.Schema<UpdateCreativesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Creative.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/creatives","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateCreativesRequest" }) as any as S.Schema<UpdateCreativesRequest>;
 
 export interface UpdateDynamicFeedsRequest {
   /** Request body */
   body?: DynamicFeed;
 }
 export const UpdateDynamicFeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DynamicFeed.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "studio/dynamicFeeds",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateDynamicFeedsRequest",
-}) as any as S.Schema<UpdateDynamicFeedsRequest>;
+S.Struct({
+  "body": S.optional(DynamicFeed.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"studio/dynamicFeeds","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateDynamicFeedsRequest" }) as any as S.Schema<UpdateDynamicFeedsRequest>;
 
 export interface UpdateDynamicProfilesRequest {
   /** Request body */
   body?: DynamicProfile;
 }
 export const UpdateDynamicProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DynamicProfile.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "studio/dynamicProfiles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateDynamicProfilesRequest",
-}) as any as S.Schema<UpdateDynamicProfilesRequest>;
+S.Struct({
+  "body": S.optional(DynamicProfile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"studio/dynamicProfiles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateDynamicProfilesRequest" }) as any as S.Schema<UpdateDynamicProfilesRequest>;
 
 export interface UpdateEventTagsRequest {
   /** User profile ID associated with this request. */
@@ -15852,19 +11553,11 @@ export interface UpdateEventTagsRequest {
   body?: EventTag;
 }
 export const UpdateEventTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(EventTag.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/eventTags",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateEventTagsRequest",
-}) as any as S.Schema<UpdateEventTagsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(EventTag.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/eventTags","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateEventTagsRequest" }) as any as S.Schema<UpdateEventTagsRequest>;
 
 export interface UpdateFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
@@ -15873,19 +11566,11 @@ export interface UpdateFloodlightActivitiesRequest {
   body?: FloodlightActivity;
 }
 export const UpdateFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(FloodlightActivity.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/floodlightActivities",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateFloodlightActivitiesRequest",
-}) as any as S.Schema<UpdateFloodlightActivitiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(FloodlightActivity.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/floodlightActivities","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateFloodlightActivitiesRequest" }) as any as S.Schema<UpdateFloodlightActivitiesRequest>;
 
 export interface UpdateFloodlightActivityGroupsRequest {
   /** User profile ID associated with this request. */
@@ -15893,21 +11578,12 @@ export interface UpdateFloodlightActivityGroupsRequest {
   /** Request body */
   body?: FloodlightActivityGroup;
 }
-export const UpdateFloodlightActivityGroupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      profileId: S.String.pipe(T.Label()),
-      body: S.optional(FloodlightActivityGroup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "userprofiles/{+profileId}/floodlightActivityGroups",
-        baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateFloodlightActivityGroupsRequest",
-}) as any as S.Schema<UpdateFloodlightActivityGroupsRequest>;
+export const UpdateFloodlightActivityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(FloodlightActivityGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/floodlightActivityGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateFloodlightActivityGroupsRequest" }) as any as S.Schema<UpdateFloodlightActivityGroupsRequest>;
 
 export interface UpdateFloodlightConfigurationsRequest {
   /** User profile ID associated with this request. */
@@ -15915,21 +11591,12 @@ export interface UpdateFloodlightConfigurationsRequest {
   /** Request body */
   body?: FloodlightConfiguration;
 }
-export const UpdateFloodlightConfigurationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      profileId: S.String.pipe(T.Label()),
-      body: S.optional(FloodlightConfiguration.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "userprofiles/{+profileId}/floodlightConfigurations",
-        baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateFloodlightConfigurationsRequest",
-}) as any as S.Schema<UpdateFloodlightConfigurationsRequest>;
+export const UpdateFloodlightConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(FloodlightConfiguration.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/floodlightConfigurations","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateFloodlightConfigurationsRequest" }) as any as S.Schema<UpdateFloodlightConfigurationsRequest>;
 
 export interface UpdatePlacementGroupsRequest {
   /** User profile ID associated with this request. */
@@ -15938,19 +11605,11 @@ export interface UpdatePlacementGroupsRequest {
   body?: PlacementGroup;
 }
 export const UpdatePlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(PlacementGroup.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/placementGroups",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdatePlacementGroupsRequest",
-}) as any as S.Schema<UpdatePlacementGroupsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(PlacementGroup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/placementGroups","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdatePlacementGroupsRequest" }) as any as S.Schema<UpdatePlacementGroupsRequest>;
 
 export interface UpdatePlacementsRequest {
   /** User profile ID associated with this request. */
@@ -15959,19 +11618,11 @@ export interface UpdatePlacementsRequest {
   body?: Placement;
 }
 export const UpdatePlacementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Placement.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/placements",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdatePlacementsRequest",
-}) as any as S.Schema<UpdatePlacementsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Placement.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/placements","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdatePlacementsRequest" }) as any as S.Schema<UpdatePlacementsRequest>;
 
 export interface UpdatePlacementStrategiesRequest {
   /** User profile ID associated with this request. */
@@ -15980,19 +11631,11 @@ export interface UpdatePlacementStrategiesRequest {
   body?: PlacementStrategy;
 }
 export const UpdatePlacementStrategiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(PlacementStrategy.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/placementStrategies",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdatePlacementStrategiesRequest",
-}) as any as S.Schema<UpdatePlacementStrategiesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(PlacementStrategy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/placementStrategies","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdatePlacementStrategiesRequest" }) as any as S.Schema<UpdatePlacementStrategiesRequest>;
 
 export interface UpdateRemarketingListsRequest {
   /** User profile ID associated with this request. */
@@ -16001,19 +11644,11 @@ export interface UpdateRemarketingListsRequest {
   body?: RemarketingList;
 }
 export const UpdateRemarketingListsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(RemarketingList.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/remarketingLists",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateRemarketingListsRequest",
-}) as any as S.Schema<UpdateRemarketingListsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(RemarketingList.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/remarketingLists","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateRemarketingListsRequest" }) as any as S.Schema<UpdateRemarketingListsRequest>;
 
 export interface UpdateRemarketingListSharesRequest {
   /** User profile ID associated with this request. */
@@ -16022,19 +11657,11 @@ export interface UpdateRemarketingListSharesRequest {
   body?: RemarketingListShare;
 }
 export const UpdateRemarketingListSharesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(RemarketingListShare.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/remarketingListShares",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateRemarketingListSharesRequest",
-}) as any as S.Schema<UpdateRemarketingListSharesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(RemarketingListShare.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/remarketingListShares","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateRemarketingListSharesRequest" }) as any as S.Schema<UpdateRemarketingListSharesRequest>;
 
 export interface UpdateReportsRequest {
   /** The Campaign Manager 360 user profile ID. */
@@ -16045,20 +11672,12 @@ export interface UpdateReportsRequest {
   body?: Report;
 }
 export const UpdateReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    reportId: S.String.pipe(T.Label()),
-    body: S.optional(Report.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{profileId}/reports/{reportId}",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateReportsRequest",
-}) as any as S.Schema<UpdateReportsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "reportId": S.String.pipe(T.Label()),
+  "body": S.optional(Report.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{profileId}/reports/{reportId}","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateReportsRequest" }) as any as S.Schema<UpdateReportsRequest>;
 
 export interface UpdateSitesRequest {
   /** User profile ID associated with this request. */
@@ -16067,19 +11686,11 @@ export interface UpdateSitesRequest {
   body?: Site;
 }
 export const UpdateSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Site.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/sites",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateSitesRequest",
-}) as any as S.Schema<UpdateSitesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Site.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/sites","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateSitesRequest" }) as any as S.Schema<UpdateSitesRequest>;
 
 export interface UpdateSubaccountsRequest {
   /** User profile ID associated with this request. */
@@ -16088,19 +11699,11 @@ export interface UpdateSubaccountsRequest {
   body?: Subaccount;
 }
 export const UpdateSubaccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(Subaccount.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/subaccounts",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateSubaccountsRequest",
-}) as any as S.Schema<UpdateSubaccountsRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(Subaccount.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/subaccounts","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateSubaccountsRequest" }) as any as S.Schema<UpdateSubaccountsRequest>;
 
 export interface UpdateTargetingTemplatesRequest {
   /** User profile ID associated with this request. */
@@ -16109,19 +11712,11 @@ export interface UpdateTargetingTemplatesRequest {
   body?: TargetingTemplate;
 }
 export const UpdateTargetingTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(TargetingTemplate.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/targetingTemplates",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateTargetingTemplatesRequest",
-}) as any as S.Schema<UpdateTargetingTemplatesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(TargetingTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/targetingTemplates","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateTargetingTemplatesRequest" }) as any as S.Schema<UpdateTargetingTemplatesRequest>;
 
 export interface UpdateUserRolesRequest {
   /** User profile ID associated with this request. */
@@ -16130,26 +11725,13 @@ export interface UpdateUserRolesRequest {
   body?: UserRole;
 }
 export const UpdateUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.Label()),
-    body: S.optional(UserRole.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "userprofiles/{+profileId}/userRoles",
-      baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateUserRolesRequest",
-}) as any as S.Schema<UpdateUserRolesRequest>;
+S.Struct({
+  "profileId": S.String.pipe(T.Label()),
+  "body": S.optional(UserRole.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"userprofiles/{+profileId}/userRoles","baseUrl":"https://dfareporting.googleapis.com/dfareporting/v5/"})),
+).annotate({ identifier: "UpdateUserRolesRequest" }) as any as S.Schema<UpdateUserRolesRequest>;
 
-export type BatchinsertConversionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchinsertConversionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts conversions. */
 export const batchinsertConversions: API.OperationMethod<
   BatchinsertConversionsRequest,
@@ -16164,12 +11746,7 @@ export const batchinsertConversions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchupdateConversionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchupdateConversionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates existing conversions. */
 export const batchupdateConversions: API.OperationMethod<
   BatchupdateConversionsRequest,
@@ -16184,12 +11761,7 @@ export const batchupdateConversions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAdvertiserGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAdvertiserGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing advertiser group. */
 export const deleteAdvertiserGroups: API.OperationMethod<
   DeleteAdvertiserGroupsRequest,
@@ -16204,12 +11776,7 @@ export const deleteAdvertiserGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteContentCategoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteContentCategoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing content category. */
 export const deleteContentCategories: API.OperationMethod<
   DeleteContentCategoriesRequest,
@@ -16224,12 +11791,7 @@ export const deleteContentCategories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCreativeFieldsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteCreativeFieldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing creative field. */
 export const deleteCreativeFields: API.OperationMethod<
   DeleteCreativeFieldsRequest,
@@ -16244,12 +11806,7 @@ export const deleteCreativeFields: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCreativeFieldValuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteCreativeFieldValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing creative field value. */
 export const deleteCreativeFieldValues: API.OperationMethod<
   DeleteCreativeFieldValuesRequest,
@@ -16264,12 +11821,7 @@ export const deleteCreativeFieldValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDynamicTargetingKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteDynamicTargetingKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing dynamic targeting key. */
 export const deleteDynamicTargetingKeys: API.OperationMethod<
   DeleteDynamicTargetingKeysRequest,
@@ -16284,12 +11836,7 @@ export const deleteDynamicTargetingKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteEventTagsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteEventTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing event tag. */
 export const deleteEventTags: API.OperationMethod<
   DeleteEventTagsRequest,
@@ -16304,12 +11851,7 @@ export const deleteEventTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteFloodlightActivitiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteFloodlightActivitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing floodlight activity. */
 export const deleteFloodlightActivities: API.OperationMethod<
   DeleteFloodlightActivitiesRequest,
@@ -16324,12 +11866,7 @@ export const deleteFloodlightActivities: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeletePlacementStrategiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeletePlacementStrategiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing placement strategy. */
 export const deletePlacementStrategies: API.OperationMethod<
   DeletePlacementStrategiesRequest,
@@ -16344,12 +11881,7 @@ export const deletePlacementStrategies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteReportsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a report by its ID. */
 export const deleteReports: API.OperationMethod<
   DeleteReportsRequest,
@@ -16364,12 +11896,7 @@ export const deleteReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteUserRolesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteUserRolesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing user role. */
 export const deleteUserRoles: API.OperationMethod<
   DeleteUserRolesRequest,
@@ -16384,10 +11911,7 @@ export const deleteUserRoles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateCodeDynamicProfilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GenerateCodeDynamicProfilesError = NotFound | Forbidden | GcpOpError;
 /** Generates code for a dynamic profile, which will need unescaping. */
 export const generateCodeDynamicProfiles: API.OperationMethod<
   GenerateCodeDynamicProfilesRequest,
@@ -16402,12 +11926,7 @@ export const generateCodeDynamicProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GeneratetagFloodlightActivitiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GeneratetagFloodlightActivitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Generates a tag for a floodlight activity. */
 export const generatetagFloodlightActivities: API.OperationMethod<
   GeneratetagFloodlightActivitiesRequest,
@@ -16422,12 +11941,7 @@ export const generatetagFloodlightActivities: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GeneratetagsPlacementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GeneratetagsPlacementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Generates tags for a placement. */
 export const generatetagsPlacements: API.OperationMethod<
   GeneratetagsPlacementsRequest,
@@ -16442,10 +11956,7 @@ export const generatetagsPlacements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountActiveAdSummariesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountActiveAdSummariesError = NotFound | Forbidden | GcpOpError;
 /** Gets the account's active ad summary by account ID. */
 export const getAccountActiveAdSummaries: API.OperationMethod<
   GetAccountActiveAdSummariesRequest,
@@ -16820,10 +12331,7 @@ export const getFloodlightActivities: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetFloodlightActivityGroupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetFloodlightActivityGroupsError = NotFound | Forbidden | GcpOpError;
 /** Gets one floodlight activity group by ID. */
 export const getFloodlightActivityGroups: API.OperationMethod<
   GetFloodlightActivityGroupsRequest,
@@ -16838,10 +12346,7 @@ export const getFloodlightActivityGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetFloodlightConfigurationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetFloodlightConfigurationsError = NotFound | Forbidden | GcpOpError;
 /** Gets one floodlight configuration by ID. */
 export const getFloodlightConfigurations: API.OperationMethod<
   GetFloodlightConfigurationsRequest,
@@ -17111,10 +12616,7 @@ export const getSubaccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetTargetableRemarketingListsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetTargetableRemarketingListsError = NotFound | Forbidden | GcpOpError;
 /** Gets one remarketing list by ID. */
 export const getTargetableRemarketingLists: API.OperationMethod<
   GetTargetableRemarketingListsRequest,
@@ -17174,10 +12676,7 @@ export const getUserProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetUserRolePermissionGroupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetUserRolePermissionGroupsError = NotFound | Forbidden | GcpOpError;
 /** Gets one user role permission group by ID. */
 export const getUserRolePermissionGroups: API.OperationMethod<
   GetUserRolePermissionGroupsRequest,
@@ -17237,12 +12736,7 @@ export const getVideoFormats: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountUserProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAccountUserProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new account user profile. */
 export const insertAccountUserProfiles: API.OperationMethod<
   InsertAccountUserProfilesRequest,
@@ -17257,12 +12751,7 @@ export const insertAccountUserProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAdsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAdsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new ad. */
 export const insertAds: API.OperationMethod<
   InsertAdsRequest,
@@ -17277,12 +12766,7 @@ export const insertAds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAdvertiserGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAdvertiserGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new advertiser group. */
 export const insertAdvertiserGroups: API.OperationMethod<
   InsertAdvertiserGroupsRequest,
@@ -17297,12 +12781,7 @@ export const insertAdvertiserGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAdvertiserLandingPagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAdvertiserLandingPagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new landing page. */
 export const insertAdvertiserLandingPages: API.OperationMethod<
   InsertAdvertiserLandingPagesRequest,
@@ -17317,12 +12796,7 @@ export const insertAdvertiserLandingPages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAdvertisersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAdvertisersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new advertiser. */
 export const insertAdvertisers: API.OperationMethod<
   InsertAdvertisersRequest,
@@ -17337,12 +12811,7 @@ export const insertAdvertisers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertBillingAssignmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertBillingAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new billing assignment and returns the new assignment. Only one of advertiser_id or campaign_id is support per request. If the new assignment has no effect (assigning a campaign to the parent advertiser billing profile or assigning an advertiser to the account billing profile), no assignment will be returned. */
 export const insertBillingAssignments: API.OperationMethod<
   InsertBillingAssignmentsRequest,
@@ -17357,12 +12826,7 @@ export const insertBillingAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCampaignCreativeAssociationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertCampaignCreativeAssociationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Associates a creative with the specified campaign. This method creates a default ad with dimensions matching the creative in the campaign if such a default ad does not exist already. */
 export const insertCampaignCreativeAssociations: API.OperationMethod<
   InsertCampaignCreativeAssociationsRequest,
@@ -17377,12 +12841,7 @@ export const insertCampaignCreativeAssociations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCampaignsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertCampaignsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new campaign. */
 export const insertCampaigns: API.OperationMethod<
   InsertCampaignsRequest,
@@ -17397,12 +12856,7 @@ export const insertCampaigns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertContentCategoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertContentCategoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new content category. */
 export const insertContentCategories: API.OperationMethod<
   InsertContentCategoriesRequest,
@@ -17417,12 +12871,7 @@ export const insertContentCategories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCreativeAssetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertCreativeAssetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new creative asset. */
 export const insertCreativeAssets: API.OperationMethod<
   InsertCreativeAssetsRequest,
@@ -17437,12 +12886,7 @@ export const insertCreativeAssets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCreativeFieldsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertCreativeFieldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new creative field. */
 export const insertCreativeFields: API.OperationMethod<
   InsertCreativeFieldsRequest,
@@ -17457,12 +12901,7 @@ export const insertCreativeFields: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCreativeFieldValuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertCreativeFieldValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new creative field value. */
 export const insertCreativeFieldValues: API.OperationMethod<
   InsertCreativeFieldValuesRequest,
@@ -17477,12 +12916,7 @@ export const insertCreativeFieldValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCreativeGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertCreativeGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new creative group. */
 export const insertCreativeGroups: API.OperationMethod<
   InsertCreativeGroupsRequest,
@@ -17497,12 +12931,7 @@ export const insertCreativeGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCreativesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertCreativesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new creative. */
 export const insertCreatives: API.OperationMethod<
   InsertCreativesRequest,
@@ -17517,12 +12946,7 @@ export const insertCreatives: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertDirectorySitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertDirectorySitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new directory site. */
 export const insertDirectorySites: API.OperationMethod<
   InsertDirectorySitesRequest,
@@ -17537,12 +12961,7 @@ export const insertDirectorySites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertDynamicFeedsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertDynamicFeedsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new dynamic feed. */
 export const insertDynamicFeeds: API.OperationMethod<
   InsertDynamicFeedsRequest,
@@ -17557,12 +12976,7 @@ export const insertDynamicFeeds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertDynamicProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertDynamicProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new dynamic profile. */
 export const insertDynamicProfiles: API.OperationMethod<
   InsertDynamicProfilesRequest,
@@ -17577,12 +12991,7 @@ export const insertDynamicProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertDynamicTargetingKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertDynamicTargetingKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new dynamic targeting key. Keys must be created at the advertiser level before being assigned to the advertiser's ads, creatives, or placements. There is a maximum of 1000 keys per advertiser, out of which a maximum of 20 keys can be assigned per ad, creative, or placement. */
 export const insertDynamicTargetingKeys: API.OperationMethod<
   InsertDynamicTargetingKeysRequest,
@@ -17597,12 +13006,7 @@ export const insertDynamicTargetingKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertEventTagsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertEventTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new event tag. */
 export const insertEventTags: API.OperationMethod<
   InsertEventTagsRequest,
@@ -17617,12 +13021,7 @@ export const insertEventTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertFloodlightActivitiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertFloodlightActivitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new floodlight activity. */
 export const insertFloodlightActivities: API.OperationMethod<
   InsertFloodlightActivitiesRequest,
@@ -17637,12 +13036,7 @@ export const insertFloodlightActivities: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertFloodlightActivityGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertFloodlightActivityGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new floodlight activity group. */
 export const insertFloodlightActivityGroups: API.OperationMethod<
   InsertFloodlightActivityGroupsRequest,
@@ -17657,12 +13051,7 @@ export const insertFloodlightActivityGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertPlacementGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertPlacementGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new placement group. */
 export const insertPlacementGroups: API.OperationMethod<
   InsertPlacementGroupsRequest,
@@ -17677,12 +13066,7 @@ export const insertPlacementGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertPlacementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertPlacementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new placement. */
 export const insertPlacements: API.OperationMethod<
   InsertPlacementsRequest,
@@ -17697,12 +13081,7 @@ export const insertPlacements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertPlacementStrategiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertPlacementStrategiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new placement strategy. */
 export const insertPlacementStrategies: API.OperationMethod<
   InsertPlacementStrategiesRequest,
@@ -17717,12 +13096,7 @@ export const insertPlacementStrategies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertRemarketingListsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertRemarketingListsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new remarketing list. */
 export const insertRemarketingLists: API.OperationMethod<
   InsertRemarketingListsRequest,
@@ -17737,12 +13111,7 @@ export const insertRemarketingLists: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertReportsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a report. */
 export const insertReports: API.OperationMethod<
   InsertReportsRequest,
@@ -17757,12 +13126,7 @@ export const insertReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new site. */
 export const insertSites: API.OperationMethod<
   InsertSitesRequest,
@@ -17777,12 +13141,7 @@ export const insertSites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertSizesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertSizesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new size. */
 export const insertSizes: API.OperationMethod<
   InsertSizesRequest,
@@ -17797,12 +13156,7 @@ export const insertSizes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertStudioCreativeAssetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertStudioCreativeAssetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new studio creative asset. */
 export const insertStudioCreativeAssets: API.OperationMethod<
   InsertStudioCreativeAssetsRequest,
@@ -17817,12 +13171,7 @@ export const insertStudioCreativeAssets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertStudioCreativesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertStudioCreativesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new studio creative. */
 export const insertStudioCreatives: API.OperationMethod<
   InsertStudioCreativesRequest,
@@ -17837,12 +13186,7 @@ export const insertStudioCreatives: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertSubaccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertSubaccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new subaccount. */
 export const insertSubaccounts: API.OperationMethod<
   InsertSubaccountsRequest,
@@ -17857,12 +13201,7 @@ export const insertSubaccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertTargetingTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertTargetingTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new targeting template. */
 export const insertTargetingTemplates: API.OperationMethod<
   InsertTargetingTemplatesRequest,
@@ -17877,12 +13216,7 @@ export const insertTargetingTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertUserRolesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertUserRolesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new user role. */
 export const insertUserRoles: API.OperationMethod<
   InsertUserRolesRequest,
@@ -17897,10 +13231,7 @@ export const insertUserRoles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAccountPermissionGroupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountPermissionGroupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of account permission groups. */
 export const listAccountPermissionGroups: API.OperationMethod<
   ListAccountPermissionGroupsRequest,
@@ -17943,10 +13274,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountUserProfilesError = NotFound | Forbidden | GcpOpError;
@@ -17962,10 +13290,7 @@ export const listAccountUserProfiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAdsError = NotFound | Forbidden | GcpOpError;
@@ -17981,10 +13306,7 @@ export const listAds: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAdvertiserGroupsError = NotFound | Forbidden | GcpOpError;
@@ -18000,10 +13322,7 @@ export const listAdvertiserGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAdvertiserInvoicesError = NotFound | Forbidden | GcpOpError;
@@ -18019,10 +13338,7 @@ export const listAdvertiserInvoices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAdvertiserLandingPagesError = NotFound | Forbidden | GcpOpError;
@@ -18038,10 +13354,7 @@ export const listAdvertiserLandingPages: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAdvertisersError = NotFound | Forbidden | GcpOpError;
@@ -18057,10 +13370,7 @@ export const listAdvertisers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBillingAssignmentsError = NotFound | Forbidden | GcpOpError;
@@ -18091,10 +13401,7 @@ export const listBillingProfiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBillingRatesError = NotFound | Forbidden | GcpOpError;
@@ -18127,10 +13434,7 @@ export const listBrowsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListCampaignCreativeAssociationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListCampaignCreativeAssociationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of creative IDs associated with the specified campaign. This method supports paging. */
 export const listCampaignCreativeAssociations: API.PaginatedOperationMethod<
   ListCampaignCreativeAssociationsRequest,
@@ -18143,10 +13447,7 @@ export const listCampaignCreativeAssociations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListCampaignsError = NotFound | Forbidden | GcpOpError;
@@ -18162,10 +13463,7 @@ export const listCampaigns: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListChangeLogsError = NotFound | Forbidden | GcpOpError;
@@ -18181,10 +13479,7 @@ export const listChangeLogs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListCitiesError = NotFound | Forbidden | GcpOpError;
@@ -18230,10 +13525,7 @@ export const listContentCategories: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListCountriesError = NotFound | Forbidden | GcpOpError;
@@ -18264,10 +13556,7 @@ export const listCreativeFields: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListCreativeFieldValuesError = NotFound | Forbidden | GcpOpError;
@@ -18283,10 +13572,7 @@ export const listCreativeFieldValues: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListCreativeGroupsError = NotFound | Forbidden | GcpOpError;
@@ -18302,10 +13588,7 @@ export const listCreativeGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListCreativesError = NotFound | Forbidden | GcpOpError;
@@ -18321,10 +13604,7 @@ export const listCreatives: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListDirectorySitesError = NotFound | Forbidden | GcpOpError;
@@ -18340,10 +13620,7 @@ export const listDirectorySites: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListDynamicTargetingKeysError = NotFound | Forbidden | GcpOpError;
@@ -18389,11 +13666,7 @@ export const listFiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListFloodlightActivitiesError = NotFound | Forbidden | GcpOpError;
@@ -18409,16 +13682,10 @@ export const listFloodlightActivities: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListFloodlightActivityGroupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListFloodlightActivityGroupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of floodlight activity groups, possibly filtered. This method supports paging. */
 export const listFloodlightActivityGroups: API.PaginatedOperationMethod<
   ListFloodlightActivityGroupsRequest,
@@ -18431,16 +13698,10 @@ export const listFloodlightActivityGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListFloodlightConfigurationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListFloodlightConfigurationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of floodlight configurations, possibly filtered. */
 export const listFloodlightConfigurations: API.OperationMethod<
   ListFloodlightConfigurationsRequest,
@@ -18498,10 +13759,7 @@ export const listMobileApps: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListMobileCarriersError = NotFound | Forbidden | GcpOpError;
@@ -18534,10 +13792,7 @@ export const listOperatingSystems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListOperatingSystemVersionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOperatingSystemVersionsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of operating system versions. */
 export const listOperatingSystemVersions: API.OperationMethod<
   ListOperatingSystemVersionsRequest,
@@ -18565,10 +13820,7 @@ export const listPlacementGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListPlacementsError = NotFound | Forbidden | GcpOpError;
@@ -18584,10 +13836,7 @@ export const listPlacements: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListPlacementStrategiesError = NotFound | Forbidden | GcpOpError;
@@ -18603,10 +13852,7 @@ export const listPlacementStrategies: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListPlatformTypesError = NotFound | Forbidden | GcpOpError;
@@ -18667,10 +13913,7 @@ export const listRemarketingLists: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListReportsError = NotFound | Forbidden | GcpOpError;
@@ -18686,11 +13929,7 @@ export const listReports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListReportsFilesError = NotFound | Forbidden | GcpOpError;
@@ -18706,11 +13945,7 @@ export const listReportsFiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListSitesError = NotFound | Forbidden | GcpOpError;
@@ -18726,10 +13961,7 @@ export const listSites: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListSizesError = NotFound | Forbidden | GcpOpError;
@@ -18760,16 +13992,10 @@ export const listSubaccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListTargetableRemarketingListsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListTargetableRemarketingListsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of targetable remarketing lists, possibly filtered. This method supports paging. */
 export const listTargetableRemarketingLists: API.PaginatedOperationMethod<
   ListTargetableRemarketingListsRequest,
@@ -18782,10 +14008,7 @@ export const listTargetableRemarketingLists: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListTargetingTemplatesError = NotFound | Forbidden | GcpOpError;
@@ -18801,10 +14024,7 @@ export const listTargetingTemplates: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListTvCampaignSummariesError = NotFound | Forbidden | GcpOpError;
@@ -18837,10 +14057,7 @@ export const listUserProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListUserRolePermissionGroupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListUserRolePermissionGroupsError = NotFound | Forbidden | GcpOpError;
 /** Gets a list of all supported user role permission groups. */
 export const listUserRolePermissionGroups: API.OperationMethod<
   ListUserRolePermissionGroupsRequest,
@@ -18883,10 +14100,7 @@ export const listUserRoles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListVideoFormatsError = NotFound | Forbidden | GcpOpError;
@@ -18904,12 +14118,7 @@ export const listVideoFormats: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing account. This method supports patch semantics. */
 export const patchAccounts: API.OperationMethod<
   PatchAccountsRequest,
@@ -18924,12 +14133,7 @@ export const patchAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountUserProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountUserProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing account user profile. This method supports patch semantics. */
 export const patchAccountUserProfiles: API.OperationMethod<
   PatchAccountUserProfilesRequest,
@@ -18944,12 +14148,7 @@ export const patchAccountUserProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAdsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAdsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing ad. This method supports patch semantics. */
 export const patchAds: API.OperationMethod<
   PatchAdsRequest,
@@ -18964,12 +14163,7 @@ export const patchAds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAdvertiserGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAdvertiserGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing advertiser group. This method supports patch semantics. */
 export const patchAdvertiserGroups: API.OperationMethod<
   PatchAdvertiserGroupsRequest,
@@ -18984,12 +14178,7 @@ export const patchAdvertiserGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAdvertiserLandingPagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAdvertiserLandingPagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing landing page. This method supports patch semantics. */
 export const patchAdvertiserLandingPages: API.OperationMethod<
   PatchAdvertiserLandingPagesRequest,
@@ -19004,12 +14193,7 @@ export const patchAdvertiserLandingPages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAdvertisersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAdvertisersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing advertiser. This method supports patch semantics. */
 export const patchAdvertisers: API.OperationMethod<
   PatchAdvertisersRequest,
@@ -19024,12 +14208,7 @@ export const patchAdvertisers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCampaignsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchCampaignsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing campaign. This method supports patch semantics. */
 export const patchCampaigns: API.OperationMethod<
   PatchCampaignsRequest,
@@ -19044,12 +14223,7 @@ export const patchCampaigns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchContentCategoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchContentCategoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing content category. This method supports patch semantics. */
 export const patchContentCategories: API.OperationMethod<
   PatchContentCategoriesRequest,
@@ -19064,12 +14238,7 @@ export const patchContentCategories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCreativeFieldsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchCreativeFieldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing creative field. This method supports patch semantics. */
 export const patchCreativeFields: API.OperationMethod<
   PatchCreativeFieldsRequest,
@@ -19084,12 +14253,7 @@ export const patchCreativeFields: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCreativeFieldValuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchCreativeFieldValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing creative field value. This method supports patch semantics. */
 export const patchCreativeFieldValues: API.OperationMethod<
   PatchCreativeFieldValuesRequest,
@@ -19104,12 +14268,7 @@ export const patchCreativeFieldValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCreativeGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchCreativeGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing creative group. This method supports patch semantics. */
 export const patchCreativeGroups: API.OperationMethod<
   PatchCreativeGroupsRequest,
@@ -19124,12 +14283,7 @@ export const patchCreativeGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCreativesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchCreativesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing creative. This method supports patch semantics. */
 export const patchCreatives: API.OperationMethod<
   PatchCreativesRequest,
@@ -19144,12 +14298,7 @@ export const patchCreatives: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchEventTagsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchEventTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing event tag. This method supports patch semantics. */
 export const patchEventTags: API.OperationMethod<
   PatchEventTagsRequest,
@@ -19164,12 +14313,7 @@ export const patchEventTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchFloodlightActivitiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchFloodlightActivitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing floodlight activity. This method supports patch semantics. */
 export const patchFloodlightActivities: API.OperationMethod<
   PatchFloodlightActivitiesRequest,
@@ -19184,12 +14328,7 @@ export const patchFloodlightActivities: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchFloodlightActivityGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchFloodlightActivityGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing floodlight activity group. This method supports patch semantics. */
 export const patchFloodlightActivityGroups: API.OperationMethod<
   PatchFloodlightActivityGroupsRequest,
@@ -19204,12 +14343,7 @@ export const patchFloodlightActivityGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchFloodlightConfigurationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchFloodlightConfigurationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing floodlight configuration. This method supports patch semantics. */
 export const patchFloodlightConfigurations: API.OperationMethod<
   PatchFloodlightConfigurationsRequest,
@@ -19224,12 +14358,7 @@ export const patchFloodlightConfigurations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchPlacementGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchPlacementGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing placement group. This method supports patch semantics. */
 export const patchPlacementGroups: API.OperationMethod<
   PatchPlacementGroupsRequest,
@@ -19244,12 +14373,7 @@ export const patchPlacementGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchPlacementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchPlacementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing placement. This method supports patch semantics. */
 export const patchPlacements: API.OperationMethod<
   PatchPlacementsRequest,
@@ -19264,12 +14388,7 @@ export const patchPlacements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchPlacementStrategiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchPlacementStrategiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing placement strategy. This method supports patch semantics. */
 export const patchPlacementStrategies: API.OperationMethod<
   PatchPlacementStrategiesRequest,
@@ -19284,12 +14403,7 @@ export const patchPlacementStrategies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchRemarketingListsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchRemarketingListsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing remarketing list. This method supports patch semantics. */
 export const patchRemarketingLists: API.OperationMethod<
   PatchRemarketingListsRequest,
@@ -19304,12 +14418,7 @@ export const patchRemarketingLists: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchRemarketingListSharesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchRemarketingListSharesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing remarketing list share. This method supports patch semantics. */
 export const patchRemarketingListShares: API.OperationMethod<
   PatchRemarketingListSharesRequest,
@@ -19324,12 +14433,7 @@ export const patchRemarketingListShares: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing site. This method supports patch semantics. */
 export const patchSites: API.OperationMethod<
   PatchSitesRequest,
@@ -19344,12 +14448,7 @@ export const patchSites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchSubaccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchSubaccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing subaccount. This method supports patch semantics. */
 export const patchSubaccounts: API.OperationMethod<
   PatchSubaccountsRequest,
@@ -19364,12 +14463,7 @@ export const patchSubaccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchTargetingTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchTargetingTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing targeting template. This method supports patch semantics. */
 export const patchTargetingTemplates: API.OperationMethod<
   PatchTargetingTemplatesRequest,
@@ -19384,12 +14478,7 @@ export const patchTargetingTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchUserRolesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchUserRolesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing user role. This method supports patch semantics. */
 export const patchUserRoles: API.OperationMethod<
   PatchUserRolesRequest,
@@ -19404,12 +14493,7 @@ export const patchUserRoles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishDynamicProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PublishDynamicProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Publish for a dynamic profile. */
 export const publishDynamicProfiles: API.OperationMethod<
   PublishDynamicProfilesRequest,
@@ -19424,12 +14508,7 @@ export const publishDynamicProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishStudioCreativesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PublishStudioCreativesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Publish for a studio creative. */
 export const publishStudioCreatives: API.OperationMethod<
   PublishStudioCreativesRequest,
@@ -19444,12 +14523,7 @@ export const publishStudioCreatives: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryDimensionValuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type QueryDimensionValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves list of report dimension values for a list of filters. */
 export const queryDimensionValues: API.PaginatedOperationMethod<
   QueryDimensionValuesRequest,
@@ -19462,19 +14536,10 @@ export const queryDimensionValues: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
-export type QueryReportDataError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type QueryReportDataError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Executes an ad-hoc query and returns structured JSON payload data. */
 export const queryReportData: API.OperationMethod<
   QueryReportDataRequest,
@@ -19489,12 +14554,7 @@ export const queryReportData: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryReportsCompatibleFieldsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type QueryReportsCompatibleFieldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns the fields that are compatible to be selected in the respective sections of a report criteria, given the fields already selected in the input report and user permissions. */
 export const queryReportsCompatibleFields: API.OperationMethod<
   QueryReportsCompatibleFieldsRequest,
@@ -19509,12 +14569,7 @@ export const queryReportsCompatibleFields: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RetransformDynamicFeedsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RetransformDynamicFeedsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retransforms a dynamic feed. Only draft feeds can be retransformed (i.e. the feed has not been published). */
 export const retransformDynamicFeeds: API.OperationMethod<
   RetransformDynamicFeedsRequest,
@@ -19529,12 +14584,7 @@ export const retransformDynamicFeeds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunReportsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RunReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Runs a report. */
 export const runReports: API.OperationMethod<
   RunReportsRequest,
@@ -19549,12 +14599,7 @@ export const runReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing account. */
 export const updateAccounts: API.OperationMethod<
   UpdateAccountsRequest,
@@ -19569,12 +14614,7 @@ export const updateAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountUserProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAccountUserProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing account user profile. */
 export const updateAccountUserProfiles: API.OperationMethod<
   UpdateAccountUserProfilesRequest,
@@ -19589,12 +14629,7 @@ export const updateAccountUserProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAdsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAdsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing ad. */
 export const updateAds: API.OperationMethod<
   UpdateAdsRequest,
@@ -19609,12 +14644,7 @@ export const updateAds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAdvertiserGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAdvertiserGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing advertiser group. */
 export const updateAdvertiserGroups: API.OperationMethod<
   UpdateAdvertiserGroupsRequest,
@@ -19629,12 +14659,7 @@ export const updateAdvertiserGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAdvertiserLandingPagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAdvertiserLandingPagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing landing page. */
 export const updateAdvertiserLandingPages: API.OperationMethod<
   UpdateAdvertiserLandingPagesRequest,
@@ -19649,12 +14674,7 @@ export const updateAdvertiserLandingPages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAdvertisersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAdvertisersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing advertiser. */
 export const updateAdvertisers: API.OperationMethod<
   UpdateAdvertisersRequest,
@@ -19669,12 +14689,7 @@ export const updateAdvertisers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateBillingProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateBillingProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing billing profile. */
 export const updateBillingProfiles: API.OperationMethod<
   UpdateBillingProfilesRequest,
@@ -19689,12 +14704,7 @@ export const updateBillingProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCampaignsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCampaignsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing campaign. */
 export const updateCampaigns: API.OperationMethod<
   UpdateCampaignsRequest,
@@ -19709,12 +14719,7 @@ export const updateCampaigns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateContentCategoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateContentCategoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing content category. */
 export const updateContentCategories: API.OperationMethod<
   UpdateContentCategoriesRequest,
@@ -19729,12 +14734,7 @@ export const updateContentCategories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCreativeFieldsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCreativeFieldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing creative field. */
 export const updateCreativeFields: API.OperationMethod<
   UpdateCreativeFieldsRequest,
@@ -19749,12 +14749,7 @@ export const updateCreativeFields: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCreativeFieldValuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCreativeFieldValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing creative field value. */
 export const updateCreativeFieldValues: API.OperationMethod<
   UpdateCreativeFieldValuesRequest,
@@ -19769,12 +14764,7 @@ export const updateCreativeFieldValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCreativeGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCreativeGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing creative group. */
 export const updateCreativeGroups: API.OperationMethod<
   UpdateCreativeGroupsRequest,
@@ -19789,12 +14779,7 @@ export const updateCreativeGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCreativesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCreativesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing creative. */
 export const updateCreatives: API.OperationMethod<
   UpdateCreativesRequest,
@@ -19809,12 +14794,7 @@ export const updateCreatives: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateDynamicFeedsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateDynamicFeedsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a new dynamic feed. For draft feeds, only Element can be updated. For published feeds, only FeedSchedule can be updated. Other fields will be ignored. */
 export const updateDynamicFeeds: API.OperationMethod<
   UpdateDynamicFeedsRequest,
@@ -19829,12 +14809,7 @@ export const updateDynamicFeeds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateDynamicProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateDynamicProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing dynamic profile. */
 export const updateDynamicProfiles: API.OperationMethod<
   UpdateDynamicProfilesRequest,
@@ -19849,12 +14824,7 @@ export const updateDynamicProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateEventTagsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEventTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing event tag. */
 export const updateEventTags: API.OperationMethod<
   UpdateEventTagsRequest,
@@ -19869,12 +14839,7 @@ export const updateEventTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateFloodlightActivitiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateFloodlightActivitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing floodlight activity. */
 export const updateFloodlightActivities: API.OperationMethod<
   UpdateFloodlightActivitiesRequest,
@@ -19889,12 +14854,7 @@ export const updateFloodlightActivities: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateFloodlightActivityGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateFloodlightActivityGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing floodlight activity group. */
 export const updateFloodlightActivityGroups: API.OperationMethod<
   UpdateFloodlightActivityGroupsRequest,
@@ -19909,12 +14869,7 @@ export const updateFloodlightActivityGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateFloodlightConfigurationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateFloodlightConfigurationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing floodlight configuration. */
 export const updateFloodlightConfigurations: API.OperationMethod<
   UpdateFloodlightConfigurationsRequest,
@@ -19929,12 +14884,7 @@ export const updateFloodlightConfigurations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatePlacementGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdatePlacementGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing placement group. */
 export const updatePlacementGroups: API.OperationMethod<
   UpdatePlacementGroupsRequest,
@@ -19949,12 +14899,7 @@ export const updatePlacementGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatePlacementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdatePlacementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing placement. */
 export const updatePlacements: API.OperationMethod<
   UpdatePlacementsRequest,
@@ -19969,12 +14914,7 @@ export const updatePlacements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatePlacementStrategiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdatePlacementStrategiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing placement strategy. */
 export const updatePlacementStrategies: API.OperationMethod<
   UpdatePlacementStrategiesRequest,
@@ -19989,12 +14929,7 @@ export const updatePlacementStrategies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateRemarketingListsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateRemarketingListsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing remarketing list. */
 export const updateRemarketingLists: API.OperationMethod<
   UpdateRemarketingListsRequest,
@@ -20009,12 +14944,7 @@ export const updateRemarketingLists: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateRemarketingListSharesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateRemarketingListSharesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing remarketing list share. */
 export const updateRemarketingListShares: API.OperationMethod<
   UpdateRemarketingListSharesRequest,
@@ -20029,12 +14959,7 @@ export const updateRemarketingListShares: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateReportsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a report. */
 export const updateReports: API.OperationMethod<
   UpdateReportsRequest,
@@ -20049,12 +14974,7 @@ export const updateReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing site. */
 export const updateSites: API.OperationMethod<
   UpdateSitesRequest,
@@ -20069,12 +14989,7 @@ export const updateSites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSubaccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateSubaccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing subaccount. */
 export const updateSubaccounts: API.OperationMethod<
   UpdateSubaccountsRequest,
@@ -20089,12 +15004,7 @@ export const updateSubaccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateTargetingTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateTargetingTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing targeting template. */
 export const updateTargetingTemplates: API.OperationMethod<
   UpdateTargetingTemplatesRequest,
@@ -20109,12 +15019,7 @@ export const updateTargetingTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateUserRolesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateUserRolesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing user role. */
 export const updateUserRoles: API.OperationMethod<
   UpdateUserRolesRequest,
@@ -20128,3 +15033,4 @@ export const updateUserRoles: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

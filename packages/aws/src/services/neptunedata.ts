@@ -586,14 +586,11 @@ export const DeleteSparqlStatisticsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSparqlStatisticsOutput",
 }) as any as S.Schema<DeleteSparqlStatisticsOutput>;
-export type Action =
-  | "initiateDatabaseReset"
-  | "performDatabaseReset"
-  | (string & {});
+export type Action = "initiateDatabaseReset" | "performDatabaseReset";
 export const Action = /*@__PURE__*/ S.String;
 
 export interface ExecuteFastResetInput {
-  action: Action;
+  action: Action | (string & {});
   token?: string;
 }
 export const ExecuteFastResetInput = /*@__PURE__*/ S.suspend(() =>
@@ -750,17 +747,13 @@ export const ExecuteGremlinQueryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteGremlinQueryOutput",
 }) as any as S.Schema<ExecuteGremlinQueryOutput>;
-export type OpenCypherExplainMode =
-  | "static"
-  | "dynamic"
-  | "details"
-  | (string & {});
+export type OpenCypherExplainMode = "static" | "dynamic" | "details";
 export const OpenCypherExplainMode = /*@__PURE__*/ S.String;
 
 export interface ExecuteOpenCypherExplainQueryInput {
   openCypherQuery: string;
   parameters?: string;
-  explainMode: OpenCypherExplainMode;
+  explainMode: OpenCypherExplainMode | (string & {});
 }
 export const ExecuteOpenCypherExplainQueryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1251,19 +1244,18 @@ export type IteratorType =
   | "AT_SEQUENCE_NUMBER"
   | "AFTER_SEQUENCE_NUMBER"
   | "TRIM_HORIZON"
-  | "LATEST"
-  | (string & {});
+  | "LATEST";
 export const IteratorType = /*@__PURE__*/ S.String;
 
-export type Encoding = "gzip" | (string & {});
+export type Encoding = "gzip";
 export const Encoding = /*@__PURE__*/ S.String;
 
 export interface GetPropertygraphStreamInput {
   limit?: number;
-  iteratorType?: IteratorType;
+  iteratorType?: IteratorType | (string & {});
   commitNum?: number;
   opNum?: number;
-  encoding?: Encoding;
+  encoding?: Encoding | (string & {});
 }
 export const GetPropertygraphStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1344,11 +1336,11 @@ export const GetPropertygraphStreamOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPropertygraphStreamOutput",
 }) as any as S.Schema<GetPropertygraphStreamOutput>;
-export type GraphSummaryType = "basic" | "detailed" | (string & {});
+export type GraphSummaryType = "basic" | "detailed";
 export const GraphSummaryType = /*@__PURE__*/ S.String;
 
 export interface GetPropertygraphSummaryInput {
-  mode?: GraphSummaryType;
+  mode?: GraphSummaryType | (string & {});
 }
 export const GetPropertygraphSummaryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1474,7 +1466,7 @@ export const GetPropertygraphSummaryOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPropertygraphSummaryOutput",
 }) as any as S.Schema<GetPropertygraphSummaryOutput>;
 export interface GetRDFGraphSummaryInput {
-  mode?: GraphSummaryType;
+  mode?: GraphSummaryType | (string & {});
 }
 export const GetRDFGraphSummaryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1583,10 +1575,10 @@ export const GetSparqlStatisticsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSparqlStatisticsOutput>;
 export interface GetSparqlStreamInput {
   limit?: number;
-  iteratorType?: IteratorType;
+  iteratorType?: IteratorType | (string & {});
   commitNum?: number;
   opNum?: number;
-  encoding?: Encoding;
+  encoding?: Encoding | (string & {});
 }
 export const GetSparqlStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1901,12 +1893,11 @@ export const ListOpenCypherQueriesOutput = /*@__PURE__*/ S.suspend(() =>
 export type StatisticsAutoGenerationMode =
   | "disableAutoCompute"
   | "enableAutoCompute"
-  | "refresh"
-  | (string & {});
+  | "refresh";
 export const StatisticsAutoGenerationMode = /*@__PURE__*/ S.String;
 
 export interface ManagePropertygraphStatisticsInput {
-  mode?: StatisticsAutoGenerationMode;
+  mode?: StatisticsAutoGenerationMode | (string & {});
 }
 export const ManagePropertygraphStatisticsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mode: S.optional(StatisticsAutoGenerationMode) }).pipe(
@@ -1940,7 +1931,7 @@ export const ManagePropertygraphStatisticsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagePropertygraphStatisticsOutput",
 }) as any as S.Schema<ManagePropertygraphStatisticsOutput>;
 export interface ManageSparqlStatisticsInput {
-  mode?: StatisticsAutoGenerationMode;
+  mode?: StatisticsAutoGenerationMode | (string & {});
 }
 export const ManageSparqlStatisticsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mode: S.optional(StatisticsAutoGenerationMode) }).pipe(
@@ -1971,8 +1962,7 @@ export type Format =
   | "ntriples"
   | "nquads"
   | "rdfxml"
-  | "turtle"
-  | (string & {});
+  | "turtle";
 export const Format = /*@__PURE__*/ S.String;
 
 export type S3BucketRegion =
@@ -2011,29 +2001,23 @@ export type S3BucketRegion =
   | "mx-central-1"
   | "ap-east-2"
   | "ap-south-2"
-  | "eu-central-2"
-  | (string & {});
+  | "eu-central-2";
 export const S3BucketRegion = /*@__PURE__*/ S.String;
 
-export type Mode = "RESUME" | "NEW" | "AUTO" | (string & {});
+export type Mode = "RESUME" | "NEW" | "AUTO";
 export const Mode = /*@__PURE__*/ S.String;
 
-export type Parallelism =
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "OVERSUBSCRIBE"
-  | (string & {});
+export type Parallelism = "LOW" | "MEDIUM" | "HIGH" | "OVERSUBSCRIBE";
 export const Parallelism = /*@__PURE__*/ S.String;
 
 export interface StartLoaderJobInput {
   source: string;
-  format: Format;
-  s3BucketRegion: S3BucketRegion;
+  format: Format | (string & {});
+  s3BucketRegion: S3BucketRegion | (string & {});
   iamRoleArn: string;
-  mode?: Mode;
+  mode?: Mode | (string & {});
   failOnError?: boolean;
-  parallelism?: Parallelism;
+  parallelism?: Parallelism | (string & {});
   parserConfiguration?: { [key: string]: string | undefined };
   updateSingleCardinalityProperties?: boolean;
   queueRequest?: boolean;

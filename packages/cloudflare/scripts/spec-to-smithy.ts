@@ -117,7 +117,7 @@ interface FieldNode {
   /** How the docs line was written — decides field vs union-arm handling. */
   sep: ":" | "=" | "bare";
   doc?: string;
-  binding?: "label" | "query" | "header" | "body";
+  binding?: "label" | "query" | "deepQuery" | "header" | "body";
   children: FieldNode[];
 }
 
@@ -339,6 +339,13 @@ const addShape = (bag: Bag, base: string, def: any): string => {
 
 /** A member's docs-declared nullability travels via this trait. */
 const NULLABLE_TRAIT = "com.cloudflare.protocols#nullable";
+
+/**
+ * A struct-valued query member that serializes as DOTTED query params
+ * (`account.id=…`). Value: the wire base name (`account`). The SDK binds it
+ * to core's `T.DeepQuery`.
+ */
+const DEEP_QUERY_TRAIT = "com.cloudflare.protocols#deepQuery";
 
 /** A resolved type: the smithy target plus whether the docs allow `null`. */
 interface Resolved {
@@ -944,6 +951,10 @@ const buildMembers = (
         traits["smithy.api#httpQuery"] = f.name;
         if (!optional) traits["smithy.api#required"] = {};
         break;
+      case "deepQuery":
+        traits[DEEP_QUERY_TRAIT] = f.name;
+        if (!optional) traits["smithy.api#required"] = {};
+        break;
       case "header":
         traits["smithy.api#httpHeader"] = f.name;
         if (!optional) traits["smithy.api#required"] = {};
@@ -1186,25 +1197,14 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
   }
   for (const q of parsed.queryParams) {
     // Deep-object query filters (`account: object { id, name }`) serialize
-    // as dotted params on the wire (`account.id=…`). One flat member per
-    // subfield keeps the type accurate AND the wire form correct — the old
-    // string coercion silently broke these filters.
-    const { optional, core } = stripOptional(q.typeStr);
+    // as dotted params on the wire (`account.id=…`). Model them as a NESTED
+    // optional struct member (v0 parity: `account?: { id?, name? }`) tagged
+    // with the deepQuery trait; the protocol expands the struct into the
+    // dotted wire form at request time.
+    const { core } = stripOptional(q.typeStr);
     const subFields = q.children.filter((c) => c.sep === ":");
     if (/^object\b/.test(core.trim()) && subFields.length) {
-      for (const sub of subFields) {
-        const subType = stripOptional(sub.typeStr);
-        inputFields.push({
-          ...sub,
-          name: `${q.name}.${sub.name}`,
-          // The parent being optional makes every dotted param optional.
-          typeStr:
-            optional && !subType.optional
-              ? `optional ${subType.core}`
-              : sub.typeStr,
-          binding: "query",
-        });
-      }
+      inputFields.push({ ...q, binding: "deepQuery" });
       continue;
     }
     inputFields.push({ ...q, binding: "query" });
@@ -1228,6 +1228,7 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
       ([, m]: [string, any]) =>
         !m.traits?.["smithy.api#httpLabel"] &&
         !m.traits?.["smithy.api#httpQuery"] &&
+        !m.traits?.[DEEP_QUERY_TRAIT] &&
         !m.traits?.["smithy.api#httpHeader"],
     );
     if (bodyMembers.length === 1 && bodyMembers[0]![0] === "body") {
@@ -1372,6 +1373,7 @@ const buildProtocolModel = (): any => ({
             "smithy.api#httpPayload",
             "smithy.api#jsonName",
             `${PROTOCOL_NS}#envelopePayload`,
+            `${PROTOCOL_NS}#deepQuery`,
           ],
         },
         "smithy.api#documentation":
@@ -1380,6 +1382,18 @@ const buildProtocolModel = (): any => ({
           "`success`/`errors`/`messages`/`result_info` are protocol metadata " +
           "handled by the client; an operation's output shape describes only " +
           "the unwrapped `result` payload.",
+      },
+    },
+    // Marks a struct-valued query member serialized as dotted query params.
+    [`${PROTOCOL_NS}#deepQuery`]: {
+      type: "structure",
+      members: {},
+      traits: {
+        "smithy.api#trait": { selector: "structure > member" },
+        "smithy.api#documentation":
+          "Marks a struct-valued input member whose fields serialize as a " +
+          "dotted query-parameter family (`account.id=…`). The trait value " +
+          "is the wire base name.",
       },
     },
     // Marks the envelope member that carries the operation payload.

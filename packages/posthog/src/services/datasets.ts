@@ -76,11 +76,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -174,12 +173,12 @@ export type DatasetsListRequestOrderByItem =
   | "-created_at"
   | "-updated_at"
   | "created_at"
-  | "updated_at"
-  | (string & {});
+  | "updated_at";
 export const DatasetsListRequestOrderByItem = /*@__PURE__*/ S.String;
 
-export type DatasetsListRequestOrderByList =
-  ReadonlyArray<DatasetsListRequestOrderByItem>;
+export type DatasetsListRequestOrderByList = ReadonlyArray<
+  DatasetsListRequestOrderByItem | (string & {})
+>;
 export const DatasetsListRequestOrderByList = /*@__PURE__*/ S.Array(
   DatasetsListRequestOrderByItem,
 ) as any as S.Schema<DatasetsListRequestOrderByList>;

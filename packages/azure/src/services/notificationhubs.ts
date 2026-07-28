@@ -23,7 +23,7 @@ export const NamespacesCheckAvailabilityRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamespacesCheckAvailabilityRequestTagsMap>;
 
 /** Namespace SKU name. */
-export type SkuName = "Free" | "Basic" | "Standard" | (string & {});
+export type SkuName = "Free" | "Basic" | "Standard";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The Sku description for a namespace */
@@ -86,8 +86,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -95,8 +94,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -184,21 +182,15 @@ export type OperationProvisioningState =
   | "Failed"
   | "Canceled"
   | "Pending"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const OperationProvisioningState = /*@__PURE__*/ S.String;
 
 /** Namespace status. */
-export type NamespaceStatus =
-  | "Created"
-  | "Creating"
-  | "Suspended"
-  | "Deleting"
-  | (string & {});
+export type NamespaceStatus = "Created" | "Creating" | "Suspended" | "Deleting";
 export const NamespaceStatus = /*@__PURE__*/ S.String;
 
 /** Defines values for NamespaceType. */
-export type NamespaceType = "Messaging" | "NotificationHub" | (string & {});
+export type NamespaceType = "Messaging" | "NotificationHub";
 export const NamespaceType = /*@__PURE__*/ S.String;
 
 /** Allowed replication region */
@@ -210,16 +202,15 @@ export type ReplicationRegion =
   | "BrazilSouth"
   | "SouthEastAsia"
   | "SouthAfricaNorth"
-  | "None"
-  | (string & {});
+  | "None";
 export const ReplicationRegion = /*@__PURE__*/ S.String;
 
 /** Namespace SKU name. */
-export type ZoneRedundancyPreference = "Disabled" | "Enabled" | (string & {});
+export type ZoneRedundancyPreference = "Disabled" | "Enabled";
 export const ZoneRedundancyPreference = /*@__PURE__*/ S.String;
 
 /** Defines values for AccessRights. */
-export type AccessRights = "Manage" | "Send" | "Listen" | (string & {});
+export type AccessRights = "Manage" | "Send" | "Listen";
 export const AccessRights = /*@__PURE__*/ S.String;
 
 /** List of access rights. */
@@ -559,23 +550,23 @@ export const PnsCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PnsCredentials" }) as any as S.Schema<PnsCredentials>;
 
 /** Type of public network access. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Represents namespace properties. */
 export interface NamespacePropertiesInput {
-  provisioningState?: OperationProvisioningState;
-  status?: NamespaceStatus;
-  namespaceType?: NamespaceType;
-  replicationRegion?: ReplicationRegion;
-  zoneRedundancy?: ZoneRedundancyPreference;
+  provisioningState?: OperationProvisioningState | (string & {});
+  status?: NamespaceStatus | (string & {});
+  namespaceType?: NamespaceType | (string & {});
+  replicationRegion?: ReplicationRegion | (string & {});
+  zoneRedundancy?: ZoneRedundancyPreference | (string & {});
   networkAcls?: NetworkAcls;
   pnsCredentials?: PnsCredentials;
   /** Gets or sets scaleUnit where the namespace gets created */
   scaleUnit?: string;
   /** Deprecated. */
   dataCenter?: string;
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
 export const NamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -647,8 +638,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "UpdatingByProxy"
   | "Deleting"
   | "DeletingByProxy"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -678,8 +668,7 @@ export type PrivateLinkConnectionStatus =
   | "Disconnected"
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateLinkConnectionStatus = /*@__PURE__*/ S.String;
 
 /** State of the Private Link Service connection. */
@@ -851,7 +840,7 @@ export const NamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the rights associated with the rule. */
 export type SharedAccessAuthorizationRulePropertiesInputRightsList =
-  ReadonlyArray<AccessRights>;
+  ReadonlyArray<AccessRights | (string & {})>;
 export const SharedAccessAuthorizationRulePropertiesInputRightsList =
   /*@__PURE__*/ S.Array(
     AccessRights,
@@ -1537,7 +1526,7 @@ export const ResourceListKeys = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceListKeys>;
 
 /** Type of Shared Access Policy Key (primary or secondary). */
-export type PolicyKeyType = "PrimaryKey" | "SecondaryKey" | (string & {});
+export type PolicyKeyType = "PrimaryKey" | "SecondaryKey";
 export const PolicyKeyType = /*@__PURE__*/ S.String;
 
 export interface NamespacesRegenerateKeysRequest {
@@ -1549,7 +1538,7 @@ export interface NamespacesRegenerateKeysRequest {
   namespaceName: string;
   /** Authorization Rule Name */
   authorizationRuleName: string;
-  policyKey: PolicyKeyType;
+  policyKey: PolicyKeyType | (string & {});
 }
 export const NamespacesRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2571,7 +2560,7 @@ export interface NotificationHubsRegenerateKeysRequest {
   notificationHubName: string;
   /** Authorization Rule Name */
   authorizationRuleName: string;
-  policyKey: PolicyKeyType;
+  policyKey: PolicyKeyType | (string & {});
 }
 export const NotificationHubsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3185,7 +3174,7 @@ export const RemotePrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(
 
 /** State of the Private Link Service connection. */
 export interface RemotePrivateLinkServiceConnectionStateInput {
-  status?: PrivateLinkConnectionStatus;
+  status?: PrivateLinkConnectionStatus | (string & {});
 }
 export const RemotePrivateLinkServiceConnectionStateInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -3198,7 +3187,9 @@ export const RemotePrivateLinkServiceConnectionStateInput =
 
 /** Private Endpoint Connection properties. */
 export interface PrivateEndpointConnectionPropertiesInput {
-  provisioningState?: PrivateEndpointConnectionProvisioningState;
+  provisioningState?:
+    | PrivateEndpointConnectionProvisioningState
+    | (string & {});
   privateEndpoint?: RemotePrivateEndpointConnectionInput;
   privateLinkServiceConnectionState?: RemotePrivateLinkServiceConnectionStateInput;
 }

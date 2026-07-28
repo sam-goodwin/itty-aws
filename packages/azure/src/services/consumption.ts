@@ -40,8 +40,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -49,8 +48,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -317,7 +315,7 @@ export const BalancesGetByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BalancesGetByBillingAccountRequest>;
 
 /** The billing frequency. */
-export type BillingFrequency = "Month" | "Quarter" | "Year" | (string & {});
+export type BillingFrequency = "Month" | "Quarter" | "Year";
 export const BillingFrequency = /*@__PURE__*/ S.String;
 
 export interface BalancePropertiesNewPurchasesDetailsItem {
@@ -531,7 +529,7 @@ export const BalancesGetForBillingPeriodByBillingAccountResponse =
   }) as any as S.Schema<BalancesGetForBillingPeriodByBillingAccountResponse>;
 
 /** The category of the budget, whether the budget tracks cost or usage. */
-export type CategoryType = "Cost" | (string & {});
+export type CategoryType = "Cost";
 export const CategoryType = /*@__PURE__*/ S.String;
 
 /** The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers */
@@ -541,8 +539,7 @@ export type TimeGrainType =
   | "Annually"
   | "BillingMonth"
   | "BillingQuarter"
-  | "BillingAnnual"
-  | (string & {});
+  | "BillingAnnual";
 export const TimeGrainType = /*@__PURE__*/ S.String;
 
 /** The start and end date for a budget. */
@@ -562,7 +559,7 @@ export const BudgetTimePeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BudgetTimePeriod>;
 
 /** The operator to use for comparison. */
-export type BudgetOperatorType = "In" | (string & {});
+export type BudgetOperatorType = "In";
 export const BudgetOperatorType = /*@__PURE__*/ S.String;
 
 /** Array of values to use for comparison */
@@ -630,11 +627,7 @@ export const BudgetFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BudgetFilter" }) as any as S.Schema<BudgetFilter>;
 
 /** The comparison operator. */
-export type OperatorType =
-  | "EqualTo"
-  | "GreaterThan"
-  | "GreaterThanOrEqualTo"
-  | (string & {});
+export type OperatorType = "EqualTo" | "GreaterThan" | "GreaterThanOrEqualTo";
 export const OperatorType = /*@__PURE__*/ S.String;
 
 /** Email addresses to send the budget notification to when the threshold is exceeded. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified. */
@@ -656,7 +649,7 @@ export const NotificationContactGroupsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NotificationContactGroupsList>;
 
 /** The type of threshold */
-export type NotificationThresholdType = "Actual" | "Forecasted" | (string & {});
+export type NotificationThresholdType = "Actual" | "Forecasted";
 export const NotificationThresholdType = /*@__PURE__*/ S.String;
 
 /** Language in which the recipient will receive the notification */
@@ -681,8 +674,7 @@ export type CultureCode =
   | "nb-no"
   | "nl-nl"
   | "pt-pt"
-  | "sv-se"
-  | (string & {});
+  | "sv-se";
 export const CultureCode = /*@__PURE__*/ S.String;
 
 /** The notification associated with a budget. */
@@ -729,11 +721,11 @@ export const BudgetPropertiesInputNotificationsMap = /*@__PURE__*/ S.Record(
 /** The properties of the budget. */
 export interface BudgetPropertiesInput {
   /** The category of the budget, whether the budget tracks cost or usage. */
-  category: CategoryType;
+  category: CategoryType | (string & {});
   /** The total amount of cost to track with the budget */
   amount: number;
   /** The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers */
-  timeGrain: TimeGrainType;
+  timeGrain: TimeGrainType | (string & {});
   /** Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should be selected within the timegrain period. There are no restrictions on the end date. */
   timePeriod: BudgetTimePeriod;
   /** May be used to filter budgets by user-specified dimensions and/or tags. */
@@ -1057,7 +1049,7 @@ export const ChargesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChargesListRequest>;
 
 /** Specifies the kind of charge summary. */
-export type ChargeSummaryKind = "legacy" | "modern" | (string & {});
+export type ChargeSummaryKind = "legacy" | "modern";
 export const ChargeSummaryKind = /*@__PURE__*/ S.String;
 
 /** A charge summary resource. */
@@ -1301,8 +1293,7 @@ export type EventType =
   | "PendingExpiredCredit"
   | "UnKnown"
   | "NewCredit"
-  | "CreditExpired"
-  | (string & {});
+  | "CreditExpired";
 export const EventType = /*@__PURE__*/ S.String;
 
 /** The event properties. */
@@ -1493,8 +1484,7 @@ export const LotsListByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export type LotSource =
   | "PurchasedCredit"
   | "PromotionalCredit"
-  | "ConsumptionCommitment"
-  | (string & {});
+  | "ConsumptionCommitment";
 export const LotSource = /*@__PURE__*/ S.String;
 
 /** The status of the lot. */
@@ -1504,12 +1494,11 @@ export type Status =
   | "Inactive"
   | "Expired"
   | "Complete"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const Status = /*@__PURE__*/ S.String;
 
 /** The organization type of the lot. */
-export type OrganizationType = "Primary" | "Contributor" | (string & {});
+export type OrganizationType = "Primary" | "Contributor";
 export const OrganizationType = /*@__PURE__*/ S.String;
 
 /** The lot properties. */
@@ -1937,11 +1926,7 @@ export const PriceSheetDownloadByBillingAccountPeriodRequest =
   }) as any as S.Schema<PriceSheetDownloadByBillingAccountPeriodRequest>;
 
 /** The status of the long running operation. */
-export type OperationStatusType =
-  | "Running"
-  | "Completed"
-  | "Failed"
-  | (string & {});
+export type OperationStatusType = "Running" | "Completed" | "Failed";
 export const OperationStatusType = /*@__PURE__*/ S.String;
 
 /** The properties of the price sheet download. */
@@ -2235,24 +2220,21 @@ export const PriceSheetGetByBillingPeriodResponse = /*@__PURE__*/ S.suspend(
 
 export type ReservationRecommendationDetailsGetRequestScope =
   | "Single"
-  | "Shared"
-  | (string & {});
+  | "Shared";
 export const ReservationRecommendationDetailsGetRequestScope =
   /*@__PURE__*/ S.String;
 
 export type ReservationRecommendationDetailsGetRequestTerm =
   | "P1M"
   | "P1Y"
-  | "P3Y"
-  | (string & {});
+  | "P3Y";
 export const ReservationRecommendationDetailsGetRequestTerm =
   /*@__PURE__*/ S.String;
 
 export type ReservationRecommendationDetailsGetRequestLookBackPeriod =
   | "Last7Days"
   | "Last30Days"
-  | "Last60Days"
-  | (string & {});
+  | "Last60Days";
 export const ReservationRecommendationDetailsGetRequestLookBackPeriod =
   /*@__PURE__*/ S.String;
 
@@ -2260,13 +2242,15 @@ export interface ReservationRecommendationDetailsGetRequest {
   /** The scope associated with reservation recommendation details operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resource group scope, /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for BillingAccount scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope */
   resourceScope: string;
   /** Scope of the reservation. */
-  scope: ReservationRecommendationDetailsGetRequestScope;
+  scope: ReservationRecommendationDetailsGetRequestScope | (string & {});
   /** Used to select the region the recommendation should be generated for. */
   region: string;
   /** Specify length of reservation recommendation term. */
-  term: ReservationRecommendationDetailsGetRequestTerm;
+  term: ReservationRecommendationDetailsGetRequestTerm | (string & {});
   /** Filter the time period on which reservation recommendation results are based. */
-  lookBackPeriod: ReservationRecommendationDetailsGetRequestLookBackPeriod;
+  lookBackPeriod:
+    | ReservationRecommendationDetailsGetRequestLookBackPeriod
+    | (string & {});
   /** Filter the products for which reservation recommendation results are generated. Examples: Standard_DS1_v2 (for VM), Premium_SSD_Managed_Disks_P30 (for Managed Disks) */
   product: string;
   /** Used to filter reservation recommendation details by: properties/subscriptionId can be specified for billing account and billing profile paths. */
@@ -2547,8 +2531,7 @@ export type ReservationRecommendationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ReservationRecommendationSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2557,8 +2540,7 @@ export type ReservationRecommendationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ReservationRecommendationSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2602,7 +2584,7 @@ export const ReservationRecommendationTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ReservationRecommendationTagsMap>;
 
 /** Specifies the kind of reservation recommendation. */
-export type ReservationRecommendationKind = "legacy" | "modern" | (string & {});
+export type ReservationRecommendationKind = "legacy" | "modern";
 export const ReservationRecommendationKind = /*@__PURE__*/ S.String;
 
 /** A reservation recommendation resource. */
@@ -2858,17 +2840,14 @@ export const ReservationsDetailsListByReservationOrderAndReservationRequest =
       "ReservationsDetailsListByReservationOrderAndReservationRequest",
   }) as any as S.Schema<ReservationsDetailsListByReservationOrderAndReservationRequest>;
 
-export type ReservationsSummariesListRequestGrain =
-  | "daily"
-  | "monthly"
-  | (string & {});
+export type ReservationsSummariesListRequestGrain = "daily" | "monthly";
 export const ReservationsSummariesListRequestGrain = /*@__PURE__*/ S.String;
 
 export interface ReservationsSummariesListRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceScope: string;
   /** Can be daily or monthly */
-  grain: ReservationsSummariesListRequestGrain;
+  grain: ReservationsSummariesListRequestGrain | (string & {});
   /** Start date. Only applicable when querying with billing profile */
   startDate?: string;
   /** End date. Only applicable when querying with billing profile */
@@ -3019,8 +2998,7 @@ export const ReservationSummariesListResult = /*@__PURE__*/ S.suspend(() =>
 
 export type ReservationsSummariesListByReservationOrderRequestGrain =
   | "daily"
-  | "monthly"
-  | (string & {});
+  | "monthly";
 export const ReservationsSummariesListByReservationOrderRequestGrain =
   /*@__PURE__*/ S.String;
 
@@ -3028,7 +3006,9 @@ export interface ReservationsSummariesListByReservationOrderRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** Can be daily or monthly */
-  grain: ReservationsSummariesListByReservationOrderRequestGrain;
+  grain:
+    | ReservationsSummariesListByReservationOrderRequestGrain
+    | (string & {});
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
 }
@@ -3053,7 +3033,7 @@ export const ReservationsSummariesListByReservationOrderRequest =
   }) as any as S.Schema<ReservationsSummariesListByReservationOrderRequest>;
 
 export type ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
-  "daily" | "monthly" | (string & {});
+  "daily" | "monthly";
 export const ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
   /*@__PURE__*/ S.String;
 
@@ -3063,7 +3043,9 @@ export interface ReservationsSummariesListByReservationOrderAndReservationReques
   /** Id of the reservation */
   reservationId: string;
   /** Can be daily or monthly */
-  grain: ReservationsSummariesListByReservationOrderAndReservationRequestGrain;
+  grain:
+    | ReservationsSummariesListByReservationOrderAndReservationRequestGrain
+    | (string & {});
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
 }
@@ -3501,8 +3483,7 @@ export const TagsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type UsageDetailsListRequestMetric =
   | "actualcost"
   | "amortizedcost"
-  | "usage"
-  | (string & {});
+  | "usage";
 export const UsageDetailsListRequestMetric = /*@__PURE__*/ S.String;
 
 export interface UsageDetailsListRequest {
@@ -3517,7 +3498,7 @@ export interface UsageDetailsListRequest {
   /** May be used to limit the number of results to the most recent N usageDetails. */
   _top?: number;
   /** Allows to select different type of cost/usage records. */
-  metric?: UsageDetailsListRequestMetric;
+  metric?: UsageDetailsListRequestMetric | (string & {});
 }
 export const UsageDetailsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3540,7 +3521,7 @@ export const UsageDetailsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageDetailsListRequest>;
 
 /** Specifies the kind of usage details. */
-export type UsageDetailsKind = "legacy" | "modern" | (string & {});
+export type UsageDetailsKind = "legacy" | "modern";
 export const UsageDetailsKind = /*@__PURE__*/ S.String;
 
 /** Resource tags. */

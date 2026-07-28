@@ -104,14 +104,15 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase0Operator =
   | "starts_with"
   | "ends_with"
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase0 {
   attribute: string;
-  operator: AppsFlagsCreateRequestRulesItemConditionsItemCase0Operator;
+  operator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -137,14 +138,15 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0Op
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
-  operator: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0Operator;
+  operator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -172,14 +174,15 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
-  operator: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator;
+  operator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -207,14 +210,15 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
-  operator: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator;
+  operator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -242,14 +246,15 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
-  operator: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator;
+  operator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -277,14 +282,15 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
-  operator: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator;
+  operator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -326,13 +332,15 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 {
   clauses: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses;
-  logicalOperator: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -368,13 +376,15 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 {
   clauses: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
-  logicalOperator: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -410,13 +420,15 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 {
   clauses: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
-  logicalOperator: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -452,13 +464,15 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1 {
   clauses: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
-  logicalOperator: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -494,13 +508,15 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1 {
   clauses: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList;
-  logicalOperator: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -537,14 +553,15 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesList =
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1LogicalOperator =
   | "AND"
-  | "OR"
-  | (string & {});
+  | "OR";
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1 {
   clauses: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesList;
-  logicalOperator: AppsFlagsCreateRequestRulesItemConditionsItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -646,8 +663,7 @@ export type AppsFlagsCreateRequestType =
   | "boolean"
   | "string"
   | "number"
-  | "json"
-  | (string & {});
+  | "json";
 export const AppsFlagsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateAppFlagRequest {
@@ -667,7 +683,7 @@ export interface CreateAppFlagRequest {
   variations: AppsFlagsCreateRequestVariations;
   description?: string;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsCreateRequestType;
+  type?: AppsFlagsCreateRequestType | (string & {});
 }
 export const CreateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -704,8 +720,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase0Operator =
   | "starts_with"
   | "ends_with"
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -737,8 +752,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0O
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -772,8 +786,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -807,8 +820,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -842,8 +854,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -877,8 +888,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -926,7 +936,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -968,7 +978,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -1010,7 +1020,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -1052,7 +1062,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -1094,7 +1104,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -1136,7 +1146,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesList =
   ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesList>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -1244,8 +1254,7 @@ export type AppsFlagsCreateResponseType =
   | "boolean"
   | "string"
   | "number"
-  | "json"
-  | (string & {});
+  | "json";
 export const AppsFlagsCreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1428,8 +1437,7 @@ export type AppsEvaluateGetResponseReason =
   | "TARGETING_MATCH"
   | "DEFAULT"
   | "DISABLED"
-  | "SPLIT"
-  | (string & {});
+  | "SPLIT";
 export const AppsEvaluateGetResponseReason = /*@__PURE__*/ S.String;
 
 export type AppsEvaluateGetResponseValueCase3Map = {
@@ -1510,8 +1518,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase0Operator =
   | "starts_with"
   | "ends_with"
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -1543,8 +1550,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0Oper
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -1578,8 +1584,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -1613,8 +1618,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -1648,8 +1652,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -1683,8 +1686,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -1732,7 +1734,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -1774,7 +1776,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
   ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -1816,7 +1818,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
   ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -1858,7 +1860,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
   ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -1900,7 +1902,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
   ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -1943,8 +1945,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesList =
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1LogicalOperator =
   | "AND"
-  | "OR"
-  | (string & {});
+  | "OR";
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -2048,12 +2049,7 @@ export const AppsFlagsGetResponseVariations = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], [], [], [], []]),
 );
 
-export type AppsFlagsGetResponseType =
-  | "boolean"
-  | "string"
-  | "number"
-  | "json"
-  | (string & {});
+export type AppsFlagsGetResponseType = "boolean" | "string" | "number" | "json";
 export const AppsFlagsGetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2133,8 +2129,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2168,8 +2163,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2203,8 +2197,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2238,8 +2231,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2273,8 +2265,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2308,8 +2299,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2357,7 +2347,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -2399,7 +2389,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -2441,7 +2431,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -2483,7 +2473,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -2525,7 +2515,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -2567,7 +2557,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -2684,8 +2674,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterType =
   | "boolean"
   | "string"
   | "number"
-  | "json"
-  | (string & {});
+  | "json";
 export const AppsFlagsChangelogListResultItemCase0AfterType =
   /*@__PURE__*/ S.String;
 
@@ -2723,9 +2712,7 @@ export const AppsFlagsChangelogListResultItemCase0After =
     identifier: "AppsFlagsChangelogListResultItemCase0After",
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase0After>;
 
-export type AppsFlagsChangelogListResultItemCase0Event =
-  | "create"
-  | (string & {});
+export type AppsFlagsChangelogListResultItemCase0Event = "create";
 export const AppsFlagsChangelogListResultItemCase0Event =
   /*@__PURE__*/ S.String;
 
@@ -2756,8 +2743,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2791,8 +2777,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2826,8 +2811,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2861,8 +2845,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2896,8 +2879,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2931,8 +2913,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -2980,7 +2961,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3022,7 +3003,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3064,7 +3045,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3106,7 +3087,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3148,7 +3129,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3190,7 +3171,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3307,8 +3288,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterType =
   | "boolean"
   | "string"
   | "number"
-  | "json"
-  | (string & {});
+  | "json";
 export const AppsFlagsChangelogListResultItemCase1AfterType =
   /*@__PURE__*/ S.String;
 
@@ -3346,9 +3326,7 @@ export const AppsFlagsChangelogListResultItemCase1After =
     identifier: "AppsFlagsChangelogListResultItemCase1After",
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase1After>;
 
-export type AppsFlagsChangelogListResultItemCase1Event =
-  | "delete"
-  | (string & {});
+export type AppsFlagsChangelogListResultItemCase1Event = "delete";
 export const AppsFlagsChangelogListResultItemCase1Event =
   /*@__PURE__*/ S.String;
 
@@ -3379,8 +3357,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -3414,8 +3391,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -3449,8 +3425,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -3484,8 +3459,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -3519,8 +3493,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -3554,8 +3527,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -3603,7 +3575,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3645,7 +3617,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3687,7 +3659,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3729,7 +3701,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3771,7 +3743,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3813,7 +3785,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesList>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -3930,8 +3902,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterType =
   | "boolean"
   | "string"
   | "number"
-  | "json"
-  | (string & {});
+  | "json";
 export const AppsFlagsChangelogListResultItemCase2AfterType =
   /*@__PURE__*/ S.String;
 
@@ -4042,9 +4013,7 @@ export const AppsFlagsChangelogListResultItemCase2DiffMap =
     AppsFlagsChangelogListResultItemCase2DiffValue,
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffMap>;
 
-export type AppsFlagsChangelogListResultItemCase2Event =
-  | "update"
-  | (string & {});
+export type AppsFlagsChangelogListResultItemCase2Event = "update";
 export const AppsFlagsChangelogListResultItemCase2Event =
   /*@__PURE__*/ S.String;
 
@@ -4139,8 +4108,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase0Operator =
   | "starts_with"
   | "ends_with"
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -4172,8 +4140,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0O
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -4207,8 +4174,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -4242,8 +4208,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -4277,8 +4242,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -4312,8 +4276,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -4361,7 +4324,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -4403,7 +4366,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -4445,7 +4408,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -4487,7 +4450,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -4529,7 +4492,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -4571,7 +4534,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesList =
   ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesList>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -4679,8 +4642,7 @@ export type AppsFlagsListResultItemType =
   | "boolean"
   | "string"
   | "number"
-  | "json"
-  | (string & {});
+  | "json";
 export const AppsFlagsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface AppsFlagsListResultItem {
@@ -4853,14 +4815,15 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase0Operator =
   | "starts_with"
   | "ends_with"
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase0 {
   attribute: string;
-  operator: AppsFlagsUpdateRequestRulesItemConditionsItemCase0Operator;
+  operator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -4886,14 +4849,15 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0Op
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
-  operator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0Operator;
+  operator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -4921,14 +4885,15 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
-  operator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator;
+  operator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -4956,14 +4921,15 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
-  operator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator;
+  operator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -4991,14 +4957,15 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
-  operator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator;
+  operator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -5026,14 +4993,15 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
-  operator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator;
+  operator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
   /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
   value: unknown;
 }
@@ -5075,13 +5043,15 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 {
   clauses: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses;
-  logicalOperator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -5117,13 +5087,15 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 {
   clauses: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
-  logicalOperator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -5159,13 +5131,15 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 {
   clauses: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
-  logicalOperator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -5201,13 +5175,15 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1 {
   clauses: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
-  logicalOperator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -5243,13 +5219,15 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1 {
   clauses: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList;
-  logicalOperator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -5286,14 +5264,15 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesList =
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1LogicalOperator =
   | "AND"
-  | "OR"
-  | (string & {});
+  | "OR";
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1 {
   clauses: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesList;
-  logicalOperator: AppsFlagsUpdateRequestRulesItemConditionsItemCase1LogicalOperator;
+  logicalOperator:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1LogicalOperator
+    | (string & {});
 }
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -5395,8 +5374,7 @@ export type AppsFlagsUpdateRequestType =
   | "boolean"
   | "string"
   | "number"
-  | "json"
-  | (string & {});
+  | "json";
 export const AppsFlagsUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface UpdateAppFlagRequest {
@@ -5418,7 +5396,7 @@ export interface UpdateAppFlagRequest {
   variations: AppsFlagsUpdateRequestVariations;
   description?: string;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsUpdateRequestType;
+  type?: AppsFlagsUpdateRequestType | (string & {});
 }
 export const UpdateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5456,8 +5434,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase0Operator =
   | "starts_with"
   | "ends_with"
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -5489,8 +5466,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0O
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -5524,8 +5500,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -5559,8 +5534,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -5594,8 +5568,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -5629,8 +5602,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
     | "starts_with"
     | "ends_with"
     | "in"
-    | "not_in"
-    | (string & {});
+    | "not_in";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator =
   /*@__PURE__*/ S.String;
 
@@ -5678,7 +5650,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -5720,7 +5692,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -5762,7 +5734,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -5804,7 +5776,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -5846,7 +5818,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesList>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -5888,7 +5860,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesList =
   ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesList>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1LogicalOperator =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1LogicalOperator =
   /*@__PURE__*/ S.String;
 
@@ -5996,8 +5968,7 @@ export type AppsFlagsUpdateResponseType =
   | "boolean"
   | "string"
   | "number"
-  | "json"
-  | (string & {});
+  | "json";
 export const AppsFlagsUpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

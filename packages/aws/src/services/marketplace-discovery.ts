@@ -138,8 +138,7 @@ export type ListingBadgeType =
   | "FREE_TRIAL"
   | "DEPLOYED_ON_AWS"
   | "QUICK_LAUNCH"
-  | "MULTI_PRODUCT"
-  | (string & {});
+  | "MULTI_PRODUCT";
 export const ListingBadgeType = /*@__PURE__*/ S.String;
 
 export interface ListingBadge {
@@ -173,8 +172,7 @@ export type FulfillmentOptionType =
   | "PROFESSIONAL_SERVICES"
   | "SAAS"
   | "SAGEMAKER_ALGORITHM"
-  | "SAGEMAKER_MODEL"
-  | (string & {});
+  | "SAGEMAKER_MODEL";
 export const FulfillmentOptionType = /*@__PURE__*/ S.String;
 
 export interface FulfillmentOptionSummary {
@@ -196,12 +194,7 @@ export const FulfillmentOptionSummaryList = /*@__PURE__*/ S.Array(
 export type HighlightList = string[];
 export const HighlightList = /*@__PURE__*/ S.Array(S.String);
 export type URL = string;
-export type PricingModelType =
-  | "USAGE"
-  | "CONTRACT"
-  | "BYOL"
-  | "FREE"
-  | (string & {});
+export type PricingModelType = "USAGE" | "CONTRACT" | "BYOL" | "FREE";
 export const PricingModelType = /*@__PURE__*/ S.String;
 
 export interface PricingModel {
@@ -220,8 +213,7 @@ export type PricingUnitType =
   | "DATA"
   | "TIERS"
   | "REQUESTS"
-  | "UNITS"
-  | (string & {});
+  | "UNITS";
 export const PricingUnitType = /*@__PURE__*/ S.String;
 
 export interface PricingUnit {
@@ -274,18 +266,10 @@ export const PromotionalMedia = /*@__PURE__*/ S.Union([
 ]);
 export type PromotionalMediaList = PromotionalMedia[];
 export const PromotionalMediaList = /*@__PURE__*/ S.Array(PromotionalMedia);
-export type ResourceType =
-  | "MANUFACTURER_SUPPORT"
-  | "MANUFACTURER_INSTRUCTIONS"
-  | (string & {});
+export type ResourceType = "MANUFACTURER_SUPPORT" | "MANUFACTURER_INSTRUCTIONS";
 export const ResourceType = /*@__PURE__*/ S.String;
 
-export type ResourceContentType =
-  | "EMAIL"
-  | "PHONE_NUMBER"
-  | "LINK"
-  | "OTHER"
-  | (string & {});
+export type ResourceContentType = "EMAIL" | "PHONE_NUMBER" | "LINK" | "OTHER";
 export const ResourceContentType = /*@__PURE__*/ S.String;
 
 export interface Resource {
@@ -304,7 +288,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type ResourceList = Resource[];
 export const ResourceList = /*@__PURE__*/ S.Array(Resource);
-export type ReviewSourceId = "AWS_MARKETPLACE" | (string & {});
+export type ReviewSourceId = "AWS_MARKETPLACE";
 export const ReviewSourceId = /*@__PURE__*/ S.String;
 
 export type NonNegativeCount = number;
@@ -337,11 +321,10 @@ export const ReviewSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReviewSummary" }) as any as S.Schema<ReviewSummary>;
 export type SellerEngagementType =
   | "REQUEST_FOR_PRIVATE_OFFER"
-  | "REQUEST_FOR_DEMO"
-  | (string & {});
+  | "REQUEST_FOR_DEMO";
 export const SellerEngagementType = /*@__PURE__*/ S.String;
 
-export type SellerEngagementContentType = "LINK" | (string & {});
+export type SellerEngagementContentType = "LINK";
 export const SellerEngagementContentType = /*@__PURE__*/ S.String;
 
 export interface SellerEngagement {
@@ -443,8 +426,7 @@ export type AgreementResourceId = string;
 export type PurchaseOptionBadgeType =
   | "PRIVATE_PRICING"
   | "FUTURE_DATED"
-  | "REPLACEMENT_OFFER"
-  | (string & {});
+  | "REPLACEMENT_OFFER";
 export const PurchaseOptionBadgeType = /*@__PURE__*/ S.String;
 
 export interface PurchaseOptionBadge {
@@ -610,8 +592,7 @@ export type TermType =
   | "RenewalTerm"
   | "SupportTerm"
   | "ValidityTerm"
-  | "VariablePaymentTerm"
-  | (string & {});
+  | "VariablePaymentTerm";
 export const TermType = /*@__PURE__*/ S.String;
 
 export interface ByolPricingTerm {
@@ -624,7 +605,7 @@ export const ByolPricingTerm = /*@__PURE__*/ S.suspend(() =>
   identifier: "ByolPricingTerm",
 }) as any as S.Schema<ByolPricingTerm>;
 export type CurrencyCode = string;
-export type SelectorType = "Duration" | (string & {});
+export type SelectorType = "Duration";
 export const SelectorType = /*@__PURE__*/ S.String;
 
 export type BoundedString = string;
@@ -635,7 +616,7 @@ export interface Selector {
 export const Selector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: SelectorType, value: S.String }),
 ).annotate({ identifier: "Selector" }) as any as S.Schema<Selector>;
-export type RateCardConstraintType = "Allowed" | "Disallowed" | (string & {});
+export type RateCardConstraintType = "Allowed" | "Disallowed";
 export const RateCardConstraintType = /*@__PURE__*/ S.String;
 
 export interface Constraints {
@@ -648,7 +629,7 @@ export const Constraints = /*@__PURE__*/ S.suspend(() =>
     quantityConfiguration: RateCardConstraintType,
   }),
 ).annotate({ identifier: "Constraints" }) as any as S.Schema<Constraints>;
-export type DimensionLabelType = "Region" | "SagemakerOption" | (string & {});
+export type DimensionLabelType = "Region" | "SagemakerOption";
 export const DimensionLabelType = /*@__PURE__*/ S.String;
 
 export interface DimensionLabel {
@@ -780,8 +761,7 @@ export type LegalDocumentType =
   | "CustomDsa"
   | "EnterpriseEula"
   | "StandardEula"
-  | "StandardDsa"
-  | (string & {});
+  | "StandardDsa";
 export const LegalDocumentType = /*@__PURE__*/ S.String;
 
 export interface DocumentItem {
@@ -834,7 +814,7 @@ export const PaymentScheduleTerm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PaymentScheduleTerm",
 }) as any as S.Schema<PaymentScheduleTerm>;
-export type BillingPeriodType = "Monthly" | (string & {});
+export type BillingPeriodType = "Monthly";
 export const BillingPeriodType = /*@__PURE__*/ S.String;
 
 export interface RecurringPaymentTerm {
@@ -1148,8 +1128,7 @@ export const GetProductInput = /*@__PURE__*/ S.suspend(() =>
 export type DeployedOnAwsStatus =
   | "DEPLOYED"
   | "NOT_DEPLOYED"
-  | "NOT_APPLICABLE"
-  | (string & {});
+  | "NOT_APPLICABLE";
 export const DeployedOnAwsStatus = /*@__PURE__*/ S.String;
 
 export interface GetProductOutput {
@@ -1824,15 +1803,14 @@ export type PurchaseOptionFilterType =
   | "SELLER_OF_RECORD_PROFILE_ID"
   | "PURCHASE_OPTION_TYPE"
   | "VISIBILITY_SCOPE"
-  | "AVAILABILITY_STATUS"
-  | (string & {});
+  | "AVAILABILITY_STATUS";
 export const PurchaseOptionFilterType = /*@__PURE__*/ S.String;
 
 export type PurchaseOptionFilterValue = string;
 export type PurchaseOptionFilterValueList = string[];
 export const PurchaseOptionFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface PurchaseOptionFilter {
-  filterType: PurchaseOptionFilterType;
+  filterType: PurchaseOptionFilterType | (string & {});
   filterValues: string[];
 }
 export const PurchaseOptionFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1870,7 +1848,7 @@ export const ListPurchaseOptionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPurchaseOptionsInput",
 }) as any as S.Schema<ListPurchaseOptionsInput>;
-export type PurchaseOptionType = "OFFER" | "OFFERSET" | (string & {});
+export type PurchaseOptionType = "OFFER" | "OFFERSET";
 export const PurchaseOptionType = /*@__PURE__*/ S.String;
 
 export interface PurchaseOptionAssociatedEntity {
@@ -1946,15 +1924,14 @@ export type SearchFilterType =
   | "PRICING_MODEL"
   | "PRICING_UNIT"
   | "DEPLOYED_ON_AWS"
-  | "NUMBER_OF_PRODUCTS"
-  | (string & {});
+  | "NUMBER_OF_PRODUCTS";
 export const SearchFilterType = /*@__PURE__*/ S.String;
 
 export type SearchFilterValue = string;
 export type SearchFilterValueList = string[];
 export const SearchFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface SearchFilter {
-  filterType: SearchFilterType;
+  filterType: SearchFilterType | (string & {});
   filterValues: string[];
 }
 export const SearchFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1973,11 +1950,10 @@ export type SearchFacetType =
   | "PRICING_MODEL"
   | "PRICING_UNIT"
   | "DEPLOYED_ON_AWS"
-  | "NUMBER_OF_PRODUCTS"
-  | (string & {});
+  | "NUMBER_OF_PRODUCTS";
 export const SearchFacetType = /*@__PURE__*/ S.String;
 
-export type FacetTypeList = SearchFacetType[];
+export type FacetTypeList = (SearchFacetType | (string & {}))[];
 export const FacetTypeList = /*@__PURE__*/ S.Array(SearchFacetType);
 export interface SearchFacetsInput {
   searchText?: string;
@@ -2039,24 +2015,18 @@ export const SearchFacetsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchFacetsOutput",
 }) as any as S.Schema<SearchFacetsOutput>;
-export type SearchListingsSortBy =
-  | "RELEVANCE"
-  | "AVERAGE_CUSTOMER_RATING"
-  | (string & {});
+export type SearchListingsSortBy = "RELEVANCE" | "AVERAGE_CUSTOMER_RATING";
 export const SearchListingsSortBy = /*@__PURE__*/ S.String;
 
-export type SearchListingsSortOrder =
-  | "DESCENDING"
-  | "ASCENDING"
-  | (string & {});
+export type SearchListingsSortOrder = "DESCENDING" | "ASCENDING";
 export const SearchListingsSortOrder = /*@__PURE__*/ S.String;
 
 export interface SearchListingsInput {
   searchText?: string;
   filters?: SearchFilter[];
   maxResults?: number;
-  sortBy?: SearchListingsSortBy;
-  sortOrder?: SearchListingsSortOrder;
+  sortBy?: SearchListingsSortBy | (string & {});
+  sortOrder?: SearchListingsSortOrder | (string & {});
   nextToken?: string;
 }
 export const SearchListingsInput = /*@__PURE__*/ S.suspend(() =>

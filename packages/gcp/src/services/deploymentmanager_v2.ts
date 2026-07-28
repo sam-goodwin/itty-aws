@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface DeploymentsCancelPreviewRequest {
@@ -65,12 +65,10 @@ export interface DeploymentsCancelPreviewRequest {
   fingerprint?: string;
 }
 export const DeploymentsCancelPreviewRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fingerprint: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeploymentsCancelPreviewRequest",
-}) as any as S.Schema<DeploymentsCancelPreviewRequest>;
+S.Struct({
+  "fingerprint": S.optional(S.String),
+}),
+).annotate({ identifier: "DeploymentsCancelPreviewRequest" }) as any as S.Schema<DeploymentsCancelPreviewRequest>;
 
 export interface CancelPreviewDeploymentsRequest {
   /** The project ID for this request. */
@@ -81,32 +79,18 @@ export interface CancelPreviewDeploymentsRequest {
   body?: DeploymentsCancelPreviewRequest;
 }
 export const CancelPreviewDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    deployment: S.String.pipe(T.Label()),
-    body: S.optional(DeploymentsCancelPreviewRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/cancelPreview",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelPreviewDeploymentsRequest",
-}) as any as S.Schema<CancelPreviewDeploymentsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "deployment": S.String.pipe(T.Label()),
+  "body": S.optional(DeploymentsCancelPreviewRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/cancelPreview","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "CancelPreviewDeploymentsRequest" }) as any as S.Schema<CancelPreviewDeploymentsRequest>;
 
-export type OperationStatusEnum =
-  | "PENDING"
-  | "RUNNING"
-  | "DONE"
-  | (string & {});
+export type OperationStatusEnum = "PENDING" | "RUNNING" | "DONE";
 export const OperationStatusEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Describes additional debugging info. */
 export interface DebugInfo {
@@ -116,17 +100,14 @@ export interface DebugInfo {
   detail?: string;
 }
 export const DebugInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stackEntries: S.optional(StringList),
-    detail: S.optional(S.String),
-  }),
+S.Struct({
+  "stackEntries": S.optional(StringList),
+  "detail": S.optional(S.String),
+}),
 ).annotate({ identifier: "DebugInfo" }) as any as S.Schema<DebugInfo>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } } */
 export interface ErrorInfo {
@@ -138,17 +119,14 @@ export interface ErrorInfo {
   metadatas?: StringMap;
 }
 export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    metadatas: S.optional(StringMap),
-  }),
+S.Struct({
+  "reason": S.optional(S.String),
+  "domain": S.optional(S.String),
+  "metadatas": S.optional(StringMap),
+}),
 ).annotate({ identifier: "ErrorInfo" }) as any as S.Schema<ErrorInfo>;
 
-export type QuotaExceededInfoRolloutStatusEnum =
-  | "ROLLOUT_STATUS_UNSPECIFIED"
-  | "IN_PROGRESS"
-  | (string & {});
+export type QuotaExceededInfoRolloutStatusEnum = "ROLLOUT_STATUS_UNSPECIFIED" | "IN_PROGRESS";
 export const QuotaExceededInfoRolloutStatusEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for quota exceeded error for resource quota. */
@@ -167,17 +145,15 @@ export interface QuotaExceededInfo {
   rolloutStatus?: QuotaExceededInfoRolloutStatusEnum;
 }
 export const QuotaExceededInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.optional(S.String),
-    limitName: S.optional(S.String),
-    dimensions: S.optional(StringMap),
-    limit: S.optional(S.Number),
-    futureLimit: S.optional(S.Number),
-    rolloutStatus: S.optional(QuotaExceededInfoRolloutStatusEnum),
-  }),
-).annotate({
-  identifier: "QuotaExceededInfo",
-}) as any as S.Schema<QuotaExceededInfo>;
+S.Struct({
+  "metricName": S.optional(S.String),
+  "limitName": S.optional(S.String),
+  "dimensions": S.optional(StringMap),
+  "limit": S.optional(S.Number),
+  "futureLimit": S.optional(S.Number),
+  "rolloutStatus": S.optional(QuotaExceededInfoRolloutStatusEnum),
+}),
+).annotate({ identifier: "QuotaExceededInfo" }) as any as S.Schema<QuotaExceededInfo>;
 
 /** Describes a URL link. */
 export interface HelpLink {
@@ -187,16 +163,14 @@ export interface HelpLink {
   url?: string;
 }
 export const HelpLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "url": S.optional(S.String),
+}),
 ).annotate({ identifier: "HelpLink" }) as any as S.Schema<HelpLink>;
 
 export type HelpLinkList = ReadonlyArray<HelpLink>;
-export const HelpLinkList = /*@__PURE__*/ S.Array(
-  HelpLink,
-) as any as S.Schema<HelpLinkList>;
+export const HelpLinkList = /*@__PURE__*/ S.Array(HelpLink) as any as S.Schema<HelpLinkList>;
 
 /** Provides links to documentation or for performing an out of band action. For example, if a quota check failed with an error indicating the calling project hasn't enabled the accessed service, this can contain a URL pointing directly to the right place in the developer console to flip the bit. */
 export interface Help {
@@ -204,9 +178,9 @@ export interface Help {
   links?: HelpLinkList;
 }
 export const Help = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    links: S.optional(HelpLinkList),
-  }),
+S.Struct({
+  "links": S.optional(HelpLinkList),
+}),
 ).annotate({ identifier: "Help" }) as any as S.Schema<Help>;
 
 /** Provides a localized error message that is safe to return to the user which can be attached to an RPC error. */
@@ -217,13 +191,11 @@ export interface LocalizedMessage {
   message?: string;
 }
 export const LocalizedMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locale: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LocalizedMessage",
-}) as any as S.Schema<LocalizedMessage>;
+S.Struct({
+  "locale": S.optional(S.String),
+  "message": S.optional(S.String),
+}),
+).annotate({ identifier: "LocalizedMessage" }) as any as S.Schema<LocalizedMessage>;
 
 export interface OperationErrorErrorsItemErrorDetailsItem {
   errorInfo?: ErrorInfo;
@@ -231,24 +203,17 @@ export interface OperationErrorErrorsItemErrorDetailsItem {
   help?: Help;
   localizedMessage?: LocalizedMessage;
 }
-export const OperationErrorErrorsItemErrorDetailsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      errorInfo: S.optional(ErrorInfo),
-      quotaInfo: S.optional(QuotaExceededInfo),
-      help: S.optional(Help),
-      localizedMessage: S.optional(LocalizedMessage),
-    }),
-).annotate({
-  identifier: "OperationErrorErrorsItemErrorDetailsItem",
-}) as any as S.Schema<OperationErrorErrorsItemErrorDetailsItem>;
+export const OperationErrorErrorsItemErrorDetailsItem = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "errorInfo": S.optional(ErrorInfo),
+  "quotaInfo": S.optional(QuotaExceededInfo),
+  "help": S.optional(Help),
+  "localizedMessage": S.optional(LocalizedMessage),
+}),
+).annotate({ identifier: "OperationErrorErrorsItemErrorDetailsItem" }) as any as S.Schema<OperationErrorErrorsItemErrorDetailsItem>;
 
-export type OperationErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<OperationErrorErrorsItemErrorDetailsItem>;
-export const OperationErrorErrorsItemErrorDetailsItemList =
-  /*@__PURE__*/ S.Array(
-    OperationErrorErrorsItemErrorDetailsItem,
-  ) as any as S.Schema<OperationErrorErrorsItemErrorDetailsItemList>;
+export type OperationErrorErrorsItemErrorDetailsItemList = ReadonlyArray<OperationErrorErrorsItemErrorDetailsItem>;
+export const OperationErrorErrorsItemErrorDetailsItemList = /*@__PURE__*/ S.Array(OperationErrorErrorsItemErrorDetailsItem) as any as S.Schema<OperationErrorErrorsItemErrorDetailsItemList>;
 
 export interface OperationErrorErrorsItem {
   /** [Output Only] The error type identifier for this error. */
@@ -264,77 +229,30 @@ export interface OperationErrorErrorsItem {
   errorDetails?: OperationErrorErrorsItemErrorDetailsItemList;
 }
 export const OperationErrorErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    location: S.optional(S.String),
-    message: S.optional(S.String),
-    arguments: S.optional(StringList),
-    debugInfo: S.optional(DebugInfo),
-    errorDetails: S.optional(OperationErrorErrorsItemErrorDetailsItemList),
-  }),
-).annotate({
-  identifier: "OperationErrorErrorsItem",
-}) as any as S.Schema<OperationErrorErrorsItem>;
+S.Struct({
+  "code": S.optional(S.String),
+  "location": S.optional(S.String),
+  "message": S.optional(S.String),
+  "arguments": S.optional(StringList),
+  "debugInfo": S.optional(DebugInfo),
+  "errorDetails": S.optional(OperationErrorErrorsItemErrorDetailsItemList),
+}),
+).annotate({ identifier: "OperationErrorErrorsItem" }) as any as S.Schema<OperationErrorErrorsItem>;
 
-export type OperationErrorErrorsItemList =
-  ReadonlyArray<OperationErrorErrorsItem>;
-export const OperationErrorErrorsItemList = /*@__PURE__*/ S.Array(
-  OperationErrorErrorsItem,
-) as any as S.Schema<OperationErrorErrorsItemList>;
+export type OperationErrorErrorsItemList = ReadonlyArray<OperationErrorErrorsItem>;
+export const OperationErrorErrorsItemList = /*@__PURE__*/ S.Array(OperationErrorErrorsItem) as any as S.Schema<OperationErrorErrorsItemList>;
 
 export interface OperationError {
   /** [Output Only] The array of errors encountered while processing this operation. */
   errors?: OperationErrorErrorsItemList;
 }
 export const OperationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(OperationErrorErrorsItemList),
-  }),
+S.Struct({
+  "errors": S.optional(OperationErrorErrorsItemList),
+}),
 ).annotate({ identifier: "OperationError" }) as any as S.Schema<OperationError>;
 
-export type OperationWarningsItemCodeEnum =
-  | "DEPRECATED_RESOURCE_USED"
-  | "NO_RESULTS_ON_PAGE"
-  | "UNREACHABLE"
-  | "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
-  | "NEXT_HOP_INSTANCE_NOT_FOUND"
-  | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
-  | "NEXT_HOP_CANNOT_IP_FORWARD"
-  | "NEXT_HOP_NOT_RUNNING"
-  | "INJECTED_KERNELS_DEPRECATED"
-  | "REQUIRED_TOS_AGREEMENT"
-  | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
-  | "RESOURCE_NOT_DELETED"
-  | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
-  | "NOT_CRITICAL_ERROR"
-  | "CLEANUP_FAILED"
-  | "FIELD_VALUE_OVERRIDEN"
-  | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
-  | "NETWORK_ENDPOINT_NOT_DETACHED"
-  | "PAGE_MISSING_RESULTS"
-  | "SSL_POLICY_ENABLED_FEATURES_NOT_FETCHED"
-  | "RESOURCE_NOT_FOUND_WARNING"
-  | "MISSING_TYPE_DEPENDENCY"
-  | "EXTERNAL_API_WARNING"
-  | "SCHEMA_VALIDATION_IGNORED"
-  | "UNDECLARED_PROPERTIES"
-  | "EXPERIMENTAL_TYPE_USED"
-  | "DEPRECATED_TYPE_USED"
-  | "PARTIAL_SUCCESS"
-  | "LARGE_DEPLOYMENT_WARNING"
-  | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE"
-  | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB"
-  | "LIST_OVERHEAD_QUOTA_EXCEED"
-  | "QUOTA_INFO_UNAVAILABLE"
-  | "RESOURCE_USES_GLOBAL_DNS"
-  | "RATE_LIMIT_EXCEEDED"
-  | "UPCOMING_MAINTENANCES_UNAVAILABLE"
-  | "RESERVED_ENTRY_136"
-  | "RESERVED_ENTRY_139"
-  | "RESERVED_ENTRY_141"
-  | "RESERVED_ENTRY_142"
-  | "RESERVED_ENTRY_143"
-  | (string & {});
+export type OperationWarningsItemCodeEnum = "DEPRECATED_RESOURCE_USED" | "NO_RESULTS_ON_PAGE" | "UNREACHABLE" | "NEXT_HOP_ADDRESS_NOT_ASSIGNED" | "NEXT_HOP_INSTANCE_NOT_FOUND" | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" | "NEXT_HOP_CANNOT_IP_FORWARD" | "NEXT_HOP_NOT_RUNNING" | "INJECTED_KERNELS_DEPRECATED" | "REQUIRED_TOS_AGREEMENT" | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" | "RESOURCE_NOT_DELETED" | "SINGLE_INSTANCE_PROPERTY_TEMPLATE" | "NOT_CRITICAL_ERROR" | "CLEANUP_FAILED" | "FIELD_VALUE_OVERRIDEN" | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" | "NETWORK_ENDPOINT_NOT_DETACHED" | "PAGE_MISSING_RESULTS" | "SSL_POLICY_ENABLED_FEATURES_NOT_FETCHED" | "RESOURCE_NOT_FOUND_WARNING" | "MISSING_TYPE_DEPENDENCY" | "EXTERNAL_API_WARNING" | "SCHEMA_VALIDATION_IGNORED" | "UNDECLARED_PROPERTIES" | "EXPERIMENTAL_TYPE_USED" | "DEPRECATED_TYPE_USED" | "PARTIAL_SUCCESS" | "LARGE_DEPLOYMENT_WARNING" | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" | "LIST_OVERHEAD_QUOTA_EXCEED" | "QUOTA_INFO_UNAVAILABLE" | "RESOURCE_USES_GLOBAL_DNS" | "RATE_LIMIT_EXCEEDED" | "UPCOMING_MAINTENANCES_UNAVAILABLE" | "RESERVED_ENTRY_136" | "RESERVED_ENTRY_139" | "RESERVED_ENTRY_141" | "RESERVED_ENTRY_142" | "RESERVED_ENTRY_143";
 export const OperationWarningsItemCodeEnum = /*@__PURE__*/ S.String;
 
 export interface OperationWarningsItemDataItem {
@@ -344,19 +262,14 @@ export interface OperationWarningsItemDataItem {
   value?: string;
 }
 export const OperationWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationWarningsItemDataItem",
-}) as any as S.Schema<OperationWarningsItemDataItem>;
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "OperationWarningsItemDataItem" }) as any as S.Schema<OperationWarningsItemDataItem>;
 
-export type OperationWarningsItemDataItemList =
-  ReadonlyArray<OperationWarningsItemDataItem>;
-export const OperationWarningsItemDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<OperationWarningsItemDataItemList>;
+export type OperationWarningsItemDataItemList = ReadonlyArray<OperationWarningsItemDataItem>;
+export const OperationWarningsItemDataItemList = /*@__PURE__*/ S.Array(OperationWarningsItemDataItem) as any as S.Schema<OperationWarningsItemDataItemList>;
 
 export interface OperationWarningsItem {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -367,41 +280,24 @@ export interface OperationWarningsItem {
   data?: OperationWarningsItemDataItemList;
 }
 export const OperationWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(OperationWarningsItemCodeEnum),
-    message: S.optional(S.String),
-    data: S.optional(OperationWarningsItemDataItemList),
-  }),
-).annotate({
-  identifier: "OperationWarningsItem",
-}) as any as S.Schema<OperationWarningsItem>;
+S.Struct({
+  "code": S.optional(OperationWarningsItemCodeEnum),
+  "message": S.optional(S.String),
+  "data": S.optional(OperationWarningsItemDataItemList),
+}),
+).annotate({ identifier: "OperationWarningsItem" }) as any as S.Schema<OperationWarningsItem>;
 
 export type OperationWarningsItemList = ReadonlyArray<OperationWarningsItem>;
-export const OperationWarningsItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItem,
-) as any as S.Schema<OperationWarningsItemList>;
+export const OperationWarningsItemList = /*@__PURE__*/ S.Array(OperationWarningsItem) as any as S.Schema<OperationWarningsItemList>;
 
-export type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum =
-    | "UNSPECIFIED"
-    | "PROPAGATING"
-    | "PROPAGATED"
-    | "ABANDONED"
-    | "FAILED"
-    | "DONE"
-    | (string & {});
-export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum =
-  /*@__PURE__*/ S.String;
+export type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum = "UNSPECIFIED" | "PROPAGATING" | "PROPAGATED" | "ABANDONED" | "FAILED" | "DONE";
+export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -413,11 +309,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export interface SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo {
@@ -426,30 +322,15 @@ export interface SetCommonInstanceMetadataOperationMetadataPerLocationOperationI
   /** [Output Only] If state is `ABANDONED` or `FAILED`, this field is populated. */
   error?: Status;
 }
-export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: S.optional(
-        SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum,
-      ),
-      error: S.optional(Status),
-    }),
-  ).annotate({
-    identifier:
-      "SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo",
-  }) as any as S.Schema<SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo>;
+export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "state": S.optional(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum),
+  "error": S.optional(Status),
+}),
+).annotate({ identifier: "SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo" }) as any as S.Schema<SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo>;
 
-export type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoMap =
-  {
-    [key: string]:
-      | SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
-      | undefined;
-  };
-export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo,
-  ) as any as S.Schema<SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoMap>;
+export type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoMap = { [key: string]: SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo | undefined };
+export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoMap = /*@__PURE__*/ S.Record(S.String, SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo) as any as S.Schema<SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoMap>;
 
 export interface SetCommonInstanceMetadataOperationMetadata {
   /** [Output Only] The client operation id. */
@@ -457,24 +338,14 @@ export interface SetCommonInstanceMetadataOperationMetadata {
   /** [Output Only] Status information per location (location name is key). Example key: zones/us-central1-a */
   perLocationOperations?: SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoMap;
 }
-export const SetCommonInstanceMetadataOperationMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientOperationId: S.optional(S.String),
-      perLocationOperations: S.optional(
-        SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "SetCommonInstanceMetadataOperationMetadata",
-  }) as any as S.Schema<SetCommonInstanceMetadataOperationMetadata>;
+export const SetCommonInstanceMetadataOperationMetadata = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "clientOperationId": S.optional(S.String),
+  "perLocationOperations": S.optional(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoMap),
+}),
+).annotate({ identifier: "SetCommonInstanceMetadataOperationMetadata" }) as any as S.Schema<SetCommonInstanceMetadataOperationMetadata>;
 
-export type BulkInsertOperationStatusStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "CREATING"
-  | "ROLLING_BACK"
-  | "DONE"
-  | (string & {});
+export type BulkInsertOperationStatusStatusEnum = "STATUS_UNSPECIFIED" | "CREATING" | "ROLLING_BACK" | "DONE";
 export const BulkInsertOperationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 export interface BulkInsertOperationStatus {
@@ -490,24 +361,17 @@ export interface BulkInsertOperationStatus {
   deletedVmCount?: number;
 }
 export const BulkInsertOperationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(BulkInsertOperationStatusStatusEnum),
-    targetVmCount: S.optional(S.Number),
-    createdVmCount: S.optional(S.Number),
-    failedToCreateVmCount: S.optional(S.Number),
-    deletedVmCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BulkInsertOperationStatus",
-}) as any as S.Schema<BulkInsertOperationStatus>;
+S.Struct({
+  "status": S.optional(BulkInsertOperationStatusStatusEnum),
+  "targetVmCount": S.optional(S.Number),
+  "createdVmCount": S.optional(S.Number),
+  "failedToCreateVmCount": S.optional(S.Number),
+  "deletedVmCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "BulkInsertOperationStatus" }) as any as S.Schema<BulkInsertOperationStatus>;
 
-export type BulkInsertOperationStatusMap = {
-  [key: string]: BulkInsertOperationStatus | undefined;
-};
-export const BulkInsertOperationStatusMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BulkInsertOperationStatus,
-) as any as S.Schema<BulkInsertOperationStatusMap>;
+export type BulkInsertOperationStatusMap = { [key: string]: BulkInsertOperationStatus | undefined };
+export const BulkInsertOperationStatusMap = /*@__PURE__*/ S.Record(S.String, BulkInsertOperationStatus) as any as S.Schema<BulkInsertOperationStatusMap>;
 
 export interface InstancesBulkInsertOperationMetadata {
   /** Status information per location (location name is key). Example key: zones/us-central1-a */
@@ -515,15 +379,12 @@ export interface InstancesBulkInsertOperationMetadata {
   /** [Output Only] The machine type of the VMs that were created used internally only by KCP flex bulk insert. */
   machineType?: string;
 }
-export const InstancesBulkInsertOperationMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      perLocationStatus: S.optional(BulkInsertOperationStatusMap),
-      machineType: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "InstancesBulkInsertOperationMetadata",
-}) as any as S.Schema<InstancesBulkInsertOperationMetadata>;
+export const InstancesBulkInsertOperationMetadata = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "perLocationStatus": S.optional(BulkInsertOperationStatusMap),
+  "machineType": S.optional(S.String),
+}),
+).annotate({ identifier: "InstancesBulkInsertOperationMetadata" }) as any as S.Schema<InstancesBulkInsertOperationMetadata>;
 
 export interface GetVersionOperationMetadataSbomInfo {
   /** SBOM versions currently applied to the resource. The key is the component name and the value is the version. */
@@ -532,36 +393,30 @@ export interface GetVersionOperationMetadataSbomInfo {
   targetComponentVersions?: StringMap;
 }
 export const GetVersionOperationMetadataSbomInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentComponentVersions: S.optional(StringMap),
-    targetComponentVersions: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "GetVersionOperationMetadataSbomInfo",
-}) as any as S.Schema<GetVersionOperationMetadataSbomInfo>;
+S.Struct({
+  "currentComponentVersions": S.optional(StringMap),
+  "targetComponentVersions": S.optional(StringMap),
+}),
+).annotate({ identifier: "GetVersionOperationMetadataSbomInfo" }) as any as S.Schema<GetVersionOperationMetadataSbomInfo>;
 
 export interface GetVersionOperationMetadata {
   inlineSbomInfo?: GetVersionOperationMetadataSbomInfo;
 }
 export const GetVersionOperationMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inlineSbomInfo: S.optional(GetVersionOperationMetadataSbomInfo),
-  }),
-).annotate({
-  identifier: "GetVersionOperationMetadata",
-}) as any as S.Schema<GetVersionOperationMetadata>;
+S.Struct({
+  "inlineSbomInfo": S.optional(GetVersionOperationMetadataSbomInfo),
+}),
+).annotate({ identifier: "GetVersionOperationMetadata" }) as any as S.Schema<GetVersionOperationMetadata>;
 
 export interface FirewallPolicyRuleOperationMetadata {
   /** The priority allocated for the firewall policy rule if query parameters specified minPriority/maxPriority. */
   allocatedPriority?: number;
 }
 export const FirewallPolicyRuleOperationMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allocatedPriority: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FirewallPolicyRuleOperationMetadata",
-}) as any as S.Schema<FirewallPolicyRuleOperationMetadata>;
+S.Struct({
+  "allocatedPriority": S.optional(S.Number),
+}),
+).annotate({ identifier: "FirewallPolicyRuleOperationMetadata" }) as any as S.Schema<FirewallPolicyRuleOperationMetadata>;
 
 export interface SetAutoscalerLinkOperationMetadata {
   /** List of zonal IGM IDs part of the RMIG. */
@@ -570,13 +425,11 @@ export interface SetAutoscalerLinkOperationMetadata {
   zoneToIgmIds?: StringMap;
 }
 export const SetAutoscalerLinkOperationMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zonalIgmIds: S.optional(StringList),
-    zoneToIgmIds: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "SetAutoscalerLinkOperationMetadata",
-}) as any as S.Schema<SetAutoscalerLinkOperationMetadata>;
+S.Struct({
+  "zonalIgmIds": S.optional(StringList),
+  "zoneToIgmIds": S.optional(StringMap),
+}),
+).annotate({ identifier: "SetAutoscalerLinkOperationMetadata" }) as any as S.Schema<SetAutoscalerLinkOperationMetadata>;
 
 /** Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zoneOperations` resource. For more information, read Global, Regional, and Zonal Resources. Note that completed Operation resources have a limited retention period. */
 export interface Operation {
@@ -639,52 +492,41 @@ export interface Operation {
   setAutoscalerLinkOperationMetadata?: SetAutoscalerLinkOperationMetadata;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    creationTimestamp: S.optional(S.String),
-    name: S.optional(S.String),
-    zone: S.optional(S.String),
-    clientOperationId: S.optional(S.String),
-    operationType: S.optional(S.String),
-    targetLink: S.optional(S.String),
-    targetId: S.optional(S.String),
-    status: S.optional(OperationStatusEnum),
-    statusMessage: S.optional(S.String),
-    user: S.optional(S.String),
-    progress: S.optional(S.Number),
-    insertTime: S.optional(S.String),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    error: S.optional(OperationError),
-    warnings: S.optional(OperationWarningsItemList),
-    httpErrorStatusCode: S.optional(S.Number),
-    httpErrorMessage: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    selfLinkWithId: S.optional(S.String),
-    region: S.optional(S.String),
-    description: S.optional(S.String),
-    operationGroupId: S.optional(S.String),
-    setCommonInstanceMetadataOperationMetadata: S.optional(
-      SetCommonInstanceMetadataOperationMetadata,
-    ),
-    instancesBulkInsertOperationMetadata: S.optional(
-      InstancesBulkInsertOperationMetadata,
-    ),
-    getVersionOperationMetadata: S.optional(GetVersionOperationMetadata),
-    firewallPolicyRuleOperationMetadata: S.optional(
-      FirewallPolicyRuleOperationMetadata,
-    ),
-    setAutoscalerLinkOperationMetadata: S.optional(
-      SetAutoscalerLinkOperationMetadata,
-    ),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "creationTimestamp": S.optional(S.String),
+  "name": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clientOperationId": S.optional(S.String),
+  "operationType": S.optional(S.String),
+  "targetLink": S.optional(S.String),
+  "targetId": S.optional(S.String),
+  "status": S.optional(OperationStatusEnum),
+  "statusMessage": S.optional(S.String),
+  "user": S.optional(S.String),
+  "progress": S.optional(S.Number),
+  "insertTime": S.optional(S.String),
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "error": S.optional(OperationError),
+  "warnings": S.optional(OperationWarningsItemList),
+  "httpErrorStatusCode": S.optional(S.Number),
+  "httpErrorMessage": S.optional(S.String),
+  "selfLink": S.optional(S.String),
+  "selfLinkWithId": S.optional(S.String),
+  "region": S.optional(S.String),
+  "description": S.optional(S.String),
+  "operationGroupId": S.optional(S.String),
+  "setCommonInstanceMetadataOperationMetadata": S.optional(SetCommonInstanceMetadataOperationMetadata),
+  "instancesBulkInsertOperationMetadata": S.optional(InstancesBulkInsertOperationMetadata),
+  "getVersionOperationMetadata": S.optional(GetVersionOperationMetadata),
+  "firewallPolicyRuleOperationMetadata": S.optional(FirewallPolicyRuleOperationMetadata),
+  "setAutoscalerLinkOperationMetadata": S.optional(SetAutoscalerLinkOperationMetadata),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type DeleteDeploymentsDeletePolicyEnum =
-  | "DELETE"
-  | "ABANDON"
-  | (string & {});
+export type DeleteDeploymentsDeletePolicyEnum = "DELETE" | "ABANDON";
 export const DeleteDeploymentsDeletePolicyEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteDeploymentsRequest {
@@ -693,25 +535,17 @@ export interface DeleteDeploymentsRequest {
   /** The name of the deployment for this request. */
   deployment: string;
   /** Sets the policy to use for deleting resources. */
-  deletePolicy?: DeleteDeploymentsDeletePolicyEnum;
+  deletePolicy?: DeleteDeploymentsDeletePolicyEnum | (string & {});
   "header.bypassBillingFilter"?: boolean;
 }
 export const DeleteDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    deployment: S.String.pipe(T.Label()),
-    deletePolicy: S.optional(DeleteDeploymentsDeletePolicyEnum.pipe(T.Query())),
-    "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteDeploymentsRequest",
-}) as any as S.Schema<DeleteDeploymentsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "deployment": S.String.pipe(T.Label()),
+  "deletePolicy": S.optional(DeleteDeploymentsDeletePolicyEnum.pipe(T.Query())),
+  "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{deployment}","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "DeleteDeploymentsRequest" }) as any as S.Schema<DeleteDeploymentsRequest>;
 
 export interface GetDeploymentsRequest {
   /** The project ID for this request. */
@@ -721,20 +555,12 @@ export interface GetDeploymentsRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 export const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    deployment: S.String.pipe(T.Label()),
-    "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetDeploymentsRequest",
-}) as any as S.Schema<GetDeploymentsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "deployment": S.String.pipe(T.Label()),
+  "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{deployment}","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "GetDeploymentsRequest" }) as any as S.Schema<GetDeploymentsRequest>;
 
 /** Label object for DeploymentUpdate */
 export interface DeploymentUpdateLabelEntry {
@@ -744,19 +570,14 @@ export interface DeploymentUpdateLabelEntry {
   value?: string;
 }
 export const DeploymentUpdateLabelEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeploymentUpdateLabelEntry",
-}) as any as S.Schema<DeploymentUpdateLabelEntry>;
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "DeploymentUpdateLabelEntry" }) as any as S.Schema<DeploymentUpdateLabelEntry>;
 
-export type DeploymentUpdateLabelEntryList =
-  ReadonlyArray<DeploymentUpdateLabelEntry>;
-export const DeploymentUpdateLabelEntryList = /*@__PURE__*/ S.Array(
-  DeploymentUpdateLabelEntry,
-) as any as S.Schema<DeploymentUpdateLabelEntryList>;
+export type DeploymentUpdateLabelEntryList = ReadonlyArray<DeploymentUpdateLabelEntry>;
+export const DeploymentUpdateLabelEntryList = /*@__PURE__*/ S.Array(DeploymentUpdateLabelEntry) as any as S.Schema<DeploymentUpdateLabelEntryList>;
 
 export interface DeploymentUpdate {
   /** Output only. URL of the manifest representing the update configuration of this deployment. */
@@ -767,23 +588,21 @@ export interface DeploymentUpdate {
   description?: string;
 }
 export const DeploymentUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manifest: S.optional(S.String),
-    labels: S.optional(DeploymentUpdateLabelEntryList),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeploymentUpdate",
-}) as any as S.Schema<DeploymentUpdate>;
+S.Struct({
+  "manifest": S.optional(S.String),
+  "labels": S.optional(DeploymentUpdateLabelEntryList),
+  "description": S.optional(S.String),
+}),
+).annotate({ identifier: "DeploymentUpdate" }) as any as S.Schema<DeploymentUpdate>;
 
 export interface ConfigFile {
   /** The contents of the file. */
   content?: string;
 }
 export const ConfigFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-  }),
+S.Struct({
+  "content": S.optional(S.String),
+}),
 ).annotate({ identifier: "ConfigFile" }) as any as S.Schema<ConfigFile>;
 
 export interface ImportFile {
@@ -793,16 +612,14 @@ export interface ImportFile {
   content?: string;
 }
 export const ImportFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    content: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "content": S.optional(S.String),
+}),
 ).annotate({ identifier: "ImportFile" }) as any as S.Schema<ImportFile>;
 
 export type ImportFileList = ReadonlyArray<ImportFile>;
-export const ImportFileList = /*@__PURE__*/ S.Array(
-  ImportFile,
-) as any as S.Schema<ImportFileList>;
+export const ImportFileList = /*@__PURE__*/ S.Array(ImportFile) as any as S.Schema<ImportFileList>;
 
 export interface TargetConfiguration {
   /** The configuration to use for this deployment. */
@@ -811,13 +628,11 @@ export interface TargetConfiguration {
   imports?: ImportFileList;
 }
 export const TargetConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(ConfigFile),
-    imports: S.optional(ImportFileList),
-  }),
-).annotate({
-  identifier: "TargetConfiguration",
-}) as any as S.Schema<TargetConfiguration>;
+S.Struct({
+  "config": S.optional(ConfigFile),
+  "imports": S.optional(ImportFileList),
+}),
+).annotate({ identifier: "TargetConfiguration" }) as any as S.Schema<TargetConfiguration>;
 
 /** Label object for Deployments */
 export interface DeploymentLabelEntry {
@@ -827,18 +642,14 @@ export interface DeploymentLabelEntry {
   value?: string;
 }
 export const DeploymentLabelEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeploymentLabelEntry",
-}) as any as S.Schema<DeploymentLabelEntry>;
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "DeploymentLabelEntry" }) as any as S.Schema<DeploymentLabelEntry>;
 
 export type DeploymentLabelEntryList = ReadonlyArray<DeploymentLabelEntry>;
-export const DeploymentLabelEntryList = /*@__PURE__*/ S.Array(
-  DeploymentLabelEntry,
-) as any as S.Schema<DeploymentLabelEntryList>;
+export const DeploymentLabelEntryList = /*@__PURE__*/ S.Array(DeploymentLabelEntry) as any as S.Schema<DeploymentLabelEntryList>;
 
 export interface Deployment {
   id?: string;
@@ -866,20 +677,20 @@ export interface Deployment {
   selfLink?: string;
 }
 export const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    operation: S.optional(Operation),
-    fingerprint: S.optional(S.String),
-    manifest: S.optional(S.String),
-    update: S.optional(DeploymentUpdate),
-    insertTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    target: S.optional(TargetConfiguration),
-    labels: S.optional(DeploymentLabelEntryList),
-    selfLink: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "operation": S.optional(Operation),
+  "fingerprint": S.optional(S.String),
+  "manifest": S.optional(S.String),
+  "update": S.optional(DeploymentUpdate),
+  "insertTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "target": S.optional(TargetConfiguration),
+  "labels": S.optional(DeploymentLabelEntryList),
+  "selfLink": S.optional(S.String),
+}),
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 export interface GetIamPolicyDeploymentsRequest {
@@ -892,21 +703,13 @@ export interface GetIamPolicyDeploymentsRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 export const GetIamPolicyDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    resource: S.String.pipe(T.Label()),
-    optionsRequestedPolicyVersion: S.optional(S.Number.pipe(T.Query())),
-    "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/getIamPolicy",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetIamPolicyDeploymentsRequest",
-}) as any as S.Schema<GetIamPolicyDeploymentsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "resource": S.String.pipe(T.Label()),
+  "optionsRequestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{resource}/getIamPolicy","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyDeploymentsRequest" }) as any as S.Schema<GetIamPolicyDeploymentsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -920,12 +723,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -938,24 +741,17 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    members: S.optional(StringList),
-    condition: S.optional(Expr),
-  }),
+S.Struct({
+  "role": S.optional(S.String),
+  "members": S.optional(StringList),
+  "condition": S.optional(Expr),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -966,16 +762,14 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-    exemptedMembers: S.optional(StringList),
-  }),
+S.Struct({
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+  "exemptedMembers": S.optional(StringList),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -985,16 +779,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1008,12 +800,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-    auditConfigs: S.optional(AuditConfigList),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+  "auditConfigs": S.optional(AuditConfigList),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetManifestsRequest {
@@ -1026,21 +818,13 @@ export interface GetManifestsRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 export const GetManifestsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    deployment: S.String.pipe(T.Label()),
-    manifest: S.String.pipe(T.Label()),
-    "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests/{manifest}",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetManifestsRequest",
-}) as any as S.Schema<GetManifestsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "deployment": S.String.pipe(T.Label()),
+  "manifest": S.String.pipe(T.Label()),
+  "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests/{manifest}","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "GetManifestsRequest" }) as any as S.Schema<GetManifestsRequest>;
 
 export interface Manifest {
   /** Output only. Self link for the manifest. */
@@ -1064,18 +848,18 @@ export interface Manifest {
   manifestSizeLimitBytes?: string;
 }
 export const Manifest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selfLink: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    config: S.optional(ConfigFile),
-    imports: S.optional(ImportFileList),
-    expandedConfig: S.optional(S.String),
-    insertTime: S.optional(S.String),
-    layout: S.optional(S.String),
-    manifestSizeBytes: S.optional(S.String),
-    manifestSizeLimitBytes: S.optional(S.String),
-  }),
+S.Struct({
+  "selfLink": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "config": S.optional(ConfigFile),
+  "imports": S.optional(ImportFileList),
+  "expandedConfig": S.optional(S.String),
+  "insertTime": S.optional(S.String),
+  "layout": S.optional(S.String),
+  "manifestSizeBytes": S.optional(S.String),
+  "manifestSizeLimitBytes": S.optional(S.String),
+}),
 ).annotate({ identifier: "Manifest" }) as any as S.Schema<Manifest>;
 
 export interface GetOperationsRequest {
@@ -1086,20 +870,12 @@ export interface GetOperationsRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    operation: S.String.pipe(T.Label()),
-    "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "deploymentmanager/v2/projects/{project}/global/operations/{operation}",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperationsRequest",
-}) as any as S.Schema<GetOperationsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "operation": S.String.pipe(T.Label()),
+  "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"deploymentmanager/v2/projects/{project}/global/operations/{operation}","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetResourcesRequest {
   /** The project ID for this request. */
@@ -1111,21 +887,13 @@ export interface GetResourcesRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 export const GetResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    deployment: S.String.pipe(T.Label()),
-    resource: S.String.pipe(T.Label()),
-    "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources/{resource}",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetResourcesRequest",
-}) as any as S.Schema<GetResourcesRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "deployment": S.String.pipe(T.Label()),
+  "resource": S.String.pipe(T.Label()),
+  "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources/{resource}","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "GetResourcesRequest" }) as any as S.Schema<GetResourcesRequest>;
 
 /** The access controls set on the resource. */
 export interface ResourceAccessControl {
@@ -1133,12 +901,10 @@ export interface ResourceAccessControl {
   gcpIamPolicy?: string;
 }
 export const ResourceAccessControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcpIamPolicy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceAccessControl",
-}) as any as S.Schema<ResourceAccessControl>;
+S.Struct({
+  "gcpIamPolicy": S.optional(S.String),
+}),
+).annotate({ identifier: "ResourceAccessControl" }) as any as S.Schema<ResourceAccessControl>;
 
 export interface ResourceUpdateErrorErrorsItemErrorDetailsItem {
   errorInfo?: ErrorInfo;
@@ -1146,24 +912,17 @@ export interface ResourceUpdateErrorErrorsItemErrorDetailsItem {
   help?: Help;
   localizedMessage?: LocalizedMessage;
 }
-export const ResourceUpdateErrorErrorsItemErrorDetailsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      errorInfo: S.optional(ErrorInfo),
-      quotaInfo: S.optional(QuotaExceededInfo),
-      help: S.optional(Help),
-      localizedMessage: S.optional(LocalizedMessage),
-    }),
-  ).annotate({
-    identifier: "ResourceUpdateErrorErrorsItemErrorDetailsItem",
-  }) as any as S.Schema<ResourceUpdateErrorErrorsItemErrorDetailsItem>;
+export const ResourceUpdateErrorErrorsItemErrorDetailsItem = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "errorInfo": S.optional(ErrorInfo),
+  "quotaInfo": S.optional(QuotaExceededInfo),
+  "help": S.optional(Help),
+  "localizedMessage": S.optional(LocalizedMessage),
+}),
+).annotate({ identifier: "ResourceUpdateErrorErrorsItemErrorDetailsItem" }) as any as S.Schema<ResourceUpdateErrorErrorsItemErrorDetailsItem>;
 
-export type ResourceUpdateErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<ResourceUpdateErrorErrorsItemErrorDetailsItem>;
-export const ResourceUpdateErrorErrorsItemErrorDetailsItemList =
-  /*@__PURE__*/ S.Array(
-    ResourceUpdateErrorErrorsItemErrorDetailsItem,
-  ) as any as S.Schema<ResourceUpdateErrorErrorsItemErrorDetailsItemList>;
+export type ResourceUpdateErrorErrorsItemErrorDetailsItemList = ReadonlyArray<ResourceUpdateErrorErrorsItemErrorDetailsItem>;
+export const ResourceUpdateErrorErrorsItemErrorDetailsItemList = /*@__PURE__*/ S.Array(ResourceUpdateErrorErrorsItemErrorDetailsItem) as any as S.Schema<ResourceUpdateErrorErrorsItemErrorDetailsItemList>;
 
 export interface ResourceUpdateErrorErrorsItem {
   /** [Output Only] The error type identifier for this error. */
@@ -1179,79 +938,30 @@ export interface ResourceUpdateErrorErrorsItem {
   errorDetails?: ResourceUpdateErrorErrorsItemErrorDetailsItemList;
 }
 export const ResourceUpdateErrorErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    location: S.optional(S.String),
-    message: S.optional(S.String),
-    arguments: S.optional(StringList),
-    debugInfo: S.optional(DebugInfo),
-    errorDetails: S.optional(ResourceUpdateErrorErrorsItemErrorDetailsItemList),
-  }),
-).annotate({
-  identifier: "ResourceUpdateErrorErrorsItem",
-}) as any as S.Schema<ResourceUpdateErrorErrorsItem>;
+S.Struct({
+  "code": S.optional(S.String),
+  "location": S.optional(S.String),
+  "message": S.optional(S.String),
+  "arguments": S.optional(StringList),
+  "debugInfo": S.optional(DebugInfo),
+  "errorDetails": S.optional(ResourceUpdateErrorErrorsItemErrorDetailsItemList),
+}),
+).annotate({ identifier: "ResourceUpdateErrorErrorsItem" }) as any as S.Schema<ResourceUpdateErrorErrorsItem>;
 
-export type ResourceUpdateErrorErrorsItemList =
-  ReadonlyArray<ResourceUpdateErrorErrorsItem>;
-export const ResourceUpdateErrorErrorsItemList = /*@__PURE__*/ S.Array(
-  ResourceUpdateErrorErrorsItem,
-) as any as S.Schema<ResourceUpdateErrorErrorsItemList>;
+export type ResourceUpdateErrorErrorsItemList = ReadonlyArray<ResourceUpdateErrorErrorsItem>;
+export const ResourceUpdateErrorErrorsItemList = /*@__PURE__*/ S.Array(ResourceUpdateErrorErrorsItem) as any as S.Schema<ResourceUpdateErrorErrorsItemList>;
 
 export interface ResourceUpdateError {
   /** [Output Only] The array of errors encountered while processing this operation. */
   errors?: ResourceUpdateErrorErrorsItemList;
 }
 export const ResourceUpdateError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(ResourceUpdateErrorErrorsItemList),
-  }),
-).annotate({
-  identifier: "ResourceUpdateError",
-}) as any as S.Schema<ResourceUpdateError>;
+S.Struct({
+  "errors": S.optional(ResourceUpdateErrorErrorsItemList),
+}),
+).annotate({ identifier: "ResourceUpdateError" }) as any as S.Schema<ResourceUpdateError>;
 
-export type ResourceUpdateWarningsItemCodeEnum =
-  | "DEPRECATED_RESOURCE_USED"
-  | "NO_RESULTS_ON_PAGE"
-  | "UNREACHABLE"
-  | "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
-  | "NEXT_HOP_INSTANCE_NOT_FOUND"
-  | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
-  | "NEXT_HOP_CANNOT_IP_FORWARD"
-  | "NEXT_HOP_NOT_RUNNING"
-  | "INJECTED_KERNELS_DEPRECATED"
-  | "REQUIRED_TOS_AGREEMENT"
-  | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
-  | "RESOURCE_NOT_DELETED"
-  | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
-  | "NOT_CRITICAL_ERROR"
-  | "CLEANUP_FAILED"
-  | "FIELD_VALUE_OVERRIDEN"
-  | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
-  | "NETWORK_ENDPOINT_NOT_DETACHED"
-  | "PAGE_MISSING_RESULTS"
-  | "SSL_POLICY_ENABLED_FEATURES_NOT_FETCHED"
-  | "RESOURCE_NOT_FOUND_WARNING"
-  | "MISSING_TYPE_DEPENDENCY"
-  | "EXTERNAL_API_WARNING"
-  | "SCHEMA_VALIDATION_IGNORED"
-  | "UNDECLARED_PROPERTIES"
-  | "EXPERIMENTAL_TYPE_USED"
-  | "DEPRECATED_TYPE_USED"
-  | "PARTIAL_SUCCESS"
-  | "LARGE_DEPLOYMENT_WARNING"
-  | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE"
-  | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB"
-  | "LIST_OVERHEAD_QUOTA_EXCEED"
-  | "QUOTA_INFO_UNAVAILABLE"
-  | "RESOURCE_USES_GLOBAL_DNS"
-  | "RATE_LIMIT_EXCEEDED"
-  | "UPCOMING_MAINTENANCES_UNAVAILABLE"
-  | "RESERVED_ENTRY_136"
-  | "RESERVED_ENTRY_139"
-  | "RESERVED_ENTRY_141"
-  | "RESERVED_ENTRY_142"
-  | "RESERVED_ENTRY_143"
-  | (string & {});
+export type ResourceUpdateWarningsItemCodeEnum = "DEPRECATED_RESOURCE_USED" | "NO_RESULTS_ON_PAGE" | "UNREACHABLE" | "NEXT_HOP_ADDRESS_NOT_ASSIGNED" | "NEXT_HOP_INSTANCE_NOT_FOUND" | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" | "NEXT_HOP_CANNOT_IP_FORWARD" | "NEXT_HOP_NOT_RUNNING" | "INJECTED_KERNELS_DEPRECATED" | "REQUIRED_TOS_AGREEMENT" | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" | "RESOURCE_NOT_DELETED" | "SINGLE_INSTANCE_PROPERTY_TEMPLATE" | "NOT_CRITICAL_ERROR" | "CLEANUP_FAILED" | "FIELD_VALUE_OVERRIDEN" | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" | "NETWORK_ENDPOINT_NOT_DETACHED" | "PAGE_MISSING_RESULTS" | "SSL_POLICY_ENABLED_FEATURES_NOT_FETCHED" | "RESOURCE_NOT_FOUND_WARNING" | "MISSING_TYPE_DEPENDENCY" | "EXTERNAL_API_WARNING" | "SCHEMA_VALIDATION_IGNORED" | "UNDECLARED_PROPERTIES" | "EXPERIMENTAL_TYPE_USED" | "DEPRECATED_TYPE_USED" | "PARTIAL_SUCCESS" | "LARGE_DEPLOYMENT_WARNING" | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" | "LIST_OVERHEAD_QUOTA_EXCEED" | "QUOTA_INFO_UNAVAILABLE" | "RESOURCE_USES_GLOBAL_DNS" | "RATE_LIMIT_EXCEEDED" | "UPCOMING_MAINTENANCES_UNAVAILABLE" | "RESERVED_ENTRY_136" | "RESERVED_ENTRY_139" | "RESERVED_ENTRY_141" | "RESERVED_ENTRY_142" | "RESERVED_ENTRY_143";
 export const ResourceUpdateWarningsItemCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ResourceUpdateWarningsItemDataItem {
@@ -1261,19 +971,14 @@ export interface ResourceUpdateWarningsItemDataItem {
   value?: string;
 }
 export const ResourceUpdateWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceUpdateWarningsItemDataItem",
-}) as any as S.Schema<ResourceUpdateWarningsItemDataItem>;
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "ResourceUpdateWarningsItemDataItem" }) as any as S.Schema<ResourceUpdateWarningsItemDataItem>;
 
-export type ResourceUpdateWarningsItemDataItemList =
-  ReadonlyArray<ResourceUpdateWarningsItemDataItem>;
-export const ResourceUpdateWarningsItemDataItemList = /*@__PURE__*/ S.Array(
-  ResourceUpdateWarningsItemDataItem,
-) as any as S.Schema<ResourceUpdateWarningsItemDataItemList>;
+export type ResourceUpdateWarningsItemDataItemList = ReadonlyArray<ResourceUpdateWarningsItemDataItem>;
+export const ResourceUpdateWarningsItemDataItemList = /*@__PURE__*/ S.Array(ResourceUpdateWarningsItemDataItem) as any as S.Schema<ResourceUpdateWarningsItemDataItemList>;
 
 export interface ResourceUpdateWarningsItem {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -1284,38 +989,20 @@ export interface ResourceUpdateWarningsItem {
   data?: ResourceUpdateWarningsItemDataItemList;
 }
 export const ResourceUpdateWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(ResourceUpdateWarningsItemCodeEnum),
-    message: S.optional(S.String),
-    data: S.optional(ResourceUpdateWarningsItemDataItemList),
-  }),
-).annotate({
-  identifier: "ResourceUpdateWarningsItem",
-}) as any as S.Schema<ResourceUpdateWarningsItem>;
+S.Struct({
+  "code": S.optional(ResourceUpdateWarningsItemCodeEnum),
+  "message": S.optional(S.String),
+  "data": S.optional(ResourceUpdateWarningsItemDataItemList),
+}),
+).annotate({ identifier: "ResourceUpdateWarningsItem" }) as any as S.Schema<ResourceUpdateWarningsItem>;
 
-export type ResourceUpdateWarningsItemList =
-  ReadonlyArray<ResourceUpdateWarningsItem>;
-export const ResourceUpdateWarningsItemList = /*@__PURE__*/ S.Array(
-  ResourceUpdateWarningsItem,
-) as any as S.Schema<ResourceUpdateWarningsItemList>;
+export type ResourceUpdateWarningsItemList = ReadonlyArray<ResourceUpdateWarningsItem>;
+export const ResourceUpdateWarningsItemList = /*@__PURE__*/ S.Array(ResourceUpdateWarningsItem) as any as S.Schema<ResourceUpdateWarningsItemList>;
 
-export type ResourceUpdateStateEnum =
-  | "PENDING"
-  | "IN_PROGRESS"
-  | "IN_PREVIEW"
-  | "FAILED"
-  | "ABORTED"
-  | (string & {});
+export type ResourceUpdateStateEnum = "PENDING" | "IN_PROGRESS" | "IN_PREVIEW" | "FAILED" | "ABORTED";
 export const ResourceUpdateStateEnum = /*@__PURE__*/ S.String;
 
-export type ResourceUpdateIntentEnum =
-  | "CREATE_OR_ACQUIRE"
-  | "DELETE"
-  | "ACQUIRE"
-  | "UPDATE"
-  | "ABANDON"
-  | "CREATE"
-  | (string & {});
+export type ResourceUpdateIntentEnum = "CREATE_OR_ACQUIRE" | "DELETE" | "ACQUIRE" | "UPDATE" | "ABANDON" | "CREATE";
 export const ResourceUpdateIntentEnum = /*@__PURE__*/ S.String;
 
 export interface ResourceUpdate {
@@ -1337,61 +1024,19 @@ export interface ResourceUpdate {
   accessControl?: ResourceAccessControl;
 }
 export const ResourceUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manifest: S.optional(S.String),
-    error: S.optional(ResourceUpdateError),
-    warnings: S.optional(ResourceUpdateWarningsItemList),
-    state: S.optional(ResourceUpdateStateEnum),
-    intent: S.optional(ResourceUpdateIntentEnum),
-    properties: S.optional(S.String),
-    finalProperties: S.optional(S.String),
-    accessControl: S.optional(ResourceAccessControl),
-  }),
+S.Struct({
+  "manifest": S.optional(S.String),
+  "error": S.optional(ResourceUpdateError),
+  "warnings": S.optional(ResourceUpdateWarningsItemList),
+  "state": S.optional(ResourceUpdateStateEnum),
+  "intent": S.optional(ResourceUpdateIntentEnum),
+  "properties": S.optional(S.String),
+  "finalProperties": S.optional(S.String),
+  "accessControl": S.optional(ResourceAccessControl),
+}),
 ).annotate({ identifier: "ResourceUpdate" }) as any as S.Schema<ResourceUpdate>;
 
-export type ResourceWarningsItemCodeEnum =
-  | "DEPRECATED_RESOURCE_USED"
-  | "NO_RESULTS_ON_PAGE"
-  | "UNREACHABLE"
-  | "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
-  | "NEXT_HOP_INSTANCE_NOT_FOUND"
-  | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
-  | "NEXT_HOP_CANNOT_IP_FORWARD"
-  | "NEXT_HOP_NOT_RUNNING"
-  | "INJECTED_KERNELS_DEPRECATED"
-  | "REQUIRED_TOS_AGREEMENT"
-  | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
-  | "RESOURCE_NOT_DELETED"
-  | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
-  | "NOT_CRITICAL_ERROR"
-  | "CLEANUP_FAILED"
-  | "FIELD_VALUE_OVERRIDEN"
-  | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
-  | "NETWORK_ENDPOINT_NOT_DETACHED"
-  | "PAGE_MISSING_RESULTS"
-  | "SSL_POLICY_ENABLED_FEATURES_NOT_FETCHED"
-  | "RESOURCE_NOT_FOUND_WARNING"
-  | "MISSING_TYPE_DEPENDENCY"
-  | "EXTERNAL_API_WARNING"
-  | "SCHEMA_VALIDATION_IGNORED"
-  | "UNDECLARED_PROPERTIES"
-  | "EXPERIMENTAL_TYPE_USED"
-  | "DEPRECATED_TYPE_USED"
-  | "PARTIAL_SUCCESS"
-  | "LARGE_DEPLOYMENT_WARNING"
-  | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE"
-  | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB"
-  | "LIST_OVERHEAD_QUOTA_EXCEED"
-  | "QUOTA_INFO_UNAVAILABLE"
-  | "RESOURCE_USES_GLOBAL_DNS"
-  | "RATE_LIMIT_EXCEEDED"
-  | "UPCOMING_MAINTENANCES_UNAVAILABLE"
-  | "RESERVED_ENTRY_136"
-  | "RESERVED_ENTRY_139"
-  | "RESERVED_ENTRY_141"
-  | "RESERVED_ENTRY_142"
-  | "RESERVED_ENTRY_143"
-  | (string & {});
+export type ResourceWarningsItemCodeEnum = "DEPRECATED_RESOURCE_USED" | "NO_RESULTS_ON_PAGE" | "UNREACHABLE" | "NEXT_HOP_ADDRESS_NOT_ASSIGNED" | "NEXT_HOP_INSTANCE_NOT_FOUND" | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" | "NEXT_HOP_CANNOT_IP_FORWARD" | "NEXT_HOP_NOT_RUNNING" | "INJECTED_KERNELS_DEPRECATED" | "REQUIRED_TOS_AGREEMENT" | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" | "RESOURCE_NOT_DELETED" | "SINGLE_INSTANCE_PROPERTY_TEMPLATE" | "NOT_CRITICAL_ERROR" | "CLEANUP_FAILED" | "FIELD_VALUE_OVERRIDEN" | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" | "NETWORK_ENDPOINT_NOT_DETACHED" | "PAGE_MISSING_RESULTS" | "SSL_POLICY_ENABLED_FEATURES_NOT_FETCHED" | "RESOURCE_NOT_FOUND_WARNING" | "MISSING_TYPE_DEPENDENCY" | "EXTERNAL_API_WARNING" | "SCHEMA_VALIDATION_IGNORED" | "UNDECLARED_PROPERTIES" | "EXPERIMENTAL_TYPE_USED" | "DEPRECATED_TYPE_USED" | "PARTIAL_SUCCESS" | "LARGE_DEPLOYMENT_WARNING" | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" | "LIST_OVERHEAD_QUOTA_EXCEED" | "QUOTA_INFO_UNAVAILABLE" | "RESOURCE_USES_GLOBAL_DNS" | "RATE_LIMIT_EXCEEDED" | "UPCOMING_MAINTENANCES_UNAVAILABLE" | "RESERVED_ENTRY_136" | "RESERVED_ENTRY_139" | "RESERVED_ENTRY_141" | "RESERVED_ENTRY_142" | "RESERVED_ENTRY_143";
 export const ResourceWarningsItemCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ResourceWarningsItemDataItem {
@@ -1401,19 +1046,14 @@ export interface ResourceWarningsItemDataItem {
   value?: string;
 }
 export const ResourceWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceWarningsItemDataItem",
-}) as any as S.Schema<ResourceWarningsItemDataItem>;
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "ResourceWarningsItemDataItem" }) as any as S.Schema<ResourceWarningsItemDataItem>;
 
-export type ResourceWarningsItemDataItemList =
-  ReadonlyArray<ResourceWarningsItemDataItem>;
-export const ResourceWarningsItemDataItemList = /*@__PURE__*/ S.Array(
-  ResourceWarningsItemDataItem,
-) as any as S.Schema<ResourceWarningsItemDataItemList>;
+export type ResourceWarningsItemDataItemList = ReadonlyArray<ResourceWarningsItemDataItem>;
+export const ResourceWarningsItemDataItemList = /*@__PURE__*/ S.Array(ResourceWarningsItemDataItem) as any as S.Schema<ResourceWarningsItemDataItemList>;
 
 export interface ResourceWarningsItem {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -1424,19 +1064,15 @@ export interface ResourceWarningsItem {
   data?: ResourceWarningsItemDataItemList;
 }
 export const ResourceWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(ResourceWarningsItemCodeEnum),
-    message: S.optional(S.String),
-    data: S.optional(ResourceWarningsItemDataItemList),
-  }),
-).annotate({
-  identifier: "ResourceWarningsItem",
-}) as any as S.Schema<ResourceWarningsItem>;
+S.Struct({
+  "code": S.optional(ResourceWarningsItemCodeEnum),
+  "message": S.optional(S.String),
+  "data": S.optional(ResourceWarningsItemDataItemList),
+}),
+).annotate({ identifier: "ResourceWarningsItem" }) as any as S.Schema<ResourceWarningsItem>;
 
 export type ResourceWarningsItemList = ReadonlyArray<ResourceWarningsItem>;
-export const ResourceWarningsItemList = /*@__PURE__*/ S.Array(
-  ResourceWarningsItem,
-) as any as S.Schema<ResourceWarningsItemList>;
+export const ResourceWarningsItemList = /*@__PURE__*/ S.Array(ResourceWarningsItem) as any as S.Schema<ResourceWarningsItemList>;
 
 export interface Resource {
   id?: string;
@@ -1464,26 +1100,23 @@ export interface Resource {
   warnings?: ResourceWarningsItemList;
 }
 export const Resource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    manifest: S.optional(S.String),
-    url: S.optional(S.String),
-    properties: S.optional(S.String),
-    finalProperties: S.optional(S.String),
-    accessControl: S.optional(ResourceAccessControl),
-    update: S.optional(ResourceUpdate),
-    insertTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    warnings: S.optional(ResourceWarningsItemList),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "type": S.optional(S.String),
+  "manifest": S.optional(S.String),
+  "url": S.optional(S.String),
+  "properties": S.optional(S.String),
+  "finalProperties": S.optional(S.String),
+  "accessControl": S.optional(ResourceAccessControl),
+  "update": S.optional(ResourceUpdate),
+  "insertTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "warnings": S.optional(ResourceWarningsItemList),
+}),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
-export type InsertDeploymentsCreatePolicyEnum =
-  | "CREATE_OR_ACQUIRE"
-  | "ACQUIRE"
-  | (string & {});
+export type InsertDeploymentsCreatePolicyEnum = "CREATE_OR_ACQUIRE" | "ACQUIRE";
 export const InsertDeploymentsCreatePolicyEnum = /*@__PURE__*/ S.String;
 
 export interface InsertDeploymentsRequest {
@@ -1492,28 +1125,20 @@ export interface InsertDeploymentsRequest {
   /** If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it. */
   preview?: boolean;
   /** Sets the policy to use for creating new resources. */
-  createPolicy?: InsertDeploymentsCreatePolicyEnum;
+  createPolicy?: InsertDeploymentsCreatePolicyEnum | (string & {});
   "header.bypassBillingFilter"?: boolean;
   /** Request body */
   body?: Deployment;
 }
 export const InsertDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    preview: S.optional(S.Boolean.pipe(T.Query())),
-    createPolicy: S.optional(InsertDeploymentsCreatePolicyEnum.pipe(T.Query())),
-    "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(Deployment.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertDeploymentsRequest",
-}) as any as S.Schema<InsertDeploymentsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "preview": S.optional(S.Boolean.pipe(T.Query())),
+  "createPolicy": S.optional(InsertDeploymentsCreatePolicyEnum.pipe(T.Query())),
+  "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Deployment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"deploymentmanager/v2/projects/{project}/global/deployments","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "InsertDeploymentsRequest" }) as any as S.Schema<InsertDeploymentsRequest>;
 
 export interface ListDeploymentsRequest {
   /** The project ID for this request. */
@@ -1528,27 +1153,17 @@ export interface ListDeploymentsRequest {
   orderBy?: string;
 }
 export const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListDeploymentsRequest",
-}) as any as S.Schema<ListDeploymentsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"deploymentmanager/v2/projects/{project}/global/deployments","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "ListDeploymentsRequest" }) as any as S.Schema<ListDeploymentsRequest>;
 
 export type DeploymentList = ReadonlyArray<Deployment>;
-export const DeploymentList = /*@__PURE__*/ S.Array(
-  Deployment,
-) as any as S.Schema<DeploymentList>;
+export const DeploymentList = /*@__PURE__*/ S.Array(Deployment) as any as S.Schema<DeploymentList>;
 
 /** A response containing a partial list of deployments and a page token used to build the next request if the request has been truncated. */
 export interface DeploymentsListResponse {
@@ -1558,13 +1173,11 @@ export interface DeploymentsListResponse {
   nextPageToken?: string;
 }
 export const DeploymentsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployments: S.optional(DeploymentList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeploymentsListResponse",
-}) as any as S.Schema<DeploymentsListResponse>;
+S.Struct({
+  "deployments": S.optional(DeploymentList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "DeploymentsListResponse" }) as any as S.Schema<DeploymentsListResponse>;
 
 export interface ListManifestsRequest {
   /** The project ID for this request. */
@@ -1581,28 +1194,18 @@ export interface ListManifestsRequest {
   orderBy?: string;
 }
 export const ListManifestsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    deployment: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListManifestsRequest",
-}) as any as S.Schema<ListManifestsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "deployment": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "ListManifestsRequest" }) as any as S.Schema<ListManifestsRequest>;
 
 export type ManifestList = ReadonlyArray<Manifest>;
-export const ManifestList = /*@__PURE__*/ S.Array(
-  Manifest,
-) as any as S.Schema<ManifestList>;
+export const ManifestList = /*@__PURE__*/ S.Array(Manifest) as any as S.Schema<ManifestList>;
 
 /** A response containing a partial list of manifests and a page token used to build the next request if the request has been truncated. */
 export interface ManifestsListResponse {
@@ -1612,13 +1215,11 @@ export interface ManifestsListResponse {
   nextPageToken?: string;
 }
 export const ManifestsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manifests: S.optional(ManifestList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManifestsListResponse",
-}) as any as S.Schema<ManifestsListResponse>;
+S.Struct({
+  "manifests": S.optional(ManifestList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ManifestsListResponse" }) as any as S.Schema<ManifestsListResponse>;
 
 export interface ListOperationsRequest {
   /** The project ID for this request. */
@@ -1633,27 +1234,17 @@ export interface ListOperationsRequest {
   orderBy?: string;
 }
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "deploymentmanager/v2/projects/{project}/global/operations",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListOperationsRequest",
-}) as any as S.Schema<ListOperationsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"deploymentmanager/v2/projects/{project}/global/operations","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** A response containing a partial list of operations and a page token used to build the next request if the request has been truncated. */
 export interface OperationsListResponse {
@@ -1663,13 +1254,11 @@ export interface OperationsListResponse {
   nextPageToken?: string;
 }
 export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "OperationsListResponse" }) as any as S.Schema<OperationsListResponse>;
 
 export interface ListResourcesRequest {
   /** The project ID for this request. */
@@ -1686,28 +1275,18 @@ export interface ListResourcesRequest {
   orderBy?: string;
 }
 export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    deployment: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListResourcesRequest",
-}) as any as S.Schema<ListResourcesRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "deployment": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "ListResourcesRequest" }) as any as S.Schema<ListResourcesRequest>;
 
 export type ResourceList = ReadonlyArray<Resource>;
-export const ResourceList = /*@__PURE__*/ S.Array(
-  Resource,
-) as any as S.Schema<ResourceList>;
+export const ResourceList = /*@__PURE__*/ S.Array(Resource) as any as S.Schema<ResourceList>;
 
 /** A response containing a partial list of resources and a page token used to build the next request if the request has been truncated. */
 export interface ResourcesListResponse {
@@ -1717,13 +1296,11 @@ export interface ResourcesListResponse {
   nextPageToken?: string;
 }
 export const ResourcesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: S.optional(ResourceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourcesListResponse",
-}) as any as S.Schema<ResourcesListResponse>;
+S.Struct({
+  "resources": S.optional(ResourceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ResourcesListResponse" }) as any as S.Schema<ResourcesListResponse>;
 
 export interface ListTypesRequest {
   /** The project ID for this request. */
@@ -1738,22 +1315,14 @@ export interface ListTypesRequest {
   orderBy?: string;
 }
 export const ListTypesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "deploymentmanager/v2/projects/{project}/global/types",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListTypesRequest",
-}) as any as S.Schema<ListTypesRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"deploymentmanager/v2/projects/{project}/global/types","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "ListTypesRequest" }) as any as S.Schema<ListTypesRequest>;
 
 /** A resource type supported by Deployment Manager. */
 export interface Type {
@@ -1768,19 +1337,17 @@ export interface Type {
   operation?: Operation;
 }
 export const Type = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    id: S.optional(S.String),
-    insertTime: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    operation: S.optional(Operation),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "id": S.optional(S.String),
+  "insertTime": S.optional(S.String),
+  "selfLink": S.optional(S.String),
+  "operation": S.optional(Operation),
+}),
 ).annotate({ identifier: "Type" }) as any as S.Schema<Type>;
 
 export type TypeList = ReadonlyArray<Type>;
-export const TypeList = /*@__PURE__*/ S.Array(
-  Type,
-) as any as S.Schema<TypeList>;
+export const TypeList = /*@__PURE__*/ S.Array(Type) as any as S.Schema<TypeList>;
 
 /** A response that returns all Types supported by Deployment Manager */
 export interface TypesListResponse {
@@ -1790,24 +1357,16 @@ export interface TypesListResponse {
   nextPageToken?: string;
 }
 export const TypesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    types: S.optional(TypeList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypesListResponse",
-}) as any as S.Schema<TypesListResponse>;
+S.Struct({
+  "types": S.optional(TypeList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "TypesListResponse" }) as any as S.Schema<TypesListResponse>;
 
-export type PatchDeploymentsCreatePolicyEnum =
-  | "CREATE_OR_ACQUIRE"
-  | "ACQUIRE"
-  | (string & {});
+export type PatchDeploymentsCreatePolicyEnum = "CREATE_OR_ACQUIRE" | "ACQUIRE";
 export const PatchDeploymentsCreatePolicyEnum = /*@__PURE__*/ S.String;
 
-export type PatchDeploymentsDeletePolicyEnum =
-  | "DELETE"
-  | "ABANDON"
-  | (string & {});
+export type PatchDeploymentsDeletePolicyEnum = "DELETE" | "ABANDON";
 export const PatchDeploymentsDeletePolicyEnum = /*@__PURE__*/ S.String;
 
 export interface PatchDeploymentsRequest {
@@ -1816,9 +1375,9 @@ export interface PatchDeploymentsRequest {
   /** The name of the deployment for this request. */
   deployment: string;
   /** Sets the policy to use for creating new resources. */
-  createPolicy?: PatchDeploymentsCreatePolicyEnum;
+  createPolicy?: PatchDeploymentsCreatePolicyEnum | (string & {});
   /** Sets the policy to use for deleting resources. */
-  deletePolicy?: PatchDeploymentsDeletePolicyEnum;
+  deletePolicy?: PatchDeploymentsDeletePolicyEnum | (string & {});
   /** If set to true, updates the deployment and creates and updates the "shell" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a `target.config` with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it. */
   preview?: boolean;
   "header.bypassBillingFilter"?: boolean;
@@ -1826,24 +1385,16 @@ export interface PatchDeploymentsRequest {
   body?: Deployment;
 }
 export const PatchDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    deployment: S.String.pipe(T.Label()),
-    createPolicy: S.optional(PatchDeploymentsCreatePolicyEnum.pipe(T.Query())),
-    deletePolicy: S.optional(PatchDeploymentsDeletePolicyEnum.pipe(T.Query())),
-    preview: S.optional(S.Boolean.pipe(T.Query())),
-    "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(Deployment.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchDeploymentsRequest",
-}) as any as S.Schema<PatchDeploymentsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "deployment": S.String.pipe(T.Label()),
+  "createPolicy": S.optional(PatchDeploymentsCreatePolicyEnum.pipe(T.Query())),
+  "deletePolicy": S.optional(PatchDeploymentsDeletePolicyEnum.pipe(T.Query())),
+  "preview": S.optional(S.Boolean.pipe(T.Query())),
+  "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Deployment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{deployment}","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "PatchDeploymentsRequest" }) as any as S.Schema<PatchDeploymentsRequest>;
 
 export interface GlobalSetPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them. */
@@ -1856,15 +1407,13 @@ export interface GlobalSetPolicyRequest {
   etag?: string;
 }
 export const GlobalSetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-    updateMask: S.optional(S.String),
-    bindings: S.optional(BindingList),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GlobalSetPolicyRequest",
-}) as any as S.Schema<GlobalSetPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+  "updateMask": S.optional(S.String),
+  "bindings": S.optional(BindingList),
+  "etag": S.optional(S.String),
+}),
+).annotate({ identifier: "GlobalSetPolicyRequest" }) as any as S.Schema<GlobalSetPolicyRequest>;
 
 export interface SetIamPolicyDeploymentsRequest {
   /** Project ID for this request. */
@@ -1875,32 +1424,22 @@ export interface SetIamPolicyDeploymentsRequest {
   body?: GlobalSetPolicyRequest;
 }
 export const SetIamPolicyDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    resource: S.String.pipe(T.Label()),
-    body: S.optional(GlobalSetPolicyRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/setIamPolicy",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SetIamPolicyDeploymentsRequest",
-}) as any as S.Schema<SetIamPolicyDeploymentsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GlobalSetPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{resource}/setIamPolicy","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyDeploymentsRequest" }) as any as S.Schema<SetIamPolicyDeploymentsRequest>;
 
 export interface DeploymentsStopRequest {
   /** Specifies a fingerprint for `stop()` requests. A fingerprint is a randomly generated value that must be provided in `stop()` requests to perform optimistic locking. This ensures optimistic concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to make a new update request while another user attempts to stop an ongoing update request, this would prevent a collision). The fingerprint is initially generated by Deployment Manager and changes after every request to modify a deployment. To get the latest fingerprint value, perform a `get()` request on the deployment. */
   fingerprint?: string;
 }
 export const DeploymentsStopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fingerprint: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeploymentsStopRequest",
-}) as any as S.Schema<DeploymentsStopRequest>;
+S.Struct({
+  "fingerprint": S.optional(S.String),
+}),
+).annotate({ identifier: "DeploymentsStopRequest" }) as any as S.Schema<DeploymentsStopRequest>;
 
 export interface StopDeploymentsRequest {
   /** The project ID for this request. */
@@ -1911,32 +1450,22 @@ export interface StopDeploymentsRequest {
   body?: DeploymentsStopRequest;
 }
 export const StopDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    deployment: S.String.pipe(T.Label()),
-    body: S.optional(DeploymentsStopRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/stop",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "StopDeploymentsRequest",
-}) as any as S.Schema<StopDeploymentsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "deployment": S.String.pipe(T.Label()),
+  "body": S.optional(DeploymentsStopRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/stop","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "StopDeploymentsRequest" }) as any as S.Schema<StopDeploymentsRequest>;
 
 export interface TestPermissionsRequest {
   /** The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or 'storage.*') are not allowed. */
   permissions?: StringList;
 }
 export const TestPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestPermissionsRequest",
-}) as any as S.Schema<TestPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestPermissionsRequest" }) as any as S.Schema<TestPermissionsRequest>;
 
 export interface TestIamPermissionsDeploymentsRequest {
   /** Project ID for this request. */
@@ -1947,46 +1476,29 @@ export interface TestIamPermissionsDeploymentsRequest {
   /** Request body */
   body?: TestPermissionsRequest;
 }
-export const TestIamPermissionsDeploymentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project: S.String.pipe(T.Label()),
-      resource: S.String.pipe(T.Label()),
-      "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(TestPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/testIamPermissions",
-        baseUrl: "https://deploymentmanager.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "TestIamPermissionsDeploymentsRequest",
-}) as any as S.Schema<TestIamPermissionsDeploymentsRequest>;
+export const TestIamPermissionsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "resource": S.String.pipe(T.Label()),
+  "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(TestPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{resource}/testIamPermissions","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsDeploymentsRequest" }) as any as S.Schema<TestIamPermissionsDeploymentsRequest>;
 
 export interface TestPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
 export const TestPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestPermissionsResponse",
-}) as any as S.Schema<TestPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestPermissionsResponse" }) as any as S.Schema<TestPermissionsResponse>;
 
-export type UpdateDeploymentsCreatePolicyEnum =
-  | "CREATE_OR_ACQUIRE"
-  | "ACQUIRE"
-  | (string & {});
+export type UpdateDeploymentsCreatePolicyEnum = "CREATE_OR_ACQUIRE" | "ACQUIRE";
 export const UpdateDeploymentsCreatePolicyEnum = /*@__PURE__*/ S.String;
 
-export type UpdateDeploymentsDeletePolicyEnum =
-  | "DELETE"
-  | "ABANDON"
-  | (string & {});
+export type UpdateDeploymentsDeletePolicyEnum = "DELETE" | "ABANDON";
 export const UpdateDeploymentsDeletePolicyEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateDeploymentsRequest {
@@ -1995,9 +1507,9 @@ export interface UpdateDeploymentsRequest {
   /** The name of the deployment for this request. */
   deployment: string;
   /** Sets the policy to use for creating new resources. */
-  createPolicy?: UpdateDeploymentsCreatePolicyEnum;
+  createPolicy?: UpdateDeploymentsCreatePolicyEnum | (string & {});
   /** Sets the policy to use for deleting resources. */
-  deletePolicy?: UpdateDeploymentsDeletePolicyEnum;
+  deletePolicy?: UpdateDeploymentsDeletePolicyEnum | (string & {});
   /** If set to true, updates the deployment and creates and updates the "shell" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a `target.config` with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it. */
   preview?: boolean;
   "header.bypassBillingFilter"?: boolean;
@@ -2005,31 +1517,18 @@ export interface UpdateDeploymentsRequest {
   body?: Deployment;
 }
 export const UpdateDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String.pipe(T.Label()),
-    deployment: S.String.pipe(T.Label()),
-    createPolicy: S.optional(UpdateDeploymentsCreatePolicyEnum.pipe(T.Query())),
-    deletePolicy: S.optional(UpdateDeploymentsDeletePolicyEnum.pipe(T.Query())),
-    preview: S.optional(S.Boolean.pipe(T.Query())),
-    "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(Deployment.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
-      baseUrl: "https://deploymentmanager.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateDeploymentsRequest",
-}) as any as S.Schema<UpdateDeploymentsRequest>;
+S.Struct({
+  "project": S.String.pipe(T.Label()),
+  "deployment": S.String.pipe(T.Label()),
+  "createPolicy": S.optional(UpdateDeploymentsCreatePolicyEnum.pipe(T.Query())),
+  "deletePolicy": S.optional(UpdateDeploymentsDeletePolicyEnum.pipe(T.Query())),
+  "preview": S.optional(S.Boolean.pipe(T.Query())),
+  "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Deployment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"deploymentmanager/v2/projects/{project}/global/deployments/{deployment}","baseUrl":"https://deploymentmanager.googleapis.com/"})),
+).annotate({ identifier: "UpdateDeploymentsRequest" }) as any as S.Schema<UpdateDeploymentsRequest>;
 
-export type CancelPreviewDeploymentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelPreviewDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancels and removes the preview currently associated with the deployment. */
 export const cancelPreviewDeployments: API.OperationMethod<
   CancelPreviewDeploymentsRequest,
@@ -2044,12 +1543,7 @@ export const cancelPreviewDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDeploymentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a deployment and all of the resources in the deployment. */
 export const deleteDeployments: API.OperationMethod<
   DeleteDeploymentsRequest,
@@ -2139,12 +1633,7 @@ export const getResources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertDeploymentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a deployment and all of the resources described by the deployment manifest. */
 export const insertDeployments: API.OperationMethod<
   InsertDeploymentsRequest,
@@ -2172,10 +1661,7 @@ export const listDeployments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListManifestsError = NotFound | Forbidden | GcpOpError;
@@ -2191,10 +1677,7 @@ export const listManifests: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
@@ -2210,10 +1693,7 @@ export const listOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListResourcesError = NotFound | Forbidden | GcpOpError;
@@ -2229,10 +1709,7 @@ export const listResources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListTypesError = NotFound | Forbidden | GcpOpError;
@@ -2248,18 +1725,10 @@ export const listTypes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchDeploymentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches a deployment and all of the resources described by the deployment manifest. */
 export const patchDeployments: API.OperationMethod<
   PatchDeploymentsRequest,
@@ -2274,12 +1743,7 @@ export const patchDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyDeploymentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyDeployments: API.OperationMethod<
   SetIamPolicyDeploymentsRequest,
@@ -2294,12 +1758,7 @@ export const setIamPolicyDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopDeploymentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StopDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents any new work from being started. */
 export const stopDeployments: API.OperationMethod<
   StopDeploymentsRequest,
@@ -2314,12 +1773,7 @@ export const stopDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsDeploymentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsDeployments: API.OperationMethod<
   TestIamPermissionsDeploymentsRequest,
@@ -2334,12 +1788,7 @@ export const testIamPermissionsDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateDeploymentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a deployment and all of the resources described by the deployment manifest. */
 export const updateDeployments: API.OperationMethod<
   UpdateDeploymentsRequest,
@@ -2353,3 +1802,4 @@ export const updateDeployments: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

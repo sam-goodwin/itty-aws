@@ -131,11 +131,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -687,8 +686,7 @@ export type SuggestionStatusEnum =
   | "ok"
   | "cannot_fix"
   | "invalid"
-  | "model_error"
-  | (string & {});
+  | "model_error";
 export const SuggestionStatusEnum = /*@__PURE__*/ S.String;
 
 /** AI-suggested query rewrite that would make the endpoint materializable. */
@@ -1007,8 +1005,7 @@ export type BreakdownType =
   | "hogql"
   | "data_warehouse"
   | "data_warehouse_person_property"
-  | "revenue_analytics"
-  | (string & {});
+  | "revenue_analytics";
 export const BreakdownType = /*@__PURE__*/ S.String;
 
 export type BreakdownProperty = string | number;
@@ -1025,8 +1022,7 @@ export type MultipleBreakdownType =
   | "cohort"
   | "revenue_analytics"
   | "data_warehouse"
-  | "data_warehouse_person_property"
-  | (string & {});
+  | "data_warehouse_person_property";
 export const MultipleBreakdownType = /*@__PURE__*/ S.String;
 
 export interface Breakdown {
@@ -1034,7 +1030,7 @@ export interface Breakdown {
   histogram_bin_count?: number | null;
   normalize_url?: boolean | null;
   property?: BreakdownProperty;
-  type?: MultipleBreakdownType | null;
+  type?: MultipleBreakdownType | (string & {}) | null;
 }
 export const Breakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1059,7 +1055,7 @@ export interface BreakdownFilter {
   breakdown_limit?: number | null;
   breakdown_normalize_url?: boolean | null;
   breakdown_path_cleaning?: boolean | null;
-  breakdown_type?: BreakdownType | null;
+  breakdown_type?: BreakdownType | (string & {}) | null;
   breakdowns?: BreakdownFilterBreakdownsList | null;
 }
 export const BreakdownFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1086,8 +1082,7 @@ export type IntervalType =
   | "week"
   | "month"
   | "quarter"
-  | "year"
-  | (string & {});
+  | "year";
 export const IntervalType = /*@__PURE__*/ S.String;
 
 export type PropertyOperator =
@@ -1124,8 +1119,7 @@ export type PropertyOperator =
   | "semver_caret"
   | "semver_wildcard"
   | "icontains_multi"
-  | "not_icontains_multi"
-  | (string & {});
+  | "not_icontains_multi";
 export const PropertyOperator = /*@__PURE__*/ S.String;
 
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
@@ -1149,7 +1143,7 @@ export const EventPropertyFilterValue =
 export interface EventPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator | null;
+  operator?: PropertyOperator | (string & {}) | null;
   /** Event properties */
   type?: string;
   value?: EventPropertyFilterValue | null;
@@ -1187,7 +1181,7 @@ export const PersonPropertyFilterValue =
 export interface PersonPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   /** Person properties */
   type?: string;
   value?: PersonPropertyFilterValue | null;
@@ -1228,7 +1222,7 @@ export const PersonMetadataPropertyFilterValue =
 export interface PersonMetadataPropertyFilter {
   key: string;
   label?: string | null;
-  operator: PropertyOperator;
+  operator: PropertyOperator | (string & {});
   /** Top-level columns on the persons table (e.g. created_at), not properties JSON */
   type?: string;
   value?: PersonMetadataPropertyFilterValue | null;
@@ -1245,7 +1239,7 @@ export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonMetadataPropertyFilter",
 }) as any as S.Schema<PersonMetadataPropertyFilter>;
 
-export type Key10 = "tag_name" | "text" | "href" | "selector" | (string & {});
+export type Key10 = "tag_name" | "text" | "href" | "selector";
 export const Key10 = /*@__PURE__*/ S.String;
 
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
@@ -1267,9 +1261,9 @@ export const ElementPropertyFilterValue =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValue>;
 
 export interface ElementPropertyFilter {
-  key?: Key10;
+  key?: Key10 | (string & {});
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: ElementPropertyFilterValue | null;
 }
@@ -1309,7 +1303,7 @@ export const EventMetadataPropertyFilterValue =
 export interface EventMetadataPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: EventMetadataPropertyFilterValue | null;
 }
@@ -1346,7 +1340,7 @@ export const SessionPropertyFilterValue =
 export interface SessionPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: SessionPropertyFilterValue | null;
 }
@@ -1366,7 +1360,7 @@ export interface CohortPropertyFilter {
   cohort_name?: string | null;
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator | null;
+  operator?: PropertyOperator | (string & {}) | null;
   type?: string;
   value?: number;
 }
@@ -1383,11 +1377,7 @@ export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortPropertyFilter",
 }) as any as S.Schema<CohortPropertyFilter>;
 
-export type DurationType =
-  | "duration"
-  | "active_seconds"
-  | "inactive_seconds"
-  | (string & {});
+export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
 export const DurationType = /*@__PURE__*/ S.String;
 
 export type RecordingPropertyFilterKey = DurationType | string;
@@ -1415,7 +1405,7 @@ export const RecordingPropertyFilterValue =
 export interface RecordingPropertyFilter {
   key?: RecordingPropertyFilterKey;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: RecordingPropertyFilterValue | null;
 }
@@ -1452,7 +1442,7 @@ export const LogEntryPropertyFilterValue =
 export interface LogEntryPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: LogEntryPropertyFilterValue | null;
 }
@@ -1499,7 +1489,7 @@ export interface GroupPropertyFilter {
   group_type_index?: number | null;
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: GroupPropertyFilterValue | null;
 }
@@ -1538,7 +1528,7 @@ export const FeaturePropertyFilterValue =
 export interface FeaturePropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   /** Event property with "$feature/" prepended */
   type?: string;
   value?: FeaturePropertyFilterValue | null;
@@ -1653,7 +1643,7 @@ export const DataWarehousePropertyFilterValue =
 export interface DataWarehousePropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: DataWarehousePropertyFilterValue | null;
 }
@@ -1694,7 +1684,7 @@ export const DataWarehousePersonPropertyFilterValue =
 export interface DataWarehousePersonPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: DataWarehousePersonPropertyFilterValue | null;
 }
@@ -1731,7 +1721,7 @@ export const ErrorTrackingIssueFilterValue =
 export interface ErrorTrackingIssueFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: ErrorTrackingIssueFilterValue | null;
 }
@@ -1750,8 +1740,7 @@ export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
 export type LogPropertyFilterType =
   | "log"
   | "log_attribute"
-  | "log_resource_attribute"
-  | (string & {});
+  | "log_resource_attribute";
 export const LogPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
@@ -1775,8 +1764,8 @@ export const LogPropertyFilterValue =
 export interface LogPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
-  type?: LogPropertyFilterType;
+  operator?: PropertyOperator | (string & {});
+  type?: LogPropertyFilterType | (string & {});
   value?: LogPropertyFilterValue | null;
 }
 export const LogPropertyFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1812,7 +1801,7 @@ export const MetricPropertyFilterValue =
 export interface MetricPropertyFilter {
   key: string;
   label?: string | null;
-  operator: PropertyOperator;
+  operator: PropertyOperator | (string & {});
   type?: string;
   value?: MetricPropertyFilterValue | null;
 }
@@ -1831,8 +1820,7 @@ export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type SpanPropertyFilterType =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute"
-  | (string & {});
+  | "span_resource_attribute";
 export const SpanPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
@@ -1856,8 +1844,8 @@ export const SpanPropertyFilterValue =
 export interface SpanPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
-  type?: SpanPropertyFilterType;
+  operator?: PropertyOperator | (string & {});
+  type?: SpanPropertyFilterType | (string & {});
   value?: SpanPropertyFilterValue | null;
 }
 export const SpanPropertyFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1897,7 +1885,7 @@ export const RevenueAnalyticsPropertyFilterValue =
 export interface RevenueAnalyticsPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: RevenueAnalyticsPropertyFilterValue | null;
 }
@@ -1937,7 +1925,7 @@ export const AccountCustomPropertyFilterValue =
 export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
-  operator: PropertyOperator;
+  operator: PropertyOperator | (string & {});
   /** Customer analytics account custom property — the key is the property definition id */
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
@@ -1979,7 +1967,7 @@ export const WorkflowVariablePropertyFilterValue =
 export interface WorkflowVariablePropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: WorkflowVariablePropertyFilterValue | null;
 }
@@ -2036,7 +2024,7 @@ export interface DashboardFilter {
   /** Tri-state test-account override. Null/absent = inherit; true = force on; false = force off. */
   filterTestAccounts?: boolean | null;
   /** Time granularity forced onto every insight that supports one. Absent/null = inherit. */
-  interval?: IntervalType | null;
+  interval?: IntervalType | (string & {}) | null;
   properties?: DashboardFilterPropertiesList | null;
 }
 export const DashboardFilter = /*@__PURE__*/ S.suspend(() =>
@@ -2053,7 +2041,7 @@ export const DashboardFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardFilter",
 }) as any as S.Schema<DashboardFilter>;
 
-export type EndpointRefreshMode = "cache" | "force" | "direct" | (string & {});
+export type EndpointRefreshMode = "cache" | "force" | "direct";
 export const EndpointRefreshMode = /*@__PURE__*/ S.String;
 
 export type EndpointsRunCreateRequestVariablesMap = {
@@ -2077,7 +2065,7 @@ export interface EndpointsRunCreateRequest {
   limit?: number | null;
   /** Number of results to skip. Must be used together with limit. Only supported for HogQL endpoints. */
   offset?: number | null;
-  refresh?: EndpointRefreshMode | null;
+  refresh?: EndpointRefreshMode | (string & {}) | null;
   /** Variables to parameterize the endpoint query. The key is the variable name and the value is the variable value. For HogQL endpoints: Keys must match a variable `code_name` defined in the query (referenced as `{variables.code_name}`). Example: `{"event_name": "$pageview"}` For non-materialized insight endpoints (e.g. TrendsQuery): - `date_from` and `date_to` are built-in variables that filter the date range. Example: `{"date_from": "2024-01-01", "date_to": "2024-01-31"}` For materialized insight endpoints: - Use the breakdown property name as the key to filter by breakdown value. Example: `{"$browser": "Chrome"}` - `date_from`/`date_to` are not supported on materialized insight endpoints. Unknown variable names will return a 400 error. */
   variables?: EndpointsRunCreateRequestVariablesMap | null;
   /** Specific endpoint version to execute. If not provided, the latest version is used. */

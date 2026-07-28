@@ -13,68 +13,64 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Checks that all writes before the consistency token was generated are replicated in every cluster and readable. */
 export interface StandardReadRemoteWrites {}
 export const StandardReadRemoteWrites = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StandardReadRemoteWrites",
-}) as any as S.Schema<StandardReadRemoteWrites>;
+S.Struct({}),
+).annotate({ identifier: "StandardReadRemoteWrites" }) as any as S.Schema<StandardReadRemoteWrites>;
 
 /** Checks that all writes before the consistency token was generated in the same cluster are readable by Databoost. */
 export interface DataBoostReadLocalWrites {}
 export const DataBoostReadLocalWrites = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DataBoostReadLocalWrites",
-}) as any as S.Schema<DataBoostReadLocalWrites>;
+S.Struct({}),
+).annotate({ identifier: "DataBoostReadLocalWrites" }) as any as S.Schema<DataBoostReadLocalWrites>;
 
 /** Request message for google.bigtable.admin.v2.BigtableTableAdmin.CheckConsistency */
 export interface CheckConsistencyRequest {
@@ -86,14 +82,12 @@ export interface CheckConsistencyRequest {
   consistencyToken?: string;
 }
 export const CheckConsistencyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    standardReadRemoteWrites: S.optional(StandardReadRemoteWrites),
-    dataBoostReadLocalWrites: S.optional(DataBoostReadLocalWrites),
-    consistencyToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckConsistencyRequest",
-}) as any as S.Schema<CheckConsistencyRequest>;
+S.Struct({
+  "standardReadRemoteWrites": S.optional(StandardReadRemoteWrites),
+  "dataBoostReadLocalWrites": S.optional(DataBoostReadLocalWrites),
+  "consistencyToken": S.optional(S.String),
+}),
+).annotate({ identifier: "CheckConsistencyRequest" }) as any as S.Schema<CheckConsistencyRequest>;
 
 export interface CheckConsistencyProjectsInstancesTablesRequest {
   /** Required. The unique name of the Table for which to check replication consistency. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
@@ -101,21 +95,12 @@ export interface CheckConsistencyProjectsInstancesTablesRequest {
   /** Request body */
   body?: CheckConsistencyRequest;
 }
-export const CheckConsistencyProjectsInstancesTablesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CheckConsistencyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:checkConsistency",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CheckConsistencyProjectsInstancesTablesRequest",
-  }) as any as S.Schema<CheckConsistencyProjectsInstancesTablesRequest>;
+export const CheckConsistencyProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CheckConsistencyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:checkConsistency","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CheckConsistencyProjectsInstancesTablesRequest" }) as any as S.Schema<CheckConsistencyProjectsInstancesTablesRequest>;
 
 /** Response message for google.bigtable.admin.v2.BigtableTableAdmin.CheckConsistency */
 export interface CheckConsistencyResponse {
@@ -123,12 +108,10 @@ export interface CheckConsistencyResponse {
   consistent?: boolean;
 }
 export const CheckConsistencyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consistent: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CheckConsistencyResponse",
-}) as any as S.Schema<CheckConsistencyResponse>;
+S.Struct({
+  "consistent": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CheckConsistencyResponse" }) as any as S.Schema<CheckConsistencyResponse>;
 
 /** The request for CopyBackup. */
 export interface CopyBackupRequest {
@@ -140,14 +123,12 @@ export interface CopyBackupRequest {
   expireTime?: string;
 }
 export const CopyBackupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backupId: S.optional(S.String),
-    sourceBackup: S.optional(S.String),
-    expireTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CopyBackupRequest",
-}) as any as S.Schema<CopyBackupRequest>;
+S.Struct({
+  "backupId": S.optional(S.String),
+  "sourceBackup": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+}),
+).annotate({ identifier: "CopyBackupRequest" }) as any as S.Schema<CopyBackupRequest>;
 
 export interface CopyProjectsInstancesClustersBackupsRequest {
   /** Required. The name of the destination cluster that will contain the backup copy. The cluster must already exist. Values are of the form: `projects/{project}/instances/{instance}/clusters/{cluster}`. */
@@ -155,32 +136,18 @@ export interface CopyProjectsInstancesClustersBackupsRequest {
   /** Request body */
   body?: CopyBackupRequest;
 }
-export const CopyProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CopyBackupRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/backups:copy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CopyProjectsInstancesClustersBackupsRequest",
-  }) as any as S.Schema<CopyProjectsInstancesClustersBackupsRequest>;
+export const CopyProjectsInstancesClustersBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CopyBackupRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/backups:copy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CopyProjectsInstancesClustersBackupsRequest" }) as any as S.Schema<CopyProjectsInstancesClustersBackupsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -192,11 +159,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -213,40 +180,25 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "error": S.optional(Status),
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type InstanceEditionEnum =
-  | "EDITION_UNSPECIFIED"
-  | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+export type InstanceEditionEnum = "EDITION_UNSPECIFIED" | "ENTERPRISE" | "ENTERPRISE_PLUS";
 export const InstanceEditionEnum = /*@__PURE__*/ S.String;
 
-export type InstanceStateEnum =
-  | "STATE_NOT_KNOWN"
-  | "READY"
-  | "CREATING"
-  | (string & {});
+export type InstanceStateEnum = "STATE_NOT_KNOWN" | "READY" | "CREATING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
-export type InstanceTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "PRODUCTION"
-  | "DEVELOPMENT"
-  | (string & {});
+export type InstanceTypeEnum = "TYPE_UNSPECIFIED" | "PRODUCTION" | "DEVELOPMENT";
 export const InstanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** A collection of Bigtable Tables and the resources that serve them. All tables in an instance are served from all Clusters in the instance. */
@@ -275,33 +227,25 @@ export interface Instance {
   satisfiesPzs?: boolean;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    edition: S.optional(InstanceEditionEnum),
-    displayName: S.optional(S.String),
-    knowledgeCatalogRegion: S.optional(S.String),
-    state: S.optional(InstanceStateEnum),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    tags: S.optional(StringMap),
-    type: S.optional(InstanceTypeEnum),
-    satisfiesPzi: S.optional(S.Boolean),
-    satisfiesPzs: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "edition": S.optional(InstanceEditionEnum),
+  "displayName": S.optional(S.String),
+  "knowledgeCatalogRegion": S.optional(S.String),
+  "state": S.optional(InstanceStateEnum),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "tags": S.optional(StringMap),
+  "type": S.optional(InstanceTypeEnum),
+  "satisfiesPzi": S.optional(S.Boolean),
+  "satisfiesPzs": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
-export type ClusterNodeScalingFactorEnum =
-  | "NODE_SCALING_FACTOR_UNSPECIFIED"
-  | "NODE_SCALING_FACTOR_1X"
-  | "NODE_SCALING_FACTOR_2X"
-  | (string & {});
+export type ClusterNodeScalingFactorEnum = "NODE_SCALING_FACTOR_UNSPECIFIED" | "NODE_SCALING_FACTOR_1X" | "NODE_SCALING_FACTOR_2X";
 export const ClusterNodeScalingFactorEnum = /*@__PURE__*/ S.String;
 
-export type ClusterDefaultStorageTypeEnum =
-  | "STORAGE_TYPE_UNSPECIFIED"
-  | "SSD"
-  | "HDD"
-  | (string & {});
+export type ClusterDefaultStorageTypeEnum = "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD";
 export const ClusterDefaultStorageTypeEnum = /*@__PURE__*/ S.String;
 
 /** Limits for the number of nodes a Cluster can autoscale up/down to. */
@@ -312,13 +256,11 @@ export interface AutoscalingLimits {
   maxServeNodes?: number;
 }
 export const AutoscalingLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minServeNodes: S.optional(S.Number),
-    maxServeNodes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AutoscalingLimits",
-}) as any as S.Schema<AutoscalingLimits>;
+S.Struct({
+  "minServeNodes": S.optional(S.Number),
+  "maxServeNodes": S.optional(S.Number),
+}),
+).annotate({ identifier: "AutoscalingLimits" }) as any as S.Schema<AutoscalingLimits>;
 
 /** The Autoscaling targets for a Cluster. These determine the recommended nodes. */
 export interface AutoscalingTargets {
@@ -328,13 +270,11 @@ export interface AutoscalingTargets {
   cpuUtilizationPercent?: number;
 }
 export const AutoscalingTargets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storageUtilizationGibPerNode: S.optional(S.Number),
-    cpuUtilizationPercent: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AutoscalingTargets",
-}) as any as S.Schema<AutoscalingTargets>;
+S.Struct({
+  "storageUtilizationGibPerNode": S.optional(S.Number),
+  "cpuUtilizationPercent": S.optional(S.Number),
+}),
+).annotate({ identifier: "AutoscalingTargets" }) as any as S.Schema<AutoscalingTargets>;
 
 /** Autoscaling config for a cluster. */
 export interface ClusterAutoscalingConfig {
@@ -344,13 +284,11 @@ export interface ClusterAutoscalingConfig {
   autoscalingTargets?: AutoscalingTargets;
 }
 export const ClusterAutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoscalingLimits: S.optional(AutoscalingLimits),
-    autoscalingTargets: S.optional(AutoscalingTargets),
-  }),
-).annotate({
-  identifier: "ClusterAutoscalingConfig",
-}) as any as S.Schema<ClusterAutoscalingConfig>;
+S.Struct({
+  "autoscalingLimits": S.optional(AutoscalingLimits),
+  "autoscalingTargets": S.optional(AutoscalingTargets),
+}),
+).annotate({ identifier: "ClusterAutoscalingConfig" }) as any as S.Schema<ClusterAutoscalingConfig>;
 
 /** Configuration for a cluster. */
 export interface ClusterConfig {
@@ -358,18 +296,12 @@ export interface ClusterConfig {
   clusterAutoscalingConfig?: ClusterAutoscalingConfig;
 }
 export const ClusterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterAutoscalingConfig: S.optional(ClusterAutoscalingConfig),
-  }),
+S.Struct({
+  "clusterAutoscalingConfig": S.optional(ClusterAutoscalingConfig),
+}),
 ).annotate({ identifier: "ClusterConfig" }) as any as S.Schema<ClusterConfig>;
 
-export type ClusterStateEnum =
-  | "STATE_NOT_KNOWN"
-  | "READY"
-  | "CREATING"
-  | "RESIZING"
-  | "DISABLED"
-  | (string & {});
+export type ClusterStateEnum = "STATE_NOT_KNOWN" | "READY" | "CREATING" | "RESIZING" | "DISABLED";
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster. */
@@ -378,12 +310,10 @@ export interface EncryptionConfig {
   kmsKeyName?: string;
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EncryptionConfig",
-}) as any as S.Schema<EncryptionConfig>;
+S.Struct({
+  "kmsKeyName": S.optional(S.String),
+}),
+).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
 
 /** A resizable group of nodes in a particular cloud location, capable of serving all Tables in the parent Instance. */
 export interface Cluster {
@@ -405,23 +335,20 @@ export interface Cluster {
   encryptionConfig?: EncryptionConfig;
 }
 export const Cluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeScalingFactor: S.optional(ClusterNodeScalingFactorEnum),
-    defaultStorageType: S.optional(ClusterDefaultStorageTypeEnum),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    clusterConfig: S.optional(ClusterConfig),
-    state: S.optional(ClusterStateEnum),
-    serveNodes: S.optional(S.Number),
-    encryptionConfig: S.optional(EncryptionConfig),
-  }),
+S.Struct({
+  "nodeScalingFactor": S.optional(ClusterNodeScalingFactorEnum),
+  "defaultStorageType": S.optional(ClusterDefaultStorageTypeEnum),
+  "name": S.optional(S.String),
+  "location": S.optional(S.String),
+  "clusterConfig": S.optional(ClusterConfig),
+  "state": S.optional(ClusterStateEnum),
+  "serveNodes": S.optional(S.Number),
+  "encryptionConfig": S.optional(EncryptionConfig),
+}),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 export type ClusterMap = { [key: string]: Cluster | undefined };
-export const ClusterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Cluster,
-) as any as S.Schema<ClusterMap>;
+export const ClusterMap = /*@__PURE__*/ S.Record(S.String, Cluster) as any as S.Schema<ClusterMap>;
 
 /** Request message for BigtableInstanceAdmin.CreateInstance. */
 export interface CreateInstanceRequest {
@@ -435,15 +362,13 @@ export interface CreateInstanceRequest {
   instanceId?: string;
 }
 export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(S.String),
-    instance: S.optional(Instance),
-    clusters: S.optional(ClusterMap),
-    instanceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateInstanceRequest",
-}) as any as S.Schema<CreateInstanceRequest>;
+S.Struct({
+  "parent": S.optional(S.String),
+  "instance": S.optional(Instance),
+  "clusters": S.optional(ClusterMap),
+  "instanceId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateInstanceRequest" }) as any as S.Schema<CreateInstanceRequest>;
 
 export interface CreateProjectsInstancesRequest {
   /** Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`. */
@@ -452,30 +377,20 @@ export interface CreateProjectsInstancesRequest {
   body?: CreateInstanceRequest;
 }
 export const CreateProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(CreateInstanceRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/{+parent}/instances",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsInstancesRequest",
-}) as any as S.Schema<CreateProjectsInstancesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CreateInstanceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/instances","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesRequest" }) as any as S.Schema<CreateProjectsInstancesRequest>;
 
 /** If enabled, Bigtable will route the request based on the row key of the request, rather than randomly. Instead, each row key will be assigned to a cluster, and will stick to that cluster. If clusters are added or removed, then this may affect which row keys stick to which clusters. To avoid this, users can use a cluster group to specify which clusters are to be used. In this case, new clusters that are not a part of the cluster group will not be routed to, and routing will be unaffected by the new cluster. Moreover, clusters specified in the cluster group cannot be deleted unless removed from the cluster group. */
 export interface RowAffinity {}
-export const RowAffinity = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RowAffinity" },
-) as any as S.Schema<RowAffinity>;
+export const RowAffinity = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "RowAffinity" }) as any as S.Schema<RowAffinity>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability. */
 export interface MultiClusterRoutingUseAny {
@@ -485,13 +400,11 @@ export interface MultiClusterRoutingUseAny {
   clusterIds?: StringList;
 }
 export const MultiClusterRoutingUseAny = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowAffinity: S.optional(RowAffinity),
-    clusterIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "MultiClusterRoutingUseAny",
-}) as any as S.Schema<MultiClusterRoutingUseAny>;
+S.Struct({
+  "rowAffinity": S.optional(RowAffinity),
+  "clusterIds": S.optional(StringList),
+}),
+).annotate({ identifier: "MultiClusterRoutingUseAny" }) as any as S.Schema<MultiClusterRoutingUseAny>;
 
 /** Unconditionally routes all read/write requests to a specific cluster. This option preserves read-your-writes consistency but does not improve availability. */
 export interface SingleClusterRouting {
@@ -501,34 +414,22 @@ export interface SingleClusterRouting {
   allowTransactionalWrites?: boolean;
 }
 export const SingleClusterRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterId: S.optional(S.String),
-    allowTransactionalWrites: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SingleClusterRouting",
-}) as any as S.Schema<SingleClusterRouting>;
+S.Struct({
+  "clusterId": S.optional(S.String),
+  "allowTransactionalWrites": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SingleClusterRouting" }) as any as S.Schema<SingleClusterRouting>;
 
-export type AppProfilePriorityEnum =
-  | "PRIORITY_UNSPECIFIED"
-  | "PRIORITY_LOW"
-  | "PRIORITY_MEDIUM"
-  | "PRIORITY_HIGH"
-  | (string & {});
+export type AppProfilePriorityEnum = "PRIORITY_UNSPECIFIED" | "PRIORITY_LOW" | "PRIORITY_MEDIUM" | "PRIORITY_HIGH";
 export const AppProfilePriorityEnum = /*@__PURE__*/ S.String;
 
-export type StandardIsolationPriorityEnum =
-  | "PRIORITY_UNSPECIFIED"
-  | "PRIORITY_LOW"
-  | "PRIORITY_MEDIUM"
-  | "PRIORITY_HIGH"
-  | (string & {});
+export type StandardIsolationPriorityEnum = "PRIORITY_UNSPECIFIED" | "PRIORITY_LOW" | "PRIORITY_MEDIUM" | "PRIORITY_HIGH";
 export const StandardIsolationPriorityEnum = /*@__PURE__*/ S.String;
 
 /** If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. MemoryConfig can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled. */
 export interface MemoryConfig {}
 export const MemoryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+S.Struct({}),
 ).annotate({ identifier: "MemoryConfig" }) as any as S.Schema<MemoryConfig>;
 
 /** Standard options for isolating this app profile's traffic from other use cases. */
@@ -539,20 +440,14 @@ export interface StandardIsolation {
   memoryConfig?: MemoryConfig;
 }
 export const StandardIsolation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priority: S.optional(StandardIsolationPriorityEnum),
-    memoryConfig: S.optional(MemoryConfig),
-  }),
-).annotate({
-  identifier: "StandardIsolation",
-}) as any as S.Schema<StandardIsolation>;
+S.Struct({
+  "priority": S.optional(StandardIsolationPriorityEnum),
+  "memoryConfig": S.optional(MemoryConfig),
+}),
+).annotate({ identifier: "StandardIsolation" }) as any as S.Schema<StandardIsolation>;
 
-export type DataBoostIsolationReadOnlyComputeBillingOwnerEnum =
-  | "COMPUTE_BILLING_OWNER_UNSPECIFIED"
-  | "HOST_PAYS"
-  | (string & {});
-export const DataBoostIsolationReadOnlyComputeBillingOwnerEnum =
-  /*@__PURE__*/ S.String;
+export type DataBoostIsolationReadOnlyComputeBillingOwnerEnum = "COMPUTE_BILLING_OWNER_UNSPECIFIED" | "HOST_PAYS";
+export const DataBoostIsolationReadOnlyComputeBillingOwnerEnum = /*@__PURE__*/ S.String;
 
 /** Data Boost is a serverless compute capability that lets you run high-throughput read jobs and queries on your Bigtable data, without impacting the performance of the clusters that handle your application traffic. Data Boost supports read-only use cases with single-cluster routing. */
 export interface DataBoostIsolationReadOnly {
@@ -560,14 +455,10 @@ export interface DataBoostIsolationReadOnly {
   computeBillingOwner?: DataBoostIsolationReadOnlyComputeBillingOwnerEnum;
 }
 export const DataBoostIsolationReadOnly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    computeBillingOwner: S.optional(
-      DataBoostIsolationReadOnlyComputeBillingOwnerEnum,
-    ),
-  }),
-).annotate({
-  identifier: "DataBoostIsolationReadOnly",
-}) as any as S.Schema<DataBoostIsolationReadOnly>;
+S.Struct({
+  "computeBillingOwner": S.optional(DataBoostIsolationReadOnlyComputeBillingOwnerEnum),
+}),
+).annotate({ identifier: "DataBoostIsolationReadOnly" }) as any as S.Schema<DataBoostIsolationReadOnly>;
 
 /** A configuration object describing how Cloud Bigtable should treat traffic from a particular end user application. */
 export interface AppProfile {
@@ -589,16 +480,16 @@ export interface AppProfile {
   etag?: string;
 }
 export const AppProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    multiClusterRoutingUseAny: S.optional(MultiClusterRoutingUseAny),
-    singleClusterRouting: S.optional(SingleClusterRouting),
-    description: S.optional(S.String),
-    priority: S.optional(AppProfilePriorityEnum),
-    standardIsolation: S.optional(StandardIsolation),
-    name: S.optional(S.String),
-    dataBoostIsolationReadOnly: S.optional(DataBoostIsolationReadOnly),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "multiClusterRoutingUseAny": S.optional(MultiClusterRoutingUseAny),
+  "singleClusterRouting": S.optional(SingleClusterRouting),
+  "description": S.optional(S.String),
+  "priority": S.optional(AppProfilePriorityEnum),
+  "standardIsolation": S.optional(StandardIsolation),
+  "name": S.optional(S.String),
+  "dataBoostIsolationReadOnly": S.optional(DataBoostIsolationReadOnly),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "AppProfile" }) as any as S.Schema<AppProfile>;
 
 export interface CreateProjectsInstancesAppProfilesRequest {
@@ -611,23 +502,14 @@ export interface CreateProjectsInstancesAppProfilesRequest {
   /** Request body */
   body?: AppProfile;
 }
-export const CreateProjectsInstancesAppProfilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      ignoreWarnings: S.optional(S.Boolean.pipe(T.Query())),
-      appProfileId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(AppProfile.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/appProfiles",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsInstancesAppProfilesRequest",
-  }) as any as S.Schema<CreateProjectsInstancesAppProfilesRequest>;
+export const CreateProjectsInstancesAppProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "ignoreWarnings": S.optional(S.Boolean.pipe(T.Query())),
+  "appProfileId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(AppProfile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/appProfiles","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesAppProfilesRequest" }) as any as S.Schema<CreateProjectsInstancesAppProfilesRequest>;
 
 export interface CreateProjectsInstancesClustersRequest {
   /** Required. The unique name of the instance in which to create the new cluster. Values are of the form `projects/{project}/instances/{instance}`. */
@@ -637,42 +519,21 @@ export interface CreateProjectsInstancesClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const CreateProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      clusterId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Cluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/clusters",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsInstancesClustersRequest",
-}) as any as S.Schema<CreateProjectsInstancesClustersRequest>;
+export const CreateProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "clusterId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Cluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/clusters","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesClustersRequest" }) as any as S.Schema<CreateProjectsInstancesClustersRequest>;
 
-export type BackupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | (string & {});
+export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
-export type BackupBackupTypeEnum =
-  | "BACKUP_TYPE_UNSPECIFIED"
-  | "STANDARD"
-  | "HOT"
-  | (string & {});
+export type BackupBackupTypeEnum = "BACKUP_TYPE_UNSPECIFIED" | "STANDARD" | "HOT";
 export const BackupBackupTypeEnum = /*@__PURE__*/ S.String;
 
-export type EncryptionInfoEncryptionTypeEnum =
-  | "ENCRYPTION_TYPE_UNSPECIFIED"
-  | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
+export type EncryptionInfoEncryptionTypeEnum = "ENCRYPTION_TYPE_UNSPECIFIED" | "GOOGLE_DEFAULT_ENCRYPTION" | "CUSTOMER_MANAGED_ENCRYPTION";
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption information for a given resource. If this resource is protected with customer managed encryption, the in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status. */
@@ -685,11 +546,11 @@ export interface EncryptionInfo {
   encryptionType?: EncryptionInfoEncryptionTypeEnum;
 }
 export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionStatus: S.optional(Status),
-    kmsKeyVersion: S.optional(S.String),
-    encryptionType: S.optional(EncryptionInfoEncryptionTypeEnum),
-  }),
+S.Struct({
+  "encryptionStatus": S.optional(Status),
+  "kmsKeyVersion": S.optional(S.String),
+  "encryptionType": S.optional(EncryptionInfoEncryptionTypeEnum),
+}),
 ).annotate({ identifier: "EncryptionInfo" }) as any as S.Schema<EncryptionInfo>;
 
 /** A backup of a Cloud Bigtable table. */
@@ -718,19 +579,19 @@ export interface Backup {
   encryptionInfo?: EncryptionInfo;
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(BackupStateEnum),
-    sourceTable: S.optional(S.String),
-    expireTime: S.optional(S.String),
-    sizeBytes: S.optional(S.String),
-    startTime: S.optional(S.String),
-    hotToStandardTime: S.optional(S.String),
-    backupType: S.optional(BackupBackupTypeEnum),
-    endTime: S.optional(S.String),
-    sourceBackup: S.optional(S.String),
-    name: S.optional(S.String),
-    encryptionInfo: S.optional(EncryptionInfo),
-  }),
+S.Struct({
+  "state": S.optional(BackupStateEnum),
+  "sourceTable": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+  "sizeBytes": S.optional(S.String),
+  "startTime": S.optional(S.String),
+  "hotToStandardTime": S.optional(S.String),
+  "backupType": S.optional(BackupBackupTypeEnum),
+  "endTime": S.optional(S.String),
+  "sourceBackup": S.optional(S.String),
+  "name": S.optional(S.String),
+  "encryptionInfo": S.optional(EncryptionInfo),
+}),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 export interface CreateProjectsInstancesClustersBackupsRequest {
@@ -741,22 +602,13 @@ export interface CreateProjectsInstancesClustersBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const CreateProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      backupId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Backup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/backups",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsInstancesClustersBackupsRequest",
-  }) as any as S.Schema<CreateProjectsInstancesClustersBackupsRequest>;
+export const CreateProjectsInstancesClustersBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "backupId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Backup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/backups","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesClustersBackupsRequest" }) as any as S.Schema<CreateProjectsInstancesClustersBackupsRequest>;
 
 /** A SQL logical view object that can be referenced in SQL queries. */
 export interface LogicalView {
@@ -770,12 +622,12 @@ export interface LogicalView {
   deletionProtection?: boolean;
 }
 export const LogicalView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    query: S.optional(S.String),
-    etag: S.optional(S.String),
-    deletionProtection: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "query": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "deletionProtection": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "LogicalView" }) as any as S.Schema<LogicalView>;
 
 export interface CreateProjectsInstancesLogicalViewsRequest {
@@ -786,52 +638,30 @@ export interface CreateProjectsInstancesLogicalViewsRequest {
   /** Request body */
   body?: LogicalView;
 }
-export const CreateProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      logicalViewId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(LogicalView.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/logicalViews",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsInstancesLogicalViewsRequest",
-  }) as any as S.Schema<CreateProjectsInstancesLogicalViewsRequest>;
+export const CreateProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "logicalViewId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(LogicalView.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/logicalViews","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesLogicalViewsRequest" }) as any as S.Schema<CreateProjectsInstancesLogicalViewsRequest>;
 
-export type GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum =
-  "STATE_NOT_KNOWN" | "INITIALIZING" | "READY" | (string & {});
-export const GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum = "STATE_NOT_KNOWN" | "INITIALIZING" | "READY";
+export const GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum = /*@__PURE__*/ S.String;
 
 /** The state of a materialized view's data in a particular cluster. */
 export interface GoogleBigtableAdminV2MaterializedViewClusterState {
   /** Output only. The state of the materialized view in this cluster. */
   replicationState?: GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum;
 }
-export const GoogleBigtableAdminV2MaterializedViewClusterState =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      replicationState: S.optional(
-        GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2MaterializedViewClusterState",
-  }) as any as S.Schema<GoogleBigtableAdminV2MaterializedViewClusterState>;
+export const GoogleBigtableAdminV2MaterializedViewClusterState = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "replicationState": S.optional(GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2MaterializedViewClusterState" }) as any as S.Schema<GoogleBigtableAdminV2MaterializedViewClusterState>;
 
-export type GoogleBigtableAdminV2MaterializedViewClusterStateMap = {
-  [key: string]: GoogleBigtableAdminV2MaterializedViewClusterState | undefined;
-};
-export const GoogleBigtableAdminV2MaterializedViewClusterStateMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleBigtableAdminV2MaterializedViewClusterState,
-  ) as any as S.Schema<GoogleBigtableAdminV2MaterializedViewClusterStateMap>;
+export type GoogleBigtableAdminV2MaterializedViewClusterStateMap = { [key: string]: GoogleBigtableAdminV2MaterializedViewClusterState | undefined };
+export const GoogleBigtableAdminV2MaterializedViewClusterStateMap = /*@__PURE__*/ S.Record(S.String, GoogleBigtableAdminV2MaterializedViewClusterState) as any as S.Schema<GoogleBigtableAdminV2MaterializedViewClusterStateMap>;
 
 /** A materialized view object that can be referenced in SQL queries. */
 export interface MaterializedView {
@@ -847,18 +677,14 @@ export interface MaterializedView {
   name?: string;
 }
 export const MaterializedView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(S.String),
-    deletionProtection: S.optional(S.Boolean),
-    clusterStates: S.optional(
-      GoogleBigtableAdminV2MaterializedViewClusterStateMap,
-    ),
-    etag: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MaterializedView",
-}) as any as S.Schema<MaterializedView>;
+S.Struct({
+  "query": S.optional(S.String),
+  "deletionProtection": S.optional(S.Boolean),
+  "clusterStates": S.optional(GoogleBigtableAdminV2MaterializedViewClusterStateMap),
+  "etag": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "MaterializedView" }) as any as S.Schema<MaterializedView>;
 
 export interface CreateProjectsInstancesMaterializedViewsRequest {
   /** Required. The ID to use for the materialized view, which will become the final component of the materialized view's resource name. */
@@ -870,23 +696,14 @@ export interface CreateProjectsInstancesMaterializedViewsRequest {
   /** Request body */
   body?: MaterializedView;
 }
-export const CreateProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      materializedViewId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      ignoreWarnings: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(MaterializedView.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/materializedViews",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsInstancesMaterializedViewsRequest",
-  }) as any as S.Schema<CreateProjectsInstancesMaterializedViewsRequest>;
+export const CreateProjectsInstancesMaterializedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "materializedViewId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "ignoreWarnings": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(MaterializedView.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/materializedViews","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesMaterializedViewsRequest" }) as any as S.Schema<CreateProjectsInstancesMaterializedViewsRequest>;
 
 /** Information about a backup. */
 export interface BackupInfo {
@@ -902,19 +719,16 @@ export interface BackupInfo {
   endTime?: string;
 }
 export const BackupInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backup: S.optional(S.String),
-    sourceTable: S.optional(S.String),
-    sourceBackup: S.optional(S.String),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "backup": S.optional(S.String),
+  "sourceTable": S.optional(S.String),
+  "sourceBackup": S.optional(S.String),
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "BackupInfo" }) as any as S.Schema<BackupInfo>;
 
-export type RestoreInfoSourceTypeEnum =
-  | "RESTORE_SOURCE_TYPE_UNSPECIFIED"
-  | "BACKUP"
-  | (string & {});
+export type RestoreInfoSourceTypeEnum = "RESTORE_SOURCE_TYPE_UNSPECIFIED" | "BACKUP";
 export const RestoreInfoSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a table restore. */
@@ -925,25 +739,23 @@ export interface RestoreInfo {
   sourceType?: RestoreInfoSourceTypeEnum;
 }
 export const RestoreInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backupInfo: S.optional(BackupInfo),
-    sourceType: S.optional(RestoreInfoSourceTypeEnum),
-  }),
+S.Struct({
+  "backupInfo": S.optional(BackupInfo),
+  "sourceType": S.optional(RestoreInfoSourceTypeEnum),
+}),
 ).annotate({ identifier: "RestoreInfo" }) as any as S.Schema<RestoreInfo>;
 
 /** Encodes the value in a variable length binary format of up to 5 bytes. Values that are closer to zero use fewer bytes. Sorted mode: all values are supported. Distinct mode: all values are supported. */
 export interface GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes {}
-export const GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes>;
+export const GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes" }) as any as S.Schema<GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes>;
 
 /** Encodes the value as a 4-byte big-endian two's complement value. Sorted mode: non-negative values are supported. Distinct mode: all values are supported. Compatible with: - BigQuery `BINARY` encoding - HBase `Bytes.toBytes` - Java `ByteBuffer.putInt()` with `ByteOrder.BIG_ENDIAN` */
 export interface GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes {}
-export const GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes>;
+export const GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes" }) as any as S.Schema<GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes>;
 
 /** Rules used to convert to or from lower level types. */
 export interface GoogleBigtableAdminV2TypeInt32Encoding {
@@ -952,19 +764,12 @@ export interface GoogleBigtableAdminV2TypeInt32Encoding {
   /** Use `BigEndianBytes` encoding. */
   bigEndianBytes?: GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes;
 }
-export const GoogleBigtableAdminV2TypeInt32Encoding = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      orderedCodeBytes: S.optional(
-        GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes,
-      ),
-      bigEndianBytes: S.optional(
-        GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes,
-      ),
-    }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeInt32Encoding",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeInt32Encoding>;
+export const GoogleBigtableAdminV2TypeInt32Encoding = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orderedCodeBytes": S.optional(GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes),
+  "bigEndianBytes": S.optional(GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeInt32Encoding" }) as any as S.Schema<GoogleBigtableAdminV2TypeInt32Encoding>;
 
 /** Int32 Values of type `Int32` are stored in `Value.int_value`. */
 export interface GoogleBigtableAdminV2TypeInt32 {
@@ -972,44 +777,34 @@ export interface GoogleBigtableAdminV2TypeInt32 {
   encoding?: GoogleBigtableAdminV2TypeInt32Encoding;
 }
 export const GoogleBigtableAdminV2TypeInt32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encoding: S.optional(GoogleBigtableAdminV2TypeInt32Encoding),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeInt32",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeInt32>;
+S.Struct({
+  "encoding": S.optional(GoogleBigtableAdminV2TypeInt32Encoding),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeInt32" }) as any as S.Schema<GoogleBigtableAdminV2TypeInt32>;
 
 /** Computes an approximate unique count over the input values. When using raw data as input, be careful to use a consistent encoding. Otherwise the same value encoded differently could count more than once, or two distinct values could count as identical. Input: Any, or omit for Raw State: TBD Special state conversions: `Int64` (the unique count estimate) */
 export interface GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount {}
-export const GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount>;
+export const GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount" }) as any as S.Schema<GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount>;
 
 /** Computes the max of the input values. Allowed input: `Int64` State: same as input */
 export interface GoogleBigtableAdminV2TypeAggregateMax {}
-export const GoogleBigtableAdminV2TypeAggregateMax = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeAggregateMax",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeAggregateMax>;
+export const GoogleBigtableAdminV2TypeAggregateMax = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeAggregateMax" }) as any as S.Schema<GoogleBigtableAdminV2TypeAggregateMax>;
 
 /** Computes the sum of the input values. Allowed input: `Int64` State: same as input */
 export interface GoogleBigtableAdminV2TypeAggregateSum {}
-export const GoogleBigtableAdminV2TypeAggregateSum = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeAggregateSum",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeAggregateSum>;
+export const GoogleBigtableAdminV2TypeAggregateSum = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeAggregateSum" }) as any as S.Schema<GoogleBigtableAdminV2TypeAggregateSum>;
 
 /** Computes the min of the input values. Allowed input: `Int64` State: same as input */
 export interface GoogleBigtableAdminV2TypeAggregateMin {}
-export const GoogleBigtableAdminV2TypeAggregateMin = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeAggregateMin",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeAggregateMin>;
+export const GoogleBigtableAdminV2TypeAggregateMin = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeAggregateMin" }) as any as S.Schema<GoogleBigtableAdminV2TypeAggregateMin>;
 
 /** A value that combines incremental updates into a summarized value. Data is never directly written or read using type `Aggregate`. Writes provide either the `input_type` or `state_type`, and reads always return the `state_type` . */
 export interface GoogleBigtableAdminV2TypeAggregate {
@@ -1027,54 +822,43 @@ export interface GoogleBigtableAdminV2TypeAggregate {
   min?: GoogleBigtableAdminV2TypeAggregateMin;
 }
 export const GoogleBigtableAdminV2TypeAggregate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hllppUniqueCount: S.optional(
-      GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount,
-    ),
-    max: S.optional(GoogleBigtableAdminV2TypeAggregateMax),
-    inputType: S.optional(S.suspend(() => Type)),
-    stateType: S.optional(S.suspend(() => Type)),
-    sum: S.optional(GoogleBigtableAdminV2TypeAggregateSum),
-    min: S.optional(GoogleBigtableAdminV2TypeAggregateMin),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeAggregate",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeAggregate>;
+S.Struct({
+  "hllppUniqueCount": S.optional(GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount),
+  "max": S.optional(GoogleBigtableAdminV2TypeAggregateMax),
+  "inputType": S.optional(S.suspend(() => Type)),
+  "stateType": S.optional(S.suspend(() => Type)),
+  "sum": S.optional(GoogleBigtableAdminV2TypeAggregateSum),
+  "min": S.optional(GoogleBigtableAdminV2TypeAggregateMin),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeAggregate" }) as any as S.Schema<GoogleBigtableAdminV2TypeAggregate>;
 
 /** Encodes the value in a variable length binary format of up to 10 bytes. Values that are closer to zero use fewer bytes. Sorted mode: all values are supported. Distinct mode: all values are supported. */
 export interface GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes {}
-export const GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes>;
+export const GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes" }) as any as S.Schema<GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes>;
 
 /** Leaves the value as-is. Sorted mode: all values are supported. Distinct mode: all values are supported. */
 export interface GoogleBigtableAdminV2TypeBytesEncodingRaw {
   /** If set, allows NULL values to be encoded as the empty string "". The actual empty string, or any value which only contains the null byte `0x00`, has one more null byte appended. */
   escapeNulls?: boolean;
 }
-export const GoogleBigtableAdminV2TypeBytesEncodingRaw =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      escapeNulls: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeBytesEncodingRaw",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeBytesEncodingRaw>;
+export const GoogleBigtableAdminV2TypeBytesEncodingRaw = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "escapeNulls": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeBytesEncodingRaw" }) as any as S.Schema<GoogleBigtableAdminV2TypeBytesEncodingRaw>;
 
 /** Rules used to convert to or from lower level types. */
 export interface GoogleBigtableAdminV2TypeBytesEncoding {
   /** Use `Raw` encoding. */
   raw?: GoogleBigtableAdminV2TypeBytesEncodingRaw;
 }
-export const GoogleBigtableAdminV2TypeBytesEncoding = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      raw: S.optional(GoogleBigtableAdminV2TypeBytesEncodingRaw),
-    }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeBytesEncoding",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeBytesEncoding>;
+export const GoogleBigtableAdminV2TypeBytesEncoding = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "raw": S.optional(GoogleBigtableAdminV2TypeBytesEncodingRaw),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeBytesEncoding" }) as any as S.Schema<GoogleBigtableAdminV2TypeBytesEncoding>;
 
 /** Bytes Values of type `Bytes` are stored in `Value.bytes_value`. */
 export interface GoogleBigtableAdminV2TypeBytes {
@@ -1082,26 +866,21 @@ export interface GoogleBigtableAdminV2TypeBytes {
   encoding?: GoogleBigtableAdminV2TypeBytesEncoding;
 }
 export const GoogleBigtableAdminV2TypeBytes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encoding: S.optional(GoogleBigtableAdminV2TypeBytesEncoding),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeBytes",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeBytes>;
+S.Struct({
+  "encoding": S.optional(GoogleBigtableAdminV2TypeBytesEncoding),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeBytes" }) as any as S.Schema<GoogleBigtableAdminV2TypeBytes>;
 
 /** Encodes the value as an 8-byte big-endian two's complement value. Sorted mode: non-negative values are supported. Distinct mode: all values are supported. Compatible with: - BigQuery `BINARY` encoding - HBase `Bytes.toBytes` - Java `ByteBuffer.putLong()` with `ByteOrder.BIG_ENDIAN` */
 export interface GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
   /** Deprecated: ignored if set. */
   bytesType?: GoogleBigtableAdminV2TypeBytes;
 }
-export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bytesType: S.optional(GoogleBigtableAdminV2TypeBytes),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes>;
+export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "bytesType": S.optional(GoogleBigtableAdminV2TypeBytes),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes" }) as any as S.Schema<GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes>;
 
 /** Rules used to convert to or from lower level types. */
 export interface GoogleBigtableAdminV2TypeInt64Encoding {
@@ -1110,19 +889,12 @@ export interface GoogleBigtableAdminV2TypeInt64Encoding {
   /** Use `BigEndianBytes` encoding. */
   bigEndianBytes?: GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes;
 }
-export const GoogleBigtableAdminV2TypeInt64Encoding = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      orderedCodeBytes: S.optional(
-        GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes,
-      ),
-      bigEndianBytes: S.optional(
-        GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes,
-      ),
-    }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeInt64Encoding",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeInt64Encoding>;
+export const GoogleBigtableAdminV2TypeInt64Encoding = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orderedCodeBytes": S.optional(GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes),
+  "bigEndianBytes": S.optional(GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64Encoding" }) as any as S.Schema<GoogleBigtableAdminV2TypeInt64Encoding>;
 
 /** Int64 Values of type `Int64` are stored in `Value.int_value`. */
 export interface GoogleBigtableAdminV2TypeInt64 {
@@ -1130,26 +902,21 @@ export interface GoogleBigtableAdminV2TypeInt64 {
   encoding?: GoogleBigtableAdminV2TypeInt64Encoding;
 }
 export const GoogleBigtableAdminV2TypeInt64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encoding: S.optional(GoogleBigtableAdminV2TypeInt64Encoding),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeInt64",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeInt64>;
+S.Struct({
+  "encoding": S.optional(GoogleBigtableAdminV2TypeInt64Encoding),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64" }) as any as S.Schema<GoogleBigtableAdminV2TypeInt64>;
 
 /** Rules used to convert to or from lower level types. */
 export interface GoogleBigtableAdminV2TypeTimestampEncoding {
   /** Encodes the number of microseconds since the Unix epoch using the given `Int64` encoding. Values must be microsecond-aligned. Compatible with: - Java `Instant.truncatedTo()` with `ChronoUnit.MICROS` */
   unixMicrosInt64?: GoogleBigtableAdminV2TypeInt64Encoding;
 }
-export const GoogleBigtableAdminV2TypeTimestampEncoding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unixMicrosInt64: S.optional(GoogleBigtableAdminV2TypeInt64Encoding),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeTimestampEncoding",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeTimestampEncoding>;
+export const GoogleBigtableAdminV2TypeTimestampEncoding = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "unixMicrosInt64": S.optional(GoogleBigtableAdminV2TypeInt64Encoding),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestampEncoding" }) as any as S.Schema<GoogleBigtableAdminV2TypeTimestampEncoding>;
 
 /** Timestamp Values of type `Timestamp` are stored in `Value.timestamp_value`. */
 export interface GoogleBigtableAdminV2TypeTimestamp {
@@ -1157,12 +924,10 @@ export interface GoogleBigtableAdminV2TypeTimestamp {
   encoding?: GoogleBigtableAdminV2TypeTimestampEncoding;
 }
 export const GoogleBigtableAdminV2TypeTimestamp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encoding: S.optional(GoogleBigtableAdminV2TypeTimestampEncoding),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeTimestamp",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeTimestamp>;
+S.Struct({
+  "encoding": S.optional(GoogleBigtableAdminV2TypeTimestampEncoding),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestamp" }) as any as S.Schema<GoogleBigtableAdminV2TypeTimestamp>;
 
 /** A mapping of keys to values of a given type. Values of type `Map` are stored in a `Value.array_value` where each entry is another `Value.array_value` with two elements (the key and the value, in that order). Normally encoded Map values won't have repeated keys, however, clients are expected to handle the case in which they do. If the same key appears multiple times, the _last_ value takes precedence. */
 export interface GoogleBigtableAdminV2TypeMap {
@@ -1172,21 +937,17 @@ export interface GoogleBigtableAdminV2TypeMap {
   keyType?: Type;
 }
 export const GoogleBigtableAdminV2TypeMap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    valueType: S.optional(S.suspend(() => Type)),
-    keyType: S.optional(S.suspend(() => Type)),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeMap",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeMap>;
+S.Struct({
+  "valueType": S.optional(S.suspend(() => Type)),
+  "keyType": S.optional(S.suspend(() => Type)),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeMap" }) as any as S.Schema<GoogleBigtableAdminV2TypeMap>;
 
 /** Defines rules used to convert to or from lower level types. */
 export interface GoogleBigtableAdminV2TypeBoolEncoding {}
-export const GoogleBigtableAdminV2TypeBoolEncoding = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeBoolEncoding",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeBoolEncoding>;
+export const GoogleBigtableAdminV2TypeBoolEncoding = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeBoolEncoding" }) as any as S.Schema<GoogleBigtableAdminV2TypeBoolEncoding>;
 
 /** bool Values of type `Bool` are stored in `Value.bool_value`. */
 export interface GoogleBigtableAdminV2TypeBool {
@@ -1194,20 +955,16 @@ export interface GoogleBigtableAdminV2TypeBool {
   encoding?: GoogleBigtableAdminV2TypeBoolEncoding;
 }
 export const GoogleBigtableAdminV2TypeBool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encoding: S.optional(GoogleBigtableAdminV2TypeBoolEncoding),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeBool",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeBool>;
+S.Struct({
+  "encoding": S.optional(GoogleBigtableAdminV2TypeBoolEncoding),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeBool" }) as any as S.Schema<GoogleBigtableAdminV2TypeBool>;
 
 /** Float64 Values of type `Float64` are stored in `Value.float_value`. */
 export interface GoogleBigtableAdminV2TypeFloat64 {}
 export const GoogleBigtableAdminV2TypeFloat64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeFloat64",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeFloat64>;
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeFloat64" }) as any as S.Schema<GoogleBigtableAdminV2TypeFloat64>;
 
 /** A protobuf enum type. Values of type `Enum` are stored in `Value.int_value`. */
 export interface GoogleBigtableAdminV2TypeEnum {
@@ -1217,34 +974,28 @@ export interface GoogleBigtableAdminV2TypeEnum {
   enumName?: string;
 }
 export const GoogleBigtableAdminV2TypeEnum = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaBundleId: S.optional(S.String),
-    enumName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeEnum",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeEnum>;
+S.Struct({
+  "schemaBundleId": S.optional(S.String),
+  "enumName": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeEnum" }) as any as S.Schema<GoogleBigtableAdminV2TypeEnum>;
 
 /** Deprecated: prefer the equivalent `Utf8Bytes`. */
 export interface GoogleBigtableAdminV2TypeStringEncodingUtf8Raw {}
-export const GoogleBigtableAdminV2TypeStringEncodingUtf8Raw =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleBigtableAdminV2TypeStringEncodingUtf8Raw",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Raw>;
+export const GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeStringEncodingUtf8Raw" }) as any as S.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Raw>;
 
 /** UTF-8 encoding. Sorted mode: - All values are supported. - Code point order is preserved. Distinct mode: all values are supported. Compatible with: - BigQuery `TEXT` encoding - HBase `Bytes.toBytes` - Java `String#getBytes(StandardCharsets.UTF_8)` */
 export interface GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
   /** Single-character escape sequence used to support NULL values. If set, allows NULL values to be encoded as the empty string "". The actual empty string, or any value where every character equals `null_escape_char`, has one more `null_escape_char` appended. If `null_escape_char` is set and does not equal the ASCII null character `0x00`, then the encoding will not support sorted mode. . */
   nullEscapeChar?: string;
 }
-export const GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nullEscapeChar: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes>;
+export const GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nullEscapeChar": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes" }) as any as S.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes>;
 
 /** Rules used to convert to or from lower level types. */
 export interface GoogleBigtableAdminV2TypeStringEncoding {
@@ -1253,15 +1004,12 @@ export interface GoogleBigtableAdminV2TypeStringEncoding {
   /** Use `Utf8Bytes` encoding. */
   utf8Bytes?: GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes;
 }
-export const GoogleBigtableAdminV2TypeStringEncoding = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      utf8Raw: S.optional(GoogleBigtableAdminV2TypeStringEncodingUtf8Raw),
-      utf8Bytes: S.optional(GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes),
-    }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeStringEncoding",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeStringEncoding>;
+export const GoogleBigtableAdminV2TypeStringEncoding = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "utf8Raw": S.optional(GoogleBigtableAdminV2TypeStringEncodingUtf8Raw),
+  "utf8Bytes": S.optional(GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeStringEncoding" }) as any as S.Schema<GoogleBigtableAdminV2TypeStringEncoding>;
 
 /** String Values of type `String` are stored in `Value.string_value`. */
 export interface GoogleBigtableAdminV2TypeString {
@@ -1269,12 +1017,10 @@ export interface GoogleBigtableAdminV2TypeString {
   encoding?: GoogleBigtableAdminV2TypeStringEncoding;
 }
 export const GoogleBigtableAdminV2TypeString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encoding: S.optional(GoogleBigtableAdminV2TypeStringEncoding),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeString",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeString>;
+S.Struct({
+  "encoding": S.optional(GoogleBigtableAdminV2TypeStringEncoding),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeString" }) as any as S.Schema<GoogleBigtableAdminV2TypeString>;
 
 /** A protobuf message type. Values of type `Proto` are stored in `Value.bytes_value`. */
 export interface GoogleBigtableAdminV2TypeProto {
@@ -1284,29 +1030,23 @@ export interface GoogleBigtableAdminV2TypeProto {
   messageName?: string;
 }
 export const GoogleBigtableAdminV2TypeProto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaBundleId: S.optional(S.String),
-    messageName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeProto",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeProto>;
+S.Struct({
+  "schemaBundleId": S.optional(S.String),
+  "messageName": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeProto" }) as any as S.Schema<GoogleBigtableAdminV2TypeProto>;
 
 /** A geography type, representing a point or region on Earth. The value is stored in `Value.bytes_value` as Well-Known Binary (WKB) bytes. */
 export interface GoogleBigtableAdminV2TypeGeography {}
 export const GoogleBigtableAdminV2TypeGeography = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeGeography",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeGeography>;
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeGeography" }) as any as S.Schema<GoogleBigtableAdminV2TypeGeography>;
 
 /** Float32 Values of type `Float32` are stored in `Value.float_value`. */
 export interface GoogleBigtableAdminV2TypeFloat32 {}
 export const GoogleBigtableAdminV2TypeFloat32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeFloat32",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeFloat32>;
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeFloat32" }) as any as S.Schema<GoogleBigtableAdminV2TypeFloat32>;
 
 /** An ordered list of elements of a given type. Values of type `Array` are stored in `Value.array_value`. */
 export interface GoogleBigtableAdminV2TypeArray {
@@ -1314,20 +1054,16 @@ export interface GoogleBigtableAdminV2TypeArray {
   elementType?: Type;
 }
 export const GoogleBigtableAdminV2TypeArray = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    elementType: S.optional(S.suspend(() => Type)),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeArray",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeArray>;
+S.Struct({
+  "elementType": S.optional(S.suspend(() => Type)),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeArray" }) as any as S.Schema<GoogleBigtableAdminV2TypeArray>;
 
 /** Date Values of type `Date` are stored in `Value.date_value`. */
 export interface GoogleBigtableAdminV2TypeDate {}
 export const GoogleBigtableAdminV2TypeDate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeDate",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeDate>;
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeDate" }) as any as S.Schema<GoogleBigtableAdminV2TypeDate>;
 
 /** `Type` represents the type of data that is written to, read from, or stored in Bigtable. It is heavily based on the GoogleSQL standard to help maintain familiarity and consistency across products and features. For compatibility with Bigtable's existing untyped APIs, each `Type` includes an `Encoding` which describes how to convert to or from the underlying data. Each encoding can operate in one of two modes: - Sorted: In this mode, Bigtable guarantees that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere sort order is important, for example when encoding keys. - Distinct: In this mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`. However, the converse is not guaranteed. For example, both `{'foo': '1', 'bar': '2'}` and `{'bar': '2', 'foo': '1'}` are valid encodings of the same JSON value. The API clearly documents which mode is used wherever an encoding can be configured. Each encoding also documents which values are supported in which modes. For example, when encoding INT64 as a numeric STRING, negative numbers cannot be encoded in sorted mode. This is because `INT64(1) > INT64(-1)`, but `STRING("-00001") > STRING("00001")`. */
 export interface Type {
@@ -1365,24 +1101,24 @@ export interface Type {
   dateType?: GoogleBigtableAdminV2TypeDate;
 }
 export const Type = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    int32Type: S.optional(GoogleBigtableAdminV2TypeInt32),
-    structType: S.optional(S.suspend(() => GoogleBigtableAdminV2TypeStruct)),
-    aggregateType: S.optional(GoogleBigtableAdminV2TypeAggregate),
-    int64Type: S.optional(GoogleBigtableAdminV2TypeInt64),
-    timestampType: S.optional(GoogleBigtableAdminV2TypeTimestamp),
-    mapType: S.optional(GoogleBigtableAdminV2TypeMap),
-    boolType: S.optional(GoogleBigtableAdminV2TypeBool),
-    float64Type: S.optional(GoogleBigtableAdminV2TypeFloat64),
-    enumType: S.optional(GoogleBigtableAdminV2TypeEnum),
-    bytesType: S.optional(GoogleBigtableAdminV2TypeBytes),
-    stringType: S.optional(GoogleBigtableAdminV2TypeString),
-    protoType: S.optional(GoogleBigtableAdminV2TypeProto),
-    geographyType: S.optional(GoogleBigtableAdminV2TypeGeography),
-    float32Type: S.optional(GoogleBigtableAdminV2TypeFloat32),
-    arrayType: S.optional(GoogleBigtableAdminV2TypeArray),
-    dateType: S.optional(GoogleBigtableAdminV2TypeDate),
-  }),
+S.Struct({
+  "int32Type": S.optional(GoogleBigtableAdminV2TypeInt32),
+  "structType": S.optional(S.suspend(() => GoogleBigtableAdminV2TypeStruct)),
+  "aggregateType": S.optional(GoogleBigtableAdminV2TypeAggregate),
+  "int64Type": S.optional(GoogleBigtableAdminV2TypeInt64),
+  "timestampType": S.optional(GoogleBigtableAdminV2TypeTimestamp),
+  "mapType": S.optional(GoogleBigtableAdminV2TypeMap),
+  "boolType": S.optional(GoogleBigtableAdminV2TypeBool),
+  "float64Type": S.optional(GoogleBigtableAdminV2TypeFloat64),
+  "enumType": S.optional(GoogleBigtableAdminV2TypeEnum),
+  "bytesType": S.optional(GoogleBigtableAdminV2TypeBytes),
+  "stringType": S.optional(GoogleBigtableAdminV2TypeString),
+  "protoType": S.optional(GoogleBigtableAdminV2TypeProto),
+  "geographyType": S.optional(GoogleBigtableAdminV2TypeGeography),
+  "float32Type": S.optional(GoogleBigtableAdminV2TypeFloat32),
+  "arrayType": S.optional(GoogleBigtableAdminV2TypeArray),
+  "dateType": S.optional(GoogleBigtableAdminV2TypeDate),
+}),
 ).annotate({ identifier: "Type" }) as any as S.Schema<Type>;
 
 /** A struct field and its type. */
@@ -1392,49 +1128,38 @@ export interface GoogleBigtableAdminV2TypeStructField {
   /** The type of values in this field. */
   type?: Type;
 }
-export const GoogleBigtableAdminV2TypeStructField = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fieldName: S.optional(S.String),
-      type: S.optional(Type),
-    }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeStructField",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeStructField>;
+export const GoogleBigtableAdminV2TypeStructField = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "fieldName": S.optional(S.String),
+  "type": S.optional(Type),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeStructField" }) as any as S.Schema<GoogleBigtableAdminV2TypeStructField>;
 
-export type GoogleBigtableAdminV2TypeStructFieldList =
-  ReadonlyArray<GoogleBigtableAdminV2TypeStructField>;
-export const GoogleBigtableAdminV2TypeStructFieldList = /*@__PURE__*/ S.Array(
-  GoogleBigtableAdminV2TypeStructField,
-) as any as S.Schema<GoogleBigtableAdminV2TypeStructFieldList>;
+export type GoogleBigtableAdminV2TypeStructFieldList = ReadonlyArray<GoogleBigtableAdminV2TypeStructField>;
+export const GoogleBigtableAdminV2TypeStructFieldList = /*@__PURE__*/ S.Array(GoogleBigtableAdminV2TypeStructField) as any as S.Schema<GoogleBigtableAdminV2TypeStructFieldList>;
 
 /** Fields are encoded independently and concatenated with a configurable `delimiter` in between. A struct with no fields defined is encoded as a single `delimiter`. Sorted mode: - Fields are encoded in sorted mode. - Encoded field values must not contain any bytes <= `delimiter[0]` - Element-wise order is preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc. Strict prefixes sort first. - This encoding does not support `DESC` field ordering. Distinct mode: - Fields are encoded in distinct mode. - Encoded field values must not contain `delimiter[0]`. */
 export interface GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes {
   /** Byte sequence used to delimit concatenated fields. The delimiter must contain at least 1 character and at most 50 characters. */
   delimiter?: string;
 }
-export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      delimiter: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes>;
+export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "delimiter": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes" }) as any as S.Schema<GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes>;
 
 /** Fields are encoded independently, then escaped and delimited by appling the following rules in order: - While the last remaining field is `ASC` or `UNSPECIFIED`, and encodes to the empty string "", remove it. - In each remaining field, replace all null bytes `0x00` with the fixed byte pair `{0x00, 0xFF}`. - If any remaining field encodes to the empty string "", replace it with the fixed byte pair `{0x00, 0x00}`. - Append the fixed byte pair `{0x00, 0x01}` to each remaining field, except for the last remaining field if it is `ASC`. - Bitwise negate all `DESC` fields. - Concatenate the results, or emit the fixed byte pair `{0x00, 0x00}` if there are no remaining fields to concatenate. Examples: ``` - STRUCT() -> "\00\00" - STRUCT("") -> "\00\00" - STRUCT("", "") -> "\00\00" - STRUCT("", "B") -> "\00\00" + "\00\01" + "B" - STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\00\00" + "\00\01" + "B" - STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "\00\01" + "C" ``` Examples for struct with `DESC` fields: ``` - STRUCT("" DESC) -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, "") -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, "", "") -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, "A") -> "\xFF\xFF" + "\xFF\xFE" + "A" - STRUCT("A", "" DESC, "") -> "A" + "\00\01" + "\xFF\xFF" + "\xFF\xFE" - STRUCT("", "A" DESC) -> "\x00\x00" + "\x00\x01" + "\xBE" + "\xFF\xFE" ``` Since null bytes are always escaped, this encoding can cause size blowup for encodings like `Int64.BigEndianBytes` that are likely to produce many such bytes. Sorted mode: - Fields are encoded in sorted mode. - All values supported by the field encodings are allowed. - Fields with unset or `UNSPECIFIED` order are treated as `ASC`. - Element-wise order is preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc. Strict prefixes sort first. Distinct mode: - Fields are encoded in distinct mode. - All values supported by the field encodings are allowed. */
 export interface GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes {}
-export const GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes>;
+export const GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes" }) as any as S.Schema<GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes>;
 
 /** Uses the encoding of `fields[0].type` as-is. Only valid if `fields.size == 1`. This encoding does not support `DESC` field ordering. */
 export interface GoogleBigtableAdminV2TypeStructEncodingSingleton {}
-export const GoogleBigtableAdminV2TypeStructEncodingSingleton =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleBigtableAdminV2TypeStructEncodingSingleton",
-  }) as any as S.Schema<GoogleBigtableAdminV2TypeStructEncodingSingleton>;
+export const GoogleBigtableAdminV2TypeStructEncodingSingleton = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeStructEncodingSingleton" }) as any as S.Schema<GoogleBigtableAdminV2TypeStructEncodingSingleton>;
 
 /** Rules used to convert to or from lower level types. */
 export interface GoogleBigtableAdminV2TypeStructEncoding {
@@ -1445,20 +1170,13 @@ export interface GoogleBigtableAdminV2TypeStructEncoding {
   /** Use `Singleton` encoding. */
   singleton?: GoogleBigtableAdminV2TypeStructEncodingSingleton;
 }
-export const GoogleBigtableAdminV2TypeStructEncoding = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      delimitedBytes: S.optional(
-        GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes,
-      ),
-      orderedCodeBytes: S.optional(
-        GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes,
-      ),
-      singleton: S.optional(GoogleBigtableAdminV2TypeStructEncodingSingleton),
-    }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeStructEncoding",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeStructEncoding>;
+export const GoogleBigtableAdminV2TypeStructEncoding = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "delimitedBytes": S.optional(GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes),
+  "orderedCodeBytes": S.optional(GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes),
+  "singleton": S.optional(GoogleBigtableAdminV2TypeStructEncodingSingleton),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeStructEncoding" }) as any as S.Schema<GoogleBigtableAdminV2TypeStructEncoding>;
 
 /** A structured data value, consisting of fields which map to dynamically typed values. Values of type `Struct` are stored in `Value.array_value` where entries are in the same order and number as `field_types`. */
 export interface GoogleBigtableAdminV2TypeStruct {
@@ -1468,18 +1186,14 @@ export interface GoogleBigtableAdminV2TypeStruct {
   encoding?: GoogleBigtableAdminV2TypeStructEncoding;
 }
 export const GoogleBigtableAdminV2TypeStruct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(GoogleBigtableAdminV2TypeStructFieldList),
-    encoding: S.optional(GoogleBigtableAdminV2TypeStructEncoding),
-  }),
-).annotate({
-  identifier: "GoogleBigtableAdminV2TypeStruct",
-}) as any as S.Schema<GoogleBigtableAdminV2TypeStruct>;
+S.Struct({
+  "fields": S.optional(GoogleBigtableAdminV2TypeStructFieldList),
+  "encoding": S.optional(GoogleBigtableAdminV2TypeStructEncoding),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2TypeStruct" }) as any as S.Schema<GoogleBigtableAdminV2TypeStruct>;
 
 export type GcRuleList = ReadonlyArray<GcRule>;
-export const GcRuleList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GcRule),
-) as any as S.Schema<GcRuleList>;
+export const GcRuleList = /*@__PURE__*/ S.Array(S.suspend(() => GcRule)) as any as S.Schema<GcRuleList>;
 
 /** A GcRule which deletes cells matching any of the given rules. */
 export interface Union {
@@ -1487,9 +1201,9 @@ export interface Union {
   rules?: GcRuleList;
 }
 export const Union = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(GcRuleList),
-  }),
+S.Struct({
+  "rules": S.optional(GcRuleList),
+}),
 ).annotate({ identifier: "Union" }) as any as S.Schema<Union>;
 
 /** A GcRule which deletes cells matching all of the given rules. */
@@ -1498,9 +1212,9 @@ export interface Intersection {
   rules?: GcRuleList;
 }
 export const Intersection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(GcRuleList),
-  }),
+S.Struct({
+  "rules": S.optional(GcRuleList),
+}),
 ).annotate({ identifier: "Intersection" }) as any as S.Schema<Intersection>;
 
 /** Rule for determining which cells to delete during garbage collection. */
@@ -1515,12 +1229,12 @@ export interface GcRule {
   maxNumVersions?: number;
 }
 export const GcRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    union: S.optional(Union),
-    maxAge: S.optional(S.String),
-    intersection: S.optional(Intersection),
-    maxNumVersions: S.optional(S.Number),
-  }),
+S.Struct({
+  "union": S.optional(Union),
+  "maxAge": S.optional(S.String),
+  "intersection": S.optional(Intersection),
+  "maxNumVersions": S.optional(S.Number),
+}),
 ).annotate({ identifier: "GcRule" }) as any as S.Schema<GcRule>;
 
 /** Approximate statistics related to a single column family within a table. This information may change rapidly, interpreting these values at a point in time may already preset out-of-date information. Everything below is approximate, unless otherwise specified. */
@@ -1533,14 +1247,12 @@ export interface ColumnFamilyStats {
   logicalDataBytes?: string;
 }
 export const ColumnFamilyStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    averageColumnsPerRow: S.optional(S.Number),
-    averageCellsPerColumn: S.optional(S.Number),
-    logicalDataBytes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ColumnFamilyStats",
-}) as any as S.Schema<ColumnFamilyStats>;
+S.Struct({
+  "averageColumnsPerRow": S.optional(S.Number),
+  "averageCellsPerColumn": S.optional(S.Number),
+  "logicalDataBytes": S.optional(S.String),
+}),
+).annotate({ identifier: "ColumnFamilyStats" }) as any as S.Schema<ColumnFamilyStats>;
 
 /** A set of columns within a table which share a common configuration. */
 export interface ColumnFamily {
@@ -1552,18 +1264,15 @@ export interface ColumnFamily {
   valueType?: Type;
 }
 export const ColumnFamily = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcRule: S.optional(GcRule),
-    stats: S.optional(ColumnFamilyStats),
-    valueType: S.optional(Type),
-  }),
+S.Struct({
+  "gcRule": S.optional(GcRule),
+  "stats": S.optional(ColumnFamilyStats),
+  "valueType": S.optional(Type),
+}),
 ).annotate({ identifier: "ColumnFamily" }) as any as S.Schema<ColumnFamily>;
 
 export type ColumnFamilyMap = { [key: string]: ColumnFamily | undefined };
-export const ColumnFamilyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ColumnFamily,
-) as any as S.Schema<ColumnFamilyMap>;
+export const ColumnFamilyMap = /*@__PURE__*/ S.Record(S.String, ColumnFamily) as any as S.Schema<ColumnFamilyMap>;
 
 /** Rule to specify what data is stored in a storage tier. */
 export interface TieredStorageRule {
@@ -1571,12 +1280,10 @@ export interface TieredStorageRule {
   includeIfOlderThan?: string;
 }
 export const TieredStorageRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeIfOlderThan: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TieredStorageRule",
-}) as any as S.Schema<TieredStorageRule>;
+S.Struct({
+  "includeIfOlderThan": S.optional(S.String),
+}),
+).annotate({ identifier: "TieredStorageRule" }) as any as S.Schema<TieredStorageRule>;
 
 /** Config for tiered storage. A valid config must have a valid TieredStorageRule. Otherwise the whole TieredStorageConfig must be unset. By default all data is stored in the SSD tier (only SSD instances can configure tiered storage). */
 export interface TieredStorageConfig {
@@ -1584,27 +1291,16 @@ export interface TieredStorageConfig {
   infrequentAccess?: TieredStorageRule;
 }
 export const TieredStorageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infrequentAccess: S.optional(TieredStorageRule),
-  }),
-).annotate({
-  identifier: "TieredStorageConfig",
-}) as any as S.Schema<TieredStorageConfig>;
+S.Struct({
+  "infrequentAccess": S.optional(TieredStorageRule),
+}),
+).annotate({ identifier: "TieredStorageConfig" }) as any as S.Schema<TieredStorageConfig>;
 
-export type ClusterStateReplicationStateEnum =
-  | "STATE_NOT_KNOWN"
-  | "INITIALIZING"
-  | "PLANNED_MAINTENANCE"
-  | "UNPLANNED_MAINTENANCE"
-  | "READY"
-  | "READY_OPTIMIZING"
-  | (string & {});
+export type ClusterStateReplicationStateEnum = "STATE_NOT_KNOWN" | "INITIALIZING" | "PLANNED_MAINTENANCE" | "UNPLANNED_MAINTENANCE" | "READY" | "READY_OPTIMIZING";
 export const ClusterStateReplicationStateEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionInfoList = ReadonlyArray<EncryptionInfo>;
-export const EncryptionInfoList = /*@__PURE__*/ S.Array(
-  EncryptionInfo,
-) as any as S.Schema<EncryptionInfoList>;
+export const EncryptionInfoList = /*@__PURE__*/ S.Array(EncryptionInfo) as any as S.Schema<EncryptionInfoList>;
 
 /** The state of a table's data in a particular cluster. */
 export interface ClusterState {
@@ -1614,17 +1310,14 @@ export interface ClusterState {
   encryptionInfo?: EncryptionInfoList;
 }
 export const ClusterState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replicationState: S.optional(ClusterStateReplicationStateEnum),
-    encryptionInfo: S.optional(EncryptionInfoList),
-  }),
+S.Struct({
+  "replicationState": S.optional(ClusterStateReplicationStateEnum),
+  "encryptionInfo": S.optional(EncryptionInfoList),
+}),
 ).annotate({ identifier: "ClusterState" }) as any as S.Schema<ClusterState>;
 
 export type ClusterStateMap = { [key: string]: ClusterState | undefined };
-export const ClusterStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ClusterState,
-) as any as S.Schema<ClusterStateMap>;
+export const ClusterStateMap = /*@__PURE__*/ S.Record(S.String, ClusterState) as any as S.Schema<ClusterStateMap>;
 
 /** Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified. */
 export interface TableStats {
@@ -1638,18 +1331,15 @@ export interface TableStats {
   rowCount?: string;
 }
 export const TableStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    averageColumnsPerRow: S.optional(S.Number),
-    averageCellsPerColumn: S.optional(S.Number),
-    logicalDataBytes: S.optional(S.String),
-    rowCount: S.optional(S.String),
-  }),
+S.Struct({
+  "averageColumnsPerRow": S.optional(S.Number),
+  "averageCellsPerColumn": S.optional(S.Number),
+  "logicalDataBytes": S.optional(S.String),
+  "rowCount": S.optional(S.String),
+}),
 ).annotate({ identifier: "TableStats" }) as any as S.Schema<TableStats>;
 
-export type TableGranularityEnum =
-  | "TIMESTAMP_GRANULARITY_UNSPECIFIED"
-  | "MILLIS"
-  | (string & {});
+export type TableGranularityEnum = "TIMESTAMP_GRANULARITY_UNSPECIFIED" | "MILLIS";
 export const TableGranularityEnum = /*@__PURE__*/ S.String;
 
 /** Change stream configuration. */
@@ -1658,12 +1348,10 @@ export interface ChangeStreamConfig {
   retentionPeriod?: string;
 }
 export const ChangeStreamConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retentionPeriod: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChangeStreamConfig",
-}) as any as S.Schema<ChangeStreamConfig>;
+S.Struct({
+  "retentionPeriod": S.optional(S.String),
+}),
+).annotate({ identifier: "ChangeStreamConfig" }) as any as S.Schema<ChangeStreamConfig>;
 
 /** Defines an automated backup policy for a table */
 export interface AutomatedBackupPolicy {
@@ -1675,14 +1363,12 @@ export interface AutomatedBackupPolicy {
   locations?: StringList;
 }
 export const AutomatedBackupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retentionPeriod: S.optional(S.String),
-    frequency: S.optional(S.String),
-    locations: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "AutomatedBackupPolicy",
-}) as any as S.Schema<AutomatedBackupPolicy>;
+S.Struct({
+  "retentionPeriod": S.optional(S.String),
+  "frequency": S.optional(S.String),
+  "locations": S.optional(StringList),
+}),
+).annotate({ identifier: "AutomatedBackupPolicy" }) as any as S.Schema<AutomatedBackupPolicy>;
 
 /** A collection of user data indexed by row, column, and timestamp. Each table is served using the resources of its parent cluster. */
 export interface Table {
@@ -1710,19 +1396,19 @@ export interface Table {
   automatedBackupPolicy?: AutomatedBackupPolicy;
 }
 export const Table = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletionProtection: S.optional(S.Boolean),
-    restoreInfo: S.optional(RestoreInfo),
-    rowKeySchema: S.optional(GoogleBigtableAdminV2TypeStruct),
-    name: S.optional(S.String),
-    columnFamilies: S.optional(ColumnFamilyMap),
-    tieredStorageConfig: S.optional(TieredStorageConfig),
-    clusterStates: S.optional(ClusterStateMap),
-    stats: S.optional(TableStats),
-    granularity: S.optional(TableGranularityEnum),
-    changeStreamConfig: S.optional(ChangeStreamConfig),
-    automatedBackupPolicy: S.optional(AutomatedBackupPolicy),
-  }),
+S.Struct({
+  "deletionProtection": S.optional(S.Boolean),
+  "restoreInfo": S.optional(RestoreInfo),
+  "rowKeySchema": S.optional(GoogleBigtableAdminV2TypeStruct),
+  "name": S.optional(S.String),
+  "columnFamilies": S.optional(ColumnFamilyMap),
+  "tieredStorageConfig": S.optional(TieredStorageConfig),
+  "clusterStates": S.optional(ClusterStateMap),
+  "stats": S.optional(TableStats),
+  "granularity": S.optional(TableGranularityEnum),
+  "changeStreamConfig": S.optional(ChangeStreamConfig),
+  "automatedBackupPolicy": S.optional(AutomatedBackupPolicy),
+}),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 /** An initial split point for a newly created table. */
@@ -1731,15 +1417,13 @@ export interface Split {
   key?: string;
 }
 export const Split = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-  }),
+S.Struct({
+  "key": S.optional(S.String),
+}),
 ).annotate({ identifier: "Split" }) as any as S.Schema<Split>;
 
 export type SplitList = ReadonlyArray<Split>;
-export const SplitList = /*@__PURE__*/ S.Array(
-  Split,
-) as any as S.Schema<SplitList>;
+export const SplitList = /*@__PURE__*/ S.Array(Split) as any as S.Schema<SplitList>;
 
 /** Request message for google.bigtable.admin.v2.BigtableTableAdmin.CreateTable */
 export interface CreateTableRequest {
@@ -1751,14 +1435,12 @@ export interface CreateTableRequest {
   initialSplits?: SplitList;
 }
 export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableId: S.optional(S.String),
-    table: S.optional(Table),
-    initialSplits: S.optional(SplitList),
-  }),
-).annotate({
-  identifier: "CreateTableRequest",
-}) as any as S.Schema<CreateTableRequest>;
+S.Struct({
+  "tableId": S.optional(S.String),
+  "table": S.optional(Table),
+  "initialSplits": S.optional(SplitList),
+}),
+).annotate({ identifier: "CreateTableRequest" }) as any as S.Schema<CreateTableRequest>;
 
 export interface CreateProjectsInstancesTablesRequest {
   /** Required. The unique name of the instance in which to create the table. Values are of the form `projects/{project}/instances/{instance}`. */
@@ -1766,21 +1448,12 @@ export interface CreateProjectsInstancesTablesRequest {
   /** Request body */
   body?: CreateTableRequest;
 }
-export const CreateProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CreateTableRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/tables",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsInstancesTablesRequest",
-}) as any as S.Schema<CreateProjectsInstancesTablesRequest>;
+export const CreateProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CreateTableRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/tables","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesTablesRequest" }) as any as S.Schema<CreateProjectsInstancesTablesRequest>;
 
 /** Subsets of a column family that are included in this AuthorizedView. */
 export interface GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
@@ -1789,24 +1462,15 @@ export interface GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
   /** Prefixes for qualifiers to be included in the AuthorizedView. Every qualifier starting with one of these prefixes is included in the AuthorizedView. To provide access to all qualifiers, include the empty string as a prefix (""). */
   qualifierPrefixes?: StringList;
 }
-export const GoogleBigtableAdminV2AuthorizedViewFamilySubsets =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      qualifiers: S.optional(StringList),
-      qualifierPrefixes: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2AuthorizedViewFamilySubsets",
-  }) as any as S.Schema<GoogleBigtableAdminV2AuthorizedViewFamilySubsets>;
+export const GoogleBigtableAdminV2AuthorizedViewFamilySubsets = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "qualifiers": S.optional(StringList),
+  "qualifierPrefixes": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2AuthorizedViewFamilySubsets" }) as any as S.Schema<GoogleBigtableAdminV2AuthorizedViewFamilySubsets>;
 
-export type GoogleBigtableAdminV2AuthorizedViewFamilySubsetsMap = {
-  [key: string]: GoogleBigtableAdminV2AuthorizedViewFamilySubsets | undefined;
-};
-export const GoogleBigtableAdminV2AuthorizedViewFamilySubsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleBigtableAdminV2AuthorizedViewFamilySubsets,
-  ) as any as S.Schema<GoogleBigtableAdminV2AuthorizedViewFamilySubsetsMap>;
+export type GoogleBigtableAdminV2AuthorizedViewFamilySubsetsMap = { [key: string]: GoogleBigtableAdminV2AuthorizedViewFamilySubsets | undefined };
+export const GoogleBigtableAdminV2AuthorizedViewFamilySubsetsMap = /*@__PURE__*/ S.Record(S.String, GoogleBigtableAdminV2AuthorizedViewFamilySubsets) as any as S.Schema<GoogleBigtableAdminV2AuthorizedViewFamilySubsetsMap>;
 
 /** Defines a simple AuthorizedView that is a subset of the underlying Table. */
 export interface GoogleBigtableAdminV2AuthorizedViewSubsetView {
@@ -1815,17 +1479,12 @@ export interface GoogleBigtableAdminV2AuthorizedViewSubsetView {
   /** Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix (""). */
   rowPrefixes?: StringList;
 }
-export const GoogleBigtableAdminV2AuthorizedViewSubsetView =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      familySubsets: S.optional(
-        GoogleBigtableAdminV2AuthorizedViewFamilySubsetsMap,
-      ),
-      rowPrefixes: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2AuthorizedViewSubsetView",
-  }) as any as S.Schema<GoogleBigtableAdminV2AuthorizedViewSubsetView>;
+export const GoogleBigtableAdminV2AuthorizedViewSubsetView = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "familySubsets": S.optional(GoogleBigtableAdminV2AuthorizedViewFamilySubsetsMap),
+  "rowPrefixes": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2AuthorizedViewSubsetView" }) as any as S.Schema<GoogleBigtableAdminV2AuthorizedViewSubsetView>;
 
 /** An Authorized View of a Cloud Bigtable Table. */
 export interface AuthorizedView {
@@ -1839,12 +1498,12 @@ export interface AuthorizedView {
   name?: string;
 }
 export const AuthorizedView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subsetView: S.optional(GoogleBigtableAdminV2AuthorizedViewSubsetView),
-    etag: S.optional(S.String),
-    deletionProtection: S.optional(S.Boolean),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "subsetView": S.optional(GoogleBigtableAdminV2AuthorizedViewSubsetView),
+  "etag": S.optional(S.String),
+  "deletionProtection": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "AuthorizedView" }) as any as S.Schema<AuthorizedView>;
 
 export interface CreateProjectsInstancesTablesAuthorizedViewsRequest {
@@ -1855,22 +1514,13 @@ export interface CreateProjectsInstancesTablesAuthorizedViewsRequest {
   /** Request body */
   body?: AuthorizedView;
 }
-export const CreateProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      authorizedViewId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(AuthorizedView.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/authorizedViews",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsInstancesTablesAuthorizedViewsRequest",
-  }) as any as S.Schema<CreateProjectsInstancesTablesAuthorizedViewsRequest>;
+export const CreateProjectsInstancesTablesAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "authorizedViewId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(AuthorizedView.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/authorizedViews","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesTablesAuthorizedViewsRequest" }) as any as S.Schema<CreateProjectsInstancesTablesAuthorizedViewsRequest>;
 
 /** Represents a collection of protobuf schemas. */
 export interface ProtoSchema {
@@ -1878,9 +1528,9 @@ export interface ProtoSchema {
   protoDescriptors?: string;
 }
 export const ProtoSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protoDescriptors: S.optional(S.String),
-  }),
+S.Struct({
+  "protoDescriptors": S.optional(S.String),
+}),
 ).annotate({ identifier: "ProtoSchema" }) as any as S.Schema<ProtoSchema>;
 
 /** A named collection of related schemas. */
@@ -1893,11 +1543,11 @@ export interface SchemaBundle {
   etag?: string;
 }
 export const SchemaBundle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    protoSchema: S.optional(ProtoSchema),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "protoSchema": S.optional(ProtoSchema),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "SchemaBundle" }) as any as S.Schema<SchemaBundle>;
 
 export interface CreateProjectsInstancesTablesSchemaBundlesRequest {
@@ -1908,46 +1558,29 @@ export interface CreateProjectsInstancesTablesSchemaBundlesRequest {
   /** Request body */
   body?: SchemaBundle;
 }
-export const CreateProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      schemaBundleId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(SchemaBundle.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/schemaBundles",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsInstancesTablesSchemaBundlesRequest",
-  }) as any as S.Schema<CreateProjectsInstancesTablesSchemaBundlesRequest>;
+export const CreateProjectsInstancesTablesSchemaBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "schemaBundleId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(SchemaBundle.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/schemaBundles","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsInstancesTablesSchemaBundlesRequest" }) as any as S.Schema<CreateProjectsInstancesTablesSchemaBundlesRequest>;
 
 export interface DeleteProjectsInstancesRequest {
   /** Required. The unique name of the instance to be deleted. Values are of the form `projects/{project}/instances/{instance}`. */
   name: string;
 }
 export const DeleteProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v2/{+name}",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsInstancesRequest",
-}) as any as S.Schema<DeleteProjectsInstancesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesRequest" }) as any as S.Schema<DeleteProjectsInstancesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsInstancesAppProfilesRequest {
   /** Required. The unique name of the app profile to be deleted. Values are of the form `projects/{project}/instances/{instance}/appProfiles/{app_profile}`. */
@@ -1955,59 +1588,32 @@ export interface DeleteProjectsInstancesAppProfilesRequest {
   /** Required. If true, ignore safety checks when deleting the app profile. */
   ignoreWarnings?: boolean;
 }
-export const DeleteProjectsInstancesAppProfilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      ignoreWarnings: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesAppProfilesRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesAppProfilesRequest>;
+export const DeleteProjectsInstancesAppProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "ignoreWarnings": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesAppProfilesRequest" }) as any as S.Schema<DeleteProjectsInstancesAppProfilesRequest>;
 
 export interface DeleteProjectsInstancesClustersRequest {
   /** Required. The unique name of the cluster to be deleted. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
   name: string;
 }
-export const DeleteProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsInstancesClustersRequest",
-}) as any as S.Schema<DeleteProjectsInstancesClustersRequest>;
+export const DeleteProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesClustersRequest" }) as any as S.Schema<DeleteProjectsInstancesClustersRequest>;
 
 export interface DeleteProjectsInstancesClustersBackupsRequest {
   /** Required. Name of the backup to delete. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`. */
   name: string;
 }
-export const DeleteProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesClustersBackupsRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesClustersBackupsRequest>;
+export const DeleteProjectsInstancesClustersBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesClustersBackupsRequest" }) as any as S.Schema<DeleteProjectsInstancesClustersBackupsRequest>;
 
 export interface DeleteProjectsInstancesLogicalViewsRequest {
   /** Required. The unique name of the logical view to be deleted. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}`. */
@@ -2015,21 +1621,12 @@ export interface DeleteProjectsInstancesLogicalViewsRequest {
   /** Optional. The current etag of the logical view. If an etag is provided and does not match the current etag of the logical view, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesLogicalViewsRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesLogicalViewsRequest>;
+export const DeleteProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesLogicalViewsRequest" }) as any as S.Schema<DeleteProjectsInstancesLogicalViewsRequest>;
 
 export interface DeleteProjectsInstancesMaterializedViewsRequest {
   /** Required. The unique name of the materialized view to be deleted. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`. */
@@ -2037,40 +1634,22 @@ export interface DeleteProjectsInstancesMaterializedViewsRequest {
   /** Optional. The current etag of the materialized view. If an etag is provided and does not match the current etag of the materialized view, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesMaterializedViewsRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesMaterializedViewsRequest>;
+export const DeleteProjectsInstancesMaterializedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesMaterializedViewsRequest" }) as any as S.Schema<DeleteProjectsInstancesMaterializedViewsRequest>;
 
 export interface DeleteProjectsInstancesTablesRequest {
   /** Required. The unique name of the table to be deleted. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
   name: string;
 }
-export const DeleteProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsInstancesTablesRequest",
-}) as any as S.Schema<DeleteProjectsInstancesTablesRequest>;
+export const DeleteProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesTablesRequest" }) as any as S.Schema<DeleteProjectsInstancesTablesRequest>;
 
 export interface DeleteProjectsInstancesTablesAuthorizedViewsRequest {
   /** Required. The unique name of the AuthorizedView to be deleted. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`. */
@@ -2078,21 +1657,12 @@ export interface DeleteProjectsInstancesTablesAuthorizedViewsRequest {
   /** Optional. The current etag of the AuthorizedView. If an etag is provided and does not match the current etag of the AuthorizedView, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesTablesAuthorizedViewsRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesTablesAuthorizedViewsRequest>;
+export const DeleteProjectsInstancesTablesAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesTablesAuthorizedViewsRequest" }) as any as S.Schema<DeleteProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export interface DeleteProjectsInstancesTablesSchemaBundlesRequest {
   /** Required. The unique name of the schema bundle to delete. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
@@ -2100,21 +1670,12 @@ export interface DeleteProjectsInstancesTablesSchemaBundlesRequest {
   /** Optional. The etag of the schema bundle. If this is provided, it must match the server's etag. The server returns an ABORTED error on a mismatched etag. */
   etag?: string;
 }
-export const DeleteProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsInstancesTablesSchemaBundlesRequest",
-  }) as any as S.Schema<DeleteProjectsInstancesTablesSchemaBundlesRequest>;
+export const DeleteProjectsInstancesTablesSchemaBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsInstancesTablesSchemaBundlesRequest" }) as any as S.Schema<DeleteProjectsInstancesTablesSchemaBundlesRequest>;
 
 /** Request message for google.bigtable.admin.v2.BigtableTableAdmin.DropRowRange */
 export interface DropRowRangeRequest {
@@ -2124,13 +1685,11 @@ export interface DropRowRangeRequest {
   deleteAllDataFromTable?: boolean;
 }
 export const DropRowRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowKeyPrefix: S.optional(S.String),
-    deleteAllDataFromTable: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DropRowRangeRequest",
-}) as any as S.Schema<DropRowRangeRequest>;
+S.Struct({
+  "rowKeyPrefix": S.optional(S.String),
+  "deleteAllDataFromTable": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DropRowRangeRequest" }) as any as S.Schema<DropRowRangeRequest>;
 
 export interface DropRowRangeProjectsInstancesTablesRequest {
   /** Required. The unique name of the table on which to drop a range of rows. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
@@ -2138,29 +1697,18 @@ export interface DropRowRangeProjectsInstancesTablesRequest {
   /** Request body */
   body?: DropRowRangeRequest;
 }
-export const DropRowRangeProjectsInstancesTablesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(DropRowRangeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:dropRowRange",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DropRowRangeProjectsInstancesTablesRequest",
-  }) as any as S.Schema<DropRowRangeProjectsInstancesTablesRequest>;
+export const DropRowRangeProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DropRowRangeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:dropRowRange","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "DropRowRangeProjectsInstancesTablesRequest" }) as any as S.Schema<DropRowRangeProjectsInstancesTablesRequest>;
 
 /** Request message for google.bigtable.admin.v2.BigtableTableAdmin.GenerateConsistencyToken */
 export interface GenerateConsistencyTokenRequest {}
 export const GenerateConsistencyTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GenerateConsistencyTokenRequest",
-}) as any as S.Schema<GenerateConsistencyTokenRequest>;
+S.Struct({}),
+).annotate({ identifier: "GenerateConsistencyTokenRequest" }) as any as S.Schema<GenerateConsistencyTokenRequest>;
 
 export interface GenerateConsistencyTokenProjectsInstancesTablesRequest {
   /** Required. The unique name of the Table for which to create a consistency token. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
@@ -2168,21 +1716,12 @@ export interface GenerateConsistencyTokenProjectsInstancesTablesRequest {
   /** Request body */
   body?: GenerateConsistencyTokenRequest;
 }
-export const GenerateConsistencyTokenProjectsInstancesTablesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GenerateConsistencyTokenRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:generateConsistencyToken",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GenerateConsistencyTokenProjectsInstancesTablesRequest",
-  }) as any as S.Schema<GenerateConsistencyTokenProjectsInstancesTablesRequest>;
+export const GenerateConsistencyTokenProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GenerateConsistencyTokenRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:generateConsistencyToken","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GenerateConsistencyTokenProjectsInstancesTablesRequest" }) as any as S.Schema<GenerateConsistencyTokenProjectsInstancesTablesRequest>;
 
 /** Response message for google.bigtable.admin.v2.BigtableTableAdmin.GenerateConsistencyToken */
 export interface GenerateConsistencyTokenResponse {
@@ -2190,12 +1729,10 @@ export interface GenerateConsistencyTokenResponse {
   consistencyToken?: string;
 }
 export const GenerateConsistencyTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consistencyToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenerateConsistencyTokenResponse",
-}) as any as S.Schema<GenerateConsistencyTokenResponse>;
+S.Struct({
+  "consistencyToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GenerateConsistencyTokenResponse" }) as any as S.Schema<GenerateConsistencyTokenResponse>;
 
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
@@ -2203,12 +1740,10 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestedPolicyVersion: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetPolicyOptions",
-}) as any as S.Schema<GetPolicyOptions>;
+S.Struct({
+  "requestedPolicyVersion": S.optional(S.Number),
+}),
+).annotate({ identifier: "GetPolicyOptions" }) as any as S.Schema<GetPolicyOptions>;
 
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
@@ -2216,12 +1751,10 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(GetPolicyOptions),
-  }),
-).annotate({
-  identifier: "GetIamPolicyRequest",
-}) as any as S.Schema<GetIamPolicyRequest>;
+S.Struct({
+  "options": S.optional(GetPolicyOptions),
+}),
+).annotate({ identifier: "GetIamPolicyRequest" }) as any as S.Schema<GetIamPolicyRequest>;
 
 export interface GetIamPolicyProjectsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2229,28 +1762,14 @@ export interface GetIamPolicyProjectsInstancesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:getIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetIamPolicyProjectsInstancesRequest",
-}) as any as S.Schema<GetIamPolicyProjectsInstancesRequest>;
+export const GetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:getIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesRequest>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2261,16 +1780,14 @@ export interface AuditLogConfig {
   logType?: AuditLogConfigLogTypeEnum;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exemptedMembers: S.optional(StringList),
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-  }),
+S.Struct({
+  "exemptedMembers": S.optional(StringList),
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -2280,16 +1797,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -2303,12 +1818,12 @@ export interface Expr {
   description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    location: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
+S.Struct({
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+  "location": S.optional(S.String),
+  "description": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -2321,17 +1836,15 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    members: S.optional(StringList),
-    role: S.optional(S.String),
-    condition: S.optional(Expr),
-  }),
+S.Struct({
+  "members": S.optional(StringList),
+  "role": S.optional(S.String),
+  "condition": S.optional(Expr),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -2345,12 +1858,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auditConfigs: S.optional(AuditConfigList),
-    bindings: S.optional(BindingList),
-    version: S.optional(S.Number),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "auditConfigs": S.optional(AuditConfigList),
+  "bindings": S.optional(BindingList),
+  "version": S.optional(S.Number),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsInstancesClustersBackupsRequest {
@@ -2359,21 +1872,12 @@ export interface GetIamPolicyProjectsInstancesClustersBackupsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:getIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsInstancesClustersBackupsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsInstancesClustersBackupsRequest>;
+export const GetIamPolicyProjectsInstancesClustersBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:getIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesClustersBackupsRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesClustersBackupsRequest>;
 
 export interface GetIamPolicyProjectsInstancesLogicalViewsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2381,21 +1885,12 @@ export interface GetIamPolicyProjectsInstancesLogicalViewsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:getIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsInstancesLogicalViewsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsInstancesLogicalViewsRequest>;
+export const GetIamPolicyProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:getIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesLogicalViewsRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesLogicalViewsRequest>;
 
 export interface GetIamPolicyProjectsInstancesMaterializedViewsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2403,21 +1898,12 @@ export interface GetIamPolicyProjectsInstancesMaterializedViewsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:getIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsInstancesMaterializedViewsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsInstancesMaterializedViewsRequest>;
+export const GetIamPolicyProjectsInstancesMaterializedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:getIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesMaterializedViewsRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesMaterializedViewsRequest>;
 
 export interface GetIamPolicyProjectsInstancesTablesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2425,21 +1911,12 @@ export interface GetIamPolicyProjectsInstancesTablesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesTablesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:getIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsInstancesTablesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsInstancesTablesRequest>;
+export const GetIamPolicyProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:getIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesTablesRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesTablesRequest>;
 
 export interface GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2447,21 +1924,12 @@ export interface GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:getIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
+export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:getIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export interface GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2469,48 +1937,24 @@ export interface GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:getIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
+export const GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:getIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest" }) as any as S.Schema<GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
 
 export interface GetMemoryLayerProjectsInstancesClustersRequest {
   /** Required. The unique name of the requested cluster's memory layer. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`. */
   name: string;
 }
-export const GetMemoryLayerProjectsInstancesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetMemoryLayerProjectsInstancesClustersRequest",
-  }) as any as S.Schema<GetMemoryLayerProjectsInstancesClustersRequest>;
+export const GetMemoryLayerProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetMemoryLayerProjectsInstancesClustersRequest" }) as any as S.Schema<GetMemoryLayerProjectsInstancesClustersRequest>;
 
-export type MemoryLayerStateEnum =
-  | "STATE_NOT_KNOWN"
-  | "READY"
-  | "ENABLING"
-  | "RESIZING"
-  | "DISABLED"
-  | (string & {});
+export type MemoryLayerStateEnum = "STATE_NOT_KNOWN" | "READY" | "ENABLING" | "RESIZING" | "DISABLED";
 export const MemoryLayerStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of a memory layer. */
@@ -2518,14 +1962,11 @@ export interface GoogleBigtableAdminV2MemoryLayerMemoryConfig {
   /** Output only. Reporting the current size of the memory layer in GiB. */
   storageSizeGib?: number;
 }
-export const GoogleBigtableAdminV2MemoryLayerMemoryConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storageSizeGib: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2MemoryLayerMemoryConfig",
-  }) as any as S.Schema<GoogleBigtableAdminV2MemoryLayerMemoryConfig>;
+export const GoogleBigtableAdminV2MemoryLayerMemoryConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "storageSizeGib": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleBigtableAdminV2MemoryLayerMemoryConfig" }) as any as S.Schema<GoogleBigtableAdminV2MemoryLayerMemoryConfig>;
 
 /** The memory layer of a cluster. A memory layer serves reads from memory without hitting the backing persistent data store. */
 export interface MemoryLayer {
@@ -2539,12 +1980,12 @@ export interface MemoryLayer {
   memoryConfig?: GoogleBigtableAdminV2MemoryLayerMemoryConfig;
 }
 export const MemoryLayer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    state: S.optional(MemoryLayerStateEnum),
-    name: S.optional(S.String),
-    memoryConfig: S.optional(GoogleBigtableAdminV2MemoryLayerMemoryConfig),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "state": S.optional(MemoryLayerStateEnum),
+  "name": S.optional(S.String),
+  "memoryConfig": S.optional(GoogleBigtableAdminV2MemoryLayerMemoryConfig),
+}),
 ).annotate({ identifier: "MemoryLayer" }) as any as S.Schema<MemoryLayer>;
 
 export interface GetOperationsRequest {
@@ -2552,228 +1993,118 @@ export interface GetOperationsRequest {
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperationsRequest",
-}) as any as S.Schema<GetOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetProjectsInstancesRequest {
   /** Required. The unique name of the requested instance. Values are of the form `projects/{project}/instances/{instance}`. */
   name: string;
 }
 export const GetProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsInstancesRequest",
-}) as any as S.Schema<GetProjectsInstancesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesRequest" }) as any as S.Schema<GetProjectsInstancesRequest>;
 
 export interface GetProjectsInstancesAppProfilesRequest {
   /** Required. The unique name of the requested app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/{app_profile}`. */
   name: string;
 }
-export const GetProjectsInstancesAppProfilesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsInstancesAppProfilesRequest",
-}) as any as S.Schema<GetProjectsInstancesAppProfilesRequest>;
+export const GetProjectsInstancesAppProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesAppProfilesRequest" }) as any as S.Schema<GetProjectsInstancesAppProfilesRequest>;
 
 export interface GetProjectsInstancesClustersRequest {
   /** Required. The unique name of the requested cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
   name: string;
 }
 export const GetProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsInstancesClustersRequest",
-}) as any as S.Schema<GetProjectsInstancesClustersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesClustersRequest" }) as any as S.Schema<GetProjectsInstancesClustersRequest>;
 
 export interface GetProjectsInstancesClustersBackupsRequest {
   /** Required. Name of the backup. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`. */
   name: string;
 }
-export const GetProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstancesClustersBackupsRequest",
-  }) as any as S.Schema<GetProjectsInstancesClustersBackupsRequest>;
+export const GetProjectsInstancesClustersBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesClustersBackupsRequest" }) as any as S.Schema<GetProjectsInstancesClustersBackupsRequest>;
 
 export interface GetProjectsInstancesLogicalViewsRequest {
   /** Required. The unique name of the requested logical view. Values are of the form `projects/{project}/instances/{instance}/logicalViews/{logical_view}`. */
   name: string;
 }
-export const GetProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsInstancesLogicalViewsRequest",
-}) as any as S.Schema<GetProjectsInstancesLogicalViewsRequest>;
+export const GetProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesLogicalViewsRequest" }) as any as S.Schema<GetProjectsInstancesLogicalViewsRequest>;
 
-export type GetProjectsInstancesMaterializedViewsViewEnum =
-  | "VIEW_UNSPECIFIED"
-  | "SCHEMA_VIEW"
-  | "REPLICATION_VIEW"
-  | "FULL"
-  | (string & {});
-export const GetProjectsInstancesMaterializedViewsViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsInstancesMaterializedViewsViewEnum = "VIEW_UNSPECIFIED" | "SCHEMA_VIEW" | "REPLICATION_VIEW" | "FULL";
+export const GetProjectsInstancesMaterializedViewsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsInstancesMaterializedViewsRequest {
   /** Required. The unique name of the requested materialized view. Values are of the form `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`. */
   name: string;
   /** Optional. Describes which of the materialized view's fields should be populated in the response. Defaults to SCHEMA_VIEW. */
-  view?: GetProjectsInstancesMaterializedViewsViewEnum;
+  view?: GetProjectsInstancesMaterializedViewsViewEnum | (string & {});
 }
-export const GetProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      view: S.optional(
-        GetProjectsInstancesMaterializedViewsViewEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstancesMaterializedViewsRequest",
-  }) as any as S.Schema<GetProjectsInstancesMaterializedViewsRequest>;
+export const GetProjectsInstancesMaterializedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetProjectsInstancesMaterializedViewsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesMaterializedViewsRequest" }) as any as S.Schema<GetProjectsInstancesMaterializedViewsRequest>;
 
-export type GetProjectsInstancesTablesViewEnum =
-  | "VIEW_UNSPECIFIED"
-  | "NAME_ONLY"
-  | "SCHEMA_VIEW"
-  | "REPLICATION_VIEW"
-  | "ENCRYPTION_VIEW"
-  | "STATS_VIEW"
-  | "FULL"
-  | (string & {});
+export type GetProjectsInstancesTablesViewEnum = "VIEW_UNSPECIFIED" | "NAME_ONLY" | "SCHEMA_VIEW" | "REPLICATION_VIEW" | "ENCRYPTION_VIEW" | "STATS_VIEW" | "FULL";
 export const GetProjectsInstancesTablesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsInstancesTablesRequest {
   /** Required. The unique name of the requested table. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
   name: string;
   /** The view to be applied to the returned table's fields. Defaults to `SCHEMA_VIEW` if unspecified. */
-  view?: GetProjectsInstancesTablesViewEnum;
+  view?: GetProjectsInstancesTablesViewEnum | (string & {});
 }
 export const GetProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    view: S.optional(GetProjectsInstancesTablesViewEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsInstancesTablesRequest",
-}) as any as S.Schema<GetProjectsInstancesTablesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetProjectsInstancesTablesViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesTablesRequest" }) as any as S.Schema<GetProjectsInstancesTablesRequest>;
 
-export type GetProjectsInstancesTablesAuthorizedViewsViewEnum =
-  | "RESPONSE_VIEW_UNSPECIFIED"
-  | "NAME_ONLY"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const GetProjectsInstancesTablesAuthorizedViewsViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsInstancesTablesAuthorizedViewsViewEnum = "RESPONSE_VIEW_UNSPECIFIED" | "NAME_ONLY" | "BASIC" | "FULL";
+export const GetProjectsInstancesTablesAuthorizedViewsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsInstancesTablesAuthorizedViewsRequest {
   /** Required. The unique name of the requested AuthorizedView. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`. */
   name: string;
   /** Optional. The resource_view to be applied to the returned AuthorizedView's fields. Default to BASIC. */
-  view?: GetProjectsInstancesTablesAuthorizedViewsViewEnum;
+  view?: GetProjectsInstancesTablesAuthorizedViewsViewEnum | (string & {});
 }
-export const GetProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      view: S.optional(
-        GetProjectsInstancesTablesAuthorizedViewsViewEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstancesTablesAuthorizedViewsRequest",
-  }) as any as S.Schema<GetProjectsInstancesTablesAuthorizedViewsRequest>;
+export const GetProjectsInstancesTablesAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetProjectsInstancesTablesAuthorizedViewsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesTablesAuthorizedViewsRequest" }) as any as S.Schema<GetProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export interface GetProjectsInstancesTablesSchemaBundlesRequest {
   /** Required. The unique name of the schema bundle to retrieve. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
   name: string;
 }
-export const GetProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsInstancesTablesSchemaBundlesRequest",
-  }) as any as S.Schema<GetProjectsInstancesTablesSchemaBundlesRequest>;
+export const GetProjectsInstancesTablesSchemaBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsInstancesTablesSchemaBundlesRequest" }) as any as S.Schema<GetProjectsInstancesTablesSchemaBundlesRequest>;
 
 export interface ListOperationsProjectsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -2787,29 +2118,18 @@ export interface ListOperationsProjectsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListOperationsProjectsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}/operations",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListOperationsProjectsOperationsRequest",
-}) as any as S.Schema<ListOperationsProjectsOperationsRequest>;
+export const ListOperationsProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/operations","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListOperationsProjectsOperationsRequest" }) as any as S.Schema<ListOperationsProjectsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2821,14 +2141,12 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    operations: S.optional(OperationList),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "operations": S.optional(OperationList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsInstancesRequest {
   /** Required. The unique name of the project for which a list of instances is requested. Values are of the form `projects/{project}`. */
@@ -2837,24 +2155,14 @@ export interface ListProjectsInstancesRequest {
   pageToken?: string;
 }
 export const ListProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/instances",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsInstancesRequest",
-}) as any as S.Schema<ListProjectsInstancesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/instances","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesRequest" }) as any as S.Schema<ListProjectsInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(
-  Instance,
-) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** Response message for BigtableInstanceAdmin.ListInstances. */
 export interface ListInstancesResponse {
@@ -2866,14 +2174,12 @@ export interface ListInstancesResponse {
   failedLocations?: StringList;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instances: S.optional(InstanceList),
-    nextPageToken: S.optional(S.String),
-    failedLocations: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListInstancesResponse",
-}) as any as S.Schema<ListInstancesResponse>;
+S.Struct({
+  "instances": S.optional(InstanceList),
+  "nextPageToken": S.optional(S.String),
+  "failedLocations": S.optional(StringList),
+}),
+).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsInstancesAppProfilesRequest {
   /** Required. The unique name of the instance for which a list of app profiles is requested. Values are of the form `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list AppProfiles for all Instances in a project, e.g., `projects/myproject/instances/-`. */
@@ -2883,27 +2189,16 @@ export interface ListProjectsInstancesAppProfilesRequest {
   /** The value of `next_page_token` returned by a previous call. */
   pageToken?: string;
 }
-export const ListProjectsInstancesAppProfilesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/appProfiles",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsInstancesAppProfilesRequest",
-}) as any as S.Schema<ListProjectsInstancesAppProfilesRequest>;
+export const ListProjectsInstancesAppProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/appProfiles","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesAppProfilesRequest" }) as any as S.Schema<ListProjectsInstancesAppProfilesRequest>;
 
 export type AppProfileList = ReadonlyArray<AppProfile>;
-export const AppProfileList = /*@__PURE__*/ S.Array(
-  AppProfile,
-) as any as S.Schema<AppProfileList>;
+export const AppProfileList = /*@__PURE__*/ S.Array(AppProfile) as any as S.Schema<AppProfileList>;
 
 /** Response message for BigtableInstanceAdmin.ListAppProfiles. */
 export interface ListAppProfilesResponse {
@@ -2915,14 +2210,12 @@ export interface ListAppProfilesResponse {
   failedLocations?: StringList;
 }
 export const ListAppProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    appProfiles: S.optional(AppProfileList),
-    failedLocations: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListAppProfilesResponse",
-}) as any as S.Schema<ListAppProfilesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "appProfiles": S.optional(AppProfileList),
+  "failedLocations": S.optional(StringList),
+}),
+).annotate({ identifier: "ListAppProfilesResponse" }) as any as S.Schema<ListAppProfilesResponse>;
 
 export interface ListProjectsInstancesClustersRequest {
   /** Required. The unique name of the instance for which a list of clusters is requested. Values are of the form `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list Clusters for all Instances in a project, e.g., `projects/myproject/instances/-`. */
@@ -2930,26 +2223,15 @@ export interface ListProjectsInstancesClustersRequest {
   /** DEPRECATED: This field is unused and ignored. */
   pageToken?: string;
 }
-export const ListProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/clusters",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsInstancesClustersRequest",
-}) as any as S.Schema<ListProjectsInstancesClustersRequest>;
+export const ListProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/clusters","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesClustersRequest" }) as any as S.Schema<ListProjectsInstancesClustersRequest>;
 
 export type ClusterList = ReadonlyArray<Cluster>;
-export const ClusterList = /*@__PURE__*/ S.Array(
-  Cluster,
-) as any as S.Schema<ClusterList>;
+export const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
 
 /** Response message for BigtableInstanceAdmin.ListClusters. */
 export interface ListClustersResponse {
@@ -2961,14 +2243,12 @@ export interface ListClustersResponse {
   failedLocations?: StringList;
 }
 export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    clusters: S.optional(ClusterList),
-    failedLocations: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListClustersResponse",
-}) as any as S.Schema<ListClustersResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "clusters": S.optional(ClusterList),
+  "failedLocations": S.optional(StringList),
+}),
+).annotate({ identifier: "ListClustersResponse" }) as any as S.Schema<ListClustersResponse>;
 
 export interface ListProjectsInstancesClustersBackupsRequest {
   /** Required. The cluster to list backups from. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list backups for all clusters in an instance, e.g., `projects/{project}/instances/{instance}/clusters/-`. */
@@ -2982,29 +2262,18 @@ export interface ListProjectsInstancesClustersBackupsRequest {
   /** A filter expression that filters backups listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be <, >, <=, >=, !=, =, or :. Colon ':' represents a HAS operator which is roughly synonymous with equality. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `source_table` * `state` * `start_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `end_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `size_bytes` To filter on multiple expressions, provide each separate expression within parentheses. By default, each expression is an AND expression. However, you can include AND, OR, and NOT expressions explicitly. Some examples of using filters are: * `name:"exact"` --> The backup's name is the string "exact". * `name:howl` --> The backup's name contains the string "howl". * `source_table:prod` --> The source_table's name contains the string "prod". * `state:CREATING` --> The backup is pending creation. * `state:READY` --> The backup is fully created and ready for use. * `(name:howl) AND (start_time < \"2018-03-28T14:50:00Z\")` --> The backup name contains the string "howl" and start_time of the backup is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` --> The backup's size is greater than 10GB */
   filter?: string;
 }
-export const ListProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/backups",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesClustersBackupsRequest",
-  }) as any as S.Schema<ListProjectsInstancesClustersBackupsRequest>;
+export const ListProjectsInstancesClustersBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/backups","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesClustersBackupsRequest" }) as any as S.Schema<ListProjectsInstancesClustersBackupsRequest>;
 
 export type BackupList = ReadonlyArray<Backup>;
-export const BackupList = /*@__PURE__*/ S.Array(
-  Backup,
-) as any as S.Schema<BackupList>;
+export const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
 
 /** The response for ListBackups. */
 export interface ListBackupsResponse {
@@ -3014,13 +2283,11 @@ export interface ListBackupsResponse {
   nextPageToken?: string;
 }
 export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backups: S.optional(BackupList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBackupsResponse",
-}) as any as S.Schema<ListBackupsResponse>;
+S.Struct({
+  "backups": S.optional(BackupList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBackupsResponse" }) as any as S.Schema<ListBackupsResponse>;
 
 export interface ListProjectsInstancesClustersHotTabletsRequest {
   /** The end time to list hot tablets. */
@@ -3034,24 +2301,15 @@ export interface ListProjectsInstancesClustersHotTabletsRequest {
   /** The value of `next_page_token` returned by a previous call. */
   pageToken?: string;
 }
-export const ListProjectsInstancesClustersHotTabletsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.optional(S.String.pipe(T.Query())),
-      startTime: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/hotTablets",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesClustersHotTabletsRequest",
-  }) as any as S.Schema<ListProjectsInstancesClustersHotTabletsRequest>;
+export const ListProjectsInstancesClustersHotTabletsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "endTime": S.optional(S.String.pipe(T.Query())),
+  "startTime": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/hotTablets","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesClustersHotTabletsRequest" }) as any as S.Schema<ListProjectsInstancesClustersHotTabletsRequest>;
 
 /** A tablet is a defined by a start and end key and is explained in https://cloud.google.com/bigtable/docs/overview#architecture and https://cloud.google.com/bigtable/docs/performance#optimization. A Hot tablet is a tablet that exhibits high average cpu usage during the time interval from start time to end time. */
 export interface HotTablet {
@@ -3071,21 +2329,19 @@ export interface HotTablet {
   startKey?: string;
 }
 export const HotTablet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endKey: S.optional(S.String),
-    name: S.optional(S.String),
-    startTime: S.optional(S.String),
-    tableName: S.optional(S.String),
-    nodeCpuUsagePercent: S.optional(S.Number),
-    endTime: S.optional(S.String),
-    startKey: S.optional(S.String),
-  }),
+S.Struct({
+  "endKey": S.optional(S.String),
+  "name": S.optional(S.String),
+  "startTime": S.optional(S.String),
+  "tableName": S.optional(S.String),
+  "nodeCpuUsagePercent": S.optional(S.Number),
+  "endTime": S.optional(S.String),
+  "startKey": S.optional(S.String),
+}),
 ).annotate({ identifier: "HotTablet" }) as any as S.Schema<HotTablet>;
 
 export type HotTabletList = ReadonlyArray<HotTablet>;
-export const HotTabletList = /*@__PURE__*/ S.Array(
-  HotTablet,
-) as any as S.Schema<HotTabletList>;
+export const HotTabletList = /*@__PURE__*/ S.Array(HotTablet) as any as S.Schema<HotTabletList>;
 
 /** Response message for BigtableInstanceAdmin.ListHotTablets. */
 export interface ListHotTabletsResponse {
@@ -3095,13 +2351,11 @@ export interface ListHotTabletsResponse {
   nextPageToken?: string;
 }
 export const ListHotTabletsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hotTablets: S.optional(HotTabletList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListHotTabletsResponse",
-}) as any as S.Schema<ListHotTabletsResponse>;
+S.Struct({
+  "hotTablets": S.optional(HotTabletList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListHotTabletsResponse" }) as any as S.Schema<ListHotTabletsResponse>;
 
 export interface ListProjectsInstancesClustersMemoryLayersRequest {
   /** Required. The unique name of the cluster for which a list of memory layers is requested. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list MemoryLayers for all Clusters in an instance, e.g., `projects/myproject/instances/myinstance/clusters/-`. */
@@ -3111,27 +2365,16 @@ export interface ListProjectsInstancesClustersMemoryLayersRequest {
   /** Optional. A page token, received from a previous `ListMemoryLayers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMemoryLayers` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsInstancesClustersMemoryLayersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/memoryLayers",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesClustersMemoryLayersRequest",
-  }) as any as S.Schema<ListProjectsInstancesClustersMemoryLayersRequest>;
+export const ListProjectsInstancesClustersMemoryLayersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/memoryLayers","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesClustersMemoryLayersRequest" }) as any as S.Schema<ListProjectsInstancesClustersMemoryLayersRequest>;
 
 export type MemoryLayerList = ReadonlyArray<MemoryLayer>;
-export const MemoryLayerList = /*@__PURE__*/ S.Array(
-  MemoryLayer,
-) as any as S.Schema<MemoryLayerList>;
+export const MemoryLayerList = /*@__PURE__*/ S.Array(MemoryLayer) as any as S.Schema<MemoryLayerList>;
 
 /** Response message for BigtableInstanceAdmin.ListMemoryLayers. */
 export interface ListMemoryLayersResponse {
@@ -3143,14 +2386,12 @@ export interface ListMemoryLayersResponse {
   failedLocations?: StringList;
 }
 export const ListMemoryLayersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    memoryLayers: S.optional(MemoryLayerList),
-    failedLocations: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListMemoryLayersResponse",
-}) as any as S.Schema<ListMemoryLayersResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "memoryLayers": S.optional(MemoryLayerList),
+  "failedLocations": S.optional(StringList),
+}),
+).annotate({ identifier: "ListMemoryLayersResponse" }) as any as S.Schema<ListMemoryLayersResponse>;
 
 export interface ListProjectsInstancesLogicalViewsRequest {
   /** Required. The unique name of the instance for which the list of logical views is requested. Values are of the form `projects/{project}/instances/{instance}`. */
@@ -3160,27 +2401,16 @@ export interface ListProjectsInstancesLogicalViewsRequest {
   /** Optional. A page token, received from a previous `ListLogicalViews` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLogicalViews` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/logicalViews",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsInstancesLogicalViewsRequest",
-}) as any as S.Schema<ListProjectsInstancesLogicalViewsRequest>;
+export const ListProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/logicalViews","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesLogicalViewsRequest" }) as any as S.Schema<ListProjectsInstancesLogicalViewsRequest>;
 
 export type LogicalViewList = ReadonlyArray<LogicalView>;
-export const LogicalViewList = /*@__PURE__*/ S.Array(
-  LogicalView,
-) as any as S.Schema<LogicalViewList>;
+export const LogicalViewList = /*@__PURE__*/ S.Array(LogicalView) as any as S.Schema<LogicalViewList>;
 
 /** Response message for BigtableInstanceAdmin.ListLogicalViews. */
 export interface ListLogicalViewsResponse {
@@ -3190,22 +2420,14 @@ export interface ListLogicalViewsResponse {
   logicalViews?: LogicalViewList;
 }
 export const ListLogicalViewsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    logicalViews: S.optional(LogicalViewList),
-  }),
-).annotate({
-  identifier: "ListLogicalViewsResponse",
-}) as any as S.Schema<ListLogicalViewsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "logicalViews": S.optional(LogicalViewList),
+}),
+).annotate({ identifier: "ListLogicalViewsResponse" }) as any as S.Schema<ListLogicalViewsResponse>;
 
-export type ListProjectsInstancesMaterializedViewsViewEnum =
-  | "VIEW_UNSPECIFIED"
-  | "SCHEMA_VIEW"
-  | "REPLICATION_VIEW"
-  | "FULL"
-  | (string & {});
-export const ListProjectsInstancesMaterializedViewsViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsInstancesMaterializedViewsViewEnum = "VIEW_UNSPECIFIED" | "SCHEMA_VIEW" | "REPLICATION_VIEW" | "FULL";
+export const ListProjectsInstancesMaterializedViewsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsInstancesMaterializedViewsRequest {
   /** Required. The unique name of the instance for which the list of materialized views is requested. Values are of the form `projects/{project}/instances/{instance}`. */
@@ -3215,32 +2437,19 @@ export interface ListProjectsInstancesMaterializedViewsRequest {
   /** Optional. A page token, received from a previous `ListMaterializedViews` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMaterializedViews` must match the call that provided the page token. */
   pageToken?: string;
   /** Optional. Describes which of the materialized view's fields should be populated in the response. For now, only the default value SCHEMA_VIEW is supported. */
-  view?: ListProjectsInstancesMaterializedViewsViewEnum;
+  view?: ListProjectsInstancesMaterializedViewsViewEnum | (string & {});
 }
-export const ListProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      view: S.optional(
-        ListProjectsInstancesMaterializedViewsViewEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/materializedViews",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesMaterializedViewsRequest",
-  }) as any as S.Schema<ListProjectsInstancesMaterializedViewsRequest>;
+export const ListProjectsInstancesMaterializedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "view": S.optional(ListProjectsInstancesMaterializedViewsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/materializedViews","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesMaterializedViewsRequest" }) as any as S.Schema<ListProjectsInstancesMaterializedViewsRequest>;
 
 export type MaterializedViewList = ReadonlyArray<MaterializedView>;
-export const MaterializedViewList = /*@__PURE__*/ S.Array(
-  MaterializedView,
-) as any as S.Schema<MaterializedViewList>;
+export const MaterializedViewList = /*@__PURE__*/ S.Array(MaterializedView) as any as S.Schema<MaterializedViewList>;
 
 /** Response message for BigtableInstanceAdmin.ListMaterializedViews. */
 export interface ListMaterializedViewsResponse {
@@ -3250,28 +2459,18 @@ export interface ListMaterializedViewsResponse {
   nextPageToken?: string;
 }
 export const ListMaterializedViewsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    materializedViews: S.optional(MaterializedViewList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListMaterializedViewsResponse",
-}) as any as S.Schema<ListMaterializedViewsResponse>;
+S.Struct({
+  "materializedViews": S.optional(MaterializedViewList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListMaterializedViewsResponse" }) as any as S.Schema<ListMaterializedViewsResponse>;
 
-export type ListProjectsInstancesTablesViewEnum =
-  | "VIEW_UNSPECIFIED"
-  | "NAME_ONLY"
-  | "SCHEMA_VIEW"
-  | "REPLICATION_VIEW"
-  | "ENCRYPTION_VIEW"
-  | "STATS_VIEW"
-  | "FULL"
-  | (string & {});
+export type ListProjectsInstancesTablesViewEnum = "VIEW_UNSPECIFIED" | "NAME_ONLY" | "SCHEMA_VIEW" | "REPLICATION_VIEW" | "ENCRYPTION_VIEW" | "STATS_VIEW" | "FULL";
 export const ListProjectsInstancesTablesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsInstancesTablesRequest {
   /** The view to be applied to the returned tables' fields. Only NAME_ONLY view (default), REPLICATION_VIEW and ENCRYPTION_VIEW are supported. */
-  view?: ListProjectsInstancesTablesViewEnum;
+  view?: ListProjectsInstancesTablesViewEnum | (string & {});
   /** Required. The unique name of the instance for which tables should be listed. Values are of the form `projects/{project}/instances/{instance}`. */
   parent: string;
   /** Maximum number of results per page. A page_size of zero lets the server choose the number of items to return. A page_size which is strictly positive will return at most that many items. A negative page_size will cause an error. Following the first request, subsequent paginated calls are not required to pass a page_size. If a page_size is set in subsequent calls, it must match the page_size given in the first request. */
@@ -3280,26 +2479,16 @@ export interface ListProjectsInstancesTablesRequest {
   pageToken?: string;
 }
 export const ListProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    view: S.optional(ListProjectsInstancesTablesViewEnum.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/tables",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsInstancesTablesRequest",
-}) as any as S.Schema<ListProjectsInstancesTablesRequest>;
+S.Struct({
+  "view": S.optional(ListProjectsInstancesTablesViewEnum.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/tables","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesTablesRequest" }) as any as S.Schema<ListProjectsInstancesTablesRequest>;
 
 export type TableList = ReadonlyArray<Table>;
-export const TableList = /*@__PURE__*/ S.Array(
-  Table,
-) as any as S.Schema<TableList>;
+export const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
 
 /** Response message for google.bigtable.admin.v2.BigtableTableAdmin.ListTables */
 export interface ListTablesResponse {
@@ -3309,26 +2498,18 @@ export interface ListTablesResponse {
   nextPageToken?: string;
 }
 export const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tables: S.optional(TableList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListTablesResponse",
-}) as any as S.Schema<ListTablesResponse>;
+S.Struct({
+  "tables": S.optional(TableList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListTablesResponse" }) as any as S.Schema<ListTablesResponse>;
 
-export type ListProjectsInstancesTablesAuthorizedViewsViewEnum =
-  | "RESPONSE_VIEW_UNSPECIFIED"
-  | "NAME_ONLY"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const ListProjectsInstancesTablesAuthorizedViewsViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsInstancesTablesAuthorizedViewsViewEnum = "RESPONSE_VIEW_UNSPECIFIED" | "NAME_ONLY" | "BASIC" | "FULL";
+export const ListProjectsInstancesTablesAuthorizedViewsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsInstancesTablesAuthorizedViewsRequest {
   /** Optional. The resource_view to be applied to the returned AuthorizedViews' fields. Default to NAME_ONLY. */
-  view?: ListProjectsInstancesTablesAuthorizedViewsViewEnum;
+  view?: ListProjectsInstancesTablesAuthorizedViewsViewEnum | (string & {});
   /** Required. The unique name of the table for which AuthorizedViews should be listed. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
   parent: string;
   /** Optional. Maximum number of results per page. A page_size of zero lets the server choose the number of items to return. A page_size which is strictly positive will return at most that many items. A negative page_size will cause an error. Following the first request, subsequent paginated calls are not required to pass a page_size. If a page_size is set in subsequent calls, it must match the page_size given in the first request. */
@@ -3336,30 +2517,17 @@ export interface ListProjectsInstancesTablesAuthorizedViewsRequest {
   /** Optional. The value of `next_page_token` returned by a previous call. */
   pageToken?: string;
 }
-export const ListProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        ListProjectsInstancesTablesAuthorizedViewsViewEnum.pipe(T.Query()),
-      ),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/authorizedViews",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesTablesAuthorizedViewsRequest",
-  }) as any as S.Schema<ListProjectsInstancesTablesAuthorizedViewsRequest>;
+export const ListProjectsInstancesTablesAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(ListProjectsInstancesTablesAuthorizedViewsViewEnum.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/authorizedViews","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesTablesAuthorizedViewsRequest" }) as any as S.Schema<ListProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type AuthorizedViewList = ReadonlyArray<AuthorizedView>;
-export const AuthorizedViewList = /*@__PURE__*/ S.Array(
-  AuthorizedView,
-) as any as S.Schema<AuthorizedViewList>;
+export const AuthorizedViewList = /*@__PURE__*/ S.Array(AuthorizedView) as any as S.Schema<AuthorizedViewList>;
 
 /** Response message for google.bigtable.admin.v2.BigtableTableAdmin.ListAuthorizedViews */
 export interface ListAuthorizedViewsResponse {
@@ -3369,22 +2537,14 @@ export interface ListAuthorizedViewsResponse {
   nextPageToken?: string;
 }
 export const ListAuthorizedViewsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorizedViews: S.optional(AuthorizedViewList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAuthorizedViewsResponse",
-}) as any as S.Schema<ListAuthorizedViewsResponse>;
+S.Struct({
+  "authorizedViews": S.optional(AuthorizedViewList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAuthorizedViewsResponse" }) as any as S.Schema<ListAuthorizedViewsResponse>;
 
-export type ListProjectsInstancesTablesSchemaBundlesViewEnum =
-  | "SCHEMA_BUNDLE_VIEW_UNSPECIFIED"
-  | "NAME_ONLY"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const ListProjectsInstancesTablesSchemaBundlesViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsInstancesTablesSchemaBundlesViewEnum = "SCHEMA_BUNDLE_VIEW_UNSPECIFIED" | "NAME_ONLY" | "BASIC" | "FULL";
+export const ListProjectsInstancesTablesSchemaBundlesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsInstancesTablesSchemaBundlesRequest {
   /** Required. The parent, which owns this collection of schema bundles. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
@@ -3394,32 +2554,19 @@ export interface ListProjectsInstancesTablesSchemaBundlesRequest {
   /** A page token, received from a previous `ListSchemaBundles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSchemaBundles` must match the call that provided the page token. */
   pageToken?: string;
   /** Optional. The resource_view to be applied to the returned SchemaBundles' fields. Defaults to NAME_ONLY. */
-  view?: ListProjectsInstancesTablesSchemaBundlesViewEnum;
+  view?: ListProjectsInstancesTablesSchemaBundlesViewEnum | (string & {});
 }
-export const ListProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      view: S.optional(
-        ListProjectsInstancesTablesSchemaBundlesViewEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/schemaBundles",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsInstancesTablesSchemaBundlesRequest",
-  }) as any as S.Schema<ListProjectsInstancesTablesSchemaBundlesRequest>;
+export const ListProjectsInstancesTablesSchemaBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "view": S.optional(ListProjectsInstancesTablesSchemaBundlesViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/schemaBundles","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsInstancesTablesSchemaBundlesRequest" }) as any as S.Schema<ListProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type SchemaBundleList = ReadonlyArray<SchemaBundle>;
-export const SchemaBundleList = /*@__PURE__*/ S.Array(
-  SchemaBundle,
-) as any as S.Schema<SchemaBundleList>;
+export const SchemaBundleList = /*@__PURE__*/ S.Array(SchemaBundle) as any as S.Schema<SchemaBundleList>;
 
 /** The response for ListSchemaBundles. */
 export interface ListSchemaBundlesResponse {
@@ -3429,13 +2576,11 @@ export interface ListSchemaBundlesResponse {
   nextPageToken?: string;
 }
 export const ListSchemaBundlesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaBundles: S.optional(SchemaBundleList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSchemaBundlesResponse",
-}) as any as S.Schema<ListSchemaBundlesResponse>;
+S.Struct({
+  "schemaBundles": S.optional(SchemaBundleList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListSchemaBundlesResponse" }) as any as S.Schema<ListSchemaBundlesResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -3450,22 +2595,14 @@ export interface ListProjectsLocationsRequest {
   filter?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}/locations",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/locations","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -3481,19 +2618,17 @@ export interface Location {
   metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    locationId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "locationId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -3503,13 +2638,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 /** A create, update, or delete of a particular column family. */
 export interface Modification {
@@ -3525,19 +2658,17 @@ export interface Modification {
   updateMask?: string;
 }
 export const Modification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    update: S.optional(ColumnFamily),
-    id: S.optional(S.String),
-    create: S.optional(ColumnFamily),
-    drop: S.optional(S.Boolean),
-    updateMask: S.optional(S.String),
-  }),
+S.Struct({
+  "update": S.optional(ColumnFamily),
+  "id": S.optional(S.String),
+  "create": S.optional(ColumnFamily),
+  "drop": S.optional(S.Boolean),
+  "updateMask": S.optional(S.String),
+}),
 ).annotate({ identifier: "Modification" }) as any as S.Schema<Modification>;
 
 export type ModificationList = ReadonlyArray<Modification>;
-export const ModificationList = /*@__PURE__*/ S.Array(
-  Modification,
-) as any as S.Schema<ModificationList>;
+export const ModificationList = /*@__PURE__*/ S.Array(Modification) as any as S.Schema<ModificationList>;
 
 /** Request message for google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies */
 export interface ModifyColumnFamiliesRequest {
@@ -3547,13 +2678,11 @@ export interface ModifyColumnFamiliesRequest {
   ignoreWarnings?: boolean;
 }
 export const ModifyColumnFamiliesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modifications: S.optional(ModificationList),
-    ignoreWarnings: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ModifyColumnFamiliesRequest",
-}) as any as S.Schema<ModifyColumnFamiliesRequest>;
+S.Struct({
+  "modifications": S.optional(ModificationList),
+  "ignoreWarnings": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ModifyColumnFamiliesRequest" }) as any as S.Schema<ModifyColumnFamiliesRequest>;
 
 export interface ModifyColumnFamiliesProjectsInstancesTablesRequest {
   /** Required. The unique name of the table whose families should be modified. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
@@ -3561,21 +2690,12 @@ export interface ModifyColumnFamiliesProjectsInstancesTablesRequest {
   /** Request body */
   body?: ModifyColumnFamiliesRequest;
 }
-export const ModifyColumnFamiliesProjectsInstancesTablesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ModifyColumnFamiliesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:modifyColumnFamilies",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ModifyColumnFamiliesProjectsInstancesTablesRequest",
-  }) as any as S.Schema<ModifyColumnFamiliesProjectsInstancesTablesRequest>;
+export const ModifyColumnFamiliesProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ModifyColumnFamiliesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:modifyColumnFamilies","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "ModifyColumnFamiliesProjectsInstancesTablesRequest" }) as any as S.Schema<ModifyColumnFamiliesProjectsInstancesTablesRequest>;
 
 export interface PartialUpdateClusterProjectsInstancesClustersRequest {
   /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
@@ -3585,22 +2705,13 @@ export interface PartialUpdateClusterProjectsInstancesClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const PartialUpdateClusterProjectsInstancesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Cluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PartialUpdateClusterProjectsInstancesClustersRequest",
-  }) as any as S.Schema<PartialUpdateClusterProjectsInstancesClustersRequest>;
+export const PartialUpdateClusterProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Cluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "PartialUpdateClusterProjectsInstancesClustersRequest" }) as any as S.Schema<PartialUpdateClusterProjectsInstancesClustersRequest>;
 
 export interface PartialUpdateInstanceProjectsInstancesRequest {
   /** Required. The subset of Instance fields which should be replaced. Must be explicitly set. */
@@ -3610,22 +2721,13 @@ export interface PartialUpdateInstanceProjectsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PartialUpdateInstanceProjectsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Instance.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PartialUpdateInstanceProjectsInstancesRequest",
-  }) as any as S.Schema<PartialUpdateInstanceProjectsInstancesRequest>;
+export const PartialUpdateInstanceProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Instance.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "PartialUpdateInstanceProjectsInstancesRequest" }) as any as S.Schema<PartialUpdateInstanceProjectsInstancesRequest>;
 
 export interface PatchProjectsInstancesAppProfilesRequest {
   /** If true, ignore safety checks when updating the app profile. */
@@ -3637,23 +2739,14 @@ export interface PatchProjectsInstancesAppProfilesRequest {
   /** Request body */
   body?: AppProfile;
 }
-export const PatchProjectsInstancesAppProfilesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ignoreWarnings: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(AppProfile.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsInstancesAppProfilesRequest",
-}) as any as S.Schema<PatchProjectsInstancesAppProfilesRequest>;
+export const PatchProjectsInstancesAppProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ignoreWarnings": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(AppProfile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesAppProfilesRequest" }) as any as S.Schema<PatchProjectsInstancesAppProfilesRequest>;
 
 export interface PatchProjectsInstancesClustersBackupsRequest {
   /** A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
@@ -3663,22 +2756,13 @@ export interface PatchProjectsInstancesClustersBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const PatchProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Backup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsInstancesClustersBackupsRequest",
-  }) as any as S.Schema<PatchProjectsInstancesClustersBackupsRequest>;
+export const PatchProjectsInstancesClustersBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Backup.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesClustersBackupsRequest" }) as any as S.Schema<PatchProjectsInstancesClustersBackupsRequest>;
 
 export interface PatchProjectsInstancesLogicalViewsRequest {
   /** Optional. The list of fields to update. */
@@ -3688,22 +2772,13 @@ export interface PatchProjectsInstancesLogicalViewsRequest {
   /** Request body */
   body?: LogicalView;
 }
-export const PatchProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(LogicalView.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsInstancesLogicalViewsRequest",
-  }) as any as S.Schema<PatchProjectsInstancesLogicalViewsRequest>;
+export const PatchProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(LogicalView.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesLogicalViewsRequest" }) as any as S.Schema<PatchProjectsInstancesLogicalViewsRequest>;
 
 export interface PatchProjectsInstancesMaterializedViewsRequest {
   /** Identifier. The unique name of the materialized view. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. */
@@ -3713,22 +2788,13 @@ export interface PatchProjectsInstancesMaterializedViewsRequest {
   /** Request body */
   body?: MaterializedView;
 }
-export const PatchProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(MaterializedView.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsInstancesMaterializedViewsRequest",
-  }) as any as S.Schema<PatchProjectsInstancesMaterializedViewsRequest>;
+export const PatchProjectsInstancesMaterializedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(MaterializedView.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesMaterializedViewsRequest" }) as any as S.Schema<PatchProjectsInstancesMaterializedViewsRequest>;
 
 export interface PatchProjectsInstancesTablesRequest {
   /** Required. The list of fields to update. A mask specifying which fields (e.g. `change_stream_config`) in the `table` field should be updated. This mask is relative to the `table` field, not to the request message. The wildcard (*) path is currently not supported. Currently UpdateTable is only supported for the following fields: * `change_stream_config` * `change_stream_config.retention_period` * `deletion_protection` * `automated_backup_policy` * `automated_backup_policy.retention_period` * `automated_backup_policy.frequency` * `automated_backup_policy.locations` * `row_key_schema` If `column_families` is set in `update_mask`, it will return an UNIMPLEMENTED error. */
@@ -3741,21 +2807,13 @@ export interface PatchProjectsInstancesTablesRequest {
   body?: Table;
 }
 export const PatchProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    ignoreWarnings: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(Table.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v2/{+name}",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsInstancesTablesRequest",
-}) as any as S.Schema<PatchProjectsInstancesTablesRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "ignoreWarnings": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Table.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesTablesRequest" }) as any as S.Schema<PatchProjectsInstancesTablesRequest>;
 
 export interface PatchProjectsInstancesTablesAuthorizedViewsRequest {
   /** Optional. If true, ignore the safety checks when updating the AuthorizedView. */
@@ -3767,23 +2825,14 @@ export interface PatchProjectsInstancesTablesAuthorizedViewsRequest {
   /** Request body */
   body?: AuthorizedView;
 }
-export const PatchProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ignoreWarnings: S.optional(S.Boolean.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AuthorizedView.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsInstancesTablesAuthorizedViewsRequest",
-  }) as any as S.Schema<PatchProjectsInstancesTablesAuthorizedViewsRequest>;
+export const PatchProjectsInstancesTablesAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "ignoreWarnings": S.optional(S.Boolean.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(AuthorizedView.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesTablesAuthorizedViewsRequest" }) as any as S.Schema<PatchProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export interface PatchProjectsInstancesTablesSchemaBundlesRequest {
   /** Optional. The list of fields to update. */
@@ -3795,23 +2844,14 @@ export interface PatchProjectsInstancesTablesSchemaBundlesRequest {
   /** Request body */
   body?: SchemaBundle;
 }
-export const PatchProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      ignoreWarnings: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(SchemaBundle.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsInstancesTablesSchemaBundlesRequest",
-  }) as any as S.Schema<PatchProjectsInstancesTablesSchemaBundlesRequest>;
+export const PatchProjectsInstancesTablesSchemaBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "ignoreWarnings": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(SchemaBundle.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsInstancesTablesSchemaBundlesRequest" }) as any as S.Schema<PatchProjectsInstancesTablesSchemaBundlesRequest>;
 
 /** The request for RestoreTable. */
 export interface RestoreTableRequest {
@@ -3821,13 +2861,11 @@ export interface RestoreTableRequest {
   backup?: string;
 }
 export const RestoreTableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableId: S.optional(S.String),
-    backup: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestoreTableRequest",
-}) as any as S.Schema<RestoreTableRequest>;
+S.Struct({
+  "tableId": S.optional(S.String),
+  "backup": S.optional(S.String),
+}),
+).annotate({ identifier: "RestoreTableRequest" }) as any as S.Schema<RestoreTableRequest>;
 
 export interface RestoreProjectsInstancesTablesRequest {
   /** Required. The name of the instance in which to create the restored table. Values are of the form `projects//instances/`. */
@@ -3835,21 +2873,12 @@ export interface RestoreProjectsInstancesTablesRequest {
   /** Request body */
   body?: RestoreTableRequest;
 }
-export const RestoreProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(RestoreTableRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/tables:restore",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "RestoreProjectsInstancesTablesRequest",
-}) as any as S.Schema<RestoreProjectsInstancesTablesRequest>;
+export const RestoreProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(RestoreTableRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/tables:restore","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "RestoreProjectsInstancesTablesRequest" }) as any as S.Schema<RestoreProjectsInstancesTablesRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -3859,13 +2888,11 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3873,21 +2900,12 @@ export interface SetIamPolicyProjectsInstancesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:setIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SetIamPolicyProjectsInstancesRequest",
-}) as any as S.Schema<SetIamPolicyProjectsInstancesRequest>;
+export const SetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:setIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesRequest>;
 
 export interface SetIamPolicyProjectsInstancesClustersBackupsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3895,21 +2913,12 @@ export interface SetIamPolicyProjectsInstancesClustersBackupsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:setIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsInstancesClustersBackupsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsInstancesClustersBackupsRequest>;
+export const SetIamPolicyProjectsInstancesClustersBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:setIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesClustersBackupsRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesClustersBackupsRequest>;
 
 export interface SetIamPolicyProjectsInstancesLogicalViewsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3917,21 +2926,12 @@ export interface SetIamPolicyProjectsInstancesLogicalViewsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:setIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsInstancesLogicalViewsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsInstancesLogicalViewsRequest>;
+export const SetIamPolicyProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:setIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesLogicalViewsRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesLogicalViewsRequest>;
 
 export interface SetIamPolicyProjectsInstancesMaterializedViewsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3939,21 +2939,12 @@ export interface SetIamPolicyProjectsInstancesMaterializedViewsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:setIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsInstancesMaterializedViewsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsInstancesMaterializedViewsRequest>;
+export const SetIamPolicyProjectsInstancesMaterializedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:setIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesMaterializedViewsRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesMaterializedViewsRequest>;
 
 export interface SetIamPolicyProjectsInstancesTablesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3961,21 +2952,12 @@ export interface SetIamPolicyProjectsInstancesTablesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesTablesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:setIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsInstancesTablesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsInstancesTablesRequest>;
+export const SetIamPolicyProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:setIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesTablesRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesTablesRequest>;
 
 export interface SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3983,21 +2965,12 @@ export interface SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:setIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
+export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:setIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export interface SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4005,21 +2978,12 @@ export interface SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:setIamPolicy",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
+export const SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:setIamPolicy","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest" }) as any as S.Schema<SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -4027,12 +2991,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsInstancesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4040,21 +3002,12 @@ export interface TestIamPermissionsProjectsInstancesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:testIamPermissions",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesRequest>;
+export const TestIamPermissionsProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:testIamPermissions","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -4062,12 +3015,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsInstancesClustersBackupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4075,21 +3026,12 @@ export interface TestIamPermissionsProjectsInstancesClustersBackupsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:testIamPermissions",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesClustersBackupsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesClustersBackupsRequest>;
+export const TestIamPermissionsProjectsInstancesClustersBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:testIamPermissions","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesClustersBackupsRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesClustersBackupsRequest>;
 
 export interface TestIamPermissionsProjectsInstancesLogicalViewsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4097,21 +3039,12 @@ export interface TestIamPermissionsProjectsInstancesLogicalViewsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:testIamPermissions",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesLogicalViewsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesLogicalViewsRequest>;
+export const TestIamPermissionsProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:testIamPermissions","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesLogicalViewsRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesLogicalViewsRequest>;
 
 export interface TestIamPermissionsProjectsInstancesMaterializedViewsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4119,21 +3052,12 @@ export interface TestIamPermissionsProjectsInstancesMaterializedViewsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:testIamPermissions",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesMaterializedViewsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesMaterializedViewsRequest>;
+export const TestIamPermissionsProjectsInstancesMaterializedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:testIamPermissions","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesMaterializedViewsRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesMaterializedViewsRequest>;
 
 export interface TestIamPermissionsProjectsInstancesTablesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4141,21 +3065,12 @@ export interface TestIamPermissionsProjectsInstancesTablesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesTablesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:testIamPermissions",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesTablesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesTablesRequest>;
+export const TestIamPermissionsProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:testIamPermissions","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesTablesRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesTablesRequest>;
 
 export interface TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4163,22 +3078,12 @@ export interface TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:testIamPermissions",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest>;
+export const TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:testIamPermissions","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export interface TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4186,29 +3091,18 @@ export interface TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:testIamPermissions",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest>;
+export const TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:testIamPermissions","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest" }) as any as S.Schema<TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest>;
 
 /** Request message for google.bigtable.admin.v2.BigtableTableAdmin.UndeleteTable */
 export interface UndeleteTableRequest {}
 export const UndeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UndeleteTableRequest",
-}) as any as S.Schema<UndeleteTableRequest>;
+S.Struct({}),
+).annotate({ identifier: "UndeleteTableRequest" }) as any as S.Schema<UndeleteTableRequest>;
 
 export interface UndeleteProjectsInstancesTablesRequest {
   /** Required. The unique name of the table to be restored. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
@@ -4216,21 +3110,12 @@ export interface UndeleteProjectsInstancesTablesRequest {
   /** Request body */
   body?: UndeleteTableRequest;
 }
-export const UndeleteProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UndeleteTableRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:undelete",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UndeleteProjectsInstancesTablesRequest",
-}) as any as S.Schema<UndeleteProjectsInstancesTablesRequest>;
+export const UndeleteProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UndeleteTableRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:undelete","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "UndeleteProjectsInstancesTablesRequest" }) as any as S.Schema<UndeleteProjectsInstancesTablesRequest>;
 
 export interface UpdateProjectsInstancesRequest {
   /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
@@ -4239,19 +3124,11 @@ export interface UpdateProjectsInstancesRequest {
   body?: Instance;
 }
 export const UpdateProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(Instance.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v2/{+name}",
-      baseUrl: "https://bigtableadmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateProjectsInstancesRequest",
-}) as any as S.Schema<UpdateProjectsInstancesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Instance.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsInstancesRequest" }) as any as S.Schema<UpdateProjectsInstancesRequest>;
 
 export interface UpdateProjectsInstancesClustersRequest {
   /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
@@ -4259,28 +3136,14 @@ export interface UpdateProjectsInstancesClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const UpdateProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Cluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateProjectsInstancesClustersRequest",
-}) as any as S.Schema<UpdateProjectsInstancesClustersRequest>;
+export const UpdateProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Cluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v2/{+name}","baseUrl":"https://bigtableadmin.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsInstancesClustersRequest" }) as any as S.Schema<UpdateProjectsInstancesClustersRequest>;
 
-export type CheckConsistencyProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CheckConsistencyProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Checks replication consistency based on a consistency token, that is, if replication has caught up based on the conditions specified in the token and the check request. */
 export const checkConsistencyProjectsInstancesTables: API.OperationMethod<
   CheckConsistencyProjectsInstancesTablesRequest,
@@ -4295,12 +3158,7 @@ export const checkConsistencyProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CopyProjectsInstancesClustersBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CopyProjectsInstancesClustersBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Copy a Cloud Bigtable backup to a new backup in the destination cluster located in the destination instance and project. */
 export const copyProjectsInstancesClustersBackups: API.OperationMethod<
   CopyProjectsInstancesClustersBackupsRequest,
@@ -4315,12 +3173,7 @@ export const copyProjectsInstancesClustersBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create an instance within a project. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled. */
 export const createProjectsInstances: API.OperationMethod<
   CreateProjectsInstancesRequest,
@@ -4335,12 +3188,7 @@ export const createProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesAppProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesAppProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an app profile within an instance. */
 export const createProjectsInstancesAppProfiles: API.OperationMethod<
   CreateProjectsInstancesAppProfilesRequest,
@@ -4355,12 +3203,7 @@ export const createProjectsInstancesAppProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled. */
 export const createProjectsInstancesClusters: API.OperationMethod<
   CreateProjectsInstancesClustersRequest,
@@ -4375,12 +3218,7 @@ export const createProjectsInstancesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesClustersBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesClustersBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. */
 export const createProjectsInstancesClustersBackups: API.OperationMethod<
   CreateProjectsInstancesClustersBackupsRequest,
@@ -4395,12 +3233,7 @@ export const createProjectsInstancesClustersBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesLogicalViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesLogicalViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a logical view within an instance. */
 export const createProjectsInstancesLogicalViews: API.OperationMethod<
   CreateProjectsInstancesLogicalViewsRequest,
@@ -4415,12 +3248,7 @@ export const createProjectsInstancesLogicalViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesMaterializedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesMaterializedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a materialized view within an instance. */
 export const createProjectsInstancesMaterializedViews: API.OperationMethod<
   CreateProjectsInstancesMaterializedViewsRequest,
@@ -4435,12 +3263,7 @@ export const createProjectsInstancesMaterializedViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new table in the specified instance. The table can be created with a full set of initial column families, specified in the request. */
 export const createProjectsInstancesTables: API.OperationMethod<
   CreateProjectsInstancesTablesRequest,
@@ -4455,12 +3278,7 @@ export const createProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesTablesAuthorizedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesTablesAuthorizedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new AuthorizedView in a table. */
 export const createProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   CreateProjectsInstancesTablesAuthorizedViewsRequest,
@@ -4475,12 +3293,7 @@ export const createProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsInstancesTablesSchemaBundlesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsInstancesTablesSchemaBundlesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new schema bundle in the specified table. */
 export const createProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   CreateProjectsInstancesTablesSchemaBundlesRequest,
@@ -4495,12 +3308,7 @@ export const createProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete an instance from a project. */
 export const deleteProjectsInstances: API.OperationMethod<
   DeleteProjectsInstancesRequest,
@@ -4515,12 +3323,7 @@ export const deleteProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesAppProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesAppProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an app profile from an instance. */
 export const deleteProjectsInstancesAppProfiles: API.OperationMethod<
   DeleteProjectsInstancesAppProfilesRequest,
@@ -4535,12 +3338,7 @@ export const deleteProjectsInstancesAppProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a cluster from an instance. */
 export const deleteProjectsInstancesClusters: API.OperationMethod<
   DeleteProjectsInstancesClustersRequest,
@@ -4555,12 +3353,7 @@ export const deleteProjectsInstancesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesClustersBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesClustersBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a pending or completed Cloud Bigtable backup. */
 export const deleteProjectsInstancesClustersBackups: API.OperationMethod<
   DeleteProjectsInstancesClustersBackupsRequest,
@@ -4575,12 +3368,7 @@ export const deleteProjectsInstancesClustersBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesLogicalViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesLogicalViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a logical view from an instance. */
 export const deleteProjectsInstancesLogicalViews: API.OperationMethod<
   DeleteProjectsInstancesLogicalViewsRequest,
@@ -4595,12 +3383,7 @@ export const deleteProjectsInstancesLogicalViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesMaterializedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesMaterializedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a materialized view from an instance. */
 export const deleteProjectsInstancesMaterializedViews: API.OperationMethod<
   DeleteProjectsInstancesMaterializedViewsRequest,
@@ -4615,12 +3398,7 @@ export const deleteProjectsInstancesMaterializedViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Permanently deletes a specified table and all of its data. */
 export const deleteProjectsInstancesTables: API.OperationMethod<
   DeleteProjectsInstancesTablesRequest,
@@ -4635,12 +3413,7 @@ export const deleteProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesTablesAuthorizedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesTablesAuthorizedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Permanently deletes a specified AuthorizedView. */
 export const deleteProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   DeleteProjectsInstancesTablesAuthorizedViewsRequest,
@@ -4655,12 +3428,7 @@ export const deleteProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsInstancesTablesSchemaBundlesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsInstancesTablesSchemaBundlesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a schema bundle in the specified table. */
 export const deleteProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   DeleteProjectsInstancesTablesSchemaBundlesRequest,
@@ -4675,12 +3443,7 @@ export const deleteProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DropRowRangeProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DropRowRangeProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Permanently drop/delete a row range from a specified table. The request can specify whether to delete all rows in a table, or only those that match a particular prefix. Note that row key prefixes used here are treated as service data. For more information about how service data is handled, see the [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). */
 export const dropRowRangeProjectsInstancesTables: API.OperationMethod<
   DropRowRangeProjectsInstancesTablesRequest,
@@ -4695,12 +3458,7 @@ export const dropRowRangeProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateConsistencyTokenProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GenerateConsistencyTokenProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Generates a consistency token for a Table, which can be used in CheckConsistency to check whether mutations to the table that finished before this call started have been replicated. The tokens will be available for 90 days. */
 export const generateConsistencyTokenProjectsInstancesTables: API.OperationMethod<
   GenerateConsistencyTokenProjectsInstancesTablesRequest,
@@ -4715,12 +3473,7 @@ export const generateConsistencyTokenProjectsInstancesTables: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. */
 export const getIamPolicyProjectsInstances: API.OperationMethod<
   GetIamPolicyProjectsInstancesRequest,
@@ -4735,12 +3488,7 @@ export const getIamPolicyProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesClustersBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesClustersBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
   GetIamPolicyProjectsInstancesClustersBackupsRequest,
@@ -4755,12 +3503,7 @@ export const getIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesLogicalViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesLogicalViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
   GetIamPolicyProjectsInstancesLogicalViewsRequest,
@@ -4775,12 +3518,7 @@ export const getIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesMaterializedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesMaterializedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod<
   GetIamPolicyProjectsInstancesMaterializedViewsRequest,
@@ -4795,12 +3533,7 @@ export const getIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesTables: API.OperationMethod<
   GetIamPolicyProjectsInstancesTablesRequest,
@@ -4815,12 +3548,7 @@ export const getIamPolicyProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesTablesAuthorizedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesTablesAuthorizedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
@@ -4835,12 +3563,7 @@ export const getIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsInstancesTablesSchemaBundlesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetIamPolicyProjectsInstancesTablesSchemaBundlesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest,
@@ -4855,10 +3578,7 @@ export const getIamPolicyProjectsInstancesTablesSchemaBundles: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type GetMemoryLayerProjectsInstancesClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetMemoryLayerProjectsInstancesClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets information about the memory layer of a cluster. */
 export const getMemoryLayerProjectsInstancesClusters: API.OperationMethod<
   GetMemoryLayerProjectsInstancesClustersRequest,
@@ -4903,10 +3623,7 @@ export const getProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesAppProfilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesAppProfilesError = NotFound | Forbidden | GcpOpError;
 /** Gets information about an app profile. */
 export const getProjectsInstancesAppProfiles: API.OperationMethod<
   GetProjectsInstancesAppProfilesRequest,
@@ -4921,10 +3638,7 @@ export const getProjectsInstancesAppProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a cluster. */
 export const getProjectsInstancesClusters: API.OperationMethod<
   GetProjectsInstancesClustersRequest,
@@ -4939,10 +3653,7 @@ export const getProjectsInstancesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesClustersBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesClustersBackupsError = NotFound | Forbidden | GcpOpError;
 /** Gets metadata on a pending or completed Cloud Bigtable Backup. */
 export const getProjectsInstancesClustersBackups: API.OperationMethod<
   GetProjectsInstancesClustersBackupsRequest,
@@ -4957,10 +3668,7 @@ export const getProjectsInstancesClustersBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesLogicalViewsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesLogicalViewsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a logical view. */
 export const getProjectsInstancesLogicalViews: API.OperationMethod<
   GetProjectsInstancesLogicalViewsRequest,
@@ -4975,10 +3683,7 @@ export const getProjectsInstancesLogicalViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesMaterializedViewsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesMaterializedViewsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a materialized view. */
 export const getProjectsInstancesMaterializedViews: API.OperationMethod<
   GetProjectsInstancesMaterializedViewsRequest,
@@ -5008,10 +3713,7 @@ export const getProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesTablesAuthorizedViewsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesTablesAuthorizedViewsError = NotFound | Forbidden | GcpOpError;
 /** Gets information from a specified AuthorizedView. */
 export const getProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   GetProjectsInstancesTablesAuthorizedViewsRequest,
@@ -5026,10 +3728,7 @@ export const getProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsInstancesTablesSchemaBundlesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsInstancesTablesSchemaBundlesError = NotFound | Forbidden | GcpOpError;
 /** Gets metadata information about the specified schema bundle. */
 export const getProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   GetProjectsInstancesTablesSchemaBundlesRequest,
@@ -5044,10 +3743,7 @@ export const getProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListOperationsProjectsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOperationsProjectsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperationsProjectsOperations: API.PaginatedOperationMethod<
   ListOperationsProjectsOperationsRequest,
@@ -5060,10 +3756,7 @@ export const listOperationsProjectsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsInstancesError = NotFound | Forbidden | GcpOpError;
@@ -5079,16 +3772,10 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesAppProfilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesAppProfilesError = NotFound | Forbidden | GcpOpError;
 /** Lists information about app profiles in an instance. */
 export const listProjectsInstancesAppProfiles: API.PaginatedOperationMethod<
   ListProjectsInstancesAppProfilesRequest,
@@ -5101,16 +3788,10 @@ export const listProjectsInstancesAppProfiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesClustersError = NotFound | Forbidden | GcpOpError;
 /** Lists information about clusters in an instance. */
 export const listProjectsInstancesClusters: API.PaginatedOperationMethod<
   ListProjectsInstancesClustersRequest,
@@ -5123,16 +3804,10 @@ export const listProjectsInstancesClusters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesClustersBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesClustersBackupsError = NotFound | Forbidden | GcpOpError;
 /** Lists Cloud Bigtable backups. Returns both completed and pending backups. */
 export const listProjectsInstancesClustersBackups: API.PaginatedOperationMethod<
   ListProjectsInstancesClustersBackupsRequest,
@@ -5145,16 +3820,10 @@ export const listProjectsInstancesClustersBackups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesClustersHotTabletsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesClustersHotTabletsError = NotFound | Forbidden | GcpOpError;
 /** Lists hot tablets in a cluster, within the time range provided. Hot tablets are ordered based on CPU usage. */
 export const listProjectsInstancesClustersHotTablets: API.PaginatedOperationMethod<
   ListProjectsInstancesClustersHotTabletsRequest,
@@ -5167,16 +3836,10 @@ export const listProjectsInstancesClustersHotTablets: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesClustersMemoryLayersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesClustersMemoryLayersError = NotFound | Forbidden | GcpOpError;
 /** Lists information about memory layers. */
 export const listProjectsInstancesClustersMemoryLayers: API.PaginatedOperationMethod<
   ListProjectsInstancesClustersMemoryLayersRequest,
@@ -5189,16 +3852,10 @@ export const listProjectsInstancesClustersMemoryLayers: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesLogicalViewsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesLogicalViewsError = NotFound | Forbidden | GcpOpError;
 /** Lists information about logical views in an instance. */
 export const listProjectsInstancesLogicalViews: API.PaginatedOperationMethod<
   ListProjectsInstancesLogicalViewsRequest,
@@ -5211,16 +3868,10 @@ export const listProjectsInstancesLogicalViews: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesMaterializedViewsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesMaterializedViewsError = NotFound | Forbidden | GcpOpError;
 /** Lists information about materialized views in an instance. */
 export const listProjectsInstancesMaterializedViews: API.PaginatedOperationMethod<
   ListProjectsInstancesMaterializedViewsRequest,
@@ -5233,16 +3884,10 @@ export const listProjectsInstancesMaterializedViews: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesTablesError = NotFound | Forbidden | GcpOpError;
 /** Lists all tables served from a specified instance. */
 export const listProjectsInstancesTables: API.PaginatedOperationMethod<
   ListProjectsInstancesTablesRequest,
@@ -5255,16 +3900,10 @@ export const listProjectsInstancesTables: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesTablesAuthorizedViewsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesTablesAuthorizedViewsError = NotFound | Forbidden | GcpOpError;
 /** Lists all AuthorizedViews from a specific table. */
 export const listProjectsInstancesTablesAuthorizedViews: API.PaginatedOperationMethod<
   ListProjectsInstancesTablesAuthorizedViewsRequest,
@@ -5277,16 +3916,10 @@ export const listProjectsInstancesTablesAuthorizedViews: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsInstancesTablesSchemaBundlesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsInstancesTablesSchemaBundlesError = NotFound | Forbidden | GcpOpError;
 /** Lists all schema bundles associated with the specified table. */
 export const listProjectsInstancesTablesSchemaBundles: API.PaginatedOperationMethod<
   ListProjectsInstancesTablesSchemaBundlesRequest,
@@ -5299,10 +3932,7 @@ export const listProjectsInstancesTablesSchemaBundles: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -5318,18 +3948,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ModifyColumnFamiliesProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ModifyColumnFamiliesProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Performs a series of column family modifications on the specified table. Either all or none of the modifications will occur before this method returns, but data requests received prior to that point may see a table where only some modifications have taken effect. */
 export const modifyColumnFamiliesProjectsInstancesTables: API.OperationMethod<
   ModifyColumnFamiliesProjectsInstancesTablesRequest,
@@ -5344,12 +3966,7 @@ export const modifyColumnFamiliesProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PartialUpdateClusterProjectsInstancesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PartialUpdateClusterProjectsInstancesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Partially updates a cluster within a project. This method is the preferred way to update a Cluster. To enable and update autoscaling, set cluster_config.cluster_autoscaling_config. When autoscaling is enabled, serve_nodes is treated as an OUTPUT_ONLY field, meaning that updates to it are ignored. Note that an update cannot simultaneously set serve_nodes to non-zero and cluster_config.cluster_autoscaling_config to non-empty, and also specify both in the update_mask. To disable autoscaling, clear cluster_config.cluster_autoscaling_config, and explicitly set a serve_node count via the update_mask. */
 export const partialUpdateClusterProjectsInstancesClusters: API.OperationMethod<
   PartialUpdateClusterProjectsInstancesClustersRequest,
@@ -5364,12 +3981,7 @@ export const partialUpdateClusterProjectsInstancesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PartialUpdateInstanceProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PartialUpdateInstanceProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Partially updates an instance within a project. This method can modify all fields of an Instance and is the preferred way to update an Instance. */
 export const partialUpdateInstanceProjectsInstances: API.OperationMethod<
   PartialUpdateInstanceProjectsInstancesRequest,
@@ -5384,12 +3996,7 @@ export const partialUpdateInstanceProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesAppProfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesAppProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an app profile within an instance. */
 export const patchProjectsInstancesAppProfiles: API.OperationMethod<
   PatchProjectsInstancesAppProfilesRequest,
@@ -5404,12 +4011,7 @@ export const patchProjectsInstancesAppProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesClustersBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesClustersBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a pending or completed Cloud Bigtable Backup. */
 export const patchProjectsInstancesClustersBackups: API.OperationMethod<
   PatchProjectsInstancesClustersBackupsRequest,
@@ -5424,12 +4026,7 @@ export const patchProjectsInstancesClustersBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesLogicalViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesLogicalViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a logical view within an instance. */
 export const patchProjectsInstancesLogicalViews: API.OperationMethod<
   PatchProjectsInstancesLogicalViewsRequest,
@@ -5444,12 +4041,7 @@ export const patchProjectsInstancesLogicalViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesMaterializedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesMaterializedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a materialized view within an instance. */
 export const patchProjectsInstancesMaterializedViews: API.OperationMethod<
   PatchProjectsInstancesMaterializedViewsRequest,
@@ -5464,12 +4056,7 @@ export const patchProjectsInstancesMaterializedViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a specified table. */
 export const patchProjectsInstancesTables: API.OperationMethod<
   PatchProjectsInstancesTablesRequest,
@@ -5484,12 +4071,7 @@ export const patchProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesTablesAuthorizedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesTablesAuthorizedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an AuthorizedView in a table. */
 export const patchProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   PatchProjectsInstancesTablesAuthorizedViewsRequest,
@@ -5504,12 +4086,7 @@ export const patchProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsInstancesTablesSchemaBundlesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsInstancesTablesSchemaBundlesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a schema bundle in the specified table. */
 export const patchProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   PatchProjectsInstancesTablesSchemaBundlesRequest,
@@ -5524,12 +4101,7 @@ export const patchProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RestoreProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a new table by restoring from a completed backup. The returned table long-running operation can be used to track the progress of the operation, and to cancel it. The metadata field type is RestoreTableMetadata. The response type is Table, if successful. */
 export const restoreProjectsInstancesTables: API.OperationMethod<
   RestoreProjectsInstancesTablesRequest,
@@ -5544,12 +4116,7 @@ export const restoreProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on an instance resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstances: API.OperationMethod<
   SetIamPolicyProjectsInstancesRequest,
@@ -5564,12 +4131,7 @@ export const setIamPolicyProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesClustersBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesClustersBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
   SetIamPolicyProjectsInstancesClustersBackupsRequest,
@@ -5584,12 +4146,7 @@ export const setIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesLogicalViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesLogicalViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on an instance resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
   SetIamPolicyProjectsInstancesLogicalViewsRequest,
@@ -5604,12 +4161,7 @@ export const setIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesMaterializedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesMaterializedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on an instance resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod<
   SetIamPolicyProjectsInstancesMaterializedViewsRequest,
@@ -5624,12 +4176,7 @@ export const setIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesTables: API.OperationMethod<
   SetIamPolicyProjectsInstancesTablesRequest,
@@ -5644,12 +4191,7 @@ export const setIamPolicyProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesTablesAuthorizedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesTablesAuthorizedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
@@ -5664,12 +4206,7 @@ export const setIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsInstancesTablesSchemaBundlesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsInstancesTablesSchemaBundlesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest,
@@ -5684,12 +4221,7 @@ export const setIamPolicyProjectsInstancesTablesSchemaBundles: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified instance resource. */
 export const testIamPermissionsProjectsInstances: API.OperationMethod<
   TestIamPermissionsProjectsInstancesRequest,
@@ -5704,12 +4236,7 @@ export const testIamPermissionsProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesClustersBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesClustersBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified Bigtable resource. */
 export const testIamPermissionsProjectsInstancesClustersBackups: API.OperationMethod<
   TestIamPermissionsProjectsInstancesClustersBackupsRequest,
@@ -5724,12 +4251,7 @@ export const testIamPermissionsProjectsInstancesClustersBackups: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesLogicalViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesLogicalViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified instance resource. */
 export const testIamPermissionsProjectsInstancesLogicalViews: API.OperationMethod<
   TestIamPermissionsProjectsInstancesLogicalViewsRequest,
@@ -5744,12 +4266,7 @@ export const testIamPermissionsProjectsInstancesLogicalViews: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesMaterializedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesMaterializedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified instance resource. */
 export const testIamPermissionsProjectsInstancesMaterializedViews: API.OperationMethod<
   TestIamPermissionsProjectsInstancesMaterializedViewsRequest,
@@ -5764,12 +4281,7 @@ export const testIamPermissionsProjectsInstancesMaterializedViews: API.Operation
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified Bigtable resource. */
 export const testIamPermissionsProjectsInstancesTables: API.OperationMethod<
   TestIamPermissionsProjectsInstancesTablesRequest,
@@ -5784,12 +4296,7 @@ export const testIamPermissionsProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesTablesAuthorizedViewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesTablesAuthorizedViewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified Bigtable resource. */
 export const testIamPermissionsProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest,
@@ -5804,12 +4311,7 @@ export const testIamPermissionsProjectsInstancesTablesAuthorizedViews: API.Opera
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsInstancesTablesSchemaBundlesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsInstancesTablesSchemaBundlesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that the caller has on the specified Bigtable resource. */
 export const testIamPermissionsProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest,
@@ -5824,12 +4326,7 @@ export const testIamPermissionsProjectsInstancesTablesSchemaBundles: API.Operati
   retry: Retry.Retry,
 }));
 
-export type UndeleteProjectsInstancesTablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UndeleteProjectsInstancesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Restores a specified table which was accidentally deleted. */
 export const undeleteProjectsInstancesTables: API.OperationMethod<
   UndeleteProjectsInstancesTablesRequest,
@@ -5844,12 +4341,7 @@ export const undeleteProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an instance within a project. This method updates only the display name and type for an Instance. To update other Instance properties, such as labels, use PartialUpdateInstance. */
 export const updateProjectsInstances: API.OperationMethod<
   UpdateProjectsInstancesRequest,
@@ -5864,12 +4356,7 @@ export const updateProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsInstancesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsInstancesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a cluster within an instance. Note that UpdateCluster does not support updating cluster_config.cluster_autoscaling_config. In order to update it, you must use PartialUpdateCluster. */
 export const updateProjectsInstancesClusters: API.OperationMethod<
   UpdateProjectsInstancesClustersRequest,
@@ -5883,3 +4370,4 @@ export const updateProjectsInstancesClusters: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

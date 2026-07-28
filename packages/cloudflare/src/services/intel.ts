@@ -475,8 +475,7 @@ export type MiscategorizationsCreateRequestIndicatorType =
   | "domain"
   | "ipv4"
   | "ipv6"
-  | "url"
-  | (string & {});
+  | "url";
 export const MiscategorizationsCreateRequestIndicatorType =
   /*@__PURE__*/ S.String;
 
@@ -501,7 +500,7 @@ export interface CreateMiscategorizationRequest {
   contentAdds?: MiscategorizationsCreateRequestContentAddsList;
   /** Content category IDs to remove. */
   contentRemoves?: MiscategorizationsCreateRequestContentRemovesList;
-  indicatorType?: MiscategorizationsCreateRequestIndicatorType;
+  indicatorType?: MiscategorizationsCreateRequestIndicatorType | (string & {});
   /** Provide only if indicator_type is `ipv4` or `ipv6`. */
   ip?: string;
   /** Security category IDs to add. */
@@ -1438,8 +1437,7 @@ export type IndicatorFeedsGetResponseLatestUploadStatus =
   | "Loading"
   | "Provisioning"
   | "Complete"
-  | "Error"
-  | (string & {});
+  | "Error";
 export const IndicatorFeedsGetResponseLatestUploadStatus =
   /*@__PURE__*/ S.String;
 
@@ -1525,8 +1523,7 @@ export const GetIpRequest = /*@__PURE__*/ S.suspend(() =>
 export type IpsGetResultItemBelongsToRefType =
   | "hosting_provider"
   | "isp"
-  | "organization"
-  | (string & {});
+  | "organization";
 export const IpsGetResultItemBelongsToRefType = /*@__PURE__*/ S.String;
 
 export interface IpsGetResultItemBelongsToRef {
@@ -2013,8 +2010,7 @@ export type AttackSurfaceReportIssuesListResponseIssuesItemIssueType =
   | "exposed_infrastructure"
   | "insecure_configuration"
   | "weak_authentication"
-  | "configuration_suggestion"
-  | (string & {});
+  | "configuration_suggestion";
 export const AttackSurfaceReportIssuesListResponseIssuesItemIssueType =
   /*@__PURE__*/ S.String;
 
@@ -2036,23 +2032,20 @@ export const AttackSurfaceReportIssuesListResponseIssuesItemPayload =
 export type AttackSurfaceReportIssuesListResponseIssuesItemSeverity =
   | "Low"
   | "Moderate"
-  | "Critical"
-  | (string & {});
+  | "Critical";
 export const AttackSurfaceReportIssuesListResponseIssuesItemSeverity =
   /*@__PURE__*/ S.String;
 
 export type AttackSurfaceReportIssuesListResponseIssuesItemStatus =
   | "active"
-  | "resolved"
-  | (string & {});
+  | "resolved";
 export const AttackSurfaceReportIssuesListResponseIssuesItemStatus =
   /*@__PURE__*/ S.String;
 
 export type AttackSurfaceReportIssuesListResponseIssuesItemUserClassification =
   | "false_positive"
   | "accept_risk"
-  | "other"
-  | (string & {});
+  | "other";
 export const AttackSurfaceReportIssuesListResponseIssuesItemUserClassification =
   /*@__PURE__*/ S.String;
 
@@ -2140,6 +2133,21 @@ export const ListAttackSurfaceReportIssuesResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListAttackSurfaceReportIssuesResponse",
 }) as any as S.Schema<ListAttackSurfaceReportIssuesResponse>;
 
+export interface DnsListRequestStartEndParams {
+  /** Defaults to the current date. */
+  end?: string;
+  /** Defaults to 30 days before the end parameter value. */
+  start?: string;
+}
+export const DnsListRequestStartEndParams = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    end: S.optional(S.String),
+    start: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DnsListRequestStartEndParams",
+}) as any as S.Schema<DnsListRequestStartEndParams>;
+
 export interface ListDnsRequest {
   /** Identifier. */
   accountId: string;
@@ -2148,10 +2156,7 @@ export interface ListDnsRequest {
   page?: number;
   /** Maximum number of results requested. */
   perPage?: number;
-  /** Defaults to the current date. */
-  startEndParamsEnd?: string;
-  /** Defaults to 30 days before the end parameter value. */
-  startEndParamsStart?: string;
+  startEndParams?: DnsListRequestStartEndParams;
 }
 export const ListDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2159,11 +2164,11 @@ export const ListDnsRequest = /*@__PURE__*/ S.suspend(() =>
     ipv4: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    startEndParamsEnd: S.optional(
-      S.String.pipe(T.Query("start_end_params.end")),
-    ),
-    startEndParamsStart: S.optional(
-      S.String.pipe(T.Query("start_end_params.start")),
+    startEndParams: S.optional(
+      DnsListRequestStartEndParams.pipe(
+        T.Body("start_end_params"),
+        T.DeepQuery("start_end_params"),
+      ),
     ),
   })
     .pipe(

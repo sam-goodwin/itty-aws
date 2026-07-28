@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Configuration for the Compute Engine PD CSI driver. */
@@ -66,12 +66,10 @@ export interface GcePersistentDiskCsiDriverConfig {
   enabled?: boolean;
 }
 export const GcePersistentDiskCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GcePersistentDiskCsiDriverConfig",
-}) as any as S.Schema<GcePersistentDiskCsiDriverConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GcePersistentDiskCsiDriverConfig" }) as any as S.Schema<GcePersistentDiskCsiDriverConfig>;
 
 /** Configuration for the Cloud Storage Parallelstore CSI driver. */
 export interface ParallelstoreCsiDriverConfig {
@@ -79,12 +77,10 @@ export interface ParallelstoreCsiDriverConfig {
   enabled?: boolean;
 }
 export const ParallelstoreCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ParallelstoreCsiDriverConfig",
-}) as any as S.Schema<ParallelstoreCsiDriverConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ParallelstoreCsiDriverConfig" }) as any as S.Schema<ParallelstoreCsiDriverConfig>;
 
 /** Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes. */
 export interface NetworkPolicyConfig {
@@ -92,12 +88,10 @@ export interface NetworkPolicyConfig {
   disabled?: boolean;
 }
 export const NetworkPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "NetworkPolicyConfig",
-}) as any as S.Schema<NetworkPolicyConfig>;
+S.Struct({
+  "disabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "NetworkPolicyConfig" }) as any as S.Schema<NetworkPolicyConfig>;
 
 /** PodSnapshotConfig is the configuration for GKE Pod Snapshots feature. */
 export interface PodSnapshotConfig {
@@ -105,12 +99,10 @@ export interface PodSnapshotConfig {
   enabled?: boolean;
 }
 export const PodSnapshotConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PodSnapshotConfig",
-}) as any as S.Schema<PodSnapshotConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PodSnapshotConfig" }) as any as S.Schema<PodSnapshotConfig>;
 
 /** Configuration for the GKE Node Readiness Controller. */
 export interface NodeReadinessConfig {
@@ -118,12 +110,10 @@ export interface NodeReadinessConfig {
   enabled?: boolean;
 }
 export const NodeReadinessConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "NodeReadinessConfig",
-}) as any as S.Schema<NodeReadinessConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "NodeReadinessConfig" }) as any as S.Schema<NodeReadinessConfig>;
 
 /** Configuration options for the KALM addon. */
 export interface KalmConfig {
@@ -131,9 +121,9 @@ export interface KalmConfig {
   enabled?: boolean;
 }
 export const KalmConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "KalmConfig" }) as any as S.Schema<KalmConfig>;
 
 /** RayClusterMonitoringConfig specifies monitoring configuration for Ray clusters. */
@@ -142,12 +132,10 @@ export interface RayClusterMonitoringConfig {
   enabled?: boolean;
 }
 export const RayClusterMonitoringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RayClusterMonitoringConfig",
-}) as any as S.Schema<RayClusterMonitoringConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "RayClusterMonitoringConfig" }) as any as S.Schema<RayClusterMonitoringConfig>;
 
 /** RayClusterLoggingConfig specifies logging configuration for Ray clusters. */
 export interface RayClusterLoggingConfig {
@@ -155,12 +143,10 @@ export interface RayClusterLoggingConfig {
   enabled?: boolean;
 }
 export const RayClusterLoggingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RayClusterLoggingConfig",
-}) as any as S.Schema<RayClusterLoggingConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "RayClusterLoggingConfig" }) as any as S.Schema<RayClusterLoggingConfig>;
 
 /** Configuration options for the Ray Operator add-on. */
 export interface RayOperatorConfig {
@@ -172,20 +158,14 @@ export interface RayOperatorConfig {
   rayClusterLoggingConfig?: RayClusterLoggingConfig;
 }
 export const RayOperatorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rayClusterMonitoringConfig: S.optional(RayClusterMonitoringConfig),
-    enabled: S.optional(S.Boolean),
-    rayClusterLoggingConfig: S.optional(RayClusterLoggingConfig),
-  }),
-).annotate({
-  identifier: "RayOperatorConfig",
-}) as any as S.Schema<RayOperatorConfig>;
+S.Struct({
+  "rayClusterMonitoringConfig": S.optional(RayClusterMonitoringConfig),
+  "enabled": S.optional(S.Boolean),
+  "rayClusterLoggingConfig": S.optional(RayClusterLoggingConfig),
+}),
+).annotate({ identifier: "RayOperatorConfig" }) as any as S.Schema<RayOperatorConfig>;
 
-export type CloudRunConfigLoadBalancerTypeEnum =
-  | "LOAD_BALANCER_TYPE_UNSPECIFIED"
-  | "LOAD_BALANCER_TYPE_EXTERNAL"
-  | "LOAD_BALANCER_TYPE_INTERNAL"
-  | (string & {});
+export type CloudRunConfigLoadBalancerTypeEnum = "LOAD_BALANCER_TYPE_UNSPECIFIED" | "LOAD_BALANCER_TYPE_EXTERNAL" | "LOAD_BALANCER_TYPE_INTERNAL";
 export const CloudRunConfigLoadBalancerTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration options for the Cloud Run feature. */
@@ -196,10 +176,10 @@ export interface CloudRunConfig {
   loadBalancerType?: CloudRunConfigLoadBalancerTypeEnum;
 }
 export const CloudRunConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-    loadBalancerType: S.optional(CloudRunConfigLoadBalancerTypeEnum),
-  }),
+S.Struct({
+  "disabled": S.optional(S.Boolean),
+  "loadBalancerType": S.optional(CloudRunConfigLoadBalancerTypeEnum),
+}),
 ).annotate({ identifier: "CloudRunConfig" }) as any as S.Schema<CloudRunConfig>;
 
 /** Configuration for the Kubernetes Dashboard. */
@@ -208,17 +188,12 @@ export interface KubernetesDashboard {
   disabled?: boolean;
 }
 export const KubernetesDashboard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "KubernetesDashboard",
-}) as any as S.Schema<KubernetesDashboard>;
+S.Struct({
+  "disabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "KubernetesDashboard" }) as any as S.Schema<KubernetesDashboard>;
 
-export type IstioConfigAuthEnum =
-  | "AUTH_NONE"
-  | "AUTH_MUTUAL_TLS"
-  | (string & {});
+export type IstioConfigAuthEnum = "AUTH_NONE" | "AUTH_MUTUAL_TLS";
 export const IstioConfigAuthEnum = /*@__PURE__*/ S.String;
 
 /** Configuration options for Istio addon. */
@@ -229,10 +204,10 @@ export interface IstioConfig {
   auth?: IstioConfigAuthEnum;
 }
 export const IstioConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-    auth: S.optional(IstioConfigAuthEnum),
-  }),
+S.Struct({
+  "disabled": S.optional(S.Boolean),
+  "auth": S.optional(IstioConfigAuthEnum),
+}),
 ).annotate({ identifier: "IstioConfig" }) as any as S.Schema<IstioConfig>;
 
 /** Configuration for the High Scale Checkpointing. */
@@ -241,12 +216,10 @@ export interface HighScaleCheckpointingConfig {
   enabled?: boolean;
 }
 export const HighScaleCheckpointingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "HighScaleCheckpointingConfig",
-}) as any as S.Schema<HighScaleCheckpointingConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "HighScaleCheckpointingConfig" }) as any as S.Schema<HighScaleCheckpointingConfig>;
 
 /** Configuration for the Lustre CSI driver. */
 export interface LustreCsiDriverConfig {
@@ -258,14 +231,12 @@ export interface LustreCsiDriverConfig {
   disableMultiNic?: boolean;
 }
 export const LustreCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableLegacyLustrePort: S.optional(S.Boolean),
-    enabled: S.optional(S.Boolean),
-    disableMultiNic: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "LustreCsiDriverConfig",
-}) as any as S.Schema<LustreCsiDriverConfig>;
+S.Struct({
+  "enableLegacyLustrePort": S.optional(S.Boolean),
+  "enabled": S.optional(S.Boolean),
+  "disableMultiNic": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "LustreCsiDriverConfig" }) as any as S.Schema<LustreCsiDriverConfig>;
 
 /** Configuration for the AgentSandbox addon. */
 export interface AgentSandboxConfig {
@@ -273,12 +244,10 @@ export interface AgentSandboxConfig {
   enabled?: boolean;
 }
 export const AgentSandboxConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AgentSandboxConfig",
-}) as any as S.Schema<AgentSandboxConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AgentSandboxConfig" }) as any as S.Schema<AgentSandboxConfig>;
 
 /** Configuration options for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. */
 export interface HttpLoadBalancing {
@@ -286,12 +255,10 @@ export interface HttpLoadBalancing {
   disabled?: boolean;
 }
 export const HttpLoadBalancing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "HttpLoadBalancing",
-}) as any as S.Schema<HttpLoadBalancing>;
+S.Struct({
+  "disabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "HttpLoadBalancing" }) as any as S.Schema<HttpLoadBalancing>;
 
 /** Configuration for NodeLocal DNSCache */
 export interface DnsCacheConfig {
@@ -299,9 +266,9 @@ export interface DnsCacheConfig {
   enabled?: boolean;
 }
 export const DnsCacheConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "DnsCacheConfig" }) as any as S.Schema<DnsCacheConfig>;
 
 /** Configuration options for the Config Connector add-on. */
@@ -310,12 +277,10 @@ export interface ConfigConnectorConfig {
   enabled?: boolean;
 }
 export const ConfigConnectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConfigConnectorConfig",
-}) as any as S.Schema<ConfigConnectorConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ConfigConnectorConfig" }) as any as S.Schema<ConfigConnectorConfig>;
 
 /** Configuration for the Filestore CSI driver. */
 export interface GcpFilestoreCsiDriverConfig {
@@ -323,12 +288,10 @@ export interface GcpFilestoreCsiDriverConfig {
   enabled?: boolean;
 }
 export const GcpFilestoreCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GcpFilestoreCsiDriverConfig",
-}) as any as S.Schema<GcpFilestoreCsiDriverConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GcpFilestoreCsiDriverConfig" }) as any as S.Schema<GcpFilestoreCsiDriverConfig>;
 
 /** Configuration options for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. */
 export interface HorizontalPodAutoscaling {
@@ -336,12 +299,10 @@ export interface HorizontalPodAutoscaling {
   disabled?: boolean;
 }
 export const HorizontalPodAutoscaling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "HorizontalPodAutoscaling",
-}) as any as S.Schema<HorizontalPodAutoscaling>;
+S.Struct({
+  "disabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "HorizontalPodAutoscaling" }) as any as S.Schema<HorizontalPodAutoscaling>;
 
 /** Configuration for the Stateful HA add-on. */
 export interface StatefulHAConfig {
@@ -349,12 +310,10 @@ export interface StatefulHAConfig {
   enabled?: boolean;
 }
 export const StatefulHAConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StatefulHAConfig",
-}) as any as S.Schema<StatefulHAConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "StatefulHAConfig" }) as any as S.Schema<StatefulHAConfig>;
 
 /** Configuration for the Backup for GKE Agent. */
 export interface GkeBackupAgentConfig {
@@ -362,12 +321,10 @@ export interface GkeBackupAgentConfig {
   enabled?: boolean;
 }
 export const GkeBackupAgentConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GkeBackupAgentConfig",
-}) as any as S.Schema<GkeBackupAgentConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GkeBackupAgentConfig" }) as any as S.Schema<GkeBackupAgentConfig>;
 
 /** Configuration for the Cloud Storage Fuse CSI driver. */
 export interface GcsFuseCsiDriverConfig {
@@ -375,12 +332,10 @@ export interface GcsFuseCsiDriverConfig {
   enabled?: boolean;
 }
 export const GcsFuseCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GcsFuseCsiDriverConfig",
-}) as any as S.Schema<GcsFuseCsiDriverConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GcsFuseCsiDriverConfig" }) as any as S.Schema<GcsFuseCsiDriverConfig>;
 
 /** Configuration for the Slice Controller. */
 export interface SliceControllerConfig {
@@ -388,12 +343,10 @@ export interface SliceControllerConfig {
   enabled?: boolean;
 }
 export const SliceControllerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SliceControllerConfig",
-}) as any as S.Schema<SliceControllerConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SliceControllerConfig" }) as any as S.Schema<SliceControllerConfig>;
 
 /** Configuration for the Slurm Operator. */
 export interface SlurmOperatorConfig {
@@ -401,12 +354,10 @@ export interface SlurmOperatorConfig {
   enabled?: boolean;
 }
 export const SlurmOperatorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SlurmOperatorConfig",
-}) as any as S.Schema<SlurmOperatorConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SlurmOperatorConfig" }) as any as S.Schema<SlurmOperatorConfig>;
 
 /** Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality. */
 export interface AddonsConfig {
@@ -458,33 +409,31 @@ export interface AddonsConfig {
   slurmOperatorConfig?: SlurmOperatorConfig;
 }
 export const AddonsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcePersistentDiskCsiDriverConfig: S.optional(
-      GcePersistentDiskCsiDriverConfig,
-    ),
-    parallelstoreCsiDriverConfig: S.optional(ParallelstoreCsiDriverConfig),
-    networkPolicyConfig: S.optional(NetworkPolicyConfig),
-    podSnapshotConfig: S.optional(PodSnapshotConfig),
-    nodeReadinessConfig: S.optional(NodeReadinessConfig),
-    kalmConfig: S.optional(KalmConfig),
-    rayOperatorConfig: S.optional(RayOperatorConfig),
-    cloudRunConfig: S.optional(CloudRunConfig),
-    kubernetesDashboard: S.optional(KubernetesDashboard),
-    istioConfig: S.optional(IstioConfig),
-    highScaleCheckpointingConfig: S.optional(HighScaleCheckpointingConfig),
-    lustreCsiDriverConfig: S.optional(LustreCsiDriverConfig),
-    agentSandboxConfig: S.optional(AgentSandboxConfig),
-    httpLoadBalancing: S.optional(HttpLoadBalancing),
-    dnsCacheConfig: S.optional(DnsCacheConfig),
-    configConnectorConfig: S.optional(ConfigConnectorConfig),
-    gcpFilestoreCsiDriverConfig: S.optional(GcpFilestoreCsiDriverConfig),
-    horizontalPodAutoscaling: S.optional(HorizontalPodAutoscaling),
-    statefulHaConfig: S.optional(StatefulHAConfig),
-    gkeBackupAgentConfig: S.optional(GkeBackupAgentConfig),
-    gcsFuseCsiDriverConfig: S.optional(GcsFuseCsiDriverConfig),
-    sliceControllerConfig: S.optional(SliceControllerConfig),
-    slurmOperatorConfig: S.optional(SlurmOperatorConfig),
-  }),
+S.Struct({
+  "gcePersistentDiskCsiDriverConfig": S.optional(GcePersistentDiskCsiDriverConfig),
+  "parallelstoreCsiDriverConfig": S.optional(ParallelstoreCsiDriverConfig),
+  "networkPolicyConfig": S.optional(NetworkPolicyConfig),
+  "podSnapshotConfig": S.optional(PodSnapshotConfig),
+  "nodeReadinessConfig": S.optional(NodeReadinessConfig),
+  "kalmConfig": S.optional(KalmConfig),
+  "rayOperatorConfig": S.optional(RayOperatorConfig),
+  "cloudRunConfig": S.optional(CloudRunConfig),
+  "kubernetesDashboard": S.optional(KubernetesDashboard),
+  "istioConfig": S.optional(IstioConfig),
+  "highScaleCheckpointingConfig": S.optional(HighScaleCheckpointingConfig),
+  "lustreCsiDriverConfig": S.optional(LustreCsiDriverConfig),
+  "agentSandboxConfig": S.optional(AgentSandboxConfig),
+  "httpLoadBalancing": S.optional(HttpLoadBalancing),
+  "dnsCacheConfig": S.optional(DnsCacheConfig),
+  "configConnectorConfig": S.optional(ConfigConnectorConfig),
+  "gcpFilestoreCsiDriverConfig": S.optional(GcpFilestoreCsiDriverConfig),
+  "horizontalPodAutoscaling": S.optional(HorizontalPodAutoscaling),
+  "statefulHaConfig": S.optional(StatefulHAConfig),
+  "gkeBackupAgentConfig": S.optional(GkeBackupAgentConfig),
+  "gcsFuseCsiDriverConfig": S.optional(GcsFuseCsiDriverConfig),
+  "sliceControllerConfig": S.optional(SliceControllerConfig),
+  "slurmOperatorConfig": S.optional(SlurmOperatorConfig),
+}),
 ).annotate({ identifier: "AddonsConfig" }) as any as S.Schema<AddonsConfig>;
 
 /** SetAddonsRequest sets the addons associated with the cluster. */
@@ -501,16 +450,14 @@ export interface SetAddonsConfigRequest {
   name?: string;
 }
 export const SetAddonsConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addonsConfig: S.optional(AddonsConfig),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    projectId: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetAddonsConfigRequest",
-}) as any as S.Schema<SetAddonsConfigRequest>;
+S.Struct({
+  "addonsConfig": S.optional(AddonsConfig),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "SetAddonsConfigRequest" }) as any as S.Schema<SetAddonsConfigRequest>;
 
 export interface AddonsProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -523,32 +470,19 @@ export interface AddonsProjectsZonesClustersRequest {
   body?: SetAddonsConfigRequest;
 }
 export const AddonsProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    zone: S.String.pipe(T.Label()),
-    clusterId: S.String.pipe(T.Label()),
-    body: S.optional(SetAddonsConfigRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/addons",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AddonsProjectsZonesClustersRequest",
-}) as any as S.Schema<AddonsProjectsZonesClustersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(SetAddonsConfigRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/addons","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "AddonsProjectsZonesClustersRequest" }) as any as S.Schema<AddonsProjectsZonesClustersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -560,54 +494,20 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type OperationStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "PENDING"
-  | "RUNNING"
-  | "DONE"
-  | "ABORTING"
-  | (string & {});
+export type OperationStatusEnum = "STATUS_UNSPECIFIED" | "PENDING" | "RUNNING" | "DONE" | "ABORTING";
 export const OperationStatusEnum = /*@__PURE__*/ S.String;
 
-export type StatusConditionCodeEnum =
-  | "UNKNOWN"
-  | "GCE_STOCKOUT"
-  | "GKE_SERVICE_ACCOUNT_DELETED"
-  | "GCE_QUOTA_EXCEEDED"
-  | "SET_BY_OPERATOR"
-  | "CLOUD_KMS_KEY_ERROR"
-  | "CA_EXPIRING"
-  | "NODE_SERVICE_ACCOUNT_MISSING_PERMISSIONS"
-  | "CLOUD_KMS_KEY_DESTROYED"
-  | (string & {});
+export type StatusConditionCodeEnum = "UNKNOWN" | "GCE_STOCKOUT" | "GKE_SERVICE_ACCOUNT_DELETED" | "GCE_QUOTA_EXCEEDED" | "SET_BY_OPERATOR" | "CLOUD_KMS_KEY_ERROR" | "CA_EXPIRING" | "NODE_SERVICE_ACCOUNT_MISSING_PERMISSIONS" | "CLOUD_KMS_KEY_DESTROYED";
 export const StatusConditionCodeEnum = /*@__PURE__*/ S.String;
 
-export type StatusConditionCanonicalCodeEnum =
-  | "OK"
-  | "CANCELLED"
-  | "UNKNOWN"
-  | "INVALID_ARGUMENT"
-  | "DEADLINE_EXCEEDED"
-  | "NOT_FOUND"
-  | "ALREADY_EXISTS"
-  | "PERMISSION_DENIED"
-  | "UNAUTHENTICATED"
-  | "RESOURCE_EXHAUSTED"
-  | "FAILED_PRECONDITION"
-  | "ABORTED"
-  | "OUT_OF_RANGE"
-  | "UNIMPLEMENTED"
-  | "INTERNAL"
-  | "UNAVAILABLE"
-  | "DATA_LOSS"
-  | (string & {});
+export type StatusConditionCanonicalCodeEnum = "OK" | "CANCELLED" | "UNKNOWN" | "INVALID_ARGUMENT" | "DEADLINE_EXCEEDED" | "NOT_FOUND" | "ALREADY_EXISTS" | "PERMISSION_DENIED" | "UNAUTHENTICATED" | "RESOURCE_EXHAUSTED" | "FAILED_PRECONDITION" | "ABORTED" | "OUT_OF_RANGE" | "UNIMPLEMENTED" | "INTERNAL" | "UNAVAILABLE" | "DATA_LOSS";
 export const StatusConditionCanonicalCodeEnum = /*@__PURE__*/ S.String;
 
 /** StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED). */
@@ -620,27 +520,17 @@ export interface StatusCondition {
   canonicalCode?: StatusConditionCanonicalCodeEnum;
 }
 export const StatusCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(StatusConditionCodeEnum),
-    canonicalCode: S.optional(StatusConditionCanonicalCodeEnum),
-  }),
-).annotate({
-  identifier: "StatusCondition",
-}) as any as S.Schema<StatusCondition>;
+S.Struct({
+  "message": S.optional(S.String),
+  "code": S.optional(StatusConditionCodeEnum),
+  "canonicalCode": S.optional(StatusConditionCanonicalCodeEnum),
+}),
+).annotate({ identifier: "StatusCondition" }) as any as S.Schema<StatusCondition>;
 
 export type StatusConditionList = ReadonlyArray<StatusCondition>;
-export const StatusConditionList = /*@__PURE__*/ S.Array(
-  StatusCondition,
-) as any as S.Schema<StatusConditionList>;
+export const StatusConditionList = /*@__PURE__*/ S.Array(StatusCondition) as any as S.Schema<StatusConditionList>;
 
-export type OperationProgressStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "PENDING"
-  | "RUNNING"
-  | "DONE"
-  | "ABORTING"
-  | (string & {});
+export type OperationProgressStatusEnum = "STATUS_UNSPECIFIED" | "PENDING" | "RUNNING" | "DONE" | "ABORTING";
 export const OperationProgressStatusEnum = /*@__PURE__*/ S.String;
 
 /** Progress metric is (string, int|float|string) pair. */
@@ -655,23 +545,19 @@ export interface Metric {
   name?: string;
 }
 export const Metric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stringValue: S.optional(S.String),
-    intValue: S.optional(S.String),
-    doubleValue: S.optional(S.Number),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "stringValue": S.optional(S.String),
+  "intValue": S.optional(S.String),
+  "doubleValue": S.optional(S.Number),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
 export type MetricList = ReadonlyArray<Metric>;
-export const MetricList = /*@__PURE__*/ S.Array(
-  Metric,
-) as any as S.Schema<MetricList>;
+export const MetricList = /*@__PURE__*/ S.Array(Metric) as any as S.Schema<MetricList>;
 
 export type OperationProgressList = ReadonlyArray<OperationProgress>;
-export const OperationProgressList = /*@__PURE__*/ S.Array(
-  S.suspend(() => OperationProgress),
-) as any as S.Schema<OperationProgressList>;
+export const OperationProgressList = /*@__PURE__*/ S.Array(S.suspend(() => OperationProgress)) as any as S.Schema<OperationProgressList>;
 
 /** Information about operation (or operation stage) progress. */
 export interface OperationProgress {
@@ -685,37 +571,15 @@ export interface OperationProgress {
   stages?: OperationProgressList;
 }
 export const OperationProgress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(OperationProgressStatusEnum),
-    name: S.optional(S.String),
-    metrics: S.optional(MetricList),
-    stages: S.optional(OperationProgressList),
-  }),
-).annotate({
-  identifier: "OperationProgress",
-}) as any as S.Schema<OperationProgress>;
+S.Struct({
+  "status": S.optional(OperationProgressStatusEnum),
+  "name": S.optional(S.String),
+  "metrics": S.optional(MetricList),
+  "stages": S.optional(OperationProgressList),
+}),
+).annotate({ identifier: "OperationProgress" }) as any as S.Schema<OperationProgress>;
 
-export type OperationOperationTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "CREATE_CLUSTER"
-  | "DELETE_CLUSTER"
-  | "UPGRADE_MASTER"
-  | "UPGRADE_NODES"
-  | "REPAIR_CLUSTER"
-  | "UPDATE_CLUSTER"
-  | "CREATE_NODE_POOL"
-  | "DELETE_NODE_POOL"
-  | "SET_NODE_POOL_MANAGEMENT"
-  | "AUTO_REPAIR_NODES"
-  | "AUTO_UPGRADE_NODES"
-  | "SET_LABELS"
-  | "SET_MASTER_AUTH"
-  | "SET_NODE_POOL_SIZE"
-  | "SET_NETWORK_POLICY"
-  | "SET_MAINTENANCE_POLICY"
-  | "RESIZE_CLUSTER"
-  | "FLEET_FEATURE_UPGRADE"
-  | (string & {});
+export type OperationOperationTypeEnum = "TYPE_UNSPECIFIED" | "CREATE_CLUSTER" | "DELETE_CLUSTER" | "UPGRADE_MASTER" | "UPGRADE_NODES" | "REPAIR_CLUSTER" | "UPDATE_CLUSTER" | "CREATE_NODE_POOL" | "DELETE_NODE_POOL" | "SET_NODE_POOL_MANAGEMENT" | "AUTO_REPAIR_NODES" | "AUTO_UPGRADE_NODES" | "SET_LABELS" | "SET_MASTER_AUTH" | "SET_NODE_POOL_SIZE" | "SET_NETWORK_POLICY" | "SET_MAINTENANCE_POLICY" | "RESIZE_CLUSTER" | "FLEET_FEATURE_UPGRADE";
 export const OperationOperationTypeEnum = /*@__PURE__*/ S.String;
 
 /** This operation resource represents operations that may have happened or are happening on the cluster. All fields are output only. */
@@ -752,30 +616,26 @@ export interface Operation {
   endTime?: string;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetLink: S.optional(S.String),
-    error: S.optional(Status),
-    startTime: S.optional(S.String),
-    status: S.optional(OperationStatusEnum),
-    clusterConditions: S.optional(StatusConditionList),
-    detail: S.optional(S.String),
-    statusMessage: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    location: S.optional(S.String),
-    zone: S.optional(S.String),
-    progress: S.optional(OperationProgress),
-    operationType: S.optional(OperationOperationTypeEnum),
-    nodepoolConditions: S.optional(StatusConditionList),
-    name: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "targetLink": S.optional(S.String),
+  "error": S.optional(Status),
+  "startTime": S.optional(S.String),
+  "status": S.optional(OperationStatusEnum),
+  "clusterConditions": S.optional(StatusConditionList),
+  "detail": S.optional(S.String),
+  "statusMessage": S.optional(S.String),
+  "selfLink": S.optional(S.String),
+  "location": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "progress": S.optional(OperationProgress),
+  "operationType": S.optional(OperationOperationTypeEnum),
+  "nodepoolConditions": S.optional(StatusConditionList),
+  "name": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type NodePoolAutoscalingLocationPolicyEnum =
-  | "LOCATION_POLICY_UNSPECIFIED"
-  | "BALANCED"
-  | "ANY"
-  | (string & {});
+export type NodePoolAutoscalingLocationPolicyEnum = "LOCATION_POLICY_UNSPECIFIED" | "BALANCED" | "ANY";
 export const NodePoolAutoscalingLocationPolicyEnum = /*@__PURE__*/ S.String;
 
 /** NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage. */
@@ -796,18 +656,16 @@ export interface NodePoolAutoscaling {
   locationPolicy?: NodePoolAutoscalingLocationPolicyEnum;
 }
 export const NodePoolAutoscaling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    autoprovisioned: S.optional(S.Boolean),
-    totalMinNodeCount: S.optional(S.Number),
-    minNodeCount: S.optional(S.Number),
-    totalMaxNodeCount: S.optional(S.Number),
-    maxNodeCount: S.optional(S.Number),
-    locationPolicy: S.optional(NodePoolAutoscalingLocationPolicyEnum),
-  }),
-).annotate({
-  identifier: "NodePoolAutoscaling",
-}) as any as S.Schema<NodePoolAutoscaling>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "autoprovisioned": S.optional(S.Boolean),
+  "totalMinNodeCount": S.optional(S.Number),
+  "minNodeCount": S.optional(S.Number),
+  "totalMaxNodeCount": S.optional(S.Number),
+  "maxNodeCount": S.optional(S.Number),
+  "locationPolicy": S.optional(NodePoolAutoscalingLocationPolicyEnum),
+}),
+).annotate({ identifier: "NodePoolAutoscaling" }) as any as S.Schema<NodePoolAutoscaling>;
 
 /** SetNodePoolAutoscalingRequest sets the autoscaler settings of a node pool. */
 export interface SetNodePoolAutoscalingRequest {
@@ -825,17 +683,15 @@ export interface SetNodePoolAutoscalingRequest {
   clusterId?: string;
 }
 export const SetNodePoolAutoscalingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    nodePoolId: S.optional(S.String),
-    name: S.optional(S.String),
-    autoscaling: S.optional(NodePoolAutoscaling),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetNodePoolAutoscalingRequest",
-}) as any as S.Schema<SetNodePoolAutoscalingRequest>;
+S.Struct({
+  "projectId": S.optional(S.String),
+  "nodePoolId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "autoscaling": S.optional(NodePoolAutoscaling),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+}),
+).annotate({ identifier: "SetNodePoolAutoscalingRequest" }) as any as S.Schema<SetNodePoolAutoscalingRequest>;
 
 export interface AutoscalingProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -849,24 +705,15 @@ export interface AutoscalingProjectsZonesClustersNodePoolsRequest {
   /** Request body */
   body?: SetNodePoolAutoscalingRequest;
 }
-export const AutoscalingProjectsZonesClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      nodePoolId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(SetNodePoolAutoscalingRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/autoscaling",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AutoscalingProjectsZonesClustersNodePoolsRequest",
-  }) as any as S.Schema<AutoscalingProjectsZonesClustersNodePoolsRequest>;
+export const AutoscalingProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "nodePoolId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(SetNodePoolAutoscalingRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/autoscaling","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "AutoscalingProjectsZonesClustersNodePoolsRequest" }) as any as S.Schema<AutoscalingProjectsZonesClustersNodePoolsRequest>;
 
 /** CancelOperationRequest cancels a single operation. */
 export interface CancelOperationRequest {
@@ -880,15 +727,13 @@ export interface CancelOperationRequest {
   projectId?: string;
 }
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.String),
-    name: S.optional(S.String),
-    operationId: S.optional(S.String),
-    projectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({
+  "zone": S.optional(S.String),
+  "name": S.optional(S.String),
+  "operationId": S.optional(S.String),
+  "projectId": S.optional(S.String),
+}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name (project, location, operation id) of the operation to cancel. Specified in the format `projects/*\/locations/*\/operations/*`. */
@@ -896,27 +741,18 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:cancel",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:cancel","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface CancelProjectsZonesOperationsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -928,56 +764,30 @@ export interface CancelProjectsZonesOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsZonesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      operationId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsZonesOperationsRequest",
-}) as any as S.Schema<CancelProjectsZonesOperationsRequest>;
+export const CancelProjectsZonesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "operationId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsZonesOperationsRequest" }) as any as S.Schema<CancelProjectsZonesOperationsRequest>;
 
 export interface CheckAutopilotCompatibilityProjectsLocationsClustersRequest {
   /** The name (project, location, cluster) of the cluster to retrieve. Specified in the format `projects/*\/locations/*\/clusters/*`. */
   name: string;
 }
-export const CheckAutopilotCompatibilityProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:checkAutopilotCompatibility",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CheckAutopilotCompatibilityProjectsLocationsClustersRequest",
-  }) as any as S.Schema<CheckAutopilotCompatibilityProjectsLocationsClustersRequest>;
+export const CheckAutopilotCompatibilityProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:checkAutopilotCompatibility","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CheckAutopilotCompatibilityProjectsLocationsClustersRequest" }) as any as S.Schema<CheckAutopilotCompatibilityProjectsLocationsClustersRequest>;
 
-export type AutopilotCompatibilityIssueIncompatibilityTypeEnum =
-  | "UNSPECIFIED"
-  | "INCOMPATIBILITY"
-  | "ADDITIONAL_CONFIG_REQUIRED"
-  | "PASSED_WITH_OPTIONAL_CONFIG"
-  | (string & {});
-export const AutopilotCompatibilityIssueIncompatibilityTypeEnum =
-  /*@__PURE__*/ S.String;
+export type AutopilotCompatibilityIssueIncompatibilityTypeEnum = "UNSPECIFIED" | "INCOMPATIBILITY" | "ADDITIONAL_CONFIG_REQUIRED" | "PASSED_WITH_OPTIONAL_CONFIG";
+export const AutopilotCompatibilityIssueIncompatibilityTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** AutopilotCompatibilityIssue contains information about a specific compatibility issue with Autopilot mode. */
 export interface AutopilotCompatibilityIssue {
@@ -995,25 +805,18 @@ export interface AutopilotCompatibilityIssue {
   documentationUrl?: string;
 }
 export const AutopilotCompatibilityIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    constraintType: S.optional(S.String),
-    lastObservation: S.optional(S.String),
-    incompatibilityType: S.optional(
-      AutopilotCompatibilityIssueIncompatibilityTypeEnum,
-    ),
-    subjects: S.optional(StringList),
-    description: S.optional(S.String),
-    documentationUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutopilotCompatibilityIssue",
-}) as any as S.Schema<AutopilotCompatibilityIssue>;
+S.Struct({
+  "constraintType": S.optional(S.String),
+  "lastObservation": S.optional(S.String),
+  "incompatibilityType": S.optional(AutopilotCompatibilityIssueIncompatibilityTypeEnum),
+  "subjects": S.optional(StringList),
+  "description": S.optional(S.String),
+  "documentationUrl": S.optional(S.String),
+}),
+).annotate({ identifier: "AutopilotCompatibilityIssue" }) as any as S.Schema<AutopilotCompatibilityIssue>;
 
-export type AutopilotCompatibilityIssueList =
-  ReadonlyArray<AutopilotCompatibilityIssue>;
-export const AutopilotCompatibilityIssueList = /*@__PURE__*/ S.Array(
-  AutopilotCompatibilityIssue,
-) as any as S.Schema<AutopilotCompatibilityIssueList>;
+export type AutopilotCompatibilityIssueList = ReadonlyArray<AutopilotCompatibilityIssue>;
+export const AutopilotCompatibilityIssueList = /*@__PURE__*/ S.Array(AutopilotCompatibilityIssue) as any as S.Schema<AutopilotCompatibilityIssueList>;
 
 /** CheckAutopilotCompatibilityResponse has a list of compatibility issues. */
 export interface CheckAutopilotCompatibilityResponse {
@@ -1023,13 +826,11 @@ export interface CheckAutopilotCompatibilityResponse {
   summary?: string;
 }
 export const CheckAutopilotCompatibilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issues: S.optional(AutopilotCompatibilityIssueList),
-    summary: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckAutopilotCompatibilityResponse",
-}) as any as S.Schema<CheckAutopilotCompatibilityResponse>;
+S.Struct({
+  "issues": S.optional(AutopilotCompatibilityIssueList),
+  "summary": S.optional(S.String),
+}),
+).annotate({ identifier: "CheckAutopilotCompatibilityResponse" }) as any as S.Schema<CheckAutopilotCompatibilityResponse>;
 
 /** CompleteControlPlaneUpgradeRequest sets the name of target cluster to complete upgrade. */
 export interface CompleteControlPlaneUpgradeRequest {
@@ -1037,12 +838,10 @@ export interface CompleteControlPlaneUpgradeRequest {
   version?: string;
 }
 export const CompleteControlPlaneUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CompleteControlPlaneUpgradeRequest",
-}) as any as S.Schema<CompleteControlPlaneUpgradeRequest>;
+S.Struct({
+  "version": S.optional(S.String),
+}),
+).annotate({ identifier: "CompleteControlPlaneUpgradeRequest" }) as any as S.Schema<CompleteControlPlaneUpgradeRequest>;
 
 export interface CompleteControlPlaneUpgradeProjectsLocationsClustersRequest {
   /** The name (project, location, cluster) of the cluster to complete upgrade. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -1050,21 +849,12 @@ export interface CompleteControlPlaneUpgradeProjectsLocationsClustersRequest {
   /** Request body */
   body?: CompleteControlPlaneUpgradeRequest;
 }
-export const CompleteControlPlaneUpgradeProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CompleteControlPlaneUpgradeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:completeControlPlaneUpgrade",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CompleteControlPlaneUpgradeProjectsLocationsClustersRequest",
-  }) as any as S.Schema<CompleteControlPlaneUpgradeProjectsLocationsClustersRequest>;
+export const CompleteControlPlaneUpgradeProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CompleteControlPlaneUpgradeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:completeControlPlaneUpgrade","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CompleteControlPlaneUpgradeProjectsLocationsClustersRequest" }) as any as S.Schema<CompleteControlPlaneUpgradeProjectsLocationsClustersRequest>;
 
 export interface CompleteControlPlaneUpgradeProjectsZonesClustersRequest {
   /** The name (project, location, cluster) of the cluster to complete upgrade. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -1072,21 +862,12 @@ export interface CompleteControlPlaneUpgradeProjectsZonesClustersRequest {
   /** Request body */
   body?: CompleteControlPlaneUpgradeRequest;
 }
-export const CompleteControlPlaneUpgradeProjectsZonesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CompleteControlPlaneUpgradeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:completeControlPlaneUpgrade",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CompleteControlPlaneUpgradeProjectsZonesClustersRequest",
-  }) as any as S.Schema<CompleteControlPlaneUpgradeProjectsZonesClustersRequest>;
+export const CompleteControlPlaneUpgradeProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CompleteControlPlaneUpgradeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:completeControlPlaneUpgrade","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CompleteControlPlaneUpgradeProjectsZonesClustersRequest" }) as any as S.Schema<CompleteControlPlaneUpgradeProjectsZonesClustersRequest>;
 
 /** CompleteIPRotationRequest moves the cluster master back into single-IP mode. */
 export interface CompleteIPRotationRequest {
@@ -1100,15 +881,13 @@ export interface CompleteIPRotationRequest {
   name?: string;
 }
 export const CompleteIPRotationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CompleteIPRotationRequest",
-}) as any as S.Schema<CompleteIPRotationRequest>;
+S.Struct({
+  "projectId": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "CompleteIPRotationRequest" }) as any as S.Schema<CompleteIPRotationRequest>;
 
 export interface CompleteIpRotationProjectsLocationsClustersRequest {
   /** The name (project, location, cluster name) of the cluster to complete IP rotation. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -1116,21 +895,12 @@ export interface CompleteIpRotationProjectsLocationsClustersRequest {
   /** Request body */
   body?: CompleteIPRotationRequest;
 }
-export const CompleteIpRotationProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CompleteIPRotationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:completeIpRotation",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CompleteIpRotationProjectsLocationsClustersRequest",
-  }) as any as S.Schema<CompleteIpRotationProjectsLocationsClustersRequest>;
+export const CompleteIpRotationProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CompleteIPRotationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:completeIpRotation","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CompleteIpRotationProjectsLocationsClustersRequest" }) as any as S.Schema<CompleteIpRotationProjectsLocationsClustersRequest>;
 
 export interface CompleteIpRotationProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -1142,31 +912,20 @@ export interface CompleteIpRotationProjectsZonesClustersRequest {
   /** Request body */
   body?: CompleteIPRotationRequest;
 }
-export const CompleteIpRotationProjectsZonesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(CompleteIPRotationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:completeIpRotation",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CompleteIpRotationProjectsZonesClustersRequest",
-  }) as any as S.Schema<CompleteIpRotationProjectsZonesClustersRequest>;
+export const CompleteIpRotationProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(CompleteIPRotationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:completeIpRotation","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CompleteIpRotationProjectsZonesClustersRequest" }) as any as S.Schema<CompleteIpRotationProjectsZonesClustersRequest>;
 
 /** CompleteNodePoolUpgradeRequest sets the name of target node pool to complete upgrade. */
 export interface CompleteNodePoolUpgradeRequest {}
 export const CompleteNodePoolUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CompleteNodePoolUpgradeRequest",
-}) as any as S.Schema<CompleteNodePoolUpgradeRequest>;
+S.Struct({}),
+).annotate({ identifier: "CompleteNodePoolUpgradeRequest" }) as any as S.Schema<CompleteNodePoolUpgradeRequest>;
 
 export interface CompleteUpgradeProjectsLocationsClustersNodePoolsRequest {
   /** The name (project, location, cluster, node pool id) of the node pool to complete upgrade. Specified in the format `projects/*\/locations/*\/clusters/*\/nodePools/*`. */
@@ -1174,37 +933,17 @@ export interface CompleteUpgradeProjectsLocationsClustersNodePoolsRequest {
   /** Request body */
   body?: CompleteNodePoolUpgradeRequest;
 }
-export const CompleteUpgradeProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CompleteNodePoolUpgradeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:completeUpgrade",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CompleteUpgradeProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<CompleteUpgradeProjectsLocationsClustersNodePoolsRequest>;
+export const CompleteUpgradeProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CompleteNodePoolUpgradeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:completeUpgrade","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CompleteUpgradeProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<CompleteUpgradeProjectsLocationsClustersNodePoolsRequest>;
 
-export type SecurityPostureConfigVulnerabilityModeEnum =
-  | "VULNERABILITY_MODE_UNSPECIFIED"
-  | "VULNERABILITY_DISABLED"
-  | "VULNERABILITY_BASIC"
-  | "VULNERABILITY_ENTERPRISE"
-  | (string & {});
-export const SecurityPostureConfigVulnerabilityModeEnum =
-  /*@__PURE__*/ S.String;
+export type SecurityPostureConfigVulnerabilityModeEnum = "VULNERABILITY_MODE_UNSPECIFIED" | "VULNERABILITY_DISABLED" | "VULNERABILITY_BASIC" | "VULNERABILITY_ENTERPRISE";
+export const SecurityPostureConfigVulnerabilityModeEnum = /*@__PURE__*/ S.String;
 
-export type SecurityPostureConfigModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "BASIC"
-  | "ENTERPRISE"
-  | (string & {});
+export type SecurityPostureConfigModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "BASIC" | "ENTERPRISE";
 export const SecurityPostureConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API. */
@@ -1215,27 +954,22 @@ export interface SecurityPostureConfig {
   mode?: SecurityPostureConfigModeEnum;
 }
 export const SecurityPostureConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vulnerabilityMode: S.optional(SecurityPostureConfigVulnerabilityModeEnum),
-    mode: S.optional(SecurityPostureConfigModeEnum),
-  }),
-).annotate({
-  identifier: "SecurityPostureConfig",
-}) as any as S.Schema<SecurityPostureConfig>;
+S.Struct({
+  "vulnerabilityMode": S.optional(SecurityPostureConfigVulnerabilityModeEnum),
+  "mode": S.optional(SecurityPostureConfigModeEnum),
+}),
+).annotate({ identifier: "SecurityPostureConfig" }) as any as S.Schema<SecurityPostureConfig>;
 
 /** Configuration for controlling master global access settings. */
 export interface PrivateClusterMasterGlobalAccessConfig {
   /** Whenever master is accessible globally or not. */
   enabled?: boolean;
 }
-export const PrivateClusterMasterGlobalAccessConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "PrivateClusterMasterGlobalAccessConfig",
-}) as any as S.Schema<PrivateClusterMasterGlobalAccessConfig>;
+export const PrivateClusterMasterGlobalAccessConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PrivateClusterMasterGlobalAccessConfig" }) as any as S.Schema<PrivateClusterMasterGlobalAccessConfig>;
 
 /** Configuration options for private clusters. */
 export interface PrivateClusterConfig {
@@ -1257,21 +991,17 @@ export interface PrivateClusterConfig {
   masterGlobalAccessConfig?: PrivateClusterMasterGlobalAccessConfig;
 }
 export const PrivateClusterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enablePrivateNodes: S.optional(S.Boolean),
-    peeringName: S.optional(S.String),
-    publicEndpoint: S.optional(S.String),
-    privateEndpointSubnetwork: S.optional(S.String),
-    privateEndpoint: S.optional(S.String),
-    enablePrivateEndpoint: S.optional(S.Boolean),
-    masterIpv4CidrBlock: S.optional(S.String),
-    masterGlobalAccessConfig: S.optional(
-      PrivateClusterMasterGlobalAccessConfig,
-    ),
-  }),
-).annotate({
-  identifier: "PrivateClusterConfig",
-}) as any as S.Schema<PrivateClusterConfig>;
+S.Struct({
+  "enablePrivateNodes": S.optional(S.Boolean),
+  "peeringName": S.optional(S.String),
+  "publicEndpoint": S.optional(S.String),
+  "privateEndpointSubnetwork": S.optional(S.String),
+  "privateEndpoint": S.optional(S.String),
+  "enablePrivateEndpoint": S.optional(S.Boolean),
+  "masterIpv4CidrBlock": S.optional(S.String),
+  "masterGlobalAccessConfig": S.optional(PrivateClusterMasterGlobalAccessConfig),
+}),
+).annotate({ identifier: "PrivateClusterConfig" }) as any as S.Schema<PrivateClusterConfig>;
 
 /** IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API */
 export interface IdentityServiceConfig {
@@ -1279,12 +1009,10 @@ export interface IdentityServiceConfig {
   enabled?: boolean;
 }
 export const IdentityServiceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "IdentityServiceConfig",
-}) as any as S.Schema<IdentityServiceConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "IdentityServiceConfig" }) as any as S.Schema<IdentityServiceConfig>;
 
 /** Parameters for using BigQuery as the destination of resource usage export. */
 export interface BigQueryDestination {
@@ -1292,12 +1020,10 @@ export interface BigQueryDestination {
   datasetId?: string;
 }
 export const BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BigQueryDestination",
-}) as any as S.Schema<BigQueryDestination>;
+S.Struct({
+  "datasetId": S.optional(S.String),
+}),
+).annotate({ identifier: "BigQueryDestination" }) as any as S.Schema<BigQueryDestination>;
 
 /** Parameters for controlling consumption metering. */
 export interface ConsumptionMeteringConfig {
@@ -1305,12 +1031,10 @@ export interface ConsumptionMeteringConfig {
   enabled?: boolean;
 }
 export const ConsumptionMeteringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConsumptionMeteringConfig",
-}) as any as S.Schema<ConsumptionMeteringConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ConsumptionMeteringConfig" }) as any as S.Schema<ConsumptionMeteringConfig>;
 
 /** Configuration for exporting cluster resource usages. */
 export interface ResourceUsageExportConfig {
@@ -1322,14 +1046,12 @@ export interface ResourceUsageExportConfig {
   consumptionMeteringConfig?: ConsumptionMeteringConfig;
 }
 export const ResourceUsageExportConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableNetworkEgressMetering: S.optional(S.Boolean),
-    bigqueryDestination: S.optional(BigQueryDestination),
-    consumptionMeteringConfig: S.optional(ConsumptionMeteringConfig),
-  }),
-).annotate({
-  identifier: "ResourceUsageExportConfig",
-}) as any as S.Schema<ResourceUsageExportConfig>;
+S.Struct({
+  "enableNetworkEgressMetering": S.optional(S.Boolean),
+  "bigqueryDestination": S.optional(BigQueryDestination),
+  "consumptionMeteringConfig": S.optional(ConsumptionMeteringConfig),
+}),
+).annotate({ identifier: "ResourceUsageExportConfig" }) as any as S.Schema<ResourceUsageExportConfig>;
 
 /** Binauthz policy that applies to this cluster. */
 export interface PolicyBinding {
@@ -1337,23 +1059,15 @@ export interface PolicyBinding {
   name?: string;
 }
 export const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "PolicyBinding" }) as any as S.Schema<PolicyBinding>;
 
 export type PolicyBindingList = ReadonlyArray<PolicyBinding>;
-export const PolicyBindingList = /*@__PURE__*/ S.Array(
-  PolicyBinding,
-) as any as S.Schema<PolicyBindingList>;
+export const PolicyBindingList = /*@__PURE__*/ S.Array(PolicyBinding) as any as S.Schema<PolicyBindingList>;
 
-export type BinaryAuthorizationEvaluationModeEnum =
-  | "EVALUATION_MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "PROJECT_SINGLETON_POLICY_ENFORCE"
-  | "POLICY_BINDINGS"
-  | "POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE"
-  | (string & {});
+export type BinaryAuthorizationEvaluationModeEnum = "EVALUATION_MODE_UNSPECIFIED" | "DISABLED" | "PROJECT_SINGLETON_POLICY_ENFORCE" | "POLICY_BINDINGS" | "POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE";
 export const BinaryAuthorizationEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for Binary Authorization. */
@@ -1366,14 +1080,12 @@ export interface BinaryAuthorization {
   evaluationMode?: BinaryAuthorizationEvaluationModeEnum;
 }
 export const BinaryAuthorization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    policyBindings: S.optional(PolicyBindingList),
-    evaluationMode: S.optional(BinaryAuthorizationEvaluationModeEnum),
-  }),
-).annotate({
-  identifier: "BinaryAuthorization",
-}) as any as S.Schema<BinaryAuthorization>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "policyBindings": S.optional(PolicyBindingList),
+  "evaluationMode": S.optional(BinaryAuthorizationEvaluationModeEnum),
+}),
+).annotate({ identifier: "BinaryAuthorization" }) as any as S.Schema<BinaryAuthorization>;
 
 /** Configuration for client certificates on the cluster. */
 export interface ClientCertificateConfig {
@@ -1381,12 +1093,10 @@ export interface ClientCertificateConfig {
   issueClientCertificate?: boolean;
 }
 export const ClientCertificateConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issueClientCertificate: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClientCertificateConfig",
-}) as any as S.Schema<ClientCertificateConfig>;
+S.Struct({
+  "issueClientCertificate": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ClientCertificateConfig" }) as any as S.Schema<ClientCertificateConfig>;
 
 /** The authentication information for accessing the master endpoint. Authentication can be done using HTTP basic auth or using client certificates. */
 export interface MasterAuth {
@@ -1404,14 +1114,14 @@ export interface MasterAuth {
   username?: string;
 }
 export const MasterAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterCaCertificate: S.optional(S.String),
-    clientKey: S.optional(S.String),
-    clientCertificateConfig: S.optional(ClientCertificateConfig),
-    clientCertificate: S.optional(S.String),
-    password: S.optional(S.String),
-    username: S.optional(S.String),
-  }),
+S.Struct({
+  "clusterCaCertificate": S.optional(S.String),
+  "clientKey": S.optional(S.String),
+  "clientCertificateConfig": S.optional(ClientCertificateConfig),
+  "clientCertificate": S.optional(S.String),
+  "password": S.optional(S.String),
+  "username": S.optional(S.String),
+}),
 ).annotate({ identifier: "MasterAuth" }) as any as S.Schema<MasterAuth>;
 
 /** Configuration for fine-grained cost management feature. */
@@ -1420,12 +1130,10 @@ export interface CostManagementConfig {
   enabled?: boolean;
 }
 export const CostManagementConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CostManagementConfig",
-}) as any as S.Schema<CostManagementConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CostManagementConfig" }) as any as S.Schema<CostManagementConfig>;
 
 /** Constraints applied to pods. */
 export interface MaxPodsConstraint {
@@ -1433,12 +1141,10 @@ export interface MaxPodsConstraint {
   maxPodsPerNode?: string;
 }
 export const MaxPodsConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxPodsPerNode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MaxPodsConstraint",
-}) as any as S.Schema<MaxPodsConstraint>;
+S.Struct({
+  "maxPodsPerNode": S.optional(S.String),
+}),
+).annotate({ identifier: "MaxPodsConstraint" }) as any as S.Schema<MaxPodsConstraint>;
 
 /** AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will proceed. */
 export interface AutoUpgradeOptions {
@@ -1448,13 +1154,11 @@ export interface AutoUpgradeOptions {
   autoUpgradeStartTime?: string;
 }
 export const AutoUpgradeOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    autoUpgradeStartTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutoUpgradeOptions",
-}) as any as S.Schema<AutoUpgradeOptions>;
+S.Struct({
+  "description": S.optional(S.String),
+  "autoUpgradeStartTime": S.optional(S.String),
+}),
+).annotate({ identifier: "AutoUpgradeOptions" }) as any as S.Schema<AutoUpgradeOptions>;
 
 /** NodeManagement defines the set of node management services turned on for the node pool. */
 export interface NodeManagement {
@@ -1466,11 +1170,11 @@ export interface NodeManagement {
   upgradeOptions?: AutoUpgradeOptions;
 }
 export const NodeManagement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoUpgrade: S.optional(S.Boolean),
-    autoRepair: S.optional(S.Boolean),
-    upgradeOptions: S.optional(AutoUpgradeOptions),
-  }),
+S.Struct({
+  "autoUpgrade": S.optional(S.Boolean),
+  "autoRepair": S.optional(S.Boolean),
+  "upgradeOptions": S.optional(AutoUpgradeOptions),
+}),
 ).annotate({ identifier: "NodeManagement" }) as any as S.Schema<NodeManagement>;
 
 /** A set of Shielded Instance options. */
@@ -1481,20 +1185,13 @@ export interface ShieldedInstanceConfig {
   enableIntegrityMonitoring?: boolean;
 }
 export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableSecureBoot: S.optional(S.Boolean),
-    enableIntegrityMonitoring: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ShieldedInstanceConfig",
-}) as any as S.Schema<ShieldedInstanceConfig>;
+S.Struct({
+  "enableSecureBoot": S.optional(S.Boolean),
+  "enableIntegrityMonitoring": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ShieldedInstanceConfig" }) as any as S.Schema<ShieldedInstanceConfig>;
 
-export type UpgradeSettingsStrategyEnum =
-  | "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"
-  | "BLUE_GREEN"
-  | "SURGE"
-  | "SHORT_LIVED"
-  | (string & {});
+export type UpgradeSettingsStrategyEnum = "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED" | "BLUE_GREEN" | "SURGE" | "SHORT_LIVED";
 export const UpgradeSettingsStrategyEnum = /*@__PURE__*/ S.String;
 
 /** Standard rollout policy is the default policy for blue-green. */
@@ -1507,14 +1204,12 @@ export interface StandardRolloutPolicy {
   batchSoakDuration?: string;
 }
 export const StandardRolloutPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchPercentage: S.optional(S.Number),
-    batchNodeCount: S.optional(S.Number),
-    batchSoakDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StandardRolloutPolicy",
-}) as any as S.Schema<StandardRolloutPolicy>;
+S.Struct({
+  "batchPercentage": S.optional(S.Number),
+  "batchNodeCount": S.optional(S.Number),
+  "batchSoakDuration": S.optional(S.String),
+}),
+).annotate({ identifier: "StandardRolloutPolicy" }) as any as S.Schema<StandardRolloutPolicy>;
 
 /** Autoscaled rollout policy utilizes the cluster autoscaler during blue-green upgrade to scale both the blue and green pools. */
 export interface AutoscaledRolloutPolicy {
@@ -1522,12 +1217,10 @@ export interface AutoscaledRolloutPolicy {
   waitForDrainDuration?: string;
 }
 export const AutoscaledRolloutPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    waitForDrainDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutoscaledRolloutPolicy",
-}) as any as S.Schema<AutoscaledRolloutPolicy>;
+S.Struct({
+  "waitForDrainDuration": S.optional(S.String),
+}),
+).annotate({ identifier: "AutoscaledRolloutPolicy" }) as any as S.Schema<AutoscaledRolloutPolicy>;
 
 /** Settings for blue-green upgrade. */
 export interface BlueGreenSettings {
@@ -1539,14 +1232,12 @@ export interface BlueGreenSettings {
   autoscaledRolloutPolicy?: AutoscaledRolloutPolicy;
 }
 export const BlueGreenSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodePoolSoakDuration: S.optional(S.String),
-    standardRolloutPolicy: S.optional(StandardRolloutPolicy),
-    autoscaledRolloutPolicy: S.optional(AutoscaledRolloutPolicy),
-  }),
-).annotate({
-  identifier: "BlueGreenSettings",
-}) as any as S.Schema<BlueGreenSettings>;
+S.Struct({
+  "nodePoolSoakDuration": S.optional(S.String),
+  "standardRolloutPolicy": S.optional(StandardRolloutPolicy),
+  "autoscaledRolloutPolicy": S.optional(AutoscaledRolloutPolicy),
+}),
+).annotate({ identifier: "BlueGreenSettings" }) as any as S.Schema<BlueGreenSettings>;
 
 /** These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available. These upgrade settings configure the upgrade strategy for the node pool. Use strategy to switch between the strategies applied to the node pool. If the strategy is SURGE, use max_surge and max_unavailable to control the level of parallelism and the level of disruption caused by upgrade. 1. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. 2. maxUnavailable controls the number of nodes that can be simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). If the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green upgrade related settings. 1. standard_rollout_policy is the default policy. The policy is used to control the way blue pool gets drained. The draining is executed in the batch mode. The batch size could be specified as either percentage of the node pool size or the number of nodes. batch_soak_duration is the soak time after each batch gets drained. 2. node_pool_soak_duration is the soak time after all blue nodes are drained. After this period, the blue pool nodes will be deleted. */
 export interface UpgradeSettings {
@@ -1560,15 +1251,13 @@ export interface UpgradeSettings {
   blueGreenSettings?: BlueGreenSettings;
 }
 export const UpgradeSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxSurge: S.optional(S.Number),
-    maxUnavailable: S.optional(S.Number),
-    strategy: S.optional(UpgradeSettingsStrategyEnum),
-    blueGreenSettings: S.optional(BlueGreenSettings),
-  }),
-).annotate({
-  identifier: "UpgradeSettings",
-}) as any as S.Schema<UpgradeSettings>;
+S.Struct({
+  "maxSurge": S.optional(S.Number),
+  "maxUnavailable": S.optional(S.Number),
+  "strategy": S.optional(UpgradeSettingsStrategyEnum),
+  "blueGreenSettings": S.optional(BlueGreenSettings),
+}),
+).annotate({ identifier: "UpgradeSettings" }) as any as S.Schema<UpgradeSettings>;
 
 /** AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP. */
 export interface AutoprovisioningNodePoolDefaults {
@@ -1596,22 +1285,20 @@ export interface AutoprovisioningNodePoolDefaults {
   serviceAccount?: string;
 }
 export const AutoprovisioningNodePoolDefaults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskSizeGb: S.optional(S.Number),
-    management: S.optional(NodeManagement),
-    shieldedInstanceConfig: S.optional(ShieldedInstanceConfig),
-    oauthScopes: S.optional(StringList),
-    upgradeSettings: S.optional(UpgradeSettings),
-    minCpuPlatform: S.optional(S.String),
-    diskType: S.optional(S.String),
-    bootDiskKmsKey: S.optional(S.String),
-    imageType: S.optional(S.String),
-    insecureKubeletReadonlyPortEnabled: S.optional(S.Boolean),
-    serviceAccount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutoprovisioningNodePoolDefaults",
-}) as any as S.Schema<AutoprovisioningNodePoolDefaults>;
+S.Struct({
+  "diskSizeGb": S.optional(S.Number),
+  "management": S.optional(NodeManagement),
+  "shieldedInstanceConfig": S.optional(ShieldedInstanceConfig),
+  "oauthScopes": S.optional(StringList),
+  "upgradeSettings": S.optional(UpgradeSettings),
+  "minCpuPlatform": S.optional(S.String),
+  "diskType": S.optional(S.String),
+  "bootDiskKmsKey": S.optional(S.String),
+  "imageType": S.optional(S.String),
+  "insecureKubeletReadonlyPortEnabled": S.optional(S.Boolean),
+  "serviceAccount": S.optional(S.String),
+}),
+).annotate({ identifier: "AutoprovisioningNodePoolDefaults" }) as any as S.Schema<AutoprovisioningNodePoolDefaults>;
 
 /** Contains information about amount of some resource in the cluster. For memory, value should be in GB. */
 export interface ResourceLimit {
@@ -1623,31 +1310,20 @@ export interface ResourceLimit {
   minimum?: string;
 }
 export const ResourceLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maximum: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    minimum: S.optional(S.String),
-  }),
+S.Struct({
+  "maximum": S.optional(S.String),
+  "resourceType": S.optional(S.String),
+  "minimum": S.optional(S.String),
+}),
 ).annotate({ identifier: "ResourceLimit" }) as any as S.Schema<ResourceLimit>;
 
 export type ResourceLimitList = ReadonlyArray<ResourceLimit>;
-export const ResourceLimitList = /*@__PURE__*/ S.Array(
-  ResourceLimit,
-) as any as S.Schema<ResourceLimitList>;
+export const ResourceLimitList = /*@__PURE__*/ S.Array(ResourceLimit) as any as S.Schema<ResourceLimitList>;
 
-export type ClusterAutoscalingAutopilotGeneralProfileEnum =
-  | "AUTOPILOT_GENERAL_PROFILE_UNSPECIFIED"
-  | "NO_PERFORMANCE"
-  | "NONE"
-  | (string & {});
-export const ClusterAutoscalingAutopilotGeneralProfileEnum =
-  /*@__PURE__*/ S.String;
+export type ClusterAutoscalingAutopilotGeneralProfileEnum = "AUTOPILOT_GENERAL_PROFILE_UNSPECIFIED" | "NO_PERFORMANCE" | "NONE";
+export const ClusterAutoscalingAutopilotGeneralProfileEnum = /*@__PURE__*/ S.String;
 
-export type ClusterAutoscalingAutoscalingProfileEnum =
-  | "PROFILE_UNSPECIFIED"
-  | "OPTIMIZE_UTILIZATION"
-  | "BALANCED"
-  | (string & {});
+export type ClusterAutoscalingAutoscalingProfileEnum = "PROFILE_UNSPECIFIED" | "OPTIMIZE_UTILIZATION" | "BALANCED";
 export const ClusterAutoscalingAutoscalingProfileEnum = /*@__PURE__*/ S.String;
 
 /** DefaultComputeClassConfig defines default compute class configuration. */
@@ -1656,12 +1332,10 @@ export interface DefaultComputeClassConfig {
   enabled?: boolean;
 }
 export const DefaultComputeClassConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DefaultComputeClassConfig",
-}) as any as S.Schema<DefaultComputeClassConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DefaultComputeClassConfig" }) as any as S.Schema<DefaultComputeClassConfig>;
 
 /** ClusterAutoscaling contains global, per-cluster information required by Cluster Autoscaler to automatically adjust the size of the cluster and create/delete node pools based on the current needs. */
 export interface ClusterAutoscaling {
@@ -1681,28 +1355,18 @@ export interface ClusterAutoscaling {
   defaultComputeClassConfig?: DefaultComputeClassConfig;
 }
 export const ClusterAutoscaling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableNodeAutoprovisioning: S.optional(S.Boolean),
-    autoprovisioningNodePoolDefaults: S.optional(
-      AutoprovisioningNodePoolDefaults,
-    ),
-    resourceLimits: S.optional(ResourceLimitList),
-    autoprovisioningLocations: S.optional(StringList),
-    autopilotGeneralProfile: S.optional(
-      ClusterAutoscalingAutopilotGeneralProfileEnum,
-    ),
-    autoscalingProfile: S.optional(ClusterAutoscalingAutoscalingProfileEnum),
-    defaultComputeClassConfig: S.optional(DefaultComputeClassConfig),
-  }),
-).annotate({
-  identifier: "ClusterAutoscaling",
-}) as any as S.Schema<ClusterAutoscaling>;
+S.Struct({
+  "enableNodeAutoprovisioning": S.optional(S.Boolean),
+  "autoprovisioningNodePoolDefaults": S.optional(AutoprovisioningNodePoolDefaults),
+  "resourceLimits": S.optional(ResourceLimitList),
+  "autoprovisioningLocations": S.optional(StringList),
+  "autopilotGeneralProfile": S.optional(ClusterAutoscalingAutopilotGeneralProfileEnum),
+  "autoscalingProfile": S.optional(ClusterAutoscalingAutoscalingProfileEnum),
+  "defaultComputeClassConfig": S.optional(DefaultComputeClassConfig),
+}),
+).annotate({ identifier: "ClusterAutoscaling" }) as any as S.Schema<ClusterAutoscaling>;
 
-export type AnonymousAuthenticationConfigModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "ENABLED"
-  | "LIMITED"
-  | (string & {});
+export type AnonymousAuthenticationConfigModeEnum = "MODE_UNSPECIFIED" | "ENABLED" | "LIMITED";
 export const AnonymousAuthenticationConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** AnonymousAuthenticationConfig defines the settings needed to limit endpoints that allow anonymous authentication. */
@@ -1711,18 +1375,12 @@ export interface AnonymousAuthenticationConfig {
   mode?: AnonymousAuthenticationConfigModeEnum;
 }
 export const AnonymousAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(AnonymousAuthenticationConfigModeEnum),
-  }),
-).annotate({
-  identifier: "AnonymousAuthenticationConfig",
-}) as any as S.Schema<AnonymousAuthenticationConfig>;
+S.Struct({
+  "mode": S.optional(AnonymousAuthenticationConfigModeEnum),
+}),
+).annotate({ identifier: "AnonymousAuthenticationConfig" }) as any as S.Schema<AnonymousAuthenticationConfig>;
 
-export type ManagedOpenTelemetryConfigScopeEnum =
-  | "SCOPE_UNSPECIFIED"
-  | "NONE"
-  | "COLLECTION_AND_INSTRUMENTATION_COMPONENTS"
-  | (string & {});
+export type ManagedOpenTelemetryConfigScopeEnum = "SCOPE_UNSPECIFIED" | "NONE" | "COLLECTION_AND_INSTRUMENTATION_COMPONENTS";
 export const ManagedOpenTelemetryConfigScopeEnum = /*@__PURE__*/ S.String;
 
 /** ManagedOpenTelemetryConfig is the configuration for the GKE Managed OpenTelemetry pipeline. */
@@ -1731,12 +1389,10 @@ export interface ManagedOpenTelemetryConfig {
   scope?: ManagedOpenTelemetryConfigScopeEnum;
 }
 export const ManagedOpenTelemetryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.optional(ManagedOpenTelemetryConfigScopeEnum),
-  }),
-).annotate({
-  identifier: "ManagedOpenTelemetryConfig",
-}) as any as S.Schema<ManagedOpenTelemetryConfig>;
+S.Struct({
+  "scope": S.optional(ManagedOpenTelemetryConfigScopeEnum),
+}),
+).annotate({ identifier: "ManagedOpenTelemetryConfig" }) as any as S.Schema<ManagedOpenTelemetryConfig>;
 
 /** Configuration for issuance of mTLS keys and certificates to Kubernetes pods. */
 export interface MeshCertificates {
@@ -1744,12 +1400,10 @@ export interface MeshCertificates {
   enableCertificates?: boolean;
 }
 export const MeshCertificates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableCertificates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "MeshCertificates",
-}) as any as S.Schema<MeshCertificates>;
+S.Struct({
+  "enableCertificates": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "MeshCertificates" }) as any as S.Schema<MeshCertificates>;
 
 /** Configuration for the PodSecurityPolicy feature. */
 export interface PodSecurityPolicyConfig {
@@ -1757,18 +1411,12 @@ export interface PodSecurityPolicyConfig {
   enabled?: boolean;
 }
 export const PodSecurityPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PodSecurityPolicyConfig",
-}) as any as S.Schema<PodSecurityPolicyConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PodSecurityPolicyConfig" }) as any as S.Schema<PodSecurityPolicyConfig>;
 
-export type PodAutoscalingHpaProfileEnum =
-  | "HPA_PROFILE_UNSPECIFIED"
-  | "NONE"
-  | "PERFORMANCE"
-  | (string & {});
+export type PodAutoscalingHpaProfileEnum = "HPA_PROFILE_UNSPECIFIED" | "NONE" | "PERFORMANCE";
 export const PodAutoscalingHpaProfileEnum = /*@__PURE__*/ S.String;
 
 /** PodAutoscaling is used for configuration of parameters for workload autoscaling. */
@@ -1777,16 +1425,12 @@ export interface PodAutoscaling {
   hpaProfile?: PodAutoscalingHpaProfileEnum;
 }
 export const PodAutoscaling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hpaProfile: S.optional(PodAutoscalingHpaProfileEnum),
-  }),
+S.Struct({
+  "hpaProfile": S.optional(PodAutoscalingHpaProfileEnum),
+}),
 ).annotate({ identifier: "PodAutoscaling" }) as any as S.Schema<PodAutoscaling>;
 
-export type TaintConfigArchitectureTaintBehaviorEnum =
-  | "ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED"
-  | "NONE"
-  | "ARM"
-  | (string & {});
+export type TaintConfigArchitectureTaintBehaviorEnum = "ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED" | "NONE" | "ARM";
 export const TaintConfigArchitectureTaintBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** TaintConfig contains the configuration for the taints of the node pool. */
@@ -1795,18 +1439,13 @@ export interface TaintConfig {
   architectureTaintBehavior?: TaintConfigArchitectureTaintBehaviorEnum;
 }
 export const TaintConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    architectureTaintBehavior: S.optional(
-      TaintConfigArchitectureTaintBehaviorEnum,
-    ),
-  }),
+S.Struct({
+  "architectureTaintBehavior": S.optional(TaintConfigArchitectureTaintBehaviorEnum),
+}),
 ).annotate({ identifier: "TaintConfig" }) as any as S.Schema<TaintConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Defines encryption settings for the swap space. */
 export interface EncryptionConfig {
@@ -1814,12 +1453,10 @@ export interface EncryptionConfig {
   disabled?: boolean;
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EncryptionConfig",
-}) as any as S.Schema<EncryptionConfig>;
+S.Struct({
+  "disabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
 
 /** Swap on the node's boot disk. */
 export interface BootDiskProfile {
@@ -1829,13 +1466,11 @@ export interface BootDiskProfile {
   swapSizePercent?: number;
 }
 export const BootDiskProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    swapSizeGib: S.optional(S.String),
-    swapSizePercent: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BootDiskProfile",
-}) as any as S.Schema<BootDiskProfile>;
+S.Struct({
+  "swapSizeGib": S.optional(S.String),
+  "swapSizePercent": S.optional(S.Number),
+}),
+).annotate({ identifier: "BootDiskProfile" }) as any as S.Schema<BootDiskProfile>;
 
 /** Provisions a new, separate local NVMe SSD exclusively for swap. */
 export interface DedicatedLocalSsdProfile {
@@ -1843,12 +1478,10 @@ export interface DedicatedLocalSsdProfile {
   diskCount?: string;
 }
 export const DedicatedLocalSsdProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskCount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DedicatedLocalSsdProfile",
-}) as any as S.Schema<DedicatedLocalSsdProfile>;
+S.Struct({
+  "diskCount": S.optional(S.String),
+}),
+).annotate({ identifier: "DedicatedLocalSsdProfile" }) as any as S.Schema<DedicatedLocalSsdProfile>;
 
 /** Swap on the local SSD shared with pod ephemeral storage. */
 export interface EphemeralLocalSsdProfile {
@@ -1858,13 +1491,11 @@ export interface EphemeralLocalSsdProfile {
   swapSizePercent?: number;
 }
 export const EphemeralLocalSsdProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    swapSizeGib: S.optional(S.String),
-    swapSizePercent: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EphemeralLocalSsdProfile",
-}) as any as S.Schema<EphemeralLocalSsdProfile>;
+S.Struct({
+  "swapSizeGib": S.optional(S.String),
+  "swapSizePercent": S.optional(S.Number),
+}),
+).annotate({ identifier: "EphemeralLocalSsdProfile" }) as any as S.Schema<EphemeralLocalSsdProfile>;
 
 /** Configuration for swap memory on a node pool. */
 export interface SwapConfig {
@@ -1880,20 +1511,16 @@ export interface SwapConfig {
   enabled?: boolean;
 }
 export const SwapConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionConfig: S.optional(EncryptionConfig),
-    bootDiskProfile: S.optional(BootDiskProfile),
-    dedicatedLocalSsdProfile: S.optional(DedicatedLocalSsdProfile),
-    ephemeralLocalSsdProfile: S.optional(EphemeralLocalSsdProfile),
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "encryptionConfig": S.optional(EncryptionConfig),
+  "bootDiskProfile": S.optional(BootDiskProfile),
+  "dedicatedLocalSsdProfile": S.optional(DedicatedLocalSsdProfile),
+  "ephemeralLocalSsdProfile": S.optional(EphemeralLocalSsdProfile),
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "SwapConfig" }) as any as S.Schema<SwapConfig>;
 
-export type LinuxNodeConfigCgroupModeEnum =
-  | "CGROUP_MODE_UNSPECIFIED"
-  | "CGROUP_MODE_V1"
-  | "CGROUP_MODE_V2"
-  | (string & {});
+export type LinuxNodeConfigCgroupModeEnum = "CGROUP_MODE_UNSPECIFIED" | "CGROUP_MODE_V1" | "CGROUP_MODE_V2";
 export const LinuxNodeConfigCgroupModeEnum = /*@__PURE__*/ S.String;
 
 /** DiskIoScheduler contains the configuration for the disk IO scheduler. */
@@ -1904,28 +1531,16 @@ export interface DiskIoScheduler {
   nodeAttachedDiskIoScheduler?: string;
 }
 export const DiskIoScheduler = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeSystemIoScheduler: S.optional(S.String),
-    nodeAttachedDiskIoScheduler: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DiskIoScheduler",
-}) as any as S.Schema<DiskIoScheduler>;
+S.Struct({
+  "nodeSystemIoScheduler": S.optional(S.String),
+  "nodeAttachedDiskIoScheduler": S.optional(S.String),
+}),
+).annotate({ identifier: "DiskIoScheduler" }) as any as S.Schema<DiskIoScheduler>;
 
-export type LinuxNodeConfigTransparentHugepageEnabledEnum =
-  | "TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED"
-  | "TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS"
-  | "TRANSPARENT_HUGEPAGE_ENABLED_MADVISE"
-  | "TRANSPARENT_HUGEPAGE_ENABLED_NEVER"
-  | (string & {});
-export const LinuxNodeConfigTransparentHugepageEnabledEnum =
-  /*@__PURE__*/ S.String;
+export type LinuxNodeConfigTransparentHugepageEnabledEnum = "TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED" | "TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS" | "TRANSPARENT_HUGEPAGE_ENABLED_MADVISE" | "TRANSPARENT_HUGEPAGE_ENABLED_NEVER";
+export const LinuxNodeConfigTransparentHugepageEnabledEnum = /*@__PURE__*/ S.String;
 
-export type NodeKernelModuleLoadingPolicyEnum =
-  | "POLICY_UNSPECIFIED"
-  | "ENFORCE_SIGNED_MODULES"
-  | "DO_NOT_ENFORCE_SIGNED_MODULES"
-  | (string & {});
+export type NodeKernelModuleLoadingPolicyEnum = "POLICY_UNSPECIFIED" | "ENFORCE_SIGNED_MODULES" | "DO_NOT_ENFORCE_SIGNED_MODULES";
 export const NodeKernelModuleLoadingPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for kernel module loading on nodes. */
@@ -1934,12 +1549,10 @@ export interface NodeKernelModuleLoading {
   policy?: NodeKernelModuleLoadingPolicyEnum;
 }
 export const NodeKernelModuleLoading = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(NodeKernelModuleLoadingPolicyEnum),
-  }),
-).annotate({
-  identifier: "NodeKernelModuleLoading",
-}) as any as S.Schema<NodeKernelModuleLoading>;
+S.Struct({
+  "policy": S.optional(NodeKernelModuleLoadingPolicyEnum),
+}),
+).annotate({ identifier: "NodeKernelModuleLoading" }) as any as S.Schema<NodeKernelModuleLoading>;
 
 /** InitScript provide a simply bash script to be executed on the node. */
 export interface InitScript {
@@ -1953,12 +1566,12 @@ export interface InitScript {
   gcsGeneration?: string;
 }
 export const InitScript = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    args: S.optional(StringList),
-    gcpSecretManagerSecretUri: S.optional(S.String),
-    gcsUri: S.optional(S.String),
-    gcsGeneration: S.optional(S.String),
-  }),
+S.Struct({
+  "args": S.optional(StringList),
+  "gcpSecretManagerSecretUri": S.optional(S.String),
+  "gcsUri": S.optional(S.String),
+  "gcsGeneration": S.optional(S.String),
+}),
 ).annotate({ identifier: "InitScript" }) as any as S.Schema<InitScript>;
 
 /** Support for running custom init code while bootstrapping nodes. */
@@ -1967,9 +1580,9 @@ export interface CustomNodeInit {
   initScript?: InitScript;
 }
 export const CustomNodeInit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    initScript: S.optional(InitScript),
-  }),
+S.Struct({
+  "initScript": S.optional(InitScript),
+}),
 ).annotate({ identifier: "CustomNodeInit" }) as any as S.Schema<CustomNodeInit>;
 
 /** Configuration settings for VFIO (Virtual Function I/O) on a node. VFIO allows safe, unprivileged, userspace drivers to access I/O devices. */
@@ -1978,9 +1591,9 @@ export interface NodeVfioConfig {
   dmaEntryLimit?: number;
 }
 export const NodeVfioConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dmaEntryLimit: S.optional(S.Number),
-  }),
+S.Struct({
+  "dmaEntryLimit": S.optional(S.Number),
+}),
 ).annotate({ identifier: "NodeVfioConfig" }) as any as S.Schema<NodeVfioConfig>;
 
 /** Hugepages amount in both 2m and 1g size */
@@ -1991,13 +1604,11 @@ export interface HugepagesConfig {
   hugepageSize1g?: number;
 }
 export const HugepagesConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hugepageSize2m: S.optional(S.Number),
-    hugepageSize1g: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "HugepagesConfig",
-}) as any as S.Schema<HugepagesConfig>;
+S.Struct({
+  "hugepageSize2m": S.optional(S.Number),
+  "hugepageSize1g": S.optional(S.Number),
+}),
+).annotate({ identifier: "HugepagesConfig" }) as any as S.Schema<HugepagesConfig>;
 
 /** AccurateTimeConfig contains configuration for the accurate time synchronization feature. */
 export interface AccurateTimeConfig {
@@ -2005,23 +1616,13 @@ export interface AccurateTimeConfig {
   enablePtpKvmTimeSync?: boolean;
 }
 export const AccurateTimeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enablePtpKvmTimeSync: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccurateTimeConfig",
-}) as any as S.Schema<AccurateTimeConfig>;
+S.Struct({
+  "enablePtpKvmTimeSync": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AccurateTimeConfig" }) as any as S.Schema<AccurateTimeConfig>;
 
-export type LinuxNodeConfigTransparentHugepageDefragEnum =
-  | "TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED"
-  | "TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS"
-  | "TRANSPARENT_HUGEPAGE_DEFRAG_DEFER"
-  | "TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE"
-  | "TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE"
-  | "TRANSPARENT_HUGEPAGE_DEFRAG_NEVER"
-  | (string & {});
-export const LinuxNodeConfigTransparentHugepageDefragEnum =
-  /*@__PURE__*/ S.String;
+export type LinuxNodeConfigTransparentHugepageDefragEnum = "TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED" | "TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS" | "TRANSPARENT_HUGEPAGE_DEFRAG_DEFER" | "TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE" | "TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE" | "TRANSPARENT_HUGEPAGE_DEFRAG_NEVER";
+export const LinuxNodeConfigTransparentHugepageDefragEnum = /*@__PURE__*/ S.String;
 
 /** Parameters that can be configured on Linux nodes. */
 export interface LinuxNodeConfig {
@@ -2049,32 +1650,22 @@ export interface LinuxNodeConfig {
   transparentHugepageDefrag?: LinuxNodeConfigTransparentHugepageDefragEnum;
 }
 export const LinuxNodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    swapConfig: S.optional(SwapConfig),
-    cgroupMode: S.optional(LinuxNodeConfigCgroupModeEnum),
-    diskIoScheduler: S.optional(DiskIoScheduler),
-    transparentHugepageEnabled: S.optional(
-      LinuxNodeConfigTransparentHugepageEnabledEnum,
-    ),
-    nodeKernelModuleLoading: S.optional(NodeKernelModuleLoading),
-    customNodeInit: S.optional(CustomNodeInit),
-    nodeVfioConfig: S.optional(NodeVfioConfig),
-    hugepages: S.optional(HugepagesConfig),
-    sysctls: S.optional(StringMap),
-    accurateTimeConfig: S.optional(AccurateTimeConfig),
-    transparentHugepageDefrag: S.optional(
-      LinuxNodeConfigTransparentHugepageDefragEnum,
-    ),
-  }),
-).annotate({
-  identifier: "LinuxNodeConfig",
-}) as any as S.Schema<LinuxNodeConfig>;
+S.Struct({
+  "swapConfig": S.optional(SwapConfig),
+  "cgroupMode": S.optional(LinuxNodeConfigCgroupModeEnum),
+  "diskIoScheduler": S.optional(DiskIoScheduler),
+  "transparentHugepageEnabled": S.optional(LinuxNodeConfigTransparentHugepageEnabledEnum),
+  "nodeKernelModuleLoading": S.optional(NodeKernelModuleLoading),
+  "customNodeInit": S.optional(CustomNodeInit),
+  "nodeVfioConfig": S.optional(NodeVfioConfig),
+  "hugepages": S.optional(HugepagesConfig),
+  "sysctls": S.optional(StringMap),
+  "accurateTimeConfig": S.optional(AccurateTimeConfig),
+  "transparentHugepageDefrag": S.optional(LinuxNodeConfigTransparentHugepageDefragEnum),
+}),
+).annotate({ identifier: "LinuxNodeConfig" }) as any as S.Schema<LinuxNodeConfig>;
 
-export type NodeAffinityOperatorEnum =
-  | "OPERATOR_UNSPECIFIED"
-  | "IN"
-  | "NOT_IN"
-  | (string & {});
+export type NodeAffinityOperatorEnum = "OPERATOR_UNSPECIFIED" | "IN" | "NOT_IN";
 export const NodeAffinityOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity). */
@@ -2087,17 +1678,15 @@ export interface NodeAffinity {
   key?: string;
 }
 export const NodeAffinity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: S.optional(NodeAffinityOperatorEnum),
-    values: S.optional(StringList),
-    key: S.optional(S.String),
-  }),
+S.Struct({
+  "operator": S.optional(NodeAffinityOperatorEnum),
+  "values": S.optional(StringList),
+  "key": S.optional(S.String),
+}),
 ).annotate({ identifier: "NodeAffinity" }) as any as S.Schema<NodeAffinity>;
 
 export type NodeAffinityList = ReadonlyArray<NodeAffinity>;
-export const NodeAffinityList = /*@__PURE__*/ S.Array(
-  NodeAffinity,
-) as any as S.Schema<NodeAffinityList>;
+export const NodeAffinityList = /*@__PURE__*/ S.Array(NodeAffinity) as any as S.Schema<NodeAffinityList>;
 
 /** SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool. */
 export interface SoleTenantConfig {
@@ -2107,13 +1696,11 @@ export interface SoleTenantConfig {
   minNodeCpus?: number;
 }
 export const SoleTenantConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeAffinities: S.optional(NodeAffinityList),
-    minNodeCpus: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SoleTenantConfig",
-}) as any as S.Schema<SoleTenantConfig>;
+S.Struct({
+  "nodeAffinities": S.optional(NodeAffinityList),
+  "minNodeCpus": S.optional(S.Number),
+}),
+).annotate({ identifier: "SoleTenantConfig" }) as any as S.Schema<SoleTenantConfig>;
 
 /** EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs. */
 export interface EphemeralStorageLocalSsdConfig {
@@ -2123,13 +1710,11 @@ export interface EphemeralStorageLocalSsdConfig {
   dataCacheCount?: number;
 }
 export const EphemeralStorageLocalSsdConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localSsdCount: S.optional(S.Number),
-    dataCacheCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EphemeralStorageLocalSsdConfig",
-}) as any as S.Schema<EphemeralStorageLocalSsdConfig>;
+S.Struct({
+  "localSsdCount": S.optional(S.Number),
+  "dataCacheCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "EphemeralStorageLocalSsdConfig" }) as any as S.Schema<EphemeralStorageLocalSsdConfig>;
 
 /** Configuration of Fast Socket feature. */
 export interface FastSocket {
@@ -2137,23 +1722,15 @@ export interface FastSocket {
   enabled?: boolean;
 }
 export const FastSocket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "FastSocket" }) as any as S.Schema<FastSocket>;
 
-export type NodeConfigEffectiveCgroupModeEnum =
-  | "EFFECTIVE_CGROUP_MODE_UNSPECIFIED"
-  | "EFFECTIVE_CGROUP_MODE_V1"
-  | "EFFECTIVE_CGROUP_MODE_V2"
-  | (string & {});
+export type NodeConfigEffectiveCgroupModeEnum = "EFFECTIVE_CGROUP_MODE_UNSPECIFIED" | "EFFECTIVE_CGROUP_MODE_V1" | "EFFECTIVE_CGROUP_MODE_V2";
 export const NodeConfigEffectiveCgroupModeEnum = /*@__PURE__*/ S.String;
 
-export type LoggingVariantConfigVariantEnum =
-  | "VARIANT_UNSPECIFIED"
-  | "DEFAULT"
-  | "MAX_THROUGHPUT"
-  | (string & {});
+export type LoggingVariantConfigVariantEnum = "VARIANT_UNSPECIFIED" | "DEFAULT" | "MAX_THROUGHPUT";
 export const LoggingVariantConfigVariantEnum = /*@__PURE__*/ S.String;
 
 /** LoggingVariantConfig specifies the behaviour of the logging component. */
@@ -2162,12 +1739,10 @@ export interface LoggingVariantConfig {
   variant?: LoggingVariantConfigVariantEnum;
 }
 export const LoggingVariantConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variant: S.optional(LoggingVariantConfigVariantEnum),
-  }),
-).annotate({
-  identifier: "LoggingVariantConfig",
-}) as any as S.Schema<LoggingVariantConfig>;
+S.Struct({
+  "variant": S.optional(LoggingVariantConfigVariantEnum),
+}),
+).annotate({ identifier: "LoggingVariantConfig" }) as any as S.Schema<LoggingVariantConfig>;
 
 /** NodePoolLoggingConfig specifies logging configuration for node pools. */
 export interface NodePoolLoggingConfig {
@@ -2175,12 +1750,10 @@ export interface NodePoolLoggingConfig {
   variantConfig?: LoggingVariantConfig;
 }
 export const NodePoolLoggingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variantConfig: S.optional(LoggingVariantConfig),
-  }),
-).annotate({
-  identifier: "NodePoolLoggingConfig",
-}) as any as S.Schema<NodePoolLoggingConfig>;
+S.Struct({
+  "variantConfig": S.optional(LoggingVariantConfig),
+}),
+).annotate({ identifier: "NodePoolLoggingConfig" }) as any as S.Schema<NodePoolLoggingConfig>;
 
 /** GcfsConfig contains configurations of Google Container File System. */
 export interface GcfsConfig {
@@ -2188,23 +1761,15 @@ export interface GcfsConfig {
   enabled?: boolean;
 }
 export const GcfsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "GcfsConfig" }) as any as S.Schema<GcfsConfig>;
 
-export type NodeConfigLocalSsdEncryptionModeEnum =
-  | "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED"
-  | "STANDARD_ENCRYPTION"
-  | "EPHEMERAL_KEY_ENCRYPTION"
-  | (string & {});
+export type NodeConfigLocalSsdEncryptionModeEnum = "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED" | "STANDARD_ENCRYPTION" | "EPHEMERAL_KEY_ENCRYPTION";
 export const NodeConfigLocalSsdEncryptionModeEnum = /*@__PURE__*/ S.String;
 
-export type WindowsNodeConfigOsVersionEnum =
-  | "OS_VERSION_UNSPECIFIED"
-  | "OS_VERSION_LTSC2019"
-  | "OS_VERSION_LTSC2022"
-  | (string & {});
+export type WindowsNodeConfigOsVersionEnum = "OS_VERSION_UNSPECIFIED" | "OS_VERSION_LTSC2019" | "OS_VERSION_LTSC2022";
 export const WindowsNodeConfigOsVersionEnum = /*@__PURE__*/ S.String;
 
 /** Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings. */
@@ -2213,12 +1778,10 @@ export interface WindowsNodeConfig {
   osVersion?: WindowsNodeConfigOsVersionEnum;
 }
 export const WindowsNodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osVersion: S.optional(WindowsNodeConfigOsVersionEnum),
-  }),
-).annotate({
-  identifier: "WindowsNodeConfig",
-}) as any as S.Schema<WindowsNodeConfig>;
+S.Struct({
+  "osVersion": S.optional(WindowsNodeConfigOsVersionEnum),
+}),
+).annotate({ identifier: "WindowsNodeConfig" }) as any as S.Schema<WindowsNodeConfig>;
 
 /** EphemeralStorageConfig contains configuration for the ephemeral storage filesystem. */
 export interface EphemeralStorageConfig {
@@ -2226,29 +1789,19 @@ export interface EphemeralStorageConfig {
   localSsdCount?: number;
 }
 export const EphemeralStorageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localSsdCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EphemeralStorageConfig",
-}) as any as S.Schema<EphemeralStorageConfig>;
+S.Struct({
+  "localSsdCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "EphemeralStorageConfig" }) as any as S.Schema<EphemeralStorageConfig>;
 
 /** SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks. */
 export interface SecondaryBootDiskUpdateStrategy {}
 export const SecondaryBootDiskUpdateStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SecondaryBootDiskUpdateStrategy",
-}) as any as S.Schema<SecondaryBootDiskUpdateStrategy>;
+S.Struct({}),
+).annotate({ identifier: "SecondaryBootDiskUpdateStrategy" }) as any as S.Schema<SecondaryBootDiskUpdateStrategy>;
 
-export type ConfidentialNodesConfidentialInstanceTypeEnum =
-  | "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"
-  | "SEV"
-  | "SEV_SNP"
-  | "TDX"
-  | (string & {});
-export const ConfidentialNodesConfidentialInstanceTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ConfidentialNodesConfidentialInstanceTypeEnum = "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED" | "SEV" | "SEV_SNP" | "TDX";
+export const ConfidentialNodesConfidentialInstanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs. */
 export interface ConfidentialNodes {
@@ -2258,15 +1811,11 @@ export interface ConfidentialNodes {
   confidentialInstanceType?: ConfidentialNodesConfidentialInstanceTypeEnum;
 }
 export const ConfidentialNodes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    confidentialInstanceType: S.optional(
-      ConfidentialNodesConfidentialInstanceTypeEnum,
-    ),
-  }),
-).annotate({
-  identifier: "ConfidentialNodes",
-}) as any as S.Schema<ConfidentialNodes>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "confidentialInstanceType": S.optional(ConfidentialNodesConfidentialInstanceTypeEnum),
+}),
+).annotate({ identifier: "ConfidentialNodes" }) as any as S.Schema<ConfidentialNodes>;
 
 /** Strategy that will trigger maintenance on behalf of the customer. */
 export interface OpportunisticMaintenanceStrategy {
@@ -2278,22 +1827,15 @@ export interface OpportunisticMaintenanceStrategy {
   nodeIdleTimeWindow?: string;
 }
 export const OpportunisticMaintenanceStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maintenanceAvailabilityWindow: S.optional(S.String),
-    minNodesPerPool: S.optional(S.String),
-    nodeIdleTimeWindow: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OpportunisticMaintenanceStrategy",
-}) as any as S.Schema<OpportunisticMaintenanceStrategy>;
+S.Struct({
+  "maintenanceAvailabilityWindow": S.optional(S.String),
+  "minNodesPerPool": S.optional(S.String),
+  "nodeIdleTimeWindow": S.optional(S.String),
+}),
+).annotate({ identifier: "OpportunisticMaintenanceStrategy" }) as any as S.Schema<OpportunisticMaintenanceStrategy>;
 
-export type HostMaintenancePolicyMaintenanceIntervalEnum =
-  | "MAINTENANCE_INTERVAL_UNSPECIFIED"
-  | "AS_NEEDED"
-  | "PERIODIC"
-  | (string & {});
-export const HostMaintenancePolicyMaintenanceIntervalEnum =
-  /*@__PURE__*/ S.String;
+export type HostMaintenancePolicyMaintenanceIntervalEnum = "MAINTENANCE_INTERVAL_UNSPECIFIED" | "AS_NEEDED" | "PERIODIC";
+export const HostMaintenancePolicyMaintenanceIntervalEnum = /*@__PURE__*/ S.String;
 
 /** HostMaintenancePolicy contains the maintenance policy for the hosts on which the GKE VMs run on. */
 export interface HostMaintenancePolicy {
@@ -2303,19 +1845,13 @@ export interface HostMaintenancePolicy {
   maintenanceInterval?: HostMaintenancePolicyMaintenanceIntervalEnum;
 }
 export const HostMaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    opportunisticMaintenanceStrategy: S.optional(
-      OpportunisticMaintenanceStrategy,
-    ),
-    maintenanceInterval: S.optional(
-      HostMaintenancePolicyMaintenanceIntervalEnum,
-    ),
-  }),
-).annotate({
-  identifier: "HostMaintenancePolicy",
-}) as any as S.Schema<HostMaintenancePolicy>;
+S.Struct({
+  "opportunisticMaintenanceStrategy": S.optional(OpportunisticMaintenanceStrategy),
+  "maintenanceInterval": S.optional(HostMaintenancePolicyMaintenanceIntervalEnum),
+}),
+).annotate({ identifier: "HostMaintenancePolicy" }) as any as S.Schema<HostMaintenancePolicy>;
 
-export type SandboxConfigTypeEnum = "UNSPECIFIED" | "GVISOR" | (string & {});
+export type SandboxConfigTypeEnum = "UNSPECIFIED" | "GVISOR";
 export const SandboxConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** SandboxConfig contains configurations of the sandbox to use for the node. */
@@ -2326,10 +1862,10 @@ export interface SandboxConfig {
   type?: SandboxConfigTypeEnum;
 }
 export const SandboxConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sandboxType: S.optional(S.String),
-    type: S.optional(SandboxConfigTypeEnum),
-  }),
+S.Struct({
+  "sandboxType": S.optional(S.String),
+  "type": S.optional(SandboxConfigTypeEnum),
+}),
 ).annotate({ identifier: "SandboxConfig" }) as any as S.Schema<SandboxConfig>;
 
 /** CustomImageConfig contains the information r */
@@ -2340,27 +1876,16 @@ export interface CustomImageConfig {
   imageProject?: string;
 }
 export const CustomImageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(S.String),
-    imageProject: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomImageConfig",
-}) as any as S.Schema<CustomImageConfig>;
+S.Struct({
+  "image": S.optional(S.String),
+  "imageProject": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomImageConfig" }) as any as S.Schema<CustomImageConfig>;
 
-export type WorkloadMetadataConfigNodeMetadataEnum =
-  | "UNSPECIFIED"
-  | "SECURE"
-  | "EXPOSE"
-  | "GKE_METADATA_SERVER"
-  | (string & {});
+export type WorkloadMetadataConfigNodeMetadataEnum = "UNSPECIFIED" | "SECURE" | "EXPOSE" | "GKE_METADATA_SERVER";
 export const WorkloadMetadataConfigNodeMetadataEnum = /*@__PURE__*/ S.String;
 
-export type WorkloadMetadataConfigModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "GCE_METADATA"
-  | "GKE_METADATA"
-  | (string & {});
+export type WorkloadMetadataConfigModeEnum = "MODE_UNSPECIFIED" | "GCE_METADATA" | "GKE_METADATA";
 export const WorkloadMetadataConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool. */
@@ -2371,13 +1896,11 @@ export interface WorkloadMetadataConfig {
   mode?: WorkloadMetadataConfigModeEnum;
 }
 export const WorkloadMetadataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeMetadata: S.optional(WorkloadMetadataConfigNodeMetadataEnum),
-    mode: S.optional(WorkloadMetadataConfigModeEnum),
-  }),
-).annotate({
-  identifier: "WorkloadMetadataConfig",
-}) as any as S.Schema<WorkloadMetadataConfig>;
+S.Struct({
+  "nodeMetadata": S.optional(WorkloadMetadataConfigNodeMetadataEnum),
+  "mode": S.optional(WorkloadMetadataConfigModeEnum),
+}),
+).annotate({ identifier: "WorkloadMetadataConfig" }) as any as S.Schema<WorkloadMetadataConfig>;
 
 /** LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs */
 export interface LocalNvmeSsdBlockConfig {
@@ -2385,12 +1908,10 @@ export interface LocalNvmeSsdBlockConfig {
   localSsdCount?: number;
 }
 export const LocalNvmeSsdBlockConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localSsdCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "LocalNvmeSsdBlockConfig",
-}) as any as S.Schema<LocalNvmeSsdBlockConfig>;
+S.Struct({
+  "localSsdCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "LocalNvmeSsdBlockConfig" }) as any as S.Schema<LocalNvmeSsdBlockConfig>;
 
 /** TopologyManager defines the configuration options for the [`kubelet` Topology Manager component](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/). For more information about the supported machine types and versions for the Topology Manager in GKE, see [Customizing node system configuration](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-resource-managers). */
 export interface TopologyManager {
@@ -2400,13 +1921,11 @@ export interface TopologyManager {
   policy?: string;
 }
 export const TopologyManager = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.optional(S.String),
-    policy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TopologyManager",
-}) as any as S.Schema<TopologyManager>;
+S.Struct({
+  "scope": S.optional(S.String),
+  "policy": S.optional(S.String),
+}),
+).annotate({ identifier: "TopologyManager" }) as any as S.Schema<TopologyManager>;
 
 /** The option enables the Kubernetes NUMA-aware Memory Manager feature. Detailed description about the feature can be found [here](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/). */
 export interface MemoryManager {
@@ -2414,9 +1933,9 @@ export interface MemoryManager {
   policy?: string;
 }
 export const MemoryManager = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(S.String),
-  }),
+S.Struct({
+  "policy": S.optional(S.String),
+}),
 ).annotate({ identifier: "MemoryManager" }) as any as S.Schema<MemoryManager>;
 
 /** Eviction grace periods are grace periods for each eviction signal. */
@@ -2435,17 +1954,15 @@ export interface EvictionGracePeriod {
   nodefsInodesFree?: string;
 }
 export const EvictionGracePeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imagefsAvailable: S.optional(S.String),
-    pidAvailable: S.optional(S.String),
-    nodefsAvailable: S.optional(S.String),
-    imagefsInodesFree: S.optional(S.String),
-    memoryAvailable: S.optional(S.String),
-    nodefsInodesFree: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EvictionGracePeriod",
-}) as any as S.Schema<EvictionGracePeriod>;
+S.Struct({
+  "imagefsAvailable": S.optional(S.String),
+  "pidAvailable": S.optional(S.String),
+  "nodefsAvailable": S.optional(S.String),
+  "imagefsInodesFree": S.optional(S.String),
+  "memoryAvailable": S.optional(S.String),
+  "nodefsInodesFree": S.optional(S.String),
+}),
+).annotate({ identifier: "EvictionGracePeriod" }) as any as S.Schema<EvictionGracePeriod>;
 
 /** Eviction minimum reclaims are the resource amounts of minimum reclaims for each eviction signal. */
 export interface EvictionMinimumReclaim {
@@ -2463,17 +1980,15 @@ export interface EvictionMinimumReclaim {
   imagefsAvailable?: string;
 }
 export const EvictionMinimumReclaim = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodefsInodesFree: S.optional(S.String),
-    nodefsAvailable: S.optional(S.String),
-    imagefsInodesFree: S.optional(S.String),
-    memoryAvailable: S.optional(S.String),
-    pidAvailable: S.optional(S.String),
-    imagefsAvailable: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EvictionMinimumReclaim",
-}) as any as S.Schema<EvictionMinimumReclaim>;
+S.Struct({
+  "nodefsInodesFree": S.optional(S.String),
+  "nodefsAvailable": S.optional(S.String),
+  "imagefsInodesFree": S.optional(S.String),
+  "memoryAvailable": S.optional(S.String),
+  "pidAvailable": S.optional(S.String),
+  "imagefsAvailable": S.optional(S.String),
+}),
+).annotate({ identifier: "EvictionMinimumReclaim" }) as any as S.Schema<EvictionMinimumReclaim>;
 
 /** Contains config to modify node-level parameters for container restart behavior. */
 export interface CrashLoopBackOffConfig {
@@ -2481,12 +1996,10 @@ export interface CrashLoopBackOffConfig {
   maxContainerRestartPeriod?: string;
 }
 export const CrashLoopBackOffConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxContainerRestartPeriod: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CrashLoopBackOffConfig",
-}) as any as S.Schema<CrashLoopBackOffConfig>;
+S.Struct({
+  "maxContainerRestartPeriod": S.optional(S.String),
+}),
+).annotate({ identifier: "CrashLoopBackOffConfig" }) as any as S.Schema<CrashLoopBackOffConfig>;
 
 /** Eviction signals are the current state of a particular resource at a specific point in time. The kubelet uses eviction signals to make eviction decisions by comparing the signals to eviction thresholds, which are the minimum amount of the resource that should be available on the node. */
 export interface EvictionSignals {
@@ -2504,17 +2017,15 @@ export interface EvictionSignals {
   pidAvailable?: string;
 }
 export const EvictionSignals = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodefsAvailable: S.optional(S.String),
-    imagefsInodesFree: S.optional(S.String),
-    memoryAvailable: S.optional(S.String),
-    nodefsInodesFree: S.optional(S.String),
-    imagefsAvailable: S.optional(S.String),
-    pidAvailable: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EvictionSignals",
-}) as any as S.Schema<EvictionSignals>;
+S.Struct({
+  "nodefsAvailable": S.optional(S.String),
+  "imagefsInodesFree": S.optional(S.String),
+  "memoryAvailable": S.optional(S.String),
+  "nodefsInodesFree": S.optional(S.String),
+  "imagefsAvailable": S.optional(S.String),
+  "pidAvailable": S.optional(S.String),
+}),
+).annotate({ identifier: "EvictionSignals" }) as any as S.Schema<EvictionSignals>;
 
 /** Node kubelet configs. */
 export interface NodeKubeletConfig {
@@ -2566,43 +2077,35 @@ export interface NodeKubeletConfig {
   shutdownGracePeriodSeconds?: number;
 }
 export const NodeKubeletConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topologyManager: S.optional(TopologyManager),
-    imageGcLowThresholdPercent: S.optional(S.Number),
-    allowedUnsafeSysctls: S.optional(StringList),
-    imageMinimumGcAge: S.optional(S.String),
-    memoryManager: S.optional(MemoryManager),
-    insecureKubeletReadonlyPortEnabled: S.optional(S.Boolean),
-    podPidsLimit: S.optional(S.String),
-    singleProcessOomKill: S.optional(S.Boolean),
-    imageMaximumGcAge: S.optional(S.String),
-    evictionMaxPodGracePeriodSeconds: S.optional(S.Number),
-    imageGcHighThresholdPercent: S.optional(S.Number),
-    evictionSoftGracePeriod: S.optional(EvictionGracePeriod),
-    evictionMinimumReclaim: S.optional(EvictionMinimumReclaim),
-    shutdownGracePeriodCriticalPodsSeconds: S.optional(S.Number),
-    cpuCfsQuota: S.optional(S.Boolean),
-    maxParallelImagePulls: S.optional(S.Number),
-    crashLoopBackOff: S.optional(CrashLoopBackOffConfig),
-    cpuCfsQuotaPeriod: S.optional(S.String),
-    evictionSoft: S.optional(EvictionSignals),
-    containerLogMaxFiles: S.optional(S.Number),
-    containerLogMaxSize: S.optional(S.String),
-    cpuManagerPolicy: S.optional(S.String),
-    shutdownGracePeriodSeconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "NodeKubeletConfig",
-}) as any as S.Schema<NodeKubeletConfig>;
+S.Struct({
+  "topologyManager": S.optional(TopologyManager),
+  "imageGcLowThresholdPercent": S.optional(S.Number),
+  "allowedUnsafeSysctls": S.optional(StringList),
+  "imageMinimumGcAge": S.optional(S.String),
+  "memoryManager": S.optional(MemoryManager),
+  "insecureKubeletReadonlyPortEnabled": S.optional(S.Boolean),
+  "podPidsLimit": S.optional(S.String),
+  "singleProcessOomKill": S.optional(S.Boolean),
+  "imageMaximumGcAge": S.optional(S.String),
+  "evictionMaxPodGracePeriodSeconds": S.optional(S.Number),
+  "imageGcHighThresholdPercent": S.optional(S.Number),
+  "evictionSoftGracePeriod": S.optional(EvictionGracePeriod),
+  "evictionMinimumReclaim": S.optional(EvictionMinimumReclaim),
+  "shutdownGracePeriodCriticalPodsSeconds": S.optional(S.Number),
+  "cpuCfsQuota": S.optional(S.Boolean),
+  "maxParallelImagePulls": S.optional(S.Number),
+  "crashLoopBackOff": S.optional(CrashLoopBackOffConfig),
+  "cpuCfsQuotaPeriod": S.optional(S.String),
+  "evictionSoft": S.optional(EvictionSignals),
+  "containerLogMaxFiles": S.optional(S.Number),
+  "containerLogMaxSize": S.optional(S.String),
+  "cpuManagerPolicy": S.optional(S.String),
+  "shutdownGracePeriodSeconds": S.optional(S.Number),
+}),
+).annotate({ identifier: "NodeKubeletConfig" }) as any as S.Schema<NodeKubeletConfig>;
 
-export type AdvancedMachineFeaturesPerformanceMonitoringUnitEnum =
-  | "PERFORMANCE_MONITORING_UNIT_UNSPECIFIED"
-  | "ARCHITECTURAL"
-  | "STANDARD"
-  | "ENHANCED"
-  | (string & {});
-export const AdvancedMachineFeaturesPerformanceMonitoringUnitEnum =
-  /*@__PURE__*/ S.String;
+export type AdvancedMachineFeaturesPerformanceMonitoringUnitEnum = "PERFORMANCE_MONITORING_UNIT_UNSPECIFIED" | "ARCHITECTURAL" | "STANDARD" | "ENHANCED";
+export const AdvancedMachineFeaturesPerformanceMonitoringUnitEnum = /*@__PURE__*/ S.String;
 
 /** Specifies options for controlling advanced machine features. */
 export interface AdvancedMachineFeatures {
@@ -2614,21 +2117,14 @@ export interface AdvancedMachineFeatures {
   performanceMonitoringUnit?: AdvancedMachineFeaturesPerformanceMonitoringUnitEnum;
 }
 export const AdvancedMachineFeatures = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    threadsPerCore: S.optional(S.String),
-    enableNestedVirtualization: S.optional(S.Boolean),
-    performanceMonitoringUnit: S.optional(
-      AdvancedMachineFeaturesPerformanceMonitoringUnitEnum,
-    ),
-  }),
-).annotate({
-  identifier: "AdvancedMachineFeatures",
-}) as any as S.Schema<AdvancedMachineFeatures>;
+S.Struct({
+  "threadsPerCore": S.optional(S.String),
+  "enableNestedVirtualization": S.optional(S.Boolean),
+  "performanceMonitoringUnit": S.optional(AdvancedMachineFeaturesPerformanceMonitoringUnitEnum),
+}),
+).annotate({ identifier: "AdvancedMachineFeatures" }) as any as S.Schema<AdvancedMachineFeatures>;
 
-export type SecondaryBootDiskModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "CONTAINER_IMAGE_CACHE"
-  | (string & {});
+export type SecondaryBootDiskModeEnum = "MODE_UNSPECIFIED" | "CONTAINER_IMAGE_CACHE";
 export const SecondaryBootDiskModeEnum = /*@__PURE__*/ S.String;
 
 /** SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode. */
@@ -2639,18 +2135,14 @@ export interface SecondaryBootDisk {
   diskImage?: string;
 }
 export const SecondaryBootDisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(SecondaryBootDiskModeEnum),
-    diskImage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecondaryBootDisk",
-}) as any as S.Schema<SecondaryBootDisk>;
+S.Struct({
+  "mode": S.optional(SecondaryBootDiskModeEnum),
+  "diskImage": S.optional(S.String),
+}),
+).annotate({ identifier: "SecondaryBootDisk" }) as any as S.Schema<SecondaryBootDisk>;
 
 export type SecondaryBootDiskList = ReadonlyArray<SecondaryBootDisk>;
-export const SecondaryBootDiskList = /*@__PURE__*/ S.Array(
-  SecondaryBootDisk,
-) as any as S.Schema<SecondaryBootDiskList>;
+export const SecondaryBootDiskList = /*@__PURE__*/ S.Array(SecondaryBootDisk) as any as S.Schema<SecondaryBootDiskList>;
 
 /** BootDisk specifies the boot disk configuration for node pools. */
 export interface BootDisk {
@@ -2664,23 +2156,16 @@ export interface BootDisk {
   provisionedThroughput?: string;
 }
 export const BootDisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskType: S.optional(S.String),
-    sizeGb: S.optional(S.String),
-    provisionedIops: S.optional(S.String),
-    provisionedThroughput: S.optional(S.String),
-  }),
+S.Struct({
+  "diskType": S.optional(S.String),
+  "sizeGb": S.optional(S.String),
+  "provisionedIops": S.optional(S.String),
+  "provisionedThroughput": S.optional(S.String),
+}),
 ).annotate({ identifier: "BootDisk" }) as any as S.Schema<BootDisk>;
 
-export type ReservationAffinityConsumeReservationTypeEnum =
-  | "UNSPECIFIED"
-  | "NO_RESERVATION"
-  | "ANY_RESERVATION"
-  | "SPECIFIC_RESERVATION"
-  | "ANY_RESERVATION_THEN_FAIL"
-  | (string & {});
-export const ReservationAffinityConsumeReservationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ReservationAffinityConsumeReservationTypeEnum = "UNSPECIFIED" | "NO_RESERVATION" | "ANY_RESERVATION" | "SPECIFIC_RESERVATION" | "ANY_RESERVATION_THEN_FAIL";
+export const ReservationAffinityConsumeReservationTypeEnum = /*@__PURE__*/ S.String;
 
 /** [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) is the configuration of desired reservation which instances could take capacity from. */
 export interface ReservationAffinity {
@@ -2692,16 +2177,12 @@ export interface ReservationAffinity {
   key?: string;
 }
 export const ReservationAffinity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-    consumeReservationType: S.optional(
-      ReservationAffinityConsumeReservationTypeEnum,
-    ),
-    key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReservationAffinity",
-}) as any as S.Schema<ReservationAffinity>;
+S.Struct({
+  "values": S.optional(StringList),
+  "consumeReservationType": S.optional(ReservationAffinityConsumeReservationTypeEnum),
+  "key": S.optional(S.String),
+}),
+).annotate({ identifier: "ReservationAffinity" }) as any as S.Schema<ReservationAffinity>;
 
 /** Configuration of gVNIC feature. */
 export interface VirtualNIC {
@@ -2709,9 +2190,9 @@ export interface VirtualNIC {
   enabled?: boolean;
 }
 export const VirtualNIC = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "VirtualNIC" }) as any as S.Schema<VirtualNIC>;
 
 /** A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications in https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. */
@@ -2720,17 +2201,12 @@ export interface ResourceManagerTags {
   tags?: StringMap;
 }
 export const ResourceManagerTags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "ResourceManagerTags",
-}) as any as S.Schema<ResourceManagerTags>;
+S.Struct({
+  "tags": S.optional(StringMap),
+}),
+).annotate({ identifier: "ResourceManagerTags" }) as any as S.Schema<ResourceManagerTags>;
 
-export type GPUDirectConfigGpuDirectStrategyEnum =
-  | "GPU_DIRECT_STRATEGY_UNSPECIFIED"
-  | "RDMA"
-  | (string & {});
+export type GPUDirectConfigGpuDirectStrategyEnum = "GPU_DIRECT_STRATEGY_UNSPECIFIED" | "RDMA";
 export const GPUDirectConfigGpuDirectStrategyEnum = /*@__PURE__*/ S.String;
 
 /** GPUDirectConfig specifies the GPU direct strategy on the node pool. */
@@ -2739,12 +2215,10 @@ export interface GPUDirectConfig {
   gpuDirectStrategy?: GPUDirectConfigGpuDirectStrategyEnum;
 }
 export const GPUDirectConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gpuDirectStrategy: S.optional(GPUDirectConfigGpuDirectStrategyEnum),
-  }),
-).annotate({
-  identifier: "GPUDirectConfig",
-}) as any as S.Schema<GPUDirectConfig>;
+S.Struct({
+  "gpuDirectStrategy": S.optional(GPUDirectConfigGpuDirectStrategyEnum),
+}),
+).annotate({ identifier: "GPUDirectConfig" }) as any as S.Schema<GPUDirectConfig>;
 
 /** GCPSecretManagerCertificateConfig configures a secret from [Secret Manager](https://cloud.google.com/secret-manager). */
 export interface GCPSecretManagerCertificateConfig {
@@ -2752,12 +2226,10 @@ export interface GCPSecretManagerCertificateConfig {
   secretUri?: string;
 }
 export const GCPSecretManagerCertificateConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secretUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GCPSecretManagerCertificateConfig",
-}) as any as S.Schema<GCPSecretManagerCertificateConfig>;
+S.Struct({
+  "secretUri": S.optional(S.String),
+}),
+).annotate({ identifier: "GCPSecretManagerCertificateConfig" }) as any as S.Schema<GCPSecretManagerCertificateConfig>;
 
 /** CertificateAuthorityDomainConfig configures one or more fully qualified domain names (FQDN) to a specific certificate. */
 export interface CertificateAuthorityDomainConfig {
@@ -2767,21 +2239,14 @@ export interface CertificateAuthorityDomainConfig {
   gcpSecretManagerCertificateConfig?: GCPSecretManagerCertificateConfig;
 }
 export const CertificateAuthorityDomainConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fqdns: S.optional(StringList),
-    gcpSecretManagerCertificateConfig: S.optional(
-      GCPSecretManagerCertificateConfig,
-    ),
-  }),
-).annotate({
-  identifier: "CertificateAuthorityDomainConfig",
-}) as any as S.Schema<CertificateAuthorityDomainConfig>;
+S.Struct({
+  "fqdns": S.optional(StringList),
+  "gcpSecretManagerCertificateConfig": S.optional(GCPSecretManagerCertificateConfig),
+}),
+).annotate({ identifier: "CertificateAuthorityDomainConfig" }) as any as S.Schema<CertificateAuthorityDomainConfig>;
 
-export type CertificateAuthorityDomainConfigList =
-  ReadonlyArray<CertificateAuthorityDomainConfig>;
-export const CertificateAuthorityDomainConfigList = /*@__PURE__*/ S.Array(
-  CertificateAuthorityDomainConfig,
-) as any as S.Schema<CertificateAuthorityDomainConfigList>;
+export type CertificateAuthorityDomainConfigList = ReadonlyArray<CertificateAuthorityDomainConfig>;
+export const CertificateAuthorityDomainConfigList = /*@__PURE__*/ S.Array(CertificateAuthorityDomainConfig) as any as S.Schema<CertificateAuthorityDomainConfigList>;
 
 /** PrivateRegistryAccessConfig contains access configuration for private container registries. */
 export interface PrivateRegistryAccessConfig {
@@ -2791,15 +2256,11 @@ export interface PrivateRegistryAccessConfig {
   certificateAuthorityDomainConfig?: CertificateAuthorityDomainConfigList;
 }
 export const PrivateRegistryAccessConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    certificateAuthorityDomainConfig: S.optional(
-      CertificateAuthorityDomainConfigList,
-    ),
-  }),
-).annotate({
-  identifier: "PrivateRegistryAccessConfig",
-}) as any as S.Schema<PrivateRegistryAccessConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "certificateAuthorityDomainConfig": S.optional(CertificateAuthorityDomainConfigList),
+}),
+).annotate({ identifier: "PrivateRegistryAccessConfig" }) as any as S.Schema<PrivateRegistryAccessConfig>;
 
 /** Defines writable cgroups configuration. */
 export interface WritableCgroups {
@@ -2807,12 +2268,10 @@ export interface WritableCgroups {
   enabled?: boolean;
 }
 export const WritableCgroups = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "WritableCgroups",
-}) as any as S.Schema<WritableCgroups>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "WritableCgroups" }) as any as S.Schema<WritableCgroups>;
 
 /** CertificateConfig configures certificate for the registry. */
 export interface CertificateConfig {
@@ -2820,12 +2279,10 @@ export interface CertificateConfig {
   gcpSecretManagerSecretUri?: string;
 }
 export const CertificateConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcpSecretManagerSecretUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertificateConfig",
-}) as any as S.Schema<CertificateConfig>;
+S.Struct({
+  "gcpSecretManagerSecretUri": S.optional(S.String),
+}),
+).annotate({ identifier: "CertificateConfig" }) as any as S.Schema<CertificateConfig>;
 
 /** CertificateConfigPair configures pairs of certificates, which is used for client certificate and key pairs under a registry. */
 export interface CertificateConfigPair {
@@ -2835,37 +2292,23 @@ export interface CertificateConfigPair {
   key?: CertificateConfig;
 }
 export const CertificateConfigPair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cert: S.optional(CertificateConfig),
-    key: S.optional(CertificateConfig),
-  }),
-).annotate({
-  identifier: "CertificateConfigPair",
-}) as any as S.Schema<CertificateConfigPair>;
+S.Struct({
+  "cert": S.optional(CertificateConfig),
+  "key": S.optional(CertificateConfig),
+}),
+).annotate({ identifier: "CertificateConfigPair" }) as any as S.Schema<CertificateConfigPair>;
 
 export type CertificateConfigPairList = ReadonlyArray<CertificateConfigPair>;
-export const CertificateConfigPairList = /*@__PURE__*/ S.Array(
-  CertificateConfigPair,
-) as any as S.Schema<CertificateConfigPairList>;
+export const CertificateConfigPairList = /*@__PURE__*/ S.Array(CertificateConfigPair) as any as S.Schema<CertificateConfigPairList>;
 
-export type HostConfigCapabilitiesItemEnum =
-  | "HOST_CAPABILITY_UNSPECIFIED"
-  | "HOST_CAPABILITY_PULL"
-  | "HOST_CAPABILITY_RESOLVE"
-  | "HOST_CAPABILITY_PUSH"
-  | (string & {});
+export type HostConfigCapabilitiesItemEnum = "HOST_CAPABILITY_UNSPECIFIED" | "HOST_CAPABILITY_PULL" | "HOST_CAPABILITY_RESOLVE" | "HOST_CAPABILITY_PUSH";
 export const HostConfigCapabilitiesItemEnum = /*@__PURE__*/ S.String;
 
-export type HostConfigCapabilitiesItemEnumList =
-  ReadonlyArray<HostConfigCapabilitiesItemEnum>;
-export const HostConfigCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
-  HostConfigCapabilitiesItemEnum,
-) as any as S.Schema<HostConfigCapabilitiesItemEnumList>;
+export type HostConfigCapabilitiesItemEnumList = ReadonlyArray<HostConfigCapabilitiesItemEnum>;
+export const HostConfigCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(HostConfigCapabilitiesItemEnum) as any as S.Schema<HostConfigCapabilitiesItemEnumList>;
 
 export type CertificateConfigList = ReadonlyArray<CertificateConfig>;
-export const CertificateConfigList = /*@__PURE__*/ S.Array(
-  CertificateConfig,
-) as any as S.Schema<CertificateConfigList>;
+export const CertificateConfigList = /*@__PURE__*/ S.Array(CertificateConfig) as any as S.Schema<CertificateConfigList>;
 
 /** RegistryHeader configures headers for the registry. */
 export interface RegistryHeader {
@@ -2875,16 +2318,14 @@ export interface RegistryHeader {
   key?: string;
 }
 export const RegistryHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(StringList),
-    key: S.optional(S.String),
-  }),
+S.Struct({
+  "value": S.optional(StringList),
+  "key": S.optional(S.String),
+}),
 ).annotate({ identifier: "RegistryHeader" }) as any as S.Schema<RegistryHeader>;
 
 export type RegistryHeaderList = ReadonlyArray<RegistryHeader>;
-export const RegistryHeaderList = /*@__PURE__*/ S.Array(
-  RegistryHeader,
-) as any as S.Schema<RegistryHeaderList>;
+export const RegistryHeaderList = /*@__PURE__*/ S.Array(RegistryHeader) as any as S.Schema<RegistryHeaderList>;
 
 /** HostConfig configures the registry host under a given Server. */
 export interface HostConfig {
@@ -2904,21 +2345,19 @@ export interface HostConfig {
   overridePath?: boolean;
 }
 export const HostConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client: S.optional(CertificateConfigPairList),
-    capabilities: S.optional(HostConfigCapabilitiesItemEnumList),
-    ca: S.optional(CertificateConfigList),
-    header: S.optional(RegistryHeaderList),
-    host: S.optional(S.String),
-    dialTimeout: S.optional(S.String),
-    overridePath: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "client": S.optional(CertificateConfigPairList),
+  "capabilities": S.optional(HostConfigCapabilitiesItemEnumList),
+  "ca": S.optional(CertificateConfigList),
+  "header": S.optional(RegistryHeaderList),
+  "host": S.optional(S.String),
+  "dialTimeout": S.optional(S.String),
+  "overridePath": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "HostConfig" }) as any as S.Schema<HostConfig>;
 
 export type HostConfigList = ReadonlyArray<HostConfig>;
-export const HostConfigList = /*@__PURE__*/ S.Array(
-  HostConfig,
-) as any as S.Schema<HostConfigList>;
+export const HostConfigList = /*@__PURE__*/ S.Array(HostConfig) as any as S.Schema<HostConfigList>;
 
 /** RegistryHostConfig configures the top-level structure for a single containerd registry server's configuration, which represents one hosts.toml file on the node. It will override the same fqdns in PrivateRegistryAccessConfig. */
 export interface RegistryHostConfig {
@@ -2928,18 +2367,14 @@ export interface RegistryHostConfig {
   hosts?: HostConfigList;
 }
 export const RegistryHostConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    server: S.optional(S.String),
-    hosts: S.optional(HostConfigList),
-  }),
-).annotate({
-  identifier: "RegistryHostConfig",
-}) as any as S.Schema<RegistryHostConfig>;
+S.Struct({
+  "server": S.optional(S.String),
+  "hosts": S.optional(HostConfigList),
+}),
+).annotate({ identifier: "RegistryHostConfig" }) as any as S.Schema<RegistryHostConfig>;
 
 export type RegistryHostConfigList = ReadonlyArray<RegistryHostConfig>;
-export const RegistryHostConfigList = /*@__PURE__*/ S.Array(
-  RegistryHostConfig,
-) as any as S.Schema<RegistryHostConfigList>;
+export const RegistryHostConfigList = /*@__PURE__*/ S.Array(RegistryHostConfig) as any as S.Schema<RegistryHostConfigList>;
 
 /** ContainerdConfig contains configuration to customize containerd. */
 export interface ContainerdConfig {
@@ -2951,20 +2386,14 @@ export interface ContainerdConfig {
   registryHosts?: RegistryHostConfigList;
 }
 export const ContainerdConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateRegistryAccessConfig: S.optional(PrivateRegistryAccessConfig),
-    writableCgroups: S.optional(WritableCgroups),
-    registryHosts: S.optional(RegistryHostConfigList),
-  }),
-).annotate({
-  identifier: "ContainerdConfig",
-}) as any as S.Schema<ContainerdConfig>;
+S.Struct({
+  "privateRegistryAccessConfig": S.optional(PrivateRegistryAccessConfig),
+  "writableCgroups": S.optional(WritableCgroups),
+  "registryHosts": S.optional(RegistryHostConfigList),
+}),
+).annotate({ identifier: "ContainerdConfig" }) as any as S.Schema<ContainerdConfig>;
 
-export type GPUSharingConfigGpuSharingStrategyEnum =
-  | "GPU_SHARING_STRATEGY_UNSPECIFIED"
-  | "TIME_SHARING"
-  | "MPS"
-  | (string & {});
+export type GPUSharingConfigGpuSharingStrategyEnum = "GPU_SHARING_STRATEGY_UNSPECIFIED" | "TIME_SHARING" | "MPS";
 export const GPUSharingConfigGpuSharingStrategyEnum = /*@__PURE__*/ S.String;
 
 /** GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators. */
@@ -2975,22 +2404,14 @@ export interface GPUSharingConfig {
   gpuSharingStrategy?: GPUSharingConfigGpuSharingStrategyEnum;
 }
 export const GPUSharingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxSharedClientsPerGpu: S.optional(S.String),
-    gpuSharingStrategy: S.optional(GPUSharingConfigGpuSharingStrategyEnum),
-  }),
-).annotate({
-  identifier: "GPUSharingConfig",
-}) as any as S.Schema<GPUSharingConfig>;
+S.Struct({
+  "maxSharedClientsPerGpu": S.optional(S.String),
+  "gpuSharingStrategy": S.optional(GPUSharingConfigGpuSharingStrategyEnum),
+}),
+).annotate({ identifier: "GPUSharingConfig" }) as any as S.Schema<GPUSharingConfig>;
 
-export type GPUDriverInstallationConfigGpuDriverVersionEnum =
-  | "GPU_DRIVER_VERSION_UNSPECIFIED"
-  | "INSTALLATION_DISABLED"
-  | "DEFAULT"
-  | "LATEST"
-  | (string & {});
-export const GPUDriverInstallationConfigGpuDriverVersionEnum =
-  /*@__PURE__*/ S.String;
+export type GPUDriverInstallationConfigGpuDriverVersionEnum = "GPU_DRIVER_VERSION_UNSPECIFIED" | "INSTALLATION_DISABLED" | "DEFAULT" | "LATEST";
+export const GPUDriverInstallationConfigGpuDriverVersionEnum = /*@__PURE__*/ S.String;
 
 /** GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed. */
 export interface GPUDriverInstallationConfig {
@@ -2998,14 +2419,10 @@ export interface GPUDriverInstallationConfig {
   gpuDriverVersion?: GPUDriverInstallationConfigGpuDriverVersionEnum;
 }
 export const GPUDriverInstallationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gpuDriverVersion: S.optional(
-      GPUDriverInstallationConfigGpuDriverVersionEnum,
-    ),
-  }),
-).annotate({
-  identifier: "GPUDriverInstallationConfig",
-}) as any as S.Schema<GPUDriverInstallationConfig>;
+S.Struct({
+  "gpuDriverVersion": S.optional(GPUDriverInstallationConfigGpuDriverVersionEnum),
+}),
+).annotate({ identifier: "GPUDriverInstallationConfig" }) as any as S.Schema<GPUDriverInstallationConfig>;
 
 /** AcceleratorConfig represents a Hardware Accelerator request. */
 export interface AcceleratorConfig {
@@ -3023,29 +2440,20 @@ export interface AcceleratorConfig {
   gpuDriverInstallationConfig?: GPUDriverInstallationConfig;
 }
 export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gpuPartitionSize: S.optional(S.String),
-    acceleratorType: S.optional(S.String),
-    gpuSharingConfig: S.optional(GPUSharingConfig),
-    acceleratorCount: S.optional(S.String),
-    maxTimeSharedClientsPerGpu: S.optional(S.String),
-    gpuDriverInstallationConfig: S.optional(GPUDriverInstallationConfig),
-  }),
-).annotate({
-  identifier: "AcceleratorConfig",
-}) as any as S.Schema<AcceleratorConfig>;
+S.Struct({
+  "gpuPartitionSize": S.optional(S.String),
+  "acceleratorType": S.optional(S.String),
+  "gpuSharingConfig": S.optional(GPUSharingConfig),
+  "acceleratorCount": S.optional(S.String),
+  "maxTimeSharedClientsPerGpu": S.optional(S.String),
+  "gpuDriverInstallationConfig": S.optional(GPUDriverInstallationConfig),
+}),
+).annotate({ identifier: "AcceleratorConfig" }) as any as S.Schema<AcceleratorConfig>;
 
 export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
-export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
-  AcceleratorConfig,
-) as any as S.Schema<AcceleratorConfigList>;
+export const AcceleratorConfigList = /*@__PURE__*/ S.Array(AcceleratorConfig) as any as S.Schema<AcceleratorConfigList>;
 
-export type NodeTaintEffectEnum =
-  | "EFFECT_UNSPECIFIED"
-  | "NO_SCHEDULE"
-  | "PREFER_NO_SCHEDULE"
-  | "NO_EXECUTE"
-  | (string & {});
+export type NodeTaintEffectEnum = "EFFECT_UNSPECIFIED" | "NO_SCHEDULE" | "PREFER_NO_SCHEDULE" | "NO_EXECUTE";
 export const NodeTaintEffectEnum = /*@__PURE__*/ S.String;
 
 /** Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values. */
@@ -3058,17 +2466,15 @@ export interface NodeTaint {
   key?: string;
 }
 export const NodeTaint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    effect: S.optional(NodeTaintEffectEnum),
-    key: S.optional(S.String),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+  "effect": S.optional(NodeTaintEffectEnum),
+  "key": S.optional(S.String),
+}),
 ).annotate({ identifier: "NodeTaint" }) as any as S.Schema<NodeTaint>;
 
 export type NodeTaintList = ReadonlyArray<NodeTaint>;
-export const NodeTaintList = /*@__PURE__*/ S.Array(
-  NodeTaint,
-) as any as S.Schema<NodeTaintList>;
+export const NodeTaintList = /*@__PURE__*/ S.Array(NodeTaint) as any as S.Schema<NodeTaintList>;
 
 /** Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead. */
 export interface NodeConfig {
@@ -3176,61 +2582,59 @@ export interface NodeConfig {
   enableConfidentialStorage?: boolean;
 }
 export const NodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taintConfig: S.optional(TaintConfig),
-    labels: S.optional(StringMap),
-    maxRunDuration: S.optional(S.String),
-    linuxNodeConfig: S.optional(LinuxNodeConfig),
-    diskType: S.optional(S.String),
-    consolidationDelay: S.optional(S.String),
-    soleTenantConfig: S.optional(SoleTenantConfig),
-    ephemeralStorageLocalSsdConfig: S.optional(EphemeralStorageLocalSsdConfig),
-    fastSocket: S.optional(FastSocket),
-    tags: S.optional(StringList),
-    effectiveCgroupMode: S.optional(NodeConfigEffectiveCgroupModeEnum),
-    loggingConfig: S.optional(NodePoolLoggingConfig),
-    storagePools: S.optional(StringList),
-    gcfsConfig: S.optional(GcfsConfig),
-    spot: S.optional(S.Boolean),
-    serviceAccount: S.optional(S.String),
-    localSsdEncryptionMode: S.optional(NodeConfigLocalSsdEncryptionModeEnum),
-    imageType: S.optional(S.String),
-    windowsNodeConfig: S.optional(WindowsNodeConfig),
-    ephemeralStorageConfig: S.optional(EphemeralStorageConfig),
-    oauthScopes: S.optional(StringList),
-    flexStart: S.optional(S.Boolean),
-    minCpuPlatform: S.optional(S.String),
-    secondaryBootDiskUpdateStrategy: S.optional(
-      SecondaryBootDiskUpdateStrategy,
-    ),
-    diskSizeGb: S.optional(S.Number),
-    confidentialNodes: S.optional(ConfidentialNodes),
-    hostMaintenancePolicy: S.optional(HostMaintenancePolicy),
-    sandboxConfig: S.optional(SandboxConfig),
-    nodeImageConfig: S.optional(CustomImageConfig),
-    shieldedInstanceConfig: S.optional(ShieldedInstanceConfig),
-    workloadMetadataConfig: S.optional(WorkloadMetadataConfig),
-    localSsdCount: S.optional(S.Number),
-    preemptible: S.optional(S.Boolean),
-    nodeGroup: S.optional(S.String),
-    localNvmeSsdBlockConfig: S.optional(LocalNvmeSsdBlockConfig),
-    kubeletConfig: S.optional(NodeKubeletConfig),
-    bootDiskKmsKey: S.optional(S.String),
-    advancedMachineFeatures: S.optional(AdvancedMachineFeatures),
-    secondaryBootDisks: S.optional(SecondaryBootDiskList),
-    bootDisk: S.optional(BootDisk),
-    metadata: S.optional(StringMap),
-    reservationAffinity: S.optional(ReservationAffinity),
-    gvnic: S.optional(VirtualNIC),
-    resourceLabels: S.optional(StringMap),
-    resourceManagerTags: S.optional(ResourceManagerTags),
-    gpuDirectConfig: S.optional(GPUDirectConfig),
-    containerdConfig: S.optional(ContainerdConfig),
-    accelerators: S.optional(AcceleratorConfigList),
-    taints: S.optional(NodeTaintList),
-    machineType: S.optional(S.String),
-    enableConfidentialStorage: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "taintConfig": S.optional(TaintConfig),
+  "labels": S.optional(StringMap),
+  "maxRunDuration": S.optional(S.String),
+  "linuxNodeConfig": S.optional(LinuxNodeConfig),
+  "diskType": S.optional(S.String),
+  "consolidationDelay": S.optional(S.String),
+  "soleTenantConfig": S.optional(SoleTenantConfig),
+  "ephemeralStorageLocalSsdConfig": S.optional(EphemeralStorageLocalSsdConfig),
+  "fastSocket": S.optional(FastSocket),
+  "tags": S.optional(StringList),
+  "effectiveCgroupMode": S.optional(NodeConfigEffectiveCgroupModeEnum),
+  "loggingConfig": S.optional(NodePoolLoggingConfig),
+  "storagePools": S.optional(StringList),
+  "gcfsConfig": S.optional(GcfsConfig),
+  "spot": S.optional(S.Boolean),
+  "serviceAccount": S.optional(S.String),
+  "localSsdEncryptionMode": S.optional(NodeConfigLocalSsdEncryptionModeEnum),
+  "imageType": S.optional(S.String),
+  "windowsNodeConfig": S.optional(WindowsNodeConfig),
+  "ephemeralStorageConfig": S.optional(EphemeralStorageConfig),
+  "oauthScopes": S.optional(StringList),
+  "flexStart": S.optional(S.Boolean),
+  "minCpuPlatform": S.optional(S.String),
+  "secondaryBootDiskUpdateStrategy": S.optional(SecondaryBootDiskUpdateStrategy),
+  "diskSizeGb": S.optional(S.Number),
+  "confidentialNodes": S.optional(ConfidentialNodes),
+  "hostMaintenancePolicy": S.optional(HostMaintenancePolicy),
+  "sandboxConfig": S.optional(SandboxConfig),
+  "nodeImageConfig": S.optional(CustomImageConfig),
+  "shieldedInstanceConfig": S.optional(ShieldedInstanceConfig),
+  "workloadMetadataConfig": S.optional(WorkloadMetadataConfig),
+  "localSsdCount": S.optional(S.Number),
+  "preemptible": S.optional(S.Boolean),
+  "nodeGroup": S.optional(S.String),
+  "localNvmeSsdBlockConfig": S.optional(LocalNvmeSsdBlockConfig),
+  "kubeletConfig": S.optional(NodeKubeletConfig),
+  "bootDiskKmsKey": S.optional(S.String),
+  "advancedMachineFeatures": S.optional(AdvancedMachineFeatures),
+  "secondaryBootDisks": S.optional(SecondaryBootDiskList),
+  "bootDisk": S.optional(BootDisk),
+  "metadata": S.optional(StringMap),
+  "reservationAffinity": S.optional(ReservationAffinity),
+  "gvnic": S.optional(VirtualNIC),
+  "resourceLabels": S.optional(StringMap),
+  "resourceManagerTags": S.optional(ResourceManagerTags),
+  "gpuDirectConfig": S.optional(GPUDirectConfig),
+  "containerdConfig": S.optional(ContainerdConfig),
+  "accelerators": S.optional(AcceleratorConfigList),
+  "taints": S.optional(NodeTaintList),
+  "machineType": S.optional(S.String),
+  "enableConfidentialStorage": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "NodeConfig" }) as any as S.Schema<NodeConfig>;
 
 /** SyncRotationConfig is config for secret manager auto rotation. */
@@ -3241,13 +2645,11 @@ export interface SyncRotationConfig {
   rotationInterval?: string;
 }
 export const SyncRotationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    rotationInterval: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SyncRotationConfig",
-}) as any as S.Schema<SyncRotationConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "rotationInterval": S.optional(S.String),
+}),
+).annotate({ identifier: "SyncRotationConfig" }) as any as S.Schema<SyncRotationConfig>;
 
 /** Configuration for sync Secret Manager secrets as k8s secrets. */
 export interface SecretSyncConfig {
@@ -3257,13 +2659,11 @@ export interface SecretSyncConfig {
   rotationConfig?: SyncRotationConfig;
 }
 export const SecretSyncConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    rotationConfig: S.optional(SyncRotationConfig),
-  }),
-).annotate({
-  identifier: "SecretSyncConfig",
-}) as any as S.Schema<SecretSyncConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "rotationConfig": S.optional(SyncRotationConfig),
+}),
+).annotate({ identifier: "SecretSyncConfig" }) as any as S.Schema<SecretSyncConfig>;
 
 /** Configuration for issuance of mTLS keys and certificates to Kubernetes pods. */
 export interface WorkloadCertificates {
@@ -3271,12 +2671,10 @@ export interface WorkloadCertificates {
   enableCertificates?: boolean;
 }
 export const WorkloadCertificates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableCertificates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "WorkloadCertificates",
-}) as any as S.Schema<WorkloadCertificates>;
+S.Struct({
+  "enableCertificates": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "WorkloadCertificates" }) as any as S.Schema<WorkloadCertificates>;
 
 /** RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. */
 export interface RBACBindingConfig {
@@ -3286,13 +2684,11 @@ export interface RBACBindingConfig {
   enableInsecureBindingSystemAuthenticated?: boolean;
 }
 export const RBACBindingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableInsecureBindingSystemUnauthenticated: S.optional(S.Boolean),
-    enableInsecureBindingSystemAuthenticated: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RBACBindingConfig",
-}) as any as S.Schema<RBACBindingConfig>;
+S.Struct({
+  "enableInsecureBindingSystemUnauthenticated": S.optional(S.Boolean),
+  "enableInsecureBindingSystemAuthenticated": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "RBACBindingConfig" }) as any as S.Schema<RBACBindingConfig>;
 
 /** Configuration of Shielded Nodes feature. */
 export interface ShieldedNodes {
@@ -3300,9 +2696,9 @@ export interface ShieldedNodes {
   enabled?: boolean;
 }
 export const ShieldedNodes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "ShieldedNodes" }) as any as S.Schema<ShieldedNodes>;
 
 /** CidrBlock contains an optional name and one CIDR block. */
@@ -3313,16 +2709,14 @@ export interface CidrBlock {
   displayName?: string;
 }
 export const CidrBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cidrBlock: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "cidrBlock": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "CidrBlock" }) as any as S.Schema<CidrBlock>;
 
 export type CidrBlockList = ReadonlyArray<CidrBlock>;
-export const CidrBlockList = /*@__PURE__*/ S.Array(
-  CidrBlock,
-) as any as S.Schema<CidrBlockList>;
+export const CidrBlockList = /*@__PURE__*/ S.Array(CidrBlock) as any as S.Schema<CidrBlockList>;
 
 /** Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs. */
 export interface MasterAuthorizedNetworksConfig {
@@ -3336,43 +2730,19 @@ export interface MasterAuthorizedNetworksConfig {
   cidrBlocks?: CidrBlockList;
 }
 export const MasterAuthorizedNetworksConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcpPublicCidrsAccessEnabled: S.optional(S.Boolean),
-    privateEndpointEnforcementEnabled: S.optional(S.Boolean),
-    enabled: S.optional(S.Boolean),
-    cidrBlocks: S.optional(CidrBlockList),
-  }),
-).annotate({
-  identifier: "MasterAuthorizedNetworksConfig",
-}) as any as S.Schema<MasterAuthorizedNetworksConfig>;
+S.Struct({
+  "gcpPublicCidrsAccessEnabled": S.optional(S.Boolean),
+  "privateEndpointEnforcementEnabled": S.optional(S.Boolean),
+  "enabled": S.optional(S.Boolean),
+  "cidrBlocks": S.optional(CidrBlockList),
+}),
+).annotate({ identifier: "MasterAuthorizedNetworksConfig" }) as any as S.Schema<MasterAuthorizedNetworksConfig>;
 
-export type MonitoringComponentConfigEnableComponentsItemEnum =
-  | "COMPONENT_UNSPECIFIED"
-  | "SYSTEM_COMPONENTS"
-  | "WORKLOADS"
-  | "APISERVER"
-  | "SCHEDULER"
-  | "CONTROLLER_MANAGER"
-  | "STORAGE"
-  | "HPA"
-  | "POD"
-  | "DAEMONSET"
-  | "DEPLOYMENT"
-  | "STATEFULSET"
-  | "CADVISOR"
-  | "KUBELET"
-  | "DCGM"
-  | "JOBSET"
-  | (string & {});
-export const MonitoringComponentConfigEnableComponentsItemEnum =
-  /*@__PURE__*/ S.String;
+export type MonitoringComponentConfigEnableComponentsItemEnum = "COMPONENT_UNSPECIFIED" | "SYSTEM_COMPONENTS" | "WORKLOADS" | "APISERVER" | "SCHEDULER" | "CONTROLLER_MANAGER" | "STORAGE" | "HPA" | "POD" | "DAEMONSET" | "DEPLOYMENT" | "STATEFULSET" | "CADVISOR" | "KUBELET" | "DCGM" | "JOBSET";
+export const MonitoringComponentConfigEnableComponentsItemEnum = /*@__PURE__*/ S.String;
 
-export type MonitoringComponentConfigEnableComponentsItemEnumList =
-  ReadonlyArray<MonitoringComponentConfigEnableComponentsItemEnum>;
-export const MonitoringComponentConfigEnableComponentsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    MonitoringComponentConfigEnableComponentsItemEnum,
-  ) as any as S.Schema<MonitoringComponentConfigEnableComponentsItemEnumList>;
+export type MonitoringComponentConfigEnableComponentsItemEnumList = ReadonlyArray<MonitoringComponentConfigEnableComponentsItemEnum>;
+export const MonitoringComponentConfigEnableComponentsItemEnumList = /*@__PURE__*/ S.Array(MonitoringComponentConfigEnableComponentsItemEnum) as any as S.Schema<MonitoringComponentConfigEnableComponentsItemEnumList>;
 
 /** MonitoringComponentConfig is cluster monitoring component configuration. */
 export interface MonitoringComponentConfig {
@@ -3380,20 +2750,12 @@ export interface MonitoringComponentConfig {
   enableComponents?: MonitoringComponentConfigEnableComponentsItemEnumList;
 }
 export const MonitoringComponentConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableComponents: S.optional(
-      MonitoringComponentConfigEnableComponentsItemEnumList,
-    ),
-  }),
-).annotate({
-  identifier: "MonitoringComponentConfig",
-}) as any as S.Schema<MonitoringComponentConfig>;
+S.Struct({
+  "enableComponents": S.optional(MonitoringComponentConfigEnableComponentsItemEnumList),
+}),
+).annotate({ identifier: "MonitoringComponentConfig" }) as any as S.Schema<MonitoringComponentConfig>;
 
-export type AutoMonitoringConfigScopeEnum =
-  | "SCOPE_UNSPECIFIED"
-  | "ALL"
-  | "NONE"
-  | (string & {});
+export type AutoMonitoringConfigScopeEnum = "SCOPE_UNSPECIFIED" | "ALL" | "NONE";
 export const AutoMonitoringConfigScopeEnum = /*@__PURE__*/ S.String;
 
 /** AutoMonitoringConfig defines the configuration for GKE Workload Auto-Monitoring. */
@@ -3402,12 +2764,10 @@ export interface AutoMonitoringConfig {
   scope?: AutoMonitoringConfigScopeEnum;
 }
 export const AutoMonitoringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.optional(AutoMonitoringConfigScopeEnum),
-  }),
-).annotate({
-  identifier: "AutoMonitoringConfig",
-}) as any as S.Schema<AutoMonitoringConfig>;
+S.Struct({
+  "scope": S.optional(AutoMonitoringConfigScopeEnum),
+}),
+).annotate({ identifier: "AutoMonitoringConfig" }) as any as S.Schema<AutoMonitoringConfig>;
 
 /** ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus. */
 export interface ManagedPrometheusConfig {
@@ -3417,22 +2777,14 @@ export interface ManagedPrometheusConfig {
   enabled?: boolean;
 }
 export const ManagedPrometheusConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoMonitoringConfig: S.optional(AutoMonitoringConfig),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ManagedPrometheusConfig",
-}) as any as S.Schema<ManagedPrometheusConfig>;
+S.Struct({
+  "autoMonitoringConfig": S.optional(AutoMonitoringConfig),
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ManagedPrometheusConfig" }) as any as S.Schema<ManagedPrometheusConfig>;
 
-export type AdvancedDatapathObservabilityConfigRelayModeEnum =
-  | "RELAY_MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "INTERNAL_VPC_LB"
-  | "EXTERNAL_LB"
-  | (string & {});
-export const AdvancedDatapathObservabilityConfigRelayModeEnum =
-  /*@__PURE__*/ S.String;
+export type AdvancedDatapathObservabilityConfigRelayModeEnum = "RELAY_MODE_UNSPECIFIED" | "DISABLED" | "INTERNAL_VPC_LB" | "EXTERNAL_LB";
+export const AdvancedDatapathObservabilityConfigRelayModeEnum = /*@__PURE__*/ S.String;
 
 /** AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath. */
 export interface AdvancedDatapathObservabilityConfig {
@@ -3444,14 +2796,12 @@ export interface AdvancedDatapathObservabilityConfig {
   enableMetrics?: boolean;
 }
 export const AdvancedDatapathObservabilityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relayMode: S.optional(AdvancedDatapathObservabilityConfigRelayModeEnum),
-    enableRelay: S.optional(S.Boolean),
-    enableMetrics: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdvancedDatapathObservabilityConfig",
-}) as any as S.Schema<AdvancedDatapathObservabilityConfig>;
+S.Struct({
+  "relayMode": S.optional(AdvancedDatapathObservabilityConfigRelayModeEnum),
+  "enableRelay": S.optional(S.Boolean),
+  "enableMetrics": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AdvancedDatapathObservabilityConfig" }) as any as S.Schema<AdvancedDatapathObservabilityConfig>;
 
 /** MonitoringConfig is cluster monitoring configuration. */
 export interface MonitoringConfig {
@@ -3463,24 +2813,14 @@ export interface MonitoringConfig {
   advancedDatapathObservabilityConfig?: AdvancedDatapathObservabilityConfig;
 }
 export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    componentConfig: S.optional(MonitoringComponentConfig),
-    managedPrometheusConfig: S.optional(ManagedPrometheusConfig),
-    advancedDatapathObservabilityConfig: S.optional(
-      AdvancedDatapathObservabilityConfig,
-    ),
-  }),
-).annotate({
-  identifier: "MonitoringConfig",
-}) as any as S.Schema<MonitoringConfig>;
+S.Struct({
+  "componentConfig": S.optional(MonitoringComponentConfig),
+  "managedPrometheusConfig": S.optional(ManagedPrometheusConfig),
+  "advancedDatapathObservabilityConfig": S.optional(AdvancedDatapathObservabilityConfig),
+}),
+).annotate({ identifier: "MonitoringConfig" }) as any as S.Schema<MonitoringConfig>;
 
-export type ReleaseChannelChannelEnum =
-  | "UNSPECIFIED"
-  | "RAPID"
-  | "REGULAR"
-  | "STABLE"
-  | "EXTENDED"
-  | (string & {});
+export type ReleaseChannelChannelEnum = "UNSPECIFIED" | "RAPID" | "REGULAR" | "STABLE" | "EXTENDED";
 export const ReleaseChannelChannelEnum = /*@__PURE__*/ S.String;
 
 /** ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled. */
@@ -3489,9 +2829,9 @@ export interface ReleaseChannel {
   channel?: ReleaseChannelChannelEnum;
 }
 export const ReleaseChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel: S.optional(ReleaseChannelChannelEnum),
-  }),
+S.Struct({
+  "channel": S.optional(ReleaseChannelChannelEnum),
+}),
 ).annotate({ identifier: "ReleaseChannel" }) as any as S.Schema<ReleaseChannel>;
 
 /** Kubernetes open source beta apis enabled on the cluster. */
@@ -3500,12 +2840,10 @@ export interface K8sBetaAPIConfig {
   enabledApis?: StringList;
 }
 export const K8sBetaAPIConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabledApis: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "K8sBetaAPIConfig",
-}) as any as S.Schema<K8sBetaAPIConfig>;
+S.Struct({
+  "enabledApis": S.optional(StringList),
+}),
+).annotate({ identifier: "K8sBetaAPIConfig" }) as any as S.Schema<K8sBetaAPIConfig>;
 
 /** Configuration for direct-path (via ALTS) with workload identity. This feature is not officially supported for external customers in Kubernetes Engine when using Workload Identity. */
 export interface WorkloadALTSConfig {
@@ -3513,22 +2851,12 @@ export interface WorkloadALTSConfig {
   enableAlts?: boolean;
 }
 export const WorkloadALTSConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableAlts: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "WorkloadALTSConfig",
-}) as any as S.Schema<WorkloadALTSConfig>;
+S.Struct({
+  "enableAlts": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "WorkloadALTSConfig" }) as any as S.Schema<WorkloadALTSConfig>;
 
-export type ClusterStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "PROVISIONING"
-  | "RUNNING"
-  | "RECONCILING"
-  | "STOPPING"
-  | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+export type ClusterStatusEnum = "STATUS_UNSPECIFIED" | "PROVISIONING" | "RUNNING" | "RECONCILING" | "STOPPING" | "ERROR" | "DEGRADED";
 export const ClusterStatusEnum = /*@__PURE__*/ S.String;
 
 /** Describes the configuration of a DNS endpoint. */
@@ -3543,15 +2871,13 @@ export interface DNSEndpointConfig {
   enableK8sCertsViaDns?: boolean;
 }
 export const DNSEndpointConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.optional(S.String),
-    allowExternalTraffic: S.optional(S.Boolean),
-    enableK8sTokensViaDns: S.optional(S.Boolean),
-    enableK8sCertsViaDns: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DNSEndpointConfig",
-}) as any as S.Schema<DNSEndpointConfig>;
+S.Struct({
+  "endpoint": S.optional(S.String),
+  "allowExternalTraffic": S.optional(S.Boolean),
+  "enableK8sTokensViaDns": S.optional(S.Boolean),
+  "enableK8sCertsViaDns": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DNSEndpointConfig" }) as any as S.Schema<DNSEndpointConfig>;
 
 /** IP endpoints configuration. */
 export interface IPEndpointsConfig {
@@ -3571,18 +2897,16 @@ export interface IPEndpointsConfig {
   publicEndpoint?: string;
 }
 export const IPEndpointsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateEndpoint: S.optional(S.String),
-    enablePublicEndpoint: S.optional(S.Boolean),
-    authorizedNetworksConfig: S.optional(MasterAuthorizedNetworksConfig),
-    enabled: S.optional(S.Boolean),
-    globalAccess: S.optional(S.Boolean),
-    privateEndpointSubnetwork: S.optional(S.String),
-    publicEndpoint: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IPEndpointsConfig",
-}) as any as S.Schema<IPEndpointsConfig>;
+S.Struct({
+  "privateEndpoint": S.optional(S.String),
+  "enablePublicEndpoint": S.optional(S.Boolean),
+  "authorizedNetworksConfig": S.optional(MasterAuthorizedNetworksConfig),
+  "enabled": S.optional(S.Boolean),
+  "globalAccess": S.optional(S.Boolean),
+  "privateEndpointSubnetwork": S.optional(S.String),
+  "publicEndpoint": S.optional(S.String),
+}),
+).annotate({ identifier: "IPEndpointsConfig" }) as any as S.Schema<IPEndpointsConfig>;
 
 /** Configuration for all of the cluster's control plane endpoints. */
 export interface ControlPlaneEndpointsConfig {
@@ -3592,13 +2916,11 @@ export interface ControlPlaneEndpointsConfig {
   ipEndpointsConfig?: IPEndpointsConfig;
 }
 export const ControlPlaneEndpointsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dnsEndpointConfig: S.optional(DNSEndpointConfig),
-    ipEndpointsConfig: S.optional(IPEndpointsConfig),
-  }),
-).annotate({
-  identifier: "ControlPlaneEndpointsConfig",
-}) as any as S.Schema<ControlPlaneEndpointsConfig>;
+S.Struct({
+  "dnsEndpointConfig": S.optional(DNSEndpointConfig),
+  "ipEndpointsConfig": S.optional(IPEndpointsConfig),
+}),
+).annotate({ identifier: "ControlPlaneEndpointsConfig" }) as any as S.Schema<ControlPlaneEndpointsConfig>;
 
 /** Configuration for Cloud TPU. This message is deprecated due to the deprecation of 2VM TPU. The end of life date for 2VM TPU is 2025-04-25. */
 export interface TpuConfig {
@@ -3610,34 +2932,18 @@ export interface TpuConfig {
   useServiceNetworking?: boolean;
 }
 export const TpuConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipv4CidrBlock: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    useServiceNetworking: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "ipv4CidrBlock": S.optional(S.String),
+  "enabled": S.optional(S.Boolean),
+  "useServiceNetworking": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "TpuConfig" }) as any as S.Schema<TpuConfig>;
 
-export type LoggingComponentConfigEnableComponentsItemEnum =
-  | "COMPONENT_UNSPECIFIED"
-  | "SYSTEM_COMPONENTS"
-  | "WORKLOADS"
-  | "APISERVER"
-  | "SCHEDULER"
-  | "CONTROLLER_MANAGER"
-  | "KCP_SSHD"
-  | "KCP_CONNECTION"
-  | "KCP_HPA"
-  | "KCP_VPA"
-  | (string & {});
-export const LoggingComponentConfigEnableComponentsItemEnum =
-  /*@__PURE__*/ S.String;
+export type LoggingComponentConfigEnableComponentsItemEnum = "COMPONENT_UNSPECIFIED" | "SYSTEM_COMPONENTS" | "WORKLOADS" | "APISERVER" | "SCHEDULER" | "CONTROLLER_MANAGER" | "KCP_SSHD" | "KCP_CONNECTION" | "KCP_HPA" | "KCP_VPA";
+export const LoggingComponentConfigEnableComponentsItemEnum = /*@__PURE__*/ S.String;
 
-export type LoggingComponentConfigEnableComponentsItemEnumList =
-  ReadonlyArray<LoggingComponentConfigEnableComponentsItemEnum>;
-export const LoggingComponentConfigEnableComponentsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    LoggingComponentConfigEnableComponentsItemEnum,
-  ) as any as S.Schema<LoggingComponentConfigEnableComponentsItemEnumList>;
+export type LoggingComponentConfigEnableComponentsItemEnumList = ReadonlyArray<LoggingComponentConfigEnableComponentsItemEnum>;
+export const LoggingComponentConfigEnableComponentsItemEnumList = /*@__PURE__*/ S.Array(LoggingComponentConfigEnableComponentsItemEnum) as any as S.Schema<LoggingComponentConfigEnableComponentsItemEnumList>;
 
 /** LoggingComponentConfig is cluster logging component configuration. */
 export interface LoggingComponentConfig {
@@ -3645,14 +2951,10 @@ export interface LoggingComponentConfig {
   enableComponents?: LoggingComponentConfigEnableComponentsItemEnumList;
 }
 export const LoggingComponentConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableComponents: S.optional(
-      LoggingComponentConfigEnableComponentsItemEnumList,
-    ),
-  }),
-).annotate({
-  identifier: "LoggingComponentConfig",
-}) as any as S.Schema<LoggingComponentConfig>;
+S.Struct({
+  "enableComponents": S.optional(LoggingComponentConfigEnableComponentsItemEnumList),
+}),
+).annotate({ identifier: "LoggingComponentConfig" }) as any as S.Schema<LoggingComponentConfig>;
 
 /** LoggingConfig is cluster logging configuration. */
 export interface LoggingConfig {
@@ -3660,9 +2962,9 @@ export interface LoggingConfig {
   componentConfig?: LoggingComponentConfig;
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    componentConfig: S.optional(LoggingComponentConfig),
-  }),
+S.Struct({
+  "componentConfig": S.optional(LoggingComponentConfig),
+}),
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
 
 /** UserManagedKeysConfig holds the resource address to Keys which are used for signing certs and token that are used for communication within cluster. */
@@ -3687,20 +2989,18 @@ export interface UserManagedKeysConfig {
   controlPlaneDiskEncryptionKeyVersions?: StringList;
 }
 export const UserManagedKeysConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneDiskEncryptionKey: S.optional(S.String),
-    serviceAccountSigningKeys: S.optional(StringList),
-    clusterCa: S.optional(S.String),
-    etcdApiCa: S.optional(S.String),
-    etcdPeerCa: S.optional(S.String),
-    gkeopsEtcdBackupEncryptionKey: S.optional(S.String),
-    serviceAccountVerificationKeys: S.optional(StringList),
-    aggregationCa: S.optional(S.String),
-    controlPlaneDiskEncryptionKeyVersions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "UserManagedKeysConfig",
-}) as any as S.Schema<UserManagedKeysConfig>;
+S.Struct({
+  "controlPlaneDiskEncryptionKey": S.optional(S.String),
+  "serviceAccountSigningKeys": S.optional(StringList),
+  "clusterCa": S.optional(S.String),
+  "etcdApiCa": S.optional(S.String),
+  "etcdPeerCa": S.optional(S.String),
+  "gkeopsEtcdBackupEncryptionKey": S.optional(S.String),
+  "serviceAccountVerificationKeys": S.optional(StringList),
+  "aggregationCa": S.optional(S.String),
+  "controlPlaneDiskEncryptionKeyVersions": S.optional(StringList),
+}),
+).annotate({ identifier: "UserManagedKeysConfig" }) as any as S.Schema<UserManagedKeysConfig>;
 
 /** CompatibilityStatus is the status regarding the control plane's compatibility. */
 export interface CompatibilityStatus {
@@ -3710,13 +3010,11 @@ export interface CompatibilityStatus {
   emulatedVersionTime?: string;
 }
 export const CompatibilityStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    downgradableVersion: S.optional(S.String),
-    emulatedVersionTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CompatibilityStatus",
-}) as any as S.Schema<CompatibilityStatus>;
+S.Struct({
+  "downgradableVersion": S.optional(S.String),
+  "emulatedVersionTime": S.optional(S.String),
+}),
+).annotate({ identifier: "CompatibilityStatus" }) as any as S.Schema<CompatibilityStatus>;
 
 /** Master is the configuration for components on master. */
 export interface Master {
@@ -3724,15 +3022,12 @@ export interface Master {
   compatibilityStatus?: CompatibilityStatus;
 }
 export const Master = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compatibilityStatus: S.optional(CompatibilityStatus),
-  }),
+S.Struct({
+  "compatibilityStatus": S.optional(CompatibilityStatus),
+}),
 ).annotate({ identifier: "Master" }) as any as S.Schema<Master>;
 
-export type NetworkPolicyProviderEnum =
-  | "PROVIDER_UNSPECIFIED"
-  | "CALICO"
-  | (string & {});
+export type NetworkPolicyProviderEnum = "PROVIDER_UNSPECIFIED" | "CALICO";
 export const NetworkPolicyProviderEnum = /*@__PURE__*/ S.String;
 
 /** Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-networking/networkpolicies/ */
@@ -3743,17 +3038,13 @@ export interface NetworkPolicy {
   enabled?: boolean;
 }
 export const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(NetworkPolicyProviderEnum),
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "provider": S.optional(NetworkPolicyProviderEnum),
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "NetworkPolicy" }) as any as S.Schema<NetworkPolicy>;
 
-export type IPAllocationPolicyIpv6AccessTypeEnum =
-  | "IPV6_ACCESS_TYPE_UNSPECIFIED"
-  | "INTERNAL"
-  | "EXTERNAL"
-  | (string & {});
+export type IPAllocationPolicyIpv6AccessTypeEnum = "IPV6_ACCESS_TYPE_UNSPECIFIED" | "INTERNAL" | "EXTERNAL";
 export const IPAllocationPolicyIpv6AccessTypeEnum = /*@__PURE__*/ S.String;
 
 /** RangeInfo contains the range name and the range utilization by this cluster. */
@@ -3764,16 +3055,14 @@ export interface RangeInfo {
   utilization?: number;
 }
 export const RangeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rangeName: S.optional(S.String),
-    utilization: S.optional(S.Number),
-  }),
+S.Struct({
+  "rangeName": S.optional(S.String),
+  "utilization": S.optional(S.Number),
+}),
 ).annotate({ identifier: "RangeInfo" }) as any as S.Schema<RangeInfo>;
 
 export type RangeInfoList = ReadonlyArray<RangeInfo>;
-export const RangeInfoList = /*@__PURE__*/ S.Array(
-  RangeInfo,
-) as any as S.Schema<RangeInfoList>;
+export const RangeInfoList = /*@__PURE__*/ S.Array(RangeInfo) as any as S.Schema<RangeInfoList>;
 
 /** AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message. */
 export interface AdditionalPodRangesConfig {
@@ -3783,19 +3072,13 @@ export interface AdditionalPodRangesConfig {
   podRangeInfo?: RangeInfoList;
 }
 export const AdditionalPodRangesConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    podRangeNames: S.optional(StringList),
-    podRangeInfo: S.optional(RangeInfoList),
-  }),
-).annotate({
-  identifier: "AdditionalPodRangesConfig",
-}) as any as S.Schema<AdditionalPodRangesConfig>;
+S.Struct({
+  "podRangeNames": S.optional(StringList),
+  "podRangeInfo": S.optional(RangeInfoList),
+}),
+).annotate({ identifier: "AdditionalPodRangesConfig" }) as any as S.Schema<AdditionalPodRangesConfig>;
 
-export type AdditionalIPRangesConfigStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "ACTIVE"
-  | "DRAINING"
-  | (string & {});
+export type AdditionalIPRangesConfigStatusEnum = "STATUS_UNSPECIFIED" | "ACTIVE" | "DRAINING";
 export const AdditionalIPRangesConfigStatusEnum = /*@__PURE__*/ S.String;
 
 /** AdditionalIPRangesConfig is the configuration for individual additional subnetwork attached to the cluster */
@@ -3808,20 +3091,15 @@ export interface AdditionalIPRangesConfig {
   status?: AdditionalIPRangesConfigStatusEnum;
 }
 export const AdditionalIPRangesConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subnetwork: S.optional(S.String),
-    podIpv4RangeNames: S.optional(StringList),
-    status: S.optional(AdditionalIPRangesConfigStatusEnum),
-  }),
-).annotate({
-  identifier: "AdditionalIPRangesConfig",
-}) as any as S.Schema<AdditionalIPRangesConfig>;
+S.Struct({
+  "subnetwork": S.optional(S.String),
+  "podIpv4RangeNames": S.optional(StringList),
+  "status": S.optional(AdditionalIPRangesConfigStatusEnum),
+}),
+).annotate({ identifier: "AdditionalIPRangesConfig" }) as any as S.Schema<AdditionalIPRangesConfig>;
 
-export type AdditionalIPRangesConfigList =
-  ReadonlyArray<AdditionalIPRangesConfig>;
-export const AdditionalIPRangesConfigList = /*@__PURE__*/ S.Array(
-  AdditionalIPRangesConfig,
-) as any as S.Schema<AdditionalIPRangesConfigList>;
+export type AdditionalIPRangesConfigList = ReadonlyArray<AdditionalIPRangesConfig>;
+export const AdditionalIPRangesConfigList = /*@__PURE__*/ S.Array(AdditionalIPRangesConfig) as any as S.Schema<AdditionalIPRangesConfigList>;
 
 /** [PRIVATE FIELD] Config for pod CIDR size overprovisioning. */
 export interface PodCIDROverprovisionConfig {
@@ -3829,18 +3107,12 @@ export interface PodCIDROverprovisionConfig {
   disable?: boolean;
 }
 export const PodCIDROverprovisionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disable: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PodCIDROverprovisionConfig",
-}) as any as S.Schema<PodCIDROverprovisionConfig>;
+S.Struct({
+  "disable": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PodCIDROverprovisionConfig" }) as any as S.Schema<PodCIDROverprovisionConfig>;
 
-export type IPAllocationPolicyStackTypeEnum =
-  | "STACK_TYPE_UNSPECIFIED"
-  | "IPV4"
-  | "IPV4_IPV6"
-  | (string & {});
+export type IPAllocationPolicyStackTypeEnum = "STACK_TYPE_UNSPECIFIED" | "IPV4" | "IPV4_IPV6";
 export const IPAllocationPolicyStackTypeEnum = /*@__PURE__*/ S.String;
 
 /** AutoIpamConfig contains all information related to Auto IPAM */
@@ -3849,17 +3121,12 @@ export interface AutoIpamConfig {
   enabled?: boolean;
 }
 export const AutoIpamConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "AutoIpamConfig" }) as any as S.Schema<AutoIpamConfig>;
 
-export type NetworkTierConfigNetworkTierEnum =
-  | "NETWORK_TIER_UNSPECIFIED"
-  | "NETWORK_TIER_DEFAULT"
-  | "NETWORK_TIER_PREMIUM"
-  | "NETWORK_TIER_STANDARD"
-  | (string & {});
+export type NetworkTierConfigNetworkTierEnum = "NETWORK_TIER_UNSPECIFIED" | "NETWORK_TIER_DEFAULT" | "NETWORK_TIER_PREMIUM" | "NETWORK_TIER_STANDARD";
 export const NetworkTierConfigNetworkTierEnum = /*@__PURE__*/ S.String;
 
 /** NetworkTierConfig contains network tier information. */
@@ -3868,12 +3135,10 @@ export interface NetworkTierConfig {
   networkTier?: NetworkTierConfigNetworkTierEnum;
 }
 export const NetworkTierConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkTier: S.optional(NetworkTierConfigNetworkTierEnum),
-  }),
-).annotate({
-  identifier: "NetworkTierConfig",
-}) as any as S.Schema<NetworkTierConfig>;
+S.Struct({
+  "networkTier": S.optional(NetworkTierConfigNetworkTierEnum),
+}),
+).annotate({ identifier: "NetworkTierConfig" }) as any as S.Schema<NetworkTierConfig>;
 
 /** Configuration for controlling how IPs are allocated in the cluster. */
 export interface IPAllocationPolicy {
@@ -3927,41 +3192,35 @@ export interface IPAllocationPolicy {
   clusterIpv4CidrBlock?: string;
 }
 export const IPAllocationPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipv6AccessType: S.optional(IPAllocationPolicyIpv6AccessTypeEnum),
-    additionalPodRangesConfig: S.optional(AdditionalPodRangesConfig),
-    nodeIpv4CidrBlock: S.optional(S.String),
-    tpuIpv4CidrBlock: S.optional(S.String),
-    createSubnetwork: S.optional(S.Boolean),
-    useRoutes: S.optional(S.Boolean),
-    nodeIpv4Cidr: S.optional(S.String),
-    servicesSecondaryRangeName: S.optional(S.String),
-    useIpAliases: S.optional(S.Boolean),
-    servicesIpv4Cidr: S.optional(S.String),
-    servicesIpv4CidrBlock: S.optional(S.String),
-    additionalIpRangesConfigs: S.optional(AdditionalIPRangesConfigList),
-    clusterSecondaryRangeName: S.optional(S.String),
-    servicesIpv6CidrBlock: S.optional(S.String),
-    podCidrOverprovisionConfig: S.optional(PodCIDROverprovisionConfig),
-    allowRouteOverlap: S.optional(S.Boolean),
-    stackType: S.optional(IPAllocationPolicyStackTypeEnum),
-    clusterIpv4Cidr: S.optional(S.String),
-    defaultPodIpv4RangeUtilization: S.optional(S.Number),
-    autoIpamConfig: S.optional(AutoIpamConfig),
-    subnetworkName: S.optional(S.String),
-    subnetIpv6CidrBlock: S.optional(S.String),
-    networkTierConfig: S.optional(NetworkTierConfig),
-    clusterIpv4CidrBlock: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IPAllocationPolicy",
-}) as any as S.Schema<IPAllocationPolicy>;
+S.Struct({
+  "ipv6AccessType": S.optional(IPAllocationPolicyIpv6AccessTypeEnum),
+  "additionalPodRangesConfig": S.optional(AdditionalPodRangesConfig),
+  "nodeIpv4CidrBlock": S.optional(S.String),
+  "tpuIpv4CidrBlock": S.optional(S.String),
+  "createSubnetwork": S.optional(S.Boolean),
+  "useRoutes": S.optional(S.Boolean),
+  "nodeIpv4Cidr": S.optional(S.String),
+  "servicesSecondaryRangeName": S.optional(S.String),
+  "useIpAliases": S.optional(S.Boolean),
+  "servicesIpv4Cidr": S.optional(S.String),
+  "servicesIpv4CidrBlock": S.optional(S.String),
+  "additionalIpRangesConfigs": S.optional(AdditionalIPRangesConfigList),
+  "clusterSecondaryRangeName": S.optional(S.String),
+  "servicesIpv6CidrBlock": S.optional(S.String),
+  "podCidrOverprovisionConfig": S.optional(PodCIDROverprovisionConfig),
+  "allowRouteOverlap": S.optional(S.Boolean),
+  "stackType": S.optional(IPAllocationPolicyStackTypeEnum),
+  "clusterIpv4Cidr": S.optional(S.String),
+  "defaultPodIpv4RangeUtilization": S.optional(S.Number),
+  "autoIpamConfig": S.optional(AutoIpamConfig),
+  "subnetworkName": S.optional(S.String),
+  "subnetIpv6CidrBlock": S.optional(S.String),
+  "networkTierConfig": S.optional(NetworkTierConfig),
+  "clusterIpv4CidrBlock": S.optional(S.String),
+}),
+).annotate({ identifier: "IPAllocationPolicy" }) as any as S.Schema<IPAllocationPolicy>;
 
-export type ControlPlaneEgressModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "VIA_CONTROL_PLANE"
-  | "NONE"
-  | (string & {});
+export type ControlPlaneEgressModeEnum = "MODE_UNSPECIFIED" | "VIA_CONTROL_PLANE" | "NONE";
 export const ControlPlaneEgressModeEnum = /*@__PURE__*/ S.String;
 
 /** ControlPlaneEgress defines the settings needed to enable control plane egress control. */
@@ -3970,12 +3229,10 @@ export interface ControlPlaneEgress {
   mode?: ControlPlaneEgressModeEnum;
 }
 export const ControlPlaneEgress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(ControlPlaneEgressModeEnum),
-  }),
-).annotate({
-  identifier: "ControlPlaneEgress",
-}) as any as S.Schema<ControlPlaneEgress>;
+S.Struct({
+  "mode": S.optional(ControlPlaneEgressModeEnum),
+}),
+).annotate({ identifier: "ControlPlaneEgress" }) as any as S.Schema<ControlPlaneEgress>;
 
 /** Subset of NodeConfig message that has defaults. */
 export interface NodeConfigDefaults {
@@ -3991,16 +3248,14 @@ export interface NodeConfigDefaults {
   loggingConfig?: NodePoolLoggingConfig;
 }
 export const NodeConfigDefaults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcfsConfig: S.optional(GcfsConfig),
-    containerdConfig: S.optional(ContainerdConfig),
-    nodeKubeletConfig: S.optional(NodeKubeletConfig),
-    hostMaintenancePolicy: S.optional(HostMaintenancePolicy),
-    loggingConfig: S.optional(NodePoolLoggingConfig),
-  }),
-).annotate({
-  identifier: "NodeConfigDefaults",
-}) as any as S.Schema<NodeConfigDefaults>;
+S.Struct({
+  "gcfsConfig": S.optional(GcfsConfig),
+  "containerdConfig": S.optional(ContainerdConfig),
+  "nodeKubeletConfig": S.optional(NodeKubeletConfig),
+  "hostMaintenancePolicy": S.optional(HostMaintenancePolicy),
+  "loggingConfig": S.optional(NodePoolLoggingConfig),
+}),
+).annotate({ identifier: "NodeConfigDefaults" }) as any as S.Schema<NodeConfigDefaults>;
 
 /** Subset of Nodepool message that has defaults. */
 export interface NodePoolDefaults {
@@ -4008,12 +3263,10 @@ export interface NodePoolDefaults {
   nodeConfigDefaults?: NodeConfigDefaults;
 }
 export const NodePoolDefaults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeConfigDefaults: S.optional(NodeConfigDefaults),
-  }),
-).annotate({
-  identifier: "NodePoolDefaults",
-}) as any as S.Schema<NodePoolDefaults>;
+S.Struct({
+  "nodeConfigDefaults": S.optional(NodeConfigDefaults),
+}),
+).annotate({ identifier: "NodePoolDefaults" }) as any as S.Schema<NodePoolDefaults>;
 
 /** Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)). */
 export interface NetworkTags {
@@ -4021,9 +3274,9 @@ export interface NetworkTags {
   tags?: StringList;
 }
 export const NetworkTags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(StringList),
-  }),
+S.Struct({
+  "tags": S.optional(StringList),
+}),
 ).annotate({ identifier: "NetworkTags" }) as any as S.Schema<NetworkTags>;
 
 /** node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters */
@@ -4038,37 +3291,22 @@ export interface NodePoolAutoConfig {
   linuxNodeConfig?: LinuxNodeConfig;
 }
 export const NodePoolAutoConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkTags: S.optional(NetworkTags),
-    nodeKubeletConfig: S.optional(NodeKubeletConfig),
-    resourceManagerTags: S.optional(ResourceManagerTags),
-    linuxNodeConfig: S.optional(LinuxNodeConfig),
-  }),
-).annotate({
-  identifier: "NodePoolAutoConfig",
-}) as any as S.Schema<NodePoolAutoConfig>;
+S.Struct({
+  "networkTags": S.optional(NetworkTags),
+  "nodeKubeletConfig": S.optional(NodeKubeletConfig),
+  "resourceManagerTags": S.optional(ResourceManagerTags),
+  "linuxNodeConfig": S.optional(LinuxNodeConfig),
+}),
+).annotate({ identifier: "NodePoolAutoConfig" }) as any as S.Schema<NodePoolAutoConfig>;
 
-export type NetworkConfigDatapathProviderEnum =
-  | "DATAPATH_PROVIDER_UNSPECIFIED"
-  | "LEGACY_DATAPATH"
-  | "ADVANCED_DATAPATH"
-  | (string & {});
+export type NetworkConfigDatapathProviderEnum = "DATAPATH_PROVIDER_UNSPECIFIED" | "LEGACY_DATAPATH" | "ADVANCED_DATAPATH";
 export const NetworkConfigDatapathProviderEnum = /*@__PURE__*/ S.String;
 
-export type NetworkConfigInTransitEncryptionConfigEnum =
-  | "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"
-  | "IN_TRANSIT_ENCRYPTION_DISABLED"
-  | "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT"
-  | (string & {});
-export const NetworkConfigInTransitEncryptionConfigEnum =
-  /*@__PURE__*/ S.String;
+export type NetworkConfigInTransitEncryptionConfigEnum = "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED" | "IN_TRANSIT_ENCRYPTION_DISABLED" | "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT";
+export const NetworkConfigInTransitEncryptionConfigEnum = /*@__PURE__*/ S.String;
 
-export type ClusterNetworkPerformanceConfigTotalEgressBandwidthTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "TIER_1"
-  | (string & {});
-export const ClusterNetworkPerformanceConfigTotalEgressBandwidthTierEnum =
-  /*@__PURE__*/ S.String;
+export type ClusterNetworkPerformanceConfigTotalEgressBandwidthTierEnum = "TIER_UNSPECIFIED" | "TIER_1";
+export const ClusterNetworkPerformanceConfigTotalEgressBandwidthTierEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of all network bandwidth tiers */
 export interface ClusterNetworkPerformanceConfig {
@@ -4076,14 +3314,10 @@ export interface ClusterNetworkPerformanceConfig {
   totalEgressBandwidthTier?: ClusterNetworkPerformanceConfigTotalEgressBandwidthTierEnum;
 }
 export const ClusterNetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    totalEgressBandwidthTier: S.optional(
-      ClusterNetworkPerformanceConfigTotalEgressBandwidthTierEnum,
-    ),
-  }),
-).annotate({
-  identifier: "ClusterNetworkPerformanceConfig",
-}) as any as S.Schema<ClusterNetworkPerformanceConfig>;
+S.Struct({
+  "totalEgressBandwidthTier": S.optional(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierEnum),
+}),
+).annotate({ identifier: "ClusterNetworkPerformanceConfig" }) as any as S.Schema<ClusterNetworkPerformanceConfig>;
 
 /** DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster. */
 export interface DefaultSnatStatus {
@@ -4091,26 +3325,15 @@ export interface DefaultSnatStatus {
   disabled?: boolean;
 }
 export const DefaultSnatStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DefaultSnatStatus",
-}) as any as S.Schema<DefaultSnatStatus>;
+S.Struct({
+  "disabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DefaultSnatStatus" }) as any as S.Schema<DefaultSnatStatus>;
 
-export type DNSConfigClusterDnsEnum =
-  | "PROVIDER_UNSPECIFIED"
-  | "PLATFORM_DEFAULT"
-  | "CLOUD_DNS"
-  | "KUBE_DNS"
-  | (string & {});
+export type DNSConfigClusterDnsEnum = "PROVIDER_UNSPECIFIED" | "PLATFORM_DEFAULT" | "CLOUD_DNS" | "KUBE_DNS";
 export const DNSConfigClusterDnsEnum = /*@__PURE__*/ S.String;
 
-export type DNSConfigClusterDnsScopeEnum =
-  | "DNS_SCOPE_UNSPECIFIED"
-  | "CLUSTER_SCOPE"
-  | "VPC_SCOPE"
-  | (string & {});
+export type DNSConfigClusterDnsScopeEnum = "DNS_SCOPE_UNSPECIFIED" | "CLUSTER_SCOPE" | "VPC_SCOPE";
 export const DNSConfigClusterDnsScopeEnum = /*@__PURE__*/ S.String;
 
 /** DNSConfig contains the desired set of options for configuring clusterDNS. */
@@ -4125,19 +3348,15 @@ export interface DNSConfig {
   clusterDnsDomain?: string;
 }
 export const DNSConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterDns: S.optional(DNSConfigClusterDnsEnum),
-    clusterDnsScope: S.optional(DNSConfigClusterDnsScopeEnum),
-    additiveVpcScopeDnsDomain: S.optional(S.String),
-    clusterDnsDomain: S.optional(S.String),
-  }),
+S.Struct({
+  "clusterDns": S.optional(DNSConfigClusterDnsEnum),
+  "clusterDnsScope": S.optional(DNSConfigClusterDnsScopeEnum),
+  "additiveVpcScopeDnsDomain": S.optional(S.String),
+  "clusterDnsDomain": S.optional(S.String),
+}),
 ).annotate({ identifier: "DNSConfig" }) as any as S.Schema<DNSConfig>;
 
-export type DataplaneV2ConfigScalabilityModeEnum =
-  | "SCALABILITY_MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "SCALE_OPTIMIZED"
-  | (string & {});
+export type DataplaneV2ConfigScalabilityModeEnum = "SCALABILITY_MODE_UNSPECIFIED" | "DISABLED" | "SCALE_OPTIMIZED";
 export const DataplaneV2ConfigScalabilityModeEnum = /*@__PURE__*/ S.String;
 
 /** DataplaneV2Config is the configuration for DPv2. */
@@ -4146,12 +3365,10 @@ export interface DataplaneV2Config {
   scalabilityMode?: DataplaneV2ConfigScalabilityModeEnum;
 }
 export const DataplaneV2Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scalabilityMode: S.optional(DataplaneV2ConfigScalabilityModeEnum),
-  }),
-).annotate({
-  identifier: "DataplaneV2Config",
-}) as any as S.Schema<DataplaneV2Config>;
+S.Struct({
+  "scalabilityMode": S.optional(DataplaneV2ConfigScalabilityModeEnum),
+}),
+).annotate({ identifier: "DataplaneV2Config" }) as any as S.Schema<DataplaneV2Config>;
 
 /** Config to block services with externalIPs field. */
 export interface ServiceExternalIPsConfig {
@@ -4159,27 +3376,15 @@ export interface ServiceExternalIPsConfig {
   enabled?: boolean;
 }
 export const ServiceExternalIPsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ServiceExternalIPsConfig",
-}) as any as S.Schema<ServiceExternalIPsConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ServiceExternalIPsConfig" }) as any as S.Schema<ServiceExternalIPsConfig>;
 
-export type NetworkConfigPrivateIpv6GoogleAccessEnum =
-  | "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"
-  | "PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED"
-  | "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE"
-  | "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL"
-  | (string & {});
+export type NetworkConfigPrivateIpv6GoogleAccessEnum = "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED" | "PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED" | "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE" | "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL";
 export const NetworkConfigPrivateIpv6GoogleAccessEnum = /*@__PURE__*/ S.String;
 
-export type GatewayAPIConfigChannelEnum =
-  | "CHANNEL_UNSPECIFIED"
-  | "CHANNEL_DISABLED"
-  | "CHANNEL_EXPERIMENTAL"
-  | "CHANNEL_STANDARD"
-  | (string & {});
+export type GatewayAPIConfigChannelEnum = "CHANNEL_UNSPECIFIED" | "CHANNEL_DISABLED" | "CHANNEL_EXPERIMENTAL" | "CHANNEL_STANDARD";
 export const GatewayAPIConfigChannelEnum = /*@__PURE__*/ S.String;
 
 /** GatewayAPIConfig contains the desired config of Gateway API on this cluster. */
@@ -4188,12 +3393,10 @@ export interface GatewayAPIConfig {
   channel?: GatewayAPIConfigChannelEnum;
 }
 export const GatewayAPIConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel: S.optional(GatewayAPIConfigChannelEnum),
-  }),
-).annotate({
-  identifier: "GatewayAPIConfig",
-}) as any as S.Schema<GatewayAPIConfig>;
+S.Struct({
+  "channel": S.optional(GatewayAPIConfigChannelEnum),
+}),
+).annotate({ identifier: "GatewayAPIConfig" }) as any as S.Schema<GatewayAPIConfig>;
 
 /** NetworkConfig reports the relative names of network & subnetwork. */
 export interface NetworkConfig {
@@ -4235,30 +3438,26 @@ export interface NetworkConfig {
   defaultEnablePrivateNodes?: boolean;
 }
 export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datapathProvider: S.optional(NetworkConfigDatapathProviderEnum),
-    inTransitEncryptionConfig: S.optional(
-      NetworkConfigInTransitEncryptionConfigEnum,
-    ),
-    network: S.optional(S.String),
-    networkPerformanceConfig: S.optional(ClusterNetworkPerformanceConfig),
-    defaultSnatStatus: S.optional(DefaultSnatStatus),
-    dnsConfig: S.optional(DNSConfig),
-    enableMultiNetworking: S.optional(S.Boolean),
-    enableIntraNodeVisibility: S.optional(S.Boolean),
-    dataplaneV2Config: S.optional(DataplaneV2Config),
-    enableFqdnNetworkPolicy: S.optional(S.Boolean),
-    serviceExternalIpsConfig: S.optional(ServiceExternalIPsConfig),
-    enableCiliumClusterwideNetworkPolicy: S.optional(S.Boolean),
-    disableL4LbFirewallReconciliation: S.optional(S.Boolean),
-    subnetwork: S.optional(S.String),
-    privateIpv6GoogleAccess: S.optional(
-      NetworkConfigPrivateIpv6GoogleAccessEnum,
-    ),
-    gatewayApiConfig: S.optional(GatewayAPIConfig),
-    enableL4ilbSubsetting: S.optional(S.Boolean),
-    defaultEnablePrivateNodes: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "datapathProvider": S.optional(NetworkConfigDatapathProviderEnum),
+  "inTransitEncryptionConfig": S.optional(NetworkConfigInTransitEncryptionConfigEnum),
+  "network": S.optional(S.String),
+  "networkPerformanceConfig": S.optional(ClusterNetworkPerformanceConfig),
+  "defaultSnatStatus": S.optional(DefaultSnatStatus),
+  "dnsConfig": S.optional(DNSConfig),
+  "enableMultiNetworking": S.optional(S.Boolean),
+  "enableIntraNodeVisibility": S.optional(S.Boolean),
+  "dataplaneV2Config": S.optional(DataplaneV2Config),
+  "enableFqdnNetworkPolicy": S.optional(S.Boolean),
+  "serviceExternalIpsConfig": S.optional(ServiceExternalIPsConfig),
+  "enableCiliumClusterwideNetworkPolicy": S.optional(S.Boolean),
+  "disableL4LbFirewallReconciliation": S.optional(S.Boolean),
+  "subnetwork": S.optional(S.String),
+  "privateIpv6GoogleAccess": S.optional(NetworkConfigPrivateIpv6GoogleAccessEnum),
+  "gatewayApiConfig": S.optional(GatewayAPIConfig),
+  "enableL4ilbSubsetting": S.optional(S.Boolean),
+  "defaultEnablePrivateNodes": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
 /** Configuration for the use of Kubernetes Service Accounts in IAM policies. */
@@ -4271,22 +3470,14 @@ export interface WorkloadIdentityConfig {
   workloadPool?: string;
 }
 export const WorkloadIdentityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identityProvider: S.optional(S.String),
-    identityNamespace: S.optional(S.String),
-    workloadPool: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkloadIdentityConfig",
-}) as any as S.Schema<WorkloadIdentityConfig>;
+S.Struct({
+  "identityProvider": S.optional(S.String),
+  "identityNamespace": S.optional(S.String),
+  "workloadPool": S.optional(S.String),
+}),
+).annotate({ identifier: "WorkloadIdentityConfig" }) as any as S.Schema<WorkloadIdentityConfig>;
 
-export type WorkloadConfigAuditModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "BASIC"
-  | "BASELINE"
-  | "RESTRICTED"
-  | (string & {});
+export type WorkloadConfigAuditModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "BASIC" | "BASELINE" | "RESTRICTED";
 export const WorkloadConfigAuditModeEnum = /*@__PURE__*/ S.String;
 
 /** WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster. */
@@ -4295,18 +3486,13 @@ export interface WorkloadConfig {
   auditMode?: WorkloadConfigAuditModeEnum;
 }
 export const WorkloadConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auditMode: S.optional(WorkloadConfigAuditModeEnum),
-  }),
+S.Struct({
+  "auditMode": S.optional(WorkloadConfigAuditModeEnum),
+}),
 ).annotate({ identifier: "WorkloadConfig" }) as any as S.Schema<WorkloadConfig>;
 
-export type ProtectConfigWorkloadVulnerabilityModeEnum =
-  | "WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "BASIC"
-  | (string & {});
-export const ProtectConfigWorkloadVulnerabilityModeEnum =
-  /*@__PURE__*/ S.String;
+export type ProtectConfigWorkloadVulnerabilityModeEnum = "WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED" | "DISABLED" | "BASIC";
+export const ProtectConfigWorkloadVulnerabilityModeEnum = /*@__PURE__*/ S.String;
 
 /** ProtectConfig defines the flags needed to enable/disable features for the Protect API. */
 export interface ProtectConfig {
@@ -4316,18 +3502,13 @@ export interface ProtectConfig {
   workloadVulnerabilityMode?: ProtectConfigWorkloadVulnerabilityModeEnum;
 }
 export const ProtectConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workloadConfig: S.optional(WorkloadConfig),
-    workloadVulnerabilityMode: S.optional(
-      ProtectConfigWorkloadVulnerabilityModeEnum,
-    ),
-  }),
+S.Struct({
+  "workloadConfig": S.optional(WorkloadConfig),
+  "workloadVulnerabilityMode": S.optional(ProtectConfigWorkloadVulnerabilityModeEnum),
+}),
 ).annotate({ identifier: "ProtectConfig" }) as any as S.Schema<ProtectConfig>;
 
-export type GkeAutoUpgradeConfigPatchModeEnum =
-  | "PATCH_MODE_UNSPECIFIED"
-  | "ACCELERATED"
-  | (string & {});
+export type GkeAutoUpgradeConfigPatchModeEnum = "PATCH_MODE_UNSPECIFIED" | "ACCELERATED";
 export const GkeAutoUpgradeConfigPatchModeEnum = /*@__PURE__*/ S.String;
 
 /** GkeAutoUpgradeConfig is the configuration for GKE auto upgrades. */
@@ -4336,12 +3517,10 @@ export interface GkeAutoUpgradeConfig {
   patchMode?: GkeAutoUpgradeConfigPatchModeEnum;
 }
 export const GkeAutoUpgradeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    patchMode: S.optional(GkeAutoUpgradeConfigPatchModeEnum),
-  }),
-).annotate({
-  identifier: "GkeAutoUpgradeConfig",
-}) as any as S.Schema<GkeAutoUpgradeConfig>;
+S.Struct({
+  "patchMode": S.optional(GkeAutoUpgradeConfigPatchModeEnum),
+}),
+).annotate({ identifier: "GkeAutoUpgradeConfig" }) as any as S.Schema<GkeAutoUpgradeConfig>;
 
 /** VerticalPodAutoscaling contains global, per-cluster information required by Vertical Pod Autoscaler to automatically adjust the resources of pods controlled by it. */
 export interface VerticalPodAutoscaling {
@@ -4349,12 +3528,10 @@ export interface VerticalPodAutoscaling {
   enabled?: boolean;
 }
 export const VerticalPodAutoscaling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VerticalPodAutoscaling",
-}) as any as S.Schema<VerticalPodAutoscaling>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "VerticalPodAutoscaling" }) as any as S.Schema<VerticalPodAutoscaling>;
 
 /** Configuration for the legacy Attribute Based Access Control authorization mode. */
 export interface LegacyAbac {
@@ -4362,23 +3539,15 @@ export interface LegacyAbac {
   enabled?: boolean;
 }
 export const LegacyAbac = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "LegacyAbac" }) as any as S.Schema<LegacyAbac>;
 
-export type EnterpriseConfigClusterTierEnum =
-  | "CLUSTER_TIER_UNSPECIFIED"
-  | "STANDARD"
-  | "ENTERPRISE"
-  | (string & {});
+export type EnterpriseConfigClusterTierEnum = "CLUSTER_TIER_UNSPECIFIED" | "STANDARD" | "ENTERPRISE";
 export const EnterpriseConfigClusterTierEnum = /*@__PURE__*/ S.String;
 
-export type EnterpriseConfigDesiredTierEnum =
-  | "CLUSTER_TIER_UNSPECIFIED"
-  | "STANDARD"
-  | "ENTERPRISE"
-  | (string & {});
+export type EnterpriseConfigDesiredTierEnum = "CLUSTER_TIER_UNSPECIFIED" | "STANDARD" | "ENTERPRISE";
 export const EnterpriseConfigDesiredTierEnum = /*@__PURE__*/ S.String;
 
 /** EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE Enterprise features are now available without an Enterprise tier. */
@@ -4389,13 +3558,11 @@ export interface EnterpriseConfig {
   desiredTier?: EnterpriseConfigDesiredTierEnum;
 }
 export const EnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterTier: S.optional(EnterpriseConfigClusterTierEnum),
-    desiredTier: S.optional(EnterpriseConfigDesiredTierEnum),
-  }),
-).annotate({
-  identifier: "EnterpriseConfig",
-}) as any as S.Schema<EnterpriseConfig>;
+S.Struct({
+  "clusterTier": S.optional(EnterpriseConfigClusterTierEnum),
+  "desiredTier": S.optional(EnterpriseConfigDesiredTierEnum),
+}),
+).annotate({ identifier: "EnterpriseConfig" }) as any as S.Schema<EnterpriseConfig>;
 
 /** Configuration for scheduled upgrades on the cluster. */
 export interface ScheduleUpgradeConfig {
@@ -4403,12 +3570,10 @@ export interface ScheduleUpgradeConfig {
   enabled?: boolean;
 }
 export const ScheduleUpgradeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ScheduleUpgradeConfig",
-}) as any as S.Schema<ScheduleUpgradeConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ScheduleUpgradeConfig" }) as any as S.Schema<ScheduleUpgradeConfig>;
 
 /** ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster. */
 export interface ParentProductConfig {
@@ -4418,40 +3583,24 @@ export interface ParentProductConfig {
   productName?: string;
 }
 export const ParentProductConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-    productName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ParentProductConfig",
-}) as any as S.Schema<ParentProductConfig>;
+S.Struct({
+  "labels": S.optional(StringMap),
+  "productName": S.optional(S.String),
+}),
+).annotate({ identifier: "ParentProductConfig" }) as any as S.Schema<ParentProductConfig>;
 
 /** ManagedMachineLearningDiagnosticsConfig is the configuration for the GKE Managed Machine Learning Diagnostics pipeline. */
 export interface ManagedMachineLearningDiagnosticsConfig {
   /** Enable/Disable Managed Machine Learning Diagnostics. */
   enabled?: boolean;
 }
-export const ManagedMachineLearningDiagnosticsConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "ManagedMachineLearningDiagnosticsConfig",
-}) as any as S.Schema<ManagedMachineLearningDiagnosticsConfig>;
+export const ManagedMachineLearningDiagnosticsConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ManagedMachineLearningDiagnosticsConfig" }) as any as S.Schema<ManagedMachineLearningDiagnosticsConfig>;
 
-export type DatabaseEncryptionCurrentStateEnum =
-  | "CURRENT_STATE_UNSPECIFIED"
-  | "CURRENT_STATE_ENCRYPTED"
-  | "CURRENT_STATE_DECRYPTED"
-  | "CURRENT_STATE_ENCRYPTION_PENDING"
-  | "CURRENT_STATE_ENCRYPTION_ERROR"
-  | "CURRENT_STATE_DECRYPTION_PENDING"
-  | "CURRENT_STATE_DECRYPTION_ERROR"
-  | "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_ENABLED"
-  | "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_PENDING"
-  | "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_ERROR"
-  | (string & {});
+export type DatabaseEncryptionCurrentStateEnum = "CURRENT_STATE_UNSPECIFIED" | "CURRENT_STATE_ENCRYPTED" | "CURRENT_STATE_DECRYPTED" | "CURRENT_STATE_ENCRYPTION_PENDING" | "CURRENT_STATE_ENCRYPTION_ERROR" | "CURRENT_STATE_DECRYPTION_PENDING" | "CURRENT_STATE_DECRYPTION_ERROR" | "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_ENABLED" | "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_PENDING" | "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_ERROR";
 export const DatabaseEncryptionCurrentStateEnum = /*@__PURE__*/ S.String;
 
 /** OperationError records errors seen from CloudKMS keys encountered during updates to DatabaseEncryption configuration. */
@@ -4464,24 +3613,17 @@ export interface OperationError {
   timestamp?: string;
 }
 export const OperationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyName: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-    timestamp: S.optional(S.String),
-  }),
+S.Struct({
+  "keyName": S.optional(S.String),
+  "errorMessage": S.optional(S.String),
+  "timestamp": S.optional(S.String),
+}),
 ).annotate({ identifier: "OperationError" }) as any as S.Schema<OperationError>;
 
 export type OperationErrorList = ReadonlyArray<OperationError>;
-export const OperationErrorList = /*@__PURE__*/ S.Array(
-  OperationError,
-) as any as S.Schema<OperationErrorList>;
+export const OperationErrorList = /*@__PURE__*/ S.Array(OperationError) as any as S.Schema<OperationErrorList>;
 
-export type DatabaseEncryptionStateEnum =
-  | "UNKNOWN"
-  | "ENCRYPTED"
-  | "DECRYPTED"
-  | "ALL_OBJECTS_ENCRYPTION_ENABLED"
-  | (string & {});
+export type DatabaseEncryptionStateEnum = "UNKNOWN" | "ENCRYPTED" | "DECRYPTED" | "ALL_OBJECTS_ENCRYPTION_ENABLED";
 export const DatabaseEncryptionStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of etcd encryption. */
@@ -4498,16 +3640,14 @@ export interface DatabaseEncryption {
   decryptionKeys?: StringList;
 }
 export const DatabaseEncryption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyName: S.optional(S.String),
-    currentState: S.optional(DatabaseEncryptionCurrentStateEnum),
-    lastOperationErrors: S.optional(OperationErrorList),
-    state: S.optional(DatabaseEncryptionStateEnum),
-    decryptionKeys: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "DatabaseEncryption",
-}) as any as S.Schema<DatabaseEncryption>;
+S.Struct({
+  "keyName": S.optional(S.String),
+  "currentState": S.optional(DatabaseEncryptionCurrentStateEnum),
+  "lastOperationErrors": S.optional(OperationErrorList),
+  "state": S.optional(DatabaseEncryptionStateEnum),
+  "decryptionKeys": S.optional(StringList),
+}),
+).annotate({ identifier: "DatabaseEncryption" }) as any as S.Schema<DatabaseEncryption>;
 
 /** NodePoolUpgradeConcurrencyConfig is the configuration for the node pool auto upgrade concurrency. */
 export interface NodePoolUpgradeConcurrencyConfig {
@@ -4515,12 +3655,10 @@ export interface NodePoolUpgradeConcurrencyConfig {
   maxCount?: string;
 }
 export const NodePoolUpgradeConcurrencyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxCount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NodePoolUpgradeConcurrencyConfig",
-}) as any as S.Schema<NodePoolUpgradeConcurrencyConfig>;
+S.Struct({
+  "maxCount": S.optional(S.String),
+}),
+).annotate({ identifier: "NodePoolUpgradeConcurrencyConfig" }) as any as S.Schema<NodePoolUpgradeConcurrencyConfig>;
 
 /** DisruptionBudget defines the upgrade disruption budget for the cluster control plane. */
 export interface DisruptionBudget {
@@ -4534,15 +3672,13 @@ export interface DisruptionBudget {
   patchVersionDisruptionInterval?: string;
 }
 export const DisruptionBudget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastMinorVersionDisruptionTime: S.optional(S.String),
-    lastDisruptionTime: S.optional(S.String),
-    minorVersionDisruptionInterval: S.optional(S.String),
-    patchVersionDisruptionInterval: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DisruptionBudget",
-}) as any as S.Schema<DisruptionBudget>;
+S.Struct({
+  "lastMinorVersionDisruptionTime": S.optional(S.String),
+  "lastDisruptionTime": S.optional(S.String),
+  "minorVersionDisruptionInterval": S.optional(S.String),
+  "patchVersionDisruptionInterval": S.optional(S.String),
+}),
+).annotate({ identifier: "DisruptionBudget" }) as any as S.Schema<DisruptionBudget>;
 
 /** Time window specified for daily maintenance operations. */
 export interface DailyMaintenanceWindow {
@@ -4552,27 +3688,17 @@ export interface DailyMaintenanceWindow {
   startTime?: string;
 }
 export const DailyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    duration: S.optional(S.String),
-    startTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DailyMaintenanceWindow",
-}) as any as S.Schema<DailyMaintenanceWindow>;
+S.Struct({
+  "duration": S.optional(S.String),
+  "startTime": S.optional(S.String),
+}),
+).annotate({ identifier: "DailyMaintenanceWindow" }) as any as S.Schema<DailyMaintenanceWindow>;
 
-export type MaintenanceExclusionOptionsScopeEnum =
-  | "NO_UPGRADES"
-  | "NO_MINOR_UPGRADES"
-  | "NO_MINOR_OR_NODE_UPGRADES"
-  | (string & {});
+export type MaintenanceExclusionOptionsScopeEnum = "NO_UPGRADES" | "NO_MINOR_UPGRADES" | "NO_MINOR_OR_NODE_UPGRADES";
 export const MaintenanceExclusionOptionsScopeEnum = /*@__PURE__*/ S.String;
 
-export type MaintenanceExclusionOptionsEndTimeBehaviorEnum =
-  | "END_TIME_BEHAVIOR_UNSPECIFIED"
-  | "UNTIL_END_OF_SUPPORT"
-  | (string & {});
-export const MaintenanceExclusionOptionsEndTimeBehaviorEnum =
-  /*@__PURE__*/ S.String;
+export type MaintenanceExclusionOptionsEndTimeBehaviorEnum = "END_TIME_BEHAVIOR_UNSPECIFIED" | "UNTIL_END_OF_SUPPORT";
+export const MaintenanceExclusionOptionsEndTimeBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** Represents the Maintenance exclusion option. */
 export interface MaintenanceExclusionOptions {
@@ -4582,13 +3708,11 @@ export interface MaintenanceExclusionOptions {
   endTimeBehavior?: MaintenanceExclusionOptionsEndTimeBehaviorEnum;
 }
 export const MaintenanceExclusionOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.optional(MaintenanceExclusionOptionsScopeEnum),
-    endTimeBehavior: S.optional(MaintenanceExclusionOptionsEndTimeBehaviorEnum),
-  }),
-).annotate({
-  identifier: "MaintenanceExclusionOptions",
-}) as any as S.Schema<MaintenanceExclusionOptions>;
+S.Struct({
+  "scope": S.optional(MaintenanceExclusionOptionsScopeEnum),
+  "endTimeBehavior": S.optional(MaintenanceExclusionOptionsEndTimeBehaviorEnum),
+}),
+).annotate({ identifier: "MaintenanceExclusionOptions" }) as any as S.Schema<MaintenanceExclusionOptions>;
 
 /** Represents an arbitrary window of time. */
 export interface TimeWindow {
@@ -4600,11 +3724,11 @@ export interface TimeWindow {
   endTime?: string;
 }
 export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    maintenanceExclusionOptions: S.optional(MaintenanceExclusionOptions),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "maintenanceExclusionOptions": S.optional(MaintenanceExclusionOptions),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
 
 /** Represents an arbitrary window of time that recurs. */
@@ -4615,13 +3739,11 @@ export interface RecurringTimeWindow {
   window?: TimeWindow;
 }
 export const RecurringTimeWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recurrence: S.optional(S.String),
-    window: S.optional(TimeWindow),
-  }),
-).annotate({
-  identifier: "RecurringTimeWindow",
-}) as any as S.Schema<RecurringTimeWindow>;
+S.Struct({
+  "recurrence": S.optional(S.String),
+  "window": S.optional(TimeWindow),
+}),
+).annotate({ identifier: "RecurringTimeWindow" }) as any as S.Schema<RecurringTimeWindow>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -4635,12 +3757,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hours: S.optional(S.Number),
-    minutes: S.optional(S.Number),
-    seconds: S.optional(S.Number),
-    nanos: S.optional(S.Number),
-  }),
+S.Struct({
+  "hours": S.optional(S.Number),
+  "minutes": S.optional(S.Number),
+  "seconds": S.optional(S.Number),
+  "nanos": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -4653,11 +3775,11 @@ export interface Container_Date {
   day?: number;
 }
 export const Container_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    month: S.optional(S.Number),
-    year: S.optional(S.Number),
-    day: S.optional(S.Number),
-  }),
+S.Struct({
+  "month": S.optional(S.Number),
+  "year": S.optional(S.Number),
+  "day": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Container_Date" }) as any as S.Schema<Container_Date>;
 
 /** Represents an arbitrary window of time that recurs. Alternative to RecurringTimeWindow, with renamed fields. */
@@ -4672,21 +3794,16 @@ export interface RecurringMaintenanceWindow {
   delayUntil?: Container_Date;
 }
 export const RecurringMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recurrence: S.optional(S.String),
-    windowDuration: S.optional(S.String),
-    windowStartTime: S.optional(TimeOfDay),
-    delayUntil: S.optional(Container_Date),
-  }),
-).annotate({
-  identifier: "RecurringMaintenanceWindow",
-}) as any as S.Schema<RecurringMaintenanceWindow>;
+S.Struct({
+  "recurrence": S.optional(S.String),
+  "windowDuration": S.optional(S.String),
+  "windowStartTime": S.optional(TimeOfDay),
+  "delayUntil": S.optional(Container_Date),
+}),
+).annotate({ identifier: "RecurringMaintenanceWindow" }) as any as S.Schema<RecurringMaintenanceWindow>;
 
 export type TimeWindowMap = { [key: string]: TimeWindow | undefined };
-export const TimeWindowMap = /*@__PURE__*/ S.Record(
-  S.String,
-  TimeWindow,
-) as any as S.Schema<TimeWindowMap>;
+export const TimeWindowMap = /*@__PURE__*/ S.Record(S.String, TimeWindow) as any as S.Schema<TimeWindowMap>;
 
 /** MaintenanceWindow defines the maintenance window to be used for the cluster. */
 export interface MaintenanceWindow {
@@ -4700,15 +3817,13 @@ export interface MaintenanceWindow {
   maintenanceExclusions?: TimeWindowMap;
 }
 export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dailyMaintenanceWindow: S.optional(DailyMaintenanceWindow),
-    recurringWindow: S.optional(RecurringTimeWindow),
-    recurringMaintenanceWindow: S.optional(RecurringMaintenanceWindow),
-    maintenanceExclusions: S.optional(TimeWindowMap),
-  }),
-).annotate({
-  identifier: "MaintenanceWindow",
-}) as any as S.Schema<MaintenanceWindow>;
+S.Struct({
+  "dailyMaintenanceWindow": S.optional(DailyMaintenanceWindow),
+  "recurringWindow": S.optional(RecurringTimeWindow),
+  "recurringMaintenanceWindow": S.optional(RecurringMaintenanceWindow),
+  "maintenanceExclusions": S.optional(TimeWindowMap),
+}),
+).annotate({ identifier: "MaintenanceWindow" }) as any as S.Schema<MaintenanceWindow>;
 
 /** MaintenancePolicy defines the maintenance policy to be used for the cluster. */
 export interface MaintenancePolicy {
@@ -4720,21 +3835,14 @@ export interface MaintenancePolicy {
   resourceVersion?: string;
 }
 export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disruptionBudget: S.optional(DisruptionBudget),
-    window: S.optional(MaintenanceWindow),
-    resourceVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MaintenancePolicy",
-}) as any as S.Schema<MaintenancePolicy>;
+S.Struct({
+  "disruptionBudget": S.optional(DisruptionBudget),
+  "window": S.optional(MaintenanceWindow),
+  "resourceVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "MaintenancePolicy" }) as any as S.Schema<MaintenancePolicy>;
 
-export type ClusterTelemetryTypeEnum =
-  | "UNSPECIFIED"
-  | "DISABLED"
-  | "ENABLED"
-  | "SYSTEM_ONLY"
-  | (string & {});
+export type ClusterTelemetryTypeEnum = "UNSPECIFIED" | "DISABLED" | "ENABLED" | "SYSTEM_ONLY";
 export const ClusterTelemetryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Telemetry integration for the cluster. */
@@ -4743,12 +3851,10 @@ export interface ClusterTelemetry {
   type?: ClusterTelemetryTypeEnum;
 }
 export const ClusterTelemetry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ClusterTelemetryTypeEnum),
-  }),
-).annotate({
-  identifier: "ClusterTelemetry",
-}) as any as S.Schema<ClusterTelemetry>;
+S.Struct({
+  "type": S.optional(ClusterTelemetryTypeEnum),
+}),
+).annotate({ identifier: "ClusterTelemetry" }) as any as S.Schema<ClusterTelemetry>;
 
 /** RollbackSafeUpgrade is the configuration for the rollback safe upgrade. */
 export interface RollbackSafeUpgrade {
@@ -4756,17 +3862,12 @@ export interface RollbackSafeUpgrade {
   controlPlaneSoakDuration?: string;
 }
 export const RollbackSafeUpgrade = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneSoakDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RollbackSafeUpgrade",
-}) as any as S.Schema<RollbackSafeUpgrade>;
+S.Struct({
+  "controlPlaneSoakDuration": S.optional(S.String),
+}),
+).annotate({ identifier: "RollbackSafeUpgrade" }) as any as S.Schema<RollbackSafeUpgrade>;
 
-export type FleetMembershipTypeEnum =
-  | "MEMBERSHIP_TYPE_UNSPECIFIED"
-  | "LIGHTWEIGHT"
-  | (string & {});
+export type FleetMembershipTypeEnum = "MEMBERSHIP_TYPE_UNSPECIFIED" | "LIGHTWEIGHT";
 export const FleetMembershipTypeEnum = /*@__PURE__*/ S.String;
 
 /** Fleet is the fleet configuration for the cluster. */
@@ -4781,12 +3882,12 @@ export interface Fleet {
   project?: string;
 }
 export const Fleet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    membership: S.optional(S.String),
-    preRegistered: S.optional(S.Boolean),
-    membershipType: S.optional(FleetMembershipTypeEnum),
-    project: S.optional(S.String),
-  }),
+S.Struct({
+  "membership": S.optional(S.String),
+  "preRegistered": S.optional(S.Boolean),
+  "membershipType": S.optional(FleetMembershipTypeEnum),
+  "project": S.optional(S.String),
+}),
 ).annotate({ identifier: "Fleet" }) as any as S.Schema<Fleet>;
 
 /** Configuration for returning group information from authenticators. */
@@ -4797,13 +3898,11 @@ export interface AuthenticatorGroupsConfig {
   enabled?: boolean;
 }
 export const AuthenticatorGroupsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    securityGroup: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AuthenticatorGroupsConfig",
-}) as any as S.Schema<AuthenticatorGroupsConfig>;
+S.Struct({
+  "securityGroup": S.optional(S.String),
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AuthenticatorGroupsConfig" }) as any as S.Schema<AuthenticatorGroupsConfig>;
 
 /** WorkloadPolicyConfig is the configuration related to GCW workload policy */
 export interface WorkloadPolicyConfig {
@@ -4813,13 +3912,11 @@ export interface WorkloadPolicyConfig {
   autopilotCompatibilityAuditingEnabled?: boolean;
 }
 export const WorkloadPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowNetAdmin: S.optional(S.Boolean),
-    autopilotCompatibilityAuditingEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "WorkloadPolicyConfig",
-}) as any as S.Schema<WorkloadPolicyConfig>;
+S.Struct({
+  "allowNetAdmin": S.optional(S.Boolean),
+  "autopilotCompatibilityAuditingEnabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "WorkloadPolicyConfig" }) as any as S.Schema<WorkloadPolicyConfig>;
 
 /** PrivilegedAdmissionConfig stores the list of authorized allowlist paths for the cluster. */
 export interface PrivilegedAdmissionConfig {
@@ -4827,12 +3924,10 @@ export interface PrivilegedAdmissionConfig {
   allowlistPaths?: StringList;
 }
 export const PrivilegedAdmissionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowlistPaths: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "PrivilegedAdmissionConfig",
-}) as any as S.Schema<PrivilegedAdmissionConfig>;
+S.Struct({
+  "allowlistPaths": S.optional(StringList),
+}),
+).annotate({ identifier: "PrivilegedAdmissionConfig" }) as any as S.Schema<PrivilegedAdmissionConfig>;
 
 /** ClusterPolicyConfig stores the configuration for cluster wide policies. */
 export interface ClusterPolicyConfig {
@@ -4846,20 +3941,15 @@ export interface ClusterPolicyConfig {
   noSystemMutation?: boolean;
 }
 export const ClusterPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    noSystemImpersonation: S.optional(S.Boolean),
-    noUnsafeWebhooks: S.optional(S.Boolean),
-    noStandardNodePools: S.optional(S.Boolean),
-    noSystemMutation: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClusterPolicyConfig",
-}) as any as S.Schema<ClusterPolicyConfig>;
+S.Struct({
+  "noSystemImpersonation": S.optional(S.Boolean),
+  "noUnsafeWebhooks": S.optional(S.Boolean),
+  "noStandardNodePools": S.optional(S.Boolean),
+  "noSystemMutation": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ClusterPolicyConfig" }) as any as S.Schema<ClusterPolicyConfig>;
 
-export type AutopilotConversionStatusStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "DONE"
-  | (string & {});
+export type AutopilotConversionStatusStateEnum = "STATE_UNSPECIFIED" | "DONE";
 export const AutopilotConversionStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** AutopilotConversionStatus represents conversion status. */
@@ -4868,12 +3958,10 @@ export interface AutopilotConversionStatus {
   state?: AutopilotConversionStatusStateEnum;
 }
 export const AutopilotConversionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(AutopilotConversionStatusStateEnum),
-  }),
-).annotate({
-  identifier: "AutopilotConversionStatus",
-}) as any as S.Schema<AutopilotConversionStatus>;
+S.Struct({
+  "state": S.optional(AutopilotConversionStatusStateEnum),
+}),
+).annotate({ identifier: "AutopilotConversionStatus" }) as any as S.Schema<AutopilotConversionStatus>;
 
 /** Autopilot is the configuration for Autopilot settings on the cluster. */
 export interface Autopilot {
@@ -4889,20 +3977,16 @@ export interface Autopilot {
   enabled?: boolean;
 }
 export const Autopilot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workloadPolicyConfig: S.optional(WorkloadPolicyConfig),
-    privilegedAdmissionConfig: S.optional(PrivilegedAdmissionConfig),
-    clusterPolicyConfig: S.optional(ClusterPolicyConfig),
-    conversionStatus: S.optional(AutopilotConversionStatus),
-    enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "workloadPolicyConfig": S.optional(WorkloadPolicyConfig),
+  "privilegedAdmissionConfig": S.optional(PrivilegedAdmissionConfig),
+  "clusterPolicyConfig": S.optional(ClusterPolicyConfig),
+  "conversionStatus": S.optional(AutopilotConversionStatus),
+  "enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Autopilot" }) as any as S.Schema<Autopilot>;
 
-export type NodeCreationConfigNodeCreationModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "VIA_KUBELET"
-  | "VIA_CONTROL_PLANE"
-  | (string & {});
+export type NodeCreationConfigNodeCreationModeEnum = "MODE_UNSPECIFIED" | "VIA_KUBELET" | "VIA_CONTROL_PLANE";
 export const NodeCreationConfigNodeCreationModeEnum = /*@__PURE__*/ S.String;
 
 /** NodeCreationConfig defines the settings of node creation mode. */
@@ -4911,12 +3995,10 @@ export interface NodeCreationConfig {
   nodeCreationMode?: NodeCreationConfigNodeCreationModeEnum;
 }
 export const NodeCreationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeCreationMode: S.optional(NodeCreationConfigNodeCreationModeEnum),
-  }),
-).annotate({
-  identifier: "NodeCreationConfig",
-}) as any as S.Schema<NodeCreationConfig>;
+S.Struct({
+  "nodeCreationMode": S.optional(NodeCreationConfigNodeCreationModeEnum),
+}),
+).annotate({ identifier: "NodeCreationConfig" }) as any as S.Schema<NodeCreationConfig>;
 
 /** AutopilotConfig contains configuration of autopilot feature for this node pool. */
 export interface AutopilotConfig {
@@ -4924,12 +4006,10 @@ export interface AutopilotConfig {
   enabled?: boolean;
 }
 export const AutopilotConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AutopilotConfig",
-}) as any as S.Schema<AutopilotConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AutopilotConfig" }) as any as S.Schema<AutopilotConfig>;
 
 /** NodeDrainConfig contains the node drain related configurations for this node pool. */
 export interface NodeDrainConfig {
@@ -4941,14 +4021,12 @@ export interface NodeDrainConfig {
   graceTerminationDuration?: string;
 }
 export const NodeDrainConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pdbTimeoutDuration: S.optional(S.String),
-    respectPdbDuringNodePoolDeletion: S.optional(S.Boolean),
-    graceTerminationDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NodeDrainConfig",
-}) as any as S.Schema<NodeDrainConfig>;
+S.Struct({
+  "pdbTimeoutDuration": S.optional(S.String),
+  "respectPdbDuringNodePoolDeletion": S.optional(S.Boolean),
+  "graceTerminationDuration": S.optional(S.String),
+}),
+).annotate({ identifier: "NodeDrainConfig" }) as any as S.Schema<NodeDrainConfig>;
 
 /** AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message */
 export interface AdditionalNodeNetworkConfig {
@@ -4958,19 +4036,14 @@ export interface AdditionalNodeNetworkConfig {
   subnetwork?: string;
 }
 export const AdditionalNodeNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.optional(S.String),
-    subnetwork: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AdditionalNodeNetworkConfig",
-}) as any as S.Schema<AdditionalNodeNetworkConfig>;
+S.Struct({
+  "network": S.optional(S.String),
+  "subnetwork": S.optional(S.String),
+}),
+).annotate({ identifier: "AdditionalNodeNetworkConfig" }) as any as S.Schema<AdditionalNodeNetworkConfig>;
 
-export type AdditionalNodeNetworkConfigList =
-  ReadonlyArray<AdditionalNodeNetworkConfig>;
-export const AdditionalNodeNetworkConfigList = /*@__PURE__*/ S.Array(
-  AdditionalNodeNetworkConfig,
-) as any as S.Schema<AdditionalNodeNetworkConfigList>;
+export type AdditionalNodeNetworkConfigList = ReadonlyArray<AdditionalNodeNetworkConfig>;
+export const AdditionalNodeNetworkConfigList = /*@__PURE__*/ S.Array(AdditionalNodeNetworkConfig) as any as S.Schema<AdditionalNodeNetworkConfigList>;
 
 /** AdditionalPodNetworkConfig is the configuration for additional pod networks within the NodeNetworkConfig message */
 export interface AdditionalPodNetworkConfig {
@@ -4984,35 +4057,22 @@ export interface AdditionalPodNetworkConfig {
   subnetwork?: string;
 }
 export const AdditionalPodNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secondaryPodRange: S.optional(S.String),
-    maxPodsPerNode: S.optional(MaxPodsConstraint),
-    networkAttachment: S.optional(S.String),
-    subnetwork: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AdditionalPodNetworkConfig",
-}) as any as S.Schema<AdditionalPodNetworkConfig>;
+S.Struct({
+  "secondaryPodRange": S.optional(S.String),
+  "maxPodsPerNode": S.optional(MaxPodsConstraint),
+  "networkAttachment": S.optional(S.String),
+  "subnetwork": S.optional(S.String),
+}),
+).annotate({ identifier: "AdditionalPodNetworkConfig" }) as any as S.Schema<AdditionalPodNetworkConfig>;
 
-export type AdditionalPodNetworkConfigList =
-  ReadonlyArray<AdditionalPodNetworkConfig>;
-export const AdditionalPodNetworkConfigList = /*@__PURE__*/ S.Array(
-  AdditionalPodNetworkConfig,
-) as any as S.Schema<AdditionalPodNetworkConfigList>;
+export type AdditionalPodNetworkConfigList = ReadonlyArray<AdditionalPodNetworkConfig>;
+export const AdditionalPodNetworkConfigList = /*@__PURE__*/ S.Array(AdditionalPodNetworkConfig) as any as S.Schema<AdditionalPodNetworkConfigList>;
 
-export type NetworkPerformanceConfigTotalEgressBandwidthTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "TIER_1"
-  | (string & {});
-export const NetworkPerformanceConfigTotalEgressBandwidthTierEnum =
-  /*@__PURE__*/ S.String;
+export type NetworkPerformanceConfigTotalEgressBandwidthTierEnum = "TIER_UNSPECIFIED" | "TIER_1";
+export const NetworkPerformanceConfigTotalEgressBandwidthTierEnum = /*@__PURE__*/ S.String;
 
-export type NetworkPerformanceConfigExternalIpEgressBandwidthTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "TIER_1"
-  | (string & {});
-export const NetworkPerformanceConfigExternalIpEgressBandwidthTierEnum =
-  /*@__PURE__*/ S.String;
+export type NetworkPerformanceConfigExternalIpEgressBandwidthTierEnum = "TIER_UNSPECIFIED" | "TIER_1";
+export const NetworkPerformanceConfigExternalIpEgressBandwidthTierEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of all network bandwidth tiers */
 export interface NetworkPerformanceConfig {
@@ -5022,17 +4082,11 @@ export interface NetworkPerformanceConfig {
   externalIpEgressBandwidthTier?: NetworkPerformanceConfigExternalIpEgressBandwidthTierEnum;
 }
 export const NetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    totalEgressBandwidthTier: S.optional(
-      NetworkPerformanceConfigTotalEgressBandwidthTierEnum,
-    ),
-    externalIpEgressBandwidthTier: S.optional(
-      NetworkPerformanceConfigExternalIpEgressBandwidthTierEnum,
-    ),
-  }),
-).annotate({
-  identifier: "NetworkPerformanceConfig",
-}) as any as S.Schema<NetworkPerformanceConfig>;
+S.Struct({
+  "totalEgressBandwidthTier": S.optional(NetworkPerformanceConfigTotalEgressBandwidthTierEnum),
+  "externalIpEgressBandwidthTier": S.optional(NetworkPerformanceConfigExternalIpEgressBandwidthTierEnum),
+}),
+).annotate({ identifier: "NetworkPerformanceConfig" }) as any as S.Schema<NetworkPerformanceConfig>;
 
 /** Parameters for node pool-level network config. */
 export interface NodeNetworkConfig {
@@ -5064,36 +4118,24 @@ export interface NodeNetworkConfig {
   network?: string;
 }
 export const NodeNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subnetwork: S.optional(S.String),
-    additionalNodeNetworkConfigs: S.optional(AdditionalNodeNetworkConfigList),
-    podRange: S.optional(S.String),
-    acceleratorNetworkProfile: S.optional(S.String),
-    networkTierConfig: S.optional(NetworkTierConfig),
-    additionalPodNetworkConfigs: S.optional(AdditionalPodNetworkConfigList),
-    podCidrOverprovisionConfig: S.optional(PodCIDROverprovisionConfig),
-    enablePrivateNodes: S.optional(S.Boolean),
-    podIpv4RangeUtilization: S.optional(S.Number),
-    podIpv4CidrBlock: S.optional(S.String),
-    createPodRange: S.optional(S.Boolean),
-    networkPerformanceConfig: S.optional(NetworkPerformanceConfig),
-    network: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NodeNetworkConfig",
-}) as any as S.Schema<NodeNetworkConfig>;
+S.Struct({
+  "subnetwork": S.optional(S.String),
+  "additionalNodeNetworkConfigs": S.optional(AdditionalNodeNetworkConfigList),
+  "podRange": S.optional(S.String),
+  "acceleratorNetworkProfile": S.optional(S.String),
+  "networkTierConfig": S.optional(NetworkTierConfig),
+  "additionalPodNetworkConfigs": S.optional(AdditionalPodNetworkConfigList),
+  "podCidrOverprovisionConfig": S.optional(PodCIDROverprovisionConfig),
+  "enablePrivateNodes": S.optional(S.Boolean),
+  "podIpv4RangeUtilization": S.optional(S.Number),
+  "podIpv4CidrBlock": S.optional(S.String),
+  "createPodRange": S.optional(S.Boolean),
+  "networkPerformanceConfig": S.optional(NetworkPerformanceConfig),
+  "network": S.optional(S.String),
+}),
+).annotate({ identifier: "NodeNetworkConfig" }) as any as S.Schema<NodeNetworkConfig>;
 
-export type BlueGreenInfoPhaseEnum =
-  | "PHASE_UNSPECIFIED"
-  | "UPDATE_STARTED"
-  | "CREATING_GREEN_POOL"
-  | "CORDONING_BLUE_POOL"
-  | "WAITING_TO_DRAIN_BLUE_POOL"
-  | "DRAINING_BLUE_POOL"
-  | "NODE_POOL_SOAKING"
-  | "DELETING_BLUE_POOL"
-  | "ROLLBACK_STARTED"
-  | (string & {});
+export type BlueGreenInfoPhaseEnum = "PHASE_UNSPECIFIED" | "UPDATE_STARTED" | "CREATING_GREEN_POOL" | "CORDONING_BLUE_POOL" | "WAITING_TO_DRAIN_BLUE_POOL" | "DRAINING_BLUE_POOL" | "NODE_POOL_SOAKING" | "DELETING_BLUE_POOL" | "ROLLBACK_STARTED";
 export const BlueGreenInfoPhaseEnum = /*@__PURE__*/ S.String;
 
 /** Information relevant to blue-green upgrade. */
@@ -5110,13 +4152,13 @@ export interface BlueGreenInfo {
   greenPoolVersion?: string;
 }
 export const BlueGreenInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    phase: S.optional(BlueGreenInfoPhaseEnum),
-    blueInstanceGroupUrls: S.optional(StringList),
-    greenInstanceGroupUrls: S.optional(StringList),
-    bluePoolDeletionStartTime: S.optional(S.String),
-    greenPoolVersion: S.optional(S.String),
-  }),
+S.Struct({
+  "phase": S.optional(BlueGreenInfoPhaseEnum),
+  "blueInstanceGroupUrls": S.optional(StringList),
+  "greenInstanceGroupUrls": S.optional(StringList),
+  "bluePoolDeletionStartTime": S.optional(S.String),
+  "greenPoolVersion": S.optional(S.String),
+}),
 ).annotate({ identifier: "BlueGreenInfo" }) as any as S.Schema<BlueGreenInfo>;
 
 /** UpdateInfo contains resource (instance groups, etc), status and other intermediate information relevant to a node pool upgrade. */
@@ -5125,20 +4167,12 @@ export interface UpdateInfo {
   blueGreenInfo?: BlueGreenInfo;
 }
 export const UpdateInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blueGreenInfo: S.optional(BlueGreenInfo),
-  }),
+S.Struct({
+  "blueGreenInfo": S.optional(BlueGreenInfo),
+}),
 ).annotate({ identifier: "UpdateInfo" }) as any as S.Schema<UpdateInfo>;
 
-export type NodePoolStatusEnum =
-  | "STATUS_UNSPECIFIED"
-  | "PROVISIONING"
-  | "RUNNING"
-  | "RUNNING_WITH_ERROR"
-  | "RECONCILING"
-  | "STOPPING"
-  | "ERROR"
-  | (string & {});
+export type NodePoolStatusEnum = "STATUS_UNSPECIFIED" | "PROVISIONING" | "RUNNING" | "RUNNING_WITH_ERROR" | "RECONCILING" | "STOPPING" | "ERROR";
 export const NodePoolStatusEnum = /*@__PURE__*/ S.String;
 
 /** QueuedProvisioning defines the queued provisioning used by the node pool. */
@@ -5147,12 +4181,10 @@ export interface QueuedProvisioning {
   enabled?: boolean;
 }
 export const QueuedProvisioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "QueuedProvisioning",
-}) as any as S.Schema<QueuedProvisioning>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "QueuedProvisioning" }) as any as S.Schema<QueuedProvisioning>;
 
 /** Best effort provisioning. */
 export interface BestEffortProvisioning {
@@ -5162,18 +4194,13 @@ export interface BestEffortProvisioning {
   minProvisionNodes?: number;
 }
 export const BestEffortProvisioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    minProvisionNodes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BestEffortProvisioning",
-}) as any as S.Schema<BestEffortProvisioning>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "minProvisionNodes": S.optional(S.Number),
+}),
+).annotate({ identifier: "BestEffortProvisioning" }) as any as S.Schema<BestEffortProvisioning>;
 
-export type PlacementPolicyTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "COMPACT"
-  | (string & {});
+export type PlacementPolicyTypeEnum = "TYPE_UNSPECIFIED" | "COMPACT";
 export const PlacementPolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** PlacementPolicy defines the placement policy used by the node pool. */
@@ -5186,14 +4213,12 @@ export interface PlacementPolicy {
   type?: PlacementPolicyTypeEnum;
 }
 export const PlacementPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tpuTopology: S.optional(S.String),
-    policyName: S.optional(S.String),
-    type: S.optional(PlacementPolicyTypeEnum),
-  }),
-).annotate({
-  identifier: "PlacementPolicy",
-}) as any as S.Schema<PlacementPolicy>;
+S.Struct({
+  "tpuTopology": S.optional(S.String),
+  "policyName": S.optional(S.String),
+  "type": S.optional(PlacementPolicyTypeEnum),
+}),
+).annotate({ identifier: "PlacementPolicy" }) as any as S.Schema<PlacementPolicy>;
 
 /** Defines the maintenance exclusion for the node pool. */
 export interface ExclusionUntilEndOfSupport {
@@ -5205,14 +4230,12 @@ export interface ExclusionUntilEndOfSupport {
   endTime?: string;
 }
 export const ExclusionUntilEndOfSupport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    endTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExclusionUntilEndOfSupport",
-}) as any as S.Schema<ExclusionUntilEndOfSupport>;
+S.Struct({
+  "startTime": S.optional(S.String),
+  "enabled": S.optional(S.Boolean),
+  "endTime": S.optional(S.String),
+}),
+).annotate({ identifier: "ExclusionUntilEndOfSupport" }) as any as S.Schema<ExclusionUntilEndOfSupport>;
 
 /** Defines the maintenance policy for the node pool. */
 export interface NodePoolMaintenancePolicy {
@@ -5220,12 +4243,10 @@ export interface NodePoolMaintenancePolicy {
   exclusionUntilEndOfSupport?: ExclusionUntilEndOfSupport;
 }
 export const NodePoolMaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exclusionUntilEndOfSupport: S.optional(ExclusionUntilEndOfSupport),
-  }),
-).annotate({
-  identifier: "NodePoolMaintenancePolicy",
-}) as any as S.Schema<NodePoolMaintenancePolicy>;
+S.Struct({
+  "exclusionUntilEndOfSupport": S.optional(ExclusionUntilEndOfSupport),
+}),
+).annotate({ identifier: "NodePoolMaintenancePolicy" }) as any as S.Schema<NodePoolMaintenancePolicy>;
 
 /** Contains expiry information about the kubelet certificate. */
 export interface KubeletCertInfo {
@@ -5235,13 +4256,11 @@ export interface KubeletCertInfo {
   nonTpmBootstrapCertExpireTime?: string;
 }
 export const KubeletCertInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tpmBootstrapCertExpireTime: S.optional(S.String),
-    nonTpmBootstrapCertExpireTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KubeletCertInfo",
-}) as any as S.Schema<KubeletCertInfo>;
+S.Struct({
+  "tpmBootstrapCertExpireTime": S.optional(S.String),
+  "nonTpmBootstrapCertExpireTime": S.optional(S.String),
+}),
+).annotate({ identifier: "KubeletCertInfo" }) as any as S.Schema<KubeletCertInfo>;
 
 /** NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. */
 export interface NodePool {
@@ -5297,54 +4316,43 @@ export interface NodePool {
   kubeletCertInfo?: KubeletCertInfo;
 }
 export const NodePool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upgradeSettings: S.optional(UpgradeSettings),
-    autopilotConfig: S.optional(AutopilotConfig),
-    nodeDrainConfig: S.optional(NodeDrainConfig),
-    name: S.optional(S.String),
-    instanceGroupUrls: S.optional(StringList),
-    networkConfig: S.optional(NodeNetworkConfig),
-    updateInfo: S.optional(UpdateInfo),
-    status: S.optional(NodePoolStatusEnum),
-    conditions: S.optional(StatusConditionList),
-    queuedProvisioning: S.optional(QueuedProvisioning),
-    locations: S.optional(StringList),
-    autoscaling: S.optional(NodePoolAutoscaling),
-    bestEffortProvisioning: S.optional(BestEffortProvisioning),
-    etag: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    config: S.optional(NodeConfig),
-    placementPolicy: S.optional(PlacementPolicy),
-    version: S.optional(S.String),
-    maintenancePolicy: S.optional(NodePoolMaintenancePolicy),
-    management: S.optional(NodeManagement),
-    podIpv4CidrSize: S.optional(S.Number),
-    maxPodsConstraint: S.optional(MaxPodsConstraint),
-    initialNodeCount: S.optional(S.Number),
-    statusMessage: S.optional(S.String),
-    kubeletCertInfo: S.optional(KubeletCertInfo),
-  }),
+S.Struct({
+  "upgradeSettings": S.optional(UpgradeSettings),
+  "autopilotConfig": S.optional(AutopilotConfig),
+  "nodeDrainConfig": S.optional(NodeDrainConfig),
+  "name": S.optional(S.String),
+  "instanceGroupUrls": S.optional(StringList),
+  "networkConfig": S.optional(NodeNetworkConfig),
+  "updateInfo": S.optional(UpdateInfo),
+  "status": S.optional(NodePoolStatusEnum),
+  "conditions": S.optional(StatusConditionList),
+  "queuedProvisioning": S.optional(QueuedProvisioning),
+  "locations": S.optional(StringList),
+  "autoscaling": S.optional(NodePoolAutoscaling),
+  "bestEffortProvisioning": S.optional(BestEffortProvisioning),
+  "etag": S.optional(S.String),
+  "selfLink": S.optional(S.String),
+  "config": S.optional(NodeConfig),
+  "placementPolicy": S.optional(PlacementPolicy),
+  "version": S.optional(S.String),
+  "maintenancePolicy": S.optional(NodePoolMaintenancePolicy),
+  "management": S.optional(NodeManagement),
+  "podIpv4CidrSize": S.optional(S.Number),
+  "maxPodsConstraint": S.optional(MaxPodsConstraint),
+  "initialNodeCount": S.optional(S.Number),
+  "statusMessage": S.optional(S.String),
+  "kubeletCertInfo": S.optional(KubeletCertInfo),
+}),
 ).annotate({ identifier: "NodePool" }) as any as S.Schema<NodePool>;
 
 export type NodePoolList = ReadonlyArray<NodePool>;
-export const NodePoolList = /*@__PURE__*/ S.Array(
-  NodePool,
-) as any as S.Schema<NodePoolList>;
+export const NodePoolList = /*@__PURE__*/ S.Array(NodePool) as any as S.Schema<NodePoolList>;
 
-export type FilterEventTypeItemEnum =
-  | "EVENT_TYPE_UNSPECIFIED"
-  | "UPGRADE_AVAILABLE_EVENT"
-  | "UPGRADE_EVENT"
-  | "SECURITY_BULLETIN_EVENT"
-  | "UPGRADE_INFO_EVENT"
-  | (string & {});
+export type FilterEventTypeItemEnum = "EVENT_TYPE_UNSPECIFIED" | "UPGRADE_AVAILABLE_EVENT" | "UPGRADE_EVENT" | "SECURITY_BULLETIN_EVENT" | "UPGRADE_INFO_EVENT";
 export const FilterEventTypeItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterEventTypeItemEnumList =
-  ReadonlyArray<FilterEventTypeItemEnum>;
-export const FilterEventTypeItemEnumList = /*@__PURE__*/ S.Array(
-  FilterEventTypeItemEnum,
-) as any as S.Schema<FilterEventTypeItemEnumList>;
+export type FilterEventTypeItemEnumList = ReadonlyArray<FilterEventTypeItemEnum>;
+export const FilterEventTypeItemEnumList = /*@__PURE__*/ S.Array(FilterEventTypeItemEnum) as any as S.Schema<FilterEventTypeItemEnumList>;
 
 /** Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent */
 export interface Filter {
@@ -5352,9 +4360,9 @@ export interface Filter {
   eventType?: FilterEventTypeItemEnumList;
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventType: S.optional(FilterEventTypeItemEnumList),
-  }),
+S.Struct({
+  "eventType": S.optional(FilterEventTypeItemEnumList),
+}),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 /** Pub/Sub specific notification config. */
@@ -5367,11 +4375,11 @@ export interface PubSub {
   filter?: Filter;
 }
 export const PubSub = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    filter: S.optional(Filter),
-  }),
+S.Struct({
+  "topic": S.optional(S.String),
+  "enabled": S.optional(S.Boolean),
+  "filter": S.optional(Filter),
+}),
 ).annotate({ identifier: "PubSub" }) as any as S.Schema<PubSub>;
 
 /** NotificationConfig is the configuration of notifications. */
@@ -5380,12 +4388,10 @@ export interface NotificationConfig {
   pubsub?: PubSub;
 }
 export const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pubsub: S.optional(PubSub),
-  }),
-).annotate({
-  identifier: "NotificationConfig",
-}) as any as S.Schema<NotificationConfig>;
+S.Struct({
+  "pubsub": S.optional(PubSub),
+}),
+).annotate({ identifier: "NotificationConfig" }) as any as S.Schema<NotificationConfig>;
 
 /** RotationConfig is config for secret manager auto rotation. */
 export interface RotationConfig {
@@ -5395,10 +4401,10 @@ export interface RotationConfig {
   rotationInterval?: string;
 }
 export const RotationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    rotationInterval: S.optional(S.String),
-  }),
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "rotationInterval": S.optional(S.String),
+}),
 ).annotate({ identifier: "RotationConfig" }) as any as S.Schema<RotationConfig>;
 
 /** SecretManagerConfig is config for secret manager enablement. */
@@ -5409,13 +4415,11 @@ export interface SecretManagerConfig {
   rotationConfig?: RotationConfig;
 }
 export const SecretManagerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    rotationConfig: S.optional(RotationConfig),
-  }),
-).annotate({
-  identifier: "SecretManagerConfig",
-}) as any as S.Schema<SecretManagerConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+  "rotationConfig": S.optional(RotationConfig),
+}),
+).annotate({ identifier: "SecretManagerConfig" }) as any as S.Schema<SecretManagerConfig>;
 
 /** Defines the details of a compliance standard. */
 export interface ComplianceStandard {
@@ -5423,23 +4427,15 @@ export interface ComplianceStandard {
   standard?: string;
 }
 export const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    standard: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ComplianceStandard",
-}) as any as S.Schema<ComplianceStandard>;
+S.Struct({
+  "standard": S.optional(S.String),
+}),
+).annotate({ identifier: "ComplianceStandard" }) as any as S.Schema<ComplianceStandard>;
 
 export type ComplianceStandardList = ReadonlyArray<ComplianceStandard>;
-export const ComplianceStandardList = /*@__PURE__*/ S.Array(
-  ComplianceStandard,
-) as any as S.Schema<ComplianceStandardList>;
+export const ComplianceStandardList = /*@__PURE__*/ S.Array(ComplianceStandard) as any as S.Schema<ComplianceStandardList>;
 
-export type CompliancePostureConfigModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+export type CompliancePostureConfigModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED";
 export const CompliancePostureConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Deprecated: Compliance Posture is no longer supported. For more details, see https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation. CompliancePostureConfig defines the settings needed to enable/disable features for the Compliance Posture. */
@@ -5450,13 +4446,11 @@ export interface CompliancePostureConfig {
   mode?: CompliancePostureConfigModeEnum;
 }
 export const CompliancePostureConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    complianceStandards: S.optional(ComplianceStandardList),
-    mode: S.optional(CompliancePostureConfigModeEnum),
-  }),
-).annotate({
-  identifier: "CompliancePostureConfig",
-}) as any as S.Schema<CompliancePostureConfig>;
+S.Struct({
+  "complianceStandards": S.optional(ComplianceStandardList),
+  "mode": S.optional(CompliancePostureConfigModeEnum),
+}),
+).annotate({ identifier: "CompliancePostureConfig" }) as any as S.Schema<CompliancePostureConfig>;
 
 /** A Google Kubernetes Engine cluster. */
 export interface Cluster {
@@ -5656,109 +4650,105 @@ export interface Cluster {
   compliancePostureConfig?: CompliancePostureConfig;
 }
 export const Cluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    securityPostureConfig: S.optional(SecurityPostureConfig),
-    privateClusterConfig: S.optional(PrivateClusterConfig),
-    identityServiceConfig: S.optional(IdentityServiceConfig),
-    resourceUsageExportConfig: S.optional(ResourceUsageExportConfig),
-    etag: S.optional(S.String),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    binaryAuthorization: S.optional(BinaryAuthorization),
-    masterAuth: S.optional(MasterAuth),
-    costManagementConfig: S.optional(CostManagementConfig),
-    currentNodeCount: S.optional(S.Number),
-    alphaClusterFeatureGates: S.optional(StringList),
-    defaultMaxPodsConstraint: S.optional(MaxPodsConstraint),
-    autoscaling: S.optional(ClusterAutoscaling),
-    endpoint: S.optional(S.String),
-    anonymousAuthenticationConfig: S.optional(AnonymousAuthenticationConfig),
-    managedOpentelemetryConfig: S.optional(ManagedOpenTelemetryConfig),
-    meshCertificates: S.optional(MeshCertificates),
-    podSecurityPolicyConfig: S.optional(PodSecurityPolicyConfig),
-    servicesIpv4Cidr: S.optional(S.String),
-    podAutoscaling: S.optional(PodAutoscaling),
-    satisfiesPzs: S.optional(S.Boolean),
-    nodeConfig: S.optional(NodeConfig),
-    secretSyncConfig: S.optional(SecretSyncConfig),
-    resourceLabels: S.optional(StringMap),
-    workloadCertificates: S.optional(WorkloadCertificates),
-    rbacBindingConfig: S.optional(RBACBindingConfig),
-    initialNodeCount: S.optional(S.Number),
-    createTime: S.optional(S.String),
-    loggingService: S.optional(S.String),
-    shieldedNodes: S.optional(ShieldedNodes),
-    masterAuthorizedNetworksConfig: S.optional(MasterAuthorizedNetworksConfig),
-    currentNodeVersion: S.optional(S.String),
-    monitoringConfig: S.optional(MonitoringConfig),
-    releaseChannel: S.optional(ReleaseChannel),
-    enableK8sBetaApis: S.optional(K8sBetaAPIConfig),
-    workloadAltsConfig: S.optional(WorkloadALTSConfig),
-    status: S.optional(ClusterStatusEnum),
-    locations: S.optional(StringList),
-    controlPlaneEndpointsConfig: S.optional(ControlPlaneEndpointsConfig),
-    tpuConfig: S.optional(TpuConfig),
-    selfLink: S.optional(S.String),
-    loggingConfig: S.optional(LoggingConfig),
-    userManagedKeysConfig: S.optional(UserManagedKeysConfig),
-    location: S.optional(S.String),
-    master: S.optional(Master),
-    networkPolicy: S.optional(NetworkPolicy),
-    ipAllocationPolicy: S.optional(IPAllocationPolicy),
-    tpuIpv4CidrBlock: S.optional(S.String),
-    controlPlaneEgress: S.optional(ControlPlaneEgress),
-    network: S.optional(S.String),
-    nodePoolDefaults: S.optional(NodePoolDefaults),
-    nodePoolAutoConfig: S.optional(NodePoolAutoConfig),
-    networkConfig: S.optional(NetworkConfig),
-    instanceGroupUrls: S.optional(StringList),
-    subnetwork: S.optional(S.String),
-    clusterIpv4Cidr: S.optional(S.String),
-    workloadIdentityConfig: S.optional(WorkloadIdentityConfig),
-    protectConfig: S.optional(ProtectConfig),
-    gkeAutoUpgradeConfig: S.optional(GkeAutoUpgradeConfig),
-    enableKubernetesAlpha: S.optional(S.Boolean),
-    addonsConfig: S.optional(AddonsConfig),
-    verticalPodAutoscaling: S.optional(VerticalPodAutoscaling),
-    currentEmulatedVersion: S.optional(S.String),
-    monitoringService: S.optional(S.String),
-    legacyAbac: S.optional(LegacyAbac),
-    id: S.optional(S.String),
-    enableTpu: S.optional(S.Boolean),
-    enterpriseConfig: S.optional(EnterpriseConfig),
-    labelFingerprint: S.optional(S.String),
-    scheduleUpgradeConfig: S.optional(ScheduleUpgradeConfig),
-    conditions: S.optional(StatusConditionList),
-    parentProductConfig: S.optional(ParentProductConfig),
-    zone: S.optional(S.String),
-    initialClusterVersion: S.optional(S.String),
-    managedMachineLearningDiagnosticsConfig: S.optional(
-      ManagedMachineLearningDiagnosticsConfig,
-    ),
-    confidentialNodes: S.optional(ConfidentialNodes),
-    masterIpv4CidrBlock: S.optional(S.String),
-    databaseEncryption: S.optional(DatabaseEncryption),
-    nodePoolUpgradeConcurrencyConfig: S.optional(
-      NodePoolUpgradeConcurrencyConfig,
-    ),
-    satisfiesPzi: S.optional(S.Boolean),
-    maintenancePolicy: S.optional(MaintenancePolicy),
-    clusterTelemetry: S.optional(ClusterTelemetry),
-    currentMasterVersion: S.optional(S.String),
-    nodeIpv4CidrSize: S.optional(S.Number),
-    rollbackSafeUpgrade: S.optional(RollbackSafeUpgrade),
-    expireTime: S.optional(S.String),
-    statusMessage: S.optional(S.String),
-    fleet: S.optional(Fleet),
-    privateCluster: S.optional(S.Boolean),
-    authenticatorGroupsConfig: S.optional(AuthenticatorGroupsConfig),
-    autopilot: S.optional(Autopilot),
-    nodeCreationConfig: S.optional(NodeCreationConfig),
-    nodePools: S.optional(NodePoolList),
-    notificationConfig: S.optional(NotificationConfig),
-    secretManagerConfig: S.optional(SecretManagerConfig),
-    compliancePostureConfig: S.optional(CompliancePostureConfig),
-  }),
+S.Struct({
+  "securityPostureConfig": S.optional(SecurityPostureConfig),
+  "privateClusterConfig": S.optional(PrivateClusterConfig),
+  "identityServiceConfig": S.optional(IdentityServiceConfig),
+  "resourceUsageExportConfig": S.optional(ResourceUsageExportConfig),
+  "etag": S.optional(S.String),
+  "description": S.optional(S.String),
+  "name": S.optional(S.String),
+  "binaryAuthorization": S.optional(BinaryAuthorization),
+  "masterAuth": S.optional(MasterAuth),
+  "costManagementConfig": S.optional(CostManagementConfig),
+  "currentNodeCount": S.optional(S.Number),
+  "alphaClusterFeatureGates": S.optional(StringList),
+  "defaultMaxPodsConstraint": S.optional(MaxPodsConstraint),
+  "autoscaling": S.optional(ClusterAutoscaling),
+  "endpoint": S.optional(S.String),
+  "anonymousAuthenticationConfig": S.optional(AnonymousAuthenticationConfig),
+  "managedOpentelemetryConfig": S.optional(ManagedOpenTelemetryConfig),
+  "meshCertificates": S.optional(MeshCertificates),
+  "podSecurityPolicyConfig": S.optional(PodSecurityPolicyConfig),
+  "servicesIpv4Cidr": S.optional(S.String),
+  "podAutoscaling": S.optional(PodAutoscaling),
+  "satisfiesPzs": S.optional(S.Boolean),
+  "nodeConfig": S.optional(NodeConfig),
+  "secretSyncConfig": S.optional(SecretSyncConfig),
+  "resourceLabels": S.optional(StringMap),
+  "workloadCertificates": S.optional(WorkloadCertificates),
+  "rbacBindingConfig": S.optional(RBACBindingConfig),
+  "initialNodeCount": S.optional(S.Number),
+  "createTime": S.optional(S.String),
+  "loggingService": S.optional(S.String),
+  "shieldedNodes": S.optional(ShieldedNodes),
+  "masterAuthorizedNetworksConfig": S.optional(MasterAuthorizedNetworksConfig),
+  "currentNodeVersion": S.optional(S.String),
+  "monitoringConfig": S.optional(MonitoringConfig),
+  "releaseChannel": S.optional(ReleaseChannel),
+  "enableK8sBetaApis": S.optional(K8sBetaAPIConfig),
+  "workloadAltsConfig": S.optional(WorkloadALTSConfig),
+  "status": S.optional(ClusterStatusEnum),
+  "locations": S.optional(StringList),
+  "controlPlaneEndpointsConfig": S.optional(ControlPlaneEndpointsConfig),
+  "tpuConfig": S.optional(TpuConfig),
+  "selfLink": S.optional(S.String),
+  "loggingConfig": S.optional(LoggingConfig),
+  "userManagedKeysConfig": S.optional(UserManagedKeysConfig),
+  "location": S.optional(S.String),
+  "master": S.optional(Master),
+  "networkPolicy": S.optional(NetworkPolicy),
+  "ipAllocationPolicy": S.optional(IPAllocationPolicy),
+  "tpuIpv4CidrBlock": S.optional(S.String),
+  "controlPlaneEgress": S.optional(ControlPlaneEgress),
+  "network": S.optional(S.String),
+  "nodePoolDefaults": S.optional(NodePoolDefaults),
+  "nodePoolAutoConfig": S.optional(NodePoolAutoConfig),
+  "networkConfig": S.optional(NetworkConfig),
+  "instanceGroupUrls": S.optional(StringList),
+  "subnetwork": S.optional(S.String),
+  "clusterIpv4Cidr": S.optional(S.String),
+  "workloadIdentityConfig": S.optional(WorkloadIdentityConfig),
+  "protectConfig": S.optional(ProtectConfig),
+  "gkeAutoUpgradeConfig": S.optional(GkeAutoUpgradeConfig),
+  "enableKubernetesAlpha": S.optional(S.Boolean),
+  "addonsConfig": S.optional(AddonsConfig),
+  "verticalPodAutoscaling": S.optional(VerticalPodAutoscaling),
+  "currentEmulatedVersion": S.optional(S.String),
+  "monitoringService": S.optional(S.String),
+  "legacyAbac": S.optional(LegacyAbac),
+  "id": S.optional(S.String),
+  "enableTpu": S.optional(S.Boolean),
+  "enterpriseConfig": S.optional(EnterpriseConfig),
+  "labelFingerprint": S.optional(S.String),
+  "scheduleUpgradeConfig": S.optional(ScheduleUpgradeConfig),
+  "conditions": S.optional(StatusConditionList),
+  "parentProductConfig": S.optional(ParentProductConfig),
+  "zone": S.optional(S.String),
+  "initialClusterVersion": S.optional(S.String),
+  "managedMachineLearningDiagnosticsConfig": S.optional(ManagedMachineLearningDiagnosticsConfig),
+  "confidentialNodes": S.optional(ConfidentialNodes),
+  "masterIpv4CidrBlock": S.optional(S.String),
+  "databaseEncryption": S.optional(DatabaseEncryption),
+  "nodePoolUpgradeConcurrencyConfig": S.optional(NodePoolUpgradeConcurrencyConfig),
+  "satisfiesPzi": S.optional(S.Boolean),
+  "maintenancePolicy": S.optional(MaintenancePolicy),
+  "clusterTelemetry": S.optional(ClusterTelemetry),
+  "currentMasterVersion": S.optional(S.String),
+  "nodeIpv4CidrSize": S.optional(S.Number),
+  "rollbackSafeUpgrade": S.optional(RollbackSafeUpgrade),
+  "expireTime": S.optional(S.String),
+  "statusMessage": S.optional(S.String),
+  "fleet": S.optional(Fleet),
+  "privateCluster": S.optional(S.Boolean),
+  "authenticatorGroupsConfig": S.optional(AuthenticatorGroupsConfig),
+  "autopilot": S.optional(Autopilot),
+  "nodeCreationConfig": S.optional(NodeCreationConfig),
+  "nodePools": S.optional(NodePoolList),
+  "notificationConfig": S.optional(NotificationConfig),
+  "secretManagerConfig": S.optional(SecretManagerConfig),
+  "compliancePostureConfig": S.optional(CompliancePostureConfig),
+}),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** CreateClusterRequest creates a cluster. */
@@ -5773,15 +4763,13 @@ export interface CreateClusterRequest {
   cluster?: Cluster;
 }
 export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    parent: S.optional(S.String),
-    zone: S.optional(S.String),
-    cluster: S.optional(Cluster),
-  }),
-).annotate({
-  identifier: "CreateClusterRequest",
-}) as any as S.Schema<CreateClusterRequest>;
+S.Struct({
+  "projectId": S.optional(S.String),
+  "parent": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "cluster": S.optional(Cluster),
+}),
+).annotate({ identifier: "CreateClusterRequest" }) as any as S.Schema<CreateClusterRequest>;
 
 export interface CreateProjectsLocationsClustersRequest {
   /** The parent (project and location) where the cluster will be created. Specified in the format `projects/*\/locations/*`. */
@@ -5789,21 +4777,12 @@ export interface CreateProjectsLocationsClustersRequest {
   /** Request body */
   body?: CreateClusterRequest;
 }
-export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CreateClusterRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/clusters",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsClustersRequest",
-}) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
+export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CreateClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/clusters","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsClustersRequest" }) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
 
 /** CreateNodePoolRequest creates a node pool for a cluster. */
 export interface CreateNodePoolRequest {
@@ -5819,16 +4798,14 @@ export interface CreateNodePoolRequest {
   nodePool?: NodePool;
 }
 export const CreateNodePoolRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    parent: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    nodePool: S.optional(NodePool),
-  }),
-).annotate({
-  identifier: "CreateNodePoolRequest",
-}) as any as S.Schema<CreateNodePoolRequest>;
+S.Struct({
+  "projectId": S.optional(S.String),
+  "parent": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "nodePool": S.optional(NodePool),
+}),
+).annotate({ identifier: "CreateNodePoolRequest" }) as any as S.Schema<CreateNodePoolRequest>;
 
 export interface CreateProjectsLocationsClustersNodePoolsRequest {
   /** The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -5836,21 +4813,12 @@ export interface CreateProjectsLocationsClustersNodePoolsRequest {
   /** Request body */
   body?: CreateNodePoolRequest;
 }
-export const CreateProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CreateNodePoolRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/nodePools",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsClustersNodePoolsRequest>;
+export const CreateProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CreateNodePoolRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/nodePools","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<CreateProjectsLocationsClustersNodePoolsRequest>;
 
 export interface CreateProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field. */
@@ -5861,20 +4829,12 @@ export interface CreateProjectsZonesClustersRequest {
   body?: CreateClusterRequest;
 }
 export const CreateProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    zone: S.String.pipe(T.Label()),
-    body: S.optional(CreateClusterRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsZonesClustersRequest",
-}) as any as S.Schema<CreateProjectsZonesClustersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "body": S.optional(CreateClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsZonesClustersRequest" }) as any as S.Schema<CreateProjectsZonesClustersRequest>;
 
 export interface CreateProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field. */
@@ -5886,23 +4846,14 @@ export interface CreateProjectsZonesClustersNodePoolsRequest {
   /** Request body */
   body?: CreateNodePoolRequest;
 }
-export const CreateProjectsZonesClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(CreateNodePoolRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsZonesClustersNodePoolsRequest",
-  }) as any as S.Schema<CreateProjectsZonesClustersNodePoolsRequest>;
+export const CreateProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(CreateNodePoolRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsZonesClustersNodePoolsRequest" }) as any as S.Schema<CreateProjectsZonesClustersNodePoolsRequest>;
 
 export interface DeleteProjectsLocationsClustersRequest {
   /** The name (project, location, cluster) of the cluster to delete. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -5914,23 +4865,14 @@ export interface DeleteProjectsLocationsClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
   projectId?: string;
 }
-export const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      zone: S.optional(S.String.pipe(T.Query())),
-      clusterId: S.optional(S.String.pipe(T.Query())),
-      projectId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsClustersRequest",
-}) as any as S.Schema<DeleteProjectsLocationsClustersRequest>;
+export const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "zone": S.optional(S.String.pipe(T.Query())),
+  "clusterId": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsClustersRequest" }) as any as S.Schema<DeleteProjectsLocationsClustersRequest>;
 
 export interface DeleteProjectsLocationsClustersNodePoolsRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -5944,24 +4886,15 @@ export interface DeleteProjectsLocationsClustersNodePoolsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
   projectId?: string;
 }
-export const DeleteProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zone: S.optional(S.String.pipe(T.Query())),
-      clusterId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      nodePoolId: S.optional(S.String.pipe(T.Query())),
-      projectId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsClustersNodePoolsRequest>;
+export const DeleteProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "zone": S.optional(S.String.pipe(T.Query())),
+  "clusterId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "nodePoolId": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<DeleteProjectsLocationsClustersNodePoolsRequest>;
 
 export interface DeleteProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -5974,21 +4907,13 @@ export interface DeleteProjectsZonesClustersRequest {
   clusterId: string;
 }
 export const DeleteProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    name: S.optional(S.String.pipe(T.Query())),
-    zone: S.String.pipe(T.Label()),
-    clusterId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsZonesClustersRequest",
-}) as any as S.Schema<DeleteProjectsZonesClustersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "name": S.optional(S.String.pipe(T.Query())),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsZonesClustersRequest" }) as any as S.Schema<DeleteProjectsZonesClustersRequest>;
 
 export interface DeleteProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -6002,24 +4927,15 @@ export interface DeleteProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
   projectId: string;
 }
-export const DeleteProjectsZonesClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      nodePoolId: S.String.pipe(T.Label()),
-      name: S.optional(S.String.pipe(T.Query())),
-      projectId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsZonesClustersNodePoolsRequest",
-  }) as any as S.Schema<DeleteProjectsZonesClustersNodePoolsRequest>;
+export const DeleteProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "nodePoolId": S.String.pipe(T.Label()),
+  "name": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsZonesClustersNodePoolsRequest" }) as any as S.Schema<DeleteProjectsZonesClustersNodePoolsRequest>;
 
 export interface FetchClusterUpgradeInfoProjectsLocationsClustersRequest {
   /** API request version that initiates this operation. */
@@ -6027,69 +4943,29 @@ export interface FetchClusterUpgradeInfoProjectsLocationsClustersRequest {
   /** Required. The name (project, location, cluster) of the cluster to get. Specified in the format `projects/*\/locations/*\/clusters/*` or `projects/*\/zones/*\/clusters/*`. */
   name: string;
 }
-export const FetchClusterUpgradeInfoProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      version: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:fetchClusterUpgradeInfo",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchClusterUpgradeInfoProjectsLocationsClustersRequest",
-  }) as any as S.Schema<FetchClusterUpgradeInfoProjectsLocationsClustersRequest>;
+export const FetchClusterUpgradeInfoProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "version": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:fetchClusterUpgradeInfo","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "FetchClusterUpgradeInfoProjectsLocationsClustersRequest" }) as any as S.Schema<FetchClusterUpgradeInfoProjectsLocationsClustersRequest>;
 
-export type ClusterUpgradeInfoAutoUpgradeStatusItemEnum =
-  | "UNKNOWN"
-  | "ACTIVE"
-  | "MINOR_UPGRADE_PAUSED"
-  | "UPGRADE_PAUSED"
-  | (string & {});
-export const ClusterUpgradeInfoAutoUpgradeStatusItemEnum =
-  /*@__PURE__*/ S.String;
+export type ClusterUpgradeInfoAutoUpgradeStatusItemEnum = "UNKNOWN" | "ACTIVE" | "MINOR_UPGRADE_PAUSED" | "UPGRADE_PAUSED";
+export const ClusterUpgradeInfoAutoUpgradeStatusItemEnum = /*@__PURE__*/ S.String;
 
-export type ClusterUpgradeInfoAutoUpgradeStatusItemEnumList =
-  ReadonlyArray<ClusterUpgradeInfoAutoUpgradeStatusItemEnum>;
-export const ClusterUpgradeInfoAutoUpgradeStatusItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ClusterUpgradeInfoAutoUpgradeStatusItemEnum,
-  ) as any as S.Schema<ClusterUpgradeInfoAutoUpgradeStatusItemEnumList>;
+export type ClusterUpgradeInfoAutoUpgradeStatusItemEnumList = ReadonlyArray<ClusterUpgradeInfoAutoUpgradeStatusItemEnum>;
+export const ClusterUpgradeInfoAutoUpgradeStatusItemEnumList = /*@__PURE__*/ S.Array(ClusterUpgradeInfoAutoUpgradeStatusItemEnum) as any as S.Schema<ClusterUpgradeInfoAutoUpgradeStatusItemEnumList>;
 
-export type ClusterUpgradeInfoPausedReasonItemEnum =
-  | "AUTO_UPGRADE_PAUSED_REASON_UNSPECIFIED"
-  | "MAINTENANCE_WINDOW"
-  | "MAINTENANCE_EXCLUSION_NO_UPGRADES"
-  | "MAINTENANCE_EXCLUSION_NO_MINOR_UPGRADES"
-  | "CLUSTER_DISRUPTION_BUDGET"
-  | "CLUSTER_DISRUPTION_BUDGET_MINOR_UPGRADE"
-  | "SYSTEM_CONFIG"
-  | (string & {});
+export type ClusterUpgradeInfoPausedReasonItemEnum = "AUTO_UPGRADE_PAUSED_REASON_UNSPECIFIED" | "MAINTENANCE_WINDOW" | "MAINTENANCE_EXCLUSION_NO_UPGRADES" | "MAINTENANCE_EXCLUSION_NO_MINOR_UPGRADES" | "CLUSTER_DISRUPTION_BUDGET" | "CLUSTER_DISRUPTION_BUDGET_MINOR_UPGRADE" | "SYSTEM_CONFIG";
 export const ClusterUpgradeInfoPausedReasonItemEnum = /*@__PURE__*/ S.String;
 
-export type ClusterUpgradeInfoPausedReasonItemEnumList =
-  ReadonlyArray<ClusterUpgradeInfoPausedReasonItemEnum>;
-export const ClusterUpgradeInfoPausedReasonItemEnumList = /*@__PURE__*/ S.Array(
-  ClusterUpgradeInfoPausedReasonItemEnum,
-) as any as S.Schema<ClusterUpgradeInfoPausedReasonItemEnumList>;
+export type ClusterUpgradeInfoPausedReasonItemEnumList = ReadonlyArray<ClusterUpgradeInfoPausedReasonItemEnum>;
+export const ClusterUpgradeInfoPausedReasonItemEnumList = /*@__PURE__*/ S.Array(ClusterUpgradeInfoPausedReasonItemEnum) as any as S.Schema<ClusterUpgradeInfoPausedReasonItemEnumList>;
 
-export type UpgradeDetailsStartTypeEnum =
-  | "START_TYPE_UNSPECIFIED"
-  | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+export type UpgradeDetailsStartTypeEnum = "START_TYPE_UNSPECIFIED" | "AUTOMATIC" | "MANUAL";
 export const UpgradeDetailsStartTypeEnum = /*@__PURE__*/ S.String;
 
-export type UpgradeDetailsStateEnum =
-  | "UNKNOWN"
-  | "FAILED"
-  | "SUCCEEDED"
-  | "CANCELED"
-  | "RUNNING"
-  | (string & {});
+export type UpgradeDetailsStateEnum = "UNKNOWN" | "FAILED" | "SUCCEEDED" | "CANCELED" | "RUNNING";
 export const UpgradeDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** UpgradeDetails contains detailed information of each individual upgrade operation. */
@@ -6112,27 +4988,22 @@ export interface UpgradeDetails {
   endTime?: string;
 }
 export const UpgradeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startType: S.optional(UpgradeDetailsStartTypeEnum),
-    state: S.optional(UpgradeDetailsStateEnum),
-    startTime: S.optional(S.String),
-    initialEmulatedVersion: S.optional(S.String),
-    initialVersion: S.optional(S.String),
-    targetEmulatedVersion: S.optional(S.String),
-    targetVersion: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "startType": S.optional(UpgradeDetailsStartTypeEnum),
+  "state": S.optional(UpgradeDetailsStateEnum),
+  "startTime": S.optional(S.String),
+  "initialEmulatedVersion": S.optional(S.String),
+  "initialVersion": S.optional(S.String),
+  "targetEmulatedVersion": S.optional(S.String),
+  "targetVersion": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "UpgradeDetails" }) as any as S.Schema<UpgradeDetails>;
 
 export type UpgradeDetailsList = ReadonlyArray<UpgradeDetails>;
-export const UpgradeDetailsList = /*@__PURE__*/ S.Array(
-  UpgradeDetails,
-) as any as S.Schema<UpgradeDetailsList>;
+export const UpgradeDetailsList = /*@__PURE__*/ S.Array(UpgradeDetails) as any as S.Schema<UpgradeDetailsList>;
 
-export type RollbackSafeUpgradeStatusModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "KCP_MINOR_UPGRADE_ROLLBACK_SAFE_MODE"
-  | (string & {});
+export type RollbackSafeUpgradeStatusModeEnum = "MODE_UNSPECIFIED" | "KCP_MINOR_UPGRADE_ROLLBACK_SAFE_MODE";
 export const RollbackSafeUpgradeStatusModeEnum = /*@__PURE__*/ S.String;
 
 /** RollbackSafeUpgradeStatus contains the rollback-safe upgrade status of a cluster. */
@@ -6145,14 +5016,12 @@ export interface RollbackSafeUpgradeStatus {
   mode?: RollbackSafeUpgradeStatusModeEnum;
 }
 export const RollbackSafeUpgradeStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneUpgradeRollbackEndTime: S.optional(S.String),
-    previousVersion: S.optional(S.String),
-    mode: S.optional(RollbackSafeUpgradeStatusModeEnum),
-  }),
-).annotate({
-  identifier: "RollbackSafeUpgradeStatus",
-}) as any as S.Schema<RollbackSafeUpgradeStatus>;
+S.Struct({
+  "controlPlaneUpgradeRollbackEndTime": S.optional(S.String),
+  "previousVersion": S.optional(S.String),
+  "mode": S.optional(RollbackSafeUpgradeStatusModeEnum),
+}),
+).annotate({ identifier: "RollbackSafeUpgradeStatus" }) as any as S.Schema<RollbackSafeUpgradeStatus>;
 
 /** ClusterUpgradeInfo contains the upgrade information of a cluster. */
 export interface ClusterUpgradeInfo {
@@ -6174,21 +5043,17 @@ export interface ClusterUpgradeInfo {
   endOfExtendedSupportTimestamp?: string;
 }
 export const ClusterUpgradeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minorTargetVersion: S.optional(S.String),
-    endOfStandardSupportTimestamp: S.optional(S.String),
-    patchTargetVersion: S.optional(S.String),
-    autoUpgradeStatus: S.optional(
-      ClusterUpgradeInfoAutoUpgradeStatusItemEnumList,
-    ),
-    pausedReason: S.optional(ClusterUpgradeInfoPausedReasonItemEnumList),
-    upgradeDetails: S.optional(UpgradeDetailsList),
-    rollbackSafeUpgradeStatus: S.optional(RollbackSafeUpgradeStatus),
-    endOfExtendedSupportTimestamp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ClusterUpgradeInfo",
-}) as any as S.Schema<ClusterUpgradeInfo>;
+S.Struct({
+  "minorTargetVersion": S.optional(S.String),
+  "endOfStandardSupportTimestamp": S.optional(S.String),
+  "patchTargetVersion": S.optional(S.String),
+  "autoUpgradeStatus": S.optional(ClusterUpgradeInfoAutoUpgradeStatusItemEnumList),
+  "pausedReason": S.optional(ClusterUpgradeInfoPausedReasonItemEnumList),
+  "upgradeDetails": S.optional(UpgradeDetailsList),
+  "rollbackSafeUpgradeStatus": S.optional(RollbackSafeUpgradeStatus),
+  "endOfExtendedSupportTimestamp": S.optional(S.String),
+}),
+).annotate({ identifier: "ClusterUpgradeInfo" }) as any as S.Schema<ClusterUpgradeInfo>;
 
 export interface FetchClusterUpgradeInfoProjectsZonesClustersRequest {
   /** Required. The name (project, location, cluster) of the cluster to get. Specified in the format `projects/*\/locations/*\/clusters/*` or `projects/*\/zones/*\/clusters/*`. */
@@ -6196,21 +5061,12 @@ export interface FetchClusterUpgradeInfoProjectsZonesClustersRequest {
   /** API request version that initiates this operation. */
   version?: string;
 }
-export const FetchClusterUpgradeInfoProjectsZonesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      version: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:fetchClusterUpgradeInfo",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchClusterUpgradeInfoProjectsZonesClustersRequest",
-  }) as any as S.Schema<FetchClusterUpgradeInfoProjectsZonesClustersRequest>;
+export const FetchClusterUpgradeInfoProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "version": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:fetchClusterUpgradeInfo","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "FetchClusterUpgradeInfoProjectsZonesClustersRequest" }) as any as S.Schema<FetchClusterUpgradeInfoProjectsZonesClustersRequest>;
 
 export interface FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsRequest {
   /** Required. The name (project, location, cluster, node pool) of the node pool to get. Specified in the format `projects/*\/locations/*\/clusters/*\/nodePools/*` or `projects/*\/zones/*\/clusters/*\/nodePools/*`. */
@@ -6218,22 +5074,12 @@ export interface FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsReque
   /** API request version that initiates this operation. */
   version?: string;
 }
-export const FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      version: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:fetchNodePoolUpgradeInfo",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsRequest>;
+export const FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "version": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:fetchNodePoolUpgradeInfo","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsRequest>;
 
 /** Contains the custom image info for a node pool. */
 export interface CustomImageInfo {
@@ -6241,44 +5087,22 @@ export interface CustomImageInfo {
   upgradeMessage?: string;
 }
 export const CustomImageInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upgradeMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomImageInfo",
-}) as any as S.Schema<CustomImageInfo>;
+S.Struct({
+  "upgradeMessage": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomImageInfo" }) as any as S.Schema<CustomImageInfo>;
 
-export type NodePoolUpgradeInfoAutoUpgradeStatusItemEnum =
-  | "UNKNOWN"
-  | "ACTIVE"
-  | "MINOR_UPGRADE_PAUSED"
-  | "UPGRADE_PAUSED"
-  | (string & {});
-export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnum =
-  /*@__PURE__*/ S.String;
+export type NodePoolUpgradeInfoAutoUpgradeStatusItemEnum = "UNKNOWN" | "ACTIVE" | "MINOR_UPGRADE_PAUSED" | "UPGRADE_PAUSED";
+export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnum = /*@__PURE__*/ S.String;
 
-export type NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList =
-  ReadonlyArray<NodePoolUpgradeInfoAutoUpgradeStatusItemEnum>;
-export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList =
-  /*@__PURE__*/ S.Array(
-    NodePoolUpgradeInfoAutoUpgradeStatusItemEnum,
-  ) as any as S.Schema<NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList>;
+export type NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList = ReadonlyArray<NodePoolUpgradeInfoAutoUpgradeStatusItemEnum>;
+export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList = /*@__PURE__*/ S.Array(NodePoolUpgradeInfoAutoUpgradeStatusItemEnum) as any as S.Schema<NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList>;
 
-export type NodePoolUpgradeInfoPausedReasonItemEnum =
-  | "AUTO_UPGRADE_PAUSED_REASON_UNSPECIFIED"
-  | "MAINTENANCE_WINDOW"
-  | "MAINTENANCE_EXCLUSION_NO_UPGRADES"
-  | "MAINTENANCE_EXCLUSION_NO_MINOR_UPGRADES"
-  | "SYSTEM_CONFIG"
-  | (string & {});
+export type NodePoolUpgradeInfoPausedReasonItemEnum = "AUTO_UPGRADE_PAUSED_REASON_UNSPECIFIED" | "MAINTENANCE_WINDOW" | "MAINTENANCE_EXCLUSION_NO_UPGRADES" | "MAINTENANCE_EXCLUSION_NO_MINOR_UPGRADES" | "SYSTEM_CONFIG";
 export const NodePoolUpgradeInfoPausedReasonItemEnum = /*@__PURE__*/ S.String;
 
-export type NodePoolUpgradeInfoPausedReasonItemEnumList =
-  ReadonlyArray<NodePoolUpgradeInfoPausedReasonItemEnum>;
-export const NodePoolUpgradeInfoPausedReasonItemEnumList =
-  /*@__PURE__*/ S.Array(
-    NodePoolUpgradeInfoPausedReasonItemEnum,
-  ) as any as S.Schema<NodePoolUpgradeInfoPausedReasonItemEnumList>;
+export type NodePoolUpgradeInfoPausedReasonItemEnumList = ReadonlyArray<NodePoolUpgradeInfoPausedReasonItemEnum>;
+export const NodePoolUpgradeInfoPausedReasonItemEnumList = /*@__PURE__*/ S.Array(NodePoolUpgradeInfoPausedReasonItemEnum) as any as S.Schema<NodePoolUpgradeInfoPausedReasonItemEnumList>;
 
 /** NodePoolUpgradeInfo contains the upgrade information of a node pool. */
 export interface NodePoolUpgradeInfo {
@@ -6300,21 +5124,17 @@ export interface NodePoolUpgradeInfo {
   upgradeDetails?: UpgradeDetailsList;
 }
 export const NodePoolUpgradeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minorTargetVersion: S.optional(S.String),
-    patchTargetVersion: S.optional(S.String),
-    customImageInfo: S.optional(CustomImageInfo),
-    endOfStandardSupportTimestamp: S.optional(S.String),
-    endOfExtendedSupportTimestamp: S.optional(S.String),
-    autoUpgradeStatus: S.optional(
-      NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList,
-    ),
-    pausedReason: S.optional(NodePoolUpgradeInfoPausedReasonItemEnumList),
-    upgradeDetails: S.optional(UpgradeDetailsList),
-  }),
-).annotate({
-  identifier: "NodePoolUpgradeInfo",
-}) as any as S.Schema<NodePoolUpgradeInfo>;
+S.Struct({
+  "minorTargetVersion": S.optional(S.String),
+  "patchTargetVersion": S.optional(S.String),
+  "customImageInfo": S.optional(CustomImageInfo),
+  "endOfStandardSupportTimestamp": S.optional(S.String),
+  "endOfExtendedSupportTimestamp": S.optional(S.String),
+  "autoUpgradeStatus": S.optional(NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList),
+  "pausedReason": S.optional(NodePoolUpgradeInfoPausedReasonItemEnumList),
+  "upgradeDetails": S.optional(UpgradeDetailsList),
+}),
+).annotate({ identifier: "NodePoolUpgradeInfo" }) as any as S.Schema<NodePoolUpgradeInfo>;
 
 export interface FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest {
   /** API request version that initiates this operation. */
@@ -6322,40 +5142,22 @@ export interface FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest {
   /** Required. The name (project, location, cluster, node pool) of the node pool to get. Specified in the format `projects/*\/locations/*\/clusters/*\/nodePools/*` or `projects/*\/zones/*\/clusters/*\/nodePools/*`. */
   name: string;
 }
-export const FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      version: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:fetchNodePoolUpgradeInfo",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest",
-  }) as any as S.Schema<FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest>;
+export const FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "version": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:fetchNodePoolUpgradeInfo","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest" }) as any as S.Schema<FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest>;
 
 export interface GetJwksProjectsLocationsClustersRequest {
   /** The cluster (project, location, cluster name) to get keys for. Specified in the format `projects/*\/locations/*\/clusters/*`. */
   parent: string;
 }
-export const GetJwksProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/jwks",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetJwksProjectsLocationsClustersRequest",
-}) as any as S.Schema<GetJwksProjectsLocationsClustersRequest>;
+export const GetJwksProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/jwks","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "GetJwksProjectsLocationsClustersRequest" }) as any as S.Schema<GetJwksProjectsLocationsClustersRequest>;
 
 /** Jwk is a JSON Web Key as specified in RFC 7517 */
 export interface Jwk {
@@ -6379,17 +5181,17 @@ export interface Jwk {
   kty?: string;
 }
 export const Jwk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.optional(S.String),
-    crv: S.optional(S.String),
-    e: S.optional(S.String),
-    n: S.optional(S.String),
-    use: S.optional(S.String),
-    x: S.optional(S.String),
-    y: S.optional(S.String),
-    alg: S.optional(S.String),
-    kty: S.optional(S.String),
-  }),
+S.Struct({
+  "kid": S.optional(S.String),
+  "crv": S.optional(S.String),
+  "e": S.optional(S.String),
+  "n": S.optional(S.String),
+  "use": S.optional(S.String),
+  "x": S.optional(S.String),
+  "y": S.optional(S.String),
+  "alg": S.optional(S.String),
+  "kty": S.optional(S.String),
+}),
 ).annotate({ identifier: "Jwk" }) as any as S.Schema<Jwk>;
 
 export type JwkList = ReadonlyArray<Jwk>;
@@ -6405,14 +5207,12 @@ export interface HttpCacheControlResponseHeader {
   expires?: string;
 }
 export const HttpCacheControlResponseHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    age: S.optional(S.String),
-    directive: S.optional(S.String),
-    expires: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HttpCacheControlResponseHeader",
-}) as any as S.Schema<HttpCacheControlResponseHeader>;
+S.Struct({
+  "age": S.optional(S.String),
+  "directive": S.optional(S.String),
+  "expires": S.optional(S.String),
+}),
+).annotate({ identifier: "HttpCacheControlResponseHeader" }) as any as S.Schema<HttpCacheControlResponseHeader>;
 
 /** GetJSONWebKeysResponse is a valid JSON Web Key Set as specified in rfc 7517 */
 export interface GetJSONWebKeysResponse {
@@ -6422,33 +5222,21 @@ export interface GetJSONWebKeysResponse {
   cacheHeader?: HttpCacheControlResponseHeader;
 }
 export const GetJSONWebKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: S.optional(JwkList),
-    cacheHeader: S.optional(HttpCacheControlResponseHeader),
-  }),
-).annotate({
-  identifier: "GetJSONWebKeysResponse",
-}) as any as S.Schema<GetJSONWebKeysResponse>;
+S.Struct({
+  "keys": S.optional(JwkList),
+  "cacheHeader": S.optional(HttpCacheControlResponseHeader),
+}),
+).annotate({ identifier: "GetJSONWebKeysResponse" }) as any as S.Schema<GetJSONWebKeysResponse>;
 
 export interface GetOpenid_configurationProjectsLocationsClustersWell_knownRequest {
   /** The cluster (project, location, cluster name) to get the discovery document for. Specified in the format `projects/*\/locations/*\/clusters/*`. */
   parent: string;
 }
-export const GetOpenid_configurationProjectsLocationsClustersWell_knownRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/.well-known/openid-configuration",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetOpenid_configurationProjectsLocationsClustersWell_knownRequest",
-  }) as any as S.Schema<GetOpenid_configurationProjectsLocationsClustersWell_knownRequest>;
+export const GetOpenid_configurationProjectsLocationsClustersWell_knownRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/.well-known/openid-configuration","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "GetOpenid_configurationProjectsLocationsClustersWell_knownRequest" }) as any as S.Schema<GetOpenid_configurationProjectsLocationsClustersWell_knownRequest>;
 
 /** GetOpenIDConfigResponse is an OIDC discovery document for the cluster. See the OpenID Connect Discovery 1.0 specification for details. */
 export interface GetOpenIDConfigResponse {
@@ -6470,19 +5258,17 @@ export interface GetOpenIDConfigResponse {
   claims_supported?: StringList;
 }
 export const GetOpenIDConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jwks_uri: S.optional(S.String),
-    response_types_supported: S.optional(StringList),
-    cacheHeader: S.optional(HttpCacheControlResponseHeader),
-    issuer: S.optional(S.String),
-    subject_types_supported: S.optional(StringList),
-    grant_types: S.optional(StringList),
-    id_token_signing_alg_values_supported: S.optional(StringList),
-    claims_supported: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GetOpenIDConfigResponse",
-}) as any as S.Schema<GetOpenIDConfigResponse>;
+S.Struct({
+  "jwks_uri": S.optional(S.String),
+  "response_types_supported": S.optional(StringList),
+  "cacheHeader": S.optional(HttpCacheControlResponseHeader),
+  "issuer": S.optional(S.String),
+  "subject_types_supported": S.optional(StringList),
+  "grant_types": S.optional(StringList),
+  "id_token_signing_alg_values_supported": S.optional(StringList),
+  "claims_supported": S.optional(StringList),
+}),
+).annotate({ identifier: "GetOpenIDConfigResponse" }) as any as S.Schema<GetOpenIDConfigResponse>;
 
 export interface GetProjectsLocationsClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -6495,21 +5281,13 @@ export interface GetProjectsLocationsClustersRequest {
   clusterId?: string;
 }
 export const GetProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    zone: S.optional(S.String.pipe(T.Query())),
-    clusterId: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsClustersRequest",
-}) as any as S.Schema<GetProjectsLocationsClustersRequest>;
+S.Struct({
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "zone": S.optional(S.String.pipe(T.Query())),
+  "clusterId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsClustersRequest" }) as any as S.Schema<GetProjectsLocationsClustersRequest>;
 
 export interface GetProjectsLocationsClustersNodePoolsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -6523,24 +5301,15 @@ export interface GetProjectsLocationsClustersNodePoolsRequest {
   /** Deprecated. The name of the cluster. This field has been deprecated and replaced by the name field. */
   clusterId?: string;
 }
-export const GetProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      nodePoolId: S.optional(S.String.pipe(T.Query())),
-      zone: S.optional(S.String.pipe(T.Query())),
-      clusterId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<GetProjectsLocationsClustersNodePoolsRequest>;
+export const GetProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "nodePoolId": S.optional(S.String.pipe(T.Query())),
+  "zone": S.optional(S.String.pipe(T.Query())),
+  "clusterId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<GetProjectsLocationsClustersNodePoolsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -6552,23 +5321,14 @@ export interface GetProjectsLocationsOperationsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
   projectId?: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      zone: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      operationId: S.optional(S.String.pipe(T.Query())),
-      projectId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "zone": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "operationId": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsZonesClustersRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -6581,21 +5341,13 @@ export interface GetProjectsZonesClustersRequest {
   projectId: string;
 }
 export const GetProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.String.pipe(T.Label()),
-    clusterId: S.String.pipe(T.Label()),
-    name: S.optional(S.String.pipe(T.Query())),
-    projectId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsZonesClustersRequest",
-}) as any as S.Schema<GetProjectsZonesClustersRequest>;
+S.Struct({
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "name": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsZonesClustersRequest" }) as any as S.Schema<GetProjectsZonesClustersRequest>;
 
 export interface GetProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -6609,24 +5361,15 @@ export interface GetProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The name of the cluster. This field has been deprecated and replaced by the name field. */
   clusterId: string;
 }
-export const GetProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      nodePoolId: S.String.pipe(T.Label()),
-      name: S.optional(S.String.pipe(T.Query())),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsZonesClustersNodePoolsRequest",
-}) as any as S.Schema<GetProjectsZonesClustersNodePoolsRequest>;
+export const GetProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "nodePoolId": S.String.pipe(T.Label()),
+  "name": S.optional(S.String.pipe(T.Query())),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsZonesClustersNodePoolsRequest" }) as any as S.Schema<GetProjectsZonesClustersNodePoolsRequest>;
 
 export interface GetProjectsZonesOperationsRequest {
   /** The name (project, location, operation id) of the operation to get. Specified in the format `projects/*\/locations/*\/operations/*`. */
@@ -6639,21 +5382,13 @@ export interface GetProjectsZonesOperationsRequest {
   operationId: string;
 }
 export const GetProjectsZonesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String.pipe(T.Query())),
-    zone: S.String.pipe(T.Label()),
-    projectId: S.String.pipe(T.Label()),
-    operationId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/operations/{operationId}",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsZonesOperationsRequest",
-}) as any as S.Schema<GetProjectsZonesOperationsRequest>;
+S.Struct({
+  "name": S.optional(S.String.pipe(T.Query())),
+  "zone": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "operationId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/projects/{projectId}/zones/{zone}/operations/{operationId}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsZonesOperationsRequest" }) as any as S.Schema<GetProjectsZonesOperationsRequest>;
 
 export interface GetServerConfigProjectsLocationsRequest {
   /** The name (project and location) of the server config to get, specified in the format `projects/*\/locations/*`. */
@@ -6663,30 +5398,15 @@ export interface GetServerConfigProjectsLocationsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
   projectId?: string;
 }
-export const GetServerConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      zone: S.optional(S.String.pipe(T.Query())),
-      projectId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}/serverConfig",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetServerConfigProjectsLocationsRequest",
-}) as any as S.Schema<GetServerConfigProjectsLocationsRequest>;
+export const GetServerConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "zone": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/serverConfig","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "GetServerConfigProjectsLocationsRequest" }) as any as S.Schema<GetServerConfigProjectsLocationsRequest>;
 
-export type ReleaseChannelConfigChannelEnum =
-  | "UNSPECIFIED"
-  | "RAPID"
-  | "REGULAR"
-  | "STABLE"
-  | "EXTENDED"
-  | (string & {});
+export type ReleaseChannelConfigChannelEnum = "UNSPECIFIED" | "RAPID" | "REGULAR" | "STABLE" | "EXTENDED";
 export const ReleaseChannelConfigChannelEnum = /*@__PURE__*/ S.String;
 
 /** Deprecated. */
@@ -6697,18 +5417,14 @@ export interface AvailableVersion {
   reason?: string;
 }
 export const AvailableVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    reason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AvailableVersion",
-}) as any as S.Schema<AvailableVersion>;
+S.Struct({
+  "version": S.optional(S.String),
+  "reason": S.optional(S.String),
+}),
+).annotate({ identifier: "AvailableVersion" }) as any as S.Schema<AvailableVersion>;
 
 export type AvailableVersionList = ReadonlyArray<AvailableVersion>;
-export const AvailableVersionList = /*@__PURE__*/ S.Array(
-  AvailableVersion,
-) as any as S.Schema<AvailableVersionList>;
+export const AvailableVersionList = /*@__PURE__*/ S.Array(AvailableVersion) as any as S.Schema<AvailableVersionList>;
 
 /** ReleaseChannelConfig exposes configuration for a release channel. */
 export interface ReleaseChannelConfig {
@@ -6724,21 +5440,17 @@ export interface ReleaseChannelConfig {
   availableVersions?: AvailableVersionList;
 }
 export const ReleaseChannelConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel: S.optional(ReleaseChannelConfigChannelEnum),
-    validVersions: S.optional(StringList),
-    defaultVersion: S.optional(S.String),
-    upgradeTargetVersion: S.optional(S.String),
-    availableVersions: S.optional(AvailableVersionList),
-  }),
-).annotate({
-  identifier: "ReleaseChannelConfig",
-}) as any as S.Schema<ReleaseChannelConfig>;
+S.Struct({
+  "channel": S.optional(ReleaseChannelConfigChannelEnum),
+  "validVersions": S.optional(StringList),
+  "defaultVersion": S.optional(S.String),
+  "upgradeTargetVersion": S.optional(S.String),
+  "availableVersions": S.optional(AvailableVersionList),
+}),
+).annotate({ identifier: "ReleaseChannelConfig" }) as any as S.Schema<ReleaseChannelConfig>;
 
 export type ReleaseChannelConfigList = ReadonlyArray<ReleaseChannelConfig>;
-export const ReleaseChannelConfigList = /*@__PURE__*/ S.Array(
-  ReleaseChannelConfig,
-) as any as S.Schema<ReleaseChannelConfigList>;
+export const ReleaseChannelConfigList = /*@__PURE__*/ S.Array(ReleaseChannelConfig) as any as S.Schema<ReleaseChannelConfigList>;
 
 /** Windows server version. */
 export interface WindowsVersion {
@@ -6750,17 +5462,15 @@ export interface WindowsVersion {
   osVersion?: string;
 }
 export const WindowsVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    supportEndDate: S.optional(Container_Date),
-    imageType: S.optional(S.String),
-    osVersion: S.optional(S.String),
-  }),
+S.Struct({
+  "supportEndDate": S.optional(Container_Date),
+  "imageType": S.optional(S.String),
+  "osVersion": S.optional(S.String),
+}),
 ).annotate({ identifier: "WindowsVersion" }) as any as S.Schema<WindowsVersion>;
 
 export type WindowsVersionList = ReadonlyArray<WindowsVersion>;
-export const WindowsVersionList = /*@__PURE__*/ S.Array(
-  WindowsVersion,
-) as any as S.Schema<WindowsVersionList>;
+export const WindowsVersionList = /*@__PURE__*/ S.Array(WindowsVersion) as any as S.Schema<WindowsVersionList>;
 
 /** Windows server versions. */
 export interface WindowsVersions {
@@ -6768,18 +5478,13 @@ export interface WindowsVersions {
   windowsVersions?: WindowsVersionList;
 }
 export const WindowsVersions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    windowsVersions: S.optional(WindowsVersionList),
-  }),
-).annotate({
-  identifier: "WindowsVersions",
-}) as any as S.Schema<WindowsVersions>;
+S.Struct({
+  "windowsVersions": S.optional(WindowsVersionList),
+}),
+).annotate({ identifier: "WindowsVersions" }) as any as S.Schema<WindowsVersions>;
 
 export type WindowsVersionsMap = { [key: string]: WindowsVersions | undefined };
-export const WindowsVersionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  WindowsVersions,
-) as any as S.Schema<WindowsVersionsMap>;
+export const WindowsVersionsMap = /*@__PURE__*/ S.Record(S.String, WindowsVersions) as any as S.Schema<WindowsVersionsMap>;
 
 /** Kubernetes Engine service configuration. */
 export interface ServerConfig {
@@ -6799,15 +5504,15 @@ export interface ServerConfig {
   windowsVersionMaps?: WindowsVersionsMap;
 }
 export const ServerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validMasterVersions: S.optional(StringList),
-    validNodeVersions: S.optional(StringList),
-    validImageTypes: S.optional(StringList),
-    defaultImageType: S.optional(S.String),
-    defaultClusterVersion: S.optional(S.String),
-    channels: S.optional(ReleaseChannelConfigList),
-    windowsVersionMaps: S.optional(WindowsVersionsMap),
-  }),
+S.Struct({
+  "validMasterVersions": S.optional(StringList),
+  "validNodeVersions": S.optional(StringList),
+  "validImageTypes": S.optional(StringList),
+  "defaultImageType": S.optional(S.String),
+  "defaultClusterVersion": S.optional(S.String),
+  "channels": S.optional(ReleaseChannelConfigList),
+  "windowsVersionMaps": S.optional(WindowsVersionsMap),
+}),
 ).annotate({ identifier: "ServerConfig" }) as any as S.Schema<ServerConfig>;
 
 export interface GetServerconfigProjectsZonesRequest {
@@ -6819,20 +5524,12 @@ export interface GetServerconfigProjectsZonesRequest {
   projectId: string;
 }
 export const GetServerconfigProjectsZonesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String.pipe(T.Query())),
-    zone: S.String.pipe(T.Label()),
-    projectId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/serverconfig",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetServerconfigProjectsZonesRequest",
-}) as any as S.Schema<GetServerconfigProjectsZonesRequest>;
+S.Struct({
+  "name": S.optional(S.String.pipe(T.Query())),
+  "zone": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/projects/{projectId}/zones/{zone}/serverconfig","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "GetServerconfigProjectsZonesRequest" }) as any as S.Schema<GetServerconfigProjectsZonesRequest>;
 
 /** SetLegacyAbacRequest enables or disables the ABAC authorization mechanism for a cluster. */
 export interface SetLegacyAbacRequest {
@@ -6848,16 +5545,14 @@ export interface SetLegacyAbacRequest {
   enabled?: boolean;
 }
 export const SetLegacyAbacRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    name: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SetLegacyAbacRequest",
-}) as any as S.Schema<SetLegacyAbacRequest>;
+S.Struct({
+  "projectId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SetLegacyAbacRequest" }) as any as S.Schema<SetLegacyAbacRequest>;
 
 export interface LegacyAbacProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -6869,23 +5564,14 @@ export interface LegacyAbacProjectsZonesClustersRequest {
   /** Request body */
   body?: SetLegacyAbacRequest;
 }
-export const LegacyAbacProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(SetLegacyAbacRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/legacyAbac",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "LegacyAbacProjectsZonesClustersRequest",
-}) as any as S.Schema<LegacyAbacProjectsZonesClustersRequest>;
+export const LegacyAbacProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(SetLegacyAbacRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/legacyAbac","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "LegacyAbacProjectsZonesClustersRequest" }) as any as S.Schema<LegacyAbacProjectsZonesClustersRequest>;
 
 export interface ListProjectsAggregatedUsableSubnetworksRequest {
   /** Required. The parent project where subnetworks are usable. Specified in the format `projects/*`. */
@@ -6897,31 +5583,16 @@ export interface ListProjectsAggregatedUsableSubnetworksRequest {
   /** Specifies a page token to use. Set this to the nextPageToken returned by previous list requests to get the next page of results. */
   pageToken?: string;
 }
-export const ListProjectsAggregatedUsableSubnetworksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/aggregated/usableSubnetworks",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsAggregatedUsableSubnetworksRequest",
-  }) as any as S.Schema<ListProjectsAggregatedUsableSubnetworksRequest>;
+export const ListProjectsAggregatedUsableSubnetworksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/aggregated/usableSubnetworks","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsAggregatedUsableSubnetworksRequest" }) as any as S.Schema<ListProjectsAggregatedUsableSubnetworksRequest>;
 
-export type UsableSubnetworkSecondaryRangeStatusEnum =
-  | "UNKNOWN"
-  | "UNUSED"
-  | "IN_USE_SERVICE"
-  | "IN_USE_SHAREABLE_POD"
-  | "IN_USE_MANAGED_POD"
-  | (string & {});
+export type UsableSubnetworkSecondaryRangeStatusEnum = "UNKNOWN" | "UNUSED" | "IN_USE_SERVICE" | "IN_USE_SHAREABLE_POD" | "IN_USE_MANAGED_POD";
 export const UsableSubnetworkSecondaryRangeStatusEnum = /*@__PURE__*/ S.String;
 
 /** Secondary IP range of a usable subnetwork. */
@@ -6934,20 +5605,15 @@ export interface UsableSubnetworkSecondaryRange {
   ipCidrRange?: string;
 }
 export const UsableSubnetworkSecondaryRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(UsableSubnetworkSecondaryRangeStatusEnum),
-    rangeName: S.optional(S.String),
-    ipCidrRange: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UsableSubnetworkSecondaryRange",
-}) as any as S.Schema<UsableSubnetworkSecondaryRange>;
+S.Struct({
+  "status": S.optional(UsableSubnetworkSecondaryRangeStatusEnum),
+  "rangeName": S.optional(S.String),
+  "ipCidrRange": S.optional(S.String),
+}),
+).annotate({ identifier: "UsableSubnetworkSecondaryRange" }) as any as S.Schema<UsableSubnetworkSecondaryRange>;
 
-export type UsableSubnetworkSecondaryRangeList =
-  ReadonlyArray<UsableSubnetworkSecondaryRange>;
-export const UsableSubnetworkSecondaryRangeList = /*@__PURE__*/ S.Array(
-  UsableSubnetworkSecondaryRange,
-) as any as S.Schema<UsableSubnetworkSecondaryRangeList>;
+export type UsableSubnetworkSecondaryRangeList = ReadonlyArray<UsableSubnetworkSecondaryRange>;
+export const UsableSubnetworkSecondaryRangeList = /*@__PURE__*/ S.Array(UsableSubnetworkSecondaryRange) as any as S.Schema<UsableSubnetworkSecondaryRangeList>;
 
 /** UsableSubnetwork resource returns the subnetwork name, its associated network and the primary CIDR range. */
 export interface UsableSubnetwork {
@@ -6963,21 +5629,17 @@ export interface UsableSubnetwork {
   subnetwork?: string;
 }
 export const UsableSubnetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipCidrRange: S.optional(S.String),
-    statusMessage: S.optional(S.String),
-    secondaryIpRanges: S.optional(UsableSubnetworkSecondaryRangeList),
-    network: S.optional(S.String),
-    subnetwork: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UsableSubnetwork",
-}) as any as S.Schema<UsableSubnetwork>;
+S.Struct({
+  "ipCidrRange": S.optional(S.String),
+  "statusMessage": S.optional(S.String),
+  "secondaryIpRanges": S.optional(UsableSubnetworkSecondaryRangeList),
+  "network": S.optional(S.String),
+  "subnetwork": S.optional(S.String),
+}),
+).annotate({ identifier: "UsableSubnetwork" }) as any as S.Schema<UsableSubnetwork>;
 
 export type UsableSubnetworkList = ReadonlyArray<UsableSubnetwork>;
-export const UsableSubnetworkList = /*@__PURE__*/ S.Array(
-  UsableSubnetwork,
-) as any as S.Schema<UsableSubnetworkList>;
+export const UsableSubnetworkList = /*@__PURE__*/ S.Array(UsableSubnetwork) as any as S.Schema<UsableSubnetworkList>;
 
 /** ListUsableSubnetworksResponse is the response of ListUsableSubnetworksRequest. */
 export interface ListUsableSubnetworksResponse {
@@ -6987,37 +5649,23 @@ export interface ListUsableSubnetworksResponse {
   nextPageToken?: string;
 }
 export const ListUsableSubnetworksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subnetworks: S.optional(UsableSubnetworkList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListUsableSubnetworksResponse",
-}) as any as S.Schema<ListUsableSubnetworksResponse>;
+S.Struct({
+  "subnetworks": S.optional(UsableSubnetworkList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListUsableSubnetworksResponse" }) as any as S.Schema<ListUsableSubnetworksResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** Required. Contains the name of the resource requested. Specified in the format `projects/*`. */
   parent: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/locations",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/locations","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationTypeEnum =
-  | "LOCATION_TYPE_UNSPECIFIED"
-  | "ZONE"
-  | "REGION"
-  | (string & {});
+export type LocationTypeEnum = "LOCATION_TYPE_UNSPECIFIED" | "ZONE" | "REGION";
 export const LocationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Location returns the location name, and if the location is recommended for GKE cluster scheduling. */
@@ -7030,17 +5678,15 @@ export interface Location {
   recommended?: boolean;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(LocationTypeEnum),
-    name: S.optional(S.String),
-    recommended: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "type": S.optional(LocationTypeEnum),
+  "name": S.optional(S.String),
+  "recommended": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** ListLocationsResponse returns the list of all GKE locations and their recommendation state. */
 export interface ListLocationsResponse {
@@ -7050,13 +5696,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsClustersRequest {
   /** The parent (project and location) where the clusters will be listed. Specified in the format `projects/*\/locations/*`. Location "-" matches all zones and all regions. */
@@ -7066,27 +5710,16 @@ export interface ListProjectsLocationsClustersRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides, or "-" for all zones. This field has been deprecated and replaced by the parent field. */
   zone?: string;
 }
-export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      projectId: S.optional(S.String.pipe(T.Query())),
-      zone: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/clusters",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsClustersRequest",
-}) as any as S.Schema<ListProjectsLocationsClustersRequest>;
+export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "zone": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/clusters","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsClustersRequest" }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
 export type ClusterList = ReadonlyArray<Cluster>;
-export const ClusterList = /*@__PURE__*/ S.Array(
-  Cluster,
-) as any as S.Schema<ClusterList>;
+export const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
 
 /** ListClustersResponse is the result of ListClustersRequest. */
 export interface ListClustersResponse {
@@ -7096,13 +5729,11 @@ export interface ListClustersResponse {
   missingZones?: StringList;
 }
 export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusters: S.optional(ClusterList),
-    missingZones: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListClustersResponse",
-}) as any as S.Schema<ListClustersResponse>;
+S.Struct({
+  "clusters": S.optional(ClusterList),
+  "missingZones": S.optional(StringList),
+}),
+).annotate({ identifier: "ListClustersResponse" }) as any as S.Schema<ListClustersResponse>;
 
 export interface ListProjectsLocationsClustersNodePoolsRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field. */
@@ -7114,23 +5745,14 @@ export interface ListProjectsLocationsClustersNodePoolsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field. */
   projectId?: string;
 }
-export const ListProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zone: S.optional(S.String.pipe(T.Query())),
-      clusterId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      projectId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/nodePools",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<ListProjectsLocationsClustersNodePoolsRequest>;
+export const ListProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "zone": S.optional(S.String.pipe(T.Query())),
+  "clusterId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/nodePools","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<ListProjectsLocationsClustersNodePoolsRequest>;
 
 /** ListNodePoolsResponse is the result of ListNodePoolsRequest. */
 export interface ListNodePoolsResponse {
@@ -7138,12 +5760,10 @@ export interface ListNodePoolsResponse {
   nodePools?: NodePoolList;
 }
 export const ListNodePoolsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodePools: S.optional(NodePoolList),
-  }),
-).annotate({
-  identifier: "ListNodePoolsResponse",
-}) as any as S.Schema<ListNodePoolsResponse>;
+S.Struct({
+  "nodePools": S.optional(NodePoolList),
+}),
+).annotate({ identifier: "ListNodePoolsResponse" }) as any as S.Schema<ListNodePoolsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The parent (project and location) where the operations will be listed. Specified in the format `projects/*\/locations/*`. Location "-" matches all zones and all regions. */
@@ -7153,27 +5773,16 @@ export interface ListProjectsLocationsOperationsRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) to return operations for, or `-` for all zones. This field has been deprecated and replaced by the parent field. */
   zone?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      projectId: S.optional(S.String.pipe(T.Query())),
-      zone: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/operations",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "zone": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/operations","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** ListOperationsResponse is the result of ListOperationsRequest. */
 export interface ListOperationsResponse {
@@ -7183,13 +5792,11 @@ export interface ListOperationsResponse {
   missingZones?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    missingZones: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "missingZones": S.optional(StringList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field. */
@@ -7200,20 +5807,12 @@ export interface ListProjectsZonesClustersRequest {
   zone: string;
 }
 export const ListProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    parent: S.optional(S.String.pipe(T.Query())),
-    zone: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsZonesClustersRequest",
-}) as any as S.Schema<ListProjectsZonesClustersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "zone": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsZonesClustersRequest" }) as any as S.Schema<ListProjectsZonesClustersRequest>;
 
 export interface ListProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field. */
@@ -7225,23 +5824,14 @@ export interface ListProjectsZonesClustersNodePoolsRequest {
   /** The parent (project, location, cluster name) where the node pools will be listed. Specified in the format `projects/*\/locations/*\/clusters/*`. */
   parent?: string;
 }
-export const ListProjectsZonesClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      projectId: S.String.pipe(T.Label()),
-      parent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsZonesClustersNodePoolsRequest",
-  }) as any as S.Schema<ListProjectsZonesClustersNodePoolsRequest>;
+export const ListProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsZonesClustersNodePoolsRequest" }) as any as S.Schema<ListProjectsZonesClustersNodePoolsRequest>;
 
 export interface ListProjectsZonesOperationsRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) to return operations for, or `-` for all zones. This field has been deprecated and replaced by the parent field. */
@@ -7252,20 +5842,12 @@ export interface ListProjectsZonesOperationsRequest {
   parent?: string;
 }
 export const ListProjectsZonesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.String.pipe(T.Label()),
-    projectId: S.String.pipe(T.Label()),
-    parent: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/operations",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsZonesOperationsRequest",
-}) as any as S.Schema<ListProjectsZonesOperationsRequest>;
+S.Struct({
+  "zone": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/projects/{projectId}/zones/{zone}/operations","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsZonesOperationsRequest" }) as any as S.Schema<ListProjectsZonesOperationsRequest>;
 
 /** SetLocationsRequest sets the locations of the cluster. */
 export interface SetLocationsRequest {
@@ -7281,16 +5863,14 @@ export interface SetLocationsRequest {
   locations?: StringList;
 }
 export const SetLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    projectId: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    locations: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "SetLocationsRequest",
-}) as any as S.Schema<SetLocationsRequest>;
+S.Struct({
+  "name": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "locations": S.optional(StringList),
+}),
+).annotate({ identifier: "SetLocationsRequest" }) as any as S.Schema<SetLocationsRequest>;
 
 export interface LocationsProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -7302,23 +5882,14 @@ export interface LocationsProjectsZonesClustersRequest {
   /** Request body */
   body?: SetLocationsRequest;
 }
-export const LocationsProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(SetLocationsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/locations",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "LocationsProjectsZonesClustersRequest",
-}) as any as S.Schema<LocationsProjectsZonesClustersRequest>;
+export const LocationsProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(SetLocationsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/locations","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "LocationsProjectsZonesClustersRequest" }) as any as S.Schema<LocationsProjectsZonesClustersRequest>;
 
 /** SetLoggingServiceRequest sets the logging service of a cluster. */
 export interface SetLoggingServiceRequest {
@@ -7334,16 +5905,14 @@ export interface SetLoggingServiceRequest {
   name?: string;
 }
 export const SetLoggingServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    projectId: S.optional(S.String),
-    loggingService: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetLoggingServiceRequest",
-}) as any as S.Schema<SetLoggingServiceRequest>;
+S.Struct({
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "loggingService": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "SetLoggingServiceRequest" }) as any as S.Schema<SetLoggingServiceRequest>;
 
 export interface LoggingProjectsZonesClustersRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -7356,21 +5925,13 @@ export interface LoggingProjectsZonesClustersRequest {
   body?: SetLoggingServiceRequest;
 }
 export const LoggingProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.String.pipe(T.Label()),
-    clusterId: S.String.pipe(T.Label()),
-    projectId: S.String.pipe(T.Label()),
-    body: S.optional(SetLoggingServiceRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/logging",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "LoggingProjectsZonesClustersRequest",
-}) as any as S.Schema<LoggingProjectsZonesClustersRequest>;
+S.Struct({
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(SetLoggingServiceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/logging","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "LoggingProjectsZonesClustersRequest" }) as any as S.Schema<LoggingProjectsZonesClustersRequest>;
 
 /** UpdateMasterRequest updates the master of the cluster. */
 export interface UpdateMasterRequest {
@@ -7386,16 +5947,14 @@ export interface UpdateMasterRequest {
   name?: string;
 }
 export const UpdateMasterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    masterVersion: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    projectId: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateMasterRequest",
-}) as any as S.Schema<UpdateMasterRequest>;
+S.Struct({
+  "masterVersion": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateMasterRequest" }) as any as S.Schema<UpdateMasterRequest>;
 
 export interface MasterProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -7408,21 +5967,13 @@ export interface MasterProjectsZonesClustersRequest {
   body?: UpdateMasterRequest;
 }
 export const MasterProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    zone: S.String.pipe(T.Label()),
-    clusterId: S.String.pipe(T.Label()),
-    body: S.optional(UpdateMasterRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/master",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "MasterProjectsZonesClustersRequest",
-}) as any as S.Schema<MasterProjectsZonesClustersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateMasterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/master","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "MasterProjectsZonesClustersRequest" }) as any as S.Schema<MasterProjectsZonesClustersRequest>;
 
 /** SetMonitoringServiceRequest sets the monitoring service of a cluster. */
 export interface SetMonitoringServiceRequest {
@@ -7438,16 +5989,14 @@ export interface SetMonitoringServiceRequest {
   clusterId?: string;
 }
 export const SetMonitoringServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    monitoringService: S.optional(S.String),
-    projectId: S.optional(S.String),
-    name: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetMonitoringServiceRequest",
-}) as any as S.Schema<SetMonitoringServiceRequest>;
+S.Struct({
+  "monitoringService": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+}),
+).annotate({ identifier: "SetMonitoringServiceRequest" }) as any as S.Schema<SetMonitoringServiceRequest>;
 
 export interface MonitoringProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -7459,23 +6008,14 @@ export interface MonitoringProjectsZonesClustersRequest {
   /** Request body */
   body?: SetMonitoringServiceRequest;
 }
-export const MonitoringProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(SetMonitoringServiceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/monitoring",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "MonitoringProjectsZonesClustersRequest",
-}) as any as S.Schema<MonitoringProjectsZonesClustersRequest>;
+export const MonitoringProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(SetMonitoringServiceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/monitoring","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "MonitoringProjectsZonesClustersRequest" }) as any as S.Schema<MonitoringProjectsZonesClustersRequest>;
 
 /** SetLabelsRequest sets the Google Cloud Platform labels on a Google Container Engine cluster, which will in turn set them for Google Compute Engine resources used by that cluster */
 export interface SetLabelsRequest {
@@ -7493,17 +6033,15 @@ export interface SetLabelsRequest {
   name?: string;
 }
 export const SetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labelFingerprint: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    projectId: S.optional(S.String),
-    resourceLabels: S.optional(StringMap),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetLabelsRequest",
-}) as any as S.Schema<SetLabelsRequest>;
+S.Struct({
+  "labelFingerprint": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "resourceLabels": S.optional(StringMap),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "SetLabelsRequest" }) as any as S.Schema<SetLabelsRequest>;
 
 export interface ResourceLabelsProjectsZonesClustersRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -7515,23 +6053,14 @@ export interface ResourceLabelsProjectsZonesClustersRequest {
   /** Request body */
   body?: SetLabelsRequest;
 }
-export const ResourceLabelsProjectsZonesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      projectId: S.String.pipe(T.Label()),
-      body: S.optional(SetLabelsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ResourceLabelsProjectsZonesClustersRequest",
-  }) as any as S.Schema<ResourceLabelsProjectsZonesClustersRequest>;
+export const ResourceLabelsProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(SetLabelsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "ResourceLabelsProjectsZonesClustersRequest" }) as any as S.Schema<ResourceLabelsProjectsZonesClustersRequest>;
 
 /** RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed NodePool upgrade. This will be an no-op if the last upgrade successfully completed. */
 export interface RollbackNodePoolUpgradeRequest {
@@ -7549,17 +6078,15 @@ export interface RollbackNodePoolUpgradeRequest {
   projectId?: string;
 }
 export const RollbackNodePoolUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    nodePoolId: S.optional(S.String),
-    name: S.optional(S.String),
-    respectPdb: S.optional(S.Boolean),
-    projectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RollbackNodePoolUpgradeRequest",
-}) as any as S.Schema<RollbackNodePoolUpgradeRequest>;
+S.Struct({
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "nodePoolId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "respectPdb": S.optional(S.Boolean),
+  "projectId": S.optional(S.String),
+}),
+).annotate({ identifier: "RollbackNodePoolUpgradeRequest" }) as any as S.Schema<RollbackNodePoolUpgradeRequest>;
 
 export interface RollbackProjectsLocationsClustersNodePoolsRequest {
   /** The name (project, location, cluster, node pool id) of the node poll to rollback upgrade. Specified in the format `projects/*\/locations/*\/clusters/*\/nodePools/*`. */
@@ -7567,21 +6094,12 @@ export interface RollbackProjectsLocationsClustersNodePoolsRequest {
   /** Request body */
   body?: RollbackNodePoolUpgradeRequest;
 }
-export const RollbackProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RollbackNodePoolUpgradeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:rollback",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RollbackProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<RollbackProjectsLocationsClustersNodePoolsRequest>;
+export const RollbackProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RollbackNodePoolUpgradeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:rollback","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "RollbackProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<RollbackProjectsLocationsClustersNodePoolsRequest>;
 
 export interface RollbackProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -7595,24 +6113,15 @@ export interface RollbackProjectsZonesClustersNodePoolsRequest {
   /** Request body */
   body?: RollbackNodePoolUpgradeRequest;
 }
-export const RollbackProjectsZonesClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      nodePoolId: S.String.pipe(T.Label()),
-      projectId: S.String.pipe(T.Label()),
-      body: S.optional(RollbackNodePoolUpgradeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RollbackProjectsZonesClustersNodePoolsRequest",
-  }) as any as S.Schema<RollbackProjectsZonesClustersNodePoolsRequest>;
+export const RollbackProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "nodePoolId": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(RollbackNodePoolUpgradeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "RollbackProjectsZonesClustersNodePoolsRequest" }) as any as S.Schema<RollbackProjectsZonesClustersNodePoolsRequest>;
 
 export interface SetAddonsProjectsLocationsClustersRequest {
   /** The name (project, location, cluster) of the cluster to set addons. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -7620,21 +6129,12 @@ export interface SetAddonsProjectsLocationsClustersRequest {
   /** Request body */
   body?: SetAddonsConfigRequest;
 }
-export const SetAddonsProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetAddonsConfigRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setAddons",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetAddonsProjectsLocationsClustersRequest",
-  }) as any as S.Schema<SetAddonsProjectsLocationsClustersRequest>;
+export const SetAddonsProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetAddonsConfigRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setAddons","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetAddonsProjectsLocationsClustersRequest" }) as any as S.Schema<SetAddonsProjectsLocationsClustersRequest>;
 
 export interface SetAutoscalingProjectsLocationsClustersNodePoolsRequest {
   /** The name (project, location, cluster, node pool) of the node pool to set autoscaler settings. Specified in the format `projects/*\/locations/*\/clusters/*\/nodePools/*`. */
@@ -7642,21 +6142,12 @@ export interface SetAutoscalingProjectsLocationsClustersNodePoolsRequest {
   /** Request body */
   body?: SetNodePoolAutoscalingRequest;
 }
-export const SetAutoscalingProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetNodePoolAutoscalingRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setAutoscaling",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetAutoscalingProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<SetAutoscalingProjectsLocationsClustersNodePoolsRequest>;
+export const SetAutoscalingProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetNodePoolAutoscalingRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setAutoscaling","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetAutoscalingProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<SetAutoscalingProjectsLocationsClustersNodePoolsRequest>;
 
 export interface SetLegacyAbacProjectsLocationsClustersRequest {
   /** The name (project, location, cluster name) of the cluster to set legacy abac. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -7664,21 +6155,12 @@ export interface SetLegacyAbacProjectsLocationsClustersRequest {
   /** Request body */
   body?: SetLegacyAbacRequest;
 }
-export const SetLegacyAbacProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetLegacyAbacRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setLegacyAbac",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetLegacyAbacProjectsLocationsClustersRequest",
-  }) as any as S.Schema<SetLegacyAbacProjectsLocationsClustersRequest>;
+export const SetLegacyAbacProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetLegacyAbacRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setLegacyAbac","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetLegacyAbacProjectsLocationsClustersRequest" }) as any as S.Schema<SetLegacyAbacProjectsLocationsClustersRequest>;
 
 export interface SetLocationsProjectsLocationsClustersRequest {
   /** The name (project, location, cluster) of the cluster to set locations. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -7686,21 +6168,12 @@ export interface SetLocationsProjectsLocationsClustersRequest {
   /** Request body */
   body?: SetLocationsRequest;
 }
-export const SetLocationsProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetLocationsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setLocations",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetLocationsProjectsLocationsClustersRequest",
-  }) as any as S.Schema<SetLocationsProjectsLocationsClustersRequest>;
+export const SetLocationsProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetLocationsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setLocations","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetLocationsProjectsLocationsClustersRequest" }) as any as S.Schema<SetLocationsProjectsLocationsClustersRequest>;
 
 export interface SetLoggingProjectsLocationsClustersRequest {
   /** The name (project, location, cluster) of the cluster to set logging. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -7708,21 +6181,12 @@ export interface SetLoggingProjectsLocationsClustersRequest {
   /** Request body */
   body?: SetLoggingServiceRequest;
 }
-export const SetLoggingProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetLoggingServiceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setLogging",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetLoggingProjectsLocationsClustersRequest",
-  }) as any as S.Schema<SetLoggingProjectsLocationsClustersRequest>;
+export const SetLoggingProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetLoggingServiceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setLogging","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetLoggingProjectsLocationsClustersRequest" }) as any as S.Schema<SetLoggingProjectsLocationsClustersRequest>;
 
 /** SetMaintenancePolicyRequest sets the maintenance policy for a cluster. */
 export interface SetMaintenancePolicyRequest {
@@ -7738,16 +6202,14 @@ export interface SetMaintenancePolicyRequest {
   maintenancePolicy?: MaintenancePolicy;
 }
 export const SetMaintenancePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    projectId: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    maintenancePolicy: S.optional(MaintenancePolicy),
-  }),
-).annotate({
-  identifier: "SetMaintenancePolicyRequest",
-}) as any as S.Schema<SetMaintenancePolicyRequest>;
+S.Struct({
+  "name": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "maintenancePolicy": S.optional(MaintenancePolicy),
+}),
+).annotate({ identifier: "SetMaintenancePolicyRequest" }) as any as S.Schema<SetMaintenancePolicyRequest>;
 
 export interface SetMaintenancePolicyProjectsLocationsClustersRequest {
   /** The name (project, location, cluster name) of the cluster to set maintenance policy. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -7755,21 +6217,12 @@ export interface SetMaintenancePolicyProjectsLocationsClustersRequest {
   /** Request body */
   body?: SetMaintenancePolicyRequest;
 }
-export const SetMaintenancePolicyProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetMaintenancePolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setMaintenancePolicy",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetMaintenancePolicyProjectsLocationsClustersRequest",
-  }) as any as S.Schema<SetMaintenancePolicyProjectsLocationsClustersRequest>;
+export const SetMaintenancePolicyProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetMaintenancePolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setMaintenancePolicy","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetMaintenancePolicyProjectsLocationsClustersRequest" }) as any as S.Schema<SetMaintenancePolicyProjectsLocationsClustersRequest>;
 
 export interface SetMaintenancePolicyProjectsZonesClustersRequest {
   /** Required. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). */
@@ -7781,23 +6234,14 @@ export interface SetMaintenancePolicyProjectsZonesClustersRequest {
   /** Request body */
   body?: SetMaintenancePolicyRequest;
 }
-export const SetMaintenancePolicyProjectsZonesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(SetMaintenancePolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMaintenancePolicy",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetMaintenancePolicyProjectsZonesClustersRequest",
-  }) as any as S.Schema<SetMaintenancePolicyProjectsZonesClustersRequest>;
+export const SetMaintenancePolicyProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(SetMaintenancePolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMaintenancePolicy","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetMaintenancePolicyProjectsZonesClustersRequest" }) as any as S.Schema<SetMaintenancePolicyProjectsZonesClustersRequest>;
 
 /** SetNodePoolManagementRequest sets the node management properties of a node pool. */
 export interface SetNodePoolManagementRequest {
@@ -7815,17 +6259,15 @@ export interface SetNodePoolManagementRequest {
   name?: string;
 }
 export const SetNodePoolManagementRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    management: S.optional(NodeManagement),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    projectId: S.optional(S.String),
-    nodePoolId: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetNodePoolManagementRequest",
-}) as any as S.Schema<SetNodePoolManagementRequest>;
+S.Struct({
+  "management": S.optional(NodeManagement),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "nodePoolId": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "SetNodePoolManagementRequest" }) as any as S.Schema<SetNodePoolManagementRequest>;
 
 export interface SetManagementProjectsLocationsClustersNodePoolsRequest {
   /** The name (project, location, cluster, node pool id) of the node pool to set management properties. Specified in the format `projects/*\/locations/*\/clusters/*\/nodePools/*`. */
@@ -7833,21 +6275,12 @@ export interface SetManagementProjectsLocationsClustersNodePoolsRequest {
   /** Request body */
   body?: SetNodePoolManagementRequest;
 }
-export const SetManagementProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetNodePoolManagementRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setManagement",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetManagementProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<SetManagementProjectsLocationsClustersNodePoolsRequest>;
+export const SetManagementProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetNodePoolManagementRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setManagement","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetManagementProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<SetManagementProjectsLocationsClustersNodePoolsRequest>;
 
 export interface SetManagementProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -7861,37 +6294,23 @@ export interface SetManagementProjectsZonesClustersNodePoolsRequest {
   /** Request body */
   body?: SetNodePoolManagementRequest;
 }
-export const SetManagementProjectsZonesClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      nodePoolId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(SetNodePoolManagementRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetManagementProjectsZonesClustersNodePoolsRequest",
-  }) as any as S.Schema<SetManagementProjectsZonesClustersNodePoolsRequest>;
+export const SetManagementProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "nodePoolId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(SetNodePoolManagementRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetManagementProjectsZonesClustersNodePoolsRequest" }) as any as S.Schema<SetManagementProjectsZonesClustersNodePoolsRequest>;
 
-export type SetMasterAuthRequestActionEnum =
-  | "UNKNOWN"
-  | "SET_PASSWORD"
-  | "GENERATE_PASSWORD"
-  | "SET_USERNAME"
-  | (string & {});
+export type SetMasterAuthRequestActionEnum = "UNKNOWN" | "SET_PASSWORD" | "GENERATE_PASSWORD" | "SET_USERNAME";
 export const SetMasterAuthRequestActionEnum = /*@__PURE__*/ S.String;
 
 /** SetMasterAuthRequest updates the admin password of a cluster. */
 export interface SetMasterAuthRequest {
   /** Required. The exact form of action to be taken on the master auth. */
-  action?: SetMasterAuthRequestActionEnum;
+  action?: SetMasterAuthRequestActionEnum | (string & {});
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
   zone?: string;
   /** Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. */
@@ -7904,17 +6323,15 @@ export interface SetMasterAuthRequest {
   update?: MasterAuth;
 }
 export const SetMasterAuthRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(SetMasterAuthRequestActionEnum),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    projectId: S.optional(S.String),
-    name: S.optional(S.String),
-    update: S.optional(MasterAuth),
-  }),
-).annotate({
-  identifier: "SetMasterAuthRequest",
-}) as any as S.Schema<SetMasterAuthRequest>;
+S.Struct({
+  "action": S.optional(SetMasterAuthRequestActionEnum),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "update": S.optional(MasterAuth),
+}),
+).annotate({ identifier: "SetMasterAuthRequest" }) as any as S.Schema<SetMasterAuthRequest>;
 
 export interface SetMasterAuthProjectsLocationsClustersRequest {
   /** The name (project, location, cluster) of the cluster to set auth. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -7922,21 +6339,12 @@ export interface SetMasterAuthProjectsLocationsClustersRequest {
   /** Request body */
   body?: SetMasterAuthRequest;
 }
-export const SetMasterAuthProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetMasterAuthRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setMasterAuth",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetMasterAuthProjectsLocationsClustersRequest",
-  }) as any as S.Schema<SetMasterAuthProjectsLocationsClustersRequest>;
+export const SetMasterAuthProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetMasterAuthRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setMasterAuth","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetMasterAuthProjectsLocationsClustersRequest" }) as any as S.Schema<SetMasterAuthProjectsLocationsClustersRequest>;
 
 export interface SetMasterAuthProjectsZonesClustersRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -7948,23 +6356,14 @@ export interface SetMasterAuthProjectsZonesClustersRequest {
   /** Request body */
   body?: SetMasterAuthRequest;
 }
-export const SetMasterAuthProjectsZonesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      projectId: S.String.pipe(T.Label()),
-      body: S.optional(SetMasterAuthRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMasterAuth",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetMasterAuthProjectsZonesClustersRequest",
-  }) as any as S.Schema<SetMasterAuthProjectsZonesClustersRequest>;
+export const SetMasterAuthProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(SetMasterAuthRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMasterAuth","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetMasterAuthProjectsZonesClustersRequest" }) as any as S.Schema<SetMasterAuthProjectsZonesClustersRequest>;
 
 export interface SetMonitoringProjectsLocationsClustersRequest {
   /** The name (project, location, cluster) of the cluster to set monitoring. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -7972,21 +6371,12 @@ export interface SetMonitoringProjectsLocationsClustersRequest {
   /** Request body */
   body?: SetMonitoringServiceRequest;
 }
-export const SetMonitoringProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetMonitoringServiceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setMonitoring",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetMonitoringProjectsLocationsClustersRequest",
-  }) as any as S.Schema<SetMonitoringProjectsLocationsClustersRequest>;
+export const SetMonitoringProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetMonitoringServiceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setMonitoring","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetMonitoringProjectsLocationsClustersRequest" }) as any as S.Schema<SetMonitoringProjectsLocationsClustersRequest>;
 
 /** SetNetworkPolicyRequest enables/disables network policy for a cluster. */
 export interface SetNetworkPolicyRequest {
@@ -8002,16 +6392,14 @@ export interface SetNetworkPolicyRequest {
   clusterId?: string;
 }
 export const SetNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    networkPolicy: S.optional(NetworkPolicy),
-    projectId: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetNetworkPolicyRequest",
-}) as any as S.Schema<SetNetworkPolicyRequest>;
+S.Struct({
+  "name": S.optional(S.String),
+  "networkPolicy": S.optional(NetworkPolicy),
+  "projectId": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+}),
+).annotate({ identifier: "SetNetworkPolicyRequest" }) as any as S.Schema<SetNetworkPolicyRequest>;
 
 export interface SetNetworkPolicyProjectsLocationsClustersRequest {
   /** The name (project, location, cluster name) of the cluster to set networking policy. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -8019,21 +6407,12 @@ export interface SetNetworkPolicyProjectsLocationsClustersRequest {
   /** Request body */
   body?: SetNetworkPolicyRequest;
 }
-export const SetNetworkPolicyProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetNetworkPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setNetworkPolicy",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetNetworkPolicyProjectsLocationsClustersRequest",
-  }) as any as S.Schema<SetNetworkPolicyProjectsLocationsClustersRequest>;
+export const SetNetworkPolicyProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetNetworkPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setNetworkPolicy","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetNetworkPolicyProjectsLocationsClustersRequest" }) as any as S.Schema<SetNetworkPolicyProjectsLocationsClustersRequest>;
 
 export interface SetNetworkPolicyProjectsZonesClustersRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -8045,23 +6424,14 @@ export interface SetNetworkPolicyProjectsZonesClustersRequest {
   /** Request body */
   body?: SetNetworkPolicyRequest;
 }
-export const SetNetworkPolicyProjectsZonesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      projectId: S.String.pipe(T.Label()),
-      body: S.optional(SetNetworkPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setNetworkPolicy",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetNetworkPolicyProjectsZonesClustersRequest",
-  }) as any as S.Schema<SetNetworkPolicyProjectsZonesClustersRequest>;
+export const SetNetworkPolicyProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(SetNetworkPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setNetworkPolicy","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetNetworkPolicyProjectsZonesClustersRequest" }) as any as S.Schema<SetNetworkPolicyProjectsZonesClustersRequest>;
 
 export interface SetResourceLabelsProjectsLocationsClustersRequest {
   /** The name (project, location, cluster name) of the cluster to set labels. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -8069,21 +6439,12 @@ export interface SetResourceLabelsProjectsLocationsClustersRequest {
   /** Request body */
   body?: SetLabelsRequest;
 }
-export const SetResourceLabelsProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetLabelsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setResourceLabels",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetResourceLabelsProjectsLocationsClustersRequest",
-  }) as any as S.Schema<SetResourceLabelsProjectsLocationsClustersRequest>;
+export const SetResourceLabelsProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetLabelsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setResourceLabels","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetResourceLabelsProjectsLocationsClustersRequest" }) as any as S.Schema<SetResourceLabelsProjectsLocationsClustersRequest>;
 
 /** SetNodePoolSizeRequest sets the size of a node pool. */
 export interface SetNodePoolSizeRequest {
@@ -8101,17 +6462,15 @@ export interface SetNodePoolSizeRequest {
   projectId?: string;
 }
 export const SetNodePoolSizeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    nodeCount: S.optional(S.Number),
-    nodePoolId: S.optional(S.String),
-    name: S.optional(S.String),
-    projectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetNodePoolSizeRequest",
-}) as any as S.Schema<SetNodePoolSizeRequest>;
+S.Struct({
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "nodeCount": S.optional(S.Number),
+  "nodePoolId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "projectId": S.optional(S.String),
+}),
+).annotate({ identifier: "SetNodePoolSizeRequest" }) as any as S.Schema<SetNodePoolSizeRequest>;
 
 export interface SetSizeProjectsLocationsClustersNodePoolsRequest {
   /** The name (project, location, cluster, node pool id) of the node pool to set size. Specified in the format `projects/*\/locations/*\/clusters/*\/nodePools/*`. */
@@ -8119,21 +6478,12 @@ export interface SetSizeProjectsLocationsClustersNodePoolsRequest {
   /** Request body */
   body?: SetNodePoolSizeRequest;
 }
-export const SetSizeProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetNodePoolSizeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:setSize",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetSizeProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<SetSizeProjectsLocationsClustersNodePoolsRequest>;
+export const SetSizeProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SetNodePoolSizeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:setSize","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetSizeProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<SetSizeProjectsLocationsClustersNodePoolsRequest>;
 
 export interface SetSizeProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -8147,24 +6497,15 @@ export interface SetSizeProjectsZonesClustersNodePoolsRequest {
   /** Request body */
   body?: SetNodePoolSizeRequest;
 }
-export const SetSizeProjectsZonesClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      nodePoolId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(SetNodePoolSizeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setSize",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetSizeProjectsZonesClustersNodePoolsRequest",
-  }) as any as S.Schema<SetSizeProjectsZonesClustersNodePoolsRequest>;
+export const SetSizeProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "nodePoolId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(SetNodePoolSizeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setSize","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "SetSizeProjectsZonesClustersNodePoolsRequest" }) as any as S.Schema<SetSizeProjectsZonesClustersNodePoolsRequest>;
 
 /** StartIPRotationRequest creates a new IP for the cluster and then performs a node upgrade on each node pool to point to the new IP. */
 export interface StartIPRotationRequest {
@@ -8180,16 +6521,14 @@ export interface StartIPRotationRequest {
   rotateCredentials?: boolean;
 }
 export const StartIPRotationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    projectId: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    rotateCredentials: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StartIPRotationRequest",
-}) as any as S.Schema<StartIPRotationRequest>;
+S.Struct({
+  "name": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "rotateCredentials": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "StartIPRotationRequest" }) as any as S.Schema<StartIPRotationRequest>;
 
 export interface StartIpRotationProjectsLocationsClustersRequest {
   /** The name (project, location, cluster name) of the cluster to start IP rotation. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -8197,21 +6536,12 @@ export interface StartIpRotationProjectsLocationsClustersRequest {
   /** Request body */
   body?: StartIPRotationRequest;
 }
-export const StartIpRotationProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(StartIPRotationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:startIpRotation",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "StartIpRotationProjectsLocationsClustersRequest",
-  }) as any as S.Schema<StartIpRotationProjectsLocationsClustersRequest>;
+export const StartIpRotationProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(StartIPRotationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:startIpRotation","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "StartIpRotationProjectsLocationsClustersRequest" }) as any as S.Schema<StartIpRotationProjectsLocationsClustersRequest>;
 
 export interface StartIpRotationProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -8223,23 +6553,14 @@ export interface StartIpRotationProjectsZonesClustersRequest {
   /** Request body */
   body?: StartIPRotationRequest;
 }
-export const StartIpRotationProjectsZonesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(StartIPRotationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:startIpRotation",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "StartIpRotationProjectsZonesClustersRequest",
-  }) as any as S.Schema<StartIpRotationProjectsZonesClustersRequest>;
+export const StartIpRotationProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(StartIPRotationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:startIpRotation","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "StartIpRotationProjectsZonesClustersRequest" }) as any as S.Schema<StartIpRotationProjectsZonesClustersRequest>;
 
 export interface UpdateMasterProjectsLocationsClustersRequest {
   /** The name (project, location, cluster) of the cluster to update. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -8247,44 +6568,21 @@ export interface UpdateMasterProjectsLocationsClustersRequest {
   /** Request body */
   body?: UpdateMasterRequest;
 }
-export const UpdateMasterProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UpdateMasterRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:updateMaster",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateMasterProjectsLocationsClustersRequest",
-  }) as any as S.Schema<UpdateMasterProjectsLocationsClustersRequest>;
+export const UpdateMasterProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateMasterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:updateMaster","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "UpdateMasterProjectsLocationsClustersRequest" }) as any as S.Schema<UpdateMasterProjectsLocationsClustersRequest>;
 
-export type ClusterUpdateDesiredDatapathProviderEnum =
-  | "DATAPATH_PROVIDER_UNSPECIFIED"
-  | "LEGACY_DATAPATH"
-  | "ADVANCED_DATAPATH"
-  | (string & {});
+export type ClusterUpdateDesiredDatapathProviderEnum = "DATAPATH_PROVIDER_UNSPECIFIED" | "LEGACY_DATAPATH" | "ADVANCED_DATAPATH";
 export const ClusterUpdateDesiredDatapathProviderEnum = /*@__PURE__*/ S.String;
 
-export type ClusterUpdateDesiredStackTypeEnum =
-  | "STACK_TYPE_UNSPECIFIED"
-  | "IPV4"
-  | "IPV4_IPV6"
-  | (string & {});
+export type ClusterUpdateDesiredStackTypeEnum = "STACK_TYPE_UNSPECIFIED" | "IPV4" | "IPV4_IPV6";
 export const ClusterUpdateDesiredStackTypeEnum = /*@__PURE__*/ S.String;
 
-export type ClusterUpdateDesiredPrivateIpv6GoogleAccessEnum =
-  | "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"
-  | "PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED"
-  | "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE"
-  | "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL"
-  | (string & {});
-export const ClusterUpdateDesiredPrivateIpv6GoogleAccessEnum =
-  /*@__PURE__*/ S.String;
+export type ClusterUpdateDesiredPrivateIpv6GoogleAccessEnum = "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED" | "PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED" | "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE" | "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL";
+export const ClusterUpdateDesiredPrivateIpv6GoogleAccessEnum = /*@__PURE__*/ S.String;
 
 /** IntraNodeVisibilityConfig contains the desired config of the intra-node visibility on this cluster. */
 export interface IntraNodeVisibilityConfig {
@@ -8292,12 +6590,10 @@ export interface IntraNodeVisibilityConfig {
   enabled?: boolean;
 }
 export const IntraNodeVisibilityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "IntraNodeVisibilityConfig",
-}) as any as S.Schema<IntraNodeVisibilityConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "IntraNodeVisibilityConfig" }) as any as S.Schema<IntraNodeVisibilityConfig>;
 
 /** ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster. */
 export interface ILBSubsettingConfig {
@@ -8305,12 +6601,10 @@ export interface ILBSubsettingConfig {
   enabled?: boolean;
 }
 export const ILBSubsettingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ILBSubsettingConfig",
-}) as any as S.Schema<ILBSubsettingConfig>;
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ILBSubsettingConfig" }) as any as S.Schema<ILBSubsettingConfig>;
 
 /** DesiredAdditionalIPRangesConfig is a wrapper used for cluster update operation and contains multiple AdditionalIPRangesConfigs. */
 export interface DesiredAdditionalIPRangesConfig {
@@ -8318,40 +6612,27 @@ export interface DesiredAdditionalIPRangesConfig {
   additionalIpRangesConfigs?: AdditionalIPRangesConfigList;
 }
 export const DesiredAdditionalIPRangesConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalIpRangesConfigs: S.optional(AdditionalIPRangesConfigList),
-  }),
-).annotate({
-  identifier: "DesiredAdditionalIPRangesConfig",
-}) as any as S.Schema<DesiredAdditionalIPRangesConfig>;
+S.Struct({
+  "additionalIpRangesConfigs": S.optional(AdditionalIPRangesConfigList),
+}),
+).annotate({ identifier: "DesiredAdditionalIPRangesConfig" }) as any as S.Schema<DesiredAdditionalIPRangesConfig>;
 
-export type DesiredEnterpriseConfigDesiredTierEnum =
-  | "CLUSTER_TIER_UNSPECIFIED"
-  | "STANDARD"
-  | "ENTERPRISE"
-  | (string & {});
+export type DesiredEnterpriseConfigDesiredTierEnum = "CLUSTER_TIER_UNSPECIFIED" | "STANDARD" | "ENTERPRISE";
 export const DesiredEnterpriseConfigDesiredTierEnum = /*@__PURE__*/ S.String;
 
 /** DesiredEnterpriseConfig is a wrapper used for updating enterprise_config. Deprecated: GKE Enterprise features are now available without an Enterprise tier. */
 export interface DesiredEnterpriseConfig {
   /** desired_tier specifies the desired tier of the cluster. */
-  desiredTier?: DesiredEnterpriseConfigDesiredTierEnum;
+  desiredTier?: DesiredEnterpriseConfigDesiredTierEnum | (string & {});
 }
 export const DesiredEnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    desiredTier: S.optional(DesiredEnterpriseConfigDesiredTierEnum),
-  }),
-).annotate({
-  identifier: "DesiredEnterpriseConfig",
-}) as any as S.Schema<DesiredEnterpriseConfig>;
+S.Struct({
+  "desiredTier": S.optional(DesiredEnterpriseConfigDesiredTierEnum),
+}),
+).annotate({ identifier: "DesiredEnterpriseConfig" }) as any as S.Schema<DesiredEnterpriseConfig>;
 
-export type ClusterUpdateDesiredInTransitEncryptionConfigEnum =
-  | "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"
-  | "IN_TRANSIT_ENCRYPTION_DISABLED"
-  | "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT"
-  | (string & {});
-export const ClusterUpdateDesiredInTransitEncryptionConfigEnum =
-  /*@__PURE__*/ S.String;
+export type ClusterUpdateDesiredInTransitEncryptionConfigEnum = "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED" | "IN_TRANSIT_ENCRYPTION_DISABLED" | "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT";
+export const ClusterUpdateDesiredInTransitEncryptionConfigEnum = /*@__PURE__*/ S.String;
 
 /** ClusterUpdate describes an update to the cluster. Exactly one update can be applied to a cluster with each request, so at most one field can be provided. */
 export interface ClusterUpdate {
@@ -8380,7 +6661,7 @@ export interface ClusterUpdate {
   /** The desired monitoring configuration. */
   desiredMonitoringConfig?: MonitoringConfig;
   /** The desired datapath provider for the cluster. */
-  desiredDatapathProvider?: ClusterUpdateDesiredDatapathProviderEnum;
+  desiredDatapathProvider?: ClusterUpdateDesiredDatapathProviderEnum | (string & {});
   /** The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions. */
   desiredLoggingService?: string;
   /** DNSConfig contains clusterDNS config for this cluster. */
@@ -8420,7 +6701,7 @@ export interface ClusterUpdate {
   /** ServiceExternalIPsConfig specifies the config for the use of Services with ExternalIPs field. */
   desiredServiceExternalIpsConfig?: ServiceExternalIPsConfig;
   /** The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type. */
-  desiredStackType?: ClusterUpdateDesiredStackTypeEnum;
+  desiredStackType?: ClusterUpdateDesiredStackTypeEnum | (string & {});
   /** The Custom keys configuration for the cluster. This field is deprecated. Use ClusterUpdate.desired_user_managed_keys_config instead. */
   userManagedKeysConfig?: UserManagedKeysConfig;
   /** WorkloadPolicyConfig is the configuration related to GCW workload policy */
@@ -8448,7 +6729,7 @@ export interface ClusterUpdate {
   /** The desired node pool logging configuration defaults for the cluster. */
   desiredNodePoolLoggingConfig?: NodePoolLoggingConfig;
   /** The desired state of IPv6 connectivity to Google Services. */
-  desiredPrivateIpv6GoogleAccess?: ClusterUpdateDesiredPrivateIpv6GoogleAccessEnum;
+  desiredPrivateIpv6GoogleAccess?: ClusterUpdateDesiredPrivateIpv6GoogleAccessEnum | (string & {});
   /** Cluster-level Vertical Pod Autoscaling configuration. */
   desiredVerticalPodAutoscaling?: VerticalPodAutoscaling;
   /** The desired configuration options for master authorized networks feature. Deprecated: Use desired_control_plane_endpoints_config.ip_endpoints_config.authorized_networks_config instead. */
@@ -8522,7 +6803,7 @@ export interface ClusterUpdate {
   /** Configuration for limiting anonymous access to all endpoints except the health checks. */
   desiredAnonymousAuthenticationConfig?: AnonymousAuthenticationConfig;
   /** Specify the details of in-transit encryption. Now named inter-node transparent encryption. */
-  desiredInTransitEncryptionConfig?: ClusterUpdateDesiredInTransitEncryptionConfigEnum;
+  desiredInTransitEncryptionConfig?: ClusterUpdateDesiredInTransitEncryptionConfigEnum | (string & {});
   /** Enable/Disable Multi-Networking for the cluster */
   desiredEnableMultiNetworking?: boolean;
   /** The desired release channel configuration. */
@@ -8547,122 +6828,103 @@ export interface ClusterUpdate {
   desiredScheduleUpgradeConfig?: ScheduleUpgradeConfig;
 }
 export const ClusterUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    desiredBinaryAuthorization: S.optional(BinaryAuthorization),
-    gkeAutoUpgradeConfig: S.optional(GkeAutoUpgradeConfig),
-    desiredAddonsConfig: S.optional(AddonsConfig),
-    desiredEnableCiliumClusterwideNetworkPolicy: S.optional(S.Boolean),
-    desiredManagedMachineLearningDiagnosticsConfig: S.optional(
-      ManagedMachineLearningDiagnosticsConfig,
-    ),
-    desiredFleet: S.optional(Fleet),
-    desiredLocations: S.optional(StringList),
-    desiredImageProject: S.optional(S.String),
-    desiredNotificationConfig: S.optional(NotificationConfig),
-    desiredDefaultSnatStatus: S.optional(DefaultSnatStatus),
-    desiredPrivilegedAdmissionConfig: S.optional(PrivilegedAdmissionConfig),
-    desiredMonitoringConfig: S.optional(MonitoringConfig),
-    desiredDatapathProvider: S.optional(
-      ClusterUpdateDesiredDatapathProviderEnum,
-    ),
-    desiredLoggingService: S.optional(S.String),
-    desiredDnsConfig: S.optional(DNSConfig),
-    desiredShieldedNodes: S.optional(ShieldedNodes),
-    desiredAutoIpamConfig: S.optional(AutoIpamConfig),
-    desiredEmulatedVersion: S.optional(S.String),
-    desiredMeshCertificates: S.optional(MeshCertificates),
-    desiredHostMaintenancePolicy: S.optional(HostMaintenancePolicy),
-    desiredNetworkTierConfig: S.optional(NetworkTierConfig),
-    additionalPodRangesConfig: S.optional(AdditionalPodRangesConfig),
-    desiredGatewayApiConfig: S.optional(GatewayAPIConfig),
-    desiredNodePoolUpgradeConcurrencyConfig: S.optional(
-      NodePoolUpgradeConcurrencyConfig,
-    ),
-    desiredTpuConfig: S.optional(TpuConfig),
-    removedAdditionalPodRangesConfig: S.optional(AdditionalPodRangesConfig),
-    desiredLoggingConfig: S.optional(LoggingConfig),
-    desiredNodePoolAutoConfigResourceManagerTags:
-      S.optional(ResourceManagerTags),
-    desiredRbacBindingConfig: S.optional(RBACBindingConfig),
-    desiredPodSecurityPolicyConfig: S.optional(PodSecurityPolicyConfig),
-    desiredSecurityPostureConfig: S.optional(SecurityPostureConfig),
-    desiredServiceExternalIpsConfig: S.optional(ServiceExternalIPsConfig),
-    desiredStackType: S.optional(ClusterUpdateDesiredStackTypeEnum),
-    userManagedKeysConfig: S.optional(UserManagedKeysConfig),
-    desiredAutopilotWorkloadPolicyConfig: S.optional(WorkloadPolicyConfig),
-    etag: S.optional(S.String),
-    privateClusterConfig: S.optional(PrivateClusterConfig),
-    desiredSecretManagerConfig: S.optional(SecretManagerConfig),
-    desiredRollbackSafeUpgrade: S.optional(RollbackSafeUpgrade),
-    desiredNodeKubeletConfig: S.optional(NodeKubeletConfig),
-    desiredNodePoolAutoConfigKubeletConfig: S.optional(NodeKubeletConfig),
-    desiredControlPlaneEndpointsConfig: S.optional(ControlPlaneEndpointsConfig),
-    desiredNodePoolId: S.optional(S.String),
-    desiredResourceUsageExportConfig: S.optional(ResourceUsageExportConfig),
-    desiredAuthenticatorGroupsConfig: S.optional(AuthenticatorGroupsConfig),
-    desiredNodePoolLoggingConfig: S.optional(NodePoolLoggingConfig),
-    desiredPrivateIpv6GoogleAccess: S.optional(
-      ClusterUpdateDesiredPrivateIpv6GoogleAccessEnum,
-    ),
-    desiredVerticalPodAutoscaling: S.optional(VerticalPodAutoscaling),
-    desiredMasterAuthorizedNetworksConfig: S.optional(
-      MasterAuthorizedNetworksConfig,
-    ),
-    desiredClusterAutoscaling: S.optional(ClusterAutoscaling),
-    desiredNodeCreationConfig: S.optional(NodeCreationConfig),
-    desiredSecretSyncConfig: S.optional(SecretSyncConfig),
-    desiredIntraNodeVisibilityConfig: S.optional(IntraNodeVisibilityConfig),
-    desiredWorkloadAltsConfig: S.optional(WorkloadALTSConfig),
-    desiredIdentityServiceConfig: S.optional(IdentityServiceConfig),
-    desiredGcfsConfig: S.optional(GcfsConfig),
-    desiredDisableL4LbFirewallReconciliation: S.optional(S.Boolean),
-    desiredWorkloadIdentityConfig: S.optional(WorkloadIdentityConfig),
-    desiredNodePoolAutoscaling: S.optional(NodePoolAutoscaling),
-    desiredPrivateClusterConfig: S.optional(PrivateClusterConfig),
-    desiredEnablePrivateEndpoint: S.optional(S.Boolean),
-    desiredNetworkPerformanceConfig: S.optional(
-      ClusterNetworkPerformanceConfig,
-    ),
-    desiredL4ilbSubsettingConfig: S.optional(ILBSubsettingConfig),
-    desiredDefaultEnablePrivateNodes: S.optional(S.Boolean),
-    desiredNodePoolAutoConfigNetworkTags: S.optional(NetworkTags),
-    desiredAdditionalIpRangesConfig: S.optional(
-      DesiredAdditionalIPRangesConfig,
-    ),
-    desiredEnterpriseConfig: S.optional(DesiredEnterpriseConfig),
-    desiredControlPlaneEgress: S.optional(ControlPlaneEgress),
-    desiredAutopilotClusterPolicyConfig: S.optional(ClusterPolicyConfig),
-    enableK8sBetaApis: S.optional(K8sBetaAPIConfig),
-    desiredParentProductConfig: S.optional(ParentProductConfig),
-    desiredWorkloadCertificates: S.optional(WorkloadCertificates),
-    desiredImage: S.optional(S.String),
-    desiredDatabaseEncryption: S.optional(DatabaseEncryption),
-    desiredProtectConfig: S.optional(ProtectConfig),
-    desiredMonitoringService: S.optional(S.String),
-    desiredCostManagementConfig: S.optional(CostManagementConfig),
-    desiredImageType: S.optional(S.String),
-    desiredCompliancePostureConfig: S.optional(CompliancePostureConfig),
-    desiredClusterTelemetry: S.optional(ClusterTelemetry),
-    desiredNodeVersion: S.optional(S.String),
-    desiredK8sBetaApis: S.optional(K8sBetaAPIConfig),
-    desiredAnonymousAuthenticationConfig: S.optional(
-      AnonymousAuthenticationConfig,
-    ),
-    desiredInTransitEncryptionConfig: S.optional(
-      ClusterUpdateDesiredInTransitEncryptionConfigEnum,
-    ),
-    desiredEnableMultiNetworking: S.optional(S.Boolean),
-    desiredReleaseChannel: S.optional(ReleaseChannel),
-    desiredPodAutoscaling: S.optional(PodAutoscaling),
-    desiredManagedOpentelemetryConfig: S.optional(ManagedOpenTelemetryConfig),
-    desiredUserManagedKeysConfig: S.optional(UserManagedKeysConfig),
-    desiredEnableFqdnNetworkPolicy: S.optional(S.Boolean),
-    desiredNodePoolAutoConfigLinuxNodeConfig: S.optional(LinuxNodeConfig),
-    desiredMasterVersion: S.optional(S.String),
-    desiredMaster: S.optional(Master),
-    desiredContainerdConfig: S.optional(ContainerdConfig),
-    desiredScheduleUpgradeConfig: S.optional(ScheduleUpgradeConfig),
-  }),
+S.Struct({
+  "desiredBinaryAuthorization": S.optional(BinaryAuthorization),
+  "gkeAutoUpgradeConfig": S.optional(GkeAutoUpgradeConfig),
+  "desiredAddonsConfig": S.optional(AddonsConfig),
+  "desiredEnableCiliumClusterwideNetworkPolicy": S.optional(S.Boolean),
+  "desiredManagedMachineLearningDiagnosticsConfig": S.optional(ManagedMachineLearningDiagnosticsConfig),
+  "desiredFleet": S.optional(Fleet),
+  "desiredLocations": S.optional(StringList),
+  "desiredImageProject": S.optional(S.String),
+  "desiredNotificationConfig": S.optional(NotificationConfig),
+  "desiredDefaultSnatStatus": S.optional(DefaultSnatStatus),
+  "desiredPrivilegedAdmissionConfig": S.optional(PrivilegedAdmissionConfig),
+  "desiredMonitoringConfig": S.optional(MonitoringConfig),
+  "desiredDatapathProvider": S.optional(ClusterUpdateDesiredDatapathProviderEnum),
+  "desiredLoggingService": S.optional(S.String),
+  "desiredDnsConfig": S.optional(DNSConfig),
+  "desiredShieldedNodes": S.optional(ShieldedNodes),
+  "desiredAutoIpamConfig": S.optional(AutoIpamConfig),
+  "desiredEmulatedVersion": S.optional(S.String),
+  "desiredMeshCertificates": S.optional(MeshCertificates),
+  "desiredHostMaintenancePolicy": S.optional(HostMaintenancePolicy),
+  "desiredNetworkTierConfig": S.optional(NetworkTierConfig),
+  "additionalPodRangesConfig": S.optional(AdditionalPodRangesConfig),
+  "desiredGatewayApiConfig": S.optional(GatewayAPIConfig),
+  "desiredNodePoolUpgradeConcurrencyConfig": S.optional(NodePoolUpgradeConcurrencyConfig),
+  "desiredTpuConfig": S.optional(TpuConfig),
+  "removedAdditionalPodRangesConfig": S.optional(AdditionalPodRangesConfig),
+  "desiredLoggingConfig": S.optional(LoggingConfig),
+  "desiredNodePoolAutoConfigResourceManagerTags": S.optional(ResourceManagerTags),
+  "desiredRbacBindingConfig": S.optional(RBACBindingConfig),
+  "desiredPodSecurityPolicyConfig": S.optional(PodSecurityPolicyConfig),
+  "desiredSecurityPostureConfig": S.optional(SecurityPostureConfig),
+  "desiredServiceExternalIpsConfig": S.optional(ServiceExternalIPsConfig),
+  "desiredStackType": S.optional(ClusterUpdateDesiredStackTypeEnum),
+  "userManagedKeysConfig": S.optional(UserManagedKeysConfig),
+  "desiredAutopilotWorkloadPolicyConfig": S.optional(WorkloadPolicyConfig),
+  "etag": S.optional(S.String),
+  "privateClusterConfig": S.optional(PrivateClusterConfig),
+  "desiredSecretManagerConfig": S.optional(SecretManagerConfig),
+  "desiredRollbackSafeUpgrade": S.optional(RollbackSafeUpgrade),
+  "desiredNodeKubeletConfig": S.optional(NodeKubeletConfig),
+  "desiredNodePoolAutoConfigKubeletConfig": S.optional(NodeKubeletConfig),
+  "desiredControlPlaneEndpointsConfig": S.optional(ControlPlaneEndpointsConfig),
+  "desiredNodePoolId": S.optional(S.String),
+  "desiredResourceUsageExportConfig": S.optional(ResourceUsageExportConfig),
+  "desiredAuthenticatorGroupsConfig": S.optional(AuthenticatorGroupsConfig),
+  "desiredNodePoolLoggingConfig": S.optional(NodePoolLoggingConfig),
+  "desiredPrivateIpv6GoogleAccess": S.optional(ClusterUpdateDesiredPrivateIpv6GoogleAccessEnum),
+  "desiredVerticalPodAutoscaling": S.optional(VerticalPodAutoscaling),
+  "desiredMasterAuthorizedNetworksConfig": S.optional(MasterAuthorizedNetworksConfig),
+  "desiredClusterAutoscaling": S.optional(ClusterAutoscaling),
+  "desiredNodeCreationConfig": S.optional(NodeCreationConfig),
+  "desiredSecretSyncConfig": S.optional(SecretSyncConfig),
+  "desiredIntraNodeVisibilityConfig": S.optional(IntraNodeVisibilityConfig),
+  "desiredWorkloadAltsConfig": S.optional(WorkloadALTSConfig),
+  "desiredIdentityServiceConfig": S.optional(IdentityServiceConfig),
+  "desiredGcfsConfig": S.optional(GcfsConfig),
+  "desiredDisableL4LbFirewallReconciliation": S.optional(S.Boolean),
+  "desiredWorkloadIdentityConfig": S.optional(WorkloadIdentityConfig),
+  "desiredNodePoolAutoscaling": S.optional(NodePoolAutoscaling),
+  "desiredPrivateClusterConfig": S.optional(PrivateClusterConfig),
+  "desiredEnablePrivateEndpoint": S.optional(S.Boolean),
+  "desiredNetworkPerformanceConfig": S.optional(ClusterNetworkPerformanceConfig),
+  "desiredL4ilbSubsettingConfig": S.optional(ILBSubsettingConfig),
+  "desiredDefaultEnablePrivateNodes": S.optional(S.Boolean),
+  "desiredNodePoolAutoConfigNetworkTags": S.optional(NetworkTags),
+  "desiredAdditionalIpRangesConfig": S.optional(DesiredAdditionalIPRangesConfig),
+  "desiredEnterpriseConfig": S.optional(DesiredEnterpriseConfig),
+  "desiredControlPlaneEgress": S.optional(ControlPlaneEgress),
+  "desiredAutopilotClusterPolicyConfig": S.optional(ClusterPolicyConfig),
+  "enableK8sBetaApis": S.optional(K8sBetaAPIConfig),
+  "desiredParentProductConfig": S.optional(ParentProductConfig),
+  "desiredWorkloadCertificates": S.optional(WorkloadCertificates),
+  "desiredImage": S.optional(S.String),
+  "desiredDatabaseEncryption": S.optional(DatabaseEncryption),
+  "desiredProtectConfig": S.optional(ProtectConfig),
+  "desiredMonitoringService": S.optional(S.String),
+  "desiredCostManagementConfig": S.optional(CostManagementConfig),
+  "desiredImageType": S.optional(S.String),
+  "desiredCompliancePostureConfig": S.optional(CompliancePostureConfig),
+  "desiredClusterTelemetry": S.optional(ClusterTelemetry),
+  "desiredNodeVersion": S.optional(S.String),
+  "desiredK8sBetaApis": S.optional(K8sBetaAPIConfig),
+  "desiredAnonymousAuthenticationConfig": S.optional(AnonymousAuthenticationConfig),
+  "desiredInTransitEncryptionConfig": S.optional(ClusterUpdateDesiredInTransitEncryptionConfigEnum),
+  "desiredEnableMultiNetworking": S.optional(S.Boolean),
+  "desiredReleaseChannel": S.optional(ReleaseChannel),
+  "desiredPodAutoscaling": S.optional(PodAutoscaling),
+  "desiredManagedOpentelemetryConfig": S.optional(ManagedOpenTelemetryConfig),
+  "desiredUserManagedKeysConfig": S.optional(UserManagedKeysConfig),
+  "desiredEnableFqdnNetworkPolicy": S.optional(S.Boolean),
+  "desiredNodePoolAutoConfigLinuxNodeConfig": S.optional(LinuxNodeConfig),
+  "desiredMasterVersion": S.optional(S.String),
+  "desiredMaster": S.optional(Master),
+  "desiredContainerdConfig": S.optional(ContainerdConfig),
+  "desiredScheduleUpgradeConfig": S.optional(ScheduleUpgradeConfig),
+}),
 ).annotate({ identifier: "ClusterUpdate" }) as any as S.Schema<ClusterUpdate>;
 
 /** UpdateClusterRequest updates the settings of a cluster. */
@@ -8679,16 +6941,14 @@ export interface UpdateClusterRequest {
   clusterId?: string;
 }
 export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    update: S.optional(ClusterUpdate),
-    name: S.optional(S.String),
-    zone: S.optional(S.String),
-    clusterId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateClusterRequest",
-}) as any as S.Schema<UpdateClusterRequest>;
+S.Struct({
+  "projectId": S.optional(S.String),
+  "update": S.optional(ClusterUpdate),
+  "name": S.optional(S.String),
+  "zone": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateClusterRequest" }) as any as S.Schema<UpdateClusterRequest>;
 
 export interface UpdateProjectsLocationsClustersRequest {
   /** The name (project, location, cluster) of the cluster to update. Specified in the format `projects/*\/locations/*\/clusters/*`. */
@@ -8696,21 +6956,12 @@ export interface UpdateProjectsLocationsClustersRequest {
   /** Request body */
   body?: UpdateClusterRequest;
 }
-export const UpdateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UpdateClusterRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateProjectsLocationsClustersRequest",
-}) as any as S.Schema<UpdateProjectsLocationsClustersRequest>;
+export const UpdateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1beta1/{+name}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsLocationsClustersRequest" }) as any as S.Schema<UpdateProjectsLocationsClustersRequest>;
 
 /** Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels). */
 export interface NodeLabels {
@@ -8718,9 +6969,9 @@ export interface NodeLabels {
   labels?: StringMap;
 }
 export const NodeLabels = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "NodeLabels" }) as any as S.Schema<NodeLabels>;
 
 /** Collection of [Resource Manager labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels). */
@@ -8729,9 +6980,9 @@ export interface ResourceLabels {
   labels?: StringMap;
 }
 export const ResourceLabels = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "ResourceLabels" }) as any as S.Schema<ResourceLabels>;
 
 /** Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration). */
@@ -8740,9 +6991,9 @@ export interface NodeTaints {
   taints?: NodeTaintList;
 }
 export const NodeTaints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taints: S.optional(NodeTaintList),
-  }),
+S.Struct({
+  "taints": S.optional(NodeTaintList),
+}),
 ).annotate({ identifier: "NodeTaints" }) as any as S.Schema<NodeTaints>;
 
 /** SetNodePoolVersionRequest updates the version of a node pool. */
@@ -8831,52 +7082,50 @@ export interface UpdateNodePoolRequest {
   containerdConfig?: ContainerdConfig;
 }
 export const UpdateNodePoolRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upgradeSettings: S.optional(UpgradeSettings),
-    labels: S.optional(NodeLabels),
-    zone: S.optional(S.String),
-    taintConfig: S.optional(TaintConfig),
-    nodeDrainConfig: S.optional(NodeDrainConfig),
-    maxRunDuration: S.optional(S.String),
-    diskSizeGb: S.optional(S.String),
-    imageProject: S.optional(S.String),
-    linuxNodeConfig: S.optional(LinuxNodeConfig),
-    confidentialNodes: S.optional(ConfidentialNodes),
-    diskType: S.optional(S.String),
-    consolidationDelay: S.optional(S.String),
-    nodeVersion: S.optional(S.String),
-    name: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    nodeNetworkConfig: S.optional(NodeNetworkConfig),
-    nodePoolId: S.optional(S.String),
-    workloadMetadataConfig: S.optional(WorkloadMetadataConfig),
-    locations: S.optional(StringList),
-    tags: S.optional(NetworkTags),
-    fastSocket: S.optional(FastSocket),
-    image: S.optional(S.String),
-    kubeletConfig: S.optional(NodeKubeletConfig),
-    queuedProvisioning: S.optional(QueuedProvisioning),
-    storagePools: S.optional(StringList),
-    loggingConfig: S.optional(NodePoolLoggingConfig),
-    etag: S.optional(S.String),
-    gcfsConfig: S.optional(GcfsConfig),
-    bootDisk: S.optional(BootDisk),
-    projectId: S.optional(S.String),
-    imageType: S.optional(S.String),
-    windowsNodeConfig: S.optional(WindowsNodeConfig),
-    maintenancePolicy: S.optional(NodePoolMaintenancePolicy),
-    resourceLabels: S.optional(ResourceLabels),
-    resourceManagerTags: S.optional(ResourceManagerTags),
-    gvnic: S.optional(VirtualNIC),
-    machineType: S.optional(S.String),
-    taints: S.optional(NodeTaints),
-    accelerators: S.optional(AcceleratorConfigList),
-    flexStart: S.optional(S.Boolean),
-    containerdConfig: S.optional(ContainerdConfig),
-  }),
-).annotate({
-  identifier: "UpdateNodePoolRequest",
-}) as any as S.Schema<UpdateNodePoolRequest>;
+S.Struct({
+  "upgradeSettings": S.optional(UpgradeSettings),
+  "labels": S.optional(NodeLabels),
+  "zone": S.optional(S.String),
+  "taintConfig": S.optional(TaintConfig),
+  "nodeDrainConfig": S.optional(NodeDrainConfig),
+  "maxRunDuration": S.optional(S.String),
+  "diskSizeGb": S.optional(S.String),
+  "imageProject": S.optional(S.String),
+  "linuxNodeConfig": S.optional(LinuxNodeConfig),
+  "confidentialNodes": S.optional(ConfidentialNodes),
+  "diskType": S.optional(S.String),
+  "consolidationDelay": S.optional(S.String),
+  "nodeVersion": S.optional(S.String),
+  "name": S.optional(S.String),
+  "clusterId": S.optional(S.String),
+  "nodeNetworkConfig": S.optional(NodeNetworkConfig),
+  "nodePoolId": S.optional(S.String),
+  "workloadMetadataConfig": S.optional(WorkloadMetadataConfig),
+  "locations": S.optional(StringList),
+  "tags": S.optional(NetworkTags),
+  "fastSocket": S.optional(FastSocket),
+  "image": S.optional(S.String),
+  "kubeletConfig": S.optional(NodeKubeletConfig),
+  "queuedProvisioning": S.optional(QueuedProvisioning),
+  "storagePools": S.optional(StringList),
+  "loggingConfig": S.optional(NodePoolLoggingConfig),
+  "etag": S.optional(S.String),
+  "gcfsConfig": S.optional(GcfsConfig),
+  "bootDisk": S.optional(BootDisk),
+  "projectId": S.optional(S.String),
+  "imageType": S.optional(S.String),
+  "windowsNodeConfig": S.optional(WindowsNodeConfig),
+  "maintenancePolicy": S.optional(NodePoolMaintenancePolicy),
+  "resourceLabels": S.optional(ResourceLabels),
+  "resourceManagerTags": S.optional(ResourceManagerTags),
+  "gvnic": S.optional(VirtualNIC),
+  "machineType": S.optional(S.String),
+  "taints": S.optional(NodeTaints),
+  "accelerators": S.optional(AcceleratorConfigList),
+  "flexStart": S.optional(S.Boolean),
+  "containerdConfig": S.optional(ContainerdConfig),
+}),
+).annotate({ identifier: "UpdateNodePoolRequest" }) as any as S.Schema<UpdateNodePoolRequest>;
 
 export interface UpdateProjectsLocationsClustersNodePoolsRequest {
   /** The name (project, location, cluster, node pool) of the node pool to update. Specified in the format `projects/*\/locations/*\/clusters/*\/nodePools/*`. */
@@ -8884,21 +7133,12 @@ export interface UpdateProjectsLocationsClustersNodePoolsRequest {
   /** Request body */
   body?: UpdateNodePoolRequest;
 }
-export const UpdateProjectsLocationsClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UpdateNodePoolRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateProjectsLocationsClustersNodePoolsRequest",
-  }) as any as S.Schema<UpdateProjectsLocationsClustersNodePoolsRequest>;
+export const UpdateProjectsLocationsClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateNodePoolRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1beta1/{+name}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsLocationsClustersNodePoolsRequest" }) as any as S.Schema<UpdateProjectsLocationsClustersNodePoolsRequest>;
 
 export interface UpdateProjectsZonesClustersRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -8911,21 +7151,13 @@ export interface UpdateProjectsZonesClustersRequest {
   body?: UpdateClusterRequest;
 }
 export const UpdateProjectsZonesClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    zone: S.String.pipe(T.Label()),
-    clusterId: S.String.pipe(T.Label()),
-    body: S.optional(UpdateClusterRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}",
-      baseUrl: "https://container.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateProjectsZonesClustersRequest",
-}) as any as S.Schema<UpdateProjectsZonesClustersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateClusterRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsZonesClustersRequest" }) as any as S.Schema<UpdateProjectsZonesClustersRequest>;
 
 export interface UpdateProjectsZonesClustersNodePoolsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -8939,31 +7171,17 @@ export interface UpdateProjectsZonesClustersNodePoolsRequest {
   /** Request body */
   body?: UpdateNodePoolRequest;
 }
-export const UpdateProjectsZonesClustersNodePoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      nodePoolId: S.String.pipe(T.Label()),
-      zone: S.String.pipe(T.Label()),
-      clusterId: S.String.pipe(T.Label()),
-      body: S.optional(UpdateNodePoolRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/update",
-        baseUrl: "https://container.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateProjectsZonesClustersNodePoolsRequest",
-  }) as any as S.Schema<UpdateProjectsZonesClustersNodePoolsRequest>;
+export const UpdateProjectsZonesClustersNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "nodePoolId": S.String.pipe(T.Label()),
+  "zone": S.String.pipe(T.Label()),
+  "clusterId": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateNodePoolRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/update","baseUrl":"https://container.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsZonesClustersNodePoolsRequest" }) as any as S.Schema<UpdateProjectsZonesClustersNodePoolsRequest>;
 
-export type AddonsProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddonsProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the addons for a specific cluster. */
 export const addonsProjectsZonesClusters: API.OperationMethod<
   AddonsProjectsZonesClustersRequest,
@@ -8978,12 +7196,7 @@ export const addonsProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AutoscalingProjectsZonesClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AutoscalingProjectsZonesClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the autoscaling settings of a specific node pool. */
 export const autoscalingProjectsZonesClustersNodePools: API.OperationMethod<
   AutoscalingProjectsZonesClustersNodePoolsRequest,
@@ -8998,12 +7211,7 @@ export const autoscalingProjectsZonesClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancels the specified operation. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -9018,12 +7226,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsZonesOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsZonesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancels the specified operation. */
 export const cancelProjectsZonesOperations: API.OperationMethod<
   CancelProjectsZonesOperationsRequest,
@@ -9038,10 +7241,7 @@ export const cancelProjectsZonesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckAutopilotCompatibilityProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CheckAutopilotCompatibilityProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
 /** Checks the cluster compatibility with Autopilot mode, and returns a list of compatibility issues. */
 export const checkAutopilotCompatibilityProjectsLocationsClusters: API.OperationMethod<
   CheckAutopilotCompatibilityProjectsLocationsClustersRequest,
@@ -9056,12 +7256,7 @@ export const checkAutopilotCompatibilityProjectsLocationsClusters: API.Operation
   retry: Retry.Retry,
 }));
 
-export type CompleteControlPlaneUpgradeProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CompleteControlPlaneUpgradeProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** CompleteControlPlaneUpgrade completes the rollback-safe upgrade by performing the step two upgrade for a specific cluster. */
 export const completeControlPlaneUpgradeProjectsLocationsClusters: API.OperationMethod<
   CompleteControlPlaneUpgradeProjectsLocationsClustersRequest,
@@ -9076,12 +7271,7 @@ export const completeControlPlaneUpgradeProjectsLocationsClusters: API.Operation
   retry: Retry.Retry,
 }));
 
-export type CompleteControlPlaneUpgradeProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CompleteControlPlaneUpgradeProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** CompleteControlPlaneUpgrade completes the rollback-safe upgrade by performing the step two upgrade for a specific cluster. */
 export const completeControlPlaneUpgradeProjectsZonesClusters: API.OperationMethod<
   CompleteControlPlaneUpgradeProjectsZonesClustersRequest,
@@ -9096,12 +7286,7 @@ export const completeControlPlaneUpgradeProjectsZonesClusters: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type CompleteIpRotationProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CompleteIpRotationProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Completes master IP rotation. */
 export const completeIpRotationProjectsLocationsClusters: API.OperationMethod<
   CompleteIpRotationProjectsLocationsClustersRequest,
@@ -9116,12 +7301,7 @@ export const completeIpRotationProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CompleteIpRotationProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CompleteIpRotationProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Completes master IP rotation. */
 export const completeIpRotationProjectsZonesClusters: API.OperationMethod<
   CompleteIpRotationProjectsZonesClustersRequest,
@@ -9136,12 +7316,7 @@ export const completeIpRotationProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CompleteUpgradeProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CompleteUpgradeProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** CompleteNodePoolUpgrade will signal an on-going node pool upgrade to complete. */
 export const completeUpgradeProjectsLocationsClustersNodePools: API.OperationMethod<
   CompleteUpgradeProjectsLocationsClustersNodePoolsRequest,
@@ -9156,12 +7331,7 @@ export const completeUpgradeProjectsLocationsClustersNodePools: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a cluster, consisting of the specified number and type of Google Compute Engine instances. By default, the cluster is created in the project's [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation, the kubelet creates routes for each node to allow the containers on that node to communicate with all other instances in the cluster. Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster is using. */
 export const createProjectsLocationsClusters: API.OperationMethod<
   CreateProjectsLocationsClustersRequest,
@@ -9176,12 +7346,7 @@ export const createProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a node pool for a cluster. */
 export const createProjectsLocationsClustersNodePools: API.OperationMethod<
   CreateProjectsLocationsClustersNodePoolsRequest,
@@ -9196,12 +7361,7 @@ export const createProjectsLocationsClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a cluster, consisting of the specified number and type of Google Compute Engine instances. By default, the cluster is created in the project's [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation, the kubelet creates routes for each node to allow the containers on that node to communicate with all other instances in the cluster. Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster is using. */
 export const createProjectsZonesClusters: API.OperationMethod<
   CreateProjectsZonesClustersRequest,
@@ -9216,12 +7376,7 @@ export const createProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsZonesClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsZonesClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a node pool for a cluster. */
 export const createProjectsZonesClustersNodePools: API.OperationMethod<
   CreateProjectsZonesClustersNodePoolsRequest,
@@ -9236,12 +7391,7 @@ export const createProjectsZonesClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and routes that were configured during cluster creation are also deleted. Other Google Compute Engine resources that might be in use by the cluster, such as load balancer resources, are not deleted if they weren't present when the cluster was initially created. */
 export const deleteProjectsLocationsClusters: API.OperationMethod<
   DeleteProjectsLocationsClustersRequest,
@@ -9256,12 +7406,7 @@ export const deleteProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a node pool from a cluster. */
 export const deleteProjectsLocationsClustersNodePools: API.OperationMethod<
   DeleteProjectsLocationsClustersNodePoolsRequest,
@@ -9276,12 +7421,7 @@ export const deleteProjectsLocationsClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and routes that were configured during cluster creation are also deleted. Other Google Compute Engine resources that might be in use by the cluster, such as load balancer resources, are not deleted if they weren't present when the cluster was initially created. */
 export const deleteProjectsZonesClusters: API.OperationMethod<
   DeleteProjectsZonesClustersRequest,
@@ -9296,12 +7436,7 @@ export const deleteProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsZonesClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsZonesClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a node pool from a cluster. */
 export const deleteProjectsZonesClustersNodePools: API.OperationMethod<
   DeleteProjectsZonesClustersNodePoolsRequest,
@@ -9316,10 +7451,7 @@ export const deleteProjectsZonesClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FetchClusterUpgradeInfoProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchClusterUpgradeInfoProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
 /** Fetch upgrade information of a specific cluster. */
 export const fetchClusterUpgradeInfoProjectsLocationsClusters: API.OperationMethod<
   FetchClusterUpgradeInfoProjectsLocationsClustersRequest,
@@ -9334,10 +7466,7 @@ export const fetchClusterUpgradeInfoProjectsLocationsClusters: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type FetchClusterUpgradeInfoProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchClusterUpgradeInfoProjectsZonesClustersError = NotFound | Forbidden | GcpOpError;
 /** Fetch upgrade information of a specific cluster. */
 export const fetchClusterUpgradeInfoProjectsZonesClusters: API.OperationMethod<
   FetchClusterUpgradeInfoProjectsZonesClustersRequest,
@@ -9352,10 +7481,7 @@ export const fetchClusterUpgradeInfoProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Fetch upgrade information of a specific node pool. */
 export const fetchNodePoolUpgradeInfoProjectsLocationsClustersNodePools: API.OperationMethod<
   FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsRequest,
@@ -9370,10 +7496,7 @@ export const fetchNodePoolUpgradeInfoProjectsLocationsClustersNodePools: API.Ope
   retry: Retry.Retry,
 }));
 
-export type FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Fetch upgrade information of a specific node pool. */
 export const fetchNodePoolUpgradeInfoProjectsZonesClustersNodePools: API.OperationMethod<
   FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest,
@@ -9388,10 +7511,7 @@ export const fetchNodePoolUpgradeInfoProjectsZonesClustersNodePools: API.Operati
   retry: Retry.Retry,
 }));
 
-export type GetJwksProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetJwksProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets the public component of the cluster signing keys in JSON Web Key format. */
 export const getJwksProjectsLocationsClusters: API.OperationMethod<
   GetJwksProjectsLocationsClustersRequest,
@@ -9406,10 +7526,7 @@ export const getJwksProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOpenid_configurationProjectsLocationsClustersWell_knownError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOpenid_configurationProjectsLocationsClustersWell_knownError = NotFound | Forbidden | GcpOpError;
 /** Gets the OIDC discovery document for the cluster. See the [OpenID Connect Discovery 1.0 specification](https://openid.net/specs/openid-connect-discovery-1_0.html) for details. */
 export const getOpenid_configurationProjectsLocationsClustersWell_known: API.OperationMethod<
   GetOpenid_configurationProjectsLocationsClustersWell_knownRequest,
@@ -9424,10 +7541,7 @@ export const getOpenid_configurationProjectsLocationsClustersWell_known: API.Ope
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
 /** Gets the details for a specific cluster. */
 export const getProjectsLocationsClusters: API.OperationMethod<
   GetProjectsLocationsClustersRequest,
@@ -9442,10 +7556,7 @@ export const getProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the requested node pool. */
 export const getProjectsLocationsClustersNodePools: API.OperationMethod<
   GetProjectsLocationsClustersNodePoolsRequest,
@@ -9460,10 +7571,7 @@ export const getProjectsLocationsClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the specified operation. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -9493,10 +7601,7 @@ export const getProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsZonesClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsZonesClustersNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the requested node pool. */
 export const getProjectsZonesClustersNodePools: API.OperationMethod<
   GetProjectsZonesClustersNodePoolsRequest,
@@ -9526,10 +7631,7 @@ export const getProjectsZonesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetServerConfigProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetServerConfigProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Returns configuration info about the Google Kubernetes Engine service. */
 export const getServerConfigProjectsLocations: API.OperationMethod<
   GetServerConfigProjectsLocationsRequest,
@@ -9544,10 +7646,7 @@ export const getServerConfigProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetServerconfigProjectsZonesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetServerconfigProjectsZonesError = NotFound | Forbidden | GcpOpError;
 /** Returns configuration info about the Google Kubernetes Engine service. */
 export const getServerconfigProjectsZones: API.OperationMethod<
   GetServerconfigProjectsZonesRequest,
@@ -9562,12 +7661,7 @@ export const getServerconfigProjectsZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LegacyAbacProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type LegacyAbacProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enables or disables the ABAC authorization mechanism on a cluster. */
 export const legacyAbacProjectsZonesClusters: API.OperationMethod<
   LegacyAbacProjectsZonesClustersRequest,
@@ -9582,10 +7676,7 @@ export const legacyAbacProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsAggregatedUsableSubnetworksError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsAggregatedUsableSubnetworksError = NotFound | Forbidden | GcpOpError;
 /** Lists subnetworks that can be used for creating clusters in a project. */
 export const listProjectsAggregatedUsableSubnetworks: API.PaginatedOperationMethod<
   ListProjectsAggregatedUsableSubnetworksRequest,
@@ -9598,10 +7689,7 @@ export const listProjectsAggregatedUsableSubnetworks: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -9619,10 +7707,7 @@ export const listProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
 /** Lists all clusters owned by a project in either the specified zone or all zones. */
 export const listProjectsLocationsClusters: API.OperationMethod<
   ListProjectsLocationsClustersRequest,
@@ -9637,10 +7722,7 @@ export const listProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Lists the node pools for a cluster. */
 export const listProjectsLocationsClustersNodePools: API.OperationMethod<
   ListProjectsLocationsClustersNodePoolsRequest,
@@ -9655,10 +7737,7 @@ export const listProjectsLocationsClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists all operations in a project in the specified zone or all zones. */
 export const listProjectsLocationsOperations: API.OperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -9688,10 +7767,7 @@ export const listProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsZonesClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsZonesClustersNodePoolsError = NotFound | Forbidden | GcpOpError;
 /** Lists the node pools for a cluster. */
 export const listProjectsZonesClustersNodePools: API.OperationMethod<
   ListProjectsZonesClustersNodePoolsRequest,
@@ -9706,10 +7782,7 @@ export const listProjectsZonesClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsZonesOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsZonesOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists all operations in a project in the specified zone or all zones. */
 export const listProjectsZonesOperations: API.OperationMethod<
   ListProjectsZonesOperationsRequest,
@@ -9724,12 +7797,7 @@ export const listProjectsZonesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LocationsProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type LocationsProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the locations for a specific cluster. Deprecated. Use [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters/update) instead. */
 export const locationsProjectsZonesClusters: API.OperationMethod<
   LocationsProjectsZonesClustersRequest,
@@ -9744,12 +7812,7 @@ export const locationsProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LoggingProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type LoggingProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the logging service for a specific cluster. */
 export const loggingProjectsZonesClusters: API.OperationMethod<
   LoggingProjectsZonesClustersRequest,
@@ -9764,12 +7827,7 @@ export const loggingProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MasterProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MasterProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the master for a specific cluster. */
 export const masterProjectsZonesClusters: API.OperationMethod<
   MasterProjectsZonesClustersRequest,
@@ -9784,12 +7842,7 @@ export const masterProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MonitoringProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MonitoringProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the monitoring service for a specific cluster. */
 export const monitoringProjectsZonesClusters: API.OperationMethod<
   MonitoringProjectsZonesClustersRequest,
@@ -9804,12 +7857,7 @@ export const monitoringProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResourceLabelsProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResourceLabelsProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets labels on a cluster. */
 export const resourceLabelsProjectsZonesClusters: API.OperationMethod<
   ResourceLabelsProjectsZonesClustersRequest,
@@ -9824,12 +7872,7 @@ export const resourceLabelsProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RollbackProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RollbackProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Rolls back a previously Aborted or Failed NodePool upgrade. This makes no changes if the last upgrade successfully completed. */
 export const rollbackProjectsLocationsClustersNodePools: API.OperationMethod<
   RollbackProjectsLocationsClustersNodePoolsRequest,
@@ -9844,12 +7887,7 @@ export const rollbackProjectsLocationsClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RollbackProjectsZonesClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RollbackProjectsZonesClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Rolls back a previously Aborted or Failed NodePool upgrade. This makes no changes if the last upgrade successfully completed. */
 export const rollbackProjectsZonesClustersNodePools: API.OperationMethod<
   RollbackProjectsZonesClustersNodePoolsRequest,
@@ -9864,12 +7902,7 @@ export const rollbackProjectsZonesClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetAddonsProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetAddonsProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the addons for a specific cluster. */
 export const setAddonsProjectsLocationsClusters: API.OperationMethod<
   SetAddonsProjectsLocationsClustersRequest,
@@ -9884,12 +7917,7 @@ export const setAddonsProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetAutoscalingProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetAutoscalingProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the autoscaling settings of a specific node pool. */
 export const setAutoscalingProjectsLocationsClustersNodePools: API.OperationMethod<
   SetAutoscalingProjectsLocationsClustersNodePoolsRequest,
@@ -9904,12 +7932,7 @@ export const setAutoscalingProjectsLocationsClustersNodePools: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type SetLegacyAbacProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetLegacyAbacProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enables or disables the ABAC authorization mechanism on a cluster. */
 export const setLegacyAbacProjectsLocationsClusters: API.OperationMethod<
   SetLegacyAbacProjectsLocationsClustersRequest,
@@ -9924,12 +7947,7 @@ export const setLegacyAbacProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetLocationsProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetLocationsProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the locations for a specific cluster. Deprecated. Use [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters/update) instead. */
 export const setLocationsProjectsLocationsClusters: API.OperationMethod<
   SetLocationsProjectsLocationsClustersRequest,
@@ -9944,12 +7962,7 @@ export const setLocationsProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetLoggingProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetLoggingProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the logging service for a specific cluster. */
 export const setLoggingProjectsLocationsClusters: API.OperationMethod<
   SetLoggingProjectsLocationsClustersRequest,
@@ -9964,12 +7977,7 @@ export const setLoggingProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetMaintenancePolicyProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetMaintenancePolicyProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the maintenance policy for a cluster. */
 export const setMaintenancePolicyProjectsLocationsClusters: API.OperationMethod<
   SetMaintenancePolicyProjectsLocationsClustersRequest,
@@ -9984,12 +7992,7 @@ export const setMaintenancePolicyProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetMaintenancePolicyProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetMaintenancePolicyProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the maintenance policy for a cluster. */
 export const setMaintenancePolicyProjectsZonesClusters: API.OperationMethod<
   SetMaintenancePolicyProjectsZonesClustersRequest,
@@ -10004,12 +8007,7 @@ export const setMaintenancePolicyProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetManagementProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetManagementProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the NodeManagement options for a node pool. */
 export const setManagementProjectsLocationsClustersNodePools: API.OperationMethod<
   SetManagementProjectsLocationsClustersNodePoolsRequest,
@@ -10024,12 +8022,7 @@ export const setManagementProjectsLocationsClustersNodePools: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type SetManagementProjectsZonesClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetManagementProjectsZonesClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the NodeManagement options for a node pool. */
 export const setManagementProjectsZonesClustersNodePools: API.OperationMethod<
   SetManagementProjectsZonesClustersNodePoolsRequest,
@@ -10044,12 +8037,7 @@ export const setManagementProjectsZonesClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetMasterAuthProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetMasterAuthProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets master auth materials. Currently supports changing the admin password or a specific cluster, either via password generation or explicitly setting the password. */
 export const setMasterAuthProjectsLocationsClusters: API.OperationMethod<
   SetMasterAuthProjectsLocationsClustersRequest,
@@ -10064,12 +8052,7 @@ export const setMasterAuthProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetMasterAuthProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetMasterAuthProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets master auth materials. Currently supports changing the admin password or a specific cluster, either via password generation or explicitly setting the password. */
 export const setMasterAuthProjectsZonesClusters: API.OperationMethod<
   SetMasterAuthProjectsZonesClustersRequest,
@@ -10084,12 +8067,7 @@ export const setMasterAuthProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetMonitoringProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetMonitoringProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the monitoring service for a specific cluster. */
 export const setMonitoringProjectsLocationsClusters: API.OperationMethod<
   SetMonitoringProjectsLocationsClustersRequest,
@@ -10104,12 +8082,7 @@ export const setMonitoringProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetNetworkPolicyProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetNetworkPolicyProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enables or disables Network Policy for a cluster. */
 export const setNetworkPolicyProjectsLocationsClusters: API.OperationMethod<
   SetNetworkPolicyProjectsLocationsClustersRequest,
@@ -10124,12 +8097,7 @@ export const setNetworkPolicyProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetNetworkPolicyProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetNetworkPolicyProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enables or disables Network Policy for a cluster. */
 export const setNetworkPolicyProjectsZonesClusters: API.OperationMethod<
   SetNetworkPolicyProjectsZonesClustersRequest,
@@ -10144,12 +8112,7 @@ export const setNetworkPolicyProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetResourceLabelsProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetResourceLabelsProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets labels on a cluster. */
 export const setResourceLabelsProjectsLocationsClusters: API.OperationMethod<
   SetResourceLabelsProjectsLocationsClustersRequest,
@@ -10164,12 +8127,7 @@ export const setResourceLabelsProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetSizeProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetSizeProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** SetNodePoolSizeRequest sets the size of a node pool. The new size will be used for all replicas, including future replicas created by modifying NodePool.locations. */
 export const setSizeProjectsLocationsClustersNodePools: API.OperationMethod<
   SetSizeProjectsLocationsClustersNodePoolsRequest,
@@ -10184,12 +8142,7 @@ export const setSizeProjectsLocationsClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetSizeProjectsZonesClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetSizeProjectsZonesClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** SetNodePoolSizeRequest sets the size of a node pool. The new size will be used for all replicas, including future replicas created by modifying NodePool.locations. */
 export const setSizeProjectsZonesClustersNodePools: API.OperationMethod<
   SetSizeProjectsZonesClustersNodePoolsRequest,
@@ -10204,12 +8157,7 @@ export const setSizeProjectsZonesClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartIpRotationProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StartIpRotationProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts master IP rotation. */
 export const startIpRotationProjectsLocationsClusters: API.OperationMethod<
   StartIpRotationProjectsLocationsClustersRequest,
@@ -10224,12 +8172,7 @@ export const startIpRotationProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartIpRotationProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StartIpRotationProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts master IP rotation. */
 export const startIpRotationProjectsZonesClusters: API.OperationMethod<
   StartIpRotationProjectsZonesClustersRequest,
@@ -10244,12 +8187,7 @@ export const startIpRotationProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateMasterProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateMasterProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the master for a specific cluster. */
 export const updateMasterProjectsLocationsClusters: API.OperationMethod<
   UpdateMasterProjectsLocationsClustersRequest,
@@ -10264,12 +8202,7 @@ export const updateMasterProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsLocationsClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the settings for a specific cluster. */
 export const updateProjectsLocationsClusters: API.OperationMethod<
   UpdateProjectsLocationsClustersRequest,
@@ -10284,12 +8217,7 @@ export const updateProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsLocationsClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsLocationsClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the version and/or image type of a specific node pool. */
 export const updateProjectsLocationsClustersNodePools: API.OperationMethod<
   UpdateProjectsLocationsClustersNodePoolsRequest,
@@ -10304,12 +8232,7 @@ export const updateProjectsLocationsClustersNodePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsZonesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsZonesClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the settings for a specific cluster. */
 export const updateProjectsZonesClusters: API.OperationMethod<
   UpdateProjectsZonesClustersRequest,
@@ -10324,12 +8247,7 @@ export const updateProjectsZonesClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsZonesClustersNodePoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsZonesClustersNodePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the version and/or image type of a specific node pool. */
 export const updateProjectsZonesClustersNodePools: API.OperationMethod<
   UpdateProjectsZonesClustersNodePoolsRequest,
@@ -10343,3 +8261,4 @@ export const updateProjectsZonesClustersNodePools: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

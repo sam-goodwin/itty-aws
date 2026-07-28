@@ -123,11 +123,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -368,7 +367,7 @@ export const PulseBriefConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PulseBriefConfigsUpdateRequest>;
 
 /** * `last_n_days` - last_n_days * `since_last_run` - since_last_run */
-export type PeriodTypeEnum = "last_n_days" | "since_last_run" | (string & {});
+export type PeriodTypeEnum = "last_n_days" | "since_last_run";
 export const PeriodTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Period {
@@ -413,12 +412,11 @@ export type ProductBriefStatusEnum =
   | "generating"
   | "ready"
   | "quiet"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const ProductBriefStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `on_demand` - On Demand * `scheduled` - Scheduled */
-export type ProductBriefTriggerEnum = "on_demand" | "scheduled" | (string & {});
+export type ProductBriefTriggerEnum = "on_demand" | "scheduled";
 export const ProductBriefTriggerEnum = /*@__PURE__*/ S.String;
 
 export interface BriefSectionCitation {

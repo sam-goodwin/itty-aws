@@ -848,8 +848,7 @@ export type ResourceType =
   | "AWS::AppStream::AppBlockBuilder"
   | "AWS::Route53::DNSSEC"
   | "AWS::SageMaker::UserProfile"
-  | "AWS::ApiGateway::Method"
-  | (string & {});
+  | "AWS::ApiGateway::Method";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type ResourceTypeList = ResourceType[];
@@ -890,8 +889,7 @@ export const ExclusionByResourceTypes = /*@__PURE__*/ S.suspend(() =>
 export type RecordingStrategyType =
   | "ALL_SUPPORTED_RESOURCE_TYPES"
   | "INCLUSION_BY_RESOURCE_TYPES"
-  | "EXCLUSION_BY_RESOURCE_TYPES"
-  | (string & {});
+  | "EXCLUSION_BY_RESOURCE_TYPES";
 export const RecordingStrategyType = /*@__PURE__*/ S.String;
 
 export interface RecordingStrategy {
@@ -918,7 +916,7 @@ export const RecordingGroup = /*@__PURE__*/ S.suspend(() =>
     recordingStrategy: S.optional(RecordingStrategy),
   }),
 ).annotate({ identifier: "RecordingGroup" }) as any as S.Schema<RecordingGroup>;
-export type RecordingFrequency = "CONTINUOUS" | "DAILY" | (string & {});
+export type RecordingFrequency = "CONTINUOUS" | "DAILY";
 export const RecordingFrequency = /*@__PURE__*/ S.String;
 
 export type Description = string;
@@ -953,7 +951,7 @@ export const RecordingMode = /*@__PURE__*/ S.suspend(() =>
     recordingModeOverrides: S.optional(RecordingModeOverrides),
   }),
 ).annotate({ identifier: "RecordingMode" }) as any as S.Schema<RecordingMode>;
-export type RecordingScope = "INTERNAL" | "PAID" | (string & {});
+export type RecordingScope = "INTERNAL" | "PAID";
 export const RecordingScope = /*@__PURE__*/ S.String;
 
 export type ServicePrincipal = string;
@@ -1044,8 +1042,7 @@ export type ConfigurationItemStatus =
   | "ResourceDiscovered"
   | "ResourceNotRecorded"
   | "ResourceDeleted"
-  | "ResourceDeletedNotRecorded"
-  | (string & {});
+  | "ResourceDeletedNotRecorded";
 export const ConfigurationItemStatus = /*@__PURE__*/ S.String;
 
 export type ConfigurationStateId = string;
@@ -1659,13 +1656,12 @@ export type ComplianceType =
   | "COMPLIANT"
   | "NON_COMPLIANT"
   | "NOT_APPLICABLE"
-  | "INSUFFICIENT_DATA"
-  | (string & {});
+  | "INSUFFICIENT_DATA";
 export const ComplianceType = /*@__PURE__*/ S.String;
 
 export interface ConfigRuleComplianceFilters {
   ConfigRuleName?: string;
-  ComplianceType?: ComplianceType;
+  ComplianceType?: ComplianceType | (string & {});
   AccountId?: string;
   AwsRegion?: string;
 }
@@ -1769,13 +1765,12 @@ export const DescribeAggregateComplianceByConfigRulesResponse =
 export type ConformancePackComplianceType =
   | "COMPLIANT"
   | "NON_COMPLIANT"
-  | "INSUFFICIENT_DATA"
-  | (string & {});
+  | "INSUFFICIENT_DATA";
 export const ConformancePackComplianceType = /*@__PURE__*/ S.String;
 
 export interface AggregateConformancePackComplianceFilters {
   ConformancePackName?: string;
-  ComplianceType?: ConformancePackComplianceType;
+  ComplianceType?: ConformancePackComplianceType | (string & {});
   AccountId?: string;
   AwsRegion?: string;
 }
@@ -1929,7 +1924,7 @@ export const DescribeAggregationAuthorizationsResponse =
   }) as any as S.Schema<DescribeAggregationAuthorizationsResponse>;
 export type ConfigRuleNames = string[];
 export const ConfigRuleNames = /*@__PURE__*/ S.Array(S.String);
-export type ComplianceTypes = ComplianceType[];
+export type ComplianceTypes = (ComplianceType | (string & {}))[];
 export const ComplianceTypes = /*@__PURE__*/ S.Array(ComplianceType);
 export interface DescribeComplianceByConfigRuleRequest {
   ConfigRuleNames?: string[];
@@ -2139,15 +2134,15 @@ export const DescribeConfigRuleEvaluationStatusResponse =
   ).annotate({
     identifier: "DescribeConfigRuleEvaluationStatusResponse",
   }) as any as S.Schema<DescribeConfigRuleEvaluationStatusResponse>;
-export type EvaluationMode = "DETECTIVE" | "PROACTIVE" | (string & {});
+export type EvaluationMode = "DETECTIVE" | "PROACTIVE";
 export const EvaluationMode = /*@__PURE__*/ S.String;
 
-export type RuleEvaluationVisibility = "EXTERNAL" | "INTERNAL" | (string & {});
+export type RuleEvaluationVisibility = "EXTERNAL" | "INTERNAL";
 export const RuleEvaluationVisibility = /*@__PURE__*/ S.String;
 
 export interface DescribeConfigRulesFilters {
-  EvaluationMode?: EvaluationMode;
-  RuleEvaluationVisibility?: RuleEvaluationVisibility;
+  EvaluationMode?: EvaluationMode | (string & {});
+  RuleEvaluationVisibility?: RuleEvaluationVisibility | (string & {});
 }
 export const DescribeConfigRulesFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2203,18 +2198,17 @@ export const Scope = /*@__PURE__*/ S.suspend(() =>
     ServicePrincipals: S.optional(ServicePrincipals),
   }),
 ).annotate({ identifier: "Scope" }) as any as S.Schema<Scope>;
-export type Owner = "CUSTOM_LAMBDA" | "AWS" | "CUSTOM_POLICY" | (string & {});
+export type Owner = "CUSTOM_LAMBDA" | "AWS" | "CUSTOM_POLICY";
 export const Owner = /*@__PURE__*/ S.String;
 
-export type EventSource = "aws.config" | (string & {});
+export type EventSource = "aws.config";
 export const EventSource = /*@__PURE__*/ S.String;
 
 export type MessageType =
   | "ConfigurationItemChangeNotification"
   | "ConfigurationSnapshotDeliveryCompleted"
   | "ScheduledNotification"
-  | "OversizedConfigurationItemChangeNotification"
-  | (string & {});
+  | "OversizedConfigurationItemChangeNotification";
 export const MessageType = /*@__PURE__*/ S.String;
 
 export type MaximumExecutionFrequency =
@@ -2222,8 +2216,7 @@ export type MaximumExecutionFrequency =
   | "Three_Hours"
   | "Six_Hours"
   | "Twelve_Hours"
-  | "TwentyFour_Hours"
-  | (string & {});
+  | "TwentyFour_Hours";
 export const MaximumExecutionFrequency = /*@__PURE__*/ S.String;
 
 export interface SourceDetail {
@@ -2274,8 +2267,7 @@ export type ConfigRuleState =
   | "ACTIVE"
   | "DELETING"
   | "DELETING_RESULTS"
-  | "EVALUATING"
-  | (string & {});
+  | "EVALUATING";
 export const ConfigRuleState = /*@__PURE__*/ S.String;
 
 export interface EvaluationModeConfiguration {
@@ -2400,7 +2392,7 @@ export const OrganizationAggregationSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OrganizationAggregationSource",
 }) as any as S.Schema<OrganizationAggregationSource>;
-export type AggregatorFilterType = "INCLUDE" | (string & {});
+export type AggregatorFilterType = "INCLUDE";
 export const AggregatorFilterType = /*@__PURE__*/ S.String;
 
 export type ResourceTypeValue = string;
@@ -2488,14 +2480,13 @@ export const DescribeConfigurationAggregatorsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeConfigurationAggregatorsResponse",
 }) as any as S.Schema<DescribeConfigurationAggregatorsResponse>;
-export type AggregatedSourceStatusType =
-  | "FAILED"
-  | "SUCCEEDED"
-  | "OUTDATED"
-  | (string & {});
+export type AggregatedSourceStatusType = "FAILED" | "SUCCEEDED" | "OUTDATED";
 export const AggregatedSourceStatusType = /*@__PURE__*/ S.String;
 
-export type AggregatedSourceStatusTypeList = AggregatedSourceStatusType[];
+export type AggregatedSourceStatusTypeList = (
+  | AggregatedSourceStatusType
+  | (string & {})
+)[];
 export const AggregatedSourceStatusTypeList = /*@__PURE__*/ S.Array(
   AggregatedSourceStatusType,
 );
@@ -2526,7 +2517,7 @@ export const DescribeConfigurationAggregatorSourcesStatusRequest =
   ).annotate({
     identifier: "DescribeConfigurationAggregatorSourcesStatusRequest",
   }) as any as S.Schema<DescribeConfigurationAggregatorSourcesStatusRequest>;
-export type AggregatedSourceType = "ACCOUNT" | "ORGANIZATION" | (string & {});
+export type AggregatedSourceType = "ACCOUNT" | "ORGANIZATION";
 export const AggregatedSourceType = /*@__PURE__*/ S.String;
 
 export interface AggregatedSourceStatus {
@@ -2639,8 +2630,7 @@ export type RecorderStatus =
   | "Pending"
   | "Success"
   | "Failure"
-  | "NotApplicable"
-  | (string & {});
+  | "NotApplicable";
 export const RecorderStatus = /*@__PURE__*/ S.String;
 
 export interface ConfigurationRecorderStatus {
@@ -2692,7 +2682,7 @@ export type ConformancePackConfigRuleNames = string[];
 export const ConformancePackConfigRuleNames = /*@__PURE__*/ S.Array(S.String);
 export interface ConformancePackComplianceFilters {
   ConfigRuleNames?: string[];
-  ComplianceType?: ConformancePackComplianceType;
+  ComplianceType?: ConformancePackComplianceType | (string & {});
 }
 export const ConformancePackComplianceFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2896,8 +2886,7 @@ export type ConformancePackState =
   | "CREATE_COMPLETE"
   | "CREATE_FAILED"
   | "DELETE_IN_PROGRESS"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const ConformancePackState = /*@__PURE__*/ S.String;
 
 export type StackArn = string;
@@ -3028,11 +3017,7 @@ export const DescribeDeliveryChannelStatusRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeDeliveryChannelStatusRequest",
 }) as any as S.Schema<DescribeDeliveryChannelStatusRequest>;
-export type DeliveryStatus =
-  | "Success"
-  | "Failure"
-  | "Not_Applicable"
-  | (string & {});
+export type DeliveryStatus = "Success" | "Failure" | "Not_Applicable";
 export const DeliveryStatus = /*@__PURE__*/ S.String;
 
 export interface ConfigExportDeliveryInfo {
@@ -3169,8 +3154,7 @@ export const OrganizationManagedRuleMetadata = /*@__PURE__*/ S.suspend(() =>
 export type OrganizationConfigRuleTriggerType =
   | "ConfigurationItemChangeNotification"
   | "OversizedConfigurationItemChangeNotification"
-  | "ScheduledNotification"
-  | (string & {});
+  | "ScheduledNotification";
 export const OrganizationConfigRuleTriggerType = /*@__PURE__*/ S.String;
 
 export type OrganizationConfigRuleTriggerTypes =
@@ -3208,8 +3192,7 @@ export type ExcludedAccounts = string[];
 export const ExcludedAccounts = /*@__PURE__*/ S.Array(S.String);
 export type OrganizationConfigRuleTriggerTypeNoSN =
   | "ConfigurationItemChangeNotification"
-  | "OversizedConfigurationItemChangeNotification"
-  | (string & {});
+  | "OversizedConfigurationItemChangeNotification";
 export const OrganizationConfigRuleTriggerTypeNoSN = /*@__PURE__*/ S.String;
 
 export type OrganizationConfigRuleTriggerTypeNoSNs =
@@ -3327,8 +3310,7 @@ export type OrganizationRuleStatus =
   | "DELETE_IN_PROGRESS"
   | "UPDATE_SUCCESSFUL"
   | "UPDATE_IN_PROGRESS"
-  | "UPDATE_FAILED"
-  | (string & {});
+  | "UPDATE_FAILED";
 export const OrganizationRuleStatus = /*@__PURE__*/ S.String;
 
 export interface OrganizationConfigRuleStatus {
@@ -3472,8 +3454,7 @@ export type OrganizationResourceStatus =
   | "DELETE_IN_PROGRESS"
   | "UPDATE_SUCCESSFUL"
   | "UPDATE_IN_PROGRESS"
-  | "UPDATE_FAILED"
-  | (string & {});
+  | "UPDATE_FAILED";
 export const OrganizationResourceStatus = /*@__PURE__*/ S.String;
 
 export interface OrganizationConformancePackStatus {
@@ -3586,10 +3567,10 @@ export const DescribeRemediationConfigurationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeRemediationConfigurationsRequest",
 }) as any as S.Schema<DescribeRemediationConfigurationsRequest>;
-export type RemediationTargetType = "SSM_DOCUMENT" | (string & {});
+export type RemediationTargetType = "SSM_DOCUMENT";
 export const RemediationTargetType = /*@__PURE__*/ S.String;
 
-export type ResourceValueType = "RESOURCE_ID" | (string & {});
+export type ResourceValueType = "RESOURCE_ID";
 export const ResourceValueType = /*@__PURE__*/ S.String;
 
 export interface ResourceValue {
@@ -3786,8 +3767,7 @@ export type RemediationExecutionState =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "FAILED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const RemediationExecutionState = /*@__PURE__*/ S.String;
 
 export type RemediationExecutionStepState =
@@ -3796,8 +3776,7 @@ export type RemediationExecutionStepState =
   | "FAILED"
   | "IN_PROGRESS"
   | "EXITED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const RemediationExecutionStepState = /*@__PURE__*/ S.String;
 
 export interface RemediationExecutionStep {
@@ -3946,7 +3925,7 @@ export interface GetAggregateComplianceDetailsByConfigRuleRequest {
   ConfigRuleName: string;
   AccountId: string;
   AwsRegion: string;
-  ComplianceType?: ComplianceType;
+  ComplianceType?: ComplianceType | (string & {});
   Limit?: number;
   NextToken?: string;
 }
@@ -4062,16 +4041,13 @@ export const ConfigRuleComplianceSummaryFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfigRuleComplianceSummaryFilters",
 }) as any as S.Schema<ConfigRuleComplianceSummaryFilters>;
-export type ConfigRuleComplianceSummaryGroupKey =
-  | "ACCOUNT_ID"
-  | "AWS_REGION"
-  | (string & {});
+export type ConfigRuleComplianceSummaryGroupKey = "ACCOUNT_ID" | "AWS_REGION";
 export const ConfigRuleComplianceSummaryGroupKey = /*@__PURE__*/ S.String;
 
 export interface GetAggregateConfigRuleComplianceSummaryRequest {
   ConfigurationAggregatorName: string;
   Filters?: ConfigRuleComplianceSummaryFilters;
-  GroupByKey?: ConfigRuleComplianceSummaryGroupKey;
+  GroupByKey?: ConfigRuleComplianceSummaryGroupKey | (string & {});
   Limit?: number;
   NextToken?: string;
 }
@@ -4159,15 +4135,16 @@ export const AggregateConformancePackComplianceSummaryFilters =
   }) as any as S.Schema<AggregateConformancePackComplianceSummaryFilters>;
 export type AggregateConformancePackComplianceSummaryGroupKey =
   | "ACCOUNT_ID"
-  | "AWS_REGION"
-  | (string & {});
+  | "AWS_REGION";
 export const AggregateConformancePackComplianceSummaryGroupKey =
   /*@__PURE__*/ S.String;
 
 export interface GetAggregateConformancePackComplianceSummaryRequest {
   ConfigurationAggregatorName: string;
   Filters?: AggregateConformancePackComplianceSummaryFilters;
-  GroupByKey?: AggregateConformancePackComplianceSummaryGroupKey;
+  GroupByKey?:
+    | AggregateConformancePackComplianceSummaryGroupKey
+    | (string & {});
   Limit?: number;
   NextToken?: string;
 }
@@ -4241,7 +4218,7 @@ export const GetAggregateConformancePackComplianceSummaryResponse =
     identifier: "GetAggregateConformancePackComplianceSummaryResponse",
   }) as any as S.Schema<GetAggregateConformancePackComplianceSummaryResponse>;
 export interface ResourceCountFilters {
-  ResourceType?: ResourceType;
+  ResourceType?: ResourceType | (string & {});
   AccountId?: string;
   Region?: string;
 }
@@ -4257,14 +4234,13 @@ export const ResourceCountFilters = /*@__PURE__*/ S.suspend(() =>
 export type ResourceCountGroupKey =
   | "RESOURCE_TYPE"
   | "ACCOUNT_ID"
-  | "AWS_REGION"
-  | (string & {});
+  | "AWS_REGION";
 export const ResourceCountGroupKey = /*@__PURE__*/ S.String;
 
 export interface GetAggregateDiscoveredResourceCountsRequest {
   ConfigurationAggregatorName: string;
   Filters?: ResourceCountFilters;
-  GroupByKey?: ResourceCountGroupKey;
+  GroupByKey?: ResourceCountGroupKey | (string & {});
   Limit?: number;
   NextToken?: string;
 }
@@ -4618,7 +4594,7 @@ export const ConformancePackComplianceResourceIds = /*@__PURE__*/ S.Array(
 );
 export interface ConformancePackEvaluationFilters {
   ConfigRuleNames?: string[];
-  ComplianceType?: ConformancePackComplianceType;
+  ComplianceType?: ConformancePackComplianceType | (string & {});
   ResourceType?: string;
   ResourceIds?: string[];
 }
@@ -4847,13 +4823,12 @@ export type MemberAccountRuleStatus =
   | "DELETE_IN_PROGRESS"
   | "UPDATE_SUCCESSFUL"
   | "UPDATE_IN_PROGRESS"
-  | "UPDATE_FAILED"
-  | (string & {});
+  | "UPDATE_FAILED";
 export const MemberAccountRuleStatus = /*@__PURE__*/ S.String;
 
 export interface StatusDetailFilters {
   AccountId?: string;
-  MemberAccountRuleStatus?: MemberAccountRuleStatus;
+  MemberAccountRuleStatus?: MemberAccountRuleStatus | (string & {});
 }
 export const StatusDetailFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4937,13 +4912,12 @@ export type OrganizationResourceDetailedStatus =
   | "DELETE_IN_PROGRESS"
   | "UPDATE_SUCCESSFUL"
   | "UPDATE_IN_PROGRESS"
-  | "UPDATE_FAILED"
-  | (string & {});
+  | "UPDATE_FAILED";
 export const OrganizationResourceDetailedStatus = /*@__PURE__*/ S.String;
 
 export interface OrganizationResourceDetailedStatusFilters {
   AccountId?: string;
-  Status?: OrganizationResourceDetailedStatus;
+  Status?: OrganizationResourceDetailedStatus | (string & {});
 }
 export const OrganizationResourceDetailedStatusFilters =
   /*@__PURE__*/ S.suspend(() =>
@@ -5052,15 +5026,15 @@ export const GetOrganizationCustomRulePolicyResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetOrganizationCustomRulePolicyResponse>;
 export type LaterTime = Date;
 export type EarlierTime = Date;
-export type ChronologicalOrder = "Reverse" | "Forward" | (string & {});
+export type ChronologicalOrder = "Reverse" | "Forward";
 export const ChronologicalOrder = /*@__PURE__*/ S.String;
 
 export interface GetResourceConfigHistoryRequest {
-  resourceType: ResourceType;
+  resourceType: ResourceType | (string & {});
   resourceId: string;
   laterTime?: Date;
   earlierTime?: Date;
-  chronologicalOrder?: ChronologicalOrder;
+  chronologicalOrder?: ChronologicalOrder | (string & {});
   limit?: number;
   nextToken?: string;
 }
@@ -5119,11 +5093,7 @@ export const GetResourceEvaluationSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourceEvaluationSummaryRequest",
 }) as any as S.Schema<GetResourceEvaluationSummaryRequest>;
-export type ResourceEvaluationStatus =
-  | "IN_PROGRESS"
-  | "FAILED"
-  | "SUCCEEDED"
-  | (string & {});
+export type ResourceEvaluationStatus = "IN_PROGRESS" | "FAILED" | "SUCCEEDED";
 export const ResourceEvaluationStatus = /*@__PURE__*/ S.String;
 
 export interface EvaluationStatus {
@@ -5148,9 +5118,7 @@ export const EvaluationContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationContext",
 }) as any as S.Schema<EvaluationContext>;
 export type ResourceConfiguration = string;
-export type ResourceConfigurationSchemaType =
-  | "CFN_RESOURCE_SCHEMA"
-  | (string & {});
+export type ResourceConfigurationSchemaType = "CFN_RESOURCE_SCHEMA";
 export const ResourceConfigurationSchemaType = /*@__PURE__*/ S.String;
 
 export interface ResourceDetails {
@@ -5260,7 +5228,7 @@ export const ResourceFilters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceFilters>;
 export interface ListAggregateDiscoveredResourcesRequest {
   ConfigurationAggregatorName: string;
-  ResourceType: ResourceType;
+  ResourceType: ResourceType | (string & {});
   Filters?: ResourceFilters;
   Limit?: number;
   NextToken?: string;
@@ -5304,7 +5272,7 @@ export const ListAggregateDiscoveredResourcesResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListAggregateDiscoveredResourcesResponse",
 }) as any as S.Schema<ListAggregateDiscoveredResourcesResponse>;
-export type ConfigurationRecorderFilterName = "recordingScope" | (string & {});
+export type ConfigurationRecorderFilterName = "recordingScope";
 export const ConfigurationRecorderFilterName = /*@__PURE__*/ S.String;
 
 export type ConfigurationRecorderFilterValue = string;
@@ -5313,7 +5281,7 @@ export const ConfigurationRecorderFilterValues = /*@__PURE__*/ S.Array(
   S.String,
 );
 export interface ConfigurationRecorderFilter {
-  filterName?: ConfigurationRecorderFilterName;
+  filterName?: ConfigurationRecorderFilterName | (string & {});
   filterValue?: string[];
 }
 export const ConfigurationRecorderFilter = /*@__PURE__*/ S.suspend(() =>
@@ -5395,16 +5363,16 @@ export const ConformancePackComplianceScoresFilters = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ConformancePackComplianceScoresFilters",
 }) as any as S.Schema<ConformancePackComplianceScoresFilters>;
-export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+export type SortOrder = "ASCENDING" | "DESCENDING";
 export const SortOrder = /*@__PURE__*/ S.String;
 
-export type SortBy = "SCORE" | (string & {});
+export type SortBy = "SCORE";
 export const SortBy = /*@__PURE__*/ S.String;
 
 export interface ListConformancePackComplianceScoresRequest {
   Filters?: ConformancePackComplianceScoresFilters;
-  SortOrder?: SortOrder;
-  SortBy?: SortBy;
+  SortOrder?: SortOrder | (string & {});
+  SortBy?: SortBy | (string & {});
   Limit?: number;
   NextToken?: string;
 }
@@ -5468,7 +5436,7 @@ export const ListConformancePackComplianceScoresResponse =
 export type ResourceIdList = string[];
 export const ResourceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ListDiscoveredResourcesRequest {
-  resourceType: ResourceType;
+  resourceType: ResourceType | (string & {});
   resourceIds?: string[];
   resourceName?: string;
   limit?: number;
@@ -5541,7 +5509,7 @@ export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
 export interface ResourceEvaluationFilters {
-  EvaluationMode?: EvaluationMode;
+  EvaluationMode?: EvaluationMode | (string & {});
   TimeWindow?: TimeWindow;
   EvaluationContextIdentifier?: string;
 }
@@ -5957,7 +5925,7 @@ export const PutEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ExternalEvaluation {
   ComplianceResourceType: string;
   ComplianceResourceId: string;
-  ComplianceType: ComplianceType;
+  ComplianceType: ComplianceType | (string & {});
   Annotation?: string;
   OrderingTimestamp: Date;
 }
@@ -6004,7 +5972,7 @@ export interface OrganizationCustomPolicyRuleMetadata {
   Description?: string;
   OrganizationConfigRuleTriggerTypes?: OrganizationConfigRuleTriggerTypeNoSN[];
   InputParameters?: string;
-  MaximumExecutionFrequency?: MaximumExecutionFrequency;
+  MaximumExecutionFrequency?: MaximumExecutionFrequency | (string & {});
   ResourceTypesScope?: string[];
   ResourceIdScope?: string;
   TagKeyScope?: string;
@@ -6523,7 +6491,7 @@ export type ClientToken = string;
 export interface StartResourceEvaluationRequest {
   ResourceDetails: ResourceDetails;
   EvaluationContext?: EvaluationContext;
-  EvaluationMode: EvaluationMode;
+  EvaluationMode: EvaluationMode | (string & {});
   EvaluationTimeout?: number;
   ClientToken?: string;
 }

@@ -39,7 +39,7 @@ export const AllTrafficFiltersListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AllTrafficFiltersListRequest>;
 
 /** Type of the elastic filter */
-export type Type = "ip" | "azure_private_endpoint" | (string & {});
+export type Type = "ip" | "azure_private_endpoint";
 export const Type = /*@__PURE__*/ S.String;
 
 /** Elastic traffic filter rule object */
@@ -467,7 +467,7 @@ export const DeploymentInfoListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentInfoListRequest>;
 
 /** Flag specifying if the Elastic deployment status is healthy or not. */
-export type ElasticDeploymentStatus = "Healthy" | "Unhealthy" | (string & {});
+export type ElasticDeploymentStatus = "Healthy" | "Unhealthy";
 export const ElasticDeploymentStatus = /*@__PURE__*/ S.String;
 
 /** The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource. */
@@ -759,7 +759,7 @@ export const MonitoredResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResourcesListRequest>;
 
 /** Flag indicating the status of the resource for sending logs operation to Elastic. */
-export type SendingLogs = "True" | "False" | (string & {});
+export type SendingLogs = "True" | "False";
 export const SendingLogs = /*@__PURE__*/ S.String;
 
 /** The properties of a resource currently being monitored by the Elastic monitor resource. */
@@ -810,17 +810,11 @@ export type Operation =
   | "AddComplete"
   | "DeleteBegin"
   | "DeleteComplete"
-  | "Active"
-  | (string & {});
+  | "Active";
 export const Operation = /*@__PURE__*/ S.String;
 
 /** The state of monitoring. */
-export type Status =
-  | "InProgress"
-  | "Active"
-  | "Failed"
-  | "Deleting"
-  | (string & {});
+export type Status = "InProgress" | "Active" | "Failed" | "Deleting";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Provisioning state of Elastic resource. */
@@ -833,12 +827,11 @@ export type ProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "NotSpecified"
-  | (string & {});
+  | "NotSpecified";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
-export type TagAction = "Include" | "Exclude" | (string & {});
+export type TagAction = "Include" | "Exclude";
 export const TagAction = /*@__PURE__*/ S.String;
 
 /** The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored. */
@@ -986,8 +979,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -995,8 +987,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1275,7 +1266,7 @@ export const MonitorsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MonitorsCreateRequestTagsMap>;
 
 /** Flag specifying if the resource monitoring is enabled or disabled. */
-export type MonitoringStatus = "Enabled" | "Disabled" | (string & {});
+export type MonitoringStatus = "Enabled" | "Disabled";
 export const MonitoringStatus = /*@__PURE__*/ S.String;
 
 /** Details of the user's elastic account. */
@@ -1380,7 +1371,7 @@ export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanDetails" }) as any as S.Schema<PlanDetails>;
 
 /** Hosting type of the monitor resource - either Hosted deployments or Serverless Projects. */
-export type HostingType = "Hosted" | "Serverless" | (string & {});
+export type HostingType = "Hosted" | "Serverless";
 export const HostingType = /*@__PURE__*/ S.String;
 
 /** Project type; ex: Elasticsearch / Observability / Security */
@@ -1388,8 +1379,7 @@ export type ProjectType =
   | "Elasticsearch"
   | "Observability"
   | "Security"
-  | "NotApplicable"
-  | (string & {});
+  | "NotApplicable";
 export const ProjectType = /*@__PURE__*/ S.String;
 
 /** Configuration type of the Elasticsearch project */
@@ -1397,8 +1387,7 @@ export type ConfigurationType =
   | "GeneralPurpose"
   | "Vector"
   | "TimeSeries"
-  | "NotApplicable"
-  | (string & {});
+  | "NotApplicable";
 export const ConfigurationType = /*@__PURE__*/ S.String;
 
 /** Project details of the monitor resource IF it belongs to Serverless offer kind. */
@@ -1418,7 +1407,7 @@ export const ProjectDetails = /*@__PURE__*/ S.suspend(() =>
 /** Properties specific to the monitor resource. */
 export interface MonitorPropertiesInput {
   /** Flag specifying if the resource monitoring is enabled or disabled. */
-  monitoringStatus?: MonitoringStatus;
+  monitoringStatus?: MonitoringStatus | (string & {});
   /** Elastic cloud properties. */
   elasticProperties?: ElasticPropertiesInput;
   /** User information. */
@@ -1438,7 +1427,7 @@ export interface MonitorPropertiesInput {
   /** Flag to determine if User API Key has to be generated and shared. */
   generateApiKey?: boolean;
   /** Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects. */
-  hostingType?: HostingType;
+  hostingType?: HostingType | (string & {});
   /** Project details of the monitor resource IF it belongs to Serverless offer kind. */
   projectDetails?: ProjectDetails;
 }
@@ -1473,13 +1462,13 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** Managed Identity types. */
-export type ManagedIdentityTypes = "SystemAssigned" | (string & {});
+export type ManagedIdentityTypes = "SystemAssigned";
 export const ManagedIdentityTypes = /*@__PURE__*/ S.String;
 
 /** Identity properties. */
 export interface IdentityPropertiesInput {
   /** Managed identity type. */
-  type?: ManagedIdentityTypes;
+  type?: ManagedIdentityTypes | (string & {});
 }
 export const IdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1606,7 +1595,7 @@ export const ElasticProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElasticProperties",
 }) as any as S.Schema<ElasticProperties>;
 
-export type LiftrResourceCategories = "Unknown" | "MonitorLogs" | (string & {});
+export type LiftrResourceCategories = "Unknown" | "MonitorLogs";
 export const LiftrResourceCategories = /*@__PURE__*/ S.String;
 
 /** Properties specific to the monitor resource. */
@@ -2945,7 +2934,7 @@ export const UpgradableVersionsList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpgradableVersionsList>;
 
 /** Operation to be performed on the given vm resource id. */
-export type OperationName = "Add" | "Delete" | (string & {});
+export type OperationName = "Add" | "Delete";
 export const OperationName = /*@__PURE__*/ S.String;
 
 export interface VMCollectionUpdateRequest {
@@ -2958,7 +2947,7 @@ export interface VMCollectionUpdateRequest {
   /** ARM id of the VM resource. */
   vmResourceId?: string;
   /** Operation to be performed for given VM. */
-  operationName?: OperationName;
+  operationName?: OperationName | (string & {});
 }
 export const VMCollectionUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

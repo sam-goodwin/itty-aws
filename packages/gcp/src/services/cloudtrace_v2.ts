@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Represents a string that might be shortened to a specified length. */
@@ -68,13 +68,11 @@ export interface TruncatableString {
   truncatedByteCount?: number;
 }
 export const TruncatableString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    truncatedByteCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TruncatableString",
-}) as any as S.Schema<TruncatableString>;
+S.Struct({
+  "value": S.optional(S.String),
+  "truncatedByteCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "TruncatableString" }) as any as S.Schema<TruncatableString>;
 
 /** The allowed types for `[VALUE]` in a `[KEY]:[VALUE]` attribute. */
 export interface AttributeValue {
@@ -86,18 +84,15 @@ export interface AttributeValue {
   stringValue?: TruncatableString;
 }
 export const AttributeValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    intValue: S.optional(S.String),
-    boolValue: S.optional(S.Boolean),
-    stringValue: S.optional(TruncatableString),
-  }),
+S.Struct({
+  "intValue": S.optional(S.String),
+  "boolValue": S.optional(S.Boolean),
+  "stringValue": S.optional(TruncatableString),
+}),
 ).annotate({ identifier: "AttributeValue" }) as any as S.Schema<AttributeValue>;
 
 export type AttributeValueMap = { [key: string]: AttributeValue | undefined };
-export const AttributeValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AttributeValue,
-) as any as S.Schema<AttributeValueMap>;
+export const AttributeValueMap = /*@__PURE__*/ S.Record(S.String, AttributeValue) as any as S.Schema<AttributeValueMap>;
 
 /** A set of attributes as key-value pairs. */
 export interface Attributes {
@@ -107,17 +102,13 @@ export interface Attributes {
   droppedAttributesCount?: number;
 }
 export const Attributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributeMap: S.optional(AttributeValueMap),
-    droppedAttributesCount: S.optional(S.Number),
-  }),
+S.Struct({
+  "attributeMap": S.optional(AttributeValueMap),
+  "droppedAttributesCount": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Attributes" }) as any as S.Schema<Attributes>;
 
-export type LinkTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "CHILD_LINKED_SPAN"
-  | "PARENT_LINKED_SPAN"
-  | (string & {});
+export type LinkTypeEnum = "TYPE_UNSPECIFIED" | "CHILD_LINKED_SPAN" | "PARENT_LINKED_SPAN";
 export const LinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** A pointer from the current span to another span in the same trace or in a different trace. For example, this can be used in batching operations, where a single batch handler processes multiple requests from different traces or when the handler receives a request from a different project. */
@@ -132,18 +123,16 @@ export interface Link {
   attributes?: Attributes;
 }
 export const Link = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traceId: S.optional(S.String),
-    spanId: S.optional(S.String),
-    type: S.optional(LinkTypeEnum),
-    attributes: S.optional(Attributes),
-  }),
+S.Struct({
+  "traceId": S.optional(S.String),
+  "spanId": S.optional(S.String),
+  "type": S.optional(LinkTypeEnum),
+  "attributes": S.optional(Attributes),
+}),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 export type LinkList = ReadonlyArray<Link>;
-export const LinkList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<LinkList>;
+export const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
 
 /** A collection of links, which are references from this span to a span in the same or different trace. */
 export interface Links {
@@ -153,10 +142,10 @@ export interface Links {
   droppedLinksCount?: number;
 }
 export const Links = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    link: S.optional(LinkList),
-    droppedLinksCount: S.optional(S.Number),
-  }),
+S.Struct({
+  "link": S.optional(LinkList),
+  "droppedLinksCount": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Links" }) as any as S.Schema<Links>;
 
 /** Binary module. */
@@ -167,10 +156,10 @@ export interface Module {
   module?: TruncatableString;
 }
 export const Module = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildId: S.optional(TruncatableString),
-    module: S.optional(TruncatableString),
-  }),
+S.Struct({
+  "buildId": S.optional(TruncatableString),
+  "module": S.optional(TruncatableString),
+}),
 ).annotate({ identifier: "Module" }) as any as S.Schema<Module>;
 
 /** Represents a single stack frame in a stack trace. */
@@ -191,21 +180,19 @@ export interface StackFrame {
   lineNumber?: string;
 }
 export const StackFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originalFunctionName: S.optional(TruncatableString),
-    loadModule: S.optional(Module),
-    fileName: S.optional(TruncatableString),
-    sourceVersion: S.optional(TruncatableString),
-    columnNumber: S.optional(S.String),
-    functionName: S.optional(TruncatableString),
-    lineNumber: S.optional(S.String),
-  }),
+S.Struct({
+  "originalFunctionName": S.optional(TruncatableString),
+  "loadModule": S.optional(Module),
+  "fileName": S.optional(TruncatableString),
+  "sourceVersion": S.optional(TruncatableString),
+  "columnNumber": S.optional(S.String),
+  "functionName": S.optional(TruncatableString),
+  "lineNumber": S.optional(S.String),
+}),
 ).annotate({ identifier: "StackFrame" }) as any as S.Schema<StackFrame>;
 
 export type StackFrameList = ReadonlyArray<StackFrame>;
-export const StackFrameList = /*@__PURE__*/ S.Array(
-  StackFrame,
-) as any as S.Schema<StackFrameList>;
+export const StackFrameList = /*@__PURE__*/ S.Array(StackFrame) as any as S.Schema<StackFrameList>;
 
 /** A collection of stack frames, which can be truncated. */
 export interface StackFrames {
@@ -215,10 +202,10 @@ export interface StackFrames {
   droppedFramesCount?: number;
 }
 export const StackFrames = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frame: S.optional(StackFrameList),
-    droppedFramesCount: S.optional(S.Number),
-  }),
+S.Struct({
+  "frame": S.optional(StackFrameList),
+  "droppedFramesCount": S.optional(S.Number),
+}),
 ).annotate({ identifier: "StackFrames" }) as any as S.Schema<StackFrames>;
 
 /** A call stack appearing in a trace. */
@@ -229,10 +216,10 @@ export interface StackTrace {
   stackFrames?: StackFrames;
 }
 export const StackTrace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stackTraceHashId: S.optional(S.String),
-    stackFrames: S.optional(StackFrames),
-  }),
+S.Struct({
+  "stackTraceHashId": S.optional(S.String),
+  "stackFrames": S.optional(StackFrames),
+}),
 ).annotate({ identifier: "StackTrace" }) as any as S.Schema<StackTrace>;
 
 /** Text annotation with a set of attributes. */
@@ -243,17 +230,13 @@ export interface Annotation {
   attributes?: Attributes;
 }
 export const Annotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(TruncatableString),
-    attributes: S.optional(Attributes),
-  }),
+S.Struct({
+  "description": S.optional(TruncatableString),
+  "attributes": S.optional(Attributes),
+}),
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
 
-export type MessageEventTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "SENT"
-  | "RECEIVED"
-  | (string & {});
+export type MessageEventTypeEnum = "TYPE_UNSPECIFIED" | "SENT" | "RECEIVED";
 export const MessageEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event describing a message sent/received between Spans. */
@@ -268,12 +251,12 @@ export interface MessageEvent {
   compressedSizeBytes?: string;
 }
 export const MessageEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    uncompressedSizeBytes: S.optional(S.String),
-    type: S.optional(MessageEventTypeEnum),
-    compressedSizeBytes: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "uncompressedSizeBytes": S.optional(S.String),
+  "type": S.optional(MessageEventTypeEnum),
+  "compressedSizeBytes": S.optional(S.String),
+}),
 ).annotate({ identifier: "MessageEvent" }) as any as S.Schema<MessageEvent>;
 
 /** A time-stamped annotation or message event in the Span. */
@@ -286,17 +269,15 @@ export interface TimeEvent {
   messageEvent?: MessageEvent;
 }
 export const TimeEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    time: S.optional(S.String),
-    annotation: S.optional(Annotation),
-    messageEvent: S.optional(MessageEvent),
-  }),
+S.Struct({
+  "time": S.optional(S.String),
+  "annotation": S.optional(Annotation),
+  "messageEvent": S.optional(MessageEvent),
+}),
 ).annotate({ identifier: "TimeEvent" }) as any as S.Schema<TimeEvent>;
 
 export type TimeEventList = ReadonlyArray<TimeEvent>;
-export const TimeEventList = /*@__PURE__*/ S.Array(
-  TimeEvent,
-) as any as S.Schema<TimeEventList>;
+export const TimeEventList = /*@__PURE__*/ S.Array(TimeEvent) as any as S.Schema<TimeEventList>;
 
 /** A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on the span, consisting of either user-supplied key:value pairs, or details of a message sent/received between Spans. */
 export interface TimeEvents {
@@ -308,23 +289,18 @@ export interface TimeEvents {
   timeEvent?: TimeEventList;
 }
 export const TimeEvents = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    droppedAnnotationsCount: S.optional(S.Number),
-    droppedMessageEventsCount: S.optional(S.Number),
-    timeEvent: S.optional(TimeEventList),
-  }),
+S.Struct({
+  "droppedAnnotationsCount": S.optional(S.Number),
+  "droppedMessageEventsCount": S.optional(S.Number),
+  "timeEvent": S.optional(TimeEventList),
+}),
 ).annotate({ identifier: "TimeEvents" }) as any as S.Schema<TimeEvents>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -336,21 +312,14 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "message": S.optional(S.String),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type SpanSpanKindEnum =
-  | "SPAN_KIND_UNSPECIFIED"
-  | "INTERNAL"
-  | "SERVER"
-  | "CLIENT"
-  | "PRODUCER"
-  | "CONSUMER"
-  | (string & {});
+export type SpanSpanKindEnum = "SPAN_KIND_UNSPECIFIED" | "INTERNAL" | "SERVER" | "CLIENT" | "PRODUCER" | "CONSUMER";
 export const SpanSpanKindEnum = /*@__PURE__*/ S.String;
 
 /** A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous. There might be gaps or overlaps between spans in a trace. */
@@ -385,28 +354,26 @@ export interface Span {
   sameProcessAsParentSpan?: boolean;
 }
 export const Span = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(Attributes),
-    startTime: S.optional(S.String),
-    parentSpanId: S.optional(S.String),
-    spanId: S.optional(S.String),
-    childSpanCount: S.optional(S.Number),
-    links: S.optional(Links),
-    stackTrace: S.optional(StackTrace),
-    timeEvents: S.optional(TimeEvents),
-    status: S.optional(Status),
-    endTime: S.optional(S.String),
-    spanKind: S.optional(SpanSpanKindEnum),
-    name: S.optional(S.String),
-    displayName: S.optional(TruncatableString),
-    sameProcessAsParentSpan: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "attributes": S.optional(Attributes),
+  "startTime": S.optional(S.String),
+  "parentSpanId": S.optional(S.String),
+  "spanId": S.optional(S.String),
+  "childSpanCount": S.optional(S.Number),
+  "links": S.optional(Links),
+  "stackTrace": S.optional(StackTrace),
+  "timeEvents": S.optional(TimeEvents),
+  "status": S.optional(Status),
+  "endTime": S.optional(S.String),
+  "spanKind": S.optional(SpanSpanKindEnum),
+  "name": S.optional(S.String),
+  "displayName": S.optional(TruncatableString),
+  "sameProcessAsParentSpan": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Span" }) as any as S.Schema<Span>;
 
 export type SpanList = ReadonlyArray<Span>;
-export const SpanList = /*@__PURE__*/ S.Array(
-  Span,
-) as any as S.Schema<SpanList>;
+export const SpanList = /*@__PURE__*/ S.Array(Span) as any as S.Schema<SpanList>;
 
 /** The request message for the `BatchWriteSpans` method. */
 export interface BatchWriteSpansRequest {
@@ -414,12 +381,10 @@ export interface BatchWriteSpansRequest {
   spans?: SpanList;
 }
 export const BatchWriteSpansRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spans: S.optional(SpanList),
-  }),
-).annotate({
-  identifier: "BatchWriteSpansRequest",
-}) as any as S.Schema<BatchWriteSpansRequest>;
+S.Struct({
+  "spans": S.optional(SpanList),
+}),
+).annotate({ identifier: "BatchWriteSpansRequest" }) as any as S.Schema<BatchWriteSpansRequest>;
 
 export interface BatchWriteProjectsTracesRequest {
   /** Required. The name of the project where the spans belong. The format is `projects/[PROJECT_ID]`. */
@@ -428,25 +393,17 @@ export interface BatchWriteProjectsTracesRequest {
   body?: BatchWriteSpansRequest;
 }
 export const BatchWriteProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(BatchWriteSpansRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/{+name}/traces:batchWrite",
-      baseUrl: "https://cloudtrace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchWriteProjectsTracesRequest",
-}) as any as S.Schema<BatchWriteProjectsTracesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(BatchWriteSpansRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}/traces:batchWrite","baseUrl":"https://cloudtrace.googleapis.com/"})),
+).annotate({ identifier: "BatchWriteProjectsTracesRequest" }) as any as S.Schema<BatchWriteProjectsTracesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface CreateSpanProjectsTracesSpansRequest {
   /** Required. The resource name of the span in the following format: * `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It should not be zero. `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. It should not be zero. . */
@@ -454,28 +411,14 @@ export interface CreateSpanProjectsTracesSpansRequest {
   /** Request body */
   body?: Span;
 }
-export const CreateSpanProjectsTracesSpansRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Span.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}",
-        baseUrl: "https://cloudtrace.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateSpanProjectsTracesSpansRequest",
-}) as any as S.Schema<CreateSpanProjectsTracesSpansRequest>;
+export const CreateSpanProjectsTracesSpansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Span.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}","baseUrl":"https://cloudtrace.googleapis.com/"})),
+).annotate({ identifier: "CreateSpanProjectsTracesSpansRequest" }) as any as S.Schema<CreateSpanProjectsTracesSpansRequest>;
 
-export type BatchWriteProjectsTracesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchWriteProjectsTracesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Batch writes new spans to new or existing traces. You cannot update existing spans. If a span ID already exists, an additional copy of the span will be stored. */
 export const batchWriteProjectsTraces: API.OperationMethod<
   BatchWriteProjectsTracesRequest,
@@ -490,12 +433,7 @@ export const batchWriteProjectsTraces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSpanProjectsTracesSpansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateSpanProjectsTracesSpansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new span. If a span ID already exists, an additional copy of the span will be stored. */
 export const createSpanProjectsTracesSpans: API.OperationMethod<
   CreateSpanProjectsTracesSpansRequest,
@@ -509,3 +447,4 @@ export const createSpanProjectsTracesSpans: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

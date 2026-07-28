@@ -28,7 +28,11 @@
  * - `header`/`postProcess` own the service consts (svc/auth/proto/ver/ns/
  *   rules via compile-rules) and conditional-import placeholder pruning.
  */
-import { cyclicShapeIds } from "@distilled.cloud/core/codegen/graph";
+import {
+  cyclicShapeIds,
+  reachableFrom,
+  shapeDeps,
+} from "@distilled.cloud/core/codegen/graph";
 import { mergePaginated } from "@distilled.cloud/core/codegen/pagination";
 import {
   enumDecl,
@@ -1370,6 +1374,54 @@ export const awsSpec = (
     }
   };
 
+  // --- Direction classification (enum openness) ------------------------------
+  // Enum/intEnum ALIASES are emitted CLOSED (`type X = "a" | "b"`); shapes
+  // reachable ONLY from operation inputs re-open enum references inline
+  // (`X | (string & {})`) so consumers can send tomorrow's values without an
+  // SDK update. Anything reachable from an output or error shape is
+  // response-side — closed, so reads stay exhaustively matchable.
+  const requestOnlyNames = (() => {
+    const inputRoots: string[] = [];
+    const responseRoots: string[] = [];
+    for (const shape of Object.values(shapes)) {
+      if (shape.type !== "operation") continue;
+      if (shape.input?.target) inputRoots.push(shape.input.target);
+      if (shape.output?.target) responseRoots.push(shape.output.target);
+      for (const e of (shape.errors ?? []) as Array<{ target: string }>) {
+        responseRoots.push(e.target);
+      }
+    }
+    const requestReachable = reachableFrom(shapes, inputRoots, shapeDeps);
+    const responseReachable = reachableFrom(shapes, responseRoots, shapeDeps);
+    const names = new Set<string>();
+    for (const id of requestReachable) {
+      if (!responseReachable.has(id)) names.add(formatName(id));
+    }
+    return names;
+  })();
+
+  /** The inline open arm for an enum-targeted reference, if any. */
+  const openEnumArm = (target: string): string | undefined => {
+    const t = shapes[target]?.type;
+    return t === "enum"
+      ? "(string & {})"
+      : t === "intEnum"
+        ? "(number & {})"
+        : undefined;
+  };
+
+  /**
+   * TS type of a member/element reference as seen from inside the shape
+   * named `ownerName`: enum references from request-only shapes gain the
+   * inline open arm; everything else is the plain (closed) alias.
+   */
+  const tsTypeAt = (target: string, ownerName: string): string => {
+    const base = tsTypeOf(target);
+    if (!requestOnlyNames.has(ownerName)) return base;
+    const arm = openEnumArm(target);
+    return arm ? `${base} | ${arm}` : base;
+  };
+
   // --- Member conversion (shared by structures and error classes) -----------
 
   interface ConvertedMember {
@@ -1444,7 +1496,8 @@ export const awsSpec = (
       tsType = `stream.Stream<${tsTypeOf(member.target)}, Error, never>`;
     } else {
       schema = schemaExprOf(member.target);
-      tsType = tsTypeOf(member.target);
+      // Request-only owners re-open enum member references inline.
+      tsType = tsTypeAt(member.target, ownerName);
     }
 
     // Timestamp members: HTTP header bindings default to http-date; an
@@ -1740,8 +1793,8 @@ export const awsSpec = (
           return enumDecl({ name, values: enumValues, pure: PURE });
         }
 
-        // ---- Int enums: open numeric literal unions (documented values
-        // plus `(number & {})` for forward compatibility).
+        // ---- Int enums: CLOSED numeric literal union aliases; request-side
+        // member references re-open them inline (`Y | (number & {})`).
         case "intEnum": {
           const name = formatName(id);
           const enumOverride = serviceSpec.enums?.[name];
@@ -1760,7 +1813,7 @@ export const awsSpec = (
             }
           }
           const intUnion = enumValues.length
-            ? `${enumValues.join(" | ")} | (number & {})`
+            ? enumValues.join(" | ")
             : "number";
           return [
             `export type ${name} = ${intUnion};`,
@@ -1792,7 +1845,7 @@ export const awsSpec = (
           );
 
           const sparsePipe = isSparse ? ".pipe(T.Sparse())" : "";
-          const memberTsType = tsTypeOf(def.member.target);
+          const memberTsType = tsTypeAt(def.member.target, name);
           const memberTsTypeForArray = memberTsType.includes("|")
             ? `(${memberTsType})`
             : memberTsType;
@@ -1863,12 +1916,17 @@ export const awsSpec = (
           );
 
           const sparsePipe = isSparse ? ".pipe(T.Sparse())" : "";
-          const valueTsType = tsTypeOf(def.value.target);
+          const valueTsType = tsTypeAt(def.value.target, name);
           // Value piped through S.optional so undefined values are accepted
           // (and dropped during serialization).
           const recordExpr = `S.Record(${wrappedKey}, ${wrappedValue}.pipe(S.optional))${sparsePipe}`;
+          // Request-only enum-key maps re-open the key inline so callers
+          // can send undocumented keys.
+          const keyArm = requestOnlyNames.has(name)
+            ? openEnumArm(def.key.target)
+            : undefined;
           const typeAlias = isKeyEnum
-            ? `export type ${name} = { [key in ${keyTargetName}]?: ${valueTsType} };`
+            ? `export type ${name} = { [key in ${keyTargetName}${keyArm ? ` | ${keyArm}` : ""}]?: ${valueTsType} };`
             : `export type ${name} = { [key: string]: ${valueTsType} | undefined };`;
           return [
             typeAlias,
@@ -1918,7 +1976,7 @@ export const awsSpec = (
               generateUnionVariant(
                 allMemberNames,
                 memberName,
-                tsTypeOf(member.target),
+                tsTypeAt(member.target, name),
               ),
             );
           }

@@ -13,72 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type ScanRunResultStateEnum =
-  | "RESULT_STATE_UNSPECIFIED"
-  | "SUCCESS"
-  | "ERROR"
-  | "KILLED"
-  | (string & {});
+export type ScanRunResultStateEnum = "RESULT_STATE_UNSPECIFIED" | "SUCCESS" | "ERROR" | "KILLED";
 export const ScanRunResultStateEnum = /*@__PURE__*/ S.String;
 
-export type ScanRunExecutionStateEnum =
-  | "EXECUTION_STATE_UNSPECIFIED"
-  | "QUEUED"
-  | "SCANNING"
-  | "FINISHED"
-  | (string & {});
+export type ScanRunExecutionStateEnum = "EXECUTION_STATE_UNSPECIFIED" | "QUEUED" | "SCANNING" | "FINISHED";
 export const ScanRunExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** A ScanRun is a output-only resource representing an actual run of the scan. */
@@ -103,40 +91,26 @@ export interface ScanRun {
   urlsCrawledCount?: string;
 }
 export const ScanRun = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    urlsTestedCount: S.optional(S.String),
-    startTime: S.optional(S.String),
-    name: S.optional(S.String),
-    hasVulnerabilities: S.optional(S.Boolean),
-    progressPercent: S.optional(S.Number),
-    resultState: S.optional(ScanRunResultStateEnum),
-    executionState: S.optional(ScanRunExecutionStateEnum),
-    endTime: S.optional(S.String),
-    urlsCrawledCount: S.optional(S.String),
-  }),
+S.Struct({
+  "urlsTestedCount": S.optional(S.String),
+  "startTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "hasVulnerabilities": S.optional(S.Boolean),
+  "progressPercent": S.optional(S.Number),
+  "resultState": S.optional(ScanRunResultStateEnum),
+  "executionState": S.optional(ScanRunExecutionStateEnum),
+  "endTime": S.optional(S.String),
+  "urlsCrawledCount": S.optional(S.String),
+}),
 ).annotate({ identifier: "ScanRun" }) as any as S.Schema<ScanRun>;
 
-export type ScanConfigTargetPlatformsItemEnum =
-  | "TARGET_PLATFORM_UNSPECIFIED"
-  | "APP_ENGINE"
-  | "COMPUTE"
-  | "CLOUD_RUN"
-  | "CLOUD_FUNCTIONS"
-  | (string & {});
+export type ScanConfigTargetPlatformsItemEnum = "TARGET_PLATFORM_UNSPECIFIED" | "APP_ENGINE" | "COMPUTE" | "CLOUD_RUN" | "CLOUD_FUNCTIONS";
 export const ScanConfigTargetPlatformsItemEnum = /*@__PURE__*/ S.String;
 
-export type ScanConfigTargetPlatformsItemEnumList =
-  ReadonlyArray<ScanConfigTargetPlatformsItemEnum>;
-export const ScanConfigTargetPlatformsItemEnumList = /*@__PURE__*/ S.Array(
-  ScanConfigTargetPlatformsItemEnum,
-) as any as S.Schema<ScanConfigTargetPlatformsItemEnumList>;
+export type ScanConfigTargetPlatformsItemEnumList = ReadonlyArray<ScanConfigTargetPlatformsItemEnum>;
+export const ScanConfigTargetPlatformsItemEnumList = /*@__PURE__*/ S.Array(ScanConfigTargetPlatformsItemEnum) as any as S.Schema<ScanConfigTargetPlatformsItemEnumList>;
 
-export type ScanConfigUserAgentEnum =
-  | "USER_AGENT_UNSPECIFIED"
-  | "CHROME_LINUX"
-  | "CHROME_ANDROID"
-  | "SAFARI_IPHONE"
-  | (string & {});
+export type ScanConfigUserAgentEnum = "USER_AGENT_UNSPECIFIED" | "CHROME_LINUX" | "CHROME_ANDROID" | "SAFARI_IPHONE";
 export const ScanConfigUserAgentEnum = /*@__PURE__*/ S.String;
 
 /** Scan schedule configuration. */
@@ -147,10 +121,10 @@ export interface Schedule {
   intervalDurationDays?: number;
 }
 export const Schedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scheduleTime: S.optional(S.String),
-    intervalDurationDays: S.optional(S.Number),
-  }),
+S.Struct({
+  "scheduleTime": S.optional(S.String),
+  "intervalDurationDays": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 /** Describes authentication configuration that uses a Google account. */
@@ -161,10 +135,10 @@ export interface GoogleAccount {
   password?: string;
 }
 export const GoogleAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    username: S.optional(S.String),
-    password: S.optional(S.String),
-  }),
+S.Struct({
+  "username": S.optional(S.String),
+  "password": S.optional(S.String),
+}),
 ).annotate({ identifier: "GoogleAccount" }) as any as S.Schema<GoogleAccount>;
 
 /** Describes authentication configuration that uses a custom account. */
@@ -177,11 +151,11 @@ export interface CustomAccount {
   username?: string;
 }
 export const CustomAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    password: S.optional(S.String),
-    loginUrl: S.optional(S.String),
-    username: S.optional(S.String),
-  }),
+S.Struct({
+  "password": S.optional(S.String),
+  "loginUrl": S.optional(S.String),
+  "username": S.optional(S.String),
+}),
 ).annotate({ identifier: "CustomAccount" }) as any as S.Schema<CustomAccount>;
 
 /** Scan authentication configuration. */
@@ -192,10 +166,10 @@ export interface Authentication {
   customAccount?: CustomAccount;
 }
 export const Authentication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    googleAccount: S.optional(GoogleAccount),
-    customAccount: S.optional(CustomAccount),
-  }),
+S.Struct({
+  "googleAccount": S.optional(GoogleAccount),
+  "customAccount": S.optional(CustomAccount),
+}),
 ).annotate({ identifier: "Authentication" }) as any as S.Schema<Authentication>;
 
 /** A ScanConfig resource contains the configurations to launch a scan. next id: 12 */
@@ -222,18 +196,18 @@ export interface ScanConfig {
   maxQps?: number;
 }
 export const ScanConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blacklistPatterns: S.optional(StringList),
-    latestRun: S.optional(ScanRun),
-    targetPlatforms: S.optional(ScanConfigTargetPlatformsItemEnumList),
-    userAgent: S.optional(ScanConfigUserAgentEnum),
-    name: S.optional(S.String),
-    startingUrls: S.optional(StringList),
-    schedule: S.optional(Schedule),
-    displayName: S.optional(S.String),
-    authentication: S.optional(Authentication),
-    maxQps: S.optional(S.Number),
-  }),
+S.Struct({
+  "blacklistPatterns": S.optional(StringList),
+  "latestRun": S.optional(ScanRun),
+  "targetPlatforms": S.optional(ScanConfigTargetPlatformsItemEnumList),
+  "userAgent": S.optional(ScanConfigUserAgentEnum),
+  "name": S.optional(S.String),
+  "startingUrls": S.optional(StringList),
+  "schedule": S.optional(Schedule),
+  "displayName": S.optional(S.String),
+  "authentication": S.optional(Authentication),
+  "maxQps": S.optional(S.Number),
+}),
 ).annotate({ identifier: "ScanConfig" }) as any as S.Schema<ScanConfig>;
 
 export interface CreateProjectsScanConfigsRequest {
@@ -243,99 +217,57 @@ export interface CreateProjectsScanConfigsRequest {
   body?: ScanConfig;
 }
 export const CreateProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(ScanConfig.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1alpha/{+parent}/scanConfigs",
-      baseUrl: "https://websecurityscanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsScanConfigsRequest",
-}) as any as S.Schema<CreateProjectsScanConfigsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ScanConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/scanConfigs","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsScanConfigsRequest" }) as any as S.Schema<CreateProjectsScanConfigsRequest>;
 
 export interface DeleteProjectsScanConfigsRequest {
   /** Required. The resource name of the ScanConfig to be deleted. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
   name: string;
 }
 export const DeleteProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://websecurityscanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsScanConfigsRequest",
-}) as any as S.Schema<DeleteProjectsScanConfigsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsScanConfigsRequest" }) as any as S.Schema<DeleteProjectsScanConfigsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface GetProjectsScanConfigsRequest {
   /** Required. The resource name of the ScanConfig to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
   name: string;
 }
 export const GetProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://websecurityscanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsScanConfigsRequest",
-}) as any as S.Schema<GetProjectsScanConfigsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsScanConfigsRequest" }) as any as S.Schema<GetProjectsScanConfigsRequest>;
 
 export interface GetProjectsScanConfigsScanRunsRequest {
   /** Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
   name: string;
 }
-export const GetProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://websecurityscanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsScanConfigsScanRunsRequest",
-}) as any as S.Schema<GetProjectsScanConfigsScanRunsRequest>;
+export const GetProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsScanConfigsScanRunsRequest" }) as any as S.Schema<GetProjectsScanConfigsScanRunsRequest>;
 
 export interface GetProjectsScanConfigsScanRunsFindingsRequest {
   /** Required. The resource name of the Finding to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}/findings/{findingId}'. */
   name: string;
 }
-export const GetProjectsScanConfigsScanRunsFindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://websecurityscanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsScanConfigsScanRunsFindingsRequest",
-  }) as any as S.Schema<GetProjectsScanConfigsScanRunsFindingsRequest>;
+export const GetProjectsScanConfigsScanRunsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsScanConfigsScanRunsFindingsRequest" }) as any as S.Schema<GetProjectsScanConfigsScanRunsFindingsRequest>;
 
 /** Information regarding any resource causing the vulnerability such as JavaScript sources, image, audio files, etc. */
 export interface ViolatingResource {
@@ -345,13 +277,11 @@ export interface ViolatingResource {
   contentType?: string;
 }
 export const ViolatingResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUrl: S.optional(S.String),
-    contentType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ViolatingResource",
-}) as any as S.Schema<ViolatingResource>;
+S.Struct({
+  "resourceUrl": S.optional(S.String),
+  "contentType": S.optional(S.String),
+}),
+).annotate({ identifier: "ViolatingResource" }) as any as S.Schema<ViolatingResource>;
 
 /** Information about vulnerable request parameters. */
 export interface VulnerableParameters {
@@ -359,12 +289,10 @@ export interface VulnerableParameters {
   parameterNames?: StringList;
 }
 export const VulnerableParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameterNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "VulnerableParameters",
-}) as any as S.Schema<VulnerableParameters>;
+S.Struct({
+  "parameterNames": S.optional(StringList),
+}),
+).annotate({ identifier: "VulnerableParameters" }) as any as S.Schema<VulnerableParameters>;
 
 /** Information reported for an outdated library. */
 export interface OutdatedLibrary {
@@ -376,32 +304,14 @@ export interface OutdatedLibrary {
   learnMoreUrls?: StringList;
 }
 export const OutdatedLibrary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    libraryName: S.optional(S.String),
-    version: S.optional(S.String),
-    learnMoreUrls: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "OutdatedLibrary",
-}) as any as S.Schema<OutdatedLibrary>;
+S.Struct({
+  "libraryName": S.optional(S.String),
+  "version": S.optional(S.String),
+  "learnMoreUrls": S.optional(StringList),
+}),
+).annotate({ identifier: "OutdatedLibrary" }) as any as S.Schema<OutdatedLibrary>;
 
-export type FindingFindingTypeEnum =
-  | "FINDING_TYPE_UNSPECIFIED"
-  | "MIXED_CONTENT"
-  | "OUTDATED_LIBRARY"
-  | "ROSETTA_FLASH"
-  | "XSS_CALLBACK"
-  | "XSS_ERROR"
-  | "CLEAR_TEXT_PASSWORD"
-  | "INVALID_CONTENT_TYPE"
-  | "XSS_ANGULAR_CALLBACK"
-  | "INVALID_HEADER"
-  | "MISSPELLED_SECURITY_HEADER_NAME"
-  | "MISMATCHING_SECURITY_HEADER_VALUES"
-  | "ACCESSIBLE_GIT_REPOSITORY"
-  | "ACCESSIBLE_SVN_REPOSITORY"
-  | "ACCESSIBLE_ENV_FILE"
-  | (string & {});
+export type FindingFindingTypeEnum = "FINDING_TYPE_UNSPECIFIED" | "MIXED_CONTENT" | "OUTDATED_LIBRARY" | "ROSETTA_FLASH" | "XSS_CALLBACK" | "XSS_ERROR" | "CLEAR_TEXT_PASSWORD" | "INVALID_CONTENT_TYPE" | "XSS_ANGULAR_CALLBACK" | "INVALID_HEADER" | "MISSPELLED_SECURITY_HEADER_NAME" | "MISMATCHING_SECURITY_HEADER_VALUES" | "ACCESSIBLE_GIT_REPOSITORY" | "ACCESSIBLE_SVN_REPOSITORY" | "ACCESSIBLE_ENV_FILE";
 export const FindingFindingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes a HTTP Header. */
@@ -412,16 +322,14 @@ export interface Header {
   value?: string;
 }
 export const Header = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
 export type HeaderList = ReadonlyArray<Header>;
-export const HeaderList = /*@__PURE__*/ S.Array(
-  Header,
-) as any as S.Schema<HeaderList>;
+export const HeaderList = /*@__PURE__*/ S.Array(Header) as any as S.Schema<HeaderList>;
 
 /** Information about vulnerable or missing HTTP Headers. */
 export interface VulnerableHeaders {
@@ -431,13 +339,11 @@ export interface VulnerableHeaders {
   missingHeaders?: HeaderList;
 }
 export const VulnerableHeaders = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.optional(HeaderList),
-    missingHeaders: S.optional(HeaderList),
-  }),
-).annotate({
-  identifier: "VulnerableHeaders",
-}) as any as S.Schema<VulnerableHeaders>;
+S.Struct({
+  "headers": S.optional(HeaderList),
+  "missingHeaders": S.optional(HeaderList),
+}),
+).annotate({ identifier: "VulnerableHeaders" }) as any as S.Schema<VulnerableHeaders>;
 
 /** Information reported for an XSS. */
 export interface Xss {
@@ -447,10 +353,10 @@ export interface Xss {
   errorMessage?: string;
 }
 export const Xss = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stackTraces: S.optional(StringList),
-    errorMessage: S.optional(S.String),
-  }),
+S.Struct({
+  "stackTraces": S.optional(StringList),
+  "errorMessage": S.optional(S.String),
+}),
 ).annotate({ identifier: "Xss" }) as any as S.Schema<Xss>;
 
 /** A Finding resource represents a vulnerability instance identified during a ScanRun. */
@@ -487,23 +393,23 @@ export interface Finding {
   xss?: Xss;
 }
 export const Finding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    fuzzedUrl: S.optional(S.String),
-    body: S.optional(S.String),
-    reproductionUrl: S.optional(S.String),
-    violatingResource: S.optional(ViolatingResource),
-    vulnerableParameters: S.optional(VulnerableParameters),
-    frameUrl: S.optional(S.String),
-    outdatedLibrary: S.optional(OutdatedLibrary),
-    trackingId: S.optional(S.String),
-    findingType: S.optional(FindingFindingTypeEnum),
-    httpMethod: S.optional(S.String),
-    finalUrl: S.optional(S.String),
-    vulnerableHeaders: S.optional(VulnerableHeaders),
-    name: S.optional(S.String),
-    xss: S.optional(Xss),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "fuzzedUrl": S.optional(S.String),
+  "body": S.optional(S.String),
+  "reproductionUrl": S.optional(S.String),
+  "violatingResource": S.optional(ViolatingResource),
+  "vulnerableParameters": S.optional(VulnerableParameters),
+  "frameUrl": S.optional(S.String),
+  "outdatedLibrary": S.optional(OutdatedLibrary),
+  "trackingId": S.optional(S.String),
+  "findingType": S.optional(FindingFindingTypeEnum),
+  "httpMethod": S.optional(S.String),
+  "finalUrl": S.optional(S.String),
+  "vulnerableHeaders": S.optional(VulnerableHeaders),
+  "name": S.optional(S.String),
+  "xss": S.optional(Xss),
+}),
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 
 export interface ListProjectsScanConfigsRequest {
@@ -515,25 +421,15 @@ export interface ListProjectsScanConfigsRequest {
   pageToken?: string;
 }
 export const ListProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+parent}/scanConfigs",
-      baseUrl: "https://websecurityscanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsScanConfigsRequest",
-}) as any as S.Schema<ListProjectsScanConfigsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/scanConfigs","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsScanConfigsRequest" }) as any as S.Schema<ListProjectsScanConfigsRequest>;
 
 export type ScanConfigList = ReadonlyArray<ScanConfig>;
-export const ScanConfigList = /*@__PURE__*/ S.Array(
-  ScanConfig,
-) as any as S.Schema<ScanConfigList>;
+export const ScanConfigList = /*@__PURE__*/ S.Array(ScanConfig) as any as S.Schema<ScanConfigList>;
 
 /** Response for the `ListScanConfigs` method. */
 export interface ListScanConfigsResponse {
@@ -543,13 +439,11 @@ export interface ListScanConfigsResponse {
   scanConfigs?: ScanConfigList;
 }
 export const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    scanConfigs: S.optional(ScanConfigList),
-  }),
-).annotate({
-  identifier: "ListScanConfigsResponse",
-}) as any as S.Schema<ListScanConfigsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "scanConfigs": S.optional(ScanConfigList),
+}),
+).annotate({ identifier: "ListScanConfigsResponse" }) as any as S.Schema<ListScanConfigsResponse>;
 
 export interface ListProjectsScanConfigsScanRunsRequest {
   /** The maximum number of ScanRuns to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
@@ -559,27 +453,16 @@ export interface ListProjectsScanConfigsScanRunsRequest {
   /** A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. */
   pageToken?: string;
 }
-export const ListProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/scanRuns",
-        baseUrl: "https://websecurityscanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsScanConfigsScanRunsRequest",
-}) as any as S.Schema<ListProjectsScanConfigsScanRunsRequest>;
+export const ListProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/scanRuns","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsScanConfigsScanRunsRequest" }) as any as S.Schema<ListProjectsScanConfigsScanRunsRequest>;
 
 export type ScanRunList = ReadonlyArray<ScanRun>;
-export const ScanRunList = /*@__PURE__*/ S.Array(
-  ScanRun,
-) as any as S.Schema<ScanRunList>;
+export const ScanRunList = /*@__PURE__*/ S.Array(ScanRun) as any as S.Schema<ScanRunList>;
 
 /** Response for the `ListScanRuns` method. */
 export interface ListScanRunsResponse {
@@ -589,13 +472,11 @@ export interface ListScanRunsResponse {
   nextPageToken?: string;
 }
 export const ListScanRunsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scanRuns: S.optional(ScanRunList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListScanRunsResponse",
-}) as any as S.Schema<ListScanRunsResponse>;
+S.Struct({
+  "scanRuns": S.optional(ScanRunList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListScanRunsResponse" }) as any as S.Schema<ListScanRunsResponse>;
 
 export interface ListProjectsScanConfigsScanRunsCrawledUrlsRequest {
   /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
@@ -605,22 +486,13 @@ export interface ListProjectsScanConfigsScanRunsCrawledUrlsRequest {
   /** The maximum number of CrawledUrls to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
 }
-export const ListProjectsScanConfigsScanRunsCrawledUrlsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/crawledUrls",
-        baseUrl: "https://websecurityscanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsScanConfigsScanRunsCrawledUrlsRequest",
-  }) as any as S.Schema<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>;
+export const ListProjectsScanConfigsScanRunsCrawledUrlsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/crawledUrls","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsScanConfigsScanRunsCrawledUrlsRequest" }) as any as S.Schema<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>;
 
 /** A CrawledUrl resource represents a URL that was crawled during a ScanRun. Web Security Scanner Service crawls the web applications, following all links within the scope of sites, to find the URLs to test against. */
 export interface CrawledUrl {
@@ -632,17 +504,15 @@ export interface CrawledUrl {
   httpMethod?: string;
 }
 export const CrawledUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    body: S.optional(S.String),
-    httpMethod: S.optional(S.String),
-  }),
+S.Struct({
+  "url": S.optional(S.String),
+  "body": S.optional(S.String),
+  "httpMethod": S.optional(S.String),
+}),
 ).annotate({ identifier: "CrawledUrl" }) as any as S.Schema<CrawledUrl>;
 
 export type CrawledUrlList = ReadonlyArray<CrawledUrl>;
-export const CrawledUrlList = /*@__PURE__*/ S.Array(
-  CrawledUrl,
-) as any as S.Schema<CrawledUrlList>;
+export const CrawledUrlList = /*@__PURE__*/ S.Array(CrawledUrl) as any as S.Schema<CrawledUrlList>;
 
 /** Response for the `ListCrawledUrls` method. */
 export interface ListCrawledUrlsResponse {
@@ -652,13 +522,11 @@ export interface ListCrawledUrlsResponse {
   nextPageToken?: string;
 }
 export const ListCrawledUrlsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    crawledUrls: S.optional(CrawledUrlList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCrawledUrlsResponse",
-}) as any as S.Schema<ListCrawledUrlsResponse>;
+S.Struct({
+  "crawledUrls": S.optional(CrawledUrlList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCrawledUrlsResponse" }) as any as S.Schema<ListCrawledUrlsResponse>;
 
 export interface ListProjectsScanConfigsScanRunsFindingsRequest {
   /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
@@ -670,28 +538,17 @@ export interface ListProjectsScanConfigsScanRunsFindingsRequest {
   /** The maximum number of Findings to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
 }
-export const ListProjectsScanConfigsScanRunsFindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/findings",
-        baseUrl: "https://websecurityscanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsScanConfigsScanRunsFindingsRequest",
-  }) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>;
+export const ListProjectsScanConfigsScanRunsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/findings","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsScanConfigsScanRunsFindingsRequest" }) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>;
 
 export type FindingList = ReadonlyArray<Finding>;
-export const FindingList = /*@__PURE__*/ S.Array(
-  Finding,
-) as any as S.Schema<FindingList>;
+export const FindingList = /*@__PURE__*/ S.Array(Finding) as any as S.Schema<FindingList>;
 
 /** Response for the `ListFindings` method. */
 export interface ListFindingsResponse {
@@ -701,50 +558,23 @@ export interface ListFindingsResponse {
   nextPageToken?: string;
 }
 export const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    findings: S.optional(FindingList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListFindingsResponse",
-}) as any as S.Schema<ListFindingsResponse>;
+S.Struct({
+  "findings": S.optional(FindingList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListFindingsResponse" }) as any as S.Schema<ListFindingsResponse>;
 
 export interface ListProjectsScanConfigsScanRunsFindingTypeStatsRequest {
   /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
   parent: string;
 }
-export const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/findingTypeStats",
-        baseUrl: "https://websecurityscanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsScanConfigsScanRunsFindingTypeStatsRequest",
-  }) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingTypeStatsRequest>;
+export const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/findingTypeStats","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsScanConfigsScanRunsFindingTypeStatsRequest" }) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingTypeStatsRequest>;
 
-export type FindingTypeStatsFindingTypeEnum =
-  | "FINDING_TYPE_UNSPECIFIED"
-  | "MIXED_CONTENT"
-  | "OUTDATED_LIBRARY"
-  | "ROSETTA_FLASH"
-  | "XSS_CALLBACK"
-  | "XSS_ERROR"
-  | "CLEAR_TEXT_PASSWORD"
-  | "INVALID_CONTENT_TYPE"
-  | "XSS_ANGULAR_CALLBACK"
-  | "INVALID_HEADER"
-  | "MISSPELLED_SECURITY_HEADER_NAME"
-  | "MISMATCHING_SECURITY_HEADER_VALUES"
-  | "ACCESSIBLE_GIT_REPOSITORY"
-  | "ACCESSIBLE_SVN_REPOSITORY"
-  | "ACCESSIBLE_ENV_FILE"
-  | (string & {});
+export type FindingTypeStatsFindingTypeEnum = "FINDING_TYPE_UNSPECIFIED" | "MIXED_CONTENT" | "OUTDATED_LIBRARY" | "ROSETTA_FLASH" | "XSS_CALLBACK" | "XSS_ERROR" | "CLEAR_TEXT_PASSWORD" | "INVALID_CONTENT_TYPE" | "XSS_ANGULAR_CALLBACK" | "INVALID_HEADER" | "MISSPELLED_SECURITY_HEADER_NAME" | "MISMATCHING_SECURITY_HEADER_VALUES" | "ACCESSIBLE_GIT_REPOSITORY" | "ACCESSIBLE_SVN_REPOSITORY" | "ACCESSIBLE_ENV_FILE";
 export const FindingTypeStatsFindingTypeEnum = /*@__PURE__*/ S.String;
 
 /** A FindingTypeStats resource represents stats regarding a specific FindingType of Findings under a given ScanRun. */
@@ -755,18 +585,14 @@ export interface FindingTypeStats {
   findingCount?: number;
 }
 export const FindingTypeStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    findingType: S.optional(FindingTypeStatsFindingTypeEnum),
-    findingCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FindingTypeStats",
-}) as any as S.Schema<FindingTypeStats>;
+S.Struct({
+  "findingType": S.optional(FindingTypeStatsFindingTypeEnum),
+  "findingCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "FindingTypeStats" }) as any as S.Schema<FindingTypeStats>;
 
 export type FindingTypeStatsList = ReadonlyArray<FindingTypeStats>;
-export const FindingTypeStatsList = /*@__PURE__*/ S.Array(
-  FindingTypeStats,
-) as any as S.Schema<FindingTypeStatsList>;
+export const FindingTypeStatsList = /*@__PURE__*/ S.Array(FindingTypeStats) as any as S.Schema<FindingTypeStatsList>;
 
 /** Response for the `ListFindingTypeStats` method. */
 export interface ListFindingTypeStatsResponse {
@@ -774,12 +600,10 @@ export interface ListFindingTypeStatsResponse {
   findingTypeStats?: FindingTypeStatsList;
 }
 export const ListFindingTypeStatsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    findingTypeStats: S.optional(FindingTypeStatsList),
-  }),
-).annotate({
-  identifier: "ListFindingTypeStatsResponse",
-}) as any as S.Schema<ListFindingTypeStatsResponse>;
+S.Struct({
+  "findingTypeStats": S.optional(FindingTypeStatsList),
+}),
+).annotate({ identifier: "ListFindingTypeStatsResponse" }) as any as S.Schema<ListFindingTypeStatsResponse>;
 
 export interface PatchProjectsScanConfigsRequest {
   /** The resource name of the ScanConfig. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system. */
@@ -790,28 +614,18 @@ export interface PatchProjectsScanConfigsRequest {
   body?: ScanConfig;
 }
 export const PatchProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(ScanConfig.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://websecurityscanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsScanConfigsRequest",
-}) as any as S.Schema<PatchProjectsScanConfigsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ScanConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/{+name}","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsScanConfigsRequest" }) as any as S.Schema<PatchProjectsScanConfigsRequest>;
 
 /** Request for the `StartScanRun` method. */
 export interface StartScanRunRequest {}
 export const StartScanRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartScanRunRequest",
-}) as any as S.Schema<StartScanRunRequest>;
+S.Struct({}),
+).annotate({ identifier: "StartScanRunRequest" }) as any as S.Schema<StartScanRunRequest>;
 
 export interface StartProjectsScanConfigsRequest {
   /** Required. The resource name of the ScanConfig to be used. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
@@ -820,27 +634,17 @@ export interface StartProjectsScanConfigsRequest {
   body?: StartScanRunRequest;
 }
 export const StartProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(StartScanRunRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1alpha/{+name}:start",
-      baseUrl: "https://websecurityscanner.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "StartProjectsScanConfigsRequest",
-}) as any as S.Schema<StartProjectsScanConfigsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(StartScanRunRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:start","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "StartProjectsScanConfigsRequest" }) as any as S.Schema<StartProjectsScanConfigsRequest>;
 
 /** Request for the `StopScanRun` method. */
 export interface StopScanRunRequest {}
 export const StopScanRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopScanRunRequest",
-}) as any as S.Schema<StopScanRunRequest>;
+S.Struct({}),
+).annotate({ identifier: "StopScanRunRequest" }) as any as S.Schema<StopScanRunRequest>;
 
 export interface StopProjectsScanConfigsScanRunsRequest {
   /** Required. The resource name of the ScanRun to be stopped. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
@@ -848,28 +652,14 @@ export interface StopProjectsScanConfigsScanRunsRequest {
   /** Request body */
   body?: StopScanRunRequest;
 }
-export const StopProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(StopScanRunRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:stop",
-        baseUrl: "https://websecurityscanner.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "StopProjectsScanConfigsScanRunsRequest",
-}) as any as S.Schema<StopProjectsScanConfigsScanRunsRequest>;
+export const StopProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(StopScanRunRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:stop","baseUrl":"https://websecurityscanner.googleapis.com/"})),
+).annotate({ identifier: "StopProjectsScanConfigsScanRunsRequest" }) as any as S.Schema<StopProjectsScanConfigsScanRunsRequest>;
 
-export type CreateProjectsScanConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsScanConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new ScanConfig. */
 export const createProjectsScanConfigs: API.OperationMethod<
   CreateProjectsScanConfigsRequest,
@@ -884,12 +674,7 @@ export const createProjectsScanConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsScanConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsScanConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing ScanConfig and its child resources. */
 export const deleteProjectsScanConfigs: API.OperationMethod<
   DeleteProjectsScanConfigsRequest,
@@ -919,10 +704,7 @@ export const getProjectsScanConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsScanConfigsScanRunsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsScanConfigsScanRunsError = NotFound | Forbidden | GcpOpError;
 /** Gets a ScanRun. */
 export const getProjectsScanConfigsScanRuns: API.OperationMethod<
   GetProjectsScanConfigsScanRunsRequest,
@@ -937,10 +719,7 @@ export const getProjectsScanConfigsScanRuns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsScanConfigsScanRunsFindingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsScanConfigsScanRunsFindingsError = NotFound | Forbidden | GcpOpError;
 /** Gets a Finding. */
 export const getProjectsScanConfigsScanRunsFindings: API.OperationMethod<
   GetProjectsScanConfigsScanRunsFindingsRequest,
@@ -968,16 +747,10 @@ export const listProjectsScanConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsScanConfigsScanRunsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsScanConfigsScanRunsError = NotFound | Forbidden | GcpOpError;
 /** Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time. */
 export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
   ListProjectsScanConfigsScanRunsRequest,
@@ -990,16 +763,10 @@ export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsScanConfigsScanRunsCrawledUrlsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsScanConfigsScanRunsCrawledUrlsError = NotFound | Forbidden | GcpOpError;
 /** List CrawledUrls under a given ScanRun. */
 export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationMethod<
   ListProjectsScanConfigsScanRunsCrawledUrlsRequest,
@@ -1012,16 +779,10 @@ export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsScanConfigsScanRunsFindingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsScanConfigsScanRunsFindingsError = NotFound | Forbidden | GcpOpError;
 /** List Findings under a given ScanRun. */
 export const listProjectsScanConfigsScanRunsFindings: API.PaginatedOperationMethod<
   ListProjectsScanConfigsScanRunsFindingsRequest,
@@ -1034,16 +795,10 @@ export const listProjectsScanConfigsScanRunsFindings: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsScanConfigsScanRunsFindingTypeStatsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsScanConfigsScanRunsFindingTypeStatsError = NotFound | Forbidden | GcpOpError;
 /** List all FindingTypeStats under a given ScanRun. */
 export const listProjectsScanConfigsScanRunsFindingTypeStats: API.OperationMethod<
   ListProjectsScanConfigsScanRunsFindingTypeStatsRequest,
@@ -1058,12 +813,7 @@ export const listProjectsScanConfigsScanRunsFindingTypeStats: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsScanConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsScanConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a ScanConfig. This method support partial update of a ScanConfig. */
 export const patchProjectsScanConfigs: API.OperationMethod<
   PatchProjectsScanConfigsRequest,
@@ -1078,12 +828,7 @@ export const patchProjectsScanConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartProjectsScanConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StartProjectsScanConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Start a ScanRun according to the given ScanConfig. */
 export const startProjectsScanConfigs: API.OperationMethod<
   StartProjectsScanConfigsRequest,
@@ -1098,12 +843,7 @@ export const startProjectsScanConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopProjectsScanConfigsScanRunsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StopProjectsScanConfigsScanRunsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Stops a ScanRun. The stopped ScanRun is returned. */
 export const stopProjectsScanConfigsScanRuns: API.OperationMethod<
   StopProjectsScanConfigsScanRunsRequest,
@@ -1117,3 +857,4 @@ export const stopProjectsScanConfigsScanRuns: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

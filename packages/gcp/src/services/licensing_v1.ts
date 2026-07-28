@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface DeleteLicenseAssignmentsRequest {
@@ -69,26 +69,18 @@ export interface DeleteLicenseAssignmentsRequest {
   skuId: string;
 }
 export const DeleteLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-    skuId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
-      baseUrl: "https://licensing.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteLicenseAssignmentsRequest",
-}) as any as S.Schema<DeleteLicenseAssignmentsRequest>;
+S.Struct({
+  "userId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "skuId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}","baseUrl":"https://licensing.googleapis.com/"})),
+).annotate({ identifier: "DeleteLicenseAssignmentsRequest" }) as any as S.Schema<DeleteLicenseAssignmentsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface GetLicenseAssignmentsRequest {
   /** The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a `userId` is subject to change, do not use a `userId` value as a key for persistent data. This key could break if the current user's email address changes. If the `userId` is suspended, the license status changes. */
@@ -99,20 +91,12 @@ export interface GetLicenseAssignmentsRequest {
   productId: string;
 }
 export const GetLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.String.pipe(T.Label()),
-    skuId: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
-      baseUrl: "https://licensing.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetLicenseAssignmentsRequest",
-}) as any as S.Schema<GetLicenseAssignmentsRequest>;
+S.Struct({
+  "userId": S.String.pipe(T.Label()),
+  "skuId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}","baseUrl":"https://licensing.googleapis.com/"})),
+).annotate({ identifier: "GetLicenseAssignmentsRequest" }) as any as S.Schema<GetLicenseAssignmentsRequest>;
 
 /** Representation of a license assignment. */
 export interface LicenseAssignment {
@@ -134,19 +118,17 @@ export interface LicenseAssignment {
   userId?: string;
 }
 export const LicenseAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skuName: S.optional(S.String),
-    kind: S.optional(S.String),
-    skuId: S.optional(S.String),
-    productId: S.optional(S.String),
-    productName: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    etags: S.optional(S.String),
-    userId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LicenseAssignment",
-}) as any as S.Schema<LicenseAssignment>;
+S.Struct({
+  "skuName": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "skuId": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "productName": S.optional(S.String),
+  "selfLink": S.optional(S.String),
+  "etags": S.optional(S.String),
+  "userId": S.optional(S.String),
+}),
+).annotate({ identifier: "LicenseAssignment" }) as any as S.Schema<LicenseAssignment>;
 
 /** Representation of a license assignment. */
 export interface LicenseAssignmentInsert {
@@ -154,12 +136,10 @@ export interface LicenseAssignmentInsert {
   userId?: string;
 }
 export const LicenseAssignmentInsert = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LicenseAssignmentInsert",
-}) as any as S.Schema<LicenseAssignmentInsert>;
+S.Struct({
+  "userId": S.optional(S.String),
+}),
+).annotate({ identifier: "LicenseAssignmentInsert" }) as any as S.Schema<LicenseAssignmentInsert>;
 
 export interface InsertLicenseAssignmentsRequest {
   /** A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. */
@@ -170,20 +150,12 @@ export interface InsertLicenseAssignmentsRequest {
   body?: LicenseAssignmentInsert;
 }
 export const InsertLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.String.pipe(T.Label()),
-    skuId: S.String.pipe(T.Label()),
-    body: S.optional(LicenseAssignmentInsert.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "apps/licensing/v1/product/{productId}/sku/{skuId}/user",
-      baseUrl: "https://licensing.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertLicenseAssignmentsRequest",
-}) as any as S.Schema<InsertLicenseAssignmentsRequest>;
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "skuId": S.String.pipe(T.Label()),
+  "body": S.optional(LicenseAssignmentInsert.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"apps/licensing/v1/product/{productId}/sku/{skuId}/user","baseUrl":"https://licensing.googleapis.com/"})),
+).annotate({ identifier: "InsertLicenseAssignmentsRequest" }) as any as S.Schema<InsertLicenseAssignmentsRequest>;
 
 export interface ListForProductAndSkuLicenseAssignmentsRequest {
   /** A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. */
@@ -197,29 +169,18 @@ export interface ListForProductAndSkuLicenseAssignmentsRequest {
   /** The `maxResults` query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number. */
   maxResults?: number;
 }
-export const ListForProductAndSkuLicenseAssignmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      skuId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      customerId: S.String.pipe(T.Query()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      maxResults: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "apps/licensing/v1/product/{productId}/sku/{skuId}/users",
-        baseUrl: "https://licensing.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListForProductAndSkuLicenseAssignmentsRequest",
-  }) as any as S.Schema<ListForProductAndSkuLicenseAssignmentsRequest>;
+export const ListForProductAndSkuLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "skuId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "customerId": S.String.pipe(T.Query()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"apps/licensing/v1/product/{productId}/sku/{skuId}/users","baseUrl":"https://licensing.googleapis.com/"})),
+).annotate({ identifier: "ListForProductAndSkuLicenseAssignmentsRequest" }) as any as S.Schema<ListForProductAndSkuLicenseAssignmentsRequest>;
 
 export type LicenseAssignmentList_ = ReadonlyArray<LicenseAssignment>;
-export const LicenseAssignmentList_ = /*@__PURE__*/ S.Array(
-  LicenseAssignment,
-) as any as S.Schema<LicenseAssignmentList_>;
+export const LicenseAssignmentList_ = /*@__PURE__*/ S.Array(LicenseAssignment) as any as S.Schema<LicenseAssignmentList_>;
 
 export interface LicenseAssignmentList {
   /** ETag of the resource. */
@@ -232,15 +193,13 @@ export interface LicenseAssignmentList {
   nextPageToken?: string;
 }
 export const LicenseAssignmentList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    items: LicenseAssignmentList_,
-    kind: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LicenseAssignmentList",
-}) as any as S.Schema<LicenseAssignmentList>;
+S.Struct({
+  "etag": S.optional(S.String),
+  "items": LicenseAssignmentList_,
+  "kind": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "LicenseAssignmentList" }) as any as S.Schema<LicenseAssignmentList>;
 
 export interface ListForProductLicenseAssignmentsRequest {
   /** Token to fetch the next page of data. The `maxResults` query string is related to the `pageToken` since `maxResults` determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page. */
@@ -252,23 +211,14 @@ export interface ListForProductLicenseAssignmentsRequest {
   /** The `maxResults` query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number. */
   maxResults?: number;
 }
-export const ListForProductLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      productId: S.String.pipe(T.Label()),
-      customerId: S.String.pipe(T.Query()),
-      maxResults: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "apps/licensing/v1/product/{productId}/users",
-        baseUrl: "https://licensing.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListForProductLicenseAssignmentsRequest",
-}) as any as S.Schema<ListForProductLicenseAssignmentsRequest>;
+export const ListForProductLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "productId": S.String.pipe(T.Label()),
+  "customerId": S.String.pipe(T.Query()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"apps/licensing/v1/product/{productId}/users","baseUrl":"https://licensing.googleapis.com/"})),
+).annotate({ identifier: "ListForProductLicenseAssignmentsRequest" }) as any as S.Schema<ListForProductLicenseAssignmentsRequest>;
 
 export interface PatchLicenseAssignmentsRequest {
   /** A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. */
@@ -281,21 +231,13 @@ export interface PatchLicenseAssignmentsRequest {
   body?: LicenseAssignment;
 }
 export const PatchLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.String.pipe(T.Label()),
-    skuId: S.String.pipe(T.Label()),
-    userId: S.String.pipe(T.Label()),
-    body: S.optional(LicenseAssignment.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
-      baseUrl: "https://licensing.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchLicenseAssignmentsRequest",
-}) as any as S.Schema<PatchLicenseAssignmentsRequest>;
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "skuId": S.String.pipe(T.Label()),
+  "userId": S.String.pipe(T.Label()),
+  "body": S.optional(LicenseAssignment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}","baseUrl":"https://licensing.googleapis.com/"})),
+).annotate({ identifier: "PatchLicenseAssignmentsRequest" }) as any as S.Schema<PatchLicenseAssignmentsRequest>;
 
 export interface UpdateLicenseAssignmentsRequest {
   /** A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. */
@@ -308,28 +250,15 @@ export interface UpdateLicenseAssignmentsRequest {
   body?: LicenseAssignment;
 }
 export const UpdateLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.String.pipe(T.Label()),
-    skuId: S.String.pipe(T.Label()),
-    userId: S.String.pipe(T.Label()),
-    body: S.optional(LicenseAssignment.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
-      baseUrl: "https://licensing.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateLicenseAssignmentsRequest",
-}) as any as S.Schema<UpdateLicenseAssignmentsRequest>;
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "skuId": S.String.pipe(T.Label()),
+  "userId": S.String.pipe(T.Label()),
+  "body": S.optional(LicenseAssignment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}","baseUrl":"https://licensing.googleapis.com/"})),
+).annotate({ identifier: "UpdateLicenseAssignmentsRequest" }) as any as S.Schema<UpdateLicenseAssignmentsRequest>;
 
-export type DeleteLicenseAssignmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteLicenseAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Revoke a license. */
 export const deleteLicenseAssignments: API.OperationMethod<
   DeleteLicenseAssignmentsRequest,
@@ -359,12 +288,7 @@ export const getLicenseAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertLicenseAssignmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertLicenseAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Assign a license. */
 export const insertLicenseAssignments: API.OperationMethod<
   InsertLicenseAssignmentsRequest,
@@ -379,10 +303,7 @@ export const insertLicenseAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListForProductAndSkuLicenseAssignmentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListForProductAndSkuLicenseAssignmentsError = NotFound | Forbidden | GcpOpError;
 /** List all users assigned licenses for a specific product SKU. */
 export const listForProductAndSkuLicenseAssignments: API.PaginatedOperationMethod<
   ListForProductAndSkuLicenseAssignmentsRequest,
@@ -395,17 +316,10 @@ export const listForProductAndSkuLicenseAssignments: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
-export type ListForProductLicenseAssignmentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListForProductLicenseAssignmentsError = NotFound | Forbidden | GcpOpError;
 /** List all users assigned licenses for a specific product SKU. */
 export const listForProductLicenseAssignments: API.PaginatedOperationMethod<
   ListForProductLicenseAssignmentsRequest,
@@ -418,19 +332,10 @@ export const listForProductLicenseAssignments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
-export type PatchLicenseAssignmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchLicenseAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Reassign a user's product SKU with a different SKU in the same product. This method supports patch semantics. */
 export const patchLicenseAssignments: API.OperationMethod<
   PatchLicenseAssignmentsRequest,
@@ -445,12 +350,7 @@ export const patchLicenseAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateLicenseAssignmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateLicenseAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Reassign a user's product SKU with a different SKU in the same product. */
 export const updateLicenseAssignments: API.OperationMethod<
   UpdateLicenseAssignmentsRequest,
@@ -464,3 +364,4 @@ export const updateLicenseAssignments: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

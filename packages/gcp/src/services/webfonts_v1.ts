@@ -13,57 +13,40 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type ListWebfontsSortEnum =
-  | "SORT_UNDEFINED"
-  | "ALPHA"
-  | "DATE"
-  | "POPULARITY"
-  | "STYLE"
-  | "TRENDING"
-  | (string & {});
+export type ListWebfontsSortEnum = "SORT_UNDEFINED" | "ALPHA" | "DATE" | "POPULARITY" | "STYLE" | "TRENDING";
 export const ListWebfontsSortEnum = /*@__PURE__*/ S.String;
 
-export type ListWebfontsCapabilityEnum =
-  | "CAPABILITY_UNSPECIFIED"
-  | "WOFF2"
-  | "VF"
-  | "FAMILY_TAGS"
-  | (string & {});
+export type ListWebfontsCapabilityEnum = "CAPABILITY_UNSPECIFIED" | "WOFF2" | "VF" | "FAMILY_TAGS";
 export const ListWebfontsCapabilityEnum = /*@__PURE__*/ S.String;
 
-export type ListWebfontsCapabilityEnumList =
-  ReadonlyArray<ListWebfontsCapabilityEnum>;
-export const ListWebfontsCapabilityEnumList = /*@__PURE__*/ S.Array(
-  ListWebfontsCapabilityEnum,
-) as any as S.Schema<ListWebfontsCapabilityEnumList>;
+export type ListWebfontsCapabilityEnumList = ReadonlyArray<ListWebfontsCapabilityEnum | (string & {})>;
+export const ListWebfontsCapabilityEnumList = /*@__PURE__*/ S.Array(ListWebfontsCapabilityEnum) as any as S.Schema<ListWebfontsCapabilityEnumList>;
 
 export interface ListWebfontsRequest {
   /** Filters by Webfont.family, using literal match. If not set, returns all families */
@@ -71,35 +54,24 @@ export interface ListWebfontsRequest {
   /** Filters by Webfont.subset, if subset is found in Webfont.subsets. If not set, returns all families. */
   subset?: string;
   /** Enables sorting of the list. */
-  sort?: ListWebfontsSortEnum;
+  sort?: ListWebfontsSortEnum | (string & {});
   /** Filters by Webfont.category, if category is found in Webfont.categories. If not set, returns all families. */
   category?: string;
   /** Controls the font urls in `Webfont.files`, by default, static ttf fonts are sent. */
   capability?: ListWebfontsCapabilityEnumList;
 }
 export const ListWebfontsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    family: S.optional(StringList.pipe(T.Query())),
-    subset: S.optional(S.String.pipe(T.Query())),
-    sort: S.optional(ListWebfontsSortEnum.pipe(T.Query())),
-    category: S.optional(S.String.pipe(T.Query())),
-    capability: S.optional(ListWebfontsCapabilityEnumList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/webfonts",
-      baseUrl: "https://webfonts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListWebfontsRequest",
-}) as any as S.Schema<ListWebfontsRequest>;
+S.Struct({
+  "family": S.optional(StringList.pipe(T.Query())),
+  "subset": S.optional(S.String.pipe(T.Query())),
+  "sort": S.optional(ListWebfontsSortEnum.pipe(T.Query())),
+  "category": S.optional(S.String.pipe(T.Query())),
+  "capability": S.optional(ListWebfontsCapabilityEnumList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/webfonts","baseUrl":"https://webfonts.googleapis.com/"})),
+).annotate({ identifier: "ListWebfontsRequest" }) as any as S.Schema<ListWebfontsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Metadata for a tag. */
 export interface Tag {
@@ -109,10 +81,10 @@ export interface Tag {
   weight?: number;
 }
 export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "weight": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type TagList = ReadonlyArray<Tag>;
@@ -128,17 +100,15 @@ export interface Axis {
   start?: number;
 }
 export const Axis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tag: S.optional(S.String),
-    end: S.optional(S.Number),
-    start: S.optional(S.Number),
-  }),
+S.Struct({
+  "tag": S.optional(S.String),
+  "end": S.optional(S.Number),
+  "start": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Axis" }) as any as S.Schema<Axis>;
 
 export type AxisList = ReadonlyArray<Axis>;
-export const AxisList = /*@__PURE__*/ S.Array(
-  Axis,
-) as any as S.Schema<AxisList>;
+export const AxisList = /*@__PURE__*/ S.Array(Axis) as any as S.Schema<AxisList>;
 
 /** Metadata describing a family of fonts. */
 export interface Webfont {
@@ -168,26 +138,24 @@ export interface Webfont {
   colorCapabilities?: StringList;
 }
 export const Webfont = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    menu: S.optional(S.String),
-    files: S.optional(StringMap),
-    category: S.optional(S.String),
-    lastModified: S.optional(S.String),
-    version: S.optional(S.String),
-    kind: S.optional(S.String),
-    variants: S.optional(StringList),
-    family: S.optional(S.String),
-    tags: S.optional(TagList),
-    subsets: S.optional(StringList),
-    axes: S.optional(AxisList),
-    colorCapabilities: S.optional(StringList),
-  }),
+S.Struct({
+  "menu": S.optional(S.String),
+  "files": S.optional(StringMap),
+  "category": S.optional(S.String),
+  "lastModified": S.optional(S.String),
+  "version": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "variants": S.optional(StringList),
+  "family": S.optional(S.String),
+  "tags": S.optional(TagList),
+  "subsets": S.optional(StringList),
+  "axes": S.optional(AxisList),
+  "colorCapabilities": S.optional(StringList),
+}),
 ).annotate({ identifier: "Webfont" }) as any as S.Schema<Webfont>;
 
 export type WebfontList_ = ReadonlyArray<Webfont>;
-export const WebfontList_ = /*@__PURE__*/ S.Array(
-  Webfont,
-) as any as S.Schema<WebfontList_>;
+export const WebfontList_ = /*@__PURE__*/ S.Array(Webfont) as any as S.Schema<WebfontList_>;
 
 /** Response containing the list of fonts currently served by the Google Fonts API. */
 export interface WebfontList {
@@ -197,10 +165,10 @@ export interface WebfontList {
   items?: WebfontList_;
 }
 export const WebfontList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    items: S.optional(WebfontList_),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "items": S.optional(WebfontList_),
+}),
 ).annotate({ identifier: "WebfontList" }) as any as S.Schema<WebfontList>;
 
 export type ListWebfontsError = NotFound | Forbidden | GcpOpError;
@@ -217,3 +185,4 @@ export const listWebfonts: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -469,12 +469,7 @@ export const CreateListenerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateListenerResponse",
 }) as any as S.Schema<CreateListenerResponse>;
 export type ResourceConfigurationName = string;
-export type ResourceConfigurationType =
-  | "GROUP"
-  | "CHILD"
-  | "SINGLE"
-  | "ARN"
-  | (string & {});
+export type ResourceConfigurationType = "GROUP" | "CHILD" | "SINGLE" | "ARN";
 export const ResourceConfigurationType = /*@__PURE__*/ S.String;
 
 export type PortRange = string;
@@ -521,7 +516,7 @@ export const ResourceConfigurationDefinition = /*@__PURE__*/ S.Union([
 export type DomainVerificationIdentifier = string;
 export interface CreateResourceConfigurationRequest {
   name: string;
-  type: ResourceConfigurationType;
+  type: ResourceConfigurationType | (string & {});
   portRanges?: string[];
   protocol?: string;
   resourceGatewayIdentifier?: string;

@@ -49,11 +49,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -181,8 +181,7 @@ export type StorageTaskOperationName =
   | "SetBlobLegalHold"
   | "SetBlobExpiry"
   | "DeleteBlob"
-  | "UndeleteBlob"
-  | (string & {});
+  | "UndeleteBlob";
 export const StorageTaskOperationName = /*@__PURE__*/ S.String;
 
 /** Key-value parameters for the operation. */
@@ -195,11 +194,11 @@ export const StorageTaskOperationParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageTaskOperationParametersMap>;
 
 /** Action to be taken when the operation is successful for a object. */
-export type OnSuccess = "continue" | (string & {});
+export type OnSuccess = "continue";
 export const OnSuccess = /*@__PURE__*/ S.String;
 
 /** Action to be taken when the operation fails for a object. */
-export type OnFailure = "break" | (string & {});
+export type OnFailure = "break";
 export const OnFailure = /*@__PURE__*/ S.String;
 
 /** Represents an operation to be performed on the object */
@@ -301,8 +300,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -324,7 +322,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface StorageTasksCreateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const StorageTasksCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -378,8 +376,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -387,8 +384,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -435,8 +431,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Deleting"
   | "Canceled"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the storage task. */
@@ -1001,11 +996,11 @@ export const StorageTasksReportListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTasksReportListRequest>;
 
 /** Represents the status of the execution. */
-export type RunStatusEnum = "InProgress" | "Finished" | (string & {});
+export type RunStatusEnum = "InProgress" | "Finished";
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents the overall result of the execution for the run instance */
-export type RunResult = "Succeeded" | "Failed" | (string & {});
+export type RunResult = "Succeeded" | "Failed";
 export const RunResult = /*@__PURE__*/ S.String;
 
 /** Storage task execution report for a run instance. */
@@ -1143,7 +1138,7 @@ export const StorageTasksStopAllAssignmentsResponse = /*@__PURE__*/ S.suspend(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface StorageTasksUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const StorageTasksUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>

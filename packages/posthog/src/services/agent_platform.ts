@@ -20,7 +20,7 @@ export class Conflict extends T.applyErrorMatchers(
 ) {}
 
 /** * `approve` - approve * `reject` - reject */
-export type DecisionEnum = "approve" | "reject" | (string & {});
+export type DecisionEnum = "approve" | "reject";
 export const DecisionEnum = /*@__PURE__*/ S.String;
 
 /** Approver-edited tool arguments. Only honoured when the tool's `approval_policy.allow_edit` is `true`; otherwise the janitor returns 422. */
@@ -41,7 +41,7 @@ export interface AgentApplicationsApprovalsDecideRequest {
   /** UUID of the approval request to decide. */
   approval_id: string;
   /** The approver's decision. `approve` runs the tool platform-side with the (possibly edited) args; `reject` records a terminal rejection and wakes the session with a synthetic rejected tool_result. * `approve` - approve * `reject` - reject */
-  decision: DecisionEnum;
+  decision: DecisionEnum | (string & {});
   /** Approver-edited tool arguments. Only honoured when the tool's `approval_policy.allow_edit` is `true`; otherwise the janitor returns 422. */
   edited_args?: AgentApplicationsApprovalsDecideRequestEditedArgsMap;
   /** Free-form approver note. Surfaces in the session's synthetic tool_result so the model can communicate the reason back to the user. */
@@ -156,8 +156,7 @@ export type AgentApprovalRequestStateEnum =
   | "dispatched"
   | "dispatched_failed"
   | "rejected"
-  | "expired"
-  | (string & {});
+  | "expired";
 export const AgentApprovalRequestStateEnum = /*@__PURE__*/ S.String;
 
 /** `{result: ...}` on a successful approved dispatch, `{error: "..."}` when the tool threw. Null until the runner has finalised. */
@@ -436,8 +435,7 @@ export type AgentSessionStateEnum =
   | "completed"
   | "closed"
   | "cancelled"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const AgentSessionStateEnum = /*@__PURE__*/ S.String;
 
 export interface AgentInvokeResponse {
@@ -612,10 +610,7 @@ export const AgentApplicationsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "AgentApplicationsPartialUpdateRequest",
 }) as any as S.Schema<AgentApplicationsPartialUpdateRequest>;
 
-export type AgentApplicationsPreviewProxyRequestFormat =
-  | "json"
-  | "sse"
-  | (string & {});
+export type AgentApplicationsPreviewProxyRequestFormat = "json" | "sse";
 export const AgentApplicationsPreviewProxyRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -626,7 +621,7 @@ export interface AgentApplicationsPreviewProxyRequest {
   id: string;
   /** Ingress sub-path under the agent slug. One of: `run`, `send`, `cancel`, `listen`. */
   rest: string;
-  format?: AgentApplicationsPreviewProxyRequestFormat;
+  format?: AgentApplicationsPreviewProxyRequestFormat | (string & {});
   /** Target draft revision. Must belong to this application and not be live. */
   revision_id: string;
   /** User message to deliver to the agent. Required for `run` (starts the session) and `send` (appends to it); ignored for `cancel` / `listen`. */
@@ -664,10 +659,7 @@ export const AgentApplicationsPreviewProxyResponse = /*@__PURE__*/ S.suspend(
   identifier: "AgentApplicationsPreviewProxyResponse",
 }) as any as S.Schema<AgentApplicationsPreviewProxyResponse>;
 
-export type AgentApplicationsPreviewProxyGetRequestFormat =
-  | "json"
-  | "sse"
-  | (string & {});
+export type AgentApplicationsPreviewProxyGetRequestFormat = "json" | "sse";
 export const AgentApplicationsPreviewProxyGetRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -678,7 +670,7 @@ export interface AgentApplicationsPreviewProxyGetRequest {
   id: string;
   /** Ingress sub-path under the agent slug. One of: `run`, `send`, `cancel`, `listen`. */
   rest: string;
-  format?: AgentApplicationsPreviewProxyGetRequestFormat;
+  format?: AgentApplicationsPreviewProxyGetRequestFormat | (string & {});
   /** Target draft revision. Must belong to this application and not be live. */
   revision_id: string;
 }
@@ -829,12 +821,7 @@ export const AgentApplicationsRevisionsAgentMdUpdateRequest =
   }) as any as S.Schema<AgentApplicationsRevisionsAgentMdUpdateRequest>;
 
 /** * `draft` - draft * `ready` - ready * `live` - live * `archived` - archived */
-export type AgentRevisionStateEnum =
-  | "draft"
-  | "ready"
-  | "live"
-  | "archived"
-  | (string & {});
+export type AgentRevisionStateEnum = "draft" | "ready" | "live" | "archived";
 export const AgentRevisionStateEnum = /*@__PURE__*/ S.String;
 
 /** One reference to a versioned skill in the llma-skill store, pinned into this agent's bundle at freeze. */
@@ -2099,8 +2086,7 @@ export type AgentSessionPrincipalKindEnum =
   | "service"
   | "internal"
   | "shared_secret"
-  | "slack"
-  | (string & {});
+  | "slack";
 export const AgentSessionPrincipalKindEnum = /*@__PURE__*/ S.String;
 
 export interface AgentSessionPrincipal {
@@ -2231,7 +2217,7 @@ export const AgentApplicationSessionsRetrieveResponseTriggerMetadataMap =
   ) as any as S.Schema<AgentApplicationSessionsRetrieveResponseTriggerMetadataMap>;
 
 /** * `user` - user */
-export type AgentConversationUserMessageRoleEnum = "user" | (string & {});
+export type AgentConversationUserMessageRoleEnum = "user";
 export const AgentConversationUserMessageRoleEnum = /*@__PURE__*/ S.String;
 
 export interface AgentConversationUserMessage {
@@ -2252,9 +2238,7 @@ export const AgentConversationUserMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentConversationUserMessage>;
 
 /** * `assistant` - assistant */
-export type AgentConversationAssistantMessageRoleEnum =
-  | "assistant"
-  | (string & {});
+export type AgentConversationAssistantMessageRoleEnum = "assistant";
 export const AgentConversationAssistantMessageRoleEnum = /*@__PURE__*/ S.String;
 
 /** Array of text/thinking/toolCall parts. */
@@ -2279,8 +2263,7 @@ export type StopReasonEnum =
   | "length"
   | "toolUse"
   | "error"
-  | "aborted"
-  | (string & {});
+  | "aborted";
 export const StopReasonEnum = /*@__PURE__*/ S.String;
 
 export interface AgentConversationAssistantMessage {
@@ -2313,9 +2296,7 @@ export const AgentConversationAssistantMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentConversationAssistantMessage>;
 
 /** * `toolResult` - toolResult */
-export type AgentConversationToolResultMessageRoleEnum =
-  | "toolResult"
-  | (string & {});
+export type AgentConversationToolResultMessageRoleEnum = "toolResult";
 export const AgentConversationToolResultMessageRoleEnum =
   /*@__PURE__*/ S.String;
 

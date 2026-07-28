@@ -21,8 +21,7 @@ export type AttachedNetworkConnectionPropertiesInputHealthCheckStatus =
   | "Passed"
   | "Warning"
   | "Failed"
-  | "Informational"
-  | (string & {});
+  | "Informational";
 export const AttachedNetworkConnectionPropertiesInputHealthCheckStatus =
   /*@__PURE__*/ S.String;
 
@@ -30,8 +29,7 @@ export const AttachedNetworkConnectionPropertiesInputHealthCheckStatus =
 export type AttachedNetworkConnectionPropertiesInputDomainJoinType =
   | "HybridAzureADJoin"
   | "AzureADJoin"
-  | "None"
-  | (string & {});
+  | "None";
 export const AttachedNetworkConnectionPropertiesInputDomainJoinType =
   /*@__PURE__*/ S.String;
 
@@ -40,9 +38,13 @@ export interface AttachedNetworkConnectionPropertiesInput {
   /** The resource ID of the NetworkConnection you want to attach. */
   networkConnectionId: string;
   /** Health check status values */
-  healthCheckStatus?: AttachedNetworkConnectionPropertiesInputHealthCheckStatus;
+  healthCheckStatus?:
+    | AttachedNetworkConnectionPropertiesInputHealthCheckStatus
+    | (string & {});
   /** Active Directory join type */
-  domainJoinType?: AttachedNetworkConnectionPropertiesInputDomainJoinType;
+  domainJoinType?:
+    | AttachedNetworkConnectionPropertiesInputDomainJoinType
+    | (string & {});
 }
 export const AttachedNetworkConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
@@ -96,8 +98,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -105,8 +106,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -152,8 +152,7 @@ export type AttachedNetworkConnectionPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const AttachedNetworkConnectionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -165,8 +164,7 @@ export type AttachedNetworkConnectionPropertiesHealthCheckStatus =
   | "Passed"
   | "Warning"
   | "Failed"
-  | "Informational"
-  | (string & {});
+  | "Informational";
 export const AttachedNetworkConnectionPropertiesHealthCheckStatus =
   /*@__PURE__*/ S.String;
 
@@ -174,8 +172,7 @@ export const AttachedNetworkConnectionPropertiesHealthCheckStatus =
 export type AttachedNetworkConnectionPropertiesDomainJoinType =
   | "HybridAzureADJoin"
   | "AzureADJoin"
-  | "None"
-  | (string & {});
+  | "None";
 export const AttachedNetworkConnectionPropertiesDomainJoinType =
   /*@__PURE__*/ S.String;
 
@@ -539,10 +536,7 @@ export const GitCatalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitCatalog" }) as any as S.Schema<GitCatalog>;
 
 /** Indicates the type of sync that is configured for the catalog. */
-export type CatalogPropertiesInputSyncType =
-  | "Manual"
-  | "Scheduled"
-  | (string & {});
+export type CatalogPropertiesInputSyncType = "Manual" | "Scheduled";
 export const CatalogPropertiesInputSyncType = /*@__PURE__*/ S.String;
 
 /** Resource tags. */
@@ -561,7 +555,7 @@ export interface CatalogPropertiesInput {
   /** Properties for an Azure DevOps catalog type. */
   adoGit?: GitCatalog;
   /** Indicates the type of sync that is configured for the catalog. */
-  syncType?: CatalogPropertiesInputSyncType;
+  syncType?: CatalogPropertiesInputSyncType | (string & {});
   /** Resource tags. */
   tags?: CatalogPropertiesInputTagsMap;
 }
@@ -608,7 +602,7 @@ export const CatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogsCreateOrUpdateRequest>;
 
 /** Indicates the type of sync that is configured for the catalog. */
-export type CatalogPropertiesSyncType = "Manual" | "Scheduled" | (string & {});
+export type CatalogPropertiesSyncType = "Manual" | "Scheduled";
 export const CatalogPropertiesSyncType = /*@__PURE__*/ S.String;
 
 /** Resource tags. */
@@ -635,8 +629,7 @@ export type CatalogPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const CatalogPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The synchronization state of the catalog. */
@@ -644,15 +637,11 @@ export type CatalogPropertiesSyncState =
   | "Succeeded"
   | "InProgress"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const CatalogPropertiesSyncState = /*@__PURE__*/ S.String;
 
 /** Indicates catalog item types. */
-export type CatalogItemType =
-  | "EnvironmentDefinition"
-  | "ImageDefinition"
-  | (string & {});
+export type CatalogItemType = "EnvironmentDefinition" | "ImageDefinition";
 export const CatalogItemType = /*@__PURE__*/ S.String;
 
 /** Indicates catalog item types that were synced. */
@@ -692,10 +681,7 @@ export const SyncStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncStats" }) as any as S.Schema<SyncStats>;
 
 /** The connection state of the catalog. */
-export type CatalogPropertiesConnectionState =
-  | "Connected"
-  | "Disconnected"
-  | (string & {});
+export type CatalogPropertiesConnectionState = "Connected" | "Disconnected";
 export const CatalogPropertiesConnectionState = /*@__PURE__*/ S.String;
 
 /** Properties of a catalog. */
@@ -1088,10 +1074,7 @@ export const CatalogsSyncResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogsSyncResponse>;
 
 /** Indicates the type of sync that is configured for the catalog. */
-export type CatalogUpdatePropertiesSyncType =
-  | "Manual"
-  | "Scheduled"
-  | (string & {});
+export type CatalogUpdatePropertiesSyncType = "Manual" | "Scheduled";
 export const CatalogUpdatePropertiesSyncType = /*@__PURE__*/ S.String;
 
 /** Resource tags. */
@@ -1110,7 +1093,7 @@ export interface CatalogUpdateProperties {
   /** Properties for an Azure DevOps catalog type. */
   adoGit?: GitCatalog;
   /** Indicates the type of sync that is configured for the catalog. */
-  syncType?: CatalogUpdatePropertiesSyncType;
+  syncType?: CatalogUpdatePropertiesSyncType | (string & {});
   /** Resource tags. */
   tags?: CatalogUpdatePropertiesTagsMap;
 }
@@ -1208,8 +1191,7 @@ export const CheckNameAvailabilityExecuteRequest = /*@__PURE__*/ S.suspend(() =>
 /** The reason why the given name is not available. */
 export type CheckNameAvailabilityExecuteResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const CheckNameAvailabilityExecuteResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -1264,8 +1246,7 @@ export const CheckScopedNameAvailabilityExecuteRequest =
 /** The reason why the given name is not available. */
 export type CheckScopedNameAvailabilityExecuteResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const CheckScopedNameAvailabilityExecuteResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -1320,11 +1301,7 @@ export const CustomizationTasksGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationTasksGetRequest>;
 
 /** Type of the input. */
-export type CustomizationTaskInputType =
-  | "string"
-  | "number"
-  | "boolean"
-  | (string & {});
+export type CustomizationTaskInputType = "string" | "number" | "boolean";
 export const CustomizationTaskInputType = /*@__PURE__*/ S.String;
 
 /** Input for a Task. */
@@ -1360,8 +1337,7 @@ export type CustomizationTaskPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const CustomizationTaskPropertiesValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -1582,14 +1558,14 @@ export const DevBoxDefinitionPropertiesInputImageReference =
   }) as any as S.Schema<DevBoxDefinitionPropertiesInputImageReference>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
 export interface DevBoxDefinitionPropertiesInputSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -1610,7 +1586,7 @@ export const DevBoxDefinitionPropertiesInputSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevBoxDefinitionPropertiesInputSku>;
 
 /** Indicates whether hibernate is enabled/disabled. */
-export type HibernateSupport = "Disabled" | "Enabled" | (string & {});
+export type HibernateSupport = "Disabled" | "Enabled";
 export const HibernateSupport = /*@__PURE__*/ S.String;
 
 /** Image validation status */
@@ -1619,8 +1595,7 @@ export type DevBoxDefinitionPropertiesInputImageValidationStatus =
   | "Pending"
   | "Succeeded"
   | "Failed"
-  | "TimedOut"
-  | (string & {});
+  | "TimedOut";
 export const DevBoxDefinitionPropertiesInputImageValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -1646,8 +1621,7 @@ export type DevBoxDefinitionPropertiesInputValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const DevBoxDefinitionPropertiesInputValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -1674,13 +1648,17 @@ export interface DevBoxDefinitionPropertiesInput {
   /** The storage type used for the Operating System disk of Dev Boxes created using this definition. */
   osStorageType?: string;
   /** Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate */
-  hibernateSupport?: HibernateSupport;
+  hibernateSupport?: HibernateSupport | (string & {});
   /** Image validation status */
-  imageValidationStatus?: DevBoxDefinitionPropertiesInputImageValidationStatus;
+  imageValidationStatus?:
+    | DevBoxDefinitionPropertiesInputImageValidationStatus
+    | (string & {});
   /** Image validation error details */
   imageValidationErrorDetails?: DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
   /** Catalog resource validation status */
-  validationStatus?: DevBoxDefinitionPropertiesInputValidationStatus;
+  validationStatus?:
+    | DevBoxDefinitionPropertiesInputValidationStatus
+    | (string & {});
   /** Image reference information */
   activeImageReference?: DevBoxDefinitionPropertiesInputActiveImageReference;
 }
@@ -1813,8 +1791,7 @@ export type DevBoxDefinitionPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const DevBoxDefinitionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1824,8 +1801,7 @@ export type DevBoxDefinitionPropertiesImageValidationStatus =
   | "Pending"
   | "Succeeded"
   | "Failed"
-  | "TimedOut"
-  | (string & {});
+  | "TimedOut";
 export const DevBoxDefinitionPropertiesImageValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -1851,8 +1827,7 @@ export type DevBoxDefinitionPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const DevBoxDefinitionPropertiesValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -2263,7 +2238,7 @@ export const DevBoxDefinitionUpdatePropertiesInputImageReference =
 export interface DevBoxDefinitionUpdatePropertiesInputSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -2293,7 +2268,7 @@ export interface DevBoxDefinitionUpdatePropertiesInput {
   /** The storage type used for the Operating System disk of Dev Boxes created using this definition. */
   osStorageType?: string;
   /** Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate */
-  hibernateSupport?: HibernateSupport;
+  hibernateSupport?: HibernateSupport | (string & {});
 }
 export const DevBoxDefinitionUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
@@ -2398,8 +2373,7 @@ export const DevCentersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
     | "systemAssignedIdentity"
     | "userAssignedIdentity"
-    | "delegatedResourceIdentity"
-    | (string & {});
+    | "delegatedResourceIdentity";
 export const EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -2458,10 +2432,7 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
 /** Catalog item sync types enable or disable status. Indicates whether project catalogs are allowed to sync catalog items under projects associated to this dev center. */
-export type CatalogItemSyncEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type CatalogItemSyncEnableStatus = "Enabled" | "Disabled";
 export const CatalogItemSyncEnableStatus = /*@__PURE__*/ S.String;
 
 /** Project catalog settings for project catalogs under a project associated to this dev center. */
@@ -2478,10 +2449,7 @@ export const DevCenterProjectCatalogSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevCenterProjectCatalogSettings>;
 
 /** Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set. */
-export type MicrosoftHostedNetworkEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type MicrosoftHostedNetworkEnableStatus = "Enabled" | "Disabled";
 export const MicrosoftHostedNetworkEnableStatus = /*@__PURE__*/ S.String;
 
 /** Network settings for the Dev Center. */
@@ -2499,10 +2467,7 @@ export const DevCenterNetworkSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevCenterNetworkSettings>;
 
 /** Setting to be used when determining whether to install the Azure Monitor Agent service on Dev Boxes that belong to this dev center. */
-export type InstallAzureMonitorAgentEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type InstallAzureMonitorAgentEnableStatus = "Enabled" | "Disabled";
 export const InstallAzureMonitorAgentEnableStatus = /*@__PURE__*/ S.String;
 
 /** Provisioning settings that apply to all Dev Boxes created in this dev center */
@@ -2550,8 +2515,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
+  | "SystemAssigned, UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -2573,7 +2537,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface DevCentersCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const DevCentersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -2649,8 +2613,7 @@ export type DevCenterPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const DevCenterPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the devcenter. */
@@ -3013,7 +2976,7 @@ export const DevCentersListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface DevCentersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const DevCentersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -3187,8 +3150,7 @@ export type ParameterType =
   | "integer"
   | "number"
   | "object"
-  | "string"
-  | (string & {});
+  | "string";
 export const ParameterType = /*@__PURE__*/ S.String;
 
 /** Properties of an Environment Definition parameter */
@@ -3232,8 +3194,7 @@ export type EnvironmentDefinitionPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const EnvironmentDefinitionPropertiesValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -3581,8 +3542,7 @@ export type EnvironmentTypePropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const EnvironmentTypePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3978,8 +3938,7 @@ export type GalleryPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const GalleryPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of a gallery. */
@@ -4260,8 +4219,7 @@ export type ImagePropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const ImagePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of an image. */
@@ -4553,8 +4511,7 @@ export type ImageVersionPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const ImageVersionPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of an image version. */
@@ -4783,16 +4740,14 @@ export type NetworkPropertiesInputHealthCheckStatus =
   | "Passed"
   | "Warning"
   | "Failed"
-  | "Informational"
-  | (string & {});
+  | "Informational";
 export const NetworkPropertiesInputHealthCheckStatus = /*@__PURE__*/ S.String;
 
 /** Active Directory join type */
 export type NetworkPropertiesInputDomainJoinType =
   | "HybridAzureADJoin"
   | "AzureADJoin"
-  | "None"
-  | (string & {});
+  | "None";
 export const NetworkPropertiesInputDomainJoinType = /*@__PURE__*/ S.String;
 
 /** Network properties */
@@ -4808,11 +4763,11 @@ export interface NetworkPropertiesInput {
   /** The password for the account used to join domain */
   domainPassword?: string | Redacted.Redacted<string>;
   /** Health check status values */
-  healthCheckStatus?: NetworkPropertiesInputHealthCheckStatus;
+  healthCheckStatus?: NetworkPropertiesInputHealthCheckStatus | (string & {});
   /** The name for resource group where NICs will be placed. */
   networkingResourceGroupName?: string;
   /** Active Directory join type */
-  domainJoinType: NetworkPropertiesInputDomainJoinType;
+  domainJoinType: NetworkPropertiesInputDomainJoinType | (string & {});
 }
 export const NetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4891,8 +4846,7 @@ export type NetworkPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const NetworkPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Health check status values */
@@ -4903,16 +4857,14 @@ export type NetworkPropertiesHealthCheckStatus =
   | "Passed"
   | "Warning"
   | "Failed"
-  | "Informational"
-  | (string & {});
+  | "Informational";
 export const NetworkPropertiesHealthCheckStatus = /*@__PURE__*/ S.String;
 
 /** Active Directory join type */
 export type NetworkPropertiesDomainJoinType =
   | "HybridAzureADJoin"
   | "AzureADJoin"
-  | "None"
-  | (string & {});
+  | "None";
 export const NetworkPropertiesDomainJoinType = /*@__PURE__*/ S.String;
 
 /** Network properties */
@@ -5113,8 +5065,7 @@ export type HealthCheckStatus =
   | "Passed"
   | "Warning"
   | "Failed"
-  | "Informational"
-  | (string & {});
+  | "Informational";
 export const HealthCheckStatus = /*@__PURE__*/ S.String;
 
 /** An individual health check item */
@@ -5670,11 +5621,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -5897,7 +5848,7 @@ export const PoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
 
 /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
-export type PoolDevBoxDefinitionType = "Reference" | "Value" | (string & {});
+export type PoolDevBoxDefinitionType = "Reference" | "Value";
 export const PoolDevBoxDefinitionType = /*@__PURE__*/ S.String;
 
 /** Image reference information */
@@ -5918,7 +5869,7 @@ export const PoolDevBoxDefinitionInputImageReference = /*@__PURE__*/ S.suspend(
 export interface PoolDevBoxDefinitionInputSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -5974,18 +5925,15 @@ export const PoolDevBoxDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolDevBoxDefinitionInput>;
 
 /** License Types */
-export type LicenseType = "Windows_Client" | (string & {});
+export type LicenseType = "Windows_Client";
 export const LicenseType = /*@__PURE__*/ S.String;
 
 /** Local Administrator enable or disable status. Indicates whether owners of Dev Boxes are added as local administrators on the Dev Box. */
-export type LocalAdminStatus = "Disabled" | "Enabled" | (string & {});
+export type LocalAdminStatus = "Disabled" | "Enabled";
 export const LocalAdminStatus = /*@__PURE__*/ S.String;
 
 /** Stop on disconnect enable or disable status. Indicates whether stop on disconnect to is either enabled or disabled. */
-export type StopOnDisconnectEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type StopOnDisconnectEnableStatus = "Enabled" | "Disabled";
 export const StopOnDisconnectEnableStatus = /*@__PURE__*/ S.String;
 
 /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
@@ -6005,10 +5953,7 @@ export const StopOnDisconnectConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopOnDisconnectConfiguration>;
 
 /** Stop on no connect enable or disable status. */
-export type StopOnNoConnectEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type StopOnNoConnectEnableStatus = "Enabled" | "Disabled";
 export const StopOnNoConnectEnableStatus = /*@__PURE__*/ S.String;
 
 /** Stop on no connect configuration settings for Dev Boxes created in this pool. */
@@ -6028,11 +5973,11 @@ export const StopOnNoConnectConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopOnNoConnectConfiguration>;
 
 /** SingleSignOn (SSO) enable or disable status. Indicates whether Dev Boxes in the Pool will have SSO enabled or disabled. */
-export type SingleSignOnStatus = "Disabled" | "Enabled" | (string & {});
+export type SingleSignOnStatus = "Disabled" | "Enabled";
 export const SingleSignOnStatus = /*@__PURE__*/ S.String;
 
 /** Indicates a pool uses a Virtual Network managed by Microsoft (Managed), or a customer provided Network (Unmanaged). */
-export type VirtualNetworkType = "Managed" | "Unmanaged" | (string & {});
+export type VirtualNetworkType = "Managed" | "Unmanaged";
 export const VirtualNetworkType = /*@__PURE__*/ S.String;
 
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
@@ -6046,7 +5991,7 @@ export const PoolPropertiesInputManagedVirtualNetworkRegionsList =
 /** Properties of a Pool */
 export interface PoolPropertiesInput {
   /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
-  devBoxDefinitionType?: PoolDevBoxDefinitionType;
+  devBoxDefinitionType?: PoolDevBoxDefinitionType | (string & {});
   /** Name of a Dev Box definition in parent Project of this Pool. Will be ignored if devBoxDefinitionType is Value. */
   devBoxDefinitionName: string;
   /** A definition of the machines that are created from this Pool. Will be ignored if devBoxDefinitionType is Reference or not provided. */
@@ -6054,19 +5999,19 @@ export interface PoolPropertiesInput {
   /** Name of a Network Connection in parent Project of this Pool */
   networkConnectionName: string;
   /** Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created. */
-  licenseType: LicenseType;
+  licenseType: LicenseType | (string & {});
   /** Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box. */
-  localAdministrator: LocalAdminStatus;
+  localAdministrator: LocalAdminStatus | (string & {});
   /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
   stopOnDisconnect?: StopOnDisconnectConfiguration;
   /** Stop on no connect configuration settings for Dev Boxes created in this pool. */
   stopOnNoConnect?: StopOnNoConnectConfiguration;
   /** Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant. */
-  singleSignOnStatus?: SingleSignOnStatus;
+  singleSignOnStatus?: SingleSignOnStatus | (string & {});
   /** The display name of the pool. */
   displayName?: string;
   /** Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network. */
-  virtualNetworkType?: VirtualNetworkType;
+  virtualNetworkType?: VirtualNetworkType | (string & {});
   /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
   managedVirtualNetworkRegions?: PoolPropertiesInputManagedVirtualNetworkRegionsList;
 }
@@ -6227,8 +6172,7 @@ export type HealthStatus =
   | "Pending"
   | "Healthy"
   | "Warning"
-  | "Unhealthy"
-  | (string & {});
+  | "Unhealthy";
 export const HealthStatus = /*@__PURE__*/ S.String;
 
 /** Pool health status detail. */
@@ -6271,8 +6215,7 @@ export type PoolPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const PoolPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of a Pool */
@@ -6593,7 +6536,7 @@ export const PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList =
 /** Properties of a Pool. These properties can be updated after the resource has been created. */
 export interface PoolUpdatePropertiesInput {
   /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
-  devBoxDefinitionType?: PoolDevBoxDefinitionType;
+  devBoxDefinitionType?: PoolDevBoxDefinitionType | (string & {});
   /** Name of a Dev Box definition in parent Project of this Pool. Will be ignored if devBoxDefinitionType is Value. */
   devBoxDefinitionName?: string;
   /** A definition of the machines that are created from this Pool. Will be ignored if devBoxDefinitionType is Reference or not provided. */
@@ -6601,19 +6544,19 @@ export interface PoolUpdatePropertiesInput {
   /** Name of a Network Connection in parent Project of this Pool */
   networkConnectionName?: string;
   /** Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created. */
-  licenseType?: LicenseType;
+  licenseType?: LicenseType | (string & {});
   /** Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box. */
-  localAdministrator?: LocalAdminStatus;
+  localAdministrator?: LocalAdminStatus | (string & {});
   /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
   stopOnDisconnect?: StopOnDisconnectConfiguration;
   /** Stop on no connect configuration settings for Dev Boxes created in this pool. */
   stopOnNoConnect?: StopOnNoConnectConfiguration;
   /** Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant. */
-  singleSignOnStatus?: SingleSignOnStatus;
+  singleSignOnStatus?: SingleSignOnStatus | (string & {});
   /** The display name of the pool. */
   displayName?: string;
   /** Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network. */
-  virtualNetworkType?: VirtualNetworkType;
+  virtualNetworkType?: VirtualNetworkType | (string & {});
   /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
   managedVirtualNetworkRegions?: PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList;
 }
@@ -6758,8 +6701,7 @@ export type AllowedEnvironmentTypePropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const AllowedEnvironmentTypePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -7038,8 +6980,7 @@ export type ImageDefinitionBuildStatus =
   | "ValidationFailed"
   | "Failed"
   | "Cancelled"
-  | "TimedOut"
-  | (string & {});
+  | "TimedOut";
 export const ImageDefinitionBuildStatus = /*@__PURE__*/ S.String;
 
 /** Image creation error details */
@@ -7496,8 +7437,7 @@ export type ImageDefinitionPropertiesImageValidationStatus =
   | "Pending"
   | "Succeeded"
   | "Failed"
-  | "TimedOut"
-  | (string & {});
+  | "TimedOut";
 export const ImageDefinitionPropertiesImageValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -7523,8 +7463,7 @@ export type ImageDefinitionPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ImageDefinitionPropertiesValidationStatus = /*@__PURE__*/ S.String;
 
 /** Image reference information */
@@ -7545,7 +7484,7 @@ export const ImageDefinitionPropertiesActiveImageReference =
   }) as any as S.Schema<ImageDefinitionPropertiesActiveImageReference>;
 
 /** Indicates whether auto image build is enabled/disabled. */
-export type AutoImageBuildStatus = "Disabled" | "Enabled" | (string & {});
+export type AutoImageBuildStatus = "Disabled" | "Enabled";
 export const AutoImageBuildStatus = /*@__PURE__*/ S.String;
 
 /** Properties of an Image Definition. */
@@ -8074,10 +8013,7 @@ export const ProjectCatalogsSyncResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectCatalogsSyncResponse>;
 
 /** Indicates whether the environment type is either enabled or disabled. */
-export type EnvironmentTypeEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type EnvironmentTypeEnableStatus = "Enabled" | "Disabled";
 export const EnvironmentTypeEnableStatus = /*@__PURE__*/ S.String;
 
 /** A role that can be assigned to a user. */
@@ -8152,7 +8088,7 @@ export interface ProjectEnvironmentTypePropertiesInput {
   /** The display name of the project environment type. */
   displayName?: string;
   /** Defines whether this Environment Type can be used in this Project. */
-  status?: EnvironmentTypeEnableStatus;
+  status?: EnvironmentTypeEnableStatus | (string & {});
   /** The role definition assigned to the environment creator on backing resources. */
   creatorRoleAssignment?: ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment;
   /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
@@ -8187,7 +8123,7 @@ export const ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ProjectEnvironmentTypesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ProjectEnvironmentTypesCreateOrUpdateRequestIdentity =
@@ -8334,8 +8270,7 @@ export type ProjectEnvironmentTypePropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const ProjectEnvironmentTypePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -8726,7 +8661,7 @@ export interface ProjectEnvironmentTypeUpdatePropertiesInput {
   /** The display name of the project environment type. */
   displayName?: string;
   /** Defines whether this Environment Type can be used in this Project. */
-  status?: EnvironmentTypeEnableStatus;
+  status?: EnvironmentTypeEnableStatus | (string & {});
   /** The role definition assigned to the environment creator on backing resources. */
   creatorRoleAssignment?: ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment;
   /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
@@ -8761,7 +8696,7 @@ export const ProjectEnvironmentTypesUpdateRequestTagsMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ProjectEnvironmentTypesUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ProjectEnvironmentTypesUpdateRequestIdentity =
@@ -8878,15 +8813,11 @@ export const ProjectEnvironmentTypesUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProjectEnvironmentTypesUpdateResponse>;
 
 /** Indicates what action to perform for the policy. */
-export type PolicyAction = "Allow" | "Deny" | (string & {});
+export type PolicyAction = "Allow" | "Deny";
 export const PolicyAction = /*@__PURE__*/ S.String;
 
 /** Indicates dev center resource types. */
-export type DevCenterResourceType =
-  | "Images"
-  | "AttachedNetworks"
-  | "Skus"
-  | (string & {});
+export type DevCenterResourceType = "Images" | "AttachedNetworks" | "Skus";
 export const DevCenterResourceType = /*@__PURE__*/ S.String;
 
 /** A resource policy. */
@@ -9004,8 +8935,7 @@ export type ProjectPolicyPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const ProjectPolicyPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of an project policy. */
@@ -9359,7 +9289,7 @@ export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ProjectsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ProjectsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -9435,8 +9365,7 @@ export type ProjectPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const ProjectPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of a project. */
@@ -9851,7 +9780,7 @@ export const ProjectUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ProjectsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ProjectsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -9963,15 +9892,15 @@ export const ProjectsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsUpdateResponse>;
 
 /** The supported types for a scheduled task. */
-export type ScheduledType = "StopDevBox" | (string & {});
+export type ScheduledType = "StopDevBox";
 export const ScheduledType = /*@__PURE__*/ S.String;
 
 /** The frequency of task execution. */
-export type ScheduledFrequency = "Daily" | (string & {});
+export type ScheduledFrequency = "Daily";
 export const ScheduledFrequency = /*@__PURE__*/ S.String;
 
 /** Schedule enable or disable status. Indicates whether the schedule applied to is either enabled or disabled. */
-export type ScheduleEnableStatus = "Enabled" | "Disabled" | (string & {});
+export type ScheduleEnableStatus = "Enabled" | "Disabled";
 export const ScheduleEnableStatus = /*@__PURE__*/ S.String;
 
 /** The Schedule properties defining when and what to execute. */
@@ -9981,15 +9910,15 @@ export interface SchedulePropertiesInput {
   /** The geo-location where the resource lives */
   location?: string;
   /** Supported type this scheduled task represents. */
-  type: ScheduledType;
+  type: ScheduledType | (string & {});
   /** The frequency of this scheduled task. */
-  frequency: ScheduledFrequency;
+  frequency: ScheduledFrequency | (string & {});
   /** The target time to trigger the action. The format is HH:MM. */
   time: string;
   /** The IANA timezone id at which the schedule should execute. */
   timeZone: string;
   /** Indicates whether or not this scheduled task is enabled. */
-  state?: ScheduleEnableStatus;
+  state?: ScheduleEnableStatus | (string & {});
 }
 export const SchedulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10059,8 +9988,7 @@ export type SchedulePropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const SchedulePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The Schedule properties defining when and what to execute. */
@@ -10303,15 +10231,15 @@ export interface ScheduleUpdateProperties {
   /** The geo-location where the resource lives */
   location?: string;
   /** Supported type this scheduled task represents. */
-  type?: ScheduledType;
+  type?: ScheduledType | (string & {});
   /** The frequency of this scheduled task. */
-  frequency?: ScheduledFrequency;
+  frequency?: ScheduledFrequency | (string & {});
   /** The target time to trigger the action. The format is HH:MM. */
   time?: string;
   /** The IANA timezone id at which the schedule should execute. */
   timeZone?: string;
   /** Indicates whether or not this scheduled task is enabled. */
-  state?: ScheduleEnableStatus;
+  state?: ScheduleEnableStatus | (string & {});
 }
 export const ScheduleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10610,7 +10538,7 @@ export const UsagesListByLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsagesListByLocationRequest>;
 
 /** The unit details. */
-export type UsageUnit = "Count" | (string & {});
+export type UsageUnit = "Count";
 export const UsageUnit = /*@__PURE__*/ S.String;
 
 /** The Usage Names. */

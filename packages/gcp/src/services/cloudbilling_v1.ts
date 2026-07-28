@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** A billing account in the [Google Cloud Console](https://console.cloud.google.com/). You can assign a billing account to one or more projects. */
@@ -76,14 +76,14 @@ export interface BillingAccount {
   name?: string;
 }
 export const BillingAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    open: S.optional(S.Boolean),
-    displayName: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-    parent: S.optional(S.String),
-    masterBillingAccount: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "open": S.optional(S.Boolean),
+  "displayName": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+  "parent": S.optional(S.String),
+  "masterBillingAccount": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "BillingAccount" }) as any as S.Schema<BillingAccount>;
 
 export interface CreateBillingAccountsRequest {
@@ -93,19 +93,11 @@ export interface CreateBillingAccountsRequest {
   body?: BillingAccount;
 }
 export const CreateBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(BillingAccount.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/billingAccounts",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateBillingAccountsRequest",
-}) as any as S.Schema<CreateBillingAccountsRequest>;
+S.Struct({
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BillingAccount.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/billingAccounts","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "CreateBillingAccountsRequest" }) as any as S.Schema<CreateBillingAccountsRequest>;
 
 export interface CreateBillingAccountsSubAccountsRequest {
   /** Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
@@ -113,21 +105,12 @@ export interface CreateBillingAccountsSubAccountsRequest {
   /** Request body */
   body?: BillingAccount;
 }
-export const CreateBillingAccountsSubAccountsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BillingAccount.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/subAccounts",
-        baseUrl: "https://cloudbilling.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateBillingAccountsSubAccountsRequest",
-}) as any as S.Schema<CreateBillingAccountsSubAccountsRequest>;
+export const CreateBillingAccountsSubAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BillingAccount.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/subAccounts","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "CreateBillingAccountsSubAccountsRequest" }) as any as S.Schema<CreateBillingAccountsSubAccountsRequest>;
 
 export interface CreateOrganizationsBillingAccountsRequest {
   /** Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
@@ -135,57 +118,32 @@ export interface CreateOrganizationsBillingAccountsRequest {
   /** Request body */
   body?: BillingAccount;
 }
-export const CreateOrganizationsBillingAccountsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BillingAccount.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/billingAccounts",
-        baseUrl: "https://cloudbilling.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateOrganizationsBillingAccountsRequest",
-  }) as any as S.Schema<CreateOrganizationsBillingAccountsRequest>;
+export const CreateOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BillingAccount.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/billingAccounts","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "CreateOrganizationsBillingAccountsRequest" }) as any as S.Schema<CreateOrganizationsBillingAccountsRequest>;
 
 export interface GetBillingAccountsRequest {
   /** Required. The resource name of the billing account to retrieve. For example, `billingAccounts/012345-567890-ABCDEF`. */
   name: string;
 }
 export const GetBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBillingAccountsRequest",
-}) as any as S.Schema<GetBillingAccountsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "GetBillingAccountsRequest" }) as any as S.Schema<GetBillingAccountsRequest>;
 
 export interface GetBillingInfoProjectsRequest {
   /** Required. The resource name of the project for which billing information is retrieved. For example, `projects/tokyo-rain-123`. */
   name: string;
 }
 export const GetBillingInfoProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/billingInfo",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBillingInfoProjectsRequest",
-}) as any as S.Schema<GetBillingInfoProjectsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/billingInfo","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "GetBillingInfoProjectsRequest" }) as any as S.Schema<GetBillingInfoProjectsRequest>;
 
 /** Encapsulation of billing information for a Google Cloud Console project. A project has at most one associated billing account at a time (but a billing account can be assigned to multiple projects). */
 export interface ProjectBillingInfo {
@@ -199,15 +157,13 @@ export interface ProjectBillingInfo {
   projectId?: string;
 }
 export const ProjectBillingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    billingAccountName: S.optional(S.String),
-    billingEnabled: S.optional(S.Boolean),
-    projectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProjectBillingInfo",
-}) as any as S.Schema<ProjectBillingInfo>;
+S.Struct({
+  "name": S.optional(S.String),
+  "billingAccountName": S.optional(S.String),
+  "billingEnabled": S.optional(S.Boolean),
+  "projectId": S.optional(S.String),
+}),
+).annotate({ identifier: "ProjectBillingInfo" }) as any as S.Schema<ProjectBillingInfo>;
 
 export interface GetIamPolicyBillingAccountsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -216,32 +172,17 @@ export interface GetIamPolicyBillingAccountsRequest {
   "options.requestedPolicyVersion"?: number;
 }
 export const GetIamPolicyBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.String.pipe(T.Label()),
-    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+resource}:getIamPolicy",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetIamPolicyBillingAccountsRequest",
-}) as any as S.Schema<GetIamPolicyBillingAccountsRequest>;
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyBillingAccountsRequest" }) as any as S.Schema<GetIamPolicyBillingAccountsRequest>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -251,16 +192,14 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-    exemptedMembers: S.optional(StringList),
-  }),
+S.Struct({
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+  "exemptedMembers": S.optional(StringList),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -270,16 +209,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -293,12 +230,12 @@ export interface Expr {
   title?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "location": S.optional(S.String),
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -311,17 +248,15 @@ export interface Binding {
   members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    condition: S.optional(Expr),
-    members: S.optional(StringList),
-  }),
+S.Struct({
+  "role": S.optional(S.String),
+  "condition": S.optional(Expr),
+  "members": S.optional(StringList),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -335,12 +270,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    auditConfigs: S.optional(AuditConfigList),
-    bindings: S.optional(BindingList),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.Number),
+  "auditConfigs": S.optional(AuditConfigList),
+  "bindings": S.optional(BindingList),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface ListBillingAccountsRequest {
@@ -354,26 +289,16 @@ export interface ListBillingAccountsRequest {
   parent?: string;
 }
 export const ListBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/billingAccounts",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBillingAccountsRequest",
-}) as any as S.Schema<ListBillingAccountsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/billingAccounts","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "ListBillingAccountsRequest" }) as any as S.Schema<ListBillingAccountsRequest>;
 
 export type BillingAccountList = ReadonlyArray<BillingAccount>;
-export const BillingAccountList = /*@__PURE__*/ S.Array(
-  BillingAccount,
-) as any as S.Schema<BillingAccountList>;
+export const BillingAccountList = /*@__PURE__*/ S.Array(BillingAccount) as any as S.Schema<BillingAccountList>;
 
 /** Response message for `ListBillingAccounts`. */
 export interface ListBillingAccountsResponse {
@@ -383,13 +308,11 @@ export interface ListBillingAccountsResponse {
   nextPageToken?: string;
 }
 export const ListBillingAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccounts: S.optional(BillingAccountList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBillingAccountsResponse",
-}) as any as S.Schema<ListBillingAccountsResponse>;
+S.Struct({
+  "billingAccounts": S.optional(BillingAccountList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBillingAccountsResponse" }) as any as S.Schema<ListBillingAccountsResponse>;
 
 export interface ListBillingAccountsProjectsRequest {
   /** Required. The resource name of the billing account associated with the projects that you want to list. For example, `billingAccounts/012345-567890-ABCDEF`. */
@@ -400,25 +323,15 @@ export interface ListBillingAccountsProjectsRequest {
   pageToken?: string;
 }
 export const ListBillingAccountsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/projects",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBillingAccountsProjectsRequest",
-}) as any as S.Schema<ListBillingAccountsProjectsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/projects","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "ListBillingAccountsProjectsRequest" }) as any as S.Schema<ListBillingAccountsProjectsRequest>;
 
 export type ProjectBillingInfoList = ReadonlyArray<ProjectBillingInfo>;
-export const ProjectBillingInfoList = /*@__PURE__*/ S.Array(
-  ProjectBillingInfo,
-) as any as S.Schema<ProjectBillingInfoList>;
+export const ProjectBillingInfoList = /*@__PURE__*/ S.Array(ProjectBillingInfo) as any as S.Schema<ProjectBillingInfoList>;
 
 /** Request message for `ListProjectBillingInfoResponse`. */
 export interface ListProjectBillingInfoResponse {
@@ -428,13 +341,11 @@ export interface ListProjectBillingInfoResponse {
   nextPageToken?: string;
 }
 export const ListProjectBillingInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectBillingInfo: S.optional(ProjectBillingInfoList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProjectBillingInfoResponse",
-}) as any as S.Schema<ListProjectBillingInfoResponse>;
+S.Struct({
+  "projectBillingInfo": S.optional(ProjectBillingInfoList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListProjectBillingInfoResponse" }) as any as S.Schema<ListProjectBillingInfoResponse>;
 
 export interface ListBillingAccountsSubAccountsRequest {
   /** Requested page size. The maximum page size is 100; this is also the default. */
@@ -446,23 +357,14 @@ export interface ListBillingAccountsSubAccountsRequest {
   /** Options for how to filter the returned billing accounts. This only supports filtering for [subaccounts](https://cloud.google.com/billing/docs/concepts) under a single provided parent billing account. (for example, `master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean algebra and other fields are not currently supported. */
   filter?: string;
 }
-export const ListBillingAccountsSubAccountsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/subAccounts",
-        baseUrl: "https://cloudbilling.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListBillingAccountsSubAccountsRequest",
-}) as any as S.Schema<ListBillingAccountsSubAccountsRequest>;
+export const ListBillingAccountsSubAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/subAccounts","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "ListBillingAccountsSubAccountsRequest" }) as any as S.Schema<ListBillingAccountsSubAccountsRequest>;
 
 export interface ListOrganizationsBillingAccountsRequest {
   /** Optional. The parent resource to list billing accounts from. Format: - `organizations/{organization_id}`, for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
@@ -474,23 +376,14 @@ export interface ListOrganizationsBillingAccountsRequest {
   /** A token identifying a page of results to return. This should be a `next_page_token` value returned from a previous `ListBillingAccounts` call. If unspecified, the first page of results is returned. */
   pageToken?: string;
 }
-export const ListOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/billingAccounts",
-        baseUrl: "https://cloudbilling.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListOrganizationsBillingAccountsRequest",
-}) as any as S.Schema<ListOrganizationsBillingAccountsRequest>;
+export const ListOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/billingAccounts","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsBillingAccountsRequest" }) as any as S.Schema<ListOrganizationsBillingAccountsRequest>;
 
 export interface ListServicesRequest {
   /** Requested page size. Defaults to 5000. */
@@ -499,19 +392,11 @@ export interface ListServicesRequest {
   pageToken?: string;
 }
 export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/services",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListServicesRequest",
-}) as any as S.Schema<ListServicesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/services","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "ListServicesRequest" }) as any as S.Schema<ListServicesRequest>;
 
 /** Encapsulates a single service in Google Cloud Platform. */
 export interface Service {
@@ -525,18 +410,16 @@ export interface Service {
   businessEntityName?: string;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    serviceId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    businessEntityName: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "serviceId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "businessEntityName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export type ServiceList = ReadonlyArray<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(
-  Service,
-) as any as S.Schema<ServiceList>;
+export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** Response message for `ListServices`. */
 export interface ListServicesResponse {
@@ -546,13 +429,11 @@ export interface ListServicesResponse {
   nextPageToken?: string;
 }
 export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    services: S.optional(ServiceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListServicesResponse",
-}) as any as S.Schema<ListServicesResponse>;
+S.Struct({
+  "services": S.optional(ServiceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListServicesResponse" }) as any as S.Schema<ListServicesResponse>;
 
 export interface ListServicesSkusRequest {
   /** The ISO 4217 currency code for the pricing info in the response proto. Will use the conversion rate as of start_time. Optional. If not specified USD will be used. */
@@ -569,30 +450,17 @@ export interface ListServicesSkusRequest {
   parent: string;
 }
 export const ListServicesSkusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyCode: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    startTime: S.optional(S.String.pipe(T.Query())),
-    endTime: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/skus",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListServicesSkusRequest",
-}) as any as S.Schema<ListServicesSkusRequest>;
+S.Struct({
+  "currencyCode": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "startTime": S.optional(S.String.pipe(T.Query())),
+  "endTime": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/skus","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "ListServicesSkusRequest" }) as any as S.Schema<ListServicesSkusRequest>;
 
-export type GeoTaxonomyTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "GLOBAL"
-  | "REGIONAL"
-  | "MULTI_REGIONAL"
-  | (string & {});
+export type GeoTaxonomyTypeEnum = "TYPE_UNSPECIFIED" | "GLOBAL" | "REGIONAL" | "MULTI_REGIONAL";
 export const GeoTaxonomyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encapsulates the geographic taxonomy data for a sku. */
@@ -603,24 +471,16 @@ export interface GeoTaxonomy {
   regions?: StringList;
 }
 export const GeoTaxonomy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GeoTaxonomyTypeEnum),
-    regions: S.optional(StringList),
-  }),
+S.Struct({
+  "type": S.optional(GeoTaxonomyTypeEnum),
+  "regions": S.optional(StringList),
+}),
 ).annotate({ identifier: "GeoTaxonomy" }) as any as S.Schema<GeoTaxonomy>;
 
-export type AggregationInfoAggregationIntervalEnum =
-  | "AGGREGATION_INTERVAL_UNSPECIFIED"
-  | "DAILY"
-  | "MONTHLY"
-  | (string & {});
+export type AggregationInfoAggregationIntervalEnum = "AGGREGATION_INTERVAL_UNSPECIFIED" | "DAILY" | "MONTHLY";
 export const AggregationInfoAggregationIntervalEnum = /*@__PURE__*/ S.String;
 
-export type AggregationInfoAggregationLevelEnum =
-  | "AGGREGATION_LEVEL_UNSPECIFIED"
-  | "ACCOUNT"
-  | "PROJECT"
-  | (string & {});
+export type AggregationInfoAggregationLevelEnum = "AGGREGATION_LEVEL_UNSPECIFIED" | "ACCOUNT" | "PROJECT";
 export const AggregationInfoAggregationLevelEnum = /*@__PURE__*/ S.String;
 
 /** Represents the aggregation level and interval for pricing of a single SKU. */
@@ -631,14 +491,12 @@ export interface AggregationInfo {
   aggregationLevel?: AggregationInfoAggregationLevelEnum;
 }
 export const AggregationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregationInterval: S.optional(AggregationInfoAggregationIntervalEnum),
-    aggregationCount: S.optional(S.Number),
-    aggregationLevel: S.optional(AggregationInfoAggregationLevelEnum),
-  }),
-).annotate({
-  identifier: "AggregationInfo",
-}) as any as S.Schema<AggregationInfo>;
+S.Struct({
+  "aggregationInterval": S.optional(AggregationInfoAggregationIntervalEnum),
+  "aggregationCount": S.optional(S.Number),
+  "aggregationLevel": S.optional(AggregationInfoAggregationLevelEnum),
+}),
+).annotate({ identifier: "AggregationInfo" }) as any as S.Schema<AggregationInfo>;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -650,11 +508,11 @@ export interface Money {
   units?: string;
 }
 export const Money = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nanos: S.optional(S.Number),
-    currencyCode: S.optional(S.String),
-    units: S.optional(S.String),
-  }),
+S.Struct({
+  "nanos": S.optional(S.Number),
+  "currencyCode": S.optional(S.String),
+  "units": S.optional(S.String),
+}),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
 /** The price rate indicating starting usage and its corresponding price. */
@@ -665,16 +523,14 @@ export interface TierRate {
   unitPrice?: Money;
 }
 export const TierRate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startUsageAmount: S.optional(S.Number),
-    unitPrice: S.optional(Money),
-  }),
+S.Struct({
+  "startUsageAmount": S.optional(S.Number),
+  "unitPrice": S.optional(Money),
+}),
 ).annotate({ identifier: "TierRate" }) as any as S.Schema<TierRate>;
 
 export type TierRateList = ReadonlyArray<TierRate>;
-export const TierRateList = /*@__PURE__*/ S.Array(
-  TierRate,
-) as any as S.Schema<TierRateList>;
+export const TierRateList = /*@__PURE__*/ S.Array(TierRate) as any as S.Schema<TierRateList>;
 
 /** Expresses a mathematical pricing formula. For Example:- `usage_unit: GBy` `tiered_rates:` `[start_usage_amount: 20, unit_price: $10]` `[start_usage_amount: 100, unit_price: $5]` The above expresses a pricing formula where the first 20GB is free, the next 80GB is priced at $10 per GB followed by $5 per GB for additional usage. */
 export interface PricingExpression {
@@ -694,18 +550,16 @@ export interface PricingExpression {
   tieredRates?: TierRateList;
 }
 export const PricingExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    usageUnit: S.optional(S.String),
-    baseUnitDescription: S.optional(S.String),
-    usageUnitDescription: S.optional(S.String),
-    baseUnit: S.optional(S.String),
-    baseUnitConversionFactor: S.optional(S.Number),
-    displayQuantity: S.optional(S.Number),
-    tieredRates: S.optional(TierRateList),
-  }),
-).annotate({
-  identifier: "PricingExpression",
-}) as any as S.Schema<PricingExpression>;
+S.Struct({
+  "usageUnit": S.optional(S.String),
+  "baseUnitDescription": S.optional(S.String),
+  "usageUnitDescription": S.optional(S.String),
+  "baseUnit": S.optional(S.String),
+  "baseUnitConversionFactor": S.optional(S.Number),
+  "displayQuantity": S.optional(S.Number),
+  "tieredRates": S.optional(TierRateList),
+}),
+).annotate({ identifier: "PricingExpression" }) as any as S.Schema<PricingExpression>;
 
 /** Represents the pricing information for a SKU at a single point of time. */
 export interface PricingInfo {
@@ -721,19 +575,17 @@ export interface PricingInfo {
   pricingExpression?: PricingExpression;
 }
 export const PricingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyConversionRate: S.optional(S.Number),
-    summary: S.optional(S.String),
-    aggregationInfo: S.optional(AggregationInfo),
-    effectiveTime: S.optional(S.String),
-    pricingExpression: S.optional(PricingExpression),
-  }),
+S.Struct({
+  "currencyConversionRate": S.optional(S.Number),
+  "summary": S.optional(S.String),
+  "aggregationInfo": S.optional(AggregationInfo),
+  "effectiveTime": S.optional(S.String),
+  "pricingExpression": S.optional(PricingExpression),
+}),
 ).annotate({ identifier: "PricingInfo" }) as any as S.Schema<PricingInfo>;
 
 export type PricingInfoList = ReadonlyArray<PricingInfo>;
-export const PricingInfoList = /*@__PURE__*/ S.Array(
-  PricingInfo,
-) as any as S.Schema<PricingInfoList>;
+export const PricingInfoList = /*@__PURE__*/ S.Array(PricingInfo) as any as S.Schema<PricingInfoList>;
 
 /** Represents the category hierarchy of a SKU. */
 export interface Category {
@@ -747,12 +599,12 @@ export interface Category {
   resourceFamily?: string;
 }
 export const Category = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceDisplayName: S.optional(S.String),
-    usageType: S.optional(S.String),
-    resourceGroup: S.optional(S.String),
-    resourceFamily: S.optional(S.String),
-  }),
+S.Struct({
+  "serviceDisplayName": S.optional(S.String),
+  "usageType": S.optional(S.String),
+  "resourceGroup": S.optional(S.String),
+  "resourceFamily": S.optional(S.String),
+}),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
 /** Encapsulates a single SKU in Google Cloud */
@@ -775,16 +627,16 @@ export interface Sku {
   serviceRegions?: StringList;
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skuId: S.optional(S.String),
-    description: S.optional(S.String),
-    geoTaxonomy: S.optional(GeoTaxonomy),
-    name: S.optional(S.String),
-    pricingInfo: S.optional(PricingInfoList),
-    serviceProviderName: S.optional(S.String),
-    category: S.optional(Category),
-    serviceRegions: S.optional(StringList),
-  }),
+S.Struct({
+  "skuId": S.optional(S.String),
+  "description": S.optional(S.String),
+  "geoTaxonomy": S.optional(GeoTaxonomy),
+  "name": S.optional(S.String),
+  "pricingInfo": S.optional(PricingInfoList),
+  "serviceProviderName": S.optional(S.String),
+  "category": S.optional(Category),
+  "serviceRegions": S.optional(StringList),
+}),
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 export type SkuList = ReadonlyArray<Sku>;
@@ -798,13 +650,11 @@ export interface ListSkusResponse {
   skus?: SkuList;
 }
 export const ListSkusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    skus: S.optional(SkuList),
-  }),
-).annotate({
-  identifier: "ListSkusResponse",
-}) as any as S.Schema<ListSkusResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "skus": S.optional(SkuList),
+}),
+).annotate({ identifier: "ListSkusResponse" }) as any as S.Schema<ListSkusResponse>;
 
 /** Request message for `MoveBillingAccount` RPC. */
 export interface MoveBillingAccountRequest {
@@ -812,12 +662,10 @@ export interface MoveBillingAccountRequest {
   destinationParent?: string;
 }
 export const MoveBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationParent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MoveBillingAccountRequest",
-}) as any as S.Schema<MoveBillingAccountRequest>;
+S.Struct({
+  "destinationParent": S.optional(S.String),
+}),
+).annotate({ identifier: "MoveBillingAccountRequest" }) as any as S.Schema<MoveBillingAccountRequest>;
 
 export interface MoveBillingAccountsRequest {
   /** Required. The resource name of the billing account to move. Must be of the form `billingAccounts/{billing_account_id}`. The specified billing account cannot be a subaccount, since a subaccount always belongs to the same organization as its parent account. */
@@ -826,19 +674,11 @@ export interface MoveBillingAccountsRequest {
   body?: MoveBillingAccountRequest;
 }
 export const MoveBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MoveBillingAccountRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:move",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "MoveBillingAccountsRequest",
-}) as any as S.Schema<MoveBillingAccountsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MoveBillingAccountRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:move","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "MoveBillingAccountsRequest" }) as any as S.Schema<MoveBillingAccountsRequest>;
 
 export interface MoveOrganizationsBillingAccountsRequest {
   /** Required. The resource name of the Organization to move the billing account under. Must be of the form `organizations/{organization_id}`. */
@@ -846,21 +686,12 @@ export interface MoveOrganizationsBillingAccountsRequest {
   /** Required. The resource name of the billing account to move. Must be of the form `billingAccounts/{billing_account_id}`. The specified billing account cannot be a subaccount, since a subaccount always belongs to the same organization as its parent account. */
   name: string;
 }
-export const MoveOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destinationParent: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+destinationParent}/{+name}:move",
-        baseUrl: "https://cloudbilling.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "MoveOrganizationsBillingAccountsRequest",
-}) as any as S.Schema<MoveOrganizationsBillingAccountsRequest>;
+export const MoveOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "destinationParent": S.String.pipe(T.Label()),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+destinationParent}/{+name}:move","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "MoveOrganizationsBillingAccountsRequest" }) as any as S.Schema<MoveOrganizationsBillingAccountsRequest>;
 
 export interface PatchBillingAccountsRequest {
   /** The update mask applied to the resource. Only "display_name" is currently supported. */
@@ -871,20 +702,12 @@ export interface PatchBillingAccountsRequest {
   body?: BillingAccount;
 }
 export const PatchBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    body: S.optional(BillingAccount.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchBillingAccountsRequest",
-}) as any as S.Schema<PatchBillingAccountsRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(BillingAccount.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "PatchBillingAccountsRequest" }) as any as S.Schema<PatchBillingAccountsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -894,13 +717,11 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyBillingAccountsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -909,19 +730,11 @@ export interface SetIamPolicyBillingAccountsRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.String.pipe(T.Label()),
-    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+resource}:setIamPolicy",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SetIamPolicyBillingAccountsRequest",
-}) as any as S.Schema<SetIamPolicyBillingAccountsRequest>;
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyBillingAccountsRequest" }) as any as S.Schema<SetIamPolicyBillingAccountsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -929,12 +742,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsBillingAccountsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -942,21 +753,12 @@ export interface TestIamPermissionsBillingAccountsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsBillingAccountsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://cloudbilling.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "TestIamPermissionsBillingAccountsRequest",
-}) as any as S.Schema<TestIamPermissionsBillingAccountsRequest>;
+export const TestIamPermissionsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsBillingAccountsRequest" }) as any as S.Schema<TestIamPermissionsBillingAccountsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -964,12 +766,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateBillingInfoProjectsRequest {
   /** Required. The resource name of the project associated with the billing information that you want to update. For example, `projects/tokyo-rain-123`. */
@@ -978,26 +778,13 @@ export interface UpdateBillingInfoProjectsRequest {
   body?: ProjectBillingInfo;
 }
 export const UpdateBillingInfoProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(ProjectBillingInfo.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v1/{+name}/billingInfo",
-      baseUrl: "https://cloudbilling.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateBillingInfoProjectsRequest",
-}) as any as S.Schema<UpdateBillingInfoProjectsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ProjectBillingInfo.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1/{+name}/billingInfo","baseUrl":"https://cloudbilling.googleapis.com/"})),
+).annotate({ identifier: "UpdateBillingInfoProjectsRequest" }) as any as S.Schema<UpdateBillingInfoProjectsRequest>;
 
-export type CreateBillingAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateBillingAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts. */
 export const createBillingAccounts: API.OperationMethod<
   CreateBillingAccountsRequest,
@@ -1012,12 +799,7 @@ export const createBillingAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateBillingAccountsSubAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateBillingAccountsSubAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts. */
 export const createBillingAccountsSubAccounts: API.OperationMethod<
   CreateBillingAccountsSubAccountsRequest,
@@ -1032,12 +814,7 @@ export const createBillingAccountsSubAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateOrganizationsBillingAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateOrganizationsBillingAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts. */
 export const createOrganizationsBillingAccounts: API.OperationMethod<
   CreateOrganizationsBillingAccountsRequest,
@@ -1082,10 +859,7 @@ export const getBillingInfoProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyBillingAccountsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyBillingAccountsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const getIamPolicyBillingAccounts: API.OperationMethod<
   GetIamPolicyBillingAccountsRequest,
@@ -1113,16 +887,10 @@ export const listBillingAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBillingAccountsProjectsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBillingAccountsProjectsError = NotFound | Forbidden | GcpOpError;
 /** Lists the projects associated with a billing account. The current authenticated user must have the `billing.resourceAssociations.list` IAM permission, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const listBillingAccountsProjects: API.PaginatedOperationMethod<
   ListBillingAccountsProjectsRequest,
@@ -1135,16 +903,10 @@ export const listBillingAccountsProjects: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBillingAccountsSubAccountsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBillingAccountsSubAccountsError = NotFound | Forbidden | GcpOpError;
 /** Lists the billing accounts that the current authenticated user has permission to [view](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<
   ListBillingAccountsSubAccountsRequest,
@@ -1157,16 +919,10 @@ export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListOrganizationsBillingAccountsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListOrganizationsBillingAccountsError = NotFound | Forbidden | GcpOpError;
 /** Lists the billing accounts that the current authenticated user has permission to [view](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<
   ListOrganizationsBillingAccountsRequest,
@@ -1179,10 +935,7 @@ export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListServicesError = NotFound | Forbidden | GcpOpError;
@@ -1198,10 +951,7 @@ export const listServices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListServicesSkusError = NotFound | Forbidden | GcpOpError;
@@ -1217,18 +967,10 @@ export const listServicesSkus: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type MoveBillingAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MoveBillingAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Changes which parent organization a billing account belongs to. */
 export const moveBillingAccounts: API.OperationMethod<
   MoveBillingAccountsRequest,
@@ -1243,10 +985,7 @@ export const moveBillingAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveOrganizationsBillingAccountsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type MoveOrganizationsBillingAccountsError = NotFound | Forbidden | GcpOpError;
 /** Changes which parent organization a billing account belongs to. */
 export const moveOrganizationsBillingAccounts: API.OperationMethod<
   MoveOrganizationsBillingAccountsRequest,
@@ -1261,12 +1000,7 @@ export const moveOrganizationsBillingAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchBillingAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchBillingAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a billing account's fields. Currently the only field that can be edited is `display_name`. The current authenticated user must have the `billing.accounts.update` IAM permission, which is typically given to the [administrator](https://cloud.google.com/billing/docs/how-to/billing-access) of the billing account. */
 export const patchBillingAccounts: API.OperationMethod<
   PatchBillingAccountsRequest,
@@ -1281,12 +1015,7 @@ export const patchBillingAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyBillingAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyBillingAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy for a billing account. Replaces any existing policy. The caller must have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const setIamPolicyBillingAccounts: API.OperationMethod<
   SetIamPolicyBillingAccountsRequest,
@@ -1301,12 +1030,7 @@ export const setIamPolicyBillingAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsBillingAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsBillingAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Tests the access control policy for a billing account. This method takes the resource and a set of permissions as input and returns the subset of the input permissions that the caller is allowed for that resource. */
 export const testIamPermissionsBillingAccounts: API.OperationMethod<
   TestIamPermissionsBillingAccountsRequest,
@@ -1321,12 +1045,7 @@ export const testIamPermissionsBillingAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateBillingInfoProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateBillingInfoProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets or updates the billing account associated with a project. You specify the new billing account by setting the `billing_account_name` in the `ProjectBillingInfo` resource to the resource name of a billing account. Associating a project with an open billing account enables billing on the project and allows charges for resource usage. If the project already had a billing account, this method changes the billing account used for resource usage charges. *Note:* Incurred charges that have not yet been reported in the transaction history of the Google Cloud Console might be billed to the new billing account, even if the charge occurred before the new billing account was assigned to the project. The current authenticated user must have ownership privileges for both the [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ) and the [billing account](https://cloud.google.com/billing/docs/how-to/billing-access). You can disable billing on the project by setting the `billing_account_name` field to empty. This action disassociates the current billing account from the project. Any billable activity of your in-use services will stop, and your application could stop functioning as expected. Any unbilled charges to date will be billed to the previously associated account. The current authenticated user must be either an owner of the project or an owner of the billing account for the project. Note that associating a project with a *closed* billing account will have much the same effect as disabling billing on the project: any paid resources used by the project will be shut down. Thus, unless you wish to disable billing, you should always call this method with the name of an *open* billing account. */
 export const updateBillingInfoProjects: API.OperationMethod<
   UpdateBillingInfoProjectsRequest,
@@ -1340,3 +1059,4 @@ export const updateBillingInfoProjects: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

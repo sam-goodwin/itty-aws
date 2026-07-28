@@ -113,8 +113,7 @@ export type AgentModeEnum =
   | "llm_analytics"
   | "sandbox"
   | "user_interview"
-  | "customer_analytics"
-  | (string & {});
+  | "customer_analytics";
 export const AgentModeEnum = /*@__PURE__*/ S.String;
 
 export interface ConversationsCreateRequest {
@@ -127,7 +126,7 @@ export interface ConversationsCreateRequest {
   billing_context?: unknown;
   trace_id?: string;
   session_id?: string;
-  agent_mode?: AgentModeEnum;
+  agent_mode?: AgentModeEnum | (string & {});
   is_sandbox?: boolean;
   resume_payload?: unknown;
 }
@@ -242,11 +241,7 @@ export const ConversationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsListRequest>;
 
 /** * `idle` - Idle * `in_progress` - In progress * `canceling` - Canceling */
-export type ConversationStatus =
-  | "idle"
-  | "in_progress"
-  | "canceling"
-  | (string & {});
+export type ConversationStatus = "idle" | "in_progress" | "canceling";
 export const ConversationStatus = /*@__PURE__*/ S.String;
 
 /** * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
@@ -259,8 +254,7 @@ export type TopicEnum =
   | "experiments"
   | "error_tracking"
   | "data_warehouse"
-  | "other"
-  | (string & {});
+  | "other";
 export const TopicEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -278,11 +272,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -319,12 +312,11 @@ export type ConversationType =
   | "assistant"
   | "tool_call"
   | "deep_research"
-  | "slack"
-  | (string & {});
+  | "slack";
 export const ConversationType = /*@__PURE__*/ S.String;
 
 /** * `acp` - ACP * `pi` - Pi */
-export type RuntimeEnum = "acp" | "pi" | (string & {});
+export type RuntimeEnum = "acp" | "pi";
 export const RuntimeEnum = /*@__PURE__*/ S.String;
 
 export type ConversationTaskJsonSchemaMap = {
@@ -496,14 +488,13 @@ export type SandboxAttachedContextItemTypeEnum =
   | "event"
   | "insight"
   | "notebook"
-  | "text"
-  | (string & {});
+  | "text";
 export const SandboxAttachedContextItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** One typed attachment carried by a sandbox message. DEPRECATED PATH — do not extend. This structured `attached_context` (and its server-side wrap in `context_wrapper.py`) exists only for the legacy Max conversations bridge and is removed with it; the live path wraps context client-side (`products/posthog_ai/frontend/utils/posthogContextBlock.ts`). */
 export interface SandboxAttachedContextItem {
   /** Attachment kind. Entity types carry `id` (+ optional `name`); `text` carries `value`. * `action` - action * `dashboard` - dashboard * `error_tracking_issue` - error_tracking_issue * `evaluation` - evaluation * `event` - event * `insight` - insight * `notebook` - notebook * `text` - text */
-  type: SandboxAttachedContextItemTypeEnum;
+  type: SandboxAttachedContextItemTypeEnum | (string & {});
   /** Entity identifier — integer for `dashboard`/`action`, string short_id/UUID otherwise. Absent for `text`. */
   id?: unknown;
   /** Optional human-readable label rendered in the context block. */
@@ -536,8 +527,7 @@ export type InitialPermissionModeEnum =
   | "acceptEdits"
   | "plan"
   | "bypassPermissions"
-  | "auto"
-  | (string & {});
+  | "auto";
 export const InitialPermissionModeEnum = /*@__PURE__*/ S.String;
 
 export interface ConversationsOpenCreateRequest {
@@ -552,7 +542,7 @@ export interface ConversationsOpenCreateRequest {
   /** Typed PostHog entities (and free text) attached to this message. */
   attached_context?: ConversationsOpenCreateRequestAttachedContextList;
   /** Initial permission mode for the sandbox agent session. Defaults to `auto`, which allows safe tool use while preserving explicit confirmations. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto */
-  initial_permission_mode?: InitialPermissionModeEnum;
+  initial_permission_mode?: InitialPermissionModeEnum | (string & {});
   /** Bind a brand-new sandbox conversation to an existing Task so the first message resumes that Task's run. Honored only when this request creates the conversation row; ignored for an already-existing conversation. */
   task_id?: string;
 }
@@ -640,7 +630,7 @@ export const ConversationMessagesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConversationMessagesList>;
 
 /** * `langgraph` - LangGraph * `sandbox` - Sandbox */
-export type AgentRuntimeEnum = "langgraph" | "sandbox" | (string & {});
+export type AgentRuntimeEnum = "langgraph" | "sandbox";
 export const AgentRuntimeEnum = /*@__PURE__*/ S.String;
 
 export type ConversationPendingApprovalsItemMap = {

@@ -145,24 +145,22 @@ export type V1VariantsCreateRequestOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad"
-  | (string & {});
+  | "pad";
 export const V1VariantsCreateRequestOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsCreateRequestOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsCreateRequestOptionsMetadata = /*@__PURE__*/ S.String;
 
 export interface V1VariantsCreateRequestOptions {
   /** The fit property describes how the width and height dimensions should be interpreted. */
-  fit: V1VariantsCreateRequestOptionsFit;
+  fit: V1VariantsCreateRequestOptionsFit | (string & {});
   /** Maximum height in image pixels. */
   height: number;
   /** What EXIF data should be preserved in the output image. */
-  metadata: V1VariantsCreateRequestOptionsMetadata;
+  metadata: V1VariantsCreateRequestOptionsMetadata | (string & {});
   /** Maximum width in image pixels. */
   width: number;
 }
@@ -210,15 +208,13 @@ export type V1VariantsCreateResponseVariantOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad"
-  | (string & {});
+  | "pad";
 export const V1VariantsCreateResponseVariantOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsCreateResponseVariantOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsCreateResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 
@@ -582,15 +578,13 @@ export type V1VariantsGetResponseVariantOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad"
-  | (string & {});
+  | "pad";
 export const V1VariantsGetResponseVariantOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsGetResponseVariantOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsGetResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 
@@ -801,16 +795,14 @@ export type V1VariantsListResponseVariantsHeroOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad"
-  | (string & {});
+  | "pad";
 export const V1VariantsListResponseVariantsHeroOptionsFit =
   /*@__PURE__*/ S.String;
 
 export type V1VariantsListResponseVariantsHeroOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsListResponseVariantsHeroOptionsMetadata =
   /*@__PURE__*/ S.String;
 
@@ -876,7 +868,19 @@ export const ListV1VariantsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListV1VariantsResponse",
 }) as any as S.Schema<ListV1VariantsResponse>;
 
-export type V2ListRequestSortOrder = "asc" | "desc" | (string & {});
+export interface V2ListRequestMeta {
+  /** Optional metadata filter(s). Multiple filters can be combined with AND logic. */
+  FieldOperator__?: unknown;
+}
+export const V2ListRequestMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FieldOperator__: S.optional(S.Unknown.pipe(T.Body("<field>[<operator>]"))),
+  }),
+).annotate({
+  identifier: "V2ListRequestMeta",
+}) as any as S.Schema<V2ListRequestMeta>;
+
+export type V2ListRequestSortOrder = "asc" | "desc";
 export const V2ListRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListV2sRequest {
@@ -886,21 +890,18 @@ export interface ListV2sRequest {
   continuationToken?: string;
   /** Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set */
   creator?: string;
-  /** Optional metadata filter(s). Multiple filters can be combined with AND logic. */
-  metaFieldOperator__?: string;
+  meta?: V2ListRequestMeta;
   /** Number of items per page */
   perPage?: number;
   /** Sorting order by upload time */
-  sortOrder?: V2ListRequestSortOrder;
+  sortOrder?: V2ListRequestSortOrder | (string & {});
 }
 export const ListV2sRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     continuationToken: S.optional(S.String.pipe(T.Query("continuation_token"))),
     creator: S.optional(S.String.pipe(T.Query())),
-    metaFieldOperator__: S.optional(
-      S.String.pipe(T.Query("meta.<field>[<operator>]")),
-    ),
+    meta: S.optional(V2ListRequestMeta.pipe(T.DeepQuery("meta"))),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     sortOrder: S.optional(V2ListRequestSortOrder.pipe(T.Query("sort_order"))),
   })
@@ -1040,24 +1041,22 @@ export type V1VariantsEditRequestOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad"
-  | (string & {});
+  | "pad";
 export const V1VariantsEditRequestOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsEditRequestOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsEditRequestOptionsMetadata = /*@__PURE__*/ S.String;
 
 export interface V1VariantsEditRequestOptions {
   /** The fit property describes how the width and height dimensions should be interpreted. */
-  fit: V1VariantsEditRequestOptionsFit;
+  fit: V1VariantsEditRequestOptionsFit | (string & {});
   /** Maximum height in image pixels. */
   height: number;
   /** What EXIF data should be preserved in the output image. */
-  metadata: V1VariantsEditRequestOptionsMetadata;
+  metadata: V1VariantsEditRequestOptionsMetadata | (string & {});
   /** Maximum width in image pixels. */
   width: number;
 }
@@ -1105,15 +1104,13 @@ export type V1VariantsEditResponseVariantOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad"
-  | (string & {});
+  | "pad";
 export const V1VariantsEditResponseVariantOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsEditResponseVariantOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsEditResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 

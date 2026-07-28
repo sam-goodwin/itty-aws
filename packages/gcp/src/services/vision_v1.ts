@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request message for the `AddProductToProductSet` method. */
@@ -66,12 +66,10 @@ export interface AddProductToProductSetRequest {
   product?: string;
 }
 export const AddProductToProductSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddProductToProductSetRequest",
-}) as any as S.Schema<AddProductToProductSetRequest>;
+S.Struct({
+  "product": S.optional(S.String),
+}),
+).annotate({ identifier: "AddProductToProductSetRequest" }) as any as S.Schema<AddProductToProductSetRequest>;
 
 export interface AddProductProjectsLocationsProductSetsRequest {
   /** Required. The resource name for the ProductSet to modify. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */
@@ -79,33 +77,21 @@ export interface AddProductProjectsLocationsProductSetsRequest {
   /** Request body */
   body?: AddProductToProductSetRequest;
 }
-export const AddProductProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AddProductToProductSetRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:addProduct",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AddProductProjectsLocationsProductSetsRequest",
-  }) as any as S.Schema<AddProductProjectsLocationsProductSetsRequest>;
+export const AddProductProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(AddProductToProductSetRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:addProduct","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AddProductProjectsLocationsProductSetsRequest" }) as any as S.Schema<AddProductProjectsLocationsProductSetsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** The Google Cloud Storage location where the input will be read from. */
 export interface GcsSource {
@@ -113,9 +99,9 @@ export interface GcsSource {
   uri?: string;
 }
 export const GcsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+}),
 ).annotate({ identifier: "GcsSource" }) as any as S.Schema<GcsSource>;
 
 /** The desired input location and metadata. */
@@ -128,56 +114,38 @@ export interface InputConfig {
   content?: string;
 }
 export const InputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mimeType: S.optional(S.String),
-    gcsSource: S.optional(GcsSource),
-    content: S.optional(S.String),
-  }),
+S.Struct({
+  "mimeType": S.optional(S.String),
+  "gcsSource": S.optional(GcsSource),
+  "content": S.optional(S.String),
+}),
 ).annotate({ identifier: "InputConfig" }) as any as S.Schema<InputConfig>;
 
-export type FeatureTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "FACE_DETECTION"
-  | "LANDMARK_DETECTION"
-  | "LOGO_DETECTION"
-  | "LABEL_DETECTION"
-  | "TEXT_DETECTION"
-  | "DOCUMENT_TEXT_DETECTION"
-  | "SAFE_SEARCH_DETECTION"
-  | "IMAGE_PROPERTIES"
-  | "CROP_HINTS"
-  | "WEB_DETECTION"
-  | "PRODUCT_SEARCH"
-  | "OBJECT_LOCALIZATION"
-  | (string & {});
+export type FeatureTypeEnum = "TYPE_UNSPECIFIED" | "FACE_DETECTION" | "LANDMARK_DETECTION" | "LOGO_DETECTION" | "LABEL_DETECTION" | "TEXT_DETECTION" | "DOCUMENT_TEXT_DETECTION" | "SAFE_SEARCH_DETECTION" | "IMAGE_PROPERTIES" | "CROP_HINTS" | "WEB_DETECTION" | "PRODUCT_SEARCH" | "OBJECT_LOCALIZATION";
 export const FeatureTypeEnum = /*@__PURE__*/ S.String;
 
 /** The type of Google Cloud Vision API detection to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list. */
 export interface Feature {
   /** The feature type. */
-  type?: FeatureTypeEnum;
+  type?: FeatureTypeEnum | (string & {});
   /** Maximum number of results of this type. Does not apply to `TEXT_DETECTION`, `DOCUMENT_TEXT_DETECTION`, or `CROP_HINTS`. */
   maxResults?: number;
   /** Model to use for the feature. Supported values: "builtin/stable" (the default if unset) and "builtin/latest". `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` also support "builtin/rc" for the latest release candidate. */
   model?: string;
 }
 export const Feature = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(FeatureTypeEnum),
-    maxResults: S.optional(S.Number),
-    model: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(FeatureTypeEnum),
+  "maxResults": S.optional(S.Number),
+  "model": S.optional(S.String),
+}),
 ).annotate({ identifier: "Feature" }) as any as S.Schema<Feature>;
 
 export type FeatureList = ReadonlyArray<Feature>;
-export const FeatureList = /*@__PURE__*/ S.Array(
-  Feature,
-) as any as S.Schema<FeatureList>;
+export const FeatureList = /*@__PURE__*/ S.Array(Feature) as any as S.Schema<FeatureList>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image. */
 export interface Vertex {
@@ -187,16 +155,14 @@ export interface Vertex {
   y?: number;
 }
 export const Vertex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.optional(S.Number),
-    y: S.optional(S.Number),
-  }),
+S.Struct({
+  "x": S.optional(S.Number),
+  "y": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Vertex" }) as any as S.Schema<Vertex>;
 
 export type VertexList = ReadonlyArray<Vertex>;
-export const VertexList = /*@__PURE__*/ S.Array(
-  Vertex,
-) as any as S.Schema<VertexList>;
+export const VertexList = /*@__PURE__*/ S.Array(Vertex) as any as S.Schema<VertexList>;
 
 /** A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1. */
 export interface NormalizedVertex {
@@ -206,18 +172,14 @@ export interface NormalizedVertex {
   x?: number;
 }
 export const NormalizedVertex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    y: S.optional(S.Number),
-    x: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "NormalizedVertex",
-}) as any as S.Schema<NormalizedVertex>;
+S.Struct({
+  "y": S.optional(S.Number),
+  "x": S.optional(S.Number),
+}),
+).annotate({ identifier: "NormalizedVertex" }) as any as S.Schema<NormalizedVertex>;
 
 export type NormalizedVertexList = ReadonlyArray<NormalizedVertex>;
-export const NormalizedVertexList = /*@__PURE__*/ S.Array(
-  NormalizedVertex,
-) as any as S.Schema<NormalizedVertexList>;
+export const NormalizedVertexList = /*@__PURE__*/ S.Array(NormalizedVertex) as any as S.Schema<NormalizedVertexList>;
 
 /** A bounding polygon for the detected image annotation. */
 export interface BoundingPoly {
@@ -227,16 +189,14 @@ export interface BoundingPoly {
   normalizedVertices?: NormalizedVertexList;
 }
 export const BoundingPoly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vertices: S.optional(VertexList),
-    normalizedVertices: S.optional(NormalizedVertexList),
-  }),
+S.Struct({
+  "vertices": S.optional(VertexList),
+  "normalizedVertices": S.optional(NormalizedVertexList),
+}),
 ).annotate({ identifier: "BoundingPoly" }) as any as S.Schema<BoundingPoly>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Parameters for a product search request. */
 export interface ProductSearchParams {
@@ -250,15 +210,13 @@ export interface ProductSearchParams {
   productSet?: string;
 }
 export const ProductSearchParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boundingPoly: S.optional(BoundingPoly),
-    filter: S.optional(S.String),
-    productCategories: S.optional(StringList),
-    productSet: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductSearchParams",
-}) as any as S.Schema<ProductSearchParams>;
+S.Struct({
+  "boundingPoly": S.optional(BoundingPoly),
+  "filter": S.optional(S.String),
+  "productCategories": S.optional(StringList),
+  "productSet": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductSearchParams" }) as any as S.Schema<ProductSearchParams>;
 
 /** Parameters for web detection request. */
 export interface WebDetectionParams {
@@ -266,12 +224,10 @@ export interface WebDetectionParams {
   includeGeoResults?: boolean;
 }
 export const WebDetectionParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeGeoResults: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "WebDetectionParams",
-}) as any as S.Schema<WebDetectionParams>;
+S.Struct({
+  "includeGeoResults": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "WebDetectionParams" }) as any as S.Schema<WebDetectionParams>;
 
 /** Parameters for text detections. This is used to control TEXT_DETECTION and DOCUMENT_TEXT_DETECTION features. */
 export interface TextDetectionParams {
@@ -281,18 +237,14 @@ export interface TextDetectionParams {
   enableTextDetectionConfidenceScore?: boolean;
 }
 export const TextDetectionParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    advancedOcrOptions: S.optional(StringList),
-    enableTextDetectionConfidenceScore: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TextDetectionParams",
-}) as any as S.Schema<TextDetectionParams>;
+S.Struct({
+  "advancedOcrOptions": S.optional(StringList),
+  "enableTextDetectionConfidenceScore": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "TextDetectionParams" }) as any as S.Schema<TextDetectionParams>;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Parameters for crop hints annotation request. */
 export interface CropHintsParams {
@@ -300,12 +252,10 @@ export interface CropHintsParams {
   aspectRatios?: DoubleList;
 }
 export const CropHintsParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aspectRatios: S.optional(DoubleList),
-  }),
-).annotate({
-  identifier: "CropHintsParams",
-}) as any as S.Schema<CropHintsParams>;
+S.Struct({
+  "aspectRatios": S.optional(DoubleList),
+}),
+).annotate({ identifier: "CropHintsParams" }) as any as S.Schema<CropHintsParams>;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
@@ -315,10 +265,10 @@ export interface LatLng {
   longitude?: number;
 }
 export const LatLng = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latitude: S.optional(S.Number),
-    longitude: S.optional(S.Number),
-  }),
+S.Struct({
+  "latitude": S.optional(S.Number),
+  "longitude": S.optional(S.Number),
+}),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
 /** Rectangle determined by min and max `LatLng` pairs. */
@@ -329,10 +279,10 @@ export interface LatLongRect {
   maxLatLng?: LatLng;
 }
 export const LatLongRect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minLatLng: S.optional(LatLng),
-    maxLatLng: S.optional(LatLng),
-  }),
+S.Struct({
+  "minLatLng": S.optional(LatLng),
+  "maxLatLng": S.optional(LatLng),
+}),
 ).annotate({ identifier: "LatLongRect" }) as any as S.Schema<LatLongRect>;
 
 /** Image context and/or feature-specific parameters. */
@@ -351,14 +301,14 @@ export interface ImageContext {
   languageHints?: StringList;
 }
 export const ImageContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productSearchParams: S.optional(ProductSearchParams),
-    webDetectionParams: S.optional(WebDetectionParams),
-    textDetectionParams: S.optional(TextDetectionParams),
-    cropHintsParams: S.optional(CropHintsParams),
-    latLongRect: S.optional(LatLongRect),
-    languageHints: S.optional(StringList),
-  }),
+S.Struct({
+  "productSearchParams": S.optional(ProductSearchParams),
+  "webDetectionParams": S.optional(WebDetectionParams),
+  "textDetectionParams": S.optional(TextDetectionParams),
+  "cropHintsParams": S.optional(CropHintsParams),
+  "latLongRect": S.optional(LatLongRect),
+  "languageHints": S.optional(StringList),
+}),
 ).annotate({ identifier: "ImageContext" }) as any as S.Schema<ImageContext>;
 
 /** A request to annotate one single file, e.g. a PDF, TIFF or GIF file. */
@@ -373,20 +323,16 @@ export interface AnnotateFileRequest {
   imageContext?: ImageContext;
 }
 export const AnnotateFileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputConfig: S.optional(InputConfig),
-    features: S.optional(FeatureList),
-    pages: S.optional(IntegerList),
-    imageContext: S.optional(ImageContext),
-  }),
-).annotate({
-  identifier: "AnnotateFileRequest",
-}) as any as S.Schema<AnnotateFileRequest>;
+S.Struct({
+  "inputConfig": S.optional(InputConfig),
+  "features": S.optional(FeatureList),
+  "pages": S.optional(IntegerList),
+  "imageContext": S.optional(ImageContext),
+}),
+).annotate({ identifier: "AnnotateFileRequest" }) as any as S.Schema<AnnotateFileRequest>;
 
 export type AnnotateFileRequestList = ReadonlyArray<AnnotateFileRequest>;
-export const AnnotateFileRequestList = /*@__PURE__*/ S.Array(
-  AnnotateFileRequest,
-) as any as S.Schema<AnnotateFileRequestList>;
+export const AnnotateFileRequestList = /*@__PURE__*/ S.Array(AnnotateFileRequest) as any as S.Schema<AnnotateFileRequestList>;
 
 /** A list of requests to annotate files using the BatchAnnotateFiles API. */
 export interface BatchAnnotateFilesRequest {
@@ -398,32 +344,22 @@ export interface BatchAnnotateFilesRequest {
   requests?: AnnotateFileRequestList;
 }
 export const BatchAnnotateFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(S.String),
-    labels: S.optional(StringMap),
-    requests: S.optional(AnnotateFileRequestList),
-  }),
-).annotate({
-  identifier: "BatchAnnotateFilesRequest",
-}) as any as S.Schema<BatchAnnotateFilesRequest>;
+S.Struct({
+  "parent": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "requests": S.optional(AnnotateFileRequestList),
+}),
+).annotate({ identifier: "BatchAnnotateFilesRequest" }) as any as S.Schema<BatchAnnotateFilesRequest>;
 
 export interface AnnotateFilesRequest {
   /** Request body */
   body?: BatchAnnotateFilesRequest;
 }
 export const AnnotateFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(BatchAnnotateFilesRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/files:annotate",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AnnotateFilesRequest",
-}) as any as S.Schema<AnnotateFilesRequest>;
+S.Struct({
+  "body": S.optional(BatchAnnotateFilesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/files:annotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AnnotateFilesRequest" }) as any as S.Schema<AnnotateFilesRequest>;
 
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
 export interface Color {
@@ -437,12 +373,12 @@ export interface Color {
   alpha?: number;
 }
 export const Color = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    red: S.optional(S.Number),
-    green: S.optional(S.Number),
-    blue: S.optional(S.Number),
-    alpha: S.optional(S.Number),
-  }),
+S.Struct({
+  "red": S.optional(S.Number),
+  "green": S.optional(S.Number),
+  "blue": S.optional(S.Number),
+  "alpha": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Color" }) as any as S.Schema<Color>;
 
 /** Color information consists of RGB channels, score, and the fraction of the image that the color occupies in the image. */
@@ -455,17 +391,15 @@ export interface ColorInfo {
   color?: Color;
 }
 export const ColorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-    pixelFraction: S.optional(S.Number),
-    color: S.optional(Color),
-  }),
+S.Struct({
+  "score": S.optional(S.Number),
+  "pixelFraction": S.optional(S.Number),
+  "color": S.optional(Color),
+}),
 ).annotate({ identifier: "ColorInfo" }) as any as S.Schema<ColorInfo>;
 
 export type ColorInfoList = ReadonlyArray<ColorInfo>;
-export const ColorInfoList = /*@__PURE__*/ S.Array(
-  ColorInfo,
-) as any as S.Schema<ColorInfoList>;
+export const ColorInfoList = /*@__PURE__*/ S.Array(ColorInfo) as any as S.Schema<ColorInfoList>;
 
 /** Set of dominant colors and their corresponding scores. */
 export interface DominantColorsAnnotation {
@@ -473,12 +407,10 @@ export interface DominantColorsAnnotation {
   colors?: ColorInfoList;
 }
 export const DominantColorsAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    colors: S.optional(ColorInfoList),
-  }),
-).annotate({
-  identifier: "DominantColorsAnnotation",
-}) as any as S.Schema<DominantColorsAnnotation>;
+S.Struct({
+  "colors": S.optional(ColorInfoList),
+}),
+).annotate({ identifier: "DominantColorsAnnotation" }) as any as S.Schema<DominantColorsAnnotation>;
 
 /** Stores image properties, such as dominant colors. */
 export interface ImageProperties {
@@ -486,12 +418,10 @@ export interface ImageProperties {
   dominantColors?: DominantColorsAnnotation;
 }
 export const ImageProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dominantColors: S.optional(DominantColorsAnnotation),
-  }),
-).annotate({
-  identifier: "ImageProperties",
-}) as any as S.Schema<ImageProperties>;
+S.Struct({
+  "dominantColors": S.optional(DominantColorsAnnotation),
+}),
+).annotate({ identifier: "ImageProperties" }) as any as S.Schema<ImageProperties>;
 
 /** A product label represented as a key-value pair. */
 export interface KeyValue {
@@ -501,16 +431,14 @@ export interface KeyValue {
   value?: string;
 }
 export const KeyValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "KeyValue" }) as any as S.Schema<KeyValue>;
 
 export type KeyValueList = ReadonlyArray<KeyValue>;
-export const KeyValueList = /*@__PURE__*/ S.Array(
-  KeyValue,
-) as any as S.Schema<KeyValueList>;
+export const KeyValueList = /*@__PURE__*/ S.Array(KeyValue) as any as S.Schema<KeyValueList>;
 
 /** A Product contains ReferenceImages. */
 export interface Product {
@@ -526,13 +454,13 @@ export interface Product {
   productCategory?: string;
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    productLabels: S.optional(KeyValueList),
-    productCategory: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "productLabels": S.optional(KeyValueList),
+  "productCategory": S.optional(S.String),
+}),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** Information about a product. */
@@ -545,17 +473,15 @@ export interface Result {
   product?: Product;
 }
 export const Result = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-    image: S.optional(S.String),
-    product: S.optional(Product),
-  }),
+S.Struct({
+  "score": S.optional(S.Number),
+  "image": S.optional(S.String),
+  "product": S.optional(Product),
+}),
 ).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
 
 export type ResultList = ReadonlyArray<Result>;
-export const ResultList = /*@__PURE__*/ S.Array(
-  Result,
-) as any as S.Schema<ResultList>;
+export const ResultList = /*@__PURE__*/ S.Array(Result) as any as S.Schema<ResultList>;
 
 /** Prediction for what the object in the bounding box is. */
 export interface ObjectAnnotation {
@@ -569,20 +495,16 @@ export interface ObjectAnnotation {
   score?: number;
 }
 export const ObjectAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    mid: S.optional(S.String),
-    languageCode: S.optional(S.String),
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ObjectAnnotation",
-}) as any as S.Schema<ObjectAnnotation>;
+S.Struct({
+  "name": S.optional(S.String),
+  "mid": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+  "score": S.optional(S.Number),
+}),
+).annotate({ identifier: "ObjectAnnotation" }) as any as S.Schema<ObjectAnnotation>;
 
 export type ObjectAnnotationList = ReadonlyArray<ObjectAnnotation>;
-export const ObjectAnnotationList = /*@__PURE__*/ S.Array(
-  ObjectAnnotation,
-) as any as S.Schema<ObjectAnnotationList>;
+export const ObjectAnnotationList = /*@__PURE__*/ S.Array(ObjectAnnotation) as any as S.Schema<ObjectAnnotationList>;
 
 /** Information about the products similar to a single product in a query image. */
 export interface GroupedResult {
@@ -594,17 +516,15 @@ export interface GroupedResult {
   results?: ResultList;
 }
 export const GroupedResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectAnnotations: S.optional(ObjectAnnotationList),
-    boundingPoly: S.optional(BoundingPoly),
-    results: S.optional(ResultList),
-  }),
+S.Struct({
+  "objectAnnotations": S.optional(ObjectAnnotationList),
+  "boundingPoly": S.optional(BoundingPoly),
+  "results": S.optional(ResultList),
+}),
 ).annotate({ identifier: "GroupedResult" }) as any as S.Schema<GroupedResult>;
 
 export type GroupedResultList = ReadonlyArray<GroupedResult>;
-export const GroupedResultList = /*@__PURE__*/ S.Array(
-  GroupedResult,
-) as any as S.Schema<GroupedResultList>;
+export const GroupedResultList = /*@__PURE__*/ S.Array(GroupedResult) as any as S.Schema<GroupedResultList>;
 
 /** Results for a product search request. */
 export interface ProductSearchResults {
@@ -616,124 +536,35 @@ export interface ProductSearchResults {
   indexTime?: string;
 }
 export const ProductSearchResults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(ResultList),
-    productGroupedResults: S.optional(GroupedResultList),
-    indexTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductSearchResults",
-}) as any as S.Schema<ProductSearchResults>;
+S.Struct({
+  "results": S.optional(ResultList),
+  "productGroupedResults": S.optional(GroupedResultList),
+  "indexTime": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductSearchResults" }) as any as S.Schema<ProductSearchResults>;
 
-export type FaceAnnotationSorrowLikelihoodEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type FaceAnnotationSorrowLikelihoodEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const FaceAnnotationSorrowLikelihoodEnum = /*@__PURE__*/ S.String;
 
-export type FaceAnnotationJoyLikelihoodEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type FaceAnnotationJoyLikelihoodEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const FaceAnnotationJoyLikelihoodEnum = /*@__PURE__*/ S.String;
 
-export type FaceAnnotationHeadwearLikelihoodEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type FaceAnnotationHeadwearLikelihoodEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const FaceAnnotationHeadwearLikelihoodEnum = /*@__PURE__*/ S.String;
 
-export type FaceAnnotationAngerLikelihoodEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type FaceAnnotationAngerLikelihoodEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const FaceAnnotationAngerLikelihoodEnum = /*@__PURE__*/ S.String;
 
-export type FaceAnnotationUnderExposedLikelihoodEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type FaceAnnotationUnderExposedLikelihoodEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const FaceAnnotationUnderExposedLikelihoodEnum = /*@__PURE__*/ S.String;
 
-export type FaceAnnotationSurpriseLikelihoodEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type FaceAnnotationSurpriseLikelihoodEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const FaceAnnotationSurpriseLikelihoodEnum = /*@__PURE__*/ S.String;
 
-export type FaceAnnotationBlurredLikelihoodEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type FaceAnnotationBlurredLikelihoodEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const FaceAnnotationBlurredLikelihoodEnum = /*@__PURE__*/ S.String;
 
-export type LandmarkTypeEnum =
-  | "UNKNOWN_LANDMARK"
-  | "LEFT_EYE"
-  | "RIGHT_EYE"
-  | "LEFT_OF_LEFT_EYEBROW"
-  | "RIGHT_OF_LEFT_EYEBROW"
-  | "LEFT_OF_RIGHT_EYEBROW"
-  | "RIGHT_OF_RIGHT_EYEBROW"
-  | "MIDPOINT_BETWEEN_EYES"
-  | "NOSE_TIP"
-  | "UPPER_LIP"
-  | "LOWER_LIP"
-  | "MOUTH_LEFT"
-  | "MOUTH_RIGHT"
-  | "MOUTH_CENTER"
-  | "NOSE_BOTTOM_RIGHT"
-  | "NOSE_BOTTOM_LEFT"
-  | "NOSE_BOTTOM_CENTER"
-  | "LEFT_EYE_TOP_BOUNDARY"
-  | "LEFT_EYE_RIGHT_CORNER"
-  | "LEFT_EYE_BOTTOM_BOUNDARY"
-  | "LEFT_EYE_LEFT_CORNER"
-  | "RIGHT_EYE_TOP_BOUNDARY"
-  | "RIGHT_EYE_RIGHT_CORNER"
-  | "RIGHT_EYE_BOTTOM_BOUNDARY"
-  | "RIGHT_EYE_LEFT_CORNER"
-  | "LEFT_EYEBROW_UPPER_MIDPOINT"
-  | "RIGHT_EYEBROW_UPPER_MIDPOINT"
-  | "LEFT_EAR_TRAGION"
-  | "RIGHT_EAR_TRAGION"
-  | "LEFT_EYE_PUPIL"
-  | "RIGHT_EYE_PUPIL"
-  | "FOREHEAD_GLABELLA"
-  | "CHIN_GNATHION"
-  | "CHIN_LEFT_GONION"
-  | "CHIN_RIGHT_GONION"
-  | "LEFT_CHEEK_CENTER"
-  | "RIGHT_CHEEK_CENTER"
-  | (string & {});
+export type LandmarkTypeEnum = "UNKNOWN_LANDMARK" | "LEFT_EYE" | "RIGHT_EYE" | "LEFT_OF_LEFT_EYEBROW" | "RIGHT_OF_LEFT_EYEBROW" | "LEFT_OF_RIGHT_EYEBROW" | "RIGHT_OF_RIGHT_EYEBROW" | "MIDPOINT_BETWEEN_EYES" | "NOSE_TIP" | "UPPER_LIP" | "LOWER_LIP" | "MOUTH_LEFT" | "MOUTH_RIGHT" | "MOUTH_CENTER" | "NOSE_BOTTOM_RIGHT" | "NOSE_BOTTOM_LEFT" | "NOSE_BOTTOM_CENTER" | "LEFT_EYE_TOP_BOUNDARY" | "LEFT_EYE_RIGHT_CORNER" | "LEFT_EYE_BOTTOM_BOUNDARY" | "LEFT_EYE_LEFT_CORNER" | "RIGHT_EYE_TOP_BOUNDARY" | "RIGHT_EYE_RIGHT_CORNER" | "RIGHT_EYE_BOTTOM_BOUNDARY" | "RIGHT_EYE_LEFT_CORNER" | "LEFT_EYEBROW_UPPER_MIDPOINT" | "RIGHT_EYEBROW_UPPER_MIDPOINT" | "LEFT_EAR_TRAGION" | "RIGHT_EAR_TRAGION" | "LEFT_EYE_PUPIL" | "RIGHT_EYE_PUPIL" | "FOREHEAD_GLABELLA" | "CHIN_GNATHION" | "CHIN_LEFT_GONION" | "CHIN_RIGHT_GONION" | "LEFT_CHEEK_CENTER" | "RIGHT_CHEEK_CENTER";
 export const LandmarkTypeEnum = /*@__PURE__*/ S.String;
 
 /** A 3D position in the image, used primarily for Face detection landmarks. A valid Position must have both x and y coordinates. The position coordinates are in the same scale as the original image. */
@@ -746,11 +577,11 @@ export interface Position {
   z?: number;
 }
 export const Position = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.optional(S.Number),
-    y: S.optional(S.Number),
-    z: S.optional(S.Number),
-  }),
+S.Struct({
+  "x": S.optional(S.Number),
+  "y": S.optional(S.Number),
+  "z": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Position" }) as any as S.Schema<Position>;
 
 /** A face-specific landmark (for example, a face feature). Landmark positions may fall outside the bounds of the image if the face is near one or more edges of the image. Therefore it is NOT guaranteed that `0 <= x < width` or `0 <= y < height`. */
@@ -761,16 +592,14 @@ export interface Landmark {
   position?: Position;
 }
 export const Landmark = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(LandmarkTypeEnum),
-    position: S.optional(Position),
-  }),
+S.Struct({
+  "type": S.optional(LandmarkTypeEnum),
+  "position": S.optional(Position),
+}),
 ).annotate({ identifier: "Landmark" }) as any as S.Schema<Landmark>;
 
 export type LandmarkList = ReadonlyArray<Landmark>;
-export const LandmarkList = /*@__PURE__*/ S.Array(
-  Landmark,
-) as any as S.Schema<LandmarkList>;
+export const LandmarkList = /*@__PURE__*/ S.Array(Landmark) as any as S.Schema<LandmarkList>;
 
 /** A face annotation object contains the results of face detection. */
 export interface FaceAnnotation {
@@ -806,31 +635,27 @@ export interface FaceAnnotation {
   landmarks?: LandmarkList;
 }
 export const FaceAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sorrowLikelihood: S.optional(FaceAnnotationSorrowLikelihoodEnum),
-    panAngle: S.optional(S.Number),
-    fdBoundingPoly: S.optional(BoundingPoly),
-    joyLikelihood: S.optional(FaceAnnotationJoyLikelihoodEnum),
-    tiltAngle: S.optional(S.Number),
-    headwearLikelihood: S.optional(FaceAnnotationHeadwearLikelihoodEnum),
-    rollAngle: S.optional(S.Number),
-    angerLikelihood: S.optional(FaceAnnotationAngerLikelihoodEnum),
-    boundingPoly: S.optional(BoundingPoly),
-    detectionConfidence: S.optional(S.Number),
-    underExposedLikelihood: S.optional(
-      FaceAnnotationUnderExposedLikelihoodEnum,
-    ),
-    landmarkingConfidence: S.optional(S.Number),
-    surpriseLikelihood: S.optional(FaceAnnotationSurpriseLikelihoodEnum),
-    blurredLikelihood: S.optional(FaceAnnotationBlurredLikelihoodEnum),
-    landmarks: S.optional(LandmarkList),
-  }),
+S.Struct({
+  "sorrowLikelihood": S.optional(FaceAnnotationSorrowLikelihoodEnum),
+  "panAngle": S.optional(S.Number),
+  "fdBoundingPoly": S.optional(BoundingPoly),
+  "joyLikelihood": S.optional(FaceAnnotationJoyLikelihoodEnum),
+  "tiltAngle": S.optional(S.Number),
+  "headwearLikelihood": S.optional(FaceAnnotationHeadwearLikelihoodEnum),
+  "rollAngle": S.optional(S.Number),
+  "angerLikelihood": S.optional(FaceAnnotationAngerLikelihoodEnum),
+  "boundingPoly": S.optional(BoundingPoly),
+  "detectionConfidence": S.optional(S.Number),
+  "underExposedLikelihood": S.optional(FaceAnnotationUnderExposedLikelihoodEnum),
+  "landmarkingConfidence": S.optional(S.Number),
+  "surpriseLikelihood": S.optional(FaceAnnotationSurpriseLikelihoodEnum),
+  "blurredLikelihood": S.optional(FaceAnnotationBlurredLikelihoodEnum),
+  "landmarks": S.optional(LandmarkList),
+}),
 ).annotate({ identifier: "FaceAnnotation" }) as any as S.Schema<FaceAnnotation>;
 
 export type FaceAnnotationList = ReadonlyArray<FaceAnnotation>;
-export const FaceAnnotationList = /*@__PURE__*/ S.Array(
-  FaceAnnotation,
-) as any as S.Schema<FaceAnnotationList>;
+export const FaceAnnotationList = /*@__PURE__*/ S.Array(FaceAnnotation) as any as S.Schema<FaceAnnotationList>;
 
 /** A `Property` consists of a user-supplied name/value pair. */
 export interface Property {
@@ -842,17 +667,15 @@ export interface Property {
   uint64Value?: string;
 }
 export const Property = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-    uint64Value: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "value": S.optional(S.String),
+  "uint64Value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Property" }) as any as S.Schema<Property>;
 
 export type PropertyList = ReadonlyArray<Property>;
-export const PropertyList = /*@__PURE__*/ S.Array(
-  Property,
-) as any as S.Schema<PropertyList>;
+export const PropertyList = /*@__PURE__*/ S.Array(Property) as any as S.Schema<PropertyList>;
 
 /** Detected entity location information. */
 export interface LocationInfo {
@@ -860,15 +683,13 @@ export interface LocationInfo {
   latLng?: LatLng;
 }
 export const LocationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latLng: S.optional(LatLng),
-  }),
+S.Struct({
+  "latLng": S.optional(LatLng),
+}),
 ).annotate({ identifier: "LocationInfo" }) as any as S.Schema<LocationInfo>;
 
 export type LocationInfoList = ReadonlyArray<LocationInfo>;
-export const LocationInfoList = /*@__PURE__*/ S.Array(
-  LocationInfo,
-) as any as S.Schema<LocationInfoList>;
+export const LocationInfoList = /*@__PURE__*/ S.Array(LocationInfo) as any as S.Schema<LocationInfoList>;
 
 /** Set of detected entity features. */
 export interface EntityAnnotation {
@@ -892,25 +713,21 @@ export interface EntityAnnotation {
   score?: number;
 }
 export const EntityAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    confidence: S.optional(S.Number),
-    boundingPoly: S.optional(BoundingPoly),
-    properties: S.optional(PropertyList),
-    description: S.optional(S.String),
-    locale: S.optional(S.String),
-    topicality: S.optional(S.Number),
-    locations: S.optional(LocationInfoList),
-    mid: S.optional(S.String),
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EntityAnnotation",
-}) as any as S.Schema<EntityAnnotation>;
+S.Struct({
+  "confidence": S.optional(S.Number),
+  "boundingPoly": S.optional(BoundingPoly),
+  "properties": S.optional(PropertyList),
+  "description": S.optional(S.String),
+  "locale": S.optional(S.String),
+  "topicality": S.optional(S.Number),
+  "locations": S.optional(LocationInfoList),
+  "mid": S.optional(S.String),
+  "score": S.optional(S.Number),
+}),
+).annotate({ identifier: "EntityAnnotation" }) as any as S.Schema<EntityAnnotation>;
 
 export type EntityAnnotationList = ReadonlyArray<EntityAnnotation>;
-export const EntityAnnotationList = /*@__PURE__*/ S.Array(
-  EntityAnnotation,
-) as any as S.Schema<EntityAnnotationList>;
+export const EntityAnnotationList = /*@__PURE__*/ S.Array(EntityAnnotation) as any as S.Schema<EntityAnnotationList>;
 
 /** Set of detected objects with bounding boxes. */
 export interface LocalizedObjectAnnotation {
@@ -926,22 +743,17 @@ export interface LocalizedObjectAnnotation {
   boundingPoly?: BoundingPoly;
 }
 export const LocalizedObjectAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mid: S.optional(S.String),
-    languageCode: S.optional(S.String),
-    score: S.optional(S.Number),
-    name: S.optional(S.String),
-    boundingPoly: S.optional(BoundingPoly),
-  }),
-).annotate({
-  identifier: "LocalizedObjectAnnotation",
-}) as any as S.Schema<LocalizedObjectAnnotation>;
+S.Struct({
+  "mid": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+  "score": S.optional(S.Number),
+  "name": S.optional(S.String),
+  "boundingPoly": S.optional(BoundingPoly),
+}),
+).annotate({ identifier: "LocalizedObjectAnnotation" }) as any as S.Schema<LocalizedObjectAnnotation>;
 
-export type LocalizedObjectAnnotationList =
-  ReadonlyArray<LocalizedObjectAnnotation>;
-export const LocalizedObjectAnnotationList = /*@__PURE__*/ S.Array(
-  LocalizedObjectAnnotation,
-) as any as S.Schema<LocalizedObjectAnnotationList>;
+export type LocalizedObjectAnnotationList = ReadonlyArray<LocalizedObjectAnnotation>;
+export const LocalizedObjectAnnotationList = /*@__PURE__*/ S.Array(LocalizedObjectAnnotation) as any as S.Schema<LocalizedObjectAnnotationList>;
 
 /** Metadata for online images. */
 export interface WebImage {
@@ -951,16 +763,14 @@ export interface WebImage {
   url?: string;
 }
 export const WebImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-    url: S.optional(S.String),
-  }),
+S.Struct({
+  "score": S.optional(S.Number),
+  "url": S.optional(S.String),
+}),
 ).annotate({ identifier: "WebImage" }) as any as S.Schema<WebImage>;
 
 export type WebImageList = ReadonlyArray<WebImage>;
-export const WebImageList = /*@__PURE__*/ S.Array(
-  WebImage,
-) as any as S.Schema<WebImageList>;
+export const WebImageList = /*@__PURE__*/ S.Array(WebImage) as any as S.Schema<WebImageList>;
 
 /** Label to provide extra metadata for the web detection. */
 export interface WebLabel {
@@ -970,16 +780,14 @@ export interface WebLabel {
   label?: string;
 }
 export const WebLabel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageCode: S.optional(S.String),
-    label: S.optional(S.String),
-  }),
+S.Struct({
+  "languageCode": S.optional(S.String),
+  "label": S.optional(S.String),
+}),
 ).annotate({ identifier: "WebLabel" }) as any as S.Schema<WebLabel>;
 
 export type WebLabelList = ReadonlyArray<WebLabel>;
-export const WebLabelList = /*@__PURE__*/ S.Array(
-  WebLabel,
-) as any as S.Schema<WebLabelList>;
+export const WebLabelList = /*@__PURE__*/ S.Array(WebLabel) as any as S.Schema<WebLabelList>;
 
 /** Entity deduced from similar images on the Internet. */
 export interface WebEntity {
@@ -991,17 +799,15 @@ export interface WebEntity {
   score?: number;
 }
 export const WebEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityId: S.optional(S.String),
-    description: S.optional(S.String),
-    score: S.optional(S.Number),
-  }),
+S.Struct({
+  "entityId": S.optional(S.String),
+  "description": S.optional(S.String),
+  "score": S.optional(S.Number),
+}),
 ).annotate({ identifier: "WebEntity" }) as any as S.Schema<WebEntity>;
 
 export type WebEntityList = ReadonlyArray<WebEntity>;
-export const WebEntityList = /*@__PURE__*/ S.Array(
-  WebEntity,
-) as any as S.Schema<WebEntityList>;
+export const WebEntityList = /*@__PURE__*/ S.Array(WebEntity) as any as S.Schema<WebEntityList>;
 
 /** Metadata for web pages. */
 export interface WebPage {
@@ -1017,19 +823,17 @@ export interface WebPage {
   pageTitle?: string;
 }
 export const WebPage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-    partialMatchingImages: S.optional(WebImageList),
-    fullMatchingImages: S.optional(WebImageList),
-    url: S.optional(S.String),
-    pageTitle: S.optional(S.String),
-  }),
+S.Struct({
+  "score": S.optional(S.Number),
+  "partialMatchingImages": S.optional(WebImageList),
+  "fullMatchingImages": S.optional(WebImageList),
+  "url": S.optional(S.String),
+  "pageTitle": S.optional(S.String),
+}),
 ).annotate({ identifier: "WebPage" }) as any as S.Schema<WebPage>;
 
 export type WebPageList = ReadonlyArray<WebPage>;
-export const WebPageList = /*@__PURE__*/ S.Array(
-  WebPage,
-) as any as S.Schema<WebPageList>;
+export const WebPageList = /*@__PURE__*/ S.Array(WebPage) as any as S.Schema<WebPageList>;
 
 /** Relevant information for the image from the Internet. */
 export interface WebDetection {
@@ -1047,14 +851,14 @@ export interface WebDetection {
   visuallySimilarImages?: WebImageList;
 }
 export const WebDetection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fullMatchingImages: S.optional(WebImageList),
-    bestGuessLabels: S.optional(WebLabelList),
-    webEntities: S.optional(WebEntityList),
-    partialMatchingImages: S.optional(WebImageList),
-    pagesWithMatchingImages: S.optional(WebPageList),
-    visuallySimilarImages: S.optional(WebImageList),
-  }),
+S.Struct({
+  "fullMatchingImages": S.optional(WebImageList),
+  "bestGuessLabels": S.optional(WebLabelList),
+  "webEntities": S.optional(WebEntityList),
+  "partialMatchingImages": S.optional(WebImageList),
+  "pagesWithMatchingImages": S.optional(WebPageList),
+  "visuallySimilarImages": S.optional(WebImageList),
+}),
 ).annotate({ identifier: "WebDetection" }) as any as S.Schema<WebDetection>;
 
 /** Detected language for a structural component. */
@@ -1065,27 +869,16 @@ export interface DetectedLanguage {
   confidence?: number;
 }
 export const DetectedLanguage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageCode: S.optional(S.String),
-    confidence: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DetectedLanguage",
-}) as any as S.Schema<DetectedLanguage>;
+S.Struct({
+  "languageCode": S.optional(S.String),
+  "confidence": S.optional(S.Number),
+}),
+).annotate({ identifier: "DetectedLanguage" }) as any as S.Schema<DetectedLanguage>;
 
 export type DetectedLanguageList = ReadonlyArray<DetectedLanguage>;
-export const DetectedLanguageList = /*@__PURE__*/ S.Array(
-  DetectedLanguage,
-) as any as S.Schema<DetectedLanguageList>;
+export const DetectedLanguageList = /*@__PURE__*/ S.Array(DetectedLanguage) as any as S.Schema<DetectedLanguageList>;
 
-export type DetectedBreakTypeEnum =
-  | "UNKNOWN"
-  | "SPACE"
-  | "SURE_SPACE"
-  | "EOL_SURE_SPACE"
-  | "HYPHEN"
-  | "LINE_BREAK"
-  | (string & {});
+export type DetectedBreakTypeEnum = "UNKNOWN" | "SPACE" | "SURE_SPACE" | "EOL_SURE_SPACE" | "HYPHEN" | "LINE_BREAK";
 export const DetectedBreakTypeEnum = /*@__PURE__*/ S.String;
 
 /** Detected start or end of a structural component. */
@@ -1096,10 +889,10 @@ export interface DetectedBreak {
   isPrefix?: boolean;
 }
 export const DetectedBreak = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(DetectedBreakTypeEnum),
-    isPrefix: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "type": S.optional(DetectedBreakTypeEnum),
+  "isPrefix": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "DetectedBreak" }) as any as S.Schema<DetectedBreak>;
 
 /** Additional information detected on the structural component. */
@@ -1110,10 +903,10 @@ export interface TextProperty {
   detectedBreak?: DetectedBreak;
 }
 export const TextProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detectedLanguages: S.optional(DetectedLanguageList),
-    detectedBreak: S.optional(DetectedBreak),
-  }),
+S.Struct({
+  "detectedLanguages": S.optional(DetectedLanguageList),
+  "detectedBreak": S.optional(DetectedBreak),
+}),
 ).annotate({ identifier: "TextProperty" }) as any as S.Schema<TextProperty>;
 
 /** A single symbol representation. */
@@ -1128,18 +921,16 @@ export interface Vision_Symbol {
   property?: TextProperty;
 }
 export const Vision_Symbol = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boundingBox: S.optional(BoundingPoly),
-    confidence: S.optional(S.Number),
-    text: S.optional(S.String),
-    property: S.optional(TextProperty),
-  }),
+S.Struct({
+  "boundingBox": S.optional(BoundingPoly),
+  "confidence": S.optional(S.Number),
+  "text": S.optional(S.String),
+  "property": S.optional(TextProperty),
+}),
 ).annotate({ identifier: "Vision_Symbol" }) as any as S.Schema<Vision_Symbol>;
 
 export type Vision_SymbolList = ReadonlyArray<Vision_Symbol>;
-export const Vision_SymbolList = /*@__PURE__*/ S.Array(
-  Vision_Symbol,
-) as any as S.Schema<Vision_SymbolList>;
+export const Vision_SymbolList = /*@__PURE__*/ S.Array(Vision_Symbol) as any as S.Schema<Vision_SymbolList>;
 
 /** A word representation. */
 export interface Word {
@@ -1153,18 +944,16 @@ export interface Word {
   confidence?: number;
 }
 export const Word = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.optional(TextProperty),
-    symbols: S.optional(Vision_SymbolList),
-    boundingBox: S.optional(BoundingPoly),
-    confidence: S.optional(S.Number),
-  }),
+S.Struct({
+  "property": S.optional(TextProperty),
+  "symbols": S.optional(Vision_SymbolList),
+  "boundingBox": S.optional(BoundingPoly),
+  "confidence": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Word" }) as any as S.Schema<Word>;
 
 export type WordList = ReadonlyArray<Word>;
-export const WordList = /*@__PURE__*/ S.Array(
-  Word,
-) as any as S.Schema<WordList>;
+export const WordList = /*@__PURE__*/ S.Array(Word) as any as S.Schema<WordList>;
 
 /** Structural unit of text representing a number of words in certain order. */
 export interface Paragraph {
@@ -1178,27 +967,18 @@ export interface Paragraph {
   words?: WordList;
 }
 export const Paragraph = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boundingBox: S.optional(BoundingPoly),
-    confidence: S.optional(S.Number),
-    property: S.optional(TextProperty),
-    words: S.optional(WordList),
-  }),
+S.Struct({
+  "boundingBox": S.optional(BoundingPoly),
+  "confidence": S.optional(S.Number),
+  "property": S.optional(TextProperty),
+  "words": S.optional(WordList),
+}),
 ).annotate({ identifier: "Paragraph" }) as any as S.Schema<Paragraph>;
 
 export type ParagraphList = ReadonlyArray<Paragraph>;
-export const ParagraphList = /*@__PURE__*/ S.Array(
-  Paragraph,
-) as any as S.Schema<ParagraphList>;
+export const ParagraphList = /*@__PURE__*/ S.Array(Paragraph) as any as S.Schema<ParagraphList>;
 
-export type BlockBlockTypeEnum =
-  | "UNKNOWN"
-  | "TEXT"
-  | "TABLE"
-  | "PICTURE"
-  | "RULER"
-  | "BARCODE"
-  | (string & {});
+export type BlockBlockTypeEnum = "UNKNOWN" | "TEXT" | "TABLE" | "PICTURE" | "RULER" | "BARCODE";
 export const BlockBlockTypeEnum = /*@__PURE__*/ S.String;
 
 /** Logical element on the page. */
@@ -1215,19 +995,17 @@ export interface Block {
   blockType?: BlockBlockTypeEnum;
 }
 export const Block = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.optional(TextProperty),
-    paragraphs: S.optional(ParagraphList),
-    boundingBox: S.optional(BoundingPoly),
-    confidence: S.optional(S.Number),
-    blockType: S.optional(BlockBlockTypeEnum),
-  }),
+S.Struct({
+  "property": S.optional(TextProperty),
+  "paragraphs": S.optional(ParagraphList),
+  "boundingBox": S.optional(BoundingPoly),
+  "confidence": S.optional(S.Number),
+  "blockType": S.optional(BlockBlockTypeEnum),
+}),
 ).annotate({ identifier: "Block" }) as any as S.Schema<Block>;
 
 export type BlockList = ReadonlyArray<Block>;
-export const BlockList = /*@__PURE__*/ S.Array(
-  Block,
-) as any as S.Schema<BlockList>;
+export const BlockList = /*@__PURE__*/ S.Array(Block) as any as S.Schema<BlockList>;
 
 /** Detected page from OCR. */
 export interface Page {
@@ -1243,19 +1021,17 @@ export interface Page {
   confidence?: number;
 }
 export const Page = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.optional(TextProperty),
-    width: S.optional(S.Number),
-    blocks: S.optional(BlockList),
-    height: S.optional(S.Number),
-    confidence: S.optional(S.Number),
-  }),
+S.Struct({
+  "property": S.optional(TextProperty),
+  "width": S.optional(S.Number),
+  "blocks": S.optional(BlockList),
+  "height": S.optional(S.Number),
+  "confidence": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
 export type PageList = ReadonlyArray<Page>;
-export const PageList = /*@__PURE__*/ S.Array(
-  Page,
-) as any as S.Schema<PageList>;
+export const PageList = /*@__PURE__*/ S.Array(Page) as any as S.Schema<PageList>;
 
 /** TextAnnotation contains a structured representation of OCR extracted text. The hierarchy of an OCR extracted text structure is like this: TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol Each structural component, starting from Page, may further have their own properties. Properties describe detected languages, breaks etc.. Please refer to the TextAnnotation.TextProperty message definition below for more detail. */
 export interface TextAnnotation {
@@ -1265,60 +1041,25 @@ export interface TextAnnotation {
   text?: string;
 }
 export const TextAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pages: S.optional(PageList),
-    text: S.optional(S.String),
-  }),
+S.Struct({
+  "pages": S.optional(PageList),
+  "text": S.optional(S.String),
+}),
 ).annotate({ identifier: "TextAnnotation" }) as any as S.Schema<TextAnnotation>;
 
-export type SafeSearchAnnotationAdultEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type SafeSearchAnnotationAdultEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const SafeSearchAnnotationAdultEnum = /*@__PURE__*/ S.String;
 
-export type SafeSearchAnnotationRacyEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type SafeSearchAnnotationRacyEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const SafeSearchAnnotationRacyEnum = /*@__PURE__*/ S.String;
 
-export type SafeSearchAnnotationSpoofEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type SafeSearchAnnotationSpoofEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const SafeSearchAnnotationSpoofEnum = /*@__PURE__*/ S.String;
 
-export type SafeSearchAnnotationMedicalEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type SafeSearchAnnotationMedicalEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const SafeSearchAnnotationMedicalEnum = /*@__PURE__*/ S.String;
 
-export type SafeSearchAnnotationViolenceEnum =
-  | "UNKNOWN"
-  | "VERY_UNLIKELY"
-  | "UNLIKELY"
-  | "POSSIBLE"
-  | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+export type SafeSearchAnnotationViolenceEnum = "UNKNOWN" | "VERY_UNLIKELY" | "UNLIKELY" | "POSSIBLE" | "LIKELY" | "VERY_LIKELY";
 export const SafeSearchAnnotationViolenceEnum = /*@__PURE__*/ S.String;
 
 /** Set of features pertaining to the image, computed by computer vision methods over safe-search verticals (for example, adult, spoof, medical, violence). */
@@ -1335,16 +1076,14 @@ export interface SafeSearchAnnotation {
   violence?: SafeSearchAnnotationViolenceEnum;
 }
 export const SafeSearchAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adult: S.optional(SafeSearchAnnotationAdultEnum),
-    racy: S.optional(SafeSearchAnnotationRacyEnum),
-    spoof: S.optional(SafeSearchAnnotationSpoofEnum),
-    medical: S.optional(SafeSearchAnnotationMedicalEnum),
-    violence: S.optional(SafeSearchAnnotationViolenceEnum),
-  }),
-).annotate({
-  identifier: "SafeSearchAnnotation",
-}) as any as S.Schema<SafeSearchAnnotation>;
+S.Struct({
+  "adult": S.optional(SafeSearchAnnotationAdultEnum),
+  "racy": S.optional(SafeSearchAnnotationRacyEnum),
+  "spoof": S.optional(SafeSearchAnnotationSpoofEnum),
+  "medical": S.optional(SafeSearchAnnotationMedicalEnum),
+  "violence": S.optional(SafeSearchAnnotationViolenceEnum),
+}),
+).annotate({ identifier: "SafeSearchAnnotation" }) as any as S.Schema<SafeSearchAnnotation>;
 
 /** Single crop hint that is used to generate a new crop when serving an image. */
 export interface CropHint {
@@ -1356,17 +1095,15 @@ export interface CropHint {
   confidence?: number;
 }
 export const CropHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boundingPoly: S.optional(BoundingPoly),
-    importanceFraction: S.optional(S.Number),
-    confidence: S.optional(S.Number),
-  }),
+S.Struct({
+  "boundingPoly": S.optional(BoundingPoly),
+  "importanceFraction": S.optional(S.Number),
+  "confidence": S.optional(S.Number),
+}),
 ).annotate({ identifier: "CropHint" }) as any as S.Schema<CropHint>;
 
 export type CropHintList = ReadonlyArray<CropHint>;
-export const CropHintList = /*@__PURE__*/ S.Array(
-  CropHint,
-) as any as S.Schema<CropHintList>;
+export const CropHintList = /*@__PURE__*/ S.Array(CropHint) as any as S.Schema<CropHintList>;
 
 /** Set of crop hints that are used to generate new crops when serving images. */
 export interface CropHintsAnnotation {
@@ -1374,23 +1111,16 @@ export interface CropHintsAnnotation {
   cropHints?: CropHintList;
 }
 export const CropHintsAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cropHints: S.optional(CropHintList),
-  }),
-).annotate({
-  identifier: "CropHintsAnnotation",
-}) as any as S.Schema<CropHintsAnnotation>;
+S.Struct({
+  "cropHints": S.optional(CropHintList),
+}),
+).annotate({ identifier: "CropHintsAnnotation" }) as any as S.Schema<CropHintsAnnotation>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -1402,11 +1132,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "message": S.optional(S.String),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** If an image was produced from a file (e.g. a PDF), this message gives information about the source of that image. */
@@ -1417,13 +1147,11 @@ export interface ImageAnnotationContext {
   uri?: string;
 }
 export const ImageAnnotationContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageNumber: S.optional(S.Number),
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImageAnnotationContext",
-}) as any as S.Schema<ImageAnnotationContext>;
+S.Struct({
+  "pageNumber": S.optional(S.Number),
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "ImageAnnotationContext" }) as any as S.Schema<ImageAnnotationContext>;
 
 /** Response to an image annotation request. */
 export interface AnnotateImageResponse {
@@ -1457,30 +1185,26 @@ export interface AnnotateImageResponse {
   context?: ImageAnnotationContext;
 }
 export const AnnotateImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imagePropertiesAnnotation: S.optional(ImageProperties),
-    productSearchResults: S.optional(ProductSearchResults),
-    faceAnnotations: S.optional(FaceAnnotationList),
-    labelAnnotations: S.optional(EntityAnnotationList),
-    localizedObjectAnnotations: S.optional(LocalizedObjectAnnotationList),
-    webDetection: S.optional(WebDetection),
-    textAnnotations: S.optional(EntityAnnotationList),
-    logoAnnotations: S.optional(EntityAnnotationList),
-    fullTextAnnotation: S.optional(TextAnnotation),
-    safeSearchAnnotation: S.optional(SafeSearchAnnotation),
-    cropHintsAnnotation: S.optional(CropHintsAnnotation),
-    error: S.optional(Status),
-    landmarkAnnotations: S.optional(EntityAnnotationList),
-    context: S.optional(ImageAnnotationContext),
-  }),
-).annotate({
-  identifier: "AnnotateImageResponse",
-}) as any as S.Schema<AnnotateImageResponse>;
+S.Struct({
+  "imagePropertiesAnnotation": S.optional(ImageProperties),
+  "productSearchResults": S.optional(ProductSearchResults),
+  "faceAnnotations": S.optional(FaceAnnotationList),
+  "labelAnnotations": S.optional(EntityAnnotationList),
+  "localizedObjectAnnotations": S.optional(LocalizedObjectAnnotationList),
+  "webDetection": S.optional(WebDetection),
+  "textAnnotations": S.optional(EntityAnnotationList),
+  "logoAnnotations": S.optional(EntityAnnotationList),
+  "fullTextAnnotation": S.optional(TextAnnotation),
+  "safeSearchAnnotation": S.optional(SafeSearchAnnotation),
+  "cropHintsAnnotation": S.optional(CropHintsAnnotation),
+  "error": S.optional(Status),
+  "landmarkAnnotations": S.optional(EntityAnnotationList),
+  "context": S.optional(ImageAnnotationContext),
+}),
+).annotate({ identifier: "AnnotateImageResponse" }) as any as S.Schema<AnnotateImageResponse>;
 
 export type AnnotateImageResponseList = ReadonlyArray<AnnotateImageResponse>;
-export const AnnotateImageResponseList = /*@__PURE__*/ S.Array(
-  AnnotateImageResponse,
-) as any as S.Schema<AnnotateImageResponseList>;
+export const AnnotateImageResponseList = /*@__PURE__*/ S.Array(AnnotateImageResponse) as any as S.Schema<AnnotateImageResponseList>;
 
 /** Response to a single file annotation request. A file may contain one or more images, which individually have their own responses. */
 export interface AnnotateFileResponse {
@@ -1494,20 +1218,16 @@ export interface AnnotateFileResponse {
   error?: Status;
 }
 export const AnnotateFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputConfig: S.optional(InputConfig),
-    totalPages: S.optional(S.Number),
-    responses: S.optional(AnnotateImageResponseList),
-    error: S.optional(Status),
-  }),
-).annotate({
-  identifier: "AnnotateFileResponse",
-}) as any as S.Schema<AnnotateFileResponse>;
+S.Struct({
+  "inputConfig": S.optional(InputConfig),
+  "totalPages": S.optional(S.Number),
+  "responses": S.optional(AnnotateImageResponseList),
+  "error": S.optional(Status),
+}),
+).annotate({ identifier: "AnnotateFileResponse" }) as any as S.Schema<AnnotateFileResponse>;
 
 export type AnnotateFileResponseList = ReadonlyArray<AnnotateFileResponse>;
-export const AnnotateFileResponseList = /*@__PURE__*/ S.Array(
-  AnnotateFileResponse,
-) as any as S.Schema<AnnotateFileResponseList>;
+export const AnnotateFileResponseList = /*@__PURE__*/ S.Array(AnnotateFileResponse) as any as S.Schema<AnnotateFileResponseList>;
 
 /** A list of file annotation responses. */
 export interface BatchAnnotateFilesResponse {
@@ -1515,12 +1235,10 @@ export interface BatchAnnotateFilesResponse {
   responses?: AnnotateFileResponseList;
 }
 export const BatchAnnotateFilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responses: S.optional(AnnotateFileResponseList),
-  }),
-).annotate({
-  identifier: "BatchAnnotateFilesResponse",
-}) as any as S.Schema<BatchAnnotateFilesResponse>;
+S.Struct({
+  "responses": S.optional(AnnotateFileResponseList),
+}),
+).annotate({ identifier: "BatchAnnotateFilesResponse" }) as any as S.Schema<BatchAnnotateFilesResponse>;
 
 /** External image source (Google Cloud Storage or web URL image location). */
 export interface ImageSource {
@@ -1530,10 +1248,10 @@ export interface ImageSource {
   gcsImageUri?: string;
 }
 export const ImageSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageUri: S.optional(S.String),
-    gcsImageUri: S.optional(S.String),
-  }),
+S.Struct({
+  "imageUri": S.optional(S.String),
+  "gcsImageUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "ImageSource" }) as any as S.Schema<ImageSource>;
 
 /** Client image to perform Google Cloud Vision API tasks over. */
@@ -1544,10 +1262,10 @@ export interface Image {
   source?: ImageSource;
 }
 export const Image = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    source: S.optional(ImageSource),
-  }),
+S.Struct({
+  "content": S.optional(S.String),
+  "source": S.optional(ImageSource),
+}),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 /** Request for performing Google Cloud Vision API tasks over a user-provided image, with user-requested features, and with context information. */
@@ -1560,19 +1278,15 @@ export interface AnnotateImageRequest {
   features?: FeatureList;
 }
 export const AnnotateImageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(Image),
-    imageContext: S.optional(ImageContext),
-    features: S.optional(FeatureList),
-  }),
-).annotate({
-  identifier: "AnnotateImageRequest",
-}) as any as S.Schema<AnnotateImageRequest>;
+S.Struct({
+  "image": S.optional(Image),
+  "imageContext": S.optional(ImageContext),
+  "features": S.optional(FeatureList),
+}),
+).annotate({ identifier: "AnnotateImageRequest" }) as any as S.Schema<AnnotateImageRequest>;
 
 export type AnnotateImageRequestList = ReadonlyArray<AnnotateImageRequest>;
-export const AnnotateImageRequestList = /*@__PURE__*/ S.Array(
-  AnnotateImageRequest,
-) as any as S.Schema<AnnotateImageRequestList>;
+export const AnnotateImageRequestList = /*@__PURE__*/ S.Array(AnnotateImageRequest) as any as S.Schema<AnnotateImageRequestList>;
 
 /** Multiple image annotation requests are batched into a single service call. */
 export interface BatchAnnotateImagesRequest {
@@ -1584,32 +1298,22 @@ export interface BatchAnnotateImagesRequest {
   labels?: StringMap;
 }
 export const BatchAnnotateImagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(AnnotateImageRequestList),
-    parent: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "BatchAnnotateImagesRequest",
-}) as any as S.Schema<BatchAnnotateImagesRequest>;
+S.Struct({
+  "requests": S.optional(AnnotateImageRequestList),
+  "parent": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
+).annotate({ identifier: "BatchAnnotateImagesRequest" }) as any as S.Schema<BatchAnnotateImagesRequest>;
 
 export interface AnnotateImagesRequest {
   /** Request body */
   body?: BatchAnnotateImagesRequest;
 }
 export const AnnotateImagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(BatchAnnotateImagesRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/images:annotate",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AnnotateImagesRequest",
-}) as any as S.Schema<AnnotateImagesRequest>;
+S.Struct({
+  "body": S.optional(BatchAnnotateImagesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/images:annotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AnnotateImagesRequest" }) as any as S.Schema<AnnotateImagesRequest>;
 
 /** Response to a batch image annotation request. */
 export interface BatchAnnotateImagesResponse {
@@ -1617,12 +1321,10 @@ export interface BatchAnnotateImagesResponse {
   responses?: AnnotateImageResponseList;
 }
 export const BatchAnnotateImagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responses: S.optional(AnnotateImageResponseList),
-  }),
-).annotate({
-  identifier: "BatchAnnotateImagesResponse",
-}) as any as S.Schema<BatchAnnotateImagesResponse>;
+S.Struct({
+  "responses": S.optional(AnnotateImageResponseList),
+}),
+).annotate({ identifier: "BatchAnnotateImagesResponse" }) as any as S.Schema<BatchAnnotateImagesResponse>;
 
 export interface AnnotateProjectsFilesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -1631,19 +1333,11 @@ export interface AnnotateProjectsFilesRequest {
   body?: BatchAnnotateFilesRequest;
 }
 export const AnnotateProjectsFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(BatchAnnotateFilesRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/files:annotate",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AnnotateProjectsFilesRequest",
-}) as any as S.Schema<AnnotateProjectsFilesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchAnnotateFilesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/files:annotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AnnotateProjectsFilesRequest" }) as any as S.Schema<AnnotateProjectsFilesRequest>;
 
 export interface AnnotateProjectsImagesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -1652,19 +1346,11 @@ export interface AnnotateProjectsImagesRequest {
   body?: BatchAnnotateImagesRequest;
 }
 export const AnnotateProjectsImagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(BatchAnnotateImagesRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/images:annotate",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AnnotateProjectsImagesRequest",
-}) as any as S.Schema<AnnotateProjectsImagesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchAnnotateImagesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/images:annotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AnnotateProjectsImagesRequest" }) as any as S.Schema<AnnotateProjectsImagesRequest>;
 
 export interface AnnotateProjectsLocationsFilesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -1672,21 +1358,12 @@ export interface AnnotateProjectsLocationsFilesRequest {
   /** Request body */
   body?: BatchAnnotateFilesRequest;
 }
-export const AnnotateProjectsLocationsFilesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchAnnotateFilesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/files:annotate",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "AnnotateProjectsLocationsFilesRequest",
-}) as any as S.Schema<AnnotateProjectsLocationsFilesRequest>;
+export const AnnotateProjectsLocationsFilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchAnnotateFilesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/files:annotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AnnotateProjectsLocationsFilesRequest" }) as any as S.Schema<AnnotateProjectsLocationsFilesRequest>;
 
 export interface AnnotateProjectsLocationsImagesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -1694,21 +1371,12 @@ export interface AnnotateProjectsLocationsImagesRequest {
   /** Request body */
   body?: BatchAnnotateImagesRequest;
 }
-export const AnnotateProjectsLocationsImagesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchAnnotateImagesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/images:annotate",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "AnnotateProjectsLocationsImagesRequest",
-}) as any as S.Schema<AnnotateProjectsLocationsImagesRequest>;
+export const AnnotateProjectsLocationsImagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchAnnotateImagesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/images:annotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AnnotateProjectsLocationsImagesRequest" }) as any as S.Schema<AnnotateProjectsLocationsImagesRequest>;
 
 /** The Google Cloud Storage location where the output will be written to. */
 export interface GcsDestination {
@@ -1716,9 +1384,9 @@ export interface GcsDestination {
   uri?: string;
 }
 export const GcsDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+}),
 ).annotate({ identifier: "GcsDestination" }) as any as S.Schema<GcsDestination>;
 
 /** The desired output location and metadata. */
@@ -1729,10 +1397,10 @@ export interface OutputConfig {
   gcsDestination?: GcsDestination;
 }
 export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchSize: S.optional(S.Number),
-    gcsDestination: S.optional(GcsDestination),
-  }),
+S.Struct({
+  "batchSize": S.optional(S.Number),
+  "gcsDestination": S.optional(GcsDestination),
+}),
 ).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
 
 /** An offline file annotation request. */
@@ -1747,21 +1415,16 @@ export interface AsyncAnnotateFileRequest {
   imageContext?: ImageContext;
 }
 export const AsyncAnnotateFileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputConfig: S.optional(InputConfig),
-    features: S.optional(FeatureList),
-    outputConfig: S.optional(OutputConfig),
-    imageContext: S.optional(ImageContext),
-  }),
-).annotate({
-  identifier: "AsyncAnnotateFileRequest",
-}) as any as S.Schema<AsyncAnnotateFileRequest>;
+S.Struct({
+  "inputConfig": S.optional(InputConfig),
+  "features": S.optional(FeatureList),
+  "outputConfig": S.optional(OutputConfig),
+  "imageContext": S.optional(ImageContext),
+}),
+).annotate({ identifier: "AsyncAnnotateFileRequest" }) as any as S.Schema<AsyncAnnotateFileRequest>;
 
-export type AsyncAnnotateFileRequestList =
-  ReadonlyArray<AsyncAnnotateFileRequest>;
-export const AsyncAnnotateFileRequestList = /*@__PURE__*/ S.Array(
-  AsyncAnnotateFileRequest,
-) as any as S.Schema<AsyncAnnotateFileRequestList>;
+export type AsyncAnnotateFileRequestList = ReadonlyArray<AsyncAnnotateFileRequest>;
+export const AsyncAnnotateFileRequestList = /*@__PURE__*/ S.Array(AsyncAnnotateFileRequest) as any as S.Schema<AsyncAnnotateFileRequestList>;
 
 /** Multiple async file annotation requests are batched into a single service call. */
 export interface AsyncBatchAnnotateFilesRequest {
@@ -1773,32 +1436,22 @@ export interface AsyncBatchAnnotateFilesRequest {
   requests?: AsyncAnnotateFileRequestList;
 }
 export const AsyncBatchAnnotateFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(S.String),
-    labels: S.optional(StringMap),
-    requests: S.optional(AsyncAnnotateFileRequestList),
-  }),
-).annotate({
-  identifier: "AsyncBatchAnnotateFilesRequest",
-}) as any as S.Schema<AsyncBatchAnnotateFilesRequest>;
+S.Struct({
+  "parent": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "requests": S.optional(AsyncAnnotateFileRequestList),
+}),
+).annotate({ identifier: "AsyncBatchAnnotateFilesRequest" }) as any as S.Schema<AsyncBatchAnnotateFilesRequest>;
 
 export interface AsyncBatchAnnotateFilesRequest_ {
   /** Request body */
   body?: AsyncBatchAnnotateFilesRequest;
 }
 export const AsyncBatchAnnotateFilesRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(AsyncBatchAnnotateFilesRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/files:asyncBatchAnnotate",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AsyncBatchAnnotateFilesRequest_",
-}) as any as S.Schema<AsyncBatchAnnotateFilesRequest_>;
+S.Struct({
+  "body": S.optional(AsyncBatchAnnotateFilesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/files:asyncBatchAnnotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AsyncBatchAnnotateFilesRequest_" }) as any as S.Schema<AsyncBatchAnnotateFilesRequest_>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
@@ -1814,13 +1467,13 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "response": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "error": S.optional(Status),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Request for async image annotation for a list of images. */
@@ -1835,33 +1488,23 @@ export interface AsyncBatchAnnotateImagesRequest {
   requests?: AnnotateImageRequestList;
 }
 export const AsyncBatchAnnotateImagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(S.String),
-    labels: S.optional(StringMap),
-    outputConfig: S.optional(OutputConfig),
-    requests: S.optional(AnnotateImageRequestList),
-  }),
-).annotate({
-  identifier: "AsyncBatchAnnotateImagesRequest",
-}) as any as S.Schema<AsyncBatchAnnotateImagesRequest>;
+S.Struct({
+  "parent": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "outputConfig": S.optional(OutputConfig),
+  "requests": S.optional(AnnotateImageRequestList),
+}),
+).annotate({ identifier: "AsyncBatchAnnotateImagesRequest" }) as any as S.Schema<AsyncBatchAnnotateImagesRequest>;
 
 export interface AsyncBatchAnnotateImagesRequest_ {
   /** Request body */
   body?: AsyncBatchAnnotateImagesRequest;
 }
 export const AsyncBatchAnnotateImagesRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(AsyncBatchAnnotateImagesRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/images:asyncBatchAnnotate",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AsyncBatchAnnotateImagesRequest_",
-}) as any as S.Schema<AsyncBatchAnnotateImagesRequest_>;
+S.Struct({
+  "body": S.optional(AsyncBatchAnnotateImagesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/images:asyncBatchAnnotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AsyncBatchAnnotateImagesRequest_" }) as any as S.Schema<AsyncBatchAnnotateImagesRequest_>;
 
 export interface AsyncBatchAnnotateProjectsFilesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -1869,21 +1512,12 @@ export interface AsyncBatchAnnotateProjectsFilesRequest {
   /** Request body */
   body?: AsyncBatchAnnotateFilesRequest;
 }
-export const AsyncBatchAnnotateProjectsFilesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(AsyncBatchAnnotateFilesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/files:asyncBatchAnnotate",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "AsyncBatchAnnotateProjectsFilesRequest",
-}) as any as S.Schema<AsyncBatchAnnotateProjectsFilesRequest>;
+export const AsyncBatchAnnotateProjectsFilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AsyncBatchAnnotateFilesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/files:asyncBatchAnnotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AsyncBatchAnnotateProjectsFilesRequest" }) as any as S.Schema<AsyncBatchAnnotateProjectsFilesRequest>;
 
 export interface AsyncBatchAnnotateProjectsImagesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -1891,21 +1525,12 @@ export interface AsyncBatchAnnotateProjectsImagesRequest {
   /** Request body */
   body?: AsyncBatchAnnotateImagesRequest;
 }
-export const AsyncBatchAnnotateProjectsImagesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(AsyncBatchAnnotateImagesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/images:asyncBatchAnnotate",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "AsyncBatchAnnotateProjectsImagesRequest",
-}) as any as S.Schema<AsyncBatchAnnotateProjectsImagesRequest>;
+export const AsyncBatchAnnotateProjectsImagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AsyncBatchAnnotateImagesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/images:asyncBatchAnnotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AsyncBatchAnnotateProjectsImagesRequest" }) as any as S.Schema<AsyncBatchAnnotateProjectsImagesRequest>;
 
 export interface AsyncBatchAnnotateProjectsLocationsFilesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -1913,21 +1538,12 @@ export interface AsyncBatchAnnotateProjectsLocationsFilesRequest {
   /** Request body */
   body?: AsyncBatchAnnotateFilesRequest;
 }
-export const AsyncBatchAnnotateProjectsLocationsFilesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(AsyncBatchAnnotateFilesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/files:asyncBatchAnnotate",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AsyncBatchAnnotateProjectsLocationsFilesRequest",
-  }) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsFilesRequest>;
+export const AsyncBatchAnnotateProjectsLocationsFilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AsyncBatchAnnotateFilesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/files:asyncBatchAnnotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AsyncBatchAnnotateProjectsLocationsFilesRequest" }) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsFilesRequest>;
 
 export interface AsyncBatchAnnotateProjectsLocationsImagesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -1935,29 +1551,18 @@ export interface AsyncBatchAnnotateProjectsLocationsImagesRequest {
   /** Request body */
   body?: AsyncBatchAnnotateImagesRequest;
 }
-export const AsyncBatchAnnotateProjectsLocationsImagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(AsyncBatchAnnotateImagesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/images:asyncBatchAnnotate",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AsyncBatchAnnotateProjectsLocationsImagesRequest",
-  }) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsImagesRequest>;
+export const AsyncBatchAnnotateProjectsLocationsImagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AsyncBatchAnnotateImagesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/images:asyncBatchAnnotate","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "AsyncBatchAnnotateProjectsLocationsImagesRequest" }) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsImagesRequest>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -1966,19 +1571,11 @@ export interface CancelOperationsRequest {
   body?: CancelOperationRequest;
 }
 export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:cancel",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelOperationsRequest",
-}) as any as S.Schema<CancelOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "CancelOperationsRequest" }) as any as S.Schema<CancelOperationsRequest>;
 
 export interface CreateProjectsLocationsProductsRequest {
   /** Required. The project in which the Product should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`. */
@@ -1988,22 +1585,13 @@ export interface CreateProjectsLocationsProductsRequest {
   /** Request body */
   body?: Product;
 }
-export const CreateProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      productId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Product.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/products",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsProductsRequest",
-}) as any as S.Schema<CreateProjectsLocationsProductsRequest>;
+export const CreateProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "productId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Product.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/products","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsProductsRequest" }) as any as S.Schema<CreateProjectsLocationsProductsRequest>;
 
 /** A ProductSet contains Products. A ProductSet can contain a maximum of 1 million reference images. If the limit is exceeded, periodic indexing will fail. */
 export interface ProductSet {
@@ -2017,12 +1605,12 @@ export interface ProductSet {
   indexError?: Status;
 }
 export const ProductSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    indexTime: S.optional(S.String),
-    name: S.optional(S.String),
-    indexError: S.optional(Status),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "indexTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "indexError": S.optional(Status),
+}),
 ).annotate({ identifier: "ProductSet" }) as any as S.Schema<ProductSet>;
 
 export interface CreateProjectsLocationsProductSetsRequest {
@@ -2033,27 +1621,16 @@ export interface CreateProjectsLocationsProductSetsRequest {
   /** Request body */
   body?: ProductSet;
 }
-export const CreateProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      productSetId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ProductSet.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/productSets",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsProductSetsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsProductSetsRequest>;
+export const CreateProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "productSetId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ProductSet.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/productSets","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsProductSetsRequest" }) as any as S.Schema<CreateProjectsLocationsProductSetsRequest>;
 
 export type BoundingPolyList = ReadonlyArray<BoundingPoly>;
-export const BoundingPolyList = /*@__PURE__*/ S.Array(
-  BoundingPoly,
-) as any as S.Schema<BoundingPolyList>;
+export const BoundingPolyList = /*@__PURE__*/ S.Array(BoundingPoly) as any as S.Schema<BoundingPolyList>;
 
 /** A `ReferenceImage` represents a product image and its associated metadata, such as bounding boxes. */
 export interface ReferenceImage {
@@ -2065,11 +1642,11 @@ export interface ReferenceImage {
   boundingPolys?: BoundingPolyList;
 }
 export const ReferenceImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    name: S.optional(S.String),
-    boundingPolys: S.optional(BoundingPolyList),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "name": S.optional(S.String),
+  "boundingPolys": S.optional(BoundingPolyList),
+}),
 ).annotate({ identifier: "ReferenceImage" }) as any as S.Schema<ReferenceImage>;
 
 export interface CreateProjectsLocationsProductsReferenceImagesRequest {
@@ -2080,226 +1657,123 @@ export interface CreateProjectsLocationsProductsReferenceImagesRequest {
   /** Request body */
   body?: ReferenceImage;
 }
-export const CreateProjectsLocationsProductsReferenceImagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      referenceImageId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ReferenceImage.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/referenceImages",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsProductsReferenceImagesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsProductsReferenceImagesRequest>;
+export const CreateProjectsLocationsProductsReferenceImagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "referenceImageId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ReferenceImage.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/referenceImages","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsProductsReferenceImagesRequest" }) as any as S.Schema<CreateProjectsLocationsProductsReferenceImagesRequest>;
 
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
 export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteOperationsRequest",
-}) as any as S.Schema<DeleteOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "DeleteOperationsRequest" }) as any as S.Schema<DeleteOperationsRequest>;
 
 export interface DeleteProjectsLocationsProductsRequest {
   /** Required. Resource name of product to delete. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` */
   name: string;
 }
-export const DeleteProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsProductsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsProductsRequest>;
+export const DeleteProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsProductsRequest" }) as any as S.Schema<DeleteProjectsLocationsProductsRequest>;
 
 export interface DeleteProjectsLocationsProductSetsRequest {
   /** Required. Resource name of the ProductSet to delete. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */
   name: string;
 }
-export const DeleteProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsProductSetsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsProductSetsRequest>;
+export const DeleteProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsProductSetsRequest" }) as any as S.Schema<DeleteProjectsLocationsProductSetsRequest>;
 
 export interface DeleteProjectsLocationsProductsReferenceImagesRequest {
   /** Required. The resource name of the reference image to delete. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID` */
   name: string;
 }
-export const DeleteProjectsLocationsProductsReferenceImagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsProductsReferenceImagesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsProductsReferenceImagesRequest>;
+export const DeleteProjectsLocationsProductsReferenceImagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsProductsReferenceImagesRequest" }) as any as S.Schema<DeleteProjectsLocationsProductsReferenceImagesRequest>;
 
 export interface GetLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetLocationsOperationsRequest",
-}) as any as S.Schema<GetLocationsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "GetLocationsOperationsRequest" }) as any as S.Schema<GetLocationsOperationsRequest>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperationsRequest",
-}) as any as S.Schema<GetOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsProductsRequest {
   /** Required. Resource name of the Product to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` */
   name: string;
 }
 export const GetProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsProductsRequest",
-}) as any as S.Schema<GetProjectsLocationsProductsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsProductsRequest" }) as any as S.Schema<GetProjectsLocationsProductsRequest>;
 
 export interface GetProjectsLocationsProductSetsRequest {
   /** Required. Resource name of the ProductSet to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */
   name: string;
 }
-export const GetProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsProductSetsRequest",
-}) as any as S.Schema<GetProjectsLocationsProductSetsRequest>;
+export const GetProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsProductSetsRequest" }) as any as S.Schema<GetProjectsLocationsProductSetsRequest>;
 
 export interface GetProjectsLocationsProductsReferenceImagesRequest {
   /** Required. The resource name of the ReferenceImage to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. */
   name: string;
 }
-export const GetProjectsLocationsProductsReferenceImagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsProductsReferenceImagesRequest",
-  }) as any as S.Schema<GetProjectsLocationsProductsReferenceImagesRequest>;
+export const GetProjectsLocationsProductsReferenceImagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsProductsReferenceImagesRequest" }) as any as S.Schema<GetProjectsLocationsProductsReferenceImagesRequest>;
 
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsOperationsRequest",
-}) as any as S.Schema<GetProjectsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsOperationsRequest" }) as any as S.Schema<GetProjectsOperationsRequest>;
 
 /** The Google Cloud Storage location for a csv file which preserves a list of ImportProductSetRequests in each line. */
 export interface ImportProductSetsGcsSource {
@@ -2307,12 +1781,10 @@ export interface ImportProductSetsGcsSource {
   csvFileUri?: string;
 }
 export const ImportProductSetsGcsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    csvFileUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImportProductSetsGcsSource",
-}) as any as S.Schema<ImportProductSetsGcsSource>;
+S.Struct({
+  "csvFileUri": S.optional(S.String),
+}),
+).annotate({ identifier: "ImportProductSetsGcsSource" }) as any as S.Schema<ImportProductSetsGcsSource>;
 
 /** The input content for the `ImportProductSets` method. */
 export interface ImportProductSetsInputConfig {
@@ -2320,12 +1792,10 @@ export interface ImportProductSetsInputConfig {
   gcsSource?: ImportProductSetsGcsSource;
 }
 export const ImportProductSetsInputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsSource: S.optional(ImportProductSetsGcsSource),
-  }),
-).annotate({
-  identifier: "ImportProductSetsInputConfig",
-}) as any as S.Schema<ImportProductSetsInputConfig>;
+S.Struct({
+  "gcsSource": S.optional(ImportProductSetsGcsSource),
+}),
+).annotate({ identifier: "ImportProductSetsInputConfig" }) as any as S.Schema<ImportProductSetsInputConfig>;
 
 /** Request message for the `ImportProductSets` method. */
 export interface ImportProductSetsRequest {
@@ -2333,12 +1803,10 @@ export interface ImportProductSetsRequest {
   inputConfig?: ImportProductSetsInputConfig;
 }
 export const ImportProductSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputConfig: S.optional(ImportProductSetsInputConfig),
-  }),
-).annotate({
-  identifier: "ImportProductSetsRequest",
-}) as any as S.Schema<ImportProductSetsRequest>;
+S.Struct({
+  "inputConfig": S.optional(ImportProductSetsInputConfig),
+}),
+).annotate({ identifier: "ImportProductSetsRequest" }) as any as S.Schema<ImportProductSetsRequest>;
 
 export interface ImportProjectsLocationsProductSetsRequest {
   /** Required. The project in which the ProductSets should be imported. Format is `projects/PROJECT_ID/locations/LOC_ID`. */
@@ -2346,21 +1814,12 @@ export interface ImportProjectsLocationsProductSetsRequest {
   /** Request body */
   body?: ImportProductSetsRequest;
 }
-export const ImportProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ImportProductSetsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/productSets:import",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsProductSetsRequest",
-  }) as any as S.Schema<ImportProjectsLocationsProductSetsRequest>;
+export const ImportProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ImportProductSetsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/productSets:import","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "ImportProjectsLocationsProductSetsRequest" }) as any as S.Schema<ImportProjectsLocationsProductSetsRequest>;
 
 export interface ListOperationsRequest {
   /** The standard list page token. */
@@ -2375,27 +1834,17 @@ export interface ListOperationsRequest {
   pageSize?: number;
 }
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://vision.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListOperationsRequest",
-}) as any as S.Schema<ListOperationsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2407,14 +1856,12 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-    operations: S.optional(OperationList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "operations": S.optional(OperationList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsProductsRequest {
   /** Required. The project OR ProductSet from which Products should be listed. Format: `projects/PROJECT_ID/locations/LOC_ID` */
@@ -2424,27 +1871,16 @@ export interface ListProjectsLocationsProductsRequest {
   /** The maximum number of items to return. Default 10, maximum 100. */
   pageSize?: number;
 }
-export const ListProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/products",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsProductsRequest",
-}) as any as S.Schema<ListProjectsLocationsProductsRequest>;
+export const ListProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/products","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsProductsRequest" }) as any as S.Schema<ListProjectsLocationsProductsRequest>;
 
 export type ProductList = ReadonlyArray<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(
-  Product,
-) as any as S.Schema<ProductList>;
+export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 /** Response message for the `ListProducts` method. */
 export interface ListProductsResponse {
@@ -2454,13 +1890,11 @@ export interface ListProductsResponse {
   nextPageToken?: string;
 }
 export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    products: S.optional(ProductList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProductsResponse",
-}) as any as S.Schema<ListProductsResponse>;
+S.Struct({
+  "products": S.optional(ProductList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListProductsResponse" }) as any as S.Schema<ListProductsResponse>;
 
 export interface ListProjectsLocationsProductSetsRequest {
   /** The maximum number of items to return. Default 10, maximum 100. */
@@ -2470,27 +1904,16 @@ export interface ListProjectsLocationsProductSetsRequest {
   /** Required. The project from which ProductSets should be listed. Format is `projects/PROJECT_ID/locations/LOC_ID`. */
   parent: string;
 }
-export const ListProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/productSets",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsProductSetsRequest",
-}) as any as S.Schema<ListProjectsLocationsProductSetsRequest>;
+export const ListProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/productSets","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsProductSetsRequest" }) as any as S.Schema<ListProjectsLocationsProductSetsRequest>;
 
 export type ProductSetList = ReadonlyArray<ProductSet>;
-export const ProductSetList = /*@__PURE__*/ S.Array(
-  ProductSet,
-) as any as S.Schema<ProductSetList>;
+export const ProductSetList = /*@__PURE__*/ S.Array(ProductSet) as any as S.Schema<ProductSetList>;
 
 /** Response message for the `ListProductSets` method. */
 export interface ListProductSetsResponse {
@@ -2500,13 +1923,11 @@ export interface ListProductSetsResponse {
   productSets?: ProductSetList;
 }
 export const ListProductSetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    productSets: S.optional(ProductSetList),
-  }),
-).annotate({
-  identifier: "ListProductSetsResponse",
-}) as any as S.Schema<ListProductSetsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "productSets": S.optional(ProductSetList),
+}),
+).annotate({ identifier: "ListProductSetsResponse" }) as any as S.Schema<ListProductSetsResponse>;
 
 export interface ListProjectsLocationsProductSetsProductsRequest {
   /** Required. The ProductSet resource for which to retrieve Products. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */
@@ -2516,22 +1937,13 @@ export interface ListProjectsLocationsProductSetsProductsRequest {
   /** The next_page_token returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsProductSetsProductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/products",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsProductSetsProductsRequest",
-  }) as any as S.Schema<ListProjectsLocationsProductSetsProductsRequest>;
+export const ListProjectsLocationsProductSetsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/products","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsProductSetsProductsRequest" }) as any as S.Schema<ListProjectsLocationsProductSetsProductsRequest>;
 
 /** Response message for the `ListProductsInProductSet` method. */
 export interface ListProductsInProductSetResponse {
@@ -2541,13 +1953,11 @@ export interface ListProductsInProductSetResponse {
   nextPageToken?: string;
 }
 export const ListProductsInProductSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    products: S.optional(ProductList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProductsInProductSetResponse",
-}) as any as S.Schema<ListProductsInProductSetResponse>;
+S.Struct({
+  "products": S.optional(ProductList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListProductsInProductSetResponse" }) as any as S.Schema<ListProductsInProductSetResponse>;
 
 export interface ListProjectsLocationsProductsReferenceImagesRequest {
   /** Required. Resource name of the product containing the reference images. Format is `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. */
@@ -2557,27 +1967,16 @@ export interface ListProjectsLocationsProductsReferenceImagesRequest {
   /** The maximum number of items to return. Default 10, maximum 100. */
   pageSize?: number;
 }
-export const ListProjectsLocationsProductsReferenceImagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/referenceImages",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsProductsReferenceImagesRequest",
-  }) as any as S.Schema<ListProjectsLocationsProductsReferenceImagesRequest>;
+export const ListProjectsLocationsProductsReferenceImagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/referenceImages","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsProductsReferenceImagesRequest" }) as any as S.Schema<ListProjectsLocationsProductsReferenceImagesRequest>;
 
 export type ReferenceImageList = ReadonlyArray<ReferenceImage>;
-export const ReferenceImageList = /*@__PURE__*/ S.Array(
-  ReferenceImage,
-) as any as S.Schema<ReferenceImageList>;
+export const ReferenceImageList = /*@__PURE__*/ S.Array(ReferenceImage) as any as S.Schema<ReferenceImageList>;
 
 /** Response message for the `ListReferenceImages` method. */
 export interface ListReferenceImagesResponse {
@@ -2589,14 +1988,12 @@ export interface ListReferenceImagesResponse {
   nextPageToken?: string;
 }
 export const ListReferenceImagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceImages: S.optional(ReferenceImageList),
-    pageSize: S.optional(S.Number),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListReferenceImagesResponse",
-}) as any as S.Schema<ListReferenceImagesResponse>;
+S.Struct({
+  "referenceImages": S.optional(ReferenceImageList),
+  "pageSize": S.optional(S.Number),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListReferenceImagesResponse" }) as any as S.Schema<ListReferenceImagesResponse>;
 
 export interface PatchProjectsLocationsProductsRequest {
   /** The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product. */
@@ -2606,22 +2003,13 @@ export interface PatchProjectsLocationsProductsRequest {
   /** Request body */
   body?: Product;
 }
-export const PatchProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Product.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsProductsRequest",
-}) as any as S.Schema<PatchProjectsLocationsProductsRequest>;
+export const PatchProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Product.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsProductsRequest" }) as any as S.Schema<PatchProjectsLocationsProductsRequest>;
 
 export interface PatchProjectsLocationsProductSetsRequest {
   /** The FieldMask that specifies which fields to update. If update_mask isn't specified, all mutable fields are to be updated. Valid mask path is `display_name`. */
@@ -2631,22 +2019,13 @@ export interface PatchProjectsLocationsProductSetsRequest {
   /** Request body */
   body?: ProductSet;
 }
-export const PatchProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ProductSet.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsProductSetsRequest",
-}) as any as S.Schema<PatchProjectsLocationsProductSetsRequest>;
+export const PatchProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ProductSet.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsProductSetsRequest" }) as any as S.Schema<PatchProjectsLocationsProductSetsRequest>;
 
 /** Config to control which ProductSet contains the Products to be deleted. */
 export interface ProductSetPurgeConfig {
@@ -2654,12 +2033,10 @@ export interface ProductSetPurgeConfig {
   productSetId?: string;
 }
 export const ProductSetPurgeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productSetId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductSetPurgeConfig",
-}) as any as S.Schema<ProductSetPurgeConfig>;
+S.Struct({
+  "productSetId": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductSetPurgeConfig" }) as any as S.Schema<ProductSetPurgeConfig>;
 
 /** Request message for the `PurgeProducts` method. */
 export interface PurgeProductsRequest {
@@ -2671,14 +2048,12 @@ export interface PurgeProductsRequest {
   force?: boolean;
 }
 export const PurgeProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleteOrphanProducts: S.optional(S.Boolean),
-    productSetPurgeConfig: S.optional(ProductSetPurgeConfig),
-    force: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PurgeProductsRequest",
-}) as any as S.Schema<PurgeProductsRequest>;
+S.Struct({
+  "deleteOrphanProducts": S.optional(S.Boolean),
+  "productSetPurgeConfig": S.optional(ProductSetPurgeConfig),
+  "force": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PurgeProductsRequest" }) as any as S.Schema<PurgeProductsRequest>;
 
 export interface PurgeProjectsLocationsProductsRequest {
   /** Required. The project and location in which the Products should be deleted. Format is `projects/PROJECT_ID/locations/LOC_ID`. */
@@ -2686,21 +2061,12 @@ export interface PurgeProjectsLocationsProductsRequest {
   /** Request body */
   body?: PurgeProductsRequest;
 }
-export const PurgeProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(PurgeProductsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/products:purge",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PurgeProjectsLocationsProductsRequest",
-}) as any as S.Schema<PurgeProjectsLocationsProductsRequest>;
+export const PurgeProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(PurgeProductsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/products:purge","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "PurgeProjectsLocationsProductsRequest" }) as any as S.Schema<PurgeProjectsLocationsProductsRequest>;
 
 /** Request message for the `RemoveProductFromProductSet` method. */
 export interface RemoveProductFromProductSetRequest {
@@ -2708,12 +2074,10 @@ export interface RemoveProductFromProductSetRequest {
   product?: string;
 }
 export const RemoveProductFromProductSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveProductFromProductSetRequest",
-}) as any as S.Schema<RemoveProductFromProductSetRequest>;
+S.Struct({
+  "product": S.optional(S.String),
+}),
+).annotate({ identifier: "RemoveProductFromProductSetRequest" }) as any as S.Schema<RemoveProductFromProductSetRequest>;
 
 export interface RemoveProductProjectsLocationsProductSetsRequest {
   /** Required. The resource name for the ProductSet to modify. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */
@@ -2721,28 +2085,14 @@ export interface RemoveProductProjectsLocationsProductSetsRequest {
   /** Request body */
   body?: RemoveProductFromProductSetRequest;
 }
-export const RemoveProductProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RemoveProductFromProductSetRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:removeProduct",
-        baseUrl: "https://vision.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemoveProductProjectsLocationsProductSetsRequest",
-  }) as any as S.Schema<RemoveProductProjectsLocationsProductSetsRequest>;
+export const RemoveProductProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RemoveProductFromProductSetRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:removeProduct","baseUrl":"https://vision.googleapis.com/"})),
+).annotate({ identifier: "RemoveProductProjectsLocationsProductSetsRequest" }) as any as S.Schema<RemoveProductProjectsLocationsProductSetsRequest>;
 
-export type AddProductProjectsLocationsProductSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddProductProjectsLocationsProductSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds a Product to the specified ProductSet. If the Product is already present, no change is made. One Product can be added to at most 100 ProductSets. Possible errors: * Returns NOT_FOUND if the Product or the ProductSet doesn't exist. */
 export const addProductProjectsLocationsProductSets: API.OperationMethod<
   AddProductProjectsLocationsProductSetsRequest,
@@ -2757,12 +2107,7 @@ export const addProductProjectsLocationsProductSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AnnotateFilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AnnotateFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted. */
 export const annotateFiles: API.OperationMethod<
   AnnotateFilesRequest,
@@ -2777,12 +2122,7 @@ export const annotateFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AnnotateImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AnnotateImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Run image detection and annotation for a batch of images. */
 export const annotateImages: API.OperationMethod<
   AnnotateImagesRequest,
@@ -2797,12 +2137,7 @@ export const annotateImages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AnnotateProjectsFilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AnnotateProjectsFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted. */
 export const annotateProjectsFiles: API.OperationMethod<
   AnnotateProjectsFilesRequest,
@@ -2817,12 +2152,7 @@ export const annotateProjectsFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AnnotateProjectsImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AnnotateProjectsImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Run image detection and annotation for a batch of images. */
 export const annotateProjectsImages: API.OperationMethod<
   AnnotateProjectsImagesRequest,
@@ -2837,12 +2167,7 @@ export const annotateProjectsImages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AnnotateProjectsLocationsFilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AnnotateProjectsLocationsFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted. */
 export const annotateProjectsLocationsFiles: API.OperationMethod<
   AnnotateProjectsLocationsFilesRequest,
@@ -2857,12 +2182,7 @@ export const annotateProjectsLocationsFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AnnotateProjectsLocationsImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AnnotateProjectsLocationsImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Run image detection and annotation for a batch of images. */
 export const annotateProjectsLocationsImages: API.OperationMethod<
   AnnotateProjectsLocationsImagesRequest,
@@ -2877,12 +2197,7 @@ export const annotateProjectsLocationsImages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AsyncBatchAnnotateFilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AsyncBatchAnnotateFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results). */
 export const asyncBatchAnnotateFiles: API.OperationMethod<
   AsyncBatchAnnotateFilesRequest_,
@@ -2897,12 +2212,7 @@ export const asyncBatchAnnotateFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AsyncBatchAnnotateImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AsyncBatchAnnotateImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto. */
 export const asyncBatchAnnotateImages: API.OperationMethod<
   AsyncBatchAnnotateImagesRequest_,
@@ -2917,12 +2227,7 @@ export const asyncBatchAnnotateImages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AsyncBatchAnnotateProjectsFilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AsyncBatchAnnotateProjectsFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results). */
 export const asyncBatchAnnotateProjectsFiles: API.OperationMethod<
   AsyncBatchAnnotateProjectsFilesRequest,
@@ -2937,12 +2242,7 @@ export const asyncBatchAnnotateProjectsFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AsyncBatchAnnotateProjectsImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AsyncBatchAnnotateProjectsImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto. */
 export const asyncBatchAnnotateProjectsImages: API.OperationMethod<
   AsyncBatchAnnotateProjectsImagesRequest,
@@ -2957,12 +2257,7 @@ export const asyncBatchAnnotateProjectsImages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AsyncBatchAnnotateProjectsLocationsFilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AsyncBatchAnnotateProjectsLocationsFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results). */
 export const asyncBatchAnnotateProjectsLocationsFiles: API.OperationMethod<
   AsyncBatchAnnotateProjectsLocationsFilesRequest,
@@ -2977,12 +2272,7 @@ export const asyncBatchAnnotateProjectsLocationsFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AsyncBatchAnnotateProjectsLocationsImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AsyncBatchAnnotateProjectsLocationsImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto. */
 export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
   AsyncBatchAnnotateProjectsLocationsImagesRequest,
@@ -2997,12 +2287,7 @@ export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
   CancelOperationsRequest,
@@ -3017,12 +2302,7 @@ export const cancelOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates and returns a new product resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if description is longer than 4096 characters. * Returns INVALID_ARGUMENT if product_category is missing or invalid. */
 export const createProjectsLocationsProducts: API.OperationMethod<
   CreateProjectsLocationsProductsRequest,
@@ -3037,12 +2317,7 @@ export const createProjectsLocationsProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsProductSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsProductSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates and returns a new ProductSet resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters. */
 export const createProjectsLocationsProductSets: API.OperationMethod<
   CreateProjectsLocationsProductSetsRequest,
@@ -3057,12 +2332,7 @@ export const createProjectsLocationsProductSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsProductsReferenceImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsProductsReferenceImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates and returns a new ReferenceImage resource. The `bounding_poly` field is optional. If `bounding_poly` is not specified, the system will try to detect regions of interest in the image that are compatible with the product_category on the parent product. If it is specified, detection is ALWAYS skipped. The system converts polygons into non-rotated rectangles. Note that the pipeline will resize the image if the image resolution is too large to process (above 50MP). Possible errors: * Returns INVALID_ARGUMENT if the image_uri is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if the product does not exist. * Returns INVALID_ARGUMENT if bounding_poly is not provided, and nothing compatible with the parent product's product_category is detected. * Returns INVALID_ARGUMENT if bounding_poly contains more than 10 polygons. */
 export const createProjectsLocationsProductsReferenceImages: API.OperationMethod<
   CreateProjectsLocationsProductsReferenceImagesRequest,
@@ -3077,12 +2347,7 @@ export const createProjectsLocationsProductsReferenceImages: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
   DeleteOperationsRequest,
@@ -3097,12 +2362,7 @@ export const deleteOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Permanently deletes a product and its reference images. Metadata of the product and all its images will be deleted right away, but search queries against ProductSets containing the product may still work until all related caches are refreshed. */
 export const deleteProjectsLocationsProducts: API.OperationMethod<
   DeleteProjectsLocationsProductsRequest,
@@ -3117,12 +2377,7 @@ export const deleteProjectsLocationsProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsProductSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsProductSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Permanently deletes a ProductSet. Products and ReferenceImages in the ProductSet are not deleted. The actual image files are not deleted from Google Cloud Storage. */
 export const deleteProjectsLocationsProductSets: API.OperationMethod<
   DeleteProjectsLocationsProductSetsRequest,
@@ -3137,12 +2392,7 @@ export const deleteProjectsLocationsProductSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsProductsReferenceImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsProductsReferenceImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Permanently deletes a reference image. The image metadata will be deleted right away, but search queries against ProductSets containing the image may still work until all related caches are refreshed. The actual image files are not deleted from Google Cloud Storage. */
 export const deleteProjectsLocationsProductsReferenceImages: API.OperationMethod<
   DeleteProjectsLocationsProductsReferenceImagesRequest,
@@ -3187,10 +2437,7 @@ export const getOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -3205,10 +2452,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProductsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsProductsError = NotFound | Forbidden | GcpOpError;
 /** Gets information associated with a Product. Possible errors: * Returns NOT_FOUND if the Product does not exist. */
 export const getProjectsLocationsProducts: API.OperationMethod<
   GetProjectsLocationsProductsRequest,
@@ -3223,10 +2467,7 @@ export const getProjectsLocationsProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProductSetsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsProductSetsError = NotFound | Forbidden | GcpOpError;
 /** Gets information associated with a ProductSet. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist. */
 export const getProjectsLocationsProductSets: API.OperationMethod<
   GetProjectsLocationsProductSetsRequest,
@@ -3241,10 +2482,7 @@ export const getProjectsLocationsProductSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProductsReferenceImagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsProductsReferenceImagesError = NotFound | Forbidden | GcpOpError;
 /** Gets information associated with a ReferenceImage. Possible errors: * Returns NOT_FOUND if the specified image does not exist. */
 export const getProjectsLocationsProductsReferenceImages: API.OperationMethod<
   GetProjectsLocationsProductsReferenceImagesRequest,
@@ -3274,12 +2512,7 @@ export const getProjectsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsProductSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportProjectsLocationsProductSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Asynchronous API that imports a list of reference images to specified product sets based on a list of image information. The google.longrunning.Operation API can be used to keep track of the progress and results of the request. `Operation.metadata` contains `BatchOperationMetadata`. (progress) `Operation.response` contains `ImportProductSetsResponse`. (results) The input source of this method is a csv file on Google Cloud Storage. For the format of the csv file please see ImportProductSetsGcsSource.csv_file_uri. */
 export const importProjectsLocationsProductSets: API.OperationMethod<
   ImportProjectsLocationsProductSetsRequest,
@@ -3307,16 +2540,10 @@ export const listOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsProductsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsProductsError = NotFound | Forbidden | GcpOpError;
 /** Lists products in an unspecified order. Possible errors: * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1. */
 export const listProjectsLocationsProducts: API.PaginatedOperationMethod<
   ListProjectsLocationsProductsRequest,
@@ -3329,16 +2556,10 @@ export const listProjectsLocationsProducts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsProductSetsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsProductSetsError = NotFound | Forbidden | GcpOpError;
 /** Lists ProductSets in an unspecified order. Possible errors: * Returns INVALID_ARGUMENT if page_size is greater than 100, or less than 1. */
 export const listProjectsLocationsProductSets: API.PaginatedOperationMethod<
   ListProjectsLocationsProductSetsRequest,
@@ -3351,16 +2572,10 @@ export const listProjectsLocationsProductSets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsProductSetsProductsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsProductSetsProductsError = NotFound | Forbidden | GcpOpError;
 /** Lists the Products in a ProductSet, in an unspecified order. If the ProductSet does not exist, the products field of the response will be empty. Possible errors: * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1. */
 export const listProjectsLocationsProductSetsProducts: API.PaginatedOperationMethod<
   ListProjectsLocationsProductSetsProductsRequest,
@@ -3373,16 +2588,10 @@ export const listProjectsLocationsProductSetsProducts: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsProductsReferenceImagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsProductsReferenceImagesError = NotFound | Forbidden | GcpOpError;
 /** Lists reference images. Possible errors: * Returns NOT_FOUND if the parent product does not exist. * Returns INVALID_ARGUMENT if the page_size is greater than 100, or less than 1. */
 export const listProjectsLocationsProductsReferenceImages: API.PaginatedOperationMethod<
   ListProjectsLocationsProductsReferenceImagesRequest,
@@ -3395,18 +2604,10 @@ export const listProjectsLocationsProductsReferenceImages: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Makes changes to a Product resource. Only the `display_name`, `description`, and `labels` fields can be updated right now. If labels are updated, the change will not be reflected in queries until the next index time. Possible errors: * Returns NOT_FOUND if the Product does not exist. * Returns INVALID_ARGUMENT if display_name is present in update_mask but is missing from the request or longer than 4096 characters. * Returns INVALID_ARGUMENT if description is present in update_mask but is longer than 4096 characters. * Returns INVALID_ARGUMENT if product_category is present in update_mask. */
 export const patchProjectsLocationsProducts: API.OperationMethod<
   PatchProjectsLocationsProductsRequest,
@@ -3421,12 +2622,7 @@ export const patchProjectsLocationsProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsProductSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsProductSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Makes changes to a ProductSet resource. Only display_name can be updated currently. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist. * Returns INVALID_ARGUMENT if display_name is present in update_mask but missing from the request or longer than 4096 characters. */
 export const patchProjectsLocationsProductSets: API.OperationMethod<
   PatchProjectsLocationsProductSetsRequest,
@@ -3441,12 +2637,7 @@ export const patchProjectsLocationsProductSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PurgeProjectsLocationsProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PurgeProjectsLocationsProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Asynchronous API to delete all Products in a ProductSet or all Products that are in no ProductSet. If a Product is a member of the specified ProductSet in addition to other ProductSets, the Product will still be deleted. It is recommended to not delete the specified ProductSet until after this operation has completed. It is also recommended to not add any of the Products involved in the batch delete to a new ProductSet while this operation is running because those Products may still end up deleted. It's not possible to undo the PurgeProducts operation. Therefore, it is recommended to keep the csv files used in ImportProductSets (if that was how you originally built the Product Set) before starting PurgeProducts, in case you need to re-import the data after deletion. If the plan is to purge all of the Products from a ProductSet and then re-use the empty ProductSet to re-import new Products into the empty ProductSet, you must wait until the PurgeProducts operation has finished for that ProductSet. The google.longrunning.Operation API can be used to keep track of the progress and results of the request. `Operation.metadata` contains `BatchOperationMetadata`. (progress) */
 export const purgeProjectsLocationsProducts: API.OperationMethod<
   PurgeProjectsLocationsProductsRequest,
@@ -3461,12 +2652,7 @@ export const purgeProjectsLocationsProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveProductProjectsLocationsProductSetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemoveProductProjectsLocationsProductSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes a Product from the specified ProductSet. */
 export const removeProductProjectsLocationsProductSets: API.OperationMethod<
   RemoveProductProjectsLocationsProductSetsRequest,
@@ -3480,3 +2666,4 @@ export const removeProductProjectsLocationsProductSets: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

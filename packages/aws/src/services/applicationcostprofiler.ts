@@ -154,10 +154,10 @@ export const GetReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReportDefinitionRequest",
 }) as any as S.Schema<GetReportDefinitionRequest>;
 export type ReportDescription = string;
-export type ReportFrequency = "MONTHLY" | "DAILY" | "ALL" | (string & {});
+export type ReportFrequency = "MONTHLY" | "DAILY" | "ALL";
 export const ReportFrequency = /*@__PURE__*/ S.String;
 
-export type Format = "CSV" | "PARQUET" | (string & {});
+export type Format = "CSV" | "PARQUET";
 export const Format = /*@__PURE__*/ S.String;
 
 export type S3Bucket = string;
@@ -196,14 +196,13 @@ export type S3BucketRegion =
   | "ap-east-1"
   | "me-south-1"
   | "eu-south-1"
-  | "af-south-1"
-  | (string & {});
+  | "af-south-1";
 export const S3BucketRegion = /*@__PURE__*/ S.String;
 
 export interface SourceS3Location {
   bucket: string;
   key: string;
-  region?: S3BucketRegion;
+  region?: S3BucketRegion | (string & {});
 }
 export const SourceS3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -301,8 +300,8 @@ export const ListReportDefinitionsResult = /*@__PURE__*/ S.suspend(() =>
 export interface PutReportDefinitionRequest {
   reportId: string;
   reportDescription: string;
-  reportFrequency: ReportFrequency;
-  format: Format;
+  reportFrequency: ReportFrequency | (string & {});
+  format: Format | (string & {});
   destinationS3Location: S3Location;
 }
 export const PutReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -336,8 +335,8 @@ export const PutReportDefinitionResult = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateReportDefinitionRequest {
   reportId: string;
   reportDescription: string;
-  reportFrequency: ReportFrequency;
-  format: Format;
+  reportFrequency: ReportFrequency | (string & {});
+  format: Format | (string & {});
   destinationS3Location: S3Location;
 }
 export const UpdateReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>

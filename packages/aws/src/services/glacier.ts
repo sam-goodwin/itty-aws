@@ -531,14 +531,10 @@ export const DescribeJobInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeJobInput",
 }) as any as S.Schema<DescribeJobInput>;
-export type ActionCode =
-  | "ArchiveRetrieval"
-  | "InventoryRetrieval"
-  | "Select"
-  | (string & {});
+export type ActionCode = "ArchiveRetrieval" | "InventoryRetrieval" | "Select";
 export const ActionCode = /*@__PURE__*/ S.String;
 
-export type StatusCode = "InProgress" | "Succeeded" | "Failed" | (string & {});
+export type StatusCode = "InProgress" | "Succeeded" | "Failed";
 export const StatusCode = /*@__PURE__*/ S.String;
 
 export type Size = number;
@@ -560,7 +556,7 @@ export const InventoryRetrievalJobDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InventoryRetrievalJobDescription",
 }) as any as S.Schema<InventoryRetrievalJobDescription>;
-export type FileHeaderInfo = "USE" | "IGNORE" | "NONE" | (string & {});
+export type FileHeaderInfo = "USE" | "IGNORE" | "NONE";
 export const FileHeaderInfo = /*@__PURE__*/ S.String;
 
 export interface CSVInput {
@@ -589,10 +585,10 @@ export const InputSerialization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputSerialization",
 }) as any as S.Schema<InputSerialization>;
-export type ExpressionType = "SQL" | (string & {});
+export type ExpressionType = "SQL";
 export const ExpressionType = /*@__PURE__*/ S.String;
 
-export type QuoteFields = "ALWAYS" | "ASNEEDED" | (string & {});
+export type QuoteFields = "ALWAYS" | "ASNEEDED";
 export const QuoteFields = /*@__PURE__*/ S.String;
 
 export interface CSVOutput {
@@ -635,7 +631,7 @@ export const SelectParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SelectParameters",
 }) as any as S.Schema<SelectParameters>;
-export type EncryptionType = "aws:kms" | "AES256" | (string & {});
+export type EncryptionType = "aws:kms" | "AES256";
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export interface Encryption {
@@ -657,15 +653,10 @@ export type CannedACL =
   | "aws-exec-read"
   | "authenticated-read"
   | "bucket-owner-read"
-  | "bucket-owner-full-control"
-  | (string & {});
+  | "bucket-owner-full-control";
 export const CannedACL = /*@__PURE__*/ S.String;
 
-export type Type =
-  | "AmazonCustomerByEmail"
-  | "CanonicalUser"
-  | "Group"
-  | (string & {});
+export type Type = "AmazonCustomerByEmail" | "CanonicalUser" | "Group";
 export const Type = /*@__PURE__*/ S.String;
 
 export interface Grantee {
@@ -689,8 +680,7 @@ export type Permission =
   | "WRITE"
   | "WRITE_ACP"
   | "READ"
-  | "READ_ACP"
-  | (string & {});
+  | "READ_ACP";
 export const Permission = /*@__PURE__*/ S.String;
 
 export interface Grant {
@@ -710,11 +700,7 @@ export const Hashmap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type StorageClass =
-  | "STANDARD"
-  | "REDUCED_REDUNDANCY"
-  | "STANDARD_IA"
-  | (string & {});
+export type StorageClass = "STANDARD" | "REDUCED_REDUNDANCY" | "STANDARD_IA";
 export const StorageClass = /*@__PURE__*/ S.String;
 
 export interface S3Location {

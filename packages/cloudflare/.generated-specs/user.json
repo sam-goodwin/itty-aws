@@ -438,6 +438,34 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.user#AuditLogsListRequestAction": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters by the action type."
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListRequestActor": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters by the email address of the actor that made the change."
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range."
+          }
+        }
+      }
+    },
     "com.cloudflare.user#AuditLogsListRequestDirection": {
       "type": "enum",
       "members": {
@@ -455,6 +483,17 @@
         }
       }
     },
+    "com.cloudflare.user#AuditLogsListRequestZone": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters by the name of the zone associated to the change."
+          }
+        }
+      }
+    },
     "com.cloudflare.user#AuditLogsListRequest": {
       "type": "structure",
       "members": {
@@ -465,25 +504,16 @@
             "smithy.api#httpQuery": "id"
           }
         },
-        "action_type": {
-          "target": "smithy.api#String",
+        "action": {
+          "target": "com.cloudflare.user#AuditLogsListRequestAction",
           "traits": {
-            "smithy.api#documentation": "Filters by the action type.",
-            "smithy.api#httpQuery": "action.type"
+            "com.cloudflare.protocols#deepQuery": "action"
           }
         },
-        "actor_email": {
-          "target": "smithy.api#String",
+        "actor": {
+          "target": "com.cloudflare.user#AuditLogsListRequestActor",
           "traits": {
-            "smithy.api#documentation": "Filters by the email address of the actor that made the change.",
-            "smithy.api#httpQuery": "actor.email"
-          }
-        },
-        "actor_ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range.",
-            "smithy.api#httpQuery": "actor.ip"
+            "com.cloudflare.protocols#deepQuery": "actor"
           }
         },
         "before": {
@@ -535,11 +565,10 @@
             "smithy.api#httpQuery": "since"
           }
         },
-        "zone_name": {
-          "target": "smithy.api#String",
+        "zone": {
+          "target": "com.cloudflare.user#AuditLogsListRequestZone",
           "traits": {
-            "smithy.api#documentation": "Filters by the name of the zone associated to the change.",
-            "smithy.api#httpQuery": "zone.name"
+            "com.cloudflare.protocols#deepQuery": "zone"
           }
         }
       },

@@ -18,14 +18,13 @@ export type CustomerProfileConfigScopeEnum =
   | "group_1"
   | "group_2"
   | "group_3"
-  | "group_4"
-  | (string & {});
+  | "group_4";
 export const CustomerProfileConfigScopeEnum = /*@__PURE__*/ S.String;
 
 export interface CustomerProfileConfigsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  scope?: CustomerProfileConfigScopeEnum;
+  scope?: CustomerProfileConfigScopeEnum | (string & {});
   content?: unknown;
   sidebar?: unknown;
 }
@@ -147,7 +146,7 @@ export interface CustomerProfileConfigsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
-  scope?: CustomerProfileConfigScopeEnum;
+  scope?: CustomerProfileConfigScopeEnum | (string & {});
   content?: unknown;
   sidebar?: unknown;
 }
@@ -195,7 +194,7 @@ export interface CustomerProfileConfigsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
-  scope?: CustomerProfileConfigScopeEnum;
+  scope?: CustomerProfileConfigScopeEnum | (string & {});
   content?: unknown;
   sidebar?: unknown;
 }

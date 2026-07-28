@@ -125,26 +125,23 @@ export const DomainServicePropertiesInputReplicaSetsList =
   ) as any as S.Schema<DomainServicePropertiesInputReplicaSetsList>;
 
 /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
-export type LdapsSettingsInputLdaps = "Enabled" | "Disabled" | (string & {});
+export type LdapsSettingsInputLdaps = "Enabled" | "Disabled";
 export const LdapsSettingsInputLdaps = /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
-export type LdapsSettingsInputExternalAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type LdapsSettingsInputExternalAccess = "Enabled" | "Disabled";
 export const LdapsSettingsInputExternalAccess = /*@__PURE__*/ S.String;
 
 /** Secure LDAP Settings */
 export interface LdapsSettingsInput {
   /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
-  ldaps?: LdapsSettingsInputLdaps;
+  ldaps?: LdapsSettingsInputLdaps | (string & {});
   /** The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file. */
   pfxCertificate?: string;
   /** The password to decrypt the provided Secure LDAP certificate pfx file. */
   pfxCertificatePassword?: string | Redacted.Redacted<string>;
   /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
-  externalAccess?: LdapsSettingsInputExternalAccess;
+  externalAccess?: LdapsSettingsInputExternalAccess | (string & {});
 }
 export const LdapsSettingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -203,68 +200,45 @@ export const ResourceForestSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceForestSettings>;
 
 /** A flag to determine whether or not NtlmV1 is enabled or disabled. */
-export type DomainSecuritySettingsNtlmV1 =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DomainSecuritySettingsNtlmV1 = "Enabled" | "Disabled";
 export const DomainSecuritySettingsNtlmV1 = /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not TlsV1 is enabled or disabled. */
-export type DomainSecuritySettingsTlsV1 =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DomainSecuritySettingsTlsV1 = "Enabled" | "Disabled";
 export const DomainSecuritySettingsTlsV1 = /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not SyncNtlmPasswords is enabled or disabled. */
-export type DomainSecuritySettingsSyncNtlmPasswords =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DomainSecuritySettingsSyncNtlmPasswords = "Enabled" | "Disabled";
 export const DomainSecuritySettingsSyncNtlmPasswords = /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not SyncKerberosPasswords is enabled or disabled. */
 export type DomainSecuritySettingsSyncKerberosPasswords =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const DomainSecuritySettingsSyncKerberosPasswords =
   /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not SyncOnPremPasswords is enabled or disabled. */
-export type DomainSecuritySettingsSyncOnPremPasswords =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DomainSecuritySettingsSyncOnPremPasswords = "Enabled" | "Disabled";
 export const DomainSecuritySettingsSyncOnPremPasswords = /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not KerberosRc4Encryption is enabled or disabled. */
 export type DomainSecuritySettingsKerberosRc4Encryption =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const DomainSecuritySettingsKerberosRc4Encryption =
   /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not KerberosArmoring is enabled or disabled. */
-export type DomainSecuritySettingsKerberosArmoring =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DomainSecuritySettingsKerberosArmoring = "Enabled" | "Disabled";
 export const DomainSecuritySettingsKerberosArmoring = /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not LdapSigning is enabled or disabled. */
-export type DomainSecuritySettingsLdapSigning =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DomainSecuritySettingsLdapSigning = "Enabled" | "Disabled";
 export const DomainSecuritySettingsLdapSigning = /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not ChannelBinding is enabled or disabled. */
-export type DomainSecuritySettingsChannelBinding =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DomainSecuritySettingsChannelBinding = "Enabled" | "Disabled";
 export const DomainSecuritySettingsChannelBinding = /*@__PURE__*/ S.String;
 
 /** Domain Security Settings */
@@ -309,31 +283,19 @@ export const DomainSecuritySettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainSecuritySettings>;
 
 /** Enabled or Disabled flag to turn on Group-based filtered sync */
-export type DomainServicePropertiesInputFilteredSync =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DomainServicePropertiesInputFilteredSync = "Enabled" | "Disabled";
 export const DomainServicePropertiesInputFilteredSync = /*@__PURE__*/ S.String;
 
 /** All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud */
-export type DomainServicePropertiesInputSyncScope =
-  | "All"
-  | "CloudOnly"
-  | (string & {});
+export type DomainServicePropertiesInputSyncScope = "All" | "CloudOnly";
 export const DomainServicePropertiesInputSyncScope = /*@__PURE__*/ S.String;
 
 /** Should global admins be notified */
-export type NotificationSettingsNotifyGlobalAdmins =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type NotificationSettingsNotifyGlobalAdmins = "Enabled" | "Disabled";
 export const NotificationSettingsNotifyGlobalAdmins = /*@__PURE__*/ S.String;
 
 /** Should domain controller admins be notified */
-export type NotificationSettingsNotifyDcAdmins =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type NotificationSettingsNotifyDcAdmins = "Enabled" | "Disabled";
 export const NotificationSettingsNotifyDcAdmins = /*@__PURE__*/ S.String;
 
 /** The list of additional recipients */
@@ -372,8 +334,7 @@ export type ConfigDiagnosticsValidatorResultStatus =
   | "OK"
   | "Failure"
   | "Warning"
-  | "Skipped"
-  | (string & {});
+  | "Skipped";
 export const ConfigDiagnosticsValidatorResultStatus = /*@__PURE__*/ S.String;
 
 /** List of domain resource property name or values used to compose a rich description. */
@@ -472,9 +433,9 @@ export interface DomainServicePropertiesInput {
   /** Sku Type */
   sku?: string;
   /** Enabled or Disabled flag to turn on Group-based filtered sync */
-  filteredSync?: DomainServicePropertiesInputFilteredSync;
+  filteredSync?: DomainServicePropertiesInputFilteredSync | (string & {});
   /** All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud */
-  syncScope?: DomainServicePropertiesInputSyncScope;
+  syncScope?: DomainServicePropertiesInputSyncScope | (string & {});
   /** Notification Settings */
   notificationSettings?: NotificationSettings;
   /** Configuration diagnostics data containing latest execution from client. */
@@ -550,8 +511,7 @@ export type DomainServicesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -560,8 +520,7 @@ export type DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -709,14 +668,11 @@ export const DomainServicePropertiesReplicaSetsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DomainServicePropertiesReplicaSetsList>;
 
 /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
-export type LdapsSettingsLdaps = "Enabled" | "Disabled" | (string & {});
+export type LdapsSettingsLdaps = "Enabled" | "Disabled";
 export const LdapsSettingsLdaps = /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
-export type LdapsSettingsExternalAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type LdapsSettingsExternalAccess = "Enabled" | "Disabled";
 export const LdapsSettingsExternalAccess = /*@__PURE__*/ S.String;
 
 /** Secure LDAP Settings */
@@ -749,17 +705,11 @@ export const LdapsSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LdapsSettings" }) as any as S.Schema<LdapsSettings>;
 
 /** Enabled or Disabled flag to turn on Group-based filtered sync */
-export type DomainServicePropertiesFilteredSync =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DomainServicePropertiesFilteredSync = "Enabled" | "Disabled";
 export const DomainServicePropertiesFilteredSync = /*@__PURE__*/ S.String;
 
 /** All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud */
-export type DomainServicePropertiesSyncScope =
-  | "All"
-  | "CloudOnly"
-  | (string & {});
+export type DomainServicePropertiesSyncScope = "All" | "CloudOnly";
 export const DomainServicePropertiesSyncScope = /*@__PURE__*/ S.String;
 
 /** Migration Progress */
@@ -966,8 +916,7 @@ export type DomainServicesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -976,8 +925,7 @@ export type DomainServicesGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1075,8 +1023,7 @@ export type DomainServiceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServiceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1084,8 +1031,7 @@ export type DomainServiceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServiceSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1253,8 +1199,7 @@ export type DomainServicesUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1263,8 +1208,7 @@ export type DomainServicesUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1385,8 +1329,7 @@ export type OuContainerCreateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerCreateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1395,8 +1338,7 @@ export type OuContainerCreateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerCreateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1599,8 +1541,7 @@ export type OuContainerGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1609,8 +1550,7 @@ export type OuContainerGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1714,8 +1654,7 @@ export type OuContainerSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1723,8 +1662,7 @@ export type OuContainerSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1874,8 +1812,7 @@ export type OuContainerUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1884,8 +1821,7 @@ export type OuContainerUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

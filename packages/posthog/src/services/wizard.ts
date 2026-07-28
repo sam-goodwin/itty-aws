@@ -20,12 +20,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `idle` - IDLE * `running` - RUNNING * `completed` - COMPLETED * `error` - ERROR */
-export type RunPhaseEnum =
-  | "idle"
-  | "running"
-  | "completed"
-  | "error"
-  | (string & {});
+export type RunPhaseEnum = "idle" | "running" | "completed" | "error";
 export const RunPhaseEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - PENDING * `in_progress` - IN_PROGRESS * `completed` - COMPLETED * `failed` - FAILED * `canceled` - CANCELED */
@@ -34,8 +29,7 @@ export type WizardTaskDTOStatusEnum =
   | "in_progress"
   | "completed"
   | "failed"
-  | "canceled"
-  | (string & {});
+  | "canceled";
 export const WizardTaskDTOStatusEnum = /*@__PURE__*/ S.String;
 
 export interface WizardTaskDTO {
@@ -86,7 +80,7 @@ export interface WizardSessionsCreateRequest {
   /** UTC timestamp when the wizard started this run. Matches the timestamp encoded in session_id. */
   started_at: string;
   /** Lifecycle stage of the wizard run. * `idle` - IDLE * `running` - RUNNING * `completed` - COMPLETED * `error` - ERROR */
-  run_phase: RunPhaseEnum;
+  run_phase: RunPhaseEnum | (string & {});
   tasks: WizardSessionsCreateRequestTasksList;
   /** Optional structured plan of events the wizard intends to instrument. Schema is workflow-specific. */
   event_plan?: WizardSessionsCreateRequestEventPlanMap | null;

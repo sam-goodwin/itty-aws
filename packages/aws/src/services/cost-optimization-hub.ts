@@ -130,23 +130,16 @@ export const GetPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPreferencesRequest",
 }) as any as S.Schema<GetPreferencesRequest>;
-export type SavingsEstimationMode =
-  | "BeforeDiscounts"
-  | "AfterDiscounts"
-  | (string & {});
+export type SavingsEstimationMode = "BeforeDiscounts" | "AfterDiscounts";
 export const SavingsEstimationMode = /*@__PURE__*/ S.String;
 
-export type MemberAccountDiscountVisibility = "All" | "None" | (string & {});
+export type MemberAccountDiscountVisibility = "All" | "None";
 export const MemberAccountDiscountVisibility = /*@__PURE__*/ S.String;
 
-export type Term = "OneYear" | "ThreeYears" | (string & {});
+export type Term = "OneYear" | "ThreeYears";
 export const Term = /*@__PURE__*/ S.String;
 
-export type PaymentOption =
-  | "AllUpfront"
-  | "PartialUpfront"
-  | "NoUpfront"
-  | (string & {});
+export type PaymentOption = "AllUpfront" | "PartialUpfront" | "NoUpfront";
 export const PaymentOption = /*@__PURE__*/ S.String;
 
 export interface PreferredCommitment {
@@ -212,11 +205,10 @@ export type ResourceType =
   | "MemoryDBCluster"
   | "DocumentDBCluster"
   | "WorkSpaces"
-  | "SageMakerEndpoint"
-  | (string & {});
+  | "SageMakerEndpoint";
 export const ResourceType = /*@__PURE__*/ S.String;
 
-export type Source = "ComputeOptimizer" | "CostExplorer" | (string & {});
+export type Source = "ComputeOptimizer" | "CostExplorer";
 export const Source = /*@__PURE__*/ S.String;
 
 export type Datetime = Date;
@@ -225,8 +217,7 @@ export type ImplementationEffort =
   | "Low"
   | "Medium"
   | "High"
-  | "VeryHigh"
-  | (string & {});
+  | "VeryHigh";
 export const ImplementationEffort = /*@__PURE__*/ S.String;
 
 export type ActionType =
@@ -237,8 +228,7 @@ export type ActionType =
   | "PurchaseReservedInstances"
   | "MigrateToGraviton"
   | "Delete"
-  | "ScaleIn"
-  | (string & {});
+  | "ScaleIn";
 export const ActionType = /*@__PURE__*/ S.String;
 
 export interface ComputeConfiguration {
@@ -436,11 +426,10 @@ export const MixedInstanceConfigurationList = /*@__PURE__*/ S.Array(
 );
 export type Ec2AutoScalingGroupType =
   | "SingleInstanceType"
-  | "MixedInstanceTypes"
-  | (string & {});
+  | "MixedInstanceTypes";
 export const Ec2AutoScalingGroupType = /*@__PURE__*/ S.String;
 
-export type AllocationStrategy = "Prioritized" | "LowestPrice" | (string & {});
+export type AllocationStrategy = "Prioritized" | "LowestPrice";
 export const AllocationStrategy = /*@__PURE__*/ S.String;
 
 export interface Ec2AutoScalingGroupConfiguration {
@@ -1849,7 +1838,7 @@ export const GetRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRecommendationResponse",
 }) as any as S.Schema<GetRecommendationResponse>;
-export type GranularityType = "Daily" | "Monthly" | (string & {});
+export type GranularityType = "Daily" | "Monthly";
 export const GranularityType = /*@__PURE__*/ S.String;
 
 export interface TimePeriod {
@@ -1860,19 +1849,19 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ start: S.String, end: S.String }),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 export type MaxResults = number;
-export type Order = "Asc" | "Desc" | (string & {});
+export type Order = "Asc" | "Desc";
 export const Order = /*@__PURE__*/ S.String;
 
 export interface OrderBy {
   dimension?: string;
-  order?: Order;
+  order?: Order | (string & {});
 }
 export const OrderBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dimension: S.optional(S.String), order: S.optional(Order) }),
 ).annotate({ identifier: "OrderBy" }) as any as S.Schema<OrderBy>;
 export interface ListEfficiencyMetricsRequest {
   groupBy?: string;
-  granularity: GranularityType;
+  granularity: GranularityType | (string & {});
   timePeriod: TimePeriod;
   maxResults?: number;
   orderBy?: OrderBy;
@@ -1957,7 +1946,7 @@ export const ListEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEnrollmentStatusesRequest",
 }) as any as S.Schema<ListEnrollmentStatusesRequest>;
-export type EnrollmentStatus = "Active" | "Inactive" | (string & {});
+export type EnrollmentStatus = "Active" | "Inactive";
 export const EnrollmentStatus = /*@__PURE__*/ S.String;
 
 export interface AccountEnrollmentStatus {
@@ -1998,16 +1987,16 @@ export const ListEnrollmentStatusesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEnrollmentStatusesResponse",
 }) as any as S.Schema<ListEnrollmentStatusesResponse>;
-export type ImplementationEffortList = ImplementationEffort[];
+export type ImplementationEffortList = (ImplementationEffort | (string & {}))[];
 export const ImplementationEffortList =
   /*@__PURE__*/ S.Array(ImplementationEffort);
 export type AccountIdList = string[];
 export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
 export type RegionList = string[];
 export const RegionList = /*@__PURE__*/ S.Array(S.String);
-export type ResourceTypeList = ResourceType[];
+export type ResourceTypeList = (ResourceType | (string & {}))[];
 export const ResourceTypeList = /*@__PURE__*/ S.Array(ResourceType);
-export type ActionTypeList = ActionType[];
+export type ActionTypeList = (ActionType | (string & {}))[];
 export const ActionTypeList = /*@__PURE__*/ S.Array(ActionType);
 export type ResourceIdList = string[];
 export const ResourceIdList = /*@__PURE__*/ S.Array(S.String);
@@ -2127,10 +2116,10 @@ export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommendationsResponse",
 }) as any as S.Schema<ListRecommendationsResponse>;
-export type SummaryMetrics = "SavingsPercentage" | (string & {});
+export type SummaryMetrics = "SavingsPercentage";
 export const SummaryMetrics = /*@__PURE__*/ S.String;
 
-export type SummaryMetricsList = SummaryMetrics[];
+export type SummaryMetricsList = (SummaryMetrics | (string & {}))[];
 export const SummaryMetricsList = /*@__PURE__*/ S.Array(SummaryMetrics);
 export interface ListRecommendationSummariesRequest {
   filter?: Filter;
@@ -2199,7 +2188,7 @@ export const ListRecommendationSummariesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRecommendationSummariesResponse",
 }) as any as S.Schema<ListRecommendationSummariesResponse>;
 export interface UpdateEnrollmentStatusRequest {
-  status: EnrollmentStatus;
+  status: EnrollmentStatus | (string & {});
   includeMemberAccounts?: boolean;
 }
 export const UpdateEnrollmentStatusRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2221,8 +2210,10 @@ export const UpdateEnrollmentStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEnrollmentStatusResponse",
 }) as any as S.Schema<UpdateEnrollmentStatusResponse>;
 export interface UpdatePreferencesRequest {
-  savingsEstimationMode?: SavingsEstimationMode;
-  memberAccountDiscountVisibility?: MemberAccountDiscountVisibility;
+  savingsEstimationMode?: SavingsEstimationMode | (string & {});
+  memberAccountDiscountVisibility?:
+    | MemberAccountDiscountVisibility
+    | (string & {});
   preferredCommitment?: PreferredCommitment;
 }
 export const UpdatePreferencesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2254,10 +2245,7 @@ export const UpdatePreferencesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePreferencesResponse",
 }) as any as S.Schema<UpdatePreferencesResponse>;
-export type ValidationExceptionReason =
-  | "FieldValidationFailed"
-  | "Other"
-  | (string & {});
+export type ValidationExceptionReason = "FieldValidationFailed" | "Other";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionDetail {

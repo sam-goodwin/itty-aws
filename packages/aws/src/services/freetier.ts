@@ -157,13 +157,12 @@ export type LanguageCode =
   | "ko-KR"
   | "zh-CN"
   | "zh-TW"
-  | "tr-TR"
-  | (string & {});
+  | "tr-TR";
 export const LanguageCode = /*@__PURE__*/ S.String;
 
 export interface GetAccountActivityRequest {
   activityId: string;
-  languageCode?: LanguageCode;
+  languageCode?: LanguageCode | (string & {});
 }
 export const GetAccountActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -179,11 +178,10 @@ export type ActivityStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
   | "COMPLETED"
-  | "EXPIRING"
-  | (string & {});
+  | "EXPIRING";
 export const ActivityStatus = /*@__PURE__*/ S.String;
 
-export type CurrencyCode = "USD" | (string & {});
+export type CurrencyCode = "USD";
 export const CurrencyCode = /*@__PURE__*/ S.String;
 
 export interface MonetaryAmount {
@@ -240,14 +238,10 @@ export const GetAccountPlanStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountPlanStateRequest",
 }) as any as S.Schema<GetAccountPlanStateRequest>;
 export type AccountId = string;
-export type AccountPlanType = "FREE" | "PAID" | (string & {});
+export type AccountPlanType = "FREE" | "PAID";
 export const AccountPlanType = /*@__PURE__*/ S.String;
 
-export type AccountPlanStatus =
-  | "NOT_STARTED"
-  | "ACTIVE"
-  | "EXPIRED"
-  | (string & {});
+export type AccountPlanStatus = "NOT_STARTED" | "ACTIVE" | "EXPIRED";
 export const AccountPlanStatus = /*@__PURE__*/ S.String;
 
 export interface GetAccountPlanStateResponse {
@@ -283,8 +277,7 @@ export type Dimension =
   | "REGION"
   | "FREE_TIER_TYPE"
   | "DESCRIPTION"
-  | "USAGE_PERCENTAGE"
-  | (string & {});
+  | "USAGE_PERCENTAGE";
 export const Dimension = /*@__PURE__*/ S.String;
 
 export type Value = string;
@@ -295,14 +288,13 @@ export type MatchOption =
   | "STARTS_WITH"
   | "ENDS_WITH"
   | "CONTAINS"
-  | "GREATER_THAN_OR_EQUAL"
-  | (string & {});
+  | "GREATER_THAN_OR_EQUAL";
 export const MatchOption = /*@__PURE__*/ S.String;
 
-export type MatchOptions = MatchOption[];
+export type MatchOptions = (MatchOption | (string & {}))[];
 export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
-  Key: Dimension;
+  Key: Dimension | (string & {});
   Values: string[];
   MatchOptions: MatchOption[];
 }
@@ -388,13 +380,13 @@ export const GetFreeTierUsageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFreeTierUsageResponse",
 }) as any as S.Schema<GetFreeTierUsageResponse>;
-export type FilterActivityStatuses = ActivityStatus[];
+export type FilterActivityStatuses = (ActivityStatus | (string & {}))[];
 export const FilterActivityStatuses = /*@__PURE__*/ S.Array(ActivityStatus);
 export interface ListAccountActivitiesRequest {
   filterActivityStatuses?: ActivityStatus[];
   nextToken?: string;
   maxResults?: number;
-  languageCode?: LanguageCode;
+  languageCode?: LanguageCode | (string & {});
 }
 export const ListAccountActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -436,7 +428,7 @@ export const ListAccountActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountActivitiesResponse",
 }) as any as S.Schema<ListAccountActivitiesResponse>;
 export interface UpgradeAccountPlanRequest {
-  accountPlanType: AccountPlanType;
+  accountPlanType: AccountPlanType | (string & {});
 }
 export const UpgradeAccountPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountPlanType: AccountPlanType }).pipe(

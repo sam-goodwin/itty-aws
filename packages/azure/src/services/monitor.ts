@@ -259,11 +259,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -311,11 +311,7 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** Type of managed service identity. */
-export type IdentityInputType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "None"
-  | (string & {});
+export type IdentityInputType = "SystemAssigned" | "UserAssigned" | "None";
 export const IdentityInputType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties. */
@@ -338,7 +334,7 @@ export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
 /** Identity for the resource. */
 export interface IdentityInput {
   /** Type of managed service identity. */
-  type: IdentityInputType;
+  type: IdentityInputType | (string & {});
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
@@ -363,19 +359,12 @@ export const ScheduledQueryRulesCreateOrUpdateRequestTagsMap =
 export type ScheduledQueryRulesCreateOrUpdateRequestKind =
   | "LogAlert"
   | "SimpleLogAlert"
-  | "LogToMetric"
-  | (string & {});
+  | "LogToMetric";
 export const ScheduledQueryRulesCreateOrUpdateRequestKind =
   /*@__PURE__*/ S.String;
 
 /** Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert. */
-export type ScheduledQueryRulePropertiesInputSeverity =
-  | 0
-  | 1
-  | 2
-  | 3
-  | 4
-  | (number & {});
+export type ScheduledQueryRulePropertiesInputSeverity = 0 | 1 | 2 | 3 | 4;
 export const ScheduledQueryRulePropertiesInputSeverity = /*@__PURE__*/ S.Number;
 
 /** The list of resource id's that this scheduled query rule is scoped to. */
@@ -396,8 +385,7 @@ export const ScheduledQueryRulePropertiesInputTargetResourceTypesList =
 /** Specifies the type of threshold criteria */
 export type ConditionCriterionType =
   | "StaticThresholdCriterion"
-  | "DynamicThresholdCriterion"
-  | (string & {});
+  | "DynamicThresholdCriterion";
 export const ConditionCriterionType = /*@__PURE__*/ S.String;
 
 /** Aggregation type. Relevant and required only for rules of the kind LogAlert. */
@@ -406,12 +394,11 @@ export type ConditionTimeAggregation =
   | "Average"
   | "Minimum"
   | "Maximum"
-  | "Total"
-  | (string & {});
+  | "Total";
 export const ConditionTimeAggregation = /*@__PURE__*/ S.String;
 
 /** Operator for dimension values */
-export type DimensionOperator = "Include" | "Exclude" | (string & {});
+export type DimensionOperator = "Include" | "Exclude";
 export const DimensionOperator = /*@__PURE__*/ S.String;
 
 /** List of dimension values */
@@ -450,8 +437,7 @@ export type ConditionOperator =
   | "GreaterThanOrEqual"
   | "LessThan"
   | "LessThanOrEqual"
-  | "GreaterOrLessThan"
-  | (string & {});
+  | "GreaterOrLessThan";
 export const ConditionOperator = /*@__PURE__*/ S.String;
 
 /** The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert. */
@@ -596,7 +582,7 @@ export interface ScheduledQueryRulePropertiesInput {
   /** The display name of the alert rule */
   displayName?: string;
   /** Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert. */
-  severity?: ScheduledQueryRulePropertiesInputSeverity;
+  severity?: ScheduledQueryRulePropertiesInputSeverity | (number & {});
   /** The flag which indicates whether this scheduled query rule is enabled. Value should be true or false */
   enabled?: boolean;
   /** The list of resource id's that this scheduled query rule is scoped to. */
@@ -663,7 +649,7 @@ export interface ScheduledQueryRulesCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** Indicates the type of scheduled query rule. The default is LogAlert. */
-  kind?: ScheduledQueryRulesCreateOrUpdateRequestKind;
+  kind?: ScheduledQueryRulesCreateOrUpdateRequestKind | (string & {});
   /** The rule properties of the resource. */
   properties: ScheduledQueryRulePropertiesInput;
 }
@@ -691,11 +677,7 @@ export const ScheduledQueryRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScheduledQueryRulesCreateOrUpdateRequest>;
 
 /** Type of managed service identity. */
-export type IdentityType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "None"
-  | (string & {});
+export type IdentityType = "SystemAssigned" | "UserAssigned" | "None";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties. */
@@ -756,8 +738,7 @@ export const ScheduledQueryRuleResourceTagsMap = /*@__PURE__*/ S.Record(
 export type ScheduledQueryRuleResourceKind =
   | "LogAlert"
   | "SimpleLogAlert"
-  | "LogToMetric"
-  | (string & {});
+  | "LogToMetric";
 export const ScheduledQueryRuleResourceKind = /*@__PURE__*/ S.String;
 
 /** The type of identity that created the resource. */
@@ -765,8 +746,7 @@ export type ScheduledQueryRuleResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ScheduledQueryRuleResourceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -775,8 +755,7 @@ export type ScheduledQueryRuleResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ScheduledQueryRuleResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -814,13 +793,7 @@ export const ScheduledQueryRuleResourceSystemData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScheduledQueryRuleResourceSystemData>;
 
 /** Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert. */
-export type ScheduledQueryRulePropertiesSeverity =
-  | 0
-  | 1
-  | 2
-  | 3
-  | 4
-  | (number & {});
+export type ScheduledQueryRulePropertiesSeverity = 0 | 1 | 2 | 3 | 4;
 export const ScheduledQueryRulePropertiesSeverity = /*@__PURE__*/ S.Number;
 
 /** The list of resource id's that this scheduled query rule is scoped to. */

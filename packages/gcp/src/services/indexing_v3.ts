@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface GetMetadataUrlNotificationsRequest {
@@ -65,24 +65,12 @@ export interface GetMetadataUrlNotificationsRequest {
   url?: string;
 }
 export const GetMetadataUrlNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v3/urlNotifications/metadata",
-      baseUrl: "https://indexing.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetMetadataUrlNotificationsRequest",
-}) as any as S.Schema<GetMetadataUrlNotificationsRequest>;
+S.Struct({
+  "url": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v3/urlNotifications/metadata","baseUrl":"https://indexing.googleapis.com/"})),
+).annotate({ identifier: "GetMetadataUrlNotificationsRequest" }) as any as S.Schema<GetMetadataUrlNotificationsRequest>;
 
-export type UrlNotificationTypeEnum =
-  | "URL_NOTIFICATION_TYPE_UNSPECIFIED"
-  | "URL_UPDATED"
-  | "URL_DELETED"
-  | (string & {});
+export type UrlNotificationTypeEnum = "URL_NOTIFICATION_TYPE_UNSPECIFIED" | "URL_UPDATED" | "URL_DELETED";
 export const UrlNotificationTypeEnum = /*@__PURE__*/ S.String;
 
 /** `UrlNotification` is the resource used in all Indexing API calls. It describes one event in the life cycle of a Web Document. */
@@ -95,14 +83,12 @@ export interface UrlNotification {
   type?: UrlNotificationTypeEnum;
 }
 export const UrlNotification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    notifyTime: S.optional(S.String),
-    type: S.optional(UrlNotificationTypeEnum),
-  }),
-).annotate({
-  identifier: "UrlNotification",
-}) as any as S.Schema<UrlNotification>;
+S.Struct({
+  "url": S.optional(S.String),
+  "notifyTime": S.optional(S.String),
+  "type": S.optional(UrlNotificationTypeEnum),
+}),
+).annotate({ identifier: "UrlNotification" }) as any as S.Schema<UrlNotification>;
 
 /** Summary of the most recent Indexing API notifications successfully received, for a given URL. */
 export interface UrlNotificationMetadata {
@@ -114,32 +100,22 @@ export interface UrlNotificationMetadata {
   latestUpdate?: UrlNotification;
 }
 export const UrlNotificationMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    latestRemove: S.optional(UrlNotification),
-    latestUpdate: S.optional(UrlNotification),
-  }),
-).annotate({
-  identifier: "UrlNotificationMetadata",
-}) as any as S.Schema<UrlNotificationMetadata>;
+S.Struct({
+  "url": S.optional(S.String),
+  "latestRemove": S.optional(UrlNotification),
+  "latestUpdate": S.optional(UrlNotification),
+}),
+).annotate({ identifier: "UrlNotificationMetadata" }) as any as S.Schema<UrlNotificationMetadata>;
 
 export interface PublishUrlNotificationsRequest {
   /** Request body */
   body?: UrlNotification;
 }
 export const PublishUrlNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(UrlNotification.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v3/urlNotifications:publish",
-      baseUrl: "https://indexing.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PublishUrlNotificationsRequest",
-}) as any as S.Schema<PublishUrlNotificationsRequest>;
+S.Struct({
+  "body": S.optional(UrlNotification.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v3/urlNotifications:publish","baseUrl":"https://indexing.googleapis.com/"})),
+).annotate({ identifier: "PublishUrlNotificationsRequest" }) as any as S.Schema<PublishUrlNotificationsRequest>;
 
 /** Output for PublishUrlNotification */
 export interface PublishUrlNotificationResponse {
@@ -147,17 +123,12 @@ export interface PublishUrlNotificationResponse {
   urlNotificationMetadata?: UrlNotificationMetadata;
 }
 export const PublishUrlNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    urlNotificationMetadata: S.optional(UrlNotificationMetadata),
-  }),
-).annotate({
-  identifier: "PublishUrlNotificationResponse",
-}) as any as S.Schema<PublishUrlNotificationResponse>;
+S.Struct({
+  "urlNotificationMetadata": S.optional(UrlNotificationMetadata),
+}),
+).annotate({ identifier: "PublishUrlNotificationResponse" }) as any as S.Schema<PublishUrlNotificationResponse>;
 
-export type GetMetadataUrlNotificationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetMetadataUrlNotificationsError = NotFound | Forbidden | GcpOpError;
 /** Gets metadata about a Web Document. This method can _only_ be used to query URLs that were previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API. */
 export const getMetadataUrlNotifications: API.OperationMethod<
   GetMetadataUrlNotificationsRequest,
@@ -172,12 +143,7 @@ export const getMetadataUrlNotifications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishUrlNotificationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PublishUrlNotificationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Notifies that a URL has been updated or deleted. */
 export const publishUrlNotifications: API.OperationMethod<
   PublishUrlNotificationsRequest,
@@ -191,3 +157,4 @@ export const publishUrlNotifications: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

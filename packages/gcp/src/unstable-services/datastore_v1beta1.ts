@@ -13,63 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces (either or both of which may be all, as described in the following examples). Example usage: Entire project: kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[], namespace_ids=['Baz'] */
 export interface GoogleDatastoreAdminV1beta1EntityFilter {
@@ -78,15 +73,12 @@ export interface GoogleDatastoreAdminV1beta1EntityFilter {
   /** If empty, then this represents all kinds. */
   kinds?: StringList;
 }
-export const GoogleDatastoreAdminV1beta1EntityFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespaceIds: S.optional(StringList),
-      kinds: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "GoogleDatastoreAdminV1beta1EntityFilter",
-}) as any as S.Schema<GoogleDatastoreAdminV1beta1EntityFilter>;
+export const GoogleDatastoreAdminV1beta1EntityFilter = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "namespaceIds": S.optional(StringList),
+  "kinds": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleDatastoreAdminV1beta1EntityFilter" }) as any as S.Schema<GoogleDatastoreAdminV1beta1EntityFilter>;
 
 /** The request for google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities. */
 export interface GoogleDatastoreAdminV1beta1ExportEntitiesRequest {
@@ -97,16 +89,13 @@ export interface GoogleDatastoreAdminV1beta1ExportEntitiesRequest {
   /** Location for the export metadata and data files. The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So output_url_prefix should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations). The resulting files will be nested deeper than the specified URL prefix. The final output URL will be provided in the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field. That value should be used for subsequent ImportEntities operations. By nesting the data files deeper, the same Cloud Storage bucket can be used in multiple ExportEntities operations without conflict. */
   outputUrlPrefix?: string;
 }
-export const GoogleDatastoreAdminV1beta1ExportEntitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      labels: S.optional(StringMap),
-      entityFilter: S.optional(GoogleDatastoreAdminV1beta1EntityFilter),
-      outputUrlPrefix: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDatastoreAdminV1beta1ExportEntitiesRequest",
-  }) as any as S.Schema<GoogleDatastoreAdminV1beta1ExportEntitiesRequest>;
+export const GoogleDatastoreAdminV1beta1ExportEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "labels": S.optional(StringMap),
+  "entityFilter": S.optional(GoogleDatastoreAdminV1beta1EntityFilter),
+  "outputUrlPrefix": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleDatastoreAdminV1beta1ExportEntitiesRequest" }) as any as S.Schema<GoogleDatastoreAdminV1beta1ExportEntitiesRequest>;
 
 export interface ExportProjectsRequest {
   /** Project ID against which to make the request. */
@@ -115,32 +104,17 @@ export interface ExportProjectsRequest {
   body?: GoogleDatastoreAdminV1beta1ExportEntitiesRequest;
 }
 export const ExportProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleDatastoreAdminV1beta1ExportEntitiesRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/projects/{projectId}:export",
-      baseUrl: "https://datastore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ExportProjectsRequest",
-}) as any as S.Schema<ExportProjectsRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleDatastoreAdminV1beta1ExportEntitiesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}:export","baseUrl":"https://datastore.googleapis.com/"})),
+).annotate({ identifier: "ExportProjectsRequest" }) as any as S.Schema<ExportProjectsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -152,11 +126,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -173,16 +147,14 @@ export interface GoogleLongrunningOperation {
   metadata?: DocumentMap;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-    response: S.optional(DocumentMap),
-    error: S.optional(Status),
-    metadata: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "GoogleLongrunningOperation",
-}) as any as S.Schema<GoogleLongrunningOperation>;
+S.Struct({
+  "name": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+  "response": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "metadata": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "GoogleLongrunningOperation" }) as any as S.Schema<GoogleLongrunningOperation>;
 
 /** The request for google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities. */
 export interface GoogleDatastoreAdminV1beta1ImportEntitiesRequest {
@@ -193,16 +165,13 @@ export interface GoogleDatastoreAdminV1beta1ImportEntitiesRequest {
   /** Optionally specify which kinds/namespaces are to be imported. If provided, the list must be a subset of the EntityFilter used in creating the export, otherwise a FAILED_PRECONDITION error will be returned. If no filter is specified then all entities from the export are imported. */
   entityFilter?: GoogleDatastoreAdminV1beta1EntityFilter;
 }
-export const GoogleDatastoreAdminV1beta1ImportEntitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      inputUrl: S.optional(S.String),
-      labels: S.optional(StringMap),
-      entityFilter: S.optional(GoogleDatastoreAdminV1beta1EntityFilter),
-    }),
-  ).annotate({
-    identifier: "GoogleDatastoreAdminV1beta1ImportEntitiesRequest",
-  }) as any as S.Schema<GoogleDatastoreAdminV1beta1ImportEntitiesRequest>;
+export const GoogleDatastoreAdminV1beta1ImportEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "inputUrl": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "entityFilter": S.optional(GoogleDatastoreAdminV1beta1EntityFilter),
+}),
+).annotate({ identifier: "GoogleDatastoreAdminV1beta1ImportEntitiesRequest" }) as any as S.Schema<GoogleDatastoreAdminV1beta1ImportEntitiesRequest>;
 
 export interface ImportProjectsRequest {
   /** Project ID against which to make the request. */
@@ -211,28 +180,13 @@ export interface ImportProjectsRequest {
   body?: GoogleDatastoreAdminV1beta1ImportEntitiesRequest;
 }
 export const ImportProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleDatastoreAdminV1beta1ImportEntitiesRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/projects/{projectId}:import",
-      baseUrl: "https://datastore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ImportProjectsRequest",
-}) as any as S.Schema<ImportProjectsRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleDatastoreAdminV1beta1ImportEntitiesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}:import","baseUrl":"https://datastore.googleapis.com/"})),
+).annotate({ identifier: "ImportProjectsRequest" }) as any as S.Schema<ImportProjectsRequest>;
 
-export type ExportProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExportProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. Recent updates to entities may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. */
 export const exportProjects: API.OperationMethod<
   ExportProjectsRequest,
@@ -247,12 +201,7 @@ export const exportProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportEntities operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Datastore. */
 export const importProjects: API.OperationMethod<
   ImportProjectsRequest,
@@ -266,3 +215,4 @@ export const importProjects: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

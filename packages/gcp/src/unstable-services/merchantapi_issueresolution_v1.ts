@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface ListAccountsAggregateProductStatusesRequest {
@@ -70,62 +70,22 @@ export interface ListAccountsAggregateProductStatusesRequest {
   /** Required. The account to list aggregate product statuses for. Format: `accounts/{account}` Can only be sub-accounts and standalone accounts. */
   parent: string;
 }
-export const ListAccountsAggregateProductStatusesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "issueresolution/v1/{+parent}/aggregateProductStatuses",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAccountsAggregateProductStatusesRequest",
-  }) as any as S.Schema<ListAccountsAggregateProductStatusesRequest>;
+export const ListAccountsAggregateProductStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"issueresolution/v1/{+parent}/aggregateProductStatuses","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsAggregateProductStatusesRequest" }) as any as S.Schema<ListAccountsAggregateProductStatusesRequest>;
 
-export type AggregateProductStatusReportingContextEnum =
-  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISCOVERY_ADS"
-  | "DEMAND_GEN_ADS"
-  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-  | "VIDEO_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "VEHICLE_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LISTINGS_UCP_CHECKOUT"
-  | "FREE_LOCAL_LISTINGS"
-  | "FREE_LOCAL_VEHICLE_LISTINGS"
-  | "YOUTUBE_AFFILIATE"
-  | "YOUTUBE_SHOPPING"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | "PRODUCT_REVIEWS"
-  | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
-export const AggregateProductStatusReportingContextEnum =
-  /*@__PURE__*/ S.String;
+export type AggregateProductStatusReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
+export const AggregateProductStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
-export type ItemLevelIssueSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "NOT_IMPACTED"
-  | "DEMOTED"
-  | "DISAPPROVED"
-  | (string & {});
+export type ItemLevelIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "NOT_IMPACTED" | "DEMOTED" | "DISAPPROVED";
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
-export type ItemLevelIssueResolutionEnum =
-  | "RESOLUTION_UNSPECIFIED"
-  | "MERCHANT_ACTION"
-  | "PENDING_PROCESSING"
-  | (string & {});
+export type ItemLevelIssueResolutionEnum = "RESOLUTION_UNSPECIFIED" | "MERCHANT_ACTION" | "PENDING_PROCESSING";
 export const ItemLevelIssueResolutionEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product status. */
@@ -148,22 +108,20 @@ export interface ItemLevelIssue {
   resolution?: ItemLevelIssueResolutionEnum;
 }
 export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    attribute: S.optional(S.String),
-    documentationUri: S.optional(S.String),
-    severity: S.optional(ItemLevelIssueSeverityEnum),
-    productCount: S.optional(S.String),
-    description: S.optional(S.String),
-    detail: S.optional(S.String),
-    resolution: S.optional(ItemLevelIssueResolutionEnum),
-  }),
+S.Struct({
+  "code": S.optional(S.String),
+  "attribute": S.optional(S.String),
+  "documentationUri": S.optional(S.String),
+  "severity": S.optional(ItemLevelIssueSeverityEnum),
+  "productCount": S.optional(S.String),
+  "description": S.optional(S.String),
+  "detail": S.optional(S.String),
+  "resolution": S.optional(ItemLevelIssueResolutionEnum),
+}),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
 export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
-export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
-  ItemLevelIssue,
-) as any as S.Schema<ItemLevelIssueList>;
+export const ItemLevelIssueList = /*@__PURE__*/ S.Array(ItemLevelIssue) as any as S.Schema<ItemLevelIssueList>;
 
 /** Products statistics. */
 export interface Stats {
@@ -177,12 +135,12 @@ export interface Stats {
   expiringCount?: string;
 }
 export const Stats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activeCount: S.optional(S.String),
-    disapprovedCount: S.optional(S.String),
-    pendingCount: S.optional(S.String),
-    expiringCount: S.optional(S.String),
-  }),
+S.Struct({
+  "activeCount": S.optional(S.String),
+  "disapprovedCount": S.optional(S.String),
+  "pendingCount": S.optional(S.String),
+  "expiringCount": S.optional(S.String),
+}),
 ).annotate({ identifier: "Stats" }) as any as S.Schema<Stats>;
 
 /** Aggregate product statuses for a given reporting context and country. */
@@ -199,21 +157,17 @@ export interface AggregateProductStatus {
   stats?: Stats;
 }
 export const AggregateProductStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    reportingContext: S.optional(AggregateProductStatusReportingContextEnum),
-    itemLevelIssues: S.optional(ItemLevelIssueList),
-    country: S.optional(S.String),
-    stats: S.optional(Stats),
-  }),
-).annotate({
-  identifier: "AggregateProductStatus",
-}) as any as S.Schema<AggregateProductStatus>;
+S.Struct({
+  "name": S.optional(S.String),
+  "reportingContext": S.optional(AggregateProductStatusReportingContextEnum),
+  "itemLevelIssues": S.optional(ItemLevelIssueList),
+  "country": S.optional(S.String),
+  "stats": S.optional(Stats),
+}),
+).annotate({ identifier: "AggregateProductStatus" }) as any as S.Schema<AggregateProductStatus>;
 
 export type AggregateProductStatusList = ReadonlyArray<AggregateProductStatus>;
-export const AggregateProductStatusList = /*@__PURE__*/ S.Array(
-  AggregateProductStatus,
-) as any as S.Schema<AggregateProductStatusList>;
+export const AggregateProductStatusList = /*@__PURE__*/ S.Array(AggregateProductStatus) as any as S.Schema<AggregateProductStatusList>;
 
 /** Response message for the `ListAggregateProductStatuses` method. */
 export interface ListAggregateProductStatusesResponse {
@@ -222,48 +176,32 @@ export interface ListAggregateProductStatusesResponse {
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListAggregateProductStatusesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      aggregateProductStatuses: S.optional(AggregateProductStatusList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListAggregateProductStatusesResponse",
-}) as any as S.Schema<ListAggregateProductStatusesResponse>;
+export const ListAggregateProductStatusesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "aggregateProductStatuses": S.optional(AggregateProductStatusList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAggregateProductStatusesResponse" }) as any as S.Schema<ListAggregateProductStatusesResponse>;
 
-export type RenderIssuesRequestPayloadContentOptionEnum =
-  | "CONTENT_OPTION_UNSPECIFIED"
-  | "PRE_RENDERED_HTML"
-  | (string & {});
-export const RenderIssuesRequestPayloadContentOptionEnum =
-  /*@__PURE__*/ S.String;
+export type RenderIssuesRequestPayloadContentOptionEnum = "CONTENT_OPTION_UNSPECIFIED" | "PRE_RENDERED_HTML";
+export const RenderIssuesRequestPayloadContentOptionEnum = /*@__PURE__*/ S.String;
 
-export type RenderIssuesRequestPayloadUserInputActionOptionEnum =
-  | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
-  | "REDIRECT_TO_MERCHANT_CENTER"
-  | "BUILT_IN_USER_INPUT_ACTIONS"
-  | (string & {});
-export const RenderIssuesRequestPayloadUserInputActionOptionEnum =
-  /*@__PURE__*/ S.String;
+export type RenderIssuesRequestPayloadUserInputActionOptionEnum = "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED" | "REDIRECT_TO_MERCHANT_CENTER" | "BUILT_IN_USER_INPUT_ACTIONS";
+export const RenderIssuesRequestPayloadUserInputActionOptionEnum = /*@__PURE__*/ S.String;
 
 /** The payload for configuring how the content should be rendered. */
 export interface RenderIssuesRequestPayload {
   /** Optional. How the detailed content should be returned. Default option is to return the content as a pre-rendered HTML text. */
-  contentOption?: RenderIssuesRequestPayloadContentOptionEnum;
+  contentOption?: RenderIssuesRequestPayloadContentOptionEnum | (string & {});
   /** Optional. How actions with user input form should be handled. If not provided, actions will be returned as links that points the business to Merchant Center where they can request the action. */
-  userInputActionOption?: RenderIssuesRequestPayloadUserInputActionOptionEnum;
+  userInputActionOption?: RenderIssuesRequestPayloadUserInputActionOptionEnum | (string & {});
 }
 export const RenderIssuesRequestPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentOption: S.optional(RenderIssuesRequestPayloadContentOptionEnum),
-    userInputActionOption: S.optional(
-      RenderIssuesRequestPayloadUserInputActionOptionEnum,
-    ),
-  }),
-).annotate({
-  identifier: "RenderIssuesRequestPayload",
-}) as any as S.Schema<RenderIssuesRequestPayload>;
+S.Struct({
+  "contentOption": S.optional(RenderIssuesRequestPayloadContentOptionEnum),
+  "userInputActionOption": S.optional(RenderIssuesRequestPayloadUserInputActionOptionEnum),
+}),
+).annotate({ identifier: "RenderIssuesRequestPayload" }) as any as S.Schema<RenderIssuesRequestPayload>;
 
 export interface RenderaccountissuesIssueresolutionRequest {
   /** Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in an issue resolution content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC. */
@@ -275,23 +213,14 @@ export interface RenderaccountissuesIssueresolutionRequest {
   /** Request body */
   body?: RenderIssuesRequestPayload;
 }
-export const RenderaccountissuesIssueresolutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timeZone: S.optional(S.String.pipe(T.Query())),
-      languageCode: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RenderIssuesRequestPayload.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "issueresolution/v1/{+name}:renderaccountissues",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RenderaccountissuesIssueresolutionRequest",
-  }) as any as S.Schema<RenderaccountissuesIssueresolutionRequest>;
+export const RenderaccountissuesIssueresolutionRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "timeZone": S.optional(S.String.pipe(T.Query())),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RenderIssuesRequestPayload.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"issueresolution/v1/{+name}:renderaccountissues","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "RenderaccountissuesIssueresolutionRequest" }) as any as S.Schema<RenderaccountissuesIssueresolutionRequest>;
 
 /** Region with code and localized name. */
 export interface Region {
@@ -301,21 +230,17 @@ export interface Region {
   name?: string;
 }
 export const Region = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "code": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
 export type RegionList = ReadonlyArray<Region>;
-export const RegionList = /*@__PURE__*/ S.Array(
-  Region,
-) as any as S.Schema<RegionList>;
+export const RegionList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A detailed impact breakdown for a group of regions where the impact of the issue on different shopping destinations is the same. */
 export interface Breakdown {
@@ -325,23 +250,16 @@ export interface Breakdown {
   details?: StringList;
 }
 export const Breakdown = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(RegionList),
-    details: S.optional(StringList),
-  }),
+S.Struct({
+  "regions": S.optional(RegionList),
+  "details": S.optional(StringList),
+}),
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
 export type BreakdownList = ReadonlyArray<Breakdown>;
-export const BreakdownList = /*@__PURE__*/ S.Array(
-  Breakdown,
-) as any as S.Schema<BreakdownList>;
+export const BreakdownList = /*@__PURE__*/ S.Array(Breakdown) as any as S.Schema<BreakdownList>;
 
-export type ImpactSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "ERROR"
-  | "WARNING"
-  | "INFO"
-  | (string & {});
+export type ImpactSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
 export const ImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Overall impact of the issue. */
@@ -354,25 +272,14 @@ export interface Impact {
   severity?: ImpactSeverityEnum;
 }
 export const Impact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    breakdowns: S.optional(BreakdownList),
-    message: S.optional(S.String),
-    severity: S.optional(ImpactSeverityEnum),
-  }),
+S.Struct({
+  "breakdowns": S.optional(BreakdownList),
+  "message": S.optional(S.String),
+  "severity": S.optional(ImpactSeverityEnum),
+}),
 ).annotate({ identifier: "Impact" }) as any as S.Schema<Impact>;
 
-export type BuiltInSimpleActionTypeEnum =
-  | "BUILT_IN_SIMPLE_ACTION_TYPE_UNSPECIFIED"
-  | "VERIFY_PHONE"
-  | "CLAIM_WEBSITE"
-  | "ADD_PRODUCTS"
-  | "ADD_CONTACT_INFO"
-  | "LINK_ADS_ACCOUNT"
-  | "ADD_BUSINESS_REGISTRATION_NUMBER"
-  | "EDIT_ITEM_ATTRIBUTE"
-  | "FIX_ACCOUNT_ISSUE"
-  | "SHOW_ADDITIONAL_CONTENT"
-  | (string & {});
+export type BuiltInSimpleActionTypeEnum = "BUILT_IN_SIMPLE_ACTION_TYPE_UNSPECIFIED" | "VERIFY_PHONE" | "CLAIM_WEBSITE" | "ADD_PRODUCTS" | "ADD_CONTACT_INFO" | "LINK_ADS_ACCOUNT" | "ADD_BUSINESS_REGISTRATION_NUMBER" | "EDIT_ITEM_ATTRIBUTE" | "FIX_ACCOUNT_ISSUE" | "SHOW_ADDITIONAL_CONTENT";
 export const BuiltInSimpleActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Long text from external source. */
@@ -383,13 +290,11 @@ export interface AdditionalContent {
   paragraphs?: StringList;
 }
 export const AdditionalContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    paragraphs: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "AdditionalContent",
-}) as any as S.Schema<AdditionalContent>;
+S.Struct({
+  "title": S.optional(S.String),
+  "paragraphs": S.optional(StringList),
+}),
+).annotate({ identifier: "AdditionalContent" }) as any as S.Schema<AdditionalContent>;
 
 /** Action that is implemented and performed in (your) third-party application. Represents various functionality that is expected to be available to business and will help them with resolving the issue. The application should point the business to the place, where they can access the corresponding functionality. If the functionality is not supported, it is recommended to explain the situation to the business and provide them with instructions how to solve the issue. */
 export interface BuiltInSimpleAction {
@@ -401,14 +306,12 @@ export interface BuiltInSimpleAction {
   additionalContent?: AdditionalContent;
 }
 export const BuiltInSimpleAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(BuiltInSimpleActionTypeEnum),
-    attributeCode: S.optional(S.String),
-    additionalContent: S.optional(AdditionalContent),
-  }),
-).annotate({
-  identifier: "BuiltInSimpleAction",
-}) as any as S.Schema<BuiltInSimpleAction>;
+S.Struct({
+  "type": S.optional(BuiltInSimpleActionTypeEnum),
+  "attributeCode": S.optional(S.String),
+  "additionalContent": S.optional(AdditionalContent),
+}),
+).annotate({ identifier: "BuiltInSimpleAction" }) as any as S.Schema<BuiltInSimpleAction>;
 
 /** A single reason why the action is not available. */
 export interface Reason {
@@ -420,23 +323,17 @@ export interface Reason {
   message?: string;
 }
 export const Reason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detail: S.optional(S.String),
-    action: S.optional(S.suspend(() => Action)),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "detail": S.optional(S.String),
+  "action": S.optional(S.suspend(() => Action)),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Reason" }) as any as S.Schema<Reason>;
 
 export type ReasonList = ReadonlyArray<Reason>;
-export const ReasonList = /*@__PURE__*/ S.Array(
-  Reason,
-) as any as S.Schema<ReasonList>;
+export const ReasonList = /*@__PURE__*/ S.Array(Reason) as any as S.Schema<ReasonList>;
 
-export type TextWithTooltipTooltipIconStyleEnum =
-  | "TOOLTIP_ICON_STYLE_UNSPECIFIED"
-  | "INFO"
-  | "QUESTION"
-  | (string & {});
+export type TextWithTooltipTooltipIconStyleEnum = "TOOLTIP_ICON_STYLE_UNSPECIFIED" | "INFO" | "QUESTION";
 export const TextWithTooltipTooltipIconStyleEnum = /*@__PURE__*/ S.String;
 
 /** Block of text that may contain a tooltip with more information. */
@@ -449,21 +346,14 @@ export interface TextWithTooltip {
   simpleTooltipValue?: string;
 }
 export const TextWithTooltip = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tooltipIconStyle: S.optional(TextWithTooltipTooltipIconStyleEnum),
-    simpleValue: S.optional(S.String),
-    simpleTooltipValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TextWithTooltip",
-}) as any as S.Schema<TextWithTooltip>;
+S.Struct({
+  "tooltipIconStyle": S.optional(TextWithTooltipTooltipIconStyleEnum),
+  "simpleValue": S.optional(S.String),
+  "simpleTooltipValue": S.optional(S.String),
+}),
+).annotate({ identifier: "TextWithTooltip" }) as any as S.Schema<TextWithTooltip>;
 
-export type CalloutStyleHintEnum =
-  | "CALLOUT_STYLE_HINT_UNSPECIFIED"
-  | "ERROR"
-  | "WARNING"
-  | "INFO"
-  | (string & {});
+export type CalloutStyleHintEnum = "CALLOUT_STYLE_HINT_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
 export const CalloutStyleHintEnum = /*@__PURE__*/ S.String;
 
 /** An important message that should be highlighted. Usually displayed as a banner. */
@@ -474,17 +364,13 @@ export interface Callout {
   styleHint?: CalloutStyleHintEnum;
 }
 export const Callout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fullMessage: S.optional(TextWithTooltip),
-    styleHint: S.optional(CalloutStyleHintEnum),
-  }),
+S.Struct({
+  "fullMessage": S.optional(TextWithTooltip),
+  "styleHint": S.optional(CalloutStyleHintEnum),
+}),
 ).annotate({ identifier: "Callout" }) as any as S.Schema<Callout>;
 
-export type TextInputTypeEnum =
-  | "TEXT_INPUT_TYPE_UNSPECIFIED"
-  | "GENERIC_SHORT_TEXT"
-  | "GENERIC_LONG_TEXT"
-  | (string & {});
+export type TextInputTypeEnum = "TEXT_INPUT_TYPE_UNSPECIFIED" | "GENERIC_SHORT_TEXT" | "GENERIC_LONG_TEXT";
 export const TextInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Text input allows the business to provide a text value. */
@@ -499,12 +385,12 @@ export interface TextInput {
   formatInfo?: string;
 }
 export const TextInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(TextInputTypeEnum),
-    additionalInfo: S.optional(TextWithTooltip),
-    ariaLabel: S.optional(S.String),
-    formatInfo: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(TextInputTypeEnum),
+  "additionalInfo": S.optional(TextWithTooltip),
+  "ariaLabel": S.optional(S.String),
+  "formatInfo": S.optional(S.String),
+}),
 ).annotate({ identifier: "TextInput" }) as any as S.Schema<TextInput>;
 
 /** A choice that the business can select. */
@@ -517,19 +403,15 @@ export interface ChoiceInputOption {
   label?: TextWithTooltip;
 }
 export const ChoiceInputOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalInput: S.optional(S.suspend(() => InputField)),
-    id: S.optional(S.String),
-    label: S.optional(TextWithTooltip),
-  }),
-).annotate({
-  identifier: "ChoiceInputOption",
-}) as any as S.Schema<ChoiceInputOption>;
+S.Struct({
+  "additionalInput": S.optional(S.suspend(() => InputField)),
+  "id": S.optional(S.String),
+  "label": S.optional(TextWithTooltip),
+}),
+).annotate({ identifier: "ChoiceInputOption" }) as any as S.Schema<ChoiceInputOption>;
 
 export type ChoiceInputOptionList = ReadonlyArray<ChoiceInputOption>;
-export const ChoiceInputOptionList = /*@__PURE__*/ S.Array(
-  ChoiceInputOption,
-) as any as S.Schema<ChoiceInputOptionList>;
+export const ChoiceInputOptionList = /*@__PURE__*/ S.Array(ChoiceInputOption) as any as S.Schema<ChoiceInputOptionList>;
 
 /** Choice input allows the business to select one of the offered choices. Some choices may be linked to additional input fields that should be displayed under or next to the choice option. The value for the additional input field needs to be provided only when the specific choice is selected by the the business. For example, additional input field can be hidden or disabled until the business selects the specific choice. */
 export interface ChoiceInput {
@@ -537,15 +419,15 @@ export interface ChoiceInput {
   options?: ChoiceInputOptionList;
 }
 export const ChoiceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(ChoiceInputOptionList),
-  }),
+S.Struct({
+  "options": S.optional(ChoiceInputOptionList),
+}),
 ).annotate({ identifier: "ChoiceInput" }) as any as S.Schema<ChoiceInput>;
 
 /** Checkbox input allows the business to provide a boolean value. Corresponds to the [html input type=checkbox](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox). If the business checks the box, the input value for the field is `true`, otherwise it is `false`. This type of input is often used as a confirmation that the business completed required steps before they are allowed to start the action. In such a case, the input field is marked as required and the button to trigger the action should stay disabled until the business checks the box. */
 export interface CheckboxInput {}
 export const CheckboxInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+S.Struct({}),
 ).annotate({ identifier: "CheckboxInput" }) as any as S.Schema<CheckboxInput>;
 
 /** Input field that needs to be available to the business. If the field is marked as required, then a value needs to be provided for a successful processing of the request. */
@@ -564,20 +446,18 @@ export interface InputField {
   checkboxInput?: CheckboxInput;
 }
 export const InputField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(TextWithTooltip),
-    textInput: S.optional(TextInput),
-    choiceInput: S.optional(ChoiceInput),
-    id: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    checkboxInput: S.optional(CheckboxInput),
-  }),
+S.Struct({
+  "label": S.optional(TextWithTooltip),
+  "textInput": S.optional(TextInput),
+  "choiceInput": S.optional(ChoiceInput),
+  "id": S.optional(S.String),
+  "required": S.optional(S.Boolean),
+  "checkboxInput": S.optional(CheckboxInput),
+}),
 ).annotate({ identifier: "InputField" }) as any as S.Schema<InputField>;
 
 export type InputFieldList = ReadonlyArray<InputField>;
-export const InputFieldList = /*@__PURE__*/ S.Array(
-  InputField,
-) as any as S.Schema<InputFieldList>;
+export const InputFieldList = /*@__PURE__*/ S.Array(InputField) as any as S.Schema<InputFieldList>;
 
 /** Flow that can be selected for an action. When a business selects a flow, application should open a dialog with more information and input form. */
 export interface ActionFlow {
@@ -597,21 +477,19 @@ export interface ActionFlow {
   inputs?: InputFieldList;
 }
 export const ActionFlow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.String),
-    dialogTitle: S.optional(S.String),
-    dialogCallout: S.optional(Callout),
-    dialogMessage: S.optional(TextWithTooltip),
-    dialogButtonLabel: S.optional(S.String),
-    id: S.optional(S.String),
-    inputs: S.optional(InputFieldList),
-  }),
+S.Struct({
+  "label": S.optional(S.String),
+  "dialogTitle": S.optional(S.String),
+  "dialogCallout": S.optional(Callout),
+  "dialogMessage": S.optional(TextWithTooltip),
+  "dialogButtonLabel": S.optional(S.String),
+  "id": S.optional(S.String),
+  "inputs": S.optional(InputFieldList),
+}),
 ).annotate({ identifier: "ActionFlow" }) as any as S.Schema<ActionFlow>;
 
 export type ActionFlowList = ReadonlyArray<ActionFlow>;
-export const ActionFlowList = /*@__PURE__*/ S.Array(
-  ActionFlow,
-) as any as S.Schema<ActionFlowList>;
+export const ActionFlowList = /*@__PURE__*/ S.Array(ActionFlow) as any as S.Schema<ActionFlowList>;
 
 /** Action that is implemented and performed in (your) third-party application. The application needs to show an additional content and input form to the business. They can start the action only when they provided all required inputs. The application will request processing of the action by calling the [triggeraction method](https://developers.google.com/merchant/api/reference/rest/issueresolution_v1/issueresolution/triggeraction). */
 export interface BuiltInUserInputAction {
@@ -621,22 +499,13 @@ export interface BuiltInUserInputAction {
   flows?: ActionFlowList;
 }
 export const BuiltInUserInputAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionContext: S.optional(S.String),
-    flows: S.optional(ActionFlowList),
-  }),
-).annotate({
-  identifier: "BuiltInUserInputAction",
-}) as any as S.Schema<BuiltInUserInputAction>;
+S.Struct({
+  "actionContext": S.optional(S.String),
+  "flows": S.optional(ActionFlowList),
+}),
+).annotate({ identifier: "BuiltInUserInputAction" }) as any as S.Schema<BuiltInUserInputAction>;
 
-export type ExternalActionTypeEnum =
-  | "EXTERNAL_ACTION_TYPE_UNSPECIFIED"
-  | "REVIEW_PRODUCT_ISSUE_IN_MERCHANT_CENTER"
-  | "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER"
-  | "LEGAL_APPEAL_IN_HELP_CENTER"
-  | "VERIFY_IDENTITY_IN_MERCHANT_CENTER"
-  | "VERIFY_BUSINESS_VIDEO_IN_MERCHANT_CENTER"
-  | (string & {});
+export type ExternalActionTypeEnum = "EXTERNAL_ACTION_TYPE_UNSPECIFIED" | "REVIEW_PRODUCT_ISSUE_IN_MERCHANT_CENTER" | "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER" | "LEGAL_APPEAL_IN_HELP_CENTER" | "VERIFY_IDENTITY_IN_MERCHANT_CENTER" | "VERIFY_BUSINESS_VIDEO_IN_MERCHANT_CENTER";
 export const ExternalActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Action that is implemented and performed outside of the third-party application. It should redirect the business to the provided URL of an external system where they can perform the action. For example to request a review in the Merchant Center. */
@@ -647,10 +516,10 @@ export interface ExternalAction {
   uri?: string;
 }
 export const ExternalAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ExternalActionTypeEnum),
-    uri: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(ExternalActionTypeEnum),
+  "uri": S.optional(S.String),
+}),
 ).annotate({ identifier: "ExternalAction" }) as any as S.Schema<ExternalAction>;
 
 /** An actionable step that can be executed to solve the issue. */
@@ -669,20 +538,18 @@ export interface Action {
   externalAction?: ExternalAction;
 }
 export const Action = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    builtinSimpleAction: S.optional(BuiltInSimpleAction),
-    buttonLabel: S.optional(S.String),
-    isAvailable: S.optional(S.Boolean),
-    reasons: S.optional(ReasonList),
-    builtinUserInputAction: S.optional(BuiltInUserInputAction),
-    externalAction: S.optional(ExternalAction),
-  }),
+S.Struct({
+  "builtinSimpleAction": S.optional(BuiltInSimpleAction),
+  "buttonLabel": S.optional(S.String),
+  "isAvailable": S.optional(S.Boolean),
+  "reasons": S.optional(ReasonList),
+  "builtinUserInputAction": S.optional(BuiltInUserInputAction),
+  "externalAction": S.optional(ExternalAction),
+}),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
 export type ActionList = ReadonlyArray<Action>;
-export const ActionList = /*@__PURE__*/ S.Array(
-  Action,
-) as any as S.Schema<ActionList>;
+export const ActionList = /*@__PURE__*/ S.Array(Action) as any as S.Schema<ActionList>;
 
 /** An issue affecting specific business or their product. */
 export interface RenderedIssue {
@@ -698,19 +565,17 @@ export interface RenderedIssue {
   title?: string;
 }
 export const RenderedIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    impact: S.optional(Impact),
-    prerenderedContent: S.optional(S.String),
-    actions: S.optional(ActionList),
-    prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
+S.Struct({
+  "impact": S.optional(Impact),
+  "prerenderedContent": S.optional(S.String),
+  "actions": S.optional(ActionList),
+  "prerenderedOutOfCourtDisputeSettlement": S.optional(S.String),
+  "title": S.optional(S.String),
+}),
 ).annotate({ identifier: "RenderedIssue" }) as any as S.Schema<RenderedIssue>;
 
 export type RenderedIssueList = ReadonlyArray<RenderedIssue>;
-export const RenderedIssueList = /*@__PURE__*/ S.Array(
-  RenderedIssue,
-) as any as S.Schema<RenderedIssueList>;
+export const RenderedIssueList = /*@__PURE__*/ S.Array(RenderedIssue) as any as S.Schema<RenderedIssueList>;
 
 /** Response containing an issue resolution content and actions for listed account issues. */
 export interface RenderAccountIssuesResponse {
@@ -718,12 +583,10 @@ export interface RenderAccountIssuesResponse {
   renderedIssues?: RenderedIssueList;
 }
 export const RenderAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    renderedIssues: S.optional(RenderedIssueList),
-  }),
-).annotate({
-  identifier: "RenderAccountIssuesResponse",
-}) as any as S.Schema<RenderAccountIssuesResponse>;
+S.Struct({
+  "renderedIssues": S.optional(RenderedIssueList),
+}),
+).annotate({ identifier: "RenderAccountIssuesResponse" }) as any as S.Schema<RenderAccountIssuesResponse>;
 
 export interface RenderproductissuesIssueresolutionRequest {
   /** Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in an issue resolution content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC. */
@@ -735,23 +598,14 @@ export interface RenderproductissuesIssueresolutionRequest {
   /** Request body */
   body?: RenderIssuesRequestPayload;
 }
-export const RenderproductissuesIssueresolutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timeZone: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      languageCode: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RenderIssuesRequestPayload.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "issueresolution/v1/{+name}:renderproductissues",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RenderproductissuesIssueresolutionRequest",
-  }) as any as S.Schema<RenderproductissuesIssueresolutionRequest>;
+export const RenderproductissuesIssueresolutionRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "timeZone": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(RenderIssuesRequestPayload.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"issueresolution/v1/{+name}:renderproductissues","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "RenderproductissuesIssueresolutionRequest" }) as any as S.Schema<RenderproductissuesIssueresolutionRequest>;
 
 /** Response containing an issue resolution content and actions for listed product issues. */
 export interface RenderProductIssuesResponse {
@@ -759,12 +613,10 @@ export interface RenderProductIssuesResponse {
   renderedIssues?: RenderedIssueList;
 }
 export const RenderProductIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    renderedIssues: S.optional(RenderedIssueList),
-  }),
-).annotate({
-  identifier: "RenderProductIssuesResponse",
-}) as any as S.Schema<RenderProductIssuesResponse>;
+S.Struct({
+  "renderedIssues": S.optional(RenderedIssueList),
+}),
+).annotate({ identifier: "RenderProductIssuesResponse" }) as any as S.Schema<RenderProductIssuesResponse>;
 
 /** Value for text input field. */
 export interface TextInputValue {
@@ -772,9 +624,9 @@ export interface TextInputValue {
   value?: string;
 }
 export const TextInputValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "TextInputValue" }) as any as S.Schema<TextInputValue>;
 
 /** Value for choice input field. */
@@ -783,12 +635,10 @@ export interface ChoiceInputValue {
   choiceInputOptionId?: string;
 }
 export const ChoiceInputValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choiceInputOptionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChoiceInputValue",
-}) as any as S.Schema<ChoiceInputValue>;
+S.Struct({
+  "choiceInputOptionId": S.optional(S.String),
+}),
+).annotate({ identifier: "ChoiceInputValue" }) as any as S.Schema<ChoiceInputValue>;
 
 /** Value for checkbox input field. */
 export interface CheckboxInputValue {
@@ -796,12 +646,10 @@ export interface CheckboxInputValue {
   value?: boolean;
 }
 export const CheckboxInputValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CheckboxInputValue",
-}) as any as S.Schema<CheckboxInputValue>;
+S.Struct({
+  "value": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CheckboxInputValue" }) as any as S.Schema<CheckboxInputValue>;
 
 /** Input provided by the business for input field. */
 export interface InputValue {
@@ -815,18 +663,16 @@ export interface InputValue {
   checkboxInputValue?: CheckboxInputValue;
 }
 export const InputValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textInputValue: S.optional(TextInputValue),
-    inputFieldId: S.optional(S.String),
-    choiceInputValue: S.optional(ChoiceInputValue),
-    checkboxInputValue: S.optional(CheckboxInputValue),
-  }),
+S.Struct({
+  "textInputValue": S.optional(TextInputValue),
+  "inputFieldId": S.optional(S.String),
+  "choiceInputValue": S.optional(ChoiceInputValue),
+  "checkboxInputValue": S.optional(CheckboxInputValue),
+}),
 ).annotate({ identifier: "InputValue" }) as any as S.Schema<InputValue>;
 
 export type InputValueList = ReadonlyArray<InputValue>;
-export const InputValueList = /*@__PURE__*/ S.Array(
-  InputValue,
-) as any as S.Schema<InputValueList>;
+export const InputValueList = /*@__PURE__*/ S.Array(InputValue) as any as S.Schema<InputValueList>;
 
 /** Input provided by the business. */
 export interface ActionInput {
@@ -836,10 +682,10 @@ export interface ActionInput {
   inputValues?: InputValueList;
 }
 export const ActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionFlowId: S.optional(S.String),
-    inputValues: S.optional(InputValueList),
-  }),
+S.Struct({
+  "actionFlowId": S.optional(S.String),
+  "inputValues": S.optional(InputValueList),
+}),
 ).annotate({ identifier: "ActionInput" }) as any as S.Schema<ActionInput>;
 
 /** The payload for the triggered action. */
@@ -850,13 +696,11 @@ export interface TriggerActionPayload {
   actionInput?: ActionInput;
 }
 export const TriggerActionPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionContext: S.optional(S.String),
-    actionInput: S.optional(ActionInput),
-  }),
-).annotate({
-  identifier: "TriggerActionPayload",
-}) as any as S.Schema<TriggerActionPayload>;
+S.Struct({
+  "actionContext": S.optional(S.String),
+  "actionInput": S.optional(ActionInput),
+}),
+).annotate({ identifier: "TriggerActionPayload" }) as any as S.Schema<TriggerActionPayload>;
 
 export interface TriggeractionIssueresolutionRequest {
   /** Required. The business's account that is triggering the action. Format: `accounts/{account}` */
@@ -867,20 +711,12 @@ export interface TriggeractionIssueresolutionRequest {
   body?: TriggerActionPayload;
 }
 export const TriggeractionIssueresolutionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    languageCode: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(TriggerActionPayload.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "issueresolution/v1/{+name}:triggeraction",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "TriggeractionIssueresolutionRequest",
-}) as any as S.Schema<TriggeractionIssueresolutionRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(TriggerActionPayload.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"issueresolution/v1/{+name}:triggeraction","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "TriggeractionIssueresolutionRequest" }) as any as S.Schema<TriggeractionIssueresolutionRequest>;
 
 /** Response informing about the started action. */
 export interface TriggerActionResponse {
@@ -888,17 +724,12 @@ export interface TriggerActionResponse {
   message?: string;
 }
 export const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TriggerActionResponse",
-}) as any as S.Schema<TriggerActionResponse>;
+S.Struct({
+  "message": S.optional(S.String),
+}),
+).annotate({ identifier: "TriggerActionResponse" }) as any as S.Schema<TriggerActionResponse>;
 
-export type ListAccountsAggregateProductStatusesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsAggregateProductStatusesError = NotFound | Forbidden | GcpOpError;
 /** Lists the `AggregateProductStatuses` resources for your merchant account. The response might contain fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be used to obtain additional results. This method can only be accessed by standalone accounts and sub-accounts of an advanced account. To retrieve product statuses for sub-accounts, you must first call the accounts.listSubaccounts method to obtain a list of sub-accounts, and then call `accounts.aggregateProductStatuses.list` for each sub-account individually. */
 export const listAccountsAggregateProductStatuses: API.PaginatedOperationMethod<
   ListAccountsAggregateProductStatusesRequest,
@@ -911,18 +742,10 @@ export const listAccountsAggregateProductStatuses: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type RenderaccountissuesIssueresolutionError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RenderaccountissuesIssueresolutionError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Provide a list of business's account issues with an issue resolution content and available actions. This content and actions are meant to be rendered and shown in third-party applications. */
 export const renderaccountissuesIssueresolution: API.OperationMethod<
   RenderaccountissuesIssueresolutionRequest,
@@ -937,12 +760,7 @@ export const renderaccountissuesIssueresolution: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RenderproductissuesIssueresolutionError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RenderproductissuesIssueresolutionError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Provide a list of issues for business's product with an issue resolution content and available actions. This content and actions are meant to be rendered and shown in third-party applications. */
 export const renderproductissuesIssueresolution: API.OperationMethod<
   RenderproductissuesIssueresolutionRequest,
@@ -957,12 +775,7 @@ export const renderproductissuesIssueresolution: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TriggeractionIssueresolutionError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TriggeractionIssueresolutionError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Start an action. The action can be requested by a business in third-party application. Before the business can request the action, the third-party application needs to show them action specific content and display a user input form. Access to the `triggeraction` method is restricted to an allowlist. You can submit an allowlist request in the [Shopping API Support Form](https://support.google.com/merchants/contact/shopping_api_support_form) under "What is the issue/question?" to get access to this feature. The action can be successfully started only once all `required` inputs are provided. If any `required` input is missing, or invalid value was provided, the service will return 400 error. Validation errors will contain Ids for all problematic field together with translated, human readable error messages that can be shown to the user. */
 export const triggeractionIssueresolution: API.OperationMethod<
   TriggeractionIssueresolutionRequest,
@@ -976,3 +789,4 @@ export const triggeractionIssueresolution: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

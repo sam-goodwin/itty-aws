@@ -21,7 +21,7 @@ export const AkriConnectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AkriConnectorPropertiesInput>;
 
 /** The enum defining type of ExtendedLocation accepted. */
-export type ExtendedLocationType = "CustomLocation" | (string & {});
+export type ExtendedLocationType = "CustomLocation";
 export const ExtendedLocationType = /*@__PURE__*/ S.String;
 
 /** Extended location is an extension of Azure locations. They provide a way to use their Azure ARC enabled Kubernetes clusters as target locations for deploying Azure services instances. */
@@ -82,8 +82,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -91,8 +90,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -129,8 +127,7 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** AkriConnector allocated device. */
@@ -162,8 +159,7 @@ export type ResourceHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const ResourceHealthState = /*@__PURE__*/ S.String;
 
 /** Represents the health state of a resource. */
@@ -209,8 +205,7 @@ export type AkriConnectorPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const AkriConnectorPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** AkriConnector properties. */
@@ -455,8 +450,7 @@ export const AkriConnectorTemplateAioMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Runtime configuration types. */
 export type AkriConnectorTemplateRuntimeConfigurationType =
-  | "ManagedConfiguration"
-  | (string & {});
+  "ManagedConfiguration";
 export const AkriConnectorTemplateRuntimeConfigurationType =
   /*@__PURE__*/ S.String;
 
@@ -529,9 +523,7 @@ export const AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList 
   ) as any as S.Schema<AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList>;
 
 /** AkriConnectorsMqttAuthenticationMethod properties. */
-export type AkriConnectorsMqttAuthenticationMethod =
-  | "ServiceAccountToken"
-  | (string & {});
+export type AkriConnectorsMqttAuthenticationMethod = "ServiceAccountToken";
 export const AkriConnectorsMqttAuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** AkriConnectorsMqttAuthentication properties. */
@@ -548,11 +540,11 @@ export const AkriConnectorsMqttAuthentication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AkriConnectorsMqttAuthentication>;
 
 /** Mqtt protocol types. */
-export type AkriConnectorsMqttProtocolType = "Mqtt" | (string & {});
+export type AkriConnectorsMqttProtocolType = "Mqtt";
 export const AkriConnectorsMqttProtocolType = /*@__PURE__*/ S.String;
 
 /** Mode for TLS. */
-export type TlsPropertiesMode = "Enabled" | "Disabled" | (string & {});
+export type TlsPropertiesMode = "Enabled" | "Disabled";
 export const TlsPropertiesMode = /*@__PURE__*/ S.String;
 
 /** Tls properties */
@@ -681,8 +673,7 @@ export type AkriConnectorTemplatePropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const AkriConnectorTemplatePropertiesHealthState =
   /*@__PURE__*/ S.String;
 
@@ -1189,8 +1180,7 @@ export const AkriServiceResourceListResult = /*@__PURE__*/ S.suspend(() =>
 export type BrokerAuthenticationMethod =
   | "Custom"
   | "ServiceAccountToken"
-  | "X509"
-  | (string & {});
+  | "X509";
 export const BrokerAuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** X509 Certificate Authentication properties. */
@@ -1309,8 +1299,7 @@ export const BrokerAuthenticatorMethodX509AuthorizationAttributesMap =
 /** X509 authentication validation methods. */
 export type BrokerAuthenticatorValidationMethods =
   | "None"
-  | "AzureDeviceRegistry"
-  | (string & {});
+  | "AzureDeviceRegistry";
 export const BrokerAuthenticatorValidationMethods = /*@__PURE__*/ S.String;
 
 /** X509 for BrokerAuthentication. */
@@ -1429,8 +1418,7 @@ export type BrokerAuthenticationPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const BrokerAuthenticationPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** BrokerAuthentication Resource properties */
@@ -1660,15 +1648,14 @@ export const BrokerAuthenticationResourceListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BrokerAuthenticationResourceListResult>;
 
 /** Enable caching of the authorization rules. */
-export type AuthorizationConfigCache = "Enabled" | "Disabled" | (string & {});
+export type AuthorizationConfigCache = "Enabled" | "Disabled";
 export const AuthorizationConfigCache = /*@__PURE__*/ S.String;
 
 /** BrokerResourceDefinitionMethods methods allowed */
 export type BrokerResourceDefinitionMethods =
   | "Connect"
   | "Publish"
-  | "Subscribe"
-  | (string & {});
+  | "Subscribe";
 export const BrokerResourceDefinitionMethods = /*@__PURE__*/ S.String;
 
 /** A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect. */
@@ -1756,11 +1743,7 @@ export const PrincipalDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrincipalDefinition>;
 
 /** StateStoreResourceKeyTypes properties */
-export type StateStoreResourceKeyTypes =
-  | "Pattern"
-  | "String"
-  | "Binary"
-  | (string & {});
+export type StateStoreResourceKeyTypes = "Pattern" | "String" | "Binary";
 export const StateStoreResourceKeyTypes = /*@__PURE__*/ S.String;
 
 /** Give access to state store keys for the corresponding principals defined. When key type is pattern set glob-style pattern (e.g., '*', 'clients/*'). */
@@ -1773,8 +1756,7 @@ export const StateStoreResourceRuleKeysList = /*@__PURE__*/ S.Array(
 export type StateStoreResourceDefinitionMethods =
   | "Read"
   | "Write"
-  | "ReadWrite"
-  | (string & {});
+  | "ReadWrite";
 export const StateStoreResourceDefinitionMethods = /*@__PURE__*/ S.String;
 
 /** State Store Resource Rule properties. */
@@ -1900,8 +1882,7 @@ export type BrokerAuthorizationPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const BrokerAuthorizationPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** BrokerAuthorization Resource properties */
@@ -2130,10 +2111,7 @@ export const BrokerAuthorizationResourceListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BrokerAuthorizationResourceListResult>;
 
 /** The strategy to use for dropping messages from the queue. */
-export type SubscriberQueueLimitStrategy =
-  | "None"
-  | "DropOldest"
-  | (string & {});
+export type SubscriberQueueLimitStrategy = "None" | "DropOldest";
 export const SubscriberQueueLimitStrategy = /*@__PURE__*/ S.String;
 
 /** The settings of Subscriber Queue Limit. */
@@ -2179,10 +2157,7 @@ export const ClientConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientConfig" }) as any as S.Schema<ClientConfig>;
 
 /** The setting to enable or disable encryption of internal Traffic. */
-export type AdvancedSettingsEncryptInternalTraffic =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type AdvancedSettingsEncryptInternalTraffic = "Enabled" | "Disabled";
 export const AdvancedSettingsEncryptInternalTraffic = /*@__PURE__*/ S.String;
 
 /** Private key algorithm types. */
@@ -2193,12 +2168,11 @@ export type PrivateKeyAlgorithm =
   | "Ed25519"
   | "Rsa2048"
   | "Rsa4096"
-  | "Rsa8192"
-  | (string & {});
+  | "Rsa8192";
 export const PrivateKeyAlgorithm = /*@__PURE__*/ S.String;
 
 /** Private key rotation policy. */
-export type PrivateKeyRotationPolicy = "Always" | "Never" | (string & {});
+export type PrivateKeyRotationPolicy = "Always" | "Never";
 export const PrivateKeyRotationPolicy = /*@__PURE__*/ S.String;
 
 /** Cert Manager private key properties */
@@ -2325,7 +2299,7 @@ export const Metrics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
 
 /** The toggle to enable/disable self check. */
-export type SelfCheckMode = "Enabled" | "Disabled" | (string & {});
+export type SelfCheckMode = "Enabled" | "Disabled";
 export const SelfCheckMode = /*@__PURE__*/ S.String;
 
 /** Broker Diagnostic Self check properties */
@@ -2346,11 +2320,11 @@ export const SelfCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SelfCheck" }) as any as S.Schema<SelfCheck>;
 
 /** The toggle to enable/disable traces. */
-export type TracesMode = "Enabled" | "Disabled" | (string & {});
+export type TracesMode = "Enabled" | "Disabled";
 export const TracesMode = /*@__PURE__*/ S.String;
 
 /** The toggle to enable/disable self tracing. */
-export type SelfTracingMode = "Enabled" | "Disabled" | (string & {});
+export type SelfTracingMode = "Enabled" | "Disabled";
 export const SelfTracingMode = /*@__PURE__*/ S.String;
 
 /** Diagnostic Self tracing properties */
@@ -2516,12 +2490,7 @@ export const VolumeClaimResourceRequirements = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeClaimResourceRequirements>;
 
 /** Valid operators are In, NotIn, Exists and DoesNotExist. */
-export type OperatorValues =
-  | "In"
-  | "NotIn"
-  | "Exists"
-  | "DoesNotExist"
-  | (string & {});
+export type OperatorValues = "In" | "NotIn" | "Exists" | "DoesNotExist";
 export const OperatorValues = /*@__PURE__*/ S.String;
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
@@ -2639,7 +2608,7 @@ export const DiskBackedMessageBuffer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskBackedMessageBuffer>;
 
 /** The toggle to enable/disable cpu resource limits. */
-export type GenerateResourceLimitsCpu = "Enabled" | "Disabled" | (string & {});
+export type GenerateResourceLimitsCpu = "Enabled" | "Disabled";
 export const GenerateResourceLimitsCpu = /*@__PURE__*/ S.String;
 
 /** GenerateResourceLimits properties */
@@ -2656,10 +2625,7 @@ export const GenerateResourceLimits = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateResourceLimits>;
 
 /** Handling of high-priority messages during backpressure state. */
-export type HighPriorityMessagesBackpressureHandling =
-  | "Accept"
-  | "Reject"
-  | (string & {});
+export type HighPriorityMessagesBackpressureHandling = "Accept" | "Reject";
 export const HighPriorityMessagesBackpressureHandling = /*@__PURE__*/ S.String;
 
 /** Memory profile of Broker. */
@@ -2667,16 +2633,11 @@ export type BrokerPropertiesInputMemoryProfile =
   | "Tiny"
   | "Low"
   | "Medium"
-  | "High"
-  | (string & {});
+  | "High";
 export const BrokerPropertiesInputMemoryProfile = /*@__PURE__*/ S.String;
 
 /** Broker Persistence Policy Mode values. */
-export type BrokerPersistencePolicyMode =
-  | "All"
-  | "None"
-  | "Custom"
-  | (string & {});
+export type BrokerPersistencePolicyMode = "All" | "None" | "Custom";
 export const BrokerPersistencePolicyMode = /*@__PURE__*/ S.String;
 
 /** Broker Retain policy properties. */
@@ -2719,7 +2680,7 @@ export const BrokerSubscriberQueuePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerSubscriberQueuePolicy>;
 
 /** Mode properties */
-export type OperationalMode = "Enabled" | "Disabled" | (string & {});
+export type OperationalMode = "Enabled" | "Disabled";
 export const OperationalMode = /*@__PURE__*/ S.String;
 
 /** Broker Persistence Encryption properties. */
@@ -2776,9 +2737,11 @@ export interface BrokerPropertiesInput {
   /** This setting controls whether Kubernetes CPU resource limits are requested. Increasing the number of replicas or workers proportionally increases the amount of CPU resources requested. If this setting is enabled and there are insufficient CPU resources, an error will be emitted. */
   generateResourceLimits?: GenerateResourceLimits;
   /** Handling of high-priority messages in the event that regular-priority messages are being backpressured. When set to "Accept", the broker continues to accept high-priority messages even while regular-priority messages are rejected due to backpressure. When set to "Reject", backpressure also affects high-priority messages. Defaults to "Accept". */
-  highPriorityMessagesBackpressureHandling?: HighPriorityMessagesBackpressureHandling;
+  highPriorityMessagesBackpressureHandling?:
+    | HighPriorityMessagesBackpressureHandling
+    | (string & {});
   /** Memory profile of Broker. */
-  memoryProfile?: BrokerPropertiesInputMemoryProfile;
+  memoryProfile?: BrokerPropertiesInputMemoryProfile | (string & {});
   /** The persistence settings of the Broker. */
   persistence?: BrokerPersistence;
 }
@@ -2834,12 +2797,7 @@ export const BrokerCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerCreateOrUpdateRequest>;
 
 /** Memory profile of Broker. */
-export type BrokerPropertiesMemoryProfile =
-  | "Tiny"
-  | "Low"
-  | "Medium"
-  | "High"
-  | (string & {});
+export type BrokerPropertiesMemoryProfile = "Tiny" | "Low" | "Medium" | "High";
 export const BrokerPropertiesMemoryProfile = /*@__PURE__*/ S.String;
 
 /** BrokerStatus status. */
@@ -2858,8 +2816,7 @@ export type BrokerPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const BrokerPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** Broker Resource properties */
@@ -3098,15 +3055,15 @@ export const BrokerResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerResourceListResult>;
 
 /** Protocol to use for client connections. */
-export type ListenerPortProtocol = "Mqtt" | "WebSockets" | (string & {});
+export type ListenerPortProtocol = "Mqtt" | "WebSockets";
 export const ListenerPortProtocol = /*@__PURE__*/ S.String;
 
 /** Broker Authentication Mode */
-export type TlsCertMethodMode = "Automatic" | "Manual" | (string & {});
+export type TlsCertMethodMode = "Automatic" | "Manual";
 export const TlsCertMethodMode = /*@__PURE__*/ S.String;
 
 /** CertManagerIssuerKind properties */
-export type CertManagerIssuerKind = "Issuer" | "ClusterIssuer" | (string & {});
+export type CertManagerIssuerKind = "Issuer" | "ClusterIssuer";
 export const CertManagerIssuerKind = /*@__PURE__*/ S.String;
 
 /** Cert-Manager issuerRef properties */
@@ -3236,8 +3193,7 @@ export const BrokerListenerPropertiesInputPortsList = /*@__PURE__*/ S.Array(
 export type BrokerListenerPropertiesInputServiceType =
   | "ClusterIp"
   | "LoadBalancer"
-  | "NodePort"
-  | (string & {});
+  | "NodePort";
 export const BrokerListenerPropertiesInputServiceType = /*@__PURE__*/ S.String;
 
 /** Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients. */
@@ -3247,7 +3203,7 @@ export interface BrokerListenerPropertiesInput {
   /** Ports on which this listener accepts client connections. */
   ports: BrokerListenerPropertiesInputPortsList;
   /** Kubernetes Service type of this listener. */
-  serviceType?: BrokerListenerPropertiesInputServiceType;
+  serviceType?: BrokerListenerPropertiesInputServiceType | (string & {});
 }
 export const BrokerListenerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3306,8 +3262,7 @@ export const BrokerListenerPropertiesPortsList = /*@__PURE__*/ S.Array(
 export type BrokerListenerPropertiesServiceType =
   | "ClusterIp"
   | "LoadBalancer"
-  | "NodePort"
-  | (string & {});
+  | "NodePort";
 export const BrokerListenerPropertiesServiceType = /*@__PURE__*/ S.String;
 
 /** The health state of the resource. */
@@ -3315,8 +3270,7 @@ export type BrokerListenerPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const BrokerListenerPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients. */
@@ -3549,24 +3503,15 @@ export const BrokerListenerResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerListenerResourceListResult>;
 
 /** Mode for Dataflow. Optional; defaults to Enabled. */
-export type DataflowPropertiesInputMode =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DataflowPropertiesInputMode = "Enabled" | "Disabled";
 export const DataflowPropertiesInputMode = /*@__PURE__*/ S.String;
 
 /** Dataflow Operation Type properties */
-export type OperationType =
-  | "Source"
-  | "Destination"
-  | "BuiltInTransformation"
-  | (string & {});
+export type OperationType = "Source" | "Destination" | "BuiltInTransformation";
 export const OperationType = /*@__PURE__*/ S.String;
 
 /** Content is a JSON Schema. Allowed: JSON Schema/draft-7. */
-export type DataflowSourceOperationSettingsSerializationFormat =
-  | "Json"
-  | (string & {});
+export type DataflowSourceOperationSettingsSerializationFormat = "Json";
 export const DataflowSourceOperationSettingsSerializationFormat =
   /*@__PURE__*/ S.String;
 
@@ -3609,8 +3554,7 @@ export const DataflowSourceOperationSettings = /*@__PURE__*/ S.suspend(() =>
 export type DataflowBuiltInTransformationSettingsSerializationFormat =
   | "Delta"
   | "Json"
-  | "Parquet"
-  | (string & {});
+  | "Parquet";
 export const DataflowBuiltInTransformationSettingsSerializationFormat =
   /*@__PURE__*/ S.String;
 
@@ -3657,7 +3601,7 @@ export const DataflowBuiltInTransformationSettingsDatasetsList =
   ) as any as S.Schema<DataflowBuiltInTransformationSettingsDatasetsList>;
 
 /** The type of dataflow operation. */
-export type DataflowBuiltInTransformationFilterType = "Filter" | (string & {});
+export type DataflowBuiltInTransformationFilterType = "Filter";
 export const DataflowBuiltInTransformationFilterType = /*@__PURE__*/ S.String;
 
 /** List of fields for filtering in JSON path expression. */
@@ -3704,8 +3648,7 @@ export type DataflowMappingType =
   | "Rename"
   | "Compute"
   | "PassThrough"
-  | "BuiltInFunction"
-  | (string & {});
+  | "BuiltInFunction";
 export const DataflowMappingType = /*@__PURE__*/ S.String;
 
 /** List of fields for mapping in JSON path expression. */
@@ -3779,8 +3722,7 @@ export const DataflowBuiltInTransformationSettings = /*@__PURE__*/ S.suspend(
 export type DataflowHeaderActionType =
   | "AddIfNotPresent"
   | "Remove"
-  | "AddOrReplace"
-  | (string & {});
+  | "AddOrReplace";
 export const DataflowHeaderActionType = /*@__PURE__*/ S.String;
 
 /** Dataflow Destination Header Action properties */
@@ -3861,9 +3803,9 @@ export const DataflowPropertiesInputOperationsList = /*@__PURE__*/ S.Array(
 /** Dataflow Resource properties */
 export interface DataflowPropertiesInput {
   /** Mode for Dataflow. Optional; defaults to Enabled. */
-  mode?: DataflowPropertiesInputMode;
+  mode?: DataflowPropertiesInputMode | (string & {});
   /** Disk persistence mode. */
-  requestDiskPersistence?: OperationalMode;
+  requestDiskPersistence?: OperationalMode | (string & {});
   /** List of operations including source and destination references as well as transformation. */
   operations: DataflowPropertiesInputOperationsList;
 }
@@ -3915,7 +3857,7 @@ export const DataflowCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowCreateOrUpdateRequest>;
 
 /** Mode for Dataflow. Optional; defaults to Enabled. */
-export type DataflowPropertiesMode = "Enabled" | "Disabled" | (string & {});
+export type DataflowPropertiesMode = "Enabled" | "Disabled";
 export const DataflowPropertiesMode = /*@__PURE__*/ S.String;
 
 /** List of operations including source and destination references as well as transformation. */
@@ -3940,8 +3882,7 @@ export type DataflowPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const DataflowPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** Dataflow Resource properties */
@@ -4045,8 +3986,7 @@ export type EndpointType =
   | "Kafka"
   | "LocalStorage"
   | "Mqtt"
-  | "OpenTelemetry"
-  | (string & {});
+  | "OpenTelemetry";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Host Type properties */
@@ -4056,15 +3996,13 @@ export type DataflowEndpointHostType =
   | "LocalBroker"
   | "Eventhub"
   | "CustomMqtt"
-  | "CustomKafka"
-  | (string & {});
+  | "CustomKafka";
 export const DataflowEndpointHostType = /*@__PURE__*/ S.String;
 
 /** Managed Identity Method */
 export type ManagedIdentityMethod =
   | "SystemAssignedManagedIdentity"
-  | "UserAssignedManagedIdentity"
-  | (string & {});
+  | "UserAssignedManagedIdentity";
 export const ManagedIdentityMethod = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Authentication SystemAssignedManagedIdentity properties */
@@ -4167,8 +4105,7 @@ export const DataflowEndpointDataExplorer = /*@__PURE__*/ S.suspend(() =>
 export type DataLakeStorageAuthMethod =
   | "SystemAssignedManagedIdentity"
   | "UserAssignedManagedIdentity"
-  | "AccessToken"
-  | (string & {});
+  | "AccessToken";
 export const DataLakeStorageAuthMethod = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Authentication Access Token properties */
@@ -4274,7 +4211,7 @@ export const DataflowEndpointFabricOneLakeNames = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowEndpointFabricOneLakeNames>;
 
 /** DataflowEndpoint Fabric Path Type properties */
-export type DataflowEndpointFabricPathType = "Files" | "Tables" | (string & {});
+export type DataflowEndpointFabricPathType = "Files" | "Tables";
 export const DataflowEndpointFabricPathType = /*@__PURE__*/ S.String;
 
 /** Microsoft Fabric endpoint properties */
@@ -4308,16 +4245,14 @@ export type KafkaAuthMethod =
   | "UserAssignedManagedIdentity"
   | "Sasl"
   | "X509Certificate"
-  | "Anonymous"
-  | (string & {});
+  | "Anonymous";
 export const KafkaAuthMethod = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Authentication Sasl Type properties */
 export type DataflowEndpointAuthenticationSaslType =
   | "Plain"
   | "ScramSha256"
-  | "ScramSha512"
-  | (string & {});
+  | "ScramSha512";
 export const DataflowEndpointAuthenticationSaslType = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Authentication Sasl properties */
@@ -4379,10 +4314,7 @@ export const DataflowEndpointKafkaAuthentication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowEndpointKafkaAuthentication>;
 
 /** Mode for batching. */
-export type DataflowEndpointKafkaBatchingMode =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DataflowEndpointKafkaBatchingMode = "Enabled" | "Disabled";
 export const DataflowEndpointKafkaBatchingMode = /*@__PURE__*/ S.String;
 
 /** Kafka endpoint Batching properties */
@@ -4408,10 +4340,7 @@ export const DataflowEndpointKafkaBatching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowEndpointKafkaBatching>;
 
 /** Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source. */
-export type DataflowEndpointKafkaCopyMqttProperties =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DataflowEndpointKafkaCopyMqttProperties = "Enabled" | "Disabled";
 export const DataflowEndpointKafkaCopyMqttProperties = /*@__PURE__*/ S.String;
 
 /** Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source. */
@@ -4419,16 +4348,11 @@ export type DataflowEndpointKafkaCompression =
   | "None"
   | "Gzip"
   | "Snappy"
-  | "Lz4"
-  | (string & {});
+  | "Lz4";
 export const DataflowEndpointKafkaCompression = /*@__PURE__*/ S.String;
 
 /** Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source. */
-export type DataflowEndpointKafkaKafkaAcks =
-  | "Zero"
-  | "One"
-  | "All"
-  | (string & {});
+export type DataflowEndpointKafkaKafkaAcks = "Zero" | "One" | "All";
 export const DataflowEndpointKafkaKafkaAcks = /*@__PURE__*/ S.String;
 
 /** Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source. */
@@ -4436,15 +4360,11 @@ export type DataflowEndpointKafkaPartitionStrategy =
   | "Default"
   | "Static"
   | "Topic"
-  | "Property"
-  | (string & {});
+  | "Property";
 export const DataflowEndpointKafkaPartitionStrategy = /*@__PURE__*/ S.String;
 
 /** How to map events to the cloud. */
-export type CloudEventAttributeType =
-  | "Propagate"
-  | "CreateOrRemap"
-  | (string & {});
+export type CloudEventAttributeType = "Propagate" | "CreateOrRemap";
 export const CloudEventAttributeType = /*@__PURE__*/ S.String;
 
 /** Kafka endpoint properties */
@@ -4506,8 +4426,7 @@ export type MqttAuthMethod =
   | "UserAssignedManagedIdentity"
   | "ServiceAccountToken"
   | "X509Certificate"
-  | "Anonymous"
-  | (string & {});
+  | "Anonymous";
 export const MqttAuthMethod = /*@__PURE__*/ S.String;
 
 /** Service Account Token for BrokerAuthentication */
@@ -4556,14 +4475,11 @@ export const DataflowEndpointMqttAuthentication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowEndpointMqttAuthentication>;
 
 /** Enable or disable websockets. */
-export type DataflowEndpointMqttProtocol =
-  | "Mqtt"
-  | "WebSockets"
-  | (string & {});
+export type DataflowEndpointMqttProtocol = "Mqtt" | "WebSockets";
 export const DataflowEndpointMqttProtocol = /*@__PURE__*/ S.String;
 
 /** Whether or not to keep the retain setting. */
-export type DataflowEndpointMqttRetain = "Keep" | "Never" | (string & {});
+export type DataflowEndpointMqttRetain = "Keep" | "Never";
 export const DataflowEndpointMqttRetain = /*@__PURE__*/ S.String;
 
 /** Broker endpoint properties */
@@ -4613,8 +4529,7 @@ export const DataflowEndpointMqtt = /*@__PURE__*/ S.suspend(() =>
 export type DataflowOpenTelemetryAuthenticationMethod =
   | "ServiceAccountToken"
   | "X509Certificate"
-  | "Anonymous"
-  | (string & {});
+  | "Anonymous";
 export const DataflowOpenTelemetryAuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** Dataflow OpenTelemetry authentication properties. */
@@ -4655,9 +4570,9 @@ export const DataflowEndpointOpenTelemetry = /*@__PURE__*/ S.suspend(() =>
 /** DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource */
 export interface DataflowEndpointPropertiesInput {
   /** Endpoint Type. */
-  endpointType: EndpointType;
+  endpointType: EndpointType | (string & {});
   /** The type of the Kafka host. E.g FabricRT, EventGrid. */
-  hostType?: DataflowEndpointHostType;
+  hostType?: DataflowEndpointHostType | (string & {});
   /** Azure Data Explorer endpoint. */
   dataExplorerSettings?: DataflowEndpointDataExplorer;
   /** Azure Data Lake endpoint. */
@@ -4729,8 +4644,7 @@ export type DataflowEndpointPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const DataflowEndpointPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource */
@@ -5031,18 +4945,11 @@ export const DataflowGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowGetResponse>;
 
 /** The mode of the dataflow graph. */
-export type DataflowGraphPropertiesInputMode =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DataflowGraphPropertiesInputMode = "Enabled" | "Disabled";
 export const DataflowGraphPropertiesInputMode = /*@__PURE__*/ S.String;
 
 /** DataflowGraph node types. */
-export type DataflowGraphNodeType =
-  | "Source"
-  | "Graph"
-  | "Destination"
-  | (string & {});
+export type DataflowGraphNodeType = "Source" | "Graph" | "Destination";
 export const DataflowGraphNodeType = /*@__PURE__*/ S.String;
 
 /** DataflowGraph node properties. */
@@ -5073,8 +4980,7 @@ export type DataflowGraphConnectionSchemaSerializationFormat =
   | "Delta"
   | "Json"
   | "Parquet"
-  | "Avro"
-  | (string & {});
+  | "Avro";
 export const DataflowGraphConnectionSchemaSerializationFormat =
   /*@__PURE__*/ S.String;
 
@@ -5153,9 +5059,9 @@ export const DataflowGraphPropertiesInputNodeConnectionsList =
 /** DataflowGraph properties. */
 export interface DataflowGraphPropertiesInput {
   /** The mode of the dataflow graph. */
-  mode?: DataflowGraphPropertiesInputMode;
+  mode?: DataflowGraphPropertiesInputMode | (string & {});
   /** Disk persistence mode. */
-  requestDiskPersistence?: OperationalMode;
+  requestDiskPersistence?: OperationalMode | (string & {});
   /** List of nodes in the dataflow graph. */
   nodes: DataflowGraphPropertiesInputNodesList;
   /** List of connections between nodes in the dataflow graph. */
@@ -5210,10 +5116,7 @@ export const DataflowGraphCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowGraphCreateOrUpdateRequest>;
 
 /** The mode of the dataflow graph. */
-export type DataflowGraphPropertiesMode =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DataflowGraphPropertiesMode = "Enabled" | "Disabled";
 export const DataflowGraphPropertiesMode = /*@__PURE__*/ S.String;
 
 /** List of nodes in the dataflow graph. */
@@ -5247,8 +5150,7 @@ export type DataflowGraphPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const DataflowGraphPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** DataflowGraph properties. */
@@ -5650,8 +5552,7 @@ export type DataflowProfilePropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const DataflowProfilePropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** DataflowProfile Resource properties */
@@ -5910,11 +5811,7 @@ export const SecretProviderClassRef = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecretProviderClassRef>;
 
 /** The enum defining mode of a feature. */
-export type InstanceFeatureMode =
-  | "Stable"
-  | "Preview"
-  | "Disabled"
-  | (string & {});
+export type InstanceFeatureMode = "Stable" | "Preview" | "Disabled";
 export const InstanceFeatureMode = /*@__PURE__*/ S.String;
 
 /** The settings of the feature. */
@@ -5994,8 +5891,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -6017,7 +5913,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface InstanceCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const InstanceCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -6093,8 +5989,7 @@ export type InstancePropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const InstancePropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** The properties of the Instance resource. */
@@ -6472,7 +6367,7 @@ export const InstanceUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface InstanceUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const InstanceUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -6617,11 +6512,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -6673,8 +6568,7 @@ export type RegistryEndpointAuthenticationMethod =
   | "SystemAssignedManagedIdentity"
   | "UserAssignedManagedIdentity"
   | "Anonymous"
-  | "ArtifactPullSecret"
-  | (string & {});
+  | "ArtifactPullSecret";
 export const RegistryEndpointAuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** Model for RegistryEndpointAuthentication */
@@ -6691,10 +6585,7 @@ export const RegistryEndpointAuthentication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistryEndpointAuthentication>;
 
 /** RegistryEndpointTrustedSigningKeyType values */
-export type RegistryEndpointTrustedSigningKeyType =
-  | "Secret"
-  | "ConfigMap"
-  | (string & {});
+export type RegistryEndpointTrustedSigningKeyType = "Secret" | "ConfigMap";
 export const RegistryEndpointTrustedSigningKeyType = /*@__PURE__*/ S.String;
 
 /** RegistryEndpoint Trust properties */
@@ -6779,8 +6670,7 @@ export type RegistryEndpointPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const RegistryEndpointPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** The signing certificate authorities used by artifacts in the registry endpoint */

@@ -165,14 +165,11 @@ export const GroupsTypesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsTypesListResponse>;
 
 /** * `numeric` - numeric * `currency` - currency */
-export type GroupUsageMetricFormatEnum = "numeric" | "currency" | (string & {});
+export type GroupUsageMetricFormatEnum = "numeric" | "currency";
 export const GroupUsageMetricFormatEnum = /*@__PURE__*/ S.String;
 
 /** * `number` - number * `sparkline` - sparkline */
-export type GroupUsageMetricDisplayEnum =
-  | "number"
-  | "sparkline"
-  | (string & {});
+export type GroupUsageMetricDisplayEnum = "number" | "sparkline";
 export const GroupUsageMetricDisplayEnum = /*@__PURE__*/ S.String;
 
 /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
@@ -185,7 +182,7 @@ export const GroupsTypesMetricsCreateRequestFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GroupsTypesMetricsCreateRequestFiltersMap>;
 
 /** * `count` - count * `sum` - sum */
-export type MathEnum = "count" | "sum" | (string & {});
+export type MathEnum = "count" | "sum";
 export const MathEnum = /*@__PURE__*/ S.String;
 
 export interface GroupsTypesMetricsCreateRequest {
@@ -195,15 +192,15 @@ export interface GroupsTypesMetricsCreateRequest {
   /** Name of the usage metric. Must be unique per group type within the project. */
   name?: string;
   /** How the metric value is formatted in the UI. One of `numeric` or `currency`. * `numeric` - numeric * `currency` - currency */
-  format?: GroupUsageMetricFormatEnum;
+  format?: GroupUsageMetricFormatEnum | (string & {});
   /** Rolling time window in days used to compute the metric. Defaults to 7. */
   interval?: number;
   /** Visual representation in the UI. One of `number` or `sparkline`. * `number` - number * `sparkline` - sparkline */
-  display?: GroupUsageMetricDisplayEnum;
+  display?: GroupUsageMetricDisplayEnum | (string & {});
   /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
   filters?: GroupsTypesMetricsCreateRequestFiltersMap;
   /** Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events. * `count` - count * `sum` - sum */
-  math?: MathEnum;
+  math?: MathEnum | (string & {});
   /** Required when `math` is `sum`; must be empty when `math` is `count`. For events metrics this is an event property name. For data warehouse metrics this is the column name (or HogQL expression) to sum on the DW table. */
   math_property?: string | null;
 }
@@ -366,15 +363,15 @@ export interface GroupsTypesMetricsPartialUpdateRequest {
   /** Name of the usage metric. Must be unique per group type within the project. */
   name?: string;
   /** How the metric value is formatted in the UI. One of `numeric` or `currency`. * `numeric` - numeric * `currency` - currency */
-  format?: GroupUsageMetricFormatEnum;
+  format?: GroupUsageMetricFormatEnum | (string & {});
   /** Rolling time window in days used to compute the metric. Defaults to 7. */
   interval?: number;
   /** Visual representation in the UI. One of `number` or `sparkline`. * `number` - number * `sparkline` - sparkline */
-  display?: GroupUsageMetricDisplayEnum;
+  display?: GroupUsageMetricDisplayEnum | (string & {});
   /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
   filters?: GroupsTypesMetricsPartialUpdateRequestFiltersMap;
   /** Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events. * `count` - count * `sum` - sum */
-  math?: MathEnum;
+  math?: MathEnum | (string & {});
   /** Required when `math` is `sum`; must be empty when `math` is `count`. For events metrics this is an event property name. For data warehouse metrics this is the column name (or HogQL expression) to sum on the DW table. */
   math_property?: string | null;
 }
@@ -443,15 +440,15 @@ export interface GroupsTypesMetricsUpdateRequest {
   /** Name of the usage metric. Must be unique per group type within the project. */
   name?: string;
   /** How the metric value is formatted in the UI. One of `numeric` or `currency`. * `numeric` - numeric * `currency` - currency */
-  format?: GroupUsageMetricFormatEnum;
+  format?: GroupUsageMetricFormatEnum | (string & {});
   /** Rolling time window in days used to compute the metric. Defaults to 7. */
   interval?: number;
   /** Visual representation in the UI. One of `number` or `sparkline`. * `number` - number * `sparkline` - sparkline */
-  display?: GroupUsageMetricDisplayEnum;
+  display?: GroupUsageMetricDisplayEnum | (string & {});
   /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
   filters?: GroupsTypesMetricsUpdateRequestFiltersMap;
   /** Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events. * `count` - count * `sum` - sum */
-  math?: MathEnum;
+  math?: MathEnum | (string & {});
   /** Required when `math` is `sum`; must be empty when `math` is `count`. For events metrics this is an event property name. For data warehouse metrics this is the column name (or HogQL expression) to sum on the DW table. */
   math_property?: string | null;
 }

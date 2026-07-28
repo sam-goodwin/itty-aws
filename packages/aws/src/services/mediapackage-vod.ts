@@ -303,8 +303,7 @@ export type PresetSpeke20Audio =
   | "PRESET-AUDIO-2"
   | "PRESET-AUDIO-3"
   | "SHARED"
-  | "UNENCRYPTED"
-  | (string & {});
+  | "UNENCRYPTED";
 export const PresetSpeke20Audio = /*@__PURE__*/ S.String;
 
 export type PresetSpeke20Video =
@@ -317,8 +316,7 @@ export type PresetSpeke20Video =
   | "PRESET-VIDEO-7"
   | "PRESET-VIDEO-8"
   | "SHARED"
-  | "UNENCRYPTED"
-  | (string & {});
+  | "UNENCRYPTED";
 export const PresetSpeke20Video = /*@__PURE__*/ S.String;
 
 export interface EncryptionContractConfiguration {
@@ -380,18 +378,13 @@ export const CmafEncryption = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "CmafEncryption" }) as any as S.Schema<CmafEncryption>;
-export type AdMarkers =
-  | "NONE"
-  | "SCTE35_ENHANCED"
-  | "PASSTHROUGH"
-  | (string & {});
+export type AdMarkers = "NONE" | "SCTE35_ENHANCED" | "PASSTHROUGH";
 export const AdMarkers = /*@__PURE__*/ S.String;
 
 export type StreamOrder =
   | "ORIGINAL"
   | "VIDEO_BITRATE_ASCENDING"
-  | "VIDEO_BITRATE_DESCENDING"
-  | (string & {});
+  | "VIDEO_BITRATE_DESCENDING";
 export const StreamOrder = /*@__PURE__*/ S.String;
 
 export interface StreamSelection {
@@ -465,13 +458,13 @@ export const CmafPackage = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "CmafPackage" }) as any as S.Schema<CmafPackage>;
-export type ManifestLayout = "FULL" | "COMPACT" | (string & {});
+export type ManifestLayout = "FULL" | "COMPACT";
 export const ManifestLayout = /*@__PURE__*/ S.String;
 
-export type Profile = "NONE" | "HBBTV_1_5" | (string & {});
+export type Profile = "NONE" | "HBBTV_1_5";
 export const Profile = /*@__PURE__*/ S.String;
 
-export type ScteMarkersSource = "SEGMENTS" | "MANIFEST" | (string & {});
+export type ScteMarkersSource = "SEGMENTS" | "MANIFEST";
 export const ScteMarkersSource = /*@__PURE__*/ S.String;
 
 export interface DashManifest {
@@ -511,7 +504,7 @@ export const DashEncryption = /*@__PURE__*/ S.suspend(() =>
     S.encodeKeys({ SpekeKeyProvider: "spekeKeyProvider" }),
   ),
 ).annotate({ identifier: "DashEncryption" }) as any as S.Schema<DashEncryption>;
-export type __PeriodTriggersElement = "ADS" | (string & {});
+export type __PeriodTriggersElement = "ADS";
 export const __PeriodTriggersElement = /*@__PURE__*/ S.String;
 
 export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
@@ -521,8 +514,7 @@ export const __listOf__PeriodTriggersElement = /*@__PURE__*/ S.Array(
 export type SegmentTemplateFormat =
   | "NUMBER_WITH_TIMELINE"
   | "TIME_WITH_TIMELINE"
-  | "NUMBER_WITH_DURATION"
-  | (string & {});
+  | "NUMBER_WITH_DURATION";
 export const SegmentTemplateFormat = /*@__PURE__*/ S.String;
 
 export interface DashPackage {
@@ -556,7 +548,7 @@ export const DashPackage = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "DashPackage" }) as any as S.Schema<DashPackage>;
-export type EncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
+export type EncryptionMethod = "AES_128" | "SAMPLE_AES";
 export const EncryptionMethod = /*@__PURE__*/ S.String;
 
 export interface HlsEncryption {

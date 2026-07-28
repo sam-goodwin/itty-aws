@@ -199,8 +199,7 @@ export const BatchDeleteAgentsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeleteAgentErrorCode =
   | "NOT_FOUND"
   | "INTERNAL_SERVER_ERROR"
-  | "AGENT_IN_USE"
-  | (string & {});
+  | "AGENT_IN_USE";
 export const DeleteAgentErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchDeleteAgentError {
@@ -257,8 +256,7 @@ export const BatchDeleteImportDataRequest = /*@__PURE__*/ S.suspend(() =>
 export type BatchDeleteImportDataErrorCode =
   | "NOT_FOUND"
   | "INTERNAL_SERVER_ERROR"
-  | "OVER_LIMIT"
-  | (string & {});
+  | "OVER_LIMIT";
 export const BatchDeleteImportDataErrorCode = /*@__PURE__*/ S.String;
 
 export type BatchDeleteImportDataErrorDescription = string;
@@ -480,8 +478,7 @@ export type AgentStatus =
   | "RUNNING"
   | "UNKNOWN"
   | "BLACKLISTED"
-  | "SHUTDOWN"
-  | (string & {});
+  | "SHUTDOWN";
 export const AgentStatus = /*@__PURE__*/ S.String;
 
 export interface AgentInfo {
@@ -549,11 +546,10 @@ export type BatchDeleteConfigurationTaskStatus =
   | "VALIDATING"
   | "DELETING"
   | "COMPLETED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const BatchDeleteConfigurationTaskStatus = /*@__PURE__*/ S.String;
 
-export type DeletionConfigurationItemType = "SERVER" | (string & {});
+export type DeletionConfigurationItemType = "SERVER";
 export const DeletionConfigurationItemType = /*@__PURE__*/ S.String;
 
 export type ErrorStatusCode = number;
@@ -704,13 +700,12 @@ export type ContinuousExportStatus =
   | "ERROR"
   | "STOP_IN_PROGRESS"
   | "STOP_FAILED"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const ContinuousExportStatus = /*@__PURE__*/ S.String;
 
 export type StringMax255 = string;
 export type S3Bucket = string;
-export type DataSource = "AGENT" | (string & {});
+export type DataSource = "AGENT";
 export const DataSource = /*@__PURE__*/ S.String;
 
 export type DatabaseName = string;
@@ -785,11 +780,7 @@ export const DescribeExportConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExportConfigurationsRequest",
 }) as any as S.Schema<DescribeExportConfigurationsRequest>;
-export type ExportStatus =
-  | "FAILED"
-  | "SUCCEEDED"
-  | "IN_PROGRESS"
-  | (string & {});
+export type ExportStatus = "FAILED" | "SUCCEEDED" | "IN_PROGRESS";
 export const ExportStatus = /*@__PURE__*/ S.String;
 
 export type ExportStatusMessage = string;
@@ -889,15 +880,14 @@ export type ImportTaskFilterName =
   | "IMPORT_TASK_ID"
   | "STATUS"
   | "NAME"
-  | "FILE_CLASSIFICATION"
-  | (string & {});
+  | "FILE_CLASSIFICATION";
 export const ImportTaskFilterName = /*@__PURE__*/ S.String;
 
 export type ImportTaskFilterValue = string;
 export type ImportTaskFilterValueList = string[];
 export const ImportTaskFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ImportTaskFilter {
-  name?: ImportTaskFilterName;
+  name?: ImportTaskFilterName | (string & {});
   values?: string[];
 }
 export const ImportTaskFilter = /*@__PURE__*/ S.suspend(() =>
@@ -951,16 +941,14 @@ export type ImportStatus =
   | "DELETE_COMPLETE"
   | "DELETE_FAILED"
   | "DELETE_FAILED_LIMIT_EXCEEDED"
-  | "INTERNAL_ERROR"
-  | (string & {});
+  | "INTERNAL_ERROR";
 export const ImportStatus = /*@__PURE__*/ S.String;
 
 export type FileClassification =
   | "MODELIZEIT_EXPORT"
   | "RVTOOLS_EXPORT"
   | "VMWARE_NSX_EXPORT"
-  | "IMPORT_TEMPLATE"
-  | (string & {});
+  | "IMPORT_TEMPLATE";
 export const FileClassification = /*@__PURE__*/ S.String;
 
 export type S3PresignedUrl = string;
@@ -1055,8 +1043,7 @@ export type ConfigurationItemType =
   | "SERVER"
   | "PROCESS"
   | "CONNECTION"
-  | "APPLICATION"
-  | (string & {});
+  | "APPLICATION";
 export const ConfigurationItemType = /*@__PURE__*/ S.String;
 
 export interface ConfigurationTag {
@@ -1276,12 +1263,12 @@ export const GetDiscoverySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDiscoverySummaryResponse",
 }) as any as S.Schema<GetDiscoverySummaryResponse>;
 export type OrderByElementFieldName = string;
-export type OrderString = "ASC" | "DESC" | (string & {});
+export type OrderString = "ASC" | "DESC";
 export const OrderString = /*@__PURE__*/ S.String;
 
 export interface OrderByElement {
   fieldName: string;
-  sortOrder?: OrderString;
+  sortOrder?: OrderString | (string & {});
 }
 export const OrderByElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fieldName: S.String, sortOrder: S.optional(OrderString) }),
@@ -1289,7 +1276,7 @@ export const OrderByElement = /*@__PURE__*/ S.suspend(() =>
 export type OrderByList = OrderByElement[];
 export const OrderByList = /*@__PURE__*/ S.Array(OrderByElement);
 export interface ListConfigurationsRequest {
-  configurationType: ConfigurationItemType;
+  configurationType: ConfigurationItemType | (string & {});
   filters?: Filter[];
   maxResults?: number;
   nextToken?: string;
@@ -1401,7 +1388,7 @@ export const ListServerNeighborsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServerNeighborsResponse",
 }) as any as S.Schema<ListServerNeighborsResponse>;
 export interface StartBatchDeleteConfigurationTaskRequest {
-  configurationType: DeletionConfigurationItemType;
+  configurationType: DeletionConfigurationItemType | (string & {});
   configurationIds: string[];
 }
 export const StartBatchDeleteConfigurationTaskRequest = /*@__PURE__*/ S.suspend(
@@ -1514,10 +1501,10 @@ export const StartDataCollectionByAgentIdsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "StartDataCollectionByAgentIdsResponse",
 }) as any as S.Schema<StartDataCollectionByAgentIdsResponse>;
-export type ExportDataFormat = "CSV" | (string & {});
+export type ExportDataFormat = "CSV";
 export const ExportDataFormat = /*@__PURE__*/ S.String;
 
-export type ExportDataFormats = ExportDataFormat[];
+export type ExportDataFormats = (ExportDataFormat | (string & {}))[];
 export const ExportDataFormats = /*@__PURE__*/ S.Array(ExportDataFormat);
 export type ExportEnabled = boolean;
 export type UsageMetricBasisName = string;
@@ -1534,30 +1521,26 @@ export const UsageMetricBasis = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UsageMetricBasis",
 }) as any as S.Schema<UsageMetricBasis>;
-export type Tenancy = "DEDICATED" | "SHARED" | (string & {});
+export type Tenancy = "DEDICATED" | "SHARED";
 export const Tenancy = /*@__PURE__*/ S.String;
 
 export type EC2InstanceType = string;
 export type ExcludedInstanceTypes = string[];
 export const ExcludedInstanceTypes = /*@__PURE__*/ S.Array(S.String);
 export type UserPreferredRegion = string;
-export type PurchasingOption =
-  | "ALL_UPFRONT"
-  | "PARTIAL_UPFRONT"
-  | "NO_UPFRONT"
-  | (string & {});
+export type PurchasingOption = "ALL_UPFRONT" | "PARTIAL_UPFRONT" | "NO_UPFRONT";
 export const PurchasingOption = /*@__PURE__*/ S.String;
 
-export type OfferingClass = "STANDARD" | "CONVERTIBLE" | (string & {});
+export type OfferingClass = "STANDARD" | "CONVERTIBLE";
 export const OfferingClass = /*@__PURE__*/ S.String;
 
-export type TermLength = "ONE_YEAR" | "THREE_YEAR" | (string & {});
+export type TermLength = "ONE_YEAR" | "THREE_YEAR";
 export const TermLength = /*@__PURE__*/ S.String;
 
 export interface ReservedInstanceOptions {
-  purchasingOption: PurchasingOption;
-  offeringClass: OfferingClass;
-  termLength: TermLength;
+  purchasingOption: PurchasingOption | (string & {});
+  offeringClass: OfferingClass | (string & {});
+  termLength: TermLength | (string & {});
 }
 export const ReservedInstanceOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1572,7 +1555,7 @@ export interface Ec2RecommendationsExportPreferences {
   enabled?: boolean;
   cpuPerformanceMetricBasis?: UsageMetricBasis;
   ramPerformanceMetricBasis?: UsageMetricBasis;
-  tenancy?: Tenancy;
+  tenancy?: Tenancy | (string & {});
   excludedInstanceTypes?: string[];
   preferredRegion?: string;
   reservedInstanceOptions?: ReservedInstanceOptions;

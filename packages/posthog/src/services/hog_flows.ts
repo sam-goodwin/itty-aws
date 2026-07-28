@@ -181,8 +181,7 @@ export type HogFlowBatchJobStatusEnum =
   | "active"
   | "completed"
   | "cancelled"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const HogFlowBatchJobStatusEnum = /*@__PURE__*/ S.String;
 
 export interface HogFlowsBatchJobsCreateRequest {
@@ -191,7 +190,7 @@ export interface HogFlowsBatchJobsCreateRequest {
   /** A UUID string identifying this hog flow. */
   id: string;
   /** Not currently tracked — stays at its initial value. Use the workflow logs/metrics endpoints for run outcome. * `waiting` - Waiting * `queued` - Queued * `active` - Active * `completed` - Completed * `cancelled` - Cancelled * `failed` - Failed */
-  status?: HogFlowBatchJobStatusEnum;
+  status?: HogFlowBatchJobStatusEnum | (string & {});
   /** ID of the workflow this batch run belongs to. */
   hog_flow: string;
   /** Audience snapshot the run fanned out to, taken from the workflow's batch trigger filters. */
@@ -233,11 +232,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -334,7 +332,7 @@ export const HogFlowsBatchJobsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFlowsBatchJobsListResponse>;
 
 /** * `draft` - Draft * `active` - Active * `archived` - Archived */
-export type HogFlowStatusEnum = "draft" | "active" | "archived" | (string & {});
+export type HogFlowStatusEnum = "draft" | "active" | "archived";
 export const HogFlowStatusEnum = /*@__PURE__*/ S.String;
 
 export interface HogFlowMasking {
@@ -375,8 +373,7 @@ export const HogFlowConversionFiltersList = /*@__PURE__*/ S.Array(
 export type HogFunctionFiltersSourceEnum =
   | "events"
   | "person-updates"
-  | "data-warehouse-table"
-  | (string & {});
+  | "data-warehouse-table";
 export const HogFunctionFiltersSourceEnum = /*@__PURE__*/ S.String;
 
 export type HogFunctionFiltersActionsItemMap = {
@@ -506,12 +503,11 @@ export type ExitConditionEnum =
   | "exit_on_conversion"
   | "exit_on_trigger_not_matched"
   | "exit_on_trigger_not_matched_or_conversion"
-  | "exit_only_at_end"
-  | (string & {});
+  | "exit_only_at_end";
 export const ExitConditionEnum = /*@__PURE__*/ S.String;
 
 /** * `continue` - continue * `branch` - branch */
-export type HogFlowEdgeTypeEnum = "continue" | "branch" | (string & {});
+export type HogFlowEdgeTypeEnum = "continue" | "branch";
 export const HogFlowEdgeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface HogFlowEdge {
@@ -541,7 +537,7 @@ export const HogFlowsBulkDeleteCreateRequestEdgesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HogFlowsBulkDeleteCreateRequestEdgesList>;
 
 /** * `continue` - continue * `abort` - abort */
-export type OnErrorEnum = "continue" | "abort" | (string & {});
+export type OnErrorEnum = "continue" | "abort";
 export const OnErrorEnum = /*@__PURE__*/ S.String;
 
 /** Config for every action type except wait_until_condition — see the field description for per-type shapes. */
@@ -687,13 +683,13 @@ export interface HogFlowsBulkDeleteCreateRequest {
   /** Optional description. */
   description?: string;
   /** draft (no execution), active (live), archived (disabled). * `draft` - Draft * `active` - Active * `archived` - Archived */
-  status?: HogFlowStatusEnum;
+  status?: HogFlowStatusEnum | (string & {});
   /** Optional dedup/throttle on an already-matched trigger: {hash: <HogQL template>, ttl: <seconds, 60-94608000>, threshold?: <int>}. Without threshold: fire once per hash, then suppress repeats within ttl (hash '{person.id}' = once per person per ttl). With threshold N: fire once per N matches of the same hash — a sampler, the 1st then every Nth. Throttles an already-qualifying trigger; it doesn't decide who enters. Server compiles bytecode from hash; omit to disable. */
   trigger_masking?: HogFlowMasking | null;
   /** Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window_minutes: minutes after entry. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side. */
   conversion?: HogFlowConversion | null;
   /** exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion'). * `exit_on_conversion` - Conversion * `exit_on_trigger_not_matched` - Trigger Not Matched * `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion * `exit_only_at_end` - Only At End */
-  exit_condition?: ExitConditionEnum;
+  exit_condition?: ExitConditionEnum | (string & {});
   /** Graph edges: [{from, to, type: 'continue'|'branch', index?}]. 'continue' = fall-through (sequential, or no-match path of conditional_branch). 'branch' requires 'index': matches config.conditions[index] on conditional_branch / wait_until_condition. Every non-exit action needs a reachable next action ('No next action found' otherwise). */
   edges?: HogFlowsBulkDeleteCreateRequestEdgesList;
   /** Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too. */
@@ -750,11 +746,7 @@ export const HogFlowVariablesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HogFlowVariablesList>;
 
 /** * `active` - Active * `paused` - Paused * `completed` - Completed */
-export type HogFlowScheduleStatusEnum =
-  | "active"
-  | "paused"
-  | "completed"
-  | (string & {});
+export type HogFlowScheduleStatusEnum = "active" | "paused" | "completed";
 export const HogFlowScheduleStatusEnum = /*@__PURE__*/ S.String;
 
 export interface HogFlowSchedule {
@@ -905,13 +897,13 @@ export interface HogFlowsCreateRequest {
   /** Optional description. */
   description?: string;
   /** draft (no execution), active (live), archived (disabled). * `draft` - Draft * `active` - Active * `archived` - Archived */
-  status?: HogFlowStatusEnum;
+  status?: HogFlowStatusEnum | (string & {});
   /** Optional dedup/throttle on an already-matched trigger: {hash: <HogQL template>, ttl: <seconds, 60-94608000>, threshold?: <int>}. Without threshold: fire once per hash, then suppress repeats within ttl (hash '{person.id}' = once per person per ttl). With threshold N: fire once per N matches of the same hash — a sampler, the 1st then every Nth. Throttles an already-qualifying trigger; it doesn't decide who enters. Server compiles bytecode from hash; omit to disable. */
   trigger_masking?: HogFlowMasking | null;
   /** Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window_minutes: minutes after entry. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side. */
   conversion?: HogFlowConversion | null;
   /** exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion'). * `exit_on_conversion` - Conversion * `exit_on_trigger_not_matched` - Trigger Not Matched * `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion * `exit_only_at_end` - Only At End */
-  exit_condition?: ExitConditionEnum;
+  exit_condition?: ExitConditionEnum | (string & {});
   /** Graph edges: [{from, to, type: 'continue'|'branch', index?}]. 'continue' = fall-through (sequential, or no-match path of conditional_branch). 'branch' requires 'index': matches config.conditions[index] on conditional_branch / wait_until_condition. Every non-exit action needs a reachable next action ('No next action found' otherwise). */
   edges?: HogFlowsCreateRequestEdgesList;
   /** Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too. */
@@ -998,8 +990,7 @@ export type HogFlowGraphOperationOpEnum =
   | "remove_action"
   | "add_edge"
   | "remove_edge"
-  | "replace_action_edges"
-  | (string & {});
+  | "replace_action_edges";
 export const HogFlowGraphOperationOpEnum = /*@__PURE__*/ S.String;
 
 /** replace_action_edges: the complete set of the action's outgoing edges (incoming edges are preserved). add_action: optional edges to wire the new node in the same op. */
@@ -1010,7 +1001,7 @@ export const HogFlowGraphOperationEdgesList = /*@__PURE__*/ S.Array(
 
 export interface HogFlowGraphOperation {
   /** Graph edit. update_action {id, patch}: deep-merge patch into the action's fields (a null leaf deletes that key) — the surgical path for tweaking one config value. add_action {action, edges?}: append a full action node, optionally wiring its edges in the same op. remove_action {id}: delete a node and reconnect its incoming edges to its first outgoer. add_edge {edge} / remove_edge {edge}: add or delete one edge. replace_action_edges {id, edges}: replace this action's outgoing edges with the given set (use when adding/removing branch conditions); incoming edges are left intact. * `update_action` - update_action * `add_action` - add_action * `remove_action` - remove_action * `add_edge` - add_edge * `remove_edge` - remove_edge * `replace_action_edges` - replace_action_edges */
-  op: HogFlowGraphOperationOpEnum;
+  op: HogFlowGraphOperationOpEnum | (string & {});
   /** Action id. Required for update_action, remove_action, replace_action_edges. */
   id?: string;
   /** update_action only. Partial action fields, deep-merged into the existing action; a null leaf deletes that key. e.g. {config: {inputs: {subject: {value: 'Hi'}}}} changes only that input. */
@@ -1258,13 +1249,13 @@ export interface HogFlowInput {
   /** Optional description. */
   description?: string;
   /** draft (no execution), active (live), archived (disabled). * `draft` - Draft * `active` - Active * `archived` - Archived */
-  status?: HogFlowStatusEnum;
+  status?: HogFlowStatusEnum | (string & {});
   /** Optional dedup/throttle on an already-matched trigger: {hash: <HogQL template>, ttl: <seconds, 60-94608000>, threshold?: <int>}. Without threshold: fire once per hash, then suppress repeats within ttl (hash '{person.id}' = once per person per ttl). With threshold N: fire once per N matches of the same hash — a sampler, the 1st then every Nth. Throttles an already-qualifying trigger; it doesn't decide who enters. Server compiles bytecode from hash; omit to disable. */
   trigger_masking?: HogFlowMasking | null;
   /** Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window_minutes: minutes after entry. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side. */
   conversion?: HogFlowConversion | null;
   /** exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion'). * `exit_on_conversion` - Conversion * `exit_on_trigger_not_matched` - Trigger Not Matched * `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion * `exit_only_at_end` - Only At End */
-  exit_condition?: ExitConditionEnum;
+  exit_condition?: ExitConditionEnum | (string & {});
   /** Graph edges: [{from, to, type: 'continue'|'branch', index?}]. 'continue' = fall-through (sequential, or no-match path of conditional_branch). 'branch' requires 'index': matches config.conditions[index] on conditional_branch / wait_until_condition. Every non-exit action needs a reachable next action ('No next action found' otherwise). */
   edges?: HogFlowInputEdgesList;
   /** Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too. */
@@ -1339,11 +1330,7 @@ export const HogFlowsInvocationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFlowsInvocationsCreateResponse",
 }) as any as S.Schema<HogFlowsInvocationsCreateResponse>;
 
-export type HogFlowsListRequestStatus =
-  | "active"
-  | "archived"
-  | "draft"
-  | (string & {});
+export type HogFlowsListRequestStatus = "active" | "archived" | "draft";
 export const HogFlowsListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface HogFlowsListRequest {
@@ -1357,7 +1344,7 @@ export interface HogFlowsListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
   /** * `draft` - Draft * `active` - Active * `archived` - Archived */
-  status?: HogFlowsListRequestStatus;
+  status?: HogFlowsListRequestStatus | (string & {});
   updated_at?: string;
 }
 export const HogFlowsListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1553,17 +1540,10 @@ export const HogFlowsMetricsGlobalRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "HogFlowsMetricsGlobalRetrieveResponse",
 }) as any as S.Schema<HogFlowsMetricsGlobalRetrieveResponse>;
 
-export type HogFlowsMetricsRetrieveRequestBreakdownBy =
-  | "name"
-  | "kind"
-  | (string & {});
+export type HogFlowsMetricsRetrieveRequestBreakdownBy = "name" | "kind";
 export const HogFlowsMetricsRetrieveRequestBreakdownBy = /*@__PURE__*/ S.String;
 
-export type HogFlowsMetricsRetrieveRequestInterval =
-  | "hour"
-  | "day"
-  | "week"
-  | (string & {});
+export type HogFlowsMetricsRetrieveRequestInterval = "hour" | "day" | "week";
 export const HogFlowsMetricsRetrieveRequestInterval = /*@__PURE__*/ S.String;
 
 export interface HogFlowsMetricsRetrieveRequest {
@@ -1576,11 +1556,11 @@ export interface HogFlowsMetricsRetrieveRequest {
   /** End of the time range. Same format as 'after'. Defaults to now. */
   before?: string;
   /** Group the series by metric 'name' or 'kind'. Defaults to 'kind'. * `name` - name * `kind` - kind */
-  breakdown_by?: HogFlowsMetricsRetrieveRequestBreakdownBy;
+  breakdown_by?: HogFlowsMetricsRetrieveRequestBreakdownBy | (string & {});
   /** Filter metrics to a specific execution instance. */
   instance_id?: string;
   /** Time bucket size for the series. One of: hour, day, week. Defaults to 'day'. * `hour` - hour * `day` - day * `week` - week */
-  interval?: HogFlowsMetricsRetrieveRequestInterval;
+  interval?: HogFlowsMetricsRetrieveRequestInterval | (string & {});
   /** Comma-separated metric kinds to filter by, e.g. 'success,failure'. */
   kind?: string;
   /** Comma-separated metric names to filter by. */
@@ -1653,18 +1633,14 @@ export const AppMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppMetricsResponse",
 }) as any as S.Schema<AppMetricsResponse>;
 
-export type HogFlowsMetricsTotalsRetrieveRequestBreakdownBy =
-  | "name"
-  | "kind"
-  | (string & {});
+export type HogFlowsMetricsTotalsRetrieveRequestBreakdownBy = "name" | "kind";
 export const HogFlowsMetricsTotalsRetrieveRequestBreakdownBy =
   /*@__PURE__*/ S.String;
 
 export type HogFlowsMetricsTotalsRetrieveRequestInterval =
   | "hour"
   | "day"
-  | "week"
-  | (string & {});
+  | "week";
 export const HogFlowsMetricsTotalsRetrieveRequestInterval =
   /*@__PURE__*/ S.String;
 
@@ -1678,11 +1654,13 @@ export interface HogFlowsMetricsTotalsRetrieveRequest {
   /** End of the time range. Same format as 'after'. Defaults to now. */
   before?: string;
   /** Group the series by metric 'name' or 'kind'. Defaults to 'kind'. * `name` - name * `kind` - kind */
-  breakdown_by?: HogFlowsMetricsTotalsRetrieveRequestBreakdownBy;
+  breakdown_by?:
+    | HogFlowsMetricsTotalsRetrieveRequestBreakdownBy
+    | (string & {});
   /** Filter metrics to a specific execution instance. */
   instance_id?: string;
   /** Time bucket size for the series. One of: hour, day, week. Defaults to 'day'. * `hour` - hour * `day` - day * `week` - week */
-  interval?: HogFlowsMetricsTotalsRetrieveRequestInterval;
+  interval?: HogFlowsMetricsTotalsRetrieveRequestInterval | (string & {});
   /** Comma-separated metric kinds to filter by, e.g. 'success,failure'. */
   kind?: string;
   /** Comma-separated metric names to filter by. */
@@ -1774,13 +1752,13 @@ export interface HogFlowsPartialUpdateRequest {
   /** Optional description. */
   description?: string;
   /** draft (no execution), active (live), archived (disabled). * `draft` - Draft * `active` - Active * `archived` - Archived */
-  status?: HogFlowStatusEnum;
+  status?: HogFlowStatusEnum | (string & {});
   /** Optional dedup/throttle on an already-matched trigger: {hash: <HogQL template>, ttl: <seconds, 60-94608000>, threshold?: <int>}. Without threshold: fire once per hash, then suppress repeats within ttl (hash '{person.id}' = once per person per ttl). With threshold N: fire once per N matches of the same hash — a sampler, the 1st then every Nth. Throttles an already-qualifying trigger; it doesn't decide who enters. Server compiles bytecode from hash; omit to disable. */
   trigger_masking?: HogFlowMasking | null;
   /** Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window_minutes: minutes after entry. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side. */
   conversion?: HogFlowConversion | null;
   /** exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion'). * `exit_on_conversion` - Conversion * `exit_on_trigger_not_matched` - Trigger Not Matched * `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion * `exit_only_at_end` - Only At End */
-  exit_condition?: ExitConditionEnum;
+  exit_condition?: ExitConditionEnum | (string & {});
   /** Graph edges: [{from, to, type: 'continue'|'branch', index?}]. 'continue' = fall-through (sequential, or no-match path of conditional_branch). 'branch' requires 'index': matches config.conditions[index] on conditional_branch / wait_until_condition. Every non-exit action needs a reachable next action ('No next action found' otherwise). */
   edges?: HogFlowsPartialUpdateRequestEdgesList;
   /** Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too. */
@@ -2016,7 +1994,7 @@ export const HogFlowsReputationRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFlowsReputationRetrieveRequest>;
 
 /** * `workflow` - Workflow * `team` - Team */
-export type EmailReputationScopeEnum = "workflow" | "team" | (string & {});
+export type EmailReputationScopeEnum = "workflow" | "team";
 export const EmailReputationScopeEnum = /*@__PURE__*/ S.String;
 
 /** * `insufficient_data` - Insufficient Data * `healthy` - Healthy * `warning` - Warning * `critical` - Critical */
@@ -2024,8 +2002,7 @@ export type EmailReputationStateEnum =
   | "insufficient_data"
   | "healthy"
   | "warning"
-  | "critical"
-  | (string & {});
+  | "critical";
 export const EmailReputationStateEnum = /*@__PURE__*/ S.String;
 
 /** One email deliverability reputation snapshot (per workflow or per team, per daily evaluation run). */
@@ -2126,13 +2103,13 @@ export const TeamEmailReputationResponse = /*@__PURE__*/ S.suspend(() =>
 export type HogInvocationRerunFilterStatusEnum =
   | "running"
   | "succeeded"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const HogInvocationRerunFilterStatusEnum = /*@__PURE__*/ S.String;
 
 /** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
-export type HogInvocationRerunFilterStatusList =
-  ReadonlyArray<HogInvocationRerunFilterStatusEnum>;
+export type HogInvocationRerunFilterStatusList = ReadonlyArray<
+  HogInvocationRerunFilterStatusEnum | (string & {})
+>;
 export const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
   HogInvocationRerunFilterStatusEnum,
 ) as any as S.Schema<HogInvocationRerunFilterStatusList>;
@@ -2554,13 +2531,13 @@ export interface HogFlowsUpdateRequest {
   /** Optional description. */
   description?: string;
   /** draft (no execution), active (live), archived (disabled). * `draft` - Draft * `active` - Active * `archived` - Archived */
-  status?: HogFlowStatusEnum;
+  status?: HogFlowStatusEnum | (string & {});
   /** Optional dedup/throttle on an already-matched trigger: {hash: <HogQL template>, ttl: <seconds, 60-94608000>, threshold?: <int>}. Without threshold: fire once per hash, then suppress repeats within ttl (hash '{person.id}' = once per person per ttl). With threshold N: fire once per N matches of the same hash — a sampler, the 1st then every Nth. Throttles an already-qualifying trigger; it doesn't decide who enters. Server compiles bytecode from hash; omit to disable. */
   trigger_masking?: HogFlowMasking | null;
   /** Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window_minutes: minutes after entry. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side. */
   conversion?: HogFlowConversion | null;
   /** exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion'). * `exit_on_conversion` - Conversion * `exit_on_trigger_not_matched` - Trigger Not Matched * `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion * `exit_only_at_end` - Only At End */
-  exit_condition?: ExitConditionEnum;
+  exit_condition?: ExitConditionEnum | (string & {});
   /** Graph edges: [{from, to, type: 'continue'|'branch', index?}]. 'continue' = fall-through (sequential, or no-match path of conditional_branch). 'branch' requires 'index': matches config.conditions[index] on conditional_branch / wait_until_condition. Every non-exit action needs a reachable next action ('No next action found' otherwise). */
   edges?: HogFlowsUpdateRequestEdgesList;
   /** Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too. */
@@ -2603,7 +2580,7 @@ export const HogFlowsUserBlastRadiusCreateRequestFiltersMap =
   ) as any as S.Schema<HogFlowsUserBlastRadiusCreateRequestFiltersMap>;
 
 /** * `email` - email */
-export type DedupeKeyEnum = "email" | (string & {});
+export type DedupeKeyEnum = "email";
 export const DedupeKeyEnum = /*@__PURE__*/ S.String;
 
 export interface HogFlowsUserBlastRadiusCreateRequest {
@@ -2614,7 +2591,7 @@ export interface HogFlowsUserBlastRadiusCreateRequest {
   /** Group type index for group-based targeting */
   group_type_index?: number | null;
   /** When 'email', count unique email addresses instead of persons, matching how batch email sends deduplicate recipients. * `email` - email */
-  dedupe_key?: DedupeKeyEnum | null;
+  dedupe_key?: DedupeKeyEnum | (string & {}) | null;
 }
 export const HogFlowsUserBlastRadiusCreateRequest = /*@__PURE__*/ S.suspend(
   () =>

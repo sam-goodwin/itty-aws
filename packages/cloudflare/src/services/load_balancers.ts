@@ -182,14 +182,14 @@ export class PoolNotFound extends T.applyErrorMatchers(
   [{ code: 1001 }],
 ) {}
 
-export type PoolsBulkEditRequestNotificationEmail = "" | (string & {});
+export type PoolsBulkEditRequestNotificationEmail = "";
 export const PoolsBulkEditRequestNotificationEmail = /*@__PURE__*/ S.String;
 
 export interface BulkPatchPoolsRequest {
   /** Identifier. */
   accountId: string;
   /** The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `""` is accepted. */
-  notificationEmail?: PoolsBulkEditRequestNotificationEmail;
+  notificationEmail?: PoolsBulkEditRequestNotificationEmail | (string & {});
 }
 export const BulkPatchPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -224,8 +224,7 @@ export type PoolsBulkEditResultItemCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const PoolsBulkEditResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsBulkEditResultItemCheckRegionsList =
@@ -236,14 +235,11 @@ export const PoolsBulkEditResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
 
 export type PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
   | "random"
-  | "hash"
-  | (string & {});
+  | "hash";
 export const PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsBulkEditResultItemLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsBulkEditResultItemLoadSheddingSessionPolicy = "hash";
 export const PoolsBulkEditResultItemLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -317,8 +313,7 @@ export type PoolsBulkEditResultItemOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsBulkEditResultItemOriginSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -522,25 +517,21 @@ export const CreateRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   CreateRequestCountryPoolsValueList,
 ) as any as S.Schema<CreateRequestCountryPoolsMap>;
 
-export type CreateRequestLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type CreateRequestLocationStrategyMode = "pop" | "resolver_ip";
 export const CreateRequestLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type CreateRequestLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const CreateRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface CreateRequestLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: CreateRequestLocationStrategyMode;
+  mode?: CreateRequestLocationStrategyMode | (string & {});
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: CreateRequestLocationStrategyPreferEcs;
+  preferEcs?: CreateRequestLocationStrategyPreferEcs | (string & {});
 }
 export const CreateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -693,8 +684,7 @@ export type CreateRequestRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header"
-  | (string & {});
+  | "header";
 export const CreateRequestRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -709,21 +699,19 @@ export type CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -735,11 +723,17 @@ export interface CreateRequestRulesItemOverridesSessionAffinityAttributes {
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
   requireAllHeaders?: boolean;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite;
+  samesite?:
+    | CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite
+    | (string & {});
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: CreateRequestRulesItemOverridesSessionAffinityAttributesSecure;
+  secure?:
+    | CreateRequestRulesItemOverridesSessionAffinityAttributesSecure
+    | (string & {});
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
+  zeroDowntimeFailover?:
+    | CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover
+    | (string & {});
 }
 export const CreateRequestRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
@@ -775,8 +769,7 @@ export type CreateRequestRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | ""
-  | (string & {});
+  | "";
 export const CreateRequestRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -798,13 +791,17 @@ export interface CreateRequestRulesItemOverrides {
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: CreateRequestRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: CreateRequestRulesItemOverridesSessionAffinity;
+  sessionAffinity?:
+    | CreateRequestRulesItemOverridesSessionAffinity
+    | (string & {});
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: CreateRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: CreateRequestRulesItemOverridesSteeringPolicy;
+  steeringPolicy?:
+    | CreateRequestRulesItemOverridesSteeringPolicy
+    | (string & {});
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -928,13 +925,17 @@ export interface CreateLoadBalancerRequest {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: CreateRequestRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: CreateRequestRulesItemOverridesSessionAffinity;
+  sessionAffinity?:
+    | CreateRequestRulesItemOverridesSessionAffinity
+    | (string & {});
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: CreateRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: CreateRequestRulesItemOverridesSteeringPolicy;
+  steeringPolicy?:
+    | CreateRequestRulesItemOverridesSteeringPolicy
+    | (string & {});
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -1028,18 +1029,14 @@ export const CreateResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseDefaultPoolsList>;
 
-export type CreateResponseLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type CreateResponseLocationStrategyMode = "pop" | "resolver_ip";
 export const CreateResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type CreateResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const CreateResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface CreateResponseLocationStrategy {
@@ -1201,8 +1198,7 @@ export type CreateResponseRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header"
-  | (string & {});
+  | "header";
 export const CreateResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -1217,21 +1213,19 @@ export type CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -1283,8 +1277,7 @@ export type CreateResponseRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | ""
-  | (string & {});
+  | "";
 export const CreateResponseRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1527,8 +1520,7 @@ export type MonitorsCreateRequestType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp"
-  | (string & {});
+  | "smtp";
 export const MonitorsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateMonitorRequest {
@@ -1565,7 +1557,7 @@ export interface CreateMonitorRequest {
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsCreateRequestType;
+  type?: MonitorsCreateRequestType | (string & {});
 }
 export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1618,8 +1610,7 @@ export type MonitorsCreateResponseType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp"
-  | (string & {});
+  | "smtp";
 export const MonitorsCreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1826,8 +1817,7 @@ export type MonitorsPreviewsCreateRequestType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp"
-  | (string & {});
+  | "smtp";
 export const MonitorsPreviewsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateMonitorPreviewRequest {
@@ -1865,7 +1855,7 @@ export interface CreateMonitorPreviewRequest {
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsPreviewsCreateRequestType;
+  type?: MonitorsPreviewsCreateRequestType | (string & {});
 }
 export const CreateMonitorPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1983,16 +1973,11 @@ export const PoolsCreateRequestOriginsList = /*@__PURE__*/ S.Array(
   PoolsCreateRequestOriginsItem,
 ) as any as S.Schema<PoolsCreateRequestOriginsList>;
 
-export type PoolsCreateRequestLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsCreateRequestLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsCreateRequestLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsCreateRequestLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsCreateRequestLoadSheddingSessionPolicy = "hash";
 export const PoolsCreateRequestLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -2000,11 +1985,11 @@ export interface PoolsCreateRequestLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
   defaultPercent?: number;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsCreateRequestLoadSheddingDefaultPolicy;
+  defaultPolicy?: PoolsCreateRequestLoadSheddingDefaultPolicy | (string & {});
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
   sessionPercent?: number;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsCreateRequestLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsCreateRequestLoadSheddingSessionPolicy | (string & {});
 }
 export const PoolsCreateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2061,13 +2046,12 @@ export type PoolsCreateRequestOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsCreateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsCreateRequestOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsCreateRequestOriginSteeringPolicy;
+  policy?: PoolsCreateRequestOriginSteeringPolicy | (string & {});
 }
 export const PoolsCreateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2156,8 +2140,7 @@ export type PoolsCreateResponseCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const PoolsCreateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsCreateResponseCheckRegionsList =
@@ -2166,16 +2149,11 @@ export const PoolsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsCreateResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsCreateResponseCheckRegionsList>;
 
-export type PoolsCreateResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsCreateResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsCreateResponseLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsCreateResponseLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsCreateResponseLoadSheddingSessionPolicy = "hash";
 export const PoolsCreateResponseLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -2249,8 +2227,7 @@ export type PoolsCreateResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsCreateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsCreateResponseOriginSteering {
@@ -2418,8 +2395,7 @@ export type PoolsHealthCreateRequestType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp"
-  | (string & {});
+  | "smtp";
 export const PoolsHealthCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreatePoolHealthRequest {
@@ -2457,7 +2433,7 @@ export interface CreatePoolHealthRequest {
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: PoolsHealthCreateRequestType;
+  type?: PoolsHealthCreateRequestType | (string & {});
 }
 export const CreatePoolHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2750,18 +2726,14 @@ export const GetResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseDefaultPoolsList>;
 
-export type GetResponseLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type GetResponseLocationStrategyMode = "pop" | "resolver_ip";
 export const GetResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type GetResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const GetResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface GetResponseLocationStrategy {
@@ -2916,8 +2888,7 @@ export type GetResponseRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header"
-  | (string & {});
+  | "header";
 export const GetResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -2932,21 +2903,19 @@ export type GetResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const GetResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const GetResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -2998,8 +2967,7 @@ export type GetResponseRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | ""
-  | (string & {});
+  | "";
 export const GetResponseRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -3262,8 +3230,7 @@ export type MonitorsGetResponseType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp"
-  | (string & {});
+  | "smtp";
 export const MonitorsGetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3435,8 +3402,7 @@ export const GetMonitorGroupReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export type MonitorGroupsReferencesGetResultItemReferenceType =
   | "*"
   | "referral"
-  | "referrer"
-  | (string & {});
+  | "referrer";
 export const MonitorGroupsReferencesGetResultItemReferenceType =
   /*@__PURE__*/ S.String;
 
@@ -3508,8 +3474,7 @@ export const GetMonitorReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export type MonitorsReferencesGetResultItemReferenceType =
   | "*"
   | "referral"
-  | "referrer"
-  | (string & {});
+  | "referrer";
 export const MonitorsReferencesGetResultItemReferenceType =
   /*@__PURE__*/ S.String;
 
@@ -3589,8 +3554,7 @@ export type PoolsGetResponseCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const PoolsGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsGetResponseCheckRegionsList =
@@ -3599,13 +3563,10 @@ export const PoolsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsGetResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsGetResponseCheckRegionsList>;
 
-export type PoolsGetResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsGetResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsGetResponseLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
 
-export type PoolsGetResponseLoadSheddingSessionPolicy = "hash" | (string & {});
+export type PoolsGetResponseLoadSheddingSessionPolicy = "hash";
 export const PoolsGetResponseLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsGetResponseLoadShedding {
@@ -3673,8 +3634,7 @@ export type PoolsGetResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsGetResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsGetResponseOriginSteering {
@@ -3939,8 +3899,7 @@ export const GetPoolReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoolsReferencesGetResultItemReferenceType =
   | "*"
   | "referral"
-  | "referrer"
-  | (string & {});
+  | "referrer";
 export const PoolsReferencesGetResultItemReferenceType = /*@__PURE__*/ S.String;
 
 export interface PoolsReferencesGetResultItem {
@@ -4078,15 +4037,14 @@ export type RegionsGetRequestRegionId =
   | "SAF"
   | "SAS"
   | "SEAS"
-  | "NEAS"
-  | (string & {});
+  | "NEAS";
 export const RegionsGetRequestRegionId = /*@__PURE__*/ S.String;
 
 export interface GetRegionRequest {
   /** Identifier. */
   accountId: string;
   /** A list of Cloudflare regions. WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia). */
-  regionId: RegionsGetRequestRegionId;
+  regionId: RegionsGetRequestRegionId | (string & {});
 }
 export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4163,18 +4121,14 @@ export const ListResultItemDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemDefaultPoolsList>;
 
-export type ListResultItemLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type ListResultItemLocationStrategyMode = "pop" | "resolver_ip";
 export const ListResultItemLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type ListResultItemLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const ListResultItemLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface ListResultItemLocationStrategy {
@@ -4336,8 +4290,7 @@ export type ListResultItemRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header"
-  | (string & {});
+  | "header";
 export const ListResultItemRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -4352,21 +4305,19 @@ export type ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -4418,8 +4369,7 @@ export type ListResultItemRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | ""
-  | (string & {});
+  | "";
 export const ListResultItemRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -4798,8 +4748,7 @@ export type MonitorsListResultItemType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp"
-  | (string & {});
+  | "smtp";
 export const MonitorsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface MonitorsListResultItem {
@@ -4922,8 +4871,7 @@ export type PoolsListResultItemCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const PoolsListResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsListResultItemCheckRegionsList =
@@ -4932,16 +4880,11 @@ export const PoolsListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsListResultItemCheckRegionsItem,
 ) as any as S.Schema<PoolsListResultItemCheckRegionsList>;
 
-export type PoolsListResultItemLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsListResultItemLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsListResultItemLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsListResultItemLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsListResultItemLoadSheddingSessionPolicy = "hash";
 export const PoolsListResultItemLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -5015,8 +4958,7 @@ export type PoolsListResultItemOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsListResultItemOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsListResultItemOriginSteering {
@@ -5222,12 +5164,7 @@ export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRegionsResponse",
 }) as any as S.Schema<ListRegionsResponse>;
 
-export type SearchesListRequestReferences =
-  | ""
-  | "*"
-  | "referral"
-  | "referrer"
-  | (string & {});
+export type SearchesListRequestReferences = "" | "*" | "referral" | "referrer";
 export const SearchesListRequestReferences = /*@__PURE__*/ S.String;
 
 export interface ListSearchesRequest {
@@ -5238,7 +5175,7 @@ export interface ListSearchesRequest {
   /** Search query term. */
   query?: string;
   /** The type of references to include. "*" to include both referral and referrer references. "" to not include any reference information. */
-  references?: SearchesListRequestReferences;
+  references?: SearchesListRequestReferences | (string & {});
 }
 export const ListSearchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5262,8 +5199,7 @@ export const ListSearchesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SearchesListResponseResourcesItemReferenceType =
   | "referral"
-  | "referrer"
-  | (string & {});
+  | "referrer";
 export const SearchesListResponseResourcesItemReferenceType =
   /*@__PURE__*/ S.String;
 
@@ -5277,8 +5213,7 @@ export const SearchesListResponseResourcesItemReferencesList =
 export type SearchesListResponseResourcesItemResourceType =
   | "load_balancer"
   | "monitor"
-  | "pool"
-  | (string & {});
+  | "pool";
 export const SearchesListResponseResourcesItemResourceType =
   /*@__PURE__*/ S.String;
 
@@ -5364,25 +5299,21 @@ export const EditRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestDefaultPoolsList>;
 
-export type EditRequestLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type EditRequestLocationStrategyMode = "pop" | "resolver_ip";
 export const EditRequestLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type EditRequestLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const EditRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface EditRequestLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: EditRequestLocationStrategyMode;
+  mode?: EditRequestLocationStrategyMode | (string & {});
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: EditRequestLocationStrategyPreferEcs;
+  preferEcs?: EditRequestLocationStrategyPreferEcs | (string & {});
 }
 export const EditRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5525,8 +5456,7 @@ export type EditRequestRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header"
-  | (string & {});
+  | "header";
 export const EditRequestRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -5541,21 +5471,19 @@ export type EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -5567,11 +5495,17 @@ export interface EditRequestRulesItemOverridesSessionAffinityAttributes {
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
   requireAllHeaders?: boolean;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: EditRequestRulesItemOverridesSessionAffinityAttributesSamesite;
+  samesite?:
+    | EditRequestRulesItemOverridesSessionAffinityAttributesSamesite
+    | (string & {});
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: EditRequestRulesItemOverridesSessionAffinityAttributesSecure;
+  secure?:
+    | EditRequestRulesItemOverridesSessionAffinityAttributesSecure
+    | (string & {});
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
+  zeroDowntimeFailover?:
+    | EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover
+    | (string & {});
 }
 export const EditRequestRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
@@ -5607,8 +5541,7 @@ export type EditRequestRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | ""
-  | (string & {});
+  | "";
 export const EditRequestRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -5630,13 +5563,15 @@ export interface EditRequestRulesItemOverrides {
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: EditRequestRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: EditRequestRulesItemOverridesSessionAffinity;
+  sessionAffinity?:
+    | EditRequestRulesItemOverridesSessionAffinity
+    | (string & {});
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: EditRequestRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: EditRequestRulesItemOverridesSteeringPolicy | (string & {});
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -5759,13 +5694,15 @@ export interface PatchLoadBalancerRequest {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: EditRequestRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: EditRequestRulesItemOverridesSessionAffinity;
+  sessionAffinity?:
+    | EditRequestRulesItemOverridesSessionAffinity
+    | (string & {});
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: EditRequestRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: EditRequestRulesItemOverridesSteeringPolicy | (string & {});
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -5862,18 +5799,14 @@ export const EditResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseDefaultPoolsList>;
 
-export type EditResponseLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type EditResponseLocationStrategyMode = "pop" | "resolver_ip";
 export const EditResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type EditResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const EditResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface EditResponseLocationStrategy {
@@ -6030,8 +5963,7 @@ export type EditResponseRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header"
-  | (string & {});
+  | "header";
 export const EditResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -6046,21 +5978,19 @@ export type EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -6112,8 +6042,7 @@ export type EditResponseRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | ""
-  | (string & {});
+  | "";
 export const EditResponseRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -6354,8 +6283,7 @@ export type MonitorsEditRequestType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp"
-  | (string & {});
+  | "smtp";
 export const MonitorsEditRequestType = /*@__PURE__*/ S.String;
 
 export interface PatchMonitorRequest {
@@ -6393,7 +6321,7 @@ export interface PatchMonitorRequest {
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsEditRequestType;
+  type?: MonitorsEditRequestType | (string & {});
 }
 export const PatchMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6447,8 +6375,7 @@ export type MonitorsEditResponseType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp"
-  | (string & {});
+  | "smtp";
 export const MonitorsEditResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -6649,34 +6576,31 @@ export type PoolsEditRequestCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const PoolsEditRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type PoolsEditRequestCheckRegionsList =
-  ReadonlyArray<PoolsEditRequestCheckRegionsItem>;
+export type PoolsEditRequestCheckRegionsList = ReadonlyArray<
+  PoolsEditRequestCheckRegionsItem | (string & {})
+>;
 export const PoolsEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsEditRequestCheckRegionsItem,
 ) as any as S.Schema<PoolsEditRequestCheckRegionsList>;
 
-export type PoolsEditRequestLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsEditRequestLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsEditRequestLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
 
-export type PoolsEditRequestLoadSheddingSessionPolicy = "hash" | (string & {});
+export type PoolsEditRequestLoadSheddingSessionPolicy = "hash";
 export const PoolsEditRequestLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditRequestLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
   defaultPercent?: number;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsEditRequestLoadSheddingDefaultPolicy;
+  defaultPolicy?: PoolsEditRequestLoadSheddingDefaultPolicy | (string & {});
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
   sessionPercent?: number;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy | (string & {});
 }
 export const PoolsEditRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6728,13 +6652,12 @@ export type PoolsEditRequestOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsEditRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditRequestOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsEditRequestOriginSteeringPolicy;
+  policy?: PoolsEditRequestOriginSteeringPolicy | (string & {});
 }
 export const PoolsEditRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6889,8 +6812,7 @@ export type PoolsEditResponseCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const PoolsEditResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsEditResponseCheckRegionsList =
@@ -6899,14 +6821,11 @@ export const PoolsEditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsEditResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsEditResponseCheckRegionsList>;
 
-export type PoolsEditResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsEditResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsEditResponseLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsEditResponseLoadSheddingSessionPolicy = "hash" | (string & {});
+export type PoolsEditResponseLoadSheddingSessionPolicy = "hash";
 export const PoolsEditResponseLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -6975,8 +6894,7 @@ export type PoolsEditResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsEditResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditResponseOriginSteering {
@@ -7154,25 +7072,21 @@ export const UpdateRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   UpdateRequestCountryPoolsValueList,
 ) as any as S.Schema<UpdateRequestCountryPoolsMap>;
 
-export type UpdateRequestLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type UpdateRequestLocationStrategyMode = "pop" | "resolver_ip";
 export const UpdateRequestLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type UpdateRequestLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const UpdateRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: UpdateRequestLocationStrategyMode;
+  mode?: UpdateRequestLocationStrategyMode | (string & {});
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: UpdateRequestLocationStrategyPreferEcs;
+  preferEcs?: UpdateRequestLocationStrategyPreferEcs | (string & {});
 }
 export const UpdateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7325,8 +7239,7 @@ export type UpdateRequestRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header"
-  | (string & {});
+  | "header";
 export const UpdateRequestRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -7341,21 +7254,19 @@ export type UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -7367,11 +7278,17 @@ export interface UpdateRequestRulesItemOverridesSessionAffinityAttributes {
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
   requireAllHeaders?: boolean;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite;
+  samesite?:
+    | UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite
+    | (string & {});
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure;
+  secure?:
+    | UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure
+    | (string & {});
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
+  zeroDowntimeFailover?:
+    | UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover
+    | (string & {});
 }
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
@@ -7407,8 +7324,7 @@ export type UpdateRequestRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | ""
-  | (string & {});
+  | "";
 export const UpdateRequestRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -7430,13 +7346,17 @@ export interface UpdateRequestRulesItemOverrides {
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: UpdateRequestRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: UpdateRequestRulesItemOverridesSessionAffinity;
+  sessionAffinity?:
+    | UpdateRequestRulesItemOverridesSessionAffinity
+    | (string & {});
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: UpdateRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: UpdateRequestRulesItemOverridesSteeringPolicy;
+  steeringPolicy?:
+    | UpdateRequestRulesItemOverridesSteeringPolicy
+    | (string & {});
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -7563,13 +7483,17 @@ export interface UpdateLoadBalancerRequest {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: UpdateRequestRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: UpdateRequestRulesItemOverridesSessionAffinity;
+  sessionAffinity?:
+    | UpdateRequestRulesItemOverridesSessionAffinity
+    | (string & {});
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: UpdateRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: UpdateRequestRulesItemOverridesSteeringPolicy;
+  steeringPolicy?:
+    | UpdateRequestRulesItemOverridesSteeringPolicy
+    | (string & {});
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -7665,18 +7589,14 @@ export const UpdateResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseDefaultPoolsList>;
 
-export type UpdateResponseLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type UpdateResponseLocationStrategyMode = "pop" | "resolver_ip";
 export const UpdateResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type UpdateResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const UpdateResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseLocationStrategy {
@@ -7838,8 +7758,7 @@ export type UpdateResponseRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header"
-  | (string & {});
+  | "header";
 export const UpdateResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -7854,21 +7773,19 @@ export type UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -7920,8 +7837,7 @@ export type UpdateResponseRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | ""
-  | (string & {});
+  | "";
 export const UpdateResponseRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -8164,8 +8080,7 @@ export type MonitorsUpdateRequestType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp"
-  | (string & {});
+  | "smtp";
 export const MonitorsUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface UpdateMonitorRequest {
@@ -8203,7 +8118,7 @@ export interface UpdateMonitorRequest {
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsUpdateRequestType;
+  type?: MonitorsUpdateRequestType | (string & {});
 }
 export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8257,8 +8172,7 @@ export type MonitorsUpdateResponseType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp"
-  | (string & {});
+  | "smtp";
 export const MonitorsUpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -8520,26 +8434,21 @@ export type PoolsUpdateRequestCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const PoolsUpdateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type PoolsUpdateRequestCheckRegionsList =
-  ReadonlyArray<PoolsUpdateRequestCheckRegionsItem>;
+export type PoolsUpdateRequestCheckRegionsList = ReadonlyArray<
+  PoolsUpdateRequestCheckRegionsItem | (string & {})
+>;
 export const PoolsUpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsUpdateRequestCheckRegionsItem,
 ) as any as S.Schema<PoolsUpdateRequestCheckRegionsList>;
 
-export type PoolsUpdateRequestLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsUpdateRequestLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsUpdateRequestLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsUpdateRequestLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsUpdateRequestLoadSheddingSessionPolicy = "hash";
 export const PoolsUpdateRequestLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -8547,11 +8456,11 @@ export interface PoolsUpdateRequestLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
   defaultPercent?: number;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsUpdateRequestLoadSheddingDefaultPolicy;
+  defaultPolicy?: PoolsUpdateRequestLoadSheddingDefaultPolicy | (string & {});
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
   sessionPercent?: number;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy | (string & {});
 }
 export const PoolsUpdateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8608,13 +8517,12 @@ export type PoolsUpdateRequestOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsUpdateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsUpdateRequestOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsUpdateRequestOriginSteeringPolicy;
+  policy?: PoolsUpdateRequestOriginSteeringPolicy | (string & {});
 }
 export const PoolsUpdateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8710,8 +8618,7 @@ export type PoolsUpdateResponseCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const PoolsUpdateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsUpdateResponseCheckRegionsList =
@@ -8720,16 +8627,11 @@ export const PoolsUpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsUpdateResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsUpdateResponseCheckRegionsList>;
 
-export type PoolsUpdateResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsUpdateResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsUpdateResponseLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsUpdateResponseLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsUpdateResponseLoadSheddingSessionPolicy = "hash";
 export const PoolsUpdateResponseLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -8803,8 +8705,7 @@ export type PoolsUpdateResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsUpdateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsUpdateResponseOriginSteering {

@@ -66,8 +66,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -89,7 +88,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface WorkbookResourceIdentityInput {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
 export const WorkbookResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
@@ -102,9 +101,7 @@ export const WorkbookResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkbookResourceIdentityInput>;
 
 /** The kind of workbook. Only valid value is shared. */
-export type ApplicationInsightsCommonTypesWorkbookSharedTypeKind =
-  | "shared"
-  | (string & {});
+export type ApplicationInsightsCommonTypesWorkbookSharedTypeKind = "shared";
 export const ApplicationInsightsCommonTypesWorkbookSharedTypeKind =
   /*@__PURE__*/ S.String;
 
@@ -126,7 +123,7 @@ export interface WorkbooksCreateOrUpdateRequest {
   /** Identity used for BYOS */
   identity?: WorkbookResourceIdentityInput;
   /** The kind of workbook. Only valid value is shared. */
-  kind?: ApplicationInsightsCommonTypesWorkbookSharedTypeKind;
+  kind?: ApplicationInsightsCommonTypesWorkbookSharedTypeKind | (string & {});
   /** Resource etag */
   etag?: string;
 }
@@ -159,8 +156,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -168,8 +164,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -450,8 +445,7 @@ export type WorkbooksListByResourceGroupRequestCategory =
   | "workbook"
   | "TSG"
   | "performance"
-  | "retention"
-  | (string & {});
+  | "retention";
 export const WorkbooksListByResourceGroupRequestCategory =
   /*@__PURE__*/ S.String;
 
@@ -467,7 +461,7 @@ export interface WorkbooksListByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** Category of workbook to return. */
-  category: WorkbooksListByResourceGroupRequestCategory;
+  category: WorkbooksListByResourceGroupRequestCategory | (string & {});
   /** Tags presents on each workbook returned. */
   tags?: WorkbooksListByResourceGroupRequestTagsList;
   /** Azure Resource Id that will fetch all linked workbooks. */
@@ -568,8 +562,7 @@ export type WorkbooksListBySubscriptionRequestCategory =
   | "workbook"
   | "TSG"
   | "performance"
-  | "retention"
-  | (string & {});
+  | "retention";
 export const WorkbooksListBySubscriptionRequestCategory =
   /*@__PURE__*/ S.String;
 
@@ -582,7 +575,7 @@ export interface WorkbooksListBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Category of workbook to return. */
-  category: WorkbooksListBySubscriptionRequestCategory;
+  category: WorkbooksListBySubscriptionRequestCategory | (string & {});
   /** Tags presents on each workbook returned. */
   tags?: WorkbooksListBySubscriptionRequestTagsList;
   /** Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks. */
@@ -710,7 +703,7 @@ export const WorkbooksRevisionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkbooksRevisionsListRequest>;
 
 /** The kind of workbook. Only valid value is shared. */
-export type WorkbookUpdateSharedTypeKind = "shared" | (string & {});
+export type WorkbookUpdateSharedTypeKind = "shared";
 export const WorkbookUpdateSharedTypeKind = /*@__PURE__*/ S.String;
 
 /** Resource tags. */
@@ -766,7 +759,7 @@ export interface WorkbooksUpdateRequest {
   /** Azure Resource Id that will fetch all linked workbooks. */
   sourceId?: string;
   /** The kind of workbook. Only valid value is shared. */
-  kind?: WorkbookUpdateSharedTypeKind;
+  kind?: WorkbookUpdateSharedTypeKind | (string & {});
   /** Resource tags. */
   tags?: WorkbooksUpdateRequestTagsMap;
   /** Metadata describing a workbook for an Azure resource. */

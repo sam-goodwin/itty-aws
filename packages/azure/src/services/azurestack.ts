@@ -595,8 +595,7 @@ export type CompatibilityIssue =
   | "ADFSIdentitySystemRequired"
   | "ConnectionToInternetRequired"
   | "ConnectionToAzureRequired"
-  | "DisconnectedEnvironmentRequired"
-  | (string & {});
+  | "DisconnectedEnvironmentRequired";
 export const CompatibilityIssue = /*@__PURE__*/ S.String;
 
 /** List of all issues found */
@@ -890,7 +889,7 @@ export const ProductsListDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductsListDetailsRequest>;
 
 /** Compute role type (IaaS or PaaS). */
-export type ComputeRole = "None" | "IaaS" | "PaaS" | (string & {});
+export type ComputeRole = "None" | "IaaS" | "PaaS";
 export const ComputeRole = /*@__PURE__*/ S.String;
 
 /** The URI. */
@@ -905,7 +904,7 @@ export const Uri = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Uri" }) as any as S.Schema<Uri>;
 
 /** Operating system type (Windows or Linux). */
-export type OperatingSystem = "None" | "Windows" | "Linux" | (string & {});
+export type OperatingSystem = "None" | "Windows" | "Linux";
 export const OperatingSystem = /*@__PURE__*/ S.String;
 
 /** OS disk image. */
@@ -1111,9 +1110,7 @@ export const RegistrationParameterProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationParameterProperties>;
 
 /** Location of the resource. */
-export type RegistrationsCreateOrUpdateRequestLocation =
-  | "global"
-  | (string & {});
+export type RegistrationsCreateOrUpdateRequestLocation = "global";
 export const RegistrationsCreateOrUpdateRequestLocation =
   /*@__PURE__*/ S.String;
 
@@ -1127,7 +1124,7 @@ export interface RegistrationsCreateOrUpdateRequest {
   /** Properties of the Azure Stack registration resource */
   properties: RegistrationParameterProperties;
   /** Location of the resource. */
-  location: RegistrationsCreateOrUpdateRequestLocation;
+  location: RegistrationsCreateOrUpdateRequestLocation | (string & {});
 }
 export const RegistrationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1149,9 +1146,7 @@ export const RegistrationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsCreateOrUpdateRequest>;
 
 /** Location of the resource. */
-export type RegistrationsCreateOrUpdateResponseLocation =
-  | "global"
-  | (string & {});
+export type RegistrationsCreateOrUpdateResponseLocation = "global";
 export const RegistrationsCreateOrUpdateResponseLocation =
   /*@__PURE__*/ S.String;
 
@@ -1304,7 +1299,7 @@ export const RegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsGetRequest>;
 
 /** Location of the resource. */
-export type RegistrationsGetResponseLocation = "global" | (string & {});
+export type RegistrationsGetResponseLocation = "global";
 export const RegistrationsGetResponseLocation = /*@__PURE__*/ S.String;
 
 /** Custom tags for the resource. */
@@ -1408,7 +1403,7 @@ export const RegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsListRequest>;
 
 /** Location of the resource. */
-export type RegistrationLocation = "global" | (string & {});
+export type RegistrationLocation = "global";
 export const RegistrationLocation = /*@__PURE__*/ S.String;
 
 /** Custom tags for the resource. */
@@ -1490,7 +1485,7 @@ export const RegistrationsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegistrationsListBySubscriptionRequest>;
 
 /** Location of the resource. */
-export type RegistrationsUpdateRequestLocation = "global" | (string & {});
+export type RegistrationsUpdateRequestLocation = "global";
 export const RegistrationsUpdateRequestLocation = /*@__PURE__*/ S.String;
 
 export interface RegistrationsUpdateRequest {
@@ -1503,7 +1498,7 @@ export interface RegistrationsUpdateRequest {
   /** Properties of the Azure Stack registration resource */
   properties: RegistrationParameterProperties;
   /** Location of the resource. */
-  location: RegistrationsUpdateRequestLocation;
+  location: RegistrationsUpdateRequestLocation | (string & {});
 }
 export const RegistrationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1525,7 +1520,7 @@ export const RegistrationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsUpdateRequest>;
 
 /** Location of the resource. */
-export type RegistrationsUpdateResponseLocation = "global" | (string & {});
+export type RegistrationsUpdateResponseLocation = "global";
 export const RegistrationsUpdateResponseLocation = /*@__PURE__*/ S.String;
 
 /** Custom tags for the resource. */

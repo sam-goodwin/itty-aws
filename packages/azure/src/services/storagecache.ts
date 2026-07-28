@@ -140,8 +140,7 @@ export type MaintenanceDayOfWeekType =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday"
-  | (string & {});
+  | "Sunday";
 export const MaintenanceDayOfWeekType = /*@__PURE__*/ S.String;
 
 /** Start time of a 30-minute weekly maintenance window. */
@@ -207,17 +206,13 @@ export const AmlFilesystemPropertiesHsmInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AmlFilesystemPropertiesHsmInput>;
 
 /** Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems. */
-export type AmlFilesystemSquashMode =
-  | "None"
-  | "RootOnly"
-  | "All"
-  | (string & {});
+export type AmlFilesystemSquashMode = "None" | "RootOnly" | "All";
 export const AmlFilesystemSquashMode = /*@__PURE__*/ S.String;
 
 /** AML file system squash settings. */
 export interface AmlFilesystemRootSquashSettingsInput {
   /** Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems. */
-  mode?: AmlFilesystemSquashMode;
+  mode?: AmlFilesystemSquashMode | (string & {});
   /** Semicolon separated NID IP Address list(s) to be added to the TrustedSystems. */
   noSquashNidLists?: string;
   /** User ID to squash to. */
@@ -266,7 +261,7 @@ export const AmlFilesystemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AmlFilesystemPropertiesInput>;
 
 /** The type of identity used for the resource. */
-export type AmlFilesystemIdentityType = "UserAssigned" | "None" | (string & {});
+export type AmlFilesystemIdentityType = "UserAssigned" | "None";
 export const AmlFilesystemIdentityType = /*@__PURE__*/ S.String;
 
 export interface UserAssignedIdentitiesValueInput {}
@@ -289,7 +284,7 @@ export const AmlFilesystemIdentityInputUserAssignedIdentitiesMap =
 /** Managed Identity properties. */
 export interface AmlFilesystemIdentityInput {
   /** The type of identity used for the resource. */
-  type?: AmlFilesystemIdentityType;
+  type?: AmlFilesystemIdentityType | (string & {});
   /** A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary. */
   userAssignedIdentities?: AmlFilesystemIdentityInputUserAssignedIdentitiesMap;
 }
@@ -371,8 +366,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -380,8 +374,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -427,8 +420,7 @@ export type AmlFilesystemHealthStateType =
   | "Degraded"
   | "Transitioning"
   | "Maintenance"
-  | "Expanding"
-  | (string & {});
+  | "Expanding";
 export const AmlFilesystemHealthStateType = /*@__PURE__*/ S.String;
 
 /** An indication of AML file system health. Gives more information about health than just that related to provisioning. */
@@ -457,8 +449,7 @@ export type AmlFilesystemProvisioningStateType =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AmlFilesystemProvisioningStateType = /*@__PURE__*/ S.String;
 
 /** AML file system container storage interface information */
@@ -514,8 +505,7 @@ export type ArchiveStatusType =
   | "Completed"
   | "Failed"
   | "Cancelling"
-  | "FSScanInProgress"
-  | (string & {});
+  | "FSScanInProgress";
 export const ArchiveStatusType = /*@__PURE__*/ S.String;
 
 /** The status of the archive */
@@ -992,7 +982,7 @@ export const AmlFilesystemsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Start time of a 30-minute weekly maintenance window. */
 export interface AmlFilesystemUpdatePropertiesMaintenanceWindow {
   /** Day of the week on which the maintenance window will occur. */
-  dayOfWeek?: MaintenanceDayOfWeekType;
+  dayOfWeek?: MaintenanceDayOfWeekType | (string & {});
   /** The time of day (in UTC) to start the maintenance window. */
   timeOfDayUTC?: string;
 }
@@ -1295,10 +1285,7 @@ export const AutoExportJobsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<AutoExportJobsCreateOrUpdateRequestTagsMap>;
 
 /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
-export type AutoExportJobPropertiesInputAdminStatus =
-  | "Enable"
-  | "Disable"
-  | (string & {});
+export type AutoExportJobPropertiesInputAdminStatus = "Enable" | "Disable";
 export const AutoExportJobPropertiesInputAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1. */
@@ -1312,7 +1299,7 @@ export const AutoExportJobPropertiesInputAutoExportPrefixesList =
 /** Properties of the auto export job. */
 export interface AutoExportJobPropertiesInput {
   /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
-  adminStatus?: AutoExportJobPropertiesInputAdminStatus;
+  adminStatus?: AutoExportJobPropertiesInputAdminStatus | (string & {});
   /** An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1. */
   autoExportPrefixes?: AutoExportJobPropertiesInputAutoExportPrefixesList;
 }
@@ -1381,15 +1368,11 @@ export type AutoExportJobProvisioningStateType =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AutoExportJobProvisioningStateType = /*@__PURE__*/ S.String;
 
 /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
-export type AutoExportJobPropertiesAdminStatus =
-  | "Enable"
-  | "Disable"
-  | (string & {});
+export type AutoExportJobPropertiesAdminStatus = "Enable" | "Disable";
 export const AutoExportJobPropertiesAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1. */
@@ -1406,8 +1389,7 @@ export type AutoExportStatusType =
   | "Disabling"
   | "Disabled"
   | "DisableFailed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const AutoExportStatusType = /*@__PURE__*/ S.String;
 
 /** The status of the auto export */
@@ -1716,12 +1698,12 @@ export const AutoExportJobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AutoExportJobsUpdateRequestTagsMap>;
 
 /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
-export type AutoExportJobAdminStatus = "Enable" | "Disable" | (string & {});
+export type AutoExportJobAdminStatus = "Enable" | "Disable";
 export const AutoExportJobAdminStatus = /*@__PURE__*/ S.String;
 
 export interface AutoExportJobUpdateProperties {
   /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
-  adminStatus?: AutoExportJobAdminStatus;
+  adminStatus?: AutoExportJobAdminStatus | (string & {});
 }
 export const AutoExportJobUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1814,10 +1796,7 @@ export const AutoImportJobsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<AutoImportJobsCreateOrUpdateRequestTagsMap>;
 
 /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
-export type AutoImportJobPropertiesInputAdminStatus =
-  | "Enable"
-  | "Disable"
-  | (string & {});
+export type AutoImportJobPropertiesInputAdminStatus = "Enable" | "Disable";
 export const AutoImportJobPropertiesInputAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get auto imported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths is 100. */
@@ -1833,19 +1812,20 @@ export type AutoImportJobPropertiesInputConflictResolutionMode =
   | "Fail"
   | "Skip"
   | "OverwriteIfDirty"
-  | "OverwriteAlways"
-  | (string & {});
+  | "OverwriteAlways";
 export const AutoImportJobPropertiesInputConflictResolutionMode =
   /*@__PURE__*/ S.String;
 
 /** Properties of the auto import job. */
 export interface AutoImportJobPropertiesInput {
   /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
-  adminStatus?: AutoImportJobPropertiesInputAdminStatus;
+  adminStatus?: AutoImportJobPropertiesInputAdminStatus | (string & {});
   /** An array of blob paths/prefixes that get auto imported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths is 100. */
   autoImportPrefixes?: AutoImportJobPropertiesInputAutoImportPrefixesList;
   /** How the auto import job will handle conflicts. For example, if the auto import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the auto import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the auto import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or is currently released. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/blob-integration#conflict-resolution-mode for a thorough explanation of these resolution modes. */
-  conflictResolutionMode?: AutoImportJobPropertiesInputConflictResolutionMode;
+  conflictResolutionMode?:
+    | AutoImportJobPropertiesInputConflictResolutionMode
+    | (string & {});
   /** Whether or not to enable deletions during auto import. This only affects overwrite-dirty. */
   enableDeletions?: boolean;
   /** Total non-conflict-oriented errors (e.g., OS errors) Import will tolerate before exiting with failure. -1 means infinite. 0 means exit immediately on any error. */
@@ -1921,15 +1901,11 @@ export type AutoImportJobPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AutoImportJobPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
-export type AutoImportJobPropertiesAdminStatus =
-  | "Enable"
-  | "Disable"
-  | (string & {});
+export type AutoImportJobPropertiesAdminStatus = "Enable" | "Disable";
 export const AutoImportJobPropertiesAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get auto imported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths is 100. */
@@ -1945,8 +1921,7 @@ export type AutoImportJobPropertiesConflictResolutionMode =
   | "Fail"
   | "Skip"
   | "OverwriteIfDirty"
-  | "OverwriteAlways"
-  | (string & {});
+  | "OverwriteAlways";
 export const AutoImportJobPropertiesConflictResolutionMode =
   /*@__PURE__*/ S.String;
 
@@ -1955,8 +1930,7 @@ export type AutoImportJobState =
   | "InProgress"
   | "Failed"
   | "Disabling"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const AutoImportJobState = /*@__PURE__*/ S.String;
 
 /** The storage account blob change feed status of the auto import job. */
@@ -2341,15 +2315,12 @@ export const AutoImportJobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AutoImportJobsUpdateRequestTagsMap>;
 
 /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
-export type AutoImportJobUpdatePropertiesAdminStatus =
-  | "Enable"
-  | "Disable"
-  | (string & {});
+export type AutoImportJobUpdatePropertiesAdminStatus = "Enable" | "Disable";
 export const AutoImportJobUpdatePropertiesAdminStatus = /*@__PURE__*/ S.String;
 
 export interface AutoImportJobUpdateProperties {
   /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
-  adminStatus?: AutoImportJobUpdatePropertiesAdminStatus;
+  adminStatus?: AutoImportJobUpdatePropertiesAdminStatus | (string & {});
 }
 export const AutoImportJobUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2492,11 +2463,11 @@ export const CacheEncryptionSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheEncryptionSettings>;
 
 /** Scope for this rule. The scope and filter determine which clients match the rule. */
-export type NfsAccessRuleScope = "default" | "network" | "host" | (string & {});
+export type NfsAccessRuleScope = "default" | "network" | "host";
 export const NfsAccessRuleScope = /*@__PURE__*/ S.String;
 
 /** Access allowed by this rule. */
-export type NfsAccessRuleAccess = "no" | "ro" | "rw" | (string & {});
+export type NfsAccessRuleAccess = "no" | "ro" | "rw";
 export const NfsAccessRuleAccess = /*@__PURE__*/ S.String;
 
 /** Rule to place restrictions on portions of the cache namespace being presented to clients. */
@@ -2574,7 +2545,7 @@ export const CacheSecuritySettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheSecuritySettings>;
 
 /** True if the HPC Cache is joined to the Active Directory domain. */
-export type DomainJoinedType = "Yes" | "No" | "Error" | (string & {});
+export type DomainJoinedType = "Yes" | "No" | "Error";
 export const DomainJoinedType = /*@__PURE__*/ S.String;
 
 /** Active Directory admin credentials used to join the HPC Cache to a domain. */
@@ -2630,13 +2601,12 @@ export type CacheUsernameDownloadSettingsUsernameSource =
   | "AD"
   | "LDAP"
   | "File"
-  | "None"
-  | (string & {});
+  | "None";
 export const CacheUsernameDownloadSettingsUsernameSource =
   /*@__PURE__*/ S.String;
 
 /** Indicates whether or not the HPC Cache has performed the username download successfully. */
-export type UsernameDownloadedType = "Yes" | "No" | "Error" | (string & {});
+export type UsernameDownloadedType = "Yes" | "No" | "Error";
 export const UsernameDownloadedType = /*@__PURE__*/ S.String;
 
 /** When present, these are the credentials for the secure LDAP connection. */
@@ -2798,8 +2768,7 @@ export type CacheIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const CacheIdentityType = /*@__PURE__*/ S.String;
 
 /** A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary. */
@@ -2815,7 +2784,7 @@ export const CacheIdentityInputUserAssignedIdentitiesMap =
 /** Cache identity properties. */
 export interface CacheIdentityInput {
   /** The type of identity used for the cache */
-  type?: CacheIdentityType;
+  type?: CacheIdentityType | (string & {});
   /** A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary. */
   userAssignedIdentities?: CacheIdentityInputUserAssignedIdentitiesMap;
 }
@@ -2894,8 +2863,7 @@ export type HealthStateType =
   | "Flushing"
   | "WaitingForKey"
   | "StartFailed"
-  | "UpgradeFailed"
-  | (string & {});
+  | "UpgradeFailed";
 export const HealthStateType = /*@__PURE__*/ S.String;
 
 /** Outstanding conditions that will need to be resolved. */
@@ -2948,12 +2916,11 @@ export type ProvisioningStateType =
   | "Canceled"
   | "Creating"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningStateType = /*@__PURE__*/ S.String;
 
 /** True if there is a firmware update ready to install on this cache. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation. */
-export type FirmwareStatusType = "available" | "unavailable" | (string & {});
+export type FirmwareStatusType = "available" | "unavailable";
 export const FirmwareStatusType = /*@__PURE__*/ S.String;
 
 /** Properties describing the software upgrade state of the cache. */
@@ -3025,12 +2992,7 @@ export const CachePropertiesZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CachePropertiesZonesList>;
 
 /** The state of the priming operation. */
-export type PrimingJobState =
-  | "Queued"
-  | "Running"
-  | "Paused"
-  | "Complete"
-  | (string & {});
+export type PrimingJobState = "Queued" | "Running" | "Paused" | "Complete";
 export const PrimingJobState = /*@__PURE__*/ S.String;
 
 /** A priming job instance. */
@@ -3969,8 +3931,7 @@ export type ExpansionJobPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ExpansionJobPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The operational state of the expansion job. InProgress indicates the expansion is still running. Completed indicates expansion finished successfully. Failed means the expansion was unable to complete due to a fatal error. Deleting indicates the expansion is being rolled back. */
@@ -3979,8 +3940,7 @@ export type ExpansionJobStatusType =
   | "Completed"
   | "Failed"
   | "Deleting"
-  | "RollingBack"
-  | (string & {});
+  | "RollingBack";
 export const ExpansionJobStatusType = /*@__PURE__*/ S.String;
 
 /** The status of the expansion job. */
@@ -4373,10 +4333,7 @@ export const ImportJobsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ImportJobsCreateOrUpdateRequestTagsMap>;
 
 /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'. */
-export type ImportJobPropertiesInputAdminStatus =
-  | "Active"
-  | "Cancel"
-  | (string & {});
+export type ImportJobPropertiesInputAdminStatus = "Active" | "Cancel";
 export const ImportJobPropertiesInputAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value. */
@@ -4390,19 +4347,20 @@ export type ImportJobPropertiesInputConflictResolutionMode =
   | "Fail"
   | "Skip"
   | "OverwriteIfDirty"
-  | "OverwriteAlways"
-  | (string & {});
+  | "OverwriteAlways";
 export const ImportJobPropertiesInputConflictResolutionMode =
   /*@__PURE__*/ S.String;
 
 /** Properties of the import job. */
 export interface ImportJobPropertiesInput {
   /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'. */
-  adminStatus?: ImportJobPropertiesInputAdminStatus;
+  adminStatus?: ImportJobPropertiesInputAdminStatus | (string & {});
   /** An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value. */
   importPrefixes?: ImportJobPropertiesInputImportPrefixesList;
   /** How the import job will handle conflicts. For example, if the import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or was not previously imported. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/ for a thorough explanation of these resolution modes. */
-  conflictResolutionMode?: ImportJobPropertiesInputConflictResolutionMode;
+  conflictResolutionMode?:
+    | ImportJobPropertiesInputConflictResolutionMode
+    | (string & {});
   /** Total non-conflict oriented errors the import job will tolerate before exiting with failure. -1 means infinite. 0 means exit immediately and is the default. */
   maximumErrors?: number;
 }
@@ -4472,15 +4430,11 @@ export type ImportJobProvisioningStateType =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ImportJobProvisioningStateType = /*@__PURE__*/ S.String;
 
 /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'. */
-export type ImportJobPropertiesAdminStatus =
-  | "Active"
-  | "Cancel"
-  | (string & {});
+export type ImportJobPropertiesAdminStatus = "Active" | "Cancel";
 export const ImportJobPropertiesAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value. */
@@ -4494,8 +4448,7 @@ export type ImportJobPropertiesConflictResolutionMode =
   | "Fail"
   | "Skip"
   | "OverwriteIfDirty"
-  | "OverwriteAlways"
-  | (string & {});
+  | "OverwriteAlways";
 export const ImportJobPropertiesConflictResolutionMode = /*@__PURE__*/ S.String;
 
 /** The operational state of the import job. InProgress indicates the import is still running. Canceled indicates it has been canceled by the user. Completed indicates import finished, successfully importing all discovered blobs into the Lustre namespace. CompletedPartial indicates the import finished but some blobs either were found to be conflicting and could not be imported or other errors were encountered. Failed means the import was unable to complete due to a fatal error. */
@@ -4505,8 +4458,7 @@ export type ImportStatusType =
   | "Canceled"
   | "Completed"
   | "CompletedPartial"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ImportStatusType = /*@__PURE__*/ S.String;
 
 /** The status of the import */
@@ -4823,12 +4775,12 @@ export const ImportJobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ImportJobsUpdateRequestTagsMap>;
 
 /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'. */
-export type ImportJobAdminStatus = "Active" | "Cancel" | (string & {});
+export type ImportJobAdminStatus = "Active" | "Cancel";
 export const ImportJobAdminStatus = /*@__PURE__*/ S.String;
 
 export interface ImportJobUpdateProperties {
   /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. */
-  adminStatus?: ImportJobAdminStatus;
+  adminStatus?: ImportJobAdminStatus | (string & {});
 }
 export const ImportJobUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4953,8 +4905,7 @@ export type MetricAggregationType =
   | "Minimum"
   | "Maximum"
   | "Total"
-  | "Count"
-  | (string & {});
+  | "Count";
 export const MetricAggregationType = /*@__PURE__*/ S.String;
 
 /** Support metric aggregation type. */
@@ -5226,10 +5177,7 @@ export const RestrictionValuesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RestrictionValuesList>;
 
 /** The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". "QuotaId" is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. "NotAvailableForSubscription" is related to capacity at the datacenter. */
-export type ReasonCode =
-  | "QuotaId"
-  | "NotAvailableForSubscription"
-  | (string & {});
+export type ReasonCode = "QuotaId" | "NotAvailableForSubscription";
 export const ReasonCode = /*@__PURE__*/ S.String;
 
 /** The restrictions preventing this SKU from being used. */
@@ -5438,21 +5386,11 @@ export const StorageTargetPropertiesInputJunctionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StorageTargetPropertiesInputJunctionsList>;
 
 /** Type of the Storage Target. */
-export type StorageTargetType =
-  | "nfs3"
-  | "clfs"
-  | "unknown"
-  | "blobNfs"
-  | (string & {});
+export type StorageTargetType = "nfs3" | "clfs" | "unknown" | "blobNfs";
 export const StorageTargetType = /*@__PURE__*/ S.String;
 
 /** Storage target operational state. */
-export type OperationalStateType =
-  | "Ready"
-  | "Busy"
-  | "Suspended"
-  | "Flushing"
-  | (string & {});
+export type OperationalStateType = "Ready" | "Busy" | "Suspended" | "Flushing";
 export const OperationalStateType = /*@__PURE__*/ S.String;
 
 /** Properties pertaining to the Nfs3Target */
@@ -5529,9 +5467,9 @@ export interface StorageTargetPropertiesInput {
   /** List of cache namespace junctions to target for namespace associations. */
   junctions?: StorageTargetPropertiesInputJunctionsList;
   /** Type of the Storage Target. */
-  targetType: StorageTargetType;
+  targetType: StorageTargetType | (string & {});
   /** Storage target operational state. */
-  state?: OperationalStateType;
+  state?: OperationalStateType | (string & {});
   /** Properties when targetType is nfs3. */
   nfs3?: Nfs3Target;
   /** Properties when targetType is clfs. */

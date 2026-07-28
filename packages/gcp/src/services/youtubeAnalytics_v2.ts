@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface DeleteGroupItemsRequest {
@@ -67,43 +67,20 @@ export interface DeleteGroupItemsRequest {
   onBehalfOfContentOwner?: string;
 }
 export const DeleteGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String.pipe(T.Query())),
-    onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v2/groupItems",
-      baseUrl: "https://youtubeanalytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteGroupItemsRequest",
-}) as any as S.Schema<DeleteGroupItemsRequest>;
+S.Struct({
+  "id": S.optional(S.String.pipe(T.Query())),
+  "onBehalfOfContentOwner": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/groupItems","baseUrl":"https://youtubeanalytics.googleapis.com/"})),
+).annotate({ identifier: "DeleteGroupItemsRequest" }) as any as S.Schema<DeleteGroupItemsRequest>;
 
-export type ErrorsCodeEnum =
-  | "BAD_REQUEST"
-  | "FORBIDDEN"
-  | "NOT_FOUND"
-  | "CONFLICT"
-  | "GONE"
-  | "PRECONDITION_FAILED"
-  | "INTERNAL_ERROR"
-  | "SERVICE_UNAVAILABLE"
-  | (string & {});
+export type ErrorsCodeEnum = "BAD_REQUEST" | "FORBIDDEN" | "NOT_FOUND" | "CONFLICT" | "GONE" | "PRECONDITION_FAILED" | "INTERNAL_ERROR" | "SERVICE_UNAVAILABLE";
 export const ErrorsCodeEnum = /*@__PURE__*/ S.String;
 
-export type ErrorProtoLocationTypeEnum =
-  | "PATH"
-  | "OTHER"
-  | "PARAMETER"
-  | (string & {});
+export type ErrorProtoLocationTypeEnum = "PATH" | "OTHER" | "PARAMETER";
 export const ErrorProtoLocationTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Describes one specific error. */
 export interface ErrorProto {
@@ -122,21 +99,19 @@ export interface ErrorProto {
   debugInfo?: string;
 }
 export const ErrorProto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationType: S.optional(ErrorProtoLocationTypeEnum),
-    domain: S.optional(S.String),
-    argument: S.optional(StringList),
-    location: S.optional(S.String),
-    externalErrorMessage: S.optional(S.String),
-    code: S.optional(S.String),
-    debugInfo: S.optional(S.String),
-  }),
+S.Struct({
+  "locationType": S.optional(ErrorProtoLocationTypeEnum),
+  "domain": S.optional(S.String),
+  "argument": S.optional(StringList),
+  "location": S.optional(S.String),
+  "externalErrorMessage": S.optional(S.String),
+  "code": S.optional(S.String),
+  "debugInfo": S.optional(S.String),
+}),
 ).annotate({ identifier: "ErrorProto" }) as any as S.Schema<ErrorProto>;
 
 export type ErrorProtoList = ReadonlyArray<ErrorProto>;
-export const ErrorProtoList = /*@__PURE__*/ S.Array(
-  ErrorProto,
-) as any as S.Schema<ErrorProtoList>;
+export const ErrorProtoList = /*@__PURE__*/ S.Array(ErrorProto) as any as S.Schema<ErrorProtoList>;
 
 /** Request Error information. The presence of an error field signals that the operation has failed. */
 export interface Errors {
@@ -148,11 +123,11 @@ export interface Errors {
   error?: ErrorProtoList;
 }
 export const Errors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-    code: S.optional(ErrorsCodeEnum),
-    error: S.optional(ErrorProtoList),
-  }),
+S.Struct({
+  "requestId": S.optional(S.String),
+  "code": S.optional(ErrorsCodeEnum),
+  "error": S.optional(ErrorProtoList),
+}),
 ).annotate({ identifier: "Errors" }) as any as S.Schema<Errors>;
 
 /** Empty response. */
@@ -161,9 +136,9 @@ export interface EmptyResponse {
   errors?: Errors;
 }
 export const EmptyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(Errors),
-  }),
+S.Struct({
+  "errors": S.optional(Errors),
+}),
 ).annotate({ identifier: "EmptyResponse" }) as any as S.Schema<EmptyResponse>;
 
 export interface DeleteGroupsRequest {
@@ -173,19 +148,11 @@ export interface DeleteGroupsRequest {
   id?: string;
 }
 export const DeleteGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-    id: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v2/groups",
-      baseUrl: "https://youtubeanalytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteGroupsRequest",
-}) as any as S.Schema<DeleteGroupsRequest>;
+S.Struct({
+  "onBehalfOfContentOwner": S.optional(S.String.pipe(T.Query())),
+  "id": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/groups","baseUrl":"https://youtubeanalytics.googleapis.com/"})),
+).annotate({ identifier: "DeleteGroupsRequest" }) as any as S.Schema<DeleteGroupsRequest>;
 
 export interface GroupItemResource {
   /** Identifies the type of resource being added to the group. Valid values for this property are: * `youtube#channel` * `youtube#playlist` * `youtube#video` * `youtubePartner#asset` */
@@ -194,13 +161,11 @@ export interface GroupItemResource {
   id?: string;
 }
 export const GroupItemResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GroupItemResource",
-}) as any as S.Schema<GroupItemResource>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+}),
+).annotate({ identifier: "GroupItemResource" }) as any as S.Schema<GroupItemResource>;
 
 /** A group item. */
 export interface GroupItem {
@@ -218,14 +183,14 @@ export interface GroupItem {
   resource?: GroupItemResource;
 }
 export const GroupItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupId: S.optional(S.String),
-    etag: S.optional(S.String),
-    errors: S.optional(Errors),
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    resource: S.optional(GroupItemResource),
-  }),
+S.Struct({
+  "groupId": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "errors": S.optional(Errors),
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+  "resource": S.optional(GroupItemResource),
+}),
 ).annotate({ identifier: "GroupItem" }) as any as S.Schema<GroupItem>;
 
 export interface InsertGroupItemsRequest {
@@ -235,19 +200,11 @@ export interface InsertGroupItemsRequest {
   body?: GroupItem;
 }
 export const InsertGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(GroupItem.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/groupItems",
-      baseUrl: "https://youtubeanalytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertGroupItemsRequest",
-}) as any as S.Schema<InsertGroupItemsRequest>;
+S.Struct({
+  "onBehalfOfContentOwner": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GroupItem.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/groupItems","baseUrl":"https://youtubeanalytics.googleapis.com/"})),
+).annotate({ identifier: "InsertGroupItemsRequest" }) as any as S.Schema<InsertGroupItemsRequest>;
 
 /** A group snippet. */
 export interface GroupSnippet {
@@ -257,10 +214,10 @@ export interface GroupSnippet {
   title?: string;
 }
 export const GroupSnippet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publishedAt: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
+S.Struct({
+  "publishedAt": S.optional(S.String),
+  "title": S.optional(S.String),
+}),
 ).annotate({ identifier: "GroupSnippet" }) as any as S.Schema<GroupSnippet>;
 
 /** A group's content details. */
@@ -271,13 +228,11 @@ export interface GroupContentDetails {
   itemType?: string;
 }
 export const GroupContentDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemCount: S.optional(S.String),
-    itemType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GroupContentDetails",
-}) as any as S.Schema<GroupContentDetails>;
+S.Struct({
+  "itemCount": S.optional(S.String),
+  "itemType": S.optional(S.String),
+}),
+).annotate({ identifier: "GroupContentDetails" }) as any as S.Schema<GroupContentDetails>;
 
 /** A group. */
 export interface Group {
@@ -295,14 +250,14 @@ export interface Group {
   id?: string;
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    snippet: S.optional(GroupSnippet),
-    etag: S.optional(S.String),
-    errors: S.optional(Errors),
-    contentDetails: S.optional(GroupContentDetails),
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "snippet": S.optional(GroupSnippet),
+  "etag": S.optional(S.String),
+  "errors": S.optional(Errors),
+  "contentDetails": S.optional(GroupContentDetails),
+  "kind": S.optional(S.String),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 export interface InsertGroupsRequest {
@@ -312,19 +267,11 @@ export interface InsertGroupsRequest {
   body?: Group;
 }
 export const InsertGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Group.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/groups",
-      baseUrl: "https://youtubeanalytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertGroupsRequest",
-}) as any as S.Schema<InsertGroupsRequest>;
+S.Struct({
+  "onBehalfOfContentOwner": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Group.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/groups","baseUrl":"https://youtubeanalytics.googleapis.com/"})),
+).annotate({ identifier: "InsertGroupsRequest" }) as any as S.Schema<InsertGroupsRequest>;
 
 export interface ListGroupItemsRequest {
   /** This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. */
@@ -333,24 +280,14 @@ export interface ListGroupItemsRequest {
   groupId?: string;
 }
 export const ListGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-    groupId: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/groupItems",
-      baseUrl: "https://youtubeanalytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListGroupItemsRequest",
-}) as any as S.Schema<ListGroupItemsRequest>;
+S.Struct({
+  "onBehalfOfContentOwner": S.optional(S.String.pipe(T.Query())),
+  "groupId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/groupItems","baseUrl":"https://youtubeanalytics.googleapis.com/"})),
+).annotate({ identifier: "ListGroupItemsRequest" }) as any as S.Schema<ListGroupItemsRequest>;
 
 export type GroupItemList = ReadonlyArray<GroupItem>;
-export const GroupItemList = /*@__PURE__*/ S.Array(
-  GroupItem,
-) as any as S.Schema<GroupItemList>;
+export const GroupItemList = /*@__PURE__*/ S.Array(GroupItem) as any as S.Schema<GroupItemList>;
 
 /** Response message for GroupsService.ListGroupItems. */
 export interface ListGroupItemsResponse {
@@ -364,15 +301,13 @@ export interface ListGroupItemsResponse {
   kind?: string;
 }
 export const ListGroupItemsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    errors: S.optional(Errors),
-    items: S.optional(GroupItemList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListGroupItemsResponse",
-}) as any as S.Schema<ListGroupItemsResponse>;
+S.Struct({
+  "etag": S.optional(S.String),
+  "errors": S.optional(Errors),
+  "items": S.optional(GroupItemList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ListGroupItemsResponse" }) as any as S.Schema<ListGroupItemsResponse>;
 
 export interface ListGroupsRequest {
   /** The `pageToken` parameter identifies a specific page in the result set that should be returned. In an API response, the `nextPageToken` property identifies the next page that can be retrieved. */
@@ -385,26 +320,16 @@ export interface ListGroupsRequest {
   mine?: boolean;
 }
 export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-    id: S.optional(S.String.pipe(T.Query())),
-    mine: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/groups",
-      baseUrl: "https://youtubeanalytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListGroupsRequest",
-}) as any as S.Schema<ListGroupsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "onBehalfOfContentOwner": S.optional(S.String.pipe(T.Query())),
+  "id": S.optional(S.String.pipe(T.Query())),
+  "mine": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/groups","baseUrl":"https://youtubeanalytics.googleapis.com/"})),
+).annotate({ identifier: "ListGroupsRequest" }) as any as S.Schema<ListGroupsRequest>;
 
 export type GroupList = ReadonlyArray<Group>;
-export const GroupList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<GroupList>;
+export const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
 
 /** Response message for GroupsService.ListGroups. */
 export interface ListGroupsResponse {
@@ -420,16 +345,14 @@ export interface ListGroupsResponse {
   errors?: Errors;
 }
 export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: GroupList,
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    errors: S.optional(Errors),
-  }),
-).annotate({
-  identifier: "ListGroupsResponse",
-}) as any as S.Schema<ListGroupsResponse>;
+S.Struct({
+  "items": GroupList,
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "errors": S.optional(Errors),
+}),
+).annotate({ identifier: "ListGroupsResponse" }) as any as S.Schema<ListGroupsResponse>;
 
 export interface QueryReportsRequest {
   /** A comma-separated list of dimensions or metrics that determine the sort order for YouTube Analytics data. By default the sort order is ascending. The '`-`' prefix causes descending sort order.", pattern: [-0-9a-zA-Z,]+ */
@@ -456,28 +379,20 @@ export interface QueryReportsRequest {
   filters?: string;
 }
 export const QueryReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sort: S.optional(S.String.pipe(T.Query())),
-    includeHistoricalChannelData: S.optional(S.Boolean.pipe(T.Query())),
-    endDate: S.optional(S.String.pipe(T.Query())),
-    currency: S.optional(S.String.pipe(T.Query())),
-    startDate: S.optional(S.String.pipe(T.Query())),
-    startIndex: S.optional(S.Number.pipe(T.Query())),
-    ids: S.optional(S.String.pipe(T.Query())),
-    dimensions: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    metrics: S.optional(S.String.pipe(T.Query())),
-    filters: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/reports",
-      baseUrl: "https://youtubeanalytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "QueryReportsRequest",
-}) as any as S.Schema<QueryReportsRequest>;
+S.Struct({
+  "sort": S.optional(S.String.pipe(T.Query())),
+  "includeHistoricalChannelData": S.optional(S.Boolean.pipe(T.Query())),
+  "endDate": S.optional(S.String.pipe(T.Query())),
+  "currency": S.optional(S.String.pipe(T.Query())),
+  "startDate": S.optional(S.String.pipe(T.Query())),
+  "startIndex": S.optional(S.Number.pipe(T.Query())),
+  "ids": S.optional(S.String.pipe(T.Query())),
+  "dimensions": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "metrics": S.optional(S.String.pipe(T.Query())),
+  "filters": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/reports","baseUrl":"https://youtubeanalytics.googleapis.com/"})),
+).annotate({ identifier: "QueryReportsRequest" }) as any as S.Schema<QueryReportsRequest>;
 
 /** The description of a column of the result table. */
 export interface ResultTableColumnHeader {
@@ -489,30 +404,21 @@ export interface ResultTableColumnHeader {
   columnType?: string;
 }
 export const ResultTableColumnHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: S.optional(S.String),
-    name: S.optional(S.String),
-    columnType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResultTableColumnHeader",
-}) as any as S.Schema<ResultTableColumnHeader>;
+S.Struct({
+  "dataType": S.optional(S.String),
+  "name": S.optional(S.String),
+  "columnType": S.optional(S.String),
+}),
+).annotate({ identifier: "ResultTableColumnHeader" }) as any as S.Schema<ResultTableColumnHeader>;
 
-export type ResultTableColumnHeaderList =
-  ReadonlyArray<ResultTableColumnHeader>;
-export const ResultTableColumnHeaderList = /*@__PURE__*/ S.Array(
-  ResultTableColumnHeader,
-) as any as S.Schema<ResultTableColumnHeaderList>;
+export type ResultTableColumnHeaderList = ReadonlyArray<ResultTableColumnHeader>;
+export const ResultTableColumnHeaderList = /*@__PURE__*/ S.Array(ResultTableColumnHeader) as any as S.Schema<ResultTableColumnHeaderList>;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 export type DocumentListList = ReadonlyArray<DocumentList>;
-export const DocumentListList = /*@__PURE__*/ S.Array(
-  DocumentList,
-) as any as S.Schema<DocumentListList>;
+export const DocumentListList = /*@__PURE__*/ S.Array(DocumentList) as any as S.Schema<DocumentListList>;
 
 /** Response message for TargetedQueriesService.Query. */
 export interface QueryResponse {
@@ -526,12 +432,12 @@ export interface QueryResponse {
   rows?: DocumentListList;
 }
 export const QueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(Errors),
-    columnHeaders: S.optional(ResultTableColumnHeaderList),
-    kind: S.optional(S.String),
-    rows: S.optional(DocumentListList),
-  }),
+S.Struct({
+  "errors": S.optional(Errors),
+  "columnHeaders": S.optional(ResultTableColumnHeaderList),
+  "kind": S.optional(S.String),
+  "rows": S.optional(DocumentListList),
+}),
 ).annotate({ identifier: "QueryResponse" }) as any as S.Schema<QueryResponse>;
 
 export interface UpdateGroupsRequest {
@@ -541,26 +447,13 @@ export interface UpdateGroupsRequest {
   body?: Group;
 }
 export const UpdateGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Group.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v2/groups",
-      baseUrl: "https://youtubeanalytics.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateGroupsRequest",
-}) as any as S.Schema<UpdateGroupsRequest>;
+S.Struct({
+  "onBehalfOfContentOwner": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Group.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v2/groups","baseUrl":"https://youtubeanalytics.googleapis.com/"})),
+).annotate({ identifier: "UpdateGroupsRequest" }) as any as S.Schema<UpdateGroupsRequest>;
 
-export type DeleteGroupItemsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteGroupItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes an item from a group. */
 export const deleteGroupItems: API.OperationMethod<
   DeleteGroupItemsRequest,
@@ -575,12 +468,7 @@ export const deleteGroupItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a group. */
 export const deleteGroups: API.OperationMethod<
   DeleteGroupsRequest,
@@ -595,12 +483,7 @@ export const deleteGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertGroupItemsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertGroupItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a group item. */
 export const insertGroupItems: API.OperationMethod<
   InsertGroupItemsRequest,
@@ -615,12 +498,7 @@ export const insertGroupItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a group. */
 export const insertGroups: API.OperationMethod<
   InsertGroupsRequest,
@@ -663,11 +541,7 @@ export const listGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type QueryReportsError = NotFound | Forbidden | GcpOpError;
@@ -685,12 +559,7 @@ export const queryReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Modifies a group. For example, you could change a group's title. */
 export const updateGroups: API.OperationMethod<
   UpdateGroupsRequest,
@@ -704,3 +573,4 @@ export const updateGroups: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

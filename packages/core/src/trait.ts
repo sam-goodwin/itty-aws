@@ -115,6 +115,20 @@ export const querySymbol = Symbol.for("@distilled.cloud/core/http/query");
 export const Query = (name?: string) =>
   makeAnnotation(querySymbol, name ?? true);
 
+export const deepQuerySymbol = Symbol.for(
+  "@distilled.cloud/core/http/deep-query",
+);
+/**
+ * Binds a struct-valued input member to a family of DOTTED query parameters:
+ * `{ account: { id, name } }` with `DeepQuery("account")` serializes as
+ * `?account.id=…&account.name=…` (null/undefined entries skipped). This is
+ * how several list endpoints model their filters on the wire (e.g.
+ * Cloudflare zones list `account.id` / `account.name`) while the TS surface
+ * keeps the nested-object shape (v0 parity).
+ */
+export const DeepQuery = (name?: string) =>
+  makeAnnotation(deepQuerySymbol, name ?? true);
+
 export const httpBodySymbol = Symbol.for("@distilled.cloud/core/http-body");
 /**
  * Marks the input member whose value IS the entire request body (raw arrays/

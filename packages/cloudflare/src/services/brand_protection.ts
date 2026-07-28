@@ -589,15 +589,14 @@ export const GetV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV2LogoResponse",
 }) as any as S.Schema<GetV2LogoResponse>;
 
-export type V2LogoMatchesGetRequestOrder = "asc" | "desc" | (string & {});
+export type V2LogoMatchesGetRequestOrder = "asc" | "desc";
 export const V2LogoMatchesGetRequestOrder = /*@__PURE__*/ S.String;
 
 export type V2LogoMatchesGetRequestOrderBy =
   | "matchedAt"
   | "domain"
   | "similarityScore"
-  | "registrar"
-  | (string & {});
+  | "registrar";
 export const V2LogoMatchesGetRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface GetV2LogoMatchRequest {
@@ -607,9 +606,9 @@ export interface GetV2LogoMatchRequest {
   limit?: string;
   offset?: string;
   /** Sort order. Options: 'asc' (ascending) or 'desc' (descending) */
-  order?: V2LogoMatchesGetRequestOrder;
+  order?: V2LogoMatchesGetRequestOrder | (string & {});
   /** Column to sort by. Options: 'matchedAt', 'domain', 'similarityScore', or 'registrar' */
-  orderBy?: V2LogoMatchesGetRequestOrderBy;
+  orderBy?: V2LogoMatchesGetRequestOrderBy | (string & {});
 }
 export const GetV2LogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -685,14 +684,10 @@ export const V2MatchesGetRequestQueryIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V2MatchesGetRequestQueryIdList>;
 
-export type V2MatchesGetRequestOrder = "asc" | "desc" | (string & {});
+export type V2MatchesGetRequestOrder = "asc" | "desc";
 export const V2MatchesGetRequestOrder = /*@__PURE__*/ S.String;
 
-export type V2MatchesGetRequestOrderBy =
-  | "domain"
-  | "first_seen"
-  | "registrar"
-  | (string & {});
+export type V2MatchesGetRequestOrderBy = "domain" | "first_seen" | "registrar";
 export const V2MatchesGetRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface GetV2MatchRequest {
@@ -706,9 +701,9 @@ export interface GetV2MatchRequest {
   limit?: string;
   offset?: string;
   /** Sort order. Options: 'asc' (ascending) or 'desc' (descending) */
-  order?: V2MatchesGetRequestOrder;
+  order?: V2MatchesGetRequestOrder | (string & {});
   /** Column to sort by. Options: 'domain', 'first_seen', or 'registrar' */
-  orderBy?: V2MatchesGetRequestOrderBy;
+  orderBy?: V2MatchesGetRequestOrderBy | (string & {});
 }
 export const GetV2MatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

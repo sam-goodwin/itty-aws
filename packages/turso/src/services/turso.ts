@@ -111,11 +111,7 @@ export const AddLocationToGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddLocationToGroupResponse>;
 
 /** The role given to the user. */
-export type AddOrganizationMemberRequestRole =
-  | "admin"
-  | "member"
-  | "viewer"
-  | (string & {});
+export type AddOrganizationMemberRequestRole = "admin" | "member" | "viewer";
 export const AddOrganizationMemberRequestRole = /*@__PURE__*/ S.String;
 
 export interface AddOrganizationMemberRequest {
@@ -124,7 +120,7 @@ export interface AddOrganizationMemberRequest {
   /** The username of an existing Turso user. */
   username?: string;
   /** The role given to the user. */
-  role?: AddOrganizationMemberRequestRole;
+  role?: AddOrganizationMemberRequestRole | (string & {});
 }
 export const AddOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -143,7 +139,7 @@ export const AddOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddOrganizationMemberRequest>;
 
 /** The role assigned to the member. */
-export type Role = "owner" | "admin" | "member" | "viewer" | (string & {});
+export type Role = "owner" | "admin" | "member" | "viewer";
 export const Role = /*@__PURE__*/ S.String;
 
 export interface AddOrganizationMemberResponse {
@@ -170,13 +166,13 @@ export type CreateAPITokenRequestScopesItem =
   | "group:mint-token"
   | "group:rotate-creds"
   | "read-only"
-  | "full-access"
-  | (string & {});
+  | "full-access";
 export const CreateAPITokenRequestScopesItem = /*@__PURE__*/ S.String;
 
 /** Permissions to grant a group-scoped token. Each entry is either an individual scope or one of the presets `read-only` (expands to `read`) and `full-access` (expands to every scope). Required and must be non-empty when `group` is set. `db:mint-token` lets the token issue new SQL credentials; `db:rotate-creds` invalidates every existing SQL token for the database — they are deliberately separate because rotation is destructive. */
-export type CreateAPITokenRequestScopesList =
-  ReadonlyArray<CreateAPITokenRequestScopesItem>;
+export type CreateAPITokenRequestScopesList = ReadonlyArray<
+  CreateAPITokenRequestScopesItem | (string & {})
+>;
 export const CreateAPITokenRequestScopesList = /*@__PURE__*/ S.Array(
   CreateAPITokenRequestScopesItem,
 ) as any as S.Schema<CreateAPITokenRequestScopesList>;
@@ -225,15 +221,12 @@ export const CreateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAPITokenResponse>;
 
 /** The type of seed to be used to create a new database. Use `database` to copy from an existing database, or `database_upload` to [upload a SQLite database file](/api-reference/databases/upload). */
-export type CreateDatabaseRequestSeedType =
-  | "database"
-  | "database_upload"
-  | (string & {});
+export type CreateDatabaseRequestSeedType = "database" | "database_upload";
 export const CreateDatabaseRequestSeedType = /*@__PURE__*/ S.String;
 
 export interface CreateDatabaseRequestSeed {
   /** The type of seed to be used to create a new database. Use `database` to copy from an existing database, or `database_upload` to [upload a SQLite database file](/api-reference/databases/upload). */
-  type?: CreateDatabaseRequestSeedType;
+  type?: CreateDatabaseRequestSeedType | (string & {});
   /** The name of the existing database when `database` is used as a seed type. */
   name?: string;
   /** A formatted [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) recovery point to create a database from. This must be within the last 24 hours, or 30 days on the scaler plan. */
@@ -259,8 +252,7 @@ export type CreateDatabaseRequestRemoteEncryptionEncryptionCipher =
   | "aegis128x4"
   | "aegis256"
   | "aegis256x2"
-  | "aegis256x4"
-  | (string & {});
+  | "aegis256x4";
 export const CreateDatabaseRequestRemoteEncryptionEncryptionCipher =
   /*@__PURE__*/ S.String;
 
@@ -269,7 +261,9 @@ export interface CreateDatabaseRequestRemoteEncryption {
   /** Base64-encoded encryption key. Key size depends on cipher: 32 bytes for aes256gcm, chacha20poly1305, aegis256 variants; 16 bytes for aes128gcm, aegis128l variants. */
   encryption_key?: string;
   /** The encryption cipher to use. */
-  encryption_cipher?: CreateDatabaseRequestRemoteEncryptionEncryptionCipher;
+  encryption_cipher?:
+    | CreateDatabaseRequestRemoteEncryptionEncryptionCipher
+    | (string & {});
 }
 export const CreateDatabaseRequestRemoteEncryption = /*@__PURE__*/ S.suspend(
   () =>
@@ -344,8 +338,7 @@ export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateDatabaseTokenRequestAuthorization =
   | "full-access"
-  | "read-only"
-  | (string & {});
+  | "read-only";
 export const CreateDatabaseTokenRequestAuthorization = /*@__PURE__*/ S.String;
 
 export type CreateDatabaseTokenRequestPermissionsReadAttachDatabasesList =
@@ -392,7 +385,7 @@ export interface CreateDatabaseTokenRequest {
   /** Expiration time for the token (e.g., 2w1d30m). */
   expiration?: string;
   /** Authorization level for the token (full-access or read-only). */
-  authorization?: CreateDatabaseTokenRequestAuthorization;
+  authorization?: CreateDatabaseTokenRequestAuthorization | (string & {});
   /** The permissions for the token. */
   permissions?: CreateDatabaseTokenRequestPermissions;
 }
@@ -429,7 +422,7 @@ export const CreateDatabaseTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseTokenResponse>;
 
 /** Set to `all` to enable all extensions. */
-export type ExtensionsCase0 = "all" | (string & {});
+export type ExtensionsCase0 = "all";
 export const ExtensionsCase0 = /*@__PURE__*/ S.String;
 
 export type ExtensionsCase1Item =
@@ -442,12 +435,13 @@ export type ExtensionsCase1Item =
   | "unicode"
   | "uuid"
   | "regexp"
-  | "vec"
-  | (string & {});
+  | "vec";
 export const ExtensionsCase1Item = /*@__PURE__*/ S.String;
 
 /** Array of extensions to enable. */
-export type ExtensionsCase1List = ReadonlyArray<ExtensionsCase1Item>;
+export type ExtensionsCase1List = ReadonlyArray<
+  ExtensionsCase1Item | (string & {})
+>;
 export const ExtensionsCase1List = /*@__PURE__*/ S.Array(
   ExtensionsCase1Item,
 ) as any as S.Schema<ExtensionsCase1List>;
@@ -495,10 +489,7 @@ export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGroupResponse",
 }) as any as S.Schema<CreateGroupResponse>;
 
-export type CreateGroupTokenRequestAuthorization =
-  | "full-access"
-  | "read-only"
-  | (string & {});
+export type CreateGroupTokenRequestAuthorization = "full-access" | "read-only";
 export const CreateGroupTokenRequestAuthorization = /*@__PURE__*/ S.String;
 
 export type CreateGroupTokenRequestPermissionsReadAttachDatabasesList =
@@ -544,7 +535,7 @@ export interface CreateGroupTokenRequest {
   /** Expiration time for the token (e.g., 2w1d30m). */
   expiration?: string;
   /** Authorization level for the token (full-access or read-only). */
-  authorization?: CreateGroupTokenRequestAuthorization;
+  authorization?: CreateGroupTokenRequestAuthorization | (string & {});
   /** The permissions for the token. */
   permissions?: CreateGroupTokenRequestPermissions;
 }
@@ -903,7 +894,7 @@ export const GetDatabaseInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseInstanceRequest>;
 
 /** The type of database instance this, will be `primary` or `replica`. */
-export type InstanceType = "primary" | "replica" | (string & {});
+export type InstanceType = "primary" | "replica";
 export const InstanceType = /*@__PURE__*/ S.String;
 
 export interface Instance {
@@ -1180,7 +1171,7 @@ export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationRequest>;
 
 /** The type of account this organization is. Will always be `personal` or `team`. */
-export type OrganizationType = "personal" | "team" | (string & {});
+export type OrganizationType = "personal" | "team";
 export const OrganizationType = /*@__PURE__*/ S.String;
 
 export interface Organization {
@@ -1253,12 +1244,7 @@ export const GetOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationMemberRequest>;
 
 /** The role assigned to the member. */
-export type MemberRole =
-  | "owner"
-  | "admin"
-  | "member"
-  | "viewer"
-  | (string & {});
+export type MemberRole = "owner" | "admin" | "member" | "viewer";
 export const MemberRole = /*@__PURE__*/ S.String;
 
 export interface Member {
@@ -1491,8 +1477,7 @@ export const InvalidateGroupTokensResponse = /*@__PURE__*/ S.suspend(() =>
 export type InviteOrganizationMemberV2RequestRole =
   | "admin"
   | "member"
-  | "viewer"
-  | (string & {});
+  | "viewer";
 export const InviteOrganizationMemberV2RequestRole = /*@__PURE__*/ S.String;
 
 export interface InviteOrganizationMemberV2Request {
@@ -1503,7 +1488,7 @@ export interface InviteOrganizationMemberV2Request {
   /** The username of an existing Turso user you want to invite. Exactly one of email or username must be provided. */
   username?: string;
   /** The role given to the user. */
-  role?: InviteOrganizationMemberV2RequestRole;
+  role?: InviteOrganizationMemberV2RequestRole | (string & {});
 }
 export const InviteOrganizationMemberV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1523,7 +1508,7 @@ export const InviteOrganizationMemberV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InviteOrganizationMemberV2Request>;
 
 /** The assigned role for the invited user. */
-export type InviteCreatedV2Role = "admin" | "member" | "viewer" | (string & {});
+export type InviteCreatedV2Role = "admin" | "member" | "viewer";
 export const InviteCreatedV2Role = /*@__PURE__*/ S.String;
 
 export interface InviteCreatedV2 {
@@ -1893,8 +1878,7 @@ export type AuditLogCode =
   | "group-protect"
   | "group-unprotect"
   | "db-aunrchive"
-  | "user-delete"
-  | (string & {});
+  | "user-delete";
 export const AuditLogCode = /*@__PURE__*/ S.String;
 
 export interface AuditLog {
@@ -1983,7 +1967,7 @@ export const ListOrganizationInvitesV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationInvitesV2Request>;
 
 /** The assigned role for the invited user. */
-export type InviteV2Role = "admin" | "member" | "viewer" | (string & {});
+export type InviteV2Role = "admin" | "member" | "viewer";
 export const InviteV2Role = /*@__PURE__*/ S.String;
 
 export interface InviteV2 {
@@ -2023,18 +2007,14 @@ export const ListOrganizationInvitesV2Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationInvitesV2Response",
 }) as any as S.Schema<ListOrganizationInvitesV2Response>;
 
-export type ListOrganizationInvoicesRequestType =
-  | "all"
-  | "upcoming"
-  | "issued"
-  | (string & {});
+export type ListOrganizationInvoicesRequestType = "all" | "upcoming" | "issued";
 export const ListOrganizationInvoicesRequestType = /*@__PURE__*/ S.String;
 
 export interface ListOrganizationInvoicesRequest {
   /** The slug of the organization or user account. */
   organizationSlug: string;
   /** The type of invoice to retrieve. */
-  type?: ListOrganizationInvoicesRequestType;
+  type?: ListOrganizationInvoicesRequestType | (string & {});
 }
 export const ListOrganizationInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2590,11 +2570,7 @@ export const UpdateGroupDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGroupDatabasesResponse>;
 
 /** The new role to assign to the member. */
-export type UpdateMemberRoleRequestRole =
-  | "admin"
-  | "member"
-  | "viewer"
-  | (string & {});
+export type UpdateMemberRoleRequestRole = "admin" | "member" | "viewer";
 export const UpdateMemberRoleRequestRole = /*@__PURE__*/ S.String;
 
 export interface UpdateMemberRoleRequest {
@@ -2603,7 +2579,7 @@ export interface UpdateMemberRoleRequest {
   /** The username of a Turso user or organization member. */
   username: string;
   /** The new role to assign to the member. */
-  role: UpdateMemberRoleRequestRole;
+  role: UpdateMemberRoleRequestRole | (string & {});
 }
 export const UpdateMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2622,11 +2598,7 @@ export const UpdateMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMemberRoleRequest>;
 
 /** The new role of the updated member. */
-export type UpdateMemberRoleResponseMemberRole =
-  | "admin"
-  | "member"
-  | "viewer"
-  | (string & {});
+export type UpdateMemberRoleResponseMemberRole = "admin" | "member" | "viewer";
 export const UpdateMemberRoleResponseMemberRole = /*@__PURE__*/ S.String;
 
 export interface UpdateMemberRoleResponseMember {

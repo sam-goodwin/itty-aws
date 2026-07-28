@@ -397,11 +397,7 @@ export const BusinessKnowledgeSourcesCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BusinessKnowledgeSourcesCreateRequest>;
 
 /** * `text` - Text * `url` - URL * `file` - File */
-export type KnowledgeSourceSourceTypeEnum =
-  | "text"
-  | "url"
-  | "file"
-  | (string & {});
+export type KnowledgeSourceSourceTypeEnum = "text" | "url" | "file";
 export const KnowledgeSourceSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - Pending * `processing` - Processing * `ready` - Ready * `error` - Error */
@@ -409,33 +405,18 @@ export type KnowledgeSourceStatusEnum =
   | "pending"
   | "processing"
   | "ready"
-  | "error"
-  | (string & {});
+  | "error";
 export const KnowledgeSourceStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `success` - Success * `not_modified` - Not modified * `error` - Error */
-export type LastRefreshStatusEnum =
-  | "success"
-  | "not_modified"
-  | "error"
-  | (string & {});
+export type LastRefreshStatusEnum = "success" | "not_modified" | "error";
 export const LastRefreshStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `manual` - Manual only * `1h` - Every hour * `6h` - Every 6 hours * `24h` - Every day * `7d` - Every week */
-export type RefreshIntervalEnum =
-  | "manual"
-  | "1h"
-  | "6h"
-  | "24h"
-  | "7d"
-  | (string & {});
+export type RefreshIntervalEnum = "manual" | "1h" | "6h" | "24h" | "7d";
 export const RefreshIntervalEnum = /*@__PURE__*/ S.String;
 
-export type EmbeddingStatusEnum =
-  | "pending"
-  | "completed"
-  | "disabled"
-  | (string & {});
+export type EmbeddingStatusEnum = "pending" | "completed" | "disabled";
 export const EmbeddingStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `single` - Single page * `sitemap` - Sitemap * `same_origin` - Same origin crawl * `github_repo` - GitHub repository */
@@ -443,8 +424,7 @@ export type CrawlModeEnum =
   | "single"
   | "sitemap"
   | "same_origin"
-  | "github_repo"
-  | (string & {});
+  | "github_repo";
 export const CrawlModeEnum = /*@__PURE__*/ S.String;
 
 export interface KnowledgeSource {

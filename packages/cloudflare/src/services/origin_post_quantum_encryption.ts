@@ -60,14 +60,10 @@ export const GetOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetOriginPostQuantumEncryptionRequest",
 }) as any as S.Schema<GetOriginPostQuantumEncryptionRequest>;
 
-export type GetResponseId = "origin_pqe" | (string & {});
+export type GetResponseId = "origin_pqe";
 export const GetResponseId = /*@__PURE__*/ S.String;
 
-export type GetResponseValue =
-  | "preferred"
-  | "supported"
-  | "off"
-  | (string & {});
+export type GetResponseValue = "preferred" | "supported" | "off";
 export const GetResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -93,18 +89,14 @@ export const GetOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetOriginPostQuantumEncryptionResponse",
 }) as any as S.Schema<GetOriginPostQuantumEncryptionResponse>;
 
-export type UpdateRequestValue =
-  | "preferred"
-  | "supported"
-  | "off"
-  | (string & {});
+export type UpdateRequestValue = "preferred" | "supported" | "off";
 export const UpdateRequestValue = /*@__PURE__*/ S.String;
 
 export interface PutOriginPostQuantumEncryptionRequest {
   /** Identifier. */
   zoneId: string;
   /** Value of the Origin Post Quantum Encryption Setting. */
-  value: UpdateRequestValue;
+  value: UpdateRequestValue | (string & {});
 }
 export const PutOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -124,14 +116,10 @@ export const PutOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "PutOriginPostQuantumEncryptionRequest",
 }) as any as S.Schema<PutOriginPostQuantumEncryptionRequest>;
 
-export type UpdateResponseId = "origin_pqe" | (string & {});
+export type UpdateResponseId = "origin_pqe";
 export const UpdateResponseId = /*@__PURE__*/ S.String;
 
-export type UpdateResponseValue =
-  | "preferred"
-  | "supported"
-  | "off"
-  | (string & {});
+export type UpdateResponseValue = "preferred" | "supported" | "off";
 export const UpdateResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

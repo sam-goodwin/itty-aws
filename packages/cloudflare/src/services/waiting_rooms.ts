@@ -77,18 +77,14 @@ export class ZoneNotEntitled extends T.applyErrorMatchers(
   [{ code: 1034 }],
 ) {}
 
-export type EventsCreateRequestTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type EventsCreateRequestTurnstileAction = "log" | "infinite_queue";
 export const EventsCreateRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsCreateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const EventsCreateRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface CreateEventRequest {
@@ -122,9 +118,9 @@ export interface CreateEventRequest {
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
   totalActiveUsers?: number;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsCreateRequestTurnstileAction;
+  turnstileAction?: EventsCreateRequestTurnstileAction | (string & {});
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsCreateRequestTurnstileMode;
+  turnstileMode?: EventsCreateRequestTurnstileMode | (string & {});
 }
 export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -168,18 +164,14 @@ export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEventRequest",
 }) as any as S.Schema<CreateEventRequest>;
 
-export type EventsCreateResponseTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type EventsCreateResponseTurnstileAction = "log" | "infinite_queue";
 export const EventsCreateResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsCreateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const EventsCreateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -253,14 +245,12 @@ export const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEventResponse",
 }) as any as S.Schema<CreateEventResponse>;
 
-export type RulesCreateRequestRulesAction =
-  | "bypass_waiting_room"
-  | (string & {});
+export type RulesCreateRequestRulesAction = "bypass_waiting_room";
 export const RulesCreateRequestRulesAction = /*@__PURE__*/ S.String;
 
 export interface RulesCreateRequestRules {
   /** The action to take when the expression matches. */
-  action: RulesCreateRequestRulesAction;
+  action: RulesCreateRequestRulesAction | (string & {});
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
@@ -303,7 +293,7 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
 
-export type RulesCreateResultItemAction = "bypass_waiting_room" | (string & {});
+export type RulesCreateResultItemAction = "bypass_waiting_room";
 export const RulesCreateResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesCreateResultItem {
@@ -380,22 +370,17 @@ export type CreateRequestCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict"
-  | (string & {});
+  | "strict";
 export const CreateRequestCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type CreateRequestCookieAttributesSecure =
-  | "auto"
-  | "always"
-  | "never"
-  | (string & {});
+export type CreateRequestCookieAttributesSecure = "auto" | "always" | "never";
 export const CreateRequestCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface CreateRequestCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: CreateRequestCookieAttributesSamesite;
+  samesite?: CreateRequestCookieAttributesSamesite | (string & {});
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: CreateRequestCookieAttributesSecure;
+  secure?: CreateRequestCookieAttributesSecure | (string & {});
 }
 export const CreateRequestCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -444,15 +429,15 @@ export type CreateRequestDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN"
-  | (string & {});
+  | "vi-VN";
 export const CreateRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type CreateRequestEnabledOriginCommandsItem = "revoke" | (string & {});
+export type CreateRequestEnabledOriginCommandsItem = "revoke";
 export const CreateRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type CreateRequestEnabledOriginCommandsList =
-  ReadonlyArray<CreateRequestEnabledOriginCommandsItem>;
+export type CreateRequestEnabledOriginCommandsList = ReadonlyArray<
+  CreateRequestEnabledOriginCommandsItem | (string & {})
+>;
 export const CreateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   CreateRequestEnabledOriginCommandsItem,
 ) as any as S.Schema<CreateRequestEnabledOriginCommandsList>;
@@ -461,25 +446,20 @@ export type CreateRequestQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject"
-  | (string & {});
+  | "reject";
 export const CreateRequestQueueingMethod = /*@__PURE__*/ S.String;
 
-export type CreateRequestQueueingStatusCode = 200 | 202 | 429 | (number & {});
+export type CreateRequestQueueingStatusCode = 200 | 202 | 429;
 export const CreateRequestQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type CreateRequestTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type CreateRequestTurnstileAction = "log" | "infinite_queue";
 export const CreateRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type CreateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const CreateRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface CreateWaitingRoomRequest {
@@ -502,7 +482,9 @@ export interface CreateWaitingRoomRequest {
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
   customPageHtml?: string;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: CreateRequestDefaultTemplateLanguage;
+  defaultTemplateLanguage?:
+    | CreateRequestDefaultTemplateLanguage
+    | (string & {});
   /** A note that you can use to add more details about the waiting room. */
   description?: string;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
@@ -516,17 +498,17 @@ export interface CreateWaitingRoomRequest {
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
   queueAll?: boolean;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: CreateRequestQueueingMethod;
+  queueingMethod?: CreateRequestQueueingMethod | (string & {});
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: CreateRequestQueueingStatusCode;
+  queueingStatusCode?: CreateRequestQueueingStatusCode | (number & {});
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
   sessionDuration?: number;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
   suspended?: boolean;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: CreateRequestTurnstileAction;
+  turnstileAction?: CreateRequestTurnstileAction | (string & {});
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: CreateRequestTurnstileMode;
+  turnstileMode?: CreateRequestTurnstileMode | (string & {});
 }
 export const CreateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -614,15 +596,10 @@ export type CreateResponseCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict"
-  | (string & {});
+  | "strict";
 export const CreateResponseCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type CreateResponseCookieAttributesSecure =
-  | "auto"
-  | "always"
-  | "never"
-  | (string & {});
+export type CreateResponseCookieAttributesSecure = "auto" | "always" | "never";
 export const CreateResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface CreateResponseCookieAttributes {
@@ -678,11 +655,10 @@ export type CreateResponseDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN"
-  | (string & {});
+  | "vi-VN";
 export const CreateResponseDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type CreateResponseEnabledOriginCommandsItem = "revoke" | (string & {});
+export type CreateResponseEnabledOriginCommandsItem = "revoke";
 export const CreateResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type CreateResponseEnabledOriginCommandsList =
@@ -695,25 +671,20 @@ export type CreateResponseQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject"
-  | (string & {});
+  | "reject";
 export const CreateResponseQueueingMethod = /*@__PURE__*/ S.String;
 
-export type CreateResponseQueueingStatusCode = 200 | 202 | 429 | (number & {});
+export type CreateResponseQueueingStatusCode = 200 | 202 | 429;
 export const CreateResponseQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type CreateResponseTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type CreateResponseTurnstileAction = "log" | "infinite_queue";
 export const CreateResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type CreateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const CreateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -892,7 +863,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
 
-export type RulesDeleteResultItemAction = "bypass_waiting_room" | (string & {});
+export type RulesDeleteResultItemAction = "bypass_waiting_room";
 export const RulesDeleteResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesDeleteResultItem {
@@ -1002,18 +973,14 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEventRequest",
 }) as any as S.Schema<GetEventRequest>;
 
-export type EventsGetResponseTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type EventsGetResponseTurnstileAction = "log" | "infinite_queue";
 export const EventsGetResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsGetResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const EventsGetResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1186,7 +1153,7 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
-export type RulesGetResultItemAction = "bypass_waiting_room" | (string & {});
+export type RulesGetResultItemAction = "bypass_waiting_room";
 export const RulesGetResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesGetResultItem {
@@ -1299,8 +1266,7 @@ export type StatusesGetResponseStatus =
   | "event_prequeueing"
   | "not_queueing"
   | "queueing"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const StatusesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1376,15 +1342,10 @@ export type GetResponseCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict"
-  | (string & {});
+  | "strict";
 export const GetResponseCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type GetResponseCookieAttributesSecure =
-  | "auto"
-  | "always"
-  | "never"
-  | (string & {});
+export type GetResponseCookieAttributesSecure = "auto" | "always" | "never";
 export const GetResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface GetResponseCookieAttributes {
@@ -1440,11 +1401,10 @@ export type GetResponseDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN"
-  | (string & {});
+  | "vi-VN";
 export const GetResponseDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type GetResponseEnabledOriginCommandsItem = "revoke" | (string & {});
+export type GetResponseEnabledOriginCommandsItem = "revoke";
 export const GetResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type GetResponseEnabledOriginCommandsList =
@@ -1457,25 +1417,20 @@ export type GetResponseQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject"
-  | (string & {});
+  | "reject";
 export const GetResponseQueueingMethod = /*@__PURE__*/ S.String;
 
-export type GetResponseQueueingStatusCode = 200 | 202 | 429 | (number & {});
+export type GetResponseQueueingStatusCode = 200 | 202 | 429;
 export const GetResponseQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type GetResponseTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type GetResponseTurnstileAction = "log" | "infinite_queue";
 export const GetResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type GetResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const GetResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1621,18 +1576,14 @@ export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEventsRequest",
 }) as any as S.Schema<ListEventsRequest>;
 
-export type EventsListResultItemTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type EventsListResultItemTurnstileAction = "log" | "infinite_queue";
 export const EventsListResultItemTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsListResultItemTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const EventsListResultItemTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface EventsListResultItem {
@@ -1751,63 +1702,53 @@ export const ListWaitingRoomsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWaitingRoomsForAccountRequest",
 }) as any as S.Schema<ListWaitingRoomsForAccountRequest>;
 
-export interface ListForAccountResultItemAdditionalRoutesItem {
+export interface ListResultItemAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
   host?: string;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
   path?: string;
 }
-export const ListForAccountResultItemAdditionalRoutesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.optional(S.String),
-      path: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListForAccountResultItemAdditionalRoutesItem",
-  }) as any as S.Schema<ListForAccountResultItemAdditionalRoutesItem>;
+export const ListResultItemAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    host: S.optional(S.String),
+    path: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResultItemAdditionalRoutesItem",
+}) as any as S.Schema<ListResultItemAdditionalRoutesItem>;
 
-export type ListForAccountResultItemAdditionalRoutesList =
-  ReadonlyArray<ListForAccountResultItemAdditionalRoutesItem>;
-export const ListForAccountResultItemAdditionalRoutesList =
-  /*@__PURE__*/ S.Array(
-    ListForAccountResultItemAdditionalRoutesItem,
-  ) as any as S.Schema<ListForAccountResultItemAdditionalRoutesList>;
+export type ListResultItemAdditionalRoutesList =
+  ReadonlyArray<ListResultItemAdditionalRoutesItem>;
+export const ListResultItemAdditionalRoutesList = /*@__PURE__*/ S.Array(
+  ListResultItemAdditionalRoutesItem,
+) as any as S.Schema<ListResultItemAdditionalRoutesList>;
 
-export type ListForAccountResultItemCookieAttributesSamesite =
+export type ListResultItemCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict"
-  | (string & {});
-export const ListForAccountResultItemCookieAttributesSamesite =
-  /*@__PURE__*/ S.String;
+  | "strict";
+export const ListResultItemCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type ListForAccountResultItemCookieAttributesSecure =
-  | "auto"
-  | "always"
-  | "never"
-  | (string & {});
-export const ListForAccountResultItemCookieAttributesSecure =
-  /*@__PURE__*/ S.String;
+export type ListResultItemCookieAttributesSecure = "auto" | "always" | "never";
+export const ListResultItemCookieAttributesSecure = /*@__PURE__*/ S.String;
 
-export interface ListForAccountResultItemCookieAttributes {
+export interface ListResultItemCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: ListForAccountResultItemCookieAttributesSamesite;
+  samesite?: ListResultItemCookieAttributesSamesite;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: ListForAccountResultItemCookieAttributesSecure;
+  secure?: ListResultItemCookieAttributesSecure;
 }
-export const ListForAccountResultItemCookieAttributes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      samesite: S.optional(ListForAccountResultItemCookieAttributesSamesite),
-      secure: S.optional(ListForAccountResultItemCookieAttributesSecure),
-    }),
+export const ListResultItemCookieAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    samesite: S.optional(ListResultItemCookieAttributesSamesite),
+    secure: S.optional(ListResultItemCookieAttributesSecure),
+  }),
 ).annotate({
-  identifier: "ListForAccountResultItemCookieAttributes",
-}) as any as S.Schema<ListForAccountResultItemCookieAttributes>;
+  identifier: "ListResultItemCookieAttributes",
+}) as any as S.Schema<ListResultItemCookieAttributes>;
 
-export type ListForAccountResultItemDefaultTemplateLanguage =
+export type ListResultItemDefaultTemplateLanguage =
   | "en-US"
   | "es-ES"
   | "de-DE"
@@ -1845,73 +1786,57 @@ export type ListForAccountResultItemDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN"
-  | (string & {});
-export const ListForAccountResultItemDefaultTemplateLanguage =
-  /*@__PURE__*/ S.String;
+  | "vi-VN";
+export const ListResultItemDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type ListForAccountResultItemEnabledOriginCommandsItem =
-  | "revoke"
-  | (string & {});
-export const ListForAccountResultItemEnabledOriginCommandsItem =
-  /*@__PURE__*/ S.String;
+export type ListResultItemEnabledOriginCommandsItem = "revoke";
+export const ListResultItemEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type ListForAccountResultItemEnabledOriginCommandsList =
-  ReadonlyArray<ListForAccountResultItemEnabledOriginCommandsItem>;
-export const ListForAccountResultItemEnabledOriginCommandsList =
-  /*@__PURE__*/ S.Array(
-    ListForAccountResultItemEnabledOriginCommandsItem,
-  ) as any as S.Schema<ListForAccountResultItemEnabledOriginCommandsList>;
+export type ListResultItemEnabledOriginCommandsList =
+  ReadonlyArray<ListResultItemEnabledOriginCommandsItem>;
+export const ListResultItemEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
+  ListResultItemEnabledOriginCommandsItem,
+) as any as S.Schema<ListResultItemEnabledOriginCommandsList>;
 
-export type ListForAccountResultItemQueueingMethod =
+export type ListResultItemQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject"
-  | (string & {});
-export const ListForAccountResultItemQueueingMethod = /*@__PURE__*/ S.String;
+  | "reject";
+export const ListResultItemQueueingMethod = /*@__PURE__*/ S.String;
 
-export type ListForAccountResultItemQueueingStatusCode =
-  | 200
-  | 202
-  | 429
-  | (number & {});
-export const ListForAccountResultItemQueueingStatusCode =
-  /*@__PURE__*/ S.Number;
+export type ListResultItemQueueingStatusCode = 200 | 202 | 429;
+export const ListResultItemQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type ListForAccountResultItemTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
-export const ListForAccountResultItemTurnstileAction = /*@__PURE__*/ S.String;
+export type ListResultItemTurnstileAction = "log" | "infinite_queue";
+export const ListResultItemTurnstileAction = /*@__PURE__*/ S.String;
 
-export type ListForAccountResultItemTurnstileMode =
+export type ListResultItemTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
-export const ListForAccountResultItemTurnstileMode = /*@__PURE__*/ S.String;
+  | "visible_managed";
+export const ListResultItemTurnstileMode = /*@__PURE__*/ S.String;
 
-export interface ListForAccountResultItem {
+export interface ListResultItem {
   id?: string;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: ListForAccountResultItemAdditionalRoutesList;
+  additionalRoutes?: ListResultItemAdditionalRoutesList;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: ListForAccountResultItemCookieAttributes;
+  cookieAttributes?: ListResultItemCookieAttributes;
   /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
   cookieSuffix?: string;
   createdOn?: string;
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
   customPageHtml?: string;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: ListForAccountResultItemDefaultTemplateLanguage;
+  defaultTemplateLanguage?: ListResultItemDefaultTemplateLanguage;
   /** A note that you can use to add more details about the waiting room. */
   description?: string;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
   disableSessionRenewal?: boolean;
   /** A list of enabled origin commands. */
-  enabledOriginCommands?: ListForAccountResultItemEnabledOriginCommandsList;
+  enabledOriginCommands?: ListResultItemEnabledOriginCommandsList;
   /** The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique. */
   host?: string;
   /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
@@ -1930,9 +1855,9 @@ export interface ListForAccountResultItem {
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
   queueAll?: boolean;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: ListForAccountResultItemQueueingMethod;
+  queueingMethod?: ListResultItemQueueingMethod;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: ListForAccountResultItemQueueingStatusCode;
+  queueingStatusCode?: ListResultItemQueueingStatusCode;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
   sessionDuration?: number;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
@@ -1940,28 +1865,24 @@ export interface ListForAccountResultItem {
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
   totalActiveUsers?: number;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: ListForAccountResultItemTurnstileAction;
+  turnstileAction?: ListResultItemTurnstileAction;
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: ListForAccountResultItemTurnstileMode;
+  turnstileMode?: ListResultItemTurnstileMode;
 }
-export const ListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
+export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     additionalRoutes: S.optional(
-      ListForAccountResultItemAdditionalRoutesList.pipe(
-        T.Body("additional_routes"),
-      ),
+      ListResultItemAdditionalRoutesList.pipe(T.Body("additional_routes")),
     ),
     cookieAttributes: S.optional(
-      ListForAccountResultItemCookieAttributes.pipe(
-        T.Body("cookie_attributes"),
-      ),
+      ListResultItemCookieAttributes.pipe(T.Body("cookie_attributes")),
     ),
     cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
     defaultTemplateLanguage: S.optional(
-      ListForAccountResultItemDefaultTemplateLanguage.pipe(
+      ListResultItemDefaultTemplateLanguage.pipe(
         T.Body("default_template_language"),
       ),
     ),
@@ -1970,7 +1891,7 @@ export const ListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("disable_session_renewal")),
     ),
     enabledOriginCommands: S.optional(
-      ListForAccountResultItemEnabledOriginCommandsList.pipe(
+      ListResultItemEnabledOriginCommandsList.pipe(
         T.Body("enabled_origin_commands"),
       ),
     ),
@@ -1992,46 +1913,42 @@ export const ListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
     path: S.optional(S.String),
     queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
     queueingMethod: S.optional(
-      ListForAccountResultItemQueueingMethod.pipe(T.Body("queueing_method")),
+      ListResultItemQueueingMethod.pipe(T.Body("queueing_method")),
     ),
     queueingStatusCode: S.optional(
-      ListForAccountResultItemQueueingStatusCode.pipe(
-        T.Body("queueing_status_code"),
-      ),
+      ListResultItemQueueingStatusCode.pipe(T.Body("queueing_status_code")),
     ),
     sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
     suspended: S.optional(S.Boolean),
     totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
     turnstileAction: S.optional(
-      ListForAccountResultItemTurnstileAction.pipe(T.Body("turnstile_action")),
+      ListResultItemTurnstileAction.pipe(T.Body("turnstile_action")),
     ),
     turnstileMode: S.optional(
-      ListForAccountResultItemTurnstileMode.pipe(T.Body("turnstile_mode")),
+      ListResultItemTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
   }),
-).annotate({
-  identifier: "ListForAccountResultItem",
-}) as any as S.Schema<ListForAccountResultItem>;
+).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListForAccountResultList = ReadonlyArray<ListForAccountResultItem>;
-export const ListForAccountResultList = /*@__PURE__*/ S.Array(
-  ListForAccountResultItem,
-) as any as S.Schema<ListForAccountResultList>;
+export type ListResultList = ReadonlyArray<ListResultItem>;
+export const ListResultList = /*@__PURE__*/ S.Array(
+  ListResultItem,
+) as any as S.Schema<ListResultList>;
 
-export interface ListWaitingRoomsForAccountResponse {
+export interface ListWaitingRoomsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result: ListForAccountResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListWaitingRoomsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListWaitingRoomsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: ListForAccountResultList.pipe(T.EnvelopePayload()),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "ListWaitingRoomsForAccountResponse",
-}) as any as S.Schema<ListWaitingRoomsForAccountResponse>;
+  identifier: "ListWaitingRoomsResponse",
+}) as any as S.Schema<ListWaitingRoomsResponse>;
 
 export interface ListWaitingRoomsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -2059,296 +1976,14 @@ export const ListWaitingRoomsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWaitingRoomsForZoneRequest",
 }) as any as S.Schema<ListWaitingRoomsForZoneRequest>;
 
-export interface ListForZoneResultItemAdditionalRoutesItem {
-  /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
-  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
-}
-export const ListForZoneResultItemAdditionalRoutesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.optional(S.String),
-      path: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListForZoneResultItemAdditionalRoutesItem",
-  }) as any as S.Schema<ListForZoneResultItemAdditionalRoutesItem>;
-
-export type ListForZoneResultItemAdditionalRoutesList =
-  ReadonlyArray<ListForZoneResultItemAdditionalRoutesItem>;
-export const ListForZoneResultItemAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  ListForZoneResultItemAdditionalRoutesItem,
-) as any as S.Schema<ListForZoneResultItemAdditionalRoutesList>;
-
-export type ListForZoneResultItemCookieAttributesSamesite =
-  | "auto"
-  | "lax"
-  | "none"
-  | "strict"
-  | (string & {});
-export const ListForZoneResultItemCookieAttributesSamesite =
-  /*@__PURE__*/ S.String;
-
-export type ListForZoneResultItemCookieAttributesSecure =
-  | "auto"
-  | "always"
-  | "never"
-  | (string & {});
-export const ListForZoneResultItemCookieAttributesSecure =
-  /*@__PURE__*/ S.String;
-
-export interface ListForZoneResultItemCookieAttributes {
-  /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: ListForZoneResultItemCookieAttributesSamesite;
-  /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: ListForZoneResultItemCookieAttributesSecure;
-}
-export const ListForZoneResultItemCookieAttributes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      samesite: S.optional(ListForZoneResultItemCookieAttributesSamesite),
-      secure: S.optional(ListForZoneResultItemCookieAttributesSecure),
-    }),
-).annotate({
-  identifier: "ListForZoneResultItemCookieAttributes",
-}) as any as S.Schema<ListForZoneResultItemCookieAttributes>;
-
-export type ListForZoneResultItemDefaultTemplateLanguage =
-  | "en-US"
-  | "es-ES"
-  | "de-DE"
-  | "fr-FR"
-  | "it-IT"
-  | "ja-JP"
-  | "ko-KR"
-  | "pt-BR"
-  | "zh-CN"
-  | "zh-TW"
-  | "nl-NL"
-  | "pl-PL"
-  | "id-ID"
-  | "tr-TR"
-  | "ar-EG"
-  | "ru-RU"
-  | "fa-IR"
-  | "bg-BG"
-  | "hr-HR"
-  | "cs-CZ"
-  | "da-DK"
-  | "fi-FI"
-  | "lt-LT"
-  | "ms-MY"
-  | "nb-NO"
-  | "ro-RO"
-  | "el-GR"
-  | "he-IL"
-  | "hi-IN"
-  | "hu-HU"
-  | "sr-BA"
-  | "sk-SK"
-  | "sl-SI"
-  | "sv-SE"
-  | "tl-PH"
-  | "th-TH"
-  | "uk-UA"
-  | "vi-VN"
-  | (string & {});
-export const ListForZoneResultItemDefaultTemplateLanguage =
-  /*@__PURE__*/ S.String;
-
-export type ListForZoneResultItemEnabledOriginCommandsItem =
-  | "revoke"
-  | (string & {});
-export const ListForZoneResultItemEnabledOriginCommandsItem =
-  /*@__PURE__*/ S.String;
-
-export type ListForZoneResultItemEnabledOriginCommandsList =
-  ReadonlyArray<ListForZoneResultItemEnabledOriginCommandsItem>;
-export const ListForZoneResultItemEnabledOriginCommandsList =
-  /*@__PURE__*/ S.Array(
-    ListForZoneResultItemEnabledOriginCommandsItem,
-  ) as any as S.Schema<ListForZoneResultItemEnabledOriginCommandsList>;
-
-export type ListForZoneResultItemQueueingMethod =
-  | "fifo"
-  | "random"
-  | "passthrough"
-  | "reject"
-  | (string & {});
-export const ListForZoneResultItemQueueingMethod = /*@__PURE__*/ S.String;
-
-export type ListForZoneResultItemQueueingStatusCode =
-  | 200
-  | 202
-  | 429
-  | (number & {});
-export const ListForZoneResultItemQueueingStatusCode = /*@__PURE__*/ S.Number;
-
-export type ListForZoneResultItemTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
-export const ListForZoneResultItemTurnstileAction = /*@__PURE__*/ S.String;
-
-export type ListForZoneResultItemTurnstileMode =
-  | "off"
-  | "invisible"
-  | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
-export const ListForZoneResultItemTurnstileMode = /*@__PURE__*/ S.String;
-
-export interface ListForZoneResultItem {
-  id?: string;
-  /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: ListForZoneResultItemAdditionalRoutesList;
-  /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: ListForZoneResultItemCookieAttributes;
-  /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
-  cookieSuffix?: string;
-  createdOn?: string;
-  /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
-  customPageHtml?: string;
-  /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: ListForZoneResultItemDefaultTemplateLanguage;
-  /** A note that you can use to add more details about the waiting room. */
-  description?: string;
-  /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
-  disableSessionRenewal?: boolean;
-  /** A list of enabled origin commands. */
-  enabledOriginCommands?: ListForZoneResultItemEnabledOriginCommandsList;
-  /** The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique. */
-  host?: string;
-  /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
-  jsonResponseEnabled?: boolean;
-  modifiedOn?: string;
-  /** A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
-  /** Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world. */
-  newUsersPerMinute?: number;
-  /** An ISO 8601 timestamp that marks when the next event will begin queueing. */
-  nextEventPrequeueStartTime?: string;
-  /** An ISO 8601 timestamp that marks when the next event will start. */
-  nextEventStartTime?: string;
-  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
-  /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
-  queueAll?: boolean;
-  /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: ListForZoneResultItemQueueingMethod;
-  /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: ListForZoneResultItemQueueingStatusCode;
-  /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
-  sessionDuration?: number;
-  /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
-  suspended?: boolean;
-  /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
-  totalActiveUsers?: number;
-  /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: ListForZoneResultItemTurnstileAction;
-  /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: ListForZoneResultItemTurnstileMode;
-}
-export const ListForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    additionalRoutes: S.optional(
-      ListForZoneResultItemAdditionalRoutesList.pipe(
-        T.Body("additional_routes"),
-      ),
-    ),
-    cookieAttributes: S.optional(
-      ListForZoneResultItemCookieAttributes.pipe(T.Body("cookie_attributes")),
-    ),
-    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    defaultTemplateLanguage: S.optional(
-      ListForZoneResultItemDefaultTemplateLanguage.pipe(
-        T.Body("default_template_language"),
-      ),
-    ),
-    description: S.optional(S.String),
-    disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
-    ),
-    enabledOriginCommands: S.optional(
-      ListForZoneResultItemEnabledOriginCommandsList.pipe(
-        T.Body("enabled_origin_commands"),
-      ),
-    ),
-    host: S.optional(S.String),
-    jsonResponseEnabled: S.optional(
-      S.Boolean.pipe(T.Body("json_response_enabled")),
-    ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
-    ),
-    nextEventPrequeueStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_prequeue_start_time")),
-    ),
-    nextEventStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_start_time")),
-    ),
-    path: S.optional(S.String),
-    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
-    queueingMethod: S.optional(
-      ListForZoneResultItemQueueingMethod.pipe(T.Body("queueing_method")),
-    ),
-    queueingStatusCode: S.optional(
-      ListForZoneResultItemQueueingStatusCode.pipe(
-        T.Body("queueing_status_code"),
-      ),
-    ),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
-    turnstileAction: S.optional(
-      ListForZoneResultItemTurnstileAction.pipe(T.Body("turnstile_action")),
-    ),
-    turnstileMode: S.optional(
-      ListForZoneResultItemTurnstileMode.pipe(T.Body("turnstile_mode")),
-    ),
-  }),
-).annotate({
-  identifier: "ListForZoneResultItem",
-}) as any as S.Schema<ListForZoneResultItem>;
-
-export type ListForZoneResultList = ReadonlyArray<ListForZoneResultItem>;
-export const ListForZoneResultList = /*@__PURE__*/ S.Array(
-  ListForZoneResultItem,
-) as any as S.Schema<ListForZoneResultList>;
-
-export interface ListWaitingRoomsForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result: ListForZoneResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
-export const ListWaitingRoomsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: ListForZoneResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListWaitingRoomsForZoneResponse",
-}) as any as S.Schema<ListWaitingRoomsForZoneResponse>;
-
-export type EventsEditRequestTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type EventsEditRequestTurnstileAction = "log" | "infinite_queue";
 export const EventsEditRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsEditRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const EventsEditRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface PatchEventRequest {
@@ -2383,9 +2018,9 @@ export interface PatchEventRequest {
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
   totalActiveUsers?: number;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsEditRequestTurnstileAction;
+  turnstileAction?: EventsEditRequestTurnstileAction | (string & {});
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsEditRequestTurnstileMode;
+  turnstileMode?: EventsEditRequestTurnstileMode | (string & {});
 }
 export const PatchEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2430,18 +2065,14 @@ export const PatchEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchEventRequest",
 }) as any as S.Schema<PatchEventRequest>;
 
-export type EventsEditResponseTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type EventsEditResponseTurnstileAction = "log" | "infinite_queue";
 export const EventsEditResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsEditResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const EventsEditResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2515,7 +2146,7 @@ export const PatchEventResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchEventResponse",
 }) as any as S.Schema<PatchEventResponse>;
 
-export type RulesEditRequestAction = "bypass_waiting_room" | (string & {});
+export type RulesEditRequestAction = "bypass_waiting_room";
 export const RulesEditRequestAction = /*@__PURE__*/ S.String;
 
 export interface RulesEditRequestPositionIndex {
@@ -2569,7 +2200,7 @@ export interface PatchRuleRequest {
   /** The ID of the rule. */
   ruleId: string;
   /** The action to take when the expression matches. */
-  action: RulesEditRequestAction;
+  action: RulesEditRequestAction | (string & {});
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
@@ -2602,7 +2233,7 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchRuleRequest",
 }) as any as S.Schema<PatchRuleRequest>;
 
-export type RulesEditResultItemAction = "bypass_waiting_room" | (string & {});
+export type RulesEditResultItemAction = "bypass_waiting_room";
 export const RulesEditResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesEditResultItem {
@@ -2719,22 +2350,17 @@ export type EditRequestCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict"
-  | (string & {});
+  | "strict";
 export const EditRequestCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type EditRequestCookieAttributesSecure =
-  | "auto"
-  | "always"
-  | "never"
-  | (string & {});
+export type EditRequestCookieAttributesSecure = "auto" | "always" | "never";
 export const EditRequestCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface EditRequestCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: EditRequestCookieAttributesSamesite;
+  samesite?: EditRequestCookieAttributesSamesite | (string & {});
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: EditRequestCookieAttributesSecure;
+  secure?: EditRequestCookieAttributesSecure | (string & {});
 }
 export const EditRequestCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2783,15 +2409,15 @@ export type EditRequestDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN"
-  | (string & {});
+  | "vi-VN";
 export const EditRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type EditRequestEnabledOriginCommandsItem = "revoke" | (string & {});
+export type EditRequestEnabledOriginCommandsItem = "revoke";
 export const EditRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type EditRequestEnabledOriginCommandsList =
-  ReadonlyArray<EditRequestEnabledOriginCommandsItem>;
+export type EditRequestEnabledOriginCommandsList = ReadonlyArray<
+  EditRequestEnabledOriginCommandsItem | (string & {})
+>;
 export const EditRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   EditRequestEnabledOriginCommandsItem,
 ) as any as S.Schema<EditRequestEnabledOriginCommandsList>;
@@ -2800,25 +2426,20 @@ export type EditRequestQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject"
-  | (string & {});
+  | "reject";
 export const EditRequestQueueingMethod = /*@__PURE__*/ S.String;
 
-export type EditRequestQueueingStatusCode = 200 | 202 | 429 | (number & {});
+export type EditRequestQueueingStatusCode = 200 | 202 | 429;
 export const EditRequestQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type EditRequestTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type EditRequestTurnstileAction = "log" | "infinite_queue";
 export const EditRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EditRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const EditRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface PatchWaitingRoomRequest {
@@ -2842,7 +2463,7 @@ export interface PatchWaitingRoomRequest {
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
   customPageHtml?: string;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: EditRequestDefaultTemplateLanguage;
+  defaultTemplateLanguage?: EditRequestDefaultTemplateLanguage | (string & {});
   /** A note that you can use to add more details about the waiting room. */
   description?: string;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
@@ -2856,17 +2477,17 @@ export interface PatchWaitingRoomRequest {
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
   queueAll?: boolean;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: EditRequestQueueingMethod;
+  queueingMethod?: EditRequestQueueingMethod | (string & {});
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: EditRequestQueueingStatusCode;
+  queueingStatusCode?: EditRequestQueueingStatusCode | (number & {});
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
   sessionDuration?: number;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
   suspended?: boolean;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: EditRequestTurnstileAction;
+  turnstileAction?: EditRequestTurnstileAction | (string & {});
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: EditRequestTurnstileMode;
+  turnstileMode?: EditRequestTurnstileMode | (string & {});
 }
 export const PatchWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2955,15 +2576,10 @@ export type EditResponseCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict"
-  | (string & {});
+  | "strict";
 export const EditResponseCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type EditResponseCookieAttributesSecure =
-  | "auto"
-  | "always"
-  | "never"
-  | (string & {});
+export type EditResponseCookieAttributesSecure = "auto" | "always" | "never";
 export const EditResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface EditResponseCookieAttributes {
@@ -3019,11 +2635,10 @@ export type EditResponseDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN"
-  | (string & {});
+  | "vi-VN";
 export const EditResponseDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type EditResponseEnabledOriginCommandsItem = "revoke" | (string & {});
+export type EditResponseEnabledOriginCommandsItem = "revoke";
 export const EditResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type EditResponseEnabledOriginCommandsList =
@@ -3036,25 +2651,20 @@ export type EditResponseQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject"
-  | (string & {});
+  | "reject";
 export const EditResponseQueueingMethod = /*@__PURE__*/ S.String;
 
-export type EditResponseQueueingStatusCode = 200 | 202 | 429 | (number & {});
+export type EditResponseQueueingStatusCode = 200 | 202 | 429;
 export const EditResponseQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type EditResponseTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type EditResponseTurnstileAction = "log" | "infinite_queue";
 export const EditResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EditResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const EditResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3248,18 +2858,14 @@ export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutSettingResponse",
 }) as any as S.Schema<PutSettingResponse>;
 
-export type EventsUpdateRequestTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type EventsUpdateRequestTurnstileAction = "log" | "infinite_queue";
 export const EventsUpdateRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsUpdateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const EventsUpdateRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface UpdateEventRequest {
@@ -3294,9 +2900,9 @@ export interface UpdateEventRequest {
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
   totalActiveUsers?: number;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsUpdateRequestTurnstileAction;
+  turnstileAction?: EventsUpdateRequestTurnstileAction | (string & {});
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsUpdateRequestTurnstileMode;
+  turnstileMode?: EventsUpdateRequestTurnstileMode | (string & {});
 }
 export const UpdateEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3341,18 +2947,14 @@ export const UpdateEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEventRequest",
 }) as any as S.Schema<UpdateEventRequest>;
 
-export type EventsUpdateResponseTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type EventsUpdateResponseTurnstileAction = "log" | "infinite_queue";
 export const EventsUpdateResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsUpdateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const EventsUpdateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3426,14 +3028,12 @@ export const UpdateEventResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEventResponse",
 }) as any as S.Schema<UpdateEventResponse>;
 
-export type RulesUpdateRequestRulesItemAction =
-  | "bypass_waiting_room"
-  | (string & {});
+export type RulesUpdateRequestRulesItemAction = "bypass_waiting_room";
 export const RulesUpdateRequestRulesItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateRequestRulesItem {
   /** The action to take when the expression matches. */
-  action: RulesUpdateRequestRulesItemAction;
+  action: RulesUpdateRequestRulesItemAction | (string & {});
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
@@ -3482,7 +3082,7 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRuleRequest",
 }) as any as S.Schema<UpdateRuleRequest>;
 
-export type RulesUpdateResultItemAction = "bypass_waiting_room" | (string & {});
+export type RulesUpdateResultItemAction = "bypass_waiting_room";
 export const RulesUpdateResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateResultItem {
@@ -3559,22 +3159,17 @@ export type UpdateRequestCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict"
-  | (string & {});
+  | "strict";
 export const UpdateRequestCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type UpdateRequestCookieAttributesSecure =
-  | "auto"
-  | "always"
-  | "never"
-  | (string & {});
+export type UpdateRequestCookieAttributesSecure = "auto" | "always" | "never";
 export const UpdateRequestCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: UpdateRequestCookieAttributesSamesite;
+  samesite?: UpdateRequestCookieAttributesSamesite | (string & {});
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: UpdateRequestCookieAttributesSecure;
+  secure?: UpdateRequestCookieAttributesSecure | (string & {});
 }
 export const UpdateRequestCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3623,15 +3218,15 @@ export type UpdateRequestDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN"
-  | (string & {});
+  | "vi-VN";
 export const UpdateRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type UpdateRequestEnabledOriginCommandsItem = "revoke" | (string & {});
+export type UpdateRequestEnabledOriginCommandsItem = "revoke";
 export const UpdateRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type UpdateRequestEnabledOriginCommandsList =
-  ReadonlyArray<UpdateRequestEnabledOriginCommandsItem>;
+export type UpdateRequestEnabledOriginCommandsList = ReadonlyArray<
+  UpdateRequestEnabledOriginCommandsItem | (string & {})
+>;
 export const UpdateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   UpdateRequestEnabledOriginCommandsItem,
 ) as any as S.Schema<UpdateRequestEnabledOriginCommandsList>;
@@ -3640,25 +3235,20 @@ export type UpdateRequestQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject"
-  | (string & {});
+  | "reject";
 export const UpdateRequestQueueingMethod = /*@__PURE__*/ S.String;
 
-export type UpdateRequestQueueingStatusCode = 200 | 202 | 429 | (number & {});
+export type UpdateRequestQueueingStatusCode = 200 | 202 | 429;
 export const UpdateRequestQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type UpdateRequestTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type UpdateRequestTurnstileAction = "log" | "infinite_queue";
 export const UpdateRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type UpdateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const UpdateRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface UpdateWaitingRoomRequest {
@@ -3682,7 +3272,9 @@ export interface UpdateWaitingRoomRequest {
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
   customPageHtml?: string;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: UpdateRequestDefaultTemplateLanguage;
+  defaultTemplateLanguage?:
+    | UpdateRequestDefaultTemplateLanguage
+    | (string & {});
   /** A note that you can use to add more details about the waiting room. */
   description?: string;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
@@ -3696,17 +3288,17 @@ export interface UpdateWaitingRoomRequest {
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
   queueAll?: boolean;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: UpdateRequestQueueingMethod;
+  queueingMethod?: UpdateRequestQueueingMethod | (string & {});
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: UpdateRequestQueueingStatusCode;
+  queueingStatusCode?: UpdateRequestQueueingStatusCode | (number & {});
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
   sessionDuration?: number;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
   suspended?: boolean;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: UpdateRequestTurnstileAction;
+  turnstileAction?: UpdateRequestTurnstileAction | (string & {});
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: UpdateRequestTurnstileMode;
+  turnstileMode?: UpdateRequestTurnstileMode | (string & {});
 }
 export const UpdateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3795,15 +3387,10 @@ export type UpdateResponseCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict"
-  | (string & {});
+  | "strict";
 export const UpdateResponseCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type UpdateResponseCookieAttributesSecure =
-  | "auto"
-  | "always"
-  | "never"
-  | (string & {});
+export type UpdateResponseCookieAttributesSecure = "auto" | "always" | "never";
 export const UpdateResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseCookieAttributes {
@@ -3859,11 +3446,10 @@ export type UpdateResponseDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN"
-  | (string & {});
+  | "vi-VN";
 export const UpdateResponseDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type UpdateResponseEnabledOriginCommandsItem = "revoke" | (string & {});
+export type UpdateResponseEnabledOriginCommandsItem = "revoke";
 export const UpdateResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type UpdateResponseEnabledOriginCommandsList =
@@ -3876,25 +3462,20 @@ export type UpdateResponseQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject"
-  | (string & {});
+  | "reject";
 export const UpdateResponseQueueingMethod = /*@__PURE__*/ S.String;
 
-export type UpdateResponseQueueingStatusCode = 200 | 202 | 429 | (number & {});
+export type UpdateResponseQueueingStatusCode = 200 | 202 | 429;
 export const UpdateResponseQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type UpdateResponseTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
+export type UpdateResponseTurnstileAction = "log" | "infinite_queue";
 export const UpdateResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type UpdateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
+  | "visible_managed";
 export const UpdateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4252,13 +3833,13 @@ export type ListWaitingRoomsForAccountError = Forbidden | CloudflareOpError;
 /** Lists waiting rooms for account or zone. */
 export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
   ListWaitingRoomsForAccountRequest,
-  ListWaitingRoomsForAccountResponse,
+  ListWaitingRoomsResponse,
   ListWaitingRoomsForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWaitingRoomsForAccountRequest,
-    output: ListWaitingRoomsForAccountResponse,
+    output: ListWaitingRoomsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4277,13 +3858,13 @@ export type ListWaitingRoomsForZoneError = Forbidden | CloudflareOpError;
 /** Lists waiting rooms for account or zone. */
 export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
   ListWaitingRoomsForZoneRequest,
-  ListWaitingRoomsForZoneResponse,
+  ListWaitingRoomsResponse,
   ListWaitingRoomsForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWaitingRoomsForZoneRequest,
-    output: ListWaitingRoomsForZoneResponse,
+    output: ListWaitingRoomsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,

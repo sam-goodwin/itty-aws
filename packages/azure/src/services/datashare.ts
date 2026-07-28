@@ -22,13 +22,13 @@ export const AccountsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsCreateRequestTagsMap>;
 
 /** Identity Type */
-export type IdentityInputType = "SystemAssigned" | (string & {});
+export type IdentityInputType = "SystemAssigned";
 export const IdentityInputType = /*@__PURE__*/ S.String;
 
 /** Identity of resource */
 export interface IdentityInput {
   /** Identity Type */
-  type?: IdentityInputType;
+  type?: IdentityInputType | (string & {});
 }
 export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -86,8 +86,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -95,8 +94,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -135,7 +133,7 @@ export const AccountsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsCreateResponseTagsMap>;
 
 /** Identity Type */
-export type IdentityType = "SystemAssigned" | (string & {});
+export type IdentityType = "SystemAssigned";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Identity of resource */
@@ -161,8 +159,7 @@ export type AccountPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Moving"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const AccountPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Account property bag. */
@@ -280,8 +277,7 @@ export type OperationResponseStatus =
   | "TransientFailure"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const OperationResponseStatus = /*@__PURE__*/ S.String;
 
 /** Response for long running operation */
@@ -583,8 +579,7 @@ export type ConsumerInvitationPropertiesInvitationStatus =
   | "Pending"
   | "Accepted"
   | "Rejected"
-  | "Withdrawn"
-  | (string & {});
+  | "Withdrawn";
 export const ConsumerInvitationPropertiesInvitationStatus =
   /*@__PURE__*/ S.String;
 
@@ -842,8 +837,7 @@ export type ConsumerSourceDataSetPropertiesDataSetType =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const ConsumerSourceDataSetPropertiesDataSetType =
   /*@__PURE__*/ S.String;
 
@@ -933,8 +927,7 @@ export type DataSetMappingsCreateRequestKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetMappingsCreateRequestKind = /*@__PURE__*/ S.String;
 
 export interface DataSetMappingsCreateRequest {
@@ -949,7 +942,7 @@ export interface DataSetMappingsCreateRequest {
   /** The name of the data set mapping to be created. */
   dataSetMappingName: string;
   /** Kind of data set mapping. */
-  kind: DataSetMappingsCreateRequestKind;
+  kind: DataSetMappingsCreateRequestKind | (string & {});
 }
 export const DataSetMappingsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -984,8 +977,7 @@ export type DataSetMappingsCreateResponseKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetMappingsCreateResponseKind = /*@__PURE__*/ S.String;
 
 export interface DataSetMappingsCreateResponse {
@@ -1094,8 +1086,7 @@ export type DataSetMappingsGetResponseKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetMappingsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface DataSetMappingsGetResponse {
@@ -1173,8 +1164,7 @@ export type DataSetMappingKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetMappingKind = /*@__PURE__*/ S.String;
 
 /** A data set mapping data transfer object. */
@@ -1237,8 +1227,7 @@ export type DataSetsCreateRequestKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetsCreateRequestKind = /*@__PURE__*/ S.String;
 
 export interface DataSetsCreateRequest {
@@ -1253,7 +1242,7 @@ export interface DataSetsCreateRequest {
   /** The name of the dataSet. */
   dataSetName: string;
   /** Kind of data set. */
-  kind: DataSetsCreateRequestKind;
+  kind: DataSetsCreateRequestKind | (string & {});
 }
 export const DataSetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1290,8 +1279,7 @@ export type DataSetsCreateResponseKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetsCreateResponseKind = /*@__PURE__*/ S.String;
 
 export interface DataSetsCreateResponse {
@@ -1402,8 +1390,7 @@ export type DataSetsGetResponseKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface DataSetsGetResponse {
@@ -1482,8 +1469,7 @@ export type DataSetKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetKind = /*@__PURE__*/ S.String;
 
 /** A DataSet data transfer object. */
@@ -1556,8 +1542,7 @@ export const EmailRegistrationsActivateEmailRequest = /*@__PURE__*/ S.suspend(
 export type EmailRegistrationRegistrationStatus =
   | "ActivationPending"
   | "Activated"
-  | "ActivationAttemptsExhausted"
-  | (string & {});
+  | "ActivationAttemptsExhausted";
 export const EmailRegistrationRegistrationStatus = /*@__PURE__*/ S.String;
 
 /** Dto for tenant domain registration */
@@ -1666,8 +1651,7 @@ export type InvitationPropertiesInvitationStatus =
   | "Pending"
   | "Accepted"
   | "Rejected"
-  | "Withdrawn"
-  | (string & {});
+  | "Withdrawn";
 export const InvitationPropertiesInvitationStatus = /*@__PURE__*/ S.String;
 
 /** Invitation property bag. */
@@ -2195,8 +2179,7 @@ export type ProviderShareSubscriptionPropertiesShareSubscriptionStatus =
   | "Active"
   | "Revoked"
   | "SourceDeleted"
-  | "Revoking"
-  | (string & {});
+  | "Revoking";
 export const ProviderShareSubscriptionPropertiesShareSubscriptionStatus =
   /*@__PURE__*/ S.String;
 
@@ -2522,10 +2505,7 @@ export const ProviderShareSubscriptionsRevokeResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProviderShareSubscriptionsRevokeResponse>;
 
 /** Share kind. */
-export type SharePropertiesInputShareKind =
-  | "CopyBased"
-  | "InPlace"
-  | (string & {});
+export type SharePropertiesInputShareKind = "CopyBased" | "InPlace";
 export const SharePropertiesInputShareKind = /*@__PURE__*/ S.String;
 
 /** Share property bag. */
@@ -2533,7 +2513,7 @@ export interface SharePropertiesInput {
   /** Share description. */
   description?: string;
   /** Share kind. */
-  shareKind?: SharePropertiesInputShareKind;
+  shareKind?: SharePropertiesInputShareKind | (string & {});
   /** Share terms. */
   terms?: string;
 }
@@ -2584,12 +2564,11 @@ export type SharePropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Moving"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SharePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Share kind. */
-export type SharePropertiesShareKind = "CopyBased" | "InPlace" | (string & {});
+export type SharePropertiesShareKind = "CopyBased" | "InPlace";
 export const SharePropertiesShareKind = /*@__PURE__*/ S.String;
 
 /** Share property bag. */
@@ -2884,8 +2863,7 @@ export type SynchronizationDetailsDataSetType =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const SynchronizationDetailsDataSetType = /*@__PURE__*/ S.String;
 
 /** Synchronization details at data set level */
@@ -3006,8 +2984,7 @@ export const SharesListSynchronizationsRequest = /*@__PURE__*/ S.suspend(() =>
 /** Synchronization mode */
 export type ShareSynchronizationSynchronizationMode =
   | "Incremental"
-  | "FullSync"
-  | (string & {});
+  | "FullSync";
 export const ShareSynchronizationSynchronizationMode = /*@__PURE__*/ S.String;
 
 /** A ShareSynchronization data transfer object. */
@@ -3108,8 +3085,7 @@ export const ShareSubscriptionsCancelSynchronizationRequest =
 /** Synchronization Mode */
 export type ShareSubscriptionSynchronizationSynchronizationMode =
   | "Incremental"
-  | "FullSync"
-  | (string & {});
+  | "FullSync";
 export const ShareSubscriptionSynchronizationSynchronizationMode =
   /*@__PURE__*/ S.String;
 
@@ -3202,16 +3178,12 @@ export type ShareSubscriptionPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Moving"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ShareSubscriptionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Kind of share */
-export type ShareSubscriptionPropertiesShareKind =
-  | "CopyBased"
-  | "InPlace"
-  | (string & {});
+export type ShareSubscriptionPropertiesShareKind = "CopyBased" | "InPlace";
 export const ShareSubscriptionPropertiesShareKind = /*@__PURE__*/ S.String;
 
 /** Gets the current status of share subscription. */
@@ -3219,8 +3191,7 @@ export type ShareSubscriptionPropertiesShareSubscriptionStatus =
   | "Active"
   | "Revoked"
   | "SourceDeleted"
-  | "Revoking"
-  | (string & {});
+  | "Revoking";
 export const ShareSubscriptionPropertiesShareSubscriptionStatus =
   /*@__PURE__*/ S.String;
 
@@ -3501,9 +3472,7 @@ export const ShareSubscriptionsListSourceShareSynchronizationSettingsRequest =
   }) as any as S.Schema<ShareSubscriptionsListSourceShareSynchronizationSettingsRequest>;
 
 /** Kind of synchronization setting on share. */
-export type SourceShareSynchronizationSettingKind =
-  | "ScheduleBased"
-  | (string & {});
+export type SourceShareSynchronizationSettingKind = "ScheduleBased";
 export const SourceShareSynchronizationSettingKind = /*@__PURE__*/ S.String;
 
 /** A view of synchronization setting added by the provider */
@@ -3651,8 +3620,7 @@ export const ShareSubscriptionSynchronizationList = /*@__PURE__*/ S.suspend(
 /** Mode of synchronization used in triggers and snapshot sync. Incremental by default */
 export type ShareSubscriptionsSynchronizeRequestSynchronizationMode =
   | "Incremental"
-  | "FullSync"
-  | (string & {});
+  | "FullSync";
 export const ShareSubscriptionsSynchronizeRequestSynchronizationMode =
   /*@__PURE__*/ S.String;
 
@@ -3666,7 +3634,9 @@ export interface ShareSubscriptionsSynchronizeRequest {
   /** The name of share subscription */
   shareSubscriptionName: string;
   /** Mode of synchronization used in triggers and snapshot sync. Incremental by default */
-  synchronizationMode?: ShareSubscriptionsSynchronizeRequestSynchronizationMode;
+  synchronizationMode?:
+    | ShareSubscriptionsSynchronizeRequestSynchronizationMode
+    | (string & {});
 }
 export const ShareSubscriptionsSynchronizeRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3691,9 +3661,7 @@ export const ShareSubscriptionsSynchronizeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ShareSubscriptionsSynchronizeRequest>;
 
 /** Kind of synchronization setting. */
-export type SynchronizationSettingsCreateRequestKind =
-  | "ScheduleBased"
-  | (string & {});
+export type SynchronizationSettingsCreateRequestKind = "ScheduleBased";
 export const SynchronizationSettingsCreateRequestKind = /*@__PURE__*/ S.String;
 
 export interface SynchronizationSettingsCreateRequest {
@@ -3708,7 +3676,7 @@ export interface SynchronizationSettingsCreateRequest {
   /** The name of the synchronizationSetting. */
   synchronizationSettingName: string;
   /** Kind of synchronization setting. */
-  kind: SynchronizationSettingsCreateRequestKind;
+  kind: SynchronizationSettingsCreateRequestKind | (string & {});
 }
 export const SynchronizationSettingsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3732,9 +3700,7 @@ export const SynchronizationSettingsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SynchronizationSettingsCreateRequest>;
 
 /** Kind of synchronization setting. */
-export type SynchronizationSettingsCreateResponseKind =
-  | "ScheduleBased"
-  | (string & {});
+export type SynchronizationSettingsCreateResponseKind = "ScheduleBased";
 export const SynchronizationSettingsCreateResponseKind = /*@__PURE__*/ S.String;
 
 export interface SynchronizationSettingsCreateResponse {
@@ -3826,9 +3792,7 @@ export const SynchronizationSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynchronizationSettingsGetRequest>;
 
 /** Kind of synchronization setting. */
-export type SynchronizationSettingsGetResponseKind =
-  | "ScheduleBased"
-  | (string & {});
+export type SynchronizationSettingsGetResponseKind = "ScheduleBased";
 export const SynchronizationSettingsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface SynchronizationSettingsGetResponse {
@@ -3888,7 +3852,7 @@ export const SynchronizationSettingsListByShareRequest =
   }) as any as S.Schema<SynchronizationSettingsListByShareRequest>;
 
 /** Kind of synchronization setting. */
-export type SynchronizationSettingKind = "ScheduleBased" | (string & {});
+export type SynchronizationSettingKind = "ScheduleBased";
 export const SynchronizationSettingKind = /*@__PURE__*/ S.String;
 
 /** A Synchronization Setting data transfer object. */
@@ -3940,7 +3904,7 @@ export const SynchronizationSettingList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynchronizationSettingList>;
 
 /** Kind of synchronization on trigger. */
-export type TriggersCreateRequestKind = "ScheduleBased" | (string & {});
+export type TriggersCreateRequestKind = "ScheduleBased";
 export const TriggersCreateRequestKind = /*@__PURE__*/ S.String;
 
 export interface TriggersCreateRequest {
@@ -3955,7 +3919,7 @@ export interface TriggersCreateRequest {
   /** The name of the trigger. */
   triggerName: string;
   /** Kind of synchronization on trigger. */
-  kind: TriggersCreateRequestKind;
+  kind: TriggersCreateRequestKind | (string & {});
 }
 export const TriggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3978,7 +3942,7 @@ export const TriggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggersCreateRequest>;
 
 /** Kind of synchronization on trigger. */
-export type TriggersCreateResponseKind = "ScheduleBased" | (string & {});
+export type TriggersCreateResponseKind = "ScheduleBased";
 export const TriggersCreateResponseKind = /*@__PURE__*/ S.String;
 
 export interface TriggersCreateResponse {
@@ -4068,7 +4032,7 @@ export const TriggersGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggersGetRequest>;
 
 /** Kind of synchronization on trigger. */
-export type TriggersGetResponseKind = "ScheduleBased" | (string & {});
+export type TriggersGetResponseKind = "ScheduleBased";
 export const TriggersGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface TriggersGetResponse {
@@ -4128,7 +4092,7 @@ export const TriggersListByShareSubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TriggersListByShareSubscriptionRequest>;
 
 /** Kind of synchronization on trigger. */
-export type TriggerKind = "ScheduleBased" | (string & {});
+export type TriggerKind = "ScheduleBased";
 export const TriggerKind = /*@__PURE__*/ S.String;
 
 /** A Trigger data transfer object. */

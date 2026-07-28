@@ -19,12 +19,13 @@ export const UserInterviewsCreateRequestIntervieweeEmailsList =
   ) as any as S.Schema<UserInterviewsCreateRequestIntervieweeEmailsList>;
 
 /** * `abandoned` - Abandoned * `off-topic` - Off-topic */
-export type ClassificationsEnum = "abandoned" | "off-topic" | (string & {});
+export type ClassificationsEnum = "abandoned" | "off-topic";
 export const ClassificationsEnum = /*@__PURE__*/ S.String;
 
 /** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
-export type UserInterviewsCreateRequestClassificationsList =
-  ReadonlyArray<ClassificationsEnum>;
+export type UserInterviewsCreateRequestClassificationsList = ReadonlyArray<
+  ClassificationsEnum | (string & {})
+>;
 export const UserInterviewsCreateRequestClassificationsList =
   /*@__PURE__*/ S.Array(
     ClassificationsEnum,
@@ -74,11 +75,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -240,7 +240,7 @@ export const UserInterviewsPartialUpdateRequestIntervieweeEmailsList =
 
 /** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
 export type UserInterviewsPartialUpdateRequestClassificationsList =
-  ReadonlyArray<ClassificationsEnum>;
+  ReadonlyArray<ClassificationsEnum | (string & {})>;
 export const UserInterviewsPartialUpdateRequestClassificationsList =
   /*@__PURE__*/ S.Array(
     ClassificationsEnum,
@@ -302,15 +302,13 @@ export const UserInterviewsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserInterviewsRetrieveRequest>;
 
 /** * `transcript` - transcript * `summary` - summary */
-export type UserInterviewSearchDocumentTypeEnum =
-  | "transcript"
-  | "summary"
-  | (string & {});
+export type UserInterviewSearchDocumentTypeEnum = "transcript" | "summary";
 export const UserInterviewSearchDocumentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Which document types to search across. Omit to default to both `transcript` and `summary`. Pass a non-empty subset to restrict the search. */
-export type UserInterviewsSearchCreateRequestDocumentTypesList =
-  ReadonlyArray<UserInterviewSearchDocumentTypeEnum>;
+export type UserInterviewsSearchCreateRequestDocumentTypesList = ReadonlyArray<
+  UserInterviewSearchDocumentTypeEnum | (string & {})
+>;
 export const UserInterviewsSearchCreateRequestDocumentTypesList =
   /*@__PURE__*/ S.Array(
     UserInterviewSearchDocumentTypeEnum,
@@ -318,7 +316,7 @@ export const UserInterviewsSearchCreateRequestDocumentTypesList =
 
 /** Optional. Restrict results to interviews carrying any of these classifications (OR). Combines with `topic_id` as AND. */
 export type UserInterviewsSearchCreateRequestClassificationsList =
-  ReadonlyArray<ClassificationsEnum>;
+  ReadonlyArray<ClassificationsEnum | (string & {})>;
 export const UserInterviewsSearchCreateRequestClassificationsList =
   /*@__PURE__*/ S.Array(
     ClassificationsEnum,
@@ -413,8 +411,9 @@ export const UserInterviewsUpdateRequestIntervieweeEmailsList =
   ) as any as S.Schema<UserInterviewsUpdateRequestIntervieweeEmailsList>;
 
 /** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
-export type UserInterviewsUpdateRequestClassificationsList =
-  ReadonlyArray<ClassificationsEnum>;
+export type UserInterviewsUpdateRequestClassificationsList = ReadonlyArray<
+  ClassificationsEnum | (string & {})
+>;
 export const UserInterviewsUpdateRequestClassificationsList =
   /*@__PURE__*/ S.Array(
     ClassificationsEnum,

@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface CancelTaskRequest {
@@ -65,12 +65,10 @@ export interface CancelTaskRequest {
   tenant?: string;
 }
 export const CancelTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenant: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CancelTaskRequest",
-}) as any as S.Schema<CancelTaskRequest>;
+S.Struct({
+  "tenant": S.optional(S.String),
+}),
+).annotate({ identifier: "CancelTaskRequest" }) as any as S.Schema<CancelTaskRequest>;
 
 export interface CancelTasksRequest {
   /** The resource name of the task to cancel. Format: tasks/{task_id} */
@@ -79,49 +77,22 @@ export interface CancelTasksRequest {
   body?: CancelTaskRequest;
 }
 export const CancelTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CancelTaskRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:cancel",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelTasksRequest",
-}) as any as S.Schema<CancelTasksRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelTaskRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "CancelTasksRequest" }) as any as S.Schema<CancelTasksRequest>;
 
-export type TaskStatusStateEnum =
-  | "TASK_STATE_UNSPECIFIED"
-  | "TASK_STATE_SUBMITTED"
-  | "TASK_STATE_WORKING"
-  | "TASK_STATE_COMPLETED"
-  | "TASK_STATE_FAILED"
-  | "TASK_STATE_CANCELLED"
-  | "TASK_STATE_INPUT_REQUIRED"
-  | "TASK_STATE_REJECTED"
-  | "TASK_STATE_AUTH_REQUIRED"
-  | (string & {});
+export type TaskStatusStateEnum = "TASK_STATE_UNSPECIFIED" | "TASK_STATE_SUBMITTED" | "TASK_STATE_WORKING" | "TASK_STATE_COMPLETED" | "TASK_STATE_FAILED" | "TASK_STATE_CANCELLED" | "TASK_STATE_INPUT_REQUIRED" | "TASK_STATE_REJECTED" | "TASK_STATE_AUTH_REQUIRED";
 export const TaskStatusStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type MessageRoleEnum =
-  | "ROLE_UNSPECIFIED"
-  | "ROLE_USER"
-  | "ROLE_AGENT"
-  | (string & {});
+export type MessageRoleEnum = "ROLE_UNSPECIFIED" | "ROLE_USER" | "ROLE_AGENT";
 export const MessageRoleEnum = /*@__PURE__*/ S.String;
 
 /** DataPart represents a structured blob. This is most commonly a JSON payload. */
@@ -129,9 +100,9 @@ export interface DataPart {
   data?: DocumentMap;
 }
 export const DataPart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "data": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "DataPart" }) as any as S.Schema<DataPart>;
 
 /** FilePart represents the different ways files can be provided. If files are small, directly feeding the bytes is supported via file_with_bytes. If the file is large, the agent should read the content as appropriate directly from the file_with_uri source. */
@@ -142,12 +113,12 @@ export interface FilePart {
   mimeType?: string;
 }
 export const FilePart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    fileWithUri: S.optional(S.String),
-    fileWithBytes: S.optional(S.String),
-    mimeType: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "fileWithUri": S.optional(S.String),
+  "fileWithBytes": S.optional(S.String),
+  "mimeType": S.optional(S.String),
+}),
 ).annotate({ identifier: "FilePart" }) as any as S.Schema<FilePart>;
 
 /** Part represents a container for a section of communication content. Parts can be purely textual, some sort of file (image, video, etc) or a structured data blob (i.e. JSON). */
@@ -159,18 +130,16 @@ export interface Part {
   file?: FilePart;
 }
 export const Part = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    text: S.optional(S.String),
-    data: S.optional(DataPart),
-    file: S.optional(FilePart),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "text": S.optional(S.String),
+  "data": S.optional(DataPart),
+  "file": S.optional(FilePart),
+}),
 ).annotate({ identifier: "Part" }) as any as S.Schema<Part>;
 
 export type PartList = ReadonlyArray<Part>;
-export const PartList = /*@__PURE__*/ S.Array(
-  Part,
-) as any as S.Schema<PartList>;
+export const PartList = /*@__PURE__*/ S.Array(Part) as any as S.Schema<PartList>;
 
 /** Message is one unit of communication between client and server. It is associated with a context and optionally a task. Since the server is responsible for the context definition, it must always provide a context_id in its messages. The client can optionally provide the context_id if it knows the context to associate the message to. Similarly for task_id, except the server decides if a task is created and whether to include the task_id. */
 export interface Message {
@@ -190,15 +159,15 @@ export interface Message {
   contextId?: string;
 }
 export const Message = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    extensions: S.optional(StringList),
-    role: S.optional(MessageRoleEnum),
-    content: S.optional(PartList),
-    messageId: S.optional(S.String),
-    taskId: S.optional(S.String),
-    contextId: S.optional(S.String),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "extensions": S.optional(StringList),
+  "role": S.optional(MessageRoleEnum),
+  "content": S.optional(PartList),
+  "messageId": S.optional(S.String),
+  "taskId": S.optional(S.String),
+  "contextId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
 /** A container for the status of a task */
@@ -211,17 +180,15 @@ export interface TaskStatus {
   timestamp?: string;
 }
 export const TaskStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(TaskStatusStateEnum),
-    message: S.optional(Message),
-    timestamp: S.optional(S.String),
-  }),
+S.Struct({
+  "state": S.optional(TaskStatusStateEnum),
+  "message": S.optional(Message),
+  "timestamp": S.optional(S.String),
+}),
 ).annotate({ identifier: "TaskStatus" }) as any as S.Schema<TaskStatus>;
 
 export type MessageList = ReadonlyArray<Message>;
-export const MessageList = /*@__PURE__*/ S.Array(
-  Message,
-) as any as S.Schema<MessageList>;
+export const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
 
 /** Artifacts are the container for task completed results. These are similar to Messages but are intended to be the product of a task, as opposed to point-to-point communication. */
 export interface Artifact {
@@ -239,20 +206,18 @@ export interface Artifact {
   parts?: PartList;
 }
 export const Artifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    artifactId: S.optional(S.String),
-    name: S.optional(S.String),
-    extensions: S.optional(StringList),
-    metadata: S.optional(DocumentMap),
-    parts: S.optional(PartList),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "artifactId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "extensions": S.optional(StringList),
+  "metadata": S.optional(DocumentMap),
+  "parts": S.optional(PartList),
+}),
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
 export type ArtifactList = ReadonlyArray<Artifact>;
-export const ArtifactList = /*@__PURE__*/ S.Array(
-  Artifact,
-) as any as S.Schema<ArtifactList>;
+export const ArtifactList = /*@__PURE__*/ S.Array(Artifact) as any as S.Schema<ArtifactList>;
 
 /** Task is the core unit of action for A2A. It has a current status and when results are created for the task they are stored in the artifact. If there are multiple turns for a task, these are stored in history. */
 export interface Task {
@@ -270,14 +235,14 @@ export interface Task {
   contextId?: string;
 }
 export const Task = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(TaskStatus),
-    metadata: S.optional(DocumentMap),
-    history: S.optional(MessageList),
-    artifacts: S.optional(ArtifactList),
-    id: S.optional(S.String),
-    contextId: S.optional(S.String),
-  }),
+S.Struct({
+  "status": S.optional(TaskStatus),
+  "metadata": S.optional(DocumentMap),
+  "history": S.optional(MessageList),
+  "artifacts": S.optional(ArtifactList),
+  "id": S.optional(S.String),
+  "contextId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
 
 /** Options about what data to include in the event payload. Only supported for Google Chat and Google Drive events. */
@@ -288,10 +253,10 @@ export interface PayloadOptions {
   fieldMask?: string;
 }
 export const PayloadOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeResource: S.optional(S.Boolean),
-    fieldMask: S.optional(S.String),
-  }),
+S.Struct({
+  "includeResource": S.optional(S.Boolean),
+  "fieldMask": S.optional(S.String),
+}),
 ).annotate({ identifier: "PayloadOptions" }) as any as S.Schema<PayloadOptions>;
 
 /** The endpoint where the subscription delivers events. */
@@ -300,12 +265,10 @@ export interface NotificationEndpoint {
   pubsubTopic?: string;
 }
 export const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pubsubTopic: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NotificationEndpoint",
-}) as any as S.Schema<NotificationEndpoint>;
+S.Struct({
+  "pubsubTopic": S.optional(S.String),
+}),
+).annotate({ identifier: "NotificationEndpoint" }) as any as S.Schema<NotificationEndpoint>;
 
 /** Additional supported options for serving Drive events. */
 export interface DriveOptions {
@@ -313,31 +276,15 @@ export interface DriveOptions {
   includeDescendants?: boolean;
 }
 export const DriveOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeDescendants: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "includeDescendants": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "DriveOptions" }) as any as S.Schema<DriveOptions>;
 
-export type SubscriptionStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "SUSPENDED"
-  | "DELETED"
-  | (string & {});
+export type SubscriptionStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED" | "DELETED";
 export const SubscriptionStateEnum = /*@__PURE__*/ S.String;
 
-export type SubscriptionSuspensionReasonEnum =
-  | "ERROR_TYPE_UNSPECIFIED"
-  | "USER_SCOPE_REVOKED"
-  | "APP_SCOPE_REVOKED"
-  | "RESOURCE_DELETED"
-  | "USER_AUTHORIZATION_FAILURE"
-  | "APP_AUTHORIZATION_FAILURE"
-  | "ENDPOINT_PERMISSION_DENIED"
-  | "ENDPOINT_NOT_FOUND"
-  | "ENDPOINT_RESOURCE_EXHAUSTED"
-  | "OTHER"
-  | (string & {});
+export type SubscriptionSuspensionReasonEnum = "ERROR_TYPE_UNSPECIFIED" | "USER_SCOPE_REVOKED" | "APP_SCOPE_REVOKED" | "RESOURCE_DELETED" | "USER_AUTHORIZATION_FAILURE" | "APP_AUTHORIZATION_FAILURE" | "ENDPOINT_PERMISSION_DENIED" | "ENDPOINT_NOT_FOUND" | "ENDPOINT_RESOURCE_EXHAUSTED" | "OTHER";
 export const SubscriptionSuspensionReasonEnum = /*@__PURE__*/ S.String;
 
 /** A subscription to receive events about a Google Workspace resource. To learn more about subscriptions, see the [Google Workspace Events API overview](https://developers.google.com/workspace/events). */
@@ -380,26 +327,26 @@ export interface Subscription {
   updateTime?: string;
 }
 export const Subscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceAccountAuthority: S.optional(S.String),
-    targetResource: S.optional(S.String),
-    userAuthority: S.optional(S.String),
-    payloadOptions: S.optional(PayloadOptions),
-    notificationEndpoint: S.optional(NotificationEndpoint),
-    driveOptions: S.optional(DriveOptions),
-    state: S.optional(SubscriptionStateEnum),
-    etag: S.optional(S.String),
-    createTime: S.optional(S.String),
-    ttl: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
-    authority: S.optional(S.String),
-    expireTime: S.optional(S.String),
-    eventTypes: S.optional(StringList),
-    suspensionReason: S.optional(SubscriptionSuspensionReasonEnum),
-    name: S.optional(S.String),
-    uid: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "serviceAccountAuthority": S.optional(S.String),
+  "targetResource": S.optional(S.String),
+  "userAuthority": S.optional(S.String),
+  "payloadOptions": S.optional(PayloadOptions),
+  "notificationEndpoint": S.optional(NotificationEndpoint),
+  "driveOptions": S.optional(DriveOptions),
+  "state": S.optional(SubscriptionStateEnum),
+  "etag": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "ttl": S.optional(S.String),
+  "reconciling": S.optional(S.Boolean),
+  "authority": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+  "eventTypes": S.optional(StringList),
+  "suspensionReason": S.optional(SubscriptionSuspensionReasonEnum),
+  "name": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 export interface CreateSubscriptionsRequest {
@@ -409,24 +356,14 @@ export interface CreateSubscriptionsRequest {
   body?: Subscription;
 }
 export const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(Subscription.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/subscriptions",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateSubscriptionsRequest",
-}) as any as S.Schema<CreateSubscriptionsRequest>;
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Subscription.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/subscriptions","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "CreateSubscriptionsRequest" }) as any as S.Schema<CreateSubscriptionsRequest>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -438,11 +375,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -459,13 +396,13 @@ export interface Operation {
   metadata?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    error: S.optional(Status),
-    response: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    metadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "error": S.optional(Status),
+  "response": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "metadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Defines authentication details, used for push notifications. */
@@ -476,13 +413,11 @@ export interface AuthenticationInfo {
   credentials?: string;
 }
 export const AuthenticationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemes: S.optional(StringList),
-    credentials: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthenticationInfo",
-}) as any as S.Schema<AuthenticationInfo>;
+S.Struct({
+  "schemes": S.optional(StringList),
+  "credentials": S.optional(S.String),
+}),
+).annotate({ identifier: "AuthenticationInfo" }) as any as S.Schema<AuthenticationInfo>;
 
 /** Configuration for setting up push notifications for task updates. */
 export interface PushNotificationConfig {
@@ -496,15 +431,13 @@ export interface PushNotificationConfig {
   token?: string;
 }
 export const PushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    authentication: S.optional(AuthenticationInfo),
-    url: S.optional(S.String),
-    token: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PushNotificationConfig",
-}) as any as S.Schema<PushNotificationConfig>;
+S.Struct({
+  "id": S.optional(S.String),
+  "authentication": S.optional(AuthenticationInfo),
+  "url": S.optional(S.String),
+  "token": S.optional(S.String),
+}),
+).annotate({ identifier: "PushNotificationConfig" }) as any as S.Schema<PushNotificationConfig>;
 
 export interface TaskPushNotificationConfig {
   /** The resource name of the config. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} */
@@ -513,13 +446,11 @@ export interface TaskPushNotificationConfig {
   pushNotificationConfig?: PushNotificationConfig;
 }
 export const TaskPushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    pushNotificationConfig: S.optional(PushNotificationConfig),
-  }),
-).annotate({
-  identifier: "TaskPushNotificationConfig",
-}) as any as S.Schema<TaskPushNotificationConfig>;
+S.Struct({
+  "name": S.optional(S.String),
+  "pushNotificationConfig": S.optional(PushNotificationConfig),
+}),
+).annotate({ identifier: "TaskPushNotificationConfig" }) as any as S.Schema<TaskPushNotificationConfig>;
 
 export interface CreateTasksPushNotificationConfigsRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
@@ -531,23 +462,14 @@ export interface CreateTasksPushNotificationConfigsRequest {
   /** Request body */
   body?: TaskPushNotificationConfig;
 }
-export const CreateTasksPushNotificationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tenant: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      configId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(TaskPushNotificationConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}",
-        baseUrl: "https://workspaceevents.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateTasksPushNotificationConfigsRequest",
-  }) as any as S.Schema<CreateTasksPushNotificationConfigsRequest>;
+export const CreateTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "tenant": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "configId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(TaskPushNotificationConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "CreateTasksPushNotificationConfigsRequest" }) as any as S.Schema<CreateTasksPushNotificationConfigsRequest>;
 
 export interface DeleteSubscriptionsRequest {
   /** Required. Resource name of the subscription to delete. Format: `subscriptions/{subscription}` */
@@ -560,21 +482,13 @@ export interface DeleteSubscriptionsRequest {
   etag?: string;
 }
 export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-    allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    etag: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteSubscriptionsRequest",
-}) as any as S.Schema<DeleteSubscriptionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "DeleteSubscriptionsRequest" }) as any as S.Schema<DeleteSubscriptionsRequest>;
 
 export interface DeleteTasksPushNotificationConfigsRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
@@ -582,63 +496,38 @@ export interface DeleteTasksPushNotificationConfigsRequest {
   /** The resource name of the config to delete. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} */
   name: string;
 }
-export const DeleteTasksPushNotificationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tenant: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workspaceevents.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteTasksPushNotificationConfigsRequest",
-  }) as any as S.Schema<DeleteTasksPushNotificationConfigsRequest>;
+export const DeleteTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "tenant": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "DeleteTasksPushNotificationConfigsRequest" }) as any as S.Schema<DeleteTasksPushNotificationConfigsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperationsRequest",
-}) as any as S.Schema<GetOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetSubscriptionsRequest {
   /** Required. Resource name of the subscription. Format: `subscriptions/{subscription}` */
   name: string;
 }
 export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSubscriptionsRequest",
-}) as any as S.Schema<GetSubscriptionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "GetSubscriptionsRequest" }) as any as S.Schema<GetSubscriptionsRequest>;
 
 export interface GetTasksRequest {
   /** Required. The resource name of the task. Format: tasks/{task_id} */
@@ -649,20 +538,12 @@ export interface GetTasksRequest {
   historyLength?: number;
 }
 export const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    tenant: S.optional(S.String.pipe(T.Query())),
-    historyLength: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetTasksRequest",
-}) as any as S.Schema<GetTasksRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "tenant": S.optional(S.String.pipe(T.Query())),
+  "historyLength": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "GetTasksRequest" }) as any as S.Schema<GetTasksRequest>;
 
 export interface GetTasksPushNotificationConfigsRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
@@ -670,21 +551,12 @@ export interface GetTasksPushNotificationConfigsRequest {
   /** The resource name of the config to retrieve. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} */
   name: string;
 }
-export const GetTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tenant: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workspaceevents.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetTasksPushNotificationConfigsRequest",
-}) as any as S.Schema<GetTasksPushNotificationConfigsRequest>;
+export const GetTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "tenant": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "GetTasksPushNotificationConfigsRequest" }) as any as S.Schema<GetTasksPushNotificationConfigsRequest>;
 
 export interface ListSubscriptionsRequest {
   /** Optional. The maximum number of subscriptions to return. The service might return fewer than this value. If unspecified or set to `0`, up to 50 subscriptions are returned. The maximum value is 100. If you specify a value more than 100, the system only returns 100 subscriptions. */
@@ -695,25 +567,15 @@ export interface ListSubscriptionsRequest {
   pageToken?: string;
 }
 export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/subscriptions",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSubscriptionsRequest",
-}) as any as S.Schema<ListSubscriptionsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/subscriptions","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type SubscriptionList = ReadonlyArray<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** The response message for SubscriptionsService.ListSubscriptions. */
 export interface ListSubscriptionsResponse {
@@ -723,13 +585,11 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptions: S.optional(SubscriptionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSubscriptionsResponse",
-}) as any as S.Schema<ListSubscriptionsResponse>;
+S.Struct({
+  "subscriptions": S.optional(SubscriptionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListSubscriptionsResponse" }) as any as S.Schema<ListSubscriptionsResponse>;
 
 export interface ListTasksPushNotificationConfigsRequest {
   /** The parent task resource. Format: tasks/{task_id} */
@@ -741,29 +601,17 @@ export interface ListTasksPushNotificationConfigsRequest {
   /** A page token received from a previous ListTaskPushNotificationConfigRequest call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTaskPushNotificationConfigRequest` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      tenant: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/pushNotificationConfigs",
-        baseUrl: "https://workspaceevents.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListTasksPushNotificationConfigsRequest",
-}) as any as S.Schema<ListTasksPushNotificationConfigsRequest>;
+export const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "tenant": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/pushNotificationConfigs","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "ListTasksPushNotificationConfigsRequest" }) as any as S.Schema<ListTasksPushNotificationConfigsRequest>;
 
-export type TaskPushNotificationConfigList =
-  ReadonlyArray<TaskPushNotificationConfig>;
-export const TaskPushNotificationConfigList = /*@__PURE__*/ S.Array(
-  TaskPushNotificationConfig,
-) as any as S.Schema<TaskPushNotificationConfigList>;
+export type TaskPushNotificationConfigList = ReadonlyArray<TaskPushNotificationConfig>;
+export const TaskPushNotificationConfigList = /*@__PURE__*/ S.Array(TaskPushNotificationConfig) as any as S.Schema<TaskPushNotificationConfigList>;
 
 export interface ListTaskPushNotificationConfigResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -771,15 +619,12 @@ export interface ListTaskPushNotificationConfigResponse {
   /** The list of push notification configurations. */
   configs?: TaskPushNotificationConfigList;
 }
-export const ListTaskPushNotificationConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      configs: S.optional(TaskPushNotificationConfigList),
-    }),
-).annotate({
-  identifier: "ListTaskPushNotificationConfigResponse",
-}) as any as S.Schema<ListTaskPushNotificationConfigResponse>;
+export const ListTaskPushNotificationConfigResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "configs": S.optional(TaskPushNotificationConfigList),
+}),
+).annotate({ identifier: "ListTaskPushNotificationConfigResponse" }) as any as S.Schema<ListTaskPushNotificationConfigResponse>;
 
 export interface PatchSubscriptionsRequest {
   /** Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}` */
@@ -792,29 +637,19 @@ export interface PatchSubscriptionsRequest {
   body?: Subscription;
 }
 export const PatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Subscription.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchSubscriptionsRequest",
-}) as any as S.Schema<PatchSubscriptionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Subscription.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "PatchSubscriptionsRequest" }) as any as S.Schema<PatchSubscriptionsRequest>;
 
 /** The request message for SubscriptionsService.ReactivateSubscription. */
 export interface ReactivateSubscriptionRequest {}
 export const ReactivateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReactivateSubscriptionRequest",
-}) as any as S.Schema<ReactivateSubscriptionRequest>;
+S.Struct({}),
+).annotate({ identifier: "ReactivateSubscriptionRequest" }) as any as S.Schema<ReactivateSubscriptionRequest>;
 
 export interface ReactivateSubscriptionsRequest {
   /** Required. Resource name of the subscription. Format: `subscriptions/{subscription}` */
@@ -823,19 +658,11 @@ export interface ReactivateSubscriptionsRequest {
   body?: ReactivateSubscriptionRequest;
 }
 export const ReactivateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(ReactivateSubscriptionRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:reactivate",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ReactivateSubscriptionsRequest",
-}) as any as S.Schema<ReactivateSubscriptionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ReactivateSubscriptionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:reactivate","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "ReactivateSubscriptionsRequest" }) as any as S.Schema<ReactivateSubscriptionsRequest>;
 
 /** Configuration of a send message request. */
 export interface SendMessageConfiguration {
@@ -849,15 +676,13 @@ export interface SendMessageConfiguration {
   acceptedOutputModes?: StringList;
 }
 export const SendMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pushNotification: S.optional(PushNotificationConfig),
-    blocking: S.optional(S.Boolean),
-    historyLength: S.optional(S.Number),
-    acceptedOutputModes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "SendMessageConfiguration",
-}) as any as S.Schema<SendMessageConfiguration>;
+S.Struct({
+  "pushNotification": S.optional(PushNotificationConfig),
+  "blocking": S.optional(S.Boolean),
+  "historyLength": S.optional(S.Number),
+  "acceptedOutputModes": S.optional(StringList),
+}),
+).annotate({ identifier: "SendMessageConfiguration" }) as any as S.Schema<SendMessageConfiguration>;
 
 /** /////////// Request Messages /////////// */
 export interface SendMessageRequest {
@@ -871,33 +696,23 @@ export interface SendMessageRequest {
   metadata?: DocumentMap;
 }
 export const SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenant: S.optional(S.String),
-    message: S.optional(Message),
-    configuration: S.optional(SendMessageConfiguration),
-    metadata: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "SendMessageRequest",
-}) as any as S.Schema<SendMessageRequest>;
+S.Struct({
+  "tenant": S.optional(S.String),
+  "message": S.optional(Message),
+  "configuration": S.optional(SendMessageConfiguration),
+  "metadata": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "SendMessageRequest" }) as any as S.Schema<SendMessageRequest>;
 
 export interface StreamMessageRequest {
   /** Request body */
   body?: SendMessageRequest;
 }
 export const StreamMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(SendMessageRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/message:stream",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "StreamMessageRequest",
-}) as any as S.Schema<StreamMessageRequest>;
+S.Struct({
+  "body": S.optional(SendMessageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/message:stream","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "StreamMessageRequest" }) as any as S.Schema<StreamMessageRequest>;
 
 /** TaskStatusUpdateEvent is a delta even on a task indicating that a task has changed. */
 export interface TaskStatusUpdateEvent {
@@ -913,16 +728,14 @@ export interface TaskStatusUpdateEvent {
   taskId?: string;
 }
 export const TaskStatusUpdateEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(TaskStatus),
-    metadata: S.optional(DocumentMap),
-    contextId: S.optional(S.String),
-    final: S.optional(S.Boolean),
-    taskId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TaskStatusUpdateEvent",
-}) as any as S.Schema<TaskStatusUpdateEvent>;
+S.Struct({
+  "status": S.optional(TaskStatus),
+  "metadata": S.optional(DocumentMap),
+  "contextId": S.optional(S.String),
+  "final": S.optional(S.Boolean),
+  "taskId": S.optional(S.String),
+}),
+).annotate({ identifier: "TaskStatusUpdateEvent" }) as any as S.Schema<TaskStatusUpdateEvent>;
 
 /** TaskArtifactUpdateEvent represents a task delta where an artifact has been generated. */
 export interface TaskArtifactUpdateEvent {
@@ -940,17 +753,15 @@ export interface TaskArtifactUpdateEvent {
   metadata?: DocumentMap;
 }
 export const TaskArtifactUpdateEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastChunk: S.optional(S.Boolean),
-    contextId: S.optional(S.String),
-    append: S.optional(S.Boolean),
-    taskId: S.optional(S.String),
-    artifact: S.optional(Artifact),
-    metadata: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "TaskArtifactUpdateEvent",
-}) as any as S.Schema<TaskArtifactUpdateEvent>;
+S.Struct({
+  "lastChunk": S.optional(S.Boolean),
+  "contextId": S.optional(S.String),
+  "append": S.optional(S.Boolean),
+  "taskId": S.optional(S.String),
+  "artifact": S.optional(Artifact),
+  "metadata": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "TaskArtifactUpdateEvent" }) as any as S.Schema<TaskArtifactUpdateEvent>;
 
 /** The stream response for a message. The stream should be one of the following sequences: If the response is a message, the stream should contain one, and only one, message and then close If the response is a task lifecycle, the first response should be a Task object followed by zero or more TaskStatusUpdateEvents and TaskArtifactUpdateEvents. The stream should complete when the Task if in an interrupted or terminal state. A stream that ends before these conditions are met are */
 export interface StreamResponse {
@@ -960,12 +771,12 @@ export interface StreamResponse {
   message?: Message;
 }
 export const StreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statusUpdate: S.optional(TaskStatusUpdateEvent),
-    task: S.optional(Task),
-    artifactUpdate: S.optional(TaskArtifactUpdateEvent),
-    message: S.optional(Message),
-  }),
+S.Struct({
+  "statusUpdate": S.optional(TaskStatusUpdateEvent),
+  "task": S.optional(Task),
+  "artifactUpdate": S.optional(TaskArtifactUpdateEvent),
+  "message": S.optional(Message),
+}),
 ).annotate({ identifier: "StreamResponse" }) as any as S.Schema<StreamResponse>;
 
 export interface SubscribeTasksRequest {
@@ -975,26 +786,13 @@ export interface SubscribeTasksRequest {
   name: string;
 }
 export const SubscribeTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenant: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}:subscribe",
-      baseUrl: "https://workspaceevents.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SubscribeTasksRequest",
-}) as any as S.Schema<SubscribeTasksRequest>;
+S.Struct({
+  "tenant": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:subscribe","baseUrl":"https://workspaceevents.googleapis.com/"})),
+).annotate({ identifier: "SubscribeTasksRequest" }) as any as S.Schema<SubscribeTasksRequest>;
 
-export type CancelTasksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancel a task from the agent. If supported one should expect no more task updates for the task. */
 export const cancelTasks: API.OperationMethod<
   CancelTasksRequest,
@@ -1009,12 +807,7 @@ export const cancelTasks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Google Workspace subscription. To learn how to use this method, see [Create a Google Workspace subscription](https://developers.google.com/workspace/events/guides/create-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can create a subscription as: - A Chat app subscribing to space events where the app is a member by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - [Developer Preview](https://developers.google.com/workspace/preview): A Chat app subscribing to all events in a Google Workspace organization by specifying an authorization scope that begins with `chat.app.all` and obtaining one-time administrator approval. To learn more, see [Subscribe to all Google Chat events in a Workspace organization ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). */
 export const createSubscriptions: API.OperationMethod<
   CreateSubscriptionsRequest,
@@ -1029,12 +822,7 @@ export const createSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateTasksPushNotificationConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateTasksPushNotificationConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Set a push notification config for a task. */
 export const createTasksPushNotificationConfigs: API.OperationMethod<
   CreateTasksPushNotificationConfigsRequest,
@@ -1049,12 +837,7 @@ export const createTasksPushNotificationConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a Google Workspace subscription. To learn how to use this method, see [Delete a Google Workspace subscription](https://developers.google.com/workspace/events/guides/delete-subscription). */
 export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsRequest,
@@ -1069,12 +852,7 @@ export const deleteSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteTasksPushNotificationConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteTasksPushNotificationConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete a push notification config for a task. */
 export const deleteTasksPushNotificationConfigs: API.OperationMethod<
   DeleteTasksPushNotificationConfigsRequest,
@@ -1134,10 +912,7 @@ export const getTasks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetTasksPushNotificationConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetTasksPushNotificationConfigsError = NotFound | Forbidden | GcpOpError;
 /** Get a push notification config for a task. */
 export const getTasksPushNotificationConfigs: API.OperationMethod<
   GetTasksPushNotificationConfigsRequest,
@@ -1165,16 +940,10 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListTasksPushNotificationConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListTasksPushNotificationConfigsError = NotFound | Forbidden | GcpOpError;
 /** Get a list of push notifications configured for a task. */
 export const listTasksPushNotificationConfigs: API.PaginatedOperationMethod<
   ListTasksPushNotificationConfigsRequest,
@@ -1187,18 +956,10 @@ export const listTasksPushNotificationConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates or renews a Google Workspace subscription. To learn how to use this method, see [Update or renew a Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can update a subscription as: - A Chat app subscribing to space events where the app is a member by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - [Developer Preview](https://developers.google.com/workspace/preview): A Chat app subscribing to all events in a Google Workspace organization by specifying an authorization scope that begins with `chat.app.all` and getting one-time administrator approval. To learn more, see [Subscribe to all Google Chat events in a Workspace organization ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). */
 export const patchSubscriptions: API.OperationMethod<
   PatchSubscriptionsRequest,
@@ -1213,12 +974,7 @@ export const patchSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReactivateSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ReactivateSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Reactivates a suspended Google Workspace subscription. This method resets your subscription's `State` field to `ACTIVE`. Before you use this method, you must fix the error that suspended the subscription. This method will ignore or reject any subscription that isn't currently in a suspended state. To learn how to use this method, see [Reactivate a Google Workspace subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can reactivate a subscription as: - A Chat app subscribing to space events where the app is a member by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - [Developer Preview](https://developers.google.com/workspace/preview): A Chat app subscribing to all events in a Google Workspace organization by specifying an authorization scope that begins with `chat.app.all` and getting one-time administrator approval. To learn more, see [Subscribe to all Google Chat events in a Workspace organization ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). */
 export const reactivateSubscriptions: API.OperationMethod<
   ReactivateSubscriptionsRequest,
@@ -1233,12 +989,7 @@ export const reactivateSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StreamMessageError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StreamMessageError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** SendStreamingMessage is a streaming call that will return a stream of task update events until the Task is in an interrupted or terminal state. */
 export const streamMessage: API.OperationMethod<
   StreamMessageRequest,
@@ -1267,3 +1018,4 @@ export const subscribeTasks: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

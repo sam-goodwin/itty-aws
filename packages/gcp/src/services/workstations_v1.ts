@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,46 +72,27 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
 export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
+S.Struct({}),
+).annotate({ identifier: "GoogleProtobufEmpty" }) as any as S.Schema<GoogleProtobufEmpty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -125,17 +104,15 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type StatusList = ReadonlyArray<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(
-  Status,
-) as any as S.Schema<StatusList>;
+export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 /** Configuration options for Cluster HTTP Gateway. */
 export interface GatewayConfig {
@@ -143,15 +120,13 @@ export interface GatewayConfig {
   http2Enabled?: boolean;
 }
 export const GatewayConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    http2Enabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "http2Enabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "GatewayConfig" }) as any as S.Schema<GatewayConfig>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Configuration options for private workstation clusters. */
 export interface PrivateClusterConfig {
@@ -165,15 +140,13 @@ export interface PrivateClusterConfig {
   clusterHostname?: string;
 }
 export const PrivateClusterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedProjects: S.optional(StringList),
-    serviceAttachmentUri: S.optional(S.String),
-    enablePrivateEndpoint: S.optional(S.Boolean),
-    clusterHostname: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateClusterConfig",
-}) as any as S.Schema<PrivateClusterConfig>;
+S.Struct({
+  "allowedProjects": S.optional(StringList),
+  "serviceAttachmentUri": S.optional(S.String),
+  "enablePrivateEndpoint": S.optional(S.Boolean),
+  "clusterHostname": S.optional(S.String),
+}),
+).annotate({ identifier: "PrivateClusterConfig" }) as any as S.Schema<PrivateClusterConfig>;
 
 /** Configuration options for a custom domain. */
 export interface DomainConfig {
@@ -181,9 +154,9 @@ export interface DomainConfig {
   domain?: string;
 }
 export const DomainConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-  }),
+S.Struct({
+  "domain": S.optional(S.String),
+}),
 ).annotate({ identifier: "DomainConfig" }) as any as S.Schema<DomainConfig>;
 
 /** A workstation cluster resource in the Cloud Workstations API. Defines a group of workstations in a particular region and the VPC network they're attached to. */
@@ -232,32 +205,30 @@ export interface WorkstationCluster {
   domainConfig?: DomainConfig;
 }
 export const WorkstationCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlPlaneIp: S.optional(S.String),
-    createTime: S.optional(S.String),
-    workstationLaunchUrl: S.optional(S.String),
-    labels: S.optional(StringMap),
-    conditions: S.optional(StatusList),
-    displayName: S.optional(S.String),
-    workstationAuthorizationUrl: S.optional(S.String),
-    etag: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
-    deleteTime: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    uid: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    gatewayConfig: S.optional(GatewayConfig),
-    network: S.optional(S.String),
-    subnetwork: S.optional(S.String),
-    degraded: S.optional(S.Boolean),
-    privateClusterConfig: S.optional(PrivateClusterConfig),
-    tags: S.optional(StringMap),
-    name: S.optional(S.String),
-    domainConfig: S.optional(DomainConfig),
-  }),
-).annotate({
-  identifier: "WorkstationCluster",
-}) as any as S.Schema<WorkstationCluster>;
+S.Struct({
+  "controlPlaneIp": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "workstationLaunchUrl": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "conditions": S.optional(StatusList),
+  "displayName": S.optional(S.String),
+  "workstationAuthorizationUrl": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "reconciling": S.optional(S.Boolean),
+  "deleteTime": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "uid": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "gatewayConfig": S.optional(GatewayConfig),
+  "network": S.optional(S.String),
+  "subnetwork": S.optional(S.String),
+  "degraded": S.optional(S.Boolean),
+  "privateClusterConfig": S.optional(PrivateClusterConfig),
+  "tags": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "domainConfig": S.optional(DomainConfig),
+}),
+).annotate({ identifier: "WorkstationCluster" }) as any as S.Schema<WorkstationCluster>;
 
 export interface CreateProjectsLocationsWorkstationClustersRequest {
   /** Optional. If set, validate the request and preview the result, but do not actually apply it. */
@@ -269,23 +240,14 @@ export interface CreateProjectsLocationsWorkstationClustersRequest {
   /** Request body */
   body?: WorkstationCluster;
 }
-export const CreateProjectsLocationsWorkstationClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      workstationClusterId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WorkstationCluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workstationClusters",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsWorkstationClustersRequest",
-  }) as any as S.Schema<CreateProjectsLocationsWorkstationClustersRequest>;
+export const CreateProjectsLocationsWorkstationClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "workstationClusterId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(WorkstationCluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/workstationClusters","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsWorkstationClustersRequest" }) as any as S.Schema<CreateProjectsLocationsWorkstationClustersRequest>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
@@ -301,13 +263,13 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-    done: S.optional(S.Boolean),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "done": S.optional(S.Boolean),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** A customer-managed encryption key (CMEK) for the Compute Engine resources of the associated workstation configuration. Specify the name of your Cloud KMS encryption key and the default service account. We recommend that you use a separate service account and follow [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties). */
@@ -318,21 +280,14 @@ export interface CustomerEncryptionKey {
   kmsKeyServiceAccount?: string;
 }
 export const CustomerEncryptionKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKey: S.optional(S.String),
-    kmsKeyServiceAccount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerEncryptionKey",
-}) as any as S.Schema<CustomerEncryptionKey>;
+S.Struct({
+  "kmsKey": S.optional(S.String),
+  "kmsKeyServiceAccount": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomerEncryptionKey" }) as any as S.Schema<CustomerEncryptionKey>;
 
-export type GceRegionalPersistentDiskReclaimPolicyEnum =
-  | "RECLAIM_POLICY_UNSPECIFIED"
-  | "DELETE"
-  | "RETAIN"
-  | (string & {});
-export const GceRegionalPersistentDiskReclaimPolicyEnum =
-  /*@__PURE__*/ S.String;
+export type GceRegionalPersistentDiskReclaimPolicyEnum = "RECLAIM_POLICY_UNSPECIFIED" | "DELETE" | "RETAIN";
+export const GceRegionalPersistentDiskReclaimPolicyEnum = /*@__PURE__*/ S.String;
 
 /** A Persistent Directory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory. */
 export interface GceRegionalPersistentDisk {
@@ -352,26 +307,19 @@ export interface GceRegionalPersistentDisk {
   archiveTimeout?: string;
 }
 export const GceRegionalPersistentDisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fsType: S.optional(S.String),
-    diskType: S.optional(S.String),
-    sizeGb: S.optional(S.Number),
-    reclaimPolicy: S.optional(GceRegionalPersistentDiskReclaimPolicyEnum),
-    maxSizeGb: S.optional(S.Number),
-    sourceSnapshot: S.optional(S.String),
-    archiveTimeout: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GceRegionalPersistentDisk",
-}) as any as S.Schema<GceRegionalPersistentDisk>;
+S.Struct({
+  "fsType": S.optional(S.String),
+  "diskType": S.optional(S.String),
+  "sizeGb": S.optional(S.Number),
+  "reclaimPolicy": S.optional(GceRegionalPersistentDiskReclaimPolicyEnum),
+  "maxSizeGb": S.optional(S.Number),
+  "sourceSnapshot": S.optional(S.String),
+  "archiveTimeout": S.optional(S.String),
+}),
+).annotate({ identifier: "GceRegionalPersistentDisk" }) as any as S.Schema<GceRegionalPersistentDisk>;
 
-export type GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum =
-  | "RECLAIM_POLICY_UNSPECIFIED"
-  | "DELETE"
-  | "RETAIN"
-  | (string & {});
-export const GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum =
-  /*@__PURE__*/ S.String;
+export type GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum = "RECLAIM_POLICY_UNSPECIFIED" | "DELETE" | "RETAIN";
+export const GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum = /*@__PURE__*/ S.String;
 
 /** A Persistent Directory backed by a Compute Engine [Hyperdisk Balanced High Availability Disk](https://cloud.google.com/compute/docs/disks/hd-types/hyperdisk-balanced-ha). This is a high-availability block storage solution that offers a balance between performance and cost for most general-purpose workloads. */
 export interface GceHyperdiskBalancedHighAvailability {
@@ -386,20 +334,15 @@ export interface GceHyperdiskBalancedHighAvailability {
   /** Optional. Number of seconds to wait after initially creating or subsequently shutting down the workstation before converting its disk into a snapshot. This generally saves costs at the expense of greater startup time on next workstation start, as the service will need to create a disk from the archival snapshot. A value of `"0s"` indicates that the disk will never be archived. */
   archiveTimeout?: string;
 }
-export const GceHyperdiskBalancedHighAvailability = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sizeGb: S.optional(S.Number),
-      reclaimPolicy: S.optional(
-        GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum,
-      ),
-      maxSizeGb: S.optional(S.Number),
-      sourceSnapshot: S.optional(S.String),
-      archiveTimeout: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GceHyperdiskBalancedHighAvailability",
-}) as any as S.Schema<GceHyperdiskBalancedHighAvailability>;
+export const GceHyperdiskBalancedHighAvailability = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sizeGb": S.optional(S.Number),
+  "reclaimPolicy": S.optional(GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum),
+  "maxSizeGb": S.optional(S.Number),
+  "sourceSnapshot": S.optional(S.String),
+  "archiveTimeout": S.optional(S.String),
+}),
+).annotate({ identifier: "GceHyperdiskBalancedHighAvailability" }) as any as S.Schema<GceHyperdiskBalancedHighAvailability>;
 
 /** A directory to persist across workstation sessions. Updates to this field will not update existing workstations and will only take effect on new workstations. */
 export interface PersistentDirectory {
@@ -411,19 +354,15 @@ export interface PersistentDirectory {
   mountPath?: string;
 }
 export const PersistentDirectory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcePd: S.optional(GceRegionalPersistentDisk),
-    gceHd: S.optional(GceHyperdiskBalancedHighAvailability),
-    mountPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PersistentDirectory",
-}) as any as S.Schema<PersistentDirectory>;
+S.Struct({
+  "gcePd": S.optional(GceRegionalPersistentDisk),
+  "gceHd": S.optional(GceHyperdiskBalancedHighAvailability),
+  "mountPath": S.optional(S.String),
+}),
+).annotate({ identifier: "PersistentDirectory" }) as any as S.Schema<PersistentDirectory>;
 
 export type PersistentDirectoryList = ReadonlyArray<PersistentDirectory>;
-export const PersistentDirectoryList = /*@__PURE__*/ S.Array(
-  PersistentDirectory,
-) as any as S.Schema<PersistentDirectoryList>;
+export const PersistentDirectoryList = /*@__PURE__*/ S.Array(PersistentDirectory) as any as S.Schema<PersistentDirectoryList>;
 
 /** A PortRange defines a range of ports. Both first and last are inclusive. To specify a single port, both first and last should be the same. */
 export interface PortRange {
@@ -433,16 +372,14 @@ export interface PortRange {
   last?: number;
 }
 export const PortRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    first: S.optional(S.Number),
-    last: S.optional(S.Number),
-  }),
+S.Struct({
+  "first": S.optional(S.Number),
+  "last": S.optional(S.Number),
+}),
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
 
 export type PortRangeList = ReadonlyArray<PortRange>;
-export const PortRangeList = /*@__PURE__*/ S.Array(
-  PortRange,
-) as any as S.Schema<PortRangeList>;
+export const PortRangeList = /*@__PURE__*/ S.Array(PortRange) as any as S.Schema<PortRangeList>;
 
 /** A set of Compute Engine Confidential VM instance options. */
 export interface GceConfidentialInstanceConfig {
@@ -450,12 +387,10 @@ export interface GceConfidentialInstanceConfig {
   enableConfidentialCompute?: boolean;
 }
 export const GceConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableConfidentialCompute: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GceConfidentialInstanceConfig",
-}) as any as S.Schema<GceConfidentialInstanceConfig>;
+S.Struct({
+  "enableConfidentialCompute": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GceConfidentialInstanceConfig" }) as any as S.Schema<GceConfidentialInstanceConfig>;
 
 /** A set of Compute Engine Shielded instance options. */
 export interface GceShieldedInstanceConfig {
@@ -467,14 +402,12 @@ export interface GceShieldedInstanceConfig {
   enableVtpm?: boolean;
 }
 export const GceShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableIntegrityMonitoring: S.optional(S.Boolean),
-    enableSecureBoot: S.optional(S.Boolean),
-    enableVtpm: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GceShieldedInstanceConfig",
-}) as any as S.Schema<GceShieldedInstanceConfig>;
+S.Struct({
+  "enableIntegrityMonitoring": S.optional(S.Boolean),
+  "enableSecureBoot": S.optional(S.Boolean),
+  "enableVtpm": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GceShieldedInstanceConfig" }) as any as S.Schema<GceShieldedInstanceConfig>;
 
 /** An accelerator card attached to the instance. */
 export interface Accelerator {
@@ -484,16 +417,14 @@ export interface Accelerator {
   count?: number;
 }
 export const Accelerator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    count: S.optional(S.Number),
-  }),
+S.Struct({
+  "type": S.optional(S.String),
+  "count": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Accelerator" }) as any as S.Schema<Accelerator>;
 
 export type AcceleratorList = ReadonlyArray<Accelerator>;
-export const AcceleratorList = /*@__PURE__*/ S.Array(
-  Accelerator,
-) as any as S.Schema<AcceleratorList>;
+export const AcceleratorList = /*@__PURE__*/ S.Array(Accelerator) as any as S.Schema<AcceleratorList>;
 
 /** A boost configuration is a set of resources that a workstation can use to increase its performance. If you specify a boost configuration, upon startup, workstation users can choose to use a VM provisioned under the boost config by passing the boost config ID in the start request. If the workstation user does not provide a boost config ID in the start request, the system will choose a VM from the pool provisioned under the default config. */
 export interface BoostConfig {
@@ -511,20 +442,18 @@ export interface BoostConfig {
   bootDiskSizeGb?: number;
 }
 export const BoostConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machineType: S.optional(S.String),
-    enableNestedVirtualization: S.optional(S.Boolean),
-    accelerators: S.optional(AcceleratorList),
-    poolSize: S.optional(S.Number),
-    id: S.optional(S.String),
-    bootDiskSizeGb: S.optional(S.Number),
-  }),
+S.Struct({
+  "machineType": S.optional(S.String),
+  "enableNestedVirtualization": S.optional(S.Boolean),
+  "accelerators": S.optional(AcceleratorList),
+  "poolSize": S.optional(S.Number),
+  "id": S.optional(S.String),
+  "bootDiskSizeGb": S.optional(S.Number),
+}),
 ).annotate({ identifier: "BoostConfig" }) as any as S.Schema<BoostConfig>;
 
 export type BoostConfigList = ReadonlyArray<BoostConfig>;
-export const BoostConfigList = /*@__PURE__*/ S.Array(
-  BoostConfig,
-) as any as S.Schema<BoostConfigList>;
+export const BoostConfigList = /*@__PURE__*/ S.Array(BoostConfig) as any as S.Schema<BoostConfigList>;
 
 /** A runtime using a Compute Engine instance. */
 export interface GceInstance {
@@ -564,25 +493,25 @@ export interface GceInstance {
   accelerators?: AcceleratorList;
 }
 export const GceInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bootDiskSizeGb: S.optional(S.Number),
-    serviceAccountScopes: S.optional(StringList),
-    poolSize: S.optional(S.Number),
-    tags: S.optional(StringList),
-    disableSsh: S.optional(S.Boolean),
-    confidentialInstanceConfig: S.optional(GceConfidentialInstanceConfig),
-    shieldedInstanceConfig: S.optional(GceShieldedInstanceConfig),
-    vmTags: S.optional(StringMap),
-    disablePublicIpAddresses: S.optional(S.Boolean),
-    enableNestedVirtualization: S.optional(S.Boolean),
-    machineType: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    boostConfigs: S.optional(BoostConfigList),
-    pooledInstances: S.optional(S.Number),
-    startupScriptUri: S.optional(S.String),
-    instanceMetadata: S.optional(StringMap),
-    accelerators: S.optional(AcceleratorList),
-  }),
+S.Struct({
+  "bootDiskSizeGb": S.optional(S.Number),
+  "serviceAccountScopes": S.optional(StringList),
+  "poolSize": S.optional(S.Number),
+  "tags": S.optional(StringList),
+  "disableSsh": S.optional(S.Boolean),
+  "confidentialInstanceConfig": S.optional(GceConfidentialInstanceConfig),
+  "shieldedInstanceConfig": S.optional(GceShieldedInstanceConfig),
+  "vmTags": S.optional(StringMap),
+  "disablePublicIpAddresses": S.optional(S.Boolean),
+  "enableNestedVirtualization": S.optional(S.Boolean),
+  "machineType": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "boostConfigs": S.optional(BoostConfigList),
+  "pooledInstances": S.optional(S.Number),
+  "startupScriptUri": S.optional(S.String),
+  "instanceMetadata": S.optional(StringMap),
+  "accelerators": S.optional(AcceleratorList),
+}),
 ).annotate({ identifier: "GceInstance" }) as any as S.Schema<GceInstance>;
 
 /** Runtime host for a workstation. */
@@ -591,9 +520,9 @@ export interface Host {
   gceInstance?: GceInstance;
 }
 export const Host = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gceInstance: S.optional(GceInstance),
-  }),
+S.Struct({
+  "gceInstance": S.optional(GceInstance),
+}),
 ).annotate({ identifier: "Host" }) as any as S.Schema<Host>;
 
 /** An EphemeralDirectory is backed by a Compute Engine persistent disk. */
@@ -608,15 +537,13 @@ export interface GcePersistentDisk {
   diskType?: string;
 }
 export const GcePersistentDisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readOnly: S.optional(S.Boolean),
-    sourceSnapshot: S.optional(S.String),
-    sourceImage: S.optional(S.String),
-    diskType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GcePersistentDisk",
-}) as any as S.Schema<GcePersistentDisk>;
+S.Struct({
+  "readOnly": S.optional(S.Boolean),
+  "sourceSnapshot": S.optional(S.String),
+  "sourceImage": S.optional(S.String),
+  "diskType": S.optional(S.String),
+}),
+).annotate({ identifier: "GcePersistentDisk" }) as any as S.Schema<GcePersistentDisk>;
 
 /** An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation. */
 export interface EphemeralDirectory {
@@ -626,18 +553,14 @@ export interface EphemeralDirectory {
   gcePd?: GcePersistentDisk;
 }
 export const EphemeralDirectory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mountPath: S.optional(S.String),
-    gcePd: S.optional(GcePersistentDisk),
-  }),
-).annotate({
-  identifier: "EphemeralDirectory",
-}) as any as S.Schema<EphemeralDirectory>;
+S.Struct({
+  "mountPath": S.optional(S.String),
+  "gcePd": S.optional(GcePersistentDisk),
+}),
+).annotate({ identifier: "EphemeralDirectory" }) as any as S.Schema<EphemeralDirectory>;
 
 export type EphemeralDirectoryList = ReadonlyArray<EphemeralDirectory>;
-export const EphemeralDirectoryList = /*@__PURE__*/ S.Array(
-  EphemeralDirectory,
-) as any as S.Schema<EphemeralDirectoryList>;
+export const EphemeralDirectoryList = /*@__PURE__*/ S.Array(EphemeralDirectory) as any as S.Schema<EphemeralDirectoryList>;
 
 /** A readiness check to be performed on a workstation. */
 export interface ReadinessCheck {
@@ -647,16 +570,14 @@ export interface ReadinessCheck {
   path?: string;
 }
 export const ReadinessCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    port: S.optional(S.Number),
-    path: S.optional(S.String),
-  }),
+S.Struct({
+  "port": S.optional(S.Number),
+  "path": S.optional(S.String),
+}),
 ).annotate({ identifier: "ReadinessCheck" }) as any as S.Schema<ReadinessCheck>;
 
 export type ReadinessCheckList = ReadonlyArray<ReadinessCheck>;
-export const ReadinessCheckList = /*@__PURE__*/ S.Array(
-  ReadinessCheck,
-) as any as S.Schema<ReadinessCheckList>;
+export const ReadinessCheckList = /*@__PURE__*/ S.Array(ReadinessCheck) as any as S.Schema<ReadinessCheckList>;
 
 /** A Docker container. */
 export interface Container {
@@ -674,14 +595,14 @@ export interface Container {
   command?: StringList;
 }
 export const Container = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runAsUser: S.optional(S.Number),
-    env: S.optional(StringMap),
-    args: S.optional(StringList),
-    workingDir: S.optional(S.String),
-    image: S.optional(S.String),
-    command: S.optional(StringList),
-  }),
+S.Struct({
+  "runAsUser": S.optional(S.Number),
+  "env": S.optional(StringMap),
+  "args": S.optional(StringList),
+  "workingDir": S.optional(S.String),
+  "image": S.optional(S.String),
+  "command": S.optional(StringList),
+}),
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 
 /** A workstation configuration resource in the Cloud Workstations API. Workstation configurations act as templates for workstations. The workstation configuration defines details such as the workstation virtual machine (VM) instance type, persistent storage, container image defining environment, which IDE or Code Editor to use, and more. Administrators and platform teams can also use [Identity and Access Management (IAM)](https://cloud.google.com/iam/docs/overview) rules to grant access to teams or to individual developers. */
@@ -740,37 +661,35 @@ export interface WorkstationConfig {
   container?: Container;
 }
 export const WorkstationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionKey: S.optional(CustomerEncryptionKey),
-    enableAuditAgent: S.optional(S.Boolean),
-    persistentDirectories: S.optional(PersistentDirectoryList),
-    allowedPorts: S.optional(PortRangeList),
-    degraded: S.optional(S.Boolean),
-    displayName: S.optional(S.String),
-    conditions: S.optional(StatusList),
-    maxUsableWorkstations: S.optional(S.Number),
-    deleteTime: S.optional(S.String),
-    idleTimeout: S.optional(S.String),
-    grantWorkstationAdminRoleOnCreate: S.optional(S.Boolean),
-    host: S.optional(Host),
-    createTime: S.optional(S.String),
-    runningTimeout: S.optional(S.String),
-    ephemeralDirectories: S.optional(EphemeralDirectoryList),
-    name: S.optional(S.String),
-    disableTcpConnections: S.optional(S.Boolean),
-    uid: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    replicaZones: S.optional(StringList),
-    annotations: S.optional(StringMap),
-    labels: S.optional(StringMap),
-    readinessChecks: S.optional(ReadinessCheckList),
-    reconciling: S.optional(S.Boolean),
-    etag: S.optional(S.String),
-    container: S.optional(Container),
-  }),
-).annotate({
-  identifier: "WorkstationConfig",
-}) as any as S.Schema<WorkstationConfig>;
+S.Struct({
+  "encryptionKey": S.optional(CustomerEncryptionKey),
+  "enableAuditAgent": S.optional(S.Boolean),
+  "persistentDirectories": S.optional(PersistentDirectoryList),
+  "allowedPorts": S.optional(PortRangeList),
+  "degraded": S.optional(S.Boolean),
+  "displayName": S.optional(S.String),
+  "conditions": S.optional(StatusList),
+  "maxUsableWorkstations": S.optional(S.Number),
+  "deleteTime": S.optional(S.String),
+  "idleTimeout": S.optional(S.String),
+  "grantWorkstationAdminRoleOnCreate": S.optional(S.Boolean),
+  "host": S.optional(Host),
+  "createTime": S.optional(S.String),
+  "runningTimeout": S.optional(S.String),
+  "ephemeralDirectories": S.optional(EphemeralDirectoryList),
+  "name": S.optional(S.String),
+  "disableTcpConnections": S.optional(S.Boolean),
+  "uid": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "replicaZones": S.optional(StringList),
+  "annotations": S.optional(StringMap),
+  "labels": S.optional(StringMap),
+  "readinessChecks": S.optional(ReadinessCheckList),
+  "reconciling": S.optional(S.Boolean),
+  "etag": S.optional(S.String),
+  "container": S.optional(Container),
+}),
+).annotate({ identifier: "WorkstationConfig" }) as any as S.Schema<WorkstationConfig>;
 
 export interface CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
   /** Optional. If set, validate the request and preview the result, but do not actually apply it. */
@@ -782,32 +701,16 @@ export interface CreateProjectsLocationsWorkstationClustersWorkstationConfigsReq
   /** Request body */
   body?: WorkstationConfig;
 }
-export const CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      workstationConfigId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WorkstationConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workstationConfigs",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
+export const CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "workstationConfigId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(WorkstationConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/workstationConfigs","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
-export type WorkstationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "STATE_STARTING"
-  | "STATE_RUNNING"
-  | "STATE_STOPPING"
-  | "STATE_STOPPED"
-  | (string & {});
+export type WorkstationStateEnum = "STATE_UNSPECIFIED" | "STATE_STARTING" | "STATE_RUNNING" | "STATE_STOPPING" | "STATE_STOPPED";
 export const WorkstationStateEnum = /*@__PURE__*/ S.String;
 
 /** A directory to persist across workstation sessions. Updates to this field will only take effect on this workstation after it is restarted. */
@@ -818,19 +721,14 @@ export interface WorkstationPersistentDirectory {
   sizeGb?: number;
 }
 export const WorkstationPersistentDirectory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mountPath: S.optional(S.String),
-    sizeGb: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkstationPersistentDirectory",
-}) as any as S.Schema<WorkstationPersistentDirectory>;
+S.Struct({
+  "mountPath": S.optional(S.String),
+  "sizeGb": S.optional(S.Number),
+}),
+).annotate({ identifier: "WorkstationPersistentDirectory" }) as any as S.Schema<WorkstationPersistentDirectory>;
 
-export type WorkstationPersistentDirectoryList =
-  ReadonlyArray<WorkstationPersistentDirectory>;
-export const WorkstationPersistentDirectoryList = /*@__PURE__*/ S.Array(
-  WorkstationPersistentDirectory,
-) as any as S.Schema<WorkstationPersistentDirectoryList>;
+export type WorkstationPersistentDirectoryList = ReadonlyArray<WorkstationPersistentDirectory>;
+export const WorkstationPersistentDirectoryList = /*@__PURE__*/ S.Array(WorkstationPersistentDirectory) as any as S.Schema<WorkstationPersistentDirectoryList>;
 
 /** The Compute Engine instance host. */
 export interface GceInstanceHost {
@@ -842,14 +740,12 @@ export interface GceInstanceHost {
   zone?: string;
 }
 export const GceInstanceHost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    zone: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GceInstanceHost",
-}) as any as S.Schema<GceInstanceHost>;
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "zone": S.optional(S.String),
+}),
+).annotate({ identifier: "GceInstanceHost" }) as any as S.Schema<GceInstanceHost>;
 
 /** Runtime host for the workstation. */
 export interface RuntimeHost {
@@ -857,9 +753,9 @@ export interface RuntimeHost {
   gceInstanceHost?: GceInstanceHost;
 }
 export const RuntimeHost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gceInstanceHost: S.optional(GceInstanceHost),
-  }),
+S.Struct({
+  "gceInstanceHost": S.optional(GceInstanceHost),
+}),
 ).annotate({ identifier: "RuntimeHost" }) as any as S.Schema<RuntimeHost>;
 
 /** A single instance of a developer workstation with its own persistent storage. */
@@ -902,26 +798,26 @@ export interface Workstation {
   annotations?: StringMap;
 }
 export const Workstation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reconciling: S.optional(S.Boolean),
-    deleteTime: S.optional(S.String),
-    etag: S.optional(S.String),
-    env: S.optional(StringMap),
-    kmsKey: S.optional(S.String),
-    displayName: S.optional(S.String),
-    startTime: S.optional(S.String),
-    sourceWorkstation: S.optional(S.String),
-    labels: S.optional(StringMap),
-    state: S.optional(WorkstationStateEnum),
-    createTime: S.optional(S.String),
-    host: S.optional(S.String),
-    name: S.optional(S.String),
-    persistentDirectories: S.optional(WorkstationPersistentDirectoryList),
-    runtimeHost: S.optional(RuntimeHost),
-    uid: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    annotations: S.optional(StringMap),
-  }),
+S.Struct({
+  "reconciling": S.optional(S.Boolean),
+  "deleteTime": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "env": S.optional(StringMap),
+  "kmsKey": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "startTime": S.optional(S.String),
+  "sourceWorkstation": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "state": S.optional(WorkstationStateEnum),
+  "createTime": S.optional(S.String),
+  "host": S.optional(S.String),
+  "name": S.optional(S.String),
+  "persistentDirectories": S.optional(WorkstationPersistentDirectoryList),
+  "runtimeHost": S.optional(RuntimeHost),
+  "uid": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Workstation" }) as any as S.Schema<Workstation>;
 
 export interface CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -934,43 +830,24 @@ export interface CreateProjectsLocationsWorkstationClustersWorkstationConfigsWor
   /** Request body */
   body?: Workstation;
 }
-export const CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      workstationId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Workstation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workstations",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "workstationId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Workstation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/workstations","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsWorkstationClustersRequest {
   /** Optional. If set, any workstation configurations and workstations in the workstation cluster are also deleted. Otherwise, the request only works if the workstation cluster has no configurations or workstations. */
@@ -982,23 +859,14 @@ export interface DeleteProjectsLocationsWorkstationClustersRequest {
   /** Optional. If set, validate the request and preview the result, but do not apply it. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsWorkstationClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      force: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsWorkstationClustersRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsWorkstationClustersRequest>;
+export const DeleteProjectsLocationsWorkstationClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsWorkstationClustersRequest" }) as any as S.Schema<DeleteProjectsLocationsWorkstationClustersRequest>;
 
 export interface DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
   /** Required. Name of the workstation configuration to delete. */
@@ -1010,24 +878,14 @@ export interface DeleteProjectsLocationsWorkstationClustersWorkstationConfigsReq
   /** Optional. If set, any workstations in the workstation configuration are also deleted. Otherwise, the request works only if the workstation configuration has no workstations. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
+export const DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
 export interface DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** Optional. If set, validate the request and preview the result, but do not actually apply it. */
@@ -1037,23 +895,13 @@ export interface DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWor
   /** Optional. If set, the request will be rejected if the latest version of the workstation on the server does not have this ETag. */
   etag?: string;
 }
-export const DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 /** Request message for GenerateAccessToken. */
 export interface GenerateAccessTokenRequest {
@@ -1065,14 +913,12 @@ export interface GenerateAccessTokenRequest {
   ttl?: string;
 }
 export const GenerateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expireTime: S.optional(S.String),
-    port: S.optional(S.Number),
-    ttl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenerateAccessTokenRequest",
-}) as any as S.Schema<GenerateAccessTokenRequest>;
+S.Struct({
+  "expireTime": S.optional(S.String),
+  "port": S.optional(S.Number),
+  "ttl": S.optional(S.String),
+}),
+).annotate({ identifier: "GenerateAccessTokenRequest" }) as any as S.Schema<GenerateAccessTokenRequest>;
 
 export interface GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** Required. Name of the workstation for which the access token should be generated. */
@@ -1080,22 +926,12 @@ export interface GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstat
   /** Request body */
   body?: GenerateAccessTokenRequest;
 }
-export const GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workstation: S.String.pipe(T.Label()),
-      body: S.optional(GenerateAccessTokenRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+workstation}:generateAccessToken",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "workstation": S.String.pipe(T.Label()),
+  "body": S.optional(GenerateAccessTokenRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+workstation}:generateAccessToken","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 /** Response message for GenerateAccessToken. */
 export interface GenerateAccessTokenResponse {
@@ -1105,13 +941,11 @@ export interface GenerateAccessTokenResponse {
   accessToken?: string;
 }
 export const GenerateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expireTime: S.optional(S.String),
-    accessToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenerateAccessTokenResponse",
-}) as any as S.Schema<GenerateAccessTokenResponse>;
+S.Struct({
+  "expireTime": S.optional(S.String),
+  "accessToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GenerateAccessTokenResponse" }) as any as S.Schema<GenerateAccessTokenResponse>;
 
 export interface GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1119,22 +953,12 @@ export interface GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConf
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
+export const GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -1148,12 +972,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -1166,24 +990,17 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    members: S.optional(StringList),
-    condition: S.optional(Expr),
-  }),
+S.Struct({
+  "role": S.optional(S.String),
+  "members": S.optional(StringList),
+  "condition": S.optional(Expr),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1194,16 +1011,14 @@ export interface AuditLogConfig {
   logType?: AuditLogConfigLogTypeEnum;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exemptedMembers: S.optional(StringList),
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-  }),
+S.Struct({
+  "exemptedMembers": S.optional(StringList),
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -1213,16 +1028,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1236,12 +1049,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-    auditConfigs: S.optional(AuditConfigList),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+  "auditConfigs": S.optional(AuditConfigList),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -1250,40 +1063,22 @@ export interface GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConf
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  "resource": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://workstations.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1299,92 +1094,54 @@ export interface Location {
   labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    locationId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "locationId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsWorkstationClustersRequest {
   /** Required. Name of the requested resource. */
   name: string;
 }
-export const GetProjectsLocationsWorkstationClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsWorkstationClustersRequest",
-  }) as any as S.Schema<GetProjectsLocationsWorkstationClustersRequest>;
+export const GetProjectsLocationsWorkstationClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsWorkstationClustersRequest" }) as any as S.Schema<GetProjectsLocationsWorkstationClustersRequest>;
 
 export interface GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
   /** Required. Name of the requested resource. */
   name: string;
 }
-export const GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-  }) as any as S.Schema<GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
+export const GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest" }) as any as S.Schema<GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
 export interface GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** Required. Name of the requested resource. */
   name: string;
 }
-export const GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -1399,27 +1156,17 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://workstations.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1429,13 +1176,11 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    locations: S.optional(LocationList),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "locations": S.optional(LocationList),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -1449,29 +1194,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1483,14 +1217,12 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsWorkstationClustersRequest {
   /** Required. Parent resource name. */
@@ -1502,28 +1234,17 @@ export interface ListProjectsLocationsWorkstationClustersRequest {
   /** Optional. Filter the WorkstationClusters to be listed. Possible filters are described in https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsWorkstationClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workstationClusters",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsWorkstationClustersRequest",
-  }) as any as S.Schema<ListProjectsLocationsWorkstationClustersRequest>;
+export const ListProjectsLocationsWorkstationClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workstationClusters","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsWorkstationClustersRequest" }) as any as S.Schema<ListProjectsLocationsWorkstationClustersRequest>;
 
 export type WorkstationClusterList = ReadonlyArray<WorkstationCluster>;
-export const WorkstationClusterList = /*@__PURE__*/ S.Array(
-  WorkstationCluster,
-) as any as S.Schema<WorkstationClusterList>;
+export const WorkstationClusterList = /*@__PURE__*/ S.Array(WorkstationCluster) as any as S.Schema<WorkstationClusterList>;
 
 /** Response message for ListWorkstationClusters. */
 export interface ListWorkstationClustersResponse {
@@ -1535,14 +1256,12 @@ export interface ListWorkstationClustersResponse {
   workstationClusters?: WorkstationClusterList;
 }
 export const ListWorkstationClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    workstationClusters: S.optional(WorkstationClusterList),
-  }),
-).annotate({
-  identifier: "ListWorkstationClustersResponse",
-}) as any as S.Schema<ListWorkstationClustersResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "workstationClusters": S.optional(WorkstationClusterList),
+}),
+).annotate({ identifier: "ListWorkstationClustersResponse" }) as any as S.Schema<ListWorkstationClustersResponse>;
 
 export interface ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
   /** Required. Parent resource name. */
@@ -1554,29 +1273,17 @@ export interface ListProjectsLocationsWorkstationClustersWorkstationConfigsReque
   /** Optional. Maximum number of items to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workstationConfigs",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-  }) as any as S.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
+export const ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workstationConfigs","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest" }) as any as S.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
 export type WorkstationConfigList = ReadonlyArray<WorkstationConfig>;
-export const WorkstationConfigList = /*@__PURE__*/ S.Array(
-  WorkstationConfig,
-) as any as S.Schema<WorkstationConfigList>;
+export const WorkstationConfigList = /*@__PURE__*/ S.Array(WorkstationConfig) as any as S.Schema<WorkstationConfigList>;
 
 /** Response message for ListWorkstationConfigs. */
 export interface ListWorkstationConfigsResponse {
@@ -1588,14 +1295,12 @@ export interface ListWorkstationConfigsResponse {
   unreachable?: StringList;
 }
 export const ListWorkstationConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workstationConfigs: S.optional(WorkstationConfigList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListWorkstationConfigsResponse",
-}) as any as S.Schema<ListWorkstationConfigsResponse>;
+S.Struct({
+  "workstationConfigs": S.optional(WorkstationConfigList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListWorkstationConfigsResponse" }) as any as S.Schema<ListWorkstationConfigsResponse>;
 
 export interface ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** Required. Parent resource name. */
@@ -1607,29 +1312,17 @@ export interface ListProjectsLocationsWorkstationClustersWorkstationConfigsWorks
   /** Optional. Filter the Workstations to be listed. Possible filters are described in https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workstations",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workstations","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 export type WorkstationList = ReadonlyArray<Workstation>;
-export const WorkstationList = /*@__PURE__*/ S.Array(
-  Workstation,
-) as any as S.Schema<WorkstationList>;
+export const WorkstationList = /*@__PURE__*/ S.Array(Workstation) as any as S.Schema<WorkstationList>;
 
 /** Response message for ListWorkstations. */
 export interface ListWorkstationsResponse {
@@ -1641,14 +1334,12 @@ export interface ListWorkstationsResponse {
   workstations?: WorkstationList;
 }
 export const ListWorkstationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-    workstations: S.optional(WorkstationList),
-  }),
-).annotate({
-  identifier: "ListWorkstationsResponse",
-}) as any as S.Schema<ListWorkstationsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "workstations": S.optional(WorkstationList),
+}),
+).annotate({ identifier: "ListWorkstationsResponse" }) as any as S.Schema<ListWorkstationsResponse>;
 
 export interface ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
   /** Required. Parent resource name. */
@@ -1658,23 +1349,13 @@ export interface ListUsableProjectsLocationsWorkstationClustersWorkstationConfig
   /** Optional. next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workstationConfigs:listUsable",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-  }) as any as S.Schema<ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
+export const ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workstationConfigs:listUsable","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest" }) as any as S.Schema<ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
 /** Response message for ListUsableWorkstationConfigs. */
 export interface ListUsableWorkstationConfigsResponse {
@@ -1685,16 +1366,13 @@ export interface ListUsableWorkstationConfigsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListUsableWorkstationConfigsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      unreachable: S.optional(StringList),
-      workstationConfigs: S.optional(WorkstationConfigList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListUsableWorkstationConfigsResponse",
-}) as any as S.Schema<ListUsableWorkstationConfigsResponse>;
+export const ListUsableWorkstationConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "workstationConfigs": S.optional(WorkstationConfigList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListUsableWorkstationConfigsResponse" }) as any as S.Schema<ListUsableWorkstationConfigsResponse>;
 
 export interface ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** Required. Parent resource name. */
@@ -1704,23 +1382,13 @@ export interface ListUsableProjectsLocationsWorkstationClustersWorkstationConfig
   /** Optional. Maximum number of items to return. */
   pageSize?: number;
 }
-export const ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workstations:listUsable",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workstations:listUsable","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 /** Response message for ListUsableWorkstations. */
 export interface ListUsableWorkstationsResponse {
@@ -1732,14 +1400,12 @@ export interface ListUsableWorkstationsResponse {
   nextPageToken?: string;
 }
 export const ListUsableWorkstationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workstations: S.optional(WorkstationList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListUsableWorkstationsResponse",
-}) as any as S.Schema<ListUsableWorkstationsResponse>;
+S.Struct({
+  "workstations": S.optional(WorkstationList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListUsableWorkstationsResponse" }) as any as S.Schema<ListUsableWorkstationsResponse>;
 
 export interface PatchProjectsLocationsWorkstationClustersRequest {
   /** Required. Mask that specifies which fields in the workstation cluster should be updated. */
@@ -1753,24 +1419,15 @@ export interface PatchProjectsLocationsWorkstationClustersRequest {
   /** Request body */
   body?: WorkstationCluster;
 }
-export const PatchProjectsLocationsWorkstationClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(WorkstationCluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsWorkstationClustersRequest",
-  }) as any as S.Schema<PatchProjectsLocationsWorkstationClustersRequest>;
+export const PatchProjectsLocationsWorkstationClustersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(WorkstationCluster.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsWorkstationClustersRequest" }) as any as S.Schema<PatchProjectsLocationsWorkstationClustersRequest>;
 
 export interface PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
   /** Required. Mask specifying which fields in the workstation configuration should be updated. */
@@ -1784,25 +1441,15 @@ export interface PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequ
   /** Request body */
   body?: WorkstationConfig;
 }
-export const PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(WorkstationConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
+export const PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(WorkstationConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
 export interface PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** Optional. If set, validate the request and preview the result, but do not actually apply it. */
@@ -1816,25 +1463,15 @@ export interface PatchProjectsLocationsWorkstationClustersWorkstationConfigsWork
   /** Request body */
   body?: Workstation;
 }
-export const PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Workstation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Workstation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -1844,13 +1481,11 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String),
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String),
+  "policy": S.optional(Policy),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1858,22 +1493,12 @@ export interface SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConf
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
+export const SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
 export interface SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1881,22 +1506,12 @@ export interface SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConf
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 /** Request message for StartWorkstation. */
 export interface StartWorkstationRequest {
@@ -1908,14 +1523,12 @@ export interface StartWorkstationRequest {
   boostConfig?: string;
 }
 export const StartWorkstationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validateOnly: S.optional(S.Boolean),
-    etag: S.optional(S.String),
-    boostConfig: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartWorkstationRequest",
-}) as any as S.Schema<StartWorkstationRequest>;
+S.Struct({
+  "validateOnly": S.optional(S.Boolean),
+  "etag": S.optional(S.String),
+  "boostConfig": S.optional(S.String),
+}),
+).annotate({ identifier: "StartWorkstationRequest" }) as any as S.Schema<StartWorkstationRequest>;
 
 export interface StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** Required. Name of the workstation to start. */
@@ -1923,22 +1536,12 @@ export interface StartProjectsLocationsWorkstationClustersWorkstationConfigsWork
   /** Request body */
   body?: StartWorkstationRequest;
 }
-export const StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(StartWorkstationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:start",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(StartWorkstationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:start","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 /** Request message for StopWorkstation. */
 export interface StopWorkstationRequest {
@@ -1948,13 +1551,11 @@ export interface StopWorkstationRequest {
   validateOnly?: boolean;
 }
 export const StopWorkstationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    validateOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StopWorkstationRequest",
-}) as any as S.Schema<StopWorkstationRequest>;
+S.Struct({
+  "etag": S.optional(S.String),
+  "validateOnly": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "StopWorkstationRequest" }) as any as S.Schema<StopWorkstationRequest>;
 
 export interface StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** Required. Name of the workstation to stop. */
@@ -1962,22 +1563,12 @@ export interface StopProjectsLocationsWorkstationClustersWorkstationConfigsWorks
   /** Request body */
   body?: StopWorkstationRequest;
 }
-export const StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(StopWorkstationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:stop",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(StopWorkstationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:stop","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -1985,12 +1576,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1998,22 +1587,12 @@ export interface TestIamPermissionsProjectsLocationsWorkstationClustersWorkstati
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
+export const TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -2021,12 +1600,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2034,29 +1611,14 @@ export interface TestIamPermissionsProjectsLocationsWorkstationClustersWorkstati
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://workstations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
+export const TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://workstations.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -2071,12 +1633,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsWorkstationClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsWorkstationClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new workstation cluster. */
 export const createProjectsLocationsWorkstationClusters: API.OperationMethod<
   CreateProjectsLocationsWorkstationClustersRequest,
@@ -2091,12 +1648,7 @@ export const createProjectsLocationsWorkstationClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsWorkstationClustersWorkstationConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new workstation configuration. */
 export const createProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
   CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
@@ -2111,8 +1663,7 @@ export const createProjectsLocationsWorkstationClustersWorkstationConfigs: API.O
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new workstation. */
 export const createProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
   CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2120,20 +1671,14 @@ export const createProjectsLocationsWorkstationClustersWorkstationConfigsWorksta
   CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -2148,12 +1693,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsWorkstationClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsWorkstationClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified workstation cluster. */
 export const deleteProjectsLocationsWorkstationClusters: API.OperationMethod<
   DeleteProjectsLocationsWorkstationClustersRequest,
@@ -2168,12 +1708,7 @@ export const deleteProjectsLocationsWorkstationClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsWorkstationClustersWorkstationConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified workstation configuration. */
 export const deleteProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
   DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
@@ -2188,8 +1723,7 @@ export const deleteProjectsLocationsWorkstationClustersWorkstationConfigs: API.O
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified workstation. */
 export const deleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
   DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2197,16 +1731,14 @@ export const deleteProjectsLocationsWorkstationClustersWorkstationConfigsWorksta
   DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns a short-lived credential that can be used to send authenticated and authorized traffic to a workstation. Once generated this token cannot be revoked and is good for the lifetime of the token. */
 export const generateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
   GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2214,16 +1746,14 @@ export const generateAccessTokenProjectsLocationsWorkstationClustersWorkstationC
   GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: GenerateAccessTokenResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
   GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
@@ -2231,16 +1761,14 @@ export const getIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigs:
   GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
+  input: GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
   GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2248,8 +1776,7 @@ export const getIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsW
   GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2271,10 +1798,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -2289,10 +1813,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsWorkstationClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsWorkstationClustersError = NotFound | Forbidden | GcpOpError;
 /** Returns the requested workstation cluster. */
 export const getProjectsLocationsWorkstationClusters: API.OperationMethod<
   GetProjectsLocationsWorkstationClustersRequest,
@@ -2307,10 +1828,7 @@ export const getProjectsLocationsWorkstationClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsWorkstationClustersWorkstationConfigsError = NotFound | Forbidden | GcpOpError;
 /** Returns the requested workstation configuration. */
 export const getProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
   GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
@@ -2325,8 +1843,7 @@ export const getProjectsLocationsWorkstationClustersWorkstationConfigs: API.Oper
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | GcpOpError;
 /** Returns the requested workstation. */
 export const getProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
   GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2334,8 +1851,7 @@ export const getProjectsLocationsWorkstationClustersWorkstationConfigsWorkstatio
   GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: Workstation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2355,16 +1871,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -2377,16 +1887,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsWorkstationClustersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsWorkstationClustersError = NotFound | Forbidden | GcpOpError;
 /** Returns all workstation clusters in the specified location. */
 export const listProjectsLocationsWorkstationClusters: API.PaginatedOperationMethod<
   ListProjectsLocationsWorkstationClustersRequest,
@@ -2399,16 +1903,10 @@ export const listProjectsLocationsWorkstationClusters: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsWorkstationClustersWorkstationConfigsError = NotFound | Forbidden | GcpOpError;
 /** Returns all workstation configurations in the specified cluster. */
 export const listProjectsLocationsWorkstationClustersWorkstationConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
@@ -2421,14 +1919,10 @@ export const listProjectsLocationsWorkstationClustersWorkstationConfigs: API.Pag
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | GcpOpError;
 /** Returns all Workstations using the specified workstation configuration. */
 export const listProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.PaginatedOperationMethod<
   ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2436,20 +1930,15 @@ export const listProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
   ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: ListWorkstationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  NotFound | Forbidden | GcpOpError;
+export type ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsError = NotFound | Forbidden | GcpOpError;
 /** Returns all workstation configurations in the specified cluster on which the caller has the "workstations.workstation.create" permission. */
 export const listUsableProjectsLocationsWorkstationClustersWorkstationConfigs: API.PaginatedOperationMethod<
   ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
@@ -2457,20 +1946,15 @@ export const listUsableProjectsLocationsWorkstationClustersWorkstationConfigs: A
   ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
+  input: ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output: ListUsableWorkstationConfigsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | GcpOpError;
+export type ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | GcpOpError;
 /** Returns all workstations using the specified workstation configuration on which the caller has the "workstations.workstations.use" permission. */
 export const listUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.PaginatedOperationMethod<
   ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2478,24 +1962,15 @@ export const listUsableProjectsLocationsWorkstationClustersWorkstationConfigsWor
   ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: ListUsableWorkstationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsWorkstationClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsWorkstationClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing workstation cluster. */
 export const patchProjectsLocationsWorkstationClusters: API.OperationMethod<
   PatchProjectsLocationsWorkstationClustersRequest,
@@ -2510,12 +1985,7 @@ export const patchProjectsLocationsWorkstationClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsWorkstationClustersWorkstationConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing workstation configuration. */
 export const patchProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
   PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
@@ -2530,8 +2000,7 @@ export const patchProjectsLocationsWorkstationClustersWorkstationConfigs: API.Op
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing workstation. */
 export const patchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
   PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2539,16 +2008,14 @@ export const patchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstat
   PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
   SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
@@ -2556,16 +2023,14 @@ export const setIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigs:
   SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
+  input: SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
   SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2573,16 +2038,14 @@ export const setIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsW
   SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts running a workstation so that users can connect to it. */
 export const startProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
   StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2590,16 +2053,14 @@ export const startProjectsLocationsWorkstationClustersWorkstationConfigsWorkstat
   StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Stops running a workstation, reducing costs. */
 export const stopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
   StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2607,16 +2068,14 @@ export const stopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
   StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
   TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
@@ -2624,16 +2083,14 @@ export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
   TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
+  input: TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
   TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
@@ -2641,10 +2098,10 @@ export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
   TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
+  input: TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

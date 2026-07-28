@@ -22,11 +22,11 @@ export const ElasticSansCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ElasticSansCreateRequestTagsMap>;
 
 /** The sku name. */
-export type SkuName = "Premium_LRS" | "Premium_ZRS" | (string & {});
+export type SkuName = "Premium_LRS" | "Premium_ZRS";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The sku tier. */
-export type SkuTier = "Premium" | (string & {});
+export type SkuTier = "Premium";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The SKU name. Required for account creation; optional for update. */
@@ -52,15 +52,11 @@ export const ElasticSanPropertiesInputAvailabilityZonesList =
   ) as any as S.Schema<ElasticSanPropertiesInputAvailabilityZonesList>;
 
 /** Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Enable or Disable scale up setting on Elastic San Appliance. */
-export type AutoScalePolicyEnforcement =
-  | "None"
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type AutoScalePolicyEnforcement = "None" | "Enabled" | "Disabled";
 export const AutoScalePolicyEnforcement = /*@__PURE__*/ S.String;
 
 /** Scale up properties on Elastic San Appliance. */
@@ -109,7 +105,7 @@ export interface ElasticSanPropertiesInput {
   /** Extended size of the Elastic San appliance in TiB. */
   extendedCapacitySizeTiB: number;
   /** Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** Auto Scale Properties for Elastic San Appliance. */
   autoScaleProperties?: AutoScaleProperties;
 }
@@ -167,8 +163,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -176,8 +171,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -232,8 +226,7 @@ export type ProvisioningStates =
   | "Updating"
   | "Deleting"
   | "Deleted"
-  | "Restoring"
-  | (string & {});
+  | "Restoring";
 export const ProvisioningStates = /*@__PURE__*/ S.String;
 
 /** Response for PrivateEndpoint */
@@ -254,8 +247,7 @@ export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
   | "Failed"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** Response for Private Link Service Connection state */
@@ -623,7 +615,7 @@ export interface ElasticSanUpdateProperties {
   /** Extended size of the Elastic San appliance in TiB. */
   extendedCapacitySizeTiB?: number;
   /** Allow or disallow public network access to ElasticSan Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** Auto Scale Properties for Elastic San Appliance. */
   autoScaleProperties?: AutoScaleProperties;
 }
@@ -754,11 +746,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1278,11 +1270,7 @@ export const SkuInformationList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuInformationList>;
 
 /** The identity type. */
-export type IdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
+export type IdentityType = "None" | "SystemAssigned" | "UserAssigned";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** UserAssignedIdentity for the resource. */
@@ -1305,7 +1293,7 @@ export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. */
-  type: IdentityType;
+  type: IdentityType | (string & {});
   /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
@@ -1317,14 +1305,13 @@ export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
 
 /** Storage Target type. */
-export type StorageTargetType = "Iscsi" | "None" | (string & {});
+export type StorageTargetType = "Iscsi" | "None";
 export const StorageTargetType = /*@__PURE__*/ S.String;
 
 /** The type of key used to encrypt the data of the disk. */
 export type EncryptionType =
   | "EncryptionAtRestWithPlatformKey"
-  | "EncryptionAtRestWithCustomerManagedKey"
-  | (string & {});
+  | "EncryptionAtRestWithCustomerManagedKey";
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 /** Properties of key vault. */
@@ -1376,7 +1363,7 @@ export const EncryptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionPropertiesInput>;
 
 /** The action of virtual network rule. */
-export type VirtualNetworkRuleAction = "Allow" | (string & {});
+export type VirtualNetworkRuleAction = "Allow";
 export const VirtualNetworkRuleAction = /*@__PURE__*/ S.String;
 
 /** Virtual Network rule. */
@@ -1416,9 +1403,9 @@ export const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
 /** VolumeGroup response properties. */
 export interface VolumeGroupPropertiesInput {
   /** Type of storage target */
-  protocolType?: StorageTargetType;
+  protocolType?: StorageTargetType | (string & {});
   /** Type of encryption */
-  encryption?: EncryptionType;
+  encryption?: EncryptionType | (string & {});
   /** Encryption Properties describing Key Vault and Identity information */
   encryptionProperties?: EncryptionPropertiesInput;
   /** A collection of rules governing the accessibility from specific network locations. */
@@ -1795,9 +1782,9 @@ export const VolumeGroupList = /*@__PURE__*/ S.suspend(() =>
 /** VolumeGroup response properties. */
 export interface VolumeGroupUpdatePropertiesInput {
   /** Type of storage target */
-  protocolType?: StorageTargetType;
+  protocolType?: StorageTargetType | (string & {});
   /** Type of encryption */
-  encryption?: EncryptionType;
+  encryption?: EncryptionType | (string & {});
   /** Encryption Properties describing Key Vault and Identity information */
   encryptionProperties?: EncryptionPropertiesInput;
   /** A collection of rules governing the accessibility from specific network locations. */
@@ -1884,8 +1871,7 @@ export type VolumeCreateOption =
   | "VolumeSnapshot"
   | "DiskSnapshot"
   | "Disk"
-  | "DiskRestorePoint"
-  | (string & {});
+  | "DiskRestorePoint";
 export const VolumeCreateOption = /*@__PURE__*/ S.String;
 
 /** Data source used when creating the volume. */
@@ -1977,8 +1963,7 @@ export type OperationalStatus =
   | "Updating"
   | "Running"
   | "Stopped"
-  | "Stopped (deallocated)"
-  | (string & {});
+  | "Stopped (deallocated)";
 export const OperationalStatus = /*@__PURE__*/ S.String;
 
 /** Iscsi target information */

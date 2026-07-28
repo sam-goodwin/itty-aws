@@ -13,13 +13,13 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** The type of endpoint. */
-export type Type = "default" | "custom" | (string & {});
+export type Type = "default" | "custom";
 export const Type = /*@__PURE__*/ S.String;
 
 /** Endpoint details */
 export interface EndpointPropertiesInput {
   /** The type of endpoint. */
-  type: Type;
+  type: Type | (string & {});
   /** The resource Id of the connectivity endpoint (optional). */
   resourceId?: string;
 }
@@ -62,8 +62,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -71,8 +70,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -284,7 +282,7 @@ export const EndpointsList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointsList" }) as any as S.Schema<EndpointsList>;
 
 /** Name of the service. */
-export type ServiceName = "SSH" | "WAC" | (string & {});
+export type ServiceName = "SSH" | "WAC";
 export const ServiceName = /*@__PURE__*/ S.String;
 
 export interface EndpointsListCredentialsRequest {
@@ -295,7 +293,7 @@ export interface EndpointsListCredentialsRequest {
   /** The is how long the endpoint access token is valid (in seconds). */
   expiresin?: number;
   /** The name of the service. If not provided, the request will by pass the generation of service configuration token */
-  serviceName?: ServiceName;
+  serviceName?: ServiceName | (string & {});
 }
 export const EndpointsListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -364,7 +362,7 @@ export interface EndpointsListIngressGatewayCredentialsRequest {
   /** The is how long the endpoint access token is valid (in seconds). */
   expiresin?: number;
   /** The name of the service. If not provided, the request will by pass the generation of service configuration token. */
-  serviceName?: ServiceName;
+  serviceName?: ServiceName | (string & {});
 }
 export const EndpointsListIngressGatewayCredentialsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -443,7 +441,7 @@ export interface EndpointsListManagedProxyDetailsRequest {
   /** The target host name. */
   hostname?: string;
   /** The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed. */
-  serviceName?: ServiceName;
+  serviceName?: ServiceName | (string & {});
 }
 export const EndpointsListManagedProxyDetailsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -619,7 +617,7 @@ export const InventoryGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InventoryGetRequest>;
 
 /** Cloud Native Type enum. */
-export type CloudNativeType = "ec2" | (string & {});
+export type CloudNativeType = "ec2";
 export const CloudNativeType = /*@__PURE__*/ S.String;
 
 /** Solution Configuration Status. */
@@ -627,16 +625,14 @@ export type SolutionConfigurationStatus =
   | "New"
   | "InProgress"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SolutionConfigurationStatus = /*@__PURE__*/ S.String;
 
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -802,11 +798,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -889,7 +885,7 @@ export const AwsCloudProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AwsCloudProfile>;
 
 /** Enum of host cloud the public cloud connector is referencing. */
-export type HostType = "AWS" | (string & {});
+export type HostType = "AWS";
 export const HostType = /*@__PURE__*/ S.String;
 
 /** Properties of public cloud connectors. */
@@ -897,7 +893,7 @@ export interface PublicCloudConnectorPropertiesInput {
   /** Cloud profile for AWS. */
   awsCloudProfile: AwsCloudProfile;
   /** Host cloud the public cloud connector. */
-  hostType: HostType;
+  hostType: HostType | (string & {});
 }
 export const PublicCloudConnectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1492,7 +1488,7 @@ export const PublicCloudConnectorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 /** Service configuration details */
 export interface ServiceConfigurationPropertiesInput {
   /** Name of the service. */
-  serviceName: ServiceName;
+  serviceName: ServiceName | (string & {});
   /** The resource Id of the connectivity endpoint (optional). */
   resourceId?: string;
   /** The port on which service is enabled. */
@@ -1543,8 +1539,7 @@ export type ProvisioningState =
   | "Creating"
   | "Updating"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Service configuration details */

@@ -118,14 +118,14 @@ export class SessionExpiredException extends S.TaggedErrorClass<SessionExpiredEx
 ).pipe(C.withBadRequestError) {}
 export type ResourceARN = string;
 export type ClientId = string;
-export type Service = "TURN" | (string & {});
+export type Service = "TURN";
 export const Service = /*@__PURE__*/ S.String;
 
 export type Username = string;
 export interface GetIceServerConfigRequest {
   ChannelARN?: string;
   ClientId?: string;
-  Service?: Service;
+  Service?: Service | (string & {});
   Username?: string;
 }
 export const GetIceServerConfigRequest = /*@__PURE__*/ S.suspend(() =>

@@ -68,7 +68,7 @@ export const WebAnalyticsAchievementsOverviewRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebAnalyticsAchievementsOverviewRequest>;
 
 /** * `user` - user * `team` - team */
-export type AchievementDefinitionScopeEnum = "user" | "team" | (string & {});
+export type AchievementDefinitionScopeEnum = "user" | "team";
 export const AchievementDefinitionScopeEnum = /*@__PURE__*/ S.String;
 
 export interface AchievementStage {
@@ -255,14 +255,14 @@ export const WebAnalyticsUserPreferences = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAnalyticsUserPreferences>;
 
 /** * `data` - data * `recording` - recording */
-export type InteractionKindEnum = "data" | "recording" | (string & {});
+export type InteractionKindEnum = "data" | "recording";
 export const InteractionKindEnum = /*@__PURE__*/ S.String;
 
 export interface WebAnalyticsAchievementsRecordInteractionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Which interaction counter to increment: 'data' (slicing/filtering the dashboard) or 'recording' (opening a session recording). * `data` - data * `recording` - recording */
-  interaction_kind: InteractionKindEnum;
+  interaction_kind: InteractionKindEnum | (string & {});
 }
 export const WebAnalyticsAchievementsRecordInteractionRequest =
   /*@__PURE__*/ S.suspend(() =>

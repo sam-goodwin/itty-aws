@@ -117,24 +117,15 @@ export const SurveysArchivedResponseUuidsRetrieveResponse =
   }) as any as S.Schema<SurveysArchivedResponseUuidsRetrieveResponse>;
 
 /** * `popover` - popover * `widget` - widget * `external_survey` - external survey * `api` - api */
-export type SurveyType =
-  | "popover"
-  | "widget"
-  | "external_survey"
-  | "api"
-  | (string & {});
+export type SurveyType = "popover" | "widget" | "external_survey" | "api";
 export const SurveyType = /*@__PURE__*/ S.String;
 
 /** * `once` - once * `recurring` - recurring * `always` - always */
-export type ScheduleEnum = "once" | "recurring" | "always" | (string & {});
+export type ScheduleEnum = "once" | "recurring" | "always";
 export const ScheduleEnum = /*@__PURE__*/ S.String;
 
 /** * `cohort` - cohort * `person` - person * `group` - group */
-export type PropertyGroupTypeEnum =
-  | "cohort"
-  | "person"
-  | "group"
-  | (string & {});
+export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
 export const PropertyGroupTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
@@ -148,8 +139,7 @@ export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "gt"
   | "gte"
   | "lt"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -157,7 +147,7 @@ export interface FeatureFlagFilterPropertyGenericSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
+  type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
@@ -165,7 +155,7 @@ export interface FeatureFlagFilterPropertyGenericSchema {
   /** Comparison value for the property filter. Supports strings, numbers, booleans, and arrays. */
   value?: unknown;
   /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
-  operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum;
+  operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum | (string & {});
 }
 export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
   () =>
@@ -182,20 +172,20 @@ export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FeatureFlagFilterPropertyGenericSchema>;
 
 /** * `is_set` - is_set * `is_not_set` - is_not_set */
-export type ExistenceOperatorEnum = "is_set" | "is_not_set" | (string & {});
+export type ExistenceOperatorEnum = "is_set" | "is_not_set";
 export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface FeatureFlagFilterPropertyExistsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
+  type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Existence operator. * `is_set` - is_set * `is_not_set` - is_not_set */
-  operator?: ExistenceOperatorEnum;
+  operator?: ExistenceOperatorEnum | (string & {});
   /** Optional value. Runtime behavior determines whether this is ignored. */
   value?: unknown;
 }
@@ -217,21 +207,20 @@ export const FeatureFlagFilterPropertyExistsSchema = /*@__PURE__*/ S.suspend(
 export type DateOperatorEnum =
   | "is_date_exact"
   | "is_date_before"
-  | "is_date_after"
-  | (string & {});
+  | "is_date_after";
 export const DateOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface FeatureFlagFilterPropertyDateSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
+  type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Date comparison operator. * `is_date_exact` - is_date_exact * `is_date_after` - is_date_after * `is_date_before` - is_date_before */
-  operator?: DateOperatorEnum;
+  operator?: DateOperatorEnum | (string & {});
   /** Date value in ISO format or relative date expression. */
   value?: string;
 }
@@ -258,8 +247,7 @@ export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   | "semver_neq"
   | "semver_tilde"
   | "semver_caret"
-  | "semver_wildcard"
-  | (string & {});
+  | "semver_wildcard";
 export const FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -267,13 +255,13 @@ export interface FeatureFlagFilterPropertySemverSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
+  type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Semantic version comparison operator. * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
-  operator?: FeatureFlagFilterPropertySemverSchemaOperatorEnum;
+  operator?: FeatureFlagFilterPropertySemverSchemaOperatorEnum | (string & {});
   /** Semantic version string. */
   value?: string;
 }
@@ -294,8 +282,7 @@ export const FeatureFlagFilterPropertySemverSchema = /*@__PURE__*/ S.suspend(
 /** * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
 export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   | "icontains_multi"
-  | "not_icontains_multi"
-  | (string & {});
+  | "not_icontains_multi";
 export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -311,13 +298,15 @@ export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
+  type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Multi-contains operator. * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
-  operator?: FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum;
+  operator?:
+    | FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum
+    | (string & {});
   /** List of strings to evaluate against. */
   value?: FeatureFlagFilterPropertyMultiContainsSchemaValueList;
 }
@@ -338,17 +327,14 @@ export const FeatureFlagFilterPropertyMultiContainsSchema =
   }) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchema>;
 
 /** * `cohort` - cohort */
-export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum =
-  | "cohort"
-  | (string & {});
+export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum = "cohort";
 export const FeatureFlagFilterPropertyCohortInSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** * `in` - in * `not_in` - not_in */
 export type FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -356,13 +342,15 @@ export interface FeatureFlagFilterPropertyCohortInSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Cohort property type required for in/not_in operators. * `cohort` - cohort */
-  type?: FeatureFlagFilterPropertyCohortInSchemaTypeEnum;
+  type?: FeatureFlagFilterPropertyCohortInSchemaTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Membership operator for cohort properties. * `in` - in * `not_in` - not_in */
-  operator?: FeatureFlagFilterPropertyCohortInSchemaOperatorEnum;
+  operator?:
+    | FeatureFlagFilterPropertyCohortInSchemaOperatorEnum
+    | (string & {});
   /** Cohort comparison value (single or list, depending on usage). */
   value?: unknown;
 }
@@ -381,16 +369,13 @@ export const FeatureFlagFilterPropertyCohortInSchema = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
 
 /** * `flag` - flag */
-export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum =
-  | "flag"
-  | (string & {});
+export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = "flag";
 export const FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** * `flag_evaluates_to` - flag_evaluates_to */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
-  | "flag_evaluates_to"
-  | (string & {});
+  "flag_evaluates_to";
 export const FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -398,13 +383,15 @@ export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Flag property type required for flag dependency checks. * `flag` - flag */
-  type?: FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum;
+  type?: FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Operator for feature flag dependency evaluation. * `flag_evaluates_to` - flag_evaluates_to */
-  operator?: FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum;
+  operator?:
+    | FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum
+    | (string & {});
   /** Value to compare flag evaluation against. */
   value?: unknown;
 }
@@ -546,23 +533,23 @@ export const FeatureFlagFiltersSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagFiltersSchema>;
 
 /** * `open` - open */
-export type SurveyOpenQuestionSchemaTypeEnum = "open" | (string & {});
+export type SurveyOpenQuestionSchemaTypeEnum = "open";
 export const SurveyOpenQuestionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `html` - html * `text` - text */
-export type DescriptionContentTypeEnum = "html" | "text" | (string & {});
+export type DescriptionContentTypeEnum = "html" | "text";
 export const DescriptionContentTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyOpenQuestionSchema {
   /** Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_<id>) stay attached; omit it for new questions and the server generates one. */
   id?: string;
-  type?: SurveyOpenQuestionSchemaTypeEnum;
+  type?: SurveyOpenQuestionSchemaTypeEnum | (string & {});
   /** Question text shown to respondents. */
   question?: string;
   /** Optional helper text. */
   description?: string;
   /** Format for the description field. * `text` - text * `html` - html */
-  descriptionContentType?: DescriptionContentTypeEnum;
+  descriptionContentType?: DescriptionContentTypeEnum | (string & {});
   /** Whether respondents may skip this question. */
   optional?: boolean;
   /** Custom button label. */
@@ -583,19 +570,19 @@ export const SurveyOpenQuestionSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyOpenQuestionSchema>;
 
 /** * `link` - link */
-export type SurveyLinkQuestionSchemaTypeEnum = "link" | (string & {});
+export type SurveyLinkQuestionSchemaTypeEnum = "link";
 export const SurveyLinkQuestionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyLinkQuestionSchema {
   /** Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_<id>) stay attached; omit it for new questions and the server generates one. */
   id?: string;
-  type?: SurveyLinkQuestionSchemaTypeEnum;
+  type?: SurveyLinkQuestionSchemaTypeEnum | (string & {});
   /** Question text shown to respondents. */
   question?: string;
   /** Optional helper text. */
   description?: string;
   /** Format for the description field. * `text` - text * `html` - html */
-  descriptionContentType?: DescriptionContentTypeEnum;
+  descriptionContentType?: DescriptionContentTypeEnum | (string & {});
   /** Whether respondents may skip this question. */
   optional?: boolean;
   /** Custom button label. */
@@ -619,25 +606,20 @@ export const SurveyLinkQuestionSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyLinkQuestionSchema>;
 
 /** * `rating` - rating */
-export type SurveyRatingQuestionSchemaTypeEnum = "rating" | (string & {});
+export type SurveyRatingQuestionSchemaTypeEnum = "rating";
 export const SurveyRatingQuestionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `number` - number * `emoji` - emoji */
-export type SurveyRatingQuestionSchemaDisplayEnum =
-  | "number"
-  | "emoji"
-  | (string & {});
+export type SurveyRatingQuestionSchemaDisplayEnum = "number" | "emoji";
 export const SurveyRatingQuestionSchemaDisplayEnum = /*@__PURE__*/ S.String;
 
 /** * `next_question` - next_question */
-export type SurveyNextQuestionBranchingTypeEnum =
-  | "next_question"
-  | (string & {});
+export type SurveyNextQuestionBranchingTypeEnum = "next_question";
 export const SurveyNextQuestionBranchingTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyNextQuestionBranching {
   /** Continue to the next question in sequence. * `next_question` - next_question */
-  type?: SurveyNextQuestionBranchingTypeEnum;
+  type?: SurveyNextQuestionBranchingTypeEnum | (string & {});
 }
 export const SurveyNextQuestionBranching = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -648,12 +630,12 @@ export const SurveyNextQuestionBranching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyNextQuestionBranching>;
 
 /** * `end` - end */
-export type SurveyEndBranchingTypeEnum = "end" | (string & {});
+export type SurveyEndBranchingTypeEnum = "end";
 export const SurveyEndBranchingTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyEndBranching {
   /** End the survey. * `end` - end */
-  type?: SurveyEndBranchingTypeEnum;
+  type?: SurveyEndBranchingTypeEnum | (string & {});
 }
 export const SurveyEndBranching = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -664,14 +646,12 @@ export const SurveyEndBranching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyEndBranching>;
 
 /** * `specific_question` - specific_question */
-export type SurveySpecificQuestionBranchingTypeEnum =
-  | "specific_question"
-  | (string & {});
+export type SurveySpecificQuestionBranchingTypeEnum = "specific_question";
 export const SurveySpecificQuestionBranchingTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveySpecificQuestionBranching {
   /** Jump to a specific question index. * `specific_question` - specific_question */
-  type?: SurveySpecificQuestionBranchingTypeEnum;
+  type?: SurveySpecificQuestionBranchingTypeEnum | (string & {});
   /** 0-based index of the next question. */
   index?: number;
 }
@@ -685,14 +665,10 @@ export const SurveySpecificQuestionBranching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveySpecificQuestionBranching>;
 
 /** * `response_based` - response_based */
-export type SurveyResponseBasedBranchingTypeEnum =
-  | "response_based"
-  | (string & {});
+export type SurveyResponseBasedBranchingTypeEnum = "response_based";
 export const SurveyResponseBasedBranchingTypeEnum = /*@__PURE__*/ S.String;
 
-export type SurveyResponseBasedBranchingResponseValuesValueCase1 =
-  | "end"
-  | (string & {});
+export type SurveyResponseBasedBranchingResponseValuesValueCase1 = "end";
 export const SurveyResponseBasedBranchingResponseValuesValueCase1 =
   /*@__PURE__*/ S.String;
 
@@ -714,7 +690,7 @@ export const SurveyResponseBasedBranchingResponseValuesMap =
 
 export interface SurveyResponseBasedBranching {
   /** Branch based on the selected or entered response. * `response_based` - response_based */
-  type?: SurveyResponseBasedBranchingTypeEnum;
+  type?: SurveyResponseBasedBranchingTypeEnum | (string & {});
   /** Response-based branching map. Values can be a question index or 'end'. */
   responseValues?: SurveyResponseBasedBranchingResponseValuesMap;
 }
@@ -738,19 +714,19 @@ export const SurveyBranchingSchema =
 export interface SurveyRatingQuestionSchema {
   /** Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_<id>) stay attached; omit it for new questions and the server generates one. */
   id?: string;
-  type?: SurveyRatingQuestionSchemaTypeEnum;
+  type?: SurveyRatingQuestionSchemaTypeEnum | (string & {});
   /** Question text shown to respondents. */
   question?: string;
   /** Optional helper text. */
   description?: string;
   /** Format for the description field. * `text` - text * `html` - html */
-  descriptionContentType?: DescriptionContentTypeEnum;
+  descriptionContentType?: DescriptionContentTypeEnum | (string & {});
   /** Whether respondents may skip this question. */
   optional?: boolean;
   /** Custom button label. */
   buttonText?: string;
   /** Display format: 'number' shows numeric scale, 'emoji' shows emoji scale. * `number` - number * `emoji` - emoji */
-  display?: SurveyRatingQuestionSchemaDisplayEnum;
+  display?: SurveyRatingQuestionSchemaDisplayEnum | (string & {});
   /** Rating scale can be one of 3, 5, or 7 */
   scale?: number;
   /** Label for the lowest rating (e.g., 'Very Poor') */
@@ -779,9 +755,7 @@ export const SurveyRatingQuestionSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyRatingQuestionSchema>;
 
 /** * `single_choice` - single_choice */
-export type SurveySingleChoiceQuestionSchemaTypeEnum =
-  | "single_choice"
-  | (string & {});
+export type SurveySingleChoiceQuestionSchemaTypeEnum = "single_choice";
 export const SurveySingleChoiceQuestionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Array of choice options. Choice indices (0, 1, 2, ...) are used for branching logic. */
@@ -794,13 +768,13 @@ export const SurveySingleChoiceQuestionSchemaChoicesList =
 export interface SurveySingleChoiceQuestionSchema {
   /** Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_<id>) stay attached; omit it for new questions and the server generates one. */
   id?: string;
-  type?: SurveySingleChoiceQuestionSchemaTypeEnum;
+  type?: SurveySingleChoiceQuestionSchemaTypeEnum | (string & {});
   /** Question text shown to respondents. */
   question?: string;
   /** Optional helper text. */
   description?: string;
   /** Format for the description field. * `text` - text * `html` - html */
-  descriptionContentType?: DescriptionContentTypeEnum;
+  descriptionContentType?: DescriptionContentTypeEnum | (string & {});
   /** Whether respondents may skip this question. */
   optional?: boolean;
   /** Custom button label. */
@@ -832,9 +806,7 @@ export const SurveySingleChoiceQuestionSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveySingleChoiceQuestionSchema>;
 
 /** * `multiple_choice` - multiple_choice */
-export type SurveyMultipleChoiceQuestionSchemaTypeEnum =
-  | "multiple_choice"
-  | (string & {});
+export type SurveyMultipleChoiceQuestionSchemaTypeEnum = "multiple_choice";
 export const SurveyMultipleChoiceQuestionSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -849,13 +821,13 @@ export const SurveyMultipleChoiceQuestionSchemaChoicesList =
 export interface SurveyMultipleChoiceQuestionSchema {
   /** Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_<id>) stay attached; omit it for new questions and the server generates one. */
   id?: string;
-  type?: SurveyMultipleChoiceQuestionSchemaTypeEnum;
+  type?: SurveyMultipleChoiceQuestionSchemaTypeEnum | (string & {});
   /** Question text shown to respondents. */
   question?: string;
   /** Optional helper text. */
   description?: string;
   /** Format for the description field. * `text` - text * `html` - html */
-  descriptionContentType?: DescriptionContentTypeEnum;
+  descriptionContentType?: DescriptionContentTypeEnum | (string & {});
   /** Whether respondents may skip this question. */
   optional?: boolean;
   /** Custom button label. */
@@ -907,8 +879,7 @@ export type StringMatchOperatorEnum =
   | "icontains"
   | "not_icontains"
   | "regex"
-  | "not_regex"
-  | (string & {});
+  | "not_regex";
 export const StringMatchOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyConditionEventValueSchema {
@@ -946,12 +917,13 @@ export const SurveyEventsConditionSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyEventsConditionSchema>;
 
 /** * `Desktop` - Desktop * `Mobile` - Mobile * `Tablet` - Tablet */
-export type DeviceTypesEnum = "Desktop" | "Mobile" | "Tablet" | (string & {});
+export type DeviceTypesEnum = "Desktop" | "Mobile" | "Tablet";
 export const DeviceTypesEnum = /*@__PURE__*/ S.String;
 
 /** Device types that should match for this survey to be shown. */
-export type SurveyConditionsSchemaDeviceTypesList =
-  ReadonlyArray<DeviceTypesEnum>;
+export type SurveyConditionsSchemaDeviceTypesList = ReadonlyArray<
+  DeviceTypesEnum | (string & {})
+>;
 export const SurveyConditionsSchemaDeviceTypesList = /*@__PURE__*/ S.Array(
   DeviceTypesEnum,
 ) as any as S.Schema<SurveyConditionsSchemaDeviceTypesList>;
@@ -962,12 +934,12 @@ export interface SurveyConditionsSchema {
   /** Don't show this survey to users who saw any survey in the last x days. */
   seenSurveyWaitPeriodInDays?: number;
   /** URL/device matching types: 'regex' (matches regex pattern), 'not_regex' (does not match regex pattern), 'exact' (exact string match), 'is_not' (not exact match), 'icontains' (case-insensitive contains), 'not_icontains' (case-insensitive does not contain). * `regex` - regex * `not_regex` - not_regex * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains */
-  urlMatchType?: StringMatchOperatorEnum;
+  urlMatchType?: StringMatchOperatorEnum | (string & {});
   events?: SurveyEventsConditionSchema;
   /** Device types that should match for this survey to be shown. */
   deviceTypes?: SurveyConditionsSchemaDeviceTypesList;
   /** URL/device matching types: 'regex' (matches regex pattern), 'not_regex' (does not match regex pattern), 'exact' (exact string match), 'is_not' (not exact match), 'icontains' (case-insensitive contains), 'not_icontains' (case-insensitive does not contain). * `regex` - regex * `not_regex` - not_regex * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains */
-  deviceTypesMatchType?: StringMatchOperatorEnum;
+  deviceTypesMatchType?: StringMatchOperatorEnum | (string & {});
   /** The variant of the feature flag linked to this survey. */
   linkedFlagVariant?: string;
 }
@@ -987,7 +959,7 @@ export const SurveyConditionsSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyConditionsSchema>;
 
 /** * `button` - button * `tab` - tab * `selector` - selector */
-export type WidgetTypeEnum = "button" | "tab" | "selector" | (string & {});
+export type WidgetTypeEnum = "button" | "tab" | "selector";
 export const WidgetTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyAppearanceSchema {
@@ -1005,7 +977,9 @@ export interface SurveyAppearanceSchema {
   displayThankYouMessage?: boolean;
   thankYouMessageHeader?: string;
   thankYouMessageDescription?: string;
-  thankYouMessageDescriptionContentType?: DescriptionContentTypeEnum;
+  thankYouMessageDescriptionContentType?:
+    | DescriptionContentTypeEnum
+    | (string & {});
   thankYouMessageCloseButtonText?: string;
   borderColor?: string;
   placeholder?: string;
@@ -1015,7 +989,7 @@ export interface SurveyAppearanceSchema {
   allowGoBack?: boolean;
   /** Optional override for the back button label. Defaults to 'Back'. */
   backButtonText?: string;
-  widgetType?: WidgetTypeEnum;
+  widgetType?: WidgetTypeEnum | (string & {});
   widgetSelector?: string;
   widgetLabel?: string;
   widgetColor?: string;
@@ -1072,14 +1046,10 @@ export const SurveysCreateRequestIterationStartDatesList =
   ) as any as S.Schema<SurveysCreateRequestIterationStartDatesList>;
 
 /** * `day` - day * `week` - week * `month` - month */
-export type ResponseSamplingIntervalTypeEnum =
-  | "day"
-  | "week"
-  | "month"
-  | (string & {});
+export type ResponseSamplingIntervalTypeEnum = "day" | "week" | "month";
 export const ResponseSamplingIntervalTypeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type SurveysCreateRequestResponseSamplingIntervalType =
@@ -1096,9 +1066,9 @@ export interface SurveysCreateRequest {
   /** Survey description. */
   description?: string;
   /** Survey type. * `popover` - popover * `widget` - widget * `external_survey` - external survey * `api` - api */
-  type?: SurveyType;
+  type?: SurveyType | (string & {});
   /** Survey scheduling behavior: 'once' = show once per user (default), 'recurring' = repeat based on iteration_count and iteration_frequency_days settings, 'always' = show every time conditions are met (mainly for widget surveys) * `once` - once * `recurring` - recurring * `always` - always */
-  schedule?: ScheduleEnum | null;
+  schedule?: ScheduleEnum | (string & {}) | null;
   /** The feature flag linked to this survey. */
   linked_flag_id?: number | null;
   linked_insight_id?: number | null;
@@ -1202,7 +1172,7 @@ export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
-export type EvaluationRuntimeEnum = "server" | "client" | "all" | (string & {});
+export type EvaluationRuntimeEnum = "server" | "client" | "all";
 export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -1213,10 +1183,7 @@ export const MinimalFeatureFlagEvaluationRuntime =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type BucketingIdentifierEnum =
-  | "distinct_id"
-  | "device_id"
-  | (string & {});
+export type BucketingIdentifierEnum = "distinct_id" | "device_id";
 export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
@@ -1285,8 +1252,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -1459,7 +1425,7 @@ export interface SurveysDuplicateToProjectsCreateRequest {
   id: string;
   name?: string;
   description?: string;
-  type?: SurveyType;
+  type?: SurveyType | (string & {});
   schedule?: string | null;
   linked_flag_id?: number | null;
   linked_insight_id?: number | null;
@@ -1841,7 +1807,7 @@ export type SurveyResponseSamplingIntervalType =
 export const SurveyResponseSamplingIntervalType =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SurveyResponseSamplingIntervalType>;
 
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
+export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Mixin for serializers to add user access control fields */
@@ -1941,8 +1907,7 @@ export type SurveysListRequestType =
   | "api"
   | "external_survey"
   | "popover"
-  | "widget"
-  | (string & {});
+  | "widget";
 export const SurveysListRequestType = /*@__PURE__*/ S.String;
 
 export interface SurveysListRequest {
@@ -1958,7 +1923,7 @@ export interface SurveysListRequest {
   /** Match against survey `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
   search?: string;
   /** * `popover` - popover * `widget` - widget * `external_survey` - external survey * `api` - api */
-  type?: SurveysListRequestType;
+  type?: SurveysListRequestType | (string & {});
 }
 export const SurveysListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2032,9 +1997,9 @@ export interface SurveysPartialUpdateRequest {
   /** Survey description. */
   description?: string;
   /** Survey type. * `popover` - popover * `widget` - widget * `external_survey` - external survey * `api` - api */
-  type?: SurveyType;
+  type?: SurveyType | (string & {});
   /** Survey scheduling behavior: 'once' = show once per user (default), 'recurring' = repeat based on iteration_count and iteration_frequency_days settings, 'always' = show every time conditions are met (mainly for widget surveys) * `once` - once * `recurring` - recurring * `always` - always */
-  schedule?: ScheduleEnum | null;
+  schedule?: ScheduleEnum | (string & {}) | null;
   /** The feature flag linked to this survey. */
   linked_flag_id?: number | null;
   linked_insight_id?: number | null;
@@ -2212,7 +2177,7 @@ export interface SurveysResponsesArchiveCreateRequest {
   response_uuid: string;
   name?: string;
   description?: string;
-  type?: SurveyType;
+  type?: SurveyType | (string & {});
   schedule?: string | null;
   linked_flag_id?: number | null;
   linked_insight_id?: number | null;
@@ -2515,7 +2480,7 @@ export interface SurveysResponsesUnarchiveCreateRequest {
   response_uuid: string;
   name?: string;
   description?: string;
-  type?: SurveyType;
+  type?: SurveyType | (string & {});
   schedule?: string | null;
   linked_flag_id?: number | null;
   linked_insight_id?: number | null;
@@ -2791,7 +2756,7 @@ export interface SurveysSummaryHeadlineCreateRequest {
   id: string;
   name?: string;
   description?: string;
-  type?: SurveyType;
+  type?: SurveyType | (string & {});
   schedule?: string | null;
   linked_flag_id?: number | null;
   linked_insight_id?: number | null;
@@ -2901,7 +2866,7 @@ export interface SurveysUpdateRequest {
   id: string;
   name?: string;
   description?: string;
-  type?: SurveyType;
+  type?: SurveyType | (string & {});
   schedule?: string | null;
   linked_flag_id?: number | null;
   linked_insight_id?: number | null;

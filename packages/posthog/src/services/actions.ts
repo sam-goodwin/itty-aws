@@ -35,7 +35,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type ActionsCreateRequestFormat = "csv" | "json" | (string & {});
+export type ActionsCreateRequestFormat = "csv" | "json";
 export const ActionsCreateRequestFormat = /*@__PURE__*/ S.String;
 
 export type ActionsCreateRequestTagsList = ReadonlyArray<unknown>;
@@ -74,8 +74,7 @@ export type PropertyFilterTypeEnum =
   | "revenue_analytics"
   | "account_custom_property"
   | "flag"
-  | "workflow_variable"
-  | (string & {});
+  | "workflow_variable";
 export const PropertyFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex */
@@ -85,8 +84,7 @@ export type StringMatchOperatorEnum =
   | "icontains"
   | "not_icontains"
   | "regex"
-  | "not_regex"
-  | (string & {});
+  | "not_regex";
 export const StringMatchOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Matches string values with text-oriented operators. */
@@ -118,8 +116,7 @@ export type NumericPropertyFilterOperatorEnum =
   | "gt"
   | "lt"
   | "gte"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const NumericPropertyFilterOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Matches numeric values with comparison operators. */
@@ -155,8 +152,7 @@ export type ArrayPropertyFilterOperatorEnum =
   | "exact"
   | "is_not"
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const ArrayPropertyFilterOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Matches against a list of values (OR semantics for exact/is_not, set membership for in/not_in). */
@@ -185,8 +181,7 @@ export const ArrayPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type DateOperatorEnum =
   | "is_date_exact"
   | "is_date_before"
-  | "is_date_after"
-  | (string & {});
+  | "is_date_after";
 export const DateOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Matches date/datetime values with date-specific operators. */
@@ -212,7 +207,7 @@ export const DatePropertyFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatePropertyFilter>;
 
 /** * `is_set` - is_set * `is_not_set` - is_not_set */
-export type ExistenceOperatorEnum = "is_set" | "is_not_set" | (string & {});
+export type ExistenceOperatorEnum = "is_set" | "is_not_set";
 export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Checks whether a property is set or not, without comparing values. */
@@ -251,11 +246,7 @@ export const ActionStepJSONInputPropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ActionStepJSONInputPropertiesList>;
 
 /** * `contains` - contains * `regex` - regex * `exact` - exact */
-export type ActionStepMatchingEnum =
-  | "contains"
-  | "regex"
-  | "exact"
-  | (string & {});
+export type ActionStepMatchingEnum = "contains" | "regex" | "exact";
 export const ActionStepMatchingEnum = /*@__PURE__*/ S.String;
 
 export interface ActionStepJSONInput {
@@ -270,15 +261,15 @@ export interface ActionStepJSONInput {
   /** Element text content to match. */
   text?: string | null;
   /** How to match the text value. Defaults to exact. * `contains` - contains * `regex` - regex * `exact` - exact */
-  text_matching?: ActionStepMatchingEnum | null;
+  text_matching?: ActionStepMatchingEnum | (string & {}) | null;
   /** Link href attribute to match. */
   href?: string | null;
   /** How to match the href value. Defaults to exact. * `contains` - contains * `regex` - regex * `exact` - exact */
-  href_matching?: ActionStepMatchingEnum | null;
+  href_matching?: ActionStepMatchingEnum | (string & {}) | null;
   /** Page URL to match. */
   url?: string | null;
   /** How to match the URL value. Defaults to contains. * `contains` - contains * `regex` - regex * `exact` - exact */
-  url_matching?: ActionStepMatchingEnum | null;
+  url_matching?: ActionStepMatchingEnum | (string & {}) | null;
 }
 export const ActionStepJSONInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -306,7 +297,7 @@ export const ActionsCreateRequestStepsList = /*@__PURE__*/ S.Array(
 export interface ActionsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  format?: ActionsCreateRequestFormat;
+  format?: ActionsCreateRequestFormat | (string & {});
   /** Name of the action (must be unique within the project). */
   name?: string | null;
   /** Human-readable description of what this action represents. */
@@ -421,11 +412,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -508,7 +498,7 @@ export const ActionOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActionOutput" }) as any as S.Schema<ActionOutput>;
 
-export type ActionsDestroyRequestFormat = "csv" | "json" | (string & {});
+export type ActionsDestroyRequestFormat = "csv" | "json";
 export const ActionsDestroyRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ActionsDestroyRequest {
@@ -516,7 +506,7 @@ export interface ActionsDestroyRequest {
   project_id: string;
   /** A unique integer value identifying this action. */
   id: number;
-  format?: ActionsDestroyRequestFormat;
+  format?: ActionsDestroyRequestFormat | (string & {});
 }
 export const ActionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -541,7 +531,7 @@ export const ActionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsDestroyResponse",
 }) as any as S.Schema<ActionsDestroyResponse>;
 
-export type ActionsListRequestFormat = "csv" | "json" | (string & {});
+export type ActionsListRequestFormat = "csv" | "json";
 export const ActionsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ActionsListRequest {
@@ -549,7 +539,7 @@ export interface ActionsListRequest {
   project_id: string;
   /** Comma-separated list of creator user ids. Returns only actions created by these users. */
   created_by?: string;
-  format?: ActionsListRequestFormat;
+  format?: ActionsListRequestFormat | (string & {});
   /** Maximum number of actions to return. Omit to return all. */
   limit?: number;
   /** Number of actions to skip before returning results. */
@@ -604,7 +594,7 @@ export const PaginatedActionListOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedActionListOutput",
 }) as any as S.Schema<PaginatedActionListOutput>;
 
-export type ActionsPartialUpdateRequestFormat = "csv" | "json" | (string & {});
+export type ActionsPartialUpdateRequestFormat = "csv" | "json";
 export const ActionsPartialUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 export type ActionsPartialUpdateRequestTagsList = ReadonlyArray<unknown>;
@@ -624,7 +614,7 @@ export interface ActionsPartialUpdateRequest {
   project_id: string;
   /** A unique integer value identifying this action. */
   id: number;
-  format?: ActionsPartialUpdateRequestFormat;
+  format?: ActionsPartialUpdateRequestFormat | (string & {});
   /** Name of the action (must be unique within the project). */
   name?: string | null;
   /** Human-readable description of what this action represents. */
@@ -668,7 +658,7 @@ export const ActionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsPartialUpdateRequest",
 }) as any as S.Schema<ActionsPartialUpdateRequest>;
 
-export type ActionsReferencesListRequestFormat = "csv" | "json" | (string & {});
+export type ActionsReferencesListRequestFormat = "csv" | "json";
 export const ActionsReferencesListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ActionsReferencesListRequest {
@@ -676,7 +666,7 @@ export interface ActionsReferencesListRequest {
   project_id: string;
   /** A unique integer value identifying this action. */
   id: number;
-  format?: ActionsReferencesListRequestFormat;
+  format?: ActionsReferencesListRequestFormat | (string & {});
 }
 export const ActionsReferencesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -735,7 +725,7 @@ export const ActionsReferencesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsReferencesListResponse",
 }) as any as S.Schema<ActionsReferencesListResponse>;
 
-export type ActionsRetrieveRequestFormat = "csv" | "json" | (string & {});
+export type ActionsRetrieveRequestFormat = "csv" | "json";
 export const ActionsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ActionsRetrieveRequest {
@@ -743,7 +733,7 @@ export interface ActionsRetrieveRequest {
   project_id: string;
   /** A unique integer value identifying this action. */
   id: number;
-  format?: ActionsRetrieveRequestFormat;
+  format?: ActionsRetrieveRequestFormat | (string & {});
 }
 export const ActionsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -761,7 +751,7 @@ export const ActionsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsRetrieveRequest",
 }) as any as S.Schema<ActionsRetrieveRequest>;
 
-export type ActionsUpdateRequestFormat = "csv" | "json" | (string & {});
+export type ActionsUpdateRequestFormat = "csv" | "json";
 export const ActionsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 export type ActionsUpdateRequestTagsList = ReadonlyArray<unknown>;
@@ -780,7 +770,7 @@ export interface ActionsUpdateRequest {
   project_id: string;
   /** A unique integer value identifying this action. */
   id: number;
-  format?: ActionsUpdateRequestFormat;
+  format?: ActionsUpdateRequestFormat | (string & {});
   /** Name of the action (must be unique within the project). */
   name?: string | null;
   /** Human-readable description of what this action represents. */

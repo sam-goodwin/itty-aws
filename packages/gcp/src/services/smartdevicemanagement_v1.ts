@@ -13,58 +13,55 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Request message for SmartDeviceManagementService.ExecuteDeviceCommand */
 export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
@@ -73,15 +70,12 @@ export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
   /** The command message to execute, represented as a Struct. */
   params?: DocumentMap;
 }
-export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      command: S.optional(S.String),
-      params: S.optional(DocumentMap),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest",
-  }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest>;
+export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "command": S.optional(S.String),
+  "params": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest" }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest>;
 
 export interface ExecuteCommandEnterprisesDevicesRequest {
   /** The name of the device requested. For example: "enterprises/XYZ/devices/123" */
@@ -89,55 +83,33 @@ export interface ExecuteCommandEnterprisesDevicesRequest {
   /** Request body */
   body?: GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest;
 }
-export const ExecuteCommandEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:executeCommand",
-        baseUrl: "https://smartdevicemanagement.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ExecuteCommandEnterprisesDevicesRequest",
-}) as any as S.Schema<ExecuteCommandEnterprisesDevicesRequest>;
+export const ExecuteCommandEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:executeCommand","baseUrl":"https://smartdevicemanagement.googleapis.com/"})),
+).annotate({ identifier: "ExecuteCommandEnterprisesDevicesRequest" }) as any as S.Schema<ExecuteCommandEnterprisesDevicesRequest>;
 
 /** Response message for SmartDeviceManagementService.ExecuteDeviceCommand */
 export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   /** The results of executing the command. */
   results?: DocumentMap;
 }
-export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(DocumentMap),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse",
-  }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse>;
+export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "results": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse" }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse>;
 
 export interface GetEnterprisesDevicesRequest {
   /** The name of the device requested. For example: "enterprises/XYZ/devices/123" */
   name: string;
 }
 export const GetEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://smartdevicemanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEnterprisesDevicesRequest",
-}) as any as S.Schema<GetEnterprisesDevicesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://smartdevicemanagement.googleapis.com/"})),
+).annotate({ identifier: "GetEnterprisesDevicesRequest" }) as any as S.Schema<GetEnterprisesDevicesRequest>;
 
 /** Represents device relationships, for instance, structure/room to which the device is assigned to. */
 export interface GoogleHomeEnterpriseSdmV1ParentRelation {
@@ -146,22 +118,15 @@ export interface GoogleHomeEnterpriseSdmV1ParentRelation {
   /** Output only. The name of the relation -- e.g., structure/room where the device is assigned to. For example: "enterprises/XYZ/structures/ABC" or "enterprises/XYZ/structures/ABC/rooms/123" */
   parent?: string;
 }
-export const GoogleHomeEnterpriseSdmV1ParentRelation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      displayName: S.optional(S.String),
-      parent: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleHomeEnterpriseSdmV1ParentRelation",
-}) as any as S.Schema<GoogleHomeEnterpriseSdmV1ParentRelation>;
+export const GoogleHomeEnterpriseSdmV1ParentRelation = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "displayName": S.optional(S.String),
+  "parent": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ParentRelation" }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ParentRelation>;
 
-export type GoogleHomeEnterpriseSdmV1ParentRelationList =
-  ReadonlyArray<GoogleHomeEnterpriseSdmV1ParentRelation>;
-export const GoogleHomeEnterpriseSdmV1ParentRelationList =
-  /*@__PURE__*/ S.Array(
-    GoogleHomeEnterpriseSdmV1ParentRelation,
-  ) as any as S.Schema<GoogleHomeEnterpriseSdmV1ParentRelationList>;
+export type GoogleHomeEnterpriseSdmV1ParentRelationList = ReadonlyArray<GoogleHomeEnterpriseSdmV1ParentRelation>;
+export const GoogleHomeEnterpriseSdmV1ParentRelationList = /*@__PURE__*/ S.Array(GoogleHomeEnterpriseSdmV1ParentRelation) as any as S.Schema<GoogleHomeEnterpriseSdmV1ParentRelationList>;
 
 /** Device resource represents an instance of enterprise managed device in the property. */
 export interface GoogleHomeEnterpriseSdmV1Device {
@@ -175,33 +140,23 @@ export interface GoogleHomeEnterpriseSdmV1Device {
   type?: string;
 }
 export const GoogleHomeEnterpriseSdmV1Device = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    parentRelations: S.optional(GoogleHomeEnterpriseSdmV1ParentRelationList),
-    traits: S.optional(DocumentMap),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleHomeEnterpriseSdmV1Device",
-}) as any as S.Schema<GoogleHomeEnterpriseSdmV1Device>;
+S.Struct({
+  "name": S.optional(S.String),
+  "parentRelations": S.optional(GoogleHomeEnterpriseSdmV1ParentRelationList),
+  "traits": S.optional(DocumentMap),
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Device" }) as any as S.Schema<GoogleHomeEnterpriseSdmV1Device>;
 
 export interface GetEnterprisesStructuresRequest {
   /** The name of the structure requested. For example: "enterprises/XYZ/structures/ABC". */
   name: string;
 }
 export const GetEnterprisesStructuresRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://smartdevicemanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEnterprisesStructuresRequest",
-}) as any as S.Schema<GetEnterprisesStructuresRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://smartdevicemanagement.googleapis.com/"})),
+).annotate({ identifier: "GetEnterprisesStructuresRequest" }) as any as S.Schema<GetEnterprisesStructuresRequest>;
 
 /** Structure resource represents an instance of enterprise managed home or hotel room. */
 export interface GoogleHomeEnterpriseSdmV1Structure {
@@ -211,32 +166,21 @@ export interface GoogleHomeEnterpriseSdmV1Structure {
   name?: string;
 }
 export const GoogleHomeEnterpriseSdmV1Structure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traits: S.optional(DocumentMap),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleHomeEnterpriseSdmV1Structure",
-}) as any as S.Schema<GoogleHomeEnterpriseSdmV1Structure>;
+S.Struct({
+  "traits": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Structure" }) as any as S.Schema<GoogleHomeEnterpriseSdmV1Structure>;
 
 export interface GetEnterprisesStructuresRoomsRequest {
   /** The name of the room requested. For example: "enterprises/XYZ/structures/ABC/rooms/123". */
   name: string;
 }
-export const GetEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://smartdevicemanagement.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetEnterprisesStructuresRoomsRequest",
-}) as any as S.Schema<GetEnterprisesStructuresRoomsRequest>;
+export const GetEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://smartdevicemanagement.googleapis.com/"})),
+).annotate({ identifier: "GetEnterprisesStructuresRoomsRequest" }) as any as S.Schema<GetEnterprisesStructuresRoomsRequest>;
 
 /** Room resource represents an instance of sub-space within a structure such as rooms in a hotel suite or rental apartment. */
 export interface GoogleHomeEnterpriseSdmV1Room {
@@ -246,13 +190,11 @@ export interface GoogleHomeEnterpriseSdmV1Room {
   name?: string;
 }
 export const GoogleHomeEnterpriseSdmV1Room = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traits: S.optional(DocumentMap),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleHomeEnterpriseSdmV1Room",
-}) as any as S.Schema<GoogleHomeEnterpriseSdmV1Room>;
+S.Struct({
+  "traits": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Room" }) as any as S.Schema<GoogleHomeEnterpriseSdmV1Room>;
 
 export interface ListEnterprisesDevicesRequest {
   /** Optional filter to list devices. Filters can be done on: Device custom name (substring match): 'customName=wing' */
@@ -261,39 +203,25 @@ export interface ListEnterprisesDevicesRequest {
   parent: string;
 }
 export const ListEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/devices",
-      baseUrl: "https://smartdevicemanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListEnterprisesDevicesRequest",
-}) as any as S.Schema<ListEnterprisesDevicesRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/devices","baseUrl":"https://smartdevicemanagement.googleapis.com/"})),
+).annotate({ identifier: "ListEnterprisesDevicesRequest" }) as any as S.Schema<ListEnterprisesDevicesRequest>;
 
-export type GoogleHomeEnterpriseSdmV1DeviceList =
-  ReadonlyArray<GoogleHomeEnterpriseSdmV1Device>;
-export const GoogleHomeEnterpriseSdmV1DeviceList = /*@__PURE__*/ S.Array(
-  GoogleHomeEnterpriseSdmV1Device,
-) as any as S.Schema<GoogleHomeEnterpriseSdmV1DeviceList>;
+export type GoogleHomeEnterpriseSdmV1DeviceList = ReadonlyArray<GoogleHomeEnterpriseSdmV1Device>;
+export const GoogleHomeEnterpriseSdmV1DeviceList = /*@__PURE__*/ S.Array(GoogleHomeEnterpriseSdmV1Device) as any as S.Schema<GoogleHomeEnterpriseSdmV1DeviceList>;
 
 /** Response message for SmartDeviceManagementService.ListDevices */
 export interface GoogleHomeEnterpriseSdmV1ListDevicesResponse {
   /** The list of devices. */
   devices?: GoogleHomeEnterpriseSdmV1DeviceList;
 }
-export const GoogleHomeEnterpriseSdmV1ListDevicesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      devices: S.optional(GoogleHomeEnterpriseSdmV1DeviceList),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1ListDevicesResponse",
-  }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListDevicesResponse>;
+export const GoogleHomeEnterpriseSdmV1ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "devices": S.optional(GoogleHomeEnterpriseSdmV1DeviceList),
+}),
+).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ListDevicesResponse" }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListDevicesResponse>;
 
 export interface ListEnterprisesStructuresRequest {
   /** The parent enterprise to list structures under. E.g. "enterprises/XYZ". */
@@ -302,85 +230,51 @@ export interface ListEnterprisesStructuresRequest {
   filter?: string;
 }
 export const ListEnterprisesStructuresRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/structures",
-      baseUrl: "https://smartdevicemanagement.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListEnterprisesStructuresRequest",
-}) as any as S.Schema<ListEnterprisesStructuresRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/structures","baseUrl":"https://smartdevicemanagement.googleapis.com/"})),
+).annotate({ identifier: "ListEnterprisesStructuresRequest" }) as any as S.Schema<ListEnterprisesStructuresRequest>;
 
-export type GoogleHomeEnterpriseSdmV1StructureList =
-  ReadonlyArray<GoogleHomeEnterpriseSdmV1Structure>;
-export const GoogleHomeEnterpriseSdmV1StructureList = /*@__PURE__*/ S.Array(
-  GoogleHomeEnterpriseSdmV1Structure,
-) as any as S.Schema<GoogleHomeEnterpriseSdmV1StructureList>;
+export type GoogleHomeEnterpriseSdmV1StructureList = ReadonlyArray<GoogleHomeEnterpriseSdmV1Structure>;
+export const GoogleHomeEnterpriseSdmV1StructureList = /*@__PURE__*/ S.Array(GoogleHomeEnterpriseSdmV1Structure) as any as S.Schema<GoogleHomeEnterpriseSdmV1StructureList>;
 
 /** Response message for SmartDeviceManagementService.ListStructures */
 export interface GoogleHomeEnterpriseSdmV1ListStructuresResponse {
   /** The list of structures. */
   structures?: GoogleHomeEnterpriseSdmV1StructureList;
 }
-export const GoogleHomeEnterpriseSdmV1ListStructuresResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      structures: S.optional(GoogleHomeEnterpriseSdmV1StructureList),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1ListStructuresResponse",
-  }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListStructuresResponse>;
+export const GoogleHomeEnterpriseSdmV1ListStructuresResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "structures": S.optional(GoogleHomeEnterpriseSdmV1StructureList),
+}),
+).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ListStructuresResponse" }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListStructuresResponse>;
 
 export interface ListEnterprisesStructuresRoomsRequest {
   /** The parent resource name of the rooms requested. For example: "enterprises/XYZ/structures/ABC". */
   parent: string;
 }
-export const ListEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/rooms",
-        baseUrl: "https://smartdevicemanagement.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListEnterprisesStructuresRoomsRequest",
-}) as any as S.Schema<ListEnterprisesStructuresRoomsRequest>;
+export const ListEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/rooms","baseUrl":"https://smartdevicemanagement.googleapis.com/"})),
+).annotate({ identifier: "ListEnterprisesStructuresRoomsRequest" }) as any as S.Schema<ListEnterprisesStructuresRoomsRequest>;
 
-export type GoogleHomeEnterpriseSdmV1RoomList =
-  ReadonlyArray<GoogleHomeEnterpriseSdmV1Room>;
-export const GoogleHomeEnterpriseSdmV1RoomList = /*@__PURE__*/ S.Array(
-  GoogleHomeEnterpriseSdmV1Room,
-) as any as S.Schema<GoogleHomeEnterpriseSdmV1RoomList>;
+export type GoogleHomeEnterpriseSdmV1RoomList = ReadonlyArray<GoogleHomeEnterpriseSdmV1Room>;
+export const GoogleHomeEnterpriseSdmV1RoomList = /*@__PURE__*/ S.Array(GoogleHomeEnterpriseSdmV1Room) as any as S.Schema<GoogleHomeEnterpriseSdmV1RoomList>;
 
 /** Response message for SmartDeviceManagementService.ListRooms */
 export interface GoogleHomeEnterpriseSdmV1ListRoomsResponse {
   /** The list of rooms. */
   rooms?: GoogleHomeEnterpriseSdmV1RoomList;
 }
-export const GoogleHomeEnterpriseSdmV1ListRoomsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rooms: S.optional(GoogleHomeEnterpriseSdmV1RoomList),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1ListRoomsResponse",
-  }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListRoomsResponse>;
+export const GoogleHomeEnterpriseSdmV1ListRoomsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "rooms": S.optional(GoogleHomeEnterpriseSdmV1RoomList),
+}),
+).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ListRoomsResponse" }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListRoomsResponse>;
 
-export type ExecuteCommandEnterprisesDevicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExecuteCommandEnterprisesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Executes a command to device managed by the enterprise. */
 export const executeCommandEnterprisesDevices: API.OperationMethod<
   ExecuteCommandEnterprisesDevicesRequest,
@@ -425,10 +319,7 @@ export const getEnterprisesStructures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetEnterprisesStructuresRoomsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetEnterprisesStructuresRoomsError = NotFound | Forbidden | GcpOpError;
 /** Gets a room managed by the enterprise. */
 export const getEnterprisesStructuresRooms: API.OperationMethod<
   GetEnterprisesStructuresRoomsRequest,
@@ -473,10 +364,7 @@ export const listEnterprisesStructures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListEnterprisesStructuresRoomsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListEnterprisesStructuresRoomsError = NotFound | Forbidden | GcpOpError;
 /** Lists rooms managed by the enterprise. */
 export const listEnterprisesStructuresRooms: API.OperationMethod<
   ListEnterprisesStructuresRoomsRequest,
@@ -490,3 +378,4 @@ export const listEnterprisesStructuresRooms: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

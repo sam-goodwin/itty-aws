@@ -49,11 +49,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -242,8 +242,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -251,8 +250,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -285,8 +283,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -432,10 +429,7 @@ export const StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** The storage discovery sku */
-export type StorageDiscoveryWorkspacePropertiesInputSku =
-  | "Standard"
-  | "Free"
-  | (string & {});
+export type StorageDiscoveryWorkspacePropertiesInputSku = "Standard" | "Free";
 export const StorageDiscoveryWorkspacePropertiesInputSku =
   /*@__PURE__*/ S.String;
 
@@ -448,9 +442,7 @@ export const StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList =
   ) as any as S.Schema<StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList>;
 
 /** Storage Discovery Resource Type */
-export type StorageDiscoveryResourceType =
-  | "Microsoft.Storage/storageAccounts"
-  | (string & {});
+export type StorageDiscoveryResourceType = "Microsoft.Storage/storageAccounts";
 export const StorageDiscoveryResourceType = /*@__PURE__*/ S.String;
 
 /** Resource types for the collection */
@@ -508,7 +500,7 @@ export const StorageDiscoveryWorkspacePropertiesInputScopesList =
 /** Storage Discovery Workspace Properties */
 export interface StorageDiscoveryWorkspacePropertiesInput {
   /** The storage discovery sku */
-  sku?: StorageDiscoveryWorkspacePropertiesInputSku;
+  sku?: StorageDiscoveryWorkspacePropertiesInputSku | (string & {});
   /** The description of the storage discovery workspace */
   description?: string;
   /** The view level storage discovery data estate */
@@ -575,10 +567,7 @@ export const StorageDiscoveryWorkspacesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateResponseTagsMap>;
 
 /** The storage discovery sku */
-export type StorageDiscoveryWorkspacePropertiesSku =
-  | "Standard"
-  | "Free"
-  | (string & {});
+export type StorageDiscoveryWorkspacePropertiesSku = "Standard" | "Free";
 export const StorageDiscoveryWorkspacePropertiesSku = /*@__PURE__*/ S.String;
 
 /** The view level storage discovery data estate */
@@ -910,7 +899,7 @@ export const StorageDiscoveryWorkspacesUpdateRequestTagsMap =
   ) as any as S.Schema<StorageDiscoveryWorkspacesUpdateRequestTagsMap>;
 
 /** Storage Discovery Sku */
-export type StorageDiscoverySku = "Standard" | "Free" | (string & {});
+export type StorageDiscoverySku = "Standard" | "Free";
 export const StorageDiscoverySku = /*@__PURE__*/ S.String;
 
 /** The view level storage discovery data estate */
@@ -932,7 +921,7 @@ export const StorageDiscoveryWorkspacePropertiesUpdateScopesList =
 /** The template for adding updateable properties. */
 export interface StorageDiscoveryWorkspacePropertiesUpdate {
   /** The storage discovery sku */
-  sku?: StorageDiscoverySku;
+  sku?: StorageDiscoverySku | (string & {});
   /** The description of the storage discovery workspace */
   description?: string;
   /** The view level storage discovery data estate */

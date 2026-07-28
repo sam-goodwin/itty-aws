@@ -13,64 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Options for features provided by the FCM SDK for iOS. */
 export interface ApnsFcmOptions {
@@ -80,10 +74,10 @@ export interface ApnsFcmOptions {
   analyticsLabel?: string;
 }
 export const ApnsFcmOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(S.String),
-    analyticsLabel: S.optional(S.String),
-  }),
+S.Struct({
+  "image": S.optional(S.String),
+  "analyticsLabel": S.optional(S.String),
+}),
 ).annotate({ identifier: "ApnsFcmOptions" }) as any as S.Schema<ApnsFcmOptions>;
 
 /** [Apple Push Notification Service](https://goo.gl/MXRTPa) specific options. */
@@ -98,37 +92,22 @@ export interface ApnsConfig {
   headers?: StringMap;
 }
 export const ApnsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    liveActivityToken: S.optional(S.String),
-    payload: S.optional(DocumentMap),
-    fcmOptions: S.optional(ApnsFcmOptions),
-    headers: S.optional(StringMap),
-  }),
+S.Struct({
+  "liveActivityToken": S.optional(S.String),
+  "payload": S.optional(DocumentMap),
+  "fcmOptions": S.optional(ApnsFcmOptions),
+  "headers": S.optional(StringMap),
+}),
 ).annotate({ identifier: "ApnsConfig" }) as any as S.Schema<ApnsConfig>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type AndroidNotificationProxyEnum =
-  | "PROXY_UNSPECIFIED"
-  | "ALLOW"
-  | "DENY"
-  | "IF_PRIORITY_LOWERED"
-  | (string & {});
+export type AndroidNotificationProxyEnum = "PROXY_UNSPECIFIED" | "ALLOW" | "DENY" | "IF_PRIORITY_LOWERED";
 export const AndroidNotificationProxyEnum = /*@__PURE__*/ S.String;
 
-export type AndroidNotificationNotificationPriorityEnum =
-  | "PRIORITY_UNSPECIFIED"
-  | "PRIORITY_MIN"
-  | "PRIORITY_LOW"
-  | "PRIORITY_DEFAULT"
-  | "PRIORITY_HIGH"
-  | "PRIORITY_MAX"
-  | (string & {});
-export const AndroidNotificationNotificationPriorityEnum =
-  /*@__PURE__*/ S.String;
+export type AndroidNotificationNotificationPriorityEnum = "PRIORITY_UNSPECIFIED" | "PRIORITY_MIN" | "PRIORITY_LOW" | "PRIORITY_DEFAULT" | "PRIORITY_HIGH" | "PRIORITY_MAX";
+export const AndroidNotificationNotificationPriorityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
 export interface Color {
@@ -142,12 +121,12 @@ export interface Color {
   green?: number;
 }
 export const Color = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    red: S.optional(S.Number),
-    blue: S.optional(S.Number),
-    alpha: S.optional(S.Number),
-    green: S.optional(S.Number),
-  }),
+S.Struct({
+  "red": S.optional(S.Number),
+  "blue": S.optional(S.Number),
+  "alpha": S.optional(S.Number),
+  "green": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Color" }) as any as S.Schema<Color>;
 
 /** Settings to control notification LED. */
@@ -160,19 +139,14 @@ export interface LightSettings {
   lightOnDuration?: string;
 }
 export const LightSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lightOffDuration: S.optional(S.String),
-    color: S.optional(Color),
-    lightOnDuration: S.optional(S.String),
-  }),
+S.Struct({
+  "lightOffDuration": S.optional(S.String),
+  "color": S.optional(Color),
+  "lightOnDuration": S.optional(S.String),
+}),
 ).annotate({ identifier: "LightSettings" }) as any as S.Schema<LightSettings>;
 
-export type AndroidNotificationVisibilityEnum =
-  | "VISIBILITY_UNSPECIFIED"
-  | "PRIVATE"
-  | "PUBLIC"
-  | "SECRET"
-  | (string & {});
+export type AndroidNotificationVisibilityEnum = "VISIBILITY_UNSPECIFIED" | "PRIVATE" | "PUBLIC" | "SECRET";
 export const AndroidNotificationVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Notification to send to android devices. */
@@ -233,40 +207,36 @@ export interface AndroidNotification {
   sound?: string;
 }
 export const AndroidNotification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channelId: S.optional(S.String),
-    vibrateTimings: S.optional(StringList),
-    proxy: S.optional(AndroidNotificationProxyEnum),
-    notificationCount: S.optional(S.Number),
-    notificationPriority: S.optional(
-      AndroidNotificationNotificationPriorityEnum,
-    ),
-    clickAction: S.optional(S.String),
-    titleLocArgs: S.optional(StringList),
-    localOnly: S.optional(S.Boolean),
-    title: S.optional(S.String),
-    ticker: S.optional(S.String),
-    eventTime: S.optional(S.String),
-    sticky: S.optional(S.Boolean),
-    defaultSound: S.optional(S.Boolean),
-    tag: S.optional(S.String),
-    body: S.optional(S.String),
-    image: S.optional(S.String),
-    bypassProxyNotification: S.optional(S.Boolean),
-    bodyLocArgs: S.optional(StringList),
-    lightSettings: S.optional(LightSettings),
-    defaultVibrateTimings: S.optional(S.Boolean),
-    color: S.optional(S.String),
-    icon: S.optional(S.String),
-    bodyLocKey: S.optional(S.String),
-    defaultLightSettings: S.optional(S.Boolean),
-    titleLocKey: S.optional(S.String),
-    visibility: S.optional(AndroidNotificationVisibilityEnum),
-    sound: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AndroidNotification",
-}) as any as S.Schema<AndroidNotification>;
+S.Struct({
+  "channelId": S.optional(S.String),
+  "vibrateTimings": S.optional(StringList),
+  "proxy": S.optional(AndroidNotificationProxyEnum),
+  "notificationCount": S.optional(S.Number),
+  "notificationPriority": S.optional(AndroidNotificationNotificationPriorityEnum),
+  "clickAction": S.optional(S.String),
+  "titleLocArgs": S.optional(StringList),
+  "localOnly": S.optional(S.Boolean),
+  "title": S.optional(S.String),
+  "ticker": S.optional(S.String),
+  "eventTime": S.optional(S.String),
+  "sticky": S.optional(S.Boolean),
+  "defaultSound": S.optional(S.Boolean),
+  "tag": S.optional(S.String),
+  "body": S.optional(S.String),
+  "image": S.optional(S.String),
+  "bypassProxyNotification": S.optional(S.Boolean),
+  "bodyLocArgs": S.optional(StringList),
+  "lightSettings": S.optional(LightSettings),
+  "defaultVibrateTimings": S.optional(S.Boolean),
+  "color": S.optional(S.String),
+  "icon": S.optional(S.String),
+  "bodyLocKey": S.optional(S.String),
+  "defaultLightSettings": S.optional(S.Boolean),
+  "titleLocKey": S.optional(S.String),
+  "visibility": S.optional(AndroidNotificationVisibilityEnum),
+  "sound": S.optional(S.String),
+}),
+).annotate({ identifier: "AndroidNotification" }) as any as S.Schema<AndroidNotification>;
 
 /** Options for features provided by the FCM SDK for Android. */
 export interface AndroidFcmOptions {
@@ -274,14 +244,12 @@ export interface AndroidFcmOptions {
   analyticsLabel?: string;
 }
 export const AndroidFcmOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyticsLabel: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AndroidFcmOptions",
-}) as any as S.Schema<AndroidFcmOptions>;
+S.Struct({
+  "analyticsLabel": S.optional(S.String),
+}),
+).annotate({ identifier: "AndroidFcmOptions" }) as any as S.Schema<AndroidFcmOptions>;
 
-export type AndroidConfigPriorityEnum = "NORMAL" | "HIGH" | (string & {});
+export type AndroidConfigPriorityEnum = "NORMAL" | "HIGH";
 export const AndroidConfigPriorityEnum = /*@__PURE__*/ S.String;
 
 /** Android specific options for messages sent through [FCM connection server](https://goo.gl/4GLdUl). */
@@ -308,18 +276,18 @@ export interface AndroidConfig {
   priority?: AndroidConfigPriorityEnum;
 }
 export const AndroidConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notification: S.optional(AndroidNotification),
-    directBootOk: S.optional(S.Boolean),
-    restrictedPackageName: S.optional(S.String),
-    fcmOptions: S.optional(AndroidFcmOptions),
-    ttl: S.optional(S.String),
-    data: S.optional(StringMap),
-    restrictedSatelliteOk: S.optional(S.Boolean),
-    collapseKey: S.optional(S.String),
-    bandwidthConstrainedOk: S.optional(S.Boolean),
-    priority: S.optional(AndroidConfigPriorityEnum),
-  }),
+S.Struct({
+  "notification": S.optional(AndroidNotification),
+  "directBootOk": S.optional(S.Boolean),
+  "restrictedPackageName": S.optional(S.String),
+  "fcmOptions": S.optional(AndroidFcmOptions),
+  "ttl": S.optional(S.String),
+  "data": S.optional(StringMap),
+  "restrictedSatelliteOk": S.optional(S.Boolean),
+  "collapseKey": S.optional(S.String),
+  "bandwidthConstrainedOk": S.optional(S.Boolean),
+  "priority": S.optional(AndroidConfigPriorityEnum),
+}),
 ).annotate({ identifier: "AndroidConfig" }) as any as S.Schema<AndroidConfig>;
 
 /** Platform independent options for features provided by the FCM SDKs. */
@@ -328,9 +296,9 @@ export interface FcmOptions {
   analyticsLabel?: string;
 }
 export const FcmOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyticsLabel: S.optional(S.String),
-  }),
+S.Struct({
+  "analyticsLabel": S.optional(S.String),
+}),
 ).annotate({ identifier: "FcmOptions" }) as any as S.Schema<FcmOptions>;
 
 /** Options for features provided by the FCM SDK for Web. */
@@ -341,13 +309,11 @@ export interface WebpushFcmOptions {
   analyticsLabel?: string;
 }
 export const WebpushFcmOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    link: S.optional(S.String),
-    analyticsLabel: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebpushFcmOptions",
-}) as any as S.Schema<WebpushFcmOptions>;
+S.Struct({
+  "link": S.optional(S.String),
+  "analyticsLabel": S.optional(S.String),
+}),
+).annotate({ identifier: "WebpushFcmOptions" }) as any as S.Schema<WebpushFcmOptions>;
 
 /** [Webpush protocol](https://tools.ietf.org/html/rfc8030) options. */
 export interface WebpushConfig {
@@ -361,12 +327,12 @@ export interface WebpushConfig {
   notification?: DocumentMap;
 }
 export const WebpushConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fcmOptions: S.optional(WebpushFcmOptions),
-    headers: S.optional(StringMap),
-    data: S.optional(StringMap),
-    notification: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "fcmOptions": S.optional(WebpushFcmOptions),
+  "headers": S.optional(StringMap),
+  "data": S.optional(StringMap),
+  "notification": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "WebpushConfig" }) as any as S.Schema<WebpushConfig>;
 
 /** Basic notification template to use across all platforms. */
@@ -379,11 +345,11 @@ export interface Notification {
   body?: string;
 }
 export const Notification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(S.String),
-    title: S.optional(S.String),
-    body: S.optional(S.String),
-  }),
+S.Struct({
+  "image": S.optional(S.String),
+  "title": S.optional(S.String),
+  "body": S.optional(S.String),
+}),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
 /** Message to send by Firebase Cloud Messaging Service. */
@@ -412,19 +378,19 @@ export interface Message {
   notification?: Notification;
 }
 export const Message = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(StringMap),
-    apns: S.optional(ApnsConfig),
-    fid: S.optional(S.String),
-    android: S.optional(AndroidConfig),
-    name: S.optional(S.String),
-    topic: S.optional(S.String),
-    fcmOptions: S.optional(FcmOptions),
-    token: S.optional(S.String),
-    webpush: S.optional(WebpushConfig),
-    condition: S.optional(S.String),
-    notification: S.optional(Notification),
-  }),
+S.Struct({
+  "data": S.optional(StringMap),
+  "apns": S.optional(ApnsConfig),
+  "fid": S.optional(S.String),
+  "android": S.optional(AndroidConfig),
+  "name": S.optional(S.String),
+  "topic": S.optional(S.String),
+  "fcmOptions": S.optional(FcmOptions),
+  "token": S.optional(S.String),
+  "webpush": S.optional(WebpushConfig),
+  "condition": S.optional(S.String),
+  "notification": S.optional(Notification),
+}),
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
 /** Request to send a message to specified target. */
@@ -435,13 +401,11 @@ export interface SendMessageRequest {
   message?: Message;
 }
 export const SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validateOnly: S.optional(S.Boolean),
-    message: S.optional(Message),
-  }),
-).annotate({
-  identifier: "SendMessageRequest",
-}) as any as S.Schema<SendMessageRequest>;
+S.Struct({
+  "validateOnly": S.optional(S.Boolean),
+  "message": S.optional(Message),
+}),
+).annotate({ identifier: "SendMessageRequest" }) as any as S.Schema<SendMessageRequest>;
 
 export interface SendProjectsMessagesRequest {
   /** Required. It contains the Firebase project id (i.e. the unique identifier for your Firebase project), in the format of `projects/{project_id}`. The numeric project number with no padding is also supported in the format of `projects/{project_number}`. */
@@ -450,26 +414,13 @@ export interface SendProjectsMessagesRequest {
   body?: SendMessageRequest;
 }
 export const SendProjectsMessagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(SendMessageRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/messages:send",
-      baseUrl: "https://fcm.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SendProjectsMessagesRequest",
-}) as any as S.Schema<SendProjectsMessagesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(SendMessageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/messages:send","baseUrl":"https://fcm.googleapis.com/"})),
+).annotate({ identifier: "SendProjectsMessagesRequest" }) as any as S.Schema<SendProjectsMessagesRequest>;
 
-export type SendProjectsMessagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SendProjectsMessagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Send a message to specified target (a registration token, topic or condition). */
 export const sendProjectsMessages: API.OperationMethod<
   SendProjectsMessagesRequest,
@@ -483,3 +434,4 @@ export const sendProjectsMessages: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

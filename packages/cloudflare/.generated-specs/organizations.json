@@ -497,6 +497,63 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.organizations#ListRequestContaining": {
+      "type": "structure",
+      "members": {
+        "account": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter the list of organizations to the ones that contain this particular"
+          }
+        },
+        "organization": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter the list of organizations to the ones that contain this particular"
+          }
+        },
+        "user": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter the list of organizations to the ones that contain this particular"
+          }
+        }
+      }
+    },
+    "com.cloudflare.organizations#ListRequestName": {
+      "type": "structure",
+      "members": {
+        "contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(case-insensitive) Filter the list of organizations to where the name contains a particular"
+          }
+        },
+        "endsWith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(case-insensitive) Filter the list of organizations to where the name ends with a particular"
+          }
+        },
+        "startsWith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(case-insensitive) Filter the list of organizations to where the name starts with a"
+          }
+        }
+      }
+    },
+    "com.cloudflare.organizations#ListRequestParent": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter the list of organizations to the ones that are a sub-organization"
+          }
+        }
+      }
+    },
     "com.cloudflare.organizations#ListRequest": {
       "type": "structure",
       "members": {
@@ -507,46 +564,16 @@
             "smithy.api#httpQuery": "id"
           }
         },
-        "containing_account": {
-          "target": "smithy.api#String",
+        "containing": {
+          "target": "com.cloudflare.organizations#ListRequestContaining",
           "traits": {
-            "smithy.api#documentation": "Filter the list of organizations to the ones that contain this particular",
-            "smithy.api#httpQuery": "containing.account"
+            "com.cloudflare.protocols#deepQuery": "containing"
           }
         },
-        "containing_organization": {
-          "target": "smithy.api#String",
+        "name": {
+          "target": "com.cloudflare.organizations#ListRequestName",
           "traits": {
-            "smithy.api#documentation": "Filter the list of organizations to the ones that contain this particular",
-            "smithy.api#httpQuery": "containing.organization"
-          }
-        },
-        "containing_user": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Filter the list of organizations to the ones that contain this particular",
-            "smithy.api#httpQuery": "containing.user"
-          }
-        },
-        "name_contains": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "(case-insensitive) Filter the list of organizations to where the name contains a particular",
-            "smithy.api#httpQuery": "name.contains"
-          }
-        },
-        "name_endsWith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "(case-insensitive) Filter the list of organizations to where the name ends with a particular",
-            "smithy.api#httpQuery": "name.endsWith"
-          }
-        },
-        "name_startsWith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "(case-insensitive) Filter the list of organizations to where the name starts with a",
-            "smithy.api#httpQuery": "name.startsWith"
+            "com.cloudflare.protocols#deepQuery": "name"
           }
         },
         "page_size": {
@@ -563,11 +590,10 @@
             "smithy.api#httpQuery": "page_token"
           }
         },
-        "parent_id": {
-          "target": "smithy.api#String",
+        "parent": {
+          "target": "com.cloudflare.organizations#ListRequestParent",
           "traits": {
-            "smithy.api#documentation": "Filter the list of organizations to the ones that are a sub-organization",
-            "smithy.api#httpQuery": "parent.id"
+            "com.cloudflare.protocols#deepQuery": "parent"
           }
         }
       },
@@ -1342,7 +1368,18 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.organizations#LogsAuditListRequestActionResultNot": {
+    "com.cloudflare.organizations#LogsAuditListRequestId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by their IDs."
+          }
+        }
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestActionResultNotItem": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -1362,10 +1399,21 @@
     "com.cloudflare.organizations#LogsAuditListRequestActionResultNotList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.organizations#LogsAuditListRequestActionResultNot"
+        "target": "com.cloudflare.organizations#LogsAuditListRequestActionResultNotItem"
       }
     },
-    "com.cloudflare.organizations#LogsAuditListRequestActionTypeNot": {
+    "com.cloudflare.organizations#LogsAuditListRequestActionResult": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActionResultNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by whether the action was successful or not."
+          }
+        }
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestActionTypeNotItem": {
       "type": "enum",
       "members": {
         "CREATE": {
@@ -1397,10 +1445,21 @@
     "com.cloudflare.organizations#LogsAuditListRequestActionTypeNotList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.organizations#LogsAuditListRequestActionTypeNot"
+        "target": "com.cloudflare.organizations#LogsAuditListRequestActionTypeNotItem"
       }
     },
-    "com.cloudflare.organizations#LogsAuditListRequestActorContextNot": {
+    "com.cloudflare.organizations#LogsAuditListRequestActionType": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActionTypeNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the action type."
+          }
+        }
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestActorContextNotItem": {
       "type": "enum",
       "members": {
         "API_KEY": {
@@ -1438,7 +1497,18 @@
     "com.cloudflare.organizations#LogsAuditListRequestActorContextNotList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.organizations#LogsAuditListRequestActorContextNot"
+        "target": "com.cloudflare.organizations#LogsAuditListRequestActorContextNotItem"
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestActorContext": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorContextNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the actor context."
+          }
+        }
       }
     },
     "com.cloudflare.organizations#LogsAuditListRequestActorEmailNotList": {
@@ -1447,10 +1517,32 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.organizations#LogsAuditListRequestActorEmail": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorEmailNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the actor's email address."
+          }
+        }
+      }
+    },
     "com.cloudflare.organizations#LogsAuditListRequestActorIdNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestActorId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the actor's user ID."
+          }
+        }
       }
     },
     "com.cloudflare.organizations#LogsAuditListRequestActorIpAddressNotList": {
@@ -1459,10 +1551,32 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.organizations#LogsAuditListRequestActorIpAddress": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorIpAddressNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs IP address where the action was initiated."
+          }
+        }
+      }
+    },
     "com.cloudflare.organizations#LogsAuditListRequestActorTokenIdNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestActorTokenId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorTokenIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the API token ID when the actor context is an api_token or oauth."
+          }
+        }
       }
     },
     "com.cloudflare.organizations#LogsAuditListRequestActorTokenNameNotList": {
@@ -1471,7 +1585,18 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.organizations#LogsAuditListRequestActorTypeNot": {
+    "com.cloudflare.organizations#LogsAuditListRequestActorTokenName": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorTokenNameNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the API token name when the actor context is an api_token or oauth."
+          }
+        }
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestActorTypeNotItem": {
       "type": "enum",
       "members": {
         "CLOUDFLARE_ADMIN": {
@@ -1497,7 +1622,18 @@
     "com.cloudflare.organizations#LogsAuditListRequestActorTypeNotList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.organizations#LogsAuditListRequestActorTypeNot"
+        "target": "com.cloudflare.organizations#LogsAuditListRequestActorTypeNotItem"
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestActorType": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorTypeNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the actor type."
+          }
+        }
       }
     },
     "com.cloudflare.organizations#LogsAuditListRequestDirection": {
@@ -1523,10 +1659,32 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.organizations#LogsAuditListRequestRawCfRayId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestRawCfRayIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the response CF Ray ID."
+          }
+        }
+      }
+    },
     "com.cloudflare.organizations#LogsAuditListRequestRawMethodNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestRawMethod": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestRawMethodNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the HTTP method for the API call."
+          }
+        }
       }
     },
     "com.cloudflare.organizations#LogsAuditListRequestRawStatusCodeNotList": {
@@ -1535,10 +1693,32 @@
         "target": "smithy.api#Double"
       }
     },
+    "com.cloudflare.organizations#LogsAuditListRequestRawStatusCode": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestRawStatusCodeNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the response status code that was returned."
+          }
+        }
+      }
+    },
     "com.cloudflare.organizations#LogsAuditListRequestRawUriNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestRawUri": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestRawUriNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the request URI."
+          }
+        }
       }
     },
     "com.cloudflare.organizations#LogsAuditListRequestResourceIdNotList": {
@@ -1547,13 +1727,35 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.organizations#LogsAuditListRequestResourceId": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceIdNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the resource ID."
+          }
+        }
+      }
+    },
     "com.cloudflare.organizations#LogsAuditListRequestResourceProductNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.organizations#LogsAuditListRequestResourceScopeNot": {
+    "com.cloudflare.organizations#LogsAuditListRequestResourceProduct": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceProductNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the Cloudflare product associated with the changed resource."
+          }
+        }
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestResourceScopeNotItem": {
       "type": "enum",
       "members": {
         "ORGANIZATIONS": {
@@ -1567,13 +1769,35 @@
     "com.cloudflare.organizations#LogsAuditListRequestResourceScopeNotList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.organizations#LogsAuditListRequestResourceScopeNot"
+        "target": "com.cloudflare.organizations#LogsAuditListRequestResourceScopeNotItem"
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestResourceScope": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceScopeNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs by the resource scope, specifying whether the resource is associated with an organization."
+          }
+        }
       }
     },
     "com.cloudflare.organizations#LogsAuditListRequestResourceTypeNotList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.organizations#LogsAuditListRequestResourceType": {
+      "type": "structure",
+      "members": {
+        "not": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceTypeNotList",
+          "traits": {
+            "smithy.api#documentation": "Filters out audit logs based on the unique type of resource changed by the action."
+          }
+        }
       }
     },
     "com.cloudflare.organizations#LogsAuditListRequest": {
@@ -1603,74 +1827,64 @@
             "smithy.api#required": {}
           }
         },
-        "id_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestIdNotList",
+        "id": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by their IDs.",
-            "smithy.api#httpQuery": "id.not"
+            "com.cloudflare.protocols#deepQuery": "id"
           }
         },
-        "action_result_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestActionResultNotList",
+        "action_result": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActionResult",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by whether the action was successful or not.",
-            "smithy.api#httpQuery": "action_result.not"
+            "com.cloudflare.protocols#deepQuery": "action_result"
           }
         },
-        "action_type_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestActionTypeNotList",
+        "action_type": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActionType",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the action type.",
-            "smithy.api#httpQuery": "action_type.not"
+            "com.cloudflare.protocols#deepQuery": "action_type"
           }
         },
-        "actor_context_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestActorContextNotList",
+        "actor_context": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorContext",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the actor context.",
-            "smithy.api#httpQuery": "actor_context.not"
+            "com.cloudflare.protocols#deepQuery": "actor_context"
           }
         },
-        "actor_email_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestActorEmailNotList",
+        "actor_email": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorEmail",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the actor's email address.",
-            "smithy.api#httpQuery": "actor_email.not"
+            "com.cloudflare.protocols#deepQuery": "actor_email"
           }
         },
-        "actor_id_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestActorIdNotList",
+        "actor_id": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the actor's user ID.",
-            "smithy.api#httpQuery": "actor_id.not"
+            "com.cloudflare.protocols#deepQuery": "actor_id"
           }
         },
-        "actor_ip_address_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestActorIpAddressNotList",
+        "actor_ip_address": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorIpAddress",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs IP address where the action was initiated.",
-            "smithy.api#httpQuery": "actor_ip_address.not"
+            "com.cloudflare.protocols#deepQuery": "actor_ip_address"
           }
         },
-        "actor_token_id_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestActorTokenIdNotList",
+        "actor_token_id": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorTokenId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the API token ID when the actor context is an api_token or oauth.",
-            "smithy.api#httpQuery": "actor_token_id.not"
+            "com.cloudflare.protocols#deepQuery": "actor_token_id"
           }
         },
-        "actor_token_name_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestActorTokenNameNotList",
+        "actor_token_name": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorTokenName",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the API token name when the actor context is an api_token or oauth.",
-            "smithy.api#httpQuery": "actor_token_name.not"
+            "com.cloudflare.protocols#deepQuery": "actor_token_name"
           }
         },
-        "actor_type_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestActorTypeNotList",
+        "actor_type": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestActorType",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the actor type.",
-            "smithy.api#httpQuery": "actor_type.not"
+            "com.cloudflare.protocols#deepQuery": "actor_type"
           }
         },
         "cursor": {
@@ -1694,60 +1908,52 @@
             "smithy.api#httpQuery": "limit"
           }
         },
-        "raw_cf_ray_id_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestRawCfRayIdNotList",
+        "raw_cf_ray_id": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestRawCfRayId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the response CF Ray ID.",
-            "smithy.api#httpQuery": "raw_cf_ray_id.not"
+            "com.cloudflare.protocols#deepQuery": "raw_cf_ray_id"
           }
         },
-        "raw_method_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestRawMethodNotList",
+        "raw_method": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestRawMethod",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the HTTP method for the API call.",
-            "smithy.api#httpQuery": "raw_method.not"
+            "com.cloudflare.protocols#deepQuery": "raw_method"
           }
         },
-        "raw_status_code_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestRawStatusCodeNotList",
+        "raw_status_code": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestRawStatusCode",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the response status code that was returned.",
-            "smithy.api#httpQuery": "raw_status_code.not"
+            "com.cloudflare.protocols#deepQuery": "raw_status_code"
           }
         },
-        "raw_uri_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestRawUriNotList",
+        "raw_uri": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestRawUri",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the request URI.",
-            "smithy.api#httpQuery": "raw_uri.not"
+            "com.cloudflare.protocols#deepQuery": "raw_uri"
           }
         },
-        "resource_id_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceIdNotList",
+        "resource_id": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceId",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the resource ID.",
-            "smithy.api#httpQuery": "resource_id.not"
+            "com.cloudflare.protocols#deepQuery": "resource_id"
           }
         },
-        "resource_product_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceProductNotList",
+        "resource_product": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceProduct",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the Cloudflare product associated with the changed resource.",
-            "smithy.api#httpQuery": "resource_product.not"
+            "com.cloudflare.protocols#deepQuery": "resource_product"
           }
         },
-        "resource_scope_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceScopeNotList",
+        "resource_scope": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceScope",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs by the resource scope, specifying whether the resource is associated with an organization.",
-            "smithy.api#httpQuery": "resource_scope.not"
+            "com.cloudflare.protocols#deepQuery": "resource_scope"
           }
         },
-        "resource_type_not": {
-          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceTypeNotList",
+        "resource_type": {
+          "target": "com.cloudflare.organizations#LogsAuditListRequestResourceType",
           "traits": {
-            "smithy.api#documentation": "Filters out audit logs based on the unique type of resource changed by the action.",
-            "smithy.api#httpQuery": "resource_type.not"
+            "com.cloudflare.protocols#deepQuery": "resource_type"
           }
         }
       },
@@ -2434,6 +2640,17 @@
         "target": "com.cloudflare.organizations#MembersListRequestStatus"
       }
     },
+    "com.cloudflare.organizations#MembersListRequestUser": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter the list of memberships for a specific email that ends with a substring."
+          }
+        }
+      }
+    },
     "com.cloudflare.organizations#MembersListRequest": {
       "type": "structure",
       "members": {
@@ -2465,11 +2682,10 @@
             "smithy.api#httpQuery": "status"
           }
         },
-        "user_email": {
-          "target": "smithy.api#String",
+        "user": {
+          "target": "com.cloudflare.organizations#MembersListRequestUser",
           "traits": {
-            "smithy.api#documentation": "Filter the list of memberships for a specific email that ends with a substring.",
-            "smithy.api#httpQuery": "user.email"
+            "com.cloudflare.protocols#deepQuery": "user"
           }
         }
       },
@@ -2613,6 +2829,29 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.organizations#OrganizationAccountsGetRequestAccountPubname": {
+      "type": "structure",
+      "members": {
+        "contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the account_pubname contains"
+          }
+        },
+        "endsWith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the account_pubname ends with"
+          }
+        },
+        "startsWith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the account_pubname starts with"
+          }
+        }
+      }
+    },
     "com.cloudflare.organizations#OrganizationAccountsGetRequestDirection": {
       "type": "enum",
       "members": {
@@ -2626,6 +2865,29 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.organizations#OrganizationAccountsGetRequestName": {
+      "type": "structure",
+      "members": {
+        "contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the name contains a particular"
+          }
+        },
+        "endsWith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the name ends with a particular"
+          }
+        },
+        "startsWith": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the name starts with a"
           }
         }
       }
@@ -2651,25 +2913,10 @@
             "smithy.api#required": {}
           }
         },
-        "account_pubname_contains": {
-          "target": "smithy.api#String",
+        "account_pubname": {
+          "target": "com.cloudflare.organizations#OrganizationAccountsGetRequestAccountPubname",
           "traits": {
-            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the account_pubname contains",
-            "smithy.api#httpQuery": "account_pubname.contains"
-          }
-        },
-        "account_pubname_endsWith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the account_pubname ends with",
-            "smithy.api#httpQuery": "account_pubname.endsWith"
-          }
-        },
-        "account_pubname_startsWith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the account_pubname starts with",
-            "smithy.api#httpQuery": "account_pubname.startsWith"
+            "com.cloudflare.protocols#deepQuery": "account_pubname"
           }
         },
         "direction": {
@@ -2679,25 +2926,10 @@
             "smithy.api#httpQuery": "direction"
           }
         },
-        "name_contains": {
-          "target": "smithy.api#String",
+        "name": {
+          "target": "com.cloudflare.organizations#OrganizationAccountsGetRequestName",
           "traits": {
-            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the name contains a particular",
-            "smithy.api#httpQuery": "name.contains"
-          }
-        },
-        "name_endsWith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the name ends with a particular",
-            "smithy.api#httpQuery": "name.endsWith"
-          }
-        },
-        "name_startsWith": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "(case-insensitive) Filter the list of accounts to where the name starts with a",
-            "smithy.api#httpQuery": "name.startsWith"
+            "com.cloudflare.protocols#deepQuery": "name"
           }
         },
         "order_by": {

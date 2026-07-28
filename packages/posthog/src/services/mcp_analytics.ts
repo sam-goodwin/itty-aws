@@ -17,8 +17,7 @@ export type MCPFeedbackCreateCategoryEnum =
   | "usability"
   | "bug"
   | "docs"
-  | "other"
-  | (string & {});
+  | "other";
 export const MCPFeedbackCreateCategoryEnum = /*@__PURE__*/ S.String;
 
 export interface McpAnalyticsFeedbackCreateRequest {
@@ -43,7 +42,7 @@ export interface McpAnalyticsFeedbackCreateRequest {
   /** Concrete feedback about the MCP experience, tool result, or workflow friction. */
   feedback: string;
   /** High-level category for the feedback. * `results` - Results * `usability` - Usability * `bug` - Bug * `docs` - Docs * `other` - Other */
-  category?: MCPFeedbackCreateCategoryEnum;
+  category?: MCPFeedbackCreateCategoryEnum | (string & {});
 }
 export const McpAnalyticsFeedbackCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -70,10 +69,7 @@ export const McpAnalyticsFeedbackCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<McpAnalyticsFeedbackCreateRequest>;
 
 /** * `feedback` - Feedback * `missing_capability` - Missing capability */
-export type MCPAnalyticsSubmissionKindEnum =
-  | "feedback"
-  | "missing_capability"
-  | (string & {});
+export type MCPAnalyticsSubmissionKindEnum = "feedback" | "missing_capability";
 export const MCPAnalyticsSubmissionKindEnum = /*@__PURE__*/ S.String;
 
 export interface MCPAnalyticsSubmission {
@@ -223,11 +219,7 @@ export const McpAnalyticsIntentClustersRetrieveRequest =
   }) as any as S.Schema<McpAnalyticsIntentClustersRetrieveRequest>;
 
 /** * `idle` - Idle * `computing` - Computing * `error` - Error */
-export type MCPIntentClusterSnapshotStatusEnum =
-  | "idle"
-  | "computing"
-  | "error"
-  | (string & {});
+export type MCPIntentClusterSnapshotStatusEnum = "idle" | "computing" | "error";
 export const MCPIntentClusterSnapshotStatusEnum = /*@__PURE__*/ S.String;
 
 export interface MCPIntentClusterToolEntry {
@@ -274,7 +266,7 @@ export const MCPIntentClusterJourneyPathStepsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MCPIntentClusterJourneyPathStepsList>;
 
 /** * `completed` - Completed * `error` - Error */
-export type OutcomeEnum = "completed" | "error" | (string & {});
+export type OutcomeEnum = "completed" | "error";
 export const OutcomeEnum = /*@__PURE__*/ S.String;
 
 export interface MCPIntentClusterJourneyPath {

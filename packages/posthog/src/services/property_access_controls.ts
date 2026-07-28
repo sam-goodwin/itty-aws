@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `read_write` - read_write * `read` - read * `none` - none */
-export type AccessLevelEnum = "read_write" | "read" | "none" | (string & {});
+export type AccessLevelEnum = "read_write" | "read" | "none";
 export const AccessLevelEnum = /*@__PURE__*/ S.String;
 
 export interface PropertyAccessControlsCreateRequest {
@@ -21,7 +21,7 @@ export interface PropertyAccessControlsCreateRequest {
   /** The property definition ID this rule applies to. */
   property_definition_id: string;
   /** The access level to set for this rule. * `read_write` - read_write * `read` - read * `none` - none */
-  access_level: AccessLevelEnum;
+  access_level: AccessLevelEnum | (string & {});
   /** The organization member UUID to set an override for. */
   organization_member?: string | null;
   /** The role UUID to set an override for. */

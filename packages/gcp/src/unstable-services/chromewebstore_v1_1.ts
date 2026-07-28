@@ -13,76 +13,68 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type GetItemsProjectionEnum = "DRAFT" | "PUBLISHED" | (string & {});
+export type GetItemsProjectionEnum = "DRAFT" | "PUBLISHED";
 export const GetItemsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetItemsRequest {
   /** Unique identifier representing the Chrome App, Chrome Extension, or the Chrome Theme. */
   itemId: string;
   /** Determines which subset of the item information to return. */
-  projection?: GetItemsProjectionEnum;
+  projection?: GetItemsProjectionEnum | (string & {});
 }
 export const GetItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemId: S.String.pipe(T.Label()),
-    projection: S.optional(GetItemsProjectionEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "chromewebstore/v1.1/items/{itemId}",
-      baseUrl: "https://chromewebstore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetItemsRequest",
-}) as any as S.Schema<GetItemsRequest>;
+S.Struct({
+  "itemId": S.String.pipe(T.Label()),
+  "projection": S.optional(GetItemsProjectionEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"chromewebstore/v1.1/items/{itemId}","baseUrl":"https://chromewebstore.googleapis.com/"})),
+).annotate({ identifier: "GetItemsRequest" }) as any as S.Schema<GetItemsRequest>;
 
 /** Error of the item */
 export interface ItemError {
@@ -92,16 +84,14 @@ export interface ItemError {
   error_detail?: string;
 }
 export const ItemError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error_code: S.optional(S.String),
-    error_detail: S.optional(S.String),
-  }),
+S.Struct({
+  "error_code": S.optional(S.String),
+  "error_detail": S.optional(S.String),
+}),
 ).annotate({ identifier: "ItemError" }) as any as S.Schema<ItemError>;
 
 export type ItemErrorList = ReadonlyArray<ItemError>;
-export const ItemErrorList = /*@__PURE__*/ S.Array(
-  ItemError,
-) as any as S.Schema<ItemErrorList>;
+export const ItemErrorList = /*@__PURE__*/ S.Array(ItemError) as any as S.Schema<ItemErrorList>;
 
 export interface Item {
   /** Status of the operation. Possible values are: - \"FAILURE\" - \"IN_PROGRESS\" - \"NOT_FOUND\" - \"SUCCESS\" */
@@ -118,14 +108,14 @@ export interface Item {
   itemError?: ItemErrorList;
 }
 export const Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uploadState: S.optional(S.String),
-    crxVersion: S.optional(S.String),
-    id: S.optional(S.String),
-    kind: S.optional(S.String),
-    publicKey: S.optional(S.String),
-    itemError: S.optional(ItemErrorList),
-  }),
+S.Struct({
+  "uploadState": S.optional(S.String),
+  "crxVersion": S.optional(S.String),
+  "id": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "publicKey": S.optional(S.String),
+  "itemError": S.optional(ItemErrorList),
+}),
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
 export interface InsertItemsRequest {
@@ -133,18 +123,10 @@ export interface InsertItemsRequest {
   publisherEmail?: string;
 }
 export const InsertItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publisherEmail: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "chromewebstore/v1.1/items",
-      baseUrl: "https://chromewebstore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertItemsRequest",
-}) as any as S.Schema<InsertItemsRequest>;
+S.Struct({
+  "publisherEmail": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"chromewebstore/v1.1/items","baseUrl":"https://chromewebstore.googleapis.com/"})),
+).annotate({ identifier: "InsertItemsRequest" }) as any as S.Schema<InsertItemsRequest>;
 
 export interface PublishRequest {
   /** Optional. The caller request to exempt the review and directly publish because the update is within the list that we can automatically validate. The API will check if the exemption can be granted using real time data. */
@@ -155,11 +137,11 @@ export interface PublishRequest {
   deployPercentage?: number;
 }
 export const PublishRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reviewExemption: S.optional(S.Boolean),
-    target: S.optional(S.String),
-    deployPercentage: S.optional(S.Number),
-  }),
+S.Struct({
+  "reviewExemption": S.optional(S.Boolean),
+  "target": S.optional(S.String),
+  "deployPercentage": S.optional(S.Number),
+}),
 ).annotate({ identifier: "PublishRequest" }) as any as S.Schema<PublishRequest>;
 
 export interface PublishItemsRequest {
@@ -175,27 +157,17 @@ export interface PublishItemsRequest {
   body?: PublishRequest;
 }
 export const PublishItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemId: S.String.pipe(T.Label()),
-    deployPercentage: S.optional(S.Number.pipe(T.Query())),
-    publishTarget: S.optional(S.String.pipe(T.Query())),
-    reviewExemption: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(PublishRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "chromewebstore/v1.1/items/{itemId}/publish",
-      baseUrl: "https://chromewebstore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PublishItemsRequest",
-}) as any as S.Schema<PublishItemsRequest>;
+S.Struct({
+  "itemId": S.String.pipe(T.Label()),
+  "deployPercentage": S.optional(S.Number.pipe(T.Query())),
+  "publishTarget": S.optional(S.String.pipe(T.Query())),
+  "reviewExemption": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(PublishRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"chromewebstore/v1.1/items/{itemId}/publish","baseUrl":"https://chromewebstore.googleapis.com/"})),
+).annotate({ identifier: "PublishItemsRequest" }) as any as S.Schema<PublishItemsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface Item2 {
   /** Detailed human-comprehensible explanation of the status code above. */
@@ -208,12 +180,12 @@ export interface Item2 {
   kind?: string;
 }
 export const Item2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statusDetail: S.optional(StringList),
-    status: S.optional(StringList),
-    item_id: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "statusDetail": S.optional(StringList),
+  "status": S.optional(StringList),
+  "item_id": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Item2" }) as any as S.Schema<Item2>;
 
 export interface UpdateItemsRequest {
@@ -223,19 +195,11 @@ export interface UpdateItemsRequest {
   body?: Item;
 }
 export const UpdateItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemId: S.String.pipe(T.Label()),
-    body: S.optional(Item.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "chromewebstore/v1.1/items/{itemId}",
-      baseUrl: "https://chromewebstore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateItemsRequest",
-}) as any as S.Schema<UpdateItemsRequest>;
+S.Struct({
+  "itemId": S.String.pipe(T.Label()),
+  "body": S.optional(Item.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"chromewebstore/v1.1/items/{itemId}","baseUrl":"https://chromewebstore.googleapis.com/"})),
+).annotate({ identifier: "UpdateItemsRequest" }) as any as S.Schema<UpdateItemsRequest>;
 
 export type GetItemsError = NotFound | Forbidden | GcpOpError;
 /** Gets your own Chrome Web Store item. */
@@ -252,12 +216,7 @@ export const getItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertItemsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new item. */
 export const insertItems: API.OperationMethod<
   InsertItemsRequest,
@@ -272,12 +231,7 @@ export const insertItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishItemsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PublishItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Publishes an item. */
 export const publishItems: API.OperationMethod<
   PublishItemsRequest,
@@ -292,12 +246,7 @@ export const publishItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateItemsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing item. */
 export const updateItems: API.OperationMethod<
   UpdateItemsRequest,
@@ -311,3 +260,4 @@ export const updateItems: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

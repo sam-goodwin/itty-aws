@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,32 +72,21 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:cancel",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:cancel","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface CheckAvailabilityProjectsLocationsIpamAdminScopesRequest {
   /** Required. The parent resource name, for example `projects/*\/locations/*`. */
@@ -107,29 +94,15 @@ export interface CheckAvailabilityProjectsLocationsIpamAdminScopesRequest {
   /** Required. The administrative scopes to check for availability. */
   scopes?: StringList;
 }
-export const CheckAvailabilityProjectsLocationsIpamAdminScopesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      scopes: S.optional(StringList.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/ipamAdminScopes:checkAvailability",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CheckAvailabilityProjectsLocationsIpamAdminScopesRequest",
-  }) as any as S.Schema<CheckAvailabilityProjectsLocationsIpamAdminScopesRequest>;
+export const CheckAvailabilityProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "scopes": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/ipamAdminScopes:checkAvailability","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "CheckAvailabilityProjectsLocationsIpamAdminScopesRequest" }) as any as S.Schema<CheckAvailabilityProjectsLocationsIpamAdminScopesRequest>;
 
-export type IpamAdminScopeAvailabilityAvailabilityEnum =
-  | "AVAILABILITY_UNSPECIFIED"
-  | "AVAILABLE"
-  | "UNAVAILABLE"
-  | (string & {});
-export const IpamAdminScopeAvailabilityAvailabilityEnum =
-  /*@__PURE__*/ S.String;
+export type IpamAdminScopeAvailabilityAvailabilityEnum = "AVAILABILITY_UNSPECIFIED" | "AVAILABLE" | "UNAVAILABLE";
+export const IpamAdminScopeAvailabilityAvailabilityEnum = /*@__PURE__*/ S.String;
 
 /** Availability details for a specific IpamAdminScope. */
 export interface IpamAdminScopeAvailability {
@@ -141,34 +114,26 @@ export interface IpamAdminScopeAvailability {
   scope?: string;
 }
 export const IpamAdminScopeAvailability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminProject: S.optional(S.String),
-    availability: S.optional(IpamAdminScopeAvailabilityAvailabilityEnum),
-    scope: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IpamAdminScopeAvailability",
-}) as any as S.Schema<IpamAdminScopeAvailability>;
+S.Struct({
+  "adminProject": S.optional(S.String),
+  "availability": S.optional(IpamAdminScopeAvailabilityAvailabilityEnum),
+  "scope": S.optional(S.String),
+}),
+).annotate({ identifier: "IpamAdminScopeAvailability" }) as any as S.Schema<IpamAdminScopeAvailability>;
 
-export type IpamAdminScopeAvailabilityList =
-  ReadonlyArray<IpamAdminScopeAvailability>;
-export const IpamAdminScopeAvailabilityList = /*@__PURE__*/ S.Array(
-  IpamAdminScopeAvailability,
-) as any as S.Schema<IpamAdminScopeAvailabilityList>;
+export type IpamAdminScopeAvailabilityList = ReadonlyArray<IpamAdminScopeAvailability>;
+export const IpamAdminScopeAvailabilityList = /*@__PURE__*/ S.Array(IpamAdminScopeAvailability) as any as S.Schema<IpamAdminScopeAvailabilityList>;
 
 /** Response message for the CloudNumberRegistry.CheckAvailabilityIpamAdminScopes method. */
 export interface CheckAvailabilityIpamAdminScopesResponse {
   /** The details of the requested scopes. */
   scopeAvailabilities?: IpamAdminScopeAvailabilityList;
 }
-export const CheckAvailabilityIpamAdminScopesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scopeAvailabilities: S.optional(IpamAdminScopeAvailabilityList),
-    }),
-).annotate({
-  identifier: "CheckAvailabilityIpamAdminScopesResponse",
-}) as any as S.Schema<CheckAvailabilityIpamAdminScopesResponse>;
+export const CheckAvailabilityIpamAdminScopesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "scopeAvailabilities": S.optional(IpamAdminScopeAvailabilityList),
+}),
+).annotate({ identifier: "CheckAvailabilityIpamAdminScopesResponse" }) as any as S.Schema<CheckAvailabilityIpamAdminScopesResponse>;
 
 /** Request message for the CloudNumberRegistry.CleanupIpamAdminScope method. */
 export interface CleanupIpamAdminScopeRequest {
@@ -176,12 +141,10 @@ export interface CleanupIpamAdminScopeRequest {
   requestId?: string;
 }
 export const CleanupIpamAdminScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CleanupIpamAdminScopeRequest",
-}) as any as S.Schema<CleanupIpamAdminScopeRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "CleanupIpamAdminScopeRequest" }) as any as S.Schema<CleanupIpamAdminScopeRequest>;
 
 export interface CleanupProjectsLocationsIpamAdminScopesRequest {
   /** Required. The resource name of the IpamAdminScope to clean up. */
@@ -189,32 +152,18 @@ export interface CleanupProjectsLocationsIpamAdminScopesRequest {
   /** Request body */
   body?: CleanupIpamAdminScopeRequest;
 }
-export const CleanupProjectsLocationsIpamAdminScopesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CleanupIpamAdminScopeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:cleanup",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CleanupProjectsLocationsIpamAdminScopesRequest",
-  }) as any as S.Schema<CleanupProjectsLocationsIpamAdminScopesRequest>;
+export const CleanupProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CleanupIpamAdminScopeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:cleanup","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "CleanupProjectsLocationsIpamAdminScopesRequest" }) as any as S.Schema<CleanupProjectsLocationsIpamAdminScopesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -226,11 +175,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -247,13 +196,13 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(Status),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "error": S.optional(Status),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** A key-value pair representing a custom attribute associated with a resource. */
@@ -264,22 +213,17 @@ export interface Attribute {
   value?: string;
 }
 export const Attribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
 export type AttributeList = ReadonlyArray<Attribute>;
-export const AttributeList = /*@__PURE__*/ S.Array(
-  Attribute,
-) as any as S.Schema<AttributeList>;
+export const AttributeList = /*@__PURE__*/ S.Array(Attribute) as any as S.Schema<AttributeList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A CustomRange represents a user-defined IP address range. */
 export interface CustomRange {
@@ -303,17 +247,17 @@ export interface CustomRange {
   labels?: StringMap;
 }
 export const CustomRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryBook: S.optional(S.String),
-    ipv4CidrRange: S.optional(S.String),
-    ipv6CidrRange: S.optional(S.String),
-    name: S.optional(S.String),
-    realm: S.optional(S.String),
-    attributes: S.optional(AttributeList),
-    description: S.optional(S.String),
-    parentRange: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "registryBook": S.optional(S.String),
+  "ipv4CidrRange": S.optional(S.String),
+  "ipv6CidrRange": S.optional(S.String),
+  "name": S.optional(S.String),
+  "realm": S.optional(S.String),
+  "attributes": S.optional(AttributeList),
+  "description": S.optional(S.String),
+  "parentRange": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "CustomRange" }) as any as S.Schema<CustomRange>;
 
 export interface CreateProjectsLocationsCustomRangesRequest {
@@ -326,53 +270,22 @@ export interface CreateProjectsLocationsCustomRangesRequest {
   /** Request body */
   body?: CustomRange;
 }
-export const CreateProjectsLocationsCustomRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      customRangeId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CustomRange.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/customRanges",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCustomRangesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCustomRangesRequest>;
+export const CreateProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "customRangeId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(CustomRange.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/customRanges","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsCustomRangesRequest" }) as any as S.Schema<CreateProjectsLocationsCustomRangesRequest>;
 
-export type IpamAdminScopeEnabledAddonPlatformsItemEnum =
-  | "ADD_ON_PLATFORM_UNSPECIFIED"
-  | "COMPUTE_ENGINE"
-  | "GCE"
-  | (string & {});
-export const IpamAdminScopeEnabledAddonPlatformsItemEnum =
-  /*@__PURE__*/ S.String;
+export type IpamAdminScopeEnabledAddonPlatformsItemEnum = "ADD_ON_PLATFORM_UNSPECIFIED" | "COMPUTE_ENGINE" | "GCE";
+export const IpamAdminScopeEnabledAddonPlatformsItemEnum = /*@__PURE__*/ S.String;
 
-export type IpamAdminScopeEnabledAddonPlatformsItemEnumList =
-  ReadonlyArray<IpamAdminScopeEnabledAddonPlatformsItemEnum>;
-export const IpamAdminScopeEnabledAddonPlatformsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    IpamAdminScopeEnabledAddonPlatformsItemEnum,
-  ) as any as S.Schema<IpamAdminScopeEnabledAddonPlatformsItemEnumList>;
+export type IpamAdminScopeEnabledAddonPlatformsItemEnumList = ReadonlyArray<IpamAdminScopeEnabledAddonPlatformsItemEnum>;
+export const IpamAdminScopeEnabledAddonPlatformsItemEnumList = /*@__PURE__*/ S.Array(IpamAdminScopeEnabledAddonPlatformsItemEnum) as any as S.Schema<IpamAdminScopeEnabledAddonPlatformsItemEnumList>;
 
-export type IpamAdminScopeStateEnum =
-  | "DISCOVERY_PIPELINE_STATE_UNSPECIFIED"
-  | "INTERNAL_FAILURE"
-  | "FAILED"
-  | "SETUP_IN_PROGRESS"
-  | "READY_FOR_USE"
-  | "DELETING_IN_PROGRESS"
-  | "UPDATING"
-  | "RECOVERING"
-  | "DISABLED"
-  | "DELETION_COMPLETED"
-  | "CLEANUP_IN_PROGRESS"
-  | "READY_FOR_DELETION"
-  | (string & {});
+export type IpamAdminScopeStateEnum = "DISCOVERY_PIPELINE_STATE_UNSPECIFIED" | "INTERNAL_FAILURE" | "FAILED" | "SETUP_IN_PROGRESS" | "READY_FOR_USE" | "DELETING_IN_PROGRESS" | "UPDATING" | "RECOVERING" | "DISABLED" | "DELETION_COMPLETED" | "CLEANUP_IN_PROGRESS" | "READY_FOR_DELETION";
 export const IpamAdminScopeStateEnum = /*@__PURE__*/ S.String;
 
 /** An IpamAdminScope defines the administrative boundary for IP address discovery and management. It configures which platforms and organizational scopes are enabled for IP tracking. */
@@ -393,17 +306,15 @@ export interface IpamAdminScope {
   labels?: StringMap;
 }
 export const IpamAdminScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabledAddonPlatforms: S.optional(
-      IpamAdminScopeEnabledAddonPlatformsItemEnumList,
-    ),
-    updateTime: S.optional(S.String),
-    scopes: S.optional(StringList),
-    createTime: S.optional(S.String),
-    state: S.optional(IpamAdminScopeStateEnum),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "enabledAddonPlatforms": S.optional(IpamAdminScopeEnabledAddonPlatformsItemEnumList),
+  "updateTime": S.optional(S.String),
+  "scopes": S.optional(StringList),
+  "createTime": S.optional(S.String),
+  "state": S.optional(IpamAdminScopeStateEnum),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "IpamAdminScope" }) as any as S.Schema<IpamAdminScope>;
 
 export interface CreateProjectsLocationsIpamAdminScopesRequest {
@@ -416,29 +327,16 @@ export interface CreateProjectsLocationsIpamAdminScopesRequest {
   /** Request body */
   body?: IpamAdminScope;
 }
-export const CreateProjectsLocationsIpamAdminScopesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      ipamAdminScopeId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(IpamAdminScope.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/ipamAdminScopes",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsIpamAdminScopesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsIpamAdminScopesRequest>;
+export const CreateProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "ipamAdminScopeId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(IpamAdminScope.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/ipamAdminScopes","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsIpamAdminScopesRequest" }) as any as S.Schema<CreateProjectsLocationsIpamAdminScopesRequest>;
 
-export type RealmManagementTypeEnum =
-  | "MANAGEMENT_TYPE_UNSPECIFIED"
-  | "CNR"
-  | "USER"
-  | (string & {});
+export type RealmManagementTypeEnum = "MANAGEMENT_TYPE_UNSPECIFIED" | "CNR" | "USER";
 export const RealmManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** Aggregated data for the Realm. */
@@ -449,30 +347,16 @@ export interface RealmAggregatedData {
   customRangesCount?: number;
 }
 export const RealmAggregatedData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoveredRangesCount: S.optional(S.Number),
-    customRangesCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RealmAggregatedData",
-}) as any as S.Schema<RealmAggregatedData>;
+S.Struct({
+  "discoveredRangesCount": S.optional(S.Number),
+  "customRangesCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "RealmAggregatedData" }) as any as S.Schema<RealmAggregatedData>;
 
-export type RealmTrafficTypeEnum =
-  | "TRAFFIC_TYPE_UNSPECIFIED"
-  | "UNSET"
-  | "INTERNET"
-  | "PRIVATE"
-  | "LINKLOCAL"
-  | (string & {});
+export type RealmTrafficTypeEnum = "TRAFFIC_TYPE_UNSPECIFIED" | "UNSET" | "INTERNET" | "PRIVATE" | "LINKLOCAL";
 export const RealmTrafficTypeEnum = /*@__PURE__*/ S.String;
 
-export type DiscoveryMetadataStateEnum =
-  | "RESOURCE_STATE_UNSPECIFIED"
-  | "INVALID"
-  | "EXISTS"
-  | "DOES_NOT_EXIST"
-  | "ERROR"
-  | (string & {});
+export type DiscoveryMetadataStateEnum = "RESOURCE_STATE_UNSPECIFIED" | "INVALID" | "EXISTS" | "DOES_NOT_EXIST" | "ERROR";
 export const DiscoveryMetadataStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about a discovered resource, tracking event times, state, and source information. */
@@ -495,25 +379,19 @@ export interface DiscoveryMetadata {
   state?: DiscoveryMetadataStateEnum;
 }
 export const DiscoveryMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    eventTime: S.optional(S.String),
-    resource: S.optional(S.String),
-    createTime: S.optional(S.String),
-    resourceUri: S.optional(S.String),
-    sourceId: S.optional(S.String),
-    sourceSubId: S.optional(S.String),
-    state: S.optional(DiscoveryMetadataStateEnum),
-  }),
-).annotate({
-  identifier: "DiscoveryMetadata",
-}) as any as S.Schema<DiscoveryMetadata>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "eventTime": S.optional(S.String),
+  "resource": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "resourceUri": S.optional(S.String),
+  "sourceId": S.optional(S.String),
+  "sourceSubId": S.optional(S.String),
+  "state": S.optional(DiscoveryMetadataStateEnum),
+}),
+).annotate({ identifier: "DiscoveryMetadata" }) as any as S.Schema<DiscoveryMetadata>;
 
-export type RealmIpVersionEnum =
-  | "IP_VERSION_UNSPECIFIED"
-  | "IPV4"
-  | "IPV6"
-  | (string & {});
+export type RealmIpVersionEnum = "IP_VERSION_UNSPECIFIED" | "IPV4" | "IPV6";
 export const RealmIpVersionEnum = /*@__PURE__*/ S.String;
 
 /** A Realm represents a distinct network domain or security zone. It groups Ranges that share the same traffic and management characteristics. All the ranges in a Realm are routable to each other, meaning that they cannot overlap. */
@@ -540,18 +418,18 @@ export interface Realm {
   createTime?: string;
 }
 export const Realm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managementType: S.optional(RealmManagementTypeEnum),
-    labels: S.optional(StringMap),
-    updateTime: S.optional(S.String),
-    aggregatedData: S.optional(RealmAggregatedData),
-    name: S.optional(S.String),
-    trafficType: S.optional(RealmTrafficTypeEnum),
-    discoveryMetadata: S.optional(DiscoveryMetadata),
-    ipVersion: S.optional(RealmIpVersionEnum),
-    registryBook: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "managementType": S.optional(RealmManagementTypeEnum),
+  "labels": S.optional(StringMap),
+  "updateTime": S.optional(S.String),
+  "aggregatedData": S.optional(RealmAggregatedData),
+  "name": S.optional(S.String),
+  "trafficType": S.optional(RealmTrafficTypeEnum),
+  "discoveryMetadata": S.optional(DiscoveryMetadata),
+  "ipVersion": S.optional(RealmIpVersionEnum),
+  "registryBook": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Realm" }) as any as S.Schema<Realm>;
 
 export interface CreateProjectsLocationsRealmsRequest {
@@ -564,23 +442,14 @@ export interface CreateProjectsLocationsRealmsRequest {
   /** Request body */
   body?: Realm;
 }
-export const CreateProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      realmId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Realm.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/realms",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsRealmsRequest",
-}) as any as S.Schema<CreateProjectsLocationsRealmsRequest>;
+export const CreateProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "realmId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Realm.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/realms","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRealmsRequest" }) as any as S.Schema<CreateProjectsLocationsRealmsRequest>;
 
 /** Aggregated data for the RegistryBook. */
 export interface AggregatedData {
@@ -596,13 +465,13 @@ export interface AggregatedData {
   customRangesCount?: number;
 }
 export const AggregatedData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uniqueScopesCount: S.optional(S.Number),
-    discoveredRangesCount: S.optional(S.Number),
-    discoveredRealmsCount: S.optional(S.Number),
-    customRealmsCount: S.optional(S.Number),
-    customRangesCount: S.optional(S.Number),
-  }),
+S.Struct({
+  "uniqueScopesCount": S.optional(S.Number),
+  "discoveredRangesCount": S.optional(S.Number),
+  "discoveredRealmsCount": S.optional(S.Number),
+  "customRealmsCount": S.optional(S.Number),
+  "customRangesCount": S.optional(S.Number),
+}),
 ).annotate({ identifier: "AggregatedData" }) as any as S.Schema<AggregatedData>;
 
 /** A RegistryBook organizes and manages IP address space. It claims specific scopes (such as projects) and groups related Realms and Ranges. */
@@ -623,15 +492,15 @@ export interface RegistryBook {
   name?: string;
 }
 export const RegistryBook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    isDefault: S.optional(S.Boolean),
-    updateTime: S.optional(S.String),
-    aggregatedData: S.optional(AggregatedData),
-    labels: S.optional(StringMap),
-    claimedScopes: S.optional(StringList),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "isDefault": S.optional(S.Boolean),
+  "updateTime": S.optional(S.String),
+  "aggregatedData": S.optional(AggregatedData),
+  "labels": S.optional(StringMap),
+  "claimedScopes": S.optional(StringList),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "RegistryBook" }) as any as S.Schema<RegistryBook>;
 
 export interface CreateProjectsLocationsRegistryBooksRequest {
@@ -644,23 +513,14 @@ export interface CreateProjectsLocationsRegistryBooksRequest {
   /** Request body */
   body?: RegistryBook;
 }
-export const CreateProjectsLocationsRegistryBooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      registryBookId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(RegistryBook.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/registryBooks",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRegistryBooksRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRegistryBooksRequest>;
+export const CreateProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "registryBookId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(RegistryBook.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/registryBooks","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRegistryBooksRequest" }) as any as S.Schema<CreateProjectsLocationsRegistryBooksRequest>;
 
 export interface DeleteProjectsLocationsCustomRangesRequest {
   /** Required. The resource name of the CustomRange to delete. */
@@ -670,22 +530,13 @@ export interface DeleteProjectsLocationsCustomRangesRequest {
   /** Optional. If set to true, all associated resources will be deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsCustomRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCustomRangesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCustomRangesRequest>;
+export const DeleteProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsCustomRangesRequest" }) as any as S.Schema<DeleteProjectsLocationsCustomRangesRequest>;
 
 export interface DeleteProjectsLocationsIpamAdminScopesRequest {
   /** Required. The resource name of the IpamAdminScope to delete. */
@@ -695,41 +546,23 @@ export interface DeleteProjectsLocationsIpamAdminScopesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsIpamAdminScopesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsIpamAdminScopesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsIpamAdminScopesRequest>;
+export const DeleteProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsIpamAdminScopesRequest" }) as any as S.Schema<DeleteProjectsLocationsIpamAdminScopesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsRealmsRequest {
   /** Required. The resource name of the Realm to delete. */
@@ -739,22 +572,13 @@ export interface DeleteProjectsLocationsRealmsRequest {
   /** Optional. If set to true, all associated resources will be deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsRealmsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsRealmsRequest>;
+export const DeleteProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRealmsRequest" }) as any as S.Schema<DeleteProjectsLocationsRealmsRequest>;
 
 export interface DeleteProjectsLocationsRegistryBooksRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -764,22 +588,13 @@ export interface DeleteProjectsLocationsRegistryBooksRequest {
   /** Required. The resource name of the RegistryBook to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRegistryBooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRegistryBooksRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRegistryBooksRequest>;
+export const DeleteProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRegistryBooksRequest" }) as any as S.Schema<DeleteProjectsLocationsRegistryBooksRequest>;
 
 /** Request message for the CloudNumberRegistry.DisableIpamAdminScope method. */
 export interface DisableIpamAdminScopeRequest {
@@ -787,12 +602,10 @@ export interface DisableIpamAdminScopeRequest {
   requestId?: string;
 }
 export const DisableIpamAdminScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DisableIpamAdminScopeRequest",
-}) as any as S.Schema<DisableIpamAdminScopeRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "DisableIpamAdminScopeRequest" }) as any as S.Schema<DisableIpamAdminScopeRequest>;
 
 export interface DisableProjectsLocationsIpamAdminScopesRequest {
   /** Required. The resource name of the IpamAdminScope to disable. */
@@ -800,21 +613,12 @@ export interface DisableProjectsLocationsIpamAdminScopesRequest {
   /** Request body */
   body?: DisableIpamAdminScopeRequest;
 }
-export const DisableProjectsLocationsIpamAdminScopesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(DisableIpamAdminScopeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:disable",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DisableProjectsLocationsIpamAdminScopesRequest",
-  }) as any as S.Schema<DisableProjectsLocationsIpamAdminScopesRequest>;
+export const DisableProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DisableIpamAdminScopeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:disable","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "DisableProjectsLocationsIpamAdminScopesRequest" }) as any as S.Schema<DisableProjectsLocationsIpamAdminScopesRequest>;
 
 export interface FindFreeIpRangesProjectsLocationsCustomRangesRequest {
   /** Required. The resource name of the CustomRange to search within. */
@@ -826,23 +630,14 @@ export interface FindFreeIpRangesProjectsLocationsCustomRangesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const FindFreeIpRangesProjectsLocationsCustomRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      cidrPrefixLength: S.optional(S.Number.pipe(T.Query())),
-      rangeCount: S.optional(S.Number.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}:findFreeIpRanges",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FindFreeIpRangesProjectsLocationsCustomRangesRequest",
-  }) as any as S.Schema<FindFreeIpRangesProjectsLocationsCustomRangesRequest>;
+export const FindFreeIpRangesProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "cidrPrefixLength": S.optional(S.Number.pipe(T.Query())),
+  "rangeCount": S.optional(S.Number.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}:findFreeIpRanges","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "FindFreeIpRangesProjectsLocationsCustomRangesRequest" }) as any as S.Schema<FindFreeIpRangesProjectsLocationsCustomRangesRequest>;
 
 /** Response message for the CloudNumberRegistry.FindCustomRangeFreeIpRanges method. */
 export interface FindCustomRangeFreeIpRangesResponse {
@@ -850,12 +645,10 @@ export interface FindCustomRangeFreeIpRangesResponse {
   freeIpCidrRanges?: StringList;
 }
 export const FindCustomRangeFreeIpRangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    freeIpCidrRanges: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "FindCustomRangeFreeIpRangesResponse",
-}) as any as S.Schema<FindCustomRangeFreeIpRangesResponse>;
+S.Struct({
+  "freeIpCidrRanges": S.optional(StringList),
+}),
+).annotate({ identifier: "FindCustomRangeFreeIpRangesResponse" }) as any as S.Schema<FindCustomRangeFreeIpRangesResponse>;
 
 export interface FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest {
   /** Required. The resource name of the DiscoveredRange to search within. */
@@ -867,55 +660,35 @@ export interface FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      cidrPrefixLength: S.optional(S.Number.pipe(T.Query())),
-      rangeCount: S.optional(S.Number.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}:findFreeIpRanges",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest",
-  }) as any as S.Schema<FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest>;
+export const FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "cidrPrefixLength": S.optional(S.Number.pipe(T.Query())),
+  "rangeCount": S.optional(S.Number.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}:findFreeIpRanges","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest" }) as any as S.Schema<FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest>;
 
 /** Response message for the CloudNumberRegistry.FindDiscoveredRangeFreeIpRanges method. */
 export interface FindDiscoveredRangeFreeIpRangesResponse {
   /** Output only. The free IP CIDR ranges found. */
   freeIpCidrRanges?: StringList;
 }
-export const FindDiscoveredRangeFreeIpRangesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      freeIpCidrRanges: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "FindDiscoveredRangeFreeIpRangesResponse",
-}) as any as S.Schema<FindDiscoveredRangeFreeIpRangesResponse>;
+export const FindDiscoveredRangeFreeIpRangesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "freeIpCidrRanges": S.optional(StringList),
+}),
+).annotate({ identifier: "FindDiscoveredRangeFreeIpRangesResponse" }) as any as S.Schema<FindDiscoveredRangeFreeIpRangesResponse>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://cloudnumberregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -931,52 +704,34 @@ export interface Location {
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    locationId: S.optional(S.String),
-  }),
+S.Struct({
+  "labels": S.optional(StringMap),
+  "metadata": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "locationId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsCustomRangesRequest {
   /** Required. The resource name of the CustomRange to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsCustomRangesRequest",
-}) as any as S.Schema<GetProjectsLocationsCustomRangesRequest>;
+export const GetProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCustomRangesRequest" }) as any as S.Schema<GetProjectsLocationsCustomRangesRequest>;
 
 export interface GetProjectsLocationsDiscoveredRangesRequest {
   /** Required. The resource name of the DiscoveredRange to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsDiscoveredRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDiscoveredRangesRequest",
-  }) as any as S.Schema<GetProjectsLocationsDiscoveredRangesRequest>;
+export const GetProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsDiscoveredRangesRequest" }) as any as S.Schema<GetProjectsLocationsDiscoveredRangesRequest>;
 
 /** A DiscoveredRange represents an IP address range automatically detected by the discovery pipeline. */
 export interface DiscoveredRange {
@@ -1008,123 +763,74 @@ export interface DiscoveredRange {
   updateTime?: string;
 }
 export const DiscoveredRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoveryMetadata: S.optional(DiscoveryMetadata),
-    attributes: S.optional(AttributeList),
-    realm: S.optional(S.String),
-    ipv4CidrRange: S.optional(S.String),
-    ipv6CidrRange: S.optional(S.String),
-    registryBook: S.optional(S.String),
-    labels: S.optional(StringMap),
-    childCidrOverlapAllowed: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-    parentRange: S.optional(S.String),
-    description: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DiscoveredRange",
-}) as any as S.Schema<DiscoveredRange>;
+S.Struct({
+  "discoveryMetadata": S.optional(DiscoveryMetadata),
+  "attributes": S.optional(AttributeList),
+  "realm": S.optional(S.String),
+  "ipv4CidrRange": S.optional(S.String),
+  "ipv6CidrRange": S.optional(S.String),
+  "registryBook": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "childCidrOverlapAllowed": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "parentRange": S.optional(S.String),
+  "description": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
+).annotate({ identifier: "DiscoveredRange" }) as any as S.Schema<DiscoveredRange>;
 
 export interface GetProjectsLocationsIpamAdminScopesRequest {
   /** Required. The resource name of the IpamAdminScope to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsIpamAdminScopesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsIpamAdminScopesRequest",
-  }) as any as S.Schema<GetProjectsLocationsIpamAdminScopesRequest>;
+export const GetProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsIpamAdminScopesRequest" }) as any as S.Schema<GetProjectsLocationsIpamAdminScopesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
-export type GetProjectsLocationsRealmsViewEnum =
-  | "REALM_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | "AGGREGATE"
-  | (string & {});
+export type GetProjectsLocationsRealmsViewEnum = "REALM_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | "AGGREGATE";
 export const GetProjectsLocationsRealmsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsRealmsRequest {
   /** Required. The resource name of the Realm to retrieve. */
   name: string;
   /** Optional. The view of the Realm to retrieve. */
-  view?: GetProjectsLocationsRealmsViewEnum;
+  view?: GetProjectsLocationsRealmsViewEnum | (string & {});
 }
 export const GetProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    view: S.optional(GetProjectsLocationsRealmsViewEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://cloudnumberregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRealmsRequest",
-}) as any as S.Schema<GetProjectsLocationsRealmsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetProjectsLocationsRealmsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRealmsRequest" }) as any as S.Schema<GetProjectsLocationsRealmsRequest>;
 
-export type GetProjectsLocationsRegistryBooksViewEnum =
-  | "REGISTRY_BOOK_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | "AGGREGATE"
-  | (string & {});
+export type GetProjectsLocationsRegistryBooksViewEnum = "REGISTRY_BOOK_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | "AGGREGATE";
 export const GetProjectsLocationsRegistryBooksViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsRegistryBooksRequest {
   /** Required. The resource name of the RegistryBook to retrieve. */
   name: string;
   /** Optional. The view of the RegistryBook to retrieve. */
-  view?: GetProjectsLocationsRegistryBooksViewEnum;
+  view?: GetProjectsLocationsRegistryBooksViewEnum | (string & {});
 }
-export const GetProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      view: S.optional(
-        GetProjectsLocationsRegistryBooksViewEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsRegistryBooksRequest",
-}) as any as S.Schema<GetProjectsLocationsRegistryBooksRequest>;
+export const GetProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetProjectsLocationsRegistryBooksViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRegistryBooksRequest" }) as any as S.Schema<GetProjectsLocationsRegistryBooksRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -1139,27 +845,17 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}/locations",
-      baseUrl: "https://cloudnumberregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}/locations","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1169,13 +865,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsCustomRangesRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -1189,29 +883,18 @@ export interface ListProjectsLocationsCustomRangesRequest {
   /** Optional. Filter expression to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/customRanges",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsCustomRangesRequest",
-}) as any as S.Schema<ListProjectsLocationsCustomRangesRequest>;
+export const ListProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/customRanges","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCustomRangesRequest" }) as any as S.Schema<ListProjectsLocationsCustomRangesRequest>;
 
 export type CustomRangeList = ReadonlyArray<CustomRange>;
-export const CustomRangeList = /*@__PURE__*/ S.Array(
-  CustomRange,
-) as any as S.Schema<CustomRangeList>;
+export const CustomRangeList = /*@__PURE__*/ S.Array(CustomRange) as any as S.Schema<CustomRangeList>;
 
 /** Response message for the CloudNumberRegistry.ListCustomRanges method. */
 export interface ListCustomRangesResponse {
@@ -1223,14 +906,12 @@ export interface ListCustomRangesResponse {
   nextPageToken?: string;
 }
 export const ListCustomRangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    customRanges: S.optional(CustomRangeList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCustomRangesResponse",
-}) as any as S.Schema<ListCustomRangesResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "customRanges": S.optional(CustomRangeList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCustomRangesResponse" }) as any as S.Schema<ListCustomRangesResponse>;
 
 export interface ListProjectsLocationsDiscoveredRangesRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -1244,29 +925,18 @@ export interface ListProjectsLocationsDiscoveredRangesRequest {
   /** Optional. Filter expression to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsDiscoveredRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/discoveredRanges",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsDiscoveredRangesRequest",
-  }) as any as S.Schema<ListProjectsLocationsDiscoveredRangesRequest>;
+export const ListProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/discoveredRanges","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsDiscoveredRangesRequest" }) as any as S.Schema<ListProjectsLocationsDiscoveredRangesRequest>;
 
 export type DiscoveredRangeList = ReadonlyArray<DiscoveredRange>;
-export const DiscoveredRangeList = /*@__PURE__*/ S.Array(
-  DiscoveredRange,
-) as any as S.Schema<DiscoveredRangeList>;
+export const DiscoveredRangeList = /*@__PURE__*/ S.Array(DiscoveredRange) as any as S.Schema<DiscoveredRangeList>;
 
 /** Response message for the CloudNumberRegistry.ListDiscoveredRanges method. */
 export interface ListDiscoveredRangesResponse {
@@ -1278,14 +948,12 @@ export interface ListDiscoveredRangesResponse {
   nextPageToken?: string;
 }
 export const ListDiscoveredRangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    discoveredRanges: S.optional(DiscoveredRangeList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDiscoveredRangesResponse",
-}) as any as S.Schema<ListDiscoveredRangesResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "discoveredRanges": S.optional(DiscoveredRangeList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDiscoveredRangesResponse" }) as any as S.Schema<ListDiscoveredRangesResponse>;
 
 export interface ListProjectsLocationsIpamAdminScopesRequest {
   /** Required. The parent resource name, for example `projects/*\/locations/*`. */
@@ -1299,29 +967,18 @@ export interface ListProjectsLocationsIpamAdminScopesRequest {
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
 }
-export const ListProjectsLocationsIpamAdminScopesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/ipamAdminScopes",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsIpamAdminScopesRequest",
-  }) as any as S.Schema<ListProjectsLocationsIpamAdminScopesRequest>;
+export const ListProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/ipamAdminScopes","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsIpamAdminScopesRequest" }) as any as S.Schema<ListProjectsLocationsIpamAdminScopesRequest>;
 
 export type IpamAdminScopeList = ReadonlyArray<IpamAdminScope>;
-export const IpamAdminScopeList = /*@__PURE__*/ S.Array(
-  IpamAdminScope,
-) as any as S.Schema<IpamAdminScopeList>;
+export const IpamAdminScopeList = /*@__PURE__*/ S.Array(IpamAdminScope) as any as S.Schema<IpamAdminScopeList>;
 
 /** Response message for the CloudNumberRegistry.ListIpamAdminScopes method. */
 export interface ListIpamAdminScopesResponse {
@@ -1333,14 +990,12 @@ export interface ListIpamAdminScopesResponse {
   nextPageToken?: string;
 }
 export const ListIpamAdminScopesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    ipamAdminScopes: S.optional(IpamAdminScopeList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListIpamAdminScopesResponse",
-}) as any as S.Schema<ListIpamAdminScopesResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "ipamAdminScopes": S.optional(IpamAdminScopeList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListIpamAdminScopesResponse" }) as any as S.Schema<ListIpamAdminScopesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
@@ -1354,29 +1009,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}/operations",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}/operations","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1388,21 +1032,14 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
-export type ListProjectsLocationsRealmsViewEnum =
-  | "REALM_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | "AGGREGATE"
-  | (string & {});
+export type ListProjectsLocationsRealmsViewEnum = "REALM_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | "AGGREGATE";
 export const ListProjectsLocationsRealmsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsRealmsRequest {
@@ -1411,7 +1048,7 @@ export interface ListProjectsLocationsRealmsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
   /** Optional. The view of the Realm to retrieve. */
-  view?: ListProjectsLocationsRealmsViewEnum;
+  view?: ListProjectsLocationsRealmsViewEnum | (string & {});
   /** Optional. Filter expression to filter the results. */
   filter?: string;
   /** Required. The parent resource name, for example `projects/*\/locations/*`. */
@@ -1420,28 +1057,18 @@ export interface ListProjectsLocationsRealmsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    view: S.optional(ListProjectsLocationsRealmsViewEnum.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+parent}/realms",
-      baseUrl: "https://cloudnumberregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRealmsRequest",
-}) as any as S.Schema<ListProjectsLocationsRealmsRequest>;
+S.Struct({
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "view": S.optional(ListProjectsLocationsRealmsViewEnum.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/realms","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRealmsRequest" }) as any as S.Schema<ListProjectsLocationsRealmsRequest>;
 
 export type RealmList = ReadonlyArray<Realm>;
-export const RealmList = /*@__PURE__*/ S.Array(
-  Realm,
-) as any as S.Schema<RealmList>;
+export const RealmList = /*@__PURE__*/ S.Array(Realm) as any as S.Schema<RealmList>;
 
 /** Response message for the CloudNumberRegistry.ListRealms method. */
 export interface ListRealmsResponse {
@@ -1453,29 +1080,21 @@ export interface ListRealmsResponse {
   nextPageToken?: string;
 }
 export const ListRealmsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    realms: S.optional(RealmList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRealmsResponse",
-}) as any as S.Schema<ListRealmsResponse>;
+S.Struct({
+  "realms": S.optional(RealmList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListRealmsResponse" }) as any as S.Schema<ListRealmsResponse>;
 
-export type ListProjectsLocationsRegistryBooksViewEnum =
-  | "REGISTRY_BOOK_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | "AGGREGATE"
-  | (string & {});
-export const ListProjectsLocationsRegistryBooksViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsRegistryBooksViewEnum = "REGISTRY_BOOK_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | "AGGREGATE";
+export const ListProjectsLocationsRegistryBooksViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsRegistryBooksRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
   /** Optional. The view of the RegistryBook to retrieve. */
-  view?: ListProjectsLocationsRegistryBooksViewEnum;
+  view?: ListProjectsLocationsRegistryBooksViewEnum | (string & {});
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
   /** Required. The parent resource name, for example `projects/*\/locations/*`. */
@@ -1485,32 +1104,19 @@ export interface ListProjectsLocationsRegistryBooksRequest {
   /** Optional. Filter expression to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsRegistryBooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      view: S.optional(
-        ListProjectsLocationsRegistryBooksViewEnum.pipe(T.Query()),
-      ),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/registryBooks",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRegistryBooksRequest",
-  }) as any as S.Schema<ListProjectsLocationsRegistryBooksRequest>;
+export const ListProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "view": S.optional(ListProjectsLocationsRegistryBooksViewEnum.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/registryBooks","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRegistryBooksRequest" }) as any as S.Schema<ListProjectsLocationsRegistryBooksRequest>;
 
 export type RegistryBookList = ReadonlyArray<RegistryBook>;
-export const RegistryBookList = /*@__PURE__*/ S.Array(
-  RegistryBook,
-) as any as S.Schema<RegistryBookList>;
+export const RegistryBookList = /*@__PURE__*/ S.Array(RegistryBook) as any as S.Schema<RegistryBookList>;
 
 /** Response message for the CloudNumberRegistry.ListRegistryBooks method. */
 export interface ListRegistryBooksResponse {
@@ -1522,14 +1128,12 @@ export interface ListRegistryBooksResponse {
   registryBooks?: RegistryBookList;
 }
 export const ListRegistryBooksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-    registryBooks: S.optional(RegistryBookList),
-  }),
-).annotate({
-  identifier: "ListRegistryBooksResponse",
-}) as any as S.Schema<ListRegistryBooksResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "registryBooks": S.optional(RegistryBookList),
+}),
+).annotate({ identifier: "ListRegistryBooksResponse" }) as any as S.Schema<ListRegistryBooksResponse>;
 
 export interface PatchProjectsLocationsCustomRangesRequest {
   /** Required. Identifier. The resource name of the CustomRange, in the format `projects/{project}/locations/{location}/customRanges/{custom_range}`. */
@@ -1541,23 +1145,14 @@ export interface PatchProjectsLocationsCustomRangesRequest {
   /** Request body */
   body?: CustomRange;
 }
-export const PatchProjectsLocationsCustomRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CustomRange.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCustomRangesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCustomRangesRequest>;
+export const PatchProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(CustomRange.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCustomRangesRequest" }) as any as S.Schema<PatchProjectsLocationsCustomRangesRequest>;
 
 export interface PatchProjectsLocationsIpamAdminScopesRequest {
   /** Required. Identifier. The resource name of the IpamAdminScope. */
@@ -1569,23 +1164,14 @@ export interface PatchProjectsLocationsIpamAdminScopesRequest {
   /** Request body */
   body?: IpamAdminScope;
 }
-export const PatchProjectsLocationsIpamAdminScopesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(IpamAdminScope.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsIpamAdminScopesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsIpamAdminScopesRequest>;
+export const PatchProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(IpamAdminScope.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsIpamAdminScopesRequest" }) as any as S.Schema<PatchProjectsLocationsIpamAdminScopesRequest>;
 
 export interface PatchProjectsLocationsRealmsRequest {
   /** Required. Identifier. The resource name of the Realm. */
@@ -1598,21 +1184,13 @@ export interface PatchProjectsLocationsRealmsRequest {
   body?: Realm;
 }
 export const PatchProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    requestId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Realm.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://cloudnumberregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsLocationsRealmsRequest",
-}) as any as S.Schema<PatchProjectsLocationsRealmsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Realm.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRealmsRequest" }) as any as S.Schema<PatchProjectsLocationsRealmsRequest>;
 
 export interface PatchProjectsLocationsRegistryBooksRequest {
   /** Required. Identifier. The resource name of the RegistryBook. */
@@ -1624,38 +1202,20 @@ export interface PatchProjectsLocationsRegistryBooksRequest {
   /** Request body */
   body?: RegistryBook;
 }
-export const PatchProjectsLocationsRegistryBooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RegistryBook.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRegistryBooksRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRegistryBooksRequest>;
+export const PatchProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(RegistryBook.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/{+name}","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRegistryBooksRequest" }) as any as S.Schema<PatchProjectsLocationsRegistryBooksRequest>;
 
-export type SearchIpResourcesRequestSearchResourceTypesItemEnum =
-  | "SEARCH_RESOURCE_TYPE_UNSPECIFIED"
-  | "RANGES"
-  | "REALMS"
-  | (string & {});
-export const SearchIpResourcesRequestSearchResourceTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type SearchIpResourcesRequestSearchResourceTypesItemEnum = "SEARCH_RESOURCE_TYPE_UNSPECIFIED" | "RANGES" | "REALMS";
+export const SearchIpResourcesRequestSearchResourceTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type SearchIpResourcesRequestSearchResourceTypesItemEnumList =
-  ReadonlyArray<SearchIpResourcesRequestSearchResourceTypesItemEnum>;
-export const SearchIpResourcesRequestSearchResourceTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    SearchIpResourcesRequestSearchResourceTypesItemEnum,
-  ) as any as S.Schema<SearchIpResourcesRequestSearchResourceTypesItemEnumList>;
+export type SearchIpResourcesRequestSearchResourceTypesItemEnumList = ReadonlyArray<SearchIpResourcesRequestSearchResourceTypesItemEnum | (string & {})>;
+export const SearchIpResourcesRequestSearchResourceTypesItemEnumList = /*@__PURE__*/ S.Array(SearchIpResourcesRequestSearchResourceTypesItemEnum) as any as S.Schema<SearchIpResourcesRequestSearchResourceTypesItemEnumList>;
 
 /** Request message for the CloudNumberRegistry.SearchIpResources method. */
 export interface SearchIpResourcesRequest {
@@ -1673,19 +1233,15 @@ export interface SearchIpResourcesRequest {
   query?: string;
 }
 export const SearchIpResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number),
-    searchResourceTypes: S.optional(
-      SearchIpResourcesRequestSearchResourceTypesItemEnumList,
-    ),
-    showUtilization: S.optional(S.Boolean),
-    pageToken: S.optional(S.String),
-    orderBy: S.optional(S.String),
-    query: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchIpResourcesRequest",
-}) as any as S.Schema<SearchIpResourcesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number),
+  "searchResourceTypes": S.optional(SearchIpResourcesRequestSearchResourceTypesItemEnumList),
+  "showUtilization": S.optional(S.Boolean),
+  "pageToken": S.optional(S.String),
+  "orderBy": S.optional(S.String),
+  "query": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchIpResourcesRequest" }) as any as S.Schema<SearchIpResourcesRequest>;
 
 export interface SearchIpResourcesProjectsLocationsRegistryBooksRequest {
   /** Required. The resource name of the RegistryBook to search in. */
@@ -1693,21 +1249,12 @@ export interface SearchIpResourcesProjectsLocationsRegistryBooksRequest {
   /** Request body */
   body?: SearchIpResourcesRequest;
 }
-export const SearchIpResourcesProjectsLocationsRegistryBooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SearchIpResourcesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:searchIpResources",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchIpResourcesProjectsLocationsRegistryBooksRequest",
-  }) as any as S.Schema<SearchIpResourcesProjectsLocationsRegistryBooksRequest>;
+export const SearchIpResourcesProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SearchIpResourcesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:searchIpResources","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "SearchIpResourcesProjectsLocationsRegistryBooksRequest" }) as any as S.Schema<SearchIpResourcesProjectsLocationsRegistryBooksRequest>;
 
 /** Utilization metrics for an IP Range, including consumed and produced address counts. */
 export interface RangeUtilization {
@@ -1719,14 +1266,12 @@ export interface RangeUtilization {
   totalConsumed?: string;
 }
 export const RangeUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    totalProduced: S.optional(S.String),
-    usage: S.optional(S.Number),
-    totalConsumed: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RangeUtilization",
-}) as any as S.Schema<RangeUtilization>;
+S.Struct({
+  "totalProduced": S.optional(S.String),
+  "usage": S.optional(S.Number),
+  "totalConsumed": S.optional(S.String),
+}),
+).annotate({ identifier: "RangeUtilization" }) as any as S.Schema<RangeUtilization>;
 
 /** Represents either a CustomRange or a DiscoveredRange. */
 export interface Range {
@@ -1738,17 +1283,15 @@ export interface Range {
   utilization?: RangeUtilization;
 }
 export const Range = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customRange: S.optional(CustomRange),
-    discoveredRange: S.optional(DiscoveredRange),
-    utilization: S.optional(RangeUtilization),
-  }),
+S.Struct({
+  "customRange": S.optional(CustomRange),
+  "discoveredRange": S.optional(DiscoveredRange),
+  "utilization": S.optional(RangeUtilization),
+}),
 ).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
 
 export type RangeList = ReadonlyArray<Range>;
-export const RangeList = /*@__PURE__*/ S.Array(
-  Range,
-) as any as S.Schema<RangeList>;
+export const RangeList = /*@__PURE__*/ S.Array(Range) as any as S.Schema<RangeList>;
 
 /** A result matching the search query, which can be either a Range or a Realm. */
 export interface SearchIpResourcesResult {
@@ -1758,19 +1301,14 @@ export interface SearchIpResourcesResult {
   realm?: Realm;
 }
 export const SearchIpResourcesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(Range),
-    realm: S.optional(Realm),
-  }),
-).annotate({
-  identifier: "SearchIpResourcesResult",
-}) as any as S.Schema<SearchIpResourcesResult>;
+S.Struct({
+  "range": S.optional(Range),
+  "realm": S.optional(Realm),
+}),
+).annotate({ identifier: "SearchIpResourcesResult" }) as any as S.Schema<SearchIpResourcesResult>;
 
-export type SearchIpResourcesResultList =
-  ReadonlyArray<SearchIpResourcesResult>;
-export const SearchIpResourcesResultList = /*@__PURE__*/ S.Array(
-  SearchIpResourcesResult,
-) as any as S.Schema<SearchIpResourcesResultList>;
+export type SearchIpResourcesResultList = ReadonlyArray<SearchIpResourcesResult>;
+export const SearchIpResourcesResultList = /*@__PURE__*/ S.Array(SearchIpResourcesResult) as any as S.Schema<SearchIpResourcesResultList>;
 
 /** Response message for the CloudNumberRegistry.SearchIpResources method. */
 export interface SearchIpResourcesResponse {
@@ -1784,34 +1322,23 @@ export interface SearchIpResourcesResponse {
   unreachable?: StringList;
 }
 export const SearchIpResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ranges: S.optional(RangeList),
-    results: S.optional(SearchIpResourcesResultList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "SearchIpResourcesResponse",
-}) as any as S.Schema<SearchIpResourcesResponse>;
+S.Struct({
+  "ranges": S.optional(RangeList),
+  "results": S.optional(SearchIpResourcesResultList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "SearchIpResourcesResponse" }) as any as S.Schema<SearchIpResourcesResponse>;
 
 export interface ShowUtilizationProjectsLocationsCustomRangesRequest {
   /** Required. The resource name of the CustomRange. */
   name: string;
 }
-export const ShowUtilizationProjectsLocationsCustomRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}:showUtilization",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ShowUtilizationProjectsLocationsCustomRangesRequest",
-  }) as any as S.Schema<ShowUtilizationProjectsLocationsCustomRangesRequest>;
+export const ShowUtilizationProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}:showUtilization","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "ShowUtilizationProjectsLocationsCustomRangesRequest" }) as any as S.Schema<ShowUtilizationProjectsLocationsCustomRangesRequest>;
 
 /** Response message for the CloudNumberRegistry.ShowCustomRangeUtilization method. */
 export interface ShowCustomRangeUtilizationResponse {
@@ -1821,32 +1348,21 @@ export interface ShowCustomRangeUtilizationResponse {
   rangeUtilization?: RangeUtilization;
 }
 export const ShowCustomRangeUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customRange: S.optional(CustomRange),
-    rangeUtilization: S.optional(RangeUtilization),
-  }),
-).annotate({
-  identifier: "ShowCustomRangeUtilizationResponse",
-}) as any as S.Schema<ShowCustomRangeUtilizationResponse>;
+S.Struct({
+  "customRange": S.optional(CustomRange),
+  "rangeUtilization": S.optional(RangeUtilization),
+}),
+).annotate({ identifier: "ShowCustomRangeUtilizationResponse" }) as any as S.Schema<ShowCustomRangeUtilizationResponse>;
 
 export interface ShowUtilizationProjectsLocationsDiscoveredRangesRequest {
   /** Required. The resource name of the DiscoveredRange. */
   name: string;
 }
-export const ShowUtilizationProjectsLocationsDiscoveredRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}:showUtilization",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ShowUtilizationProjectsLocationsDiscoveredRangesRequest",
-  }) as any as S.Schema<ShowUtilizationProjectsLocationsDiscoveredRangesRequest>;
+export const ShowUtilizationProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}:showUtilization","baseUrl":"https://cloudnumberregistry.googleapis.com/"})),
+).annotate({ identifier: "ShowUtilizationProjectsLocationsDiscoveredRangesRequest" }) as any as S.Schema<ShowUtilizationProjectsLocationsDiscoveredRangesRequest>;
 
 /** Response message for the CloudNumberRegistry.ShowDiscoveredRangeUtilization method. */
 export interface ShowDiscoveredRangeUtilizationResponse {
@@ -1855,22 +1371,14 @@ export interface ShowDiscoveredRangeUtilizationResponse {
   /** The DiscoveredRange resource. */
   discoveredRange?: DiscoveredRange;
 }
-export const ShowDiscoveredRangeUtilizationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      rangeUtilization: S.optional(RangeUtilization),
-      discoveredRange: S.optional(DiscoveredRange),
-    }),
-).annotate({
-  identifier: "ShowDiscoveredRangeUtilizationResponse",
-}) as any as S.Schema<ShowDiscoveredRangeUtilizationResponse>;
+export const ShowDiscoveredRangeUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "rangeUtilization": S.optional(RangeUtilization),
+  "discoveredRange": S.optional(DiscoveredRange),
+}),
+).annotate({ identifier: "ShowDiscoveredRangeUtilizationResponse" }) as any as S.Schema<ShowDiscoveredRangeUtilizationResponse>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1885,10 +1393,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckAvailabilityProjectsLocationsIpamAdminScopesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CheckAvailabilityProjectsLocationsIpamAdminScopesError = NotFound | Forbidden | GcpOpError;
 /** Checks the availability of IpamAdminScopes in a given project and location. */
 export const checkAvailabilityProjectsLocationsIpamAdminScopes: API.OperationMethod<
   CheckAvailabilityProjectsLocationsIpamAdminScopesRequest,
@@ -1903,12 +1408,7 @@ export const checkAvailabilityProjectsLocationsIpamAdminScopes: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type CleanupProjectsLocationsIpamAdminScopesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CleanupProjectsLocationsIpamAdminScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cleans up a single IpamAdminScope. */
 export const cleanupProjectsLocationsIpamAdminScopes: API.OperationMethod<
   CleanupProjectsLocationsIpamAdminScopesRequest,
@@ -1923,12 +1423,7 @@ export const cleanupProjectsLocationsIpamAdminScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCustomRangesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsCustomRangesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new CustomRange in a given project and location. */
 export const createProjectsLocationsCustomRanges: API.OperationMethod<
   CreateProjectsLocationsCustomRangesRequest,
@@ -1943,12 +1438,7 @@ export const createProjectsLocationsCustomRanges: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsIpamAdminScopesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsIpamAdminScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new IpamAdminScope in a given project and location. */
 export const createProjectsLocationsIpamAdminScopes: API.OperationMethod<
   CreateProjectsLocationsIpamAdminScopesRequest,
@@ -1963,12 +1453,7 @@ export const createProjectsLocationsIpamAdminScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRealmsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRealmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Realm in a given project and location. */
 export const createProjectsLocationsRealms: API.OperationMethod<
   CreateProjectsLocationsRealmsRequest,
@@ -1983,12 +1468,7 @@ export const createProjectsLocationsRealms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRegistryBooksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRegistryBooksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new RegistryBook in a given project and location. */
 export const createProjectsLocationsRegistryBooks: API.OperationMethod<
   CreateProjectsLocationsRegistryBooksRequest,
@@ -2003,12 +1483,7 @@ export const createProjectsLocationsRegistryBooks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCustomRangesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsCustomRangesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single CustomRange. */
 export const deleteProjectsLocationsCustomRanges: API.OperationMethod<
   DeleteProjectsLocationsCustomRangesRequest,
@@ -2023,12 +1498,7 @@ export const deleteProjectsLocationsCustomRanges: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsIpamAdminScopesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsIpamAdminScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single IpamAdminScope. */
 export const deleteProjectsLocationsIpamAdminScopes: API.OperationMethod<
   DeleteProjectsLocationsIpamAdminScopesRequest,
@@ -2043,12 +1513,7 @@ export const deleteProjectsLocationsIpamAdminScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -2063,12 +1528,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRealmsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRealmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Realm. */
 export const deleteProjectsLocationsRealms: API.OperationMethod<
   DeleteProjectsLocationsRealmsRequest,
@@ -2083,12 +1543,7 @@ export const deleteProjectsLocationsRealms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRegistryBooksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRegistryBooksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single RegistryBook. */
 export const deleteProjectsLocationsRegistryBooks: API.OperationMethod<
   DeleteProjectsLocationsRegistryBooksRequest,
@@ -2103,12 +1558,7 @@ export const deleteProjectsLocationsRegistryBooks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DisableProjectsLocationsIpamAdminScopesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DisableProjectsLocationsIpamAdminScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Disables a single IpamAdminScope. */
 export const disableProjectsLocationsIpamAdminScopes: API.OperationMethod<
   DisableProjectsLocationsIpamAdminScopesRequest,
@@ -2123,10 +1573,7 @@ export const disableProjectsLocationsIpamAdminScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FindFreeIpRangesProjectsLocationsCustomRangesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FindFreeIpRangesProjectsLocationsCustomRangesError = NotFound | Forbidden | GcpOpError;
 /** Finds free IP ranges in a single CustomRange. */
 export const findFreeIpRangesProjectsLocationsCustomRanges: API.OperationMethod<
   FindFreeIpRangesProjectsLocationsCustomRangesRequest,
@@ -2141,10 +1588,7 @@ export const findFreeIpRangesProjectsLocationsCustomRanges: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FindFreeIpRangesProjectsLocationsDiscoveredRangesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FindFreeIpRangesProjectsLocationsDiscoveredRangesError = NotFound | Forbidden | GcpOpError;
 /** Finds free IP ranges in a single DiscoveredRange. */
 export const findFreeIpRangesProjectsLocationsDiscoveredRanges: API.OperationMethod<
   FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest,
@@ -2174,10 +1618,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCustomRangesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCustomRangesError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single CustomRange. */
 export const getProjectsLocationsCustomRanges: API.OperationMethod<
   GetProjectsLocationsCustomRangesRequest,
@@ -2192,10 +1633,7 @@ export const getProjectsLocationsCustomRanges: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDiscoveredRangesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsDiscoveredRangesError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single DiscoveredRange. */
 export const getProjectsLocationsDiscoveredRanges: API.OperationMethod<
   GetProjectsLocationsDiscoveredRangesRequest,
@@ -2210,10 +1648,7 @@ export const getProjectsLocationsDiscoveredRanges: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsIpamAdminScopesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsIpamAdminScopesError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single IpamAdminScope. */
 export const getProjectsLocationsIpamAdminScopes: API.OperationMethod<
   GetProjectsLocationsIpamAdminScopesRequest,
@@ -2228,10 +1663,7 @@ export const getProjectsLocationsIpamAdminScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -2261,10 +1693,7 @@ export const getProjectsLocationsRealms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRegistryBooksError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRegistryBooksError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single RegistryBook. */
 export const getProjectsLocationsRegistryBooks: API.OperationMethod<
   GetProjectsLocationsRegistryBooksRequest,
@@ -2292,16 +1721,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCustomRangesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCustomRangesError = NotFound | Forbidden | GcpOpError;
 /** Lists CustomRanges in a given project and location. */
 export const listProjectsLocationsCustomRanges: API.PaginatedOperationMethod<
   ListProjectsLocationsCustomRangesRequest,
@@ -2314,16 +1737,10 @@ export const listProjectsLocationsCustomRanges: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsDiscoveredRangesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsDiscoveredRangesError = NotFound | Forbidden | GcpOpError;
 /** Lists DiscoveredRanges in a given project and location. */
 export const listProjectsLocationsDiscoveredRanges: API.PaginatedOperationMethod<
   ListProjectsLocationsDiscoveredRangesRequest,
@@ -2336,16 +1753,10 @@ export const listProjectsLocationsDiscoveredRanges: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsIpamAdminScopesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsIpamAdminScopesError = NotFound | Forbidden | GcpOpError;
 /** Lists IpamAdminScopes in a given project and location. */
 export const listProjectsLocationsIpamAdminScopes: API.PaginatedOperationMethod<
   ListProjectsLocationsIpamAdminScopesRequest,
@@ -2358,16 +1769,10 @@ export const listProjectsLocationsIpamAdminScopes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -2380,16 +1785,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRealmsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRealmsError = NotFound | Forbidden | GcpOpError;
 /** Lists Realms in a given project and location. */
 export const listProjectsLocationsRealms: API.PaginatedOperationMethod<
   ListProjectsLocationsRealmsRequest,
@@ -2402,16 +1801,10 @@ export const listProjectsLocationsRealms: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRegistryBooksError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRegistryBooksError = NotFound | Forbidden | GcpOpError;
 /** Lists RegistryBooks in a given project and location. */
 export const listProjectsLocationsRegistryBooks: API.PaginatedOperationMethod<
   ListProjectsLocationsRegistryBooksRequest,
@@ -2424,18 +1817,10 @@ export const listProjectsLocationsRegistryBooks: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsCustomRangesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCustomRangesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single CustomRange. */
 export const patchProjectsLocationsCustomRanges: API.OperationMethod<
   PatchProjectsLocationsCustomRangesRequest,
@@ -2450,12 +1835,7 @@ export const patchProjectsLocationsCustomRanges: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsIpamAdminScopesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsIpamAdminScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single IpamAdminScope. */
 export const patchProjectsLocationsIpamAdminScopes: API.OperationMethod<
   PatchProjectsLocationsIpamAdminScopesRequest,
@@ -2470,12 +1850,7 @@ export const patchProjectsLocationsIpamAdminScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRealmsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRealmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single Realm. */
 export const patchProjectsLocationsRealms: API.OperationMethod<
   PatchProjectsLocationsRealmsRequest,
@@ -2490,12 +1865,7 @@ export const patchProjectsLocationsRealms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRegistryBooksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRegistryBooksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single RegistryBook. */
 export const patchProjectsLocationsRegistryBooks: API.OperationMethod<
   PatchProjectsLocationsRegistryBooksRequest,
@@ -2510,12 +1880,7 @@ export const patchProjectsLocationsRegistryBooks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchIpResourcesProjectsLocationsRegistryBooksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SearchIpResourcesProjectsLocationsRegistryBooksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Searches IP resources in a given RegistryBook. */
 export const searchIpResourcesProjectsLocationsRegistryBooks: API.OperationMethod<
   SearchIpResourcesProjectsLocationsRegistryBooksRequest,
@@ -2530,10 +1895,7 @@ export const searchIpResourcesProjectsLocationsRegistryBooks: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type ShowUtilizationProjectsLocationsCustomRangesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ShowUtilizationProjectsLocationsCustomRangesError = NotFound | Forbidden | GcpOpError;
 /** Gets the details of a single CustomRange and its utilization. */
 export const showUtilizationProjectsLocationsCustomRanges: API.OperationMethod<
   ShowUtilizationProjectsLocationsCustomRangesRequest,
@@ -2548,10 +1910,7 @@ export const showUtilizationProjectsLocationsCustomRanges: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ShowUtilizationProjectsLocationsDiscoveredRangesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ShowUtilizationProjectsLocationsDiscoveredRangesError = NotFound | Forbidden | GcpOpError;
 /** Gets the details of a single DiscoveredRange and its utilization. */
 export const showUtilizationProjectsLocationsDiscoveredRanges: API.OperationMethod<
   ShowUtilizationProjectsLocationsDiscoveredRangesRequest,
@@ -2565,3 +1924,4 @@ export const showUtilizationProjectsLocationsDiscoveredRanges: API.OperationMeth
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

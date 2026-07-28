@@ -99,138 +99,98 @@ export const DismissInsightForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DismissInsightForZoneResponse",
 }) as any as S.Schema<DismissInsightForZoneResponse>;
 
-export type InsightsClassGetForAccountRequestIssueClassList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForAccountRequestIssueClassList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForAccountRequestIssueClassList>;
+export type InsightsClassGetRequestIssueClassList = ReadonlyArray<string>;
+export const InsightsClassGetRequestIssueClassList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsClassGetRequestIssueClassList>;
 
-export type InsightsClassGetForAccountRequestIssueClassNeqList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForAccountRequestIssueClassNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForAccountRequestIssueClassNeqList>;
+export type InsightsClassGetRequestIssueClassNeqList = ReadonlyArray<string>;
+export const InsightsClassGetRequestIssueClassNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsClassGetRequestIssueClassNeqList>;
 
-export type InsightsClassGetForAccountRequestIssueTypeList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForAccountRequestIssueTypeList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForAccountRequestIssueTypeList>;
+export type InsightsClassGetRequestIssueTypeList = ReadonlyArray<string>;
+export const InsightsClassGetRequestIssueTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsClassGetRequestIssueTypeList>;
 
-export type InsightsClassGetForAccountRequestIssueTypeNeqList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForAccountRequestIssueTypeNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForAccountRequestIssueTypeNeqList>;
+export type InsightsClassGetRequestIssueTypeNeqList = ReadonlyArray<string>;
+export const InsightsClassGetRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsClassGetRequestIssueTypeNeqList>;
 
-export type InsightsClassGetForAccountRequestProductList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForAccountRequestProductList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForAccountRequestProductList>;
+export type InsightsClassGetRequestProductList = ReadonlyArray<string>;
+export const InsightsClassGetRequestProductList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsClassGetRequestProductList>;
 
-export type InsightsClassGetForAccountRequestProductNeqList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForAccountRequestProductNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForAccountRequestProductNeqList>;
+export type InsightsClassGetRequestProductNeqList = ReadonlyArray<string>;
+export const InsightsClassGetRequestProductNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsClassGetRequestProductNeqList>;
 
-export type InsightsClassGetForAccountRequestSeverityList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForAccountRequestSeverityList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForAccountRequestSeverityList>;
+export type InsightsClassGetRequestSeverityList = ReadonlyArray<string>;
+export const InsightsClassGetRequestSeverityList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsClassGetRequestSeverityList>;
 
-export type InsightsClassGetForAccountRequestSeverityNeqList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForAccountRequestSeverityNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForAccountRequestSeverityNeqList>;
+export type InsightsClassGetRequestSeverityNeqList = ReadonlyArray<string>;
+export const InsightsClassGetRequestSeverityNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsClassGetRequestSeverityNeqList>;
 
-export type InsightsClassGetForAccountRequestSubjectList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForAccountRequestSubjectList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForAccountRequestSubjectList>;
+export type InsightsClassGetRequestSubjectList = ReadonlyArray<string>;
+export const InsightsClassGetRequestSubjectList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsClassGetRequestSubjectList>;
 
-export type InsightsClassGetForAccountRequestSubjectNeqList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForAccountRequestSubjectNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForAccountRequestSubjectNeqList>;
+export type InsightsClassGetRequestSubjectNeqList = ReadonlyArray<string>;
+export const InsightsClassGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsClassGetRequestSubjectNeqList>;
 
 export interface GetInsightClassForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   dismissed?: boolean;
-  issueClass?: InsightsClassGetForAccountRequestIssueClassList;
-  issueClassNeq?: InsightsClassGetForAccountRequestIssueClassNeqList;
-  issueType?: InsightsClassGetForAccountRequestIssueTypeList;
-  issueTypeNeq?: InsightsClassGetForAccountRequestIssueTypeNeqList;
-  product?: InsightsClassGetForAccountRequestProductList;
-  productNeq?: InsightsClassGetForAccountRequestProductNeqList;
-  severity?: InsightsClassGetForAccountRequestSeverityList;
-  severityNeq?: InsightsClassGetForAccountRequestSeverityNeqList;
-  subject?: InsightsClassGetForAccountRequestSubjectList;
-  subjectNeq?: InsightsClassGetForAccountRequestSubjectNeqList;
+  issueClass?: InsightsClassGetRequestIssueClassList;
+  issueClassNeq?: InsightsClassGetRequestIssueClassNeqList;
+  issueType?: InsightsClassGetRequestIssueTypeList;
+  issueTypeNeq?: InsightsClassGetRequestIssueTypeNeqList;
+  product?: InsightsClassGetRequestProductList;
+  productNeq?: InsightsClassGetRequestProductNeqList;
+  severity?: InsightsClassGetRequestSeverityList;
+  severityNeq?: InsightsClassGetRequestSeverityNeqList;
+  subject?: InsightsClassGetRequestSubjectList;
+  subjectNeq?: InsightsClassGetRequestSubjectNeqList;
 }
 export const GetInsightClassForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
     issueClass: S.optional(
-      InsightsClassGetForAccountRequestIssueClassList.pipe(
-        T.Query("issue_class"),
-      ),
+      InsightsClassGetRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
     issueClassNeq: S.optional(
-      InsightsClassGetForAccountRequestIssueClassNeqList.pipe(
-        T.Query("issue_class~neq"),
-      ),
+      InsightsClassGetRequestIssueClassNeqList.pipe(T.Query("issue_class~neq")),
     ),
     issueType: S.optional(
-      InsightsClassGetForAccountRequestIssueTypeList.pipe(
-        T.Query("issue_type"),
-      ),
+      InsightsClassGetRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
     issueTypeNeq: S.optional(
-      InsightsClassGetForAccountRequestIssueTypeNeqList.pipe(
-        T.Query("issue_type~neq"),
-      ),
+      InsightsClassGetRequestIssueTypeNeqList.pipe(T.Query("issue_type~neq")),
     ),
-    product: S.optional(
-      InsightsClassGetForAccountRequestProductList.pipe(T.Query()),
-    ),
+    product: S.optional(InsightsClassGetRequestProductList.pipe(T.Query())),
     productNeq: S.optional(
-      InsightsClassGetForAccountRequestProductNeqList.pipe(
-        T.Query("product~neq"),
-      ),
+      InsightsClassGetRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
-    severity: S.optional(
-      InsightsClassGetForAccountRequestSeverityList.pipe(T.Query()),
-    ),
+    severity: S.optional(InsightsClassGetRequestSeverityList.pipe(T.Query())),
     severityNeq: S.optional(
-      InsightsClassGetForAccountRequestSeverityNeqList.pipe(
-        T.Query("severity~neq"),
-      ),
+      InsightsClassGetRequestSeverityNeqList.pipe(T.Query("severity~neq")),
     ),
-    subject: S.optional(
-      InsightsClassGetForAccountRequestSubjectList.pipe(T.Query()),
-    ),
+    subject: S.optional(InsightsClassGetRequestSubjectList.pipe(T.Query())),
     subjectNeq: S.optional(
-      InsightsClassGetForAccountRequestSubjectNeqList.pipe(
-        T.Query("subject~neq"),
-      ),
+      InsightsClassGetRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -245,151 +205,74 @@ export const GetInsightClassForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightClassForAccountRequest",
 }) as any as S.Schema<GetInsightClassForAccountRequest>;
 
-export interface InsightsClassGetForAccountResultItem {
+export interface InsightsClassGetResultItem {
   count?: number;
   value?: string;
 }
-export const InsightsClassGetForAccountResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      count: S.optional(S.Number),
-      value: S.optional(S.String),
-    }),
+export const InsightsClassGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    value: S.optional(S.String),
+  }),
 ).annotate({
-  identifier: "InsightsClassGetForAccountResultItem",
-}) as any as S.Schema<InsightsClassGetForAccountResultItem>;
+  identifier: "InsightsClassGetResultItem",
+}) as any as S.Schema<InsightsClassGetResultItem>;
 
-export type InsightsClassGetForAccountResultList =
-  ReadonlyArray<InsightsClassGetForAccountResultItem>;
-export const InsightsClassGetForAccountResultList = /*@__PURE__*/ S.Array(
-  InsightsClassGetForAccountResultItem,
-) as any as S.Schema<InsightsClassGetForAccountResultList>;
+export type InsightsClassGetResultList =
+  ReadonlyArray<InsightsClassGetResultItem>;
+export const InsightsClassGetResultList = /*@__PURE__*/ S.Array(
+  InsightsClassGetResultItem,
+) as any as S.Schema<InsightsClassGetResultList>;
 
-export type GetInsightClassForAccountResponse =
-  InsightsClassGetForAccountResultList;
-export const GetInsightClassForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsClassGetForAccountResultList.pipe(T.EnvelopePayloadRoot()),
+export type GetInsightClassResponse = InsightsClassGetResultList;
+export const GetInsightClassResponse = /*@__PURE__*/ S.suspend(() =>
+  InsightsClassGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
-  identifier: "GetInsightClassForAccountResponse",
-}) as any as S.Schema<GetInsightClassForAccountResponse>;
-
-export type InsightsClassGetForZoneRequestIssueClassList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForZoneRequestIssueClassList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForZoneRequestIssueClassList>;
-
-export type InsightsClassGetForZoneRequestIssueClassNeqList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForZoneRequestIssueClassNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForZoneRequestIssueClassNeqList>;
-
-export type InsightsClassGetForZoneRequestIssueTypeList = ReadonlyArray<string>;
-export const InsightsClassGetForZoneRequestIssueTypeList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForZoneRequestIssueTypeList>;
-
-export type InsightsClassGetForZoneRequestIssueTypeNeqList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForZoneRequestIssueTypeNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForZoneRequestIssueTypeNeqList>;
-
-export type InsightsClassGetForZoneRequestProductList = ReadonlyArray<string>;
-export const InsightsClassGetForZoneRequestProductList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetForZoneRequestProductList>;
-
-export type InsightsClassGetForZoneRequestProductNeqList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForZoneRequestProductNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForZoneRequestProductNeqList>;
-
-export type InsightsClassGetForZoneRequestSeverityList = ReadonlyArray<string>;
-export const InsightsClassGetForZoneRequestSeverityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetForZoneRequestSeverityList>;
-
-export type InsightsClassGetForZoneRequestSeverityNeqList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForZoneRequestSeverityNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForZoneRequestSeverityNeqList>;
-
-export type InsightsClassGetForZoneRequestSubjectList = ReadonlyArray<string>;
-export const InsightsClassGetForZoneRequestSubjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetForZoneRequestSubjectList>;
-
-export type InsightsClassGetForZoneRequestSubjectNeqList =
-  ReadonlyArray<string>;
-export const InsightsClassGetForZoneRequestSubjectNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsClassGetForZoneRequestSubjectNeqList>;
+  identifier: "GetInsightClassResponse",
+}) as any as S.Schema<GetInsightClassResponse>;
 
 export interface GetInsightClassForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   dismissed?: boolean;
-  issueClass?: InsightsClassGetForZoneRequestIssueClassList;
-  issueClassNeq?: InsightsClassGetForZoneRequestIssueClassNeqList;
-  issueType?: InsightsClassGetForZoneRequestIssueTypeList;
-  issueTypeNeq?: InsightsClassGetForZoneRequestIssueTypeNeqList;
-  product?: InsightsClassGetForZoneRequestProductList;
-  productNeq?: InsightsClassGetForZoneRequestProductNeqList;
-  severity?: InsightsClassGetForZoneRequestSeverityList;
-  severityNeq?: InsightsClassGetForZoneRequestSeverityNeqList;
-  subject?: InsightsClassGetForZoneRequestSubjectList;
-  subjectNeq?: InsightsClassGetForZoneRequestSubjectNeqList;
+  issueClass?: InsightsClassGetRequestIssueClassList;
+  issueClassNeq?: InsightsClassGetRequestIssueClassNeqList;
+  issueType?: InsightsClassGetRequestIssueTypeList;
+  issueTypeNeq?: InsightsClassGetRequestIssueTypeNeqList;
+  product?: InsightsClassGetRequestProductList;
+  productNeq?: InsightsClassGetRequestProductNeqList;
+  severity?: InsightsClassGetRequestSeverityList;
+  severityNeq?: InsightsClassGetRequestSeverityNeqList;
+  subject?: InsightsClassGetRequestSubjectList;
+  subjectNeq?: InsightsClassGetRequestSubjectNeqList;
 }
 export const GetInsightClassForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
     issueClass: S.optional(
-      InsightsClassGetForZoneRequestIssueClassList.pipe(T.Query("issue_class")),
+      InsightsClassGetRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
     issueClassNeq: S.optional(
-      InsightsClassGetForZoneRequestIssueClassNeqList.pipe(
-        T.Query("issue_class~neq"),
-      ),
+      InsightsClassGetRequestIssueClassNeqList.pipe(T.Query("issue_class~neq")),
     ),
     issueType: S.optional(
-      InsightsClassGetForZoneRequestIssueTypeList.pipe(T.Query("issue_type")),
+      InsightsClassGetRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
     issueTypeNeq: S.optional(
-      InsightsClassGetForZoneRequestIssueTypeNeqList.pipe(
-        T.Query("issue_type~neq"),
-      ),
+      InsightsClassGetRequestIssueTypeNeqList.pipe(T.Query("issue_type~neq")),
     ),
-    product: S.optional(
-      InsightsClassGetForZoneRequestProductList.pipe(T.Query()),
-    ),
+    product: S.optional(InsightsClassGetRequestProductList.pipe(T.Query())),
     productNeq: S.optional(
-      InsightsClassGetForZoneRequestProductNeqList.pipe(T.Query("product~neq")),
+      InsightsClassGetRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
-    severity: S.optional(
-      InsightsClassGetForZoneRequestSeverityList.pipe(T.Query()),
-    ),
+    severity: S.optional(InsightsClassGetRequestSeverityList.pipe(T.Query())),
     severityNeq: S.optional(
-      InsightsClassGetForZoneRequestSeverityNeqList.pipe(
-        T.Query("severity~neq"),
-      ),
+      InsightsClassGetRequestSeverityNeqList.pipe(T.Query("severity~neq")),
     ),
-    subject: S.optional(
-      InsightsClassGetForZoneRequestSubjectList.pipe(T.Query()),
-    ),
+    subject: S.optional(InsightsClassGetRequestSubjectList.pipe(T.Query())),
     subjectNeq: S.optional(
-      InsightsClassGetForZoneRequestSubjectNeqList.pipe(T.Query("subject~neq")),
+      InsightsClassGetRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -403,32 +286,6 @@ export const GetInsightClassForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInsightClassForZoneRequest",
 }) as any as S.Schema<GetInsightClassForZoneRequest>;
-
-export interface InsightsClassGetForZoneResultItem {
-  count?: number;
-  value?: string;
-}
-export const InsightsClassGetForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsightsClassGetForZoneResultItem",
-}) as any as S.Schema<InsightsClassGetForZoneResultItem>;
-
-export type InsightsClassGetForZoneResultList =
-  ReadonlyArray<InsightsClassGetForZoneResultItem>;
-export const InsightsClassGetForZoneResultList = /*@__PURE__*/ S.Array(
-  InsightsClassGetForZoneResultItem,
-) as any as S.Schema<InsightsClassGetForZoneResultList>;
-
-export type GetInsightClassForZoneResponse = InsightsClassGetForZoneResultList;
-export const GetInsightClassForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsClassGetForZoneResultList.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "GetInsightClassForZoneResponse",
-}) as any as S.Schema<GetInsightClassForZoneResponse>;
 
 export interface GetInsightContextRequest {
   /** Identifier. */
@@ -467,138 +324,105 @@ export const GetInsightContextResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightContextResponse",
 }) as any as S.Schema<GetInsightContextResponse>;
 
-export type InsightsSeverityGetForAccountRequestIssueClassList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForAccountRequestIssueClassList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForAccountRequestIssueClassList>;
+export type InsightsSeverityGetRequestIssueClassList = ReadonlyArray<string>;
+export const InsightsSeverityGetRequestIssueClassList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsSeverityGetRequestIssueClassList>;
 
-export type InsightsSeverityGetForAccountRequestIssueClassNeqList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForAccountRequestIssueClassNeqList =
+export type InsightsSeverityGetRequestIssueClassNeqList = ReadonlyArray<string>;
+export const InsightsSeverityGetRequestIssueClassNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<InsightsSeverityGetForAccountRequestIssueClassNeqList>;
+  ) as any as S.Schema<InsightsSeverityGetRequestIssueClassNeqList>;
 
-export type InsightsSeverityGetForAccountRequestIssueTypeList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForAccountRequestIssueTypeList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForAccountRequestIssueTypeList>;
+export type InsightsSeverityGetRequestIssueTypeList = ReadonlyArray<string>;
+export const InsightsSeverityGetRequestIssueTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsSeverityGetRequestIssueTypeList>;
 
-export type InsightsSeverityGetForAccountRequestIssueTypeNeqList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForAccountRequestIssueTypeNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForAccountRequestIssueTypeNeqList>;
+export type InsightsSeverityGetRequestIssueTypeNeqList = ReadonlyArray<string>;
+export const InsightsSeverityGetRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsSeverityGetRequestIssueTypeNeqList>;
 
-export type InsightsSeverityGetForAccountRequestProductList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForAccountRequestProductList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForAccountRequestProductList>;
+export type InsightsSeverityGetRequestProductList = ReadonlyArray<string>;
+export const InsightsSeverityGetRequestProductList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsSeverityGetRequestProductList>;
 
-export type InsightsSeverityGetForAccountRequestProductNeqList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForAccountRequestProductNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForAccountRequestProductNeqList>;
+export type InsightsSeverityGetRequestProductNeqList = ReadonlyArray<string>;
+export const InsightsSeverityGetRequestProductNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsSeverityGetRequestProductNeqList>;
 
-export type InsightsSeverityGetForAccountRequestSeverityList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForAccountRequestSeverityList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForAccountRequestSeverityList>;
+export type InsightsSeverityGetRequestSeverityList = ReadonlyArray<string>;
+export const InsightsSeverityGetRequestSeverityList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsSeverityGetRequestSeverityList>;
 
-export type InsightsSeverityGetForAccountRequestSeverityNeqList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForAccountRequestSeverityNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForAccountRequestSeverityNeqList>;
+export type InsightsSeverityGetRequestSeverityNeqList = ReadonlyArray<string>;
+export const InsightsSeverityGetRequestSeverityNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsSeverityGetRequestSeverityNeqList>;
 
-export type InsightsSeverityGetForAccountRequestSubjectList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForAccountRequestSubjectList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForAccountRequestSubjectList>;
+export type InsightsSeverityGetRequestSubjectList = ReadonlyArray<string>;
+export const InsightsSeverityGetRequestSubjectList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsSeverityGetRequestSubjectList>;
 
-export type InsightsSeverityGetForAccountRequestSubjectNeqList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForAccountRequestSubjectNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForAccountRequestSubjectNeqList>;
+export type InsightsSeverityGetRequestSubjectNeqList = ReadonlyArray<string>;
+export const InsightsSeverityGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsSeverityGetRequestSubjectNeqList>;
 
 export interface GetInsightSeverityForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   dismissed?: boolean;
-  issueClass?: InsightsSeverityGetForAccountRequestIssueClassList;
-  issueClassNeq?: InsightsSeverityGetForAccountRequestIssueClassNeqList;
-  issueType?: InsightsSeverityGetForAccountRequestIssueTypeList;
-  issueTypeNeq?: InsightsSeverityGetForAccountRequestIssueTypeNeqList;
-  product?: InsightsSeverityGetForAccountRequestProductList;
-  productNeq?: InsightsSeverityGetForAccountRequestProductNeqList;
-  severity?: InsightsSeverityGetForAccountRequestSeverityList;
-  severityNeq?: InsightsSeverityGetForAccountRequestSeverityNeqList;
-  subject?: InsightsSeverityGetForAccountRequestSubjectList;
-  subjectNeq?: InsightsSeverityGetForAccountRequestSubjectNeqList;
+  issueClass?: InsightsSeverityGetRequestIssueClassList;
+  issueClassNeq?: InsightsSeverityGetRequestIssueClassNeqList;
+  issueType?: InsightsSeverityGetRequestIssueTypeList;
+  issueTypeNeq?: InsightsSeverityGetRequestIssueTypeNeqList;
+  product?: InsightsSeverityGetRequestProductList;
+  productNeq?: InsightsSeverityGetRequestProductNeqList;
+  severity?: InsightsSeverityGetRequestSeverityList;
+  severityNeq?: InsightsSeverityGetRequestSeverityNeqList;
+  subject?: InsightsSeverityGetRequestSubjectList;
+  subjectNeq?: InsightsSeverityGetRequestSubjectNeqList;
 }
 export const GetInsightSeverityForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
     issueClass: S.optional(
-      InsightsSeverityGetForAccountRequestIssueClassList.pipe(
-        T.Query("issue_class"),
-      ),
+      InsightsSeverityGetRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
     issueClassNeq: S.optional(
-      InsightsSeverityGetForAccountRequestIssueClassNeqList.pipe(
+      InsightsSeverityGetRequestIssueClassNeqList.pipe(
         T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
-      InsightsSeverityGetForAccountRequestIssueTypeList.pipe(
-        T.Query("issue_type"),
-      ),
+      InsightsSeverityGetRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
     issueTypeNeq: S.optional(
-      InsightsSeverityGetForAccountRequestIssueTypeNeqList.pipe(
+      InsightsSeverityGetRequestIssueTypeNeqList.pipe(
         T.Query("issue_type~neq"),
       ),
     ),
-    product: S.optional(
-      InsightsSeverityGetForAccountRequestProductList.pipe(T.Query()),
-    ),
+    product: S.optional(InsightsSeverityGetRequestProductList.pipe(T.Query())),
     productNeq: S.optional(
-      InsightsSeverityGetForAccountRequestProductNeqList.pipe(
-        T.Query("product~neq"),
-      ),
+      InsightsSeverityGetRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
     severity: S.optional(
-      InsightsSeverityGetForAccountRequestSeverityList.pipe(T.Query()),
+      InsightsSeverityGetRequestSeverityList.pipe(T.Query()),
     ),
     severityNeq: S.optional(
-      InsightsSeverityGetForAccountRequestSeverityNeqList.pipe(
-        T.Query("severity~neq"),
-      ),
+      InsightsSeverityGetRequestSeverityNeqList.pipe(T.Query("severity~neq")),
     ),
-    subject: S.optional(
-      InsightsSeverityGetForAccountRequestSubjectList.pipe(T.Query()),
-    ),
+    subject: S.optional(InsightsSeverityGetRequestSubjectList.pipe(T.Query())),
     subjectNeq: S.optional(
-      InsightsSeverityGetForAccountRequestSubjectNeqList.pipe(
-        T.Query("subject~neq"),
-      ),
+      InsightsSeverityGetRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -613,166 +437,80 @@ export const GetInsightSeverityForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightSeverityForAccountRequest",
 }) as any as S.Schema<GetInsightSeverityForAccountRequest>;
 
-export interface InsightsSeverityGetForAccountResultItem {
+export interface InsightsSeverityGetResultItem {
   count?: number;
   value?: string;
 }
-export const InsightsSeverityGetForAccountResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      count: S.optional(S.Number),
-      value: S.optional(S.String),
-    }),
+export const InsightsSeverityGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    value: S.optional(S.String),
+  }),
 ).annotate({
-  identifier: "InsightsSeverityGetForAccountResultItem",
-}) as any as S.Schema<InsightsSeverityGetForAccountResultItem>;
+  identifier: "InsightsSeverityGetResultItem",
+}) as any as S.Schema<InsightsSeverityGetResultItem>;
 
-export type InsightsSeverityGetForAccountResultList =
-  ReadonlyArray<InsightsSeverityGetForAccountResultItem>;
-export const InsightsSeverityGetForAccountResultList = /*@__PURE__*/ S.Array(
-  InsightsSeverityGetForAccountResultItem,
-) as any as S.Schema<InsightsSeverityGetForAccountResultList>;
+export type InsightsSeverityGetResultList =
+  ReadonlyArray<InsightsSeverityGetResultItem>;
+export const InsightsSeverityGetResultList = /*@__PURE__*/ S.Array(
+  InsightsSeverityGetResultItem,
+) as any as S.Schema<InsightsSeverityGetResultList>;
 
-export type GetInsightSeverityForAccountResponse =
-  InsightsSeverityGetForAccountResultList;
-export const GetInsightSeverityForAccountResponse = /*@__PURE__*/ S.suspend(
-  () => InsightsSeverityGetForAccountResultList.pipe(T.EnvelopePayloadRoot()),
+export type GetInsightSeverityResponse = InsightsSeverityGetResultList;
+export const GetInsightSeverityResponse = /*@__PURE__*/ S.suspend(() =>
+  InsightsSeverityGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
-  identifier: "GetInsightSeverityForAccountResponse",
-}) as any as S.Schema<GetInsightSeverityForAccountResponse>;
-
-export type InsightsSeverityGetForZoneRequestIssueClassList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForZoneRequestIssueClassList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForZoneRequestIssueClassList>;
-
-export type InsightsSeverityGetForZoneRequestIssueClassNeqList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForZoneRequestIssueClassNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForZoneRequestIssueClassNeqList>;
-
-export type InsightsSeverityGetForZoneRequestIssueTypeList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForZoneRequestIssueTypeList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForZoneRequestIssueTypeList>;
-
-export type InsightsSeverityGetForZoneRequestIssueTypeNeqList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForZoneRequestIssueTypeNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForZoneRequestIssueTypeNeqList>;
-
-export type InsightsSeverityGetForZoneRequestProductList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForZoneRequestProductList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForZoneRequestProductList>;
-
-export type InsightsSeverityGetForZoneRequestProductNeqList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForZoneRequestProductNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForZoneRequestProductNeqList>;
-
-export type InsightsSeverityGetForZoneRequestSeverityList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForZoneRequestSeverityList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForZoneRequestSeverityList>;
-
-export type InsightsSeverityGetForZoneRequestSeverityNeqList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForZoneRequestSeverityNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForZoneRequestSeverityNeqList>;
-
-export type InsightsSeverityGetForZoneRequestSubjectList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForZoneRequestSubjectList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForZoneRequestSubjectList>;
-
-export type InsightsSeverityGetForZoneRequestSubjectNeqList =
-  ReadonlyArray<string>;
-export const InsightsSeverityGetForZoneRequestSubjectNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSeverityGetForZoneRequestSubjectNeqList>;
+  identifier: "GetInsightSeverityResponse",
+}) as any as S.Schema<GetInsightSeverityResponse>;
 
 export interface GetInsightSeverityForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   dismissed?: boolean;
-  issueClass?: InsightsSeverityGetForZoneRequestIssueClassList;
-  issueClassNeq?: InsightsSeverityGetForZoneRequestIssueClassNeqList;
-  issueType?: InsightsSeverityGetForZoneRequestIssueTypeList;
-  issueTypeNeq?: InsightsSeverityGetForZoneRequestIssueTypeNeqList;
-  product?: InsightsSeverityGetForZoneRequestProductList;
-  productNeq?: InsightsSeverityGetForZoneRequestProductNeqList;
-  severity?: InsightsSeverityGetForZoneRequestSeverityList;
-  severityNeq?: InsightsSeverityGetForZoneRequestSeverityNeqList;
-  subject?: InsightsSeverityGetForZoneRequestSubjectList;
-  subjectNeq?: InsightsSeverityGetForZoneRequestSubjectNeqList;
+  issueClass?: InsightsSeverityGetRequestIssueClassList;
+  issueClassNeq?: InsightsSeverityGetRequestIssueClassNeqList;
+  issueType?: InsightsSeverityGetRequestIssueTypeList;
+  issueTypeNeq?: InsightsSeverityGetRequestIssueTypeNeqList;
+  product?: InsightsSeverityGetRequestProductList;
+  productNeq?: InsightsSeverityGetRequestProductNeqList;
+  severity?: InsightsSeverityGetRequestSeverityList;
+  severityNeq?: InsightsSeverityGetRequestSeverityNeqList;
+  subject?: InsightsSeverityGetRequestSubjectList;
+  subjectNeq?: InsightsSeverityGetRequestSubjectNeqList;
 }
 export const GetInsightSeverityForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
     issueClass: S.optional(
-      InsightsSeverityGetForZoneRequestIssueClassList.pipe(
-        T.Query("issue_class"),
-      ),
+      InsightsSeverityGetRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
     issueClassNeq: S.optional(
-      InsightsSeverityGetForZoneRequestIssueClassNeqList.pipe(
+      InsightsSeverityGetRequestIssueClassNeqList.pipe(
         T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
-      InsightsSeverityGetForZoneRequestIssueTypeList.pipe(
-        T.Query("issue_type"),
-      ),
+      InsightsSeverityGetRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
     issueTypeNeq: S.optional(
-      InsightsSeverityGetForZoneRequestIssueTypeNeqList.pipe(
+      InsightsSeverityGetRequestIssueTypeNeqList.pipe(
         T.Query("issue_type~neq"),
       ),
     ),
-    product: S.optional(
-      InsightsSeverityGetForZoneRequestProductList.pipe(T.Query()),
-    ),
+    product: S.optional(InsightsSeverityGetRequestProductList.pipe(T.Query())),
     productNeq: S.optional(
-      InsightsSeverityGetForZoneRequestProductNeqList.pipe(
-        T.Query("product~neq"),
-      ),
+      InsightsSeverityGetRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
     severity: S.optional(
-      InsightsSeverityGetForZoneRequestSeverityList.pipe(T.Query()),
+      InsightsSeverityGetRequestSeverityList.pipe(T.Query()),
     ),
     severityNeq: S.optional(
-      InsightsSeverityGetForZoneRequestSeverityNeqList.pipe(
-        T.Query("severity~neq"),
-      ),
+      InsightsSeverityGetRequestSeverityNeqList.pipe(T.Query("severity~neq")),
     ),
-    subject: S.optional(
-      InsightsSeverityGetForZoneRequestSubjectList.pipe(T.Query()),
-    ),
+    subject: S.optional(InsightsSeverityGetRequestSubjectList.pipe(T.Query())),
     subjectNeq: S.optional(
-      InsightsSeverityGetForZoneRequestSubjectNeqList.pipe(
-        T.Query("subject~neq"),
-      ),
+      InsightsSeverityGetRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -787,162 +525,98 @@ export const GetInsightSeverityForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightSeverityForZoneRequest",
 }) as any as S.Schema<GetInsightSeverityForZoneRequest>;
 
-export interface InsightsSeverityGetForZoneResultItem {
-  count?: number;
-  value?: string;
-}
-export const InsightsSeverityGetForZoneResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      count: S.optional(S.Number),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "InsightsSeverityGetForZoneResultItem",
-}) as any as S.Schema<InsightsSeverityGetForZoneResultItem>;
+export type InsightsTypeGetRequestIssueClassList = ReadonlyArray<string>;
+export const InsightsTypeGetRequestIssueClassList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsTypeGetRequestIssueClassList>;
 
-export type InsightsSeverityGetForZoneResultList =
-  ReadonlyArray<InsightsSeverityGetForZoneResultItem>;
-export const InsightsSeverityGetForZoneResultList = /*@__PURE__*/ S.Array(
-  InsightsSeverityGetForZoneResultItem,
-) as any as S.Schema<InsightsSeverityGetForZoneResultList>;
+export type InsightsTypeGetRequestIssueClassNeqList = ReadonlyArray<string>;
+export const InsightsTypeGetRequestIssueClassNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsTypeGetRequestIssueClassNeqList>;
 
-export type GetInsightSeverityForZoneResponse =
-  InsightsSeverityGetForZoneResultList;
-export const GetInsightSeverityForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsSeverityGetForZoneResultList.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "GetInsightSeverityForZoneResponse",
-}) as any as S.Schema<GetInsightSeverityForZoneResponse>;
+export type InsightsTypeGetRequestIssueTypeList = ReadonlyArray<string>;
+export const InsightsTypeGetRequestIssueTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsTypeGetRequestIssueTypeList>;
 
-export type InsightsTypeGetForAccountRequestIssueClassList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForAccountRequestIssueClassList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForAccountRequestIssueClassList>;
+export type InsightsTypeGetRequestIssueTypeNeqList = ReadonlyArray<string>;
+export const InsightsTypeGetRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsTypeGetRequestIssueTypeNeqList>;
 
-export type InsightsTypeGetForAccountRequestIssueClassNeqList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForAccountRequestIssueClassNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForAccountRequestIssueClassNeqList>;
+export type InsightsTypeGetRequestProductList = ReadonlyArray<string>;
+export const InsightsTypeGetRequestProductList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsTypeGetRequestProductList>;
 
-export type InsightsTypeGetForAccountRequestIssueTypeList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForAccountRequestIssueTypeList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForAccountRequestIssueTypeList>;
+export type InsightsTypeGetRequestProductNeqList = ReadonlyArray<string>;
+export const InsightsTypeGetRequestProductNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsTypeGetRequestProductNeqList>;
 
-export type InsightsTypeGetForAccountRequestIssueTypeNeqList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForAccountRequestIssueTypeNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForAccountRequestIssueTypeNeqList>;
+export type InsightsTypeGetRequestSeverityList = ReadonlyArray<string>;
+export const InsightsTypeGetRequestSeverityList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsTypeGetRequestSeverityList>;
 
-export type InsightsTypeGetForAccountRequestProductList = ReadonlyArray<string>;
-export const InsightsTypeGetForAccountRequestProductList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForAccountRequestProductList>;
+export type InsightsTypeGetRequestSeverityNeqList = ReadonlyArray<string>;
+export const InsightsTypeGetRequestSeverityNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsTypeGetRequestSeverityNeqList>;
 
-export type InsightsTypeGetForAccountRequestProductNeqList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForAccountRequestProductNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForAccountRequestProductNeqList>;
+export type InsightsTypeGetRequestSubjectList = ReadonlyArray<string>;
+export const InsightsTypeGetRequestSubjectList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsTypeGetRequestSubjectList>;
 
-export type InsightsTypeGetForAccountRequestSeverityList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForAccountRequestSeverityList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForAccountRequestSeverityList>;
-
-export type InsightsTypeGetForAccountRequestSeverityNeqList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForAccountRequestSeverityNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForAccountRequestSeverityNeqList>;
-
-export type InsightsTypeGetForAccountRequestSubjectList = ReadonlyArray<string>;
-export const InsightsTypeGetForAccountRequestSubjectList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForAccountRequestSubjectList>;
-
-export type InsightsTypeGetForAccountRequestSubjectNeqList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForAccountRequestSubjectNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForAccountRequestSubjectNeqList>;
+export type InsightsTypeGetRequestSubjectNeqList = ReadonlyArray<string>;
+export const InsightsTypeGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsTypeGetRequestSubjectNeqList>;
 
 export interface GetInsightTypeForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   dismissed?: boolean;
-  issueClass?: InsightsTypeGetForAccountRequestIssueClassList;
-  issueClassNeq?: InsightsTypeGetForAccountRequestIssueClassNeqList;
-  issueType?: InsightsTypeGetForAccountRequestIssueTypeList;
-  issueTypeNeq?: InsightsTypeGetForAccountRequestIssueTypeNeqList;
-  product?: InsightsTypeGetForAccountRequestProductList;
-  productNeq?: InsightsTypeGetForAccountRequestProductNeqList;
-  severity?: InsightsTypeGetForAccountRequestSeverityList;
-  severityNeq?: InsightsTypeGetForAccountRequestSeverityNeqList;
-  subject?: InsightsTypeGetForAccountRequestSubjectList;
-  subjectNeq?: InsightsTypeGetForAccountRequestSubjectNeqList;
+  issueClass?: InsightsTypeGetRequestIssueClassList;
+  issueClassNeq?: InsightsTypeGetRequestIssueClassNeqList;
+  issueType?: InsightsTypeGetRequestIssueTypeList;
+  issueTypeNeq?: InsightsTypeGetRequestIssueTypeNeqList;
+  product?: InsightsTypeGetRequestProductList;
+  productNeq?: InsightsTypeGetRequestProductNeqList;
+  severity?: InsightsTypeGetRequestSeverityList;
+  severityNeq?: InsightsTypeGetRequestSeverityNeqList;
+  subject?: InsightsTypeGetRequestSubjectList;
+  subjectNeq?: InsightsTypeGetRequestSubjectNeqList;
 }
 export const GetInsightTypeForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
     issueClass: S.optional(
-      InsightsTypeGetForAccountRequestIssueClassList.pipe(
-        T.Query("issue_class"),
-      ),
+      InsightsTypeGetRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
     issueClassNeq: S.optional(
-      InsightsTypeGetForAccountRequestIssueClassNeqList.pipe(
-        T.Query("issue_class~neq"),
-      ),
+      InsightsTypeGetRequestIssueClassNeqList.pipe(T.Query("issue_class~neq")),
     ),
     issueType: S.optional(
-      InsightsTypeGetForAccountRequestIssueTypeList.pipe(T.Query("issue_type")),
+      InsightsTypeGetRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
     issueTypeNeq: S.optional(
-      InsightsTypeGetForAccountRequestIssueTypeNeqList.pipe(
-        T.Query("issue_type~neq"),
-      ),
+      InsightsTypeGetRequestIssueTypeNeqList.pipe(T.Query("issue_type~neq")),
     ),
-    product: S.optional(
-      InsightsTypeGetForAccountRequestProductList.pipe(T.Query()),
-    ),
+    product: S.optional(InsightsTypeGetRequestProductList.pipe(T.Query())),
     productNeq: S.optional(
-      InsightsTypeGetForAccountRequestProductNeqList.pipe(
-        T.Query("product~neq"),
-      ),
+      InsightsTypeGetRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
-    severity: S.optional(
-      InsightsTypeGetForAccountRequestSeverityList.pipe(T.Query()),
-    ),
+    severity: S.optional(InsightsTypeGetRequestSeverityList.pipe(T.Query())),
     severityNeq: S.optional(
-      InsightsTypeGetForAccountRequestSeverityNeqList.pipe(
-        T.Query("severity~neq"),
-      ),
+      InsightsTypeGetRequestSeverityNeqList.pipe(T.Query("severity~neq")),
     ),
-    subject: S.optional(
-      InsightsTypeGetForAccountRequestSubjectList.pipe(T.Query()),
-    ),
+    subject: S.optional(InsightsTypeGetRequestSubjectList.pipe(T.Query())),
     subjectNeq: S.optional(
-      InsightsTypeGetForAccountRequestSubjectNeqList.pipe(
-        T.Query("subject~neq"),
-      ),
+      InsightsTypeGetRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -957,146 +631,74 @@ export const GetInsightTypeForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightTypeForAccountRequest",
 }) as any as S.Schema<GetInsightTypeForAccountRequest>;
 
-export interface InsightsTypeGetForAccountResultItem {
+export interface InsightsTypeGetResultItem {
   count?: number;
   value?: string;
 }
-export const InsightsTypeGetForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
+export const InsightsTypeGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     value: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "InsightsTypeGetForAccountResultItem",
-}) as any as S.Schema<InsightsTypeGetForAccountResultItem>;
+  identifier: "InsightsTypeGetResultItem",
+}) as any as S.Schema<InsightsTypeGetResultItem>;
 
-export type InsightsTypeGetForAccountResultList =
-  ReadonlyArray<InsightsTypeGetForAccountResultItem>;
-export const InsightsTypeGetForAccountResultList = /*@__PURE__*/ S.Array(
-  InsightsTypeGetForAccountResultItem,
-) as any as S.Schema<InsightsTypeGetForAccountResultList>;
+export type InsightsTypeGetResultList =
+  ReadonlyArray<InsightsTypeGetResultItem>;
+export const InsightsTypeGetResultList = /*@__PURE__*/ S.Array(
+  InsightsTypeGetResultItem,
+) as any as S.Schema<InsightsTypeGetResultList>;
 
-export type GetInsightTypeForAccountResponse =
-  InsightsTypeGetForAccountResultList;
-export const GetInsightTypeForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsTypeGetForAccountResultList.pipe(T.EnvelopePayloadRoot()),
+export type GetInsightTypeResponse = InsightsTypeGetResultList;
+export const GetInsightTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  InsightsTypeGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
-  identifier: "GetInsightTypeForAccountResponse",
-}) as any as S.Schema<GetInsightTypeForAccountResponse>;
-
-export type InsightsTypeGetForZoneRequestIssueClassList = ReadonlyArray<string>;
-export const InsightsTypeGetForZoneRequestIssueClassList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForZoneRequestIssueClassList>;
-
-export type InsightsTypeGetForZoneRequestIssueClassNeqList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForZoneRequestIssueClassNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForZoneRequestIssueClassNeqList>;
-
-export type InsightsTypeGetForZoneRequestIssueTypeList = ReadonlyArray<string>;
-export const InsightsTypeGetForZoneRequestIssueTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetForZoneRequestIssueTypeList>;
-
-export type InsightsTypeGetForZoneRequestIssueTypeNeqList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForZoneRequestIssueTypeNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForZoneRequestIssueTypeNeqList>;
-
-export type InsightsTypeGetForZoneRequestProductList = ReadonlyArray<string>;
-export const InsightsTypeGetForZoneRequestProductList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetForZoneRequestProductList>;
-
-export type InsightsTypeGetForZoneRequestProductNeqList = ReadonlyArray<string>;
-export const InsightsTypeGetForZoneRequestProductNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForZoneRequestProductNeqList>;
-
-export type InsightsTypeGetForZoneRequestSeverityList = ReadonlyArray<string>;
-export const InsightsTypeGetForZoneRequestSeverityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetForZoneRequestSeverityList>;
-
-export type InsightsTypeGetForZoneRequestSeverityNeqList =
-  ReadonlyArray<string>;
-export const InsightsTypeGetForZoneRequestSeverityNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForZoneRequestSeverityNeqList>;
-
-export type InsightsTypeGetForZoneRequestSubjectList = ReadonlyArray<string>;
-export const InsightsTypeGetForZoneRequestSubjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetForZoneRequestSubjectList>;
-
-export type InsightsTypeGetForZoneRequestSubjectNeqList = ReadonlyArray<string>;
-export const InsightsTypeGetForZoneRequestSubjectNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsTypeGetForZoneRequestSubjectNeqList>;
+  identifier: "GetInsightTypeResponse",
+}) as any as S.Schema<GetInsightTypeResponse>;
 
 export interface GetInsightTypeForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   dismissed?: boolean;
-  issueClass?: InsightsTypeGetForZoneRequestIssueClassList;
-  issueClassNeq?: InsightsTypeGetForZoneRequestIssueClassNeqList;
-  issueType?: InsightsTypeGetForZoneRequestIssueTypeList;
-  issueTypeNeq?: InsightsTypeGetForZoneRequestIssueTypeNeqList;
-  product?: InsightsTypeGetForZoneRequestProductList;
-  productNeq?: InsightsTypeGetForZoneRequestProductNeqList;
-  severity?: InsightsTypeGetForZoneRequestSeverityList;
-  severityNeq?: InsightsTypeGetForZoneRequestSeverityNeqList;
-  subject?: InsightsTypeGetForZoneRequestSubjectList;
-  subjectNeq?: InsightsTypeGetForZoneRequestSubjectNeqList;
+  issueClass?: InsightsTypeGetRequestIssueClassList;
+  issueClassNeq?: InsightsTypeGetRequestIssueClassNeqList;
+  issueType?: InsightsTypeGetRequestIssueTypeList;
+  issueTypeNeq?: InsightsTypeGetRequestIssueTypeNeqList;
+  product?: InsightsTypeGetRequestProductList;
+  productNeq?: InsightsTypeGetRequestProductNeqList;
+  severity?: InsightsTypeGetRequestSeverityList;
+  severityNeq?: InsightsTypeGetRequestSeverityNeqList;
+  subject?: InsightsTypeGetRequestSubjectList;
+  subjectNeq?: InsightsTypeGetRequestSubjectNeqList;
 }
 export const GetInsightTypeForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
     issueClass: S.optional(
-      InsightsTypeGetForZoneRequestIssueClassList.pipe(T.Query("issue_class")),
+      InsightsTypeGetRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
     issueClassNeq: S.optional(
-      InsightsTypeGetForZoneRequestIssueClassNeqList.pipe(
-        T.Query("issue_class~neq"),
-      ),
+      InsightsTypeGetRequestIssueClassNeqList.pipe(T.Query("issue_class~neq")),
     ),
     issueType: S.optional(
-      InsightsTypeGetForZoneRequestIssueTypeList.pipe(T.Query("issue_type")),
+      InsightsTypeGetRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
     issueTypeNeq: S.optional(
-      InsightsTypeGetForZoneRequestIssueTypeNeqList.pipe(
-        T.Query("issue_type~neq"),
-      ),
+      InsightsTypeGetRequestIssueTypeNeqList.pipe(T.Query("issue_type~neq")),
     ),
-    product: S.optional(
-      InsightsTypeGetForZoneRequestProductList.pipe(T.Query()),
-    ),
+    product: S.optional(InsightsTypeGetRequestProductList.pipe(T.Query())),
     productNeq: S.optional(
-      InsightsTypeGetForZoneRequestProductNeqList.pipe(T.Query("product~neq")),
+      InsightsTypeGetRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
-    severity: S.optional(
-      InsightsTypeGetForZoneRequestSeverityList.pipe(T.Query()),
-    ),
+    severity: S.optional(InsightsTypeGetRequestSeverityList.pipe(T.Query())),
     severityNeq: S.optional(
-      InsightsTypeGetForZoneRequestSeverityNeqList.pipe(
-        T.Query("severity~neq"),
-      ),
+      InsightsTypeGetRequestSeverityNeqList.pipe(T.Query("severity~neq")),
     ),
-    subject: S.optional(
-      InsightsTypeGetForZoneRequestSubjectList.pipe(T.Query()),
-    ),
+    subject: S.optional(InsightsTypeGetRequestSubjectList.pipe(T.Query())),
     subjectNeq: S.optional(
-      InsightsTypeGetForZoneRequestSubjectNeqList.pipe(T.Query("subject~neq")),
+      InsightsTypeGetRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -1111,44 +713,14 @@ export const GetInsightTypeForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightTypeForZoneRequest",
 }) as any as S.Schema<GetInsightTypeForZoneRequest>;
 
-export interface InsightsTypeGetForZoneResultItem {
-  count?: number;
-  value?: string;
-}
-export const InsightsTypeGetForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsightsTypeGetForZoneResultItem",
-}) as any as S.Schema<InsightsTypeGetForZoneResultItem>;
-
-export type InsightsTypeGetForZoneResultList =
-  ReadonlyArray<InsightsTypeGetForZoneResultItem>;
-export const InsightsTypeGetForZoneResultList = /*@__PURE__*/ S.Array(
-  InsightsTypeGetForZoneResultItem,
-) as any as S.Schema<InsightsTypeGetForZoneResultList>;
-
-export type GetInsightTypeForZoneResponse = InsightsTypeGetForZoneResultList;
-export const GetInsightTypeForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsTypeGetForZoneResultList.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "GetInsightTypeForZoneResponse",
-}) as any as S.Schema<GetInsightTypeForZoneResponse>;
-
-export type InsightsAuditLogsListByInsightForAccountRequestFieldChanged =
+export type InsightsAuditLogsListByInsightRequestFieldChanged =
   | "status"
-  | "user_classification"
-  | (string & {});
-export const InsightsAuditLogsListByInsightForAccountRequestFieldChanged =
+  | "user_classification";
+export const InsightsAuditLogsListByInsightRequestFieldChanged =
   /*@__PURE__*/ S.String;
 
-export type InsightsAuditLogsListByInsightForAccountRequestOrder =
-  | "asc"
-  | "desc"
-  | (string & {});
-export const InsightsAuditLogsListByInsightForAccountRequestOrder =
+export type InsightsAuditLogsListByInsightRequestOrder = "asc" | "desc";
+export const InsightsAuditLogsListByInsightRequestOrder =
   /*@__PURE__*/ S.String;
 
 export interface ListByInsightInsightAuditLogForAccountRequest {
@@ -1162,9 +734,11 @@ export interface ListByInsightInsightAuditLogForAccountRequest {
   /** Opaque cursor for pagination. Use the cursor value from result_info of the previous response. */
   cursor?: string;
   /** Filter by the field that was changed. */
-  fieldChanged?: InsightsAuditLogsListByInsightForAccountRequestFieldChanged;
+  fieldChanged?:
+    | InsightsAuditLogsListByInsightRequestFieldChanged
+    | (string & {});
   /** Sort order for results. Use 'asc' for oldest first or 'desc' for newest first. */
-  order?: InsightsAuditLogsListByInsightForAccountRequestOrder;
+  order?: InsightsAuditLogsListByInsightRequestOrder | (string & {});
   /** Number of results per page. */
   perPage?: number;
   /** Filter entries changed at or after this timestamp (RFC 3339). */
@@ -1179,12 +753,12 @@ export const ListByInsightInsightAuditLogForAccountRequest =
       changedBy: S.optional(S.String.pipe(T.Query("changed_by"))),
       cursor: S.optional(S.String.pipe(T.Query())),
       fieldChanged: S.optional(
-        InsightsAuditLogsListByInsightForAccountRequestFieldChanged.pipe(
+        InsightsAuditLogsListByInsightRequestFieldChanged.pipe(
           T.Query("field_changed"),
         ),
       ),
       order: S.optional(
-        InsightsAuditLogsListByInsightForAccountRequestOrder.pipe(T.Query()),
+        InsightsAuditLogsListByInsightRequestOrder.pipe(T.Query()),
       ),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       since: S.optional(S.String.pipe(T.Query())),
@@ -1201,14 +775,13 @@ export const ListByInsightInsightAuditLogForAccountRequest =
     identifier: "ListByInsightInsightAuditLogForAccountRequest",
   }) as any as S.Schema<ListByInsightInsightAuditLogForAccountRequest>;
 
-export type InsightsAuditLogsListByInsightForAccountResultItemFieldChanged =
+export type InsightsAuditLogsListByInsightResultItemFieldChanged =
   | "status"
-  | "user_classification"
-  | (string & {});
-export const InsightsAuditLogsListByInsightForAccountResultItemFieldChanged =
+  | "user_classification";
+export const InsightsAuditLogsListByInsightResultItemFieldChanged =
   /*@__PURE__*/ S.String;
 
-export interface InsightsAuditLogsListByInsightForAccountResultItem {
+export interface InsightsAuditLogsListByInsightResultItem {
   /** UUIDv7 identifier for the audit log entry, time-ordered. */
   id?: string;
   /** The timestamp when the change occurred. */
@@ -1218,7 +791,7 @@ export interface InsightsAuditLogsListByInsightForAccountResultItem {
   /** The value of the field after the change. Null if the field was cleared. */
   currentValue?: string;
   /** The field that was changed. */
-  fieldChanged?: InsightsAuditLogsListByInsightForAccountResultItemFieldChanged;
+  fieldChanged?: InsightsAuditLogsListByInsightResultItemFieldChanged;
   /** The ID of the insight this audit log entry relates to. */
   issueId?: string;
   /** The value of the field before the change. Null if the field was not previously set. */
@@ -1228,15 +801,15 @@ export interface InsightsAuditLogsListByInsightForAccountResultItem {
   /** The zone ID associated with the insight. Only present for zone-level insights. */
   zoneId?: number;
 }
-export const InsightsAuditLogsListByInsightForAccountResultItem =
-  /*@__PURE__*/ S.suspend(() =>
+export const InsightsAuditLogsListByInsightResultItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       changedAt: S.optional(S.String.pipe(T.Body("changed_at"))),
       changedBy: S.optional(S.String.pipe(T.Body("changed_by"))),
       currentValue: S.optional(S.String.pipe(T.Body("current_value"))),
       fieldChanged: S.optional(
-        InsightsAuditLogsListByInsightForAccountResultItemFieldChanged.pipe(
+        InsightsAuditLogsListByInsightResultItemFieldChanged.pipe(
           T.Body("field_changed"),
         ),
       ),
@@ -1245,48 +818,33 @@ export const InsightsAuditLogsListByInsightForAccountResultItem =
       rationale: S.optional(S.String),
       zoneId: S.optional(S.Number.pipe(T.Body("zone_id"))),
     }),
-  ).annotate({
-    identifier: "InsightsAuditLogsListByInsightForAccountResultItem",
-  }) as any as S.Schema<InsightsAuditLogsListByInsightForAccountResultItem>;
+).annotate({
+  identifier: "InsightsAuditLogsListByInsightResultItem",
+}) as any as S.Schema<InsightsAuditLogsListByInsightResultItem>;
 
-export type InsightsAuditLogsListByInsightForAccountResultList =
-  ReadonlyArray<InsightsAuditLogsListByInsightForAccountResultItem>;
-export const InsightsAuditLogsListByInsightForAccountResultList =
-  /*@__PURE__*/ S.Array(
-    InsightsAuditLogsListByInsightForAccountResultItem,
-  ) as any as S.Schema<InsightsAuditLogsListByInsightForAccountResultList>;
+export type InsightsAuditLogsListByInsightResultList =
+  ReadonlyArray<InsightsAuditLogsListByInsightResultItem>;
+export const InsightsAuditLogsListByInsightResultList = /*@__PURE__*/ S.Array(
+  InsightsAuditLogsListByInsightResultItem,
+) as any as S.Schema<InsightsAuditLogsListByInsightResultList>;
 
-export interface ListByInsightInsightAuditLogForAccountResponse {
+export interface ListByInsightInsightAuditLogResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result: InsightsAuditLogsListByInsightForAccountResultList;
+  result: InsightsAuditLogsListByInsightResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListByInsightInsightAuditLogForAccountResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListByInsightInsightAuditLogResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      result: InsightsAuditLogsListByInsightForAccountResultList.pipe(
+      result: InsightsAuditLogsListByInsightResultList.pipe(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-  ).annotate({
-    identifier: "ListByInsightInsightAuditLogForAccountResponse",
-  }) as any as S.Schema<ListByInsightInsightAuditLogForAccountResponse>;
-
-export type InsightsAuditLogsListByInsightForZoneRequestFieldChanged =
-  | "status"
-  | "user_classification"
-  | (string & {});
-export const InsightsAuditLogsListByInsightForZoneRequestFieldChanged =
-  /*@__PURE__*/ S.String;
-
-export type InsightsAuditLogsListByInsightForZoneRequestOrder =
-  | "asc"
-  | "desc"
-  | (string & {});
-export const InsightsAuditLogsListByInsightForZoneRequestOrder =
-  /*@__PURE__*/ S.String;
+).annotate({
+  identifier: "ListByInsightInsightAuditLogResponse",
+}) as any as S.Schema<ListByInsightInsightAuditLogResponse>;
 
 export interface ListByInsightInsightAuditLogForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -1299,9 +857,11 @@ export interface ListByInsightInsightAuditLogForZoneRequest {
   /** Opaque cursor for pagination. Use the cursor value from result_info of the previous response. */
   cursor?: string;
   /** Filter by the field that was changed. */
-  fieldChanged?: InsightsAuditLogsListByInsightForZoneRequestFieldChanged;
+  fieldChanged?:
+    | InsightsAuditLogsListByInsightRequestFieldChanged
+    | (string & {});
   /** Sort order for results. Use 'asc' for oldest first or 'desc' for newest first. */
-  order?: InsightsAuditLogsListByInsightForZoneRequestOrder;
+  order?: InsightsAuditLogsListByInsightRequestOrder | (string & {});
   /** Number of results per page. */
   perPage?: number;
   /** Filter entries changed at or after this timestamp (RFC 3339). */
@@ -1316,12 +876,12 @@ export const ListByInsightInsightAuditLogForZoneRequest =
       changedBy: S.optional(S.String.pipe(T.Query("changed_by"))),
       cursor: S.optional(S.String.pipe(T.Query())),
       fieldChanged: S.optional(
-        InsightsAuditLogsListByInsightForZoneRequestFieldChanged.pipe(
+        InsightsAuditLogsListByInsightRequestFieldChanged.pipe(
           T.Query("field_changed"),
         ),
       ),
       order: S.optional(
-        InsightsAuditLogsListByInsightForZoneRequestOrder.pipe(T.Query()),
+        InsightsAuditLogsListByInsightRequestOrder.pipe(T.Query()),
       ),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       since: S.optional(S.String.pipe(T.Query())),
@@ -1338,92 +898,13 @@ export const ListByInsightInsightAuditLogForZoneRequest =
     identifier: "ListByInsightInsightAuditLogForZoneRequest",
   }) as any as S.Schema<ListByInsightInsightAuditLogForZoneRequest>;
 
-export type InsightsAuditLogsListByInsightForZoneResultItemFieldChanged =
+export type InsightsAuditLogsListRequestFieldChanged =
   | "status"
-  | "user_classification"
-  | (string & {});
-export const InsightsAuditLogsListByInsightForZoneResultItemFieldChanged =
-  /*@__PURE__*/ S.String;
+  | "user_classification";
+export const InsightsAuditLogsListRequestFieldChanged = /*@__PURE__*/ S.String;
 
-export interface InsightsAuditLogsListByInsightForZoneResultItem {
-  /** UUIDv7 identifier for the audit log entry, time-ordered. */
-  id?: string;
-  /** The timestamp when the change occurred. */
-  changedAt?: string;
-  /** The actor that made the change. 'system' for automated changes, or a user identifier. */
-  changedBy?: string;
-  /** The value of the field after the change. Null if the field was cleared. */
-  currentValue?: string;
-  /** The field that was changed. */
-  fieldChanged?: InsightsAuditLogsListByInsightForZoneResultItemFieldChanged;
-  /** The ID of the insight this audit log entry relates to. */
-  issueId?: string;
-  /** The value of the field before the change. Null if the field was not previously set. */
-  previousValue?: string;
-  /** Optional rationale provided for the change. */
-  rationale?: string;
-  /** The zone ID associated with the insight. Only present for zone-level insights. */
-  zoneId?: number;
-}
-export const InsightsAuditLogsListByInsightForZoneResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      changedAt: S.optional(S.String.pipe(T.Body("changed_at"))),
-      changedBy: S.optional(S.String.pipe(T.Body("changed_by"))),
-      currentValue: S.optional(S.String.pipe(T.Body("current_value"))),
-      fieldChanged: S.optional(
-        InsightsAuditLogsListByInsightForZoneResultItemFieldChanged.pipe(
-          T.Body("field_changed"),
-        ),
-      ),
-      issueId: S.optional(S.String.pipe(T.Body("issue_id"))),
-      previousValue: S.optional(S.String.pipe(T.Body("previous_value"))),
-      rationale: S.optional(S.String),
-      zoneId: S.optional(S.Number.pipe(T.Body("zone_id"))),
-    }),
-  ).annotate({
-    identifier: "InsightsAuditLogsListByInsightForZoneResultItem",
-  }) as any as S.Schema<InsightsAuditLogsListByInsightForZoneResultItem>;
-
-export type InsightsAuditLogsListByInsightForZoneResultList =
-  ReadonlyArray<InsightsAuditLogsListByInsightForZoneResultItem>;
-export const InsightsAuditLogsListByInsightForZoneResultList =
-  /*@__PURE__*/ S.Array(
-    InsightsAuditLogsListByInsightForZoneResultItem,
-  ) as any as S.Schema<InsightsAuditLogsListByInsightForZoneResultList>;
-
-export interface ListByInsightInsightAuditLogForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result: InsightsAuditLogsListByInsightForZoneResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
-export const ListByInsightInsightAuditLogForZoneResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: InsightsAuditLogsListByInsightForZoneResultList.pipe(
-        T.EnvelopePayload(),
-      ),
-      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-  ).annotate({
-    identifier: "ListByInsightInsightAuditLogForZoneResponse",
-  }) as any as S.Schema<ListByInsightInsightAuditLogForZoneResponse>;
-
-export type InsightsAuditLogsListForAccountRequestFieldChanged =
-  | "status"
-  | "user_classification"
-  | (string & {});
-export const InsightsAuditLogsListForAccountRequestFieldChanged =
-  /*@__PURE__*/ S.String;
-
-export type InsightsAuditLogsListForAccountRequestOrder =
-  | "asc"
-  | "desc"
-  | (string & {});
-export const InsightsAuditLogsListForAccountRequestOrder =
-  /*@__PURE__*/ S.String;
+export type InsightsAuditLogsListRequestOrder = "asc" | "desc";
+export const InsightsAuditLogsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListInsightAuditLogsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -1435,9 +916,9 @@ export interface ListInsightAuditLogsForAccountRequest {
   /** Opaque cursor for pagination. Use the cursor value from result_info of the previous response. */
   cursor?: string;
   /** Filter by the field that was changed. */
-  fieldChanged?: InsightsAuditLogsListForAccountRequestFieldChanged;
+  fieldChanged?: InsightsAuditLogsListRequestFieldChanged | (string & {});
   /** Sort order for results. Use 'asc' for oldest first or 'desc' for newest first. */
-  order?: InsightsAuditLogsListForAccountRequestOrder;
+  order?: InsightsAuditLogsListRequestOrder | (string & {});
   /** Number of results per page. */
   perPage?: number;
   /** Filter entries changed at or after this timestamp (RFC 3339). */
@@ -1451,13 +932,9 @@ export const ListInsightAuditLogsForAccountRequest = /*@__PURE__*/ S.suspend(
       changedBy: S.optional(S.String.pipe(T.Query("changed_by"))),
       cursor: S.optional(S.String.pipe(T.Query())),
       fieldChanged: S.optional(
-        InsightsAuditLogsListForAccountRequestFieldChanged.pipe(
-          T.Query("field_changed"),
-        ),
+        InsightsAuditLogsListRequestFieldChanged.pipe(T.Query("field_changed")),
       ),
-      order: S.optional(
-        InsightsAuditLogsListForAccountRequestOrder.pipe(T.Query()),
-      ),
+      order: S.optional(InsightsAuditLogsListRequestOrder.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       since: S.optional(S.String.pipe(T.Query())),
     })
@@ -1473,14 +950,13 @@ export const ListInsightAuditLogsForAccountRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListInsightAuditLogsForAccountRequest",
 }) as any as S.Schema<ListInsightAuditLogsForAccountRequest>;
 
-export type InsightsAuditLogsListForAccountResultItemFieldChanged =
+export type InsightsAuditLogsListResultItemFieldChanged =
   | "status"
-  | "user_classification"
-  | (string & {});
-export const InsightsAuditLogsListForAccountResultItemFieldChanged =
+  | "user_classification";
+export const InsightsAuditLogsListResultItemFieldChanged =
   /*@__PURE__*/ S.String;
 
-export interface InsightsAuditLogsListForAccountResultItem {
+export interface InsightsAuditLogsListResultItem {
   /** UUIDv7 identifier for the audit log entry, time-ordered. */
   id?: string;
   /** The timestamp when the change occurred. */
@@ -1490,7 +966,7 @@ export interface InsightsAuditLogsListForAccountResultItem {
   /** The value of the field after the change. Null if the field was cleared. */
   currentValue?: string;
   /** The field that was changed. */
-  fieldChanged?: InsightsAuditLogsListForAccountResultItemFieldChanged;
+  fieldChanged?: InsightsAuditLogsListResultItemFieldChanged;
   /** The ID of the insight this audit log entry relates to. */
   issueId?: string;
   /** The value of the field before the change. Null if the field was not previously set. */
@@ -1500,63 +976,44 @@ export interface InsightsAuditLogsListForAccountResultItem {
   /** The zone ID associated with the insight. Only present for zone-level insights. */
   zoneId?: number;
 }
-export const InsightsAuditLogsListForAccountResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      changedAt: S.optional(S.String.pipe(T.Body("changed_at"))),
-      changedBy: S.optional(S.String.pipe(T.Body("changed_by"))),
-      currentValue: S.optional(S.String.pipe(T.Body("current_value"))),
-      fieldChanged: S.optional(
-        InsightsAuditLogsListForAccountResultItemFieldChanged.pipe(
-          T.Body("field_changed"),
-        ),
-      ),
-      issueId: S.optional(S.String.pipe(T.Body("issue_id"))),
-      previousValue: S.optional(S.String.pipe(T.Body("previous_value"))),
-      rationale: S.optional(S.String),
-      zoneId: S.optional(S.Number.pipe(T.Body("zone_id"))),
-    }),
-  ).annotate({
-    identifier: "InsightsAuditLogsListForAccountResultItem",
-  }) as any as S.Schema<InsightsAuditLogsListForAccountResultItem>;
+export const InsightsAuditLogsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    changedAt: S.optional(S.String.pipe(T.Body("changed_at"))),
+    changedBy: S.optional(S.String.pipe(T.Body("changed_by"))),
+    currentValue: S.optional(S.String.pipe(T.Body("current_value"))),
+    fieldChanged: S.optional(
+      InsightsAuditLogsListResultItemFieldChanged.pipe(T.Body("field_changed")),
+    ),
+    issueId: S.optional(S.String.pipe(T.Body("issue_id"))),
+    previousValue: S.optional(S.String.pipe(T.Body("previous_value"))),
+    rationale: S.optional(S.String),
+    zoneId: S.optional(S.Number.pipe(T.Body("zone_id"))),
+  }),
+).annotate({
+  identifier: "InsightsAuditLogsListResultItem",
+}) as any as S.Schema<InsightsAuditLogsListResultItem>;
 
-export type InsightsAuditLogsListForAccountResultList =
-  ReadonlyArray<InsightsAuditLogsListForAccountResultItem>;
-export const InsightsAuditLogsListForAccountResultList = /*@__PURE__*/ S.Array(
-  InsightsAuditLogsListForAccountResultItem,
-) as any as S.Schema<InsightsAuditLogsListForAccountResultList>;
+export type InsightsAuditLogsListResultList =
+  ReadonlyArray<InsightsAuditLogsListResultItem>;
+export const InsightsAuditLogsListResultList = /*@__PURE__*/ S.Array(
+  InsightsAuditLogsListResultItem,
+) as any as S.Schema<InsightsAuditLogsListResultList>;
 
-export interface ListInsightAuditLogsForAccountResponse {
+export interface ListInsightAuditLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result: InsightsAuditLogsListForAccountResultList;
+  result: InsightsAuditLogsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListInsightAuditLogsForAccountResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: InsightsAuditLogsListForAccountResultList.pipe(
-        T.EnvelopePayload(),
-      ),
-      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+export const ListInsightAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: InsightsAuditLogsListResultList.pipe(T.EnvelopePayload()),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "ListInsightAuditLogsForAccountResponse",
-}) as any as S.Schema<ListInsightAuditLogsForAccountResponse>;
-
-export type InsightsAuditLogsListForZoneRequestFieldChanged =
-  | "status"
-  | "user_classification"
-  | (string & {});
-export const InsightsAuditLogsListForZoneRequestFieldChanged =
-  /*@__PURE__*/ S.String;
-
-export type InsightsAuditLogsListForZoneRequestOrder =
-  | "asc"
-  | "desc"
-  | (string & {});
-export const InsightsAuditLogsListForZoneRequestOrder = /*@__PURE__*/ S.String;
+  identifier: "ListInsightAuditLogsResponse",
+}) as any as S.Schema<ListInsightAuditLogsResponse>;
 
 export interface ListInsightAuditLogsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -1568,9 +1025,9 @@ export interface ListInsightAuditLogsForZoneRequest {
   /** Opaque cursor for pagination. Use the cursor value from result_info of the previous response. */
   cursor?: string;
   /** Filter by the field that was changed. */
-  fieldChanged?: InsightsAuditLogsListForZoneRequestFieldChanged;
+  fieldChanged?: InsightsAuditLogsListRequestFieldChanged | (string & {});
   /** Sort order for results. Use 'asc' for oldest first or 'desc' for newest first. */
-  order?: InsightsAuditLogsListForZoneRequestOrder;
+  order?: InsightsAuditLogsListRequestOrder | (string & {});
   /** Number of results per page. */
   perPage?: number;
   /** Filter entries changed at or after this timestamp (RFC 3339). */
@@ -1583,11 +1040,9 @@ export const ListInsightAuditLogsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     changedBy: S.optional(S.String.pipe(T.Query("changed_by"))),
     cursor: S.optional(S.String.pipe(T.Query())),
     fieldChanged: S.optional(
-      InsightsAuditLogsListForZoneRequestFieldChanged.pipe(
-        T.Query("field_changed"),
-      ),
+      InsightsAuditLogsListRequestFieldChanged.pipe(T.Query("field_changed")),
     ),
-    order: S.optional(InsightsAuditLogsListForZoneRequestOrder.pipe(T.Query())),
+    order: S.optional(InsightsAuditLogsListRequestOrder.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
   })
@@ -1603,194 +1058,104 @@ export const ListInsightAuditLogsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInsightAuditLogsForZoneRequest",
 }) as any as S.Schema<ListInsightAuditLogsForZoneRequest>;
 
-export type InsightsAuditLogsListForZoneResultItemFieldChanged =
-  | "status"
-  | "user_classification"
-  | (string & {});
-export const InsightsAuditLogsListForZoneResultItemFieldChanged =
-  /*@__PURE__*/ S.String;
-
-export interface InsightsAuditLogsListForZoneResultItem {
-  /** UUIDv7 identifier for the audit log entry, time-ordered. */
-  id?: string;
-  /** The timestamp when the change occurred. */
-  changedAt?: string;
-  /** The actor that made the change. 'system' for automated changes, or a user identifier. */
-  changedBy?: string;
-  /** The value of the field after the change. Null if the field was cleared. */
-  currentValue?: string;
-  /** The field that was changed. */
-  fieldChanged?: InsightsAuditLogsListForZoneResultItemFieldChanged;
-  /** The ID of the insight this audit log entry relates to. */
-  issueId?: string;
-  /** The value of the field before the change. Null if the field was not previously set. */
-  previousValue?: string;
-  /** Optional rationale provided for the change. */
-  rationale?: string;
-  /** The zone ID associated with the insight. Only present for zone-level insights. */
-  zoneId?: number;
-}
-export const InsightsAuditLogsListForZoneResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      changedAt: S.optional(S.String.pipe(T.Body("changed_at"))),
-      changedBy: S.optional(S.String.pipe(T.Body("changed_by"))),
-      currentValue: S.optional(S.String.pipe(T.Body("current_value"))),
-      fieldChanged: S.optional(
-        InsightsAuditLogsListForZoneResultItemFieldChanged.pipe(
-          T.Body("field_changed"),
-        ),
-      ),
-      issueId: S.optional(S.String.pipe(T.Body("issue_id"))),
-      previousValue: S.optional(S.String.pipe(T.Body("previous_value"))),
-      rationale: S.optional(S.String),
-      zoneId: S.optional(S.Number.pipe(T.Body("zone_id"))),
-    }),
-).annotate({
-  identifier: "InsightsAuditLogsListForZoneResultItem",
-}) as any as S.Schema<InsightsAuditLogsListForZoneResultItem>;
-
-export type InsightsAuditLogsListForZoneResultList =
-  ReadonlyArray<InsightsAuditLogsListForZoneResultItem>;
-export const InsightsAuditLogsListForZoneResultList = /*@__PURE__*/ S.Array(
-  InsightsAuditLogsListForZoneResultItem,
-) as any as S.Schema<InsightsAuditLogsListForZoneResultList>;
-
-export interface ListInsightAuditLogsForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result: InsightsAuditLogsListForZoneResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
-export const ListInsightAuditLogsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: InsightsAuditLogsListForZoneResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListInsightAuditLogsForZoneResponse",
-}) as any as S.Schema<ListInsightAuditLogsForZoneResponse>;
-
-export type InsightsListForAccountRequestIssueClassList = ReadonlyArray<string>;
-export const InsightsListForAccountRequestIssueClassList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsListForAccountRequestIssueClassList>;
-
-export type InsightsListForAccountRequestIssueClassNeqList =
-  ReadonlyArray<string>;
-export const InsightsListForAccountRequestIssueClassNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsListForAccountRequestIssueClassNeqList>;
-
-export type InsightsListForAccountRequestIssueTypeList = ReadonlyArray<string>;
-export const InsightsListForAccountRequestIssueTypeList = /*@__PURE__*/ S.Array(
+export type InsightsListRequestIssueClassList = ReadonlyArray<string>;
+export const InsightsListRequestIssueClassList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<InsightsListForAccountRequestIssueTypeList>;
+) as any as S.Schema<InsightsListRequestIssueClassList>;
 
-export type InsightsListForAccountRequestIssueTypeNeqList =
-  ReadonlyArray<string>;
-export const InsightsListForAccountRequestIssueTypeNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsListForAccountRequestIssueTypeNeqList>;
-
-export type InsightsListForAccountRequestProductList = ReadonlyArray<string>;
-export const InsightsListForAccountRequestProductList = /*@__PURE__*/ S.Array(
+export type InsightsListRequestIssueClassNeqList = ReadonlyArray<string>;
+export const InsightsListRequestIssueClassNeqList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<InsightsListForAccountRequestProductList>;
+) as any as S.Schema<InsightsListRequestIssueClassNeqList>;
 
-export type InsightsListForAccountRequestProductNeqList = ReadonlyArray<string>;
-export const InsightsListForAccountRequestProductNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsListForAccountRequestProductNeqList>;
-
-export type InsightsListForAccountRequestSeverityList = ReadonlyArray<string>;
-export const InsightsListForAccountRequestSeverityList = /*@__PURE__*/ S.Array(
+export type InsightsListRequestIssueTypeList = ReadonlyArray<string>;
+export const InsightsListRequestIssueTypeList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<InsightsListForAccountRequestSeverityList>;
+) as any as S.Schema<InsightsListRequestIssueTypeList>;
 
-export type InsightsListForAccountRequestSeverityNeqList =
-  ReadonlyArray<string>;
-export const InsightsListForAccountRequestSeverityNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsListForAccountRequestSeverityNeqList>;
-
-export type InsightsListForAccountRequestSubjectList = ReadonlyArray<string>;
-export const InsightsListForAccountRequestSubjectList = /*@__PURE__*/ S.Array(
+export type InsightsListRequestIssueTypeNeqList = ReadonlyArray<string>;
+export const InsightsListRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<InsightsListForAccountRequestSubjectList>;
+) as any as S.Schema<InsightsListRequestIssueTypeNeqList>;
 
-export type InsightsListForAccountRequestSubjectNeqList = ReadonlyArray<string>;
-export const InsightsListForAccountRequestSubjectNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsListForAccountRequestSubjectNeqList>;
+export type InsightsListRequestProductList = ReadonlyArray<string>;
+export const InsightsListRequestProductList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsListRequestProductList>;
+
+export type InsightsListRequestProductNeqList = ReadonlyArray<string>;
+export const InsightsListRequestProductNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsListRequestProductNeqList>;
+
+export type InsightsListRequestSeverityList = ReadonlyArray<string>;
+export const InsightsListRequestSeverityList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsListRequestSeverityList>;
+
+export type InsightsListRequestSeverityNeqList = ReadonlyArray<string>;
+export const InsightsListRequestSeverityNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsListRequestSeverityNeqList>;
+
+export type InsightsListRequestSubjectList = ReadonlyArray<string>;
+export const InsightsListRequestSubjectList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsListRequestSubjectList>;
+
+export type InsightsListRequestSubjectNeqList = ReadonlyArray<string>;
+export const InsightsListRequestSubjectNeqList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InsightsListRequestSubjectNeqList>;
 
 export interface ListInsightsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   dismissed?: boolean;
-  issueClass?: InsightsListForAccountRequestIssueClassList;
-  issueClassNeq?: InsightsListForAccountRequestIssueClassNeqList;
-  issueType?: InsightsListForAccountRequestIssueTypeList;
-  issueTypeNeq?: InsightsListForAccountRequestIssueTypeNeqList;
+  issueClass?: InsightsListRequestIssueClassList;
+  issueClassNeq?: InsightsListRequestIssueClassNeqList;
+  issueType?: InsightsListRequestIssueTypeList;
+  issueTypeNeq?: InsightsListRequestIssueTypeNeqList;
   /** Specifies the current page within paginated list of results. */
   page?: number;
   /** Sets the number of results per page of results. */
   perPage?: number;
-  product?: InsightsListForAccountRequestProductList;
-  productNeq?: InsightsListForAccountRequestProductNeqList;
-  severity?: InsightsListForAccountRequestSeverityList;
-  severityNeq?: InsightsListForAccountRequestSeverityNeqList;
-  subject?: InsightsListForAccountRequestSubjectList;
-  subjectNeq?: InsightsListForAccountRequestSubjectNeqList;
+  product?: InsightsListRequestProductList;
+  productNeq?: InsightsListRequestProductNeqList;
+  severity?: InsightsListRequestSeverityList;
+  severityNeq?: InsightsListRequestSeverityNeqList;
+  subject?: InsightsListRequestSubjectList;
+  subjectNeq?: InsightsListRequestSubjectNeqList;
 }
 export const ListInsightsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
     issueClass: S.optional(
-      InsightsListForAccountRequestIssueClassList.pipe(T.Query("issue_class")),
+      InsightsListRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
     issueClassNeq: S.optional(
-      InsightsListForAccountRequestIssueClassNeqList.pipe(
-        T.Query("issue_class~neq"),
-      ),
+      InsightsListRequestIssueClassNeqList.pipe(T.Query("issue_class~neq")),
     ),
     issueType: S.optional(
-      InsightsListForAccountRequestIssueTypeList.pipe(T.Query("issue_type")),
+      InsightsListRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
     issueTypeNeq: S.optional(
-      InsightsListForAccountRequestIssueTypeNeqList.pipe(
-        T.Query("issue_type~neq"),
-      ),
+      InsightsListRequestIssueTypeNeqList.pipe(T.Query("issue_type~neq")),
     ),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    product: S.optional(
-      InsightsListForAccountRequestProductList.pipe(T.Query()),
-    ),
+    product: S.optional(InsightsListRequestProductList.pipe(T.Query())),
     productNeq: S.optional(
-      InsightsListForAccountRequestProductNeqList.pipe(T.Query("product~neq")),
+      InsightsListRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
-    severity: S.optional(
-      InsightsListForAccountRequestSeverityList.pipe(T.Query()),
-    ),
+    severity: S.optional(InsightsListRequestSeverityList.pipe(T.Query())),
     severityNeq: S.optional(
-      InsightsListForAccountRequestSeverityNeqList.pipe(
-        T.Query("severity~neq"),
-      ),
+      InsightsListRequestSeverityNeqList.pipe(T.Query("severity~neq")),
     ),
-    subject: S.optional(
-      InsightsListForAccountRequestSubjectList.pipe(T.Query()),
-    ),
+    subject: S.optional(InsightsListRequestSubjectList.pipe(T.Query())),
     subjectNeq: S.optional(
-      InsightsListForAccountRequestSubjectNeqList.pipe(T.Query("subject~neq")),
+      InsightsListRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -1805,238 +1170,169 @@ export const ListInsightsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInsightsForAccountRequest",
 }) as any as S.Schema<ListInsightsForAccountRequest>;
 
-export type InsightsListForAccountResponseIssuesItemIssueType =
+export type InsightsListResponseIssuesItemIssueType =
   | "compliance_violation"
   | "email_security"
   | "exposed_infrastructure"
   | "insecure_configuration"
   | "weak_authentication"
-  | "configuration_suggestion"
-  | (string & {});
-export const InsightsListForAccountResponseIssuesItemIssueType =
-  /*@__PURE__*/ S.String;
+  | "configuration_suggestion";
+export const InsightsListResponseIssuesItemIssueType = /*@__PURE__*/ S.String;
 
-export interface InsightsListForAccountResponseIssuesItemPayload {
+export interface InsightsListResponseIssuesItemPayload {
   /** Describes the method used to detect insight. */
   detectionMethod?: string;
   zoneTag?: string;
 }
-export const InsightsListForAccountResponseIssuesItemPayload =
-  /*@__PURE__*/ S.suspend(() =>
+export const InsightsListResponseIssuesItemPayload = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       detectionMethod: S.optional(S.String.pipe(T.Body("detection_method"))),
       zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
     }),
-  ).annotate({
-    identifier: "InsightsListForAccountResponseIssuesItemPayload",
-  }) as any as S.Schema<InsightsListForAccountResponseIssuesItemPayload>;
+).annotate({
+  identifier: "InsightsListResponseIssuesItemPayload",
+}) as any as S.Schema<InsightsListResponseIssuesItemPayload>;
 
-export type InsightsListForAccountResponseIssuesItemSeverity =
+export type InsightsListResponseIssuesItemSeverity =
   | "Low"
   | "Moderate"
-  | "Critical"
-  | (string & {});
-export const InsightsListForAccountResponseIssuesItemSeverity =
-  /*@__PURE__*/ S.String;
+  | "Critical";
+export const InsightsListResponseIssuesItemSeverity = /*@__PURE__*/ S.String;
 
-export type InsightsListForAccountResponseIssuesItemStatus =
-  | "active"
-  | "resolved"
-  | (string & {});
-export const InsightsListForAccountResponseIssuesItemStatus =
-  /*@__PURE__*/ S.String;
+export type InsightsListResponseIssuesItemStatus = "active" | "resolved";
+export const InsightsListResponseIssuesItemStatus = /*@__PURE__*/ S.String;
 
-export type InsightsListForAccountResponseIssuesItemUserClassification =
+export type InsightsListResponseIssuesItemUserClassification =
   | "false_positive"
   | "accept_risk"
-  | "other"
-  | (string & {});
-export const InsightsListForAccountResponseIssuesItemUserClassification =
+  | "other";
+export const InsightsListResponseIssuesItemUserClassification =
   /*@__PURE__*/ S.String;
 
-export interface InsightsListForAccountResponseIssuesItem {
+export interface InsightsListResponseIssuesItem {
   id?: string;
   dismissed?: boolean;
   /** Indicates whether the insight has a large payload that requires fetching via the context endpoint. */
   hasExtendedContext?: boolean;
   issueClass?: string;
-  issueType?: InsightsListForAccountResponseIssuesItemIssueType;
-  payload?: InsightsListForAccountResponseIssuesItemPayload;
+  issueType?: InsightsListResponseIssuesItemIssueType;
+  payload?: InsightsListResponseIssuesItemPayload;
   resolveLink?: string;
   resolveText?: string;
-  severity?: InsightsListForAccountResponseIssuesItemSeverity;
+  severity?: InsightsListResponseIssuesItemSeverity;
   since?: string;
   /** The current status of the insight. */
-  status?: InsightsListForAccountResponseIssuesItemStatus;
+  status?: InsightsListResponseIssuesItemStatus;
   subject?: string;
   timestamp?: string;
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
-  userClassification?: InsightsListForAccountResponseIssuesItemUserClassification;
+  userClassification?: InsightsListResponseIssuesItemUserClassification;
 }
-export const InsightsListForAccountResponseIssuesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      dismissed: S.optional(S.Boolean),
-      hasExtendedContext: S.optional(
-        S.Boolean.pipe(T.Body("has_extended_context")),
+export const InsightsListResponseIssuesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    dismissed: S.optional(S.Boolean),
+    hasExtendedContext: S.optional(
+      S.Boolean.pipe(T.Body("has_extended_context")),
+    ),
+    issueClass: S.optional(S.String.pipe(T.Body("issue_class"))),
+    issueType: S.optional(
+      InsightsListResponseIssuesItemIssueType.pipe(T.Body("issue_type")),
+    ),
+    payload: S.optional(InsightsListResponseIssuesItemPayload),
+    resolveLink: S.optional(S.String.pipe(T.Body("resolve_link"))),
+    resolveText: S.optional(S.String.pipe(T.Body("resolve_text"))),
+    severity: S.optional(InsightsListResponseIssuesItemSeverity),
+    since: S.optional(S.String),
+    status: S.optional(InsightsListResponseIssuesItemStatus),
+    subject: S.optional(S.String),
+    timestamp: S.optional(S.String),
+    userClassification: S.optional(
+      InsightsListResponseIssuesItemUserClassification.pipe(
+        T.Body("user_classification"),
       ),
-      issueClass: S.optional(S.String.pipe(T.Body("issue_class"))),
-      issueType: S.optional(
-        InsightsListForAccountResponseIssuesItemIssueType.pipe(
-          T.Body("issue_type"),
-        ),
-      ),
-      payload: S.optional(InsightsListForAccountResponseIssuesItemPayload),
-      resolveLink: S.optional(S.String.pipe(T.Body("resolve_link"))),
-      resolveText: S.optional(S.String.pipe(T.Body("resolve_text"))),
-      severity: S.optional(InsightsListForAccountResponseIssuesItemSeverity),
-      since: S.optional(S.String),
-      status: S.optional(InsightsListForAccountResponseIssuesItemStatus),
-      subject: S.optional(S.String),
-      timestamp: S.optional(S.String),
-      userClassification: S.optional(
-        InsightsListForAccountResponseIssuesItemUserClassification.pipe(
-          T.Body("user_classification"),
-        ),
-      ),
-    }),
+    ),
+  }),
 ).annotate({
-  identifier: "InsightsListForAccountResponseIssuesItem",
-}) as any as S.Schema<InsightsListForAccountResponseIssuesItem>;
+  identifier: "InsightsListResponseIssuesItem",
+}) as any as S.Schema<InsightsListResponseIssuesItem>;
 
-export type InsightsListForAccountResponseIssuesList =
-  ReadonlyArray<InsightsListForAccountResponseIssuesItem>;
-export const InsightsListForAccountResponseIssuesList = /*@__PURE__*/ S.Array(
-  InsightsListForAccountResponseIssuesItem,
-) as any as S.Schema<InsightsListForAccountResponseIssuesList>;
+export type InsightsListResponseIssuesList =
+  ReadonlyArray<InsightsListResponseIssuesItem>;
+export const InsightsListResponseIssuesList = /*@__PURE__*/ S.Array(
+  InsightsListResponseIssuesItem,
+) as any as S.Schema<InsightsListResponseIssuesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ListInsightsForAccountResponse {
+export interface ListInsightsResponse {
   /** Indicates the total number of results. */
   count?: number;
-  issues?: InsightsListForAccountResponseIssuesList;
+  issues?: InsightsListResponseIssuesList;
   /** Specifies the current page within paginated list of results. */
   page?: number;
   /** Sets the number of results per page of results. */
   perPage?: number;
 }
-export const ListInsightsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
-    issues: S.optional(InsightsListForAccountResponseIssuesList),
+    issues: S.optional(InsightsListResponseIssuesList),
     page: S.optional(S.Number),
     perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "ListInsightsForAccountResponse",
-}) as any as S.Schema<ListInsightsForAccountResponse>;
-
-export type InsightsListForZoneRequestIssueClassList = ReadonlyArray<string>;
-export const InsightsListForZoneRequestIssueClassList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListForZoneRequestIssueClassList>;
-
-export type InsightsListForZoneRequestIssueClassNeqList = ReadonlyArray<string>;
-export const InsightsListForZoneRequestIssueClassNeqList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsListForZoneRequestIssueClassNeqList>;
-
-export type InsightsListForZoneRequestIssueTypeList = ReadonlyArray<string>;
-export const InsightsListForZoneRequestIssueTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListForZoneRequestIssueTypeList>;
-
-export type InsightsListForZoneRequestIssueTypeNeqList = ReadonlyArray<string>;
-export const InsightsListForZoneRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListForZoneRequestIssueTypeNeqList>;
-
-export type InsightsListForZoneRequestProductList = ReadonlyArray<string>;
-export const InsightsListForZoneRequestProductList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListForZoneRequestProductList>;
-
-export type InsightsListForZoneRequestProductNeqList = ReadonlyArray<string>;
-export const InsightsListForZoneRequestProductNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListForZoneRequestProductNeqList>;
-
-export type InsightsListForZoneRequestSeverityList = ReadonlyArray<string>;
-export const InsightsListForZoneRequestSeverityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListForZoneRequestSeverityList>;
-
-export type InsightsListForZoneRequestSeverityNeqList = ReadonlyArray<string>;
-export const InsightsListForZoneRequestSeverityNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListForZoneRequestSeverityNeqList>;
-
-export type InsightsListForZoneRequestSubjectList = ReadonlyArray<string>;
-export const InsightsListForZoneRequestSubjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListForZoneRequestSubjectList>;
-
-export type InsightsListForZoneRequestSubjectNeqList = ReadonlyArray<string>;
-export const InsightsListForZoneRequestSubjectNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListForZoneRequestSubjectNeqList>;
+  identifier: "ListInsightsResponse",
+}) as any as S.Schema<ListInsightsResponse>;
 
 export interface ListInsightsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   dismissed?: boolean;
-  issueClass?: InsightsListForZoneRequestIssueClassList;
-  issueClassNeq?: InsightsListForZoneRequestIssueClassNeqList;
-  issueType?: InsightsListForZoneRequestIssueTypeList;
-  issueTypeNeq?: InsightsListForZoneRequestIssueTypeNeqList;
+  issueClass?: InsightsListRequestIssueClassList;
+  issueClassNeq?: InsightsListRequestIssueClassNeqList;
+  issueType?: InsightsListRequestIssueTypeList;
+  issueTypeNeq?: InsightsListRequestIssueTypeNeqList;
   /** Specifies the current page within paginated list of results. */
   page?: number;
   /** Sets the number of results per page of results. */
   perPage?: number;
-  product?: InsightsListForZoneRequestProductList;
-  productNeq?: InsightsListForZoneRequestProductNeqList;
-  severity?: InsightsListForZoneRequestSeverityList;
-  severityNeq?: InsightsListForZoneRequestSeverityNeqList;
-  subject?: InsightsListForZoneRequestSubjectList;
-  subjectNeq?: InsightsListForZoneRequestSubjectNeqList;
+  product?: InsightsListRequestProductList;
+  productNeq?: InsightsListRequestProductNeqList;
+  severity?: InsightsListRequestSeverityList;
+  severityNeq?: InsightsListRequestSeverityNeqList;
+  subject?: InsightsListRequestSubjectList;
+  subjectNeq?: InsightsListRequestSubjectNeqList;
 }
 export const ListInsightsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
     issueClass: S.optional(
-      InsightsListForZoneRequestIssueClassList.pipe(T.Query("issue_class")),
+      InsightsListRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
     issueClassNeq: S.optional(
-      InsightsListForZoneRequestIssueClassNeqList.pipe(
-        T.Query("issue_class~neq"),
-      ),
+      InsightsListRequestIssueClassNeqList.pipe(T.Query("issue_class~neq")),
     ),
     issueType: S.optional(
-      InsightsListForZoneRequestIssueTypeList.pipe(T.Query("issue_type")),
+      InsightsListRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
     issueTypeNeq: S.optional(
-      InsightsListForZoneRequestIssueTypeNeqList.pipe(
-        T.Query("issue_type~neq"),
-      ),
+      InsightsListRequestIssueTypeNeqList.pipe(T.Query("issue_type~neq")),
     ),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    product: S.optional(InsightsListForZoneRequestProductList.pipe(T.Query())),
+    product: S.optional(InsightsListRequestProductList.pipe(T.Query())),
     productNeq: S.optional(
-      InsightsListForZoneRequestProductNeqList.pipe(T.Query("product~neq")),
+      InsightsListRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
-    severity: S.optional(
-      InsightsListForZoneRequestSeverityList.pipe(T.Query()),
-    ),
+    severity: S.optional(InsightsListRequestSeverityList.pipe(T.Query())),
     severityNeq: S.optional(
-      InsightsListForZoneRequestSeverityNeqList.pipe(T.Query("severity~neq")),
+      InsightsListRequestSeverityNeqList.pipe(T.Query("severity~neq")),
     ),
-    subject: S.optional(InsightsListForZoneRequestSubjectList.pipe(T.Query())),
+    subject: S.optional(InsightsListRequestSubjectList.pipe(T.Query())),
     subjectNeq: S.optional(
-      InsightsListForZoneRequestSubjectNeqList.pipe(T.Query("subject~neq")),
+      InsightsListRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -2051,139 +1347,11 @@ export const ListInsightsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInsightsForZoneRequest",
 }) as any as S.Schema<ListInsightsForZoneRequest>;
 
-export type InsightsListForZoneResponseIssuesItemIssueType =
-  | "compliance_violation"
-  | "email_security"
-  | "exposed_infrastructure"
-  | "insecure_configuration"
-  | "weak_authentication"
-  | "configuration_suggestion"
-  | (string & {});
-export const InsightsListForZoneResponseIssuesItemIssueType =
-  /*@__PURE__*/ S.String;
-
-export interface InsightsListForZoneResponseIssuesItemPayload {
-  /** Describes the method used to detect insight. */
-  detectionMethod?: string;
-  zoneTag?: string;
-}
-export const InsightsListForZoneResponseIssuesItemPayload =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectionMethod: S.optional(S.String.pipe(T.Body("detection_method"))),
-      zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
-    }),
-  ).annotate({
-    identifier: "InsightsListForZoneResponseIssuesItemPayload",
-  }) as any as S.Schema<InsightsListForZoneResponseIssuesItemPayload>;
-
-export type InsightsListForZoneResponseIssuesItemSeverity =
-  | "Low"
-  | "Moderate"
-  | "Critical"
-  | (string & {});
-export const InsightsListForZoneResponseIssuesItemSeverity =
-  /*@__PURE__*/ S.String;
-
-export type InsightsListForZoneResponseIssuesItemStatus =
-  | "active"
-  | "resolved"
-  | (string & {});
-export const InsightsListForZoneResponseIssuesItemStatus =
-  /*@__PURE__*/ S.String;
-
-export type InsightsListForZoneResponseIssuesItemUserClassification =
+export type InsightsClassificationUpdateRequestClassification =
   | "false_positive"
   | "accept_risk"
-  | "other"
-  | (string & {});
-export const InsightsListForZoneResponseIssuesItemUserClassification =
-  /*@__PURE__*/ S.String;
-
-export interface InsightsListForZoneResponseIssuesItem {
-  id?: string;
-  dismissed?: boolean;
-  /** Indicates whether the insight has a large payload that requires fetching via the context endpoint. */
-  hasExtendedContext?: boolean;
-  issueClass?: string;
-  issueType?: InsightsListForZoneResponseIssuesItemIssueType;
-  payload?: InsightsListForZoneResponseIssuesItemPayload;
-  resolveLink?: string;
-  resolveText?: string;
-  severity?: InsightsListForZoneResponseIssuesItemSeverity;
-  since?: string;
-  /** The current status of the insight. */
-  status?: InsightsListForZoneResponseIssuesItemStatus;
-  subject?: string;
-  timestamp?: string;
-  /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
-  userClassification?: InsightsListForZoneResponseIssuesItemUserClassification;
-}
-export const InsightsListForZoneResponseIssuesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      dismissed: S.optional(S.Boolean),
-      hasExtendedContext: S.optional(
-        S.Boolean.pipe(T.Body("has_extended_context")),
-      ),
-      issueClass: S.optional(S.String.pipe(T.Body("issue_class"))),
-      issueType: S.optional(
-        InsightsListForZoneResponseIssuesItemIssueType.pipe(
-          T.Body("issue_type"),
-        ),
-      ),
-      payload: S.optional(InsightsListForZoneResponseIssuesItemPayload),
-      resolveLink: S.optional(S.String.pipe(T.Body("resolve_link"))),
-      resolveText: S.optional(S.String.pipe(T.Body("resolve_text"))),
-      severity: S.optional(InsightsListForZoneResponseIssuesItemSeverity),
-      since: S.optional(S.String),
-      status: S.optional(InsightsListForZoneResponseIssuesItemStatus),
-      subject: S.optional(S.String),
-      timestamp: S.optional(S.String),
-      userClassification: S.optional(
-        InsightsListForZoneResponseIssuesItemUserClassification.pipe(
-          T.Body("user_classification"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "InsightsListForZoneResponseIssuesItem",
-}) as any as S.Schema<InsightsListForZoneResponseIssuesItem>;
-
-export type InsightsListForZoneResponseIssuesList =
-  ReadonlyArray<InsightsListForZoneResponseIssuesItem>;
-export const InsightsListForZoneResponseIssuesList = /*@__PURE__*/ S.Array(
-  InsightsListForZoneResponseIssuesItem,
-) as any as S.Schema<InsightsListForZoneResponseIssuesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ListInsightsForZoneResponse {
-  /** Indicates the total number of results. */
-  count?: number;
-  issues?: InsightsListForZoneResponseIssuesList;
-  /** Specifies the current page within paginated list of results. */
-  page?: number;
-  /** Sets the number of results per page of results. */
-  perPage?: number;
-}
-export const ListInsightsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    issues: S.optional(InsightsListForZoneResponseIssuesList),
-    page: S.optional(S.Number),
-    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListInsightsForZoneResponse",
-}) as any as S.Schema<ListInsightsForZoneResponse>;
-
-export type InsightsClassificationUpdateForAccountRequestClassification =
-  | "false_positive"
-  | "accept_risk"
-  | "other"
-  | (string & {});
-export const InsightsClassificationUpdateForAccountRequestClassification =
+  | "other";
+export const InsightsClassificationUpdateRequestClassification =
   /*@__PURE__*/ S.String;
 
 export interface PatchInsightClassificationForAccountRequest {
@@ -2191,7 +1359,9 @@ export interface PatchInsightClassificationForAccountRequest {
   accountId: string;
   issueId: string;
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
-  classification?: InsightsClassificationUpdateForAccountRequestClassification;
+  classification?:
+    | InsightsClassificationUpdateRequestClassification
+    | (string & {});
   /** Rationale for the classification change. Required when classification is 'accept_risk' or 'other'. */
   rationale?: string;
 }
@@ -2201,7 +1371,7 @@ export const PatchInsightClassificationForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       issueId: S.String.pipe(T.Label("issue_id")),
       classification: S.optional(
-        InsightsClassificationUpdateForAccountRequestClassification,
+        InsightsClassificationUpdateRequestClassification,
       ),
       rationale: S.optional(S.String),
     })
@@ -2225,20 +1395,14 @@ export const PatchInsightClassificationForAccountResponse =
     identifier: "PatchInsightClassificationForAccountResponse",
   }) as any as S.Schema<PatchInsightClassificationForAccountResponse>;
 
-export type InsightsClassificationUpdateForZoneRequestClassification =
-  | "false_positive"
-  | "accept_risk"
-  | "other"
-  | (string & {});
-export const InsightsClassificationUpdateForZoneRequestClassification =
-  /*@__PURE__*/ S.String;
-
 export interface PatchInsightClassificationForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   issueId: string;
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
-  classification?: InsightsClassificationUpdateForZoneRequestClassification;
+  classification?:
+    | InsightsClassificationUpdateRequestClassification
+    | (string & {});
   /** Rationale for the classification change. Required when classification is 'accept_risk' or 'other'. */
   rationale?: string;
 }
@@ -2248,7 +1412,7 @@ export const PatchInsightClassificationForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       issueId: S.String.pipe(T.Label("issue_id")),
       classification: S.optional(
-        InsightsClassificationUpdateForZoneRequestClassification,
+        InsightsClassificationUpdateRequestClassification,
       ),
       rationale: S.optional(S.String),
     })
@@ -2306,12 +1470,12 @@ export type GetInsightClassForAccountError = CloudflareOpError;
 /** Retrieves Security Center insight counts aggregated by classification class. */
 export const getInsightClassForAccount: API.OperationMethod<
   GetInsightClassForAccountRequest,
-  GetInsightClassForAccountResponse,
+  GetInsightClassResponse,
   GetInsightClassForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInsightClassForAccountRequest,
-  output: GetInsightClassForAccountResponse,
+  output: GetInsightClassResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2321,12 +1485,12 @@ export type GetInsightClassForZoneError = CloudflareOpError;
 /** Retrieves Security Center insight counts aggregated by classification class. */
 export const getInsightClassForZone: API.OperationMethod<
   GetInsightClassForZoneRequest,
-  GetInsightClassForZoneResponse,
+  GetInsightClassResponse,
   GetInsightClassForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInsightClassForZoneRequest,
-  output: GetInsightClassForZoneResponse,
+  output: GetInsightClassResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2351,12 +1515,12 @@ export type GetInsightSeverityForAccountError = CloudflareOpError;
 /** Retrieves Security Center insight counts aggregated by severity level (critical, high, medium, low). */
 export const getInsightSeverityForAccount: API.OperationMethod<
   GetInsightSeverityForAccountRequest,
-  GetInsightSeverityForAccountResponse,
+  GetInsightSeverityResponse,
   GetInsightSeverityForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInsightSeverityForAccountRequest,
-  output: GetInsightSeverityForAccountResponse,
+  output: GetInsightSeverityResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2366,12 +1530,12 @@ export type GetInsightSeverityForZoneError = CloudflareOpError;
 /** Retrieves Security Center insight counts aggregated by severity level (critical, high, medium, low). */
 export const getInsightSeverityForZone: API.OperationMethod<
   GetInsightSeverityForZoneRequest,
-  GetInsightSeverityForZoneResponse,
+  GetInsightSeverityResponse,
   GetInsightSeverityForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInsightSeverityForZoneRequest,
-  output: GetInsightSeverityForZoneResponse,
+  output: GetInsightSeverityResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2381,12 +1545,12 @@ export type GetInsightTypeForAccountError = CloudflareOpError;
 /** Retrieves Security Center insight counts aggregated by insight type. */
 export const getInsightTypeForAccount: API.OperationMethod<
   GetInsightTypeForAccountRequest,
-  GetInsightTypeForAccountResponse,
+  GetInsightTypeResponse,
   GetInsightTypeForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInsightTypeForAccountRequest,
-  output: GetInsightTypeForAccountResponse,
+  output: GetInsightTypeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2396,12 +1560,12 @@ export type GetInsightTypeForZoneError = CloudflareOpError;
 /** Retrieves Security Center insight counts aggregated by insight type. */
 export const getInsightTypeForZone: API.OperationMethod<
   GetInsightTypeForZoneRequest,
-  GetInsightTypeForZoneResponse,
+  GetInsightTypeResponse,
   GetInsightTypeForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInsightTypeForZoneRequest,
-  output: GetInsightTypeForZoneResponse,
+  output: GetInsightTypeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2411,13 +1575,13 @@ export type ListByInsightInsightAuditLogForAccountError = CloudflareOpError;
 /** Lists audit log entries for a specific Security Center insight, showing changes to its status and classification over time. */
 export const listByInsightInsightAuditLogForAccount: API.PaginatedOperationMethod<
   ListByInsightInsightAuditLogForAccountRequest,
-  ListByInsightInsightAuditLogForAccountResponse,
+  ListByInsightInsightAuditLogResponse,
   ListByInsightInsightAuditLogForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListByInsightInsightAuditLogForAccountRequest,
-    output: ListByInsightInsightAuditLogForAccountResponse,
+    output: ListByInsightInsightAuditLogResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2436,13 +1600,13 @@ export type ListByInsightInsightAuditLogForZoneError = CloudflareOpError;
 /** Lists audit log entries for a specific Security Center insight, showing changes to its status and classification over time. */
 export const listByInsightInsightAuditLogForZone: API.PaginatedOperationMethod<
   ListByInsightInsightAuditLogForZoneRequest,
-  ListByInsightInsightAuditLogForZoneResponse,
+  ListByInsightInsightAuditLogResponse,
   ListByInsightInsightAuditLogForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListByInsightInsightAuditLogForZoneRequest,
-    output: ListByInsightInsightAuditLogForZoneResponse,
+    output: ListByInsightInsightAuditLogResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2461,13 +1625,13 @@ export type ListInsightAuditLogsForAccountError = CloudflareOpError;
 /** Lists audit log entries for all Security Center insights in the account or zone, showing changes to insight status and classification. */
 export const listInsightAuditLogsForAccount: API.PaginatedOperationMethod<
   ListInsightAuditLogsForAccountRequest,
-  ListInsightAuditLogsForAccountResponse,
+  ListInsightAuditLogsResponse,
   ListInsightAuditLogsForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInsightAuditLogsForAccountRequest,
-    output: ListInsightAuditLogsForAccountResponse,
+    output: ListInsightAuditLogsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2486,13 +1650,13 @@ export type ListInsightAuditLogsForZoneError = CloudflareOpError;
 /** Lists audit log entries for all Security Center insights in the account or zone, showing changes to insight status and classification. */
 export const listInsightAuditLogsForZone: API.PaginatedOperationMethod<
   ListInsightAuditLogsForZoneRequest,
-  ListInsightAuditLogsForZoneResponse,
+  ListInsightAuditLogsResponse,
   ListInsightAuditLogsForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInsightAuditLogsForZoneRequest,
-    output: ListInsightAuditLogsForZoneResponse,
+    output: ListInsightAuditLogsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2511,12 +1675,12 @@ export type ListInsightsForAccountError = CloudflareOpError;
 /** Lists all Security Center insights for the account or zone, showing security findings and recommendations. */
 export const listInsightsForAccount: API.OperationMethod<
   ListInsightsForAccountRequest,
-  ListInsightsForAccountResponse,
+  ListInsightsResponse,
   ListInsightsForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListInsightsForAccountRequest,
-  output: ListInsightsForAccountResponse,
+  output: ListInsightsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2526,12 +1690,12 @@ export type ListInsightsForZoneError = CloudflareOpError;
 /** Lists all Security Center insights for the account or zone, showing security findings and recommendations. */
 export const listInsightsForZone: API.OperationMethod<
   ListInsightsForZoneRequest,
-  ListInsightsForZoneResponse,
+  ListInsightsResponse,
   ListInsightsForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListInsightsForZoneRequest,
-  output: ListInsightsForZoneResponse,
+  output: ListInsightsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

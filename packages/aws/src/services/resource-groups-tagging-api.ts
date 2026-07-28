@@ -155,14 +155,10 @@ export const ResourceTypeFilterList = /*@__PURE__*/ S.Array(S.String);
 export type TagKey = string;
 export type TagKeyFilterList = string[];
 export const TagKeyFilterList = /*@__PURE__*/ S.Array(S.String);
-export type GroupByAttribute =
-  | "TARGET_ID"
-  | "REGION"
-  | "RESOURCE_TYPE"
-  | (string & {});
+export type GroupByAttribute = "TARGET_ID" | "REGION" | "RESOURCE_TYPE";
 export const GroupByAttribute = /*@__PURE__*/ S.String;
 
-export type GroupBy = GroupByAttribute[];
+export type GroupBy = (GroupByAttribute | (string & {}))[];
 export const GroupBy = /*@__PURE__*/ S.Array(GroupByAttribute);
 export type MaxResultsGetComplianceSummary = number;
 export type PaginationToken = string;
@@ -198,7 +194,7 @@ export const GetComplianceSummaryInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetComplianceSummaryInput",
 }) as any as S.Schema<GetComplianceSummaryInput>;
 export type LastUpdated = string;
-export type TargetIdType = "ACCOUNT" | "OU" | "ROOT" | (string & {});
+export type TargetIdType = "ACCOUNT" | "OU" | "ROOT";
 export const TargetIdType = /*@__PURE__*/ S.String;
 
 export type NonCompliantResources = number;
@@ -510,8 +506,7 @@ export const TagResourcesInput = /*@__PURE__*/ S.suspend(() =>
 export type StatusCode = number;
 export type ErrorCode =
   | "InternalServiceException"
-  | "InvalidParameterException"
-  | (string & {});
+  | "InvalidParameterException";
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export interface FailureInfo {

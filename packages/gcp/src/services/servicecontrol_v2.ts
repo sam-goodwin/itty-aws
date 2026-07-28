@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Describes a resource referenced in the request. */
@@ -74,30 +74,23 @@ export interface ResourceInfo {
   permission?: string;
 }
 export const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    container: S.optional(S.String),
-    name: S.optional(S.String),
-    permission: S.optional(S.String),
-  }),
+S.Struct({
+  "location": S.optional(S.String),
+  "type": S.optional(S.String),
+  "container": S.optional(S.String),
+  "name": S.optional(S.String),
+  "permission": S.optional(S.String),
+}),
 ).annotate({ identifier: "ResourceInfo" }) as any as S.Schema<ResourceInfo>;
 
 export type ResourceInfoList = ReadonlyArray<ResourceInfo>;
-export const ResourceInfoList = /*@__PURE__*/ S.Array(
-  ResourceInfo,
-) as any as S.Schema<ResourceInfoList>;
+export const ResourceInfoList = /*@__PURE__*/ S.Array(ResourceInfo) as any as S.Schema<ResourceInfoList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** This message defines attributes associated with OAuth credentials. */
 export interface Oauth {
@@ -105,9 +98,9 @@ export interface Oauth {
   clientId?: string;
 }
 export const Oauth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.optional(S.String),
-  }),
+S.Struct({
+  "clientId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Oauth" }) as any as S.Schema<Oauth>;
 
 /** This message defines request authentication attributes. Terminology is based on the JSON Web Token (JWT) standard, but the terms also correlate to concepts in other standards. */
@@ -128,22 +121,19 @@ export interface Auth {
   oauth?: Oauth;
 }
 export const Auth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principal: S.optional(S.String),
-    presenter: S.optional(S.String),
-    audiences: S.optional(StringList),
-    credentialId: S.optional(S.String),
-    accessLevels: S.optional(StringList),
-    claims: S.optional(DocumentMap),
-    oauth: S.optional(Oauth),
-  }),
+S.Struct({
+  "principal": S.optional(S.String),
+  "presenter": S.optional(S.String),
+  "audiences": S.optional(StringList),
+  "credentialId": S.optional(S.String),
+  "accessLevels": S.optional(StringList),
+  "claims": S.optional(DocumentMap),
+  "oauth": S.optional(Oauth),
+}),
 ).annotate({ identifier: "Auth" }) as any as S.Schema<Auth>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** This message defines attributes for an HTTP request. If the actual request is not an HTTP request, the runtime system should try to map the actual request to an equivalent HTTP request. */
 export interface Request {
@@ -175,21 +165,21 @@ export interface Request {
   reason?: string;
 }
 export const Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(S.String),
-    size: S.optional(S.String),
-    auth: S.optional(Auth),
-    headers: S.optional(StringMap),
-    path: S.optional(S.String),
-    origin: S.optional(S.String),
-    id: S.optional(S.String),
-    host: S.optional(S.String),
-    method: S.optional(S.String),
-    scheme: S.optional(S.String),
-    time: S.optional(S.String),
-    protocol: S.optional(S.String),
-    reason: S.optional(S.String),
-  }),
+S.Struct({
+  "query": S.optional(S.String),
+  "size": S.optional(S.String),
+  "auth": S.optional(Auth),
+  "headers": S.optional(StringMap),
+  "path": S.optional(S.String),
+  "origin": S.optional(S.String),
+  "id": S.optional(S.String),
+  "host": S.optional(S.String),
+  "method": S.optional(S.String),
+  "scheme": S.optional(S.String),
+  "time": S.optional(S.String),
+  "protocol": S.optional(S.String),
+  "reason": S.optional(S.String),
+}),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
 /** This message defines attributes associated with API operations, such as a network API request. The terminology is based on the conventions used by Google APIs, Istio, and OpenAPI. */
@@ -204,12 +194,12 @@ export interface Api {
   protocol?: string;
 }
 export const Api = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(S.String),
-    service: S.optional(S.String),
-    version: S.optional(S.String),
-    protocol: S.optional(S.String),
-  }),
+S.Struct({
+  "operation": S.optional(S.String),
+  "service": S.optional(S.String),
+  "version": S.optional(S.String),
+  "protocol": S.optional(S.String),
+}),
 ).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
 
 /** This message defines attributes for a typical network response. It generally models semantics of an HTTP response. */
@@ -226,13 +216,13 @@ export interface Response {
   backendLatency?: string;
 }
 export const Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    size: S.optional(S.String),
-    time: S.optional(S.String),
-    code: S.optional(S.String),
-    headers: S.optional(StringMap),
-    backendLatency: S.optional(S.String),
-  }),
+S.Struct({
+  "size": S.optional(S.String),
+  "time": S.optional(S.String),
+  "code": S.optional(S.String),
+  "headers": S.optional(StringMap),
+  "backendLatency": S.optional(S.String),
+}),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
 /** This message defines attributes for a node that handles a network request. The node can be either a service or an application that sends, forwards, or receives the request. Service peers should fill in `principal` and `labels` as appropriate. */
@@ -249,13 +239,13 @@ export interface Peer {
   regionCode?: string;
 }
 export const Peer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    port: S.optional(S.String),
-    ip: S.optional(S.String),
-    principal: S.optional(S.String),
-    labels: S.optional(StringMap),
-    regionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "port": S.optional(S.String),
+  "ip": S.optional(S.String),
+  "principal": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "regionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "Peer" }) as any as S.Schema<Peer>;
 
 /** This message defines core attributes for a resource. A resource is an addressable (named) entity provided by the destination service. For example, a file stored on a network storage service. */
@@ -286,26 +276,24 @@ export interface Resource {
   name?: string;
 }
 export const Resource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    service: S.optional(S.String),
-    labels: S.optional(StringMap),
-    displayName: S.optional(S.String),
-    uid: S.optional(S.String),
-    type: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    location: S.optional(S.String),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "service": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "displayName": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "type": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "location": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "deleteTime": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** This message defines the standard attribute vocabulary for Google APIs. An attribute is a piece of metadata that describes an activity on a network service. For example, the size of an HTTP request, or the status code of an HTTP response. Each attribute has a type and a name, which is logically defined as a proto message field in `AttributeContext`. The field type becomes the attribute type, and the field path becomes the attribute name. For example, the attribute `source.ip` maps to field `AttributeContext.source.ip`. This message definition is guaranteed not to have any wire breaking change. So you can use it directly for passing attributes across different systems. NOTE: Different system may generate different subset of attributes. Please verify the system specification before relying on an attribute generated a system. */
 export interface AttributeContext {
@@ -327,19 +315,17 @@ export interface AttributeContext {
   extensions?: DocumentMapList;
 }
 export const AttributeContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request: S.optional(Request),
-    api: S.optional(Api),
-    response: S.optional(Response),
-    source: S.optional(Peer),
-    destination: S.optional(Peer),
-    origin: S.optional(Peer),
-    resource: S.optional(Resource),
-    extensions: S.optional(DocumentMapList),
-  }),
-).annotate({
-  identifier: "AttributeContext",
-}) as any as S.Schema<AttributeContext>;
+S.Struct({
+  "request": S.optional(Request),
+  "api": S.optional(Api),
+  "response": S.optional(Response),
+  "source": S.optional(Peer),
+  "destination": S.optional(Peer),
+  "origin": S.optional(Peer),
+  "resource": S.optional(Resource),
+  "extensions": S.optional(DocumentMapList),
+}),
+).annotate({ identifier: "AttributeContext" }) as any as S.Schema<AttributeContext>;
 
 /** Request message for the Check method. */
 export interface CheckRequest {
@@ -353,12 +339,12 @@ export interface CheckRequest {
   attributes?: AttributeContext;
 }
 export const CheckRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: S.optional(ResourceInfoList),
-    flags: S.optional(S.String),
-    serviceConfigId: S.optional(S.String),
-    attributes: S.optional(AttributeContext),
-  }),
+S.Struct({
+  "resources": S.optional(ResourceInfoList),
+  "flags": S.optional(S.String),
+  "serviceConfigId": S.optional(S.String),
+  "attributes": S.optional(AttributeContext),
+}),
 ).annotate({ identifier: "CheckRequest" }) as any as S.Schema<CheckRequest>;
 
 export interface CheckServicesRequest {
@@ -368,19 +354,11 @@ export interface CheckServicesRequest {
   body?: CheckRequest;
 }
 export const CheckServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    body: S.optional(CheckRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/services/{serviceName}:check",
-      baseUrl: "https://servicecontrol.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CheckServicesRequest",
-}) as any as S.Schema<CheckServicesRequest>;
+S.Struct({
+  "serviceName": S.String.pipe(T.Label()),
+  "body": S.optional(CheckRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/services/{serviceName}:check","baseUrl":"https://servicecontrol.googleapis.com/"})),
+).annotate({ identifier: "CheckServicesRequest" }) as any as S.Schema<CheckServicesRequest>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -392,11 +370,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** Response message for the Check method. */
@@ -409,17 +387,15 @@ export interface CheckResponse {
   dynamicMetadata?: DocumentMap;
 }
 export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(Status),
-    headers: S.optional(StringMap),
-    dynamicMetadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "status": S.optional(Status),
+  "headers": S.optional(StringMap),
+  "dynamicMetadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
 export type AttributeContextList = ReadonlyArray<AttributeContext>;
-export const AttributeContextList = /*@__PURE__*/ S.Array(
-  AttributeContext,
-) as any as S.Schema<AttributeContextList>;
+export const AttributeContextList = /*@__PURE__*/ S.Array(AttributeContext) as any as S.Schema<AttributeContextList>;
 
 /** Request message for the Report method. */
 export interface ReportRequest {
@@ -429,10 +405,10 @@ export interface ReportRequest {
   operations?: AttributeContextList;
 }
 export const ReportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceConfigId: S.optional(S.String),
-    operations: S.optional(AttributeContextList),
-  }),
+S.Struct({
+  "serviceConfigId": S.optional(S.String),
+  "operations": S.optional(AttributeContextList),
+}),
 ).annotate({ identifier: "ReportRequest" }) as any as S.Schema<ReportRequest>;
 
 export interface ReportServicesRequest {
@@ -442,19 +418,11 @@ export interface ReportServicesRequest {
   body?: ReportRequest;
 }
 export const ReportServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    body: S.optional(ReportRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/services/{serviceName}:report",
-      baseUrl: "https://servicecontrol.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ReportServicesRequest",
-}) as any as S.Schema<ReportServicesRequest>;
+S.Struct({
+  "serviceName": S.String.pipe(T.Label()),
+  "body": S.optional(ReportRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/services/{serviceName}:report","baseUrl":"https://servicecontrol.googleapis.com/"})),
+).annotate({ identifier: "ReportServicesRequest" }) as any as S.Schema<ReportServicesRequest>;
 
 /** Response message for the Report method. */
 export interface ReportResponse {
@@ -462,17 +430,12 @@ export interface ReportResponse {
   extensions?: DocumentMap;
 }
 export const ReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extensions: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "extensions": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "ReportResponse" }) as any as S.Schema<ReportResponse>;
 
-export type CheckServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CheckServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** This method provides admission control for services that are integrated with [Service Infrastructure](https://cloud.google.com/service-infrastructure). It checks whether an operation should be allowed based on the service configuration and relevant policies. It must be called before the operation is executed. For more information, see [Admission Control](https://cloud.google.com/service-infrastructure/docs/admission-control). NOTE: The admission control has an expected policy propagation delay of 60s. The caller **must** not depend on the most recent policy changes. NOTE: The admission control has a hard limit of 1 referenced resources per call. If an operation refers to more than 1 resources, the caller must call the Check method multiple times. This method requires the `servicemanagement.services.check` permission on the specified service. For more information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control). */
 export const checkServices: API.OperationMethod<
   CheckServicesRequest,
@@ -487,12 +450,7 @@ export const checkServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReportServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ReportServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** This method provides telemetry reporting for services that are integrated with [Service Infrastructure](https://cloud.google.com/service-infrastructure). It reports a list of operations that have occurred on a service. It must be called after the operations have been executed. For more information, see [Telemetry Reporting](https://cloud.google.com/service-infrastructure/docs/telemetry-reporting). NOTE: The telemetry reporting has a hard limit of 100 operations and 1MB per Report call. This method requires the `servicemanagement.services.report` permission on the specified service. For more information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control). */
 export const reportServices: API.OperationMethod<
   ReportServicesRequest,
@@ -506,3 +464,4 @@ export const reportServices: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

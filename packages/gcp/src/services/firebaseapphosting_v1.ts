@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,33 +72,20 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
-export type BackendServingLocalityEnum =
-  | "SERVING_LOCALITY_UNSPECIFIED"
-  | "REGIONAL_STRICT"
-  | "GLOBAL_ACCESS"
-  | (string & {});
+export type BackendServingLocalityEnum = "SERVING_LOCALITY_UNSPECIFIED" | "REGIONAL_STRICT" | "GLOBAL_ACCESS";
 export const BackendServingLocalityEnum = /*@__PURE__*/ S.String;
 
 /** A managed Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service). */
@@ -109,9 +94,9 @@ export interface RunService {
   service?: string;
 }
 export const RunService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+}),
 ).annotate({ identifier: "RunService" }) as any as S.Schema<RunService>;
 
 /** An external resource managed by App Hosting on the project. */
@@ -120,23 +105,16 @@ export interface ManagedResource {
   runService?: RunService;
 }
 export const ManagedResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runService: S.optional(RunService),
-  }),
-).annotate({
-  identifier: "ManagedResource",
-}) as any as S.Schema<ManagedResource>;
+S.Struct({
+  "runService": S.optional(RunService),
+}),
+).annotate({ identifier: "ManagedResource" }) as any as S.Schema<ManagedResource>;
 
 export type ManagedResourceList = ReadonlyArray<ManagedResource>;
-export const ManagedResourceList = /*@__PURE__*/ S.Array(
-  ManagedResource,
-) as any as S.Schema<ManagedResourceList>;
+export const ManagedResourceList = /*@__PURE__*/ S.Array(ManagedResource) as any as S.Schema<ManagedResourceList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** The connection to an external source repository to watch for event-driven updates to the backend. */
 export interface Codebase {
@@ -146,10 +124,10 @@ export interface Codebase {
   rootDirectory?: string;
 }
 export const Codebase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository: S.optional(S.String),
-    rootDirectory: S.optional(S.String),
-  }),
+S.Struct({
+  "repository": S.optional(S.String),
+  "rootDirectory": S.optional(S.String),
+}),
 ).annotate({ identifier: "Codebase" }) as any as S.Schema<Codebase>;
 
 /** A backend is the primary resource of App Hosting. */
@@ -194,27 +172,27 @@ export interface Backend {
   labels?: StringMap;
 }
 export const Backend = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environment: S.optional(S.String),
-    etag: S.optional(S.String),
-    servingLocality: S.optional(BackendServingLocalityEnum),
-    createTime: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    mode: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    appId: S.optional(S.String),
-    managedResources: S.optional(ManagedResourceList),
-    annotations: S.optional(StringMap),
-    requestLogsDisabled: S.optional(S.Boolean),
-    serviceAccount: S.optional(S.String),
-    codebase: S.optional(Codebase),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "environment": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "servingLocality": S.optional(BackendServingLocalityEnum),
+  "createTime": S.optional(S.String),
+  "deleteTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "mode": S.optional(S.String),
+  "reconciling": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "appId": S.optional(S.String),
+  "managedResources": S.optional(ManagedResourceList),
+  "annotations": S.optional(StringMap),
+  "requestLogsDisabled": S.optional(S.Boolean),
+  "serviceAccount": S.optional(S.String),
+  "codebase": S.optional(Codebase),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Backend" }) as any as S.Schema<Backend>;
 
 export interface CreateProjectsLocationsBackendsRequest {
@@ -229,35 +207,21 @@ export interface CreateProjectsLocationsBackendsRequest {
   /** Request body */
   body?: Backend;
 }
-export const CreateProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      backendId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Backend.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/backends",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsBackendsRequest",
-}) as any as S.Schema<CreateProjectsLocationsBackendsRequest>;
+export const CreateProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "backendId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Backend.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/backends","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBackendsRequest" }) as any as S.Schema<CreateProjectsLocationsBackendsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -269,11 +233,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -290,13 +254,13 @@ export interface Operation {
   metadata?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    error: S.optional(Status),
-    done: S.optional(S.Boolean),
-    metadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "done": S.optional(S.Boolean),
+  "metadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Version control metadata for a user associated with a resolved codebase. Currently assumes a Git user. */
@@ -309,11 +273,11 @@ export interface UserMetadata {
   imageUri?: string;
 }
 export const UserMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    displayName: S.optional(S.String),
-    imageUri: S.optional(S.String),
-  }),
+S.Struct({
+  "email": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "imageUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "UserMetadata" }) as any as S.Schema<UserMetadata>;
 
 /** A codebase source, representing the state of the codebase that the build will be created at. */
@@ -338,17 +302,17 @@ export interface CodebaseSource {
   repository?: string;
 }
 export const CodebaseSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(S.String),
-    commit: S.optional(S.String),
-    hash: S.optional(S.String),
-    commitMessage: S.optional(S.String),
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    author: S.optional(UserMetadata),
-    commitTime: S.optional(S.String),
-    repository: S.optional(S.String),
-  }),
+S.Struct({
+  "branch": S.optional(S.String),
+  "commit": S.optional(S.String),
+  "hash": S.optional(S.String),
+  "commitMessage": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "author": S.optional(UserMetadata),
+  "commitTime": S.optional(S.String),
+  "repository": S.optional(S.String),
+}),
 ).annotate({ identifier: "CodebaseSource" }) as any as S.Schema<CodebaseSource>;
 
 /** The URI of an Artifact Registry [container image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages) to use as the build source. */
@@ -357,12 +321,10 @@ export interface ContainerSource {
   image?: string;
 }
 export const ContainerSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContainerSource",
-}) as any as S.Schema<ContainerSource>;
+S.Struct({
+  "image": S.optional(S.String),
+}),
+).annotate({ identifier: "ContainerSource" }) as any as S.Schema<ContainerSource>;
 
 /** Deprecated: Not used. Metadata for the user who started the build. */
 export interface SourceUserMetadata {
@@ -374,14 +336,12 @@ export interface SourceUserMetadata {
   email?: string;
 }
 export const SourceUserMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    imageUri: S.optional(S.String),
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SourceUserMetadata",
-}) as any as S.Schema<SourceUserMetadata>;
+S.Struct({
+  "displayName": S.optional(S.String),
+  "imageUri": S.optional(S.String),
+  "email": S.optional(S.String),
+}),
+).annotate({ identifier: "SourceUserMetadata" }) as any as S.Schema<SourceUserMetadata>;
 
 /** The URI of an storage archive or a signed URL to use as the build source. */
 export interface ArchiveSource {
@@ -397,13 +357,13 @@ export interface ArchiveSource {
   userStorageUri?: string;
 }
 export const ArchiveSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalSignedUri: S.optional(S.String),
-    description: S.optional(S.String),
-    rootDirectory: S.optional(S.String),
-    author: S.optional(SourceUserMetadata),
-    userStorageUri: S.optional(S.String),
-  }),
+S.Struct({
+  "externalSignedUri": S.optional(S.String),
+  "description": S.optional(S.String),
+  "rootDirectory": S.optional(S.String),
+  "author": S.optional(SourceUserMetadata),
+  "userStorageUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "ArchiveSource" }) as any as S.Schema<ArchiveSource>;
 
 /** The source for the build. */
@@ -416,18 +376,14 @@ export interface BuildSource {
   archive?: ArchiveSource;
 }
 export const BuildSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codebase: S.optional(CodebaseSource),
-    container: S.optional(ContainerSource),
-    archive: S.optional(ArchiveSource),
-  }),
+S.Struct({
+  "codebase": S.optional(CodebaseSource),
+  "container": S.optional(ContainerSource),
+  "archive": S.optional(ArchiveSource),
+}),
 ).annotate({ identifier: "BuildSource" }) as any as S.Schema<BuildSource>;
 
-export type Firebaseapphosting_ErrorErrorSourceEnum =
-  | "ERROR_SOURCE_UNSPECIFIED"
-  | "CLOUD_BUILD"
-  | "CLOUD_RUN"
-  | (string & {});
+export type Firebaseapphosting_ErrorErrorSourceEnum = "ERROR_SOURCE_UNSPECIFIED" | "CLOUD_BUILD" | "CLOUD_RUN";
 export const Firebaseapphosting_ErrorErrorSourceEnum = /*@__PURE__*/ S.String;
 
 /** The container for the rpc status and source for any errors found during the build process. */
@@ -440,42 +396,23 @@ export interface Firebaseapphosting_Error {
   cloudResource?: string;
 }
 export const Firebaseapphosting_Error = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(Status),
-    errorSource: S.optional(Firebaseapphosting_ErrorErrorSourceEnum),
-    cloudResource: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Firebaseapphosting_Error",
-}) as any as S.Schema<Firebaseapphosting_Error>;
+S.Struct({
+  "error": S.optional(Status),
+  "errorSource": S.optional(Firebaseapphosting_ErrorErrorSourceEnum),
+  "cloudResource": S.optional(S.String),
+}),
+).annotate({ identifier: "Firebaseapphosting_Error" }) as any as S.Schema<Firebaseapphosting_Error>;
 
-export type Firebaseapphosting_ErrorList =
-  ReadonlyArray<Firebaseapphosting_Error>;
-export const Firebaseapphosting_ErrorList = /*@__PURE__*/ S.Array(
-  Firebaseapphosting_Error,
-) as any as S.Schema<Firebaseapphosting_ErrorList>;
+export type Firebaseapphosting_ErrorList = ReadonlyArray<Firebaseapphosting_Error>;
+export const Firebaseapphosting_ErrorList = /*@__PURE__*/ S.Array(Firebaseapphosting_Error) as any as S.Schema<Firebaseapphosting_ErrorList>;
 
-export type EnvironmentVariableAvailabilityItemEnum =
-  | "AVAILABILITY_UNSPECIFIED"
-  | "BUILD"
-  | "RUNTIME"
-  | (string & {});
+export type EnvironmentVariableAvailabilityItemEnum = "AVAILABILITY_UNSPECIFIED" | "BUILD" | "RUNTIME";
 export const EnvironmentVariableAvailabilityItemEnum = /*@__PURE__*/ S.String;
 
-export type EnvironmentVariableAvailabilityItemEnumList =
-  ReadonlyArray<EnvironmentVariableAvailabilityItemEnum>;
-export const EnvironmentVariableAvailabilityItemEnumList =
-  /*@__PURE__*/ S.Array(
-    EnvironmentVariableAvailabilityItemEnum,
-  ) as any as S.Schema<EnvironmentVariableAvailabilityItemEnumList>;
+export type EnvironmentVariableAvailabilityItemEnumList = ReadonlyArray<EnvironmentVariableAvailabilityItemEnum>;
+export const EnvironmentVariableAvailabilityItemEnumList = /*@__PURE__*/ S.Array(EnvironmentVariableAvailabilityItemEnum) as any as S.Schema<EnvironmentVariableAvailabilityItemEnumList>;
 
-export type EnvironmentVariableOriginEnum =
-  | "ORIGIN_UNSPECIFIED"
-  | "BACKEND_OVERRIDES"
-  | "BUILD_CONFIG"
-  | "APPHOSTING_YAML"
-  | "FIREBASE_SYSTEM"
-  | (string & {});
+export type EnvironmentVariableOriginEnum = "ORIGIN_UNSPECIFIED" | "BACKEND_OVERRIDES" | "BUILD_CONFIG" | "APPHOSTING_YAML" | "FIREBASE_SYSTEM";
 export const EnvironmentVariableOriginEnum = /*@__PURE__*/ S.String;
 
 /** Environment variables for this build. */
@@ -494,22 +431,18 @@ export interface EnvironmentVariable {
   value?: string;
 }
 export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availability: S.optional(EnvironmentVariableAvailabilityItemEnumList),
-    secret: S.optional(S.String),
-    variable: S.optional(S.String),
-    origin: S.optional(EnvironmentVariableOriginEnum),
-    originFileName: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnvironmentVariable",
-}) as any as S.Schema<EnvironmentVariable>;
+S.Struct({
+  "availability": S.optional(EnvironmentVariableAvailabilityItemEnumList),
+  "secret": S.optional(S.String),
+  "variable": S.optional(S.String),
+  "origin": S.optional(EnvironmentVariableOriginEnum),
+  "originFileName": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "EnvironmentVariable" }) as any as S.Schema<EnvironmentVariable>;
 
 export type EnvironmentVariableList = ReadonlyArray<EnvironmentVariable>;
-export const EnvironmentVariableList = /*@__PURE__*/ S.Array(
-  EnvironmentVariable,
-) as any as S.Schema<EnvironmentVariableList>;
+export const EnvironmentVariableList = /*@__PURE__*/ S.Array(EnvironmentVariable) as any as S.Schema<EnvironmentVariableList>;
 
 /** Configuration applied to the Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service). */
 export interface RunConfig {
@@ -525,13 +458,13 @@ export interface RunConfig {
   concurrency?: number;
 }
 export const RunConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpu: S.optional(S.Number),
-    minInstances: S.optional(S.Number),
-    maxInstances: S.optional(S.Number),
-    memoryMib: S.optional(S.Number),
-    concurrency: S.optional(S.Number),
-  }),
+S.Struct({
+  "cpu": S.optional(S.Number),
+  "minInstances": S.optional(S.Number),
+  "maxInstances": S.optional(S.Number),
+  "memoryMib": S.optional(S.Number),
+  "concurrency": S.optional(S.Number),
+}),
 ).annotate({ identifier: "RunConfig" }) as any as S.Schema<RunConfig>;
 
 /** Additional configuration of the backend for this build. */
@@ -544,23 +477,14 @@ export interface Config {
   runConfig?: RunConfig;
 }
 export const Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    effectiveEnv: S.optional(EnvironmentVariableList),
-    env: S.optional(EnvironmentVariableList),
-    runConfig: S.optional(RunConfig),
-  }),
+S.Struct({
+  "effectiveEnv": S.optional(EnvironmentVariableList),
+  "env": S.optional(EnvironmentVariableList),
+  "runConfig": S.optional(RunConfig),
+}),
 ).annotate({ identifier: "Config" }) as any as S.Schema<Config>;
 
-export type BuildStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "BUILDING"
-  | "BUILT"
-  | "DEPLOYING"
-  | "READY"
-  | "FAILED"
-  | "SKIPPED"
-  | "EXPIRED"
-  | (string & {});
+export type BuildStateEnum = "STATE_UNSPECIFIED" | "BUILDING" | "BUILT" | "DEPLOYING" | "READY" | "FAILED" | "SKIPPED" | "EXPIRED";
 export const BuildStateEnum = /*@__PURE__*/ S.String;
 
 /** A single build for a backend, at a specific point codebase reference tag and point in time. Encapsulates several resources, including an Artifact Registry container image, a Cloud Build invocation that built the image, and the Cloud Run revision that uses that image. */
@@ -601,25 +525,25 @@ export interface Build {
   state?: BuildStateEnum;
 }
 export const Build = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    labels: S.optional(StringMap),
-    updateTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
-    buildLogsUri: S.optional(S.String),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    source: S.optional(BuildSource),
-    errors: S.optional(Firebaseapphosting_ErrorList),
-    environment: S.optional(S.String),
-    etag: S.optional(S.String),
-    config: S.optional(Config),
-    state: S.optional(BuildStateEnum),
-  }),
+S.Struct({
+  "image": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "labels": S.optional(StringMap),
+  "updateTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "reconciling": S.optional(S.Boolean),
+  "buildLogsUri": S.optional(S.String),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "deleteTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "source": S.optional(BuildSource),
+  "errors": S.optional(Firebaseapphosting_ErrorList),
+  "environment": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "config": S.optional(Config),
+  "state": S.optional(BuildStateEnum),
+}),
 ).annotate({ identifier: "Build" }) as any as S.Schema<Build>;
 
 export interface CreateProjectsLocationsBackendsBuildsRequest {
@@ -634,76 +558,32 @@ export interface CreateProjectsLocationsBackendsBuildsRequest {
   /** Request body */
   body?: Build;
 }
-export const CreateProjectsLocationsBackendsBuildsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      buildId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(Build.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/builds",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsBackendsBuildsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsBackendsBuildsRequest>;
+export const CreateProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "buildId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Build.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/builds","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBackendsBuildsRequest" }) as any as S.Schema<CreateProjectsLocationsBackendsBuildsRequest>;
 
-export type CustomDomainStatusCertStateEnum =
-  | "CERT_STATE_UNSPECIFIED"
-  | "CERT_PREPARING"
-  | "CERT_VALIDATING"
-  | "CERT_PROPAGATING"
-  | "CERT_ACTIVE"
-  | "CERT_EXPIRING_SOON"
-  | "CERT_EXPIRED"
-  | (string & {});
+export type CustomDomainStatusCertStateEnum = "CERT_STATE_UNSPECIFIED" | "CERT_PREPARING" | "CERT_VALIDATING" | "CERT_PROPAGATING" | "CERT_ACTIVE" | "CERT_EXPIRING_SOON" | "CERT_EXPIRED";
 export const CustomDomainStatusCertStateEnum = /*@__PURE__*/ S.String;
 
-export type CustomDomainStatusHostStateEnum =
-  | "HOST_STATE_UNSPECIFIED"
-  | "HOST_UNHOSTED"
-  | "HOST_UNREACHABLE"
-  | "HOST_NON_FAH"
-  | "HOST_CONFLICT"
-  | "HOST_WRONG_SHARD"
-  | "HOST_ACTIVE"
-  | (string & {});
+export type CustomDomainStatusHostStateEnum = "HOST_STATE_UNSPECIFIED" | "HOST_UNHOSTED" | "HOST_UNREACHABLE" | "HOST_NON_FAH" | "HOST_CONFLICT" | "HOST_WRONG_SHARD" | "HOST_ACTIVE";
 export const CustomDomainStatusHostStateEnum = /*@__PURE__*/ S.String;
 
-export type DnsRecordRelevantStateItemEnum =
-  | "CUSTOM_DOMAIN_STATE_UNSPECIFIED"
-  | "HOST_STATE"
-  | "OWNERSHIP_STATE"
-  | "CERT_STATE"
-  | (string & {});
+export type DnsRecordRelevantStateItemEnum = "CUSTOM_DOMAIN_STATE_UNSPECIFIED" | "HOST_STATE" | "OWNERSHIP_STATE" | "CERT_STATE";
 export const DnsRecordRelevantStateItemEnum = /*@__PURE__*/ S.String;
 
-export type DnsRecordRelevantStateItemEnumList =
-  ReadonlyArray<DnsRecordRelevantStateItemEnum>;
-export const DnsRecordRelevantStateItemEnumList = /*@__PURE__*/ S.Array(
-  DnsRecordRelevantStateItemEnum,
-) as any as S.Schema<DnsRecordRelevantStateItemEnumList>;
+export type DnsRecordRelevantStateItemEnumList = ReadonlyArray<DnsRecordRelevantStateItemEnum>;
+export const DnsRecordRelevantStateItemEnumList = /*@__PURE__*/ S.Array(DnsRecordRelevantStateItemEnum) as any as S.Schema<DnsRecordRelevantStateItemEnumList>;
 
-export type DnsRecordRequiredActionEnum =
-  | "NONE"
-  | "ADD"
-  | "REMOVE"
-  | (string & {});
+export type DnsRecordRequiredActionEnum = "NONE" | "ADD" | "REMOVE";
 export const DnsRecordRequiredActionEnum = /*@__PURE__*/ S.String;
 
-export type DnsRecordTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "A"
-  | "CNAME"
-  | "TXT"
-  | "AAAA"
-  | "CAA"
-  | (string & {});
+export type DnsRecordTypeEnum = "TYPE_UNSPECIFIED" | "A" | "CNAME" | "TXT" | "AAAA" | "CAA";
 export const DnsRecordTypeEnum = /*@__PURE__*/ S.String;
 
 /** A representation of a DNS records for a domain. DNS records are resource records that define how systems and services should behave when handling requests for a domain. For example, when you add `A` records to your domain's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain (such as your App Hosting files). */
@@ -720,19 +600,17 @@ export interface DnsRecord {
   type?: DnsRecordTypeEnum;
 }
 export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rdata: S.optional(S.String),
-    relevantState: S.optional(DnsRecordRelevantStateItemEnumList),
-    requiredAction: S.optional(DnsRecordRequiredActionEnum),
-    domainName: S.optional(S.String),
-    type: S.optional(DnsRecordTypeEnum),
-  }),
+S.Struct({
+  "rdata": S.optional(S.String),
+  "relevantState": S.optional(DnsRecordRelevantStateItemEnumList),
+  "requiredAction": S.optional(DnsRecordRequiredActionEnum),
+  "domainName": S.optional(S.String),
+  "type": S.optional(DnsRecordTypeEnum),
+}),
 ).annotate({ identifier: "DnsRecord" }) as any as S.Schema<DnsRecord>;
 
 export type DnsRecordList = ReadonlyArray<DnsRecord>;
-export const DnsRecordList = /*@__PURE__*/ S.Array(
-  DnsRecord,
-) as any as S.Schema<DnsRecordList>;
+export const DnsRecordList = /*@__PURE__*/ S.Array(DnsRecord) as any as S.Schema<DnsRecordList>;
 
 /** A set of DNS records relevant to the setup and maintenance of a custom domain in App Hosting. */
 export interface DnsRecordSet {
@@ -744,17 +622,15 @@ export interface DnsRecordSet {
   domainName?: string;
 }
 export const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkError: S.optional(Status),
-    records: S.optional(DnsRecordList),
-    domainName: S.optional(S.String),
-  }),
+S.Struct({
+  "checkError": S.optional(Status),
+  "records": S.optional(DnsRecordList),
+  "domainName": S.optional(S.String),
+}),
 ).annotate({ identifier: "DnsRecordSet" }) as any as S.Schema<DnsRecordSet>;
 
 export type DnsRecordSetList = ReadonlyArray<DnsRecordSet>;
-export const DnsRecordSetList = /*@__PURE__*/ S.Array(
-  DnsRecordSet,
-) as any as S.Schema<DnsRecordSetList>;
+export const DnsRecordSetList = /*@__PURE__*/ S.Array(DnsRecordSet) as any as S.Schema<DnsRecordSetList>;
 
 /** A set of DNS record updates that you should make to allow App Hosting to serve secure content in response to requests against your domain. These updates present the current state of your domain's and related subdomains' DNS records when App Hosting last queried them, and the desired set of records that App Hosting needs to see before your custom domain can be fully active. */
 export interface DnsUpdates {
@@ -768,34 +644,22 @@ export interface DnsUpdates {
   checkTime?: string;
 }
 export const DnsUpdates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainName: S.optional(S.String),
-    discovered: S.optional(DnsRecordSetList),
-    desired: S.optional(DnsRecordSetList),
-    checkTime: S.optional(S.String),
-  }),
+S.Struct({
+  "domainName": S.optional(S.String),
+  "discovered": S.optional(DnsRecordSetList),
+  "desired": S.optional(DnsRecordSetList),
+  "checkTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "DnsUpdates" }) as any as S.Schema<DnsUpdates>;
 
 export type DnsUpdatesList = ReadonlyArray<DnsUpdates>;
-export const DnsUpdatesList = /*@__PURE__*/ S.Array(
-  DnsUpdates,
-) as any as S.Schema<DnsUpdatesList>;
+export const DnsUpdatesList = /*@__PURE__*/ S.Array(DnsUpdates) as any as S.Schema<DnsUpdatesList>;
 
-export type CustomDomainStatusOwnershipStateEnum =
-  | "OWNERSHIP_STATE_UNSPECIFIED"
-  | "OWNERSHIP_MISSING"
-  | "OWNERSHIP_UNREACHABLE"
-  | "OWNERSHIP_MISMATCH"
-  | "OWNERSHIP_CONFLICT"
-  | "OWNERSHIP_PENDING"
-  | "OWNERSHIP_ACTIVE"
-  | (string & {});
+export type CustomDomainStatusOwnershipStateEnum = "OWNERSHIP_STATE_UNSPECIFIED" | "OWNERSHIP_MISSING" | "OWNERSHIP_UNREACHABLE" | "OWNERSHIP_MISMATCH" | "OWNERSHIP_CONFLICT" | "OWNERSHIP_PENDING" | "OWNERSHIP_ACTIVE";
 export const CustomDomainStatusOwnershipStateEnum = /*@__PURE__*/ S.String;
 
 export type StatusList = ReadonlyArray<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(
-  Status,
-) as any as S.Schema<StatusList>;
+export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 /** The status of a custom domain's linkage to a backend. */
 export interface CustomDomainStatus {
@@ -811,16 +675,14 @@ export interface CustomDomainStatus {
   issues?: StatusList;
 }
 export const CustomDomainStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certState: S.optional(CustomDomainStatusCertStateEnum),
-    hostState: S.optional(CustomDomainStatusHostStateEnum),
-    requiredDnsUpdates: S.optional(DnsUpdatesList),
-    ownershipState: S.optional(CustomDomainStatusOwnershipStateEnum),
-    issues: S.optional(StatusList),
-  }),
-).annotate({
-  identifier: "CustomDomainStatus",
-}) as any as S.Schema<CustomDomainStatus>;
+S.Struct({
+  "certState": S.optional(CustomDomainStatusCertStateEnum),
+  "hostState": S.optional(CustomDomainStatusHostStateEnum),
+  "requiredDnsUpdates": S.optional(DnsUpdatesList),
+  "ownershipState": S.optional(CustomDomainStatusOwnershipStateEnum),
+  "issues": S.optional(StatusList),
+}),
+).annotate({ identifier: "CustomDomainStatus" }) as any as S.Schema<CustomDomainStatus>;
 
 /** Specifies redirect behavior for a domain. */
 export interface Redirect {
@@ -830,10 +692,10 @@ export interface Redirect {
   status?: string;
 }
 export const Redirect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    status: S.optional(S.String),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "status": S.optional(S.String),
+}),
 ).annotate({ identifier: "Redirect" }) as any as S.Schema<Redirect>;
 
 /** Indicates whether App Hosting will serve content on the domain. */
@@ -842,18 +704,12 @@ export interface ServingBehavior {
   redirect?: Redirect;
 }
 export const ServingBehavior = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    redirect: S.optional(Redirect),
-  }),
-).annotate({
-  identifier: "ServingBehavior",
-}) as any as S.Schema<ServingBehavior>;
+S.Struct({
+  "redirect": S.optional(Redirect),
+}),
+).annotate({ identifier: "ServingBehavior" }) as any as S.Schema<ServingBehavior>;
 
-export type DomainTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "DEFAULT"
-  | "CUSTOM"
-  | (string & {});
+export type DomainTypeEnum = "TYPE_UNSPECIFIED" | "DEFAULT" | "CUSTOM";
 export const DomainTypeEnum = /*@__PURE__*/ S.String;
 
 /** A domain name that is associated with a backend. */
@@ -888,22 +744,22 @@ export interface Domain {
   reconciling?: boolean;
 }
 export const Domain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customDomainStatus: S.optional(CustomDomainStatus),
-    createTime: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    serve: S.optional(ServingBehavior),
-    etag: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    type: S.optional(DomainTypeEnum),
-    updateTime: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "customDomainStatus": S.optional(CustomDomainStatus),
+  "createTime": S.optional(S.String),
+  "deleteTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "disabled": S.optional(S.Boolean),
+  "serve": S.optional(ServingBehavior),
+  "etag": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "type": S.optional(DomainTypeEnum),
+  "updateTime": S.optional(S.String),
+  "reconciling": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 
 export interface CreateProjectsLocationsBackendsDomainsRequest {
@@ -918,36 +774,17 @@ export interface CreateProjectsLocationsBackendsDomainsRequest {
   /** Request body */
   body?: Domain;
 }
-export const CreateProjectsLocationsBackendsDomainsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      domainId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(Domain.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/domains",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsBackendsDomainsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsBackendsDomainsRequest>;
+export const CreateProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "domainId": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Domain.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/domains","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBackendsDomainsRequest" }) as any as S.Schema<CreateProjectsLocationsBackendsDomainsRequest>;
 
-export type RolloutStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "QUEUED"
-  | "PENDING_BUILD"
-  | "PROGRESSING"
-  | "PAUSED"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "CANCELLED"
-  | "SKIPPED"
-  | (string & {});
+export type RolloutStateEnum = "STATE_UNSPECIFIED" | "QUEUED" | "PENDING_BUILD" | "PROGRESSING" | "PAUSED" | "SUCCEEDED" | "FAILED" | "CANCELLED" | "SKIPPED";
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** A single rollout of a build for a backend. */
@@ -980,21 +817,21 @@ export interface Rollout {
   labels?: StringMap;
 }
 export const Rollout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    state: S.optional(RolloutStateEnum),
-    createTime: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    build: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    error: S.optional(Status),
-    annotations: S.optional(StringMap),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "state": S.optional(RolloutStateEnum),
+  "createTime": S.optional(S.String),
+  "deleteTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "build": S.optional(S.String),
+  "reconciling": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "error": S.optional(Status),
+  "annotations": S.optional(StringMap),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Rollout" }) as any as S.Schema<Rollout>;
 
 export interface CreateProjectsLocationsBackendsRolloutsRequest {
@@ -1009,24 +846,15 @@ export interface CreateProjectsLocationsBackendsRolloutsRequest {
   /** Request body */
   body?: Rollout;
 }
-export const CreateProjectsLocationsBackendsRolloutsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      rolloutId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(Rollout.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/rollouts",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsBackendsRolloutsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsBackendsRolloutsRequest>;
+export const CreateProjectsLocationsBackendsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "rolloutId": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Rollout.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/rollouts","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBackendsRolloutsRequest" }) as any as S.Schema<CreateProjectsLocationsBackendsRolloutsRequest>;
 
 export interface DeleteProjectsLocationsBackendsRequest {
   /** Optional. Indicates that the request should be validated, without persisting the request or updating any resources. */
@@ -1040,24 +868,15 @@ export interface DeleteProjectsLocationsBackendsRequest {
   /** Optional. If set to true, any resources for this backend will also be deleted. Otherwise, any children resources will block deletion. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      etag: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsBackendsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsBackendsRequest>;
+export const DeleteProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "etag": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBackendsRequest" }) as any as S.Schema<DeleteProjectsLocationsBackendsRequest>;
 
 export interface DeleteProjectsLocationsBackendsBuildsRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`. */
@@ -1069,23 +888,14 @@ export interface DeleteProjectsLocationsBackendsBuildsRequest {
   /** Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error. */
   etag?: string;
 }
-export const DeleteProjectsLocationsBackendsBuildsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsBackendsBuildsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsBackendsBuildsRequest>;
+export const DeleteProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBackendsBuildsRequest" }) as any as S.Schema<DeleteProjectsLocationsBackendsBuildsRequest>;
 
 export interface DeleteProjectsLocationsBackendsDomainsRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`. */
@@ -1097,60 +907,34 @@ export interface DeleteProjectsLocationsBackendsDomainsRequest {
   /** Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error. */
   etag?: string;
 }
-export const DeleteProjectsLocationsBackendsDomainsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsBackendsDomainsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsBackendsDomainsRequest>;
+export const DeleteProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBackendsDomainsRequest" }) as any as S.Schema<DeleteProjectsLocationsBackendsDomainsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://firebaseapphosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1166,13 +950,13 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    locationId: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "locationId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsBackendsRequest {
@@ -1180,94 +964,50 @@ export interface GetProjectsLocationsBackendsRequest {
   name: string;
 }
 export const GetProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://firebaseapphosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsBackendsRequest",
-}) as any as S.Schema<GetProjectsLocationsBackendsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackendsRequest" }) as any as S.Schema<GetProjectsLocationsBackendsRequest>;
 
 export interface GetProjectsLocationsBackendsBuildsRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`. */
   name: string;
 }
-export const GetProjectsLocationsBackendsBuildsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBackendsBuildsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBackendsBuildsRequest>;
+export const GetProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackendsBuildsRequest" }) as any as S.Schema<GetProjectsLocationsBackendsBuildsRequest>;
 
 export interface GetProjectsLocationsBackendsDomainsRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`. */
   name: string;
 }
-export const GetProjectsLocationsBackendsDomainsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBackendsDomainsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBackendsDomainsRequest>;
+export const GetProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackendsDomainsRequest" }) as any as S.Schema<GetProjectsLocationsBackendsDomainsRequest>;
 
 export interface GetProjectsLocationsBackendsRolloutsRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/rollouts/{rolloutId}`. */
   name: string;
 }
-export const GetProjectsLocationsBackendsRolloutsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBackendsRolloutsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBackendsRolloutsRequest>;
+export const GetProjectsLocationsBackendsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackendsRolloutsRequest" }) as any as S.Schema<GetProjectsLocationsBackendsRolloutsRequest>;
 
 export interface GetProjectsLocationsBackendsTrafficRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`. */
   name: string;
 }
-export const GetProjectsLocationsBackendsTrafficRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBackendsTrafficRequest",
-  }) as any as S.Schema<GetProjectsLocationsBackendsTrafficRequest>;
+export const GetProjectsLocationsBackendsTrafficRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackendsTrafficRequest" }) as any as S.Schema<GetProjectsLocationsBackendsTrafficRequest>;
 
 /** The traffic allocation for the backend. */
 export interface TrafficSplit {
@@ -1277,16 +1017,14 @@ export interface TrafficSplit {
   percent?: number;
 }
 export const TrafficSplit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    build: S.optional(S.String),
-    percent: S.optional(S.Number),
-  }),
+S.Struct({
+  "build": S.optional(S.String),
+  "percent": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TrafficSplit" }) as any as S.Schema<TrafficSplit>;
 
 export type TrafficSplitList = ReadonlyArray<TrafficSplit>;
-export const TrafficSplitList = /*@__PURE__*/ S.Array(
-  TrafficSplit,
-) as any as S.Schema<TrafficSplitList>;
+export const TrafficSplitList = /*@__PURE__*/ S.Array(TrafficSplit) as any as S.Schema<TrafficSplitList>;
 
 /** A list of traffic splits that together represent where traffic is being routed. */
 export interface TrafficSet {
@@ -1294,17 +1032,12 @@ export interface TrafficSet {
   splits?: TrafficSplitList;
 }
 export const TrafficSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    splits: S.optional(TrafficSplitList),
-  }),
+S.Struct({
+  "splits": S.optional(TrafficSplitList),
+}),
 ).annotate({ identifier: "TrafficSet" }) as any as S.Schema<TrafficSet>;
 
-export type PathTypeEnum =
-  | "PATTERN_TYPE_UNSPECIFIED"
-  | "RE2"
-  | "GLOB"
-  | "PREFIX"
-  | (string & {});
+export type PathTypeEnum = "PATTERN_TYPE_UNSPECIFIED" | "RE2" | "GLOB" | "PREFIX";
 export const PathTypeEnum = /*@__PURE__*/ S.String;
 
 /** A file path pattern to match against. */
@@ -1315,16 +1048,14 @@ export interface Path {
   type?: PathTypeEnum;
 }
 export const Path = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.optional(S.String),
-    type: S.optional(PathTypeEnum),
-  }),
+S.Struct({
+  "pattern": S.optional(S.String),
+  "type": S.optional(PathTypeEnum),
+}),
 ).annotate({ identifier: "Path" }) as any as S.Schema<Path>;
 
 export type PathList = ReadonlyArray<Path>;
-export const PathList = /*@__PURE__*/ S.Array(
-  Path,
-) as any as S.Schema<PathList>;
+export const PathList = /*@__PURE__*/ S.Array(Path) as any as S.Schema<PathList>;
 
 /** The policy for how automatic builds and rollouts are triggered and rolled out. */
 export interface RolloutPolicy {
@@ -1340,13 +1071,13 @@ export interface RolloutPolicy {
   ignoredPaths?: PathList;
 }
 export const RolloutPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabledTime: S.optional(S.String),
-    requiredPaths: S.optional(PathList),
-    codebaseBranch: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    ignoredPaths: S.optional(PathList),
-  }),
+S.Struct({
+  "disabledTime": S.optional(S.String),
+  "requiredPaths": S.optional(PathList),
+  "codebaseBranch": S.optional(S.String),
+  "disabled": S.optional(S.Boolean),
+  "ignoredPaths": S.optional(PathList),
+}),
 ).annotate({ identifier: "RolloutPolicy" }) as any as S.Schema<RolloutPolicy>;
 
 /** Controls traffic configuration for the backend. */
@@ -1375,44 +1106,33 @@ export interface Traffic {
   etag?: string;
 }
 export const Traffic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    uid: S.optional(S.String),
-    labels: S.optional(StringMap),
-    target: S.optional(TrafficSet),
-    rolloutPolicy: S.optional(RolloutPolicy),
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    current: S.optional(TrafficSet),
-    reconciling: S.optional(S.Boolean),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "uid": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "target": S.optional(TrafficSet),
+  "rolloutPolicy": S.optional(RolloutPolicy),
+  "name": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "current": S.optional(TrafficSet),
+  "reconciling": S.optional(S.Boolean),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Traffic" }) as any as S.Schema<Traffic>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -1427,27 +1147,17 @@ export interface ListProjectsLocationsRequest {
   name: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://firebaseapphosting.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1457,13 +1167,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsBackendsRequest {
   /** Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. */
@@ -1479,30 +1187,19 @@ export interface ListProjectsLocationsBackendsRequest {
   /** Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/backends",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsBackendsRequest",
-}) as any as S.Schema<ListProjectsLocationsBackendsRequest>;
+export const ListProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backends","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBackendsRequest" }) as any as S.Schema<ListProjectsLocationsBackendsRequest>;
 
 export type BackendList = ReadonlyArray<Backend>;
-export const BackendList = /*@__PURE__*/ S.Array(
-  Backend,
-) as any as S.Schema<BackendList>;
+export const BackendList = /*@__PURE__*/ S.Array(Backend) as any as S.Schema<BackendList>;
 
 /** Message for response to list backends */
 export interface ListBackendsResponse {
@@ -1514,14 +1211,12 @@ export interface ListBackendsResponse {
   unreachable?: StringList;
 }
 export const ListBackendsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backends: S.optional(BackendList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListBackendsResponse",
-}) as any as S.Schema<ListBackendsResponse>;
+S.Struct({
+  "backends": S.optional(BackendList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListBackendsResponse" }) as any as S.Schema<ListBackendsResponse>;
 
 export interface ListProjectsLocationsBackendsBuildsRequest {
   /** Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. */
@@ -1537,30 +1232,19 @@ export interface ListProjectsLocationsBackendsBuildsRequest {
   /** Optional. The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsBackendsBuildsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/builds",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBackendsBuildsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBackendsBuildsRequest>;
+export const ListProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/builds","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBackendsBuildsRequest" }) as any as S.Schema<ListProjectsLocationsBackendsBuildsRequest>;
 
 export type BuildList = ReadonlyArray<Build>;
-export const BuildList = /*@__PURE__*/ S.Array(
-  Build,
-) as any as S.Schema<BuildList>;
+export const BuildList = /*@__PURE__*/ S.Array(Build) as any as S.Schema<BuildList>;
 
 /** Message for response to list builds. */
 export interface ListBuildsResponse {
@@ -1572,14 +1256,12 @@ export interface ListBuildsResponse {
   unreachable?: StringList;
 }
 export const ListBuildsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    builds: S.optional(BuildList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListBuildsResponse",
-}) as any as S.Schema<ListBuildsResponse>;
+S.Struct({
+  "builds": S.optional(BuildList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListBuildsResponse" }) as any as S.Schema<ListBuildsResponse>;
 
 export interface ListProjectsLocationsBackendsDomainsRequest {
   /** Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. */
@@ -1595,30 +1277,19 @@ export interface ListProjectsLocationsBackendsDomainsRequest {
   /** Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. */
   orderBy?: string;
 }
-export const ListProjectsLocationsBackendsDomainsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/domains",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBackendsDomainsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBackendsDomainsRequest>;
+export const ListProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/domains","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBackendsDomainsRequest" }) as any as S.Schema<ListProjectsLocationsBackendsDomainsRequest>;
 
 export type DomainList = ReadonlyArray<Domain>;
-export const DomainList = /*@__PURE__*/ S.Array(
-  Domain,
-) as any as S.Schema<DomainList>;
+export const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
 
 /** Message for response to list domains. */
 export interface ListDomainsResponse {
@@ -1630,14 +1301,12 @@ export interface ListDomainsResponse {
   domains?: DomainList;
 }
 export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    domains: S.optional(DomainList),
-  }),
-).annotate({
-  identifier: "ListDomainsResponse",
-}) as any as S.Schema<ListDomainsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "domains": S.optional(DomainList),
+}),
+).annotate({ identifier: "ListDomainsResponse" }) as any as S.Schema<ListDomainsResponse>;
 
 export interface ListProjectsLocationsBackendsRolloutsRequest {
   /** Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. */
@@ -1653,30 +1322,19 @@ export interface ListProjectsLocationsBackendsRolloutsRequest {
   /** Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. */
   orderBy?: string;
 }
-export const ListProjectsLocationsBackendsRolloutsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/rollouts",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBackendsRolloutsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBackendsRolloutsRequest>;
+export const ListProjectsLocationsBackendsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/rollouts","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBackendsRolloutsRequest" }) as any as S.Schema<ListProjectsLocationsBackendsRolloutsRequest>;
 
 export type RolloutList = ReadonlyArray<Rollout>;
-export const RolloutList = /*@__PURE__*/ S.Array(
-  Rollout,
-) as any as S.Schema<RolloutList>;
+export const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
 
 /** Message for response to list rollouts. */
 export interface ListRolloutsResponse {
@@ -1688,14 +1346,12 @@ export interface ListRolloutsResponse {
   unreachable?: StringList;
 }
 export const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rollouts: S.optional(RolloutList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListRolloutsResponse",
-}) as any as S.Schema<ListRolloutsResponse>;
+S.Struct({
+  "rollouts": S.optional(RolloutList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListRolloutsResponse" }) as any as S.Schema<ListRolloutsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -1709,29 +1365,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1743,14 +1388,12 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsBackendsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1766,25 +1409,16 @@ export interface PatchProjectsLocationsBackendsRequest {
   /** Request body */
   body?: Backend;
 }
-export const PatchProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Backend.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsBackendsRequest",
-}) as any as S.Schema<PatchProjectsLocationsBackendsRequest>;
+export const PatchProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Backend.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBackendsRequest" }) as any as S.Schema<PatchProjectsLocationsBackendsRequest>;
 
 export interface PatchProjectsLocationsBackendsDomainsRequest {
   /** Identifier. The resource name of the domain, e.g. `/projects/p/locations/l/backends/b/domains/foo.com` */
@@ -1800,25 +1434,16 @@ export interface PatchProjectsLocationsBackendsDomainsRequest {
   /** Request body */
   body?: Domain;
 }
-export const PatchProjectsLocationsBackendsDomainsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(Domain.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsBackendsDomainsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsBackendsDomainsRequest>;
+export const PatchProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Domain.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBackendsDomainsRequest" }) as any as S.Schema<PatchProjectsLocationsBackendsDomainsRequest>;
 
 export interface PatchProjectsLocationsBackendsTrafficRequest {
   /** Identifier. The resource name of the backend's traffic. Format: `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`. */
@@ -1832,31 +1457,17 @@ export interface PatchProjectsLocationsBackendsTrafficRequest {
   /** Request body */
   body?: Traffic;
 }
-export const PatchProjectsLocationsBackendsTrafficRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Traffic.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://firebaseapphosting.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsBackendsTrafficRequest",
-  }) as any as S.Schema<PatchProjectsLocationsBackendsTrafficRequest>;
+export const PatchProjectsLocationsBackendsTrafficRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Traffic.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firebaseapphosting.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBackendsTrafficRequest" }) as any as S.Schema<PatchProjectsLocationsBackendsTrafficRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1871,12 +1482,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBackendsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBackendsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new backend in a given project and location. */
 export const createProjectsLocationsBackends: API.OperationMethod<
   CreateProjectsLocationsBackendsRequest,
@@ -1891,12 +1497,7 @@ export const createProjectsLocationsBackends: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBackendsBuildsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBackendsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new build for a backend. */
 export const createProjectsLocationsBackendsBuilds: API.OperationMethod<
   CreateProjectsLocationsBackendsBuildsRequest,
@@ -1911,12 +1512,7 @@ export const createProjectsLocationsBackendsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBackendsDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBackendsDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Links a new domain to a backend. */
 export const createProjectsLocationsBackendsDomains: API.OperationMethod<
   CreateProjectsLocationsBackendsDomainsRequest,
@@ -1931,12 +1527,7 @@ export const createProjectsLocationsBackendsDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBackendsRolloutsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBackendsRolloutsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new rollout for a backend. */
 export const createProjectsLocationsBackendsRollouts: API.OperationMethod<
   CreateProjectsLocationsBackendsRolloutsRequest,
@@ -1951,12 +1542,7 @@ export const createProjectsLocationsBackendsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBackendsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBackendsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single backend. */
 export const deleteProjectsLocationsBackends: API.OperationMethod<
   DeleteProjectsLocationsBackendsRequest,
@@ -1971,12 +1557,7 @@ export const deleteProjectsLocationsBackends: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBackendsBuildsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBackendsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single build. */
 export const deleteProjectsLocationsBackendsBuilds: API.OperationMethod<
   DeleteProjectsLocationsBackendsBuildsRequest,
@@ -1991,12 +1572,7 @@ export const deleteProjectsLocationsBackendsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBackendsDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBackendsDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single domain. */
 export const deleteProjectsLocationsBackendsDomains: API.OperationMethod<
   DeleteProjectsLocationsBackendsDomainsRequest,
@@ -2011,12 +1587,7 @@ export const deleteProjectsLocationsBackendsDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -2046,10 +1617,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackendsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackendsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a backend. */
 export const getProjectsLocationsBackends: API.OperationMethod<
   GetProjectsLocationsBackendsRequest,
@@ -2064,10 +1632,7 @@ export const getProjectsLocationsBackends: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackendsBuildsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackendsBuildsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a build. */
 export const getProjectsLocationsBackendsBuilds: API.OperationMethod<
   GetProjectsLocationsBackendsBuildsRequest,
@@ -2082,10 +1647,7 @@ export const getProjectsLocationsBackendsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackendsDomainsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackendsDomainsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a domain. */
 export const getProjectsLocationsBackendsDomains: API.OperationMethod<
   GetProjectsLocationsBackendsDomainsRequest,
@@ -2100,10 +1662,7 @@ export const getProjectsLocationsBackendsDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackendsRolloutsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackendsRolloutsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a rollout. */
 export const getProjectsLocationsBackendsRollouts: API.OperationMethod<
   GetProjectsLocationsBackendsRolloutsRequest,
@@ -2118,10 +1677,7 @@ export const getProjectsLocationsBackendsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackendsTrafficError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackendsTrafficError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a backend's traffic. */
 export const getProjectsLocationsBackendsTraffic: API.OperationMethod<
   GetProjectsLocationsBackendsTrafficRequest,
@@ -2136,10 +1692,7 @@ export const getProjectsLocationsBackendsTraffic: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -2167,16 +1720,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBackendsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBackendsError = NotFound | Forbidden | GcpOpError;
 /** Lists backends in a given project and location. */
 export const listProjectsLocationsBackends: API.PaginatedOperationMethod<
   ListProjectsLocationsBackendsRequest,
@@ -2189,16 +1736,10 @@ export const listProjectsLocationsBackends: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBackendsBuildsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBackendsBuildsError = NotFound | Forbidden | GcpOpError;
 /** Lists builds in a given project, location, and backend. */
 export const listProjectsLocationsBackendsBuilds: API.PaginatedOperationMethod<
   ListProjectsLocationsBackendsBuildsRequest,
@@ -2211,16 +1752,10 @@ export const listProjectsLocationsBackendsBuilds: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBackendsDomainsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBackendsDomainsError = NotFound | Forbidden | GcpOpError;
 /** Lists domains of a backend. */
 export const listProjectsLocationsBackendsDomains: API.PaginatedOperationMethod<
   ListProjectsLocationsBackendsDomainsRequest,
@@ -2233,16 +1768,10 @@ export const listProjectsLocationsBackendsDomains: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBackendsRolloutsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBackendsRolloutsError = NotFound | Forbidden | GcpOpError;
 /** Lists rollouts for a backend. */
 export const listProjectsLocationsBackendsRollouts: API.PaginatedOperationMethod<
   ListProjectsLocationsBackendsRolloutsRequest,
@@ -2255,16 +1784,10 @@ export const listProjectsLocationsBackendsRollouts: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -2277,18 +1800,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsBackendsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBackendsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the information for a single backend. */
 export const patchProjectsLocationsBackends: API.OperationMethod<
   PatchProjectsLocationsBackendsRequest,
@@ -2303,12 +1818,7 @@ export const patchProjectsLocationsBackends: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsBackendsDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBackendsDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the information for a single domain. */
 export const patchProjectsLocationsBackendsDomains: API.OperationMethod<
   PatchProjectsLocationsBackendsDomainsRequest,
@@ -2323,12 +1833,7 @@ export const patchProjectsLocationsBackendsDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsBackendsTrafficError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBackendsTrafficError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a backend's traffic. */
 export const patchProjectsLocationsBackendsTraffic: API.OperationMethod<
   PatchProjectsLocationsBackendsTrafficRequest,
@@ -2342,3 +1847,4 @@ export const patchProjectsLocationsBackendsTraffic: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

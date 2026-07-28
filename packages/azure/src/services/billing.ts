@@ -74,11 +74,7 @@ export const AddressValidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressValidateRequest>;
 
 /** Status of the address validation. */
-export type AddressValidationStatus =
-  | "Other"
-  | "Valid"
-  | "Invalid"
-  | (string & {});
+export type AddressValidationStatus = "Other" | "Valid" | "Invalid";
 export const AddressValidationStatus = /*@__PURE__*/ S.String;
 
 /** Address details. */
@@ -190,8 +186,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -199,8 +194,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -237,8 +231,7 @@ export type AcceptanceMode =
   | "ESignOffline"
   | "Implicit"
   | "Offline"
-  | "PhysicalSign"
-  | (string & {});
+  | "PhysicalSign";
 export const AcceptanceMode = /*@__PURE__*/ S.String;
 
 /** Details about billing profile associated with agreement and available only for specific agreements. */
@@ -280,8 +273,7 @@ export type Category =
   | "IndirectForGovernmentAgreement"
   | "MicrosoftCustomerAgreement"
   | "MicrosoftPartnerAgreement"
-  | "UKCloudComputeFramework"
-  | (string & {});
+  | "UKCloudComputeFramework";
 export const Category = /*@__PURE__*/ S.String;
 
 /** Billing account name. Available for a specific type of agreement. */
@@ -466,8 +458,7 @@ export type BillingManagementTenantState =
   | "Other"
   | "NotAllowed"
   | "Active"
-  | "Revoked"
-  | (string & {});
+  | "Revoked";
 export const BillingManagementTenantState = /*@__PURE__*/ S.String;
 
 /** The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request. */
@@ -478,8 +469,7 @@ export type ProvisioningTenantState =
   | "Pending"
   | "BillingRequestExpired"
   | "BillingRequestDeclined"
-  | "Revoked"
-  | (string & {});
+  | "Revoked";
 export const ProvisioningTenantState = /*@__PURE__*/ S.String;
 
 /** An associated tenant. */
@@ -489,9 +479,9 @@ export interface AssociatedTenantPropertiesInput {
   /** The ID that uniquely identifies a tenant. */
   tenantId?: string;
   /** The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases. */
-  billingManagementState?: BillingManagementTenantState;
+  billingManagementState?: BillingManagementTenantState | (string & {});
   /** The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request. */
-  provisioningManagementState?: ProvisioningTenantState;
+  provisioningManagementState?: ProvisioningTenantState | (string & {});
 }
 export const AssociatedTenantPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -555,8 +545,7 @@ export type ProvisioningState =
   | "ConfirmedBilling"
   | "Creating"
   | "Created"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** An associated tenant. */
@@ -854,8 +843,7 @@ export type PaymentMethodFamily =
   | "CheckWire"
   | "EWallet"
   | "TaskOrder"
-  | "DirectDebit"
-  | (string & {});
+  | "DirectDebit";
 export const PaymentMethodFamily = /*@__PURE__*/ S.String;
 
 /** A Payment on Account. */
@@ -1077,8 +1065,7 @@ export type AccountStatus =
   | "New"
   | "Expired"
   | "Terminated"
-  | "Transferred"
-  | (string & {});
+  | "Transferred";
 export const AccountStatus = /*@__PURE__*/ S.String;
 
 /** The type of customer. */
@@ -1091,8 +1078,7 @@ export type AccountType =
   | "ClassicPartner"
   | "Internal"
   | "Tenant"
-  | "Business"
-  | (string & {});
+  | "Business";
 export const AccountType = /*@__PURE__*/ S.String;
 
 /** The tier of the account. */
@@ -1101,8 +1087,7 @@ export type AccountSubType =
   | "None"
   | "Individual"
   | "Professional"
-  | "Enterprise"
-  | (string & {});
+  | "Enterprise";
 export const AccountSubType = /*@__PURE__*/ S.String;
 
 /** Reason for the specified billing account status. */
@@ -1112,8 +1097,7 @@ export type BillingAccountStatusReasonCode =
   | "ManuallyTerminated"
   | "Expired"
   | "Transferred"
-  | "TerminateProcessing"
-  | (string & {});
+  | "TerminateProcessing";
 export const BillingAccountStatusReasonCode = /*@__PURE__*/ S.String;
 
 /** The type of agreement. */
@@ -1122,25 +1106,15 @@ export type AgreementType =
   | "MicrosoftCustomerAgreement"
   | "EnterpriseAgreement"
   | "MicrosoftOnlineServicesProgram"
-  | "MicrosoftPartnerAgreement"
-  | (string & {});
+  | "MicrosoftPartnerAgreement";
 export const AgreementType = /*@__PURE__*/ S.String;
 
 /** The billing account extension opted by the company. */
-export type ExtendedTermOption =
-  | "Other"
-  | "Opted-In"
-  | "Opted-Out"
-  | (string & {});
+export type ExtendedTermOption = "Other" | "Opted-In" | "Opted-Out";
 export const ExtendedTermOption = /*@__PURE__*/ S.String;
 
 /** The support level offer associated with an enrollment. */
-export type SupportLevel =
-  | "Other"
-  | "Standard"
-  | "Pro-Direct"
-  | "Developer"
-  | (string & {});
+export type SupportLevel = "Other" | "Standard" | "Pro-Direct" | "Developer";
 export const SupportLevel = /*@__PURE__*/ S.String;
 
 /** Markup status of enrollment, applicable only for indirect enrollments. */
@@ -1149,8 +1123,7 @@ export type MarkupStatus =
   | "Disabled"
   | "Preview"
   | "Published"
-  | "Locked"
-  | (string & {});
+  | "Locked";
 export const MarkupStatus = /*@__PURE__*/ S.String;
 
 /** Identifies the billing profile that is linked to another billing profile in indirect purchase motion. */
@@ -1259,8 +1232,7 @@ export type BillingRelationshipType =
   | "IndirectCustomer"
   | "IndirectPartner"
   | "CSPPartner"
-  | "CSPCustomer"
-  | (string & {});
+  | "CSPCustomer";
 export const BillingRelationshipType = /*@__PURE__*/ S.String;
 
 /** Identifies the billing relationships represented by a billing account. The billing relationship may be between Microsoft, the customer, and/or a third-party. */
@@ -1298,12 +1270,11 @@ export type TaxIdentifierType =
   | "LoveCode"
   | "MobileBarCode"
   | "NationalIdentificationNumber"
-  | "PublicSectorId"
-  | (string & {});
+  | "PublicSectorId";
 export const TaxIdentifierType = /*@__PURE__*/ S.String;
 
 /** The status of the tax identifier. */
-export type TaxIdentifierStatus = "Other" | "Valid" | "Invalid" | (string & {});
+export type TaxIdentifierStatus = "Other" | "Valid" | "Invalid";
 export const TaxIdentifierStatus = /*@__PURE__*/ S.String;
 
 /** A tax identifier for the billing account. */
@@ -1725,8 +1696,7 @@ export type BillingProfileStatus =
   | "Disabled"
   | "Warned"
   | "Deleted"
-  | "UnderReview"
-  | (string & {});
+  | "UnderReview";
 export const BillingProfileStatus = /*@__PURE__*/ S.String;
 
 /** Reason for the specified billing profile status. */
@@ -1735,12 +1705,11 @@ export type BillingProfileStatusReasonCode =
   | "PastDue"
   | "UnusualActivity"
   | "SpendingLimitReached"
-  | "SpendingLimitExpired"
-  | (string & {});
+  | "SpendingLimitExpired";
 export const BillingProfileStatusReasonCode = /*@__PURE__*/ S.String;
 
 /** The billing profile spending limit. */
-export type SpendingLimit = "Off" | "On" | (string & {});
+export type SpendingLimit = "Off" | "On";
 export const SpendingLimit = /*@__PURE__*/ S.String;
 
 /** Details of the Azure plan. */
@@ -2019,11 +1988,7 @@ export const BillingAccountsValidatePaymentTermsRequest =
   }) as any as S.Schema<BillingAccountsValidatePaymentTermsRequest>;
 
 /** Indicates the eligibility status of the payment terms. */
-export type PaymentTermsEligibilityStatus =
-  | "Other"
-  | "Valid"
-  | "Invalid"
-  | (string & {});
+export type PaymentTermsEligibilityStatus = "Other" | "Valid" | "Invalid";
 export const PaymentTermsEligibilityStatus = /*@__PURE__*/ S.String;
 
 /** Indicates the reason for the ineligibility of the payment terms. */
@@ -2037,8 +2002,7 @@ export type PaymentTermsEligibilityCode =
   | "NullOrEmptyPaymentTerms"
   | "BillingAccountNotFound"
   | "IneligibleBillingAccountStatus"
-  | "InvalidTerms"
-  | (string & {});
+  | "InvalidTerms";
 export const PaymentTermsEligibilityCode = /*@__PURE__*/ S.String;
 
 /** Details of the payment terms eligibility. */
@@ -2117,7 +2081,7 @@ export const BillingPermissionsCheckAccessByBillingAccountRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByBillingAccountRequest>;
 
 /** Access Decision, specifies access is allowed or not. */
-export type AccessDecision = "Other" | "Allowed" | "NotAllowed" | (string & {});
+export type AccessDecision = "Other" | "Allowed" | "NotAllowed";
 export const AccessDecision = /*@__PURE__*/ S.String;
 
 /** The properties of a check access response. */
@@ -2788,8 +2752,7 @@ export type SpendingLimitType =
   | "Sponsorship"
   | "StartupSponsorship"
   | "AzureForStudentsStarter"
-  | "VisualStudio"
-  | (string & {});
+  | "VisualStudio";
 export const SpendingLimitType = /*@__PURE__*/ S.String;
 
 /** The status of current spending limit. */
@@ -2799,8 +2762,7 @@ export type SpendingLimitStatus =
   | "Active"
   | "Expired"
   | "LimitReached"
-  | "LimitRemoved"
-  | (string & {});
+  | "LimitRemoved";
 export const SpendingLimitStatus = /*@__PURE__*/ S.String;
 
 /** The billing profile spending limit. */
@@ -3214,10 +3176,7 @@ export const BillingProfilesValidateDeleteEligibilityRequest =
   }) as any as S.Schema<BillingProfilesValidateDeleteEligibilityRequest>;
 
 /** Status describing if billing profile is eligible to be deleted. */
-export type DeleteBillingProfileEligibilityStatus =
-  | "Allowed"
-  | "NotAllowed"
-  | (string & {});
+export type DeleteBillingProfileEligibilityStatus = "Allowed" | "NotAllowed";
 export const DeleteBillingProfileEligibilityStatus = /*@__PURE__*/ S.String;
 
 /** Code of the delete invoice section eligibility response. */
@@ -3230,8 +3189,7 @@ export type DeleteBillingProfileEligibilityCode =
   | "OutstandingCharges"
   | "PendingCharges"
   | "ReservedInstances"
-  | "ActiveBillingSubscriptions"
-  | (string & {});
+  | "ActiveBillingSubscriptions";
 export const DeleteBillingProfileEligibilityCode = /*@__PURE__*/ S.String;
 
 /** Validation details of delete billing profile eligibility. */
@@ -3319,8 +3277,7 @@ export type CustomerStatus =
   | "Disabled"
   | "Warned"
   | "Deleted"
-  | "UnderReview"
-  | (string & {});
+  | "UnderReview";
 export const CustomerStatus = /*@__PURE__*/ S.String;
 
 /** Identifies the status of an invoice section. */
@@ -3331,8 +3288,7 @@ export type InvoiceSectionState =
   | "Disabled"
   | "UnderReview"
   | "Warned"
-  | "Restricted"
-  | (string & {});
+  | "Restricted";
 export const InvoiceSectionState = /*@__PURE__*/ S.String;
 
 /** Reason for the specified invoice section status. */
@@ -3341,8 +3297,7 @@ export type InvoiceSectionStateReasonCode =
   | "PastDue"
   | "UnusualActivity"
   | "SpendingLimitReached"
-  | "SpendingLimitExpired"
-  | (string & {});
+  | "SpendingLimitExpired";
 export const InvoiceSectionStateReasonCode = /*@__PURE__*/ S.String;
 
 /** The subscription status. */
@@ -3358,8 +3313,7 @@ export type BillingSubscriptionStatus =
   | "AutoRenew"
   | "Cancelled"
   | "Suspended"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const BillingSubscriptionStatus = /*@__PURE__*/ S.String;
 
 /** The suspension reason for a subscription. This field is not available for Enterprise Agreement billing accounts. */
@@ -3372,8 +3326,7 @@ export type SubscriptionStatusReason =
   | "Transferred"
   | "PolicyViolation"
   | "SpendingLimitReached"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const SubscriptionStatusReason = /*@__PURE__*/ S.String;
 
 /** The suspension details for a subscription. This field is not available for Enterprise Agreement billing accounts. */
@@ -3406,8 +3359,7 @@ export type SubscriptionBillingType =
   | "Benefit"
   | "Free"
   | "Paid"
-  | "PrePaid"
-  | (string & {});
+  | "PrePaid";
 export const SubscriptionBillingType = /*@__PURE__*/ S.String;
 
 /** The Azure workload type of the subscription. */
@@ -3415,8 +3367,7 @@ export type SubscriptionWorkloadType =
   | "None"
   | "Production"
   | "DevTest"
-  | "Internal"
-  | (string & {});
+  | "Internal";
 export const SubscriptionWorkloadType = /*@__PURE__*/ S.String;
 
 /** The enrollment details for the subscription. Available for billing accounts with agreement type Enterprise Agreement. */
@@ -3743,8 +3694,7 @@ export type BillingRequestStatus =
   | "Declined"
   | "Cancelled"
   | "Completed"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const BillingRequestStatus = /*@__PURE__*/ S.String;
 
 /** Type of billing request. */
@@ -3753,8 +3703,7 @@ export type BillingRequestType =
   | "InvoiceAccess"
   | "ProvisioningAccess"
   | "RoleAssignment"
-  | "UpdateBillingPolicy"
-  | (string & {});
+  | "UpdateBillingPolicy";
 export const BillingRequestType = /*@__PURE__*/ S.String;
 
 /** A request submitted by a user to manage billing. Users with an owner role on the scope can approve or decline these requests. */
@@ -3774,9 +3723,9 @@ export interface BillingRequestPropertiesInput {
   /** The billing scope for which the request was submitted (ex. '/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}'). */
   requestScope?: string;
   /** Status of billing request. */
-  status?: BillingRequestStatus;
+  status?: BillingRequestStatus | (string & {});
   /** Type of billing request. */
-  type?: BillingRequestType;
+  type?: BillingRequestType | (string & {});
   /** The principal of the entity who last updated the request. */
   lastUpdatedBy?: Principal;
 }
@@ -4357,8 +4306,7 @@ export type PrincipalType =
   | "Group"
   | "DirectoryRole"
   | "ServicePrincipal"
-  | "Everyone"
-  | (string & {});
+  | "Everyone";
 export const PrincipalType = /*@__PURE__*/ S.String;
 
 /** The properties of the billing role assignment. */
@@ -6600,7 +6548,7 @@ export const BillingRoleDefinitionListByInvoiceSectionRequest =
   }) as any as S.Schema<BillingRoleDefinitionListByInvoiceSectionRequest>;
 
 /** Indicates whether auto renewal is turned on or off for a product. */
-export type AutoRenew = "Off" | "On" | (string & {});
+export type AutoRenew = "Off" | "On";
 export const AutoRenew = /*@__PURE__*/ S.String;
 
 /** Details of the beneficiary. */
@@ -6628,7 +6576,7 @@ export const SystemOverridesInput = /*@__PURE__*/ S.suspend(() =>
 /** A billing subscription alias. */
 export interface BillingSubscriptionAliasPropertiesInput {
   /** Indicates whether auto renewal is turned on or off for a product. */
-  autoRenew?: AutoRenew;
+  autoRenew?: AutoRenew | (string & {});
   /** The provisioning tenant of the subscription. */
   beneficiaryTenantId?: string;
   /** The beneficiary of the billing subscription. */
@@ -6738,8 +6686,7 @@ export type SubscriptionEnrollmentAccountStatus =
   | "Deleted"
   | "TransferredOut"
   | "Transferring"
-  | "Inactive"
-  | (string & {});
+  | "Inactive";
 export const SubscriptionEnrollmentAccountStatus = /*@__PURE__*/ S.String;
 
 /** The billing properties that can be modified. Available only for the Enterprise Agreement Type. */
@@ -6820,7 +6767,7 @@ export const RenewalTermDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RenewalTermDetails>;
 
 /** The policy override for the subscription indicates whether the self-serve cancellation or seat reduction is allowed. */
-export type Cancellation = "NotAllowed" | "Allowed" | (string & {});
+export type Cancellation = "NotAllowed" | "Allowed";
 export const Cancellation = /*@__PURE__*/ S.String;
 
 /** System imposed policies that regulate behavior of the subscription. */
@@ -6843,8 +6790,7 @@ export const SystemOverrides = /*@__PURE__*/ S.suspend(() =>
 export type BillingSubscriptionOperationStatus =
   | "Other"
   | "None"
-  | "LockedForUpdate"
-  | (string & {});
+  | "LockedForUpdate";
 export const BillingSubscriptionOperationStatus = /*@__PURE__*/ S.String;
 
 /** The suspension reason for a subscription. This field is not available for Enterprise Agreement billing accounts. */
@@ -7220,11 +7166,7 @@ export const BillingSubscriptionAliasListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSubscriptionAliasListResult>;
 
 /** Cancellation reason. */
-export type CancellationReason =
-  | "Other"
-  | "Compromise"
-  | "Dispute"
-  | (string & {});
+export type CancellationReason = "Other" | "Compromise" | "Dispute";
 export const CancellationReason = /*@__PURE__*/ S.String;
 
 export interface BillingSubscriptionsCancelRequest {
@@ -7233,7 +7175,7 @@ export interface BillingSubscriptionsCancelRequest {
   /** The ID that uniquely identifies a subscription. */
   billingSubscriptionName: string;
   /** Cancellation reason. */
-  cancellationReason: CancellationReason;
+  cancellationReason: CancellationReason | (string & {});
   /** The fully qualified ID that uniquely identifies a customer. */
   customerId?: string;
 }
@@ -8154,7 +8096,7 @@ export const BillingSubscriptionsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** The billing properties of a subscription. */
 export interface BillingSubscriptionPropertiesInput {
   /** Indicates whether auto renewal is turned on or off for a product. */
-  autoRenew?: AutoRenew;
+  autoRenew?: AutoRenew | (string & {});
   /** The provisioning tenant of the subscription. */
   beneficiaryTenantId?: string;
   /** The beneficiary of the billing subscription. */
@@ -8328,8 +8270,7 @@ export type SubscriptionTransferValidationErrorCode =
   | "SubscriptionNotActive"
   | "SubscriptionHasReservations"
   | "SubscriptionTypeNotSupported"
-  | "InvoiceSectionIsRestricted"
-  | (string & {});
+  | "InvoiceSectionIsRestricted";
 export const SubscriptionTransferValidationErrorCode = /*@__PURE__*/ S.String;
 
 /** Error details of the transfer eligibility validation. */
@@ -9361,9 +9302,9 @@ export interface InvoiceSectionPropertiesInput {
   /** The name of the invoice section. */
   displayName?: string;
   /** Identifies the status of an invoice section. */
-  state?: InvoiceSectionState;
+  state?: InvoiceSectionState | (string & {});
   /** Reason for the specified invoice section status. */
-  reasonCode?: InvoiceSectionStateReasonCode;
+  reasonCode?: InvoiceSectionStateReasonCode | (string & {});
   /** Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds. */
   targetCloud?: string;
   /** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
@@ -9720,10 +9661,7 @@ export const InvoiceSectionsValidateDeleteEligibilityRequest =
   }) as any as S.Schema<InvoiceSectionsValidateDeleteEligibilityRequest>;
 
 /** Status describing if invoice section is eligible to be deleted. */
-export type DeleteInvoiceSectionEligibilityStatus =
-  | "Allowed"
-  | "NotAllowed"
-  | (string & {});
+export type DeleteInvoiceSectionEligibilityStatus = "Allowed" | "NotAllowed";
 export const DeleteInvoiceSectionEligibilityStatus = /*@__PURE__*/ S.String;
 
 /** Code for the delete invoice section validation. */
@@ -9732,8 +9670,7 @@ export type DeleteInvoiceSectionEligibilityCode =
   | "LastInvoiceSection"
   | "ActiveAzurePlans"
   | "ReservedInstances"
-  | "ActiveBillingSubscriptions"
-  | (string & {});
+  | "ActiveBillingSubscriptions";
 export const DeleteInvoiceSectionEligibilityCode = /*@__PURE__*/ S.String;
 
 /** The details of delete invoice section eligibility result. */
@@ -9813,12 +9750,11 @@ export type InvoiceDocumentType =
   | "TaxReceipt"
   | "CreditNote"
   | "Summary"
-  | "Transactions"
-  | (string & {});
+  | "Transactions";
 export const InvoiceDocumentType = /*@__PURE__*/ S.String;
 
 /** The source of the document. ENF for Brazil and DRS for rest of the world. */
-export type DocumentSource = "Other" | "DRS" | "ENF" | (string & {});
+export type DocumentSource = "Other" | "DRS" | "ENF";
 export const DocumentSource = /*@__PURE__*/ S.String;
 
 /** The properties of a document. */
@@ -9860,8 +9796,7 @@ export type FailedPaymentReason =
   | "Other"
   | "BankDeclined"
   | "CardExpired"
-  | "IncorrectCardDetails"
-  | (string & {});
+  | "IncorrectCardDetails";
 export const FailedPaymentReason = /*@__PURE__*/ S.String;
 
 /** A failed payment. */
@@ -9889,8 +9824,7 @@ export type InvoiceType =
   | "Other"
   | "AzureServices"
   | "AzureMarketplace"
-  | "AzureSupport"
-  | (string & {});
+  | "AzureSupport";
 export const InvoiceType = /*@__PURE__*/ S.String;
 
 /** An invoice payment. */
@@ -9949,15 +9883,11 @@ export type InvoiceStatus =
   | "OverDue"
   | "Paid"
   | "Void"
-  | "Locked"
-  | (string & {});
+  | "Locked";
 export const InvoiceStatus = /*@__PURE__*/ S.String;
 
 /** Identifies the type of tax calculation used for the invoice. The field is applicable only to invoices with special tax calculation logic. */
-export type SpecialTaxationType =
-  | "SubtotalLevel"
-  | "InvoiceLevel"
-  | (string & {});
+export type SpecialTaxationType = "SubtotalLevel" | "InvoiceLevel";
 export const SpecialTaxationType = /*@__PURE__*/ S.String;
 
 /** The status of refund request. */
@@ -9968,8 +9898,7 @@ export type RefundStatus =
   | "Declined"
   | "Cancelled"
   | "Completed"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const RefundStatus = /*@__PURE__*/ S.String;
 
 /** The reason for refund. */
@@ -9979,8 +9908,7 @@ export type RefundReasonCode =
   | "UnclearPricing"
   | "AccidentalPurchase"
   | "ForgotToCancel"
-  | "UnclearDocumentation"
-  | (string & {});
+  | "UnclearDocumentation";
 export const RefundReasonCode = /*@__PURE__*/ S.String;
 
 /** The details of refund request. */
@@ -10574,12 +10502,11 @@ export type TransferStatus =
   | "CompletedWithErrors"
   | "Failed"
   | "Canceled"
-  | "Declined"
-  | (string & {});
+  | "Declined";
 export const TransferStatus = /*@__PURE__*/ S.String;
 
 /** The type of customer of the transfer initiator. */
-export type InitiatorCustomerType = "Partner" | "EA" | (string & {});
+export type InitiatorCustomerType = "Partner" | "EA";
 export const InitiatorCustomerType = /*@__PURE__*/ S.String;
 
 /** The type of product that is transferred. */
@@ -10588,8 +10515,7 @@ export type ProductType =
   | "AzureReservation"
   | "Department"
   | "SavingsPlan"
-  | "SAAS"
-  | (string & {});
+  | "SAAS";
 export const ProductType = /*@__PURE__*/ S.String;
 
 /** The status of a transfer. */
@@ -10597,8 +10523,7 @@ export type ProductTransferStatus =
   | "NotStarted"
   | "InProgress"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProductTransferStatus = /*@__PURE__*/ S.String;
 
 /** Error details for transfer execution. */
@@ -11030,7 +10955,7 @@ export const PaymentMethodPropertiesLogosList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaymentMethodPropertiesLogosList>;
 
 /** Status of the payment method. */
-export type PaymentMethodStatus = "active" | "inactive" | (string & {});
+export type PaymentMethodStatus = "active" | "inactive";
 export const PaymentMethodStatus = /*@__PURE__*/ S.String;
 
 /** The properties of a payment method. */
@@ -11450,8 +11375,7 @@ export type EnrollmentAuthLevelState =
   | "MicrosoftAccountOnly"
   | "MixedAccount"
   | "OrganizationalAccountCrossTenant"
-  | "OrganizationalAccountOnly"
-  | (string & {});
+  | "OrganizationalAccountOnly";
 export const EnrollmentAuthLevelState = /*@__PURE__*/ S.String;
 
 /** The policy that controls whether account owner can view charges. */
@@ -11459,8 +11383,7 @@ export type EnrollmentAccountOwnerViewCharges =
   | "Other"
   | "Allowed"
   | "Disabled"
-  | "NotAllowed"
-  | (string & {});
+  | "NotAllowed";
 export const EnrollmentAccountOwnerViewCharges = /*@__PURE__*/ S.String;
 
 /** The policy that controls whether department admin can view charges. */
@@ -11468,8 +11391,7 @@ export type EnrollmentDepartmentAdminViewCharges =
   | "Other"
   | "Allowed"
   | "Disabled"
-  | "NotAllowed"
-  | (string & {});
+  | "NotAllowed";
 export const EnrollmentDepartmentAdminViewCharges = /*@__PURE__*/ S.String;
 
 /** The policies for Enterprise Agreement enrollments. */
@@ -11499,8 +11421,7 @@ export type MarketplacePurchasesPolicy =
   | "AllAllowed"
   | "Disabled"
   | "NotAllowed"
-  | "OnlyFreeAllowed"
-  | (string & {});
+  | "OnlyFreeAllowed";
 export const MarketplacePurchasesPolicy = /*@__PURE__*/ S.String;
 
 /** The policy that controls whether Azure reservation purchases are allowed. */
@@ -11508,8 +11429,7 @@ export type ReservationPurchasesPolicy =
   | "Other"
   | "Allowed"
   | "Disabled"
-  | "NotAllowed"
-  | (string & {});
+  | "NotAllowed";
 export const ReservationPurchasesPolicy = /*@__PURE__*/ S.String;
 
 /** The policy that controls whether users with Azure savings plan purchase are allowed. */
@@ -11517,16 +11437,11 @@ export type SavingsPlanPurchasesPolicy =
   | "Other"
   | "Allowed"
   | "Disabled"
-  | "NotAllowed"
-  | (string & {});
+  | "NotAllowed";
 export const SavingsPlanPurchasesPolicy = /*@__PURE__*/ S.String;
 
 /** The type of the policy. */
-export type PolicyType =
-  | "Other"
-  | "UserControlled"
-  | "SystemControlled"
-  | (string & {});
+export type PolicyType = "Other" | "UserControlled" | "SystemControlled";
 export const PolicyType = /*@__PURE__*/ S.String;
 
 /** The summary of the policy. */
@@ -11662,16 +11577,11 @@ export const PoliciesCreateOrUpdateByBillingAccountResponse =
 export type InvoiceSectionLabelManagementPolicy =
   | "Other"
   | "Allowed"
-  | "NotAllowed"
-  | (string & {});
+  | "NotAllowed";
 export const InvoiceSectionLabelManagementPolicy = /*@__PURE__*/ S.String;
 
 /** The policy that controls whether the users in customer's organization can view charges at pay-as-you-go prices. */
-export type ViewChargesPolicy =
-  | "Other"
-  | "Allowed"
-  | "NotAllowed"
-  | (string & {});
+export type ViewChargesPolicy = "Other" | "Allowed" | "NotAllowed";
 export const ViewChargesPolicy = /*@__PURE__*/ S.String;
 
 /** List of all policies defined at the billing scope. */
@@ -12095,7 +12005,7 @@ export const PoliciesGetByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesGetByBillingProfileResponse",
 }) as any as S.Schema<PoliciesGetByBillingProfileResponse>;
 
-export type PoliciesGetByCustomerRequestPolicyName = "default" | (string & {});
+export type PoliciesGetByCustomerRequestPolicyName = "default";
 export const PoliciesGetByCustomerRequestPolicyName = /*@__PURE__*/ S.String;
 
 export interface PoliciesGetByCustomerRequest {
@@ -12106,7 +12016,7 @@ export interface PoliciesGetByCustomerRequest {
   /** The ID that uniquely identifies a customer. */
   customerName: string;
   /** Service-defined resource names such as 'default' which are reserved resource names. */
-  policyName: PoliciesGetByCustomerRequestPolicyName;
+  policyName: PoliciesGetByCustomerRequestPolicyName | (string & {});
 }
 export const PoliciesGetByCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12334,8 +12244,7 @@ export type ProductStatus =
   | "Expired"
   | "AutoRenew"
   | "Canceled"
-  | "Suspended"
-  | (string & {});
+  | "Suspended";
 export const ProductStatus = /*@__PURE__*/ S.String;
 
 /** A product. */
@@ -12746,7 +12655,7 @@ export const ResellerInput = /*@__PURE__*/ S.suspend(() =>
 /** A product. */
 export interface ProductPropertiesInput {
   /** Indicates whether auto renewal is turned on or off for a product. */
-  autoRenew?: AutoRenew;
+  autoRenew?: AutoRenew | (string & {});
   /** The last month charges. */
   lastCharge?: AmountInput;
   /** Reseller for this product. The fields is not available for Microsoft Partner Agreement products. */
@@ -12870,8 +12779,7 @@ export type MoveValidationErrorCode =
   | "ProductNotFound"
   | "ProductTypeNotSupported"
   | "SourceBillingProfilePastDue"
-  | "SourceInvoiceSectionInactive"
-  | (string & {});
+  | "SourceInvoiceSectionInactive";
 export const MoveValidationErrorCode = /*@__PURE__*/ S.String;
 
 /** Error details of the transfer eligibility validation. */
@@ -12912,7 +12820,7 @@ export const MoveProductEligibilityResult = /*@__PURE__*/ S.suspend(() =>
 /** Details of the product that is transferred. */
 export interface ProductDetails {
   /** Type of the product that is transferred. */
-  productType?: ProductType;
+  productType?: ProductType | (string & {});
   /** The ID of the product that is transferred. */
   productId?: string;
 }
@@ -12969,8 +12877,7 @@ export const RecipientTransfersAcceptRequest = /*@__PURE__*/ S.suspend(() =>
 export type EligibleProductType =
   | "DevTestAzureSubscription"
   | "StandardAzureSubscription"
-  | "AzureReservation"
-  | (string & {});
+  | "AzureReservation";
 export const EligibleProductType = /*@__PURE__*/ S.String;
 
 /** Type of subscriptions that can be transferred. */
@@ -12994,8 +12901,7 @@ export type SupportedAccountType =
   | "None"
   | "Partner"
   | "Individual"
-  | "Enterprise"
-  | (string & {});
+  | "Enterprise";
 export const SupportedAccountType = /*@__PURE__*/ S.String;
 
 /** List of supported account types. */
@@ -13407,7 +13313,7 @@ export const ReservationOrdersGetByBillingAccountRequest =
   }) as any as S.Schema<ReservationOrdersGetByBillingAccountRequest>;
 
 /** Represent the billing plans. */
-export type ReservationBillingPlan = "Upfront" | "Monthly" | (string & {});
+export type ReservationBillingPlan = "Upfront" | "Monthly";
 export const ReservationBillingPlan = /*@__PURE__*/ S.String;
 
 /** The price. */
@@ -13430,8 +13336,7 @@ export type PaymentStatus =
   | "Scheduled"
   | "Cancelled"
   | "Completed"
-  | "Pending"
-  | (string & {});
+  | "Pending";
 export const PaymentStatus = /*@__PURE__*/ S.String;
 
 /** The status of the reservation. */
@@ -13455,8 +13360,7 @@ export type ReservationStatusCode =
   | "Warning"
   | "NoBenefitDueToSubscriptionTransfer"
   | "NoBenefitDueToSubscriptionDeletion"
-  | "NoBenefit"
-  | (string & {});
+  | "NoBenefit";
 export const ReservationStatusCode = /*@__PURE__*/ S.String;
 
 /** Extended status definition properties */
@@ -13554,7 +13458,7 @@ export const ReservationOrderBillingPlanInformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReservationOrderBillingPlanInformation>;
 
 /** Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type. */
-export type InstanceFlexibility = "On" | "Off" | (string & {});
+export type InstanceFlexibility = "On" | "Off";
 export const InstanceFlexibility = /*@__PURE__*/ S.String;
 
 /** The array of applied scopes of a reservation. Will be null if the reservation is in Shared scope */
@@ -13663,11 +13567,7 @@ export const SkuName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuName" }) as any as S.Schema<SkuName>;
 
 /** Type of the Applied Scope. */
-export type AppliedScopeType =
-  | "Single"
-  | "Shared"
-  | "ManagementGroup"
-  | (string & {});
+export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
 export const AppliedScopeType = /*@__PURE__*/ S.String;
 
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. */
@@ -14475,13 +14375,13 @@ export const ReservationPurchaseRequestPropertiesInputAppliedScopesList =
 /** Properties of reservation purchase request */
 export interface ReservationPurchaseRequestPropertiesInput {
   /** Represent the billing plans. */
-  billingPlan?: ReservationBillingPlan;
+  billingPlan?: ReservationBillingPlan | (string & {});
   /** Quantity of the skus that are part of the reservation. Must be greater than zero. */
   quantity?: number;
   /** Friendly name of the reservation */
   displayName?: string;
   /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
+  appliedScopeType?: AppliedScopeType | (string & {});
   /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. */
   appliedScopes?: ReservationPurchaseRequestPropertiesInputAppliedScopesList;
   /** Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup */
@@ -14491,7 +14391,7 @@ export interface ReservationPurchaseRequestPropertiesInput {
   /** Properties specific to each reserved resource type. Not required if not applicable. */
   reservedResourceProperties?: ReservationPurchaseRequestPropertiesReservedResourceProperties;
   /** Allows reservation discount to be applied across skus within the same auto fit group. Not all skus support instance size flexibility. */
-  instanceFlexibility?: InstanceFlexibility;
+  instanceFlexibility?: InstanceFlexibility | (string & {});
   /** This is the date-time when the Azure hybrid benefit needs to be reviewed. */
   reviewDateTime?: string;
 }
@@ -14551,11 +14451,11 @@ export const PatchPropertiesRenewPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** Properties for reservation patch */
 export interface PatchPropertiesInput {
   /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
+  appliedScopeType?: AppliedScopeType | (string & {});
   /** Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup */
   appliedScopeProperties?: ReservationAppliedScopeProperties;
   /** Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type. */
-  instanceFlexibility?: InstanceFlexibility;
+  instanceFlexibility?: InstanceFlexibility | (string & {});
   /** Display name of the reservation */
   displayName?: string;
   /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
@@ -14704,11 +14604,11 @@ export const SavingsPlanOrdersGetByBillingAccountRequest =
   }) as any as S.Schema<SavingsPlanOrdersGetByBillingAccountRequest>;
 
 /** Represents the Savings plan term in ISO 8601 format. */
-export type SavingsPlanTerm = "P1Y" | "P3Y" | "P5Y" | (string & {});
+export type SavingsPlanTerm = "P1Y" | "P3Y" | "P5Y";
 export const SavingsPlanTerm = /*@__PURE__*/ S.String;
 
 /** Represents the billing plan in ISO 8601 format. Required only for monthly purchases. */
-export type BillingPlan = "P1M" | (string & {});
+export type BillingPlan = "P1M";
 export const BillingPlan = /*@__PURE__*/ S.String;
 
 /** Properties specific to credit line check failure */
@@ -15028,7 +14928,7 @@ export const SavingsPlansGetByBillingAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SavingsPlansGetByBillingAccountRequest>;
 
 /** Commitment grain. */
-export type CommitmentGrain = "Hourly" | (string & {});
+export type CommitmentGrain = "Hourly";
 export const CommitmentGrain = /*@__PURE__*/ S.String;
 
 /** Commitment towards the benefit. */
@@ -15490,7 +15390,7 @@ export interface SavingsPlanUpdateRequestProperties {
   /** Display name */
   displayName?: string;
   /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
+  appliedScopeType?: AppliedScopeType | (string & {});
   /** Properties specific to applied scope type. Not required if not applicable. */
   appliedScopeProperties?: AppliedScopeProperties;
   /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
@@ -15735,8 +15635,7 @@ export const TransactionSummary = /*@__PURE__*/ S.suspend(() =>
 export type TransactionsListByBillingProfileRequestType =
   | "Other"
   | "Billed"
-  | "Unbilled"
-  | (string & {});
+  | "Unbilled";
 export const TransactionsListByBillingProfileRequestType =
   /*@__PURE__*/ S.String;
 
@@ -15750,7 +15649,7 @@ export interface TransactionsListByBillingProfileRequest {
   /** The end date to fetch the transactions. The date should be specified in MM-DD-YYYY format. */
   periodEndDate: string;
   /** The type of transaction. */
-  type: TransactionsListByBillingProfileRequestType;
+  type: TransactionsListByBillingProfileRequestType | (string & {});
   /** The filter query option allows clients to filter a collection of resources that are addressed by a request URL. */
   filter?: string;
   /** The orderby query option allows clients to request resources in a particular order. */
@@ -15803,12 +15702,11 @@ export type CreditType =
   | "AzureFreeCredit"
   | "AzureCreditOffer"
   | "ServiceInterruption"
-  | "Refund"
-  | (string & {});
+  | "Refund";
 export const CreditType = /*@__PURE__*/ S.String;
 
 /** Type of the transaction, billed or unbilled. */
-export type TransactionKind = "Other" | "All" | "Reservation" | (string & {});
+export type TransactionKind = "Other" | "All" | "Reservation";
 export const TransactionKind = /*@__PURE__*/ S.String;
 
 /** The refund details of a transaction. */
@@ -16008,8 +15906,7 @@ export const TransactionListResult = /*@__PURE__*/ S.suspend(() =>
 export type TransactionsListByCustomerRequestType =
   | "Other"
   | "Billed"
-  | "Unbilled"
-  | (string & {});
+  | "Unbilled";
 export const TransactionsListByCustomerRequestType = /*@__PURE__*/ S.String;
 
 export interface TransactionsListByCustomerRequest {
@@ -16024,7 +15921,7 @@ export interface TransactionsListByCustomerRequest {
   /** The end date to fetch the transactions. The date should be specified in MM-DD-YYYY format. */
   periodEndDate: string;
   /** The type of transaction. */
-  type: TransactionsListByCustomerRequestType;
+  type: TransactionsListByCustomerRequestType | (string & {});
   /** The filter query option allows clients to filter a collection of resources that are addressed by a request URL. */
   filter?: string;
   /** The orderby query option allows clients to request resources in a particular order. */
@@ -16107,8 +16004,7 @@ export const TransactionsListByInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 export type TransactionsListByInvoiceSectionRequestType =
   | "Other"
   | "Billed"
-  | "Unbilled"
-  | (string & {});
+  | "Unbilled";
 export const TransactionsListByInvoiceSectionRequestType =
   /*@__PURE__*/ S.String;
 
@@ -16124,7 +16020,7 @@ export interface TransactionsListByInvoiceSectionRequest {
   /** The end date to fetch the transactions. The date should be specified in MM-DD-YYYY format. */
   periodEndDate: string;
   /** The type of transaction. */
-  type: TransactionsListByInvoiceSectionRequestType;
+  type: TransactionsListByInvoiceSectionRequestType | (string & {});
   /** The filter query option allows clients to filter a collection of resources that are addressed by a request URL. */
   filter?: string;
   /** The orderby query option allows clients to request resources in a particular order. */

@@ -67,8 +67,7 @@ export type RulesListResultItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
-  | "azure_storage"
-  | (string & {});
+  | "azure_storage";
 export const RulesListResultItemProvider = /*@__PURE__*/ S.String;
 
 export interface RulesListResultItem {
@@ -131,8 +130,7 @@ export type RulesUpdateRequestRulesItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
-  | "azure_storage"
-  | (string & {});
+  | "azure_storage";
 export const RulesUpdateRequestRulesItemProvider = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateRequestRulesItem {
@@ -143,7 +141,7 @@ export interface RulesUpdateRequestRulesItem {
   /** Parameters of Cloud Connector Rule */
   parameters?: RulesUpdateRequestRulesItemParameters;
   /** Cloud Provider type */
-  provider?: RulesUpdateRequestRulesItemProvider;
+  provider?: RulesUpdateRequestRulesItemProvider | (string & {});
 }
 export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -198,8 +196,7 @@ export type RulesUpdateResultItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
-  | "azure_storage"
-  | (string & {});
+  | "azure_storage";
 export const RulesUpdateResultItemProvider = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateResultItem {

@@ -105,8 +105,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -114,8 +113,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -161,8 +159,7 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Catalog properties */
@@ -442,7 +439,7 @@ export const CatalogsListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogsListDeploymentsRequest>;
 
 /** Regional data boundary values. */
-export type RegionalDataBoundary = "None" | "EU" | (string & {});
+export type RegionalDataBoundary = "None" | "EU";
 export const RegionalDataBoundary = /*@__PURE__*/ S.String;
 
 /** Image type values. */
@@ -470,8 +467,7 @@ export type ImageType =
   | "CustomerUpdateManifest"
   | "RecoveryManifest"
   | "ManifestSet"
-  | "Other"
-  | (string & {});
+  | "Other";
 export const ImageType = /*@__PURE__*/ S.String;
 
 /** The properties of image */
@@ -648,15 +644,15 @@ export const CatalogsListDeviceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogsListDeviceGroupsRequest>;
 
 /** OS feed type values. */
-export type OSFeedType = "Retail" | "RetailEval" | (string & {});
+export type OSFeedType = "Retail" | "RetailEval";
 export const OSFeedType = /*@__PURE__*/ S.String;
 
 /** Update policy values. */
-export type UpdatePolicy = "UpdateAll" | "No3rdPartyAppUpdates" | (string & {});
+export type UpdatePolicy = "UpdateAll" | "No3rdPartyAppUpdates";
 export const UpdatePolicy = /*@__PURE__*/ S.String;
 
 /** Allow crash dumps values. */
-export type AllowCrashDumpCollection = "Enabled" | "Disabled" | (string & {});
+export type AllowCrashDumpCollection = "Enabled" | "Disabled";
 export const AllowCrashDumpCollection = /*@__PURE__*/ S.String;
 
 /** The properties of deviceGroup */
@@ -1022,7 +1018,7 @@ export interface ImagePropertiesInput {
   /** Image ID */
   imageId?: string;
   /** Regional data boundary for an image */
-  regionalDataBoundary?: RegionalDataBoundary;
+  regionalDataBoundary?: RegionalDataBoundary | (string & {});
 }
 export const ImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1098,12 +1094,7 @@ export const CertificatesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificatesGetRequest>;
 
 /** Certificate status values. */
-export type CertificateStatus =
-  | "Active"
-  | "Inactive"
-  | "Expired"
-  | "Revoked"
-  | (string & {});
+export type CertificateStatus = "Active" | "Inactive" | "Expired" | "Revoked";
 export const CertificateStatus = /*@__PURE__*/ S.String;
 
 /** The properties of certificate */
@@ -1683,13 +1674,13 @@ export interface DeviceGroupPropertiesInput {
   /** Description of the device group. */
   description?: string;
   /** Operating system feed type of the device group. */
-  osFeedType?: OSFeedType;
+  osFeedType?: OSFeedType | (string & {});
   /** Update policy of the device group. */
-  updatePolicy?: UpdatePolicy;
+  updatePolicy?: UpdatePolicy | (string & {});
   /** Flag to define if the user allows for crash dump collection. */
-  allowCrashDumpsCollection?: AllowCrashDumpCollection;
+  allowCrashDumpsCollection?: AllowCrashDumpCollection | (string & {});
   /** Regional data boundary for the device group. */
-  regionalDataBoundary?: RegionalDataBoundary;
+  regionalDataBoundary?: RegionalDataBoundary | (string & {});
 }
 export const DeviceGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1899,13 +1890,13 @@ export interface DeviceGroupUpdateProperties {
   /** Description of the device group. */
   description?: string;
   /** Operating system feed type of the device group. */
-  osFeedType?: OSFeedType;
+  osFeedType?: OSFeedType | (string & {});
   /** Update policy of the device group. */
-  updatePolicy?: UpdatePolicy;
+  updatePolicy?: UpdatePolicy | (string & {});
   /** Flag to define if the user allows for crash dump collection. */
-  allowCrashDumpsCollection?: AllowCrashDumpCollection;
+  allowCrashDumpsCollection?: AllowCrashDumpCollection | (string & {});
   /** Regional data boundary for the device group. */
-  regionalDataBoundary?: RegionalDataBoundary;
+  regionalDataBoundary?: RegionalDataBoundary | (string & {});
 }
 export const DeviceGroupUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2093,15 +2084,12 @@ export const DevicesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevicesDeleteResponse>;
 
 /** Capability image type */
-export type CapabilityType =
-  | "ApplicationDevelopment"
-  | "FieldServicing"
-  | (string & {});
+export type CapabilityType = "ApplicationDevelopment" | "FieldServicing";
 export const CapabilityType = /*@__PURE__*/ S.String;
 
 /** List of capabilities to create */
 export type DevicesGenerateCapabilityImageRequestCapabilitiesList =
-  ReadonlyArray<CapabilityType>;
+  ReadonlyArray<CapabilityType | (string & {})>;
 export const DevicesGenerateCapabilityImageRequestCapabilitiesList =
   /*@__PURE__*/ S.Array(
     CapabilityType,
@@ -2559,11 +2547,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

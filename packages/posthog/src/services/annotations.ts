@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `USR` - user * `GIT` - GitHub */
-export type CreationTypeEnum = "USR" | "GIT" | (string & {});
+export type CreationTypeEnum = "USR" | "GIT";
 export const CreationTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
@@ -45,8 +45,7 @@ export type AnnotationScopeEnum =
   | "dashboard"
   | "project"
   | "organization"
-  | "recording"
-  | (string & {});
+  | "recording";
 export const AnnotationScopeEnum = /*@__PURE__*/ S.String;
 
 export interface AnnotationsCreateRequest {
@@ -57,13 +56,13 @@ export interface AnnotationsCreateRequest {
   /** When this annotation happened (ISO 8601 timestamp). Used to position it on charts. */
   date_marker?: string | null;
   /** Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes. * `USR` - user * `GIT` - GitHub */
-  creation_type?: CreationTypeEnum;
+  creation_type?: CreationTypeEnum | (string & {});
   dashboard_item?: number | null;
   dashboard_id?: number | null;
   /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
   deleted?: boolean;
   /** Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected. * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
-  scope?: AnnotationScopeEnum;
+  scope?: AnnotationScopeEnum | (string & {});
   /** Optional emoji shown in place of the default badge when this annotation is surfaced on a chart. */
   emoji?: string | null;
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
@@ -107,11 +106,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -278,13 +276,13 @@ export interface AnnotationsPartialUpdateRequest {
   /** When this annotation happened (ISO 8601 timestamp). Used to position it on charts. */
   date_marker?: string | null;
   /** Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes. * `USR` - user * `GIT` - GitHub */
-  creation_type?: CreationTypeEnum;
+  creation_type?: CreationTypeEnum | (string & {});
   dashboard_item?: number | null;
   dashboard_id?: number | null;
   /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
   deleted?: boolean;
   /** Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected. * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
-  scope?: AnnotationScopeEnum;
+  scope?: AnnotationScopeEnum | (string & {});
   /** Optional emoji shown in place of the default badge when this annotation is surfaced on a chart. */
   emoji?: string | null;
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
@@ -345,13 +343,13 @@ export interface AnnotationsUpdateRequest {
   /** When this annotation happened (ISO 8601 timestamp). Used to position it on charts. */
   date_marker?: string | null;
   /** Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes. * `USR` - user * `GIT` - GitHub */
-  creation_type?: CreationTypeEnum;
+  creation_type?: CreationTypeEnum | (string & {});
   dashboard_item?: number | null;
   dashboard_id?: number | null;
   /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
   deleted?: boolean;
   /** Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected. * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
-  scope?: AnnotationScopeEnum;
+  scope?: AnnotationScopeEnum | (string & {});
   /** Optional emoji shown in place of the default badge when this annotation is surfaced on a chart. */
   emoji?: string | null;
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */

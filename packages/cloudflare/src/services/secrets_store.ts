@@ -243,8 +243,7 @@ export const CreateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 export type StoresSecretsCreateResultItemStatus =
   | "pending"
   | "active"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const StoresSecretsCreateResultItemStatus = /*@__PURE__*/ S.String;
 
 export type StoresSecretsCreateResultItemScopesList = ReadonlyArray<string>;
@@ -414,8 +413,7 @@ export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 export type StoresSecretsDuplicateResponseStatus =
   | "pending"
   | "active"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const StoresSecretsDuplicateResponseStatus = /*@__PURE__*/ S.String;
 
 export type StoresSecretsDuplicateResponseScopesList = ReadonlyArray<string>;
@@ -577,11 +575,7 @@ export const GetStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStoreSecretRequest",
 }) as any as S.Schema<GetStoreSecretRequest>;
 
-export type StoresSecretsGetResponseStatus =
-  | "pending"
-  | "active"
-  | "deleted"
-  | (string & {});
+export type StoresSecretsGetResponseStatus = "pending" | "active" | "deleted";
 export const StoresSecretsGetResponseStatus = /*@__PURE__*/ S.String;
 
 export type StoresSecretsGetResponseScopesList = ReadonlyArray<string>;
@@ -622,7 +616,7 @@ export const GetStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStoreSecretResponse",
 }) as any as S.Schema<GetStoreSecretResponse>;
 
-export type StoresListRequestDirection = "asc" | "desc" | (string & {});
+export type StoresListRequestDirection = "asc" | "desc";
 export const StoresListRequestDirection = /*@__PURE__*/ S.String;
 
 export type StoresListRequestOrder =
@@ -630,17 +624,16 @@ export type StoresListRequestOrder =
   | "comment"
   | "created"
   | "modified"
-  | "status"
-  | (string & {});
+  | "status";
 export const StoresListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListStoresRequest {
   /** Account Identifier */
   accountId: string;
   /** Direction to sort objects */
-  direction?: StoresListRequestDirection;
+  direction?: StoresListRequestDirection | (string & {});
   /** Order secrets by values in the given field */
-  order?: StoresListRequestOrder;
+  order?: StoresListRequestOrder | (string & {});
   /** Page number */
   page?: number;
   /** Number of objects to return per page */
@@ -710,7 +703,7 @@ export const ListStoresResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStoresResponse",
 }) as any as S.Schema<ListStoresResponse>;
 
-export type StoresSecretsListRequestDirection = "asc" | "desc" | (string & {});
+export type StoresSecretsListRequestDirection = "asc" | "desc";
 export const StoresSecretsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type StoresSecretsListRequestOrder =
@@ -718,8 +711,7 @@ export type StoresSecretsListRequestOrder =
   | "comment"
   | "created"
   | "modified"
-  | "status"
-  | (string & {});
+  | "status";
 export const StoresSecretsListRequestOrder = /*@__PURE__*/ S.String;
 
 export type StoresSecretsListRequestScopesList = ReadonlyArray<string>;
@@ -733,9 +725,9 @@ export interface ListStoreSecretsRequest {
   /** Store Identifier */
   storeId: string;
   /** Direction to sort objects */
-  direction?: StoresSecretsListRequestDirection;
+  direction?: StoresSecretsListRequestDirection | (string & {});
   /** Order secrets by values in the given field */
-  order?: StoresSecretsListRequestOrder;
+  order?: StoresSecretsListRequestOrder | (string & {});
   /** Page number */
   page?: number;
   /** Number of objects to return per page */
@@ -771,8 +763,7 @@ export const ListStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 export type StoresSecretsListResultItemStatus =
   | "pending"
   | "active"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const StoresSecretsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export type StoresSecretsListResultItemScopesList = ReadonlyArray<string>;
@@ -873,11 +864,7 @@ export const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchStoreSecretRequest",
 }) as any as S.Schema<PatchStoreSecretRequest>;
 
-export type StoresSecretsEditResponseStatus =
-  | "pending"
-  | "active"
-  | "deleted"
-  | (string & {});
+export type StoresSecretsEditResponseStatus = "pending" | "active" | "deleted";
 export const StoresSecretsEditResponseStatus = /*@__PURE__*/ S.String;
 
 export type StoresSecretsEditResponseScopesList = ReadonlyArray<string>;

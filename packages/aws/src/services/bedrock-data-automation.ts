@@ -130,14 +130,14 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export type BlueprintArn = string;
-export type BlueprintStage = "DEVELOPMENT" | "LIVE" | (string & {});
+export type BlueprintStage = "DEVELOPMENT" | "LIVE";
 export const BlueprintStage = /*@__PURE__*/ S.String;
 
 export type ClientToken = string;
 export interface CopyBlueprintStageRequest {
   blueprintArn: string;
-  sourceStage: BlueprintStage;
-  targetStage: BlueprintStage;
+  sourceStage: BlueprintStage | (string & {});
+  targetStage: BlueprintStage | (string & {});
   clientToken?: string;
 }
 export const CopyBlueprintStageRequest = /*@__PURE__*/ S.suspend(() =>
@@ -166,7 +166,7 @@ export const CopyBlueprintStageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CopyBlueprintStageResponse",
 }) as any as S.Schema<CopyBlueprintStageResponse>;
 export type BlueprintName = string | redacted.Redacted<string>;
-export type Type = "DOCUMENT" | "IMAGE" | "AUDIO" | "VIDEO" | (string & {});
+export type Type = "DOCUMENT" | "IMAGE" | "AUDIO" | "VIDEO";
 export const Type = /*@__PURE__*/ S.String;
 
 export type BlueprintSchema = string | redacted.Redacted<string>;
@@ -203,8 +203,8 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateBlueprintRequest {
   blueprintName: string | redacted.Redacted<string>;
-  type: Type;
-  blueprintStage?: BlueprintStage;
+  type: Type | (string & {});
+  blueprintStage?: BlueprintStage | (string & {});
   schema: string | redacted.Redacted<string>;
   clientToken?: string;
   encryptionConfiguration?: EncryptionConfiguration;
@@ -356,7 +356,7 @@ export const CreateDataAutomationLibraryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDataAutomationLibraryRequest",
 }) as any as S.Schema<CreateDataAutomationLibraryRequest>;
 export type DataAutomationLibraryArn = string;
-export type DataAutomationLibraryStatus = "ACTIVE" | "DELETING" | (string & {});
+export type DataAutomationLibraryStatus = "ACTIVE" | "DELETING";
 export const DataAutomationLibraryStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDataAutomationLibraryResponse {
@@ -375,10 +375,10 @@ export type DataAutomationProjectName = string | redacted.Redacted<string>;
 export type DataAutomationProjectDescription =
   | string
   | redacted.Redacted<string>;
-export type DataAutomationProjectStage = "DEVELOPMENT" | "LIVE" | (string & {});
+export type DataAutomationProjectStage = "DEVELOPMENT" | "LIVE";
 export const DataAutomationProjectStage = /*@__PURE__*/ S.String;
 
-export type DataAutomationProjectType = "ASYNC" | "SYNC" | (string & {});
+export type DataAutomationProjectType = "ASYNC" | "SYNC";
 export const DataAutomationProjectType = /*@__PURE__*/ S.String;
 
 export type DocumentExtractionGranularityType =
@@ -386,8 +386,7 @@ export type DocumentExtractionGranularityType =
   | "PAGE"
   | "ELEMENT"
   | "WORD"
-  | "LINE"
-  | (string & {});
+  | "LINE";
 export const DocumentExtractionGranularityType = /*@__PURE__*/ S.String;
 
 export type DocumentExtractionGranularityTypes =
@@ -403,7 +402,7 @@ export const DocumentExtractionGranularity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DocumentExtractionGranularity",
 }) as any as S.Schema<DocumentExtractionGranularity>;
-export type State = "ENABLED" | "DISABLED" | (string & {});
+export type State = "ENABLED" | "DISABLED";
 export const State = /*@__PURE__*/ S.String;
 
 export interface DocumentBoundingBox {
@@ -438,8 +437,7 @@ export type DocumentOutputTextFormatType =
   | "PLAIN_TEXT"
   | "MARKDOWN"
   | "HTML"
-  | "CSV"
-  | (string & {});
+  | "CSV";
 export const DocumentOutputTextFormatType = /*@__PURE__*/ S.String;
 
 export type DocumentOutputTextFormatTypes = DocumentOutputTextFormatType[];
@@ -491,8 +489,7 @@ export const DocumentStandardOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ImageExtractionCategoryType =
   | "CONTENT_MODERATION"
   | "TEXT_DETECTION"
-  | "LOGOS"
-  | (string & {});
+  | "LOGOS";
 export const ImageExtractionCategoryType = /*@__PURE__*/ S.String;
 
 export type ImageExtractionCategoryTypes = ImageExtractionCategoryType[];
@@ -528,10 +525,7 @@ export const ImageStandardExtraction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageStandardExtraction",
 }) as any as S.Schema<ImageStandardExtraction>;
-export type ImageStandardGenerativeFieldType =
-  | "IMAGE_SUMMARY"
-  | "IAB"
-  | (string & {});
+export type ImageStandardGenerativeFieldType = "IMAGE_SUMMARY" | "IAB";
 export const ImageStandardGenerativeFieldType = /*@__PURE__*/ S.String;
 
 export type ImageStandardGenerativeFieldTypes =
@@ -567,8 +561,7 @@ export type VideoExtractionCategoryType =
   | "CONTENT_MODERATION"
   | "TEXT_DETECTION"
   | "TRANSCRIPT"
-  | "LOGOS"
-  | (string & {});
+  | "LOGOS";
 export const VideoExtractionCategoryType = /*@__PURE__*/ S.String;
 
 export type VideoExtractionCategoryTypes = VideoExtractionCategoryType[];
@@ -607,8 +600,7 @@ export const VideoStandardExtraction = /*@__PURE__*/ S.suspend(() =>
 export type VideoStandardGenerativeFieldType =
   | "VIDEO_SUMMARY"
   | "IAB"
-  | "CHAPTER_SUMMARY"
-  | (string & {});
+  | "CHAPTER_SUMMARY";
 export const VideoStandardGenerativeFieldType = /*@__PURE__*/ S.String;
 
 export type VideoStandardGenerativeFieldTypes =
@@ -643,8 +635,7 @@ export const VideoStandardOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type AudioExtractionCategoryType =
   | "AUDIO_CONTENT_MODERATION"
   | "TRANSCRIPT"
-  | "TOPIC_CONTENT_MODERATION"
-  | (string & {});
+  | "TOPIC_CONTENT_MODERATION";
 export const AudioExtractionCategoryType = /*@__PURE__*/ S.String;
 
 export type AudioExtractionCategoryTypes = AudioExtractionCategoryType[];
@@ -712,8 +703,7 @@ export const AudioStandardExtraction = /*@__PURE__*/ S.suspend(() =>
 export type AudioStandardGenerativeFieldType =
   | "AUDIO_SUMMARY"
   | "IAB"
-  | "TOPIC_SUMMARY"
-  | (string & {});
+  | "TOPIC_SUMMARY";
 export const AudioStandardGenerativeFieldType = /*@__PURE__*/ S.String;
 
 export type AudioStandardGenerativeFieldTypes =
@@ -815,14 +805,10 @@ export const ModalityProcessingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModalityProcessingConfiguration>;
 export type SensitiveDataDetectionMode =
   | "DETECTION"
-  | "DETECTION_AND_REDACTION"
-  | (string & {});
+  | "DETECTION_AND_REDACTION";
 export const SensitiveDataDetectionMode = /*@__PURE__*/ S.String;
 
-export type SensitiveDataDetectionScopeType =
-  | "STANDARD"
-  | "CUSTOM"
-  | (string & {});
+export type SensitiveDataDetectionScopeType = "STANDARD" | "CUSTOM";
 export const SensitiveDataDetectionScopeType = /*@__PURE__*/ S.String;
 
 export type SensitiveDataDetectionScope = SensitiveDataDetectionScopeType[];
@@ -861,13 +847,12 @@ export type PIIEntityType =
   | "CA_SOCIAL_INSURANCE_NUMBER"
   | "UK_NATIONAL_HEALTH_SERVICE_NUMBER"
   | "UK_NATIONAL_INSURANCE_NUMBER"
-  | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
-  | (string & {});
+  | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER";
 export const PIIEntityType = /*@__PURE__*/ S.String;
 
 export type PIIEntityTypes = PIIEntityType[];
 export const PIIEntityTypes = /*@__PURE__*/ S.Array(PIIEntityType);
-export type PIIRedactionMaskMode = "PII" | "ENTITY_TYPE" | (string & {});
+export type PIIRedactionMaskMode = "PII" | "ENTITY_TYPE";
 export const PIIRedactionMaskMode = /*@__PURE__*/ S.String;
 
 export interface PIIEntitiesConfiguration {
@@ -945,13 +930,12 @@ export type Language =
   | "KO"
   | "CN"
   | "TW"
-  | "HK"
-  | (string & {});
+  | "HK";
 export const Language = /*@__PURE__*/ S.String;
 
 export type AudioInputLanguages = Language[];
 export const AudioInputLanguages = /*@__PURE__*/ S.Array(Language);
-export type AudioGenerativeOutputLanguage = "DEFAULT" | "EN" | (string & {});
+export type AudioGenerativeOutputLanguage = "DEFAULT" | "EN";
 export const AudioGenerativeOutputLanguage = /*@__PURE__*/ S.String;
 
 export interface AudioLanguageConfiguration {
@@ -982,12 +966,7 @@ export const AudioOverrideConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AudioOverrideConfiguration",
 }) as any as S.Schema<AudioOverrideConfiguration>;
-export type DesiredModality =
-  | "IMAGE"
-  | "DOCUMENT"
-  | "AUDIO"
-  | "VIDEO"
-  | (string & {});
+export type DesiredModality = "IMAGE" | "DOCUMENT" | "AUDIO" | "VIDEO";
 export const DesiredModality = /*@__PURE__*/ S.String;
 
 export interface ModalityRoutingConfiguration {
@@ -1047,8 +1026,8 @@ export const DataAutomationLibraryConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDataAutomationProjectRequest {
   projectName: string | redacted.Redacted<string>;
   projectDescription?: string | redacted.Redacted<string>;
-  projectStage?: DataAutomationProjectStage;
-  projectType?: DataAutomationProjectType;
+  projectStage?: DataAutomationProjectStage | (string & {});
+  projectType?: DataAutomationProjectType | (string & {});
   standardOutputConfiguration: StandardOutputConfiguration;
   customOutputConfiguration?: CustomOutputConfiguration;
   overrideConfiguration?: OverrideConfiguration;
@@ -1089,8 +1068,7 @@ export type DataAutomationProjectArn = string;
 export type DataAutomationProjectStatus =
   | "COMPLETED"
   | "IN_PROGRESS"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const DataAutomationProjectStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDataAutomationProjectResponse {
@@ -1203,7 +1181,7 @@ export const DeleteDataAutomationProjectResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetBlueprintRequest {
   blueprintArn: string;
   blueprintVersion?: string;
-  blueprintStage?: BlueprintStage;
+  blueprintStage?: BlueprintStage | (string & {});
 }
 export const GetBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1260,8 +1238,7 @@ export type BlueprintOptimizationJobStatus =
   | "InProgress"
   | "Success"
   | "ServiceError"
-  | "ClientError"
-  | (string & {});
+  | "ClientError";
 export const BlueprintOptimizationJobStatus = /*@__PURE__*/ S.String;
 
 export interface BlueprintOptimizationOutputConfiguration {
@@ -1309,7 +1286,7 @@ export const GetDataAutomationLibraryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataAutomationLibraryRequest",
 }) as any as S.Schema<GetDataAutomationLibraryRequest>;
-export type EntityType = "VOCABULARY" | (string & {});
+export type EntityType = "VOCABULARY";
 export const EntityType = /*@__PURE__*/ S.String;
 
 export type EntityMetadata = string;
@@ -1357,7 +1334,7 @@ export const GetDataAutomationLibraryResponse = /*@__PURE__*/ S.suspend(() =>
 export type EntityId = string;
 export interface GetDataAutomationLibraryEntityRequest {
   libraryArn: string;
-  entityType: EntityType;
+  entityType: EntityType | (string & {});
   entityId: string;
 }
 export const GetDataAutomationLibraryEntityRequest = /*@__PURE__*/ S.suspend(
@@ -1455,18 +1432,14 @@ export const GetDataAutomationLibraryIngestionJobRequest =
   ).annotate({
     identifier: "GetDataAutomationLibraryIngestionJobRequest",
   }) as any as S.Schema<GetDataAutomationLibraryIngestionJobRequest>;
-export type LibraryIngestionJobOperationType =
-  | "UPSERT"
-  | "DELETE"
-  | (string & {});
+export type LibraryIngestionJobOperationType = "UPSERT" | "DELETE";
 export const LibraryIngestionJobOperationType = /*@__PURE__*/ S.String;
 
 export type LibraryIngestionJobStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "COMPLETED_WITH_ERRORS"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const LibraryIngestionJobStatus = /*@__PURE__*/ S.String;
 
 export interface OutputConfiguration {
@@ -1516,7 +1489,7 @@ export const GetDataAutomationLibraryIngestionJobResponse =
   }) as any as S.Schema<GetDataAutomationLibraryIngestionJobResponse>;
 export interface GetDataAutomationProjectRequest {
   projectArn: string;
-  projectStage?: DataAutomationProjectStage;
+  projectStage?: DataAutomationProjectStage | (string & {});
 }
 export const GetDataAutomationProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1586,7 +1559,7 @@ export const GetDataAutomationProjectResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDataAutomationProjectResponse>;
 export interface BlueprintOptimizationObject {
   blueprintArn: string;
-  stage?: BlueprintStage;
+  stage?: BlueprintStage | (string & {});
 }
 export const BlueprintOptimizationObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ blueprintArn: S.String, stage: S.optional(BlueprintStage) }),
@@ -1635,7 +1608,7 @@ export const InvokeBlueprintOptimizationAsyncResponse = /*@__PURE__*/ S.suspend(
 export interface VocabularyEntityInfo {
   entityId?: string;
   description?: string | redacted.Redacted<string>;
-  language: Language;
+  language: Language | (string & {});
   phrases: Phrase[];
 }
 export const VocabularyEntityInfo = /*@__PURE__*/ S.suspend(() =>
@@ -1703,8 +1676,8 @@ export interface InvokeDataAutomationLibraryIngestionJobRequest {
   libraryArn: string;
   clientToken?: string;
   inputConfiguration: InputConfiguration;
-  entityType: EntityType;
-  operationType: LibraryIngestionJobOperationType;
+  entityType: EntityType | (string & {});
+  operationType: LibraryIngestionJobOperationType | (string & {});
   outputConfiguration: OutputConfiguration;
   notificationConfiguration?: NotificationConfiguration;
   tags?: Tag[];
@@ -1745,21 +1718,17 @@ export const InvokeDataAutomationLibraryIngestionJobResponse =
   ).annotate({
     identifier: "InvokeDataAutomationLibraryIngestionJobResponse",
   }) as any as S.Schema<InvokeDataAutomationLibraryIngestionJobResponse>;
-export type ResourceOwner = "SERVICE" | "ACCOUNT" | (string & {});
+export type ResourceOwner = "SERVICE" | "ACCOUNT";
 export const ResourceOwner = /*@__PURE__*/ S.String;
 
-export type BlueprintStageFilter =
-  | "DEVELOPMENT"
-  | "LIVE"
-  | "ALL"
-  | (string & {});
+export type BlueprintStageFilter = "DEVELOPMENT" | "LIVE" | "ALL";
 export const BlueprintStageFilter = /*@__PURE__*/ S.String;
 
 export type MaxResults = number;
 export type NextToken = string;
 export interface DataAutomationProjectFilter {
   projectArn: string;
-  projectStage?: DataAutomationProjectStage;
+  projectStage?: DataAutomationProjectStage | (string & {});
 }
 export const DataAutomationProjectFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1771,8 +1740,8 @@ export const DataAutomationProjectFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataAutomationProjectFilter>;
 export interface ListBlueprintsRequest {
   blueprintArn?: string;
-  resourceOwner?: ResourceOwner;
-  blueprintStageFilter?: BlueprintStageFilter;
+  resourceOwner?: ResourceOwner | (string & {});
+  blueprintStageFilter?: BlueprintStageFilter | (string & {});
   maxResults?: number;
   nextToken?: string;
   projectFilter?: DataAutomationProjectFilter;
@@ -1886,7 +1855,7 @@ export const ListDataAutomationLibrariesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDataAutomationLibrariesResponse>;
 export interface ListDataAutomationLibraryEntitiesRequest {
   libraryArn: string;
-  entityType: EntityType;
+  entityType: EntityType | (string & {});
   maxResults?: number;
   nextToken?: string;
 }
@@ -2025,17 +1994,13 @@ export const ListDataAutomationLibraryIngestionJobsResponse =
   ).annotate({
     identifier: "ListDataAutomationLibraryIngestionJobsResponse",
   }) as any as S.Schema<ListDataAutomationLibraryIngestionJobsResponse>;
-export type DataAutomationProjectStageFilter =
-  | "DEVELOPMENT"
-  | "LIVE"
-  | "ALL"
-  | (string & {});
+export type DataAutomationProjectStageFilter = "DEVELOPMENT" | "LIVE" | "ALL";
 export const DataAutomationProjectStageFilter = /*@__PURE__*/ S.String;
 
 export interface BlueprintFilter {
   blueprintArn: string;
   blueprintVersion?: string;
-  blueprintStage?: BlueprintStage;
+  blueprintStage?: BlueprintStage | (string & {});
 }
 export const BlueprintFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2057,9 +2022,9 @@ export const DataAutomationLibraryFilter = /*@__PURE__*/ S.suspend(() =>
 export interface ListDataAutomationProjectsRequest {
   maxResults?: number;
   nextToken?: string;
-  projectStageFilter?: DataAutomationProjectStageFilter;
+  projectStageFilter?: DataAutomationProjectStageFilter | (string & {});
   blueprintFilter?: BlueprintFilter;
-  resourceOwner?: ResourceOwner;
+  resourceOwner?: ResourceOwner | (string & {});
   libraryFilter?: DataAutomationLibraryFilter;
 }
 export const ListDataAutomationProjectsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2196,7 +2161,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBlueprintRequest {
   blueprintArn: string;
   schema: string | redacted.Redacted<string>;
-  blueprintStage?: BlueprintStage;
+  blueprintStage?: BlueprintStage | (string & {});
   encryptionConfiguration?: EncryptionConfiguration;
 }
 export const UpdateBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2266,7 +2231,7 @@ export const UpdateDataAutomationLibraryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDataAutomationLibraryResponse>;
 export interface UpdateDataAutomationProjectRequest {
   projectArn: string;
-  projectStage?: DataAutomationProjectStage;
+  projectStage?: DataAutomationProjectStage | (string & {});
   projectDescription?: string | redacted.Redacted<string>;
   standardOutputConfiguration: StandardOutputConfiguration;
   customOutputConfiguration?: CustomOutputConfiguration;

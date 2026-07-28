@@ -13,76 +13,68 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface CreateChallengeRequest {
   /** Request body */
   body?: Empty;
 }
 export const CreateChallengeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(Empty.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/challenge",
-      baseUrl: "https://verifiedaccess.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateChallengeRequest",
-}) as any as S.Schema<CreateChallengeRequest>;
+S.Struct({
+  "body": S.optional(Empty.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/challenge","baseUrl":"https://verifiedaccess.googleapis.com/"})),
+).annotate({ identifier: "CreateChallengeRequest" }) as any as S.Schema<CreateChallengeRequest>;
 
 /** The wrapper message of any data and its signature. */
 export interface SignedData {
@@ -92,10 +84,10 @@ export interface SignedData {
   data?: string;
 }
 export const SignedData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signature: S.optional(S.String),
-    data: S.optional(S.String),
-  }),
+S.Struct({
+  "signature": S.optional(S.String),
+  "data": S.optional(S.String),
+}),
 ).annotate({ identifier: "SignedData" }) as any as S.Schema<SignedData>;
 
 /** Result message for VerifiedAccess.CreateChallenge. */
@@ -106,10 +98,10 @@ export interface Challenge {
   alternativeChallenge?: SignedData;
 }
 export const Challenge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    challenge: S.optional(SignedData),
-    alternativeChallenge: S.optional(SignedData),
-  }),
+S.Struct({
+  "challenge": S.optional(SignedData),
+  "alternativeChallenge": S.optional(SignedData),
+}),
 ).annotate({ identifier: "Challenge" }) as any as S.Schema<Challenge>;
 
 /** signed ChallengeResponse */
@@ -120,31 +112,21 @@ export interface VerifyChallengeResponseRequest {
   expectedIdentity?: string;
 }
 export const VerifyChallengeResponseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    challengeResponse: S.optional(SignedData),
-    expectedIdentity: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VerifyChallengeResponseRequest",
-}) as any as S.Schema<VerifyChallengeResponseRequest>;
+S.Struct({
+  "challengeResponse": S.optional(SignedData),
+  "expectedIdentity": S.optional(S.String),
+}),
+).annotate({ identifier: "VerifyChallengeResponseRequest" }) as any as S.Schema<VerifyChallengeResponseRequest>;
 
 export interface VerifyChallengeRequest {
   /** Request body */
   body?: VerifyChallengeResponseRequest;
 }
 export const VerifyChallengeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(VerifyChallengeResponseRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/challenge:verify",
-      baseUrl: "https://verifiedaccess.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "VerifyChallengeRequest",
-}) as any as S.Schema<VerifyChallengeRequest>;
+S.Struct({
+  "body": S.optional(VerifyChallengeResponseRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/challenge:verify","baseUrl":"https://verifiedaccess.googleapis.com/"})),
+).annotate({ identifier: "VerifyChallengeRequest" }) as any as S.Schema<VerifyChallengeRequest>;
 
 /** Result message for VerifiedAccess.VerifyChallengeResponse. */
 export interface VerifyChallengeResponseResult {
@@ -160,23 +142,16 @@ export interface VerifyChallengeResponseResult {
   verificationOutput?: string;
 }
 export const VerifyChallengeResponseResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    devicePermanentId: S.optional(S.String),
-    deviceEnrollmentId: S.optional(S.String),
-    signedPublicKeyAndChallenge: S.optional(S.String),
-    attestedDeviceId: S.optional(S.String),
-    verificationOutput: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VerifyChallengeResponseResult",
-}) as any as S.Schema<VerifyChallengeResponseResult>;
+S.Struct({
+  "devicePermanentId": S.optional(S.String),
+  "deviceEnrollmentId": S.optional(S.String),
+  "signedPublicKeyAndChallenge": S.optional(S.String),
+  "attestedDeviceId": S.optional(S.String),
+  "verificationOutput": S.optional(S.String),
+}),
+).annotate({ identifier: "VerifyChallengeResponseResult" }) as any as S.Schema<VerifyChallengeResponseResult>;
 
-export type CreateChallengeError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateChallengeError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** CreateChallenge API */
 export const createChallenge: API.OperationMethod<
   CreateChallengeRequest,
@@ -191,12 +166,7 @@ export const createChallenge: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VerifyChallengeError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type VerifyChallengeError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** VerifyChallengeResponse API */
 export const verifyChallenge: API.OperationMethod<
   VerifyChallengeRequest,
@@ -210,3 +180,4 @@ export const verifyChallenge: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -28,8 +28,7 @@ export type ContainerServiceOrchestratorProfileOrchestratorType =
   | "Swarm"
   | "DCOS"
   | "Custom"
-  | "Kubernetes"
-  | (string & {});
+  | "Kubernetes";
 export const ContainerServiceOrchestratorProfileOrchestratorType =
   /*@__PURE__*/ S.String;
 
@@ -77,13 +76,13 @@ export const ContainerServiceServicePrincipalProfile = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ContainerServiceServicePrincipalProfile>;
 
 /** Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1. */
-export type ContainerServiceMasterProfileInputCount = 1 | 3 | 5 | (number & {});
+export type ContainerServiceMasterProfileInputCount = 1 | 3 | 5;
 export const ContainerServiceMasterProfileInputCount = /*@__PURE__*/ S.Number;
 
 /** Profile for the container service master. */
 export interface ContainerServiceMasterProfileInput {
   /** Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1. */
-  count?: ContainerServiceMasterProfileInputCount;
+  count?: ContainerServiceMasterProfileInputCount | (number & {});
   /** DNS prefix to be used to create the FQDN for master. */
   dnsPrefix: string;
 }
@@ -144,8 +143,7 @@ export type ContainerServiceAgentPoolProfileInputVmSize =
   | "Standard_GS2"
   | "Standard_GS3"
   | "Standard_GS4"
-  | "Standard_GS5"
-  | (string & {});
+  | "Standard_GS5";
 export const ContainerServiceAgentPoolProfileInputVmSize =
   /*@__PURE__*/ S.String;
 
@@ -156,7 +154,7 @@ export interface ContainerServiceAgentPoolProfileInput {
   /** Number of agents (VMs) to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. */
   count: number;
   /** Size of agent VMs. */
-  vmSize: ContainerServiceAgentPoolProfileInputVmSize;
+  vmSize: ContainerServiceAgentPoolProfileInputVmSize | (string & {});
   /** DNS prefix to be used to create the FQDN for the agent pool. */
   dnsPrefix: string;
 }
@@ -353,7 +351,7 @@ export const ContainerServicesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<ContainerServicesCreateOrUpdateResponseTagsMap>;
 
 /** Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1. */
-export type ContainerServiceMasterProfileCount = 1 | 3 | 5 | (number & {});
+export type ContainerServiceMasterProfileCount = 1 | 3 | 5;
 export const ContainerServiceMasterProfileCount = /*@__PURE__*/ S.Number;
 
 /** Profile for the container service master. */
@@ -423,8 +421,7 @@ export type ContainerServiceAgentPoolProfileVmSize =
   | "Standard_GS2"
   | "Standard_GS3"
   | "Standard_GS4"
-  | "Standard_GS5"
-  | (string & {});
+  | "Standard_GS5";
 export const ContainerServiceAgentPoolProfileVmSize = /*@__PURE__*/ S.String;
 
 /** Profile for the container service agent pool. */
@@ -762,7 +759,7 @@ export const DiskAccessPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskAccessPropertiesInput>;
 
 /** The type of extendedLocation. */
-export type ExtendedLocationType = "EdgeZone" | (string & {});
+export type ExtendedLocationType = "EdgeZone";
 export const ExtendedLocationType = /*@__PURE__*/ S.String;
 
 /** The complex type of the extended location. */
@@ -770,7 +767,7 @@ export interface DiskAccessesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const DiskAccessesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -825,8 +822,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -834,8 +830,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -890,8 +885,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -918,8 +912,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1703,8 +1696,7 @@ export const DiskEncryptionSetsCreateOrUpdateRequestTagsMap =
 export type DiskEncryptionSetType =
   | "EncryptionAtRestWithCustomerKey"
   | "EncryptionAtRestWithPlatformAndCustomerKeys"
-  | "ConfidentialVmEncryptedWithCustomerKey"
-  | (string & {});
+  | "ConfidentialVmEncryptedWithCustomerKey";
 export const DiskEncryptionSetType = /*@__PURE__*/ S.String;
 
 /** The vault id is an Azure Resource Manager Resource id in the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName} */
@@ -1803,7 +1795,7 @@ export const EncryptionSetPropertiesInputAutoKeyRotationError =
 
 export interface EncryptionSetPropertiesInput {
   /** The type of key used to encrypt the data of the disk. */
-  encryptionType?: DiskEncryptionSetType;
+  encryptionType?: DiskEncryptionSetType | (string & {});
   /** The key vault key which is currently used by this disk encryption set. */
   activeKey?: KeyForDiskEncryptionSet;
   /** Set this flag to true to enable auto-updating of this disk encryption set to the latest key version. */
@@ -1832,8 +1824,7 @@ export type DiskEncryptionSetIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const DiskEncryptionSetIdentityType = /*@__PURE__*/ S.String;
 
 export interface CommonUserAssignedIdentitiesValueInput {}
@@ -1856,7 +1847,7 @@ export const EncryptionSetIdentityInputUserAssignedIdentitiesMap =
 /** The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks. */
 export interface EncryptionSetIdentityInput {
   /** The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys. */
-  type?: DiskEncryptionSetIdentityType;
+  type?: DiskEncryptionSetIdentityType | (string & {});
   /** The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: EncryptionSetIdentityInputUserAssignedIdentitiesMap;
 }
@@ -2331,7 +2322,7 @@ export const DiskEncryptionSetsListByResourceGroupRequest =
 /** disk encryption set resource update properties. */
 export interface DiskEncryptionSetUpdateProperties {
   /** The type of key used to encrypt the data of the disk. */
-  encryptionType?: DiskEncryptionSetType;
+  encryptionType?: DiskEncryptionSetType | (string & {});
   /** Key Vault Key Url to be used for server side encryption of Managed Disks and Snapshots */
   activeKey?: KeyForDiskEncryptionSet;
   /** Set this flag to true to enable auto-updating of this disk encryption set to the latest key version. */
@@ -2466,11 +2457,11 @@ export const DiskRestorePointGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskRestorePointGetRequest>;
 
 /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
-export type CommonOperatingSystemTypes = "Windows" | "Linux" | (string & {});
+export type CommonOperatingSystemTypes = "Windows" | "Linux";
 export const CommonOperatingSystemTypes = /*@__PURE__*/ S.String;
 
 /** The hypervisor generation of the Virtual Machine. */
-export type CommonHyperVGeneration = "V1" | "V2" | (string & {});
+export type CommonHyperVGeneration = "V1" | "V2";
 export const CommonHyperVGeneration = /*@__PURE__*/ S.String;
 
 /** Used for establishing the purchase context of any 3rd Party artifact through MarketPlace. */
@@ -2496,14 +2487,13 @@ export const DiskPurchasePlan = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskPurchasePlan>;
 
 /** CPU architecture supported by an OS disk. */
-export type CommonArchitecture = "x64" | "Arm64" | (string & {});
+export type CommonArchitecture = "x64" | "Arm64";
 export const CommonArchitecture = /*@__PURE__*/ S.String;
 
 /** Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM */
 export type SupportedSecurityOption =
   | "TrustedLaunchSupported"
-  | "TrustedLaunchAndConfidentialVMSupported"
-  | (string & {});
+  | "TrustedLaunchAndConfidentialVMSupported";
 export const SupportedSecurityOption = /*@__PURE__*/ S.String;
 
 /** List of supported capabilities persisted on the disk resource for VM use. */
@@ -2532,8 +2522,7 @@ export const SupportedCapabilities = /*@__PURE__*/ S.suspend(() =>
 export type EncryptionType =
   | "EncryptionAtRestWithPlatformKey"
   | "EncryptionAtRestWithCustomerKey"
-  | "EncryptionAtRestWithPlatformAndCustomerKeys"
-  | (string & {});
+  | "EncryptionAtRestWithPlatformAndCustomerKeys";
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 /** Encryption at rest settings for disk or snapshot */
@@ -2551,15 +2540,11 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
 /** Policy for accessing the disk via network. */
-export type NetworkAccessPolicy =
-  | "AllowAll"
-  | "AllowPrivate"
-  | "DenyAll"
-  | (string & {});
+export type NetworkAccessPolicy = "AllowAll" | "AllowPrivate" | "DenyAll";
 export const NetworkAccessPolicy = /*@__PURE__*/ S.String;
 
 /** Policy for controlling export on the disk. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Specifies the SecurityType of the VM. Applicable for OS disks only. */
@@ -2568,12 +2553,11 @@ export type DiskSecurityTypes =
   | "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey"
   | "ConfidentialVM_DiskEncryptedWithPlatformKey"
   | "ConfidentialVM_DiskEncryptedWithCustomerKey"
-  | "ConfidentialVM_NonPersistedTPM"
-  | (string & {});
+  | "ConfidentialVM_NonPersistedTPM";
 export const DiskSecurityTypes = /*@__PURE__*/ S.String;
 
 /** Indicates the version of Confidential VM for the resource. */
-export type ConfidentialVMVersion = "V1" | "V2" | (string & {});
+export type ConfidentialVMVersion = "V1" | "V2";
 export const ConfidentialVMVersion = /*@__PURE__*/ S.String;
 
 /** Contains the security related information for the resource. */
@@ -2601,8 +2585,7 @@ export type CommonSnapshotAccessState =
   | "Pending"
   | "Available"
   | "InstantAccess"
-  | "AvailableWithInstantAccess"
-  | (string & {});
+  | "AvailableWithInstantAccess";
 export const CommonSnapshotAccessState = /*@__PURE__*/ S.String;
 
 /** Properties of an incremental disk restore point */
@@ -2697,11 +2680,11 @@ export const DiskRestorePointGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskRestorePointGetResponse>;
 
 /** The Access Level, accepted values include None, Read, Write. */
-export type AccessLevel = "None" | "Read" | "Write" | (string & {});
+export type AccessLevel = "None" | "Read" | "Write";
 export const AccessLevel = /*@__PURE__*/ S.String;
 
 /** Used to specify the file format when making request for SAS on a VHDX file format snapshot */
-export type FileFormat = "VHD" | "VHDX" | (string & {});
+export type FileFormat = "VHD" | "VHDX";
 export const FileFormat = /*@__PURE__*/ S.String;
 
 export interface DiskRestorePointGrantAccessRequest {
@@ -2716,13 +2699,13 @@ export interface DiskRestorePointGrantAccessRequest {
   /** The name of the DiskRestorePoint */
   diskRestorePointName: string;
   /** The Access Level, accepted values include None, Read, Write. */
-  access: AccessLevel;
+  access: AccessLevel | (string & {});
   /** Time duration in seconds until the SAS access expires. */
   durationInSeconds: number;
   /** Set this flag to true to get additional SAS for VM guest state */
   getSecureVMGuestStateSAS?: boolean;
   /** Used to specify the file format when making request for SAS on a VHDX file format snapshot */
-  fileFormat?: FileFormat;
+  fileFormat?: FileFormat | (string & {});
 }
 export const DiskRestorePointGrantAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2899,8 +2882,7 @@ export type DiskCreateOption =
   | "CopyStart"
   | "ImportSecure"
   | "UploadPreparedSecure"
-  | "CopyFromSanSnapshot"
-  | (string & {});
+  | "CopyFromSanSnapshot";
 export const DiskCreateOption = /*@__PURE__*/ S.String;
 
 /** The source image used for creating the disk. */
@@ -2926,16 +2908,13 @@ export const ImageDiskReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageDiskReference>;
 
 /** If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed. */
-export type ProvisionedBandwidthCopyOption =
-  | "None"
-  | "Enhanced"
-  | (string & {});
+export type ProvisionedBandwidthCopyOption = "None" | "Enhanced";
 export const ProvisionedBandwidthCopyOption = /*@__PURE__*/ S.String;
 
 /** Data used when creating a disk. */
 export interface CreationDataInput {
   /** This enumerates the possible sources of a disk's creation. */
-  createOption: DiskCreateOption;
+  createOption: DiskCreateOption | (string & {});
   /** Required if createOption is Import. The Azure Resource Manager identifier of the storage account containing the blob to import as a disk. */
   storageAccountId?: string;
   /** Disk source information for PIR or user images. */
@@ -2959,7 +2938,9 @@ export interface CreationDataInput {
   /** Required if createOption is CopyFromSanSnapshot. This is the ARM id of the source elastic san volume snapshot. */
   elasticSanResourceId?: string;
   /** If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed. */
-  provisionedBandwidthCopySpeed?: ProvisionedBandwidthCopyOption;
+  provisionedBandwidthCopySpeed?:
+    | ProvisionedBandwidthCopyOption
+    | (string & {});
   /** For snapshots created from Premium SSD v2 or Ultra disk, this property determines the time in minutes the snapshot is retained for instant access to enable faster restore. */
   instantAccessDurationMinutes?: number;
 }
@@ -3062,17 +3043,11 @@ export const EncryptionSettingsCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionSettingsCollection>;
 
 /** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
-export type DataAccessAuthMode =
-  | "AzureActiveDirectory"
-  | "None"
-  | (string & {});
+export type DataAccessAuthMode = "AzureActiveDirectory" | "None";
 export const DataAccessAuthMode = /*@__PURE__*/ S.String;
 
 /** Determines on how to handle disks with slow I/O. */
-export type AvailabilityPolicyDiskDelay =
-  | "None"
-  | "AutomaticReattach"
-  | (string & {});
+export type AvailabilityPolicyDiskDelay = "None" | "AutomaticReattach";
 export const AvailabilityPolicyDiskDelay = /*@__PURE__*/ S.String;
 
 /** In the case of an availability or connectivity issue with the data disk, specify the behavior of your VM */
@@ -3091,9 +3066,9 @@ export const AvailabilityPolicy = /*@__PURE__*/ S.suspend(() =>
 /** Disk resource properties. */
 export interface DiskPropertiesInput {
   /** The Operating System type. */
-  osType?: CommonOperatingSystemTypes;
+  osType?: CommonOperatingSystemTypes | (string & {});
   /** The hypervisor generation of the Virtual Machine. Applicable to OS disks only. */
-  hyperVGeneration?: CommonHyperVGeneration;
+  hyperVGeneration?: CommonHyperVGeneration | (string & {});
   /** Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer} */
   purchasePlan?: DiskPurchasePlan;
   /** List of supported capabilities for the image from which the OS disk was created. */
@@ -3117,7 +3092,7 @@ export interface DiskPropertiesInput {
   /** The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time. */
   maxShares?: number;
   /** Policy for accessing the disk via network. */
-  networkAccessPolicy?: NetworkAccessPolicy;
+  networkAccessPolicy?: NetworkAccessPolicy | (string & {});
   /** ARM id of the DiskAccess resource for using private endpoints on disks. */
   diskAccessId?: string;
   /** Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks. */
@@ -3131,9 +3106,9 @@ export interface DiskPropertiesInput {
   /** Percentage complete for the background copy when a resource is created via the CopyStart operation. */
   completionPercent?: number;
   /** Policy for controlling export on the disk. */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
-  dataAccessAuthMode?: DataAccessAuthMode;
+  dataAccessAuthMode?: DataAccessAuthMode | (string & {});
   /** Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine. */
   optimizedForFrequentAttach?: boolean;
   /** Determines how platform treats disk failures */
@@ -3178,14 +3153,13 @@ export type DiskStorageAccountTypes =
   | "UltraSSD_LRS"
   | "Premium_ZRS"
   | "StandardSSD_ZRS"
-  | "PremiumV2_LRS"
-  | (string & {});
+  | "PremiumV2_LRS";
 export const DiskStorageAccountTypes = /*@__PURE__*/ S.String;
 
 /** The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS. */
 export interface DiskSkuInput {
   /** The sku name. */
-  name?: DiskStorageAccountTypes;
+  name?: DiskStorageAccountTypes | (string & {});
 }
 export const DiskSkuInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3204,7 +3178,7 @@ export interface DisksCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const DisksCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -3330,8 +3304,7 @@ export type DiskState =
   | "ActiveSAS"
   | "ActiveSASFrozen"
   | "ReadyToUpload"
-  | "ActiveUpload"
-  | (string & {});
+  | "ActiveUpload";
 export const DiskState = /*@__PURE__*/ S.String;
 
 export interface ShareInfoElement {
@@ -3709,13 +3682,13 @@ export interface DisksGrantAccessRequest {
   /** The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. */
   diskName: string;
   /** The Access Level, accepted values include None, Read, Write. */
-  access: AccessLevel;
+  access: AccessLevel | (string & {});
   /** Time duration in seconds until the SAS access expires. */
   durationInSeconds: number;
   /** Set this flag to true to get additional SAS for VM guest state */
   getSecureVMGuestStateSAS?: boolean;
   /** Used to specify the file format when making request for SAS on a VHDX file format snapshot */
-  fileFormat?: FileFormat;
+  fileFormat?: FileFormat | (string & {});
 }
 export const DisksGrantAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3913,7 +3886,7 @@ export const DisksRevokeAccessResponse = /*@__PURE__*/ S.suspend(() =>
 /** Disk resource update properties. */
 export interface DiskUpdateProperties {
   /** the Operating System type. */
-  osType?: CommonOperatingSystemTypes;
+  osType?: CommonOperatingSystemTypes | (string & {});
   /** If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size. */
   diskSizeGB?: number;
   /** Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot. */
@@ -3931,7 +3904,7 @@ export interface DiskUpdateProperties {
   /** Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys. */
   encryption?: Encryption;
   /** Policy for accessing the disk via network. */
-  networkAccessPolicy?: NetworkAccessPolicy;
+  networkAccessPolicy?: NetworkAccessPolicy | (string & {});
   /** ARM id of the DiskAccess resource for using private endpoints on disks. */
   diskAccessId?: string;
   /** Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks. */
@@ -3945,9 +3918,9 @@ export interface DiskUpdateProperties {
   /** Indicates the OS on a disk supports hibernation. */
   supportsHibernation?: boolean;
   /** Policy for controlling export on the disk. */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
-  dataAccessAuthMode?: DataAccessAuthMode;
+  dataAccessAuthMode?: DataAccessAuthMode | (string & {});
   /** Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine. */
   optimizedForFrequentAttach?: boolean;
   /** Determines how platform treats disk failures */
@@ -4138,11 +4111,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -4199,7 +4172,7 @@ export const SnapshotsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SnapshotsCreateOrUpdateRequestTagsMap>;
 
 /** Indicates the error code if the background copy of a resource created via the CopyStart operation fails. */
-export type CopyCompletionErrorReason = "CopySourceNotFound" | (string & {});
+export type CopyCompletionErrorReason = "CopySourceNotFound";
 export const CopyCompletionErrorReason = /*@__PURE__*/ S.String;
 
 /** Indicates the error details if the background copy of a resource created via the CopyStart operation fails. */
@@ -4221,9 +4194,9 @@ export const CopyCompletionError = /*@__PURE__*/ S.suspend(() =>
 /** Snapshot resource properties. */
 export interface SnapshotPropertiesInput {
   /** The Operating System type. */
-  osType?: CommonOperatingSystemTypes;
+  osType?: CommonOperatingSystemTypes | (string & {});
   /** The hypervisor generation of the Virtual Machine. Applicable to OS disks only. */
-  hyperVGeneration?: CommonHyperVGeneration;
+  hyperVGeneration?: CommonHyperVGeneration | (string & {});
   /** Purchase plan information for the image from which the source disk for the snapshot was originally created. */
   purchasePlan?: DiskPurchasePlan;
   /** List of supported capabilities for the image from which the source disk from the snapshot was originally created. */
@@ -4239,7 +4212,7 @@ export interface SnapshotPropertiesInput {
   /** Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys. */
   encryption?: Encryption;
   /** Policy for accessing the disk via network. */
-  networkAccessPolicy?: NetworkAccessPolicy;
+  networkAccessPolicy?: NetworkAccessPolicy | (string & {});
   /** ARM id of the DiskAccess resource for using private endpoints on disks. */
   diskAccessId?: string;
   /** Contains the security related information for the resource. */
@@ -4247,13 +4220,13 @@ export interface SnapshotPropertiesInput {
   /** Indicates the OS on a snapshot supports hibernation. */
   supportsHibernation?: boolean;
   /** Policy for controlling export on the disk. */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** Percentage complete for the background copy when a resource is created via the CopyStart operation. */
   completionPercent?: number;
   /** Indicates the error details if the background copy of a resource created via the CopyStart operation fails. */
   copyCompletionError?: CopyCompletionError;
   /** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
-  dataAccessAuthMode?: DataAccessAuthMode;
+  dataAccessAuthMode?: DataAccessAuthMode | (string & {});
 }
 export const SnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4283,14 +4256,13 @@ export const SnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type SnapshotStorageAccountTypes =
   | "Standard_LRS"
   | "Premium_LRS"
-  | "Standard_ZRS"
-  | (string & {});
+  | "Standard_ZRS";
 export const SnapshotStorageAccountTypes = /*@__PURE__*/ S.String;
 
 /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
 export interface SnapshotSkuInput {
   /** The sku name. */
-  name?: SnapshotStorageAccountTypes;
+  name?: SnapshotStorageAccountTypes | (string & {});
 }
 export const SnapshotSkuInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4305,7 +4277,7 @@ export interface SnapshotsCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const SnapshotsCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -4369,7 +4341,7 @@ export const SnapshotsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SnapshotsCreateOrUpdateResponseTagsMap>;
 
 /** The type of the immutability policy. 'Unlocked' allows the policy to be modified by privileged users; 'Locked' prevents reduction of the immutability duration but allows extension of the lock period. */
-export type ImmutabilityPolicyType = "Unlocked" | "Locked" | (string & {});
+export type ImmutabilityPolicyType = "Unlocked" | "Locked";
 export const ImmutabilityPolicyType = /*@__PURE__*/ S.String;
 
 /** The immutability policy currently applied to a snapshot. */
@@ -4682,13 +4654,13 @@ export interface SnapshotsGrantAccessRequest {
   /** The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters. */
   snapshotName: string;
   /** The Access Level, accepted values include None, Read, Write. */
-  access: AccessLevel;
+  access: AccessLevel | (string & {});
   /** Time duration in seconds until the SAS access expires. */
   durationInSeconds: number;
   /** Set this flag to true to get additional SAS for VM guest state */
   getSecureVMGuestStateSAS?: boolean;
   /** Used to specify the file format when making request for SAS on a VHDX file format snapshot */
-  fileFormat?: FileFormat;
+  fileFormat?: FileFormat | (string & {});
 }
 export const SnapshotsGrantAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4868,7 +4840,7 @@ export const SnapshotsRevokeAccessResponse = /*@__PURE__*/ S.suspend(() =>
 /** Snapshot resource update properties. */
 export interface SnapshotUpdateProperties {
   /** the Operating System type. */
-  osType?: CommonOperatingSystemTypes;
+  osType?: CommonOperatingSystemTypes | (string & {});
   /** If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size. */
   diskSizeGB?: number;
   /** Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot. */
@@ -4876,15 +4848,15 @@ export interface SnapshotUpdateProperties {
   /** Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys. */
   encryption?: Encryption;
   /** Policy for accessing the disk via network. */
-  networkAccessPolicy?: NetworkAccessPolicy;
+  networkAccessPolicy?: NetworkAccessPolicy | (string & {});
   /** ARM id of the DiskAccess resource for using private endpoints on disks. */
   diskAccessId?: string;
   /** Indicates the OS on a snapshot supports hibernation. */
   supportsHibernation?: boolean;
   /** Policy for controlling export on the disk. */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
-  dataAccessAuthMode?: DataAccessAuthMode;
+  dataAccessAuthMode?: DataAccessAuthMode | (string & {});
   /** List of supported capabilities for the image from which the OS disk was created. */
   supportedCapabilities?: SupportedCapabilities;
 }
@@ -5023,7 +4995,7 @@ export interface SnapshotsUpdateImmutabilityPolicyRequest {
   /** The immutability duration for the snapshot, in number of days. */
   immutabilityDurationDays: number;
   /** The type of the immutability policy. 'Unlocked' allows the policy to be modified by privileged users; 'Locked' prevents reduction of the immutability duration but allows extension of the lock period. */
-  type: ImmutabilityPolicyType;
+  type: ImmutabilityPolicyType | (string & {});
 }
 export const SnapshotsUpdateImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5124,7 +5096,7 @@ export interface SnapshotsUpdateImmutabilityPolicyLockRequest {
   /** The immutability duration for the snapshot, in number of days. */
   immutabilityDurationDays: number;
   /** The type of the immutability policy. 'Unlocked' allows the policy to be modified by privileged users; 'Locked' prevents reduction of the immutability duration but allows extension of the lock period. */
-  type: ImmutabilityPolicyType;
+  type: ImmutabilityPolicyType | (string & {});
 }
 export const SnapshotsUpdateImmutabilityPolicyLockRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5466,16 +5438,14 @@ export type ResourceOperationDetailsOpType =
   | "Deallocate"
   | "Hibernate"
   | "Create"
-  | "Delete"
-  | (string & {});
+  | "Delete";
 export const ResourceOperationDetailsOpType = /*@__PURE__*/ S.String;
 
 /** Type of deadline of the operation */
 export type ResourceOperationDetailsDeadlineType =
   | "Unknown"
   | "InitiateAt"
-  | "CompleteBy"
-  | (string & {});
+  | "CompleteBy";
 export const ResourceOperationDetailsDeadlineType = /*@__PURE__*/ S.String;
 
 /** Current state of the operation */
@@ -5488,8 +5458,7 @@ export type ResourceOperationDetailsState =
   | "Succeeded"
   | "Failed"
   | "Cancelled"
-  | "Blocked"
-  | (string & {});
+  | "Blocked";
 export const ResourceOperationDetailsState = /*@__PURE__*/ S.String;
 
 /** These describe errors that occur at the resource level */
@@ -5515,8 +5484,7 @@ export type ResourceOperationType =
   | "Deallocate"
   | "Hibernate"
   | "Create"
-  | "Delete"
-  | (string & {});
+  | "Delete";
 export const ResourceOperationType = /*@__PURE__*/ S.String;
 
 /** Describes the fallback operation that was performed */

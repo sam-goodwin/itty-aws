@@ -166,8 +166,7 @@ export type DatasetStatus =
   | "CREATED"
   | "INGESTION_IN_PROGRESS"
   | "ACTIVE"
-  | "IMPORT_IN_PROGRESS"
-  | (string & {});
+  | "IMPORT_IN_PROGRESS";
 export const DatasetStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDatasetResponse {
@@ -187,13 +186,7 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 export type ModelName = string;
 export type InferenceSchedulerName = string;
 export type DataDelayOffsetInMinutes = number;
-export type DataUploadFrequency =
-  | "PT5M"
-  | "PT10M"
-  | "PT15M"
-  | "PT30M"
-  | "PT1H"
-  | (string & {});
+export type DataUploadFrequency = "PT5M" | "PT10M" | "PT15M" | "PT30M" | "PT1H";
 export const DataUploadFrequency = /*@__PURE__*/ S.String;
 
 export type S3Bucket = string;
@@ -264,7 +257,7 @@ export interface CreateInferenceSchedulerRequest {
   ModelName: string;
   InferenceSchedulerName: string;
   DataDelayOffsetInMinutes?: number;
-  DataUploadFrequency: DataUploadFrequency;
+  DataUploadFrequency: DataUploadFrequency | (string & {});
   DataInputConfiguration: InferenceInputConfiguration;
   DataOutputConfiguration: InferenceOutputConfiguration;
   RoleArn: string;
@@ -295,15 +288,13 @@ export type InferenceSchedulerStatus =
   | "PENDING"
   | "RUNNING"
   | "STOPPING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const InferenceSchedulerStatus = /*@__PURE__*/ S.String;
 
 export type ModelQuality =
   | "QUALITY_THRESHOLD_MET"
   | "CANNOT_DETERMINE_QUALITY"
-  | "POOR_QUALITY_DETECTED"
-  | (string & {});
+  | "POOR_QUALITY_DETECTED";
 export const ModelQuality = /*@__PURE__*/ S.String;
 
 export interface CreateInferenceSchedulerResponse {
@@ -323,7 +314,7 @@ export const CreateInferenceSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInferenceSchedulerResponse",
 }) as any as S.Schema<CreateInferenceSchedulerResponse>;
 export type LabelGroupName = string;
-export type LabelRating = "ANOMALY" | "NO_ANOMALY" | "NEUTRAL" | (string & {});
+export type LabelRating = "ANOMALY" | "NO_ANOMALY" | "NEUTRAL";
 export const LabelRating = /*@__PURE__*/ S.String;
 
 export type FaultCode = string;
@@ -333,7 +324,7 @@ export interface CreateLabelRequest {
   LabelGroupName: string;
   StartTime: Date;
   EndTime: Date;
-  Rating: LabelRating;
+  Rating: LabelRating | (string & {});
   FaultCode?: string;
   Notes?: string;
   Equipment?: string;
@@ -430,8 +421,7 @@ export type TargetSamplingRate =
   | "PT10M"
   | "PT15M"
   | "PT30M"
-  | "PT1H"
-  | (string & {});
+  | "PT1H";
 export const TargetSamplingRate = /*@__PURE__*/ S.String;
 
 export interface DataPreProcessingConfiguration {
@@ -519,8 +509,7 @@ export type ModelStatus =
   | "IN_PROGRESS"
   | "SUCCESS"
   | "FAILED"
-  | "IMPORT_IN_PROGRESS"
-  | (string & {});
+  | "IMPORT_IN_PROGRESS";
 export const ModelStatus = /*@__PURE__*/ S.String;
 
 export interface CreateModelResponse {
@@ -534,7 +523,7 @@ export const CreateModelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateModelResponse>;
 export type RetrainingFrequency = string;
 export type LookbackWindow = string;
-export type ModelPromoteMode = "MANAGED" | "MANUAL" | (string & {});
+export type ModelPromoteMode = "MANAGED" | "MANUAL";
 export const ModelPromoteMode = /*@__PURE__*/ S.String;
 
 export interface CreateRetrainingSchedulerRequest {
@@ -542,7 +531,7 @@ export interface CreateRetrainingSchedulerRequest {
   RetrainingStartDate?: Date;
   RetrainingFrequency: string;
   LookbackWindow: string;
-  PromoteMode?: ModelPromoteMode;
+  PromoteMode?: ModelPromoteMode | (string & {});
   ClientToken: string;
 }
 export const CreateRetrainingSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
@@ -565,8 +554,7 @@ export type RetrainingSchedulerStatus =
   | "PENDING"
   | "RUNNING"
   | "STOPPING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const RetrainingSchedulerStatus = /*@__PURE__*/ S.String;
 
 export interface CreateRetrainingSchedulerResponse {
@@ -736,8 +724,7 @@ export type IngestionJobStatus =
   | "IN_PROGRESS"
   | "SUCCESS"
   | "FAILED"
-  | "IMPORT_IN_PROGRESS"
-  | (string & {});
+  | "IMPORT_IN_PROGRESS";
 export const IngestionJobStatus = /*@__PURE__*/ S.String;
 
 export type BoundedLengthString = string;
@@ -945,7 +932,7 @@ export const DescribeInferenceSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInferenceSchedulerRequest",
 }) as any as S.Schema<DescribeInferenceSchedulerRequest>;
-export type LatestInferenceResult = "ANOMALOUS" | "NORMAL" | (string & {});
+export type LatestInferenceResult = "ANOMALOUS" | "NORMAL";
 export const LatestInferenceResult = /*@__PURE__*/ S.String;
 
 export interface DescribeInferenceSchedulerResponse {
@@ -1069,8 +1056,7 @@ export type ModelVersionStatus =
   | "SUCCESS"
   | "FAILED"
   | "IMPORT_IN_PROGRESS"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const ModelVersionStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeModelResponse {
@@ -1208,11 +1194,7 @@ export const DescribeModelVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeModelVersionRequest",
 }) as any as S.Schema<DescribeModelVersionRequest>;
-export type ModelVersionSourceType =
-  | "TRAINING"
-  | "RETRAINING"
-  | "IMPORT"
-  | (string & {});
+export type ModelVersionSourceType = "TRAINING" | "RETRAINING" | "IMPORT";
 export const ModelVersionSourceType = /*@__PURE__*/ S.String;
 
 export type InlineDataSchema = string;
@@ -1222,8 +1204,7 @@ export type AutoPromotionResult =
   | "MODEL_NOT_PROMOTED"
   | "RETRAINING_INTERNAL_ERROR"
   | "RETRAINING_CUSTOMER_ERROR"
-  | "RETRAINING_CANCELLED"
-  | (string & {});
+  | "RETRAINING_CANCELLED";
 export const AutoPromotionResult = /*@__PURE__*/ S.String;
 
 export type AutoPromotionResultReason = string;
@@ -1432,8 +1413,7 @@ export const ImportDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 export type InferenceDataImportStrategy =
   | "NO_IMPORT"
   | "ADD_WHEN_EMPTY"
-  | "OVERWRITE"
-  | (string & {});
+  | "OVERWRITE";
 export const InferenceDataImportStrategy = /*@__PURE__*/ S.String;
 
 export interface ImportModelVersionRequest {
@@ -1445,7 +1425,7 @@ export interface ImportModelVersionRequest {
   RoleArn?: string;
   ServerSideKmsKeyId?: string;
   Tags?: Tag[];
-  InferenceDataImportStrategy?: InferenceDataImportStrategy;
+  InferenceDataImportStrategy?: InferenceDataImportStrategy | (string & {});
 }
 export const ImportModelVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1488,7 +1468,7 @@ export interface ListDataIngestionJobsRequest {
   DatasetName?: string;
   NextToken?: string;
   MaxResults?: number;
-  Status?: IngestionJobStatus;
+  Status?: IngestionJobStatus | (string & {});
 }
 export const ListDataIngestionJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1637,11 +1617,7 @@ export const ListInferenceEventsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInferenceEventsResponse",
 }) as any as S.Schema<ListInferenceEventsResponse>;
-export type InferenceExecutionStatus =
-  | "IN_PROGRESS"
-  | "SUCCESS"
-  | "FAILED"
-  | (string & {});
+export type InferenceExecutionStatus = "IN_PROGRESS" | "SUCCESS" | "FAILED";
 export const InferenceExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface ListInferenceExecutionsRequest {
@@ -1650,7 +1626,7 @@ export interface ListInferenceExecutionsRequest {
   InferenceSchedulerName: string;
   DataStartTimeAfter?: Date;
   DataEndTimeBefore?: Date;
-  Status?: InferenceExecutionStatus;
+  Status?: InferenceExecutionStatus | (string & {});
 }
 export const ListInferenceExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1729,7 +1705,7 @@ export interface ListInferenceSchedulersRequest {
   MaxResults?: number;
   InferenceSchedulerNameBeginsWith?: string;
   ModelName?: string;
-  Status?: InferenceSchedulerStatus;
+  Status?: InferenceSchedulerStatus | (string & {});
 }
 export const ListInferenceSchedulersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1899,7 +1875,7 @@ export const ListLabelsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListModelsRequest {
   NextToken?: string;
   MaxResults?: number;
-  Status?: ModelStatus;
+  Status?: ModelStatus | (string & {});
   ModelNameBeginsWith?: string;
   DatasetNameBeginsWith?: string;
 }
@@ -1976,8 +1952,8 @@ export interface ListModelVersionsRequest {
   ModelName: string;
   NextToken?: string;
   MaxResults?: number;
-  Status?: ModelVersionStatus;
-  SourceType?: ModelVersionSourceType;
+  Status?: ModelVersionStatus | (string & {});
+  SourceType?: ModelVersionSourceType | (string & {});
   CreatedAtEndTime?: Date;
   CreatedAtStartTime?: Date;
   MaxModelVersion?: number;
@@ -2044,7 +2020,7 @@ export const ListModelVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListModelVersionsResponse>;
 export interface ListRetrainingSchedulersRequest {
   ModelNameBeginsWith?: string;
-  Status?: RetrainingSchedulerStatus;
+  Status?: RetrainingSchedulerStatus | (string & {});
   NextToken?: string;
   MaxResults?: number;
 }
@@ -2127,8 +2103,7 @@ export const CountPercent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CountPercent" }) as any as S.Schema<CountPercent>;
 export type StatisticalIssueStatus =
   | "POTENTIAL_ISSUE_DETECTED"
-  | "NO_ISSUE_DETECTED"
-  | (string & {});
+  | "NO_ISSUE_DETECTED";
 export const StatisticalIssueStatus = /*@__PURE__*/ S.String;
 
 export interface CategoricalValues {
@@ -2165,11 +2140,7 @@ export const LargeTimestampGaps = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LargeTimestampGaps",
 }) as any as S.Schema<LargeTimestampGaps>;
-export type Monotonicity =
-  | "DECREASING"
-  | "INCREASING"
-  | "STATIC"
-  | (string & {});
+export type Monotonicity = "DECREASING" | "INCREASING" | "STATIC";
 export const Monotonicity = /*@__PURE__*/ S.String;
 
 export interface MonotonicValues {
@@ -2487,7 +2458,7 @@ export const UpdateActiveModelVersionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInferenceSchedulerRequest {
   InferenceSchedulerName: string;
   DataDelayOffsetInMinutes?: number;
-  DataUploadFrequency?: DataUploadFrequency;
+  DataUploadFrequency?: DataUploadFrequency | (string & {});
   DataInputConfiguration?: InferenceInputConfiguration;
   DataOutputConfiguration?: InferenceOutputConfiguration;
   RoleArn?: string;
@@ -2563,7 +2534,7 @@ export interface UpdateRetrainingSchedulerRequest {
   RetrainingStartDate?: Date;
   RetrainingFrequency?: string;
   LookbackWindow?: string;
-  PromoteMode?: ModelPromoteMode;
+  PromoteMode?: ModelPromoteMode | (string & {});
 }
 export const UpdateRetrainingSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

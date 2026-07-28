@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,27 +72,18 @@ export interface CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:cancel",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest",
-  }) as any as S.Schema<CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest>;
+export const CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:cancel","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** Filtering criteria to select VMs based on OS details. */
 export interface OSPolicyOSFilter {
@@ -104,13 +93,11 @@ export interface OSPolicyOSFilter {
   osVersion?: string;
 }
 export const OSPolicyOSFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osShortName: S.optional(S.String),
-    osVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OSPolicyOSFilter",
-}) as any as S.Schema<OSPolicyOSFilter>;
+S.Struct({
+  "osShortName": S.optional(S.String),
+  "osVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyOSFilter" }) as any as S.Schema<OSPolicyOSFilter>;
 
 /** Filtering criteria to select VMs based on inventory details. */
 export interface OSPolicyInventoryFilter {
@@ -120,32 +107,20 @@ export interface OSPolicyInventoryFilter {
   osShortName?: string;
 }
 export const OSPolicyInventoryFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osVersion: S.optional(S.String),
-    osShortName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OSPolicyInventoryFilter",
-}) as any as S.Schema<OSPolicyInventoryFilter>;
+S.Struct({
+  "osVersion": S.optional(S.String),
+  "osShortName": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyInventoryFilter" }) as any as S.Schema<OSPolicyInventoryFilter>;
 
-export type OSPolicyInventoryFilterList =
-  ReadonlyArray<OSPolicyInventoryFilter>;
-export const OSPolicyInventoryFilterList = /*@__PURE__*/ S.Array(
-  OSPolicyInventoryFilter,
-) as any as S.Schema<OSPolicyInventoryFilterList>;
+export type OSPolicyInventoryFilterList = ReadonlyArray<OSPolicyInventoryFilter>;
+export const OSPolicyInventoryFilterList = /*@__PURE__*/ S.Array(OSPolicyInventoryFilter) as any as S.Schema<OSPolicyInventoryFilterList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum =
-  | "ARCHIVE_TYPE_UNSPECIFIED"
-  | "DEB"
-  | "DEB_SRC"
-  | (string & {});
-export const OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum =
-  /*@__PURE__*/ S.String;
+export type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum = "ARCHIVE_TYPE_UNSPECIFIED" | "DEB" | "DEB_SRC";
+export const OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single apt package repository. These will be added to a repo file that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`. */
 export interface OSPolicyResourceRepositoryResourceAptRepository {
@@ -160,20 +135,15 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
   /** URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`. */
   gpgKey?: string;
 }
-export const OSPolicyResourceRepositoryResourceAptRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-      distribution: S.optional(S.String),
-      components: S.optional(StringList),
-      archiveType: S.optional(
-        OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum,
-      ),
-      gpgKey: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceRepositoryResourceAptRepository",
-  }) as any as S.Schema<OSPolicyResourceRepositoryResourceAptRepository>;
+export const OSPolicyResourceRepositoryResourceAptRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "uri": S.optional(S.String),
+  "distribution": S.optional(S.String),
+  "components": S.optional(StringList),
+  "archiveType": S.optional(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum),
+  "gpgKey": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourceRepositoryResourceAptRepository" }) as any as S.Schema<OSPolicyResourceRepositoryResourceAptRepository>;
 
 /** Represents a single zypper package repository. These are added to a repo file that is managed at `/etc/zypp/repos.d/google_osconfig.repo`. */
 export interface OSPolicyResourceRepositoryResourceZypperRepository {
@@ -186,17 +156,14 @@ export interface OSPolicyResourceRepositoryResourceZypperRepository {
   /** The display name of the repository. */
   displayName?: string;
 }
-export const OSPolicyResourceRepositoryResourceZypperRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      baseUrl: S.optional(S.String),
-      gpgKeys: S.optional(StringList),
-      id: S.optional(S.String),
-      displayName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceRepositoryResourceZypperRepository",
-  }) as any as S.Schema<OSPolicyResourceRepositoryResourceZypperRepository>;
+export const OSPolicyResourceRepositoryResourceZypperRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "baseUrl": S.optional(S.String),
+  "gpgKeys": S.optional(StringList),
+  "id": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourceRepositoryResourceZypperRepository" }) as any as S.Schema<OSPolicyResourceRepositoryResourceZypperRepository>;
 
 /** Represents a single yum package repository. These are added to a repo file that is managed at `/etc/yum.repos.d/google_osconfig.repo`. */
 export interface OSPolicyResourceRepositoryResourceYumRepository {
@@ -209,17 +176,14 @@ export interface OSPolicyResourceRepositoryResourceYumRepository {
   /** The display name of the repository. */
   displayName?: string;
 }
-export const OSPolicyResourceRepositoryResourceYumRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      baseUrl: S.optional(S.String),
-      gpgKeys: S.optional(StringList),
-      id: S.optional(S.String),
-      displayName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceRepositoryResourceYumRepository",
-  }) as any as S.Schema<OSPolicyResourceRepositoryResourceYumRepository>;
+export const OSPolicyResourceRepositoryResourceYumRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "baseUrl": S.optional(S.String),
+  "gpgKeys": S.optional(StringList),
+  "id": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourceRepositoryResourceYumRepository" }) as any as S.Schema<OSPolicyResourceRepositoryResourceYumRepository>;
 
 /** Represents a Goo package repository. These are added to a repo file that is managed at `C:/ProgramData/GooGet/repos/google_osconfig.repo`. */
 export interface OSPolicyResourceRepositoryResourceGooRepository {
@@ -228,15 +192,12 @@ export interface OSPolicyResourceRepositoryResourceGooRepository {
   /** Required. The url of the repository. */
   url?: string;
 }
-export const OSPolicyResourceRepositoryResourceGooRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceRepositoryResourceGooRepository",
-  }) as any as S.Schema<OSPolicyResourceRepositoryResourceGooRepository>;
+export const OSPolicyResourceRepositoryResourceGooRepository = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "url": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourceRepositoryResourceGooRepository" }) as any as S.Schema<OSPolicyResourceRepositoryResourceGooRepository>;
 
 /** A resource that manages a package repository. */
 export interface OSPolicyResourceRepositoryResource {
@@ -250,22 +211,15 @@ export interface OSPolicyResourceRepositoryResource {
   goo?: OSPolicyResourceRepositoryResourceGooRepository;
 }
 export const OSPolicyResourceRepositoryResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apt: S.optional(OSPolicyResourceRepositoryResourceAptRepository),
-    zypper: S.optional(OSPolicyResourceRepositoryResourceZypperRepository),
-    yum: S.optional(OSPolicyResourceRepositoryResourceYumRepository),
-    goo: S.optional(OSPolicyResourceRepositoryResourceGooRepository),
-  }),
-).annotate({
-  identifier: "OSPolicyResourceRepositoryResource",
-}) as any as S.Schema<OSPolicyResourceRepositoryResource>;
+S.Struct({
+  "apt": S.optional(OSPolicyResourceRepositoryResourceAptRepository),
+  "zypper": S.optional(OSPolicyResourceRepositoryResourceZypperRepository),
+  "yum": S.optional(OSPolicyResourceRepositoryResourceYumRepository),
+  "goo": S.optional(OSPolicyResourceRepositoryResourceGooRepository),
+}),
+).annotate({ identifier: "OSPolicyResourceRepositoryResource" }) as any as S.Schema<OSPolicyResourceRepositoryResource>;
 
-export type OSPolicyResourceFileResourceStateEnum =
-  | "DESIRED_STATE_UNSPECIFIED"
-  | "PRESENT"
-  | "ABSENT"
-  | "CONTENTS_MATCH"
-  | (string & {});
+export type OSPolicyResourceFileResourceStateEnum = "DESIRED_STATE_UNSPECIFIED" | "PRESENT" | "ABSENT" | "CONTENTS_MATCH";
 export const OSPolicyResourceFileResourceStateEnum = /*@__PURE__*/ S.String;
 
 /** Specifies a file available as a Cloud Storage Object. */
@@ -278,14 +232,12 @@ export interface OSPolicyResourceFileGcs {
   object?: string;
 }
 export const OSPolicyResourceFileGcs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generation: S.optional(S.String),
-    bucket: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OSPolicyResourceFileGcs",
-}) as any as S.Schema<OSPolicyResourceFileGcs>;
+S.Struct({
+  "generation": S.optional(S.String),
+  "bucket": S.optional(S.String),
+  "object": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourceFileGcs" }) as any as S.Schema<OSPolicyResourceFileGcs>;
 
 /** Specifies a file available via some URI. */
 export interface OSPolicyResourceFileRemote {
@@ -295,13 +247,11 @@ export interface OSPolicyResourceFileRemote {
   sha256Checksum?: string;
 }
 export const OSPolicyResourceFileRemote = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    sha256Checksum: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OSPolicyResourceFileRemote",
-}) as any as S.Schema<OSPolicyResourceFileRemote>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "sha256Checksum": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourceFileRemote" }) as any as S.Schema<OSPolicyResourceFileRemote>;
 
 /** A remote or local file. */
 export interface OSPolicyResourceFile {
@@ -315,15 +265,13 @@ export interface OSPolicyResourceFile {
   localPath?: string;
 }
 export const OSPolicyResourceFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcs: S.optional(OSPolicyResourceFileGcs),
-    allowInsecure: S.optional(S.Boolean),
-    remote: S.optional(OSPolicyResourceFileRemote),
-    localPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OSPolicyResourceFile",
-}) as any as S.Schema<OSPolicyResourceFile>;
+S.Struct({
+  "gcs": S.optional(OSPolicyResourceFileGcs),
+  "allowInsecure": S.optional(S.Boolean),
+  "remote": S.optional(OSPolicyResourceFileRemote),
+  "localPath": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourceFile" }) as any as S.Schema<OSPolicyResourceFile>;
 
 /** A resource that manages the state of a file. */
 export interface OSPolicyResourceFileResource {
@@ -339,25 +287,17 @@ export interface OSPolicyResourceFileResource {
   path?: string;
 }
 export const OSPolicyResourceFileResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(OSPolicyResourceFileResourceStateEnum),
-    permissions: S.optional(S.String),
-    content: S.optional(S.String),
-    file: S.optional(OSPolicyResourceFile),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OSPolicyResourceFileResource",
-}) as any as S.Schema<OSPolicyResourceFileResource>;
+S.Struct({
+  "state": S.optional(OSPolicyResourceFileResourceStateEnum),
+  "permissions": S.optional(S.String),
+  "content": S.optional(S.String),
+  "file": S.optional(OSPolicyResourceFile),
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourceFileResource" }) as any as S.Schema<OSPolicyResourceFileResource>;
 
-export type OSPolicyResourceExecResourceExecInterpreterEnum =
-  | "INTERPRETER_UNSPECIFIED"
-  | "NONE"
-  | "SHELL"
-  | "POWERSHELL"
-  | (string & {});
-export const OSPolicyResourceExecResourceExecInterpreterEnum =
-  /*@__PURE__*/ S.String;
+export type OSPolicyResourceExecResourceExecInterpreterEnum = "INTERPRETER_UNSPECIFIED" | "NONE" | "SHELL" | "POWERSHELL";
+export const OSPolicyResourceExecResourceExecInterpreterEnum = /*@__PURE__*/ S.String;
 
 /** A file or script to execute. */
 export interface OSPolicyResourceExecResourceExec {
@@ -373,16 +313,14 @@ export interface OSPolicyResourceExecResourceExec {
   interpreter?: OSPolicyResourceExecResourceExecInterpreterEnum;
 }
 export const OSPolicyResourceExecResourceExec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file: S.optional(OSPolicyResourceFile),
-    outputFilePath: S.optional(S.String),
-    script: S.optional(S.String),
-    args: S.optional(StringList),
-    interpreter: S.optional(OSPolicyResourceExecResourceExecInterpreterEnum),
-  }),
-).annotate({
-  identifier: "OSPolicyResourceExecResourceExec",
-}) as any as S.Schema<OSPolicyResourceExecResourceExec>;
+S.Struct({
+  "file": S.optional(OSPolicyResourceFile),
+  "outputFilePath": S.optional(S.String),
+  "script": S.optional(S.String),
+  "args": S.optional(StringList),
+  "interpreter": S.optional(OSPolicyResourceExecResourceExecInterpreterEnum),
+}),
+).annotate({ identifier: "OSPolicyResourceExecResourceExec" }) as any as S.Schema<OSPolicyResourceExecResourceExec>;
 
 /** A resource that allows executing scripts on the VM. The `ExecResource` has 2 stages: `validate` and `enforce` and both stages accept a script as an argument to execute. When the `ExecResource` is applied by the agent, it first executes the script in the `validate` stage. The `validate` stage can signal that the `ExecResource` is already in the desired state by returning an exit code of `100`. If the `ExecResource` is not in the desired state, it should return an exit code of `101`. Any other exit code returned by this stage is considered an error. If the `ExecResource` is not in the desired state based on the exit code from the `validate` stage, the agent proceeds to execute the script from the `enforce` stage. If the `ExecResource` is already in the desired state, the `enforce` stage will not be run. Similar to `validate` stage, the `enforce` stage should return an exit code of `100` to indicate that the resource in now in its desired state. Any other exit code is considered an error. NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to have an explicit indicator of `in desired state`, `not in desired state` and errors. Because, for example, Powershell will always return an exit code of `0` unless an `exit` statement is provided in the script. So, for reasons of consistency and being explicit, exit codes `100` and `101` were chosen. */
 export interface OSPolicyResourceExecResource {
@@ -392,35 +330,25 @@ export interface OSPolicyResourceExecResource {
   enforce?: OSPolicyResourceExecResourceExec;
 }
 export const OSPolicyResourceExecResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validate: S.optional(OSPolicyResourceExecResourceExec),
-    enforce: S.optional(OSPolicyResourceExecResourceExec),
-  }),
-).annotate({
-  identifier: "OSPolicyResourceExecResource",
-}) as any as S.Schema<OSPolicyResourceExecResource>;
+S.Struct({
+  "validate": S.optional(OSPolicyResourceExecResourceExec),
+  "enforce": S.optional(OSPolicyResourceExecResourceExec),
+}),
+).annotate({ identifier: "OSPolicyResourceExecResource" }) as any as S.Schema<OSPolicyResourceExecResource>;
 
 /** A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove package` */
 export interface OSPolicyResourcePackageResourceGooGet {
   /** Required. Package name. */
   name?: string;
 }
-export const OSPolicyResourcePackageResourceGooGet = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "OSPolicyResourcePackageResourceGooGet",
-}) as any as S.Schema<OSPolicyResourcePackageResourceGooGet>;
+export const OSPolicyResourcePackageResourceGooGet = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourcePackageResourceGooGet" }) as any as S.Schema<OSPolicyResourcePackageResourceGooGet>;
 
-export type OSPolicyResourcePackageResourceDesiredStateEnum =
-  | "DESIRED_STATE_UNSPECIFIED"
-  | "INSTALLED"
-  | "REMOVED"
-  | (string & {});
-export const OSPolicyResourcePackageResourceDesiredStateEnum =
-  /*@__PURE__*/ S.String;
+export type OSPolicyResourcePackageResourceDesiredStateEnum = "DESIRED_STATE_UNSPECIFIED" | "INSTALLED" | "REMOVED";
+export const OSPolicyResourcePackageResourceDesiredStateEnum = /*@__PURE__*/ S.String;
 
 /** An MSI package. MSI packages only support INSTALLED state. */
 export interface OSPolicyResourcePackageResourceMSI {
@@ -430,27 +358,22 @@ export interface OSPolicyResourcePackageResourceMSI {
   properties?: StringList;
 }
 export const OSPolicyResourcePackageResourceMSI = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(OSPolicyResourceFile),
-    properties: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "OSPolicyResourcePackageResourceMSI",
-}) as any as S.Schema<OSPolicyResourcePackageResourceMSI>;
+S.Struct({
+  "source": S.optional(OSPolicyResourceFile),
+  "properties": S.optional(StringList),
+}),
+).annotate({ identifier: "OSPolicyResourcePackageResourceMSI" }) as any as S.Schema<OSPolicyResourcePackageResourceMSI>;
 
 /** A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package` */
 export interface OSPolicyResourcePackageResourceZypper {
   /** Required. Package name. */
   name?: string;
 }
-export const OSPolicyResourcePackageResourceZypper = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "OSPolicyResourcePackageResourceZypper",
-}) as any as S.Schema<OSPolicyResourcePackageResourceZypper>;
+export const OSPolicyResourcePackageResourceZypper = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourcePackageResourceZypper" }) as any as S.Schema<OSPolicyResourcePackageResourceZypper>;
 
 /** An RPM package file. RPM packages only support INSTALLED state. */
 export interface OSPolicyResourcePackageResourceRPM {
@@ -460,13 +383,11 @@ export interface OSPolicyResourcePackageResourceRPM {
   source?: OSPolicyResourceFile;
 }
 export const OSPolicyResourcePackageResourceRPM = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pullDeps: S.optional(S.Boolean),
-    source: S.optional(OSPolicyResourceFile),
-  }),
-).annotate({
-  identifier: "OSPolicyResourcePackageResourceRPM",
-}) as any as S.Schema<OSPolicyResourcePackageResourceRPM>;
+S.Struct({
+  "pullDeps": S.optional(S.Boolean),
+  "source": S.optional(OSPolicyResourceFile),
+}),
+).annotate({ identifier: "OSPolicyResourcePackageResourceRPM" }) as any as S.Schema<OSPolicyResourcePackageResourceRPM>;
 
 /** A package managed by APT. - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get -y remove [name]` */
 export interface OSPolicyResourcePackageResourceAPT {
@@ -474,12 +395,10 @@ export interface OSPolicyResourcePackageResourceAPT {
   name?: string;
 }
 export const OSPolicyResourcePackageResourceAPT = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OSPolicyResourcePackageResourceAPT",
-}) as any as S.Schema<OSPolicyResourcePackageResourceAPT>;
+S.Struct({
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourcePackageResourceAPT" }) as any as S.Schema<OSPolicyResourcePackageResourceAPT>;
 
 /** A deb package file. dpkg packages only support INSTALLED state. */
 export interface OSPolicyResourcePackageResourceDeb {
@@ -489,13 +408,11 @@ export interface OSPolicyResourcePackageResourceDeb {
   pullDeps?: boolean;
 }
 export const OSPolicyResourcePackageResourceDeb = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(OSPolicyResourceFile),
-    pullDeps: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "OSPolicyResourcePackageResourceDeb",
-}) as any as S.Schema<OSPolicyResourcePackageResourceDeb>;
+S.Struct({
+  "source": S.optional(OSPolicyResourceFile),
+  "pullDeps": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "OSPolicyResourcePackageResourceDeb" }) as any as S.Schema<OSPolicyResourcePackageResourceDeb>;
 
 /** A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package` */
 export interface OSPolicyResourcePackageResourceYUM {
@@ -503,12 +420,10 @@ export interface OSPolicyResourcePackageResourceYUM {
   name?: string;
 }
 export const OSPolicyResourcePackageResourceYUM = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OSPolicyResourcePackageResourceYUM",
-}) as any as S.Schema<OSPolicyResourcePackageResourceYUM>;
+S.Struct({
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourcePackageResourceYUM" }) as any as S.Schema<OSPolicyResourcePackageResourceYUM>;
 
 /** A resource that manages a system package. */
 export interface OSPolicyResourcePackageResource {
@@ -530,19 +445,17 @@ export interface OSPolicyResourcePackageResource {
   yum?: OSPolicyResourcePackageResourceYUM;
 }
 export const OSPolicyResourcePackageResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    googet: S.optional(OSPolicyResourcePackageResourceGooGet),
-    desiredState: S.optional(OSPolicyResourcePackageResourceDesiredStateEnum),
-    msi: S.optional(OSPolicyResourcePackageResourceMSI),
-    zypper: S.optional(OSPolicyResourcePackageResourceZypper),
-    rpm: S.optional(OSPolicyResourcePackageResourceRPM),
-    apt: S.optional(OSPolicyResourcePackageResourceAPT),
-    deb: S.optional(OSPolicyResourcePackageResourceDeb),
-    yum: S.optional(OSPolicyResourcePackageResourceYUM),
-  }),
-).annotate({
-  identifier: "OSPolicyResourcePackageResource",
-}) as any as S.Schema<OSPolicyResourcePackageResource>;
+S.Struct({
+  "googet": S.optional(OSPolicyResourcePackageResourceGooGet),
+  "desiredState": S.optional(OSPolicyResourcePackageResourceDesiredStateEnum),
+  "msi": S.optional(OSPolicyResourcePackageResourceMSI),
+  "zypper": S.optional(OSPolicyResourcePackageResourceZypper),
+  "rpm": S.optional(OSPolicyResourcePackageResourceRPM),
+  "apt": S.optional(OSPolicyResourcePackageResourceAPT),
+  "deb": S.optional(OSPolicyResourcePackageResourceDeb),
+  "yum": S.optional(OSPolicyResourcePackageResourceYUM),
+}),
+).annotate({ identifier: "OSPolicyResourcePackageResource" }) as any as S.Schema<OSPolicyResourcePackageResource>;
 
 /** An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state. */
 export interface OSPolicyResource {
@@ -558,21 +471,17 @@ export interface OSPolicyResource {
   pkg?: OSPolicyResourcePackageResource;
 }
 export const OSPolicyResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository: S.optional(OSPolicyResourceRepositoryResource),
-    file: S.optional(OSPolicyResourceFileResource),
-    id: S.optional(S.String),
-    exec: S.optional(OSPolicyResourceExecResource),
-    pkg: S.optional(OSPolicyResourcePackageResource),
-  }),
-).annotate({
-  identifier: "OSPolicyResource",
-}) as any as S.Schema<OSPolicyResource>;
+S.Struct({
+  "repository": S.optional(OSPolicyResourceRepositoryResource),
+  "file": S.optional(OSPolicyResourceFileResource),
+  "id": S.optional(S.String),
+  "exec": S.optional(OSPolicyResourceExecResource),
+  "pkg": S.optional(OSPolicyResourcePackageResource),
+}),
+).annotate({ identifier: "OSPolicyResource" }) as any as S.Schema<OSPolicyResource>;
 
 export type OSPolicyResourceList = ReadonlyArray<OSPolicyResource>;
-export const OSPolicyResourceList = /*@__PURE__*/ S.Array(
-  OSPolicyResource,
-) as any as S.Schema<OSPolicyResourceList>;
+export const OSPolicyResourceList = /*@__PURE__*/ S.Array(OSPolicyResource) as any as S.Schema<OSPolicyResourceList>;
 
 /** Resource groups provide a mechanism to group OS policy resources. Resource groups enable OS policy authors to create a single OS policy to be applied to VMs running different operating Systems. When the OS policy is applied to a target VM, the appropriate resource group within the OS policy is selected based on the `OSFilter` specified within the resource group. */
 export interface OSPolicyResourceGroup {
@@ -584,25 +493,17 @@ export interface OSPolicyResourceGroup {
   resources?: OSPolicyResourceList;
 }
 export const OSPolicyResourceGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osFilter: S.optional(OSPolicyOSFilter),
-    inventoryFilters: S.optional(OSPolicyInventoryFilterList),
-    resources: S.optional(OSPolicyResourceList),
-  }),
-).annotate({
-  identifier: "OSPolicyResourceGroup",
-}) as any as S.Schema<OSPolicyResourceGroup>;
+S.Struct({
+  "osFilter": S.optional(OSPolicyOSFilter),
+  "inventoryFilters": S.optional(OSPolicyInventoryFilterList),
+  "resources": S.optional(OSPolicyResourceList),
+}),
+).annotate({ identifier: "OSPolicyResourceGroup" }) as any as S.Schema<OSPolicyResourceGroup>;
 
 export type OSPolicyResourceGroupList = ReadonlyArray<OSPolicyResourceGroup>;
-export const OSPolicyResourceGroupList = /*@__PURE__*/ S.Array(
-  OSPolicyResourceGroup,
-) as any as S.Schema<OSPolicyResourceGroupList>;
+export const OSPolicyResourceGroupList = /*@__PURE__*/ S.Array(OSPolicyResourceGroup) as any as S.Schema<OSPolicyResourceGroupList>;
 
-export type OSPolicyModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "VALIDATION"
-  | "ENFORCEMENT"
-  | (string & {});
+export type OSPolicyModeEnum = "MODE_UNSPECIFIED" | "VALIDATION" | "ENFORCEMENT";
 export const OSPolicyModeEnum = /*@__PURE__*/ S.String;
 
 /** An OS policy defines the desired state configuration for a VM. */
@@ -619,34 +520,23 @@ export interface OSPolicy {
   id?: string;
 }
 export const OSPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowNoResourceGroupMatch: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    resourceGroups: S.optional(OSPolicyResourceGroupList),
-    mode: S.optional(OSPolicyModeEnum),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "allowNoResourceGroupMatch": S.optional(S.Boolean),
+  "description": S.optional(S.String),
+  "resourceGroups": S.optional(OSPolicyResourceGroupList),
+  "mode": S.optional(OSPolicyModeEnum),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "OSPolicy" }) as any as S.Schema<OSPolicy>;
 
 export type OSPolicyList = ReadonlyArray<OSPolicy>;
-export const OSPolicyList = /*@__PURE__*/ S.Array(
-  OSPolicy,
-) as any as S.Schema<OSPolicyList>;
+export const OSPolicyList = /*@__PURE__*/ S.Array(OSPolicy) as any as S.Schema<OSPolicyList>;
 
-export type OSPolicyAssignmentRolloutStateEnum =
-  | "ROLLOUT_STATE_UNSPECIFIED"
-  | "IN_PROGRESS"
-  | "CANCELLING"
-  | "CANCELLED"
-  | "SUCCEEDED"
-  | (string & {});
+export type OSPolicyAssignmentRolloutStateEnum = "ROLLOUT_STATE_UNSPECIFIED" | "IN_PROGRESS" | "CANCELLING" | "CANCELLED" | "SUCCEEDED";
 export const OSPolicyAssignmentRolloutStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Message representing label set. * A label is a key value pair set for a VM. * A LabelSet is a set of labels. * Labels within a LabelSet are ANDed. In other words, a LabelSet is applicable for a VM only if it matches all the labels in the LabelSet. * Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only be applicable for those VMs with both labels present. */
 export interface OSPolicyAssignmentLabelSet {
@@ -654,18 +544,13 @@ export interface OSPolicyAssignmentLabelSet {
   labels?: StringMap;
 }
 export const OSPolicyAssignmentLabelSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "OSPolicyAssignmentLabelSet",
-}) as any as S.Schema<OSPolicyAssignmentLabelSet>;
+S.Struct({
+  "labels": S.optional(StringMap),
+}),
+).annotate({ identifier: "OSPolicyAssignmentLabelSet" }) as any as S.Schema<OSPolicyAssignmentLabelSet>;
 
-export type OSPolicyAssignmentLabelSetList =
-  ReadonlyArray<OSPolicyAssignmentLabelSet>;
-export const OSPolicyAssignmentLabelSetList = /*@__PURE__*/ S.Array(
-  OSPolicyAssignmentLabelSet,
-) as any as S.Schema<OSPolicyAssignmentLabelSetList>;
+export type OSPolicyAssignmentLabelSetList = ReadonlyArray<OSPolicyAssignmentLabelSet>;
+export const OSPolicyAssignmentLabelSetList = /*@__PURE__*/ S.Array(OSPolicyAssignmentLabelSet) as any as S.Schema<OSPolicyAssignmentLabelSetList>;
 
 /** VM inventory details. */
 export interface OSPolicyAssignmentInstanceFilterInventory {
@@ -674,22 +559,15 @@ export interface OSPolicyAssignmentInstanceFilterInventory {
   /** The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions. */
   osVersion?: string;
 }
-export const OSPolicyAssignmentInstanceFilterInventory =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      osShortName: S.optional(S.String),
-      osVersion: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyAssignmentInstanceFilterInventory",
-  }) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventory>;
+export const OSPolicyAssignmentInstanceFilterInventory = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "osShortName": S.optional(S.String),
+  "osVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyAssignmentInstanceFilterInventory" }) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventory>;
 
-export type OSPolicyAssignmentInstanceFilterInventoryList =
-  ReadonlyArray<OSPolicyAssignmentInstanceFilterInventory>;
-export const OSPolicyAssignmentInstanceFilterInventoryList =
-  /*@__PURE__*/ S.Array(
-    OSPolicyAssignmentInstanceFilterInventory,
-  ) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventoryList>;
+export type OSPolicyAssignmentInstanceFilterInventoryList = ReadonlyArray<OSPolicyAssignmentInstanceFilterInventory>;
+export const OSPolicyAssignmentInstanceFilterInventoryList = /*@__PURE__*/ S.Array(OSPolicyAssignmentInstanceFilterInventory) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventoryList>;
 
 /** Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them. */
 export interface OSPolicyAssignmentInstanceFilter {
@@ -705,16 +583,14 @@ export interface OSPolicyAssignmentInstanceFilter {
   osShortNames?: StringList;
 }
 export const OSPolicyAssignmentInstanceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    all: S.optional(S.Boolean),
-    exclusionLabels: S.optional(OSPolicyAssignmentLabelSetList),
-    inventories: S.optional(OSPolicyAssignmentInstanceFilterInventoryList),
-    inclusionLabels: S.optional(OSPolicyAssignmentLabelSetList),
-    osShortNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "OSPolicyAssignmentInstanceFilter",
-}) as any as S.Schema<OSPolicyAssignmentInstanceFilter>;
+S.Struct({
+  "all": S.optional(S.Boolean),
+  "exclusionLabels": S.optional(OSPolicyAssignmentLabelSetList),
+  "inventories": S.optional(OSPolicyAssignmentInstanceFilterInventoryList),
+  "inclusionLabels": S.optional(OSPolicyAssignmentLabelSetList),
+  "osShortNames": S.optional(StringList),
+}),
+).annotate({ identifier: "OSPolicyAssignmentInstanceFilter" }) as any as S.Schema<OSPolicyAssignmentInstanceFilter>;
 
 /** Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value. */
 export interface FixedOrPercent {
@@ -724,10 +600,10 @@ export interface FixedOrPercent {
   fixed?: number;
 }
 export const FixedOrPercent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    percent: S.optional(S.Number),
-    fixed: S.optional(S.Number),
-  }),
+S.Struct({
+  "percent": S.optional(S.Number),
+  "fixed": S.optional(S.Number),
+}),
 ).annotate({ identifier: "FixedOrPercent" }) as any as S.Schema<FixedOrPercent>;
 
 /** Message to configure the rollout at the zonal level for the OS policy assignment. */
@@ -738,13 +614,11 @@ export interface OSPolicyAssignmentRollout {
   minWaitDuration?: string;
 }
 export const OSPolicyAssignmentRollout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disruptionBudget: S.optional(FixedOrPercent),
-    minWaitDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OSPolicyAssignmentRollout",
-}) as any as S.Schema<OSPolicyAssignmentRollout>;
+S.Struct({
+  "disruptionBudget": S.optional(FixedOrPercent),
+  "minWaitDuration": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyAssignmentRollout" }) as any as S.Schema<OSPolicyAssignmentRollout>;
 
 /** OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances. An OS policy is used to define the desired state configuration for a Compute Engine VM instance through a set of configuration resources that provide capabilities such as installing or removing software packages, or executing a script. For more information, see [OS policy and OS policy assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies). */
 export interface OSPolicyAssignment {
@@ -776,24 +650,22 @@ export interface OSPolicyAssignment {
   uid?: string;
 }
 export const OSPolicyAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revisionCreateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    osPolicies: S.optional(OSPolicyList),
-    baseline: S.optional(S.Boolean),
-    deleted: S.optional(S.Boolean),
-    rolloutState: S.optional(OSPolicyAssignmentRolloutStateEnum),
-    revisionId: S.optional(S.String),
-    etag: S.optional(S.String),
-    instanceFilter: S.optional(OSPolicyAssignmentInstanceFilter),
-    rollout: S.optional(OSPolicyAssignmentRollout),
-    uid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OSPolicyAssignment",
-}) as any as S.Schema<OSPolicyAssignment>;
+S.Struct({
+  "revisionCreateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "reconciling": S.optional(S.Boolean),
+  "description": S.optional(S.String),
+  "osPolicies": S.optional(OSPolicyList),
+  "baseline": S.optional(S.Boolean),
+  "deleted": S.optional(S.Boolean),
+  "rolloutState": S.optional(OSPolicyAssignmentRolloutStateEnum),
+  "revisionId": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "instanceFilter": S.optional(OSPolicyAssignmentInstanceFilter),
+  "rollout": S.optional(OSPolicyAssignmentRollout),
+  "uid": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyAssignment" }) as any as S.Schema<OSPolicyAssignment>;
 
 export interface CreateProjectsLocationsOsPolicyAssignmentsRequest {
   /** Required. The parent resource name in the form: projects/{project}/locations/{location} */
@@ -805,34 +677,20 @@ export interface CreateProjectsLocationsOsPolicyAssignmentsRequest {
   /** Request body */
   body?: OSPolicyAssignment;
 }
-export const CreateProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      osPolicyAssignmentId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(OSPolicyAssignment.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/osPolicyAssignments",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsOsPolicyAssignmentsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsOsPolicyAssignmentsRequest>;
+export const CreateProjectsLocationsOsPolicyAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "osPolicyAssignmentId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(OSPolicyAssignment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/osPolicyAssignments","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsOsPolicyAssignmentsRequest" }) as any as S.Schema<CreateProjectsLocationsOsPolicyAssignmentsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -844,11 +702,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "message": S.optional(S.String),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -865,13 +723,13 @@ export interface Operation {
   name?: string;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    done: S.optional(S.Boolean),
-    response: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "done": S.optional(S.Boolean),
+  "response": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsOsPolicyAssignmentsRequest {
@@ -880,74 +738,33 @@ export interface DeleteProjectsLocationsOsPolicyAssignmentsRequest {
   /** Required. The name of the OS policy assignment to be deleted */
   name: string;
 }
-export const DeleteProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsOsPolicyAssignmentsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsOsPolicyAssignmentsRequest>;
+export const DeleteProjectsLocationsOsPolicyAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOsPolicyAssignmentsRequest" }) as any as S.Schema<DeleteProjectsLocationsOsPolicyAssignmentsRequest>;
 
 export interface GetProjectsLocationsInstanceOSPoliciesCompliancesRequest {
   /** Required. API resource name for instance OS policies compliance resource. Format: `projects/{project}/locations/{location}/instanceOSPoliciesCompliances/{instance}` For `{project}`, either Compute Engine project-number or project-id can be provided. For `{instance}`, either Compute Engine VM instance-id or instance-name can be provided. */
   name: string;
 }
-export const GetProjectsLocationsInstanceOSPoliciesCompliancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsInstanceOSPoliciesCompliancesRequest",
-  }) as any as S.Schema<GetProjectsLocationsInstanceOSPoliciesCompliancesRequest>;
+export const GetProjectsLocationsInstanceOSPoliciesCompliancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsInstanceOSPoliciesCompliancesRequest" }) as any as S.Schema<GetProjectsLocationsInstanceOSPoliciesCompliancesRequest>;
 
-export type InstanceOSPoliciesComplianceOSPolicyComplianceStateEnum =
-  | "OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED"
-  | "COMPLIANT"
-  | "NON_COMPLIANT"
-  | "UNKNOWN"
-  | "NO_OS_POLICIES_APPLICABLE"
-  | (string & {});
-export const InstanceOSPoliciesComplianceOSPolicyComplianceStateEnum =
-  /*@__PURE__*/ S.String;
+export type InstanceOSPoliciesComplianceOSPolicyComplianceStateEnum = "OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED" | "COMPLIANT" | "NON_COMPLIANT" | "UNKNOWN" | "NO_OS_POLICIES_APPLICABLE";
+export const InstanceOSPoliciesComplianceOSPolicyComplianceStateEnum = /*@__PURE__*/ S.String;
 
-export type OSPolicyResourceComplianceStateEnum =
-  | "OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED"
-  | "COMPLIANT"
-  | "NON_COMPLIANT"
-  | "UNKNOWN"
-  | "NO_OS_POLICIES_APPLICABLE"
-  | (string & {});
+export type OSPolicyResourceComplianceStateEnum = "OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED" | "COMPLIANT" | "NON_COMPLIANT" | "UNKNOWN" | "NO_OS_POLICIES_APPLICABLE";
 export const OSPolicyResourceComplianceStateEnum = /*@__PURE__*/ S.String;
 
-export type OSPolicyResourceConfigStepTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "VALIDATION"
-  | "DESIRED_STATE_CHECK"
-  | "DESIRED_STATE_ENFORCEMENT"
-  | "DESIRED_STATE_CHECK_POST_ENFORCEMENT"
-  | (string & {});
+export type OSPolicyResourceConfigStepTypeEnum = "TYPE_UNSPECIFIED" | "VALIDATION" | "DESIRED_STATE_CHECK" | "DESIRED_STATE_ENFORCEMENT" | "DESIRED_STATE_CHECK_POST_ENFORCEMENT";
 export const OSPolicyResourceConfigStepTypeEnum = /*@__PURE__*/ S.String;
 
-export type OSPolicyResourceConfigStepOutcomeEnum =
-  | "OUTCOME_UNSPECIFIED"
-  | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+export type OSPolicyResourceConfigStepOutcomeEnum = "OUTCOME_UNSPECIFIED" | "SUCCEEDED" | "FAILED";
 export const OSPolicyResourceConfigStepOutcomeEnum = /*@__PURE__*/ S.String;
 
 /** Step performed by the OS Config agent for configuring an `OSPolicyResource` to its desired state. */
@@ -960,34 +777,26 @@ export interface OSPolicyResourceConfigStep {
   outcome?: OSPolicyResourceConfigStepOutcomeEnum;
 }
 export const OSPolicyResourceConfigStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorMessage: S.optional(S.String),
-    type: S.optional(OSPolicyResourceConfigStepTypeEnum),
-    outcome: S.optional(OSPolicyResourceConfigStepOutcomeEnum),
-  }),
-).annotate({
-  identifier: "OSPolicyResourceConfigStep",
-}) as any as S.Schema<OSPolicyResourceConfigStep>;
+S.Struct({
+  "errorMessage": S.optional(S.String),
+  "type": S.optional(OSPolicyResourceConfigStepTypeEnum),
+  "outcome": S.optional(OSPolicyResourceConfigStepOutcomeEnum),
+}),
+).annotate({ identifier: "OSPolicyResourceConfigStep" }) as any as S.Schema<OSPolicyResourceConfigStep>;
 
-export type OSPolicyResourceConfigStepList =
-  ReadonlyArray<OSPolicyResourceConfigStep>;
-export const OSPolicyResourceConfigStepList = /*@__PURE__*/ S.Array(
-  OSPolicyResourceConfigStep,
-) as any as S.Schema<OSPolicyResourceConfigStepList>;
+export type OSPolicyResourceConfigStepList = ReadonlyArray<OSPolicyResourceConfigStep>;
+export const OSPolicyResourceConfigStepList = /*@__PURE__*/ S.Array(OSPolicyResourceConfigStep) as any as S.Schema<OSPolicyResourceConfigStepList>;
 
 /** ExecResource specific output. */
 export interface OSPolicyResourceComplianceExecResourceOutput {
   /** Output from Enforcement phase output file (if run). Output size is limited to 100K bytes. */
   enforcementOutput?: string;
 }
-export const OSPolicyResourceComplianceExecResourceOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enforcementOutput: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceComplianceExecResourceOutput",
-  }) as any as S.Schema<OSPolicyResourceComplianceExecResourceOutput>;
+export const OSPolicyResourceComplianceExecResourceOutput = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "enforcementOutput": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyResourceComplianceExecResourceOutput" }) as any as S.Schema<OSPolicyResourceComplianceExecResourceOutput>;
 
 /** Compliance data for an OS policy resource. */
 export interface OSPolicyResourceCompliance {
@@ -1001,23 +810,16 @@ export interface OSPolicyResourceCompliance {
   execResourceOutput?: OSPolicyResourceComplianceExecResourceOutput;
 }
 export const OSPolicyResourceCompliance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osPolicyResourceId: S.optional(S.String),
-    state: S.optional(OSPolicyResourceComplianceStateEnum),
-    configSteps: S.optional(OSPolicyResourceConfigStepList),
-    execResourceOutput: S.optional(
-      OSPolicyResourceComplianceExecResourceOutput,
-    ),
-  }),
-).annotate({
-  identifier: "OSPolicyResourceCompliance",
-}) as any as S.Schema<OSPolicyResourceCompliance>;
+S.Struct({
+  "osPolicyResourceId": S.optional(S.String),
+  "state": S.optional(OSPolicyResourceComplianceStateEnum),
+  "configSteps": S.optional(OSPolicyResourceConfigStepList),
+  "execResourceOutput": S.optional(OSPolicyResourceComplianceExecResourceOutput),
+}),
+).annotate({ identifier: "OSPolicyResourceCompliance" }) as any as S.Schema<OSPolicyResourceCompliance>;
 
-export type OSPolicyResourceComplianceList =
-  ReadonlyArray<OSPolicyResourceCompliance>;
-export const OSPolicyResourceComplianceList = /*@__PURE__*/ S.Array(
-  OSPolicyResourceCompliance,
-) as any as S.Schema<OSPolicyResourceComplianceList>;
+export type OSPolicyResourceComplianceList = ReadonlyArray<OSPolicyResourceCompliance>;
+export const OSPolicyResourceComplianceList = /*@__PURE__*/ S.Array(OSPolicyResourceCompliance) as any as S.Schema<OSPolicyResourceComplianceList>;
 
 /** Compliance data for an OS policy */
 export interface InstanceOSPoliciesComplianceOSPolicyCompliance {
@@ -1030,34 +832,19 @@ export interface InstanceOSPoliciesComplianceOSPolicyCompliance {
   /** Compliance data for each `OSPolicyResource` that is applied to the VM. */
   osPolicyResourceCompliances?: OSPolicyResourceComplianceList;
 }
-export const InstanceOSPoliciesComplianceOSPolicyCompliance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      osPolicyId: S.optional(S.String),
-      osPolicyAssignment: S.optional(S.String),
-      state: S.optional(
-        InstanceOSPoliciesComplianceOSPolicyComplianceStateEnum,
-      ),
-      osPolicyResourceCompliances: S.optional(OSPolicyResourceComplianceList),
-    }),
-  ).annotate({
-    identifier: "InstanceOSPoliciesComplianceOSPolicyCompliance",
-  }) as any as S.Schema<InstanceOSPoliciesComplianceOSPolicyCompliance>;
+export const InstanceOSPoliciesComplianceOSPolicyCompliance = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "osPolicyId": S.optional(S.String),
+  "osPolicyAssignment": S.optional(S.String),
+  "state": S.optional(InstanceOSPoliciesComplianceOSPolicyComplianceStateEnum),
+  "osPolicyResourceCompliances": S.optional(OSPolicyResourceComplianceList),
+}),
+).annotate({ identifier: "InstanceOSPoliciesComplianceOSPolicyCompliance" }) as any as S.Schema<InstanceOSPoliciesComplianceOSPolicyCompliance>;
 
-export type InstanceOSPoliciesComplianceOSPolicyComplianceList =
-  ReadonlyArray<InstanceOSPoliciesComplianceOSPolicyCompliance>;
-export const InstanceOSPoliciesComplianceOSPolicyComplianceList =
-  /*@__PURE__*/ S.Array(
-    InstanceOSPoliciesComplianceOSPolicyCompliance,
-  ) as any as S.Schema<InstanceOSPoliciesComplianceOSPolicyComplianceList>;
+export type InstanceOSPoliciesComplianceOSPolicyComplianceList = ReadonlyArray<InstanceOSPoliciesComplianceOSPolicyCompliance>;
+export const InstanceOSPoliciesComplianceOSPolicyComplianceList = /*@__PURE__*/ S.Array(InstanceOSPoliciesComplianceOSPolicyCompliance) as any as S.Schema<InstanceOSPoliciesComplianceOSPolicyComplianceList>;
 
-export type InstanceOSPoliciesComplianceStateEnum =
-  | "OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED"
-  | "COMPLIANT"
-  | "NON_COMPLIANT"
-  | "UNKNOWN"
-  | "NO_OS_POLICIES_APPLICABLE"
-  | (string & {});
+export type InstanceOSPoliciesComplianceStateEnum = "OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED" | "COMPLIANT" | "NON_COMPLIANT" | "UNKNOWN" | "NO_OS_POLICIES_APPLICABLE";
 export const InstanceOSPoliciesComplianceStateEnum = /*@__PURE__*/ S.String;
 
 /** This API resource represents the OS policies compliance data for a Compute Engine virtual machine (VM) instance at a given point in time. A Compute Engine VM can have multiple OS policy assignments, and each assignment can have multiple OS policies. As a result, multiple OS policies could be applied to a single VM. You can use this API resource to determine both the compliance state of your VM as well as the compliance state of an individual OS policy. For more information, see [View compliance](https://cloud.google.com/compute/docs/os-configuration-management/view-compliance). */
@@ -1080,53 +867,33 @@ export interface InstanceOSPoliciesCompliance {
   detailedState?: string;
 }
 export const InstanceOSPoliciesCompliance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osPolicyCompliances: S.optional(
-      InstanceOSPoliciesComplianceOSPolicyComplianceList,
-    ),
-    state: S.optional(InstanceOSPoliciesComplianceStateEnum),
-    name: S.optional(S.String),
-    lastComplianceCheckTime: S.optional(S.String),
-    detailedStateReason: S.optional(S.String),
-    lastComplianceRunId: S.optional(S.String),
-    instance: S.optional(S.String),
-    detailedState: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InstanceOSPoliciesCompliance",
-}) as any as S.Schema<InstanceOSPoliciesCompliance>;
+S.Struct({
+  "osPolicyCompliances": S.optional(InstanceOSPoliciesComplianceOSPolicyComplianceList),
+  "state": S.optional(InstanceOSPoliciesComplianceStateEnum),
+  "name": S.optional(S.String),
+  "lastComplianceCheckTime": S.optional(S.String),
+  "detailedStateReason": S.optional(S.String),
+  "lastComplianceRunId": S.optional(S.String),
+  "instance": S.optional(S.String),
+  "detailedState": S.optional(S.String),
+}),
+).annotate({ identifier: "InstanceOSPoliciesCompliance" }) as any as S.Schema<InstanceOSPoliciesCompliance>;
 
-export type GetProjectsLocationsInstancesInventoriesViewEnum =
-  | "INVENTORY_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const GetProjectsLocationsInstancesInventoriesViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsLocationsInstancesInventoriesViewEnum = "INVENTORY_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const GetProjectsLocationsInstancesInventoriesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsInstancesInventoriesRequest {
   /** Required. API resource name for inventory resource. Format: `projects/{project}/locations/{location}/instances/{instance}/inventory` For `{project}`, either `project-number` or `project-id` can be provided. For `{instance}`, either Compute Engine `instance-id` or `instance-name` can be provided. */
   name: string;
   /** Inventory view indicating what information should be included in the inventory resource. If unspecified, the default view is BASIC. */
-  view?: GetProjectsLocationsInstancesInventoriesViewEnum;
+  view?: GetProjectsLocationsInstancesInventoriesViewEnum | (string & {});
 }
-export const GetProjectsLocationsInstancesInventoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      view: S.optional(
-        GetProjectsLocationsInstancesInventoriesViewEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsInstancesInventoriesRequest",
-  }) as any as S.Schema<GetProjectsLocationsInstancesInventoriesRequest>;
+export const GetProjectsLocationsInstancesInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetProjectsLocationsInstancesInventoriesViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsInstancesInventoriesRequest" }) as any as S.Schema<GetProjectsLocationsInstancesInventoriesRequest>;
 
 /** Operating system information for the VM. */
 export interface InventoryOsInfo {
@@ -1148,19 +915,17 @@ export interface InventoryOsInfo {
   osconfigAgentVersion?: string;
 }
 export const InventoryOsInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shortName: S.optional(S.String),
-    kernelRelease: S.optional(S.String),
-    hostname: S.optional(S.String),
-    kernelVersion: S.optional(S.String),
-    architecture: S.optional(S.String),
-    longName: S.optional(S.String),
-    version: S.optional(S.String),
-    osconfigAgentVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InventoryOsInfo",
-}) as any as S.Schema<InventoryOsInfo>;
+S.Struct({
+  "shortName": S.optional(S.String),
+  "kernelRelease": S.optional(S.String),
+  "hostname": S.optional(S.String),
+  "kernelVersion": S.optional(S.String),
+  "architecture": S.optional(S.String),
+  "longName": S.optional(S.String),
+  "version": S.optional(S.String),
+  "osconfigAgentVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "InventoryOsInfo" }) as any as S.Schema<InventoryOsInfo>;
 
 /** Information related to the a standard versioned package. This includes package info for APT, Yum, Zypper, and Googet package managers. */
 export interface InventoryVersionedPackage {
@@ -1172,14 +937,12 @@ export interface InventoryVersionedPackage {
   version?: string;
 }
 export const InventoryVersionedPackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.optional(S.String),
-    architecture: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InventoryVersionedPackage",
-}) as any as S.Schema<InventoryVersionedPackage>;
+S.Struct({
+  "packageName": S.optional(S.String),
+  "architecture": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
+).annotate({ identifier: "InventoryVersionedPackage" }) as any as S.Schema<InventoryVersionedPackage>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Osconfig_Date {
@@ -1191,11 +954,11 @@ export interface Osconfig_Date {
   day?: number;
 }
 export const Osconfig_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    month: S.optional(S.Number),
-    year: S.optional(S.Number),
-    day: S.optional(S.Number),
-  }),
+S.Struct({
+  "month": S.optional(S.Number),
+  "year": S.optional(S.Number),
+  "day": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Osconfig_Date" }) as any as S.Schema<Osconfig_Date>;
 
 /** Contains information about a Windows application that is retrieved from the Windows Registry. For more information about these fields, see: https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key */
@@ -1212,16 +975,14 @@ export interface InventoryWindowsApplication {
   displayVersion?: string;
 }
 export const InventoryWindowsApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publisher: S.optional(S.String),
-    displayName: S.optional(S.String),
-    installDate: S.optional(Osconfig_Date),
-    helpLink: S.optional(S.String),
-    displayVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InventoryWindowsApplication",
-}) as any as S.Schema<InventoryWindowsApplication>;
+S.Struct({
+  "publisher": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "installDate": S.optional(Osconfig_Date),
+  "helpLink": S.optional(S.String),
+  "displayVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "InventoryWindowsApplication" }) as any as S.Schema<InventoryWindowsApplication>;
 
 /** Categories specified by the Windows Update. */
 export interface InventoryWindowsUpdatePackageWindowsUpdateCategory {
@@ -1230,22 +991,15 @@ export interface InventoryWindowsUpdatePackageWindowsUpdateCategory {
   /** The name of the windows update category. */
   name?: string;
 }
-export const InventoryWindowsUpdatePackageWindowsUpdateCategory =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InventoryWindowsUpdatePackageWindowsUpdateCategory",
-  }) as any as S.Schema<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
+export const InventoryWindowsUpdatePackageWindowsUpdateCategory = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "InventoryWindowsUpdatePackageWindowsUpdateCategory" }) as any as S.Schema<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
 
-export type InventoryWindowsUpdatePackageWindowsUpdateCategoryList =
-  ReadonlyArray<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
-export const InventoryWindowsUpdatePackageWindowsUpdateCategoryList =
-  /*@__PURE__*/ S.Array(
-    InventoryWindowsUpdatePackageWindowsUpdateCategory,
-  ) as any as S.Schema<InventoryWindowsUpdatePackageWindowsUpdateCategoryList>;
+export type InventoryWindowsUpdatePackageWindowsUpdateCategoryList = ReadonlyArray<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
+export const InventoryWindowsUpdatePackageWindowsUpdateCategoryList = /*@__PURE__*/ S.Array(InventoryWindowsUpdatePackageWindowsUpdateCategory) as any as S.Schema<InventoryWindowsUpdatePackageWindowsUpdateCategoryList>;
 
 /** Details related to a Windows Update package. Field data and names are taken from Windows Update API IUpdate Interface: https://docs.microsoft.com/en-us/windows/win32/api/_wua/ Descriptive fields like title, and description are localized based on the locale of the VM being updated. */
 export interface InventoryWindowsUpdatePackage {
@@ -1269,22 +1023,18 @@ export interface InventoryWindowsUpdatePackage {
   moreInfoUrls?: StringList;
 }
 export const InventoryWindowsUpdatePackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateId: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    lastDeploymentChangeTime: S.optional(S.String),
-    categories: S.optional(
-      InventoryWindowsUpdatePackageWindowsUpdateCategoryList,
-    ),
-    kbArticleIds: S.optional(StringList),
-    revisionNumber: S.optional(S.Number),
-    supportUrl: S.optional(S.String),
-    moreInfoUrls: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InventoryWindowsUpdatePackage",
-}) as any as S.Schema<InventoryWindowsUpdatePackage>;
+S.Struct({
+  "updateId": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "lastDeploymentChangeTime": S.optional(S.String),
+  "categories": S.optional(InventoryWindowsUpdatePackageWindowsUpdateCategoryList),
+  "kbArticleIds": S.optional(StringList),
+  "revisionNumber": S.optional(S.Number),
+  "supportUrl": S.optional(S.String),
+  "moreInfoUrls": S.optional(StringList),
+}),
+).annotate({ identifier: "InventoryWindowsUpdatePackage" }) as any as S.Schema<InventoryWindowsUpdatePackage>;
 
 /** Information related to a Quick Fix Engineering package. Fields are taken from Windows QuickFixEngineering Interface and match the source names: https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering */
 export interface InventoryWindowsQuickFixEngineeringPackage {
@@ -1297,17 +1047,14 @@ export interface InventoryWindowsQuickFixEngineeringPackage {
   /** Date that the QFE update was installed. Mapped from installed_on field. */
   installTime?: string;
 }
-export const InventoryWindowsQuickFixEngineeringPackage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hotFixId: S.optional(S.String),
-      caption: S.optional(S.String),
-      description: S.optional(S.String),
-      installTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InventoryWindowsQuickFixEngineeringPackage",
-  }) as any as S.Schema<InventoryWindowsQuickFixEngineeringPackage>;
+export const InventoryWindowsQuickFixEngineeringPackage = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "hotFixId": S.optional(S.String),
+  "caption": S.optional(S.String),
+  "description": S.optional(S.String),
+  "installTime": S.optional(S.String),
+}),
+).annotate({ identifier: "InventoryWindowsQuickFixEngineeringPackage" }) as any as S.Schema<InventoryWindowsQuickFixEngineeringPackage>;
 
 /** Details related to a Zypper Patch. */
 export interface InventoryZypperPatch {
@@ -1321,15 +1068,13 @@ export interface InventoryZypperPatch {
   patchName?: string;
 }
 export const InventoryZypperPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    category: S.optional(S.String),
-    severity: S.optional(S.String),
-    summary: S.optional(S.String),
-    patchName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InventoryZypperPatch",
-}) as any as S.Schema<InventoryZypperPatch>;
+S.Struct({
+  "category": S.optional(S.String),
+  "severity": S.optional(S.String),
+  "summary": S.optional(S.String),
+  "patchName": S.optional(S.String),
+}),
+).annotate({ identifier: "InventoryZypperPatch" }) as any as S.Schema<InventoryZypperPatch>;
 
 /** Software package information of the operating system. */
 export interface InventorySoftwarePackage {
@@ -1353,32 +1098,23 @@ export interface InventorySoftwarePackage {
   zypperPatch?: InventoryZypperPatch;
 }
 export const InventorySoftwarePackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cosPackage: S.optional(InventoryVersionedPackage),
-    yumPackage: S.optional(InventoryVersionedPackage),
-    windowsApplication: S.optional(InventoryWindowsApplication),
-    aptPackage: S.optional(InventoryVersionedPackage),
-    zypperPackage: S.optional(InventoryVersionedPackage),
-    googetPackage: S.optional(InventoryVersionedPackage),
-    wuaPackage: S.optional(InventoryWindowsUpdatePackage),
-    qfePackage: S.optional(InventoryWindowsQuickFixEngineeringPackage),
-    zypperPatch: S.optional(InventoryZypperPatch),
-  }),
-).annotate({
-  identifier: "InventorySoftwarePackage",
-}) as any as S.Schema<InventorySoftwarePackage>;
+S.Struct({
+  "cosPackage": S.optional(InventoryVersionedPackage),
+  "yumPackage": S.optional(InventoryVersionedPackage),
+  "windowsApplication": S.optional(InventoryWindowsApplication),
+  "aptPackage": S.optional(InventoryVersionedPackage),
+  "zypperPackage": S.optional(InventoryVersionedPackage),
+  "googetPackage": S.optional(InventoryVersionedPackage),
+  "wuaPackage": S.optional(InventoryWindowsUpdatePackage),
+  "qfePackage": S.optional(InventoryWindowsQuickFixEngineeringPackage),
+  "zypperPatch": S.optional(InventoryZypperPatch),
+}),
+).annotate({ identifier: "InventorySoftwarePackage" }) as any as S.Schema<InventorySoftwarePackage>;
 
-export type InventoryItemOriginTypeEnum =
-  | "ORIGIN_TYPE_UNSPECIFIED"
-  | "INVENTORY_REPORT"
-  | (string & {});
+export type InventoryItemOriginTypeEnum = "ORIGIN_TYPE_UNSPECIFIED" | "INVENTORY_REPORT";
 export const InventoryItemOriginTypeEnum = /*@__PURE__*/ S.String;
 
-export type InventoryItemTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "INSTALLED_PACKAGE"
-  | "AVAILABLE_PACKAGE"
-  | (string & {});
+export type InventoryItemTypeEnum = "TYPE_UNSPECIFIED" | "INSTALLED_PACKAGE" | "AVAILABLE_PACKAGE";
 export const InventoryItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single piece of inventory on a VM. */
@@ -1399,22 +1135,19 @@ export interface InventoryItem {
   type?: InventoryItemTypeEnum;
 }
 export const InventoryItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    installedPackage: S.optional(InventorySoftwarePackage),
-    id: S.optional(S.String),
-    originType: S.optional(InventoryItemOriginTypeEnum),
-    updateTime: S.optional(S.String),
-    availablePackage: S.optional(InventorySoftwarePackage),
-    type: S.optional(InventoryItemTypeEnum),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "installedPackage": S.optional(InventorySoftwarePackage),
+  "id": S.optional(S.String),
+  "originType": S.optional(InventoryItemOriginTypeEnum),
+  "updateTime": S.optional(S.String),
+  "availablePackage": S.optional(InventorySoftwarePackage),
+  "type": S.optional(InventoryItemTypeEnum),
+}),
 ).annotate({ identifier: "InventoryItem" }) as any as S.Schema<InventoryItem>;
 
 export type InventoryItemMap = { [key: string]: InventoryItem | undefined };
-export const InventoryItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InventoryItem,
-) as any as S.Schema<InventoryItemMap>;
+export const InventoryItemMap = /*@__PURE__*/ S.Record(S.String, InventoryItem) as any as S.Schema<InventoryItemMap>;
 
 /** This API resource represents the available inventory data for a Compute Engine virtual machine (VM) instance at a given point in time. You can use this API resource to determine the inventory data of your VM. For more information, see [Information provided by OS inventory management](https://cloud.google.com/compute/docs/instances/os-inventory-management#data-collected). */
 export interface Inventory {
@@ -1428,51 +1161,29 @@ export interface Inventory {
   updateTime?: string;
 }
 export const Inventory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    osInfo: S.optional(InventoryOsInfo),
-    items: S.optional(InventoryItemMap),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "osInfo": S.optional(InventoryOsInfo),
+  "items": S.optional(InventoryItemMap),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Inventory" }) as any as S.Schema<Inventory>;
 
 export interface GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest {
   /** Required. API resource name for OS policy assignment report. Format: `/projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/report` For `{project}`, either `project-number` or `project-id` can be provided. For `{instance_id}`, either Compute Engine `instance-id` or `instance-name` can be provided. For `{assignment_id}`, the OSPolicyAssignment id must be provided. */
   name: string;
 }
-export const GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest",
-  }) as any as S.Schema<GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
+export const GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest" }) as any as S.Schema<GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
 
-export type OSPolicyAssignmentReportOSPolicyComplianceComplianceStateEnum =
-  | "UNKNOWN"
-  | "COMPLIANT"
-  | "NON_COMPLIANT"
-  | (string & {});
-export const OSPolicyAssignmentReportOSPolicyComplianceComplianceStateEnum =
-  /*@__PURE__*/ S.String;
+export type OSPolicyAssignmentReportOSPolicyComplianceComplianceStateEnum = "UNKNOWN" | "COMPLIANT" | "NON_COMPLIANT";
+export const OSPolicyAssignmentReportOSPolicyComplianceComplianceStateEnum = /*@__PURE__*/ S.String;
 
-export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepTypeEnum =
-    | "TYPE_UNSPECIFIED"
-    | "VALIDATION"
-    | "DESIRED_STATE_CHECK"
-    | "DESIRED_STATE_ENFORCEMENT"
-    | "DESIRED_STATE_CHECK_POST_ENFORCEMENT"
-    | (string & {});
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepTypeEnum =
-  /*@__PURE__*/ S.String;
+export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepTypeEnum = "TYPE_UNSPECIFIED" | "VALIDATION" | "DESIRED_STATE_CHECK" | "DESIRED_STATE_ENFORCEMENT" | "DESIRED_STATE_CHECK_POST_ENFORCEMENT";
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepTypeEnum = /*@__PURE__*/ S.String;
 
 /** Step performed by the OS Config agent for configuring an `OSPolicy` resource to its desired state. */
 export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep {
@@ -1481,45 +1192,29 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
   /** Configuration step type. */
   type?: OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepTypeEnum;
 }
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      errorMessage: S.optional(S.String),
-      type: S.optional(
-        OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep",
-  }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "errorMessage": S.optional(S.String),
+  "type": S.optional(OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepTypeEnum),
+}),
+).annotate({ identifier: "OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep" }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
 
-export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList =
-  ReadonlyArray<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList =
-  /*@__PURE__*/ S.Array(
-    OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep,
-  ) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList>;
+export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList = ReadonlyArray<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList = /*@__PURE__*/ S.Array(OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList>;
 
 /** ExecResource specific output. */
 export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput {
   /** Output from enforcement phase output file (if run). Output size is limited to 100K bytes. */
   enforcementOutput?: string;
 }
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enforcementOutput: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput",
-  }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput>;
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "enforcementOutput": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput" }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput>;
 
-export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceComplianceStateEnum =
-  "UNKNOWN" | "COMPLIANT" | "NON_COMPLIANT" | (string & {});
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceComplianceStateEnum =
-  /*@__PURE__*/ S.String;
+export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceComplianceStateEnum = "UNKNOWN" | "COMPLIANT" | "NON_COMPLIANT";
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceComplianceStateEnum = /*@__PURE__*/ S.String;
 
 /** Compliance data for an OS policy resource. */
 export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance {
@@ -1534,32 +1229,18 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
   /** The compliance state of the resource. */
   complianceState?: OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceComplianceStateEnum;
 }
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      configSteps: S.optional(
-        OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList,
-      ),
-      complianceStateReason: S.optional(S.String),
-      osPolicyResourceId: S.optional(S.String),
-      execResourceOutput: S.optional(
-        OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput,
-      ),
-      complianceState: S.optional(
-        OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceComplianceStateEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance",
-  }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "configSteps": S.optional(OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList),
+  "complianceStateReason": S.optional(S.String),
+  "osPolicyResourceId": S.optional(S.String),
+  "execResourceOutput": S.optional(OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput),
+  "complianceState": S.optional(OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceComplianceStateEnum),
+}),
+).annotate({ identifier: "OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance" }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
 
-export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList =
-  ReadonlyArray<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList =
-  /*@__PURE__*/ S.Array(
-    OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance,
-  ) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList>;
+export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList = ReadonlyArray<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList = /*@__PURE__*/ S.Array(OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList>;
 
 /** Compliance data for an OS policy */
 export interface OSPolicyAssignmentReportOSPolicyCompliance {
@@ -1572,28 +1253,17 @@ export interface OSPolicyAssignmentReportOSPolicyCompliance {
   /** The OS policy id */
   osPolicyId?: string;
 }
-export const OSPolicyAssignmentReportOSPolicyCompliance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      complianceState: S.optional(
-        OSPolicyAssignmentReportOSPolicyComplianceComplianceStateEnum,
-      ),
-      complianceStateReason: S.optional(S.String),
-      osPolicyResourceCompliances: S.optional(
-        OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList,
-      ),
-      osPolicyId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyAssignmentReportOSPolicyCompliance",
-  }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyCompliance>;
+export const OSPolicyAssignmentReportOSPolicyCompliance = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "complianceState": S.optional(OSPolicyAssignmentReportOSPolicyComplianceComplianceStateEnum),
+  "complianceStateReason": S.optional(S.String),
+  "osPolicyResourceCompliances": S.optional(OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList),
+  "osPolicyId": S.optional(S.String),
+}),
+).annotate({ identifier: "OSPolicyAssignmentReportOSPolicyCompliance" }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyCompliance>;
 
-export type OSPolicyAssignmentReportOSPolicyComplianceList =
-  ReadonlyArray<OSPolicyAssignmentReportOSPolicyCompliance>;
-export const OSPolicyAssignmentReportOSPolicyComplianceList =
-  /*@__PURE__*/ S.Array(
-    OSPolicyAssignmentReportOSPolicyCompliance,
-  ) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceList>;
+export type OSPolicyAssignmentReportOSPolicyComplianceList = ReadonlyArray<OSPolicyAssignmentReportOSPolicyCompliance>;
+export const OSPolicyAssignmentReportOSPolicyComplianceList = /*@__PURE__*/ S.Array(OSPolicyAssignmentReportOSPolicyCompliance) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceList>;
 
 /** A report of the OS policy assignment status for a given instance. */
 export interface OSPolicyAssignmentReport {
@@ -1611,50 +1281,28 @@ export interface OSPolicyAssignmentReport {
   osPolicyCompliances?: OSPolicyAssignmentReportOSPolicyComplianceList;
 }
 export const OSPolicyAssignmentReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    lastRunId: S.optional(S.String),
-    instance: S.optional(S.String),
-    osPolicyAssignment: S.optional(S.String),
-    osPolicyCompliances: S.optional(
-      OSPolicyAssignmentReportOSPolicyComplianceList,
-    ),
-  }),
-).annotate({
-  identifier: "OSPolicyAssignmentReport",
-}) as any as S.Schema<OSPolicyAssignmentReport>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "lastRunId": S.optional(S.String),
+  "instance": S.optional(S.String),
+  "osPolicyAssignment": S.optional(S.String),
+  "osPolicyCompliances": S.optional(OSPolicyAssignmentReportOSPolicyComplianceList),
+}),
+).annotate({ identifier: "OSPolicyAssignmentReport" }) as any as S.Schema<OSPolicyAssignmentReport>;
 
 export interface GetProjectsLocationsInstancesVulnerabilityReportsRequest {
   /** Required. API resource name for vulnerability resource. Format: `projects/{project}/locations/{location}/instances/{instance}/vulnerabilityReport` For `{project}`, either `project-number` or `project-id` can be provided. For `{instance}`, either Compute Engine `instance-id` or `instance-name` can be provided. */
   name: string;
 }
-export const GetProjectsLocationsInstancesVulnerabilityReportsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsInstancesVulnerabilityReportsRequest",
-  }) as any as S.Schema<GetProjectsLocationsInstancesVulnerabilityReportsRequest>;
+export const GetProjectsLocationsInstancesVulnerabilityReportsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsInstancesVulnerabilityReportsRequest" }) as any as S.Schema<GetProjectsLocationsInstancesVulnerabilityReportsRequest>;
 
-export type VulnerabilityReportHighestUpgradableCveSeverityEnum =
-  | "VULNERABILITY_SEVERITY_LEVEL_UNSPECIFIED"
-  | "NONE"
-  | "MINIMAL"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "CRITICAL"
-  | (string & {});
-export const VulnerabilityReportHighestUpgradableCveSeverityEnum =
-  /*@__PURE__*/ S.String;
+export type VulnerabilityReportHighestUpgradableCveSeverityEnum = "VULNERABILITY_SEVERITY_LEVEL_UNSPECIFIED" | "NONE" | "MINIMAL" | "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+export const VulnerabilityReportHighestUpgradableCveSeverityEnum = /*@__PURE__*/ S.String;
 
 /** OS inventory item that is affected by a vulnerability or fixed as a result of a vulnerability. */
 export interface VulnerabilityReportVulnerabilityItem {
@@ -1667,84 +1315,40 @@ export interface VulnerabilityReportVulnerabilityItem {
   /** The upstream OS patch, packages or KB that fixes the vulnerability. */
   upstreamFix?: string;
 }
-export const VulnerabilityReportVulnerabilityItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      installedInventoryItemId: S.optional(S.String),
-      availableInventoryItemId: S.optional(S.String),
-      fixedCpeUri: S.optional(S.String),
-      upstreamFix: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "VulnerabilityReportVulnerabilityItem",
-}) as any as S.Schema<VulnerabilityReportVulnerabilityItem>;
+export const VulnerabilityReportVulnerabilityItem = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "installedInventoryItemId": S.optional(S.String),
+  "availableInventoryItemId": S.optional(S.String),
+  "fixedCpeUri": S.optional(S.String),
+  "upstreamFix": S.optional(S.String),
+}),
+).annotate({ identifier: "VulnerabilityReportVulnerabilityItem" }) as any as S.Schema<VulnerabilityReportVulnerabilityItem>;
 
-export type VulnerabilityReportVulnerabilityItemList =
-  ReadonlyArray<VulnerabilityReportVulnerabilityItem>;
-export const VulnerabilityReportVulnerabilityItemList = /*@__PURE__*/ S.Array(
-  VulnerabilityReportVulnerabilityItem,
-) as any as S.Schema<VulnerabilityReportVulnerabilityItemList>;
+export type VulnerabilityReportVulnerabilityItemList = ReadonlyArray<VulnerabilityReportVulnerabilityItem>;
+export const VulnerabilityReportVulnerabilityItemList = /*@__PURE__*/ S.Array(VulnerabilityReportVulnerabilityItem) as any as S.Schema<VulnerabilityReportVulnerabilityItemList>;
 
-export type CVSSv3AvailabilityImpactEnum =
-  | "IMPACT_UNSPECIFIED"
-  | "IMPACT_HIGH"
-  | "IMPACT_LOW"
-  | "IMPACT_NONE"
-  | (string & {});
+export type CVSSv3AvailabilityImpactEnum = "IMPACT_UNSPECIFIED" | "IMPACT_HIGH" | "IMPACT_LOW" | "IMPACT_NONE";
 export const CVSSv3AvailabilityImpactEnum = /*@__PURE__*/ S.String;
 
-export type CVSSv3ScopeEnum =
-  | "SCOPE_UNSPECIFIED"
-  | "SCOPE_UNCHANGED"
-  | "SCOPE_CHANGED"
-  | (string & {});
+export type CVSSv3ScopeEnum = "SCOPE_UNSPECIFIED" | "SCOPE_UNCHANGED" | "SCOPE_CHANGED";
 export const CVSSv3ScopeEnum = /*@__PURE__*/ S.String;
 
-export type CVSSv3IntegrityImpactEnum =
-  | "IMPACT_UNSPECIFIED"
-  | "IMPACT_HIGH"
-  | "IMPACT_LOW"
-  | "IMPACT_NONE"
-  | (string & {});
+export type CVSSv3IntegrityImpactEnum = "IMPACT_UNSPECIFIED" | "IMPACT_HIGH" | "IMPACT_LOW" | "IMPACT_NONE";
 export const CVSSv3IntegrityImpactEnum = /*@__PURE__*/ S.String;
 
-export type CVSSv3AttackVectorEnum =
-  | "ATTACK_VECTOR_UNSPECIFIED"
-  | "ATTACK_VECTOR_NETWORK"
-  | "ATTACK_VECTOR_ADJACENT"
-  | "ATTACK_VECTOR_LOCAL"
-  | "ATTACK_VECTOR_PHYSICAL"
-  | (string & {});
+export type CVSSv3AttackVectorEnum = "ATTACK_VECTOR_UNSPECIFIED" | "ATTACK_VECTOR_NETWORK" | "ATTACK_VECTOR_ADJACENT" | "ATTACK_VECTOR_LOCAL" | "ATTACK_VECTOR_PHYSICAL";
 export const CVSSv3AttackVectorEnum = /*@__PURE__*/ S.String;
 
-export type CVSSv3AttackComplexityEnum =
-  | "ATTACK_COMPLEXITY_UNSPECIFIED"
-  | "ATTACK_COMPLEXITY_LOW"
-  | "ATTACK_COMPLEXITY_HIGH"
-  | (string & {});
+export type CVSSv3AttackComplexityEnum = "ATTACK_COMPLEXITY_UNSPECIFIED" | "ATTACK_COMPLEXITY_LOW" | "ATTACK_COMPLEXITY_HIGH";
 export const CVSSv3AttackComplexityEnum = /*@__PURE__*/ S.String;
 
-export type CVSSv3ConfidentialityImpactEnum =
-  | "IMPACT_UNSPECIFIED"
-  | "IMPACT_HIGH"
-  | "IMPACT_LOW"
-  | "IMPACT_NONE"
-  | (string & {});
+export type CVSSv3ConfidentialityImpactEnum = "IMPACT_UNSPECIFIED" | "IMPACT_HIGH" | "IMPACT_LOW" | "IMPACT_NONE";
 export const CVSSv3ConfidentialityImpactEnum = /*@__PURE__*/ S.String;
 
-export type CVSSv3PrivilegesRequiredEnum =
-  | "PRIVILEGES_REQUIRED_UNSPECIFIED"
-  | "PRIVILEGES_REQUIRED_NONE"
-  | "PRIVILEGES_REQUIRED_LOW"
-  | "PRIVILEGES_REQUIRED_HIGH"
-  | (string & {});
+export type CVSSv3PrivilegesRequiredEnum = "PRIVILEGES_REQUIRED_UNSPECIFIED" | "PRIVILEGES_REQUIRED_NONE" | "PRIVILEGES_REQUIRED_LOW" | "PRIVILEGES_REQUIRED_HIGH";
 export const CVSSv3PrivilegesRequiredEnum = /*@__PURE__*/ S.String;
 
-export type CVSSv3UserInteractionEnum =
-  | "USER_INTERACTION_UNSPECIFIED"
-  | "USER_INTERACTION_NONE"
-  | "USER_INTERACTION_REQUIRED"
-  | (string & {});
+export type CVSSv3UserInteractionEnum = "USER_INTERACTION_UNSPECIFIED" | "USER_INTERACTION_NONE" | "USER_INTERACTION_REQUIRED";
 export const CVSSv3UserInteractionEnum = /*@__PURE__*/ S.String;
 
 /** Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document */
@@ -1773,19 +1377,19 @@ export interface CVSSv3 {
   userInteraction?: CVSSv3UserInteractionEnum;
 }
 export const CVSSv3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exploitabilityScore: S.optional(S.Number),
-    availabilityImpact: S.optional(CVSSv3AvailabilityImpactEnum),
-    scope: S.optional(CVSSv3ScopeEnum),
-    baseScore: S.optional(S.Number),
-    integrityImpact: S.optional(CVSSv3IntegrityImpactEnum),
-    impactScore: S.optional(S.Number),
-    attackVector: S.optional(CVSSv3AttackVectorEnum),
-    attackComplexity: S.optional(CVSSv3AttackComplexityEnum),
-    confidentialityImpact: S.optional(CVSSv3ConfidentialityImpactEnum),
-    privilegesRequired: S.optional(CVSSv3PrivilegesRequiredEnum),
-    userInteraction: S.optional(CVSSv3UserInteractionEnum),
-  }),
+S.Struct({
+  "exploitabilityScore": S.optional(S.Number),
+  "availabilityImpact": S.optional(CVSSv3AvailabilityImpactEnum),
+  "scope": S.optional(CVSSv3ScopeEnum),
+  "baseScore": S.optional(S.Number),
+  "integrityImpact": S.optional(CVSSv3IntegrityImpactEnum),
+  "impactScore": S.optional(S.Number),
+  "attackVector": S.optional(CVSSv3AttackVectorEnum),
+  "attackComplexity": S.optional(CVSSv3AttackComplexityEnum),
+  "confidentialityImpact": S.optional(CVSSv3ConfidentialityImpactEnum),
+  "privilegesRequired": S.optional(CVSSv3PrivilegesRequiredEnum),
+  "userInteraction": S.optional(CVSSv3UserInteractionEnum),
+}),
 ).annotate({ identifier: "CVSSv3" }) as any as S.Schema<CVSSv3>;
 
 /** A reference for this vulnerability. */
@@ -1795,22 +1399,15 @@ export interface VulnerabilityReportVulnerabilityDetailsReference {
   /** The url of the reference. */
   url?: string;
 }
-export const VulnerabilityReportVulnerabilityDetailsReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      source: S.optional(S.String),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "VulnerabilityReportVulnerabilityDetailsReference",
-  }) as any as S.Schema<VulnerabilityReportVulnerabilityDetailsReference>;
+export const VulnerabilityReportVulnerabilityDetailsReference = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "source": S.optional(S.String),
+  "url": S.optional(S.String),
+}),
+).annotate({ identifier: "VulnerabilityReportVulnerabilityDetailsReference" }) as any as S.Schema<VulnerabilityReportVulnerabilityDetailsReference>;
 
-export type VulnerabilityReportVulnerabilityDetailsReferenceList =
-  ReadonlyArray<VulnerabilityReportVulnerabilityDetailsReference>;
-export const VulnerabilityReportVulnerabilityDetailsReferenceList =
-  /*@__PURE__*/ S.Array(
-    VulnerabilityReportVulnerabilityDetailsReference,
-  ) as any as S.Schema<VulnerabilityReportVulnerabilityDetailsReferenceList>;
+export type VulnerabilityReportVulnerabilityDetailsReferenceList = ReadonlyArray<VulnerabilityReportVulnerabilityDetailsReference>;
+export const VulnerabilityReportVulnerabilityDetailsReferenceList = /*@__PURE__*/ S.Array(VulnerabilityReportVulnerabilityDetailsReference) as any as S.Schema<VulnerabilityReportVulnerabilityDetailsReferenceList>;
 
 /** Contains metadata information for the vulnerability. This information is collected from the upstream feed of the operating system. */
 export interface VulnerabilityReportVulnerabilityDetails {
@@ -1827,21 +1424,16 @@ export interface VulnerabilityReportVulnerabilityDetails {
   /** Corresponds to the references attached to the `VulnerabilityDetails`. */
   references?: VulnerabilityReportVulnerabilityDetailsReferenceList;
 }
-export const VulnerabilityReportVulnerabilityDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cvssV3: S.optional(CVSSv3),
-      description: S.optional(S.String),
-      cvssV2Score: S.optional(S.Number),
-      severity: S.optional(S.String),
-      cve: S.optional(S.String),
-      references: S.optional(
-        VulnerabilityReportVulnerabilityDetailsReferenceList,
-      ),
-    }),
-).annotate({
-  identifier: "VulnerabilityReportVulnerabilityDetails",
-}) as any as S.Schema<VulnerabilityReportVulnerabilityDetails>;
+export const VulnerabilityReportVulnerabilityDetails = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "cvssV3": S.optional(CVSSv3),
+  "description": S.optional(S.String),
+  "cvssV2Score": S.optional(S.Number),
+  "severity": S.optional(S.String),
+  "cve": S.optional(S.String),
+  "references": S.optional(VulnerabilityReportVulnerabilityDetailsReferenceList),
+}),
+).annotate({ identifier: "VulnerabilityReportVulnerabilityDetails" }) as any as S.Schema<VulnerabilityReportVulnerabilityDetails>;
 
 /** A vulnerability affecting the VM instance. */
 export interface VulnerabilityReportVulnerability {
@@ -1859,23 +1451,18 @@ export interface VulnerabilityReportVulnerability {
   installedInventoryItemIds?: StringList;
 }
 export const VulnerabilityReportVulnerability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    items: S.optional(VulnerabilityReportVulnerabilityItemList),
-    details: S.optional(VulnerabilityReportVulnerabilityDetails),
-    availableInventoryItemIds: S.optional(StringList),
-    updateTime: S.optional(S.String),
-    installedInventoryItemIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "VulnerabilityReportVulnerability",
-}) as any as S.Schema<VulnerabilityReportVulnerability>;
+S.Struct({
+  "createTime": S.optional(S.String),
+  "items": S.optional(VulnerabilityReportVulnerabilityItemList),
+  "details": S.optional(VulnerabilityReportVulnerabilityDetails),
+  "availableInventoryItemIds": S.optional(StringList),
+  "updateTime": S.optional(S.String),
+  "installedInventoryItemIds": S.optional(StringList),
+}),
+).annotate({ identifier: "VulnerabilityReportVulnerability" }) as any as S.Schema<VulnerabilityReportVulnerability>;
 
-export type VulnerabilityReportVulnerabilityList =
-  ReadonlyArray<VulnerabilityReportVulnerability>;
-export const VulnerabilityReportVulnerabilityList = /*@__PURE__*/ S.Array(
-  VulnerabilityReportVulnerability,
-) as any as S.Schema<VulnerabilityReportVulnerabilityList>;
+export type VulnerabilityReportVulnerabilityList = ReadonlyArray<VulnerabilityReportVulnerability>;
+export const VulnerabilityReportVulnerabilityList = /*@__PURE__*/ S.Array(VulnerabilityReportVulnerability) as any as S.Schema<VulnerabilityReportVulnerabilityList>;
 
 /** This API resource represents the vulnerability report for a specified Compute Engine virtual machine (VM) instance at a given point in time. For more information, see [Vulnerability reports](https://cloud.google.com/compute/docs/instances/os-inventory-management#vulnerability-reports). */
 export interface VulnerabilityReport {
@@ -1889,55 +1476,33 @@ export interface VulnerabilityReport {
   vulnerabilities?: VulnerabilityReportVulnerabilityList;
 }
 export const VulnerabilityReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    highestUpgradableCveSeverity: S.optional(
-      VulnerabilityReportHighestUpgradableCveSeverityEnum,
-    ),
-    name: S.optional(S.String),
-    vulnerabilities: S.optional(VulnerabilityReportVulnerabilityList),
-  }),
-).annotate({
-  identifier: "VulnerabilityReport",
-}) as any as S.Schema<VulnerabilityReport>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "highestUpgradableCveSeverity": S.optional(VulnerabilityReportHighestUpgradableCveSeverityEnum),
+  "name": S.optional(S.String),
+  "vulnerabilities": S.optional(VulnerabilityReportVulnerabilityList),
+}),
+).annotate({ identifier: "VulnerabilityReport" }) as any as S.Schema<VulnerabilityReport>;
 
 export interface GetProjectsLocationsOsPolicyAssignmentsRequest {
   /** Required. The resource name of OS policy assignment. Format: `projects/{project}/locations/{location}/osPolicyAssignments/{os_policy_assignment}@{revisionId}` */
   name: string;
 }
-export const GetProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsOsPolicyAssignmentsRequest",
-  }) as any as S.Schema<GetProjectsLocationsOsPolicyAssignmentsRequest>;
+export const GetProjectsLocationsOsPolicyAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOsPolicyAssignmentsRequest" }) as any as S.Schema<GetProjectsLocationsOsPolicyAssignmentsRequest>;
 
 export interface GetProjectsLocationsOsPolicyAssignmentsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOsPolicyAssignmentsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsOsPolicyAssignmentsOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsOsPolicyAssignmentsOperationsRequest>;
+export const GetProjectsLocationsOsPolicyAssignmentsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOsPolicyAssignmentsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOsPolicyAssignmentsOperationsRequest>;
 
 export interface ListProjectsLocationsInstanceOSPoliciesCompliancesRequest {
   /** Required. The parent resource name. Format: `projects/{project}/locations/{location}` For `{project}`, either Compute Engine project-number or project-id can be provided. */
@@ -1949,29 +1514,17 @@ export interface ListProjectsLocationsInstanceOSPoliciesCompliancesRequest {
   /** A pagination token returned from a previous call to `ListInstanceOSPoliciesCompliances` that indicates where this listing should continue from. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstanceOSPoliciesCompliancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/instanceOSPoliciesCompliances",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsInstanceOSPoliciesCompliancesRequest",
-  }) as any as S.Schema<ListProjectsLocationsInstanceOSPoliciesCompliancesRequest>;
+export const ListProjectsLocationsInstanceOSPoliciesCompliancesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/instanceOSPoliciesCompliances","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsInstanceOSPoliciesCompliancesRequest" }) as any as S.Schema<ListProjectsLocationsInstanceOSPoliciesCompliancesRequest>;
 
-export type InstanceOSPoliciesComplianceList =
-  ReadonlyArray<InstanceOSPoliciesCompliance>;
-export const InstanceOSPoliciesComplianceList = /*@__PURE__*/ S.Array(
-  InstanceOSPoliciesCompliance,
-) as any as S.Schema<InstanceOSPoliciesComplianceList>;
+export type InstanceOSPoliciesComplianceList = ReadonlyArray<InstanceOSPoliciesCompliance>;
+export const InstanceOSPoliciesComplianceList = /*@__PURE__*/ S.Array(InstanceOSPoliciesCompliance) as any as S.Schema<InstanceOSPoliciesComplianceList>;
 
 /** A response message for listing OS policies compliance data for all Compute Engine VMs in the given location. */
 export interface ListInstanceOSPoliciesCompliancesResponse {
@@ -1980,29 +1533,19 @@ export interface ListInstanceOSPoliciesCompliancesResponse {
   /** The pagination token to retrieve the next page of instance OS policies compliance objects. */
   nextPageToken?: string;
 }
-export const ListInstanceOSPoliciesCompliancesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceOsPoliciesCompliances: S.optional(
-        InstanceOSPoliciesComplianceList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListInstanceOSPoliciesCompliancesResponse",
-  }) as any as S.Schema<ListInstanceOSPoliciesCompliancesResponse>;
+export const ListInstanceOSPoliciesCompliancesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "instanceOsPoliciesCompliances": S.optional(InstanceOSPoliciesComplianceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListInstanceOSPoliciesCompliancesResponse" }) as any as S.Schema<ListInstanceOSPoliciesCompliancesResponse>;
 
-export type ListProjectsLocationsInstancesInventoriesViewEnum =
-  | "INVENTORY_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
-export const ListProjectsLocationsInstancesInventoriesViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsInstancesInventoriesViewEnum = "INVENTORY_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export const ListProjectsLocationsInstancesInventoriesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsInstancesInventoriesRequest {
   /** Inventory view indicating what information should be included in the inventory resource. If unspecified, the default view is BASIC. */
-  view?: ListProjectsLocationsInstancesInventoriesViewEnum;
+  view?: ListProjectsLocationsInstancesInventoriesViewEnum | (string & {});
   /** A pagination token returned from a previous call to `ListInventories` that indicates where this listing should continue from. */
   pageToken?: string;
   /** If provided, this field specifies the criteria that must be met by a `Inventory` API resource to be included in the response. */
@@ -2012,31 +1555,18 @@ export interface ListProjectsLocationsInstancesInventoriesRequest {
   /** Required. The parent resource name. Format: `projects/{project}/locations/{location}/instances/-` For `{project}`, either `project-number` or `project-id` can be provided. */
   parent: string;
 }
-export const ListProjectsLocationsInstancesInventoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        ListProjectsLocationsInstancesInventoriesViewEnum.pipe(T.Query()),
-      ),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/inventories",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsInstancesInventoriesRequest",
-  }) as any as S.Schema<ListProjectsLocationsInstancesInventoriesRequest>;
+export const ListProjectsLocationsInstancesInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(ListProjectsLocationsInstancesInventoriesViewEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/inventories","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsInstancesInventoriesRequest" }) as any as S.Schema<ListProjectsLocationsInstancesInventoriesRequest>;
 
 export type InventoryList = ReadonlyArray<Inventory>;
-export const InventoryList = /*@__PURE__*/ S.Array(
-  Inventory,
-) as any as S.Schema<InventoryList>;
+export const InventoryList = /*@__PURE__*/ S.Array(Inventory) as any as S.Schema<InventoryList>;
 
 /** A response message for listing inventory data for all VMs in a specified location. */
 export interface ListInventoriesResponse {
@@ -2046,13 +1576,11 @@ export interface ListInventoriesResponse {
   nextPageToken?: string;
 }
 export const ListInventoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inventories: S.optional(InventoryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListInventoriesResponse",
-}) as any as S.Schema<ListInventoriesResponse>;
+S.Struct({
+  "inventories": S.optional(InventoryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListInventoriesResponse" }) as any as S.Schema<ListInventoriesResponse>;
 
 export interface ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest {
   /** The maximum number of results to return. */
@@ -2064,30 +1592,17 @@ export interface ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest
   /** Required. The parent resource name. Format: `projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/reports` For `{project}`, either `project-number` or `project-id` can be provided. For `{instance}`, either `instance-name`, `instance-id`, or `-` can be provided. If '-' is provided, the response will include OSPolicyAssignmentReports for all instances in the project/location. For `{assignment}`, either `assignment-id` or `-` can be provided. If '-' is provided, the response will include OSPolicyAssignmentReports for all OSPolicyAssignments in the project/location. Either {instance} or {assignment} must be `-`. For example: `projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/-/reports` returns all reports for the instance `projects/{project}/locations/{location}/instances/-/osPolicyAssignments/{assignment-id}/reports` returns all the reports for the given assignment across all instances. `projects/{project}/locations/{location}/instances/-/osPolicyAssignments/-/reports` returns all the reports for all assignments across all instances. */
   parent: string;
 }
-export const ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/reports",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest",
-  }) as any as S.Schema<ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
+export const ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/reports","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest" }) as any as S.Schema<ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
 
-export type OSPolicyAssignmentReportList =
-  ReadonlyArray<OSPolicyAssignmentReport>;
-export const OSPolicyAssignmentReportList = /*@__PURE__*/ S.Array(
-  OSPolicyAssignmentReport,
-) as any as S.Schema<OSPolicyAssignmentReportList>;
+export type OSPolicyAssignmentReportList = ReadonlyArray<OSPolicyAssignmentReport>;
+export const OSPolicyAssignmentReportList = /*@__PURE__*/ S.Array(OSPolicyAssignmentReport) as any as S.Schema<OSPolicyAssignmentReportList>;
 
 /** A response message for listing OS Policy assignment reports including the page of results and page token. */
 export interface ListOSPolicyAssignmentReportsResponse {
@@ -2096,15 +1611,12 @@ export interface ListOSPolicyAssignmentReportsResponse {
   /** The pagination token to retrieve the next page of OS policy assignment report objects. */
   nextPageToken?: string;
 }
-export const ListOSPolicyAssignmentReportsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      osPolicyAssignmentReports: S.optional(OSPolicyAssignmentReportList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListOSPolicyAssignmentReportsResponse",
-}) as any as S.Schema<ListOSPolicyAssignmentReportsResponse>;
+export const ListOSPolicyAssignmentReportsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "osPolicyAssignmentReports": S.optional(OSPolicyAssignmentReportList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOSPolicyAssignmentReportsResponse" }) as any as S.Schema<ListOSPolicyAssignmentReportsResponse>;
 
 export interface ListProjectsLocationsInstancesVulnerabilityReportsRequest {
   /** This field supports filtering by the severity level for the vulnerability. For a list of severity levels, see [Severity levels for vulnerabilities](https://cloud.google.com/container-analysis/docs/container-scanning-overview#severity_levels_for_vulnerabilities). The filter field follows the rules described in the [AIP-160](https://google.aip.dev/160) guidelines as follows: + **Filter for a specific severity type**: you can list reports that contain vulnerabilities that are classified as medium by specifying `vulnerabilities.details.severity:MEDIUM`. + **Filter for a range of severities** : you can list reports that have vulnerabilities that are classified as critical or high by specifying `vulnerabilities.details.severity:HIGH OR vulnerabilities.details.severity:CRITICAL` */
@@ -2116,28 +1628,17 @@ export interface ListProjectsLocationsInstancesVulnerabilityReportsRequest {
   /** A pagination token returned from a previous call to `ListVulnerabilityReports` that indicates where this listing should continue from. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesVulnerabilityReportsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/vulnerabilityReports",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsInstancesVulnerabilityReportsRequest",
-  }) as any as S.Schema<ListProjectsLocationsInstancesVulnerabilityReportsRequest>;
+export const ListProjectsLocationsInstancesVulnerabilityReportsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/vulnerabilityReports","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsInstancesVulnerabilityReportsRequest" }) as any as S.Schema<ListProjectsLocationsInstancesVulnerabilityReportsRequest>;
 
 export type VulnerabilityReportList = ReadonlyArray<VulnerabilityReport>;
-export const VulnerabilityReportList = /*@__PURE__*/ S.Array(
-  VulnerabilityReport,
-) as any as S.Schema<VulnerabilityReportList>;
+export const VulnerabilityReportList = /*@__PURE__*/ S.Array(VulnerabilityReport) as any as S.Schema<VulnerabilityReportList>;
 
 /** A response message for listing vulnerability reports for all VM instances in the specified location. */
 export interface ListVulnerabilityReportsResponse {
@@ -2147,13 +1648,11 @@ export interface ListVulnerabilityReportsResponse {
   nextPageToken?: string;
 }
 export const ListVulnerabilityReportsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vulnerabilityReports: S.optional(VulnerabilityReportList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListVulnerabilityReportsResponse",
-}) as any as S.Schema<ListVulnerabilityReportsResponse>;
+S.Struct({
+  "vulnerabilityReports": S.optional(VulnerabilityReportList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListVulnerabilityReportsResponse" }) as any as S.Schema<ListVulnerabilityReportsResponse>;
 
 export interface ListProjectsLocationsOsPolicyAssignmentsRequest {
   /** The maximum number of assignments to return. */
@@ -2163,27 +1662,16 @@ export interface ListProjectsLocationsOsPolicyAssignmentsRequest {
   /** Required. The parent resource name. */
   parent: string;
 }
-export const ListProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/osPolicyAssignments",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsOsPolicyAssignmentsRequest",
-  }) as any as S.Schema<ListProjectsLocationsOsPolicyAssignmentsRequest>;
+export const ListProjectsLocationsOsPolicyAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/osPolicyAssignments","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOsPolicyAssignmentsRequest" }) as any as S.Schema<ListProjectsLocationsOsPolicyAssignmentsRequest>;
 
 export type OSPolicyAssignmentList = ReadonlyArray<OSPolicyAssignment>;
-export const OSPolicyAssignmentList = /*@__PURE__*/ S.Array(
-  OSPolicyAssignment,
-) as any as S.Schema<OSPolicyAssignmentList>;
+export const OSPolicyAssignmentList = /*@__PURE__*/ S.Array(OSPolicyAssignment) as any as S.Schema<OSPolicyAssignmentList>;
 
 /** A response message for listing all assignments under given parent. */
 export interface ListOSPolicyAssignmentsResponse {
@@ -2193,13 +1681,11 @@ export interface ListOSPolicyAssignmentsResponse {
   osPolicyAssignments?: OSPolicyAssignmentList;
 }
 export const ListOSPolicyAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    osPolicyAssignments: S.optional(OSPolicyAssignmentList),
-  }),
-).annotate({
-  identifier: "ListOSPolicyAssignmentsResponse",
-}) as any as S.Schema<ListOSPolicyAssignmentsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "osPolicyAssignments": S.optional(OSPolicyAssignmentList),
+}),
+).annotate({ identifier: "ListOSPolicyAssignmentsResponse" }) as any as S.Schema<ListOSPolicyAssignmentsResponse>;
 
 export interface ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest {
   /** The maximum number of revisions to return. */
@@ -2209,22 +1695,13 @@ export interface ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest {
   /** Required. The name of the OS policy assignment to list revisions for. */
   name: string;
 }
-export const ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}:listRevisions",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest",
-  }) as any as S.Schema<ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest>;
+export const ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}:listRevisions","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest" }) as any as S.Schema<ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest>;
 
 /** A response message for listing all revisions for a OS policy assignment. */
 export interface ListOSPolicyAssignmentRevisionsResponse {
@@ -2233,15 +1710,12 @@ export interface ListOSPolicyAssignmentRevisionsResponse {
   /** The pagination token to retrieve the next page of OS policy assignment revisions. */
   nextPageToken?: string;
 }
-export const ListOSPolicyAssignmentRevisionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      osPolicyAssignments: S.optional(OSPolicyAssignmentList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListOSPolicyAssignmentRevisionsResponse",
-}) as any as S.Schema<ListOSPolicyAssignmentRevisionsResponse>;
+export const ListOSPolicyAssignmentRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "osPolicyAssignments": S.optional(OSPolicyAssignmentList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOSPolicyAssignmentRevisionsResponse" }) as any as S.Schema<ListOSPolicyAssignmentRevisionsResponse>;
 
 export interface PatchProjectsLocationsOsPolicyAssignmentsRequest {
   /** Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment. */
@@ -2255,31 +1729,17 @@ export interface PatchProjectsLocationsOsPolicyAssignmentsRequest {
   /** Request body */
   body?: OSPolicyAssignment;
 }
-export const PatchProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(OSPolicyAssignment.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://osconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsOsPolicyAssignmentsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsOsPolicyAssignmentsRequest>;
+export const PatchProjectsLocationsOsPolicyAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(OSPolicyAssignment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsOsPolicyAssignmentsRequest" }) as any as S.Schema<PatchProjectsLocationsOsPolicyAssignmentsRequest>;
 
-export type CancelProjectsLocationsOsPolicyAssignmentsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOsPolicyAssignmentsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOsPolicyAssignmentsOperations: API.OperationMethod<
   CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest,
@@ -2294,12 +1754,7 @@ export const cancelProjectsLocationsOsPolicyAssignmentsOperations: API.Operation
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsOsPolicyAssignmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsOsPolicyAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create an OS policy assignment. This method also creates the first revision of the OS policy assignment. This method returns a long running operation (LRO) that contains the rollout details. The rollout can be cancelled by cancelling the LRO. For more information, see [Method: projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel). */
 export const createProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   CreateProjectsLocationsOsPolicyAssignmentsRequest,
@@ -2314,12 +1769,7 @@ export const createProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOsPolicyAssignmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOsPolicyAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete the OS policy assignment. This method creates a new revision of the OS policy assignment. This method returns a long running operation (LRO) that contains the rollout details. The rollout can be cancelled by cancelling the LRO. If the LRO completes and is not cancelled, all revisions associated with the OS policy assignment are deleted. For more information, see [Method: projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel). */
 export const deleteProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   DeleteProjectsLocationsOsPolicyAssignmentsRequest,
@@ -2334,10 +1784,7 @@ export const deleteProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstanceOSPoliciesCompliancesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsInstanceOSPoliciesCompliancesError = NotFound | Forbidden | GcpOpError;
 /** Get OS policies compliance data for the specified Compute Engine VM instance. */
 export const getProjectsLocationsInstanceOSPoliciesCompliances: API.OperationMethod<
   GetProjectsLocationsInstanceOSPoliciesCompliancesRequest,
@@ -2352,10 +1799,7 @@ export const getProjectsLocationsInstanceOSPoliciesCompliances: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesInventoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsInstancesInventoriesError = NotFound | Forbidden | GcpOpError;
 /** Get inventory data for the specified VM instance. If the VM has no associated inventory, the message `NOT_FOUND` is returned. */
 export const getProjectsLocationsInstancesInventories: API.OperationMethod<
   GetProjectsLocationsInstancesInventoriesRequest,
@@ -2370,10 +1814,7 @@ export const getProjectsLocationsInstancesInventories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesOsPolicyAssignmentsReportsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsInstancesOsPolicyAssignmentsReportsError = NotFound | Forbidden | GcpOpError;
 /** Get the OS policy assignment report for the specified Compute Engine VM instance. */
 export const getProjectsLocationsInstancesOsPolicyAssignmentsReports: API.OperationMethod<
   GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest,
@@ -2388,10 +1829,7 @@ export const getProjectsLocationsInstancesOsPolicyAssignmentsReports: API.Operat
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesVulnerabilityReportsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsInstancesVulnerabilityReportsError = NotFound | Forbidden | GcpOpError;
 /** Gets the vulnerability report for the specified VM instance. Only VMs with inventory data have vulnerability reports associated with them. */
 export const getProjectsLocationsInstancesVulnerabilityReports: API.OperationMethod<
   GetProjectsLocationsInstancesVulnerabilityReportsRequest,
@@ -2406,10 +1844,7 @@ export const getProjectsLocationsInstancesVulnerabilityReports: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOsPolicyAssignmentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOsPolicyAssignmentsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter. */
 export const getProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   GetProjectsLocationsOsPolicyAssignmentsRequest,
@@ -2424,10 +1859,7 @@ export const getProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOsPolicyAssignmentsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOsPolicyAssignmentsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOsPolicyAssignmentsOperations: API.OperationMethod<
   GetProjectsLocationsOsPolicyAssignmentsOperationsRequest,
@@ -2442,10 +1874,7 @@ export const getProjectsLocationsOsPolicyAssignmentsOperations: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsInstanceOSPoliciesCompliancesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsInstanceOSPoliciesCompliancesError = NotFound | Forbidden | GcpOpError;
 /** List OS policies compliance data for all Compute Engine VM instances in the specified zone. */
 export const listProjectsLocationsInstanceOSPoliciesCompliances: API.PaginatedOperationMethod<
   ListProjectsLocationsInstanceOSPoliciesCompliancesRequest,
@@ -2458,16 +1887,10 @@ export const listProjectsLocationsInstanceOSPoliciesCompliances: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsInstancesInventoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsInstancesInventoriesError = NotFound | Forbidden | GcpOpError;
 /** List inventory data for all VM instances in the specified zone. */
 export const listProjectsLocationsInstancesInventories: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesInventoriesRequest,
@@ -2480,16 +1903,10 @@ export const listProjectsLocationsInstancesInventories: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsInstancesOsPolicyAssignmentsReportsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsInstancesOsPolicyAssignmentsReportsError = NotFound | Forbidden | GcpOpError;
 /** List OS policy assignment reports for all Compute Engine VM instances in the specified zone. */
 export const listProjectsLocationsInstancesOsPolicyAssignmentsReports: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest,
@@ -2502,16 +1919,10 @@ export const listProjectsLocationsInstancesOsPolicyAssignmentsReports: API.Pagin
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsInstancesVulnerabilityReportsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsInstancesVulnerabilityReportsError = NotFound | Forbidden | GcpOpError;
 /** List vulnerability reports for all VM instances in the specified zone. */
 export const listProjectsLocationsInstancesVulnerabilityReports: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesVulnerabilityReportsRequest,
@@ -2524,16 +1935,10 @@ export const listProjectsLocationsInstancesVulnerabilityReports: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOsPolicyAssignmentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOsPolicyAssignmentsError = NotFound | Forbidden | GcpOpError;
 /** List the OS policy assignments under the parent resource. For each OS policy assignment, the latest revision is returned. */
 export const listProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMethod<
   ListProjectsLocationsOsPolicyAssignmentsRequest,
@@ -2546,16 +1951,10 @@ export const listProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListRevisionsProjectsLocationsOsPolicyAssignmentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListRevisionsProjectsLocationsOsPolicyAssignmentsError = NotFound | Forbidden | GcpOpError;
 /** List the OS policy assignment revisions for a given OS policy assignment. */
 export const listRevisionsProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMethod<
   ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest,
@@ -2568,18 +1967,10 @@ export const listRevisionsProjectsLocationsOsPolicyAssignments: API.PaginatedOpe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsOsPolicyAssignmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsOsPolicyAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update an existing OS policy assignment. This method creates a new revision of the OS policy assignment. This method returns a long running operation (LRO) that contains the rollout details. The rollout can be cancelled by cancelling the LRO. For more information, see [Method: projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel). */
 export const patchProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   PatchProjectsLocationsOsPolicyAssignmentsRequest,
@@ -2593,3 +1984,4 @@ export const patchProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

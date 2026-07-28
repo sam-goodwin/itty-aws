@@ -373,7 +373,7 @@ export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectorRequest",
 }) as any as S.Schema<GetConnectorRequest>;
-export type ConnectorType = "GENERAL_PURPOSE" | "INTUNE" | (string & {});
+export type ConnectorType = "GENERAL_PURPOSE" | "INTUNE";
 export const ConnectorType = /*@__PURE__*/ S.String;
 
 export interface OpenIdConfiguration {
@@ -390,12 +390,7 @@ export const OpenIdConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OpenIdConfiguration",
 }) as any as S.Schema<OpenIdConfiguration>;
-export type ConnectorStatus =
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | "FAILED"
-  | (string & {});
+export type ConnectorStatus = "CREATING" | "ACTIVE" | "DELETING" | "FAILED";
 export const ConnectorStatus = /*@__PURE__*/ S.String;
 
 export type ConnectorStatusReason =
@@ -404,8 +399,7 @@ export type ConnectorStatusReason =
   | "PRIVATECA_INVALID_STATE"
   | "PRIVATECA_RESOURCE_NOT_FOUND"
   | "VPC_ENDPOINT_RESOURCE_NOT_FOUND"
-  | "VPC_ENDPOINT_DNS_ENTRIES_NOT_FOUND"
-  | (string & {});
+  | "VPC_ENDPOINT_DNS_ENTRIES_NOT_FOUND";
 export const ConnectorStatusReason = /*@__PURE__*/ S.String;
 
 export interface Connector {
@@ -650,8 +644,7 @@ export type ValidationExceptionReason =
   | "INVALID_STATE"
   | "NO_CLIENT_TOKEN"
   | "UNKNOWN_OPERATION"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type CreateChallengeError =

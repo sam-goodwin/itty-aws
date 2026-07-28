@@ -30,15 +30,10 @@ export const CacheReserveClearClearRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CacheReserveClearClearRequest",
 }) as any as S.Schema<CacheReserveClearClearRequest>;
 
-export type CacheReserveClearClearResponseId =
-  | "cache_reserve_clear"
-  | (string & {});
+export type CacheReserveClearClearResponseId = "cache_reserve_clear";
 export const CacheReserveClearClearResponseId = /*@__PURE__*/ S.String;
 
-export type CacheReserveClearClearResponseState =
-  | "In-progress"
-  | "Completed"
-  | (string & {});
+export type CacheReserveClearClearResponseState = "In-progress" | "Completed";
 export const CacheReserveClearClearResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -84,15 +79,10 @@ export const CacheReserveClearStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CacheReserveClearStatusRequest",
 }) as any as S.Schema<CacheReserveClearStatusRequest>;
 
-export type CacheReserveClearStatusResponseId =
-  | "cache_reserve_clear"
-  | (string & {});
+export type CacheReserveClearStatusResponseId = "cache_reserve_clear";
 export const CacheReserveClearStatusResponseId = /*@__PURE__*/ S.String;
 
-export type CacheReserveClearStatusResponseState =
-  | "In-progress"
-  | "Completed"
-  | (string & {});
+export type CacheReserveClearStatusResponseState = "In-progress" | "Completed";
 export const CacheReserveClearStatusResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -132,7 +122,7 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
-export type GetResponseCacheReserveValue = "on" | "off" | (string & {});
+export type GetResponseCacheReserveValue = "on" | "off";
 export const GetResponseCacheReserveValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseCacheReserve {
@@ -153,7 +143,7 @@ export const GetResponseCacheReserve = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseCacheReserve",
 }) as any as S.Schema<GetResponseCacheReserve>;
 
-export type GetResponseRegionalTieredCacheValue = "on" | "off" | (string & {});
+export type GetResponseRegionalTieredCacheValue = "on" | "off";
 export const GetResponseRegionalTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseRegionalTieredCache {
@@ -174,7 +164,7 @@ export const GetResponseRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRegionalTieredCache",
 }) as any as S.Schema<GetResponseRegionalTieredCache>;
 
-export type GetResponseSmartRoutingValue = "on" | "off" | (string & {});
+export type GetResponseSmartRoutingValue = "on" | "off";
 export const GetResponseSmartRoutingValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseSmartRouting {
@@ -195,7 +185,7 @@ export const GetResponseSmartRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseSmartRouting",
 }) as any as S.Schema<GetResponseSmartRouting>;
 
-export type GetResponseSmartTieredCacheValue = "on" | "off" | (string & {});
+export type GetResponseSmartTieredCacheValue = "on" | "off";
 export const GetResponseSmartTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseSmartTieredCache {
@@ -256,12 +246,12 @@ export type HealthChecksCreateRequestCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const HealthChecksCreateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type HealthChecksCreateRequestCheckRegionsList =
-  ReadonlyArray<HealthChecksCreateRequestCheckRegionsItem>;
+export type HealthChecksCreateRequestCheckRegionsList = ReadonlyArray<
+  HealthChecksCreateRequestCheckRegionsItem | (string & {})
+>;
 export const HealthChecksCreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksCreateRequestCheckRegionsItem,
 ) as any as S.Schema<HealthChecksCreateRequestCheckRegionsList>;
@@ -289,10 +279,7 @@ export const HealthChecksCreateRequestHttpConfigHeaderMap =
     HealthChecksCreateRequestHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksCreateRequestHttpConfigHeaderMap>;
 
-export type HealthChecksCreateRequestHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksCreateRequestHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksCreateRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksCreateRequestHttpConfig {
@@ -307,7 +294,7 @@ export interface HealthChecksCreateRequestHttpConfig {
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksCreateRequestHttpConfigHeaderMap;
   /** The HTTP method to use for the health check. */
-  method?: HealthChecksCreateRequestHttpConfigMethod;
+  method?: HealthChecksCreateRequestHttpConfigMethod | (string & {});
   /** The endpoint path to health check against. */
   path?: string;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
@@ -332,14 +319,12 @@ export const HealthChecksCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksCreateRequestHttpConfig",
 }) as any as S.Schema<HealthChecksCreateRequestHttpConfig>;
 
-export type HealthChecksCreateRequestTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+export type HealthChecksCreateRequestTcpConfigMethod = "connection_established";
 export const HealthChecksCreateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksCreateRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: HealthChecksCreateRequestTcpConfigMethod;
+  method?: HealthChecksCreateRequestTcpConfigMethod | (string & {});
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
@@ -431,8 +416,7 @@ export type HealthChecksCreateResponseCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const HealthChecksCreateResponseCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
@@ -467,10 +451,7 @@ export const HealthChecksCreateResponseHttpConfigHeaderMap =
     HealthChecksCreateResponseHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksCreateResponseHttpConfigHeaderMap>;
 
-export type HealthChecksCreateResponseHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksCreateResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksCreateResponseHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
@@ -516,13 +497,11 @@ export type HealthChecksCreateResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksCreateResponseStatus = /*@__PURE__*/ S.String;
 
 export type HealthChecksCreateResponseTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+  "connection_established";
 export const HealthChecksCreateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksCreateResponseTcpConfig {
@@ -658,12 +637,12 @@ export type HealthChecksEditRequestCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const HealthChecksEditRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type HealthChecksEditRequestCheckRegionsList =
-  ReadonlyArray<HealthChecksEditRequestCheckRegionsItem>;
+export type HealthChecksEditRequestCheckRegionsList = ReadonlyArray<
+  HealthChecksEditRequestCheckRegionsItem | (string & {})
+>;
 export const HealthChecksEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksEditRequestCheckRegionsItem,
 ) as any as S.Schema<HealthChecksEditRequestCheckRegionsList>;
@@ -691,10 +670,7 @@ export const HealthChecksEditRequestHttpConfigHeaderMap =
     HealthChecksEditRequestHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksEditRequestHttpConfigHeaderMap>;
 
-export type HealthChecksEditRequestHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksEditRequestHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksEditRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditRequestHttpConfig {
@@ -709,7 +685,7 @@ export interface HealthChecksEditRequestHttpConfig {
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksEditRequestHttpConfigHeaderMap;
   /** The HTTP method to use for the health check. */
-  method?: HealthChecksEditRequestHttpConfigMethod;
+  method?: HealthChecksEditRequestHttpConfigMethod | (string & {});
   /** The endpoint path to health check against. */
   path?: string;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
@@ -734,14 +710,12 @@ export const HealthChecksEditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksEditRequestHttpConfig",
 }) as any as S.Schema<HealthChecksEditRequestHttpConfig>;
 
-export type HealthChecksEditRequestTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+export type HealthChecksEditRequestTcpConfigMethod = "connection_established";
 export const HealthChecksEditRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: HealthChecksEditRequestTcpConfigMethod;
+  method?: HealthChecksEditRequestTcpConfigMethod | (string & {});
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
@@ -836,8 +810,7 @@ export type HealthChecksEditResponseCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const HealthChecksEditResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type HealthChecksEditResponseCheckRegionsList =
@@ -869,10 +842,7 @@ export const HealthChecksEditResponseHttpConfigHeaderMap =
     HealthChecksEditResponseHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksEditResponseHttpConfigHeaderMap>;
 
-export type HealthChecksEditResponseHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksEditResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksEditResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditResponseHttpConfig {
@@ -916,13 +886,10 @@ export type HealthChecksEditResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksEditResponseStatus = /*@__PURE__*/ S.String;
 
-export type HealthChecksEditResponseTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+export type HealthChecksEditResponseTcpConfigMethod = "connection_established";
 export const HealthChecksEditResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditResponseTcpConfig {
@@ -1045,8 +1012,7 @@ export type HealthChecksGetResponseCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const HealthChecksGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type HealthChecksGetResponseCheckRegionsList =
@@ -1078,10 +1044,7 @@ export const HealthChecksGetResponseHttpConfigHeaderMap =
     HealthChecksGetResponseHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksGetResponseHttpConfigHeaderMap>;
 
-export type HealthChecksGetResponseHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksGetResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksGetResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksGetResponseHttpConfig {
@@ -1125,13 +1088,10 @@ export type HealthChecksGetResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksGetResponseStatus = /*@__PURE__*/ S.String;
 
-export type HealthChecksGetResponseTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+export type HealthChecksGetResponseTcpConfigMethod = "connection_established";
 export const HealthChecksGetResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksGetResponseTcpConfig {
@@ -1257,8 +1217,7 @@ export type HealthChecksListResultItemCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const HealthChecksListResultItemCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
@@ -1293,10 +1252,7 @@ export const HealthChecksListResultItemHttpConfigHeaderMap =
     HealthChecksListResultItemHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksListResultItemHttpConfigHeaderMap>;
 
-export type HealthChecksListResultItemHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksListResultItemHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksListResultItemHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
@@ -1342,13 +1298,11 @@ export type HealthChecksListResultItemStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksListResultItemStatus = /*@__PURE__*/ S.String;
 
 export type HealthChecksListResultItemTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+  "connection_established";
 export const HealthChecksListResultItemTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksListResultItemTcpConfig {
@@ -1521,13 +1475,13 @@ export type HealthChecksUpdateRequestResultCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const HealthChecksUpdateRequestResultCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
-export type HealthChecksUpdateRequestResultCheckRegionsList =
-  ReadonlyArray<HealthChecksUpdateRequestResultCheckRegionsItem>;
+export type HealthChecksUpdateRequestResultCheckRegionsList = ReadonlyArray<
+  HealthChecksUpdateRequestResultCheckRegionsItem | (string & {})
+>;
 export const HealthChecksUpdateRequestResultCheckRegionsList =
   /*@__PURE__*/ S.Array(
     HealthChecksUpdateRequestResultCheckRegionsItem,
@@ -1558,10 +1512,7 @@ export const HealthChecksUpdateRequestResultHttpConfigHeaderMap =
     HealthChecksUpdateRequestResultHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksUpdateRequestResultHttpConfigHeaderMap>;
 
-export type HealthChecksUpdateRequestResultHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksUpdateRequestResultHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksUpdateRequestResultHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
@@ -1577,7 +1528,7 @@ export interface HealthChecksUpdateRequestResultHttpConfig {
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksUpdateRequestResultHttpConfigHeaderMap;
   /** The HTTP method to use for the health check. */
-  method?: HealthChecksUpdateRequestResultHttpConfigMethod;
+  method?: HealthChecksUpdateRequestResultHttpConfigMethod | (string & {});
   /** The endpoint path to health check against. */
   path?: string;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
@@ -1607,19 +1558,17 @@ export type HealthChecksUpdateRequestResultStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksUpdateRequestResultStatus = /*@__PURE__*/ S.String;
 
 export type HealthChecksUpdateRequestResultTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+  "connection_established";
 export const HealthChecksUpdateRequestResultTcpConfigMethod =
   /*@__PURE__*/ S.String;
 
 export interface HealthChecksUpdateRequestResultTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: HealthChecksUpdateRequestResultTcpConfigMethod;
+  method?: HealthChecksUpdateRequestResultTcpConfigMethod | (string & {});
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
@@ -1659,7 +1608,7 @@ export interface HealthChecksUpdateRequestResult {
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
   /** The current status of the origin server according to the health check. */
-  status?: HealthChecksUpdateRequestResultStatus;
+  status?: HealthChecksUpdateRequestResultStatus | (string & {});
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
   /** Parameters specific to TCP health check. */
@@ -1748,8 +1697,7 @@ export type HealthChecksUpdateResponseCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS"
-  | (string & {});
+  | "ALL_REGIONS";
 export const HealthChecksUpdateResponseCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
@@ -1784,10 +1732,7 @@ export const HealthChecksUpdateResponseHttpConfigHeaderMap =
     HealthChecksUpdateResponseHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksUpdateResponseHttpConfigHeaderMap>;
 
-export type HealthChecksUpdateResponseHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksUpdateResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksUpdateResponseHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
@@ -1833,13 +1778,11 @@ export type HealthChecksUpdateResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 export type HealthChecksUpdateResponseTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+  "connection_established";
 export const HealthChecksUpdateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksUpdateResponseTcpConfig {
@@ -1927,12 +1870,12 @@ export const HealthChecksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksUpdateResponse",
 }) as any as S.Schema<HealthChecksUpdateResponse>;
 
-export type UpdateRequestCacheReserveValue = "on" | "off" | (string & {});
+export type UpdateRequestCacheReserveValue = "on" | "off";
 export const UpdateRequestCacheReserveValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestCacheReserve {
   /** Specifies the enablement value of Cache Reserve. */
-  value?: UpdateRequestCacheReserveValue;
+  value?: UpdateRequestCacheReserveValue | (string & {});
 }
 export const UpdateRequestCacheReserve = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1942,15 +1885,12 @@ export const UpdateRequestCacheReserve = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestCacheReserve",
 }) as any as S.Schema<UpdateRequestCacheReserve>;
 
-export type UpdateRequestRegionalTieredCacheValue =
-  | "on"
-  | "off"
-  | (string & {});
+export type UpdateRequestRegionalTieredCacheValue = "on" | "off";
 export const UpdateRequestRegionalTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestRegionalTieredCache {
   /** Specifies the enablement value of Regional Tiered Cache. */
-  value?: UpdateRequestRegionalTieredCacheValue;
+  value?: UpdateRequestRegionalTieredCacheValue | (string & {});
 }
 export const UpdateRequestRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1960,12 +1900,12 @@ export const UpdateRequestRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestRegionalTieredCache",
 }) as any as S.Schema<UpdateRequestRegionalTieredCache>;
 
-export type UpdateRequestSmartRoutingValue = "on" | "off" | (string & {});
+export type UpdateRequestSmartRoutingValue = "on" | "off";
 export const UpdateRequestSmartRoutingValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestSmartRouting {
   /** Specifies the enablement value of Smart Routing. */
-  value?: UpdateRequestSmartRoutingValue;
+  value?: UpdateRequestSmartRoutingValue | (string & {});
 }
 export const UpdateRequestSmartRouting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1975,12 +1915,12 @@ export const UpdateRequestSmartRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestSmartRouting",
 }) as any as S.Schema<UpdateRequestSmartRouting>;
 
-export type UpdateRequestSmartTieredCacheValue = "on" | "off" | (string & {});
+export type UpdateRequestSmartTieredCacheValue = "on" | "off";
 export const UpdateRequestSmartTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestSmartTieredCache {
   /** Specifies the enablement value of Smart Tiered Cache. */
-  value?: UpdateRequestSmartTieredCacheValue;
+  value?: UpdateRequestSmartTieredCacheValue | (string & {});
 }
 export const UpdateRequestSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2022,7 +1962,7 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
-export type UpdateResponseSmartTieredCacheValue = "on" | "off" | (string & {});
+export type UpdateResponseSmartTieredCacheValue = "on" | "off";
 export const UpdateResponseSmartTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseSmartTieredCache {

@@ -205,8 +205,7 @@ export type ResourceType =
   | "ContactMethod"
   | "Distribution"
   | "Certificate"
-  | "Bucket"
-  | (string & {});
+  | "Bucket";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type IsoDate = Date;
@@ -230,8 +229,7 @@ export type RegionName =
   | "ap-northeast-2"
   | "ap-southeast-3"
   | "ap-southeast-5"
-  | "sa-east-1"
-  | (string & {});
+  | "sa-east-1";
 export const RegionName = /*@__PURE__*/ S.String;
 
 export interface ResourceLocation {
@@ -329,8 +327,7 @@ export type OperationType =
   | "UpdateInstanceMetadataOptions"
   | "StartGUISession"
   | "StopGUISession"
-  | "SetupInstanceHttps"
-  | (string & {});
+  | "SetupInstanceHttps";
 export const OperationType = /*@__PURE__*/ S.String;
 
 export type OperationStatus =
@@ -338,8 +335,7 @@ export type OperationStatus =
   | "Started"
   | "Failed"
   | "Completed"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export interface Operation {
@@ -539,13 +535,7 @@ export const AttachStaticIpResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttachStaticIpResult",
 }) as any as S.Schema<AttachStaticIpResult>;
 export type Port = number;
-export type NetworkProtocol =
-  | "tcp"
-  | "all"
-  | "udp"
-  | "icmp"
-  | "icmpv6"
-  | (string & {});
+export type NetworkProtocol = "tcp" | "all" | "udp" | "icmp" | "icmpv6";
 export const NetworkProtocol = /*@__PURE__*/ S.String;
 
 export type StringList = string[];
@@ -553,7 +543,7 @@ export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface PortInfo {
   fromPort?: number;
   toPort?: number;
-  protocol?: NetworkProtocol;
+  protocol?: NetworkProtocol | (string & {});
   cidrs?: string[];
   ipv6Cidrs?: string[];
   cidrListAliases?: string[];
@@ -603,7 +593,7 @@ export interface CopySnapshotRequest {
   restoreDate?: string;
   useLatestRestorableAutoSnapshot?: boolean;
   targetSnapshotName: string;
-  sourceRegion: RegionName;
+  sourceRegion: RegionName | (string & {});
 }
 export const CopySnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -671,7 +661,7 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBucketRequest",
 }) as any as S.Schema<CreateBucketRequest>;
-export type AccessType = "public" | "private" | (string & {});
+export type AccessType = "public" | "private";
 export const AccessType = /*@__PURE__*/ S.String;
 
 export interface AccessRules {
@@ -832,7 +822,7 @@ export const CreateBucketAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBucketAccessKeyRequest",
 }) as any as S.Schema<CreateBucketAccessKeyRequest>;
 export type IAMAccessKeyId = string | redacted.Redacted<string>;
-export type StatusType = "Active" | "Inactive" | (string & {});
+export type StatusType = "Active" | "Inactive";
 export const StatusType = /*@__PURE__*/ S.String;
 
 export interface AccessKeyLastUsed {
@@ -913,8 +903,7 @@ export type CertificateStatus =
   | "EXPIRED"
   | "VALIDATION_TIMED_OUT"
   | "REVOKED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const CertificateStatus = /*@__PURE__*/ S.String;
 
 export type SerialNumber = string;
@@ -930,11 +919,7 @@ export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
     value: S.optional(S.String),
   }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
-export type DnsRecordCreationStateCode =
-  | "SUCCEEDED"
-  | "STARTED"
-  | "FAILED"
-  | (string & {});
+export type DnsRecordCreationStateCode = "SUCCEEDED" | "STARTED" | "FAILED";
 export const DnsRecordCreationStateCode = /*@__PURE__*/ S.String;
 
 export interface DnsRecordCreationState {
@@ -952,8 +937,7 @@ export const DnsRecordCreationState = /*@__PURE__*/ S.suspend(() =>
 export type CertificateDomainValidationStatus =
   | "PENDING_VALIDATION"
   | "FAILED"
-  | "SUCCESS"
-  | (string & {});
+  | "SUCCESS";
 export const CertificateDomainValidationStatus = /*@__PURE__*/ S.String;
 
 export interface DomainValidationRecord {
@@ -985,8 +969,7 @@ export type RenewalStatus =
   | "PendingAutoRenewal"
   | "PendingValidation"
   | "Success"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const RenewalStatus = /*@__PURE__*/ S.String;
 
 export type RenewalStatusReason = string;
@@ -1083,18 +1066,13 @@ export const CreateCertificateResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCertificateResult",
 }) as any as S.Schema<CreateCertificateResult>;
-export type PortInfoSourceType =
-  | "DEFAULT"
-  | "INSTANCE"
-  | "NONE"
-  | "CLOSED"
-  | (string & {});
+export type PortInfoSourceType = "DEFAULT" | "INSTANCE" | "NONE" | "CLOSED";
 export const PortInfoSourceType = /*@__PURE__*/ S.String;
 
 export interface InstanceEntry {
   sourceName: string;
   instanceType: string;
-  portInfoSource: PortInfoSourceType;
+  portInfoSource: PortInfoSourceType | (string & {});
   userData?: string;
   availabilityZone: string;
 }
@@ -1137,12 +1115,12 @@ export const CreateCloudFormationStackResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCloudFormationStackResult",
 }) as any as S.Schema<CreateCloudFormationStackResult>;
-export type ContactProtocol = "Email" | "SMS" | (string & {});
+export type ContactProtocol = "Email" | "SMS";
 export const ContactProtocol = /*@__PURE__*/ S.String;
 
 export type StringMax256 = string;
 export interface CreateContactMethodRequest {
-  protocol: ContactProtocol;
+  protocol: ContactProtocol | (string & {});
   contactEndpoint: string;
   tags?: Tag[];
 }
@@ -1179,8 +1157,7 @@ export type ContainerServicePowerName =
   | "small"
   | "medium"
   | "large"
-  | "xlarge"
-  | (string & {});
+  | "xlarge";
 export const ContainerServicePowerName = /*@__PURE__*/ S.String;
 
 export type ContainerServiceScale = number;
@@ -1201,12 +1178,7 @@ export const Environment = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type ContainerServiceProtocol =
-  | "HTTP"
-  | "HTTPS"
-  | "TCP"
-  | "UDP"
-  | (string & {});
+export type ContainerServiceProtocol = "HTTP" | "HTTPS" | "TCP" | "UDP";
 export const ContainerServiceProtocol = /*@__PURE__*/ S.String;
 
 export type PortMap = { [key: string]: ContainerServiceProtocol | undefined };
@@ -1300,7 +1272,7 @@ export const PrivateRegistryAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateRegistryAccessRequest>;
 export interface CreateContainerServiceRequest {
   serviceName: string;
-  power: ContainerServicePowerName;
+  power: ContainerServicePowerName | (string & {});
   scale: number;
   tags?: Tag[];
   publicDomainNames?: { [key: string]: string[] | undefined };
@@ -1336,8 +1308,7 @@ export type ContainerServiceState =
   | "UPDATING"
   | "DELETING"
   | "DISABLED"
-  | "DEPLOYING"
-  | (string & {});
+  | "DEPLOYING";
 export const ContainerServiceState = /*@__PURE__*/ S.String;
 
 export type ContainerServiceStateDetailCode =
@@ -1349,8 +1320,7 @@ export type ContainerServiceStateDetailCode =
   | "EVALUATING_HEALTH_CHECK"
   | "ACTIVATING_DEPLOYMENT"
   | "CERTIFICATE_LIMIT_EXCEEDED"
-  | "UNKNOWN_ERROR"
-  | (string & {});
+  | "UNKNOWN_ERROR";
 export const ContainerServiceStateDetailCode = /*@__PURE__*/ S.String;
 
 export interface ContainerServiceStateDetail {
@@ -1369,8 +1339,7 @@ export type ContainerServiceDeploymentState =
   | "ACTIVATING"
   | "ACTIVE"
   | "INACTIVE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ContainerServiceDeploymentState = /*@__PURE__*/ S.String;
 
 export interface ContainerServiceEndpoint {
@@ -1560,7 +1529,7 @@ export const CreateContainerServiceRegistryLoginResult =
   ).annotate({
     identifier: "CreateContainerServiceRegistryLoginResult",
   }) as any as S.Schema<CreateContainerServiceRegistryLoginResult>;
-export type AddOnType = "AutoSnapshot" | "StopInstanceOnIdle" | (string & {});
+export type AddOnType = "AutoSnapshot" | "StopInstanceOnIdle";
 export const AddOnType = /*@__PURE__*/ S.String;
 
 export type TimeOfDay = string;
@@ -1582,7 +1551,7 @@ export const StopInstanceOnIdleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopInstanceOnIdleRequest",
 }) as any as S.Schema<StopInstanceOnIdleRequest>;
 export interface AddOnRequest {
-  addOnType: AddOnType;
+  addOnType: AddOnType | (string & {});
   autoSnapshotAddOnRequest?: AutoSnapshotAddOnRequest;
   stopInstanceOnIdleRequest?: StopInstanceOnIdleRequest;
 }
@@ -1709,25 +1678,18 @@ export const CreateDiskSnapshotResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDiskSnapshotResult",
 }) as any as S.Schema<CreateDiskSnapshotResult>;
-export type OriginProtocolPolicyEnum =
-  | "http-only"
-  | "https-only"
-  | (string & {});
+export type OriginProtocolPolicyEnum = "http-only" | "https-only";
 export const OriginProtocolPolicyEnum = /*@__PURE__*/ S.String;
 
-export type OriginIpAddressTypeEnum =
-  | "ipv4"
-  | "ipv6"
-  | "dualstack"
-  | (string & {});
+export type OriginIpAddressTypeEnum = "ipv4" | "ipv6" | "dualstack";
 export const OriginIpAddressTypeEnum = /*@__PURE__*/ S.String;
 
 export interface InputOrigin {
   name?: string;
-  regionName?: RegionName;
-  protocolPolicy?: OriginProtocolPolicyEnum;
+  regionName?: RegionName | (string & {});
+  protocolPolicy?: OriginProtocolPolicyEnum | (string & {});
   responseTimeout?: number;
-  ipAddressType?: OriginIpAddressTypeEnum;
+  ipAddressType?: OriginIpAddressTypeEnum | (string & {});
 }
 export const InputOrigin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1738,7 +1700,7 @@ export const InputOrigin = /*@__PURE__*/ S.suspend(() =>
     ipAddressType: S.optional(OriginIpAddressTypeEnum),
   }),
 ).annotate({ identifier: "InputOrigin" }) as any as S.Schema<InputOrigin>;
-export type BehaviorEnum = "dont-cache" | "cache" | (string & {});
+export type BehaviorEnum = "dont-cache" | "cache";
 export const BehaviorEnum = /*@__PURE__*/ S.String;
 
 export interface CacheBehavior {
@@ -1747,7 +1709,7 @@ export interface CacheBehavior {
 export const CacheBehavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ behavior: S.optional(BehaviorEnum) }),
 ).annotate({ identifier: "CacheBehavior" }) as any as S.Schema<CacheBehavior>;
-export type ForwardValues = "none" | "allow-list" | "all" | (string & {});
+export type ForwardValues = "none" | "allow-list" | "all";
 export const ForwardValues = /*@__PURE__*/ S.String;
 
 export interface CookieObject {
@@ -1775,8 +1737,7 @@ export type HeaderEnum =
   | "CloudFront-Viewer-Country"
   | "Host"
   | "Origin"
-  | "Referer"
-  | (string & {});
+  | "Referer";
 export const HeaderEnum = /*@__PURE__*/ S.String;
 
 export type HeaderForwardList = HeaderEnum[];
@@ -1836,15 +1797,14 @@ export const CacheBehaviorPerPath = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheBehaviorPerPath>;
 export type CacheBehaviorList = CacheBehaviorPerPath[];
 export const CacheBehaviorList = /*@__PURE__*/ S.Array(CacheBehaviorPerPath);
-export type IpAddressType = "dualstack" | "ipv4" | "ipv6" | (string & {});
+export type IpAddressType = "dualstack" | "ipv4" | "ipv6";
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export type ViewerMinimumTlsProtocolVersionEnum =
   | "TLSv1.1_2016"
   | "TLSv1.2_2018"
   | "TLSv1.2_2019"
-  | "TLSv1.2_2021"
-  | (string & {});
+  | "TLSv1.2_2021";
 export const ViewerMinimumTlsProtocolVersionEnum = /*@__PURE__*/ S.String;
 
 export interface CreateDistributionRequest {
@@ -1854,10 +1814,12 @@ export interface CreateDistributionRequest {
   cacheBehaviorSettings?: CacheSettings;
   cacheBehaviors?: CacheBehaviorPerPath[];
   bundleId: string;
-  ipAddressType?: IpAddressType;
+  ipAddressType?: IpAddressType | (string & {});
   tags?: Tag[];
   certificateName?: string;
-  viewerMinimumTlsProtocolVersion?: ViewerMinimumTlsProtocolVersionEnum;
+  viewerMinimumTlsProtocolVersion?:
+    | ViewerMinimumTlsProtocolVersionEnum
+    | (string & {});
 }
 export const CreateDistributionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2074,8 +2036,7 @@ export type Status =
   | "settingUpInstance"
   | "failedInstanceCreation"
   | "failedStartingGUISession"
-  | "failedStoppingGUISession"
-  | (string & {});
+  | "failedStoppingGUISession";
 export const Status = /*@__PURE__*/ S.String;
 
 export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
@@ -2121,7 +2082,7 @@ export interface CreateInstancesRequest {
   keyPairName?: string;
   tags?: Tag[];
   addOns?: AddOnRequest[];
-  ipAddressType?: IpAddressType;
+  ipAddressType?: IpAddressType | (string & {});
 }
 export const CreateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2183,7 +2144,7 @@ export interface CreateInstancesFromSnapshotRequest {
   keyPairName?: string;
   tags?: Tag[];
   addOns?: AddOnRequest[];
-  ipAddressType?: IpAddressType;
+  ipAddressType?: IpAddressType | (string & {});
   sourceInstanceName?: string;
   restoreDate?: string;
   useLatestRestorableAutoSnapshot?: boolean;
@@ -2328,7 +2289,7 @@ export interface CreateLoadBalancerRequest {
   certificateDomainName?: string;
   certificateAlternativeNames?: string[];
   tags?: Tag[];
-  ipAddressType?: IpAddressType;
+  ipAddressType?: IpAddressType | (string & {});
   tlsPolicyName?: string;
 }
 export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2672,7 +2633,7 @@ export const DeleteCertificateResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCertificateResult",
 }) as any as S.Schema<DeleteCertificateResult>;
 export interface DeleteContactMethodRequest {
-  protocol: ContactProtocol;
+  protocol: ContactProtocol | (string & {});
 }
 export const DeleteContactMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ protocol: ContactProtocol }).pipe(
@@ -3229,7 +3190,7 @@ export const DetachStaticIpResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DetachStaticIpResult",
 }) as any as S.Schema<DetachStaticIpResult>;
 export interface DisableAddOnRequest {
-  addOnType: AddOnType;
+  addOnType: AddOnType | (string & {});
   resourceName: string;
 }
 export const DisableAddOnRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3410,8 +3371,7 @@ export type ComparisonOperator =
   | "GreaterThanOrEqualToThreshold"
   | "GreaterThanThreshold"
   | "LessThanThreshold"
-  | "LessThanOrEqualToThreshold"
-  | (string & {});
+  | "LessThanOrEqualToThreshold";
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type MetricPeriod = number;
@@ -3419,8 +3379,7 @@ export type TreatMissingData =
   | "breaching"
   | "notBreaching"
   | "ignore"
-  | "missing"
-  | (string & {});
+  | "missing";
 export const TreatMissingData = /*@__PURE__*/ S.String;
 
 export type MetricStatistic =
@@ -3428,8 +3387,7 @@ export type MetricStatistic =
   | "Maximum"
   | "Sum"
   | "Average"
-  | "SampleCount"
-  | (string & {});
+  | "SampleCount";
 export const MetricStatistic = /*@__PURE__*/ S.String;
 
 export type MetricName =
@@ -3457,11 +3415,10 @@ export type MetricName =
   | "NetworkReceiveThroughput"
   | "NetworkTransmitThroughput"
   | "BurstCapacityTime"
-  | "BurstCapacityPercentage"
-  | (string & {});
+  | "BurstCapacityPercentage";
 export const MetricName = /*@__PURE__*/ S.String;
 
-export type AlarmState = "OK" | "ALARM" | "INSUFFICIENT_DATA" | (string & {});
+export type AlarmState = "OK" | "ALARM" | "INSUFFICIENT_DATA";
 export const AlarmState = /*@__PURE__*/ S.String;
 
 export type MetricUnit =
@@ -3491,8 +3448,7 @@ export type MetricUnit =
   | "Gigabits/Second"
   | "Terabits/Second"
   | "Count/Second"
-  | "None"
-  | (string & {});
+  | "None";
 export const MetricUnit = /*@__PURE__*/ S.String;
 
 export type ContactProtocolsList = ContactProtocol[];
@@ -3582,8 +3538,7 @@ export type AutoSnapshotStatus =
   | "Success"
   | "Failed"
   | "InProgress"
-  | "NotFound"
-  | (string & {});
+  | "NotFound";
 export const AutoSnapshotStatus = /*@__PURE__*/ S.String;
 
 export interface AttachedDisk {
@@ -3628,13 +3583,13 @@ export const GetAutoSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAutoSnapshotsResult",
 }) as any as S.Schema<GetAutoSnapshotsResult>;
-export type AppCategory = "LfR" | (string & {});
+export type AppCategory = "LfR";
 export const AppCategory = /*@__PURE__*/ S.String;
 
 export interface GetBlueprintsRequest {
   includeInactive?: boolean;
   pageToken?: string;
-  appCategory?: AppCategory;
+  appCategory?: AppCategory | (string & {});
 }
 export const GetBlueprintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3654,10 +3609,10 @@ export const GetBlueprintsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBlueprintsRequest",
 }) as any as S.Schema<GetBlueprintsRequest>;
-export type BlueprintType = "os" | "app" | (string & {});
+export type BlueprintType = "os" | "app";
 export const BlueprintType = /*@__PURE__*/ S.String;
 
-export type InstancePlatform = "LINUX_UNIX" | "WINDOWS" | (string & {});
+export type InstancePlatform = "LINUX_UNIX" | "WINDOWS";
 export const InstancePlatform = /*@__PURE__*/ S.String;
 
 export interface Blueprint {
@@ -3778,22 +3733,19 @@ export const GetBucketBundlesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketBundlesResult",
 }) as any as S.Schema<GetBucketBundlesResult>;
-export type BucketMetricName =
-  | "BucketSizeBytes"
-  | "NumberOfObjects"
-  | (string & {});
+export type BucketMetricName = "BucketSizeBytes" | "NumberOfObjects";
 export const BucketMetricName = /*@__PURE__*/ S.String;
 
-export type MetricStatisticList = MetricStatistic[];
+export type MetricStatisticList = (MetricStatistic | (string & {}))[];
 export const MetricStatisticList = /*@__PURE__*/ S.Array(MetricStatistic);
 export interface GetBucketMetricDataRequest {
   bucketName: string;
-  metricName: BucketMetricName;
+  metricName: BucketMetricName | (string & {});
   startTime: Date;
   endTime: Date;
   period: number;
   statistics: MetricStatistic[];
-  unit: MetricUnit;
+  unit: MetricUnit | (string & {});
 }
 export const GetBucketMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3884,16 +3836,14 @@ export type AccountLevelBpaSyncStatus =
   | "InSync"
   | "Failed"
   | "NeverSynced"
-  | "Defaulted"
-  | (string & {});
+  | "Defaulted";
 export const AccountLevelBpaSyncStatus = /*@__PURE__*/ S.String;
 
 export type BPAStatusMessage =
   | "DEFAULTED_FOR_SLR_MISSING"
   | "SYNC_ON_HOLD"
   | "DEFAULTED_FOR_SLR_MISSING_ON_HOLD"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const BPAStatusMessage = /*@__PURE__*/ S.String;
 
 export interface AccountLevelBpaSync {
@@ -3929,7 +3879,7 @@ export const GetBucketsResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetBundlesRequest {
   includeInactive?: boolean;
   pageToken?: string;
-  appCategory?: AppCategory;
+  appCategory?: AppCategory | (string & {});
 }
 export const GetBundlesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3999,7 +3949,7 @@ export const GetBundlesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBundlesResult",
 }) as any as S.Schema<GetBundlesResult>;
-export type CertificateStatusList = CertificateStatus[];
+export type CertificateStatusList = (CertificateStatus | (string & {}))[];
 export const CertificateStatusList = /*@__PURE__*/ S.Array(CertificateStatus);
 export type IncludeCertificateDetails = boolean;
 export interface GetCertificatesRequest {
@@ -4062,12 +4012,10 @@ export const GetCloudFormationStackRecordsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetCloudFormationStackRecordsRequest",
 }) as any as S.Schema<GetCloudFormationStackRecordsRequest>;
-export type RecordState = "Started" | "Succeeded" | "Failed" | (string & {});
+export type RecordState = "Started" | "Succeeded" | "Failed";
 export const RecordState = /*@__PURE__*/ S.String;
 
-export type CloudFormationStackRecordSourceType =
-  | "ExportSnapshotRecord"
-  | (string & {});
+export type CloudFormationStackRecordSourceType = "ExportSnapshotRecord";
 export const CloudFormationStackRecordSourceType = /*@__PURE__*/ S.String;
 
 export interface CloudFormationStackRecordSourceInfo {
@@ -4157,11 +4105,7 @@ export const GetContactMethodsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetContactMethodsRequest",
 }) as any as S.Schema<GetContactMethodsRequest>;
-export type ContactMethodStatus =
-  | "PendingVerification"
-  | "Valid"
-  | "Invalid"
-  | (string & {});
+export type ContactMethodStatus = "PendingVerification" | "Valid" | "Invalid";
 export const ContactMethodStatus = /*@__PURE__*/ S.String;
 
 export interface ContactMethod {
@@ -4378,15 +4322,12 @@ export const GetContainerServiceDeploymentsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetContainerServiceDeploymentsResult",
 }) as any as S.Schema<GetContainerServiceDeploymentsResult>;
-export type ContainerServiceMetricName =
-  | "CPUUtilization"
-  | "MemoryUtilization"
-  | (string & {});
+export type ContainerServiceMetricName = "CPUUtilization" | "MemoryUtilization";
 export const ContainerServiceMetricName = /*@__PURE__*/ S.String;
 
 export interface GetContainerServiceMetricDataRequest {
   serviceName: string;
-  metricName: ContainerServiceMetricName;
+  metricName: ContainerServiceMetricName | (string & {});
   startTime: Date;
   endTime: Date;
   period: number;
@@ -4535,16 +4476,10 @@ export const GetCostEstimateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCostEstimateRequest",
 }) as any as S.Schema<GetCostEstimateRequest>;
-export type PricingUnit =
-  | "GB"
-  | "Hrs"
-  | "GB-Mo"
-  | "Bundles"
-  | "Queries"
-  | (string & {});
+export type PricingUnit = "GB" | "Hrs" | "GB-Mo" | "Bundles" | "Queries";
 export const PricingUnit = /*@__PURE__*/ S.String;
 
-export type Currency = "USD" | (string & {});
+export type Currency = "USD";
 export const Currency = /*@__PURE__*/ S.String;
 
 export interface TimePeriod {
@@ -4657,16 +4592,10 @@ export type DiskState =
   | "error"
   | "available"
   | "in-use"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const DiskState = /*@__PURE__*/ S.String;
 
-export type AutoMountStatus =
-  | "Failed"
-  | "Pending"
-  | "Mounted"
-  | "NotMounted"
-  | (string & {});
+export type AutoMountStatus = "Failed" | "Pending" | "Mounted" | "NotMounted";
 export const AutoMountStatus = /*@__PURE__*/ S.String;
 
 export interface Disk {
@@ -4763,12 +4692,7 @@ export const GetDiskSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDiskSnapshotRequest",
 }) as any as S.Schema<GetDiskSnapshotRequest>;
-export type DiskSnapshotState =
-  | "pending"
-  | "completed"
-  | "error"
-  | "unknown"
-  | (string & {});
+export type DiskSnapshotState = "pending" | "completed" | "error" | "unknown";
 export const DiskSnapshotState = /*@__PURE__*/ S.String;
 
 export interface DiskSnapshot {
@@ -4932,17 +4856,16 @@ export type DistributionMetricName =
   | "BytesUploaded"
   | "TotalErrorRate"
   | "Http4xxErrorRate"
-  | "Http5xxErrorRate"
-  | (string & {});
+  | "Http5xxErrorRate";
 export const DistributionMetricName = /*@__PURE__*/ S.String;
 
 export interface GetDistributionMetricDataRequest {
   distributionName: string;
-  metricName: DistributionMetricName;
+  metricName: DistributionMetricName | (string & {});
   startTime: Date;
   endTime: Date;
   period: number;
-  unit: MetricUnit;
+  unit: MetricUnit | (string & {});
   statistics: MetricStatistic[];
 }
 export const GetDistributionMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5040,8 +4963,7 @@ export type NameServersUpdateStateCode =
   | "SUCCEEDED"
   | "PENDING"
   | "FAILED"
-  | "STARTED"
-  | (string & {});
+  | "STARTED";
 export const NameServersUpdateStateCode = /*@__PURE__*/ S.String;
 
 export interface NameServersUpdateState {
@@ -5060,8 +4982,7 @@ export type R53HostedZoneDeletionStateCode =
   | "SUCCEEDED"
   | "PENDING"
   | "FAILED"
-  | "STARTED"
-  | (string & {});
+  | "STARTED";
 export const R53HostedZoneDeletionStateCode = /*@__PURE__*/ S.String;
 
 export interface R53HostedZoneDeletionState {
@@ -5173,8 +5094,7 @@ export const GetExportSnapshotRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetExportSnapshotRecordsRequest>;
 export type ExportSnapshotRecordSourceType =
   | "InstanceSnapshot"
-  | "DiskSnapshot"
-  | (string & {});
+  | "DiskSnapshot";
 export const ExportSnapshotRecordSourceType = /*@__PURE__*/ S.String;
 
 export interface DiskInfo {
@@ -5321,10 +5241,10 @@ export const MonthlyTransfer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MonthlyTransfer",
 }) as any as S.Schema<MonthlyTransfer>;
-export type PortAccessType = "Public" | "Private" | (string & {});
+export type PortAccessType = "Public" | "Private";
 export const PortAccessType = /*@__PURE__*/ S.String;
 
-export type AccessDirection = "inbound" | "outbound" | (string & {});
+export type AccessDirection = "inbound" | "outbound";
 export const AccessDirection = /*@__PURE__*/ S.String;
 
 export interface InstancePortInfo {
@@ -5376,16 +5296,16 @@ export interface InstanceState {
 export const InstanceState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: S.optional(S.Number), name: S.optional(S.String) }),
 ).annotate({ identifier: "InstanceState" }) as any as S.Schema<InstanceState>;
-export type InstanceMetadataState = "pending" | "applied" | (string & {});
+export type InstanceMetadataState = "pending" | "applied";
 export const InstanceMetadataState = /*@__PURE__*/ S.String;
 
-export type HttpTokens = "optional" | "required" | (string & {});
+export type HttpTokens = "optional" | "required";
 export const HttpTokens = /*@__PURE__*/ S.String;
 
-export type HttpEndpoint = "disabled" | "enabled" | (string & {});
+export type HttpEndpoint = "disabled" | "enabled";
 export const HttpEndpoint = /*@__PURE__*/ S.String;
 
-export type HttpProtocolIpv6 = "disabled" | "enabled" | (string & {});
+export type HttpProtocolIpv6 = "disabled" | "enabled";
 export const HttpProtocolIpv6 = /*@__PURE__*/ S.String;
 
 export interface InstanceMetadataOptions {
@@ -5464,12 +5384,12 @@ export const GetInstanceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInstanceResult",
 }) as any as S.Schema<GetInstanceResult>;
-export type InstanceAccessProtocol = "ssh" | "rdp" | (string & {});
+export type InstanceAccessProtocol = "ssh" | "rdp";
 export const InstanceAccessProtocol = /*@__PURE__*/ S.String;
 
 export interface GetInstanceAccessDetailsRequest {
   instanceName: string;
-  protocol?: InstanceAccessProtocol;
+  protocol?: InstanceAccessProtocol | (string & {});
 }
 export const GetInstanceAccessDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5572,17 +5492,16 @@ export type InstanceMetricName =
   | "StatusCheckFailed_System"
   | "BurstCapacityTime"
   | "BurstCapacityPercentage"
-  | "MetadataNoToken"
-  | (string & {});
+  | "MetadataNoToken";
 export const InstanceMetricName = /*@__PURE__*/ S.String;
 
 export interface GetInstanceMetricDataRequest {
   instanceName: string;
-  metricName: InstanceMetricName;
+  metricName: InstanceMetricName | (string & {});
   period: number;
   startTime: Date;
   endTime: Date;
-  unit: MetricUnit;
+  unit: MetricUnit | (string & {});
   statistics: MetricStatistic[];
 }
 export const GetInstanceMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5642,7 +5561,7 @@ export const GetInstancePortStatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInstancePortStatesRequest",
 }) as any as S.Schema<GetInstancePortStatesRequest>;
-export type PortState = "open" | "closed" | (string & {});
+export type PortState = "open" | "closed";
 export const PortState = /*@__PURE__*/ S.String;
 
 export interface InstancePortState {
@@ -5725,11 +5644,7 @@ export const GetInstanceSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInstanceSnapshotRequest",
 }) as any as S.Schema<GetInstanceSnapshotRequest>;
-export type InstanceSnapshotState =
-  | "pending"
-  | "error"
-  | "available"
-  | (string & {});
+export type InstanceSnapshotState = "pending" | "error" | "available";
 export const InstanceSnapshotState = /*@__PURE__*/ S.String;
 
 export interface InstanceSnapshot {
@@ -5921,11 +5836,10 @@ export type LoadBalancerState =
   | "provisioning"
   | "active_impaired"
   | "failed"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const LoadBalancerState = /*@__PURE__*/ S.String;
 
-export type LoadBalancerProtocol = "HTTP_HTTPS" | "HTTP" | (string & {});
+export type LoadBalancerProtocol = "HTTP_HTTPS" | "HTTP";
 export const LoadBalancerProtocol = /*@__PURE__*/ S.String;
 
 export type PortList = number[];
@@ -5936,8 +5850,7 @@ export type InstanceHealthState =
   | "unhealthy"
   | "unused"
   | "draining"
-  | "unavailable"
-  | (string & {});
+  | "unavailable";
 export const InstanceHealthState = /*@__PURE__*/ S.String;
 
 export type InstanceHealthReason =
@@ -5951,8 +5864,7 @@ export type InstanceHealthReason =
   | "Instance.NotInUse"
   | "Instance.DeregistrationInProgress"
   | "Instance.InvalidState"
-  | "Instance.IpUnusable"
-  | (string & {});
+  | "Instance.IpUnusable";
 export const InstanceHealthReason = /*@__PURE__*/ S.String;
 
 export interface InstanceHealthSummary {
@@ -5992,8 +5904,7 @@ export type LoadBalancerAttributeName =
   | "SessionStickinessEnabled"
   | "SessionStickiness_LB_CookieDurationSeconds"
   | "HttpsRedirectionEnabled"
-  | "TlsPolicyName"
-  | (string & {});
+  | "TlsPolicyName";
 export const LoadBalancerAttributeName = /*@__PURE__*/ S.String;
 
 export type LoadBalancerConfigurationOptions = {
@@ -6067,17 +5978,16 @@ export type LoadBalancerMetricName =
   | "HTTPCode_Instance_5XX_Count"
   | "InstanceResponseTime"
   | "RejectedConnectionCount"
-  | "RequestCount"
-  | (string & {});
+  | "RequestCount";
 export const LoadBalancerMetricName = /*@__PURE__*/ S.String;
 
 export interface GetLoadBalancerMetricDataRequest {
   loadBalancerName: string;
-  metricName: LoadBalancerMetricName;
+  metricName: LoadBalancerMetricName | (string & {});
   period: number;
   startTime: Date;
   endTime: Date;
-  unit: MetricUnit;
+  unit: MetricUnit | (string & {});
   statistics: MetricStatistic[];
 }
 export const GetLoadBalancerMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6177,22 +6087,19 @@ export type LoadBalancerTlsCertificateStatus =
   | "VALIDATION_TIMED_OUT"
   | "REVOKED"
   | "FAILED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const LoadBalancerTlsCertificateStatus = /*@__PURE__*/ S.String;
 
 export type LoadBalancerTlsCertificateDomainStatus =
   | "PENDING_VALIDATION"
   | "FAILED"
-  | "SUCCESS"
-  | (string & {});
+  | "SUCCESS";
 export const LoadBalancerTlsCertificateDomainStatus = /*@__PURE__*/ S.String;
 
 export type LoadBalancerTlsCertificateDnsRecordCreationStateCode =
   | "SUCCEEDED"
   | "STARTED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const LoadBalancerTlsCertificateDnsRecordCreationStateCode =
   /*@__PURE__*/ S.String;
 
@@ -6241,16 +6148,14 @@ export type LoadBalancerTlsCertificateFailureReason =
   | "ADDITIONAL_VERIFICATION_REQUIRED"
   | "DOMAIN_NOT_ALLOWED"
   | "INVALID_PUBLIC_DOMAIN"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const LoadBalancerTlsCertificateFailureReason = /*@__PURE__*/ S.String;
 
 export type LoadBalancerTlsCertificateRenewalStatus =
   | "PENDING_AUTO_RENEWAL"
   | "PENDING_VALIDATION"
   | "SUCCESS"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const LoadBalancerTlsCertificateRenewalStatus = /*@__PURE__*/ S.String;
 
 export interface LoadBalancerTlsCertificateDomainValidationOption {
@@ -6295,8 +6200,7 @@ export type LoadBalancerTlsCertificateRevocationReason =
   | "CERTIFICATE_HOLD"
   | "REMOVE_FROM_CRL"
   | "PRIVILEGE_WITHDRAWN"
-  | "A_A_COMPROMISE"
-  | (string & {});
+  | "A_A_COMPROMISE";
 export const LoadBalancerTlsCertificateRevocationReason =
   /*@__PURE__*/ S.String;
 
@@ -6745,7 +6649,7 @@ export const GetRelationalDatabaseBlueprintsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRelationalDatabaseBlueprintsRequest",
 }) as any as S.Schema<GetRelationalDatabaseBlueprintsRequest>;
-export type RelationalDatabaseEngine = "mysql" | (string & {});
+export type RelationalDatabaseEngine = "mysql";
 export const RelationalDatabaseEngine = /*@__PURE__*/ S.String;
 
 export interface RelationalDatabaseBlueprint {
@@ -7001,13 +6905,12 @@ export const GetRelationalDatabaseLogStreamsResult = /*@__PURE__*/ S.suspend(
 export type RelationalDatabasePasswordVersion =
   | "CURRENT"
   | "PREVIOUS"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const RelationalDatabasePasswordVersion = /*@__PURE__*/ S.String;
 
 export interface GetRelationalDatabaseMasterUserPasswordRequest {
   relationalDatabaseName: string;
-  passwordVersion?: RelationalDatabasePasswordVersion;
+  passwordVersion?: RelationalDatabasePasswordVersion | (string & {});
 }
 export const GetRelationalDatabaseMasterUserPasswordRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7049,17 +6952,16 @@ export type RelationalDatabaseMetricName =
   | "DiskQueueDepth"
   | "FreeStorageSpace"
   | "NetworkReceiveThroughput"
-  | "NetworkTransmitThroughput"
-  | (string & {});
+  | "NetworkTransmitThroughput";
 export const RelationalDatabaseMetricName = /*@__PURE__*/ S.String;
 
 export interface GetRelationalDatabaseMetricDataRequest {
   relationalDatabaseName: string;
-  metricName: RelationalDatabaseMetricName;
+  metricName: RelationalDatabaseMetricName | (string & {});
   period: number;
   startTime: Date;
   endTime: Date;
-  unit: MetricUnit;
+  unit: MetricUnit | (string & {});
   statistics: MetricStatistic[];
 }
 export const GetRelationalDatabaseMetricDataRequest = /*@__PURE__*/ S.suspend(
@@ -7330,7 +7232,7 @@ export const GetSetupHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 export type SetupDomainName = string;
 export type SetupDomainNameList = string[];
 export const SetupDomainNameList = /*@__PURE__*/ S.Array(S.String);
-export type CertificateProvider = "LetsEncrypt" | (string & {});
+export type CertificateProvider = "LetsEncrypt";
 export const CertificateProvider = /*@__PURE__*/ S.String;
 
 export interface SetupRequest {
@@ -7363,7 +7265,7 @@ export const SetupHistoryResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetupHistoryResource",
 }) as any as S.Schema<SetupHistoryResource>;
-export type SetupStatus = "succeeded" | "failed" | "inProgress" | (string & {});
+export type SetupStatus = "succeeded" | "failed" | "inProgress";
 export const SetupStatus = /*@__PURE__*/ S.String;
 
 export interface SetupExecutionDetails {
@@ -7601,13 +7503,13 @@ export const PeerVpcResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PeerVpcResult" }) as any as S.Schema<PeerVpcResult>;
 export interface PutAlarmRequest {
   alarmName: string;
-  metricName: MetricName;
+  metricName: MetricName | (string & {});
   monitoredResourceName: string;
-  comparisonOperator: ComparisonOperator;
+  comparisonOperator: ComparisonOperator | (string & {});
   threshold: number;
   evaluationPeriods: number;
   datapointsToAlarm?: number;
-  treatMissingData?: TreatMissingData;
+  treatMissingData?: TreatMissingData | (string & {});
   contactProtocols?: ContactProtocol[];
   notificationTriggers?: AlarmState[];
   notificationEnabled?: boolean;
@@ -7824,11 +7726,11 @@ export const ResetDistributionCacheResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResetDistributionCacheResult",
 }) as any as S.Schema<ResetDistributionCacheResult>;
-export type ContactMethodVerificationProtocol = "Email" | (string & {});
+export type ContactMethodVerificationProtocol = "Email";
 export const ContactMethodVerificationProtocol = /*@__PURE__*/ S.String;
 
 export interface SendContactMethodVerificationRequest {
-  protocol: ContactMethodVerificationProtocol;
+  protocol: ContactMethodVerificationProtocol | (string & {});
 }
 export const SendContactMethodVerificationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7857,9 +7759,9 @@ export const SendContactMethodVerificationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendContactMethodVerificationResult",
 }) as any as S.Schema<SendContactMethodVerificationResult>;
 export interface SetIpAddressTypeRequest {
-  resourceType: ResourceType;
+  resourceType: ResourceType | (string & {});
   resourceName: string;
-  ipAddressType: IpAddressType;
+  ipAddressType: IpAddressType | (string & {});
   acceptBundleUpdate?: boolean;
 }
 export const SetIpAddressTypeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7889,13 +7791,13 @@ export const SetIpAddressTypeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetIpAddressTypeResult",
 }) as any as S.Schema<SetIpAddressTypeResult>;
-export type ResourceBucketAccess = "allow" | "deny" | (string & {});
+export type ResourceBucketAccess = "allow" | "deny";
 export const ResourceBucketAccess = /*@__PURE__*/ S.String;
 
 export interface SetResourceAccessForBucketRequest {
   resourceName: string;
   bucketName: string;
-  access: ResourceBucketAccess;
+  access: ResourceBucketAccess | (string & {});
 }
 export const SetResourceAccessForBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7931,7 +7833,7 @@ export interface SetupInstanceHttpsRequest {
   instanceName: string;
   emailAddress: string | redacted.Redacted<string>;
   domainNames: string[];
-  certificateProvider: CertificateProvider;
+  certificateProvider: CertificateProvider | (string & {});
 }
 export const SetupInstanceHttpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8157,7 +8059,7 @@ export const TagResourceResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagResourceResult>;
 export interface TestAlarmRequest {
   alarmName: string;
-  state: AlarmState;
+  state: AlarmState | (string & {});
 }
 export const TestAlarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8312,7 +8214,7 @@ export const UpdateBucketBundleResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBucketBundleResult>;
 export interface UpdateContainerServiceRequest {
   serviceName: string;
-  power?: ContainerServicePowerName;
+  power?: ContainerServicePowerName | (string & {});
   scale?: number;
   isDisabled?: boolean;
   publicDomainNames?: { [key: string]: string[] | undefined };
@@ -8357,7 +8259,9 @@ export interface UpdateDistributionRequest {
   cacheBehaviorSettings?: CacheSettings;
   cacheBehaviors?: CacheBehaviorPerPath[];
   isEnabled?: boolean;
-  viewerMinimumTlsProtocolVersion?: ViewerMinimumTlsProtocolVersionEnum;
+  viewerMinimumTlsProtocolVersion?:
+    | ViewerMinimumTlsProtocolVersionEnum
+    | (string & {});
   certificateName?: string;
   useDefaultCertificate?: boolean;
 }
@@ -8455,10 +8359,10 @@ export const UpdateDomainEntryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDomainEntryResult>;
 export interface UpdateInstanceMetadataOptionsRequest {
   instanceName: string;
-  httpTokens?: HttpTokens;
-  httpEndpoint?: HttpEndpoint;
+  httpTokens?: HttpTokens | (string & {});
+  httpEndpoint?: HttpEndpoint | (string & {});
   httpPutResponseHopLimit?: number;
-  httpProtocolIpv6?: HttpProtocolIpv6;
+  httpProtocolIpv6?: HttpProtocolIpv6 | (string & {});
 }
 export const UpdateInstanceMetadataOptionsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -8494,7 +8398,7 @@ export const UpdateInstanceMetadataOptionsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateInstanceMetadataOptionsResult>;
 export interface UpdateLoadBalancerAttributeRequest {
   loadBalancerName: string;
-  attributeName: LoadBalancerAttributeName;
+  attributeName: LoadBalancerAttributeName | (string & {});
   attributeValue: string;
 }
 export const UpdateLoadBalancerAttributeRequest = /*@__PURE__*/ S.suspend(() =>

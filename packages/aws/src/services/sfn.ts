@@ -268,10 +268,7 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type KmsKeyId = string;
 export type KmsDataKeyReusePeriodSeconds = number;
-export type EncryptionType =
-  | "AWS_OWNED_KEY"
-  | "CUSTOMER_MANAGED_KMS_KEY"
-  | (string & {});
+export type EncryptionType = "AWS_OWNED_KEY" | "CUSTOMER_MANAGED_KMS_KEY";
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export interface EncryptionConfiguration {
@@ -326,10 +323,10 @@ export const CreateActivityOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateActivityOutput",
 }) as any as S.Schema<CreateActivityOutput>;
 export type Definition = string | redacted.Redacted<string>;
-export type StateMachineType = "STANDARD" | "EXPRESS" | (string & {});
+export type StateMachineType = "STANDARD" | "EXPRESS";
 export const StateMachineType = /*@__PURE__*/ S.String;
 
-export type LogLevel = "ALL" | "ERROR" | "FATAL" | "OFF" | (string & {});
+export type LogLevel = "ALL" | "ERROR" | "FATAL" | "OFF";
 export const LogLevel = /*@__PURE__*/ S.String;
 
 export type IncludeExecutionData = boolean;
@@ -378,7 +375,7 @@ export interface CreateStateMachineInput {
   name: string;
   definition: string | redacted.Redacted<string>;
   roleArn: string;
-  type?: StateMachineType;
+  type?: StateMachineType | (string & {});
   loggingConfiguration?: LoggingConfiguration;
   tags?: Tag[];
   tracingConfiguration?: TracingConfiguration;
@@ -609,12 +606,12 @@ export const DescribeActivityOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeActivityOutput",
 }) as any as S.Schema<DescribeActivityOutput>;
-export type IncludedData = "ALL_DATA" | "METADATA_ONLY" | (string & {});
+export type IncludedData = "ALL_DATA" | "METADATA_ONLY";
 export const IncludedData = /*@__PURE__*/ S.String;
 
 export interface DescribeExecutionInput {
   executionArn: string;
-  includedData?: IncludedData;
+  includedData?: IncludedData | (string & {});
 }
 export const DescribeExecutionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -640,8 +637,7 @@ export type ExecutionStatus =
   | "FAILED"
   | "TIMED_OUT"
   | "ABORTED"
-  | "PENDING_REDRIVE"
-  | (string & {});
+  | "PENDING_REDRIVE";
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 export type SensitiveData = string | redacted.Redacted<string>;
@@ -661,8 +657,7 @@ export type RedriveCount = number;
 export type ExecutionRedriveStatus =
   | "REDRIVABLE"
   | "NOT_REDRIVABLE"
-  | "REDRIVABLE_BY_MAP_RUN"
-  | (string & {});
+  | "REDRIVABLE_BY_MAP_RUN";
 export const ExecutionRedriveStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeExecutionOutput {
@@ -731,12 +726,7 @@ export const DescribeMapRunInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMapRunInput",
 }) as any as S.Schema<DescribeMapRunInput>;
-export type MapRunStatus =
-  | "RUNNING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "ABORTED"
-  | (string & {});
+export type MapRunStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | "ABORTED";
 export const MapRunStatus = /*@__PURE__*/ S.String;
 
 export type MaxConcurrency = number;
@@ -834,7 +824,7 @@ export const DescribeMapRunOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeMapRunOutput>;
 export interface DescribeStateMachineInput {
   stateMachineArn: string;
-  includedData?: IncludedData;
+  includedData?: IncludedData | (string & {});
 }
 export const DescribeStateMachineInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -854,7 +844,7 @@ export const DescribeStateMachineInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStateMachineInput",
 }) as any as S.Schema<DescribeStateMachineInput>;
-export type StateMachineStatus = "ACTIVE" | "DELETING" | (string & {});
+export type StateMachineStatus = "ACTIVE" | "DELETING";
 export const StateMachineStatus = /*@__PURE__*/ S.String;
 
 export type MapRunLabel = string;
@@ -948,7 +938,7 @@ export const DescribeStateMachineAliasOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeStateMachineAliasOutput>;
 export interface DescribeStateMachineForExecutionInput {
   executionArn: string;
-  includedData?: IncludedData;
+  includedData?: IncludedData | (string & {});
 }
 export const DescribeStateMachineForExecutionInput = /*@__PURE__*/ S.suspend(
   () =>
@@ -1131,8 +1121,7 @@ export type HistoryEventType =
   | "MapRunSucceeded"
   | "ExecutionRedriven"
   | "MapRunRedriven"
-  | "EvaluationFailed"
-  | (string & {});
+  | "EvaluationFailed";
 export const HistoryEventType = /*@__PURE__*/ S.String;
 
 export type EventId = number;
@@ -1793,19 +1782,16 @@ export const ListActivitiesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListActivitiesOutput",
 }) as any as S.Schema<ListActivitiesOutput>;
 export type ListExecutionsPageToken = string;
-export type ExecutionRedriveFilter =
-  | "REDRIVEN"
-  | "NOT_REDRIVEN"
-  | (string & {});
+export type ExecutionRedriveFilter = "REDRIVEN" | "NOT_REDRIVEN";
 export const ExecutionRedriveFilter = /*@__PURE__*/ S.String;
 
 export interface ListExecutionsInput {
   stateMachineArn?: string;
-  statusFilter?: ExecutionStatus;
+  statusFilter?: ExecutionStatus | (string & {});
   maxResults?: number;
   nextToken?: string;
   mapRunArn?: string;
-  redriveFilter?: ExecutionRedriveFilter;
+  redriveFilter?: ExecutionRedriveFilter | (string & {});
 }
 export const ListExecutionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2298,7 +2284,7 @@ export interface StartSyncExecutionInput {
   name?: string;
   input?: string | redacted.Redacted<string>;
   traceHeader?: string;
-  includedData?: IncludedData;
+  includedData?: IncludedData | (string & {});
 }
 export const StartSyncExecutionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2321,11 +2307,7 @@ export const StartSyncExecutionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartSyncExecutionInput",
 }) as any as S.Schema<StartSyncExecutionInput>;
-export type SyncExecutionStatus =
-  | "SUCCEEDED"
-  | "FAILED"
-  | "TIMED_OUT"
-  | (string & {});
+export type SyncExecutionStatus = "SUCCEEDED" | "FAILED" | "TIMED_OUT";
 export const SyncExecutionStatus = /*@__PURE__*/ S.String;
 
 export type BilledMemoryUsed = number;
@@ -2435,7 +2417,7 @@ export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
-export type InspectionLevel = "INFO" | "DEBUG" | "TRACE" | (string & {});
+export type InspectionLevel = "INFO" | "DEBUG" | "TRACE";
 export const InspectionLevel = /*@__PURE__*/ S.String;
 
 export type RevealSecrets = boolean;
@@ -2452,17 +2434,13 @@ export const MockErrorOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MockErrorOutput",
 }) as any as S.Schema<MockErrorOutput>;
-export type MockResponseValidationMode =
-  | "STRICT"
-  | "PRESENT"
-  | "NONE"
-  | (string & {});
+export type MockResponseValidationMode = "STRICT" | "PRESENT" | "NONE";
 export const MockResponseValidationMode = /*@__PURE__*/ S.String;
 
 export interface MockInput {
   result?: string | redacted.Redacted<string>;
   errorOutput?: MockErrorOutput;
-  fieldValidationMode?: MockResponseValidationMode;
+  fieldValidationMode?: MockResponseValidationMode | (string & {});
 }
 export const MockInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2493,7 +2471,7 @@ export interface TestStateInput {
   definition: string | redacted.Redacted<string>;
   roleArn?: string;
   input?: string | redacted.Redacted<string>;
-  inspectionLevel?: InspectionLevel;
+  inspectionLevel?: InspectionLevel | (string & {});
   revealSecrets?: boolean;
   variables?: string | redacted.Redacted<string>;
   stateName?: string | redacted.Redacted<string>;
@@ -2633,8 +2611,7 @@ export type TestExecutionStatus =
   | "SUCCEEDED"
   | "FAILED"
   | "RETRIABLE"
-  | "CAUGHT_ERROR"
-  | (string & {});
+  | "CAUGHT_ERROR";
 export const TestExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface TestStateOutput {
@@ -2798,17 +2775,14 @@ export const UpdateStateMachineAliasOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateStateMachineAliasOutput",
 }) as any as S.Schema<UpdateStateMachineAliasOutput>;
-export type ValidateStateMachineDefinitionSeverity =
-  | "ERROR"
-  | "WARNING"
-  | (string & {});
+export type ValidateStateMachineDefinitionSeverity = "ERROR" | "WARNING";
 export const ValidateStateMachineDefinitionSeverity = /*@__PURE__*/ S.String;
 
 export type ValidateStateMachineDefinitionMaxResult = number;
 export interface ValidateStateMachineDefinitionInput {
   definition: string | redacted.Redacted<string>;
-  type?: StateMachineType;
-  severity?: ValidateStateMachineDefinitionSeverity;
+  type?: StateMachineType | (string & {});
+  severity?: ValidateStateMachineDefinitionSeverity | (string & {});
   maxResults?: number;
 }
 export const ValidateStateMachineDefinitionInput = /*@__PURE__*/ S.suspend(() =>
@@ -2831,10 +2805,7 @@ export const ValidateStateMachineDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidateStateMachineDefinitionInput",
 }) as any as S.Schema<ValidateStateMachineDefinitionInput>;
-export type ValidateStateMachineDefinitionResultCode =
-  | "OK"
-  | "FAIL"
-  | (string & {});
+export type ValidateStateMachineDefinitionResultCode = "OK" | "FAIL";
 export const ValidateStateMachineDefinitionResultCode = /*@__PURE__*/ S.String;
 
 export type ValidateStateMachineDefinitionCode =
@@ -2888,8 +2859,7 @@ export type ValidationExceptionReason =
   | "API_DOES_NOT_SUPPORT_LABELED_ARNS"
   | "MISSING_REQUIRED_PARAMETER"
   | "CANNOT_UPDATE_COMPLETED_MAP_RUN"
-  | "INVALID_ROUTING_CONFIGURATION"
-  | (string & {});
+  | "INVALID_ROUTING_CONFIGURATION";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type KmsKeyState =
@@ -2897,8 +2867,7 @@ export type KmsKeyState =
   | "PENDING_DELETION"
   | "PENDING_IMPORT"
   | "UNAVAILABLE"
-  | "CREATING"
-  | (string & {});
+  | "CREATING";
 export const KmsKeyState = /*@__PURE__*/ S.String;
 
 export type CreateActivityError =

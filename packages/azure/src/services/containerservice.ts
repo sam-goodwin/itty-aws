@@ -50,33 +50,25 @@ export const AgentPoolsAbortLatestOperationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AgentPoolsAbortLatestOperationResponse>;
 
 /** The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os). */
-export type OSDiskType = "Managed" | "Ephemeral" | (string & {});
+export type OSDiskType = "Managed" | "Ephemeral";
 export const OSDiskType = /*@__PURE__*/ S.String;
 
 /** Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. */
-export type KubeletDiskType = "OS" | "Temporary" | (string & {});
+export type KubeletDiskType = "OS" | "Temporary";
 export const KubeletDiskType = /*@__PURE__*/ S.String;
 
 /** Determines the type of workload a node can run. */
-export type WorkloadRuntime =
-  | "OCIContainer"
-  | "WasmWasi"
-  | "KataVmIsolation"
-  | (string & {});
+export type WorkloadRuntime = "OCIContainer" | "WasmWasi" | "KataVmIsolation";
 export const WorkloadRuntime = /*@__PURE__*/ S.String;
 
 /** Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'. */
-export type PodIPAllocationMode =
-  | "DynamicIndividual"
-  | "StaticBlock"
-  | (string & {});
+export type PodIPAllocationMode = "DynamicIndividual" | "StaticBlock";
 export const PodIPAllocationMode = /*@__PURE__*/ S.String;
 
 /** The operating system type. The default is Linux. */
 export type ManagedClusterAgentPoolProfilePropertiesInputOsType =
   | "Linux"
-  | "Windows"
-  | (string & {});
+  | "Windows";
 export const ManagedClusterAgentPoolProfilePropertiesInputOsType =
   /*@__PURE__*/ S.String;
 
@@ -91,28 +83,26 @@ export type OSSKU =
   | "Ubuntu2204"
   | "Windows2025"
   | "Ubuntu2404"
-  | "AzureContainerLinux"
-  | (string & {});
+  | "AzureContainerLinux";
 export const OSSKU = /*@__PURE__*/ S.String;
 
 /** Describes how VMs are added to or removed from Agent Pools. See [billing states](https://docs.microsoft.com/azure/virtual-machines/states-billing). */
-export type ScaleDownMode = "Delete" | "Deallocate" | (string & {});
+export type ScaleDownMode = "Delete" | "Deallocate";
 export const ScaleDownMode = /*@__PURE__*/ S.String;
 
 /** The type of Agent Pool. */
 export type AgentPoolType =
   | "VirtualMachineScaleSets"
   | "AvailabilitySet"
-  | "VirtualMachines"
-  | (string & {});
+  | "VirtualMachines";
 export const AgentPoolType = /*@__PURE__*/ S.String;
 
 /** The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools */
-export type AgentPoolMode = "System" | "User" | "Gateway" | (string & {});
+export type AgentPoolMode = "System" | "User" | "Gateway";
 export const AgentPoolMode = /*@__PURE__*/ S.String;
 
 /** Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout or pod is still being in a running state, can also cause undrainable nodes. */
-export type UndrainableNodeBehavior = "Cordon" | "Schedule" | (string & {});
+export type UndrainableNodeBehavior = "Cordon" | "Schedule";
 export const UndrainableNodeBehavior = /*@__PURE__*/ S.String;
 
 /** Settings for upgrading an agentpool */
@@ -141,7 +131,7 @@ export const AgentPoolUpgradeSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentPoolUpgradeSettings>;
 
 /** Tells whether the cluster is Running or Stopped */
-export type Code = "Running" | "Stopped" | (string & {});
+export type Code = "Running" | "Stopped";
 export const Code = /*@__PURE__*/ S.String;
 
 /** Describes the Power State of the cluster */
@@ -166,14 +156,13 @@ export const ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList 
 /** The Virtual Machine Scale Set priority. */
 export type ManagedClusterAgentPoolProfilePropertiesInputScaleSetPriority =
   | "Spot"
-  | "Regular"
-  | (string & {});
+  | "Regular";
 export const ManagedClusterAgentPoolProfilePropertiesInputScaleSetPriority =
   /*@__PURE__*/ S.String;
 
 /** The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) */
 export type ManagedClusterAgentPoolProfilePropertiesInputScaleSetEvictionPolicy =
-  "Delete" | "Deallocate" | (string & {});
+  "Delete" | "Deallocate";
 export const ManagedClusterAgentPoolProfilePropertiesInputScaleSetEvictionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -370,8 +359,7 @@ export type GPUInstanceProfile =
   | "MIG2g"
   | "MIG3g"
   | "MIG4g"
-  | "MIG7g"
-  | (string & {});
+  | "MIG7g";
 export const GPUInstanceProfile = /*@__PURE__*/ S.String;
 
 /** Data used when creating a target resource from a source resource. */
@@ -407,7 +395,7 @@ export const AgentPoolNetworkProfileNodePublicIPTagsList =
   ) as any as S.Schema<AgentPoolNetworkProfileNodePublicIPTagsList>;
 
 /** The network protocol of the port. */
-export type Protocol = "TCP" | "UDP" | (string & {});
+export type Protocol = "TCP" | "UDP";
 export const Protocol = /*@__PURE__*/ S.String;
 
 /** The port range. */
@@ -478,7 +466,7 @@ export const AgentPoolWindowsProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentPoolWindowsProfile>;
 
 /** SSH access method of an agent pool. */
-export type AgentPoolSSHAccess = "LocalUser" | "Disabled" | (string & {});
+export type AgentPoolSSHAccess = "LocalUser" | "Disabled";
 export const AgentPoolSSHAccess = /*@__PURE__*/ S.String;
 
 /** The security settings of an agent pool. */
@@ -501,7 +489,7 @@ export const AgentPoolSecurityProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentPoolSecurityProfile>;
 
 /** Whether to install GPU drivers. When it's not specified, default is Install. */
-export type GPUDriver = "Install" | "None" | (string & {});
+export type GPUDriver = "Install" | "None";
 export const GPUDriver = /*@__PURE__*/ S.String;
 
 /** GPU settings for the Agent Pool. */
@@ -661,46 +649,34 @@ export const AgentPoolStatusInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentPoolStatusInput>;
 
 /** Mode of enablement for localDNS. */
-export type LocalDNSProfileMode =
-  | "Preferred"
-  | "Required"
-  | "Disabled"
-  | (string & {});
+export type LocalDNSProfileMode = "Preferred" | "Required" | "Disabled";
 export const LocalDNSProfileMode = /*@__PURE__*/ S.String;
 
 /** System-generated state of localDNS. */
-export type LocalDNSState = "Enabled" | "Disabled" | (string & {});
+export type LocalDNSState = "Enabled" | "Disabled";
 export const LocalDNSState = /*@__PURE__*/ S.String;
 
 /** Log level for DNS queries in localDNS. */
-export type LocalDNSOverrideQueryLogging = "Error" | "Log" | (string & {});
+export type LocalDNSOverrideQueryLogging = "Error" | "Log";
 export const LocalDNSOverrideQueryLogging = /*@__PURE__*/ S.String;
 
 /** Enforce TCP or prefer UDP protocol for connections from localDNS to upstream DNS server. */
-export type LocalDNSOverrideProtocol = "PreferUDP" | "ForceTCP" | (string & {});
+export type LocalDNSOverrideProtocol = "PreferUDP" | "ForceTCP";
 export const LocalDNSOverrideProtocol = /*@__PURE__*/ S.String;
 
 /** Destination server for DNS queries to be forwarded from localDNS. */
-export type LocalDNSOverrideForwardDestination =
-  | "ClusterCoreDNS"
-  | "VnetDNS"
-  | (string & {});
+export type LocalDNSOverrideForwardDestination = "ClusterCoreDNS" | "VnetDNS";
 export const LocalDNSOverrideForwardDestination = /*@__PURE__*/ S.String;
 
 /** Forward policy for selecting upstream DNS server. See [forward plugin](https://coredns.io/plugins/forward) for more information. */
 export type LocalDNSOverrideForwardPolicy =
   | "Sequential"
   | "RoundRobin"
-  | "Random"
-  | (string & {});
+  | "Random";
 export const LocalDNSOverrideForwardPolicy = /*@__PURE__*/ S.String;
 
 /** Policy for serving stale data. See [cache plugin](https://coredns.io/plugins/cache) for more information. */
-export type LocalDNSOverrideServeStale =
-  | "Verify"
-  | "Immediate"
-  | "Disable"
-  | (string & {});
+export type LocalDNSOverrideServeStale = "Verify" | "Immediate" | "Disable";
 export const LocalDNSOverrideServeStale = /*@__PURE__*/ S.String;
 
 /** Overrides for localDNS profile. */
@@ -786,11 +762,11 @@ export interface ManagedClusterAgentPoolProfilePropertiesInput {
   /** OS Disk Size in GB to be used to specify the disk size for every machine in the master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified. */
   osDiskSizeGB?: number;
   /** The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os). */
-  osDiskType?: OSDiskType;
+  osDiskType?: OSDiskType | (string & {});
   /** Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. */
-  kubeletDiskType?: KubeletDiskType;
+  kubeletDiskType?: KubeletDiskType | (string & {});
   /** Determines the type of workload a node can run. */
-  workloadRuntime?: WorkloadRuntime;
+  workloadRuntime?: WorkloadRuntime | (string & {});
   /** Message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script). */
   messageOfTheDay?: string;
   /** The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName} */
@@ -798,13 +774,13 @@ export interface ManagedClusterAgentPoolProfilePropertiesInput {
   /** The ID of the subnet which pods will join when launched. If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName} */
   podSubnetID?: string;
   /** Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'. */
-  podIPAllocationMode?: PodIPAllocationMode;
+  podIPAllocationMode?: PodIPAllocationMode | (string & {});
   /** The maximum number of pods that can run on a node. */
   maxPods?: number;
   /** The operating system type. The default is Linux. */
-  osType?: ManagedClusterAgentPoolProfilePropertiesInputOsType;
+  osType?: ManagedClusterAgentPoolProfilePropertiesInputOsType | (string & {});
   /** Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows. */
-  osSKU?: OSSKU;
+  osSKU?: OSSKU | (string & {});
   /** The maximum number of nodes for auto-scaling */
   maxCount?: number;
   /** The minimum number of nodes for auto-scaling */
@@ -812,11 +788,11 @@ export interface ManagedClusterAgentPoolProfilePropertiesInput {
   /** Whether to enable auto-scaler */
   enableAutoScaling?: boolean;
   /** The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete. */
-  scaleDownMode?: ScaleDownMode;
+  scaleDownMode?: ScaleDownMode | (string & {});
   /** The type of Agent Pool. */
-  type?: AgentPoolType;
+  type?: AgentPoolType | (string & {});
   /** The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools */
-  mode?: AgentPoolMode;
+  mode?: AgentPoolMode | (string & {});
   /** The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor version must be within two minor versions of the control plane version. The node pool version cannot be greater than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool). */
   orchestratorVersion?: string;
   /** The version of the node image. Setting this value triggers an agentPool rollback. Only values from `recentlyUsedVersions` are allowed. */
@@ -832,9 +808,13 @@ export interface ManagedClusterAgentPoolProfilePropertiesInput {
   /** The public IP prefix ID which VM nodes should use IPs from. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName} */
   nodePublicIPPrefixID?: string;
   /** The Virtual Machine Scale Set priority. */
-  scaleSetPriority?: ManagedClusterAgentPoolProfilePropertiesInputScaleSetPriority;
+  scaleSetPriority?:
+    | ManagedClusterAgentPoolProfilePropertiesInputScaleSetPriority
+    | (string & {});
   /** The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) */
-  scaleSetEvictionPolicy?: ManagedClusterAgentPoolProfilePropertiesInputScaleSetEvictionPolicy;
+  scaleSetEvictionPolicy?:
+    | ManagedClusterAgentPoolProfilePropertiesInputScaleSetEvictionPolicy
+    | (string & {});
   /** The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand. Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing) */
   spotMaxPrice?: number;
   /** The tags to be persisted on the agent pool virtual machine scale set. */
@@ -856,7 +836,7 @@ export interface ManagedClusterAgentPoolProfilePropertiesInput {
   /** Whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview) for more details. */
   enableFIPS?: boolean;
   /** GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU. */
-  gpuInstanceProfile?: GPUInstanceProfile;
+  gpuInstanceProfile?: GPUInstanceProfile | (string & {});
   /** CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot. */
   creationData?: CreationData;
   /** The fully qualified resource ID of the Capacity Reservation Group to provide virtual machines from a reserved group of Virtual Machines. This is of the form: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Compute/capacityreservationgroups/{capacityReservationGroupName}' Customers use it to create an agentpool with a specified CRG. For more information see [Capacity Reservation](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-overview) */
@@ -992,8 +972,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1001,8 +980,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1034,8 +1012,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 /** The operating system type. The default is Linux. */
 export type ManagedClusterAgentPoolProfilePropertiesOsType =
   | "Linux"
-  | "Windows"
-  | (string & {});
+  | "Windows";
 export const ManagedClusterAgentPoolProfilePropertiesOsType =
   /*@__PURE__*/ S.String;
 
@@ -1050,16 +1027,14 @@ export const ManagedClusterAgentPoolProfilePropertiesAvailabilityZonesList =
 /** The Virtual Machine Scale Set priority. */
 export type ManagedClusterAgentPoolProfilePropertiesScaleSetPriority =
   | "Spot"
-  | "Regular"
-  | (string & {});
+  | "Regular";
 export const ManagedClusterAgentPoolProfilePropertiesScaleSetPriority =
   /*@__PURE__*/ S.String;
 
 /** The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) */
 export type ManagedClusterAgentPoolProfilePropertiesScaleSetEvictionPolicy =
   | "Delete"
-  | "Deallocate"
-  | (string & {});
+  | "Deallocate";
 export const ManagedClusterAgentPoolProfilePropertiesScaleSetEvictionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1677,10 +1652,7 @@ export const AgentPoolsGetUpgradeProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentPoolsGetUpgradeProfileRequest>;
 
 /** The operating system type. The default is Linux. */
-export type AgentPoolUpgradeProfilePropertiesOsType =
-  | "Linux"
-  | "Windows"
-  | (string & {});
+export type AgentPoolUpgradeProfilePropertiesOsType = "Linux" | "Windows";
 export const AgentPoolUpgradeProfilePropertiesOsType = /*@__PURE__*/ S.String;
 
 /** Available upgrades for an AgentPool. */
@@ -1934,14 +1906,11 @@ export const GenerateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateResponse>;
 
 /** Configuration of how auto upgrade will be run. */
-export type UpgradeChannel_2 = "Stable" | "Rapid" | "NodeImage" | (string & {});
+export type UpgradeChannel_2 = "Stable" | "Rapid" | "NodeImage";
 export const UpgradeChannel_2 = /*@__PURE__*/ S.String;
 
 /** The node image upgrade type. */
-export type AutoUpgradeNodeImageSelectionType =
-  | "Latest"
-  | "Consistent"
-  | (string & {});
+export type AutoUpgradeNodeImageSelectionType = "Latest" | "Consistent";
 export const AutoUpgradeNodeImageSelectionType = /*@__PURE__*/ S.String;
 
 /** The node image upgrade to be applied to the target clusters in auto upgrade. */
@@ -1982,7 +1951,7 @@ export interface AutoUpgradeProfilePropertiesInput {
   /** The resource id of the UpdateStrategy resource to reference. If not specified, the auto upgrade will run on all clusters which are members of the fleet. */
   updateStrategyId?: string;
   /** Configures how auto-upgrade will be run. */
-  channel: UpgradeChannel_2;
+  channel: UpgradeChannel_2 | (string & {});
   /** The node image upgrade to be applied to the target clusters in auto upgrade. */
   nodeImageSelection?: AutoUpgradeNodeImageSelection;
   /** If set to False: the auto upgrade has effect - target managed clusters will be upgraded on schedule. If set to True: the auto upgrade has no effect - no upgrade will be run on the target managed clusters. This is a boolean and not an enum because enabled/disabled are all available states of the auto upgrade profile. By default, this is set to False. */
@@ -2038,15 +2007,11 @@ export const AutoUpgradeProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 export type AutoUpgradeProfileProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AutoUpgradeProfileProvisioningState = /*@__PURE__*/ S.String;
 
 /** AutoUpgradeLastTriggerStatus is the status of the last AutoUpgrade trigger (attempt to automatically create and start UpdateRun when there are new released versions) of an auto upgrade profile. */
-export type AutoUpgradeLastTriggerStatus =
-  | "Succeeded"
-  | "Failed"
-  | (string & {});
+export type AutoUpgradeLastTriggerStatus = "Succeeded" | "Failed";
 export const AutoUpgradeLastTriggerStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -2355,7 +2320,7 @@ export const AutoUpgradeProfileListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoUpgradeProfileListResult>;
 
 /** Specifies the level of Deployment Safeguards */
-export type DeploymentSafeguardsLevel = "Warn" | "Enforce" | (string & {});
+export type DeploymentSafeguardsLevel = "Warn" | "Enforce";
 export const DeploymentSafeguardsLevel = /*@__PURE__*/ S.String;
 
 /** User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards */
@@ -2370,18 +2335,17 @@ export const DeploymentSafeguardsPropertiesInputExcludedNamespacesList =
 export type PodSecurityStandardsLevel =
   | "Privileged"
   | "Baseline"
-  | "Restricted"
-  | (string & {});
+  | "Restricted";
 export const PodSecurityStandardsLevel = /*@__PURE__*/ S.String;
 
 /** DeploymentSafeguards Properties */
 export interface DeploymentSafeguardsPropertiesInput {
   /** The deployment safeguards level. Possible values are Warn and Enforce */
-  level: DeploymentSafeguardsLevel;
+  level: DeploymentSafeguardsLevel | (string & {});
   /** User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards */
   excludedNamespaces?: DeploymentSafeguardsPropertiesInputExcludedNamespacesList;
   /** The pod security standards level */
-  podSecurityStandardsLevel?: PodSecurityStandardsLevel;
+  podSecurityStandardsLevel?: PodSecurityStandardsLevel | (string & {});
 }
 export const DeploymentSafeguardsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2424,8 +2388,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards */
@@ -2695,8 +2658,7 @@ export type FleetMemberProvisioningState =
   | "Canceled"
   | "Joining"
   | "Leaving"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const FleetMemberProvisioningState = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -3129,8 +3091,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
+  | "SystemAssigned, UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -3152,7 +3113,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface FleetsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const FleetsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -3217,8 +3178,7 @@ export type FleetProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const FleetProvisioningState = /*@__PURE__*/ S.String;
 
 /** The FleetHubProfile configures the fleet hub. */
@@ -3723,7 +3683,7 @@ export const FleetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface FleetsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const FleetsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -3931,8 +3891,7 @@ export const FleetUpdateStrategiesCreateOrUpdateRequest =
 export type FleetUpdateStrategyProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const FleetUpdateStrategyProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of the UpdateStrategy. */
@@ -4254,8 +4213,7 @@ export type IdentityBindingProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const IdentityBindingProvisioningState = /*@__PURE__*/ S.String;
 
 /** IdentityBinding properties. */
@@ -4503,7 +4461,7 @@ export const MachinesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachinesGetRequest>;
 
 /** To determine if address belongs IPv4 or IPv6 family */
-export type IPFamily = "IPv4" | "IPv6" | (string & {});
+export type IPFamily = "IPv4" | "IPv6";
 export const IPFamily = /*@__PURE__*/ S.String;
 
 /** The machine IP address details. */
@@ -4681,8 +4639,7 @@ export type WeekDay =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday"
-  | (string & {});
+  | "Saturday";
 export const WeekDay = /*@__PURE__*/ S.String;
 
 /** A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range. */
@@ -4777,13 +4734,7 @@ export const AbsoluteMonthlySchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AbsoluteMonthlySchedule>;
 
 /** The week index. Specifies on which week of the month the dayOfWeek applies. */
-export type Type =
-  | "First"
-  | "Second"
-  | "Third"
-  | "Fourth"
-  | "Last"
-  | (string & {});
+export type Type = "First" | "Second" | "Third" | "Fourth" | "Last";
 export const Type = /*@__PURE__*/ S.String;
 
 /** For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'. */
@@ -5158,10 +5109,7 @@ export const ManagedClustersCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<ManagedClustersCreateOrUpdateRequestTagsMap>;
 
 /** The operating system type. The default is Linux. */
-export type ManagedClusterAgentPoolProfileInputOsType =
-  | "Linux"
-  | "Windows"
-  | (string & {});
+export type ManagedClusterAgentPoolProfileInputOsType = "Linux" | "Windows";
 export const ManagedClusterAgentPoolProfileInputOsType = /*@__PURE__*/ S.String;
 
 /** The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'. */
@@ -5175,16 +5123,14 @@ export const ManagedClusterAgentPoolProfileInputAvailabilityZonesList =
 /** The Virtual Machine Scale Set priority. */
 export type ManagedClusterAgentPoolProfileInputScaleSetPriority =
   | "Spot"
-  | "Regular"
-  | (string & {});
+  | "Regular";
 export const ManagedClusterAgentPoolProfileInputScaleSetPriority =
   /*@__PURE__*/ S.String;
 
 /** The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) */
 export type ManagedClusterAgentPoolProfileInputScaleSetEvictionPolicy =
   | "Delete"
-  | "Deallocate"
-  | (string & {});
+  | "Deallocate";
 export const ManagedClusterAgentPoolProfileInputScaleSetEvictionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -5233,11 +5179,11 @@ export interface ManagedClusterAgentPoolProfileInput {
   /** OS Disk Size in GB to be used to specify the disk size for every machine in the master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified. */
   osDiskSizeGB?: number;
   /** The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os). */
-  osDiskType?: OSDiskType;
+  osDiskType?: OSDiskType | (string & {});
   /** Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. */
-  kubeletDiskType?: KubeletDiskType;
+  kubeletDiskType?: KubeletDiskType | (string & {});
   /** Determines the type of workload a node can run. */
-  workloadRuntime?: WorkloadRuntime;
+  workloadRuntime?: WorkloadRuntime | (string & {});
   /** Message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script). */
   messageOfTheDay?: string;
   /** The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName} */
@@ -5245,13 +5191,13 @@ export interface ManagedClusterAgentPoolProfileInput {
   /** The ID of the subnet which pods will join when launched. If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName} */
   podSubnetID?: string;
   /** Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'. */
-  podIPAllocationMode?: PodIPAllocationMode;
+  podIPAllocationMode?: PodIPAllocationMode | (string & {});
   /** The maximum number of pods that can run on a node. */
   maxPods?: number;
   /** The operating system type. The default is Linux. */
-  osType?: ManagedClusterAgentPoolProfileInputOsType;
+  osType?: ManagedClusterAgentPoolProfileInputOsType | (string & {});
   /** Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows. */
-  osSKU?: OSSKU;
+  osSKU?: OSSKU | (string & {});
   /** The maximum number of nodes for auto-scaling */
   maxCount?: number;
   /** The minimum number of nodes for auto-scaling */
@@ -5259,11 +5205,11 @@ export interface ManagedClusterAgentPoolProfileInput {
   /** Whether to enable auto-scaler */
   enableAutoScaling?: boolean;
   /** The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete. */
-  scaleDownMode?: ScaleDownMode;
+  scaleDownMode?: ScaleDownMode | (string & {});
   /** The type of Agent Pool. */
-  type?: AgentPoolType;
+  type?: AgentPoolType | (string & {});
   /** The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools */
-  mode?: AgentPoolMode;
+  mode?: AgentPoolMode | (string & {});
   /** The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor version must be within two minor versions of the control plane version. The node pool version cannot be greater than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool). */
   orchestratorVersion?: string;
   /** The version of the node image. Setting this value triggers an agentPool rollback. Only values from `recentlyUsedVersions` are allowed. */
@@ -5279,9 +5225,13 @@ export interface ManagedClusterAgentPoolProfileInput {
   /** The public IP prefix ID which VM nodes should use IPs from. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName} */
   nodePublicIPPrefixID?: string;
   /** The Virtual Machine Scale Set priority. */
-  scaleSetPriority?: ManagedClusterAgentPoolProfileInputScaleSetPriority;
+  scaleSetPriority?:
+    | ManagedClusterAgentPoolProfileInputScaleSetPriority
+    | (string & {});
   /** The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) */
-  scaleSetEvictionPolicy?: ManagedClusterAgentPoolProfileInputScaleSetEvictionPolicy;
+  scaleSetEvictionPolicy?:
+    | ManagedClusterAgentPoolProfileInputScaleSetEvictionPolicy
+    | (string & {});
   /** The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand. Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing) */
   spotMaxPrice?: number;
   /** The tags to be persisted on the agent pool virtual machine scale set. */
@@ -5303,7 +5253,7 @@ export interface ManagedClusterAgentPoolProfileInput {
   /** Whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview) for more details. */
   enableFIPS?: boolean;
   /** GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU. */
-  gpuInstanceProfile?: GPUInstanceProfile;
+  gpuInstanceProfile?: GPUInstanceProfile | (string & {});
   /** CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot. */
   creationData?: CreationData;
   /** The fully qualified resource ID of the Capacity Reservation Group to provide virtual machines from a reserved group of Virtual Machines. This is of the form: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Compute/capacityreservationgroups/{capacityReservationGroupName}' Customers use it to create an agentpool with a specified CRG. For more information see [Capacity Reservation](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-overview) */
@@ -5460,7 +5410,7 @@ export const ContainerServiceLinuxProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerServiceLinuxProfile>;
 
 /** The license type to use for Windows VMs. See [Azure Hybrid User Benefits](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) for more details. */
-export type LicenseType = "None" | "Windows_Server" | (string & {});
+export type LicenseType = "None" | "Windows_Server";
 export const LicenseType = /*@__PURE__*/ S.String;
 
 /** Windows gMSA Profile in the managed cluster. */
@@ -5690,7 +5640,7 @@ export const ManagedClusterOIDCIssuerProfileInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedClusterOIDCIssuerProfileInput>;
 
 /** The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted' */
-export type RestrictionLevel = "Unrestricted" | "ReadOnly" | (string & {});
+export type RestrictionLevel = "Unrestricted" | "ReadOnly";
 export const RestrictionLevel = /*@__PURE__*/ S.String;
 
 /** Node resource group lockdown profile for a managed cluster. */
@@ -5708,35 +5658,27 @@ export const ManagedClusterNodeResourceGroupProfile = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedClusterNodeResourceGroupProfile>;
 
 /** Different support tiers for AKS managed clusters */
-export type KubernetesSupportPlan =
-  | "KubernetesOfficial"
-  | "AKSLongTermSupport"
-  | (string & {});
+export type KubernetesSupportPlan = "KubernetesOfficial" | "AKSLongTermSupport";
 export const KubernetesSupportPlan = /*@__PURE__*/ S.String;
 
 /** Network plugin used for building the Kubernetes network. */
-export type NetworkPlugin = "azure" | "kubenet" | "none" | (string & {});
+export type NetworkPlugin = "azure" | "kubenet" | "none";
 export const NetworkPlugin = /*@__PURE__*/ S.String;
 
 /** The mode the network plugin should use. */
-export type NetworkPluginMode = "overlay" | (string & {});
+export type NetworkPluginMode = "overlay";
 export const NetworkPluginMode = /*@__PURE__*/ S.String;
 
 /** Network policy used for building the Kubernetes network. */
-export type NetworkPolicy =
-  | "none"
-  | "calico"
-  | "azure"
-  | "cilium"
-  | (string & {});
+export type NetworkPolicy = "none" | "calico" | "azure" | "cilium";
 export const NetworkPolicy = /*@__PURE__*/ S.String;
 
 /** The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'. */
-export type NetworkMode = "transparent" | "bridge" | (string & {});
+export type NetworkMode = "transparent" | "bridge";
 export const NetworkMode = /*@__PURE__*/ S.String;
 
 /** Network dataplane used in the Kubernetes cluster. */
-export type NetworkDataplane = "azure" | "cilium" | (string & {});
+export type NetworkDataplane = "azure" | "cilium";
 export const NetworkDataplane = /*@__PURE__*/ S.String;
 
 /** Observability profile to enable advanced network metrics and flow logs with historical contexts. */
@@ -5753,11 +5695,11 @@ export const AdvancedNetworkingObservability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvancedNetworkingObservability>;
 
 /** Enable advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html. This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if security.enabled is set to true. */
-export type AdvancedNetworkPolicies = "L7" | "FQDN" | "None" | (string & {});
+export type AdvancedNetworkPolicies = "L7" | "FQDN" | "None";
 export const AdvancedNetworkPolicies = /*@__PURE__*/ S.String;
 
 /** Configures pod-to-pod encryption. This can be enabled only on Cilium-based clusters. If not specified, the default value is None. */
-export type TransitEncryptionType = "WireGuard" | "None" | (string & {});
+export type TransitEncryptionType = "WireGuard" | "None";
 export const TransitEncryptionType = /*@__PURE__*/ S.String;
 
 /** Encryption configuration for Cilium-based clusters. Once enabled all traffic between Cilium managed pods will be encrypted when it leaves the node boundary. */
@@ -5794,10 +5736,7 @@ export const AdvancedNetworkingSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvancedNetworkingSecurity>;
 
 /** Enable advanced network acceleration options. This allows users to configure acceleration using BPF host routing. This can be enabled only with Cilium dataplane. If not specified, the default value is None (no acceleration). The acceleration mode can be changed on a pre-existing cluster. See https://aka.ms/acnsperformance for a detailed explanation */
-export type AdvancedNetworkingPerformanceAccelerationMode =
-  | "BpfVeth"
-  | "None"
-  | (string & {});
+export type AdvancedNetworkingPerformanceAccelerationMode = "BpfVeth" | "None";
 export const AdvancedNetworkingPerformanceAccelerationMode =
   /*@__PURE__*/ S.String;
 
@@ -5842,13 +5781,12 @@ export type ContainerServiceNetworkProfileInputOutboundType =
   | "userDefinedRouting"
   | "managedNATGateway"
   | "userAssignedNATGateway"
-  | "none"
-  | (string & {});
+  | "none";
 export const ContainerServiceNetworkProfileInputOutboundType =
   /*@__PURE__*/ S.String;
 
 /** The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs. */
-export type LoadBalancerSku = "standard" | "basic" | (string & {});
+export type LoadBalancerSku = "standard" | "basic";
 export const LoadBalancerSku = /*@__PURE__*/ S.String;
 
 /** Desired managed outbound IPs for the cluster load balancer. */
@@ -5932,8 +5870,7 @@ export const ManagedClusterLoadBalancerProfileOutboundIPs =
 /** The type of the managed inbound Load Balancer BackendPool. */
 export type ManagedClusterLoadBalancerProfileInputBackendPoolType =
   | "NodeIPConfiguration"
-  | "NodeIP"
-  | (string & {});
+  | "NodeIP";
 export const ManagedClusterLoadBalancerProfileInputBackendPoolType =
   /*@__PURE__*/ S.String;
 
@@ -5952,7 +5889,9 @@ export interface ManagedClusterLoadBalancerProfileInput {
   /** Enable multiple standard load balancers per AKS cluster or not. */
   enableMultipleStandardLoadBalancers?: boolean;
   /** The type of the managed inbound Load Balancer BackendPool. */
-  backendPoolType?: ManagedClusterLoadBalancerProfileInputBackendPoolType;
+  backendPoolType?:
+    | ManagedClusterLoadBalancerProfileInputBackendPoolType
+    | (string & {});
 }
 export const ManagedClusterLoadBalancerProfileInput = /*@__PURE__*/ S.suspend(
   () =>
@@ -6039,8 +5978,9 @@ export const ContainerServiceNetworkProfileInputServiceCidrsList =
   ) as any as S.Schema<ContainerServiceNetworkProfileInputServiceCidrsList>;
 
 /** The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
-export type ContainerServiceNetworkProfileInputIpFamiliesList =
-  ReadonlyArray<IPFamily>;
+export type ContainerServiceNetworkProfileInputIpFamiliesList = ReadonlyArray<
+  IPFamily | (string & {})
+>;
 export const ContainerServiceNetworkProfileInputIpFamiliesList =
   /*@__PURE__*/ S.Array(
     IPFamily,
@@ -6049,15 +5989,15 @@ export const ContainerServiceNetworkProfileInputIpFamiliesList =
 /** Profile of network configuration. */
 export interface ContainerServiceNetworkProfileInput {
   /** Network plugin used for building the Kubernetes network. */
-  networkPlugin?: NetworkPlugin;
+  networkPlugin?: NetworkPlugin | (string & {});
   /** The mode the network plugin should use. */
-  networkPluginMode?: NetworkPluginMode;
+  networkPluginMode?: NetworkPluginMode | (string & {});
   /** Network policy used for building the Kubernetes network. */
-  networkPolicy?: NetworkPolicy;
+  networkPolicy?: NetworkPolicy | (string & {});
   /** The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'. */
-  networkMode?: NetworkMode;
+  networkMode?: NetworkMode | (string & {});
   /** Network dataplane used in the Kubernetes cluster. */
-  networkDataplane?: NetworkDataplane;
+  networkDataplane?: NetworkDataplane | (string & {});
   /** Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking. */
   advancedNetworking?: AdvancedNetworking;
   /** A CIDR notation IP range from which to assign pod IPs when kubenet is used. */
@@ -6067,9 +6007,11 @@ export interface ContainerServiceNetworkProfileInput {
   /** An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr. */
   dnsServiceIP?: string;
   /** The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype). */
-  outboundType?: ContainerServiceNetworkProfileInputOutboundType;
+  outboundType?:
+    | ContainerServiceNetworkProfileInputOutboundType
+    | (string & {});
   /** The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs. */
-  loadBalancerSku?: LoadBalancerSku;
+  loadBalancerSku?: LoadBalancerSku | (string & {});
   /** Profile of the cluster load balancer. */
   loadBalancerProfile?: ManagedClusterLoadBalancerProfileInput;
   /** Profile of the cluster NAT gateway. */
@@ -6158,8 +6100,7 @@ export type UpgradeChannel =
   | "stable"
   | "patch"
   | "node-image"
-  | "none"
-  | (string & {});
+  | "none";
 export const UpgradeChannel = /*@__PURE__*/ S.String;
 
 /** Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage. */
@@ -6167,8 +6108,7 @@ export type NodeOSUpgradeChannel =
   | "None"
   | "Unmanaged"
   | "NodeImage"
-  | "SecurityPatch"
-  | (string & {});
+  | "SecurityPatch";
 export const NodeOSUpgradeChannel = /*@__PURE__*/ S.String;
 
 /** Auto upgrade profile for a managed cluster. */
@@ -6217,12 +6157,7 @@ export const ClusterUpgradeSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterUpgradeSettings>;
 
 /** The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information. */
-export type Expander =
-  | "least-waste"
-  | "most-pods"
-  | "priority"
-  | "random"
-  | (string & {});
+export type Expander = "least-waste" | "most-pods" | "priority" | "random";
 export const Expander = /*@__PURE__*/ S.String;
 
 /** Parameters to be applied to the cluster-autoscaler when enabled */
@@ -6541,10 +6476,7 @@ export const ManagedClusterSecurityProfileDefender = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedClusterSecurityProfileDefender>;
 
 /** Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`. */
-export type AzureKeyVaultKmsKeyVaultNetworkAccess =
-  | "Public"
-  | "Private"
-  | (string & {});
+export type AzureKeyVaultKmsKeyVaultNetworkAccess = "Public" | "Private";
 export const AzureKeyVaultKmsKeyVaultNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Azure Key Vault key management service settings for the security profile. */
@@ -6716,7 +6648,7 @@ export const ManagedClusterStorageProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterStorageProfile>;
 
 /** Whether to enable Istio as a Gateway API implementation for managed ingress with App Routing. */
-export type GatewayAPIIstioEnabled = "Enabled" | "Disabled" | (string & {});
+export type GatewayAPIIstioEnabled = "Enabled" | "Disabled";
 export const GatewayAPIIstioEnabled = /*@__PURE__*/ S.String;
 
 /** Configuration for using a sidecar-less Istio control plane for managed ingress via the Gateway API with App Routing. See https://aka.ms/gateway-on-istio for information on using Istio for ingress via the Gateway API. */
@@ -6759,8 +6691,7 @@ export type NginxIngressControllerType =
   | "AnnotationControlled"
   | "External"
   | "Internal"
-  | "None"
-  | (string & {});
+  | "None";
 export const NginxIngressControllerType = /*@__PURE__*/ S.String;
 
 /** Nginx ingress controller configuration for the managed cluster ingress profile. */
@@ -6807,7 +6738,7 @@ export const ManagedClusterIngressProfileWebAppRouting =
   }) as any as S.Schema<ManagedClusterIngressProfileWebAppRouting>;
 
 /** Configuration for the managed Gateway API installation. If not specified, the default is 'Disabled'. See https://aka.ms/k8s-gateway-api for more details. */
-export type ManagedGatewayType = "Disabled" | "Standard" | (string & {});
+export type ManagedGatewayType = "Disabled" | "Standard";
 export const ManagedGatewayType = /*@__PURE__*/ S.String;
 
 /** Configuration for managed Gateway API CRDs. See https://aka.ms/k8s-gateway-api for more details. */
@@ -6841,7 +6772,7 @@ export const ManagedClusterIngressProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterIngressProfile>;
 
 /** PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile. */
@@ -6994,11 +6925,11 @@ export const ManagedClusterAzureMonitorProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterAzureMonitorProfile>;
 
 /** Mode of the service mesh. */
-export type ServiceMeshMode = "Istio" | "Disabled" | (string & {});
+export type ServiceMeshMode = "Istio" | "Disabled";
 export const ServiceMeshMode = /*@__PURE__*/ S.String;
 
 /** Mode of an ingress gateway. */
-export type IstioIngressGatewayMode = "External" | "Internal" | (string & {});
+export type IstioIngressGatewayMode = "External" | "Internal";
 export const IstioIngressGatewayMode = /*@__PURE__*/ S.String;
 
 /** Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`. */
@@ -7054,10 +6985,7 @@ export const IstioComponentsEgressGatewaysList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IstioComponentsEgressGatewaysList>;
 
 /** Mode of traffic redirection. */
-export type ProxyRedirectionMechanism =
-  | "InitContainers"
-  | "CNIChaining"
-  | (string & {});
+export type ProxyRedirectionMechanism = "InitContainers" | "CNIChaining";
 export const ProxyRedirectionMechanism = /*@__PURE__*/ S.String;
 
 /** Istio components configuration. */
@@ -7185,14 +7113,13 @@ export const ManagedClusterMetricsProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterMetricsProfile>;
 
 /** The node provisioning mode. If not specified, the default is Manual. */
-export type NodeProvisioningMode = "Manual" | "Auto" | (string & {});
+export type NodeProvisioningMode = "Manual" | "Auto";
 export const NodeProvisioningMode = /*@__PURE__*/ S.String;
 
 /** The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is 'Auto'. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For more information see aka.ms/aks/nap#node-pools. */
 export type ManagedClusterNodeProvisioningProfileDefaultNodePools =
   | "None"
-  | "Auto"
-  | (string & {});
+  | "Auto";
 export const ManagedClusterNodeProvisioningProfileDefaultNodePools =
   /*@__PURE__*/ S.String;
 
@@ -7216,10 +7143,7 @@ export const ManagedClusterNodeProvisioningProfile = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedClusterNodeProvisioningProfile>;
 
 /** The artifact source. The source where the artifacts are downloaded from. */
-export type ManagedClusterBootstrapProfileArtifactSource =
-  | "Cache"
-  | "Direct"
-  | (string & {});
+export type ManagedClusterBootstrapProfileArtifactSource = "Cache" | "Direct";
 export const ManagedClusterBootstrapProfileArtifactSource =
   /*@__PURE__*/ S.String;
 
@@ -7254,7 +7178,7 @@ export const ManagedClusterAIToolchainOperatorProfile = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedClusterAIToolchainOperatorProfile>;
 
 /** The config customization mode for this scheduler instance. */
-export type SchedulerConfigMode = "Default" | "ManagedByCRD" | (string & {});
+export type SchedulerConfigMode = "Default" | "ManagedByCRD";
 export const SchedulerConfigMode = /*@__PURE__*/ S.String;
 
 /** Profile with settings related to a specific instance of an AKS-managed scheduler. */
@@ -7351,7 +7275,7 @@ export interface ManagedClusterPropertiesInput {
   /** Whether to enable Kubernetes Role-Based Access Control. */
   enableRBAC?: boolean;
   /** The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'. */
-  supportPlan?: KubernetesSupportPlan;
+  supportPlan?: KubernetesSupportPlan | (string & {});
   /** The network configuration profile. */
   networkProfile?: ContainerServiceNetworkProfileInput;
   /** The Azure Active Directory configuration. */
@@ -7381,7 +7305,7 @@ export interface ManagedClusterPropertiesInput {
   /** Ingress profile for the managed cluster. */
   ingressProfile?: ManagedClusterIngressProfile;
   /** PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** Workload Auto-scaler profile for the managed cluster. */
   workloadAutoScalerProfile?: ManagedClusterWorkloadAutoScalerProfile;
   /** Azure Monitor addon profiles for monitoring the managed cluster. */
@@ -7462,15 +7386,11 @@ export const ManagedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterPropertiesInput>;
 
 /** The name of a managed cluster SKU. */
-export type ManagedClusterSKUName = "Base" | "Automatic" | (string & {});
+export type ManagedClusterSKUName = "Base" | "Automatic";
 export const ManagedClusterSKUName = /*@__PURE__*/ S.String;
 
 /** The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details. */
-export type ManagedClusterSKUTier =
-  | "Premium"
-  | "Standard"
-  | "Free"
-  | (string & {});
+export type ManagedClusterSKUTier = "Premium" | "Standard" | "Free";
 export const ManagedClusterSKUTier = /*@__PURE__*/ S.String;
 
 /** The SKU of a Managed Cluster. */
@@ -7490,7 +7410,7 @@ export const ManagedClusterSKU = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterSKU>;
 
 /** The type of extendedLocation. */
-export type ExtendedLocationTypes = "EdgeZone" | (string & {});
+export type ExtendedLocationTypes = "EdgeZone";
 export const ExtendedLocationTypes = /*@__PURE__*/ S.String;
 
 /** The complex type of the extended location. */
@@ -7510,11 +7430,7 @@ export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtendedLocation>;
 
 /** The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity). */
-export type ResourceIdentityType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "None"
-  | (string & {});
+export type ResourceIdentityType = "SystemAssigned" | "UserAssigned" | "None";
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** Delegated resource properties - internal use only. */
@@ -7572,7 +7488,7 @@ export const ManagedClusterIdentityInputUserAssignedIdentitiesMap =
 /** Identity for the managed cluster. */
 export interface ManagedClusterIdentityInput {
   /** The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity). */
-  type?: ResourceIdentityType;
+  type?: ResourceIdentityType | (string & {});
   /** The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only. */
   delegatedResources?: ManagedClusterIdentityInputDelegatedResourcesMap;
   /** The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
@@ -7650,10 +7566,7 @@ export const ManagedClustersCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<ManagedClustersCreateOrUpdateResponseTagsMap>;
 
 /** The operating system type. The default is Linux. */
-export type ManagedClusterAgentPoolProfileOsType =
-  | "Linux"
-  | "Windows"
-  | (string & {});
+export type ManagedClusterAgentPoolProfileOsType = "Linux" | "Windows";
 export const ManagedClusterAgentPoolProfileOsType = /*@__PURE__*/ S.String;
 
 /** The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'. */
@@ -7665,18 +7578,14 @@ export const ManagedClusterAgentPoolProfileAvailabilityZonesList =
   ) as any as S.Schema<ManagedClusterAgentPoolProfileAvailabilityZonesList>;
 
 /** The Virtual Machine Scale Set priority. */
-export type ManagedClusterAgentPoolProfileScaleSetPriority =
-  | "Spot"
-  | "Regular"
-  | (string & {});
+export type ManagedClusterAgentPoolProfileScaleSetPriority = "Spot" | "Regular";
 export const ManagedClusterAgentPoolProfileScaleSetPriority =
   /*@__PURE__*/ S.String;
 
 /** The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) */
 export type ManagedClusterAgentPoolProfileScaleSetEvictionPolicy =
   | "Delete"
-  | "Deallocate"
-  | (string & {});
+  | "Deallocate";
 export const ManagedClusterAgentPoolProfileScaleSetEvictionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -7925,8 +7834,7 @@ export type ManagedClusterPodIdentityProvisioningState =
   | "Deleting"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ManagedClusterPodIdentityProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -8083,8 +7991,7 @@ export type ContainerServiceNetworkProfileOutboundType =
   | "userDefinedRouting"
   | "managedNATGateway"
   | "userAssignedNATGateway"
-  | "none"
-  | (string & {});
+  | "none";
 export const ContainerServiceNetworkProfileOutboundType =
   /*@__PURE__*/ S.String;
 
@@ -8099,8 +8006,7 @@ export const ManagedClusterLoadBalancerProfileEffectiveOutboundIPsList =
 /** The type of the managed inbound Load Balancer BackendPool. */
 export type ManagedClusterLoadBalancerProfileBackendPoolType =
   | "NodeIPConfiguration"
-  | "NodeIP"
-  | (string & {});
+  | "NodeIP";
 export const ManagedClusterLoadBalancerProfileBackendPoolType =
   /*@__PURE__*/ S.String;
 
@@ -9053,10 +8959,7 @@ export const ManagedClustersGetUpgradeProfileRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedClustersGetUpgradeProfileRequest>;
 
 /** The operating system type. The default is Linux. */
-export type ManagedClusterPoolUpgradeProfileOsType =
-  | "Linux"
-  | "Windows"
-  | (string & {});
+export type ManagedClusterPoolUpgradeProfileOsType = "Linux" | "Windows";
 export const ManagedClusterPoolUpgradeProfileOsType = /*@__PURE__*/ S.String;
 
 /** Available upgrades for an AgentPool. */
@@ -9367,8 +9270,7 @@ export const ManagedClustersListClusterMonitoringUserCredentialsRequest =
 
 export type ManagedClustersListClusterUserCredentialsRequestFormat =
   | "azure"
-  | "exec"
-  | (string & {});
+  | "exec";
 export const ManagedClustersListClusterUserCredentialsRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -9382,7 +9284,9 @@ export interface ManagedClustersListClusterUserCredentialsRequest {
   /** server fqdn type for credentials to be returned */
   server_fqdn?: string;
   /** Only apply to AAD clusters, specifies the format of returned kubeconfig. Format 'azure' will return azure auth-provider kubeconfig; format 'exec' will return exec format kubeconfig, which requires kubelogin binary in the path. */
-  format?: ManagedClustersListClusterUserCredentialsRequestFormat;
+  format?:
+    | ManagedClustersListClusterUserCredentialsRequestFormat
+    | (string & {});
 }
 export const ManagedClustersListClusterUserCredentialsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10128,16 +10032,14 @@ export const ResourceQuota = /*@__PURE__*/ S.suspend(() =>
 export type NetworkPoliciesIngress =
   | "DenyAll"
   | "AllowAll"
-  | "AllowSameNamespace"
-  | (string & {});
+  | "AllowSameNamespace";
 export const NetworkPoliciesIngress = /*@__PURE__*/ S.String;
 
 /** Enum representing different network policy rules. */
 export type NetworkPoliciesEgress =
   | "DenyAll"
   | "AllowAll"
-  | "AllowSameNamespace"
-  | (string & {});
+  | "AllowSameNamespace";
 export const NetworkPoliciesEgress = /*@__PURE__*/ S.String;
 
 /** Default network policy of the namespace, specifying ingress and egress rules. */
@@ -10157,11 +10059,11 @@ export const NetworkPolicies = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkPolicies>;
 
 /** Action if Kubernetes namespace with same name already exists. */
-export type AdoptionPolicy = "Never" | "IfIdentical" | "Always" | (string & {});
+export type AdoptionPolicy = "Never" | "IfIdentical" | "Always";
 export const AdoptionPolicy = /*@__PURE__*/ S.String;
 
 /** Delete options of a namespace. */
-export type DeletePolicy = "Keep" | "Delete" | (string & {});
+export type DeletePolicy = "Keep" | "Delete";
 export const DeletePolicy = /*@__PURE__*/ S.String;
 
 /** Properties of a namespace managed by ARM */
@@ -10175,9 +10077,9 @@ export interface NamespacePropertiesInput {
   /** The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. Network policies are additive; if a policy or policies apply to a given pod for a given direction, the connections allowed in that direction for the pod is the union of what all applicable policies allow. */
   defaultNetworkPolicy?: NetworkPolicies;
   /** Action if Kubernetes namespace with same name already exists. */
-  adoptionPolicy?: AdoptionPolicy;
+  adoptionPolicy?: AdoptionPolicy | (string & {});
   /** Delete options of a namespace. */
-  deletePolicy?: DeletePolicy;
+  deletePolicy?: DeletePolicy | (string & {});
 }
 export const NamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10247,8 +10149,7 @@ export type NamespaceProvisioningState =
   | "Creating"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const NamespaceProvisioningState = /*@__PURE__*/ S.String;
 
 /** The labels of managed namespace. */
@@ -10789,8 +10690,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -10812,8 +10712,7 @@ export type ConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 /** The state of a private link service connection. */
@@ -11128,7 +11027,7 @@ export const SnapshotsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SnapshotsCreateOrUpdateRequestTagsMap>;
 
 /** The type of a snapshot. The default is NodePool. */
-export type SnapshotPropertiesInputSnapshotType = "NodePool" | (string & {});
+export type SnapshotPropertiesInputSnapshotType = "NodePool";
 export const SnapshotPropertiesInputSnapshotType = /*@__PURE__*/ S.String;
 
 /** Properties used to configure a node pool snapshot. */
@@ -11136,7 +11035,7 @@ export interface SnapshotPropertiesInput {
   /** CreationData to be used to specify the source agent pool resource ID to create this snapshot. */
   creationData?: CreationData;
   /** The type of a snapshot. The default is NodePool. */
-  snapshotType?: SnapshotPropertiesInputSnapshotType;
+  snapshotType?: SnapshotPropertiesInputSnapshotType | (string & {});
 }
 export const SnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11191,11 +11090,11 @@ export const SnapshotsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SnapshotsCreateOrUpdateResponseTagsMap>;
 
 /** The type of a snapshot. The default is NodePool. */
-export type SnapshotPropertiesSnapshotType = "NodePool" | (string & {});
+export type SnapshotPropertiesSnapshotType = "NodePool";
 export const SnapshotPropertiesSnapshotType = /*@__PURE__*/ S.String;
 
 /** The operating system type. The default is Linux. */
-export type SnapshotPropertiesOsType = "Linux" | "Windows" | (string & {});
+export type SnapshotPropertiesOsType = "Linux" | "Windows";
 export const SnapshotPropertiesOsType = /*@__PURE__*/ S.String;
 
 /** Properties used to configure a node pool snapshot. */
@@ -11594,8 +11493,7 @@ export type TrustedAccessRoleBindingProvisioningState =
   | "Deleting"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const TrustedAccessRoleBindingProvisioningState = /*@__PURE__*/ S.String;
 
 /** A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'. */
@@ -11942,8 +11840,7 @@ export const TrustedAccessRoleListResult = /*@__PURE__*/ S.suspend(() =>
 export type ManagedClusterUpgradeType =
   | "Full"
   | "NodeImageOnly"
-  | "ControlPlaneOnly"
-  | (string & {});
+  | "ControlPlaneOnly";
 export const ManagedClusterUpgradeType = /*@__PURE__*/ S.String;
 
 /** The upgrade to apply to a ManagedCluster. */
@@ -11963,11 +11860,7 @@ export const ManagedClusterUpgradeSpec = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterUpgradeSpec>;
 
 /** The node image upgrade type. */
-export type NodeImageSelectionType =
-  | "Latest"
-  | "Consistent"
-  | "Custom"
-  | (string & {});
+export type NodeImageSelectionType = "Latest" | "Consistent" | "Custom";
 export const NodeImageSelectionType = /*@__PURE__*/ S.String;
 
 /** The node upgrade image version. */
@@ -11989,7 +11882,7 @@ export const NodeImageSelectionInputCustomNodeImageVersionsList =
 /** The node image upgrade to be applied to the target nodes in update run. */
 export interface NodeImageSelectionInput {
   /** The node image upgrade type. */
-  type: NodeImageSelectionType;
+  type: NodeImageSelectionType | (string & {});
   /** Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded. */
   customNodeImageVersions?: NodeImageSelectionInputCustomNodeImageVersionsList;
 }
@@ -12071,11 +11964,7 @@ export const UpdateRunsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRunsCreateOrUpdateRequest>;
 
 /** The provisioning state of the UpdateRun resource. */
-export type UpdateRunProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
+export type UpdateRunProvisioningState = "Succeeded" | "Failed" | "Canceled";
 export const UpdateRunProvisioningState = /*@__PURE__*/ S.String;
 
 /** The node upgrade image version. */
@@ -12142,8 +12031,7 @@ export type UpdateState =
   | "Skipped"
   | "Failed"
   | "Pending"
-  | "Completed"
-  | (string & {});
+  | "Completed";
 export const UpdateState = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -12569,18 +12457,13 @@ export const UpdateRunListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRunListResult>;
 
 /** The target type of a skip request. */
-export type TargetType =
-  | "Member"
-  | "Group"
-  | "Stage"
-  | "AfterStageWait"
-  | (string & {});
+export type TargetType = "Member" | "Group" | "Stage" | "AfterStageWait";
 export const TargetType = /*@__PURE__*/ S.String;
 
 /** The definition of a single skip request. */
 export interface SkipTarget {
   /** The skip target type. */
-  type: TargetType;
+  type: TargetType | (string & {});
   /** The skip target's name. To skip a member/group/stage, use the member/group/stage's name; Tp skip an after stage wait, use the parent stage's name. */
   name: string;
 }

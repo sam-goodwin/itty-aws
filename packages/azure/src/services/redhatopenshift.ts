@@ -31,12 +31,11 @@ export type ProvisioningState =
   | "Deleting"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** FipsValidatedModules determines if FIPS is used. */
-export type FipsValidatedModules = "Disabled" | "Enabled" | (string & {});
+export type FipsValidatedModules = "Disabled" | "Enabled";
 export const FipsValidatedModules = /*@__PURE__*/ S.String;
 
 /** ClusterProfile represents a cluster profile. */
@@ -50,7 +49,7 @@ export interface ClusterProfileInput {
   /** The ID of the cluster resource group. */
   resourceGroupId?: string;
   /** If FIPS validated crypto modules are used */
-  fipsValidatedModules?: FipsValidatedModules;
+  fipsValidatedModules?: FipsValidatedModules | (string & {});
 }
 export const ClusterProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -130,10 +129,7 @@ export const PlatformWorkloadIdentityProfileInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PlatformWorkloadIdentityProfileInput>;
 
 /** The outbound routing strategy used to provide your cluster egress to the internet. */
-export type OutboundType =
-  | "Loadbalancer"
-  | "UserDefinedRouting"
-  | (string & {});
+export type OutboundType = "Loadbalancer" | "UserDefinedRouting";
 export const OutboundType = /*@__PURE__*/ S.String;
 
 /** ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer. */
@@ -163,7 +159,7 @@ export const LoadBalancerProfileInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoadBalancerProfileInput>;
 
 /** PreconfiguredNSG represents whether customers want to use their own NSG attached to the subnets */
-export type PreconfiguredNSG = "Disabled" | "Enabled" | (string & {});
+export type PreconfiguredNSG = "Disabled" | "Enabled";
 export const PreconfiguredNSG = /*@__PURE__*/ S.String;
 
 /** NetworkProfile represents a network profile. */
@@ -173,11 +169,11 @@ export interface NetworkProfileInput {
   /** The CIDR used for OpenShift/Kubernetes Services. */
   serviceCidr?: string;
   /** The OutboundType used for egress traffic. */
-  outboundType?: OutboundType;
+  outboundType?: OutboundType | (string & {});
   /** The cluster load balancer profile. */
   loadBalancerProfile?: LoadBalancerProfileInput;
   /** Specifies whether subnets are pre-attached with an NSG */
-  preconfiguredNSG?: PreconfiguredNSG;
+  preconfiguredNSG?: PreconfiguredNSG | (string & {});
 }
 export const NetworkProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -192,7 +188,7 @@ export const NetworkProfileInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkProfileInput>;
 
 /** EncryptionAtHost represents encryption at host state */
-export type EncryptionAtHost = "Disabled" | "Enabled" | (string & {});
+export type EncryptionAtHost = "Disabled" | "Enabled";
 export const EncryptionAtHost = /*@__PURE__*/ S.String;
 
 /** MasterProfile represents a master profile. */
@@ -253,13 +249,13 @@ export const OpenShiftClusterPropertiesInputWorkerProfilesList =
   ) as any as S.Schema<OpenShiftClusterPropertiesInputWorkerProfilesList>;
 
 /** Visibility represents visibility. */
-export type Visibility = "Private" | "Public" | (string & {});
+export type Visibility = "Private" | "Public";
 export const Visibility = /*@__PURE__*/ S.String;
 
 /** APIServerProfile represents an API server profile. */
 export interface APIServerProfileInput {
   /** API server visibility. */
-  visibility?: Visibility;
+  visibility?: Visibility | (string & {});
 }
 export const APIServerProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -274,7 +270,7 @@ export interface IngressProfileInput {
   /** The ingress profile name. */
   name?: string;
   /** Ingress visibility. */
-  visibility?: Visibility;
+  visibility?: Visibility | (string & {});
 }
 export const IngressProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -296,7 +292,7 @@ export const OpenShiftClusterPropertiesInputIngressProfilesList =
 /** OpenShiftClusterProperties represents an OpenShift cluster's properties. */
 export interface OpenShiftClusterPropertiesInput {
   /** The cluster provisioning state. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** The cluster profile. */
   clusterProfile?: ClusterProfileInput;
   /** The console profile. */
@@ -344,8 +340,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -367,7 +362,7 @@ export const OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitie
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface OpenShiftClustersCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -426,8 +421,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -435,8 +429,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1184,7 +1177,7 @@ export const OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface OpenShiftClustersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap;
 }

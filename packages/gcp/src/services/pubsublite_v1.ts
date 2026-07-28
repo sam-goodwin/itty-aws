@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelAdminProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,27 +72,18 @@ export interface CancelAdminProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelAdminProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/admin/{+name}:cancel",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelAdminProjectsLocationsOperationsRequest",
-  }) as any as S.Schema<CancelAdminProjectsLocationsOperationsRequest>;
+export const CancelAdminProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/admin/{+name}:cancel","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "CancelAdminProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelAdminProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** A cursor that describes the position of a message within a topic partition. */
 export interface Cursor {
@@ -102,9 +91,9 @@ export interface Cursor {
   offset?: string;
 }
 export const Cursor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offset: S.optional(S.String),
-  }),
+S.Struct({
+  "offset": S.optional(S.String),
+}),
 ).annotate({ identifier: "Cursor" }) as any as S.Schema<Cursor>;
 
 /** Request for CommitCursor. */
@@ -115,13 +104,11 @@ export interface CommitCursorRequest {
   cursor?: Cursor;
 }
 export const CommitCursorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partition: S.optional(S.String),
-    cursor: S.optional(Cursor),
-  }),
-).annotate({
-  identifier: "CommitCursorRequest",
-}) as any as S.Schema<CommitCursorRequest>;
+S.Struct({
+  "partition": S.optional(S.String),
+  "cursor": S.optional(Cursor),
+}),
+).annotate({ identifier: "CommitCursorRequest" }) as any as S.Schema<CommitCursorRequest>;
 
 export interface CommitCursorCursorProjectsLocationsSubscriptionsRequest {
   /** The subscription for which to update the cursor. */
@@ -129,29 +116,18 @@ export interface CommitCursorCursorProjectsLocationsSubscriptionsRequest {
   /** Request body */
   body?: CommitCursorRequest;
 }
-export const CommitCursorCursorProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscription: S.String.pipe(T.Label()),
-      body: S.optional(CommitCursorRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/cursor/{+subscription}:commitCursor",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CommitCursorCursorProjectsLocationsSubscriptionsRequest",
-  }) as any as S.Schema<CommitCursorCursorProjectsLocationsSubscriptionsRequest>;
+export const CommitCursorCursorProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "subscription": S.String.pipe(T.Label()),
+  "body": S.optional(CommitCursorRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/cursor/{+subscription}:commitCursor","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "CommitCursorCursorProjectsLocationsSubscriptionsRequest" }) as any as S.Schema<CommitCursorCursorProjectsLocationsSubscriptionsRequest>;
 
 /** Response for CommitCursor. */
 export interface CommitCursorResponse {}
 export const CommitCursorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CommitCursorResponse",
-}) as any as S.Schema<CommitCursorResponse>;
+S.Struct({}),
+).annotate({ identifier: "CommitCursorResponse" }) as any as S.Schema<CommitCursorResponse>;
 
 /** Compute the current head cursor for a partition. */
 export interface ComputeHeadCursorRequest {
@@ -159,12 +135,10 @@ export interface ComputeHeadCursorRequest {
   partition?: string;
 }
 export const ComputeHeadCursorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partition: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ComputeHeadCursorRequest",
-}) as any as S.Schema<ComputeHeadCursorRequest>;
+S.Struct({
+  "partition": S.optional(S.String),
+}),
+).annotate({ identifier: "ComputeHeadCursorRequest" }) as any as S.Schema<ComputeHeadCursorRequest>;
 
 export interface ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest {
   /** Required. The topic for which we should compute the head cursor. */
@@ -172,21 +146,12 @@ export interface ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest {
   /** Request body */
   body?: ComputeHeadCursorRequest;
 }
-export const ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      topic: S.String.pipe(T.Label()),
-      body: S.optional(ComputeHeadCursorRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/topicStats/{+topic}:computeHeadCursor",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest",
-  }) as any as S.Schema<ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest>;
+export const ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "topic": S.String.pipe(T.Label()),
+  "body": S.optional(ComputeHeadCursorRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/topicStats/{+topic}:computeHeadCursor","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest" }) as any as S.Schema<ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest>;
 
 /** Response containing the head cursor for the requested topic and partition. */
 export interface ComputeHeadCursorResponse {
@@ -194,12 +159,10 @@ export interface ComputeHeadCursorResponse {
   headCursor?: Cursor;
 }
 export const ComputeHeadCursorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headCursor: S.optional(Cursor),
-  }),
-).annotate({
-  identifier: "ComputeHeadCursorResponse",
-}) as any as S.Schema<ComputeHeadCursorResponse>;
+S.Struct({
+  "headCursor": S.optional(Cursor),
+}),
+).annotate({ identifier: "ComputeHeadCursorResponse" }) as any as S.Schema<ComputeHeadCursorResponse>;
 
 /** Compute statistics about a range of messages in a given topic and partition. */
 export interface ComputeMessageStatsRequest {
@@ -211,14 +174,12 @@ export interface ComputeMessageStatsRequest {
   partition?: string;
 }
 export const ComputeMessageStatsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startCursor: S.optional(Cursor),
-    endCursor: S.optional(Cursor),
-    partition: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ComputeMessageStatsRequest",
-}) as any as S.Schema<ComputeMessageStatsRequest>;
+S.Struct({
+  "startCursor": S.optional(Cursor),
+  "endCursor": S.optional(Cursor),
+  "partition": S.optional(S.String),
+}),
+).annotate({ identifier: "ComputeMessageStatsRequest" }) as any as S.Schema<ComputeMessageStatsRequest>;
 
 export interface ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest {
   /** Required. The topic for which we should compute message stats. */
@@ -226,21 +187,12 @@ export interface ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest {
   /** Request body */
   body?: ComputeMessageStatsRequest;
 }
-export const ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      topic: S.String.pipe(T.Label()),
-      body: S.optional(ComputeMessageStatsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/topicStats/{+topic}:computeMessageStats",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest",
-  }) as any as S.Schema<ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest>;
+export const ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "topic": S.String.pipe(T.Label()),
+  "body": S.optional(ComputeMessageStatsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/topicStats/{+topic}:computeMessageStats","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest" }) as any as S.Schema<ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest>;
 
 /** Response containing stats for messages in the requested topic and partition. */
 export interface ComputeMessageStatsResponse {
@@ -254,15 +206,13 @@ export interface ComputeMessageStatsResponse {
   messageBytes?: string;
 }
 export const ComputeMessageStatsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minimumPublishTime: S.optional(S.String),
-    minimumEventTime: S.optional(S.String),
-    messageCount: S.optional(S.String),
-    messageBytes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ComputeMessageStatsResponse",
-}) as any as S.Schema<ComputeMessageStatsResponse>;
+S.Struct({
+  "minimumPublishTime": S.optional(S.String),
+  "minimumEventTime": S.optional(S.String),
+  "messageCount": S.optional(S.String),
+  "messageBytes": S.optional(S.String),
+}),
+).annotate({ identifier: "ComputeMessageStatsResponse" }) as any as S.Schema<ComputeMessageStatsResponse>;
 
 /** A target publish or event time. Can be used for seeking to or retrieving the corresponding cursor. */
 export interface TimeTarget {
@@ -272,10 +222,10 @@ export interface TimeTarget {
   eventTime?: string;
 }
 export const TimeTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publishTime: S.optional(S.String),
-    eventTime: S.optional(S.String),
-  }),
+S.Struct({
+  "publishTime": S.optional(S.String),
+  "eventTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeTarget" }) as any as S.Schema<TimeTarget>;
 
 /** Compute the corresponding cursor for a publish or event time in a topic partition. */
@@ -286,13 +236,11 @@ export interface ComputeTimeCursorRequest {
   target?: TimeTarget;
 }
 export const ComputeTimeCursorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partition: S.optional(S.String),
-    target: S.optional(TimeTarget),
-  }),
-).annotate({
-  identifier: "ComputeTimeCursorRequest",
-}) as any as S.Schema<ComputeTimeCursorRequest>;
+S.Struct({
+  "partition": S.optional(S.String),
+  "target": S.optional(TimeTarget),
+}),
+).annotate({ identifier: "ComputeTimeCursorRequest" }) as any as S.Schema<ComputeTimeCursorRequest>;
 
 export interface ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest {
   /** Required. The topic for which we should compute the cursor. */
@@ -300,21 +248,12 @@ export interface ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest {
   /** Request body */
   body?: ComputeTimeCursorRequest;
 }
-export const ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      topic: S.String.pipe(T.Label()),
-      body: S.optional(ComputeTimeCursorRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/topicStats/{+topic}:computeTimeCursor",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest",
-  }) as any as S.Schema<ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest>;
+export const ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "topic": S.String.pipe(T.Label()),
+  "body": S.optional(ComputeTimeCursorRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/topicStats/{+topic}:computeTimeCursor","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest" }) as any as S.Schema<ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest>;
 
 /** Response containing the cursor corresponding to a publish or event time in a topic partition. */
 export interface ComputeTimeCursorResponse {
@@ -322,12 +261,10 @@ export interface ComputeTimeCursorResponse {
   cursor?: Cursor;
 }
 export const ComputeTimeCursorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cursor: S.optional(Cursor),
-  }),
-).annotate({
-  identifier: "ComputeTimeCursorResponse",
-}) as any as S.Schema<ComputeTimeCursorResponse>;
+S.Struct({
+  "cursor": S.optional(Cursor),
+}),
+).annotate({ identifier: "ComputeTimeCursorResponse" }) as any as S.Schema<ComputeTimeCursorResponse>;
 
 /** Metadata about a reservation resource. */
 export interface Reservation {
@@ -337,10 +274,10 @@ export interface Reservation {
   throughputCapacity?: string;
 }
 export const Reservation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    throughputCapacity: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "throughputCapacity": S.optional(S.String),
+}),
 ).annotate({ identifier: "Reservation" }) as any as S.Schema<Reservation>;
 
 export interface CreateAdminProjectsLocationsReservationsRequest {
@@ -351,39 +288,18 @@ export interface CreateAdminProjectsLocationsReservationsRequest {
   /** Request body */
   body?: Reservation;
 }
-export const CreateAdminProjectsLocationsReservationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      reservationId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Reservation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/admin/{+parent}/reservations",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateAdminProjectsLocationsReservationsRequest",
-  }) as any as S.Schema<CreateAdminProjectsLocationsReservationsRequest>;
+export const CreateAdminProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "reservationId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Reservation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/admin/{+parent}/reservations","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "CreateAdminProjectsLocationsReservationsRequest" }) as any as S.Schema<CreateAdminProjectsLocationsReservationsRequest>;
 
-export type ExportConfigCurrentStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "PAUSED"
-  | "PERMISSION_DENIED"
-  | "NOT_FOUND"
-  | (string & {});
+export type ExportConfigCurrentStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "PAUSED" | "PERMISSION_DENIED" | "NOT_FOUND";
 export const ExportConfigCurrentStateEnum = /*@__PURE__*/ S.String;
 
-export type ExportConfigDesiredStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "PAUSED"
-  | "PERMISSION_DENIED"
-  | "NOT_FOUND"
-  | (string & {});
+export type ExportConfigDesiredStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "PAUSED" | "PERMISSION_DENIED" | "NOT_FOUND";
 export const ExportConfigDesiredStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for exporting to a Pub/Sub topic. */
@@ -392,9 +308,9 @@ export interface PubSubConfig {
   topic?: string;
 }
 export const PubSubConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.optional(S.String),
-  }),
+S.Struct({
+  "topic": S.optional(S.String),
+}),
 ).annotate({ identifier: "PubSubConfig" }) as any as S.Schema<PubSubConfig>;
 
 /** Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription. */
@@ -409,19 +325,15 @@ export interface ExportConfig {
   pubsubConfig?: PubSubConfig;
 }
 export const ExportConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentState: S.optional(ExportConfigCurrentStateEnum),
-    desiredState: S.optional(ExportConfigDesiredStateEnum),
-    deadLetterTopic: S.optional(S.String),
-    pubsubConfig: S.optional(PubSubConfig),
-  }),
+S.Struct({
+  "currentState": S.optional(ExportConfigCurrentStateEnum),
+  "desiredState": S.optional(ExportConfigDesiredStateEnum),
+  "deadLetterTopic": S.optional(S.String),
+  "pubsubConfig": S.optional(PubSubConfig),
+}),
 ).annotate({ identifier: "ExportConfig" }) as any as S.Schema<ExportConfig>;
 
-export type DeliveryConfigDeliveryRequirementEnum =
-  | "DELIVERY_REQUIREMENT_UNSPECIFIED"
-  | "DELIVER_IMMEDIATELY"
-  | "DELIVER_AFTER_STORED"
-  | (string & {});
+export type DeliveryConfigDeliveryRequirementEnum = "DELIVERY_REQUIREMENT_UNSPECIFIED" | "DELIVER_IMMEDIATELY" | "DELIVER_AFTER_STORED";
 export const DeliveryConfigDeliveryRequirementEnum = /*@__PURE__*/ S.String;
 
 /** The settings for a subscription's message delivery. */
@@ -430,9 +342,9 @@ export interface DeliveryConfig {
   deliveryRequirement?: DeliveryConfigDeliveryRequirementEnum;
 }
 export const DeliveryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryRequirement: S.optional(DeliveryConfigDeliveryRequirementEnum),
-  }),
+S.Struct({
+  "deliveryRequirement": S.optional(DeliveryConfigDeliveryRequirementEnum),
+}),
 ).annotate({ identifier: "DeliveryConfig" }) as any as S.Schema<DeliveryConfig>;
 
 /** Metadata about a subscription resource. */
@@ -447,12 +359,12 @@ export interface Subscription {
   topic?: string;
 }
 export const Subscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    exportConfig: S.optional(ExportConfig),
-    deliveryConfig: S.optional(DeliveryConfig),
-    topic: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "exportConfig": S.optional(ExportConfig),
+  "deliveryConfig": S.optional(DeliveryConfig),
+  "topic": S.optional(S.String),
+}),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 export interface CreateAdminProjectsLocationsSubscriptionsRequest {
@@ -465,23 +377,14 @@ export interface CreateAdminProjectsLocationsSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const CreateAdminProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      skipBacklog: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(Subscription.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/admin/{+parent}/subscriptions",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateAdminProjectsLocationsSubscriptionsRequest",
-  }) as any as S.Schema<CreateAdminProjectsLocationsSubscriptionsRequest>;
+export const CreateAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "subscriptionId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "skipBacklog": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Subscription.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/admin/{+parent}/subscriptions","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "CreateAdminProjectsLocationsSubscriptionsRequest" }) as any as S.Schema<CreateAdminProjectsLocationsSubscriptionsRequest>;
 
 /** The settings for this topic's Reservation usage. */
 export interface ReservationConfig {
@@ -489,12 +392,10 @@ export interface ReservationConfig {
   throughputReservation?: string;
 }
 export const ReservationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    throughputReservation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReservationConfig",
-}) as any as S.Schema<ReservationConfig>;
+S.Struct({
+  "throughputReservation": S.optional(S.String),
+}),
+).annotate({ identifier: "ReservationConfig" }) as any as S.Schema<ReservationConfig>;
 
 /** The throughput capacity configuration for each partition. */
 export interface Capacity {
@@ -504,10 +405,10 @@ export interface Capacity {
   subscribeMibPerSec?: number;
 }
 export const Capacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publishMibPerSec: S.optional(S.Number),
-    subscribeMibPerSec: S.optional(S.Number),
-  }),
+S.Struct({
+  "publishMibPerSec": S.optional(S.Number),
+  "subscribeMibPerSec": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Capacity" }) as any as S.Schema<Capacity>;
 
 /** The settings for a topic's partitions. */
@@ -520,14 +421,12 @@ export interface PartitionConfig {
   capacity?: Capacity;
 }
 export const PartitionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.String),
-    scale: S.optional(S.Number),
-    capacity: S.optional(Capacity),
-  }),
-).annotate({
-  identifier: "PartitionConfig",
-}) as any as S.Schema<PartitionConfig>;
+S.Struct({
+  "count": S.optional(S.String),
+  "scale": S.optional(S.Number),
+  "capacity": S.optional(Capacity),
+}),
+).annotate({ identifier: "PartitionConfig" }) as any as S.Schema<PartitionConfig>;
 
 /** The settings for a topic's message retention. */
 export interface RetentionConfig {
@@ -537,13 +436,11 @@ export interface RetentionConfig {
   period?: string;
 }
 export const RetentionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    perPartitionBytes: S.optional(S.String),
-    period: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RetentionConfig",
-}) as any as S.Schema<RetentionConfig>;
+S.Struct({
+  "perPartitionBytes": S.optional(S.String),
+  "period": S.optional(S.String),
+}),
+).annotate({ identifier: "RetentionConfig" }) as any as S.Schema<RetentionConfig>;
 
 /** Metadata about a topic resource. */
 export interface Topic {
@@ -557,12 +454,12 @@ export interface Topic {
   retentionConfig?: RetentionConfig;
 }
 export const Topic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reservationConfig: S.optional(ReservationConfig),
-    name: S.optional(S.String),
-    partitionConfig: S.optional(PartitionConfig),
-    retentionConfig: S.optional(RetentionConfig),
-  }),
+S.Struct({
+  "reservationConfig": S.optional(ReservationConfig),
+  "name": S.optional(S.String),
+  "partitionConfig": S.optional(PartitionConfig),
+  "retentionConfig": S.optional(RetentionConfig),
+}),
 ).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
 
 export interface CreateAdminProjectsLocationsTopicsRequest {
@@ -573,128 +470,69 @@ export interface CreateAdminProjectsLocationsTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-export const CreateAdminProjectsLocationsTopicsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      topicId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Topic.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/admin/{+parent}/topics",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateAdminProjectsLocationsTopicsRequest",
-  }) as any as S.Schema<CreateAdminProjectsLocationsTopicsRequest>;
+export const CreateAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "topicId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Topic.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/admin/{+parent}/topics","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "CreateAdminProjectsLocationsTopicsRequest" }) as any as S.Schema<CreateAdminProjectsLocationsTopicsRequest>;
 
 export interface DeleteAdminProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteAdminProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteAdminProjectsLocationsOperationsRequest",
-  }) as any as S.Schema<DeleteAdminProjectsLocationsOperationsRequest>;
+export const DeleteAdminProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "DeleteAdminProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteAdminProjectsLocationsOperationsRequest>;
 
 export interface DeleteAdminProjectsLocationsReservationsRequest {
   /** Required. The name of the reservation to delete. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
   name: string;
 }
-export const DeleteAdminProjectsLocationsReservationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteAdminProjectsLocationsReservationsRequest",
-  }) as any as S.Schema<DeleteAdminProjectsLocationsReservationsRequest>;
+export const DeleteAdminProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "DeleteAdminProjectsLocationsReservationsRequest" }) as any as S.Schema<DeleteAdminProjectsLocationsReservationsRequest>;
 
 export interface DeleteAdminProjectsLocationsSubscriptionsRequest {
   /** Required. The name of the subscription to delete. */
   name: string;
 }
-export const DeleteAdminProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteAdminProjectsLocationsSubscriptionsRequest",
-  }) as any as S.Schema<DeleteAdminProjectsLocationsSubscriptionsRequest>;
+export const DeleteAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "DeleteAdminProjectsLocationsSubscriptionsRequest" }) as any as S.Schema<DeleteAdminProjectsLocationsSubscriptionsRequest>;
 
 export interface DeleteAdminProjectsLocationsTopicsRequest {
   /** Required. The name of the topic to delete. */
   name: string;
 }
-export const DeleteAdminProjectsLocationsTopicsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteAdminProjectsLocationsTopicsRequest",
-  }) as any as S.Schema<DeleteAdminProjectsLocationsTopicsRequest>;
+export const DeleteAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "DeleteAdminProjectsLocationsTopicsRequest" }) as any as S.Schema<DeleteAdminProjectsLocationsTopicsRequest>;
 
 export interface GetAdminProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetAdminProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetAdminProjectsLocationsOperationsRequest",
-  }) as any as S.Schema<GetAdminProjectsLocationsOperationsRequest>;
+export const GetAdminProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "GetAdminProjectsLocationsOperationsRequest" }) as any as S.Schema<GetAdminProjectsLocationsOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -706,11 +544,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -727,90 +565,54 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(Status),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "error": S.optional(Status),
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface GetAdminProjectsLocationsReservationsRequest {
   /** Required. The name of the reservation whose configuration to return. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
   name: string;
 }
-export const GetAdminProjectsLocationsReservationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetAdminProjectsLocationsReservationsRequest",
-  }) as any as S.Schema<GetAdminProjectsLocationsReservationsRequest>;
+export const GetAdminProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "GetAdminProjectsLocationsReservationsRequest" }) as any as S.Schema<GetAdminProjectsLocationsReservationsRequest>;
 
 export interface GetAdminProjectsLocationsSubscriptionsRequest {
   /** Required. The name of the subscription whose configuration to return. */
   name: string;
 }
-export const GetAdminProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetAdminProjectsLocationsSubscriptionsRequest",
-  }) as any as S.Schema<GetAdminProjectsLocationsSubscriptionsRequest>;
+export const GetAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "GetAdminProjectsLocationsSubscriptionsRequest" }) as any as S.Schema<GetAdminProjectsLocationsSubscriptionsRequest>;
 
 export interface GetAdminProjectsLocationsTopicsRequest {
   /** Required. The name of the topic whose configuration to return. */
   name: string;
 }
-export const GetAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetAdminProjectsLocationsTopicsRequest",
-}) as any as S.Schema<GetAdminProjectsLocationsTopicsRequest>;
+export const GetAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "GetAdminProjectsLocationsTopicsRequest" }) as any as S.Schema<GetAdminProjectsLocationsTopicsRequest>;
 
 export interface GetPartitionsAdminProjectsLocationsTopicsRequest {
   /** Required. The topic whose partition information to return. */
   name: string;
 }
-export const GetPartitionsAdminProjectsLocationsTopicsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+name}/partitions",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetPartitionsAdminProjectsLocationsTopicsRequest",
-  }) as any as S.Schema<GetPartitionsAdminProjectsLocationsTopicsRequest>;
+export const GetPartitionsAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+name}/partitions","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "GetPartitionsAdminProjectsLocationsTopicsRequest" }) as any as S.Schema<GetPartitionsAdminProjectsLocationsTopicsRequest>;
 
 /** Response for GetTopicPartitions. */
 export interface TopicPartitions {
@@ -818,12 +620,10 @@ export interface TopicPartitions {
   partitionCount?: string;
 }
 export const TopicPartitions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partitionCount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TopicPartitions",
-}) as any as S.Schema<TopicPartitions>;
+S.Struct({
+  "partitionCount": S.optional(S.String),
+}),
+).annotate({ identifier: "TopicPartitions" }) as any as S.Schema<TopicPartitions>;
 
 export interface ListAdminProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -837,34 +637,21 @@ export interface ListAdminProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListAdminProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+name}/operations",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAdminProjectsLocationsOperationsRequest",
-  }) as any as S.Schema<ListAdminProjectsLocationsOperationsRequest>;
+export const ListAdminProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+name}/operations","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "ListAdminProjectsLocationsOperationsRequest" }) as any as S.Schema<ListAdminProjectsLocationsOperationsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -876,14 +663,12 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListAdminProjectsLocationsReservationsRequest {
   /** A page token, received from a previous `ListReservations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReservations` must match the call that provided the page token. */
@@ -893,27 +678,16 @@ export interface ListAdminProjectsLocationsReservationsRequest {
   /** Required. The parent whose reservations are to be listed. Structured like `projects/{project_number}/locations/{location}`. */
   parent: string;
 }
-export const ListAdminProjectsLocationsReservationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+parent}/reservations",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAdminProjectsLocationsReservationsRequest",
-  }) as any as S.Schema<ListAdminProjectsLocationsReservationsRequest>;
+export const ListAdminProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+parent}/reservations","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "ListAdminProjectsLocationsReservationsRequest" }) as any as S.Schema<ListAdminProjectsLocationsReservationsRequest>;
 
 export type ReservationList = ReadonlyArray<Reservation>;
-export const ReservationList = /*@__PURE__*/ S.Array(
-  Reservation,
-) as any as S.Schema<ReservationList>;
+export const ReservationList = /*@__PURE__*/ S.Array(Reservation) as any as S.Schema<ReservationList>;
 
 /** Response for ListReservations. */
 export interface ListReservationsResponse {
@@ -923,13 +697,11 @@ export interface ListReservationsResponse {
   reservations?: ReservationList;
 }
 export const ListReservationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    reservations: S.optional(ReservationList),
-  }),
-).annotate({
-  identifier: "ListReservationsResponse",
-}) as any as S.Schema<ListReservationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "reservations": S.optional(ReservationList),
+}),
+).annotate({ identifier: "ListReservationsResponse" }) as any as S.Schema<ListReservationsResponse>;
 
 export interface ListAdminProjectsLocationsReservationsTopicsRequest {
   /** Required. The name of the reservation whose topics to list. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
@@ -939,22 +711,13 @@ export interface ListAdminProjectsLocationsReservationsTopicsRequest {
   /** A page token, received from a previous `ListReservationTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReservationTopics` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAdminProjectsLocationsReservationsTopicsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+name}/topics",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAdminProjectsLocationsReservationsTopicsRequest",
-  }) as any as S.Schema<ListAdminProjectsLocationsReservationsTopicsRequest>;
+export const ListAdminProjectsLocationsReservationsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+name}/topics","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "ListAdminProjectsLocationsReservationsTopicsRequest" }) as any as S.Schema<ListAdminProjectsLocationsReservationsTopicsRequest>;
 
 /** Response for ListReservationTopics. */
 export interface ListReservationTopicsResponse {
@@ -964,13 +727,11 @@ export interface ListReservationTopicsResponse {
   nextPageToken?: string;
 }
 export const ListReservationTopicsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topics: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListReservationTopicsResponse",
-}) as any as S.Schema<ListReservationTopicsResponse>;
+S.Struct({
+  "topics": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListReservationTopicsResponse" }) as any as S.Schema<ListReservationTopicsResponse>;
 
 export interface ListAdminProjectsLocationsSubscriptionsRequest {
   /** A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match the call that provided the page token. */
@@ -980,27 +741,16 @@ export interface ListAdminProjectsLocationsSubscriptionsRequest {
   /** The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the parent will be returned. */
   pageSize?: number;
 }
-export const ListAdminProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+parent}/subscriptions",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAdminProjectsLocationsSubscriptionsRequest",
-  }) as any as S.Schema<ListAdminProjectsLocationsSubscriptionsRequest>;
+export const ListAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+parent}/subscriptions","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "ListAdminProjectsLocationsSubscriptionsRequest" }) as any as S.Schema<ListAdminProjectsLocationsSubscriptionsRequest>;
 
 export type SubscriptionList = ReadonlyArray<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** Response for ListSubscriptions. */
 export interface ListSubscriptionsResponse {
@@ -1010,13 +760,11 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptions: S.optional(SubscriptionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSubscriptionsResponse",
-}) as any as S.Schema<ListSubscriptionsResponse>;
+S.Struct({
+  "subscriptions": S.optional(SubscriptionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListSubscriptionsResponse" }) as any as S.Schema<ListSubscriptionsResponse>;
 
 export interface ListAdminProjectsLocationsTopicsRequest {
   /** The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the parent will be returned. */
@@ -1026,27 +774,16 @@ export interface ListAdminProjectsLocationsTopicsRequest {
   /** A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+parent}/topics",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListAdminProjectsLocationsTopicsRequest",
-}) as any as S.Schema<ListAdminProjectsLocationsTopicsRequest>;
+export const ListAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+parent}/topics","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "ListAdminProjectsLocationsTopicsRequest" }) as any as S.Schema<ListAdminProjectsLocationsTopicsRequest>;
 
 export type TopicList = ReadonlyArray<Topic>;
-export const TopicList = /*@__PURE__*/ S.Array(
-  Topic,
-) as any as S.Schema<TopicList>;
+export const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
 
 /** Response for ListTopics. */
 export interface ListTopicsResponse {
@@ -1056,13 +793,11 @@ export interface ListTopicsResponse {
   nextPageToken?: string;
 }
 export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topics: S.optional(TopicList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListTopicsResponse",
-}) as any as S.Schema<ListTopicsResponse>;
+S.Struct({
+  "topics": S.optional(TopicList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListTopicsResponse" }) as any as S.Schema<ListTopicsResponse>;
 
 export interface ListAdminProjectsLocationsTopicsSubscriptionsRequest {
   /** Required. The name of the topic whose subscriptions to list. */
@@ -1072,22 +807,13 @@ export interface ListAdminProjectsLocationsTopicsSubscriptionsRequest {
   /** A page token, received from a previous `ListTopicSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopicSubscriptions` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAdminProjectsLocationsTopicsSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/admin/{+name}/subscriptions",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAdminProjectsLocationsTopicsSubscriptionsRequest",
-  }) as any as S.Schema<ListAdminProjectsLocationsTopicsSubscriptionsRequest>;
+export const ListAdminProjectsLocationsTopicsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/admin/{+name}/subscriptions","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "ListAdminProjectsLocationsTopicsSubscriptionsRequest" }) as any as S.Schema<ListAdminProjectsLocationsTopicsSubscriptionsRequest>;
 
 /** Response for ListTopicSubscriptions. */
 export interface ListTopicSubscriptionsResponse {
@@ -1097,13 +823,11 @@ export interface ListTopicSubscriptionsResponse {
   nextPageToken?: string;
 }
 export const ListTopicSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptions: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListTopicSubscriptionsResponse",
-}) as any as S.Schema<ListTopicSubscriptionsResponse>;
+S.Struct({
+  "subscriptions": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListTopicSubscriptionsResponse" }) as any as S.Schema<ListTopicSubscriptionsResponse>;
 
 export interface ListCursorProjectsLocationsSubscriptionsCursorsRequest {
   /** A page token, received from a previous `ListPartitionCursors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPartitionCursors` must match the call that provided the page token. */
@@ -1113,22 +837,13 @@ export interface ListCursorProjectsLocationsSubscriptionsCursorsRequest {
   /** Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`. */
   parent: string;
 }
-export const ListCursorProjectsLocationsSubscriptionsCursorsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/cursor/{+parent}/cursors",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListCursorProjectsLocationsSubscriptionsCursorsRequest",
-  }) as any as S.Schema<ListCursorProjectsLocationsSubscriptionsCursorsRequest>;
+export const ListCursorProjectsLocationsSubscriptionsCursorsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/cursor/{+parent}/cursors","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "ListCursorProjectsLocationsSubscriptionsCursorsRequest" }) as any as S.Schema<ListCursorProjectsLocationsSubscriptionsCursorsRequest>;
 
 /** A pair of a Cursor and the partition it is for. */
 export interface PartitionCursor {
@@ -1138,18 +853,14 @@ export interface PartitionCursor {
   cursor?: Cursor;
 }
 export const PartitionCursor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partition: S.optional(S.String),
-    cursor: S.optional(Cursor),
-  }),
-).annotate({
-  identifier: "PartitionCursor",
-}) as any as S.Schema<PartitionCursor>;
+S.Struct({
+  "partition": S.optional(S.String),
+  "cursor": S.optional(Cursor),
+}),
+).annotate({ identifier: "PartitionCursor" }) as any as S.Schema<PartitionCursor>;
 
 export type PartitionCursorList = ReadonlyArray<PartitionCursor>;
-export const PartitionCursorList = /*@__PURE__*/ S.Array(
-  PartitionCursor,
-) as any as S.Schema<PartitionCursorList>;
+export const PartitionCursorList = /*@__PURE__*/ S.Array(PartitionCursor) as any as S.Schema<PartitionCursorList>;
 
 /** Response for ListPartitionCursors */
 export interface ListPartitionCursorsResponse {
@@ -1159,13 +870,11 @@ export interface ListPartitionCursorsResponse {
   nextPageToken?: string;
 }
 export const ListPartitionCursorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partitionCursors: S.optional(PartitionCursorList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPartitionCursorsResponse",
-}) as any as S.Schema<ListPartitionCursorsResponse>;
+S.Struct({
+  "partitionCursors": S.optional(PartitionCursorList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPartitionCursorsResponse" }) as any as S.Schema<ListPartitionCursorsResponse>;
 
 export interface PatchAdminProjectsLocationsReservationsRequest {
   /** Required. A mask specifying the reservation fields to change. */
@@ -1175,22 +884,13 @@ export interface PatchAdminProjectsLocationsReservationsRequest {
   /** Request body */
   body?: Reservation;
 }
-export const PatchAdminProjectsLocationsReservationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Reservation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchAdminProjectsLocationsReservationsRequest",
-  }) as any as S.Schema<PatchAdminProjectsLocationsReservationsRequest>;
+export const PatchAdminProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Reservation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "PatchAdminProjectsLocationsReservationsRequest" }) as any as S.Schema<PatchAdminProjectsLocationsReservationsRequest>;
 
 export interface PatchAdminProjectsLocationsSubscriptionsRequest {
   /** Required. A mask specifying the subscription fields to change. */
@@ -1200,22 +900,13 @@ export interface PatchAdminProjectsLocationsSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const PatchAdminProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Subscription.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchAdminProjectsLocationsSubscriptionsRequest",
-  }) as any as S.Schema<PatchAdminProjectsLocationsSubscriptionsRequest>;
+export const PatchAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Subscription.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "PatchAdminProjectsLocationsSubscriptionsRequest" }) as any as S.Schema<PatchAdminProjectsLocationsSubscriptionsRequest>;
 
 export interface PatchAdminProjectsLocationsTopicsRequest {
   /** The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
@@ -1225,45 +916,30 @@ export interface PatchAdminProjectsLocationsTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-export const PatchAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Topic.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/admin/{+name}",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchAdminProjectsLocationsTopicsRequest",
-}) as any as S.Schema<PatchAdminProjectsLocationsTopicsRequest>;
+export const PatchAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Topic.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/admin/{+name}","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "PatchAdminProjectsLocationsTopicsRequest" }) as any as S.Schema<PatchAdminProjectsLocationsTopicsRequest>;
 
-export type SeekSubscriptionRequestNamedTargetEnum =
-  | "NAMED_TARGET_UNSPECIFIED"
-  | "TAIL"
-  | "HEAD"
-  | (string & {});
+export type SeekSubscriptionRequestNamedTargetEnum = "NAMED_TARGET_UNSPECIFIED" | "TAIL" | "HEAD";
 export const SeekSubscriptionRequestNamedTargetEnum = /*@__PURE__*/ S.String;
 
 /** Request for SeekSubscription. */
 export interface SeekSubscriptionRequest {
   /** Seek to a named position with respect to the message backlog. */
-  namedTarget?: SeekSubscriptionRequestNamedTargetEnum;
+  namedTarget?: SeekSubscriptionRequestNamedTargetEnum | (string & {});
   /** Seek to the first message whose publish or event time is greater than or equal to the specified query time. If no such message can be located, will seek to the end of the message backlog. */
   timeTarget?: TimeTarget;
 }
 export const SeekSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namedTarget: S.optional(SeekSubscriptionRequestNamedTargetEnum),
-    timeTarget: S.optional(TimeTarget),
-  }),
-).annotate({
-  identifier: "SeekSubscriptionRequest",
-}) as any as S.Schema<SeekSubscriptionRequest>;
+S.Struct({
+  "namedTarget": S.optional(SeekSubscriptionRequestNamedTargetEnum),
+  "timeTarget": S.optional(TimeTarget),
+}),
+).annotate({ identifier: "SeekSubscriptionRequest" }) as any as S.Schema<SeekSubscriptionRequest>;
 
 export interface SeekAdminProjectsLocationsSubscriptionsRequest {
   /** Required. The name of the subscription to seek. */
@@ -1271,28 +947,14 @@ export interface SeekAdminProjectsLocationsSubscriptionsRequest {
   /** Request body */
   body?: SeekSubscriptionRequest;
 }
-export const SeekAdminProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SeekSubscriptionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/admin/{+name}:seek",
-        baseUrl: "https://pubsublite.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SeekAdminProjectsLocationsSubscriptionsRequest",
-  }) as any as S.Schema<SeekAdminProjectsLocationsSubscriptionsRequest>;
+export const SeekAdminProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SeekSubscriptionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/admin/{+name}:seek","baseUrl":"https://pubsublite.googleapis.com/"})),
+).annotate({ identifier: "SeekAdminProjectsLocationsSubscriptionsRequest" }) as any as S.Schema<SeekAdminProjectsLocationsSubscriptionsRequest>;
 
-export type CancelAdminProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelAdminProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelAdminProjectsLocationsOperations: API.OperationMethod<
   CancelAdminProjectsLocationsOperationsRequest,
@@ -1307,12 +969,7 @@ export const cancelAdminProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CommitCursorCursorProjectsLocationsSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CommitCursorCursorProjectsLocationsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the committed cursor. */
 export const commitCursorCursorProjectsLocationsSubscriptions: API.OperationMethod<
   CommitCursorCursorProjectsLocationsSubscriptionsRequest,
@@ -1327,12 +984,7 @@ export const commitCursorCursorProjectsLocationsSubscriptions: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type ComputeHeadCursorTopicStatsProjectsLocationsTopicsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ComputeHeadCursorTopicStatsProjectsLocationsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Compute the head cursor for the partition. The head cursor's offset is guaranteed to be less than or equal to all messages which have not yet been acknowledged as published, and greater than the offset of any message whose publish has already been acknowledged. It is zero if there have never been messages in the partition. */
 export const computeHeadCursorTopicStatsProjectsLocationsTopics: API.OperationMethod<
   ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest,
@@ -1347,12 +999,7 @@ export const computeHeadCursorTopicStatsProjectsLocationsTopics: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type ComputeMessageStatsTopicStatsProjectsLocationsTopicsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ComputeMessageStatsTopicStatsProjectsLocationsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Compute statistics about a range of messages in a given topic and partition. */
 export const computeMessageStatsTopicStatsProjectsLocationsTopics: API.OperationMethod<
   ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest,
@@ -1367,12 +1014,7 @@ export const computeMessageStatsTopicStatsProjectsLocationsTopics: API.Operation
   retry: Retry.Retry,
 }));
 
-export type ComputeTimeCursorTopicStatsProjectsLocationsTopicsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ComputeTimeCursorTopicStatsProjectsLocationsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Compute the corresponding cursor for a publish or event time in a topic partition. */
 export const computeTimeCursorTopicStatsProjectsLocationsTopics: API.OperationMethod<
   ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest,
@@ -1387,12 +1029,7 @@ export const computeTimeCursorTopicStatsProjectsLocationsTopics: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type CreateAdminProjectsLocationsReservationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAdminProjectsLocationsReservationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new reservation. */
 export const createAdminProjectsLocationsReservations: API.OperationMethod<
   CreateAdminProjectsLocationsReservationsRequest,
@@ -1407,12 +1044,7 @@ export const createAdminProjectsLocationsReservations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAdminProjectsLocationsSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAdminProjectsLocationsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new subscription. */
 export const createAdminProjectsLocationsSubscriptions: API.OperationMethod<
   CreateAdminProjectsLocationsSubscriptionsRequest,
@@ -1427,12 +1059,7 @@ export const createAdminProjectsLocationsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAdminProjectsLocationsTopicsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAdminProjectsLocationsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new topic. */
 export const createAdminProjectsLocationsTopics: API.OperationMethod<
   CreateAdminProjectsLocationsTopicsRequest,
@@ -1447,12 +1074,7 @@ export const createAdminProjectsLocationsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAdminProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAdminProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteAdminProjectsLocationsOperations: API.OperationMethod<
   DeleteAdminProjectsLocationsOperationsRequest,
@@ -1467,12 +1089,7 @@ export const deleteAdminProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAdminProjectsLocationsReservationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAdminProjectsLocationsReservationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified reservation. */
 export const deleteAdminProjectsLocationsReservations: API.OperationMethod<
   DeleteAdminProjectsLocationsReservationsRequest,
@@ -1487,12 +1104,7 @@ export const deleteAdminProjectsLocationsReservations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAdminProjectsLocationsSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAdminProjectsLocationsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified subscription. */
 export const deleteAdminProjectsLocationsSubscriptions: API.OperationMethod<
   DeleteAdminProjectsLocationsSubscriptionsRequest,
@@ -1507,12 +1119,7 @@ export const deleteAdminProjectsLocationsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAdminProjectsLocationsTopicsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAdminProjectsLocationsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified topic. */
 export const deleteAdminProjectsLocationsTopics: API.OperationMethod<
   DeleteAdminProjectsLocationsTopicsRequest,
@@ -1527,10 +1134,7 @@ export const deleteAdminProjectsLocationsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAdminProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAdminProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getAdminProjectsLocationsOperations: API.OperationMethod<
   GetAdminProjectsLocationsOperationsRequest,
@@ -1545,10 +1149,7 @@ export const getAdminProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAdminProjectsLocationsReservationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAdminProjectsLocationsReservationsError = NotFound | Forbidden | GcpOpError;
 /** Returns the reservation configuration. */
 export const getAdminProjectsLocationsReservations: API.OperationMethod<
   GetAdminProjectsLocationsReservationsRequest,
@@ -1563,10 +1164,7 @@ export const getAdminProjectsLocationsReservations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAdminProjectsLocationsSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAdminProjectsLocationsSubscriptionsError = NotFound | Forbidden | GcpOpError;
 /** Returns the subscription configuration. */
 export const getAdminProjectsLocationsSubscriptions: API.OperationMethod<
   GetAdminProjectsLocationsSubscriptionsRequest,
@@ -1581,10 +1179,7 @@ export const getAdminProjectsLocationsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAdminProjectsLocationsTopicsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAdminProjectsLocationsTopicsError = NotFound | Forbidden | GcpOpError;
 /** Returns the topic configuration. */
 export const getAdminProjectsLocationsTopics: API.OperationMethod<
   GetAdminProjectsLocationsTopicsRequest,
@@ -1599,10 +1194,7 @@ export const getAdminProjectsLocationsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetPartitionsAdminProjectsLocationsTopicsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetPartitionsAdminProjectsLocationsTopicsError = NotFound | Forbidden | GcpOpError;
 /** Returns the partition information for the requested topic. */
 export const getPartitionsAdminProjectsLocationsTopics: API.OperationMethod<
   GetPartitionsAdminProjectsLocationsTopicsRequest,
@@ -1617,10 +1209,7 @@ export const getPartitionsAdminProjectsLocationsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAdminProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAdminProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listAdminProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListAdminProjectsLocationsOperationsRequest,
@@ -1633,16 +1222,10 @@ export const listAdminProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAdminProjectsLocationsReservationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAdminProjectsLocationsReservationsError = NotFound | Forbidden | GcpOpError;
 /** Returns the list of reservations for the given project. */
 export const listAdminProjectsLocationsReservations: API.PaginatedOperationMethod<
   ListAdminProjectsLocationsReservationsRequest,
@@ -1655,16 +1238,10 @@ export const listAdminProjectsLocationsReservations: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAdminProjectsLocationsReservationsTopicsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAdminProjectsLocationsReservationsTopicsError = NotFound | Forbidden | GcpOpError;
 /** Lists the topics attached to the specified reservation. */
 export const listAdminProjectsLocationsReservationsTopics: API.PaginatedOperationMethod<
   ListAdminProjectsLocationsReservationsTopicsRequest,
@@ -1677,16 +1254,10 @@ export const listAdminProjectsLocationsReservationsTopics: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAdminProjectsLocationsSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAdminProjectsLocationsSubscriptionsError = NotFound | Forbidden | GcpOpError;
 /** Returns the list of subscriptions for the given project. */
 export const listAdminProjectsLocationsSubscriptions: API.PaginatedOperationMethod<
   ListAdminProjectsLocationsSubscriptionsRequest,
@@ -1699,16 +1270,10 @@ export const listAdminProjectsLocationsSubscriptions: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAdminProjectsLocationsTopicsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAdminProjectsLocationsTopicsError = NotFound | Forbidden | GcpOpError;
 /** Returns the list of topics for the given project. */
 export const listAdminProjectsLocationsTopics: API.PaginatedOperationMethod<
   ListAdminProjectsLocationsTopicsRequest,
@@ -1721,16 +1286,10 @@ export const listAdminProjectsLocationsTopics: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAdminProjectsLocationsTopicsSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAdminProjectsLocationsTopicsSubscriptionsError = NotFound | Forbidden | GcpOpError;
 /** Lists the subscriptions attached to the specified topic. */
 export const listAdminProjectsLocationsTopicsSubscriptions: API.PaginatedOperationMethod<
   ListAdminProjectsLocationsTopicsSubscriptionsRequest,
@@ -1743,16 +1302,10 @@ export const listAdminProjectsLocationsTopicsSubscriptions: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListCursorProjectsLocationsSubscriptionsCursorsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListCursorProjectsLocationsSubscriptionsCursorsError = NotFound | Forbidden | GcpOpError;
 /** Returns all committed cursor information for a subscription. */
 export const listCursorProjectsLocationsSubscriptionsCursors: API.PaginatedOperationMethod<
   ListCursorProjectsLocationsSubscriptionsCursorsRequest,
@@ -1765,18 +1318,10 @@ export const listCursorProjectsLocationsSubscriptionsCursors: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchAdminProjectsLocationsReservationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAdminProjectsLocationsReservationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates properties of the specified reservation. */
 export const patchAdminProjectsLocationsReservations: API.OperationMethod<
   PatchAdminProjectsLocationsReservationsRequest,
@@ -1791,12 +1336,7 @@ export const patchAdminProjectsLocationsReservations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAdminProjectsLocationsSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAdminProjectsLocationsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates properties of the specified subscription. */
 export const patchAdminProjectsLocationsSubscriptions: API.OperationMethod<
   PatchAdminProjectsLocationsSubscriptionsRequest,
@@ -1811,12 +1351,7 @@ export const patchAdminProjectsLocationsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAdminProjectsLocationsTopicsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAdminProjectsLocationsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates properties of the specified topic. */
 export const patchAdminProjectsLocationsTopics: API.OperationMethod<
   PatchAdminProjectsLocationsTopicsRequest,
@@ -1831,12 +1366,7 @@ export const patchAdminProjectsLocationsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SeekAdminProjectsLocationsSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SeekAdminProjectsLocationsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Performs an out-of-band seek for a subscription to a specified target, which may be timestamps or named positions within the message backlog. Seek translates these targets to cursors for each partition and orchestrates subscribers to start consuming messages from these seek cursors. If an operation is returned, the seek has been registered and subscribers will eventually receive messages from the seek cursors (i.e. eventual consistency), as long as they are using a minimum supported client library version and not a system that tracks cursors independently of Pub/Sub Lite (e.g. Apache Beam, Dataflow, Spark). The seek operation will fail for unsupported clients. If clients would like to know when subscribers react to the seek (or not), they can poll the operation. The seek operation will succeed and complete once subscribers are ready to receive messages from the seek cursors for all partitions of the topic. This means that the seek operation will not complete until all subscribers come online. If the previous seek operation has not yet completed, it will be aborted and the new invocation of seek will supersede it. */
 export const seekAdminProjectsLocationsSubscriptions: API.OperationMethod<
   SeekAdminProjectsLocationsSubscriptionsRequest,
@@ -1850,3 +1380,4 @@ export const seekAdminProjectsLocationsSubscriptions: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

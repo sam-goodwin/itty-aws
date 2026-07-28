@@ -37,15 +37,14 @@ export class NotFound extends T.applyErrorMatchers(
 
 export type HeatmapsEventsRetrieveRequestAggregation =
   | "unique_visitors"
-  | "total_count"
-  | (string & {});
+  | "total_count";
 export const HeatmapsEventsRetrieveRequestAggregation = /*@__PURE__*/ S.String;
 
 export interface HeatmapsEventsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** How to aggregate counts: 'total_count' (every interaction, default) or 'unique_visitors' (distinct people). * `unique_visitors` - unique_visitors * `total_count` - total_count */
-  aggregation?: HeatmapsEventsRetrieveRequestAggregation;
+  aggregation?: HeatmapsEventsRetrieveRequestAggregation | (string & {});
   /** JSON array of cohort IDs (e.g. '[123, 456]') to restrict results to people in those cohorts. Feature-flagged; ignored when the cohort filter is not enabled for the caller. */
   cohort_ids?: string;
   /** Start of the window. Relative (e.g. '-7d', '-30d', '-1mStart') or an absolute 'YYYY-MM-DD' date. Defaults to '-7d'. Heatmap data is retained for 90 days. */
@@ -146,17 +145,14 @@ export const HeatmapEventsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapEventsResponse",
 }) as any as S.Schema<HeatmapEventsResponse>;
 
-export type HeatmapsListRequestAggregation =
-  | "unique_visitors"
-  | "total_count"
-  | (string & {});
+export type HeatmapsListRequestAggregation = "unique_visitors" | "total_count";
 export const HeatmapsListRequestAggregation = /*@__PURE__*/ S.String;
 
 export interface HeatmapsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** How to aggregate counts: 'total_count' (every interaction, default) or 'unique_visitors' (distinct people). * `unique_visitors` - unique_visitors * `total_count` - total_count */
-  aggregation?: HeatmapsListRequestAggregation;
+  aggregation?: HeatmapsListRequestAggregation | (string & {});
   /** JSON array of cohort IDs (e.g. '[123, 456]') to restrict results to people in those cohorts. Feature-flagged; ignored when the cohort filter is not enabled for the caller. */
   cohort_ids?: string;
   /** Start of the window. Relative (e.g. '-7d', '-30d', '-1mStart') or an absolute 'YYYY-MM-DD' date. Defaults to '-7d'. Heatmap data is retained for 90 days. */

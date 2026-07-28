@@ -42,7 +42,7 @@ export const SavedCreateRequestWidthsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SavedCreateRequestWidthsList>;
 
 /** * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
-export type HeatmapType = "screenshot" | "iframe" | "recording" | (string & {});
+export type HeatmapType = "screenshot" | "iframe" | "recording";
 export const HeatmapType = /*@__PURE__*/ S.String;
 
 export interface SavedCreateRequest {
@@ -57,7 +57,7 @@ export interface SavedCreateRequest {
   /** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
   widths?: SavedCreateRequestWidthsList;
   /** Render mode: 'screenshot' (renders the page headlessly, default), 'iframe', or 'recording'. Only 'screenshot' generates image bytes. * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
-  type?: HeatmapType;
+  type?: HeatmapType | (string & {});
   /** Set true to soft-delete the saved heatmap. */
   deleted?: boolean;
   /** When true, ask the headless browser to dismiss cookie/consent banners before capturing the screenshot. Off by default: the blocker can stall the render on some sites and time out. Only applies to 'screenshot' heatmaps. */
@@ -88,8 +88,7 @@ export const SavedCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export type HeatmapScreenshotResponseStatusEnum =
   | "processing"
   | "completed"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const HeatmapScreenshotResponseStatusEnum = /*@__PURE__*/ S.String;
 
 export interface HeatmapSnapshotMetadata {
@@ -129,11 +128,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -335,7 +333,7 @@ export interface SavedPartialUpdateRequest {
   /** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
   widths?: SavedPartialUpdateRequestWidthsList;
   /** Render mode: 'screenshot' (renders the page headlessly, default), 'iframe', or 'recording'. Only 'screenshot' generates image bytes. * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
-  type?: HeatmapType;
+  type?: HeatmapType | (string & {});
   /** Set true to soft-delete the saved heatmap. */
   deleted?: boolean;
   /** When true, ask the headless browser to dismiss cookie/consent banners before capturing the screenshot. Off by default: the blocker can stall the render on some sites and time out. Only applies to 'screenshot' heatmaps. */

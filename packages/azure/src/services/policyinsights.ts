@@ -13,11 +13,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** The compliance state that should be set on the resource. */
-export type ComplianceState =
-  | "Compliant"
-  | "NonCompliant"
-  | "Unknown"
-  | (string & {});
+export type ComplianceState = "Compliant" | "NonCompliant" | "Unknown";
 export const ComplianceState = /*@__PURE__*/ S.String;
 
 /** A piece of evidence supporting the compliance state set in the attestation. */
@@ -50,7 +46,7 @@ export interface AttestationPropertiesInput {
   /** The policy definition reference ID from a policy set definition that the attestation is setting the state for. If the policy assignment assigns a policy set definition the attestation can choose a definition within the set definition with this property or omit this and set the state for the entire set definition. */
   policyDefinitionReferenceId?: string;
   /** The compliance state that should be set on the resource. */
-  complianceState?: ComplianceState;
+  complianceState?: ComplianceState | (string & {});
   /** The time the compliance state should expire. */
   expiresOn?: string;
   /** The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID. */
@@ -111,8 +107,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -120,8 +115,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -692,12 +686,12 @@ export const AttestationsListForSubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AttestationsListForSubscriptionRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -705,11 +699,15 @@ export interface ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace
+    | (string & {});
   /** Policy definition name. */
   policyDefinitionName: string;
   /** The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s). */
-  componentPolicyStatesResource: ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestComponentPolicyStatesResource;
+  componentPolicyStatesResource:
+    | ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestComponentPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -959,7 +957,7 @@ export const ComponentPolicyStatesQueryResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentPolicyStatesQueryResults>;
 
 export type ComponentPolicyStatesListQueryResultsForResourceRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForResourceRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -967,7 +965,9 @@ export interface ComponentPolicyStatesListQueryResultsForResourceRequest {
   /** Resource ID. */
   resourceId: string;
   /** The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s). */
-  componentPolicyStatesResource: ComponentPolicyStatesListQueryResultsForResourceRequestComponentPolicyStatesResource;
+  componentPolicyStatesResource:
+    | ComponentPolicyStatesListQueryResultsForResourceRequestComponentPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1014,7 +1014,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceRequest =
   }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForResourceRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForResourceGroupRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForResourceGroupRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -1024,7 +1024,9 @@ export interface ComponentPolicyStatesListQueryResultsForResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s). */
-  componentPolicyStatesResource: ComponentPolicyStatesListQueryResultsForResourceGroupRequestComponentPolicyStatesResource;
+  componentPolicyStatesResource:
+    | ComponentPolicyStatesListQueryResultsForResourceGroupRequestComponentPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1069,12 +1071,12 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupRequest =
   }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForResourceGroupRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -1084,11 +1086,15 @@ export interface ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolic
   /** Resource group name. */
   resourceGroupName: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace
+    | (string & {});
   /** Policy assignment name. */
   policyAssignmentName: string;
   /** The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s). */
-  componentPolicyStatesResource: ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestComponentPolicyStatesResource;
+  componentPolicyStatesResource:
+    | ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestComponentPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1139,7 +1145,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAss
   }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForSubscriptionRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForSubscriptionRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -1147,7 +1153,9 @@ export interface ComponentPolicyStatesListQueryResultsForSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s). */
-  componentPolicyStatesResource: ComponentPolicyStatesListQueryResultsForSubscriptionRequestComponentPolicyStatesResource;
+  componentPolicyStatesResource:
+    | ComponentPolicyStatesListQueryResultsForSubscriptionRequestComponentPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1191,12 +1199,12 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionRequest =
   }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForSubscriptionRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -1204,11 +1212,15 @@ export interface ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicy
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace
+    | (string & {});
   /** Policy assignment name. */
   policyAssignmentName: string;
   /** The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s). */
-  componentPolicyStatesResource: ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestComponentPolicyStatesResource;
+  componentPolicyStatesResource:
+    | ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestComponentPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1333,22 +1345,26 @@ export const OperationsListResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResults>;
 
 export type PolicyEventsListQueryResultsForManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const PolicyEventsListQueryResultsForManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyEventsListQueryResultsForManagementGroupRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForManagementGroupRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
 export interface PolicyEventsListQueryResultsForManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace: PolicyEventsListQueryResultsForManagementGroupRequestManagementGroupsNamespace;
+  managementGroupsNamespace:
+    | PolicyEventsListQueryResultsForManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
   /** Management group name. */
   managementGroupName: string;
   /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
-  policyEventsResource: PolicyEventsListQueryResultsForManagementGroupRequestPolicyEventsResource;
+  policyEventsResource:
+    | PolicyEventsListQueryResultsForManagementGroupRequestPolicyEventsResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1565,12 +1581,12 @@ export const PolicyEventsQueryResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyEventsQueryResults>;
 
 export type PolicyEventsListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyEventsListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyEventsListQueryResultsForPolicyDefinitionRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForPolicyDefinitionRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1578,11 +1594,15 @@ export interface PolicyEventsListQueryResultsForPolicyDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyEventsListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyEventsListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace
+    | (string & {});
   /** Policy definition name. */
   policyDefinitionName: string;
   /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
-  policyEventsResource: PolicyEventsListQueryResultsForPolicyDefinitionRequestPolicyEventsResource;
+  policyEventsResource:
+    | PolicyEventsListQueryResultsForPolicyDefinitionRequestPolicyEventsResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1634,12 +1654,12 @@ export const PolicyEventsListQueryResultsForPolicyDefinitionRequest =
   }) as any as S.Schema<PolicyEventsListQueryResultsForPolicyDefinitionRequest>;
 
 export type PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1647,11 +1667,15 @@ export interface PolicyEventsListQueryResultsForPolicySetDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace
+    | (string & {});
   /** Policy set definition name. */
   policySetDefinitionName: string;
   /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
-  policyEventsResource: PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource;
+  policyEventsResource:
+    | PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1703,7 +1727,7 @@ export const PolicyEventsListQueryResultsForPolicySetDefinitionRequest =
   }) as any as S.Schema<PolicyEventsListQueryResultsForPolicySetDefinitionRequest>;
 
 export type PolicyEventsListQueryResultsForResourceRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForResourceRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1711,7 +1735,9 @@ export interface PolicyEventsListQueryResultsForResourceRequest {
   /** Resource ID. */
   resourceId: string;
   /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
-  policyEventsResource: PolicyEventsListQueryResultsForResourceRequestPolicyEventsResource;
+  policyEventsResource:
+    | PolicyEventsListQueryResultsForResourceRequestPolicyEventsResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1761,7 +1787,7 @@ export const PolicyEventsListQueryResultsForResourceRequest =
   }) as any as S.Schema<PolicyEventsListQueryResultsForResourceRequest>;
 
 export type PolicyEventsListQueryResultsForResourceGroupRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForResourceGroupRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1771,7 +1797,9 @@ export interface PolicyEventsListQueryResultsForResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
-  policyEventsResource: PolicyEventsListQueryResultsForResourceGroupRequestPolicyEventsResource;
+  policyEventsResource:
+    | PolicyEventsListQueryResultsForResourceGroupRequestPolicyEventsResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1819,12 +1847,12 @@ export const PolicyEventsListQueryResultsForResourceGroupRequest =
   }) as any as S.Schema<PolicyEventsListQueryResultsForResourceGroupRequest>;
 
 export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1834,11 +1862,15 @@ export interface PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignme
   /** Resource group name. */
   resourceGroupName: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace
+    | (string & {});
   /** Policy assignment name. */
   policyAssignmentName: string;
   /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
-  policyEventsResource: PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyEventsResource;
+  policyEventsResource:
+    | PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyEventsResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1892,7 +1924,7 @@ export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRe
   }) as any as S.Schema<PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type PolicyEventsListQueryResultsForSubscriptionRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForSubscriptionRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1900,7 +1932,9 @@ export interface PolicyEventsListQueryResultsForSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
-  policyEventsResource: PolicyEventsListQueryResultsForSubscriptionRequestPolicyEventsResource;
+  policyEventsResource:
+    | PolicyEventsListQueryResultsForSubscriptionRequestPolicyEventsResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -1947,12 +1981,12 @@ export const PolicyEventsListQueryResultsForSubscriptionRequest =
   }) as any as S.Schema<PolicyEventsListQueryResultsForSubscriptionRequest>;
 
 export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1960,11 +1994,15 @@ export interface PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmen
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace
+    | (string & {});
   /** Policy assignment name. */
   policyAssignmentName: string;
   /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
-  policyEventsResource: PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyEventsResource;
+  policyEventsResource:
+    | PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyEventsResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -2186,7 +2224,7 @@ export const PolicyMetadataCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyMetadataCollection>;
 
 export type PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
@@ -2239,7 +2277,9 @@ export const PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsLi
 
 export interface PolicyRestrictionsCheckAtManagementGroupScopeRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace: PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace;
+  managementGroupsNamespace:
+    | PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace
+    | (string & {});
   /** Management group ID. */
   managementGroupId: string;
   /** The information about the resource that will be evaluated. */
@@ -2272,12 +2312,7 @@ export const PolicyRestrictionsCheckAtManagementGroupScopeRequest =
   }) as any as S.Schema<PolicyRestrictionsCheckAtManagementGroupScopeRequest>;
 
 /** The type of restriction that is imposed on the field. */
-export type FieldRestrictionResult =
-  | "Required"
-  | "Removed"
-  | "Deny"
-  | "Audit"
-  | (string & {});
+export type FieldRestrictionResult = "Required" | "Removed" | "Deny" | "Audit";
 export const FieldRestrictionResult = /*@__PURE__*/ S.String;
 
 /** The values that policy either requires or denies for the field. */
@@ -2601,22 +2636,26 @@ export const PolicyRestrictionsCheckAtSubscriptionScopeRequest =
   }) as any as S.Schema<PolicyRestrictionsCheckAtSubscriptionScopeRequest>;
 
 export type PolicyStatesListQueryResultsForManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const PolicyStatesListQueryResultsForManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForManagementGroupRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForManagementGroupRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
 export interface PolicyStatesListQueryResultsForManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace: PolicyStatesListQueryResultsForManagementGroupRequestManagementGroupsNamespace;
+  managementGroupsNamespace:
+    | PolicyStatesListQueryResultsForManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
   /** Management group name. */
   managementGroupName: string;
   /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource: PolicyStatesListQueryResultsForManagementGroupRequestPolicyStatesResource;
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForManagementGroupRequestPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -2870,12 +2909,12 @@ export const PolicyStatesQueryResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyStatesQueryResults>;
 
 export type PolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForPolicyDefinitionRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForPolicyDefinitionRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -2883,11 +2922,15 @@ export interface PolicyStatesListQueryResultsForPolicyDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace
+    | (string & {});
   /** Policy definition name. */
   policyDefinitionName: string;
   /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource: PolicyStatesListQueryResultsForPolicyDefinitionRequestPolicyStatesResource;
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForPolicyDefinitionRequestPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -2939,12 +2982,12 @@ export const PolicyStatesListQueryResultsForPolicyDefinitionRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForPolicyDefinitionRequest>;
 
 export type PolicyStatesListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForPolicySetDefinitionRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForPolicySetDefinitionRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -2952,11 +2995,15 @@ export interface PolicyStatesListQueryResultsForPolicySetDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyStatesListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyStatesListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace
+    | (string & {});
   /** Policy set definition name. */
   policySetDefinitionName: string;
   /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource: PolicyStatesListQueryResultsForPolicySetDefinitionRequestPolicyStatesResource;
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForPolicySetDefinitionRequestPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -3008,7 +3055,7 @@ export const PolicyStatesListQueryResultsForPolicySetDefinitionRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForPolicySetDefinitionRequest>;
 
 export type PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3016,7 +3063,9 @@ export interface PolicyStatesListQueryResultsForResourceRequest {
   /** Resource ID. */
   resourceId: string;
   /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource: PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource;
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -3066,7 +3115,7 @@ export const PolicyStatesListQueryResultsForResourceRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForResourceRequest>;
 
 export type PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3076,7 +3125,9 @@ export interface PolicyStatesListQueryResultsForResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource: PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource;
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -3124,12 +3175,12 @@ export const PolicyStatesListQueryResultsForResourceGroupRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForResourceGroupRequest>;
 
 export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3139,11 +3190,15 @@ export interface PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignme
   /** Resource group name. */
   resourceGroupName: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace
+    | (string & {});
   /** Policy assignment name. */
   policyAssignmentName: string;
   /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource: PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource;
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -3197,7 +3252,7 @@ export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRe
   }) as any as S.Schema<PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3205,7 +3260,9 @@ export interface PolicyStatesListQueryResultsForSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource: PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource;
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -3252,12 +3309,12 @@ export const PolicyStatesListQueryResultsForSubscriptionRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForSubscriptionRequest>;
 
 export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3265,11 +3322,15 @@ export interface PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmen
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace
+    | (string & {});
   /** Policy assignment name. */
   policyAssignmentName: string;
   /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource: PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource;
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
@@ -3322,22 +3383,26 @@ export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentReq
   }) as any as S.Schema<PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest>;
 
 export type PolicyStatesSummarizeForManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const PolicyStatesSummarizeForManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesSummarizeForManagementGroupRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForManagementGroupRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
 export interface PolicyStatesSummarizeForManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace: PolicyStatesSummarizeForManagementGroupRequestManagementGroupsNamespace;
+  managementGroupsNamespace:
+    | PolicyStatesSummarizeForManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
   /** Management group name. */
   managementGroupName: string;
   /** The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value. */
-  policyStatesSummaryResource: PolicyStatesSummarizeForManagementGroupRequestPolicyStatesSummaryResource;
+  policyStatesSummaryResource:
+    | PolicyStatesSummarizeForManagementGroupRequestPolicyStatesSummaryResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
@@ -3580,12 +3645,12 @@ export const SummarizeResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummarizeResults>;
 
 export type PolicyStatesSummarizeForPolicyDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesSummarizeForPolicyDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesSummarizeForPolicyDefinitionRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForPolicyDefinitionRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3593,11 +3658,15 @@ export interface PolicyStatesSummarizeForPolicyDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyStatesSummarizeForPolicyDefinitionRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyStatesSummarizeForPolicyDefinitionRequestAuthorizationNamespace
+    | (string & {});
   /** Policy definition name. */
   policyDefinitionName: string;
   /** The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value. */
-  policyStatesSummaryResource: PolicyStatesSummarizeForPolicyDefinitionRequestPolicyStatesSummaryResource;
+  policyStatesSummaryResource:
+    | PolicyStatesSummarizeForPolicyDefinitionRequestPolicyStatesSummaryResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
@@ -3637,12 +3706,12 @@ export const PolicyStatesSummarizeForPolicyDefinitionRequest =
   }) as any as S.Schema<PolicyStatesSummarizeForPolicyDefinitionRequest>;
 
 export type PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3650,11 +3719,15 @@ export interface PolicyStatesSummarizeForPolicySetDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace
+    | (string & {});
   /** Policy set definition name. */
   policySetDefinitionName: string;
   /** The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value. */
-  policyStatesSummaryResource: PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource;
+  policyStatesSummaryResource:
+    | PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
@@ -3694,7 +3767,7 @@ export const PolicyStatesSummarizeForPolicySetDefinitionRequest =
   }) as any as S.Schema<PolicyStatesSummarizeForPolicySetDefinitionRequest>;
 
 export type PolicyStatesSummarizeForResourceRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForResourceRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3702,7 +3775,9 @@ export interface PolicyStatesSummarizeForResourceRequest {
   /** Resource ID. */
   resourceId: string;
   /** The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value. */
-  policyStatesSummaryResource: PolicyStatesSummarizeForResourceRequestPolicyStatesSummaryResource;
+  policyStatesSummaryResource:
+    | PolicyStatesSummarizeForResourceRequestPolicyStatesSummaryResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
@@ -3737,7 +3812,7 @@ export const PolicyStatesSummarizeForResourceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PolicyStatesSummarizeForResourceRequest>;
 
 export type PolicyStatesSummarizeForResourceGroupRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForResourceGroupRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3747,7 +3822,9 @@ export interface PolicyStatesSummarizeForResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value. */
-  policyStatesSummaryResource: PolicyStatesSummarizeForResourceGroupRequestPolicyStatesSummaryResource;
+  policyStatesSummaryResource:
+    | PolicyStatesSummarizeForResourceGroupRequestPolicyStatesSummaryResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
@@ -3783,12 +3860,12 @@ export const PolicyStatesSummarizeForResourceGroupRequest =
   }) as any as S.Schema<PolicyStatesSummarizeForResourceGroupRequest>;
 
 export type PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3798,11 +3875,15 @@ export interface PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentReque
   /** Resource group name. */
   resourceGroupName: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace
+    | (string & {});
   /** Policy assignment name. */
   policyAssignmentName: string;
   /** The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value. */
-  policyStatesSummaryResource: PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestPolicyStatesSummaryResource;
+  policyStatesSummaryResource:
+    | PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestPolicyStatesSummaryResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
@@ -3844,7 +3925,7 @@ export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequest =
   }) as any as S.Schema<PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type PolicyStatesSummarizeForSubscriptionRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForSubscriptionRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3852,7 +3933,9 @@ export interface PolicyStatesSummarizeForSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value. */
-  policyStatesSummaryResource: PolicyStatesSummarizeForSubscriptionRequestPolicyStatesSummaryResource;
+  policyStatesSummaryResource:
+    | PolicyStatesSummarizeForSubscriptionRequestPolicyStatesSummaryResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
@@ -3887,12 +3970,12 @@ export const PolicyStatesSummarizeForSubscriptionRequest =
   }) as any as S.Schema<PolicyStatesSummarizeForSubscriptionRequest>;
 
 export type PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3900,11 +3983,15 @@ export interface PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentReques
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace: PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace;
+  authorizationNamespace:
+    | PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace
+    | (string & {});
   /** Policy assignment name. */
   policyAssignmentName: string;
   /** The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value. */
-  policyStatesSummaryResource: PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestPolicyStatesSummaryResource;
+  policyStatesSummaryResource:
+    | PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestPolicyStatesSummaryResource
+    | (string & {});
   /** Maximum number of records to return. */
   _top?: number;
   /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
@@ -4000,13 +4087,15 @@ export const PolicyStatesTriggerSubscriptionEvaluationResponse =
   }) as any as S.Schema<PolicyStatesTriggerSubscriptionEvaluationResponse>;
 
 export type RemediationsCancelAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const RemediationsCancelAtManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export interface RemediationsCancelAtManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace: RemediationsCancelAtManagementGroupRequestManagementGroupsNamespace;
+  managementGroupsNamespace:
+    | RemediationsCancelAtManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
   /** Management group ID. */
   managementGroupId: string;
   /** The name of the remediation. */
@@ -4036,8 +4125,7 @@ export const RemediationsCancelAtManagementGroupRequest =
 /** The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified. */
 export type ResourceDiscoveryMode =
   | "ExistingNonCompliant"
-  | "ReEvaluateCompliance"
-  | (string & {});
+  | "ReEvaluateCompliance";
 export const ResourceDiscoveryMode = /*@__PURE__*/ S.String;
 
 /** The resource locations that will be remediated. */
@@ -4322,7 +4410,7 @@ export const RemediationsCancelAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RemediationsCancelAtSubscriptionResponse>;
 
 export type RemediationsCreateOrUpdateAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const RemediationsCreateOrUpdateAtManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
@@ -4333,7 +4421,7 @@ export interface RemediationPropertiesInput {
   /** The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition. */
   policyDefinitionReferenceId?: string;
   /** The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified. */
-  resourceDiscoveryMode?: ResourceDiscoveryMode;
+  resourceDiscoveryMode?: ResourceDiscoveryMode | (string & {});
   /** The filters that will be applied to determine which resources to remediate. */
   filters?: RemediationFilters;
   /** Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used. */
@@ -4359,7 +4447,9 @@ export const RemediationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 export interface RemediationsCreateOrUpdateAtManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace: RemediationsCreateOrUpdateAtManagementGroupRequestManagementGroupsNamespace;
+  managementGroupsNamespace:
+    | RemediationsCreateOrUpdateAtManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
   /** Management group ID. */
   managementGroupId: string;
   /** The name of the remediation. */
@@ -4571,13 +4661,15 @@ export const RemediationsCreateOrUpdateAtSubscriptionResponse =
   }) as any as S.Schema<RemediationsCreateOrUpdateAtSubscriptionResponse>;
 
 export type RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export interface RemediationsDeleteAtManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace: RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace;
+  managementGroupsNamespace:
+    | RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
   /** Management group ID. */
   managementGroupId: string;
   /** The name of the remediation. */
@@ -4776,14 +4868,15 @@ export const RemediationsDeleteAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RemediationsDeleteAtSubscriptionResponse>;
 
 export type RemediationsGetAtManagementGroupRequestManagementGroupsNamespace =
-  | "Microsoft.Management"
-  | (string & {});
+  "Microsoft.Management";
 export const RemediationsGetAtManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export interface RemediationsGetAtManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace: RemediationsGetAtManagementGroupRequestManagementGroupsNamespace;
+  managementGroupsNamespace:
+    | RemediationsGetAtManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
   /** Management group ID. */
   managementGroupId: string;
   /** The name of the remediation. */
@@ -4981,13 +5074,15 @@ export const RemediationsGetAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RemediationsGetAtSubscriptionResponse>;
 
 export type RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export interface RemediationsListDeploymentsAtManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace: RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace;
+  managementGroupsNamespace:
+    | RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
   /** Management group ID. */
   managementGroupId: string;
   /** The name of the remediation. */
@@ -5204,13 +5299,15 @@ export const RemediationsListDeploymentsAtSubscriptionRequest =
   }) as any as S.Schema<RemediationsListDeploymentsAtSubscriptionRequest>;
 
 export type RemediationsListForManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const RemediationsListForManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export interface RemediationsListForManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace: RemediationsListForManagementGroupRequestManagementGroupsNamespace;
+  managementGroupsNamespace:
+    | RemediationsListForManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
   /** Management group ID. */
   managementGroupId: string;
   /** Maximum number of records to return. */

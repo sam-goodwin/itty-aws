@@ -128,11 +128,11 @@ export const MdsResourcePropertiesInputDenyAssignmentExclusionsList =
   ) as any as S.Schema<MdsResourcePropertiesInputDenyAssignmentExclusionsList>;
 
 /** The current state of the resource */
-export type ResourceState = "Active" | "Inactive" | (string & {});
+export type ResourceState = "Active" | "Inactive";
 export const ResourceState = /*@__PURE__*/ S.String;
 
 /** The redundancy state of the resource */
-export type RedundancyState = "Zonal" | "None" | (string & {});
+export type RedundancyState = "Zonal" | "None";
 export const RedundancyState = /*@__PURE__*/ S.String;
 
 /** Details of the ManufacturingPlatform MdsResource. */
@@ -158,9 +158,9 @@ export interface MdsResourcePropertiesInput {
   /** Deny Assignments exclusion list. */
   denyAssignmentExclusions?: MdsResourcePropertiesInputDenyAssignmentExclusionsList;
   /** State of the resource */
-  resourceState?: ResourceState;
+  resourceState?: ResourceState | (string & {});
   /** Zone redundancy state for resources */
-  redundancyState?: RedundancyState;
+  redundancyState?: RedundancyState | (string & {});
 }
 export const MdsResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -188,8 +188,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -211,7 +210,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ManufacturingDataServicesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const ManufacturingDataServicesCreateOrUpdateRequestIdentity =
@@ -225,14 +224,14 @@ export const ManufacturingDataServicesCreateOrUpdateRequestIdentity =
   }) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateRequestIdentity>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
 export interface ManufacturingDataServicesCreateOrUpdateRequestSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -301,8 +300,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -310,8 +308,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -358,8 +355,7 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties related to Aks Resource */
@@ -1148,11 +1144,7 @@ export const ManufacturingDataServicesListBySubscriptionRequest =
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
-    | "None"
-    | "SystemAssigned"
-    | "UserAssigned"
-    | "SystemAssigned,UserAssigned"
-    | (string & {});
+  "None" | "SystemAssigned" | "UserAssigned" | "SystemAssigned,UserAssigned";
 export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
   /*@__PURE__*/ S.String;
 
@@ -1180,7 +1172,9 @@ export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUse
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput {
   /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-  type?: AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType;
+  type?:
+    | AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType
+    | (string & {});
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap;
 }
@@ -1204,8 +1198,7 @@ export type AzureResourceManagerCommonTypesSkuUpdateTier =
   | "Free"
   | "Basic"
   | "Standard"
-  | "Premium"
-  | (string & {});
+  | "Premium";
 export const AzureResourceManagerCommonTypesSkuUpdateTier =
   /*@__PURE__*/ S.String;
 
@@ -1214,7 +1207,7 @@ export interface AzureResourceManagerCommonTypesSkuUpdate {
   /** The name of the SKU. Ex - P3. It is typically a letter+number code */
   name?: string;
   /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-  tier?: AzureResourceManagerCommonTypesSkuUpdateTier;
+  tier?: AzureResourceManagerCommonTypesSkuUpdateTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -1308,7 +1301,7 @@ export interface MdsResourceUpdatePropertiesInput {
   /** Deny Assignments exclusion list. */
   denyAssignmentExclusions?: MdsResourceUpdatePropertiesInputDenyAssignmentExclusionsList;
   /** State of the resource */
-  resourceState?: ResourceState;
+  resourceState?: ResourceState | (string & {});
 }
 export const MdsResourceUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1497,11 +1490,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

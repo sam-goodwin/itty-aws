@@ -142,18 +142,16 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
     End: T.DateFromString.pipe(T.TimestampFormat("date-time")),
   }),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
-export type Dimension =
-  | "USAGE_ACCOUNT_ID"
-  | "REGION"
-  | "SERVICE"
-  | (string & {});
+export type Dimension = "USAGE_ACCOUNT_ID" | "REGION" | "SERVICE";
 export const Dimension = /*@__PURE__*/ S.String;
 
-export type DimensionList = Dimension[];
+export type DimensionList = (Dimension | (string & {}))[];
 export const DimensionList = /*@__PURE__*/ S.Array(Dimension);
 export type DimensionValueList = string[];
 export const DimensionValueList = /*@__PURE__*/ S.Array(S.String);
-export type DimensionListMap = { [key in Dimension]?: string[] };
+export type DimensionListMap = {
+  [key in Dimension | (string & {})]?: string[];
+};
 export const DimensionListMap = /*@__PURE__*/ S.Record(
   Dimension,
   DimensionValueList.pipe(S.optional),
@@ -173,19 +171,17 @@ export type EmissionsType =
   | "TOTAL_SCOPE_2_LBM_CARBON_EMISSIONS"
   | "TOTAL_SCOPE_2_MBM_CARBON_EMISSIONS"
   | "TOTAL_SCOPE_3_LBM_CARBON_EMISSIONS"
-  | "TOTAL_SCOPE_3_MBM_CARBON_EMISSIONS"
-  | (string & {});
+  | "TOTAL_SCOPE_3_MBM_CARBON_EMISSIONS";
 export const EmissionsType = /*@__PURE__*/ S.String;
 
-export type EmissionsTypeList = EmissionsType[];
+export type EmissionsTypeList = (EmissionsType | (string & {}))[];
 export const EmissionsTypeList = /*@__PURE__*/ S.Array(EmissionsType);
 export type TimeGranularity =
   | "YEARLY_CALENDAR"
   | "YEARLY_FISCAL"
   | "QUARTERLY_CALENDAR"
   | "QUARTERLY_FISCAL"
-  | "MONTHLY"
-  | (string & {});
+  | "MONTHLY";
 export const TimeGranularity = /*@__PURE__*/ S.String;
 
 export type Month = number;
@@ -204,7 +200,7 @@ export interface GetEstimatedCarbonEmissionsRequest {
   GroupBy?: Dimension[];
   FilterBy?: FilterExpression;
   EmissionsTypes?: EmissionsType[];
-  Granularity?: TimeGranularity;
+  Granularity?: TimeGranularity | (string & {});
   GranularityConfiguration?: GranularityConfiguration;
   MaxResults?: number;
   NextToken?: string;
@@ -238,7 +234,7 @@ export const DimensionsMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type ModelVersion = string;
-export type EmissionsUnit = "MTCO2e" | (string & {});
+export type EmissionsUnit = "MTCO2e";
 export const EmissionsUnit = /*@__PURE__*/ S.String;
 
 export interface Emissions {

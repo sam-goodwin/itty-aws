@@ -42,8 +42,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -51,8 +50,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -82,7 +80,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Direction of communication. */
-export type CommunicationDirection = "inbound" | "outbound" | (string & {});
+export type CommunicationDirection = "inbound" | "outbound";
 export const CommunicationDirection = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a Message Details resource. */
@@ -299,8 +297,7 @@ export const ChatTranscriptsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
 /** The type of resource. */
 export type Type =
   | "Microsoft.Support/supportTickets"
-  | "Microsoft.Support/communications"
-  | (string & {});
+  | "Microsoft.Support/communications";
 export const Type = /*@__PURE__*/ S.String;
 
 export interface CommunicationsCheckNameAvailabilityRequest {
@@ -311,7 +308,7 @@ export interface CommunicationsCheckNameAvailabilityRequest {
   /** The resource name to validate. */
   name: string;
   /** The type of resource. */
-  type: Type;
+  type: Type | (string & {});
 }
 export const CommunicationsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -399,7 +396,7 @@ export const CommunicationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunicationsCreateRequest>;
 
 /** Communication type. */
-export type CommunicationType = "web" | "phone" | (string & {});
+export type CommunicationType = "web" | "phone";
 export const CommunicationType = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a communication resource. */
@@ -585,7 +582,7 @@ export interface CommunicationsNoSubscriptionCheckNameAvailabilityRequest {
   /** The resource name to validate. */
   name: string;
   /** The type of resource. */
-  type: Type;
+  type: Type | (string & {});
 }
 export const CommunicationsNoSubscriptionCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1326,15 +1323,14 @@ export const FileWorkspacesNoSubscriptionGetResponse = /*@__PURE__*/ S.suspend(
 
 /** The type of resource. */
 export type LookUpResourceIdPostRequestType =
-  | "Microsoft.Support/supportTickets"
-  | (string & {});
+  "Microsoft.Support/supportTickets";
 export const LookUpResourceIdPostRequestType = /*@__PURE__*/ S.String;
 
 export interface LookUpResourceIdPostRequest {
   /** The System generated Id that is unique. Use supportTicketId property for Microsoft.Support/supportTickets resource type. */
   identifier?: string;
   /** The type of resource. */
-  type?: LookUpResourceIdPostRequestType;
+  type?: LookUpResourceIdPostRequestType | (string & {});
 }
 export const LookUpResourceIdPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1402,11 +1398,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1982,7 +1978,7 @@ export interface SupportTicketsCheckNameAvailabilityRequest {
   /** The resource name to validate. */
   name: string;
   /** The type of resource. */
-  type: Type;
+  type: Type | (string & {});
 }
 export const SupportTicketsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2007,16 +2003,15 @@ export type SeverityLevel =
   | "minimal"
   | "moderate"
   | "critical"
-  | "highestcriticalimpact"
-  | (string & {});
+  | "highestcriticalimpact";
 export const SeverityLevel = /*@__PURE__*/ S.String;
 
 /** Advanced diagnostic consent to be updated on the support ticket. */
-export type Consent = "Yes" | "No" | (string & {});
+export type Consent = "Yes" | "No";
 export const Consent = /*@__PURE__*/ S.String;
 
 /** Preferred contact method. */
-export type PreferredContactMethod = "email" | "phone" | (string & {});
+export type PreferredContactMethod = "email" | "phone";
 export const PreferredContactMethod = /*@__PURE__*/ S.String;
 
 /** Additional email addresses listed will be copied on any correspondence about the support ticket. */
@@ -2134,7 +2129,7 @@ export const QuotaTicketDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuotaTicketDetails>;
 
 /** User consent value provided */
-export type UserConsent = "Yes" | "No" | (string & {});
+export type UserConsent = "Yes" | "No";
 export const UserConsent = /*@__PURE__*/ S.String;
 
 /** This property indicates secondary consent for the support ticket. */
@@ -2167,8 +2162,7 @@ export type EscalationStatus =
   | "EscalationInitiated"
   | "EscalationProcessed"
   | "EscalationUnsupported"
-  | "EscalationUnavailable"
-  | (string & {});
+  | "EscalationUnavailable";
 export const EscalationStatus = /*@__PURE__*/ S.String;
 
 /** An array containing the allowed severities for direct connect escalation. */
@@ -2207,13 +2201,13 @@ export interface SupportTicketDetailsPropertiesInput {
   /** Each Azure service has its own set of issue categories, also known as problem classification. This parameter is the unique Id for the type of problem you are experiencing. */
   problemClassificationId: string;
   /** A value that indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure. Note: 'Highest critical impact', also known as the 'Emergency - Severe impact' level in the Azure portal is reserved only for our Premium customers. */
-  severity: SeverityLevel;
+  severity: SeverityLevel | (string & {});
   /** Enrollment Id associated with the support ticket. */
   enrollmentId?: string;
   /** Indicates if this requires a 24x7 response from Azure. */
   require24X7Response?: boolean;
   /** Advanced diagnostic consent to be updated on the support ticket. */
-  advancedDiagnosticConsent: Consent;
+  advancedDiagnosticConsent: Consent | (string & {});
   /** Problem scoping questions associated with the support ticket. */
   problemScopingQuestions?: string;
   /** Support plan id associated with the support ticket. */
@@ -2331,7 +2325,7 @@ export const SupportEngineer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportEngineer>;
 
 /** This property indicates if support ticket is a temporary ticket. */
-export type IsTemporaryTicket = "Yes" | "No" | (string & {});
+export type IsTemporaryTicket = "Yes" | "No";
 export const IsTemporaryTicket = /*@__PURE__*/ S.String;
 
 /** This property indicates secondary consents for the support ticket */
@@ -2343,11 +2337,11 @@ export const SupportTicketDetailsPropertiesSecondaryConsentList =
   ) as any as S.Schema<SupportTicketDetailsPropertiesSecondaryConsentList>;
 
 /** Support channel type for the support ticket. */
-export type SupportChannel = "Chat" | "Web" | (string & {});
+export type SupportChannel = "Chat" | "Web";
 export const SupportChannel = /*@__PURE__*/ S.String;
 
 /** Status of the chat conversation associated with the support ticket. */
-export type ChatConversationStatus = "Active" | "Closed" | (string & {});
+export type ChatConversationStatus = "Active" | "Closed";
 export const ChatConversationStatus = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a support ticket. */
@@ -2602,7 +2596,7 @@ export interface SupportTicketsNoSubscriptionCheckNameAvailabilityRequest {
   /** The resource name to validate. */
   name: string;
   /** The type of resource. */
-  type: Type;
+  type: Type | (string & {});
 }
 export const SupportTicketsNoSubscriptionCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2738,7 +2732,7 @@ export const SupportTicketsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SupportTicketsNoSubscriptionListRequest>;
 
 /** Status to be updated on the ticket. */
-export type Status = "open" | "closed" | (string & {});
+export type Status = "open" | "closed";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Email addresses listed will be copied on any correspondence about the support ticket. */
@@ -2756,7 +2750,7 @@ export interface UpdateContactProfile {
   /** Last name. */
   lastName?: string;
   /** Preferred contact method. */
-  preferredContactMethod?: PreferredContactMethod;
+  preferredContactMethod?: PreferredContactMethod | (string & {});
   /** Primary email address. */
   primaryEmailAddress?: string;
   /** Email addresses listed will be copied on any correspondence about the support ticket. */
@@ -2800,13 +2794,13 @@ export interface SupportTicketsNoSubscriptionUpdateRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
   /** Severity level. */
-  severity?: SeverityLevel;
+  severity?: SeverityLevel | (string & {});
   /** Status to be updated on the ticket. */
-  status?: Status;
+  status?: Status | (string & {});
   /** Contact details to be updated on the support ticket. */
   contactDetails?: UpdateContactProfile;
   /** Advanced diagnostic consent to be updated on the support ticket. */
-  advancedDiagnosticConsent?: Consent;
+  advancedDiagnosticConsent?: Consent | (string & {});
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList;
   /** Direct Connect Escalation details for a support ticket. */
@@ -2875,13 +2869,13 @@ export interface SupportTicketsUpdateRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
   /** Severity level. */
-  severity?: SeverityLevel;
+  severity?: SeverityLevel | (string & {});
   /** Status to be updated on the ticket. */
-  status?: Status;
+  status?: Status | (string & {});
   /** Contact details to be updated on the support ticket. */
   contactDetails?: UpdateContactProfile;
   /** Advanced diagnostic consent to be updated on the support ticket. */
-  advancedDiagnosticConsent?: Consent;
+  advancedDiagnosticConsent?: Consent | (string & {});
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketsUpdateRequestSecondaryConsentList;
   /** Direct Connect Escalation details for a support ticket. */

@@ -13,72 +13,62 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest {
   /** Required. The name of the pool whose JWKS needs to be retrieved. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s): 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
-export const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/openid/jwks",
-        baseUrl: "https://sts.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest",
-  }) as any as S.Schema<GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest>;
+export const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/openid/jwks","baseUrl":"https://sts.googleapis.com/"})),
+).annotate({ identifier: "GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest" }) as any as S.Schema<GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest>;
 
 /** A JSON web key set (JWK) See also https://datatracker.ietf.org/doc/html/rfc7517 and https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-representation-in-the-spiffe-bundle */
 export interface GoogleIdentityStsV1Jwk {
@@ -96,22 +86,18 @@ export interface GoogleIdentityStsV1Jwk {
   e?: string;
 }
 export const GoogleIdentityStsV1Jwk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.optional(S.String),
-    kty: S.optional(S.String),
-    alg: S.optional(S.String),
-    use: S.optional(S.String),
-    n: S.optional(S.String),
-    e: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleIdentityStsV1Jwk",
-}) as any as S.Schema<GoogleIdentityStsV1Jwk>;
+S.Struct({
+  "kid": S.optional(S.String),
+  "kty": S.optional(S.String),
+  "alg": S.optional(S.String),
+  "use": S.optional(S.String),
+  "n": S.optional(S.String),
+  "e": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleIdentityStsV1Jwk" }) as any as S.Schema<GoogleIdentityStsV1Jwk>;
 
 export type GoogleIdentityStsV1JwkList = ReadonlyArray<GoogleIdentityStsV1Jwk>;
-export const GoogleIdentityStsV1JwkList = /*@__PURE__*/ S.Array(
-  GoogleIdentityStsV1Jwk,
-) as any as S.Schema<GoogleIdentityStsV1JwkList>;
+export const GoogleIdentityStsV1JwkList = /*@__PURE__*/ S.Array(GoogleIdentityStsV1Jwk) as any as S.Schema<GoogleIdentityStsV1JwkList>;
 
 /** Response message for GetJwks. */
 export interface GoogleIdentityStsV1Jwks {
@@ -119,56 +105,33 @@ export interface GoogleIdentityStsV1Jwks {
   keys?: GoogleIdentityStsV1JwkList;
 }
 export const GoogleIdentityStsV1Jwks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: S.optional(GoogleIdentityStsV1JwkList),
-  }),
-).annotate({
-  identifier: "GoogleIdentityStsV1Jwks",
-}) as any as S.Schema<GoogleIdentityStsV1Jwks>;
+S.Struct({
+  "keys": S.optional(GoogleIdentityStsV1JwkList),
+}),
+).annotate({ identifier: "GoogleIdentityStsV1Jwks" }) as any as S.Schema<GoogleIdentityStsV1Jwks>;
 
 export interface GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest {
   /** Required. The name of the pool whose JWKS needs to be retrieved. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s): 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
-export const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/openid/jwks",
-        baseUrl: "https://sts.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest",
-  }) as any as S.Schema<GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest>;
+export const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/openid/jwks","baseUrl":"https://sts.googleapis.com/"})),
+).annotate({ identifier: "GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest" }) as any as S.Schema<GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest>;
 
 export interface GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest {
   /** Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
-export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/.well-known/openid-configuration",
-        baseUrl: "https://sts.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest",
-  }) as any as S.Schema<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>;
+export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/.well-known/openid-configuration","baseUrl":"https://sts.googleapis.com/"})),
+).annotate({ identifier: "GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest" }) as any as S.Schema<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Response message for GetOpenIdProviderConfig. Message fields are defined in https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse */
 export interface GoogleIdentityStsV1OpenIdProviderConfig {
@@ -187,40 +150,27 @@ export interface GoogleIdentityStsV1OpenIdProviderConfig {
   /** URL pointing to an authorization endpoint under this issuer. Note: Currently this endpoint returns a 404. */
   authorization_endpoint?: string;
 }
-export const GoogleIdentityStsV1OpenIdProviderConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      response_types_supported: S.optional(StringList),
-      id_token_signing_alg_values_supported: S.optional(StringList),
-      token_endpoint: S.optional(S.String),
-      jwks_uri: S.optional(S.String),
-      issuer: S.optional(S.String),
-      subject_types_supported: S.optional(StringList),
-      authorization_endpoint: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleIdentityStsV1OpenIdProviderConfig",
-}) as any as S.Schema<GoogleIdentityStsV1OpenIdProviderConfig>;
+export const GoogleIdentityStsV1OpenIdProviderConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "response_types_supported": S.optional(StringList),
+  "id_token_signing_alg_values_supported": S.optional(StringList),
+  "token_endpoint": S.optional(S.String),
+  "jwks_uri": S.optional(S.String),
+  "issuer": S.optional(S.String),
+  "subject_types_supported": S.optional(StringList),
+  "authorization_endpoint": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleIdentityStsV1OpenIdProviderConfig" }) as any as S.Schema<GoogleIdentityStsV1OpenIdProviderConfig>;
 
 export interface GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest {
   /** Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
-export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/.well-known/openid-configuration",
-        baseUrl: "https://sts.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest",
-  }) as any as S.Schema<GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest>;
+export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/.well-known/openid-configuration","baseUrl":"https://sts.googleapis.com/"})),
+).annotate({ identifier: "GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest" }) as any as S.Schema<GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest>;
 
 /** Request message for ExchangeToken. */
 export interface GoogleIdentityStsV1ExchangeTokenRequest {
@@ -239,37 +189,26 @@ export interface GoogleIdentityStsV1ExchangeTokenRequest {
   /** The OAuth 2.0 scopes to include on the resulting access token, formatted as a list of space-delimited, case-sensitive strings; for example, `https://www.googleapis.com/auth/cloud-platform`. Required when exchanging an external credential for a Google access token. For a list of OAuth 2.0 scopes, see [OAuth 2.0 Scopes for Google APIs](https://developers.google.com/identity/protocols/oauth2/scopes). */
   scope?: string;
 }
-export const GoogleIdentityStsV1ExchangeTokenRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestedTokenType: S.optional(S.String),
-      grantType: S.optional(S.String),
-      subjectToken: S.optional(S.String),
-      subjectTokenType: S.optional(S.String),
-      options: S.optional(S.String),
-      audience: S.optional(S.String),
-      scope: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleIdentityStsV1ExchangeTokenRequest",
-}) as any as S.Schema<GoogleIdentityStsV1ExchangeTokenRequest>;
+export const GoogleIdentityStsV1ExchangeTokenRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestedTokenType": S.optional(S.String),
+  "grantType": S.optional(S.String),
+  "subjectToken": S.optional(S.String),
+  "subjectTokenType": S.optional(S.String),
+  "options": S.optional(S.String),
+  "audience": S.optional(S.String),
+  "scope": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleIdentityStsV1ExchangeTokenRequest" }) as any as S.Schema<GoogleIdentityStsV1ExchangeTokenRequest>;
 
 export interface TokenV1Request {
   /** Request body */
   body?: GoogleIdentityStsV1ExchangeTokenRequest;
 }
 export const TokenV1Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(
-      GoogleIdentityStsV1ExchangeTokenRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/token",
-      baseUrl: "https://sts.googleapis.com/",
-    }),
-  ),
+S.Struct({
+  "body": S.optional(GoogleIdentityStsV1ExchangeTokenRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/token","baseUrl":"https://sts.googleapis.com/"})),
 ).annotate({ identifier: "TokenV1Request" }) as any as S.Schema<TokenV1Request>;
 
 /** Response message for ExchangeToken. */
@@ -285,23 +224,17 @@ export interface GoogleIdentityStsV1ExchangeTokenResponse {
   /** The access boundary session key. This key is used along with the access boundary intermediary token to generate Credential Access Boundary tokens at client side. This field is absent when the `requested_token_type` from the request is not `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`. */
   access_boundary_session_key?: string;
 }
-export const GoogleIdentityStsV1ExchangeTokenResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      access_token: S.optional(S.String),
-      issued_token_type: S.optional(S.String),
-      token_type: S.optional(S.String),
-      expires_in: S.optional(S.Number),
-      access_boundary_session_key: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleIdentityStsV1ExchangeTokenResponse",
-}) as any as S.Schema<GoogleIdentityStsV1ExchangeTokenResponse>;
+export const GoogleIdentityStsV1ExchangeTokenResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "access_token": S.optional(S.String),
+  "issued_token_type": S.optional(S.String),
+  "token_type": S.optional(S.String),
+  "expires_in": S.optional(S.Number),
+  "access_boundary_session_key": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleIdentityStsV1ExchangeTokenResponse" }) as any as S.Schema<GoogleIdentityStsV1ExchangeTokenResponse>;
 
-export type GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidError = NotFound | Forbidden | GcpOpError;
 /** Fetches the signing keys for an agentic or managed workload identity pool and returns them in JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). */
 export const getJwksOrganizationsLocationsWorkloadIdentityPoolsOpenid: API.OperationMethod<
   GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest,
@@ -316,10 +249,7 @@ export const getJwksOrganizationsLocationsWorkloadIdentityPoolsOpenid: API.Opera
   retry: Retry.Retry,
 }));
 
-export type GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidError = NotFound | Forbidden | GcpOpError;
 /** Fetches the signing keys for an agentic or managed workload identity pool and returns them in JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). */
 export const getJwksProjectsLocationsWorkloadIdentityPoolsOpenid: API.OperationMethod<
   GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest,
@@ -334,8 +264,7 @@ export const getJwksProjectsLocationsWorkloadIdentityPoolsOpenid: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError =
-  NotFound | Forbidden | GcpOpError;
+export type GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError = NotFound | Forbidden | GcpOpError;
 /** Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). */
 export const getOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_known: API.OperationMethod<
   GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest,
@@ -343,16 +272,14 @@ export const getOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
   GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest,
+  input: GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest,
   output: GoogleIdentityStsV1OpenIdProviderConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError =
-  NotFound | Forbidden | GcpOpError;
+export type GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError = NotFound | Forbidden | GcpOpError;
 /** Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). */
 export const getOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_known: API.OperationMethod<
   GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest,
@@ -360,20 +287,14 @@ export const getOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_k
   GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest,
+  input: GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest,
   output: GoogleIdentityStsV1OpenIdProviderConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type TokenV1Error =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TokenV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity within an identity pool, or it applies a Credential Access Boundary to a Google access token. Note that workforce pools do not support Credential Access Boundaries. When you call this method, do not send the `Authorization` HTTP header in the request. This method does not require the `Authorization` header, and using the header can cause the request to fail. */
 export const tokenV1: API.OperationMethod<
   TokenV1Request,
@@ -387,3 +308,4 @@ export const tokenV1: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

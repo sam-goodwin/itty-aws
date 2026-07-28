@@ -42,8 +42,7 @@ export type StageEnum =
   | "alpha"
   | "beta"
   | "general-availability"
-  | "archived"
-  | (string & {});
+  | "archived";
 export const StageEnum = /*@__PURE__*/ S.String;
 
 export interface EarlyAccessFeatureCreateRequest {
@@ -54,7 +53,7 @@ export interface EarlyAccessFeatureCreateRequest {
   /** A longer description of what this early access feature does, shown to users in the opt-in UI. */
   description?: string;
   /** Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users. * `draft` - draft * `concept` - concept * `alpha` - alpha * `beta` - beta * `general-availability` - general availability * `archived` - archived */
-  stage?: StageEnum;
+  stage?: StageEnum | (string & {});
   /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
   documentation_url?: string;
   /** Arbitrary JSON metadata associated with this feature. */
@@ -93,10 +92,10 @@ export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
-export type EvaluationRuntimeEnum = "server" | "client" | "all" | (string & {});
+export type EvaluationRuntimeEnum = "server" | "client" | "all";
 export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -107,10 +106,7 @@ export const MinimalFeatureFlagEvaluationRuntime =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type BucketingIdentifierEnum =
-  | "distinct_id"
-  | "device_id"
-  | (string & {});
+export type BucketingIdentifierEnum = "distinct_id" | "device_id";
 export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
@@ -327,7 +323,7 @@ export interface EarlyAccessFeaturePartialUpdateRequest {
   /** A longer description of what this early access feature does, shown to users in the opt-in UI. */
   description?: string;
   /** Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users. * `draft` - draft * `concept` - concept * `alpha` - alpha * `beta` - beta * `general-availability` - general availability * `archived` - archived */
-  stage?: StageEnum;
+  stage?: StageEnum | (string & {});
   /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
   documentation_url?: string;
 }
@@ -382,7 +378,7 @@ export interface EarlyAccessFeatureUpdateRequest {
   /** A longer description of what this early access feature does, shown to users in the opt-in UI. */
   description?: string;
   /** Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users. * `draft` - draft * `concept` - concept * `alpha` - alpha * `beta` - beta * `general-availability` - general availability * `archived` - archived */
-  stage?: StageEnum;
+  stage?: StageEnum | (string & {});
   /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
   documentation_url?: string;
 }

@@ -63,10 +63,10 @@ export const GetUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUrlNormalizationRequest",
 }) as any as S.Schema<GetUrlNormalizationRequest>;
 
-export type GetResponseScope = "incoming" | "both" | "none" | (string & {});
+export type GetResponseScope = "incoming" | "both" | "none";
 export const GetResponseScope = /*@__PURE__*/ S.String;
 
-export type GetResponseType = "cloudflare" | "rfc3986" | (string & {});
+export type GetResponseType = "cloudflare" | "rfc3986";
 export const GetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -85,19 +85,19 @@ export const GetUrlNormalizationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUrlNormalizationResponse",
 }) as any as S.Schema<GetUrlNormalizationResponse>;
 
-export type UpdateRequestScope = "incoming" | "both" | "none" | (string & {});
+export type UpdateRequestScope = "incoming" | "both" | "none";
 export const UpdateRequestScope = /*@__PURE__*/ S.String;
 
-export type UpdateRequestType = "cloudflare" | "rfc3986" | (string & {});
+export type UpdateRequestType = "cloudflare" | "rfc3986";
 export const UpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface PutUrlNormalizationRequest {
   /** The unique ID of the zone. */
   zoneId: string;
   /** The scope of the URL normalization. */
-  scope: UpdateRequestScope;
+  scope: UpdateRequestScope | (string & {});
   /** The type of URL normalization performed by Cloudflare. */
-  type: UpdateRequestType;
+  type: UpdateRequestType | (string & {});
 }
 export const PutUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -115,10 +115,10 @@ export const PutUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutUrlNormalizationRequest",
 }) as any as S.Schema<PutUrlNormalizationRequest>;
 
-export type UpdateResponseScope = "incoming" | "both" | "none" | (string & {});
+export type UpdateResponseScope = "incoming" | "both" | "none";
 export const UpdateResponseScope = /*@__PURE__*/ S.String;
 
-export type UpdateResponseType = "cloudflare" | "rfc3986" | (string & {});
+export type UpdateResponseType = "cloudflare" | "rfc3986";
 export const UpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

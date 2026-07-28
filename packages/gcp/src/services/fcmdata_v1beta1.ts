@@ -13,27 +13,27 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface ListProjectsAndroidAppsDeliveryDataRequest {
@@ -44,22 +44,13 @@ export interface ListProjectsAndroidAppsDeliveryDataRequest {
   /** A page token, received from a previous `ListAndroidDeliveryDataRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAndroidDeliveryDataRequest` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsAndroidAppsDeliveryDataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/deliveryData",
-        baseUrl: "https://fcmdata.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsAndroidAppsDeliveryDataRequest",
-  }) as any as S.Schema<ListProjectsAndroidAppsDeliveryDataRequest>;
+export const ListProjectsAndroidAppsDeliveryDataRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/deliveryData","baseUrl":"https://fcmdata.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsAndroidAppsDeliveryDataRequest" }) as any as S.Schema<ListProjectsAndroidAppsDeliveryDataRequest>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface GoogleTypeDate {
@@ -71,11 +62,11 @@ export interface GoogleTypeDate {
   month?: number;
 }
 export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    day: S.optional(S.Number),
-    year: S.optional(S.Number),
-    month: S.optional(S.Number),
-  }),
+S.Struct({
+  "day": S.optional(S.Number),
+  "year": S.optional(S.Number),
+  "month": S.optional(S.Number),
+}),
 ).annotate({ identifier: "GoogleTypeDate" }) as any as S.Schema<GoogleTypeDate>;
 
 /** Percentage breakdown of message delivery outcomes. These categories are mutually exclusive. All percentages are calculated with countMessagesAccepted as the denominator. These categories may not account for all message outcomes. */
@@ -95,20 +86,17 @@ export interface GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
   /** The percentage of accepted messages that expired because [Time To Live (TTL)](https://firebase.google.com/docs/cloud-messaging/concept-options#ttl) elapsed before the target device reconnected. */
   droppedTtlExpired?: number;
 }
-export const GoogleFirebaseFcmDataV1beta1MessageOutcomePercents =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      collapsed: S.optional(S.Number),
-      pending: S.optional(S.Number),
-      droppedAppForceStopped: S.optional(S.Number),
-      droppedTooManyPendingMessages: S.optional(S.Number),
-      delivered: S.optional(S.Number),
-      droppedDeviceInactive: S.optional(S.Number),
-      droppedTtlExpired: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseFcmDataV1beta1MessageOutcomePercents",
-  }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1MessageOutcomePercents>;
+export const GoogleFirebaseFcmDataV1beta1MessageOutcomePercents = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "collapsed": S.optional(S.Number),
+  "pending": S.optional(S.Number),
+  "droppedAppForceStopped": S.optional(S.Number),
+  "droppedTooManyPendingMessages": S.optional(S.Number),
+  "delivered": S.optional(S.Number),
+  "droppedDeviceInactive": S.optional(S.Number),
+  "droppedTtlExpired": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleFirebaseFcmDataV1beta1MessageOutcomePercents" }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1MessageOutcomePercents>;
 
 /** Additional information about [proxy notification](https://firebase.google.com/docs/cloud-messaging/android/message-priority#proxy) delivery. All percentages are calculated with countNotificationsAccepted as the denominator. */
 export interface GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
@@ -125,19 +113,16 @@ export interface GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
   /** The percentage of accepted notifications that were skipped because the messages were not throttled. */
   skippedNotThrottled?: number;
 }
-export const GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      skippedUnsupported: S.optional(S.Number),
-      proxied: S.optional(S.Number),
-      skippedUnconfigured: S.optional(S.Number),
-      failed: S.optional(S.Number),
-      skippedOptedOut: S.optional(S.Number),
-      skippedNotThrottled: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents",
-  }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents>;
+export const GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "skippedUnsupported": S.optional(S.Number),
+  "proxied": S.optional(S.Number),
+  "skippedUnconfigured": S.optional(S.Number),
+  "failed": S.optional(S.Number),
+  "skippedOptedOut": S.optional(S.Number),
+  "skippedNotThrottled": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents" }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents>;
 
 /** Overview of delivery performance for messages that were successfully delivered. All percentages are calculated with countMessagesAccepted as the denominator. These categories are not mutually exclusive; a message can be delayed for multiple reasons. */
 export interface GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
@@ -152,32 +137,26 @@ export interface GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
   /** The percentage of accepted messages that were delayed because the target device was not connected at the time of sending. These messages were eventually delivered when the device reconnected. */
   delayedDeviceOffline?: number;
 }
-export const GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      delayedMessageThrottled: S.optional(S.Number),
-      delayedDeviceDoze: S.optional(S.Number),
-      delayedUserStopped: S.optional(S.Number),
-      deliveredNoDelay: S.optional(S.Number),
-      delayedDeviceOffline: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents",
-  }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents>;
+export const GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "delayedMessageThrottled": S.optional(S.Number),
+  "delayedDeviceDoze": S.optional(S.Number),
+  "delayedUserStopped": S.optional(S.Number),
+  "deliveredNoDelay": S.optional(S.Number),
+  "delayedDeviceOffline": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents" }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents>;
 
 /** Additional information about message delivery. All percentages are calculated with countMessagesAccepted as the denominator. */
 export interface GoogleFirebaseFcmDataV1beta1MessageInsightPercents {
   /** The percentage of accepted messages that had their priority lowered from high to normal. See [documentation for setting message priority](https://firebase.google.com/docs/cloud-messaging/android/message-priority). */
   priorityLowered?: number;
 }
-export const GoogleFirebaseFcmDataV1beta1MessageInsightPercents =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      priorityLowered: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseFcmDataV1beta1MessageInsightPercents",
-  }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1MessageInsightPercents>;
+export const GoogleFirebaseFcmDataV1beta1MessageInsightPercents = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "priorityLowered": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleFirebaseFcmDataV1beta1MessageInsightPercents" }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1MessageInsightPercents>;
 
 /** Data detailing messaging delivery */
 export interface GoogleFirebaseFcmDataV1beta1Data {
@@ -195,25 +174,15 @@ export interface GoogleFirebaseFcmDataV1beta1Data {
   messageInsightPercents?: GoogleFirebaseFcmDataV1beta1MessageInsightPercents;
 }
 export const GoogleFirebaseFcmDataV1beta1Data = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countMessagesAccepted: S.optional(S.String),
-    countNotificationsAccepted: S.optional(S.String),
-    messageOutcomePercents: S.optional(
-      GoogleFirebaseFcmDataV1beta1MessageOutcomePercents,
-    ),
-    proxyNotificationInsightPercents: S.optional(
-      GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents,
-    ),
-    deliveryPerformancePercents: S.optional(
-      GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents,
-    ),
-    messageInsightPercents: S.optional(
-      GoogleFirebaseFcmDataV1beta1MessageInsightPercents,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleFirebaseFcmDataV1beta1Data",
-}) as any as S.Schema<GoogleFirebaseFcmDataV1beta1Data>;
+S.Struct({
+  "countMessagesAccepted": S.optional(S.String),
+  "countNotificationsAccepted": S.optional(S.String),
+  "messageOutcomePercents": S.optional(GoogleFirebaseFcmDataV1beta1MessageOutcomePercents),
+  "proxyNotificationInsightPercents": S.optional(GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents),
+  "deliveryPerformancePercents": S.optional(GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents),
+  "messageInsightPercents": S.optional(GoogleFirebaseFcmDataV1beta1MessageInsightPercents),
+}),
+).annotate({ identifier: "GoogleFirebaseFcmDataV1beta1Data" }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1Data>;
 
 /** Message delivery data for a given date, app, and analytics label combination. */
 export interface GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
@@ -226,24 +195,17 @@ export interface GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
   /** The data for the specified appId, date, and analyticsLabel. */
   data?: GoogleFirebaseFcmDataV1beta1Data;
 }
-export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.optional(S.String),
-      date: S.optional(GoogleTypeDate),
-      analyticsLabel: S.optional(S.String),
-      data: S.optional(GoogleFirebaseFcmDataV1beta1Data),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseFcmDataV1beta1AndroidDeliveryData",
-  }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
+export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryData = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "appId": S.optional(S.String),
+  "date": S.optional(GoogleTypeDate),
+  "analyticsLabel": S.optional(S.String),
+  "data": S.optional(GoogleFirebaseFcmDataV1beta1Data),
+}),
+).annotate({ identifier: "GoogleFirebaseFcmDataV1beta1AndroidDeliveryData" }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
 
-export type GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList =
-  ReadonlyArray<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
-export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList =
-  /*@__PURE__*/ S.Array(
-    GoogleFirebaseFcmDataV1beta1AndroidDeliveryData,
-  ) as any as S.Schema<GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList>;
+export type GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList = ReadonlyArray<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
+export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList = /*@__PURE__*/ S.Array(GoogleFirebaseFcmDataV1beta1AndroidDeliveryData) as any as S.Schema<GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList>;
 
 /** Response message for ListAndroidDeliveryData. */
 export interface GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
@@ -252,22 +214,14 @@ export interface GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      androidDeliveryData: S.optional(
-        GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse",
-  }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse>;
+export const GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "androidDeliveryData": S.optional(GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse" }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse>;
 
-export type ListProjectsAndroidAppsDeliveryDataError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsAndroidAppsDeliveryDataError = NotFound | Forbidden | GcpOpError;
 /** List aggregate delivery data for the given Android application. */
 export const listProjectsAndroidAppsDeliveryData: API.PaginatedOperationMethod<
   ListProjectsAndroidAppsDeliveryDataRequest,
@@ -280,8 +234,6 @@ export const listProjectsAndroidAppsDeliveryData: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
+

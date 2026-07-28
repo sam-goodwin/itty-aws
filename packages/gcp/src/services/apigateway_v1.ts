@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface ApigatewayCancelOperationRequest {}
 export const ApigatewayCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ApigatewayCancelOperationRequest",
-}) as any as S.Schema<ApigatewayCancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "ApigatewayCancelOperationRequest" }) as any as S.Schema<ApigatewayCancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,43 +72,24 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: ApigatewayCancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ApigatewayCancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ApigatewayCancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
-export type ApigatewayApiStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "FAILED"
-  | "DELETING"
-  | "UPDATING"
-  | (string & {});
+export type ApigatewayApiStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "FAILED" | "DELETING" | "UPDATING";
 export const ApigatewayApiStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** An API that can be served by one or more Gateways. */
 export interface ApigatewayApi {
@@ -130,15 +109,15 @@ export interface ApigatewayApi {
   updateTime?: string;
 }
 export const ApigatewayApi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    state: S.optional(ApigatewayApiStateEnum),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    managedService: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "state": S.optional(ApigatewayApiStateEnum),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "managedService": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "ApigatewayApi" }) as any as S.Schema<ApigatewayApi>;
 
 export interface CreateProjectsLocationsApisRequest {
@@ -150,31 +129,18 @@ export interface CreateProjectsLocationsApisRequest {
   body?: ApigatewayApi;
 }
 export const CreateProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    apiId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(ApigatewayApi.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/apis",
-      baseUrl: "https://apigateway.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsLocationsApisRequest",
-}) as any as S.Schema<CreateProjectsLocationsApisRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "apiId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ApigatewayApi.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/apis","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsApisRequest" }) as any as S.Schema<CreateProjectsLocationsApisRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface ApigatewayStatus {
@@ -186,14 +152,12 @@ export interface ApigatewayStatus {
   details?: DocumentMapList;
 }
 export const ApigatewayStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
-).annotate({
-  identifier: "ApigatewayStatus",
-}) as any as S.Schema<ApigatewayStatus>;
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
+).annotate({ identifier: "ApigatewayStatus" }) as any as S.Schema<ApigatewayStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface ApigatewayOperation {
@@ -209,16 +173,14 @@ export interface ApigatewayOperation {
   metadata?: DocumentMap;
 }
 export const ApigatewayOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    done: S.optional(S.Boolean),
-    error: S.optional(ApigatewayStatus),
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "ApigatewayOperation",
-}) as any as S.Schema<ApigatewayOperation>;
+S.Struct({
+  "done": S.optional(S.Boolean),
+  "error": S.optional(ApigatewayStatus),
+  "response": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "ApigatewayOperation" }) as any as S.Schema<ApigatewayOperation>;
 
 /** A lightweight description of a file. */
 export interface ApigatewayApiConfigFile {
@@ -228,19 +190,14 @@ export interface ApigatewayApiConfigFile {
   contents?: string;
 }
 export const ApigatewayApiConfigFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    contents: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApigatewayApiConfigFile",
-}) as any as S.Schema<ApigatewayApiConfigFile>;
+S.Struct({
+  "path": S.optional(S.String),
+  "contents": S.optional(S.String),
+}),
+).annotate({ identifier: "ApigatewayApiConfigFile" }) as any as S.Schema<ApigatewayApiConfigFile>;
 
-export type ApigatewayApiConfigFileList =
-  ReadonlyArray<ApigatewayApiConfigFile>;
-export const ApigatewayApiConfigFileList = /*@__PURE__*/ S.Array(
-  ApigatewayApiConfigFile,
-) as any as S.Schema<ApigatewayApiConfigFileList>;
+export type ApigatewayApiConfigFileList = ReadonlyArray<ApigatewayApiConfigFile>;
+export const ApigatewayApiConfigFileList = /*@__PURE__*/ S.Array(ApigatewayApiConfigFile) as any as S.Schema<ApigatewayApiConfigFileList>;
 
 /** An OpenAPI Specification Document describing an API. */
 export interface ApigatewayApiConfigOpenApiDocument {
@@ -248,18 +205,13 @@ export interface ApigatewayApiConfigOpenApiDocument {
   document?: ApigatewayApiConfigFile;
 }
 export const ApigatewayApiConfigOpenApiDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(ApigatewayApiConfigFile),
-  }),
-).annotate({
-  identifier: "ApigatewayApiConfigOpenApiDocument",
-}) as any as S.Schema<ApigatewayApiConfigOpenApiDocument>;
+S.Struct({
+  "document": S.optional(ApigatewayApiConfigFile),
+}),
+).annotate({ identifier: "ApigatewayApiConfigOpenApiDocument" }) as any as S.Schema<ApigatewayApiConfigOpenApiDocument>;
 
-export type ApigatewayApiConfigOpenApiDocumentList =
-  ReadonlyArray<ApigatewayApiConfigOpenApiDocument>;
-export const ApigatewayApiConfigOpenApiDocumentList = /*@__PURE__*/ S.Array(
-  ApigatewayApiConfigOpenApiDocument,
-) as any as S.Schema<ApigatewayApiConfigOpenApiDocumentList>;
+export type ApigatewayApiConfigOpenApiDocumentList = ReadonlyArray<ApigatewayApiConfigOpenApiDocument>;
+export const ApigatewayApiConfigOpenApiDocumentList = /*@__PURE__*/ S.Array(ApigatewayApiConfigOpenApiDocument) as any as S.Schema<ApigatewayApiConfigOpenApiDocumentList>;
 
 /** A gRPC service definition. */
 export interface ApigatewayApiConfigGrpcServiceDefinition {
@@ -268,32 +220,17 @@ export interface ApigatewayApiConfigGrpcServiceDefinition {
   /** Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb */
   fileDescriptorSet?: ApigatewayApiConfigFile;
 }
-export const ApigatewayApiConfigGrpcServiceDefinition = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      source: S.optional(ApigatewayApiConfigFileList),
-      fileDescriptorSet: S.optional(ApigatewayApiConfigFile),
-    }),
-).annotate({
-  identifier: "ApigatewayApiConfigGrpcServiceDefinition",
-}) as any as S.Schema<ApigatewayApiConfigGrpcServiceDefinition>;
+export const ApigatewayApiConfigGrpcServiceDefinition = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "source": S.optional(ApigatewayApiConfigFileList),
+  "fileDescriptorSet": S.optional(ApigatewayApiConfigFile),
+}),
+).annotate({ identifier: "ApigatewayApiConfigGrpcServiceDefinition" }) as any as S.Schema<ApigatewayApiConfigGrpcServiceDefinition>;
 
-export type ApigatewayApiConfigGrpcServiceDefinitionList =
-  ReadonlyArray<ApigatewayApiConfigGrpcServiceDefinition>;
-export const ApigatewayApiConfigGrpcServiceDefinitionList =
-  /*@__PURE__*/ S.Array(
-    ApigatewayApiConfigGrpcServiceDefinition,
-  ) as any as S.Schema<ApigatewayApiConfigGrpcServiceDefinitionList>;
+export type ApigatewayApiConfigGrpcServiceDefinitionList = ReadonlyArray<ApigatewayApiConfigGrpcServiceDefinition>;
+export const ApigatewayApiConfigGrpcServiceDefinitionList = /*@__PURE__*/ S.Array(ApigatewayApiConfigGrpcServiceDefinition) as any as S.Schema<ApigatewayApiConfigGrpcServiceDefinitionList>;
 
-export type ApigatewayApiConfigStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "FAILED"
-  | "DELETING"
-  | "UPDATING"
-  | "ACTIVATING"
-  | (string & {});
+export type ApigatewayApiConfigStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "FAILED" | "DELETING" | "UPDATING" | "ACTIVATING";
 export const ApigatewayApiConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** An API Configuration is a combination of settings for both the Managed Service and Gateways serving this API Config. */
@@ -322,22 +259,20 @@ export interface ApigatewayApiConfig {
   state?: ApigatewayApiConfigStateEnum;
 }
 export const ApigatewayApiConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    managedServiceConfigs: S.optional(ApigatewayApiConfigFileList),
-    openapiDocuments: S.optional(ApigatewayApiConfigOpenApiDocumentList),
-    createTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    grpcServices: S.optional(ApigatewayApiConfigGrpcServiceDefinitionList),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    gatewayServiceAccount: S.optional(S.String),
-    serviceConfigId: S.optional(S.String),
-    state: S.optional(ApigatewayApiConfigStateEnum),
-  }),
-).annotate({
-  identifier: "ApigatewayApiConfig",
-}) as any as S.Schema<ApigatewayApiConfig>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "managedServiceConfigs": S.optional(ApigatewayApiConfigFileList),
+  "openapiDocuments": S.optional(ApigatewayApiConfigOpenApiDocumentList),
+  "createTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "grpcServices": S.optional(ApigatewayApiConfigGrpcServiceDefinitionList),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "gatewayServiceAccount": S.optional(S.String),
+  "serviceConfigId": S.optional(S.String),
+  "state": S.optional(ApigatewayApiConfigStateEnum),
+}),
+).annotate({ identifier: "ApigatewayApiConfig" }) as any as S.Schema<ApigatewayApiConfig>;
 
 export interface CreateProjectsLocationsApisConfigsRequest {
   /** Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource. */
@@ -347,31 +282,15 @@ export interface CreateProjectsLocationsApisConfigsRequest {
   /** Request body */
   body?: ApigatewayApiConfig;
 }
-export const CreateProjectsLocationsApisConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apiConfigId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ApigatewayApiConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/configs",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsApisConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsApisConfigsRequest>;
+export const CreateProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "apiConfigId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ApigatewayApiConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/configs","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsApisConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsApisConfigsRequest>;
 
-export type ApigatewayGatewayStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "FAILED"
-  | "DELETING"
-  | "UPDATING"
-  | (string & {});
+export type ApigatewayGatewayStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "FAILED" | "DELETING" | "UPDATING";
 export const ApigatewayGatewayStateEnum = /*@__PURE__*/ S.String;
 
 /** A Gateway is an API-aware HTTP proxy. It performs API-Method and/or API-Consumer specific actions based on an API Config such as authentication, policy enforcement, and backend selection. */
@@ -394,19 +313,17 @@ export interface ApigatewayGateway {
   state?: ApigatewayGatewayStateEnum;
 }
 export const ApigatewayGateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    defaultHostname: S.optional(S.String),
-    createTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    apiConfig: S.optional(S.String),
-    state: S.optional(ApigatewayGatewayStateEnum),
-  }),
-).annotate({
-  identifier: "ApigatewayGateway",
-}) as any as S.Schema<ApigatewayGateway>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "defaultHostname": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "apiConfig": S.optional(S.String),
+  "state": S.optional(ApigatewayGatewayStateEnum),
+}),
+).annotate({ identifier: "ApigatewayGateway" }) as any as S.Schema<ApigatewayGateway>;
 
 export interface CreateProjectsLocationsGatewaysRequest {
   /** Required. Parent resource of the Gateway, of the form: `projects/*\/locations/*` */
@@ -416,97 +333,53 @@ export interface CreateProjectsLocationsGatewaysRequest {
   /** Request body */
   body?: ApigatewayGateway;
 }
-export const CreateProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      gatewayId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ApigatewayGateway.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/gateways",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsGatewaysRequest",
-}) as any as S.Schema<CreateProjectsLocationsGatewaysRequest>;
+export const CreateProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "gatewayId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ApigatewayGateway.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/gateways","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsGatewaysRequest" }) as any as S.Schema<CreateProjectsLocationsGatewaysRequest>;
 
 export interface DeleteProjectsLocationsApisRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/apis/*` */
   name: string;
 }
 export const DeleteProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://apigateway.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsLocationsApisRequest",
-}) as any as S.Schema<DeleteProjectsLocationsApisRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsApisRequest" }) as any as S.Schema<DeleteProjectsLocationsApisRequest>;
 
 export interface DeleteProjectsLocationsApisConfigsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/apis/*\/configs/*` */
   name: string;
 }
-export const DeleteProjectsLocationsApisConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsApisConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsApisConfigsRequest>;
+export const DeleteProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsApisConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsApisConfigsRequest>;
 
 export interface DeleteProjectsLocationsGatewaysRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/gateways/*` */
   name: string;
 }
-export const DeleteProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsGatewaysRequest",
-}) as any as S.Schema<DeleteProjectsLocationsGatewaysRequest>;
+export const DeleteProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsGatewaysRequest" }) as any as S.Schema<DeleteProjectsLocationsGatewaysRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetIamPolicyProjectsLocationsApisRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -514,33 +387,17 @@ export interface GetIamPolicyProjectsLocationsApisRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetIamPolicyProjectsLocationsApisRequest",
-}) as any as S.Schema<GetIamPolicyProjectsLocationsApisRequest>;
+export const GetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  "resource": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsApisRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsApisRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type ApigatewayAuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type ApigatewayAuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const ApigatewayAuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -551,19 +408,14 @@ export interface ApigatewayAuditLogConfig {
   logType?: ApigatewayAuditLogConfigLogTypeEnum;
 }
 export const ApigatewayAuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exemptedMembers: S.optional(StringList),
-    logType: S.optional(ApigatewayAuditLogConfigLogTypeEnum),
-  }),
-).annotate({
-  identifier: "ApigatewayAuditLogConfig",
-}) as any as S.Schema<ApigatewayAuditLogConfig>;
+S.Struct({
+  "exemptedMembers": S.optional(StringList),
+  "logType": S.optional(ApigatewayAuditLogConfigLogTypeEnum),
+}),
+).annotate({ identifier: "ApigatewayAuditLogConfig" }) as any as S.Schema<ApigatewayAuditLogConfig>;
 
-export type ApigatewayAuditLogConfigList =
-  ReadonlyArray<ApigatewayAuditLogConfig>;
-export const ApigatewayAuditLogConfigList = /*@__PURE__*/ S.Array(
-  ApigatewayAuditLogConfig,
-) as any as S.Schema<ApigatewayAuditLogConfigList>;
+export type ApigatewayAuditLogConfigList = ReadonlyArray<ApigatewayAuditLogConfig>;
+export const ApigatewayAuditLogConfigList = /*@__PURE__*/ S.Array(ApigatewayAuditLogConfig) as any as S.Schema<ApigatewayAuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface ApigatewayAuditConfig {
@@ -573,18 +425,14 @@ export interface ApigatewayAuditConfig {
   auditLogConfigs?: ApigatewayAuditLogConfigList;
 }
 export const ApigatewayAuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(ApigatewayAuditLogConfigList),
-  }),
-).annotate({
-  identifier: "ApigatewayAuditConfig",
-}) as any as S.Schema<ApigatewayAuditConfig>;
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(ApigatewayAuditLogConfigList),
+}),
+).annotate({ identifier: "ApigatewayAuditConfig" }) as any as S.Schema<ApigatewayAuditConfig>;
 
 export type ApigatewayAuditConfigList = ReadonlyArray<ApigatewayAuditConfig>;
-export const ApigatewayAuditConfigList = /*@__PURE__*/ S.Array(
-  ApigatewayAuditConfig,
-) as any as S.Schema<ApigatewayAuditConfigList>;
+export const ApigatewayAuditConfigList = /*@__PURE__*/ S.Array(ApigatewayAuditConfig) as any as S.Schema<ApigatewayAuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface ApigatewayExpr {
@@ -598,12 +446,12 @@ export interface ApigatewayExpr {
   title?: string;
 }
 export const ApigatewayExpr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
+S.Struct({
+  "expression": S.optional(S.String),
+  "description": S.optional(S.String),
+  "location": S.optional(S.String),
+  "title": S.optional(S.String),
+}),
 ).annotate({ identifier: "ApigatewayExpr" }) as any as S.Schema<ApigatewayExpr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -616,19 +464,15 @@ export interface ApigatewayBinding {
   condition?: ApigatewayExpr;
 }
 export const ApigatewayBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    members: S.optional(StringList),
-    role: S.optional(S.String),
-    condition: S.optional(ApigatewayExpr),
-  }),
-).annotate({
-  identifier: "ApigatewayBinding",
-}) as any as S.Schema<ApigatewayBinding>;
+S.Struct({
+  "members": S.optional(StringList),
+  "role": S.optional(S.String),
+  "condition": S.optional(ApigatewayExpr),
+}),
+).annotate({ identifier: "ApigatewayBinding" }) as any as S.Schema<ApigatewayBinding>;
 
 export type ApigatewayBindingList = ReadonlyArray<ApigatewayBinding>;
-export const ApigatewayBindingList = /*@__PURE__*/ S.Array(
-  ApigatewayBinding,
-) as any as S.Schema<ApigatewayBindingList>;
+export const ApigatewayBindingList = /*@__PURE__*/ S.Array(ApigatewayBinding) as any as S.Schema<ApigatewayBindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface ApigatewayPolicy {
@@ -642,15 +486,13 @@ export interface ApigatewayPolicy {
   bindings?: ApigatewayBindingList;
 }
 export const ApigatewayPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    auditConfigs: S.optional(ApigatewayAuditConfigList),
-    etag: S.optional(S.String),
-    bindings: S.optional(ApigatewayBindingList),
-  }),
-).annotate({
-  identifier: "ApigatewayPolicy",
-}) as any as S.Schema<ApigatewayPolicy>;
+S.Struct({
+  "version": S.optional(S.Number),
+  "auditConfigs": S.optional(ApigatewayAuditConfigList),
+  "etag": S.optional(S.String),
+  "bindings": S.optional(ApigatewayBindingList),
+}),
+).annotate({ identifier: "ApigatewayPolicy" }) as any as S.Schema<ApigatewayPolicy>;
 
 export interface GetIamPolicyProjectsLocationsApisConfigsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -658,21 +500,12 @@ export interface GetIamPolicyProjectsLocationsApisConfigsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsApisConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsApisConfigsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsApisConfigsRequest>;
+export const GetIamPolicyProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  "resource": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsApisConfigsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsApisConfigsRequest>;
 
 export interface GetIamPolicyProjectsLocationsGatewaysRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -680,39 +513,22 @@ export interface GetIamPolicyProjectsLocationsGatewaysRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsGatewaysRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsGatewaysRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsGatewaysRequest>;
+export const GetIamPolicyProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  "resource": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsGatewaysRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsGatewaysRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://apigateway.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface ApigatewayLocation {
@@ -728,100 +544,60 @@ export interface ApigatewayLocation {
   displayName?: string;
 }
 export const ApigatewayLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    locationId: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApigatewayLocation",
-}) as any as S.Schema<ApigatewayLocation>;
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "locationId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
+).annotate({ identifier: "ApigatewayLocation" }) as any as S.Schema<ApigatewayLocation>;
 
 export interface GetProjectsLocationsApisRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/apis/*` */
   name: string;
 }
 export const GetProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://apigateway.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsApisRequest",
-}) as any as S.Schema<GetProjectsLocationsApisRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsApisRequest" }) as any as S.Schema<GetProjectsLocationsApisRequest>;
 
-export type GetProjectsLocationsApisConfigsViewEnum =
-  | "CONFIG_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
+export type GetProjectsLocationsApisConfigsViewEnum = "CONFIG_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
 export const GetProjectsLocationsApisConfigsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsApisConfigsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/apis/*\/configs/*` */
   name: string;
   /** Specifies which fields of the API Config are returned in the response. Defaults to `BASIC` view. */
-  view?: GetProjectsLocationsApisConfigsViewEnum;
+  view?: GetProjectsLocationsApisConfigsViewEnum | (string & {});
 }
-export const GetProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      view: S.optional(GetProjectsLocationsApisConfigsViewEnum.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsApisConfigsRequest",
-}) as any as S.Schema<GetProjectsLocationsApisConfigsRequest>;
+export const GetProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetProjectsLocationsApisConfigsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsApisConfigsRequest" }) as any as S.Schema<GetProjectsLocationsApisConfigsRequest>;
 
 export interface GetProjectsLocationsGatewaysRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/gateways/*` */
   name: string;
 }
 export const GetProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://apigateway.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsGatewaysRequest",
-}) as any as S.Schema<GetProjectsLocationsGatewaysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsGatewaysRequest" }) as any as S.Schema<GetProjectsLocationsGatewaysRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -836,27 +612,17 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://apigateway.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type ApigatewayLocationList = ReadonlyArray<ApigatewayLocation>;
-export const ApigatewayLocationList = /*@__PURE__*/ S.Array(
-  ApigatewayLocation,
-) as any as S.Schema<ApigatewayLocationList>;
+export const ApigatewayLocationList = /*@__PURE__*/ S.Array(ApigatewayLocation) as any as S.Schema<ApigatewayLocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ApigatewayListLocationsResponse {
@@ -866,13 +632,11 @@ export interface ApigatewayListLocationsResponse {
   nextPageToken?: string;
 }
 export const ApigatewayListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(ApigatewayLocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApigatewayListLocationsResponse",
-}) as any as S.Schema<ApigatewayListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(ApigatewayLocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ApigatewayListLocationsResponse" }) as any as S.Schema<ApigatewayListLocationsResponse>;
 
 export interface ListProjectsLocationsApisRequest {
   /** Order by parameters. */
@@ -887,27 +651,17 @@ export interface ListProjectsLocationsApisRequest {
   parent: string;
 }
 export const ListProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/apis",
-      baseUrl: "https://apigateway.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsApisRequest",
-}) as any as S.Schema<ListProjectsLocationsApisRequest>;
+S.Struct({
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/apis","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsApisRequest" }) as any as S.Schema<ListProjectsLocationsApisRequest>;
 
 export type ApigatewayApiList = ReadonlyArray<ApigatewayApi>;
-export const ApigatewayApiList = /*@__PURE__*/ S.Array(
-  ApigatewayApi,
-) as any as S.Schema<ApigatewayApiList>;
+export const ApigatewayApiList = /*@__PURE__*/ S.Array(ApigatewayApi) as any as S.Schema<ApigatewayApiList>;
 
 /** Response message for ApiGatewayService.ListApis */
 export interface ApigatewayListApisResponse {
@@ -919,14 +673,12 @@ export interface ApigatewayListApisResponse {
   apis?: ApigatewayApiList;
 }
 export const ApigatewayListApisResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachableLocations: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-    apis: S.optional(ApigatewayApiList),
-  }),
-).annotate({
-  identifier: "ApigatewayListApisResponse",
-}) as any as S.Schema<ApigatewayListApisResponse>;
+S.Struct({
+  "unreachableLocations": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "apis": S.optional(ApigatewayApiList),
+}),
+).annotate({ identifier: "ApigatewayListApisResponse" }) as any as S.Schema<ApigatewayListApisResponse>;
 
 export interface ListProjectsLocationsApisConfigsRequest {
   /** Required. Parent resource of the API Config, of the form: `projects/*\/locations/global/apis/*` */
@@ -940,29 +692,18 @@ export interface ListProjectsLocationsApisConfigsRequest {
   /** Page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/configs",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsApisConfigsRequest",
-}) as any as S.Schema<ListProjectsLocationsApisConfigsRequest>;
+export const ListProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/configs","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsApisConfigsRequest" }) as any as S.Schema<ListProjectsLocationsApisConfigsRequest>;
 
 export type ApigatewayApiConfigList = ReadonlyArray<ApigatewayApiConfig>;
-export const ApigatewayApiConfigList = /*@__PURE__*/ S.Array(
-  ApigatewayApiConfig,
-) as any as S.Schema<ApigatewayApiConfigList>;
+export const ApigatewayApiConfigList = /*@__PURE__*/ S.Array(ApigatewayApiConfig) as any as S.Schema<ApigatewayApiConfigList>;
 
 /** Response message for ApiGatewayService.ListApiConfigs */
 export interface ApigatewayListApiConfigsResponse {
@@ -974,14 +715,12 @@ export interface ApigatewayListApiConfigsResponse {
   nextPageToken?: string;
 }
 export const ApigatewayListApiConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiConfigs: S.optional(ApigatewayApiConfigList),
-    unreachableLocations: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApigatewayListApiConfigsResponse",
-}) as any as S.Schema<ApigatewayListApiConfigsResponse>;
+S.Struct({
+  "apiConfigs": S.optional(ApigatewayApiConfigList),
+  "unreachableLocations": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ApigatewayListApiConfigsResponse" }) as any as S.Schema<ApigatewayListApiConfigsResponse>;
 
 export interface ListProjectsLocationsGatewaysRequest {
   /** Filter. */
@@ -995,29 +734,18 @@ export interface ListProjectsLocationsGatewaysRequest {
   /** Page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/gateways",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsGatewaysRequest",
-}) as any as S.Schema<ListProjectsLocationsGatewaysRequest>;
+export const ListProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/gateways","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsGatewaysRequest" }) as any as S.Schema<ListProjectsLocationsGatewaysRequest>;
 
 export type ApigatewayGatewayList = ReadonlyArray<ApigatewayGateway>;
-export const ApigatewayGatewayList = /*@__PURE__*/ S.Array(
-  ApigatewayGateway,
-) as any as S.Schema<ApigatewayGatewayList>;
+export const ApigatewayGatewayList = /*@__PURE__*/ S.Array(ApigatewayGateway) as any as S.Schema<ApigatewayGatewayList>;
 
 /** Response message for ApiGatewayService.ListGateways */
 export interface ApigatewayListGatewaysResponse {
@@ -1029,14 +757,12 @@ export interface ApigatewayListGatewaysResponse {
   gateways?: ApigatewayGatewayList;
 }
 export const ApigatewayListGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachableLocations: S.optional(StringList),
-    gateways: S.optional(ApigatewayGatewayList),
-  }),
-).annotate({
-  identifier: "ApigatewayListGatewaysResponse",
-}) as any as S.Schema<ApigatewayListGatewaysResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachableLocations": S.optional(StringList),
+  "gateways": S.optional(ApigatewayGatewayList),
+}),
+).annotate({ identifier: "ApigatewayListGatewaysResponse" }) as any as S.Schema<ApigatewayListGatewaysResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -1050,29 +776,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type ApigatewayOperationList = ReadonlyArray<ApigatewayOperation>;
-export const ApigatewayOperationList = /*@__PURE__*/ S.Array(
-  ApigatewayOperation,
-) as any as S.Schema<ApigatewayOperationList>;
+export const ApigatewayOperationList = /*@__PURE__*/ S.Array(ApigatewayOperation) as any as S.Schema<ApigatewayOperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ApigatewayListOperationsResponse {
@@ -1084,14 +799,12 @@ export interface ApigatewayListOperationsResponse {
   unreachable?: StringList;
 }
 export const ApigatewayListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    operations: S.optional(ApigatewayOperationList),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ApigatewayListOperationsResponse",
-}) as any as S.Schema<ApigatewayListOperationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "operations": S.optional(ApigatewayOperationList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ApigatewayListOperationsResponse" }) as any as S.Schema<ApigatewayListOperationsResponse>;
 
 export interface PatchProjectsLocationsApisRequest {
   /** Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api} */
@@ -1102,20 +815,12 @@ export interface PatchProjectsLocationsApisRequest {
   body?: ApigatewayApi;
 }
 export const PatchProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(ApigatewayApi.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://apigateway.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsLocationsApisRequest",
-}) as any as S.Schema<PatchProjectsLocationsApisRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ApigatewayApi.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsApisRequest" }) as any as S.Schema<PatchProjectsLocationsApisRequest>;
 
 export interface PatchProjectsLocationsApisConfigsRequest {
   /** Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config} */
@@ -1125,22 +830,13 @@ export interface PatchProjectsLocationsApisConfigsRequest {
   /** Request body */
   body?: ApigatewayApiConfig;
 }
-export const PatchProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ApigatewayApiConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsApisConfigsRequest",
-}) as any as S.Schema<PatchProjectsLocationsApisConfigsRequest>;
+export const PatchProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ApigatewayApiConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsApisConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsApisConfigsRequest>;
 
 export interface PatchProjectsLocationsGatewaysRequest {
   /** Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway} */
@@ -1150,22 +846,13 @@ export interface PatchProjectsLocationsGatewaysRequest {
   /** Request body */
   body?: ApigatewayGateway;
 }
-export const PatchProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ApigatewayGateway.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsGatewaysRequest",
-}) as any as S.Schema<PatchProjectsLocationsGatewaysRequest>;
+export const PatchProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ApigatewayGateway.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsGatewaysRequest" }) as any as S.Schema<PatchProjectsLocationsGatewaysRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface ApigatewaySetIamPolicyRequest {
@@ -1175,13 +862,11 @@ export interface ApigatewaySetIamPolicyRequest {
   policy?: ApigatewayPolicy;
 }
 export const ApigatewaySetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String),
-    policy: S.optional(ApigatewayPolicy),
-  }),
-).annotate({
-  identifier: "ApigatewaySetIamPolicyRequest",
-}) as any as S.Schema<ApigatewaySetIamPolicyRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String),
+  "policy": S.optional(ApigatewayPolicy),
+}),
+).annotate({ identifier: "ApigatewaySetIamPolicyRequest" }) as any as S.Schema<ApigatewaySetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsApisRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1189,21 +874,12 @@ export interface SetIamPolicyProjectsLocationsApisRequest {
   /** Request body */
   body?: ApigatewaySetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(ApigatewaySetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SetIamPolicyProjectsLocationsApisRequest",
-}) as any as S.Schema<SetIamPolicyProjectsLocationsApisRequest>;
+export const SetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(ApigatewaySetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsApisRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsApisRequest>;
 
 export interface SetIamPolicyProjectsLocationsApisConfigsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1211,21 +887,12 @@ export interface SetIamPolicyProjectsLocationsApisConfigsRequest {
   /** Request body */
   body?: ApigatewaySetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsApisConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(ApigatewaySetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsApisConfigsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsApisConfigsRequest>;
+export const SetIamPolicyProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(ApigatewaySetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsApisConfigsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsApisConfigsRequest>;
 
 export interface SetIamPolicyProjectsLocationsGatewaysRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1233,21 +900,12 @@ export interface SetIamPolicyProjectsLocationsGatewaysRequest {
   /** Request body */
   body?: ApigatewaySetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGatewaysRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(ApigatewaySetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsGatewaysRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsGatewaysRequest>;
+export const SetIamPolicyProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(ApigatewaySetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsGatewaysRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsGatewaysRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface ApigatewayTestIamPermissionsRequest {
@@ -1255,12 +913,10 @@ export interface ApigatewayTestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const ApigatewayTestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ApigatewayTestIamPermissionsRequest",
-}) as any as S.Schema<ApigatewayTestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "ApigatewayTestIamPermissionsRequest" }) as any as S.Schema<ApigatewayTestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsApisRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1268,35 +924,23 @@ export interface TestIamPermissionsProjectsLocationsApisRequest {
   /** Request body */
   body?: ApigatewayTestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsApisRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(ApigatewayTestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsApisRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsApisRequest>;
+export const TestIamPermissionsProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(ApigatewayTestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsApisRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsApisRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface ApigatewayTestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const ApigatewayTestIamPermissionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      permissions: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "ApigatewayTestIamPermissionsResponse",
-}) as any as S.Schema<ApigatewayTestIamPermissionsResponse>;
+export const ApigatewayTestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "ApigatewayTestIamPermissionsResponse" }) as any as S.Schema<ApigatewayTestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsApisConfigsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1304,21 +948,12 @@ export interface TestIamPermissionsProjectsLocationsApisConfigsRequest {
   /** Request body */
   body?: ApigatewayTestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsApisConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(ApigatewayTestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsApisConfigsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsApisConfigsRequest>;
+export const TestIamPermissionsProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(ApigatewayTestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsApisConfigsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsApisConfigsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsGatewaysRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1326,28 +961,14 @@ export interface TestIamPermissionsProjectsLocationsGatewaysRequest {
   /** Request body */
   body?: ApigatewayTestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGatewaysRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(ApigatewayTestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://apigateway.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsGatewaysRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsGatewaysRequest>;
+export const TestIamPermissionsProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(ApigatewayTestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://apigateway.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsGatewaysRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsGatewaysRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1362,12 +983,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsApisError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsApisError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Api in a given project and location. */
 export const createProjectsLocationsApis: API.OperationMethod<
   CreateProjectsLocationsApisRequest,
@@ -1382,12 +998,7 @@ export const createProjectsLocationsApis: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsApisConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsApisConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new ApiConfig in a given project and location. */
 export const createProjectsLocationsApisConfigs: API.OperationMethod<
   CreateProjectsLocationsApisConfigsRequest,
@@ -1402,12 +1013,7 @@ export const createProjectsLocationsApisConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGatewaysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsGatewaysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Gateway in a given project and location. */
 export const createProjectsLocationsGateways: API.OperationMethod<
   CreateProjectsLocationsGatewaysRequest,
@@ -1422,12 +1028,7 @@ export const createProjectsLocationsGateways: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApisError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsApisError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Api. */
 export const deleteProjectsLocationsApis: API.OperationMethod<
   DeleteProjectsLocationsApisRequest,
@@ -1442,12 +1043,7 @@ export const deleteProjectsLocationsApis: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApisConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsApisConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single ApiConfig. */
 export const deleteProjectsLocationsApisConfigs: API.OperationMethod<
   DeleteProjectsLocationsApisConfigsRequest,
@@ -1462,12 +1058,7 @@ export const deleteProjectsLocationsApisConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGatewaysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsGatewaysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Gateway. */
 export const deleteProjectsLocationsGateways: API.OperationMethod<
   DeleteProjectsLocationsGatewaysRequest,
@@ -1482,12 +1073,7 @@ export const deleteProjectsLocationsGateways: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1502,10 +1088,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsApisError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsApisError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsApis: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisRequest,
@@ -1520,10 +1103,7 @@ export const getIamPolicyProjectsLocationsApis: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsApisConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsApisConfigsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsApisConfigs: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisConfigsRequest,
@@ -1538,10 +1118,7 @@ export const getIamPolicyProjectsLocationsApisConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsGatewaysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsGatewaysError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsGateways: API.OperationMethod<
   GetIamPolicyProjectsLocationsGatewaysRequest,
@@ -1586,10 +1163,7 @@ export const getProjectsLocationsApis: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsApisConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsApisConfigsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single ApiConfig. */
 export const getProjectsLocationsApisConfigs: API.OperationMethod<
   GetProjectsLocationsApisConfigsRequest,
@@ -1604,10 +1178,7 @@ export const getProjectsLocationsApisConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGatewaysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsGatewaysError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Gateway. */
 export const getProjectsLocationsGateways: API.OperationMethod<
   GetProjectsLocationsGatewaysRequest,
@@ -1622,10 +1193,7 @@ export const getProjectsLocationsGateways: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1653,10 +1221,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsLocationsApisError = NotFound | Forbidden | GcpOpError;
@@ -1672,16 +1237,10 @@ export const listProjectsLocationsApis: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsApisConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsApisConfigsError = NotFound | Forbidden | GcpOpError;
 /** Lists ApiConfigs in a given project and location. */
 export const listProjectsLocationsApisConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsApisConfigsRequest,
@@ -1694,16 +1253,10 @@ export const listProjectsLocationsApisConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsGatewaysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsGatewaysError = NotFound | Forbidden | GcpOpError;
 /** Lists Gateways in a given project and location. */
 export const listProjectsLocationsGateways: API.PaginatedOperationMethod<
   ListProjectsLocationsGatewaysRequest,
@@ -1716,16 +1269,10 @@ export const listProjectsLocationsGateways: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1738,18 +1285,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsApisError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsApisError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single Api. */
 export const patchProjectsLocationsApis: API.OperationMethod<
   PatchProjectsLocationsApisRequest,
@@ -1764,12 +1303,7 @@ export const patchProjectsLocationsApis: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApisConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsApisConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single ApiConfig. */
 export const patchProjectsLocationsApisConfigs: API.OperationMethod<
   PatchProjectsLocationsApisConfigsRequest,
@@ -1784,12 +1318,7 @@ export const patchProjectsLocationsApisConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsGatewaysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsGatewaysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single Gateway. */
 export const patchProjectsLocationsGateways: API.OperationMethod<
   PatchProjectsLocationsGatewaysRequest,
@@ -1804,12 +1333,7 @@ export const patchProjectsLocationsGateways: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsApisError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsApisError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsApis: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisRequest,
@@ -1824,12 +1348,7 @@ export const setIamPolicyProjectsLocationsApis: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsApisConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsApisConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsApisConfigs: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisConfigsRequest,
@@ -1844,12 +1363,7 @@ export const setIamPolicyProjectsLocationsApisConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsGatewaysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsGatewaysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsGateways: API.OperationMethod<
   SetIamPolicyProjectsLocationsGatewaysRequest,
@@ -1864,12 +1378,7 @@ export const setIamPolicyProjectsLocationsGateways: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsApisError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsApisError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsApis: API.OperationMethod<
   TestIamPermissionsProjectsLocationsApisRequest,
@@ -1884,12 +1393,7 @@ export const testIamPermissionsProjectsLocationsApis: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsApisConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsApisConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsApisConfigs: API.OperationMethod<
   TestIamPermissionsProjectsLocationsApisConfigsRequest,
@@ -1904,12 +1408,7 @@ export const testIamPermissionsProjectsLocationsApisConfigs: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsGatewaysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsGatewaysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsGateways: API.OperationMethod<
   TestIamPermissionsProjectsLocationsGatewaysRequest,
@@ -1923,3 +1422,4 @@ export const testIamPermissionsProjectsLocationsGateways: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -1531,6 +1531,23 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.zones#ListRequestAccount": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter by an account ID."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An account Name. Optional filter operators can be provided to extend refine the search:"
+          }
+        }
+      }
+    },
     "com.cloudflare.zones#ListRequestDirection": {
       "type": "enum",
       "members": {
@@ -1667,18 +1684,10 @@
     "com.cloudflare.zones#ListRequest": {
       "type": "structure",
       "members": {
-        "account_id": {
-          "target": "smithy.api#String",
+        "account": {
+          "target": "com.cloudflare.zones#ListRequestAccount",
           "traits": {
-            "smithy.api#documentation": "Filter by an account ID.",
-            "smithy.api#httpQuery": "account.id"
-          }
-        },
-        "account_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "An account Name. Optional filter operators can be provided to extend refine the search:",
-            "smithy.api#httpQuery": "account.name"
+            "com.cloudflare.protocols#deepQuery": "account"
           }
         },
         "direction": {

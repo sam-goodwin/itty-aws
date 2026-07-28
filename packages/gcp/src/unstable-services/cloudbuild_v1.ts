@@ -13,58 +13,54 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type ApprovalResultDecisionEnum =
-  | "DECISION_UNSPECIFIED"
-  | "APPROVED"
-  | "REJECTED"
-  | (string & {});
+export type ApprovalResultDecisionEnum = "DECISION_UNSPECIFIED" | "APPROVED" | "REJECTED";
 export const ApprovalResultDecisionEnum = /*@__PURE__*/ S.String;
 
 /** ApprovalResult describes the decision and associated metadata of a manual approval of a build. */
@@ -81,13 +77,13 @@ export interface ApprovalResult {
   approvalTime?: string;
 }
 export const ApprovalResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    decision: S.optional(ApprovalResultDecisionEnum),
-    url: S.optional(S.String),
-    comment: S.optional(S.String),
-    approverAccount: S.optional(S.String),
-    approvalTime: S.optional(S.String),
-  }),
+S.Struct({
+  "decision": S.optional(ApprovalResultDecisionEnum),
+  "url": S.optional(S.String),
+  "comment": S.optional(S.String),
+  "approverAccount": S.optional(S.String),
+  "approvalTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "ApprovalResult" }) as any as S.Schema<ApprovalResult>;
 
 /** Request to approve or reject a pending build. */
@@ -96,12 +92,10 @@ export interface ApproveBuildRequest {
   approvalResult?: ApprovalResult;
 }
 export const ApproveBuildRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    approvalResult: S.optional(ApprovalResult),
-  }),
-).annotate({
-  identifier: "ApproveBuildRequest",
-}) as any as S.Schema<ApproveBuildRequest>;
+S.Struct({
+  "approvalResult": S.optional(ApprovalResult),
+}),
+).annotate({ identifier: "ApproveBuildRequest" }) as any as S.Schema<ApproveBuildRequest>;
 
 export interface ApproveProjectsBuildsRequest {
   /** Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}" */
@@ -110,30 +104,17 @@ export interface ApproveProjectsBuildsRequest {
   body?: ApproveBuildRequest;
 }
 export const ApproveProjectsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(ApproveBuildRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:approve",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ApproveProjectsBuildsRequest",
-}) as any as S.Schema<ApproveProjectsBuildsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ApproveBuildRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:approve","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ApproveProjectsBuildsRequest" }) as any as S.Schema<ApproveProjectsBuildsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -145,11 +126,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -166,13 +147,13 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    done: S.optional(S.Boolean),
-    metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    error: S.optional(Status),
-  }),
+S.Struct({
+  "done": S.optional(S.Boolean),
+  "metadata": S.optional(DocumentMap),
+  "response": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "error": S.optional(Status),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface ApproveProjectsLocationsBuildsRequest {
@@ -181,21 +162,12 @@ export interface ApproveProjectsLocationsBuildsRequest {
   /** Request body */
   body?: ApproveBuildRequest;
 }
-export const ApproveProjectsLocationsBuildsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ApproveBuildRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:approve",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ApproveProjectsLocationsBuildsRequest",
-}) as any as S.Schema<ApproveProjectsLocationsBuildsRequest>;
+export const ApproveProjectsLocationsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ApproveBuildRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:approve","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ApproveProjectsLocationsBuildsRequest" }) as any as S.Schema<ApproveProjectsLocationsBuildsRequest>;
 
 /** BitbucketServerRepositoryId identifies a specific repository hosted on a Bitbucket Server. */
 export interface BitbucketServerRepositoryId {
@@ -207,14 +179,12 @@ export interface BitbucketServerRepositoryId {
   webhookId?: number;
 }
 export const BitbucketServerRepositoryId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repoSlug: S.optional(S.String),
-    projectKey: S.optional(S.String),
-    webhookId: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BitbucketServerRepositoryId",
-}) as any as S.Schema<BitbucketServerRepositoryId>;
+S.Struct({
+  "repoSlug": S.optional(S.String),
+  "projectKey": S.optional(S.String),
+  "webhookId": S.optional(S.Number),
+}),
+).annotate({ identifier: "BitbucketServerRepositoryId" }) as any as S.Schema<BitbucketServerRepositoryId>;
 
 /** / BitbucketServerConnectedRepository represents a connected Bitbucket Server / repository. */
 export interface BitbucketServerConnectedRepository {
@@ -226,14 +196,12 @@ export interface BitbucketServerConnectedRepository {
   parent?: string;
 }
 export const BitbucketServerConnectedRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repo: S.optional(BitbucketServerRepositoryId),
-    status: S.optional(Status),
-    parent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BitbucketServerConnectedRepository",
-}) as any as S.Schema<BitbucketServerConnectedRepository>;
+S.Struct({
+  "repo": S.optional(BitbucketServerRepositoryId),
+  "status": S.optional(Status),
+  "parent": S.optional(S.String),
+}),
+).annotate({ identifier: "BitbucketServerConnectedRepository" }) as any as S.Schema<BitbucketServerConnectedRepository>;
 
 /** Request to connect a repository from a connected Bitbucket Server host. */
 export interface CreateBitbucketServerConnectedRepositoryRequest {
@@ -242,38 +210,26 @@ export interface CreateBitbucketServerConnectedRepositoryRequest {
   /** Required. The Bitbucket Server repository to connect. */
   bitbucketServerConnectedRepository?: BitbucketServerConnectedRepository;
 }
-export const CreateBitbucketServerConnectedRepositoryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String),
-      bitbucketServerConnectedRepository: S.optional(
-        BitbucketServerConnectedRepository,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateBitbucketServerConnectedRepositoryRequest",
-  }) as any as S.Schema<CreateBitbucketServerConnectedRepositoryRequest>;
+export const CreateBitbucketServerConnectedRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.optional(S.String),
+  "bitbucketServerConnectedRepository": S.optional(BitbucketServerConnectedRepository),
+}),
+).annotate({ identifier: "CreateBitbucketServerConnectedRepositoryRequest" }) as any as S.Schema<CreateBitbucketServerConnectedRepositoryRequest>;
 
-export type CreateBitbucketServerConnectedRepositoryRequestList =
-  ReadonlyArray<CreateBitbucketServerConnectedRepositoryRequest>;
-export const CreateBitbucketServerConnectedRepositoryRequestList =
-  /*@__PURE__*/ S.Array(
-    CreateBitbucketServerConnectedRepositoryRequest,
-  ) as any as S.Schema<CreateBitbucketServerConnectedRepositoryRequestList>;
+export type CreateBitbucketServerConnectedRepositoryRequestList = ReadonlyArray<CreateBitbucketServerConnectedRepositoryRequest>;
+export const CreateBitbucketServerConnectedRepositoryRequestList = /*@__PURE__*/ S.Array(CreateBitbucketServerConnectedRepositoryRequest) as any as S.Schema<CreateBitbucketServerConnectedRepositoryRequestList>;
 
 /** RPC request object accepted by BatchCreateBitbucketServerConnectedRepositories RPC method. */
 export interface BatchCreateBitbucketServerConnectedRepositoriesRequest {
   /** Required. Requests to connect Bitbucket Server repositories. */
   requests?: CreateBitbucketServerConnectedRepositoryRequestList;
 }
-export const BatchCreateBitbucketServerConnectedRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(CreateBitbucketServerConnectedRepositoryRequestList),
-    }),
-  ).annotate({
-    identifier: "BatchCreateBitbucketServerConnectedRepositoriesRequest",
-  }) as any as S.Schema<BatchCreateBitbucketServerConnectedRepositoriesRequest>;
+export const BatchCreateBitbucketServerConnectedRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requests": S.optional(CreateBitbucketServerConnectedRepositoryRequestList),
+}),
+).annotate({ identifier: "BatchCreateBitbucketServerConnectedRepositoriesRequest" }) as any as S.Schema<BatchCreateBitbucketServerConnectedRepositoriesRequest>;
 
 export interface BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest {
   /** The name of the `BitbucketServerConfig` that added connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
@@ -281,26 +237,12 @@ export interface BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepo
   /** Request body */
   body?: BatchCreateBitbucketServerConnectedRepositoriesRequest;
 }
-export const BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        BatchCreateBitbucketServerConnectedRepositoriesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/connectedRepositories:batchCreate",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest>;
+export const BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchCreateBitbucketServerConnectedRepositoriesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/connectedRepositories:batchCreate","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest" }) as any as S.Schema<BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest>;
 
 /** GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise */
 export interface GitLabRepositoryId {
@@ -310,13 +252,11 @@ export interface GitLabRepositoryId {
   webhookId?: number;
 }
 export const GitLabRepositoryId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    webhookId: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GitLabRepositoryId",
-}) as any as S.Schema<GitLabRepositoryId>;
+S.Struct({
+  "id": S.optional(S.String),
+  "webhookId": S.optional(S.Number),
+}),
+).annotate({ identifier: "GitLabRepositoryId" }) as any as S.Schema<GitLabRepositoryId>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabConnectedRepository represents a GitLab connected repository request response. */
 export interface GitLabConnectedRepository {
@@ -328,14 +268,12 @@ export interface GitLabConnectedRepository {
   parent?: string;
 }
 export const GitLabConnectedRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repo: S.optional(GitLabRepositoryId),
-    status: S.optional(Status),
-    parent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GitLabConnectedRepository",
-}) as any as S.Schema<GitLabConnectedRepository>;
+S.Struct({
+  "repo": S.optional(GitLabRepositoryId),
+  "status": S.optional(Status),
+  "parent": S.optional(S.String),
+}),
+).annotate({ identifier: "GitLabConnectedRepository" }) as any as S.Schema<GitLabConnectedRepository>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. Request to connect a repository from a connected GitLab host. */
 export interface CreateGitLabConnectedRepositoryRequest {
@@ -344,35 +282,26 @@ export interface CreateGitLabConnectedRepositoryRequest {
   /** Required. The GitLab repository to connect. */
   gitlabConnectedRepository?: GitLabConnectedRepository;
 }
-export const CreateGitLabConnectedRepositoryRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.optional(S.String),
-      gitlabConnectedRepository: S.optional(GitLabConnectedRepository),
-    }),
-).annotate({
-  identifier: "CreateGitLabConnectedRepositoryRequest",
-}) as any as S.Schema<CreateGitLabConnectedRepositoryRequest>;
+export const CreateGitLabConnectedRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.optional(S.String),
+  "gitlabConnectedRepository": S.optional(GitLabConnectedRepository),
+}),
+).annotate({ identifier: "CreateGitLabConnectedRepositoryRequest" }) as any as S.Schema<CreateGitLabConnectedRepositoryRequest>;
 
-export type CreateGitLabConnectedRepositoryRequestList =
-  ReadonlyArray<CreateGitLabConnectedRepositoryRequest>;
-export const CreateGitLabConnectedRepositoryRequestList = /*@__PURE__*/ S.Array(
-  CreateGitLabConnectedRepositoryRequest,
-) as any as S.Schema<CreateGitLabConnectedRepositoryRequestList>;
+export type CreateGitLabConnectedRepositoryRequestList = ReadonlyArray<CreateGitLabConnectedRepositoryRequest>;
+export const CreateGitLabConnectedRepositoryRequestList = /*@__PURE__*/ S.Array(CreateGitLabConnectedRepositoryRequest) as any as S.Schema<CreateGitLabConnectedRepositoryRequestList>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC request object accepted by BatchCreateGitLabConnectedRepositories RPC method. */
 export interface BatchCreateGitLabConnectedRepositoriesRequest {
   /** Required. Requests to connect GitLab repositories. */
   requests?: CreateGitLabConnectedRepositoryRequestList;
 }
-export const BatchCreateGitLabConnectedRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(CreateGitLabConnectedRepositoryRequestList),
-    }),
-  ).annotate({
-    identifier: "BatchCreateGitLabConnectedRepositoriesRequest",
-  }) as any as S.Schema<BatchCreateGitLabConnectedRepositoriesRequest>;
+export const BatchCreateGitLabConnectedRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requests": S.optional(CreateGitLabConnectedRepositoryRequestList),
+}),
+).annotate({ identifier: "BatchCreateGitLabConnectedRepositoriesRequest" }) as any as S.Schema<BatchCreateGitLabConnectedRepositoriesRequest>;
 
 export interface BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest {
   /** The name of the `GitLabConfig` that adds connected repositories. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
@@ -380,32 +309,18 @@ export interface BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesR
   /** Request body */
   body?: BatchCreateGitLabConnectedRepositoriesRequest;
 }
-export const BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        BatchCreateGitLabConnectedRepositoriesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/connectedRepositories:batchCreate",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest>;
+export const BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchCreateGitLabConnectedRepositoriesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/connectedRepositories:batchCreate","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest" }) as any as S.Schema<BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -414,25 +329,17 @@ export interface CancelOperationsRequest {
   body?: CancelOperationRequest;
 }
 export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:cancel",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelOperationsRequest",
-}) as any as S.Schema<CancelOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CancelOperationsRequest" }) as any as S.Schema<CancelOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** Request to cancel an ongoing build. */
 export interface CancelBuildRequest {
@@ -444,14 +351,12 @@ export interface CancelBuildRequest {
   projectId?: string;
 }
 export const CancelBuildRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    projectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CancelBuildRequest",
-}) as any as S.Schema<CancelBuildRequest>;
+S.Struct({
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "projectId": S.optional(S.String),
+}),
+).annotate({ identifier: "CancelBuildRequest" }) as any as S.Schema<CancelBuildRequest>;
 
 export interface CancelProjectsBuildsRequest {
   /** Required. ID of the project. */
@@ -462,70 +367,29 @@ export interface CancelProjectsBuildsRequest {
   body?: CancelBuildRequest;
 }
 export const CancelProjectsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    body: S.optional(CancelBuildRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/projects/{projectId}/builds/{id}:cancel",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelProjectsBuildsRequest",
-}) as any as S.Schema<CancelProjectsBuildsRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+  "body": S.optional(CancelBuildRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/builds/{id}:cancel","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsBuildsRequest" }) as any as S.Schema<CancelProjectsBuildsRequest>;
 
-export type BuildOptionsMachineTypeEnum =
-  | "UNSPECIFIED"
-  | "N1_HIGHCPU_8"
-  | "N1_HIGHCPU_32"
-  | "E2_HIGHCPU_8"
-  | "E2_HIGHCPU_32"
-  | "E2_MEDIUM"
-  | "E2_STANDARD_2"
-  | (string & {});
+export type BuildOptionsMachineTypeEnum = "UNSPECIFIED" | "N1_HIGHCPU_8" | "N1_HIGHCPU_32" | "E2_HIGHCPU_8" | "E2_HIGHCPU_32" | "E2_MEDIUM" | "E2_STANDARD_2";
 export const BuildOptionsMachineTypeEnum = /*@__PURE__*/ S.String;
 
-export type BuildOptionsSourceProvenanceHashItemEnum =
-  | "NONE"
-  | "SHA256"
-  | "MD5"
-  | "GO_MODULE_H1"
-  | "SHA512"
-  | "DIRSUM_SHA256"
-  | (string & {});
+export type BuildOptionsSourceProvenanceHashItemEnum = "NONE" | "SHA256" | "MD5" | "GO_MODULE_H1" | "SHA512" | "DIRSUM_SHA256";
 export const BuildOptionsSourceProvenanceHashItemEnum = /*@__PURE__*/ S.String;
 
-export type BuildOptionsSourceProvenanceHashItemEnumList =
-  ReadonlyArray<BuildOptionsSourceProvenanceHashItemEnum>;
-export const BuildOptionsSourceProvenanceHashItemEnumList =
-  /*@__PURE__*/ S.Array(
-    BuildOptionsSourceProvenanceHashItemEnum,
-  ) as any as S.Schema<BuildOptionsSourceProvenanceHashItemEnumList>;
+export type BuildOptionsSourceProvenanceHashItemEnumList = ReadonlyArray<BuildOptionsSourceProvenanceHashItemEnum>;
+export const BuildOptionsSourceProvenanceHashItemEnumList = /*@__PURE__*/ S.Array(BuildOptionsSourceProvenanceHashItemEnum) as any as S.Schema<BuildOptionsSourceProvenanceHashItemEnumList>;
 
-export type BuildOptionsDefaultLogsBucketBehaviorEnum =
-  | "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"
-  | "REGIONAL_USER_OWNED_BUCKET"
-  | "LEGACY_BUCKET"
-  | (string & {});
+export type BuildOptionsDefaultLogsBucketBehaviorEnum = "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED" | "REGIONAL_USER_OWNED_BUCKET" | "LEGACY_BUCKET";
 export const BuildOptionsDefaultLogsBucketBehaviorEnum = /*@__PURE__*/ S.String;
 
-export type BuildOptionsLoggingEnum =
-  | "LOGGING_UNSPECIFIED"
-  | "LEGACY"
-  | "GCS_ONLY"
-  | "STACKDRIVER_ONLY"
-  | "CLOUD_LOGGING_ONLY"
-  | "NONE"
-  | (string & {});
+export type BuildOptionsLoggingEnum = "LOGGING_UNSPECIFIED" | "LEGACY" | "GCS_ONLY" | "STACKDRIVER_ONLY" | "CLOUD_LOGGING_ONLY" | "NONE";
 export const BuildOptionsLoggingEnum = /*@__PURE__*/ S.String;
 
-export type BuildOptionsRequestedVerifyOptionEnum =
-  | "NOT_VERIFIED"
-  | "VERIFIED"
-  | (string & {});
+export type BuildOptionsRequestedVerifyOptionEnum = "NOT_VERIFIED" | "VERIFIED";
 export const BuildOptionsRequestedVerifyOptionEnum = /*@__PURE__*/ S.String;
 
 /** Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information. */
@@ -534,15 +398,12 @@ export interface PoolOption {
   name?: string;
 }
 export const PoolOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "PoolOption" }) as any as S.Schema<PoolOption>;
 
-export type BuildOptionsSubstitutionOptionEnum =
-  | "MUST_MATCH"
-  | "ALLOW_LOOSE"
-  | (string & {});
+export type BuildOptionsSubstitutionOptionEnum = "MUST_MATCH" | "ALLOW_LOOSE";
 export const BuildOptionsSubstitutionOptionEnum = /*@__PURE__*/ S.String;
 
 /** Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution. */
@@ -553,27 +414,19 @@ export interface Volume {
   path?: string;
 }
 export const Volume = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    path: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "path": S.optional(S.String),
+}),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 export type VolumeList = ReadonlyArray<Volume>;
-export const VolumeList = /*@__PURE__*/ S.Array(
-  Volume,
-) as any as S.Schema<VolumeList>;
+export const VolumeList = /*@__PURE__*/ S.Array(Volume) as any as S.Schema<VolumeList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type BuildOptionsLogStreamingOptionEnum =
-  | "STREAM_DEFAULT"
-  | "STREAM_ON"
-  | "STREAM_OFF"
-  | (string & {});
+export type BuildOptionsLogStreamingOptionEnum = "STREAM_DEFAULT" | "STREAM_ON" | "STREAM_OFF";
 export const BuildOptionsLogStreamingOptionEnum = /*@__PURE__*/ S.String;
 
 /** Optional arguments to enable specific features of builds. */
@@ -614,38 +467,28 @@ export interface BuildOptions {
   env?: StringList;
 }
 export const BuildOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableStructuredLogging: S.optional(S.Boolean),
-    machineType: S.optional(BuildOptionsMachineTypeEnum),
-    sourceProvenanceHash: S.optional(
-      BuildOptionsSourceProvenanceHashItemEnumList,
-    ),
-    defaultLogsBucketBehavior: S.optional(
-      BuildOptionsDefaultLogsBucketBehaviorEnum,
-    ),
-    pubsubTopic: S.optional(S.String),
-    dynamicSubstitutions: S.optional(S.Boolean),
-    diskSizeGb: S.optional(S.String),
-    logging: S.optional(BuildOptionsLoggingEnum),
-    requestedVerifyOption: S.optional(BuildOptionsRequestedVerifyOptionEnum),
-    pool: S.optional(PoolOption),
-    automapSubstitutions: S.optional(S.Boolean),
-    workerPool: S.optional(S.String),
-    substitutionOption: S.optional(BuildOptionsSubstitutionOptionEnum),
-    volumes: S.optional(VolumeList),
-    secretEnv: S.optional(StringList),
-    logStreamingOption: S.optional(BuildOptionsLogStreamingOptionEnum),
-    env: S.optional(StringList),
-  }),
+S.Struct({
+  "enableStructuredLogging": S.optional(S.Boolean),
+  "machineType": S.optional(BuildOptionsMachineTypeEnum),
+  "sourceProvenanceHash": S.optional(BuildOptionsSourceProvenanceHashItemEnumList),
+  "defaultLogsBucketBehavior": S.optional(BuildOptionsDefaultLogsBucketBehaviorEnum),
+  "pubsubTopic": S.optional(S.String),
+  "dynamicSubstitutions": S.optional(S.Boolean),
+  "diskSizeGb": S.optional(S.String),
+  "logging": S.optional(BuildOptionsLoggingEnum),
+  "requestedVerifyOption": S.optional(BuildOptionsRequestedVerifyOptionEnum),
+  "pool": S.optional(PoolOption),
+  "automapSubstitutions": S.optional(S.Boolean),
+  "workerPool": S.optional(S.String),
+  "substitutionOption": S.optional(BuildOptionsSubstitutionOptionEnum),
+  "volumes": S.optional(VolumeList),
+  "secretEnv": S.optional(StringList),
+  "logStreamingOption": S.optional(BuildOptionsLogStreamingOptionEnum),
+  "env": S.optional(StringList),
+}),
 ).annotate({ identifier: "BuildOptions" }) as any as S.Schema<BuildOptions>;
 
-export type BuildApprovalStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "APPROVED"
-  | "REJECTED"
-  | "CANCELLED"
-  | (string & {});
+export type BuildApprovalStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "APPROVED" | "REJECTED" | "CANCELLED";
 export const BuildApprovalStateEnum = /*@__PURE__*/ S.String;
 
 /** ApprovalConfig describes configuration for manual approval of a build. */
@@ -654,9 +497,9 @@ export interface ApprovalConfig {
   approvalRequired?: boolean;
 }
 export const ApprovalConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    approvalRequired: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "approvalRequired": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "ApprovalConfig" }) as any as S.Schema<ApprovalConfig>;
 
 /** BuildApproval describes a build's approval configuration, state, and result. */
@@ -669,11 +512,11 @@ export interface BuildApproval {
   result?: ApprovalResult;
 }
 export const BuildApproval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(BuildApprovalStateEnum),
-    config: S.optional(ApprovalConfig),
-    result: S.optional(ApprovalResult),
-  }),
+S.Struct({
+  "state": S.optional(BuildApprovalStateEnum),
+  "config": S.optional(ApprovalConfig),
+  "result": S.optional(ApprovalResult),
+}),
 ).annotate({ identifier: "BuildApproval" }) as any as S.Schema<BuildApproval>;
 
 /** Pairs a secret environment variable with a SecretVersion in Secret Manager. */
@@ -684,24 +527,17 @@ export interface SecretManagerSecret {
   env?: string;
 }
 export const SecretManagerSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionName: S.optional(S.String),
-    env: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretManagerSecret",
-}) as any as S.Schema<SecretManagerSecret>;
+S.Struct({
+  "versionName": S.optional(S.String),
+  "env": S.optional(S.String),
+}),
+).annotate({ identifier: "SecretManagerSecret" }) as any as S.Schema<SecretManagerSecret>;
 
 export type SecretManagerSecretList = ReadonlyArray<SecretManagerSecret>;
-export const SecretManagerSecretList = /*@__PURE__*/ S.Array(
-  SecretManagerSecret,
-) as any as S.Schema<SecretManagerSecretList>;
+export const SecretManagerSecretList = /*@__PURE__*/ S.Array(SecretManagerSecret) as any as S.Schema<SecretManagerSecretList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value. */
 export interface InlineSecret {
@@ -711,16 +547,14 @@ export interface InlineSecret {
   kmsKeyName?: string;
 }
 export const InlineSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    envMap: S.optional(StringMap),
-    kmsKeyName: S.optional(S.String),
-  }),
+S.Struct({
+  "envMap": S.optional(StringMap),
+  "kmsKeyName": S.optional(S.String),
+}),
 ).annotate({ identifier: "InlineSecret" }) as any as S.Schema<InlineSecret>;
 
 export type InlineSecretList = ReadonlyArray<InlineSecret>;
-export const InlineSecretList = /*@__PURE__*/ S.Array(
-  InlineSecret,
-) as any as S.Schema<InlineSecretList>;
+export const InlineSecretList = /*@__PURE__*/ S.Array(InlineSecret) as any as S.Schema<InlineSecretList>;
 
 /** Secrets and secret environment variables. */
 export interface Secrets {
@@ -730,10 +564,10 @@ export interface Secrets {
   inline?: InlineSecretList;
 }
 export const Secrets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secretManager: S.optional(SecretManagerSecretList),
-    inline: S.optional(InlineSecretList),
-  }),
+S.Struct({
+  "secretManager": S.optional(SecretManagerSecretList),
+  "inline": S.optional(InlineSecretList),
+}),
 ).annotate({ identifier: "Secrets" }) as any as S.Schema<Secrets>;
 
 /** Start and end times for a build execution phase. */
@@ -744,17 +578,14 @@ export interface TimeSpan {
   endTime?: string;
 }
 export const TimeSpan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeSpan" }) as any as S.Schema<TimeSpan>;
 
 export type TimeSpanMap = { [key: string]: TimeSpan | undefined };
-export const TimeSpanMap = /*@__PURE__*/ S.Record(
-  S.String,
-  TimeSpan,
-) as any as S.Schema<TimeSpanMap>;
+export const TimeSpanMap = /*@__PURE__*/ S.Record(S.String, TimeSpan) as any as S.Schema<TimeSpanMap>;
 
 /** Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials. */
 export interface Secret {
@@ -764,25 +595,16 @@ export interface Secret {
   secretEnv?: StringMap;
 }
 export const Secret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyName: S.optional(S.String),
-    secretEnv: S.optional(StringMap),
-  }),
+S.Struct({
+  "kmsKeyName": S.optional(S.String),
+  "secretEnv": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
 export type SecretList = ReadonlyArray<Secret>;
-export const SecretList = /*@__PURE__*/ S.Array(
-  Secret,
-) as any as S.Schema<SecretList>;
+export const SecretList = /*@__PURE__*/ S.Array(Secret) as any as S.Schema<SecretList>;
 
-export type HashTypeEnum =
-  | "NONE"
-  | "SHA256"
-  | "MD5"
-  | "GO_MODULE_H1"
-  | "SHA512"
-  | "DIRSUM_SHA256"
-  | (string & {});
+export type HashTypeEnum = "NONE" | "SHA256" | "MD5" | "GO_MODULE_H1" | "SHA512" | "DIRSUM_SHA256";
 export const HashTypeEnum = /*@__PURE__*/ S.String;
 
 /** Container message for hash values. */
@@ -793,16 +615,14 @@ export interface Hash {
   value?: string;
 }
 export const Hash = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(HashTypeEnum),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(HashTypeEnum),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Hash" }) as any as S.Schema<Hash>;
 
 export type HashList = ReadonlyArray<Hash>;
-export const HashList = /*@__PURE__*/ S.Array(
-  Hash,
-) as any as S.Schema<HashList>;
+export const HashList = /*@__PURE__*/ S.Array(Hash) as any as S.Schema<HashList>;
 
 /** Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build. */
 export interface FileHashes {
@@ -810,9 +630,9 @@ export interface FileHashes {
   fileHash?: HashList;
 }
 export const FileHashes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileHash: S.optional(HashList),
-  }),
+S.Struct({
+  "fileHash": S.optional(HashList),
+}),
 ).annotate({ identifier: "FileHashes" }) as any as S.Schema<FileHashes>;
 
 /** A Maven artifact uploaded using the MavenArtifact directive. */
@@ -827,20 +647,16 @@ export interface UploadedMavenArtifact {
   pushTiming?: TimeSpan;
 }
 export const UploadedMavenArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    artifactRegistryPackage: S.optional(S.String),
-    uri: S.optional(S.String),
-    fileHashes: S.optional(FileHashes),
-    pushTiming: S.optional(TimeSpan),
-  }),
-).annotate({
-  identifier: "UploadedMavenArtifact",
-}) as any as S.Schema<UploadedMavenArtifact>;
+S.Struct({
+  "artifactRegistryPackage": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "fileHashes": S.optional(FileHashes),
+  "pushTiming": S.optional(TimeSpan),
+}),
+).annotate({ identifier: "UploadedMavenArtifact" }) as any as S.Schema<UploadedMavenArtifact>;
 
 export type UploadedMavenArtifactList = ReadonlyArray<UploadedMavenArtifact>;
-export const UploadedMavenArtifactList = /*@__PURE__*/ S.Array(
-  UploadedMavenArtifact,
-) as any as S.Schema<UploadedMavenArtifactList>;
+export const UploadedMavenArtifactList = /*@__PURE__*/ S.Array(UploadedMavenArtifact) as any as S.Schema<UploadedMavenArtifactList>;
 
 /** Results for a build step. */
 export interface BuildStepResults {
@@ -848,26 +664,16 @@ export interface BuildStepResults {
   results?: StringMap;
 }
 export const BuildStepResults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "BuildStepResults",
-}) as any as S.Schema<BuildStepResults>;
+S.Struct({
+  "results": S.optional(StringMap),
+}),
+).annotate({ identifier: "BuildStepResults" }) as any as S.Schema<BuildStepResults>;
 
-export type BuildStepResultsMap = {
-  [key: string]: BuildStepResults | undefined;
-};
-export const BuildStepResultsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BuildStepResults,
-) as any as S.Schema<BuildStepResultsMap>;
+export type BuildStepResultsMap = { [key: string]: BuildStepResults | undefined };
+export const BuildStepResultsMap = /*@__PURE__*/ S.Record(S.String, BuildStepResults) as any as S.Schema<BuildStepResultsMap>;
 
 export type FileHashesMap = { [key: string]: FileHashes | undefined };
-export const FileHashesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  FileHashes,
-) as any as S.Schema<FileHashesMap>;
+export const FileHashesMap = /*@__PURE__*/ S.Record(S.String, FileHashes) as any as S.Schema<FileHashesMap>;
 
 /** A generic artifact uploaded to Artifact Registry using the GenericArtifact directive. */
 export interface UploadedGenericArtifact {
@@ -883,22 +689,17 @@ export interface UploadedGenericArtifact {
   fileHashes?: FileHashesMap;
 }
 export const UploadedGenericArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    artifactFingerprint: S.optional(FileHashes),
-    pushTiming: S.optional(TimeSpan),
-    artifactRegistryPackage: S.optional(S.String),
-    fileHashes: S.optional(FileHashesMap),
-  }),
-).annotate({
-  identifier: "UploadedGenericArtifact",
-}) as any as S.Schema<UploadedGenericArtifact>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "artifactFingerprint": S.optional(FileHashes),
+  "pushTiming": S.optional(TimeSpan),
+  "artifactRegistryPackage": S.optional(S.String),
+  "fileHashes": S.optional(FileHashesMap),
+}),
+).annotate({ identifier: "UploadedGenericArtifact" }) as any as S.Schema<UploadedGenericArtifact>;
 
-export type UploadedGenericArtifactList =
-  ReadonlyArray<UploadedGenericArtifact>;
-export const UploadedGenericArtifactList = /*@__PURE__*/ S.Array(
-  UploadedGenericArtifact,
-) as any as S.Schema<UploadedGenericArtifactList>;
+export type UploadedGenericArtifactList = ReadonlyArray<UploadedGenericArtifact>;
+export const UploadedGenericArtifactList = /*@__PURE__*/ S.Array(UploadedGenericArtifact) as any as S.Schema<UploadedGenericArtifactList>;
 
 /** An npm package uploaded to Artifact Registry using the NpmPackage directive. */
 export interface UploadedNpmPackage {
@@ -912,26 +713,18 @@ export interface UploadedNpmPackage {
   artifactRegistryPackage?: string;
 }
 export const UploadedNpmPackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    fileHashes: S.optional(FileHashes),
-    pushTiming: S.optional(TimeSpan),
-    artifactRegistryPackage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UploadedNpmPackage",
-}) as any as S.Schema<UploadedNpmPackage>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "fileHashes": S.optional(FileHashes),
+  "pushTiming": S.optional(TimeSpan),
+  "artifactRegistryPackage": S.optional(S.String),
+}),
+).annotate({ identifier: "UploadedNpmPackage" }) as any as S.Schema<UploadedNpmPackage>;
 
 export type UploadedNpmPackageList = ReadonlyArray<UploadedNpmPackage>;
-export const UploadedNpmPackageList = /*@__PURE__*/ S.Array(
-  UploadedNpmPackage,
-) as any as S.Schema<UploadedNpmPackageList>;
+export const UploadedNpmPackageList = /*@__PURE__*/ S.Array(UploadedNpmPackage) as any as S.Schema<UploadedNpmPackageList>;
 
-export type BuiltImageOciMediaTypeEnum =
-  | "OCI_MEDIA_TYPE_UNSPECIFIED"
-  | "IMAGE_MANIFEST"
-  | "IMAGE_INDEX"
-  | (string & {});
+export type BuiltImageOciMediaTypeEnum = "OCI_MEDIA_TYPE_UNSPECIFIED" | "IMAGE_MANIFEST" | "IMAGE_INDEX";
 export const BuiltImageOciMediaTypeEnum = /*@__PURE__*/ S.String;
 
 /** An image built by the pipeline. */
@@ -948,19 +741,17 @@ export interface BuiltImage {
   digest?: string;
 }
 export const BuiltImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    artifactRegistryPackage: S.optional(S.String),
-    ociMediaType: S.optional(BuiltImageOciMediaTypeEnum),
-    pushTiming: S.optional(TimeSpan),
-    digest: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "artifactRegistryPackage": S.optional(S.String),
+  "ociMediaType": S.optional(BuiltImageOciMediaTypeEnum),
+  "pushTiming": S.optional(TimeSpan),
+  "digest": S.optional(S.String),
+}),
 ).annotate({ identifier: "BuiltImage" }) as any as S.Schema<BuiltImage>;
 
 export type BuiltImageList = ReadonlyArray<BuiltImage>;
-export const BuiltImageList = /*@__PURE__*/ S.Array(
-  BuiltImage,
-) as any as S.Schema<BuiltImageList>;
+export const BuiltImageList = /*@__PURE__*/ S.Array(BuiltImage) as any as S.Schema<BuiltImageList>;
 
 /** A Go module artifact uploaded to Artifact Registry using the GoModule directive. */
 export interface UploadedGoModule {
@@ -974,20 +765,16 @@ export interface UploadedGoModule {
   pushTiming?: TimeSpan;
 }
 export const UploadedGoModule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    artifactRegistryPackage: S.optional(S.String),
-    uri: S.optional(S.String),
-    fileHashes: S.optional(FileHashes),
-    pushTiming: S.optional(TimeSpan),
-  }),
-).annotate({
-  identifier: "UploadedGoModule",
-}) as any as S.Schema<UploadedGoModule>;
+S.Struct({
+  "artifactRegistryPackage": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "fileHashes": S.optional(FileHashes),
+  "pushTiming": S.optional(TimeSpan),
+}),
+).annotate({ identifier: "UploadedGoModule" }) as any as S.Schema<UploadedGoModule>;
 
 export type UploadedGoModuleList = ReadonlyArray<UploadedGoModule>;
-export const UploadedGoModuleList = /*@__PURE__*/ S.Array(
-  UploadedGoModule,
-) as any as S.Schema<UploadedGoModuleList>;
+export const UploadedGoModuleList = /*@__PURE__*/ S.Array(UploadedGoModule) as any as S.Schema<UploadedGoModuleList>;
 
 /** Artifact uploaded using the PythonPackage directive. */
 export interface UploadedPythonPackage {
@@ -1001,20 +788,16 @@ export interface UploadedPythonPackage {
   pushTiming?: TimeSpan;
 }
 export const UploadedPythonPackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    artifactRegistryPackage: S.optional(S.String),
-    uri: S.optional(S.String),
-    fileHashes: S.optional(FileHashes),
-    pushTiming: S.optional(TimeSpan),
-  }),
-).annotate({
-  identifier: "UploadedPythonPackage",
-}) as any as S.Schema<UploadedPythonPackage>;
+S.Struct({
+  "artifactRegistryPackage": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "fileHashes": S.optional(FileHashes),
+  "pushTiming": S.optional(TimeSpan),
+}),
+).annotate({ identifier: "UploadedPythonPackage" }) as any as S.Schema<UploadedPythonPackage>;
 
 export type UploadedPythonPackageList = ReadonlyArray<UploadedPythonPackage>;
-export const UploadedPythonPackageList = /*@__PURE__*/ S.Array(
-  UploadedPythonPackage,
-) as any as S.Schema<UploadedPythonPackageList>;
+export const UploadedPythonPackageList = /*@__PURE__*/ S.Array(UploadedPythonPackage) as any as S.Schema<UploadedPythonPackageList>;
 
 /** Artifacts created by the build pipeline. */
 export interface Results {
@@ -1044,20 +827,20 @@ export interface Results {
   pythonPackages?: UploadedPythonPackageList;
 }
 export const Results = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mavenArtifacts: S.optional(UploadedMavenArtifactList),
-    buildStepResults: S.optional(BuildStepResultsMap),
-    genericArtifacts: S.optional(UploadedGenericArtifactList),
-    artifactManifest: S.optional(S.String),
-    buildStepOutputs: S.optional(StringList),
-    artifactTiming: S.optional(TimeSpan),
-    npmPackages: S.optional(UploadedNpmPackageList),
-    images: S.optional(BuiltImageList),
-    numArtifacts: S.optional(S.String),
-    goModules: S.optional(UploadedGoModuleList),
-    buildStepImages: S.optional(StringList),
-    pythonPackages: S.optional(UploadedPythonPackageList),
-  }),
+S.Struct({
+  "mavenArtifacts": S.optional(UploadedMavenArtifactList),
+  "buildStepResults": S.optional(BuildStepResultsMap),
+  "genericArtifacts": S.optional(UploadedGenericArtifactList),
+  "artifactManifest": S.optional(S.String),
+  "buildStepOutputs": S.optional(StringList),
+  "artifactTiming": S.optional(TimeSpan),
+  "npmPackages": S.optional(UploadedNpmPackageList),
+  "images": S.optional(BuiltImageList),
+  "numArtifacts": S.optional(S.String),
+  "goModules": S.optional(UploadedGoModuleList),
+  "buildStepImages": S.optional(StringList),
+  "pythonPackages": S.optional(UploadedPythonPackageList),
+}),
 ).annotate({ identifier: "Results" }) as any as S.Schema<Results>;
 
 /** HttpConfig is a configuration for HTTP related git operations. */
@@ -1066,9 +849,9 @@ export interface HttpConfig {
   proxySecretVersionName?: string;
 }
 export const HttpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proxySecretVersionName: S.optional(S.String),
-  }),
+S.Struct({
+  "proxySecretVersionName": S.optional(S.String),
+}),
 ).annotate({ identifier: "HttpConfig" }) as any as S.Schema<HttpConfig>;
 
 /** GitConfig is a configuration for git operations. */
@@ -1077,16 +860,12 @@ export interface GitConfig {
   http?: HttpConfig;
 }
 export const GitConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    http: S.optional(HttpConfig),
-  }),
+S.Struct({
+  "http": S.optional(HttpConfig),
+}),
 ).annotate({ identifier: "GitConfig" }) as any as S.Schema<GitConfig>;
 
-export type StorageSourceSourceFetcherEnum =
-  | "SOURCE_FETCHER_UNSPECIFIED"
-  | "GSUTIL"
-  | "GCS_FETCHER"
-  | (string & {});
+export type StorageSourceSourceFetcherEnum = "SOURCE_FETCHER_UNSPECIFIED" | "GSUTIL" | "GCS_FETCHER";
 export const StorageSourceSourceFetcherEnum = /*@__PURE__*/ S.String;
 
 /** Location of the source in an archive file in Cloud Storage. */
@@ -1101,12 +880,12 @@ export interface StorageSource {
   generation?: string;
 }
 export const StorageSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    sourceFetcher: S.optional(StorageSourceSourceFetcherEnum),
-    bucket: S.optional(S.String),
-    generation: S.optional(S.String),
-  }),
+S.Struct({
+  "object": S.optional(S.String),
+  "sourceFetcher": S.optional(StorageSourceSourceFetcherEnum),
+  "bucket": S.optional(S.String),
+  "generation": S.optional(S.String),
+}),
 ).annotate({ identifier: "StorageSource" }) as any as S.Schema<StorageSource>;
 
 /** Location of the source in a 2nd-gen Google Cloud Build repository resource. */
@@ -1119,14 +898,12 @@ export interface ConnectedRepository {
   revision?: string;
 }
 export const ConnectedRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository: S.optional(S.String),
-    dir: S.optional(S.String),
-    revision: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectedRepository",
-}) as any as S.Schema<ConnectedRepository>;
+S.Struct({
+  "repository": S.optional(S.String),
+  "dir": S.optional(S.String),
+  "revision": S.optional(S.String),
+}),
+).annotate({ identifier: "ConnectedRepository" }) as any as S.Schema<ConnectedRepository>;
 
 /** Location of the source in a Google Cloud Source Repository. */
 export interface RepoSource {
@@ -1148,16 +925,16 @@ export interface RepoSource {
   branchName?: string;
 }
 export const RepoSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dir: S.optional(S.String),
-    repoName: S.optional(S.String),
-    substitutions: S.optional(StringMap),
-    commitSha: S.optional(S.String),
-    projectId: S.optional(S.String),
-    tagName: S.optional(S.String),
-    invertRegex: S.optional(S.Boolean),
-    branchName: S.optional(S.String),
-  }),
+S.Struct({
+  "dir": S.optional(S.String),
+  "repoName": S.optional(S.String),
+  "substitutions": S.optional(StringMap),
+  "commitSha": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "tagName": S.optional(S.String),
+  "invertRegex": S.optional(S.Boolean),
+  "branchName": S.optional(S.String),
+}),
 ).annotate({ identifier: "RepoSource" }) as any as S.Schema<RepoSource>;
 
 /** Location of the source in any accessible Git repository. */
@@ -1170,11 +947,11 @@ export interface GitSource {
   dir?: string;
 }
 export const GitSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    revision: S.optional(S.String),
-    dir: S.optional(S.String),
-  }),
+S.Struct({
+  "url": S.optional(S.String),
+  "revision": S.optional(S.String),
+  "dir": S.optional(S.String),
+}),
 ).annotate({ identifier: "GitSource" }) as any as S.Schema<GitSource>;
 
 /** Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher). */
@@ -1187,14 +964,12 @@ export interface StorageSourceManifest {
   generation?: string;
 }
 export const StorageSourceManifest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    bucket: S.optional(S.String),
-    generation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StorageSourceManifest",
-}) as any as S.Schema<StorageSourceManifest>;
+S.Struct({
+  "object": S.optional(S.String),
+  "bucket": S.optional(S.String),
+  "generation": S.optional(S.String),
+}),
+).annotate({ identifier: "StorageSourceManifest" }) as any as S.Schema<StorageSourceManifest>;
 
 /** Provenance of the source. Ways to find the original source, or verify that some source was used for this build. */
 export interface SourceProvenance {
@@ -1212,30 +987,17 @@ export interface SourceProvenance {
   resolvedStorageSourceManifest?: StorageSourceManifest;
 }
 export const SourceProvenance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileHashes: S.optional(FileHashesMap),
-    resolvedStorageSource: S.optional(StorageSource),
-    resolvedConnectedRepository: S.optional(ConnectedRepository),
-    resolvedRepoSource: S.optional(RepoSource),
-    resolvedGitSource: S.optional(GitSource),
-    resolvedStorageSourceManifest: S.optional(StorageSourceManifest),
-  }),
-).annotate({
-  identifier: "SourceProvenance",
-}) as any as S.Schema<SourceProvenance>;
+S.Struct({
+  "fileHashes": S.optional(FileHashesMap),
+  "resolvedStorageSource": S.optional(StorageSource),
+  "resolvedConnectedRepository": S.optional(ConnectedRepository),
+  "resolvedRepoSource": S.optional(RepoSource),
+  "resolvedGitSource": S.optional(GitSource),
+  "resolvedStorageSourceManifest": S.optional(StorageSourceManifest),
+}),
+).annotate({ identifier: "SourceProvenance" }) as any as S.Schema<SourceProvenance>;
 
-export type BuildStatusEnum =
-  | "STATUS_UNKNOWN"
-  | "PENDING"
-  | "QUEUED"
-  | "WORKING"
-  | "SUCCESS"
-  | "FAILURE"
-  | "INTERNAL_ERROR"
-  | "TIMEOUT"
-  | "CANCELLED"
-  | "EXPIRED"
-  | (string & {});
+export type BuildStatusEnum = "STATUS_UNKNOWN" | "PENDING" | "QUEUED" | "WORKING" | "SUCCESS" | "FAILURE" | "INTERNAL_ERROR" | "TIMEOUT" | "CANCELLED" | "EXPIRED";
 export const BuildStatusEnum = /*@__PURE__*/ S.String;
 
 /** StepResult is the declaration of a result for a build step. */
@@ -1248,35 +1010,20 @@ export interface StepResult {
   name?: string;
 }
 export const StepResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attestationContent: S.optional(S.String),
-    attestationType: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "attestationContent": S.optional(S.String),
+  "attestationType": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "StepResult" }) as any as S.Schema<StepResult>;
 
 export type StepResultList = ReadonlyArray<StepResult>;
-export const StepResultList = /*@__PURE__*/ S.Array(
-  StepResult,
-) as any as S.Schema<StepResultList>;
+export const StepResultList = /*@__PURE__*/ S.Array(StepResult) as any as S.Schema<StepResultList>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
-export type BuildStepStatusEnum =
-  | "STATUS_UNKNOWN"
-  | "PENDING"
-  | "QUEUED"
-  | "WORKING"
-  | "SUCCESS"
-  | "FAILURE"
-  | "INTERNAL_ERROR"
-  | "TIMEOUT"
-  | "CANCELLED"
-  | "EXPIRED"
-  | (string & {});
+export type BuildStepStatusEnum = "STATUS_UNKNOWN" | "PENDING" | "QUEUED" | "WORKING" | "SUCCESS" | "FAILURE" | "INTERNAL_ERROR" | "TIMEOUT" | "CANCELLED" | "EXPIRED";
 export const BuildStepStatusEnum = /*@__PURE__*/ S.String;
 
 /** A step in the build pipeline. */
@@ -1321,43 +1068,33 @@ export interface BuildStep {
   entrypoint?: string;
 }
 export const BuildStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    args: S.optional(StringList),
-    name: S.optional(S.String),
-    timing: S.optional(TimeSpan),
-    id: S.optional(S.String),
-    exitCode: S.optional(S.Number),
-    pullTiming: S.optional(TimeSpan),
-    script: S.optional(S.String),
-    timeout: S.optional(S.String),
-    results: S.optional(StepResultList),
-    allowExitCodes: S.optional(IntegerList),
-    status: S.optional(BuildStepStatusEnum),
-    automapSubstitutions: S.optional(S.Boolean),
-    secretEnv: S.optional(StringList),
-    env: S.optional(StringList),
-    dir: S.optional(S.String),
-    waitFor: S.optional(StringList),
-    allowFailure: S.optional(S.Boolean),
-    volumes: S.optional(VolumeList),
-    entrypoint: S.optional(S.String),
-  }),
+S.Struct({
+  "args": S.optional(StringList),
+  "name": S.optional(S.String),
+  "timing": S.optional(TimeSpan),
+  "id": S.optional(S.String),
+  "exitCode": S.optional(S.Number),
+  "pullTiming": S.optional(TimeSpan),
+  "script": S.optional(S.String),
+  "timeout": S.optional(S.String),
+  "results": S.optional(StepResultList),
+  "allowExitCodes": S.optional(IntegerList),
+  "status": S.optional(BuildStepStatusEnum),
+  "automapSubstitutions": S.optional(S.Boolean),
+  "secretEnv": S.optional(StringList),
+  "env": S.optional(StringList),
+  "dir": S.optional(S.String),
+  "waitFor": S.optional(StringList),
+  "allowFailure": S.optional(S.Boolean),
+  "volumes": S.optional(VolumeList),
+  "entrypoint": S.optional(S.String),
+}),
 ).annotate({ identifier: "BuildStep" }) as any as S.Schema<BuildStep>;
 
 export type BuildStepList = ReadonlyArray<BuildStep>;
-export const BuildStepList = /*@__PURE__*/ S.Array(
-  BuildStep,
-) as any as S.Schema<BuildStepList>;
+export const BuildStepList = /*@__PURE__*/ S.Array(BuildStep) as any as S.Schema<BuildStepList>;
 
-export type FailureInfoTypeEnum =
-  | "FAILURE_TYPE_UNSPECIFIED"
-  | "PUSH_FAILED"
-  | "PUSH_IMAGE_NOT_FOUND"
-  | "PUSH_NOT_AUTHORIZED"
-  | "LOGGING_FAILURE"
-  | "USER_BUILD_STEP"
-  | "FETCH_SOURCE_FAILED"
-  | (string & {});
+export type FailureInfoTypeEnum = "FAILURE_TYPE_UNSPECIFIED" | "PUSH_FAILED" | "PUSH_IMAGE_NOT_FOUND" | "PUSH_NOT_AUTHORIZED" | "LOGGING_FAILURE" | "USER_BUILD_STEP" | "FETCH_SOURCE_FAILED";
 export const FailureInfoTypeEnum = /*@__PURE__*/ S.String;
 
 /** A fatal problem encountered during the execution of the build. */
@@ -1368,10 +1105,10 @@ export interface FailureInfo {
   detail?: string;
 }
 export const FailureInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(FailureInfoTypeEnum),
-    detail: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(FailureInfoTypeEnum),
+  "detail": S.optional(S.String),
+}),
 ).annotate({ identifier: "FailureInfo" }) as any as S.Schema<FailureInfo>;
 
 /** Represents a generic artifact as a build dependency. */
@@ -1382,13 +1119,11 @@ export interface GenericArtifactDependency {
   destPath?: string;
 }
 export const GenericArtifactDependency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.optional(S.String),
-    destPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenericArtifactDependency",
-}) as any as S.Schema<GenericArtifactDependency>;
+S.Struct({
+  "resource": S.optional(S.String),
+  "destPath": S.optional(S.String),
+}),
+).annotate({ identifier: "GenericArtifactDependency" }) as any as S.Schema<GenericArtifactDependency>;
 
 /** A repository for a git source. */
 export interface GitSourceRepository {
@@ -1398,13 +1133,11 @@ export interface GitSourceRepository {
   developerConnect?: string;
 }
 export const GitSourceRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    developerConnect: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GitSourceRepository",
-}) as any as S.Schema<GitSourceRepository>;
+S.Struct({
+  "url": S.optional(S.String),
+  "developerConnect": S.optional(S.String),
+}),
+).annotate({ identifier: "GitSourceRepository" }) as any as S.Schema<GitSourceRepository>;
 
 /** Represents a git repository as a build dependency. */
 export interface GitSourceDependency {
@@ -1420,16 +1153,14 @@ export interface GitSourceDependency {
   revision?: string;
 }
 export const GitSourceDependency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recurseSubmodules: S.optional(S.Boolean),
-    depth: S.optional(S.String),
-    repository: S.optional(GitSourceRepository),
-    destPath: S.optional(S.String),
-    revision: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GitSourceDependency",
-}) as any as S.Schema<GitSourceDependency>;
+S.Struct({
+  "recurseSubmodules": S.optional(S.Boolean),
+  "depth": S.optional(S.String),
+  "repository": S.optional(GitSourceRepository),
+  "destPath": S.optional(S.String),
+  "revision": S.optional(S.String),
+}),
+).annotate({ identifier: "GitSourceDependency" }) as any as S.Schema<GitSourceDependency>;
 
 /** A dependency that the Cloud Build worker will fetch before executing user steps. */
 export interface Dependency {
@@ -1441,17 +1172,15 @@ export interface Dependency {
   gitSource?: GitSourceDependency;
 }
 export const Dependency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    empty: S.optional(S.Boolean),
-    genericArtifact: S.optional(GenericArtifactDependency),
-    gitSource: S.optional(GitSourceDependency),
-  }),
+S.Struct({
+  "empty": S.optional(S.Boolean),
+  "genericArtifact": S.optional(GenericArtifactDependency),
+  "gitSource": S.optional(GitSourceDependency),
+}),
 ).annotate({ identifier: "Dependency" }) as any as S.Schema<Dependency>;
 
 export type DependencyList = ReadonlyArray<Dependency>;
-export const DependencyList = /*@__PURE__*/ S.Array(
-  Dependency,
-) as any as S.Schema<DependencyList>;
+export const DependencyList = /*@__PURE__*/ S.Array(Dependency) as any as S.Schema<DependencyList>;
 
 /** This config defines the location of a source through Developer Connect. */
 export interface DeveloperConnectConfig {
@@ -1463,14 +1192,12 @@ export interface DeveloperConnectConfig {
   gitRepositoryLink?: string;
 }
 export const DeveloperConnectConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: S.optional(S.String),
-    dir: S.optional(S.String),
-    gitRepositoryLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeveloperConnectConfig",
-}) as any as S.Schema<DeveloperConnectConfig>;
+S.Struct({
+  "revision": S.optional(S.String),
+  "dir": S.optional(S.String),
+  "gitRepositoryLink": S.optional(S.String),
+}),
+).annotate({ identifier: "DeveloperConnectConfig" }) as any as S.Schema<DeveloperConnectConfig>;
 
 /** Location of the source in a supported storage service. */
 export interface Source {
@@ -1488,14 +1215,14 @@ export interface Source {
   connectedRepository?: ConnectedRepository;
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repoSource: S.optional(RepoSource),
-    storageSourceManifest: S.optional(StorageSourceManifest),
-    developerConnectConfig: S.optional(DeveloperConnectConfig),
-    storageSource: S.optional(StorageSource),
-    gitSource: S.optional(GitSource),
-    connectedRepository: S.optional(ConnectedRepository),
-  }),
+S.Struct({
+  "repoSource": S.optional(RepoSource),
+  "storageSourceManifest": S.optional(StorageSourceManifest),
+  "developerConnectConfig": S.optional(DeveloperConnectConfig),
+  "storageSource": S.optional(StorageSource),
+  "gitSource": S.optional(GitSource),
+  "connectedRepository": S.optional(ConnectedRepository),
+}),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
 /** A Maven artifact to upload to Artifact Registry upon successful completion of all build steps. */
@@ -1514,20 +1241,18 @@ export interface MavenArtifact {
   artifactId?: string;
 }
 export const MavenArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    repository: S.optional(S.String),
-    deployFolder: S.optional(S.String),
-    groupId: S.optional(S.String),
-    path: S.optional(S.String),
-    artifactId: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.String),
+  "repository": S.optional(S.String),
+  "deployFolder": S.optional(S.String),
+  "groupId": S.optional(S.String),
+  "path": S.optional(S.String),
+  "artifactId": S.optional(S.String),
+}),
 ).annotate({ identifier: "MavenArtifact" }) as any as S.Schema<MavenArtifact>;
 
 export type MavenArtifactList = ReadonlyArray<MavenArtifact>;
-export const MavenArtifactList = /*@__PURE__*/ S.Array(
-  MavenArtifact,
-) as any as S.Schema<MavenArtifactList>;
+export const MavenArtifactList = /*@__PURE__*/ S.Array(MavenArtifact) as any as S.Schema<MavenArtifactList>;
 
 /** Npm package to upload to Artifact Registry upon successful completion of all build steps. */
 export interface NpmPackage {
@@ -1537,16 +1262,14 @@ export interface NpmPackage {
   packagePath?: string;
 }
 export const NpmPackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository: S.optional(S.String),
-    packagePath: S.optional(S.String),
-  }),
+S.Struct({
+  "repository": S.optional(S.String),
+  "packagePath": S.optional(S.String),
+}),
 ).annotate({ identifier: "NpmPackage" }) as any as S.Schema<NpmPackage>;
 
 export type NpmPackageList = ReadonlyArray<NpmPackage>;
-export const NpmPackageList = /*@__PURE__*/ S.Array(
-  NpmPackage,
-) as any as S.Schema<NpmPackageList>;
+export const NpmPackageList = /*@__PURE__*/ S.Array(NpmPackage) as any as S.Schema<NpmPackageList>;
 
 /** Go module to upload to Artifact Registry upon successful completion of all build steps. A module refers to all dependencies in a go.mod file. */
 export interface GoModule {
@@ -1564,20 +1287,18 @@ export interface GoModule {
   modulePath?: string;
 }
 export const GoModule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourcePath: S.optional(S.String),
-    moduleVersion: S.optional(S.String),
-    repositoryName: S.optional(S.String),
-    repositoryLocation: S.optional(S.String),
-    repositoryProjectId: S.optional(S.String),
-    modulePath: S.optional(S.String),
-  }),
+S.Struct({
+  "sourcePath": S.optional(S.String),
+  "moduleVersion": S.optional(S.String),
+  "repositoryName": S.optional(S.String),
+  "repositoryLocation": S.optional(S.String),
+  "repositoryProjectId": S.optional(S.String),
+  "modulePath": S.optional(S.String),
+}),
 ).annotate({ identifier: "GoModule" }) as any as S.Schema<GoModule>;
 
 export type GoModuleList = ReadonlyArray<GoModule>;
-export const GoModuleList = /*@__PURE__*/ S.Array(
-  GoModule,
-) as any as S.Schema<GoModuleList>;
+export const GoModuleList = /*@__PURE__*/ S.Array(GoModule) as any as S.Schema<GoModuleList>;
 
 /** OCI image to upload to Artifact Registry upon successful completion of all build steps. */
 export interface Oci {
@@ -1589,11 +1310,11 @@ export interface Oci {
   registryPath?: string;
 }
 export const Oci = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file: S.optional(S.String),
-    tags: S.optional(StringList),
-    registryPath: S.optional(S.String),
-  }),
+S.Struct({
+  "file": S.optional(S.String),
+  "tags": S.optional(StringList),
+  "registryPath": S.optional(S.String),
+}),
 ).annotate({ identifier: "Oci" }) as any as S.Schema<Oci>;
 
 export type OciList = ReadonlyArray<Oci>;
@@ -1609,14 +1330,12 @@ export interface ArtifactObjects {
   timing?: TimeSpan;
 }
 export const ArtifactObjects = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paths: S.optional(StringList),
-    location: S.optional(S.String),
-    timing: S.optional(TimeSpan),
-  }),
-).annotate({
-  identifier: "ArtifactObjects",
-}) as any as S.Schema<ArtifactObjects>;
+S.Struct({
+  "paths": S.optional(StringList),
+  "location": S.optional(S.String),
+  "timing": S.optional(TimeSpan),
+}),
+).annotate({ identifier: "ArtifactObjects" }) as any as S.Schema<ArtifactObjects>;
 
 /** Generic artifact to upload to Artifact Registry upon successful completion of all build steps. */
 export interface GenericArtifact {
@@ -1626,18 +1345,14 @@ export interface GenericArtifact {
   folder?: string;
 }
 export const GenericArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryPath: S.optional(S.String),
-    folder: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenericArtifact",
-}) as any as S.Schema<GenericArtifact>;
+S.Struct({
+  "registryPath": S.optional(S.String),
+  "folder": S.optional(S.String),
+}),
+).annotate({ identifier: "GenericArtifact" }) as any as S.Schema<GenericArtifact>;
 
 export type GenericArtifactList = ReadonlyArray<GenericArtifact>;
-export const GenericArtifactList = /*@__PURE__*/ S.Array(
-  GenericArtifact,
-) as any as S.Schema<GenericArtifactList>;
+export const GenericArtifactList = /*@__PURE__*/ S.Array(GenericArtifact) as any as S.Schema<GenericArtifactList>;
 
 /** Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository. */
 export interface PythonPackage {
@@ -1647,16 +1362,14 @@ export interface PythonPackage {
   paths?: StringList;
 }
 export const PythonPackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository: S.optional(S.String),
-    paths: S.optional(StringList),
-  }),
+S.Struct({
+  "repository": S.optional(S.String),
+  "paths": S.optional(StringList),
+}),
 ).annotate({ identifier: "PythonPackage" }) as any as S.Schema<PythonPackage>;
 
 export type PythonPackageList = ReadonlyArray<PythonPackage>;
-export const PythonPackageList = /*@__PURE__*/ S.Array(
-  PythonPackage,
-) as any as S.Schema<PythonPackageList>;
+export const PythonPackageList = /*@__PURE__*/ S.Array(PythonPackage) as any as S.Schema<PythonPackageList>;
 
 /** Artifacts produced by a build that should be uploaded upon successful completion of all build steps. */
 export interface Artifacts {
@@ -1678,24 +1391,19 @@ export interface Artifacts {
   pythonPackages?: PythonPackageList;
 }
 export const Artifacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mavenArtifacts: S.optional(MavenArtifactList),
-    npmPackages: S.optional(NpmPackageList),
-    images: S.optional(StringList),
-    goModules: S.optional(GoModuleList),
-    oci: S.optional(OciList),
-    objects: S.optional(ArtifactObjects),
-    genericArtifacts: S.optional(GenericArtifactList),
-    pythonPackages: S.optional(PythonPackageList),
-  }),
+S.Struct({
+  "mavenArtifacts": S.optional(MavenArtifactList),
+  "npmPackages": S.optional(NpmPackageList),
+  "images": S.optional(StringList),
+  "goModules": S.optional(GoModuleList),
+  "oci": S.optional(OciList),
+  "objects": S.optional(ArtifactObjects),
+  "genericArtifacts": S.optional(GenericArtifactList),
+  "pythonPackages": S.optional(PythonPackageList),
+}),
 ).annotate({ identifier: "Artifacts" }) as any as S.Schema<Artifacts>;
 
-export type WarningPriorityEnum =
-  | "PRIORITY_UNSPECIFIED"
-  | "INFO"
-  | "WARNING"
-  | "ALERT"
-  | (string & {});
+export type WarningPriorityEnum = "PRIORITY_UNSPECIFIED" | "INFO" | "WARNING" | "ALERT";
 export const WarningPriorityEnum = /*@__PURE__*/ S.String;
 
 /** A non-fatal problem encountered during the execution of the build. */
@@ -1706,16 +1414,14 @@ export interface Warning {
   priority?: WarningPriorityEnum;
 }
 export const Warning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-    priority: S.optional(WarningPriorityEnum),
-  }),
+S.Struct({
+  "text": S.optional(S.String),
+  "priority": S.optional(WarningPriorityEnum),
+}),
 ).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
 
 export type WarningList = ReadonlyArray<Warning>;
-export const WarningList = /*@__PURE__*/ S.Array(
-  Warning,
-) as any as S.Schema<WarningList>;
+export const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
 
 /** A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA. */
 export interface Build {
@@ -1783,39 +1489,39 @@ export interface Build {
   warnings?: WarningList;
 }
 export const Build = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logsBucket: S.optional(S.String),
-    options: S.optional(BuildOptions),
-    approval: S.optional(BuildApproval),
-    images: S.optional(StringList),
-    availableSecrets: S.optional(Secrets),
-    timing: S.optional(TimeSpanMap),
-    serviceAccount: S.optional(S.String),
-    secrets: S.optional(SecretList),
-    queueTtl: S.optional(S.String),
-    results: S.optional(Results),
-    gitConfig: S.optional(GitConfig),
-    sourceProvenance: S.optional(SourceProvenance),
-    projectId: S.optional(S.String),
-    status: S.optional(BuildStatusEnum),
-    id: S.optional(S.String),
-    steps: S.optional(BuildStepList),
-    finishTime: S.optional(S.String),
-    startTime: S.optional(S.String),
-    timeout: S.optional(S.String),
-    failureInfo: S.optional(FailureInfo),
-    dependencies: S.optional(DependencyList),
-    name: S.optional(S.String),
-    substitutions: S.optional(StringMap),
-    tags: S.optional(StringList),
-    buildTriggerId: S.optional(S.String),
-    source: S.optional(Source),
-    statusDetail: S.optional(S.String),
-    createTime: S.optional(S.String),
-    artifacts: S.optional(Artifacts),
-    logUrl: S.optional(S.String),
-    warnings: S.optional(WarningList),
-  }),
+S.Struct({
+  "logsBucket": S.optional(S.String),
+  "options": S.optional(BuildOptions),
+  "approval": S.optional(BuildApproval),
+  "images": S.optional(StringList),
+  "availableSecrets": S.optional(Secrets),
+  "timing": S.optional(TimeSpanMap),
+  "serviceAccount": S.optional(S.String),
+  "secrets": S.optional(SecretList),
+  "queueTtl": S.optional(S.String),
+  "results": S.optional(Results),
+  "gitConfig": S.optional(GitConfig),
+  "sourceProvenance": S.optional(SourceProvenance),
+  "projectId": S.optional(S.String),
+  "status": S.optional(BuildStatusEnum),
+  "id": S.optional(S.String),
+  "steps": S.optional(BuildStepList),
+  "finishTime": S.optional(S.String),
+  "startTime": S.optional(S.String),
+  "timeout": S.optional(S.String),
+  "failureInfo": S.optional(FailureInfo),
+  "dependencies": S.optional(DependencyList),
+  "name": S.optional(S.String),
+  "substitutions": S.optional(StringMap),
+  "tags": S.optional(StringList),
+  "buildTriggerId": S.optional(S.String),
+  "source": S.optional(Source),
+  "statusDetail": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "artifacts": S.optional(Artifacts),
+  "logUrl": S.optional(S.String),
+  "warnings": S.optional(WarningList),
+}),
 ).annotate({ identifier: "Build" }) as any as S.Schema<Build>;
 
 export interface CancelProjectsLocationsBuildsRequest {
@@ -1824,21 +1530,12 @@ export interface CancelProjectsLocationsBuildsRequest {
   /** Request body */
   body?: CancelBuildRequest;
 }
-export const CancelProjectsLocationsBuildsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelBuildRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsBuildsRequest",
-}) as any as S.Schema<CancelProjectsLocationsBuildsRequest>;
+export const CancelProjectsLocationsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelBuildRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsBuildsRequest" }) as any as S.Schema<CancelProjectsLocationsBuildsRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -1846,21 +1543,12 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 export interface CreateProjectsBuildsRequest {
   /** Required. ID of the project. */
@@ -1871,20 +1559,12 @@ export interface CreateProjectsBuildsRequest {
   body?: Build;
 }
 export const CreateProjectsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    parent: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Build.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/projects/{projectId}/builds",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsBuildsRequest",
-}) as any as S.Schema<CreateProjectsBuildsRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Build.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/builds","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsBuildsRequest" }) as any as S.Schema<CreateProjectsBuildsRequest>;
 
 /** GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/. */
 export interface GitHubEnterpriseSecrets {
@@ -1906,19 +1586,17 @@ export interface GitHubEnterpriseSecrets {
   oauthSecretName?: string;
 }
 export const GitHubEnterpriseSecrets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oauthClientIdName: S.optional(S.String),
-    webhookSecretName: S.optional(S.String),
-    oauthSecretVersionName: S.optional(S.String),
-    oauthClientIdVersionName: S.optional(S.String),
-    privateKeyName: S.optional(S.String),
-    privateKeyVersionName: S.optional(S.String),
-    webhookSecretVersionName: S.optional(S.String),
-    oauthSecretName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GitHubEnterpriseSecrets",
-}) as any as S.Schema<GitHubEnterpriseSecrets>;
+S.Struct({
+  "oauthClientIdName": S.optional(S.String),
+  "webhookSecretName": S.optional(S.String),
+  "oauthSecretVersionName": S.optional(S.String),
+  "oauthClientIdVersionName": S.optional(S.String),
+  "privateKeyName": S.optional(S.String),
+  "privateKeyVersionName": S.optional(S.String),
+  "webhookSecretVersionName": S.optional(S.String),
+  "oauthSecretName": S.optional(S.String),
+}),
+).annotate({ identifier: "GitHubEnterpriseSecrets" }) as any as S.Schema<GitHubEnterpriseSecrets>;
 
 /** GitHubEnterpriseConfig represents a configuration for a GitHub Enterprise server. */
 export interface GitHubEnterpriseConfig {
@@ -1942,20 +1620,18 @@ export interface GitHubEnterpriseConfig {
   webhookKey?: string;
 }
 export const GitHubEnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.optional(S.String),
-    createTime: S.optional(S.String),
-    peeredNetwork: S.optional(S.String),
-    secrets: S.optional(GitHubEnterpriseSecrets),
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-    sslCa: S.optional(S.String),
-    hostUrl: S.optional(S.String),
-    webhookKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GitHubEnterpriseConfig",
-}) as any as S.Schema<GitHubEnterpriseConfig>;
+S.Struct({
+  "appId": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "peeredNetwork": S.optional(S.String),
+  "secrets": S.optional(GitHubEnterpriseSecrets),
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+  "sslCa": S.optional(S.String),
+  "hostUrl": S.optional(S.String),
+  "webhookKey": S.optional(S.String),
+}),
+).annotate({ identifier: "GitHubEnterpriseConfig" }) as any as S.Schema<GitHubEnterpriseConfig>;
 
 export interface CreateProjectsGithubEnterpriseConfigsRequest {
   /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
@@ -1967,23 +1643,14 @@ export interface CreateProjectsGithubEnterpriseConfigsRequest {
   /** Request body */
   body?: GitHubEnterpriseConfig;
 }
-export const CreateProjectsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      projectId: S.optional(S.String.pipe(T.Query())),
-      gheConfigId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/githubEnterpriseConfigs",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsGithubEnterpriseConfigsRequest",
-  }) as any as S.Schema<CreateProjectsGithubEnterpriseConfigsRequest>;
+export const CreateProjectsGithubEnterpriseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "gheConfigId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/githubEnterpriseConfigs","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsGithubEnterpriseConfigsRequest" }) as any as S.Schema<CreateProjectsGithubEnterpriseConfigsRequest>;
 
 /** BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server. */
 export interface BitbucketServerSecrets {
@@ -1995,20 +1662,15 @@ export interface BitbucketServerSecrets {
   readAccessTokenVersionName?: string;
 }
 export const BitbucketServerSecrets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    webhookSecretVersionName: S.optional(S.String),
-    adminAccessTokenVersionName: S.optional(S.String),
-    readAccessTokenVersionName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BitbucketServerSecrets",
-}) as any as S.Schema<BitbucketServerSecrets>;
+S.Struct({
+  "webhookSecretVersionName": S.optional(S.String),
+  "adminAccessTokenVersionName": S.optional(S.String),
+  "readAccessTokenVersionName": S.optional(S.String),
+}),
+).annotate({ identifier: "BitbucketServerSecrets" }) as any as S.Schema<BitbucketServerSecrets>;
 
-export type BitbucketServerRepositoryIdList =
-  ReadonlyArray<BitbucketServerRepositoryId>;
-export const BitbucketServerRepositoryIdList = /*@__PURE__*/ S.Array(
-  BitbucketServerRepositoryId,
-) as any as S.Schema<BitbucketServerRepositoryIdList>;
+export type BitbucketServerRepositoryIdList = ReadonlyArray<BitbucketServerRepositoryId>;
+export const BitbucketServerRepositoryIdList = /*@__PURE__*/ S.Array(BitbucketServerRepositoryId) as any as S.Schema<BitbucketServerRepositoryIdList>;
 
 /** BitbucketServerConfig represents the configuration for a Bitbucket Server. */
 export interface BitbucketServerConfig {
@@ -2036,22 +1698,20 @@ export interface BitbucketServerConfig {
   peeredNetworkIpRange?: string;
 }
 export const BitbucketServerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostUri: S.optional(S.String),
-    secrets: S.optional(BitbucketServerSecrets),
-    peeredNetwork: S.optional(S.String),
-    createTime: S.optional(S.String),
-    username: S.optional(S.String),
-    apiKey: S.optional(S.String),
-    sslCa: S.optional(S.String),
-    name: S.optional(S.String),
-    webhookKey: S.optional(S.String),
-    connectedRepositories: S.optional(BitbucketServerRepositoryIdList),
-    peeredNetworkIpRange: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BitbucketServerConfig",
-}) as any as S.Schema<BitbucketServerConfig>;
+S.Struct({
+  "hostUri": S.optional(S.String),
+  "secrets": S.optional(BitbucketServerSecrets),
+  "peeredNetwork": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "username": S.optional(S.String),
+  "apiKey": S.optional(S.String),
+  "sslCa": S.optional(S.String),
+  "name": S.optional(S.String),
+  "webhookKey": S.optional(S.String),
+  "connectedRepositories": S.optional(BitbucketServerRepositoryIdList),
+  "peeredNetworkIpRange": S.optional(S.String),
+}),
+).annotate({ identifier: "BitbucketServerConfig" }) as any as S.Schema<BitbucketServerConfig>;
 
 export interface CreateProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. Name of the parent resource. */
@@ -2061,22 +1721,13 @@ export interface CreateProjectsLocationsBitbucketServerConfigsRequest {
   /** Request body */
   body?: BitbucketServerConfig;
 }
-export const CreateProjectsLocationsBitbucketServerConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      bitbucketServerConfigId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BitbucketServerConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/bitbucketServerConfigs",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsBitbucketServerConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsBitbucketServerConfigsRequest>;
+export const CreateProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "bitbucketServerConfigId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BitbucketServerConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/bitbucketServerConfigs","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBitbucketServerConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsBitbucketServerConfigsRequest>;
 
 export interface CreateProjectsLocationsBuildsRequest {
   /** Required. ID of the project. */
@@ -2086,22 +1737,13 @@ export interface CreateProjectsLocationsBuildsRequest {
   /** Request body */
   body?: Build;
 }
-export const CreateProjectsLocationsBuildsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Build.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/builds",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsBuildsRequest",
-}) as any as S.Schema<CreateProjectsLocationsBuildsRequest>;
+export const CreateProjectsLocationsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Build.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/builds","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsBuildsRequest" }) as any as S.Schema<CreateProjectsLocationsBuildsRequest>;
 
 export interface CreateProjectsLocationsGithubEnterpriseConfigsRequest {
   /** ID of the project. */
@@ -2113,23 +1755,14 @@ export interface CreateProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Request body */
   body?: GitHubEnterpriseConfig;
 }
-export const CreateProjectsLocationsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.optional(S.String.pipe(T.Query())),
-      gheConfigId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/githubEnterpriseConfigs",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsGithubEnterpriseConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsGithubEnterpriseConfigsRequest>;
+export const CreateProjectsLocationsGithubEnterpriseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "gheConfigId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/githubEnterpriseConfigs","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsGithubEnterpriseConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsGithubEnterpriseConfigsRequest>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabSecrets represents the secrets in Secret Manager for a GitLab integration. */
 export interface GitLabSecrets {
@@ -2143,18 +1776,16 @@ export interface GitLabSecrets {
   readAccessTokenVersion?: string;
 }
 export const GitLabSecrets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKeyVersion: S.optional(S.String),
-    webhookSecretVersion: S.optional(S.String),
-    apiAccessTokenVersion: S.optional(S.String),
-    readAccessTokenVersion: S.optional(S.String),
-  }),
+S.Struct({
+  "apiKeyVersion": S.optional(S.String),
+  "webhookSecretVersion": S.optional(S.String),
+  "apiAccessTokenVersion": S.optional(S.String),
+  "readAccessTokenVersion": S.optional(S.String),
+}),
 ).annotate({ identifier: "GitLabSecrets" }) as any as S.Schema<GitLabSecrets>;
 
 export type GitLabRepositoryIdList = ReadonlyArray<GitLabRepositoryId>;
-export const GitLabRepositoryIdList = /*@__PURE__*/ S.Array(
-  GitLabRepositoryId,
-) as any as S.Schema<GitLabRepositoryIdList>;
+export const GitLabRepositoryIdList = /*@__PURE__*/ S.Array(GitLabRepositoryId) as any as S.Schema<GitLabRepositoryIdList>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection. */
 export interface ServiceDirectoryConfig {
@@ -2162,12 +1793,10 @@ export interface ServiceDirectoryConfig {
   service?: string;
 }
 export const ServiceDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceDirectoryConfig",
-}) as any as S.Schema<ServiceDirectoryConfig>;
+S.Struct({
+  "service": S.optional(S.String),
+}),
+).annotate({ identifier: "ServiceDirectoryConfig" }) as any as S.Schema<ServiceDirectoryConfig>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration. */
 export interface GitLabEnterpriseConfig {
@@ -2179,14 +1808,12 @@ export interface GitLabEnterpriseConfig {
   serviceDirectoryConfig?: ServiceDirectoryConfig;
 }
 export const GitLabEnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostUri: S.optional(S.String),
-    sslCa: S.optional(S.String),
-    serviceDirectoryConfig: S.optional(ServiceDirectoryConfig),
-  }),
-).annotate({
-  identifier: "GitLabEnterpriseConfig",
-}) as any as S.Schema<GitLabEnterpriseConfig>;
+S.Struct({
+  "hostUri": S.optional(S.String),
+  "sslCa": S.optional(S.String),
+  "serviceDirectoryConfig": S.optional(ServiceDirectoryConfig),
+}),
+).annotate({ identifier: "GitLabEnterpriseConfig" }) as any as S.Schema<GitLabEnterpriseConfig>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabConfig represents the configuration for a GitLab integration. */
 export interface GitLabConfig {
@@ -2206,15 +1833,15 @@ export interface GitLabConfig {
   enterpriseConfig?: GitLabEnterpriseConfig;
 }
 export const GitLabConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    secrets: S.optional(GitLabSecrets),
-    connectedRepositories: S.optional(GitLabRepositoryIdList),
-    name: S.optional(S.String),
-    webhookKey: S.optional(S.String),
-    username: S.optional(S.String),
-    enterpriseConfig: S.optional(GitLabEnterpriseConfig),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "secrets": S.optional(GitLabSecrets),
+  "connectedRepositories": S.optional(GitLabRepositoryIdList),
+  "name": S.optional(S.String),
+  "webhookKey": S.optional(S.String),
+  "username": S.optional(S.String),
+  "enterpriseConfig": S.optional(GitLabEnterpriseConfig),
+}),
 ).annotate({ identifier: "GitLabConfig" }) as any as S.Schema<GitLabConfig>;
 
 export interface CreateProjectsLocationsGitLabConfigsRequest {
@@ -2225,37 +1852,18 @@ export interface CreateProjectsLocationsGitLabConfigsRequest {
   /** Request body */
   body?: GitLabConfig;
 }
-export const CreateProjectsLocationsGitLabConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      gitlabConfigId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GitLabConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/gitLabConfigs",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsGitLabConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsGitLabConfigsRequest>;
+export const CreateProjectsLocationsGitLabConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "gitlabConfigId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GitLabConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/gitLabConfigs","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsGitLabConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsGitLabConfigsRequest>;
 
-export type BuildTriggerIncludeBuildLogsEnum =
-  | "INCLUDE_BUILD_LOGS_UNSPECIFIED"
-  | "INCLUDE_BUILD_LOGS_WITH_STATUS"
-  | (string & {});
+export type BuildTriggerIncludeBuildLogsEnum = "INCLUDE_BUILD_LOGS_UNSPECIFIED" | "INCLUDE_BUILD_LOGS_WITH_STATUS";
 export const BuildTriggerIncludeBuildLogsEnum = /*@__PURE__*/ S.String;
 
-export type GitRepoSourceRepoTypeEnum =
-  | "UNKNOWN"
-  | "CLOUD_SOURCE_REPOSITORIES"
-  | "GITHUB"
-  | "BITBUCKET_SERVER"
-  | "GITLAB"
-  | "BITBUCKET_CLOUD"
-  | (string & {});
+export type GitRepoSourceRepoTypeEnum = "UNKNOWN" | "CLOUD_SOURCE_REPOSITORIES" | "GITHUB" | "BITBUCKET_SERVER" | "GITLAB" | "BITBUCKET_CLOUD";
 export const GitRepoSourceRepoTypeEnum = /*@__PURE__*/ S.String;
 
 /** GitRepoSource describes a repo and ref of a code repository. */
@@ -2274,21 +1882,17 @@ export interface GitRepoSource {
   repository?: string;
 }
 export const GitRepoSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    githubEnterpriseConfig: S.optional(S.String),
-    ref: S.optional(S.String),
-    repoType: S.optional(GitRepoSourceRepoTypeEnum),
-    bitbucketServerConfig: S.optional(S.String),
-    uri: S.optional(S.String),
-    repository: S.optional(S.String),
-  }),
+S.Struct({
+  "githubEnterpriseConfig": S.optional(S.String),
+  "ref": S.optional(S.String),
+  "repoType": S.optional(GitRepoSourceRepoTypeEnum),
+  "bitbucketServerConfig": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "repository": S.optional(S.String),
+}),
 ).annotate({ identifier: "GitRepoSource" }) as any as S.Schema<GitRepoSource>;
 
-export type WebhookConfigStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "OK"
-  | "SECRET_DELETED"
-  | (string & {});
+export type WebhookConfigStateEnum = "STATE_UNSPECIFIED" | "OK" | "SECRET_DELETED";
 export const WebhookConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL. */
@@ -2299,17 +1903,13 @@ export interface WebhookConfig {
   state?: WebhookConfigStateEnum;
 }
 export const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secret: S.optional(S.String),
-    state: S.optional(WebhookConfigStateEnum),
-  }),
+S.Struct({
+  "secret": S.optional(S.String),
+  "state": S.optional(WebhookConfigStateEnum),
+}),
 ).annotate({ identifier: "WebhookConfig" }) as any as S.Schema<WebhookConfig>;
 
-export type PullRequestFilterCommentControlEnum =
-  | "COMMENTS_DISABLED"
-  | "COMMENTS_ENABLED"
-  | "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
-  | (string & {});
+export type PullRequestFilterCommentControlEnum = "COMMENTS_DISABLED" | "COMMENTS_ENABLED" | "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY";
 export const PullRequestFilterCommentControlEnum = /*@__PURE__*/ S.String;
 
 /** PullRequestFilter contains filter properties for matching GitHub Pull Requests. */
@@ -2322,14 +1922,12 @@ export interface PullRequestFilter {
   commentControl?: PullRequestFilterCommentControlEnum;
 }
 export const PullRequestFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invertRegex: S.optional(S.Boolean),
-    branch: S.optional(S.String),
-    commentControl: S.optional(PullRequestFilterCommentControlEnum),
-  }),
-).annotate({
-  identifier: "PullRequestFilter",
-}) as any as S.Schema<PullRequestFilter>;
+S.Struct({
+  "invertRegex": S.optional(S.Boolean),
+  "branch": S.optional(S.String),
+  "commentControl": S.optional(PullRequestFilterCommentControlEnum),
+}),
+).annotate({ identifier: "PullRequestFilter" }) as any as S.Schema<PullRequestFilter>;
 
 /** Push contains filter properties for matching GitHub git pushes. */
 export interface PushFilter {
@@ -2341,21 +1939,14 @@ export interface PushFilter {
   invertRegex?: boolean;
 }
 export const PushFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tag: S.optional(S.String),
-    branch: S.optional(S.String),
-    invertRegex: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "tag": S.optional(S.String),
+  "branch": S.optional(S.String),
+  "invertRegex": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "PushFilter" }) as any as S.Schema<PushFilter>;
 
-export type RepositoryEventConfigRepositoryTypeEnum =
-  | "REPOSITORY_TYPE_UNSPECIFIED"
-  | "GITHUB"
-  | "GITHUB_ENTERPRISE"
-  | "GITLAB_ENTERPRISE"
-  | "BITBUCKET_DATA_CENTER"
-  | "BITBUCKET_CLOUD"
-  | (string & {});
+export type RepositoryEventConfigRepositoryTypeEnum = "REPOSITORY_TYPE_UNSPECIFIED" | "GITHUB" | "GITHUB_ENTERPRISE" | "GITLAB_ENTERPRISE" | "BITBUCKET_DATA_CENTER" | "BITBUCKET_CLOUD";
 export const RepositoryEventConfigRepositoryTypeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of a trigger that creates a build whenever an event from Repo API is received. */
@@ -2370,23 +1961,15 @@ export interface RepositoryEventConfig {
   repositoryType?: RepositoryEventConfigRepositoryTypeEnum;
 }
 export const RepositoryEventConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository: S.optional(S.String),
-    pullRequest: S.optional(PullRequestFilter),
-    push: S.optional(PushFilter),
-    repositoryType: S.optional(RepositoryEventConfigRepositoryTypeEnum),
-  }),
-).annotate({
-  identifier: "RepositoryEventConfig",
-}) as any as S.Schema<RepositoryEventConfig>;
+S.Struct({
+  "repository": S.optional(S.String),
+  "pullRequest": S.optional(PullRequestFilter),
+  "push": S.optional(PushFilter),
+  "repositoryType": S.optional(RepositoryEventConfigRepositoryTypeEnum),
+}),
+).annotate({ identifier: "RepositoryEventConfig" }) as any as S.Schema<RepositoryEventConfig>;
 
-export type PubsubConfigStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "OK"
-  | "SUBSCRIPTION_DELETED"
-  | "TOPIC_DELETED"
-  | "SUBSCRIPTION_MISCONFIGURED"
-  | (string & {});
+export type PubsubConfigStateEnum = "STATE_UNSPECIFIED" | "OK" | "SUBSCRIPTION_DELETED" | "TOPIC_DELETED" | "SUBSCRIPTION_MISCONFIGURED";
 export const PubsubConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published. */
@@ -2401,25 +1984,16 @@ export interface PubsubConfig {
   serviceAccountEmail?: string;
 }
 export const PubsubConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: S.optional(S.String),
-    topic: S.optional(S.String),
-    state: S.optional(PubsubConfigStateEnum),
-    serviceAccountEmail: S.optional(S.String),
-  }),
+S.Struct({
+  "subscription": S.optional(S.String),
+  "topic": S.optional(S.String),
+  "state": S.optional(PubsubConfigStateEnum),
+  "serviceAccountEmail": S.optional(S.String),
+}),
 ).annotate({ identifier: "PubsubConfig" }) as any as S.Schema<PubsubConfig>;
 
-export type DeveloperConnectEventConfigGitRepositoryLinkTypeEnum =
-  | "GIT_REPOSITORY_LINK_TYPE_UNSPECIFIED"
-  | "GITHUB"
-  | "GITHUB_ENTERPRISE"
-  | "GITLAB"
-  | "GITLAB_ENTERPRISE"
-  | "BITBUCKET_DATA_CENTER"
-  | "BITBUCKET_CLOUD"
-  | (string & {});
-export const DeveloperConnectEventConfigGitRepositoryLinkTypeEnum =
-  /*@__PURE__*/ S.String;
+export type DeveloperConnectEventConfigGitRepositoryLinkTypeEnum = "GIT_REPOSITORY_LINK_TYPE_UNSPECIFIED" | "GITHUB" | "GITHUB_ENTERPRISE" | "GITLAB" | "GITLAB_ENTERPRISE" | "BITBUCKET_DATA_CENTER" | "BITBUCKET_CLOUD";
+export const DeveloperConnectEventConfigGitRepositoryLinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of a trigger that creates a build whenever an event from the DeveloperConnect API is received. */
 export interface DeveloperConnectEventConfig {
@@ -2433,26 +2007,15 @@ export interface DeveloperConnectEventConfig {
   gitRepositoryLink?: string;
 }
 export const DeveloperConnectEventConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitRepositoryLinkType: S.optional(
-      DeveloperConnectEventConfigGitRepositoryLinkTypeEnum,
-    ),
-    pullRequest: S.optional(PullRequestFilter),
-    push: S.optional(PushFilter),
-    gitRepositoryLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeveloperConnectEventConfig",
-}) as any as S.Schema<DeveloperConnectEventConfig>;
+S.Struct({
+  "gitRepositoryLinkType": S.optional(DeveloperConnectEventConfigGitRepositoryLinkTypeEnum),
+  "pullRequest": S.optional(PullRequestFilter),
+  "push": S.optional(PushFilter),
+  "gitRepositoryLink": S.optional(S.String),
+}),
+).annotate({ identifier: "DeveloperConnectEventConfig" }) as any as S.Schema<DeveloperConnectEventConfig>;
 
-export type GitFileSourceRepoTypeEnum =
-  | "UNKNOWN"
-  | "CLOUD_SOURCE_REPOSITORIES"
-  | "GITHUB"
-  | "BITBUCKET_SERVER"
-  | "GITLAB"
-  | "BITBUCKET_CLOUD"
-  | (string & {});
+export type GitFileSourceRepoTypeEnum = "UNKNOWN" | "CLOUD_SOURCE_REPOSITORIES" | "GITHUB" | "BITBUCKET_SERVER" | "GITLAB" | "BITBUCKET_CLOUD";
 export const GitFileSourceRepoTypeEnum = /*@__PURE__*/ S.String;
 
 /** GitFileSource describes a file within a (possibly remote) code repository. */
@@ -2473,24 +2036,18 @@ export interface GitFileSource {
   githubEnterpriseConfig?: string;
 }
 export const GitFileSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: S.optional(S.String),
-    bitbucketServerConfig: S.optional(S.String),
-    uri: S.optional(S.String),
-    repository: S.optional(S.String),
-    path: S.optional(S.String),
-    repoType: S.optional(GitFileSourceRepoTypeEnum),
-    githubEnterpriseConfig: S.optional(S.String),
-  }),
+S.Struct({
+  "revision": S.optional(S.String),
+  "bitbucketServerConfig": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "repository": S.optional(S.String),
+  "path": S.optional(S.String),
+  "repoType": S.optional(GitFileSourceRepoTypeEnum),
+  "githubEnterpriseConfig": S.optional(S.String),
+}),
 ).annotate({ identifier: "GitFileSource" }) as any as S.Schema<GitFileSource>;
 
-export type BuildTriggerEventTypeEnum =
-  | "EVENT_TYPE_UNSPECIFIED"
-  | "REPO"
-  | "WEBHOOK"
-  | "PUBSUB"
-  | "MANUAL"
-  | (string & {});
+export type BuildTriggerEventTypeEnum = "EVENT_TYPE_UNSPECIFIED" | "REPO" | "WEBHOOK" | "PUBSUB" | "MANUAL";
 export const BuildTriggerEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received. */
@@ -2509,17 +2066,15 @@ export interface BitbucketServerTriggerConfig {
   pullRequest?: PullRequestFilter;
 }
 export const BitbucketServerTriggerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repoSlug: S.optional(S.String),
-    bitbucketServerConfig: S.optional(BitbucketServerConfig),
-    push: S.optional(PushFilter),
-    projectKey: S.optional(S.String),
-    bitbucketServerConfigResource: S.optional(S.String),
-    pullRequest: S.optional(PullRequestFilter),
-  }),
-).annotate({
-  identifier: "BitbucketServerTriggerConfig",
-}) as any as S.Schema<BitbucketServerTriggerConfig>;
+S.Struct({
+  "repoSlug": S.optional(S.String),
+  "bitbucketServerConfig": S.optional(BitbucketServerConfig),
+  "push": S.optional(PushFilter),
+  "projectKey": S.optional(S.String),
+  "bitbucketServerConfigResource": S.optional(S.String),
+  "pullRequest": S.optional(PullRequestFilter),
+}),
+).annotate({ identifier: "BitbucketServerTriggerConfig" }) as any as S.Schema<BitbucketServerTriggerConfig>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received. */
 export interface GitLabEventsConfig {
@@ -2535,16 +2090,14 @@ export interface GitLabEventsConfig {
   projectNamespace?: string;
 }
 export const GitLabEventsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    push: S.optional(PushFilter),
-    gitlabConfigResource: S.optional(S.String),
-    pullRequest: S.optional(PullRequestFilter),
-    gitlabConfig: S.optional(GitLabConfig),
-    projectNamespace: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GitLabEventsConfig",
-}) as any as S.Schema<GitLabEventsConfig>;
+S.Struct({
+  "push": S.optional(PushFilter),
+  "gitlabConfigResource": S.optional(S.String),
+  "pullRequest": S.optional(PullRequestFilter),
+  "gitlabConfig": S.optional(GitLabConfig),
+  "projectNamespace": S.optional(S.String),
+}),
+).annotate({ identifier: "GitLabEventsConfig" }) as any as S.Schema<GitLabEventsConfig>;
 
 /** GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. */
 export interface GitHubEventsConfig {
@@ -2562,17 +2115,15 @@ export interface GitHubEventsConfig {
   push?: PushFilter;
 }
 export const GitHubEventsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    installationId: S.optional(S.String),
-    owner: S.optional(S.String),
-    pullRequest: S.optional(PullRequestFilter),
-    enterpriseConfigResourceName: S.optional(S.String),
-    name: S.optional(S.String),
-    push: S.optional(PushFilter),
-  }),
-).annotate({
-  identifier: "GitHubEventsConfig",
-}) as any as S.Schema<GitHubEventsConfig>;
+S.Struct({
+  "installationId": S.optional(S.String),
+  "owner": S.optional(S.String),
+  "pullRequest": S.optional(PullRequestFilter),
+  "enterpriseConfigResourceName": S.optional(S.String),
+  "name": S.optional(S.String),
+  "push": S.optional(PushFilter),
+}),
+).annotate({ identifier: "GitHubEventsConfig" }) as any as S.Schema<GitHubEventsConfig>;
 
 /** Configuration for an automated build in response to source repository changes. */
 export interface BuildTrigger {
@@ -2634,36 +2185,36 @@ export interface BuildTrigger {
   ignoredFiles?: StringList;
 }
 export const BuildTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    approvalConfig: S.optional(ApprovalConfig),
-    includeBuildLogs: S.optional(BuildTriggerIncludeBuildLogsEnum),
-    serviceAccount: S.optional(S.String),
-    sourceToBuild: S.optional(GitRepoSource),
-    filter: S.optional(S.String),
-    description: S.optional(S.String),
-    filename: S.optional(S.String),
-    triggerTemplate: S.optional(RepoSource),
-    webhookConfig: S.optional(WebhookConfig),
-    includedFiles: S.optional(StringList),
-    repositoryEventConfig: S.optional(RepositoryEventConfig),
-    autodetect: S.optional(S.Boolean),
-    build: S.optional(Build),
-    pubsubConfig: S.optional(PubsubConfig),
-    developerConnectEventConfig: S.optional(DeveloperConnectEventConfig),
-    name: S.optional(S.String),
-    tags: S.optional(StringList),
-    gitFileSource: S.optional(GitFileSource),
-    substitutions: S.optional(StringMap),
-    eventType: S.optional(BuildTriggerEventTypeEnum),
-    bitbucketServerTriggerConfig: S.optional(BitbucketServerTriggerConfig),
-    id: S.optional(S.String),
-    createTime: S.optional(S.String),
-    gitlabEnterpriseEventsConfig: S.optional(GitLabEventsConfig),
-    disabled: S.optional(S.Boolean),
-    resourceName: S.optional(S.String),
-    github: S.optional(GitHubEventsConfig),
-    ignoredFiles: S.optional(StringList),
-  }),
+S.Struct({
+  "approvalConfig": S.optional(ApprovalConfig),
+  "includeBuildLogs": S.optional(BuildTriggerIncludeBuildLogsEnum),
+  "serviceAccount": S.optional(S.String),
+  "sourceToBuild": S.optional(GitRepoSource),
+  "filter": S.optional(S.String),
+  "description": S.optional(S.String),
+  "filename": S.optional(S.String),
+  "triggerTemplate": S.optional(RepoSource),
+  "webhookConfig": S.optional(WebhookConfig),
+  "includedFiles": S.optional(StringList),
+  "repositoryEventConfig": S.optional(RepositoryEventConfig),
+  "autodetect": S.optional(S.Boolean),
+  "build": S.optional(Build),
+  "pubsubConfig": S.optional(PubsubConfig),
+  "developerConnectEventConfig": S.optional(DeveloperConnectEventConfig),
+  "name": S.optional(S.String),
+  "tags": S.optional(StringList),
+  "gitFileSource": S.optional(GitFileSource),
+  "substitutions": S.optional(StringMap),
+  "eventType": S.optional(BuildTriggerEventTypeEnum),
+  "bitbucketServerTriggerConfig": S.optional(BitbucketServerTriggerConfig),
+  "id": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "gitlabEnterpriseEventsConfig": S.optional(GitLabEventsConfig),
+  "disabled": S.optional(S.Boolean),
+  "resourceName": S.optional(S.String),
+  "github": S.optional(GitHubEventsConfig),
+  "ignoredFiles": S.optional(StringList),
+}),
 ).annotate({ identifier: "BuildTrigger" }) as any as S.Schema<BuildTrigger>;
 
 export interface CreateProjectsLocationsTriggersRequest {
@@ -2674,22 +2225,13 @@ export interface CreateProjectsLocationsTriggersRequest {
   /** Request body */
   body?: BuildTrigger;
 }
-export const CreateProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      projectId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BuildTrigger.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/triggers",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsTriggersRequest",
-}) as any as S.Schema<CreateProjectsLocationsTriggersRequest>;
+export const CreateProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BuildTrigger.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/triggers","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsTriggersRequest" }) as any as S.Schema<CreateProjectsLocationsTriggersRequest>;
 
 /** Defines the configuration to be used for creating workers in the pool. */
 export interface WorkerConfig {
@@ -2701,18 +2243,14 @@ export interface WorkerConfig {
   enableNestedVirtualization?: boolean;
 }
 export const WorkerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machineType: S.optional(S.String),
-    diskSizeGb: S.optional(S.String),
-    enableNestedVirtualization: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "machineType": S.optional(S.String),
+  "diskSizeGb": S.optional(S.String),
+  "enableNestedVirtualization": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "WorkerConfig" }) as any as S.Schema<WorkerConfig>;
 
-export type NetworkConfigEgressOptionEnum =
-  | "EGRESS_OPTION_UNSPECIFIED"
-  | "NO_PUBLIC_EGRESS"
-  | "PUBLIC_EGRESS"
-  | (string & {});
+export type NetworkConfigEgressOptionEnum = "EGRESS_OPTION_UNSPECIFIED" | "NO_PUBLIC_EGRESS" | "PUBLIC_EGRESS";
 export const NetworkConfigEgressOptionEnum = /*@__PURE__*/ S.String;
 
 /** Defines the network configuration for the pool. */
@@ -2725,11 +2263,11 @@ export interface NetworkConfig {
   peeredNetworkIpRange?: string;
 }
 export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    peeredNetwork: S.optional(S.String),
-    egressOption: S.optional(NetworkConfigEgressOptionEnum),
-    peeredNetworkIpRange: S.optional(S.String),
-  }),
+S.Struct({
+  "peeredNetwork": S.optional(S.String),
+  "egressOption": S.optional(NetworkConfigEgressOptionEnum),
+  "peeredNetworkIpRange": S.optional(S.String),
+}),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
 /** Defines the Private Service Connect network configuration for the pool. */
@@ -2742,14 +2280,12 @@ export interface PrivateServiceConnect {
   routeAllTraffic?: boolean;
 }
 export const PrivateServiceConnect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkAttachment: S.optional(S.String),
-    publicIpAddressDisabled: S.optional(S.Boolean),
-    routeAllTraffic: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PrivateServiceConnect",
-}) as any as S.Schema<PrivateServiceConnect>;
+S.Struct({
+  "networkAttachment": S.optional(S.String),
+  "publicIpAddressDisabled": S.optional(S.Boolean),
+  "routeAllTraffic": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PrivateServiceConnect" }) as any as S.Schema<PrivateServiceConnect>;
 
 /** Configuration for a V1 `PrivatePool`. */
 export interface PrivatePoolV1Config {
@@ -2761,23 +2297,14 @@ export interface PrivatePoolV1Config {
   privateServiceConnect?: PrivateServiceConnect;
 }
 export const PrivatePoolV1Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workerConfig: S.optional(WorkerConfig),
-    networkConfig: S.optional(NetworkConfig),
-    privateServiceConnect: S.optional(PrivateServiceConnect),
-  }),
-).annotate({
-  identifier: "PrivatePoolV1Config",
-}) as any as S.Schema<PrivatePoolV1Config>;
+S.Struct({
+  "workerConfig": S.optional(WorkerConfig),
+  "networkConfig": S.optional(NetworkConfig),
+  "privateServiceConnect": S.optional(PrivateServiceConnect),
+}),
+).annotate({ identifier: "PrivatePoolV1Config" }) as any as S.Schema<PrivatePoolV1Config>;
 
-export type WorkerPoolStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "RUNNING"
-  | "DELETING"
-  | "DELETED"
-  | "UPDATING"
-  | (string & {});
+export type WorkerPoolStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "RUNNING" | "DELETING" | "DELETED" | "UPDATING";
 export const WorkerPoolStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a `WorkerPool`. Cloud Build owns and maintains a pool of workers for general use and have no access to a project's private network. By default, builds submitted to Cloud Build will use a worker from this pool. If your build needs access to resources on a private network, create and use a `WorkerPool` to run your builds. Private `WorkerPool`s give your builds access to any single VPC network that you administer, including any on-prem resources connected to that VPC network. For an overview of private pools, see [Private pools overview](https://cloud.google.com/build/docs/private-pools/private-pools-overview). */
@@ -2804,18 +2331,18 @@ export interface WorkerPool {
   etag?: string;
 }
 export const WorkerPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privatePoolV1Config: S.optional(PrivatePoolV1Config),
-    state: S.optional(WorkerPoolStateEnum),
-    uid: S.optional(S.String),
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    createTime: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "privatePoolV1Config": S.optional(PrivatePoolV1Config),
+  "state": S.optional(WorkerPoolStateEnum),
+  "uid": S.optional(S.String),
+  "name": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "deleteTime": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "WorkerPool" }) as any as S.Schema<WorkerPool>;
 
 export interface CreateProjectsLocationsWorkerPoolsRequest {
@@ -2828,23 +2355,14 @@ export interface CreateProjectsLocationsWorkerPoolsRequest {
   /** Request body */
   body?: WorkerPool;
 }
-export const CreateProjectsLocationsWorkerPoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      workerPoolId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(WorkerPool.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workerPools",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsWorkerPoolsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsWorkerPoolsRequest>;
+export const CreateProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "workerPoolId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(WorkerPool.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/workerPools","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsWorkerPoolsRequest" }) as any as S.Schema<CreateProjectsLocationsWorkerPoolsRequest>;
 
 export interface CreateProjectsTriggersRequest {
   /** Required. ID of the project for which to configure automatic builds. */
@@ -2855,20 +2373,12 @@ export interface CreateProjectsTriggersRequest {
   body?: BuildTrigger;
 }
 export const CreateProjectsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    parent: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(BuildTrigger.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/projects/{projectId}/triggers",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsTriggersRequest",
-}) as any as S.Schema<CreateProjectsTriggersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BuildTrigger.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/triggers","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsTriggersRequest" }) as any as S.Schema<CreateProjectsTriggersRequest>;
 
 export interface DeleteProjectsGithubEnterpriseConfigsRequest {
   /** ID of the project */
@@ -2878,41 +2388,23 @@ export interface DeleteProjectsGithubEnterpriseConfigsRequest {
   /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
   name: string;
 }
-export const DeleteProjectsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.optional(S.String.pipe(T.Query())),
-      configId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsGithubEnterpriseConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsGithubEnterpriseConfigsRequest>;
+export const DeleteProjectsGithubEnterpriseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "configId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsGithubEnterpriseConfigsRequest" }) as any as S.Schema<DeleteProjectsGithubEnterpriseConfigsRequest>;
 
 export interface DeleteProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. The config resource name. */
   name: string;
 }
-export const DeleteProjectsLocationsBitbucketServerConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsBitbucketServerConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsBitbucketServerConfigsRequest>;
+export const DeleteProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBitbucketServerConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsBitbucketServerConfigsRequest>;
 
 export interface DeleteProjectsLocationsGithubEnterpriseConfigsRequest {
   /** ID of the project */
@@ -2922,41 +2414,23 @@ export interface DeleteProjectsLocationsGithubEnterpriseConfigsRequest {
   /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
   name: string;
 }
-export const DeleteProjectsLocationsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.optional(S.String.pipe(T.Query())),
-      configId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsGithubEnterpriseConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsGithubEnterpriseConfigsRequest>;
+export const DeleteProjectsLocationsGithubEnterpriseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "configId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsGithubEnterpriseConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsGithubEnterpriseConfigsRequest>;
 
 export interface DeleteProjectsLocationsGitLabConfigsRequest {
   /** Required. The config resource name. */
   name: string;
 }
-export const DeleteProjectsLocationsGitLabConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsGitLabConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsGitLabConfigsRequest>;
+export const DeleteProjectsLocationsGitLabConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsGitLabConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsGitLabConfigsRequest>;
 
 export interface DeleteProjectsLocationsTriggersRequest {
   /** Required. ID of the `BuildTrigger` to delete. */
@@ -2966,22 +2440,13 @@ export interface DeleteProjectsLocationsTriggersRequest {
   /** The name of the `Trigger` to delete. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
   name: string;
 }
-export const DeleteProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      triggerId: S.optional(S.String.pipe(T.Query())),
-      projectId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsTriggersRequest",
-}) as any as S.Schema<DeleteProjectsLocationsTriggersRequest>;
+export const DeleteProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "triggerId": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsTriggersRequest" }) as any as S.Schema<DeleteProjectsLocationsTriggersRequest>;
 
 export interface DeleteProjectsLocationsWorkerPoolsRequest {
   /** If set to true, and the `WorkerPool` is not found, the request will succeed but no action will be taken on the server. */
@@ -2993,23 +2458,14 @@ export interface DeleteProjectsLocationsWorkerPoolsRequest {
   /** Optional. If provided, it must match the server's etag on the workerpool for the request to be processed. */
   etag?: string;
 }
-export const DeleteProjectsLocationsWorkerPoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsWorkerPoolsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRequest>;
+export const DeleteProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsWorkerPoolsRequest" }) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRequest>;
 
 export interface DeleteProjectsTriggersRequest {
   /** Required. ID of the `BuildTrigger` to delete. */
@@ -3020,39 +2476,22 @@ export interface DeleteProjectsTriggersRequest {
   projectId: string;
 }
 export const DeleteProjectsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    triggerId: S.String.pipe(T.Label()),
-    name: S.optional(S.String.pipe(T.Query())),
-    projectId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/projects/{projectId}/triggers/{triggerId}",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsTriggersRequest",
-}) as any as S.Schema<DeleteProjectsTriggersRequest>;
+S.Struct({
+  "triggerId": S.String.pipe(T.Label()),
+  "name": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/projects/{projectId}/triggers/{triggerId}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsTriggersRequest" }) as any as S.Schema<DeleteProjectsTriggersRequest>;
 
 export interface GetDefaultServiceAccountProjectsLocationsRequest {
   /** Required. The name of the `DefaultServiceAccount` to retrieve. Format: `projects/{project}/locations/{location}/defaultServiceAccount` */
   name: string;
 }
-export const GetDefaultServiceAccountProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetDefaultServiceAccountProjectsLocationsRequest",
-  }) as any as S.Schema<GetDefaultServiceAccountProjectsLocationsRequest>;
+export const GetDefaultServiceAccountProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetDefaultServiceAccountProjectsLocationsRequest" }) as any as S.Schema<GetDefaultServiceAccountProjectsLocationsRequest>;
 
 /** The default service account used for `Builds`. */
 export interface DefaultServiceAccount {
@@ -3062,31 +2501,21 @@ export interface DefaultServiceAccount {
   serviceAccountEmail?: string;
 }
 export const DefaultServiceAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    serviceAccountEmail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DefaultServiceAccount",
-}) as any as S.Schema<DefaultServiceAccount>;
+S.Struct({
+  "name": S.optional(S.String),
+  "serviceAccountEmail": S.optional(S.String),
+}),
+).annotate({ identifier: "DefaultServiceAccount" }) as any as S.Schema<DefaultServiceAccount>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperationsRequest",
-}) as any as S.Schema<GetOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetProjectsBuildsRequest {
   /** Required. ID of the project. */
@@ -3097,20 +2526,12 @@ export interface GetProjectsBuildsRequest {
   id: string;
 }
 export const GetProjectsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    name: S.optional(S.String.pipe(T.Query())),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/projects/{projectId}/builds/{id}",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsBuildsRequest",
-}) as any as S.Schema<GetProjectsBuildsRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "name": S.optional(S.String.pipe(T.Query())),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/projects/{projectId}/builds/{id}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsBuildsRequest" }) as any as S.Schema<GetProjectsBuildsRequest>;
 
 export interface GetProjectsGithubEnterpriseConfigsRequest {
   /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
@@ -3120,41 +2541,23 @@ export interface GetProjectsGithubEnterpriseConfigsRequest {
   /** Unique identifier of the `GitHubEnterpriseConfig` */
   configId?: string;
 }
-export const GetProjectsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      projectId: S.optional(S.String.pipe(T.Query())),
-      configId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsGithubEnterpriseConfigsRequest",
-  }) as any as S.Schema<GetProjectsGithubEnterpriseConfigsRequest>;
+export const GetProjectsGithubEnterpriseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "configId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsGithubEnterpriseConfigsRequest" }) as any as S.Schema<GetProjectsGithubEnterpriseConfigsRequest>;
 
 export interface GetProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. The config resource name. */
   name: string;
 }
-export const GetProjectsLocationsBitbucketServerConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsBitbucketServerConfigsRequest",
-  }) as any as S.Schema<GetProjectsLocationsBitbucketServerConfigsRequest>;
+export const GetProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBitbucketServerConfigsRequest" }) as any as S.Schema<GetProjectsLocationsBitbucketServerConfigsRequest>;
 
 export interface GetProjectsLocationsBuildsRequest {
   /** Required. ID of the build. */
@@ -3165,20 +2568,12 @@ export interface GetProjectsLocationsBuildsRequest {
   projectId?: string;
 }
 export const GetProjectsLocationsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    projectId: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsBuildsRequest",
-}) as any as S.Schema<GetProjectsLocationsBuildsRequest>;
+S.Struct({
+  "id": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBuildsRequest" }) as any as S.Schema<GetProjectsLocationsBuildsRequest>;
 
 export interface GetProjectsLocationsGithubEnterpriseConfigsRequest {
   /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
@@ -3188,60 +2583,33 @@ export interface GetProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Unique identifier of the `GitHubEnterpriseConfig` */
   configId?: string;
 }
-export const GetProjectsLocationsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      projectId: S.optional(S.String.pipe(T.Query())),
-      configId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsGithubEnterpriseConfigsRequest",
-  }) as any as S.Schema<GetProjectsLocationsGithubEnterpriseConfigsRequest>;
+export const GetProjectsLocationsGithubEnterpriseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "configId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsGithubEnterpriseConfigsRequest" }) as any as S.Schema<GetProjectsLocationsGithubEnterpriseConfigsRequest>;
 
 export interface GetProjectsLocationsGitLabConfigsRequest {
   /** Required. The config resource name. */
   name: string;
 }
-export const GetProjectsLocationsGitLabConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsGitLabConfigsRequest",
-}) as any as S.Schema<GetProjectsLocationsGitLabConfigsRequest>;
+export const GetProjectsLocationsGitLabConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsGitLabConfigsRequest" }) as any as S.Schema<GetProjectsLocationsGitLabConfigsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsTriggersRequest {
   /** Required. Identifier (`id` or `name`) of the `BuildTrigger` to get. */
@@ -3252,39 +2620,22 @@ export interface GetProjectsLocationsTriggersRequest {
   name: string;
 }
 export const GetProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    triggerId: S.optional(S.String.pipe(T.Query())),
-    projectId: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsTriggersRequest",
-}) as any as S.Schema<GetProjectsLocationsTriggersRequest>;
+S.Struct({
+  "triggerId": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsTriggersRequest" }) as any as S.Schema<GetProjectsLocationsTriggersRequest>;
 
 export interface GetProjectsLocationsWorkerPoolsRequest {
   /** Required. The name of the `WorkerPool` to retrieve. Format: `projects/{project}/locations/{location}/workerPools/{workerPool}`. */
   name: string;
 }
-export const GetProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsWorkerPoolsRequest",
-}) as any as S.Schema<GetProjectsLocationsWorkerPoolsRequest>;
+export const GetProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsWorkerPoolsRequest" }) as any as S.Schema<GetProjectsLocationsWorkerPoolsRequest>;
 
 export interface GetProjectsTriggersRequest {
   /** Required. ID of the project that owns the trigger. */
@@ -3295,20 +2646,12 @@ export interface GetProjectsTriggersRequest {
   triggerId: string;
 }
 export const GetProjectsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    name: S.optional(S.String.pipe(T.Query())),
-    triggerId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/projects/{projectId}/triggers/{triggerId}",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsTriggersRequest",
-}) as any as S.Schema<GetProjectsTriggersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "name": S.optional(S.String.pipe(T.Query())),
+  "triggerId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/projects/{projectId}/triggers/{triggerId}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsTriggersRequest" }) as any as S.Schema<GetProjectsTriggersRequest>;
 
 export interface ListProjectsBuildsRequest {
   /** Number of results to return in the list. */
@@ -3323,27 +2666,17 @@ export interface ListProjectsBuildsRequest {
   pageToken?: string;
 }
 export const ListProjectsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.optional(S.String.pipe(T.Query())),
-    projectId: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/projects/{projectId}/builds",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsBuildsRequest",
-}) as any as S.Schema<ListProjectsBuildsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/projects/{projectId}/builds","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsBuildsRequest" }) as any as S.Schema<ListProjectsBuildsRequest>;
 
 export type BuildList = ReadonlyArray<Build>;
-export const BuildList = /*@__PURE__*/ S.Array(
-  Build,
-) as any as S.Schema<BuildList>;
+export const BuildList = /*@__PURE__*/ S.Array(Build) as any as S.Schema<BuildList>;
 
 /** Response including listed builds. */
 export interface ListBuildsResponse {
@@ -3353,13 +2686,11 @@ export interface ListBuildsResponse {
   nextPageToken?: string;
 }
 export const ListBuildsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    builds: S.optional(BuildList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBuildsResponse",
-}) as any as S.Schema<ListBuildsResponse>;
+S.Struct({
+  "builds": S.optional(BuildList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBuildsResponse" }) as any as S.Schema<ListBuildsResponse>;
 
 export interface ListProjectsGithubEnterpriseConfigsRequest {
   /** ID of the project */
@@ -3367,26 +2698,15 @@ export interface ListProjectsGithubEnterpriseConfigsRequest {
   /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
   parent: string;
 }
-export const ListProjectsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/githubEnterpriseConfigs",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsGithubEnterpriseConfigsRequest",
-  }) as any as S.Schema<ListProjectsGithubEnterpriseConfigsRequest>;
+export const ListProjectsGithubEnterpriseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/githubEnterpriseConfigs","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsGithubEnterpriseConfigsRequest" }) as any as S.Schema<ListProjectsGithubEnterpriseConfigsRequest>;
 
 export type GitHubEnterpriseConfigList = ReadonlyArray<GitHubEnterpriseConfig>;
-export const GitHubEnterpriseConfigList = /*@__PURE__*/ S.Array(
-  GitHubEnterpriseConfig,
-) as any as S.Schema<GitHubEnterpriseConfigList>;
+export const GitHubEnterpriseConfigList = /*@__PURE__*/ S.Array(GitHubEnterpriseConfig) as any as S.Schema<GitHubEnterpriseConfigList>;
 
 /** RPC response object returned by ListGithubEnterpriseConfigs RPC method. */
 export interface ListGithubEnterpriseConfigsResponse {
@@ -3394,12 +2714,10 @@ export interface ListGithubEnterpriseConfigsResponse {
   configs?: GitHubEnterpriseConfigList;
 }
 export const ListGithubEnterpriseConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configs: S.optional(GitHubEnterpriseConfigList),
-  }),
-).annotate({
-  identifier: "ListGithubEnterpriseConfigsResponse",
-}) as any as S.Schema<ListGithubEnterpriseConfigsResponse>;
+S.Struct({
+  "configs": S.optional(GitHubEnterpriseConfigList),
+}),
+).annotate({ identifier: "ListGithubEnterpriseConfigsResponse" }) as any as S.Schema<ListGithubEnterpriseConfigsResponse>;
 
 export interface ListProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. Name of the parent resource. */
@@ -3409,27 +2727,16 @@ export interface ListProjectsLocationsBitbucketServerConfigsRequest {
   /** The maximum number of configs to return. The service may return fewer than this value. If unspecified, at most 50 configs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsBitbucketServerConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/bitbucketServerConfigs",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBitbucketServerConfigsRequest",
-  }) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsRequest>;
+export const ListProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/bitbucketServerConfigs","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBitbucketServerConfigsRequest" }) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsRequest>;
 
 export type BitbucketServerConfigList = ReadonlyArray<BitbucketServerConfig>;
-export const BitbucketServerConfigList = /*@__PURE__*/ S.Array(
-  BitbucketServerConfig,
-) as any as S.Schema<BitbucketServerConfigList>;
+export const BitbucketServerConfigList = /*@__PURE__*/ S.Array(BitbucketServerConfig) as any as S.Schema<BitbucketServerConfigList>;
 
 /** RPC response object returned by ListBitbucketServerConfigs RPC method. */
 export interface ListBitbucketServerConfigsResponse {
@@ -3439,13 +2746,11 @@ export interface ListBitbucketServerConfigsResponse {
   nextPageToken?: string;
 }
 export const ListBitbucketServerConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bitbucketServerConfigs: S.optional(BitbucketServerConfigList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBitbucketServerConfigsResponse",
-}) as any as S.Schema<ListBitbucketServerConfigsResponse>;
+S.Struct({
+  "bitbucketServerConfigs": S.optional(BitbucketServerConfigList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBitbucketServerConfigsResponse" }) as any as S.Schema<ListBitbucketServerConfigsResponse>;
 
 export interface ListProjectsLocationsBitbucketServerConfigsReposRequest {
   /** The maximum number of configs to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -3455,22 +2760,13 @@ export interface ListProjectsLocationsBitbucketServerConfigsReposRequest {
   /** A page token, received from a previous `ListBitbucketServerRepositoriesRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBitbucketServerConfigsRequest` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsBitbucketServerConfigsReposRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/repos",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsBitbucketServerConfigsReposRequest",
-  }) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsReposRequest>;
+export const ListProjectsLocationsBitbucketServerConfigsReposRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/repos","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBitbucketServerConfigsReposRequest" }) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsReposRequest>;
 
 /** BitbucketServerRepository represents a repository hosted on a Bitbucket Server. */
 export interface BitbucketServerRepository {
@@ -3486,22 +2782,17 @@ export interface BitbucketServerRepository {
   repoId?: BitbucketServerRepositoryId;
 }
 export const BitbucketServerRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    browseUri: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    repoId: S.optional(BitbucketServerRepositoryId),
-  }),
-).annotate({
-  identifier: "BitbucketServerRepository",
-}) as any as S.Schema<BitbucketServerRepository>;
+S.Struct({
+  "displayName": S.optional(S.String),
+  "browseUri": S.optional(S.String),
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "repoId": S.optional(BitbucketServerRepositoryId),
+}),
+).annotate({ identifier: "BitbucketServerRepository" }) as any as S.Schema<BitbucketServerRepository>;
 
-export type BitbucketServerRepositoryList =
-  ReadonlyArray<BitbucketServerRepository>;
-export const BitbucketServerRepositoryList = /*@__PURE__*/ S.Array(
-  BitbucketServerRepository,
-) as any as S.Schema<BitbucketServerRepositoryList>;
+export type BitbucketServerRepositoryList = ReadonlyArray<BitbucketServerRepository>;
+export const BitbucketServerRepositoryList = /*@__PURE__*/ S.Array(BitbucketServerRepository) as any as S.Schema<BitbucketServerRepositoryList>;
 
 /** RPC response object returned by the ListBitbucketServerRepositories RPC method. */
 export interface ListBitbucketServerRepositoriesResponse {
@@ -3510,15 +2801,12 @@ export interface ListBitbucketServerRepositoriesResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListBitbucketServerRepositoriesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bitbucketServerRepositories: S.optional(BitbucketServerRepositoryList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListBitbucketServerRepositoriesResponse",
-}) as any as S.Schema<ListBitbucketServerRepositoriesResponse>;
+export const ListBitbucketServerRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "bitbucketServerRepositories": S.optional(BitbucketServerRepositoryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBitbucketServerRepositoriesResponse" }) as any as S.Schema<ListBitbucketServerRepositoriesResponse>;
 
 export interface ListProjectsLocationsBuildsRequest {
   /** Number of results to return in the list. */
@@ -3533,22 +2821,14 @@ export interface ListProjectsLocationsBuildsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    projectId: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/builds",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsBuildsRequest",
-}) as any as S.Schema<ListProjectsLocationsBuildsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/builds","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBuildsRequest" }) as any as S.Schema<ListProjectsLocationsBuildsRequest>;
 
 export interface ListProjectsLocationsGithubEnterpriseConfigsRequest {
   /** ID of the project */
@@ -3556,21 +2836,12 @@ export interface ListProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
   parent: string;
 }
-export const ListProjectsLocationsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/githubEnterpriseConfigs",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsGithubEnterpriseConfigsRequest",
-  }) as any as S.Schema<ListProjectsLocationsGithubEnterpriseConfigsRequest>;
+export const ListProjectsLocationsGithubEnterpriseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/githubEnterpriseConfigs","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsGithubEnterpriseConfigsRequest" }) as any as S.Schema<ListProjectsLocationsGithubEnterpriseConfigsRequest>;
 
 export interface ListProjectsLocationsGitLabConfigsRequest {
   /** Required. Name of the parent resource */
@@ -3580,27 +2851,16 @@ export interface ListProjectsLocationsGitLabConfigsRequest {
   /** The maximum number of configs to return. The service may return fewer than this value. If unspecified, at most 50 configs will be returned. The maximum value is 1000;, values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsGitLabConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/gitLabConfigs",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsGitLabConfigsRequest",
-  }) as any as S.Schema<ListProjectsLocationsGitLabConfigsRequest>;
+export const ListProjectsLocationsGitLabConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/gitLabConfigs","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsGitLabConfigsRequest" }) as any as S.Schema<ListProjectsLocationsGitLabConfigsRequest>;
 
 export type GitLabConfigList = ReadonlyArray<GitLabConfig>;
-export const GitLabConfigList = /*@__PURE__*/ S.Array(
-  GitLabConfig,
-) as any as S.Schema<GitLabConfigList>;
+export const GitLabConfigList = /*@__PURE__*/ S.Array(GitLabConfig) as any as S.Schema<GitLabConfigList>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC response object returned by ListGitLabConfigs RPC method. */
 export interface ListGitLabConfigsResponse {
@@ -3610,13 +2870,11 @@ export interface ListGitLabConfigsResponse {
   nextPageToken?: string;
 }
 export const ListGitLabConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitlabConfigs: S.optional(GitLabConfigList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListGitLabConfigsResponse",
-}) as any as S.Schema<ListGitLabConfigsResponse>;
+S.Struct({
+  "gitlabConfigs": S.optional(GitLabConfigList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListGitLabConfigsResponse" }) as any as S.Schema<ListGitLabConfigsResponse>;
 
 export interface ListProjectsLocationsGitLabConfigsReposRequest {
   /** Required. Name of the parent resource. */
@@ -3626,22 +2884,13 @@ export interface ListProjectsLocationsGitLabConfigsReposRequest {
   /** The maximum number of repositories to return. The service may return fewer than this value. */
   pageSize?: number;
 }
-export const ListProjectsLocationsGitLabConfigsReposRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/repos",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsGitLabConfigsReposRequest",
-  }) as any as S.Schema<ListProjectsLocationsGitLabConfigsReposRequest>;
+export const ListProjectsLocationsGitLabConfigsReposRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/repos","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsGitLabConfigsReposRequest" }) as any as S.Schema<ListProjectsLocationsGitLabConfigsReposRequest>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. Proto Representing a GitLabRepository */
 export interface GitLabRepository {
@@ -3657,21 +2906,17 @@ export interface GitLabRepository {
   repositoryId?: GitLabRepositoryId;
 }
 export const GitLabRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    displayName: S.optional(S.String),
-    browseUri: S.optional(S.String),
-    repositoryId: S.optional(GitLabRepositoryId),
-  }),
-).annotate({
-  identifier: "GitLabRepository",
-}) as any as S.Schema<GitLabRepository>;
+S.Struct({
+  "name": S.optional(S.String),
+  "description": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "browseUri": S.optional(S.String),
+  "repositoryId": S.optional(GitLabRepositoryId),
+}),
+).annotate({ identifier: "GitLabRepository" }) as any as S.Schema<GitLabRepository>;
 
 export type GitLabRepositoryList = ReadonlyArray<GitLabRepository>;
-export const GitLabRepositoryList = /*@__PURE__*/ S.Array(
-  GitLabRepository,
-) as any as S.Schema<GitLabRepositoryList>;
+export const GitLabRepositoryList = /*@__PURE__*/ S.Array(GitLabRepository) as any as S.Schema<GitLabRepositoryList>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC response object returned by the ListGitLabRepositories RPC method. */
 export interface ListGitLabRepositoriesResponse {
@@ -3681,13 +2926,11 @@ export interface ListGitLabRepositoriesResponse {
   nextPageToken?: string;
 }
 export const ListGitLabRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitlabRepositories: S.optional(GitLabRepositoryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListGitLabRepositoriesResponse",
-}) as any as S.Schema<ListGitLabRepositoriesResponse>;
+S.Struct({
+  "gitlabRepositories": S.optional(GitLabRepositoryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListGitLabRepositoriesResponse" }) as any as S.Schema<ListGitLabRepositoriesResponse>;
 
 export interface ListProjectsLocationsTriggersRequest {
   /** The parent of the collection of `Triggers`. Format: `projects/{project}/locations/{location}` */
@@ -3699,28 +2942,17 @@ export interface ListProjectsLocationsTriggersRequest {
   /** Number of results to return in the list. */
   pageSize?: number;
 }
-export const ListProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      projectId: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/triggers",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsTriggersRequest",
-}) as any as S.Schema<ListProjectsLocationsTriggersRequest>;
+export const ListProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/triggers","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsTriggersRequest" }) as any as S.Schema<ListProjectsLocationsTriggersRequest>;
 
 export type BuildTriggerList = ReadonlyArray<BuildTrigger>;
-export const BuildTriggerList = /*@__PURE__*/ S.Array(
-  BuildTrigger,
-) as any as S.Schema<BuildTriggerList>;
+export const BuildTriggerList = /*@__PURE__*/ S.Array(BuildTrigger) as any as S.Schema<BuildTriggerList>;
 
 /** Response containing existing `BuildTriggers`. */
 export interface ListBuildTriggersResponse {
@@ -3730,13 +2962,11 @@ export interface ListBuildTriggersResponse {
   nextPageToken?: string;
 }
 export const ListBuildTriggersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    triggers: S.optional(BuildTriggerList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBuildTriggersResponse",
-}) as any as S.Schema<ListBuildTriggersResponse>;
+S.Struct({
+  "triggers": S.optional(BuildTriggerList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListBuildTriggersResponse" }) as any as S.Schema<ListBuildTriggersResponse>;
 
 export interface ListProjectsLocationsWorkerPoolsRequest {
   /** The maximum number of `WorkerPool`s to return. The service may return fewer than this value. If omitted, the server will use a sensible default. */
@@ -3746,27 +2976,16 @@ export interface ListProjectsLocationsWorkerPoolsRequest {
   /** A page token, received from a previous `ListWorkerPools` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workerPools",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsWorkerPoolsRequest",
-}) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>;
+export const ListProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workerPools","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsWorkerPoolsRequest" }) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>;
 
 export type WorkerPoolList = ReadonlyArray<WorkerPool>;
-export const WorkerPoolList = /*@__PURE__*/ S.Array(
-  WorkerPool,
-) as any as S.Schema<WorkerPoolList>;
+export const WorkerPoolList = /*@__PURE__*/ S.Array(WorkerPool) as any as S.Schema<WorkerPoolList>;
 
 /** Response containing existing `WorkerPools`. */
 export interface ListWorkerPoolsResponse {
@@ -3776,13 +2995,11 @@ export interface ListWorkerPoolsResponse {
   workerPools?: WorkerPoolList;
 }
 export const ListWorkerPoolsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    workerPools: S.optional(WorkerPoolList),
-  }),
-).annotate({
-  identifier: "ListWorkerPoolsResponse",
-}) as any as S.Schema<ListWorkerPoolsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "workerPools": S.optional(WorkerPoolList),
+}),
+).annotate({ identifier: "ListWorkerPoolsResponse" }) as any as S.Schema<ListWorkerPoolsResponse>;
 
 export interface ListProjectsTriggersRequest {
   /** Required. ID of the project for which to list BuildTriggers. */
@@ -3795,21 +3012,13 @@ export interface ListProjectsTriggersRequest {
   pageToken?: string;
 }
 export const ListProjectsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/projects/{projectId}/triggers",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsTriggersRequest",
-}) as any as S.Schema<ListProjectsTriggersRequest>;
+S.Struct({
+  "projectId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/projects/{projectId}/triggers","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsTriggersRequest" }) as any as S.Schema<ListProjectsTriggersRequest>;
 
 export interface PatchProjectsGithubEnterpriseConfigsRequest {
   /** Identifier. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
@@ -3819,22 +3028,13 @@ export interface PatchProjectsGithubEnterpriseConfigsRequest {
   /** Request body */
   body?: GitHubEnterpriseConfig;
 }
-export const PatchProjectsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsGithubEnterpriseConfigsRequest",
-  }) as any as S.Schema<PatchProjectsGithubEnterpriseConfigsRequest>;
+export const PatchProjectsGithubEnterpriseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsGithubEnterpriseConfigsRequest" }) as any as S.Schema<PatchProjectsGithubEnterpriseConfigsRequest>;
 
 export interface PatchProjectsLocationsBitbucketServerConfigsRequest {
   /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
@@ -3844,22 +3044,13 @@ export interface PatchProjectsLocationsBitbucketServerConfigsRequest {
   /** Request body */
   body?: BitbucketServerConfig;
 }
-export const PatchProjectsLocationsBitbucketServerConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(BitbucketServerConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsBitbucketServerConfigsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsBitbucketServerConfigsRequest>;
+export const PatchProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(BitbucketServerConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsBitbucketServerConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsBitbucketServerConfigsRequest>;
 
 export interface PatchProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Identifier. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
@@ -3869,22 +3060,13 @@ export interface PatchProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Request body */
   body?: GitHubEnterpriseConfig;
 }
-export const PatchProjectsLocationsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsGithubEnterpriseConfigsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsGithubEnterpriseConfigsRequest>;
+export const PatchProjectsLocationsGithubEnterpriseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsGithubEnterpriseConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsGithubEnterpriseConfigsRequest>;
 
 export interface PatchProjectsLocationsGitLabConfigsRequest {
   /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
@@ -3894,22 +3076,13 @@ export interface PatchProjectsLocationsGitLabConfigsRequest {
   /** Request body */
   body?: GitLabConfig;
 }
-export const PatchProjectsLocationsGitLabConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GitLabConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsGitLabConfigsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsGitLabConfigsRequest>;
+export const PatchProjectsLocationsGitLabConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GitLabConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsGitLabConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsGitLabConfigsRequest>;
 
 export interface PatchProjectsLocationsTriggersRequest {
   /** The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where {trigger} is a unique identifier generated by the service. */
@@ -3923,24 +3096,15 @@ export interface PatchProjectsLocationsTriggersRequest {
   /** Request body */
   body?: BuildTrigger;
 }
-export const PatchProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.String.pipe(T.Label()),
-      projectId: S.optional(S.String.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      triggerId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BuildTrigger.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+resourceName}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsTriggersRequest",
-}) as any as S.Schema<PatchProjectsLocationsTriggersRequest>;
+export const PatchProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resourceName": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "triggerId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BuildTrigger.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+resourceName}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsTriggersRequest" }) as any as S.Schema<PatchProjectsLocationsTriggersRequest>;
 
 export interface PatchProjectsLocationsWorkerPoolsRequest {
   /** If set, validate the request and preview the response, but do not actually post it. */
@@ -3952,23 +3116,14 @@ export interface PatchProjectsLocationsWorkerPoolsRequest {
   /** Request body */
   body?: WorkerPool;
 }
-export const PatchProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WorkerPool.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsWorkerPoolsRequest",
-}) as any as S.Schema<PatchProjectsLocationsWorkerPoolsRequest>;
+export const PatchProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(WorkerPool.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsWorkerPoolsRequest" }) as any as S.Schema<PatchProjectsLocationsWorkerPoolsRequest>;
 
 export interface PatchProjectsTriggersRequest {
   /** Required. ID of the `BuildTrigger` to update. */
@@ -3981,21 +3136,13 @@ export interface PatchProjectsTriggersRequest {
   body?: BuildTrigger;
 }
 export const PatchProjectsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    triggerId: S.String.pipe(T.Label()),
-    projectId: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(BuildTrigger.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/projects/{projectId}/triggers/{triggerId}",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsTriggersRequest",
-}) as any as S.Schema<PatchProjectsTriggersRequest>;
+S.Struct({
+  "triggerId": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BuildTrigger.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/projects/{projectId}/triggers/{triggerId}","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsTriggersRequest" }) as any as S.Schema<PatchProjectsTriggersRequest>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
@@ -4007,11 +3154,11 @@ export interface HttpBody {
   contentType?: string;
 }
 export const HttpBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.String),
-    extensions: S.optional(DocumentMapList),
-    contentType: S.optional(S.String),
-  }),
+S.Struct({
+  "data": S.optional(S.String),
+  "extensions": S.optional(DocumentMapList),
+  "contentType": S.optional(S.String),
+}),
 ).annotate({ identifier: "HttpBody" }) as any as S.Schema<HttpBody>;
 
 export interface ReceiveGithubDotComWebhookRequest {
@@ -4021,19 +3168,11 @@ export interface ReceiveGithubDotComWebhookRequest {
   body?: HttpBody;
 }
 export const ReceiveGithubDotComWebhookRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    webhookKey: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(HttpBody.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/githubDotComWebhook:receive",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ReceiveGithubDotComWebhookRequest",
-}) as any as S.Schema<ReceiveGithubDotComWebhookRequest>;
+S.Struct({
+  "webhookKey": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(HttpBody.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/githubDotComWebhook:receive","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "ReceiveGithubDotComWebhookRequest" }) as any as S.Schema<ReceiveGithubDotComWebhookRequest>;
 
 export interface RegionalWebhookLocationsRequest {
   /** For GitHub Enterprise webhooks, this key is used to associate the webhook request with the GitHubEnterpriseConfig to use for validation. */
@@ -4044,34 +3183,23 @@ export interface RegionalWebhookLocationsRequest {
   body?: HttpBody;
 }
 export const RegionalWebhookLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    webhookKey: S.optional(S.String.pipe(T.Query())),
-    location: S.String.pipe(T.Label()),
-    body: S.optional(HttpBody.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+location}/regionalWebhook",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RegionalWebhookLocationsRequest",
-}) as any as S.Schema<RegionalWebhookLocationsRequest>;
+S.Struct({
+  "webhookKey": S.optional(S.String.pipe(T.Query())),
+  "location": S.String.pipe(T.Label()),
+  "body": S.optional(HttpBody.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+location}/regionalWebhook","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "RegionalWebhookLocationsRequest" }) as any as S.Schema<RegionalWebhookLocationsRequest>;
 
 /** RPC request object accepted by RemoveBitbucketServerConnectedRepository RPC method. */
 export interface RemoveBitbucketServerConnectedRepositoryRequest {
   /** The connected repository to remove. */
   connectedRepository?: BitbucketServerRepositoryId;
 }
-export const RemoveBitbucketServerConnectedRepositoryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectedRepository: S.optional(BitbucketServerRepositoryId),
-    }),
-  ).annotate({
-    identifier: "RemoveBitbucketServerConnectedRepositoryRequest",
-  }) as any as S.Schema<RemoveBitbucketServerConnectedRepositoryRequest>;
+export const RemoveBitbucketServerConnectedRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "connectedRepository": S.optional(BitbucketServerRepositoryId),
+}),
+).annotate({ identifier: "RemoveBitbucketServerConnectedRepositoryRequest" }) as any as S.Schema<RemoveBitbucketServerConnectedRepositoryRequest>;
 
 export interface RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. The name of the `BitbucketServerConfig` to remove a connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
@@ -4079,38 +3207,23 @@ export interface RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbuc
   /** Request body */
   body?: RemoveBitbucketServerConnectedRepositoryRequest;
 }
-export const RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      config: S.String.pipe(T.Label()),
-      body: S.optional(
-        RemoveBitbucketServerConnectedRepositoryRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+config}:removeBitbucketServerConnectedRepository",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest",
-  }) as any as S.Schema<RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest>;
+export const RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "config": S.String.pipe(T.Label()),
+  "body": S.optional(RemoveBitbucketServerConnectedRepositoryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+config}:removeBitbucketServerConnectedRepository","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest" }) as any as S.Schema<RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest>;
 
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC request object accepted by RemoveGitLabConnectedRepository RPC method. */
 export interface RemoveGitLabConnectedRepositoryRequest {
   /** The connected repository to remove. */
   connectedRepository?: GitLabRepositoryId;
 }
-export const RemoveGitLabConnectedRepositoryRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      connectedRepository: S.optional(GitLabRepositoryId),
-    }),
-).annotate({
-  identifier: "RemoveGitLabConnectedRepositoryRequest",
-}) as any as S.Schema<RemoveGitLabConnectedRepositoryRequest>;
+export const RemoveGitLabConnectedRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "connectedRepository": S.optional(GitLabRepositoryId),
+}),
+).annotate({ identifier: "RemoveGitLabConnectedRepositoryRequest" }) as any as S.Schema<RemoveGitLabConnectedRepositoryRequest>;
 
 export interface RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest {
   /** Required. The name of the `GitLabConfig` to remove a connected repository. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
@@ -4118,24 +3231,12 @@ export interface RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRe
   /** Request body */
   body?: RemoveGitLabConnectedRepositoryRequest;
 }
-export const RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      config: S.String.pipe(T.Label()),
-      body: S.optional(
-        RemoveGitLabConnectedRepositoryRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+config}:removeGitLabConnectedRepository",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest",
-  }) as any as S.Schema<RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest>;
+export const RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "config": S.String.pipe(T.Label()),
+  "body": S.optional(RemoveGitLabConnectedRepositoryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+config}:removeGitLabConnectedRepository","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest" }) as any as S.Schema<RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest>;
 
 /** Specifies a build to retry. */
 export interface RetryBuildRequest {
@@ -4147,14 +3248,12 @@ export interface RetryBuildRequest {
   id?: string;
 }
 export const RetryBuildRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    projectId: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RetryBuildRequest",
-}) as any as S.Schema<RetryBuildRequest>;
+S.Struct({
+  "name": S.optional(S.String),
+  "projectId": S.optional(S.String),
+  "id": S.optional(S.String),
+}),
+).annotate({ identifier: "RetryBuildRequest" }) as any as S.Schema<RetryBuildRequest>;
 
 export interface RetryProjectsBuildsRequest {
   /** Required. Build ID of the original build. */
@@ -4165,20 +3264,12 @@ export interface RetryProjectsBuildsRequest {
   body?: RetryBuildRequest;
 }
 export const RetryProjectsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String.pipe(T.Label()),
-    projectId: S.String.pipe(T.Label()),
-    body: S.optional(RetryBuildRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/projects/{projectId}/builds/{id}:retry",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RetryProjectsBuildsRequest",
-}) as any as S.Schema<RetryProjectsBuildsRequest>;
+S.Struct({
+  "id": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "body": S.optional(RetryBuildRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/builds/{id}:retry","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "RetryProjectsBuildsRequest" }) as any as S.Schema<RetryProjectsBuildsRequest>;
 
 export interface RetryProjectsLocationsBuildsRequest {
   /** The name of the `Build` to retry. Format: `projects/{project}/locations/{location}/builds/{build}` */
@@ -4187,19 +3278,11 @@ export interface RetryProjectsLocationsBuildsRequest {
   body?: RetryBuildRequest;
 }
 export const RetryProjectsLocationsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(RetryBuildRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:retry",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RetryProjectsLocationsBuildsRequest",
-}) as any as S.Schema<RetryProjectsLocationsBuildsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RetryBuildRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:retry","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "RetryProjectsLocationsBuildsRequest" }) as any as S.Schema<RetryProjectsLocationsBuildsRequest>;
 
 /** Specifies a build trigger to run and the source to use. */
 export interface RunBuildTriggerRequest {
@@ -4211,14 +3294,12 @@ export interface RunBuildTriggerRequest {
   triggerId?: string;
 }
 export const RunBuildTriggerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    source: S.optional(RepoSource),
-    triggerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunBuildTriggerRequest",
-}) as any as S.Schema<RunBuildTriggerRequest>;
+S.Struct({
+  "projectId": S.optional(S.String),
+  "source": S.optional(RepoSource),
+  "triggerId": S.optional(S.String),
+}),
+).annotate({ identifier: "RunBuildTriggerRequest" }) as any as S.Schema<RunBuildTriggerRequest>;
 
 export interface RunProjectsLocationsTriggersRequest {
   /** The name of the `Trigger` to run. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
@@ -4227,19 +3308,11 @@ export interface RunProjectsLocationsTriggersRequest {
   body?: RunBuildTriggerRequest;
 }
 export const RunProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(RunBuildTriggerRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:run",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RunProjectsLocationsTriggersRequest",
-}) as any as S.Schema<RunProjectsLocationsTriggersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RunBuildTriggerRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:run","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "RunProjectsLocationsTriggersRequest" }) as any as S.Schema<RunProjectsLocationsTriggersRequest>;
 
 export interface RunProjectsTriggersRequest {
   /** The name of the `Trigger` to run. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
@@ -4252,21 +3325,13 @@ export interface RunProjectsTriggersRequest {
   body?: RepoSource;
 }
 export const RunProjectsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String.pipe(T.Query())),
-    projectId: S.String.pipe(T.Label()),
-    triggerId: S.String.pipe(T.Label()),
-    body: S.optional(RepoSource.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/projects/{projectId}/triggers/{triggerId}:run",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RunProjectsTriggersRequest",
-}) as any as S.Schema<RunProjectsTriggersRequest>;
+S.Struct({
+  "name": S.optional(S.String.pipe(T.Query())),
+  "projectId": S.String.pipe(T.Label()),
+  "triggerId": S.String.pipe(T.Label()),
+  "body": S.optional(RepoSource.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/triggers/{triggerId}:run","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "RunProjectsTriggersRequest" }) as any as S.Schema<RunProjectsTriggersRequest>;
 
 export interface WebhookProjectsLocationsTriggersRequest {
   /** Name of the trigger to run the payload against */
@@ -4280,32 +3345,21 @@ export interface WebhookProjectsLocationsTriggersRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const WebhookProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      trigger: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      projectId: S.optional(S.String.pipe(T.Query())),
-      secret: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:webhook",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "WebhookProjectsLocationsTriggersRequest",
-}) as any as S.Schema<WebhookProjectsLocationsTriggersRequest>;
+export const WebhookProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "trigger": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "projectId": S.optional(S.String.pipe(T.Query())),
+  "secret": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(HttpBody.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:webhook","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "WebhookProjectsLocationsTriggersRequest" }) as any as S.Schema<WebhookProjectsLocationsTriggersRequest>;
 
 /** ReceiveTriggerWebhookResponse [Experimental] is the response object for the ReceiveTriggerWebhook method. */
 export interface ReceiveTriggerWebhookResponse {}
 export const ReceiveTriggerWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReceiveTriggerWebhookResponse",
-}) as any as S.Schema<ReceiveTriggerWebhookResponse>;
+S.Struct({}),
+).annotate({ identifier: "ReceiveTriggerWebhookResponse" }) as any as S.Schema<ReceiveTriggerWebhookResponse>;
 
 export interface WebhookProjectsTriggersRequest {
   /** Name of the trigger to run the payload against */
@@ -4320,22 +3374,14 @@ export interface WebhookProjectsTriggersRequest {
   body?: HttpBody;
 }
 export const WebhookProjectsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trigger: S.String.pipe(T.Label()),
-    projectId: S.String.pipe(T.Label()),
-    secret: S.optional(S.String.pipe(T.Query())),
-    name: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(HttpBody.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/projects/{projectId}/triggers/{trigger}:webhook",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "WebhookProjectsTriggersRequest",
-}) as any as S.Schema<WebhookProjectsTriggersRequest>;
+S.Struct({
+  "trigger": S.String.pipe(T.Label()),
+  "projectId": S.String.pipe(T.Label()),
+  "secret": S.optional(S.String.pipe(T.Query())),
+  "name": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(HttpBody.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/projects/{projectId}/triggers/{trigger}:webhook","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "WebhookProjectsTriggersRequest" }) as any as S.Schema<WebhookProjectsTriggersRequest>;
 
 export interface WebhookV1Request {
   /** For GitHub Enterprise webhooks, this key is used to associate the webhook request with the GitHubEnterpriseConfig to use for validation. */
@@ -4344,26 +3390,13 @@ export interface WebhookV1Request {
   body?: HttpBody;
 }
 export const WebhookV1Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    webhookKey: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(HttpBody.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/webhook",
-      baseUrl: "https://cloudbuild.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "WebhookV1Request",
-}) as any as S.Schema<WebhookV1Request>;
+S.Struct({
+  "webhookKey": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(HttpBody.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/webhook","baseUrl":"https://cloudbuild.googleapis.com/"})),
+).annotate({ identifier: "WebhookV1Request" }) as any as S.Schema<WebhookV1Request>;
 
-export type ApproveProjectsBuildsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ApproveProjectsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done. */
 export const approveProjectsBuilds: API.OperationMethod<
   ApproveProjectsBuildsRequest,
@@ -4378,12 +3411,7 @@ export const approveProjectsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ApproveProjectsLocationsBuildsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ApproveProjectsLocationsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done. */
 export const approveProjectsLocationsBuilds: API.OperationMethod<
   ApproveProjectsLocationsBuildsRequest,
@@ -4398,8 +3426,7 @@ export const approveProjectsLocationsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Batch connecting Bitbucket Server repositories to Cloud Build. */
 export const batchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositories: API.OperationMethod<
   BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest,
@@ -4407,16 +3434,14 @@ export const batchCreateProjectsLocationsBitbucketServerConfigsConnectedReposito
   BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest,
+  input: BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. Batch connecting GitLab repositories to Cloud Build. This API is experimental. */
 export const batchCreateProjectsLocationsGitLabConfigsConnectedRepositories: API.OperationMethod<
   BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest,
@@ -4431,12 +3456,7 @@ export const batchCreateProjectsLocationsGitLabConfigsConnectedRepositories: API
   retry: Retry.Retry,
 }));
 
-export type CancelOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
   CancelOperationsRequest,
@@ -4451,12 +3471,7 @@ export const cancelOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsBuildsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancels a build in progress. Note: This method only applies to global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:cancel`. To cancel regional builds, use the regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:cancel`. */
 export const cancelProjectsBuilds: API.OperationMethod<
   CancelProjectsBuildsRequest,
@@ -4471,12 +3486,7 @@ export const cancelProjectsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsBuildsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancels a build in progress. Note: This method only applies to global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:cancel`. To cancel regional builds, use the regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:cancel`. */
 export const cancelProjectsLocationsBuilds: API.OperationMethod<
   CancelProjectsLocationsBuildsRequest,
@@ -4491,12 +3501,7 @@ export const cancelProjectsLocationsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -4511,12 +3516,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsBuildsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). Note: This method only creates global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds`. To create regional builds, use the regional resource path: `projects/{project_id}/locations/{location}/builds`. */
 export const createProjectsBuilds: API.OperationMethod<
   CreateProjectsBuildsRequest,
@@ -4531,12 +3531,7 @@ export const createProjectsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsGithubEnterpriseConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsGithubEnterpriseConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create an association between a GCP project and a GitHub Enterprise server. */
 export const createProjectsGithubEnterpriseConfigs: API.OperationMethod<
   CreateProjectsGithubEnterpriseConfigsRequest,
@@ -4551,12 +3546,7 @@ export const createProjectsGithubEnterpriseConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBitbucketServerConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBitbucketServerConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new `BitbucketServerConfig`. This API is experimental. */
 export const createProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   CreateProjectsLocationsBitbucketServerConfigsRequest,
@@ -4571,12 +3561,7 @@ export const createProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBuildsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). Note: This method only creates global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds`. To create regional builds, use the regional resource path: `projects/{project_id}/locations/{location}/builds`. */
 export const createProjectsLocationsBuilds: API.OperationMethod<
   CreateProjectsLocationsBuildsRequest,
@@ -4591,12 +3576,7 @@ export const createProjectsLocationsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGithubEnterpriseConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsGithubEnterpriseConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create an association between a GCP project and a GitHub Enterprise server. */
 export const createProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   CreateProjectsLocationsGithubEnterpriseConfigsRequest,
@@ -4611,12 +3591,7 @@ export const createProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGitLabConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsGitLabConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. Creates a new `GitLabConfig`. This API is experimental */
 export const createProjectsLocationsGitLabConfigs: API.OperationMethod<
   CreateProjectsLocationsGitLabConfigsRequest,
@@ -4631,12 +3606,7 @@ export const createProjectsLocationsGitLabConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsTriggersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new `BuildTrigger`. */
 export const createProjectsLocationsTriggers: API.OperationMethod<
   CreateProjectsLocationsTriggersRequest,
@@ -4651,12 +3621,7 @@ export const createProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsWorkerPoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsWorkerPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a `WorkerPool`. */
 export const createProjectsLocationsWorkerPools: API.OperationMethod<
   CreateProjectsLocationsWorkerPoolsRequest,
@@ -4671,12 +3636,7 @@ export const createProjectsLocationsWorkerPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsTriggersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new `BuildTrigger`. */
 export const createProjectsTriggers: API.OperationMethod<
   CreateProjectsTriggersRequest,
@@ -4691,12 +3651,7 @@ export const createProjectsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsGithubEnterpriseConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsGithubEnterpriseConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete an association between a GCP project and a GitHub Enterprise server. */
 export const deleteProjectsGithubEnterpriseConfigs: API.OperationMethod<
   DeleteProjectsGithubEnterpriseConfigsRequest,
@@ -4711,12 +3666,7 @@ export const deleteProjectsGithubEnterpriseConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBitbucketServerConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBitbucketServerConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete a `BitbucketServerConfig`. This API is experimental. */
 export const deleteProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   DeleteProjectsLocationsBitbucketServerConfigsRequest,
@@ -4731,12 +3681,7 @@ export const deleteProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGithubEnterpriseConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsGithubEnterpriseConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete an association between a GCP project and a GitHub Enterprise server. */
 export const deleteProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   DeleteProjectsLocationsGithubEnterpriseConfigsRequest,
@@ -4751,12 +3696,7 @@ export const deleteProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGitLabConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsGitLabConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. Delete a `GitLabConfig`. This API is experimental */
 export const deleteProjectsLocationsGitLabConfigs: API.OperationMethod<
   DeleteProjectsLocationsGitLabConfigsRequest,
@@ -4771,12 +3711,7 @@ export const deleteProjectsLocationsGitLabConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTriggersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a `BuildTrigger` by its project ID and trigger ID. */
 export const deleteProjectsLocationsTriggers: API.OperationMethod<
   DeleteProjectsLocationsTriggersRequest,
@@ -4791,12 +3726,7 @@ export const deleteProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsWorkerPoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsWorkerPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a `WorkerPool`. */
 export const deleteProjectsLocationsWorkerPools: API.OperationMethod<
   DeleteProjectsLocationsWorkerPoolsRequest,
@@ -4811,12 +3741,7 @@ export const deleteProjectsLocationsWorkerPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsTriggersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a `BuildTrigger` by its project ID and trigger ID. */
 export const deleteProjectsTriggers: API.OperationMethod<
   DeleteProjectsTriggersRequest,
@@ -4831,10 +3756,7 @@ export const deleteProjectsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetDefaultServiceAccountProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetDefaultServiceAccountProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Returns the `DefaultServiceAccount` used by the project. */
 export const getDefaultServiceAccountProjectsLocations: API.OperationMethod<
   GetDefaultServiceAccountProjectsLocationsRequest,
@@ -4879,10 +3801,7 @@ export const getProjectsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsGithubEnterpriseConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsGithubEnterpriseConfigsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve a GitHubEnterpriseConfig. */
 export const getProjectsGithubEnterpriseConfigs: API.OperationMethod<
   GetProjectsGithubEnterpriseConfigsRequest,
@@ -4897,10 +3816,7 @@ export const getProjectsGithubEnterpriseConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBitbucketServerConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBitbucketServerConfigsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve a `BitbucketServerConfig`. This API is experimental. */
 export const getProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   GetProjectsLocationsBitbucketServerConfigsRequest,
@@ -4930,10 +3846,7 @@ export const getProjectsLocationsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGithubEnterpriseConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsGithubEnterpriseConfigsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve a GitHubEnterpriseConfig. */
 export const getProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   GetProjectsLocationsGithubEnterpriseConfigsRequest,
@@ -4948,10 +3861,7 @@ export const getProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGitLabConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsGitLabConfigsError = NotFound | Forbidden | GcpOpError;
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. Retrieves a `GitLabConfig`. This API is experimental */
 export const getProjectsLocationsGitLabConfigs: API.OperationMethod<
   GetProjectsLocationsGitLabConfigsRequest,
@@ -4966,10 +3876,7 @@ export const getProjectsLocationsGitLabConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -4984,10 +3891,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTriggersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsTriggersError = NotFound | Forbidden | GcpOpError;
 /** Returns information about a `BuildTrigger`. */
 export const getProjectsLocationsTriggers: API.OperationMethod<
   GetProjectsLocationsTriggersRequest,
@@ -5002,10 +3906,7 @@ export const getProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsWorkerPoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsWorkerPoolsError = NotFound | Forbidden | GcpOpError;
 /** Returns details of a `WorkerPool`. */
 export const getProjectsLocationsWorkerPools: API.OperationMethod<
   GetProjectsLocationsWorkerPoolsRequest,
@@ -5048,16 +3949,10 @@ export const listProjectsBuilds: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsGithubEnterpriseConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsGithubEnterpriseConfigsError = NotFound | Forbidden | GcpOpError;
 /** List all GitHubEnterpriseConfigs for a given project. */
 export const listProjectsGithubEnterpriseConfigs: API.OperationMethod<
   ListProjectsGithubEnterpriseConfigsRequest,
@@ -5072,10 +3967,7 @@ export const listProjectsGithubEnterpriseConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsBitbucketServerConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBitbucketServerConfigsError = NotFound | Forbidden | GcpOpError;
 /** List all `BitbucketServerConfigs` for a given project. This API is experimental. */
 export const listProjectsLocationsBitbucketServerConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsBitbucketServerConfigsRequest,
@@ -5088,16 +3980,10 @@ export const listProjectsLocationsBitbucketServerConfigs: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBitbucketServerConfigsReposError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBitbucketServerConfigsReposError = NotFound | Forbidden | GcpOpError;
 /** List all repositories for a given `BitbucketServerConfig`. This API is experimental. */
 export const listProjectsLocationsBitbucketServerConfigsRepos: API.PaginatedOperationMethod<
   ListProjectsLocationsBitbucketServerConfigsReposRequest,
@@ -5110,16 +3996,10 @@ export const listProjectsLocationsBitbucketServerConfigsRepos: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBuildsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBuildsError = NotFound | Forbidden | GcpOpError;
 /** Lists previously requested builds. Previously requested builds may still be in-progress, or may have finished successfully or unsuccessfully. Note: This method only lists global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds`. To list regional builds, use the regional resource path: `projects/{project_id}/locations/{location}/builds`. */
 export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
   ListProjectsLocationsBuildsRequest,
@@ -5132,16 +4012,10 @@ export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsGithubEnterpriseConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsGithubEnterpriseConfigsError = NotFound | Forbidden | GcpOpError;
 /** List all GitHubEnterpriseConfigs for a given project. */
 export const listProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   ListProjectsLocationsGithubEnterpriseConfigsRequest,
@@ -5156,10 +4030,7 @@ export const listProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsGitLabConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsGitLabConfigsError = NotFound | Forbidden | GcpOpError;
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. List all `GitLabConfigs` for a given project. This API is experimental */
 export const listProjectsLocationsGitLabConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsGitLabConfigsRequest,
@@ -5172,16 +4043,10 @@ export const listProjectsLocationsGitLabConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsGitLabConfigsReposError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsGitLabConfigsReposError = NotFound | Forbidden | GcpOpError;
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. List all repositories for a given `GitLabConfig`. This API is experimental */
 export const listProjectsLocationsGitLabConfigsRepos: API.PaginatedOperationMethod<
   ListProjectsLocationsGitLabConfigsReposRequest,
@@ -5194,16 +4059,10 @@ export const listProjectsLocationsGitLabConfigsRepos: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsTriggersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsTriggersError = NotFound | Forbidden | GcpOpError;
 /** Lists existing `BuildTrigger`s. */
 export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
   ListProjectsLocationsTriggersRequest,
@@ -5216,16 +4075,10 @@ export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsWorkerPoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsWorkerPoolsError = NotFound | Forbidden | GcpOpError;
 /** Lists `WorkerPool`s. */
 export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
   ListProjectsLocationsWorkerPoolsRequest,
@@ -5238,10 +4091,7 @@ export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsTriggersError = NotFound | Forbidden | GcpOpError;
@@ -5257,18 +4107,10 @@ export const listProjectsTriggers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsGithubEnterpriseConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsGithubEnterpriseConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update an association between a GCP project and a GitHub Enterprise server. */
 export const patchProjectsGithubEnterpriseConfigs: API.OperationMethod<
   PatchProjectsGithubEnterpriseConfigsRequest,
@@ -5283,12 +4125,7 @@ export const patchProjectsGithubEnterpriseConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsBitbucketServerConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsBitbucketServerConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing `BitbucketServerConfig`. This API is experimental. */
 export const patchProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   PatchProjectsLocationsBitbucketServerConfigsRequest,
@@ -5303,12 +4140,7 @@ export const patchProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsGithubEnterpriseConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsGithubEnterpriseConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update an association between a GCP project and a GitHub Enterprise server. */
 export const patchProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   PatchProjectsLocationsGithubEnterpriseConfigsRequest,
@@ -5323,12 +4155,7 @@ export const patchProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsGitLabConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsGitLabConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. Updates an existing `GitLabConfig`. This API is experimental */
 export const patchProjectsLocationsGitLabConfigs: API.OperationMethod<
   PatchProjectsLocationsGitLabConfigsRequest,
@@ -5343,12 +4170,7 @@ export const patchProjectsLocationsGitLabConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsTriggersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a `BuildTrigger` by its project ID and trigger ID. */
 export const patchProjectsLocationsTriggers: API.OperationMethod<
   PatchProjectsLocationsTriggersRequest,
@@ -5363,12 +4185,7 @@ export const patchProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsWorkerPoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsWorkerPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a `WorkerPool`. */
 export const patchProjectsLocationsWorkerPools: API.OperationMethod<
   PatchProjectsLocationsWorkerPoolsRequest,
@@ -5383,12 +4200,7 @@ export const patchProjectsLocationsWorkerPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsTriggersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a `BuildTrigger` by its project ID and trigger ID. */
 export const patchProjectsTriggers: API.OperationMethod<
   PatchProjectsTriggersRequest,
@@ -5403,12 +4215,7 @@ export const patchProjectsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReceiveGithubDotComWebhookError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ReceiveGithubDotComWebhookError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** ReceiveGitHubDotComWebhook is called when the API receives a github.com webhook. */
 export const receiveGithubDotComWebhook: API.OperationMethod<
   ReceiveGithubDotComWebhookRequest,
@@ -5423,12 +4230,7 @@ export const receiveGithubDotComWebhook: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RegionalWebhookLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RegionalWebhookLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** ReceiveRegionalWebhook is called when the API receives a regional GitHub webhook. */
 export const regionalWebhookLocations: API.OperationMethod<
   RegionalWebhookLocationsRequest,
@@ -5443,8 +4245,7 @@ export const regionalWebhookLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Remove a Bitbucket Server repository from a given BitbucketServerConfig's connected repositories. This API is experimental. */
 export const removeBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest,
@@ -5452,16 +4253,14 @@ export const removeBitbucketServerConnectedRepositoryProjectsLocationsBitbucketS
   RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest,
+  input: RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest,
   output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deprecated: CloudBuild GitLab V1 integration is deprecated. Remove a GitLab repository from a given GitLabConfig's connected repositories. This API is experimental. */
 export const removeGitLabConnectedRepositoryProjectsLocationsGitLabConfigs: API.OperationMethod<
   RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest,
@@ -5476,12 +4275,7 @@ export const removeGitLabConnectedRepositoryProjectsLocationsGitLabConfigs: API.
   retry: Retry.Retry,
 }));
 
-export type RetryProjectsBuildsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RetryProjectsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new build based on the specified build. Note: This method only applies to global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:retry`. To retry regional builds, use the regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method creates a new build using the original build request, which may or may not result in an identical build. For triggered builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original build built from the tip of a branch, the retried build will build from the tip of that branch, which may not be the same revision as the original build. * If the original build specified a commit sha or revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the generation of the object, the new build will use the current object, which may be different from the original build source. * If the original build pulled source from Cloud Storage and specified the generation of the object, the new build will attempt to use the same object, which may or may not be available depending on the bucket's lifecycle management settings. */
 export const retryProjectsBuilds: API.OperationMethod<
   RetryProjectsBuildsRequest,
@@ -5496,12 +4290,7 @@ export const retryProjectsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RetryProjectsLocationsBuildsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RetryProjectsLocationsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new build based on the specified build. Note: This method only applies to global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:retry`. To retry regional builds, use the regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method creates a new build using the original build request, which may or may not result in an identical build. For triggered builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original build built from the tip of a branch, the retried build will build from the tip of that branch, which may not be the same revision as the original build. * If the original build specified a commit sha or revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the generation of the object, the new build will use the current object, which may be different from the original build source. * If the original build pulled source from Cloud Storage and specified the generation of the object, the new build will attempt to use the same object, which may or may not be available depending on the bucket's lifecycle management settings. */
 export const retryProjectsLocationsBuilds: API.OperationMethod<
   RetryProjectsLocationsBuildsRequest,
@@ -5516,12 +4305,7 @@ export const retryProjectsLocationsBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunProjectsLocationsTriggersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RunProjectsLocationsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers. */
 export const runProjectsLocationsTriggers: API.OperationMethod<
   RunProjectsLocationsTriggersRequest,
@@ -5536,12 +4320,7 @@ export const runProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunProjectsTriggersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RunProjectsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers. */
 export const runProjectsTriggers: API.OperationMethod<
   RunProjectsTriggersRequest,
@@ -5556,12 +4335,7 @@ export const runProjectsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WebhookProjectsLocationsTriggersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WebhookProjectsLocationsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook request targeted at a specific trigger. */
 export const webhookProjectsLocationsTriggers: API.OperationMethod<
   WebhookProjectsLocationsTriggersRequest,
@@ -5576,12 +4350,7 @@ export const webhookProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WebhookProjectsTriggersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WebhookProjectsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook request targeted at a specific trigger. */
 export const webhookProjectsTriggers: API.OperationMethod<
   WebhookProjectsTriggersRequest,
@@ -5596,12 +4365,7 @@ export const webhookProjectsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WebhookV1Error =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WebhookV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** ReceiveWebhook is called when the API receives a GitHub webhook. */
 export const webhookV1: API.OperationMethod<
   WebhookV1Request,
@@ -5615,3 +4379,4 @@ export const webhookV1: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

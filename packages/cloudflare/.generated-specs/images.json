@@ -1765,6 +1765,18 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.images#V2ListRequestMeta": {
+      "type": "structure",
+      "members": {
+        "_field___operator__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Optional metadata filter(s). Multiple filters can be combined with AND logic.",
+            "smithy.api#jsonName": "<field>[<operator>]"
+          }
+        }
+      }
+    },
     "com.cloudflare.images#V2ListRequestSortOrder": {
       "type": "enum",
       "members": {
@@ -1807,11 +1819,10 @@
             "smithy.api#httpQuery": "creator"
           }
         },
-        "meta__field___operator__": {
-          "target": "smithy.api#String",
+        "meta": {
+          "target": "com.cloudflare.images#V2ListRequestMeta",
           "traits": {
-            "smithy.api#documentation": "Optional metadata filter(s). Multiple filters can be combined with AND logic.",
-            "smithy.api#httpQuery": "meta.<field>[<operator>]"
+            "com.cloudflare.protocols#deepQuery": "meta"
           }
         },
         "per_page": {

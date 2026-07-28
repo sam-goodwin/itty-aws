@@ -41,7 +41,7 @@ export const MarketplaceAgreementsCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketplaceAgreementsCancelRequest>;
 
 /** Whether the agreement is active or cancelled */
-export type OldAgreementPropertiesState = "Active" | "Canceled" | (string & {});
+export type OldAgreementPropertiesState = "Active" | "Canceled";
 export const OldAgreementPropertiesState = /*@__PURE__*/ S.String;
 
 /** Old Agreement Terms definition */
@@ -93,9 +93,7 @@ export const MarketplaceAgreementsCancelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarketplaceAgreementsCancelResponse",
 }) as any as S.Schema<MarketplaceAgreementsCancelResponse>;
 
-export type MarketplaceAgreementsCreateRequestOfferType =
-  | "virtualmachine"
-  | (string & {});
+export type MarketplaceAgreementsCreateRequestOfferType = "virtualmachine";
 export const MarketplaceAgreementsCreateRequestOfferType =
   /*@__PURE__*/ S.String;
 
@@ -140,7 +138,7 @@ export interface MarketplaceAgreementsCreateRequest {
   /** The subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Offer Type, currently only virtualmachine type is supported. */
-  offerType: MarketplaceAgreementsCreateRequestOfferType;
+  offerType: MarketplaceAgreementsCreateRequestOfferType | (string & {});
   /** Publisher identifier string of image being deployed. */
   publisherId: string;
   /** Offer identifier string of image being deployed. */
@@ -175,8 +173,7 @@ export type MarketplaceAgreementsCreateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MarketplaceAgreementsCreateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -185,8 +182,7 @@ export type MarketplaceAgreementsCreateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MarketplaceAgreementsCreateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -247,16 +243,14 @@ export const MarketplaceAgreementsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarketplaceAgreementsCreateResponse",
 }) as any as S.Schema<MarketplaceAgreementsCreateResponse>;
 
-export type MarketplaceAgreementsGetRequestOfferType =
-  | "virtualmachine"
-  | (string & {});
+export type MarketplaceAgreementsGetRequestOfferType = "virtualmachine";
 export const MarketplaceAgreementsGetRequestOfferType = /*@__PURE__*/ S.String;
 
 export interface MarketplaceAgreementsGetRequest {
   /** The subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Offer Type, currently only virtualmachine type is supported. */
-  offerType: MarketplaceAgreementsGetRequestOfferType;
+  offerType: MarketplaceAgreementsGetRequestOfferType | (string & {});
   /** Publisher identifier string of image being deployed. */
   publisherId: string;
   /** Offer identifier string of image being deployed. */
@@ -288,8 +282,7 @@ export type MarketplaceAgreementsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MarketplaceAgreementsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -298,8 +291,7 @@ export type MarketplaceAgreementsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MarketplaceAgreementsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

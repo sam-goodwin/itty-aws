@@ -139,8 +139,7 @@ export type RecordSetsCreateOrUpdateRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT"
-  | (string & {});
+  | "TXT";
 export const RecordSetsCreateOrUpdateRequestRecordType = /*@__PURE__*/ S.String;
 
 /** The metadata attached to the record set. */
@@ -409,7 +408,7 @@ export interface RecordSetsCreateOrUpdateRequest {
   /** The name of the DNS zone (without a terminating dot). */
   zoneName: string;
   /** The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created). */
-  recordType: RecordSetsCreateOrUpdateRequestRecordType;
+  recordType: RecordSetsCreateOrUpdateRequestRecordType | (string & {});
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
   /** The etag of the record set. */
@@ -583,8 +582,7 @@ export type RecordSetsDeleteRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT"
-  | (string & {});
+  | "TXT";
 export const RecordSetsDeleteRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsDeleteRequest {
@@ -595,7 +593,7 @@ export interface RecordSetsDeleteRequest {
   /** The name of the DNS zone (without a terminating dot). */
   zoneName: string;
   /** The type of DNS record in this record set. Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted). */
-  recordType: RecordSetsDeleteRequestRecordType;
+  recordType: RecordSetsDeleteRequestRecordType | (string & {});
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
 }
@@ -635,8 +633,7 @@ export type RecordSetsGetRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT"
-  | (string & {});
+  | "TXT";
 export const RecordSetsGetRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsGetRequest {
@@ -647,7 +644,7 @@ export interface RecordSetsGetRequest {
   /** The name of the DNS zone (without a terminating dot). */
   zoneName: string;
   /** The type of DNS record in this record set. */
-  recordType: RecordSetsGetRequestRecordType;
+  recordType: RecordSetsGetRequestRecordType | (string & {});
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
 }
@@ -768,8 +765,7 @@ export type RecordSetsListByTypeRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT"
-  | (string & {});
+  | "TXT";
 export const RecordSetsListByTypeRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsListByTypeRequest {
@@ -780,7 +776,7 @@ export interface RecordSetsListByTypeRequest {
   /** The name of the DNS zone (without a terminating dot). */
   zoneName: string;
   /** The type of record sets to enumerate. */
-  recordType: RecordSetsListByTypeRequestRecordType;
+  recordType: RecordSetsListByTypeRequestRecordType | (string & {});
   /** The maximum number of record sets to return. If not specified, returns up to 100 record sets. */
   _top?: number;
   /** The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix> */
@@ -818,8 +814,7 @@ export type RecordSetsUpdateRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT"
-  | (string & {});
+  | "TXT";
 export const RecordSetsUpdateRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsUpdateRequest {
@@ -830,7 +825,7 @@ export interface RecordSetsUpdateRequest {
   /** The name of the DNS zone (without a terminating dot). */
   zoneName: string;
   /** The type of DNS record in this record set. */
-  recordType: RecordSetsUpdateRequestRecordType;
+  recordType: RecordSetsUpdateRequestRecordType | (string & {});
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
   /** The etag of the record set. */
@@ -869,7 +864,7 @@ export const ZonesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ZonesCreateOrUpdateRequestTagsMap>;
 
 /** The type of this DNS zone (Public or Private). */
-export type ZonePropertiesInputZoneType = "Public" | "Private" | (string & {});
+export type ZonePropertiesInputZoneType = "Public" | "Private";
 export const ZonePropertiesInputZoneType = /*@__PURE__*/ S.String;
 
 /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */
@@ -891,7 +886,7 @@ export const ZonePropertiesInputResolutionVirtualNetworksList =
 /** Represents the properties of the zone. */
 export interface ZonePropertiesInput {
   /** The type of this DNS zone (Public or Private). */
-  zoneType?: ZonePropertiesInputZoneType;
+  zoneType?: ZonePropertiesInputZoneType | (string & {});
   /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */
   registrationVirtualNetworks?: ZonePropertiesInputRegistrationVirtualNetworksList;
   /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
@@ -964,7 +959,7 @@ export const ZonePropertiesNameServersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ZonePropertiesNameServersList>;
 
 /** The type of this DNS zone (Public or Private). */
-export type ZonePropertiesZoneType = "Public" | "Private" | (string & {});
+export type ZonePropertiesZoneType = "Public" | "Private";
 export const ZonePropertiesZoneType = /*@__PURE__*/ S.String;
 
 /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */

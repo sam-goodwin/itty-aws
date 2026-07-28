@@ -80,7 +80,7 @@ export const GetMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMembershipRequest",
 }) as any as S.Schema<GetMembershipRequest>;
 
-export type GetResponseAccountType = "standard" | "enterprise" | (string & {});
+export type GetResponseAccountType = "standard" | "enterprise";
 export const GetResponseAccountType = /*@__PURE__*/ S.String;
 
 export interface GetResponseAccountManagedBy {
@@ -193,7 +193,7 @@ export const GetResponsePermissions = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponsePermissions",
 }) as any as S.Schema<GetResponsePermissions>;
 
-export type GetResponsePoliciesItemAccess = "allow" | "deny" | (string & {});
+export type GetResponsePoliciesItemAccess = "allow" | "deny";
 export const GetResponsePoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface GetResponsePoliciesItemPermissionGroupsItemMeta {
@@ -358,11 +358,7 @@ export const GetResponseRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseRolesList>;
 
-export type GetResponseStatus =
-  | "accepted"
-  | "pending"
-  | "rejected"
-  | (string & {});
+export type GetResponseStatus = "accepted" | "pending" | "rejected";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -395,38 +391,45 @@ export const GetMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMembershipResponse",
 }) as any as S.Schema<GetMembershipResponse>;
 
-export type ListRequestDirection = "asc" | "desc" | (string & {});
+export interface ListRequestAccount {
+  /** Account name */
+  name?: string;
+}
+export const ListRequestAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRequestAccount",
+}) as any as S.Schema<ListRequestAccount>;
+
+export type ListRequestDirection = "asc" | "desc";
 export const ListRequestDirection = /*@__PURE__*/ S.String;
 
-export type ListRequestOrder = "id" | "account.name" | "status" | (string & {});
+export type ListRequestOrder = "id" | "account.name" | "status";
 export const ListRequestOrder = /*@__PURE__*/ S.String;
 
-export type ListRequestStatus =
-  | "accepted"
-  | "pending"
-  | "rejected"
-  | (string & {});
+export type ListRequestStatus = "accepted" | "pending" | "rejected";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListMembershipsRequest {
-  /** Account name */
-  accountName?: string;
+  account?: ListRequestAccount;
   /** Direction to order memberships. */
-  direction?: ListRequestDirection;
+  direction?: ListRequestDirection | (string & {});
   /** Account name */
   name?: string;
   /** Field to order memberships by. */
-  order?: ListRequestOrder;
+  order?: ListRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Number of memberships per page. */
   perPage?: number;
   /** Status of this membership. */
-  status?: ListRequestStatus;
+  status?: ListRequestStatus | (string & {});
 }
 export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accountName: S.optional(S.String.pipe(T.Query("account.name"))),
+    account: S.optional(ListRequestAccount.pipe(T.DeepQuery("account"))),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
     order: S.optional(ListRequestOrder.pipe(T.Query())),
@@ -448,14 +451,14 @@ export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMembershipsResponse",
 }) as any as S.Schema<ListMembershipsResponse>;
 
-export type UpdateRequestStatus = "accepted" | "rejected" | (string & {});
+export type UpdateRequestStatus = "accepted" | "rejected";
 export const UpdateRequestStatus = /*@__PURE__*/ S.String;
 
 export interface PutMembershipRequest {
   /** Membership identifier tag. */
   membershipId: string;
   /** Whether to accept or reject this account invitation. */
-  status: UpdateRequestStatus;
+  status: UpdateRequestStatus | (string & {});
 }
 export const PutMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -470,10 +473,7 @@ export const PutMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutMembershipRequest",
 }) as any as S.Schema<PutMembershipRequest>;
 
-export type UpdateResponseAccountType =
-  | "standard"
-  | "enterprise"
-  | (string & {});
+export type UpdateResponseAccountType = "standard" | "enterprise";
 export const UpdateResponseAccountType = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseAccountManagedBy {
@@ -586,7 +586,7 @@ export const UpdateResponsePermissions = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponsePermissions",
 }) as any as S.Schema<UpdateResponsePermissions>;
 
-export type UpdateResponsePoliciesItemAccess = "allow" | "deny" | (string & {});
+export type UpdateResponsePoliciesItemAccess = "allow" | "deny";
 export const UpdateResponsePoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface UpdateResponsePoliciesItemPermissionGroupsItemMeta {
@@ -756,11 +756,7 @@ export const UpdateResponseRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseRolesList>;
 
-export type UpdateResponseStatus =
-  | "accepted"
-  | "pending"
-  | "rejected"
-  | (string & {});
+export type UpdateResponseStatus = "accepted" | "pending" | "rejected";
 export const UpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

@@ -173,10 +173,7 @@ export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountSettingsRequest",
 }) as any as S.Schema<GetAccountSettingsRequest>;
-export type NotificationSubscriptionStatus =
-  | "SUBSCRIBED"
-  | "NOT_SUBSCRIBED"
-  | (string & {});
+export type NotificationSubscriptionStatus = "SUBSCRIBED" | "NOT_SUBSCRIBED";
 export const NotificationSubscriptionStatus = /*@__PURE__*/ S.String;
 
 export interface AccountSettings {
@@ -254,19 +251,14 @@ export const GetReportMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetReportMetadataRequest>;
 export type LongStringAttribute = string;
 export type TimestampAttribute = Date;
-export type PublishedState = "PUBLISHED" | "UNPUBLISHED" | (string & {});
+export type PublishedState = "PUBLISHED" | "UNPUBLISHED";
 export const PublishedState = /*@__PURE__*/ S.String;
 
-export type AcceptanceType = "PASSTHROUGH" | "EXPLICIT" | (string & {});
+export type AcceptanceType = "PASSTHROUGH" | "EXPLICIT";
 export const AcceptanceType = /*@__PURE__*/ S.String;
 
 export type SequenceNumberAttribute = number;
-export type UploadState =
-  | "PROCESSING"
-  | "COMPLETE"
-  | "FAILED"
-  | "FAULT"
-  | (string & {});
+export type UploadState = "PROCESSING" | "COMPLETE" | "FAILED" | "FAULT";
 export const UploadState = /*@__PURE__*/ S.String;
 
 export type StatusMessage = string;
@@ -394,13 +386,12 @@ export type CustomerAgreementIdAttribute = string;
 export type CustomerAgreementState =
   | "ACTIVE"
   | "CUSTOMER_TERMINATED"
-  | "AWS_TERMINATED"
-  | (string & {});
+  | "AWS_TERMINATED";
 export const CustomerAgreementState = /*@__PURE__*/ S.String;
 
 export type AgreementTerms = string[];
 export const AgreementTerms = /*@__PURE__*/ S.Array(S.String);
-export type AgreementType = "CUSTOM" | "DEFAULT" | "MODIFIED" | (string & {});
+export type AgreementType = "CUSTOM" | "DEFAULT" | "MODIFIED";
 export const AgreementType = /*@__PURE__*/ S.String;
 
 export interface CustomerAgreementSummary {
@@ -565,7 +556,9 @@ export const ListReportVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReportVersionsResponse",
 }) as any as S.Schema<ListReportVersionsResponse>;
 export interface PutAccountSettingsRequest {
-  notificationSubscriptionStatus?: NotificationSubscriptionStatus;
+  notificationSubscriptionStatus?:
+    | NotificationSubscriptionStatus
+    | (string & {});
 }
 export const PutAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

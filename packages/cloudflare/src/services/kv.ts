@@ -167,7 +167,7 @@ export const NamespacesBulkGetRequestKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesBulkGetRequestKeysList>;
 
-export type NamespacesBulkGetRequestType = "text" | "json" | (string & {});
+export type NamespacesBulkGetRequestType = "text" | "json";
 export const NamespacesBulkGetRequestType = /*@__PURE__*/ S.String;
 
 export interface BulkGetNamespacesRequest {
@@ -178,7 +178,7 @@ export interface BulkGetNamespacesRequest {
   /** Array of keys to retrieve (maximum of 100). */
   keys: NamespacesBulkGetRequestKeysList;
   /** Whether to parse JSON values in the response. */
-  type?: NamespacesBulkGetRequestType;
+  type?: NamespacesBulkGetRequestType | (string & {});
   /** Whether to include metadata in the response. */
   withMetadata?: boolean;
 }
@@ -668,19 +668,19 @@ export const ListNamespaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespaceKeysResponse",
 }) as any as S.Schema<ListNamespaceKeysResponse>;
 
-export type NamespacesListRequestDirection = "asc" | "desc" | (string & {});
+export type NamespacesListRequestDirection = "asc" | "desc";
 export const NamespacesListRequestDirection = /*@__PURE__*/ S.String;
 
-export type NamespacesListRequestOrder = "id" | "title" | (string & {});
+export type NamespacesListRequestOrder = "id" | "title";
 export const NamespacesListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListNamespacesRequest {
   /** Identifier. */
   accountId: string;
   /** Direction to order namespaces. */
-  direction?: NamespacesListRequestDirection;
+  direction?: NamespacesListRequestDirection | (string & {});
   /** Field to order results by. */
-  order?: NamespacesListRequestOrder;
+  order?: NamespacesListRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Maximum number of results per page. */
@@ -810,7 +810,7 @@ export const NamespacesKeysBulkGetRequestKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesKeysBulkGetRequestKeysList>;
 
-export type NamespacesKeysBulkGetRequestType = "text" | "json" | (string & {});
+export type NamespacesKeysBulkGetRequestType = "text" | "json";
 export const NamespacesKeysBulkGetRequestType = /*@__PURE__*/ S.String;
 
 export interface NamespacesKeysBulkGetRequest {
@@ -821,7 +821,7 @@ export interface NamespacesKeysBulkGetRequest {
   /** Array of keys to retrieve (maximum of 100). */
   keys: NamespacesKeysBulkGetRequestKeysList;
   /** Whether to parse JSON values in the response. */
-  type?: NamespacesKeysBulkGetRequestType;
+  type?: NamespacesKeysBulkGetRequestType | (string & {});
   /** Whether to include metadata in the response. */
   withMetadata?: boolean;
 }

@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `liquid` - liquid */
-export type MessageTemplateContentTemplatingEnum = "liquid" | (string & {});
+export type MessageTemplateContentTemplatingEnum = "liquid";
 export const MessageTemplateContentTemplatingEnum = /*@__PURE__*/ S.String;
 
 /** Rows of {id, cells, columns[{id, contents[{id, type, values}], values}], values}. */
@@ -156,11 +156,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -237,13 +236,12 @@ export type EmailTemplateDesignOperationEnum =
   | "remove_content"
   | "move_content"
   | "add_row"
-  | "remove_row"
-  | (string & {});
+  | "remove_row";
 export const EmailTemplateDesignOperationEnum = /*@__PURE__*/ S.String;
 
 export interface DesignOperation {
   /** Design edit. update_content {id, patch}: deep-merge patch into the content block's fields (a null leaf deletes that key) — the surgical path, e.g. change just values.text. update_row / update_column {id, patch} and update_body {patch}: same deep-merge for row/column/body-level settings. add_content {column_id, content, index?}: insert a content block into a column (id and Unlayer numbering are filled in for you). remove_content {id} / move_content {id, column_id, index?}: delete or relocate a block. add_row {row, index?} / remove_row {id}: add or delete a row. * `update_content` - update_content * `update_column` - update_column * `update_row` - update_row * `update_body` - update_body * `add_content` - add_content * `remove_content` - remove_content * `move_content` - move_content * `add_row` - add_row * `remove_row` - remove_row */
-  op: EmailTemplateDesignOperationEnum;
+  op: EmailTemplateDesignOperationEnum | (string & {});
   /** Target node id. Required for update_content/column/row, remove_content, remove_row, move_content. */
   id?: string;
   /** Target column id. Required for add_content and move_content. */

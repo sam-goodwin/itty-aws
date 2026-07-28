@@ -38,8 +38,7 @@ export class NotFound extends T.applyErrorMatchers(
 /** * `app` - app * `toolbar` - toolbar */
 export type ProductTourSerializerCreateUpdateOnlyCreationContextEnum =
   | "app"
-  | "toolbar"
-  | (string & {});
+  | "toolbar";
 export const ProductTourSerializerCreateUpdateOnlyCreationContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -56,7 +55,9 @@ export interface ProductToursCreateRequest {
   end_date?: string | null;
   archived?: boolean;
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
-  creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum;
+  creation_context?:
+    | ProductTourSerializerCreateUpdateOnlyCreationContextEnum
+    | (string & {});
 }
 export const ProductToursCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -93,10 +94,10 @@ export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
-export type EvaluationRuntimeEnum = "server" | "client" | "all" | (string & {});
+export type EvaluationRuntimeEnum = "server" | "client" | "all";
 export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -107,10 +108,7 @@ export const MinimalFeatureFlagEvaluationRuntime =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type BucketingIdentifierEnum =
-  | "distinct_id"
-  | "device_id"
-  | (string & {});
+export type BucketingIdentifierEnum = "distinct_id" | "device_id";
 export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
@@ -179,8 +177,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -308,7 +305,7 @@ export const ProductTourTargetingFlagFiltersMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ProductTourTargetingFlagFiltersMap>;
 
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
+export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Read-only serializer for ProductTour. */
@@ -372,7 +369,9 @@ export interface ProductToursDraftPartialUpdateRequest {
   end_date?: string | null;
   archived?: boolean;
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
-  creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum;
+  creation_context?:
+    | ProductTourSerializerCreateUpdateOnlyCreationContextEnum
+    | (string & {});
 }
 export const ProductToursDraftPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -574,7 +573,9 @@ export interface ProductToursPartialUpdateRequest {
   end_date?: string | null;
   archived?: boolean;
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
-  creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum;
+  creation_context?:
+    | ProductTourSerializerCreateUpdateOnlyCreationContextEnum
+    | (string & {});
 }
 export const ProductToursPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -618,7 +619,9 @@ export interface ProductToursPublishDraftCreateRequest {
   end_date?: string | null;
   archived?: boolean;
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
-  creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum;
+  creation_context?:
+    | ProductTourSerializerCreateUpdateOnlyCreationContextEnum
+    | (string & {});
 }
 export const ProductToursPublishDraftCreateRequest = /*@__PURE__*/ S.suspend(
   () =>

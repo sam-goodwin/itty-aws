@@ -313,8 +313,7 @@ export const AssociatedFacesList = /*@__PURE__*/ S.Array(AssociatedFace);
 export type UnsuccessfulFaceAssociationReason =
   | "FACE_NOT_FOUND"
   | "ASSOCIATED_TO_A_DIFFERENT_USER"
-  | "LOW_MATCH_CONFIDENCE"
-  | (string & {});
+  | "LOW_MATCH_CONFIDENCE";
 export const UnsuccessfulFaceAssociationReason = /*@__PURE__*/ S.String;
 
 export type UnsuccessfulFaceAssociationReasons =
@@ -342,12 +341,7 @@ export type UnsuccessfulFaceAssociationList = UnsuccessfulFaceAssociation[];
 export const UnsuccessfulFaceAssociationList = /*@__PURE__*/ S.Array(
   UnsuccessfulFaceAssociation,
 );
-export type UserStatus =
-  | "ACTIVE"
-  | "UPDATING"
-  | "CREATING"
-  | "CREATED"
-  | (string & {});
+export type UserStatus = "ACTIVE" | "UPDATING" | "CREATING" | "CREATED";
 export const UserStatus = /*@__PURE__*/ S.String;
 
 export interface AssociateFacesResponse {
@@ -387,20 +381,14 @@ export interface Image {
 export const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bytes: S.optional(T.Blob), S3Object: S.optional(S3Object) }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
-export type QualityFilter =
-  | "NONE"
-  | "AUTO"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | (string & {});
+export type QualityFilter = "NONE" | "AUTO" | "LOW" | "MEDIUM" | "HIGH";
 export const QualityFilter = /*@__PURE__*/ S.String;
 
 export interface CompareFacesRequest {
   SourceImage: Image;
   TargetImage: Image;
   SimilarityThreshold?: number;
-  QualityFilter?: QualityFilter;
+  QualityFilter?: QualityFilter | (string & {});
 }
 export const CompareFacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -470,8 +458,7 @@ export type LandmarkType =
   | "midJawlineLeft"
   | "chinBottom"
   | "midJawlineRight"
-  | "upperJawlineRight"
-  | (string & {});
+  | "upperJawlineRight";
 export const LandmarkType = /*@__PURE__*/ S.String;
 
 export interface Landmark {
@@ -520,8 +507,7 @@ export type EmotionName =
   | "SURPRISED"
   | "CALM"
   | "UNKNOWN"
-  | "FEAR"
-  | (string & {});
+  | "FEAR";
 export const EmotionName = /*@__PURE__*/ S.String;
 
 export interface Emotion {
@@ -580,8 +566,7 @@ export type OrientationCorrection =
   | "ROTATE_0"
   | "ROTATE_90"
   | "ROTATE_180"
-  | "ROTATE_270"
-  | (string & {});
+  | "ROTATE_270";
 export const OrientationCorrection = /*@__PURE__*/ S.String;
 
 export interface CompareFacesResponse {
@@ -701,12 +686,12 @@ export const DatasetSource = /*@__PURE__*/ S.suspend(() =>
     DatasetArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "DatasetSource" }) as any as S.Schema<DatasetSource>;
-export type DatasetType = "TRAIN" | "TEST" | (string & {});
+export type DatasetType = "TRAIN" | "TEST";
 export const DatasetType = /*@__PURE__*/ S.String;
 
 export interface CreateDatasetRequest {
   DatasetSource?: DatasetSource;
-  DatasetType: DatasetType;
+  DatasetType: DatasetType | (string & {});
   ProjectArn: string;
   Tags?: { [key: string]: string | undefined };
 }
@@ -743,8 +728,7 @@ export const LivenessOutputConfig = /*@__PURE__*/ S.suspend(() =>
 export type AuditImagesLimit = number;
 export type ChallengeType =
   | "FaceMovementAndLightChallenge"
-  | "FaceMovementChallenge"
-  | (string & {});
+  | "FaceMovementChallenge";
 export const ChallengeType = /*@__PURE__*/ S.String;
 
 export type Version = string;
@@ -756,7 +740,7 @@ export const Versions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Minimum: S.optional(S.String), Maximum: S.optional(S.String) }),
 ).annotate({ identifier: "Versions" }) as any as S.Schema<Versions>;
 export interface ChallengePreference {
-  Type: ChallengeType;
+  Type: ChallengeType | (string & {});
   Versions?: Versions;
 }
 export const ChallengePreference = /*@__PURE__*/ S.suspend(() =>
@@ -807,19 +791,16 @@ export const CreateFaceLivenessSessionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateFaceLivenessSessionResponse",
 }) as any as S.Schema<CreateFaceLivenessSessionResponse>;
 export type ProjectName = string;
-export type CustomizationFeature =
-  | "CONTENT_MODERATION"
-  | "CUSTOM_LABELS"
-  | (string & {});
+export type CustomizationFeature = "CONTENT_MODERATION" | "CUSTOM_LABELS";
 export const CustomizationFeature = /*@__PURE__*/ S.String;
 
-export type ProjectAutoUpdate = "ENABLED" | "DISABLED" | (string & {});
+export type ProjectAutoUpdate = "ENABLED" | "DISABLED";
 export const ProjectAutoUpdate = /*@__PURE__*/ S.String;
 
 export interface CreateProjectRequest {
   ProjectName: string;
-  Feature?: CustomizationFeature;
-  AutoUpdate?: ProjectAutoUpdate;
+  Feature?: CustomizationFeature | (string & {});
+  AutoUpdate?: ProjectAutoUpdate | (string & {});
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1155,8 +1136,7 @@ export const DeleteFacesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFacesRequest>;
 export type UnsuccessfulFaceDeletionReason =
   | "ASSOCIATED_TO_AN_EXISTING_USER"
-  | "FACE_NOT_FOUND"
-  | (string & {});
+  | "FACE_NOT_FOUND";
 export const UnsuccessfulFaceDeletionReason = /*@__PURE__*/ S.String;
 
 export type UnsuccessfulFaceDeletionReasons = UnsuccessfulFaceDeletionReason[];
@@ -1203,7 +1183,7 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteProjectRequest",
 }) as any as S.Schema<DeleteProjectRequest>;
-export type ProjectStatus = "CREATING" | "CREATED" | "DELETING" | (string & {});
+export type ProjectStatus = "CREATING" | "CREATED" | "DELETING";
 export const ProjectStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteProjectResponse {
@@ -1262,8 +1242,7 @@ export type ProjectVersionStatus =
   | "COPYING_COMPLETED"
   | "COPYING_FAILED"
   | "DEPRECATED"
-  | "EXPIRED"
-  | (string & {});
+  | "EXPIRED";
 export const ProjectVersionStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteProjectVersionResponse {
@@ -1360,16 +1339,14 @@ export type DatasetStatus =
   | "UPDATE_IN_PROGRESS"
   | "UPDATE_COMPLETE"
   | "UPDATE_FAILED"
-  | "DELETE_IN_PROGRESS"
-  | (string & {});
+  | "DELETE_IN_PROGRESS";
 export const DatasetStatus = /*@__PURE__*/ S.String;
 
 export type StatusMessage = string;
 export type DatasetStatusMessageCode =
   | "SUCCESS"
   | "SERVICE_ERROR"
-  | "CLIENT_ERROR"
-  | (string & {});
+  | "CLIENT_ERROR";
 export const DatasetStatusMessageCode = /*@__PURE__*/ S.String;
 
 export interface DatasetStats {
@@ -1422,7 +1399,7 @@ export type ExtendedPaginationToken = string;
 export type ProjectsPageSize = number;
 export type ProjectNames = string[];
 export const ProjectNames = /*@__PURE__*/ S.Array(S.String);
-export type CustomizationFeatures = CustomizationFeature[];
+export type CustomizationFeatures = (CustomizationFeature | (string & {}))[];
 export const CustomizationFeatures =
   /*@__PURE__*/ S.Array(CustomizationFeature);
 export interface DescribeProjectsRequest {
@@ -1656,8 +1633,7 @@ export type StreamProcessorStatus =
   | "RUNNING"
   | "FAILED"
   | "STOPPING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const StreamProcessorStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeStreamProcessorResponse {
@@ -1764,11 +1740,10 @@ export type Attribute =
   | "MUSTACHE"
   | "FACE_OCCLUDED"
   | "SMILE"
-  | "SUNGLASSES"
-  | (string & {});
+  | "SUNGLASSES";
 export const Attribute = /*@__PURE__*/ S.String;
 
-export type Attributes = Attribute[];
+export type Attributes = (Attribute | (string & {}))[];
 export const Attributes = /*@__PURE__*/ S.Array(Attribute);
 export interface DetectFacesRequest {
   Image: Image;
@@ -1802,7 +1777,7 @@ export interface Sunglasses {
 export const Sunglasses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "Sunglasses" }) as any as S.Schema<Sunglasses>;
-export type GenderType = "Male" | "Female" | (string & {});
+export type GenderType = "Male" | "Female";
 export const GenderType = /*@__PURE__*/ S.String;
 
 export interface Gender {
@@ -1913,13 +1888,13 @@ export const DetectFacesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetectFacesResponse",
 }) as any as S.Schema<DetectFacesResponse>;
-export type DetectLabelsFeatureName =
-  | "GENERAL_LABELS"
-  | "IMAGE_PROPERTIES"
-  | (string & {});
+export type DetectLabelsFeatureName = "GENERAL_LABELS" | "IMAGE_PROPERTIES";
 export const DetectLabelsFeatureName = /*@__PURE__*/ S.String;
 
-export type DetectLabelsFeatureList = DetectLabelsFeatureName[];
+export type DetectLabelsFeatureList = (
+  | DetectLabelsFeatureName
+  | (string & {})
+)[];
 export const DetectLabelsFeatureList = /*@__PURE__*/ S.Array(
   DetectLabelsFeatureName,
 );
@@ -2137,11 +2112,10 @@ export type HumanLoopName = string;
 export type FlowDefinitionArn = string;
 export type ContentClassifier =
   | "FreeOfPersonallyIdentifiableInformation"
-  | "FreeOfAdultContent"
-  | (string & {});
+  | "FreeOfAdultContent";
 export const ContentClassifier = /*@__PURE__*/ S.String;
 
-export type ContentClassifiers = ContentClassifier[];
+export type ContentClassifiers = (ContentClassifier | (string & {}))[];
 export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface HumanLoopDataAttributes {
   ContentClassifiers?: ContentClassifier[];
@@ -2252,11 +2226,13 @@ export const DetectModerationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ProtectiveEquipmentType =
   | "FACE_COVER"
   | "HAND_COVER"
-  | "HEAD_COVER"
-  | (string & {});
+  | "HEAD_COVER";
 export const ProtectiveEquipmentType = /*@__PURE__*/ S.String;
 
-export type ProtectiveEquipmentTypes = ProtectiveEquipmentType[];
+export type ProtectiveEquipmentTypes = (
+  | ProtectiveEquipmentType
+  | (string & {})
+)[];
 export const ProtectiveEquipmentTypes = /*@__PURE__*/ S.Array(
   ProtectiveEquipmentType,
 );
@@ -2289,12 +2265,7 @@ export const DetectProtectiveEquipmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetectProtectiveEquipmentRequest",
 }) as any as S.Schema<DetectProtectiveEquipmentRequest>;
-export type BodyPart =
-  | "FACE"
-  | "HEAD"
-  | "LEFT_HAND"
-  | "RIGHT_HAND"
-  | (string & {});
+export type BodyPart = "FACE" | "HEAD" | "LEFT_HAND" | "RIGHT_HAND";
 export const BodyPart = /*@__PURE__*/ S.String;
 
 export interface CoversBodyPart {
@@ -2427,7 +2398,7 @@ export const DetectTextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetectTextRequest",
 }) as any as S.Schema<DetectTextRequest>;
-export type TextTypes = "LINE" | "WORD" | (string & {});
+export type TextTypes = "LINE" | "WORD";
 export const TextTypes = /*@__PURE__*/ S.String;
 
 export interface TextDetection {
@@ -2492,8 +2463,7 @@ export type DisassociatedFacesList = DisassociatedFace[];
 export const DisassociatedFacesList = /*@__PURE__*/ S.Array(DisassociatedFace);
 export type UnsuccessfulFaceDisassociationReason =
   | "FACE_NOT_FOUND"
-  | "ASSOCIATED_TO_A_DIFFERENT_USER"
-  | (string & {});
+  | "ASSOCIATED_TO_A_DIFFERENT_USER";
 export const UnsuccessfulFaceDisassociationReason = /*@__PURE__*/ S.String;
 
 export type UnsuccessfulFaceDisassociationReasons =
@@ -2577,12 +2547,7 @@ export const GetCelebrityInfoRequest = /*@__PURE__*/ S.suspend(() =>
 export type Url = string;
 export type Urls = string[];
 export const Urls = /*@__PURE__*/ S.Array(S.String);
-export type KnownGenderType =
-  | "Male"
-  | "Female"
-  | "Nonbinary"
-  | "Unlisted"
-  | (string & {});
+export type KnownGenderType = "Male" | "Female" | "Nonbinary" | "Unlisted";
 export const KnownGenderType = /*@__PURE__*/ S.String;
 
 export interface KnownGender {
@@ -2608,14 +2573,14 @@ export const GetCelebrityInfoResponse = /*@__PURE__*/ S.suspend(() =>
 export type JobId = string;
 export type MaxResults = number;
 export type PaginationToken = string;
-export type CelebrityRecognitionSortBy = "ID" | "TIMESTAMP" | (string & {});
+export type CelebrityRecognitionSortBy = "ID" | "TIMESTAMP";
 export const CelebrityRecognitionSortBy = /*@__PURE__*/ S.String;
 
 export interface GetCelebrityRecognitionRequest {
   JobId: string;
   MaxResults?: number;
   NextToken?: string;
-  SortBy?: CelebrityRecognitionSortBy;
+  SortBy?: CelebrityRecognitionSortBy | (string & {});
 }
 export const GetCelebrityRecognitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2629,14 +2594,10 @@ export const GetCelebrityRecognitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCelebrityRecognitionRequest",
 }) as any as S.Schema<GetCelebrityRecognitionRequest>;
-export type VideoJobStatus =
-  | "IN_PROGRESS"
-  | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+export type VideoJobStatus = "IN_PROGRESS" | "SUCCEEDED" | "FAILED";
 export const VideoJobStatus = /*@__PURE__*/ S.String;
 
-export type VideoColorRange = "FULL" | "LIMITED" | (string & {});
+export type VideoColorRange = "FULL" | "LIMITED";
 export const VideoColorRange = /*@__PURE__*/ S.String;
 
 export interface VideoMetadata {
@@ -2727,21 +2688,18 @@ export const GetCelebrityRecognitionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCelebrityRecognitionResponse",
 }) as any as S.Schema<GetCelebrityRecognitionResponse>;
-export type ContentModerationSortBy = "NAME" | "TIMESTAMP" | (string & {});
+export type ContentModerationSortBy = "NAME" | "TIMESTAMP";
 export const ContentModerationSortBy = /*@__PURE__*/ S.String;
 
-export type ContentModerationAggregateBy =
-  | "TIMESTAMPS"
-  | "SEGMENTS"
-  | (string & {});
+export type ContentModerationAggregateBy = "TIMESTAMPS" | "SEGMENTS";
 export const ContentModerationAggregateBy = /*@__PURE__*/ S.String;
 
 export interface GetContentModerationRequest {
   JobId: string;
   MaxResults?: number;
   NextToken?: string;
-  SortBy?: ContentModerationSortBy;
-  AggregateBy?: ContentModerationAggregateBy;
+  SortBy?: ContentModerationSortBy | (string & {});
+  AggregateBy?: ContentModerationAggregateBy | (string & {});
 }
 export const GetContentModerationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2885,8 +2843,7 @@ export type LivenessSessionStatus =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "FAILED"
-  | "EXPIRED"
-  | (string & {});
+  | "EXPIRED";
 export const LivenessSessionStatus = /*@__PURE__*/ S.String;
 
 export type LivenessImageBlob = Uint8Array | redacted.Redacted<Uint8Array>;
@@ -2932,14 +2889,14 @@ export const GetFaceLivenessSessionResultsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetFaceLivenessSessionResultsResponse",
 }) as any as S.Schema<GetFaceLivenessSessionResultsResponse>;
-export type FaceSearchSortBy = "INDEX" | "TIMESTAMP" | (string & {});
+export type FaceSearchSortBy = "INDEX" | "TIMESTAMP";
 export const FaceSearchSortBy = /*@__PURE__*/ S.String;
 
 export interface GetFaceSearchRequest {
   JobId: string;
   MaxResults?: number;
   NextToken?: string;
-  SortBy?: FaceSearchSortBy;
+  SortBy?: FaceSearchSortBy | (string & {});
 }
 export const GetFaceSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3036,21 +2993,18 @@ export const GetFaceSearchResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFaceSearchResponse",
 }) as any as S.Schema<GetFaceSearchResponse>;
-export type LabelDetectionSortBy = "NAME" | "TIMESTAMP" | (string & {});
+export type LabelDetectionSortBy = "NAME" | "TIMESTAMP";
 export const LabelDetectionSortBy = /*@__PURE__*/ S.String;
 
-export type LabelDetectionAggregateBy =
-  | "TIMESTAMPS"
-  | "SEGMENTS"
-  | (string & {});
+export type LabelDetectionAggregateBy = "TIMESTAMPS" | "SEGMENTS";
 export const LabelDetectionAggregateBy = /*@__PURE__*/ S.String;
 
 export interface GetLabelDetectionRequest {
   JobId: string;
   MaxResults?: number;
   NextToken?: string;
-  SortBy?: LabelDetectionSortBy;
-  AggregateBy?: LabelDetectionAggregateBy;
+  SortBy?: LabelDetectionSortBy | (string & {});
+  AggregateBy?: LabelDetectionAggregateBy | (string & {});
 }
 export const GetLabelDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3165,8 +3119,7 @@ export type MediaAnalysisJobStatus =
   | "QUEUED"
   | "IN_PROGRESS"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const MediaAnalysisJobStatus = /*@__PURE__*/ S.String;
 
 export type MediaAnalysisJobFailureCode =
@@ -3178,8 +3131,7 @@ export type MediaAnalysisJobFailureCode =
   | "ACCESS_DENIED"
   | "RESOURCE_NOT_FOUND"
   | "RESOURCE_NOT_READY"
-  | "THROTTLED"
-  | (string & {});
+  | "THROTTLED";
 export const MediaAnalysisJobFailureCode = /*@__PURE__*/ S.String;
 
 export interface MediaAnalysisJobFailureDetails {
@@ -3274,14 +3226,14 @@ export const GetMediaAnalysisJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMediaAnalysisJobResponse",
 }) as any as S.Schema<GetMediaAnalysisJobResponse>;
-export type PersonTrackingSortBy = "INDEX" | "TIMESTAMP" | (string & {});
+export type PersonTrackingSortBy = "INDEX" | "TIMESTAMP";
 export const PersonTrackingSortBy = /*@__PURE__*/ S.String;
 
 export interface GetPersonTrackingRequest {
   JobId: string;
   MaxResults?: number;
   NextToken?: string;
-  SortBy?: PersonTrackingSortBy;
+  SortBy?: PersonTrackingSortBy | (string & {});
 }
 export const GetPersonTrackingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3367,7 +3319,7 @@ export const AudioMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AudioMetadata" }) as any as S.Schema<AudioMetadata>;
 export type AudioMetadataList = AudioMetadata[];
 export const AudioMetadataList = /*@__PURE__*/ S.Array(AudioMetadata);
-export type SegmentType = "TECHNICAL_CUE" | "SHOT" | (string & {});
+export type SegmentType = "TECHNICAL_CUE" | "SHOT";
 export const SegmentType = /*@__PURE__*/ S.String;
 
 export type Timecode = string;
@@ -3378,8 +3330,7 @@ export type TechnicalCueType =
   | "OpeningCredits"
   | "StudioLogo"
   | "Slate"
-  | "Content"
-  | (string & {});
+  | "Content";
 export const TechnicalCueType = /*@__PURE__*/ S.String;
 
 export type SegmentConfidence = number;
@@ -3541,7 +3492,7 @@ export interface IndexFacesRequest {
   ExternalImageId?: string;
   DetectionAttributes?: Attribute[];
   MaxFaces?: number;
-  QualityFilter?: QualityFilter;
+  QualityFilter?: QualityFilter | (string & {});
 }
 export const IndexFacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3573,8 +3524,7 @@ export type Reason =
   | "LOW_SHARPNESS"
   | "LOW_CONFIDENCE"
   | "SMALL_BOUNDING_BOX"
-  | "LOW_FACE_QUALITY"
-  | (string & {});
+  | "LOW_FACE_QUALITY";
 export const Reason = /*@__PURE__*/ S.String;
 
 export type Reasons = Reason[];
@@ -4105,7 +4055,7 @@ export interface SearchFacesByImageRequest {
   Image: Image;
   MaxFaces?: number;
   FaceMatchThreshold?: number;
-  QualityFilter?: QualityFilter;
+  QualityFilter?: QualityFilter | (string & {});
 }
 export const SearchFacesByImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4208,7 +4158,7 @@ export interface SearchUsersByImageRequest {
   Image: Image;
   UserMatchThreshold?: number;
   MaxUsers?: number;
-  QualityFilter?: QualityFilter;
+  QualityFilter?: QualityFilter | (string & {});
 }
 export const SearchUsersByImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4239,8 +4189,7 @@ export type UnsearchedFaceReason =
   | "LOW_SHARPNESS"
   | "LOW_CONFIDENCE"
   | "SMALL_BOUNDING_BOX"
-  | "LOW_FACE_QUALITY"
-  | (string & {});
+  | "LOW_FACE_QUALITY";
 export const UnsearchedFaceReason = /*@__PURE__*/ S.String;
 
 export type UnsearchedFaceReasons = UnsearchedFaceReason[];
@@ -4337,14 +4286,14 @@ export const StartContentModerationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartContentModerationResponse",
 }) as any as S.Schema<StartContentModerationResponse>;
-export type FaceAttributes = "DEFAULT" | "ALL" | (string & {});
+export type FaceAttributes = "DEFAULT" | "ALL";
 export const FaceAttributes = /*@__PURE__*/ S.String;
 
 export interface StartFaceDetectionRequest {
   Video: Video;
   ClientRequestToken?: string;
   NotificationChannel?: NotificationChannel;
-  FaceAttributes?: FaceAttributes;
+  FaceAttributes?: FaceAttributes | (string & {});
   JobTag?: string;
 }
 export const StartFaceDetectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4398,10 +4347,13 @@ export const StartFaceSearchResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartFaceSearchResponse",
 }) as any as S.Schema<StartFaceSearchResponse>;
-export type LabelDetectionFeatureName = "GENERAL_LABELS" | (string & {});
+export type LabelDetectionFeatureName = "GENERAL_LABELS";
 export const LabelDetectionFeatureName = /*@__PURE__*/ S.String;
 
-export type LabelDetectionFeatureList = LabelDetectionFeatureName[];
+export type LabelDetectionFeatureList = (
+  | LabelDetectionFeatureName
+  | (string & {})
+)[];
 export const LabelDetectionFeatureList = /*@__PURE__*/ S.Array(
   LabelDetectionFeatureName,
 );
@@ -4569,7 +4521,7 @@ export const StartSegmentDetectionFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartSegmentDetectionFilters",
 }) as any as S.Schema<StartSegmentDetectionFilters>;
-export type SegmentTypes = SegmentType[];
+export type SegmentTypes = (SegmentType | (string & {}))[];
 export const SegmentTypes = /*@__PURE__*/ S.Array(SegmentType);
 export interface StartSegmentDetectionRequest {
   Video: Video;
@@ -4816,12 +4768,13 @@ export const StreamProcessorSettingsForUpdate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamProcessorSettingsForUpdate>;
 export type StreamProcessorParameterToDelete =
   | "ConnectedHomeMinConfidence"
-  | "RegionsOfInterest"
-  | (string & {});
+  | "RegionsOfInterest";
 export const StreamProcessorParameterToDelete = /*@__PURE__*/ S.String;
 
-export type StreamProcessorParametersToDelete =
-  StreamProcessorParameterToDelete[];
+export type StreamProcessorParametersToDelete = (
+  | StreamProcessorParameterToDelete
+  | (string & {})
+)[];
 export const StreamProcessorParametersToDelete = /*@__PURE__*/ S.Array(
   StreamProcessorParameterToDelete,
 );

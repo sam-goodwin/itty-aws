@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelAccountsAppsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -75,84 +73,51 @@ export interface CancelAccountsAppsOperationsRequest {
   body?: CancelOperationRequest;
 }
 export const CancelAccountsAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1alpha/{+name}:cancel",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelAccountsAppsOperationsRequest",
-}) as any as S.Schema<CancelAccountsAppsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:cancel","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "CancelAccountsAppsOperationsRequest" }) as any as S.Schema<CancelAccountsAppsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** Context about the input that will be used to help on the classification. */
 export interface GoogleChecksAisafetyV1alphaClassifyContentRequestContext {
   /** Optional. Prompt that generated the model response. */
   prompt?: string;
 }
-export const GoogleChecksAisafetyV1alphaClassifyContentRequestContext =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      prompt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestContext",
-  }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestContext>;
+export const GoogleChecksAisafetyV1alphaClassifyContentRequestContext = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "prompt": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestContext" }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestContext>;
 
-export type GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigPolicyTypeEnum =
-    | "POLICY_TYPE_UNSPECIFIED"
-    | "DANGEROUS_CONTENT"
-    | "PII_SOLICITING_RECITING"
-    | "HARASSMENT"
-    | "SEXUALLY_EXPLICIT"
-    | "HATE_SPEECH"
-    | "MEDICAL_INFO"
-    | "VIOLENCE_AND_GORE"
-    | "OBSCENITY_AND_PROFANITY"
-    | (string & {});
-export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigPolicyTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigPolicyTypeEnum = "POLICY_TYPE_UNSPECIFIED" | "DANGEROUS_CONTENT" | "PII_SOLICITING_RECITING" | "HARASSMENT" | "SEXUALLY_EXPLICIT" | "HATE_SPEECH" | "MEDICAL_INFO" | "VIOLENCE_AND_GORE" | "OBSCENITY_AND_PROFANITY";
+export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigPolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** List of policies to classify against. */
 export interface GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig {
   /** Required. Type of the policy. */
-  policyType?: GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigPolicyTypeEnum;
+  policyType?: GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigPolicyTypeEnum | (string & {});
   /** Optional. Score threshold to use when deciding if the content is violative or non-violative. If not specified, the default 0.5 threshold for the policy will be used. */
   threshold?: number;
 }
-export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyType: S.optional(
-        GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigPolicyTypeEnum,
-      ),
-      threshold: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig",
-  }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
+export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "policyType": S.optional(GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigPolicyTypeEnum),
+  "threshold": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig" }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
 
-export type GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList =
-  ReadonlyArray<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
-export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig,
-  ) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList>;
+export type GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList = ReadonlyArray<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
+export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList = /*@__PURE__*/ S.Array(GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList>;
 
-export type GoogleChecksAisafetyV1alphaClassifyContentRequestClassifierVersionEnum =
-  "CLASSIFIER_VERSION_UNSPECIFIED" | "STABLE" | "LATEST" | (string & {});
-export const GoogleChecksAisafetyV1alphaClassifyContentRequestClassifierVersionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksAisafetyV1alphaClassifyContentRequestClassifierVersionEnum = "CLASSIFIER_VERSION_UNSPECIFIED" | "STABLE" | "LATEST";
+export const GoogleChecksAisafetyV1alphaClassifyContentRequestClassifierVersionEnum = /*@__PURE__*/ S.String;
 
 /** Text input to be classified. */
 export interface GoogleChecksAisafetyV1alphaTextInput {
@@ -161,29 +126,23 @@ export interface GoogleChecksAisafetyV1alphaTextInput {
   /** Actual piece of text to be classified. */
   content?: string;
 }
-export const GoogleChecksAisafetyV1alphaTextInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      languageCode: S.optional(S.String),
-      content: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleChecksAisafetyV1alphaTextInput",
-}) as any as S.Schema<GoogleChecksAisafetyV1alphaTextInput>;
+export const GoogleChecksAisafetyV1alphaTextInput = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "languageCode": S.optional(S.String),
+  "content": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksAisafetyV1alphaTextInput" }) as any as S.Schema<GoogleChecksAisafetyV1alphaTextInput>;
 
 /** Content to be classified. */
 export interface GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent {
   /** Content in text format. */
   textInput?: GoogleChecksAisafetyV1alphaTextInput;
 }
-export const GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      textInput: S.optional(GoogleChecksAisafetyV1alphaTextInput),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent",
-  }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent>;
+export const GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "textInput": S.optional(GoogleChecksAisafetyV1alphaTextInput),
+}),
+).annotate({ identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent" }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent>;
 
 /** Request proto for ClassifyContent RPC. */
 export interface GoogleChecksAisafetyV1alphaClassifyContentRequest {
@@ -192,72 +151,34 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentRequest {
   /** Required. List of policies to classify against. */
   policies?: GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList;
   /** Optional. Version of the classifier to use. If not specified, the latest version will be used. */
-  classifierVersion?: GoogleChecksAisafetyV1alphaClassifyContentRequestClassifierVersionEnum;
+  classifierVersion?: GoogleChecksAisafetyV1alphaClassifyContentRequestClassifierVersionEnum | (string & {});
   /** Required. Content to be classified. */
   input?: GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent;
 }
-export const GoogleChecksAisafetyV1alphaClassifyContentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      context: S.optional(
-        GoogleChecksAisafetyV1alphaClassifyContentRequestContext,
-      ),
-      policies: S.optional(
-        GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList,
-      ),
-      classifierVersion: S.optional(
-        GoogleChecksAisafetyV1alphaClassifyContentRequestClassifierVersionEnum,
-      ),
-      input: S.optional(
-        GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequest",
-  }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequest>;
+export const GoogleChecksAisafetyV1alphaClassifyContentRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "context": S.optional(GoogleChecksAisafetyV1alphaClassifyContentRequestContext),
+  "policies": S.optional(GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList),
+  "classifierVersion": S.optional(GoogleChecksAisafetyV1alphaClassifyContentRequestClassifierVersionEnum),
+  "input": S.optional(GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent),
+}),
+).annotate({ identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequest" }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequest>;
 
 export interface ClassifyContentAisafetyRequest {
   /** Request body */
   body?: GoogleChecksAisafetyV1alphaClassifyContentRequest;
 }
 export const ClassifyContentAisafetyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(
-      GoogleChecksAisafetyV1alphaClassifyContentRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1alpha/aisafety:classifyContent",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ClassifyContentAisafetyRequest",
-}) as any as S.Schema<ClassifyContentAisafetyRequest>;
+S.Struct({
+  "body": S.optional(GoogleChecksAisafetyV1alphaClassifyContentRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/aisafety:classifyContent","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "ClassifyContentAisafetyRequest" }) as any as S.Schema<ClassifyContentAisafetyRequest>;
 
-export type GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultPolicyTypeEnum =
-    | "POLICY_TYPE_UNSPECIFIED"
-    | "DANGEROUS_CONTENT"
-    | "PII_SOLICITING_RECITING"
-    | "HARASSMENT"
-    | "SEXUALLY_EXPLICIT"
-    | "HATE_SPEECH"
-    | "MEDICAL_INFO"
-    | "VIOLENCE_AND_GORE"
-    | "OBSCENITY_AND_PROFANITY"
-    | (string & {});
-export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultPolicyTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultPolicyTypeEnum = "POLICY_TYPE_UNSPECIFIED" | "DANGEROUS_CONTENT" | "PII_SOLICITING_RECITING" | "HARASSMENT" | "SEXUALLY_EXPLICIT" | "HATE_SPEECH" | "MEDICAL_INFO" | "VIOLENCE_AND_GORE" | "OBSCENITY_AND_PROFANITY";
+export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultPolicyTypeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultViolationResultEnum =
-    | "VIOLATION_RESULT_UNSPECIFIED"
-    | "VIOLATIVE"
-    | "NON_VIOLATIVE"
-    | "CLASSIFICATION_ERROR"
-    | (string & {});
-export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultViolationResultEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultViolationResultEnum = "VIOLATION_RESULT_UNSPECIFIED" | "VIOLATIVE" | "NON_VIOLATIVE" | "CLASSIFICATION_ERROR";
+export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultViolationResultEnum = /*@__PURE__*/ S.String;
 
 /** Result for one policy against the corresponding input. */
 export interface GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult {
@@ -268,62 +189,37 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult 
   /** Final score for the results of this policy. */
   score?: number;
 }
-export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyType: S.optional(
-        GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultPolicyTypeEnum,
-      ),
-      violationResult: S.optional(
-        GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultViolationResultEnum,
-      ),
-      score: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult",
-  }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
+export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "policyType": S.optional(GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultPolicyTypeEnum),
+  "violationResult": S.optional(GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultViolationResultEnum),
+  "score": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult" }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
 
-export type GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList =
-  ReadonlyArray<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
-export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult,
-  ) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList>;
+export type GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList = ReadonlyArray<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
+export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList = /*@__PURE__*/ S.Array(GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList>;
 
 /** Response proto for ClassifyContent RPC. */
 export interface GoogleChecksAisafetyV1alphaClassifyContentResponse {
   /** Results of the classification for each policy. */
   policyResults?: GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList;
 }
-export const GoogleChecksAisafetyV1alphaClassifyContentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyResults: S.optional(
-        GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksAisafetyV1alphaClassifyContentResponse",
-  }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponse>;
+export const GoogleChecksAisafetyV1alphaClassifyContentResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "policyResults": S.optional(GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList),
+}),
+).annotate({ identifier: "GoogleChecksAisafetyV1alphaClassifyContentResponse" }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponse>;
 
 export interface DeleteAccountsAppsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
 export const DeleteAccountsAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAccountsAppsOperationsRequest",
-}) as any as S.Schema<DeleteAccountsAppsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsAppsOperationsRequest" }) as any as S.Schema<DeleteAccountsAppsOperationsRequest>;
 
 /** Pull request info. */
 export interface GoogleChecksRepoScanV1alphaPullRequest {
@@ -332,15 +228,12 @@ export interface GoogleChecksRepoScanV1alphaPullRequest {
   /** Required. For PR analysis, we compare against the most recent scan of the base branch to highlight new issues. */
   baseBranch?: string;
 }
-export const GoogleChecksRepoScanV1alphaPullRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      prNumber: S.optional(S.String),
-      baseBranch: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleChecksRepoScanV1alphaPullRequest",
-}) as any as S.Schema<GoogleChecksRepoScanV1alphaPullRequest>;
+export const GoogleChecksRepoScanV1alphaPullRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "prNumber": S.optional(S.String),
+  "baseBranch": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaPullRequest" }) as any as S.Schema<GoogleChecksRepoScanV1alphaPullRequest>;
 
 /** SCM metadata. */
 export interface GoogleChecksRepoScanV1alphaScmMetadata {
@@ -353,61 +246,17 @@ export interface GoogleChecksRepoScanV1alphaScmMetadata {
   /** Optional. Contains info about the associated pull request. This is only populated for pull request scans. */
   pullRequest?: GoogleChecksRepoScanV1alphaPullRequest;
 }
-export const GoogleChecksRepoScanV1alphaScmMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      revisionId: S.optional(S.String),
-      remoteUri: S.optional(S.String),
-      branch: S.optional(S.String),
-      pullRequest: S.optional(GoogleChecksRepoScanV1alphaPullRequest),
-    }),
-).annotate({
-  identifier: "GoogleChecksRepoScanV1alphaScmMetadata",
-}) as any as S.Schema<GoogleChecksRepoScanV1alphaScmMetadata>;
+export const GoogleChecksRepoScanV1alphaScmMetadata = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "revisionId": S.optional(S.String),
+  "remoteUri": S.optional(S.String),
+  "branch": S.optional(S.String),
+  "pullRequest": S.optional(GoogleChecksRepoScanV1alphaPullRequest),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaScmMetadata" }) as any as S.Schema<GoogleChecksRepoScanV1alphaScmMetadata>;
 
-export type GoogleChecksRepoScanV1alphaSourceDataTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
-  | "DATA_TYPE_APPROXIMATE_LOCATION"
-  | "DATA_TYPE_PRECISE_LOCATION"
-  | "DATA_TYPE_PERSONAL_NAME"
-  | "DATA_TYPE_EMAIL_ADDRESS"
-  | "DATA_TYPE_USER_IDS"
-  | "DATA_TYPE_PHYSICAL_ADDRESS"
-  | "DATA_TYPE_PHONE_NUMBER"
-  | "DATA_TYPE_RACE_AND_ETHNICITY"
-  | "DATA_TYPE_POLITICAL_OR_RELIGIOUS_BELIEFS"
-  | "DATA_TYPE_SEXUAL_ORIENTATION"
-  | "DATA_TYPE_OTHER_PERSONAL_INFO"
-  | "DATA_TYPE_PAYMENT_INFO"
-  | "DATA_TYPE_PURCHASE_HISTORY"
-  | "DATA_TYPE_CREDIT_SCORE"
-  | "DATA_TYPE_OTHER_FINANCIAL_INFO"
-  | "DATA_TYPE_HEALTH_INFO"
-  | "DATA_TYPE_FITNESS_INFO"
-  | "DATA_TYPE_EMAILS"
-  | "DATA_TYPE_TEXT_MESSAGES"
-  | "DATA_TYPE_OTHER_IN_APP_MESSAGES"
-  | "DATA_TYPE_PHOTOS"
-  | "DATA_TYPE_VIDEOS"
-  | "DATA_TYPE_VOICE_OR_SOUND_RECORDINGS"
-  | "DATA_TYPE_MUSIC_FILES"
-  | "DATA_TYPE_OTHER_AUDIO_FILES"
-  | "DATA_TYPE_FILES_AND_DOCS"
-  | "DATA_TYPE_CALENDAR_EVENTS"
-  | "DATA_TYPE_CONTACTS"
-  | "DATA_TYPE_APP_INTERACTIONS"
-  | "DATA_TYPE_IN_APP_SEARCH_HISTORY"
-  | "DATA_TYPE_INSTALLED_APPS"
-  | "DATA_TYPE_OTHER_USER_GENERATED_CONTENT"
-  | "DATA_TYPE_OTHER_ACTIONS"
-  | "DATA_TYPE_WEB_BROWSING_HISTORY"
-  | "DATA_TYPE_CRASH_LOGS"
-  | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS"
-  | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA"
-  | "DATA_TYPE_DEVICE_OR_OTHER_IDS"
-  | (string & {});
-export const GoogleChecksRepoScanV1alphaSourceDataTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksRepoScanV1alphaSourceDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "DATA_TYPE_APPROXIMATE_LOCATION" | "DATA_TYPE_PRECISE_LOCATION" | "DATA_TYPE_PERSONAL_NAME" | "DATA_TYPE_EMAIL_ADDRESS" | "DATA_TYPE_USER_IDS" | "DATA_TYPE_PHYSICAL_ADDRESS" | "DATA_TYPE_PHONE_NUMBER" | "DATA_TYPE_RACE_AND_ETHNICITY" | "DATA_TYPE_POLITICAL_OR_RELIGIOUS_BELIEFS" | "DATA_TYPE_SEXUAL_ORIENTATION" | "DATA_TYPE_OTHER_PERSONAL_INFO" | "DATA_TYPE_PAYMENT_INFO" | "DATA_TYPE_PURCHASE_HISTORY" | "DATA_TYPE_CREDIT_SCORE" | "DATA_TYPE_OTHER_FINANCIAL_INFO" | "DATA_TYPE_HEALTH_INFO" | "DATA_TYPE_FITNESS_INFO" | "DATA_TYPE_EMAILS" | "DATA_TYPE_TEXT_MESSAGES" | "DATA_TYPE_OTHER_IN_APP_MESSAGES" | "DATA_TYPE_PHOTOS" | "DATA_TYPE_VIDEOS" | "DATA_TYPE_VOICE_OR_SOUND_RECORDINGS" | "DATA_TYPE_MUSIC_FILES" | "DATA_TYPE_OTHER_AUDIO_FILES" | "DATA_TYPE_FILES_AND_DOCS" | "DATA_TYPE_CALENDAR_EVENTS" | "DATA_TYPE_CONTACTS" | "DATA_TYPE_APP_INTERACTIONS" | "DATA_TYPE_IN_APP_SEARCH_HISTORY" | "DATA_TYPE_INSTALLED_APPS" | "DATA_TYPE_OTHER_USER_GENERATED_CONTENT" | "DATA_TYPE_OTHER_ACTIONS" | "DATA_TYPE_WEB_BROWSING_HISTORY" | "DATA_TYPE_CRASH_LOGS" | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS" | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA" | "DATA_TYPE_DEVICE_OR_OTHER_IDS";
+export const GoogleChecksRepoScanV1alphaSourceDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Source code attribution. */
 export interface GoogleChecksRepoScanV1alphaCodeAttribution {
@@ -420,17 +269,14 @@ export interface GoogleChecksRepoScanV1alphaCodeAttribution {
   /** Required. Line number (1-based). */
   lineNumber?: number;
 }
-export const GoogleChecksRepoScanV1alphaCodeAttribution =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      codeExcerpt: S.optional(S.String),
-      startLineNumber: S.optional(S.Number),
-      path: S.optional(S.String),
-      lineNumber: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaCodeAttribution",
-  }) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeAttribution>;
+export const GoogleChecksRepoScanV1alphaCodeAttribution = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "codeExcerpt": S.optional(S.String),
+  "startLineNumber": S.optional(S.Number),
+  "path": S.optional(S.String),
+  "lineNumber": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaCodeAttribution" }) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeAttribution>;
 
 /** Represents a data source finding. */
 export interface GoogleChecksRepoScanV1alphaSource {
@@ -442,20 +288,15 @@ export interface GoogleChecksRepoScanV1alphaSource {
   codeAttribution?: GoogleChecksRepoScanV1alphaCodeAttribution;
 }
 export const GoogleChecksRepoScanV1alphaSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: S.optional(GoogleChecksRepoScanV1alphaSourceDataTypeEnum),
-    falsePositive: S.optional(S.Boolean),
-    codeAttribution: S.optional(GoogleChecksRepoScanV1alphaCodeAttribution),
-  }),
-).annotate({
-  identifier: "GoogleChecksRepoScanV1alphaSource",
-}) as any as S.Schema<GoogleChecksRepoScanV1alphaSource>;
+S.Struct({
+  "dataType": S.optional(GoogleChecksRepoScanV1alphaSourceDataTypeEnum),
+  "falsePositive": S.optional(S.Boolean),
+  "codeAttribution": S.optional(GoogleChecksRepoScanV1alphaCodeAttribution),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaSource" }) as any as S.Schema<GoogleChecksRepoScanV1alphaSource>;
 
-export type GoogleChecksRepoScanV1alphaSourceList =
-  ReadonlyArray<GoogleChecksRepoScanV1alphaSource>;
-export const GoogleChecksRepoScanV1alphaSourceList = /*@__PURE__*/ S.Array(
-  GoogleChecksRepoScanV1alphaSource,
-) as any as S.Schema<GoogleChecksRepoScanV1alphaSourceList>;
+export type GoogleChecksRepoScanV1alphaSourceList = ReadonlyArray<GoogleChecksRepoScanV1alphaSource>;
+export const GoogleChecksRepoScanV1alphaSourceList = /*@__PURE__*/ S.Array(GoogleChecksRepoScanV1alphaSource) as any as S.Schema<GoogleChecksRepoScanV1alphaSourceList>;
 
 /** Contains source code from a repo. */
 export interface GoogleChecksRepoScanV1alphaSourceCode {
@@ -468,87 +309,34 @@ export interface GoogleChecksRepoScanV1alphaSourceCode {
   /** Required. Start line number (1-based). */
   startLine?: number;
 }
-export const GoogleChecksRepoScanV1alphaSourceCode = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      path: S.optional(S.String),
-      endLine: S.optional(S.Number),
-      code: S.optional(S.String),
-      startLine: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleChecksRepoScanV1alphaSourceCode",
-}) as any as S.Schema<GoogleChecksRepoScanV1alphaSourceCode>;
+export const GoogleChecksRepoScanV1alphaSourceCode = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "path": S.optional(S.String),
+  "endLine": S.optional(S.Number),
+  "code": S.optional(S.String),
+  "startLine": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaSourceCode" }) as any as S.Schema<GoogleChecksRepoScanV1alphaSourceCode>;
 
-export type GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationDataTypeEnum =
-    | "DATA_TYPE_UNSPECIFIED"
-    | "DATA_TYPE_APPROXIMATE_LOCATION"
-    | "DATA_TYPE_PRECISE_LOCATION"
-    | "DATA_TYPE_PERSONAL_NAME"
-    | "DATA_TYPE_EMAIL_ADDRESS"
-    | "DATA_TYPE_USER_IDS"
-    | "DATA_TYPE_PHYSICAL_ADDRESS"
-    | "DATA_TYPE_PHONE_NUMBER"
-    | "DATA_TYPE_RACE_AND_ETHNICITY"
-    | "DATA_TYPE_POLITICAL_OR_RELIGIOUS_BELIEFS"
-    | "DATA_TYPE_SEXUAL_ORIENTATION"
-    | "DATA_TYPE_OTHER_PERSONAL_INFO"
-    | "DATA_TYPE_PAYMENT_INFO"
-    | "DATA_TYPE_PURCHASE_HISTORY"
-    | "DATA_TYPE_CREDIT_SCORE"
-    | "DATA_TYPE_OTHER_FINANCIAL_INFO"
-    | "DATA_TYPE_HEALTH_INFO"
-    | "DATA_TYPE_FITNESS_INFO"
-    | "DATA_TYPE_EMAILS"
-    | "DATA_TYPE_TEXT_MESSAGES"
-    | "DATA_TYPE_OTHER_IN_APP_MESSAGES"
-    | "DATA_TYPE_PHOTOS"
-    | "DATA_TYPE_VIDEOS"
-    | "DATA_TYPE_VOICE_OR_SOUND_RECORDINGS"
-    | "DATA_TYPE_MUSIC_FILES"
-    | "DATA_TYPE_OTHER_AUDIO_FILES"
-    | "DATA_TYPE_FILES_AND_DOCS"
-    | "DATA_TYPE_CALENDAR_EVENTS"
-    | "DATA_TYPE_CONTACTS"
-    | "DATA_TYPE_APP_INTERACTIONS"
-    | "DATA_TYPE_IN_APP_SEARCH_HISTORY"
-    | "DATA_TYPE_INSTALLED_APPS"
-    | "DATA_TYPE_OTHER_USER_GENERATED_CONTENT"
-    | "DATA_TYPE_OTHER_ACTIONS"
-    | "DATA_TYPE_WEB_BROWSING_HISTORY"
-    | "DATA_TYPE_CRASH_LOGS"
-    | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS"
-    | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA"
-    | "DATA_TYPE_DEVICE_OR_OTHER_IDS"
-    | (string & {});
-export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationDataTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "DATA_TYPE_APPROXIMATE_LOCATION" | "DATA_TYPE_PRECISE_LOCATION" | "DATA_TYPE_PERSONAL_NAME" | "DATA_TYPE_EMAIL_ADDRESS" | "DATA_TYPE_USER_IDS" | "DATA_TYPE_PHYSICAL_ADDRESS" | "DATA_TYPE_PHONE_NUMBER" | "DATA_TYPE_RACE_AND_ETHNICITY" | "DATA_TYPE_POLITICAL_OR_RELIGIOUS_BELIEFS" | "DATA_TYPE_SEXUAL_ORIENTATION" | "DATA_TYPE_OTHER_PERSONAL_INFO" | "DATA_TYPE_PAYMENT_INFO" | "DATA_TYPE_PURCHASE_HISTORY" | "DATA_TYPE_CREDIT_SCORE" | "DATA_TYPE_OTHER_FINANCIAL_INFO" | "DATA_TYPE_HEALTH_INFO" | "DATA_TYPE_FITNESS_INFO" | "DATA_TYPE_EMAILS" | "DATA_TYPE_TEXT_MESSAGES" | "DATA_TYPE_OTHER_IN_APP_MESSAGES" | "DATA_TYPE_PHOTOS" | "DATA_TYPE_VIDEOS" | "DATA_TYPE_VOICE_OR_SOUND_RECORDINGS" | "DATA_TYPE_MUSIC_FILES" | "DATA_TYPE_OTHER_AUDIO_FILES" | "DATA_TYPE_FILES_AND_DOCS" | "DATA_TYPE_CALENDAR_EVENTS" | "DATA_TYPE_CONTACTS" | "DATA_TYPE_APP_INTERACTIONS" | "DATA_TYPE_IN_APP_SEARCH_HISTORY" | "DATA_TYPE_INSTALLED_APPS" | "DATA_TYPE_OTHER_USER_GENERATED_CONTENT" | "DATA_TYPE_OTHER_ACTIONS" | "DATA_TYPE_WEB_BROWSING_HISTORY" | "DATA_TYPE_CRASH_LOGS" | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS" | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA" | "DATA_TYPE_DEVICE_OR_OTHER_IDS";
+export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** A request to classify data types. */
 export interface GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification {
   /** Required. Line number (1-based). */
   lineNumber?: number;
   /** Required. Candidate data type. */
-  dataType?: GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationDataTypeEnum;
+  dataType?: GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationDataTypeEnum | (string & {});
 }
-export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lineNumber: S.optional(S.Number),
-      dataType: S.optional(
-        GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationDataTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification",
-  }) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>;
+export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "lineNumber": S.optional(S.Number),
+  "dataType": S.optional(GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationDataTypeEnum),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification" }) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>;
 
-export type GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList =
-  ReadonlyArray<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>;
-export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification,
-  ) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList>;
+export type GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList = ReadonlyArray<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>;
+export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList = /*@__PURE__*/ S.Array(GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList>;
 
 /** A requested analysis of source code. Contains the source code and processing state. */
 export interface GoogleChecksRepoScanV1alphaCodeScan {
@@ -558,21 +346,14 @@ export interface GoogleChecksRepoScanV1alphaCodeScan {
   dataTypeClassifications?: GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList;
 }
 export const GoogleChecksRepoScanV1alphaCodeScan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceCode: S.optional(GoogleChecksRepoScanV1alphaSourceCode),
-    dataTypeClassifications: S.optional(
-      GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleChecksRepoScanV1alphaCodeScan",
-}) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScan>;
+S.Struct({
+  "sourceCode": S.optional(GoogleChecksRepoScanV1alphaSourceCode),
+  "dataTypeClassifications": S.optional(GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaCodeScan" }) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScan>;
 
-export type GoogleChecksRepoScanV1alphaCodeScanList =
-  ReadonlyArray<GoogleChecksRepoScanV1alphaCodeScan>;
-export const GoogleChecksRepoScanV1alphaCodeScanList = /*@__PURE__*/ S.Array(
-  GoogleChecksRepoScanV1alphaCodeScan,
-) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScanList>;
+export type GoogleChecksRepoScanV1alphaCodeScanList = ReadonlyArray<GoogleChecksRepoScanV1alphaCodeScan>;
+export const GoogleChecksRepoScanV1alphaCodeScanList = /*@__PURE__*/ S.Array(GoogleChecksRepoScanV1alphaCodeScan) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScanList>;
 
 /** The results of a Code Compliance CLI analysis. */
 export interface GoogleChecksRepoScanV1alphaCliAnalysis {
@@ -581,15 +362,12 @@ export interface GoogleChecksRepoScanV1alphaCliAnalysis {
   /** Optional. Requested code scans resulting from preliminary CLI analysis. */
   codeScans?: GoogleChecksRepoScanV1alphaCodeScanList;
 }
-export const GoogleChecksRepoScanV1alphaCliAnalysis = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sources: S.optional(GoogleChecksRepoScanV1alphaSourceList),
-      codeScans: S.optional(GoogleChecksRepoScanV1alphaCodeScanList),
-    }),
-).annotate({
-  identifier: "GoogleChecksRepoScanV1alphaCliAnalysis",
-}) as any as S.Schema<GoogleChecksRepoScanV1alphaCliAnalysis>;
+export const GoogleChecksRepoScanV1alphaCliAnalysis = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sources": S.optional(GoogleChecksRepoScanV1alphaSourceList),
+  "codeScans": S.optional(GoogleChecksRepoScanV1alphaCodeScanList),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaCliAnalysis" }) as any as S.Schema<GoogleChecksRepoScanV1alphaCliAnalysis>;
 
 /** The request message for RepoScanService.GenerateScan. */
 export interface GoogleChecksRepoScanV1alphaGenerateScanRequest {
@@ -602,17 +380,14 @@ export interface GoogleChecksRepoScanV1alphaGenerateScanRequest {
   /** Required. CLI version. */
   cliVersion?: string;
 }
-export const GoogleChecksRepoScanV1alphaGenerateScanRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      scmMetadata: S.optional(GoogleChecksRepoScanV1alphaScmMetadata),
-      cliAnalysis: S.optional(GoogleChecksRepoScanV1alphaCliAnalysis),
-      localScanPath: S.optional(S.String),
-      cliVersion: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaGenerateScanRequest",
-  }) as any as S.Schema<GoogleChecksRepoScanV1alphaGenerateScanRequest>;
+export const GoogleChecksRepoScanV1alphaGenerateScanRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "scmMetadata": S.optional(GoogleChecksRepoScanV1alphaScmMetadata),
+  "cliAnalysis": S.optional(GoogleChecksRepoScanV1alphaCliAnalysis),
+  "localScanPath": S.optional(S.String),
+  "cliVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaGenerateScanRequest" }) as any as S.Schema<GoogleChecksRepoScanV1alphaGenerateScanRequest>;
 
 export interface GenerateAccountsReposScansRequest {
   /** Required. Resource name of the repo. Example: `accounts/123/repos/456` */
@@ -621,32 +396,17 @@ export interface GenerateAccountsReposScansRequest {
   body?: GoogleChecksRepoScanV1alphaGenerateScanRequest;
 }
 export const GenerateAccountsReposScansRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleChecksRepoScanV1alphaGenerateScanRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1alpha/{+parent}/scans:generate",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GenerateAccountsReposScansRequest",
-}) as any as S.Schema<GenerateAccountsReposScansRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleChecksRepoScanV1alphaGenerateScanRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/scans:generate","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "GenerateAccountsReposScansRequest" }) as any as S.Schema<GenerateAccountsReposScansRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -658,11 +418,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -679,13 +439,13 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
-    error: S.optional(Status),
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "response": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "name": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface GetAccountsAppsRequest {
@@ -693,18 +453,10 @@ export interface GetAccountsAppsRequest {
   name: string;
 }
 export const GetAccountsAppsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsAppsRequest",
-}) as any as S.Schema<GetAccountsAppsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsAppsRequest" }) as any as S.Schema<GetAccountsAppsRequest>;
 
 /** Represents an app in Checks. */
 export interface GoogleChecksAccountV1alphaApp {
@@ -714,31 +466,21 @@ export interface GoogleChecksAccountV1alphaApp {
   title?: string;
 }
 export const GoogleChecksAccountV1alphaApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleChecksAccountV1alphaApp",
-}) as any as S.Schema<GoogleChecksAccountV1alphaApp>;
+S.Struct({
+  "name": S.optional(S.String),
+  "title": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksAccountV1alphaApp" }) as any as S.Schema<GoogleChecksAccountV1alphaApp>;
 
 export interface GetAccountsAppsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetAccountsAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsAppsOperationsRequest",
-}) as any as S.Schema<GetAccountsAppsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsAppsOperationsRequest" }) as any as S.Schema<GetAccountsAppsOperationsRequest>;
 
 export interface GetAccountsAppsReportsRequest {
   /** Required. Resource name of the report. Example: `accounts/123/apps/456/reports/789` */
@@ -747,31 +489,17 @@ export interface GetAccountsAppsReportsRequest {
   checksFilter?: string;
 }
 export const GetAccountsAppsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    checksFilter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsAppsReportsRequest",
-}) as any as S.Schema<GetAccountsAppsReportsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "checksFilter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsAppsReportsRequest" }) as any as S.Schema<GetAccountsAppsReportsRequest>;
 
-export type GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum =
-  "DATA_MONITORING_RESULT_BADGE_UNSPECIFIED" | "NEW" | (string & {});
-export const GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum = "DATA_MONITORING_RESULT_BADGE_UNSPECIFIED" | "NEW";
+export const GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum>;
-export const GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum,
-  ) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList>;
+export type GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList = ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum>;
+export const GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList>;
 
 /** Information about a data monitoring result. */
 export interface GoogleChecksReportV1alphaDataMonitoringResultMetadata {
@@ -784,19 +512,14 @@ export interface GoogleChecksReportV1alphaDataMonitoringResultMetadata {
   /** Badges that apply to this result. */
   badges?: GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList;
 }
-export const GoogleChecksReportV1alphaDataMonitoringResultMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      firstDetectedTime: S.optional(S.String),
-      lastDetectedTime: S.optional(S.String),
-      lastDetectedAppVersion: S.optional(S.String),
-      badges: S.optional(
-        GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataMonitoringResultMetadata",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringResultMetadata>;
+export const GoogleChecksReportV1alphaDataMonitoringResultMetadata = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "firstDetectedTime": S.optional(S.String),
+  "lastDetectedTime": S.optional(S.String),
+  "lastDetectedAppVersion": S.optional(S.String),
+  "badges": S.optional(GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataMonitoringResultMetadata" }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringResultMetadata>;
 
 /** Information about an SDK. */
 export interface GoogleChecksReportV1alphaSdk {
@@ -804,12 +527,10 @@ export interface GoogleChecksReportV1alphaSdk {
   id?: string;
 }
 export const GoogleChecksReportV1alphaSdk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaSdk",
-}) as any as S.Schema<GoogleChecksReportV1alphaSdk>;
+S.Struct({
+  "id": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaSdk" }) as any as S.Schema<GoogleChecksReportV1alphaSdk>;
 
 /** Information about an SDK that was found in your app. */
 export interface GoogleChecksReportV1alphaDataMonitoringSdkResult {
@@ -818,24 +539,15 @@ export interface GoogleChecksReportV1alphaDataMonitoringSdkResult {
   /** The SDK that was found in your app. */
   sdk?: GoogleChecksReportV1alphaSdk;
 }
-export const GoogleChecksReportV1alphaDataMonitoringSdkResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadata: S.optional(
-        GoogleChecksReportV1alphaDataMonitoringResultMetadata,
-      ),
-      sdk: S.optional(GoogleChecksReportV1alphaSdk),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataMonitoringSdkResult",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringSdkResult>;
+export const GoogleChecksReportV1alphaDataMonitoringSdkResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "metadata": S.optional(GoogleChecksReportV1alphaDataMonitoringResultMetadata),
+  "sdk": S.optional(GoogleChecksReportV1alphaSdk),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataMonitoringSdkResult" }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringSdkResult>;
 
-export type GoogleChecksReportV1alphaDataMonitoringSdkResultList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringSdkResult>;
-export const GoogleChecksReportV1alphaDataMonitoringSdkResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaDataMonitoringSdkResult,
-  ) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringSdkResultList>;
+export type GoogleChecksReportV1alphaDataMonitoringSdkResultList = ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringSdkResult>;
+export const GoogleChecksReportV1alphaDataMonitoringSdkResultList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaDataMonitoringSdkResult) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringSdkResultList>;
 
 /** Information about an endpoint. */
 export interface GoogleChecksReportV1alphaEndpoint {
@@ -843,12 +555,10 @@ export interface GoogleChecksReportV1alphaEndpoint {
   domain?: string;
 }
 export const GoogleChecksReportV1alphaEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaEndpoint",
-}) as any as S.Schema<GoogleChecksReportV1alphaEndpoint>;
+S.Struct({
+  "domain": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaEndpoint" }) as any as S.Schema<GoogleChecksReportV1alphaEndpoint>;
 
 /** Information about an endpoint that was contacted by your app. */
 export interface GoogleChecksReportV1alphaDataMonitoringEndpointResult {
@@ -859,25 +569,16 @@ export interface GoogleChecksReportV1alphaDataMonitoringEndpointResult {
   /** The number of times this endpoint was contacted by your app. */
   hitCount?: number;
 }
-export const GoogleChecksReportV1alphaDataMonitoringEndpointResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadata: S.optional(
-        GoogleChecksReportV1alphaDataMonitoringResultMetadata,
-      ),
-      endpoint: S.optional(GoogleChecksReportV1alphaEndpoint),
-      hitCount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataMonitoringEndpointResult",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringEndpointResult>;
+export const GoogleChecksReportV1alphaDataMonitoringEndpointResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "metadata": S.optional(GoogleChecksReportV1alphaDataMonitoringResultMetadata),
+  "endpoint": S.optional(GoogleChecksReportV1alphaEndpoint),
+  "hitCount": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataMonitoringEndpointResult" }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringEndpointResult>;
 
-export type GoogleChecksReportV1alphaDataMonitoringEndpointResultList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringEndpointResult>;
-export const GoogleChecksReportV1alphaDataMonitoringEndpointResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaDataMonitoringEndpointResult,
-  ) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringEndpointResultList>;
+export type GoogleChecksReportV1alphaDataMonitoringEndpointResultList = ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringEndpointResult>;
+export const GoogleChecksReportV1alphaDataMonitoringEndpointResultList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaDataMonitoringEndpointResult) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringEndpointResultList>;
 
 /** Information about a permission. */
 export interface GoogleChecksReportV1alphaPermission {
@@ -885,12 +586,10 @@ export interface GoogleChecksReportV1alphaPermission {
   id?: string;
 }
 export const GoogleChecksReportV1alphaPermission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaPermission",
-}) as any as S.Schema<GoogleChecksReportV1alphaPermission>;
+S.Struct({
+  "id": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaPermission" }) as any as S.Schema<GoogleChecksReportV1alphaPermission>;
 
 /** Information about a permission that was found in your app. */
 export interface GoogleChecksReportV1alphaDataMonitoringPermissionResult {
@@ -899,157 +598,63 @@ export interface GoogleChecksReportV1alphaDataMonitoringPermissionResult {
   /** The permission that was found in your app. */
   permission?: GoogleChecksReportV1alphaPermission;
 }
-export const GoogleChecksReportV1alphaDataMonitoringPermissionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadata: S.optional(
-        GoogleChecksReportV1alphaDataMonitoringResultMetadata,
-      ),
-      permission: S.optional(GoogleChecksReportV1alphaPermission),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataMonitoringPermissionResult",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
+export const GoogleChecksReportV1alphaDataMonitoringPermissionResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "metadata": S.optional(GoogleChecksReportV1alphaDataMonitoringResultMetadata),
+  "permission": S.optional(GoogleChecksReportV1alphaPermission),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataMonitoringPermissionResult" }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
 
-export type GoogleChecksReportV1alphaDataMonitoringPermissionResultList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
-export const GoogleChecksReportV1alphaDataMonitoringPermissionResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaDataMonitoringPermissionResult,
-  ) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringPermissionResultList>;
+export type GoogleChecksReportV1alphaDataMonitoringPermissionResultList = ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
+export const GoogleChecksReportV1alphaDataMonitoringPermissionResultList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaDataMonitoringPermissionResult) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringPermissionResultList>;
 
-export type GoogleChecksReportV1alphaDataMonitoringDataTypeResultDataTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
-  | "DATA_TYPE_APPROXIMATE_LOCATION"
-  | "DATA_TYPE_PRECISE_LOCATION"
-  | "DATA_TYPE_PERSONAL_NAME"
-  | "DATA_TYPE_EMAIL_ADDRESS"
-  | "DATA_TYPE_USER_IDS"
-  | "DATA_TYPE_PHYSICAL_ADDRESS"
-  | "DATA_TYPE_PHONE_NUMBER"
-  | "DATA_TYPE_RACE_AND_ETHNICITY"
-  | "DATA_TYPE_POLITICAL_OR_RELIGIOUS_BELIEFS"
-  | "DATA_TYPE_SEXUAL_ORIENTATION"
-  | "DATA_TYPE_OTHER_PERSONAL_INFO"
-  | "DATA_TYPE_PAYMENT_INFO"
-  | "DATA_TYPE_PURCHASE_HISTORY"
-  | "DATA_TYPE_CREDIT_SCORE"
-  | "DATA_TYPE_OTHER_FINANCIAL_INFO"
-  | "DATA_TYPE_HEALTH_INFO"
-  | "DATA_TYPE_FITNESS_INFO"
-  | "DATA_TYPE_EMAILS"
-  | "DATA_TYPE_TEXT_MESSAGES"
-  | "DATA_TYPE_OTHER_IN_APP_MESSAGES"
-  | "DATA_TYPE_PHOTOS"
-  | "DATA_TYPE_VIDEOS"
-  | "DATA_TYPE_VOICE_OR_SOUND_RECORDINGS"
-  | "DATA_TYPE_MUSIC_FILES"
-  | "DATA_TYPE_OTHER_AUDIO_FILES"
-  | "DATA_TYPE_FILES_AND_DOCS"
-  | "DATA_TYPE_CALENDAR_EVENTS"
-  | "DATA_TYPE_CONTACTS"
-  | "DATA_TYPE_APP_INTERACTIONS"
-  | "DATA_TYPE_IN_APP_SEARCH_HISTORY"
-  | "DATA_TYPE_INSTALLED_APPS"
-  | "DATA_TYPE_OTHER_USER_GENERATED_CONTENT"
-  | "DATA_TYPE_OTHER_ACTIONS"
-  | "DATA_TYPE_WEB_BROWSING_HISTORY"
-  | "DATA_TYPE_CRASH_LOGS"
-  | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS"
-  | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA"
-  | "DATA_TYPE_DEVICE_OR_OTHER_IDS"
-  | (string & {});
-export const GoogleChecksReportV1alphaDataMonitoringDataTypeResultDataTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksReportV1alphaDataMonitoringDataTypeResultDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "DATA_TYPE_APPROXIMATE_LOCATION" | "DATA_TYPE_PRECISE_LOCATION" | "DATA_TYPE_PERSONAL_NAME" | "DATA_TYPE_EMAIL_ADDRESS" | "DATA_TYPE_USER_IDS" | "DATA_TYPE_PHYSICAL_ADDRESS" | "DATA_TYPE_PHONE_NUMBER" | "DATA_TYPE_RACE_AND_ETHNICITY" | "DATA_TYPE_POLITICAL_OR_RELIGIOUS_BELIEFS" | "DATA_TYPE_SEXUAL_ORIENTATION" | "DATA_TYPE_OTHER_PERSONAL_INFO" | "DATA_TYPE_PAYMENT_INFO" | "DATA_TYPE_PURCHASE_HISTORY" | "DATA_TYPE_CREDIT_SCORE" | "DATA_TYPE_OTHER_FINANCIAL_INFO" | "DATA_TYPE_HEALTH_INFO" | "DATA_TYPE_FITNESS_INFO" | "DATA_TYPE_EMAILS" | "DATA_TYPE_TEXT_MESSAGES" | "DATA_TYPE_OTHER_IN_APP_MESSAGES" | "DATA_TYPE_PHOTOS" | "DATA_TYPE_VIDEOS" | "DATA_TYPE_VOICE_OR_SOUND_RECORDINGS" | "DATA_TYPE_MUSIC_FILES" | "DATA_TYPE_OTHER_AUDIO_FILES" | "DATA_TYPE_FILES_AND_DOCS" | "DATA_TYPE_CALENDAR_EVENTS" | "DATA_TYPE_CONTACTS" | "DATA_TYPE_APP_INTERACTIONS" | "DATA_TYPE_IN_APP_SEARCH_HISTORY" | "DATA_TYPE_INSTALLED_APPS" | "DATA_TYPE_OTHER_USER_GENERATED_CONTENT" | "DATA_TYPE_OTHER_ACTIONS" | "DATA_TYPE_WEB_BROWSING_HISTORY" | "DATA_TYPE_CRASH_LOGS" | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS" | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA" | "DATA_TYPE_DEVICE_OR_OTHER_IDS";
+export const GoogleChecksReportV1alphaDataMonitoringDataTypeResultDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Evidence based on the inclusion of a permission. */
 export interface GoogleChecksReportV1alphaDataTypePermissionEvidence {
   /** Permission declared by your app. */
   permission?: GoogleChecksReportV1alphaPermission;
 }
-export const GoogleChecksReportV1alphaDataTypePermissionEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permission: S.optional(GoogleChecksReportV1alphaPermission),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataTypePermissionEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataTypePermissionEvidence>;
+export const GoogleChecksReportV1alphaDataTypePermissionEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "permission": S.optional(GoogleChecksReportV1alphaPermission),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataTypePermissionEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaDataTypePermissionEvidence>;
 
-export type GoogleChecksReportV1alphaDataTypePermissionEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataTypePermissionEvidence>;
-export const GoogleChecksReportV1alphaDataTypePermissionEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaDataTypePermissionEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaDataTypePermissionEvidenceList>;
+export type GoogleChecksReportV1alphaDataTypePermissionEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaDataTypePermissionEvidence>;
+export const GoogleChecksReportV1alphaDataTypePermissionEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaDataTypePermissionEvidence) as any as S.Schema<GoogleChecksReportV1alphaDataTypePermissionEvidenceList>;
 
-export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceExfiltratedDataTypeEnum =
-    | "EXFILTRATED_DATA_TYPE_UNSPECIFIED"
-    | "EXFILTRATED_DATA_TYPE_PHONE_NUMBER"
-    | "EXFILTRATED_DATA_TYPE_PRECISE_LOCATION"
-    | "EXFILTRATED_DATA_TYPE_CONTACT_NAME"
-    | "EXFILTRATED_DATA_TYPE_CONTACT_EMAIL"
-    | "EXFILTRATED_DATA_TYPE_CONTACT_PHONE_NUMBER"
-    | "EXFILTRATED_DATA_TYPE_INCOMING_TEXT_NUMBER"
-    | "EXFILTRATED_DATA_TYPE_INCOMING_TEXT_MESSAGE"
-    | "EXFILTRATED_DATA_TYPE_OUTGOING_TEXT_NUMBER"
-    | "EXFILTRATED_DATA_TYPE_OUTGOING_TEXT_MESSAGE"
-    | "EXFILTRATED_DATA_TYPE_ADVERTISING_ID"
-    | "EXFILTRATED_DATA_TYPE_ANDROID_ID"
-    | "EXFILTRATED_DATA_TYPE_IMEI"
-    | "EXFILTRATED_DATA_TYPE_IMSI"
-    | "EXFILTRATED_DATA_TYPE_SIM_SERIAL_NUMBER"
-    | "EXFILTRATED_DATA_TYPE_SSID"
-    | "EXFILTRATED_DATA_TYPE_ACCOUNT"
-    | "EXFILTRATED_DATA_TYPE_EXTERNAL_ACCOUNT"
-    | "EXFILTRATED_DATA_TYPE_INSTALLED_PACKAGES"
-    | (string & {});
-export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceExfiltratedDataTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceExfiltratedDataTypeEnum = "EXFILTRATED_DATA_TYPE_UNSPECIFIED" | "EXFILTRATED_DATA_TYPE_PHONE_NUMBER" | "EXFILTRATED_DATA_TYPE_PRECISE_LOCATION" | "EXFILTRATED_DATA_TYPE_CONTACT_NAME" | "EXFILTRATED_DATA_TYPE_CONTACT_EMAIL" | "EXFILTRATED_DATA_TYPE_CONTACT_PHONE_NUMBER" | "EXFILTRATED_DATA_TYPE_INCOMING_TEXT_NUMBER" | "EXFILTRATED_DATA_TYPE_INCOMING_TEXT_MESSAGE" | "EXFILTRATED_DATA_TYPE_OUTGOING_TEXT_NUMBER" | "EXFILTRATED_DATA_TYPE_OUTGOING_TEXT_MESSAGE" | "EXFILTRATED_DATA_TYPE_ADVERTISING_ID" | "EXFILTRATED_DATA_TYPE_ANDROID_ID" | "EXFILTRATED_DATA_TYPE_IMEI" | "EXFILTRATED_DATA_TYPE_IMSI" | "EXFILTRATED_DATA_TYPE_SIM_SERIAL_NUMBER" | "EXFILTRATED_DATA_TYPE_SSID" | "EXFILTRATED_DATA_TYPE_ACCOUNT" | "EXFILTRATED_DATA_TYPE_EXTERNAL_ACCOUNT" | "EXFILTRATED_DATA_TYPE_INSTALLED_PACKAGES";
+export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceExfiltratedDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of SDK that is attributed to the exfiltration. */
 export interface GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk {
   /** SDK that is attributed to the exfiltration. */
   sdk?: GoogleChecksReportV1alphaSdk;
 }
-export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sdk: S.optional(GoogleChecksReportV1alphaSdk),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
+export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sdk": S.optional(GoogleChecksReportV1alphaSdk),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk" }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
 
-export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
-export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk,
-  ) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList>;
+export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList = ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
+export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList>;
 
 /** Details of the endpoint the data type was sent to. */
 export interface GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails {
   /** Endpoint the data type was sent to. */
   endpoint?: GoogleChecksReportV1alphaEndpoint;
 }
-export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endpoint: S.optional(GoogleChecksReportV1alphaEndpoint),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails>;
+export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "endpoint": S.optional(GoogleChecksReportV1alphaEndpoint),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails" }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails>;
 
-export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails>;
-export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails,
-  ) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList>;
+export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList = ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails>;
+export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList>;
 
 /** Evidence based on an endpoint that data was sent to. */
 export interface GoogleChecksReportV1alphaDataTypeEndpointEvidence {
@@ -1060,29 +665,16 @@ export interface GoogleChecksReportV1alphaDataTypeEndpointEvidence {
   /** Endpoints the data type was sent to. */
   endpointDetails?: GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList;
 }
-export const GoogleChecksReportV1alphaDataTypeEndpointEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      exfiltratedDataType: S.optional(
-        GoogleChecksReportV1alphaDataTypeEndpointEvidenceExfiltratedDataTypeEnum,
-      ),
-      attributedSdks: S.optional(
-        GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList,
-      ),
-      endpointDetails: S.optional(
-        GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
+export const GoogleChecksReportV1alphaDataTypeEndpointEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "exfiltratedDataType": S.optional(GoogleChecksReportV1alphaDataTypeEndpointEvidenceExfiltratedDataTypeEnum),
+  "attributedSdks": S.optional(GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList),
+  "endpointDetails": S.optional(GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
 
-export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
-export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaDataTypeEndpointEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceList>;
+export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
+export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaDataTypeEndpointEvidence) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceList>;
 
 /** Information about a policy fragment. */
 export interface GoogleChecksReportV1alphaPolicyFragment {
@@ -1091,36 +683,26 @@ export interface GoogleChecksReportV1alphaPolicyFragment {
   /** HTML content. */
   htmlContent?: string;
 }
-export const GoogleChecksReportV1alphaPolicyFragment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sourceUri: S.optional(S.String),
-      htmlContent: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaPolicyFragment",
-}) as any as S.Schema<GoogleChecksReportV1alphaPolicyFragment>;
+export const GoogleChecksReportV1alphaPolicyFragment = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sourceUri": S.optional(S.String),
+  "htmlContent": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaPolicyFragment" }) as any as S.Schema<GoogleChecksReportV1alphaPolicyFragment>;
 
 /** Evidence based on information from the privacy policy. */
 export interface GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence {
   /** The privacy policy fragment that implies collection of the data type. */
   policyFragment?: GoogleChecksReportV1alphaPolicyFragment;
 }
-export const GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyFragment: S.optional(GoogleChecksReportV1alphaPolicyFragment),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence>;
+export const GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "policyFragment": S.optional(GoogleChecksReportV1alphaPolicyFragment),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence>;
 
-export type GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence>;
-export const GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList>;
+export type GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence>;
+export const GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence) as any as S.Schema<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList>;
 
 /** Evidence collected about a data type. */
 export interface GoogleChecksReportV1alphaDataTypeEvidence {
@@ -1131,22 +713,13 @@ export interface GoogleChecksReportV1alphaDataTypeEvidence {
   /** List of privacy policy texts that imply collection of the data type. */
   privacyPolicyTexts?: GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList;
 }
-export const GoogleChecksReportV1alphaDataTypeEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permissions: S.optional(
-        GoogleChecksReportV1alphaDataTypePermissionEvidenceList,
-      ),
-      endpoints: S.optional(
-        GoogleChecksReportV1alphaDataTypeEndpointEvidenceList,
-      ),
-      privacyPolicyTexts: S.optional(
-        GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataTypeEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEvidence>;
+export const GoogleChecksReportV1alphaDataTypeEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "permissions": S.optional(GoogleChecksReportV1alphaDataTypePermissionEvidenceList),
+  "endpoints": S.optional(GoogleChecksReportV1alphaDataTypeEndpointEvidenceList),
+  "privacyPolicyTexts": S.optional(GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataTypeEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEvidence>;
 
 /** Information about a data type that was found in your app. */
 export interface GoogleChecksReportV1alphaDataMonitoringDataTypeResult {
@@ -1157,27 +730,16 @@ export interface GoogleChecksReportV1alphaDataMonitoringDataTypeResult {
   /** Evidence collected about the data type. */
   dataTypeEvidence?: GoogleChecksReportV1alphaDataTypeEvidence;
 }
-export const GoogleChecksReportV1alphaDataMonitoringDataTypeResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadata: S.optional(
-        GoogleChecksReportV1alphaDataMonitoringResultMetadata,
-      ),
-      dataType: S.optional(
-        GoogleChecksReportV1alphaDataMonitoringDataTypeResultDataTypeEnum,
-      ),
-      dataTypeEvidence: S.optional(GoogleChecksReportV1alphaDataTypeEvidence),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataMonitoringDataTypeResult",
-  }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringDataTypeResult>;
+export const GoogleChecksReportV1alphaDataMonitoringDataTypeResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "metadata": S.optional(GoogleChecksReportV1alphaDataMonitoringResultMetadata),
+  "dataType": S.optional(GoogleChecksReportV1alphaDataMonitoringDataTypeResultDataTypeEnum),
+  "dataTypeEvidence": S.optional(GoogleChecksReportV1alphaDataTypeEvidence),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataMonitoringDataTypeResult" }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringDataTypeResult>;
 
-export type GoogleChecksReportV1alphaDataMonitoringDataTypeResultList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringDataTypeResult>;
-export const GoogleChecksReportV1alphaDataMonitoringDataTypeResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaDataMonitoringDataTypeResult,
-  ) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringDataTypeResultList>;
+export type GoogleChecksReportV1alphaDataMonitoringDataTypeResultList = ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringDataTypeResult>;
+export const GoogleChecksReportV1alphaDataMonitoringDataTypeResultList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaDataMonitoringDataTypeResult) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringDataTypeResultList>;
 
 /** Represents the data monitoring section of the report. */
 export interface GoogleChecksReportV1alphaDataMonitoring {
@@ -1190,31 +752,17 @@ export interface GoogleChecksReportV1alphaDataMonitoring {
   /** Data types that your app shares or collects. */
   dataTypes?: GoogleChecksReportV1alphaDataMonitoringDataTypeResultList;
 }
-export const GoogleChecksReportV1alphaDataMonitoring = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sdks: S.optional(GoogleChecksReportV1alphaDataMonitoringSdkResultList),
-      endpoints: S.optional(
-        GoogleChecksReportV1alphaDataMonitoringEndpointResultList,
-      ),
-      permissions: S.optional(
-        GoogleChecksReportV1alphaDataMonitoringPermissionResultList,
-      ),
-      dataTypes: S.optional(
-        GoogleChecksReportV1alphaDataMonitoringDataTypeResultList,
-      ),
-    }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaDataMonitoring",
-}) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoring>;
+export const GoogleChecksReportV1alphaDataMonitoring = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sdks": S.optional(GoogleChecksReportV1alphaDataMonitoringSdkResultList),
+  "endpoints": S.optional(GoogleChecksReportV1alphaDataMonitoringEndpointResultList),
+  "permissions": S.optional(GoogleChecksReportV1alphaDataMonitoringPermissionResultList),
+  "dataTypes": S.optional(GoogleChecksReportV1alphaDataMonitoringDataTypeResultList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaDataMonitoring" }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoring>;
 
-export type GoogleChecksReportV1alphaAppBundleReleaseTypeEnum =
-  | "APP_BUNDLE_RELEASE_TYPE_UNSPECIFIED"
-  | "PUBLIC"
-  | "PRE_RELEASE"
-  | (string & {});
-export const GoogleChecksReportV1alphaAppBundleReleaseTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksReportV1alphaAppBundleReleaseTypeEnum = "APP_BUNDLE_RELEASE_TYPE_UNSPECIFIED" | "PUBLIC" | "PRE_RELEASE";
+export const GoogleChecksReportV1alphaAppBundleReleaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the analyzed app bundle. */
 export interface GoogleChecksReportV1alphaAppBundle {
@@ -1230,32 +778,20 @@ export interface GoogleChecksReportV1alphaAppBundle {
   codeReferenceId?: string;
 }
 export const GoogleChecksReportV1alphaAppBundle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    releaseType: S.optional(GoogleChecksReportV1alphaAppBundleReleaseTypeEnum),
-    version: S.optional(S.String),
-    versionId: S.optional(S.String),
-    bundleId: S.optional(S.String),
-    codeReferenceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaAppBundle",
-}) as any as S.Schema<GoogleChecksReportV1alphaAppBundle>;
+S.Struct({
+  "releaseType": S.optional(GoogleChecksReportV1alphaAppBundleReleaseTypeEnum),
+  "version": S.optional(S.String),
+  "versionId": S.optional(S.String),
+  "bundleId": S.optional(S.String),
+  "codeReferenceId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaAppBundle" }) as any as S.Schema<GoogleChecksReportV1alphaAppBundle>;
 
-export type GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum =
-  | "CHECK_STATE_BADGE_UNSPECIFIED"
-  | "NEWLY_FAILING"
-  | "RECENTLY_FAILING"
-  | "RESOLVED"
-  | (string & {});
-export const GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum = "CHECK_STATE_BADGE_UNSPECIFIED" | "NEWLY_FAILING" | "RECENTLY_FAILING" | "RESOLVED";
+export const GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum>;
-export const GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList>;
+export type GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList = ReadonlyArray<GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum>;
+export const GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum) as any as S.Schema<GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList>;
 
 /** Additional information about the check state in relation to past reports. */
 export interface GoogleChecksReportV1alphaCheckStateMetadata {
@@ -1266,100 +802,41 @@ export interface GoogleChecksReportV1alphaCheckStateMetadata {
   /** Indicators related to the check state. */
   badges?: GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList;
 }
-export const GoogleChecksReportV1alphaCheckStateMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastFailingTime: S.optional(S.String),
-      firstFailingTime: S.optional(S.String),
-      badges: S.optional(
-        GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckStateMetadata",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckStateMetadata>;
+export const GoogleChecksReportV1alphaCheckStateMetadata = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "lastFailingTime": S.optional(S.String),
+  "firstFailingTime": S.optional(S.String),
+  "badges": S.optional(GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckStateMetadata" }) as any as S.Schema<GoogleChecksReportV1alphaCheckStateMetadata>;
 
 /** Evidence related to data in transit detected in your app. */
 export interface GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo {
   /** The URL contacted by your app. This includes the protocol, domain, and URL parameters. */
   uri?: string;
 }
-export const GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
+export const GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo" }) as any as S.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
 
-export type GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
-export const GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList>;
+export type GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList = ReadonlyArray<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
+export const GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo) as any as S.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList>;
 
 /** Evidence concerning data security. */
 export interface GoogleChecksReportV1alphaCheckDataSecurityEvidence {
   /** Evidence related to data in transit. */
   dataInTransitInfo?: GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList;
 }
-export const GoogleChecksReportV1alphaCheckDataSecurityEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataInTransitInfo: S.optional(
-        GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckDataSecurityEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidence>;
+export const GoogleChecksReportV1alphaCheckDataSecurityEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "dataInTransitInfo": S.optional(GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckDataSecurityEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidence>;
 
-export type GoogleChecksReportV1alphaCheckDataTypeEvidenceDataTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
-  | "DATA_TYPE_APPROXIMATE_LOCATION"
-  | "DATA_TYPE_PRECISE_LOCATION"
-  | "DATA_TYPE_PERSONAL_NAME"
-  | "DATA_TYPE_EMAIL_ADDRESS"
-  | "DATA_TYPE_USER_IDS"
-  | "DATA_TYPE_PHYSICAL_ADDRESS"
-  | "DATA_TYPE_PHONE_NUMBER"
-  | "DATA_TYPE_RACE_AND_ETHNICITY"
-  | "DATA_TYPE_POLITICAL_OR_RELIGIOUS_BELIEFS"
-  | "DATA_TYPE_SEXUAL_ORIENTATION"
-  | "DATA_TYPE_OTHER_PERSONAL_INFO"
-  | "DATA_TYPE_PAYMENT_INFO"
-  | "DATA_TYPE_PURCHASE_HISTORY"
-  | "DATA_TYPE_CREDIT_SCORE"
-  | "DATA_TYPE_OTHER_FINANCIAL_INFO"
-  | "DATA_TYPE_HEALTH_INFO"
-  | "DATA_TYPE_FITNESS_INFO"
-  | "DATA_TYPE_EMAILS"
-  | "DATA_TYPE_TEXT_MESSAGES"
-  | "DATA_TYPE_OTHER_IN_APP_MESSAGES"
-  | "DATA_TYPE_PHOTOS"
-  | "DATA_TYPE_VIDEOS"
-  | "DATA_TYPE_VOICE_OR_SOUND_RECORDINGS"
-  | "DATA_TYPE_MUSIC_FILES"
-  | "DATA_TYPE_OTHER_AUDIO_FILES"
-  | "DATA_TYPE_FILES_AND_DOCS"
-  | "DATA_TYPE_CALENDAR_EVENTS"
-  | "DATA_TYPE_CONTACTS"
-  | "DATA_TYPE_APP_INTERACTIONS"
-  | "DATA_TYPE_IN_APP_SEARCH_HISTORY"
-  | "DATA_TYPE_INSTALLED_APPS"
-  | "DATA_TYPE_OTHER_USER_GENERATED_CONTENT"
-  | "DATA_TYPE_OTHER_ACTIONS"
-  | "DATA_TYPE_WEB_BROWSING_HISTORY"
-  | "DATA_TYPE_CRASH_LOGS"
-  | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS"
-  | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA"
-  | "DATA_TYPE_DEVICE_OR_OTHER_IDS"
-  | (string & {});
-export const GoogleChecksReportV1alphaCheckDataTypeEvidenceDataTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksReportV1alphaCheckDataTypeEvidenceDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "DATA_TYPE_APPROXIMATE_LOCATION" | "DATA_TYPE_PRECISE_LOCATION" | "DATA_TYPE_PERSONAL_NAME" | "DATA_TYPE_EMAIL_ADDRESS" | "DATA_TYPE_USER_IDS" | "DATA_TYPE_PHYSICAL_ADDRESS" | "DATA_TYPE_PHONE_NUMBER" | "DATA_TYPE_RACE_AND_ETHNICITY" | "DATA_TYPE_POLITICAL_OR_RELIGIOUS_BELIEFS" | "DATA_TYPE_SEXUAL_ORIENTATION" | "DATA_TYPE_OTHER_PERSONAL_INFO" | "DATA_TYPE_PAYMENT_INFO" | "DATA_TYPE_PURCHASE_HISTORY" | "DATA_TYPE_CREDIT_SCORE" | "DATA_TYPE_OTHER_FINANCIAL_INFO" | "DATA_TYPE_HEALTH_INFO" | "DATA_TYPE_FITNESS_INFO" | "DATA_TYPE_EMAILS" | "DATA_TYPE_TEXT_MESSAGES" | "DATA_TYPE_OTHER_IN_APP_MESSAGES" | "DATA_TYPE_PHOTOS" | "DATA_TYPE_VIDEOS" | "DATA_TYPE_VOICE_OR_SOUND_RECORDINGS" | "DATA_TYPE_MUSIC_FILES" | "DATA_TYPE_OTHER_AUDIO_FILES" | "DATA_TYPE_FILES_AND_DOCS" | "DATA_TYPE_CALENDAR_EVENTS" | "DATA_TYPE_CONTACTS" | "DATA_TYPE_APP_INTERACTIONS" | "DATA_TYPE_IN_APP_SEARCH_HISTORY" | "DATA_TYPE_INSTALLED_APPS" | "DATA_TYPE_OTHER_USER_GENERATED_CONTENT" | "DATA_TYPE_OTHER_ACTIONS" | "DATA_TYPE_WEB_BROWSING_HISTORY" | "DATA_TYPE_CRASH_LOGS" | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS" | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA" | "DATA_TYPE_DEVICE_OR_OTHER_IDS";
+export const GoogleChecksReportV1alphaCheckDataTypeEvidenceDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Evidence concerning a data type that was found in your app. */
 export interface GoogleChecksReportV1alphaCheckDataTypeEvidence {
@@ -1368,24 +845,15 @@ export interface GoogleChecksReportV1alphaCheckDataTypeEvidence {
   /** Evidence collected about the data type. */
   dataTypeEvidence?: GoogleChecksReportV1alphaDataTypeEvidence;
 }
-export const GoogleChecksReportV1alphaCheckDataTypeEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataType: S.optional(
-        GoogleChecksReportV1alphaCheckDataTypeEvidenceDataTypeEnum,
-      ),
-      dataTypeEvidence: S.optional(GoogleChecksReportV1alphaDataTypeEvidence),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckDataTypeEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckDataTypeEvidence>;
+export const GoogleChecksReportV1alphaCheckDataTypeEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "dataType": S.optional(GoogleChecksReportV1alphaCheckDataTypeEvidenceDataTypeEnum),
+  "dataTypeEvidence": S.optional(GoogleChecksReportV1alphaDataTypeEvidence),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckDataTypeEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckDataTypeEvidence>;
 
-export type GoogleChecksReportV1alphaCheckDataTypeEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckDataTypeEvidence>;
-export const GoogleChecksReportV1alphaCheckDataTypeEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckDataTypeEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckDataTypeEvidenceList>;
+export type GoogleChecksReportV1alphaCheckDataTypeEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaCheckDataTypeEvidence>;
+export const GoogleChecksReportV1alphaCheckDataTypeEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckDataTypeEvidence) as any as S.Schema<GoogleChecksReportV1alphaCheckDataTypeEvidenceList>;
 
 /** Evidence concerning an SDK issue. */
 export interface GoogleChecksReportV1alphaCheckSdkIssueEvidence {
@@ -1394,243 +862,155 @@ export interface GoogleChecksReportV1alphaCheckSdkIssueEvidence {
   /** The SDK version. */
   sdkVersion?: string;
 }
-export const GoogleChecksReportV1alphaCheckSdkIssueEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sdk: S.optional(GoogleChecksReportV1alphaSdk),
-      sdkVersion: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckSdkIssueEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkIssueEvidence>;
+export const GoogleChecksReportV1alphaCheckSdkIssueEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sdk": S.optional(GoogleChecksReportV1alphaSdk),
+  "sdkVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckSdkIssueEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkIssueEvidence>;
 
-export type GoogleChecksReportV1alphaCheckSdkIssueEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckSdkIssueEvidence>;
-export const GoogleChecksReportV1alphaCheckSdkIssueEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckSdkIssueEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkIssueEvidenceList>;
+export type GoogleChecksReportV1alphaCheckSdkIssueEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaCheckSdkIssueEvidence>;
+export const GoogleChecksReportV1alphaCheckSdkIssueEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckSdkIssueEvidence) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkIssueEvidenceList>;
 
 /** Evidence concerning a permission that was found in your app. */
 export interface GoogleChecksReportV1alphaCheckPermissionEvidence {
   /** The permission that was found in your app. */
   permission?: GoogleChecksReportV1alphaPermission;
 }
-export const GoogleChecksReportV1alphaCheckPermissionEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permission: S.optional(GoogleChecksReportV1alphaPermission),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckPermissionEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionEvidence>;
+export const GoogleChecksReportV1alphaCheckPermissionEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "permission": S.optional(GoogleChecksReportV1alphaPermission),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckPermissionEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionEvidence>;
 
-export type GoogleChecksReportV1alphaCheckPermissionEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionEvidence>;
-export const GoogleChecksReportV1alphaCheckPermissionEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckPermissionEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionEvidenceList>;
+export type GoogleChecksReportV1alphaCheckPermissionEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionEvidence>;
+export const GoogleChecksReportV1alphaCheckPermissionEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckPermissionEvidence) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionEvidenceList>;
 
 /** Details of the SDK in violation. */
 export interface GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails {
   /** The SDK in violation. */
   sdk?: GoogleChecksReportV1alphaSdk;
 }
-export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sdk: S.optional(GoogleChecksReportV1alphaSdk),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
+export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sdk": S.optional(GoogleChecksReportV1alphaSdk),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails" }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
 
-export type GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
-export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList>;
+export type GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList = ReadonlyArray<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
+export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList>;
 
 /** Evidence collected from SDK restriction violation analysis. */
 export interface GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence {
   /** SDKs in violation. */
   sdkDetails?: GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList;
 }
-export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sdkDetails: S.optional(
-        GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence>;
+export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sdkDetails": S.optional(GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence>;
 
-export type GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence>;
-export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceList>;
+export type GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence>;
+export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceList>;
 
 /** Evidence concerning an endpoint that was contacted by your app. */
 export interface GoogleChecksReportV1alphaCheckEndpointEvidence {
   /** The endpoint that was contacted by your app. */
   endpoint?: GoogleChecksReportV1alphaEndpoint;
 }
-export const GoogleChecksReportV1alphaCheckEndpointEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endpoint: S.optional(GoogleChecksReportV1alphaEndpoint),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckEndpointEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointEvidence>;
+export const GoogleChecksReportV1alphaCheckEndpointEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "endpoint": S.optional(GoogleChecksReportV1alphaEndpoint),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckEndpointEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointEvidence>;
 
-export type GoogleChecksReportV1alphaCheckEndpointEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointEvidence>;
-export const GoogleChecksReportV1alphaCheckEndpointEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckEndpointEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointEvidenceList>;
+export type GoogleChecksReportV1alphaCheckEndpointEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointEvidence>;
+export const GoogleChecksReportV1alphaCheckEndpointEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckEndpointEvidence) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointEvidenceList>;
 
 /** Details of the permission in violation. */
 export interface GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails {
   /** The permission in violation. */
   permission?: GoogleChecksReportV1alphaPermission;
 }
-export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permission: S.optional(GoogleChecksReportV1alphaPermission),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
+export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "permission": S.optional(GoogleChecksReportV1alphaPermission),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails" }) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
 
-export type GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
-export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList>;
+export type GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList = ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
+export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList>;
 
 /** Evidence collected from permission restriction violation analysis. */
 export interface GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence {
   /** Permissions in violation. */
   permissionDetails?: GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList;
 }
-export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permissionDetails: S.optional(
-        GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
+export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "permissionDetails": S.optional(GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
 
-export type GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
-export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenceList>;
+export type GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
+export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenceList>;
 
 /** Evidence collected from your privacy policy(s). */
 export interface GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence {
   /** The privacy policy fragment that was used during the check. */
   policyFragment?: GoogleChecksReportV1alphaPolicyFragment;
 }
-export const GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyFragment: S.optional(GoogleChecksReportV1alphaPolicyFragment),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence>;
+export const GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "policyFragment": S.optional(GoogleChecksReportV1alphaPolicyFragment),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence>;
 
-export type GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence>;
-export const GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidenceList>;
+export type GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence>;
+export const GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence) as any as S.Schema<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidenceList>;
 
 /** Details of the endpoint in violation. */
 export interface GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails {
   /** The endpoint in violation. */
   endpoint?: GoogleChecksReportV1alphaEndpoint;
 }
-export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endpoint: S.optional(GoogleChecksReportV1alphaEndpoint),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
+export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "endpoint": S.optional(GoogleChecksReportV1alphaEndpoint),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails" }) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
 
-export type GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
-export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList>;
+export type GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList = ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
+export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList>;
 
 /** Evidence collected from endpoint restriction violation analysis. */
 export interface GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence {
   /** Endpoints in violation. */
   endpointDetails?: GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList;
 }
-export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endpointDetails: S.optional(
-        GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence>;
+export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "endpointDetails": S.optional(GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence>;
 
-export type GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence>;
-export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceList>;
+export type GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence>;
+export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceList>;
 
 /** Evidence conerning an SDK that was found in your app. */
 export interface GoogleChecksReportV1alphaCheckSdkEvidence {
   /** The SDK that was found in your app. */
   sdk?: GoogleChecksReportV1alphaSdk;
 }
-export const GoogleChecksReportV1alphaCheckSdkEvidence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sdk: S.optional(GoogleChecksReportV1alphaSdk),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckSdkEvidence",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkEvidence>;
+export const GoogleChecksReportV1alphaCheckSdkEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sdk": S.optional(GoogleChecksReportV1alphaSdk),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckSdkEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkEvidence>;
 
-export type GoogleChecksReportV1alphaCheckSdkEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckSdkEvidence>;
-export const GoogleChecksReportV1alphaCheckSdkEvidenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckSdkEvidence,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkEvidenceList>;
+export type GoogleChecksReportV1alphaCheckSdkEvidenceList = ReadonlyArray<GoogleChecksReportV1alphaCheckSdkEvidence>;
+export const GoogleChecksReportV1alphaCheckSdkEvidenceList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckSdkEvidence) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkEvidenceList>;
 
 /** Evidence for a check. */
 export interface GoogleChecksReportV1alphaCheckEvidence {
@@ -1655,205 +1035,49 @@ export interface GoogleChecksReportV1alphaCheckEvidence {
   /** Evidence concerning SDKs that were found in your app. */
   sdks?: GoogleChecksReportV1alphaCheckSdkEvidenceList;
 }
-export const GoogleChecksReportV1alphaCheckEvidence = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dataSecurity: S.optional(
-        GoogleChecksReportV1alphaCheckDataSecurityEvidence,
-      ),
-      dataTypes: S.optional(GoogleChecksReportV1alphaCheckDataTypeEvidenceList),
-      sdkIssues: S.optional(GoogleChecksReportV1alphaCheckSdkIssueEvidenceList),
-      permissions: S.optional(
-        GoogleChecksReportV1alphaCheckPermissionEvidenceList,
-      ),
-      sdkRestrictionViolations: S.optional(
-        GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceList,
-      ),
-      endpoints: S.optional(GoogleChecksReportV1alphaCheckEndpointEvidenceList),
-      permissionRestrictionViolations: S.optional(
-        GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenceList,
-      ),
-      privacyPolicyTexts: S.optional(
-        GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidenceList,
-      ),
-      endpointRestrictionViolations: S.optional(
-        GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceList,
-      ),
-      sdks: S.optional(GoogleChecksReportV1alphaCheckSdkEvidenceList),
-    }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaCheckEvidence",
-}) as any as S.Schema<GoogleChecksReportV1alphaCheckEvidence>;
+export const GoogleChecksReportV1alphaCheckEvidence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "dataSecurity": S.optional(GoogleChecksReportV1alphaCheckDataSecurityEvidence),
+  "dataTypes": S.optional(GoogleChecksReportV1alphaCheckDataTypeEvidenceList),
+  "sdkIssues": S.optional(GoogleChecksReportV1alphaCheckSdkIssueEvidenceList),
+  "permissions": S.optional(GoogleChecksReportV1alphaCheckPermissionEvidenceList),
+  "sdkRestrictionViolations": S.optional(GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceList),
+  "endpoints": S.optional(GoogleChecksReportV1alphaCheckEndpointEvidenceList),
+  "permissionRestrictionViolations": S.optional(GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenceList),
+  "privacyPolicyTexts": S.optional(GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidenceList),
+  "endpointRestrictionViolations": S.optional(GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceList),
+  "sdks": S.optional(GoogleChecksReportV1alphaCheckSdkEvidenceList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckEvidence" }) as any as S.Schema<GoogleChecksReportV1alphaCheckEvidence>;
 
-export type GoogleChecksReportV1alphaCheckStateEnum =
-  | "CHECK_STATE_UNSPECIFIED"
-  | "PASSED"
-  | "FAILED"
-  | "UNCHECKED"
-  | (string & {});
+export type GoogleChecksReportV1alphaCheckStateEnum = "CHECK_STATE_UNSPECIFIED" | "PASSED" | "FAILED" | "UNCHECKED";
 export const GoogleChecksReportV1alphaCheckStateEnum = /*@__PURE__*/ S.String;
 
-export type GoogleChecksReportV1alphaCheckTypeEnum =
-  | "CHECK_TYPE_UNSPECIFIED"
-  | "STORE_LISTING_PRIVACY_POLICY_LINK_PRESENT"
-  | "PRIVACY_POLICY_UPDATE_DATE_RECENT"
-  | "PRIVACY_POLICY_GDPR_GENERAL_RULES"
-  | "PRIVACY_POLICY_CCPA_GENERAL_RULES"
-  | "PRIVACY_POLICY_COLLECTION_CATEGORIES_DATA_NOTICE"
-  | "PRIVACY_POLICY_PROCESSING_PURPOSE_DATA_NOTICE"
-  | "PRIVACY_POLICY_SHARING_CATEGORIES_DATA_NOTICE"
-  | "PRIVACY_POLICY_DATA_RETENTION_NOTICE"
-  | "PRIVACY_POLICY_CONTACT_DETAILS_NOTICE"
-  | "PRIVACY_POLICY_CHILDREN_GENERAL_RULES"
-  | "PRIVACY_POLICY_DATA_TYPE_PHONE_NUMBER"
-  | "PRIVACY_POLICY_DATA_TYPE_USER_ACCOUNT_INFO"
-  | "PRIVACY_POLICY_DATA_TYPE_PRECISE_LOCATION"
-  | "PRIVACY_POLICY_DATA_TYPE_DEVICE_ID"
-  | "PRIVACY_POLICY_DATA_TYPE_APPS_ON_DEVICE"
-  | "PRIVACY_POLICY_DATA_TYPE_CONTACTS"
-  | "PRIVACY_POLICY_DATA_TYPE_TEXT_MESSAGES"
-  | "PRIVACY_POLICY_DATA_TYPE_PII"
-  | "PRIVACY_POLICY_DATA_TYPE_PII_CATEGORIES"
-  | "PRIVACY_POLICY_DATA_TYPE_HEALTH_AND_BIOMETRIC"
-  | "PRIVACY_POLICY_BRAZIL_LGPD_GENERAL_RULES"
-  | "PRIVACY_POLICY_VIRGINIA_VCDPA_GENERAL_RULES"
-  | "PRIVACY_POLICY_AFFILIATION_MENTION"
-  | "PRIVACY_POLICY_RIGHT_TO_DELETE_NOTICE"
-  | "PRIVACY_POLICY_RIGHT_TO_ACCESS_NOTICE"
-  | "PRIVACY_POLICY_RIGHT_TO_RECTIFICATION_NOTICE"
-  | "PRIVACY_POLICY_RIGHT_TO_KNOW_ABOUT_SELLING_NOTICE"
-  | "PRIVACY_POLICY_RIGHT_TO_KNOW_ABOUT_SHARING_NOTICE"
-  | "PRIVACY_POLICY_RIGHT_TO_OPT_OUT_FROM_SELLING_NOTICE"
-  | "PRIVACY_POLICY_METHOD_TO_OPT_OUT_FROM_SELLING_OR_SHARING_NOTICE"
-  | "PRIVACY_POLICY_DATA_CONTROLLER_IDENTITY"
-  | "PRIVACY_POLICY_DPO_CONTACT_DETAILS"
-  | "PRIVACY_POLICY_RIGHT_TO_LODGE_A_COMPLAINT"
-  | "PRIVACY_POLICY_LEGAL_BASIS"
-  | "PRIVACY_POLICY_CHILDREN_INFO_COLLECTION"
-  | "PRIVACY_POLICY_CHILDREN_INFO_USAGE_PURPOSES"
-  | "PRIVACY_POLICY_CHILDREN_INFO_DISCLOSURE_PRACTICES"
-  | "PRIVACY_POLICY_CHILDREN_INFO_PUBLICITY"
-  | "PRIVACY_POLICY_PARENTS_METHOD_OF_INFO_DELETION"
-  | "PRIVACY_POLICY_PARENTS_METHOD_TO_INFO_REVIEW"
-  | "PRIVACY_POLICY_PARENTS_METHOD_TO_STOP_FURTHER_INFO_COLLECTION_USE"
-  | "PRIVACY_POLICY_PARENTS_RIGHT_TO_INFO_DELETION"
-  | "PRIVACY_POLICY_PARENTS_RIGHT_TO_INFO_REVIEW"
-  | "PRIVACY_POLICY_PARENTS_RIGHT_TO_STOP_FURTHER_INFO_COLLECTION_USE"
-  | "PRIVACY_POLICY_PSL_APPROXIMATE_LOCATION"
-  | "PRIVACY_POLICY_PSL_PRECISE_LOCATION"
-  | "PRIVACY_POLICY_PSL_NAME"
-  | "PRIVACY_POLICY_PSL_EMAIL_ADDRESS"
-  | "PRIVACY_POLICY_PSL_USER_IDENTIFIERS"
-  | "PRIVACY_POLICY_PSL_ADDRESS"
-  | "PRIVACY_POLICY_PSL_PHONE_NUMBER"
-  | "PRIVACY_POLICY_PSL_RACE_AND_ETHNICITY"
-  | "PRIVACY_POLICY_PSL_CREDIT_SCORE"
-  | "PRIVACY_POLICY_PSL_PURCHASE_HISTORY"
-  | "PRIVACY_POLICY_PSL_HEALTH_INFO"
-  | "PRIVACY_POLICY_PSL_FITNESS_INFO"
-  | "PRIVACY_POLICY_PSL_EMAIL_MESSAGES"
-  | "PRIVACY_POLICY_PSL_TEXT_MESSAGES"
-  | "PRIVACY_POLICY_PSL_PHOTOS"
-  | "PRIVACY_POLICY_PSL_VIDEOS"
-  | "PRIVACY_POLICY_PSL_MUSIC_FILES"
-  | "PRIVACY_POLICY_PSL_VOICE_OR_SOUND_RECORDINGS"
-  | "PRIVACY_POLICY_PSL_FILES_AND_DOCS"
-  | "PRIVACY_POLICY_PSL_CALENDAR_EVENTS"
-  | "PRIVACY_POLICY_PSL_CONTACTS"
-  | "PRIVACY_POLICY_PSL_APP_INTERACTIONS"
-  | "PRIVACY_POLICY_PSL_IN_APP_SEARCH_HISTORY"
-  | "PRIVACY_POLICY_PSL_WEB_BROWSING_HISTORY"
-  | "PRIVACY_POLICY_PSL_INSTALLED_APPS"
-  | "PRIVACY_POLICY_PSL_CRASH_LOGS"
-  | "PRIVACY_POLICY_PSL_DIAGNOSTICS"
-  | "PRIVACY_POLICY_PSL_DEVICE_OR_OTHER_IDS"
-  | "DATA_MONITORING_NEW_ENDPOINT"
-  | "DATA_MONITORING_NEW_PERMISSION"
-  | "DATA_MONITORING_NEW_DATA_TYPE"
-  | "DATA_MONITORING_NEW_SDK"
-  | "DATA_MONITORING_ENCRYPTION"
-  | "DATA_MONITORING_NEW_DATA_TYPE_VERSION_DIFF"
-  | "DATA_MONITORING_NEW_ENDPOINT_VERSION_DIFF"
-  | "DATA_MONITORING_NEW_PERMISSION_VERSION_DIFF"
-  | "DATA_MONITORING_NEW_SDK_VERSION_DIFF"
-  | "DATA_MONITORING_SDKS_DENYLIST_VIOLATION"
-  | "DATA_MONITORING_PERMISSIONS_DENYLIST_VIOLATION"
-  | "DATA_MONITORING_ENDPOINTS_DENYLIST_VIOLATION"
-  | "DATA_MONITORING_OUTDATED_SDK_VERSION"
-  | "DATA_MONITORING_CRITICAL_SDK_ISSUE"
-  | "PRIVACY_POLICY_DATA_TYPE_SENSITIVE_INFO"
-  | "DATA_MONITORING_PII_LOGCAT_LEAK"
-  | "DATA_MONITORING_MINIMIZE_PERMISSION_MEDIA"
-  | "DATA_MONITORING_MINIMIZE_PERMISSION_CAMERA"
-  | "DATA_MONITORING_MINIMIZE_PERMISSION_DOCUMENTS"
-  | (string & {});
+export type GoogleChecksReportV1alphaCheckTypeEnum = "CHECK_TYPE_UNSPECIFIED" | "STORE_LISTING_PRIVACY_POLICY_LINK_PRESENT" | "PRIVACY_POLICY_UPDATE_DATE_RECENT" | "PRIVACY_POLICY_GDPR_GENERAL_RULES" | "PRIVACY_POLICY_CCPA_GENERAL_RULES" | "PRIVACY_POLICY_COLLECTION_CATEGORIES_DATA_NOTICE" | "PRIVACY_POLICY_PROCESSING_PURPOSE_DATA_NOTICE" | "PRIVACY_POLICY_SHARING_CATEGORIES_DATA_NOTICE" | "PRIVACY_POLICY_DATA_RETENTION_NOTICE" | "PRIVACY_POLICY_CONTACT_DETAILS_NOTICE" | "PRIVACY_POLICY_CHILDREN_GENERAL_RULES" | "PRIVACY_POLICY_DATA_TYPE_PHONE_NUMBER" | "PRIVACY_POLICY_DATA_TYPE_USER_ACCOUNT_INFO" | "PRIVACY_POLICY_DATA_TYPE_PRECISE_LOCATION" | "PRIVACY_POLICY_DATA_TYPE_DEVICE_ID" | "PRIVACY_POLICY_DATA_TYPE_APPS_ON_DEVICE" | "PRIVACY_POLICY_DATA_TYPE_CONTACTS" | "PRIVACY_POLICY_DATA_TYPE_TEXT_MESSAGES" | "PRIVACY_POLICY_DATA_TYPE_PII" | "PRIVACY_POLICY_DATA_TYPE_PII_CATEGORIES" | "PRIVACY_POLICY_DATA_TYPE_HEALTH_AND_BIOMETRIC" | "PRIVACY_POLICY_BRAZIL_LGPD_GENERAL_RULES" | "PRIVACY_POLICY_VIRGINIA_VCDPA_GENERAL_RULES" | "PRIVACY_POLICY_AFFILIATION_MENTION" | "PRIVACY_POLICY_RIGHT_TO_DELETE_NOTICE" | "PRIVACY_POLICY_RIGHT_TO_ACCESS_NOTICE" | "PRIVACY_POLICY_RIGHT_TO_RECTIFICATION_NOTICE" | "PRIVACY_POLICY_RIGHT_TO_KNOW_ABOUT_SELLING_NOTICE" | "PRIVACY_POLICY_RIGHT_TO_KNOW_ABOUT_SHARING_NOTICE" | "PRIVACY_POLICY_RIGHT_TO_OPT_OUT_FROM_SELLING_NOTICE" | "PRIVACY_POLICY_METHOD_TO_OPT_OUT_FROM_SELLING_OR_SHARING_NOTICE" | "PRIVACY_POLICY_DATA_CONTROLLER_IDENTITY" | "PRIVACY_POLICY_DPO_CONTACT_DETAILS" | "PRIVACY_POLICY_RIGHT_TO_LODGE_A_COMPLAINT" | "PRIVACY_POLICY_LEGAL_BASIS" | "PRIVACY_POLICY_CHILDREN_INFO_COLLECTION" | "PRIVACY_POLICY_CHILDREN_INFO_USAGE_PURPOSES" | "PRIVACY_POLICY_CHILDREN_INFO_DISCLOSURE_PRACTICES" | "PRIVACY_POLICY_CHILDREN_INFO_PUBLICITY" | "PRIVACY_POLICY_PARENTS_METHOD_OF_INFO_DELETION" | "PRIVACY_POLICY_PARENTS_METHOD_TO_INFO_REVIEW" | "PRIVACY_POLICY_PARENTS_METHOD_TO_STOP_FURTHER_INFO_COLLECTION_USE" | "PRIVACY_POLICY_PARENTS_RIGHT_TO_INFO_DELETION" | "PRIVACY_POLICY_PARENTS_RIGHT_TO_INFO_REVIEW" | "PRIVACY_POLICY_PARENTS_RIGHT_TO_STOP_FURTHER_INFO_COLLECTION_USE" | "PRIVACY_POLICY_PSL_APPROXIMATE_LOCATION" | "PRIVACY_POLICY_PSL_PRECISE_LOCATION" | "PRIVACY_POLICY_PSL_NAME" | "PRIVACY_POLICY_PSL_EMAIL_ADDRESS" | "PRIVACY_POLICY_PSL_USER_IDENTIFIERS" | "PRIVACY_POLICY_PSL_ADDRESS" | "PRIVACY_POLICY_PSL_PHONE_NUMBER" | "PRIVACY_POLICY_PSL_RACE_AND_ETHNICITY" | "PRIVACY_POLICY_PSL_CREDIT_SCORE" | "PRIVACY_POLICY_PSL_PURCHASE_HISTORY" | "PRIVACY_POLICY_PSL_HEALTH_INFO" | "PRIVACY_POLICY_PSL_FITNESS_INFO" | "PRIVACY_POLICY_PSL_EMAIL_MESSAGES" | "PRIVACY_POLICY_PSL_TEXT_MESSAGES" | "PRIVACY_POLICY_PSL_PHOTOS" | "PRIVACY_POLICY_PSL_VIDEOS" | "PRIVACY_POLICY_PSL_MUSIC_FILES" | "PRIVACY_POLICY_PSL_VOICE_OR_SOUND_RECORDINGS" | "PRIVACY_POLICY_PSL_FILES_AND_DOCS" | "PRIVACY_POLICY_PSL_CALENDAR_EVENTS" | "PRIVACY_POLICY_PSL_CONTACTS" | "PRIVACY_POLICY_PSL_APP_INTERACTIONS" | "PRIVACY_POLICY_PSL_IN_APP_SEARCH_HISTORY" | "PRIVACY_POLICY_PSL_WEB_BROWSING_HISTORY" | "PRIVACY_POLICY_PSL_INSTALLED_APPS" | "PRIVACY_POLICY_PSL_CRASH_LOGS" | "PRIVACY_POLICY_PSL_DIAGNOSTICS" | "PRIVACY_POLICY_PSL_DEVICE_OR_OTHER_IDS" | "DATA_MONITORING_NEW_ENDPOINT" | "DATA_MONITORING_NEW_PERMISSION" | "DATA_MONITORING_NEW_DATA_TYPE" | "DATA_MONITORING_NEW_SDK" | "DATA_MONITORING_ENCRYPTION" | "DATA_MONITORING_NEW_DATA_TYPE_VERSION_DIFF" | "DATA_MONITORING_NEW_ENDPOINT_VERSION_DIFF" | "DATA_MONITORING_NEW_PERMISSION_VERSION_DIFF" | "DATA_MONITORING_NEW_SDK_VERSION_DIFF" | "DATA_MONITORING_SDKS_DENYLIST_VIOLATION" | "DATA_MONITORING_PERMISSIONS_DENYLIST_VIOLATION" | "DATA_MONITORING_ENDPOINTS_DENYLIST_VIOLATION" | "DATA_MONITORING_OUTDATED_SDK_VERSION" | "DATA_MONITORING_CRITICAL_SDK_ISSUE" | "PRIVACY_POLICY_DATA_TYPE_SENSITIVE_INFO" | "DATA_MONITORING_PII_LOGCAT_LEAK" | "DATA_MONITORING_MINIMIZE_PERMISSION_MEDIA" | "DATA_MONITORING_MINIMIZE_PERMISSION_CAMERA" | "DATA_MONITORING_MINIMIZE_PERMISSION_DOCUMENTS";
 export const GoogleChecksReportV1alphaCheckTypeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleChecksReportV1alphaCheckCitationTypeEnum =
-  | "CITATION_TYPE_UNSPECIFIED"
-  | "COPPA"
-  | "GDPR"
-  | "FERPA"
-  | "CAL_OPPA"
-  | "CCPA"
-  | "SOPIPA"
-  | "LGPD"
-  | "CPRA"
-  | "VCDPA"
-  | "GOOGLE_PLAY_POLICY"
-  | "APP_STORE_POLICY"
-  | "CPA"
-  | "CTDPA"
-  | "UCPA"
-  | "PIPEDA"
-  | "ALBERTA_PIPA"
-  | "QUEBEC_ACT"
-  | "QUEBEC_BILL_64"
-  | "CHINA_PIPL"
-  | "SOUTH_KOREA_PIPA"
-  | "SOUTH_AFRICA_POPIA"
-  | "JAPAN_APPI"
-  | "INDIA_DPDPA"
-  | "OCPA"
-  | "TDPSA"
-  | "MCDPA"
-  | (string & {});
-export const GoogleChecksReportV1alphaCheckCitationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksReportV1alphaCheckCitationTypeEnum = "CITATION_TYPE_UNSPECIFIED" | "COPPA" | "GDPR" | "FERPA" | "CAL_OPPA" | "CCPA" | "SOPIPA" | "LGPD" | "CPRA" | "VCDPA" | "GOOGLE_PLAY_POLICY" | "APP_STORE_POLICY" | "CPA" | "CTDPA" | "UCPA" | "PIPEDA" | "ALBERTA_PIPA" | "QUEBEC_ACT" | "QUEBEC_BILL_64" | "CHINA_PIPL" | "SOUTH_KOREA_PIPA" | "SOUTH_AFRICA_POPIA" | "JAPAN_APPI" | "INDIA_DPDPA" | "OCPA" | "TDPSA" | "MCDPA";
+export const GoogleChecksReportV1alphaCheckCitationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Regulation or policy that serves as the legal basis for the check. */
 export interface GoogleChecksReportV1alphaCheckCitation {
   /** Citation type. */
   type?: GoogleChecksReportV1alphaCheckCitationTypeEnum;
 }
-export const GoogleChecksReportV1alphaCheckCitation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.optional(GoogleChecksReportV1alphaCheckCitationTypeEnum),
-    }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaCheckCitation",
-}) as any as S.Schema<GoogleChecksReportV1alphaCheckCitation>;
+export const GoogleChecksReportV1alphaCheckCitation = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "type": S.optional(GoogleChecksReportV1alphaCheckCitationTypeEnum),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheckCitation" }) as any as S.Schema<GoogleChecksReportV1alphaCheckCitation>;
 
-export type GoogleChecksReportV1alphaCheckCitationList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckCitation>;
-export const GoogleChecksReportV1alphaCheckCitationList = /*@__PURE__*/ S.Array(
-  GoogleChecksReportV1alphaCheckCitation,
-) as any as S.Schema<GoogleChecksReportV1alphaCheckCitationList>;
+export type GoogleChecksReportV1alphaCheckCitationList = ReadonlyArray<GoogleChecksReportV1alphaCheckCitation>;
+export const GoogleChecksReportV1alphaCheckCitationList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheckCitation) as any as S.Schema<GoogleChecksReportV1alphaCheckCitationList>;
 
-export type GoogleChecksReportV1alphaCheckSeverityEnum =
-  | "CHECK_SEVERITY_UNSPECIFIED"
-  | "PRIORITY"
-  | "POTENTIAL"
-  | "OPPORTUNITY"
-  | (string & {});
-export const GoogleChecksReportV1alphaCheckSeverityEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksReportV1alphaCheckSeverityEnum = "CHECK_SEVERITY_UNSPECIFIED" | "PRIORITY" | "POTENTIAL" | "OPPORTUNITY";
+export const GoogleChecksReportV1alphaCheckSeverityEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A check that was run on your app. */
 export interface GoogleChecksReportV1alphaCheck {
@@ -1873,24 +1097,19 @@ export interface GoogleChecksReportV1alphaCheck {
   regionCodes?: StringList;
 }
 export const GoogleChecksReportV1alphaCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMetadata: S.optional(GoogleChecksReportV1alphaCheckStateMetadata),
-    evidence: S.optional(GoogleChecksReportV1alphaCheckEvidence),
-    state: S.optional(GoogleChecksReportV1alphaCheckStateEnum),
-    type: S.optional(GoogleChecksReportV1alphaCheckTypeEnum),
-    citations: S.optional(GoogleChecksReportV1alphaCheckCitationList),
-    severity: S.optional(GoogleChecksReportV1alphaCheckSeverityEnum),
-    regionCodes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaCheck",
-}) as any as S.Schema<GoogleChecksReportV1alphaCheck>;
+S.Struct({
+  "stateMetadata": S.optional(GoogleChecksReportV1alphaCheckStateMetadata),
+  "evidence": S.optional(GoogleChecksReportV1alphaCheckEvidence),
+  "state": S.optional(GoogleChecksReportV1alphaCheckStateEnum),
+  "type": S.optional(GoogleChecksReportV1alphaCheckTypeEnum),
+  "citations": S.optional(GoogleChecksReportV1alphaCheckCitationList),
+  "severity": S.optional(GoogleChecksReportV1alphaCheckSeverityEnum),
+  "regionCodes": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaCheck" }) as any as S.Schema<GoogleChecksReportV1alphaCheck>;
 
-export type GoogleChecksReportV1alphaCheckList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheck>;
-export const GoogleChecksReportV1alphaCheckList = /*@__PURE__*/ S.Array(
-  GoogleChecksReportV1alphaCheck,
-) as any as S.Schema<GoogleChecksReportV1alphaCheckList>;
+export type GoogleChecksReportV1alphaCheckList = ReadonlyArray<GoogleChecksReportV1alphaCheck>;
+export const GoogleChecksReportV1alphaCheckList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaCheck) as any as S.Schema<GoogleChecksReportV1alphaCheckList>;
 
 /** Privacy report. */
 export interface GoogleChecksReportV1alphaReport {
@@ -1906,52 +1125,34 @@ export interface GoogleChecksReportV1alphaReport {
   name?: string;
 }
 export const GoogleChecksReportV1alphaReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resultsUri: S.optional(S.String),
-    dataMonitoring: S.optional(GoogleChecksReportV1alphaDataMonitoring),
-    appBundle: S.optional(GoogleChecksReportV1alphaAppBundle),
-    checks: S.optional(GoogleChecksReportV1alphaCheckList),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaReport",
-}) as any as S.Schema<GoogleChecksReportV1alphaReport>;
+S.Struct({
+  "resultsUri": S.optional(S.String),
+  "dataMonitoring": S.optional(GoogleChecksReportV1alphaDataMonitoring),
+  "appBundle": S.optional(GoogleChecksReportV1alphaAppBundle),
+  "checks": S.optional(GoogleChecksReportV1alphaCheckList),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaReport" }) as any as S.Schema<GoogleChecksReportV1alphaReport>;
 
 export interface GetAccountsReposOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetAccountsReposOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsReposOperationsRequest",
-}) as any as S.Schema<GetAccountsReposOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsReposOperationsRequest" }) as any as S.Schema<GetAccountsReposOperationsRequest>;
 
 export interface GetAccountsReposScansRequest {
   /** Required. Resource name of the repo scan. Example: `accounts/123/repos/456/scans/789` */
   name: string;
 }
 export const GetAccountsReposScansRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsReposScansRequest",
-}) as any as S.Schema<GetAccountsReposScansRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsReposScansRequest" }) as any as S.Schema<GetAccountsReposScansRequest>;
 
 /** Repo scan. */
 export interface GoogleChecksRepoScanV1alphaRepoScan {
@@ -1969,17 +1170,15 @@ export interface GoogleChecksRepoScanV1alphaRepoScan {
   cliVersion?: string;
 }
 export const GoogleChecksRepoScanV1alphaRepoScan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scmMetadata: S.optional(GoogleChecksRepoScanV1alphaScmMetadata),
-    resultsUri: S.optional(S.String),
-    localScanPath: S.optional(S.String),
-    sources: S.optional(GoogleChecksRepoScanV1alphaSourceList),
-    name: S.optional(S.String),
-    cliVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleChecksRepoScanV1alphaRepoScan",
-}) as any as S.Schema<GoogleChecksRepoScanV1alphaRepoScan>;
+S.Struct({
+  "scmMetadata": S.optional(GoogleChecksRepoScanV1alphaScmMetadata),
+  "resultsUri": S.optional(S.String),
+  "localScanPath": S.optional(S.String),
+  "sources": S.optional(GoogleChecksRepoScanV1alphaSourceList),
+  "name": S.optional(S.String),
+  "cliVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaRepoScan" }) as any as S.Schema<GoogleChecksRepoScanV1alphaRepoScan>;
 
 export interface ListAccountsAppsRequest {
   /** Optional. The maximum number of results to return. The server may further constrain the maximum number of results returned in a single page. If unspecified, the server will decide the number of results to be returned. */
@@ -1990,26 +1189,15 @@ export interface ListAccountsAppsRequest {
   pageToken?: string;
 }
 export const ListAccountsAppsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+parent}/apps",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsAppsRequest",
-}) as any as S.Schema<ListAccountsAppsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/apps","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsAppsRequest" }) as any as S.Schema<ListAccountsAppsRequest>;
 
-export type GoogleChecksAccountV1alphaAppList =
-  ReadonlyArray<GoogleChecksAccountV1alphaApp>;
-export const GoogleChecksAccountV1alphaAppList = /*@__PURE__*/ S.Array(
-  GoogleChecksAccountV1alphaApp,
-) as any as S.Schema<GoogleChecksAccountV1alphaAppList>;
+export type GoogleChecksAccountV1alphaAppList = ReadonlyArray<GoogleChecksAccountV1alphaApp>;
+export const GoogleChecksAccountV1alphaAppList = /*@__PURE__*/ S.Array(GoogleChecksAccountV1alphaApp) as any as S.Schema<GoogleChecksAccountV1alphaAppList>;
 
 /** The response message for AccountService.ListApps. */
 export interface GoogleChecksAccountV1alphaListAppsResponse {
@@ -2018,15 +1206,12 @@ export interface GoogleChecksAccountV1alphaListAppsResponse {
   /** The apps. */
   apps?: GoogleChecksAccountV1alphaAppList;
 }
-export const GoogleChecksAccountV1alphaListAppsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      apps: S.optional(GoogleChecksAccountV1alphaAppList),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksAccountV1alphaListAppsResponse",
-  }) as any as S.Schema<GoogleChecksAccountV1alphaListAppsResponse>;
+export const GoogleChecksAccountV1alphaListAppsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "apps": S.optional(GoogleChecksAccountV1alphaAppList),
+}),
+).annotate({ identifier: "GoogleChecksAccountV1alphaListAppsResponse" }) as any as S.Schema<GoogleChecksAccountV1alphaListAppsResponse>;
 
 export interface ListAccountsAppsOperationsRequest {
   /** The standard list filter. */
@@ -2041,27 +1226,17 @@ export interface ListAccountsAppsOperationsRequest {
   pageToken?: string;
 }
 export const ListAccountsAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}/operations",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsAppsOperationsRequest",
-}) as any as S.Schema<ListAccountsAppsOperationsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}/operations","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsAppsOperationsRequest" }) as any as S.Schema<ListAccountsAppsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2073,14 +1248,12 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListAccountsAppsReportsRequest {
   /** Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter reports. Example: `appBundle.releaseType = PRE_RELEASE` */
@@ -2095,28 +1268,17 @@ export interface ListAccountsAppsReportsRequest {
   pageToken?: string;
 }
 export const ListAccountsAppsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    checksFilter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+parent}/reports",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsAppsReportsRequest",
-}) as any as S.Schema<ListAccountsAppsReportsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "checksFilter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/reports","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsAppsReportsRequest" }) as any as S.Schema<ListAccountsAppsReportsRequest>;
 
-export type GoogleChecksReportV1alphaReportList =
-  ReadonlyArray<GoogleChecksReportV1alphaReport>;
-export const GoogleChecksReportV1alphaReportList = /*@__PURE__*/ S.Array(
-  GoogleChecksReportV1alphaReport,
-) as any as S.Schema<GoogleChecksReportV1alphaReportList>;
+export type GoogleChecksReportV1alphaReportList = ReadonlyArray<GoogleChecksReportV1alphaReport>;
+export const GoogleChecksReportV1alphaReportList = /*@__PURE__*/ S.Array(GoogleChecksReportV1alphaReport) as any as S.Schema<GoogleChecksReportV1alphaReportList>;
 
 /** The response message for ReportService.ListReports. */
 export interface GoogleChecksReportV1alphaListReportsResponse {
@@ -2125,15 +1287,12 @@ export interface GoogleChecksReportV1alphaListReportsResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleChecksReportV1alphaListReportsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reports: S.optional(GoogleChecksReportV1alphaReportList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaListReportsResponse",
-  }) as any as S.Schema<GoogleChecksReportV1alphaListReportsResponse>;
+export const GoogleChecksReportV1alphaListReportsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "reports": S.optional(GoogleChecksReportV1alphaReportList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaListReportsResponse" }) as any as S.Schema<GoogleChecksReportV1alphaListReportsResponse>;
 
 export interface ListAccountsReposScansRequest {
   /** Required. Resource name of the repo. Example: `accounts/123/repos/456` */
@@ -2146,27 +1305,16 @@ export interface ListAccountsReposScansRequest {
   pageSize?: number;
 }
 export const ListAccountsReposScansRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+parent}/scans",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsReposScansRequest",
-}) as any as S.Schema<ListAccountsReposScansRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/scans","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsReposScansRequest" }) as any as S.Schema<ListAccountsReposScansRequest>;
 
-export type GoogleChecksRepoScanV1alphaRepoScanList =
-  ReadonlyArray<GoogleChecksRepoScanV1alphaRepoScan>;
-export const GoogleChecksRepoScanV1alphaRepoScanList = /*@__PURE__*/ S.Array(
-  GoogleChecksRepoScanV1alphaRepoScan,
-) as any as S.Schema<GoogleChecksRepoScanV1alphaRepoScanList>;
+export type GoogleChecksRepoScanV1alphaRepoScanList = ReadonlyArray<GoogleChecksRepoScanV1alphaRepoScan>;
+export const GoogleChecksRepoScanV1alphaRepoScanList = /*@__PURE__*/ S.Array(GoogleChecksRepoScanV1alphaRepoScan) as any as S.Schema<GoogleChecksRepoScanV1alphaRepoScanList>;
 
 /** The response message for RepoScanService.ListRepoScans. */
 export interface GoogleChecksRepoScanV1alphaListRepoScansResponse {
@@ -2175,43 +1323,29 @@ export interface GoogleChecksRepoScanV1alphaListRepoScansResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleChecksRepoScanV1alphaListRepoScansResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repoScans: S.optional(GoogleChecksRepoScanV1alphaRepoScanList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaListRepoScansResponse",
-  }) as any as S.Schema<GoogleChecksRepoScanV1alphaListRepoScansResponse>;
+export const GoogleChecksRepoScanV1alphaListRepoScansResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repoScans": S.optional(GoogleChecksRepoScanV1alphaRepoScanList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleChecksRepoScanV1alphaListRepoScansResponse" }) as any as S.Schema<GoogleChecksRepoScanV1alphaListRepoScansResponse>;
 
-export type GoogleChecksReportV1alphaAnalyzeUploadRequestAppBinaryFileTypeEnum =
-    | "APP_BINARY_FILE_TYPE_UNSPECIFIED"
-    | "ANDROID_APK"
-    | "ANDROID_AAB"
-    | "IOS_IPA"
-    | (string & {});
-export const GoogleChecksReportV1alphaAnalyzeUploadRequestAppBinaryFileTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleChecksReportV1alphaAnalyzeUploadRequestAppBinaryFileTypeEnum = "APP_BINARY_FILE_TYPE_UNSPECIFIED" | "ANDROID_APK" | "ANDROID_AAB" | "IOS_IPA";
+export const GoogleChecksReportV1alphaAnalyzeUploadRequestAppBinaryFileTypeEnum = /*@__PURE__*/ S.String;
 
 /** The request message for ReportService.AnalyzeUpload. */
 export interface GoogleChecksReportV1alphaAnalyzeUploadRequest {
   /** Optional. Git commit hash or changelist number associated with the upload. */
   codeReferenceId?: string;
   /** Optional. The type of the uploaded app binary. If not provided, the server assumes APK file for Android and IPA file for iOS. */
-  appBinaryFileType?: GoogleChecksReportV1alphaAnalyzeUploadRequestAppBinaryFileTypeEnum;
+  appBinaryFileType?: GoogleChecksReportV1alphaAnalyzeUploadRequestAppBinaryFileTypeEnum | (string & {});
 }
-export const GoogleChecksReportV1alphaAnalyzeUploadRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      codeReferenceId: S.optional(S.String),
-      appBinaryFileType: S.optional(
-        GoogleChecksReportV1alphaAnalyzeUploadRequestAppBinaryFileTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaAnalyzeUploadRequest",
-  }) as any as S.Schema<GoogleChecksReportV1alphaAnalyzeUploadRequest>;
+export const GoogleChecksReportV1alphaAnalyzeUploadRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "codeReferenceId": S.optional(S.String),
+  "appBinaryFileType": S.optional(GoogleChecksReportV1alphaAnalyzeUploadRequestAppBinaryFileTypeEnum),
+}),
+).annotate({ identifier: "GoogleChecksReportV1alphaAnalyzeUploadRequest" }) as any as S.Schema<GoogleChecksReportV1alphaAnalyzeUploadRequest>;
 
 export interface UploadMediaRequest {
   /** Required. Resource name of the app. Example: `accounts/123/apps/456` */
@@ -2220,21 +1354,11 @@ export interface UploadMediaRequest {
   body?: GoogleChecksReportV1alphaAnalyzeUploadRequest;
 }
 export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleChecksReportV1alphaAnalyzeUploadRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1alpha/{+parent}/reports:analyzeUpload",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UploadMediaRequest",
-}) as any as S.Schema<UploadMediaRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleChecksReportV1alphaAnalyzeUploadRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/reports:analyzeUpload","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "UploadMediaRequest" }) as any as S.Schema<UploadMediaRequest>;
 
 /** The request message for Operations.WaitOperation. */
 export interface WaitOperationRequest {
@@ -2242,12 +1366,10 @@ export interface WaitOperationRequest {
   timeout?: string;
 }
 export const WaitOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeout: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WaitOperationRequest",
-}) as any as S.Schema<WaitOperationRequest>;
+S.Struct({
+  "timeout": S.optional(S.String),
+}),
+).annotate({ identifier: "WaitOperationRequest" }) as any as S.Schema<WaitOperationRequest>;
 
 export interface WaitAccountsAppsOperationsRequest {
   /** The name of the operation resource to wait on. */
@@ -2256,26 +1378,13 @@ export interface WaitAccountsAppsOperationsRequest {
   body?: WaitOperationRequest;
 }
 export const WaitAccountsAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(WaitOperationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1alpha/{+name}:wait",
-      baseUrl: "https://checks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "WaitAccountsAppsOperationsRequest",
-}) as any as S.Schema<WaitAccountsAppsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(WaitOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:wait","baseUrl":"https://checks.googleapis.com/"})),
+).annotate({ identifier: "WaitAccountsAppsOperationsRequest" }) as any as S.Schema<WaitAccountsAppsOperationsRequest>;
 
-export type CancelAccountsAppsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelAccountsAppsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelAccountsAppsOperations: API.OperationMethod<
   CancelAccountsAppsOperationsRequest,
@@ -2290,12 +1399,7 @@ export const cancelAccountsAppsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ClassifyContentAisafetyError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ClassifyContentAisafetyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Analyze a piece of content with the provided set of policies. */
 export const classifyContentAisafety: API.OperationMethod<
   ClassifyContentAisafetyRequest,
@@ -2310,12 +1414,7 @@ export const classifyContentAisafety: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsAppsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsAppsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteAccountsAppsOperations: API.OperationMethod<
   DeleteAccountsAppsOperationsRequest,
@@ -2330,12 +1429,7 @@ export const deleteAccountsAppsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateAccountsReposScansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GenerateAccountsReposScansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads the results of local Code Compliance analysis and generates a scan of privacy issues. Returns a google.longrunning.Operation containing analysis and findings. */
 export const generateAccountsReposScans: API.OperationMethod<
   GenerateAccountsReposScansRequest,
@@ -2438,10 +1532,7 @@ export const listAccountsApps: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsAppsOperationsError = NotFound | Forbidden | GcpOpError;
@@ -2457,10 +1548,7 @@ export const listAccountsAppsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsAppsReportsError = NotFound | Forbidden | GcpOpError;
@@ -2476,10 +1564,7 @@ export const listAccountsAppsReports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsReposScansError = NotFound | Forbidden | GcpOpError;
@@ -2495,18 +1580,10 @@ export const listAccountsReposScans: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type UploadMediaError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadMediaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Analyzes the uploaded app bundle and returns a google.longrunning.Operation containing the generated Report. ## Example (upload only) Send a regular POST request with the header `X-Goog-Upload-Protocol: raw`. ``` POST https://checks.googleapis.com/upload/v1alpha/{parent=accounts/*\/apps/*}/reports:analyzeUpload HTTP/1.1 X-Goog-Upload-Protocol: raw Content-Length: Content-Type: application/octet-stream ``` ## Example (upload with metadata) Send a multipart POST request where the first body part contains the metadata JSON and the second body part contains the binary upload. Include the header `X-Goog-Upload-Protocol: multipart`. ``` POST https://checks.googleapis.com/upload/v1alpha/{parent=accounts/*\/apps/*}/reports:analyzeUpload HTTP/1.1 X-Goog-Upload-Protocol: multipart Content-Length: ? Content-Type: multipart/related; boundary=BOUNDARY --BOUNDARY Content-Type: application/json {"code_reference_id":"db5bcc20f94055fb5bc08cbb9b0e7a5530308786"} --BOUNDARY --BOUNDARY-- ``` *Note:* Metadata-only requests are not supported. */
 export const uploadMedia: API.OperationMethod<
   UploadMediaRequest,
@@ -2521,12 +1598,7 @@ export const uploadMedia: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WaitAccountsAppsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WaitAccountsAppsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitAccountsAppsOperations: API.OperationMethod<
   WaitAccountsAppsOperationsRequest,
@@ -2540,3 +1612,4 @@ export const waitAccountsAppsOperations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

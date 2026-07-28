@@ -13,6 +13,7 @@ import * as HttpBody from "effect/unstable/http/HttpBody";
 import * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
 import {
   bodySymbol,
+  deepQuerySymbol,
   formDataFileSymbol,
   getErrorMatchers,
   headerSymbol,
@@ -292,7 +293,8 @@ export interface BuildRequestOptions {
  * Build an HTTP request from an operation input and its schema, driven by
  * the trait annotations: `Http()` supplies method + URI template, `Label()`
  * members fill URI placeholders, `Header()`/`Query()` members bind to
- * headers/query params, `HttpBody()` sends the member as the whole body,
+ * headers/query params, `DeepQuery()` struct members expand into dotted
+ * query params, `HttpBody()` sends the member as the whole body,
  * `FormDataFile()` members become multipart file parts, and everything else
  * is a JSON body field (wire-named via `Body()` / `KeyDictionary`).
  *
@@ -373,7 +375,8 @@ export const buildRequest = ({
     const isBodyMember =
       !hasPropAnn(prop, labelSymbol) &&
       !hasPropAnn(prop, headerSymbol) &&
-      !hasPropAnn(prop, querySymbol);
+      !hasPropAnn(prop, querySymbol) &&
+      !hasPropAnn(prop, deepQuerySymbol);
     if (isBodyMember) hasBodyMembers = true;
     if (value === undefined) continue;
 
@@ -386,6 +389,22 @@ export const buildRequest = ({
       headers[hName] = mapMemberHeader ? mapMemberHeader(hName, hVal) : hVal;
     } else if (hasPropAnn(prop, querySymbol)) {
       appendQuery(query, nameOf(prop, querySymbol), value);
+    } else if (hasPropAnn(prop, deepQuerySymbol)) {
+      // Deep-object query member (T.DeepQuery): a nested struct expands into
+      // dotted query keys (`account.id=…`) under the member's wire name.
+      // Wire-name the nested content via the schema first, skip null/
+      // undefined entries; deeper nesting recurses through appendQuery.
+      const base = nameOf(prop, deepQuerySymbol);
+      const mapped = mapKeys(prop.type, value, "encode", rootDict);
+      if (mapped !== null && typeof mapped === "object") {
+        for (const [k, v] of Object.entries(
+          mapped as Record<string, unknown>,
+        )) {
+          if (v !== undefined && v !== null) {
+            appendQuery(query, `${base}.${k}`, v);
+          }
+        }
+      }
     } else if (hasPropAnn(prop, formDataFileSymbol)) {
       for (const f of Array.isArray(value) ? value : [value]) {
         files.push(f as Blob | File);

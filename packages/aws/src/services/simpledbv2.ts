@@ -146,19 +146,14 @@ export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetExportRequest",
 }) as any as S.Schema<GetExportRequest>;
 export type IdempotencyToken = string;
-export type ExportStatus =
-  | "PENDING"
-  | "IN_PROGRESS"
-  | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+export type ExportStatus = "PENDING" | "IN_PROGRESS" | "SUCCEEDED" | "FAILED";
 export const ExportStatus = /*@__PURE__*/ S.String;
 
 export type DomainName = string;
 export type RequestedAt = Date;
 export type S3BucketName = string;
 export type S3KeyPrefix = string;
-export type S3SseAlgorithm = "AES256" | "KMS" | (string & {});
+export type S3SseAlgorithm = "AES256" | "KMS";
 export const S3SseAlgorithm = /*@__PURE__*/ S.String;
 
 export type S3SseKmsKeyId = string;
@@ -266,7 +261,7 @@ export interface StartDomainExportRequest {
   domainName: string;
   s3Bucket: string;
   s3KeyPrefix?: string;
-  s3SseAlgorithm?: S3SseAlgorithm;
+  s3SseAlgorithm?: S3SseAlgorithm | (string & {});
   s3SseKmsKeyId?: string;
   s3BucketOwner?: string;
 }

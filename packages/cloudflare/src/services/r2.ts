@@ -226,21 +226,13 @@ export type BucketsCreateRequestLocationHint =
   | "enam"
   | "weur"
   | "wnam"
-  | "oc"
-  | (string & {});
+  | "oc";
 export const BucketsCreateRequestLocationHint = /*@__PURE__*/ S.String;
 
-export type BucketsCreateRequestStorageClass =
-  | "Standard"
-  | "InfrequentAccess"
-  | (string & {});
+export type BucketsCreateRequestStorageClass = "Standard" | "InfrequentAccess";
 export const BucketsCreateRequestStorageClass = /*@__PURE__*/ S.String;
 
-export type BucketsCreateRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
+export type BucketsCreateRequestCfR2Jurisdiction = "default" | "eu" | "fedramp";
 export const BucketsCreateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface CreateBucketRequest {
@@ -249,11 +241,11 @@ export interface CreateBucketRequest {
   /** Name of the bucket. */
   name: string;
   /** Location of the bucket. */
-  locationHint?: BucketsCreateRequestLocationHint;
+  locationHint?: BucketsCreateRequestLocationHint | (string & {});
   /** Storage class for newly uploaded objects, unless specified otherwise. */
-  storageClass?: BucketsCreateRequestStorageClass;
+  storageClass?: BucketsCreateRequestStorageClass | (string & {});
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsCreateRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsCreateRequestCfR2Jurisdiction | (string & {});
 }
 export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -277,11 +269,7 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBucketRequest",
 }) as any as S.Schema<CreateBucketRequest>;
 
-export type BucketsCreateResponseJurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
+export type BucketsCreateResponseJurisdiction = "default" | "eu" | "fedramp";
 export const BucketsCreateResponseJurisdiction = /*@__PURE__*/ S.String;
 
 export type BucketsCreateResponseLocation =
@@ -290,14 +278,10 @@ export type BucketsCreateResponseLocation =
   | "enam"
   | "weur"
   | "wnam"
-  | "oc"
-  | (string & {});
+  | "oc";
 export const BucketsCreateResponseLocation = /*@__PURE__*/ S.String;
 
-export type BucketsCreateResponseStorageClass =
-  | "Standard"
-  | "InfrequentAccess"
-  | (string & {});
+export type BucketsCreateResponseStorageClass = "Standard" | "InfrequentAccess";
 export const BucketsCreateResponseStorageClass = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -338,15 +322,13 @@ export type BucketsDomainsCustomCreateRequestMinTLS =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3"
-  | (string & {});
+  | "1.3";
 export const BucketsDomainsCustomCreateRequestMinTLS = /*@__PURE__*/ S.String;
 
 export type BucketsDomainsCustomCreateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsDomainsCustomCreateRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -364,9 +346,11 @@ export interface CreateBucketDomainCustomRequest {
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: BucketsDomainsCustomCreateRequestCiphersList;
   /** Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0. */
-  minTLS?: BucketsDomainsCustomCreateRequestMinTLS;
+  minTLS?: BucketsDomainsCustomCreateRequestMinTLS | (string & {});
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsDomainsCustomCreateRequestCfR2Jurisdiction;
+  jurisdiction?:
+    | BucketsDomainsCustomCreateRequestCfR2Jurisdiction
+    | (string & {});
 }
 export const CreateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -406,8 +390,7 @@ export type BucketsDomainsCustomCreateResponseMinTLS =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3"
-  | (string & {});
+  | "1.3";
 export const BucketsDomainsCustomCreateResponseMinTLS = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -451,8 +434,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret =
   }) as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret>;
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor =
-  | "s3"
-  | (string & {});
+  "s3";
 export const SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor =
   /*@__PURE__*/ S.String;
 
@@ -466,7 +448,9 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList 
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchema {
   bucket: string;
   secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
-  vendor: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor;
+  vendor:
+    | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor
+    | (string & {});
   /** Custom S3-compatible endpoint that must use https://. */
   endpoint?: string;
   keys?: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList;
@@ -506,8 +490,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret =
   }) as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret>;
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor =
-  | "gcs"
-  | (string & {});
+  "gcs";
 export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor =
   /*@__PURE__*/ S.String;
 
@@ -521,7 +504,9 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema {
   bucket: string;
   secret: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret;
-  vendor: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor;
+  vendor:
+    | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor
+    | (string & {});
   keys?: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList;
   pathPrefix?: string;
 }
@@ -556,13 +541,12 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret =
   }) as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret>;
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor =
-  | "r2"
-  | (string & {});
+  "r2";
 export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor =
   /*@__PURE__*/ S.String;
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction =
-  "default" | "eu" | "fedramp" | (string & {});
+  "default" | "eu" | "fedramp";
 export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -576,8 +560,12 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList 
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema {
   bucket: string;
   secret: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret;
-  vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor;
-  jurisdiction?: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction;
+  vendor:
+    | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor
+    | (string & {});
+  jurisdiction?:
+    | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction
+    | (string & {});
   keys?: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList;
   pathPrefix?: string;
 }
@@ -628,16 +616,19 @@ export const SuperSlurperJobsCreateRequestTargetSecret =
 export type SuperSlurperJobsCreateRequestTargetJurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const SuperSlurperJobsCreateRequestTargetJurisdiction =
   /*@__PURE__*/ S.String;
 
 export interface SuperSlurperJobsCreateRequestTarget {
   bucket: string;
   secret: SuperSlurperJobsCreateRequestTargetSecret;
-  vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor;
-  jurisdiction?: SuperSlurperJobsCreateRequestTargetJurisdiction;
+  vendor:
+    | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor
+    | (string & {});
+  jurisdiction?:
+    | SuperSlurperJobsCreateRequestTargetJurisdiction
+    | (string & {});
 }
 export const SuperSlurperJobsCreateRequestTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -691,8 +682,7 @@ export type TemporaryCredentialsCreateRequestPermission =
   | "admin-read-write"
   | "admin-read-only"
   | "object-read-write"
-  | "object-read-only"
-  | (string & {});
+  | "object-read-only";
 export const TemporaryCredentialsCreateRequestPermission =
   /*@__PURE__*/ S.String;
 
@@ -718,7 +708,7 @@ export interface CreateTemporaryCredentialRequest {
   /** The parent access key id to use for signing. */
   parentAccessKeyId: string;
   /** Permissions allowed on the credentials. */
-  permission: TemporaryCredentialsCreateRequestPermission;
+  permission: TemporaryCredentialsCreateRequestPermission | (string & {});
   /** How long the credentials will live for in seconds. */
   ttlSeconds: number;
   /** Optional object paths to scope the credentials to. */
@@ -767,11 +757,7 @@ export const CreateTemporaryCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTemporaryCredentialResponse",
 }) as any as S.Schema<CreateTemporaryCredentialResponse>;
 
-export type BucketsDeleteRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
+export type BucketsDeleteRequestCfR2Jurisdiction = "default" | "eu" | "fedramp";
 export const BucketsDeleteRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface DeleteBucketRequest {
@@ -780,7 +766,7 @@ export interface DeleteBucketRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsDeleteRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsDeleteRequestCfR2Jurisdiction | (string & {});
 }
 export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -812,8 +798,7 @@ export const DeleteBucketResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsCorsDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsCorsDeleteRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface DeleteBucketCorsRequest {
@@ -822,7 +807,7 @@ export interface DeleteBucketCorsRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsCorsDeleteRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsCorsDeleteRequestCfR2Jurisdiction | (string & {});
 }
 export const DeleteBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -856,8 +841,7 @@ export const DeleteBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsDomainsCustomDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsDomainsCustomDeleteRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -869,7 +853,9 @@ export interface DeleteBucketDomainCustomRequest {
   /** Name of the custom domain. */
   domain: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsDomainsCustomDeleteRequestCfR2Jurisdiction;
+  jurisdiction?:
+    | BucketsDomainsCustomDeleteRequestCfR2Jurisdiction
+    | (string & {});
 }
 export const DeleteBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -910,8 +896,7 @@ export const DeleteBucketDomainCustomResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsEventNotificationsDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsEventNotificationsDeleteRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -923,7 +908,9 @@ export interface DeleteBucketEventNotificationRequest {
   /** Queue ID. */
   queueId: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsEventNotificationsDeleteRequestCfR2Jurisdiction;
+  jurisdiction?:
+    | BucketsEventNotificationsDeleteRequestCfR2Jurisdiction
+    | (string & {});
 }
 export const DeleteBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -959,8 +946,7 @@ export const DeleteBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(
 export type BucketsObjectsDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsObjectsDeleteRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -972,7 +958,7 @@ export interface DeleteBucketObjectRequest {
   /** The key (name) of the object to delete. May contain slashes for path-like keys. */
   objectKey: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsObjectsDeleteRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsObjectsDeleteRequestCfR2Jurisdiction | (string & {});
 }
 export const DeleteBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1013,8 +999,7 @@ export const DeleteBucketObjectResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsSippyDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsSippyDeleteRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface DeleteBucketSippyRequest {
@@ -1023,7 +1008,7 @@ export interface DeleteBucketSippyRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsSippyDeleteRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsSippyDeleteRequestCfR2Jurisdiction | (string & {});
 }
 export const DeleteBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1100,11 +1085,7 @@ export const DeleteObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteObjectsResponse",
 }) as any as S.Schema<DeleteObjectsResponse>;
 
-export type BucketsGetRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
+export type BucketsGetRequestCfR2Jurisdiction = "default" | "eu" | "fedramp";
 export const BucketsGetRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface GetBucketRequest {
@@ -1113,7 +1094,7 @@ export interface GetBucketRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsGetRequestCfR2Jurisdiction | (string & {});
 }
 export const GetBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1135,11 +1116,7 @@ export const GetBucketRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBucketRequest",
 }) as any as S.Schema<GetBucketRequest>;
 
-export type BucketsGetResponseJurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
+export type BucketsGetResponseJurisdiction = "default" | "eu" | "fedramp";
 export const BucketsGetResponseJurisdiction = /*@__PURE__*/ S.String;
 
 export type BucketsGetResponseLocation =
@@ -1148,14 +1125,10 @@ export type BucketsGetResponseLocation =
   | "enam"
   | "weur"
   | "wnam"
-  | "oc"
-  | (string & {});
+  | "oc";
 export const BucketsGetResponseLocation = /*@__PURE__*/ S.String;
 
-export type BucketsGetResponseStorageClass =
-  | "Standard"
-  | "InfrequentAccess"
-  | (string & {});
+export type BucketsGetResponseStorageClass = "Standard" | "InfrequentAccess";
 export const BucketsGetResponseStorageClass = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1188,8 +1161,7 @@ export const GetBucketResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsCorsGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsCorsGetRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface GetBucketCorsRequest {
@@ -1198,7 +1170,7 @@ export interface GetBucketCorsRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsCorsGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsCorsGetRequestCfR2Jurisdiction | (string & {});
 }
 export const GetBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1227,8 +1199,7 @@ export type BucketsCorsGetResponseRulesItemAllowedMethodsItem =
   | "PUT"
   | "POST"
   | "DELETE"
-  | "HEAD"
-  | (string & {});
+  | "HEAD";
 export const BucketsCorsGetResponseRulesItemAllowedMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -1321,8 +1292,7 @@ export const GetBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsDomainsCustomGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsDomainsCustomGetRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -1334,7 +1304,7 @@ export interface GetBucketDomainCustomRequest {
   /** Name of the custom domain. */
   domain: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsDomainsCustomGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsDomainsCustomGetRequestCfR2Jurisdiction | (string & {});
 }
 export const GetBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1365,8 +1335,7 @@ export type BucketsDomainsCustomGetResponseStatusOwnership =
   | "deactivated"
   | "blocked"
   | "error"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const BucketsDomainsCustomGetResponseStatusOwnership =
   /*@__PURE__*/ S.String;
 
@@ -1376,8 +1345,7 @@ export type BucketsDomainsCustomGetResponseStatusSsl =
   | "active"
   | "deactivated"
   | "error"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const BucketsDomainsCustomGetResponseStatusSsl = /*@__PURE__*/ S.String;
 
 export interface BucketsDomainsCustomGetResponseStatus {
@@ -1405,8 +1373,7 @@ export type BucketsDomainsCustomGetResponseMinTLS =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3"
-  | (string & {});
+  | "1.3";
 export const BucketsDomainsCustomGetResponseMinTLS = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1442,8 +1409,7 @@ export const GetBucketDomainCustomResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsEventNotificationsGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsEventNotificationsGetRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -1455,7 +1421,9 @@ export interface GetBucketEventNotificationRequest {
   /** Queue ID. */
   queueId: string;
   /** The bucket jurisdiction. */
-  jurisdiction?: BucketsEventNotificationsGetRequestCfR2Jurisdiction;
+  jurisdiction?:
+    | BucketsEventNotificationsGetRequestCfR2Jurisdiction
+    | (string & {});
 }
 export const GetBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1485,8 +1453,7 @@ export type BucketsEventNotificationsGetResponseRulesItemActionsItem =
   | "CopyObject"
   | "DeleteObject"
   | "CompleteMultipartUpload"
-  | "LifecycleDeletion"
-  | (string & {});
+  | "LifecycleDeletion";
 export const BucketsEventNotificationsGetResponseRulesItemActionsItem =
   /*@__PURE__*/ S.String;
 
@@ -1553,8 +1520,7 @@ export const GetBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsLifecycleGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsLifecycleGetRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -1564,7 +1530,7 @@ export interface GetBucketLifecycleRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsLifecycleGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsLifecycleGetRequestCfR2Jurisdiction | (string & {});
 }
 export const GetBucketLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1602,7 +1568,7 @@ export const BucketsLifecycleGetResponseRulesItemConditions =
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemConditions>;
 
 export type BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionConditionType =
-  "Age" | (string & {});
+  "Age";
 export const BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionConditionType =
   /*@__PURE__*/ S.String;
 
@@ -1638,7 +1604,7 @@ export const BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransition
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransition>;
 
 export type BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType =
-  "Age" | (string & {});
+  "Age";
 export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType =
   /*@__PURE__*/ S.String;
 
@@ -1658,7 +1624,7 @@ export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditio
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition>;
 
 export type BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType =
-  "Date" | (string & {});
+  "Date";
 export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType =
   /*@__PURE__*/ S.String;
 
@@ -1704,7 +1670,7 @@ export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransition =
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemDeleteObjectsTransition>;
 
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType =
-  "Age" | (string & {});
+  "Age";
 export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType =
   /*@__PURE__*/ S.String;
 
@@ -1724,7 +1690,7 @@ export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCond
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition>;
 
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType =
-  "Date" | (string & {});
+  "Date";
 export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType =
   /*@__PURE__*/ S.String;
 
@@ -1755,7 +1721,7 @@ export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCond
   );
 
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass =
-  "InfrequentAccess" | (string & {});
+  "InfrequentAccess";
 export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass =
   /*@__PURE__*/ S.String;
 
@@ -1839,8 +1805,7 @@ export const GetBucketLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsLocksGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsLocksGetRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface GetBucketLockRequest {
@@ -1849,7 +1814,7 @@ export interface GetBucketLockRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsLocksGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsLocksGetRequestCfR2Jurisdiction | (string & {});
 }
 export const GetBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1874,7 +1839,7 @@ export const GetBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBucketLockRequest>;
 
 export type BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeConditionType =
-  "Age" | (string & {});
+  "Age";
 export const BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeConditionType =
   /*@__PURE__*/ S.String;
 
@@ -1894,7 +1859,7 @@ export const BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeCondition =
   }) as any as S.Schema<BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeCondition>;
 
 export type BucketsLocksGetResponseRulesItemConditionR2LockRuleDateConditionType =
-  "Date" | (string & {});
+  "Date";
 export const BucketsLocksGetResponseRulesItemConditionR2LockRuleDateConditionType =
   /*@__PURE__*/ S.String;
 
@@ -1914,7 +1879,7 @@ export const BucketsLocksGetResponseRulesItemConditionR2LockRuleDateCondition =
   }) as any as S.Schema<BucketsLocksGetResponseRulesItemConditionR2LockRuleDateCondition>;
 
 export type BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteConditionType =
-  "Indefinite" | (string & {});
+  "Indefinite";
 export const BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteConditionType =
   /*@__PURE__*/ S.String;
 
@@ -1982,8 +1947,7 @@ export const GetBucketLockResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsObjectsGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsObjectsGetRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface GetBucketObjectRequest {
@@ -1994,7 +1958,7 @@ export interface GetBucketObjectRequest {
   /** The key (name) of the object to retrieve. May contain slashes for path-like keys. */
   objectKey: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsObjectsGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsObjectsGetRequestCfR2Jurisdiction | (string & {});
   /** Returns the object only if it has been modified since the specified time. */
   ifModifiedSince?: string;
   /** Returns the object only if its ETag does not match the given value. */
@@ -2035,8 +1999,7 @@ export const GetBucketObjectResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsSippyGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsSippyGetRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface GetBucketSippyRequest {
@@ -2045,7 +2008,7 @@ export interface GetBucketSippyRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsSippyGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsSippyGetRequestCfR2Jurisdiction | (string & {});
 }
 export const GetBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2069,7 +2032,7 @@ export const GetBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBucketSippyRequest",
 }) as any as S.Schema<GetBucketSippyRequest>;
 
-export type BucketsSippyGetResponseDestinationProvider = "r2" | (string & {});
+export type BucketsSippyGetResponseDestinationProvider = "r2";
 export const BucketsSippyGetResponseDestinationProvider =
   /*@__PURE__*/ S.String;
 
@@ -2092,11 +2055,7 @@ export const BucketsSippyGetResponseDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "BucketsSippyGetResponseDestination",
 }) as any as S.Schema<BucketsSippyGetResponseDestination>;
 
-export type BucketsSippyGetResponseSourceProvider =
-  | "aws"
-  | "gcs"
-  | "s3"
-  | (string & {});
+export type BucketsSippyGetResponseSourceProvider = "aws" | "gcs" | "s3";
 export const BucketsSippyGetResponseSourceProvider = /*@__PURE__*/ S.String;
 
 export interface BucketsSippyGetResponseSource {
@@ -2167,8 +2126,7 @@ export const SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList =
   ) as any as S.Schema<SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaVendor =
-  | "s3"
-  | (string & {});
+  "s3";
 export const SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaVendor =
   /*@__PURE__*/ S.String;
 
@@ -2204,8 +2162,7 @@ export const SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList =
   ) as any as S.Schema<SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaVendor =
-  | "gcs"
-  | (string & {});
+  "gcs";
 export const SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaVendor =
   /*@__PURE__*/ S.String;
 
@@ -2232,7 +2189,7 @@ export const SuperSlurperJobsGetResponseSourceGcsSourceResponseSchema =
   }) as any as S.Schema<SuperSlurperJobsGetResponseSourceGcsSourceResponseSchema>;
 
 export type SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaJurisdiction =
-  "default" | "eu" | "fedramp" | (string & {});
+  "default" | "eu" | "fedramp";
 export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -2244,8 +2201,7 @@ export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList =
   ) as any as S.Schema<SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor =
-  | "r2"
-  | (string & {});
+  "r2";
 export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor =
   /*@__PURE__*/ S.String;
 
@@ -2291,15 +2247,13 @@ export type SuperSlurperJobsGetResponseStatus =
   | "running"
   | "paused"
   | "aborted"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const SuperSlurperJobsGetResponseStatus = /*@__PURE__*/ S.String;
 
 export type SuperSlurperJobsGetResponseTargetJurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const SuperSlurperJobsGetResponseTargetJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -2347,8 +2301,7 @@ export const GetSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsDomainsCustomListRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsDomainsCustomListRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -2358,7 +2311,9 @@ export interface ListBucketDomainCustomsRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsDomainsCustomListRequestCfR2Jurisdiction;
+  jurisdiction?:
+    | BucketsDomainsCustomListRequestCfR2Jurisdiction
+    | (string & {});
 }
 export const ListBucketDomainCustomsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2388,8 +2343,7 @@ export type BucketsDomainsCustomListResponseDomainsItemStatusOwnership =
   | "deactivated"
   | "blocked"
   | "error"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const BucketsDomainsCustomListResponseDomainsItemStatusOwnership =
   /*@__PURE__*/ S.String;
 
@@ -2399,8 +2353,7 @@ export type BucketsDomainsCustomListResponseDomainsItemStatusSsl =
   | "active"
   | "deactivated"
   | "error"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const BucketsDomainsCustomListResponseDomainsItemStatusSsl =
   /*@__PURE__*/ S.String;
 
@@ -2431,8 +2384,7 @@ export type BucketsDomainsCustomListResponseDomainsItemMinTLS =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3"
-  | (string & {});
+  | "1.3";
 export const BucketsDomainsCustomListResponseDomainsItemMinTLS =
   /*@__PURE__*/ S.String;
 
@@ -2490,8 +2442,7 @@ export const ListBucketDomainCustomsResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsDomainsManagedListRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsDomainsManagedListRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -2501,7 +2452,9 @@ export interface ListBucketDomainManagedsRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsDomainsManagedListRequestCfR2Jurisdiction;
+  jurisdiction?:
+    | BucketsDomainsManagedListRequestCfR2Jurisdiction
+    | (string & {});
 }
 export const ListBucketDomainManagedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2547,8 +2500,7 @@ export const ListBucketDomainManagedsResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsEventNotificationsListRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsEventNotificationsListRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -2558,7 +2510,9 @@ export interface ListBucketEventNotificationsRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsEventNotificationsListRequestCfR2Jurisdiction;
+  jurisdiction?:
+    | BucketsEventNotificationsListRequestCfR2Jurisdiction
+    | (string & {});
 }
 export const ListBucketEventNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2587,8 +2541,7 @@ export type BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem 
     | "CopyObject"
     | "DeleteObject"
     | "CompleteMultipartUpload"
-    | "LifecycleDeletion"
-    | (string & {});
+    | "LifecycleDeletion";
 export const BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem =
   /*@__PURE__*/ S.String;
 
@@ -2827,8 +2780,7 @@ export const ListBucketMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsObjectsListRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsObjectsListRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface ListBucketObjectsRequest {
@@ -2847,7 +2799,7 @@ export interface ListBucketObjectsRequest {
   /** Returns objects with keys that come after the specified key in lexicographic order. */
   startAfter?: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsObjectsListRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsObjectsListRequestCfR2Jurisdiction | (string & {});
 }
 export const ListBucketObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2915,8 +2867,7 @@ export const BucketsObjectsListResultItemHttpMetadata = /*@__PURE__*/ S.suspend(
 
 export type BucketsObjectsListResultItemStorageClass =
   | "Standard"
-  | "InfrequentAccess"
-  | (string & {});
+  | "InfrequentAccess";
 export const BucketsObjectsListResultItemStorageClass = /*@__PURE__*/ S.String;
 
 export interface BucketsObjectsListResultItem {
@@ -2981,17 +2932,13 @@ export const ListBucketObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBucketObjectsResponse",
 }) as any as S.Schema<ListBucketObjectsResponse>;
 
-export type BucketsListRequestDirection = "asc" | "desc" | (string & {});
+export type BucketsListRequestDirection = "asc" | "desc";
 export const BucketsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type BucketsListRequestOrder = "name" | (string & {});
+export type BucketsListRequestOrder = "name";
 export const BucketsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type BucketsListRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
+export type BucketsListRequestCfR2Jurisdiction = "default" | "eu" | "fedramp";
 export const BucketsListRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface ListBucketsRequest {
@@ -3000,17 +2947,17 @@ export interface ListBucketsRequest {
   /** Pagination cursor received during the last List Buckets call. R2 buckets are paginated using cursors instead of page numbers. */
   cursor?: string;
   /** Direction to order buckets. */
-  direction?: BucketsListRequestDirection;
+  direction?: BucketsListRequestDirection | (string & {});
   /** Bucket names to filter by. Only buckets with this phrase in their name will be returned. */
   nameContains?: string;
   /** Field to order buckets by. */
-  order?: BucketsListRequestOrder;
+  order?: BucketsListRequestOrder | (string & {});
   /** Maximum number of buckets to return in a single call. */
   perPage?: number;
   /** Bucket name to start searching after. Buckets are ordered lexicographically. */
   startAfter?: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsListRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsListRequestCfR2Jurisdiction | (string & {});
 }
 export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3040,8 +2987,7 @@ export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 export type BucketsListResponseBucketsItemJurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsListResponseBucketsItemJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -3051,14 +2997,12 @@ export type BucketsListResponseBucketsItemLocation =
   | "enam"
   | "weur"
   | "wnam"
-  | "oc"
-  | (string & {});
+  | "oc";
 export const BucketsListResponseBucketsItemLocation = /*@__PURE__*/ S.String;
 
 export type BucketsListResponseBucketsItemStorageClass =
   | "Standard"
-  | "InfrequentAccess"
-  | (string & {});
+  | "InfrequentAccess";
 export const BucketsListResponseBucketsItemStorageClass =
   /*@__PURE__*/ S.String;
 
@@ -3146,8 +3090,7 @@ export type SuperSlurperJobsLogsListResultItemLogType =
   | "importSkippedUnsupportedContentType"
   | "importSkippedExcludedContentType"
   | "importSkippedInvalidMedia"
-  | "importSkippedRequiresRetrieval"
-  | (string & {});
+  | "importSkippedRequiresRetrieval";
 export const SuperSlurperJobsLogsListResultItemLogType = /*@__PURE__*/ S.String;
 
 export interface SuperSlurperJobsLogsListResultItem {
@@ -3221,8 +3164,7 @@ export const SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList 
   ) as any as S.Schema<SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaVendor =
-  | "s3"
-  | (string & {});
+  "s3";
 export const SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaVendor =
   /*@__PURE__*/ S.String;
 
@@ -3258,8 +3200,7 @@ export const SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList
   ) as any as S.Schema<SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaVendor =
-  | "gcs"
-  | (string & {});
+  "gcs";
 export const SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaVendor =
   /*@__PURE__*/ S.String;
 
@@ -3286,7 +3227,7 @@ export const SuperSlurperJobsListResultItemSourceGcsSourceResponseSchema =
   }) as any as S.Schema<SuperSlurperJobsListResultItemSourceGcsSourceResponseSchema>;
 
 export type SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaJurisdiction =
-  "default" | "eu" | "fedramp" | (string & {});
+  "default" | "eu" | "fedramp";
 export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -3298,8 +3239,7 @@ export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList 
   ) as any as S.Schema<SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor =
-  | "r2"
-  | (string & {});
+  "r2";
 export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor =
   /*@__PURE__*/ S.String;
 
@@ -3346,15 +3286,13 @@ export type SuperSlurperJobsListResultItemStatus =
   | "running"
   | "paused"
   | "aborted"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const SuperSlurperJobsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export type SuperSlurperJobsListResultItemTargetJurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const SuperSlurperJobsListResultItemTargetJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -3424,15 +3362,10 @@ export const ListSuperSlurperJobsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type BucketsEditRequestCfR2StorageClass =
   | "Standard"
-  | "InfrequentAccess"
-  | (string & {});
+  | "InfrequentAccess";
 export const BucketsEditRequestCfR2StorageClass = /*@__PURE__*/ S.String;
 
-export type BucketsEditRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
+export type BucketsEditRequestCfR2Jurisdiction = "default" | "eu" | "fedramp";
 export const BucketsEditRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface PatchBucketRequest {
@@ -3441,9 +3374,9 @@ export interface PatchBucketRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Storage class for newly uploaded objects, unless specified otherwise. */
-  storageClass: BucketsEditRequestCfR2StorageClass;
+  storageClass: BucketsEditRequestCfR2StorageClass | (string & {});
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsEditRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsEditRequestCfR2Jurisdiction | (string & {});
 }
 export const PatchBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3468,11 +3401,7 @@ export const PatchBucketRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchBucketRequest",
 }) as any as S.Schema<PatchBucketRequest>;
 
-export type BucketsEditResponseJurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
+export type BucketsEditResponseJurisdiction = "default" | "eu" | "fedramp";
 export const BucketsEditResponseJurisdiction = /*@__PURE__*/ S.String;
 
 export type BucketsEditResponseLocation =
@@ -3481,14 +3410,10 @@ export type BucketsEditResponseLocation =
   | "enam"
   | "weur"
   | "wnam"
-  | "oc"
-  | (string & {});
+  | "oc";
 export const BucketsEditResponseLocation = /*@__PURE__*/ S.String;
 
-export type BucketsEditResponseStorageClass =
-  | "Standard"
-  | "InfrequentAccess"
-  | (string & {});
+export type BucketsEditResponseStorageClass = "Standard" | "InfrequentAccess";
 export const BucketsEditResponseStorageClass = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3571,8 +3496,7 @@ export type SuperSlurperJobsProgressResponseStatus =
   | "running"
   | "paused"
   | "aborted"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const SuperSlurperJobsProgressResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3604,13 +3528,13 @@ export type BucketsCorsUpdateRequestRulesItemAllowedMethodsItem =
   | "PUT"
   | "POST"
   | "DELETE"
-  | "HEAD"
-  | (string & {});
+  | "HEAD";
 export const BucketsCorsUpdateRequestRulesItemAllowedMethodsItem =
   /*@__PURE__*/ S.String;
 
-export type BucketsCorsUpdateRequestRulesItemAllowedMethodsList =
-  ReadonlyArray<BucketsCorsUpdateRequestRulesItemAllowedMethodsItem>;
+export type BucketsCorsUpdateRequestRulesItemAllowedMethodsList = ReadonlyArray<
+  BucketsCorsUpdateRequestRulesItemAllowedMethodsItem | (string & {})
+>;
 export const BucketsCorsUpdateRequestRulesItemAllowedMethodsList =
   /*@__PURE__*/ S.Array(
     BucketsCorsUpdateRequestRulesItemAllowedMethodsItem,
@@ -3688,8 +3612,7 @@ export const BucketsCorsUpdateRequestRulesList = /*@__PURE__*/ S.Array(
 export type BucketsCorsUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsCorsUpdateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface PutBucketCorsRequest {
@@ -3699,7 +3622,7 @@ export interface PutBucketCorsRequest {
   bucketName: string;
   rules?: BucketsCorsUpdateRequestRulesList;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsCorsUpdateRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsCorsUpdateRequestCfR2Jurisdiction | (string & {});
 }
 export const PutBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3734,8 +3657,7 @@ export const PutBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsDomainsManagedUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsDomainsManagedUpdateRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -3747,7 +3669,9 @@ export interface PutBucketDomainManagedRequest {
   /** Whether to enable public bucket access at the r2.dev domain. */
   enabled: boolean;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsDomainsManagedUpdateRequestCfR2Jurisdiction;
+  jurisdiction?:
+    | BucketsDomainsManagedUpdateRequestCfR2Jurisdiction
+    | (string & {});
 }
 export const PutBucketDomainManagedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3796,13 +3720,14 @@ export type BucketsEventNotificationsUpdateRequestRulesItemActionsItem =
   | "CopyObject"
   | "DeleteObject"
   | "CompleteMultipartUpload"
-  | "LifecycleDeletion"
-  | (string & {});
+  | "LifecycleDeletion";
 export const BucketsEventNotificationsUpdateRequestRulesItemActionsItem =
   /*@__PURE__*/ S.String;
 
 export type BucketsEventNotificationsUpdateRequestRulesItemActionsList =
-  ReadonlyArray<BucketsEventNotificationsUpdateRequestRulesItemActionsItem>;
+  ReadonlyArray<
+    BucketsEventNotificationsUpdateRequestRulesItemActionsItem | (string & {})
+  >;
 export const BucketsEventNotificationsUpdateRequestRulesItemActionsList =
   /*@__PURE__*/ S.Array(
     BucketsEventNotificationsUpdateRequestRulesItemActionsItem,
@@ -3840,8 +3765,7 @@ export const BucketsEventNotificationsUpdateRequestRulesList =
 export type BucketsEventNotificationsUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsEventNotificationsUpdateRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -3855,7 +3779,9 @@ export interface PutBucketEventNotificationRequest {
   /** Array of rules to drive notifications. */
   rules: BucketsEventNotificationsUpdateRequestRulesList;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsEventNotificationsUpdateRequestCfR2Jurisdiction;
+  jurisdiction?:
+    | BucketsEventNotificationsUpdateRequestCfR2Jurisdiction
+    | (string & {});
 }
 export const PutBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3902,13 +3828,15 @@ export const BucketsLifecycleUpdateRequestRulesItemConditions =
   }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemConditions>;
 
 export type BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType =
-  "Age" | (string & {});
+  "Age";
 export const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType =
   /*@__PURE__*/ S.String;
 
 export interface BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition {
   maxAge: number;
-  type: BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType;
+  type:
+    | BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType
+    | (string & {});
 }
 export const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -3938,13 +3866,15 @@ export const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransiti
   }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition>;
 
 export type BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType =
-  "Age" | (string & {});
+  "Age";
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType =
   /*@__PURE__*/ S.String;
 
 export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition {
   maxAge: number;
-  type: BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType;
+  type:
+    | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType
+    | (string & {});
 }
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -3958,13 +3888,15 @@ export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondit
   }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition>;
 
 export type BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType =
-  "Date" | (string & {});
+  "Date";
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType =
   /*@__PURE__*/ S.String;
 
 export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition {
   date: string;
-  type: BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType;
+  type:
+    | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType
+    | (string & {});
 }
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4004,13 +3936,15 @@ export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition =
   }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition>;
 
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType =
-  "Age" | (string & {});
+  "Age";
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType =
   /*@__PURE__*/ S.String;
 
 export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition {
   maxAge: number;
-  type: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType;
+  type:
+    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType
+    | (string & {});
 }
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4024,13 +3958,15 @@ export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCo
   }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition>;
 
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType =
-  "Date" | (string & {});
+  "Date";
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType =
   /*@__PURE__*/ S.String;
 
 export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition {
   date: string;
-  type: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType;
+  type:
+    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType
+    | (string & {});
 }
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4055,14 +3991,16 @@ export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCo
   );
 
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass =
-  "InfrequentAccess" | (string & {});
+  "InfrequentAccess";
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass =
   /*@__PURE__*/ S.String;
 
 export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
   condition: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition;
-  storageClass: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass;
+  storageClass:
+    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass
+    | (string & {});
 }
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -4127,8 +4065,7 @@ export const BucketsLifecycleUpdateRequestRulesList = /*@__PURE__*/ S.Array(
 export type BucketsLifecycleUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsLifecycleUpdateRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -4139,7 +4076,7 @@ export interface PutBucketLifecycleRequest {
   bucketName: string;
   rules?: BucketsLifecycleUpdateRequestRulesList;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsLifecycleUpdateRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsLifecycleUpdateRequestCfR2Jurisdiction | (string & {});
 }
 export const PutBucketLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4172,13 +4109,15 @@ export const PutBucketLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutBucketLifecycleResponse>;
 
 export type BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType =
-  "Age" | (string & {});
+  "Age";
 export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType =
   /*@__PURE__*/ S.String;
 
 export interface BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeCondition {
   maxAgeSeconds: number;
-  type: BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType;
+  type:
+    | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType
+    | (string & {});
 }
 export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4192,13 +4131,15 @@ export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeCondition =
   }) as any as S.Schema<BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeCondition>;
 
 export type BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateConditionType =
-  "Date" | (string & {});
+  "Date";
 export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateConditionType =
   /*@__PURE__*/ S.String;
 
 export interface BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateCondition {
   date: string;
-  type: BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateConditionType;
+  type:
+    | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateConditionType
+    | (string & {});
 }
 export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4212,12 +4153,14 @@ export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateCondition 
   }) as any as S.Schema<BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateCondition>;
 
 export type BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteConditionType =
-  "Indefinite" | (string & {});
+  "Indefinite";
 export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteConditionType =
   /*@__PURE__*/ S.String;
 
 export interface BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCondition {
-  type: BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteConditionType;
+  type:
+    | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteConditionType
+    | (string & {});
 }
 export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4268,8 +4211,7 @@ export const BucketsLocksUpdateRequestRulesList = /*@__PURE__*/ S.Array(
 export type BucketsLocksUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsLocksUpdateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface PutBucketLockRequest {
@@ -4279,7 +4221,7 @@ export interface PutBucketLockRequest {
   bucketName: string;
   rules?: BucketsLocksUpdateRequestRulesList;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsLocksUpdateRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsLocksUpdateRequestCfR2Jurisdiction | (string & {});
 }
 export const PutBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4311,16 +4253,16 @@ export const PutBucketLockResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketLockResponse",
 }) as any as S.Schema<PutBucketLockResponse>;
 
-export type BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider =
-  | "r2"
-  | (string & {});
+export type BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider = "r2";
 export const BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider =
   /*@__PURE__*/ S.String;
 
 export interface BucketsSippyUpdateRequestDestinationR2EnableSippyAws {
   /** ID of a Cloudflare API token. */
   accessKeyId?: string;
-  provider?: BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider;
+  provider?:
+    | BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider
+    | (string & {});
   /** Value of a Cloudflare API token. */
   secretAccessKey?: string;
 }
@@ -4340,7 +4282,9 @@ export const BucketsSippyUpdateRequestDestinationR2EnableSippyAws =
 export interface BucketsSippyUpdateRequestDestinationR2EnableSippyGcs {
   /** ID of a Cloudflare API token. */
   accessKeyId?: string;
-  provider?: BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider;
+  provider?:
+    | BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider
+    | (string & {});
   /** Value of a Cloudflare API token. */
   secretAccessKey?: string;
 }
@@ -4368,9 +4312,7 @@ export const BucketsSippyUpdateRequestDestination =
     ]),
   );
 
-export type BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider =
-  | "aws"
-  | (string & {});
+export type BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider = "aws";
 export const BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider =
   /*@__PURE__*/ S.String;
 
@@ -4379,7 +4321,9 @@ export interface BucketsSippyUpdateRequestSourceR2EnableSippyAws {
   accessKeyId?: string;
   /** Name of the AWS S3 bucket. */
   bucket?: string;
-  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider;
+  provider?:
+    | BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider
+    | (string & {});
   /** Name of the AWS availability zone. */
   region?: string;
   /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
@@ -4400,9 +4344,7 @@ export const BucketsSippyUpdateRequestSourceR2EnableSippyAws =
     identifier: "BucketsSippyUpdateRequestSourceR2EnableSippyAws",
   }) as any as S.Schema<BucketsSippyUpdateRequestSourceR2EnableSippyAws>;
 
-export type BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider =
-  | "gcs"
-  | (string & {});
+export type BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider = "gcs";
 export const BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider =
   /*@__PURE__*/ S.String;
 
@@ -4413,7 +4355,9 @@ export interface BucketsSippyUpdateRequestSourceR2EnableSippyGcs {
   clientEmail?: string;
   /** Private Key of an IAM credential (ideally scoped to a single GCS bucket). */
   privateKey?: string;
-  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider;
+  provider?:
+    | BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider
+    | (string & {});
 }
 export const BucketsSippyUpdateRequestSourceR2EnableSippyGcs =
   /*@__PURE__*/ S.suspend(() =>
@@ -4429,9 +4373,7 @@ export const BucketsSippyUpdateRequestSourceR2EnableSippyGcs =
     identifier: "BucketsSippyUpdateRequestSourceR2EnableSippyGcs",
   }) as any as S.Schema<BucketsSippyUpdateRequestSourceR2EnableSippyGcs>;
 
-export type BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider =
-  | "s3"
-  | (string & {});
+export type BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider = "s3";
 export const BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider =
   /*@__PURE__*/ S.String;
 
@@ -4440,7 +4382,9 @@ export interface BucketsSippyUpdateRequestSourceR2EnableSippyS3 {
   accessKeyId?: string;
   /** URL to the S3-compatible API of the bucket. */
   bucketUrl?: string;
-  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider;
+  provider?:
+    | BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider
+    | (string & {});
   /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
   secretAccessKey?: string;
 }
@@ -4473,8 +4417,7 @@ export const BucketsSippyUpdateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
 export type BucketsSippyUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsSippyUpdateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface PutBucketSippyRequest {
@@ -4487,7 +4430,7 @@ export interface PutBucketSippyRequest {
   /** AWS S3 bucket to copy objects from. */
   source?: BucketsSippyUpdateRequestSource;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsSippyUpdateRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsSippyUpdateRequestCfR2Jurisdiction | (string & {});
 }
 export const PutBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4513,9 +4456,7 @@ export const PutBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketSippyRequest",
 }) as any as S.Schema<PutBucketSippyRequest>;
 
-export type BucketsSippyUpdateResponseDestinationProvider =
-  | "r2"
-  | (string & {});
+export type BucketsSippyUpdateResponseDestinationProvider = "r2";
 export const BucketsSippyUpdateResponseDestinationProvider =
   /*@__PURE__*/ S.String;
 
@@ -4539,11 +4480,7 @@ export const BucketsSippyUpdateResponseDestination = /*@__PURE__*/ S.suspend(
   identifier: "BucketsSippyUpdateResponseDestination",
 }) as any as S.Schema<BucketsSippyUpdateResponseDestination>;
 
-export type BucketsSippyUpdateResponseSourceProvider =
-  | "aws"
-  | "gcs"
-  | "s3"
-  | (string & {});
+export type BucketsSippyUpdateResponseSourceProvider = "aws" | "gcs" | "s3";
 export const BucketsSippyUpdateResponseSourceProvider = /*@__PURE__*/ S.String;
 
 export interface BucketsSippyUpdateResponseSource {
@@ -4656,13 +4593,12 @@ export const SuperSlurperConnectivityPrecheckSourceRequestSecret =
 
 export type SuperSlurperConnectivityPrecheckSourceRequestVendorEnum =
   | "s3"
-  | "gcs"
-  | (string & {});
+  | "gcs";
 export const SuperSlurperConnectivityPrecheckSourceRequestVendorEnum =
   /*@__PURE__*/ S.String;
 
 export type SuperSlurperConnectivityPrecheckSourceRequestVendorR2SlurperR2SourceSchema =
-  "r2" | (string & {});
+  "r2";
 export const SuperSlurperConnectivityPrecheckSourceRequestVendorR2SlurperR2SourceSchema =
   /*@__PURE__*/ S.String;
 
@@ -4682,8 +4618,7 @@ export const SuperSlurperConnectivityPrecheckSourceRequestKeysList =
 export type SuperSlurperConnectivityPrecheckSourceRequestJurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const SuperSlurperConnectivityPrecheckSourceRequestJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -4697,7 +4632,9 @@ export interface SourceSuperSlurperConnectivityPrecheckRequest {
   keys?: SuperSlurperConnectivityPrecheckSourceRequestKeysList;
   pathPrefix?: string;
   region?: string;
-  jurisdiction?: SuperSlurperConnectivityPrecheckSourceRequestJurisdiction;
+  jurisdiction?:
+    | SuperSlurperConnectivityPrecheckSourceRequestJurisdiction
+    | (string & {});
 }
 export const SourceSuperSlurperConnectivityPrecheckRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4728,8 +4665,7 @@ export const SourceSuperSlurperConnectivityPrecheckRequest =
 
 export type SuperSlurperConnectivityPrecheckSourceResponseConnectivityStatus =
   | "success"
-  | "error"
-  | (string & {});
+  | "error";
 export const SuperSlurperConnectivityPrecheckSourceResponseConnectivityStatus =
   /*@__PURE__*/ S.String;
 
@@ -4762,17 +4698,14 @@ export const SuperSlurperConnectivityPrecheckTargetRequestSecret =
     identifier: "SuperSlurperConnectivityPrecheckTargetRequestSecret",
   }) as any as S.Schema<SuperSlurperConnectivityPrecheckTargetRequestSecret>;
 
-export type SuperSlurperConnectivityPrecheckTargetRequestVendor =
-  | "r2"
-  | (string & {});
+export type SuperSlurperConnectivityPrecheckTargetRequestVendor = "r2";
 export const SuperSlurperConnectivityPrecheckTargetRequestVendor =
   /*@__PURE__*/ S.String;
 
 export type SuperSlurperConnectivityPrecheckTargetRequestJurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const SuperSlurperConnectivityPrecheckTargetRequestJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -4780,8 +4713,10 @@ export interface TargetSuperSlurperConnectivityPrecheckRequest {
   accountId: string;
   bucket: string;
   secret: SuperSlurperConnectivityPrecheckTargetRequestSecret;
-  vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor;
-  jurisdiction?: SuperSlurperConnectivityPrecheckTargetRequestJurisdiction;
+  vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor | (string & {});
+  jurisdiction?:
+    | SuperSlurperConnectivityPrecheckTargetRequestJurisdiction
+    | (string & {});
 }
 export const TargetSuperSlurperConnectivityPrecheckRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4808,8 +4743,7 @@ export const TargetSuperSlurperConnectivityPrecheckRequest =
 
 export type SuperSlurperConnectivityPrecheckTargetResponseConnectivityStatus =
   | "success"
-  | "error"
-  | (string & {});
+  | "error";
 export const SuperSlurperConnectivityPrecheckTargetResponseConnectivityStatus =
   /*@__PURE__*/ S.String;
 
@@ -4839,15 +4773,13 @@ export type BucketsDomainsCustomUpdateRequestMinTLS =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3"
-  | (string & {});
+  | "1.3";
 export const BucketsDomainsCustomUpdateRequestMinTLS = /*@__PURE__*/ S.String;
 
 export type BucketsDomainsCustomUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsDomainsCustomUpdateRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -4863,9 +4795,11 @@ export interface UpdateBucketDomainCustomRequest {
   /** Whether to enable public bucket access at the specified custom domain. */
   enabled?: boolean;
   /** Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to previous value. */
-  minTLS?: BucketsDomainsCustomUpdateRequestMinTLS;
+  minTLS?: BucketsDomainsCustomUpdateRequestMinTLS | (string & {});
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsDomainsCustomUpdateRequestCfR2Jurisdiction;
+  jurisdiction?:
+    | BucketsDomainsCustomUpdateRequestCfR2Jurisdiction
+    | (string & {});
 }
 export const UpdateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4904,8 +4838,7 @@ export type BucketsDomainsCustomUpdateResponseMinTLS =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3"
-  | (string & {});
+  | "1.3";
 export const BucketsDomainsCustomUpdateResponseMinTLS = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4933,15 +4866,13 @@ export const UpdateBucketDomainCustomResponse = /*@__PURE__*/ S.suspend(() =>
 export type BucketsObjectsUploadRequestCfR2Jurisdiction =
   | "default"
   | "eu"
-  | "fedramp"
-  | (string & {});
+  | "fedramp";
 export const BucketsObjectsUploadRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
 export type BucketsObjectsUploadRequestCfR2StorageClass =
   | "Standard"
-  | "InfrequentAccess"
-  | (string & {});
+  | "InfrequentAccess";
 export const BucketsObjectsUploadRequestCfR2StorageClass =
   /*@__PURE__*/ S.String;
 
@@ -4953,9 +4884,11 @@ export interface UploadBucketObjectRequest {
   /** The key (name) to assign to the object. May contain slashes for path-like keys. */
   objectKey: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsObjectsUploadRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsObjectsUploadRequestCfR2Jurisdiction | (string & {});
   /** Storage class for newly uploaded objects, unless specified otherwise. */
-  cfR2StorageClass?: BucketsObjectsUploadRequestCfR2StorageClass;
+  cfR2StorageClass?:
+    | BucketsObjectsUploadRequestCfR2StorageClass
+    | (string & {});
 }
 export const UploadBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4987,8 +4920,7 @@ export const UploadBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type BucketsObjectsUploadResponseStorageClass =
   | "Standard"
-  | "InfrequentAccess"
-  | (string & {});
+  | "InfrequentAccess";
 export const BucketsObjectsUploadResponseStorageClass = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

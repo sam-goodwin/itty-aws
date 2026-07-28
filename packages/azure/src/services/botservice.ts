@@ -23,13 +23,13 @@ export const BotConnectionCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BotConnectionCreateRequestTagsMap>;
 
 /** The name of SKU. */
-export type SkuName = "F0" | "S1" | (string & {});
+export type SkuName = "F0" | "S1";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The SKU of the cognitive services account. */
 export interface SkuInput {
   /** The sku name */
-  name: SkuName;
+  name: SkuName | (string & {});
 }
 export const SkuInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -38,13 +38,7 @@ export const SkuInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuInput" }) as any as S.Schema<SkuInput>;
 
 /** Indicates the type of bot service */
-export type Kind =
-  | "sdk"
-  | "designer"
-  | "bot"
-  | "function"
-  | "azurebot"
-  | (string & {});
+export type Kind = "sdk" | "designer" | "bot" | "function" | "azurebot";
 export const Kind = /*@__PURE__*/ S.String;
 
 /** Extra Parameter in a Connection Setting Properties to indicate service provider specific properties */
@@ -124,7 +118,7 @@ export interface BotConnectionCreateRequest {
   /** Gets or sets the SKU of the resource. */
   sku?: SkuInput;
   /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
+  kind?: Kind | (string & {}) | null;
   /** Entity Tag. */
   etag?: string;
   /** The set of properties specific to bot channel resource */
@@ -164,7 +158,7 @@ export const BotConnectionCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BotConnectionCreateResponseTagsMap>;
 
 /** Gets the sku tier. This is based on the SKU name. */
-export type SkuTier = "Free" | "Standard" | (string & {});
+export type SkuTier = "Free" | "Standard";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The SKU of the cognitive services account. */
@@ -752,7 +746,7 @@ export interface BotConnectionUpdateRequest {
   /** Gets or sets the SKU of the resource. */
   sku?: SkuInput;
   /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
+  kind?: Kind | (string & {}) | null;
   /** Entity Tag. */
   etag?: string;
   /** The set of properties specific to bot channel resource */
@@ -865,8 +859,7 @@ export const BotPropertiesInputParametersMap = /*@__PURE__*/ S.Record(
 export type BotPropertiesInputMsaAppType =
   | "UserAssignedMSI"
   | "SingleTenant"
-  | "MultiTenant"
-  | (string & {});
+  | "MultiTenant";
 export const BotPropertiesInputMsaAppType = /*@__PURE__*/ S.String;
 
 /** Collection of LUIS App Ids */
@@ -876,10 +869,7 @@ export const BotPropertiesInputLuisAppIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BotPropertiesInputLuisAppIdsList>;
 
 /** Whether the bot is in an isolated network */
-export type BotPropertiesInputPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type BotPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
 export const BotPropertiesInputPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The parameters to provide for the Bot. */
@@ -899,7 +889,7 @@ export interface BotPropertiesInput {
   /** The bot's manifest url */
   manifestUrl?: string;
   /** Microsoft App Type for the bot */
-  msaAppType?: BotPropertiesInputMsaAppType;
+  msaAppType?: BotPropertiesInputMsaAppType | (string & {});
   /** Microsoft App Id for the bot */
   msaAppId: string;
   /** Microsoft App Tenant Id for the bot */
@@ -923,7 +913,7 @@ export interface BotPropertiesInput {
   /** The Tenant Id for the bot */
   tenantId?: string;
   /** Whether the bot is in an isolated network */
-  publicNetworkAccess?: BotPropertiesInputPublicNetworkAccess;
+  publicNetworkAccess?: BotPropertiesInputPublicNetworkAccess | (string & {});
   /** Whether the bot is streaming supported */
   isStreamingSupported?: boolean;
   /** Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication. */
@@ -987,7 +977,7 @@ export interface BotsCreateRequest {
   /** Gets or sets the SKU of the resource. */
   sku?: SkuInput;
   /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
+  kind?: Kind | (string & {}) | null;
   /** Entity Tag. */
   etag?: string;
   /** The set of properties specific to bot resource */
@@ -1047,8 +1037,7 @@ export const BotPropertiesParametersMap = /*@__PURE__*/ S.Record(
 export type BotPropertiesMsaAppType =
   | "UserAssignedMSI"
   | "SingleTenant"
-  | "MultiTenant"
-  | (string & {});
+  | "MultiTenant";
 export const BotPropertiesMsaAppType = /*@__PURE__*/ S.String;
 
 /** Collection of channels for which the bot is configured */
@@ -1070,10 +1059,7 @@ export const BotPropertiesLuisAppIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BotPropertiesLuisAppIdsList>;
 
 /** Whether the bot is in an isolated network */
-export type BotPropertiesPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type BotPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const BotPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The Private Endpoint resource. */
@@ -1093,8 +1079,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -1121,8 +1106,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1624,7 +1608,7 @@ export interface BotsUpdateRequest {
   /** Gets or sets the SKU of the resource. */
   sku?: SkuInput;
   /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
+  kind?: Kind | (string & {}) | null;
   /** Entity Tag. */
   etag?: string;
   /** The set of properties specific to bot resource */
@@ -1724,8 +1708,7 @@ export type ChannelsCreateRequestChannelName =
   | "TelephonyChannel"
   | "AcsChatChannel"
   | "SearchAssistant"
-  | "M365Extensions"
-  | (string & {});
+  | "M365Extensions";
 export const ChannelsCreateRequestChannelName = /*@__PURE__*/ S.String;
 
 /** Contains resource tags defined as key/value pairs. */
@@ -1762,7 +1745,7 @@ export interface ChannelsCreateRequest {
   /** The name of the Bot resource. */
   resourceName: string;
   /** The name of the Channel resource. */
-  channelName: ChannelsCreateRequestChannelName;
+  channelName: ChannelsCreateRequestChannelName | (string & {});
   /** Specifies the location of the resource. */
   location?: string;
   /** Contains resource tags defined as key/value pairs. */
@@ -1770,7 +1753,7 @@ export interface ChannelsCreateRequest {
   /** Gets or sets the SKU of the resource. */
   sku?: SkuInput;
   /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
+  kind?: Kind | (string & {}) | null;
   /** Entity Tag. */
   etag?: string;
   /** The set of properties specific to bot channel resource */
@@ -2106,8 +2089,7 @@ export type ChannelsListWithKeysRequestChannelName =
   | "TelephonyChannel"
   | "AcsChatChannel"
   | "SearchAssistant"
-  | "M365Extensions"
-  | (string & {});
+  | "M365Extensions";
 export const ChannelsListWithKeysRequestChannelName = /*@__PURE__*/ S.String;
 
 export interface ChannelsListWithKeysRequest {
@@ -2118,7 +2100,7 @@ export interface ChannelsListWithKeysRequest {
   /** The name of the Bot resource. */
   resourceName: string;
   /** The name of the Channel resource. */
-  channelName: ChannelsListWithKeysRequestChannelName;
+  channelName: ChannelsListWithKeysRequestChannelName | (string & {});
 }
 export const ChannelsListWithKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2343,8 +2325,7 @@ export type ChannelsUpdateRequestChannelName =
   | "TelephonyChannel"
   | "AcsChatChannel"
   | "SearchAssistant"
-  | "M365Extensions"
-  | (string & {});
+  | "M365Extensions";
 export const ChannelsUpdateRequestChannelName = /*@__PURE__*/ S.String;
 
 /** Contains resource tags defined as key/value pairs. */
@@ -2364,7 +2345,7 @@ export interface ChannelsUpdateRequest {
   /** The name of the Bot resource. */
   resourceName: string;
   /** The name of the Channel resource. */
-  channelName: ChannelsUpdateRequestChannelName;
+  channelName: ChannelsUpdateRequestChannelName | (string & {});
   /** Specifies the location of the resource. */
   location?: string;
   /** Contains resource tags defined as key/value pairs. */
@@ -2372,7 +2353,7 @@ export interface ChannelsUpdateRequest {
   /** Gets or sets the SKU of the resource. */
   sku?: SkuInput;
   /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
+  kind?: Kind | (string & {}) | null;
   /** Entity Tag. */
   etag?: string;
   /** The set of properties specific to bot channel resource */
@@ -2458,16 +2439,12 @@ export const ChannelsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type DirectLineRegenerateKeysRequestChannelName =
   | "WebChatChannel"
-  | "DirectLineChannel"
-  | (string & {});
+  | "DirectLineChannel";
 export const DirectLineRegenerateKeysRequestChannelName =
   /*@__PURE__*/ S.String;
 
 /** Determines which key is to be regenerated */
-export type DirectLineRegenerateKeysRequestKey =
-  | "key1"
-  | "key2"
-  | (string & {});
+export type DirectLineRegenerateKeysRequestKey = "key1" | "key2";
 export const DirectLineRegenerateKeysRequestKey = /*@__PURE__*/ S.String;
 
 export interface DirectLineRegenerateKeysRequest {
@@ -2478,11 +2455,11 @@ export interface DirectLineRegenerateKeysRequest {
   /** The name of the Bot resource. */
   resourceName: string;
   /** The name of the Channel resource for which keys are to be regenerated. */
-  channelName: DirectLineRegenerateKeysRequestChannelName;
+  channelName: DirectLineRegenerateKeysRequestChannelName | (string & {});
   /** The site name */
   siteName: string;
   /** Determines which key is to be regenerated */
-  key: DirectLineRegenerateKeysRequestKey;
+  key: DirectLineRegenerateKeysRequestKey | (string & {});
 }
 export const DirectLineRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2697,8 +2674,7 @@ export type OperationResultsDescriptionStatus =
   | "Succeeded"
   | "Failed"
   | "Requested"
-  | "Running"
-  | (string & {});
+  | "Running";
 export const OperationResultsDescriptionStatus = /*@__PURE__*/ S.String;
 
 /** The properties indicating the operation result of an operation on a service. */

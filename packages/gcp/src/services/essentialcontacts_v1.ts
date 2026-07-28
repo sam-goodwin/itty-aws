@@ -13,73 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type ComputeFoldersContactsNotificationCategoriesEnum =
-  | "NOTIFICATION_CATEGORY_UNSPECIFIED"
-  | "ALL"
-  | "SUSPENSION"
-  | "SECURITY"
-  | "TECHNICAL"
-  | "BILLING"
-  | "LEGAL"
-  | "PRODUCT_UPDATES"
-  | "TECHNICAL_INCIDENTS"
-  | (string & {});
-export const ComputeFoldersContactsNotificationCategoriesEnum =
-  /*@__PURE__*/ S.String;
+export type ComputeFoldersContactsNotificationCategoriesEnum = "NOTIFICATION_CATEGORY_UNSPECIFIED" | "ALL" | "SUSPENSION" | "SECURITY" | "TECHNICAL" | "BILLING" | "LEGAL" | "PRODUCT_UPDATES" | "TECHNICAL_INCIDENTS";
+export const ComputeFoldersContactsNotificationCategoriesEnum = /*@__PURE__*/ S.String;
 
-export type ComputeFoldersContactsNotificationCategoriesEnumList =
-  ReadonlyArray<ComputeFoldersContactsNotificationCategoriesEnum>;
-export const ComputeFoldersContactsNotificationCategoriesEnumList =
-  /*@__PURE__*/ S.Array(
-    ComputeFoldersContactsNotificationCategoriesEnum,
-  ) as any as S.Schema<ComputeFoldersContactsNotificationCategoriesEnumList>;
+export type ComputeFoldersContactsNotificationCategoriesEnumList = ReadonlyArray<ComputeFoldersContactsNotificationCategoriesEnum | (string & {})>;
+export const ComputeFoldersContactsNotificationCategoriesEnumList = /*@__PURE__*/ S.Array(ComputeFoldersContactsNotificationCategoriesEnum) as any as S.Schema<ComputeFoldersContactsNotificationCategoriesEnumList>;
 
 export interface ComputeFoldersContactsRequest {
   /** Required. The name of the resource to compute contacts for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -92,52 +77,22 @@ export interface ComputeFoldersContactsRequest {
   pageToken?: string;
 }
 export const ComputeFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    notificationCategories: S.optional(
-      ComputeFoldersContactsNotificationCategoriesEnumList.pipe(T.Query()),
-    ),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/contacts:compute",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ComputeFoldersContactsRequest",
-}) as any as S.Schema<ComputeFoldersContactsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "notificationCategories": S.optional(ComputeFoldersContactsNotificationCategoriesEnumList.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/contacts:compute","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "ComputeFoldersContactsRequest" }) as any as S.Schema<ComputeFoldersContactsRequest>;
 
-export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum =
-    | "NOTIFICATION_CATEGORY_UNSPECIFIED"
-    | "ALL"
-    | "SUSPENSION"
-    | "SECURITY"
-    | "TECHNICAL"
-    | "BILLING"
-    | "LEGAL"
-    | "PRODUCT_UPDATES"
-    | "TECHNICAL_INCIDENTS"
-    | (string & {});
-export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum = "NOTIFICATION_CATEGORY_UNSPECIFIED" | "ALL" | "SUSPENSION" | "SECURITY" | "TECHNICAL" | "BILLING" | "LEGAL" | "PRODUCT_UPDATES" | "TECHNICAL_INCIDENTS";
+export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList =
-  ReadonlyArray<GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum>;
-export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum,
-  ) as any as S.Schema<GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList>;
+export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList = ReadonlyArray<GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum>;
+export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum) as any as S.Schema<GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList>;
 
-export type GoogleCloudEssentialcontactsV1ContactValidationStateEnum =
-  | "VALIDATION_STATE_UNSPECIFIED"
-  | "VALID"
-  | "INVALID"
-  | (string & {});
-export const GoogleCloudEssentialcontactsV1ContactValidationStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudEssentialcontactsV1ContactValidationStateEnum = "VALIDATION_STATE_UNSPECIFIED" | "VALID" | "INVALID";
+export const GoogleCloudEssentialcontactsV1ContactValidationStateEnum = /*@__PURE__*/ S.String;
 
 /** A contact that will receive notifications from Google Cloud. */
 export interface GoogleCloudEssentialcontactsV1Contact {
@@ -154,29 +109,19 @@ export interface GoogleCloudEssentialcontactsV1Contact {
   /** Output only. The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago. */
   validateTime?: string;
 }
-export const GoogleCloudEssentialcontactsV1Contact = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      email: S.optional(S.String),
-      notificationCategorySubscriptions: S.optional(
-        GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList,
-      ),
-      languageTag: S.optional(S.String),
-      validationState: S.optional(
-        GoogleCloudEssentialcontactsV1ContactValidationStateEnum,
-      ),
-      validateTime: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudEssentialcontactsV1Contact",
-}) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>;
+export const GoogleCloudEssentialcontactsV1Contact = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "email": S.optional(S.String),
+  "notificationCategorySubscriptions": S.optional(GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList),
+  "languageTag": S.optional(S.String),
+  "validationState": S.optional(GoogleCloudEssentialcontactsV1ContactValidationStateEnum),
+  "validateTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudEssentialcontactsV1Contact" }) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>;
 
-export type GoogleCloudEssentialcontactsV1ContactList =
-  ReadonlyArray<GoogleCloudEssentialcontactsV1Contact>;
-export const GoogleCloudEssentialcontactsV1ContactList = /*@__PURE__*/ S.Array(
-  GoogleCloudEssentialcontactsV1Contact,
-) as any as S.Schema<GoogleCloudEssentialcontactsV1ContactList>;
+export type GoogleCloudEssentialcontactsV1ContactList = ReadonlyArray<GoogleCloudEssentialcontactsV1Contact>;
+export const GoogleCloudEssentialcontactsV1ContactList = /*@__PURE__*/ S.Array(GoogleCloudEssentialcontactsV1Contact) as any as S.Schema<GoogleCloudEssentialcontactsV1ContactList>;
 
 /** Response message for the ComputeContacts method. */
 export interface GoogleCloudEssentialcontactsV1ComputeContactsResponse {
@@ -185,36 +130,18 @@ export interface GoogleCloudEssentialcontactsV1ComputeContactsResponse {
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token` and the rest of the parameters the same as the original request. */
   nextPageToken?: string;
 }
-export const GoogleCloudEssentialcontactsV1ComputeContactsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contacts: S.optional(GoogleCloudEssentialcontactsV1ContactList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudEssentialcontactsV1ComputeContactsResponse",
-  }) as any as S.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse>;
+export const GoogleCloudEssentialcontactsV1ComputeContactsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "contacts": S.optional(GoogleCloudEssentialcontactsV1ContactList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudEssentialcontactsV1ComputeContactsResponse" }) as any as S.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse>;
 
-export type ComputeOrganizationsContactsNotificationCategoriesEnum =
-  | "NOTIFICATION_CATEGORY_UNSPECIFIED"
-  | "ALL"
-  | "SUSPENSION"
-  | "SECURITY"
-  | "TECHNICAL"
-  | "BILLING"
-  | "LEGAL"
-  | "PRODUCT_UPDATES"
-  | "TECHNICAL_INCIDENTS"
-  | (string & {});
-export const ComputeOrganizationsContactsNotificationCategoriesEnum =
-  /*@__PURE__*/ S.String;
+export type ComputeOrganizationsContactsNotificationCategoriesEnum = "NOTIFICATION_CATEGORY_UNSPECIFIED" | "ALL" | "SUSPENSION" | "SECURITY" | "TECHNICAL" | "BILLING" | "LEGAL" | "PRODUCT_UPDATES" | "TECHNICAL_INCIDENTS";
+export const ComputeOrganizationsContactsNotificationCategoriesEnum = /*@__PURE__*/ S.String;
 
-export type ComputeOrganizationsContactsNotificationCategoriesEnumList =
-  ReadonlyArray<ComputeOrganizationsContactsNotificationCategoriesEnum>;
-export const ComputeOrganizationsContactsNotificationCategoriesEnumList =
-  /*@__PURE__*/ S.Array(
-    ComputeOrganizationsContactsNotificationCategoriesEnum,
-  ) as any as S.Schema<ComputeOrganizationsContactsNotificationCategoriesEnumList>;
+export type ComputeOrganizationsContactsNotificationCategoriesEnumList = ReadonlyArray<ComputeOrganizationsContactsNotificationCategoriesEnum | (string & {})>;
+export const ComputeOrganizationsContactsNotificationCategoriesEnumList = /*@__PURE__*/ S.Array(ComputeOrganizationsContactsNotificationCategoriesEnum) as any as S.Schema<ComputeOrganizationsContactsNotificationCategoriesEnumList>;
 
 export interface ComputeOrganizationsContactsRequest {
   /** Required. The name of the resource to compute contacts for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -227,46 +154,19 @@ export interface ComputeOrganizationsContactsRequest {
   pageToken?: string;
 }
 export const ComputeOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    notificationCategories: S.optional(
-      ComputeOrganizationsContactsNotificationCategoriesEnumList.pipe(
-        T.Query(),
-      ),
-    ),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/contacts:compute",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ComputeOrganizationsContactsRequest",
-}) as any as S.Schema<ComputeOrganizationsContactsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "notificationCategories": S.optional(ComputeOrganizationsContactsNotificationCategoriesEnumList.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/contacts:compute","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "ComputeOrganizationsContactsRequest" }) as any as S.Schema<ComputeOrganizationsContactsRequest>;
 
-export type ComputeProjectsContactsNotificationCategoriesEnum =
-  | "NOTIFICATION_CATEGORY_UNSPECIFIED"
-  | "ALL"
-  | "SUSPENSION"
-  | "SECURITY"
-  | "TECHNICAL"
-  | "BILLING"
-  | "LEGAL"
-  | "PRODUCT_UPDATES"
-  | "TECHNICAL_INCIDENTS"
-  | (string & {});
-export const ComputeProjectsContactsNotificationCategoriesEnum =
-  /*@__PURE__*/ S.String;
+export type ComputeProjectsContactsNotificationCategoriesEnum = "NOTIFICATION_CATEGORY_UNSPECIFIED" | "ALL" | "SUSPENSION" | "SECURITY" | "TECHNICAL" | "BILLING" | "LEGAL" | "PRODUCT_UPDATES" | "TECHNICAL_INCIDENTS";
+export const ComputeProjectsContactsNotificationCategoriesEnum = /*@__PURE__*/ S.String;
 
-export type ComputeProjectsContactsNotificationCategoriesEnumList =
-  ReadonlyArray<ComputeProjectsContactsNotificationCategoriesEnum>;
-export const ComputeProjectsContactsNotificationCategoriesEnumList =
-  /*@__PURE__*/ S.Array(
-    ComputeProjectsContactsNotificationCategoriesEnum,
-  ) as any as S.Schema<ComputeProjectsContactsNotificationCategoriesEnumList>;
+export type ComputeProjectsContactsNotificationCategoriesEnumList = ReadonlyArray<ComputeProjectsContactsNotificationCategoriesEnum | (string & {})>;
+export const ComputeProjectsContactsNotificationCategoriesEnumList = /*@__PURE__*/ S.Array(ComputeProjectsContactsNotificationCategoriesEnum) as any as S.Schema<ComputeProjectsContactsNotificationCategoriesEnumList>;
 
 export interface ComputeProjectsContactsRequest {
   /** Required. The name of the resource to compute contacts for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -279,23 +179,13 @@ export interface ComputeProjectsContactsRequest {
   pageToken?: string;
 }
 export const ComputeProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    notificationCategories: S.optional(
-      ComputeProjectsContactsNotificationCategoriesEnumList.pipe(T.Query()),
-    ),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/contacts:compute",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ComputeProjectsContactsRequest",
-}) as any as S.Schema<ComputeProjectsContactsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "notificationCategories": S.optional(ComputeProjectsContactsNotificationCategoriesEnumList.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/contacts:compute","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "ComputeProjectsContactsRequest" }) as any as S.Schema<ComputeProjectsContactsRequest>;
 
 export interface CreateFoldersContactsRequest {
   /** Required. The resource to save this contact for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -304,19 +194,11 @@ export interface CreateFoldersContactsRequest {
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
 export const CreateFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/contacts",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateFoldersContactsRequest",
-}) as any as S.Schema<CreateFoldersContactsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/contacts","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "CreateFoldersContactsRequest" }) as any as S.Schema<CreateFoldersContactsRequest>;
 
 export interface CreateOrganizationsContactsRequest {
   /** Required. The resource to save this contact for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -325,19 +207,11 @@ export interface CreateOrganizationsContactsRequest {
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
 export const CreateOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/contacts",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateOrganizationsContactsRequest",
-}) as any as S.Schema<CreateOrganizationsContactsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/contacts","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "CreateOrganizationsContactsRequest" }) as any as S.Schema<CreateOrganizationsContactsRequest>;
 
 export interface CreateProjectsContactsRequest {
   /** Required. The resource to save this contact for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -346,135 +220,77 @@ export interface CreateProjectsContactsRequest {
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
 export const CreateProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/contacts",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsContactsRequest",
-}) as any as S.Schema<CreateProjectsContactsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/contacts","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsContactsRequest" }) as any as S.Schema<CreateProjectsContactsRequest>;
 
 export interface DeleteFoldersContactsRequest {
   /** Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 export const DeleteFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteFoldersContactsRequest",
-}) as any as S.Schema<DeleteFoldersContactsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "DeleteFoldersContactsRequest" }) as any as S.Schema<DeleteFoldersContactsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
 export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
+S.Struct({}),
+).annotate({ identifier: "GoogleProtobufEmpty" }) as any as S.Schema<GoogleProtobufEmpty>;
 
 export interface DeleteOrganizationsContactsRequest {
   /** Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 export const DeleteOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteOrganizationsContactsRequest",
-}) as any as S.Schema<DeleteOrganizationsContactsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "DeleteOrganizationsContactsRequest" }) as any as S.Schema<DeleteOrganizationsContactsRequest>;
 
 export interface DeleteProjectsContactsRequest {
   /** Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 export const DeleteProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsContactsRequest",
-}) as any as S.Schema<DeleteProjectsContactsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsContactsRequest" }) as any as S.Schema<DeleteProjectsContactsRequest>;
 
 export interface GetFoldersContactsRequest {
   /** Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 export const GetFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetFoldersContactsRequest",
-}) as any as S.Schema<GetFoldersContactsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "GetFoldersContactsRequest" }) as any as S.Schema<GetFoldersContactsRequest>;
 
 export interface GetOrganizationsContactsRequest {
   /** Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 export const GetOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOrganizationsContactsRequest",
-}) as any as S.Schema<GetOrganizationsContactsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsContactsRequest" }) as any as S.Schema<GetOrganizationsContactsRequest>;
 
 export interface GetProjectsContactsRequest {
   /** Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 export const GetProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsContactsRequest",
-}) as any as S.Schema<GetProjectsContactsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsContactsRequest" }) as any as S.Schema<GetProjectsContactsRequest>;
 
 export interface ListFoldersContactsRequest {
   /** Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -485,20 +301,12 @@ export interface ListFoldersContactsRequest {
   pageToken?: string;
 }
 export const ListFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/contacts",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListFoldersContactsRequest",
-}) as any as S.Schema<ListFoldersContactsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/contacts","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "ListFoldersContactsRequest" }) as any as S.Schema<ListFoldersContactsRequest>;
 
 /** Response message for the ListContacts method. */
 export interface GoogleCloudEssentialcontactsV1ListContactsResponse {
@@ -507,15 +315,12 @@ export interface GoogleCloudEssentialcontactsV1ListContactsResponse {
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token` and the rest of the parameters the same as the original request. */
   nextPageToken?: string;
 }
-export const GoogleCloudEssentialcontactsV1ListContactsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contacts: S.optional(GoogleCloudEssentialcontactsV1ContactList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudEssentialcontactsV1ListContactsResponse",
-  }) as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>;
+export const GoogleCloudEssentialcontactsV1ListContactsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "contacts": S.optional(GoogleCloudEssentialcontactsV1ContactList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudEssentialcontactsV1ListContactsResponse" }) as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>;
 
 export interface ListOrganizationsContactsRequest {
   /** Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -526,20 +331,12 @@ export interface ListOrganizationsContactsRequest {
   pageToken?: string;
 }
 export const ListOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/contacts",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListOrganizationsContactsRequest",
-}) as any as S.Schema<ListOrganizationsContactsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/contacts","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "ListOrganizationsContactsRequest" }) as any as S.Schema<ListOrganizationsContactsRequest>;
 
 export interface ListProjectsContactsRequest {
   /** Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -550,20 +347,12 @@ export interface ListProjectsContactsRequest {
   pageToken?: string;
 }
 export const ListProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/contacts",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsContactsRequest",
-}) as any as S.Schema<ListProjectsContactsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/contacts","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsContactsRequest" }) as any as S.Schema<ListProjectsContactsRequest>;
 
 export interface PatchFoldersContactsRequest {
   /** Output only. The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id} */
@@ -574,20 +363,12 @@ export interface PatchFoldersContactsRequest {
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
 export const PatchFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchFoldersContactsRequest",
-}) as any as S.Schema<PatchFoldersContactsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "PatchFoldersContactsRequest" }) as any as S.Schema<PatchFoldersContactsRequest>;
 
 export interface PatchOrganizationsContactsRequest {
   /** Output only. The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id} */
@@ -598,20 +379,12 @@ export interface PatchOrganizationsContactsRequest {
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
 export const PatchOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchOrganizationsContactsRequest",
-}) as any as S.Schema<PatchOrganizationsContactsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "PatchOrganizationsContactsRequest" }) as any as S.Schema<PatchOrganizationsContactsRequest>;
 
 export interface PatchProjectsContactsRequest {
   /** Output only. The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id} */
@@ -622,58 +395,32 @@ export interface PatchProjectsContactsRequest {
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
 export const PatchProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://essentialcontacts.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsContactsRequest",
-}) as any as S.Schema<PatchProjectsContactsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsContactsRequest" }) as any as S.Schema<PatchProjectsContactsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum =
-    | "NOTIFICATION_CATEGORY_UNSPECIFIED"
-    | "ALL"
-    | "SUSPENSION"
-    | "SECURITY"
-    | "TECHNICAL"
-    | "BILLING"
-    | "LEGAL"
-    | "PRODUCT_UPDATES"
-    | "TECHNICAL_INCIDENTS"
-    | (string & {});
-export const GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum = "NOTIFICATION_CATEGORY_UNSPECIFIED" | "ALL" | "SUSPENSION" | "SECURITY" | "TECHNICAL" | "BILLING" | "LEGAL" | "PRODUCT_UPDATES" | "TECHNICAL_INCIDENTS";
+export const GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Request message for the SendTestMessage method. */
 export interface GoogleCloudEssentialcontactsV1SendTestMessageRequest {
   /** Required. The list of names of the contacts to send a test message to. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   contacts?: StringList;
   /** Required. The notification category to send the test message for. All contacts must be subscribed to this category. */
-  notificationCategory?: GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum;
+  notificationCategory?: GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum | (string & {});
 }
-export const GoogleCloudEssentialcontactsV1SendTestMessageRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contacts: S.optional(StringList),
-      notificationCategory: S.optional(
-        GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudEssentialcontactsV1SendTestMessageRequest",
-  }) as any as S.Schema<GoogleCloudEssentialcontactsV1SendTestMessageRequest>;
+export const GoogleCloudEssentialcontactsV1SendTestMessageRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "contacts": S.optional(StringList),
+  "notificationCategory": S.optional(GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum),
+}),
+).annotate({ identifier: "GoogleCloudEssentialcontactsV1SendTestMessageRequest" }) as any as S.Schema<GoogleCloudEssentialcontactsV1SendTestMessageRequest>;
 
 export interface SendTestMessageFoldersContactsRequest {
   /** Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -681,23 +428,12 @@ export interface SendTestMessageFoldersContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1SendTestMessageRequest;
 }
-export const SendTestMessageFoldersContactsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudEssentialcontactsV1SendTestMessageRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}/contacts:sendTestMessage",
-        baseUrl: "https://essentialcontacts.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SendTestMessageFoldersContactsRequest",
-}) as any as S.Schema<SendTestMessageFoldersContactsRequest>;
+export const SendTestMessageFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudEssentialcontactsV1SendTestMessageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}/contacts:sendTestMessage","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "SendTestMessageFoldersContactsRequest" }) as any as S.Schema<SendTestMessageFoldersContactsRequest>;
 
 export interface SendTestMessageOrganizationsContactsRequest {
   /** Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -705,23 +441,12 @@ export interface SendTestMessageOrganizationsContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1SendTestMessageRequest;
 }
-export const SendTestMessageOrganizationsContactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudEssentialcontactsV1SendTestMessageRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}/contacts:sendTestMessage",
-        baseUrl: "https://essentialcontacts.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SendTestMessageOrganizationsContactsRequest",
-  }) as any as S.Schema<SendTestMessageOrganizationsContactsRequest>;
+export const SendTestMessageOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudEssentialcontactsV1SendTestMessageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}/contacts:sendTestMessage","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "SendTestMessageOrganizationsContactsRequest" }) as any as S.Schema<SendTestMessageOrganizationsContactsRequest>;
 
 export interface SendTestMessageProjectsContactsRequest {
   /** Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -729,23 +454,12 @@ export interface SendTestMessageProjectsContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1SendTestMessageRequest;
 }
-export const SendTestMessageProjectsContactsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudEssentialcontactsV1SendTestMessageRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}/contacts:sendTestMessage",
-        baseUrl: "https://essentialcontacts.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SendTestMessageProjectsContactsRequest",
-}) as any as S.Schema<SendTestMessageProjectsContactsRequest>;
+export const SendTestMessageProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudEssentialcontactsV1SendTestMessageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}/contacts:sendTestMessage","baseUrl":"https://essentialcontacts.googleapis.com/"})),
+).annotate({ identifier: "SendTestMessageProjectsContactsRequest" }) as any as S.Schema<SendTestMessageProjectsContactsRequest>;
 
 export type ComputeFoldersContactsError = NotFound | Forbidden | GcpOpError;
 /** Lists all contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources. */
@@ -760,16 +474,10 @@ export const computeFoldersContacts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ComputeOrganizationsContactsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ComputeOrganizationsContactsError = NotFound | Forbidden | GcpOpError;
 /** Lists all contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources. */
 export const computeOrganizationsContacts: API.PaginatedOperationMethod<
   ComputeOrganizationsContactsRequest,
@@ -782,10 +490,7 @@ export const computeOrganizationsContacts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ComputeProjectsContactsError = NotFound | Forbidden | GcpOpError;
@@ -801,18 +506,10 @@ export const computeProjectsContacts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type CreateFoldersContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateFoldersContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds a new contact for a resource. */
 export const createFoldersContacts: API.OperationMethod<
   CreateFoldersContactsRequest,
@@ -827,12 +524,7 @@ export const createFoldersContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateOrganizationsContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateOrganizationsContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds a new contact for a resource. */
 export const createOrganizationsContacts: API.OperationMethod<
   CreateOrganizationsContactsRequest,
@@ -847,12 +539,7 @@ export const createOrganizationsContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds a new contact for a resource. */
 export const createProjectsContacts: API.OperationMethod<
   CreateProjectsContactsRequest,
@@ -867,12 +554,7 @@ export const createProjectsContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteFoldersContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteFoldersContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a contact. */
 export const deleteFoldersContacts: API.OperationMethod<
   DeleteFoldersContactsRequest,
@@ -887,12 +569,7 @@ export const deleteFoldersContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOrganizationsContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteOrganizationsContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a contact. */
 export const deleteOrganizationsContacts: API.OperationMethod<
   DeleteOrganizationsContactsRequest,
@@ -907,12 +584,7 @@ export const deleteOrganizationsContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a contact. */
 export const deleteProjectsContacts: API.OperationMethod<
   DeleteProjectsContactsRequest,
@@ -985,10 +657,7 @@ export const listFoldersContacts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListOrganizationsContactsError = NotFound | Forbidden | GcpOpError;
@@ -1004,10 +673,7 @@ export const listOrganizationsContacts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsContactsError = NotFound | Forbidden | GcpOpError;
@@ -1023,18 +689,10 @@ export const listProjectsContacts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchFoldersContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchFoldersContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a contact. Note: A contact's email address cannot be changed. */
 export const patchFoldersContacts: API.OperationMethod<
   PatchFoldersContactsRequest,
@@ -1049,12 +707,7 @@ export const patchFoldersContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchOrganizationsContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchOrganizationsContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a contact. Note: A contact's email address cannot be changed. */
 export const patchOrganizationsContacts: API.OperationMethod<
   PatchOrganizationsContactsRequest,
@@ -1069,12 +722,7 @@ export const patchOrganizationsContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a contact. Note: A contact's email address cannot be changed. */
 export const patchProjectsContacts: API.OperationMethod<
   PatchProjectsContactsRequest,
@@ -1089,12 +737,7 @@ export const patchProjectsContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SendTestMessageFoldersContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SendTestMessageFoldersContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Allows a contact admin to send a test message to contact to verify that it has been configured correctly. */
 export const sendTestMessageFoldersContacts: API.OperationMethod<
   SendTestMessageFoldersContactsRequest,
@@ -1109,12 +752,7 @@ export const sendTestMessageFoldersContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SendTestMessageOrganizationsContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SendTestMessageOrganizationsContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Allows a contact admin to send a test message to contact to verify that it has been configured correctly. */
 export const sendTestMessageOrganizationsContacts: API.OperationMethod<
   SendTestMessageOrganizationsContactsRequest,
@@ -1129,12 +767,7 @@ export const sendTestMessageOrganizationsContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SendTestMessageProjectsContactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SendTestMessageProjectsContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Allows a contact admin to send a test message to contact to verify that it has been configured correctly. */
 export const sendTestMessageProjectsContacts: API.OperationMethod<
   SendTestMessageProjectsContactsRequest,
@@ -1148,3 +781,4 @@ export const sendTestMessageProjectsContacts: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

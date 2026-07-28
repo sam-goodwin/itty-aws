@@ -13,70 +13,61 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type AuthProviderStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type AuthProviderStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
 export const AuthProviderStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Message describing ThreeLeggedOAuth object. */
 export interface ThreeLeggedOAuth {
@@ -96,18 +87,16 @@ export interface ThreeLeggedOAuth {
   authorizationUrl?: string;
 }
 export const ThreeLeggedOAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultContinueUri: S.optional(S.String),
-    redirectUrl: S.optional(S.String),
-    tokenUrl: S.optional(S.String),
-    clientSecret: S.optional(S.String),
-    clientId: S.optional(S.String),
-    enablePkce: S.optional(S.Boolean),
-    authorizationUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ThreeLeggedOAuth",
-}) as any as S.Schema<ThreeLeggedOAuth>;
+S.Struct({
+  "defaultContinueUri": S.optional(S.String),
+  "redirectUrl": S.optional(S.String),
+  "tokenUrl": S.optional(S.String),
+  "clientSecret": S.optional(S.String),
+  "clientId": S.optional(S.String),
+  "enablePkce": S.optional(S.Boolean),
+  "authorizationUrl": S.optional(S.String),
+}),
+).annotate({ identifier: "ThreeLeggedOAuth" }) as any as S.Schema<ThreeLeggedOAuth>;
 
 /** Message describing TwoLeggedOAuth object. */
 export interface TwoLeggedOAuth {
@@ -119,11 +108,11 @@ export interface TwoLeggedOAuth {
   clientId?: string;
 }
 export const TwoLeggedOAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenUrl: S.optional(S.String),
-    clientSecret: S.optional(S.String),
-    clientId: S.optional(S.String),
-  }),
+S.Struct({
+  "tokenUrl": S.optional(S.String),
+  "clientSecret": S.optional(S.String),
+  "clientId": S.optional(S.String),
+}),
 ).annotate({ identifier: "TwoLeggedOAuth" }) as any as S.Schema<TwoLeggedOAuth>;
 
 /** Message describing ApiKeyParams object. */
@@ -132,18 +121,16 @@ export interface ApiKeyParams {
   apiKey?: string;
 }
 export const ApiKeyParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKey: S.optional(S.String),
-  }),
+S.Struct({
+  "apiKey": S.optional(S.String),
+}),
 ).annotate({ identifier: "ApiKeyParams" }) as any as S.Schema<ApiKeyParams>;
 
 /** Message describing GeminiEnterpriseAuthProviderParams object. */
 export interface GeminiEnterpriseAuthProviderParams {}
 export const GeminiEnterpriseAuthProviderParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GeminiEnterpriseAuthProviderParams",
-}) as any as S.Schema<GeminiEnterpriseAuthProviderParams>;
+S.Struct({}),
+).annotate({ identifier: "GeminiEnterpriseAuthProviderParams" }) as any as S.Schema<GeminiEnterpriseAuthProviderParams>;
 
 /** AuthProvider type specific parameters. Required when creating an auth_provider. */
 export interface AuthProviderTypeParams {
@@ -157,15 +144,13 @@ export interface AuthProviderTypeParams {
   geAuthProvider?: GeminiEnterpriseAuthProviderParams;
 }
 export const AuthProviderTypeParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    threeLeggedOauth: S.optional(ThreeLeggedOAuth),
-    twoLeggedOauth: S.optional(TwoLeggedOAuth),
-    apiKey: S.optional(ApiKeyParams),
-    geAuthProvider: S.optional(GeminiEnterpriseAuthProviderParams),
-  }),
-).annotate({
-  identifier: "AuthProviderTypeParams",
-}) as any as S.Schema<AuthProviderTypeParams>;
+S.Struct({
+  "threeLeggedOauth": S.optional(ThreeLeggedOAuth),
+  "twoLeggedOauth": S.optional(TwoLeggedOAuth),
+  "apiKey": S.optional(ApiKeyParams),
+  "geAuthProvider": S.optional(GeminiEnterpriseAuthProviderParams),
+}),
+).annotate({ identifier: "AuthProviderTypeParams" }) as any as S.Schema<AuthProviderTypeParams>;
 
 /** Message describing AuthProvider object */
 export interface AuthProvider {
@@ -195,20 +180,20 @@ export interface AuthProvider {
   deleted?: boolean;
 }
 export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    state: S.optional(AuthProviderStateEnum),
-    workloadIds: S.optional(StringList),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    description: S.optional(S.String),
-    blockedScopes: S.optional(StringList),
-    authProviderTypeParams: S.optional(AuthProviderTypeParams),
-    expireTime: S.optional(S.String),
-    allowedScopes: S.optional(StringList),
-    deleted: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "state": S.optional(AuthProviderStateEnum),
+  "workloadIds": S.optional(StringList),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "description": S.optional(S.String),
+  "blockedScopes": S.optional(StringList),
+  "authProviderTypeParams": S.optional(AuthProviderTypeParams),
+  "expireTime": S.optional(S.String),
+  "allowedScopes": S.optional(StringList),
+  "deleted": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "AuthProvider" }) as any as S.Schema<AuthProvider>;
 
 export interface CreateProjectsLocationsAuthProvidersRequest {
@@ -221,23 +206,14 @@ export interface CreateProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: AuthProvider;
 }
-export const CreateProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authProviderId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(AuthProvider.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/authProviders",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<CreateProjectsLocationsAuthProvidersRequest>;
+export const CreateProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "authProviderId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(AuthProvider.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/authProviders","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<CreateProjectsLocationsAuthProvidersRequest>;
 
 export interface DeleteProjectsLocationsAuthProvidersRequest {
   /** Required. Name of the resource */
@@ -245,27 +221,18 @@ export interface DeleteProjectsLocationsAuthProvidersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsAuthProvidersRequest>;
+export const DeleteProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<DeleteProjectsLocationsAuthProvidersRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsAuthProvidersAuthorizationsRequest {
   /** Required. The name of the Authorization to delete. Format: projects/{project}/locations/{location}/authProviders/{auth_provider}/authorizations/{authorization} */
@@ -273,21 +240,12 @@ export interface DeleteProjectsLocationsAuthProvidersAuthorizationsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsAuthProvidersAuthorizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsAuthProvidersAuthorizationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsAuthProvidersAuthorizationsRequest>;
+export const DeleteProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsAuthProvidersAuthorizationsRequest" }) as any as S.Schema<DeleteProjectsLocationsAuthProvidersAuthorizationsRequest>;
 
 /** Message for disabling an AuthProvider */
 export interface DisableAuthProviderRequest {
@@ -295,12 +253,10 @@ export interface DisableAuthProviderRequest {
   requestId?: string;
 }
 export const DisableAuthProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DisableAuthProviderRequest",
-}) as any as S.Schema<DisableAuthProviderRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "DisableAuthProviderRequest" }) as any as S.Schema<DisableAuthProviderRequest>;
 
 export interface DisableProjectsLocationsAuthProvidersRequest {
   /** Required. Name of the resource Format: projects/{project}/locations/{location}/authProviders/{auth_provider} */
@@ -308,21 +264,12 @@ export interface DisableProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: DisableAuthProviderRequest;
 }
-export const DisableProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(DisableAuthProviderRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:disable",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DisableProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<DisableProjectsLocationsAuthProvidersRequest>;
+export const DisableProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DisableAuthProviderRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:disable","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "DisableProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<DisableProjectsLocationsAuthProvidersRequest>;
 
 /** Message for enabling an AuthProvider */
 export interface EnableAuthProviderRequest {
@@ -330,12 +277,10 @@ export interface EnableAuthProviderRequest {
   requestId?: string;
 }
 export const EnableAuthProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnableAuthProviderRequest",
-}) as any as S.Schema<EnableAuthProviderRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "EnableAuthProviderRequest" }) as any as S.Schema<EnableAuthProviderRequest>;
 
 export interface EnableProjectsLocationsAuthProvidersRequest {
   /** Required. Name of the resource Format: projects/{project}/locations/{location}/authProviders/{auth_provider} */
@@ -343,21 +288,12 @@ export interface EnableProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: EnableAuthProviderRequest;
 }
-export const EnableProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(EnableAuthProviderRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:enable",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "EnableProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<EnableProjectsLocationsAuthProvidersRequest>;
+export const EnableProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(EnableAuthProviderRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:enable","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "EnableProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<EnableProjectsLocationsAuthProvidersRequest>;
 
 export interface GetIamPolicyProjectsLocationsAuthProvidersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -365,21 +301,12 @@ export interface GetIamPolicyProjectsLocationsAuthProvidersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+resource}:getIamPolicy",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsAuthProvidersRequest>;
+export const GetIamPolicyProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+resource}:getIamPolicy","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsAuthProvidersRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -393,12 +320,12 @@ export interface Expr {
   description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    expression: S.optional(S.String),
-    location: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "expression": S.optional(S.String),
+  "location": S.optional(S.String),
+  "description": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -411,24 +338,17 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    members: S.optional(StringList),
-    role: S.optional(S.String),
-    condition: S.optional(Expr),
-  }),
+S.Struct({
+  "members": S.optional(StringList),
+  "role": S.optional(S.String),
+  "condition": S.optional(Expr),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -439,16 +359,14 @@ export interface AuditLogConfig {
   logType?: AuditLogConfigLogTypeEnum;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exemptedMembers: S.optional(StringList),
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-  }),
+S.Struct({
+  "exemptedMembers": S.optional(StringList),
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -458,16 +376,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -481,12 +397,12 @@ export interface Policy {
   auditConfigs?: AuditConfigList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-    auditConfigs: S.optional(AuditConfigList),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+  "auditConfigs": S.optional(AuditConfigList),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetProjectsLocationsRequest {
@@ -494,24 +410,13 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://agentidentity.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -527,41 +432,26 @@ export interface Location {
   metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationId: S.optional(S.String),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
-    metadata: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "locationId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "metadata": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsAccessSummariesRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsAccessSummariesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsAccessSummariesRequest",
-  }) as any as S.Schema<GetProjectsLocationsAccessSummariesRequest>;
+export const GetProjectsLocationsAccessSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsAccessSummariesRequest" }) as any as S.Schema<GetProjectsLocationsAccessSummariesRequest>;
 
-export type AccessSummaryAuthProviderTypeEnum =
-  | "AUTH_PROVIDER_TYPE_UNSPECIFIED"
-  | "AUTH_PROVIDER_TYPE_THREE_LEGGED_OAUTH"
-  | "AUTH_PROVIDER_TYPE_TWO_LEGGED_OAUTH"
-  | "AUTH_PROVIDER_TYPE_API_KEY"
-  | "AUTH_PROVIDER_TYPE_GEMINI_ENTERPRISE"
-  | (string & {});
+export type AccessSummaryAuthProviderTypeEnum = "AUTH_PROVIDER_TYPE_UNSPECIFIED" | "AUTH_PROVIDER_TYPE_THREE_LEGGED_OAUTH" | "AUTH_PROVIDER_TYPE_TWO_LEGGED_OAUTH" | "AUTH_PROVIDER_TYPE_API_KEY" | "AUTH_PROVIDER_TYPE_GEMINI_ENTERPRISE";
 export const AccessSummaryAuthProviderTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing AccessSummary object */
@@ -590,64 +480,42 @@ export interface AccessSummary {
   authProviderType?: AccessSummaryAuthProviderTypeEnum;
 }
 export const AccessSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    purgeTime: S.optional(S.String),
-    name: S.optional(S.String),
-    scopes: S.optional(StringList),
-    authProvider: S.optional(S.String),
-    labels: S.optional(StringMap),
-    tokenUrl: S.optional(S.String),
-    workloadId: S.optional(S.String),
-    lastAccessTime: S.optional(S.String),
-    firstAccessTime: S.optional(S.String),
-    userId: S.optional(S.String),
-    authProviderType: S.optional(AccessSummaryAuthProviderTypeEnum),
-  }),
+S.Struct({
+  "purgeTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "scopes": S.optional(StringList),
+  "authProvider": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "tokenUrl": S.optional(S.String),
+  "workloadId": S.optional(S.String),
+  "lastAccessTime": S.optional(S.String),
+  "firstAccessTime": S.optional(S.String),
+  "userId": S.optional(S.String),
+  "authProviderType": S.optional(AccessSummaryAuthProviderTypeEnum),
+}),
 ).annotate({ identifier: "AccessSummary" }) as any as S.Schema<AccessSummary>;
 
 export interface GetProjectsLocationsAuthProvidersRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsAuthProvidersRequest",
-}) as any as S.Schema<GetProjectsLocationsAuthProvidersRequest>;
+export const GetProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<GetProjectsLocationsAuthProvidersRequest>;
 
 export interface GetProjectsLocationsAuthProvidersAuthorizationsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsAuthProvidersAuthorizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsAuthProvidersAuthorizationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsAuthProvidersAuthorizationsRequest>;
+export const GetProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsAuthProvidersAuthorizationsRequest" }) as any as S.Schema<GetProjectsLocationsAuthProvidersAuthorizationsRequest>;
 
-export type AuthorizationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "SUSPENDED"
-  | (string & {});
+export type AuthorizationStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED";
 export const AuthorizationStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Authorization object */
@@ -666,14 +534,14 @@ export interface Authorization {
   clientUserId?: string;
 }
 export const Authorization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    scopes: S.optional(StringList),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    state: S.optional(AuthorizationStateEnum),
-    clientUserId: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "scopes": S.optional(StringList),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "state": S.optional(AuthorizationStateEnum),
+  "clientUserId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Authorization" }) as any as S.Schema<Authorization>;
 
 export interface ListProjectsLocationsRequest {
@@ -689,27 +557,17 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}/locations",
-      baseUrl: "https://agentidentity.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}/locations","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -719,13 +577,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsAccessSummariesRequest {
   /** Optional. Filter string to restrict the results. Currently supports filtering by `workload_id` or `auth_provider_name`. If no filter is provided, returns all access summaries for the requested project and location. Format: `workload_id=""` or `auth_provider_name=""` */
@@ -739,29 +595,18 @@ export interface ListProjectsLocationsAccessSummariesRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAccessSummariesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/accessSummaries",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsAccessSummariesRequest",
-  }) as any as S.Schema<ListProjectsLocationsAccessSummariesRequest>;
+export const ListProjectsLocationsAccessSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/accessSummaries","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsAccessSummariesRequest" }) as any as S.Schema<ListProjectsLocationsAccessSummariesRequest>;
 
 export type AccessSummaryList = ReadonlyArray<AccessSummary>;
-export const AccessSummaryList = /*@__PURE__*/ S.Array(
-  AccessSummary,
-) as any as S.Schema<AccessSummaryList>;
+export const AccessSummaryList = /*@__PURE__*/ S.Array(AccessSummary) as any as S.Schema<AccessSummaryList>;
 
 /** Message for response to listing AccessSummaries */
 export interface ListAccessSummariesResponse {
@@ -773,14 +618,12 @@ export interface ListAccessSummariesResponse {
   accessSummaries?: AccessSummaryList;
 }
 export const ListAccessSummariesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    accessSummaries: S.optional(AccessSummaryList),
-  }),
-).annotate({
-  identifier: "ListAccessSummariesResponse",
-}) as any as S.Schema<ListAccessSummariesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "accessSummaries": S.optional(AccessSummaryList),
+}),
+).annotate({ identifier: "ListAccessSummariesResponse" }) as any as S.Schema<ListAccessSummariesResponse>;
 
 export interface ListProjectsLocationsAuthProvidersRequest {
   /** Optional. Deleted auth_providers will be kept with a soft-delete for 30 days before being purged. If this field is set to true, deleted auth_providers will also be returned. */
@@ -796,30 +639,19 @@ export interface ListProjectsLocationsAuthProvidersRequest {
   /** Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, the first page is returned. */
   pageToken?: string;
 }
-export const ListProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/authProviders",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<ListProjectsLocationsAuthProvidersRequest>;
+export const ListProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/authProviders","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<ListProjectsLocationsAuthProvidersRequest>;
 
 export type AuthProviderList = ReadonlyArray<AuthProvider>;
-export const AuthProviderList = /*@__PURE__*/ S.Array(
-  AuthProvider,
-) as any as S.Schema<AuthProviderList>;
+export const AuthProviderList = /*@__PURE__*/ S.Array(AuthProvider) as any as S.Schema<AuthProviderList>;
 
 /** Message for response to listing AuthProviders */
 export interface ListAuthProvidersResponse {
@@ -831,14 +663,12 @@ export interface ListAuthProvidersResponse {
   unreachable?: StringList;
 }
 export const ListAuthProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authProviders: S.optional(AuthProviderList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListAuthProvidersResponse",
-}) as any as S.Schema<ListAuthProvidersResponse>;
+S.Struct({
+  "authProviders": S.optional(AuthProviderList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListAuthProvidersResponse" }) as any as S.Schema<ListAuthProvidersResponse>;
 
 export interface ListProjectsLocationsAuthProvidersAuthorizationsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
@@ -852,29 +682,18 @@ export interface ListProjectsLocationsAuthProvidersAuthorizationsRequest {
   /** Optional. A page token, received from a previous `ListAuthorizations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAuthorizations` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsAuthProvidersAuthorizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/authorizations",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsAuthProvidersAuthorizationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsAuthProvidersAuthorizationsRequest>;
+export const ListProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/authorizations","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsAuthProvidersAuthorizationsRequest" }) as any as S.Schema<ListProjectsLocationsAuthProvidersAuthorizationsRequest>;
 
 export type AuthorizationList = ReadonlyArray<Authorization>;
-export const AuthorizationList = /*@__PURE__*/ S.Array(
-  Authorization,
-) as any as S.Schema<AuthorizationList>;
+export const AuthorizationList = /*@__PURE__*/ S.Array(Authorization) as any as S.Schema<AuthorizationList>;
 
 /** Message for response to listing Authorizations */
 export interface ListAuthorizationsResponse {
@@ -886,14 +705,12 @@ export interface ListAuthorizationsResponse {
   authorizations?: AuthorizationList;
 }
 export const ListAuthorizationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    authorizations: S.optional(AuthorizationList),
-  }),
-).annotate({
-  identifier: "ListAuthorizationsResponse",
-}) as any as S.Schema<ListAuthorizationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "authorizations": S.optional(AuthorizationList),
+}),
+).annotate({ identifier: "ListAuthorizationsResponse" }) as any as S.Schema<ListAuthorizationsResponse>;
 
 export interface PatchProjectsLocationsAuthProvidersRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the AuthProvider resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields present in the request will be overwritten. */
@@ -905,23 +722,14 @@ export interface PatchProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: AuthProvider;
 }
-export const PatchProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(AuthProvider.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<PatchProjectsLocationsAuthProvidersRequest>;
+export const PatchProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(AuthProvider.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/{+name}","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<PatchProjectsLocationsAuthProvidersRequest>;
 
 export interface QueryProjectsLocationsAuthProvidersRequest {
   /** Required. The parent resource where the search is performed. Format: projects/{project}/locations/{location} */
@@ -933,23 +741,14 @@ export interface QueryProjectsLocationsAuthProvidersRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. The maximum page size is 1000. */
   pageSize?: number;
 }
-export const QueryProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      workloadId: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/authProviders:query",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "QueryProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<QueryProjectsLocationsAuthProvidersRequest>;
+export const QueryProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "workloadId": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/authProviders:query","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "QueryProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<QueryProjectsLocationsAuthProvidersRequest>;
 
 /** Response message for QueryAuthProviders. */
 export interface QueryAuthProvidersResponse {
@@ -959,13 +758,11 @@ export interface QueryAuthProvidersResponse {
   authProviderNames?: StringList;
 }
 export const QueryAuthProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    authProviderNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "QueryAuthProvidersResponse",
-}) as any as S.Schema<QueryAuthProvidersResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "authProviderNames": S.optional(StringList),
+}),
+).annotate({ identifier: "QueryAuthProvidersResponse" }) as any as S.Schema<QueryAuthProvidersResponse>;
 
 export interface QueryWorkloadsProjectsLocationsAuthProvidersRequest {
   /** Required. The name of the auth_provider to query. Format: projects/{project}/locations/{location}/authProviders/{auth_provider} */
@@ -975,22 +772,13 @@ export interface QueryWorkloadsProjectsLocationsAuthProvidersRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const QueryWorkloadsProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}:queryWorkloads",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "QueryWorkloadsProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<QueryWorkloadsProjectsLocationsAuthProvidersRequest>;
+export const QueryWorkloadsProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}:queryWorkloads","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "QueryWorkloadsProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<QueryWorkloadsProjectsLocationsAuthProvidersRequest>;
 
 /** Response message for QueryWorkloads. */
 export interface QueryWorkloadsResponse {
@@ -1000,13 +788,11 @@ export interface QueryWorkloadsResponse {
   nextPageToken?: string;
 }
 export const QueryWorkloadsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workloadIds: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "QueryWorkloadsResponse",
-}) as any as S.Schema<QueryWorkloadsResponse>;
+S.Struct({
+  "workloadIds": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "QueryWorkloadsResponse" }) as any as S.Schema<QueryWorkloadsResponse>;
 
 /** Request message for RevokeAuthorization. */
 export interface RevokeAuthorizationRequest {
@@ -1014,12 +800,10 @@ export interface RevokeAuthorizationRequest {
   userId?: string;
 }
 export const RevokeAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RevokeAuthorizationRequest",
-}) as any as S.Schema<RevokeAuthorizationRequest>;
+S.Struct({
+  "userId": S.optional(S.String),
+}),
+).annotate({ identifier: "RevokeAuthorizationRequest" }) as any as S.Schema<RevokeAuthorizationRequest>;
 
 export interface RevokeAuthorizationProjectsLocationsAuthProvidersRequest {
   /** Required. The resource name of the AuthProvider. Format: projects/{project}/locations/{location}/authProviders/{auth_provider} */
@@ -1027,29 +811,18 @@ export interface RevokeAuthorizationProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: RevokeAuthorizationRequest;
 }
-export const RevokeAuthorizationProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RevokeAuthorizationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:revokeAuthorization",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RevokeAuthorizationProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<RevokeAuthorizationProjectsLocationsAuthProvidersRequest>;
+export const RevokeAuthorizationProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RevokeAuthorizationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:revokeAuthorization","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "RevokeAuthorizationProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<RevokeAuthorizationProjectsLocationsAuthProvidersRequest>;
 
 /** Response message for RevokeAuthorization. */
 export interface RevokeAuthorizationResponse {}
 export const RevokeAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeAuthorizationResponse",
-}) as any as S.Schema<RevokeAuthorizationResponse>;
+S.Struct({}),
+).annotate({ identifier: "RevokeAuthorizationResponse" }) as any as S.Schema<RevokeAuthorizationResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -1059,13 +832,11 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String),
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String),
+  "policy": S.optional(Policy),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsAuthProvidersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1073,21 +844,12 @@ export interface SetIamPolicyProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+resource}:setIamPolicy",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsAuthProvidersRequest>;
+export const SetIamPolicyProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+resource}:setIamPolicy","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsAuthProvidersRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -1095,12 +857,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsAuthProvidersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1108,21 +868,12 @@ export interface TestIamPermissionsProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+resource}:testIamPermissions",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthProvidersRequest>;
+export const TestIamPermissionsProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+resource}:testIamPermissions","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthProvidersRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -1130,12 +881,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 /** Message for undeleting a AuthProvider */
 export interface UndeleteAuthProviderRequest {
@@ -1143,12 +892,10 @@ export interface UndeleteAuthProviderRequest {
   requestId?: string;
 }
 export const UndeleteAuthProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UndeleteAuthProviderRequest",
-}) as any as S.Schema<UndeleteAuthProviderRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "UndeleteAuthProviderRequest" }) as any as S.Schema<UndeleteAuthProviderRequest>;
 
 export interface UndeleteProjectsLocationsAuthProvidersRequest {
   /** Required. Name of the resource Format: projects/{project}/locations/{location}/authProviders/{auth_provider} */
@@ -1156,28 +903,14 @@ export interface UndeleteProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: UndeleteAuthProviderRequest;
 }
-export const UndeleteProjectsLocationsAuthProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UndeleteAuthProviderRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:undelete",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UndeleteProjectsLocationsAuthProvidersRequest",
-  }) as any as S.Schema<UndeleteProjectsLocationsAuthProvidersRequest>;
+export const UndeleteProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UndeleteAuthProviderRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:undelete","baseUrl":"https://agentidentity.googleapis.com/"})),
+).annotate({ identifier: "UndeleteProjectsLocationsAuthProvidersRequest" }) as any as S.Schema<UndeleteProjectsLocationsAuthProvidersRequest>;
 
-export type CreateProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsAuthProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new AuthProvider in a given project and location. */
 export const createProjectsLocationsAuthProviders: API.OperationMethod<
   CreateProjectsLocationsAuthProvidersRequest,
@@ -1192,12 +925,7 @@ export const createProjectsLocationsAuthProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsAuthProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single AuthProvider. */
 export const deleteProjectsLocationsAuthProviders: API.OperationMethod<
   DeleteProjectsLocationsAuthProvidersRequest,
@@ -1212,12 +940,7 @@ export const deleteProjectsLocationsAuthProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsAuthProvidersAuthorizationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsAuthProvidersAuthorizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Authorization. */
 export const deleteProjectsLocationsAuthProvidersAuthorizations: API.OperationMethod<
   DeleteProjectsLocationsAuthProvidersAuthorizationsRequest,
@@ -1232,12 +955,7 @@ export const deleteProjectsLocationsAuthProvidersAuthorizations: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type DisableProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DisableProjectsLocationsAuthProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Disables a single AuthProvider. */
 export const disableProjectsLocationsAuthProviders: API.OperationMethod<
   DisableProjectsLocationsAuthProvidersRequest,
@@ -1252,12 +970,7 @@ export const disableProjectsLocationsAuthProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnableProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnableProjectsLocationsAuthProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enables a single AuthProvider. */
 export const enableProjectsLocationsAuthProviders: API.OperationMethod<
   EnableProjectsLocationsAuthProvidersRequest,
@@ -1272,10 +985,7 @@ export const enableProjectsLocationsAuthProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsAuthProvidersError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsAuthProviders: API.OperationMethod<
   GetIamPolicyProjectsLocationsAuthProvidersRequest,
@@ -1305,10 +1015,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAccessSummariesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsAccessSummariesError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single AccessSummary. */
 export const getProjectsLocationsAccessSummaries: API.OperationMethod<
   GetProjectsLocationsAccessSummariesRequest,
@@ -1323,10 +1030,7 @@ export const getProjectsLocationsAccessSummaries: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsAuthProvidersError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single AuthProvider. */
 export const getProjectsLocationsAuthProviders: API.OperationMethod<
   GetProjectsLocationsAuthProvidersRequest,
@@ -1341,10 +1045,7 @@ export const getProjectsLocationsAuthProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAuthProvidersAuthorizationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsAuthProvidersAuthorizationsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a single Authorization. */
 export const getProjectsLocationsAuthProvidersAuthorizations: API.OperationMethod<
   GetProjectsLocationsAuthProvidersAuthorizationsRequest,
@@ -1372,16 +1073,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsAccessSummariesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsAccessSummariesError = NotFound | Forbidden | GcpOpError;
 /** Lists AccessSummaries in a given project and location. Supported Filters: - `workload_id`: Filter by the SPIFFE ID of the agent. Example: `workload_id="spiffe://example.com/ns/default/sa/my-agent"` */
 export const listProjectsLocationsAccessSummaries: API.PaginatedOperationMethod<
   ListProjectsLocationsAccessSummariesRequest,
@@ -1394,16 +1089,10 @@ export const listProjectsLocationsAccessSummaries: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsAuthProvidersError = NotFound | Forbidden | GcpOpError;
 /** Lists AuthProviders in a given project and location. */
 export const listProjectsLocationsAuthProviders: API.PaginatedOperationMethod<
   ListProjectsLocationsAuthProvidersRequest,
@@ -1416,16 +1105,10 @@ export const listProjectsLocationsAuthProviders: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsAuthProvidersAuthorizationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsAuthProvidersAuthorizationsError = NotFound | Forbidden | GcpOpError;
 /** Lists Authorizations in a given project and location. */
 export const listProjectsLocationsAuthProvidersAuthorizations: API.PaginatedOperationMethod<
   ListProjectsLocationsAuthProvidersAuthorizationsRequest,
@@ -1438,18 +1121,10 @@ export const listProjectsLocationsAuthProvidersAuthorizations: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsAuthProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the parameters of a single AuthProvider. */
 export const patchProjectsLocationsAuthProviders: API.OperationMethod<
   PatchProjectsLocationsAuthProvidersRequest,
@@ -1464,10 +1139,7 @@ export const patchProjectsLocationsAuthProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type QueryProjectsLocationsAuthProvidersError = NotFound | Forbidden | GcpOpError;
 /** Queries what all auth_providers are used by a given workload_id. */
 export const queryProjectsLocationsAuthProviders: API.PaginatedOperationMethod<
   QueryProjectsLocationsAuthProvidersRequest,
@@ -1480,16 +1152,10 @@ export const queryProjectsLocationsAuthProviders: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type QueryWorkloadsProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type QueryWorkloadsProjectsLocationsAuthProvidersError = NotFound | Forbidden | GcpOpError;
 /** Queries what all workloads are using a given auth_provider. */
 export const queryWorkloadsProjectsLocationsAuthProviders: API.PaginatedOperationMethod<
   QueryWorkloadsProjectsLocationsAuthProvidersRequest,
@@ -1502,18 +1168,10 @@ export const queryWorkloadsProjectsLocationsAuthProviders: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type RevokeAuthorizationProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RevokeAuthorizationProjectsLocationsAuthProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Revokes all authorizations for a specific user on an AuthProvider. This deletes all authorization records associated with the user and AuthProvider, effectively revoking access across all agents. */
 export const revokeAuthorizationProjectsLocationsAuthProviders: API.OperationMethod<
   RevokeAuthorizationProjectsLocationsAuthProvidersRequest,
@@ -1528,12 +1186,7 @@ export const revokeAuthorizationProjectsLocationsAuthProviders: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsAuthProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsAuthProviders: API.OperationMethod<
   SetIamPolicyProjectsLocationsAuthProvidersRequest,
@@ -1548,12 +1201,7 @@ export const setIamPolicyProjectsLocationsAuthProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsAuthProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsAuthProviders: API.OperationMethod<
   TestIamPermissionsProjectsLocationsAuthProvidersRequest,
@@ -1568,12 +1216,7 @@ export const testIamPermissionsProjectsLocationsAuthProviders: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type UndeleteProjectsLocationsAuthProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UndeleteProjectsLocationsAuthProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Undeletes a single AuthProvider. */
 export const undeleteProjectsLocationsAuthProviders: API.OperationMethod<
   UndeleteProjectsLocationsAuthProvidersRequest,
@@ -1587,3 +1230,4 @@ export const undeleteProjectsLocationsAuthProviders: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

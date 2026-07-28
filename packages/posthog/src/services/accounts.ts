@@ -268,8 +268,7 @@ export type AccountsListRequestOrdering =
   | "-updated_at"
   | "created_at"
   | "name"
-  | "updated_at"
-  | (string & {});
+  | "updated_at";
 export const AccountsListRequestOrdering = /*@__PURE__*/ S.String;
 
 export interface AccountsListRequest {
@@ -288,7 +287,7 @@ export interface AccountsListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
   /** Sort order. Defaults to '-created_at'. */
-  ordering?: AccountsListRequestOrdering;
+  ordering?: AccountsListRequestOrdering | (string & {});
   /** Case-insensitive substring search across account name and external ID. */
   search?: string;
   /** JSON-encoded array of tag names to filter by, e.g. `["enterprise","priority"]`. Returns accounts that have any of the listed tags. Malformed values (not a JSON-encoded list of strings) return a 400. */

@@ -82,11 +82,11 @@ export const ControllerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControllerPropertiesInput>;
 
 /** The name of the SKU for Azure Dev Spaces Controller. */
-export type SkuName = "S1" | (string & {});
+export type SkuName = "S1";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The tier of the SKU for Azure Dev Spaces Controller. */
-export type SkuTier = "Standard" | (string & {});
+export type SkuTier = "Standard";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** Model representing SKU for Azure Dev Spaces Controller. */
@@ -155,8 +155,7 @@ export type ControllerPropertiesProvisioningState =
   | "Updating"
   | "Creating"
   | "Deleting"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const ControllerPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 export interface ControllerProperties {

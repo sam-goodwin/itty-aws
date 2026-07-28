@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request message for DeveloperKnowledge.AnswerQuery. */
@@ -66,30 +66,20 @@ export interface AnswerQueryRequest {
   query?: string;
 }
 export const AnswerQueryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AnswerQueryRequest",
-}) as any as S.Schema<AnswerQueryRequest>;
+S.Struct({
+  "query": S.optional(S.String),
+}),
+).annotate({ identifier: "AnswerQueryRequest" }) as any as S.Schema<AnswerQueryRequest>;
 
 export interface AnswerQueryV1Request {
   /** Request body */
   body?: AnswerQueryRequest;
 }
 export const AnswerQueryV1Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(AnswerQueryRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1:answerQuery",
-      baseUrl: "https://developerknowledge.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AnswerQueryV1Request",
-}) as any as S.Schema<AnswerQueryV1Request>;
+S.Struct({
+  "body": S.optional(AnswerQueryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1:answerQuery","baseUrl":"https://developerknowledge.googleapis.com/"})),
+).annotate({ identifier: "AnswerQueryV1Request" }) as any as S.Schema<AnswerQueryV1Request>;
 
 /** Citation source. */
 export interface CitationSource {
@@ -97,15 +87,13 @@ export interface CitationSource {
   referenceIndex?: number;
 }
 export const CitationSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceIndex: S.optional(S.Number),
-  }),
+S.Struct({
+  "referenceIndex": S.optional(S.Number),
+}),
 ).annotate({ identifier: "CitationSource" }) as any as S.Schema<CitationSource>;
 
 export type CitationSourceList = ReadonlyArray<CitationSource>;
-export const CitationSourceList = /*@__PURE__*/ S.Array(
-  CitationSource,
-) as any as S.Schema<CitationSourceList>;
+export const CitationSourceList = /*@__PURE__*/ S.Array(CitationSource) as any as S.Schema<CitationSourceList>;
 
 /** Citation info for a segment. */
 export interface AnswerCitation {
@@ -117,24 +105,17 @@ export interface AnswerCitation {
   sources?: CitationSourceList;
 }
 export const AnswerCitation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startIndex: S.optional(S.Number),
-    endIndex: S.optional(S.Number),
-    sources: S.optional(CitationSourceList),
-  }),
+S.Struct({
+  "startIndex": S.optional(S.Number),
+  "endIndex": S.optional(S.Number),
+  "sources": S.optional(CitationSourceList),
+}),
 ).annotate({ identifier: "AnswerCitation" }) as any as S.Schema<AnswerCitation>;
 
 export type AnswerCitationList = ReadonlyArray<AnswerCitation>;
-export const AnswerCitationList = /*@__PURE__*/ S.Array(
-  AnswerCitation,
-) as any as S.Schema<AnswerCitationList>;
+export const AnswerCitationList = /*@__PURE__*/ S.Array(AnswerCitation) as any as S.Schema<AnswerCitationList>;
 
-export type DocumentViewEnum =
-  | "DOCUMENT_VIEW_UNSPECIFIED"
-  | "DOCUMENT_VIEW_BASIC"
-  | "DOCUMENT_VIEW_FULL"
-  | "DOCUMENT_VIEW_CONTENT"
-  | (string & {});
+export type DocumentViewEnum = "DOCUMENT_VIEW_UNSPECIFIED" | "DOCUMENT_VIEW_BASIC" | "DOCUMENT_VIEW_FULL" | "DOCUMENT_VIEW_CONTENT";
 export const DocumentViewEnum = /*@__PURE__*/ S.String;
 
 /** A Document represents a piece of content from the Developer Knowledge corpus. */
@@ -159,17 +140,17 @@ export interface Document {
   title?: string;
 }
 export const Document = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    description: S.optional(S.String),
-    view: S.optional(DocumentViewEnum),
-    contentLengthBytes: S.optional(S.Number),
-    content: S.optional(S.String),
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    dataSource: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "description": S.optional(S.String),
+  "view": S.optional(DocumentViewEnum),
+  "contentLengthBytes": S.optional(S.Number),
+  "content": S.optional(S.String),
+  "name": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "dataSource": S.optional(S.String),
+  "title": S.optional(S.String),
+}),
 ).annotate({ identifier: "Document" }) as any as S.Schema<Document>;
 
 /** A DocumentChunk represents a piece of content from a Document in the DeveloperKnowledge corpus. To fetch the entire document content, pass the `parent` to DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments. */
@@ -184,12 +165,12 @@ export interface DocumentChunk {
   content?: string;
 }
 export const DocumentChunk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(Document),
-    id: S.optional(S.String),
-    parent: S.optional(S.String),
-    content: S.optional(S.String),
-  }),
+S.Struct({
+  "document": S.optional(Document),
+  "id": S.optional(S.String),
+  "parent": S.optional(S.String),
+  "content": S.optional(S.String),
+}),
 ).annotate({ identifier: "DocumentChunk" }) as any as S.Schema<DocumentChunk>;
 
 /** Represents a reference to a document. */
@@ -198,12 +179,10 @@ export interface DocumentReference {
   documentChunk?: DocumentChunk;
 }
 export const DocumentReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentChunk: S.optional(DocumentChunk),
-  }),
-).annotate({
-  identifier: "DocumentReference",
-}) as any as S.Schema<DocumentReference>;
+S.Struct({
+  "documentChunk": S.optional(DocumentChunk),
+}),
+).annotate({ identifier: "DocumentReference" }) as any as S.Schema<DocumentReference>;
 
 /** Represents a reference to a source. */
 export interface AnswerReference {
@@ -211,17 +190,13 @@ export interface AnswerReference {
   documentReference?: DocumentReference;
 }
 export const AnswerReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentReference: S.optional(DocumentReference),
-  }),
-).annotate({
-  identifier: "AnswerReference",
-}) as any as S.Schema<AnswerReference>;
+S.Struct({
+  "documentReference": S.optional(DocumentReference),
+}),
+).annotate({ identifier: "AnswerReference" }) as any as S.Schema<AnswerReference>;
 
 export type AnswerReferenceList = ReadonlyArray<AnswerReference>;
-export const AnswerReferenceList = /*@__PURE__*/ S.Array(
-  AnswerReference,
-) as any as S.Schema<AnswerReferenceList>;
+export const AnswerReferenceList = /*@__PURE__*/ S.Array(AnswerReference) as any as S.Schema<AnswerReferenceList>;
 
 /** An answer to a query. */
 export interface Answer {
@@ -233,11 +208,11 @@ export interface Answer {
   answerText?: string;
 }
 export const Answer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    citations: S.optional(AnswerCitationList),
-    references: S.optional(AnswerReferenceList),
-    answerText: S.optional(S.String),
-  }),
+S.Struct({
+  "citations": S.optional(AnswerCitationList),
+  "references": S.optional(AnswerReferenceList),
+  "answerText": S.optional(S.String),
+}),
 ).annotate({ identifier: "Answer" }) as any as S.Schema<Answer>;
 
 /** Response message for DeveloperKnowledge.AnswerQuery. */
@@ -246,51 +221,32 @@ export interface AnswerQueryResponse {
   answer?: Answer;
 }
 export const AnswerQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    answer: S.optional(Answer),
-  }),
-).annotate({
-  identifier: "AnswerQueryResponse",
-}) as any as S.Schema<AnswerQueryResponse>;
+S.Struct({
+  "answer": S.optional(Answer),
+}),
+).annotate({ identifier: "AnswerQueryResponse" }) as any as S.Schema<AnswerQueryResponse>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type BatchGetDocumentsViewEnum =
-  | "DOCUMENT_VIEW_UNSPECIFIED"
-  | "DOCUMENT_VIEW_BASIC"
-  | "DOCUMENT_VIEW_FULL"
-  | "DOCUMENT_VIEW_CONTENT"
-  | (string & {});
+export type BatchGetDocumentsViewEnum = "DOCUMENT_VIEW_UNSPECIFIED" | "DOCUMENT_VIEW_BASIC" | "DOCUMENT_VIEW_FULL" | "DOCUMENT_VIEW_CONTENT";
 export const BatchGetDocumentsViewEnum = /*@__PURE__*/ S.String;
 
 export interface BatchGetDocumentsRequest {
   /** Required. Specifies the names of the documents to retrieve. A maximum of 20 documents can be retrieved in a batch. The documents are returned in the same order as the `names` in the request. Format: `documents/{uri_without_scheme}` Example: `documents/docs.cloud.google.com/storage/docs/creating-buckets` */
   names?: StringList;
   /** Optional. Specifies the DocumentView of the document. If unspecified, DeveloperKnowledge.BatchGetDocuments defaults to `DOCUMENT_VIEW_CONTENT`. */
-  view?: BatchGetDocumentsViewEnum;
+  view?: BatchGetDocumentsViewEnum | (string & {});
 }
 export const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList.pipe(T.Query())),
-    view: S.optional(BatchGetDocumentsViewEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/documents:batchGet",
-      baseUrl: "https://developerknowledge.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchGetDocumentsRequest",
-}) as any as S.Schema<BatchGetDocumentsRequest>;
+S.Struct({
+  "names": S.optional(StringList.pipe(T.Query())),
+  "view": S.optional(BatchGetDocumentsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/documents:batchGet","baseUrl":"https://developerknowledge.googleapis.com/"})),
+).annotate({ identifier: "BatchGetDocumentsRequest" }) as any as S.Schema<BatchGetDocumentsRequest>;
 
 export type DocumentList = ReadonlyArray<Document>;
-export const DocumentList = /*@__PURE__*/ S.Array(
-  Document,
-) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(Document) as any as S.Schema<DocumentList>;
 
 /** Response message for DeveloperKnowledge.BatchGetDocuments. */
 export interface BatchGetDocumentsResponse {
@@ -298,41 +254,26 @@ export interface BatchGetDocumentsResponse {
   documents?: DocumentList;
 }
 export const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documents: S.optional(DocumentList),
-  }),
-).annotate({
-  identifier: "BatchGetDocumentsResponse",
-}) as any as S.Schema<BatchGetDocumentsResponse>;
+S.Struct({
+  "documents": S.optional(DocumentList),
+}),
+).annotate({ identifier: "BatchGetDocumentsResponse" }) as any as S.Schema<BatchGetDocumentsResponse>;
 
-export type GetDocumentsViewEnum =
-  | "DOCUMENT_VIEW_UNSPECIFIED"
-  | "DOCUMENT_VIEW_BASIC"
-  | "DOCUMENT_VIEW_FULL"
-  | "DOCUMENT_VIEW_CONTENT"
-  | (string & {});
+export type GetDocumentsViewEnum = "DOCUMENT_VIEW_UNSPECIFIED" | "DOCUMENT_VIEW_BASIC" | "DOCUMENT_VIEW_FULL" | "DOCUMENT_VIEW_CONTENT";
 export const GetDocumentsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetDocumentsRequest {
   /** Required. Specifies the name of the document to retrieve. Format: `documents/{uri_without_scheme}` Example: `documents/docs.cloud.google.com/storage/docs/creating-buckets` */
   name: string;
   /** Optional. Specifies the DocumentView of the document. If unspecified, DeveloperKnowledge.GetDocument defaults to `DOCUMENT_VIEW_CONTENT`. */
-  view?: GetDocumentsViewEnum;
+  view?: GetDocumentsViewEnum | (string & {});
 }
 export const GetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    view: S.optional(GetDocumentsViewEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://developerknowledge.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetDocumentsRequest",
-}) as any as S.Schema<GetDocumentsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "view": S.optional(GetDocumentsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://developerknowledge.googleapis.com/"})),
+).annotate({ identifier: "GetDocumentsRequest" }) as any as S.Schema<GetDocumentsRequest>;
 
 export interface SearchDocumentChunksDocumentsRequest {
   /** Optional. Specifies the maximum number of results to return. The service may return fewer than this value. If unspecified, at most 5 results will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
@@ -344,28 +285,17 @@ export interface SearchDocumentChunksDocumentsRequest {
   /** Optional. Applies a strict filter to the search results. The expression supports a subset of the syntax described at https://google.aip.dev/160. While `SearchDocumentChunks` returns DocumentChunks, the filter is applied to `DocumentChunk.document` fields. Supported fields for filtering: * `data_source` (STRING): The source of the document, e.g. `docs.cloud.google.com`. See https://developers.google.com/knowledge/reference/corpus-reference for the complete list of data sources in the corpus. * `update_time` (TIMESTAMP): The timestamp of when the document was last meaningfully updated. A meaningful update is one that changes document's markdown content or metadata. * `uri` (STRING): The document URI, e.g. `https://docs.cloud.google.com/bigquery/docs/tables`. STRING fields support `=` (equals) and `!=` (not equals) operators for **exact match** on the whole string. Partial match, prefix match, and regexp match are not supported. TIMESTAMP fields support `=`, `<`, `<=`, `>`, and `>=` operators. Timestamps must be in RFC-3339 format, e.g., `"2025-01-01T00:00:00Z"`. Note: Field names must be in `snake_case` (e.g., `data_source`). Values on the right-hand side of filtering expressions must be string literals enclosed in double quotes (e.g., `"docs.cloud.google.com"`). You can combine expressions using `AND`, `OR`, and `NOT` (or `-`) logical operators. `OR` has higher precedence than `AND`. Use parentheses for explicit precedence grouping. Examples: * `data_source = "docs.cloud.google.com" OR data_source = "firebase.google.com"` * `data_source != "firebase.google.com"` * `update_time < "2024-01-01T00:00:00Z"` * `update_time >= "2025-01-22T00:00:00Z" AND (data_source = "developer.chrome.com" OR data_source = "web.dev")` * `uri = "https://docs.cloud.google.com/release-notes"` The `filter` string must not exceed 500 characters; values longer than 500 characters will result in an `INVALID_ARGUMENT` error. */
   filter?: string;
 }
-export const SearchDocumentChunksDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      query: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/documents:searchDocumentChunks",
-        baseUrl: "https://developerknowledge.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SearchDocumentChunksDocumentsRequest",
-}) as any as S.Schema<SearchDocumentChunksDocumentsRequest>;
+export const SearchDocumentChunksDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/documents:searchDocumentChunks","baseUrl":"https://developerknowledge.googleapis.com/"})),
+).annotate({ identifier: "SearchDocumentChunksDocumentsRequest" }) as any as S.Schema<SearchDocumentChunksDocumentsRequest>;
 
 export type DocumentChunkList = ReadonlyArray<DocumentChunk>;
-export const DocumentChunkList = /*@__PURE__*/ S.Array(
-  DocumentChunk,
-) as any as S.Schema<DocumentChunkList>;
+export const DocumentChunkList = /*@__PURE__*/ S.Array(DocumentChunk) as any as S.Schema<DocumentChunkList>;
 
 /** Response message for DeveloperKnowledge.SearchDocumentChunks. */
 export interface SearchDocumentChunksResponse {
@@ -375,20 +305,13 @@ export interface SearchDocumentChunksResponse {
   results?: DocumentChunkList;
 }
 export const SearchDocumentChunksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    results: S.optional(DocumentChunkList),
-  }),
-).annotate({
-  identifier: "SearchDocumentChunksResponse",
-}) as any as S.Schema<SearchDocumentChunksResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "results": S.optional(DocumentChunkList),
+}),
+).annotate({ identifier: "SearchDocumentChunksResponse" }) as any as S.Schema<SearchDocumentChunksResponse>;
 
-export type AnswerQueryV1Error =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AnswerQueryV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Answers a query using grounded generation. */
 export const answerQueryV1: API.OperationMethod<
   AnswerQueryV1Request,
@@ -433,10 +356,7 @@ export const getDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchDocumentChunksDocumentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchDocumentChunksDocumentsError = NotFound | Forbidden | GcpOpError;
 /** Searches for developer knowledge across Google's developer documentation. Returns DocumentChunks based on the user's query. There may be many chunks from the same Document. To retrieve full documents, use DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments with the DocumentChunk.parent returned in the SearchDocumentChunksResponse.results. */
 export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
   SearchDocumentChunksDocumentsRequest,
@@ -449,8 +369,6 @@ export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
+

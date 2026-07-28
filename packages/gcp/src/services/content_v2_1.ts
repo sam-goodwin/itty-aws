@@ -13,65 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface AuthinfoAccountsRequest {}
 export const AuthinfoAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/authinfo",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "AuthinfoAccountsRequest",
-}) as any as S.Schema<AuthinfoAccountsRequest>;
+S.Struct({}).pipe(T.Http({"method":"GET","uri":"accounts/authinfo","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "AuthinfoAccountsRequest" }) as any as S.Schema<AuthinfoAccountsRequest>;
 
 export interface AccountIdentifier {
   /** The merchant account ID, set for individual accounts and subaccounts. */
@@ -80,18 +72,14 @@ export interface AccountIdentifier {
   aggregatorId?: string;
 }
 export const AccountIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.optional(S.String),
-    aggregatorId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountIdentifier",
-}) as any as S.Schema<AccountIdentifier>;
+S.Struct({
+  "merchantId": S.optional(S.String),
+  "aggregatorId": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountIdentifier" }) as any as S.Schema<AccountIdentifier>;
 
 export type AccountIdentifierList = ReadonlyArray<AccountIdentifier>;
-export const AccountIdentifierList = /*@__PURE__*/ S.Array(
-  AccountIdentifier,
-) as any as S.Schema<AccountIdentifierList>;
+export const AccountIdentifierList = /*@__PURE__*/ S.Array(AccountIdentifier) as any as S.Schema<AccountIdentifierList>;
 
 export interface AccountsAuthInfoResponse {
   /** The account identifiers corresponding to the authenticated user. - For an individual account: only the merchant ID is defined - For an aggregator: only the aggregator ID is defined - For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined. */
@@ -100,13 +88,11 @@ export interface AccountsAuthInfoResponse {
   kind?: string;
 }
 export const AccountsAuthInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountIdentifiers: S.optional(AccountIdentifierList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsAuthInfoResponse",
-}) as any as S.Schema<AccountsAuthInfoResponse>;
+S.Struct({
+  "accountIdentifiers": S.optional(AccountIdentifierList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountsAuthInfoResponse" }) as any as S.Schema<AccountsAuthInfoResponse>;
 
 export interface ClaimwebsiteAccountsRequest {
   /** The ID of the account whose website is claimed. */
@@ -117,38 +103,24 @@ export interface ClaimwebsiteAccountsRequest {
   overwrite?: boolean;
 }
 export const ClaimwebsiteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    merchantId: S.String.pipe(T.Label()),
-    overwrite: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/accounts/{accountId}/claimwebsite",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ClaimwebsiteAccountsRequest",
-}) as any as S.Schema<ClaimwebsiteAccountsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+  "overwrite": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/accounts/{accountId}/claimwebsite","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ClaimwebsiteAccountsRequest" }) as any as S.Schema<ClaimwebsiteAccountsRequest>;
 
 export interface AccountsClaimWebsiteResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsClaimWebsiteResponse`". */
   kind?: string;
 }
 export const AccountsClaimWebsiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsClaimWebsiteResponse",
-}) as any as S.Schema<AccountsClaimWebsiteResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountsClaimWebsiteResponse" }) as any as S.Schema<AccountsClaimWebsiteResponse>;
 
-export type AccountCredentialsPurposeEnum =
-  | "ACCOUNT_CREDENTIALS_PURPOSE_UNSPECIFIED"
-  | "SHOPIFY_ORDER_MANAGEMENT"
-  | "SHOPIFY_INTEGRATION"
-  | (string & {});
+export type AccountCredentialsPurposeEnum = "ACCOUNT_CREDENTIALS_PURPOSE_UNSPECIFIED" | "SHOPIFY_ORDER_MANAGEMENT" | "SHOPIFY_INTEGRATION";
 export const AccountCredentialsPurposeEnum = /*@__PURE__*/ S.String;
 
 /** Credentials allowing Google to call a partner's API on behalf of a merchant. */
@@ -161,14 +133,12 @@ export interface AccountCredentials {
   accessToken?: string;
 }
 export const AccountCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expiresIn: S.optional(S.String),
-    purpose: S.optional(AccountCredentialsPurposeEnum),
-    accessToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountCredentials",
-}) as any as S.Schema<AccountCredentials>;
+S.Struct({
+  "expiresIn": S.optional(S.String),
+  "purpose": S.optional(AccountCredentialsPurposeEnum),
+  "accessToken": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountCredentials" }) as any as S.Schema<AccountCredentials>;
 
 export interface CreateAccountsCredentialsRequest {
   /** Required. The merchant id of the account these credentials belong to. */
@@ -177,25 +147,13 @@ export interface CreateAccountsCredentialsRequest {
   body?: AccountCredentials;
 }
 export const CreateAccountsCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(AccountCredentials.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/{accountId}/credentials",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateAccountsCredentialsRequest",
-}) as any as S.Schema<CreateAccountsCredentialsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(AccountCredentials.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/{accountId}/credentials","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CreateAccountsCredentialsRequest" }) as any as S.Schema<CreateAccountsCredentialsRequest>;
 
-export type AccountLabelLabelTypeEnum =
-  | "LABEL_TYPE_UNSPECIFIED"
-  | "MANUAL"
-  | "AUTOMATIC"
-  | (string & {});
+export type AccountLabelLabelTypeEnum = "LABEL_TYPE_UNSPECIFIED" | "MANUAL" | "AUTOMATIC";
 export const AccountLabelLabelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Label assigned by CSS domain or CSS group to one of its sub-accounts. */
@@ -212,13 +170,13 @@ export interface AccountLabel {
   labelId?: string;
 }
 export const AccountLabel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    labelType: S.optional(AccountLabelLabelTypeEnum),
-    labelId: S.optional(S.String),
-  }),
+S.Struct({
+  "accountId": S.optional(S.String),
+  "description": S.optional(S.String),
+  "name": S.optional(S.String),
+  "labelType": S.optional(AccountLabelLabelTypeEnum),
+  "labelId": S.optional(S.String),
+}),
 ).annotate({ identifier: "AccountLabel" }) as any as S.Schema<AccountLabel>;
 
 export interface CreateAccountsLabelsRequest {
@@ -228,25 +186,13 @@ export interface CreateAccountsLabelsRequest {
   body?: AccountLabel;
 }
 export const CreateAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(AccountLabel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/{accountId}/labels",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateAccountsLabelsRequest",
-}) as any as S.Schema<CreateAccountsLabelsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(AccountLabel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/{accountId}/labels","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CreateAccountsLabelsRequest" }) as any as S.Schema<CreateAccountsLabelsRequest>;
 
-export type AccountReturnCarrierCarrierCodeEnum =
-  | "CARRIER_CODE_UNSPECIFIED"
-  | "FEDEX"
-  | "UPS"
-  | (string & {});
+export type AccountReturnCarrierCarrierCodeEnum = "CARRIER_CODE_UNSPECIFIED" | "FEDEX" | "UPS";
 export const AccountReturnCarrierCarrierCodeEnum = /*@__PURE__*/ S.String;
 
 /** The return carrier information. This service is designed for merchants enrolled in the Buy on Google program. */
@@ -261,15 +207,13 @@ export interface AccountReturnCarrier {
   carrierAccountName?: string;
 }
 export const AccountReturnCarrier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    carrierAccountId: S.optional(S.String),
-    carrierAccountNumber: S.optional(S.String),
-    carrierCode: S.optional(AccountReturnCarrierCarrierCodeEnum),
-    carrierAccountName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountReturnCarrier",
-}) as any as S.Schema<AccountReturnCarrier>;
+S.Struct({
+  "carrierAccountId": S.optional(S.String),
+  "carrierAccountNumber": S.optional(S.String),
+  "carrierCode": S.optional(AccountReturnCarrierCarrierCodeEnum),
+  "carrierAccountName": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountReturnCarrier" }) as any as S.Schema<AccountReturnCarrier>;
 
 export interface CreateAccountsReturncarrierRequest {
   /** Required. The Merchant Center Account Id under which the Return Carrier is to be linked. */
@@ -278,24 +222,14 @@ export interface CreateAccountsReturncarrierRequest {
   body?: AccountReturnCarrier;
 }
 export const CreateAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(AccountReturnCarrier.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/{accountId}/returncarrier",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateAccountsReturncarrierRequest",
-}) as any as S.Schema<CreateAccountsReturncarrierRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(AccountReturnCarrier.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/{accountId}/returncarrier","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CreateAccountsReturncarrierRequest" }) as any as S.Schema<CreateAccountsReturncarrierRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The message for FeaturedProduct. [FeaturedProduct](https://support.google.com/merchants/answer/9703736) */
 export interface CollectionFeaturedProduct {
@@ -307,20 +241,15 @@ export interface CollectionFeaturedProduct {
   y?: number;
 }
 export const CollectionFeaturedProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offerId: S.optional(S.String),
-    x: S.optional(S.Number),
-    y: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CollectionFeaturedProduct",
-}) as any as S.Schema<CollectionFeaturedProduct>;
+S.Struct({
+  "offerId": S.optional(S.String),
+  "x": S.optional(S.Number),
+  "y": S.optional(S.Number),
+}),
+).annotate({ identifier: "CollectionFeaturedProduct" }) as any as S.Schema<CollectionFeaturedProduct>;
 
-export type CollectionFeaturedProductList =
-  ReadonlyArray<CollectionFeaturedProduct>;
-export const CollectionFeaturedProductList = /*@__PURE__*/ S.Array(
-  CollectionFeaturedProduct,
-) as any as S.Schema<CollectionFeaturedProductList>;
+export type CollectionFeaturedProductList = ReadonlyArray<CollectionFeaturedProduct>;
+export const CollectionFeaturedProductList = /*@__PURE__*/ S.Array(CollectionFeaturedProduct) as any as S.Schema<CollectionFeaturedProductList>;
 
 /** The collection message. */
 export interface Collection {
@@ -352,21 +281,21 @@ export interface Collection {
   productCountry?: string;
 }
 export const Collection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mobileLink: S.optional(S.String),
-    customLabel4: S.optional(S.String),
-    customLabel0: S.optional(S.String),
-    language: S.optional(S.String),
-    link: S.optional(S.String),
-    customLabel3: S.optional(S.String),
-    id: S.optional(S.String),
-    headline: S.optional(StringList),
-    customLabel1: S.optional(S.String),
-    imageLink: S.optional(StringList),
-    featuredProduct: S.optional(CollectionFeaturedProductList),
-    customLabel2: S.optional(S.String),
-    productCountry: S.optional(S.String),
-  }),
+S.Struct({
+  "mobileLink": S.optional(S.String),
+  "customLabel4": S.optional(S.String),
+  "customLabel0": S.optional(S.String),
+  "language": S.optional(S.String),
+  "link": S.optional(S.String),
+  "customLabel3": S.optional(S.String),
+  "id": S.optional(S.String),
+  "headline": S.optional(StringList),
+  "customLabel1": S.optional(S.String),
+  "imageLink": S.optional(StringList),
+  "featuredProduct": S.optional(CollectionFeaturedProductList),
+  "customLabel2": S.optional(S.String),
+  "productCountry": S.optional(S.String),
+}),
 ).annotate({ identifier: "Collection" }) as any as S.Schema<Collection>;
 
 export interface CreateCollectionsRequest {
@@ -376,38 +305,16 @@ export interface CreateCollectionsRequest {
   body?: Collection;
 }
 export const CreateCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(Collection.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/collections",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateCollectionsRequest",
-}) as any as S.Schema<CreateCollectionsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(Collection.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/collections","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CreateCollectionsRequest" }) as any as S.Schema<CreateCollectionsRequest>;
 
-export type ConversionSourceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "ARCHIVED"
-  | "PENDING"
-  | (string & {});
+export type ConversionSourceStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED" | "PENDING";
 export const ConversionSourceStateEnum = /*@__PURE__*/ S.String;
 
-export type AttributionSettingsAttributionModelEnum =
-  | "ATTRIBUTION_MODEL_UNSPECIFIED"
-  | "CROSS_CHANNEL_LAST_CLICK"
-  | "ADS_PREFERRED_LAST_CLICK"
-  | "CROSS_CHANNEL_DATA_DRIVEN"
-  | "CROSS_CHANNEL_FIRST_CLICK"
-  | "CROSS_CHANNEL_LINEAR"
-  | "CROSS_CHANNEL_POSITION_BASED"
-  | "CROSS_CHANNEL_TIME_DECAY"
-  | (string & {});
+export type AttributionSettingsAttributionModelEnum = "ATTRIBUTION_MODEL_UNSPECIFIED" | "CROSS_CHANNEL_LAST_CLICK" | "ADS_PREFERRED_LAST_CLICK" | "CROSS_CHANNEL_DATA_DRIVEN" | "CROSS_CHANNEL_FIRST_CLICK" | "CROSS_CHANNEL_LINEAR" | "CROSS_CHANNEL_POSITION_BASED" | "CROSS_CHANNEL_TIME_DECAY";
 export const AttributionSettingsAttributionModelEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a types of conversion events */
@@ -418,19 +325,14 @@ export interface AttributionSettingsConversionType {
   includeInReporting?: boolean;
 }
 export const AttributionSettingsConversionType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    includeInReporting: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AttributionSettingsConversionType",
-}) as any as S.Schema<AttributionSettingsConversionType>;
+S.Struct({
+  "name": S.optional(S.String),
+  "includeInReporting": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AttributionSettingsConversionType" }) as any as S.Schema<AttributionSettingsConversionType>;
 
-export type AttributionSettingsConversionTypeList =
-  ReadonlyArray<AttributionSettingsConversionType>;
-export const AttributionSettingsConversionTypeList = /*@__PURE__*/ S.Array(
-  AttributionSettingsConversionType,
-) as any as S.Schema<AttributionSettingsConversionTypeList>;
+export type AttributionSettingsConversionTypeList = ReadonlyArray<AttributionSettingsConversionType>;
+export const AttributionSettingsConversionTypeList = /*@__PURE__*/ S.Array(AttributionSettingsConversionType) as any as S.Schema<AttributionSettingsConversionTypeList>;
 
 /** Represents attribution settings for conversion sources receiving pre-attribution data. */
 export interface AttributionSettings {
@@ -441,14 +343,12 @@ export interface AttributionSettings {
   conversionType?: AttributionSettingsConversionTypeList;
 }
 export const AttributionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributionLookbackWindowInDays: S.optional(S.Number),
-    attributionModel: S.optional(AttributionSettingsAttributionModelEnum),
-    conversionType: S.optional(AttributionSettingsConversionTypeList),
-  }),
-).annotate({
-  identifier: "AttributionSettings",
-}) as any as S.Schema<AttributionSettings>;
+S.Struct({
+  "attributionLookbackWindowInDays": S.optional(S.Number),
+  "attributionModel": S.optional(AttributionSettingsAttributionModelEnum),
+  "conversionType": S.optional(AttributionSettingsConversionTypeList),
+}),
+).annotate({ identifier: "AttributionSettings" }) as any as S.Schema<AttributionSettings>;
 
 /** "Merchant Center Destination" sources can be used to send conversion events from a website using a Google tag directly to a Merchant Center account where the source is created. */
 export interface MerchantCenterDestination {
@@ -462,15 +362,13 @@ export interface MerchantCenterDestination {
   currencyCode?: string;
 }
 export const MerchantCenterDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationId: S.optional(S.String),
-    attributionSettings: S.optional(AttributionSettings),
-    displayName: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MerchantCenterDestination",
-}) as any as S.Schema<MerchantCenterDestination>;
+S.Struct({
+  "destinationId": S.optional(S.String),
+  "attributionSettings": S.optional(AttributionSettings),
+  "displayName": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+}),
+).annotate({ identifier: "MerchantCenterDestination" }) as any as S.Schema<MerchantCenterDestination>;
 
 /** "Google Analytics Link" sources can be used to get conversion data from an existing Google Analytics property into the linked Merchant Center account. */
 export interface GoogleAnalyticsLink {
@@ -482,14 +380,12 @@ export interface GoogleAnalyticsLink {
   propertyName?: string;
 }
 export const GoogleAnalyticsLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributionSettings: S.optional(AttributionSettings),
-    propertyId: S.optional(S.String),
-    propertyName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAnalyticsLink",
-}) as any as S.Schema<GoogleAnalyticsLink>;
+S.Struct({
+  "attributionSettings": S.optional(AttributionSettings),
+  "propertyId": S.optional(S.String),
+  "propertyName": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleAnalyticsLink" }) as any as S.Schema<GoogleAnalyticsLink>;
 
 /** Represents a conversion source owned by a Merchant account. A merchant account can have up to 200 conversion sources. */
 export interface ConversionSource {
@@ -505,16 +401,14 @@ export interface ConversionSource {
   googleAnalyticsLink?: GoogleAnalyticsLink;
 }
 export const ConversionSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(ConversionSourceStateEnum),
-    expireTime: S.optional(S.String),
-    conversionSourceId: S.optional(S.String),
-    merchantCenterDestination: S.optional(MerchantCenterDestination),
-    googleAnalyticsLink: S.optional(GoogleAnalyticsLink),
-  }),
-).annotate({
-  identifier: "ConversionSource",
-}) as any as S.Schema<ConversionSource>;
+S.Struct({
+  "state": S.optional(ConversionSourceStateEnum),
+  "expireTime": S.optional(S.String),
+  "conversionSourceId": S.optional(S.String),
+  "merchantCenterDestination": S.optional(MerchantCenterDestination),
+  "googleAnalyticsLink": S.optional(GoogleAnalyticsLink),
+}),
+).annotate({ identifier: "ConversionSource" }) as any as S.Schema<ConversionSource>;
 
 export interface CreateConversionsourcesRequest {
   /** Required. The ID of the account that owns the new conversion source. */
@@ -523,19 +417,11 @@ export interface CreateConversionsourcesRequest {
   body?: ConversionSource;
 }
 export const CreateConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(ConversionSource.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/conversionsources",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateConversionsourcesRequest",
-}) as any as S.Schema<CreateConversionsourcesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(ConversionSource.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/conversionsources","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CreateConversionsourcesRequest" }) as any as S.Schema<CreateConversionsourcesRequest>;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
@@ -545,10 +431,10 @@ export interface TimeZone {
   version?: string;
 }
 export const TimeZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
@@ -573,26 +459,21 @@ export interface DateTime {
   timeZone?: TimeZone;
 }
 export const DateTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    month: S.optional(S.Number),
-    day: S.optional(S.Number),
-    hours: S.optional(S.Number),
-    seconds: S.optional(S.Number),
-    year: S.optional(S.Number),
-    nanos: S.optional(S.Number),
-    minutes: S.optional(S.Number),
-    utcOffset: S.optional(S.String),
-    timeZone: S.optional(TimeZone),
-  }),
+S.Struct({
+  "month": S.optional(S.Number),
+  "day": S.optional(S.Number),
+  "hours": S.optional(S.Number),
+  "seconds": S.optional(S.Number),
+  "year": S.optional(S.Number),
+  "nanos": S.optional(S.Number),
+  "minutes": S.optional(S.Number),
+  "utcOffset": S.optional(S.String),
+  "timeZone": S.optional(TimeZone),
+}),
 ).annotate({ identifier: "DateTime" }) as any as S.Schema<DateTime>;
 
-export type OrderTrackingSignalShippingInfoShippingStatusEnum =
-  | "SHIPPING_STATE_UNSPECIFIED"
-  | "SHIPPED"
-  | "DELIVERED"
-  | (string & {});
-export const OrderTrackingSignalShippingInfoShippingStatusEnum =
-  /*@__PURE__*/ S.String;
+export type OrderTrackingSignalShippingInfoShippingStatusEnum = "SHIPPING_STATE_UNSPECIFIED" | "SHIPPED" | "DELIVERED";
+export const OrderTrackingSignalShippingInfoShippingStatusEnum = /*@__PURE__*/ S.String;
 
 /** The shipping information for the order. */
 export interface OrderTrackingSignalShippingInfo {
@@ -620,30 +501,23 @@ export interface OrderTrackingSignalShippingInfo {
   carrierName?: string;
 }
 export const OrderTrackingSignalShippingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    earliestDeliveryPromiseTime: S.optional(DateTime),
-    carrierServiceName: S.optional(S.String),
-    shippingStatus: S.optional(
-      OrderTrackingSignalShippingInfoShippingStatusEnum,
-    ),
-    originRegionCode: S.optional(S.String),
-    latestDeliveryPromiseTime: S.optional(DateTime),
-    actualDeliveryTime: S.optional(DateTime),
-    trackingId: S.optional(S.String),
-    shippedTime: S.optional(DateTime),
-    originPostalCode: S.optional(S.String),
-    shipmentId: S.optional(S.String),
-    carrierName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OrderTrackingSignalShippingInfo",
-}) as any as S.Schema<OrderTrackingSignalShippingInfo>;
+S.Struct({
+  "earliestDeliveryPromiseTime": S.optional(DateTime),
+  "carrierServiceName": S.optional(S.String),
+  "shippingStatus": S.optional(OrderTrackingSignalShippingInfoShippingStatusEnum),
+  "originRegionCode": S.optional(S.String),
+  "latestDeliveryPromiseTime": S.optional(DateTime),
+  "actualDeliveryTime": S.optional(DateTime),
+  "trackingId": S.optional(S.String),
+  "shippedTime": S.optional(DateTime),
+  "originPostalCode": S.optional(S.String),
+  "shipmentId": S.optional(S.String),
+  "carrierName": S.optional(S.String),
+}),
+).annotate({ identifier: "OrderTrackingSignalShippingInfo" }) as any as S.Schema<OrderTrackingSignalShippingInfo>;
 
-export type OrderTrackingSignalShippingInfoList =
-  ReadonlyArray<OrderTrackingSignalShippingInfo>;
-export const OrderTrackingSignalShippingInfoList = /*@__PURE__*/ S.Array(
-  OrderTrackingSignalShippingInfo,
-) as any as S.Schema<OrderTrackingSignalShippingInfoList>;
+export type OrderTrackingSignalShippingInfoList = ReadonlyArray<OrderTrackingSignalShippingInfo>;
+export const OrderTrackingSignalShippingInfoList = /*@__PURE__*/ S.Array(OrderTrackingSignalShippingInfo) as any as S.Schema<OrderTrackingSignalShippingInfoList>;
 
 /** The line items of the order. */
 export interface OrderTrackingSignalLineItemDetails {
@@ -669,27 +543,22 @@ export interface OrderTrackingSignalLineItemDetails {
   mpn?: string;
 }
 export const OrderTrackingSignalLineItemDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productTitle: S.optional(S.String),
-    upc: S.optional(S.String),
-    gtin: S.optional(S.String),
-    sku: S.optional(S.String),
-    quantity: S.optional(S.String),
-    brand: S.optional(S.String),
-    productId: S.optional(S.String),
-    productDescription: S.optional(S.String),
-    lineItemId: S.optional(S.String),
-    mpn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OrderTrackingSignalLineItemDetails",
-}) as any as S.Schema<OrderTrackingSignalLineItemDetails>;
+S.Struct({
+  "productTitle": S.optional(S.String),
+  "upc": S.optional(S.String),
+  "gtin": S.optional(S.String),
+  "sku": S.optional(S.String),
+  "quantity": S.optional(S.String),
+  "brand": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "productDescription": S.optional(S.String),
+  "lineItemId": S.optional(S.String),
+  "mpn": S.optional(S.String),
+}),
+).annotate({ identifier: "OrderTrackingSignalLineItemDetails" }) as any as S.Schema<OrderTrackingSignalLineItemDetails>;
 
-export type OrderTrackingSignalLineItemDetailsList =
-  ReadonlyArray<OrderTrackingSignalLineItemDetails>;
-export const OrderTrackingSignalLineItemDetailsList = /*@__PURE__*/ S.Array(
-  OrderTrackingSignalLineItemDetails,
-) as any as S.Schema<OrderTrackingSignalLineItemDetailsList>;
+export type OrderTrackingSignalLineItemDetailsList = ReadonlyArray<OrderTrackingSignalLineItemDetails>;
+export const OrderTrackingSignalLineItemDetailsList = /*@__PURE__*/ S.Array(OrderTrackingSignalLineItemDetails) as any as S.Schema<OrderTrackingSignalLineItemDetailsList>;
 
 /** Represents how many items are in the shipment for the given shipment_id and line_item_id. */
 export interface OrderTrackingSignalShipmentLineItemMapping {
@@ -700,23 +569,16 @@ export interface OrderTrackingSignalShipmentLineItemMapping {
   /** Required. The line item ID. */
   lineItemId?: string;
 }
-export const OrderTrackingSignalShipmentLineItemMapping =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      quantity: S.optional(S.String),
-      shipmentId: S.optional(S.String),
-      lineItemId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OrderTrackingSignalShipmentLineItemMapping",
-  }) as any as S.Schema<OrderTrackingSignalShipmentLineItemMapping>;
+export const OrderTrackingSignalShipmentLineItemMapping = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "quantity": S.optional(S.String),
+  "shipmentId": S.optional(S.String),
+  "lineItemId": S.optional(S.String),
+}),
+).annotate({ identifier: "OrderTrackingSignalShipmentLineItemMapping" }) as any as S.Schema<OrderTrackingSignalShipmentLineItemMapping>;
 
-export type OrderTrackingSignalShipmentLineItemMappingList =
-  ReadonlyArray<OrderTrackingSignalShipmentLineItemMapping>;
-export const OrderTrackingSignalShipmentLineItemMappingList =
-  /*@__PURE__*/ S.Array(
-    OrderTrackingSignalShipmentLineItemMapping,
-  ) as any as S.Schema<OrderTrackingSignalShipmentLineItemMappingList>;
+export type OrderTrackingSignalShipmentLineItemMappingList = ReadonlyArray<OrderTrackingSignalShipmentLineItemMapping>;
+export const OrderTrackingSignalShipmentLineItemMappingList = /*@__PURE__*/ S.Array(OrderTrackingSignalShipmentLineItemMapping) as any as S.Schema<OrderTrackingSignalShipmentLineItemMappingList>;
 
 /** The price represented as a number and currency. */
 export interface PriceAmount {
@@ -726,10 +588,10 @@ export interface PriceAmount {
   currency?: string;
 }
 export const PriceAmount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    currency: S.optional(S.String),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+  "currency": S.optional(S.String),
+}),
 ).annotate({ identifier: "PriceAmount" }) as any as S.Schema<PriceAmount>;
 
 /** Represents a merchant trade from which signals are extracted, e.g. shipping. */
@@ -756,23 +618,19 @@ export interface OrderTrackingSignal {
   customerShippingFee?: PriceAmount;
 }
 export const OrderTrackingSignal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderCreatedTime: S.optional(DateTime),
-    deliveryRegionCode: S.optional(S.String),
-    orderId: S.optional(S.String),
-    orderTrackingSignalId: S.optional(S.String),
-    deliveryPostalCode: S.optional(S.String),
-    merchantId: S.optional(S.String),
-    shippingInfo: S.optional(OrderTrackingSignalShippingInfoList),
-    lineItems: S.optional(OrderTrackingSignalLineItemDetailsList),
-    shipmentLineItemMapping: S.optional(
-      OrderTrackingSignalShipmentLineItemMappingList,
-    ),
-    customerShippingFee: S.optional(PriceAmount),
-  }),
-).annotate({
-  identifier: "OrderTrackingSignal",
-}) as any as S.Schema<OrderTrackingSignal>;
+S.Struct({
+  "orderCreatedTime": S.optional(DateTime),
+  "deliveryRegionCode": S.optional(S.String),
+  "orderId": S.optional(S.String),
+  "orderTrackingSignalId": S.optional(S.String),
+  "deliveryPostalCode": S.optional(S.String),
+  "merchantId": S.optional(S.String),
+  "shippingInfo": S.optional(OrderTrackingSignalShippingInfoList),
+  "lineItems": S.optional(OrderTrackingSignalLineItemDetailsList),
+  "shipmentLineItemMapping": S.optional(OrderTrackingSignalShipmentLineItemMappingList),
+  "customerShippingFee": S.optional(PriceAmount),
+}),
+).annotate({ identifier: "OrderTrackingSignal" }) as any as S.Schema<OrderTrackingSignal>;
 
 export interface CreateOrdertrackingsignalsRequest {
   /** The ID of the merchant for which the order signal is created. */
@@ -781,19 +639,11 @@ export interface CreateOrdertrackingsignalsRequest {
   body?: OrderTrackingSignal;
 }
 export const CreateOrdertrackingsignalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(OrderTrackingSignal.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/ordertrackingsignals",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateOrdertrackingsignalsRequest",
-}) as any as S.Schema<CreateOrdertrackingsignalsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(OrderTrackingSignal.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/ordertrackingsignals","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CreateOrdertrackingsignalsRequest" }) as any as S.Schema<CreateOrdertrackingsignalsRequest>;
 
 /** The Content API ID of the product. */
 export interface ProductId {
@@ -801,9 +651,9 @@ export interface ProductId {
   productId?: string;
 }
 export const ProductId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-  }),
+S.Struct({
+  "productId": S.optional(S.String),
+}),
 ).annotate({ identifier: "ProductId" }) as any as S.Schema<ProductId>;
 
 /** A range of postal codes that defines the delivery area. Only set `firstPostalCode` when specifying a single postal code. */
@@ -814,13 +664,11 @@ export interface DeliveryAreaPostalCodeRange {
   lastPostalCode?: string;
 }
 export const DeliveryAreaPostalCodeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstPostalCode: S.optional(S.String),
-    lastPostalCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeliveryAreaPostalCodeRange",
-}) as any as S.Schema<DeliveryAreaPostalCodeRange>;
+S.Struct({
+  "firstPostalCode": S.optional(S.String),
+  "lastPostalCode": S.optional(S.String),
+}),
+).annotate({ identifier: "DeliveryAreaPostalCodeRange" }) as any as S.Schema<DeliveryAreaPostalCodeRange>;
 
 /** A delivery area for the product. Only one of `countryCode` or `postalCodeRange` must be set. */
 export interface DeliveryArea {
@@ -832,11 +680,11 @@ export interface DeliveryArea {
   regionCode?: string;
 }
 export const DeliveryArea = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    postalCodeRange: S.optional(DeliveryAreaPostalCodeRange),
-    countryCode: S.optional(S.String),
-    regionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "postalCodeRange": S.optional(DeliveryAreaPostalCodeRange),
+  "countryCode": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "DeliveryArea" }) as any as S.Schema<DeliveryArea>;
 
 /** A delivery time for this product. */
@@ -850,17 +698,14 @@ export interface ProductDeliveryTimeAreaDeliveryTimeDeliveryTime {
   /** Required. The minimum number of business days (inclusive) between when the product ships and when the product is delivered. */
   minTransitTimeDays?: number;
 }
-export const ProductDeliveryTimeAreaDeliveryTimeDeliveryTime =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxTransitTimeDays: S.optional(S.Number),
-      minHandlingTimeDays: S.optional(S.Number),
-      maxHandlingTimeDays: S.optional(S.Number),
-      minTransitTimeDays: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ProductDeliveryTimeAreaDeliveryTimeDeliveryTime",
-  }) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTimeDeliveryTime>;
+export const ProductDeliveryTimeAreaDeliveryTimeDeliveryTime = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "maxTransitTimeDays": S.optional(S.Number),
+  "minHandlingTimeDays": S.optional(S.Number),
+  "maxHandlingTimeDays": S.optional(S.Number),
+  "minTransitTimeDays": S.optional(S.Number),
+}),
+).annotate({ identifier: "ProductDeliveryTimeAreaDeliveryTimeDeliveryTime" }) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTimeDeliveryTime>;
 
 /** A pairing of `DeliveryArea` associated with a `DeliveryTime` for this product. */
 export interface ProductDeliveryTimeAreaDeliveryTime {
@@ -870,19 +715,14 @@ export interface ProductDeliveryTimeAreaDeliveryTime {
   deliveryTime?: ProductDeliveryTimeAreaDeliveryTimeDeliveryTime;
 }
 export const ProductDeliveryTimeAreaDeliveryTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryArea: S.optional(DeliveryArea),
-    deliveryTime: S.optional(ProductDeliveryTimeAreaDeliveryTimeDeliveryTime),
-  }),
-).annotate({
-  identifier: "ProductDeliveryTimeAreaDeliveryTime",
-}) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTime>;
+S.Struct({
+  "deliveryArea": S.optional(DeliveryArea),
+  "deliveryTime": S.optional(ProductDeliveryTimeAreaDeliveryTimeDeliveryTime),
+}),
+).annotate({ identifier: "ProductDeliveryTimeAreaDeliveryTime" }) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTime>;
 
-export type ProductDeliveryTimeAreaDeliveryTimeList =
-  ReadonlyArray<ProductDeliveryTimeAreaDeliveryTime>;
-export const ProductDeliveryTimeAreaDeliveryTimeList = /*@__PURE__*/ S.Array(
-  ProductDeliveryTimeAreaDeliveryTime,
-) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTimeList>;
+export type ProductDeliveryTimeAreaDeliveryTimeList = ReadonlyArray<ProductDeliveryTimeAreaDeliveryTime>;
+export const ProductDeliveryTimeAreaDeliveryTimeList = /*@__PURE__*/ S.Array(ProductDeliveryTimeAreaDeliveryTime) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTimeList>;
 
 /** The estimated days to deliver a product after an order is placed. Only authorized shipping signals partners working with a merchant can use this resource. Merchants should use the [`products`](https://developers.google.com/shopping-content/reference/rest/v2.1/products#productshipping) resource instead. */
 export interface ProductDeliveryTime {
@@ -892,13 +732,11 @@ export interface ProductDeliveryTime {
   areaDeliveryTimes?: ProductDeliveryTimeAreaDeliveryTimeList;
 }
 export const ProductDeliveryTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(ProductId),
-    areaDeliveryTimes: S.optional(ProductDeliveryTimeAreaDeliveryTimeList),
-  }),
-).annotate({
-  identifier: "ProductDeliveryTime",
-}) as any as S.Schema<ProductDeliveryTime>;
+S.Struct({
+  "productId": S.optional(ProductId),
+  "areaDeliveryTimes": S.optional(ProductDeliveryTimeAreaDeliveryTimeList),
+}),
+).annotate({ identifier: "ProductDeliveryTime" }) as any as S.Schema<ProductDeliveryTime>;
 
 export interface CreateProductdeliverytimeRequest {
   /** The Google merchant ID of the account that contains the product. This account cannot be a multi-client account. */
@@ -907,49 +745,22 @@ export interface CreateProductdeliverytimeRequest {
   body?: ProductDeliveryTime;
 }
 export const CreateProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(ProductDeliveryTime.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/productdeliverytime",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProductdeliverytimeRequest",
-}) as any as S.Schema<CreateProductdeliverytimeRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(ProductDeliveryTime.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/productdeliverytime","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CreateProductdeliverytimeRequest" }) as any as S.Schema<CreateProductdeliverytimeRequest>;
 
-export type PromotionRedemptionRestrictionEnum =
-  | "REDEMPTION_RESTRICTION_UNSPECIFIED"
-  | "SUBSCRIBE_AND_SAVE"
-  | "FIRST_ORDER"
-  | "SIGN_UP_FOR_EMAIL"
-  | "SIGN_UP_FOR_TEXT"
-  | "FORMS_OF_PAYMENT"
-  | "CUSTOM"
-  | (string & {});
+export type PromotionRedemptionRestrictionEnum = "REDEMPTION_RESTRICTION_UNSPECIFIED" | "SUBSCRIBE_AND_SAVE" | "FIRST_ORDER" | "SIGN_UP_FOR_EMAIL" | "SIGN_UP_FOR_TEXT" | "FORMS_OF_PAYMENT" | "CUSTOM";
 export const PromotionRedemptionRestrictionEnum = /*@__PURE__*/ S.String;
 
-export type PromotionRedemptionChannelItemEnum =
-  | "REDEMPTION_CHANNEL_UNSPECIFIED"
-  | "IN_STORE"
-  | "ONLINE"
-  | (string & {});
+export type PromotionRedemptionChannelItemEnum = "REDEMPTION_CHANNEL_UNSPECIFIED" | "IN_STORE" | "ONLINE";
 export const PromotionRedemptionChannelItemEnum = /*@__PURE__*/ S.String;
 
-export type PromotionRedemptionChannelItemEnumList =
-  ReadonlyArray<PromotionRedemptionChannelItemEnum>;
-export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
-  PromotionRedemptionChannelItemEnum,
-) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
+export type PromotionRedemptionChannelItemEnumList = ReadonlyArray<PromotionRedemptionChannelItemEnum>;
+export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(PromotionRedemptionChannelItemEnum) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
 
-export type PromotionOfferTypeEnum =
-  | "OFFER_TYPE_UNSPECIFIED"
-  | "NO_CODE"
-  | "GENERIC_CODE"
-  | (string & {});
+export type PromotionOfferTypeEnum = "OFFER_TYPE_UNSPECIFIED" | "NO_CODE" | "GENERIC_CODE";
 export const PromotionOfferTypeEnum = /*@__PURE__*/ S.String;
 
 /** A message that represents a time period. */
@@ -960,54 +771,23 @@ export interface TimePeriod {
   endTime?: string;
 }
 export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 
-export type PromotionProductApplicabilityEnum =
-  | "PRODUCT_APPLICABILITY_UNSPECIFIED"
-  | "ALL_PRODUCTS"
-  | "SPECIFIC_PRODUCTS"
-  | (string & {});
+export type PromotionProductApplicabilityEnum = "PRODUCT_APPLICABILITY_UNSPECIFIED" | "ALL_PRODUCTS" | "SPECIFIC_PRODUCTS";
 export const PromotionProductApplicabilityEnum = /*@__PURE__*/ S.String;
 
-export type PromotionStoreApplicabilityEnum =
-  | "STORE_APPLICABILITY_UNSPECIFIED"
-  | "ALL_STORES"
-  | "SPECIFIC_STORES"
-  | (string & {});
+export type PromotionStoreApplicabilityEnum = "STORE_APPLICABILITY_UNSPECIFIED" | "ALL_STORES" | "SPECIFIC_STORES";
 export const PromotionStoreApplicabilityEnum = /*@__PURE__*/ S.String;
 
-export type PromotionCouponValueTypeEnum =
-  | "COUPON_VALUE_TYPE_UNSPECIFIED"
-  | "MONEY_OFF"
-  | "PERCENT_OFF"
-  | "BUY_M_GET_N_MONEY_OFF"
-  | "BUY_M_GET_N_PERCENT_OFF"
-  | "BUY_M_GET_MONEY_OFF"
-  | "BUY_M_GET_PERCENT_OFF"
-  | "FREE_GIFT"
-  | "FREE_GIFT_WITH_VALUE"
-  | "FREE_GIFT_WITH_ITEM_ID"
-  | "FREE_SHIPPING_STANDARD"
-  | "FREE_SHIPPING_OVERNIGHT"
-  | "FREE_SHIPPING_TWO_DAY"
-  | (string & {});
+export type PromotionCouponValueTypeEnum = "COUPON_VALUE_TYPE_UNSPECIFIED" | "MONEY_OFF" | "PERCENT_OFF" | "BUY_M_GET_N_MONEY_OFF" | "BUY_M_GET_N_PERCENT_OFF" | "BUY_M_GET_MONEY_OFF" | "BUY_M_GET_PERCENT_OFF" | "FREE_GIFT" | "FREE_GIFT_WITH_VALUE" | "FREE_GIFT_WITH_ITEM_ID" | "FREE_SHIPPING_STANDARD" | "FREE_SHIPPING_OVERNIGHT" | "FREE_SHIPPING_TWO_DAY";
 export const PromotionCouponValueTypeEnum = /*@__PURE__*/ S.String;
 
-export type PromotionPromotionStatusDestinationStatusStatusEnum =
-  | "STATE_UNSPECIFIED"
-  | "IN_REVIEW"
-  | "REJECTED"
-  | "LIVE"
-  | "STOPPED"
-  | "EXPIRED"
-  | "PENDING"
-  | (string & {});
-export const PromotionPromotionStatusDestinationStatusStatusEnum =
-  /*@__PURE__*/ S.String;
+export type PromotionPromotionStatusDestinationStatusStatusEnum = "STATE_UNSPECIFIED" | "IN_REVIEW" | "REJECTED" | "LIVE" | "STOPPED" | "EXPIRED" | "PENDING";
+export const PromotionPromotionStatusDestinationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The destination status of the promotion. */
 export interface PromotionPromotionStatusDestinationStatus {
@@ -1016,22 +796,15 @@ export interface PromotionPromotionStatusDestinationStatus {
   /** The status for the specified destination. */
   status?: PromotionPromotionStatusDestinationStatusStatusEnum;
 }
-export const PromotionPromotionStatusDestinationStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination: S.optional(S.String),
-      status: S.optional(PromotionPromotionStatusDestinationStatusStatusEnum),
-    }),
-  ).annotate({
-    identifier: "PromotionPromotionStatusDestinationStatus",
-  }) as any as S.Schema<PromotionPromotionStatusDestinationStatus>;
+export const PromotionPromotionStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "destination": S.optional(S.String),
+  "status": S.optional(PromotionPromotionStatusDestinationStatusStatusEnum),
+}),
+).annotate({ identifier: "PromotionPromotionStatusDestinationStatus" }) as any as S.Schema<PromotionPromotionStatusDestinationStatus>;
 
-export type PromotionPromotionStatusDestinationStatusList =
-  ReadonlyArray<PromotionPromotionStatusDestinationStatus>;
-export const PromotionPromotionStatusDestinationStatusList =
-  /*@__PURE__*/ S.Array(
-    PromotionPromotionStatusDestinationStatus,
-  ) as any as S.Schema<PromotionPromotionStatusDestinationStatusList>;
+export type PromotionPromotionStatusDestinationStatusList = ReadonlyArray<PromotionPromotionStatusDestinationStatus>;
+export const PromotionPromotionStatusDestinationStatusList = /*@__PURE__*/ S.Array(PromotionPromotionStatusDestinationStatus) as any as S.Schema<PromotionPromotionStatusDestinationStatusList>;
 
 /** The issue associated with the promotion. */
 export interface PromotionPromotionStatusPromotionIssue {
@@ -1040,21 +813,15 @@ export interface PromotionPromotionStatusPromotionIssue {
   /** Explanation of the issue. */
   detail?: string;
 }
-export const PromotionPromotionStatusPromotionIssue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      code: S.optional(S.String),
-      detail: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PromotionPromotionStatusPromotionIssue",
-}) as any as S.Schema<PromotionPromotionStatusPromotionIssue>;
+export const PromotionPromotionStatusPromotionIssue = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "code": S.optional(S.String),
+  "detail": S.optional(S.String),
+}),
+).annotate({ identifier: "PromotionPromotionStatusPromotionIssue" }) as any as S.Schema<PromotionPromotionStatusPromotionIssue>;
 
-export type PromotionPromotionStatusPromotionIssueList =
-  ReadonlyArray<PromotionPromotionStatusPromotionIssue>;
-export const PromotionPromotionStatusPromotionIssueList = /*@__PURE__*/ S.Array(
-  PromotionPromotionStatusPromotionIssue,
-) as any as S.Schema<PromotionPromotionStatusPromotionIssueList>;
+export type PromotionPromotionStatusPromotionIssueList = ReadonlyArray<PromotionPromotionStatusPromotionIssue>;
+export const PromotionPromotionStatusPromotionIssueList = /*@__PURE__*/ S.Array(PromotionPromotionStatusPromotionIssue) as any as S.Schema<PromotionPromotionStatusPromotionIssueList>;
 
 /** The status of the promotion. */
 export interface PromotionPromotionStatus {
@@ -1068,17 +835,13 @@ export interface PromotionPromotionStatus {
   lastUpdateDate?: string;
 }
 export const PromotionPromotionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationStatuses: S.optional(
-      PromotionPromotionStatusDestinationStatusList,
-    ),
-    promotionIssue: S.optional(PromotionPromotionStatusPromotionIssueList),
-    creationDate: S.optional(S.String),
-    lastUpdateDate: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PromotionPromotionStatus",
-}) as any as S.Schema<PromotionPromotionStatus>;
+S.Struct({
+  "destinationStatuses": S.optional(PromotionPromotionStatusDestinationStatusList),
+  "promotionIssue": S.optional(PromotionPromotionStatusPromotionIssueList),
+  "creationDate": S.optional(S.String),
+  "lastUpdateDate": S.optional(S.String),
+}),
+).annotate({ identifier: "PromotionPromotionStatus" }) as any as S.Schema<PromotionPromotionStatus>;
 
 /** Represents a promotion. See the following articles for more details. * [Promotions feed specification](https://support.google.com/merchants/answer/2906014) * [Local promotions feed specification](https://support.google.com/merchants/answer/10146130) * [Promotions on Buy on Google product data specification](https://support.google.com/merchants/answer/9173673) */
 export interface Promotion {
@@ -1172,52 +935,52 @@ export interface Promotion {
   freeGiftDescription?: string;
 }
 export const Promotion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productType: S.optional(StringList),
-    moneyBudget: S.optional(PriceAmount),
-    brand: S.optional(StringList),
-    orderLimit: S.optional(S.Number),
-    longTitle: S.optional(S.String),
-    redemptionRestriction: S.optional(PromotionRedemptionRestrictionEnum),
-    promotionId: S.optional(S.String),
-    moneyOffAmount: S.optional(PriceAmount),
-    redemptionChannel: S.optional(PromotionRedemptionChannelItemEnumList),
-    promotionUrl: S.optional(S.String),
-    storeCode: S.optional(StringList),
-    shippingServiceNames: S.optional(StringList),
-    itemGroupIdExclusion: S.optional(StringList),
-    storeCodeExclusion: S.optional(StringList),
-    targetCountry: S.optional(S.String),
-    customRedemptionRestriction: S.optional(S.String),
-    promotionEffectiveDates: S.optional(S.String),
-    promotionDisplayDates: S.optional(S.String),
-    minimumPurchaseQuantity: S.optional(S.Number),
-    maxDiscountAmount: S.optional(PriceAmount),
-    offerType: S.optional(PromotionOfferTypeEnum),
-    productTypeExclusion: S.optional(StringList),
-    itemGroupId: S.optional(StringList),
-    promotionEffectiveTimePeriod: S.optional(TimePeriod),
-    productApplicability: S.optional(PromotionProductApplicabilityEnum),
-    promotionDestinationIds: S.optional(StringList),
-    id: S.optional(S.String),
-    freeGiftItemId: S.optional(S.String),
-    genericRedemptionCode: S.optional(S.String),
-    storeApplicability: S.optional(PromotionStoreApplicabilityEnum),
-    couponValueType: S.optional(PromotionCouponValueTypeEnum),
-    percentOff: S.optional(S.Number),
-    itemId: S.optional(StringList),
-    freeGiftValue: S.optional(PriceAmount),
-    brandExclusion: S.optional(StringList),
-    minimumPurchaseAmount: S.optional(PriceAmount),
-    contentLanguage: S.optional(S.String),
-    promotionDisplayTimePeriod: S.optional(TimePeriod),
-    getThisQuantityDiscounted: S.optional(S.Number),
-    limitQuantity: S.optional(S.Number),
-    promotionStatus: S.optional(PromotionPromotionStatus),
-    limitValue: S.optional(PriceAmount),
-    itemIdExclusion: S.optional(StringList),
-    freeGiftDescription: S.optional(S.String),
-  }),
+S.Struct({
+  "productType": S.optional(StringList),
+  "moneyBudget": S.optional(PriceAmount),
+  "brand": S.optional(StringList),
+  "orderLimit": S.optional(S.Number),
+  "longTitle": S.optional(S.String),
+  "redemptionRestriction": S.optional(PromotionRedemptionRestrictionEnum),
+  "promotionId": S.optional(S.String),
+  "moneyOffAmount": S.optional(PriceAmount),
+  "redemptionChannel": S.optional(PromotionRedemptionChannelItemEnumList),
+  "promotionUrl": S.optional(S.String),
+  "storeCode": S.optional(StringList),
+  "shippingServiceNames": S.optional(StringList),
+  "itemGroupIdExclusion": S.optional(StringList),
+  "storeCodeExclusion": S.optional(StringList),
+  "targetCountry": S.optional(S.String),
+  "customRedemptionRestriction": S.optional(S.String),
+  "promotionEffectiveDates": S.optional(S.String),
+  "promotionDisplayDates": S.optional(S.String),
+  "minimumPurchaseQuantity": S.optional(S.Number),
+  "maxDiscountAmount": S.optional(PriceAmount),
+  "offerType": S.optional(PromotionOfferTypeEnum),
+  "productTypeExclusion": S.optional(StringList),
+  "itemGroupId": S.optional(StringList),
+  "promotionEffectiveTimePeriod": S.optional(TimePeriod),
+  "productApplicability": S.optional(PromotionProductApplicabilityEnum),
+  "promotionDestinationIds": S.optional(StringList),
+  "id": S.optional(S.String),
+  "freeGiftItemId": S.optional(S.String),
+  "genericRedemptionCode": S.optional(S.String),
+  "storeApplicability": S.optional(PromotionStoreApplicabilityEnum),
+  "couponValueType": S.optional(PromotionCouponValueTypeEnum),
+  "percentOff": S.optional(S.Number),
+  "itemId": S.optional(StringList),
+  "freeGiftValue": S.optional(PriceAmount),
+  "brandExclusion": S.optional(StringList),
+  "minimumPurchaseAmount": S.optional(PriceAmount),
+  "contentLanguage": S.optional(S.String),
+  "promotionDisplayTimePeriod": S.optional(TimePeriod),
+  "getThisQuantityDiscounted": S.optional(S.Number),
+  "limitQuantity": S.optional(S.Number),
+  "promotionStatus": S.optional(PromotionPromotionStatus),
+  "limitValue": S.optional(PriceAmount),
+  "itemIdExclusion": S.optional(StringList),
+  "freeGiftDescription": S.optional(S.String),
+}),
 ).annotate({ identifier: "Promotion" }) as any as S.Schema<Promotion>;
 
 export interface CreatePromotionsRequest {
@@ -1227,19 +990,11 @@ export interface CreatePromotionsRequest {
   body?: Promotion;
 }
 export const CreatePromotionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(Promotion.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/promotions",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CreatePromotionsRequest",
-}) as any as S.Schema<CreatePromotionsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(Promotion.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/promotions","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CreatePromotionsRequest" }) as any as S.Schema<CreatePromotionsRequest>;
 
 /** A range of postal codes that defines the region area. */
 export interface RegionPostalCodeAreaPostalCodeRange {
@@ -1249,19 +1004,14 @@ export interface RegionPostalCodeAreaPostalCodeRange {
   begin?: string;
 }
 export const RegionPostalCodeAreaPostalCodeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end: S.optional(S.String),
-    begin: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegionPostalCodeAreaPostalCodeRange",
-}) as any as S.Schema<RegionPostalCodeAreaPostalCodeRange>;
+S.Struct({
+  "end": S.optional(S.String),
+  "begin": S.optional(S.String),
+}),
+).annotate({ identifier: "RegionPostalCodeAreaPostalCodeRange" }) as any as S.Schema<RegionPostalCodeAreaPostalCodeRange>;
 
-export type RegionPostalCodeAreaPostalCodeRangeList =
-  ReadonlyArray<RegionPostalCodeAreaPostalCodeRange>;
-export const RegionPostalCodeAreaPostalCodeRangeList = /*@__PURE__*/ S.Array(
-  RegionPostalCodeAreaPostalCodeRange,
-) as any as S.Schema<RegionPostalCodeAreaPostalCodeRangeList>;
+export type RegionPostalCodeAreaPostalCodeRangeList = ReadonlyArray<RegionPostalCodeAreaPostalCodeRange>;
+export const RegionPostalCodeAreaPostalCodeRangeList = /*@__PURE__*/ S.Array(RegionPostalCodeAreaPostalCodeRange) as any as S.Schema<RegionPostalCodeAreaPostalCodeRangeList>;
 
 /** A list of postal codes that defines the region area. Note: All regions defined using postal codes are accessible via the account's `ShippingSettings.postalCodeGroups` resource. */
 export interface RegionPostalCodeArea {
@@ -1271,13 +1021,11 @@ export interface RegionPostalCodeArea {
   postalCodes?: RegionPostalCodeAreaPostalCodeRangeList;
 }
 export const RegionPostalCodeArea = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-    postalCodes: S.optional(RegionPostalCodeAreaPostalCodeRangeList),
-  }),
-).annotate({
-  identifier: "RegionPostalCodeArea",
-}) as any as S.Schema<RegionPostalCodeArea>;
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "postalCodes": S.optional(RegionPostalCodeAreaPostalCodeRangeList),
+}),
+).annotate({ identifier: "RegionPostalCodeArea" }) as any as S.Schema<RegionPostalCodeArea>;
 
 /** A list of geotargets that defines the region area. */
 export interface RegionGeoTargetArea {
@@ -1285,12 +1033,10 @@ export interface RegionGeoTargetArea {
   geotargetCriteriaIds?: StringList;
 }
 export const RegionGeoTargetArea = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geotargetCriteriaIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "RegionGeoTargetArea",
-}) as any as S.Schema<RegionGeoTargetArea>;
+S.Struct({
+  "geotargetCriteriaIds": S.optional(StringList),
+}),
+).annotate({ identifier: "RegionGeoTargetArea" }) as any as S.Schema<RegionGeoTargetArea>;
 
 /** Represents a geographic region that you can use as a target with both the `RegionalInventory` and `ShippingSettings` services. You can define regions as collections of either postal codes or, in some countries, using predefined geotargets. */
 export interface Region {
@@ -1310,15 +1056,15 @@ export interface Region {
   geotargetArea?: RegionGeoTargetArea;
 }
 export const Region = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.optional(S.String),
-    regionalInventoryEligible: S.optional(S.Boolean),
-    shippingEligible: S.optional(S.Boolean),
-    postalCodeArea: S.optional(RegionPostalCodeArea),
-    regionId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    geotargetArea: S.optional(RegionGeoTargetArea),
-  }),
+S.Struct({
+  "merchantId": S.optional(S.String),
+  "regionalInventoryEligible": S.optional(S.Boolean),
+  "shippingEligible": S.optional(S.Boolean),
+  "postalCodeArea": S.optional(RegionPostalCodeArea),
+  "regionId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "geotargetArea": S.optional(RegionGeoTargetArea),
+}),
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
 export interface CreateRegionsRequest {
@@ -1330,27 +1076,14 @@ export interface CreateRegionsRequest {
   body?: Region;
 }
 export const CreateRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionId: S.optional(S.String.pipe(T.Query())),
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(Region.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/regions",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateRegionsRequest",
-}) as any as S.Schema<CreateRegionsRequest>;
+S.Struct({
+  "regionId": S.optional(S.String.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(Region.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/regions","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CreateRegionsRequest" }) as any as S.Schema<CreateRegionsRequest>;
 
-export type ReturnPolicyOnlinePolicyTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "NUMBER_OF_DAYS_AFTER_DELIVERY"
-  | "NO_RETURNS"
-  | "LIFETIME_RETURNS"
-  | (string & {});
+export type ReturnPolicyOnlinePolicyTypeEnum = "TYPE_UNSPECIFIED" | "NUMBER_OF_DAYS_AFTER_DELIVERY" | "NO_RETURNS" | "LIFETIME_RETURNS";
 export const ReturnPolicyOnlinePolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** The available policies. */
@@ -1361,42 +1094,23 @@ export interface ReturnPolicyOnlinePolicy {
   days?: string;
 }
 export const ReturnPolicyOnlinePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ReturnPolicyOnlinePolicyTypeEnum),
-    days: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReturnPolicyOnlinePolicy",
-}) as any as S.Schema<ReturnPolicyOnlinePolicy>;
+S.Struct({
+  "type": S.optional(ReturnPolicyOnlinePolicyTypeEnum),
+  "days": S.optional(S.String),
+}),
+).annotate({ identifier: "ReturnPolicyOnlinePolicy" }) as any as S.Schema<ReturnPolicyOnlinePolicy>;
 
-export type ReturnPolicyOnlineReturnMethodsItemEnum =
-  | "RETURN_METHOD_UNSPECIFIED"
-  | "BY_MAIL"
-  | "IN_STORE"
-  | "AT_A_KIOSK"
-  | (string & {});
+export type ReturnPolicyOnlineReturnMethodsItemEnum = "RETURN_METHOD_UNSPECIFIED" | "BY_MAIL" | "IN_STORE" | "AT_A_KIOSK";
 export const ReturnPolicyOnlineReturnMethodsItemEnum = /*@__PURE__*/ S.String;
 
-export type ReturnPolicyOnlineReturnMethodsItemEnumList =
-  ReadonlyArray<ReturnPolicyOnlineReturnMethodsItemEnum>;
-export const ReturnPolicyOnlineReturnMethodsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ReturnPolicyOnlineReturnMethodsItemEnum,
-  ) as any as S.Schema<ReturnPolicyOnlineReturnMethodsItemEnumList>;
+export type ReturnPolicyOnlineReturnMethodsItemEnumList = ReadonlyArray<ReturnPolicyOnlineReturnMethodsItemEnum>;
+export const ReturnPolicyOnlineReturnMethodsItemEnumList = /*@__PURE__*/ S.Array(ReturnPolicyOnlineReturnMethodsItemEnum) as any as S.Schema<ReturnPolicyOnlineReturnMethodsItemEnumList>;
 
-export type ReturnPolicyOnlineItemConditionsItemEnum =
-  | "ITEM_CONDITION_UNSPECIFIED"
-  | "NEW"
-  | "USED"
-  | (string & {});
+export type ReturnPolicyOnlineItemConditionsItemEnum = "ITEM_CONDITION_UNSPECIFIED" | "NEW" | "USED";
 export const ReturnPolicyOnlineItemConditionsItemEnum = /*@__PURE__*/ S.String;
 
-export type ReturnPolicyOnlineItemConditionsItemEnumList =
-  ReadonlyArray<ReturnPolicyOnlineItemConditionsItemEnum>;
-export const ReturnPolicyOnlineItemConditionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ReturnPolicyOnlineItemConditionsItemEnum,
-  ) as any as S.Schema<ReturnPolicyOnlineItemConditionsItemEnumList>;
+export type ReturnPolicyOnlineItemConditionsItemEnumList = ReadonlyArray<ReturnPolicyOnlineItemConditionsItemEnum>;
+export const ReturnPolicyOnlineItemConditionsItemEnumList = /*@__PURE__*/ S.Array(ReturnPolicyOnlineItemConditionsItemEnum) as any as S.Schema<ReturnPolicyOnlineItemConditionsItemEnumList>;
 
 /** The restocking fee. This can either be a fixed fee or a micro percent. */
 export interface ReturnPolicyOnlineRestockingFee {
@@ -1406,38 +1120,20 @@ export interface ReturnPolicyOnlineRestockingFee {
   fixedFee?: PriceAmount;
 }
 export const ReturnPolicyOnlineRestockingFee = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microPercent: S.optional(S.Number),
-    fixedFee: S.optional(PriceAmount),
-  }),
-).annotate({
-  identifier: "ReturnPolicyOnlineRestockingFee",
-}) as any as S.Schema<ReturnPolicyOnlineRestockingFee>;
+S.Struct({
+  "microPercent": S.optional(S.Number),
+  "fixedFee": S.optional(PriceAmount),
+}),
+).annotate({ identifier: "ReturnPolicyOnlineRestockingFee" }) as any as S.Schema<ReturnPolicyOnlineRestockingFee>;
 
-export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum =
-    | "RETURN_REASON_CATEGORY_UNSPECIFIED"
-    | "BUYER_REMORSE"
-    | "ITEM_DEFECT"
-    | (string & {});
-export const ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum =
-  /*@__PURE__*/ S.String;
+export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum = "RETURN_REASON_CATEGORY_UNSPECIFIED" | "BUYER_REMORSE" | "ITEM_DEFECT";
+export const ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum = /*@__PURE__*/ S.String;
 
-export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum =
-  | "RETURN_LABEL_SOURCE_UNSPECIFIED"
-  | "DOWNLOAD_AND_PRINT"
-  | "IN_THE_BOX"
-  | "CUSTOMER_RESPONSIBILITY"
-  | (string & {});
-export const ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum =
-  /*@__PURE__*/ S.String;
+export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum = "RETURN_LABEL_SOURCE_UNSPECIFIED" | "DOWNLOAD_AND_PRINT" | "IN_THE_BOX" | "CUSTOMER_RESPONSIBILITY";
+export const ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum = /*@__PURE__*/ S.String;
 
-export type ReturnPolicyOnlineReturnShippingFeeTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "FIXED"
-  | "CUSTOMER_PAYING_ACTUAL_FEE"
-  | (string & {});
-export const ReturnPolicyOnlineReturnShippingFeeTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ReturnPolicyOnlineReturnShippingFeeTypeEnum = "TYPE_UNSPECIFIED" | "FIXED" | "CUSTOMER_PAYING_ACTUAL_FEE";
+export const ReturnPolicyOnlineReturnShippingFeeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The return shipping fee. This can either be a fixed fee or a boolean to indicate that the customer pays the actual shipping cost. */
 export interface ReturnPolicyOnlineReturnShippingFee {
@@ -1447,13 +1143,11 @@ export interface ReturnPolicyOnlineReturnShippingFee {
   fixedFee?: PriceAmount;
 }
 export const ReturnPolicyOnlineReturnShippingFee = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ReturnPolicyOnlineReturnShippingFeeTypeEnum),
-    fixedFee: S.optional(PriceAmount),
-  }),
-).annotate({
-  identifier: "ReturnPolicyOnlineReturnShippingFee",
-}) as any as S.Schema<ReturnPolicyOnlineReturnShippingFee>;
+S.Struct({
+  "type": S.optional(ReturnPolicyOnlineReturnShippingFeeTypeEnum),
+  "fixedFee": S.optional(PriceAmount),
+}),
+).annotate({ identifier: "ReturnPolicyOnlineReturnShippingFee" }) as any as S.Schema<ReturnPolicyOnlineReturnShippingFee>;
 
 /** The return reason category info wrapper. */
 export interface ReturnPolicyOnlineReturnReasonCategoryInfo {
@@ -1464,27 +1158,16 @@ export interface ReturnPolicyOnlineReturnReasonCategoryInfo {
   /** The corresponding return shipping fee. This is only applicable when returnLabelSource is not the customer's responsibility. */
   returnShippingFee?: ReturnPolicyOnlineReturnShippingFee;
 }
-export const ReturnPolicyOnlineReturnReasonCategoryInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      returnReasonCategory: S.optional(
-        ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum,
-      ),
-      returnLabelSource: S.optional(
-        ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum,
-      ),
-      returnShippingFee: S.optional(ReturnPolicyOnlineReturnShippingFee),
-    }),
-  ).annotate({
-    identifier: "ReturnPolicyOnlineReturnReasonCategoryInfo",
-  }) as any as S.Schema<ReturnPolicyOnlineReturnReasonCategoryInfo>;
+export const ReturnPolicyOnlineReturnReasonCategoryInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "returnReasonCategory": S.optional(ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum),
+  "returnLabelSource": S.optional(ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum),
+  "returnShippingFee": S.optional(ReturnPolicyOnlineReturnShippingFee),
+}),
+).annotate({ identifier: "ReturnPolicyOnlineReturnReasonCategoryInfo" }) as any as S.Schema<ReturnPolicyOnlineReturnReasonCategoryInfo>;
 
-export type ReturnPolicyOnlineReturnReasonCategoryInfoList =
-  ReadonlyArray<ReturnPolicyOnlineReturnReasonCategoryInfo>;
-export const ReturnPolicyOnlineReturnReasonCategoryInfoList =
-  /*@__PURE__*/ S.Array(
-    ReturnPolicyOnlineReturnReasonCategoryInfo,
-  ) as any as S.Schema<ReturnPolicyOnlineReturnReasonCategoryInfoList>;
+export type ReturnPolicyOnlineReturnReasonCategoryInfoList = ReadonlyArray<ReturnPolicyOnlineReturnReasonCategoryInfo>;
+export const ReturnPolicyOnlineReturnReasonCategoryInfoList = /*@__PURE__*/ S.Array(ReturnPolicyOnlineReturnReasonCategoryInfo) as any as S.Schema<ReturnPolicyOnlineReturnReasonCategoryInfoList>;
 
 /** Return policy online object. This is currently used to represent return policies for ads and free listings programs. */
 export interface ReturnPolicyOnline {
@@ -1510,23 +1193,19 @@ export interface ReturnPolicyOnline {
   returnPolicyUri?: string;
 }
 export const ReturnPolicyOnline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(ReturnPolicyOnlinePolicy),
-    label: S.optional(S.String),
-    returnPolicyId: S.optional(S.String),
-    countries: S.optional(StringList),
-    returnMethods: S.optional(ReturnPolicyOnlineReturnMethodsItemEnumList),
-    name: S.optional(S.String),
-    itemConditions: S.optional(ReturnPolicyOnlineItemConditionsItemEnumList),
-    restockingFee: S.optional(ReturnPolicyOnlineRestockingFee),
-    returnReasonCategoryInfo: S.optional(
-      ReturnPolicyOnlineReturnReasonCategoryInfoList,
-    ),
-    returnPolicyUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReturnPolicyOnline",
-}) as any as S.Schema<ReturnPolicyOnline>;
+S.Struct({
+  "policy": S.optional(ReturnPolicyOnlinePolicy),
+  "label": S.optional(S.String),
+  "returnPolicyId": S.optional(S.String),
+  "countries": S.optional(StringList),
+  "returnMethods": S.optional(ReturnPolicyOnlineReturnMethodsItemEnumList),
+  "name": S.optional(S.String),
+  "itemConditions": S.optional(ReturnPolicyOnlineItemConditionsItemEnumList),
+  "restockingFee": S.optional(ReturnPolicyOnlineRestockingFee),
+  "returnReasonCategoryInfo": S.optional(ReturnPolicyOnlineReturnReasonCategoryInfoList),
+  "returnPolicyUri": S.optional(S.String),
+}),
+).annotate({ identifier: "ReturnPolicyOnline" }) as any as S.Schema<ReturnPolicyOnline>;
 
 export interface CreateReturnpolicyonlineRequest {
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
@@ -1535,19 +1214,11 @@ export interface CreateReturnpolicyonlineRequest {
   body?: ReturnPolicyOnline;
 }
 export const CreateReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(ReturnPolicyOnline.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/returnpolicyonline",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateReturnpolicyonlineRequest",
-}) as any as S.Schema<CreateReturnpolicyonlineRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(ReturnPolicyOnline.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/returnpolicyonline","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CreateReturnpolicyonlineRequest" }) as any as S.Schema<CreateReturnpolicyonlineRequest>;
 
 export interface AccountsCustomBatchRequestEntryLinkRequest {
   /** Action to perform for this link. The `"request"` action is only available to select merchants. Acceptable values are: - "`approve`" - "`remove`" - "`request`" */
@@ -1559,17 +1230,14 @@ export interface AccountsCustomBatchRequestEntryLinkRequest {
   /** The ID of the linked account. */
   linkedAccountId?: string;
 }
-export const AccountsCustomBatchRequestEntryLinkRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(S.String),
-      linkType: S.optional(S.String),
-      services: S.optional(StringList),
-      linkedAccountId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AccountsCustomBatchRequestEntryLinkRequest",
-  }) as any as S.Schema<AccountsCustomBatchRequestEntryLinkRequest>;
+export const AccountsCustomBatchRequestEntryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "action": S.optional(S.String),
+  "linkType": S.optional(S.String),
+  "services": S.optional(StringList),
+  "linkedAccountId": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountsCustomBatchRequestEntryLinkRequest" }) as any as S.Schema<AccountsCustomBatchRequestEntryLinkRequest>;
 
 export interface AccountUser {
   /** This role is deprecated and can no longer be assigned. Any value set will be ignored. */
@@ -1588,21 +1256,19 @@ export interface AccountUser {
   orderManager?: boolean;
 }
 export const AccountUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentsManager: S.optional(S.Boolean),
-    paymentsAnalyst: S.optional(S.Boolean),
-    readOnly: S.optional(S.Boolean),
-    reportingManager: S.optional(S.Boolean),
-    admin: S.optional(S.Boolean),
-    emailAddress: S.optional(S.String),
-    orderManager: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "paymentsManager": S.optional(S.Boolean),
+  "paymentsAnalyst": S.optional(S.Boolean),
+  "readOnly": S.optional(S.Boolean),
+  "reportingManager": S.optional(S.Boolean),
+  "admin": S.optional(S.Boolean),
+  "emailAddress": S.optional(S.String),
+  "orderManager": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "AccountUser" }) as any as S.Schema<AccountUser>;
 
 export type AccountUserList = ReadonlyArray<AccountUser>;
-export const AccountUserList = /*@__PURE__*/ S.Array(
-  AccountUser,
-) as any as S.Schema<AccountUserList>;
+export const AccountUserList = /*@__PURE__*/ S.Array(AccountUser) as any as S.Schema<AccountUserList>;
 
 /** The account identity type used to specify attributes. */
 export interface AccountIdentityType {
@@ -1610,12 +1276,10 @@ export interface AccountIdentityType {
   selfIdentified?: boolean;
 }
 export const AccountIdentityType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selfIdentified: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccountIdentityType",
-}) as any as S.Schema<AccountIdentityType>;
+S.Struct({
+  "selfIdentified": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AccountIdentityType" }) as any as S.Schema<AccountIdentityType>;
 
 /** The [business identity attributes](https://support.google.com/merchants/answer/10342414) can be used to self-declare attributes that let customers know more about your business. */
 export interface AccountBusinessIdentity {
@@ -1633,17 +1297,15 @@ export interface AccountBusinessIdentity {
   includeForPromotions?: boolean;
 }
 export const AccountBusinessIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latinoOwned: S.optional(AccountIdentityType),
-    smallBusiness: S.optional(AccountIdentityType),
-    blackOwned: S.optional(AccountIdentityType),
-    womenOwned: S.optional(AccountIdentityType),
-    veteranOwned: S.optional(AccountIdentityType),
-    includeForPromotions: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccountBusinessIdentity",
-}) as any as S.Schema<AccountBusinessIdentity>;
+S.Struct({
+  "latinoOwned": S.optional(AccountIdentityType),
+  "smallBusiness": S.optional(AccountIdentityType),
+  "blackOwned": S.optional(AccountIdentityType),
+  "womenOwned": S.optional(AccountIdentityType),
+  "veteranOwned": S.optional(AccountIdentityType),
+  "includeForPromotions": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AccountBusinessIdentity" }) as any as S.Schema<AccountBusinessIdentity>;
 
 /** Settings for conversion tracking. */
 export interface AccountConversionSettings {
@@ -1651,12 +1313,10 @@ export interface AccountConversionSettings {
   freeListingsAutoTaggingEnabled?: boolean;
 }
 export const AccountConversionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    freeListingsAutoTaggingEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccountConversionSettings",
-}) as any as S.Schema<AccountConversionSettings>;
+S.Struct({
+  "freeListingsAutoTaggingEnabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AccountConversionSettings" }) as any as S.Schema<AccountConversionSettings>;
 
 export interface AccountAdsLink {
   /** Customer ID of the Ads account. */
@@ -1665,16 +1325,14 @@ export interface AccountAdsLink {
   status?: string;
 }
 export const AccountAdsLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adsId: S.optional(S.String),
-    status: S.optional(S.String),
-  }),
+S.Struct({
+  "adsId": S.optional(S.String),
+  "status": S.optional(S.String),
+}),
 ).annotate({ identifier: "AccountAdsLink" }) as any as S.Schema<AccountAdsLink>;
 
 export type AccountAdsLinkList = ReadonlyArray<AccountAdsLink>;
-export const AccountAdsLinkList = /*@__PURE__*/ S.Array(
-  AccountAdsLink,
-) as any as S.Schema<AccountAdsLinkList>;
+export const AccountAdsLinkList = /*@__PURE__*/ S.Array(AccountAdsLink) as any as S.Schema<AccountAdsLinkList>;
 
 /** Settings for the Automatic Item Updates. */
 export interface AccountItemUpdatesSettings {
@@ -1688,15 +1346,13 @@ export interface AccountItemUpdatesSettings {
   allowConditionUpdates?: boolean;
 }
 export const AccountItemUpdatesSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowAvailabilityUpdates: S.optional(S.Boolean),
-    allowPriceUpdates: S.optional(S.Boolean),
-    allowStrictAvailabilityUpdates: S.optional(S.Boolean),
-    allowConditionUpdates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccountItemUpdatesSettings",
-}) as any as S.Schema<AccountItemUpdatesSettings>;
+S.Struct({
+  "allowAvailabilityUpdates": S.optional(S.Boolean),
+  "allowPriceUpdates": S.optional(S.Boolean),
+  "allowStrictAvailabilityUpdates": S.optional(S.Boolean),
+  "allowConditionUpdates": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AccountItemUpdatesSettings" }) as any as S.Schema<AccountItemUpdatesSettings>;
 
 /** Turning on [item updates](https://support.google.com/merchants/answer/3246284) allows Google to automatically update items for you. When item updates are on, Google uses the structured data markup on the website and advanced data extractors to update the price and availability of the items. When the item updates are off, items with mismatched data aren't shown. */
 export interface AccountItemUpdates {
@@ -1712,16 +1368,14 @@ export interface AccountItemUpdates {
   effectiveAllowStrictAvailabilityUpdates?: boolean;
 }
 export const AccountItemUpdates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    effectiveAllowAvailabilityUpdates: S.optional(S.Boolean),
-    effectiveAllowConditionUpdates: S.optional(S.Boolean),
-    effectiveAllowPriceUpdates: S.optional(S.Boolean),
-    accountItemUpdatesSettings: S.optional(AccountItemUpdatesSettings),
-    effectiveAllowStrictAvailabilityUpdates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccountItemUpdates",
-}) as any as S.Schema<AccountItemUpdates>;
+S.Struct({
+  "effectiveAllowAvailabilityUpdates": S.optional(S.Boolean),
+  "effectiveAllowConditionUpdates": S.optional(S.Boolean),
+  "effectiveAllowPriceUpdates": S.optional(S.Boolean),
+  "accountItemUpdatesSettings": S.optional(AccountItemUpdatesSettings),
+  "effectiveAllowStrictAvailabilityUpdates": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AccountItemUpdates" }) as any as S.Schema<AccountItemUpdates>;
 
 /** Settings for the Automatic Image Improvements. */
 export interface AccountImageImprovementsSettings {
@@ -1729,12 +1383,10 @@ export interface AccountImageImprovementsSettings {
   allowAutomaticImageImprovements?: boolean;
 }
 export const AccountImageImprovementsSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowAutomaticImageImprovements: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccountImageImprovementsSettings",
-}) as any as S.Schema<AccountImageImprovementsSettings>;
+S.Struct({
+  "allowAutomaticImageImprovements": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AccountImageImprovementsSettings" }) as any as S.Schema<AccountImageImprovementsSettings>;
 
 /** This improvement will attempt to automatically correct submitted images if they don't meet the [image requirements](https://support.google.com/merchants/answer/6324350), for example, removing overlays. If successful, the image will be replaced and approved. This improvement is only applied to images of disapproved offers. For more information see: [Automatic image improvements](https://support.google.com/merchants/answer/9242973) */
 export interface AccountImageImprovements {
@@ -1744,15 +1396,11 @@ export interface AccountImageImprovements {
   effectiveAllowAutomaticImageImprovements?: boolean;
 }
 export const AccountImageImprovements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountImageImprovementsSettings: S.optional(
-      AccountImageImprovementsSettings,
-    ),
-    effectiveAllowAutomaticImageImprovements: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccountImageImprovements",
-}) as any as S.Schema<AccountImageImprovements>;
+S.Struct({
+  "accountImageImprovementsSettings": S.optional(AccountImageImprovementsSettings),
+  "effectiveAllowAutomaticImageImprovements": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AccountImageImprovements" }) as any as S.Schema<AccountImageImprovements>;
 
 /** Not available for MCAs [accounts](https://support.google.com/merchants/answer/188487). By turning on [automatic shipping improvements](https://support.google.com/merchants/answer/10027038), you are allowing Google to improve the accuracy of your delivery times shown to shoppers using Google. More accurate delivery times, especially when faster, typically lead to better conversion rates. Google will improve your estimated delivery times based on various factors: * Delivery address of an order * Current handling time and shipping time settings * Estimated weekdays or business days * Parcel tracking data */
 export interface AccountShippingImprovements {
@@ -1760,12 +1408,10 @@ export interface AccountShippingImprovements {
   allowShippingImprovements?: boolean;
 }
 export const AccountShippingImprovements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowShippingImprovements: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccountShippingImprovements",
-}) as any as S.Schema<AccountShippingImprovements>;
+S.Struct({
+  "allowShippingImprovements": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AccountShippingImprovements" }) as any as S.Schema<AccountShippingImprovements>;
 
 /** The automatic improvements of the account can be used to automatically update items, improve images and shipping. */
 export interface AccountAutomaticImprovements {
@@ -1777,14 +1423,12 @@ export interface AccountAutomaticImprovements {
   shippingImprovements?: AccountShippingImprovements;
 }
 export const AccountAutomaticImprovements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemUpdates: S.optional(AccountItemUpdates),
-    imageImprovements: S.optional(AccountImageImprovements),
-    shippingImprovements: S.optional(AccountShippingImprovements),
-  }),
-).annotate({
-  identifier: "AccountAutomaticImprovements",
-}) as any as S.Schema<AccountAutomaticImprovements>;
+S.Struct({
+  "itemUpdates": S.optional(AccountItemUpdates),
+  "imageImprovements": S.optional(AccountImageImprovements),
+  "shippingImprovements": S.optional(AccountShippingImprovements),
+}),
+).annotate({ identifier: "AccountAutomaticImprovements" }) as any as S.Schema<AccountAutomaticImprovements>;
 
 export interface AccountYouTubeChannelLink {
   /** Status of the link between this Merchant Center account and the YouTube channel. Upon retrieval, it represents the actual status of the link and can be either `active` if it was approved in YT Creator Studio or `pending` if it's pending approval. Upon insertion, it represents the *intended* status of the link. Re-uploading a link with status `active` when it's still pending or with status `pending` when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending. */
@@ -1793,19 +1437,14 @@ export interface AccountYouTubeChannelLink {
   channelId?: string;
 }
 export const AccountYouTubeChannelLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    channelId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountYouTubeChannelLink",
-}) as any as S.Schema<AccountYouTubeChannelLink>;
+S.Struct({
+  "status": S.optional(S.String),
+  "channelId": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountYouTubeChannelLink" }) as any as S.Schema<AccountYouTubeChannelLink>;
 
-export type AccountYouTubeChannelLinkList =
-  ReadonlyArray<AccountYouTubeChannelLink>;
-export const AccountYouTubeChannelLinkList = /*@__PURE__*/ S.Array(
-  AccountYouTubeChannelLink,
-) as any as S.Schema<AccountYouTubeChannelLinkList>;
+export type AccountYouTubeChannelLinkList = ReadonlyArray<AccountYouTubeChannelLink>;
+export const AccountYouTubeChannelLinkList = /*@__PURE__*/ S.Array(AccountYouTubeChannelLink) as any as S.Schema<AccountYouTubeChannelLinkList>;
 
 export interface AccountAddress {
   /** Postal code or ZIP (for example, "94043"). */
@@ -1820,13 +1459,13 @@ export interface AccountAddress {
   locality?: string;
 }
 export const AccountAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    postalCode: S.optional(S.String),
-    region: S.optional(S.String),
-    streetAddress: S.optional(S.String),
-    country: S.optional(S.String),
-    locality: S.optional(S.String),
-  }),
+S.Struct({
+  "postalCode": S.optional(S.String),
+  "region": S.optional(S.String),
+  "streetAddress": S.optional(S.String),
+  "country": S.optional(S.String),
+  "locality": S.optional(S.String),
+}),
 ).annotate({ identifier: "AccountAddress" }) as any as S.Schema<AccountAddress>;
 
 export interface AccountCustomerService {
@@ -1838,14 +1477,12 @@ export interface AccountCustomerService {
   phoneNumber?: string;
 }
 export const AccountCustomerService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    email: S.optional(S.String),
-    phoneNumber: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountCustomerService",
-}) as any as S.Schema<AccountCustomerService>;
+S.Struct({
+  "url": S.optional(S.String),
+  "email": S.optional(S.String),
+  "phoneNumber": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountCustomerService" }) as any as S.Schema<AccountCustomerService>;
 
 export interface AccountBusinessInformation {
   /** The address of the business. Use `\n` to add a second address line. */
@@ -1860,16 +1497,14 @@ export interface AccountBusinessInformation {
   phoneNumber?: string;
 }
 export const AccountBusinessInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(AccountAddress),
-    customerService: S.optional(AccountCustomerService),
-    koreanBusinessRegistrationNumber: S.optional(S.String),
-    phoneVerificationStatus: S.optional(S.String),
-    phoneNumber: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountBusinessInformation",
-}) as any as S.Schema<AccountBusinessInformation>;
+S.Struct({
+  "address": S.optional(AccountAddress),
+  "customerService": S.optional(AccountCustomerService),
+  "koreanBusinessRegistrationNumber": S.optional(S.String),
+  "phoneVerificationStatus": S.optional(S.String),
+  "phoneNumber": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountBusinessInformation" }) as any as S.Schema<AccountBusinessInformation>;
 
 export interface AccountGoogleMyBusinessLink {
   /** The Business Profile email address of a specific account within a Business Profile. A sample account within a Business Profile could be a business account with set of locations, managed under the Business Profile. */
@@ -1880,14 +1515,12 @@ export interface AccountGoogleMyBusinessLink {
   gmbAccountId?: string;
 }
 export const AccountGoogleMyBusinessLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gmbEmail: S.optional(S.String),
-    status: S.optional(S.String),
-    gmbAccountId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountGoogleMyBusinessLink",
-}) as any as S.Schema<AccountGoogleMyBusinessLink>;
+S.Struct({
+  "gmbEmail": S.optional(S.String),
+  "status": S.optional(S.String),
+  "gmbAccountId": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountGoogleMyBusinessLink" }) as any as S.Schema<AccountGoogleMyBusinessLink>;
 
 /** Account data. After the creation of a new account it may take a few minutes before it's fully operational. The methods delete, insert, and update require the admin role. */
 export interface Account {
@@ -1929,26 +1562,26 @@ export interface Account {
   googleMyBusinessLink?: AccountGoogleMyBusinessLink;
 }
 export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    users: S.optional(AccountUserList),
-    adultContent: S.optional(S.Boolean),
-    businessIdentity: S.optional(AccountBusinessIdentity),
-    accountManagement: S.optional(S.String),
-    id: S.optional(S.String),
-    conversionSettings: S.optional(AccountConversionSettings),
-    kind: S.optional(S.String),
-    adsLinks: S.optional(AccountAdsLinkList),
-    cssId: S.optional(S.String),
-    automaticImprovements: S.optional(AccountAutomaticImprovements),
-    automaticLabelIds: S.optional(StringList),
-    labelIds: S.optional(StringList),
-    websiteUrl: S.optional(S.String),
-    name: S.optional(S.String),
-    youtubeChannelLinks: S.optional(AccountYouTubeChannelLinkList),
-    businessInformation: S.optional(AccountBusinessInformation),
-    sellerId: S.optional(S.String),
-    googleMyBusinessLink: S.optional(AccountGoogleMyBusinessLink),
-  }),
+S.Struct({
+  "users": S.optional(AccountUserList),
+  "adultContent": S.optional(S.Boolean),
+  "businessIdentity": S.optional(AccountBusinessIdentity),
+  "accountManagement": S.optional(S.String),
+  "id": S.optional(S.String),
+  "conversionSettings": S.optional(AccountConversionSettings),
+  "kind": S.optional(S.String),
+  "adsLinks": S.optional(AccountAdsLinkList),
+  "cssId": S.optional(S.String),
+  "automaticImprovements": S.optional(AccountAutomaticImprovements),
+  "automaticLabelIds": S.optional(StringList),
+  "labelIds": S.optional(StringList),
+  "websiteUrl": S.optional(S.String),
+  "name": S.optional(S.String),
+  "youtubeChannelLinks": S.optional(AccountYouTubeChannelLinkList),
+  "businessInformation": S.optional(AccountBusinessInformation),
+  "sellerId": S.optional(S.String),
+  "googleMyBusinessLink": S.optional(AccountGoogleMyBusinessLink),
+}),
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 /** A batch entry encoding a single non-batch accounts request. */
@@ -1975,57 +1608,42 @@ export interface AccountsCustomBatchRequestEntry {
   merchantId?: string;
 }
 export const AccountsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    overwrite: S.optional(S.Boolean),
-    linkRequest: S.optional(AccountsCustomBatchRequestEntryLinkRequest),
-    account: S.optional(Account),
-    batchId: S.optional(S.Number),
-    accountId: S.optional(S.String),
-    labelIds: S.optional(StringList),
-    force: S.optional(S.Boolean),
-    method: S.optional(S.String),
-    view: S.optional(S.String),
-    merchantId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsCustomBatchRequestEntry",
-}) as any as S.Schema<AccountsCustomBatchRequestEntry>;
+S.Struct({
+  "overwrite": S.optional(S.Boolean),
+  "linkRequest": S.optional(AccountsCustomBatchRequestEntryLinkRequest),
+  "account": S.optional(Account),
+  "batchId": S.optional(S.Number),
+  "accountId": S.optional(S.String),
+  "labelIds": S.optional(StringList),
+  "force": S.optional(S.Boolean),
+  "method": S.optional(S.String),
+  "view": S.optional(S.String),
+  "merchantId": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountsCustomBatchRequestEntry" }) as any as S.Schema<AccountsCustomBatchRequestEntry>;
 
-export type AccountsCustomBatchRequestEntryList =
-  ReadonlyArray<AccountsCustomBatchRequestEntry>;
-export const AccountsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
-  AccountsCustomBatchRequestEntry,
-) as any as S.Schema<AccountsCustomBatchRequestEntryList>;
+export type AccountsCustomBatchRequestEntryList = ReadonlyArray<AccountsCustomBatchRequestEntry>;
+export const AccountsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(AccountsCustomBatchRequestEntry) as any as S.Schema<AccountsCustomBatchRequestEntryList>;
 
 export interface AccountsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: AccountsCustomBatchRequestEntryList;
 }
 export const AccountsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(AccountsCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "AccountsCustomBatchRequest",
-}) as any as S.Schema<AccountsCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(AccountsCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "AccountsCustomBatchRequest" }) as any as S.Schema<AccountsCustomBatchRequest>;
 
 export interface CustombatchAccountsRequest {
   /** Request body */
   body?: AccountsCustomBatchRequest;
 }
 export const CustombatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(AccountsCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchAccountsRequest",
-}) as any as S.Schema<CustombatchAccountsRequest>;
+S.Struct({
+  "body": S.optional(AccountsCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchAccountsRequest" }) as any as S.Schema<CustombatchAccountsRequest>;
 
 /** An error returned by the API. */
 export interface Content_Error {
@@ -2037,17 +1655,15 @@ export interface Content_Error {
   reason?: string;
 }
 export const Content_Error = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-    message: S.optional(S.String),
-    reason: S.optional(S.String),
-  }),
+S.Struct({
+  "domain": S.optional(S.String),
+  "message": S.optional(S.String),
+  "reason": S.optional(S.String),
+}),
 ).annotate({ identifier: "Content_Error" }) as any as S.Schema<Content_Error>;
 
 export type Content_ErrorList = ReadonlyArray<Content_Error>;
-export const Content_ErrorList = /*@__PURE__*/ S.Array(
-  Content_Error,
-) as any as S.Schema<Content_ErrorList>;
+export const Content_ErrorList = /*@__PURE__*/ S.Array(Content_Error) as any as S.Schema<Content_ErrorList>;
 
 /** A list of errors returned by a failed batch entry. */
 export interface Errors {
@@ -2059,11 +1675,11 @@ export interface Errors {
   message?: string;
 }
 export const Errors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(Content_ErrorList),
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "errors": S.optional(Content_ErrorList),
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Errors" }) as any as S.Schema<Errors>;
 
 /** A batch entry encoding a single non-batch accounts response. */
@@ -2078,21 +1694,16 @@ export interface AccountsCustomBatchResponseEntry {
   kind?: string;
 }
 export const AccountsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account: S.optional(Account),
-    batchId: S.optional(S.Number),
-    errors: S.optional(Errors),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsCustomBatchResponseEntry",
-}) as any as S.Schema<AccountsCustomBatchResponseEntry>;
+S.Struct({
+  "account": S.optional(Account),
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountsCustomBatchResponseEntry" }) as any as S.Schema<AccountsCustomBatchResponseEntry>;
 
-export type AccountsCustomBatchResponseEntryList =
-  ReadonlyArray<AccountsCustomBatchResponseEntry>;
-export const AccountsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
-  AccountsCustomBatchResponseEntry,
-) as any as S.Schema<AccountsCustomBatchResponseEntryList>;
+export type AccountsCustomBatchResponseEntryList = ReadonlyArray<AccountsCustomBatchResponseEntry>;
+export const AccountsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(AccountsCustomBatchResponseEntry) as any as S.Schema<AccountsCustomBatchResponseEntryList>;
 
 export interface AccountsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -2101,13 +1712,11 @@ export interface AccountsCustomBatchResponse {
   kind?: string;
 }
 export const AccountsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(AccountsCustomBatchResponseEntryList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsCustomBatchResponse",
-}) as any as S.Schema<AccountsCustomBatchResponse>;
+S.Struct({
+  "entries": S.optional(AccountsCustomBatchResponseEntryList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountsCustomBatchResponse" }) as any as S.Schema<AccountsCustomBatchResponse>;
 
 /** A batch entry encoding a single non-batch accountstatuses request. */
 export interface AccountstatusesCustomBatchRequestEntry {
@@ -2122,54 +1731,38 @@ export interface AccountstatusesCustomBatchRequestEntry {
   /** The ID of the managing account. */
   merchantId?: string;
 }
-export const AccountstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      method: S.optional(S.String),
-      accountId: S.optional(S.String),
-      batchId: S.optional(S.Number),
-      destinations: S.optional(StringList),
-      merchantId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AccountstatusesCustomBatchRequestEntry",
-}) as any as S.Schema<AccountstatusesCustomBatchRequestEntry>;
+export const AccountstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "method": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "batchId": S.optional(S.Number),
+  "destinations": S.optional(StringList),
+  "merchantId": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountstatusesCustomBatchRequestEntry" }) as any as S.Schema<AccountstatusesCustomBatchRequestEntry>;
 
-export type AccountstatusesCustomBatchRequestEntryList =
-  ReadonlyArray<AccountstatusesCustomBatchRequestEntry>;
-export const AccountstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
-  AccountstatusesCustomBatchRequestEntry,
-) as any as S.Schema<AccountstatusesCustomBatchRequestEntryList>;
+export type AccountstatusesCustomBatchRequestEntryList = ReadonlyArray<AccountstatusesCustomBatchRequestEntry>;
+export const AccountstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(AccountstatusesCustomBatchRequestEntry) as any as S.Schema<AccountstatusesCustomBatchRequestEntryList>;
 
 export interface AccountstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: AccountstatusesCustomBatchRequestEntryList;
 }
 export const AccountstatusesCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(AccountstatusesCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "AccountstatusesCustomBatchRequest",
-}) as any as S.Schema<AccountstatusesCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(AccountstatusesCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "AccountstatusesCustomBatchRequest" }) as any as S.Schema<AccountstatusesCustomBatchRequest>;
 
 export interface CustombatchAccountstatusesRequest {
   /** Request body */
   body?: AccountstatusesCustomBatchRequest;
 }
 export const CustombatchAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(AccountstatusesCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accountstatuses/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchAccountstatusesRequest",
-}) as any as S.Schema<CustombatchAccountstatusesRequest>;
+S.Struct({
+  "body": S.optional(AccountstatusesCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accountstatuses/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchAccountstatusesRequest" }) as any as S.Schema<CustombatchAccountstatusesRequest>;
 
 export interface AccountStatusAccountLevelIssue {
   /** The destination the issue applies to. If this field is empty then the issue applies to all available destinations. */
@@ -2188,24 +1781,19 @@ export interface AccountStatusAccountLevelIssue {
   severity?: string;
 }
 export const AccountStatusAccountLevelIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: S.optional(S.String),
-    documentation: S.optional(S.String),
-    detail: S.optional(S.String),
-    title: S.optional(S.String),
-    id: S.optional(S.String),
-    country: S.optional(S.String),
-    severity: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountStatusAccountLevelIssue",
-}) as any as S.Schema<AccountStatusAccountLevelIssue>;
+S.Struct({
+  "destination": S.optional(S.String),
+  "documentation": S.optional(S.String),
+  "detail": S.optional(S.String),
+  "title": S.optional(S.String),
+  "id": S.optional(S.String),
+  "country": S.optional(S.String),
+  "severity": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountStatusAccountLevelIssue" }) as any as S.Schema<AccountStatusAccountLevelIssue>;
 
-export type AccountStatusAccountLevelIssueList =
-  ReadonlyArray<AccountStatusAccountLevelIssue>;
-export const AccountStatusAccountLevelIssueList = /*@__PURE__*/ S.Array(
-  AccountStatusAccountLevelIssue,
-) as any as S.Schema<AccountStatusAccountLevelIssueList>;
+export type AccountStatusAccountLevelIssueList = ReadonlyArray<AccountStatusAccountLevelIssue>;
+export const AccountStatusAccountLevelIssueList = /*@__PURE__*/ S.Array(AccountStatusAccountLevelIssue) as any as S.Schema<AccountStatusAccountLevelIssueList>;
 
 export interface AccountStatusStatistics {
   /** Number of pending offers. */
@@ -2218,15 +1806,13 @@ export interface AccountStatusStatistics {
   disapproved?: string;
 }
 export const AccountStatusStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pending: S.optional(S.String),
-    active: S.optional(S.String),
-    expiring: S.optional(S.String),
-    disapproved: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountStatusStatistics",
-}) as any as S.Schema<AccountStatusStatistics>;
+S.Struct({
+  "pending": S.optional(S.String),
+  "active": S.optional(S.String),
+  "expiring": S.optional(S.String),
+  "disapproved": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountStatusStatistics" }) as any as S.Schema<AccountStatusStatistics>;
 
 export interface AccountStatusItemLevelIssue {
   /** The error code of the issue. */
@@ -2247,25 +1833,20 @@ export interface AccountStatusItemLevelIssue {
   attributeName?: string;
 }
 export const AccountStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    numItems: S.optional(S.String),
-    resolution: S.optional(S.String),
-    description: S.optional(S.String),
-    documentation: S.optional(S.String),
-    detail: S.optional(S.String),
-    servability: S.optional(S.String),
-    attributeName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountStatusItemLevelIssue",
-}) as any as S.Schema<AccountStatusItemLevelIssue>;
+S.Struct({
+  "code": S.optional(S.String),
+  "numItems": S.optional(S.String),
+  "resolution": S.optional(S.String),
+  "description": S.optional(S.String),
+  "documentation": S.optional(S.String),
+  "detail": S.optional(S.String),
+  "servability": S.optional(S.String),
+  "attributeName": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountStatusItemLevelIssue" }) as any as S.Schema<AccountStatusItemLevelIssue>;
 
-export type AccountStatusItemLevelIssueList =
-  ReadonlyArray<AccountStatusItemLevelIssue>;
-export const AccountStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
-  AccountStatusItemLevelIssue,
-) as any as S.Schema<AccountStatusItemLevelIssueList>;
+export type AccountStatusItemLevelIssueList = ReadonlyArray<AccountStatusItemLevelIssue>;
+export const AccountStatusItemLevelIssueList = /*@__PURE__*/ S.Array(AccountStatusItemLevelIssue) as any as S.Schema<AccountStatusItemLevelIssueList>;
 
 export interface AccountStatusProducts {
   /** The country the data applies to. */
@@ -2280,21 +1861,17 @@ export interface AccountStatusProducts {
   destination?: string;
 }
 export const AccountStatusProducts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    country: S.optional(S.String),
-    statistics: S.optional(AccountStatusStatistics),
-    channel: S.optional(S.String),
-    itemLevelIssues: S.optional(AccountStatusItemLevelIssueList),
-    destination: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountStatusProducts",
-}) as any as S.Schema<AccountStatusProducts>;
+S.Struct({
+  "country": S.optional(S.String),
+  "statistics": S.optional(AccountStatusStatistics),
+  "channel": S.optional(S.String),
+  "itemLevelIssues": S.optional(AccountStatusItemLevelIssueList),
+  "destination": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountStatusProducts" }) as any as S.Schema<AccountStatusProducts>;
 
 export type AccountStatusProductsList = ReadonlyArray<AccountStatusProducts>;
-export const AccountStatusProductsList = /*@__PURE__*/ S.Array(
-  AccountStatusProducts,
-) as any as S.Schema<AccountStatusProductsList>;
+export const AccountStatusProductsList = /*@__PURE__*/ S.Array(AccountStatusProducts) as any as S.Schema<AccountStatusProductsList>;
 
 /** The status of an account, that is, information about its products, which is computed offline and not returned immediately at insertion time. */
 export interface AccountStatus {
@@ -2312,14 +1889,14 @@ export interface AccountStatus {
   accountManagement?: string;
 }
 export const AccountStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    websiteClaimed: S.optional(S.Boolean),
-    accountLevelIssues: S.optional(AccountStatusAccountLevelIssueList),
-    kind: S.optional(S.String),
-    accountId: S.optional(S.String),
-    products: S.optional(AccountStatusProductsList),
-    accountManagement: S.optional(S.String),
-  }),
+S.Struct({
+  "websiteClaimed": S.optional(S.Boolean),
+  "accountLevelIssues": S.optional(AccountStatusAccountLevelIssueList),
+  "kind": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "products": S.optional(AccountStatusProductsList),
+  "accountManagement": S.optional(S.String),
+}),
 ).annotate({ identifier: "AccountStatus" }) as any as S.Schema<AccountStatus>;
 
 /** A batch entry encoding a single non-batch accountstatuses response. */
@@ -2331,23 +1908,16 @@ export interface AccountstatusesCustomBatchResponseEntry {
   /** The requested account status. Defined if and only if the request was successful. */
   accountStatus?: AccountStatus;
 }
-export const AccountstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchId: S.optional(S.Number),
-      errors: S.optional(Errors),
-      accountStatus: S.optional(AccountStatus),
-    }),
-).annotate({
-  identifier: "AccountstatusesCustomBatchResponseEntry",
-}) as any as S.Schema<AccountstatusesCustomBatchResponseEntry>;
+export const AccountstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+  "accountStatus": S.optional(AccountStatus),
+}),
+).annotate({ identifier: "AccountstatusesCustomBatchResponseEntry" }) as any as S.Schema<AccountstatusesCustomBatchResponseEntry>;
 
-export type AccountstatusesCustomBatchResponseEntryList =
-  ReadonlyArray<AccountstatusesCustomBatchResponseEntry>;
-export const AccountstatusesCustomBatchResponseEntryList =
-  /*@__PURE__*/ S.Array(
-    AccountstatusesCustomBatchResponseEntry,
-  ) as any as S.Schema<AccountstatusesCustomBatchResponseEntryList>;
+export type AccountstatusesCustomBatchResponseEntryList = ReadonlyArray<AccountstatusesCustomBatchResponseEntry>;
+export const AccountstatusesCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(AccountstatusesCustomBatchResponseEntry) as any as S.Schema<AccountstatusesCustomBatchResponseEntryList>;
 
 export interface AccountstatusesCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountstatusesCustomBatchResponse`". */
@@ -2356,13 +1926,11 @@ export interface AccountstatusesCustomBatchResponse {
   entries?: AccountstatusesCustomBatchResponseEntryList;
 }
 export const AccountstatusesCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    entries: S.optional(AccountstatusesCustomBatchResponseEntryList),
-  }),
-).annotate({
-  identifier: "AccountstatusesCustomBatchResponse",
-}) as any as S.Schema<AccountstatusesCustomBatchResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "entries": S.optional(AccountstatusesCustomBatchResponseEntryList),
+}),
+).annotate({ identifier: "AccountstatusesCustomBatchResponse" }) as any as S.Schema<AccountstatusesCustomBatchResponse>;
 
 /** Tax calculation rule to apply in a state or province (US only). */
 export interface AccountTaxTaxRule {
@@ -2378,21 +1946,17 @@ export interface AccountTaxTaxRule {
   shippingTaxed?: boolean;
 }
 export const AccountTaxTaxRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationId: S.optional(S.String),
-    useGlobalRate: S.optional(S.Boolean),
-    ratePercent: S.optional(S.String),
-    country: S.optional(S.String),
-    shippingTaxed: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccountTaxTaxRule",
-}) as any as S.Schema<AccountTaxTaxRule>;
+S.Struct({
+  "locationId": S.optional(S.String),
+  "useGlobalRate": S.optional(S.Boolean),
+  "ratePercent": S.optional(S.String),
+  "country": S.optional(S.String),
+  "shippingTaxed": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AccountTaxTaxRule" }) as any as S.Schema<AccountTaxTaxRule>;
 
 export type AccountTaxTaxRuleList = ReadonlyArray<AccountTaxTaxRule>;
-export const AccountTaxTaxRuleList = /*@__PURE__*/ S.Array(
-  AccountTaxTaxRule,
-) as any as S.Schema<AccountTaxTaxRuleList>;
+export const AccountTaxTaxRuleList = /*@__PURE__*/ S.Array(AccountTaxTaxRule) as any as S.Schema<AccountTaxTaxRuleList>;
 
 /** The tax settings of a merchant account. All methods require the admin role. */
 export interface AccountTax {
@@ -2404,11 +1968,11 @@ export interface AccountTax {
   kind?: string;
 }
 export const AccountTax = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(AccountTaxTaxRuleList),
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "rules": S.optional(AccountTaxTaxRuleList),
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "AccountTax" }) as any as S.Schema<AccountTax>;
 
 /** A batch entry encoding a single non-batch accounttax request. */
@@ -2425,52 +1989,37 @@ export interface AccounttaxCustomBatchRequestEntry {
   merchantId?: string;
 }
 export const AccounttaxCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.String),
-    accountId: S.optional(S.String),
-    accountTax: S.optional(AccountTax),
-    batchId: S.optional(S.Number),
-    merchantId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccounttaxCustomBatchRequestEntry",
-}) as any as S.Schema<AccounttaxCustomBatchRequestEntry>;
+S.Struct({
+  "method": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "accountTax": S.optional(AccountTax),
+  "batchId": S.optional(S.Number),
+  "merchantId": S.optional(S.String),
+}),
+).annotate({ identifier: "AccounttaxCustomBatchRequestEntry" }) as any as S.Schema<AccounttaxCustomBatchRequestEntry>;
 
-export type AccounttaxCustomBatchRequestEntryList =
-  ReadonlyArray<AccounttaxCustomBatchRequestEntry>;
-export const AccounttaxCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
-  AccounttaxCustomBatchRequestEntry,
-) as any as S.Schema<AccounttaxCustomBatchRequestEntryList>;
+export type AccounttaxCustomBatchRequestEntryList = ReadonlyArray<AccounttaxCustomBatchRequestEntry>;
+export const AccounttaxCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(AccounttaxCustomBatchRequestEntry) as any as S.Schema<AccounttaxCustomBatchRequestEntryList>;
 
 export interface AccounttaxCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: AccounttaxCustomBatchRequestEntryList;
 }
 export const AccounttaxCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(AccounttaxCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "AccounttaxCustomBatchRequest",
-}) as any as S.Schema<AccounttaxCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(AccounttaxCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "AccounttaxCustomBatchRequest" }) as any as S.Schema<AccounttaxCustomBatchRequest>;
 
 export interface CustombatchAccounttaxRequest {
   /** Request body */
   body?: AccounttaxCustomBatchRequest;
 }
 export const CustombatchAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(AccounttaxCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounttax/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchAccounttaxRequest",
-}) as any as S.Schema<CustombatchAccounttaxRequest>;
+S.Struct({
+  "body": S.optional(AccounttaxCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounttax/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchAccounttaxRequest" }) as any as S.Schema<CustombatchAccounttaxRequest>;
 
 /** A batch entry encoding a single non-batch accounttax response. */
 export interface AccounttaxCustomBatchResponseEntry {
@@ -2484,21 +2033,16 @@ export interface AccounttaxCustomBatchResponseEntry {
   accountTax?: AccountTax;
 }
 export const AccounttaxCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchId: S.optional(S.Number),
-    errors: S.optional(Errors),
-    kind: S.optional(S.String),
-    accountTax: S.optional(AccountTax),
-  }),
-).annotate({
-  identifier: "AccounttaxCustomBatchResponseEntry",
-}) as any as S.Schema<AccounttaxCustomBatchResponseEntry>;
+S.Struct({
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+  "kind": S.optional(S.String),
+  "accountTax": S.optional(AccountTax),
+}),
+).annotate({ identifier: "AccounttaxCustomBatchResponseEntry" }) as any as S.Schema<AccounttaxCustomBatchResponseEntry>;
 
-export type AccounttaxCustomBatchResponseEntryList =
-  ReadonlyArray<AccounttaxCustomBatchResponseEntry>;
-export const AccounttaxCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
-  AccounttaxCustomBatchResponseEntry,
-) as any as S.Schema<AccounttaxCustomBatchResponseEntryList>;
+export type AccounttaxCustomBatchResponseEntryList = ReadonlyArray<AccounttaxCustomBatchResponseEntry>;
+export const AccounttaxCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(AccounttaxCustomBatchResponseEntry) as any as S.Schema<AccounttaxCustomBatchResponseEntryList>;
 
 export interface AccounttaxCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -2507,13 +2051,11 @@ export interface AccounttaxCustomBatchResponse {
   kind?: string;
 }
 export const AccounttaxCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(AccounttaxCustomBatchResponseEntryList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccounttaxCustomBatchResponse",
-}) as any as S.Schema<AccounttaxCustomBatchResponse>;
+S.Struct({
+  "entries": S.optional(AccounttaxCustomBatchResponseEntryList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AccounttaxCustomBatchResponse" }) as any as S.Schema<AccounttaxCustomBatchResponse>;
 
 /** The required fields vary based on the frequency of fetching. For a monthly fetch schedule, day_of_month and hour are required. For a weekly fetch schedule, weekday and hour are required. For a daily fetch schedule, only hour is required. */
 export interface DatafeedFetchSchedule {
@@ -2537,20 +2079,18 @@ export interface DatafeedFetchSchedule {
   weekday?: string;
 }
 export const DatafeedFetchSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dayOfMonth: S.optional(S.Number),
-    timeZone: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    fetchUrl: S.optional(S.String),
-    username: S.optional(S.String),
-    hour: S.optional(S.Number),
-    minuteOfHour: S.optional(S.Number),
-    password: S.optional(S.String),
-    weekday: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatafeedFetchSchedule",
-}) as any as S.Schema<DatafeedFetchSchedule>;
+S.Struct({
+  "dayOfMonth": S.optional(S.Number),
+  "timeZone": S.optional(S.String),
+  "paused": S.optional(S.Boolean),
+  "fetchUrl": S.optional(S.String),
+  "username": S.optional(S.String),
+  "hour": S.optional(S.Number),
+  "minuteOfHour": S.optional(S.Number),
+  "password": S.optional(S.String),
+  "weekday": S.optional(S.String),
+}),
+).annotate({ identifier: "DatafeedFetchSchedule" }) as any as S.Schema<DatafeedFetchSchedule>;
 
 export interface DatafeedTarget {
   /** The two-letter ISO 639-1 language of the items in the feed. Must be a valid language for `targets[].country`. */
@@ -2567,20 +2107,18 @@ export interface DatafeedTarget {
   excludedDestinations?: StringList;
 }
 export const DatafeedTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    language: S.optional(S.String),
-    includedDestinations: S.optional(StringList),
-    country: S.optional(S.String),
-    targetCountries: S.optional(StringList),
-    feedLabel: S.optional(S.String),
-    excludedDestinations: S.optional(StringList),
-  }),
+S.Struct({
+  "language": S.optional(S.String),
+  "includedDestinations": S.optional(StringList),
+  "country": S.optional(S.String),
+  "targetCountries": S.optional(StringList),
+  "feedLabel": S.optional(S.String),
+  "excludedDestinations": S.optional(StringList),
+}),
 ).annotate({ identifier: "DatafeedTarget" }) as any as S.Schema<DatafeedTarget>;
 
 export type DatafeedTargetList = ReadonlyArray<DatafeedTarget>;
-export const DatafeedTargetList = /*@__PURE__*/ S.Array(
-  DatafeedTarget,
-) as any as S.Schema<DatafeedTargetList>;
+export const DatafeedTargetList = /*@__PURE__*/ S.Array(DatafeedTarget) as any as S.Schema<DatafeedTargetList>;
 
 export interface DatafeedFormat {
   /** Character encoding scheme of the data feed. If not specified, the encoding will be auto-detected. Acceptable values are: - "`latin-1`" - "`utf-16be`" - "`utf-16le`" - "`utf-8`" - "`windows-1252`" */
@@ -2591,11 +2129,11 @@ export interface DatafeedFormat {
   quotingMode?: string;
 }
 export const DatafeedFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileEncoding: S.optional(S.String),
-    columnDelimiter: S.optional(S.String),
-    quotingMode: S.optional(S.String),
-  }),
+S.Struct({
+  "fileEncoding": S.optional(S.String),
+  "columnDelimiter": S.optional(S.String),
+  "quotingMode": S.optional(S.String),
+}),
 ).annotate({ identifier: "DatafeedFormat" }) as any as S.Schema<DatafeedFormat>;
 
 /** Datafeed configuration data. */
@@ -2620,17 +2158,17 @@ export interface Datafeed {
   contentType?: string;
 }
 export const Datafeed = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fetchSchedule: S.optional(DatafeedFetchSchedule),
-    targets: S.optional(DatafeedTargetList),
-    attributeLanguage: S.optional(S.String),
-    format: S.optional(DatafeedFormat),
-    fileName: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    contentType: S.optional(S.String),
-  }),
+S.Struct({
+  "fetchSchedule": S.optional(DatafeedFetchSchedule),
+  "targets": S.optional(DatafeedTargetList),
+  "attributeLanguage": S.optional(S.String),
+  "format": S.optional(DatafeedFormat),
+  "fileName": S.optional(S.String),
+  "id": S.optional(S.String),
+  "name": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "contentType": S.optional(S.String),
+}),
 ).annotate({ identifier: "Datafeed" }) as any as S.Schema<Datafeed>;
 
 /** A batch entry encoding a single non-batch datafeeds request. */
@@ -2647,52 +2185,37 @@ export interface DatafeedsCustomBatchRequestEntry {
   method?: string;
 }
 export const DatafeedsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchId: S.optional(S.Number),
-    merchantId: S.optional(S.String),
-    datafeedId: S.optional(S.String),
-    datafeed: S.optional(Datafeed),
-    method: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatafeedsCustomBatchRequestEntry",
-}) as any as S.Schema<DatafeedsCustomBatchRequestEntry>;
+S.Struct({
+  "batchId": S.optional(S.Number),
+  "merchantId": S.optional(S.String),
+  "datafeedId": S.optional(S.String),
+  "datafeed": S.optional(Datafeed),
+  "method": S.optional(S.String),
+}),
+).annotate({ identifier: "DatafeedsCustomBatchRequestEntry" }) as any as S.Schema<DatafeedsCustomBatchRequestEntry>;
 
-export type DatafeedsCustomBatchRequestEntryList =
-  ReadonlyArray<DatafeedsCustomBatchRequestEntry>;
-export const DatafeedsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
-  DatafeedsCustomBatchRequestEntry,
-) as any as S.Schema<DatafeedsCustomBatchRequestEntryList>;
+export type DatafeedsCustomBatchRequestEntryList = ReadonlyArray<DatafeedsCustomBatchRequestEntry>;
+export const DatafeedsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(DatafeedsCustomBatchRequestEntry) as any as S.Schema<DatafeedsCustomBatchRequestEntryList>;
 
 export interface DatafeedsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: DatafeedsCustomBatchRequestEntryList;
 }
 export const DatafeedsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(DatafeedsCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "DatafeedsCustomBatchRequest",
-}) as any as S.Schema<DatafeedsCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(DatafeedsCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "DatafeedsCustomBatchRequest" }) as any as S.Schema<DatafeedsCustomBatchRequest>;
 
 export interface CustombatchDatafeedsRequest {
   /** Request body */
   body?: DatafeedsCustomBatchRequest;
 }
 export const CustombatchDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DatafeedsCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "datafeeds/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchDatafeedsRequest",
-}) as any as S.Schema<CustombatchDatafeedsRequest>;
+S.Struct({
+  "body": S.optional(DatafeedsCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"datafeeds/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchDatafeedsRequest" }) as any as S.Schema<CustombatchDatafeedsRequest>;
 
 /** A batch entry encoding a single non-batch datafeeds response. */
 export interface DatafeedsCustomBatchResponseEntry {
@@ -2704,20 +2227,15 @@ export interface DatafeedsCustomBatchResponseEntry {
   datafeed?: Datafeed;
 }
 export const DatafeedsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchId: S.optional(S.Number),
-    errors: S.optional(Errors),
-    datafeed: S.optional(Datafeed),
-  }),
-).annotate({
-  identifier: "DatafeedsCustomBatchResponseEntry",
-}) as any as S.Schema<DatafeedsCustomBatchResponseEntry>;
+S.Struct({
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+  "datafeed": S.optional(Datafeed),
+}),
+).annotate({ identifier: "DatafeedsCustomBatchResponseEntry" }) as any as S.Schema<DatafeedsCustomBatchResponseEntry>;
 
-export type DatafeedsCustomBatchResponseEntryList =
-  ReadonlyArray<DatafeedsCustomBatchResponseEntry>;
-export const DatafeedsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
-  DatafeedsCustomBatchResponseEntry,
-) as any as S.Schema<DatafeedsCustomBatchResponseEntryList>;
+export type DatafeedsCustomBatchResponseEntryList = ReadonlyArray<DatafeedsCustomBatchResponseEntry>;
+export const DatafeedsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(DatafeedsCustomBatchResponseEntry) as any as S.Schema<DatafeedsCustomBatchResponseEntryList>;
 
 export interface DatafeedsCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsCustomBatchResponse`". */
@@ -2726,13 +2244,11 @@ export interface DatafeedsCustomBatchResponse {
   entries?: DatafeedsCustomBatchResponseEntryList;
 }
 export const DatafeedsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    entries: S.optional(DatafeedsCustomBatchResponseEntryList),
-  }),
-).annotate({
-  identifier: "DatafeedsCustomBatchResponse",
-}) as any as S.Schema<DatafeedsCustomBatchResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "entries": S.optional(DatafeedsCustomBatchResponseEntryList),
+}),
+).annotate({ identifier: "DatafeedsCustomBatchResponse" }) as any as S.Schema<DatafeedsCustomBatchResponse>;
 
 /** A batch entry encoding a single non-batch datafeedstatuses request. */
 export interface DatafeedstatusesCustomBatchRequestEntry {
@@ -2751,57 +2267,40 @@ export interface DatafeedstatusesCustomBatchRequestEntry {
   /** The ID of the managing account. */
   merchantId?: string;
 }
-export const DatafeedstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      country: S.optional(S.String),
-      method: S.optional(S.String),
-      language: S.optional(S.String),
-      datafeedId: S.optional(S.String),
-      batchId: S.optional(S.Number),
-      feedLabel: S.optional(S.String),
-      merchantId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "DatafeedstatusesCustomBatchRequestEntry",
-}) as any as S.Schema<DatafeedstatusesCustomBatchRequestEntry>;
+export const DatafeedstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "country": S.optional(S.String),
+  "method": S.optional(S.String),
+  "language": S.optional(S.String),
+  "datafeedId": S.optional(S.String),
+  "batchId": S.optional(S.Number),
+  "feedLabel": S.optional(S.String),
+  "merchantId": S.optional(S.String),
+}),
+).annotate({ identifier: "DatafeedstatusesCustomBatchRequestEntry" }) as any as S.Schema<DatafeedstatusesCustomBatchRequestEntry>;
 
-export type DatafeedstatusesCustomBatchRequestEntryList =
-  ReadonlyArray<DatafeedstatusesCustomBatchRequestEntry>;
-export const DatafeedstatusesCustomBatchRequestEntryList =
-  /*@__PURE__*/ S.Array(
-    DatafeedstatusesCustomBatchRequestEntry,
-  ) as any as S.Schema<DatafeedstatusesCustomBatchRequestEntryList>;
+export type DatafeedstatusesCustomBatchRequestEntryList = ReadonlyArray<DatafeedstatusesCustomBatchRequestEntry>;
+export const DatafeedstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(DatafeedstatusesCustomBatchRequestEntry) as any as S.Schema<DatafeedstatusesCustomBatchRequestEntryList>;
 
 export interface DatafeedstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: DatafeedstatusesCustomBatchRequestEntryList;
 }
 export const DatafeedstatusesCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(DatafeedstatusesCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "DatafeedstatusesCustomBatchRequest",
-}) as any as S.Schema<DatafeedstatusesCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(DatafeedstatusesCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "DatafeedstatusesCustomBatchRequest" }) as any as S.Schema<DatafeedstatusesCustomBatchRequest>;
 
 export interface CustombatchDatafeedstatusesRequest {
   /** Request body */
   body?: DatafeedstatusesCustomBatchRequest;
 }
 export const CustombatchDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DatafeedstatusesCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "datafeedstatuses/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchDatafeedstatusesRequest",
-}) as any as S.Schema<CustombatchDatafeedstatusesRequest>;
+S.Struct({
+  "body": S.optional(DatafeedstatusesCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"datafeedstatuses/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchDatafeedstatusesRequest" }) as any as S.Schema<CustombatchDatafeedstatusesRequest>;
 
 /** An example occurrence for a particular error. */
 export interface DatafeedStatusExample {
@@ -2813,19 +2312,15 @@ export interface DatafeedStatusExample {
   lineNumber?: string;
 }
 export const DatafeedStatusExample = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemId: S.optional(S.String),
-    value: S.optional(S.String),
-    lineNumber: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatafeedStatusExample",
-}) as any as S.Schema<DatafeedStatusExample>;
+S.Struct({
+  "itemId": S.optional(S.String),
+  "value": S.optional(S.String),
+  "lineNumber": S.optional(S.String),
+}),
+).annotate({ identifier: "DatafeedStatusExample" }) as any as S.Schema<DatafeedStatusExample>;
 
 export type DatafeedStatusExampleList = ReadonlyArray<DatafeedStatusExample>;
-export const DatafeedStatusExampleList = /*@__PURE__*/ S.Array(
-  DatafeedStatusExample,
-) as any as S.Schema<DatafeedStatusExampleList>;
+export const DatafeedStatusExampleList = /*@__PURE__*/ S.Array(DatafeedStatusExample) as any as S.Schema<DatafeedStatusExampleList>;
 
 /** An error occurring in the feed, like "invalid price". */
 export interface DatafeedStatusError {
@@ -2839,20 +2334,16 @@ export interface DatafeedStatusError {
   message?: string;
 }
 export const DatafeedStatusError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    examples: S.optional(DatafeedStatusExampleList),
-    count: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatafeedStatusError",
-}) as any as S.Schema<DatafeedStatusError>;
+S.Struct({
+  "examples": S.optional(DatafeedStatusExampleList),
+  "count": S.optional(S.String),
+  "code": S.optional(S.String),
+  "message": S.optional(S.String),
+}),
+).annotate({ identifier: "DatafeedStatusError" }) as any as S.Schema<DatafeedStatusError>;
 
 export type DatafeedStatusErrorList = ReadonlyArray<DatafeedStatusError>;
-export const DatafeedStatusErrorList = /*@__PURE__*/ S.Array(
-  DatafeedStatusError,
-) as any as S.Schema<DatafeedStatusErrorList>;
+export const DatafeedStatusErrorList = /*@__PURE__*/ S.Array(DatafeedStatusError) as any as S.Schema<DatafeedStatusErrorList>;
 
 /** The status of a datafeed, that is, the result of the last retrieval of the datafeed computed asynchronously when the feed processing is finished. */
 export interface DatafeedStatus {
@@ -2880,19 +2371,19 @@ export interface DatafeedStatus {
   feedLabel?: string;
 }
 export const DatafeedStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    warnings: S.optional(DatafeedStatusErrorList),
-    kind: S.optional(S.String),
-    errors: S.optional(DatafeedStatusErrorList),
-    itemsTotal: S.optional(S.String),
-    itemsValid: S.optional(S.String),
-    country: S.optional(S.String),
-    processingStatus: S.optional(S.String),
-    language: S.optional(S.String),
-    datafeedId: S.optional(S.String),
-    lastUploadDate: S.optional(S.String),
-    feedLabel: S.optional(S.String),
-  }),
+S.Struct({
+  "warnings": S.optional(DatafeedStatusErrorList),
+  "kind": S.optional(S.String),
+  "errors": S.optional(DatafeedStatusErrorList),
+  "itemsTotal": S.optional(S.String),
+  "itemsValid": S.optional(S.String),
+  "country": S.optional(S.String),
+  "processingStatus": S.optional(S.String),
+  "language": S.optional(S.String),
+  "datafeedId": S.optional(S.String),
+  "lastUploadDate": S.optional(S.String),
+  "feedLabel": S.optional(S.String),
+}),
 ).annotate({ identifier: "DatafeedStatus" }) as any as S.Schema<DatafeedStatus>;
 
 /** A batch entry encoding a single non-batch datafeedstatuses response. */
@@ -2904,23 +2395,16 @@ export interface DatafeedstatusesCustomBatchResponseEntry {
   /** A list of errors for failed custombatch entries. *Note:* Schema errors fail the whole request. */
   errors?: Errors;
 }
-export const DatafeedstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      datafeedStatus: S.optional(DatafeedStatus),
-      batchId: S.optional(S.Number),
-      errors: S.optional(Errors),
-    }),
-).annotate({
-  identifier: "DatafeedstatusesCustomBatchResponseEntry",
-}) as any as S.Schema<DatafeedstatusesCustomBatchResponseEntry>;
+export const DatafeedstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "datafeedStatus": S.optional(DatafeedStatus),
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+}),
+).annotate({ identifier: "DatafeedstatusesCustomBatchResponseEntry" }) as any as S.Schema<DatafeedstatusesCustomBatchResponseEntry>;
 
-export type DatafeedstatusesCustomBatchResponseEntryList =
-  ReadonlyArray<DatafeedstatusesCustomBatchResponseEntry>;
-export const DatafeedstatusesCustomBatchResponseEntryList =
-  /*@__PURE__*/ S.Array(
-    DatafeedstatusesCustomBatchResponseEntry,
-  ) as any as S.Schema<DatafeedstatusesCustomBatchResponseEntryList>;
+export type DatafeedstatusesCustomBatchResponseEntryList = ReadonlyArray<DatafeedstatusesCustomBatchResponseEntry>;
+export const DatafeedstatusesCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(DatafeedstatusesCustomBatchResponseEntry) as any as S.Schema<DatafeedstatusesCustomBatchResponseEntryList>;
 
 export interface DatafeedstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -2929,13 +2413,11 @@ export interface DatafeedstatusesCustomBatchResponse {
   kind?: string;
 }
 export const DatafeedstatusesCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(DatafeedstatusesCustomBatchResponseEntryList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatafeedstatusesCustomBatchResponse",
-}) as any as S.Schema<DatafeedstatusesCustomBatchResponse>;
+S.Struct({
+  "entries": S.optional(DatafeedstatusesCustomBatchResponseEntryList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "DatafeedstatusesCustomBatchResponse" }) as any as S.Schema<DatafeedstatusesCustomBatchResponse>;
 
 /** Omnichannel experience details. */
 export interface LiaOmnichannelExperience {
@@ -2947,14 +2429,12 @@ export interface LiaOmnichannelExperience {
   pickupTypes?: StringList;
 }
 export const LiaOmnichannelExperience = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lsfType: S.optional(S.String),
-    country: S.optional(S.String),
-    pickupTypes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "LiaOmnichannelExperience",
-}) as any as S.Schema<LiaOmnichannelExperience>;
+S.Struct({
+  "lsfType": S.optional(S.String),
+  "country": S.optional(S.String),
+  "pickupTypes": S.optional(StringList),
+}),
+).annotate({ identifier: "LiaOmnichannelExperience" }) as any as S.Schema<LiaOmnichannelExperience>;
 
 export interface LiaInventorySettings {
   /** The status of the verification contact. Acceptable values are: - "`active`" - "`inactive`" - "`pending`" */
@@ -2967,15 +2447,13 @@ export interface LiaInventorySettings {
   inventoryVerificationContactEmail?: string;
 }
 export const LiaInventorySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inventoryVerificationContactStatus: S.optional(S.String),
-    inventoryVerificationContactName: S.optional(S.String),
-    status: S.optional(S.String),
-    inventoryVerificationContactEmail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiaInventorySettings",
-}) as any as S.Schema<LiaInventorySettings>;
+S.Struct({
+  "inventoryVerificationContactStatus": S.optional(S.String),
+  "inventoryVerificationContactName": S.optional(S.String),
+  "status": S.optional(S.String),
+  "inventoryVerificationContactEmail": S.optional(S.String),
+}),
+).annotate({ identifier: "LiaInventorySettings" }) as any as S.Schema<LiaInventorySettings>;
 
 export interface LiaOnDisplayToOrderSettings {
   /** The status of the ?On display to order? feature. Acceptable values are: - "`active`" - "`inactive`" - "`pending`" */
@@ -2984,13 +2462,11 @@ export interface LiaOnDisplayToOrderSettings {
   shippingCostPolicyUrl?: string;
 }
 export const LiaOnDisplayToOrderSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    shippingCostPolicyUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiaOnDisplayToOrderSettings",
-}) as any as S.Schema<LiaOnDisplayToOrderSettings>;
+S.Struct({
+  "status": S.optional(S.String),
+  "shippingCostPolicyUrl": S.optional(S.String),
+}),
+).annotate({ identifier: "LiaOnDisplayToOrderSettings" }) as any as S.Schema<LiaOnDisplayToOrderSettings>;
 
 export interface LiaAboutPageSettings {
   /** The status of the verification process for the About page. Supported values are: - "`active`" - "`inactive`" - "`pending`" */
@@ -2999,13 +2475,11 @@ export interface LiaAboutPageSettings {
   url?: string;
 }
 export const LiaAboutPageSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiaAboutPageSettings",
-}) as any as S.Schema<LiaAboutPageSettings>;
+S.Struct({
+  "status": S.optional(S.String),
+  "url": S.optional(S.String),
+}),
+).annotate({ identifier: "LiaAboutPageSettings" }) as any as S.Schema<LiaAboutPageSettings>;
 
 export interface LiaPosDataProvider {
   /** The account ID by which this merchant is known to the POS data provider. */
@@ -3014,13 +2488,11 @@ export interface LiaPosDataProvider {
   posDataProviderId?: string;
 }
 export const LiaPosDataProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    posExternalAccountId: S.optional(S.String),
-    posDataProviderId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiaPosDataProvider",
-}) as any as S.Schema<LiaPosDataProvider>;
+S.Struct({
+  "posExternalAccountId": S.optional(S.String),
+  "posDataProviderId": S.optional(S.String),
+}),
+).annotate({ identifier: "LiaPosDataProvider" }) as any as S.Schema<LiaPosDataProvider>;
 
 export interface LiaCountrySettings {
   /** Required. CLDR country code (for example, "US"). */
@@ -3041,24 +2513,20 @@ export interface LiaCountrySettings {
   posDataProvider?: LiaPosDataProvider;
 }
 export const LiaCountrySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    country: S.optional(S.String),
-    inventory: S.optional(LiaInventorySettings),
-    onDisplayToOrder: S.optional(LiaOnDisplayToOrderSettings),
-    about: S.optional(LiaAboutPageSettings),
-    omnichannelExperience: S.optional(LiaOmnichannelExperience),
-    hostedLocalStorefrontActive: S.optional(S.Boolean),
-    storePickupActive: S.optional(S.Boolean),
-    posDataProvider: S.optional(LiaPosDataProvider),
-  }),
-).annotate({
-  identifier: "LiaCountrySettings",
-}) as any as S.Schema<LiaCountrySettings>;
+S.Struct({
+  "country": S.optional(S.String),
+  "inventory": S.optional(LiaInventorySettings),
+  "onDisplayToOrder": S.optional(LiaOnDisplayToOrderSettings),
+  "about": S.optional(LiaAboutPageSettings),
+  "omnichannelExperience": S.optional(LiaOmnichannelExperience),
+  "hostedLocalStorefrontActive": S.optional(S.Boolean),
+  "storePickupActive": S.optional(S.Boolean),
+  "posDataProvider": S.optional(LiaPosDataProvider),
+}),
+).annotate({ identifier: "LiaCountrySettings" }) as any as S.Schema<LiaCountrySettings>;
 
 export type LiaCountrySettingsList = ReadonlyArray<LiaCountrySettings>;
-export const LiaCountrySettingsList = /*@__PURE__*/ S.Array(
-  LiaCountrySettings,
-) as any as S.Schema<LiaCountrySettingsList>;
+export const LiaCountrySettingsList = /*@__PURE__*/ S.Array(LiaCountrySettings) as any as S.Schema<LiaCountrySettingsList>;
 
 /** Local Inventory ads (LIA) settings. All methods except listposdataproviders require the admin role. */
 export interface LiaSettings {
@@ -3070,11 +2538,11 @@ export interface LiaSettings {
   kind?: string;
 }
 export const LiaSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countrySettings: S.optional(LiaCountrySettingsList),
-    accountId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "countrySettings": S.optional(LiaCountrySettingsList),
+  "accountId": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "LiaSettings" }) as any as S.Schema<LiaSettings>;
 
 export interface LiasettingsCustomBatchRequestEntry {
@@ -3104,59 +2572,44 @@ export interface LiasettingsCustomBatchRequestEntry {
   liaSettings?: LiaSettings;
 }
 export const LiasettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contactEmail: S.optional(S.String),
-    merchantId: S.optional(S.String),
-    method: S.optional(S.String),
-    accountId: S.optional(S.String),
-    contactName: S.optional(S.String),
-    batchId: S.optional(S.Number),
-    gmbEmail: S.optional(S.String),
-    posExternalAccountId: S.optional(S.String),
-    country: S.optional(S.String),
-    posDataProviderId: S.optional(S.String),
-    omnichannelExperience: S.optional(LiaOmnichannelExperience),
-    liaSettings: S.optional(LiaSettings),
-  }),
-).annotate({
-  identifier: "LiasettingsCustomBatchRequestEntry",
-}) as any as S.Schema<LiasettingsCustomBatchRequestEntry>;
+S.Struct({
+  "contactEmail": S.optional(S.String),
+  "merchantId": S.optional(S.String),
+  "method": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "contactName": S.optional(S.String),
+  "batchId": S.optional(S.Number),
+  "gmbEmail": S.optional(S.String),
+  "posExternalAccountId": S.optional(S.String),
+  "country": S.optional(S.String),
+  "posDataProviderId": S.optional(S.String),
+  "omnichannelExperience": S.optional(LiaOmnichannelExperience),
+  "liaSettings": S.optional(LiaSettings),
+}),
+).annotate({ identifier: "LiasettingsCustomBatchRequestEntry" }) as any as S.Schema<LiasettingsCustomBatchRequestEntry>;
 
-export type LiasettingsCustomBatchRequestEntryList =
-  ReadonlyArray<LiasettingsCustomBatchRequestEntry>;
-export const LiasettingsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
-  LiasettingsCustomBatchRequestEntry,
-) as any as S.Schema<LiasettingsCustomBatchRequestEntryList>;
+export type LiasettingsCustomBatchRequestEntryList = ReadonlyArray<LiasettingsCustomBatchRequestEntry>;
+export const LiasettingsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(LiasettingsCustomBatchRequestEntry) as any as S.Schema<LiasettingsCustomBatchRequestEntryList>;
 
 export interface LiasettingsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: LiasettingsCustomBatchRequestEntryList;
 }
 export const LiasettingsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(LiasettingsCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "LiasettingsCustomBatchRequest",
-}) as any as S.Schema<LiasettingsCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(LiasettingsCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "LiasettingsCustomBatchRequest" }) as any as S.Schema<LiasettingsCustomBatchRequest>;
 
 export interface CustombatchLiasettingsRequest {
   /** Request body */
   body?: LiasettingsCustomBatchRequest;
 }
 export const CustombatchLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(LiasettingsCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "liasettings/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchLiasettingsRequest",
-}) as any as S.Schema<CustombatchLiasettingsRequest>;
+S.Struct({
+  "body": S.optional(LiasettingsCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"liasettings/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchLiasettingsRequest" }) as any as S.Schema<CustombatchLiasettingsRequest>;
 
 export interface GmbAccountsGmbAccount {
   /** The type of the Business Profile (User or Business). */
@@ -3169,20 +2622,16 @@ export interface GmbAccountsGmbAccount {
   name?: string;
 }
 export const GmbAccountsGmbAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    email: S.optional(S.String),
-    listingCount: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GmbAccountsGmbAccount",
-}) as any as S.Schema<GmbAccountsGmbAccount>;
+S.Struct({
+  "type": S.optional(S.String),
+  "email": S.optional(S.String),
+  "listingCount": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GmbAccountsGmbAccount" }) as any as S.Schema<GmbAccountsGmbAccount>;
 
 export type GmbAccountsGmbAccountList = ReadonlyArray<GmbAccountsGmbAccount>;
-export const GmbAccountsGmbAccountList = /*@__PURE__*/ S.Array(
-  GmbAccountsGmbAccount,
-) as any as S.Schema<GmbAccountsGmbAccountList>;
+export const GmbAccountsGmbAccountList = /*@__PURE__*/ S.Array(GmbAccountsGmbAccount) as any as S.Schema<GmbAccountsGmbAccountList>;
 
 export interface GmbAccounts {
   /** A list of Business Profiles which are available to the merchant. */
@@ -3191,10 +2640,10 @@ export interface GmbAccounts {
   accountId?: string;
 }
 export const GmbAccounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gmbAccounts: S.optional(GmbAccountsGmbAccountList),
-    accountId: S.optional(S.String),
-  }),
+S.Struct({
+  "gmbAccounts": S.optional(GmbAccountsGmbAccountList),
+  "accountId": S.optional(S.String),
+}),
 ).annotate({ identifier: "GmbAccounts" }) as any as S.Schema<GmbAccounts>;
 
 export interface PosDataProvidersPosDataProvider {
@@ -3206,20 +2655,15 @@ export interface PosDataProvidersPosDataProvider {
   providerId?: string;
 }
 export const PosDataProvidersPosDataProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fullName: S.optional(S.String),
-    displayName: S.optional(S.String),
-    providerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PosDataProvidersPosDataProvider",
-}) as any as S.Schema<PosDataProvidersPosDataProvider>;
+S.Struct({
+  "fullName": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "providerId": S.optional(S.String),
+}),
+).annotate({ identifier: "PosDataProvidersPosDataProvider" }) as any as S.Schema<PosDataProvidersPosDataProvider>;
 
-export type PosDataProvidersPosDataProviderList =
-  ReadonlyArray<PosDataProvidersPosDataProvider>;
-export const PosDataProvidersPosDataProviderList = /*@__PURE__*/ S.Array(
-  PosDataProvidersPosDataProvider,
-) as any as S.Schema<PosDataProvidersPosDataProviderList>;
+export type PosDataProvidersPosDataProviderList = ReadonlyArray<PosDataProvidersPosDataProvider>;
+export const PosDataProvidersPosDataProviderList = /*@__PURE__*/ S.Array(PosDataProvidersPosDataProvider) as any as S.Schema<PosDataProvidersPosDataProviderList>;
 
 export interface PosDataProviders {
   /** Country code. */
@@ -3228,18 +2672,14 @@ export interface PosDataProviders {
   posDataProviders?: PosDataProvidersPosDataProviderList;
 }
 export const PosDataProviders = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    country: S.optional(S.String),
-    posDataProviders: S.optional(PosDataProvidersPosDataProviderList),
-  }),
-).annotate({
-  identifier: "PosDataProviders",
-}) as any as S.Schema<PosDataProviders>;
+S.Struct({
+  "country": S.optional(S.String),
+  "posDataProviders": S.optional(PosDataProvidersPosDataProviderList),
+}),
+).annotate({ identifier: "PosDataProviders" }) as any as S.Schema<PosDataProviders>;
 
 export type PosDataProvidersList = ReadonlyArray<PosDataProviders>;
-export const PosDataProvidersList = /*@__PURE__*/ S.Array(
-  PosDataProviders,
-) as any as S.Schema<PosDataProvidersList>;
+export const PosDataProvidersList = /*@__PURE__*/ S.Array(PosDataProviders) as any as S.Schema<PosDataProvidersList>;
 
 export interface LiasettingsCustomBatchResponseEntry {
   /** The list of accessible Business Profiles. */
@@ -3258,24 +2698,19 @@ export interface LiasettingsCustomBatchResponseEntry {
   errors?: Errors;
 }
 export const LiasettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gmbAccounts: S.optional(GmbAccounts),
-    omnichannelExperience: S.optional(LiaOmnichannelExperience),
-    liaSettings: S.optional(LiaSettings),
-    posDataProviders: S.optional(PosDataProvidersList),
-    kind: S.optional(S.String),
-    batchId: S.optional(S.Number),
-    errors: S.optional(Errors),
-  }),
-).annotate({
-  identifier: "LiasettingsCustomBatchResponseEntry",
-}) as any as S.Schema<LiasettingsCustomBatchResponseEntry>;
+S.Struct({
+  "gmbAccounts": S.optional(GmbAccounts),
+  "omnichannelExperience": S.optional(LiaOmnichannelExperience),
+  "liaSettings": S.optional(LiaSettings),
+  "posDataProviders": S.optional(PosDataProvidersList),
+  "kind": S.optional(S.String),
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+}),
+).annotate({ identifier: "LiasettingsCustomBatchResponseEntry" }) as any as S.Schema<LiasettingsCustomBatchResponseEntry>;
 
-export type LiasettingsCustomBatchResponseEntryList =
-  ReadonlyArray<LiasettingsCustomBatchResponseEntry>;
-export const LiasettingsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
-  LiasettingsCustomBatchResponseEntry,
-) as any as S.Schema<LiasettingsCustomBatchResponseEntryList>;
+export type LiasettingsCustomBatchResponseEntryList = ReadonlyArray<LiasettingsCustomBatchResponseEntry>;
+export const LiasettingsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(LiasettingsCustomBatchResponseEntry) as any as S.Schema<LiasettingsCustomBatchResponseEntryList>;
 
 export interface LiasettingsCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsCustomBatchResponse`". */
@@ -3284,13 +2719,11 @@ export interface LiasettingsCustomBatchResponse {
   entries?: LiasettingsCustomBatchResponseEntryList;
 }
 export const LiasettingsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    entries: S.optional(LiasettingsCustomBatchResponseEntryList),
-  }),
-).annotate({
-  identifier: "LiasettingsCustomBatchResponse",
-}) as any as S.Schema<LiasettingsCustomBatchResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "entries": S.optional(LiasettingsCustomBatchResponseEntryList),
+}),
+).annotate({ identifier: "LiasettingsCustomBatchResponse" }) as any as S.Schema<LiasettingsCustomBatchResponse>;
 
 export interface Price {
   /** The price represented as a number. */
@@ -3299,10 +2732,10 @@ export interface Price {
   currency?: string;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    currency: S.optional(S.String),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+  "currency": S.optional(S.String),
+}),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 /** A message that represents custom attributes. Exactly one of `value` or `groupValues` must be provided. Maximum allowed number of characters for each custom attribute is 10240 (represents sum of characters for name and value). Maximum 2500 custom attributes can be set per merchant, with total size of 102.4kB. */
@@ -3315,19 +2748,15 @@ export interface CustomAttribute {
   groupValues?: CustomAttributeList;
 }
 export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-    groupValues: S.optional(S.suspend(() => CustomAttributeList)),
-  }),
-).annotate({
-  identifier: "CustomAttribute",
-}) as any as S.Schema<CustomAttribute>;
+S.Struct({
+  "name": S.optional(S.String),
+  "value": S.optional(S.String),
+  "groupValues": S.optional(S.suspend(() => CustomAttributeList)),
+}),
+).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(
-  CustomAttribute,
-) as any as S.Schema<CustomAttributeList>;
+export const CustomAttributeList = /*@__PURE__*/ S.Array(CustomAttribute) as any as S.Schema<CustomAttributeList>;
 
 /** Local inventory resource. For accepted attribute values, see the local product inventory feed specification. */
 export interface LocalInventory {
@@ -3355,19 +2784,19 @@ export interface LocalInventory {
   availability?: string;
 }
 export const LocalInventory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    price: S.optional(Price),
-    pickupSla: S.optional(S.String),
-    storeCode: S.optional(S.String),
-    quantity: S.optional(S.Number),
-    salePriceEffectiveDate: S.optional(S.String),
-    pickupMethod: S.optional(S.String),
-    instoreProductLocation: S.optional(S.String),
-    kind: S.optional(S.String),
-    customAttributes: S.optional(CustomAttributeList),
-    salePrice: S.optional(Price),
-    availability: S.optional(S.String),
-  }),
+S.Struct({
+  "price": S.optional(Price),
+  "pickupSla": S.optional(S.String),
+  "storeCode": S.optional(S.String),
+  "quantity": S.optional(S.Number),
+  "salePriceEffectiveDate": S.optional(S.String),
+  "pickupMethod": S.optional(S.String),
+  "instoreProductLocation": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "customAttributes": S.optional(CustomAttributeList),
+  "salePrice": S.optional(Price),
+  "availability": S.optional(S.String),
+}),
 ).annotate({ identifier: "LocalInventory" }) as any as S.Schema<LocalInventory>;
 
 /** Batch entry encoding a single local inventory update request. */
@@ -3383,54 +2812,38 @@ export interface LocalinventoryCustomBatchRequestEntry {
   /** Method of the batch request entry. Acceptable values are: - "`insert`" */
   method?: string;
 }
-export const LocalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      localInventory: S.optional(LocalInventory),
-      batchId: S.optional(S.Number),
-      merchantId: S.optional(S.String),
-      productId: S.optional(S.String),
-      method: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LocalinventoryCustomBatchRequestEntry",
-}) as any as S.Schema<LocalinventoryCustomBatchRequestEntry>;
+export const LocalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "localInventory": S.optional(LocalInventory),
+  "batchId": S.optional(S.Number),
+  "merchantId": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "method": S.optional(S.String),
+}),
+).annotate({ identifier: "LocalinventoryCustomBatchRequestEntry" }) as any as S.Schema<LocalinventoryCustomBatchRequestEntry>;
 
-export type LocalinventoryCustomBatchRequestEntryList =
-  ReadonlyArray<LocalinventoryCustomBatchRequestEntry>;
-export const LocalinventoryCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
-  LocalinventoryCustomBatchRequestEntry,
-) as any as S.Schema<LocalinventoryCustomBatchRequestEntryList>;
+export type LocalinventoryCustomBatchRequestEntryList = ReadonlyArray<LocalinventoryCustomBatchRequestEntry>;
+export const LocalinventoryCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(LocalinventoryCustomBatchRequestEntry) as any as S.Schema<LocalinventoryCustomBatchRequestEntryList>;
 
 export interface LocalinventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: LocalinventoryCustomBatchRequestEntryList;
 }
 export const LocalinventoryCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(LocalinventoryCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "LocalinventoryCustomBatchRequest",
-}) as any as S.Schema<LocalinventoryCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(LocalinventoryCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "LocalinventoryCustomBatchRequest" }) as any as S.Schema<LocalinventoryCustomBatchRequest>;
 
 export interface CustombatchLocalinventoryRequest {
   /** Request body */
   body?: LocalinventoryCustomBatchRequest;
 }
 export const CustombatchLocalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(LocalinventoryCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "localinventory/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchLocalinventoryRequest",
-}) as any as S.Schema<CustombatchLocalinventoryRequest>;
+S.Struct({
+  "body": S.optional(LocalinventoryCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"localinventory/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchLocalinventoryRequest" }) as any as S.Schema<CustombatchLocalinventoryRequest>;
 
 /** Batch entry encoding a single local inventory update response. */
 export interface LocalinventoryCustomBatchResponseEntry {
@@ -3441,22 +2854,16 @@ export interface LocalinventoryCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#localinventoryCustomBatchResponseEntry`" */
   kind?: string;
 }
-export const LocalinventoryCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchId: S.optional(S.Number),
-      errors: S.optional(Errors),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LocalinventoryCustomBatchResponseEntry",
-}) as any as S.Schema<LocalinventoryCustomBatchResponseEntry>;
+export const LocalinventoryCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "LocalinventoryCustomBatchResponseEntry" }) as any as S.Schema<LocalinventoryCustomBatchResponseEntry>;
 
-export type LocalinventoryCustomBatchResponseEntryList =
-  ReadonlyArray<LocalinventoryCustomBatchResponseEntry>;
-export const LocalinventoryCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
-  LocalinventoryCustomBatchResponseEntry,
-) as any as S.Schema<LocalinventoryCustomBatchResponseEntryList>;
+export type LocalinventoryCustomBatchResponseEntryList = ReadonlyArray<LocalinventoryCustomBatchResponseEntry>;
+export const LocalinventoryCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(LocalinventoryCustomBatchResponseEntry) as any as S.Schema<LocalinventoryCustomBatchResponseEntryList>;
 
 export interface LocalinventoryCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -3465,13 +2872,11 @@ export interface LocalinventoryCustomBatchResponse {
   kind?: string;
 }
 export const LocalinventoryCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(LocalinventoryCustomBatchResponseEntryList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LocalinventoryCustomBatchResponse",
-}) as any as S.Schema<LocalinventoryCustomBatchResponse>;
+S.Struct({
+  "entries": S.optional(LocalinventoryCustomBatchResponseEntryList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "LocalinventoryCustomBatchResponse" }) as any as S.Schema<LocalinventoryCustomBatchResponse>;
 
 /** The absolute quantity of an item available at the given store. */
 export interface PosInventory {
@@ -3499,19 +2904,19 @@ export interface PosInventory {
   pickupMethod?: string;
 }
 export const PosInventory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: S.optional(S.String),
-    pickupSla: S.optional(S.String),
-    contentLanguage: S.optional(S.String),
-    price: S.optional(Price),
-    targetCountry: S.optional(S.String),
-    gtin: S.optional(S.String),
-    quantity: S.optional(S.String),
-    storeCode: S.optional(S.String),
-    itemId: S.optional(S.String),
-    kind: S.optional(S.String),
-    pickupMethod: S.optional(S.String),
-  }),
+S.Struct({
+  "timestamp": S.optional(S.String),
+  "pickupSla": S.optional(S.String),
+  "contentLanguage": S.optional(S.String),
+  "price": S.optional(Price),
+  "targetCountry": S.optional(S.String),
+  "gtin": S.optional(S.String),
+  "quantity": S.optional(S.String),
+  "storeCode": S.optional(S.String),
+  "itemId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "pickupMethod": S.optional(S.String),
+}),
 ).annotate({ identifier: "PosInventory" }) as any as S.Schema<PosInventory>;
 
 /** Store resource. */
@@ -3538,18 +2943,18 @@ export interface PosStore {
   gcidCategory?: StringList;
 }
 export const PosStore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    phoneNumber: S.optional(S.String),
-    storeAddress: S.optional(S.String),
-    placeId: S.optional(S.String),
-    storeName: S.optional(S.String),
-    matchingStatusHint: S.optional(S.String),
-    websiteUrl: S.optional(S.String),
-    matchingStatus: S.optional(S.String),
-    storeCode: S.optional(S.String),
-    gcidCategory: S.optional(StringList),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "phoneNumber": S.optional(S.String),
+  "storeAddress": S.optional(S.String),
+  "placeId": S.optional(S.String),
+  "storeName": S.optional(S.String),
+  "matchingStatusHint": S.optional(S.String),
+  "websiteUrl": S.optional(S.String),
+  "matchingStatus": S.optional(S.String),
+  "storeCode": S.optional(S.String),
+  "gcidCategory": S.optional(StringList),
+}),
 ).annotate({ identifier: "PosStore" }) as any as S.Schema<PosStore>;
 
 /** The change of the available quantity of an item at the given store. */
@@ -3576,18 +2981,18 @@ export interface PosSale {
   kind?: string;
 }
 export const PosSale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: S.optional(S.String),
-    saleId: S.optional(S.String),
-    contentLanguage: S.optional(S.String),
-    price: S.optional(Price),
-    targetCountry: S.optional(S.String),
-    gtin: S.optional(S.String),
-    quantity: S.optional(S.String),
-    storeCode: S.optional(S.String),
-    itemId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "timestamp": S.optional(S.String),
+  "saleId": S.optional(S.String),
+  "contentLanguage": S.optional(S.String),
+  "price": S.optional(Price),
+  "targetCountry": S.optional(S.String),
+  "gtin": S.optional(S.String),
+  "quantity": S.optional(S.String),
+  "storeCode": S.optional(S.String),
+  "itemId": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "PosSale" }) as any as S.Schema<PosSale>;
 
 export interface PosCustomBatchRequestEntry {
@@ -3609,55 +3014,40 @@ export interface PosCustomBatchRequestEntry {
   storeCode?: string;
 }
 export const PosCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.optional(S.String),
-    targetMerchantId: S.optional(S.String),
-    batchId: S.optional(S.Number),
-    method: S.optional(S.String),
-    inventory: S.optional(PosInventory),
-    store: S.optional(PosStore),
-    sale: S.optional(PosSale),
-    storeCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PosCustomBatchRequestEntry",
-}) as any as S.Schema<PosCustomBatchRequestEntry>;
+S.Struct({
+  "merchantId": S.optional(S.String),
+  "targetMerchantId": S.optional(S.String),
+  "batchId": S.optional(S.Number),
+  "method": S.optional(S.String),
+  "inventory": S.optional(PosInventory),
+  "store": S.optional(PosStore),
+  "sale": S.optional(PosSale),
+  "storeCode": S.optional(S.String),
+}),
+).annotate({ identifier: "PosCustomBatchRequestEntry" }) as any as S.Schema<PosCustomBatchRequestEntry>;
 
-export type PosCustomBatchRequestEntryList =
-  ReadonlyArray<PosCustomBatchRequestEntry>;
-export const PosCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
-  PosCustomBatchRequestEntry,
-) as any as S.Schema<PosCustomBatchRequestEntryList>;
+export type PosCustomBatchRequestEntryList = ReadonlyArray<PosCustomBatchRequestEntry>;
+export const PosCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(PosCustomBatchRequestEntry) as any as S.Schema<PosCustomBatchRequestEntryList>;
 
 export interface PosCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: PosCustomBatchRequestEntryList;
 }
 export const PosCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(PosCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "PosCustomBatchRequest",
-}) as any as S.Schema<PosCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(PosCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "PosCustomBatchRequest" }) as any as S.Schema<PosCustomBatchRequest>;
 
 export interface CustombatchPosRequest {
   /** Request body */
   body?: PosCustomBatchRequest;
 }
 export const CustombatchPosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(PosCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "pos/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchPosRequest",
-}) as any as S.Schema<CustombatchPosRequest>;
+S.Struct({
+  "body": S.optional(PosCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"pos/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchPosRequest" }) as any as S.Schema<CustombatchPosRequest>;
 
 export interface PosCustomBatchResponseEntry {
   /** The retrieved or updated store information. */
@@ -3674,23 +3064,18 @@ export interface PosCustomBatchResponseEntry {
   kind?: string;
 }
 export const PosCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    store: S.optional(PosStore),
-    sale: S.optional(PosSale),
-    inventory: S.optional(PosInventory),
-    batchId: S.optional(S.Number),
-    errors: S.optional(Errors),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PosCustomBatchResponseEntry",
-}) as any as S.Schema<PosCustomBatchResponseEntry>;
+S.Struct({
+  "store": S.optional(PosStore),
+  "sale": S.optional(PosSale),
+  "inventory": S.optional(PosInventory),
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "PosCustomBatchResponseEntry" }) as any as S.Schema<PosCustomBatchResponseEntry>;
 
-export type PosCustomBatchResponseEntryList =
-  ReadonlyArray<PosCustomBatchResponseEntry>;
-export const PosCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
-  PosCustomBatchResponseEntry,
-) as any as S.Schema<PosCustomBatchResponseEntryList>;
+export type PosCustomBatchResponseEntryList = ReadonlyArray<PosCustomBatchResponseEntry>;
+export const PosCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(PosCustomBatchResponseEntry) as any as S.Schema<PosCustomBatchResponseEntryList>;
 
 export interface PosCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#posCustomBatchResponse`". */
@@ -3699,13 +3084,11 @@ export interface PosCustomBatchResponse {
   entries?: PosCustomBatchResponseEntryList;
 }
 export const PosCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    entries: S.optional(PosCustomBatchResponseEntryList),
-  }),
-).annotate({
-  identifier: "PosCustomBatchResponse",
-}) as any as S.Schema<PosCustomBatchResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "entries": S.optional(PosCustomBatchResponseEntryList),
+}),
+).annotate({ identifier: "PosCustomBatchResponse" }) as any as S.Schema<PosCustomBatchResponse>;
 
 export interface ProductShippingDimension {
   /** The dimension of the product used to calculate the shipping cost of the item. */
@@ -3714,18 +3097,14 @@ export interface ProductShippingDimension {
   unit?: string;
 }
 export const ProductShippingDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductShippingDimension",
-}) as any as S.Schema<ProductShippingDimension>;
+S.Struct({
+  "value": S.optional(S.Number),
+  "unit": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductShippingDimension" }) as any as S.Schema<ProductShippingDimension>;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Product property for the Cloud Retail API. For example, properties for a TV product could be "Screen-Resolution" or "Screen-Size". */
 export interface CloudExportAdditionalProperties {
@@ -3747,25 +3126,20 @@ export interface CloudExportAdditionalProperties {
   floatValue?: DoubleList;
 }
 export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boolValue: S.optional(S.Boolean),
-    minValue: S.optional(S.Number),
-    propertyName: S.optional(S.String),
-    maxValue: S.optional(S.Number),
-    textValue: S.optional(StringList),
-    unitCode: S.optional(S.String),
-    intValue: S.optional(StringList),
-    floatValue: S.optional(DoubleList),
-  }),
-).annotate({
-  identifier: "CloudExportAdditionalProperties",
-}) as any as S.Schema<CloudExportAdditionalProperties>;
+S.Struct({
+  "boolValue": S.optional(S.Boolean),
+  "minValue": S.optional(S.Number),
+  "propertyName": S.optional(S.String),
+  "maxValue": S.optional(S.Number),
+  "textValue": S.optional(StringList),
+  "unitCode": S.optional(S.String),
+  "intValue": S.optional(StringList),
+  "floatValue": S.optional(DoubleList),
+}),
+).annotate({ identifier: "CloudExportAdditionalProperties" }) as any as S.Schema<CloudExportAdditionalProperties>;
 
-export type CloudExportAdditionalPropertiesList =
-  ReadonlyArray<CloudExportAdditionalProperties>;
-export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
-  CloudExportAdditionalProperties,
-) as any as S.Schema<CloudExportAdditionalPropertiesList>;
+export type CloudExportAdditionalPropertiesList = ReadonlyArray<CloudExportAdditionalProperties>;
+export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(CloudExportAdditionalProperties) as any as S.Schema<CloudExportAdditionalPropertiesList>;
 
 export interface ProductProductDetail {
   /** The section header used to group a set of product details. */
@@ -3776,19 +3150,15 @@ export interface ProductProductDetail {
   attributeName?: string;
 }
 export const ProductProductDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sectionName: S.optional(S.String),
-    attributeValue: S.optional(S.String),
-    attributeName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductProductDetail",
-}) as any as S.Schema<ProductProductDetail>;
+S.Struct({
+  "sectionName": S.optional(S.String),
+  "attributeValue": S.optional(S.String),
+  "attributeName": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductProductDetail" }) as any as S.Schema<ProductProductDetail>;
 
 export type ProductProductDetailList = ReadonlyArray<ProductProductDetail>;
-export const ProductProductDetailList = /*@__PURE__*/ S.Array(
-  ProductProductDetail,
-) as any as S.Schema<ProductProductDetailList>;
+export const ProductProductDetailList = /*@__PURE__*/ S.Array(ProductProductDetail) as any as S.Schema<ProductProductDetailList>;
 
 /** Allows the setting up of loyalty program benefits (for example price or points). https://support.google.com/merchants/answer/12922446 */
 export interface LoyaltyProgram {
@@ -3808,21 +3178,19 @@ export interface LoyaltyProgram {
   shippingLabel?: string;
 }
 export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tierLabel: S.optional(S.String),
-    programLabel: S.optional(S.String),
-    cashbackForFutureUse: S.optional(Price),
-    price: S.optional(Price),
-    loyaltyPoints: S.optional(S.String),
-    memberPriceEffectiveDate: S.optional(S.String),
-    shippingLabel: S.optional(S.String),
-  }),
+S.Struct({
+  "tierLabel": S.optional(S.String),
+  "programLabel": S.optional(S.String),
+  "cashbackForFutureUse": S.optional(Price),
+  "price": S.optional(Price),
+  "loyaltyPoints": S.optional(S.String),
+  "memberPriceEffectiveDate": S.optional(S.String),
+  "shippingLabel": S.optional(S.String),
+}),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
 export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
-export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
-  LoyaltyProgram,
-) as any as S.Schema<LoyaltyProgramList>;
+export const LoyaltyProgramList = /*@__PURE__*/ S.Array(LoyaltyProgram) as any as S.Schema<LoyaltyProgramList>;
 
 export interface ProductUnitPricingBaseMeasure {
   /** The unit of the denominator. */
@@ -3831,13 +3199,11 @@ export interface ProductUnitPricingBaseMeasure {
   value?: string;
 }
 export const ProductUnitPricingBaseMeasure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductUnitPricingBaseMeasure",
-}) as any as S.Schema<ProductUnitPricingBaseMeasure>;
+S.Struct({
+  "unit": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductUnitPricingBaseMeasure" }) as any as S.Schema<ProductUnitPricingBaseMeasure>;
 
 /** Structured description, for algorithmically (AI)-generated descriptions. See [description](https://support.google.com/merchants/answer/6324468#When_to_use) for more information. */
 export interface ProductStructuredDescription {
@@ -3847,19 +3213,13 @@ export interface ProductStructuredDescription {
   digitalSourceType?: string;
 }
 export const ProductStructuredDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    digitalSourceType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductStructuredDescription",
-}) as any as S.Schema<ProductStructuredDescription>;
+S.Struct({
+  "content": S.optional(S.String),
+  "digitalSourceType": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductStructuredDescription" }) as any as S.Schema<ProductStructuredDescription>;
 
-export type ProductSustainabilityIncentiveTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "EV_TAX_CREDIT"
-  | "EV_PRICE_DISCOUNT"
-  | (string & {});
+export type ProductSustainabilityIncentiveTypeEnum = "TYPE_UNSPECIFIED" | "EV_TAX_CREDIT" | "EV_PRICE_DISCOUNT";
 export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information regarding sustainability related incentive programs such as rebates or tax relief. */
@@ -3872,20 +3232,15 @@ export interface ProductSustainabilityIncentive {
   percentage?: number;
 }
 export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(Price),
-    type: S.optional(ProductSustainabilityIncentiveTypeEnum),
-    percentage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ProductSustainabilityIncentive",
-}) as any as S.Schema<ProductSustainabilityIncentive>;
+S.Struct({
+  "amount": S.optional(Price),
+  "type": S.optional(ProductSustainabilityIncentiveTypeEnum),
+  "percentage": S.optional(S.Number),
+}),
+).annotate({ identifier: "ProductSustainabilityIncentive" }) as any as S.Schema<ProductSustainabilityIncentive>;
 
-export type ProductSustainabilityIncentiveList =
-  ReadonlyArray<ProductSustainabilityIncentive>;
-export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
-  ProductSustainabilityIncentive,
-) as any as S.Schema<ProductSustainabilityIncentiveList>;
+export type ProductSustainabilityIncentiveList = ReadonlyArray<ProductSustainabilityIncentive>;
+export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(ProductSustainabilityIncentive) as any as S.Schema<ProductSustainabilityIncentiveList>;
 
 export interface ProductShippingWeight {
   /** The weight of the product used to calculate the shipping cost of the item. */
@@ -3894,13 +3249,11 @@ export interface ProductShippingWeight {
   unit?: string;
 }
 export const ProductShippingWeight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductShippingWeight",
-}) as any as S.Schema<ProductShippingWeight>;
+S.Struct({
+  "value": S.optional(S.Number),
+  "unit": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductShippingWeight" }) as any as S.Schema<ProductShippingWeight>;
 
 export interface ProductDimension {
   /** Required. The length value represented as a number. The value can have a maximum precision of four decimal places. */
@@ -3909,13 +3262,11 @@ export interface ProductDimension {
   unit?: string;
 }
 export const ProductDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductDimension",
-}) as any as S.Schema<ProductDimension>;
+S.Struct({
+  "value": S.optional(S.Number),
+  "unit": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductDimension" }) as any as S.Schema<ProductDimension>;
 
 export interface ProductShipping {
   /** The postal code range that the shipping rate applies to, represented by a postal code, a postal code prefix followed by a * wildcard, a range between two postal codes or two postal code prefixes of equal length. */
@@ -3942,27 +3293,23 @@ export interface ProductShipping {
   country?: string;
 }
 export const ProductShipping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    postalCode: S.optional(S.String),
-    maxHandlingTime: S.optional(S.String),
-    maxTransitTime: S.optional(S.String),
-    region: S.optional(S.String),
-    service: S.optional(S.String),
-    locationGroupName: S.optional(S.String),
-    minHandlingTime: S.optional(S.String),
-    minTransitTime: S.optional(S.String),
-    price: S.optional(Price),
-    locationId: S.optional(S.String),
-    country: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductShipping",
-}) as any as S.Schema<ProductShipping>;
+S.Struct({
+  "postalCode": S.optional(S.String),
+  "maxHandlingTime": S.optional(S.String),
+  "maxTransitTime": S.optional(S.String),
+  "region": S.optional(S.String),
+  "service": S.optional(S.String),
+  "locationGroupName": S.optional(S.String),
+  "minHandlingTime": S.optional(S.String),
+  "minTransitTime": S.optional(S.String),
+  "price": S.optional(Price),
+  "locationId": S.optional(S.String),
+  "country": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductShipping" }) as any as S.Schema<ProductShipping>;
 
 export type ProductShippingList = ReadonlyArray<ProductShipping>;
-export const ProductShippingList = /*@__PURE__*/ S.Array(
-  ProductShipping,
-) as any as S.Schema<ProductShippingList>;
+export const ProductShippingList = /*@__PURE__*/ S.Array(ProductShipping) as any as S.Schema<ProductShippingList>;
 
 /** Conditions to be met for a product to have free shipping. */
 export interface FreeShippingThreshold {
@@ -3972,18 +3319,14 @@ export interface FreeShippingThreshold {
   priceThreshold?: Price;
 }
 export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    country: S.optional(S.String),
-    priceThreshold: S.optional(Price),
-  }),
-).annotate({
-  identifier: "FreeShippingThreshold",
-}) as any as S.Schema<FreeShippingThreshold>;
+S.Struct({
+  "country": S.optional(S.String),
+  "priceThreshold": S.optional(Price),
+}),
+).annotate({ identifier: "FreeShippingThreshold" }) as any as S.Schema<FreeShippingThreshold>;
 
 export type FreeShippingThresholdList = ReadonlyArray<FreeShippingThreshold>;
-export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
-  FreeShippingThreshold,
-) as any as S.Schema<FreeShippingThresholdList>;
+export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(FreeShippingThreshold) as any as S.Schema<FreeShippingThresholdList>;
 
 export interface ProductTax {
   /** The geographic region to which the tax rate applies. */
@@ -4000,20 +3343,18 @@ export interface ProductTax {
   rate?: number;
 }
 export const ProductTax = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.optional(S.String),
-    locationId: S.optional(S.String),
-    postalCode: S.optional(S.String),
-    taxShip: S.optional(S.Boolean),
-    country: S.optional(S.String),
-    rate: S.optional(S.Number),
-  }),
+S.Struct({
+  "region": S.optional(S.String),
+  "locationId": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+  "taxShip": S.optional(S.Boolean),
+  "country": S.optional(S.String),
+  "rate": S.optional(S.Number),
+}),
 ).annotate({ identifier: "ProductTax" }) as any as S.Schema<ProductTax>;
 
 export type ProductTaxList = ReadonlyArray<ProductTax>;
-export const ProductTaxList = /*@__PURE__*/ S.Array(
-  ProductTax,
-) as any as S.Schema<ProductTaxList>;
+export const ProductTaxList = /*@__PURE__*/ S.Array(ProductTax) as any as S.Schema<ProductTaxList>;
 
 /** Details of a monthly installment payment offering. [Learn more](https://support.google.com/merchants/answer/6324474) about installments. */
 export interface Installment {
@@ -4027,12 +3368,12 @@ export interface Installment {
   months?: string;
 }
 export const Installment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(Price),
-    creditType: S.optional(S.String),
-    downpayment: S.optional(Price),
-    months: S.optional(S.String),
-  }),
+S.Struct({
+  "amount": S.optional(Price),
+  "creditType": S.optional(S.String),
+  "downpayment": S.optional(Price),
+  "months": S.optional(S.String),
+}),
 ).annotate({ identifier: "Installment" }) as any as S.Schema<Installment>;
 
 /** Structured title, for algorithmically (AI)-generated titles. See [title](https://support.google.com/merchants/answer/6324415#Whentouse) for more information. */
@@ -4043,13 +3384,11 @@ export interface ProductStructuredTitle {
   digitalSourceType?: string;
 }
 export const ProductStructuredTitle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    digitalSourceType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductStructuredTitle",
-}) as any as S.Schema<ProductStructuredTitle>;
+S.Struct({
+  "content": S.optional(S.String),
+  "digitalSourceType": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductStructuredTitle" }) as any as S.Schema<ProductStructuredTitle>;
 
 /** Product [certification](https://support.google.com/merchants/answer/13528839), introduced for EU energy efficiency labeling compliance using the [EU EPREL](https://eprel.ec.europa.eu/screen/home) database. */
 export interface ProductCertification {
@@ -4063,20 +3402,16 @@ export interface ProductCertification {
   certificationValue?: string;
 }
 export const ProductCertification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificationName: S.optional(S.String),
-    certificationCode: S.optional(S.String),
-    certificationAuthority: S.optional(S.String),
-    certificationValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductCertification",
-}) as any as S.Schema<ProductCertification>;
+S.Struct({
+  "certificationName": S.optional(S.String),
+  "certificationCode": S.optional(S.String),
+  "certificationAuthority": S.optional(S.String),
+  "certificationValue": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductCertification" }) as any as S.Schema<ProductCertification>;
 
 export type ProductCertificationList = ReadonlyArray<ProductCertification>;
-export const ProductCertificationList = /*@__PURE__*/ S.Array(
-  ProductCertification,
-) as any as S.Schema<ProductCertificationList>;
+export const ProductCertificationList = /*@__PURE__*/ S.Array(ProductCertification) as any as S.Schema<ProductCertificationList>;
 
 export interface ProductUnitPricingMeasure {
   /** The measure of an item. */
@@ -4085,13 +3420,11 @@ export interface ProductUnitPricingMeasure {
   unit?: string;
 }
 export const ProductUnitPricingMeasure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductUnitPricingMeasure",
-}) as any as S.Schema<ProductUnitPricingMeasure>;
+S.Struct({
+  "value": S.optional(S.Number),
+  "unit": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductUnitPricingMeasure" }) as any as S.Schema<ProductUnitPricingMeasure>;
 
 export interface ProductSubscriptionCost {
   /** The type of subscription period. - "`month`" - "`year`" */
@@ -4102,14 +3435,12 @@ export interface ProductSubscriptionCost {
   amount?: Price;
 }
 export const ProductSubscriptionCost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    period: S.optional(S.String),
-    periodLength: S.optional(S.String),
-    amount: S.optional(Price),
-  }),
-).annotate({
-  identifier: "ProductSubscriptionCost",
-}) as any as S.Schema<ProductSubscriptionCost>;
+S.Struct({
+  "period": S.optional(S.String),
+  "periodLength": S.optional(S.String),
+  "amount": S.optional(Price),
+}),
+).annotate({ identifier: "ProductSubscriptionCost" }) as any as S.Schema<ProductSubscriptionCost>;
 
 export interface ProductWeight {
   /** Required. The weight unit. Acceptable values are: - "`g`" - "`kg`" - "`oz`" - "`lb`" */
@@ -4118,10 +3449,10 @@ export interface ProductWeight {
   value?: number;
 }
 export const ProductWeight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
+S.Struct({
+  "unit": S.optional(S.String),
+  "value": S.optional(S.Number),
+}),
 ).annotate({ identifier: "ProductWeight" }) as any as S.Schema<ProductWeight>;
 
 /** Required product attributes are primarily defined by the product data specification. See the Product Data Specification Help Center article for information. Product data. After inserting, updating, or deleting a product, it may take several minutes before changes take effect. The following reference documentation lists the field names in the **camelCase** casing style while the Products Data Specification lists the names in the **snake_case** casing style. */
@@ -4336,114 +3667,112 @@ export interface Product {
   source?: string;
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maximumRetailPrice: S.optional(Price),
-    pattern: S.optional(S.String),
-    salePrice: S.optional(Price),
-    displayAdsValue: S.optional(S.Number),
-    adsRedirect: S.optional(S.String),
-    googleProductCategory: S.optional(S.String),
-    link: S.optional(S.String),
-    adult: S.optional(S.Boolean),
-    imageLink: S.optional(S.String),
-    sizeType: S.optional(S.String),
-    additionalSizeType: S.optional(S.String),
-    virtualModelLink: S.optional(S.String),
-    price: S.optional(Price),
-    shippingHeight: S.optional(ProductShippingDimension),
-    cloudExportAdditionalProperties: S.optional(
-      CloudExportAdditionalPropertiesList,
-    ),
-    shoppingAdsExcludedCountries: S.optional(StringList),
-    shippingWidth: S.optional(ProductShippingDimension),
-    mobileLinkTemplate: S.optional(S.String),
-    productDetails: S.optional(ProductProductDetailList),
-    loyaltyPrograms: S.optional(LoyaltyProgramList),
-    unitPricingBaseMeasure: S.optional(ProductUnitPricingBaseMeasure),
-    structuredDescription: S.optional(ProductStructuredDescription),
-    sustainabilityIncentives: S.optional(ProductSustainabilityIncentiveList),
-    excludedDestinations: S.optional(StringList),
-    canonicalLink: S.optional(S.String),
-    shippingWeight: S.optional(ProductShippingWeight),
-    availabilityDate: S.optional(S.String),
-    targetCountry: S.optional(S.String),
-    material: S.optional(S.String),
-    color: S.optional(S.String),
-    mpn: S.optional(S.String),
-    minEnergyEfficiencyClass: S.optional(S.String),
-    productHeight: S.optional(ProductDimension),
-    shipping: S.optional(ProductShippingList),
-    additionalImageLinks: S.optional(StringList),
-    linkTemplate: S.optional(S.String),
-    displayAdsId: S.optional(S.String),
-    sizes: S.optional(StringList),
-    costOfGoodsSold: S.optional(Price),
-    displayAdsTitle: S.optional(S.String),
-    contentLanguage: S.optional(S.String),
-    freeShippingThreshold: S.optional(FreeShippingThresholdList),
-    taxes: S.optional(ProductTaxList),
-    gtin: S.optional(S.String),
-    kind: S.optional(S.String),
-    pickupMethod: S.optional(S.String),
-    installment: S.optional(Installment),
-    customLabel3: S.optional(S.String),
-    brand: S.optional(S.String),
-    lifestyleImageLinks: S.optional(StringList),
-    externalSellerId: S.optional(S.String),
-    pause: S.optional(S.String),
-    maxHandlingTime: S.optional(S.String),
-    condition: S.optional(S.String),
-    customAttributes: S.optional(CustomAttributeList),
-    transitTimeLabel: S.optional(S.String),
-    customLabel2: S.optional(S.String),
-    displayAdsLink: S.optional(S.String),
-    gender: S.optional(S.String),
-    autoPricingMinPrice: S.optional(Price),
-    sizeSystem: S.optional(S.String),
-    feedLabel: S.optional(S.String),
-    productWidth: S.optional(ProductDimension),
-    id: S.optional(S.String),
-    structuredTitle: S.optional(ProductStructuredTitle),
-    adsGrouping: S.optional(S.String),
-    disclosureDate: S.optional(S.String),
-    description: S.optional(S.String),
-    loyaltyProgram: S.optional(LoyaltyProgram),
-    title: S.optional(S.String),
-    customLabel4: S.optional(S.String),
-    mobileLink: S.optional(S.String),
-    promotionIds: S.optional(StringList),
-    pickupSla: S.optional(S.String),
-    productLength: S.optional(ProductDimension),
-    shippingLength: S.optional(ProductShippingDimension),
-    certifications: S.optional(ProductCertificationList),
-    productHighlights: S.optional(StringList),
-    includedDestinations: S.optional(StringList),
-    unitPricingMeasure: S.optional(ProductUnitPricingMeasure),
-    customLabel0: S.optional(S.String),
-    productTypes: S.optional(StringList),
-    maxEnergyEfficiencyClass: S.optional(S.String),
-    sellOnGoogleQuantity: S.optional(S.String),
-    displayAdsSimilarIds: S.optional(StringList),
-    subscriptionCost: S.optional(ProductSubscriptionCost),
-    itemGroupId: S.optional(S.String),
-    adsLabels: S.optional(StringList),
-    energyEfficiencyClass: S.optional(S.String),
-    shippingLabel: S.optional(S.String),
-    channel: S.optional(S.String),
-    multipack: S.optional(S.String),
-    taxCategory: S.optional(S.String),
-    expirationDate: S.optional(S.String),
-    ageGroup: S.optional(S.String),
-    availability: S.optional(S.String),
-    isBundle: S.optional(S.Boolean),
-    minHandlingTime: S.optional(S.String),
-    customLabel1: S.optional(S.String),
-    identifierExists: S.optional(S.Boolean),
-    offerId: S.optional(S.String),
-    salePriceEffectiveDate: S.optional(S.String),
-    productWeight: S.optional(ProductWeight),
-    source: S.optional(S.String),
-  }),
+S.Struct({
+  "maximumRetailPrice": S.optional(Price),
+  "pattern": S.optional(S.String),
+  "salePrice": S.optional(Price),
+  "displayAdsValue": S.optional(S.Number),
+  "adsRedirect": S.optional(S.String),
+  "googleProductCategory": S.optional(S.String),
+  "link": S.optional(S.String),
+  "adult": S.optional(S.Boolean),
+  "imageLink": S.optional(S.String),
+  "sizeType": S.optional(S.String),
+  "additionalSizeType": S.optional(S.String),
+  "virtualModelLink": S.optional(S.String),
+  "price": S.optional(Price),
+  "shippingHeight": S.optional(ProductShippingDimension),
+  "cloudExportAdditionalProperties": S.optional(CloudExportAdditionalPropertiesList),
+  "shoppingAdsExcludedCountries": S.optional(StringList),
+  "shippingWidth": S.optional(ProductShippingDimension),
+  "mobileLinkTemplate": S.optional(S.String),
+  "productDetails": S.optional(ProductProductDetailList),
+  "loyaltyPrograms": S.optional(LoyaltyProgramList),
+  "unitPricingBaseMeasure": S.optional(ProductUnitPricingBaseMeasure),
+  "structuredDescription": S.optional(ProductStructuredDescription),
+  "sustainabilityIncentives": S.optional(ProductSustainabilityIncentiveList),
+  "excludedDestinations": S.optional(StringList),
+  "canonicalLink": S.optional(S.String),
+  "shippingWeight": S.optional(ProductShippingWeight),
+  "availabilityDate": S.optional(S.String),
+  "targetCountry": S.optional(S.String),
+  "material": S.optional(S.String),
+  "color": S.optional(S.String),
+  "mpn": S.optional(S.String),
+  "minEnergyEfficiencyClass": S.optional(S.String),
+  "productHeight": S.optional(ProductDimension),
+  "shipping": S.optional(ProductShippingList),
+  "additionalImageLinks": S.optional(StringList),
+  "linkTemplate": S.optional(S.String),
+  "displayAdsId": S.optional(S.String),
+  "sizes": S.optional(StringList),
+  "costOfGoodsSold": S.optional(Price),
+  "displayAdsTitle": S.optional(S.String),
+  "contentLanguage": S.optional(S.String),
+  "freeShippingThreshold": S.optional(FreeShippingThresholdList),
+  "taxes": S.optional(ProductTaxList),
+  "gtin": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "pickupMethod": S.optional(S.String),
+  "installment": S.optional(Installment),
+  "customLabel3": S.optional(S.String),
+  "brand": S.optional(S.String),
+  "lifestyleImageLinks": S.optional(StringList),
+  "externalSellerId": S.optional(S.String),
+  "pause": S.optional(S.String),
+  "maxHandlingTime": S.optional(S.String),
+  "condition": S.optional(S.String),
+  "customAttributes": S.optional(CustomAttributeList),
+  "transitTimeLabel": S.optional(S.String),
+  "customLabel2": S.optional(S.String),
+  "displayAdsLink": S.optional(S.String),
+  "gender": S.optional(S.String),
+  "autoPricingMinPrice": S.optional(Price),
+  "sizeSystem": S.optional(S.String),
+  "feedLabel": S.optional(S.String),
+  "productWidth": S.optional(ProductDimension),
+  "id": S.optional(S.String),
+  "structuredTitle": S.optional(ProductStructuredTitle),
+  "adsGrouping": S.optional(S.String),
+  "disclosureDate": S.optional(S.String),
+  "description": S.optional(S.String),
+  "loyaltyProgram": S.optional(LoyaltyProgram),
+  "title": S.optional(S.String),
+  "customLabel4": S.optional(S.String),
+  "mobileLink": S.optional(S.String),
+  "promotionIds": S.optional(StringList),
+  "pickupSla": S.optional(S.String),
+  "productLength": S.optional(ProductDimension),
+  "shippingLength": S.optional(ProductShippingDimension),
+  "certifications": S.optional(ProductCertificationList),
+  "productHighlights": S.optional(StringList),
+  "includedDestinations": S.optional(StringList),
+  "unitPricingMeasure": S.optional(ProductUnitPricingMeasure),
+  "customLabel0": S.optional(S.String),
+  "productTypes": S.optional(StringList),
+  "maxEnergyEfficiencyClass": S.optional(S.String),
+  "sellOnGoogleQuantity": S.optional(S.String),
+  "displayAdsSimilarIds": S.optional(StringList),
+  "subscriptionCost": S.optional(ProductSubscriptionCost),
+  "itemGroupId": S.optional(S.String),
+  "adsLabels": S.optional(StringList),
+  "energyEfficiencyClass": S.optional(S.String),
+  "shippingLabel": S.optional(S.String),
+  "channel": S.optional(S.String),
+  "multipack": S.optional(S.String),
+  "taxCategory": S.optional(S.String),
+  "expirationDate": S.optional(S.String),
+  "ageGroup": S.optional(S.String),
+  "availability": S.optional(S.String),
+  "isBundle": S.optional(S.Boolean),
+  "minHandlingTime": S.optional(S.String),
+  "customLabel1": S.optional(S.String),
+  "identifierExists": S.optional(S.Boolean),
+  "offerId": S.optional(S.String),
+  "salePriceEffectiveDate": S.optional(S.String),
+  "productWeight": S.optional(ProductWeight),
+  "source": S.optional(S.String),
+}),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** A batch entry encoding a single non-batch products request. */
@@ -4464,54 +3793,39 @@ export interface ProductsCustomBatchRequestEntry {
   updateMask?: string;
 }
 export const ProductsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchId: S.optional(S.Number),
-    merchantId: S.optional(S.String),
-    productId: S.optional(S.String),
-    product: S.optional(Product),
-    feedId: S.optional(S.String),
-    method: S.optional(S.String),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductsCustomBatchRequestEntry",
-}) as any as S.Schema<ProductsCustomBatchRequestEntry>;
+S.Struct({
+  "batchId": S.optional(S.Number),
+  "merchantId": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "product": S.optional(Product),
+  "feedId": S.optional(S.String),
+  "method": S.optional(S.String),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductsCustomBatchRequestEntry" }) as any as S.Schema<ProductsCustomBatchRequestEntry>;
 
-export type ProductsCustomBatchRequestEntryList =
-  ReadonlyArray<ProductsCustomBatchRequestEntry>;
-export const ProductsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
-  ProductsCustomBatchRequestEntry,
-) as any as S.Schema<ProductsCustomBatchRequestEntryList>;
+export type ProductsCustomBatchRequestEntryList = ReadonlyArray<ProductsCustomBatchRequestEntry>;
+export const ProductsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(ProductsCustomBatchRequestEntry) as any as S.Schema<ProductsCustomBatchRequestEntryList>;
 
 export interface ProductsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: ProductsCustomBatchRequestEntryList;
 }
 export const ProductsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(ProductsCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "ProductsCustomBatchRequest",
-}) as any as S.Schema<ProductsCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(ProductsCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "ProductsCustomBatchRequest" }) as any as S.Schema<ProductsCustomBatchRequest>;
 
 export interface CustombatchProductsRequest {
   /** Request body */
   body?: ProductsCustomBatchRequest;
 }
 export const CustombatchProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(ProductsCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "products/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchProductsRequest",
-}) as any as S.Schema<CustombatchProductsRequest>;
+S.Struct({
+  "body": S.optional(ProductsCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"products/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchProductsRequest" }) as any as S.Schema<CustombatchProductsRequest>;
 
 /** A batch entry encoding a single non-batch products response. */
 export interface ProductsCustomBatchResponseEntry {
@@ -4525,21 +3839,16 @@ export interface ProductsCustomBatchResponseEntry {
   product?: Product;
 }
 export const ProductsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchId: S.optional(S.Number),
-    errors: S.optional(Errors),
-    kind: S.optional(S.String),
-    product: S.optional(Product),
-  }),
-).annotate({
-  identifier: "ProductsCustomBatchResponseEntry",
-}) as any as S.Schema<ProductsCustomBatchResponseEntry>;
+S.Struct({
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+  "kind": S.optional(S.String),
+  "product": S.optional(Product),
+}),
+).annotate({ identifier: "ProductsCustomBatchResponseEntry" }) as any as S.Schema<ProductsCustomBatchResponseEntry>;
 
-export type ProductsCustomBatchResponseEntryList =
-  ReadonlyArray<ProductsCustomBatchResponseEntry>;
-export const ProductsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
-  ProductsCustomBatchResponseEntry,
-) as any as S.Schema<ProductsCustomBatchResponseEntryList>;
+export type ProductsCustomBatchResponseEntryList = ReadonlyArray<ProductsCustomBatchResponseEntry>;
+export const ProductsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(ProductsCustomBatchResponseEntry) as any as S.Schema<ProductsCustomBatchResponseEntryList>;
 
 export interface ProductsCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productsCustomBatchResponse`". */
@@ -4548,13 +3857,11 @@ export interface ProductsCustomBatchResponse {
   entries?: ProductsCustomBatchResponseEntryList;
 }
 export const ProductsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    entries: S.optional(ProductsCustomBatchResponseEntryList),
-  }),
-).annotate({
-  identifier: "ProductsCustomBatchResponse",
-}) as any as S.Schema<ProductsCustomBatchResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "entries": S.optional(ProductsCustomBatchResponseEntryList),
+}),
+).annotate({ identifier: "ProductsCustomBatchResponse" }) as any as S.Schema<ProductsCustomBatchResponse>;
 
 /** A batch entry encoding a single non-batch productstatuses request. */
 export interface ProductstatusesCustomBatchRequestEntry {
@@ -4571,55 +3878,39 @@ export interface ProductstatusesCustomBatchRequestEntry {
   /** If set, only issues for the specified destinations are returned, otherwise only issues for the Shopping destination. */
   destinations?: StringList;
 }
-export const ProductstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      method: S.optional(S.String),
-      productId: S.optional(S.String),
-      includeAttributes: S.optional(S.Boolean),
-      merchantId: S.optional(S.String),
-      batchId: S.optional(S.Number),
-      destinations: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "ProductstatusesCustomBatchRequestEntry",
-}) as any as S.Schema<ProductstatusesCustomBatchRequestEntry>;
+export const ProductstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "method": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "includeAttributes": S.optional(S.Boolean),
+  "merchantId": S.optional(S.String),
+  "batchId": S.optional(S.Number),
+  "destinations": S.optional(StringList),
+}),
+).annotate({ identifier: "ProductstatusesCustomBatchRequestEntry" }) as any as S.Schema<ProductstatusesCustomBatchRequestEntry>;
 
-export type ProductstatusesCustomBatchRequestEntryList =
-  ReadonlyArray<ProductstatusesCustomBatchRequestEntry>;
-export const ProductstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
-  ProductstatusesCustomBatchRequestEntry,
-) as any as S.Schema<ProductstatusesCustomBatchRequestEntryList>;
+export type ProductstatusesCustomBatchRequestEntryList = ReadonlyArray<ProductstatusesCustomBatchRequestEntry>;
+export const ProductstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(ProductstatusesCustomBatchRequestEntry) as any as S.Schema<ProductstatusesCustomBatchRequestEntryList>;
 
 export interface ProductstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: ProductstatusesCustomBatchRequestEntryList;
 }
 export const ProductstatusesCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(ProductstatusesCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "ProductstatusesCustomBatchRequest",
-}) as any as S.Schema<ProductstatusesCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(ProductstatusesCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "ProductstatusesCustomBatchRequest" }) as any as S.Schema<ProductstatusesCustomBatchRequest>;
 
 export interface CustombatchProductstatusesRequest {
   /** Request body */
   body?: ProductstatusesCustomBatchRequest;
 }
 export const CustombatchProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(ProductstatusesCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "productstatuses/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchProductstatusesRequest",
-}) as any as S.Schema<CustombatchProductstatusesRequest>;
+S.Struct({
+  "body": S.optional(ProductstatusesCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"productstatuses/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchProductstatusesRequest" }) as any as S.Schema<CustombatchProductstatusesRequest>;
 
 export interface ProductStatusDestinationStatus {
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval. */
@@ -4636,23 +3927,18 @@ export interface ProductStatusDestinationStatus {
   approvedCountries?: StringList;
 }
 export const ProductStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pendingCountries: S.optional(StringList),
-    destination: S.optional(S.String),
-    status: S.optional(S.String),
-    channel: S.optional(S.String),
-    disapprovedCountries: S.optional(StringList),
-    approvedCountries: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ProductStatusDestinationStatus",
-}) as any as S.Schema<ProductStatusDestinationStatus>;
+S.Struct({
+  "pendingCountries": S.optional(StringList),
+  "destination": S.optional(S.String),
+  "status": S.optional(S.String),
+  "channel": S.optional(S.String),
+  "disapprovedCountries": S.optional(StringList),
+  "approvedCountries": S.optional(StringList),
+}),
+).annotate({ identifier: "ProductStatusDestinationStatus" }) as any as S.Schema<ProductStatusDestinationStatus>;
 
-export type ProductStatusDestinationStatusList =
-  ReadonlyArray<ProductStatusDestinationStatus>;
-export const ProductStatusDestinationStatusList = /*@__PURE__*/ S.Array(
-  ProductStatusDestinationStatus,
-) as any as S.Schema<ProductStatusDestinationStatusList>;
+export type ProductStatusDestinationStatusList = ReadonlyArray<ProductStatusDestinationStatus>;
+export const ProductStatusDestinationStatusList = /*@__PURE__*/ S.Array(ProductStatusDestinationStatus) as any as S.Schema<ProductStatusDestinationStatusList>;
 
 export interface ProductStatusItemLevelIssue {
   /** The destination the issue applies to. */
@@ -4675,26 +3961,21 @@ export interface ProductStatusItemLevelIssue {
   resolution?: string;
 }
 export const ProductStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: S.optional(S.String),
-    servability: S.optional(S.String),
-    attributeName: S.optional(S.String),
-    detail: S.optional(S.String),
-    code: S.optional(S.String),
-    documentation: S.optional(S.String),
-    applicableCountries: S.optional(StringList),
-    description: S.optional(S.String),
-    resolution: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductStatusItemLevelIssue",
-}) as any as S.Schema<ProductStatusItemLevelIssue>;
+S.Struct({
+  "destination": S.optional(S.String),
+  "servability": S.optional(S.String),
+  "attributeName": S.optional(S.String),
+  "detail": S.optional(S.String),
+  "code": S.optional(S.String),
+  "documentation": S.optional(S.String),
+  "applicableCountries": S.optional(StringList),
+  "description": S.optional(S.String),
+  "resolution": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductStatusItemLevelIssue" }) as any as S.Schema<ProductStatusItemLevelIssue>;
 
-export type ProductStatusItemLevelIssueList =
-  ReadonlyArray<ProductStatusItemLevelIssue>;
-export const ProductStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
-  ProductStatusItemLevelIssue,
-) as any as S.Schema<ProductStatusItemLevelIssueList>;
+export type ProductStatusItemLevelIssueList = ReadonlyArray<ProductStatusItemLevelIssue>;
+export const ProductStatusItemLevelIssueList = /*@__PURE__*/ S.Array(ProductStatusItemLevelIssue) as any as S.Schema<ProductStatusItemLevelIssueList>;
 
 /** The status of a product, that is, information about a product computed asynchronously. */
 export interface ProductStatus {
@@ -4718,17 +3999,17 @@ export interface ProductStatus {
   itemLevelIssues?: ProductStatusItemLevelIssueList;
 }
 export const ProductStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    title: S.optional(S.String),
-    creationDate: S.optional(S.String),
-    googleExpirationDate: S.optional(S.String),
-    link: S.optional(S.String),
-    lastUpdateDate: S.optional(S.String),
-    destinationStatuses: S.optional(ProductStatusDestinationStatusList),
-    kind: S.optional(S.String),
-    itemLevelIssues: S.optional(ProductStatusItemLevelIssueList),
-  }),
+S.Struct({
+  "productId": S.optional(S.String),
+  "title": S.optional(S.String),
+  "creationDate": S.optional(S.String),
+  "googleExpirationDate": S.optional(S.String),
+  "link": S.optional(S.String),
+  "lastUpdateDate": S.optional(S.String),
+  "destinationStatuses": S.optional(ProductStatusDestinationStatusList),
+  "kind": S.optional(S.String),
+  "itemLevelIssues": S.optional(ProductStatusItemLevelIssueList),
+}),
 ).annotate({ identifier: "ProductStatus" }) as any as S.Schema<ProductStatus>;
 
 /** A batch entry encoding a single non-batch productstatuses response. */
@@ -4742,24 +4023,17 @@ export interface ProductstatusesCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productstatusesCustomBatchResponseEntry`" */
   kind?: string;
 }
-export const ProductstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      productStatus: S.optional(ProductStatus),
-      batchId: S.optional(S.Number),
-      errors: S.optional(Errors),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ProductstatusesCustomBatchResponseEntry",
-}) as any as S.Schema<ProductstatusesCustomBatchResponseEntry>;
+export const ProductstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productStatus": S.optional(ProductStatus),
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductstatusesCustomBatchResponseEntry" }) as any as S.Schema<ProductstatusesCustomBatchResponseEntry>;
 
-export type ProductstatusesCustomBatchResponseEntryList =
-  ReadonlyArray<ProductstatusesCustomBatchResponseEntry>;
-export const ProductstatusesCustomBatchResponseEntryList =
-  /*@__PURE__*/ S.Array(
-    ProductstatusesCustomBatchResponseEntry,
-  ) as any as S.Schema<ProductstatusesCustomBatchResponseEntryList>;
+export type ProductstatusesCustomBatchResponseEntryList = ReadonlyArray<ProductstatusesCustomBatchResponseEntry>;
+export const ProductstatusesCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(ProductstatusesCustomBatchResponseEntry) as any as S.Schema<ProductstatusesCustomBatchResponseEntryList>;
 
 export interface ProductstatusesCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productstatusesCustomBatchResponse`". */
@@ -4768,13 +4042,11 @@ export interface ProductstatusesCustomBatchResponse {
   entries?: ProductstatusesCustomBatchResponseEntryList;
 }
 export const ProductstatusesCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    entries: S.optional(ProductstatusesCustomBatchResponseEntryList),
-  }),
-).annotate({
-  identifier: "ProductstatusesCustomBatchResponse",
-}) as any as S.Schema<ProductstatusesCustomBatchResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "entries": S.optional(ProductstatusesCustomBatchResponseEntryList),
+}),
+).annotate({ identifier: "ProductstatusesCustomBatchResponse" }) as any as S.Schema<ProductstatusesCustomBatchResponse>;
 
 /** Regional inventory resource. contains the regional name and all attributes which are overridden for the specified region. */
 export interface RegionalInventory {
@@ -4794,18 +4066,16 @@ export interface RegionalInventory {
   salePriceEffectiveDate?: string;
 }
 export const RegionalInventory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    salePrice: S.optional(Price),
-    availability: S.optional(S.String),
-    customAttributes: S.optional(CustomAttributeList),
-    regionId: S.optional(S.String),
-    kind: S.optional(S.String),
-    price: S.optional(Price),
-    salePriceEffectiveDate: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegionalInventory",
-}) as any as S.Schema<RegionalInventory>;
+S.Struct({
+  "salePrice": S.optional(Price),
+  "availability": S.optional(S.String),
+  "customAttributes": S.optional(CustomAttributeList),
+  "regionId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "price": S.optional(Price),
+  "salePriceEffectiveDate": S.optional(S.String),
+}),
+).annotate({ identifier: "RegionalInventory" }) as any as S.Schema<RegionalInventory>;
 
 /** A batch entry encoding a single non-batch regional inventory request. */
 export interface RegionalinventoryCustomBatchRequestEntry {
@@ -4820,55 +4090,38 @@ export interface RegionalinventoryCustomBatchRequestEntry {
   /** Price and availability of the product. */
   regionalInventory?: RegionalInventory;
 }
-export const RegionalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      merchantId: S.optional(S.String),
-      batchId: S.optional(S.Number),
-      method: S.optional(S.String),
-      productId: S.optional(S.String),
-      regionalInventory: S.optional(RegionalInventory),
-    }),
-).annotate({
-  identifier: "RegionalinventoryCustomBatchRequestEntry",
-}) as any as S.Schema<RegionalinventoryCustomBatchRequestEntry>;
+export const RegionalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.optional(S.String),
+  "batchId": S.optional(S.Number),
+  "method": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "regionalInventory": S.optional(RegionalInventory),
+}),
+).annotate({ identifier: "RegionalinventoryCustomBatchRequestEntry" }) as any as S.Schema<RegionalinventoryCustomBatchRequestEntry>;
 
-export type RegionalinventoryCustomBatchRequestEntryList =
-  ReadonlyArray<RegionalinventoryCustomBatchRequestEntry>;
-export const RegionalinventoryCustomBatchRequestEntryList =
-  /*@__PURE__*/ S.Array(
-    RegionalinventoryCustomBatchRequestEntry,
-  ) as any as S.Schema<RegionalinventoryCustomBatchRequestEntryList>;
+export type RegionalinventoryCustomBatchRequestEntryList = ReadonlyArray<RegionalinventoryCustomBatchRequestEntry>;
+export const RegionalinventoryCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(RegionalinventoryCustomBatchRequestEntry) as any as S.Schema<RegionalinventoryCustomBatchRequestEntryList>;
 
 export interface RegionalinventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: RegionalinventoryCustomBatchRequestEntryList;
 }
 export const RegionalinventoryCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(RegionalinventoryCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "RegionalinventoryCustomBatchRequest",
-}) as any as S.Schema<RegionalinventoryCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(RegionalinventoryCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "RegionalinventoryCustomBatchRequest" }) as any as S.Schema<RegionalinventoryCustomBatchRequest>;
 
 export interface CustombatchRegionalinventoryRequest {
   /** Request body */
   body?: RegionalinventoryCustomBatchRequest;
 }
 export const CustombatchRegionalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(RegionalinventoryCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "regionalinventory/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchRegionalinventoryRequest",
-}) as any as S.Schema<CustombatchRegionalinventoryRequest>;
+S.Struct({
+  "body": S.optional(RegionalinventoryCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"regionalinventory/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchRegionalinventoryRequest" }) as any as S.Schema<CustombatchRegionalinventoryRequest>;
 
 /** A batch entry encoding a single non-batch regional inventory response. */
 export interface RegionalinventoryCustomBatchResponseEntry {
@@ -4881,24 +4134,17 @@ export interface RegionalinventoryCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#regionalinventoryCustomBatchResponseEntry`". */
   kind?: string;
 }
-export const RegionalinventoryCustomBatchResponseEntry =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchId: S.optional(S.Number),
-      errors: S.optional(Errors),
-      regionalInventory: S.optional(RegionalInventory),
-      kind: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RegionalinventoryCustomBatchResponseEntry",
-  }) as any as S.Schema<RegionalinventoryCustomBatchResponseEntry>;
+export const RegionalinventoryCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+  "regionalInventory": S.optional(RegionalInventory),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "RegionalinventoryCustomBatchResponseEntry" }) as any as S.Schema<RegionalinventoryCustomBatchResponseEntry>;
 
-export type RegionalinventoryCustomBatchResponseEntryList =
-  ReadonlyArray<RegionalinventoryCustomBatchResponseEntry>;
-export const RegionalinventoryCustomBatchResponseEntryList =
-  /*@__PURE__*/ S.Array(
-    RegionalinventoryCustomBatchResponseEntry,
-  ) as any as S.Schema<RegionalinventoryCustomBatchResponseEntryList>;
+export type RegionalinventoryCustomBatchResponseEntryList = ReadonlyArray<RegionalinventoryCustomBatchResponseEntry>;
+export const RegionalinventoryCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(RegionalinventoryCustomBatchResponseEntry) as any as S.Schema<RegionalinventoryCustomBatchResponseEntryList>;
 
 export interface RegionalinventoryCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#regionalinventoryCustomBatchResponse`". */
@@ -4906,15 +4152,12 @@ export interface RegionalinventoryCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: RegionalinventoryCustomBatchResponseEntryList;
 }
-export const RegionalinventoryCustomBatchResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: S.optional(S.String),
-      entries: S.optional(RegionalinventoryCustomBatchResponseEntryList),
-    }),
-).annotate({
-  identifier: "RegionalinventoryCustomBatchResponse",
-}) as any as S.Schema<RegionalinventoryCustomBatchResponse>;
+export const RegionalinventoryCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kind": S.optional(S.String),
+  "entries": S.optional(RegionalinventoryCustomBatchResponseEntryList),
+}),
+).annotate({ identifier: "RegionalinventoryCustomBatchResponse" }) as any as S.Schema<RegionalinventoryCustomBatchResponse>;
 
 /** Time in hours and minutes in the local timezone when local delivery ends. */
 export interface ServiceStoreConfigCutoffConfigLocalCutoffTime {
@@ -4923,15 +4166,12 @@ export interface ServiceStoreConfigCutoffConfigLocalCutoffTime {
   /** Hour local delivery orders must be placed by to process the same day. */
   hour?: string;
 }
-export const ServiceStoreConfigCutoffConfigLocalCutoffTime =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      minute: S.optional(S.String),
-      hour: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServiceStoreConfigCutoffConfigLocalCutoffTime",
-  }) as any as S.Schema<ServiceStoreConfigCutoffConfigLocalCutoffTime>;
+export const ServiceStoreConfigCutoffConfigLocalCutoffTime = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "minute": S.optional(S.String),
+  "hour": S.optional(S.String),
+}),
+).annotate({ identifier: "ServiceStoreConfigCutoffConfigLocalCutoffTime" }) as any as S.Schema<ServiceStoreConfigCutoffConfigLocalCutoffTime>;
 
 /** Time local delivery ends for the day based on the local timezone of the store. `local_cutoff_time` and `store_close_offset_hours` are mutually exclusive. */
 export interface ServiceStoreConfigCutoffConfig {
@@ -4943,14 +4183,12 @@ export interface ServiceStoreConfigCutoffConfig {
   noDeliveryPostCutoff?: boolean;
 }
 export const ServiceStoreConfigCutoffConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localCutoffTime: S.optional(ServiceStoreConfigCutoffConfigLocalCutoffTime),
-    storeCloseOffsetHours: S.optional(S.String),
-    noDeliveryPostCutoff: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ServiceStoreConfigCutoffConfig",
-}) as any as S.Schema<ServiceStoreConfigCutoffConfig>;
+S.Struct({
+  "localCutoffTime": S.optional(ServiceStoreConfigCutoffConfigLocalCutoffTime),
+  "storeCloseOffsetHours": S.optional(S.String),
+  "noDeliveryPostCutoff": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ServiceStoreConfigCutoffConfig" }) as any as S.Schema<ServiceStoreConfigCutoffConfig>;
 
 /** Distance represented by an integer and unit. */
 export interface Distance {
@@ -4960,10 +4198,10 @@ export interface Distance {
   value?: string;
 }
 export const Distance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "unit": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Distance" }) as any as S.Schema<Distance>;
 
 /** Stores that provide local delivery. Only valid with local delivery fulfillment. */
@@ -4978,15 +4216,13 @@ export interface ServiceStoreConfig {
   serviceRadius?: Distance;
 }
 export const ServiceStoreConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeServiceType: S.optional(S.String),
-    cutoffConfig: S.optional(ServiceStoreConfigCutoffConfig),
-    storeCodes: S.optional(StringList),
-    serviceRadius: S.optional(Distance),
-  }),
-).annotate({
-  identifier: "ServiceStoreConfig",
-}) as any as S.Schema<ServiceStoreConfig>;
+S.Struct({
+  "storeServiceType": S.optional(S.String),
+  "cutoffConfig": S.optional(ServiceStoreConfigCutoffConfig),
+  "storeCodes": S.optional(StringList),
+  "serviceRadius": S.optional(Distance),
+}),
+).annotate({ identifier: "ServiceStoreConfig" }) as any as S.Schema<ServiceStoreConfig>;
 
 /** The single value of a rate group or the value of a rate group table's cell. Exactly one of `noShipping`, `flatRate`, `pricePercentage`, `carrierRateName`, `subtableName` must be set. */
 export interface Value {
@@ -5002,28 +4238,26 @@ export interface Value {
   carrierRateName?: string;
 }
 export const Value = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pricePercentage: S.optional(S.String),
-    subtableName: S.optional(S.String),
-    noShipping: S.optional(S.Boolean),
-    flatRate: S.optional(Price),
-    carrierRateName: S.optional(S.String),
-  }),
+S.Struct({
+  "pricePercentage": S.optional(S.String),
+  "subtableName": S.optional(S.String),
+  "noShipping": S.optional(S.Boolean),
+  "flatRate": S.optional(Price),
+  "carrierRateName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueList = ReadonlyArray<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(
-  Value,
-) as any as S.Schema<ValueList>;
+export const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
 
 export interface Row {
   /** The list of cells that constitute the row. Must have the same length as `columnHeaders` for two-dimensional tables, a length of 1 for one-dimensional tables. Required. */
   cells?: ValueList;
 }
 export const Row = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cells: S.optional(ValueList),
-  }),
+S.Struct({
+  "cells": S.optional(ValueList),
+}),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 export type RowList = ReadonlyArray<Row>;
@@ -5036,36 +4270,30 @@ export interface Weight {
   value?: string;
 }
 export const Weight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "unit": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Weight" }) as any as S.Schema<Weight>;
 
 export type WeightList = ReadonlyArray<Weight>;
-export const WeightList = /*@__PURE__*/ S.Array(
-  Weight,
-) as any as S.Schema<WeightList>;
+export const WeightList = /*@__PURE__*/ S.Array(Weight) as any as S.Schema<WeightList>;
 
 export interface LocationIdSet {
   /** A non-empty list of location IDs. They must all be of the same location type (for example, state). */
   locationIds?: StringList;
 }
 export const LocationIdSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationIds: S.optional(StringList),
-  }),
+S.Struct({
+  "locationIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "LocationIdSet" }) as any as S.Schema<LocationIdSet>;
 
 export type LocationIdSetList = ReadonlyArray<LocationIdSet>;
-export const LocationIdSetList = /*@__PURE__*/ S.Array(
-  LocationIdSet,
-) as any as S.Schema<LocationIdSetList>;
+export const LocationIdSetList = /*@__PURE__*/ S.Array(LocationIdSet) as any as S.Schema<LocationIdSetList>;
 
 export type PriceList = ReadonlyArray<Price>;
-export const PriceList = /*@__PURE__*/ S.Array(
-  Price,
-) as any as S.Schema<PriceList>;
+export const PriceList = /*@__PURE__*/ S.Array(Price) as any as S.Schema<PriceList>;
 
 /** A non-empty list of row or column headers for a table. Exactly one of `prices`, `weights`, `numItems`, `postalCodeGroupNames`, or `location` must be set. */
 export interface Headers {
@@ -5081,13 +4309,13 @@ export interface Headers {
   prices?: PriceList;
 }
 export const Headers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    weights: S.optional(WeightList),
-    postalCodeGroupNames: S.optional(StringList),
-    numberOfItems: S.optional(StringList),
-    locations: S.optional(LocationIdSetList),
-    prices: S.optional(PriceList),
-  }),
+S.Struct({
+  "weights": S.optional(WeightList),
+  "postalCodeGroupNames": S.optional(StringList),
+  "numberOfItems": S.optional(StringList),
+  "locations": S.optional(LocationIdSetList),
+  "prices": S.optional(PriceList),
+}),
 ).annotate({ identifier: "Headers" }) as any as S.Schema<Headers>;
 
 export interface Table {
@@ -5101,18 +4329,16 @@ export interface Table {
   name?: string;
 }
 export const Table = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rows: S.optional(RowList),
-    rowHeaders: S.optional(Headers),
-    columnHeaders: S.optional(Headers),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "rows": S.optional(RowList),
+  "rowHeaders": S.optional(Headers),
+  "columnHeaders": S.optional(Headers),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 export type TableList = ReadonlyArray<Table>;
-export const TableList = /*@__PURE__*/ S.Array(
-  Table,
-) as any as S.Schema<TableList>;
+export const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
 
 export interface CarrierRate {
   /** Additive shipping rate modifier. Can be negative. For example `{ "value": "1", "currency" : "USD" }` adds $1 to the rate, `{ "value": "-3", "currency" : "USD" }` removes $3 from the rate. Optional. */
@@ -5129,20 +4355,18 @@ export interface CarrierRate {
   carrierName?: string;
 }
 export const CarrierRate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flatAdjustment: S.optional(Price),
-    percentageAdjustment: S.optional(S.String),
-    originPostalCode: S.optional(S.String),
-    carrierService: S.optional(S.String),
-    name: S.optional(S.String),
-    carrierName: S.optional(S.String),
-  }),
+S.Struct({
+  "flatAdjustment": S.optional(Price),
+  "percentageAdjustment": S.optional(S.String),
+  "originPostalCode": S.optional(S.String),
+  "carrierService": S.optional(S.String),
+  "name": S.optional(S.String),
+  "carrierName": S.optional(S.String),
+}),
 ).annotate({ identifier: "CarrierRate" }) as any as S.Schema<CarrierRate>;
 
 export type CarrierRateList = ReadonlyArray<CarrierRate>;
-export const CarrierRateList = /*@__PURE__*/ S.Array(
-  CarrierRate,
-) as any as S.Schema<CarrierRateList>;
+export const CarrierRateList = /*@__PURE__*/ S.Array(CarrierRate) as any as S.Schema<CarrierRateList>;
 
 export interface RateGroup {
   /** A list of shipping labels defining the products to which this rate group applies to. This is a disjunction: only one of the labels has to match for the rate group to apply. May only be empty for the last rate group of a service. Required. */
@@ -5159,20 +4383,18 @@ export interface RateGroup {
   name?: string;
 }
 export const RateGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicableShippingLabels: S.optional(StringList),
-    singleValue: S.optional(Value),
-    subtables: S.optional(TableList),
-    mainTable: S.optional(Table),
-    carrierRates: S.optional(CarrierRateList),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "applicableShippingLabels": S.optional(StringList),
+  "singleValue": S.optional(Value),
+  "subtables": S.optional(TableList),
+  "mainTable": S.optional(Table),
+  "carrierRates": S.optional(CarrierRateList),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "RateGroup" }) as any as S.Schema<RateGroup>;
 
 export type RateGroupList = ReadonlyArray<RateGroup>;
-export const RateGroupList = /*@__PURE__*/ S.Array(
-  RateGroup,
-) as any as S.Schema<RateGroupList>;
+export const RateGroupList = /*@__PURE__*/ S.Array(RateGroup) as any as S.Schema<RateGroupList>;
 
 /** A list of store code sets sharing the same minimum order value. At least two sets are required and the last one must be empty, which signifies 'MOV for all other stores'. Each store code can only appear once across all the sets. All prices within a service must have the same currency. */
 export interface MinimumOrderValueTableStoreCodeSetWithMov {
@@ -5181,35 +4403,24 @@ export interface MinimumOrderValueTableStoreCodeSetWithMov {
   /** A list of unique store codes or empty for the catch all. */
   storeCodes?: StringList;
 }
-export const MinimumOrderValueTableStoreCodeSetWithMov =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(Price),
-      storeCodes: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "MinimumOrderValueTableStoreCodeSetWithMov",
-  }) as any as S.Schema<MinimumOrderValueTableStoreCodeSetWithMov>;
+export const MinimumOrderValueTableStoreCodeSetWithMov = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "value": S.optional(Price),
+  "storeCodes": S.optional(StringList),
+}),
+).annotate({ identifier: "MinimumOrderValueTableStoreCodeSetWithMov" }) as any as S.Schema<MinimumOrderValueTableStoreCodeSetWithMov>;
 
-export type MinimumOrderValueTableStoreCodeSetWithMovList =
-  ReadonlyArray<MinimumOrderValueTableStoreCodeSetWithMov>;
-export const MinimumOrderValueTableStoreCodeSetWithMovList =
-  /*@__PURE__*/ S.Array(
-    MinimumOrderValueTableStoreCodeSetWithMov,
-  ) as any as S.Schema<MinimumOrderValueTableStoreCodeSetWithMovList>;
+export type MinimumOrderValueTableStoreCodeSetWithMovList = ReadonlyArray<MinimumOrderValueTableStoreCodeSetWithMov>;
+export const MinimumOrderValueTableStoreCodeSetWithMovList = /*@__PURE__*/ S.Array(MinimumOrderValueTableStoreCodeSetWithMov) as any as S.Schema<MinimumOrderValueTableStoreCodeSetWithMovList>;
 
 export interface MinimumOrderValueTable {
   storeCodeSetWithMovs?: MinimumOrderValueTableStoreCodeSetWithMovList;
 }
 export const MinimumOrderValueTable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeCodeSetWithMovs: S.optional(
-      MinimumOrderValueTableStoreCodeSetWithMovList,
-    ),
-  }),
-).annotate({
-  identifier: "MinimumOrderValueTable",
-}) as any as S.Schema<MinimumOrderValueTable>;
+S.Struct({
+  "storeCodeSetWithMovs": S.optional(MinimumOrderValueTableStoreCodeSetWithMovList),
+}),
+).annotate({ identifier: "MinimumOrderValueTable" }) as any as S.Schema<MinimumOrderValueTable>;
 
 export interface HolidayCutoff {
   /** Date of the order deadline, in ISO 8601 format. For example, "2016-11-29" for 29th November 2016. Required. */
@@ -5224,19 +4435,17 @@ export interface HolidayCutoff {
   visibleFromDate?: string;
 }
 export const HolidayCutoff = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadlineDate: S.optional(S.String),
-    deadlineHour: S.optional(S.Number),
-    holidayId: S.optional(S.String),
-    deadlineTimezone: S.optional(S.String),
-    visibleFromDate: S.optional(S.String),
-  }),
+S.Struct({
+  "deadlineDate": S.optional(S.String),
+  "deadlineHour": S.optional(S.Number),
+  "holidayId": S.optional(S.String),
+  "deadlineTimezone": S.optional(S.String),
+  "visibleFromDate": S.optional(S.String),
+}),
 ).annotate({ identifier: "HolidayCutoff" }) as any as S.Schema<HolidayCutoff>;
 
 export type HolidayCutoffList = ReadonlyArray<HolidayCutoff>;
-export const HolidayCutoffList = /*@__PURE__*/ S.Array(
-  HolidayCutoff,
-) as any as S.Schema<HolidayCutoffList>;
+export const HolidayCutoffList = /*@__PURE__*/ S.Array(HolidayCutoff) as any as S.Schema<HolidayCutoffList>;
 
 export interface WarehouseBasedDeliveryTime {
   /** Shipping origin. */
@@ -5257,25 +4466,20 @@ export interface WarehouseBasedDeliveryTime {
   carrier?: string;
 }
 export const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originPostalCode: S.optional(S.String),
-    originStreetAddress: S.optional(S.String),
-    originAdministrativeArea: S.optional(S.String),
-    originCountry: S.optional(S.String),
-    carrierService: S.optional(S.String),
-    originCity: S.optional(S.String),
-    warehouseName: S.optional(S.String),
-    carrier: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WarehouseBasedDeliveryTime",
-}) as any as S.Schema<WarehouseBasedDeliveryTime>;
+S.Struct({
+  "originPostalCode": S.optional(S.String),
+  "originStreetAddress": S.optional(S.String),
+  "originAdministrativeArea": S.optional(S.String),
+  "originCountry": S.optional(S.String),
+  "carrierService": S.optional(S.String),
+  "originCity": S.optional(S.String),
+  "warehouseName": S.optional(S.String),
+  "carrier": S.optional(S.String),
+}),
+).annotate({ identifier: "WarehouseBasedDeliveryTime" }) as any as S.Schema<WarehouseBasedDeliveryTime>;
 
-export type WarehouseBasedDeliveryTimeList =
-  ReadonlyArray<WarehouseBasedDeliveryTime>;
-export const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(
-  WarehouseBasedDeliveryTime,
-) as any as S.Schema<WarehouseBasedDeliveryTimeList>;
+export type WarehouseBasedDeliveryTimeList = ReadonlyArray<WarehouseBasedDeliveryTime>;
+export const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(WarehouseBasedDeliveryTime) as any as S.Schema<WarehouseBasedDeliveryTimeList>;
 
 export interface CutoffTime {
   /** Hour of the cutoff time until which an order has to be placed to be processed in the same day. Required. */
@@ -5286,11 +4490,11 @@ export interface CutoffTime {
   timezone?: string;
 }
 export const CutoffTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hour: S.optional(S.Number),
-    minute: S.optional(S.Number),
-    timezone: S.optional(S.String),
-  }),
+S.Struct({
+  "hour": S.optional(S.Number),
+  "minute": S.optional(S.Number),
+  "timezone": S.optional(S.String),
+}),
 ).annotate({ identifier: "CutoffTime" }) as any as S.Schema<CutoffTime>;
 
 export interface BusinessDayConfig {
@@ -5298,12 +4502,10 @@ export interface BusinessDayConfig {
   businessDays?: StringList;
 }
 export const BusinessDayConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessDays: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BusinessDayConfig",
-}) as any as S.Schema<BusinessDayConfig>;
+S.Struct({
+  "businessDays": S.optional(StringList),
+}),
+).annotate({ identifier: "BusinessDayConfig" }) as any as S.Schema<BusinessDayConfig>;
 
 export interface TransitTableTransitTimeRowTransitTimeValue {
   /** Must be greater than or equal to `minTransitTimeInDays`. */
@@ -5311,39 +4513,27 @@ export interface TransitTableTransitTimeRowTransitTimeValue {
   /** Transit time range (min-max) in business days. 0 means same day delivery, 1 means next day delivery. */
   minTransitTimeInDays?: number;
 }
-export const TransitTableTransitTimeRowTransitTimeValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxTransitTimeInDays: S.optional(S.Number),
-      minTransitTimeInDays: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "TransitTableTransitTimeRowTransitTimeValue",
-  }) as any as S.Schema<TransitTableTransitTimeRowTransitTimeValue>;
+export const TransitTableTransitTimeRowTransitTimeValue = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "maxTransitTimeInDays": S.optional(S.Number),
+  "minTransitTimeInDays": S.optional(S.Number),
+}),
+).annotate({ identifier: "TransitTableTransitTimeRowTransitTimeValue" }) as any as S.Schema<TransitTableTransitTimeRowTransitTimeValue>;
 
-export type TransitTableTransitTimeRowTransitTimeValueList =
-  ReadonlyArray<TransitTableTransitTimeRowTransitTimeValue>;
-export const TransitTableTransitTimeRowTransitTimeValueList =
-  /*@__PURE__*/ S.Array(
-    TransitTableTransitTimeRowTransitTimeValue,
-  ) as any as S.Schema<TransitTableTransitTimeRowTransitTimeValueList>;
+export type TransitTableTransitTimeRowTransitTimeValueList = ReadonlyArray<TransitTableTransitTimeRowTransitTimeValue>;
+export const TransitTableTransitTimeRowTransitTimeValueList = /*@__PURE__*/ S.Array(TransitTableTransitTimeRowTransitTimeValue) as any as S.Schema<TransitTableTransitTimeRowTransitTimeValueList>;
 
 export interface TransitTableTransitTimeRow {
   values?: TransitTableTransitTimeRowTransitTimeValueList;
 }
 export const TransitTableTransitTimeRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(TransitTableTransitTimeRowTransitTimeValueList),
-  }),
-).annotate({
-  identifier: "TransitTableTransitTimeRow",
-}) as any as S.Schema<TransitTableTransitTimeRow>;
+S.Struct({
+  "values": S.optional(TransitTableTransitTimeRowTransitTimeValueList),
+}),
+).annotate({ identifier: "TransitTableTransitTimeRow" }) as any as S.Schema<TransitTableTransitTimeRow>;
 
-export type TransitTableTransitTimeRowList =
-  ReadonlyArray<TransitTableTransitTimeRow>;
-export const TransitTableTransitTimeRowList = /*@__PURE__*/ S.Array(
-  TransitTableTransitTimeRow,
-) as any as S.Schema<TransitTableTransitTimeRowList>;
+export type TransitTableTransitTimeRowList = ReadonlyArray<TransitTableTransitTimeRow>;
+export const TransitTableTransitTimeRowList = /*@__PURE__*/ S.Array(TransitTableTransitTimeRow) as any as S.Schema<TransitTableTransitTimeRowList>;
 
 export interface TransitTable {
   /** A list of transit time labels. The last value can be `"all other labels"`. Example: `["food", "electronics", "all other labels"]`. */
@@ -5353,11 +4543,11 @@ export interface TransitTable {
   postalCodeGroupNames?: StringList;
 }
 export const TransitTable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transitTimeLabels: S.optional(StringList),
-    rows: S.optional(TransitTableTransitTimeRowList),
-    postalCodeGroupNames: S.optional(StringList),
-  }),
+S.Struct({
+  "transitTimeLabels": S.optional(StringList),
+  "rows": S.optional(TransitTableTransitTimeRowList),
+  "postalCodeGroupNames": S.optional(StringList),
+}),
 ).annotate({ identifier: "TransitTable" }) as any as S.Schema<TransitTable>;
 
 export interface DeliveryTime {
@@ -5383,18 +4573,18 @@ export interface DeliveryTime {
   transitTimeTable?: TransitTable;
 }
 export const DeliveryTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    holidayCutoffs: S.optional(HolidayCutoffList),
-    maxTransitTimeInDays: S.optional(S.Number),
-    maxHandlingTimeInDays: S.optional(S.Number),
-    warehouseBasedDeliveryTimes: S.optional(WarehouseBasedDeliveryTimeList),
-    minTransitTimeInDays: S.optional(S.Number),
-    cutoffTime: S.optional(CutoffTime),
-    minHandlingTimeInDays: S.optional(S.Number),
-    handlingBusinessDayConfig: S.optional(BusinessDayConfig),
-    transitBusinessDayConfig: S.optional(BusinessDayConfig),
-    transitTimeTable: S.optional(TransitTable),
-  }),
+S.Struct({
+  "holidayCutoffs": S.optional(HolidayCutoffList),
+  "maxTransitTimeInDays": S.optional(S.Number),
+  "maxHandlingTimeInDays": S.optional(S.Number),
+  "warehouseBasedDeliveryTimes": S.optional(WarehouseBasedDeliveryTimeList),
+  "minTransitTimeInDays": S.optional(S.Number),
+  "cutoffTime": S.optional(CutoffTime),
+  "minHandlingTimeInDays": S.optional(S.Number),
+  "handlingBusinessDayConfig": S.optional(BusinessDayConfig),
+  "transitBusinessDayConfig": S.optional(BusinessDayConfig),
+  "transitTimeTable": S.optional(TransitTable),
+}),
 ).annotate({ identifier: "DeliveryTime" }) as any as S.Schema<DeliveryTime>;
 
 export interface PickupCarrierService {
@@ -5404,13 +4594,11 @@ export interface PickupCarrierService {
   carrierName?: string;
 }
 export const PickupCarrierService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.optional(S.String),
-    carrierName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PickupCarrierService",
-}) as any as S.Schema<PickupCarrierService>;
+S.Struct({
+  "serviceName": S.optional(S.String),
+  "carrierName": S.optional(S.String),
+}),
+).annotate({ identifier: "PickupCarrierService" }) as any as S.Schema<PickupCarrierService>;
 
 export interface Service {
   /** The CLDR code of the currency to which this service applies. Must match that of the prices in rate groups. */
@@ -5439,26 +4627,24 @@ export interface Service {
   pickupService?: PickupCarrierService;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currency: S.optional(S.String),
-    storeConfig: S.optional(ServiceStoreConfig),
-    name: S.optional(S.String),
-    minimumOrderValue: S.optional(Price),
-    rateGroups: S.optional(RateGroupList),
-    minimumOrderValueTable: S.optional(MinimumOrderValueTable),
-    deliveryTime: S.optional(DeliveryTime),
-    shipmentType: S.optional(S.String),
-    deliveryCountry: S.optional(S.String),
-    active: S.optional(S.Boolean),
-    eligibility: S.optional(S.String),
-    pickupService: S.optional(PickupCarrierService),
-  }),
+S.Struct({
+  "currency": S.optional(S.String),
+  "storeConfig": S.optional(ServiceStoreConfig),
+  "name": S.optional(S.String),
+  "minimumOrderValue": S.optional(Price),
+  "rateGroups": S.optional(RateGroupList),
+  "minimumOrderValueTable": S.optional(MinimumOrderValueTable),
+  "deliveryTime": S.optional(DeliveryTime),
+  "shipmentType": S.optional(S.String),
+  "deliveryCountry": S.optional(S.String),
+  "active": S.optional(S.Boolean),
+  "eligibility": S.optional(S.String),
+  "pickupService": S.optional(PickupCarrierService),
+}),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export type ServiceList = ReadonlyArray<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(
-  Service,
-) as any as S.Schema<ServiceList>;
+export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 export interface Address {
   /** Required. City, town or commune. May also include dependent localities or sublocalities (for example, neighborhoods or suburbs). */
@@ -5473,13 +4659,13 @@ export interface Address {
   postalCode?: string;
 }
 export const Address = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    city: S.optional(S.String),
-    country: S.optional(S.String),
-    streetAddress: S.optional(S.String),
-    administrativeArea: S.optional(S.String),
-    postalCode: S.optional(S.String),
-  }),
+S.Struct({
+  "city": S.optional(S.String),
+  "country": S.optional(S.String),
+  "streetAddress": S.optional(S.String),
+  "administrativeArea": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
 export interface WarehouseCutoffTime {
@@ -5489,13 +4675,11 @@ export interface WarehouseCutoffTime {
   hour?: number;
 }
 export const WarehouseCutoffTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minute: S.optional(S.Number),
-    hour: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WarehouseCutoffTime",
-}) as any as S.Schema<WarehouseCutoffTime>;
+S.Struct({
+  "minute": S.optional(S.Number),
+  "hour": S.optional(S.Number),
+}),
+).annotate({ identifier: "WarehouseCutoffTime" }) as any as S.Schema<WarehouseCutoffTime>;
 
 /** A fulfillment warehouse, which stores and handles inventory. */
 export interface Warehouse {
@@ -5511,19 +4695,17 @@ export interface Warehouse {
   businessDayConfig?: BusinessDayConfig;
 }
 export const Warehouse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    shippingAddress: S.optional(Address),
-    handlingDays: S.optional(S.String),
-    cutoffTime: S.optional(WarehouseCutoffTime),
-    businessDayConfig: S.optional(BusinessDayConfig),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "shippingAddress": S.optional(Address),
+  "handlingDays": S.optional(S.String),
+  "cutoffTime": S.optional(WarehouseCutoffTime),
+  "businessDayConfig": S.optional(BusinessDayConfig),
+}),
 ).annotate({ identifier: "Warehouse" }) as any as S.Schema<Warehouse>;
 
 export type WarehouseList = ReadonlyArray<Warehouse>;
-export const WarehouseList = /*@__PURE__*/ S.Array(
-  Warehouse,
-) as any as S.Schema<WarehouseList>;
+export const WarehouseList = /*@__PURE__*/ S.Array(Warehouse) as any as S.Schema<WarehouseList>;
 
 export interface PostalCodeRange {
   /** A postal code or a pattern of the form `prefix*` denoting the inclusive lower bound of the range defining the area. Examples values: `"94108"`, `"9410*"`, `"9*"`. Required. */
@@ -5532,18 +4714,14 @@ export interface PostalCodeRange {
   postalCodeRangeEnd?: string;
 }
 export const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    postalCodeRangeBegin: S.optional(S.String),
-    postalCodeRangeEnd: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostalCodeRange",
-}) as any as S.Schema<PostalCodeRange>;
+S.Struct({
+  "postalCodeRangeBegin": S.optional(S.String),
+  "postalCodeRangeEnd": S.optional(S.String),
+}),
+).annotate({ identifier: "PostalCodeRange" }) as any as S.Schema<PostalCodeRange>;
 
 export type PostalCodeRangeList = ReadonlyArray<PostalCodeRange>;
-export const PostalCodeRangeList = /*@__PURE__*/ S.Array(
-  PostalCodeRange,
-) as any as S.Schema<PostalCodeRangeList>;
+export const PostalCodeRangeList = /*@__PURE__*/ S.Array(PostalCodeRange) as any as S.Schema<PostalCodeRangeList>;
 
 export interface PostalCodeGroup {
   /** The name of the postal code group, referred to in headers. Required. */
@@ -5554,19 +4732,15 @@ export interface PostalCodeGroup {
   postalCodeRanges?: PostalCodeRangeList;
 }
 export const PostalCodeGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    country: S.optional(S.String),
-    postalCodeRanges: S.optional(PostalCodeRangeList),
-  }),
-).annotate({
-  identifier: "PostalCodeGroup",
-}) as any as S.Schema<PostalCodeGroup>;
+S.Struct({
+  "name": S.optional(S.String),
+  "country": S.optional(S.String),
+  "postalCodeRanges": S.optional(PostalCodeRangeList),
+}),
+).annotate({ identifier: "PostalCodeGroup" }) as any as S.Schema<PostalCodeGroup>;
 
 export type PostalCodeGroupList = ReadonlyArray<PostalCodeGroup>;
-export const PostalCodeGroupList = /*@__PURE__*/ S.Array(
-  PostalCodeGroup,
-) as any as S.Schema<PostalCodeGroupList>;
+export const PostalCodeGroupList = /*@__PURE__*/ S.Array(PostalCodeGroup) as any as S.Schema<PostalCodeGroupList>;
 
 /** The merchant account's shipping settings. All methods except getsupportedcarriers and getsupportedholidays require the admin role. */
 export interface ShippingSettings {
@@ -5580,15 +4754,13 @@ export interface ShippingSettings {
   postalCodeGroups?: PostalCodeGroupList;
 }
 export const ShippingSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    services: S.optional(ServiceList),
-    warehouses: S.optional(WarehouseList),
-    accountId: S.optional(S.String),
-    postalCodeGroups: S.optional(PostalCodeGroupList),
-  }),
-).annotate({
-  identifier: "ShippingSettings",
-}) as any as S.Schema<ShippingSettings>;
+S.Struct({
+  "services": S.optional(ServiceList),
+  "warehouses": S.optional(WarehouseList),
+  "accountId": S.optional(S.String),
+  "postalCodeGroups": S.optional(PostalCodeGroupList),
+}),
+).annotate({ identifier: "ShippingSettings" }) as any as S.Schema<ShippingSettings>;
 
 /** A batch entry encoding a single non-batch shippingsettings request. */
 export interface ShippingsettingsCustomBatchRequestEntry {
@@ -5603,55 +4775,38 @@ export interface ShippingsettingsCustomBatchRequestEntry {
   /** The method of the batch entry. Acceptable values are: - "`get`" - "`update`" */
   method?: string;
 }
-export const ShippingsettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      merchantId: S.optional(S.String),
-      batchId: S.optional(S.Number),
-      shippingSettings: S.optional(ShippingSettings),
-      accountId: S.optional(S.String),
-      method: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ShippingsettingsCustomBatchRequestEntry",
-}) as any as S.Schema<ShippingsettingsCustomBatchRequestEntry>;
+export const ShippingsettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.optional(S.String),
+  "batchId": S.optional(S.Number),
+  "shippingSettings": S.optional(ShippingSettings),
+  "accountId": S.optional(S.String),
+  "method": S.optional(S.String),
+}),
+).annotate({ identifier: "ShippingsettingsCustomBatchRequestEntry" }) as any as S.Schema<ShippingsettingsCustomBatchRequestEntry>;
 
-export type ShippingsettingsCustomBatchRequestEntryList =
-  ReadonlyArray<ShippingsettingsCustomBatchRequestEntry>;
-export const ShippingsettingsCustomBatchRequestEntryList =
-  /*@__PURE__*/ S.Array(
-    ShippingsettingsCustomBatchRequestEntry,
-  ) as any as S.Schema<ShippingsettingsCustomBatchRequestEntryList>;
+export type ShippingsettingsCustomBatchRequestEntryList = ReadonlyArray<ShippingsettingsCustomBatchRequestEntry>;
+export const ShippingsettingsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(ShippingsettingsCustomBatchRequestEntry) as any as S.Schema<ShippingsettingsCustomBatchRequestEntryList>;
 
 export interface ShippingsettingsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: ShippingsettingsCustomBatchRequestEntryList;
 }
 export const ShippingsettingsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(ShippingsettingsCustomBatchRequestEntryList),
-  }),
-).annotate({
-  identifier: "ShippingsettingsCustomBatchRequest",
-}) as any as S.Schema<ShippingsettingsCustomBatchRequest>;
+S.Struct({
+  "entries": S.optional(ShippingsettingsCustomBatchRequestEntryList),
+}),
+).annotate({ identifier: "ShippingsettingsCustomBatchRequest" }) as any as S.Schema<ShippingsettingsCustomBatchRequest>;
 
 export interface CustombatchShippingsettingsRequest {
   /** Request body */
   body?: ShippingsettingsCustomBatchRequest;
 }
 export const CustombatchShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(ShippingsettingsCustomBatchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "shippingsettings/batch",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "CustombatchShippingsettingsRequest",
-}) as any as S.Schema<CustombatchShippingsettingsRequest>;
+S.Struct({
+  "body": S.optional(ShippingsettingsCustomBatchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"shippingsettings/batch","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "CustombatchShippingsettingsRequest" }) as any as S.Schema<CustombatchShippingsettingsRequest>;
 
 /** A batch entry encoding a single non-batch shipping settings response. */
 export interface ShippingsettingsCustomBatchResponseEntry {
@@ -5664,24 +4819,17 @@ export interface ShippingsettingsCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsCustomBatchResponseEntry`" */
   kind?: string;
 }
-export const ShippingsettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchId: S.optional(S.Number),
-      errors: S.optional(Errors),
-      shippingSettings: S.optional(ShippingSettings),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ShippingsettingsCustomBatchResponseEntry",
-}) as any as S.Schema<ShippingsettingsCustomBatchResponseEntry>;
+export const ShippingsettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "batchId": S.optional(S.Number),
+  "errors": S.optional(Errors),
+  "shippingSettings": S.optional(ShippingSettings),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ShippingsettingsCustomBatchResponseEntry" }) as any as S.Schema<ShippingsettingsCustomBatchResponseEntry>;
 
-export type ShippingsettingsCustomBatchResponseEntryList =
-  ReadonlyArray<ShippingsettingsCustomBatchResponseEntry>;
-export const ShippingsettingsCustomBatchResponseEntryList =
-  /*@__PURE__*/ S.Array(
-    ShippingsettingsCustomBatchResponseEntry,
-  ) as any as S.Schema<ShippingsettingsCustomBatchResponseEntryList>;
+export type ShippingsettingsCustomBatchResponseEntryList = ReadonlyArray<ShippingsettingsCustomBatchResponseEntry>;
+export const ShippingsettingsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(ShippingsettingsCustomBatchResponseEntry) as any as S.Schema<ShippingsettingsCustomBatchResponseEntryList>;
 
 export interface ShippingsettingsCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsCustomBatchResponse`". */
@@ -5690,13 +4838,11 @@ export interface ShippingsettingsCustomBatchResponse {
   entries?: ShippingsettingsCustomBatchResponseEntryList;
 }
 export const ShippingsettingsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    entries: S.optional(ShippingsettingsCustomBatchResponseEntryList),
-  }),
-).annotate({
-  identifier: "ShippingsettingsCustomBatchResponse",
-}) as any as S.Schema<ShippingsettingsCustomBatchResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "entries": S.optional(ShippingsettingsCustomBatchResponseEntryList),
+}),
+).annotate({ identifier: "ShippingsettingsCustomBatchResponse" }) as any as S.Schema<ShippingsettingsCustomBatchResponse>;
 
 export interface DeleteAccountsRequest {
   /** The ID of the managing account. This must be a multi-client account, and accountId must be the ID of a sub-account of this account. */
@@ -5707,27 +4853,17 @@ export interface DeleteAccountsRequest {
   accountId: string;
 }
 export const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    force: S.optional(S.Boolean.pipe(T.Query())),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "{merchantId}/accounts/{accountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAccountsRequest",
-}) as any as S.Schema<DeleteAccountsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"{merchantId}/accounts/{accountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteAccountsRequest" }) as any as S.Schema<DeleteAccountsRequest>;
 
 export interface DeleteAccountsResponse {}
 export const DeleteAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsResponse",
-}) as any as S.Schema<DeleteAccountsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteAccountsResponse" }) as any as S.Schema<DeleteAccountsResponse>;
 
 export interface DeleteAccountsLabelsRequest {
   /** Required. The id of the label to delete. */
@@ -5736,26 +4872,16 @@ export interface DeleteAccountsLabelsRequest {
   accountId: string;
 }
 export const DeleteAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labelId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "accounts/{accountId}/labels/{labelId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAccountsLabelsRequest",
-}) as any as S.Schema<DeleteAccountsLabelsRequest>;
+S.Struct({
+  "labelId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"accounts/{accountId}/labels/{labelId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteAccountsLabelsRequest" }) as any as S.Schema<DeleteAccountsLabelsRequest>;
 
 export interface DeleteAccountsLabelsResponse {}
 export const DeleteAccountsLabelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsLabelsResponse",
-}) as any as S.Schema<DeleteAccountsLabelsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteAccountsLabelsResponse" }) as any as S.Schema<DeleteAccountsLabelsResponse>;
 
 export interface DeleteAccountsReturncarrierRequest {
   /** Required. The Merchant Center Account Id under which the Return Carrier is to be linked. */
@@ -5764,26 +4890,16 @@ export interface DeleteAccountsReturncarrierRequest {
   carrierAccountId: string;
 }
 export const DeleteAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    carrierAccountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "accounts/{accountId}/returncarrier/{carrierAccountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAccountsReturncarrierRequest",
-}) as any as S.Schema<DeleteAccountsReturncarrierRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "carrierAccountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"accounts/{accountId}/returncarrier/{carrierAccountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteAccountsReturncarrierRequest" }) as any as S.Schema<DeleteAccountsReturncarrierRequest>;
 
 export interface DeleteAccountsReturncarrierResponse {}
 export const DeleteAccountsReturncarrierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsReturncarrierResponse",
-}) as any as S.Schema<DeleteAccountsReturncarrierResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteAccountsReturncarrierResponse" }) as any as S.Schema<DeleteAccountsReturncarrierResponse>;
 
 export interface DeleteCollectionsRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
@@ -5792,26 +4908,16 @@ export interface DeleteCollectionsRequest {
   collectionId: string;
 }
 export const DeleteCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    collectionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "{merchantId}/collections/{collectionId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteCollectionsRequest",
-}) as any as S.Schema<DeleteCollectionsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "collectionId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"{merchantId}/collections/{collectionId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteCollectionsRequest" }) as any as S.Schema<DeleteCollectionsRequest>;
 
 export interface DeleteCollectionsResponse {}
 export const DeleteCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCollectionsResponse",
-}) as any as S.Schema<DeleteCollectionsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteCollectionsResponse" }) as any as S.Schema<DeleteCollectionsResponse>;
 
 export interface DeleteConversionsourcesRequest {
   /** Required. The ID of the account that owns the new conversion source. */
@@ -5820,26 +4926,16 @@ export interface DeleteConversionsourcesRequest {
   conversionSourceId: string;
 }
 export const DeleteConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    conversionSourceId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "{merchantId}/conversionsources/{conversionSourceId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteConversionsourcesRequest",
-}) as any as S.Schema<DeleteConversionsourcesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "conversionSourceId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"{merchantId}/conversionsources/{conversionSourceId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteConversionsourcesRequest" }) as any as S.Schema<DeleteConversionsourcesRequest>;
 
 export interface DeleteConversionsourcesResponse {}
 export const DeleteConversionsourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConversionsourcesResponse",
-}) as any as S.Schema<DeleteConversionsourcesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteConversionsourcesResponse" }) as any as S.Schema<DeleteConversionsourcesResponse>;
 
 export interface DeleteDatafeedsRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
@@ -5848,51 +4944,31 @@ export interface DeleteDatafeedsRequest {
   datafeedId: string;
 }
 export const DeleteDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    datafeedId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "{merchantId}/datafeeds/{datafeedId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteDatafeedsRequest",
-}) as any as S.Schema<DeleteDatafeedsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "datafeedId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"{merchantId}/datafeeds/{datafeedId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteDatafeedsRequest" }) as any as S.Schema<DeleteDatafeedsRequest>;
 
 export interface DeleteDatafeedsResponse {}
 export const DeleteDatafeedsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDatafeedsResponse",
-}) as any as S.Schema<DeleteDatafeedsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteDatafeedsResponse" }) as any as S.Schema<DeleteDatafeedsResponse>;
 
 export interface DeleteFreelistingsprogramCheckoutsettingsRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
-export const DeleteFreelistingsprogramCheckoutsettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "{merchantId}/freelistingsprogram/checkoutsettings",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteFreelistingsprogramCheckoutsettingsRequest",
-  }) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsRequest>;
+export const DeleteFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"{merchantId}/freelistingsprogram/checkoutsettings","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteFreelistingsprogramCheckoutsettingsRequest" }) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsRequest>;
 
 export interface DeleteFreelistingsprogramCheckoutsettingsResponse {}
-export const DeleteFreelistingsprogramCheckoutsettingsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteFreelistingsprogramCheckoutsettingsResponse",
-  }) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsResponse>;
+export const DeleteFreelistingsprogramCheckoutsettingsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "DeleteFreelistingsprogramCheckoutsettingsResponse" }) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsResponse>;
 
 export interface DeletePosRequest {
   /** The ID of the POS or inventory data provider. */
@@ -5903,27 +4979,17 @@ export interface DeletePosRequest {
   storeCode: string;
 }
 export const DeletePosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    targetMerchantId: S.String.pipe(T.Label()),
-    storeCode: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "{merchantId}/pos/{targetMerchantId}/store/{storeCode}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeletePosRequest",
-}) as any as S.Schema<DeletePosRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "targetMerchantId": S.String.pipe(T.Label()),
+  "storeCode": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"{merchantId}/pos/{targetMerchantId}/store/{storeCode}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeletePosRequest" }) as any as S.Schema<DeletePosRequest>;
 
 export interface DeletePosResponse {}
 export const DeletePosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePosResponse",
-}) as any as S.Schema<DeletePosResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeletePosResponse" }) as any as S.Schema<DeletePosResponse>;
 
 export interface DeleteProductdeliverytimeRequest {
   /** Required. The Google merchant ID of the account that contains the product. This account cannot be a multi-client account. */
@@ -5932,26 +4998,16 @@ export interface DeleteProductdeliverytimeRequest {
   productId: string;
 }
 export const DeleteProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "{merchantId}/productdeliverytime/{productId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProductdeliverytimeRequest",
-}) as any as S.Schema<DeleteProductdeliverytimeRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"{merchantId}/productdeliverytime/{productId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteProductdeliverytimeRequest" }) as any as S.Schema<DeleteProductdeliverytimeRequest>;
 
 export interface DeleteProductdeliverytimeResponse {}
 export const DeleteProductdeliverytimeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProductdeliverytimeResponse",
-}) as any as S.Schema<DeleteProductdeliverytimeResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteProductdeliverytimeResponse" }) as any as S.Schema<DeleteProductdeliverytimeResponse>;
 
 export interface DeleteProductsRequest {
   /** The ID of the account that contains the product. This account cannot be a multi-client account. */
@@ -5962,27 +5018,17 @@ export interface DeleteProductsRequest {
   feedId?: string;
 }
 export const DeleteProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-    feedId: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "{merchantId}/products/{productId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProductsRequest",
-}) as any as S.Schema<DeleteProductsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "feedId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"{merchantId}/products/{productId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteProductsRequest" }) as any as S.Schema<DeleteProductsRequest>;
 
 export interface DeleteProductsResponse {}
 export const DeleteProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProductsResponse",
-}) as any as S.Schema<DeleteProductsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteProductsResponse" }) as any as S.Schema<DeleteProductsResponse>;
 
 export interface DeleteRegionsRequest {
   /** Required. The id of the merchant for which to delete region definition. */
@@ -5991,26 +5037,16 @@ export interface DeleteRegionsRequest {
   regionId: string;
 }
 export const DeleteRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    regionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "{merchantId}/regions/{regionId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteRegionsRequest",
-}) as any as S.Schema<DeleteRegionsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "regionId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"{merchantId}/regions/{regionId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteRegionsRequest" }) as any as S.Schema<DeleteRegionsRequest>;
 
 export interface DeleteRegionsResponse {}
 export const DeleteRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRegionsResponse",
-}) as any as S.Schema<DeleteRegionsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteRegionsResponse" }) as any as S.Schema<DeleteRegionsResponse>;
 
 export interface DeleteReturnpolicyonlineRequest {
   /** Required. The id of the return policy to delete. */
@@ -6019,26 +5055,16 @@ export interface DeleteReturnpolicyonlineRequest {
   merchantId: string;
 }
 export const DeleteReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    returnPolicyId: S.String.pipe(T.Label()),
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "{merchantId}/returnpolicyonline/{returnPolicyId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteReturnpolicyonlineRequest",
-}) as any as S.Schema<DeleteReturnpolicyonlineRequest>;
+S.Struct({
+  "returnPolicyId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"{merchantId}/returnpolicyonline/{returnPolicyId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "DeleteReturnpolicyonlineRequest" }) as any as S.Schema<DeleteReturnpolicyonlineRequest>;
 
 export interface DeleteReturnpolicyonlineResponse {}
 export const DeleteReturnpolicyonlineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReturnpolicyonlineResponse",
-}) as any as S.Schema<DeleteReturnpolicyonlineResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteReturnpolicyonlineResponse" }) as any as S.Schema<DeleteReturnpolicyonlineResponse>;
 
 export interface FetchnowDatafeedsRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
@@ -6047,31 +5073,21 @@ export interface FetchnowDatafeedsRequest {
   datafeedId: string;
 }
 export const FetchnowDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    datafeedId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/datafeeds/{datafeedId}/fetchNow",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "FetchnowDatafeedsRequest",
-}) as any as S.Schema<FetchnowDatafeedsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "datafeedId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/datafeeds/{datafeedId}/fetchNow","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "FetchnowDatafeedsRequest" }) as any as S.Schema<FetchnowDatafeedsRequest>;
 
 export interface DatafeedsFetchNowResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsFetchNowResponse`". */
   kind?: string;
 }
 export const DatafeedsFetchNowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatafeedsFetchNowResponse",
-}) as any as S.Schema<DatafeedsFetchNowResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "DatafeedsFetchNowResponse" }) as any as S.Schema<DatafeedsFetchNowResponse>;
 
 export interface GenerateRecommendationsRequest {
   /** Required. The ID of the account to fetch recommendations for. */
@@ -6082,20 +5098,12 @@ export interface GenerateRecommendationsRequest {
   languageCode?: string;
 }
 export const GenerateRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    allowedTag: S.optional(StringList.pipe(T.Query())),
-    languageCode: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/recommendations/generate",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GenerateRecommendationsRequest",
-}) as any as S.Schema<GenerateRecommendationsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "allowedTag": S.optional(StringList.pipe(T.Query())),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/recommendations/generate","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GenerateRecommendationsRequest" }) as any as S.Schema<GenerateRecommendationsRequest>;
 
 /** Call to action (CTA) that explains how a merchant can implement this recommendation */
 export interface RecommendationCallToAction {
@@ -6107,20 +5115,14 @@ export interface RecommendationCallToAction {
   uri?: string;
 }
 export const RecommendationCallToAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    intent: S.optional(S.String),
-    localizedText: S.optional(S.String),
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecommendationCallToAction",
-}) as any as S.Schema<RecommendationCallToAction>;
+S.Struct({
+  "intent": S.optional(S.String),
+  "localizedText": S.optional(S.String),
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "RecommendationCallToAction" }) as any as S.Schema<RecommendationCallToAction>;
 
-export type RecommendationDescriptionTypeEnum =
-  | "DESCRIPTION_TYPE_UNSPECIFIED"
-  | "SHORT"
-  | "LONG"
-  | (string & {});
+export type RecommendationDescriptionTypeEnum = "DESCRIPTION_TYPE_UNSPECIFIED" | "SHORT" | "LONG";
 export const RecommendationDescriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Google-provided description for the recommendation. */
@@ -6131,25 +5133,16 @@ export interface RecommendationDescription {
   type?: RecommendationDescriptionTypeEnum;
 }
 export const RecommendationDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-    type: S.optional(RecommendationDescriptionTypeEnum),
-  }),
-).annotate({
-  identifier: "RecommendationDescription",
-}) as any as S.Schema<RecommendationDescription>;
+S.Struct({
+  "text": S.optional(S.String),
+  "type": S.optional(RecommendationDescriptionTypeEnum),
+}),
+).annotate({ identifier: "RecommendationDescription" }) as any as S.Schema<RecommendationDescription>;
 
-export type RecommendationDescriptionList =
-  ReadonlyArray<RecommendationDescription>;
-export const RecommendationDescriptionList = /*@__PURE__*/ S.Array(
-  RecommendationDescription,
-) as any as S.Schema<RecommendationDescriptionList>;
+export type RecommendationDescriptionList = ReadonlyArray<RecommendationDescription>;
+export const RecommendationDescriptionList = /*@__PURE__*/ S.Array(RecommendationDescription) as any as S.Schema<RecommendationDescriptionList>;
 
-export type RecommendationCreativeTypeEnum =
-  | "CREATIVE_TYPE_UNSPECIFIED"
-  | "VIDEO"
-  | "PHOTO"
-  | (string & {});
+export type RecommendationCreativeTypeEnum = "CREATIVE_TYPE_UNSPECIFIED" | "VIDEO" | "PHOTO";
 export const RecommendationCreativeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative is a multimedia attachment to recommendation that can be used on the frontend. */
@@ -6160,24 +5153,17 @@ export interface RecommendationCreative {
   uri?: string;
 }
 export const RecommendationCreative = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(RecommendationCreativeTypeEnum),
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecommendationCreative",
-}) as any as S.Schema<RecommendationCreative>;
+S.Struct({
+  "type": S.optional(RecommendationCreativeTypeEnum),
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "RecommendationCreative" }) as any as S.Schema<RecommendationCreative>;
 
 export type RecommendationCreativeList = ReadonlyArray<RecommendationCreative>;
-export const RecommendationCreativeList = /*@__PURE__*/ S.Array(
-  RecommendationCreative,
-) as any as S.Schema<RecommendationCreativeList>;
+export const RecommendationCreativeList = /*@__PURE__*/ S.Array(RecommendationCreative) as any as S.Schema<RecommendationCreativeList>;
 
-export type RecommendationCallToActionList =
-  ReadonlyArray<RecommendationCallToAction>;
-export const RecommendationCallToActionList = /*@__PURE__*/ S.Array(
-  RecommendationCallToAction,
-) as any as S.Schema<RecommendationCallToActionList>;
+export type RecommendationCallToActionList = ReadonlyArray<RecommendationCallToAction>;
+export const RecommendationCallToActionList = /*@__PURE__*/ S.Array(RecommendationCallToAction) as any as S.Schema<RecommendationCallToActionList>;
 
 /** Recommendations are suggested ways to improve your merchant account's performance. For example, to engage with a feature, or start using a new Google product. */
 export interface Recommendation {
@@ -6205,25 +5191,23 @@ export interface Recommendation {
   additionalCallToAction?: RecommendationCallToActionList;
 }
 export const Recommendation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    defaultCallToAction: S.optional(RecommendationCallToAction),
-    paid: S.optional(S.Boolean),
-    recommendationName: S.optional(S.String),
-    additionalDescriptions: S.optional(RecommendationDescriptionList),
-    creative: S.optional(RecommendationCreativeList),
-    title: S.optional(S.String),
-    defaultDescription: S.optional(S.String),
-    numericalImpact: S.optional(S.Number),
-    subType: S.optional(S.String),
-    additionalCallToAction: S.optional(RecommendationCallToActionList),
-  }),
+S.Struct({
+  "type": S.optional(S.String),
+  "defaultCallToAction": S.optional(RecommendationCallToAction),
+  "paid": S.optional(S.Boolean),
+  "recommendationName": S.optional(S.String),
+  "additionalDescriptions": S.optional(RecommendationDescriptionList),
+  "creative": S.optional(RecommendationCreativeList),
+  "title": S.optional(S.String),
+  "defaultDescription": S.optional(S.String),
+  "numericalImpact": S.optional(S.Number),
+  "subType": S.optional(S.String),
+  "additionalCallToAction": S.optional(RecommendationCallToActionList),
+}),
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 
 export type RecommendationList = ReadonlyArray<Recommendation>;
-export const RecommendationList = /*@__PURE__*/ S.Array(
-  Recommendation,
-) as any as S.Schema<RecommendationList>;
+export const RecommendationList = /*@__PURE__*/ S.Array(Recommendation) as any as S.Schema<RecommendationList>;
 
 /** Response containing generated recommendations. */
 export interface GenerateRecommendationsResponse {
@@ -6233,13 +5217,11 @@ export interface GenerateRecommendationsResponse {
   responseToken?: string;
 }
 export const GenerateRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommendations: S.optional(RecommendationList),
-    responseToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenerateRecommendationsResponse",
-}) as any as S.Schema<GenerateRecommendationsResponse>;
+S.Struct({
+  "recommendations": S.optional(RecommendationList),
+  "responseToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GenerateRecommendationsResponse" }) as any as S.Schema<GenerateRecommendationsResponse>;
 
 export interface GetaccessiblegmbaccountsLiasettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
@@ -6247,21 +5229,12 @@ export interface GetaccessiblegmbaccountsLiasettingsRequest {
   /** The ID of the account for which to retrieve accessible Business Profiles. */
   accountId: string;
 }
-export const GetaccessiblegmbaccountsLiasettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-      accountId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "{merchantId}/liasettings/{accountId}/accessiblegmbaccounts",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetaccessiblegmbaccountsLiasettingsRequest",
-  }) as any as S.Schema<GetaccessiblegmbaccountsLiasettingsRequest>;
+export const GetaccessiblegmbaccountsLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/liasettings/{accountId}/accessiblegmbaccounts","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetaccessiblegmbaccountsLiasettingsRequest" }) as any as S.Schema<GetaccessiblegmbaccountsLiasettingsRequest>;
 
 export interface LiasettingsGetAccessibleGmbAccountsResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsGetAccessibleGmbAccountsResponse`". */
@@ -6271,18 +5244,15 @@ export interface LiasettingsGetAccessibleGmbAccountsResponse {
   /** The ID of the Merchant Center account. */
   accountId?: string;
 }
-export const LiasettingsGetAccessibleGmbAccountsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.optional(S.String),
-      gmbAccounts: S.optional(GmbAccountsGmbAccountList),
-      accountId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LiasettingsGetAccessibleGmbAccountsResponse",
-  }) as any as S.Schema<LiasettingsGetAccessibleGmbAccountsResponse>;
+export const LiasettingsGetAccessibleGmbAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kind": S.optional(S.String),
+  "gmbAccounts": S.optional(GmbAccountsGmbAccountList),
+  "accountId": S.optional(S.String),
+}),
+).annotate({ identifier: "LiasettingsGetAccessibleGmbAccountsResponse" }) as any as S.Schema<LiasettingsGetAccessibleGmbAccountsResponse>;
 
-export type GetAccountsViewEnum = "MERCHANT" | "CSS" | (string & {});
+export type GetAccountsViewEnum = "MERCHANT" | "CSS";
 export const GetAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAccountsRequest {
@@ -6291,23 +5261,15 @@ export interface GetAccountsRequest {
   /** The ID of the account. */
   accountId: string;
   /** Controls which fields will be populated. Acceptable values are: "merchant" and "css". The default value is "merchant". */
-  view?: GetAccountsViewEnum;
+  view?: GetAccountsViewEnum | (string & {});
 }
 export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-    view: S.optional(GetAccountsViewEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/accounts/{accountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsRequest",
-}) as any as S.Schema<GetAccountsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "view": S.optional(GetAccountsViewEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/accounts/{accountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetAccountsRequest" }) as any as S.Schema<GetAccountsRequest>;
 
 export interface GetAccountstatusesRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
@@ -6318,20 +5280,12 @@ export interface GetAccountstatusesRequest {
   accountId: string;
 }
 export const GetAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    destinations: S.optional(StringList.pipe(T.Query())),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/accountstatuses/{accountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountstatusesRequest",
-}) as any as S.Schema<GetAccountstatusesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "destinations": S.optional(StringList.pipe(T.Query())),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/accountstatuses/{accountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetAccountstatusesRequest" }) as any as S.Schema<GetAccountstatusesRequest>;
 
 export interface GetAccounttaxRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
@@ -6340,19 +5294,11 @@ export interface GetAccounttaxRequest {
   accountId: string;
 }
 export const GetAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/accounttax/{accountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccounttaxRequest",
-}) as any as S.Schema<GetAccounttaxRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/accounttax/{accountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetAccounttaxRequest" }) as any as S.Schema<GetAccounttaxRequest>;
 
 export interface GetCollectionsRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
@@ -6361,19 +5307,11 @@ export interface GetCollectionsRequest {
   collectionId: string;
 }
 export const GetCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    collectionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/collections/{collectionId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCollectionsRequest",
-}) as any as S.Schema<GetCollectionsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "collectionId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/collections/{collectionId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetCollectionsRequest" }) as any as S.Schema<GetCollectionsRequest>;
 
 export interface GetCollectionstatusesRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
@@ -6382,19 +5320,11 @@ export interface GetCollectionstatusesRequest {
   collectionId: string;
 }
 export const GetCollectionstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    collectionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/collectionstatuses/{collectionId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCollectionstatusesRequest",
-}) as any as S.Schema<GetCollectionstatusesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "collectionId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/collectionstatuses/{collectionId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetCollectionstatusesRequest" }) as any as S.Schema<GetCollectionstatusesRequest>;
 
 /** Destination status message. */
 export interface CollectionStatusDestinationStatus {
@@ -6410,22 +5340,17 @@ export interface CollectionStatusDestinationStatus {
   pendingCountries?: StringList;
 }
 export const CollectionStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    approvedCountries: S.optional(StringList),
-    disapprovedCountries: S.optional(StringList),
-    destination: S.optional(S.String),
-    status: S.optional(S.String),
-    pendingCountries: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CollectionStatusDestinationStatus",
-}) as any as S.Schema<CollectionStatusDestinationStatus>;
+S.Struct({
+  "approvedCountries": S.optional(StringList),
+  "disapprovedCountries": S.optional(StringList),
+  "destination": S.optional(S.String),
+  "status": S.optional(S.String),
+  "pendingCountries": S.optional(StringList),
+}),
+).annotate({ identifier: "CollectionStatusDestinationStatus" }) as any as S.Schema<CollectionStatusDestinationStatus>;
 
-export type CollectionStatusDestinationStatusList =
-  ReadonlyArray<CollectionStatusDestinationStatus>;
-export const CollectionStatusDestinationStatusList = /*@__PURE__*/ S.Array(
-  CollectionStatusDestinationStatus,
-) as any as S.Schema<CollectionStatusDestinationStatusList>;
+export type CollectionStatusDestinationStatusList = ReadonlyArray<CollectionStatusDestinationStatus>;
+export const CollectionStatusDestinationStatusList = /*@__PURE__*/ S.Array(CollectionStatusDestinationStatus) as any as S.Schema<CollectionStatusDestinationStatusList>;
 
 /** Issue associated with the collection. */
 export interface CollectionStatusItemLevelIssue {
@@ -6449,26 +5374,21 @@ export interface CollectionStatusItemLevelIssue {
   applicableCountries?: StringList;
 }
 export const CollectionStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    destination: S.optional(S.String),
-    detail: S.optional(S.String),
-    servability: S.optional(S.String),
-    attributeName: S.optional(S.String),
-    resolution: S.optional(S.String),
-    description: S.optional(S.String),
-    documentation: S.optional(S.String),
-    applicableCountries: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CollectionStatusItemLevelIssue",
-}) as any as S.Schema<CollectionStatusItemLevelIssue>;
+S.Struct({
+  "code": S.optional(S.String),
+  "destination": S.optional(S.String),
+  "detail": S.optional(S.String),
+  "servability": S.optional(S.String),
+  "attributeName": S.optional(S.String),
+  "resolution": S.optional(S.String),
+  "description": S.optional(S.String),
+  "documentation": S.optional(S.String),
+  "applicableCountries": S.optional(StringList),
+}),
+).annotate({ identifier: "CollectionStatusItemLevelIssue" }) as any as S.Schema<CollectionStatusItemLevelIssue>;
 
-export type CollectionStatusItemLevelIssueList =
-  ReadonlyArray<CollectionStatusItemLevelIssue>;
-export const CollectionStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
-  CollectionStatusItemLevelIssue,
-) as any as S.Schema<CollectionStatusItemLevelIssueList>;
+export type CollectionStatusItemLevelIssueList = ReadonlyArray<CollectionStatusItemLevelIssue>;
+export const CollectionStatusItemLevelIssueList = /*@__PURE__*/ S.Array(CollectionStatusItemLevelIssue) as any as S.Schema<CollectionStatusItemLevelIssueList>;
 
 /** The collectionstatus message. */
 export interface CollectionStatus {
@@ -6484,16 +5404,14 @@ export interface CollectionStatus {
   id?: string;
 }
 export const CollectionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationStatuses: S.optional(CollectionStatusDestinationStatusList),
-    lastUpdateDate: S.optional(S.String),
-    collectionLevelIssuses: S.optional(CollectionStatusItemLevelIssueList),
-    creationDate: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CollectionStatus",
-}) as any as S.Schema<CollectionStatus>;
+S.Struct({
+  "destinationStatuses": S.optional(CollectionStatusDestinationStatusList),
+  "lastUpdateDate": S.optional(S.String),
+  "collectionLevelIssuses": S.optional(CollectionStatusItemLevelIssueList),
+  "creationDate": S.optional(S.String),
+  "id": S.optional(S.String),
+}),
+).annotate({ identifier: "CollectionStatus" }) as any as S.Schema<CollectionStatus>;
 
 export interface GetConversionsourcesRequest {
   /** Required. The ID of the account that owns the new conversion source. */
@@ -6502,19 +5420,11 @@ export interface GetConversionsourcesRequest {
   conversionSourceId: string;
 }
 export const GetConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    conversionSourceId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/conversionsources/{conversionSourceId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetConversionsourcesRequest",
-}) as any as S.Schema<GetConversionsourcesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "conversionSourceId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/conversionsources/{conversionSourceId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetConversionsourcesRequest" }) as any as S.Schema<GetConversionsourcesRequest>;
 
 export interface GetCssesRequest {
   /** Required. The ID of the managing account. If this parameter is not the same as [cssDomainId](#cssDomainId), then this ID must be a CSS group ID and `cssDomainId` must be the ID of a CSS domain affiliated with this group. */
@@ -6523,19 +5433,11 @@ export interface GetCssesRequest {
   cssDomainId: string;
 }
 export const GetCssesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cssGroupId: S.String.pipe(T.Label()),
-    cssDomainId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{cssGroupId}/csses/{cssDomainId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCssesRequest",
-}) as any as S.Schema<GetCssesRequest>;
+S.Struct({
+  "cssGroupId": S.String.pipe(T.Label()),
+  "cssDomainId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{cssGroupId}/csses/{cssDomainId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetCssesRequest" }) as any as S.Schema<GetCssesRequest>;
 
 /** Information about CSS domain. */
 export interface Css {
@@ -6553,14 +5455,14 @@ export interface Css {
   displayName?: string;
 }
 export const Css = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labelIds: S.optional(StringList),
-    cssDomainId: S.optional(S.String),
-    fullName: S.optional(S.String),
-    homepageUri: S.optional(S.String),
-    cssGroupId: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "labelIds": S.optional(StringList),
+  "cssDomainId": S.optional(S.String),
+  "fullName": S.optional(S.String),
+  "homepageUri": S.optional(S.String),
+  "cssGroupId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Css" }) as any as S.Schema<Css>;
 
 export interface GetDatafeedsRequest {
@@ -6570,19 +5472,11 @@ export interface GetDatafeedsRequest {
   datafeedId: string;
 }
 export const GetDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    datafeedId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/datafeeds/{datafeedId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetDatafeedsRequest",
-}) as any as S.Schema<GetDatafeedsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "datafeedId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/datafeeds/{datafeedId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetDatafeedsRequest" }) as any as S.Schema<GetDatafeedsRequest>;
 
 export interface GetDatafeedstatusesRequest {
   /** Deprecated. Use `feedLabel` instead. The country to get the datafeed status for. If this parameter is provided then `language` must also be provided. Note that this parameter is required for feeds targeting multiple countries and languages, since a feed may have a different status for each target. */
@@ -6597,88 +5491,44 @@ export interface GetDatafeedstatusesRequest {
   merchantId: string;
 }
 export const GetDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    country: S.optional(S.String.pipe(T.Query())),
-    language: S.optional(S.String.pipe(T.Query())),
-    datafeedId: S.String.pipe(T.Label()),
-    feedLabel: S.optional(S.String.pipe(T.Query())),
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/datafeedstatuses/{datafeedId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetDatafeedstatusesRequest",
-}) as any as S.Schema<GetDatafeedstatusesRequest>;
+S.Struct({
+  "country": S.optional(S.String.pipe(T.Query())),
+  "language": S.optional(S.String.pipe(T.Query())),
+  "datafeedId": S.String.pipe(T.Label()),
+  "feedLabel": S.optional(S.String.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/datafeedstatuses/{datafeedId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetDatafeedstatusesRequest" }) as any as S.Schema<GetDatafeedstatusesRequest>;
 
 export interface GetFreelistingsprogramRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
 export const GetFreelistingsprogramRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/freelistingsprogram",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetFreelistingsprogramRequest",
-}) as any as S.Schema<GetFreelistingsprogramRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/freelistingsprogram","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetFreelistingsprogramRequest" }) as any as S.Schema<GetFreelistingsprogramRequest>;
 
 /** Additional details for review ineligibility reasons. */
 export interface FreeListingsProgramStatusReviewIneligibilityReasonDetails {
   /** This timestamp represents end of cooldown period for review ineligbility reason `IN_COOLDOWN_PERIOD`. */
   cooldownTime?: string;
 }
-export const FreeListingsProgramStatusReviewIneligibilityReasonDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cooldownTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "FreeListingsProgramStatusReviewIneligibilityReasonDetails",
-  }) as any as S.Schema<FreeListingsProgramStatusReviewIneligibilityReasonDetails>;
+export const FreeListingsProgramStatusReviewIneligibilityReasonDetails = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "cooldownTime": S.optional(S.String),
+}),
+).annotate({ identifier: "FreeListingsProgramStatusReviewIneligibilityReasonDetails" }) as any as S.Schema<FreeListingsProgramStatusReviewIneligibilityReasonDetails>;
 
-export type FreeListingsProgramStatusRegionStatusEligibilityStatusEnum =
-  | "STATE_UNSPECIFIED"
-  | "APPROVED"
-  | "DISAPPROVED"
-  | "WARNING"
-  | "UNDER_REVIEW"
-  | "PENDING_REVIEW"
-  | "ONBOARDING"
-  | (string & {});
-export const FreeListingsProgramStatusRegionStatusEligibilityStatusEnum =
-  /*@__PURE__*/ S.String;
+export type FreeListingsProgramStatusRegionStatusEligibilityStatusEnum = "STATE_UNSPECIFIED" | "APPROVED" | "DISAPPROVED" | "WARNING" | "UNDER_REVIEW" | "PENDING_REVIEW" | "ONBOARDING";
+export const FreeListingsProgramStatusRegionStatusEligibilityStatusEnum = /*@__PURE__*/ S.String;
 
-export type FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
-    | "REVIEW_INELIGIBILITY_REASON_UNSPECIFIED"
-    | "ONBOARDING_ISSUES"
-    | "NOT_ENOUGH_OFFERS"
-    | "IN_COOLDOWN_PERIOD"
-    | "ALREADY_UNDER_REVIEW"
-    | "NO_REVIEW_REQUIRED"
-    | "WILL_BE_REVIEWED_AUTOMATICALLY"
-    | "IS_RETIRED"
-    | "ALREADY_REVIEWED"
-    | (string & {});
-export const FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
-  /*@__PURE__*/ S.String;
+export type FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum = "REVIEW_INELIGIBILITY_REASON_UNSPECIFIED" | "ONBOARDING_ISSUES" | "NOT_ENOUGH_OFFERS" | "IN_COOLDOWN_PERIOD" | "ALREADY_UNDER_REVIEW" | "NO_REVIEW_REQUIRED" | "WILL_BE_REVIEWED_AUTOMATICALLY" | "IS_RETIRED" | "ALREADY_REVIEWED";
+export const FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum = /*@__PURE__*/ S.String;
 
-export type FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum =
-  | "REVIEW_ELIGIBILITY_UNSPECIFIED"
-  | "ELIGIBLE"
-  | "INELIGIBLE"
-  | (string & {});
-export const FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum =
-  /*@__PURE__*/ S.String;
+export type FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum = "REVIEW_ELIGIBILITY_UNSPECIFIED" | "ELIGIBLE" | "INELIGIBLE";
+export const FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum = /*@__PURE__*/ S.String;
 
 /** Status of program and region. */
 export interface FreeListingsProgramStatusRegionStatus {
@@ -6701,43 +5551,24 @@ export interface FreeListingsProgramStatusRegionStatus {
   /** If a program is eligible for review in a specific region. Only visible if `eligibilityStatus` is `DISAPPROVED`. */
   reviewEligibilityStatus?: FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum;
 }
-export const FreeListingsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      regionCodes: S.optional(StringList),
-      onboardingIssues: S.optional(StringList),
-      reviewIneligibilityReasonDetails: S.optional(
-        FreeListingsProgramStatusReviewIneligibilityReasonDetails,
-      ),
-      eligibilityStatus: S.optional(
-        FreeListingsProgramStatusRegionStatusEligibilityStatusEnum,
-      ),
-      reviewIneligibilityReason: S.optional(
-        FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum,
-      ),
-      reviewIssues: S.optional(StringList),
-      disapprovalDate: S.optional(S.String),
-      reviewIneligibilityReasonDescription: S.optional(S.String),
-      reviewEligibilityStatus: S.optional(
-        FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum,
-      ),
-    }),
-).annotate({
-  identifier: "FreeListingsProgramStatusRegionStatus",
-}) as any as S.Schema<FreeListingsProgramStatusRegionStatus>;
+export const FreeListingsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "regionCodes": S.optional(StringList),
+  "onboardingIssues": S.optional(StringList),
+  "reviewIneligibilityReasonDetails": S.optional(FreeListingsProgramStatusReviewIneligibilityReasonDetails),
+  "eligibilityStatus": S.optional(FreeListingsProgramStatusRegionStatusEligibilityStatusEnum),
+  "reviewIneligibilityReason": S.optional(FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum),
+  "reviewIssues": S.optional(StringList),
+  "disapprovalDate": S.optional(S.String),
+  "reviewIneligibilityReasonDescription": S.optional(S.String),
+  "reviewEligibilityStatus": S.optional(FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum),
+}),
+).annotate({ identifier: "FreeListingsProgramStatusRegionStatus" }) as any as S.Schema<FreeListingsProgramStatusRegionStatus>;
 
-export type FreeListingsProgramStatusRegionStatusList =
-  ReadonlyArray<FreeListingsProgramStatusRegionStatus>;
-export const FreeListingsProgramStatusRegionStatusList = /*@__PURE__*/ S.Array(
-  FreeListingsProgramStatusRegionStatus,
-) as any as S.Schema<FreeListingsProgramStatusRegionStatusList>;
+export type FreeListingsProgramStatusRegionStatusList = ReadonlyArray<FreeListingsProgramStatusRegionStatus>;
+export const FreeListingsProgramStatusRegionStatusList = /*@__PURE__*/ S.Array(FreeListingsProgramStatusRegionStatus) as any as S.Schema<FreeListingsProgramStatusRegionStatusList>;
 
-export type FreeListingsProgramStatusGlobalStateEnum =
-  | "PROGRAM_STATE_UNSPECIFIED"
-  | "NOT_ENABLED"
-  | "NO_OFFERS_UPLOADED"
-  | "ENABLED"
-  | (string & {});
+export type FreeListingsProgramStatusGlobalStateEnum = "PROGRAM_STATE_UNSPECIFIED" | "NOT_ENABLED" | "NO_OFFERS_UPLOADED" | "ENABLED";
 export const FreeListingsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
 
 /** Response message for GetFreeListingsProgramStatus. */
@@ -6748,32 +5579,21 @@ export interface FreeListingsProgramStatus {
   globalState?: FreeListingsProgramStatusGlobalStateEnum;
 }
 export const FreeListingsProgramStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionStatuses: S.optional(FreeListingsProgramStatusRegionStatusList),
-    globalState: S.optional(FreeListingsProgramStatusGlobalStateEnum),
-  }),
-).annotate({
-  identifier: "FreeListingsProgramStatus",
-}) as any as S.Schema<FreeListingsProgramStatus>;
+S.Struct({
+  "regionStatuses": S.optional(FreeListingsProgramStatusRegionStatusList),
+  "globalState": S.optional(FreeListingsProgramStatusGlobalStateEnum),
+}),
+).annotate({ identifier: "FreeListingsProgramStatus" }) as any as S.Schema<FreeListingsProgramStatus>;
 
 export interface GetFreelistingsprogramCheckoutsettingsRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
-export const GetFreelistingsprogramCheckoutsettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "{merchantId}/freelistingsprogram/checkoutsettings",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetFreelistingsprogramCheckoutsettingsRequest",
-  }) as any as S.Schema<GetFreelistingsprogramCheckoutsettingsRequest>;
+export const GetFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/freelistingsprogram/checkoutsettings","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetFreelistingsprogramCheckoutsettingsRequest" }) as any as S.Schema<GetFreelistingsprogramCheckoutsettingsRequest>;
 
 /** Specifications related to the `Checkout` URL. The `UriTemplate` is of the form `https://www.mystore.com/checkout?item_id={id}` where `{id}` will be automatically replaced with data from the merchant account with this attribute [offer_id](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.offer_id) */
 export interface UrlSettings {
@@ -6783,43 +5603,22 @@ export interface UrlSettings {
   cartUriTemplate?: string;
 }
 export const UrlSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutUriTemplate: S.optional(S.String),
-    cartUriTemplate: S.optional(S.String),
-  }),
+S.Struct({
+  "checkoutUriTemplate": S.optional(S.String),
+  "cartUriTemplate": S.optional(S.String),
+}),
 ).annotate({ identifier: "UrlSettings" }) as any as S.Schema<UrlSettings>;
 
-export type CheckoutSettingsReviewStateEnum =
-  | "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED"
-  | "IN_REVIEW"
-  | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+export type CheckoutSettingsReviewStateEnum = "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED" | "IN_REVIEW" | "APPROVED" | "DISAPPROVED";
 export const CheckoutSettingsReviewStateEnum = /*@__PURE__*/ S.String;
 
-export type CheckoutSettingsEffectiveEnrollmentStateEnum =
-  | "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED"
-  | "INACTIVE"
-  | "ENROLLED"
-  | "OPT_OUT"
-  | (string & {});
-export const CheckoutSettingsEffectiveEnrollmentStateEnum =
-  /*@__PURE__*/ S.String;
+export type CheckoutSettingsEffectiveEnrollmentStateEnum = "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED" | "INACTIVE" | "ENROLLED" | "OPT_OUT";
+export const CheckoutSettingsEffectiveEnrollmentStateEnum = /*@__PURE__*/ S.String;
 
-export type CheckoutSettingsEffectiveReviewStateEnum =
-  | "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED"
-  | "IN_REVIEW"
-  | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+export type CheckoutSettingsEffectiveReviewStateEnum = "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED" | "IN_REVIEW" | "APPROVED" | "DISAPPROVED";
 export const CheckoutSettingsEffectiveReviewStateEnum = /*@__PURE__*/ S.String;
 
-export type CheckoutSettingsEnrollmentStateEnum =
-  | "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED"
-  | "INACTIVE"
-  | "ENROLLED"
-  | "OPT_OUT"
-  | (string & {});
+export type CheckoutSettingsEnrollmentStateEnum = "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED" | "INACTIVE" | "ENROLLED" | "OPT_OUT";
 export const CheckoutSettingsEnrollmentStateEnum = /*@__PURE__*/ S.String;
 
 /** `CheckoutSettings` for a specific merchant ID. */
@@ -6840,20 +5639,16 @@ export interface CheckoutSettings {
   enrollmentState?: CheckoutSettingsEnrollmentStateEnum;
 }
 export const CheckoutSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.optional(S.String),
-    uriSettings: S.optional(UrlSettings),
-    reviewState: S.optional(CheckoutSettingsReviewStateEnum),
-    effectiveEnrollmentState: S.optional(
-      CheckoutSettingsEffectiveEnrollmentStateEnum,
-    ),
-    effectiveUriSettings: S.optional(UrlSettings),
-    effectiveReviewState: S.optional(CheckoutSettingsEffectiveReviewStateEnum),
-    enrollmentState: S.optional(CheckoutSettingsEnrollmentStateEnum),
-  }),
-).annotate({
-  identifier: "CheckoutSettings",
-}) as any as S.Schema<CheckoutSettings>;
+S.Struct({
+  "merchantId": S.optional(S.String),
+  "uriSettings": S.optional(UrlSettings),
+  "reviewState": S.optional(CheckoutSettingsReviewStateEnum),
+  "effectiveEnrollmentState": S.optional(CheckoutSettingsEffectiveEnrollmentStateEnum),
+  "effectiveUriSettings": S.optional(UrlSettings),
+  "effectiveReviewState": S.optional(CheckoutSettingsEffectiveReviewStateEnum),
+  "enrollmentState": S.optional(CheckoutSettingsEnrollmentStateEnum),
+}),
+).annotate({ identifier: "CheckoutSettings" }) as any as S.Schema<CheckoutSettings>;
 
 export interface GetLiasettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
@@ -6862,19 +5657,11 @@ export interface GetLiasettingsRequest {
   accountId: string;
 }
 export const GetLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/liasettings/{accountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetLiasettingsRequest",
-}) as any as S.Schema<GetLiasettingsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/liasettings/{accountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetLiasettingsRequest" }) as any as S.Schema<GetLiasettingsRequest>;
 
 export interface GetPosRequest {
   /** The ID of the POS or inventory data provider. */
@@ -6885,17 +5672,11 @@ export interface GetPosRequest {
   storeCode: string;
 }
 export const GetPosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    targetMerchantId: S.String.pipe(T.Label()),
-    storeCode: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/pos/{targetMerchantId}/store/{storeCode}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "targetMerchantId": S.String.pipe(T.Label()),
+  "storeCode": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/pos/{targetMerchantId}/store/{storeCode}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
 ).annotate({ identifier: "GetPosRequest" }) as any as S.Schema<GetPosRequest>;
 
 export interface GetProductdeliverytimeRequest {
@@ -6905,19 +5686,11 @@ export interface GetProductdeliverytimeRequest {
   productId: string;
 }
 export const GetProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/productdeliverytime/{productId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProductdeliverytimeRequest",
-}) as any as S.Schema<GetProductdeliverytimeRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/productdeliverytime/{productId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetProductdeliverytimeRequest" }) as any as S.Schema<GetProductdeliverytimeRequest>;
 
 export interface GetProductsRequest {
   /** The REST ID of the product. */
@@ -6926,19 +5699,11 @@ export interface GetProductsRequest {
   merchantId: string;
 }
 export const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.String.pipe(T.Label()),
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/products/{productId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProductsRequest",
-}) as any as S.Schema<GetProductsRequest>;
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/products/{productId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetProductsRequest" }) as any as S.Schema<GetProductsRequest>;
 
 export interface GetProductstatusesRequest {
   /** The ID of the account that contains the product. This account cannot be a multi-client account. */
@@ -6949,20 +5714,12 @@ export interface GetProductstatusesRequest {
   productId: string;
 }
 export const GetProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    destinations: S.optional(StringList.pipe(T.Query())),
-    productId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/productstatuses/{productId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProductstatusesRequest",
-}) as any as S.Schema<GetProductstatusesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "destinations": S.optional(StringList.pipe(T.Query())),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/productstatuses/{productId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetProductstatusesRequest" }) as any as S.Schema<GetProductstatusesRequest>;
 
 export interface GetPromotionsRequest {
   /** Required. The ID of the account that contains the collection. */
@@ -6971,38 +5728,21 @@ export interface GetPromotionsRequest {
   id: string;
 }
 export const GetPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/promotions/{id}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPromotionsRequest",
-}) as any as S.Schema<GetPromotionsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "id": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/promotions/{id}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetPromotionsRequest" }) as any as S.Schema<GetPromotionsRequest>;
 
 export interface GetPubsubnotificationsettingsRequest {
   /** The ID of the account for which to get pubsub notification settings. */
   merchantId: string;
 }
-export const GetPubsubnotificationsettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "{merchantId}/pubsubnotificationsettings",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-).annotate({
-  identifier: "GetPubsubnotificationsettingsRequest",
-}) as any as S.Schema<GetPubsubnotificationsettingsRequest>;
+export const GetPubsubnotificationsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/pubsubnotificationsettings","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetPubsubnotificationsettingsRequest" }) as any as S.Schema<GetPubsubnotificationsettingsRequest>;
 
 /** Settings for Pub/Sub notifications, all methods require that the caller is a direct user of the merchant center account. */
 export interface PubsubNotificationSettings {
@@ -7014,14 +5754,12 @@ export interface PubsubNotificationSettings {
   registeredEvents?: StringList;
 }
 export const PubsubNotificationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    cloudTopicName: S.optional(S.String),
-    registeredEvents: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "PubsubNotificationSettings",
-}) as any as S.Schema<PubsubNotificationSettings>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "cloudTopicName": S.optional(S.String),
+  "registeredEvents": S.optional(StringList),
+}),
+).annotate({ identifier: "PubsubNotificationSettings" }) as any as S.Schema<PubsubNotificationSettings>;
 
 export interface GetRegionsRequest {
   /** Required. The id of the region to retrieve. */
@@ -7030,19 +5768,11 @@ export interface GetRegionsRequest {
   merchantId: string;
 }
 export const GetRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionId: S.String.pipe(T.Label()),
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/regions/{regionId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetRegionsRequest",
-}) as any as S.Schema<GetRegionsRequest>;
+S.Struct({
+  "regionId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/regions/{regionId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetRegionsRequest" }) as any as S.Schema<GetRegionsRequest>;
 
 export interface GetReturnpolicyonlineRequest {
   /** Required. The id of the return policy to retrieve. */
@@ -7051,19 +5781,11 @@ export interface GetReturnpolicyonlineRequest {
   merchantId: string;
 }
 export const GetReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    returnPolicyId: S.String.pipe(T.Label()),
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/returnpolicyonline/{returnPolicyId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetReturnpolicyonlineRequest",
-}) as any as S.Schema<GetReturnpolicyonlineRequest>;
+S.Struct({
+  "returnPolicyId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/returnpolicyonline/{returnPolicyId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetReturnpolicyonlineRequest" }) as any as S.Schema<GetReturnpolicyonlineRequest>;
 
 export interface GetShippingsettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
@@ -7072,93 +5794,44 @@ export interface GetShippingsettingsRequest {
   accountId: string;
 }
 export const GetShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/shippingsettings/{accountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetShippingsettingsRequest",
-}) as any as S.Schema<GetShippingsettingsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/shippingsettings/{accountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetShippingsettingsRequest" }) as any as S.Schema<GetShippingsettingsRequest>;
 
 export interface GetShoppingadsprogramRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
 export const GetShoppingadsprogramRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/shoppingadsprogram",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "GetShoppingadsprogramRequest",
-}) as any as S.Schema<GetShoppingadsprogramRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/shoppingadsprogram","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetShoppingadsprogramRequest" }) as any as S.Schema<GetShoppingadsprogramRequest>;
 
-export type ShoppingAdsProgramStatusGlobalStateEnum =
-  | "PROGRAM_STATE_UNSPECIFIED"
-  | "NOT_ENABLED"
-  | "NO_OFFERS_UPLOADED"
-  | "ENABLED"
-  | (string & {});
+export type ShoppingAdsProgramStatusGlobalStateEnum = "PROGRAM_STATE_UNSPECIFIED" | "NOT_ENABLED" | "NO_OFFERS_UPLOADED" | "ENABLED";
 export const ShoppingAdsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
 
-export type ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
-  | "STATE_UNSPECIFIED"
-  | "APPROVED"
-  | "DISAPPROVED"
-  | "WARNING"
-  | "UNDER_REVIEW"
-  | "PENDING_REVIEW"
-  | "ONBOARDING"
-  | (string & {});
-export const ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
-  /*@__PURE__*/ S.String;
+export type ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum = "STATE_UNSPECIFIED" | "APPROVED" | "DISAPPROVED" | "WARNING" | "UNDER_REVIEW" | "PENDING_REVIEW" | "ONBOARDING";
+export const ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for review ineligibility reasons. */
 export interface ShoppingAdsProgramStatusReviewIneligibilityReasonDetails {
   /** This timestamp represents end of cooldown period for review ineligbility reason `IN_COOLDOWN_PERIOD`. */
   cooldownTime?: string;
 }
-export const ShoppingAdsProgramStatusReviewIneligibilityReasonDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cooldownTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ShoppingAdsProgramStatusReviewIneligibilityReasonDetails",
-  }) as any as S.Schema<ShoppingAdsProgramStatusReviewIneligibilityReasonDetails>;
+export const ShoppingAdsProgramStatusReviewIneligibilityReasonDetails = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "cooldownTime": S.optional(S.String),
+}),
+).annotate({ identifier: "ShoppingAdsProgramStatusReviewIneligibilityReasonDetails" }) as any as S.Schema<ShoppingAdsProgramStatusReviewIneligibilityReasonDetails>;
 
-export type ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum =
-  | "REVIEW_ELIGIBILITY_UNSPECIFIED"
-  | "ELIGIBLE"
-  | "INELIGIBLE"
-  | (string & {});
-export const ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum =
-  /*@__PURE__*/ S.String;
+export type ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum = "REVIEW_ELIGIBILITY_UNSPECIFIED" | "ELIGIBLE" | "INELIGIBLE";
+export const ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum = /*@__PURE__*/ S.String;
 
-export type ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
-  | "REVIEW_INELIGIBILITY_REASON_UNSPECIFIED"
-  | "ONBOARDING_ISSUES"
-  | "NOT_ENOUGH_OFFERS"
-  | "IN_COOLDOWN_PERIOD"
-  | "ALREADY_UNDER_REVIEW"
-  | "NO_REVIEW_REQUIRED"
-  | "WILL_BE_REVIEWED_AUTOMATICALLY"
-  | "IS_RETIRED"
-  | "ALREADY_REVIEWED"
-  | (string & {});
-export const ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
-  /*@__PURE__*/ S.String;
+export type ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum = "REVIEW_INELIGIBILITY_REASON_UNSPECIFIED" | "ONBOARDING_ISSUES" | "NOT_ENOUGH_OFFERS" | "IN_COOLDOWN_PERIOD" | "ALREADY_UNDER_REVIEW" | "NO_REVIEW_REQUIRED" | "WILL_BE_REVIEWED_AUTOMATICALLY" | "IS_RETIRED" | "ALREADY_REVIEWED";
+export const ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum = /*@__PURE__*/ S.String;
 
 /** Status of program and region. */
 export interface ShoppingAdsProgramStatusRegionStatus {
@@ -7181,36 +5854,22 @@ export interface ShoppingAdsProgramStatusRegionStatus {
   /** Issues evaluated in the review process. Fix all issues before requesting a review. */
   reviewIssues?: StringList;
 }
-export const ShoppingAdsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      eligibilityStatus: S.optional(
-        ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum,
-      ),
-      reviewIneligibilityReasonDetails: S.optional(
-        ShoppingAdsProgramStatusReviewIneligibilityReasonDetails,
-      ),
-      regionCodes: S.optional(StringList),
-      onboardingIssues: S.optional(StringList),
-      reviewEligibilityStatus: S.optional(
-        ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum,
-      ),
-      reviewIneligibilityReasonDescription: S.optional(S.String),
-      disapprovalDate: S.optional(S.String),
-      reviewIneligibilityReason: S.optional(
-        ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum,
-      ),
-      reviewIssues: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "ShoppingAdsProgramStatusRegionStatus",
-}) as any as S.Schema<ShoppingAdsProgramStatusRegionStatus>;
+export const ShoppingAdsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "eligibilityStatus": S.optional(ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum),
+  "reviewIneligibilityReasonDetails": S.optional(ShoppingAdsProgramStatusReviewIneligibilityReasonDetails),
+  "regionCodes": S.optional(StringList),
+  "onboardingIssues": S.optional(StringList),
+  "reviewEligibilityStatus": S.optional(ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum),
+  "reviewIneligibilityReasonDescription": S.optional(S.String),
+  "disapprovalDate": S.optional(S.String),
+  "reviewIneligibilityReason": S.optional(ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum),
+  "reviewIssues": S.optional(StringList),
+}),
+).annotate({ identifier: "ShoppingAdsProgramStatusRegionStatus" }) as any as S.Schema<ShoppingAdsProgramStatusRegionStatus>;
 
-export type ShoppingAdsProgramStatusRegionStatusList =
-  ReadonlyArray<ShoppingAdsProgramStatusRegionStatus>;
-export const ShoppingAdsProgramStatusRegionStatusList = /*@__PURE__*/ S.Array(
-  ShoppingAdsProgramStatusRegionStatus,
-) as any as S.Schema<ShoppingAdsProgramStatusRegionStatusList>;
+export type ShoppingAdsProgramStatusRegionStatusList = ReadonlyArray<ShoppingAdsProgramStatusRegionStatus>;
+export const ShoppingAdsProgramStatusRegionStatusList = /*@__PURE__*/ S.Array(ShoppingAdsProgramStatusRegionStatus) as any as S.Schema<ShoppingAdsProgramStatusRegionStatusList>;
 
 /** Response message for GetShoppingAdsProgramStatus. */
 export interface ShoppingAdsProgramStatus {
@@ -7220,32 +5879,21 @@ export interface ShoppingAdsProgramStatus {
   regionStatuses?: ShoppingAdsProgramStatusRegionStatusList;
 }
 export const ShoppingAdsProgramStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    globalState: S.optional(ShoppingAdsProgramStatusGlobalStateEnum),
-    regionStatuses: S.optional(ShoppingAdsProgramStatusRegionStatusList),
-  }),
-).annotate({
-  identifier: "ShoppingAdsProgramStatus",
-}) as any as S.Schema<ShoppingAdsProgramStatus>;
+S.Struct({
+  "globalState": S.optional(ShoppingAdsProgramStatusGlobalStateEnum),
+  "regionStatuses": S.optional(ShoppingAdsProgramStatusRegionStatusList),
+}),
+).annotate({ identifier: "ShoppingAdsProgramStatus" }) as any as S.Schema<ShoppingAdsProgramStatus>;
 
 export interface GetsupportedcarriersShippingsettingsRequest {
   /** The ID of the account for which to retrieve the supported carriers. */
   merchantId: string;
 }
-export const GetsupportedcarriersShippingsettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "{merchantId}/supportedCarriers",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetsupportedcarriersShippingsettingsRequest",
-  }) as any as S.Schema<GetsupportedcarriersShippingsettingsRequest>;
+export const GetsupportedcarriersShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/supportedCarriers","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetsupportedcarriersShippingsettingsRequest" }) as any as S.Schema<GetsupportedcarriersShippingsettingsRequest>;
 
 export interface CarriersCarrier {
   /** A list of supported services (for example, `"ground"`) for that carrier. Contains at least one service. This is the list of valid values for CarrierRate.carrierService. */
@@ -7258,20 +5906,16 @@ export interface CarriersCarrier {
   eddServices?: StringList;
 }
 export const CarriersCarrier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    services: S.optional(StringList),
-    name: S.optional(S.String),
-    country: S.optional(S.String),
-    eddServices: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CarriersCarrier",
-}) as any as S.Schema<CarriersCarrier>;
+S.Struct({
+  "services": S.optional(StringList),
+  "name": S.optional(S.String),
+  "country": S.optional(S.String),
+  "eddServices": S.optional(StringList),
+}),
+).annotate({ identifier: "CarriersCarrier" }) as any as S.Schema<CarriersCarrier>;
 
 export type CarriersCarrierList = ReadonlyArray<CarriersCarrier>;
-export const CarriersCarrierList = /*@__PURE__*/ S.Array(
-  CarriersCarrier,
-) as any as S.Schema<CarriersCarrierList>;
+export const CarriersCarrierList = /*@__PURE__*/ S.Array(CarriersCarrier) as any as S.Schema<CarriersCarrierList>;
 
 export interface ShippingsettingsGetSupportedCarriersResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedCarriersResponse`". */
@@ -7279,34 +5923,22 @@ export interface ShippingsettingsGetSupportedCarriersResponse {
   /** A list of supported carriers. May be empty. */
   carriers?: CarriersCarrierList;
 }
-export const ShippingsettingsGetSupportedCarriersResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.optional(S.String),
-      carriers: S.optional(CarriersCarrierList),
-    }),
-  ).annotate({
-    identifier: "ShippingsettingsGetSupportedCarriersResponse",
-  }) as any as S.Schema<ShippingsettingsGetSupportedCarriersResponse>;
+export const ShippingsettingsGetSupportedCarriersResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kind": S.optional(S.String),
+  "carriers": S.optional(CarriersCarrierList),
+}),
+).annotate({ identifier: "ShippingsettingsGetSupportedCarriersResponse" }) as any as S.Schema<ShippingsettingsGetSupportedCarriersResponse>;
 
 export interface GetsupportedholidaysShippingsettingsRequest {
   /** The ID of the account for which to retrieve the supported holidays. */
   merchantId: string;
 }
-export const GetsupportedholidaysShippingsettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "{merchantId}/supportedHolidays",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetsupportedholidaysShippingsettingsRequest",
-  }) as any as S.Schema<GetsupportedholidaysShippingsettingsRequest>;
+export const GetsupportedholidaysShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/supportedHolidays","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetsupportedholidaysShippingsettingsRequest" }) as any as S.Schema<GetsupportedholidaysShippingsettingsRequest>;
 
 export interface HolidaysHoliday {
   /** Date on which the order has to arrive at the customer's, in ISO 8601 format. For example, "2016-12-24" for 24th December 2016. Always present. */
@@ -7323,22 +5955,18 @@ export interface HolidaysHoliday {
   type?: string;
 }
 export const HolidaysHoliday = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryGuaranteeDate: S.optional(S.String),
-    deliveryGuaranteeHour: S.optional(S.String),
-    countryCode: S.optional(S.String),
-    date: S.optional(S.String),
-    id: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HolidaysHoliday",
-}) as any as S.Schema<HolidaysHoliday>;
+S.Struct({
+  "deliveryGuaranteeDate": S.optional(S.String),
+  "deliveryGuaranteeHour": S.optional(S.String),
+  "countryCode": S.optional(S.String),
+  "date": S.optional(S.String),
+  "id": S.optional(S.String),
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "HolidaysHoliday" }) as any as S.Schema<HolidaysHoliday>;
 
 export type HolidaysHolidayList = ReadonlyArray<HolidaysHoliday>;
-export const HolidaysHolidayList = /*@__PURE__*/ S.Array(
-  HolidaysHoliday,
-) as any as S.Schema<HolidaysHolidayList>;
+export const HolidaysHolidayList = /*@__PURE__*/ S.Array(HolidaysHoliday) as any as S.Schema<HolidaysHolidayList>;
 
 export interface ShippingsettingsGetSupportedHolidaysResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedHolidaysResponse`". */
@@ -7346,34 +5974,22 @@ export interface ShippingsettingsGetSupportedHolidaysResponse {
   /** A list of holidays applicable for delivery guarantees. May be empty. */
   holidays?: HolidaysHolidayList;
 }
-export const ShippingsettingsGetSupportedHolidaysResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.optional(S.String),
-      holidays: S.optional(HolidaysHolidayList),
-    }),
-  ).annotate({
-    identifier: "ShippingsettingsGetSupportedHolidaysResponse",
-  }) as any as S.Schema<ShippingsettingsGetSupportedHolidaysResponse>;
+export const ShippingsettingsGetSupportedHolidaysResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kind": S.optional(S.String),
+  "holidays": S.optional(HolidaysHolidayList),
+}),
+).annotate({ identifier: "ShippingsettingsGetSupportedHolidaysResponse" }) as any as S.Schema<ShippingsettingsGetSupportedHolidaysResponse>;
 
 export interface GetsupportedpickupservicesShippingsettingsRequest {
   /** The ID of the account for which to retrieve the supported pickup services. */
   merchantId: string;
 }
-export const GetsupportedpickupservicesShippingsettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "{merchantId}/supportedPickupServices",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetsupportedpickupservicesShippingsettingsRequest",
-  }) as any as S.Schema<GetsupportedpickupservicesShippingsettingsRequest>;
+export const GetsupportedpickupservicesShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/supportedPickupServices","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "GetsupportedpickupservicesShippingsettingsRequest" }) as any as S.Schema<GetsupportedpickupservicesShippingsettingsRequest>;
 
 export interface PickupServicesPickupService {
   /** The name of the pickup service (for example, `"Access point"`). Always present. */
@@ -7384,20 +6000,15 @@ export interface PickupServicesPickupService {
   country?: string;
 }
 export const PickupServicesPickupService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.optional(S.String),
-    carrierName: S.optional(S.String),
-    country: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PickupServicesPickupService",
-}) as any as S.Schema<PickupServicesPickupService>;
+S.Struct({
+  "serviceName": S.optional(S.String),
+  "carrierName": S.optional(S.String),
+  "country": S.optional(S.String),
+}),
+).annotate({ identifier: "PickupServicesPickupService" }) as any as S.Schema<PickupServicesPickupService>;
 
-export type PickupServicesPickupServiceList =
-  ReadonlyArray<PickupServicesPickupService>;
-export const PickupServicesPickupServiceList = /*@__PURE__*/ S.Array(
-  PickupServicesPickupService,
-) as any as S.Schema<PickupServicesPickupServiceList>;
+export type PickupServicesPickupServiceList = ReadonlyArray<PickupServicesPickupService>;
+export const PickupServicesPickupServiceList = /*@__PURE__*/ S.Array(PickupServicesPickupService) as any as S.Schema<PickupServicesPickupServiceList>;
 
 export interface ShippingsettingsGetSupportedPickupServicesResponse {
   /** A list of supported pickup services. May be empty. */
@@ -7405,15 +6016,12 @@ export interface ShippingsettingsGetSupportedPickupServicesResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedPickupServicesResponse`". */
   kind?: string;
 }
-export const ShippingsettingsGetSupportedPickupServicesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pickupServices: S.optional(PickupServicesPickupServiceList),
-      kind: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ShippingsettingsGetSupportedPickupServicesResponse",
-  }) as any as S.Schema<ShippingsettingsGetSupportedPickupServicesResponse>;
+export const ShippingsettingsGetSupportedPickupServicesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pickupServices": S.optional(PickupServicesPickupServiceList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ShippingsettingsGetSupportedPickupServicesResponse" }) as any as S.Schema<ShippingsettingsGetSupportedPickupServicesResponse>;
 
 export interface InsertAccountsRequest {
   /** The ID of the managing account. This must be a multi-client account. */
@@ -7422,19 +6030,11 @@ export interface InsertAccountsRequest {
   body?: Account;
 }
 export const InsertAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(Account.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/accounts",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertAccountsRequest",
-}) as any as S.Schema<InsertAccountsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(Account.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/accounts","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "InsertAccountsRequest" }) as any as S.Schema<InsertAccountsRequest>;
 
 export interface InsertDatafeedsRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
@@ -7443,19 +6043,11 @@ export interface InsertDatafeedsRequest {
   body?: Datafeed;
 }
 export const InsertDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(Datafeed.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/datafeeds",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertDatafeedsRequest",
-}) as any as S.Schema<InsertDatafeedsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(Datafeed.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/datafeeds","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "InsertDatafeedsRequest" }) as any as S.Schema<InsertDatafeedsRequest>;
 
 /** Request message for the `InsertCheckoutSettings` method. */
 export interface InsertCheckoutSettingsRequest {
@@ -7463,12 +6055,10 @@ export interface InsertCheckoutSettingsRequest {
   uriSettings?: UrlSettings;
 }
 export const InsertCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uriSettings: S.optional(UrlSettings),
-  }),
-).annotate({
-  identifier: "InsertCheckoutSettingsRequest",
-}) as any as S.Schema<InsertCheckoutSettingsRequest>;
+S.Struct({
+  "uriSettings": S.optional(UrlSettings),
+}),
+).annotate({ identifier: "InsertCheckoutSettingsRequest" }) as any as S.Schema<InsertCheckoutSettingsRequest>;
 
 export interface InsertFreelistingsprogramCheckoutsettingsRequest {
   /** Required. The ID of the account. */
@@ -7476,21 +6066,12 @@ export interface InsertFreelistingsprogramCheckoutsettingsRequest {
   /** Request body */
   body?: InsertCheckoutSettingsRequest;
 }
-export const InsertFreelistingsprogramCheckoutsettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-      body: S.optional(InsertCheckoutSettingsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/freelistingsprogram/checkoutsettings",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "InsertFreelistingsprogramCheckoutsettingsRequest",
-  }) as any as S.Schema<InsertFreelistingsprogramCheckoutsettingsRequest>;
+export const InsertFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(InsertCheckoutSettingsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/freelistingsprogram/checkoutsettings","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "InsertFreelistingsprogramCheckoutsettingsRequest" }) as any as S.Schema<InsertFreelistingsprogramCheckoutsettingsRequest>;
 
 export interface InsertLocalinventoryRequest {
   /** The ID of the account that contains the product. This account cannot be a multi-client account. */
@@ -7501,20 +6082,12 @@ export interface InsertLocalinventoryRequest {
   body?: LocalInventory;
 }
 export const InsertLocalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-    body: S.optional(LocalInventory.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/products/{productId}/localinventory",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertLocalinventoryRequest",
-}) as any as S.Schema<InsertLocalinventoryRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(LocalInventory.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/products/{productId}/localinventory","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "InsertLocalinventoryRequest" }) as any as S.Schema<InsertLocalinventoryRequest>;
 
 export interface InsertPosRequest {
   /** The ID of the POS or inventory data provider. */
@@ -7525,20 +6098,12 @@ export interface InsertPosRequest {
   body?: PosStore;
 }
 export const InsertPosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    targetMerchantId: S.String.pipe(T.Label()),
-    body: S.optional(PosStore.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/pos/{targetMerchantId}/store",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertPosRequest",
-}) as any as S.Schema<InsertPosRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "targetMerchantId": S.String.pipe(T.Label()),
+  "body": S.optional(PosStore.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/pos/{targetMerchantId}/store","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "InsertPosRequest" }) as any as S.Schema<InsertPosRequest>;
 
 export interface InsertProductsRequest {
   /** The Content API Supplemental Feed ID. If present then product insertion applies to the data in a supplemental feed. */
@@ -7549,20 +6114,12 @@ export interface InsertProductsRequest {
   body?: Product;
 }
 export const InsertProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    feedId: S.optional(S.String.pipe(T.Query())),
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(Product.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/products",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertProductsRequest",
-}) as any as S.Schema<InsertProductsRequest>;
+S.Struct({
+  "feedId": S.optional(S.String.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(Product.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/products","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "InsertProductsRequest" }) as any as S.Schema<InsertProductsRequest>;
 
 export interface InsertRegionalinventoryRequest {
   /** The ID of the account that contains the product. This account cannot be a multi-client account. */
@@ -7573,20 +6130,12 @@ export interface InsertRegionalinventoryRequest {
   body?: RegionalInventory;
 }
 export const InsertRegionalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-    body: S.optional(RegionalInventory.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/products/{productId}/regionalinventory",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertRegionalinventoryRequest",
-}) as any as S.Schema<InsertRegionalinventoryRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(RegionalInventory.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/products/{productId}/regionalinventory","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "InsertRegionalinventoryRequest" }) as any as S.Schema<InsertRegionalinventoryRequest>;
 
 export interface PosInventoryRequest {
   /** Optional. Supported pickup method for this offer. Unless the value is "not supported", this field must be submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory feed specification](https://support.google.com/merchants/answer/3061342). */
@@ -7611,21 +6160,19 @@ export interface PosInventoryRequest {
   quantity?: string;
 }
 export const PosInventoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pickupMethod: S.optional(S.String),
-    timestamp: S.optional(S.String),
-    pickupSla: S.optional(S.String),
-    contentLanguage: S.optional(S.String),
-    price: S.optional(Price),
-    targetCountry: S.optional(S.String),
-    storeCode: S.optional(S.String),
-    itemId: S.optional(S.String),
-    gtin: S.optional(S.String),
-    quantity: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PosInventoryRequest",
-}) as any as S.Schema<PosInventoryRequest>;
+S.Struct({
+  "pickupMethod": S.optional(S.String),
+  "timestamp": S.optional(S.String),
+  "pickupSla": S.optional(S.String),
+  "contentLanguage": S.optional(S.String),
+  "price": S.optional(Price),
+  "targetCountry": S.optional(S.String),
+  "storeCode": S.optional(S.String),
+  "itemId": S.optional(S.String),
+  "gtin": S.optional(S.String),
+  "quantity": S.optional(S.String),
+}),
+).annotate({ identifier: "PosInventoryRequest" }) as any as S.Schema<PosInventoryRequest>;
 
 export interface InventoryPosRequest {
   /** The ID of the POS or inventory data provider. */
@@ -7636,20 +6183,12 @@ export interface InventoryPosRequest {
   body?: PosInventoryRequest;
 }
 export const InventoryPosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    targetMerchantId: S.String.pipe(T.Label()),
-    body: S.optional(PosInventoryRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/pos/{targetMerchantId}/inventory",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "InventoryPosRequest",
-}) as any as S.Schema<InventoryPosRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "targetMerchantId": S.String.pipe(T.Label()),
+  "body": S.optional(PosInventoryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/pos/{targetMerchantId}/inventory","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "InventoryPosRequest" }) as any as S.Schema<InventoryPosRequest>;
 
 export interface PosInventoryResponse {
   /** Optional. Supported pickup method for this offer. Unless the value is "not supported", this field must be submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory feed specification](https://support.google.com/merchants/answer/3061342). */
@@ -7676,22 +6215,20 @@ export interface PosInventoryResponse {
   targetCountry?: string;
 }
 export const PosInventoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pickupMethod: S.optional(S.String),
-    kind: S.optional(S.String),
-    contentLanguage: S.optional(S.String),
-    price: S.optional(Price),
-    timestamp: S.optional(S.String),
-    pickupSla: S.optional(S.String),
-    gtin: S.optional(S.String),
-    quantity: S.optional(S.String),
-    storeCode: S.optional(S.String),
-    itemId: S.optional(S.String),
-    targetCountry: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PosInventoryResponse",
-}) as any as S.Schema<PosInventoryResponse>;
+S.Struct({
+  "pickupMethod": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "contentLanguage": S.optional(S.String),
+  "price": S.optional(Price),
+  "timestamp": S.optional(S.String),
+  "pickupSla": S.optional(S.String),
+  "gtin": S.optional(S.String),
+  "quantity": S.optional(S.String),
+  "storeCode": S.optional(S.String),
+  "itemId": S.optional(S.String),
+  "targetCountry": S.optional(S.String),
+}),
+).annotate({ identifier: "PosInventoryResponse" }) as any as S.Schema<PosInventoryResponse>;
 
 /** Additional information required for E_COMMERCE_PLATFORM link type. */
 export interface ECommercePlatformLinkInfo {
@@ -7699,12 +6236,10 @@ export interface ECommercePlatformLinkInfo {
   externalAccountId?: string;
 }
 export const ECommercePlatformLinkInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalAccountId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ECommercePlatformLinkInfo",
-}) as any as S.Schema<ECommercePlatformLinkInfo>;
+S.Struct({
+  "externalAccountId": S.optional(S.String),
+}),
+).annotate({ identifier: "ECommercePlatformLinkInfo" }) as any as S.Schema<ECommercePlatformLinkInfo>;
 
 /** Additional information required for PAYMENT_SERVICE_PROVIDER link type. */
 export interface PaymentServiceProviderLinkInfo {
@@ -7714,13 +6249,11 @@ export interface PaymentServiceProviderLinkInfo {
   externalAccountBusinessCountry?: string;
 }
 export const PaymentServiceProviderLinkInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalAccountId: S.optional(S.String),
-    externalAccountBusinessCountry: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PaymentServiceProviderLinkInfo",
-}) as any as S.Schema<PaymentServiceProviderLinkInfo>;
+S.Struct({
+  "externalAccountId": S.optional(S.String),
+  "externalAccountBusinessCountry": S.optional(S.String),
+}),
+).annotate({ identifier: "PaymentServiceProviderLinkInfo" }) as any as S.Schema<PaymentServiceProviderLinkInfo>;
 
 export interface AccountsLinkRequest {
   /** Type of the link between the two accounts. Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`" - "`paymentServiceProvider`" */
@@ -7737,17 +6270,15 @@ export interface AccountsLinkRequest {
   services?: StringList;
 }
 export const AccountsLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    linkType: S.optional(S.String),
-    eCommercePlatformLinkInfo: S.optional(ECommercePlatformLinkInfo),
-    paymentServiceProviderLinkInfo: S.optional(PaymentServiceProviderLinkInfo),
-    linkedAccountId: S.optional(S.String),
-    action: S.optional(S.String),
-    services: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "AccountsLinkRequest",
-}) as any as S.Schema<AccountsLinkRequest>;
+S.Struct({
+  "linkType": S.optional(S.String),
+  "eCommercePlatformLinkInfo": S.optional(ECommercePlatformLinkInfo),
+  "paymentServiceProviderLinkInfo": S.optional(PaymentServiceProviderLinkInfo),
+  "linkedAccountId": S.optional(S.String),
+  "action": S.optional(S.String),
+  "services": S.optional(StringList),
+}),
+).annotate({ identifier: "AccountsLinkRequest" }) as any as S.Schema<AccountsLinkRequest>;
 
 export interface LinkAccountsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
@@ -7758,34 +6289,24 @@ export interface LinkAccountsRequest {
   body?: AccountsLinkRequest;
 }
 export const LinkAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(AccountsLinkRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/accounts/{accountId}/link",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "LinkAccountsRequest",
-}) as any as S.Schema<LinkAccountsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(AccountsLinkRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/accounts/{accountId}/link","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "LinkAccountsRequest" }) as any as S.Schema<LinkAccountsRequest>;
 
 export interface AccountsLinkResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsLinkResponse`". */
   kind?: string;
 }
 export const AccountsLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsLinkResponse",
-}) as any as S.Schema<AccountsLinkResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountsLinkResponse" }) as any as S.Schema<AccountsLinkResponse>;
 
-export type ListAccountsViewEnum = "MERCHANT" | "CSS" | (string & {});
+export type ListAccountsViewEnum = "MERCHANT" | "CSS";
 export const ListAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountsRequest {
@@ -7794,7 +6315,7 @@ export interface ListAccountsRequest {
   /** If set, only the accounts with the given name (case sensitive) will be returned. */
   name?: string;
   /** Controls which fields will be populated. Acceptable values are: "merchant" and "css". The default value is "merchant". */
-  view?: ListAccountsViewEnum;
+  view?: ListAccountsViewEnum | (string & {});
   /** The maximum number of accounts to return in the response, used for paging. */
   maxResults?: number;
   /** The token returned by the previous request. */
@@ -7803,28 +6324,18 @@ export interface ListAccountsRequest {
   merchantId: string;
 }
 export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.String.pipe(T.Query())),
-    name: S.optional(S.String.pipe(T.Query())),
-    view: S.optional(ListAccountsViewEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/accounts",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsRequest",
-}) as any as S.Schema<ListAccountsRequest>;
+S.Struct({
+  "label": S.optional(S.String.pipe(T.Query())),
+  "name": S.optional(S.String.pipe(T.Query())),
+  "view": S.optional(ListAccountsViewEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/accounts","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type AccountList = ReadonlyArray<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(
-  Account,
-) as any as S.Schema<AccountList>;
+export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 export interface AccountsListResponse {
   /** The token for the retrieval of the next page of accounts. */
@@ -7834,14 +6345,12 @@ export interface AccountsListResponse {
   resources?: AccountList;
 }
 export const AccountsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    resources: S.optional(AccountList),
-  }),
-).annotate({
-  identifier: "AccountsListResponse",
-}) as any as S.Schema<AccountsListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "resources": S.optional(AccountList),
+}),
+).annotate({ identifier: "AccountsListResponse" }) as any as S.Schema<AccountsListResponse>;
 
 export interface ListAccountsLabelsRequest {
   /** The maximum number of labels to return. The service may return fewer than this value. If unspecified, at most 50 labels will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -7852,25 +6361,15 @@ export interface ListAccountsLabelsRequest {
   accountId: string;
 }
 export const ListAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/{accountId}/labels",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsLabelsRequest",
-}) as any as S.Schema<ListAccountsLabelsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/{accountId}/labels","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListAccountsLabelsRequest" }) as any as S.Schema<ListAccountsLabelsRequest>;
 
 export type AccountLabelList = ReadonlyArray<AccountLabel>;
-export const AccountLabelList = /*@__PURE__*/ S.Array(
-  AccountLabel,
-) as any as S.Schema<AccountLabelList>;
+export const AccountLabelList = /*@__PURE__*/ S.Array(AccountLabel) as any as S.Schema<AccountLabelList>;
 
 /** Response message for the `ListAccountLabels` method. */
 export interface ListAccountLabelsResponse {
@@ -7880,36 +6379,24 @@ export interface ListAccountLabelsResponse {
   accountLabels?: AccountLabelList;
 }
 export const ListAccountLabelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    accountLabels: S.optional(AccountLabelList),
-  }),
-).annotate({
-  identifier: "ListAccountLabelsResponse",
-}) as any as S.Schema<ListAccountLabelsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "accountLabels": S.optional(AccountLabelList),
+}),
+).annotate({ identifier: "ListAccountLabelsResponse" }) as any as S.Schema<ListAccountLabelsResponse>;
 
 export interface ListAccountsReturncarrierRequest {
   /** Required. The Merchant Center Account Id under which the Return Carrier is to be linked. */
   accountId: string;
 }
 export const ListAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/{accountId}/returncarrier",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsReturncarrierRequest",
-}) as any as S.Schema<ListAccountsReturncarrierRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/{accountId}/returncarrier","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListAccountsReturncarrierRequest" }) as any as S.Schema<ListAccountsReturncarrierRequest>;
 
 export type AccountReturnCarrierList = ReadonlyArray<AccountReturnCarrier>;
-export const AccountReturnCarrierList = /*@__PURE__*/ S.Array(
-  AccountReturnCarrier,
-) as any as S.Schema<AccountReturnCarrierList>;
+export const AccountReturnCarrierList = /*@__PURE__*/ S.Array(AccountReturnCarrier) as any as S.Schema<AccountReturnCarrierList>;
 
 /** Response for listing account return carriers. */
 export interface ListAccountReturnCarrierResponse {
@@ -7917,12 +6404,10 @@ export interface ListAccountReturnCarrierResponse {
   accountReturnCarriers?: AccountReturnCarrierList;
 }
 export const ListAccountReturnCarrierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountReturnCarriers: S.optional(AccountReturnCarrierList),
-  }),
-).annotate({
-  identifier: "ListAccountReturnCarrierResponse",
-}) as any as S.Schema<ListAccountReturnCarrierResponse>;
+S.Struct({
+  "accountReturnCarriers": S.optional(AccountReturnCarrierList),
+}),
+).annotate({ identifier: "ListAccountReturnCarrierResponse" }) as any as S.Schema<ListAccountReturnCarrierResponse>;
 
 export interface ListAccountstatusesRequest {
   /** If set, only the accounts with the given name (case sensitive) will be returned. */
@@ -7937,27 +6422,17 @@ export interface ListAccountstatusesRequest {
   pageToken?: string;
 }
 export const ListAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String.pipe(T.Query())),
-    merchantId: S.String.pipe(T.Label()),
-    destinations: S.optional(StringList.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/accountstatuses",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountstatusesRequest",
-}) as any as S.Schema<ListAccountstatusesRequest>;
+S.Struct({
+  "name": S.optional(S.String.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+  "destinations": S.optional(StringList.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/accountstatuses","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListAccountstatusesRequest" }) as any as S.Schema<ListAccountstatusesRequest>;
 
 export type AccountStatusList = ReadonlyArray<AccountStatus>;
-export const AccountStatusList = /*@__PURE__*/ S.Array(
-  AccountStatus,
-) as any as S.Schema<AccountStatusList>;
+export const AccountStatusList = /*@__PURE__*/ S.Array(AccountStatus) as any as S.Schema<AccountStatusList>;
 
 export interface AccountstatusesListResponse {
   /** The token for the retrieval of the next page of account statuses. */
@@ -7967,14 +6442,12 @@ export interface AccountstatusesListResponse {
   resources?: AccountStatusList;
 }
 export const AccountstatusesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    resources: S.optional(AccountStatusList),
-  }),
-).annotate({
-  identifier: "AccountstatusesListResponse",
-}) as any as S.Schema<AccountstatusesListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "resources": S.optional(AccountStatusList),
+}),
+).annotate({ identifier: "AccountstatusesListResponse" }) as any as S.Schema<AccountstatusesListResponse>;
 
 export interface ListAccounttaxRequest {
   /** The ID of the managing account. This must be a multi-client account. */
@@ -7985,25 +6458,15 @@ export interface ListAccounttaxRequest {
   pageToken?: string;
 }
 export const ListAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/accounttax",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccounttaxRequest",
-}) as any as S.Schema<ListAccounttaxRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/accounttax","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListAccounttaxRequest" }) as any as S.Schema<ListAccounttaxRequest>;
 
 export type AccountTaxList = ReadonlyArray<AccountTax>;
-export const AccountTaxList = /*@__PURE__*/ S.Array(
-  AccountTax,
-) as any as S.Schema<AccountTaxList>;
+export const AccountTaxList = /*@__PURE__*/ S.Array(AccountTax) as any as S.Schema<AccountTaxList>;
 
 export interface AccounttaxListResponse {
   /** The token for the retrieval of the next page of account tax settings. */
@@ -8013,14 +6476,12 @@ export interface AccounttaxListResponse {
   resources?: AccountTaxList;
 }
 export const AccounttaxListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    resources: S.optional(AccountTaxList),
-  }),
-).annotate({
-  identifier: "AccounttaxListResponse",
-}) as any as S.Schema<AccounttaxListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "resources": S.optional(AccountTaxList),
+}),
+).annotate({ identifier: "AccounttaxListResponse" }) as any as S.Schema<AccounttaxListResponse>;
 
 export interface ListCollectionsRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
@@ -8031,25 +6492,15 @@ export interface ListCollectionsRequest {
   pageToken?: string;
 }
 export const ListCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/collections",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCollectionsRequest",
-}) as any as S.Schema<ListCollectionsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/collections","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListCollectionsRequest" }) as any as S.Schema<ListCollectionsRequest>;
 
 export type CollectionList = ReadonlyArray<Collection>;
-export const CollectionList = /*@__PURE__*/ S.Array(
-  Collection,
-) as any as S.Schema<CollectionList>;
+export const CollectionList = /*@__PURE__*/ S.Array(Collection) as any as S.Schema<CollectionList>;
 
 /** Response message for the ListCollections method. */
 export interface ListCollectionsResponse {
@@ -8059,13 +6510,11 @@ export interface ListCollectionsResponse {
   nextPageToken?: string;
 }
 export const ListCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: S.optional(CollectionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCollectionsResponse",
-}) as any as S.Schema<ListCollectionsResponse>;
+S.Struct({
+  "resources": S.optional(CollectionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCollectionsResponse" }) as any as S.Schema<ListCollectionsResponse>;
 
 export interface ListCollectionstatusesRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
@@ -8076,25 +6525,15 @@ export interface ListCollectionstatusesRequest {
   pageToken?: string;
 }
 export const ListCollectionstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/collectionstatuses",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCollectionstatusesRequest",
-}) as any as S.Schema<ListCollectionstatusesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/collectionstatuses","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListCollectionstatusesRequest" }) as any as S.Schema<ListCollectionstatusesRequest>;
 
 export type CollectionStatusList = ReadonlyArray<CollectionStatus>;
-export const CollectionStatusList = /*@__PURE__*/ S.Array(
-  CollectionStatus,
-) as any as S.Schema<CollectionStatusList>;
+export const CollectionStatusList = /*@__PURE__*/ S.Array(CollectionStatus) as any as S.Schema<CollectionStatusList>;
 
 /** Response message for the ListCollectionStatuses method. */
 export interface ListCollectionStatusesResponse {
@@ -8104,13 +6543,11 @@ export interface ListCollectionStatusesResponse {
   nextPageToken?: string;
 }
 export const ListCollectionStatusesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: S.optional(CollectionStatusList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCollectionStatusesResponse",
-}) as any as S.Schema<ListCollectionStatusesResponse>;
+S.Struct({
+  "resources": S.optional(CollectionStatusList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCollectionStatusesResponse" }) as any as S.Schema<ListCollectionStatusesResponse>;
 
 export interface ListConversionsourcesRequest {
   /** The maximum number of conversion sources to return in a page. If no `page_size` is specified, `100` is used as the default value. The maximum value is `200`. Values above `200` will be coerced to `200`. Regardless of pagination, at most `200` conversion sources are returned in total. */
@@ -8123,26 +6560,16 @@ export interface ListConversionsourcesRequest {
   merchantId: string;
 }
 export const ListConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/conversionsources",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListConversionsourcesRequest",
-}) as any as S.Schema<ListConversionsourcesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/conversionsources","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListConversionsourcesRequest" }) as any as S.Schema<ListConversionsourcesRequest>;
 
 export type ConversionSourceList = ReadonlyArray<ConversionSource>;
-export const ConversionSourceList = /*@__PURE__*/ S.Array(
-  ConversionSource,
-) as any as S.Schema<ConversionSourceList>;
+export const ConversionSourceList = /*@__PURE__*/ S.Array(ConversionSource) as any as S.Schema<ConversionSourceList>;
 
 /** Response message for the ListConversionSources method. */
 export interface ListConversionSourcesResponse {
@@ -8152,13 +6579,11 @@ export interface ListConversionSourcesResponse {
   nextPageToken?: string;
 }
 export const ListConversionSourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversionSources: S.optional(ConversionSourceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListConversionSourcesResponse",
-}) as any as S.Schema<ListConversionSourcesResponse>;
+S.Struct({
+  "conversionSources": S.optional(ConversionSourceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListConversionSourcesResponse" }) as any as S.Schema<ListConversionSourcesResponse>;
 
 export interface ListCssesRequest {
   /** Required. The CSS group ID of CSS domains to be listed. */
@@ -8169,20 +6594,12 @@ export interface ListCssesRequest {
   pageToken?: string;
 }
 export const ListCssesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cssGroupId: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{cssGroupId}/csses",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCssesRequest",
-}) as any as S.Schema<ListCssesRequest>;
+S.Struct({
+  "cssGroupId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{cssGroupId}/csses","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListCssesRequest" }) as any as S.Schema<ListCssesRequest>;
 
 export type CssList = ReadonlyArray<Css>;
 export const CssList = /*@__PURE__*/ S.Array(Css) as any as S.Schema<CssList>;
@@ -8195,13 +6612,11 @@ export interface ListCssesResponse {
   nextPageToken?: string;
 }
 export const ListCssesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    csses: S.optional(CssList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCssesResponse",
-}) as any as S.Schema<ListCssesResponse>;
+S.Struct({
+  "csses": S.optional(CssList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCssesResponse" }) as any as S.Schema<ListCssesResponse>;
 
 export interface ListDatafeedsRequest {
   /** The maximum number of products to return in the response, used for paging. */
@@ -8212,25 +6627,15 @@ export interface ListDatafeedsRequest {
   merchantId: string;
 }
 export const ListDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/datafeeds",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListDatafeedsRequest",
-}) as any as S.Schema<ListDatafeedsRequest>;
+S.Struct({
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/datafeeds","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListDatafeedsRequest" }) as any as S.Schema<ListDatafeedsRequest>;
 
 export type DatafeedList = ReadonlyArray<Datafeed>;
-export const DatafeedList = /*@__PURE__*/ S.Array(
-  Datafeed,
-) as any as S.Schema<DatafeedList>;
+export const DatafeedList = /*@__PURE__*/ S.Array(Datafeed) as any as S.Schema<DatafeedList>;
 
 export interface DatafeedsListResponse {
   /** The token for the retrieval of the next page of datafeeds. */
@@ -8240,14 +6645,12 @@ export interface DatafeedsListResponse {
   resources?: DatafeedList;
 }
 export const DatafeedsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    resources: S.optional(DatafeedList),
-  }),
-).annotate({
-  identifier: "DatafeedsListResponse",
-}) as any as S.Schema<DatafeedsListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "resources": S.optional(DatafeedList),
+}),
+).annotate({ identifier: "DatafeedsListResponse" }) as any as S.Schema<DatafeedsListResponse>;
 
 export interface ListDatafeedstatusesRequest {
   /** The ID of the account that manages the datafeeds. This account cannot be a multi-client account. */
@@ -8258,25 +6661,15 @@ export interface ListDatafeedstatusesRequest {
   pageToken?: string;
 }
 export const ListDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/datafeedstatuses",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListDatafeedstatusesRequest",
-}) as any as S.Schema<ListDatafeedstatusesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/datafeedstatuses","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListDatafeedstatusesRequest" }) as any as S.Schema<ListDatafeedstatusesRequest>;
 
 export type DatafeedStatusList = ReadonlyArray<DatafeedStatus>;
-export const DatafeedStatusList = /*@__PURE__*/ S.Array(
-  DatafeedStatus,
-) as any as S.Schema<DatafeedStatusList>;
+export const DatafeedStatusList = /*@__PURE__*/ S.Array(DatafeedStatus) as any as S.Schema<DatafeedStatusList>;
 
 export interface DatafeedstatusesListResponse {
   /** The token for the retrieval of the next page of datafeed statuses. */
@@ -8286,14 +6679,12 @@ export interface DatafeedstatusesListResponse {
   resources?: DatafeedStatusList;
 }
 export const DatafeedstatusesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    resources: S.optional(DatafeedStatusList),
-  }),
-).annotate({
-  identifier: "DatafeedstatusesListResponse",
-}) as any as S.Schema<DatafeedstatusesListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "resources": S.optional(DatafeedStatusList),
+}),
+).annotate({ identifier: "DatafeedstatusesListResponse" }) as any as S.Schema<DatafeedstatusesListResponse>;
 
 export interface ListLiasettingsRequest {
   /** The ID of the managing account. This must be a multi-client account. */
@@ -8304,25 +6695,15 @@ export interface ListLiasettingsRequest {
   pageToken?: string;
 }
 export const ListLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/liasettings",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListLiasettingsRequest",
-}) as any as S.Schema<ListLiasettingsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/liasettings","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListLiasettingsRequest" }) as any as S.Schema<ListLiasettingsRequest>;
 
 export type LiaSettingsList = ReadonlyArray<LiaSettings>;
-export const LiaSettingsList = /*@__PURE__*/ S.Array(
-  LiaSettings,
-) as any as S.Schema<LiaSettingsList>;
+export const LiaSettingsList = /*@__PURE__*/ S.Array(LiaSettings) as any as S.Schema<LiaSettingsList>;
 
 export interface LiasettingsListResponse {
   /** The token for the retrieval of the next page of LIA settings. */
@@ -8332,14 +6713,12 @@ export interface LiasettingsListResponse {
   resources?: LiaSettingsList;
 }
 export const LiasettingsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    resources: S.optional(LiaSettingsList),
-  }),
-).annotate({
-  identifier: "LiasettingsListResponse",
-}) as any as S.Schema<LiasettingsListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "resources": S.optional(LiaSettingsList),
+}),
+).annotate({ identifier: "LiasettingsListResponse" }) as any as S.Schema<LiasettingsListResponse>;
 
 export interface ListlinksAccountsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
@@ -8352,21 +6731,13 @@ export interface ListlinksAccountsRequest {
   accountId: string;
 }
 export const ListlinksAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/accounts/{accountId}/listlinks",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListlinksAccountsRequest",
-}) as any as S.Schema<ListlinksAccountsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/accounts/{accountId}/listlinks","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListlinksAccountsRequest" }) as any as S.Schema<ListlinksAccountsRequest>;
 
 export interface LinkService {
   /** Status of the link Acceptable values are: - "`active`" - "`inactive`" - "`pending`" */
@@ -8375,16 +6746,14 @@ export interface LinkService {
   service?: string;
 }
 export const LinkService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    service: S.optional(S.String),
-  }),
+S.Struct({
+  "status": S.optional(S.String),
+  "service": S.optional(S.String),
+}),
 ).annotate({ identifier: "LinkService" }) as any as S.Schema<LinkService>;
 
 export type LinkServiceList = ReadonlyArray<LinkService>;
-export const LinkServiceList = /*@__PURE__*/ S.Array(
-  LinkService,
-) as any as S.Schema<LinkServiceList>;
+export const LinkServiceList = /*@__PURE__*/ S.Array(LinkService) as any as S.Schema<LinkServiceList>;
 
 export interface LinkedAccount {
   /** The ID of the linked account. */
@@ -8393,16 +6762,14 @@ export interface LinkedAccount {
   services?: LinkServiceList;
 }
 export const LinkedAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    linkedAccountId: S.optional(S.String),
-    services: S.optional(LinkServiceList),
-  }),
+S.Struct({
+  "linkedAccountId": S.optional(S.String),
+  "services": S.optional(LinkServiceList),
+}),
 ).annotate({ identifier: "LinkedAccount" }) as any as S.Schema<LinkedAccount>;
 
 export type LinkedAccountList = ReadonlyArray<LinkedAccount>;
-export const LinkedAccountList = /*@__PURE__*/ S.Array(
-  LinkedAccount,
-) as any as S.Schema<LinkedAccountList>;
+export const LinkedAccountList = /*@__PURE__*/ S.Array(LinkedAccount) as any as S.Schema<LinkedAccountList>;
 
 export interface AccountsListLinksResponse {
   /** The list of available links. */
@@ -8413,14 +6780,12 @@ export interface AccountsListLinksResponse {
   kind?: string;
 }
 export const AccountsListLinksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    links: S.optional(LinkedAccountList),
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsListLinksResponse",
-}) as any as S.Schema<AccountsListLinksResponse>;
+S.Struct({
+  "links": S.optional(LinkedAccountList),
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountsListLinksResponse" }) as any as S.Schema<AccountsListLinksResponse>;
 
 export interface ListPosRequest {
   /** The ID of the POS or inventory data provider. */
@@ -8429,22 +6794,14 @@ export interface ListPosRequest {
   targetMerchantId: string;
 }
 export const ListPosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    targetMerchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/pos/{targetMerchantId}/store",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "targetMerchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/pos/{targetMerchantId}/store","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
 ).annotate({ identifier: "ListPosRequest" }) as any as S.Schema<ListPosRequest>;
 
 export type PosStoreList = ReadonlyArray<PosStore>;
-export const PosStoreList = /*@__PURE__*/ S.Array(
-  PosStore,
-) as any as S.Schema<PosStoreList>;
+export const PosStoreList = /*@__PURE__*/ S.Array(PosStore) as any as S.Schema<PosStoreList>;
 
 export interface PosListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#posListResponse`". */
@@ -8452,27 +6809,16 @@ export interface PosListResponse {
   resources?: PosStoreList;
 }
 export const PosListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    resources: S.optional(PosStoreList),
-  }),
-).annotate({
-  identifier: "PosListResponse",
-}) as any as S.Schema<PosListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "resources": S.optional(PosStoreList),
+}),
+).annotate({ identifier: "PosListResponse" }) as any as S.Schema<PosListResponse>;
 
 export interface ListposdataprovidersLiasettingsRequest {}
-export const ListposdataprovidersLiasettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.Http({
-        method: "GET",
-        uri: "liasettings/posdataproviders",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-).annotate({
-  identifier: "ListposdataprovidersLiasettingsRequest",
-}) as any as S.Schema<ListposdataprovidersLiasettingsRequest>;
+export const ListposdataprovidersLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}).pipe(T.Http({"method":"GET","uri":"liasettings/posdataproviders","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListposdataprovidersLiasettingsRequest" }) as any as S.Schema<ListposdataprovidersLiasettingsRequest>;
 
 export interface LiasettingsListPosDataProvidersResponse {
   /** The list of POS data providers for each eligible country */
@@ -8480,15 +6826,12 @@ export interface LiasettingsListPosDataProvidersResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsListPosDataProvidersResponse`". */
   kind?: string;
 }
-export const LiasettingsListPosDataProvidersResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      posDataProviders: S.optional(PosDataProvidersList),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LiasettingsListPosDataProvidersResponse",
-}) as any as S.Schema<LiasettingsListPosDataProvidersResponse>;
+export const LiasettingsListPosDataProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "posDataProviders": S.optional(PosDataProvidersList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "LiasettingsListPosDataProvidersResponse" }) as any as S.Schema<LiasettingsListPosDataProvidersResponse>;
 
 export interface ListProductsRequest {
   /** The maximum number of products to return in the response, used for paging. The default value is 25. The maximum value is 250. */
@@ -8499,25 +6842,15 @@ export interface ListProductsRequest {
   merchantId: string;
 }
 export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/products",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProductsRequest",
-}) as any as S.Schema<ListProductsRequest>;
+S.Struct({
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/products","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListProductsRequest" }) as any as S.Schema<ListProductsRequest>;
 
 export type ProductList = ReadonlyArray<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(
-  Product,
-) as any as S.Schema<ProductList>;
+export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 export interface ProductsListResponse {
   /** The token for the retrieval of the next page of products. */
@@ -8527,14 +6860,12 @@ export interface ProductsListResponse {
   resources?: ProductList;
 }
 export const ProductsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    resources: S.optional(ProductList),
-  }),
-).annotate({
-  identifier: "ProductsListResponse",
-}) as any as S.Schema<ProductsListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "resources": S.optional(ProductList),
+}),
+).annotate({ identifier: "ProductsListResponse" }) as any as S.Schema<ProductsListResponse>;
 
 export interface ListProductstatusesRequest {
   /** The ID of the account that contains the products. This account cannot be a multi-client account. */
@@ -8547,26 +6878,16 @@ export interface ListProductstatusesRequest {
   pageToken?: string;
 }
 export const ListProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    destinations: S.optional(StringList.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/productstatuses",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProductstatusesRequest",
-}) as any as S.Schema<ListProductstatusesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "destinations": S.optional(StringList.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/productstatuses","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListProductstatusesRequest" }) as any as S.Schema<ListProductstatusesRequest>;
 
 export type ProductStatusList = ReadonlyArray<ProductStatus>;
-export const ProductStatusList = /*@__PURE__*/ S.Array(
-  ProductStatus,
-) as any as S.Schema<ProductStatusList>;
+export const ProductStatusList = /*@__PURE__*/ S.Array(ProductStatus) as any as S.Schema<ProductStatusList>;
 
 export interface ProductstatusesListResponse {
   /** The token for the retrieval of the next page of products statuses. */
@@ -8576,14 +6897,12 @@ export interface ProductstatusesListResponse {
   resources?: ProductStatusList;
 }
 export const ProductstatusesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    resources: S.optional(ProductStatusList),
-  }),
-).annotate({
-  identifier: "ProductstatusesListResponse",
-}) as any as S.Schema<ProductstatusesListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "resources": S.optional(ProductStatusList),
+}),
+).annotate({ identifier: "ProductstatusesListResponse" }) as any as S.Schema<ProductstatusesListResponse>;
 
 export interface ListPromotionsRequest {
   /** The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 labels will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -8598,27 +6917,17 @@ export interface ListPromotionsRequest {
   languageCode?: string;
 }
 export const ListPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    countryCode: S.optional(S.String.pipe(T.Query())),
-    merchantId: S.String.pipe(T.Label()),
-    languageCode: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/promotions",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListPromotionsRequest",
-}) as any as S.Schema<ListPromotionsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "countryCode": S.optional(S.String.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/promotions","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListPromotionsRequest" }) as any as S.Schema<ListPromotionsRequest>;
 
 export type PromotionList = ReadonlyArray<Promotion>;
-export const PromotionList = /*@__PURE__*/ S.Array(
-  Promotion,
-) as any as S.Schema<PromotionList>;
+export const PromotionList = /*@__PURE__*/ S.Array(Promotion) as any as S.Schema<PromotionList>;
 
 /** Response message for Promotions.List method. */
 export interface ListPromotionResponse {
@@ -8628,13 +6937,11 @@ export interface ListPromotionResponse {
   nextPageToken?: string;
 }
 export const ListPromotionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    promotions: S.optional(PromotionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPromotionResponse",
-}) as any as S.Schema<ListPromotionResponse>;
+S.Struct({
+  "promotions": S.optional(PromotionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPromotionResponse" }) as any as S.Schema<ListPromotionResponse>;
 
 export interface ListQuotasRequest {
   /** Required. The ID of the account that has quota. This account must be an admin. */
@@ -8645,20 +6952,12 @@ export interface ListQuotasRequest {
   pageToken?: string;
 }
 export const ListQuotasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/quotas",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListQuotasRequest",
-}) as any as S.Schema<ListQuotasRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/quotas","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListQuotasRequest" }) as any as S.Schema<ListQuotasRequest>;
 
 /** The quota information per method in the Content API. */
 export interface MethodQuota {
@@ -8672,18 +6971,16 @@ export interface MethodQuota {
   quotaLimit?: string;
 }
 export const MethodQuota = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    quotaMinuteLimit: S.optional(S.String),
-    method: S.optional(S.String),
-    quotaUsage: S.optional(S.String),
-    quotaLimit: S.optional(S.String),
-  }),
+S.Struct({
+  "quotaMinuteLimit": S.optional(S.String),
+  "method": S.optional(S.String),
+  "quotaUsage": S.optional(S.String),
+  "quotaLimit": S.optional(S.String),
+}),
 ).annotate({ identifier: "MethodQuota" }) as any as S.Schema<MethodQuota>;
 
 export type MethodQuotaList = ReadonlyArray<MethodQuota>;
-export const MethodQuotaList = /*@__PURE__*/ S.Array(
-  MethodQuota,
-) as any as S.Schema<MethodQuotaList>;
+export const MethodQuotaList = /*@__PURE__*/ S.Array(MethodQuota) as any as S.Schema<MethodQuotaList>;
 
 /** Response message for the ListMethodQuotas method. */
 export interface ListMethodQuotasResponse {
@@ -8693,13 +6990,11 @@ export interface ListMethodQuotasResponse {
   methodQuotas?: MethodQuotaList;
 }
 export const ListMethodQuotasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    methodQuotas: S.optional(MethodQuotaList),
-  }),
-).annotate({
-  identifier: "ListMethodQuotasResponse",
-}) as any as S.Schema<ListMethodQuotasResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "methodQuotas": S.optional(MethodQuotaList),
+}),
+).annotate({ identifier: "ListMethodQuotasResponse" }) as any as S.Schema<ListMethodQuotasResponse>;
 
 export interface ListRegionsRequest {
   /** Required. The id of the merchant for which to list region definitions. */
@@ -8710,25 +7005,15 @@ export interface ListRegionsRequest {
   pageToken?: string;
 }
 export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/regions",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListRegionsRequest",
-}) as any as S.Schema<ListRegionsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/regions","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListRegionsRequest" }) as any as S.Schema<ListRegionsRequest>;
 
 export type RegionList = ReadonlyArray<Region>;
-export const RegionList = /*@__PURE__*/ S.Array(
-  Region,
-) as any as S.Schema<RegionList>;
+export const RegionList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionList>;
 
 /** Response message for the `ListRegions` method. */
 export interface ListRegionsResponse {
@@ -8738,36 +7023,24 @@ export interface ListRegionsResponse {
   nextPageToken?: string;
 }
 export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(RegionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRegionsResponse",
-}) as any as S.Schema<ListRegionsResponse>;
+S.Struct({
+  "regions": S.optional(RegionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListRegionsResponse" }) as any as S.Schema<ListRegionsResponse>;
 
 export interface ListReturnpolicyonlineRequest {
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
   merchantId: string;
 }
 export const ListReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/returnpolicyonline",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListReturnpolicyonlineRequest",
-}) as any as S.Schema<ListReturnpolicyonlineRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/returnpolicyonline","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListReturnpolicyonlineRequest" }) as any as S.Schema<ListReturnpolicyonlineRequest>;
 
 export type ReturnPolicyOnlineList = ReadonlyArray<ReturnPolicyOnline>;
-export const ReturnPolicyOnlineList = /*@__PURE__*/ S.Array(
-  ReturnPolicyOnline,
-) as any as S.Schema<ReturnPolicyOnlineList>;
+export const ReturnPolicyOnlineList = /*@__PURE__*/ S.Array(ReturnPolicyOnline) as any as S.Schema<ReturnPolicyOnlineList>;
 
 /** Response message for the `ListReturnPolicyOnline` method. */
 export interface ListReturnPolicyOnlineResponse {
@@ -8775,12 +7048,10 @@ export interface ListReturnPolicyOnlineResponse {
   returnPolicies?: ReturnPolicyOnlineList;
 }
 export const ListReturnPolicyOnlineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    returnPolicies: S.optional(ReturnPolicyOnlineList),
-  }),
-).annotate({
-  identifier: "ListReturnPolicyOnlineResponse",
-}) as any as S.Schema<ListReturnPolicyOnlineResponse>;
+S.Struct({
+  "returnPolicies": S.optional(ReturnPolicyOnlineList),
+}),
+).annotate({ identifier: "ListReturnPolicyOnlineResponse" }) as any as S.Schema<ListReturnPolicyOnlineResponse>;
 
 export interface ListShippingsettingsRequest {
   /** The ID of the managing account. This must be a multi-client account. */
@@ -8791,25 +7062,15 @@ export interface ListShippingsettingsRequest {
   pageToken?: string;
 }
 export const ListShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "{merchantId}/shippingsettings",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "ListShippingsettingsRequest",
-}) as any as S.Schema<ListShippingsettingsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"{merchantId}/shippingsettings","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ListShippingsettingsRequest" }) as any as S.Schema<ListShippingsettingsRequest>;
 
 export type ShippingSettingsList = ReadonlyArray<ShippingSettings>;
-export const ShippingSettingsList = /*@__PURE__*/ S.Array(
-  ShippingSettings,
-) as any as S.Schema<ShippingSettingsList>;
+export const ShippingSettingsList = /*@__PURE__*/ S.Array(ShippingSettings) as any as S.Schema<ShippingSettingsList>;
 
 export interface ShippingsettingsListResponse {
   /** The token for the retrieval of the next page of shipping settings. */
@@ -8819,14 +7080,12 @@ export interface ShippingsettingsListResponse {
   resources?: ShippingSettingsList;
 }
 export const ShippingsettingsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    resources: S.optional(ShippingSettingsList),
-  }),
-).annotate({
-  identifier: "ShippingsettingsListResponse",
-}) as any as S.Schema<ShippingsettingsListResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "resources": S.optional(ShippingSettingsList),
+}),
+).annotate({ identifier: "ShippingsettingsListResponse" }) as any as S.Schema<ShippingsettingsListResponse>;
 
 export interface PatchAccountsLabelsRequest {
   /** Required. The id of the label to update. */
@@ -8837,20 +7096,12 @@ export interface PatchAccountsLabelsRequest {
   body?: AccountLabel;
 }
 export const PatchAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labelId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(AccountLabel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "accounts/{accountId}/labels/{labelId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAccountsLabelsRequest",
-}) as any as S.Schema<PatchAccountsLabelsRequest>;
+S.Struct({
+  "labelId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(AccountLabel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/{accountId}/labels/{labelId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "PatchAccountsLabelsRequest" }) as any as S.Schema<PatchAccountsLabelsRequest>;
 
 export interface PatchAccountsReturncarrierRequest {
   /** Required. The Merchant Center Account Id under which the Return Carrier is to be linked. */
@@ -8861,20 +7112,12 @@ export interface PatchAccountsReturncarrierRequest {
   body?: AccountReturnCarrier;
 }
 export const PatchAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    carrierAccountId: S.String.pipe(T.Label()),
-    body: S.optional(AccountReturnCarrier.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "accounts/{accountId}/returncarrier/{carrierAccountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAccountsReturncarrierRequest",
-}) as any as S.Schema<PatchAccountsReturncarrierRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "carrierAccountId": S.String.pipe(T.Label()),
+  "body": S.optional(AccountReturnCarrier.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/{accountId}/returncarrier/{carrierAccountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "PatchAccountsReturncarrierRequest" }) as any as S.Schema<PatchAccountsReturncarrierRequest>;
 
 export interface PatchConversionsourcesRequest {
   /** Required. The ID of the account that owns the new conversion source. */
@@ -8887,21 +7130,13 @@ export interface PatchConversionsourcesRequest {
   body?: ConversionSource;
 }
 export const PatchConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    conversionSourceId: S.String.pipe(T.Label()),
-    body: S.optional(ConversionSource.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "{merchantId}/conversionsources/{conversionSourceId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchConversionsourcesRequest",
-}) as any as S.Schema<PatchConversionsourcesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "conversionSourceId": S.String.pipe(T.Label()),
+  "body": S.optional(ConversionSource.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"{merchantId}/conversionsources/{conversionSourceId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "PatchConversionsourcesRequest" }) as any as S.Schema<PatchConversionsourcesRequest>;
 
 export interface PatchRegionsRequest {
   /** Required. The id of the merchant for which to update region definition. */
@@ -8914,21 +7149,13 @@ export interface PatchRegionsRequest {
   body?: Region;
 }
 export const PatchRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    regionId: S.String.pipe(T.Label()),
-    body: S.optional(Region.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "{merchantId}/regions/{regionId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchRegionsRequest",
-}) as any as S.Schema<PatchRegionsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "regionId": S.String.pipe(T.Label()),
+  "body": S.optional(Region.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"{merchantId}/regions/{regionId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "PatchRegionsRequest" }) as any as S.Schema<PatchRegionsRequest>;
 
 export interface PatchReturnpolicyonlineRequest {
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
@@ -8939,55 +7166,32 @@ export interface PatchReturnpolicyonlineRequest {
   body?: ReturnPolicyOnline;
 }
 export const PatchReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    returnPolicyId: S.String.pipe(T.Label()),
-    body: S.optional(ReturnPolicyOnline.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "{merchantId}/returnpolicyonline/{returnPolicyId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchReturnpolicyonlineRequest",
-}) as any as S.Schema<PatchReturnpolicyonlineRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "returnPolicyId": S.String.pipe(T.Label()),
+  "body": S.optional(ReturnPolicyOnline.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"{merchantId}/returnpolicyonline/{returnPolicyId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "PatchReturnpolicyonlineRequest" }) as any as S.Schema<PatchReturnpolicyonlineRequest>;
 
-export type RenderAccountIssuesRequestPayloadContentOptionEnum =
-  | "CONTENT_OPTION_UNSPECIFIED"
-  | "PRE_RENDERED_HTML"
-  | (string & {});
-export const RenderAccountIssuesRequestPayloadContentOptionEnum =
-  /*@__PURE__*/ S.String;
+export type RenderAccountIssuesRequestPayloadContentOptionEnum = "CONTENT_OPTION_UNSPECIFIED" | "PRE_RENDERED_HTML";
+export const RenderAccountIssuesRequestPayloadContentOptionEnum = /*@__PURE__*/ S.String;
 
-export type RenderAccountIssuesRequestPayloadUserInputActionOptionEnum =
-  | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
-  | "REDIRECT_TO_MERCHANT_CENTER"
-  | "BUILT_IN_USER_INPUT_ACTIONS"
-  | (string & {});
-export const RenderAccountIssuesRequestPayloadUserInputActionOptionEnum =
-  /*@__PURE__*/ S.String;
+export type RenderAccountIssuesRequestPayloadUserInputActionOptionEnum = "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED" | "REDIRECT_TO_MERCHANT_CENTER" | "BUILT_IN_USER_INPUT_ACTIONS";
+export const RenderAccountIssuesRequestPayloadUserInputActionOptionEnum = /*@__PURE__*/ S.String;
 
 /** The payload for configuring how the content should be rendered. */
 export interface RenderAccountIssuesRequestPayload {
   /** Optional. How the detailed content should be returned. Default option is to return the content as a pre-rendered HTML text. */
-  contentOption?: RenderAccountIssuesRequestPayloadContentOptionEnum;
+  contentOption?: RenderAccountIssuesRequestPayloadContentOptionEnum | (string & {});
   /** Optional. How actions with user input form should be handled. If not provided, actions will be returned as links that points merchant to Merchant Center where they can request the action. */
-  userInputActionOption?: RenderAccountIssuesRequestPayloadUserInputActionOptionEnum;
+  userInputActionOption?: RenderAccountIssuesRequestPayloadUserInputActionOptionEnum | (string & {});
 }
 export const RenderAccountIssuesRequestPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentOption: S.optional(
-      RenderAccountIssuesRequestPayloadContentOptionEnum,
-    ),
-    userInputActionOption: S.optional(
-      RenderAccountIssuesRequestPayloadUserInputActionOptionEnum,
-    ),
-  }),
-).annotate({
-  identifier: "RenderAccountIssuesRequestPayload",
-}) as any as S.Schema<RenderAccountIssuesRequestPayload>;
+S.Struct({
+  "contentOption": S.optional(RenderAccountIssuesRequestPayloadContentOptionEnum),
+  "userInputActionOption": S.optional(RenderAccountIssuesRequestPayloadUserInputActionOptionEnum),
+}),
+).annotate({ identifier: "RenderAccountIssuesRequestPayload" }) as any as S.Schema<RenderAccountIssuesRequestPayload>;
 
 export interface RenderaccountissuesMerchantsupportRequest {
   /** Optional. The [IETF BCP-47](https://tools.ietf.org/html/bcp47) language code used to localize support content. If not set, the result will be in default language `en-US`. */
@@ -8999,23 +7203,14 @@ export interface RenderaccountissuesMerchantsupportRequest {
   /** Request body */
   body?: RenderAccountIssuesRequestPayload;
 }
-export const RenderaccountissuesMerchantsupportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      languageCode: S.optional(S.String.pipe(T.Query())),
-      timeZone: S.optional(S.String.pipe(T.Query())),
-      merchantId: S.String.pipe(T.Label()),
-      body: S.optional(RenderAccountIssuesRequestPayload.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/merchantsupport/renderaccountissues",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RenderaccountissuesMerchantsupportRequest",
-  }) as any as S.Schema<RenderaccountissuesMerchantsupportRequest>;
+export const RenderaccountissuesMerchantsupportRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "timeZone": S.optional(S.String.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(RenderAccountIssuesRequestPayload.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/merchantsupport/renderaccountissues","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "RenderaccountissuesMerchantsupportRequest" }) as any as S.Schema<RenderaccountissuesMerchantsupportRequest>;
 
 /** Region with code and localized name. */
 export interface BreakdownRegion {
@@ -9025,18 +7220,14 @@ export interface BreakdownRegion {
   name?: string;
 }
 export const BreakdownRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BreakdownRegion",
-}) as any as S.Schema<BreakdownRegion>;
+S.Struct({
+  "code": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "BreakdownRegion" }) as any as S.Schema<BreakdownRegion>;
 
 export type BreakdownRegionList = ReadonlyArray<BreakdownRegion>;
-export const BreakdownRegionList = /*@__PURE__*/ S.Array(
-  BreakdownRegion,
-) as any as S.Schema<BreakdownRegionList>;
+export const BreakdownRegionList = /*@__PURE__*/ S.Array(BreakdownRegion) as any as S.Schema<BreakdownRegionList>;
 
 /** A detailed impact breakdown for a group of regions where the impact of the issue on different shopping destinations is the same. */
 export interface Breakdown {
@@ -9046,23 +7237,16 @@ export interface Breakdown {
   regions?: BreakdownRegionList;
 }
 export const Breakdown = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(StringList),
-    regions: S.optional(BreakdownRegionList),
-  }),
+S.Struct({
+  "details": S.optional(StringList),
+  "regions": S.optional(BreakdownRegionList),
+}),
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
 export type BreakdownList = ReadonlyArray<Breakdown>;
-export const BreakdownList = /*@__PURE__*/ S.Array(
-  Breakdown,
-) as any as S.Schema<BreakdownList>;
+export const BreakdownList = /*@__PURE__*/ S.Array(Breakdown) as any as S.Schema<BreakdownList>;
 
-export type AccountIssueImpactSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "ERROR"
-  | "WARNING"
-  | "INFO"
-  | (string & {});
+export type AccountIssueImpactSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
 export const AccountIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Overall impact of the issue. */
@@ -9075,22 +7259,14 @@ export interface AccountIssueImpact {
   severity?: AccountIssueImpactSeverityEnum;
 }
 export const AccountIssueImpact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    breakdowns: S.optional(BreakdownList),
-    message: S.optional(S.String),
-    severity: S.optional(AccountIssueImpactSeverityEnum),
-  }),
-).annotate({
-  identifier: "AccountIssueImpact",
-}) as any as S.Schema<AccountIssueImpact>;
+S.Struct({
+  "breakdowns": S.optional(BreakdownList),
+  "message": S.optional(S.String),
+  "severity": S.optional(AccountIssueImpactSeverityEnum),
+}),
+).annotate({ identifier: "AccountIssueImpact" }) as any as S.Schema<AccountIssueImpact>;
 
-export type ExternalActionTypeEnum =
-  | "EXTERNAL_ACTION_TYPE_UNSPECIFIED"
-  | "REVIEW_PRODUCT_ISSUE_IN_MERCHANT_CENTER"
-  | "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER"
-  | "LEGAL_APPEAL_IN_HELP_CENTER"
-  | "VERIFY_IDENTITY_IN_MERCHANT_CENTER"
-  | (string & {});
+export type ExternalActionTypeEnum = "EXTERNAL_ACTION_TYPE_UNSPECIFIED" | "REVIEW_PRODUCT_ISSUE_IN_MERCHANT_CENTER" | "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER" | "LEGAL_APPEAL_IN_HELP_CENTER" | "VERIFY_IDENTITY_IN_MERCHANT_CENTER";
 export const ExternalActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Action that is implemented and performed outside of the third-party application. It should redirect the merchant to the provided URL of an external system where they can perform the action. For example to request a review in the Merchant Center. */
@@ -9101,10 +7277,10 @@ export interface ExternalAction {
   type?: ExternalActionTypeEnum;
 }
 export const ExternalAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    type: S.optional(ExternalActionTypeEnum),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "type": S.optional(ExternalActionTypeEnum),
+}),
 ).annotate({ identifier: "ExternalAction" }) as any as S.Schema<ExternalAction>;
 
 /** A single reason why the action is not available. */
@@ -9117,31 +7293,20 @@ export interface ActionReason {
   action?: Action;
 }
 export const ActionReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detail: S.optional(S.String),
-    message: S.optional(S.String),
-    action: S.optional(S.suspend(() => Action)),
-  }),
+S.Struct({
+  "detail": S.optional(S.String),
+  "message": S.optional(S.String),
+  "action": S.optional(S.suspend(() => Action)),
+}),
 ).annotate({ identifier: "ActionReason" }) as any as S.Schema<ActionReason>;
 
 export type ActionReasonList = ReadonlyArray<ActionReason>;
-export const ActionReasonList = /*@__PURE__*/ S.Array(
-  ActionReason,
-) as any as S.Schema<ActionReasonList>;
+export const ActionReasonList = /*@__PURE__*/ S.Array(ActionReason) as any as S.Schema<ActionReasonList>;
 
-export type CalloutStyleHintEnum =
-  | "CALLOUT_STYLE_HINT_UNSPECIFIED"
-  | "ERROR"
-  | "WARNING"
-  | "INFO"
-  | (string & {});
+export type CalloutStyleHintEnum = "CALLOUT_STYLE_HINT_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
 export const CalloutStyleHintEnum = /*@__PURE__*/ S.String;
 
-export type TextWithTooltipTooltipIconStyleEnum =
-  | "TOOLTIP_ICON_STYLE_UNSPECIFIED"
-  | "INFO"
-  | "QUESTION"
-  | (string & {});
+export type TextWithTooltipTooltipIconStyleEnum = "TOOLTIP_ICON_STYLE_UNSPECIFIED" | "INFO" | "QUESTION";
 export const TextWithTooltipTooltipIconStyleEnum = /*@__PURE__*/ S.String;
 
 /** Block of text that may contain a tooltip with more information. */
@@ -9154,14 +7319,12 @@ export interface TextWithTooltip {
   tooltipIconStyle?: TextWithTooltipTooltipIconStyleEnum;
 }
 export const TextWithTooltip = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    simpleValue: S.optional(S.String),
-    simpleTooltipValue: S.optional(S.String),
-    tooltipIconStyle: S.optional(TextWithTooltipTooltipIconStyleEnum),
-  }),
-).annotate({
-  identifier: "TextWithTooltip",
-}) as any as S.Schema<TextWithTooltip>;
+S.Struct({
+  "simpleValue": S.optional(S.String),
+  "simpleTooltipValue": S.optional(S.String),
+  "tooltipIconStyle": S.optional(TextWithTooltipTooltipIconStyleEnum),
+}),
+).annotate({ identifier: "TextWithTooltip" }) as any as S.Schema<TextWithTooltip>;
 
 /** An important message that should be highlighted. Usually displayed as a banner. */
 export interface Callout {
@@ -9171,19 +7334,17 @@ export interface Callout {
   fullMessage?: TextWithTooltip;
 }
 export const Callout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    styleHint: S.optional(CalloutStyleHintEnum),
-    fullMessage: S.optional(TextWithTooltip),
-  }),
+S.Struct({
+  "styleHint": S.optional(CalloutStyleHintEnum),
+  "fullMessage": S.optional(TextWithTooltip),
+}),
 ).annotate({ identifier: "Callout" }) as any as S.Schema<Callout>;
 
 /** Checkbox input allows merchants to provide a boolean value. Corresponds to the [html input type=checkbox](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox). If merchant checks the box, the input value for the field is `true`, otherwise it is `false`. This type of input is often used as a confirmation that the merchant completed required steps before they are allowed to start the action. In such a case, the input field is marked as required and the button to trigger the action should stay disabled until the merchant checks the box. */
 export interface InputFieldCheckboxInput {}
 export const InputFieldCheckboxInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InputFieldCheckboxInput",
-}) as any as S.Schema<InputFieldCheckboxInput>;
+S.Struct({}),
+).annotate({ identifier: "InputFieldCheckboxInput" }) as any as S.Schema<InputFieldCheckboxInput>;
 
 /** A choice that merchant can select. */
 export interface InputFieldChoiceInputChoiceInputOption {
@@ -9194,22 +7355,16 @@ export interface InputFieldChoiceInputChoiceInputOption {
   /** Input that should be displayed when this option is selected. The additional input will not contain a `ChoiceInput`. */
   additionalInput?: InputField;
 }
-export const InputFieldChoiceInputChoiceInputOption = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      label: S.optional(TextWithTooltip),
-      additionalInput: S.optional(S.suspend(() => InputField)),
-    }),
-).annotate({
-  identifier: "InputFieldChoiceInputChoiceInputOption",
-}) as any as S.Schema<InputFieldChoiceInputChoiceInputOption>;
+export const InputFieldChoiceInputChoiceInputOption = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "id": S.optional(S.String),
+  "label": S.optional(TextWithTooltip),
+  "additionalInput": S.optional(S.suspend(() => InputField)),
+}),
+).annotate({ identifier: "InputFieldChoiceInputChoiceInputOption" }) as any as S.Schema<InputFieldChoiceInputChoiceInputOption>;
 
-export type InputFieldChoiceInputChoiceInputOptionList =
-  ReadonlyArray<InputFieldChoiceInputChoiceInputOption>;
-export const InputFieldChoiceInputChoiceInputOptionList = /*@__PURE__*/ S.Array(
-  InputFieldChoiceInputChoiceInputOption,
-) as any as S.Schema<InputFieldChoiceInputChoiceInputOptionList>;
+export type InputFieldChoiceInputChoiceInputOptionList = ReadonlyArray<InputFieldChoiceInputChoiceInputOption>;
+export const InputFieldChoiceInputChoiceInputOptionList = /*@__PURE__*/ S.Array(InputFieldChoiceInputChoiceInputOption) as any as S.Schema<InputFieldChoiceInputChoiceInputOptionList>;
 
 /** Choice input allows merchants to select one of the offered choices. Some choices may be linked to additional input fields that should be displayed under or next to the choice option. The value for the additional input field needs to be provided only when the specific choice is selected by the merchant. For example, additional input field can be hidden or disabled until the merchant selects the specific choice. */
 export interface InputFieldChoiceInput {
@@ -9217,18 +7372,12 @@ export interface InputFieldChoiceInput {
   options?: InputFieldChoiceInputChoiceInputOptionList;
 }
 export const InputFieldChoiceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(InputFieldChoiceInputChoiceInputOptionList),
-  }),
-).annotate({
-  identifier: "InputFieldChoiceInput",
-}) as any as S.Schema<InputFieldChoiceInput>;
+S.Struct({
+  "options": S.optional(InputFieldChoiceInputChoiceInputOptionList),
+}),
+).annotate({ identifier: "InputFieldChoiceInput" }) as any as S.Schema<InputFieldChoiceInput>;
 
-export type InputFieldTextInputTypeEnum =
-  | "TEXT_INPUT_TYPE_UNSPECIFIED"
-  | "GENERIC_SHORT_TEXT"
-  | "GENERIC_LONG_TEXT"
-  | (string & {});
+export type InputFieldTextInputTypeEnum = "TEXT_INPUT_TYPE_UNSPECIFIED" | "GENERIC_SHORT_TEXT" | "GENERIC_LONG_TEXT";
 export const InputFieldTextInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Text input allows merchants to provide a text value. */
@@ -9243,15 +7392,13 @@ export interface InputFieldTextInput {
   ariaLabel?: string;
 }
 export const InputFieldTextInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalInfo: S.optional(TextWithTooltip),
-    formatInfo: S.optional(S.String),
-    type: S.optional(InputFieldTextInputTypeEnum),
-    ariaLabel: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InputFieldTextInput",
-}) as any as S.Schema<InputFieldTextInput>;
+S.Struct({
+  "additionalInfo": S.optional(TextWithTooltip),
+  "formatInfo": S.optional(S.String),
+  "type": S.optional(InputFieldTextInputTypeEnum),
+  "ariaLabel": S.optional(S.String),
+}),
+).annotate({ identifier: "InputFieldTextInput" }) as any as S.Schema<InputFieldTextInput>;
 
 /** Input field that needs to be available to the merchant. If the field is marked as required, then a value needs to be provided for a successful processing of the request. */
 export interface InputField {
@@ -9269,20 +7416,18 @@ export interface InputField {
   textInput?: InputFieldTextInput;
 }
 export const InputField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkboxInput: S.optional(InputFieldCheckboxInput),
-    id: S.optional(S.String),
-    label: S.optional(TextWithTooltip),
-    required: S.optional(S.Boolean),
-    choiceInput: S.optional(InputFieldChoiceInput),
-    textInput: S.optional(InputFieldTextInput),
-  }),
+S.Struct({
+  "checkboxInput": S.optional(InputFieldCheckboxInput),
+  "id": S.optional(S.String),
+  "label": S.optional(TextWithTooltip),
+  "required": S.optional(S.Boolean),
+  "choiceInput": S.optional(InputFieldChoiceInput),
+  "textInput": S.optional(InputFieldTextInput),
+}),
 ).annotate({ identifier: "InputField" }) as any as S.Schema<InputField>;
 
 export type InputFieldList = ReadonlyArray<InputField>;
-export const InputFieldList = /*@__PURE__*/ S.Array(
-  InputField,
-) as any as S.Schema<InputFieldList>;
+export const InputFieldList = /*@__PURE__*/ S.Array(InputField) as any as S.Schema<InputFieldList>;
 
 /** Flow that can be selected for an action. When merchant selects a flow, application should open a dialog with more information and input form. */
 export interface ActionFlow {
@@ -9302,21 +7447,19 @@ export interface ActionFlow {
   inputs?: InputFieldList;
 }
 export const ActionFlow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    label: S.optional(S.String),
-    dialogCallout: S.optional(Callout),
-    dialogTitle: S.optional(S.String),
-    dialogButtonLabel: S.optional(S.String),
-    dialogMessage: S.optional(TextWithTooltip),
-    inputs: S.optional(InputFieldList),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "label": S.optional(S.String),
+  "dialogCallout": S.optional(Callout),
+  "dialogTitle": S.optional(S.String),
+  "dialogButtonLabel": S.optional(S.String),
+  "dialogMessage": S.optional(TextWithTooltip),
+  "inputs": S.optional(InputFieldList),
+}),
 ).annotate({ identifier: "ActionFlow" }) as any as S.Schema<ActionFlow>;
 
 export type ActionFlowList = ReadonlyArray<ActionFlow>;
-export const ActionFlowList = /*@__PURE__*/ S.Array(
-  ActionFlow,
-) as any as S.Schema<ActionFlowList>;
+export const ActionFlowList = /*@__PURE__*/ S.Array(ActionFlow) as any as S.Schema<ActionFlowList>;
 
 /** Action that is implemented and performed in (your) third-party application. The application needs to show an additional content and input form to the merchant. They can start the action only when they provided all required inputs. The application will request processing of the action by calling the [triggeraction method](https://developers.google.com/shopping-content/reference/rest/v2.1/merchantsupport/triggeraction). */
 export interface BuiltInUserInputAction {
@@ -9326,26 +7469,13 @@ export interface BuiltInUserInputAction {
   actionContext?: string;
 }
 export const BuiltInUserInputAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flows: S.optional(ActionFlowList),
-    actionContext: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BuiltInUserInputAction",
-}) as any as S.Schema<BuiltInUserInputAction>;
+S.Struct({
+  "flows": S.optional(ActionFlowList),
+  "actionContext": S.optional(S.String),
+}),
+).annotate({ identifier: "BuiltInUserInputAction" }) as any as S.Schema<BuiltInUserInputAction>;
 
-export type BuiltInSimpleActionTypeEnum =
-  | "BUILT_IN_SIMPLE_ACTION_TYPE_UNSPECIFIED"
-  | "VERIFY_PHONE"
-  | "CLAIM_WEBSITE"
-  | "ADD_PRODUCTS"
-  | "ADD_CONTACT_INFO"
-  | "LINK_ADS_ACCOUNT"
-  | "ADD_BUSINESS_REGISTRATION_NUMBER"
-  | "EDIT_ITEM_ATTRIBUTE"
-  | "FIX_ACCOUNT_ISSUE"
-  | "SHOW_ADDITIONAL_CONTENT"
-  | (string & {});
+export type BuiltInSimpleActionTypeEnum = "BUILT_IN_SIMPLE_ACTION_TYPE_UNSPECIFIED" | "VERIFY_PHONE" | "CLAIM_WEBSITE" | "ADD_PRODUCTS" | "ADD_CONTACT_INFO" | "LINK_ADS_ACCOUNT" | "ADD_BUSINESS_REGISTRATION_NUMBER" | "EDIT_ITEM_ATTRIBUTE" | "FIX_ACCOUNT_ISSUE" | "SHOW_ADDITIONAL_CONTENT";
 export const BuiltInSimpleActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Long text from external source. */
@@ -9355,15 +7485,12 @@ export interface BuiltInSimpleActionAdditionalContent {
   /** Title of the additional content; */
   title?: string;
 }
-export const BuiltInSimpleActionAdditionalContent = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      paragraphs: S.optional(StringList),
-      title: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "BuiltInSimpleActionAdditionalContent",
-}) as any as S.Schema<BuiltInSimpleActionAdditionalContent>;
+export const BuiltInSimpleActionAdditionalContent = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "paragraphs": S.optional(StringList),
+  "title": S.optional(S.String),
+}),
+).annotate({ identifier: "BuiltInSimpleActionAdditionalContent" }) as any as S.Schema<BuiltInSimpleActionAdditionalContent>;
 
 /** Action that is implemented and performed in (your) third-party application. Represents various functionality that is expected to be available to merchant and will help them with resolving the issue. The application should point the merchant to the place, where they can access the corresponding functionality. If the functionality is not supported, it is recommended to explain the situation to merchant and provide them with instructions how to solve the issue. */
 export interface BuiltInSimpleAction {
@@ -9375,14 +7502,12 @@ export interface BuiltInSimpleAction {
   additionalContent?: BuiltInSimpleActionAdditionalContent;
 }
 export const BuiltInSimpleAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(BuiltInSimpleActionTypeEnum),
-    attributeCode: S.optional(S.String),
-    additionalContent: S.optional(BuiltInSimpleActionAdditionalContent),
-  }),
-).annotate({
-  identifier: "BuiltInSimpleAction",
-}) as any as S.Schema<BuiltInSimpleAction>;
+S.Struct({
+  "type": S.optional(BuiltInSimpleActionTypeEnum),
+  "attributeCode": S.optional(S.String),
+  "additionalContent": S.optional(BuiltInSimpleActionAdditionalContent),
+}),
+).annotate({ identifier: "BuiltInSimpleAction" }) as any as S.Schema<BuiltInSimpleAction>;
 
 /** An actionable step that can be executed to solve the issue. */
 export interface Action {
@@ -9400,20 +7525,18 @@ export interface Action {
   isAvailable?: boolean;
 }
 export const Action = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalAction: S.optional(ExternalAction),
-    reasons: S.optional(ActionReasonList),
-    builtinUserInputAction: S.optional(BuiltInUserInputAction),
-    buttonLabel: S.optional(S.String),
-    builtinSimpleAction: S.optional(BuiltInSimpleAction),
-    isAvailable: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "externalAction": S.optional(ExternalAction),
+  "reasons": S.optional(ActionReasonList),
+  "builtinUserInputAction": S.optional(BuiltInUserInputAction),
+  "buttonLabel": S.optional(S.String),
+  "builtinSimpleAction": S.optional(BuiltInSimpleAction),
+  "isAvailable": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
 export type ActionList = ReadonlyArray<Action>;
-export const ActionList = /*@__PURE__*/ S.Array(
-  Action,
-) as any as S.Schema<ActionList>;
+export const ActionList = /*@__PURE__*/ S.Array(Action) as any as S.Schema<ActionList>;
 
 /** An issue affecting specific merchant. */
 export interface AccountIssue {
@@ -9429,19 +7552,17 @@ export interface AccountIssue {
   title?: string;
 }
 export const AccountIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    impact: S.optional(AccountIssueImpact),
-    prerenderedContent: S.optional(S.String),
-    actions: S.optional(ActionList),
-    prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
+S.Struct({
+  "impact": S.optional(AccountIssueImpact),
+  "prerenderedContent": S.optional(S.String),
+  "actions": S.optional(ActionList),
+  "prerenderedOutOfCourtDisputeSettlement": S.optional(S.String),
+  "title": S.optional(S.String),
+}),
 ).annotate({ identifier: "AccountIssue" }) as any as S.Schema<AccountIssue>;
 
 export type AccountIssueList = ReadonlyArray<AccountIssue>;
-export const AccountIssueList = /*@__PURE__*/ S.Array(
-  AccountIssue,
-) as any as S.Schema<AccountIssueList>;
+export const AccountIssueList = /*@__PURE__*/ S.Array(AccountIssue) as any as S.Schema<AccountIssueList>;
 
 /** The Alternate Dispute Resolution (ADR) that may be available to merchants in some regions. If present, the link should be shown on the same page as the list of issues. */
 export interface AlternateDisputeResolution {
@@ -9451,13 +7572,11 @@ export interface AlternateDisputeResolution {
   label?: string;
 }
 export const AlternateDisputeResolution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    label: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AlternateDisputeResolution",
-}) as any as S.Schema<AlternateDisputeResolution>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "label": S.optional(S.String),
+}),
+).annotate({ identifier: "AlternateDisputeResolution" }) as any as S.Schema<AlternateDisputeResolution>;
 
 /** Response containing support content and actions for listed account issues. */
 export interface RenderAccountIssuesResponse {
@@ -9467,48 +7586,31 @@ export interface RenderAccountIssuesResponse {
   alternateDisputeResolution?: AlternateDisputeResolution;
 }
 export const RenderAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issues: S.optional(AccountIssueList),
-    alternateDisputeResolution: S.optional(AlternateDisputeResolution),
-  }),
-).annotate({
-  identifier: "RenderAccountIssuesResponse",
-}) as any as S.Schema<RenderAccountIssuesResponse>;
+S.Struct({
+  "issues": S.optional(AccountIssueList),
+  "alternateDisputeResolution": S.optional(AlternateDisputeResolution),
+}),
+).annotate({ identifier: "RenderAccountIssuesResponse" }) as any as S.Schema<RenderAccountIssuesResponse>;
 
-export type RenderProductIssuesRequestPayloadContentOptionEnum =
-  | "CONTENT_OPTION_UNSPECIFIED"
-  | "PRE_RENDERED_HTML"
-  | (string & {});
-export const RenderProductIssuesRequestPayloadContentOptionEnum =
-  /*@__PURE__*/ S.String;
+export type RenderProductIssuesRequestPayloadContentOptionEnum = "CONTENT_OPTION_UNSPECIFIED" | "PRE_RENDERED_HTML";
+export const RenderProductIssuesRequestPayloadContentOptionEnum = /*@__PURE__*/ S.String;
 
-export type RenderProductIssuesRequestPayloadUserInputActionOptionEnum =
-  | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
-  | "REDIRECT_TO_MERCHANT_CENTER"
-  | "BUILT_IN_USER_INPUT_ACTIONS"
-  | (string & {});
-export const RenderProductIssuesRequestPayloadUserInputActionOptionEnum =
-  /*@__PURE__*/ S.String;
+export type RenderProductIssuesRequestPayloadUserInputActionOptionEnum = "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED" | "REDIRECT_TO_MERCHANT_CENTER" | "BUILT_IN_USER_INPUT_ACTIONS";
+export const RenderProductIssuesRequestPayloadUserInputActionOptionEnum = /*@__PURE__*/ S.String;
 
 /** The payload for configuring how the content should be rendered. */
 export interface RenderProductIssuesRequestPayload {
   /** Optional. How the detailed content should be returned. Default option is to return the content as a pre-rendered HTML text. */
-  contentOption?: RenderProductIssuesRequestPayloadContentOptionEnum;
+  contentOption?: RenderProductIssuesRequestPayloadContentOptionEnum | (string & {});
   /** Optional. How actions with user input form should be handled. If not provided, actions will be returned as links that points merchant to Merchant Center where they can request the action. */
-  userInputActionOption?: RenderProductIssuesRequestPayloadUserInputActionOptionEnum;
+  userInputActionOption?: RenderProductIssuesRequestPayloadUserInputActionOptionEnum | (string & {});
 }
 export const RenderProductIssuesRequestPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentOption: S.optional(
-      RenderProductIssuesRequestPayloadContentOptionEnum,
-    ),
-    userInputActionOption: S.optional(
-      RenderProductIssuesRequestPayloadUserInputActionOptionEnum,
-    ),
-  }),
-).annotate({
-  identifier: "RenderProductIssuesRequestPayload",
-}) as any as S.Schema<RenderProductIssuesRequestPayload>;
+S.Struct({
+  "contentOption": S.optional(RenderProductIssuesRequestPayloadContentOptionEnum),
+  "userInputActionOption": S.optional(RenderProductIssuesRequestPayloadUserInputActionOptionEnum),
+}),
+).annotate({ identifier: "RenderProductIssuesRequestPayload" }) as any as S.Schema<RenderProductIssuesRequestPayload>;
 
 export interface RenderproductissuesMerchantsupportRequest {
   /** Required. The [REST_ID](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.id) of the product to fetch issues for. */
@@ -9522,31 +7624,17 @@ export interface RenderproductissuesMerchantsupportRequest {
   /** Request body */
   body?: RenderProductIssuesRequestPayload;
 }
-export const RenderproductissuesMerchantsupportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      timeZone: S.optional(S.String.pipe(T.Query())),
-      languageCode: S.optional(S.String.pipe(T.Query())),
-      merchantId: S.String.pipe(T.Label()),
-      body: S.optional(RenderProductIssuesRequestPayload.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/merchantsupport/renderproductissues/{productId}",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RenderproductissuesMerchantsupportRequest",
-  }) as any as S.Schema<RenderproductissuesMerchantsupportRequest>;
+export const RenderproductissuesMerchantsupportRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "timeZone": S.optional(S.String.pipe(T.Query())),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(RenderProductIssuesRequestPayload.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/merchantsupport/renderproductissues/{productId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "RenderproductissuesMerchantsupportRequest" }) as any as S.Schema<RenderproductissuesMerchantsupportRequest>;
 
-export type ProductIssueImpactSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "ERROR"
-  | "WARNING"
-  | "INFO"
-  | (string & {});
+export type ProductIssueImpactSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
 export const ProductIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Overall impact of product issue. */
@@ -9559,14 +7647,12 @@ export interface ProductIssueImpact {
   severity?: ProductIssueImpactSeverityEnum;
 }
 export const ProductIssueImpact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    breakdowns: S.optional(BreakdownList),
-    message: S.optional(S.String),
-    severity: S.optional(ProductIssueImpactSeverityEnum),
-  }),
-).annotate({
-  identifier: "ProductIssueImpact",
-}) as any as S.Schema<ProductIssueImpact>;
+S.Struct({
+  "breakdowns": S.optional(BreakdownList),
+  "message": S.optional(S.String),
+  "severity": S.optional(ProductIssueImpactSeverityEnum),
+}),
+).annotate({ identifier: "ProductIssueImpact" }) as any as S.Schema<ProductIssueImpact>;
 
 /** An issue affecting specific product. */
 export interface ProductIssue {
@@ -9582,19 +7668,17 @@ export interface ProductIssue {
   prerenderedContent?: string;
 }
 export const ProductIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    impact: S.optional(ProductIssueImpact),
-    actions: S.optional(ActionList),
-    prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
-    prerenderedContent: S.optional(S.String),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "impact": S.optional(ProductIssueImpact),
+  "actions": S.optional(ActionList),
+  "prerenderedOutOfCourtDisputeSettlement": S.optional(S.String),
+  "prerenderedContent": S.optional(S.String),
+}),
 ).annotate({ identifier: "ProductIssue" }) as any as S.Schema<ProductIssue>;
 
 export type ProductIssueList = ReadonlyArray<ProductIssue>;
-export const ProductIssueList = /*@__PURE__*/ S.Array(
-  ProductIssue,
-) as any as S.Schema<ProductIssueList>;
+export const ProductIssueList = /*@__PURE__*/ S.Array(ProductIssue) as any as S.Schema<ProductIssueList>;
 
 /** Response containing support content and actions for listed product issues. */
 export interface RenderProductIssuesResponse {
@@ -9604,21 +7688,14 @@ export interface RenderProductIssuesResponse {
   alternateDisputeResolution?: AlternateDisputeResolution;
 }
 export const RenderProductIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issues: S.optional(ProductIssueList),
-    alternateDisputeResolution: S.optional(AlternateDisputeResolution),
-  }),
-).annotate({
-  identifier: "RenderProductIssuesResponse",
-}) as any as S.Schema<RenderProductIssuesResponse>;
+S.Struct({
+  "issues": S.optional(ProductIssueList),
+  "alternateDisputeResolution": S.optional(AlternateDisputeResolution),
+}),
+).annotate({ identifier: "RenderProductIssuesResponse" }) as any as S.Schema<RenderProductIssuesResponse>;
 
-export type ReportInteractionRequestInteractionTypeEnum =
-  | "INTERACTION_TYPE_UNSPECIFIED"
-  | "INTERACTION_DISMISS"
-  | "INTERACTION_CLICK"
-  | (string & {});
-export const ReportInteractionRequestInteractionTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ReportInteractionRequestInteractionTypeEnum = "INTERACTION_TYPE_UNSPECIFIED" | "INTERACTION_DISMISS" | "INTERACTION_CLICK";
+export const ReportInteractionRequestInteractionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request to report interactions on a recommendation. */
 export interface ReportInteractionRequest {
@@ -9627,20 +7704,18 @@ export interface ReportInteractionRequest {
   /** Optional. Subtype of the recommendations this interaction happened on. This field must be set only to the value that is returned by {@link `RecommendationsService.GenerateRecommendations`} call. */
   subtype?: string;
   /** Required. Type of the interaction that is reported, for example INTERACTION_CLICK. */
-  interactionType?: ReportInteractionRequestInteractionTypeEnum;
+  interactionType?: ReportInteractionRequestInteractionTypeEnum | (string & {});
   /** Required. Token of the response when recommendation was returned. */
   responseToken?: string;
 }
 export const ReportInteractionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    subtype: S.optional(S.String),
-    interactionType: S.optional(ReportInteractionRequestInteractionTypeEnum),
-    responseToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReportInteractionRequest",
-}) as any as S.Schema<ReportInteractionRequest>;
+S.Struct({
+  "type": S.optional(S.String),
+  "subtype": S.optional(S.String),
+  "interactionType": S.optional(ReportInteractionRequestInteractionTypeEnum),
+  "responseToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ReportInteractionRequest" }) as any as S.Schema<ReportInteractionRequest>;
 
 export interface ReportInteractionRecommendationsRequest {
   /** Required. The ID of the account that wants to report an interaction. */
@@ -9648,28 +7723,17 @@ export interface ReportInteractionRecommendationsRequest {
   /** Request body */
   body?: ReportInteractionRequest;
 }
-export const ReportInteractionRecommendationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-      body: S.optional(ReportInteractionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/recommendations/reportInteraction",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-).annotate({
-  identifier: "ReportInteractionRecommendationsRequest",
-}) as any as S.Schema<ReportInteractionRecommendationsRequest>;
+export const ReportInteractionRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(ReportInteractionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/recommendations/reportInteraction","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "ReportInteractionRecommendationsRequest" }) as any as S.Schema<ReportInteractionRecommendationsRequest>;
 
 export interface ReportInteractionRecommendationsResponse {}
-export const ReportInteractionRecommendationsResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ReportInteractionRecommendationsResponse",
-}) as any as S.Schema<ReportInteractionRecommendationsResponse>;
+export const ReportInteractionRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "ReportInteractionRecommendationsResponse" }) as any as S.Schema<ReportInteractionRecommendationsResponse>;
 
 export interface RequestgmbaccessLiasettingsRequest {
   /** The email of the Business Profile. */
@@ -9680,32 +7744,22 @@ export interface RequestgmbaccessLiasettingsRequest {
   accountId: string;
 }
 export const RequestgmbaccessLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gmbEmail: S.String.pipe(T.Query()),
-    merchantId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/liasettings/{accountId}/requestgmbaccess",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "RequestgmbaccessLiasettingsRequest",
-}) as any as S.Schema<RequestgmbaccessLiasettingsRequest>;
+S.Struct({
+  "gmbEmail": S.String.pipe(T.Query()),
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/liasettings/{accountId}/requestgmbaccess","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "RequestgmbaccessLiasettingsRequest" }) as any as S.Schema<RequestgmbaccessLiasettingsRequest>;
 
 export interface LiasettingsRequestGmbAccessResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsRequestGmbAccessResponse`". */
   kind?: string;
 }
 export const LiasettingsRequestGmbAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiasettingsRequestGmbAccessResponse",
-}) as any as S.Schema<LiasettingsRequestGmbAccessResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "LiasettingsRequestGmbAccessResponse" }) as any as S.Schema<LiasettingsRequestGmbAccessResponse>;
 
 export interface RequestinventoryverificationLiasettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
@@ -9715,67 +7769,46 @@ export interface RequestinventoryverificationLiasettingsRequest {
   /** The country for which inventory validation is requested. */
   country: string;
 }
-export const RequestinventoryverificationLiasettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-      accountId: S.String.pipe(T.Label()),
-      country: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RequestinventoryverificationLiasettingsRequest",
-  }) as any as S.Schema<RequestinventoryverificationLiasettingsRequest>;
+export const RequestinventoryverificationLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "country": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "RequestinventoryverificationLiasettingsRequest" }) as any as S.Schema<RequestinventoryverificationLiasettingsRequest>;
 
 export interface LiasettingsRequestInventoryVerificationResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsRequestInventoryVerificationResponse`". */
   kind?: string;
 }
-export const LiasettingsRequestInventoryVerificationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LiasettingsRequestInventoryVerificationResponse",
-  }) as any as S.Schema<LiasettingsRequestInventoryVerificationResponse>;
+export const LiasettingsRequestInventoryVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "LiasettingsRequestInventoryVerificationResponse" }) as any as S.Schema<LiasettingsRequestInventoryVerificationResponse>;
 
-export type RequestPhoneVerificationRequestPhoneVerificationMethodEnum =
-  | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
-  | "SMS"
-  | "PHONE_CALL"
-  | (string & {});
-export const RequestPhoneVerificationRequestPhoneVerificationMethodEnum =
-  /*@__PURE__*/ S.String;
+export type RequestPhoneVerificationRequestPhoneVerificationMethodEnum = "PHONE_VERIFICATION_METHOD_UNSPECIFIED" | "SMS" | "PHONE_CALL";
+export const RequestPhoneVerificationRequestPhoneVerificationMethodEnum = /*@__PURE__*/ S.String;
 
 /** Request message for the RequestPhoneVerification method. */
 export interface RequestPhoneVerificationRequest {
   /** Phone number to be verified. */
   phoneNumber?: string;
   /** Verification method to receive verification code. */
-  phoneVerificationMethod?: RequestPhoneVerificationRequestPhoneVerificationMethodEnum;
+  phoneVerificationMethod?: RequestPhoneVerificationRequestPhoneVerificationMethodEnum | (string & {});
   /** Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) (for example, en-US). Language code is used to provide localized `SMS` and `PHONE_CALL`. Default language used is en-US if not provided. */
   languageCode?: string;
   /** Required. Two letter country code for the phone number, for example `CA` for Canadian numbers. See the [ISO 3166-1 alpha-2](https://wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) officially assigned codes. */
   phoneRegionCode?: string;
 }
 export const RequestPhoneVerificationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    phoneNumber: S.optional(S.String),
-    phoneVerificationMethod: S.optional(
-      RequestPhoneVerificationRequestPhoneVerificationMethodEnum,
-    ),
-    languageCode: S.optional(S.String),
-    phoneRegionCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RequestPhoneVerificationRequest",
-}) as any as S.Schema<RequestPhoneVerificationRequest>;
+S.Struct({
+  "phoneNumber": S.optional(S.String),
+  "phoneVerificationMethod": S.optional(RequestPhoneVerificationRequestPhoneVerificationMethodEnum),
+  "languageCode": S.optional(S.String),
+  "phoneRegionCode": S.optional(S.String),
+}),
+).annotate({ identifier: "RequestPhoneVerificationRequest" }) as any as S.Schema<RequestPhoneVerificationRequest>;
 
 export interface RequestphoneverificationAccountsRequest {
   /** Required. The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account. */
@@ -9785,22 +7818,13 @@ export interface RequestphoneverificationAccountsRequest {
   /** Request body */
   body?: RequestPhoneVerificationRequest;
 }
-export const RequestphoneverificationAccountsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-      accountId: S.String.pipe(T.Label()),
-      body: S.optional(RequestPhoneVerificationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/accounts/{accountId}/requestphoneverification",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-).annotate({
-  identifier: "RequestphoneverificationAccountsRequest",
-}) as any as S.Schema<RequestphoneverificationAccountsRequest>;
+export const RequestphoneverificationAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(RequestPhoneVerificationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/accounts/{accountId}/requestphoneverification","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "RequestphoneverificationAccountsRequest" }) as any as S.Schema<RequestphoneverificationAccountsRequest>;
 
 /** Response message for the RequestPhoneVerification method. */
 export interface RequestPhoneVerificationResponse {
@@ -9808,12 +7832,10 @@ export interface RequestPhoneVerificationResponse {
   verificationId?: string;
 }
 export const RequestPhoneVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verificationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RequestPhoneVerificationResponse",
-}) as any as S.Schema<RequestPhoneVerificationResponse>;
+S.Struct({
+  "verificationId": S.optional(S.String),
+}),
+).annotate({ identifier: "RequestPhoneVerificationResponse" }) as any as S.Schema<RequestPhoneVerificationResponse>;
 
 /** Request message for the RequestReviewFreeListings Program method. */
 export interface RequestReviewFreeListingsRequest {
@@ -9821,12 +7843,10 @@ export interface RequestReviewFreeListingsRequest {
   regionCode?: string;
 }
 export const RequestReviewFreeListingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RequestReviewFreeListingsRequest",
-}) as any as S.Schema<RequestReviewFreeListingsRequest>;
+S.Struct({
+  "regionCode": S.optional(S.String),
+}),
+).annotate({ identifier: "RequestReviewFreeListingsRequest" }) as any as S.Schema<RequestReviewFreeListingsRequest>;
 
 export interface RequestreviewFreelistingsprogramRequest {
   /** Required. The ID of the account. */
@@ -9834,28 +7854,17 @@ export interface RequestreviewFreelistingsprogramRequest {
   /** Request body */
   body?: RequestReviewFreeListingsRequest;
 }
-export const RequestreviewFreelistingsprogramRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-      body: S.optional(RequestReviewFreeListingsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/freelistingsprogram/requestreview",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-).annotate({
-  identifier: "RequestreviewFreelistingsprogramRequest",
-}) as any as S.Schema<RequestreviewFreelistingsprogramRequest>;
+export const RequestreviewFreelistingsprogramRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(RequestReviewFreeListingsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/freelistingsprogram/requestreview","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "RequestreviewFreelistingsprogramRequest" }) as any as S.Schema<RequestreviewFreelistingsprogramRequest>;
 
 export interface RequestreviewFreelistingsprogramResponse {}
-export const RequestreviewFreelistingsprogramResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "RequestreviewFreelistingsprogramResponse",
-}) as any as S.Schema<RequestreviewFreelistingsprogramResponse>;
+export const RequestreviewFreelistingsprogramResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "RequestreviewFreelistingsprogramResponse" }) as any as S.Schema<RequestreviewFreelistingsprogramResponse>;
 
 /** Request message for the RequestReviewShoppingAds program method. */
 export interface RequestReviewShoppingAdsRequest {
@@ -9863,12 +7872,10 @@ export interface RequestReviewShoppingAdsRequest {
   regionCode?: string;
 }
 export const RequestReviewShoppingAdsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RequestReviewShoppingAdsRequest",
-}) as any as S.Schema<RequestReviewShoppingAdsRequest>;
+S.Struct({
+  "regionCode": S.optional(S.String),
+}),
+).annotate({ identifier: "RequestReviewShoppingAdsRequest" }) as any as S.Schema<RequestReviewShoppingAdsRequest>;
 
 export interface RequestreviewShoppingadsprogramRequest {
   /** Required. The ID of the account. */
@@ -9876,28 +7883,17 @@ export interface RequestreviewShoppingadsprogramRequest {
   /** Request body */
   body?: RequestReviewShoppingAdsRequest;
 }
-export const RequestreviewShoppingadsprogramRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-      body: S.optional(RequestReviewShoppingAdsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/shoppingadsprogram/requestreview",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-).annotate({
-  identifier: "RequestreviewShoppingadsprogramRequest",
-}) as any as S.Schema<RequestreviewShoppingadsprogramRequest>;
+export const RequestreviewShoppingadsprogramRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(RequestReviewShoppingAdsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/shoppingadsprogram/requestreview","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "RequestreviewShoppingadsprogramRequest" }) as any as S.Schema<RequestreviewShoppingadsprogramRequest>;
 
 export interface RequestreviewShoppingadsprogramResponse {}
-export const RequestreviewShoppingadsprogramResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "RequestreviewShoppingadsprogramResponse",
-}) as any as S.Schema<RequestreviewShoppingadsprogramResponse>;
+export const RequestreviewShoppingadsprogramResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "RequestreviewShoppingadsprogramResponse" }) as any as S.Schema<RequestreviewShoppingadsprogramResponse>;
 
 export interface PosSaleRequest {
   /** Required. The two-letter ISO 639-1 language code for the item. */
@@ -9920,17 +7916,17 @@ export interface PosSaleRequest {
   targetCountry?: string;
 }
 export const PosSaleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentLanguage: S.optional(S.String),
-    price: S.optional(Price),
-    timestamp: S.optional(S.String),
-    saleId: S.optional(S.String),
-    storeCode: S.optional(S.String),
-    itemId: S.optional(S.String),
-    gtin: S.optional(S.String),
-    quantity: S.optional(S.String),
-    targetCountry: S.optional(S.String),
-  }),
+S.Struct({
+  "contentLanguage": S.optional(S.String),
+  "price": S.optional(Price),
+  "timestamp": S.optional(S.String),
+  "saleId": S.optional(S.String),
+  "storeCode": S.optional(S.String),
+  "itemId": S.optional(S.String),
+  "gtin": S.optional(S.String),
+  "quantity": S.optional(S.String),
+  "targetCountry": S.optional(S.String),
+}),
 ).annotate({ identifier: "PosSaleRequest" }) as any as S.Schema<PosSaleRequest>;
 
 export interface SalePosRequest {
@@ -9942,17 +7938,11 @@ export interface SalePosRequest {
   body?: PosSaleRequest;
 }
 export const SalePosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    targetMerchantId: S.String.pipe(T.Label()),
-    body: S.optional(PosSaleRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/pos/{targetMerchantId}/sale",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "targetMerchantId": S.String.pipe(T.Label()),
+  "body": S.optional(PosSaleRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/pos/{targetMerchantId}/sale","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
 ).annotate({ identifier: "SalePosRequest" }) as any as S.Schema<SalePosRequest>;
 
 export interface PosSaleResponse {
@@ -9978,21 +7968,19 @@ export interface PosSaleResponse {
   kind?: string;
 }
 export const PosSaleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetCountry: S.optional(S.String),
-    gtin: S.optional(S.String),
-    quantity: S.optional(S.String),
-    storeCode: S.optional(S.String),
-    itemId: S.optional(S.String),
-    timestamp: S.optional(S.String),
-    saleId: S.optional(S.String),
-    contentLanguage: S.optional(S.String),
-    price: S.optional(Price),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PosSaleResponse",
-}) as any as S.Schema<PosSaleResponse>;
+S.Struct({
+  "targetCountry": S.optional(S.String),
+  "gtin": S.optional(S.String),
+  "quantity": S.optional(S.String),
+  "storeCode": S.optional(S.String),
+  "itemId": S.optional(S.String),
+  "timestamp": S.optional(S.String),
+  "saleId": S.optional(S.String),
+  "contentLanguage": S.optional(S.String),
+  "price": S.optional(Price),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "PosSaleResponse" }) as any as S.Schema<PosSaleResponse>;
 
 /** Request message for the ReportService.Search method. */
 export interface SearchRequest {
@@ -10004,11 +7992,11 @@ export interface SearchRequest {
   pageToken?: string;
 }
 export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(S.String),
-    pageSize: S.optional(S.Number),
-    pageToken: S.optional(S.String),
-  }),
+S.Struct({
+  "query": S.optional(S.String),
+  "pageSize": S.optional(S.Number),
+  "pageToken": S.optional(S.String),
+}),
 ).annotate({ identifier: "SearchRequest" }) as any as S.Schema<SearchRequest>;
 
 export interface SearchReportsRequest {
@@ -10018,43 +8006,19 @@ export interface SearchReportsRequest {
   body?: SearchRequest;
 }
 export const SearchReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(SearchRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/reports/search",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "SearchReportsRequest",
-}) as any as S.Schema<SearchReportsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(SearchRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/reports/search","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "SearchReportsRequest" }) as any as S.Schema<SearchReportsRequest>;
 
-export type BestSellersRelativeDemandEnum =
-  | "RELATIVE_DEMAND_UNSPECIFIED"
-  | "VERY_LOW"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "VERY_HIGH"
-  | (string & {});
+export type BestSellersRelativeDemandEnum = "RELATIVE_DEMAND_UNSPECIFIED" | "VERY_LOW" | "LOW" | "MEDIUM" | "HIGH" | "VERY_HIGH";
 export const BestSellersRelativeDemandEnum = /*@__PURE__*/ S.String;
 
-export type BestSellersReportGranularityEnum =
-  | "REPORT_GRANULARITY_UNSPECIFIED"
-  | "WEEKLY"
-  | "MONTHLY"
-  | (string & {});
+export type BestSellersReportGranularityEnum = "REPORT_GRANULARITY_UNSPECIFIED" | "WEEKLY" | "MONTHLY";
 export const BestSellersReportGranularityEnum = /*@__PURE__*/ S.String;
 
-export type BestSellersRelativeDemandChangeEnum =
-  | "RELATIVE_DEMAND_CHANGE_TYPE_UNSPECIFIED"
-  | "SINKER"
-  | "FLAT"
-  | "RISER"
-  | (string & {});
+export type BestSellersRelativeDemandChangeEnum = "RELATIVE_DEMAND_CHANGE_TYPE_UNSPECIFIED" | "SINKER" | "FLAT" | "RISER";
 export const BestSellersRelativeDemandChangeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -10067,21 +8031,14 @@ export interface Content_Date {
   day?: number;
 }
 export const Content_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    year: S.optional(S.Number),
-    month: S.optional(S.Number),
-    day: S.optional(S.Number),
-  }),
+S.Struct({
+  "year": S.optional(S.Number),
+  "month": S.optional(S.Number),
+  "day": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Content_Date" }) as any as S.Schema<Content_Date>;
 
-export type BestSellersPreviousRelativeDemandEnum =
-  | "RELATIVE_DEMAND_UNSPECIFIED"
-  | "VERY_LOW"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "VERY_HIGH"
-  | (string & {});
+export type BestSellersPreviousRelativeDemandEnum = "RELATIVE_DEMAND_UNSPECIFIED" | "VERY_LOW" | "LOW" | "MEDIUM" | "HIGH" | "VERY_HIGH";
 export const BestSellersPreviousRelativeDemandEnum = /*@__PURE__*/ S.String;
 
 /** Fields related to the [Best sellers reports](https://support.google.com/merchants/answer/9488679). */
@@ -10106,17 +8063,17 @@ export interface BestSellers {
   previousRelativeDemand?: BestSellersPreviousRelativeDemandEnum;
 }
 export const BestSellers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relativeDemand: S.optional(BestSellersRelativeDemandEnum),
-    categoryId: S.optional(S.String),
-    rank: S.optional(S.String),
-    reportGranularity: S.optional(BestSellersReportGranularityEnum),
-    countryCode: S.optional(S.String),
-    relativeDemandChange: S.optional(BestSellersRelativeDemandChangeEnum),
-    reportDate: S.optional(Content_Date),
-    previousRank: S.optional(S.String),
-    previousRelativeDemand: S.optional(BestSellersPreviousRelativeDemandEnum),
-  }),
+S.Struct({
+  "relativeDemand": S.optional(BestSellersRelativeDemandEnum),
+  "categoryId": S.optional(S.String),
+  "rank": S.optional(S.String),
+  "reportGranularity": S.optional(BestSellersReportGranularityEnum),
+  "countryCode": S.optional(S.String),
+  "relativeDemandChange": S.optional(BestSellersRelativeDemandChangeEnum),
+  "reportDate": S.optional(Content_Date),
+  "previousRank": S.optional(S.String),
+  "previousRelativeDemand": S.optional(BestSellersPreviousRelativeDemandEnum),
+}),
 ).annotate({ identifier: "BestSellers" }) as any as S.Schema<BestSellers>;
 
 /** Brand fields. Values are only set for fields requested explicitly in the request's search query. */
@@ -10125,18 +8082,12 @@ export interface Brand {
   name?: string;
 }
 export const Brand = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Brand" }) as any as S.Schema<Brand>;
 
-export type SegmentsProgramEnum =
-  | "PROGRAM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "FREE_PRODUCT_LISTING"
-  | "FREE_LOCAL_PRODUCT_LISTING"
-  | "BUY_ON_GOOGLE_LISTING"
-  | (string & {});
+export type SegmentsProgramEnum = "PROGRAM_UNSPECIFIED" | "SHOPPING_ADS" | "FREE_PRODUCT_LISTING" | "FREE_LOCAL_PRODUCT_LISTING" | "BUY_ON_GOOGLE_LISTING";
 export const SegmentsProgramEnum = /*@__PURE__*/ S.String;
 
 /** Dimensions according to which metrics are segmented in the response. Values of product dimensions, such as `offer_id`, reflect the state of a product at the time of the corresponding event, for example, impression or order. Segment fields cannot be selected in queries without also selecting at least one metric field. Values are only set for dimensions requested explicitly in the request's search query. */
@@ -10189,31 +8140,31 @@ export interface Segments {
   program?: SegmentsProgramEnum;
 }
 export const Segments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productTypeL4: S.optional(S.String),
-    week: S.optional(Content_Date),
-    title: S.optional(S.String),
-    customLabel2: S.optional(S.String),
-    productTypeL1: S.optional(S.String),
-    categoryL2: S.optional(S.String),
-    offerId: S.optional(S.String),
-    customerCountryCode: S.optional(S.String),
-    categoryL3: S.optional(S.String),
-    productTypeL2: S.optional(S.String),
-    customLabel1: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-    categoryL4: S.optional(S.String),
-    categoryL1: S.optional(S.String),
-    date: S.optional(Content_Date),
-    customLabel3: S.optional(S.String),
-    brand: S.optional(S.String),
-    productTypeL5: S.optional(S.String),
-    categoryL5: S.optional(S.String),
-    productTypeL3: S.optional(S.String),
-    customLabel4: S.optional(S.String),
-    customLabel0: S.optional(S.String),
-    program: S.optional(SegmentsProgramEnum),
-  }),
+S.Struct({
+  "productTypeL4": S.optional(S.String),
+  "week": S.optional(Content_Date),
+  "title": S.optional(S.String),
+  "customLabel2": S.optional(S.String),
+  "productTypeL1": S.optional(S.String),
+  "categoryL2": S.optional(S.String),
+  "offerId": S.optional(S.String),
+  "customerCountryCode": S.optional(S.String),
+  "categoryL3": S.optional(S.String),
+  "productTypeL2": S.optional(S.String),
+  "customLabel1": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+  "categoryL4": S.optional(S.String),
+  "categoryL1": S.optional(S.String),
+  "date": S.optional(Content_Date),
+  "customLabel3": S.optional(S.String),
+  "brand": S.optional(S.String),
+  "productTypeL5": S.optional(S.String),
+  "categoryL5": S.optional(S.String),
+  "productTypeL3": S.optional(S.String),
+  "customLabel4": S.optional(S.String),
+  "customLabel0": S.optional(S.String),
+  "program": S.optional(SegmentsProgramEnum),
+}),
 ).annotate({ identifier: "Segments" }) as any as S.Schema<Segments>;
 
 /** Price competitiveness fields requested by the merchant in the query. Field values are only set if the merchant queries `PriceCompetitivenessProductView`. https://support.google.com/merchants/answer/9626903 */
@@ -10226,21 +8177,14 @@ export interface PriceCompetitiveness {
   countryCode?: string;
 }
 export const PriceCompetitiveness = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    benchmarkPriceCurrencyCode: S.optional(S.String),
-    benchmarkPriceMicros: S.optional(S.String),
-    countryCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PriceCompetitiveness",
-}) as any as S.Schema<PriceCompetitiveness>;
+S.Struct({
+  "benchmarkPriceCurrencyCode": S.optional(S.String),
+  "benchmarkPriceMicros": S.optional(S.String),
+  "countryCode": S.optional(S.String),
+}),
+).annotate({ identifier: "PriceCompetitiveness" }) as any as S.Schema<PriceCompetitiveness>;
 
-export type CompetitiveVisibilityTrafficSourceEnum =
-  | "UNKNOWN"
-  | "ORGANIC"
-  | "ADS"
-  | "ALL"
-  | (string & {});
+export type CompetitiveVisibilityTrafficSourceEnum = "UNKNOWN" | "ORGANIC" | "ADS" | "ALL";
 export const CompetitiveVisibilityTrafficSourceEnum = /*@__PURE__*/ S.String;
 
 /** Fields related to [competitive visibility reports] (https://support.google.com/merchants/answer/11366442). */
@@ -10273,48 +8217,30 @@ export interface CompetitiveVisibility {
   countryCode?: string;
 }
 export const CompetitiveVisibility = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageOverlapRate: S.optional(S.Number),
-    relativeVisibility: S.optional(S.Number),
-    rank: S.optional(S.String),
-    isYourDomain: S.optional(S.Boolean),
-    adsOrganicRatio: S.optional(S.Number),
-    domain: S.optional(S.String),
-    date: S.optional(Content_Date),
-    categoryBenchmarkVisibilityTrend: S.optional(S.Number),
-    categoryId: S.optional(S.String),
-    yourDomainVisibilityTrend: S.optional(S.Number),
-    trafficSource: S.optional(CompetitiveVisibilityTrafficSourceEnum),
-    higherPositionRate: S.optional(S.Number),
-    countryCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CompetitiveVisibility",
-}) as any as S.Schema<CompetitiveVisibility>;
+S.Struct({
+  "pageOverlapRate": S.optional(S.Number),
+  "relativeVisibility": S.optional(S.Number),
+  "rank": S.optional(S.String),
+  "isYourDomain": S.optional(S.Boolean),
+  "adsOrganicRatio": S.optional(S.Number),
+  "domain": S.optional(S.String),
+  "date": S.optional(Content_Date),
+  "categoryBenchmarkVisibilityTrend": S.optional(S.Number),
+  "categoryId": S.optional(S.String),
+  "yourDomainVisibilityTrend": S.optional(S.Number),
+  "trafficSource": S.optional(CompetitiveVisibilityTrafficSourceEnum),
+  "higherPositionRate": S.optional(S.Number),
+  "countryCode": S.optional(S.String),
+}),
+).annotate({ identifier: "CompetitiveVisibility" }) as any as S.Schema<CompetitiveVisibility>;
 
-export type ProductViewAggregatedDestinationStatusEnum =
-  | "AGGREGATED_STATUS_UNSPECIFIED"
-  | "NOT_ELIGIBLE_OR_DISAPPROVED"
-  | "PENDING"
-  | "ELIGIBLE_LIMITED"
-  | "ELIGIBLE"
-  | (string & {});
-export const ProductViewAggregatedDestinationStatusEnum =
-  /*@__PURE__*/ S.String;
+export type ProductViewAggregatedDestinationStatusEnum = "AGGREGATED_STATUS_UNSPECIFIED" | "NOT_ELIGIBLE_OR_DISAPPROVED" | "PENDING" | "ELIGIBLE_LIMITED" | "ELIGIBLE";
+export const ProductViewAggregatedDestinationStatusEnum = /*@__PURE__*/ S.String;
 
-export type ProductViewChannelEnum =
-  | "CHANNEL_UNSPECIFIED"
-  | "LOCAL"
-  | "ONLINE"
-  | (string & {});
+export type ProductViewChannelEnum = "CHANNEL_UNSPECIFIED" | "LOCAL" | "ONLINE";
 export const ProductViewChannelEnum = /*@__PURE__*/ S.String;
 
-export type ProductViewClickPotentialEnum =
-  | "CLICK_POTENTIAL_UNSPECIFIED"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | (string & {});
+export type ProductViewClickPotentialEnum = "CLICK_POTENTIAL_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH";
 export const ProductViewClickPotentialEnum = /*@__PURE__*/ S.String;
 
 /** Type of the item issue. */
@@ -10325,19 +8251,13 @@ export interface ProductViewItemIssueItemIssueType {
   code?: string;
 }
 export const ProductViewItemIssueItemIssueType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    canonicalAttribute: S.optional(S.String),
-    code: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductViewItemIssueItemIssueType",
-}) as any as S.Schema<ProductViewItemIssueItemIssueType>;
+S.Struct({
+  "canonicalAttribute": S.optional(S.String),
+  "code": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductViewItemIssueItemIssueType" }) as any as S.Schema<ProductViewItemIssueItemIssueType>;
 
-export type ProductViewItemIssueResolutionEnum =
-  | "UNKNOWN"
-  | "MERCHANT_ACTION"
-  | "PENDING_PROCESSING"
-  | (string & {});
+export type ProductViewItemIssueResolutionEnum = "UNKNOWN" | "MERCHANT_ACTION" | "PENDING_PROCESSING";
 export const ProductViewItemIssueResolutionEnum = /*@__PURE__*/ S.String;
 
 /** Issue severity for all affected regions in a destination. */
@@ -10349,32 +8269,19 @@ export interface ProductViewItemIssueIssueSeverityPerDestination {
   /** List of disapproved countries in the destination. */
   disapprovedCountries?: StringList;
 }
-export const ProductViewItemIssueIssueSeverityPerDestination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination: S.optional(S.String),
-      demotedCountries: S.optional(StringList),
-      disapprovedCountries: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "ProductViewItemIssueIssueSeverityPerDestination",
-  }) as any as S.Schema<ProductViewItemIssueIssueSeverityPerDestination>;
+export const ProductViewItemIssueIssueSeverityPerDestination = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "destination": S.optional(S.String),
+  "demotedCountries": S.optional(StringList),
+  "disapprovedCountries": S.optional(StringList),
+}),
+).annotate({ identifier: "ProductViewItemIssueIssueSeverityPerDestination" }) as any as S.Schema<ProductViewItemIssueIssueSeverityPerDestination>;
 
-export type ProductViewItemIssueIssueSeverityPerDestinationList =
-  ReadonlyArray<ProductViewItemIssueIssueSeverityPerDestination>;
-export const ProductViewItemIssueIssueSeverityPerDestinationList =
-  /*@__PURE__*/ S.Array(
-    ProductViewItemIssueIssueSeverityPerDestination,
-  ) as any as S.Schema<ProductViewItemIssueIssueSeverityPerDestinationList>;
+export type ProductViewItemIssueIssueSeverityPerDestinationList = ReadonlyArray<ProductViewItemIssueIssueSeverityPerDestination>;
+export const ProductViewItemIssueIssueSeverityPerDestinationList = /*@__PURE__*/ S.Array(ProductViewItemIssueIssueSeverityPerDestination) as any as S.Schema<ProductViewItemIssueIssueSeverityPerDestinationList>;
 
-export type ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum =
-  | "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED"
-  | "DISAPPROVED"
-  | "DEMOTED"
-  | "PENDING"
-  | (string & {});
-export const ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum =
-  /*@__PURE__*/ S.String;
+export type ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum = "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED" | "DISAPPROVED" | "DEMOTED" | "PENDING";
+export const ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Severity of an issue per destination in a region, and aggregated severity. */
 export interface ProductViewItemIssueItemIssueSeverity {
@@ -10383,19 +8290,12 @@ export interface ProductViewItemIssueItemIssueSeverity {
   /** Severity of an issue aggregated for destination. */
   aggregatedSeverity?: ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum;
 }
-export const ProductViewItemIssueItemIssueSeverity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      severityPerDestination: S.optional(
-        ProductViewItemIssueIssueSeverityPerDestinationList,
-      ),
-      aggregatedSeverity: S.optional(
-        ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum,
-      ),
-    }),
-).annotate({
-  identifier: "ProductViewItemIssueItemIssueSeverity",
-}) as any as S.Schema<ProductViewItemIssueItemIssueSeverity>;
+export const ProductViewItemIssueItemIssueSeverity = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "severityPerDestination": S.optional(ProductViewItemIssueIssueSeverityPerDestinationList),
+  "aggregatedSeverity": S.optional(ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum),
+}),
+).annotate({ identifier: "ProductViewItemIssueItemIssueSeverity" }) as any as S.Schema<ProductViewItemIssueItemIssueSeverity>;
 
 /** Item issue associated with the product. */
 export interface ProductViewItemIssue {
@@ -10407,19 +8307,15 @@ export interface ProductViewItemIssue {
   severity?: ProductViewItemIssueItemIssueSeverity;
 }
 export const ProductViewItemIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issueType: S.optional(ProductViewItemIssueItemIssueType),
-    resolution: S.optional(ProductViewItemIssueResolutionEnum),
-    severity: S.optional(ProductViewItemIssueItemIssueSeverity),
-  }),
-).annotate({
-  identifier: "ProductViewItemIssue",
-}) as any as S.Schema<ProductViewItemIssue>;
+S.Struct({
+  "issueType": S.optional(ProductViewItemIssueItemIssueType),
+  "resolution": S.optional(ProductViewItemIssueResolutionEnum),
+  "severity": S.optional(ProductViewItemIssueItemIssueSeverity),
+}),
+).annotate({ identifier: "ProductViewItemIssue" }) as any as S.Schema<ProductViewItemIssue>;
 
 export type ProductViewItemIssueList = ReadonlyArray<ProductViewItemIssue>;
-export const ProductViewItemIssueList = /*@__PURE__*/ S.Array(
-  ProductViewItemIssue,
-) as any as S.Schema<ProductViewItemIssueList>;
+export const ProductViewItemIssueList = /*@__PURE__*/ S.Array(ProductViewItemIssue) as any as S.Schema<ProductViewItemIssueList>;
 
 /** Product fields. Values are only set for fields requested explicitly in the request's search query. */
 export interface ProductView {
@@ -10483,39 +8379,37 @@ export interface ProductView {
   offerId?: string;
 }
 export const ProductView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemGroupId: S.optional(S.String),
-    id: S.optional(S.String),
-    productTypeL5: S.optional(S.String),
-    categoryL4: S.optional(S.String),
-    categoryL5: S.optional(S.String),
-    productTypeL3: S.optional(S.String),
-    clickPotentialRank: S.optional(S.String),
-    gtin: S.optional(StringList),
-    title: S.optional(S.String),
-    aggregatedDestinationStatus: S.optional(
-      ProductViewAggregatedDestinationStatusEnum,
-    ),
-    expirationDate: S.optional(Content_Date),
-    channel: S.optional(ProductViewChannelEnum),
-    shippingLabel: S.optional(S.String),
-    categoryL2: S.optional(S.String),
-    categoryL1: S.optional(S.String),
-    priceMicros: S.optional(S.String),
-    brand: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-    clickPotential: S.optional(ProductViewClickPotentialEnum),
-    categoryL3: S.optional(S.String),
-    productTypeL2: S.optional(S.String),
-    availability: S.optional(S.String),
-    productTypeL1: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    productTypeL4: S.optional(S.String),
-    itemIssues: S.optional(ProductViewItemIssueList),
-    languageCode: S.optional(S.String),
-    condition: S.optional(S.String),
-    offerId: S.optional(S.String),
-  }),
+S.Struct({
+  "itemGroupId": S.optional(S.String),
+  "id": S.optional(S.String),
+  "productTypeL5": S.optional(S.String),
+  "categoryL4": S.optional(S.String),
+  "categoryL5": S.optional(S.String),
+  "productTypeL3": S.optional(S.String),
+  "clickPotentialRank": S.optional(S.String),
+  "gtin": S.optional(StringList),
+  "title": S.optional(S.String),
+  "aggregatedDestinationStatus": S.optional(ProductViewAggregatedDestinationStatusEnum),
+  "expirationDate": S.optional(Content_Date),
+  "channel": S.optional(ProductViewChannelEnum),
+  "shippingLabel": S.optional(S.String),
+  "categoryL2": S.optional(S.String),
+  "categoryL1": S.optional(S.String),
+  "priceMicros": S.optional(S.String),
+  "brand": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+  "clickPotential": S.optional(ProductViewClickPotentialEnum),
+  "categoryL3": S.optional(S.String),
+  "productTypeL2": S.optional(S.String),
+  "availability": S.optional(S.String),
+  "productTypeL1": S.optional(S.String),
+  "creationTime": S.optional(S.String),
+  "productTypeL4": S.optional(S.String),
+  "itemIssues": S.optional(ProductViewItemIssueList),
+  "languageCode": S.optional(S.String),
+  "condition": S.optional(S.String),
+  "offerId": S.optional(S.String),
+}),
 ).annotate({ identifier: "ProductView" }) as any as S.Schema<ProductView>;
 
 /** Topic trends fields requested by the merchant in the query. Field values are only set if the merchant queries `TopicTrendsView`. Forecast data can be queried up to 13 weeks by passing a future date in the `date` field. Historical data is measured daily, and forecasted data is projected weekly. All data points are normalized based on the highest data points returned in the response. If you make separate queries with different date ranges, you might see different values for the same date in each response. The recommended way to get a trend score of a topic is `last7_days_search_interest / last{$day}_days_search_interest - 1`. You can view trends for up to eight topics at a time. */
@@ -10540,17 +8434,17 @@ export interface TopicTrends {
   last90DaysSearchInterest?: number;
 }
 export const TopicTrends = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerCountryCode: S.optional(S.String),
-    searchInterest: S.optional(S.Number),
-    last120DaysSearchInterest: S.optional(S.Number),
-    date: S.optional(Content_Date),
-    topic: S.optional(S.String),
-    last7DaysSearchInterest: S.optional(S.Number),
-    last30DaysSearchInterest: S.optional(S.Number),
-    next7DaysSearchInterest: S.optional(S.Number),
-    last90DaysSearchInterest: S.optional(S.Number),
-  }),
+S.Struct({
+  "customerCountryCode": S.optional(S.String),
+  "searchInterest": S.optional(S.Number),
+  "last120DaysSearchInterest": S.optional(S.Number),
+  "date": S.optional(Content_Date),
+  "topic": S.optional(S.String),
+  "last7DaysSearchInterest": S.optional(S.Number),
+  "last30DaysSearchInterest": S.optional(S.Number),
+  "next7DaysSearchInterest": S.optional(S.Number),
+  "last90DaysSearchInterest": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TopicTrends" }) as any as S.Schema<TopicTrends>;
 
 /** Performance metrics. Values are only set for metrics requested explicitly in the request's search query. */
@@ -10603,47 +8497,37 @@ export interface Metrics {
   unshippedItems?: number;
 }
 export const Metrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversionRate: S.optional(S.Number),
-    orders: S.optional(S.String),
-    conversionValueMicros: S.optional(S.String),
-    aovMicros: S.optional(S.Number),
-    itemDaysToShip: S.optional(S.Number),
-    returnsMicros: S.optional(S.String),
-    unshippedOrders: S.optional(S.Number),
-    aos: S.optional(S.Number),
-    shippedItemSalesMicros: S.optional(S.String),
-    impressions: S.optional(S.String),
-    itemFillRate: S.optional(S.Number),
-    orderedItems: S.optional(S.String),
-    orderedItemSalesMicros: S.optional(S.String),
-    clicks: S.optional(S.String),
-    returnedItems: S.optional(S.String),
-    shippedOrders: S.optional(S.String),
-    returnRate: S.optional(S.Number),
-    daysToShip: S.optional(S.Number),
-    rejectedItems: S.optional(S.String),
-    ctr: S.optional(S.Number),
-    conversions: S.optional(S.Number),
-    shippedItems: S.optional(S.String),
-    unshippedItems: S.optional(S.Number),
-  }),
+S.Struct({
+  "conversionRate": S.optional(S.Number),
+  "orders": S.optional(S.String),
+  "conversionValueMicros": S.optional(S.String),
+  "aovMicros": S.optional(S.Number),
+  "itemDaysToShip": S.optional(S.Number),
+  "returnsMicros": S.optional(S.String),
+  "unshippedOrders": S.optional(S.Number),
+  "aos": S.optional(S.Number),
+  "shippedItemSalesMicros": S.optional(S.String),
+  "impressions": S.optional(S.String),
+  "itemFillRate": S.optional(S.Number),
+  "orderedItems": S.optional(S.String),
+  "orderedItemSalesMicros": S.optional(S.String),
+  "clicks": S.optional(S.String),
+  "returnedItems": S.optional(S.String),
+  "shippedOrders": S.optional(S.String),
+  "returnRate": S.optional(S.Number),
+  "daysToShip": S.optional(S.Number),
+  "rejectedItems": S.optional(S.String),
+  "ctr": S.optional(S.Number),
+  "conversions": S.optional(S.Number),
+  "shippedItems": S.optional(S.String),
+  "unshippedItems": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
 
-export type ProductClusterBrandInventoryStatusEnum =
-  | "INVENTORY_STATUS_UNSPECIFIED"
-  | "IN_STOCK"
-  | "OUT_OF_STOCK"
-  | "NOT_IN_INVENTORY"
-  | (string & {});
+export type ProductClusterBrandInventoryStatusEnum = "INVENTORY_STATUS_UNSPECIFIED" | "IN_STOCK" | "OUT_OF_STOCK" | "NOT_IN_INVENTORY";
 export const ProductClusterBrandInventoryStatusEnum = /*@__PURE__*/ S.String;
 
-export type ProductClusterInventoryStatusEnum =
-  | "INVENTORY_STATUS_UNSPECIFIED"
-  | "IN_STOCK"
-  | "OUT_OF_STOCK"
-  | "NOT_IN_INVENTORY"
-  | (string & {});
+export type ProductClusterInventoryStatusEnum = "INVENTORY_STATUS_UNSPECIFIED" | "IN_STOCK" | "OUT_OF_STOCK" | "NOT_IN_INVENTORY";
 export const ProductClusterInventoryStatusEnum = /*@__PURE__*/ S.String;
 
 /** Product cluster fields. A product cluster is a grouping for different offers that represent the same product. Values are only set for fields requested explicitly in the request's search query. */
@@ -10670,26 +8554,21 @@ export interface ProductCluster {
   categoryL1?: string;
 }
 export const ProductCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categoryL5: S.optional(S.String),
-    categoryL2: S.optional(S.String),
-    brandInventoryStatus: S.optional(ProductClusterBrandInventoryStatusEnum),
-    variantGtins: S.optional(StringList),
-    categoryL4: S.optional(S.String),
-    categoryL3: S.optional(S.String),
-    inventoryStatus: S.optional(ProductClusterInventoryStatusEnum),
-    brand: S.optional(S.String),
-    title: S.optional(S.String),
-    categoryL1: S.optional(S.String),
-  }),
+S.Struct({
+  "categoryL5": S.optional(S.String),
+  "categoryL2": S.optional(S.String),
+  "brandInventoryStatus": S.optional(ProductClusterBrandInventoryStatusEnum),
+  "variantGtins": S.optional(StringList),
+  "categoryL4": S.optional(S.String),
+  "categoryL3": S.optional(S.String),
+  "inventoryStatus": S.optional(ProductClusterInventoryStatusEnum),
+  "brand": S.optional(S.String),
+  "title": S.optional(S.String),
+  "categoryL1": S.optional(S.String),
+}),
 ).annotate({ identifier: "ProductCluster" }) as any as S.Schema<ProductCluster>;
 
-export type PriceInsightsEffectivenessEnum =
-  | "EFFECTIVENESS_UNSPECIFIED"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | (string & {});
+export type PriceInsightsEffectivenessEnum = "EFFECTIVENESS_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH";
 export const PriceInsightsEffectivenessEnum = /*@__PURE__*/ S.String;
 
 /** Price insights fields requested by the merchant in the query. Field values are only set if the merchant queries `PriceInsightsProductView`. https://support.google.com/merchants/answer/11916926 */
@@ -10714,17 +8593,17 @@ export interface PriceInsights {
   suggestedPriceMicros?: string;
 }
 export const PriceInsights = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predictedGrossProfitChangeFraction: S.optional(S.Number),
-    predictedClicksChangeFraction: S.optional(S.Number),
-    predictedImpressionsChangeFraction: S.optional(S.Number),
-    predictedMonthlyGrossProfitChangeMicros: S.optional(S.String),
-    suggestedPriceCurrencyCode: S.optional(S.String),
-    effectiveness: S.optional(PriceInsightsEffectivenessEnum),
-    predictedMonthlyGrossProfitChangeCurrencyCode: S.optional(S.String),
-    predictedConversionsChangeFraction: S.optional(S.Number),
-    suggestedPriceMicros: S.optional(S.String),
-  }),
+S.Struct({
+  "predictedGrossProfitChangeFraction": S.optional(S.Number),
+  "predictedClicksChangeFraction": S.optional(S.Number),
+  "predictedImpressionsChangeFraction": S.optional(S.Number),
+  "predictedMonthlyGrossProfitChangeMicros": S.optional(S.String),
+  "suggestedPriceCurrencyCode": S.optional(S.String),
+  "effectiveness": S.optional(PriceInsightsEffectivenessEnum),
+  "predictedMonthlyGrossProfitChangeCurrencyCode": S.optional(S.String),
+  "predictedConversionsChangeFraction": S.optional(S.Number),
+  "suggestedPriceMicros": S.optional(S.String),
+}),
 ).annotate({ identifier: "PriceInsights" }) as any as S.Schema<PriceInsights>;
 
 /** Result row returned from the search query. */
@@ -10751,24 +8630,22 @@ export interface ReportRow {
   priceInsights?: PriceInsights;
 }
 export const ReportRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bestSellers: S.optional(BestSellers),
-    brand: S.optional(Brand),
-    segments: S.optional(Segments),
-    priceCompetitiveness: S.optional(PriceCompetitiveness),
-    competitiveVisibility: S.optional(CompetitiveVisibility),
-    productView: S.optional(ProductView),
-    topicTrends: S.optional(TopicTrends),
-    metrics: S.optional(Metrics),
-    productCluster: S.optional(ProductCluster),
-    priceInsights: S.optional(PriceInsights),
-  }),
+S.Struct({
+  "bestSellers": S.optional(BestSellers),
+  "brand": S.optional(Brand),
+  "segments": S.optional(Segments),
+  "priceCompetitiveness": S.optional(PriceCompetitiveness),
+  "competitiveVisibility": S.optional(CompetitiveVisibility),
+  "productView": S.optional(ProductView),
+  "topicTrends": S.optional(TopicTrends),
+  "metrics": S.optional(Metrics),
+  "productCluster": S.optional(ProductCluster),
+  "priceInsights": S.optional(PriceInsights),
+}),
 ).annotate({ identifier: "ReportRow" }) as any as S.Schema<ReportRow>;
 
 export type ReportRowList = ReadonlyArray<ReportRow>;
-export const ReportRowList = /*@__PURE__*/ S.Array(
-  ReportRow,
-) as any as S.Schema<ReportRowList>;
+export const ReportRowList = /*@__PURE__*/ S.Array(ReportRow) as any as S.Schema<ReportRowList>;
 
 /** Response message for the ReportService.Search method. */
 export interface SearchResponse {
@@ -10778,10 +8655,10 @@ export interface SearchResponse {
   nextPageToken?: string;
 }
 export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(ReportRowList),
-    nextPageToken: S.optional(S.String),
-  }),
+S.Struct({
+  "results": S.optional(ReportRowList),
+  "nextPageToken": S.optional(S.String),
+}),
 ).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
 
 export interface SetinventoryverificationcontactLiasettingsRequest {
@@ -10798,38 +8675,26 @@ export interface SetinventoryverificationcontactLiasettingsRequest {
   /** The country for which inventory verification is requested. */
   country: string;
 }
-export const SetinventoryverificationcontactLiasettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-      accountId: S.String.pipe(T.Label()),
-      contactName: S.String.pipe(T.Query()),
-      contactEmail: S.String.pipe(T.Query()),
-      language: S.String.pipe(T.Query()),
-      country: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/liasettings/{accountId}/setinventoryverificationcontact",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetinventoryverificationcontactLiasettingsRequest",
-  }) as any as S.Schema<SetinventoryverificationcontactLiasettingsRequest>;
+export const SetinventoryverificationcontactLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "contactName": S.String.pipe(T.Query()),
+  "contactEmail": S.String.pipe(T.Query()),
+  "language": S.String.pipe(T.Query()),
+  "country": S.String.pipe(T.Query()),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/liasettings/{accountId}/setinventoryverificationcontact","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "SetinventoryverificationcontactLiasettingsRequest" }) as any as S.Schema<SetinventoryverificationcontactLiasettingsRequest>;
 
 export interface LiasettingsSetInventoryVerificationContactResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsSetInventoryVerificationContactResponse`". */
   kind?: string;
 }
-export const LiasettingsSetInventoryVerificationContactResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LiasettingsSetInventoryVerificationContactResponse",
-  }) as any as S.Schema<LiasettingsSetInventoryVerificationContactResponse>;
+export const LiasettingsSetInventoryVerificationContactResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "LiasettingsSetInventoryVerificationContactResponse" }) as any as S.Schema<LiasettingsSetInventoryVerificationContactResponse>;
 
 export interface SetomnichannelexperienceLiasettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
@@ -10843,24 +8708,15 @@ export interface SetomnichannelexperienceLiasettingsRequest {
   /** The CLDR country code (for example, "US") for which the omnichannel experience is selected. */
   country?: string;
 }
-export const SetomnichannelexperienceLiasettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-      lsfType: S.optional(S.String.pipe(T.Query())),
-      accountId: S.String.pipe(T.Label()),
-      pickupTypes: S.optional(StringList.pipe(T.Query())),
-      country: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/liasettings/{accountId}/setomnichannelexperience",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetomnichannelexperienceLiasettingsRequest",
-  }) as any as S.Schema<SetomnichannelexperienceLiasettingsRequest>;
+export const SetomnichannelexperienceLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "lsfType": S.optional(S.String.pipe(T.Query())),
+  "accountId": S.String.pipe(T.Label()),
+  "pickupTypes": S.optional(StringList.pipe(T.Query())),
+  "country": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/liasettings/{accountId}/setomnichannelexperience","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "SetomnichannelexperienceLiasettingsRequest" }) as any as S.Schema<SetomnichannelexperienceLiasettingsRequest>;
 
 export interface SetposdataproviderLiasettingsRequest {
   /** The ID of the account for which to retrieve accessible Business Profiles. */
@@ -10874,37 +8730,25 @@ export interface SetposdataproviderLiasettingsRequest {
   /** The country for which the POS data provider is selected. */
   country: string;
 }
-export const SetposdataproviderLiasettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label()),
-      merchantId: S.String.pipe(T.Label()),
-      posExternalAccountId: S.optional(S.String.pipe(T.Query())),
-      posDataProviderId: S.optional(S.String.pipe(T.Query())),
-      country: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "{merchantId}/liasettings/{accountId}/setposdataprovider",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-).annotate({
-  identifier: "SetposdataproviderLiasettingsRequest",
-}) as any as S.Schema<SetposdataproviderLiasettingsRequest>;
+export const SetposdataproviderLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+  "posExternalAccountId": S.optional(S.String.pipe(T.Query())),
+  "posDataProviderId": S.optional(S.String.pipe(T.Query())),
+  "country": S.String.pipe(T.Query()),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/liasettings/{accountId}/setposdataprovider","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "SetposdataproviderLiasettingsRequest" }) as any as S.Schema<SetposdataproviderLiasettingsRequest>;
 
 export interface LiasettingsSetPosDataProviderResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsSetPosDataProviderResponse`". */
   kind?: string;
 }
-export const LiasettingsSetPosDataProviderResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LiasettingsSetPosDataProviderResponse",
-}) as any as S.Schema<LiasettingsSetPosDataProviderResponse>;
+export const LiasettingsSetPosDataProviderResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "LiasettingsSetPosDataProviderResponse" }) as any as S.Schema<LiasettingsSetPosDataProviderResponse>;
 
 /** Value for text input field. */
 export interface InputValueTextInputValue {
@@ -10912,12 +8756,10 @@ export interface InputValueTextInputValue {
   value?: string;
 }
 export const InputValueTextInputValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InputValueTextInputValue",
-}) as any as S.Schema<InputValueTextInputValue>;
+S.Struct({
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "InputValueTextInputValue" }) as any as S.Schema<InputValueTextInputValue>;
 
 /** Value for checkbox input field. */
 export interface InputValueCheckboxInputValue {
@@ -10925,12 +8767,10 @@ export interface InputValueCheckboxInputValue {
   value?: boolean;
 }
 export const InputValueCheckboxInputValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "InputValueCheckboxInputValue",
-}) as any as S.Schema<InputValueCheckboxInputValue>;
+S.Struct({
+  "value": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "InputValueCheckboxInputValue" }) as any as S.Schema<InputValueCheckboxInputValue>;
 
 /** Value for choice input field. */
 export interface InputValueChoiceInputValue {
@@ -10938,12 +8778,10 @@ export interface InputValueChoiceInputValue {
   choiceInputOptionId?: string;
 }
 export const InputValueChoiceInputValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choiceInputOptionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InputValueChoiceInputValue",
-}) as any as S.Schema<InputValueChoiceInputValue>;
+S.Struct({
+  "choiceInputOptionId": S.optional(S.String),
+}),
+).annotate({ identifier: "InputValueChoiceInputValue" }) as any as S.Schema<InputValueChoiceInputValue>;
 
 /** Input provided by the merchant for input field. */
 export interface InputValue {
@@ -10957,18 +8795,16 @@ export interface InputValue {
   choiceInputValue?: InputValueChoiceInputValue;
 }
 export const InputValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputFieldId: S.optional(S.String),
-    textInputValue: S.optional(InputValueTextInputValue),
-    checkboxInputValue: S.optional(InputValueCheckboxInputValue),
-    choiceInputValue: S.optional(InputValueChoiceInputValue),
-  }),
+S.Struct({
+  "inputFieldId": S.optional(S.String),
+  "textInputValue": S.optional(InputValueTextInputValue),
+  "checkboxInputValue": S.optional(InputValueCheckboxInputValue),
+  "choiceInputValue": S.optional(InputValueChoiceInputValue),
+}),
 ).annotate({ identifier: "InputValue" }) as any as S.Schema<InputValue>;
 
 export type InputValueList = ReadonlyArray<InputValue>;
-export const InputValueList = /*@__PURE__*/ S.Array(
-  InputValue,
-) as any as S.Schema<InputValueList>;
+export const InputValueList = /*@__PURE__*/ S.Array(InputValue) as any as S.Schema<InputValueList>;
 
 /** Input provided by the merchant. */
 export interface ActionInput {
@@ -10978,10 +8814,10 @@ export interface ActionInput {
   inputValues?: InputValueList;
 }
 export const ActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionFlowId: S.optional(S.String),
-    inputValues: S.optional(InputValueList),
-  }),
+S.Struct({
+  "actionFlowId": S.optional(S.String),
+  "inputValues": S.optional(InputValueList),
+}),
 ).annotate({ identifier: "ActionInput" }) as any as S.Schema<ActionInput>;
 
 /** The payload for the triggered action. */
@@ -10992,13 +8828,11 @@ export interface TriggerActionPayload {
   actionInput?: ActionInput;
 }
 export const TriggerActionPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionContext: S.optional(S.String),
-    actionInput: S.optional(ActionInput),
-  }),
-).annotate({
-  identifier: "TriggerActionPayload",
-}) as any as S.Schema<TriggerActionPayload>;
+S.Struct({
+  "actionContext": S.optional(S.String),
+  "actionInput": S.optional(ActionInput),
+}),
+).annotate({ identifier: "TriggerActionPayload" }) as any as S.Schema<TriggerActionPayload>;
 
 export interface TriggeractionMerchantsupportRequest {
   /** Required. The ID of the merchant's account. */
@@ -11009,20 +8843,12 @@ export interface TriggeractionMerchantsupportRequest {
   body?: TriggerActionPayload;
 }
 export const TriggeractionMerchantsupportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    languageCode: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(TriggerActionPayload.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/merchantsupport/triggeraction",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "TriggeractionMerchantsupportRequest",
-}) as any as S.Schema<TriggeractionMerchantsupportRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(TriggerActionPayload.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/merchantsupport/triggeraction","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "TriggeractionMerchantsupportRequest" }) as any as S.Schema<TriggeractionMerchantsupportRequest>;
 
 /** Response informing about the started action. */
 export interface TriggerActionResponse {
@@ -11030,20 +8856,16 @@ export interface TriggerActionResponse {
   message?: string;
 }
 export const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TriggerActionResponse",
-}) as any as S.Schema<TriggerActionResponse>;
+S.Struct({
+  "message": S.optional(S.String),
+}),
+).annotate({ identifier: "TriggerActionResponse" }) as any as S.Schema<TriggerActionResponse>;
 
 /** Request message for the UndeleteConversionSource method. */
 export interface UndeleteConversionSourceRequest {}
 export const UndeleteConversionSourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UndeleteConversionSourceRequest",
-}) as any as S.Schema<UndeleteConversionSourceRequest>;
+S.Struct({}),
+).annotate({ identifier: "UndeleteConversionSourceRequest" }) as any as S.Schema<UndeleteConversionSourceRequest>;
 
 export interface UndeleteConversionsourcesRequest {
   /** Required. The ID of the account that owns the new conversion source. */
@@ -11054,27 +8876,17 @@ export interface UndeleteConversionsourcesRequest {
   body?: UndeleteConversionSourceRequest;
 }
 export const UndeleteConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    conversionSourceId: S.String.pipe(T.Label()),
-    body: S.optional(UndeleteConversionSourceRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/conversionsources/{conversionSourceId}:undelete",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "UndeleteConversionsourcesRequest",
-}) as any as S.Schema<UndeleteConversionsourcesRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "conversionSourceId": S.String.pipe(T.Label()),
+  "body": S.optional(UndeleteConversionSourceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/conversionsources/{conversionSourceId}:undelete","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "UndeleteConversionsourcesRequest" }) as any as S.Schema<UndeleteConversionsourcesRequest>;
 
 export interface UndeleteConversionsourcesResponse {}
 export const UndeleteConversionsourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UndeleteConversionsourcesResponse",
-}) as any as S.Schema<UndeleteConversionsourcesResponse>;
+S.Struct({}),
+).annotate({ identifier: "UndeleteConversionsourcesResponse" }) as any as S.Schema<UndeleteConversionsourcesResponse>;
 
 export interface UpdateAccountsRequest {
   /** The ID of the account. */
@@ -11085,20 +8897,12 @@ export interface UpdateAccountsRequest {
   body?: Account;
 }
 export const UpdateAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(Account.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "{merchantId}/accounts/{accountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAccountsRequest",
-}) as any as S.Schema<UpdateAccountsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(Account.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"{merchantId}/accounts/{accountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "UpdateAccountsRequest" }) as any as S.Schema<UpdateAccountsRequest>;
 
 export interface UpdateAccounttaxRequest {
   /** The ID of the account for which to get/update account tax settings. */
@@ -11109,20 +8913,12 @@ export interface UpdateAccounttaxRequest {
   body?: AccountTax;
 }
 export const UpdateAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(AccountTax.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "{merchantId}/accounttax/{accountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateAccounttaxRequest",
-}) as any as S.Schema<UpdateAccounttaxRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(AccountTax.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"{merchantId}/accounttax/{accountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "UpdateAccounttaxRequest" }) as any as S.Schema<UpdateAccounttaxRequest>;
 
 export interface UpdateDatafeedsRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
@@ -11133,32 +8929,22 @@ export interface UpdateDatafeedsRequest {
   body?: Datafeed;
 }
 export const UpdateDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    datafeedId: S.String.pipe(T.Label()),
-    body: S.optional(Datafeed.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "{merchantId}/datafeeds/{datafeedId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateDatafeedsRequest",
-}) as any as S.Schema<UpdateDatafeedsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "datafeedId": S.String.pipe(T.Label()),
+  "body": S.optional(Datafeed.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"{merchantId}/datafeeds/{datafeedId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "UpdateDatafeedsRequest" }) as any as S.Schema<UpdateDatafeedsRequest>;
 
 export interface AccountsUpdateLabelsRequest {
   /** The IDs of labels that should be assigned to the account. */
   labelIds?: StringList;
 }
 export const AccountsUpdateLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labelIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "AccountsUpdateLabelsRequest",
-}) as any as S.Schema<AccountsUpdateLabelsRequest>;
+S.Struct({
+  "labelIds": S.optional(StringList),
+}),
+).annotate({ identifier: "AccountsUpdateLabelsRequest" }) as any as S.Schema<AccountsUpdateLabelsRequest>;
 
 export interface UpdatelabelsAccountsRequest {
   /** The ID of the managing account. */
@@ -11169,32 +8955,22 @@ export interface UpdatelabelsAccountsRequest {
   body?: AccountsUpdateLabelsRequest;
 }
 export const UpdatelabelsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(AccountsUpdateLabelsRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/accounts/{accountId}/updatelabels",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdatelabelsAccountsRequest",
-}) as any as S.Schema<UpdatelabelsAccountsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(AccountsUpdateLabelsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/accounts/{accountId}/updatelabels","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "UpdatelabelsAccountsRequest" }) as any as S.Schema<UpdatelabelsAccountsRequest>;
 
 export interface AccountsUpdateLabelsResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsUpdateLabelsResponse`". */
   kind?: string;
 }
 export const AccountsUpdateLabelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsUpdateLabelsResponse",
-}) as any as S.Schema<AccountsUpdateLabelsResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountsUpdateLabelsResponse" }) as any as S.Schema<AccountsUpdateLabelsResponse>;
 
 /** The IDs of labels that should be assigned to the CSS domain. */
 export interface LabelIds {
@@ -11202,9 +8978,9 @@ export interface LabelIds {
   labelIds?: StringList;
 }
 export const LabelIds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labelIds: S.optional(StringList),
-  }),
+S.Struct({
+  "labelIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "LabelIds" }) as any as S.Schema<LabelIds>;
 
 export interface UpdatelabelsCssesRequest {
@@ -11216,20 +8992,12 @@ export interface UpdatelabelsCssesRequest {
   body?: LabelIds;
 }
 export const UpdatelabelsCssesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cssGroupId: S.String.pipe(T.Label()),
-    cssDomainId: S.String.pipe(T.Label()),
-    body: S.optional(LabelIds.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{cssGroupId}/csses/{cssDomainId}/updatelabels",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdatelabelsCssesRequest",
-}) as any as S.Schema<UpdatelabelsCssesRequest>;
+S.Struct({
+  "cssGroupId": S.String.pipe(T.Label()),
+  "cssDomainId": S.String.pipe(T.Label()),
+  "body": S.optional(LabelIds.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{cssGroupId}/csses/{cssDomainId}/updatelabels","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "UpdatelabelsCssesRequest" }) as any as S.Schema<UpdatelabelsCssesRequest>;
 
 export interface UpdateLiasettingsRequest {
   /** The ID of the account for which to get or update LIA settings. */
@@ -11240,20 +9008,12 @@ export interface UpdateLiasettingsRequest {
   body?: LiaSettings;
 }
 export const UpdateLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(LiaSettings.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "{merchantId}/liasettings/{accountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateLiasettingsRequest",
-}) as any as S.Schema<UpdateLiasettingsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(LiaSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"{merchantId}/liasettings/{accountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "UpdateLiasettingsRequest" }) as any as S.Schema<UpdateLiasettingsRequest>;
 
 export interface UpdateProductsRequest {
   /** The REST ID of the product for which to update. */
@@ -11266,21 +9026,13 @@ export interface UpdateProductsRequest {
   body?: Product;
 }
 export const UpdateProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.String.pipe(T.Label()),
-    merchantId: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Product.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "{merchantId}/products/{productId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateProductsRequest",
-}) as any as S.Schema<UpdateProductsRequest>;
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Product.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"{merchantId}/products/{productId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "UpdateProductsRequest" }) as any as S.Schema<UpdateProductsRequest>;
 
 export interface UpdatePubsubnotificationsettingsRequest {
   /** The ID of the account. */
@@ -11288,21 +9040,12 @@ export interface UpdatePubsubnotificationsettingsRequest {
   /** Request body */
   body?: PubsubNotificationSettings;
 }
-export const UpdatePubsubnotificationsettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      merchantId: S.String.pipe(T.Label()),
-      body: S.optional(PubsubNotificationSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "{merchantId}/pubsubnotificationsettings",
-        baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdatePubsubnotificationsettingsRequest",
-}) as any as S.Schema<UpdatePubsubnotificationsettingsRequest>;
+export const UpdatePubsubnotificationsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(PubsubNotificationSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"{merchantId}/pubsubnotificationsettings","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "UpdatePubsubnotificationsettingsRequest" }) as any as S.Schema<UpdatePubsubnotificationsettingsRequest>;
 
 export interface UpdateShippingsettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
@@ -11313,28 +9056,15 @@ export interface UpdateShippingsettingsRequest {
   body?: ShippingSettings;
 }
 export const UpdateShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantId: S.String.pipe(T.Label()),
-    accountId: S.String.pipe(T.Label()),
-    body: S.optional(ShippingSettings.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "{merchantId}/shippingsettings/{accountId}",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateShippingsettingsRequest",
-}) as any as S.Schema<UpdateShippingsettingsRequest>;
+S.Struct({
+  "merchantId": S.String.pipe(T.Label()),
+  "accountId": S.String.pipe(T.Label()),
+  "body": S.optional(ShippingSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"{merchantId}/shippingsettings/{accountId}","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "UpdateShippingsettingsRequest" }) as any as S.Schema<UpdateShippingsettingsRequest>;
 
-export type VerifyPhoneNumberRequestPhoneVerificationMethodEnum =
-  | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
-  | "SMS"
-  | "PHONE_CALL"
-  | (string & {});
-export const VerifyPhoneNumberRequestPhoneVerificationMethodEnum =
-  /*@__PURE__*/ S.String;
+export type VerifyPhoneNumberRequestPhoneVerificationMethodEnum = "PHONE_VERIFICATION_METHOD_UNSPECIFIED" | "SMS" | "PHONE_CALL";
+export const VerifyPhoneNumberRequestPhoneVerificationMethodEnum = /*@__PURE__*/ S.String;
 
 /** Request message for the VerifyPhoneNumber method. */
 export interface VerifyPhoneNumberRequest {
@@ -11343,19 +9073,15 @@ export interface VerifyPhoneNumberRequest {
   /** The verification code that was sent to the phone number for validation. */
   verificationCode?: string;
   /** Verification method used to receive verification code. */
-  phoneVerificationMethod?: VerifyPhoneNumberRequestPhoneVerificationMethodEnum;
+  phoneVerificationMethod?: VerifyPhoneNumberRequestPhoneVerificationMethodEnum | (string & {});
 }
 export const VerifyPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verificationId: S.optional(S.String),
-    verificationCode: S.optional(S.String),
-    phoneVerificationMethod: S.optional(
-      VerifyPhoneNumberRequestPhoneVerificationMethodEnum,
-    ),
-  }),
-).annotate({
-  identifier: "VerifyPhoneNumberRequest",
-}) as any as S.Schema<VerifyPhoneNumberRequest>;
+S.Struct({
+  "verificationId": S.optional(S.String),
+  "verificationCode": S.optional(S.String),
+  "phoneVerificationMethod": S.optional(VerifyPhoneNumberRequestPhoneVerificationMethodEnum),
+}),
+).annotate({ identifier: "VerifyPhoneNumberRequest" }) as any as S.Schema<VerifyPhoneNumberRequest>;
 
 export interface VerifyphonenumberAccountsRequest {
   /** Required. The ID of the account. */
@@ -11366,20 +9092,12 @@ export interface VerifyphonenumberAccountsRequest {
   body?: VerifyPhoneNumberRequest;
 }
 export const VerifyphonenumberAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label()),
-    merchantId: S.String.pipe(T.Label()),
-    body: S.optional(VerifyPhoneNumberRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "{merchantId}/accounts/{accountId}/verifyphonenumber",
-      baseUrl: "https://shoppingcontent.googleapis.com/content/v2.1/",
-    }),
-  ),
-).annotate({
-  identifier: "VerifyphonenumberAccountsRequest",
-}) as any as S.Schema<VerifyphonenumberAccountsRequest>;
+S.Struct({
+  "accountId": S.String.pipe(T.Label()),
+  "merchantId": S.String.pipe(T.Label()),
+  "body": S.optional(VerifyPhoneNumberRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"{merchantId}/accounts/{accountId}/verifyphonenumber","baseUrl":"https://shoppingcontent.googleapis.com/content/v2.1/"})),
+).annotate({ identifier: "VerifyphonenumberAccountsRequest" }) as any as S.Schema<VerifyphonenumberAccountsRequest>;
 
 /** Response message for the VerifyPhoneNumber method. */
 export interface VerifyPhoneNumberResponse {
@@ -11387,12 +9105,10 @@ export interface VerifyPhoneNumberResponse {
   verifiedPhoneNumber?: string;
 }
 export const VerifyPhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verifiedPhoneNumber: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VerifyPhoneNumberResponse",
-}) as any as S.Schema<VerifyPhoneNumberResponse>;
+S.Struct({
+  "verifiedPhoneNumber": S.optional(S.String),
+}),
+).annotate({ identifier: "VerifyPhoneNumberResponse" }) as any as S.Schema<VerifyPhoneNumberResponse>;
 
 export type AuthinfoAccountsError = NotFound | Forbidden | GcpOpError;
 /** Returns information about the authenticated user. */
@@ -11409,12 +9125,7 @@ export const authinfoAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ClaimwebsiteAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ClaimwebsiteAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Claims the website of a Merchant Center sub-account. Merchant accounts with approved third-party CSSs aren't required to claim a website. */
 export const claimwebsiteAccounts: API.OperationMethod<
   ClaimwebsiteAccountsRequest,
@@ -11429,12 +9140,7 @@ export const claimwebsiteAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsCredentialsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsCredentialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads credentials for the Merchant Center account. If credentials already exist for this Merchant Center account and purpose, this method updates them. */
 export const createAccountsCredentials: API.OperationMethod<
   CreateAccountsCredentialsRequest,
@@ -11449,12 +9155,7 @@ export const createAccountsCredentials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsLabelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new label, not assigned to any account. */
 export const createAccountsLabels: API.OperationMethod<
   CreateAccountsLabelsRequest,
@@ -11469,12 +9170,7 @@ export const createAccountsLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsReturncarrierError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsReturncarrierError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Links return carrier to a merchant account. */
 export const createAccountsReturncarrier: API.OperationMethod<
   CreateAccountsReturncarrierRequest,
@@ -11489,12 +9185,7 @@ export const createAccountsReturncarrier: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCollectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateCollectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads a collection to your Merchant Center account. If a collection with the same collectionId already exists, this method updates that entry. In each update, the collection is completely replaced by the fields in the body of the update request. */
 export const createCollections: API.OperationMethod<
   CreateCollectionsRequest,
@@ -11509,12 +9200,7 @@ export const createCollections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateConversionsourcesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateConversionsourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new conversion source. */
 export const createConversionsources: API.OperationMethod<
   CreateConversionsourcesRequest,
@@ -11529,12 +9215,7 @@ export const createConversionsources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateOrdertrackingsignalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateOrdertrackingsignalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates new order tracking signal. */
 export const createOrdertrackingsignals: API.OperationMethod<
   CreateOrdertrackingsignalsRequest,
@@ -11549,12 +9230,7 @@ export const createOrdertrackingsignals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProductdeliverytimeError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProductdeliverytimeError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates or updates the delivery time of a product. */
 export const createProductdeliverytime: API.OperationMethod<
   CreateProductdeliverytimeRequest,
@@ -11569,12 +9245,7 @@ export const createProductdeliverytime: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreatePromotionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreatePromotionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a promotion for your Merchant Center account. If the promotion already exists, then it updates the promotion instead. To [end or delete] (https://developers.google.com/shopping-content/guides/promotions#end_a_promotion) a promotion update the time period of the promotion to a time that has already passed. */
 export const createPromotions: API.OperationMethod<
   CreatePromotionsRequest,
@@ -11589,12 +9260,7 @@ export const createPromotions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateRegionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateRegionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a region definition in your Merchant Center account. */
 export const createRegions: API.OperationMethod<
   CreateRegionsRequest,
@@ -11609,12 +9275,7 @@ export const createRegions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateReturnpolicyonlineError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateReturnpolicyonlineError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new return policy. */
 export const createReturnpolicyonline: API.OperationMethod<
   CreateReturnpolicyonlineRequest,
@@ -11629,12 +9290,7 @@ export const createReturnpolicyonline: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)accounts in a single request. */
 export const custombatchAccounts: API.OperationMethod<
   CustombatchAccountsRequest,
@@ -11649,12 +9305,7 @@ export const custombatchAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchAccountstatusesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchAccountstatusesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves multiple Merchant Center account statuses in a single request. */
 export const custombatchAccountstatuses: API.OperationMethod<
   CustombatchAccountstatusesRequest,
@@ -11669,12 +9320,7 @@ export const custombatchAccountstatuses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchAccounttaxError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchAccounttaxError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves and updates tax settings of multiple accounts in a single request. */
 export const custombatchAccounttax: API.OperationMethod<
   CustombatchAccounttaxRequest,
@@ -11689,12 +9335,7 @@ export const custombatchAccounttax: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchDatafeedsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchDatafeedsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes, fetches, gets, inserts and updates multiple datafeeds in a single request. */
 export const custombatchDatafeeds: API.OperationMethod<
   CustombatchDatafeedsRequest,
@@ -11709,12 +9350,7 @@ export const custombatchDatafeeds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchDatafeedstatusesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchDatafeedstatusesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets multiple Merchant Center datafeed statuses in a single request. */
 export const custombatchDatafeedstatuses: API.OperationMethod<
   CustombatchDatafeedstatusesRequest,
@@ -11729,12 +9365,7 @@ export const custombatchDatafeedstatuses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchLiasettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchLiasettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves and/or updates the LIA settings of multiple accounts in a single request. */
 export const custombatchLiasettings: API.OperationMethod<
   CustombatchLiasettingsRequest,
@@ -11749,12 +9380,7 @@ export const custombatchLiasettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchLocalinventoryError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchLocalinventoryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates local inventory for multiple products or stores in a single request. */
 export const custombatchLocalinventory: API.OperationMethod<
   CustombatchLocalinventoryRequest,
@@ -11769,12 +9395,7 @@ export const custombatchLocalinventory: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchPosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchPosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Batches multiple POS-related calls in a single request. */
 export const custombatchPos: API.OperationMethod<
   CustombatchPosRequest,
@@ -11789,12 +9410,7 @@ export const custombatchPos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves, inserts, and deletes multiple products in a single request. */
 export const custombatchProducts: API.OperationMethod<
   CustombatchProductsRequest,
@@ -11809,12 +9425,7 @@ export const custombatchProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchProductstatusesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchProductstatusesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the statuses of multiple products in a single request. */
 export const custombatchProductstatuses: API.OperationMethod<
   CustombatchProductstatusesRequest,
@@ -11829,12 +9440,7 @@ export const custombatchProductstatuses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchRegionalinventoryError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchRegionalinventoryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates regional inventory for multiple products or regions in a single request. */
 export const custombatchRegionalinventory: API.OperationMethod<
   CustombatchRegionalinventoryRequest,
@@ -11849,12 +9455,7 @@ export const custombatchRegionalinventory: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustombatchShippingsettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CustombatchShippingsettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves and updates the shipping settings of multiple accounts in a single request. */
 export const custombatchShippingsettings: API.OperationMethod<
   CustombatchShippingsettingsRequest,
@@ -11869,12 +9470,7 @@ export const custombatchShippingsettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a Merchant Center sub-account. */
 export const deleteAccounts: API.OperationMethod<
   DeleteAccountsRequest,
@@ -11889,12 +9485,7 @@ export const deleteAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsLabelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a label and removes it from all accounts to which it was assigned. */
 export const deleteAccountsLabels: API.OperationMethod<
   DeleteAccountsLabelsRequest,
@@ -11909,12 +9500,7 @@ export const deleteAccountsLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsReturncarrierError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsReturncarrierError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete a return carrier in the merchant account. */
 export const deleteAccountsReturncarrier: API.OperationMethod<
   DeleteAccountsReturncarrierRequest,
@@ -11929,12 +9515,7 @@ export const deleteAccountsReturncarrier: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCollectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteCollectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a collection from your Merchant Center account. */
 export const deleteCollections: API.OperationMethod<
   DeleteCollectionsRequest,
@@ -11949,12 +9530,7 @@ export const deleteCollections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteConversionsourcesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteConversionsourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Archives an existing conversion source. It will be recoverable for 30 days. This archiving behavior is not typical in the Content API and unique to this service. */
 export const deleteConversionsources: API.OperationMethod<
   DeleteConversionsourcesRequest,
@@ -11969,12 +9545,7 @@ export const deleteConversionsources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDatafeedsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteDatafeedsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a datafeed configuration from your Merchant Center account. */
 export const deleteDatafeeds: API.OperationMethod<
   DeleteDatafeedsRequest,
@@ -11989,12 +9560,7 @@ export const deleteDatafeeds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteFreelistingsprogramCheckoutsettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteFreelistingsprogramCheckoutsettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes `Checkout` settings and unenrolls merchant from `Checkout` program. */
 export const deleteFreelistingsprogramCheckoutsettings: API.OperationMethod<
   DeleteFreelistingsprogramCheckoutsettingsRequest,
@@ -12009,12 +9575,7 @@ export const deleteFreelistingsprogramCheckoutsettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeletePosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeletePosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a store for the given merchant. */
 export const deletePos: API.OperationMethod<
   DeletePosRequest,
@@ -12029,12 +9590,7 @@ export const deletePos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProductdeliverytimeError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProductdeliverytimeError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the delivery time of a product. */
 export const deleteProductdeliverytime: API.OperationMethod<
   DeleteProductdeliverytimeRequest,
@@ -12049,12 +9605,7 @@ export const deleteProductdeliverytime: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a product from your Merchant Center account. */
 export const deleteProducts: API.OperationMethod<
   DeleteProductsRequest,
@@ -12069,12 +9620,7 @@ export const deleteProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteRegionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteRegionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a region definition from your Merchant Center account. */
 export const deleteRegions: API.OperationMethod<
   DeleteRegionsRequest,
@@ -12089,12 +9635,7 @@ export const deleteRegions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteReturnpolicyonlineError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteReturnpolicyonlineError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing return policy. */
 export const deleteReturnpolicyonline: API.OperationMethod<
   DeleteReturnpolicyonlineRequest,
@@ -12109,12 +9650,7 @@ export const deleteReturnpolicyonline: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FetchnowDatafeedsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type FetchnowDatafeedsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method more than once per day, we recommend you use the [Products service](https://developers.google.com/shopping-content/reference/rest/v2.1/products) to update your product data. */
 export const fetchnowDatafeeds: API.OperationMethod<
   FetchnowDatafeedsRequest,
@@ -12144,10 +9680,7 @@ export const generateRecommendations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetaccessiblegmbaccountsLiasettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetaccessiblegmbaccountsLiasettingsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of accessible Business Profiles. */
 export const getaccessiblegmbaccountsLiasettings: API.OperationMethod<
   GetaccessiblegmbaccountsLiasettingsRequest,
@@ -12312,10 +9845,7 @@ export const getFreelistingsprogram: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetFreelistingsprogramCheckoutsettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetFreelistingsprogramCheckoutsettingsError = NotFound | Forbidden | GcpOpError;
 /** Gets Checkout settings for the given merchant. This includes information about review state, enrollment state and URL settings. */
 export const getFreelistingsprogramCheckoutsettings: API.OperationMethod<
   GetFreelistingsprogramCheckoutsettingsRequest,
@@ -12420,10 +9950,7 @@ export const getPromotions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetPubsubnotificationsettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetPubsubnotificationsettingsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a Merchant Center account's pubsub notification settings. */
 export const getPubsubnotificationsettings: API.OperationMethod<
   GetPubsubnotificationsettingsRequest,
@@ -12498,10 +10025,7 @@ export const getShoppingadsprogram: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetsupportedcarriersShippingsettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetsupportedcarriersShippingsettingsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves supported carriers and carrier services for an account. */
 export const getsupportedcarriersShippingsettings: API.OperationMethod<
   GetsupportedcarriersShippingsettingsRequest,
@@ -12516,10 +10040,7 @@ export const getsupportedcarriersShippingsettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetsupportedholidaysShippingsettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetsupportedholidaysShippingsettingsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves supported holidays for an account. */
 export const getsupportedholidaysShippingsettings: API.OperationMethod<
   GetsupportedholidaysShippingsettingsRequest,
@@ -12534,10 +10055,7 @@ export const getsupportedholidaysShippingsettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetsupportedpickupservicesShippingsettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetsupportedpickupservicesShippingsettingsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves supported pickup services for an account. */
 export const getsupportedpickupservicesShippingsettings: API.OperationMethod<
   GetsupportedpickupservicesShippingsettingsRequest,
@@ -12552,12 +10070,7 @@ export const getsupportedpickupservicesShippingsettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Merchant Center sub-account. */
 export const insertAccounts: API.OperationMethod<
   InsertAccountsRequest,
@@ -12572,12 +10085,7 @@ export const insertAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertDatafeedsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertDatafeedsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Registers a datafeed configuration with your Merchant Center account. */
 export const insertDatafeeds: API.OperationMethod<
   InsertDatafeedsRequest,
@@ -12592,12 +10100,7 @@ export const insertDatafeeds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertFreelistingsprogramCheckoutsettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertFreelistingsprogramCheckoutsettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enrolls merchant in `Checkout` program. */
 export const insertFreelistingsprogramCheckoutsettings: API.OperationMethod<
   InsertFreelistingsprogramCheckoutsettingsRequest,
@@ -12612,12 +10115,7 @@ export const insertFreelistingsprogramCheckoutsettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertLocalinventoryError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertLocalinventoryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the local inventory of a product in your Merchant Center account. */
 export const insertLocalinventory: API.OperationMethod<
   InsertLocalinventoryRequest,
@@ -12632,12 +10130,7 @@ export const insertLocalinventory: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertPosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertPosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a store for the given merchant. */
 export const insertPos: API.OperationMethod<
   InsertPosRequest,
@@ -12652,12 +10145,7 @@ export const insertPos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads a product to your Merchant Center account. If an item with the same channel, contentLanguage, offerId, and targetCountry already exists, this method updates that entry. */
 export const insertProducts: API.OperationMethod<
   InsertProductsRequest,
@@ -12672,12 +10160,7 @@ export const insertProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertRegionalinventoryError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertRegionalinventoryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the regional inventory of a product in your Merchant Center account. If a regional inventory with the same region ID already exists, this method updates that entry. */
 export const insertRegionalinventory: API.OperationMethod<
   InsertRegionalinventoryRequest,
@@ -12692,12 +10175,7 @@ export const insertRegionalinventory: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InventoryPosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InventoryPosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Submit inventory for the given merchant. */
 export const inventoryPos: API.OperationMethod<
   InventoryPosRequest,
@@ -12712,12 +10190,7 @@ export const inventoryPos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LinkAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type LinkAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Performs an action on a link between two Merchant Center accounts, namely accountId and linkedAccountId. */
 export const linkAccounts: API.OperationMethod<
   LinkAccountsRequest,
@@ -12745,10 +10218,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsLabelsError = NotFound | Forbidden | GcpOpError;
@@ -12764,10 +10234,7 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsReturncarrierError = NotFound | Forbidden | GcpOpError;
@@ -12798,10 +10265,7 @@ export const listAccountstatuses: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccounttaxError = NotFound | Forbidden | GcpOpError;
@@ -12817,10 +10281,7 @@ export const listAccounttax: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListCollectionsError = NotFound | Forbidden | GcpOpError;
@@ -12836,10 +10297,7 @@ export const listCollections: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListCollectionstatusesError = NotFound | Forbidden | GcpOpError;
@@ -12855,10 +10313,7 @@ export const listCollectionstatuses: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListConversionsourcesError = NotFound | Forbidden | GcpOpError;
@@ -12874,10 +10329,7 @@ export const listConversionsources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListCssesError = NotFound | Forbidden | GcpOpError;
@@ -12893,10 +10345,7 @@ export const listCsses: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListDatafeedsError = NotFound | Forbidden | GcpOpError;
@@ -12912,10 +10361,7 @@ export const listDatafeeds: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListDatafeedstatusesError = NotFound | Forbidden | GcpOpError;
@@ -12931,10 +10377,7 @@ export const listDatafeedstatuses: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListLiasettingsError = NotFound | Forbidden | GcpOpError;
@@ -12950,10 +10393,7 @@ export const listLiasettings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListlinksAccountsError = NotFound | Forbidden | GcpOpError;
@@ -12969,10 +10409,7 @@ export const listlinksAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListPosError = NotFound | Forbidden | GcpOpError;
@@ -12990,10 +10427,7 @@ export const listPos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListposdataprovidersLiasettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListposdataprovidersLiasettingsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of POS data providers that have active settings for the all eiligible countries. */
 export const listposdataprovidersLiasettings: API.OperationMethod<
   ListposdataprovidersLiasettingsRequest,
@@ -13021,10 +10455,7 @@ export const listProducts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProductstatusesError = NotFound | Forbidden | GcpOpError;
@@ -13040,10 +10471,7 @@ export const listProductstatuses: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListPromotionsError = NotFound | Forbidden | GcpOpError;
@@ -13059,10 +10487,7 @@ export const listPromotions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListQuotasError = NotFound | Forbidden | GcpOpError;
@@ -13078,10 +10503,7 @@ export const listQuotas: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListRegionsError = NotFound | Forbidden | GcpOpError;
@@ -13097,10 +10519,7 @@ export const listRegions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListReturnpolicyonlineError = NotFound | Forbidden | GcpOpError;
@@ -13131,18 +10550,10 @@ export const listShippingsettings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchAccountsLabelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a label. */
 export const patchAccountsLabels: API.OperationMethod<
   PatchAccountsLabelsRequest,
@@ -13157,12 +10568,7 @@ export const patchAccountsLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountsReturncarrierError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsReturncarrierError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a return carrier in the merchant account. */
 export const patchAccountsReturncarrier: API.OperationMethod<
   PatchAccountsReturncarrierRequest,
@@ -13177,12 +10583,7 @@ export const patchAccountsReturncarrier: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchConversionsourcesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchConversionsourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates information of an existing conversion source. */
 export const patchConversionsources: API.OperationMethod<
   PatchConversionsourcesRequest,
@@ -13197,12 +10598,7 @@ export const patchConversionsources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchRegionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchRegionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a region definition in your Merchant Center account. */
 export const patchRegions: API.OperationMethod<
   PatchRegionsRequest,
@@ -13217,12 +10613,7 @@ export const patchRegions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchReturnpolicyonlineError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchReturnpolicyonlineError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing return policy. */
 export const patchReturnpolicyonline: API.OperationMethod<
   PatchReturnpolicyonlineRequest,
@@ -13237,12 +10628,7 @@ export const patchReturnpolicyonline: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RenderaccountissuesMerchantsupportError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RenderaccountissuesMerchantsupportError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Provide a list of merchant's issues with a support content and available actions. This content and actions are meant to be rendered and shown in third-party applications. */
 export const renderaccountissuesMerchantsupport: API.OperationMethod<
   RenderaccountissuesMerchantsupportRequest,
@@ -13257,12 +10643,7 @@ export const renderaccountissuesMerchantsupport: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RenderproductissuesMerchantsupportError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RenderproductissuesMerchantsupportError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Provide a list of issues for merchant's product with a support content and available actions. This content and actions are meant to be rendered and shown in third-party applications. */
 export const renderproductissuesMerchantsupport: API.OperationMethod<
   RenderproductissuesMerchantsupportRequest,
@@ -13277,12 +10658,7 @@ export const renderproductissuesMerchantsupport: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReportInteractionRecommendationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ReportInteractionRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Reports an interaction on a recommendation for a merchant. */
 export const reportInteractionRecommendations: API.OperationMethod<
   ReportInteractionRecommendationsRequest,
@@ -13297,12 +10673,7 @@ export const reportInteractionRecommendations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RequestgmbaccessLiasettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RequestgmbaccessLiasettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Requests access to a specified Business Profile. */
 export const requestgmbaccessLiasettings: API.OperationMethod<
   RequestgmbaccessLiasettingsRequest,
@@ -13317,12 +10688,7 @@ export const requestgmbaccessLiasettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RequestinventoryverificationLiasettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RequestinventoryverificationLiasettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Requests inventory validation for the specified country. */
 export const requestinventoryverificationLiasettings: API.OperationMethod<
   RequestinventoryverificationLiasettingsRequest,
@@ -13337,12 +10703,7 @@ export const requestinventoryverificationLiasettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RequestphoneverificationAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RequestphoneverificationAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Request verification code to start phone verification. */
 export const requestphoneverificationAccounts: API.OperationMethod<
   RequestphoneverificationAccountsRequest,
@@ -13357,12 +10718,7 @@ export const requestphoneverificationAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RequestreviewFreelistingsprogramError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RequestreviewFreelistingsprogramError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Requests a review of free listings in a specific region. This method deprecated. Use the `MerchantSupportService` to view product and account issues and request a review. */
 export const requestreviewFreelistingsprogram: API.OperationMethod<
   RequestreviewFreelistingsprogramRequest,
@@ -13377,12 +10733,7 @@ export const requestreviewFreelistingsprogram: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RequestreviewShoppingadsprogramError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RequestreviewShoppingadsprogramError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Requests a review of Shopping ads in a specific region. This method deprecated. Use the `MerchantSupportService` to view product and account issues and request a review. */
 export const requestreviewShoppingadsprogram: API.OperationMethod<
   RequestreviewShoppingadsprogramRequest,
@@ -13397,12 +10748,7 @@ export const requestreviewShoppingadsprogram: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SalePosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SalePosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Submit a sale event for the given merchant. */
 export const salePos: API.OperationMethod<
   SalePosRequest,
@@ -13417,12 +10763,7 @@ export const salePos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchReportsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SearchReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves merchant performance metrics matching the search query and optionally segmented by selected dimensions. */
 export const searchReports: API.OperationMethod<
   SearchReportsRequest,
@@ -13437,12 +10778,7 @@ export const searchReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetinventoryverificationcontactLiasettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetinventoryverificationcontactLiasettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the inventory verification contact for the specified country. */
 export const setinventoryverificationcontactLiasettings: API.OperationMethod<
   SetinventoryverificationcontactLiasettingsRequest,
@@ -13457,12 +10793,7 @@ export const setinventoryverificationcontactLiasettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetomnichannelexperienceLiasettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetomnichannelexperienceLiasettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the omnichannel experience for the specified country. Only supported for merchants whose POS data provider is trusted to enable the corresponding experience. For more context, see these help articles [about LFP](https://support.google.com/merchants/answer/7676652) and [how to get started](https://support.google.com/merchants/answer/7676578) with it. */
 export const setomnichannelexperienceLiasettings: API.OperationMethod<
   SetomnichannelexperienceLiasettingsRequest,
@@ -13477,12 +10808,7 @@ export const setomnichannelexperienceLiasettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetposdataproviderLiasettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetposdataproviderLiasettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the POS data provider for the specified country. */
 export const setposdataproviderLiasettings: API.OperationMethod<
   SetposdataproviderLiasettingsRequest,
@@ -13497,12 +10823,7 @@ export const setposdataproviderLiasettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TriggeractionMerchantsupportError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TriggeractionMerchantsupportError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Start an action. The action can be requested by merchants in third-party application. Before merchants can request the action, the third-party application needs to show them action specific content and display a user input form. You can submit an allowlist request in the [Shopping API Support Form](https://support.google.com/merchants/contact/shopping_api_support_form) under "What is the issue/question?" to get access to this feature. The action can be successfully started only once all `required` inputs are provided. If any `required` input is missing, or invalid value was provided, the service will return 400 error. Validation errors will contain Ids for all problematic field together with translated, human readable error messages that can be shown to the user. */
 export const triggeractionMerchantsupport: API.OperationMethod<
   TriggeractionMerchantsupportRequest,
@@ -13517,12 +10838,7 @@ export const triggeractionMerchantsupport: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteConversionsourcesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UndeleteConversionsourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Re-enables an archived conversion source. */
 export const undeleteConversionsources: API.OperationMethod<
   UndeleteConversionsourcesRequest,
@@ -13537,12 +10853,7 @@ export const undeleteConversionsources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a Merchant Center account. Any fields that are not provided are deleted from the resource. */
 export const updateAccounts: API.OperationMethod<
   UpdateAccountsRequest,
@@ -13557,12 +10868,7 @@ export const updateAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccounttaxError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAccounttaxError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the tax settings of the account. Any fields that are not provided are deleted from the resource. */
 export const updateAccounttax: API.OperationMethod<
   UpdateAccounttaxRequest,
@@ -13577,12 +10883,7 @@ export const updateAccounttax: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateDatafeedsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateDatafeedsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a datafeed configuration of your Merchant Center account. Any fields that are not provided are deleted from the resource. */
 export const updateDatafeeds: API.OperationMethod<
   UpdateDatafeedsRequest,
@@ -13597,12 +10898,7 @@ export const updateDatafeeds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatelabelsAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdatelabelsAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates labels that are assigned to the Merchant Center account by CSS user. */
 export const updatelabelsAccounts: API.OperationMethod<
   UpdatelabelsAccountsRequest,
@@ -13617,12 +10913,7 @@ export const updatelabelsAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatelabelsCssesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdatelabelsCssesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates labels that are assigned to a CSS domain by its CSS group. */
 export const updatelabelsCsses: API.OperationMethod<
   UpdatelabelsCssesRequest,
@@ -13637,12 +10928,7 @@ export const updatelabelsCsses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateLiasettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateLiasettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the LIA settings of the account. Any fields that are not provided are deleted from the resource. */
 export const updateLiasettings: API.OperationMethod<
   UpdateLiasettingsRequest,
@@ -13657,12 +10943,7 @@ export const updateLiasettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing product in your Merchant Center account. Only updates attributes provided in the request. */
 export const updateProducts: API.OperationMethod<
   UpdateProductsRequest,
@@ -13677,12 +10958,7 @@ export const updateProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatePubsubnotificationsettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdatePubsubnotificationsettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Register a Merchant Center account for pubsub notifications. Note that cloud topic name shouldn't be provided as part of the request. */
 export const updatePubsubnotificationsettings: API.OperationMethod<
   UpdatePubsubnotificationsettingsRequest,
@@ -13697,12 +10973,7 @@ export const updatePubsubnotificationsettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateShippingsettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateShippingsettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the shipping settings of the account. Any fields that are not provided are deleted from the resource. */
 export const updateShippingsettings: API.OperationMethod<
   UpdateShippingsettingsRequest,
@@ -13717,12 +10988,7 @@ export const updateShippingsettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VerifyphonenumberAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type VerifyphonenumberAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Validates verification code to verify phone number for the account. If successful this will overwrite the value of `accounts.businessinformation.phoneNumber`. Only verified phone number will replace an existing verified phone number. */
 export const verifyphonenumberAccounts: API.OperationMethod<
   VerifyphonenumberAccountsRequest,
@@ -13736,3 +11002,4 @@ export const verifyphonenumberAccounts: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

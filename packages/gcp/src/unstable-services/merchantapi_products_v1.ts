@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface DeleteAccountsProductInputsRequest {
@@ -67,79 +67,35 @@ export interface DeleteAccountsProductInputsRequest {
   dataSource?: string;
 }
 export const DeleteAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    dataSource: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "products/v1/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAccountsProductInputsRequest",
-}) as any as S.Schema<DeleteAccountsProductInputsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "dataSource": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"products/v1/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsProductInputsRequest" }) as any as S.Schema<DeleteAccountsProductInputsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface GetAccountsProductsRequest {
   /** Required. The name of the product. Format: `accounts/{account}/products/{product}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. Note: For calls to the v1beta version, the plain format is `channel~content_language~feed_label~offer_id`, for example: `accounts/123/products/online~en~US~sku123`. */
   name: string;
 }
 export const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "products/v1/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsProductsRequest",
-}) as any as S.Schema<GetAccountsProductsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"products/v1/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsProductsRequest" }) as any as S.Schema<GetAccountsProductsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type ItemLevelIssueSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "NOT_IMPACTED"
-  | "DEMOTED"
-  | "DISAPPROVED"
-  | (string & {});
+export type ItemLevelIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "NOT_IMPACTED" | "DEMOTED" | "DISAPPROVED";
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
-export type ItemLevelIssueReportingContextEnum =
-  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISCOVERY_ADS"
-  | "DEMAND_GEN_ADS"
-  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-  | "VIDEO_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "VEHICLE_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LISTINGS_UCP_CHECKOUT"
-  | "FREE_LOCAL_LISTINGS"
-  | "FREE_LOCAL_VEHICLE_LISTINGS"
-  | "YOUTUBE_AFFILIATE"
-  | "YOUTUBE_SHOPPING"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | "PRODUCT_REVIEWS"
-  | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+export type ItemLevelIssueReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
 export const ItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product status. */
@@ -164,46 +120,23 @@ export interface ItemLevelIssue {
   reportingContext?: ItemLevelIssueReportingContextEnum;
 }
 export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resolution: S.optional(S.String),
-    applicableCountries: S.optional(StringList),
-    attribute: S.optional(S.String),
-    detail: S.optional(S.String),
-    code: S.optional(S.String),
-    description: S.optional(S.String),
-    documentation: S.optional(S.String),
-    severity: S.optional(ItemLevelIssueSeverityEnum),
-    reportingContext: S.optional(ItemLevelIssueReportingContextEnum),
-  }),
+S.Struct({
+  "resolution": S.optional(S.String),
+  "applicableCountries": S.optional(StringList),
+  "attribute": S.optional(S.String),
+  "detail": S.optional(S.String),
+  "code": S.optional(S.String),
+  "description": S.optional(S.String),
+  "documentation": S.optional(S.String),
+  "severity": S.optional(ItemLevelIssueSeverityEnum),
+  "reportingContext": S.optional(ItemLevelIssueReportingContextEnum),
+}),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
 export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
-export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
-  ItemLevelIssue,
-) as any as S.Schema<ItemLevelIssueList>;
+export const ItemLevelIssueList = /*@__PURE__*/ S.Array(ItemLevelIssue) as any as S.Schema<ItemLevelIssueList>;
 
-export type DestinationStatusReportingContextEnum =
-  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISCOVERY_ADS"
-  | "DEMAND_GEN_ADS"
-  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-  | "VIDEO_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "VEHICLE_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LISTINGS_UCP_CHECKOUT"
-  | "FREE_LOCAL_LISTINGS"
-  | "FREE_LOCAL_VEHICLE_LISTINGS"
-  | "YOUTUBE_AFFILIATE"
-  | "YOUTUBE_SHOPPING"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | "PRODUCT_REVIEWS"
-  | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+export type DestinationStatusReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
 export const DestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The destination status of the product status. Equivalent to `StatusPerReportingContext` in Reports API. */
@@ -218,20 +151,16 @@ export interface DestinationStatus {
   reportingContext?: DestinationStatusReportingContextEnum;
 }
 export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    approvedCountries: S.optional(StringList),
-    pendingCountries: S.optional(StringList),
-    disapprovedCountries: S.optional(StringList),
-    reportingContext: S.optional(DestinationStatusReportingContextEnum),
-  }),
-).annotate({
-  identifier: "DestinationStatus",
-}) as any as S.Schema<DestinationStatus>;
+S.Struct({
+  "approvedCountries": S.optional(StringList),
+  "pendingCountries": S.optional(StringList),
+  "disapprovedCountries": S.optional(StringList),
+  "reportingContext": S.optional(DestinationStatusReportingContextEnum),
+}),
+).annotate({ identifier: "DestinationStatus" }) as any as S.Schema<DestinationStatus>;
 
 export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
-export const DestinationStatusList = /*@__PURE__*/ S.Array(
-  DestinationStatus,
-) as any as S.Schema<DestinationStatusList>;
+export const DestinationStatusList = /*@__PURE__*/ S.Array(DestinationStatus) as any as S.Schema<DestinationStatusList>;
 
 /** The status of a product, data validation issues, that is, information about a product computed asynchronously. */
 export interface ProductStatus {
@@ -247,13 +176,13 @@ export interface ProductStatus {
   lastUpdateDate?: string;
 }
 export const ProductStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    googleExpirationDate: S.optional(S.String),
-    itemLevelIssues: S.optional(ItemLevelIssueList),
-    creationDate: S.optional(S.String),
-    destinationStatuses: S.optional(DestinationStatusList),
-    lastUpdateDate: S.optional(S.String),
-  }),
+S.Struct({
+  "googleExpirationDate": S.optional(S.String),
+  "itemLevelIssues": S.optional(ItemLevelIssueList),
+  "creationDate": S.optional(S.String),
+  "destinationStatuses": S.optional(DestinationStatusList),
+  "lastUpdateDate": S.optional(S.String),
+}),
 ).annotate({ identifier: "ProductStatus" }) as any as S.Schema<ProductStatus>;
 
 /** The price represented as a number and currency. */
@@ -264,10 +193,10 @@ export interface Price {
   amountMicros?: string;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyCode: S.optional(S.String),
-    amountMicros: S.optional(S.String),
-  }),
+S.Struct({
+  "currencyCode": S.optional(S.String),
+  "amountMicros": S.optional(S.String),
+}),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 /** Information regarding Automated Discounts. */
@@ -280,20 +209,14 @@ export interface AutomatedDiscounts {
   gadPrice?: Price;
 }
 export const AutomatedDiscounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priorPrice: S.optional(Price),
-    priorPriceProgressive: S.optional(Price),
-    gadPrice: S.optional(Price),
-  }),
-).annotate({
-  identifier: "AutomatedDiscounts",
-}) as any as S.Schema<AutomatedDiscounts>;
+S.Struct({
+  "priorPrice": S.optional(Price),
+  "priorPriceProgressive": S.optional(Price),
+  "gadPrice": S.optional(Price),
+}),
+).annotate({ identifier: "AutomatedDiscounts" }) as any as S.Schema<AutomatedDiscounts>;
 
-export type ProductSustainabilityIncentiveTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "EV_TAX_CREDIT"
-  | "EV_PRICE_DISCOUNT"
-  | (string & {});
+export type ProductSustainabilityIncentiveTypeEnum = "TYPE_UNSPECIFIED" | "EV_TAX_CREDIT" | "EV_PRICE_DISCOUNT";
 export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information regarding sustainability-related incentive programs such as rebates or tax relief. */
@@ -306,25 +229,17 @@ export interface ProductSustainabilityIncentive {
   percentage?: number;
 }
 export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ProductSustainabilityIncentiveTypeEnum),
-    amount: S.optional(Price),
-    percentage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ProductSustainabilityIncentive",
-}) as any as S.Schema<ProductSustainabilityIncentive>;
+S.Struct({
+  "type": S.optional(ProductSustainabilityIncentiveTypeEnum),
+  "amount": S.optional(Price),
+  "percentage": S.optional(S.Number),
+}),
+).annotate({ identifier: "ProductSustainabilityIncentive" }) as any as S.Schema<ProductSustainabilityIncentive>;
 
-export type ProductSustainabilityIncentiveList =
-  ReadonlyArray<ProductSustainabilityIncentive>;
-export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
-  ProductSustainabilityIncentive,
-) as any as S.Schema<ProductSustainabilityIncentiveList>;
+export type ProductSustainabilityIncentiveList = ReadonlyArray<ProductSustainabilityIncentive>;
+export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(ProductSustainabilityIncentive) as any as S.Schema<ProductSustainabilityIncentiveList>;
 
-export type Co2EmissionsUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "GPERKM"
-  | (string & {});
+export type Co2EmissionsUnitEnum = "UNIT_UNSPECIFIED" | "GPERKM";
 export const Co2EmissionsUnitEnum = /*@__PURE__*/ S.String;
 
 /** The co2 emission of the vehicle. */
@@ -335,69 +250,35 @@ export interface Co2Emissions {
   value?: string;
 }
 export const Co2Emissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(Co2EmissionsUnitEnum),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "unit": S.optional(Co2EmissionsUnitEnum),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Co2Emissions" }) as any as S.Schema<Co2Emissions>;
 
-export type ReturnsShippingFeeTypeEnum =
-  | "RETURN_SHIPPING_FEE_TYPE_UNSPECIFIED"
-  | "CUSTOMER_RESPONSIBILITY"
-  | "DEDUCTED_FROM_REFUND"
-  | (string & {});
+export type ReturnsShippingFeeTypeEnum = "RETURN_SHIPPING_FEE_TYPE_UNSPECIFIED" | "CUSTOMER_RESPONSIBILITY" | "DEDUCTED_FROM_REFUND";
 export const ReturnsShippingFeeTypeEnum = /*@__PURE__*/ S.String;
 
-export type ReturnsWindowTypeEnum =
-  | "RETURN_WINDOW_TYPE_UNSPECIFIED"
-  | "FINITE_RETURN_WINDOW"
-  | "NO_RETURNS"
-  | "LIFETIME"
-  | (string & {});
+export type ReturnsWindowTypeEnum = "RETURN_WINDOW_TYPE_UNSPECIFIED" | "FINITE_RETURN_WINDOW" | "NO_RETURNS" | "LIFETIME";
 export const ReturnsWindowTypeEnum = /*@__PURE__*/ S.String;
 
-export type ReturnsItemConditionsItemEnum =
-  | "ITEM_CONDITION_UNSPECIFIED"
-  | "NEW"
-  | "LIKE_NEW"
-  | "USED"
-  | "DEFECTIVE_ONLY"
-  | (string & {});
+export type ReturnsItemConditionsItemEnum = "ITEM_CONDITION_UNSPECIFIED" | "NEW" | "LIKE_NEW" | "USED" | "DEFECTIVE_ONLY";
 export const ReturnsItemConditionsItemEnum = /*@__PURE__*/ S.String;
 
-export type ReturnsItemConditionsItemEnumList =
-  ReadonlyArray<ReturnsItemConditionsItemEnum>;
-export const ReturnsItemConditionsItemEnumList = /*@__PURE__*/ S.Array(
-  ReturnsItemConditionsItemEnum,
-) as any as S.Schema<ReturnsItemConditionsItemEnumList>;
+export type ReturnsItemConditionsItemEnumList = ReadonlyArray<ReturnsItemConditionsItemEnum>;
+export const ReturnsItemConditionsItemEnumList = /*@__PURE__*/ S.Array(ReturnsItemConditionsItemEnum) as any as S.Schema<ReturnsItemConditionsItemEnumList>;
 
-export type ReturnsOutcomesItemEnum =
-  | "RETURN_OUTCOME_UNSPECIFIED"
-  | "REFUND"
-  | "EXCHANGE"
-  | "STORE_CREDIT"
-  | (string & {});
+export type ReturnsOutcomesItemEnum = "RETURN_OUTCOME_UNSPECIFIED" | "REFUND" | "EXCHANGE" | "STORE_CREDIT";
 export const ReturnsOutcomesItemEnum = /*@__PURE__*/ S.String;
 
-export type ReturnsOutcomesItemEnumList =
-  ReadonlyArray<ReturnsOutcomesItemEnum>;
-export const ReturnsOutcomesItemEnumList = /*@__PURE__*/ S.Array(
-  ReturnsOutcomesItemEnum,
-) as any as S.Schema<ReturnsOutcomesItemEnumList>;
+export type ReturnsOutcomesItemEnumList = ReadonlyArray<ReturnsOutcomesItemEnum>;
+export const ReturnsOutcomesItemEnumList = /*@__PURE__*/ S.Array(ReturnsOutcomesItemEnum) as any as S.Schema<ReturnsOutcomesItemEnumList>;
 
-export type ReturnsMethodsItemEnum =
-  | "RETURN_METHOD_UNSPECIFIED"
-  | "BY_MAIL"
-  | "IN_STORE"
-  | "AT_A_KIOSK"
-  | "DROP_OFF_LOCATION"
-  | (string & {});
+export type ReturnsMethodsItemEnum = "RETURN_METHOD_UNSPECIFIED" | "BY_MAIL" | "IN_STORE" | "AT_A_KIOSK" | "DROP_OFF_LOCATION";
 export const ReturnsMethodsItemEnum = /*@__PURE__*/ S.String;
 
 export type ReturnsMethodsItemEnumList = ReadonlyArray<ReturnsMethodsItemEnum>;
-export const ReturnsMethodsItemEnumList = /*@__PURE__*/ S.Array(
-  ReturnsMethodsItemEnum,
-) as any as S.Schema<ReturnsMethodsItemEnumList>;
+export const ReturnsMethodsItemEnumList = /*@__PURE__*/ S.Array(ReturnsMethodsItemEnum) as any as S.Schema<ReturnsMethodsItemEnumList>;
 
 /** The returns of the product. */
 export interface Returns {
@@ -425,25 +306,23 @@ export interface Returns {
   methods?: ReturnsMethodsItemEnumList;
 }
 export const Returns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countries: S.optional(StringList),
-    policyUrl: S.optional(S.String),
-    restockingFee: S.optional(Price),
-    shippingFee: S.optional(Price),
-    windowDays: S.optional(S.String),
-    shippingFeeType: S.optional(ReturnsShippingFeeTypeEnum),
-    restockingPercentageFee: S.optional(S.Number),
-    windowType: S.optional(ReturnsWindowTypeEnum),
-    itemConditions: S.optional(ReturnsItemConditionsItemEnumList),
-    outcomes: S.optional(ReturnsOutcomesItemEnumList),
-    methods: S.optional(ReturnsMethodsItemEnumList),
-  }),
+S.Struct({
+  "countries": S.optional(StringList),
+  "policyUrl": S.optional(S.String),
+  "restockingFee": S.optional(Price),
+  "shippingFee": S.optional(Price),
+  "windowDays": S.optional(S.String),
+  "shippingFeeType": S.optional(ReturnsShippingFeeTypeEnum),
+  "restockingPercentageFee": S.optional(S.Number),
+  "windowType": S.optional(ReturnsWindowTypeEnum),
+  "itemConditions": S.optional(ReturnsItemConditionsItemEnumList),
+  "outcomes": S.optional(ReturnsOutcomesItemEnumList),
+  "methods": S.optional(ReturnsMethodsItemEnumList),
+}),
 ).annotate({ identifier: "Returns" }) as any as S.Schema<Returns>;
 
 export type ReturnsList = ReadonlyArray<Returns>;
-export const ReturnsList = /*@__PURE__*/ S.Array(
-  Returns,
-) as any as S.Schema<ReturnsList>;
+export const ReturnsList = /*@__PURE__*/ S.Array(Returns) as any as S.Schema<ReturnsList>;
 
 /** A message that represents loyalty points. */
 export interface LoyaltyPoints {
@@ -455,28 +334,15 @@ export interface LoyaltyPoints {
   ratio?: number;
 }
 export const LoyaltyPoints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    pointsValue: S.optional(S.String),
-    ratio: S.optional(S.Number),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "pointsValue": S.optional(S.String),
+  "ratio": S.optional(S.Number),
+}),
 ).annotate({ identifier: "LoyaltyPoints" }) as any as S.Schema<LoyaltyPoints>;
 
-export type ProductAttributesMinEnergyEfficiencyClassEnum =
-  | "ENERGY_EFFICIENCY_CLASS_UNSPECIFIED"
-  | "APPP"
-  | "APP"
-  | "AP"
-  | "A"
-  | "B"
-  | "C"
-  | "D"
-  | "E"
-  | "F"
-  | "G"
-  | (string & {});
-export const ProductAttributesMinEnergyEfficiencyClassEnum =
-  /*@__PURE__*/ S.String;
+export type ProductAttributesMinEnergyEfficiencyClassEnum = "ENERGY_EFFICIENCY_CLASS_UNSPECIFIED" | "APPP" | "APP" | "AP" | "A" | "B" | "C" | "D" | "E" | "F" | "G";
+export const ProductAttributesMinEnergyEfficiencyClassEnum = /*@__PURE__*/ S.String;
 
 /** The business days during which orders are on their path to fulfillment. If not provided, Monday to Friday business days will be assumed. */
 export interface ShippingBusinessDaysConfig {
@@ -486,25 +352,16 @@ export interface ShippingBusinessDaysConfig {
   country?: string;
 }
 export const ShippingBusinessDaysConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessDays: S.optional(S.String),
-    country: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ShippingBusinessDaysConfig",
-}) as any as S.Schema<ShippingBusinessDaysConfig>;
+S.Struct({
+  "businessDays": S.optional(S.String),
+  "country": S.optional(S.String),
+}),
+).annotate({ identifier: "ShippingBusinessDaysConfig" }) as any as S.Schema<ShippingBusinessDaysConfig>;
 
-export type ShippingBusinessDaysConfigList =
-  ReadonlyArray<ShippingBusinessDaysConfig>;
-export const ShippingBusinessDaysConfigList = /*@__PURE__*/ S.Array(
-  ShippingBusinessDaysConfig,
-) as any as S.Schema<ShippingBusinessDaysConfigList>;
+export type ShippingBusinessDaysConfigList = ReadonlyArray<ShippingBusinessDaysConfig>;
+export const ShippingBusinessDaysConfigList = /*@__PURE__*/ S.Array(ShippingBusinessDaysConfig) as any as S.Schema<ShippingBusinessDaysConfigList>;
 
-export type FuelConsumptionUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "LPER100KM"
-  | "KGPER100KM"
-  | (string & {});
+export type FuelConsumptionUnitEnum = "UNIT_UNSPECIFIED" | "LPER100KM" | "KGPER100KM";
 export const FuelConsumptionUnitEnum = /*@__PURE__*/ S.String;
 
 /** The fuel consumption of the vehicle. */
@@ -515,19 +372,13 @@ export interface FuelConsumption {
   value?: number;
 }
 export const FuelConsumption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(FuelConsumptionUnitEnum),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FuelConsumption",
-}) as any as S.Schema<FuelConsumption>;
+S.Struct({
+  "unit": S.optional(FuelConsumptionUnitEnum),
+  "value": S.optional(S.Number),
+}),
+).annotate({ identifier: "FuelConsumption" }) as any as S.Schema<FuelConsumption>;
 
-export type MileageUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "MILES"
-  | "KM"
-  | (string & {});
+export type MileageUnitEnum = "UNIT_UNSPECIFIED" | "MILES" | "KM";
 export const MileageUnitEnum = /*@__PURE__*/ S.String;
 
 /** The mileage of the vehicle. */
@@ -538,28 +389,16 @@ export interface Mileage {
   value?: string;
 }
 export const Mileage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(MileageUnitEnum),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "unit": S.optional(MileageUnitEnum),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Mileage" }) as any as S.Schema<Mileage>;
 
-export type RelatedProductRelationshipTypeEnum =
-  | "RELATIONSHIP_TYPE_UNSPECIFIED"
-  | "PART_OF_SET"
-  | "REQUIRED_PART"
-  | "OFTEN_BOUGHT_WITH"
-  | "SUBSTITUTE"
-  | "DIFFERENT_BRAND"
-  | "ACCESSORY"
-  | (string & {});
+export type RelatedProductRelationshipTypeEnum = "RELATIONSHIP_TYPE_UNSPECIFIED" | "PART_OF_SET" | "REQUIRED_PART" | "OFTEN_BOUGHT_WITH" | "SUBSTITUTE" | "DIFFERENT_BRAND" | "ACCESSORY";
 export const RelatedProductRelationshipTypeEnum = /*@__PURE__*/ S.String;
 
-export type RelatedProductIdTypeEnum =
-  | "ID_TYPE_UNSPECIFIED"
-  | "GTIN"
-  | "ID"
-  | (string & {});
+export type RelatedProductIdTypeEnum = "ID_TYPE_UNSPECIFIED" | "GTIN" | "ID";
 export const RelatedProductIdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies how other products are related to this product. */
@@ -572,49 +411,23 @@ export interface RelatedProduct {
   idType?: RelatedProductIdTypeEnum;
 }
 export const RelatedProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relationshipType: S.optional(RelatedProductRelationshipTypeEnum),
-    id: S.optional(S.String),
-    idType: S.optional(RelatedProductIdTypeEnum),
-  }),
+S.Struct({
+  "relationshipType": S.optional(RelatedProductRelationshipTypeEnum),
+  "id": S.optional(S.String),
+  "idType": S.optional(RelatedProductIdTypeEnum),
+}),
 ).annotate({ identifier: "RelatedProduct" }) as any as S.Schema<RelatedProduct>;
 
 export type RelatedProductList = ReadonlyArray<RelatedProduct>;
-export const RelatedProductList = /*@__PURE__*/ S.Array(
-  RelatedProduct,
-) as any as S.Schema<RelatedProductList>;
+export const RelatedProductList = /*@__PURE__*/ S.Array(RelatedProduct) as any as S.Schema<RelatedProductList>;
 
-export type ProductAttributesEmissionsStandardEnum =
-  | "EMISSIONS_STANDARD_UNSPECIFIED"
-  | "ZERO_EMISSIONS"
-  | "EURO1"
-  | "EURO2"
-  | "EURO3"
-  | "EURO4"
-  | "EURO5"
-  | "EURO5B"
-  | "EURO6"
-  | "EURO6C"
-  | "EURO6D"
-  | "EURO6D_TEMP"
-  | "EURO6E"
-  | (string & {});
+export type ProductAttributesEmissionsStandardEnum = "EMISSIONS_STANDARD_UNSPECIFIED" | "ZERO_EMISSIONS" | "EURO1" | "EURO2" | "EURO3" | "EURO4" | "EURO5" | "EURO5B" | "EURO6" | "EURO6C" | "EURO6D" | "EURO6D_TEMP" | "EURO6E";
 export const ProductAttributesEmissionsStandardEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesPickupMethodEnum =
-  | "PICKUP_METHOD_UNSPECIFIED"
-  | "NOT_SUPPORTED"
-  | "BUY"
-  | "RESERVE"
-  | "SHIP_TO_STORE"
-  | (string & {});
+export type ProductAttributesPickupMethodEnum = "PICKUP_METHOD_UNSPECIFIED" | "NOT_SUPPORTED" | "BUY" | "RESERVE" | "SHIP_TO_STORE";
 export const ProductAttributesPickupMethodEnum = /*@__PURE__*/ S.String;
 
-export type UnitAreaUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "SQM"
-  | "SQFT"
-  | (string & {});
+export type UnitAreaUnitEnum = "UNIT_UNSPECIFIED" | "SQM" | "SQFT";
 export const UnitAreaUnitEnum = /*@__PURE__*/ S.String;
 
 /** The unit area of the property. */
@@ -625,18 +438,13 @@ export interface UnitArea {
   unit?: UnitAreaUnitEnum;
 }
 export const UnitArea = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(UnitAreaUnitEnum),
-  }),
+S.Struct({
+  "value": S.optional(S.Number),
+  "unit": S.optional(UnitAreaUnitEnum),
+}),
 ).annotate({ identifier: "UnitArea" }) as any as S.Schema<UnitArea>;
 
-export type ProductFeeTypeEnum =
-  | "FEE_TYPE_UNSPECIFIED"
-  | "ADMIN_FEE"
-  | "APPLICATION_FEE"
-  | "SECURITY_DEPOSIT"
-  | (string & {});
+export type ProductFeeTypeEnum = "FEE_TYPE_UNSPECIFIED" | "ADMIN_FEE" | "APPLICATION_FEE" | "SECURITY_DEPOSIT";
 export const ProductFeeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The product fee attribute containing type and amount. */
@@ -647,36 +455,19 @@ export interface ProductFee {
   type?: ProductFeeTypeEnum;
 }
 export const ProductFee = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(Price),
-    type: S.optional(ProductFeeTypeEnum),
-  }),
+S.Struct({
+  "amount": S.optional(Price),
+  "type": S.optional(ProductFeeTypeEnum),
+}),
 ).annotate({ identifier: "ProductFee" }) as any as S.Schema<ProductFee>;
 
 export type ProductFeeList = ReadonlyArray<ProductFee>;
-export const ProductFeeList = /*@__PURE__*/ S.Array(
-  ProductFee,
-) as any as S.Schema<ProductFeeList>;
+export const ProductFeeList = /*@__PURE__*/ S.Array(ProductFee) as any as S.Schema<ProductFeeList>;
 
-export type ProductCertificationCertificationAuthorityEnum =
-  | "CERTIFICATION_AUTHORITY_UNSPECIFIED"
-  | "ADEME"
-  | "BMWK"
-  | "EPA"
-  | "EC"
-  | (string & {});
-export const ProductCertificationCertificationAuthorityEnum =
-  /*@__PURE__*/ S.String;
+export type ProductCertificationCertificationAuthorityEnum = "CERTIFICATION_AUTHORITY_UNSPECIFIED" | "ADEME" | "BMWK" | "EPA" | "EC";
+export const ProductCertificationCertificationAuthorityEnum = /*@__PURE__*/ S.String;
 
-export type ProductCertificationCertificationNameEnum =
-  | "CERTIFICATION_NAME_UNSPECIFIED"
-  | "ENERGY_STAR"
-  | "ENERGY_STAR_MOST_EFFICIENT"
-  | "EPREL"
-  | "EU_ECOLABEL"
-  | "VEHICLE_ENERGY_EFFICIENCY"
-  | "VEHICLE_ENERGY_EFFICIENCY_DISCHARGED_BATTERY"
-  | (string & {});
+export type ProductCertificationCertificationNameEnum = "CERTIFICATION_NAME_UNSPECIFIED" | "ENERGY_STAR" | "ENERGY_STAR_MOST_EFFICIENT" | "EPREL" | "EU_ECOLABEL" | "VEHICLE_ENERGY_EFFICIENCY" | "VEHICLE_ENERGY_EFFICIENCY_DISCHARGED_BATTERY";
 export const ProductCertificationCertificationNameEnum = /*@__PURE__*/ S.String;
 
 /** Product [certification](https://support.google.com/merchants/answer/13528839), initially introduced for EU energy efficiency labeling compliance using the EU EPREL database. */
@@ -691,22 +482,16 @@ export interface ProductCertification {
   certificationName?: ProductCertificationCertificationNameEnum;
 }
 export const ProductCertification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificationAuthority: S.optional(
-      ProductCertificationCertificationAuthorityEnum,
-    ),
-    certificationCode: S.optional(S.String),
-    certificationValue: S.optional(S.String),
-    certificationName: S.optional(ProductCertificationCertificationNameEnum),
-  }),
-).annotate({
-  identifier: "ProductCertification",
-}) as any as S.Schema<ProductCertification>;
+S.Struct({
+  "certificationAuthority": S.optional(ProductCertificationCertificationAuthorityEnum),
+  "certificationCode": S.optional(S.String),
+  "certificationValue": S.optional(S.String),
+  "certificationName": S.optional(ProductCertificationCertificationNameEnum),
+}),
+).annotate({ identifier: "ProductCertification" }) as any as S.Schema<ProductCertification>;
 
 export type ProductCertificationList = ReadonlyArray<ProductCertification>;
-export const ProductCertificationList = /*@__PURE__*/ S.Array(
-  ProductCertification,
-) as any as S.Schema<ProductCertificationList>;
+export const ProductCertificationList = /*@__PURE__*/ S.Array(ProductCertification) as any as S.Schema<ProductCertificationList>;
 
 /** The Shipping of the product. */
 export interface Shipping {
@@ -742,48 +527,33 @@ export interface Shipping {
   postalCode?: string;
 }
 export const Shipping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minHandlingTime: S.optional(S.String),
-    country: S.optional(S.String),
-    handlingCutoffTime: S.optional(S.String),
-    handlingCutoffTimezone: S.optional(S.String),
-    maxHandlingTime: S.optional(S.String),
-    locationId: S.optional(S.String),
-    locationGroupName: S.optional(S.String),
-    minTransitTime: S.optional(S.String),
-    loyaltyProgramLabel: S.optional(S.String),
-    service: S.optional(S.String),
-    maxTransitTime: S.optional(S.String),
-    price: S.optional(Price),
-    loyaltyTierLabel: S.optional(S.String),
-    region: S.optional(S.String),
-    postalCode: S.optional(S.String),
-  }),
+S.Struct({
+  "minHandlingTime": S.optional(S.String),
+  "country": S.optional(S.String),
+  "handlingCutoffTime": S.optional(S.String),
+  "handlingCutoffTimezone": S.optional(S.String),
+  "maxHandlingTime": S.optional(S.String),
+  "locationId": S.optional(S.String),
+  "locationGroupName": S.optional(S.String),
+  "minTransitTime": S.optional(S.String),
+  "loyaltyProgramLabel": S.optional(S.String),
+  "service": S.optional(S.String),
+  "maxTransitTime": S.optional(S.String),
+  "price": S.optional(Price),
+  "loyaltyTierLabel": S.optional(S.String),
+  "region": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "Shipping" }) as any as S.Schema<Shipping>;
 
 export type ShippingList = ReadonlyArray<Shipping>;
-export const ShippingList = /*@__PURE__*/ S.Array(
-  Shipping,
-) as any as S.Schema<ShippingList>;
+export const ShippingList = /*@__PURE__*/ S.Array(Shipping) as any as S.Schema<ShippingList>;
 
-export type ProductAttributesSpecialtyHousingTypeEnum =
-  | "SPECIALTY_HOUSING_TYPE_UNSPECIFIED"
-  | "CORPORATE"
-  | "LOW_INCOME"
-  | "MILITARY"
-  | "SENIOR"
-  | "SHORT_TERM"
-  | "STUDENT"
-  | (string & {});
+export type ProductAttributesSpecialtyHousingTypeEnum = "SPECIALTY_HOUSING_TYPE_UNSPECIFIED" | "CORPORATE" | "LOW_INCOME" | "MILITARY" | "SENIOR" | "SHORT_TERM" | "STUDENT";
 export const ProductAttributesSpecialtyHousingTypeEnum = /*@__PURE__*/ S.String;
 
-export type StructuredDescriptionDigitalSourceTypeEnum =
-  | "DIGITAL_SOURCE_TYPE_UNSPECIFIED"
-  | "TRAINED_ALGORITHMIC_MEDIA"
-  | "DEFAULT"
-  | (string & {});
-export const StructuredDescriptionDigitalSourceTypeEnum =
-  /*@__PURE__*/ S.String;
+export type StructuredDescriptionDigitalSourceTypeEnum = "DIGITAL_SOURCE_TYPE_UNSPECIFIED" | "TRAINED_ALGORITHMIC_MEDIA" | "DEFAULT";
+export const StructuredDescriptionDigitalSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Structured description, for algorithmically (AI)-generated descriptions. */
 export interface StructuredDescription {
@@ -793,13 +563,11 @@ export interface StructuredDescription {
   content?: string;
 }
 export const StructuredDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    digitalSourceType: S.optional(StructuredDescriptionDigitalSourceTypeEnum),
-    content: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StructuredDescription",
-}) as any as S.Schema<StructuredDescription>;
+S.Struct({
+  "digitalSourceType": S.optional(StructuredDescriptionDigitalSourceTypeEnum),
+  "content": S.optional(S.String),
+}),
+).annotate({ identifier: "StructuredDescription" }) as any as S.Schema<StructuredDescription>;
 
 /** The UnitPricingBaseMeasure of the product. */
 export interface UnitPricingBaseMeasure {
@@ -809,33 +577,16 @@ export interface UnitPricingBaseMeasure {
   unit?: string;
 }
 export const UnitPricingBaseMeasure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    unit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UnitPricingBaseMeasure",
-}) as any as S.Schema<UnitPricingBaseMeasure>;
+S.Struct({
+  "value": S.optional(S.String),
+  "unit": S.optional(S.String),
+}),
+).annotate({ identifier: "UnitPricingBaseMeasure" }) as any as S.Schema<UnitPricingBaseMeasure>;
 
-export type ProductAttributesEngineEnum =
-  | "ENGINE_TYPE_UNSPECIFIED"
-  | "GASOLINE"
-  | "DIESEL"
-  | "ELECTRIC"
-  | "HYBRID"
-  | "PLUG_IN_HYBRID"
-  | "NATURAL_GAS"
-  | "LPG"
-  | "METHANE"
-  | "OTHER"
-  | (string & {});
+export type ProductAttributesEngineEnum = "ENGINE_TYPE_UNSPECIFIED" | "GASOLINE" | "DIESEL" | "ELECTRIC" | "HYBRID" | "PLUG_IN_HYBRID" | "NATURAL_GAS" | "LPG" | "METHANE" | "OTHER";
 export const ProductAttributesEngineEnum = /*@__PURE__*/ S.String;
 
-export type ProductInstallmentCreditTypeEnum =
-  | "CREDIT_TYPE_UNSPECIFIED"
-  | "FINANCE"
-  | "LEASE"
-  | (string & {});
+export type ProductInstallmentCreditTypeEnum = "CREDIT_TYPE_UNSPECIFIED" | "FINANCE" | "LEASE";
 export const ProductInstallmentCreditTypeEnum = /*@__PURE__*/ S.String;
 
 /** A message that represents installment. */
@@ -854,17 +605,15 @@ export interface ProductInstallment {
   downpayment?: Price;
 }
 export const ProductInstallment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creditType: S.optional(ProductInstallmentCreditTypeEnum),
-    amount: S.optional(Price),
-    annualPercentageRate: S.optional(S.Number),
-    totalAmount: S.optional(Price),
-    months: S.optional(S.String),
-    downpayment: S.optional(Price),
-  }),
-).annotate({
-  identifier: "ProductInstallment",
-}) as any as S.Schema<ProductInstallment>;
+S.Struct({
+  "creditType": S.optional(ProductInstallmentCreditTypeEnum),
+  "amount": S.optional(Price),
+  "annualPercentageRate": S.optional(S.Number),
+  "totalAmount": S.optional(Price),
+  "months": S.optional(S.String),
+  "downpayment": S.optional(Price),
+}),
+).annotate({ identifier: "ProductInstallment" }) as any as S.Schema<ProductInstallment>;
 
 /** The display address of the property. */
 export interface DisplayAddress {
@@ -880,13 +629,13 @@ export interface DisplayAddress {
   streetNumber?: string;
 }
 export const DisplayAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.optional(S.String),
-    streetName: S.optional(S.String),
-    city: S.optional(S.String),
-    postalCode: S.optional(S.String),
-    streetNumber: S.optional(S.String),
-  }),
+S.Struct({
+  "region": S.optional(S.String),
+  "streetName": S.optional(S.String),
+  "city": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+  "streetNumber": S.optional(S.String),
+}),
 ).annotate({ identifier: "DisplayAddress" }) as any as S.Schema<DisplayAddress>;
 
 /** Conditions to be met for a product to have free shipping. */
@@ -897,18 +646,14 @@ export interface FreeShippingThreshold {
   country?: string;
 }
 export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priceThreshold: S.optional(Price),
-    country: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FreeShippingThreshold",
-}) as any as S.Schema<FreeShippingThreshold>;
+S.Struct({
+  "priceThreshold": S.optional(Price),
+  "country": S.optional(S.String),
+}),
+).annotate({ identifier: "FreeShippingThreshold" }) as any as S.Schema<FreeShippingThreshold>;
 
 export type FreeShippingThresholdList = ReadonlyArray<FreeShippingThreshold>;
-export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
-  FreeShippingThreshold,
-) as any as S.Schema<FreeShippingThresholdList>;
+export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(FreeShippingThreshold) as any as S.Schema<FreeShippingThresholdList>;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -918,10 +663,10 @@ export interface Interval {
   startTime?: string;
 }
 export const Interval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endTime: S.optional(S.String),
-    startTime: S.optional(S.String),
-  }),
+S.Struct({
+  "endTime": S.optional(S.String),
+  "startTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
 /** The ShippingDimension of the product. */
@@ -932,38 +677,17 @@ export interface ShippingDimension {
   value?: number;
 }
 export const ShippingDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ShippingDimension",
-}) as any as S.Schema<ShippingDimension>;
+S.Struct({
+  "unit": S.optional(S.String),
+  "value": S.optional(S.Number),
+}),
+).annotate({ identifier: "ShippingDimension" }) as any as S.Schema<ShippingDimension>;
 
-export type ProductAttributesIncludedDestinationsItemEnum =
-  | "DESTINATION_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LOCAL_LISTINGS"
-  | "YOUTUBE_SHOPPING"
-  | "YOUTUBE_SHOPPING_CHECKOUT"
-  | "YOUTUBE_AFFILIATE"
-  | "FREE_VEHICLE_LISTINGS"
-  | "VEHICLE_ADS"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | (string & {});
-export const ProductAttributesIncludedDestinationsItemEnum =
-  /*@__PURE__*/ S.String;
+export type ProductAttributesIncludedDestinationsItemEnum = "DESTINATION_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LOCAL_LISTINGS" | "YOUTUBE_SHOPPING" | "YOUTUBE_SHOPPING_CHECKOUT" | "YOUTUBE_AFFILIATE" | "FREE_VEHICLE_LISTINGS" | "VEHICLE_ADS" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL";
+export const ProductAttributesIncludedDestinationsItemEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesIncludedDestinationsItemEnumList =
-  ReadonlyArray<ProductAttributesIncludedDestinationsItemEnum>;
-export const ProductAttributesIncludedDestinationsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ProductAttributesIncludedDestinationsItemEnum,
-  ) as any as S.Schema<ProductAttributesIncludedDestinationsItemEnumList>;
+export type ProductAttributesIncludedDestinationsItemEnumList = ReadonlyArray<ProductAttributesIncludedDestinationsItemEnum>;
+export const ProductAttributesIncludedDestinationsItemEnumList = /*@__PURE__*/ S.Array(ProductAttributesIncludedDestinationsItemEnum) as any as S.Schema<ProductAttributesIncludedDestinationsItemEnumList>;
 
 /** The pickup cost of the item. */
 export interface PickupCost {
@@ -973,10 +697,10 @@ export interface PickupCost {
   flatRate?: Price;
 }
 export const PickupCost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    freeThreshold: S.optional(Price),
-    flatRate: S.optional(Price),
-  }),
+S.Struct({
+  "freeThreshold": S.optional(Price),
+  "flatRate": S.optional(Price),
+}),
 ).annotate({ identifier: "PickupCost" }) as any as S.Schema<PickupCost>;
 
 /** The product details. */
@@ -989,40 +713,20 @@ export interface ProductDetail {
   sectionName?: string;
 }
 export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributeName: S.optional(S.String),
-    attributeValue: S.optional(S.String),
-    sectionName: S.optional(S.String),
-  }),
+S.Struct({
+  "attributeName": S.optional(S.String),
+  "attributeValue": S.optional(S.String),
+  "sectionName": S.optional(S.String),
+}),
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
 export type ProductDetailList = ReadonlyArray<ProductDetail>;
-export const ProductDetailList = /*@__PURE__*/ S.Array(
-  ProductDetail,
-) as any as S.Schema<ProductDetailList>;
+export const ProductDetailList = /*@__PURE__*/ S.Array(ProductDetail) as any as S.Schema<ProductDetailList>;
 
-export type ProductAttributesEnergyEfficiencyClassEnum =
-  | "ENERGY_EFFICIENCY_CLASS_UNSPECIFIED"
-  | "APPP"
-  | "APP"
-  | "AP"
-  | "A"
-  | "B"
-  | "C"
-  | "D"
-  | "E"
-  | "F"
-  | "G"
-  | (string & {});
-export const ProductAttributesEnergyEfficiencyClassEnum =
-  /*@__PURE__*/ S.String;
+export type ProductAttributesEnergyEfficiencyClassEnum = "ENERGY_EFFICIENCY_CLASS_UNSPECIFIED" | "APPP" | "APP" | "AP" | "A" | "B" | "C" | "D" | "E" | "F" | "G";
+export const ProductAttributesEnergyEfficiencyClassEnum = /*@__PURE__*/ S.String;
 
-export type SubscriptionCostPeriodEnum =
-  | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
-  | "MONTH"
-  | "YEAR"
-  | "WEEK"
-  | (string & {});
+export type SubscriptionCostPeriodEnum = "SUBSCRIPTION_PERIOD_UNSPECIFIED" | "MONTH" | "YEAR" | "WEEK";
 export const SubscriptionCostPeriodEnum = /*@__PURE__*/ S.String;
 
 /** The SubscriptionCost of the product. */
@@ -1035,14 +739,12 @@ export interface SubscriptionCost {
   period?: SubscriptionCostPeriodEnum;
 }
 export const SubscriptionCost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodLength: S.optional(S.String),
-    amount: S.optional(Price),
-    period: S.optional(SubscriptionCostPeriodEnum),
-  }),
-).annotate({
-  identifier: "SubscriptionCost",
-}) as any as S.Schema<SubscriptionCost>;
+S.Struct({
+  "periodLength": S.optional(S.String),
+  "amount": S.optional(Price),
+  "period": S.optional(SubscriptionCostPeriodEnum),
+}),
+).annotate({ identifier: "SubscriptionCost" }) as any as S.Schema<SubscriptionCost>;
 
 /** The weight of the product. */
 export interface ProductWeight {
@@ -1052,10 +754,10 @@ export interface ProductWeight {
   value?: number;
 }
 export const ProductWeight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
+S.Struct({
+  "unit": S.optional(S.String),
+  "value": S.optional(S.Number),
+}),
 ).annotate({ identifier: "ProductWeight" }) as any as S.Schema<ProductWeight>;
 
 /** Configuration for offer or offer-country level shipping handling cutoff time. */
@@ -1070,20 +772,16 @@ export interface HandlingCutoffTime {
   disableDeliveryAfterCutoff?: boolean;
 }
 export const HandlingCutoffTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cutoffTime: S.optional(S.String),
-    country: S.optional(S.String),
-    cutoffTimezone: S.optional(S.String),
-    disableDeliveryAfterCutoff: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "HandlingCutoffTime",
-}) as any as S.Schema<HandlingCutoffTime>;
+S.Struct({
+  "cutoffTime": S.optional(S.String),
+  "country": S.optional(S.String),
+  "cutoffTimezone": S.optional(S.String),
+  "disableDeliveryAfterCutoff": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "HandlingCutoffTime" }) as any as S.Schema<HandlingCutoffTime>;
 
 export type HandlingCutoffTimeList = ReadonlyArray<HandlingCutoffTime>;
-export const HandlingCutoffTimeList = /*@__PURE__*/ S.Array(
-  HandlingCutoffTime,
-) as any as S.Schema<HandlingCutoffTimeList>;
+export const HandlingCutoffTimeList = /*@__PURE__*/ S.Array(HandlingCutoffTime) as any as S.Schema<HandlingCutoffTimeList>;
 
 /** The UnitPricingMeasure of the product. */
 export interface UnitPricingMeasure {
@@ -1093,64 +791,20 @@ export interface UnitPricingMeasure {
   value?: number;
 }
 export const UnitPricingMeasure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UnitPricingMeasure",
-}) as any as S.Schema<UnitPricingMeasure>;
+S.Struct({
+  "unit": S.optional(S.String),
+  "value": S.optional(S.Number),
+}),
+).annotate({ identifier: "UnitPricingMeasure" }) as any as S.Schema<UnitPricingMeasure>;
 
-export type ProductAttributesAmenityFeatureItemEnum =
-  | "AMENITY_FEATURE_UNSPECIFIED"
-  | "BALCONY"
-  | "BASEMENT"
-  | "BASKETBALL_COURT"
-  | "BIKE_STORAGE"
-  | "CENTRAL_AC"
-  | "DISHWASHER"
-  | "DOG_PARK"
-  | "ELEVATOR"
-  | "EV_CHARGING"
-  | "FENCED_LOT"
-  | "FIREPLACE"
-  | "FITNESS_CENTER"
-  | "FORCED_AIR_HEATING"
-  | "FULLY_FURNISHED"
-  | "GARAGE"
-  | "GATED_COMMUNITY"
-  | "HARDWOOD_FLOORS"
-  | "HIGH_SPEED_INTERNET"
-  | "INTERCOM"
-  | "IN_UNIT_WASHER_DRYER"
-  | "KITCHEN"
-  | "LARGE_CLOSETS"
-  | "MULTISPORT_COURT"
-  | "ONSITE_LAUNDRY"
-  | "OUTDOOR_LOUNGE"
-  | "PARKING"
-  | "PATIO"
-  | "PICKLEBALL_COURT"
-  | "POOL"
-  | "REFRIGERATOR"
-  | "SOCCER_FIELD"
-  | "TENNIS_COURT"
-  | "WALK_IN_CLOSETS"
-  | "WHEELCHAIR_ACCESS"
-  | (string & {});
+export type ProductAttributesAmenityFeatureItemEnum = "AMENITY_FEATURE_UNSPECIFIED" | "BALCONY" | "BASEMENT" | "BASKETBALL_COURT" | "BIKE_STORAGE" | "CENTRAL_AC" | "DISHWASHER" | "DOG_PARK" | "ELEVATOR" | "EV_CHARGING" | "FENCED_LOT" | "FIREPLACE" | "FITNESS_CENTER" | "FORCED_AIR_HEATING" | "FULLY_FURNISHED" | "GARAGE" | "GATED_COMMUNITY" | "HARDWOOD_FLOORS" | "HIGH_SPEED_INTERNET" | "INTERCOM" | "IN_UNIT_WASHER_DRYER" | "KITCHEN" | "LARGE_CLOSETS" | "MULTISPORT_COURT" | "ONSITE_LAUNDRY" | "OUTDOOR_LOUNGE" | "PARKING" | "PATIO" | "PICKLEBALL_COURT" | "POOL" | "REFRIGERATOR" | "SOCCER_FIELD" | "TENNIS_COURT" | "WALK_IN_CLOSETS" | "WHEELCHAIR_ACCESS";
 export const ProductAttributesAmenityFeatureItemEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesAmenityFeatureItemEnumList =
-  ReadonlyArray<ProductAttributesAmenityFeatureItemEnum>;
-export const ProductAttributesAmenityFeatureItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ProductAttributesAmenityFeatureItemEnum,
-  ) as any as S.Schema<ProductAttributesAmenityFeatureItemEnumList>;
+export type ProductAttributesAmenityFeatureItemEnumList = ReadonlyArray<ProductAttributesAmenityFeatureItemEnum>;
+export const ProductAttributesAmenityFeatureItemEnumList = /*@__PURE__*/ S.Array(ProductAttributesAmenityFeatureItemEnum) as any as S.Schema<ProductAttributesAmenityFeatureItemEnumList>;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Product property for the Cloud Retail API. For example, properties for a TV product could be "Screen-Resolution" or "Screen-Size". */
 export interface CloudExportAdditionalProperties {
@@ -1172,53 +826,28 @@ export interface CloudExportAdditionalProperties {
   unitCode?: string;
 }
 export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boolValue: S.optional(S.Boolean),
-    minValue: S.optional(S.Number),
-    intValue: S.optional(StringList),
-    maxValue: S.optional(S.Number),
-    propertyName: S.optional(S.String),
-    floatValue: S.optional(DoubleList),
-    textValue: S.optional(StringList),
-    unitCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudExportAdditionalProperties",
-}) as any as S.Schema<CloudExportAdditionalProperties>;
+S.Struct({
+  "boolValue": S.optional(S.Boolean),
+  "minValue": S.optional(S.Number),
+  "intValue": S.optional(StringList),
+  "maxValue": S.optional(S.Number),
+  "propertyName": S.optional(S.String),
+  "floatValue": S.optional(DoubleList),
+  "textValue": S.optional(StringList),
+  "unitCode": S.optional(S.String),
+}),
+).annotate({ identifier: "CloudExportAdditionalProperties" }) as any as S.Schema<CloudExportAdditionalProperties>;
 
-export type CloudExportAdditionalPropertiesList =
-  ReadonlyArray<CloudExportAdditionalProperties>;
-export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
-  CloudExportAdditionalProperties,
-) as any as S.Schema<CloudExportAdditionalPropertiesList>;
+export type CloudExportAdditionalPropertiesList = ReadonlyArray<CloudExportAdditionalProperties>;
+export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(CloudExportAdditionalProperties) as any as S.Schema<CloudExportAdditionalPropertiesList>;
 
-export type ProductAttributesPauseEnum =
-  | "PAUSE_UNSPECIFIED"
-  | "ADS"
-  | "ALL"
-  | (string & {});
+export type ProductAttributesPauseEnum = "PAUSE_UNSPECIFIED" | "ADS" | "ALL";
 export const ProductAttributesPauseEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesMaxEnergyEfficiencyClassEnum =
-  | "ENERGY_EFFICIENCY_CLASS_UNSPECIFIED"
-  | "APPP"
-  | "APP"
-  | "AP"
-  | "A"
-  | "B"
-  | "C"
-  | "D"
-  | "E"
-  | "F"
-  | "G"
-  | (string & {});
-export const ProductAttributesMaxEnergyEfficiencyClassEnum =
-  /*@__PURE__*/ S.String;
+export type ProductAttributesMaxEnergyEfficiencyClassEnum = "ENERGY_EFFICIENCY_CLASS_UNSPECIFIED" | "APPP" | "APP" | "AP" | "A" | "B" | "C" | "D" | "E" | "F" | "G";
+export const ProductAttributesMaxEnergyEfficiencyClassEnum = /*@__PURE__*/ S.String;
 
-export type EnergyConsumptionUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "KWHPER100KM"
-  | (string & {});
+export type EnergyConsumptionUnitEnum = "UNIT_UNSPECIFIED" | "KWHPER100KM";
 export const EnergyConsumptionUnitEnum = /*@__PURE__*/ S.String;
 
 /** The energy consumption of the vehicle. */
@@ -1229,13 +858,11 @@ export interface EnergyConsumption {
   unit?: EnergyConsumptionUnitEnum;
 }
 export const EnergyConsumption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(EnergyConsumptionUnitEnum),
-  }),
-).annotate({
-  identifier: "EnergyConsumption",
-}) as any as S.Schema<EnergyConsumption>;
+S.Struct({
+  "value": S.optional(S.Number),
+  "unit": S.optional(EnergyConsumptionUnitEnum),
+}),
+).annotate({ identifier: "EnergyConsumption" }) as any as S.Schema<EnergyConsumption>;
 
 /** The question and answer for the product. */
 export interface QuestionAndAnswer {
@@ -1245,18 +872,14 @@ export interface QuestionAndAnswer {
   answer?: string;
 }
 export const QuestionAndAnswer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    question: S.optional(S.String),
-    answer: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "QuestionAndAnswer",
-}) as any as S.Schema<QuestionAndAnswer>;
+S.Struct({
+  "question": S.optional(S.String),
+  "answer": S.optional(S.String),
+}),
+).annotate({ identifier: "QuestionAndAnswer" }) as any as S.Schema<QuestionAndAnswer>;
 
 export type QuestionAndAnswerList = ReadonlyArray<QuestionAndAnswer>;
-export const QuestionAndAnswerList = /*@__PURE__*/ S.Array(
-  QuestionAndAnswer,
-) as any as S.Schema<QuestionAndAnswerList>;
+export const QuestionAndAnswerList = /*@__PURE__*/ S.Array(QuestionAndAnswer) as any as S.Schema<QuestionAndAnswerList>;
 
 /** A message that represents loyalty program. */
 export interface LoyaltyProgram {
@@ -1276,47 +899,27 @@ export interface LoyaltyProgram {
   shippingLabel?: string;
 }
 export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memberPriceEffectiveDate: S.optional(Interval),
-    cashbackForFutureUse: S.optional(Price),
-    loyaltyPoints: S.optional(S.String),
-    tierLabel: S.optional(S.String),
-    price: S.optional(Price),
-    programLabel: S.optional(S.String),
-    shippingLabel: S.optional(S.String),
-  }),
+S.Struct({
+  "memberPriceEffectiveDate": S.optional(Interval),
+  "cashbackForFutureUse": S.optional(Price),
+  "loyaltyPoints": S.optional(S.String),
+  "tierLabel": S.optional(S.String),
+  "price": S.optional(Price),
+  "programLabel": S.optional(S.String),
+  "shippingLabel": S.optional(S.String),
+}),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
 export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
-export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
-  LoyaltyProgram,
-) as any as S.Schema<LoyaltyProgramList>;
+export const LoyaltyProgramList = /*@__PURE__*/ S.Array(LoyaltyProgram) as any as S.Schema<LoyaltyProgramList>;
 
-export type ProductAttributesSizeTypesItemEnum =
-  | "SIZE_TYPE_UNSPECIFIED"
-  | "REGULAR"
-  | "PETITE"
-  | "MATERNITY"
-  | "BIG"
-  | "TALL"
-  | "PLUS"
-  | (string & {});
+export type ProductAttributesSizeTypesItemEnum = "SIZE_TYPE_UNSPECIFIED" | "REGULAR" | "PETITE" | "MATERNITY" | "BIG" | "TALL" | "PLUS";
 export const ProductAttributesSizeTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesSizeTypesItemEnumList =
-  ReadonlyArray<ProductAttributesSizeTypesItemEnum>;
-export const ProductAttributesSizeTypesItemEnumList = /*@__PURE__*/ S.Array(
-  ProductAttributesSizeTypesItemEnum,
-) as any as S.Schema<ProductAttributesSizeTypesItemEnumList>;
+export type ProductAttributesSizeTypesItemEnumList = ReadonlyArray<ProductAttributesSizeTypesItemEnum>;
+export const ProductAttributesSizeTypesItemEnumList = /*@__PURE__*/ S.Array(ProductAttributesSizeTypesItemEnum) as any as S.Schema<ProductAttributesSizeTypesItemEnumList>;
 
-export type ProductAttributesAgeGroupEnum =
-  | "AGE_GROUP_UNSPECIFIED"
-  | "ADULT"
-  | "KIDS"
-  | "TODDLER"
-  | "INFANT"
-  | "NEWBORN"
-  | (string & {});
+export type ProductAttributesAgeGroupEnum = "AGE_GROUP_UNSPECIFIED" | "ADULT" | "KIDS" | "TODDLER" | "INFANT" | "NEWBORN";
 export const ProductAttributesAgeGroupEnum = /*@__PURE__*/ S.String;
 
 /** The ShippingWeight of the product. */
@@ -1327,120 +930,16 @@ export interface ShippingWeight {
   unit?: string;
 }
 export const ShippingWeight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
+S.Struct({
+  "value": S.optional(S.Number),
+  "unit": S.optional(S.String),
+}),
 ).annotate({ identifier: "ShippingWeight" }) as any as S.Schema<ShippingWeight>;
 
-export type CarrierShippingCarrierTransitTimeEnum =
-  | "CARRIER_TRANSIT_TIME_OPTION_UNSPECIFIED"
-  | "DHL_PAKET"
-  | "DHL_PACKCHEN"
-  | "DHL_EXPRESSEASY"
-  | "DPD_EXPRESS"
-  | "DPD_CLASSIC_PARCEL"
-  | "HERMES_HAUSTUR"
-  | "HERMES_PAKETSHOP"
-  | "GLS_BUSINESS"
-  | "GLS_EXPRESS"
-  | "GLS_PRIVATE"
-  | "COLISSIMO_DOMICILE"
-  | "DHL_EXPRESS_12AM"
-  | "DHL_EXPRESS_9AM"
-  | "GEODIS_EXPRESS"
-  | "GEODIS_PACK_30"
-  | "GEODIS_SAME_DAY"
-  | "GEODIS_TOP_24"
-  | "TNT_ESSENTIEL_24H"
-  | "TNT_ESSENTIEL_FLEXIBILITE"
-  | "FEDEX_GROUND"
-  | "FEDEX_HOME_DELIVERY"
-  | "FEDEX_EXPRESS_SAVER"
-  | "FEDEX_FIRST_OVERNIGHT"
-  | "FEDEX_PRIORITY_OVERNIGHT"
-  | "FEDEX_STANDARD_OVERNIGHT"
-  | "FEDEX_2DAY"
-  | "UPS_2ND_DAY_AIR"
-  | "UPS_2ND_DAY_AM"
-  | "UPS_3_DAY_SELECT"
-  | "UPS_GROUND"
-  | "UPS_NEXT_DAY_AIR"
-  | "UPS_NEXT_DAY_AIR_EARLY_AM"
-  | "UPS_NEXT_DAY_AIR_SAVER"
-  | "USPS_PRIORITY_MAIL_EXPRESS"
-  | "USPS_MEDIA_MAIL"
-  | "USPS_GROUND_ADVANTAGE_RETAIL"
-  | "USPS_PRIORITY_MAIL"
-  | "USPS_GROUND_ADVANTAGE_COMMERCIAL"
-  | "USPS_FIRST_CLASS_MAIL"
-  | (string & {});
+export type CarrierShippingCarrierTransitTimeEnum = "CARRIER_TRANSIT_TIME_OPTION_UNSPECIFIED" | "DHL_PAKET" | "DHL_PACKCHEN" | "DHL_EXPRESSEASY" | "DPD_EXPRESS" | "DPD_CLASSIC_PARCEL" | "HERMES_HAUSTUR" | "HERMES_PAKETSHOP" | "GLS_BUSINESS" | "GLS_EXPRESS" | "GLS_PRIVATE" | "COLISSIMO_DOMICILE" | "DHL_EXPRESS_12AM" | "DHL_EXPRESS_9AM" | "GEODIS_EXPRESS" | "GEODIS_PACK_30" | "GEODIS_SAME_DAY" | "GEODIS_TOP_24" | "TNT_ESSENTIEL_24H" | "TNT_ESSENTIEL_FLEXIBILITE" | "FEDEX_GROUND" | "FEDEX_HOME_DELIVERY" | "FEDEX_EXPRESS_SAVER" | "FEDEX_FIRST_OVERNIGHT" | "FEDEX_PRIORITY_OVERNIGHT" | "FEDEX_STANDARD_OVERNIGHT" | "FEDEX_2DAY" | "UPS_2ND_DAY_AIR" | "UPS_2ND_DAY_AM" | "UPS_3_DAY_SELECT" | "UPS_GROUND" | "UPS_NEXT_DAY_AIR" | "UPS_NEXT_DAY_AIR_EARLY_AM" | "UPS_NEXT_DAY_AIR_SAVER" | "USPS_PRIORITY_MAIL_EXPRESS" | "USPS_MEDIA_MAIL" | "USPS_GROUND_ADVANTAGE_RETAIL" | "USPS_PRIORITY_MAIL" | "USPS_GROUND_ADVANTAGE_COMMERCIAL" | "USPS_FIRST_CLASS_MAIL";
 export const CarrierShippingCarrierTransitTimeEnum = /*@__PURE__*/ S.String;
 
-export type CarrierShippingCarrierPriceEnum =
-  | "CARRIER_PRICE_OPTION_UNSPECIFIED"
-  | "AUSTRALIA_POST_REGULAR"
-  | "AUSTRALIA_POST_EXPRESS"
-  | "AUSTRALIA_POST_REGULAR_S"
-  | "AUSTRALIA_POST_REGULAR_M"
-  | "AUSTRALIA_POST_REGULAR_L"
-  | "AUSTRALIA_POST_REGULAR_XL"
-  | "AUSTRALIA_POST_EXPRESS_S"
-  | "AUSTRALIA_POST_EXPRESS_M"
-  | "AUSTRALIA_POST_EXPRESS_L"
-  | "AUSTRALIA_POST_EXPRESS_XL"
-  | "TNT_ROAD_EXPRESS"
-  | "TNT_OVERNIGHT_EXPRESS"
-  | "TOLL_ROAD_DELIVERY"
-  | "TOLL_OVERNIGHT_PRIORITY"
-  | "DHL_PAKET"
-  | "DHL_PACKCHEN"
-  | "DPD_EXPRESS_12"
-  | "DPD_EXPRESS"
-  | "DPD_CLASSIC_PARCEL"
-  | "HERMES_PACKCHEN"
-  | "HERMES_PAKETKLASSE_S"
-  | "HERMES_PAKETKLASSE_M"
-  | "HERMES_PAKETKLASSE_L"
-  | "UPS_EXPRESS"
-  | "UPS_EXPRESS_SAVER"
-  | "UPS_EXPRESS_STANDARD"
-  | "DHL_EXPRESS"
-  | "DHL_EXPRESS_12"
-  | "DPD_NEXT_DAY"
-  | "DPD_STANDARD_NEXT_DAY"
-  | "DPD_STANDARD_TWO_DAY"
-  | "RMG_1ST_CLASS_SMALL"
-  | "RMG_1ST_CLASS_MEDIUM"
-  | "RMG_2ND_CLASS_SMALL"
-  | "RMG_2ND_CLASS_MEDIUM"
-  | "TNT_EXPRESS"
-  | "TNT_EXPRESS_10"
-  | "TNT_EXPRESS_12"
-  | "YODEL_B2C_48HR"
-  | "YODEL_B2C_72HR"
-  | "YODEL_B2C_PACKET"
-  | "FEDEX_GROUND"
-  | "FEDEX_HOME_DELIVERY"
-  | "FEDEX_EXPRESS_SAVER"
-  | "FEDEX_FIRST_OVERNIGHT"
-  | "FEDEX_PRIORITY_OVERNIGHT"
-  | "FEDEX_STANDARD_OVERNIGHT"
-  | "FEDEX_2DAY"
-  | "UPS_STANDARD"
-  | "UPS_2ND_DAY_AIR"
-  | "UPS_2ND_DAY_AM"
-  | "UPS_3_DAY_SELECT"
-  | "UPS_GROUND"
-  | "UPS_NEXT_DAY_AIR"
-  | "UPS_NEXT_DAY_AIR_EARLY_AM"
-  | "UPS_NEXT_DAY_AIR_SAVER"
-  | "USPS_PRIORITY_MAIL_EXPRESS"
-  | "USPS_MEDIA_MAIL"
-  | "USPS_GROUND_ADVANTAGE_RETAIL"
-  | "USPS_PRIORITY_MAIL"
-  | "USPS_GROUND_ADVANTAGE_COMMERCIAL"
-  | (string & {});
+export type CarrierShippingCarrierPriceEnum = "CARRIER_PRICE_OPTION_UNSPECIFIED" | "AUSTRALIA_POST_REGULAR" | "AUSTRALIA_POST_EXPRESS" | "AUSTRALIA_POST_REGULAR_S" | "AUSTRALIA_POST_REGULAR_M" | "AUSTRALIA_POST_REGULAR_L" | "AUSTRALIA_POST_REGULAR_XL" | "AUSTRALIA_POST_EXPRESS_S" | "AUSTRALIA_POST_EXPRESS_M" | "AUSTRALIA_POST_EXPRESS_L" | "AUSTRALIA_POST_EXPRESS_XL" | "TNT_ROAD_EXPRESS" | "TNT_OVERNIGHT_EXPRESS" | "TOLL_ROAD_DELIVERY" | "TOLL_OVERNIGHT_PRIORITY" | "DHL_PAKET" | "DHL_PACKCHEN" | "DPD_EXPRESS_12" | "DPD_EXPRESS" | "DPD_CLASSIC_PARCEL" | "HERMES_PACKCHEN" | "HERMES_PAKETKLASSE_S" | "HERMES_PAKETKLASSE_M" | "HERMES_PAKETKLASSE_L" | "UPS_EXPRESS" | "UPS_EXPRESS_SAVER" | "UPS_EXPRESS_STANDARD" | "DHL_EXPRESS" | "DHL_EXPRESS_12" | "DPD_NEXT_DAY" | "DPD_STANDARD_NEXT_DAY" | "DPD_STANDARD_TWO_DAY" | "RMG_1ST_CLASS_SMALL" | "RMG_1ST_CLASS_MEDIUM" | "RMG_2ND_CLASS_SMALL" | "RMG_2ND_CLASS_MEDIUM" | "TNT_EXPRESS" | "TNT_EXPRESS_10" | "TNT_EXPRESS_12" | "YODEL_B2C_48HR" | "YODEL_B2C_72HR" | "YODEL_B2C_PACKET" | "FEDEX_GROUND" | "FEDEX_HOME_DELIVERY" | "FEDEX_EXPRESS_SAVER" | "FEDEX_FIRST_OVERNIGHT" | "FEDEX_PRIORITY_OVERNIGHT" | "FEDEX_STANDARD_OVERNIGHT" | "FEDEX_2DAY" | "UPS_STANDARD" | "UPS_2ND_DAY_AIR" | "UPS_2ND_DAY_AM" | "UPS_3_DAY_SELECT" | "UPS_GROUND" | "UPS_NEXT_DAY_AIR" | "UPS_NEXT_DAY_AIR_EARLY_AM" | "UPS_NEXT_DAY_AIR_SAVER" | "USPS_PRIORITY_MAIL_EXPRESS" | "USPS_MEDIA_MAIL" | "USPS_GROUND_ADVANTAGE_RETAIL" | "USPS_PRIORITY_MAIL" | "USPS_GROUND_ADVANTAGE_COMMERCIAL";
 export const CarrierShippingCarrierPriceEnum = /*@__PURE__*/ S.String;
 
 /** Carrier-based shipping configuration. Allows for setting shipping speed or shipping cost based on a carrier's provided info. */
@@ -1473,52 +972,30 @@ export interface CarrierShipping {
   carrierPricePercentageAdjustment?: number;
 }
 export const CarrierShipping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    carrierPriceFlatAdjustment: S.optional(Price),
-    carrierTransitTime: S.optional(CarrierShippingCarrierTransitTimeEnum),
-    originPostalCode: S.optional(S.String),
-    fixedMinTransitTime: S.optional(S.String),
-    minHandlingTime: S.optional(S.String),
-    country: S.optional(S.String),
-    fixedMaxTransitTime: S.optional(S.String),
-    maxHandlingTime: S.optional(S.String),
-    postalCode: S.optional(S.String),
-    carrierPrice: S.optional(CarrierShippingCarrierPriceEnum),
-    region: S.optional(S.String),
-    flatPrice: S.optional(Price),
-    carrierPricePercentageAdjustment: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CarrierShipping",
-}) as any as S.Schema<CarrierShipping>;
+S.Struct({
+  "carrierPriceFlatAdjustment": S.optional(Price),
+  "carrierTransitTime": S.optional(CarrierShippingCarrierTransitTimeEnum),
+  "originPostalCode": S.optional(S.String),
+  "fixedMinTransitTime": S.optional(S.String),
+  "minHandlingTime": S.optional(S.String),
+  "country": S.optional(S.String),
+  "fixedMaxTransitTime": S.optional(S.String),
+  "maxHandlingTime": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+  "carrierPrice": S.optional(CarrierShippingCarrierPriceEnum),
+  "region": S.optional(S.String),
+  "flatPrice": S.optional(Price),
+  "carrierPricePercentageAdjustment": S.optional(S.Number),
+}),
+).annotate({ identifier: "CarrierShipping" }) as any as S.Schema<CarrierShipping>;
 
 export type CarrierShippingList = ReadonlyArray<CarrierShipping>;
-export const CarrierShippingList = /*@__PURE__*/ S.Array(
-  CarrierShipping,
-) as any as S.Schema<CarrierShippingList>;
+export const CarrierShippingList = /*@__PURE__*/ S.Array(CarrierShipping) as any as S.Schema<CarrierShippingList>;
 
-export type ProductAttributesSizeSystemEnum =
-  | "SIZE_SYSTEM_UNSPECIFIED"
-  | "AU"
-  | "BR"
-  | "CN"
-  | "DE"
-  | "EU"
-  | "FR"
-  | "IT"
-  | "JP"
-  | "MEX"
-  | "UK"
-  | "US"
-  | (string & {});
+export type ProductAttributesSizeSystemEnum = "SIZE_SYSTEM_UNSPECIFIED" | "AU" | "BR" | "CN" | "DE" | "EU" | "FR" | "IT" | "JP" | "MEX" | "UK" | "US";
 export const ProductAttributesSizeSystemEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesGenderEnum =
-  | "GENDER_UNSPECIFIED"
-  | "MALE"
-  | "FEMALE"
-  | "UNISEX"
-  | (string & {});
+export type ProductAttributesGenderEnum = "GENDER_UNSPECIFIED" | "MALE" | "FEMALE" | "UNISEX";
 export const ProductAttributesGenderEnum = /*@__PURE__*/ S.String;
 
 /** The dimension of the product. */
@@ -1529,19 +1006,13 @@ export interface ProductDimension {
   value?: number;
 }
 export const ProductDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ProductDimension",
-}) as any as S.Schema<ProductDimension>;
+S.Struct({
+  "unit": S.optional(S.String),
+  "value": S.optional(S.Number),
+}),
+).annotate({ identifier: "ProductDimension" }) as any as S.Schema<ProductDimension>;
 
-export type StructuredTitleDigitalSourceTypeEnum =
-  | "DIGITAL_SOURCE_TYPE_UNSPECIFIED"
-  | "TRAINED_ALGORITHMIC_MEDIA"
-  | "DEFAULT"
-  | (string & {});
+export type StructuredTitleDigitalSourceTypeEnum = "DIGITAL_SOURCE_TYPE_UNSPECIFIED" | "TRAINED_ALGORITHMIC_MEDIA" | "DEFAULT";
 export const StructuredTitleDigitalSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Structured title, for algorithmically (AI)-generated titles. */
@@ -1552,100 +1023,34 @@ export interface StructuredTitle {
   content?: string;
 }
 export const StructuredTitle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    digitalSourceType: S.optional(StructuredTitleDigitalSourceTypeEnum),
-    content: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StructuredTitle",
-}) as any as S.Schema<StructuredTitle>;
+S.Struct({
+  "digitalSourceType": S.optional(StructuredTitleDigitalSourceTypeEnum),
+  "content": S.optional(S.String),
+}),
+).annotate({ identifier: "StructuredTitle" }) as any as S.Schema<StructuredTitle>;
 
-export type ProductAttributesUtilitiesIncludedItemEnum =
-  | "UTILITIES_INCLUDED_UNSPECIFIED"
-  | "ELECTRICITY"
-  | "GAS"
-  | "INTERNET"
-  | "TRASH"
-  | "WATER"
-  | (string & {});
-export const ProductAttributesUtilitiesIncludedItemEnum =
-  /*@__PURE__*/ S.String;
+export type ProductAttributesUtilitiesIncludedItemEnum = "UTILITIES_INCLUDED_UNSPECIFIED" | "ELECTRICITY" | "GAS" | "INTERNET" | "TRASH" | "WATER";
+export const ProductAttributesUtilitiesIncludedItemEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesUtilitiesIncludedItemEnumList =
-  ReadonlyArray<ProductAttributesUtilitiesIncludedItemEnum>;
-export const ProductAttributesUtilitiesIncludedItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ProductAttributesUtilitiesIncludedItemEnum,
-  ) as any as S.Schema<ProductAttributesUtilitiesIncludedItemEnumList>;
+export type ProductAttributesUtilitiesIncludedItemEnumList = ReadonlyArray<ProductAttributesUtilitiesIncludedItemEnum>;
+export const ProductAttributesUtilitiesIncludedItemEnumList = /*@__PURE__*/ S.Array(ProductAttributesUtilitiesIncludedItemEnum) as any as S.Schema<ProductAttributesUtilitiesIncludedItemEnumList>;
 
-export type ProductAttributesExcludedDestinationsItemEnum =
-  | "DESTINATION_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LOCAL_LISTINGS"
-  | "YOUTUBE_SHOPPING"
-  | "YOUTUBE_SHOPPING_CHECKOUT"
-  | "YOUTUBE_AFFILIATE"
-  | "FREE_VEHICLE_LISTINGS"
-  | "VEHICLE_ADS"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | (string & {});
-export const ProductAttributesExcludedDestinationsItemEnum =
-  /*@__PURE__*/ S.String;
+export type ProductAttributesExcludedDestinationsItemEnum = "DESTINATION_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LOCAL_LISTINGS" | "YOUTUBE_SHOPPING" | "YOUTUBE_SHOPPING_CHECKOUT" | "YOUTUBE_AFFILIATE" | "FREE_VEHICLE_LISTINGS" | "VEHICLE_ADS" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL";
+export const ProductAttributesExcludedDestinationsItemEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesExcludedDestinationsItemEnumList =
-  ReadonlyArray<ProductAttributesExcludedDestinationsItemEnum>;
-export const ProductAttributesExcludedDestinationsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ProductAttributesExcludedDestinationsItemEnum,
-  ) as any as S.Schema<ProductAttributesExcludedDestinationsItemEnumList>;
+export type ProductAttributesExcludedDestinationsItemEnumList = ReadonlyArray<ProductAttributesExcludedDestinationsItemEnum>;
+export const ProductAttributesExcludedDestinationsItemEnumList = /*@__PURE__*/ S.Array(ProductAttributesExcludedDestinationsItemEnum) as any as S.Schema<ProductAttributesExcludedDestinationsItemEnumList>;
 
-export type ProductAttributesPickupSlaEnum =
-  | "PICKUP_SLA_UNSPECIFIED"
-  | "SAME_DAY"
-  | "NEXT_DAY"
-  | "TWO_DAY"
-  | "THREE_DAY"
-  | "FOUR_DAY"
-  | "FIVE_DAY"
-  | "SIX_DAY"
-  | "MULTI_WEEK"
-  | (string & {});
+export type ProductAttributesPickupSlaEnum = "PICKUP_SLA_UNSPECIFIED" | "SAME_DAY" | "NEXT_DAY" | "TWO_DAY" | "THREE_DAY" | "FOUR_DAY" | "FIVE_DAY" | "SIX_DAY" | "MULTI_WEEK";
 export const ProductAttributesPickupSlaEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesPropertyTypeEnum =
-  | "PROPERTY_TYPE_UNSPECIFIED"
-  | "APARTMENT"
-  | "CONDO"
-  | "LOFT"
-  | "MULTI_FAMILY_HOME"
-  | "PENTHOUSE"
-  | "ROOM"
-  | "SINGLE_FAMILY_HOME"
-  | "STUDIO"
-  | "TOWNHOUSE"
-  | (string & {});
+export type ProductAttributesPropertyTypeEnum = "PROPERTY_TYPE_UNSPECIFIED" | "APARTMENT" | "CONDO" | "LOFT" | "MULTI_FAMILY_HOME" | "PENTHOUSE" | "ROOM" | "SINGLE_FAMILY_HOME" | "STUDIO" | "TOWNHOUSE";
 export const ProductAttributesPropertyTypeEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesConditionEnum =
-  | "CONDITION_UNSPECIFIED"
-  | "NEW"
-  | "USED"
-  | "REFURBISHED"
-  | (string & {});
+export type ProductAttributesConditionEnum = "CONDITION_UNSPECIFIED" | "NEW" | "USED" | "REFURBISHED";
 export const ProductAttributesConditionEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesVehiclePriceTypeEnum =
-  | "VEHICLE_PRICE_TYPE_UNSPECIFIED"
-  | "ALL_IN_PRICE"
-  | "DRIVE_AWAY_PRICE"
-  | "ESTIMATED_DRIVE_AWAY_PRICE"
-  | "EXCLUDING_GOVERNMENT_CHARGES_PRICE"
-  | "VEHICLE_BASE_PRICE"
-  | (string & {});
+export type ProductAttributesVehiclePriceTypeEnum = "VEHICLE_PRICE_TYPE_UNSPECIFIED" | "ALL_IN_PRICE" | "DRIVE_AWAY_PRICE" | "ESTIMATED_DRIVE_AWAY_PRICE" | "EXCLUDING_GOVERNMENT_CHARGES_PRICE" | "VEHICLE_BASE_PRICE";
 export const ProductAttributesVehiclePriceTypeEnum = /*@__PURE__*/ S.String;
 
 /** The warranty of the vehicle. */
@@ -1656,10 +1061,10 @@ export interface Warranty {
   mileage?: Mileage;
 }
 export const Warranty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    duration: S.optional(S.String),
-    mileage: S.optional(Mileage),
-  }),
+S.Struct({
+  "duration": S.optional(S.String),
+  "mileage": S.optional(Mileage),
+}),
 ).annotate({ identifier: "Warranty" }) as any as S.Schema<Warranty>;
 
 /** Additional product variants for the product. */
@@ -1670,30 +1075,20 @@ export interface VariantOption {
   value?: string;
 }
 export const VariantOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "VariantOption" }) as any as S.Schema<VariantOption>;
 
 export type VariantOptionList = ReadonlyArray<VariantOption>;
-export const VariantOptionList = /*@__PURE__*/ S.Array(
-  VariantOption,
-) as any as S.Schema<VariantOptionList>;
+export const VariantOptionList = /*@__PURE__*/ S.Array(VariantOption) as any as S.Schema<VariantOptionList>;
 
-export type PetPolicyPetTypesItemEnum =
-  | "PET_TYPE_UNSPECIFIED"
-  | "CATS"
-  | "LARGE_DOGS"
-  | "SMALL_DOGS"
-  | (string & {});
+export type PetPolicyPetTypesItemEnum = "PET_TYPE_UNSPECIFIED" | "CATS" | "LARGE_DOGS" | "SMALL_DOGS";
 export const PetPolicyPetTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type PetPolicyPetTypesItemEnumList =
-  ReadonlyArray<PetPolicyPetTypesItemEnum>;
-export const PetPolicyPetTypesItemEnumList = /*@__PURE__*/ S.Array(
-  PetPolicyPetTypesItemEnum,
-) as any as S.Schema<PetPolicyPetTypesItemEnumList>;
+export type PetPolicyPetTypesItemEnumList = ReadonlyArray<PetPolicyPetTypesItemEnum>;
+export const PetPolicyPetTypesItemEnumList = /*@__PURE__*/ S.Array(PetPolicyPetTypesItemEnum) as any as S.Schema<PetPolicyPetTypesItemEnumList>;
 
 /** The pet policy of the property. */
 export interface PetPolicy {
@@ -1703,18 +1098,13 @@ export interface PetPolicy {
   petsAllowed?: boolean;
 }
 export const PetPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    petTypes: S.optional(PetPolicyPetTypesItemEnumList),
-    petsAllowed: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "petTypes": S.optional(PetPolicyPetTypesItemEnumList),
+  "petsAllowed": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "PetPolicy" }) as any as S.Schema<PetPolicy>;
 
-export type ProductMinimumOrderValueSurfaceEnum =
-  | "SURFACE_UNSPECIFIED"
-  | "ONLINE"
-  | "LOCAL"
-  | "ONLINE_LOCAL"
-  | (string & {});
+export type ProductMinimumOrderValueSurfaceEnum = "SURFACE_UNSPECIFIED" | "ONLINE" | "LOCAL" | "ONLINE_LOCAL";
 export const ProductMinimumOrderValueSurfaceEnum = /*@__PURE__*/ S.String;
 
 /** The minimum order value in the cart before the checkout is permitted. */
@@ -1729,66 +1119,21 @@ export interface ProductMinimumOrderValue {
   country?: string;
 }
 export const ProductMinimumOrderValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    surface: S.optional(ProductMinimumOrderValueSurfaceEnum),
-    price: S.optional(Price),
-    country: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductMinimumOrderValue",
-}) as any as S.Schema<ProductMinimumOrderValue>;
+S.Struct({
+  "service": S.optional(S.String),
+  "surface": S.optional(ProductMinimumOrderValueSurfaceEnum),
+  "price": S.optional(Price),
+  "country": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductMinimumOrderValue" }) as any as S.Schema<ProductMinimumOrderValue>;
 
-export type ProductMinimumOrderValueList =
-  ReadonlyArray<ProductMinimumOrderValue>;
-export const ProductMinimumOrderValueList = /*@__PURE__*/ S.Array(
-  ProductMinimumOrderValue,
-) as any as S.Schema<ProductMinimumOrderValueList>;
+export type ProductMinimumOrderValueList = ReadonlyArray<ProductMinimumOrderValue>;
+export const ProductMinimumOrderValueList = /*@__PURE__*/ S.Array(ProductMinimumOrderValue) as any as S.Schema<ProductMinimumOrderValueList>;
 
-export type ProductAttributesAvailabilityEnum =
-  | "AVAILABILITY_UNSPECIFIED"
-  | "IN_STOCK"
-  | "OUT_OF_STOCK"
-  | "PREORDER"
-  | "LIMITED_AVAILABILITY"
-  | "BACKORDER"
-  | (string & {});
+export type ProductAttributesAvailabilityEnum = "AVAILABILITY_UNSPECIFIED" | "IN_STOCK" | "OUT_OF_STOCK" | "PREORDER" | "LIMITED_AVAILABILITY" | "BACKORDER";
 export const ProductAttributesAvailabilityEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesBodyStyleEnum =
-  | "VEHICLE_BODY_STYLE_UNSPECIFIED"
-  | "ATV_SPORT"
-  | "ATV_TOURING"
-  | "ATV_UTILITY"
-  | "ATV_YOUTH"
-  | "CITY_CAR"
-  | "CLASS_A_MOTORHOME"
-  | "CLASS_B_MOTORHOME"
-  | "CLASS_C_MOTORHOME"
-  | "COMPACT_SUV"
-  | "CONVERTIBLE"
-  | "COUPE"
-  | "CROSSOVER"
-  | "FIFTH_WHEEL"
-  | "FULL_SIZE_VAN"
-  | "HATCHBACK"
-  | "LIMOUSINE"
-  | "MINIVAN"
-  | "NOTCHBACK"
-  | "POP_UP_CAMPER"
-  | "SEDAN"
-  | "SIDE_BY_SIDE"
-  | "STATION_WAGON"
-  | "SUV"
-  | "TRAVEL_TRAILER"
-  | "TRUCK"
-  | "TRUCK_CAMPER"
-  | "UTE"
-  | "UTV_RECREATIONAL_UTILITY"
-  | "UTV_SPORT"
-  | "UTV_UTILITY"
-  | "UTV_YOUTH"
-  | (string & {});
+export type ProductAttributesBodyStyleEnum = "VEHICLE_BODY_STYLE_UNSPECIFIED" | "ATV_SPORT" | "ATV_TOURING" | "ATV_UTILITY" | "ATV_YOUTH" | "CITY_CAR" | "CLASS_A_MOTORHOME" | "CLASS_B_MOTORHOME" | "CLASS_C_MOTORHOME" | "COMPACT_SUV" | "CONVERTIBLE" | "COUPE" | "CROSSOVER" | "FIFTH_WHEEL" | "FULL_SIZE_VAN" | "HATCHBACK" | "LIMOUSINE" | "MINIVAN" | "NOTCHBACK" | "POP_UP_CAMPER" | "SEDAN" | "SIDE_BY_SIDE" | "STATION_WAGON" | "SUV" | "TRAVEL_TRAILER" | "TRUCK" | "TRUCK_CAMPER" | "UTE" | "UTV_RECREATIONAL_UTILITY" | "UTV_SPORT" | "UTV_UTILITY" | "UTV_YOUTH";
 export const ProductAttributesBodyStyleEnum = /*@__PURE__*/ S.String;
 
 /** Product attributes. */
@@ -2083,169 +1428,153 @@ export interface ProductAttributes {
   bodyStyle?: ProductAttributesBodyStyleEnum;
 }
 export const ProductAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sustainabilityIncentives: S.optional(ProductSustainabilityIncentiveList),
-    itemGroupId: S.optional(S.String),
-    co2Emissions: S.optional(Co2Emissions),
-    canonicalLink: S.optional(S.String),
-    returns: S.optional(ReturnsList),
-    loyaltyPoints: S.optional(LoyaltyPoints),
-    minEnergyEfficiencyClass: S.optional(
-      ProductAttributesMinEnergyEfficiencyClassEnum,
-    ),
-    maximumRetailPrice: S.optional(Price),
-    shippingLabel: S.optional(S.String),
-    returnPolicyLabel: S.optional(S.String),
-    adsLabels: S.optional(StringList),
-    shippingTransitBusinessDays: S.optional(ShippingBusinessDaysConfigList),
-    fuelConsumption: S.optional(FuelConsumption),
-    mileage: S.optional(Mileage),
-    costOfGoodsSold: S.optional(Price),
-    relatedProducts: S.optional(RelatedProductList),
-    color: S.optional(S.String),
-    model: S.optional(S.String),
-    emissionsStandard: S.optional(ProductAttributesEmissionsStandardEnum),
-    pickupMethod: S.optional(ProductAttributesPickupMethodEnum),
-    unitArea: S.optional(UnitArea),
-    mobileLink: S.optional(S.String),
-    productFee: S.optional(ProductFeeList),
-    documentLinks: S.optional(StringList),
-    linkTemplate: S.optional(S.String),
-    multipack: S.optional(S.String),
-    dateFirstRegistered: S.optional(S.String),
-    disclosureDate: S.optional(S.String),
-    certifications: S.optional(ProductCertificationList),
-    shortTitle: S.optional(S.String),
-    longitude: S.optional(S.Number),
-    shipping: S.optional(ShippingList),
-    shippingHandlingBusinessDays: S.optional(ShippingBusinessDaysConfigList),
-    displayAdsLink: S.optional(S.String),
-    mobileLinkTemplate: S.optional(S.String),
-    customLabel4: S.optional(S.String),
-    specialtyHousingType: S.optional(ProductAttributesSpecialtyHousingTypeEnum),
-    pattern: S.optional(S.String),
-    productTypes: S.optional(StringList),
-    structuredDescription: S.optional(StructuredDescription),
-    lifestyleImageLinks: S.optional(StringList),
-    autoPricingMinPrice: S.optional(Price),
-    unitPricingBaseMeasure: S.optional(UnitPricingBaseMeasure),
-    engine: S.optional(ProductAttributesEngineEnum),
-    itemGroupTitle: S.optional(S.String),
-    installment: S.optional(ProductInstallment),
-    numberOfUnits: S.optional(S.String),
-    promotionIds: S.optional(StringList),
-    sellOnGoogleQuantity: S.optional(S.String),
-    displayAddress: S.optional(DisplayAddress),
-    electricRange: S.optional(Mileage),
-    vehicleExpenses: S.optional(Price),
-    numberOfBedrooms: S.optional(S.Number),
-    freeShippingThreshold: S.optional(FreeShippingThresholdList),
-    salePriceEffectiveDate: S.optional(Interval),
-    shippingHeight: S.optional(ShippingDimension),
-    displayAdsId: S.optional(S.String),
-    includedDestinations: S.optional(
-      ProductAttributesIncludedDestinationsItemEnumList,
-    ),
-    numberOfBathrooms: S.optional(S.Number),
-    size: S.optional(S.String),
-    pickupCost: S.optional(PickupCost),
-    adult: S.optional(S.Boolean),
-    productDetails: S.optional(ProductDetailList),
-    energyEfficiencyClass: S.optional(
-      ProductAttributesEnergyEfficiencyClassEnum,
-    ),
-    minHandlingTime: S.optional(S.String),
-    maxHandlingTime: S.optional(S.String),
-    subscriptionCost: S.optional(SubscriptionCost),
-    neighborhood: S.optional(S.String),
-    productWeight: S.optional(ProductWeight),
-    gtins: S.optional(StringList),
-    vehicleMsrp: S.optional(Price),
-    popularityRank: S.optional(S.Number),
-    adsRedirect: S.optional(S.String),
-    handlingCutoffTimes: S.optional(HandlingCutoffTimeList),
-    vehicleAllInPrice: S.optional(Price),
-    mpn: S.optional(S.String),
-    externalSellerId: S.optional(S.String),
-    availabilityDate: S.optional(S.String),
-    unitPricingMeasure: S.optional(UnitPricingMeasure),
-    shippingLength: S.optional(ShippingDimension),
-    latitude: S.optional(S.Number),
-    identifierExists: S.optional(S.Boolean),
-    amenityFeature: S.optional(ProductAttributesAmenityFeatureItemEnumList),
-    adsGrouping: S.optional(S.String),
-    isBundle: S.optional(S.Boolean),
-    videoLinks: S.optional(StringList),
-    virtualModelLink: S.optional(S.String),
-    cloudExportAdditionalProperties: S.optional(
-      CloudExportAdditionalPropertiesList,
-    ),
-    customLabel0: S.optional(S.String),
-    pause: S.optional(ProductAttributesPauseEnum),
-    link: S.optional(S.String),
-    expirationDate: S.optional(S.String),
-    maxEnergyEfficiencyClass: S.optional(
-      ProductAttributesMaxEnergyEfficiencyClassEnum,
-    ),
-    customLabel3: S.optional(S.String),
-    energyConsumption: S.optional(EnergyConsumption),
-    customLabel2: S.optional(S.String),
-    shoppingAdsExcludedCountries: S.optional(StringList),
-    propertyName: S.optional(S.String),
-    questionsAndAnswers: S.optional(QuestionAndAnswerList),
-    vin: S.optional(S.String),
-    loyaltyPrograms: S.optional(LoyaltyProgramList),
-    displayAdsSimilarIds: S.optional(StringList),
-    additionalImageLinks: S.optional(StringList),
-    material: S.optional(S.String),
-    shippingWidth: S.optional(ShippingDimension),
-    sizeTypes: S.optional(ProductAttributesSizeTypesItemEnumList),
-    ageGroup: S.optional(ProductAttributesAgeGroupEnum),
-    brand: S.optional(S.String),
-    shippingWeight: S.optional(ShippingWeight),
-    year: S.optional(S.String),
-    certifiedPreOwned: S.optional(S.Boolean),
-    carrierShipping: S.optional(CarrierShippingList),
-    salePrice: S.optional(Price),
-    sizeSystem: S.optional(ProductAttributesSizeSystemEnum),
-    displayAdsTitle: S.optional(S.String),
-    gender: S.optional(ProductAttributesGenderEnum),
-    productHeight: S.optional(ProductDimension),
-    displayAdsValue: S.optional(S.Number),
-    googleProductCategory: S.optional(S.String),
-    transitTimeLabel: S.optional(S.String),
-    structuredTitle: S.optional(StructuredTitle),
-    utilitiesIncluded: S.optional(
-      ProductAttributesUtilitiesIncludedItemEnumList,
-    ),
-    productWidth: S.optional(ProductDimension),
-    vehicleMandatoryInspectionIncluded: S.optional(S.Boolean),
-    excludedDestinations: S.optional(
-      ProductAttributesExcludedDestinationsItemEnumList,
-    ),
-    pickupSla: S.optional(ProductAttributesPickupSlaEnum),
-    propertyType: S.optional(ProductAttributesPropertyTypeEnum),
-    condition: S.optional(ProductAttributesConditionEnum),
-    vehiclePriceType: S.optional(ProductAttributesVehiclePriceTypeEnum),
-    warranty: S.optional(Warranty),
-    fuelConsumptionDischargedBattery: S.optional(FuelConsumption),
-    customLabel1: S.optional(S.String),
-    trim: S.optional(S.String),
-    variantOptions: S.optional(VariantOptionList),
-    petPolicy: S.optional(PetPolicy),
-    imageLink: S.optional(S.String),
-    minimumOrderValues: S.optional(ProductMinimumOrderValueList),
-    productHighlights: S.optional(StringList),
-    productLength: S.optional(ProductDimension),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    price: S.optional(Price),
-    availability: S.optional(ProductAttributesAvailabilityEnum),
-    bodyStyle: S.optional(ProductAttributesBodyStyleEnum),
-  }),
-).annotate({
-  identifier: "ProductAttributes",
-}) as any as S.Schema<ProductAttributes>;
+S.Struct({
+  "sustainabilityIncentives": S.optional(ProductSustainabilityIncentiveList),
+  "itemGroupId": S.optional(S.String),
+  "co2Emissions": S.optional(Co2Emissions),
+  "canonicalLink": S.optional(S.String),
+  "returns": S.optional(ReturnsList),
+  "loyaltyPoints": S.optional(LoyaltyPoints),
+  "minEnergyEfficiencyClass": S.optional(ProductAttributesMinEnergyEfficiencyClassEnum),
+  "maximumRetailPrice": S.optional(Price),
+  "shippingLabel": S.optional(S.String),
+  "returnPolicyLabel": S.optional(S.String),
+  "adsLabels": S.optional(StringList),
+  "shippingTransitBusinessDays": S.optional(ShippingBusinessDaysConfigList),
+  "fuelConsumption": S.optional(FuelConsumption),
+  "mileage": S.optional(Mileage),
+  "costOfGoodsSold": S.optional(Price),
+  "relatedProducts": S.optional(RelatedProductList),
+  "color": S.optional(S.String),
+  "model": S.optional(S.String),
+  "emissionsStandard": S.optional(ProductAttributesEmissionsStandardEnum),
+  "pickupMethod": S.optional(ProductAttributesPickupMethodEnum),
+  "unitArea": S.optional(UnitArea),
+  "mobileLink": S.optional(S.String),
+  "productFee": S.optional(ProductFeeList),
+  "documentLinks": S.optional(StringList),
+  "linkTemplate": S.optional(S.String),
+  "multipack": S.optional(S.String),
+  "dateFirstRegistered": S.optional(S.String),
+  "disclosureDate": S.optional(S.String),
+  "certifications": S.optional(ProductCertificationList),
+  "shortTitle": S.optional(S.String),
+  "longitude": S.optional(S.Number),
+  "shipping": S.optional(ShippingList),
+  "shippingHandlingBusinessDays": S.optional(ShippingBusinessDaysConfigList),
+  "displayAdsLink": S.optional(S.String),
+  "mobileLinkTemplate": S.optional(S.String),
+  "customLabel4": S.optional(S.String),
+  "specialtyHousingType": S.optional(ProductAttributesSpecialtyHousingTypeEnum),
+  "pattern": S.optional(S.String),
+  "productTypes": S.optional(StringList),
+  "structuredDescription": S.optional(StructuredDescription),
+  "lifestyleImageLinks": S.optional(StringList),
+  "autoPricingMinPrice": S.optional(Price),
+  "unitPricingBaseMeasure": S.optional(UnitPricingBaseMeasure),
+  "engine": S.optional(ProductAttributesEngineEnum),
+  "itemGroupTitle": S.optional(S.String),
+  "installment": S.optional(ProductInstallment),
+  "numberOfUnits": S.optional(S.String),
+  "promotionIds": S.optional(StringList),
+  "sellOnGoogleQuantity": S.optional(S.String),
+  "displayAddress": S.optional(DisplayAddress),
+  "electricRange": S.optional(Mileage),
+  "vehicleExpenses": S.optional(Price),
+  "numberOfBedrooms": S.optional(S.Number),
+  "freeShippingThreshold": S.optional(FreeShippingThresholdList),
+  "salePriceEffectiveDate": S.optional(Interval),
+  "shippingHeight": S.optional(ShippingDimension),
+  "displayAdsId": S.optional(S.String),
+  "includedDestinations": S.optional(ProductAttributesIncludedDestinationsItemEnumList),
+  "numberOfBathrooms": S.optional(S.Number),
+  "size": S.optional(S.String),
+  "pickupCost": S.optional(PickupCost),
+  "adult": S.optional(S.Boolean),
+  "productDetails": S.optional(ProductDetailList),
+  "energyEfficiencyClass": S.optional(ProductAttributesEnergyEfficiencyClassEnum),
+  "minHandlingTime": S.optional(S.String),
+  "maxHandlingTime": S.optional(S.String),
+  "subscriptionCost": S.optional(SubscriptionCost),
+  "neighborhood": S.optional(S.String),
+  "productWeight": S.optional(ProductWeight),
+  "gtins": S.optional(StringList),
+  "vehicleMsrp": S.optional(Price),
+  "popularityRank": S.optional(S.Number),
+  "adsRedirect": S.optional(S.String),
+  "handlingCutoffTimes": S.optional(HandlingCutoffTimeList),
+  "vehicleAllInPrice": S.optional(Price),
+  "mpn": S.optional(S.String),
+  "externalSellerId": S.optional(S.String),
+  "availabilityDate": S.optional(S.String),
+  "unitPricingMeasure": S.optional(UnitPricingMeasure),
+  "shippingLength": S.optional(ShippingDimension),
+  "latitude": S.optional(S.Number),
+  "identifierExists": S.optional(S.Boolean),
+  "amenityFeature": S.optional(ProductAttributesAmenityFeatureItemEnumList),
+  "adsGrouping": S.optional(S.String),
+  "isBundle": S.optional(S.Boolean),
+  "videoLinks": S.optional(StringList),
+  "virtualModelLink": S.optional(S.String),
+  "cloudExportAdditionalProperties": S.optional(CloudExportAdditionalPropertiesList),
+  "customLabel0": S.optional(S.String),
+  "pause": S.optional(ProductAttributesPauseEnum),
+  "link": S.optional(S.String),
+  "expirationDate": S.optional(S.String),
+  "maxEnergyEfficiencyClass": S.optional(ProductAttributesMaxEnergyEfficiencyClassEnum),
+  "customLabel3": S.optional(S.String),
+  "energyConsumption": S.optional(EnergyConsumption),
+  "customLabel2": S.optional(S.String),
+  "shoppingAdsExcludedCountries": S.optional(StringList),
+  "propertyName": S.optional(S.String),
+  "questionsAndAnswers": S.optional(QuestionAndAnswerList),
+  "vin": S.optional(S.String),
+  "loyaltyPrograms": S.optional(LoyaltyProgramList),
+  "displayAdsSimilarIds": S.optional(StringList),
+  "additionalImageLinks": S.optional(StringList),
+  "material": S.optional(S.String),
+  "shippingWidth": S.optional(ShippingDimension),
+  "sizeTypes": S.optional(ProductAttributesSizeTypesItemEnumList),
+  "ageGroup": S.optional(ProductAttributesAgeGroupEnum),
+  "brand": S.optional(S.String),
+  "shippingWeight": S.optional(ShippingWeight),
+  "year": S.optional(S.String),
+  "certifiedPreOwned": S.optional(S.Boolean),
+  "carrierShipping": S.optional(CarrierShippingList),
+  "salePrice": S.optional(Price),
+  "sizeSystem": S.optional(ProductAttributesSizeSystemEnum),
+  "displayAdsTitle": S.optional(S.String),
+  "gender": S.optional(ProductAttributesGenderEnum),
+  "productHeight": S.optional(ProductDimension),
+  "displayAdsValue": S.optional(S.Number),
+  "googleProductCategory": S.optional(S.String),
+  "transitTimeLabel": S.optional(S.String),
+  "structuredTitle": S.optional(StructuredTitle),
+  "utilitiesIncluded": S.optional(ProductAttributesUtilitiesIncludedItemEnumList),
+  "productWidth": S.optional(ProductDimension),
+  "vehicleMandatoryInspectionIncluded": S.optional(S.Boolean),
+  "excludedDestinations": S.optional(ProductAttributesExcludedDestinationsItemEnumList),
+  "pickupSla": S.optional(ProductAttributesPickupSlaEnum),
+  "propertyType": S.optional(ProductAttributesPropertyTypeEnum),
+  "condition": S.optional(ProductAttributesConditionEnum),
+  "vehiclePriceType": S.optional(ProductAttributesVehiclePriceTypeEnum),
+  "warranty": S.optional(Warranty),
+  "fuelConsumptionDischargedBattery": S.optional(FuelConsumption),
+  "customLabel1": S.optional(S.String),
+  "trim": S.optional(S.String),
+  "variantOptions": S.optional(VariantOptionList),
+  "petPolicy": S.optional(PetPolicy),
+  "imageLink": S.optional(S.String),
+  "minimumOrderValues": S.optional(ProductMinimumOrderValueList),
+  "productHighlights": S.optional(StringList),
+  "productLength": S.optional(ProductDimension),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "price": S.optional(Price),
+  "availability": S.optional(ProductAttributesAvailabilityEnum),
+  "bodyStyle": S.optional(ProductAttributesBodyStyleEnum),
+}),
+).annotate({ identifier: "ProductAttributes" }) as any as S.Schema<ProductAttributes>;
 
 /** A message that represents custom attributes. Exactly one of `value` or `group_values` must not be empty. */
 export interface CustomAttribute {
@@ -2257,19 +1586,15 @@ export interface CustomAttribute {
   groupValues?: CustomAttributeList;
 }
 export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-    groupValues: S.optional(S.suspend(() => CustomAttributeList)),
-  }),
-).annotate({
-  identifier: "CustomAttribute",
-}) as any as S.Schema<CustomAttribute>;
+S.Struct({
+  "name": S.optional(S.String),
+  "value": S.optional(S.String),
+  "groupValues": S.optional(S.suspend(() => CustomAttributeList)),
+}),
+).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(
-  CustomAttribute,
-) as any as S.Schema<CustomAttributeList>;
+export const CustomAttributeList = /*@__PURE__*/ S.Array(CustomAttribute) as any as S.Schema<CustomAttributeList>;
 
 /** The processed product, built from multiple product inputs after applying rules and supplemental data sources. This processed product matches what is shown in your Merchant Center account. Each product is built from exactly one primary data source product input, and multiple supplemental data source inputs. After inserting, updating, or deleting a product input, it may take several minutes before the updated processed product can be retrieved. All fields in the processed product and its sub-messages match the name of their corresponding attribute in the [Product data specification](https://support.google.com/merchants/answer/7052112) with some exceptions. */
 export interface Product {
@@ -2301,21 +1626,21 @@ export interface Product {
   dataSource?: string;
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productStatus: S.optional(ProductStatus),
-    name: S.optional(S.String),
-    automatedDiscounts: S.optional(AutomatedDiscounts),
-    feedLabel: S.optional(S.String),
-    productAttributes: S.optional(ProductAttributes),
-    versionNumber: S.optional(S.String),
-    legacyLocal: S.optional(S.Boolean),
-    base64EncodedName: S.optional(S.String),
-    contentLanguage: S.optional(S.String),
-    customAttributes: S.optional(CustomAttributeList),
-    archived: S.optional(S.Boolean),
-    offerId: S.optional(S.String),
-    dataSource: S.optional(S.String),
-  }),
+S.Struct({
+  "productStatus": S.optional(ProductStatus),
+  "name": S.optional(S.String),
+  "automatedDiscounts": S.optional(AutomatedDiscounts),
+  "feedLabel": S.optional(S.String),
+  "productAttributes": S.optional(ProductAttributes),
+  "versionNumber": S.optional(S.String),
+  "legacyLocal": S.optional(S.Boolean),
+  "base64EncodedName": S.optional(S.String),
+  "contentLanguage": S.optional(S.String),
+  "customAttributes": S.optional(CustomAttributeList),
+  "archived": S.optional(S.Boolean),
+  "offerId": S.optional(S.String),
+  "dataSource": S.optional(S.String),
+}),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** This resource represents input data you submit for a product, not the processed product that you see in Merchant Center, in Shopping ads, or across Google surfaces. Product inputs, rules and supplemental data source data are combined to create the processed Product. For more information, see [Manage products](/merchant/api/guides/products/overview). Required product input attributes to pass data validation checks are primarily defined in the [Products Data Specification](https://support.google.com/merchants/answer/188494). The following attributes are required: feedLabel, contentLanguage and offerId. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. All fields in the product input and its sub-messages match the English name of their corresponding attribute in the [Products Data Specification](https://support.google.com/merchants/answer/188494) with [some exceptions](https://support.google.com/merchants/answer/7052112). The following reference documentation lists the field names in the **camelCase** casing style while the Products Data Specification lists the names in the **snake_case** casing style. */
@@ -2344,19 +1669,19 @@ export interface ProductInput {
   customAttributes?: CustomAttributeList;
 }
 export const ProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productAttributes: S.optional(ProductAttributes),
-    versionNumber: S.optional(S.String),
-    name: S.optional(S.String),
-    offerId: S.optional(S.String),
-    product: S.optional(S.String),
-    feedLabel: S.optional(S.String),
-    legacyLocal: S.optional(S.Boolean),
-    base64EncodedName: S.optional(S.String),
-    base64EncodedProduct: S.optional(S.String),
-    contentLanguage: S.optional(S.String),
-    customAttributes: S.optional(CustomAttributeList),
-  }),
+S.Struct({
+  "productAttributes": S.optional(ProductAttributes),
+  "versionNumber": S.optional(S.String),
+  "name": S.optional(S.String),
+  "offerId": S.optional(S.String),
+  "product": S.optional(S.String),
+  "feedLabel": S.optional(S.String),
+  "legacyLocal": S.optional(S.Boolean),
+  "base64EncodedName": S.optional(S.String),
+  "base64EncodedProduct": S.optional(S.String),
+  "contentLanguage": S.optional(S.String),
+  "customAttributes": S.optional(CustomAttributeList),
+}),
 ).annotate({ identifier: "ProductInput" }) as any as S.Schema<ProductInput>;
 
 export interface InsertAccountsProductInputsRequest {
@@ -2368,20 +1693,12 @@ export interface InsertAccountsProductInputsRequest {
   body?: ProductInput;
 }
 export const InsertAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    dataSource: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(ProductInput.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "products/v1/{+parent}/productInputs:insert",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertAccountsProductInputsRequest",
-}) as any as S.Schema<InsertAccountsProductInputsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "dataSource": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ProductInput.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"products/v1/{+parent}/productInputs:insert","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "InsertAccountsProductInputsRequest" }) as any as S.Schema<InsertAccountsProductInputsRequest>;
 
 export interface ListAccountsProductsRequest {
   /** Required. The account to list processed products for. Format: `accounts/{account}` */
@@ -2392,25 +1709,15 @@ export interface ListAccountsProductsRequest {
   pageToken?: string;
 }
 export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "products/v1/{+parent}/products",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsProductsRequest",
-}) as any as S.Schema<ListAccountsProductsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"products/v1/{+parent}/products","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsProductsRequest" }) as any as S.Schema<ListAccountsProductsRequest>;
 
 export type ProductList = ReadonlyArray<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(
-  Product,
-) as any as S.Schema<ProductList>;
+export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 /** Response message for the ListProducts method. */
 export interface ListProductsResponse {
@@ -2420,13 +1727,11 @@ export interface ListProductsResponse {
   products?: ProductList;
 }
 export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    products: S.optional(ProductList),
-  }),
-).annotate({
-  identifier: "ListProductsResponse",
-}) as any as S.Schema<ListProductsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "products": S.optional(ProductList),
+}),
+).annotate({ identifier: "ListProductsResponse" }) as any as S.Schema<ListProductsResponse>;
 
 export interface PatchAccountsProductInputsRequest {
   /** Required. The primary or supplemental product data source where `data_source` name identifies the product input to be updated. Only API data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`. For example, `accounts/123456/dataSources/104628`. */
@@ -2439,28 +1744,15 @@ export interface PatchAccountsProductInputsRequest {
   body?: ProductInput;
 }
 export const PatchAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataSource: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(ProductInput.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "products/v1/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAccountsProductInputsRequest",
-}) as any as S.Schema<PatchAccountsProductInputsRequest>;
+S.Struct({
+  "dataSource": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ProductInput.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"products/v1/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsProductInputsRequest" }) as any as S.Schema<PatchAccountsProductInputsRequest>;
 
-export type DeleteAccountsProductInputsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsProductInputsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a product input from your Merchant Center account. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. */
 export const deleteAccountsProductInputs: API.OperationMethod<
   DeleteAccountsProductInputsRequest,
@@ -2490,12 +1782,7 @@ export const getAccountsProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountsProductInputsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAccountsProductInputsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** [Uploads a product input to your Merchant Center account](/merchant/api/guides/products/add-manage#add_a_product). You must have a products [data source](/merchant/api/guides/data-sources/api-sources#create-primary-data-source) to be able to insert a product. The unique identifier of the data source is passed as a query parameter in the request URL. If a product input with the same contentLanguage, offerId, and dataSource already exists, then the product input inserted by this method replaces that entry. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. */
 export const insertAccountsProductInputs: API.OperationMethod<
   InsertAccountsProductInputsRequest,
@@ -2523,18 +1810,10 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchAccountsProductInputsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsProductInputsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the existing product input in your Merchant Center account. The name of the product input to update is taken from the `name` field within the `ProductInput` resource. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. */
 export const patchAccountsProductInputs: API.OperationMethod<
   PatchAccountsProductInputsRequest,
@@ -2548,3 +1827,4 @@ export const patchAccountsProductInputs: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

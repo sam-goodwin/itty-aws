@@ -175,8 +175,7 @@ export type WorkspacePropertiesWorkspaceType =
   | "Free"
   | "Anonymous"
   | "PaidStandard"
-  | "PaidPremium"
-  | (string & {});
+  | "PaidPremium";
 export const WorkspacePropertiesWorkspaceType = /*@__PURE__*/ S.String;
 
 /** The current state of workspace resource. */
@@ -187,8 +186,7 @@ export type WorkspacePropertiesWorkspaceState =
   | "Migrated"
   | "Updated"
   | "Registered"
-  | "Unregistered"
-  | (string & {});
+  | "Unregistered";
 export const WorkspacePropertiesWorkspaceState = /*@__PURE__*/ S.String;
 
 /** The properties of a machine learning workspace. */
@@ -541,15 +539,16 @@ export type WorkspacePropertiesUpdateParametersWorkspaceState =
   | "Migrated"
   | "Updated"
   | "Registered"
-  | "Unregistered"
-  | (string & {});
+  | "Unregistered";
 export const WorkspacePropertiesUpdateParametersWorkspaceState =
   /*@__PURE__*/ S.String;
 
 /** The parameters for updating the properties of a machine learning workspace. */
 export interface WorkspacePropertiesUpdateParameters {
   /** The current state of workspace resource. */
-  workspaceState?: WorkspacePropertiesUpdateParametersWorkspaceState;
+  workspaceState?:
+    | WorkspacePropertiesUpdateParametersWorkspaceState
+    | (string & {});
   /** The key vault identifier used for encrypted workspaces. */
   keyVaultIdentifierId?: string;
   /** The sku of the workspace. */

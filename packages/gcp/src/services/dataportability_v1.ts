@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request to cancel a Portability Archive job. */
 export interface CancelPortabilityArchiveRequest {}
 export const CancelPortabilityArchiveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelPortabilityArchiveRequest",
-}) as any as S.Schema<CancelPortabilityArchiveRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelPortabilityArchiveRequest" }) as any as S.Schema<CancelPortabilityArchiveRequest>;
 
 export interface CancelArchiveJobsRequest {
   /** Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress. */
@@ -75,58 +73,36 @@ export interface CancelArchiveJobsRequest {
   body?: CancelPortabilityArchiveRequest;
 }
 export const CancelArchiveJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CancelPortabilityArchiveRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:cancel",
-      baseUrl: "https://dataportability.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelArchiveJobsRequest",
-}) as any as S.Schema<CancelArchiveJobsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelPortabilityArchiveRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://dataportability.googleapis.com/"})),
+).annotate({ identifier: "CancelArchiveJobsRequest" }) as any as S.Schema<CancelArchiveJobsRequest>;
 
 /** Response to canceling a Data Portability Archive job. */
 export interface CancelPortabilityArchiveResponse {}
 export const CancelPortabilityArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelPortabilityArchiveResponse",
-}) as any as S.Schema<CancelPortabilityArchiveResponse>;
+S.Struct({}),
+).annotate({ identifier: "CancelPortabilityArchiveResponse" }) as any as S.Schema<CancelPortabilityArchiveResponse>;
 
 /** Request to check the token's access type. All required information is derived from the attached OAuth token. */
 export interface CheckAccessTypeRequest {}
 export const CheckAccessTypeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CheckAccessTypeRequest",
-}) as any as S.Schema<CheckAccessTypeRequest>;
+S.Struct({}),
+).annotate({ identifier: "CheckAccessTypeRequest" }) as any as S.Schema<CheckAccessTypeRequest>;
 
 export interface CheckAccessTypeRequest_ {
   /** Request body */
   body?: CheckAccessTypeRequest;
 }
 export const CheckAccessTypeRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(CheckAccessTypeRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/accessType:check",
-      baseUrl: "https://dataportability.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CheckAccessTypeRequest_",
-}) as any as S.Schema<CheckAccessTypeRequest_>;
+S.Struct({
+  "body": S.optional(CheckAccessTypeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/accessType:check","baseUrl":"https://dataportability.googleapis.com/"})),
+).annotate({ identifier: "CheckAccessTypeRequest_" }) as any as S.Schema<CheckAccessTypeRequest_>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Response to checking the token's access type. */
 export interface CheckAccessTypeResponse {
@@ -136,40 +112,23 @@ export interface CheckAccessTypeResponse {
   oneTimeResources?: StringList;
 }
 export const CheckAccessTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeBasedResources: S.optional(StringList),
-    oneTimeResources: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CheckAccessTypeResponse",
-}) as any as S.Schema<CheckAccessTypeResponse>;
+S.Struct({
+  "timeBasedResources": S.optional(StringList),
+  "oneTimeResources": S.optional(StringList),
+}),
+).annotate({ identifier: "CheckAccessTypeResponse" }) as any as S.Schema<CheckAccessTypeResponse>;
 
 export interface GetPortabilityArchiveStateArchiveJobsRequest {
   /** Required. The archive job ID that is returned when you request the state of the job. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the InitiatePortabilityArchiveResponse. */
   name: string;
 }
-export const GetPortabilityArchiveStateArchiveJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://dataportability.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetPortabilityArchiveStateArchiveJobsRequest",
-  }) as any as S.Schema<GetPortabilityArchiveStateArchiveJobsRequest>;
+export const GetPortabilityArchiveStateArchiveJobsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://dataportability.googleapis.com/"})),
+).annotate({ identifier: "GetPortabilityArchiveStateArchiveJobsRequest" }) as any as S.Schema<GetPortabilityArchiveStateArchiveJobsRequest>;
 
-export type PortabilityArchiveStateStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "IN_PROGRESS"
-  | "COMPLETE"
-  | "FAILED"
-  | "CANCELLED"
-  | (string & {});
+export type PortabilityArchiveStateStateEnum = "STATE_UNSPECIFIED" | "IN_PROGRESS" | "COMPLETE" | "FAILED" | "CANCELLED";
 export const PortabilityArchiveStateStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource that contains the state of an Archive job. */
@@ -186,16 +145,14 @@ export interface PortabilityArchiveState {
   startTime?: string;
 }
 export const PortabilityArchiveState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(PortabilityArchiveStateStateEnum),
-    urls: S.optional(StringList),
-    name: S.optional(S.String),
-    exportTime: S.optional(S.String),
-    startTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PortabilityArchiveState",
-}) as any as S.Schema<PortabilityArchiveState>;
+S.Struct({
+  "state": S.optional(PortabilityArchiveStateStateEnum),
+  "urls": S.optional(StringList),
+  "name": S.optional(S.String),
+  "exportTime": S.optional(S.String),
+  "startTime": S.optional(S.String),
+}),
+).annotate({ identifier: "PortabilityArchiveState" }) as any as S.Schema<PortabilityArchiveState>;
 
 /** Request to kick off an Archive job. */
 export interface InitiatePortabilityArchiveRequest {
@@ -207,40 +164,25 @@ export interface InitiatePortabilityArchiveRequest {
   resources?: StringList;
 }
 export const InitiatePortabilityArchiveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    resources: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InitiatePortabilityArchiveRequest",
-}) as any as S.Schema<InitiatePortabilityArchiveRequest>;
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "resources": S.optional(StringList),
+}),
+).annotate({ identifier: "InitiatePortabilityArchiveRequest" }) as any as S.Schema<InitiatePortabilityArchiveRequest>;
 
 export interface InitiatePortabilityArchiveRequest_ {
   /** Request body */
   body?: InitiatePortabilityArchiveRequest;
 }
 export const InitiatePortabilityArchiveRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(InitiatePortabilityArchiveRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/portabilityArchive:initiate",
-      baseUrl: "https://dataportability.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InitiatePortabilityArchiveRequest_",
-}) as any as S.Schema<InitiatePortabilityArchiveRequest_>;
+S.Struct({
+  "body": S.optional(InitiatePortabilityArchiveRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/portabilityArchive:initiate","baseUrl":"https://dataportability.googleapis.com/"})),
+).annotate({ identifier: "InitiatePortabilityArchiveRequest_" }) as any as S.Schema<InitiatePortabilityArchiveRequest_>;
 
-export type InitiatePortabilityArchiveResponseAccessTypeEnum =
-  | "ACCESS_TYPE_UNSPECIFIED"
-  | "ACCESS_TYPE_ONE_TIME"
-  | "ACCESS_TYPE_TIME_BASED"
-  | (string & {});
-export const InitiatePortabilityArchiveResponseAccessTypeEnum =
-  /*@__PURE__*/ S.String;
+export type InitiatePortabilityArchiveResponseAccessTypeEnum = "ACCESS_TYPE_UNSPECIFIED" | "ACCESS_TYPE_ONE_TIME" | "ACCESS_TYPE_TIME_BASED";
+export const InitiatePortabilityArchiveResponseAccessTypeEnum = /*@__PURE__*/ S.String;
 
 /** Response from initiating an Archive job. */
 export interface InitiatePortabilityArchiveResponse {
@@ -250,53 +192,39 @@ export interface InitiatePortabilityArchiveResponse {
   accessType?: InitiatePortabilityArchiveResponseAccessTypeEnum;
 }
 export const InitiatePortabilityArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    archiveJobId: S.optional(S.String),
-    accessType: S.optional(InitiatePortabilityArchiveResponseAccessTypeEnum),
-  }),
-).annotate({
-  identifier: "InitiatePortabilityArchiveResponse",
-}) as any as S.Schema<InitiatePortabilityArchiveResponse>;
+S.Struct({
+  "archiveJobId": S.optional(S.String),
+  "accessType": S.optional(InitiatePortabilityArchiveResponseAccessTypeEnum),
+}),
+).annotate({ identifier: "InitiatePortabilityArchiveResponse" }) as any as S.Schema<InitiatePortabilityArchiveResponse>;
 
 /** Request to reset exhausted OAuth scopes. */
 export interface ResetAuthorizationRequest {}
 export const ResetAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetAuthorizationRequest",
-}) as any as S.Schema<ResetAuthorizationRequest>;
+S.Struct({}),
+).annotate({ identifier: "ResetAuthorizationRequest" }) as any as S.Schema<ResetAuthorizationRequest>;
 
 export interface ResetAuthorizationRequest_ {
   /** Request body */
   body?: ResetAuthorizationRequest;
 }
 export const ResetAuthorizationRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(ResetAuthorizationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/authorization:reset",
-      baseUrl: "https://dataportability.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResetAuthorizationRequest_",
-}) as any as S.Schema<ResetAuthorizationRequest_>;
+S.Struct({
+  "body": S.optional(ResetAuthorizationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/authorization:reset","baseUrl":"https://dataportability.googleapis.com/"})),
+).annotate({ identifier: "ResetAuthorizationRequest_" }) as any as S.Schema<ResetAuthorizationRequest_>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** Request to retry a failed Portability Archive job. */
 export interface RetryPortabilityArchiveRequest {}
 export const RetryPortabilityArchiveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RetryPortabilityArchiveRequest",
-}) as any as S.Schema<RetryPortabilityArchiveRequest>;
+S.Struct({}),
+).annotate({ identifier: "RetryPortabilityArchiveRequest" }) as any as S.Schema<RetryPortabilityArchiveRequest>;
 
 export interface RetryArchiveJobsRequest {
   /** Required. The Archive job ID you're retrying. This is returned by the InitiatePortabilityArchiveResponse. Retrying is only executed if the initial job failed. */
@@ -305,19 +233,11 @@ export interface RetryArchiveJobsRequest {
   body?: RetryPortabilityArchiveRequest;
 }
 export const RetryArchiveJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(RetryPortabilityArchiveRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:retry",
-      baseUrl: "https://dataportability.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RetryArchiveJobsRequest",
-}) as any as S.Schema<RetryArchiveJobsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RetryPortabilityArchiveRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:retry","baseUrl":"https://dataportability.googleapis.com/"})),
+).annotate({ identifier: "RetryArchiveJobsRequest" }) as any as S.Schema<RetryArchiveJobsRequest>;
 
 /** Response from retrying a Portability Archive. */
 export interface RetryPortabilityArchiveResponse {
@@ -325,19 +245,12 @@ export interface RetryPortabilityArchiveResponse {
   archiveJobId?: string;
 }
 export const RetryPortabilityArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    archiveJobId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RetryPortabilityArchiveResponse",
-}) as any as S.Schema<RetryPortabilityArchiveResponse>;
+S.Struct({
+  "archiveJobId": S.optional(S.String),
+}),
+).annotate({ identifier: "RetryPortabilityArchiveResponse" }) as any as S.Schema<RetryPortabilityArchiveResponse>;
 
-export type CancelArchiveJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelArchiveJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancels a Portability Archive job. */
 export const cancelArchiveJobs: API.OperationMethod<
   CancelArchiveJobsRequest,
@@ -352,12 +265,7 @@ export const cancelArchiveJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckAccessTypeError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CheckAccessTypeError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets the access type of the token. */
 export const checkAccessType: API.OperationMethod<
   CheckAccessTypeRequest_,
@@ -372,10 +280,7 @@ export const checkAccessType: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetPortabilityArchiveStateArchiveJobsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetPortabilityArchiveStateArchiveJobsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the state of an Archive job for the Portability API. */
 export const getPortabilityArchiveStateArchiveJobs: API.OperationMethod<
   GetPortabilityArchiveStateArchiveJobsRequest,
@@ -390,12 +295,7 @@ export const getPortabilityArchiveStateArchiveJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InitiatePortabilityArchiveError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InitiatePortabilityArchiveError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Initiates a new Archive job for the Portability API. */
 export const initiatePortabilityArchive: API.OperationMethod<
   InitiatePortabilityArchiveRequest_,
@@ -410,12 +310,7 @@ export const initiatePortabilityArchive: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetAuthorizationError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetAuthorizationError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate a request after a new consent is granted. This method also indicates that previous archives can be garbage collected. You should call this method when all jobs are complete and all archives are downloaded. Do not call it only when you start a new job. */
 export const resetAuthorization: API.OperationMethod<
   ResetAuthorizationRequest_,
@@ -430,12 +325,7 @@ export const resetAuthorization: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RetryArchiveJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RetryArchiveJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retries a failed Portability Archive job. */
 export const retryArchiveJobs: API.OperationMethod<
   RetryArchiveJobsRequest,
@@ -449,3 +339,4 @@ export const retryArchiveJobs: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

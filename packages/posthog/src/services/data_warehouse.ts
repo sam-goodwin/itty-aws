@@ -271,12 +271,11 @@ export type ManagedWarehouseReadinessStateEnum =
   | "backfilling"
   | "up_to_date"
   | "needs_attention"
-  | "sync_paused"
-  | (string & {});
+  | "sync_paused";
 export const ManagedWarehouseReadinessStateEnum = /*@__PURE__*/ S.String;
 
 /** * `events` - events * `persons` - persons */
-export type DatasetEnum = "events" | "persons" | (string & {});
+export type DatasetEnum = "events" | "persons";
 export const DatasetEnum = /*@__PURE__*/ S.String;
 
 export interface ManagedWarehouseDatasetStatus {
@@ -683,8 +682,7 @@ export type WarehouseStatusResponseStateEnum =
   | "ready"
   | "failed"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const WarehouseStatusResponseStateEnum = /*@__PURE__*/ S.String;
 
 export interface WarehouseConnection {

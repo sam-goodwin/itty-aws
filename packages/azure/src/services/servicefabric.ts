@@ -26,8 +26,7 @@ export type ManagedIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const ManagedIdentityType = /*@__PURE__*/ S.String;
 
 export interface UserAssignedIdentityInput {}
@@ -48,7 +47,7 @@ export const UserAssignedIdentityMapInput = /*@__PURE__*/ S.Record(
 
 /** Describes the managed identities for an Azure resource. */
 export interface ManagedIdentityInput {
-  type?: ManagedIdentityType;
+  type?: ManagedIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentityMapInput;
 }
 export const ManagedIdentityInput = /*@__PURE__*/ S.suspend(() =>
@@ -70,8 +69,7 @@ export const ApplicationParameterList = /*@__PURE__*/ S.Record(
 /** The activation Mode of the service package */
 export type ArmRollingUpgradeMonitoringPolicyFailureAction =
   | "Rollback"
-  | "Manual"
-  | (string & {});
+  | "Manual";
 export const ArmRollingUpgradeMonitoringPolicyFailureAction =
   /*@__PURE__*/ S.String;
 
@@ -153,8 +151,7 @@ export type RollingUpgradeMode =
   | "Invalid"
   | "UnmonitoredAuto"
   | "UnmonitoredManual"
-  | "Monitored"
-  | (string & {});
+  | "Monitored";
 export const RollingUpgradeMode = /*@__PURE__*/ S.String;
 
 /** Describes the policy for a monitored application upgrade. */
@@ -1326,13 +1323,13 @@ export type AddOnFeatures =
   | "RepairManager"
   | "DnsService"
   | "BackupRestoreService"
-  | "ResourceMonitorService"
-  | (string & {});
+  | "ResourceMonitorService";
 export const AddOnFeatures = /*@__PURE__*/ S.String;
 
 /** The list of add-on features to enable in the cluster. */
-export type ClusterPropertiesInputAddOnFeaturesList =
-  ReadonlyArray<AddOnFeatures>;
+export type ClusterPropertiesInputAddOnFeaturesList = ReadonlyArray<
+  AddOnFeatures | (string & {})
+>;
 export const ClusterPropertiesInputAddOnFeaturesList = /*@__PURE__*/ S.Array(
   AddOnFeatures,
 ) as any as S.Schema<ClusterPropertiesInputAddOnFeaturesList>;
@@ -1365,8 +1362,7 @@ export type StoreName =
   | "My"
   | "Root"
   | "TrustedPeople"
-  | "TrustedPublisher"
-  | (string & {});
+  | "TrustedPublisher";
 export const StoreName = /*@__PURE__*/ S.String;
 
 /** Describes the certificate details. */
@@ -1570,7 +1566,7 @@ export const NodeTypeDescriptionCapacitiesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodeTypeDescriptionCapacitiesMap>;
 
 /** The durability level of the node type. Learn about [DurabilityLevel](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity). - Bronze - No privileges. This is the default. - Silver - The infrastructure jobs can be paused for a duration of 10 minutes per UD. - Gold - The infrastructure jobs can be paused for a duration of 2 hours per UD. Gold durability can be enabled only on full node VM skus like D15_V2, G5 etc. */
-export type DurabilityLevel = "Bronze" | "Silver" | "Gold" | (string & {});
+export type DurabilityLevel = "Bronze" | "Silver" | "Gold";
 export const DurabilityLevel = /*@__PURE__*/ S.String;
 
 /** Port range details */
@@ -1650,8 +1646,7 @@ export type ReliabilityLevel =
   | "Bronze"
   | "Silver"
   | "Gold"
-  | "Platinum"
-  | (string & {});
+  | "Platinum";
 export const ReliabilityLevel = /*@__PURE__*/ S.String;
 
 /** Represents the health policy used to evaluate the health of services belonging to a service type. */
@@ -1829,7 +1824,7 @@ export const ClusterUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterUpgradePolicy>;
 
 /** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
-export type UpgradeMode = "Automatic" | "Manual" | (string & {});
+export type UpgradeMode = "Automatic" | "Manual";
 export const UpgradeMode = /*@__PURE__*/ S.String;
 
 export interface ApplicationTypeVersionsCleanupPolicy {
@@ -1846,30 +1841,29 @@ export const ApplicationTypeVersionsCleanupPolicy = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ApplicationTypeVersionsCleanupPolicy>;
 
 /** This property controls the logical grouping of VMs in upgrade domains (UDs). This property can't be modified if a node type with multiple Availability Zones is already present in the cluster. */
-export type SfZonalUpgradeMode = "Parallel" | "Hierarchical" | (string & {});
+export type SfZonalUpgradeMode = "Parallel" | "Hierarchical";
 export const SfZonalUpgradeMode = /*@__PURE__*/ S.String;
 
 /** This property defines the upgrade mode for the virtual machine scale set, it is mandatory if a node type with multiple Availability Zones is added. */
-export type VmssZonalUpgradeMode = "Parallel" | "Hierarchical" | (string & {});
+export type VmssZonalUpgradeMode = "Parallel" | "Hierarchical";
 export const VmssZonalUpgradeMode = /*@__PURE__*/ S.String;
 
 /** Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. */
-export type ClusterUpgradeCadence = "Wave0" | "Wave1" | "Wave2" | (string & {});
+export type ClusterUpgradeCadence = "Wave0" | "Wave1" | "Wave2";
 export const ClusterUpgradeCadence = /*@__PURE__*/ S.String;
 
 /** The category of notification. */
-export type NotificationNotificationCategory = "WaveProgress" | (string & {});
+export type NotificationNotificationCategory = "WaveProgress";
 export const NotificationNotificationCategory = /*@__PURE__*/ S.String;
 
 /** The level of notification. */
-export type NotificationNotificationLevel = "Critical" | "All" | (string & {});
+export type NotificationNotificationLevel = "Critical" | "All";
 export const NotificationNotificationLevel = /*@__PURE__*/ S.String;
 
 /** The notification channel indicates the type of receivers subscribed to the notification, either user or subscription. */
 export type NotificationTargetNotificationChannel =
   | "EmailUser"
-  | "EmailSubscription"
-  | (string & {});
+  | "EmailSubscription";
 export const NotificationTargetNotificationChannel = /*@__PURE__*/ S.String;
 
 /** List of targets that subscribe to the notification. */
@@ -1953,23 +1947,23 @@ export interface ClusterPropertiesInput {
   managementEndpoint: string;
   /** The list of node types in the cluster. */
   nodeTypes: ClusterPropertiesInputNodeTypesList;
-  reliabilityLevel?: ReliabilityLevel;
+  reliabilityLevel?: ReliabilityLevel | (string & {});
   /** The server certificate used by reverse proxy. */
   reverseProxyCertificate?: CertificateDescription;
   reverseProxyCertificateCommonNames?: ServerCertificateCommonNames;
   /** The policy to use when upgrading the cluster. */
   upgradeDescription?: ClusterUpgradePolicy;
-  upgradeMode?: UpgradeMode;
+  upgradeMode?: UpgradeMode | (string & {});
   /** The policy used to clean up unused versions. */
   applicationTypeVersionsCleanupPolicy?: ApplicationTypeVersionsCleanupPolicy;
   /** The VM image VMSS has been configured with. Generic names such as Windows or Linux can be used. */
   vmImage?: string;
-  sfZonalUpgradeMode?: SfZonalUpgradeMode;
-  vmssZonalUpgradeMode?: VmssZonalUpgradeMode;
+  sfZonalUpgradeMode?: SfZonalUpgradeMode | (string & {});
+  vmssZonalUpgradeMode?: VmssZonalUpgradeMode | (string & {});
   /** Indicates if infrastructure service manager is enabled. */
   infrastructureServiceManager?: boolean;
   /** Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **upgradeMode** is set to 'Automatic'. */
-  upgradeWave?: ClusterUpgradeCadence;
+  upgradeWave?: ClusterUpgradeCadence | (string & {});
   /** Indicates the start date and time to pause automatic runtime version upgrades on the cluster for an specific period of time on the cluster (UTC). */
   upgradePauseStartTimestampUtc?: string;
   /** Indicates the end date and time to pause automatic runtime version upgrades on the cluster for an specific period of time on the cluster (UTC). */
@@ -2073,7 +2067,7 @@ export const ClusterPropertiesAddOnFeaturesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClusterPropertiesAddOnFeaturesList>;
 
 /** Cluster operating system, the default will be Windows */
-export type ClusterEnvironment = "Windows" | "Linux" | (string & {});
+export type ClusterEnvironment = "Windows" | "Linux";
 export const ClusterEnvironment = /*@__PURE__*/ S.String;
 
 /** The detail of the Service Fabric runtime version result */
@@ -2130,8 +2124,7 @@ export type ClusterState =
   | "EnforcingClusterVersion"
   | "UpgradeServiceUnreachable"
   | "AutoScale"
-  | "Ready"
-  | (string & {});
+  | "Ready";
 export const ClusterState = /*@__PURE__*/ S.String;
 
 /** The list of custom fabric settings to configure the cluster. */
@@ -2152,8 +2145,7 @@ export type ClusterPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ClusterPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Indicates a list of notification channels for cluster events. */
@@ -2549,8 +2541,9 @@ export const UpgradableVersionPathResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpgradableVersionPathResult>;
 
 /** The list of add-on features to enable in the cluster. */
-export type ClusterPropertiesUpdateParametersAddOnFeaturesList =
-  ReadonlyArray<AddOnFeatures>;
+export type ClusterPropertiesUpdateParametersAddOnFeaturesList = ReadonlyArray<
+  AddOnFeatures | (string & {})
+>;
 export const ClusterPropertiesUpdateParametersAddOnFeaturesList =
   /*@__PURE__*/ S.Array(
     AddOnFeatures,
@@ -2615,20 +2608,20 @@ export interface ClusterPropertiesUpdateParameters {
   fabricSettings?: ClusterPropertiesUpdateParametersFabricSettingsList;
   /** The list of node types in the cluster. This will overwrite the existing list. */
   nodeTypes?: ClusterPropertiesUpdateParametersNodeTypesList;
-  reliabilityLevel?: ReliabilityLevel;
+  reliabilityLevel?: ReliabilityLevel | (string & {});
   /** The server certificate used by reverse proxy. */
   reverseProxyCertificate?: CertificateDescription;
   /** The policy to use when upgrading the cluster. */
   upgradeDescription?: ClusterUpgradePolicy;
   /** The policy used to clean up unused versions. */
   applicationTypeVersionsCleanupPolicy?: ApplicationTypeVersionsCleanupPolicy;
-  upgradeMode?: UpgradeMode;
-  sfZonalUpgradeMode?: SfZonalUpgradeMode;
-  vmssZonalUpgradeMode?: VmssZonalUpgradeMode;
+  upgradeMode?: UpgradeMode | (string & {});
+  sfZonalUpgradeMode?: SfZonalUpgradeMode | (string & {});
+  vmssZonalUpgradeMode?: VmssZonalUpgradeMode | (string & {});
   /** Indicates if infrastructure service manager is enabled. */
   infrastructureServiceManager?: boolean;
   /** Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **upgradeMode** is set to 'Automatic'. */
-  upgradeWave?: ClusterUpgradeCadence;
+  upgradeWave?: ClusterUpgradeCadence | (string & {});
   /** The start timestamp to pause runtime version upgrades on the cluster (UTC). */
   upgradePauseStartTimestampUtc?: string;
   /** The end timestamp of pause runtime version upgrades on the cluster (UTC). */
@@ -2828,8 +2821,7 @@ export const ClusterCodeVersionsListResult = /*@__PURE__*/ S.suspend(() =>
 
 export type ClusterVersionsGetByEnvironmentRequestEnvironment =
   | "Windows"
-  | "Linux"
-  | (string & {});
+  | "Linux";
 export const ClusterVersionsGetByEnvironmentRequestEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -2839,7 +2831,9 @@ export interface ClusterVersionsGetByEnvironmentRequest {
   /** The location for the cluster code versions. This is different from cluster location. */
   location: string;
   /** The operating system of the cluster. The default means all. */
-  environment: ClusterVersionsGetByEnvironmentRequestEnvironment;
+  environment:
+    | ClusterVersionsGetByEnvironmentRequestEnvironment
+    | (string & {});
   /** The cluster code version. */
   clusterVersion: string;
 }
@@ -2888,8 +2882,7 @@ export const ClusterVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ClusterVersionsListByEnvironmentRequestEnvironment =
   | "Windows"
-  | "Linux"
-  | (string & {});
+  | "Linux";
 export const ClusterVersionsListByEnvironmentRequestEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -2899,7 +2892,9 @@ export interface ClusterVersionsListByEnvironmentRequest {
   /** The location for the cluster code versions. This is different from cluster location. */
   location: string;
   /** The operating system of the cluster. The default means all. */
-  environment: ClusterVersionsListByEnvironmentRequestEnvironment;
+  environment:
+    | ClusterVersionsListByEnvironmentRequestEnvironment
+    | (string & {});
 }
 export const ClusterVersionsListByEnvironmentRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3018,8 +3013,7 @@ export type ServiceCorrelationScheme =
   | "Invalid"
   | "Affinity"
   | "AlignedAffinity"
-  | "NonAlignedAffinity"
-  | (string & {});
+  | "NonAlignedAffinity";
 export const ServiceCorrelationScheme = /*@__PURE__*/ S.String;
 
 /** Creates a particular correlation between services. */
@@ -3046,12 +3040,7 @@ export const CorrelationSchemeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CorrelationSchemeList>;
 
 /** Determines the metric weight relative to the other metrics that are configured for this service. During runtime, if two metrics end up in conflict, the Cluster Resource Manager prefers the metric with the higher weight. */
-export type ServiceLoadMetricWeight =
-  | "Zero"
-  | "Low"
-  | "Medium"
-  | "High"
-  | (string & {});
+export type ServiceLoadMetricWeight = "Zero" | "Low" | "Medium" | "High";
 export const ServiceLoadMetricWeight = /*@__PURE__*/ S.String;
 
 /** Specifies a metric to load balance a service during runtime. */
@@ -3093,8 +3082,7 @@ export type ServicePlacementPolicyType =
   | "RequiredDomain"
   | "PreferredPrimaryDomain"
   | "RequiredDomainDistribution"
-  | "NonPartiallyPlaceService"
-  | (string & {});
+  | "NonPartiallyPlaceService";
 export const ServicePlacementPolicyType = /*@__PURE__*/ S.String;
 
 /** Describes the policy to be used for placement of a Service Fabric service. */
@@ -3117,11 +3105,11 @@ export const ServicePlacementPoliciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ServicePlacementPoliciesList>;
 
 /** Specifies the move cost for the service. */
-export type MoveCost = "Zero" | "Low" | "Medium" | "High" | (string & {});
+export type MoveCost = "Zero" | "Low" | "Medium" | "High";
 export const MoveCost = /*@__PURE__*/ S.String;
 
 /** The kind of service (Stateless or Stateful). */
-export type ServiceKind = "Invalid" | "Stateless" | "Stateful" | (string & {});
+export type ServiceKind = "Invalid" | "Stateless" | "Stateful";
 export const ServiceKind = /*@__PURE__*/ S.String;
 
 /** Enumerates the ways that a service can be partitioned. */
@@ -3129,8 +3117,7 @@ export type PartitionScheme =
   | "Invalid"
   | "Singleton"
   | "UniformInt64Range"
-  | "Named"
-  | (string & {});
+  | "Named";
 export const PartitionScheme = /*@__PURE__*/ S.String;
 
 /** Describes how the service is partitioned. */
@@ -3149,8 +3136,7 @@ export const PartitionSchemeDescription = /*@__PURE__*/ S.suspend(() =>
 /** The activation Mode of the service package */
 export type ServiceResourcePropertiesInputServicePackageActivationMode =
   | "SharedProcess"
-  | "ExclusiveProcess"
-  | (string & {});
+  | "ExclusiveProcess";
 export const ServiceResourcePropertiesInputServicePackageActivationMode =
   /*@__PURE__*/ S.String;
 
@@ -3161,13 +3147,15 @@ export interface ServiceResourcePropertiesInput {
   correlationScheme?: CorrelationSchemeList;
   serviceLoadMetrics?: ServiceLoadMetricsList;
   servicePlacementPolicies?: ServicePlacementPoliciesList;
-  defaultMoveCost?: MoveCost;
-  serviceKind: ServiceKind;
+  defaultMoveCost?: MoveCost | (string & {});
+  serviceKind: ServiceKind | (string & {});
   /** The name of the service type */
   serviceTypeName?: string;
   partitionDescription?: PartitionSchemeDescription;
   /** The activation Mode of the service package */
-  servicePackageActivationMode?: ServiceResourcePropertiesInputServicePackageActivationMode;
+  servicePackageActivationMode?:
+    | ServiceResourcePropertiesInputServicePackageActivationMode
+    | (string & {});
   /** Dns name used for the service. If this is specified, then the service can be accessed via its DNS name instead of service name. */
   serviceDnsName?: string;
 }
@@ -3315,8 +3303,7 @@ export const ServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 /** The activation Mode of the service package */
 export type ServiceResourcePropertiesServicePackageActivationMode =
   | "SharedProcess"
-  | "ExclusiveProcess"
-  | (string & {});
+  | "ExclusiveProcess";
 export const ServiceResourcePropertiesServicePackageActivationMode =
   /*@__PURE__*/ S.String;
 
@@ -3493,8 +3480,8 @@ export interface ServiceResourceUpdateProperties {
   correlationScheme?: CorrelationSchemeList;
   serviceLoadMetrics?: ServiceLoadMetricsList;
   servicePlacementPolicies?: ServicePlacementPoliciesList;
-  defaultMoveCost?: MoveCost;
-  serviceKind: ServiceKind;
+  defaultMoveCost?: MoveCost | (string & {});
+  serviceKind: ServiceKind | (string & {});
 }
 export const ServiceResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

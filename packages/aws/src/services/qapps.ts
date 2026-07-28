@@ -368,7 +368,7 @@ export const CreateLibraryItemOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLibraryItemOutput",
 }) as any as S.Schema<CreateLibraryItemOutput>;
 export type Filename = string;
-export type DocumentScope = "APPLICATION" | "SESSION" | (string & {});
+export type DocumentScope = "APPLICATION" | "SESSION";
 export const DocumentScope = /*@__PURE__*/ S.String;
 
 export interface CreatePresignedUrlInput {
@@ -377,7 +377,7 @@ export interface CreatePresignedUrlInput {
   appId: string;
   fileContentsSha256: string;
   fileName: string;
-  scope: DocumentScope;
+  scope: DocumentScope | (string & {});
   sessionId?: string;
 }
 export const CreatePresignedUrlInput = /*@__PURE__*/ S.suspend(() =>
@@ -432,8 +432,7 @@ export type CardType =
   | "q-query"
   | "file-upload"
   | "q-plugin"
-  | "form-input"
-  | (string & {});
+  | "form-input";
 export const CardType = /*@__PURE__*/ S.String;
 
 export type Placeholder = string;
@@ -457,7 +456,7 @@ export const TextInputCardInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "TextInputCardInput",
 }) as any as S.Schema<TextInputCardInput>;
 export type Prompt = string;
-export type CardOutputSource = "approved-sources" | "llm" | (string & {});
+export type CardOutputSource = "approved-sources" | "llm";
 export const CardOutputSource = /*@__PURE__*/ S.String;
 
 export type AttributeFilters = AttributeFilter[];
@@ -622,7 +621,7 @@ export const FormInputCardMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FormInputCardMetadata",
 }) as any as S.Schema<FormInputCardMetadata>;
-export type InputCardComputeMode = "append" | "replace" | (string & {});
+export type InputCardComputeMode = "append" | "replace";
 export const InputCardComputeMode = /*@__PURE__*/ S.String;
 
 export interface FormInputCardInput {
@@ -731,15 +730,14 @@ export const CreateQAppInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateQAppInput",
 }) as any as S.Schema<CreateQAppInput>;
 export type AppArn = string;
-export type AppStatus = "PUBLISHED" | "DRAFT" | "DELETED" | (string & {});
+export type AppStatus = "PUBLISHED" | "DRAFT" | "DELETED";
 export const AppStatus = /*@__PURE__*/ S.String;
 
 export type AppRequiredCapability =
   | "FileUpload"
   | "CreatorMode"
   | "RetrievalMode"
-  | "PluginMode"
-  | (string & {});
+  | "PluginMode";
 export const AppRequiredCapability = /*@__PURE__*/ S.String;
 
 export type AppRequiredCapabilities = AppRequiredCapability[];
@@ -853,10 +851,10 @@ export const DescribeQAppPermissionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeQAppPermissionsInput",
 }) as any as S.Schema<DescribeQAppPermissionsInput>;
-export type Action = "read" | "write" | (string & {});
+export type Action = "read" | "write";
 export const Action = /*@__PURE__*/ S.String;
 
-export type UserType = "owner" | "user" | (string & {});
+export type UserType = "owner" | "user";
 export const UserType = /*@__PURE__*/ S.String;
 
 export interface PrincipalOutput {
@@ -1143,8 +1141,7 @@ export type PluginType =
   | "SALESFORCE_CRM"
   | "SERVICENOW_NOW_PLATFORM"
   | "SMARTSHEET"
-  | "ZENDESK_SUITE"
-  | (string & {});
+  | "ZENDESK_SUITE";
 export const PluginType = /*@__PURE__*/ S.String;
 
 export interface QPluginCard {
@@ -1318,12 +1315,7 @@ export const GetQAppSessionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetQAppSessionInput",
 }) as any as S.Schema<GetQAppSessionInput>;
 export type SessionName = string;
-export type ExecutionStatus =
-  | "IN_PROGRESS"
-  | "WAITING"
-  | "COMPLETED"
-  | "ERROR"
-  | (string & {});
+export type ExecutionStatus = "IN_PROGRESS" | "WAITING" | "COMPLETED" | "ERROR";
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface Submission {
@@ -1445,7 +1437,7 @@ export interface ImportDocumentInput {
   appId: string;
   fileContentsBase64: string;
   fileName: string;
-  scope: DocumentScope;
+  scope: DocumentScope | (string & {});
   sessionId?: string;
 }
 export const ImportDocumentInput = /*@__PURE__*/ S.suspend(() =>
@@ -1732,12 +1724,12 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
-export type Sender = "USER" | "SYSTEM" | (string & {});
+export type Sender = "USER" | "SYSTEM";
 export const Sender = /*@__PURE__*/ S.String;
 
 export interface ConversationMessage {
   body: string;
-  type: Sender;
+  type: Sender | (string & {});
 }
 export const ConversationMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ body: S.String, type: Sender }),
@@ -1797,12 +1789,12 @@ export const PredictQAppOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PredictQAppOutput",
 }) as any as S.Schema<PredictQAppOutput>;
-export type SubmissionMutationKind = "edit" | "delete" | "add" | (string & {});
+export type SubmissionMutationKind = "edit" | "delete" | "add";
 export const SubmissionMutationKind = /*@__PURE__*/ S.String;
 
 export interface SubmissionMutation {
   submissionId: string;
-  mutationType: SubmissionMutationKind;
+  mutationType: SubmissionMutationKind | (string & {});
 }
 export const SubmissionMutation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ submissionId: S.String, mutationType: SubmissionMutationKind }),
@@ -1944,13 +1936,13 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type LibraryItemStatus = "PUBLISHED" | "DISABLED" | (string & {});
+export type LibraryItemStatus = "PUBLISHED" | "DISABLED";
 export const LibraryItemStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateLibraryItemInput {
   instanceId: string;
   libraryItemId: string;
-  status?: LibraryItemStatus;
+  status?: LibraryItemStatus | (string & {});
   categories?: string[];
 }
 export const UpdateLibraryItemInput = /*@__PURE__*/ S.suspend(() =>
@@ -2097,7 +2089,7 @@ export const UpdateQAppOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateQAppOutput",
 }) as any as S.Schema<UpdateQAppOutput>;
 export interface PermissionInput {
-  action: Action;
+  action: Action | (string & {});
   principal: string;
 }
 export const PermissionInput = /*@__PURE__*/ S.suspend(() =>

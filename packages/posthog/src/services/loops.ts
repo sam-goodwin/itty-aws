@@ -28,21 +28,15 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `personal` - personal * `team` - team */
-export type VisibilityEnum = "personal" | "team" | (string & {});
+export type VisibilityEnum = "personal" | "team";
 export const VisibilityEnum = /*@__PURE__*/ S.String;
 
 /** * `claude` - claude * `codex` - codex */
-export type RuntimeAdapterEnum = "claude" | "codex" | (string & {});
+export type RuntimeAdapterEnum = "claude" | "codex";
 export const RuntimeAdapterEnum = /*@__PURE__*/ S.String;
 
 /** * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-export type ReasoningEffortEnum =
-  | "low"
-  | "medium"
-  | "high"
-  | "xhigh"
-  | "max"
-  | (string & {});
+export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max";
 export const ReasoningEffortEnum = /*@__PURE__*/ S.String;
 
 export interface LoopRepositoryEntry {
@@ -68,11 +62,7 @@ export const LoopsCreateRequestRepositoriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LoopsCreateRequestRepositoriesList>;
 
 /** * `skip` - skip * `allow` - allow * `cancel_previous` - cancel_previous */
-export type OverlapPolicyEnum =
-  | "skip"
-  | "allow"
-  | "cancel_previous"
-  | (string & {});
+export type OverlapPolicyEnum = "skip" | "allow" | "cancel_previous";
 export const OverlapPolicyEnum = /*@__PURE__*/ S.String;
 
 export interface LoopBehaviors {
@@ -101,14 +91,14 @@ export const LoopConnectorsMcpInstallationIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LoopConnectorsMcpInstallationIdsList>;
 
 /** * `read_only` - read_only * `full` - full */
-export type PosthogMcpScopesEnum = "read_only" | "full" | (string & {});
+export type PosthogMcpScopesEnum = "read_only" | "full";
 export const PosthogMcpScopesEnum = /*@__PURE__*/ S.String;
 
 export interface LoopConnectors {
   /** MCP Store installation ids (Slack, Linear, etc.) available to this loop's runs. */
   mcp_installation_ids?: LoopConnectorsMcpInstallationIdsList;
   /** Scope of the PostHog MCP access injected into this loop's runs. * `read_only` - read_only * `full` - full */
-  posthog_mcp_scopes?: PosthogMcpScopesEnum;
+  posthog_mcp_scopes?: PosthogMcpScopesEnum | (string & {});
 }
 export const LoopConnectors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -122,12 +112,13 @@ export type EventsEnum =
   | "run_completed"
   | "run_failed"
   | "pr_created"
-  | "needs_attention"
-  | (string & {});
+  | "needs_attention";
 export const EventsEnum = /*@__PURE__*/ S.String;
 
 /** Event kinds this channel notifies on. One or more of: run_completed, run_failed, pr_created, needs_attention. */
-export type LoopNotificationChannelEventsList = ReadonlyArray<EventsEnum>;
+export type LoopNotificationChannelEventsList = ReadonlyArray<
+  EventsEnum | (string & {})
+>;
 export const LoopNotificationChannelEventsList = /*@__PURE__*/ S.Array(
   EventsEnum,
 ) as any as S.Schema<LoopNotificationChannelEventsList>;
@@ -214,14 +205,14 @@ export const LoopContextTargetWrite = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoopContextTargetWrite>;
 
 /** * `schedule` - schedule * `github` - github * `api` - api */
-export type LoopTriggerTypeEnum = "schedule" | "github" | "api" | (string & {});
+export type LoopTriggerTypeEnum = "schedule" | "github" | "api";
 export const LoopTriggerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LoopTriggerWrite {
   /** Existing trigger id to update in place. Omit to create a new trigger. */
   id?: string;
   /** Trigger type: `schedule` (cron or one-time), `github` (repo webhook events), or `api` (POST to `trigger/`). * `schedule` - schedule * `github` - github * `api` - api */
-  type: LoopTriggerTypeEnum;
+  type: LoopTriggerTypeEnum | (string & {});
   /** Whether this trigger is active. Disabling pauses only this trigger. */
   enabled?: boolean;
   /** Trigger configuration, shape validated per `type`: schedule takes `{cron_expression, timezone}` or `{run_at}` for a one-time run; github takes `{github_integration_id, repository, events, filters}` where `events` is one or more of `issues`, `issue_comment`, `pull_request`, `push` (`event.action` shorthand like `issues.opened` is folded into an `actions` filter, one event per trigger) and `filters` takes `{actions, branches, labels}`; api takes no config. */
@@ -254,15 +245,15 @@ export interface LoopsCreateRequest {
   /** On a team loop, claim ownership as part of this update so you can edit identity-bearing config (instructions, model, triggers, ...) that only the owner may change. Ignored on personal loops and on create. */
   take_ownership?: boolean;
   /** `personal` (owner-only) or `team` (visible and fireable by any team member). * `personal` - personal * `team` - team */
-  visibility?: VisibilityEnum;
+  visibility?: VisibilityEnum | (string & {});
   /** The prompt delivered to the agent on every run. */
   instructions: string;
   /** Runtime adapter: 'claude' or 'codex'. * `claude` - claude * `codex` - codex */
-  runtime_adapter: RuntimeAdapterEnum;
+  runtime_adapter: RuntimeAdapterEnum | (string & {});
   /** LLM model identifier, validated against `runtime_adapter`'s catalog. Leave blank to let PostHog pick a sensible default at run time. */
   model?: string;
   /** Reasoning effort, validated against `runtime_adapter`/`model`'s supported set. * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-  reasoning_effort?: ReasoningEffortEnum | null;
+  reasoning_effort?: ReasoningEffortEnum | (string & {}) | null;
   /** Repositories this loop operates on, ordered. Capped at 1 until multi-repo execution ships. May be empty for report-only loops. */
   repositories?: LoopsCreateRequestRepositoriesList;
   /** Sandbox environment carrying encrypted env vars and the network allowlist into every run. */
@@ -270,7 +261,7 @@ export interface LoopsCreateRequest {
   /** Whether the loop's triggers are active. Pausing disables all triggers. */
   enabled?: boolean;
   /** What happens when a trigger fires while a run is already active: 'skip', 'allow', or 'cancel_previous'. * `skip` - skip * `allow` - allow * `cancel_previous` - cancel_previous */
-  overlap_policy?: OverlapPolicyEnum;
+  overlap_policy?: OverlapPolicyEnum | (string & {});
   /** PR / CI-follow-up behavior configuration. */
   behaviors?: LoopBehaviors;
   /** MCP connector configuration for this loop's runs. */
@@ -653,15 +644,15 @@ export interface LoopsPartialUpdateRequest {
   /** On a team loop, claim ownership as part of this update so you can edit identity-bearing config (instructions, model, triggers, ...) that only the owner may change. Ignored on personal loops and on create. */
   take_ownership?: boolean;
   /** `personal` (owner-only) or `team` (visible and fireable by any team member). * `personal` - personal * `team` - team */
-  visibility?: VisibilityEnum;
+  visibility?: VisibilityEnum | (string & {});
   /** The prompt delivered to the agent on every run. */
   instructions?: string;
   /** Runtime adapter: 'claude' or 'codex'. * `claude` - claude * `codex` - codex */
-  runtime_adapter?: RuntimeAdapterEnum;
+  runtime_adapter?: RuntimeAdapterEnum | (string & {});
   /** LLM model identifier, validated against `runtime_adapter`'s catalog. Leave blank to let PostHog pick a sensible default at run time. */
   model?: string;
   /** Reasoning effort, validated against `runtime_adapter`/`model`'s supported set. * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-  reasoning_effort?: ReasoningEffortEnum | null;
+  reasoning_effort?: ReasoningEffortEnum | (string & {}) | null;
   /** Repositories this loop operates on, ordered. Capped at 1 until multi-repo execution ships. May be empty for report-only loops. */
   repositories?: LoopsPartialUpdateRequestRepositoriesList;
   /** Sandbox environment carrying encrypted env vars and the network allowlist into every run. */
@@ -669,7 +660,7 @@ export interface LoopsPartialUpdateRequest {
   /** Whether the loop's triggers are active. Pausing disables all triggers. */
   enabled?: boolean;
   /** What happens when a trigger fires while a run is already active: 'skip', 'allow', or 'cancel_previous'. * `skip` - skip * `allow` - allow * `cancel_previous` - cancel_previous */
-  overlap_policy?: OverlapPolicyEnum;
+  overlap_policy?: OverlapPolicyEnum | (string & {});
   /** PR / CI-follow-up behavior configuration. */
   behaviors?: LoopBehaviors;
   /** MCP connector configuration for this loop's runs. */
@@ -718,7 +709,7 @@ export interface LoopsPreviewCreateRequest {
   project_id: string;
   id: string;
   /** Trigger type to simulate. Defaults to a synthetic schedule fire. * `schedule` - schedule * `github` - github * `api` - api */
-  trigger_type?: LoopTriggerTypeEnum;
+  trigger_type?: LoopTriggerTypeEnum | (string & {});
   /** Sample trigger payload, e.g. a GitHub webhook body or an API trigger body, to render into context. */
   payload?: unknown;
 }
@@ -802,8 +793,7 @@ export type LoopFireResultReasonEnum =
   | "disabled"
   | "gate_blocked"
   | "owner_inactive"
-  | "owner_changed"
-  | (string & {});
+  | "owner_changed";
 export const LoopFireResultReasonEnum = /*@__PURE__*/ S.String;
 
 /** Response for a manual (`run/`) or external (`trigger/`) fire. */

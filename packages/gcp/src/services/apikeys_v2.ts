@@ -13,63 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The HTTP referrers (websites) that are allowed to use the key. */
 export interface V2BrowserKeyRestrictions {
@@ -77,12 +72,10 @@ export interface V2BrowserKeyRestrictions {
   allowedReferrers?: StringList;
 }
 export const V2BrowserKeyRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedReferrers: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "V2BrowserKeyRestrictions",
-}) as any as S.Schema<V2BrowserKeyRestrictions>;
+S.Struct({
+  "allowedReferrers": S.optional(StringList),
+}),
+).annotate({ identifier: "V2BrowserKeyRestrictions" }) as any as S.Schema<V2BrowserKeyRestrictions>;
 
 /** The IP addresses of callers that are allowed to use the key. */
 export interface V2ServerKeyRestrictions {
@@ -90,12 +83,10 @@ export interface V2ServerKeyRestrictions {
   allowedIps?: StringList;
 }
 export const V2ServerKeyRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedIps: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "V2ServerKeyRestrictions",
-}) as any as S.Schema<V2ServerKeyRestrictions>;
+S.Struct({
+  "allowedIps": S.optional(StringList),
+}),
+).annotate({ identifier: "V2ServerKeyRestrictions" }) as any as S.Schema<V2ServerKeyRestrictions>;
 
 /** Identifier of an Android application for key use. */
 export interface V2AndroidApplication {
@@ -105,18 +96,14 @@ export interface V2AndroidApplication {
   packageName?: string;
 }
 export const V2AndroidApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sha1Fingerprint: S.optional(S.String),
-    packageName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "V2AndroidApplication",
-}) as any as S.Schema<V2AndroidApplication>;
+S.Struct({
+  "sha1Fingerprint": S.optional(S.String),
+  "packageName": S.optional(S.String),
+}),
+).annotate({ identifier: "V2AndroidApplication" }) as any as S.Schema<V2AndroidApplication>;
 
 export type V2AndroidApplicationList = ReadonlyArray<V2AndroidApplication>;
-export const V2AndroidApplicationList = /*@__PURE__*/ S.Array(
-  V2AndroidApplication,
-) as any as S.Schema<V2AndroidApplicationList>;
+export const V2AndroidApplicationList = /*@__PURE__*/ S.Array(V2AndroidApplication) as any as S.Schema<V2AndroidApplicationList>;
 
 /** The Android apps that are allowed to use the key. */
 export interface V2AndroidKeyRestrictions {
@@ -124,12 +111,10 @@ export interface V2AndroidKeyRestrictions {
   allowedApplications?: V2AndroidApplicationList;
 }
 export const V2AndroidKeyRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedApplications: S.optional(V2AndroidApplicationList),
-  }),
-).annotate({
-  identifier: "V2AndroidKeyRestrictions",
-}) as any as S.Schema<V2AndroidKeyRestrictions>;
+S.Struct({
+  "allowedApplications": S.optional(V2AndroidApplicationList),
+}),
+).annotate({ identifier: "V2AndroidKeyRestrictions" }) as any as S.Schema<V2AndroidKeyRestrictions>;
 
 /** The iOS apps that are allowed to use the key. */
 export interface V2IosKeyRestrictions {
@@ -137,12 +122,10 @@ export interface V2IosKeyRestrictions {
   allowedBundleIds?: StringList;
 }
 export const V2IosKeyRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedBundleIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "V2IosKeyRestrictions",
-}) as any as S.Schema<V2IosKeyRestrictions>;
+S.Struct({
+  "allowedBundleIds": S.optional(StringList),
+}),
+).annotate({ identifier: "V2IosKeyRestrictions" }) as any as S.Schema<V2IosKeyRestrictions>;
 
 /** A restriction for a specific service and optionally one or multiple specific methods. Both fields are case insensitive. */
 export interface V2ApiTarget {
@@ -152,16 +135,14 @@ export interface V2ApiTarget {
   methods?: StringList;
 }
 export const V2ApiTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    methods: S.optional(StringList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "methods": S.optional(StringList),
+}),
 ).annotate({ identifier: "V2ApiTarget" }) as any as S.Schema<V2ApiTarget>;
 
 export type V2ApiTargetList = ReadonlyArray<V2ApiTarget>;
-export const V2ApiTargetList = /*@__PURE__*/ S.Array(
-  V2ApiTarget,
-) as any as S.Schema<V2ApiTargetList>;
+export const V2ApiTargetList = /*@__PURE__*/ S.Array(V2ApiTarget) as any as S.Schema<V2ApiTargetList>;
 
 /** Describes the restrictions on the key. */
 export interface V2Restrictions {
@@ -177,13 +158,13 @@ export interface V2Restrictions {
   apiTargets?: V2ApiTargetList;
 }
 export const V2Restrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserKeyRestrictions: S.optional(V2BrowserKeyRestrictions),
-    serverKeyRestrictions: S.optional(V2ServerKeyRestrictions),
-    androidKeyRestrictions: S.optional(V2AndroidKeyRestrictions),
-    iosKeyRestrictions: S.optional(V2IosKeyRestrictions),
-    apiTargets: S.optional(V2ApiTargetList),
-  }),
+S.Struct({
+  "browserKeyRestrictions": S.optional(V2BrowserKeyRestrictions),
+  "serverKeyRestrictions": S.optional(V2ServerKeyRestrictions),
+  "androidKeyRestrictions": S.optional(V2AndroidKeyRestrictions),
+  "iosKeyRestrictions": S.optional(V2IosKeyRestrictions),
+  "apiTargets": S.optional(V2ApiTargetList),
+}),
 ).annotate({ identifier: "V2Restrictions" }) as any as S.Schema<V2Restrictions>;
 
 /** The representation of a key managed by the API Keys API. */
@@ -212,19 +193,19 @@ export interface V2Key {
   updateTime?: string;
 }
 export const V2Key = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    name: S.optional(S.String),
-    keyString: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    restrictions: S.optional(V2Restrictions),
-    uid: S.optional(S.String),
-    displayName: S.optional(S.String),
-    serviceAccountEmail: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "annotations": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "keyString": S.optional(S.String),
+  "deleteTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "restrictions": S.optional(V2Restrictions),
+  "uid": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "serviceAccountEmail": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "V2Key" }) as any as S.Schema<V2Key>;
 
 export interface CreateProjectsLocationsKeysRequest {
@@ -236,31 +217,18 @@ export interface CreateProjectsLocationsKeysRequest {
   body?: V2Key;
 }
 export const CreateProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    keyId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(V2Key.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/{+parent}/keys",
-      baseUrl: "https://apikeys.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsLocationsKeysRequest",
-}) as any as S.Schema<CreateProjectsLocationsKeysRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "keyId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(V2Key.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/keys","baseUrl":"https://apikeys.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsKeysRequest" }) as any as S.Schema<CreateProjectsLocationsKeysRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -272,11 +240,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -293,13 +261,13 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-    done: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "response": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "done": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsKeysRequest {
@@ -309,38 +277,21 @@ export interface DeleteProjectsLocationsKeysRequest {
   etag?: string;
 }
 export const DeleteProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    etag: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v2/{+name}",
-      baseUrl: "https://apikeys.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsLocationsKeysRequest",
-}) as any as S.Schema<DeleteProjectsLocationsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://apikeys.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsKeysRequest" }) as any as S.Schema<DeleteProjectsLocationsKeysRequest>;
 
 export interface GetKeyStringProjectsLocationsKeysRequest {
   /** Required. The resource name of the API key to be retrieved. */
   name: string;
 }
-export const GetKeyStringProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}/keyString",
-        baseUrl: "https://apikeys.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetKeyStringProjectsLocationsKeysRequest",
-}) as any as S.Schema<GetKeyStringProjectsLocationsKeysRequest>;
+export const GetKeyStringProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/keyString","baseUrl":"https://apikeys.googleapis.com/"})),
+).annotate({ identifier: "GetKeyStringProjectsLocationsKeysRequest" }) as any as S.Schema<GetKeyStringProjectsLocationsKeysRequest>;
 
 /** Response message for `GetKeyString` method. */
 export interface V2GetKeyStringResponse {
@@ -348,48 +299,30 @@ export interface V2GetKeyStringResponse {
   keyString?: string;
 }
 export const V2GetKeyStringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyString: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "V2GetKeyStringResponse",
-}) as any as S.Schema<V2GetKeyStringResponse>;
+S.Struct({
+  "keyString": S.optional(S.String),
+}),
+).annotate({ identifier: "V2GetKeyStringResponse" }) as any as S.Schema<V2GetKeyStringResponse>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://apikeys.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperationsRequest",
-}) as any as S.Schema<GetOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://apikeys.googleapis.com/"})),
+).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetProjectsLocationsKeysRequest {
   /** Required. The resource name of the API key to get. */
   name: string;
 }
 export const GetProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://apikeys.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsKeysRequest",
-}) as any as S.Schema<GetProjectsLocationsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://apikeys.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsKeysRequest" }) as any as S.Schema<GetProjectsLocationsKeysRequest>;
 
 export interface ListProjectsLocationsKeysRequest {
   /** Optional. Specifies the maximum number of results to be returned at a time. */
@@ -402,26 +335,16 @@ export interface ListProjectsLocationsKeysRequest {
   parent: string;
 }
 export const ListProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/keys",
-      baseUrl: "https://apikeys.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsKeysRequest",
-}) as any as S.Schema<ListProjectsLocationsKeysRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/keys","baseUrl":"https://apikeys.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsKeysRequest" }) as any as S.Schema<ListProjectsLocationsKeysRequest>;
 
 export type V2KeyList = ReadonlyArray<V2Key>;
-export const V2KeyList = /*@__PURE__*/ S.Array(
-  V2Key,
-) as any as S.Schema<V2KeyList>;
+export const V2KeyList = /*@__PURE__*/ S.Array(V2Key) as any as S.Schema<V2KeyList>;
 
 /** Response message for `ListKeys` method. */
 export interface V2ListKeysResponse {
@@ -431,31 +354,21 @@ export interface V2ListKeysResponse {
   nextPageToken?: string;
 }
 export const V2ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: S.optional(V2KeyList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "V2ListKeysResponse",
-}) as any as S.Schema<V2ListKeysResponse>;
+S.Struct({
+  "keys": S.optional(V2KeyList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "V2ListKeysResponse" }) as any as S.Schema<V2ListKeysResponse>;
 
 export interface LookupKeyKeysRequest {
   /** Required. Finds the project that owns the key string value. */
   keyString?: string;
 }
 export const LookupKeyKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyString: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/keys:lookupKey",
-      baseUrl: "https://apikeys.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "LookupKeyKeysRequest",
-}) as any as S.Schema<LookupKeyKeysRequest>;
+S.Struct({
+  "keyString": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/keys:lookupKey","baseUrl":"https://apikeys.googleapis.com/"})),
+).annotate({ identifier: "LookupKeyKeysRequest" }) as any as S.Schema<LookupKeyKeysRequest>;
 
 /** Response message for `LookupKey` method. */
 export interface V2LookupKeyResponse {
@@ -465,13 +378,11 @@ export interface V2LookupKeyResponse {
   name?: string;
 }
 export const V2LookupKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "V2LookupKeyResponse",
-}) as any as S.Schema<V2LookupKeyResponse>;
+S.Struct({
+  "parent": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "V2LookupKeyResponse" }) as any as S.Schema<V2LookupKeyResponse>;
 
 export interface PatchProjectsLocationsKeysRequest {
   /** Identifier. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`. */
@@ -482,28 +393,18 @@ export interface PatchProjectsLocationsKeysRequest {
   body?: V2Key;
 }
 export const PatchProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(V2Key.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v2/{+name}",
-      baseUrl: "https://apikeys.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsLocationsKeysRequest",
-}) as any as S.Schema<PatchProjectsLocationsKeysRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(V2Key.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://apikeys.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsKeysRequest" }) as any as S.Schema<PatchProjectsLocationsKeysRequest>;
 
 /** Request message for `UndeleteKey` method. */
 export interface V2UndeleteKeyRequest {}
 export const V2UndeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V2UndeleteKeyRequest",
-}) as any as S.Schema<V2UndeleteKeyRequest>;
+S.Struct({}),
+).annotate({ identifier: "V2UndeleteKeyRequest" }) as any as S.Schema<V2UndeleteKeyRequest>;
 
 export interface UndeleteProjectsLocationsKeysRequest {
   /** Required. The resource name of the API key to be undeleted. */
@@ -511,28 +412,14 @@ export interface UndeleteProjectsLocationsKeysRequest {
   /** Request body */
   body?: V2UndeleteKeyRequest;
 }
-export const UndeleteProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(V2UndeleteKeyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:undelete",
-        baseUrl: "https://apikeys.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UndeleteProjectsLocationsKeysRequest",
-}) as any as S.Schema<UndeleteProjectsLocationsKeysRequest>;
+export const UndeleteProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(V2UndeleteKeyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:undelete","baseUrl":"https://apikeys.googleapis.com/"})),
+).annotate({ identifier: "UndeleteProjectsLocationsKeysRequest" }) as any as S.Schema<UndeleteProjectsLocationsKeysRequest>;
 
-export type CreateProjectsLocationsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const createProjectsLocationsKeys: API.OperationMethod<
   CreateProjectsLocationsKeysRequest,
@@ -547,12 +434,7 @@ export const createProjectsLocationsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const deleteProjectsLocationsKeys: API.OperationMethod<
   DeleteProjectsLocationsKeysRequest,
@@ -567,10 +449,7 @@ export const deleteProjectsLocationsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetKeyStringProjectsLocationsKeysError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetKeyStringProjectsLocationsKeysError = NotFound | Forbidden | GcpOpError;
 /** Get the key string for an API key. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const getKeyStringProjectsLocationsKeys: API.OperationMethod<
   GetKeyStringProjectsLocationsKeysRequest,
@@ -628,10 +507,7 @@ export const listProjectsLocationsKeys: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type LookupKeyKeysError = NotFound | Forbidden | GcpOpError;
@@ -649,12 +525,7 @@ export const lookupKeyKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches the modifiable fields of an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const patchProjectsLocationsKeys: API.OperationMethod<
   PatchProjectsLocationsKeysRequest,
@@ -669,12 +540,7 @@ export const patchProjectsLocationsKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteProjectsLocationsKeysError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UndeleteProjectsLocationsKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const undeleteProjectsLocationsKeys: API.OperationMethod<
   UndeleteProjectsLocationsKeysRequest,
@@ -688,3 +554,4 @@ export const undeleteProjectsLocationsKeys: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

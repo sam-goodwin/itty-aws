@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface DeletePublicationsReadersRequest {
@@ -67,46 +67,27 @@ export interface DeletePublicationsReadersRequest {
   force?: boolean;
 }
 export const DeletePublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    force: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://readerrevenuesubscriptionlinking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeletePublicationsReadersRequest",
-}) as any as S.Schema<DeletePublicationsReadersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://readerrevenuesubscriptionlinking.googleapis.com/"})),
+).annotate({ identifier: "DeletePublicationsReadersRequest" }) as any as S.Schema<DeletePublicationsReadersRequest>;
 
 /** Response to deleting a reader of a publication. */
 export interface DeleteReaderResponse {}
 export const DeleteReaderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReaderResponse",
-}) as any as S.Schema<DeleteReaderResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteReaderResponse" }) as any as S.Schema<DeleteReaderResponse>;
 
 export interface GetEntitlementsPublicationsReadersRequest {
   /** Required. The name of the reader entitlements to retrieve. Format: publications/{publication_id}/readers/{reader_id}/entitlements */
   name: string;
 }
-export const GetEntitlementsPublicationsReadersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://readerrevenuesubscriptionlinking.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetEntitlementsPublicationsReadersRequest",
-  }) as any as S.Schema<GetEntitlementsPublicationsReadersRequest>;
+export const GetEntitlementsPublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://readerrevenuesubscriptionlinking.googleapis.com/"})),
+).annotate({ identifier: "GetEntitlementsPublicationsReadersRequest" }) as any as S.Schema<GetEntitlementsPublicationsReadersRequest>;
 
 /** A single entitlement for a publication reader */
 export interface Entitlement {
@@ -120,18 +101,16 @@ export interface Entitlement {
   detail?: string;
 }
 export const Entitlement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionToken: S.optional(S.String),
-    productId: S.optional(S.String),
-    expireTime: S.optional(S.String),
-    detail: S.optional(S.String),
-  }),
+S.Struct({
+  "subscriptionToken": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+  "detail": S.optional(S.String),
+}),
 ).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
 
 export type EntitlementList = ReadonlyArray<Entitlement>;
-export const EntitlementList = /*@__PURE__*/ S.Array(
-  Entitlement,
-) as any as S.Schema<EntitlementList>;
+export const EntitlementList = /*@__PURE__*/ S.Array(Entitlement) as any as S.Schema<EntitlementList>;
 
 /** A singleton containing all of a reader's entitlements for a publication. */
 export interface ReaderEntitlements {
@@ -141,31 +120,21 @@ export interface ReaderEntitlements {
   entitlements?: EntitlementList;
 }
 export const ReaderEntitlements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    entitlements: S.optional(EntitlementList),
-  }),
-).annotate({
-  identifier: "ReaderEntitlements",
-}) as any as S.Schema<ReaderEntitlements>;
+S.Struct({
+  "name": S.optional(S.String),
+  "entitlements": S.optional(EntitlementList),
+}),
+).annotate({ identifier: "ReaderEntitlements" }) as any as S.Schema<ReaderEntitlements>;
 
 export interface GetPublicationsReadersRequest {
   /** Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} */
   name: string;
 }
 export const GetPublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://readerrevenuesubscriptionlinking.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPublicationsReadersRequest",
-}) as any as S.Schema<GetPublicationsReadersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://readerrevenuesubscriptionlinking.googleapis.com/"})),
+).annotate({ identifier: "GetPublicationsReadersRequest" }) as any as S.Schema<GetPublicationsReadersRequest>;
 
 /** A reader of a publication. */
 export interface Reader {
@@ -181,13 +150,13 @@ export interface Reader {
   name?: string;
 }
 export const Reader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    originatingPublicationId: S.optional(S.String),
-    publicationId: S.optional(S.String),
-    ppid: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "originatingPublicationId": S.optional(S.String),
+  "publicationId": S.optional(S.String),
+  "ppid": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Reader" }) as any as S.Schema<Reader>;
 
 export interface UpdateEntitlementsPublicationsReadersRequest {
@@ -198,29 +167,15 @@ export interface UpdateEntitlementsPublicationsReadersRequest {
   /** Request body */
   body?: ReaderEntitlements;
 }
-export const UpdateEntitlementsPublicationsReadersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ReaderEntitlements.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://readerrevenuesubscriptionlinking.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateEntitlementsPublicationsReadersRequest",
-  }) as any as S.Schema<UpdateEntitlementsPublicationsReadersRequest>;
+export const UpdateEntitlementsPublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ReaderEntitlements.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://readerrevenuesubscriptionlinking.googleapis.com/"})),
+).annotate({ identifier: "UpdateEntitlementsPublicationsReadersRequest" }) as any as S.Schema<UpdateEntitlementsPublicationsReadersRequest>;
 
-export type DeletePublicationsReadersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeletePublicationsReadersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes a publication reader, effectively severing the association with a Google user. If `force` is set to true, any entitlements for this reader will also be deleted. (Otherwise, the request will only work if the reader has no entitlements.) - If the reader does not exist, return NOT_FOUND. - Return FAILED_PRECONDITION if the force field is false (or unset) and entitlements are present. */
 export const deletePublicationsReaders: API.OperationMethod<
   DeletePublicationsReadersRequest,
@@ -235,10 +190,7 @@ export const deletePublicationsReaders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetEntitlementsPublicationsReadersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetEntitlementsPublicationsReadersError = NotFound | Forbidden | GcpOpError;
 /** Gets the reader entitlements for a publication reader. - Returns PERMISSION_DENIED if the caller does not have access. - Returns NOT_FOUND if the reader does not exist. */
 export const getEntitlementsPublicationsReaders: API.OperationMethod<
   GetEntitlementsPublicationsReadersRequest,
@@ -268,12 +220,7 @@ export const getPublicationsReaders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateEntitlementsPublicationsReadersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEntitlementsPublicationsReadersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the reader entitlements for a publication reader. The entire reader entitlements will be overwritten by the new reader entitlements in the payload, like a PUT. - Returns PERMISSION_DENIED if the caller does not have access. - Returns NOT_FOUND if the reader does not exist. */
 export const updateEntitlementsPublicationsReaders: API.OperationMethod<
   UpdateEntitlementsPublicationsReadersRequest,
@@ -287,3 +234,4 @@ export const updateEntitlementsPublicationsReaders: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

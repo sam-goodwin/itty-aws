@@ -24,10 +24,21 @@
             "smithy.api#httpHeader",
             "smithy.api#httpPayload",
             "smithy.api#jsonName",
-            "com.cloudflare.protocols#envelopePayload"
+            "com.cloudflare.protocols#envelopePayload",
+            "com.cloudflare.protocols#deepQuery"
           ]
         },
         "smithy.api#documentation": "Cloudflare client-v4 JSON protocol. Every response is wrapped in a `{ success, errors, messages, result, result_info }` envelope. `success`/`errors`/`messages`/`result_info` are protocol metadata handled by the client; an operation's output shape describes only the unwrapped `result` payload."
+      }
+    },
+    "com.cloudflare.protocols#deepQuery": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#trait": {
+          "selector": "structure > member"
+        },
+        "smithy.api#documentation": "Marks a struct-valued input member whose fields serialize as a dotted query-parameter family (`account.id=…`). The trait value is the wire base name."
       }
     },
     "com.cloudflare.protocols#envelopePayload": {

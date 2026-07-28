@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface AcceptTermsOfServiceRequest {
@@ -69,20 +69,12 @@ export interface AcceptTermsOfServiceRequest {
   account?: string;
 }
 export const AcceptTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    account: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+name}:accept",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AcceptTermsOfServiceRequest",
-}) as any as S.Schema<AcceptTermsOfServiceRequest>;
+S.Struct({
+  "regionCode": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "account": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:accept","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "AcceptTermsOfServiceRequest" }) as any as S.Schema<AcceptTermsOfServiceRequest>;
 
 /** Describes the terms of service which are required to be accepted. */
 export interface Required {
@@ -92,18 +84,14 @@ export interface Required {
   tosFileUri?: string;
 }
 export const Required = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    termsOfService: S.optional(S.String),
-    tosFileUri: S.optional(S.String),
-  }),
+S.Struct({
+  "termsOfService": S.optional(S.String),
+  "tosFileUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "Required" }) as any as S.Schema<Required>;
 
-export type TermsOfServiceAgreementStateTermsOfServiceKindEnum =
-  | "TERMS_OF_SERVICE_KIND_UNSPECIFIED"
-  | "MERCHANT_CENTER"
-  | (string & {});
-export const TermsOfServiceAgreementStateTermsOfServiceKindEnum =
-  /*@__PURE__*/ S.String;
+export type TermsOfServiceAgreementStateTermsOfServiceKindEnum = "TERMS_OF_SERVICE_KIND_UNSPECIFIED" | "MERCHANT_CENTER";
+export const TermsOfServiceAgreementStateTermsOfServiceKindEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Merchantapi_Date {
@@ -115,14 +103,12 @@ export interface Merchantapi_Date {
   day?: number;
 }
 export const Merchantapi_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    year: S.optional(S.Number),
-    month: S.optional(S.Number),
-    day: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "Merchantapi_Date",
-}) as any as S.Schema<Merchantapi_Date>;
+S.Struct({
+  "year": S.optional(S.Number),
+  "month": S.optional(S.Number),
+  "day": S.optional(S.Number),
+}),
+).annotate({ identifier: "Merchantapi_Date" }) as any as S.Schema<Merchantapi_Date>;
 
 /** Describes the [accepted terms of service](https://developers.google.com/merchant/api/guides/accounts/create-and-configure#accept_the_merchant_center_terms_of_service). */
 export interface Accepted {
@@ -134,11 +120,11 @@ export interface Accepted {
   acceptedBy?: string;
 }
 export const Accepted = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    termsOfService: S.optional(S.String),
-    validUntil: S.optional(Merchantapi_Date),
-    acceptedBy: S.optional(S.String),
-  }),
+S.Struct({
+  "termsOfService": S.optional(S.String),
+  "validUntil": S.optional(Merchantapi_Date),
+  "acceptedBy": S.optional(S.String),
+}),
 ).annotate({ identifier: "Accepted" }) as any as S.Schema<Accepted>;
 
 /** This resource represents the agreement state for a given account and terms of service kind. The state is as follows: * If the business has accepted a terms of service, `accepted` will be populated, otherwise it will be empty * If the business must sign a terms of service, `required` will be populated, otherwise it will be empty. Note that both `required` and `accepted` can be present. In this case the `accepted` terms of services will have an expiration date set in the `valid_until` field. The `required` terms of services need to be accepted before `valid_until` in order for the account to continue having a valid agreement. When accepting new terms of services we expect third-party providers to display the text associated with the given terms of service agreement (the url to the file containing the text is added in the Required message below as `tos_file_uri`). The actual acceptance of the terms of service is done by calling accept on the `TermsOfService` resource. `valid_until` field. */
@@ -155,18 +141,14 @@ export interface TermsOfServiceAgreementState {
   accepted?: Accepted;
 }
 export const TermsOfServiceAgreementState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-    required: S.optional(Required),
-    name: S.optional(S.String),
-    termsOfServiceKind: S.optional(
-      TermsOfServiceAgreementStateTermsOfServiceKindEnum,
-    ),
-    accepted: S.optional(Accepted),
-  }),
-).annotate({
-  identifier: "TermsOfServiceAgreementState",
-}) as any as S.Schema<TermsOfServiceAgreementState>;
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "required": S.optional(Required),
+  "name": S.optional(S.String),
+  "termsOfServiceKind": S.optional(TermsOfServiceAgreementStateTermsOfServiceKindEnum),
+  "accepted": S.optional(Accepted),
+}),
+).annotate({ identifier: "TermsOfServiceAgreementState" }) as any as S.Schema<TermsOfServiceAgreementState>;
 
 /** Response message for the `AcceptTermsOfService` method. */
 export interface AcceptTermsOfServiceResponse {
@@ -174,20 +156,16 @@ export interface AcceptTermsOfServiceResponse {
   termsOfServiceAgreementState?: TermsOfServiceAgreementState;
 }
 export const AcceptTermsOfServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    termsOfServiceAgreementState: S.optional(TermsOfServiceAgreementState),
-  }),
-).annotate({
-  identifier: "AcceptTermsOfServiceResponse",
-}) as any as S.Schema<AcceptTermsOfServiceResponse>;
+S.Struct({
+  "termsOfServiceAgreementState": S.optional(TermsOfServiceAgreementState),
+}),
+).annotate({ identifier: "AcceptTermsOfServiceResponse" }) as any as S.Schema<AcceptTermsOfServiceResponse>;
 
 /** Request to approve an account service. */
 export interface ApproveAccountServiceRequest {}
 export const ApproveAccountServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ApproveAccountServiceRequest",
-}) as any as S.Schema<ApproveAccountServiceRequest>;
+S.Struct({}),
+).annotate({ identifier: "ApproveAccountServiceRequest" }) as any as S.Schema<ApproveAccountServiceRequest>;
 
 export interface ApproveAccountsServicesRequest {
   /** Required. The resource name of the account service to approve. Format: `accounts/{account}/services/{service}` */
@@ -196,58 +174,34 @@ export interface ApproveAccountsServicesRequest {
   body?: ApproveAccountServiceRequest;
 }
 export const ApproveAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+name}:approve",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ApproveAccountsServicesRequest",
-}) as any as S.Schema<ApproveAccountsServicesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:approve","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ApproveAccountsServicesRequest" }) as any as S.Schema<ApproveAccountsServicesRequest>;
 
 /** `AccountManagement` payload. */
 export interface AccountManagement {}
 export const AccountManagement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AccountManagement",
-}) as any as S.Schema<AccountManagement>;
+S.Struct({}),
+).annotate({ identifier: "AccountManagement" }) as any as S.Schema<AccountManagement>;
 
 /** `AccountAggregation` payload. */
 export interface AccountAggregation {}
 export const AccountAggregation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AccountAggregation",
-}) as any as S.Schema<AccountAggregation>;
+S.Struct({}),
+).annotate({ identifier: "AccountAggregation" }) as any as S.Schema<AccountAggregation>;
 
 /** `ProductsManagement` payload. */
 export interface ProductsManagement {}
 export const ProductsManagement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ProductsManagement",
-}) as any as S.Schema<ProductsManagement>;
+S.Struct({}),
+).annotate({ identifier: "ProductsManagement" }) as any as S.Schema<ProductsManagement>;
 
-export type HandshakeApprovalStateEnum =
-  | "APPROVAL_STATE_UNSPECIFIED"
-  | "PENDING"
-  | "WAITING"
-  | "ESTABLISHED"
-  | "REJECTED"
-  | (string & {});
+export type HandshakeApprovalStateEnum = "APPROVAL_STATE_UNSPECIFIED" | "PENDING" | "WAITING" | "ESTABLISHED" | "REJECTED";
 export const HandshakeApprovalStateEnum = /*@__PURE__*/ S.String;
 
-export type HandshakeActorEnum =
-  | "ACTOR_UNSPECIFIED"
-  | "ACCOUNT"
-  | "OTHER_PARTY"
-  | (string & {});
+export type HandshakeActorEnum = "ACTOR_UNSPECIFIED" | "ACCOUNT" | "OTHER_PARTY";
 export const HandshakeActorEnum = /*@__PURE__*/ S.String;
 
 /** The current status of establishing of the service. (for example, pending approval, approved, established). */
@@ -258,50 +212,38 @@ export interface Handshake {
   actor?: HandshakeActorEnum;
 }
 export const Handshake = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    approvalState: S.optional(HandshakeApprovalStateEnum),
-    actor: S.optional(HandshakeActorEnum),
-  }),
+S.Struct({
+  "approvalState": S.optional(HandshakeApprovalStateEnum),
+  "actor": S.optional(HandshakeActorEnum),
+}),
 ).annotate({ identifier: "Handshake" }) as any as S.Schema<Handshake>;
 
 /** `ComparisonShopping` payload. */
 export interface ComparisonShopping {}
 export const ComparisonShopping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ComparisonShopping",
-}) as any as S.Schema<ComparisonShopping>;
+S.Struct({}),
+).annotate({ identifier: "ComparisonShopping" }) as any as S.Schema<ComparisonShopping>;
 
 /** `LocalListingManagement` payload. */
 export interface LocalListingManagement {}
 export const LocalListingManagement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LocalListingManagement",
-}) as any as S.Schema<LocalListingManagement>;
+S.Struct({}),
+).annotate({ identifier: "LocalListingManagement" }) as any as S.Schema<LocalListingManagement>;
 
-export type AccountServiceMutabilityEnum =
-  | "MUTABILITY_UNSPECIFIED"
-  | "MUTABLE"
-  | "IMMUTABLE"
-  | (string & {});
+export type AccountServiceMutabilityEnum = "MUTABILITY_UNSPECIFIED" | "MUTABLE" | "IMMUTABLE";
 export const AccountServiceMutabilityEnum = /*@__PURE__*/ S.String;
 
 /** `CampaignManagement` payload. */
 export interface CampaignsManagement {}
 export const CampaignsManagement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CampaignsManagement",
-}) as any as S.Schema<CampaignsManagement>;
+S.Struct({}),
+).annotate({ identifier: "CampaignsManagement" }) as any as S.Schema<CampaignsManagement>;
 
 /** `UcpCheckoutManagement` payload. */
 export interface UcpCheckoutManagement {}
 export const UcpCheckoutManagement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UcpCheckoutManagement",
-}) as any as S.Schema<UcpCheckoutManagement>;
+S.Struct({}),
+).annotate({ identifier: "UcpCheckoutManagement" }) as any as S.Schema<UcpCheckoutManagement>;
 
 /** The `AccountService` message represents a specific service that a provider account offers to a Merchant Center account. `AccountService` defines the permissions and capabilities granted to the provider, allowing for operations such as product management or campaign management. The lifecycle of an `AccountService` involves a proposal phase, where one party suggests the service, and an approval phase, where the other party accepts or rejects it. This handshake mechanism ensures mutual consent before any access is granted. This mechanism safeguards both parties by ensuring that access rights are granted appropriately and that both the business and provider are aware of the services enabled. In scenarios where a user is an admin of both accounts, the approval can happen automatically. The mutability of a service is also managed through `AccountService`. Some services might be immutable, for example, if they were established through other systems or APIs, and you cannot alter them through this API. */
 export interface AccountService {
@@ -333,21 +275,21 @@ export interface AccountService {
   ucpCheckoutManagement?: UcpCheckoutManagement;
 }
 export const AccountService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountManagement: S.optional(AccountManagement),
-    accountAggregation: S.optional(AccountAggregation),
-    productsManagement: S.optional(ProductsManagement),
-    handshake: S.optional(Handshake),
-    provider: S.optional(S.String),
-    providerDisplayName: S.optional(S.String),
-    comparisonShopping: S.optional(ComparisonShopping),
-    name: S.optional(S.String),
-    localListingManagement: S.optional(LocalListingManagement),
-    externalAccountId: S.optional(S.String),
-    mutability: S.optional(AccountServiceMutabilityEnum),
-    campaignsManagement: S.optional(CampaignsManagement),
-    ucpCheckoutManagement: S.optional(UcpCheckoutManagement),
-  }),
+S.Struct({
+  "accountManagement": S.optional(AccountManagement),
+  "accountAggregation": S.optional(AccountAggregation),
+  "productsManagement": S.optional(ProductsManagement),
+  "handshake": S.optional(Handshake),
+  "provider": S.optional(S.String),
+  "providerDisplayName": S.optional(S.String),
+  "comparisonShopping": S.optional(ComparisonShopping),
+  "name": S.optional(S.String),
+  "localListingManagement": S.optional(LocalListingManagement),
+  "externalAccountId": S.optional(S.String),
+  "mutability": S.optional(AccountServiceMutabilityEnum),
+  "campaignsManagement": S.optional(CampaignsManagement),
+  "ucpCheckoutManagement": S.optional(UcpCheckoutManagement),
+}),
 ).annotate({ identifier: "AccountService" }) as any as S.Schema<AccountService>;
 
 /** Request message for the `ClaimHomepage` method. */
@@ -356,12 +298,10 @@ export interface ClaimHomepageRequest {
   overwrite?: boolean;
 }
 export const ClaimHomepageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    overwrite: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClaimHomepageRequest",
-}) as any as S.Schema<ClaimHomepageRequest>;
+S.Struct({
+  "overwrite": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ClaimHomepageRequest" }) as any as S.Schema<ClaimHomepageRequest>;
 
 export interface ClaimAccountsHomepageRequest {
   /** Required. The name of the homepage to claim. Format: `accounts/{account}/homepage` */
@@ -370,19 +310,11 @@ export interface ClaimAccountsHomepageRequest {
   body?: ClaimHomepageRequest;
 }
 export const ClaimAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(ClaimHomepageRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+name}:claim",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ClaimAccountsHomepageRequest",
-}) as any as S.Schema<ClaimAccountsHomepageRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ClaimHomepageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:claim","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ClaimAccountsHomepageRequest" }) as any as S.Schema<ClaimAccountsHomepageRequest>;
 
 /** The `Homepage` message represents a business's store homepage within the system. A business's homepage is the primary domain where customers interact with their store. The homepage can be claimed and verified as a proof of ownership and allows the business to unlock features that require a verified website. For more information, see [Understanding online store URL verification](//support.google.com/merchants/answer/176793). */
 export interface Homepage {
@@ -394,28 +326,17 @@ export interface Homepage {
   uri?: string;
 }
 export const Homepage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    claimed: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    uri: S.optional(S.String),
-  }),
+S.Struct({
+  "claimed": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "uri": S.optional(S.String),
+}),
 ).annotate({ identifier: "Homepage" }) as any as S.Schema<Homepage>;
 
-export type OmnichannelSettingLsfTypeEnum =
-  | "LSF_TYPE_UNSPECIFIED"
-  | "GHLSF"
-  | "MHLSF_BASIC"
-  | "MHLSF_FULL"
-  | (string & {});
+export type OmnichannelSettingLsfTypeEnum = "LSF_TYPE_UNSPECIFIED" | "GHLSF" | "MHLSF_BASIC" | "MHLSF_FULL";
 export const OmnichannelSettingLsfTypeEnum = /*@__PURE__*/ S.String;
 
-export type InStockStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "FAILED"
-  | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+export type InStockStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "FAILED" | "RUNNING" | "ACTION_REQUIRED";
 export const InStockStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to InStock. */
@@ -426,19 +347,13 @@ export interface InStock {
   state?: InStockStateEnum;
 }
 export const InStock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    state: S.optional(InStockStateEnum),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "state": S.optional(InStockStateEnum),
+}),
 ).annotate({ identifier: "InStock" }) as any as S.Schema<InStock>;
 
-export type OnDisplayToOrderStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "FAILED"
-  | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+export type OnDisplayToOrderStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "FAILED" | "RUNNING" | "ACTION_REQUIRED";
 export const OnDisplayToOrderStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to the on display to order ([ODO](https://support.google.com/merchants/answer/14615056?ref_topic=15145747&sjid=6892280366904591178-NC)). */
@@ -449,21 +364,13 @@ export interface OnDisplayToOrder {
   state?: OnDisplayToOrderStateEnum;
 }
 export const OnDisplayToOrder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    state: S.optional(OnDisplayToOrderStateEnum),
-  }),
-).annotate({
-  identifier: "OnDisplayToOrder",
-}) as any as S.Schema<OnDisplayToOrder>;
+S.Struct({
+  "uri": S.optional(S.String),
+  "state": S.optional(OnDisplayToOrderStateEnum),
+}),
+).annotate({ identifier: "OnDisplayToOrder" }) as any as S.Schema<OnDisplayToOrder>;
 
-export type AboutStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "FAILED"
-  | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+export type AboutStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "FAILED" | "RUNNING" | "ACTION_REQUIRED";
 export const AboutStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to the about page ([impressum](https://support.google.com/merchants/answer/14675634?ref_topic=15145634&sjid=6892280366904591178-NC)). */
@@ -474,29 +381,16 @@ export interface About {
   state?: AboutStateEnum;
 }
 export const About = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    state: S.optional(AboutStateEnum),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "state": S.optional(AboutStateEnum),
+}),
 ).annotate({ identifier: "About" }) as any as S.Schema<About>;
 
-export type InventoryVerificationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTION_REQUIRED"
-  | "INACTIVE"
-  | "RUNNING"
-  | "SUCCEEDED"
-  | "SUSPENDED"
-  | (string & {});
+export type InventoryVerificationStateEnum = "STATE_UNSPECIFIED" | "ACTION_REQUIRED" | "INACTIVE" | "RUNNING" | "SUCCEEDED" | "SUSPENDED";
 export const InventoryVerificationStateEnum = /*@__PURE__*/ S.String;
 
-export type InventoryVerificationContactStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "FAILED"
-  | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+export type InventoryVerificationContactStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "FAILED" | "RUNNING" | "ACTION_REQUIRED";
 export const InventoryVerificationContactStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to [inventory verification](https://support.google.com/merchants/answer/14684499?ref_topic=15145634&sjid=6892280366904591178-NC). */
@@ -511,23 +405,15 @@ export interface InventoryVerification {
   contactEmail?: string;
 }
 export const InventoryVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(InventoryVerificationStateEnum),
-    contact: S.optional(S.String),
-    contactState: S.optional(InventoryVerificationContactStateEnum),
-    contactEmail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InventoryVerification",
-}) as any as S.Schema<InventoryVerification>;
+S.Struct({
+  "state": S.optional(InventoryVerificationStateEnum),
+  "contact": S.optional(S.String),
+  "contactState": S.optional(InventoryVerificationContactStateEnum),
+  "contactEmail": S.optional(S.String),
+}),
+).annotate({ identifier: "InventoryVerification" }) as any as S.Schema<InventoryVerification>;
 
-export type LfpLinkStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "FAILED"
-  | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+export type LfpLinkStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "FAILED" | "RUNNING" | "ACTION_REQUIRED";
 export const LfpLinkStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to the LFP link. */
@@ -540,20 +426,14 @@ export interface LfpLink {
   state?: LfpLinkStateEnum;
 }
 export const LfpLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lfpProvider: S.optional(S.String),
-    externalAccountId: S.optional(S.String),
-    state: S.optional(LfpLinkStateEnum),
-  }),
+S.Struct({
+  "lfpProvider": S.optional(S.String),
+  "externalAccountId": S.optional(S.String),
+  "state": S.optional(LfpLinkStateEnum),
+}),
 ).annotate({ identifier: "LfpLink" }) as any as S.Schema<LfpLink>;
 
-export type PickupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "FAILED"
-  | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+export type PickupStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "FAILED" | "RUNNING" | "ACTION_REQUIRED";
 export const PickupStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to Pickup. */
@@ -564,10 +444,10 @@ export interface Pickup {
   state?: PickupStateEnum;
 }
 export const Pickup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    state: S.optional(PickupStateEnum),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "state": S.optional(PickupStateEnum),
+}),
 ).annotate({ identifier: "Pickup" }) as any as S.Schema<Pickup>;
 
 /** Collection of information related to the omnichannel settings of a merchant. */
@@ -592,20 +472,18 @@ export interface OmnichannelSetting {
   pickup?: Pickup;
 }
 export const OmnichannelSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lsfType: S.optional(OmnichannelSettingLsfTypeEnum),
-    inStock: S.optional(InStock),
-    odo: S.optional(OnDisplayToOrder),
-    name: S.optional(S.String),
-    regionCode: S.optional(S.String),
-    about: S.optional(About),
-    inventoryVerification: S.optional(InventoryVerification),
-    lfpLink: S.optional(LfpLink),
-    pickup: S.optional(Pickup),
-  }),
-).annotate({
-  identifier: "OmnichannelSetting",
-}) as any as S.Schema<OmnichannelSetting>;
+S.Struct({
+  "lsfType": S.optional(OmnichannelSettingLsfTypeEnum),
+  "inStock": S.optional(InStock),
+  "odo": S.optional(OnDisplayToOrder),
+  "name": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+  "about": S.optional(About),
+  "inventoryVerification": S.optional(InventoryVerification),
+  "lfpLink": S.optional(LfpLink),
+  "pickup": S.optional(Pickup),
+}),
+).annotate({ identifier: "OmnichannelSetting" }) as any as S.Schema<OmnichannelSetting>;
 
 export interface CreateAccountsOmnichannelSettingsRequest {
   /** Required. The parent resource where this omnichannel setting will be created. Format: `accounts/{account}` */
@@ -613,26 +491,15 @@ export interface CreateAccountsOmnichannelSettingsRequest {
   /** Request body */
   body?: OmnichannelSetting;
 }
-export const CreateAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(OmnichannelSetting.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+parent}/omnichannelSettings",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateAccountsOmnichannelSettingsRequest",
-}) as any as S.Schema<CreateAccountsOmnichannelSettingsRequest>;
+export const CreateAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(OmnichannelSetting.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+parent}/omnichannelSettings","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsOmnichannelSettingsRequest" }) as any as S.Schema<CreateAccountsOmnichannelSettingsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The price represented as a number and currency. */
 export interface Price {
@@ -642,10 +509,10 @@ export interface Price {
   currencyCode?: string;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amountMicros: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-  }),
+S.Struct({
+  "amountMicros": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 /** The restocking fee. This can be a flat fee or a micro percent. */
@@ -656,17 +523,13 @@ export interface RestockingFee {
   fixedFee?: Price;
 }
 export const RestockingFee = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microPercent: S.optional(S.Number),
-    fixedFee: S.optional(Price),
-  }),
+S.Struct({
+  "microPercent": S.optional(S.Number),
+  "fixedFee": S.optional(Price),
+}),
 ).annotate({ identifier: "RestockingFee" }) as any as S.Schema<RestockingFee>;
 
-export type ReturnShippingFeeTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "FIXED"
-  | "CUSTOMER_PAYING_ACTUAL_FEE"
-  | (string & {});
+export type ReturnShippingFeeTypeEnum = "TYPE_UNSPECIFIED" | "FIXED" | "CUSTOMER_PAYING_ACTUAL_FEE";
 export const ReturnShippingFeeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The return shipping fee. This can either be a fixed fee or a boolean to indicate that the customer pays the actual shipping cost. */
@@ -677,57 +540,28 @@ export interface ReturnShippingFee {
   fixedFee?: Price;
 }
 export const ReturnShippingFee = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ReturnShippingFeeTypeEnum),
-    fixedFee: S.optional(Price),
-  }),
-).annotate({
-  identifier: "ReturnShippingFee",
-}) as any as S.Schema<ReturnShippingFee>;
+S.Struct({
+  "type": S.optional(ReturnShippingFeeTypeEnum),
+  "fixedFee": S.optional(Price),
+}),
+).annotate({ identifier: "ReturnShippingFee" }) as any as S.Schema<ReturnShippingFee>;
 
-export type OnlineReturnPolicyReturnMethodsItemEnum =
-  | "RETURN_METHOD_UNSPECIFIED"
-  | "BY_MAIL"
-  | "IN_STORE"
-  | "AT_A_KIOSK"
-  | (string & {});
+export type OnlineReturnPolicyReturnMethodsItemEnum = "RETURN_METHOD_UNSPECIFIED" | "BY_MAIL" | "IN_STORE" | "AT_A_KIOSK";
 export const OnlineReturnPolicyReturnMethodsItemEnum = /*@__PURE__*/ S.String;
 
-export type OnlineReturnPolicyReturnMethodsItemEnumList =
-  ReadonlyArray<OnlineReturnPolicyReturnMethodsItemEnum>;
-export const OnlineReturnPolicyReturnMethodsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    OnlineReturnPolicyReturnMethodsItemEnum,
-  ) as any as S.Schema<OnlineReturnPolicyReturnMethodsItemEnumList>;
+export type OnlineReturnPolicyReturnMethodsItemEnumList = ReadonlyArray<OnlineReturnPolicyReturnMethodsItemEnum>;
+export const OnlineReturnPolicyReturnMethodsItemEnumList = /*@__PURE__*/ S.Array(OnlineReturnPolicyReturnMethodsItemEnum) as any as S.Schema<OnlineReturnPolicyReturnMethodsItemEnumList>;
 
-export type OnlineReturnPolicyReturnLabelSourceEnum =
-  | "RETURN_LABEL_SOURCE_UNSPECIFIED"
-  | "DOWNLOAD_AND_PRINT"
-  | "IN_THE_PACKAGE"
-  | "CUSTOMER_RESPONSIBILITY"
-  | (string & {});
+export type OnlineReturnPolicyReturnLabelSourceEnum = "RETURN_LABEL_SOURCE_UNSPECIFIED" | "DOWNLOAD_AND_PRINT" | "IN_THE_PACKAGE" | "CUSTOMER_RESPONSIBILITY";
 export const OnlineReturnPolicyReturnLabelSourceEnum = /*@__PURE__*/ S.String;
 
-export type OnlineReturnPolicyItemConditionsItemEnum =
-  | "ITEM_CONDITION_UNSPECIFIED"
-  | "NEW"
-  | "USED"
-  | (string & {});
+export type OnlineReturnPolicyItemConditionsItemEnum = "ITEM_CONDITION_UNSPECIFIED" | "NEW" | "USED";
 export const OnlineReturnPolicyItemConditionsItemEnum = /*@__PURE__*/ S.String;
 
-export type OnlineReturnPolicyItemConditionsItemEnumList =
-  ReadonlyArray<OnlineReturnPolicyItemConditionsItemEnum>;
-export const OnlineReturnPolicyItemConditionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    OnlineReturnPolicyItemConditionsItemEnum,
-  ) as any as S.Schema<OnlineReturnPolicyItemConditionsItemEnumList>;
+export type OnlineReturnPolicyItemConditionsItemEnumList = ReadonlyArray<OnlineReturnPolicyItemConditionsItemEnum>;
+export const OnlineReturnPolicyItemConditionsItemEnumList = /*@__PURE__*/ S.Array(OnlineReturnPolicyItemConditionsItemEnum) as any as S.Schema<OnlineReturnPolicyItemConditionsItemEnumList>;
 
-export type PolicyTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "NUMBER_OF_DAYS_AFTER_DELIVERY"
-  | "NO_RETURNS"
-  | "LIFETIME_RETURNS"
-  | (string & {});
+export type PolicyTypeEnum = "TYPE_UNSPECIFIED" | "NUMBER_OF_DAYS_AFTER_DELIVERY" | "NO_RETURNS" | "LIFETIME_RETURNS";
 export const PolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** The available policies. */
@@ -738,10 +572,10 @@ export interface Policy {
   days?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(PolicyTypeEnum),
-    days: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(PolicyTypeEnum),
+  "days": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface SeasonalOverride {
@@ -757,21 +591,17 @@ export interface SeasonalOverride {
   returnDays?: number;
 }
 export const SeasonalOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    returnUntilDate: S.optional(Merchantapi_Date),
-    label: S.optional(S.String),
-    endDate: S.optional(Merchantapi_Date),
-    startDate: S.optional(Merchantapi_Date),
-    returnDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SeasonalOverride",
-}) as any as S.Schema<SeasonalOverride>;
+S.Struct({
+  "returnUntilDate": S.optional(Merchantapi_Date),
+  "label": S.optional(S.String),
+  "endDate": S.optional(Merchantapi_Date),
+  "startDate": S.optional(Merchantapi_Date),
+  "returnDays": S.optional(S.Number),
+}),
+).annotate({ identifier: "SeasonalOverride" }) as any as S.Schema<SeasonalOverride>;
 
 export type SeasonalOverrideList = ReadonlyArray<SeasonalOverride>;
-export const SeasonalOverrideList = /*@__PURE__*/ S.Array(
-  SeasonalOverride,
-) as any as S.Schema<SeasonalOverrideList>;
+export const SeasonalOverrideList = /*@__PURE__*/ S.Array(SeasonalOverride) as any as S.Schema<SeasonalOverrideList>;
 
 /** [Online return policy](https://support.google.com/merchants/answer/10220642) object. This is currently used to represent return policies for ads and free listings programs. */
 export interface OnlineReturnPolicy {
@@ -807,26 +637,24 @@ export interface OnlineReturnPolicy {
   returnPolicyId?: string;
 }
 export const OnlineReturnPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countries: S.optional(StringList),
-    restockingFee: S.optional(RestockingFee),
-    processRefundDays: S.optional(S.Number),
-    returnShippingFee: S.optional(ReturnShippingFee),
-    name: S.optional(S.String),
-    label: S.optional(S.String),
-    acceptExchange: S.optional(S.Boolean),
-    returnPolicyUri: S.optional(S.String),
-    returnMethods: S.optional(OnlineReturnPolicyReturnMethodsItemEnumList),
-    returnLabelSource: S.optional(OnlineReturnPolicyReturnLabelSourceEnum),
-    itemConditions: S.optional(OnlineReturnPolicyItemConditionsItemEnumList),
-    policy: S.optional(Policy),
-    seasonalOverrides: S.optional(SeasonalOverrideList),
-    acceptDefectiveOnly: S.optional(S.Boolean),
-    returnPolicyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OnlineReturnPolicy",
-}) as any as S.Schema<OnlineReturnPolicy>;
+S.Struct({
+  "countries": S.optional(StringList),
+  "restockingFee": S.optional(RestockingFee),
+  "processRefundDays": S.optional(S.Number),
+  "returnShippingFee": S.optional(ReturnShippingFee),
+  "name": S.optional(S.String),
+  "label": S.optional(S.String),
+  "acceptExchange": S.optional(S.Boolean),
+  "returnPolicyUri": S.optional(S.String),
+  "returnMethods": S.optional(OnlineReturnPolicyReturnMethodsItemEnumList),
+  "returnLabelSource": S.optional(OnlineReturnPolicyReturnLabelSourceEnum),
+  "itemConditions": S.optional(OnlineReturnPolicyItemConditionsItemEnumList),
+  "policy": S.optional(Policy),
+  "seasonalOverrides": S.optional(SeasonalOverrideList),
+  "acceptDefectiveOnly": S.optional(S.Boolean),
+  "returnPolicyId": S.optional(S.String),
+}),
+).annotate({ identifier: "OnlineReturnPolicy" }) as any as S.Schema<OnlineReturnPolicy>;
 
 export interface CreateAccountsOnlineReturnPoliciesRequest {
   /** Required. The Merchant Center account for which the return policy will be created. Format: `accounts/{account}` */
@@ -834,45 +662,20 @@ export interface CreateAccountsOnlineReturnPoliciesRequest {
   /** Request body */
   body?: OnlineReturnPolicy;
 }
-export const CreateAccountsOnlineReturnPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(OnlineReturnPolicy.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+parent}/onlineReturnPolicies",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateAccountsOnlineReturnPoliciesRequest",
-  }) as any as S.Schema<CreateAccountsOnlineReturnPoliciesRequest>;
+export const CreateAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(OnlineReturnPolicy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+parent}/onlineReturnPolicies","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsOnlineReturnPoliciesRequest" }) as any as S.Schema<CreateAccountsOnlineReturnPoliciesRequest>;
 
-export type CheckoutSettingsEffectiveEnrollmentStateEnum =
-  | "CHECKOUT_ENROLLMENT_STATE_UNSPECIFIED"
-  | "INACTIVE"
-  | "ENROLLED"
-  | "OPTED_OUT"
-  | (string & {});
-export const CheckoutSettingsEffectiveEnrollmentStateEnum =
-  /*@__PURE__*/ S.String;
+export type CheckoutSettingsEffectiveEnrollmentStateEnum = "CHECKOUT_ENROLLMENT_STATE_UNSPECIFIED" | "INACTIVE" | "ENROLLED" | "OPTED_OUT";
+export const CheckoutSettingsEffectiveEnrollmentStateEnum = /*@__PURE__*/ S.String;
 
-export type CheckoutSettingsReviewStateEnum =
-  | "CHECKOUT_REVIEW_STATE_UNSPECIFIED"
-  | "IN_REVIEW"
-  | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+export type CheckoutSettingsReviewStateEnum = "CHECKOUT_REVIEW_STATE_UNSPECIFIED" | "IN_REVIEW" | "APPROVED" | "DISAPPROVED";
 export const CheckoutSettingsReviewStateEnum = /*@__PURE__*/ S.String;
 
-export type CheckoutSettingsEffectiveReviewStateEnum =
-  | "CHECKOUT_REVIEW_STATE_UNSPECIFIED"
-  | "IN_REVIEW"
-  | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+export type CheckoutSettingsEffectiveReviewStateEnum = "CHECKOUT_REVIEW_STATE_UNSPECIFIED" | "IN_REVIEW" | "APPROVED" | "DISAPPROVED";
 export const CheckoutSettingsEffectiveReviewStateEnum = /*@__PURE__*/ S.String;
 
 /** URL settings for cart or checkout URL. */
@@ -883,44 +686,20 @@ export interface UriSettings {
   cartUriTemplate?: string;
 }
 export const UriSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutUriTemplate: S.optional(S.String),
-    cartUriTemplate: S.optional(S.String),
-  }),
+S.Struct({
+  "checkoutUriTemplate": S.optional(S.String),
+  "cartUriTemplate": S.optional(S.String),
+}),
 ).annotate({ identifier: "UriSettings" }) as any as S.Schema<UriSettings>;
 
-export type CheckoutSettingsEnrollmentStateEnum =
-  | "CHECKOUT_ENROLLMENT_STATE_UNSPECIFIED"
-  | "INACTIVE"
-  | "ENROLLED"
-  | "OPTED_OUT"
-  | (string & {});
+export type CheckoutSettingsEnrollmentStateEnum = "CHECKOUT_ENROLLMENT_STATE_UNSPECIFIED" | "INACTIVE" | "ENROLLED" | "OPTED_OUT";
 export const CheckoutSettingsEnrollmentStateEnum = /*@__PURE__*/ S.String;
 
-export type CheckoutSettingsEligibleDestinationsItemEnum =
-  | "DESTINATION_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LOCAL_LISTINGS"
-  | "YOUTUBE_SHOPPING"
-  | "YOUTUBE_SHOPPING_CHECKOUT"
-  | "YOUTUBE_AFFILIATE"
-  | "FREE_VEHICLE_LISTINGS"
-  | "VEHICLE_ADS"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | (string & {});
-export const CheckoutSettingsEligibleDestinationsItemEnum =
-  /*@__PURE__*/ S.String;
+export type CheckoutSettingsEligibleDestinationsItemEnum = "DESTINATION_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LOCAL_LISTINGS" | "YOUTUBE_SHOPPING" | "YOUTUBE_SHOPPING_CHECKOUT" | "YOUTUBE_AFFILIATE" | "FREE_VEHICLE_LISTINGS" | "VEHICLE_ADS" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL";
+export const CheckoutSettingsEligibleDestinationsItemEnum = /*@__PURE__*/ S.String;
 
-export type CheckoutSettingsEligibleDestinationsItemEnumList =
-  ReadonlyArray<CheckoutSettingsEligibleDestinationsItemEnum>;
-export const CheckoutSettingsEligibleDestinationsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    CheckoutSettingsEligibleDestinationsItemEnum,
-  ) as any as S.Schema<CheckoutSettingsEligibleDestinationsItemEnumList>;
+export type CheckoutSettingsEligibleDestinationsItemEnumList = ReadonlyArray<CheckoutSettingsEligibleDestinationsItemEnum>;
+export const CheckoutSettingsEligibleDestinationsItemEnumList = /*@__PURE__*/ S.Array(CheckoutSettingsEligibleDestinationsItemEnum) as any as S.Schema<CheckoutSettingsEligibleDestinationsItemEnumList>;
 
 /** [CheckoutSettings](https://support.google.com/merchants/answer/13945960) for a specific merchant. */
 export interface CheckoutSettings {
@@ -942,23 +721,17 @@ export interface CheckoutSettings {
   effectiveUriSettings?: UriSettings;
 }
 export const CheckoutSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    effectiveEnrollmentState: S.optional(
-      CheckoutSettingsEffectiveEnrollmentStateEnum,
-    ),
-    reviewState: S.optional(CheckoutSettingsReviewStateEnum),
-    name: S.optional(S.String),
-    effectiveReviewState: S.optional(CheckoutSettingsEffectiveReviewStateEnum),
-    uriSettings: S.optional(UriSettings),
-    enrollmentState: S.optional(CheckoutSettingsEnrollmentStateEnum),
-    eligibleDestinations: S.optional(
-      CheckoutSettingsEligibleDestinationsItemEnumList,
-    ),
-    effectiveUriSettings: S.optional(UriSettings),
-  }),
-).annotate({
-  identifier: "CheckoutSettings",
-}) as any as S.Schema<CheckoutSettings>;
+S.Struct({
+  "effectiveEnrollmentState": S.optional(CheckoutSettingsEffectiveEnrollmentStateEnum),
+  "reviewState": S.optional(CheckoutSettingsReviewStateEnum),
+  "name": S.optional(S.String),
+  "effectiveReviewState": S.optional(CheckoutSettingsEffectiveReviewStateEnum),
+  "uriSettings": S.optional(UriSettings),
+  "enrollmentState": S.optional(CheckoutSettingsEnrollmentStateEnum),
+  "eligibleDestinations": S.optional(CheckoutSettingsEligibleDestinationsItemEnumList),
+  "effectiveUriSettings": S.optional(UriSettings),
+}),
+).annotate({ identifier: "CheckoutSettings" }) as any as S.Schema<CheckoutSettings>;
 
 export interface CreateAccountsProgramsCheckoutSettingsRequest {
   /** Required. The merchant account for which the `CheckoutSettings` will be created. */
@@ -966,21 +739,12 @@ export interface CreateAccountsProgramsCheckoutSettingsRequest {
   /** Request body */
   body?: CheckoutSettings;
 }
-export const CreateAccountsProgramsCheckoutSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CheckoutSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+parent}/checkoutSettings",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateAccountsProgramsCheckoutSettingsRequest",
-  }) as any as S.Schema<CreateAccountsProgramsCheckoutSettingsRequest>;
+export const CreateAccountsProgramsCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CheckoutSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+parent}/checkoutSettings","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsProgramsCheckoutSettingsRequest" }) as any as S.Schema<CreateAccountsProgramsCheckoutSettingsRequest>;
 
 /** A list of geotargets that defines the region area. */
 export interface GeoTargetArea {
@@ -988,9 +752,9 @@ export interface GeoTargetArea {
   geotargetCriteriaIds?: StringList;
 }
 export const GeoTargetArea = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geotargetCriteriaIds: S.optional(StringList),
-  }),
+S.Struct({
+  "geotargetCriteriaIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "GeoTargetArea" }) as any as S.Schema<GeoTargetArea>;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
@@ -1001,17 +765,13 @@ export interface LatLng {
   latitude?: number;
 }
 export const LatLng = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    longitude: S.optional(S.Number),
-    latitude: S.optional(S.Number),
-  }),
+S.Struct({
+  "longitude": S.optional(S.Number),
+  "latitude": S.optional(S.Number),
+}),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
-export type RadiusAreaRadiusUnitsEnum =
-  | "RADIUS_UNITS_UNSPECIFIED"
-  | "MILES"
-  | "KILOMETERS"
-  | (string & {});
+export type RadiusAreaRadiusUnitsEnum = "RADIUS_UNITS_UNSPECIFIED" | "MILES" | "KILOMETERS";
 export const RadiusAreaRadiusUnitsEnum = /*@__PURE__*/ S.String;
 
 /** A radius area that defines the region area. */
@@ -1026,12 +786,12 @@ export interface RadiusArea {
   radiusUnits?: RadiusAreaRadiusUnitsEnum;
 }
 export const RadiusArea = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latLng: S.optional(LatLng),
-    regionCode: S.optional(S.String),
-    radius: S.optional(S.Number),
-    radiusUnits: S.optional(RadiusAreaRadiusUnitsEnum),
-  }),
+S.Struct({
+  "latLng": S.optional(LatLng),
+  "regionCode": S.optional(S.String),
+  "radius": S.optional(S.Number),
+  "radiusUnits": S.optional(RadiusAreaRadiusUnitsEnum),
+}),
 ).annotate({ identifier: "RadiusArea" }) as any as S.Schema<RadiusArea>;
 
 /** A range of postal codes that defines the region area. */
@@ -1042,18 +802,14 @@ export interface PostalCodeRange {
   end?: string;
 }
 export const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    begin: S.optional(S.String),
-    end: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostalCodeRange",
-}) as any as S.Schema<PostalCodeRange>;
+S.Struct({
+  "begin": S.optional(S.String),
+  "end": S.optional(S.String),
+}),
+).annotate({ identifier: "PostalCodeRange" }) as any as S.Schema<PostalCodeRange>;
 
 export type PostalCodeRangeList = ReadonlyArray<PostalCodeRange>;
-export const PostalCodeRangeList = /*@__PURE__*/ S.Array(
-  PostalCodeRange,
-) as any as S.Schema<PostalCodeRangeList>;
+export const PostalCodeRangeList = /*@__PURE__*/ S.Array(PostalCodeRange) as any as S.Schema<PostalCodeRangeList>;
 
 /** A list of postal codes that defines the region area. Note: All regions defined using postal codes are accessible through the account's `ShippingSettings.postalCodeGroups` resource. */
 export interface PostalCodeArea {
@@ -1063,10 +819,10 @@ export interface PostalCodeArea {
   regionCode?: string;
 }
 export const PostalCodeArea = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    postalCodes: S.optional(PostalCodeRangeList),
-    regionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "postalCodes": S.optional(PostalCodeRangeList),
+  "regionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "PostalCodeArea" }) as any as S.Schema<PostalCodeArea>;
 
 /** Represents a geographic region that you can use as a target with both the `RegionalInventory` and `ShippingSettings` services. You can define regions as collections of either postal codes, radius areas or, in some countries, using predefined geotargets. A region must be defined by specifying exactly one of `postal_code_area`, `geotarget_area`, or `radius_area`. For more information, see [Set up regions ](https://support.google.com/merchants/answer/7410946#zippy=%2Ccreate-a-new-region) for more information. */
@@ -1087,15 +843,15 @@ export interface Region {
   postalCodeArea?: PostalCodeArea;
 }
 export const Region = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geotargetArea: S.optional(GeoTargetArea),
-    shippingEligible: S.optional(S.Boolean),
-    radiusArea: S.optional(RadiusArea),
-    name: S.optional(S.String),
-    regionalInventoryEligible: S.optional(S.Boolean),
-    displayName: S.optional(S.String),
-    postalCodeArea: S.optional(PostalCodeArea),
-  }),
+S.Struct({
+  "geotargetArea": S.optional(GeoTargetArea),
+  "shippingEligible": S.optional(S.Boolean),
+  "radiusArea": S.optional(RadiusArea),
+  "name": S.optional(S.String),
+  "regionalInventoryEligible": S.optional(S.Boolean),
+  "displayName": S.optional(S.String),
+  "postalCodeArea": S.optional(PostalCodeArea),
+}),
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
 export interface CreateAccountsRegionsRequest {
@@ -1107,42 +863,20 @@ export interface CreateAccountsRegionsRequest {
   body?: Region;
 }
 export const CreateAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionId: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Region.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+parent}/regions",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateAccountsRegionsRequest",
-}) as any as S.Schema<CreateAccountsRegionsRequest>;
+S.Struct({
+  "regionId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Region.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+parent}/regions","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsRegionsRequest" }) as any as S.Schema<CreateAccountsRegionsRequest>;
 
-export type UserAccessRightsItemEnum =
-  | "ACCESS_RIGHT_UNSPECIFIED"
-  | "STANDARD"
-  | "READ_ONLY"
-  | "ADMIN"
-  | "PERFORMANCE_REPORTING"
-  | "API_DEVELOPER"
-  | (string & {});
+export type UserAccessRightsItemEnum = "ACCESS_RIGHT_UNSPECIFIED" | "STANDARD" | "READ_ONLY" | "ADMIN" | "PERFORMANCE_REPORTING" | "API_DEVELOPER";
 export const UserAccessRightsItemEnum = /*@__PURE__*/ S.String;
 
-export type UserAccessRightsItemEnumList =
-  ReadonlyArray<UserAccessRightsItemEnum>;
-export const UserAccessRightsItemEnumList = /*@__PURE__*/ S.Array(
-  UserAccessRightsItemEnum,
-) as any as S.Schema<UserAccessRightsItemEnumList>;
+export type UserAccessRightsItemEnumList = ReadonlyArray<UserAccessRightsItemEnum>;
+export const UserAccessRightsItemEnumList = /*@__PURE__*/ S.Array(UserAccessRightsItemEnum) as any as S.Schema<UserAccessRightsItemEnumList>;
 
-export type UserStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "VERIFIED"
-  | (string & {});
+export type UserStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "VERIFIED";
 export const UserStateEnum = /*@__PURE__*/ S.String;
 
 /** The `User` resource represents a user associated with a Merchant Center account. It is used to manage user permissions and access rights within the account. For more information, see [Frequently asked questions about people and access levels](//support.google.com/merchants/answer/12160472). */
@@ -1155,11 +889,11 @@ export interface User {
   state?: UserStateEnum;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    accessRights: S.optional(UserAccessRightsItemEnumList),
-    state: S.optional(UserStateEnum),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "accessRights": S.optional(UserAccessRightsItemEnumList),
+  "state": S.optional(UserStateEnum),
+}),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export interface CreateAccountsUsersRequest {
@@ -1171,20 +905,12 @@ export interface CreateAccountsUsersRequest {
   body?: User;
 }
 export const CreateAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    userId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(User.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+parent}/users",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateAccountsUsersRequest",
-}) as any as S.Schema<CreateAccountsUsersRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "userId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(User.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+parent}/users","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsUsersRequest" }) as any as S.Schema<CreateAccountsUsersRequest>;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
@@ -1194,10 +920,10 @@ export interface TimeZone {
   id?: string;
 }
 export const TimeZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.String),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 
 /** The `Account` message represents a business's account within Merchant Center. It's the primary entity for managing product data, settings, and interactions with Google's services and external providers. Accounts can operate as standalone entities or be part of a advanced account structure. In an advanced account setup the parent account manages multiple sub-accounts. Establishing an account involves configuring attributes like the account name, time zone, and language preferences. The `Account` message is the parent entity for many other resources, for example, `AccountRelationship`, `Homepage`, `BusinessInfo` and so on. */
@@ -1218,39 +944,30 @@ export interface Account {
   adultContent?: boolean;
 }
 export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountName: S.optional(S.String),
-    languageCode: S.optional(S.String),
-    testAccount: S.optional(S.Boolean),
-    timeZone: S.optional(TimeZone),
-    name: S.optional(S.String),
-    accountId: S.optional(S.String),
-    adultContent: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "accountName": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+  "testAccount": S.optional(S.Boolean),
+  "timeZone": S.optional(TimeZone),
+  "name": S.optional(S.String),
+  "accountId": S.optional(S.String),
+  "adultContent": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
-export type VerificationMailSettingsVerificationMailModeEnum =
-  | "VERIFICATION_MAIL_MODE_UNSPECIFIED"
-  | "SEND_VERIFICATION_MAIL"
-  | "SUPPRESS_VERIFICATION_MAIL"
-  | (string & {});
-export const VerificationMailSettingsVerificationMailModeEnum =
-  /*@__PURE__*/ S.String;
+export type VerificationMailSettingsVerificationMailModeEnum = "VERIFICATION_MAIL_MODE_UNSPECIFIED" | "SEND_VERIFICATION_MAIL" | "SUPPRESS_VERIFICATION_MAIL";
+export const VerificationMailSettingsVerificationMailModeEnum = /*@__PURE__*/ S.String;
 
 /** Settings related to the verification email that is sent after adding a user. */
 export interface VerificationMailSettings {
   /** Optional. Mode of the verification mail. If not set, the default is `SEND_VERIFICATION_MAIL`. */
-  verificationMailMode?: VerificationMailSettingsVerificationMailModeEnum;
+  verificationMailMode?: VerificationMailSettingsVerificationMailModeEnum | (string & {});
 }
 export const VerificationMailSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verificationMailMode: S.optional(
-      VerificationMailSettingsVerificationMailModeEnum,
-    ),
-  }),
-).annotate({
-  identifier: "VerificationMailSettings",
-}) as any as S.Schema<VerificationMailSettings>;
+S.Struct({
+  "verificationMailMode": S.optional(VerificationMailSettingsVerificationMailModeEnum),
+}),
+).annotate({ identifier: "VerificationMailSettings" }) as any as S.Schema<VerificationMailSettings>;
 
 /** Instruction for adding a user to the account during creation. */
 export interface AddUser {
@@ -1262,17 +979,15 @@ export interface AddUser {
   userId?: string;
 }
 export const AddUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: S.optional(User),
-    verificationMailSettings: S.optional(VerificationMailSettings),
-    userId: S.optional(S.String),
-  }),
+S.Struct({
+  "user": S.optional(User),
+  "verificationMailSettings": S.optional(VerificationMailSettings),
+  "userId": S.optional(S.String),
+}),
 ).annotate({ identifier: "AddUser" }) as any as S.Schema<AddUser>;
 
 export type AddUserList = ReadonlyArray<AddUser>;
-export const AddUserList = /*@__PURE__*/ S.Array(
-  AddUser,
-) as any as S.Schema<AddUserList>;
+export const AddUserList = /*@__PURE__*/ S.Array(AddUser) as any as S.Schema<AddUserList>;
 
 /** Additional instructions to add account services during creation of the account. */
 export interface AddAccountService {
@@ -1292,23 +1007,19 @@ export interface AddAccountService {
   provider?: string;
 }
 export const AddAccountService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productsManagement: S.optional(ProductsManagement),
-    campaignsManagement: S.optional(CampaignsManagement),
-    accountAggregation: S.optional(AccountAggregation),
-    accountManagement: S.optional(AccountManagement),
-    comparisonShopping: S.optional(ComparisonShopping),
-    externalAccountId: S.optional(S.String),
-    provider: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddAccountService",
-}) as any as S.Schema<AddAccountService>;
+S.Struct({
+  "productsManagement": S.optional(ProductsManagement),
+  "campaignsManagement": S.optional(CampaignsManagement),
+  "accountAggregation": S.optional(AccountAggregation),
+  "accountManagement": S.optional(AccountManagement),
+  "comparisonShopping": S.optional(ComparisonShopping),
+  "externalAccountId": S.optional(S.String),
+  "provider": S.optional(S.String),
+}),
+).annotate({ identifier: "AddAccountService" }) as any as S.Schema<AddAccountService>;
 
 export type AddAccountServiceList = ReadonlyArray<AddAccountService>;
-export const AddAccountServiceList = /*@__PURE__*/ S.Array(
-  AddAccountService,
-) as any as S.Schema<AddAccountServiceList>;
+export const AddAccountServiceList = /*@__PURE__*/ S.Array(AddAccountService) as any as S.Schema<AddAccountServiceList>;
 
 /** Request message for the `CreateUser` method. */
 export interface CreateUserRequest {
@@ -1320,19 +1031,15 @@ export interface CreateUserRequest {
   user?: User;
 }
 export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String),
-    parent: S.optional(S.String),
-    user: S.optional(User),
-  }),
-).annotate({
-  identifier: "CreateUserRequest",
-}) as any as S.Schema<CreateUserRequest>;
+S.Struct({
+  "userId": S.optional(S.String),
+  "parent": S.optional(S.String),
+  "user": S.optional(User),
+}),
+).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
 
 export type CreateUserRequestList = ReadonlyArray<CreateUserRequest>;
-export const CreateUserRequestList = /*@__PURE__*/ S.Array(
-  CreateUserRequest,
-) as any as S.Schema<CreateUserRequestList>;
+export const CreateUserRequestList = /*@__PURE__*/ S.Array(CreateUserRequest) as any as S.Schema<CreateUserRequestList>;
 
 /** Set an alias for a relationship between a provider and the account to be created. */
 export interface SetAliasForRelationship {
@@ -1342,19 +1049,14 @@ export interface SetAliasForRelationship {
   accountIdAlias?: string;
 }
 export const SetAliasForRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    accountIdAlias: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetAliasForRelationship",
-}) as any as S.Schema<SetAliasForRelationship>;
+S.Struct({
+  "provider": S.optional(S.String),
+  "accountIdAlias": S.optional(S.String),
+}),
+).annotate({ identifier: "SetAliasForRelationship" }) as any as S.Schema<SetAliasForRelationship>;
 
-export type SetAliasForRelationshipList =
-  ReadonlyArray<SetAliasForRelationship>;
-export const SetAliasForRelationshipList = /*@__PURE__*/ S.Array(
-  SetAliasForRelationship,
-) as any as S.Schema<SetAliasForRelationshipList>;
+export type SetAliasForRelationshipList = ReadonlyArray<SetAliasForRelationship>;
+export const SetAliasForRelationshipList = /*@__PURE__*/ S.Array(SetAliasForRelationship) as any as S.Schema<SetAliasForRelationshipList>;
 
 /** Request message for the `CreateAndConfigureAccount` method. */
 export interface CreateAndConfigureAccountRequest {
@@ -1370,34 +1072,24 @@ export interface CreateAndConfigureAccountRequest {
   setAlias?: SetAliasForRelationshipList;
 }
 export const CreateAndConfigureAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account: S.optional(Account),
-    user: S.optional(AddUserList),
-    service: S.optional(AddAccountServiceList),
-    users: S.optional(CreateUserRequestList),
-    setAlias: S.optional(SetAliasForRelationshipList),
-  }),
-).annotate({
-  identifier: "CreateAndConfigureAccountRequest",
-}) as any as S.Schema<CreateAndConfigureAccountRequest>;
+S.Struct({
+  "account": S.optional(Account),
+  "user": S.optional(AddUserList),
+  "service": S.optional(AddAccountServiceList),
+  "users": S.optional(CreateUserRequestList),
+  "setAlias": S.optional(SetAliasForRelationshipList),
+}),
+).annotate({ identifier: "CreateAndConfigureAccountRequest" }) as any as S.Schema<CreateAndConfigureAccountRequest>;
 
 export interface CreateAndConfigureAccountsRequest {
   /** Request body */
   body?: CreateAndConfigureAccountRequest;
 }
 export const CreateAndConfigureAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(CreateAndConfigureAccountRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/accounts:createAndConfigure",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateAndConfigureAccountsRequest",
-}) as any as S.Schema<CreateAndConfigureAccountsRequest>;
+S.Struct({
+  "body": S.optional(CreateAndConfigureAccountRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/accounts:createAndConfigure","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "CreateAndConfigureAccountsRequest" }) as any as S.Schema<CreateAndConfigureAccountsRequest>;
 
 export interface CreateTestAccountAccountsRequest {
   /** Required. The account resource name to create the test account under. Format: accounts/{account} */
@@ -1406,19 +1098,11 @@ export interface CreateTestAccountAccountsRequest {
   body?: Account;
 }
 export const CreateTestAccountAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Account.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+parent}:createTestAccount",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateTestAccountAccountsRequest",
-}) as any as S.Schema<CreateTestAccountAccountsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Account.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+parent}:createTestAccount","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "CreateTestAccountAccountsRequest" }) as any as S.Schema<CreateTestAccountAccountsRequest>;
 
 export interface DeleteAccountsRequest {
   /** Required. The name of the account to delete. Format: `accounts/{account}` */
@@ -1427,107 +1111,63 @@ export interface DeleteAccountsRequest {
   force?: boolean;
 }
 export const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    force: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAccountsRequest",
-}) as any as S.Schema<DeleteAccountsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsRequest" }) as any as S.Schema<DeleteAccountsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteAccountsOnlineReturnPoliciesRequest {
   /** Required. The name of the return policy to delete. Format: `accounts/{account}/onlineReturnPolicies/{return_policy}` */
   name: string;
 }
-export const DeleteAccountsOnlineReturnPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteAccountsOnlineReturnPoliciesRequest",
-  }) as any as S.Schema<DeleteAccountsOnlineReturnPoliciesRequest>;
+export const DeleteAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsOnlineReturnPoliciesRequest" }) as any as S.Schema<DeleteAccountsOnlineReturnPoliciesRequest>;
 
 export interface DeleteAccountsRegionsRequest {
   /** Required. The name of the region to delete. Format: `accounts/{account}/regions/{region}` */
   name: string;
 }
 export const DeleteAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAccountsRegionsRequest",
-}) as any as S.Schema<DeleteAccountsRegionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsRegionsRequest" }) as any as S.Schema<DeleteAccountsRegionsRequest>;
 
 export interface DeleteAccountsUsersRequest {
   /** Required. The name of the user to delete. Format: `accounts/{account}/users/{email}` It is also possible to delete the user corresponding to the caller by using `me` rather than an email address as in `accounts/{account}/users/me`. */
   name: string;
 }
 export const DeleteAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAccountsUsersRequest",
-}) as any as S.Schema<DeleteAccountsUsersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsUsersRequest" }) as any as S.Schema<DeleteAccountsUsersRequest>;
 
 export interface DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest {
   /** Required. The name/identifier of the merchant account. Format: `accounts/{account}/programs/{program}/checkoutSettings` */
   name: string;
 }
-export const DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
-  }) as any as S.Schema<DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
+export const DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest" }) as any as S.Schema<DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
 /** Request message for the DisableProgram method. */
 export interface DisableProgramRequest {}
 export const DisableProgramRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableProgramRequest",
-}) as any as S.Schema<DisableProgramRequest>;
+S.Struct({}),
+).annotate({ identifier: "DisableProgramRequest" }) as any as S.Schema<DisableProgramRequest>;
 
 export interface DisableAccountsProgramsRequest {
   /** Required. The name of the program for which to disable participation for the given account. Format: `accounts/{account}/programs/{program}`. For example, `accounts/123456/programs/free-listings`. */
@@ -1536,26 +1176,13 @@ export interface DisableAccountsProgramsRequest {
   body?: DisableProgramRequest;
 }
 export const DisableAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(DisableProgramRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+name}:disable",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DisableAccountsProgramsRequest",
-}) as any as S.Schema<DisableAccountsProgramsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DisableProgramRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:disable","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "DisableAccountsProgramsRequest" }) as any as S.Schema<DisableAccountsProgramsRequest>;
 
-export type ProgramStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "NOT_ELIGIBLE"
-  | "ELIGIBLE"
-  | "ENABLED"
-  | (string & {});
+export type ProgramStateEnum = "STATE_UNSPECIFIED" | "NOT_ELIGIBLE" | "ELIGIBLE" | "ENABLED";
 export const ProgramStateEnum = /*@__PURE__*/ S.String;
 
 /** Defines a requirement specified for participation in the program. */
@@ -1568,17 +1195,15 @@ export interface Requirement {
   affectedRegionCodes?: StringList;
 }
 export const Requirement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    documentationUri: S.optional(S.String),
-    affectedRegionCodes: S.optional(StringList),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "documentationUri": S.optional(S.String),
+  "affectedRegionCodes": S.optional(StringList),
+}),
 ).annotate({ identifier: "Requirement" }) as any as S.Schema<Requirement>;
 
 export type RequirementList = ReadonlyArray<Requirement>;
-export const RequirementList = /*@__PURE__*/ S.Array(
-  Requirement,
-) as any as S.Schema<RequirementList>;
+export const RequirementList = /*@__PURE__*/ S.Array(Requirement) as any as S.Schema<RequirementList>;
 
 /** Defines participation in a given program for the specified account. Programs provide a mechanism for adding functionality to a Merchant Center accounts. A typical example of this is the [Free product listings](https://support.google.com/merchants/answer/13889434) program, which enables products from a business's store to be shown across Google for free. The following list is the available set of program resource IDs accessible through the API: * `checkout` * `free-listings` * `product-ratings` * `shopping-ads` * `youtube-affiliate` * `youtube-shopping-checkout` */
 export interface Program {
@@ -1594,22 +1219,20 @@ export interface Program {
   unmetRequirements?: RequirementList;
 }
 export const Program = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentationUri: S.optional(S.String),
-    state: S.optional(ProgramStateEnum),
-    name: S.optional(S.String),
-    activeRegionCodes: S.optional(StringList),
-    unmetRequirements: S.optional(RequirementList),
-  }),
+S.Struct({
+  "documentationUri": S.optional(S.String),
+  "state": S.optional(ProgramStateEnum),
+  "name": S.optional(S.String),
+  "activeRegionCodes": S.optional(StringList),
+  "unmetRequirements": S.optional(RequirementList),
+}),
 ).annotate({ identifier: "Program" }) as any as S.Schema<Program>;
 
 /** Request message for the EnableProgram method. */
 export interface EnableProgramRequest {}
 export const EnableProgramRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableProgramRequest",
-}) as any as S.Schema<EnableProgramRequest>;
+S.Struct({}),
+).annotate({ identifier: "EnableProgramRequest" }) as any as S.Schema<EnableProgramRequest>;
 
 export interface EnableAccountsProgramsRequest {
   /** Required. The name of the program for which to enable participation for the given account. Format: `accounts/{account}/programs/{program}`. For example, `accounts/123456/programs/free-listings`. */
@@ -1618,19 +1241,11 @@ export interface EnableAccountsProgramsRequest {
   body?: EnableProgramRequest;
 }
 export const EnableAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(EnableProgramRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+name}:enable",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "EnableAccountsProgramsRequest",
-}) as any as S.Schema<EnableAccountsProgramsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(EnableProgramRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:enable","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "EnableAccountsProgramsRequest" }) as any as S.Schema<EnableAccountsProgramsRequest>;
 
 export interface FindAccountsOmnichannelSettingsLfpProvidersRequest {
   /** Required. The name of the parent resource under which the LFP providers are found. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}`. */
@@ -1640,22 +1255,13 @@ export interface FindAccountsOmnichannelSettingsLfpProvidersRequest {
   /** Optional. The maximum number of `LfpProvider` resources to return. The service returns fewer than this value if the number of lfp providers is less that than the `pageSize`. The default value is 50. The maximum value is 1000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum. */
   pageSize?: number;
 }
-export const FindAccountsOmnichannelSettingsLfpProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+parent}/lfpProviders:find",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FindAccountsOmnichannelSettingsLfpProvidersRequest",
-  }) as any as S.Schema<FindAccountsOmnichannelSettingsLfpProvidersRequest>;
+export const FindAccountsOmnichannelSettingsLfpProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/lfpProviders:find","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "FindAccountsOmnichannelSettingsLfpProvidersRequest" }) as any as S.Schema<FindAccountsOmnichannelSettingsLfpProvidersRequest>;
 
 /** Collection of information related to a Local Feed Partnership (LFP) provider. */
 export interface LfpProvider {
@@ -1667,17 +1273,15 @@ export interface LfpProvider {
   name?: string;
 }
 export const LfpProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "LfpProvider" }) as any as S.Schema<LfpProvider>;
 
 export type LfpProviderList = ReadonlyArray<LfpProvider>;
-export const LfpProviderList = /*@__PURE__*/ S.Array(
-  LfpProvider,
-) as any as S.Schema<LfpProviderList>;
+export const LfpProviderList = /*@__PURE__*/ S.Array(LfpProvider) as any as S.Schema<LfpProviderList>;
 
 /** Response message for the FindLfpProviders method. */
 export interface FindLfpProvidersResponse {
@@ -1687,152 +1291,87 @@ export interface FindLfpProvidersResponse {
   lfpProviders?: LfpProviderList;
 }
 export const FindLfpProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    lfpProviders: S.optional(LfpProviderList),
-  }),
-).annotate({
-  identifier: "FindLfpProvidersResponse",
-}) as any as S.Schema<FindLfpProvidersResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "lfpProviders": S.optional(LfpProviderList),
+}),
+).annotate({ identifier: "FindLfpProvidersResponse" }) as any as S.Schema<FindLfpProvidersResponse>;
 
 export interface GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest {}
-export const GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/accounts:getAccountForGcpRegistration",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest",
-  }) as any as S.Schema<GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest>;
+export const GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/accounts:getAccountForGcpRegistration","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest" }) as any as S.Schema<GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest>;
 
 /** Response message for the GetAccountForGcpRegistration method. */
 export interface GetAccountForGcpRegistrationResponse {
   /** The name of the merchant account id that the GCP is registered with. */
   name?: string;
 }
-export const GetAccountForGcpRegistrationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetAccountForGcpRegistrationResponse",
-}) as any as S.Schema<GetAccountForGcpRegistrationResponse>;
+export const GetAccountForGcpRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GetAccountForGcpRegistrationResponse" }) as any as S.Schema<GetAccountForGcpRegistrationResponse>;
 
 export interface GetAccountsRequest {
   /** Required. The name of the account to retrieve. Format: `accounts/{account}` */
   name: string;
 }
 export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsRequest",
-}) as any as S.Schema<GetAccountsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsRequest" }) as any as S.Schema<GetAccountsRequest>;
 
 export interface GetAccountsOmnichannelSettingsRequest {
   /** Required. The name of the omnichannel setting to retrieve. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}` */
   name: string;
 }
-export const GetAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetAccountsOmnichannelSettingsRequest",
-}) as any as S.Schema<GetAccountsOmnichannelSettingsRequest>;
+export const GetAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsOmnichannelSettingsRequest" }) as any as S.Schema<GetAccountsOmnichannelSettingsRequest>;
 
 export interface GetAccountsOnlineReturnPoliciesRequest {
   /** Required. The name of the return policy to retrieve. Format: `accounts/{account}/onlineReturnPolicies/{return_policy}` */
   name: string;
 }
-export const GetAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetAccountsOnlineReturnPoliciesRequest",
-}) as any as S.Schema<GetAccountsOnlineReturnPoliciesRequest>;
+export const GetAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsOnlineReturnPoliciesRequest" }) as any as S.Schema<GetAccountsOnlineReturnPoliciesRequest>;
 
 export interface GetAccountsProgramsRequest {
   /** Required. The name of the program to retrieve. Format: `accounts/{account}/programs/{program}`. For example, `accounts/123456/programs/free-listings`. */
   name: string;
 }
 export const GetAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsProgramsRequest",
-}) as any as S.Schema<GetAccountsProgramsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsProgramsRequest" }) as any as S.Schema<GetAccountsProgramsRequest>;
 
 export interface GetAccountsRegionsRequest {
   /** Required. The name of the region to retrieve. Format: `accounts/{account}/regions/{region}` */
   name: string;
 }
 export const GetAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsRegionsRequest",
-}) as any as S.Schema<GetAccountsRegionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsRegionsRequest" }) as any as S.Schema<GetAccountsRegionsRequest>;
 
 export interface GetAccountsRelationshipsRequest {
   /** Required. The resource name of the account relationship to get. Format: `accounts/{account}/relationships/{relationship}`. For example, `accounts/123456/relationships/567890`. */
   name: string;
 }
 export const GetAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsRelationshipsRequest",
-}) as any as S.Schema<GetAccountsRelationshipsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsRelationshipsRequest" }) as any as S.Schema<GetAccountsRelationshipsRequest>;
 
 /** The `AccountRelationship` message defines a formal connection between a merchant's account and a service provider's account. This relationship enables the provider to offer specific services to the business, such as product management or campaign management. It specifies the access rights and permissions to the business's data relevant to those services. Establishing an account relationship involves linking the merchant's account with a provider's account. The provider could be another Google account (like Google Ads or Google My Business) or a third-party platform (such as Shopify or WooCommerce). */
 export interface AccountRelationship {
@@ -1846,89 +1385,53 @@ export interface AccountRelationship {
   providerDisplayName?: string;
 }
 export const AccountRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    provider: S.optional(S.String),
-    accountIdAlias: S.optional(S.String),
-    providerDisplayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountRelationship",
-}) as any as S.Schema<AccountRelationship>;
+S.Struct({
+  "name": S.optional(S.String),
+  "provider": S.optional(S.String),
+  "accountIdAlias": S.optional(S.String),
+  "providerDisplayName": S.optional(S.String),
+}),
+).annotate({ identifier: "AccountRelationship" }) as any as S.Schema<AccountRelationship>;
 
 export interface GetAccountsServicesRequest {
   /** Required. The resource name of the account service to get. Format: `accounts/{account}/services/{service}` */
   name: string;
 }
 export const GetAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsServicesRequest",
-}) as any as S.Schema<GetAccountsServicesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsServicesRequest" }) as any as S.Schema<GetAccountsServicesRequest>;
 
 export interface GetAccountsTermsOfServiceAgreementStatesRequest {
   /** Required. The resource name of the terms of service version. Format: `accounts/{account}/termsOfServiceAgreementStates/{identifier}` The identifier format is: `{TermsOfServiceKind}-{country}` */
   name: string;
 }
-export const GetAccountsTermsOfServiceAgreementStatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetAccountsTermsOfServiceAgreementStatesRequest",
-  }) as any as S.Schema<GetAccountsTermsOfServiceAgreementStatesRequest>;
+export const GetAccountsTermsOfServiceAgreementStatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsTermsOfServiceAgreementStatesRequest" }) as any as S.Schema<GetAccountsTermsOfServiceAgreementStatesRequest>;
 
 export interface GetAccountsUsersRequest {
   /** Required. The name of the user to retrieve. Format: `accounts/{account}/users/{email}` It is also possible to retrieve the user corresponding to the caller by using `me` rather than an email address as in `accounts/{account}/users/me`. */
   name: string;
 }
 export const GetAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsUsersRequest",
-}) as any as S.Schema<GetAccountsUsersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsUsersRequest" }) as any as S.Schema<GetAccountsUsersRequest>;
 
 export interface GetAutofeedSettingsAccountsAutofeedSettingsRequest {
   /** Required. The resource name of the autofeed settings. Format: `accounts/{account}/autofeedSettings` */
   name: string;
 }
-export const GetAutofeedSettingsAccountsAutofeedSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetAutofeedSettingsAccountsAutofeedSettingsRequest",
-  }) as any as S.Schema<GetAutofeedSettingsAccountsAutofeedSettingsRequest>;
+export const GetAutofeedSettingsAccountsAutofeedSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAutofeedSettingsAccountsAutofeedSettingsRequest" }) as any as S.Schema<GetAutofeedSettingsAccountsAutofeedSettingsRequest>;
 
 /** Collection of information related to the [autofeed](https://support.google.com/merchants/answer/7538732) settings. */
 export interface AutofeedSettings {
@@ -1940,47 +1443,33 @@ export interface AutofeedSettings {
   eligible?: boolean;
 }
 export const AutofeedSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableProducts: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    eligible: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AutofeedSettings",
-}) as any as S.Schema<AutofeedSettings>;
+S.Struct({
+  "enableProducts": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "eligible": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AutofeedSettings" }) as any as S.Schema<AutofeedSettings>;
 
 export interface GetAutomaticImprovementsAccountsAutomaticImprovementsRequest {
   /** Required. The resource name of the automatic improvements. Format: `accounts/{account}/automaticImprovements` */
   name: string;
 }
-export const GetAutomaticImprovementsAccountsAutomaticImprovementsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetAutomaticImprovementsAccountsAutomaticImprovementsRequest",
-  }) as any as S.Schema<GetAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
+export const GetAutomaticImprovementsAccountsAutomaticImprovementsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetAutomaticImprovementsAccountsAutomaticImprovementsRequest" }) as any as S.Schema<GetAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
 
 /** Settings for the Automatic Image Improvements. */
 export interface ImageImprovementsAccountLevelSettings {
   /** Enables automatic image improvements. */
   allowAutomaticImageImprovements?: boolean;
 }
-export const ImageImprovementsAccountLevelSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowAutomaticImageImprovements: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "ImageImprovementsAccountLevelSettings",
-}) as any as S.Schema<ImageImprovementsAccountLevelSettings>;
+export const ImageImprovementsAccountLevelSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "allowAutomaticImageImprovements": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ImageImprovementsAccountLevelSettings" }) as any as S.Schema<ImageImprovementsAccountLevelSettings>;
 
 /** This improvement will attempt to automatically correct submitted images if they don't meet the [image requirements](https://support.google.com/merchants/answer/6324350), for example, removing overlays. If successful, the image will be replaced and approved. This improvement is only applied to images of disapproved offers. For more information see: [Automatic image improvements](https://support.google.com/merchants/answer/9242973) */
 export interface AutomaticImageImprovements {
@@ -1990,15 +1479,11 @@ export interface AutomaticImageImprovements {
   effectiveAllowAutomaticImageImprovements?: boolean;
 }
 export const AutomaticImageImprovements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountImageImprovementsSettings: S.optional(
-      ImageImprovementsAccountLevelSettings,
-    ),
-    effectiveAllowAutomaticImageImprovements: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AutomaticImageImprovements",
-}) as any as S.Schema<AutomaticImageImprovements>;
+S.Struct({
+  "accountImageImprovementsSettings": S.optional(ImageImprovementsAccountLevelSettings),
+  "effectiveAllowAutomaticImageImprovements": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AutomaticImageImprovements" }) as any as S.Schema<AutomaticImageImprovements>;
 
 /** Not available for [advanced accounts](https://support.google.com/merchants/answer/188487). By turning on [automatic shipping improvements](https://support.google.com/merchants/answer/10027038), you are allowing Google to improve the accuracy of your delivery times shown to shoppers using Google. More accurate delivery times, especially when faster, typically lead to better conversion rates. Google will improve your estimated delivery times based on various factors: * Delivery address of an order * Current handling time and shipping time settings * Estimated weekdays or business days * Parcel tracking data */
 export interface AutomaticShippingImprovements {
@@ -2006,12 +1491,10 @@ export interface AutomaticShippingImprovements {
   allowShippingImprovements?: boolean;
 }
 export const AutomaticShippingImprovements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowShippingImprovements: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AutomaticShippingImprovements",
-}) as any as S.Schema<AutomaticShippingImprovements>;
+S.Struct({
+  "allowShippingImprovements": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AutomaticShippingImprovements" }) as any as S.Schema<AutomaticShippingImprovements>;
 
 /** Settings for the Automatic Item Updates. */
 export interface ItemUpdatesAccountLevelSettings {
@@ -2025,15 +1508,13 @@ export interface ItemUpdatesAccountLevelSettings {
   allowConditionUpdates?: boolean;
 }
 export const ItemUpdatesAccountLevelSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowPriceUpdates: S.optional(S.Boolean),
-    allowStrictAvailabilityUpdates: S.optional(S.Boolean),
-    allowAvailabilityUpdates: S.optional(S.Boolean),
-    allowConditionUpdates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ItemUpdatesAccountLevelSettings",
-}) as any as S.Schema<ItemUpdatesAccountLevelSettings>;
+S.Struct({
+  "allowPriceUpdates": S.optional(S.Boolean),
+  "allowStrictAvailabilityUpdates": S.optional(S.Boolean),
+  "allowAvailabilityUpdates": S.optional(S.Boolean),
+  "allowConditionUpdates": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ItemUpdatesAccountLevelSettings" }) as any as S.Schema<ItemUpdatesAccountLevelSettings>;
 
 /** Turning on [item updates](https://support.google.com/merchants/answer/3246284) allows Google to automatically update items for you. When item updates are on, Google uses the structured data markup on the website and advanced data extractors to update the price and availability of the items. When the item updates are off, items with mismatched data aren't shown. */
 export interface AutomaticItemUpdates {
@@ -2049,16 +1530,14 @@ export interface AutomaticItemUpdates {
   effectiveAllowConditionUpdates?: boolean;
 }
 export const AutomaticItemUpdates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    effectiveAllowStrictAvailabilityUpdates: S.optional(S.Boolean),
-    effectiveAllowPriceUpdates: S.optional(S.Boolean),
-    effectiveAllowAvailabilityUpdates: S.optional(S.Boolean),
-    accountItemUpdatesSettings: S.optional(ItemUpdatesAccountLevelSettings),
-    effectiveAllowConditionUpdates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AutomaticItemUpdates",
-}) as any as S.Schema<AutomaticItemUpdates>;
+S.Struct({
+  "effectiveAllowStrictAvailabilityUpdates": S.optional(S.Boolean),
+  "effectiveAllowPriceUpdates": S.optional(S.Boolean),
+  "effectiveAllowAvailabilityUpdates": S.optional(S.Boolean),
+  "accountItemUpdatesSettings": S.optional(ItemUpdatesAccountLevelSettings),
+  "effectiveAllowConditionUpdates": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "AutomaticItemUpdates" }) as any as S.Schema<AutomaticItemUpdates>;
 
 /** Collection of information related to the [automatic improvements](https://developers.google.com/shopping-content/guides/automatic-improvements) of an account. */
 export interface AutomaticImprovements {
@@ -2072,40 +1551,25 @@ export interface AutomaticImprovements {
   itemUpdates?: AutomaticItemUpdates;
 }
 export const AutomaticImprovements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    imageImprovements: S.optional(AutomaticImageImprovements),
-    shippingImprovements: S.optional(AutomaticShippingImprovements),
-    itemUpdates: S.optional(AutomaticItemUpdates),
-  }),
-).annotate({
-  identifier: "AutomaticImprovements",
-}) as any as S.Schema<AutomaticImprovements>;
+S.Struct({
+  "name": S.optional(S.String),
+  "imageImprovements": S.optional(AutomaticImageImprovements),
+  "shippingImprovements": S.optional(AutomaticShippingImprovements),
+  "itemUpdates": S.optional(AutomaticItemUpdates),
+}),
+).annotate({ identifier: "AutomaticImprovements" }) as any as S.Schema<AutomaticImprovements>;
 
 export interface GetBusinessIdentityAccountsBusinessIdentityRequest {
   /** Required. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`. For example, `accounts/123456/businessIdentity`. */
   name: string;
 }
-export const GetBusinessIdentityAccountsBusinessIdentityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetBusinessIdentityAccountsBusinessIdentityRequest",
-  }) as any as S.Schema<GetBusinessIdentityAccountsBusinessIdentityRequest>;
+export const GetBusinessIdentityAccountsBusinessIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetBusinessIdentityAccountsBusinessIdentityRequest" }) as any as S.Schema<GetBusinessIdentityAccountsBusinessIdentityRequest>;
 
-export type IdentityAttributeIdentityDeclarationEnum =
-  | "IDENTITY_DECLARATION_UNSPECIFIED"
-  | "SELF_IDENTIFIES_AS"
-  | "DOES_NOT_SELF_IDENTIFY_AS"
-  | (string & {});
+export type IdentityAttributeIdentityDeclarationEnum = "IDENTITY_DECLARATION_UNSPECIFIED" | "SELF_IDENTIFIES_AS" | "DOES_NOT_SELF_IDENTIFY_AS";
 export const IdentityAttributeIdentityDeclarationEnum = /*@__PURE__*/ S.String;
 
 /** All information related to an identity attribute. */
@@ -2114,18 +1578,12 @@ export interface IdentityAttribute {
   identityDeclaration?: IdentityAttributeIdentityDeclarationEnum;
 }
 export const IdentityAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identityDeclaration: S.optional(IdentityAttributeIdentityDeclarationEnum),
-  }),
-).annotate({
-  identifier: "IdentityAttribute",
-}) as any as S.Schema<IdentityAttribute>;
+S.Struct({
+  "identityDeclaration": S.optional(IdentityAttributeIdentityDeclarationEnum),
+}),
+).annotate({ identifier: "IdentityAttribute" }) as any as S.Schema<IdentityAttribute>;
 
-export type BusinessIdentityPromotionsConsentEnum =
-  | "PROMOTIONS_CONSENT_UNSPECIFIED"
-  | "PROMOTIONS_CONSENT_GIVEN"
-  | "PROMOTIONS_CONSENT_DENIED"
-  | (string & {});
+export type BusinessIdentityPromotionsConsentEnum = "PROMOTIONS_CONSENT_UNSPECIFIED" | "PROMOTIONS_CONSENT_GIVEN" | "PROMOTIONS_CONSENT_DENIED";
 export const BusinessIdentityPromotionsConsentEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to the [identity of a business](https://support.google.com/merchants/answer/12564247). */
@@ -2146,37 +1604,26 @@ export interface BusinessIdentity {
   latinoOwned?: IdentityAttribute;
 }
 export const BusinessIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blackOwned: S.optional(IdentityAttribute),
-    name: S.optional(S.String),
-    veteranOwned: S.optional(IdentityAttribute),
-    smallBusiness: S.optional(IdentityAttribute),
-    promotionsConsent: S.optional(BusinessIdentityPromotionsConsentEnum),
-    womenOwned: S.optional(IdentityAttribute),
-    latinoOwned: S.optional(IdentityAttribute),
-  }),
-).annotate({
-  identifier: "BusinessIdentity",
-}) as any as S.Schema<BusinessIdentity>;
+S.Struct({
+  "blackOwned": S.optional(IdentityAttribute),
+  "name": S.optional(S.String),
+  "veteranOwned": S.optional(IdentityAttribute),
+  "smallBusiness": S.optional(IdentityAttribute),
+  "promotionsConsent": S.optional(BusinessIdentityPromotionsConsentEnum),
+  "womenOwned": S.optional(IdentityAttribute),
+  "latinoOwned": S.optional(IdentityAttribute),
+}),
+).annotate({ identifier: "BusinessIdentity" }) as any as S.Schema<BusinessIdentity>;
 
 export interface GetBusinessInfoAccountsBusinessInfoRequest {
   /** Required. The resource name of the business info. Format: `accounts/{account}/businessInfo`. For example, `accounts/123456/businessInfo`. */
   name: string;
 }
-export const GetBusinessInfoAccountsBusinessInfoRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetBusinessInfoAccountsBusinessInfoRequest",
-  }) as any as S.Schema<GetBusinessInfoAccountsBusinessInfoRequest>;
+export const GetBusinessInfoAccountsBusinessInfoRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetBusinessInfoAccountsBusinessInfoRequest" }) as any as S.Schema<GetBusinessInfoAccountsBusinessInfoRequest>;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
@@ -2204,19 +1651,19 @@ export interface PostalAddress {
   organization?: string;
 }
 export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locality: S.optional(S.String),
-    languageCode: S.optional(S.String),
-    administrativeArea: S.optional(S.String),
-    postalCode: S.optional(S.String),
-    regionCode: S.optional(S.String),
-    recipients: S.optional(StringList),
-    revision: S.optional(S.Number),
-    sortingCode: S.optional(S.String),
-    addressLines: S.optional(StringList),
-    sublocality: S.optional(S.String),
-    organization: S.optional(S.String),
-  }),
+S.Struct({
+  "locality": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+  "administrativeArea": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+  "recipients": S.optional(StringList),
+  "revision": S.optional(S.Number),
+  "sortingCode": S.optional(S.String),
+  "addressLines": S.optional(StringList),
+  "sublocality": S.optional(S.String),
+  "organization": S.optional(S.String),
+}),
 ).annotate({ identifier: "PostalAddress" }) as any as S.Schema<PostalAddress>;
 
 /** An object representing a short code, which is a phone number that is typically much shorter than regular phone numbers and can be used to address messages in MMS and SMS systems, as well as for abbreviated dialing (For example "Text 611 to see how many minutes you have remaining on your plan."). Short codes are restricted to a region and are not internationally dialable, which means the same short code can exist in different regions, with different usage and pricing, even if those regions share the same country calling code (For example: US and CA). */
@@ -2227,10 +1674,10 @@ export interface ShortCode {
   regionCode?: string;
 }
 export const ShortCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    number: S.optional(S.String),
-    regionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "number": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "ShortCode" }) as any as S.Schema<ShortCode>;
 
 /** An object representing a phone number, suitable as an API wire format. This representation: - should not be used for locale-specific formatting of a phone number, such as "+1 (650) 253-0000 ext. 123" - is not designed for efficient storage - may not be suitable for dialing - specialized libraries (see references) should be used to parse the number for that purpose To do something meaningful with this number, such as format it for various use-cases, convert it to an `i18n.phonenumbers.PhoneNumber` object first. For instance, in Java this would be: com.google.type.PhoneNumber wireProto = com.google.type.PhoneNumber.newBuilder().build(); com.google.i18n.phonenumbers.Phonenumber.PhoneNumber phoneNumber = PhoneNumberUtil.getInstance().parse(wireProto.getE164Number(), "ZZ"); if (!wireProto.getExtension().isEmpty()) { phoneNumber.setExtension(wireProto.getExtension()); } Reference(s): - https://github.com/google/libphonenumber */
@@ -2243,11 +1690,11 @@ export interface PhoneNumber {
   extension?: string;
 }
 export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    e164Number: S.optional(S.String),
-    shortCode: S.optional(ShortCode),
-    extension: S.optional(S.String),
-  }),
+S.Struct({
+  "e164Number": S.optional(S.String),
+  "shortCode": S.optional(ShortCode),
+  "extension": S.optional(S.String),
+}),
 ).annotate({ identifier: "PhoneNumber" }) as any as S.Schema<PhoneNumber>;
 
 /** Customer service information. */
@@ -2260,20 +1707,14 @@ export interface CustomerService {
   email?: string;
 }
 export const CustomerService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    phone: S.optional(PhoneNumber),
-    uri: S.optional(S.String),
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerService",
-}) as any as S.Schema<CustomerService>;
+S.Struct({
+  "phone": S.optional(PhoneNumber),
+  "uri": S.optional(S.String),
+  "email": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomerService" }) as any as S.Schema<CustomerService>;
 
-export type BusinessInfoPhoneVerificationStateEnum =
-  | "PHONE_VERIFICATION_STATE_UNSPECIFIED"
-  | "PHONE_VERIFICATION_STATE_VERIFIED"
-  | "PHONE_VERIFICATION_STATE_UNVERIFIED"
-  | (string & {});
+export type BusinessInfoPhoneVerificationStateEnum = "PHONE_VERIFICATION_STATE_UNSPECIFIED" | "PHONE_VERIFICATION_STATE_VERIFIED" | "PHONE_VERIFICATION_STATE_UNVERIFIED";
 export const BusinessInfoPhoneVerificationStateEnum = /*@__PURE__*/ S.String;
 
 /** The `BusinessInfo` message contains essential information about a business. This message captures key business details such as physical address, customer service contacts, and region-specific identifiers. */
@@ -2292,53 +1733,35 @@ export interface BusinessInfo {
   koreanBusinessRegistrationNumber?: string;
 }
 export const BusinessInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    address: S.optional(PostalAddress),
-    customerService: S.optional(CustomerService),
-    phone: S.optional(PhoneNumber),
-    phoneVerificationState: S.optional(BusinessInfoPhoneVerificationStateEnum),
-    koreanBusinessRegistrationNumber: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "address": S.optional(PostalAddress),
+  "customerService": S.optional(CustomerService),
+  "phone": S.optional(PhoneNumber),
+  "phoneVerificationState": S.optional(BusinessInfoPhoneVerificationStateEnum),
+  "koreanBusinessRegistrationNumber": S.optional(S.String),
+}),
 ).annotate({ identifier: "BusinessInfo" }) as any as S.Schema<BusinessInfo>;
 
 export interface GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest {
   /** Required. The name/identifier of the merchant account. Format: `accounts/{account}/programs/{program}/checkoutSettings` */
   name: string;
 }
-export const GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
-  }) as any as S.Schema<GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
+export const GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest" }) as any as S.Schema<GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
 export interface GetDeveloperRegistrationAccountsDeveloperRegistrationRequest {
   /** Required. The `name` (ID) of the developer registration. */
   name: string;
 }
-export const GetDeveloperRegistrationAccountsDeveloperRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetDeveloperRegistrationAccountsDeveloperRegistrationRequest",
-  }) as any as S.Schema<GetDeveloperRegistrationAccountsDeveloperRegistrationRequest>;
+export const GetDeveloperRegistrationAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetDeveloperRegistrationAccountsDeveloperRegistrationRequest" }) as any as S.Schema<GetDeveloperRegistrationAccountsDeveloperRegistrationRequest>;
 
 /** Represents a developer registration owned by a Merchant account. */
 export interface DeveloperRegistration {
@@ -2348,39 +1771,23 @@ export interface DeveloperRegistration {
   gcpIds?: StringList;
 }
 export const DeveloperRegistration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    gcpIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "DeveloperRegistration",
-}) as any as S.Schema<DeveloperRegistration>;
+S.Struct({
+  "name": S.optional(S.String),
+  "gcpIds": S.optional(StringList),
+}),
+).annotate({ identifier: "DeveloperRegistration" }) as any as S.Schema<DeveloperRegistration>;
 
 export interface GetEmailPreferencesAccountsEmailPreferencesRequest {
   /** Required. The name of the `EmailPreferences` resource. Format: `accounts/{account}/users/{email}/emailPreferences` */
   name: string;
 }
-export const GetEmailPreferencesAccountsEmailPreferencesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetEmailPreferencesAccountsEmailPreferencesRequest",
-  }) as any as S.Schema<GetEmailPreferencesAccountsEmailPreferencesRequest>;
+export const GetEmailPreferencesAccountsEmailPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetEmailPreferencesAccountsEmailPreferencesRequest" }) as any as S.Schema<GetEmailPreferencesAccountsEmailPreferencesRequest>;
 
-export type EmailPreferencesNewsAndTipsEnum =
-  | "OPT_IN_STATE_UNSPECIFIED"
-  | "OPTED_OUT"
-  | "OPTED_IN"
-  | "UNCONFIRMED"
-  | (string & {});
+export type EmailPreferencesNewsAndTipsEnum = "OPT_IN_STATE_UNSPECIFIED" | "OPTED_OUT" | "OPTED_IN" | "UNCONFIRMED";
 export const EmailPreferencesNewsAndTipsEnum = /*@__PURE__*/ S.String;
 
 /** The categories of notifications the user opted into / opted out of. The email preferences do not include mandatory announcements as users can't opt out of them. */
@@ -2391,63 +1798,36 @@ export interface EmailPreferences {
   newsAndTips?: EmailPreferencesNewsAndTipsEnum;
 }
 export const EmailPreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    newsAndTips: S.optional(EmailPreferencesNewsAndTipsEnum),
-  }),
-).annotate({
-  identifier: "EmailPreferences",
-}) as any as S.Schema<EmailPreferences>;
+S.Struct({
+  "name": S.optional(S.String),
+  "newsAndTips": S.optional(EmailPreferencesNewsAndTipsEnum),
+}),
+).annotate({ identifier: "EmailPreferences" }) as any as S.Schema<EmailPreferences>;
 
 export interface GetHomepageAccountsHomepageRequest {
   /** Required. The name of the homepage to retrieve. Format: `accounts/{account}/homepage` */
   name: string;
 }
 export const GetHomepageAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetHomepageAccountsHomepageRequest",
-}) as any as S.Schema<GetHomepageAccountsHomepageRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetHomepageAccountsHomepageRequest" }) as any as S.Schema<GetHomepageAccountsHomepageRequest>;
 
 export interface GetShippingSettingsAccountsShippingSettingsRequest {
   /** Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsettings` */
   name: string;
 }
-export const GetShippingSettingsAccountsShippingSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetShippingSettingsAccountsShippingSettingsRequest",
-  }) as any as S.Schema<GetShippingSettingsAccountsShippingSettingsRequest>;
+export const GetShippingSettingsAccountsShippingSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetShippingSettingsAccountsShippingSettingsRequest" }) as any as S.Schema<GetShippingSettingsAccountsShippingSettingsRequest>;
 
-export type StoreConfigStoreServiceTypeEnum =
-  | "STORE_SERVICE_TYPE_UNSPECIFIED"
-  | "ALL_STORES"
-  | "SELECTED_STORES"
-  | (string & {});
+export type StoreConfigStoreServiceTypeEnum = "STORE_SERVICE_TYPE_UNSPECIFIED" | "ALL_STORES" | "SELECTED_STORES";
 export const StoreConfigStoreServiceTypeEnum = /*@__PURE__*/ S.String;
 
-export type DistanceUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "MILES"
-  | "KILOMETERS"
-  | (string & {});
+export type DistanceUnitEnum = "UNIT_UNSPECIFIED" | "MILES" | "KILOMETERS";
 export const DistanceUnitEnum = /*@__PURE__*/ S.String;
 
 /** Maximum delivery radius. This is only required for the local delivery shipment type. */
@@ -2458,10 +1838,10 @@ export interface Distance {
   unit?: DistanceUnitEnum;
 }
 export const Distance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    unit: S.optional(DistanceUnitEnum),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+  "unit": S.optional(DistanceUnitEnum),
+}),
 ).annotate({ identifier: "Distance" }) as any as S.Schema<Distance>;
 
 /** Time that local delivery ends for the day. */
@@ -2472,13 +1852,11 @@ export interface LocalCutoffTime {
   minute?: string;
 }
 export const LocalCutoffTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hour: S.optional(S.String),
-    minute: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LocalCutoffTime",
-}) as any as S.Schema<LocalCutoffTime>;
+S.Struct({
+  "hour": S.optional(S.String),
+  "minute": S.optional(S.String),
+}),
+).annotate({ identifier: "LocalCutoffTime" }) as any as S.Schema<LocalCutoffTime>;
 
 /** Configs related to local delivery ends for the day. */
 export interface CutoffConfig {
@@ -2490,11 +1868,11 @@ export interface CutoffConfig {
   noDeliveryPostCutoff?: boolean;
 }
 export const CutoffConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localCutoffTime: S.optional(LocalCutoffTime),
-    storeCloseOffsetHours: S.optional(S.String),
-    noDeliveryPostCutoff: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "localCutoffTime": S.optional(LocalCutoffTime),
+  "storeCloseOffsetHours": S.optional(S.String),
+  "noDeliveryPostCutoff": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "CutoffConfig" }) as any as S.Schema<CutoffConfig>;
 
 /** A list of stores your products are delivered from. This is only valid for the local delivery shipment type. */
@@ -2509,12 +1887,12 @@ export interface StoreConfig {
   cutoffConfig?: CutoffConfig;
 }
 export const StoreConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeServiceType: S.optional(StoreConfigStoreServiceTypeEnum),
-    storeCodes: S.optional(StringList),
-    serviceRadius: S.optional(Distance),
-    cutoffConfig: S.optional(CutoffConfig),
-  }),
+S.Struct({
+  "storeServiceType": S.optional(StoreConfigStoreServiceTypeEnum),
+  "storeCodes": S.optional(StringList),
+  "serviceRadius": S.optional(Distance),
+  "cutoffConfig": S.optional(CutoffConfig),
+}),
 ).annotate({ identifier: "StoreConfig" }) as any as S.Schema<StoreConfig>;
 
 /** Subset of a business's loyalty program. */
@@ -2523,17 +1901,13 @@ export interface LoyaltyProgramTiers {
   tierLabel?: string;
 }
 export const LoyaltyProgramTiers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tierLabel: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LoyaltyProgramTiers",
-}) as any as S.Schema<LoyaltyProgramTiers>;
+S.Struct({
+  "tierLabel": S.optional(S.String),
+}),
+).annotate({ identifier: "LoyaltyProgramTiers" }) as any as S.Schema<LoyaltyProgramTiers>;
 
 export type LoyaltyProgramTiersList = ReadonlyArray<LoyaltyProgramTiers>;
-export const LoyaltyProgramTiersList = /*@__PURE__*/ S.Array(
-  LoyaltyProgramTiers,
-) as any as S.Schema<LoyaltyProgramTiersList>;
+export const LoyaltyProgramTiersList = /*@__PURE__*/ S.Array(LoyaltyProgramTiers) as any as S.Schema<LoyaltyProgramTiersList>;
 
 /** [Loyalty program](https://support.google.com/merchants/answer/12922446) provided by a business. */
 export interface LoyaltyProgram {
@@ -2543,34 +1917,20 @@ export interface LoyaltyProgram {
   programLabel?: string;
 }
 export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loyaltyProgramTiers: S.optional(LoyaltyProgramTiersList),
-    programLabel: S.optional(S.String),
-  }),
+S.Struct({
+  "loyaltyProgramTiers": S.optional(LoyaltyProgramTiersList),
+  "programLabel": S.optional(S.String),
+}),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
 export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
-export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
-  LoyaltyProgram,
-) as any as S.Schema<LoyaltyProgramList>;
+export const LoyaltyProgramList = /*@__PURE__*/ S.Array(LoyaltyProgram) as any as S.Schema<LoyaltyProgramList>;
 
-export type BusinessDayConfigBusinessDaysItemEnum =
-  | "WEEKDAY_UNSPECIFIED"
-  | "MONDAY"
-  | "TUESDAY"
-  | "WEDNESDAY"
-  | "THURSDAY"
-  | "FRIDAY"
-  | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+export type BusinessDayConfigBusinessDaysItemEnum = "WEEKDAY_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
 export const BusinessDayConfigBusinessDaysItemEnum = /*@__PURE__*/ S.String;
 
-export type BusinessDayConfigBusinessDaysItemEnumList =
-  ReadonlyArray<BusinessDayConfigBusinessDaysItemEnum>;
-export const BusinessDayConfigBusinessDaysItemEnumList = /*@__PURE__*/ S.Array(
-  BusinessDayConfigBusinessDaysItemEnum,
-) as any as S.Schema<BusinessDayConfigBusinessDaysItemEnumList>;
+export type BusinessDayConfigBusinessDaysItemEnumList = ReadonlyArray<BusinessDayConfigBusinessDaysItemEnum>;
+export const BusinessDayConfigBusinessDaysItemEnumList = /*@__PURE__*/ S.Array(BusinessDayConfigBusinessDaysItemEnum) as any as S.Schema<BusinessDayConfigBusinessDaysItemEnumList>;
 
 /** Business days of the warehouse. */
 export interface BusinessDayConfig {
@@ -2578,12 +1938,10 @@ export interface BusinessDayConfig {
   businessDays?: BusinessDayConfigBusinessDaysItemEnumList;
 }
 export const BusinessDayConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessDays: S.optional(BusinessDayConfigBusinessDaysItemEnumList),
-  }),
-).annotate({
-  identifier: "BusinessDayConfig",
-}) as any as S.Schema<BusinessDayConfig>;
+S.Struct({
+  "businessDays": S.optional(BusinessDayConfigBusinessDaysItemEnumList),
+}),
+).annotate({ identifier: "BusinessDayConfig" }) as any as S.Schema<BusinessDayConfig>;
 
 /** Transit time range (min-max) in business days. */
 export interface TransitTimeValue {
@@ -2593,18 +1951,14 @@ export interface TransitTimeValue {
   maxTransitDays?: number;
 }
 export const TransitTimeValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minTransitDays: S.optional(S.Number),
-    maxTransitDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TransitTimeValue",
-}) as any as S.Schema<TransitTimeValue>;
+S.Struct({
+  "minTransitDays": S.optional(S.Number),
+  "maxTransitDays": S.optional(S.Number),
+}),
+).annotate({ identifier: "TransitTimeValue" }) as any as S.Schema<TransitTimeValue>;
 
 export type TransitTimeValueList = ReadonlyArray<TransitTimeValue>;
-export const TransitTimeValueList = /*@__PURE__*/ S.Array(
-  TransitTimeValue,
-) as any as S.Schema<TransitTimeValueList>;
+export const TransitTimeValueList = /*@__PURE__*/ S.Array(TransitTimeValue) as any as S.Schema<TransitTimeValueList>;
 
 /** If there's only one dimension set of `postal_code_group_names` or `transit_time_labels`, there are multiple rows each with one value for that dimension. If there are two dimensions, each row corresponds to a `postal_code_group_names`, and columns (values) to a `transit_time_labels`. */
 export interface TransitTimeRow {
@@ -2612,15 +1966,13 @@ export interface TransitTimeRow {
   values?: TransitTimeValueList;
 }
 export const TransitTimeRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(TransitTimeValueList),
-  }),
+S.Struct({
+  "values": S.optional(TransitTimeValueList),
+}),
 ).annotate({ identifier: "TransitTimeRow" }) as any as S.Schema<TransitTimeRow>;
 
 export type TransitTimeRowList = ReadonlyArray<TransitTimeRow>;
-export const TransitTimeRowList = /*@__PURE__*/ S.Array(
-  TransitTimeRow,
-) as any as S.Schema<TransitTimeRowList>;
+export const TransitTimeRowList = /*@__PURE__*/ S.Array(TransitTimeRow) as any as S.Schema<TransitTimeRowList>;
 
 /** Transit time table, number of business days spent in transit based on row and column dimensions. Either `min_transit_days`, `max_transit_days` or `transit_time_table` can be set, but not both. */
 export interface TransitTable {
@@ -2632,11 +1984,11 @@ export interface TransitTable {
   postalCodeGroupNames?: StringList;
 }
 export const TransitTable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transitTimeLabels: S.optional(StringList),
-    rows: S.optional(TransitTimeRowList),
-    postalCodeGroupNames: S.optional(StringList),
-  }),
+S.Struct({
+  "transitTimeLabels": S.optional(StringList),
+  "rows": S.optional(TransitTimeRowList),
+  "postalCodeGroupNames": S.optional(StringList),
+}),
 ).annotate({ identifier: "TransitTable" }) as any as S.Schema<TransitTable>;
 
 /** Business days cutoff time definition. */
@@ -2649,11 +2001,11 @@ export interface CutoffTime {
   hour?: number;
 }
 export const CutoffTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minute: S.optional(S.Number),
-    timeZone: S.optional(S.String),
-    hour: S.optional(S.Number),
-  }),
+S.Struct({
+  "minute": S.optional(S.Number),
+  "timeZone": S.optional(S.String),
+  "hour": S.optional(S.Number),
+}),
 ).annotate({ identifier: "CutoffTime" }) as any as S.Schema<CutoffTime>;
 
 /** Indicates that the delivery time should be calculated per warehouse (shipping origin location) based on the settings of the selected carrier. When set, no other transit time related field in `delivery_time` should be set. */
@@ -2666,20 +2018,15 @@ export interface WarehouseBasedDeliveryTime {
   warehouse?: string;
 }
 export const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    carrier: S.optional(S.String),
-    carrierService: S.optional(S.String),
-    warehouse: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WarehouseBasedDeliveryTime",
-}) as any as S.Schema<WarehouseBasedDeliveryTime>;
+S.Struct({
+  "carrier": S.optional(S.String),
+  "carrierService": S.optional(S.String),
+  "warehouse": S.optional(S.String),
+}),
+).annotate({ identifier: "WarehouseBasedDeliveryTime" }) as any as S.Schema<WarehouseBasedDeliveryTime>;
 
-export type WarehouseBasedDeliveryTimeList =
-  ReadonlyArray<WarehouseBasedDeliveryTime>;
-export const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(
-  WarehouseBasedDeliveryTime,
-) as any as S.Schema<WarehouseBasedDeliveryTimeList>;
+export type WarehouseBasedDeliveryTimeList = ReadonlyArray<WarehouseBasedDeliveryTime>;
+export const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(WarehouseBasedDeliveryTime) as any as S.Schema<WarehouseBasedDeliveryTimeList>;
 
 /** Time spent in various aspects from order to the delivery of the product. */
 export interface DeliveryTime {
@@ -2703,31 +2050,24 @@ export interface DeliveryTime {
   minHandlingDays?: number;
 }
 export const DeliveryTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    handlingBusinessDayConfig: S.optional(BusinessDayConfig),
-    minTransitDays: S.optional(S.Number),
-    transitTimeTable: S.optional(TransitTable),
-    transitBusinessDayConfig: S.optional(BusinessDayConfig),
-    cutoffTime: S.optional(CutoffTime),
-    maxTransitDays: S.optional(S.Number),
-    warehouseBasedDeliveryTimes: S.optional(WarehouseBasedDeliveryTimeList),
-    maxHandlingDays: S.optional(S.Number),
-    minHandlingDays: S.optional(S.Number),
-  }),
+S.Struct({
+  "handlingBusinessDayConfig": S.optional(BusinessDayConfig),
+  "minTransitDays": S.optional(S.Number),
+  "transitTimeTable": S.optional(TransitTable),
+  "transitBusinessDayConfig": S.optional(BusinessDayConfig),
+  "cutoffTime": S.optional(CutoffTime),
+  "maxTransitDays": S.optional(S.Number),
+  "warehouseBasedDeliveryTimes": S.optional(WarehouseBasedDeliveryTimeList),
+  "maxHandlingDays": S.optional(S.Number),
+  "minHandlingDays": S.optional(S.Number),
+}),
 ).annotate({ identifier: "DeliveryTime" }) as any as S.Schema<DeliveryTime>;
 
-export type ServiceShipmentTypeEnum =
-  | "SHIPMENT_TYPE_UNSPECIFIED"
-  | "DELIVERY"
-  | "LOCAL_DELIVERY"
-  | "COLLECTION_POINT"
-  | (string & {});
+export type ServiceShipmentTypeEnum = "SHIPMENT_TYPE_UNSPECIFIED" | "DELIVERY" | "LOCAL_DELIVERY" | "COLLECTION_POINT";
 export const ServiceShipmentTypeEnum = /*@__PURE__*/ S.String;
 
 export type PriceList = ReadonlyArray<Price>;
-export const PriceList = /*@__PURE__*/ S.Array(
-  Price,
-) as any as S.Schema<PriceList>;
+export const PriceList = /*@__PURE__*/ S.Array(Price) as any as S.Schema<PriceList>;
 
 /** A list of location ID sets. Must be non-empty. Can only be set if all other fields are not set. */
 export interface LocationIdSet {
@@ -2735,21 +2075,15 @@ export interface LocationIdSet {
   locationIds?: StringList;
 }
 export const LocationIdSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationIds: S.optional(StringList),
-  }),
+S.Struct({
+  "locationIds": S.optional(StringList),
+}),
 ).annotate({ identifier: "LocationIdSet" }) as any as S.Schema<LocationIdSet>;
 
 export type LocationIdSetList = ReadonlyArray<LocationIdSet>;
-export const LocationIdSetList = /*@__PURE__*/ S.Array(
-  LocationIdSet,
-) as any as S.Schema<LocationIdSetList>;
+export const LocationIdSetList = /*@__PURE__*/ S.Array(LocationIdSet) as any as S.Schema<LocationIdSetList>;
 
-export type WeightUnitEnum =
-  | "WEIGHT_UNIT_UNSPECIFIED"
-  | "POUND"
-  | "KILOGRAM"
-  | (string & {});
+export type WeightUnitEnum = "WEIGHT_UNIT_UNSPECIFIED" | "POUND" | "KILOGRAM";
 export const WeightUnitEnum = /*@__PURE__*/ S.String;
 
 /** The weight represented as the value in string and the unit. */
@@ -2760,16 +2094,14 @@ export interface Weight {
   amountMicros?: string;
 }
 export const Weight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(WeightUnitEnum),
-    amountMicros: S.optional(S.String),
-  }),
+S.Struct({
+  "unit": S.optional(WeightUnitEnum),
+  "amountMicros": S.optional(S.String),
+}),
 ).annotate({ identifier: "Weight" }) as any as S.Schema<Weight>;
 
 export type WeightList = ReadonlyArray<Weight>;
-export const WeightList = /*@__PURE__*/ S.Array(
-  Weight,
-) as any as S.Schema<WeightList>;
+export const WeightList = /*@__PURE__*/ S.Array(Weight) as any as S.Schema<WeightList>;
 
 /** A non-empty list of row or column headers for a table. Exactly one of `prices`, `weights`, `num_items`, `postal_code_group_names`, or `location` must be set. */
 export interface Headers {
@@ -2785,13 +2117,13 @@ export interface Headers {
   weights?: WeightList;
 }
 export const Headers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prices: S.optional(PriceList),
-    locations: S.optional(LocationIdSetList),
-    numberOfItems: S.optional(StringList),
-    postalCodeGroupNames: S.optional(StringList),
-    weights: S.optional(WeightList),
-  }),
+S.Struct({
+  "prices": S.optional(PriceList),
+  "locations": S.optional(LocationIdSetList),
+  "numberOfItems": S.optional(StringList),
+  "postalCodeGroupNames": S.optional(StringList),
+  "weights": S.optional(WeightList),
+}),
 ).annotate({ identifier: "Headers" }) as any as S.Schema<Headers>;
 
 /** The single value of a rate group or the value of a rate group table's cell. Exactly one of `no_shipping`, `flat_rate`, `price_percentage`, `carrier_rateName`, `subtable_name` must be set. */
@@ -2808,19 +2140,17 @@ export interface Value {
   pricePercentage?: string;
 }
 export const Value = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subtable: S.optional(S.String),
-    noShipping: S.optional(S.Boolean),
-    flatRate: S.optional(Price),
-    carrierRate: S.optional(S.String),
-    pricePercentage: S.optional(S.String),
-  }),
+S.Struct({
+  "subtable": S.optional(S.String),
+  "noShipping": S.optional(S.Boolean),
+  "flatRate": S.optional(Price),
+  "carrierRate": S.optional(S.String),
+  "pricePercentage": S.optional(S.String),
+}),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueList = ReadonlyArray<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(
-  Value,
-) as any as S.Schema<ValueList>;
+export const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
 
 /** Include a list of cells. */
 export interface Row {
@@ -2828,9 +2158,9 @@ export interface Row {
   cells?: ValueList;
 }
 export const Row = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cells: S.optional(ValueList),
-  }),
+S.Struct({
+  "cells": S.optional(ValueList),
+}),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 export type RowList = ReadonlyArray<Row>;
@@ -2848,18 +2178,16 @@ export interface Table {
   columnHeaders?: Headers;
 }
 export const Table = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowHeaders: S.optional(Headers),
-    name: S.optional(S.String),
-    rows: S.optional(RowList),
-    columnHeaders: S.optional(Headers),
-  }),
+S.Struct({
+  "rowHeaders": S.optional(Headers),
+  "name": S.optional(S.String),
+  "rows": S.optional(RowList),
+  "columnHeaders": S.optional(Headers),
+}),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 export type TableList = ReadonlyArray<Table>;
-export const TableList = /*@__PURE__*/ S.Array(
-  Table,
-) as any as S.Schema<TableList>;
+export const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
 
 /** A list of carrier rates that can be referred to by `main_table` or `single_value`. Supported carrier services are defined in https://support.google.com/merchants/answer/12577710?ref_topic=12570808&sjid=10662598224319463032-NC#zippy=%2Cdelivery-cost-rate-type%2Ccarrier-rate-au-de-uk-and-us-only. */
 export interface CarrierRate {
@@ -2877,20 +2205,18 @@ export interface CarrierRate {
   originPostalCode?: string;
 }
 export const CarrierRate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    carrierService: S.optional(S.String),
-    flatAdjustment: S.optional(Price),
-    percentageAdjustment: S.optional(S.String),
-    name: S.optional(S.String),
-    carrier: S.optional(S.String),
-    originPostalCode: S.optional(S.String),
-  }),
+S.Struct({
+  "carrierService": S.optional(S.String),
+  "flatAdjustment": S.optional(Price),
+  "percentageAdjustment": S.optional(S.String),
+  "name": S.optional(S.String),
+  "carrier": S.optional(S.String),
+  "originPostalCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "CarrierRate" }) as any as S.Schema<CarrierRate>;
 
 export type CarrierRateList = ReadonlyArray<CarrierRate>;
-export const CarrierRateList = /*@__PURE__*/ S.Array(
-  CarrierRate,
-) as any as S.Schema<CarrierRateList>;
+export const CarrierRateList = /*@__PURE__*/ S.Array(CarrierRate) as any as S.Schema<CarrierRateList>;
 
 /** Shipping rate group definitions. Only the last one is allowed to have an empty `applicable_shipping_labels`, which means "everything else". The other `applicable_shipping_labels` must not overlap. */
 export interface RateGroup {
@@ -2908,20 +2234,18 @@ export interface RateGroup {
   carrierRates?: CarrierRateList;
 }
 export const RateGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicableShippingLabels: S.optional(StringList),
-    mainTable: S.optional(Table),
-    singleValue: S.optional(Value),
-    subtables: S.optional(TableList),
-    name: S.optional(S.String),
-    carrierRates: S.optional(CarrierRateList),
-  }),
+S.Struct({
+  "applicableShippingLabels": S.optional(StringList),
+  "mainTable": S.optional(Table),
+  "singleValue": S.optional(Value),
+  "subtables": S.optional(TableList),
+  "name": S.optional(S.String),
+  "carrierRates": S.optional(CarrierRateList),
+}),
 ).annotate({ identifier: "RateGroup" }) as any as S.Schema<RateGroup>;
 
 export type RateGroupList = ReadonlyArray<RateGroup>;
-export const RateGroupList = /*@__PURE__*/ S.Array(
-  RateGroup,
-) as any as S.Schema<RateGroupList>;
+export const RateGroupList = /*@__PURE__*/ S.Array(RateGroup) as any as S.Schema<RateGroupList>;
 
 /** A list of store code sets sharing the same minimum order value. At least two sets are required and the last one must be empty, which signifies 'MOV for all other stores'. Each store code can only appear once across all the sets. All prices within a service must have the same currency. */
 export interface StoreCodeSetWithMov {
@@ -2931,18 +2255,14 @@ export interface StoreCodeSetWithMov {
   value?: Price;
 }
 export const StoreCodeSetWithMov = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeCodes: S.optional(StringList),
-    value: S.optional(Price),
-  }),
-).annotate({
-  identifier: "StoreCodeSetWithMov",
-}) as any as S.Schema<StoreCodeSetWithMov>;
+S.Struct({
+  "storeCodes": S.optional(StringList),
+  "value": S.optional(Price),
+}),
+).annotate({ identifier: "StoreCodeSetWithMov" }) as any as S.Schema<StoreCodeSetWithMov>;
 
 export type StoreCodeSetWithMovList = ReadonlyArray<StoreCodeSetWithMov>;
-export const StoreCodeSetWithMovList = /*@__PURE__*/ S.Array(
-  StoreCodeSetWithMov,
-) as any as S.Schema<StoreCodeSetWithMovList>;
+export const StoreCodeSetWithMovList = /*@__PURE__*/ S.Array(StoreCodeSetWithMov) as any as S.Schema<StoreCodeSetWithMovList>;
 
 /** Table of per store minimum order values for the pickup fulfillment type. */
 export interface MinimumOrderValueTable {
@@ -2950,12 +2270,10 @@ export interface MinimumOrderValueTable {
   storeCodeSetWithMovs?: StoreCodeSetWithMovList;
 }
 export const MinimumOrderValueTable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeCodeSetWithMovs: S.optional(StoreCodeSetWithMovList),
-  }),
-).annotate({
-  identifier: "MinimumOrderValueTable",
-}) as any as S.Schema<MinimumOrderValueTable>;
+S.Struct({
+  "storeCodeSetWithMovs": S.optional(StoreCodeSetWithMovList),
+}),
+).annotate({ identifier: "MinimumOrderValueTable" }) as any as S.Schema<MinimumOrderValueTable>;
 
 /** Shipping service. */
 export interface Service {
@@ -2983,25 +2301,23 @@ export interface Service {
   currencyCode?: string;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeConfig: S.optional(StoreConfig),
-    loyaltyPrograms: S.optional(LoyaltyProgramList),
-    active: S.optional(S.Boolean),
-    minimumOrderValue: S.optional(Price),
-    deliveryCountries: S.optional(StringList),
-    deliveryTime: S.optional(DeliveryTime),
-    shipmentType: S.optional(ServiceShipmentTypeEnum),
-    rateGroups: S.optional(RateGroupList),
-    minimumOrderValueTable: S.optional(MinimumOrderValueTable),
-    serviceName: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-  }),
+S.Struct({
+  "storeConfig": S.optional(StoreConfig),
+  "loyaltyPrograms": S.optional(LoyaltyProgramList),
+  "active": S.optional(S.Boolean),
+  "minimumOrderValue": S.optional(Price),
+  "deliveryCountries": S.optional(StringList),
+  "deliveryTime": S.optional(DeliveryTime),
+  "shipmentType": S.optional(ServiceShipmentTypeEnum),
+  "rateGroups": S.optional(RateGroupList),
+  "minimumOrderValueTable": S.optional(MinimumOrderValueTable),
+  "serviceName": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export type ServiceList = ReadonlyArray<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(
-  Service,
-) as any as S.Schema<ServiceList>;
+export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** Shipping address of the warehouse. */
 export interface Address {
@@ -3017,13 +2333,13 @@ export interface Address {
   city?: string;
 }
 export const Address = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-    administrativeArea: S.optional(S.String),
-    postalCode: S.optional(S.String),
-    streetAddress: S.optional(S.String),
-    city: S.optional(S.String),
-  }),
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "administrativeArea": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+  "streetAddress": S.optional(S.String),
+  "city": S.optional(S.String),
+}),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
 /** The latest time of day that an order can be accepted and begin processing. Later orders will be processed in the next day. The time is based on the warehouse postal code. */
@@ -3034,13 +2350,11 @@ export interface WarehouseCutoffTime {
   minute?: number;
 }
 export const WarehouseCutoffTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hour: S.optional(S.Number),
-    minute: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WarehouseCutoffTime",
-}) as any as S.Schema<WarehouseCutoffTime>;
+S.Struct({
+  "hour": S.optional(S.Number),
+  "minute": S.optional(S.Number),
+}),
+).annotate({ identifier: "WarehouseCutoffTime" }) as any as S.Schema<WarehouseCutoffTime>;
 
 /** A fulfillment warehouse, which stores and handles inventory. */
 export interface Warehouse {
@@ -3056,19 +2370,17 @@ export interface Warehouse {
   cutoffTime?: WarehouseCutoffTime;
 }
 export const Warehouse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    handlingDays: S.optional(S.String),
-    shippingAddress: S.optional(Address),
-    businessDayConfig: S.optional(BusinessDayConfig),
-    cutoffTime: S.optional(WarehouseCutoffTime),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "handlingDays": S.optional(S.String),
+  "shippingAddress": S.optional(Address),
+  "businessDayConfig": S.optional(BusinessDayConfig),
+  "cutoffTime": S.optional(WarehouseCutoffTime),
+}),
 ).annotate({ identifier: "Warehouse" }) as any as S.Schema<Warehouse>;
 
 export type WarehouseList = ReadonlyArray<Warehouse>;
-export const WarehouseList = /*@__PURE__*/ S.Array(
-  Warehouse,
-) as any as S.Schema<WarehouseList>;
+export const WarehouseList = /*@__PURE__*/ S.Array(Warehouse) as any as S.Schema<WarehouseList>;
 
 /** The Merchant Center account's [shipping settings](https://support.google.com/merchants/answer/6069284). The `ShippingSettings` resource lets you retrieve and update the shipping settings of your advanced account and all its associated sub-accounts. */
 export interface ShippingSettings {
@@ -3082,38 +2394,25 @@ export interface ShippingSettings {
   warehouses?: WarehouseList;
 }
 export const ShippingSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    name: S.optional(S.String),
-    services: S.optional(ServiceList),
-    warehouses: S.optional(WarehouseList),
-  }),
-).annotate({
-  identifier: "ShippingSettings",
-}) as any as S.Schema<ShippingSettings>;
+S.Struct({
+  "etag": S.optional(S.String),
+  "name": S.optional(S.String),
+  "services": S.optional(ServiceList),
+  "warehouses": S.optional(WarehouseList),
+}),
+).annotate({ identifier: "ShippingSettings" }) as any as S.Schema<ShippingSettings>;
 
 export interface GetTermsOfServiceRequest {
   /** Required. The resource name of the terms of service version. Format: `termsOfService/{version}` */
   name: string;
 }
 export const GetTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetTermsOfServiceRequest",
-}) as any as S.Schema<GetTermsOfServiceRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "GetTermsOfServiceRequest" }) as any as S.Schema<GetTermsOfServiceRequest>;
 
-export type TermsOfServiceKindEnum =
-  | "TERMS_OF_SERVICE_KIND_UNSPECIFIED"
-  | "MERCHANT_CENTER"
-  | (string & {});
+export type TermsOfServiceKindEnum = "TERMS_OF_SERVICE_KIND_UNSPECIFIED" | "MERCHANT_CENTER";
 export const TermsOfServiceKindEnum = /*@__PURE__*/ S.String;
 
 /** The `TermsOfService` message represents a specific version of the terms of service that merchants must accept to access certain features or services. For more information, see [Terms of Service](https://support.google.com/merchants/answer/160173). This message is important for the onboarding process, ensuring that merchants agree to the necessary legal agreements for using the service. Merchants can retrieve the latest terms of service for a given `kind` and `region` through `RetrieveLatestTermsOfService`, and accept them as required through `AcceptTermsOfService`. */
@@ -3130,13 +2429,13 @@ export interface TermsOfService {
   fileUri?: string;
 }
 export const TermsOfService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-    kind: S.optional(TermsOfServiceKindEnum),
-    external: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    fileUri: S.optional(S.String),
-  }),
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "kind": S.optional(TermsOfServiceKindEnum),
+  "external": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "fileUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "TermsOfService" }) as any as S.Schema<TermsOfService>;
 
 export interface InsertAccountsShippingSettingsRequest {
@@ -3145,21 +2444,12 @@ export interface InsertAccountsShippingSettingsRequest {
   /** Request body */
   body?: ShippingSettings;
 }
-export const InsertAccountsShippingSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ShippingSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+parent}/shippingSettings:insert",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "InsertAccountsShippingSettingsRequest",
-}) as any as S.Schema<InsertAccountsShippingSettingsRequest>;
+export const InsertAccountsShippingSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ShippingSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+parent}/shippingSettings:insert","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "InsertAccountsShippingSettingsRequest" }) as any as S.Schema<InsertAccountsShippingSettingsRequest>;
 
 /** Request message for the LinkGbpAccount method. */
 export interface LinkGbpAccountRequest {
@@ -3167,12 +2457,10 @@ export interface LinkGbpAccountRequest {
   gbpEmail?: string;
 }
 export const LinkGbpAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gbpEmail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LinkGbpAccountRequest",
-}) as any as S.Schema<LinkGbpAccountRequest>;
+S.Struct({
+  "gbpEmail": S.optional(S.String),
+}),
+).annotate({ identifier: "LinkGbpAccountRequest" }) as any as S.Schema<LinkGbpAccountRequest>;
 
 export interface LinkGbpAccountAccountsGbpAccountsRequest {
   /** Required. The name of the parent resource to which the GBP account is linked. Format: `accounts/{account}`. */
@@ -3180,21 +2468,12 @@ export interface LinkGbpAccountAccountsGbpAccountsRequest {
   /** Request body */
   body?: LinkGbpAccountRequest;
 }
-export const LinkGbpAccountAccountsGbpAccountsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(LinkGbpAccountRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+parent}/gbpAccounts:linkGbpAccount",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "LinkGbpAccountAccountsGbpAccountsRequest",
-}) as any as S.Schema<LinkGbpAccountAccountsGbpAccountsRequest>;
+export const LinkGbpAccountAccountsGbpAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(LinkGbpAccountRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+parent}/gbpAccounts:linkGbpAccount","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "LinkGbpAccountAccountsGbpAccountsRequest" }) as any as S.Schema<LinkGbpAccountAccountsGbpAccountsRequest>;
 
 /** Response message for the LinkGbpAccount method. */
 export interface LinkGbpAccountResponse {
@@ -3202,12 +2481,10 @@ export interface LinkGbpAccountResponse {
   response?: Empty;
 }
 export const LinkGbpAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    response: S.optional(Empty),
-  }),
-).annotate({
-  identifier: "LinkGbpAccountResponse",
-}) as any as S.Schema<LinkGbpAccountResponse>;
+S.Struct({
+  "response": S.optional(Empty),
+}),
+).annotate({ identifier: "LinkGbpAccountResponse" }) as any as S.Schema<LinkGbpAccountResponse>;
 
 /** Request message for the LinkLfpProvider method. */
 export interface LinkLfpProviderRequest {
@@ -3215,12 +2492,10 @@ export interface LinkLfpProviderRequest {
   externalAccountId?: string;
 }
 export const LinkLfpProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalAccountId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LinkLfpProviderRequest",
-}) as any as S.Schema<LinkLfpProviderRequest>;
+S.Struct({
+  "externalAccountId": S.optional(S.String),
+}),
+).annotate({ identifier: "LinkLfpProviderRequest" }) as any as S.Schema<LinkLfpProviderRequest>;
 
 export interface LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest {
   /** Required. The name of the LFP provider resource to link. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}/lfpProviders/{lfp_provider}`. The `lfp_provider` is the LFP provider ID. */
@@ -3228,21 +2503,12 @@ export interface LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest {
   /** Request body */
   body?: LinkLfpProviderRequest;
 }
-export const LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(LinkLfpProviderRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+name}:linkLfpProvider",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest",
-  }) as any as S.Schema<LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest>;
+export const LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(LinkLfpProviderRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:linkLfpProvider","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest" }) as any as S.Schema<LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest>;
 
 /** Response message for the LinkLfpProvider method. */
 export interface LinkLfpProviderResponse {
@@ -3250,12 +2516,10 @@ export interface LinkLfpProviderResponse {
   response?: Empty;
 }
 export const LinkLfpProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    response: S.optional(Empty),
-  }),
-).annotate({
-  identifier: "LinkLfpProviderResponse",
-}) as any as S.Schema<LinkLfpProviderResponse>;
+S.Struct({
+  "response": S.optional(Empty),
+}),
+).annotate({ identifier: "LinkLfpProviderResponse" }) as any as S.Schema<LinkLfpProviderResponse>;
 
 export interface ListAccountsRequest {
   /** Optional. The maximum number of accounts to return. The service may return fewer than this value. If unspecified, at most 250 accounts are returned. The maximum value is 500; values above 500 are coerced to 500. */
@@ -3266,25 +2530,15 @@ export interface ListAccountsRequest {
   filter?: string;
 }
 export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/accounts",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsRequest",
-}) as any as S.Schema<ListAccountsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/accounts","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type AccountList = ReadonlyArray<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(
-  Account,
-) as any as S.Schema<AccountList>;
+export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 /** Response message for the `accounts.list` method. */
 export interface ListAccountsResponse {
@@ -3294,13 +2548,11 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accounts: S.optional(AccountList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAccountsResponse",
-}) as any as S.Schema<ListAccountsResponse>;
+S.Struct({
+  "accounts": S.optional(AccountList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAccountsResponse" }) as any as S.Schema<ListAccountsResponse>;
 
 export interface ListAccountsGbpAccountsRequest {
   /** Required. The name of the parent resource under which the GBP accounts are listed. Format: `accounts/{account}`. */
@@ -3311,26 +2563,14 @@ export interface ListAccountsGbpAccountsRequest {
   pageToken?: string;
 }
 export const ListAccountsGbpAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+parent}/gbpAccounts",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsGbpAccountsRequest",
-}) as any as S.Schema<ListAccountsGbpAccountsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/gbpAccounts","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsGbpAccountsRequest" }) as any as S.Schema<ListAccountsGbpAccountsRequest>;
 
-export type GbpAccountTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "USER"
-  | "BUSINESS_ACCOUNT"
-  | (string & {});
+export type GbpAccountTypeEnum = "TYPE_UNSPECIFIED" | "USER" | "BUSINESS_ACCOUNT";
 export const GbpAccountTypeEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to a Google Business Profile (GBP) account. */
@@ -3347,19 +2587,17 @@ export interface GbpAccount {
   name?: string;
 }
 export const GbpAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listingCount: S.optional(S.String),
-    gbpAccountId: S.optional(S.String),
-    gbpAccountName: S.optional(S.String),
-    type: S.optional(GbpAccountTypeEnum),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "listingCount": S.optional(S.String),
+  "gbpAccountId": S.optional(S.String),
+  "gbpAccountName": S.optional(S.String),
+  "type": S.optional(GbpAccountTypeEnum),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "GbpAccount" }) as any as S.Schema<GbpAccount>;
 
 export type GbpAccountList = ReadonlyArray<GbpAccount>;
-export const GbpAccountList = /*@__PURE__*/ S.Array(
-  GbpAccount,
-) as any as S.Schema<GbpAccountList>;
+export const GbpAccountList = /*@__PURE__*/ S.Array(GbpAccount) as any as S.Schema<GbpAccountList>;
 
 /** Response message for the ListGbpAccounts method. */
 export interface ListGbpAccountsResponse {
@@ -3369,13 +2607,11 @@ export interface ListGbpAccountsResponse {
   nextPageToken?: string;
 }
 export const ListGbpAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gbpAccounts: S.optional(GbpAccountList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListGbpAccountsResponse",
-}) as any as S.Schema<ListGbpAccountsResponse>;
+S.Struct({
+  "gbpAccounts": S.optional(GbpAccountList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListGbpAccountsResponse" }) as any as S.Schema<ListGbpAccountsResponse>;
 
 export interface ListAccountsIssuesRequest {
   /** Optional. The maximum number of issues to return. The service may return fewer than this value. If unspecified, at most 50 issues will be returned. The maximum value is 100; values above 100 will be coerced to 100 */
@@ -3390,61 +2626,22 @@ export interface ListAccountsIssuesRequest {
   timeZone?: string;
 }
 export const ListAccountsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    languageCode: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    timeZone: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+parent}/issues",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsIssuesRequest",
-}) as any as S.Schema<ListAccountsIssuesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "timeZone": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/issues","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsIssuesRequest" }) as any as S.Schema<ListAccountsIssuesRequest>;
 
-export type AccountIssueSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "CRITICAL"
-  | "ERROR"
-  | "SUGGESTION"
-  | (string & {});
+export type AccountIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "ERROR" | "SUGGESTION";
 export const AccountIssueSeverityEnum = /*@__PURE__*/ S.String;
 
-export type ImpactedDestinationReportingContextEnum =
-  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-  | "SHOPPING_ADS"
-  | "DISCOVERY_ADS"
-  | "DEMAND_GEN_ADS"
-  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-  | "VIDEO_ADS"
-  | "DISPLAY_ADS"
-  | "LOCAL_INVENTORY_ADS"
-  | "VEHICLE_INVENTORY_ADS"
-  | "FREE_LISTINGS"
-  | "FREE_LISTINGS_UCP_CHECKOUT"
-  | "FREE_LOCAL_LISTINGS"
-  | "FREE_LOCAL_VEHICLE_LISTINGS"
-  | "YOUTUBE_AFFILIATE"
-  | "YOUTUBE_SHOPPING"
-  | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | "PRODUCT_REVIEWS"
-  | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+export type ImpactedDestinationReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
 export const ImpactedDestinationReportingContextEnum = /*@__PURE__*/ S.String;
 
-export type ImpactSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "CRITICAL"
-  | "ERROR"
-  | "SUGGESTION"
-  | (string & {});
+export type ImpactSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "ERROR" | "SUGGESTION";
 export const ImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The impact of the issue on a region. */
@@ -3455,16 +2652,14 @@ export interface Impact {
   regionCode?: string;
 }
 export const Impact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.optional(ImpactSeverityEnum),
-    regionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "severity": S.optional(ImpactSeverityEnum),
+  "regionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "Impact" }) as any as S.Schema<Impact>;
 
 export type ImpactList = ReadonlyArray<Impact>;
-export const ImpactList = /*@__PURE__*/ S.Array(
-  Impact,
-) as any as S.Schema<ImpactList>;
+export const ImpactList = /*@__PURE__*/ S.Array(Impact) as any as S.Schema<ImpactList>;
 
 /** The impact of the issue on a destination. */
 export interface ImpactedDestination {
@@ -3474,18 +2669,14 @@ export interface ImpactedDestination {
   impacts?: ImpactList;
 }
 export const ImpactedDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportingContext: S.optional(ImpactedDestinationReportingContextEnum),
-    impacts: S.optional(ImpactList),
-  }),
-).annotate({
-  identifier: "ImpactedDestination",
-}) as any as S.Schema<ImpactedDestination>;
+S.Struct({
+  "reportingContext": S.optional(ImpactedDestinationReportingContextEnum),
+  "impacts": S.optional(ImpactList),
+}),
+).annotate({ identifier: "ImpactedDestination" }) as any as S.Schema<ImpactedDestination>;
 
 export type ImpactedDestinationList = ReadonlyArray<ImpactedDestination>;
-export const ImpactedDestinationList = /*@__PURE__*/ S.Array(
-  ImpactedDestination,
-) as any as S.Schema<ImpactedDestinationList>;
+export const ImpactedDestinationList = /*@__PURE__*/ S.Array(ImpactedDestination) as any as S.Schema<ImpactedDestinationList>;
 
 /** Issues with your Merchant Center account that can impact all your products. For more information, see [Account-level issues in Merchant Center](https://support.google.com/merchants/answer/12153802?sjid=17798438912526418908-EU#account). */
 export interface AccountIssue {
@@ -3503,20 +2694,18 @@ export interface AccountIssue {
   impactedDestinations?: ImpactedDestinationList;
 }
 export const AccountIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    name: S.optional(S.String),
-    severity: S.optional(AccountIssueSeverityEnum),
-    detail: S.optional(S.String),
-    documentationUri: S.optional(S.String),
-    impactedDestinations: S.optional(ImpactedDestinationList),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "name": S.optional(S.String),
+  "severity": S.optional(AccountIssueSeverityEnum),
+  "detail": S.optional(S.String),
+  "documentationUri": S.optional(S.String),
+  "impactedDestinations": S.optional(ImpactedDestinationList),
+}),
 ).annotate({ identifier: "AccountIssue" }) as any as S.Schema<AccountIssue>;
 
 export type AccountIssueList = ReadonlyArray<AccountIssue>;
-export const AccountIssueList = /*@__PURE__*/ S.Array(
-  AccountIssue,
-) as any as S.Schema<AccountIssueList>;
+export const AccountIssueList = /*@__PURE__*/ S.Array(AccountIssue) as any as S.Schema<AccountIssueList>;
 
 /** Response message for the `ListAccountIssues` method. */
 export interface ListAccountIssuesResponse {
@@ -3526,13 +2715,11 @@ export interface ListAccountIssuesResponse {
   nextPageToken?: string;
 }
 export const ListAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountIssues: S.optional(AccountIssueList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAccountIssuesResponse",
-}) as any as S.Schema<ListAccountIssuesResponse>;
+S.Struct({
+  "accountIssues": S.optional(AccountIssueList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAccountIssuesResponse" }) as any as S.Schema<ListAccountIssuesResponse>;
 
 export interface ListAccountsOmnichannelSettingsRequest {
   /** Required. The parent, which owns this collection of omnichannel settings. Format: `accounts/{account}` */
@@ -3542,27 +2729,16 @@ export interface ListAccountsOmnichannelSettingsRequest {
   /** Optional. The maximum number of omnichannel settings to return. The service may return fewer than this value. If unspecified, at most 50 omnichannel settings will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+parent}/omnichannelSettings",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListAccountsOmnichannelSettingsRequest",
-}) as any as S.Schema<ListAccountsOmnichannelSettingsRequest>;
+export const ListAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/omnichannelSettings","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsOmnichannelSettingsRequest" }) as any as S.Schema<ListAccountsOmnichannelSettingsRequest>;
 
 export type OmnichannelSettingList = ReadonlyArray<OmnichannelSetting>;
-export const OmnichannelSettingList = /*@__PURE__*/ S.Array(
-  OmnichannelSetting,
-) as any as S.Schema<OmnichannelSettingList>;
+export const OmnichannelSettingList = /*@__PURE__*/ S.Array(OmnichannelSetting) as any as S.Schema<OmnichannelSettingList>;
 
 /** Response message for the ListOmnichannelSettings method. */
 export interface ListOmnichannelSettingsResponse {
@@ -3572,13 +2748,11 @@ export interface ListOmnichannelSettingsResponse {
   nextPageToken?: string;
 }
 export const ListOmnichannelSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    omnichannelSettings: S.optional(OmnichannelSettingList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOmnichannelSettingsResponse",
-}) as any as S.Schema<ListOmnichannelSettingsResponse>;
+S.Struct({
+  "omnichannelSettings": S.optional(OmnichannelSettingList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOmnichannelSettingsResponse" }) as any as S.Schema<ListOmnichannelSettingsResponse>;
 
 export interface ListAccountsOnlineReturnPoliciesRequest {
   /** Required. The Merchant Center account for which to list return policies. Format: `accounts/{account}` */
@@ -3588,27 +2762,16 @@ export interface ListAccountsOnlineReturnPoliciesRequest {
   /** Optional. The maximum number of `OnlineReturnPolicy` resources to return. The service returns fewer than this value if the number of return policies for the given business is less that than the `pageSize`. The default value is 10. The maximum value is 100; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum */
   pageSize?: number;
 }
-export const ListAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+parent}/onlineReturnPolicies",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListAccountsOnlineReturnPoliciesRequest",
-}) as any as S.Schema<ListAccountsOnlineReturnPoliciesRequest>;
+export const ListAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/onlineReturnPolicies","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsOnlineReturnPoliciesRequest" }) as any as S.Schema<ListAccountsOnlineReturnPoliciesRequest>;
 
 export type OnlineReturnPolicyList = ReadonlyArray<OnlineReturnPolicy>;
-export const OnlineReturnPolicyList = /*@__PURE__*/ S.Array(
-  OnlineReturnPolicy,
-) as any as S.Schema<OnlineReturnPolicyList>;
+export const OnlineReturnPolicyList = /*@__PURE__*/ S.Array(OnlineReturnPolicy) as any as S.Schema<OnlineReturnPolicyList>;
 
 /** Response message for the `ListOnlineReturnPolicies` method. */
 export interface ListOnlineReturnPoliciesResponse {
@@ -3618,13 +2781,11 @@ export interface ListOnlineReturnPoliciesResponse {
   nextPageToken?: string;
 }
 export const ListOnlineReturnPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onlineReturnPolicies: S.optional(OnlineReturnPolicyList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOnlineReturnPoliciesResponse",
-}) as any as S.Schema<ListOnlineReturnPoliciesResponse>;
+S.Struct({
+  "onlineReturnPolicies": S.optional(OnlineReturnPolicyList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOnlineReturnPoliciesResponse" }) as any as S.Schema<ListOnlineReturnPoliciesResponse>;
 
 export interface ListAccountsProgramsRequest {
   /** Optional. A continuation token, received from a previous `ListPrograms` call. Provide this to retrieve the next page. */
@@ -3635,25 +2796,15 @@ export interface ListAccountsProgramsRequest {
   parent: string;
 }
 export const ListAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+parent}/programs",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsProgramsRequest",
-}) as any as S.Schema<ListAccountsProgramsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/programs","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsProgramsRequest" }) as any as S.Schema<ListAccountsProgramsRequest>;
 
 export type ProgramList = ReadonlyArray<Program>;
-export const ProgramList = /*@__PURE__*/ S.Array(
-  Program,
-) as any as S.Schema<ProgramList>;
+export const ProgramList = /*@__PURE__*/ S.Array(Program) as any as S.Schema<ProgramList>;
 
 /** Response message for the ListPrograms method. */
 export interface ListProgramsResponse {
@@ -3663,13 +2814,11 @@ export interface ListProgramsResponse {
   nextPageToken?: string;
 }
 export const ListProgramsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    programs: S.optional(ProgramList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProgramsResponse",
-}) as any as S.Schema<ListProgramsResponse>;
+S.Struct({
+  "programs": S.optional(ProgramList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListProgramsResponse" }) as any as S.Schema<ListProgramsResponse>;
 
 export interface ListAccountsRegionsRequest {
   /** Required. The account to list regions for. Format: `accounts/{account}` */
@@ -3680,25 +2829,15 @@ export interface ListAccountsRegionsRequest {
   pageToken?: string;
 }
 export const ListAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+parent}/regions",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsRegionsRequest",
-}) as any as S.Schema<ListAccountsRegionsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/regions","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsRegionsRequest" }) as any as S.Schema<ListAccountsRegionsRequest>;
 
 export type RegionList = ReadonlyArray<Region>;
-export const RegionList = /*@__PURE__*/ S.Array(
-  Region,
-) as any as S.Schema<RegionList>;
+export const RegionList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionList>;
 
 /** Response message for the `ListRegions` method. */
 export interface ListRegionsResponse {
@@ -3708,13 +2847,11 @@ export interface ListRegionsResponse {
   regions?: RegionList;
 }
 export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    regions: S.optional(RegionList),
-  }),
-).annotate({
-  identifier: "ListRegionsResponse",
-}) as any as S.Schema<ListRegionsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "regions": S.optional(RegionList),
+}),
+).annotate({ identifier: "ListRegionsResponse" }) as any as S.Schema<ListRegionsResponse>;
 
 export interface ListAccountsRelationshipsRequest {
   /** Optional. The token returned by the previous `list` request. */
@@ -3725,25 +2862,15 @@ export interface ListAccountsRelationshipsRequest {
   parent: string;
 }
 export const ListAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+parent}/relationships",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsRelationshipsRequest",
-}) as any as S.Schema<ListAccountsRelationshipsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/relationships","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsRelationshipsRequest" }) as any as S.Schema<ListAccountsRelationshipsRequest>;
 
 export type AccountRelationshipList = ReadonlyArray<AccountRelationship>;
-export const AccountRelationshipList = /*@__PURE__*/ S.Array(
-  AccountRelationship,
-) as any as S.Schema<AccountRelationshipList>;
+export const AccountRelationshipList = /*@__PURE__*/ S.Array(AccountRelationship) as any as S.Schema<AccountRelationshipList>;
 
 /** Response after trying to list account relationships. */
 export interface ListAccountRelationshipsResponse {
@@ -3753,13 +2880,11 @@ export interface ListAccountRelationshipsResponse {
   accountRelationships?: AccountRelationshipList;
 }
 export const ListAccountRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    accountRelationships: S.optional(AccountRelationshipList),
-  }),
-).annotate({
-  identifier: "ListAccountRelationshipsResponse",
-}) as any as S.Schema<ListAccountRelationshipsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "accountRelationships": S.optional(AccountRelationshipList),
+}),
+).annotate({ identifier: "ListAccountRelationshipsResponse" }) as any as S.Schema<ListAccountRelationshipsResponse>;
 
 export interface ListAccountsServicesRequest {
   /** Optional. The maximum number of elements to return in the response. Use for paging. If no `page_size` is specified, `100` is used as the default value. The maximum allowed value is `1000`. */
@@ -3770,25 +2895,15 @@ export interface ListAccountsServicesRequest {
   parent: string;
 }
 export const ListAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+parent}/services",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsServicesRequest",
-}) as any as S.Schema<ListAccountsServicesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/services","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsServicesRequest" }) as any as S.Schema<ListAccountsServicesRequest>;
 
 export type AccountServiceList = ReadonlyArray<AccountService>;
-export const AccountServiceList = /*@__PURE__*/ S.Array(
-  AccountService,
-) as any as S.Schema<AccountServiceList>;
+export const AccountServiceList = /*@__PURE__*/ S.Array(AccountService) as any as S.Schema<AccountServiceList>;
 
 /** Response after trying to list account services. */
 export interface ListAccountServicesResponse {
@@ -3798,13 +2913,11 @@ export interface ListAccountServicesResponse {
   nextPageToken?: string;
 }
 export const ListAccountServicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountServices: S.optional(AccountServiceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAccountServicesResponse",
-}) as any as S.Schema<ListAccountServicesResponse>;
+S.Struct({
+  "accountServices": S.optional(AccountServiceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAccountServicesResponse" }) as any as S.Schema<ListAccountServicesResponse>;
 
 export interface ListAccountsUsersRequest {
   /** Required. The parent, which owns this collection of users. Format: `accounts/{account}` */
@@ -3815,25 +2928,15 @@ export interface ListAccountsUsersRequest {
   pageToken?: string;
 }
 export const ListAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+parent}/users",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsUsersRequest",
-}) as any as S.Schema<ListAccountsUsersRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/users","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsUsersRequest" }) as any as S.Schema<ListAccountsUsersRequest>;
 
 export type UserList = ReadonlyArray<User>;
-export const UserList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<UserList>;
+export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
 
 /** Response message for the `ListUsers` method. */
 export interface ListUsersResponse {
@@ -3843,13 +2946,11 @@ export interface ListUsersResponse {
   nextPageToken?: string;
 }
 export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    users: S.optional(UserList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListUsersResponse",
-}) as any as S.Schema<ListUsersResponse>;
+S.Struct({
+  "users": S.optional(UserList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListUsersResponse" }) as any as S.Schema<ListUsersResponse>;
 
 export interface ListSubaccountsAccountsRequest {
   /** Optional. The maximum number of accounts to return. The service may return fewer than this value. If unspecified, at most 250 accounts are returned. The maximum value is 500; values above 500 are coerced to 500. */
@@ -3860,20 +2961,12 @@ export interface ListSubaccountsAccountsRequest {
   provider: string;
 }
 export const ListSubaccountsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    provider: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/{+provider}:listSubaccounts",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSubaccountsAccountsRequest",
-}) as any as S.Schema<ListSubaccountsAccountsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "provider": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+provider}:listSubaccounts","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ListSubaccountsAccountsRequest" }) as any as S.Schema<ListSubaccountsAccountsRequest>;
 
 /** Response message for the `ListSubAccounts` method. */
 export interface ListSubAccountsResponse {
@@ -3883,13 +2976,11 @@ export interface ListSubAccountsResponse {
   nextPageToken?: string;
 }
 export const ListSubAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accounts: S.optional(AccountList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSubAccountsResponse",
-}) as any as S.Schema<ListSubAccountsResponse>;
+S.Struct({
+  "accounts": S.optional(AccountList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListSubAccountsResponse" }) as any as S.Schema<ListSubAccountsResponse>;
 
 export interface PatchAccountsRequest {
   /** Identifier. The resource name of the account. Format: `accounts/{account}` */
@@ -3900,20 +2991,12 @@ export interface PatchAccountsRequest {
   body?: Account;
 }
 export const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Account.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAccountsRequest",
-}) as any as S.Schema<PatchAccountsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Account.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsRequest" }) as any as S.Schema<PatchAccountsRequest>;
 
 export interface PatchAccountsOmnichannelSettingsRequest {
   /** Identifier. The resource name of the omnichannel setting. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}` */
@@ -3923,22 +3006,13 @@ export interface PatchAccountsOmnichannelSettingsRequest {
   /** Request body */
   body?: OmnichannelSetting;
 }
-export const PatchAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(OmnichannelSetting.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchAccountsOmnichannelSettingsRequest",
-}) as any as S.Schema<PatchAccountsOmnichannelSettingsRequest>;
+export const PatchAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(OmnichannelSetting.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsOmnichannelSettingsRequest" }) as any as S.Schema<PatchAccountsOmnichannelSettingsRequest>;
 
 export interface PatchAccountsOnlineReturnPoliciesRequest {
   /** Identifier. The name of the `OnlineReturnPolicy` resource. Format: `accounts/{account}/onlineReturnPolicies/{return_policy}` */
@@ -3948,22 +3022,13 @@ export interface PatchAccountsOnlineReturnPoliciesRequest {
   /** Request body */
   body?: OnlineReturnPolicy;
 }
-export const PatchAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(OnlineReturnPolicy.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchAccountsOnlineReturnPoliciesRequest",
-}) as any as S.Schema<PatchAccountsOnlineReturnPoliciesRequest>;
+export const PatchAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(OnlineReturnPolicy.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsOnlineReturnPoliciesRequest" }) as any as S.Schema<PatchAccountsOnlineReturnPoliciesRequest>;
 
 export interface PatchAccountsRegionsRequest {
   /** Identifier. The resource name of the region. Format: `accounts/{account}/regions/{region}` */
@@ -3974,20 +3039,12 @@ export interface PatchAccountsRegionsRequest {
   body?: Region;
 }
 export const PatchAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Region.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAccountsRegionsRequest",
-}) as any as S.Schema<PatchAccountsRegionsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Region.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsRegionsRequest" }) as any as S.Schema<PatchAccountsRegionsRequest>;
 
 export interface PatchAccountsRelationshipsRequest {
   /** Identifier. The resource name of the account relationship. Format: `accounts/{account}/relationships/{relationship}`. For example, `accounts/123456/relationships/567890`. */
@@ -3998,20 +3055,12 @@ export interface PatchAccountsRelationshipsRequest {
   body?: AccountRelationship;
 }
 export const PatchAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(AccountRelationship.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAccountsRelationshipsRequest",
-}) as any as S.Schema<PatchAccountsRelationshipsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(AccountRelationship.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsRelationshipsRequest" }) as any as S.Schema<PatchAccountsRelationshipsRequest>;
 
 export interface PatchAccountsUsersRequest {
   /** Identifier. The resource name of the user. Format: `accounts/{account}/user/{email}` Use `me` to refer to your own email address, for example `accounts/{account}/users/me`. */
@@ -4022,20 +3071,12 @@ export interface PatchAccountsUsersRequest {
   body?: User;
 }
 export const PatchAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(User.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "accounts/v1beta/{+name}",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchAccountsUsersRequest",
-}) as any as S.Schema<PatchAccountsUsersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(User.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsUsersRequest" }) as any as S.Schema<PatchAccountsUsersRequest>;
 
 /** Request to propose an account service. */
 export interface ProposeAccountServiceRequest {
@@ -4045,13 +3086,11 @@ export interface ProposeAccountServiceRequest {
   accountService?: AccountService;
 }
 export const ProposeAccountServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    accountService: S.optional(AccountService),
-  }),
-).annotate({
-  identifier: "ProposeAccountServiceRequest",
-}) as any as S.Schema<ProposeAccountServiceRequest>;
+S.Struct({
+  "provider": S.optional(S.String),
+  "accountService": S.optional(AccountService),
+}),
+).annotate({ identifier: "ProposeAccountServiceRequest" }) as any as S.Schema<ProposeAccountServiceRequest>;
 
 export interface ProposeAccountsServicesRequest {
   /** Required. The resource name of the parent account for the service. Format: `accounts/{account}` */
@@ -4060,19 +3099,11 @@ export interface ProposeAccountsServicesRequest {
   body?: ProposeAccountServiceRequest;
 }
 export const ProposeAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(ProposeAccountServiceRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+parent}/services:propose",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ProposeAccountsServicesRequest",
-}) as any as S.Schema<ProposeAccountsServicesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ProposeAccountServiceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+parent}/services:propose","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "ProposeAccountsServicesRequest" }) as any as S.Schema<ProposeAccountsServicesRequest>;
 
 /** Request message for the RegisterGCP method. */
 export interface RegisterGcpRequest {
@@ -4080,12 +3111,10 @@ export interface RegisterGcpRequest {
   developerEmail?: string;
 }
 export const RegisterGcpRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    developerEmail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegisterGcpRequest",
-}) as any as S.Schema<RegisterGcpRequest>;
+S.Struct({
+  "developerEmail": S.optional(S.String),
+}),
+).annotate({ identifier: "RegisterGcpRequest" }) as any as S.Schema<RegisterGcpRequest>;
 
 export interface RegisterGcpAccountsDeveloperRegistrationRequest {
   /** Required. The name of the developer registration to be created for the merchant account that the GCP will be registered with. Format: `accounts/{account}/developerRegistration` The {account} used must be the same account where user calling this API method is directly added to. Note: The account used must be a production account (can't be a [test account](https://developers.google.com/merchant/api/guides/accounts/test-accounts) ) and must have a [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center. */
@@ -4093,29 +3122,18 @@ export interface RegisterGcpAccountsDeveloperRegistrationRequest {
   /** Request body */
   body?: RegisterGcpRequest;
 }
-export const RegisterGcpAccountsDeveloperRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RegisterGcpRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+name}:registerGcp",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RegisterGcpAccountsDeveloperRegistrationRequest",
-  }) as any as S.Schema<RegisterGcpAccountsDeveloperRegistrationRequest>;
+export const RegisterGcpAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RegisterGcpRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:registerGcp","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "RegisterGcpAccountsDeveloperRegistrationRequest" }) as any as S.Schema<RegisterGcpAccountsDeveloperRegistrationRequest>;
 
 /** Request to reject an account service. */
 export interface RejectAccountServiceRequest {}
 export const RejectAccountServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RejectAccountServiceRequest",
-}) as any as S.Schema<RejectAccountServiceRequest>;
+S.Struct({}),
+).annotate({ identifier: "RejectAccountServiceRequest" }) as any as S.Schema<RejectAccountServiceRequest>;
 
 export interface RejectAccountsServicesRequest {
   /** Required. The resource name of the account service to reject. Format: `accounts/{account}/services/{service}` */
@@ -4124,27 +3142,17 @@ export interface RejectAccountsServicesRequest {
   body?: RejectAccountServiceRequest;
 }
 export const RejectAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(RejectAccountServiceRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+name}:reject",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RejectAccountsServicesRequest",
-}) as any as S.Schema<RejectAccountsServicesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RejectAccountServiceRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:reject","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "RejectAccountsServicesRequest" }) as any as S.Schema<RejectAccountsServicesRequest>;
 
 /** Request message for the RequestInventoryVerification method. */
 export interface RequestInventoryVerificationRequest {}
 export const RequestInventoryVerificationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RequestInventoryVerificationRequest",
-}) as any as S.Schema<RequestInventoryVerificationRequest>;
+S.Struct({}),
+).annotate({ identifier: "RequestInventoryVerificationRequest" }) as any as S.Schema<RequestInventoryVerificationRequest>;
 
 export interface RequestInventoryVerificationAccountsOmnichannelSettingsRequest {
   /** Required. The name of the omnichannel setting to request inventory verification. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}` */
@@ -4152,91 +3160,55 @@ export interface RequestInventoryVerificationAccountsOmnichannelSettingsRequest 
   /** Request body */
   body?: RequestInventoryVerificationRequest;
 }
-export const RequestInventoryVerificationAccountsOmnichannelSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RequestInventoryVerificationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+name}:requestInventoryVerification",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "RequestInventoryVerificationAccountsOmnichannelSettingsRequest",
-  }) as any as S.Schema<RequestInventoryVerificationAccountsOmnichannelSettingsRequest>;
+export const RequestInventoryVerificationAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RequestInventoryVerificationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:requestInventoryVerification","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "RequestInventoryVerificationAccountsOmnichannelSettingsRequest" }) as any as S.Schema<RequestInventoryVerificationAccountsOmnichannelSettingsRequest>;
 
 /** Response message for the RequestInventoryVerification method. */
 export interface RequestInventoryVerificationResponse {
   /** The omnichannel setting that was updated. */
   omnichannelSetting?: OmnichannelSetting;
 }
-export const RequestInventoryVerificationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      omnichannelSetting: S.optional(OmnichannelSetting),
-    }),
-).annotate({
-  identifier: "RequestInventoryVerificationResponse",
-}) as any as S.Schema<RequestInventoryVerificationResponse>;
+export const RequestInventoryVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "omnichannelSetting": S.optional(OmnichannelSetting),
+}),
+).annotate({ identifier: "RequestInventoryVerificationResponse" }) as any as S.Schema<RequestInventoryVerificationResponse>;
 
 export interface RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest {
   /** Required. The account for which to get a TermsOfServiceAgreementState Format: `accounts/{account}` */
   parent: string;
 }
-export const RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+parent}/termsOfServiceAgreementStates:retrieveForApplication",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest",
-  }) as any as S.Schema<RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest>;
+export const RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/{+parent}/termsOfServiceAgreementStates:retrieveForApplication","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest" }) as any as S.Schema<RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest>;
 
-export type RetrieveLatestTermsOfServiceKindEnum =
-  | "TERMS_OF_SERVICE_KIND_UNSPECIFIED"
-  | "MERCHANT_CENTER"
-  | (string & {});
+export type RetrieveLatestTermsOfServiceKindEnum = "TERMS_OF_SERVICE_KIND_UNSPECIFIED" | "MERCHANT_CENTER";
 export const RetrieveLatestTermsOfServiceKindEnum = /*@__PURE__*/ S.String;
 
 export interface RetrieveLatestTermsOfServiceRequest {
   /** Required. Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a country when the ToS applies specifically to that country or 001 when it applies globally. */
   regionCode?: string;
   /** Required. The Kind this terms of service version applies to. */
-  kind?: RetrieveLatestTermsOfServiceKindEnum;
+  kind?: RetrieveLatestTermsOfServiceKindEnum | (string & {});
 }
 export const RetrieveLatestTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String.pipe(T.Query())),
-    kind: S.optional(RetrieveLatestTermsOfServiceKindEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "accounts/v1beta/termsOfService:retrieveLatest",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RetrieveLatestTermsOfServiceRequest",
-}) as any as S.Schema<RetrieveLatestTermsOfServiceRequest>;
+S.Struct({
+  "regionCode": S.optional(S.String.pipe(T.Query())),
+  "kind": S.optional(RetrieveLatestTermsOfServiceKindEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"accounts/v1beta/termsOfService:retrieveLatest","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "RetrieveLatestTermsOfServiceRequest" }) as any as S.Schema<RetrieveLatestTermsOfServiceRequest>;
 
 /** Request message for the `UnclaimHomepage` method. */
 export interface UnclaimHomepageRequest {}
 export const UnclaimHomepageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnclaimHomepageRequest",
-}) as any as S.Schema<UnclaimHomepageRequest>;
+S.Struct({}),
+).annotate({ identifier: "UnclaimHomepageRequest" }) as any as S.Schema<UnclaimHomepageRequest>;
 
 export interface UnclaimAccountsHomepageRequest {
   /** Required. The name of the homepage to unclaim. Format: `accounts/{account}/homepage` */
@@ -4245,27 +3217,17 @@ export interface UnclaimAccountsHomepageRequest {
   body?: UnclaimHomepageRequest;
 }
 export const UnclaimAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(UnclaimHomepageRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "accounts/v1beta/{+name}:unclaim",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UnclaimAccountsHomepageRequest",
-}) as any as S.Schema<UnclaimAccountsHomepageRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UnclaimHomepageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:unclaim","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "UnclaimAccountsHomepageRequest" }) as any as S.Schema<UnclaimAccountsHomepageRequest>;
 
 /** Request message for the UnregisterGCP method. */
 export interface UnregisterGcpRequest {}
 export const UnregisterGcpRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnregisterGcpRequest",
-}) as any as S.Schema<UnregisterGcpRequest>;
+S.Struct({}),
+).annotate({ identifier: "UnregisterGcpRequest" }) as any as S.Schema<UnregisterGcpRequest>;
 
 export interface UnregisterGcpAccountsDeveloperRegistrationRequest {
   /** Required. The name of the developer registration to be created for the merchant account that the GCP will be registered with. Format: `accounts/{account}/developerRegistration` */
@@ -4273,21 +3235,12 @@ export interface UnregisterGcpAccountsDeveloperRegistrationRequest {
   /** Request body */
   body?: UnregisterGcpRequest;
 }
-export const UnregisterGcpAccountsDeveloperRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UnregisterGcpRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+name}:unregisterGcp",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UnregisterGcpAccountsDeveloperRegistrationRequest",
-  }) as any as S.Schema<UnregisterGcpAccountsDeveloperRegistrationRequest>;
+export const UnregisterGcpAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UnregisterGcpRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"accounts/v1beta/{+name}:unregisterGcp","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "UnregisterGcpAccountsDeveloperRegistrationRequest" }) as any as S.Schema<UnregisterGcpAccountsDeveloperRegistrationRequest>;
 
 export interface UpdateAutofeedSettingsAccountsAutofeedSettingsRequest {
   /** Identifier. The resource name of the autofeed settings. Format: `accounts/{account}/autofeedSettings`. */
@@ -4297,22 +3250,13 @@ export interface UpdateAutofeedSettingsAccountsAutofeedSettingsRequest {
   /** Request body */
   body?: AutofeedSettings;
 }
-export const UpdateAutofeedSettingsAccountsAutofeedSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(AutofeedSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateAutofeedSettingsAccountsAutofeedSettingsRequest",
-  }) as any as S.Schema<UpdateAutofeedSettingsAccountsAutofeedSettingsRequest>;
+export const UpdateAutofeedSettingsAccountsAutofeedSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(AutofeedSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "UpdateAutofeedSettingsAccountsAutofeedSettingsRequest" }) as any as S.Schema<UpdateAutofeedSettingsAccountsAutofeedSettingsRequest>;
 
 export interface UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest {
   /** Identifier. The resource name of the automatic improvements. Format: `accounts/{account}/automaticImprovements`. */
@@ -4322,23 +3266,13 @@ export interface UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest
   /** Request body */
   body?: AutomaticImprovements;
 }
-export const UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(AutomaticImprovements.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest",
-  }) as any as S.Schema<UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
+export const UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(AutomaticImprovements.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest" }) as any as S.Schema<UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
 
 export interface UpdateBusinessIdentityAccountsBusinessIdentityRequest {
   /** Identifier. The resource name of the business identity. Format: `accounts/{account}/businessIdentity` */
@@ -4348,22 +3282,13 @@ export interface UpdateBusinessIdentityAccountsBusinessIdentityRequest {
   /** Request body */
   body?: BusinessIdentity;
 }
-export const UpdateBusinessIdentityAccountsBusinessIdentityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BusinessIdentity.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateBusinessIdentityAccountsBusinessIdentityRequest",
-  }) as any as S.Schema<UpdateBusinessIdentityAccountsBusinessIdentityRequest>;
+export const UpdateBusinessIdentityAccountsBusinessIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BusinessIdentity.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "UpdateBusinessIdentityAccountsBusinessIdentityRequest" }) as any as S.Schema<UpdateBusinessIdentityAccountsBusinessIdentityRequest>;
 
 export interface UpdateBusinessInfoAccountsBusinessInfoRequest {
   /** Identifier. The resource name of the business info. Format: `accounts/{account}/businessInfo` */
@@ -4373,22 +3298,13 @@ export interface UpdateBusinessInfoAccountsBusinessInfoRequest {
   /** Request body */
   body?: BusinessInfo;
 }
-export const UpdateBusinessInfoAccountsBusinessInfoRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(BusinessInfo.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateBusinessInfoAccountsBusinessInfoRequest",
-  }) as any as S.Schema<UpdateBusinessInfoAccountsBusinessInfoRequest>;
+export const UpdateBusinessInfoAccountsBusinessInfoRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(BusinessInfo.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "UpdateBusinessInfoAccountsBusinessInfoRequest" }) as any as S.Schema<UpdateBusinessInfoAccountsBusinessInfoRequest>;
 
 export interface UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest {
   /** Identifier. The resource name of the program configuration settings. Format: `accounts/{account}/programs/{program}/checkoutSettings` */
@@ -4398,22 +3314,13 @@ export interface UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest {
   /** Request body */
   body?: CheckoutSettings;
 }
-export const UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CheckoutSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
-  }) as any as S.Schema<UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
+export const UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(CheckoutSettings.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest" }) as any as S.Schema<UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
 export interface UpdateEmailPreferencesAccountsEmailPreferencesRequest {
   /** Identifier. The name of the EmailPreferences. The endpoint is only supported for the authenticated user. */
@@ -4423,22 +3330,13 @@ export interface UpdateEmailPreferencesAccountsEmailPreferencesRequest {
   /** Request body */
   body?: EmailPreferences;
 }
-export const UpdateEmailPreferencesAccountsEmailPreferencesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(EmailPreferences.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateEmailPreferencesAccountsEmailPreferencesRequest",
-  }) as any as S.Schema<UpdateEmailPreferencesAccountsEmailPreferencesRequest>;
+export const UpdateEmailPreferencesAccountsEmailPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(EmailPreferences.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "UpdateEmailPreferencesAccountsEmailPreferencesRequest" }) as any as S.Schema<UpdateEmailPreferencesAccountsEmailPreferencesRequest>;
 
 export interface UpdateHomepageAccountsHomepageRequest {
   /** Identifier. The resource name of the store's homepage. Format: `accounts/{account}/homepage` */
@@ -4448,30 +3346,19 @@ export interface UpdateHomepageAccountsHomepageRequest {
   /** Request body */
   body?: Homepage;
 }
-export const UpdateHomepageAccountsHomepageRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Homepage.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateHomepageAccountsHomepageRequest",
-}) as any as S.Schema<UpdateHomepageAccountsHomepageRequest>;
+export const UpdateHomepageAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Homepage.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "UpdateHomepageAccountsHomepageRequest" }) as any as S.Schema<UpdateHomepageAccountsHomepageRequest>;
 
 /** Request message for the `VerifySelf` method. */
 export interface VerifySelfRequest {}
 export const VerifySelfRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VerifySelfRequest",
-}) as any as S.Schema<VerifySelfRequest>;
+S.Struct({}),
+).annotate({ identifier: "VerifySelfRequest" }) as any as S.Schema<VerifySelfRequest>;
 
 export interface VerifySelfAccountsUsersMeRequest {
   /** Required. The name of the account under which the caller is a user. Format: `accounts/{account}` */
@@ -4480,26 +3367,13 @@ export interface VerifySelfAccountsUsersMeRequest {
   body?: VerifySelfRequest;
 }
 export const VerifySelfAccountsUsersMeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account: S.String.pipe(T.Label()),
-    body: S.optional(VerifySelfRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "accounts/v1beta/{+account}/users/me:verifySelf",
-      baseUrl: "https://merchantapi.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "VerifySelfAccountsUsersMeRequest",
-}) as any as S.Schema<VerifySelfAccountsUsersMeRequest>;
+S.Struct({
+  "account": S.String.pipe(T.Label()),
+  "body": S.optional(VerifySelfRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"accounts/v1beta/{+account}/users/me:verifySelf","baseUrl":"https://merchantapi.googleapis.com/"})),
+).annotate({ identifier: "VerifySelfAccountsUsersMeRequest" }) as any as S.Schema<VerifySelfAccountsUsersMeRequest>;
 
-export type AcceptTermsOfServiceError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AcceptTermsOfServiceError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Accepts a `TermsOfService`. Executing this method requires admin access. */
 export const acceptTermsOfService: API.OperationMethod<
   AcceptTermsOfServiceRequest,
@@ -4514,12 +3388,7 @@ export const acceptTermsOfService: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ApproveAccountsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ApproveAccountsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Approve an account service proposal. */
 export const approveAccountsServices: API.OperationMethod<
   ApproveAccountsServicesRequest,
@@ -4534,12 +3403,7 @@ export const approveAccountsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ClaimAccountsHomepageError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ClaimAccountsHomepageError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Claims a store's homepage. Executing this method requires admin access. If the homepage is already claimed, this will recheck the verification (unless the business is exempted from claiming, which also exempts from verification) and return a successful response. If ownership can no longer be verified, it will return an error, but it won't clear the claim. In case of failure, a canonical error message is returned: * PERMISSION_DENIED: User doesn't have the necessary permissions on this Merchant Center account. * FAILED_PRECONDITION: - The account is not a Merchant Center account. - Merchant Center account doesn't have a homepage. - Claiming failed (in this case the error message contains more details). */
 export const claimAccountsHomepage: API.OperationMethod<
   ClaimAccountsHomepageRequest,
@@ -4554,12 +3418,7 @@ export const claimAccountsHomepage: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsOmnichannelSettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsOmnichannelSettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create the omnichannel settings for a given merchant. */
 export const createAccountsOmnichannelSettings: API.OperationMethod<
   CreateAccountsOmnichannelSettingsRequest,
@@ -4574,12 +3433,7 @@ export const createAccountsOmnichannelSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsOnlineReturnPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsOnlineReturnPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new return policy for a given business. */
 export const createAccountsOnlineReturnPolicies: API.OperationMethod<
   CreateAccountsOnlineReturnPoliciesRequest,
@@ -4594,12 +3448,7 @@ export const createAccountsOnlineReturnPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsProgramsCheckoutSettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsProgramsCheckoutSettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates `CheckoutSettings` for the given merchant. */
 export const createAccountsProgramsCheckoutSettings: API.OperationMethod<
   CreateAccountsProgramsCheckoutSettingsRequest,
@@ -4614,12 +3463,7 @@ export const createAccountsProgramsCheckoutSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsRegionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsRegionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a region definition in your Merchant Center account. Executing this method requires admin access. */
 export const createAccountsRegions: API.OperationMethod<
   CreateAccountsRegionsRequest,
@@ -4634,12 +3478,7 @@ export const createAccountsRegions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Merchant Center account user. Executing this method requires admin access. */
 export const createAccountsUsers: API.OperationMethod<
   CreateAccountsUsersRequest,
@@ -4654,12 +3493,7 @@ export const createAccountsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAndConfigureAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAndConfigureAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Merchant Center account with additional configuration. Adds the user that makes the request as an admin for the new account. */
 export const createAndConfigureAccounts: API.OperationMethod<
   CreateAndConfigureAccountsRequest,
@@ -4674,12 +3508,7 @@ export const createAndConfigureAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateTestAccountAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateTestAccountAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Merchant Center test account. Test accounts are intended for development and testing purposes, such as validating API integrations or new feature behavior. Key characteristics and limitations of test accounts: - Immutable Type: A test account cannot be converted into a regular (live) Merchant Center account. Likewise, a regular account cannot be converted into a test account. - Non-Serving Products: Any products, offers, or data created within a test account will not be published or made visible to end-users on any Google surfaces. They are strictly for testing environments. - Separate Environment: Test accounts operate in a sandbox-like manner, isolated from live serving and real user traffic. */
 export const createTestAccountAccounts: API.OperationMethod<
   CreateTestAccountAccountsRequest,
@@ -4694,12 +3523,7 @@ export const createTestAccountAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified account regardless of its type: standalone, advanced account or sub-account. Deleting an advanced account leads to the deletion of all of its sub-accounts. This also deletes the account's [developer registration entity](/merchant/api/reference/rest/accounts_v1beta/accounts.developerRegistration) and any associated GCP project to the account. Executing this method requires admin access. The deletion succeeds only if the account does not provide services to any other account and has no processed offers. You can use the `force` parameter to override this. */
 export const deleteAccounts: API.OperationMethod<
   DeleteAccountsRequest,
@@ -4714,12 +3538,7 @@ export const deleteAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsOnlineReturnPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsOnlineReturnPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing return policy. */
 export const deleteAccountsOnlineReturnPolicies: API.OperationMethod<
   DeleteAccountsOnlineReturnPoliciesRequest,
@@ -4734,12 +3553,7 @@ export const deleteAccountsOnlineReturnPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsRegionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsRegionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a region definition from your Merchant Center account. Executing this method requires admin access. */
 export const deleteAccountsRegions: API.OperationMethod<
   DeleteAccountsRegionsRequest,
@@ -4754,12 +3568,7 @@ export const deleteAccountsRegions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a Merchant Center account user. Executing this method requires admin access. The user to be deleted can't be the last admin user of that account. */
 export const deleteAccountsUsers: API.OperationMethod<
   DeleteAccountsUsersRequest,
@@ -4774,12 +3583,7 @@ export const deleteAccountsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes `CheckoutSettings` and unenrolls merchant from `Checkout` program. */
 export const deleteCheckoutSettingsAccountsProgramsCheckoutSettings: API.OperationMethod<
   DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest,
@@ -4794,12 +3598,7 @@ export const deleteCheckoutSettingsAccountsProgramsCheckoutSettings: API.Operati
   retry: Retry.Retry,
 }));
 
-export type DisableAccountsProgramsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DisableAccountsProgramsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Disable participation in the specified program for the account. */
 export const disableAccountsPrograms: API.OperationMethod<
   DisableAccountsProgramsRequest,
@@ -4814,12 +3613,7 @@ export const disableAccountsPrograms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnableAccountsProgramsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnableAccountsProgramsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enable participation in the specified program for the account. */
 export const enableAccountsPrograms: API.OperationMethod<
   EnableAccountsProgramsRequest,
@@ -4834,10 +3628,7 @@ export const enableAccountsPrograms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FindAccountsOmnichannelSettingsLfpProvidersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FindAccountsOmnichannelSettingsLfpProvidersError = NotFound | Forbidden | GcpOpError;
 /** Find the LFP provider candidates in a given country. */
 export const findAccountsOmnichannelSettingsLfpProviders: API.PaginatedOperationMethod<
   FindAccountsOmnichannelSettingsLfpProvidersRequest,
@@ -4850,16 +3641,10 @@ export const findAccountsOmnichannelSettingsLfpProviders: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type GetAccountForGcpRegistrationAccountsDeveloperRegistrationError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountForGcpRegistrationAccountsDeveloperRegistrationError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the merchant account that the calling GCP is registered with. */
 export const getAccountForGcpRegistrationAccountsDeveloperRegistration: API.OperationMethod<
   GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest,
@@ -4889,10 +3674,7 @@ export const getAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsOmnichannelSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsOmnichannelSettingsError = NotFound | Forbidden | GcpOpError;
 /** Get the omnichannel settings for a given merchant. */
 export const getAccountsOmnichannelSettings: API.OperationMethod<
   GetAccountsOmnichannelSettingsRequest,
@@ -4907,10 +3689,7 @@ export const getAccountsOmnichannelSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsOnlineReturnPoliciesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsOnlineReturnPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Gets an existing return policy for a given business. */
 export const getAccountsOnlineReturnPolicies: API.OperationMethod<
   GetAccountsOnlineReturnPoliciesRequest,
@@ -4985,10 +3764,7 @@ export const getAccountsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsTermsOfServiceAgreementStatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsTermsOfServiceAgreementStatesError = NotFound | Forbidden | GcpOpError;
 /** Returns the state of a terms of service agreement. */
 export const getAccountsTermsOfServiceAgreementStates: API.OperationMethod<
   GetAccountsTermsOfServiceAgreementStatesRequest,
@@ -5018,10 +3794,7 @@ export const getAccountsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAutofeedSettingsAccountsAutofeedSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAutofeedSettingsAccountsAutofeedSettingsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the autofeed settings of an account. */
 export const getAutofeedSettingsAccountsAutofeedSettings: API.OperationMethod<
   GetAutofeedSettingsAccountsAutofeedSettingsRequest,
@@ -5036,10 +3809,7 @@ export const getAutofeedSettingsAccountsAutofeedSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAutomaticImprovementsAccountsAutomaticImprovementsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAutomaticImprovementsAccountsAutomaticImprovementsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the automatic improvements of an account. */
 export const getAutomaticImprovementsAccountsAutomaticImprovements: API.OperationMethod<
   GetAutomaticImprovementsAccountsAutomaticImprovementsRequest,
@@ -5054,10 +3824,7 @@ export const getAutomaticImprovementsAccountsAutomaticImprovements: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type GetBusinessIdentityAccountsBusinessIdentityError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetBusinessIdentityAccountsBusinessIdentityError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the business identity of an account. */
 export const getBusinessIdentityAccountsBusinessIdentity: API.OperationMethod<
   GetBusinessIdentityAccountsBusinessIdentityRequest,
@@ -5072,10 +3839,7 @@ export const getBusinessIdentityAccountsBusinessIdentity: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetBusinessInfoAccountsBusinessInfoError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetBusinessInfoAccountsBusinessInfoError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the business info of an account. */
 export const getBusinessInfoAccountsBusinessInfo: API.OperationMethod<
   GetBusinessInfoAccountsBusinessInfoRequest,
@@ -5090,10 +3854,7 @@ export const getBusinessInfoAccountsBusinessInfo: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCheckoutSettingsAccountsProgramsCheckoutSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetCheckoutSettingsAccountsProgramsCheckoutSettingsError = NotFound | Forbidden | GcpOpError;
 /** Gets `CheckoutSettings` for the given merchant. This includes information about review state, enrollment state and URL settings. */
 export const getCheckoutSettingsAccountsProgramsCheckoutSettings: API.OperationMethod<
   GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest,
@@ -5108,10 +3869,7 @@ export const getCheckoutSettingsAccountsProgramsCheckoutSettings: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetDeveloperRegistrationAccountsDeveloperRegistrationError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetDeveloperRegistrationAccountsDeveloperRegistrationError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a developer registration for a merchant. */
 export const getDeveloperRegistrationAccountsDeveloperRegistration: API.OperationMethod<
   GetDeveloperRegistrationAccountsDeveloperRegistrationRequest,
@@ -5126,10 +3884,7 @@ export const getDeveloperRegistrationAccountsDeveloperRegistration: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type GetEmailPreferencesAccountsEmailPreferencesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetEmailPreferencesAccountsEmailPreferencesError = NotFound | Forbidden | GcpOpError;
 /** Returns the email preferences for a Merchant Center account user. This service only permits retrieving and updating email preferences for the authenticated user. Use the name=accounts/*\/users/me/emailPreferences alias to get preferences for the authenticated user. */
 export const getEmailPreferencesAccountsEmailPreferences: API.OperationMethod<
   GetEmailPreferencesAccountsEmailPreferencesRequest,
@@ -5144,10 +3899,7 @@ export const getEmailPreferencesAccountsEmailPreferences: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetHomepageAccountsHomepageError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetHomepageAccountsHomepageError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a store's homepage. */
 export const getHomepageAccountsHomepage: API.OperationMethod<
   GetHomepageAccountsHomepageRequest,
@@ -5162,10 +3914,7 @@ export const getHomepageAccountsHomepage: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetShippingSettingsAccountsShippingSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetShippingSettingsAccountsShippingSettingsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve shipping setting information. */
 export const getShippingSettingsAccountsShippingSettings: API.OperationMethod<
   GetShippingSettingsAccountsShippingSettingsRequest,
@@ -5195,12 +3944,7 @@ export const getTermsOfService: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountsShippingSettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertAccountsShippingSettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Replace the shipping setting of a business with the request shipping setting. Executing this method requires admin access. */
 export const insertAccountsShippingSettings: API.OperationMethod<
   InsertAccountsShippingSettingsRequest,
@@ -5215,12 +3959,7 @@ export const insertAccountsShippingSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LinkGbpAccountAccountsGbpAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type LinkGbpAccountAccountsGbpAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Link the specified merchant to a GBP account for all countries. To run this method, you must have admin access to the Merchant Center account. If you don't have admin access, the request fails with the error message `User is not an administrator of account {ACCOUNT_ID}`. */
 export const linkGbpAccountAccountsGbpAccounts: API.OperationMethod<
   LinkGbpAccountAccountsGbpAccountsRequest,
@@ -5235,12 +3974,7 @@ export const linkGbpAccountAccountsGbpAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Link the specified merchant to a LFP provider for the specified country. */
 export const linkLfpProviderAccountsOmnichannelSettingsLfpProviders: API.OperationMethod<
   LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest,
@@ -5268,10 +4002,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsGbpAccountsError = NotFound | Forbidden | GcpOpError;
@@ -5287,10 +4018,7 @@ export const listAccountsGbpAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsIssuesError = NotFound | Forbidden | GcpOpError;
@@ -5306,16 +4034,10 @@ export const listAccountsIssues: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAccountsOmnichannelSettingsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsOmnichannelSettingsError = NotFound | Forbidden | GcpOpError;
 /** List all the omnichannel settings for a given merchant. */
 export const listAccountsOmnichannelSettings: API.PaginatedOperationMethod<
   ListAccountsOmnichannelSettingsRequest,
@@ -5328,16 +4050,10 @@ export const listAccountsOmnichannelSettings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAccountsOnlineReturnPoliciesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsOnlineReturnPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Lists all existing return policies for a given business. */
 export const listAccountsOnlineReturnPolicies: API.PaginatedOperationMethod<
   ListAccountsOnlineReturnPoliciesRequest,
@@ -5350,10 +4066,7 @@ export const listAccountsOnlineReturnPolicies: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsProgramsError = NotFound | Forbidden | GcpOpError;
@@ -5369,10 +4082,7 @@ export const listAccountsPrograms: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsRegionsError = NotFound | Forbidden | GcpOpError;
@@ -5388,10 +4098,7 @@ export const listAccountsRegions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsRelationshipsError = NotFound | Forbidden | GcpOpError;
@@ -5407,10 +4114,7 @@ export const listAccountsRelationships: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsServicesError = NotFound | Forbidden | GcpOpError;
@@ -5426,10 +4130,7 @@ export const listAccountsServices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsUsersError = NotFound | Forbidden | GcpOpError;
@@ -5445,10 +4146,7 @@ export const listAccountsUsers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListSubaccountsAccountsError = NotFound | Forbidden | GcpOpError;
@@ -5464,18 +4162,10 @@ export const listSubaccountsAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchAccountsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an account regardless of its type: standalone, advanced account or sub-account. Executing this method requires admin access. */
 export const patchAccounts: API.OperationMethod<
   PatchAccountsRequest,
@@ -5490,12 +4180,7 @@ export const patchAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountsOmnichannelSettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsOmnichannelSettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update the omnichannel setting for a given merchant in a given country. */
 export const patchAccountsOmnichannelSettings: API.OperationMethod<
   PatchAccountsOmnichannelSettingsRequest,
@@ -5510,12 +4195,7 @@ export const patchAccountsOmnichannelSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountsOnlineReturnPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsOnlineReturnPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing return policy for a given business. */
 export const patchAccountsOnlineReturnPolicies: API.OperationMethod<
   PatchAccountsOnlineReturnPoliciesRequest,
@@ -5530,12 +4210,7 @@ export const patchAccountsOnlineReturnPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountsRegionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsRegionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a region definition in your Merchant Center account. Executing this method requires admin access. */
 export const patchAccountsRegions: API.OperationMethod<
   PatchAccountsRegionsRequest,
@@ -5550,12 +4225,7 @@ export const patchAccountsRegions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountsRelationshipsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsRelationshipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the account relationship. Executing this method requires admin access. */
 export const patchAccountsRelationships: API.OperationMethod<
   PatchAccountsRelationshipsRequest,
@@ -5570,12 +4240,7 @@ export const patchAccountsRelationships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountsUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a Merchant Center account user. Executing this method requires admin access. */
 export const patchAccountsUsers: API.OperationMethod<
   PatchAccountsUsersRequest,
@@ -5590,12 +4255,7 @@ export const patchAccountsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProposeAccountsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ProposeAccountsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Propose an account service. */
 export const proposeAccountsServices: API.OperationMethod<
   ProposeAccountsServicesRequest,
@@ -5610,12 +4270,7 @@ export const proposeAccountsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RegisterGcpAccountsDeveloperRegistrationError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RegisterGcpAccountsDeveloperRegistrationError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Registers the GCP used for the API call to the shopping account passed in the request. Will create a user with an "API developer" and add the "developer_email" as a contact with "API notifications" email preference on. Restrictions: * The caller account must be authenticated and must not impersonate another account at registration time. Registering for subaccounts is not supported if the caller account is authenticated with the parent or the managing advanced account. * The caller account must have a [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center. * [Test accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts) are not eligible for registration. */
 export const registerGcpAccountsDeveloperRegistration: API.OperationMethod<
   RegisterGcpAccountsDeveloperRegistrationRequest,
@@ -5630,12 +4285,7 @@ export const registerGcpAccountsDeveloperRegistration: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RejectAccountsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RejectAccountsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Reject an account service (both proposed and approve services can be rejected). */
 export const rejectAccountsServices: API.OperationMethod<
   RejectAccountsServicesRequest,
@@ -5650,12 +4300,7 @@ export const rejectAccountsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RequestInventoryVerificationAccountsOmnichannelSettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RequestInventoryVerificationAccountsOmnichannelSettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Requests inventory verification for a given merchant in a given country. */
 export const requestInventoryVerificationAccountsOmnichannelSettings: API.OperationMethod<
   RequestInventoryVerificationAccountsOmnichannelSettingsRequest,
@@ -5670,10 +4315,7 @@ export const requestInventoryVerificationAccountsOmnichannelSettings: API.Operat
   retry: Retry.Retry,
 }));
 
-export type RetrieveForApplicationAccountsTermsOfServiceAgreementStatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type RetrieveForApplicationAccountsTermsOfServiceAgreementStatesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the state of the agreement for the application terms of service. Application terms of service covers permissions related to the usage of data provided through Merchant Center, CSS Center, Manufacturer Center, and more. */
 export const retrieveForApplicationAccountsTermsOfServiceAgreementStates: API.OperationMethod<
   RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest,
@@ -5688,10 +4330,7 @@ export const retrieveForApplicationAccountsTermsOfServiceAgreementStates: API.Op
   retry: Retry.Retry,
 }));
 
-export type RetrieveLatestTermsOfServiceError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type RetrieveLatestTermsOfServiceError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the latest version of the `TermsOfService` for a given `kind` and `region_code`. */
 export const retrieveLatestTermsOfService: API.OperationMethod<
   RetrieveLatestTermsOfServiceRequest,
@@ -5706,12 +4345,7 @@ export const retrieveLatestTermsOfService: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnclaimAccountsHomepageError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnclaimAccountsHomepageError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unclaims a store's homepage. Executing this method requires admin access. */
 export const unclaimAccountsHomepage: API.OperationMethod<
   UnclaimAccountsHomepageRequest,
@@ -5726,12 +4360,7 @@ export const unclaimAccountsHomepage: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnregisterGcpAccountsDeveloperRegistrationError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnregisterGcpAccountsDeveloperRegistrationError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unregister the calling GCP from the calling shopping account. Note that the GCP will still be able to access the API for at most 1 day from the unregister succussful call. */
 export const unregisterGcpAccountsDeveloperRegistration: API.OperationMethod<
   UnregisterGcpAccountsDeveloperRegistrationRequest,
@@ -5746,12 +4375,7 @@ export const unregisterGcpAccountsDeveloperRegistration: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAutofeedSettingsAccountsAutofeedSettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAutofeedSettingsAccountsAutofeedSettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the autofeed settings of an account. */
 export const updateAutofeedSettingsAccountsAutofeedSettings: API.OperationMethod<
   UpdateAutofeedSettingsAccountsAutofeedSettingsRequest,
@@ -5766,12 +4390,7 @@ export const updateAutofeedSettingsAccountsAutofeedSettings: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type UpdateAutomaticImprovementsAccountsAutomaticImprovementsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateAutomaticImprovementsAccountsAutomaticImprovementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the automatic improvements of an account. */
 export const updateAutomaticImprovementsAccountsAutomaticImprovements: API.OperationMethod<
   UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest,
@@ -5786,12 +4405,7 @@ export const updateAutomaticImprovementsAccountsAutomaticImprovements: API.Opera
   retry: Retry.Retry,
 }));
 
-export type UpdateBusinessIdentityAccountsBusinessIdentityError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateBusinessIdentityAccountsBusinessIdentityError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the business identity of an account. Executing this method requires admin access. */
 export const updateBusinessIdentityAccountsBusinessIdentity: API.OperationMethod<
   UpdateBusinessIdentityAccountsBusinessIdentityRequest,
@@ -5806,12 +4420,7 @@ export const updateBusinessIdentityAccountsBusinessIdentity: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type UpdateBusinessInfoAccountsBusinessInfoError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateBusinessInfoAccountsBusinessInfoError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the business info of an account. Executing this method requires admin access. */
 export const updateBusinessInfoAccountsBusinessInfo: API.OperationMethod<
   UpdateBusinessInfoAccountsBusinessInfoRequest,
@@ -5826,12 +4435,7 @@ export const updateBusinessInfoAccountsBusinessInfo: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates `CheckoutSettings` for the given merchant. */
 export const updateCheckoutSettingsAccountsProgramsCheckoutSettings: API.OperationMethod<
   UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest,
@@ -5846,12 +4450,7 @@ export const updateCheckoutSettingsAccountsProgramsCheckoutSettings: API.Operati
   retry: Retry.Retry,
 }));
 
-export type UpdateEmailPreferencesAccountsEmailPreferencesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEmailPreferencesAccountsEmailPreferencesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the email preferences for a Merchant Center account user. Advanced account users should specify the advanced account rather than a sub-account of the advanced account. Preferences which are not explicitly selected in the update mask will not be updated. It is invalid for updates to specify an UNCONFIRMED opt-in status value. Use the name=accounts/*\/users/me/emailPreferences alias to update preferences for the authenticated user. */
 export const updateEmailPreferencesAccountsEmailPreferences: API.OperationMethod<
   UpdateEmailPreferencesAccountsEmailPreferencesRequest,
@@ -5866,12 +4465,7 @@ export const updateEmailPreferencesAccountsEmailPreferences: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type UpdateHomepageAccountsHomepageError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateHomepageAccountsHomepageError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a store's homepage. Executing this method requires admin access. */
 export const updateHomepageAccountsHomepage: API.OperationMethod<
   UpdateHomepageAccountsHomepageRequest,
@@ -5886,12 +4480,7 @@ export const updateHomepageAccountsHomepage: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VerifySelfAccountsUsersMeError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type VerifySelfAccountsUsersMeError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the user that is represented by the caller from pending to verified. */
 export const verifySelfAccountsUsersMe: API.OperationMethod<
   VerifySelfAccountsUsersMeRequest,
@@ -5905,3 +4494,4 @@ export const verifySelfAccountsUsersMe: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

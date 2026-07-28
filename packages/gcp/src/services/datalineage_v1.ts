@@ -13,57 +13,55 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request message for BatchSearchLinkProcesses. */
 export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest {
@@ -74,17 +72,13 @@ export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest 
   /** Optional. The maximum number of processes to return in a single page of the response. A page may contain fewer results than this value. */
   pageSize?: number;
 }
-export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String),
-      links: S.optional(StringList),
-      pageSize: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest>;
+export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String),
+  "links": S.optional(StringList),
+  "pageSize": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest>;
 
 export interface BatchSearchLinkProcessesProjectsLocationsRequest {
   /** Required. The project and location where you want to search. */
@@ -92,25 +86,12 @@ export interface BatchSearchLinkProcessesProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest;
 }
-export const BatchSearchLinkProcessesProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:batchSearchLinkProcesses",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchSearchLinkProcessesProjectsLocationsRequest",
-  }) as any as S.Schema<BatchSearchLinkProcessesProjectsLocationsRequest>;
+export const BatchSearchLinkProcessesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:batchSearchLinkProcesses","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "BatchSearchLinkProcessesProjectsLocationsRequest" }) as any as S.Schema<BatchSearchLinkProcessesProjectsLocationsRequest>;
 
 /** Link details. */
 export interface GoogleCloudDatacatalogLineageV1ProcessLinkInfo {
@@ -121,23 +102,16 @@ export interface GoogleCloudDatacatalogLineageV1ProcessLinkInfo {
   /** The start of the first event establishing this link-process tuple. */
   startTime?: string;
 }
-export const GoogleCloudDatacatalogLineageV1ProcessLinkInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      link: S.optional(S.String),
-      endTime: S.optional(S.String),
-      startTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1ProcessLinkInfo",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
+export const GoogleCloudDatacatalogLineageV1ProcessLinkInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "link": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "startTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1ProcessLinkInfo" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
 
-export type GoogleCloudDatacatalogLineageV1ProcessLinkInfoList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
-export const GoogleCloudDatacatalogLineageV1ProcessLinkInfoList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageV1ProcessLinkInfo,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessLinkInfoList>;
+export type GoogleCloudDatacatalogLineageV1ProcessLinkInfoList = ReadonlyArray<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
+export const GoogleCloudDatacatalogLineageV1ProcessLinkInfoList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1ProcessLinkInfo) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessLinkInfoList>;
 
 /** Links associated with a specific process. */
 export interface GoogleCloudDatacatalogLineageV1ProcessLinks {
@@ -146,22 +120,15 @@ export interface GoogleCloudDatacatalogLineageV1ProcessLinks {
   /** The process name in the format of `projects/{project}/locations/{location}/processes/{process}`. */
   process?: string;
 }
-export const GoogleCloudDatacatalogLineageV1ProcessLinks =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      links: S.optional(GoogleCloudDatacatalogLineageV1ProcessLinkInfoList),
-      process: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1ProcessLinks",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessLinks>;
+export const GoogleCloudDatacatalogLineageV1ProcessLinks = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "links": S.optional(GoogleCloudDatacatalogLineageV1ProcessLinkInfoList),
+  "process": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1ProcessLinks" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessLinks>;
 
-export type GoogleCloudDatacatalogLineageV1ProcessLinksList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1ProcessLinks>;
-export const GoogleCloudDatacatalogLineageV1ProcessLinksList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageV1ProcessLinks,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessLinksList>;
+export type GoogleCloudDatacatalogLineageV1ProcessLinksList = ReadonlyArray<GoogleCloudDatacatalogLineageV1ProcessLinks>;
+export const GoogleCloudDatacatalogLineageV1ProcessLinksList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1ProcessLinks) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessLinksList>;
 
 /** Response message for BatchSearchLinkProcesses. */
 export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse {
@@ -170,24 +137,18 @@ export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse
   /** The token to specify as `page_token` in the subsequent call to get the next page. Omitted if there are no more pages in the response. */
   nextPageToken?: string;
 }
-export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      processLinks: S.optional(GoogleCloudDatacatalogLineageV1ProcessLinksList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse>;
+export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "processLinks": S.optional(GoogleCloudDatacatalogLineageV1ProcessLinksList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleLongrunningCancelOperationRequest",
-}) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
+export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleLongrunningCancelOperationRequest" }) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -195,46 +156,21 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
 export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
+S.Struct({}),
+).annotate({ identifier: "GoogleProtobufEmpty" }) as any as S.Schema<GoogleProtobufEmpty>;
 
-export type GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum =
-  | "SOURCE_TYPE_UNSPECIFIED"
-  | "CUSTOM"
-  | "BIGQUERY"
-  | "DATA_FUSION"
-  | "COMPOSER"
-  | "LOOKER_STUDIO"
-  | "DATAPROC"
-  | "VERTEX_AI"
-  | "DATAFLOW"
-  | "LOOKER_CORE"
-  | (string & {});
-export const GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum = "SOURCE_TYPE_UNSPECIFIED" | "CUSTOM" | "BIGQUERY" | "DATA_FUSION" | "COMPOSER" | "LOOKER_STUDIO" | "DATAPROC" | "VERTEX_AI" | "DATAFLOW" | "LOOKER_CORE";
+export const GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Origin of a process. */
 export interface GoogleCloudDatacatalogLineageV1Origin {
@@ -243,23 +179,15 @@ export interface GoogleCloudDatacatalogLineageV1Origin {
   /** If the source_type isn't CUSTOM, the value of this field should be a Google Cloud resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}` */
   name?: string;
 }
-export const GoogleCloudDatacatalogLineageV1Origin = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sourceType: S.optional(
-        GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum,
-      ),
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogLineageV1Origin",
-}) as any as S.Schema<GoogleCloudDatacatalogLineageV1Origin>;
+export const GoogleCloudDatacatalogLineageV1Origin = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sourceType": S.optional(GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1Origin" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1Origin>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** A process is the definition of a data transformation operation. */
 export interface GoogleCloudDatacatalogLineageV1Process {
@@ -272,17 +200,14 @@ export interface GoogleCloudDatacatalogLineageV1Process {
   /** Immutable. The resource name of the lineage process. Format: `projects/{project}/locations/{location}/processes/{process}`. Can be specified or auto-assigned. {process} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.` */
   name?: string;
 }
-export const GoogleCloudDatacatalogLineageV1Process = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      origin: S.optional(GoogleCloudDatacatalogLineageV1Origin),
-      displayName: S.optional(S.String),
-      attributes: S.optional(DocumentMap),
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogLineageV1Process",
-}) as any as S.Schema<GoogleCloudDatacatalogLineageV1Process>;
+export const GoogleCloudDatacatalogLineageV1Process = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "origin": S.optional(GoogleCloudDatacatalogLineageV1Origin),
+  "displayName": S.optional(S.String),
+  "attributes": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1Process" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1Process>;
 
 export interface CreateProjectsLocationsProcessesRequest {
   /** Required. The name of the project and its location that should own the process. */
@@ -292,34 +217,16 @@ export interface CreateProjectsLocationsProcessesRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogLineageV1Process;
 }
-export const CreateProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(
-        GoogleCloudDatacatalogLineageV1Process.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/processes",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsProcessesRequest",
-}) as any as S.Schema<CreateProjectsLocationsProcessesRequest>;
+export const CreateProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudDatacatalogLineageV1Process.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/processes","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsProcessesRequest" }) as any as S.Schema<CreateProjectsLocationsProcessesRequest>;
 
-export type GoogleCloudDatacatalogLineageV1RunStateEnum =
-  | "UNKNOWN"
-  | "STARTED"
-  | "COMPLETED"
-  | "FAILED"
-  | "ABORTED"
-  | (string & {});
-export const GoogleCloudDatacatalogLineageV1RunStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudDatacatalogLineageV1RunStateEnum = "UNKNOWN" | "STARTED" | "COMPLETED" | "FAILED" | "ABORTED";
+export const GoogleCloudDatacatalogLineageV1RunStateEnum = /*@__PURE__*/ S.String;
 
 /** A lineage run represents an execution of a process that creates lineage events. */
 export interface GoogleCloudDatacatalogLineageV1Run {
@@ -337,17 +244,15 @@ export interface GoogleCloudDatacatalogLineageV1Run {
   state?: GoogleCloudDatacatalogLineageV1RunStateEnum;
 }
 export const GoogleCloudDatacatalogLineageV1Run = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-    endTime: S.optional(S.String),
-    attributes: S.optional(DocumentMap),
-    startTime: S.optional(S.String),
-    state: S.optional(GoogleCloudDatacatalogLineageV1RunStateEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogLineageV1Run",
-}) as any as S.Schema<GoogleCloudDatacatalogLineageV1Run>;
+S.Struct({
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "attributes": S.optional(DocumentMap),
+  "startTime": S.optional(S.String),
+  "state": S.optional(GoogleCloudDatacatalogLineageV1RunStateEnum),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1Run" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1Run>;
 
 export interface CreateProjectsLocationsProcessesRunsRequest {
   /** Required. The name of the process that should own the run. */
@@ -357,22 +262,13 @@ export interface CreateProjectsLocationsProcessesRunsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogLineageV1Run;
 }
-export const CreateProjectsLocationsProcessesRunsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudDatacatalogLineageV1Run.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/runs",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsProcessesRunsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsProcessesRunsRequest>;
+export const CreateProjectsLocationsProcessesRunsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudDatacatalogLineageV1Run.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/runs","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsProcessesRunsRequest" }) as any as S.Schema<CreateProjectsLocationsProcessesRunsRequest>;
 
 /** The soft reference to everything you can attach a lineage event to. */
 export interface GoogleCloudDatacatalogLineageV1EntityReference {
@@ -381,39 +277,26 @@ export interface GoogleCloudDatacatalogLineageV1EntityReference {
   /** Optional. Field path within the entity. Each nesting level should be a separate value in the repeated field. The order matters. Must be empty for asset level lineage For example to address "salary.net" subfield where "salary" is a column and "net" is a proto field two values in the `field` should be reported, the first is "salary" and the second is "net". Each field length is limited to 500 characters. Maximum supported nesting level is 20. */
   field?: StringList;
 }
-export const GoogleCloudDatacatalogLineageV1EntityReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fullyQualifiedName: S.optional(S.String),
-      field: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1EntityReference",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1EntityReference>;
+export const GoogleCloudDatacatalogLineageV1EntityReference = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "fullyQualifiedName": S.optional(S.String),
+  "field": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1EntityReference" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1EntityReference>;
 
-export type GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum =
-  | "DEPENDENCY_TYPE_UNSPECIFIED"
-  | "EXACT_COPY"
-  | "OTHER"
-  | (string & {});
-export const GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum = "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER";
+export const GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Dependency info describes how one entity depends on another. */
 export interface GoogleCloudDatacatalogLineageV1DependencyInfo {
   /** Required. Type of dependency. */
   dependencyType?: GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum;
 }
-export const GoogleCloudDatacatalogLineageV1DependencyInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dependencyType: S.optional(
-        GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1DependencyInfo",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1DependencyInfo>;
+export const GoogleCloudDatacatalogLineageV1DependencyInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "dependencyType": S.optional(GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1DependencyInfo" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1DependencyInfo>;
 
 /** A lineage between source and target entities. */
 export interface GoogleCloudDatacatalogLineageV1EventLink {
@@ -424,23 +307,16 @@ export interface GoogleCloudDatacatalogLineageV1EventLink {
   /** Required. Reference to the target entity */
   target?: GoogleCloudDatacatalogLineageV1EntityReference;
 }
-export const GoogleCloudDatacatalogLineageV1EventLink = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      source: S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-      dependencyInfo: S.optional(GoogleCloudDatacatalogLineageV1DependencyInfo),
-      target: S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-    }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogLineageV1EventLink",
-}) as any as S.Schema<GoogleCloudDatacatalogLineageV1EventLink>;
+export const GoogleCloudDatacatalogLineageV1EventLink = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "source": S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+  "dependencyInfo": S.optional(GoogleCloudDatacatalogLineageV1DependencyInfo),
+  "target": S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1EventLink" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1EventLink>;
 
-export type GoogleCloudDatacatalogLineageV1EventLinkList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1EventLink>;
-export const GoogleCloudDatacatalogLineageV1EventLinkList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageV1EventLink,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1EventLinkList>;
+export type GoogleCloudDatacatalogLineageV1EventLinkList = ReadonlyArray<GoogleCloudDatacatalogLineageV1EventLink>;
+export const GoogleCloudDatacatalogLineageV1EventLinkList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1EventLink) as any as S.Schema<GoogleCloudDatacatalogLineageV1EventLinkList>;
 
 /** A lineage event represents an operation on assets. Within the operation, the data flows from the source to the target defined in the links field. */
 export interface GoogleCloudDatacatalogLineageV1LineageEvent {
@@ -453,17 +329,14 @@ export interface GoogleCloudDatacatalogLineageV1LineageEvent {
   /** Required. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported. */
   startTime?: string;
 }
-export const GoogleCloudDatacatalogLineageV1LineageEvent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      links: S.optional(GoogleCloudDatacatalogLineageV1EventLinkList),
-      name: S.optional(S.String),
-      endTime: S.optional(S.String),
-      startTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1LineageEvent",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageEvent>;
+export const GoogleCloudDatacatalogLineageV1LineageEvent = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "links": S.optional(GoogleCloudDatacatalogLineageV1EventLinkList),
+  "name": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "startTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1LineageEvent" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageEvent>;
 
 export interface CreateProjectsLocationsProcessesRunsLineageEventsRequest {
   /** Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided. */
@@ -473,43 +346,23 @@ export interface CreateProjectsLocationsProcessesRunsLineageEventsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogLineageV1LineageEvent;
 }
-export const CreateProjectsLocationsProcessesRunsLineageEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDatacatalogLineageV1LineageEvent.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/lineageEvents",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsProcessesRunsLineageEventsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsProcessesRunsLineageEventsRequest>;
+export const CreateProjectsLocationsProcessesRunsLineageEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudDatacatalogLineageV1LineageEvent.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/lineageEvents","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsProcessesRunsLineageEventsRequest" }) as any as S.Schema<CreateProjectsLocationsProcessesRunsLineageEventsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsProcessesRequest {
   /** Required. The name of the process to delete. */
@@ -517,26 +370,15 @@ export interface DeleteProjectsLocationsProcessesRequest {
   /** Optional. If set to true and the process is not found, the request succeeds but the server doesn't perform any actions. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsProcessesRequest",
-}) as any as S.Schema<DeleteProjectsLocationsProcessesRequest>;
+export const DeleteProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsProcessesRequest" }) as any as S.Schema<DeleteProjectsLocationsProcessesRequest>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -548,14 +390,12 @@ export interface GoogleRpcStatus {
   details?: DocumentMapList;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
-).annotate({
-  identifier: "GoogleRpcStatus",
-}) as any as S.Schema<GoogleRpcStatus>;
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
+).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
@@ -571,16 +411,14 @@ export interface GoogleLongrunningOperation {
   response?: DocumentMap;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(GoogleRpcStatus),
-    done: S.optional(S.Boolean),
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "GoogleLongrunningOperation",
-}) as any as S.Schema<GoogleLongrunningOperation>;
+S.Struct({
+  "error": S.optional(GoogleRpcStatus),
+  "done": S.optional(S.Boolean),
+  "metadata": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "GoogleLongrunningOperation" }) as any as S.Schema<GoogleLongrunningOperation>;
 
 export interface DeleteProjectsLocationsProcessesRunsRequest {
   /** Required. The name of the run to delete. */
@@ -588,21 +426,12 @@ export interface DeleteProjectsLocationsProcessesRunsRequest {
   /** Optional. If set to true and the run is not found, the request succeeds but the server doesn't perform any actions. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsProcessesRunsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsProcessesRunsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsProcessesRunsRequest>;
+export const DeleteProjectsLocationsProcessesRunsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsProcessesRunsRequest" }) as any as S.Schema<DeleteProjectsLocationsProcessesRunsRequest>;
 
 export interface DeleteProjectsLocationsProcessesRunsLineageEventsRequest {
   /** Required. The name of the lineage event to delete. */
@@ -610,81 +439,47 @@ export interface DeleteProjectsLocationsProcessesRunsLineageEventsRequest {
   /** Optional. If set to true and the lineage event is not found, the request succeeds but the server doesn't perform any actions. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsProcessesRunsLineageEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsProcessesRunsLineageEventsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsProcessesRunsLineageEventsRequest>;
+export const DeleteProjectsLocationsProcessesRunsLineageEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsProcessesRunsLineageEventsRequest" }) as any as S.Schema<DeleteProjectsLocationsProcessesRunsLineageEventsRequest>;
 
 export interface GetFoldersLocationsConfigRequest {
   /** Required. REQUIRED: The resource name of the config to be fetched. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config` */
   name: string;
 }
 export const GetFoldersLocationsConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://datalineage.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetFoldersLocationsConfigRequest",
-}) as any as S.Schema<GetFoldersLocationsConfigRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "GetFoldersLocationsConfigRequest" }) as any as S.Schema<GetFoldersLocationsConfigRequest>;
 
-export type GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelectorIntegrationEnum =
-    | "INTEGRATION_UNSPECIFIED"
-    | "BIGQUERY"
-    | "DATAPROC"
-    | "LOOKER_CORE"
-    | "MANAGED_AIRFLOW"
-    | (string & {});
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelectorIntegrationEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelectorIntegrationEnum = "INTEGRATION_UNSPECIFIED" | "BIGQUERY" | "DATAPROC" | "LOOKER_CORE" | "MANAGED_AIRFLOW";
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelectorIntegrationEnum = /*@__PURE__*/ S.String;
 
 /** Integration selector of the rule. The rule is only applied to the Integration selected by the selector. */
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector {
   /** Required. Integration to which the rule applies. This field can be used to specify the integration against which the ingestion rule should be applied. */
   integration?: GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelectorIntegrationEnum;
 }
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      integration: S.optional(
-        GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelectorIntegrationEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector>;
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "integration": S.optional(GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelectorIntegrationEnum),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector" }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector>;
 
 /** Lineage enablement configuration. Defines configurations for the ingestion of lineage for the resource and its children. */
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement {
   /** Optional. If true, ingestion of lineage should be enabled. If false, it should be disabled. If unspecified, the system default value is used. */
   enabled?: boolean;
 }
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement>;
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "enabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement" }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement>;
 
 /** Ingestion rule for Data Lineage ingestion. */
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule {
@@ -693,44 +488,26 @@ export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionI
   /** Required. Lineage enablement configuration. Defines configurations for the ingestion of lineage for the resource and its children. If unspecified, the ingestion will be enabled only if it was configured in the resource's parent. */
   lineageEnablement?: GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement;
 }
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      integrationSelector: S.optional(
-        GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector,
-      ),
-      lineageEnablement: S.optional(
-        GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "integrationSelector": S.optional(GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector),
+  "lineageEnablement": S.optional(GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule" }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
 
-export type GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList>;
+export type GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList = ReadonlyArray<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList>;
 
 /** Defines how Lineage should be ingested for a given resource. */
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion {
   /** Optional. List of rules for Data Lineage ingestion. */
   rules?: GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList;
 }
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rules: S.optional(
-        GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion>;
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "rules": S.optional(GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion" }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion>;
 
 /** Configuration for Data Lineage. Defines different configuration options for Lineage customers to control behaviour of lineage systems. */
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1Config {
@@ -741,131 +518,73 @@ export interface GoogleCloudDatacatalogLineageConfigmanagementV1Config {
   /** Optional. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a config from overwriting each other. It is required that systems make use of the `etag` in the read-modify-write cycle to perform config updates in order to avoid race conditions: An `etag` is returned in the response to `GetConfig`, and systems are expected to put that etag in the request to `UpdateConfig` to ensure that their change will be applied to the same version of the config. If an `etag` is not provided in the call to `UpdateConfig`, then the existing config, if any, will be overwritten. */
   etag?: string;
 }
-export const GoogleCloudDatacatalogLineageConfigmanagementV1Config =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      ingestion: S.optional(
-        GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion,
-      ),
-      etag: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageConfigmanagementV1Config",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config>;
+export const GoogleCloudDatacatalogLineageConfigmanagementV1Config = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.optional(S.String),
+  "ingestion": S.optional(GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion),
+  "etag": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageConfigmanagementV1Config" }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config>;
 
 export interface GetOrganizationsLocationsConfigRequest {
   /** Required. REQUIRED: The resource name of the config to be fetched. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config` */
   name: string;
 }
-export const GetOrganizationsLocationsConfigRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetOrganizationsLocationsConfigRequest",
-}) as any as S.Schema<GetOrganizationsLocationsConfigRequest>;
+export const GetOrganizationsLocationsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "GetOrganizationsLocationsConfigRequest" }) as any as S.Schema<GetOrganizationsLocationsConfigRequest>;
 
 export interface GetProjectsLocationsConfigRequest {
   /** Required. REQUIRED: The resource name of the config to be fetched. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config` */
   name: string;
 }
 export const GetProjectsLocationsConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://datalineage.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsConfigRequest",
-}) as any as S.Schema<GetProjectsLocationsConfigRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsConfigRequest" }) as any as S.Schema<GetProjectsLocationsConfigRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsProcessesRequest {
   /** Required. The name of the process to get. */
   name: string;
 }
-export const GetProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsProcessesRequest",
-}) as any as S.Schema<GetProjectsLocationsProcessesRequest>;
+export const GetProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsProcessesRequest" }) as any as S.Schema<GetProjectsLocationsProcessesRequest>;
 
 export interface GetProjectsLocationsProcessesRunsRequest {
   /** Required. The name of the run to get. */
   name: string;
 }
-export const GetProjectsLocationsProcessesRunsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsProcessesRunsRequest",
-}) as any as S.Schema<GetProjectsLocationsProcessesRunsRequest>;
+export const GetProjectsLocationsProcessesRunsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsProcessesRunsRequest" }) as any as S.Schema<GetProjectsLocationsProcessesRunsRequest>;
 
 export interface GetProjectsLocationsProcessesRunsLineageEventsRequest {
   /** Required. The name of the lineage event to get. */
   name: string;
 }
-export const GetProjectsLocationsProcessesRunsLineageEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsProcessesRunsLineageEventsRequest",
-  }) as any as S.Schema<GetProjectsLocationsProcessesRunsLineageEventsRequest>;
+export const GetProjectsLocationsProcessesRunsLineageEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsProcessesRunsLineageEventsRequest" }) as any as S.Schema<GetProjectsLocationsProcessesRunsLineageEventsRequest>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
@@ -879,30 +598,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
-  GoogleLongrunningOperation,
-) as any as S.Schema<GoogleLongrunningOperationList>;
+export type GoogleLongrunningOperationList = ReadonlyArray<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(GoogleLongrunningOperation) as any as S.Schema<GoogleLongrunningOperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
@@ -913,16 +620,13 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      unreachable: S.optional(StringList),
-      nextPageToken: S.optional(S.String),
-      operations: S.optional(GoogleLongrunningOperationList),
-    }),
-).annotate({
-  identifier: "GoogleLongrunningListOperationsResponse",
-}) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "operations": S.optional(GoogleLongrunningOperationList),
+}),
+).annotate({ identifier: "GoogleLongrunningListOperationsResponse" }) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
 
 export interface ListProjectsLocationsProcessesRequest {
   /** Required. The name of the project and its location that owns this collection of processes. */
@@ -932,28 +636,16 @@ export interface ListProjectsLocationsProcessesRequest {
   /** Optional. The page token received from a previous `ListProcesses` call. Specify it to get the next page. When paginating, all other parameters specified in this call must match the parameters of the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/processes",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsProcessesRequest",
-}) as any as S.Schema<ListProjectsLocationsProcessesRequest>;
+export const ListProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/processes","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsProcessesRequest" }) as any as S.Schema<ListProjectsLocationsProcessesRequest>;
 
-export type GoogleCloudDatacatalogLineageV1ProcessList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1Process>;
-export const GoogleCloudDatacatalogLineageV1ProcessList = /*@__PURE__*/ S.Array(
-  GoogleCloudDatacatalogLineageV1Process,
-) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessList>;
+export type GoogleCloudDatacatalogLineageV1ProcessList = ReadonlyArray<GoogleCloudDatacatalogLineageV1Process>;
+export const GoogleCloudDatacatalogLineageV1ProcessList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1Process) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessList>;
 
 /** Response message for ListProcesses. */
 export interface GoogleCloudDatacatalogLineageV1ListProcessesResponse {
@@ -962,15 +654,12 @@ export interface GoogleCloudDatacatalogLineageV1ListProcessesResponse {
   /** The token to specify as `page_token` in the next call to get the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDatacatalogLineageV1ListProcessesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      processes: S.optional(GoogleCloudDatacatalogLineageV1ProcessList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1ListProcessesResponse",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListProcessesResponse>;
+export const GoogleCloudDatacatalogLineageV1ListProcessesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "processes": S.optional(GoogleCloudDatacatalogLineageV1ProcessList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1ListProcessesResponse" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListProcessesResponse>;
 
 export interface ListProjectsLocationsProcessesRunsRequest {
   /** Required. The name of process that owns this collection of runs. */
@@ -980,28 +669,16 @@ export interface ListProjectsLocationsProcessesRunsRequest {
   /** Optional. The page token received from a previous `ListRuns` call. Specify it to get the next page. When paginating, all other parameters specified in this call must match the parameters of the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsProcessesRunsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/runs",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsProcessesRunsRequest",
-  }) as any as S.Schema<ListProjectsLocationsProcessesRunsRequest>;
+export const ListProjectsLocationsProcessesRunsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/runs","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsProcessesRunsRequest" }) as any as S.Schema<ListProjectsLocationsProcessesRunsRequest>;
 
-export type GoogleCloudDatacatalogLineageV1RunList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1Run>;
-export const GoogleCloudDatacatalogLineageV1RunList = /*@__PURE__*/ S.Array(
-  GoogleCloudDatacatalogLineageV1Run,
-) as any as S.Schema<GoogleCloudDatacatalogLineageV1RunList>;
+export type GoogleCloudDatacatalogLineageV1RunList = ReadonlyArray<GoogleCloudDatacatalogLineageV1Run>;
+export const GoogleCloudDatacatalogLineageV1RunList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1Run) as any as S.Schema<GoogleCloudDatacatalogLineageV1RunList>;
 
 /** Response message for ListRuns. */
 export interface GoogleCloudDatacatalogLineageV1ListRunsResponse {
@@ -1010,15 +687,12 @@ export interface GoogleCloudDatacatalogLineageV1ListRunsResponse {
   /** The runs from the specified project and location. */
   runs?: GoogleCloudDatacatalogLineageV1RunList;
 }
-export const GoogleCloudDatacatalogLineageV1ListRunsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      runs: S.optional(GoogleCloudDatacatalogLineageV1RunList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1ListRunsResponse",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListRunsResponse>;
+export const GoogleCloudDatacatalogLineageV1ListRunsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "runs": S.optional(GoogleCloudDatacatalogLineageV1RunList),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1ListRunsResponse" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListRunsResponse>;
 
 export interface ListProjectsLocationsProcessesRunsLineageEventsRequest {
   /** Required. The name of the run that owns the collection of lineage events to get. */
@@ -1028,29 +702,16 @@ export interface ListProjectsLocationsProcessesRunsLineageEventsRequest {
   /** Optional. The page token received from a previous `ListLineageEvents` call. Specify it to get the next page. When paginating, all other parameters specified in this call must match the parameters of the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsProcessesRunsLineageEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/lineageEvents",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsProcessesRunsLineageEventsRequest",
-  }) as any as S.Schema<ListProjectsLocationsProcessesRunsLineageEventsRequest>;
+export const ListProjectsLocationsProcessesRunsLineageEventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/lineageEvents","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsProcessesRunsLineageEventsRequest" }) as any as S.Schema<ListProjectsLocationsProcessesRunsLineageEventsRequest>;
 
-export type GoogleCloudDatacatalogLineageV1LineageEventList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageEvent>;
-export const GoogleCloudDatacatalogLineageV1LineageEventList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageV1LineageEvent,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageEventList>;
+export type GoogleCloudDatacatalogLineageV1LineageEventList = ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageEvent>;
+export const GoogleCloudDatacatalogLineageV1LineageEventList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1LineageEvent) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageEventList>;
 
 /** Response message for ListLineageEvents. */
 export interface GoogleCloudDatacatalogLineageV1ListLineageEventsResponse {
@@ -1059,17 +720,12 @@ export interface GoogleCloudDatacatalogLineageV1ListLineageEventsResponse {
   /** The token to specify as `page_token` in the next call to get the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDatacatalogLineageV1ListLineageEventsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lineageEvents: S.optional(
-        GoogleCloudDatacatalogLineageV1LineageEventList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1ListLineageEventsResponse",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListLineageEventsResponse>;
+export const GoogleCloudDatacatalogLineageV1ListLineageEventsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "lineageEvents": S.optional(GoogleCloudDatacatalogLineageV1LineageEventList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1ListLineageEventsResponse" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListLineageEventsResponse>;
 
 export interface PatchFoldersLocationsConfigRequest {
   /** Identifier. The resource name of the config. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config` */
@@ -1078,21 +734,11 @@ export interface PatchFoldersLocationsConfigRequest {
   body?: GoogleCloudDatacatalogLineageConfigmanagementV1Config;
 }
 export const PatchFoldersLocationsConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleCloudDatacatalogLineageConfigmanagementV1Config.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://datalineage.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchFoldersLocationsConfigRequest",
-}) as any as S.Schema<PatchFoldersLocationsConfigRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudDatacatalogLineageConfigmanagementV1Config.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "PatchFoldersLocationsConfigRequest" }) as any as S.Schema<PatchFoldersLocationsConfigRequest>;
 
 export interface PatchOrganizationsLocationsConfigRequest {
   /** Identifier. The resource name of the config. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config` */
@@ -1100,25 +746,12 @@ export interface PatchOrganizationsLocationsConfigRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogLineageConfigmanagementV1Config;
 }
-export const PatchOrganizationsLocationsConfigRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDatacatalogLineageConfigmanagementV1Config.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchOrganizationsLocationsConfigRequest",
-}) as any as S.Schema<PatchOrganizationsLocationsConfigRequest>;
+export const PatchOrganizationsLocationsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudDatacatalogLineageConfigmanagementV1Config.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "PatchOrganizationsLocationsConfigRequest" }) as any as S.Schema<PatchOrganizationsLocationsConfigRequest>;
 
 export interface PatchProjectsLocationsConfigRequest {
   /** Identifier. The resource name of the config. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config` */
@@ -1127,21 +760,11 @@ export interface PatchProjectsLocationsConfigRequest {
   body?: GoogleCloudDatacatalogLineageConfigmanagementV1Config;
 }
 export const PatchProjectsLocationsConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleCloudDatacatalogLineageConfigmanagementV1Config.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://datalineage.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsLocationsConfigRequest",
-}) as any as S.Schema<PatchProjectsLocationsConfigRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudDatacatalogLineageConfigmanagementV1Config.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsConfigRequest" }) as any as S.Schema<PatchProjectsLocationsConfigRequest>;
 
 export interface PatchProjectsLocationsProcessesRequest {
   /** Immutable. The resource name of the lineage process. Format: `projects/{project}/locations/{location}/processes/{process}`. Can be specified or auto-assigned. {process} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.` */
@@ -1155,26 +778,15 @@ export interface PatchProjectsLocationsProcessesRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogLineageV1Process;
 }
-export const PatchProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(
-        GoogleCloudDatacatalogLineageV1Process.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsProcessesRequest",
-}) as any as S.Schema<PatchProjectsLocationsProcessesRequest>;
+export const PatchProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleCloudDatacatalogLineageV1Process.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsProcessesRequest" }) as any as S.Schema<PatchProjectsLocationsProcessesRequest>;
 
 export interface PatchProjectsLocationsProcessesRunsRequest {
   /** Optional. The list of fields to update. Currently not used. The whole message is updated. */
@@ -1186,23 +798,14 @@ export interface PatchProjectsLocationsProcessesRunsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogLineageV1Run;
 }
-export const PatchProjectsLocationsProcessesRunsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(GoogleCloudDatacatalogLineageV1Run.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsProcessesRunsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsProcessesRunsRequest>;
+export const PatchProjectsLocationsProcessesRunsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(GoogleCloudDatacatalogLineageV1Run.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsProcessesRunsRequest" }) as any as S.Schema<PatchProjectsLocationsProcessesRunsRequest>;
 
 export interface ProcessOpenLineageRunEventProjectsLocationsRequest {
   /** Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided. */
@@ -1210,21 +813,12 @@ export interface ProcessOpenLineageRunEventProjectsLocationsRequest {
   /** Required. The name of the project and its location that should own the process, run, and lineage event. */
   parent: string;
 }
-export const ProcessOpenLineageRunEventProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:processOpenLineageRunEvent",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ProcessOpenLineageRunEventProjectsLocationsRequest",
-  }) as any as S.Schema<ProcessOpenLineageRunEventProjectsLocationsRequest>;
+export const ProcessOpenLineageRunEventProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:processOpenLineageRunEvent","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "ProcessOpenLineageRunEventProjectsLocationsRequest" }) as any as S.Schema<ProcessOpenLineageRunEventProjectsLocationsRequest>;
 
 /** Response message for ProcessOpenLineageRunEvent. */
 export interface GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse {
@@ -1235,22 +829,16 @@ export interface GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventRespon
   /** Created run name. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}`. */
   run?: string;
 }
-export const GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      process: S.optional(S.String),
-      lineageEvents: S.optional(StringList),
-      run: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse>;
+export const GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "process": S.optional(S.String),
+  "lineageEvents": S.optional(StringList),
+  "run": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse>;
 
-export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersEntitySetEnum =
-  "ENTITY_SET_UNSPECIFIED" | "ENTITIES" | (string & {});
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersEntitySetEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersEntitySetEnum = "ENTITY_SET_UNSPECIFIED" | "ENTITIES";
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersEntitySetEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface GoogleTypeInterval {
@@ -1260,50 +848,34 @@ export interface GoogleTypeInterval {
   startTime?: string;
 }
 export const GoogleTypeInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endTime: S.optional(S.String),
-    startTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleTypeInterval",
-}) as any as S.Schema<GoogleTypeInterval>;
+S.Struct({
+  "endTime": S.optional(S.String),
+  "startTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleTypeInterval" }) as any as S.Schema<GoogleTypeInterval>;
 
-export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum =
-  "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER" | (string & {});
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum = "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER";
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnumList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum>;
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnumList>;
+export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnumList = ReadonlyArray<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum | (string & {})>;
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnumList>;
 
 /** Filters for the search. */
 export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters {
   /** Optional. Entity set restriction. If unspecified, the method returns all entities. */
-  entitySet?: GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersEntitySetEnum;
+  entitySet?: GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersEntitySetEnum | (string & {});
   /** Optional. Time interval to search for lineage. If unspecified, all lineage is returned. Currently, at most one of `start_time` and `end_time` can be set. */
   timeRange?: GoogleTypeInterval;
   /** Optional. Types of dependencies between entities to retrieve. If unspecified, all dependency types are returned. */
   dependencyTypes?: GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnumList;
 }
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entitySet: S.optional(
-        GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersEntitySetEnum,
-      ),
-      timeRange: S.optional(GoogleTypeInterval),
-      dependencyTypes: S.optional(
-        GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnumList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters>;
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "entitySet": S.optional(GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersEntitySetEnum),
+  "timeRange": S.optional(GoogleTypeInterval),
+  "dependencyTypes": S.optional(GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnumList),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters>;
 
 /** Limits for the search results. */
 export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits {
@@ -1314,60 +886,41 @@ export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSea
   /** Optional. The maximum depth of the search. The default value is 5 and maximum value is 100. */
   maxDepth?: number;
 }
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number),
-      maxProcessPerLink: S.optional(S.Number),
-      maxDepth: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits>;
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "maxResults": S.optional(S.Number),
+  "maxProcessPerLink": S.optional(S.Number),
+  "maxDepth": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits>;
 
-export type GoogleCloudDatacatalogLineageV1EntityReferenceList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1EntityReference>;
-export const GoogleCloudDatacatalogLineageV1EntityReferenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageV1EntityReference,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1EntityReferenceList>;
+export type GoogleCloudDatacatalogLineageV1EntityReferenceList = ReadonlyArray<GoogleCloudDatacatalogLineageV1EntityReference>;
+export const GoogleCloudDatacatalogLineageV1EntityReferenceList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1EntityReference) as any as S.Schema<GoogleCloudDatacatalogLineageV1EntityReferenceList>;
 
 /** Multiple entity reference for SearchLinksRequest. */
 export interface GoogleCloudDatacatalogLineageV1MultipleEntityReference {
   /** Optional. The list of entities to search for links. The maximum number of entities is 20. */
   entities?: GoogleCloudDatacatalogLineageV1EntityReferenceList;
 }
-export const GoogleCloudDatacatalogLineageV1MultipleEntityReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entities: S.optional(GoogleCloudDatacatalogLineageV1EntityReferenceList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1MultipleEntityReference",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1MultipleEntityReference>;
+export const GoogleCloudDatacatalogLineageV1MultipleEntityReference = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "entities": S.optional(GoogleCloudDatacatalogLineageV1EntityReferenceList),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1MultipleEntityReference" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1MultipleEntityReference>;
 
 /** Criteria for the root of the search. */
 export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria {
   /** Optional. The entities to initiate the search from. Entities can be specified by FQN only, or by FQN and field. To search by FQN and all available fields for that FQN, use the wildcard `*` as the field value. */
   entities?: GoogleCloudDatacatalogLineageV1MultipleEntityReference;
 }
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entities: S.optional(
-        GoogleCloudDatacatalogLineageV1MultipleEntityReference,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria>;
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "entities": S.optional(GoogleCloudDatacatalogLineageV1MultipleEntityReference),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria>;
 
-export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestDirectionEnum =
-  "SEARCH_DIRECTION_UNSPECIFIED" | "DOWNSTREAM" | "UPSTREAM" | (string & {});
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestDirectionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestDirectionEnum = "SEARCH_DIRECTION_UNSPECIFIED" | "DOWNSTREAM" | "UPSTREAM";
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestDirectionEnum = /*@__PURE__*/ S.String;
 
 /** Request message for SearchLineageStreaming. */
 export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest {
@@ -1380,28 +933,17 @@ export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest {
   /** Required. Criteria for the root of the search. */
   rootCriteria?: GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria;
   /** Required. Direction of the search. */
-  direction?: GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestDirectionEnum;
+  direction?: GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestDirectionEnum | (string & {});
 }
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filters: S.optional(
-        GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters,
-      ),
-      locations: S.optional(StringList),
-      limits: S.optional(
-        GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits,
-      ),
-      rootCriteria: S.optional(
-        GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria,
-      ),
-      direction: S.optional(
-        GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestDirectionEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest>;
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filters": S.optional(GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters),
+  "locations": S.optional(StringList),
+  "limits": S.optional(GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits),
+  "rootCriteria": S.optional(GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria),
+  "direction": S.optional(GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestDirectionEnum),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest>;
 
 export interface SearchLineageStreamingProjectsLocationsRequest {
   /** Required. The project and location to initiate the search from. */
@@ -1409,74 +951,43 @@ export interface SearchLineageStreamingProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest;
 }
-export const SearchLineageStreamingProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:searchLineageStreaming",
-        baseUrl: "https://datalineage.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchLineageStreamingProjectsLocationsRequest",
-  }) as any as S.Schema<SearchLineageStreamingProjectsLocationsRequest>;
+export const SearchLineageStreamingProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:searchLineageStreaming","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "SearchLineageStreamingProjectsLocationsRequest" }) as any as S.Schema<SearchLineageStreamingProjectsLocationsRequest>;
 
-export type GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoDependencyTypeEnum =
-  "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER" | (string & {});
-export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoDependencyTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoDependencyTypeEnum = "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER";
+export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoDependencyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Dependency info describes how one entity is dependent on another. */
 export interface GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo {
   /** The type of dependency. */
   dependencyType?: GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoDependencyTypeEnum;
 }
-export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dependencyType: S.optional(
-        GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoDependencyTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo>;
+export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "dependencyType": S.optional(GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoDependencyTypeEnum),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo>;
 
-export type GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo>;
-export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoList>;
+export type GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoList = ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo>;
+export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoList>;
 
 /** Process metadata for the link. */
 export interface GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess {
   /** Process that created the link. */
   process?: GoogleCloudDatacatalogLineageV1Process;
 }
-export const GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      process: S.optional(GoogleCloudDatacatalogLineageV1Process),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess>;
+export const GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "process": S.optional(GoogleCloudDatacatalogLineageV1Process),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess>;
 
-export type GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess>;
-export const GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList>;
+export type GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList = ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess>;
+export const GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList>;
 
 /** Lineage link between two entities. */
 export interface GoogleCloudDatacatalogLineageV1LineageLink {
@@ -1493,30 +1004,19 @@ export interface GoogleCloudDatacatalogLineageV1LineageLink {
   /** Processes metadata associated with the link. */
   processes?: GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList;
 }
-export const GoogleCloudDatacatalogLineageV1LineageLink =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dependencyInfo: S.optional(
-        GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoList,
-      ),
-      location: S.optional(S.String),
-      target: S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-      source: S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-      depth: S.optional(S.Number),
-      processes: S.optional(
-        GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1LineageLink",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLink>;
+export const GoogleCloudDatacatalogLineageV1LineageLink = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "dependencyInfo": S.optional(GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoList),
+  "location": S.optional(S.String),
+  "target": S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+  "source": S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+  "depth": S.optional(S.Number),
+  "processes": S.optional(GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1LineageLink" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLink>;
 
-export type GoogleCloudDatacatalogLineageV1LineageLinkList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageLink>;
-export const GoogleCloudDatacatalogLineageV1LineageLinkList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageV1LineageLink,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkList>;
+export type GoogleCloudDatacatalogLineageV1LineageLinkList = ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageLink>;
+export const GoogleCloudDatacatalogLineageV1LineageLinkList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1LineageLink) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkList>;
 
 /** Response message for SearchLineageStreaming. */
 export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse {
@@ -1525,15 +1025,12 @@ export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse {
   /** Unordered list. Unreachable resources. If non-empty, the result set might be incomplete. Currently, only locations are supported. Format: `projects/[PROJECT_NUMBER]/locations/[LOCATION]` Example: projects/123456789/locations/us-east1 */
   unreachable?: StringList;
 }
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      links: S.optional(GoogleCloudDatacatalogLineageV1LineageLinkList),
-      unreachable: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse>;
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "links": S.optional(GoogleCloudDatacatalogLineageV1LineageLinkList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse>;
 
 /** Request message for SearchLinks. */
 export interface GoogleCloudDatacatalogLineageV1SearchLinksRequest {
@@ -1550,23 +1047,16 @@ export interface GoogleCloudDatacatalogLineageV1SearchLinksRequest {
   /** Optional. The page token received from a previous `SearchLinksRequest` call. Use it to get the next page. When requesting subsequent pages of a response, remember that all parameters must match the values you provided in the original request. */
   pageToken?: string;
 }
-export const GoogleCloudDatacatalogLineageV1SearchLinksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sources: S.optional(
-        GoogleCloudDatacatalogLineageV1MultipleEntityReference,
-      ),
-      targets: S.optional(
-        GoogleCloudDatacatalogLineageV1MultipleEntityReference,
-      ),
-      source: S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-      pageSize: S.optional(S.Number),
-      target: S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-      pageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1SearchLinksRequest",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLinksRequest>;
+export const GoogleCloudDatacatalogLineageV1SearchLinksRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sources": S.optional(GoogleCloudDatacatalogLineageV1MultipleEntityReference),
+  "targets": S.optional(GoogleCloudDatacatalogLineageV1MultipleEntityReference),
+  "source": S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+  "pageSize": S.optional(S.Number),
+  "target": S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+  "pageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1SearchLinksRequest" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLinksRequest>;
 
 export interface SearchLinksProjectsLocationsRequest {
   /** Required. The project and location you want search in. */
@@ -1575,49 +1065,28 @@ export interface SearchLinksProjectsLocationsRequest {
   body?: GoogleCloudDatacatalogLineageV1SearchLinksRequest;
 }
 export const SearchLinksProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleCloudDatacatalogLineageV1SearchLinksRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}:searchLinks",
-      baseUrl: "https://datalineage.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SearchLinksProjectsLocationsRequest",
-}) as any as S.Schema<SearchLinksProjectsLocationsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleCloudDatacatalogLineageV1SearchLinksRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:searchLinks","baseUrl":"https://datalineage.googleapis.com/"})),
+).annotate({ identifier: "SearchLinksProjectsLocationsRequest" }) as any as S.Schema<SearchLinksProjectsLocationsRequest>;
 
-export type GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum =
-  "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER" | (string & {});
-export const GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum = "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER";
+export const GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Dependency info describes how one entity depends on another. */
 export interface GoogleCloudDatacatalogLineageV1LinkDependencyInfo {
   /** The type of dependency. */
   dependencyType?: GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum;
 }
-export const GoogleCloudDatacatalogLineageV1LinkDependencyInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dependencyType: S.optional(
-        GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1LinkDependencyInfo",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>;
+export const GoogleCloudDatacatalogLineageV1LinkDependencyInfo = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "dependencyType": S.optional(GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1LinkDependencyInfo" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>;
 
-export type GoogleCloudDatacatalogLineageV1LinkDependencyInfoList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>;
-export const GoogleCloudDatacatalogLineageV1LinkDependencyInfoList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogLineageV1LinkDependencyInfo,
-  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1LinkDependencyInfoList>;
+export type GoogleCloudDatacatalogLineageV1LinkDependencyInfoList = ReadonlyArray<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>;
+export const GoogleCloudDatacatalogLineageV1LinkDependencyInfoList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1LinkDependencyInfo) as any as S.Schema<GoogleCloudDatacatalogLineageV1LinkDependencyInfoList>;
 
 /** Links represent the data flow between **source** (upstream) and **target** (downstream) assets in transformation pipelines. Links are created when LineageEvents record data transformation between related assets. */
 export interface GoogleCloudDatacatalogLineageV1Link {
@@ -1635,25 +1104,18 @@ export interface GoogleCloudDatacatalogLineageV1Link {
   startTime?: string;
 }
 export const GoogleCloudDatacatalogLineageV1Link = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-    dependencyInfo: S.optional(
-      GoogleCloudDatacatalogLineageV1LinkDependencyInfoList,
-    ),
-    name: S.optional(S.String),
-    endTime: S.optional(S.String),
-    source: S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-    startTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogLineageV1Link",
-}) as any as S.Schema<GoogleCloudDatacatalogLineageV1Link>;
+S.Struct({
+  "target": S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+  "dependencyInfo": S.optional(GoogleCloudDatacatalogLineageV1LinkDependencyInfoList),
+  "name": S.optional(S.String),
+  "endTime": S.optional(S.String),
+  "source": S.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+  "startTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1Link" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1Link>;
 
-export type GoogleCloudDatacatalogLineageV1LinkList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1Link>;
-export const GoogleCloudDatacatalogLineageV1LinkList = /*@__PURE__*/ S.Array(
-  GoogleCloudDatacatalogLineageV1Link,
-) as any as S.Schema<GoogleCloudDatacatalogLineageV1LinkList>;
+export type GoogleCloudDatacatalogLineageV1LinkList = ReadonlyArray<GoogleCloudDatacatalogLineageV1Link>;
+export const GoogleCloudDatacatalogLineageV1LinkList = /*@__PURE__*/ S.Array(GoogleCloudDatacatalogLineageV1Link) as any as S.Schema<GoogleCloudDatacatalogLineageV1LinkList>;
 
 /** Response message for SearchLinks. */
 export interface GoogleCloudDatacatalogLineageV1SearchLinksResponse {
@@ -1662,22 +1124,14 @@ export interface GoogleCloudDatacatalogLineageV1SearchLinksResponse {
   /** The list of links for a given asset. Can be empty if the asset has no relations of requested type (source or target). */
   links?: GoogleCloudDatacatalogLineageV1LinkList;
 }
-export const GoogleCloudDatacatalogLineageV1SearchLinksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      links: S.optional(GoogleCloudDatacatalogLineageV1LinkList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1SearchLinksResponse",
-  }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLinksResponse>;
+export const GoogleCloudDatacatalogLineageV1SearchLinksResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "links": S.optional(GoogleCloudDatacatalogLineageV1LinkList),
+}),
+).annotate({ identifier: "GoogleCloudDatacatalogLineageV1SearchLinksResponse" }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLinksResponse>;
 
-export type BatchSearchLinkProcessesProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchSearchLinkProcessesProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieve information about LineageProcesses associated with specific links. LineageProcesses are transformation pipelines that result in data flowing from **source** to **target** assets. Links between assets represent this operation. If you have specific link names, you can use this method to verify which LineageProcesses contribute to creating those links. See the SearchLinks method for more information on how to retrieve link name. You can retrieve the LineageProcess information in every project where you have the `datalineage.events.get` permission. The project provided in the URL is used for Billing and Quota. */
 export const batchSearchLinkProcessesProjectsLocations: API.OperationMethod<
   BatchSearchLinkProcessesProjectsLocationsRequest,
@@ -1692,12 +1146,7 @@ export const batchSearchLinkProcessesProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1712,12 +1161,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsProcessesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsProcessesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new process. */
 export const createProjectsLocationsProcesses: API.OperationMethod<
   CreateProjectsLocationsProcessesRequest,
@@ -1732,12 +1176,7 @@ export const createProjectsLocationsProcesses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsProcessesRunsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsProcessesRunsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new run. */
 export const createProjectsLocationsProcessesRuns: API.OperationMethod<
   CreateProjectsLocationsProcessesRunsRequest,
@@ -1752,12 +1191,7 @@ export const createProjectsLocationsProcessesRuns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsProcessesRunsLineageEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsProcessesRunsLineageEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new lineage event. */
 export const createProjectsLocationsProcessesRunsLineageEvents: API.OperationMethod<
   CreateProjectsLocationsProcessesRunsLineageEventsRequest,
@@ -1772,12 +1206,7 @@ export const createProjectsLocationsProcessesRunsLineageEvents: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1792,12 +1221,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsProcessesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsProcessesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the process with the specified name. */
 export const deleteProjectsLocationsProcesses: API.OperationMethod<
   DeleteProjectsLocationsProcessesRequest,
@@ -1812,12 +1236,7 @@ export const deleteProjectsLocationsProcesses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsProcessesRunsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsProcessesRunsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the run with the specified name. */
 export const deleteProjectsLocationsProcessesRuns: API.OperationMethod<
   DeleteProjectsLocationsProcessesRunsRequest,
@@ -1832,12 +1251,7 @@ export const deleteProjectsLocationsProcessesRuns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsProcessesRunsLineageEventsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsProcessesRunsLineageEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the lineage event with the specified name. */
 export const deleteProjectsLocationsProcessesRunsLineageEvents: API.OperationMethod<
   DeleteProjectsLocationsProcessesRunsLineageEventsRequest,
@@ -1867,10 +1281,7 @@ export const getFoldersLocationsConfig: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsConfigError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetOrganizationsLocationsConfigError = NotFound | Forbidden | GcpOpError;
 /** Get the Config for a given resource. */
 export const getOrganizationsLocationsConfig: API.OperationMethod<
   GetOrganizationsLocationsConfigRequest,
@@ -1900,10 +1311,7 @@ export const getProjectsLocationsConfig: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1918,10 +1326,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProcessesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsProcessesError = NotFound | Forbidden | GcpOpError;
 /** Gets the details of the specified process. */
 export const getProjectsLocationsProcesses: API.OperationMethod<
   GetProjectsLocationsProcessesRequest,
@@ -1936,10 +1341,7 @@ export const getProjectsLocationsProcesses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProcessesRunsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsProcessesRunsError = NotFound | Forbidden | GcpOpError;
 /** Gets the details of the specified run. */
 export const getProjectsLocationsProcessesRuns: API.OperationMethod<
   GetProjectsLocationsProcessesRunsRequest,
@@ -1954,10 +1356,7 @@ export const getProjectsLocationsProcessesRuns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProcessesRunsLineageEventsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsProcessesRunsLineageEventsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a specified lineage event. */
 export const getProjectsLocationsProcessesRunsLineageEvents: API.OperationMethod<
   GetProjectsLocationsProcessesRunsLineageEventsRequest,
@@ -1972,10 +1371,7 @@ export const getProjectsLocationsProcessesRunsLineageEvents: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1988,16 +1384,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsProcessesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsProcessesError = NotFound | Forbidden | GcpOpError;
 /** List processes in the given project and location. List order is descending by insertion time. */
 export const listProjectsLocationsProcesses: API.PaginatedOperationMethod<
   ListProjectsLocationsProcessesRequest,
@@ -2010,16 +1400,10 @@ export const listProjectsLocationsProcesses: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsProcessesRunsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsProcessesRunsError = NotFound | Forbidden | GcpOpError;
 /** Lists runs in the given project and location. List order is descending by `start_time`. */
 export const listProjectsLocationsProcessesRuns: API.PaginatedOperationMethod<
   ListProjectsLocationsProcessesRunsRequest,
@@ -2032,16 +1416,10 @@ export const listProjectsLocationsProcessesRuns: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsProcessesRunsLineageEventsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsProcessesRunsLineageEventsError = NotFound | Forbidden | GcpOpError;
 /** Lists lineage events in the given project and location. The list order is not defined. */
 export const listProjectsLocationsProcessesRunsLineageEvents: API.PaginatedOperationMethod<
   ListProjectsLocationsProcessesRunsLineageEventsRequest,
@@ -2054,18 +1432,10 @@ export const listProjectsLocationsProcessesRunsLineageEvents: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchFoldersLocationsConfigError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchFoldersLocationsConfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update the Config for a given resource. */
 export const patchFoldersLocationsConfig: API.OperationMethod<
   PatchFoldersLocationsConfigRequest,
@@ -2080,12 +1450,7 @@ export const patchFoldersLocationsConfig: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchOrganizationsLocationsConfigError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchOrganizationsLocationsConfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update the Config for a given resource. */
 export const patchOrganizationsLocationsConfig: API.OperationMethod<
   PatchOrganizationsLocationsConfigRequest,
@@ -2100,12 +1465,7 @@ export const patchOrganizationsLocationsConfig: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsConfigError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsConfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update the Config for a given resource. */
 export const patchProjectsLocationsConfig: API.OperationMethod<
   PatchProjectsLocationsConfigRequest,
@@ -2120,12 +1480,7 @@ export const patchProjectsLocationsConfig: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsProcessesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsProcessesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a process. */
 export const patchProjectsLocationsProcesses: API.OperationMethod<
   PatchProjectsLocationsProcessesRequest,
@@ -2140,12 +1495,7 @@ export const patchProjectsLocationsProcesses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsProcessesRunsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsProcessesRunsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a run. */
 export const patchProjectsLocationsProcessesRuns: API.OperationMethod<
   PatchProjectsLocationsProcessesRunsRequest,
@@ -2160,12 +1510,7 @@ export const patchProjectsLocationsProcessesRuns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProcessOpenLineageRunEventProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ProcessOpenLineageRunEventProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates new lineage events together with their parents: process and run. Updates the process and run if they already exist. Mapped from Open Lineage specification: https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.json. */
 export const processOpenLineageRunEventProjectsLocations: API.OperationMethod<
   ProcessOpenLineageRunEventProjectsLocationsRequest,
@@ -2180,12 +1525,7 @@ export const processOpenLineageRunEventProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchLineageStreamingProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SearchLineageStreamingProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves a streaming response of lineage links connected to the requested assets by performing a breadth-first search in the given direction. Links represent the data flow between **source** (upstream) and **target** (downstream) assets in transformation pipelines. Links are stored in the same project as the Lineage Events that create them. This method retrieves links from all valid locations provided in the request. This method supports Column-Level Lineage (CLL) along with wildcard support to retrieve all CLL for an Entity FQN. Following permissions are required to retrieve links: * `datalineage.events.get` permission for the project where the link is stored for entity-level lineage. * `datalineage.events.getFields` permission for the project where the link is stored for column-level lineage. This method also returns processes that created the links if explicitly requested by setting [max_process_per_link](google.cloud.datacatalog.lineage.v1.SearchLineageStreamingRequest.limits.max_process_per_link) is non-zero and full process details are requested via `links.processes.process` in the [FieldMask](https://developers.google.com/workspace/docs/api/how-tos/field-masks#read_with_a_field_mask). Permission required to retrieve processes: * `datalineage.processes.get` permission for the project where the process is stored. */
 export const searchLineageStreamingProjectsLocations: API.OperationMethod<
   SearchLineageStreamingProjectsLocationsRequest,
@@ -2200,12 +1540,7 @@ export const searchLineageStreamingProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchLinksProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SearchLinksProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieve a list of links connected to a specific asset. Links represent the data flow between **source** (upstream) and **target** (downstream) assets in transformation pipelines. Links are stored in the same project as the Lineage Events that create them. You can retrieve links in every project where you have the `datalineage.events.get` permission. The project provided in the URL is used for Billing and Quota. */
 export const searchLinksProjectsLocations: API.OperationMethod<
   SearchLinksProjectsLocationsRequest,
@@ -2219,3 +1554,4 @@ export const searchLinksProjectsLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

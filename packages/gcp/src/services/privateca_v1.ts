@@ -13,57 +13,55 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons. */
 export interface SubordinateConfigChain {
@@ -71,12 +69,10 @@ export interface SubordinateConfigChain {
   pemCertificates?: StringList;
 }
 export const SubordinateConfigChain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pemCertificates: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "SubordinateConfigChain",
-}) as any as S.Schema<SubordinateConfigChain>;
+S.Struct({
+  "pemCertificates": S.optional(StringList),
+}),
+).annotate({ identifier: "SubordinateConfigChain" }) as any as S.Schema<SubordinateConfigChain>;
 
 /** Describes a subordinate CA's issuers. This is either a resource name to a known issuing CertificateAuthority, or a PEM issuer certificate chain. */
 export interface SubordinateConfig {
@@ -86,13 +82,11 @@ export interface SubordinateConfig {
   pemIssuerChain?: SubordinateConfigChain;
 }
 export const SubordinateConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificateAuthority: S.optional(S.String),
-    pemIssuerChain: S.optional(SubordinateConfigChain),
-  }),
-).annotate({
-  identifier: "SubordinateConfig",
-}) as any as S.Schema<SubordinateConfig>;
+S.Struct({
+  "certificateAuthority": S.optional(S.String),
+  "pemIssuerChain": S.optional(SubordinateConfigChain),
+}),
+).annotate({ identifier: "SubordinateConfig" }) as any as S.Schema<SubordinateConfig>;
 
 /** Request message for CertificateAuthorityService.ActivateCertificateAuthority. */
 export interface ActivateCertificateAuthorityRequest {
@@ -104,14 +98,12 @@ export interface ActivateCertificateAuthorityRequest {
   requestId?: string;
 }
 export const ActivateCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pemCaCertificate: S.optional(S.String),
-    subordinateConfig: S.optional(SubordinateConfig),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ActivateCertificateAuthorityRequest",
-}) as any as S.Schema<ActivateCertificateAuthorityRequest>;
+S.Struct({
+  "pemCaCertificate": S.optional(S.String),
+  "subordinateConfig": S.optional(SubordinateConfig),
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "ActivateCertificateAuthorityRequest" }) as any as S.Schema<ActivateCertificateAuthorityRequest>;
 
 export interface ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Required. The resource name for this CertificateAuthority in the format `projects/*\/locations/*\/caPools/*\/certificateAuthorities/*`. */
@@ -119,32 +111,18 @@ export interface ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Request body */
   body?: ActivateCertificateAuthorityRequest;
 }
-export const ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ActivateCertificateAuthorityRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:activate",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-  }) as any as S.Schema<ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
+export const ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ActivateCertificateAuthorityRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:activate","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest" }) as any as S.Schema<ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -156,11 +134,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -177,22 +155,20 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-    response: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+  "response": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(Status),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -200,33 +176,20 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
-export type PublishingOptionsEncodingFormatEnum =
-  | "ENCODING_FORMAT_UNSPECIFIED"
-  | "PEM"
-  | "DER"
-  | (string & {});
+export type PublishingOptionsEncodingFormatEnum = "ENCODING_FORMAT_UNSPECIFIED" | "PEM" | "DER";
 export const PublishingOptionsEncodingFormatEnum = /*@__PURE__*/ S.String;
 
 /** Options relating to the publication of each CertificateAuthority's CA certificate and CRLs and their inclusion as extensions in issued Certificates. The options set here apply to certificates issued by any CertificateAuthority in the CaPool. */
@@ -239,14 +202,12 @@ export interface PublishingOptions {
   encodingFormat?: PublishingOptionsEncodingFormatEnum;
 }
 export const PublishingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publishCaCert: S.optional(S.Boolean),
-    publishCrl: S.optional(S.Boolean),
-    encodingFormat: S.optional(PublishingOptionsEncodingFormatEnum),
-  }),
-).annotate({
-  identifier: "PublishingOptions",
-}) as any as S.Schema<PublishingOptions>;
+S.Struct({
+  "publishCaCert": S.optional(S.Boolean),
+  "publishCrl": S.optional(S.Boolean),
+  "encodingFormat": S.optional(PublishingOptionsEncodingFormatEnum),
+}),
+).annotate({ identifier: "PublishingOptions" }) as any as S.Schema<PublishingOptions>;
 
 /** IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool. */
 export interface IssuanceModes {
@@ -256,16 +217,14 @@ export interface IssuanceModes {
   allowConfigBasedIssuance?: boolean;
 }
 export const IssuanceModes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowCsrBasedIssuance: S.optional(S.Boolean),
-    allowConfigBasedIssuance: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "allowCsrBasedIssuance": S.optional(S.Boolean),
+  "allowConfigBasedIssuance": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "IssuanceModes" }) as any as S.Schema<IssuanceModes>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages. */
 export interface ObjectId {
@@ -273,15 +232,13 @@ export interface ObjectId {
   objectIdPath?: IntegerList;
 }
 export const ObjectId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectIdPath: S.optional(IntegerList),
-  }),
+S.Struct({
+  "objectIdPath": S.optional(IntegerList),
+}),
 ).annotate({ identifier: "ObjectId" }) as any as S.Schema<ObjectId>;
 
 export type ObjectIdList = ReadonlyArray<ObjectId>;
-export const ObjectIdList = /*@__PURE__*/ S.Array(
-  ObjectId,
-) as any as S.Schema<ObjectIdList>;
+export const ObjectIdList = /*@__PURE__*/ S.Array(ObjectId) as any as S.Schema<ObjectIdList>;
 
 /** An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs. */
 export interface X509Extension {
@@ -293,17 +250,15 @@ export interface X509Extension {
   critical?: boolean;
 }
 export const X509Extension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(ObjectId),
-    value: S.optional(S.String),
-    critical: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "objectId": S.optional(ObjectId),
+  "value": S.optional(S.String),
+  "critical": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "X509Extension" }) as any as S.Schema<X509Extension>;
 
 export type X509ExtensionList = ReadonlyArray<X509Extension>;
-export const X509ExtensionList = /*@__PURE__*/ S.Array(
-  X509Extension,
-) as any as S.Schema<X509ExtensionList>;
+export const X509ExtensionList = /*@__PURE__*/ S.Array(X509Extension) as any as S.Schema<X509ExtensionList>;
 
 /** Describes the X.509 name constraints extension, per https://tools.ietf.org/html/rfc5280#section-4.2.1.10 */
 export interface NameConstraints {
@@ -327,20 +282,18 @@ export interface NameConstraints {
   permittedEmailAddresses?: StringList;
 }
 export const NameConstraints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    excludedUris: S.optional(StringList),
-    permittedDnsNames: S.optional(StringList),
-    permittedUris: S.optional(StringList),
-    excludedIpRanges: S.optional(StringList),
-    critical: S.optional(S.Boolean),
-    permittedIpRanges: S.optional(StringList),
-    excludedEmailAddresses: S.optional(StringList),
-    excludedDnsNames: S.optional(StringList),
-    permittedEmailAddresses: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "NameConstraints",
-}) as any as S.Schema<NameConstraints>;
+S.Struct({
+  "excludedUris": S.optional(StringList),
+  "permittedDnsNames": S.optional(StringList),
+  "permittedUris": S.optional(StringList),
+  "excludedIpRanges": S.optional(StringList),
+  "critical": S.optional(S.Boolean),
+  "permittedIpRanges": S.optional(StringList),
+  "excludedEmailAddresses": S.optional(StringList),
+  "excludedDnsNames": S.optional(StringList),
+  "permittedEmailAddresses": S.optional(StringList),
+}),
+).annotate({ identifier: "NameConstraints" }) as any as S.Schema<NameConstraints>;
 
 /** KeyUsage.KeyUsageOptions corresponds to the key usage values described in https://tools.ietf.org/html/rfc5280#section-4.2.1.3. */
 export interface KeyUsageOptions {
@@ -364,20 +317,18 @@ export interface KeyUsageOptions {
   keyAgreement?: boolean;
 }
 export const KeyUsageOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certSign: S.optional(S.Boolean),
-    decipherOnly: S.optional(S.Boolean),
-    contentCommitment: S.optional(S.Boolean),
-    crlSign: S.optional(S.Boolean),
-    keyEncipherment: S.optional(S.Boolean),
-    digitalSignature: S.optional(S.Boolean),
-    encipherOnly: S.optional(S.Boolean),
-    dataEncipherment: S.optional(S.Boolean),
-    keyAgreement: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "KeyUsageOptions",
-}) as any as S.Schema<KeyUsageOptions>;
+S.Struct({
+  "certSign": S.optional(S.Boolean),
+  "decipherOnly": S.optional(S.Boolean),
+  "contentCommitment": S.optional(S.Boolean),
+  "crlSign": S.optional(S.Boolean),
+  "keyEncipherment": S.optional(S.Boolean),
+  "digitalSignature": S.optional(S.Boolean),
+  "encipherOnly": S.optional(S.Boolean),
+  "dataEncipherment": S.optional(S.Boolean),
+  "keyAgreement": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "KeyUsageOptions" }) as any as S.Schema<KeyUsageOptions>;
 
 /** KeyUsage.ExtendedKeyUsageOptions has fields that correspond to certain common OIDs that could be specified as an extended key usage value. */
 export interface ExtendedKeyUsageOptions {
@@ -395,17 +346,15 @@ export interface ExtendedKeyUsageOptions {
   serverAuth?: boolean;
 }
 export const ExtendedKeyUsageOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientAuth: S.optional(S.Boolean),
-    timeStamping: S.optional(S.Boolean),
-    emailProtection: S.optional(S.Boolean),
-    codeSigning: S.optional(S.Boolean),
-    ocspSigning: S.optional(S.Boolean),
-    serverAuth: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ExtendedKeyUsageOptions",
-}) as any as S.Schema<ExtendedKeyUsageOptions>;
+S.Struct({
+  "clientAuth": S.optional(S.Boolean),
+  "timeStamping": S.optional(S.Boolean),
+  "emailProtection": S.optional(S.Boolean),
+  "codeSigning": S.optional(S.Boolean),
+  "ocspSigning": S.optional(S.Boolean),
+  "serverAuth": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ExtendedKeyUsageOptions" }) as any as S.Schema<ExtendedKeyUsageOptions>;
 
 /** A KeyUsage describes key usage values that may appear in an X.509 certificate. */
 export interface KeyUsage {
@@ -417,11 +366,11 @@ export interface KeyUsage {
   unknownExtendedKeyUsages?: ObjectIdList;
 }
 export const KeyUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseKeyUsage: S.optional(KeyUsageOptions),
-    extendedKeyUsage: S.optional(ExtendedKeyUsageOptions),
-    unknownExtendedKeyUsages: S.optional(ObjectIdList),
-  }),
+S.Struct({
+  "baseKeyUsage": S.optional(KeyUsageOptions),
+  "extendedKeyUsage": S.optional(ExtendedKeyUsageOptions),
+  "unknownExtendedKeyUsages": S.optional(ObjectIdList),
+}),
 ).annotate({ identifier: "KeyUsage" }) as any as S.Schema<KeyUsage>;
 
 /** Describes the X.509 basic constraints extension, per [RFC 5280 section 4.2.1.9](https://tools.ietf.org/html/rfc5280#section-4.2.1.9) */
@@ -432,10 +381,10 @@ export interface CaOptions {
   maxIssuerPathLength?: number;
 }
 export const CaOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isCa: S.optional(S.Boolean),
-    maxIssuerPathLength: S.optional(S.Number),
-  }),
+S.Struct({
+  "isCa": S.optional(S.Boolean),
+  "maxIssuerPathLength": S.optional(S.Number),
+}),
 ).annotate({ identifier: "CaOptions" }) as any as S.Schema<CaOptions>;
 
 /** An X509Parameters is used to describe certain fields of an X.509 certificate, such as the key usage fields, fields specific to CA certificates, certificate policy extensions and custom extensions. */
@@ -454,34 +403,21 @@ export interface X509Parameters {
   caOptions?: CaOptions;
 }
 export const X509Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aiaOcspServers: S.optional(StringList),
-    policyIds: S.optional(ObjectIdList),
-    additionalExtensions: S.optional(X509ExtensionList),
-    nameConstraints: S.optional(NameConstraints),
-    keyUsage: S.optional(KeyUsage),
-    caOptions: S.optional(CaOptions),
-  }),
+S.Struct({
+  "aiaOcspServers": S.optional(StringList),
+  "policyIds": S.optional(ObjectIdList),
+  "additionalExtensions": S.optional(X509ExtensionList),
+  "nameConstraints": S.optional(NameConstraints),
+  "keyUsage": S.optional(KeyUsage),
+  "caOptions": S.optional(CaOptions),
+}),
 ).annotate({ identifier: "X509Parameters" }) as any as S.Schema<X509Parameters>;
 
-export type CertificateExtensionConstraintsKnownExtensionsItemEnum =
-  | "KNOWN_CERTIFICATE_EXTENSION_UNSPECIFIED"
-  | "BASE_KEY_USAGE"
-  | "EXTENDED_KEY_USAGE"
-  | "CA_OPTIONS"
-  | "POLICY_IDS"
-  | "AIA_OCSP_SERVERS"
-  | "NAME_CONSTRAINTS"
-  | (string & {});
-export const CertificateExtensionConstraintsKnownExtensionsItemEnum =
-  /*@__PURE__*/ S.String;
+export type CertificateExtensionConstraintsKnownExtensionsItemEnum = "KNOWN_CERTIFICATE_EXTENSION_UNSPECIFIED" | "BASE_KEY_USAGE" | "EXTENDED_KEY_USAGE" | "CA_OPTIONS" | "POLICY_IDS" | "AIA_OCSP_SERVERS" | "NAME_CONSTRAINTS";
+export const CertificateExtensionConstraintsKnownExtensionsItemEnum = /*@__PURE__*/ S.String;
 
-export type CertificateExtensionConstraintsKnownExtensionsItemEnumList =
-  ReadonlyArray<CertificateExtensionConstraintsKnownExtensionsItemEnum>;
-export const CertificateExtensionConstraintsKnownExtensionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    CertificateExtensionConstraintsKnownExtensionsItemEnum,
-  ) as any as S.Schema<CertificateExtensionConstraintsKnownExtensionsItemEnumList>;
+export type CertificateExtensionConstraintsKnownExtensionsItemEnumList = ReadonlyArray<CertificateExtensionConstraintsKnownExtensionsItemEnum>;
+export const CertificateExtensionConstraintsKnownExtensionsItemEnumList = /*@__PURE__*/ S.Array(CertificateExtensionConstraintsKnownExtensionsItemEnum) as any as S.Schema<CertificateExtensionConstraintsKnownExtensionsItemEnumList>;
 
 /** Describes a set of X.509 extensions that may be part of some certificate issuance controls. */
 export interface CertificateExtensionConstraints {
@@ -491,22 +427,13 @@ export interface CertificateExtensionConstraints {
   additionalExtensions?: ObjectIdList;
 }
 export const CertificateExtensionConstraints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    knownExtensions: S.optional(
-      CertificateExtensionConstraintsKnownExtensionsItemEnumList,
-    ),
-    additionalExtensions: S.optional(ObjectIdList),
-  }),
-).annotate({
-  identifier: "CertificateExtensionConstraints",
-}) as any as S.Schema<CertificateExtensionConstraints>;
+S.Struct({
+  "knownExtensions": S.optional(CertificateExtensionConstraintsKnownExtensionsItemEnumList),
+  "additionalExtensions": S.optional(ObjectIdList),
+}),
+).annotate({ identifier: "CertificateExtensionConstraints" }) as any as S.Schema<CertificateExtensionConstraints>;
 
-export type EcKeyTypeSignatureAlgorithmEnum =
-  | "EC_SIGNATURE_ALGORITHM_UNSPECIFIED"
-  | "ECDSA_P256"
-  | "ECDSA_P384"
-  | "EDDSA_25519"
-  | (string & {});
+export type EcKeyTypeSignatureAlgorithmEnum = "EC_SIGNATURE_ALGORITHM_UNSPECIFIED" | "ECDSA_P256" | "ECDSA_P384" | "EDDSA_25519";
 export const EcKeyTypeSignatureAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool. */
@@ -515,9 +442,9 @@ export interface EcKeyType {
   signatureAlgorithm?: EcKeyTypeSignatureAlgorithmEnum;
 }
 export const EcKeyType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signatureAlgorithm: S.optional(EcKeyTypeSignatureAlgorithmEnum),
-  }),
+S.Struct({
+  "signatureAlgorithm": S.optional(EcKeyTypeSignatureAlgorithmEnum),
+}),
 ).annotate({ identifier: "EcKeyType" }) as any as S.Schema<EcKeyType>;
 
 /** Describes an RSA key that may be used in a Certificate issued from a CaPool. */
@@ -528,10 +455,10 @@ export interface RsaKeyType {
   maxModulusSize?: string;
 }
 export const RsaKeyType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minModulusSize: S.optional(S.String),
-    maxModulusSize: S.optional(S.String),
-  }),
+S.Struct({
+  "minModulusSize": S.optional(S.String),
+  "maxModulusSize": S.optional(S.String),
+}),
 ).annotate({ identifier: "RsaKeyType" }) as any as S.Schema<RsaKeyType>;
 
 /** Describes a "type" of key that may be used in a Certificate issued from a CaPool. Note that a single AllowedKeyType may refer to either a fully-qualified key algorithm, such as RSA 4096, or a family of key algorithms, such as any RSA key. */
@@ -542,16 +469,14 @@ export interface AllowedKeyType {
   rsa?: RsaKeyType;
 }
 export const AllowedKeyType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ellipticCurve: S.optional(EcKeyType),
-    rsa: S.optional(RsaKeyType),
-  }),
+S.Struct({
+  "ellipticCurve": S.optional(EcKeyType),
+  "rsa": S.optional(RsaKeyType),
+}),
 ).annotate({ identifier: "AllowedKeyType" }) as any as S.Schema<AllowedKeyType>;
 
 export type AllowedKeyTypeList = ReadonlyArray<AllowedKeyType>;
-export const AllowedKeyTypeList = /*@__PURE__*/ S.Array(
-  AllowedKeyType,
-) as any as S.Schema<AllowedKeyTypeList>;
+export const AllowedKeyTypeList = /*@__PURE__*/ S.Array(AllowedKeyType) as any as S.Schema<AllowedKeyTypeList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -565,12 +490,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "expression": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Describes constraints on a Certificate's Subject and SubjectAltNames. */
@@ -583,14 +508,12 @@ export interface CertificateIdentityConstraints {
   celExpression?: Expr;
 }
 export const CertificateIdentityConstraints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowSubjectPassthrough: S.optional(S.Boolean),
-    allowSubjectAltNamesPassthrough: S.optional(S.Boolean),
-    celExpression: S.optional(Expr),
-  }),
-).annotate({
-  identifier: "CertificateIdentityConstraints",
-}) as any as S.Schema<CertificateIdentityConstraints>;
+S.Struct({
+  "allowSubjectPassthrough": S.optional(S.Boolean),
+  "allowSubjectAltNamesPassthrough": S.optional(S.Boolean),
+  "celExpression": S.optional(Expr),
+}),
+).annotate({ identifier: "CertificateIdentityConstraints" }) as any as S.Schema<CertificateIdentityConstraints>;
 
 /** Defines controls over all certificate issuance within a CaPool. */
 export interface IssuancePolicy {
@@ -612,23 +535,19 @@ export interface IssuancePolicy {
   identityConstraints?: CertificateIdentityConstraints;
 }
 export const IssuancePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maximumLifetime: S.optional(S.String),
-    allowRequesterSpecifiedNotBeforeTime: S.optional(S.Boolean),
-    allowedIssuanceModes: S.optional(IssuanceModes),
-    baselineValues: S.optional(X509Parameters),
-    passthroughExtensions: S.optional(CertificateExtensionConstraints),
-    allowedKeyTypes: S.optional(AllowedKeyTypeList),
-    backdateDuration: S.optional(S.String),
-    identityConstraints: S.optional(CertificateIdentityConstraints),
-  }),
+S.Struct({
+  "maximumLifetime": S.optional(S.String),
+  "allowRequesterSpecifiedNotBeforeTime": S.optional(S.Boolean),
+  "allowedIssuanceModes": S.optional(IssuanceModes),
+  "baselineValues": S.optional(X509Parameters),
+  "passthroughExtensions": S.optional(CertificateExtensionConstraints),
+  "allowedKeyTypes": S.optional(AllowedKeyTypeList),
+  "backdateDuration": S.optional(S.String),
+  "identityConstraints": S.optional(CertificateIdentityConstraints),
+}),
 ).annotate({ identifier: "IssuancePolicy" }) as any as S.Schema<IssuancePolicy>;
 
-export type CaPoolTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "ENTERPRISE"
-  | "DEVOPS"
-  | (string & {});
+export type CaPoolTierEnum = "TIER_UNSPECIFIED" | "ENTERPRISE" | "DEVOPS";
 export const CaPoolTierEnum = /*@__PURE__*/ S.String;
 
 /** The configuration used for encrypting data at rest. */
@@ -637,16 +556,13 @@ export interface EncryptionSpec {
   cloudKmsKey?: string;
 }
 export const EncryptionSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudKmsKey: S.optional(S.String),
-  }),
+S.Struct({
+  "cloudKmsKey": S.optional(S.String),
+}),
 ).annotate({ identifier: "EncryptionSpec" }) as any as S.Schema<EncryptionSpec>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A CaPool represents a group of CertificateAuthorities that form a trust anchor. A CaPool can be used to manage issuance policies for one or more CertificateAuthority resources and to rotate CA certificates in and out of the trust anchor. */
 export interface CaPool {
@@ -664,14 +580,14 @@ export interface CaPool {
   labels?: StringMap;
 }
 export const CaPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publishingOptions: S.optional(PublishingOptions),
-    name: S.optional(S.String),
-    issuancePolicy: S.optional(IssuancePolicy),
-    tier: S.optional(CaPoolTierEnum),
-    encryptionSpec: S.optional(EncryptionSpec),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "publishingOptions": S.optional(PublishingOptions),
+  "name": S.optional(S.String),
+  "issuancePolicy": S.optional(IssuancePolicy),
+  "tier": S.optional(CaPoolTierEnum),
+  "encryptionSpec": S.optional(EncryptionSpec),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "CaPool" }) as any as S.Schema<CaPool>;
 
 export interface CreateProjectsLocationsCaPoolsRequest {
@@ -684,23 +600,14 @@ export interface CreateProjectsLocationsCaPoolsRequest {
   /** Request body */
   body?: CaPool;
 }
-export const CreateProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      caPoolId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CaPool.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/caPools",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsCaPoolsRequest",
-}) as any as S.Schema<CreateProjectsLocationsCaPoolsRequest>;
+export const CreateProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "caPoolId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(CaPool.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/caPools","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsCaPoolsRequest" }) as any as S.Schema<CreateProjectsLocationsCaPoolsRequest>;
 
 /** User-defined URLs for accessing content published by this CertificateAuthority. */
 export interface UserDefinedAccessUrls {
@@ -710,35 +617,16 @@ export interface UserDefinedAccessUrls {
   crlAccessUrls?: StringList;
 }
 export const UserDefinedAccessUrls = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aiaIssuingCertificateUrls: S.optional(StringList),
-    crlAccessUrls: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "UserDefinedAccessUrls",
-}) as any as S.Schema<UserDefinedAccessUrls>;
+S.Struct({
+  "aiaIssuingCertificateUrls": S.optional(StringList),
+  "crlAccessUrls": S.optional(StringList),
+}),
+).annotate({ identifier: "UserDefinedAccessUrls" }) as any as S.Schema<UserDefinedAccessUrls>;
 
-export type CertificateAuthorityStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | "STAGED"
-  | "AWAITING_USER_ACTIVATION"
-  | "DELETED"
-  | (string & {});
+export type CertificateAuthorityStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | "STAGED" | "AWAITING_USER_ACTIVATION" | "DELETED";
 export const CertificateAuthorityStateEnum = /*@__PURE__*/ S.String;
 
-export type KeyVersionSpecAlgorithmEnum =
-  | "SIGN_HASH_ALGORITHM_UNSPECIFIED"
-  | "RSA_PSS_2048_SHA256"
-  | "RSA_PSS_3072_SHA256"
-  | "RSA_PSS_4096_SHA256"
-  | "RSA_PKCS1_2048_SHA256"
-  | "RSA_PKCS1_3072_SHA256"
-  | "RSA_PKCS1_4096_SHA256"
-  | "EC_P256_SHA256"
-  | "EC_P384_SHA384"
-  | (string & {});
+export type KeyVersionSpecAlgorithmEnum = "SIGN_HASH_ALGORITHM_UNSPECIFIED" | "RSA_PSS_2048_SHA256" | "RSA_PSS_3072_SHA256" | "RSA_PSS_4096_SHA256" | "RSA_PKCS1_2048_SHA256" | "RSA_PKCS1_3072_SHA256" | "RSA_PKCS1_4096_SHA256" | "EC_P256_SHA256" | "EC_P384_SHA384";
 export const KeyVersionSpecAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** A Cloud KMS key configuration that a CertificateAuthority will use. */
@@ -749,24 +637,16 @@ export interface KeyVersionSpec {
   algorithm?: KeyVersionSpecAlgorithmEnum;
 }
 export const KeyVersionSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudKmsKeyVersion: S.optional(S.String),
-    algorithm: S.optional(KeyVersionSpecAlgorithmEnum),
-  }),
+S.Struct({
+  "cloudKmsKeyVersion": S.optional(S.String),
+  "algorithm": S.optional(KeyVersionSpecAlgorithmEnum),
+}),
 ).annotate({ identifier: "KeyVersionSpec" }) as any as S.Schema<KeyVersionSpec>;
 
-export type CertificateAuthorityTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "SELF_SIGNED"
-  | "SUBORDINATE"
-  | (string & {});
+export type CertificateAuthorityTypeEnum = "TYPE_UNSPECIFIED" | "SELF_SIGNED" | "SUBORDINATE";
 export const CertificateAuthorityTypeEnum = /*@__PURE__*/ S.String;
 
-export type CertificateAuthorityTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "ENTERPRISE"
-  | "DEVOPS"
-  | (string & {});
+export type CertificateAuthorityTierEnum = "TIER_UNSPECIFIED" | "ENTERPRISE" | "DEVOPS";
 export const CertificateAuthorityTierEnum = /*@__PURE__*/ S.String;
 
 /** A KeyId identifies a specific public key, usually by hashing the public key. */
@@ -775,15 +655,12 @@ export interface KeyId {
   keyId?: string;
 }
 export const KeyId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyId: S.optional(S.String),
-  }),
+S.Struct({
+  "keyId": S.optional(S.String),
+}),
 ).annotate({ identifier: "KeyId" }) as any as S.Schema<KeyId>;
 
-export type PublicKeyFormatEnum =
-  | "KEY_FORMAT_UNSPECIFIED"
-  | "PEM"
-  | (string & {});
+export type PublicKeyFormatEnum = "KEY_FORMAT_UNSPECIFIED" | "PEM";
 export const PublicKeyFormatEnum = /*@__PURE__*/ S.String;
 
 /** A PublicKey describes a public key. */
@@ -794,10 +671,10 @@ export interface PublicKey {
   format?: PublicKeyFormatEnum;
 }
 export const PublicKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    format: S.optional(PublicKeyFormatEnum),
-  }),
+S.Struct({
+  "key": S.optional(S.String),
+  "format": S.optional(PublicKeyFormatEnum),
+}),
 ).annotate({ identifier: "PublicKey" }) as any as S.Schema<PublicKey>;
 
 /** A group of fingerprints for the x509 certificate. */
@@ -806,12 +683,10 @@ export interface CertificateFingerprint {
   sha256Hash?: string;
 }
 export const CertificateFingerprint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sha256Hash: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertificateFingerprint",
-}) as any as S.Schema<CertificateFingerprint>;
+S.Struct({
+  "sha256Hash": S.optional(S.String),
+}),
+).annotate({ identifier: "CertificateFingerprint" }) as any as S.Schema<CertificateFingerprint>;
 
 /** SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name). */
 export interface SubjectAltNames {
@@ -827,28 +702,16 @@ export interface SubjectAltNames {
   customSans?: X509ExtensionList;
 }
 export const SubjectAltNames = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    emailAddresses: S.optional(StringList),
-    ipAddresses: S.optional(StringList),
-    uris: S.optional(StringList),
-    dnsNames: S.optional(StringList),
-    customSans: S.optional(X509ExtensionList),
-  }),
-).annotate({
-  identifier: "SubjectAltNames",
-}) as any as S.Schema<SubjectAltNames>;
+S.Struct({
+  "emailAddresses": S.optional(StringList),
+  "ipAddresses": S.optional(StringList),
+  "uris": S.optional(StringList),
+  "dnsNames": S.optional(StringList),
+  "customSans": S.optional(X509ExtensionList),
+}),
+).annotate({ identifier: "SubjectAltNames" }) as any as S.Schema<SubjectAltNames>;
 
-export type AttributeTypeAndValueTypeEnum =
-  | "ATTRIBUTE_TYPE_UNSPECIFIED"
-  | "COMMON_NAME"
-  | "COUNTRY_CODE"
-  | "ORGANIZATION"
-  | "ORGANIZATIONAL_UNIT"
-  | "LOCALITY"
-  | "PROVINCE"
-  | "STREET_ADDRESS"
-  | "POSTAL_CODE"
-  | (string & {});
+export type AttributeTypeAndValueTypeEnum = "ATTRIBUTE_TYPE_UNSPECIFIED" | "COMMON_NAME" | "COUNTRY_CODE" | "ORGANIZATION" | "ORGANIZATIONAL_UNIT" | "LOCALITY" | "PROVINCE" | "STREET_ADDRESS" | "POSTAL_CODE";
 export const AttributeTypeAndValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** AttributeTypeAndValue specifies an attribute type and value. It can use either a OID or enum value to specify the attribute type. */
@@ -861,19 +724,15 @@ export interface AttributeTypeAndValue {
   type?: AttributeTypeAndValueTypeEnum;
 }
 export const AttributeTypeAndValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(ObjectId),
-    value: S.optional(S.String),
-    type: S.optional(AttributeTypeAndValueTypeEnum),
-  }),
-).annotate({
-  identifier: "AttributeTypeAndValue",
-}) as any as S.Schema<AttributeTypeAndValue>;
+S.Struct({
+  "objectId": S.optional(ObjectId),
+  "value": S.optional(S.String),
+  "type": S.optional(AttributeTypeAndValueTypeEnum),
+}),
+).annotate({ identifier: "AttributeTypeAndValue" }) as any as S.Schema<AttributeTypeAndValue>;
 
 export type AttributeTypeAndValueList = ReadonlyArray<AttributeTypeAndValue>;
-export const AttributeTypeAndValueList = /*@__PURE__*/ S.Array(
-  AttributeTypeAndValue,
-) as any as S.Schema<AttributeTypeAndValueList>;
+export const AttributeTypeAndValueList = /*@__PURE__*/ S.Array(AttributeTypeAndValue) as any as S.Schema<AttributeTypeAndValueList>;
 
 /** RelativeDistinguishedName specifies a relative distinguished name which will be used to build a distinguished name. */
 export interface RelativeDistinguishedName {
@@ -881,18 +740,13 @@ export interface RelativeDistinguishedName {
   attributes?: AttributeTypeAndValueList;
 }
 export const RelativeDistinguishedName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(AttributeTypeAndValueList),
-  }),
-).annotate({
-  identifier: "RelativeDistinguishedName",
-}) as any as S.Schema<RelativeDistinguishedName>;
+S.Struct({
+  "attributes": S.optional(AttributeTypeAndValueList),
+}),
+).annotate({ identifier: "RelativeDistinguishedName" }) as any as S.Schema<RelativeDistinguishedName>;
 
-export type RelativeDistinguishedNameList =
-  ReadonlyArray<RelativeDistinguishedName>;
-export const RelativeDistinguishedNameList = /*@__PURE__*/ S.Array(
-  RelativeDistinguishedName,
-) as any as S.Schema<RelativeDistinguishedNameList>;
+export type RelativeDistinguishedNameList = ReadonlyArray<RelativeDistinguishedName>;
+export const RelativeDistinguishedNameList = /*@__PURE__*/ S.Array(RelativeDistinguishedName) as any as S.Schema<RelativeDistinguishedNameList>;
 
 /** Subject describes parts of a distinguished name that, in turn, describes the subject of the certificate. */
 export interface Subject {
@@ -916,17 +770,17 @@ export interface Subject {
   rdnSequence?: RelativeDistinguishedNameList;
 }
 export const Subject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    province: S.optional(S.String),
-    commonName: S.optional(S.String),
-    countryCode: S.optional(S.String),
-    locality: S.optional(S.String),
-    streetAddress: S.optional(S.String),
-    organization: S.optional(S.String),
-    organizationalUnit: S.optional(S.String),
-    postalCode: S.optional(S.String),
-    rdnSequence: S.optional(RelativeDistinguishedNameList),
-  }),
+S.Struct({
+  "province": S.optional(S.String),
+  "commonName": S.optional(S.String),
+  "countryCode": S.optional(S.String),
+  "locality": S.optional(S.String),
+  "streetAddress": S.optional(S.String),
+  "organization": S.optional(S.String),
+  "organizationalUnit": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+  "rdnSequence": S.optional(RelativeDistinguishedNameList),
+}),
 ).annotate({ identifier: "Subject" }) as any as S.Schema<Subject>;
 
 /** These values describe fields in an issued X.509 certificate such as the distinguished name, subject alternative names, serial number, and lifetime. */
@@ -945,17 +799,15 @@ export interface SubjectDescription {
   lifetime?: string;
 }
 export const SubjectDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subjectAltName: S.optional(SubjectAltNames),
-    notBeforeTime: S.optional(S.String),
-    notAfterTime: S.optional(S.String),
-    subject: S.optional(Subject),
-    hexSerialNumber: S.optional(S.String),
-    lifetime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubjectDescription",
-}) as any as S.Schema<SubjectDescription>;
+S.Struct({
+  "subjectAltName": S.optional(SubjectAltNames),
+  "notBeforeTime": S.optional(S.String),
+  "notAfterTime": S.optional(S.String),
+  "subject": S.optional(Subject),
+  "hexSerialNumber": S.optional(S.String),
+  "lifetime": S.optional(S.String),
+}),
+).annotate({ identifier: "SubjectDescription" }) as any as S.Schema<SubjectDescription>;
 
 /** A CertificateDescription describes an X.509 certificate or CSR that has been issued, as an alternative to using ASN.1 / X.509. */
 export interface CertificateDescription {
@@ -979,25 +831,21 @@ export interface CertificateDescription {
   crlDistributionPoints?: StringList;
 }
 export const CertificateDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorityKeyId: S.optional(KeyId),
-    publicKey: S.optional(PublicKey),
-    aiaIssuingCertificateUrls: S.optional(StringList),
-    certFingerprint: S.optional(CertificateFingerprint),
-    x509Description: S.optional(X509Parameters),
-    tbsCertificateDigest: S.optional(S.String),
-    subjectDescription: S.optional(SubjectDescription),
-    subjectKeyId: S.optional(KeyId),
-    crlDistributionPoints: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CertificateDescription",
-}) as any as S.Schema<CertificateDescription>;
+S.Struct({
+  "authorityKeyId": S.optional(KeyId),
+  "publicKey": S.optional(PublicKey),
+  "aiaIssuingCertificateUrls": S.optional(StringList),
+  "certFingerprint": S.optional(CertificateFingerprint),
+  "x509Description": S.optional(X509Parameters),
+  "tbsCertificateDigest": S.optional(S.String),
+  "subjectDescription": S.optional(SubjectDescription),
+  "subjectKeyId": S.optional(KeyId),
+  "crlDistributionPoints": S.optional(StringList),
+}),
+).annotate({ identifier: "CertificateDescription" }) as any as S.Schema<CertificateDescription>;
 
 export type CertificateDescriptionList = ReadonlyArray<CertificateDescription>;
-export const CertificateDescriptionList = /*@__PURE__*/ S.Array(
-  CertificateDescription,
-) as any as S.Schema<CertificateDescriptionList>;
+export const CertificateDescriptionList = /*@__PURE__*/ S.Array(CertificateDescription) as any as S.Schema<CertificateDescriptionList>;
 
 /** A KeyId identifies a specific public key, usually by hashing the public key. */
 export interface CertificateConfigKeyId {
@@ -1005,12 +853,10 @@ export interface CertificateConfigKeyId {
   keyId?: string;
 }
 export const CertificateConfigKeyId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertificateConfigKeyId",
-}) as any as S.Schema<CertificateConfigKeyId>;
+S.Struct({
+  "keyId": S.optional(S.String),
+}),
+).annotate({ identifier: "CertificateConfigKeyId" }) as any as S.Schema<CertificateConfigKeyId>;
 
 /** These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate. */
 export interface SubjectConfig {
@@ -1020,10 +866,10 @@ export interface SubjectConfig {
   subjectAltName?: SubjectAltNames;
 }
 export const SubjectConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subject: S.optional(Subject),
-    subjectAltName: S.optional(SubjectAltNames),
-  }),
+S.Struct({
+  "subject": S.optional(Subject),
+  "subjectAltName": S.optional(SubjectAltNames),
+}),
 ).annotate({ identifier: "SubjectConfig" }) as any as S.Schema<SubjectConfig>;
 
 /** A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1. */
@@ -1038,15 +884,13 @@ export interface CertificateConfig {
   publicKey?: PublicKey;
 }
 export const CertificateConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subjectKeyId: S.optional(CertificateConfigKeyId),
-    subjectConfig: S.optional(SubjectConfig),
-    x509Config: S.optional(X509Parameters),
-    publicKey: S.optional(PublicKey),
-  }),
-).annotate({
-  identifier: "CertificateConfig",
-}) as any as S.Schema<CertificateConfig>;
+S.Struct({
+  "subjectKeyId": S.optional(CertificateConfigKeyId),
+  "subjectConfig": S.optional(SubjectConfig),
+  "x509Config": S.optional(X509Parameters),
+  "publicKey": S.optional(PublicKey),
+}),
+).annotate({ identifier: "CertificateConfig" }) as any as S.Schema<CertificateConfig>;
 
 /** URLs where a CertificateAuthority will publish content. */
 export interface AccessUrls {
@@ -1056,10 +900,10 @@ export interface AccessUrls {
   caCertificateAccessUrl?: string;
 }
 export const AccessUrls = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    crlAccessUrls: S.optional(StringList),
-    caCertificateAccessUrl: S.optional(S.String),
-  }),
+S.Struct({
+  "crlAccessUrls": S.optional(StringList),
+  "caCertificateAccessUrl": S.optional(S.String),
+}),
 ).annotate({ identifier: "AccessUrls" }) as any as S.Schema<AccessUrls>;
 
 /** A CertificateAuthority represents an individual Certificate Authority. A CertificateAuthority can be used to create Certificates. */
@@ -1106,31 +950,29 @@ export interface CertificateAuthority {
   accessUrls?: AccessUrls;
 }
 export const CertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userDefinedAccessUrls: S.optional(UserDefinedAccessUrls),
-    satisfiesPzi: S.optional(S.Boolean),
-    subordinateConfig: S.optional(SubordinateConfig),
-    satisfiesPzs: S.optional(S.Boolean),
-    expireTime: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    state: S.optional(CertificateAuthorityStateEnum),
-    keySpec: S.optional(KeyVersionSpec),
-    type: S.optional(CertificateAuthorityTypeEnum),
-    pemCaCertificates: S.optional(StringList),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    tier: S.optional(CertificateAuthorityTierEnum),
-    caCertificateDescriptions: S.optional(CertificateDescriptionList),
-    gcsBucket: S.optional(S.String),
-    name: S.optional(S.String),
-    config: S.optional(CertificateConfig),
-    lifetime: S.optional(S.String),
-    accessUrls: S.optional(AccessUrls),
-  }),
-).annotate({
-  identifier: "CertificateAuthority",
-}) as any as S.Schema<CertificateAuthority>;
+S.Struct({
+  "userDefinedAccessUrls": S.optional(UserDefinedAccessUrls),
+  "satisfiesPzi": S.optional(S.Boolean),
+  "subordinateConfig": S.optional(SubordinateConfig),
+  "satisfiesPzs": S.optional(S.Boolean),
+  "expireTime": S.optional(S.String),
+  "deleteTime": S.optional(S.String),
+  "state": S.optional(CertificateAuthorityStateEnum),
+  "keySpec": S.optional(KeyVersionSpec),
+  "type": S.optional(CertificateAuthorityTypeEnum),
+  "pemCaCertificates": S.optional(StringList),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "tier": S.optional(CertificateAuthorityTierEnum),
+  "caCertificateDescriptions": S.optional(CertificateDescriptionList),
+  "gcsBucket": S.optional(S.String),
+  "name": S.optional(S.String),
+  "config": S.optional(CertificateConfig),
+  "lifetime": S.optional(S.String),
+  "accessUrls": S.optional(AccessUrls),
+}),
+).annotate({ identifier: "CertificateAuthority" }) as any as S.Schema<CertificateAuthority>;
 
 export interface CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Required. The resource name of the CaPool associated with the CertificateAuthorities, in the format `projects/*\/locations/*\/caPools/*`. */
@@ -1142,35 +984,16 @@ export interface CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Request body */
   body?: CertificateAuthority;
 }
-export const CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      certificateAuthorityId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CertificateAuthority.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/certificateAuthorities",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
+export const CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "certificateAuthorityId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(CertificateAuthority.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/certificateAuthorities","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest" }) as any as S.Schema<CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
-export type RevocationDetailsRevocationStateEnum =
-  | "REVOCATION_REASON_UNSPECIFIED"
-  | "KEY_COMPROMISE"
-  | "CERTIFICATE_AUTHORITY_COMPROMISE"
-  | "AFFILIATION_CHANGED"
-  | "SUPERSEDED"
-  | "CESSATION_OF_OPERATION"
-  | "CERTIFICATE_HOLD"
-  | "PRIVILEGE_WITHDRAWN"
-  | "ATTRIBUTE_AUTHORITY_COMPROMISE"
-  | (string & {});
+export type RevocationDetailsRevocationStateEnum = "REVOCATION_REASON_UNSPECIFIED" | "KEY_COMPROMISE" | "CERTIFICATE_AUTHORITY_COMPROMISE" | "AFFILIATION_CHANGED" | "SUPERSEDED" | "CESSATION_OF_OPERATION" | "CERTIFICATE_HOLD" | "PRIVILEGE_WITHDRAWN" | "ATTRIBUTE_AUTHORITY_COMPROMISE";
 export const RevocationDetailsRevocationStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes fields that are relavent to the revocation of a Certificate. */
@@ -1181,20 +1004,13 @@ export interface RevocationDetails {
   revocationTime?: string;
 }
 export const RevocationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revocationState: S.optional(RevocationDetailsRevocationStateEnum),
-    revocationTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RevocationDetails",
-}) as any as S.Schema<RevocationDetails>;
+S.Struct({
+  "revocationState": S.optional(RevocationDetailsRevocationStateEnum),
+  "revocationTime": S.optional(S.String),
+}),
+).annotate({ identifier: "RevocationDetails" }) as any as S.Schema<RevocationDetails>;
 
-export type CertificateSubjectModeEnum =
-  | "SUBJECT_REQUEST_MODE_UNSPECIFIED"
-  | "DEFAULT"
-  | "RDN_SEQUENCE"
-  | "REFLECTED_SPIFFE"
-  | (string & {});
+export type CertificateSubjectModeEnum = "SUBJECT_REQUEST_MODE_UNSPECIFIED" | "DEFAULT" | "RDN_SEQUENCE" | "REFLECTED_SPIFFE";
 export const CertificateSubjectModeEnum = /*@__PURE__*/ S.String;
 
 /** A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority. */
@@ -1231,23 +1047,23 @@ export interface Certificate {
   lifetime?: string;
 }
 export const Certificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificateTemplate: S.optional(S.String),
-    pemCertificateChain: S.optional(StringList),
-    certificateDescription: S.optional(CertificateDescription),
-    revocationDetails: S.optional(RevocationDetails),
-    pemCertificate: S.optional(S.String),
-    requestedNotBeforeTime: S.optional(S.String),
-    pemCsr: S.optional(S.String),
-    subjectMode: S.optional(CertificateSubjectModeEnum),
-    issuerCertificateAuthority: S.optional(S.String),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    config: S.optional(CertificateConfig),
-    lifetime: S.optional(S.String),
-  }),
+S.Struct({
+  "certificateTemplate": S.optional(S.String),
+  "pemCertificateChain": S.optional(StringList),
+  "certificateDescription": S.optional(CertificateDescription),
+  "revocationDetails": S.optional(RevocationDetails),
+  "pemCertificate": S.optional(S.String),
+  "requestedNotBeforeTime": S.optional(S.String),
+  "pemCsr": S.optional(S.String),
+  "subjectMode": S.optional(CertificateSubjectModeEnum),
+  "issuerCertificateAuthority": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "config": S.optional(CertificateConfig),
+  "lifetime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
 export interface CreateProjectsLocationsCaPoolsCertificatesRequest {
@@ -1264,25 +1080,16 @@ export interface CreateProjectsLocationsCaPoolsCertificatesRequest {
   /** Request body */
   body?: Certificate;
 }
-export const CreateProjectsLocationsCaPoolsCertificatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificateId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      issuingCertificateAuthorityId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(Certificate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/certificates",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCaPoolsCertificatesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCaPoolsCertificatesRequest>;
+export const CreateProjectsLocationsCaPoolsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "certificateId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "issuingCertificateAuthorityId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Certificate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/certificates","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsCaPoolsCertificatesRequest" }) as any as S.Schema<CreateProjectsLocationsCaPoolsCertificatesRequest>;
 
 /** A CertificateTemplate refers to a managed template for certificate issuance. */
 export interface CertificateTemplate {
@@ -1306,20 +1113,18 @@ export interface CertificateTemplate {
   maximumLifetime?: string;
 }
 export const CertificateTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    predefinedValues: S.optional(X509Parameters),
-    updateTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    passthroughExtensions: S.optional(CertificateExtensionConstraints),
-    createTime: S.optional(S.String),
-    description: S.optional(S.String),
-    identityConstraints: S.optional(CertificateIdentityConstraints),
-    maximumLifetime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertificateTemplate",
-}) as any as S.Schema<CertificateTemplate>;
+S.Struct({
+  "name": S.optional(S.String),
+  "predefinedValues": S.optional(X509Parameters),
+  "updateTime": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "passthroughExtensions": S.optional(CertificateExtensionConstraints),
+  "createTime": S.optional(S.String),
+  "description": S.optional(S.String),
+  "identityConstraints": S.optional(CertificateIdentityConstraints),
+  "maximumLifetime": S.optional(S.String),
+}),
+).annotate({ identifier: "CertificateTemplate" }) as any as S.Schema<CertificateTemplate>;
 
 export interface CreateProjectsLocationsCertificateTemplatesRequest {
   /** Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}` */
@@ -1331,23 +1136,14 @@ export interface CreateProjectsLocationsCertificateTemplatesRequest {
   /** Request body */
   body?: CertificateTemplate;
 }
-export const CreateProjectsLocationsCertificateTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificateTemplateId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CertificateTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/certificateTemplates",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCertificateTemplatesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCertificateTemplatesRequest>;
+export const CreateProjectsLocationsCertificateTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "certificateTemplateId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CertificateTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/certificateTemplates","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsCertificateTemplatesRequest" }) as any as S.Schema<CreateProjectsLocationsCertificateTemplatesRequest>;
 
 export interface DeleteProjectsLocationsCaPoolsRequest {
   /** Required. The resource name for this CaPool in the format `projects/*\/locations/*\/caPools/*`. */
@@ -1357,22 +1153,13 @@ export interface DeleteProjectsLocationsCaPoolsRequest {
   /** Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      ignoreDependentResources: S.optional(S.Boolean.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsCaPoolsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsCaPoolsRequest>;
+export const DeleteProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "ignoreDependentResources": S.optional(S.Boolean.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsCaPoolsRequest" }) as any as S.Schema<DeleteProjectsLocationsCaPoolsRequest>;
 
 export interface DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Required. The resource name for this CertificateAuthority in the format `projects/*\/locations/*\/caPools/*\/certificateAuthorities/*`. */
@@ -1386,24 +1173,15 @@ export interface DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Optional. If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where undeletion would have been allowed. If you proceed, there will be no way to recover this CA. */
   skipGracePeriod?: boolean;
 }
-export const DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      ignoreActiveCertificates: S.optional(S.Boolean.pipe(T.Query())),
-      ignoreDependentResources: S.optional(S.Boolean.pipe(T.Query())),
-      skipGracePeriod: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
+export const DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "ignoreActiveCertificates": S.optional(S.Boolean.pipe(T.Query())),
+  "ignoreDependentResources": S.optional(S.Boolean.pipe(T.Query())),
+  "skipGracePeriod": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest" }) as any as S.Schema<DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
 export interface DeleteProjectsLocationsCertificateTemplatesRequest {
   /** Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1411,40 +1189,22 @@ export interface DeleteProjectsLocationsCertificateTemplatesRequest {
   /** Required. The resource name for this CertificateTemplate in the format `projects/*\/locations/*\/certificateTemplates/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsCertificateTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCertificateTemplatesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCertificateTemplatesRequest>;
+export const DeleteProjectsLocationsCertificateTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsCertificateTemplatesRequest" }) as any as S.Schema<DeleteProjectsLocationsCertificateTemplatesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** Request message for CertificateAuthorityService.DisableCertificateAuthority. */
 export interface DisableCertificateAuthorityRequest {
@@ -1454,13 +1214,11 @@ export interface DisableCertificateAuthorityRequest {
   requestId?: string;
 }
 export const DisableCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ignoreDependentResources: S.optional(S.Boolean),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DisableCertificateAuthorityRequest",
-}) as any as S.Schema<DisableCertificateAuthorityRequest>;
+S.Struct({
+  "ignoreDependentResources": S.optional(S.Boolean),
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "DisableCertificateAuthorityRequest" }) as any as S.Schema<DisableCertificateAuthorityRequest>;
 
 export interface DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Required. The resource name for this CertificateAuthority in the format `projects/*\/locations/*\/caPools/*\/certificateAuthorities/*`. */
@@ -1468,21 +1226,12 @@ export interface DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Request body */
   body?: DisableCertificateAuthorityRequest;
 }
-export const DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(DisableCertificateAuthorityRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:disable",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-  }) as any as S.Schema<DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
+export const DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DisableCertificateAuthorityRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:disable","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest" }) as any as S.Schema<DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
 /** Request message for CertificateAuthorityService.EnableCertificateAuthority. */
 export interface EnableCertificateAuthorityRequest {
@@ -1490,12 +1239,10 @@ export interface EnableCertificateAuthorityRequest {
   requestId?: string;
 }
 export const EnableCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnableCertificateAuthorityRequest",
-}) as any as S.Schema<EnableCertificateAuthorityRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "EnableCertificateAuthorityRequest" }) as any as S.Schema<EnableCertificateAuthorityRequest>;
 
 export interface EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Required. The resource name for this CertificateAuthority in the format `projects/*\/locations/*\/caPools/*\/certificateAuthorities/*`. */
@@ -1503,21 +1250,12 @@ export interface EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Request body */
   body?: EnableCertificateAuthorityRequest;
 }
-export const EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(EnableCertificateAuthorityRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:enable",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-  }) as any as S.Schema<EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
+export const EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(EnableCertificateAuthorityRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:enable","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest" }) as any as S.Schema<EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
 /** Request message for CertificateAuthorityService.FetchCaCerts. */
 export interface FetchCaCertsRequest {
@@ -1525,12 +1263,10 @@ export interface FetchCaCertsRequest {
   requestId?: string;
 }
 export const FetchCaCertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FetchCaCertsRequest",
-}) as any as S.Schema<FetchCaCertsRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "FetchCaCertsRequest" }) as any as S.Schema<FetchCaCertsRequest>;
 
 export interface FetchCaCertsProjectsLocationsCaPoolsRequest {
   /** Required. The resource name for the CaPool in the format `projects/*\/locations/*\/caPools/*`. */
@@ -1538,36 +1274,25 @@ export interface FetchCaCertsProjectsLocationsCaPoolsRequest {
   /** Request body */
   body?: FetchCaCertsRequest;
 }
-export const FetchCaCertsProjectsLocationsCaPoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      caPool: S.String.pipe(T.Label()),
-      body: S.optional(FetchCaCertsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+caPool}:fetchCaCerts",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchCaCertsProjectsLocationsCaPoolsRequest",
-  }) as any as S.Schema<FetchCaCertsProjectsLocationsCaPoolsRequest>;
+export const FetchCaCertsProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "caPool": S.String.pipe(T.Label()),
+  "body": S.optional(FetchCaCertsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+caPool}:fetchCaCerts","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "FetchCaCertsProjectsLocationsCaPoolsRequest" }) as any as S.Schema<FetchCaCertsProjectsLocationsCaPoolsRequest>;
 
 export interface CertChain {
   /** The certificates that form the CA chain, from leaf to root order. */
   certificates?: StringList;
 }
 export const CertChain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificates: S.optional(StringList),
-  }),
+S.Struct({
+  "certificates": S.optional(StringList),
+}),
 ).annotate({ identifier: "CertChain" }) as any as S.Schema<CertChain>;
 
 export type CertChainList = ReadonlyArray<CertChain>;
-export const CertChainList = /*@__PURE__*/ S.Array(
-  CertChain,
-) as any as S.Schema<CertChainList>;
+export const CertChainList = /*@__PURE__*/ S.Array(CertChain) as any as S.Schema<CertChainList>;
 
 /** Response message for CertificateAuthorityService.FetchCaCerts. */
 export interface FetchCaCertsResponse {
@@ -1575,45 +1300,31 @@ export interface FetchCaCertsResponse {
   caCerts?: CertChainList;
 }
 export const FetchCaCertsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caCerts: S.optional(CertChainList),
-  }),
-).annotate({
-  identifier: "FetchCaCertsResponse",
-}) as any as S.Schema<FetchCaCertsResponse>;
+S.Struct({
+  "caCerts": S.optional(CertChainList),
+}),
+).annotate({ identifier: "FetchCaCertsResponse" }) as any as S.Schema<FetchCaCertsResponse>;
 
 export interface FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Required. The resource name for this CertificateAuthority in the format `projects/*\/locations/*\/caPools/*\/certificateAuthorities/*`. */
   name: string;
 }
-export const FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:fetch",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-  }) as any as S.Schema<FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
+export const FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:fetch","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest" }) as any as S.Schema<FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
 /** Response message for CertificateAuthorityService.FetchCertificateAuthorityCsr. */
 export interface FetchCertificateAuthorityCsrResponse {
   /** Output only. The PEM-encoded signed certificate signing request (CSR). */
   pemCsr?: string;
 }
-export const FetchCertificateAuthorityCsrResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pemCsr: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "FetchCertificateAuthorityCsrResponse",
-}) as any as S.Schema<FetchCertificateAuthorityCsrResponse>;
+export const FetchCertificateAuthorityCsrResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pemCsr": S.optional(S.String),
+}),
+).annotate({ identifier: "FetchCertificateAuthorityCsrResponse" }) as any as S.Schema<FetchCertificateAuthorityCsrResponse>;
 
 export interface GetIamPolicyProjectsLocationsCaPoolsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1621,28 +1332,14 @@ export interface GetIamPolicyProjectsLocationsCaPoolsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsCaPoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsCaPoolsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsCaPoolsRequest>;
+export const GetIamPolicyProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsCaPoolsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsCaPoolsRequest>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1653,16 +1350,14 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-    exemptedMembers: S.optional(StringList),
-  }),
+S.Struct({
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+  "exemptedMembers": S.optional(StringList),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -1672,16 +1367,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -1693,17 +1386,15 @@ export interface Binding {
   role?: string;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(Expr),
-    members: S.optional(StringList),
-    role: S.optional(S.String),
-  }),
+S.Struct({
+  "condition": S.optional(Expr),
+  "members": S.optional(StringList),
+  "role": S.optional(S.String),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1717,12 +1408,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auditConfigs: S.optional(AuditConfigList),
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "auditConfigs": S.optional(AuditConfigList),
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
@@ -1731,22 +1422,12 @@ export interface GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCerti
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
+export const GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 
 export interface GetIamPolicyProjectsLocationsCertificateTemplatesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1754,39 +1435,22 @@ export interface GetIamPolicyProjectsLocationsCertificateTemplatesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsCertificateTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsCertificateTemplatesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsCertificateTemplatesRequest>;
+export const GetIamPolicyProjectsLocationsCertificateTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsCertificateTemplatesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsCertificateTemplatesRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://privateca.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1802,13 +1466,13 @@ export interface Location {
   labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "locationId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsCaPoolsRequest {
@@ -1816,76 +1480,35 @@ export interface GetProjectsLocationsCaPoolsRequest {
   name: string;
 }
 export const GetProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://privateca.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsCaPoolsRequest",
-}) as any as S.Schema<GetProjectsLocationsCaPoolsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCaPoolsRequest" }) as any as S.Schema<GetProjectsLocationsCaPoolsRequest>;
 
 export interface GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Required. The name of the CertificateAuthority to get. */
   name: string;
 }
-export const GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-  }) as any as S.Schema<GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
+export const GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest" }) as any as S.Schema<GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
 export interface GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
   /** Required. The name of the CertificateRevocationList to get. */
   name: string;
 }
-export const GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
+export const GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest" }) as any as S.Schema<GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 
-export type CertificateRevocationListStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "SUPERSEDED"
-  | (string & {});
+export type CertificateRevocationListStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUPERSEDED";
 export const CertificateRevocationListStateEnum = /*@__PURE__*/ S.String;
 
-export type RevokedCertificateRevocationReasonEnum =
-  | "REVOCATION_REASON_UNSPECIFIED"
-  | "KEY_COMPROMISE"
-  | "CERTIFICATE_AUTHORITY_COMPROMISE"
-  | "AFFILIATION_CHANGED"
-  | "SUPERSEDED"
-  | "CESSATION_OF_OPERATION"
-  | "CERTIFICATE_HOLD"
-  | "PRIVILEGE_WITHDRAWN"
-  | "ATTRIBUTE_AUTHORITY_COMPROMISE"
-  | (string & {});
+export type RevokedCertificateRevocationReasonEnum = "REVOCATION_REASON_UNSPECIFIED" | "KEY_COMPROMISE" | "CERTIFICATE_AUTHORITY_COMPROMISE" | "AFFILIATION_CHANGED" | "SUPERSEDED" | "CESSATION_OF_OPERATION" | "CERTIFICATE_HOLD" | "PRIVILEGE_WITHDRAWN" | "ATTRIBUTE_AUTHORITY_COMPROMISE";
 export const RevokedCertificateRevocationReasonEnum = /*@__PURE__*/ S.String;
 
 /** Describes a revoked Certificate. */
@@ -1898,19 +1521,15 @@ export interface RevokedCertificate {
   revocationReason?: RevokedCertificateRevocationReasonEnum;
 }
 export const RevokedCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hexSerialNumber: S.optional(S.String),
-    certificate: S.optional(S.String),
-    revocationReason: S.optional(RevokedCertificateRevocationReasonEnum),
-  }),
-).annotate({
-  identifier: "RevokedCertificate",
-}) as any as S.Schema<RevokedCertificate>;
+S.Struct({
+  "hexSerialNumber": S.optional(S.String),
+  "certificate": S.optional(S.String),
+  "revocationReason": S.optional(RevokedCertificateRevocationReasonEnum),
+}),
+).annotate({ identifier: "RevokedCertificate" }) as any as S.Schema<RevokedCertificate>;
 
 export type RevokedCertificateList = ReadonlyArray<RevokedCertificate>;
-export const RevokedCertificateList = /*@__PURE__*/ S.Array(
-  RevokedCertificate,
-) as any as S.Schema<RevokedCertificateList>;
+export const RevokedCertificateList = /*@__PURE__*/ S.Array(RevokedCertificate) as any as S.Schema<RevokedCertificateList>;
 
 /** A CertificateRevocationList corresponds to a signed X.509 certificate Revocation List (CRL). A CRL contains the serial numbers of certificates that should no longer be trusted. */
 export interface CertificateRevocationList {
@@ -1936,78 +1555,49 @@ export interface CertificateRevocationList {
   revokedCertificates?: RevokedCertificateList;
 }
 export const CertificateRevocationList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pemCrl: S.optional(S.String),
-    state: S.optional(CertificateRevocationListStateEnum),
-    sequenceNumber: S.optional(S.String),
-    revisionId: S.optional(S.String),
-    accessUrl: S.optional(S.String),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    revokedCertificates: S.optional(RevokedCertificateList),
-  }),
-).annotate({
-  identifier: "CertificateRevocationList",
-}) as any as S.Schema<CertificateRevocationList>;
+S.Struct({
+  "pemCrl": S.optional(S.String),
+  "state": S.optional(CertificateRevocationListStateEnum),
+  "sequenceNumber": S.optional(S.String),
+  "revisionId": S.optional(S.String),
+  "accessUrl": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "revokedCertificates": S.optional(RevokedCertificateList),
+}),
+).annotate({ identifier: "CertificateRevocationList" }) as any as S.Schema<CertificateRevocationList>;
 
 export interface GetProjectsLocationsCaPoolsCertificatesRequest {
   /** Required. The name of the Certificate to get. */
   name: string;
 }
-export const GetProjectsLocationsCaPoolsCertificatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCaPoolsCertificatesRequest",
-  }) as any as S.Schema<GetProjectsLocationsCaPoolsCertificatesRequest>;
+export const GetProjectsLocationsCaPoolsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCaPoolsCertificatesRequest" }) as any as S.Schema<GetProjectsLocationsCaPoolsCertificatesRequest>;
 
 export interface GetProjectsLocationsCertificateTemplatesRequest {
   /** Required. The name of the CertificateTemplate to get. */
   name: string;
 }
-export const GetProjectsLocationsCertificateTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCertificateTemplatesRequest",
-  }) as any as S.Schema<GetProjectsLocationsCertificateTemplatesRequest>;
+export const GetProjectsLocationsCertificateTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsCertificateTemplatesRequest" }) as any as S.Schema<GetProjectsLocationsCertificateTemplatesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -2022,27 +1612,17 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://privateca.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2052,13 +1632,11 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    locations: S.optional(LocationList),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "locations": S.optional(LocationList),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsCaPoolsRequest {
   /** Optional. Specify how the results should be sorted. */
@@ -2073,27 +1651,17 @@ export interface ListProjectsLocationsCaPoolsRequest {
   parent: string;
 }
 export const ListProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/caPools",
-      baseUrl: "https://privateca.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsCaPoolsRequest",
-}) as any as S.Schema<ListProjectsLocationsCaPoolsRequest>;
+S.Struct({
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/caPools","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCaPoolsRequest" }) as any as S.Schema<ListProjectsLocationsCaPoolsRequest>;
 
 export type CaPoolList = ReadonlyArray<CaPool>;
-export const CaPoolList = /*@__PURE__*/ S.Array(
-  CaPool,
-) as any as S.Schema<CaPoolList>;
+export const CaPoolList = /*@__PURE__*/ S.Array(CaPool) as any as S.Schema<CaPoolList>;
 
 /** Response message for CertificateAuthorityService.ListCaPools. */
 export interface ListCaPoolsResponse {
@@ -2105,14 +1673,12 @@ export interface ListCaPoolsResponse {
   caPools?: CaPoolList;
 }
 export const ListCaPoolsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    caPools: S.optional(CaPoolList),
-  }),
-).annotate({
-  identifier: "ListCaPoolsResponse",
-}) as any as S.Schema<ListCaPoolsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "caPools": S.optional(CaPoolList),
+}),
+).annotate({ identifier: "ListCaPoolsResponse" }) as any as S.Schema<ListCaPoolsResponse>;
 
 export interface ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Optional. Pagination token, returned earlier via ListCertificateAuthoritiesResponse.next_page_token. */
@@ -2126,29 +1692,18 @@ export interface ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Optional. Only include resources that match the filter in the response. */
   filter?: string;
 }
-export const ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/certificateAuthorities",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-  }) as any as S.Schema<ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
+export const ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/certificateAuthorities","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest" }) as any as S.Schema<ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
 export type CertificateAuthorityList = ReadonlyArray<CertificateAuthority>;
-export const CertificateAuthorityList = /*@__PURE__*/ S.Array(
-  CertificateAuthority,
-) as any as S.Schema<CertificateAuthorityList>;
+export const CertificateAuthorityList = /*@__PURE__*/ S.Array(CertificateAuthority) as any as S.Schema<CertificateAuthorityList>;
 
 /** Response message for CertificateAuthorityService.ListCertificateAuthorities. */
 export interface ListCertificateAuthoritiesResponse {
@@ -2160,14 +1715,12 @@ export interface ListCertificateAuthoritiesResponse {
   unreachable?: StringList;
 }
 export const ListCertificateAuthoritiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificateAuthorities: S.optional(CertificateAuthorityList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListCertificateAuthoritiesResponse",
-}) as any as S.Schema<ListCertificateAuthoritiesResponse>;
+S.Struct({
+  "certificateAuthorities": S.optional(CertificateAuthorityList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListCertificateAuthoritiesResponse" }) as any as S.Schema<ListCertificateAuthoritiesResponse>;
 
 export interface ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
   /** Optional. Pagination token, returned earlier via ListCertificateRevocationListsResponse.next_page_token. */
@@ -2181,31 +1734,18 @@ export interface ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRe
   /** Optional. Only include resources that match the filter in the response. */
   filter?: string;
 }
-export const ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/certificateRevocationLists",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
+export const ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/certificateRevocationLists","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest" }) as any as S.Schema<ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 
-export type CertificateRevocationListList =
-  ReadonlyArray<CertificateRevocationList>;
-export const CertificateRevocationListList = /*@__PURE__*/ S.Array(
-  CertificateRevocationList,
-) as any as S.Schema<CertificateRevocationListList>;
+export type CertificateRevocationListList = ReadonlyArray<CertificateRevocationList>;
+export const CertificateRevocationListList = /*@__PURE__*/ S.Array(CertificateRevocationList) as any as S.Schema<CertificateRevocationListList>;
 
 /** Response message for CertificateAuthorityService.ListCertificateRevocationLists. */
 export interface ListCertificateRevocationListsResponse {
@@ -2216,16 +1756,13 @@ export interface ListCertificateRevocationListsResponse {
   /** A list of locations (e.g. "us-west1") that could not be reached. */
   unreachable?: StringList;
 }
-export const ListCertificateRevocationListsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      certificateRevocationLists: S.optional(CertificateRevocationListList),
-      unreachable: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "ListCertificateRevocationListsResponse",
-}) as any as S.Schema<ListCertificateRevocationListsResponse>;
+export const ListCertificateRevocationListsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "certificateRevocationLists": S.optional(CertificateRevocationListList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListCertificateRevocationListsResponse" }) as any as S.Schema<ListCertificateRevocationListsResponse>;
 
 export interface ListProjectsLocationsCaPoolsCertificatesRequest {
   /** Required. The resource name of the parent associated with the Certificates, in the format `projects/*\/locations/*\/caPools/*`. The parent resource name can be in one of two forms: 1. **Specific CA Pool:** To list certificates within a single CA Pool: `projects/*\/locations/*\/caPools/*` 2. **All CA Pools in a Location:** To list certificates across *all* CA Pools in a given project and location, use the wildcard character (`-`) in place of the CA Pool ID. Example: `projects/*\/locations/*\/caPools/-` */
@@ -2239,29 +1776,18 @@ export interface ListProjectsLocationsCaPoolsCertificatesRequest {
   /** Optional. Only include resources that match the filter in the response. For details on supported filters and syntax, see [Certificates Filtering documentation](https://cloud.google.com/certificate-authority-service/docs/sorting-filtering-certificates#filtering_support). */
   filter?: string;
 }
-export const ListProjectsLocationsCaPoolsCertificatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/certificates",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCaPoolsCertificatesRequest",
-  }) as any as S.Schema<ListProjectsLocationsCaPoolsCertificatesRequest>;
+export const ListProjectsLocationsCaPoolsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/certificates","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCaPoolsCertificatesRequest" }) as any as S.Schema<ListProjectsLocationsCaPoolsCertificatesRequest>;
 
 export type CertificateList = ReadonlyArray<Certificate>;
-export const CertificateList = /*@__PURE__*/ S.Array(
-  Certificate,
-) as any as S.Schema<CertificateList>;
+export const CertificateList = /*@__PURE__*/ S.Array(Certificate) as any as S.Schema<CertificateList>;
 
 /** Response message for CertificateAuthorityService.ListCertificates. */
 export interface ListCertificatesResponse {
@@ -2273,14 +1799,12 @@ export interface ListCertificatesResponse {
   nextPageToken?: string;
 }
 export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificates: S.optional(CertificateList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCertificatesResponse",
-}) as any as S.Schema<ListCertificatesResponse>;
+S.Struct({
+  "certificates": S.optional(CertificateList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCertificatesResponse" }) as any as S.Schema<ListCertificatesResponse>;
 
 export interface ListProjectsLocationsCertificateTemplatesRequest {
   /** Optional. Limit on the number of CertificateTemplates to include in the response. Further CertificateTemplates can subsequently be obtained by including the ListCertificateTemplatesResponse.next_page_token in a subsequent request. If unspecified, the server will pick an appropriate default. */
@@ -2294,29 +1818,18 @@ export interface ListProjectsLocationsCertificateTemplatesRequest {
   /** Required. The resource name of the location associated with the CertificateTemplates, in the format `projects/*\/locations/*`. */
   parent: string;
 }
-export const ListProjectsLocationsCertificateTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/certificateTemplates",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCertificateTemplatesRequest",
-  }) as any as S.Schema<ListProjectsLocationsCertificateTemplatesRequest>;
+export const ListProjectsLocationsCertificateTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/certificateTemplates","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsCertificateTemplatesRequest" }) as any as S.Schema<ListProjectsLocationsCertificateTemplatesRequest>;
 
 export type CertificateTemplateList = ReadonlyArray<CertificateTemplate>;
-export const CertificateTemplateList = /*@__PURE__*/ S.Array(
-  CertificateTemplate,
-) as any as S.Schema<CertificateTemplateList>;
+export const CertificateTemplateList = /*@__PURE__*/ S.Array(CertificateTemplate) as any as S.Schema<CertificateTemplateList>;
 
 /** Response message for CertificateAuthorityService.ListCertificateTemplates. */
 export interface ListCertificateTemplatesResponse {
@@ -2328,14 +1841,12 @@ export interface ListCertificateTemplatesResponse {
   nextPageToken?: string;
 }
 export const ListCertificateTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    certificateTemplates: S.optional(CertificateTemplateList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCertificateTemplatesResponse",
-}) as any as S.Schema<ListCertificateTemplatesResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "certificateTemplates": S.optional(CertificateTemplateList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCertificateTemplatesResponse" }) as any as S.Schema<ListCertificateTemplatesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -2349,29 +1860,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2383,14 +1883,12 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-    operations: S.optional(OperationList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "operations": S.optional(OperationList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsCaPoolsRequest {
   /** Required. A list of fields to be updated in this request. */
@@ -2402,23 +1900,14 @@ export interface PatchProjectsLocationsCaPoolsRequest {
   /** Request body */
   body?: CaPool;
 }
-export const PatchProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CaPool.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsCaPoolsRequest",
-}) as any as S.Schema<PatchProjectsLocationsCaPoolsRequest>;
+export const PatchProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(CaPool.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCaPoolsRequest" }) as any as S.Schema<PatchProjectsLocationsCaPoolsRequest>;
 
 export interface PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2430,23 +1919,14 @@ export interface PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Request body */
   body?: CertificateAuthority;
 }
-export const PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CertificateAuthority.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
+export const PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CertificateAuthority.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest" }) as any as S.Schema<PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
 export interface PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
   /** Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2458,24 +1938,14 @@ export interface PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateR
   /** Request body */
   body?: CertificateRevocationList;
 }
-export const PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CertificateRevocationList.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
+export const PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(CertificateRevocationList.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest" }) as any as S.Schema<PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 
 export interface PatchProjectsLocationsCaPoolsCertificatesRequest {
   /** Identifier. The resource name for this Certificate in the format `projects/*\/locations/*\/caPools/*\/certificates/*`. */
@@ -2487,23 +1957,14 @@ export interface PatchProjectsLocationsCaPoolsCertificatesRequest {
   /** Request body */
   body?: Certificate;
 }
-export const PatchProjectsLocationsCaPoolsCertificatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Certificate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCaPoolsCertificatesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCaPoolsCertificatesRequest>;
+export const PatchProjectsLocationsCaPoolsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Certificate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCaPoolsCertificatesRequest" }) as any as S.Schema<PatchProjectsLocationsCaPoolsCertificatesRequest>;
 
 export interface PatchProjectsLocationsCertificateTemplatesRequest {
   /** Required. A list of fields to be updated in this request. */
@@ -2515,52 +1976,31 @@ export interface PatchProjectsLocationsCertificateTemplatesRequest {
   /** Request body */
   body?: CertificateTemplate;
 }
-export const PatchProjectsLocationsCertificateTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CertificateTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCertificateTemplatesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCertificateTemplatesRequest>;
+export const PatchProjectsLocationsCertificateTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(CertificateTemplate.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsCertificateTemplatesRequest" }) as any as S.Schema<PatchProjectsLocationsCertificateTemplatesRequest>;
 
-export type RevokeCertificateRequestReasonEnum =
-  | "REVOCATION_REASON_UNSPECIFIED"
-  | "KEY_COMPROMISE"
-  | "CERTIFICATE_AUTHORITY_COMPROMISE"
-  | "AFFILIATION_CHANGED"
-  | "SUPERSEDED"
-  | "CESSATION_OF_OPERATION"
-  | "CERTIFICATE_HOLD"
-  | "PRIVILEGE_WITHDRAWN"
-  | "ATTRIBUTE_AUTHORITY_COMPROMISE"
-  | (string & {});
+export type RevokeCertificateRequestReasonEnum = "REVOCATION_REASON_UNSPECIFIED" | "KEY_COMPROMISE" | "CERTIFICATE_AUTHORITY_COMPROMISE" | "AFFILIATION_CHANGED" | "SUPERSEDED" | "CESSATION_OF_OPERATION" | "CERTIFICATE_HOLD" | "PRIVILEGE_WITHDRAWN" | "ATTRIBUTE_AUTHORITY_COMPROMISE";
 export const RevokeCertificateRequestReasonEnum = /*@__PURE__*/ S.String;
 
 /** Request message for CertificateAuthorityService.RevokeCertificate. */
 export interface RevokeCertificateRequest {
   /** Required. The RevocationReason for revoking this certificate. */
-  reason?: RevokeCertificateRequestReasonEnum;
+  reason?: RevokeCertificateRequestReasonEnum | (string & {});
   /** Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
 export const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(RevokeCertificateRequestReasonEnum),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RevokeCertificateRequest",
-}) as any as S.Schema<RevokeCertificateRequest>;
+S.Struct({
+  "reason": S.optional(RevokeCertificateRequestReasonEnum),
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "RevokeCertificateRequest" }) as any as S.Schema<RevokeCertificateRequest>;
 
 export interface RevokeProjectsLocationsCaPoolsCertificatesRequest {
   /** Required. The resource name for this Certificate in the format `projects/*\/locations/*\/caPools/*\/certificates/*`. */
@@ -2568,21 +2008,12 @@ export interface RevokeProjectsLocationsCaPoolsCertificatesRequest {
   /** Request body */
   body?: RevokeCertificateRequest;
 }
-export const RevokeProjectsLocationsCaPoolsCertificatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RevokeCertificateRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:revoke",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RevokeProjectsLocationsCaPoolsCertificatesRequest",
-  }) as any as S.Schema<RevokeProjectsLocationsCaPoolsCertificatesRequest>;
+export const RevokeProjectsLocationsCaPoolsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RevokeCertificateRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:revoke","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "RevokeProjectsLocationsCaPoolsCertificatesRequest" }) as any as S.Schema<RevokeProjectsLocationsCaPoolsCertificatesRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -2592,13 +2023,11 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsCaPoolsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2606,21 +2035,12 @@ export interface SetIamPolicyProjectsLocationsCaPoolsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsCaPoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsCaPoolsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsCaPoolsRequest>;
+export const SetIamPolicyProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsCaPoolsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsCaPoolsRequest>;
 
 export interface SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2628,22 +2048,12 @@ export interface SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCerti
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
+export const SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 
 export interface SetIamPolicyProjectsLocationsCertificateTemplatesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2651,21 +2061,12 @@ export interface SetIamPolicyProjectsLocationsCertificateTemplatesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsCertificateTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsCertificateTemplatesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsCertificateTemplatesRequest>;
+export const SetIamPolicyProjectsLocationsCertificateTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsCertificateTemplatesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsCertificateTemplatesRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -2673,12 +2074,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsCaPoolsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2686,21 +2085,12 @@ export interface TestIamPermissionsProjectsLocationsCaPoolsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsCaPoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsCaPoolsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsCaPoolsRequest>;
+export const TestIamPermissionsProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsCaPoolsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsCaPoolsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -2708,12 +2098,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2721,22 +2109,12 @@ export interface TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritie
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
+export const TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsCertificateTemplatesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2744,22 +2122,12 @@ export interface TestIamPermissionsProjectsLocationsCertificateTemplatesRequest 
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsCertificateTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsCertificateTemplatesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsCertificateTemplatesRequest>;
+export const TestIamPermissionsProjectsLocationsCertificateTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsCertificateTemplatesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsCertificateTemplatesRequest>;
 
 /** Request message for CertificateAuthorityService.UndeleteCertificateAuthority. */
 export interface UndeleteCertificateAuthorityRequest {
@@ -2767,12 +2135,10 @@ export interface UndeleteCertificateAuthorityRequest {
   requestId?: string;
 }
 export const UndeleteCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UndeleteCertificateAuthorityRequest",
-}) as any as S.Schema<UndeleteCertificateAuthorityRequest>;
+S.Struct({
+  "requestId": S.optional(S.String),
+}),
+).annotate({ identifier: "UndeleteCertificateAuthorityRequest" }) as any as S.Schema<UndeleteCertificateAuthorityRequest>;
 
 export interface UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Required. The resource name for this CertificateAuthority in the format `projects/*\/locations/*\/caPools/*\/certificateAuthorities/*`. */
@@ -2780,28 +2146,14 @@ export interface UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
   /** Request body */
   body?: UndeleteCertificateAuthorityRequest;
 }
-export const UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UndeleteCertificateAuthorityRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:undelete",
-        baseUrl: "https://privateca.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-  }) as any as S.Schema<UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
+export const UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UndeleteCertificateAuthorityRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:undelete","baseUrl":"https://privateca.googleapis.com/"})),
+).annotate({ identifier: "UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest" }) as any as S.Schema<UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
-export type ActivateProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ActivateProjectsLocationsCaPoolsCertificateAuthoritiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Activate a CertificateAuthority that is in state AWAITING_USER_ACTIVATION and is of type SUBORDINATE. After the parent Certificate Authority signs a certificate signing request from FetchCertificateAuthorityCsr, this method can complete the activation process. */
 export const activateProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
   ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
@@ -2816,12 +2168,7 @@ export const activateProjectsLocationsCaPoolsCertificateAuthorities: API.Operati
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -2836,12 +2183,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCaPoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsCaPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a CaPool. */
 export const createProjectsLocationsCaPools: API.OperationMethod<
   CreateProjectsLocationsCaPoolsRequest,
@@ -2856,12 +2198,7 @@ export const createProjectsLocationsCaPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsCaPoolsCertificateAuthoritiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a new CertificateAuthority in a given Project and Location. */
 export const createProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
   CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
@@ -2876,12 +2213,7 @@ export const createProjectsLocationsCaPoolsCertificateAuthorities: API.Operation
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCaPoolsCertificatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsCaPoolsCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a new Certificate in a given Project, Location from a particular CaPool. */
 export const createProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   CreateProjectsLocationsCaPoolsCertificatesRequest,
@@ -2896,12 +2228,7 @@ export const createProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCertificateTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsCertificateTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a new CertificateTemplate in a given Project and Location. */
 export const createProjectsLocationsCertificateTemplates: API.OperationMethod<
   CreateProjectsLocationsCertificateTemplatesRequest,
@@ -2916,12 +2243,7 @@ export const createProjectsLocationsCertificateTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCaPoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsCaPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete a CaPool. */
 export const deleteProjectsLocationsCaPools: API.OperationMethod<
   DeleteProjectsLocationsCaPoolsRequest,
@@ -2936,12 +2258,7 @@ export const deleteProjectsLocationsCaPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsCaPoolsCertificateAuthoritiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Delete a CertificateAuthority. */
 export const deleteProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
   DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
@@ -2956,12 +2273,7 @@ export const deleteProjectsLocationsCaPoolsCertificateAuthorities: API.Operation
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCertificateTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsCertificateTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** DeleteCertificateTemplate deletes a CertificateTemplate. */
 export const deleteProjectsLocationsCertificateTemplates: API.OperationMethod<
   DeleteProjectsLocationsCertificateTemplatesRequest,
@@ -2976,12 +2288,7 @@ export const deleteProjectsLocationsCertificateTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -2996,12 +2303,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DisableProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DisableProjectsLocationsCaPoolsCertificateAuthoritiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Disable a CertificateAuthority. */
 export const disableProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
   DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
@@ -3016,12 +2318,7 @@ export const disableProjectsLocationsCaPoolsCertificateAuthorities: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type EnableProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnableProjectsLocationsCaPoolsCertificateAuthoritiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enable a CertificateAuthority. */
 export const enableProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
   EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
@@ -3036,12 +2333,7 @@ export const enableProjectsLocationsCaPoolsCertificateAuthorities: API.Operation
   retry: Retry.Retry,
 }));
 
-export type FetchCaCertsProjectsLocationsCaPoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type FetchCaCertsProjectsLocationsCaPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** FetchCaCerts returns the current trust anchor for the CaPool. This will include CA certificate chains for all certificate authorities in the ENABLED, DISABLED, or STAGED states. */
 export const fetchCaCertsProjectsLocationsCaPools: API.OperationMethod<
   FetchCaCertsProjectsLocationsCaPoolsRequest,
@@ -3056,10 +2348,7 @@ export const fetchCaCertsProjectsLocationsCaPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FetchProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchProjectsLocationsCaPoolsCertificateAuthoritiesError = NotFound | Forbidden | GcpOpError;
 /** Fetch a certificate signing request (CSR) from a CertificateAuthority that is in state AWAITING_USER_ACTIVATION and is of type SUBORDINATE. The CSR must then be signed by the desired parent Certificate Authority, which could be another CertificateAuthority resource, or could be an on-prem certificate authority. See also ActivateCertificateAuthority. */
 export const fetchProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
   FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
@@ -3074,10 +2363,7 @@ export const fetchProjectsLocationsCaPoolsCertificateAuthorities: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsCaPoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsCaPoolsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsCaPools: API.OperationMethod<
   GetIamPolicyProjectsLocationsCaPoolsRequest,
@@ -3092,8 +2378,7 @@ export const getIamPolicyProjectsLocationsCaPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
   GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
@@ -3101,18 +2386,14 @@ export const getIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
   GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
+  input: GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsCertificateTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsCertificateTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsCertificateTemplates: API.OperationMethod<
   GetIamPolicyProjectsLocationsCertificateTemplatesRequest,
@@ -3142,10 +2423,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCaPoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCaPoolsError = NotFound | Forbidden | GcpOpError;
 /** Returns a CaPool. */
 export const getProjectsLocationsCaPools: API.OperationMethod<
   GetProjectsLocationsCaPoolsRequest,
@@ -3160,10 +2438,7 @@ export const getProjectsLocationsCaPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCaPoolsCertificateAuthoritiesError = NotFound | Forbidden | GcpOpError;
 /** Returns a CertificateAuthority. */
 export const getProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
   GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
@@ -3178,8 +2453,7 @@ export const getProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError = NotFound | Forbidden | GcpOpError;
 /** Returns a CertificateRevocationList. */
 export const getProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
   GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
@@ -3187,18 +2461,14 @@ export const getProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocat
   GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
+  input: GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output: CertificateRevocationList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCaPoolsCertificatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCaPoolsCertificatesError = NotFound | Forbidden | GcpOpError;
 /** Returns a Certificate. */
 export const getProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   GetProjectsLocationsCaPoolsCertificatesRequest,
@@ -3213,10 +2483,7 @@ export const getProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCertificateTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsCertificateTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Returns a CertificateTemplate. */
 export const getProjectsLocationsCertificateTemplates: API.OperationMethod<
   GetProjectsLocationsCertificateTemplatesRequest,
@@ -3231,10 +2498,7 @@ export const getProjectsLocationsCertificateTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -3262,16 +2526,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCaPoolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCaPoolsError = NotFound | Forbidden | GcpOpError;
 /** Lists CaPools. */
 export const listProjectsLocationsCaPools: API.PaginatedOperationMethod<
   ListProjectsLocationsCaPoolsRequest,
@@ -3284,16 +2542,10 @@ export const listProjectsLocationsCaPools: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCaPoolsCertificateAuthoritiesError = NotFound | Forbidden | GcpOpError;
 /** Lists CertificateAuthorities. */
 export const listProjectsLocationsCaPoolsCertificateAuthorities: API.PaginatedOperationMethod<
   ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
@@ -3306,14 +2558,10 @@ export const listProjectsLocationsCaPoolsCertificateAuthorities: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError = NotFound | Forbidden | GcpOpError;
 /** Lists CertificateRevocationLists. */
 export const listProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.PaginatedOperationMethod<
   ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
@@ -3321,22 +2569,15 @@ export const listProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoca
   ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input:
-    ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
+  input: ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output: ListCertificateRevocationListsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCaPoolsCertificatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCaPoolsCertificatesError = NotFound | Forbidden | GcpOpError;
 /** Lists Certificates. */
 export const listProjectsLocationsCaPoolsCertificates: API.PaginatedOperationMethod<
   ListProjectsLocationsCaPoolsCertificatesRequest,
@@ -3349,16 +2590,10 @@ export const listProjectsLocationsCaPoolsCertificates: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsCertificateTemplatesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsCertificateTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Lists CertificateTemplates. */
 export const listProjectsLocationsCertificateTemplates: API.PaginatedOperationMethod<
   ListProjectsLocationsCertificateTemplatesRequest,
@@ -3371,16 +2606,10 @@ export const listProjectsLocationsCertificateTemplates: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -3393,18 +2622,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsCaPoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCaPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a CaPool. */
 export const patchProjectsLocationsCaPools: API.OperationMethod<
   PatchProjectsLocationsCaPoolsRequest,
@@ -3419,12 +2640,7 @@ export const patchProjectsLocationsCaPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCaPoolsCertificateAuthoritiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a CertificateAuthority. */
 export const patchProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
   PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
@@ -3439,8 +2655,7 @@ export const patchProjectsLocationsCaPoolsCertificateAuthorities: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a CertificateRevocationList. */
 export const patchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
   PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
@@ -3448,20 +2663,14 @@ export const patchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoc
   PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
+  input: PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCaPoolsCertificatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCaPoolsCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a Certificate. Currently, the only field you can update is the labels field. */
 export const patchProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   PatchProjectsLocationsCaPoolsCertificatesRequest,
@@ -3476,12 +2685,7 @@ export const patchProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCertificateTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsCertificateTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update a CertificateTemplate. */
 export const patchProjectsLocationsCertificateTemplates: API.OperationMethod<
   PatchProjectsLocationsCertificateTemplatesRequest,
@@ -3496,12 +2700,7 @@ export const patchProjectsLocationsCertificateTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevokeProjectsLocationsCaPoolsCertificatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RevokeProjectsLocationsCaPoolsCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Revoke a Certificate. */
 export const revokeProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   RevokeProjectsLocationsCaPoolsCertificatesRequest,
@@ -3516,12 +2715,7 @@ export const revokeProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsCaPoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsCaPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsCaPools: API.OperationMethod<
   SetIamPolicyProjectsLocationsCaPoolsRequest,
@@ -3536,8 +2730,7 @@ export const setIamPolicyProjectsLocationsCaPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
   SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
@@ -3545,20 +2738,14 @@ export const setIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
   SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
+  input: SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsCertificateTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsCertificateTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsCertificateTemplates: API.OperationMethod<
   SetIamPolicyProjectsLocationsCertificateTemplatesRequest,
@@ -3573,12 +2760,7 @@ export const setIamPolicyProjectsLocationsCertificateTemplates: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsCaPoolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsCaPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsCaPools: API.OperationMethod<
   TestIamPermissionsProjectsLocationsCaPoolsRequest,
@@ -3593,8 +2775,7 @@ export const testIamPermissionsProjectsLocationsCaPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
   TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
@@ -3602,20 +2783,14 @@ export const testIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCer
   TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
+  input: TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsCertificateTemplatesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsCertificateTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsCertificateTemplates: API.OperationMethod<
   TestIamPermissionsProjectsLocationsCertificateTemplatesRequest,
@@ -3630,12 +2805,7 @@ export const testIamPermissionsProjectsLocationsCertificateTemplates: API.Operat
   retry: Retry.Retry,
 }));
 
-export type UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Undelete a CertificateAuthority that has been deleted. */
 export const undeleteProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
   UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
@@ -3649,3 +2819,4 @@ export const undeleteProjectsLocationsCaPoolsCertificateAuthorities: API.Operati
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

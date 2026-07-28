@@ -42,8 +42,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -51,8 +50,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -176,11 +174,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -229,8 +227,7 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of resource. */
 export type DevOpsInfrastructureResourceType =
-  | "Microsoft.DevOpsInfrastructure/pools"
-  | (string & {});
+  "Microsoft.DevOpsInfrastructure/pools";
 export const DevOpsInfrastructureResourceType = /*@__PURE__*/ S.String;
 
 export interface PoolsCheckNameAvailabilityRequest {
@@ -239,7 +236,7 @@ export interface PoolsCheckNameAvailabilityRequest {
   /** The name of the resource. */
   name: string;
   /** The type of resource that is used as the scope of the availability check. */
-  type: DevOpsInfrastructureResourceType;
+  type: DevOpsInfrastructureResourceType | (string & {});
 }
 export const PoolsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -259,14 +256,11 @@ export const PoolsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolsCheckNameAvailabilityRequest>;
 
 /** AvailabilityStatus of a name. */
-export type AvailabilityStatus = "Available" | "Unavailable" | (string & {});
+export type AvailabilityStatus = "Available" | "Unavailable";
 export const AvailabilityStatus = /*@__PURE__*/ S.String;
 
 /** The reason code explaining why the name is unavailable. Will be null if the name is available. */
-export type CheckNameAvailabilityReason =
-  | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+export type CheckNameAvailabilityReason = "Invalid" | "AlreadyExists";
 export const CheckNameAvailabilityReason = /*@__PURE__*/ S.String;
 
 /** The CheckNameAvailability operation response. */
@@ -308,8 +302,7 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Defines the organization in which the pool will be used. */
@@ -326,10 +319,7 @@ export const OrganizationProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationProfile>;
 
 /** Determines how the stand-by scheme should be provided. */
-export type ResourcePredictionsProfileType =
-  | "Manual"
-  | "Automatic"
-  | (string & {});
+export type ResourcePredictionsProfileType = "Manual" | "Automatic";
 export const ResourcePredictionsProfileType = /*@__PURE__*/ S.String;
 
 /** Determines how the stand-by scheme should be provided. */
@@ -420,8 +410,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -444,7 +433,7 @@ export const PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface PoolsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -898,7 +887,7 @@ export const PoolsUpdateRequestIdentityUserAssignedIdentitiesMap =
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface PoolsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: PoolsUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
@@ -923,7 +912,7 @@ export const PoolsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** The updatable properties of the Pool. */
 export interface PoolUpdateProperties {
   /** The status of the current operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Defines how many resources can there be created at any given time. */
   maximumConcurrency?: number;
   /** Defines the organization in which the pool will be used. */
@@ -1095,8 +1084,7 @@ export type ResourceStatus =
   | "Updating"
   | "Starting"
   | "PendingReimage"
-  | "Reimaging"
-  | (string & {});
+  | "Reimaging";
 export const ResourceStatus = /*@__PURE__*/ S.String;
 
 /** Details of the ResourceDetailsObject. */
@@ -1286,7 +1274,7 @@ export const ResourceSkuPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourceSkuPropertiesCapabilitiesList>;
 
 /** Describes the kind of SKU restrictions that can exist */
-export type ResourceSkuRestrictionsType = "Location" | "Zone" | (string & {});
+export type ResourceSkuRestrictionsType = "Location" | "Zone";
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
@@ -1326,8 +1314,7 @@ export const ResourceSkuRestrictionInfo = /*@__PURE__*/ S.suspend(() =>
 /** Describes the reason for SKU restriction. */
 export type ResourceSkuRestrictionsReasonCode =
   | "QuotaId"
-  | "NotAvailableForSubscription"
-  | (string & {});
+  | "NotAvailableForSubscription";
 export const ResourceSkuRestrictionsReasonCode = /*@__PURE__*/ S.String;
 
 /** The restrictions of the SKU. */

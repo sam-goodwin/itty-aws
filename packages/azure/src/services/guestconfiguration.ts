@@ -45,11 +45,7 @@ export const GuestConfigurationAssignmentReportsGetRequest =
   }) as any as S.Schema<GuestConfigurationAssignmentReportsGetRequest>;
 
 /** A value indicating compliance status of the machine for the assigned guest configuration. */
-export type ComplianceStatus =
-  | "Compliant"
-  | "NonCompliant"
-  | "Pending"
-  | (string & {});
+export type ComplianceStatus = "Compliant" | "NonCompliant" | "Pending";
 export const ComplianceStatus = /*@__PURE__*/ S.String;
 
 /** Information about the configuration. */
@@ -97,7 +93,7 @@ export const VMInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VMInfo" }) as any as S.Schema<VMInfo>;
 
 /** Type of report, Consistency or Initial */
-export type Type = "Consistency" | "Initial" | (string & {});
+export type Type = "Consistency" | "Initial";
 export const Type = /*@__PURE__*/ S.String;
 
 /** Reason and code for the compliance of the guest configuration assignment resource. */
@@ -350,7 +346,7 @@ export const GuestConfigurationAssignmentReportsVMSSListRequest =
   }) as any as S.Schema<GuestConfigurationAssignmentReportsVMSSListRequest>;
 
 /** Kind of the guest configuration. For example:DSC */
-export type Kind = "DSC" | (string & {});
+export type Kind = "DSC";
 export const Kind = /*@__PURE__*/ S.String;
 
 /** Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor. */
@@ -358,8 +354,7 @@ export type AssignmentType =
   | "Audit"
   | "DeployAndAutoCorrect"
   | "ApplyAndAutoCorrect"
-  | "ApplyAndMonitor"
-  | (string & {});
+  | "ApplyAndMonitor";
 export const AssignmentType = /*@__PURE__*/ S.String;
 
 /** Represents a configuration parameter. */
@@ -397,7 +392,7 @@ export const GuestConfigurationNavigationInputConfigurationProtectedParameterLis
 /** Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules. */
 export interface GuestConfigurationNavigationInput {
   /** Kind of the guest configuration. For example:DSC */
-  kind?: Kind;
+  kind?: Kind | (string & {});
   /** Name of the guest configuration. */
   name?: string;
   /** Version of the guest configuration. */
@@ -409,7 +404,7 @@ export interface GuestConfigurationNavigationInput {
   /** Managed identity with storage access of the guest configuration package and configuration parameters. */
   contentManagedIdentity?: string;
   /** Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor. */
-  assignmentType?: AssignmentType;
+  assignmentType?: AssignmentType | (string & {});
   /** The configuration parameters for the guest configuration. */
   configurationParameter?: GuestConfigurationNavigationInputConfigurationParameterList;
   /** The protected configuration parameters for the guest configuration. */
@@ -613,15 +608,11 @@ export const GuestConfigurationNavigationConfigurationProtectedParameterList =
 export type ConfigurationMode =
   | "ApplyOnly"
   | "ApplyAndMonitor"
-  | "ApplyAndAutoCorrect"
-  | (string & {});
+  | "ApplyAndAutoCorrect";
 export const ConfigurationMode = /*@__PURE__*/ S.String;
 
 /** Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration */
-export type ActionAfterReboot =
-  | "ContinueConfiguration"
-  | "StopConfiguration"
-  | (string & {});
+export type ActionAfterReboot = "ContinueConfiguration" | "StopConfiguration";
 export const ActionAfterReboot = /*@__PURE__*/ S.String;
 
 /** Configuration setting of LCM (Local Configuration Manager). */
@@ -746,12 +737,7 @@ export const AssignmentReport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignmentReport>;
 
 /** The provisioning state, which only appears in the response. */
-export type ProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Created"
-  | (string & {});
+export type ProvisioningState = "Succeeded" | "Failed" | "Canceled" | "Created";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Information about VMSS VM */
@@ -836,13 +822,13 @@ export const GuestConfigurationAssignmentProperties = /*@__PURE__*/ S.suspend(
 
 /** The type of identity that created the resource. */
 export type GuestConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type GuestConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -978,14 +964,13 @@ export type GuestConfigurationAssignmentsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const GuestConfigurationAssignmentsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type GuestConfigurationAssignmentsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationAssignmentsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1083,8 +1068,7 @@ export type GuestConfigurationAssignmentSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const GuestConfigurationAssignmentSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1093,8 +1077,7 @@ export type GuestConfigurationAssignmentSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const GuestConfigurationAssignmentSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1261,13 +1244,13 @@ export const GuestConfigurationAssignmentsVMSSCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1366,13 +1349,13 @@ export const GuestConfigurationAssignmentsVMSSDeleteRequest =
 
 /** The type of identity that created the resource. */
 export type GuestConfigurationAssignmentsVMSSDeleteResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationAssignmentsVMSSDeleteResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type GuestConfigurationAssignmentsVMSSDeleteResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationAssignmentsVMSSDeleteResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1470,13 +1453,13 @@ export const GuestConfigurationAssignmentsVMSSGetRequest =
 
 /** The type of identity that created the resource. */
 export type GuestConfigurationAssignmentsVMSSGetResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationAssignmentsVMSSGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type GuestConfigurationAssignmentsVMSSGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationAssignmentsVMSSGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1610,13 +1593,13 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateRe
 
 /** The type of identity that created the resource. */
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1753,13 +1736,13 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetRequest =
 
 /** The type of identity that created the resource. */
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2019,13 +2002,13 @@ export const GuestConfigurationHCRPAssignmentsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2159,13 +2142,13 @@ export const GuestConfigurationHCRPAssignmentsGetRequest =
 
 /** The type of identity that created the resource. */
 export type GuestConfigurationHCRPAssignmentsGetResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationHCRPAssignmentsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type GuestConfigurationHCRPAssignmentsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const GuestConfigurationHCRPAssignmentsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

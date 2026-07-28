@@ -13,130 +13,99 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum =
-    | "VALIDATION_CONCLUSION_UNSPECIFIED"
-    | "VALIDATED_VERSION_USED"
-    | "USER_VERSION_USED"
-    | "UNVALIDATED_VERSION_USED"
-    | "UNUSED"
-    | (string & {});
-export const GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum = "VALIDATION_CONCLUSION_UNSPECIFIED" | "VALIDATED_VERSION_USED" | "USER_VERSION_USED" | "UNVALIDATED_VERSION_USED" | "UNUSED";
+export const GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum = /*@__PURE__*/ S.String;
 
 /** The request for sending validation feedback. */
 export interface GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest {
   /** Required. The outcome of the sequence of validation attempts. If this field is set to `VALIDATION_CONCLUSION_UNSPECIFIED`, an `INVALID_ARGUMENT` error will be returned. */
-  conclusion?: GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum;
+  conclusion?: GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum | (string & {});
   /** Required. The ID of the response that this feedback is for. This should be the response_id from the first response in a series of address validation attempts. */
   responseId?: string;
 }
-export const GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      conclusion: S.optional(
-        GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum,
-      ),
-      responseId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest",
-  }) as any as S.Schema<GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest>;
+export const GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "conclusion": S.optional(GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum),
+  "responseId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest" }) as any as S.Schema<GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest>;
 
 export interface ProvideValidationFeedbackV1Request {
   /** Request body */
   body?: GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest;
 }
 export const ProvideValidationFeedbackV1Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(
-      GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.pipe(
-        T.HttpBody(),
-      ),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1:provideValidationFeedback",
-      baseUrl: "https://addressvalidation.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ProvideValidationFeedbackV1Request",
-}) as any as S.Schema<ProvideValidationFeedbackV1Request>;
+S.Struct({
+  "body": S.optional(GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1:provideValidationFeedback","baseUrl":"https://addressvalidation.googleapis.com/"})),
+).annotate({ identifier: "ProvideValidationFeedbackV1Request" }) as any as S.Schema<ProvideValidationFeedbackV1Request>;
 
 /** The response for validation feedback. The response is empty if the feedback is sent successfully. */
 export interface GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse {}
-export const GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse",
-  }) as any as S.Schema<GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse>;
+export const GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse" }) as any as S.Schema<GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse>;
 
 /** Preview: This feature is in Preview (pre-GA). Pre-GA products and features might have limited support, and changes to pre-GA products and features might not be compatible with other pre-GA versions. Pre-GA Offerings are covered by the [Google Maps Platform Service Specific Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). For more information, see the [launch stage descriptions](https://developers.google.com/maps/launch-stages). Enables the Address Validation API to include additional information in the response. */
 export interface GoogleMapsAddressvalidationV1LanguageOptions {
   /** Preview: Return a [google.maps.addressvalidation.v1.Address] in English. See [google.maps.addressvalidation.v1.ValidationResult.english_latin_address] for details. */
   returnEnglishLatinAddress?: boolean;
 }
-export const GoogleMapsAddressvalidationV1LanguageOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      returnEnglishLatinAddress: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsAddressvalidationV1LanguageOptions",
-  }) as any as S.Schema<GoogleMapsAddressvalidationV1LanguageOptions>;
+export const GoogleMapsAddressvalidationV1LanguageOptions = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "returnEnglishLatinAddress": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1LanguageOptions" }) as any as S.Schema<GoogleMapsAddressvalidationV1LanguageOptions>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface GoogleTypePostalAddress {
@@ -164,22 +133,20 @@ export interface GoogleTypePostalAddress {
   addressLines?: StringList;
 }
 export const GoogleTypePostalAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revision: S.optional(S.Number),
-    sublocality: S.optional(S.String),
-    organization: S.optional(S.String),
-    sortingCode: S.optional(S.String),
-    locality: S.optional(S.String),
-    regionCode: S.optional(S.String),
-    languageCode: S.optional(S.String),
-    recipients: S.optional(StringList),
-    postalCode: S.optional(S.String),
-    administrativeArea: S.optional(S.String),
-    addressLines: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleTypePostalAddress",
-}) as any as S.Schema<GoogleTypePostalAddress>;
+S.Struct({
+  "revision": S.optional(S.Number),
+  "sublocality": S.optional(S.String),
+  "organization": S.optional(S.String),
+  "sortingCode": S.optional(S.String),
+  "locality": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+  "recipients": S.optional(StringList),
+  "postalCode": S.optional(S.String),
+  "administrativeArea": S.optional(S.String),
+  "addressLines": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleTypePostalAddress" }) as any as S.Schema<GoogleTypePostalAddress>;
 
 /** The request for validating an address. */
 export interface GoogleMapsAddressvalidationV1ValidateAddressRequest {
@@ -194,38 +161,25 @@ export interface GoogleMapsAddressvalidationV1ValidateAddressRequest {
   /** Optional. A string which identifies an Autocomplete session for billing purposes. Must be a URL and filename safe base64 string with at most 36 ASCII characters in length. Otherwise an INVALID_ARGUMENT error is returned. The session begins when the user makes an Autocomplete query, and concludes when they select a place and a call to Place Details or Address Validation is made. Each session can have multiple Autocomplete queries, followed by one Place Details or Address Validation request. The credentials used for each request within a session must belong to the same Google Cloud Console project. Once a session has concluded, the token is no longer valid; your app must generate a fresh token for each session. If the `sessionToken` parameter is omitted, or if you reuse a session token, the session is charged as if no session token was provided (each request is billed separately). Note: Address Validation can only be used in sessions with the Autocomplete (New) API, not the Autocomplete API. See https://developers.google.com/maps/documentation/places/web-service/session-pricing for more details. */
   sessionToken?: string;
 }
-export const GoogleMapsAddressvalidationV1ValidateAddressRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enableUspsCass: S.optional(S.Boolean),
-      languageOptions: S.optional(GoogleMapsAddressvalidationV1LanguageOptions),
-      address: S.optional(GoogleTypePostalAddress),
-      previousResponseId: S.optional(S.String),
-      sessionToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsAddressvalidationV1ValidateAddressRequest",
-  }) as any as S.Schema<GoogleMapsAddressvalidationV1ValidateAddressRequest>;
+export const GoogleMapsAddressvalidationV1ValidateAddressRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "enableUspsCass": S.optional(S.Boolean),
+  "languageOptions": S.optional(GoogleMapsAddressvalidationV1LanguageOptions),
+  "address": S.optional(GoogleTypePostalAddress),
+  "previousResponseId": S.optional(S.String),
+  "sessionToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1ValidateAddressRequest" }) as any as S.Schema<GoogleMapsAddressvalidationV1ValidateAddressRequest>;
 
 export interface ValidateAddressV1Request {
   /** Request body */
   body?: GoogleMapsAddressvalidationV1ValidateAddressRequest;
 }
 export const ValidateAddressV1Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(
-      GoogleMapsAddressvalidationV1ValidateAddressRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1:validateAddress",
-      baseUrl: "https://addressvalidation.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ValidateAddressV1Request",
-}) as any as S.Schema<ValidateAddressV1Request>;
+S.Struct({
+  "body": S.optional(GoogleMapsAddressvalidationV1ValidateAddressRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1:validateAddress","baseUrl":"https://addressvalidation.googleapis.com/"})),
+).annotate({ identifier: "ValidateAddressV1Request" }) as any as S.Schema<ValidateAddressV1Request>;
 
 /** Plus code (http://plus.codes) is a location reference with two formats: global code defining a 14mx14m (1/8000th of a degree) or smaller rectangle, and compound code, replacing the prefix with a reference location. */
 export interface GoogleMapsAddressvalidationV1PlusCode {
@@ -234,15 +188,12 @@ export interface GoogleMapsAddressvalidationV1PlusCode {
   /** Place's global (full) code, such as "9FWM33GV+HQ", representing an 1/8000 by 1/8000 degree area (~14 by 14 meters). */
   globalCode?: string;
 }
-export const GoogleMapsAddressvalidationV1PlusCode = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      compoundCode: S.optional(S.String),
-      globalCode: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleMapsAddressvalidationV1PlusCode",
-}) as any as S.Schema<GoogleMapsAddressvalidationV1PlusCode>;
+export const GoogleMapsAddressvalidationV1PlusCode = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "compoundCode": S.optional(S.String),
+  "globalCode": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1PlusCode" }) as any as S.Schema<GoogleMapsAddressvalidationV1PlusCode>;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface GoogleTypeLatLng {
@@ -252,13 +203,11 @@ export interface GoogleTypeLatLng {
   longitude?: number;
 }
 export const GoogleTypeLatLng = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latitude: S.optional(S.Number),
-    longitude: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleTypeLatLng",
-}) as any as S.Schema<GoogleTypeLatLng>;
+S.Struct({
+  "latitude": S.optional(S.Number),
+  "longitude": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleTypeLatLng" }) as any as S.Schema<GoogleTypeLatLng>;
 
 /** A latitude-longitude viewport, represented as two diagonally opposite `low` and `high` points. A viewport is considered a closed region, i.e. it includes its boundary. The latitude bounds must range between -90 to 90 degrees inclusive, and the longitude bounds must range between -180 to 180 degrees inclusive. Various cases include: - If `low` = `high`, the viewport consists of that single point. - If `low.longitude` > `high.longitude`, the longitude range is inverted (the viewport crosses the 180 degree longitude line). - If `low.longitude` = -180 degrees and `high.longitude` = 180 degrees, the viewport includes all longitudes. - If `low.longitude` = 180 degrees and `high.longitude` = -180 degrees, the longitude range is empty. - If `low.latitude` > `high.latitude`, the latitude range is empty. Both `low` and `high` must be populated, and the represented box cannot be empty (as specified by the definitions above). An empty viewport will result in an error. For example, this viewport fully encloses New York City: { "low": { "latitude": 40.477398, "longitude": -74.259087 }, "high": { "latitude": 40.91618, "longitude": -73.70018 } } */
 export interface GoogleGeoTypeViewport {
@@ -268,13 +217,11 @@ export interface GoogleGeoTypeViewport {
   low?: GoogleTypeLatLng;
 }
 export const GoogleGeoTypeViewport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    high: S.optional(GoogleTypeLatLng),
-    low: S.optional(GoogleTypeLatLng),
-  }),
-).annotate({
-  identifier: "GoogleGeoTypeViewport",
-}) as any as S.Schema<GoogleGeoTypeViewport>;
+S.Struct({
+  "high": S.optional(GoogleTypeLatLng),
+  "low": S.optional(GoogleTypeLatLng),
+}),
+).annotate({ identifier: "GoogleGeoTypeViewport" }) as any as S.Schema<GoogleGeoTypeViewport>;
 
 /** Contains information about the place the input was geocoded to. */
 export interface GoogleMapsAddressvalidationV1Geocode {
@@ -291,19 +238,16 @@ export interface GoogleMapsAddressvalidationV1Geocode {
   /** The size of the geocoded place, in meters. This is another measure of the coarseness of the geocoded location, but in physical size rather than in semantic meaning. */
   featureSizeMeters?: number;
 }
-export const GoogleMapsAddressvalidationV1Geocode = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      plusCode: S.optional(GoogleMapsAddressvalidationV1PlusCode),
-      placeId: S.optional(S.String),
-      placeTypes: S.optional(StringList),
-      location: S.optional(GoogleTypeLatLng),
-      bounds: S.optional(GoogleGeoTypeViewport),
-      featureSizeMeters: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleMapsAddressvalidationV1Geocode",
-}) as any as S.Schema<GoogleMapsAddressvalidationV1Geocode>;
+export const GoogleMapsAddressvalidationV1Geocode = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "plusCode": S.optional(GoogleMapsAddressvalidationV1PlusCode),
+  "placeId": S.optional(S.String),
+  "placeTypes": S.optional(StringList),
+  "location": S.optional(GoogleTypeLatLng),
+  "bounds": S.optional(GoogleGeoTypeViewport),
+  "featureSizeMeters": S.optional(S.Number),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1Geocode" }) as any as S.Schema<GoogleMapsAddressvalidationV1Geocode>;
 
 /** USPS representation of a US address. */
 export interface GoogleMapsAddressvalidationV1UspsAddress {
@@ -326,22 +270,19 @@ export interface GoogleMapsAddressvalidationV1UspsAddress {
   /** First address line. */
   firstAddressLine?: string;
 }
-export const GoogleMapsAddressvalidationV1UspsAddress = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      urbanization: S.optional(S.String),
-      city: S.optional(S.String),
-      secondAddressLine: S.optional(S.String),
-      zipCode: S.optional(S.String),
-      state: S.optional(S.String),
-      cityStateZipAddressLine: S.optional(S.String),
-      firm: S.optional(S.String),
-      zipCodeExtension: S.optional(S.String),
-      firstAddressLine: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleMapsAddressvalidationV1UspsAddress",
-}) as any as S.Schema<GoogleMapsAddressvalidationV1UspsAddress>;
+export const GoogleMapsAddressvalidationV1UspsAddress = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "urbanization": S.optional(S.String),
+  "city": S.optional(S.String),
+  "secondAddressLine": S.optional(S.String),
+  "zipCode": S.optional(S.String),
+  "state": S.optional(S.String),
+  "cityStateZipAddressLine": S.optional(S.String),
+  "firm": S.optional(S.String),
+  "zipCodeExtension": S.optional(S.String),
+  "firstAddressLine": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1UspsAddress" }) as any as S.Schema<GoogleMapsAddressvalidationV1UspsAddress>;
 
 /** The USPS data for the address. `uspsData` is not guaranteed to be fully populated for every US or PR address sent to the Address Validation API. It's recommended to integrate the backup address fields in the response if you utilize uspsData as the primary part of the response. */
 export interface GoogleMapsAddressvalidationV1UspsData {
@@ -420,59 +361,50 @@ export interface GoogleMapsAddressvalidationV1UspsData {
   /** Carrier route rate sort indicator. */
   carrierRouteIndicator?: string;
 }
-export const GoogleMapsAddressvalidationV1UspsData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      county: S.optional(S.String),
-      dpvEnhancedDeliveryCode: S.optional(S.String),
-      abbreviatedCity: S.optional(S.String),
-      dpvPbsa: S.optional(S.String),
-      pmbDesignator: S.optional(S.String),
-      dpvNoStatReasonCode: S.optional(S.Number),
-      elotNumber: S.optional(S.String),
-      postOfficeCity: S.optional(S.String),
-      lacsLinkIndicator: S.optional(S.String),
-      ewsNoMatch: S.optional(S.Boolean),
-      pmbNumber: S.optional(S.String),
-      cassProcessed: S.optional(S.Boolean),
-      suitelinkFootnote: S.optional(S.String),
-      deliveryPointCheckDigit: S.optional(S.String),
-      dpvDoorNotAccessible: S.optional(S.String),
-      dpvCmra: S.optional(S.String),
-      dpvDrop: S.optional(S.String),
-      dpvVacant: S.optional(S.String),
-      dpvFootnote: S.optional(S.String),
-      fipsCountyCode: S.optional(S.String),
-      deliveryPointCode: S.optional(S.String),
-      lacsLinkReturnCode: S.optional(S.String),
-      addressRecordType: S.optional(S.String),
-      carrierRoute: S.optional(S.String),
-      elotFlag: S.optional(S.String),
-      dpvNoSecureLocation: S.optional(S.String),
-      dpvNoStat: S.optional(S.String),
-      poBoxOnlyPostalCode: S.optional(S.Boolean),
-      standardizedAddress: S.optional(GoogleMapsAddressvalidationV1UspsAddress),
-      postOfficeState: S.optional(S.String),
-      dpvNonDeliveryDays: S.optional(S.String),
-      defaultAddress: S.optional(S.Boolean),
-      errorMessage: S.optional(S.String),
-      dpvThrowback: S.optional(S.String),
-      dpvConfirmation: S.optional(S.String),
-      dpvNonDeliveryDaysValues: S.optional(S.Number),
-      carrierRouteIndicator: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleMapsAddressvalidationV1UspsData",
-}) as any as S.Schema<GoogleMapsAddressvalidationV1UspsData>;
+export const GoogleMapsAddressvalidationV1UspsData = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "county": S.optional(S.String),
+  "dpvEnhancedDeliveryCode": S.optional(S.String),
+  "abbreviatedCity": S.optional(S.String),
+  "dpvPbsa": S.optional(S.String),
+  "pmbDesignator": S.optional(S.String),
+  "dpvNoStatReasonCode": S.optional(S.Number),
+  "elotNumber": S.optional(S.String),
+  "postOfficeCity": S.optional(S.String),
+  "lacsLinkIndicator": S.optional(S.String),
+  "ewsNoMatch": S.optional(S.Boolean),
+  "pmbNumber": S.optional(S.String),
+  "cassProcessed": S.optional(S.Boolean),
+  "suitelinkFootnote": S.optional(S.String),
+  "deliveryPointCheckDigit": S.optional(S.String),
+  "dpvDoorNotAccessible": S.optional(S.String),
+  "dpvCmra": S.optional(S.String),
+  "dpvDrop": S.optional(S.String),
+  "dpvVacant": S.optional(S.String),
+  "dpvFootnote": S.optional(S.String),
+  "fipsCountyCode": S.optional(S.String),
+  "deliveryPointCode": S.optional(S.String),
+  "lacsLinkReturnCode": S.optional(S.String),
+  "addressRecordType": S.optional(S.String),
+  "carrierRoute": S.optional(S.String),
+  "elotFlag": S.optional(S.String),
+  "dpvNoSecureLocation": S.optional(S.String),
+  "dpvNoStat": S.optional(S.String),
+  "poBoxOnlyPostalCode": S.optional(S.Boolean),
+  "standardizedAddress": S.optional(GoogleMapsAddressvalidationV1UspsAddress),
+  "postOfficeState": S.optional(S.String),
+  "dpvNonDeliveryDays": S.optional(S.String),
+  "defaultAddress": S.optional(S.Boolean),
+  "errorMessage": S.optional(S.String),
+  "dpvThrowback": S.optional(S.String),
+  "dpvConfirmation": S.optional(S.String),
+  "dpvNonDeliveryDaysValues": S.optional(S.Number),
+  "carrierRouteIndicator": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1UspsData" }) as any as S.Schema<GoogleMapsAddressvalidationV1UspsData>;
 
-export type GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum =
-    | "CONFIRMATION_LEVEL_UNSPECIFIED"
-    | "CONFIRMED"
-    | "UNCONFIRMED_BUT_PLAUSIBLE"
-    | "UNCONFIRMED_AND_SUSPICIOUS"
-    | (string & {});
-export const GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum = "CONFIRMATION_LEVEL_UNSPECIFIED" | "CONFIRMED" | "UNCONFIRMED_BUT_PLAUSIBLE" | "UNCONFIRMED_AND_SUSPICIOUS";
+export const GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum = /*@__PURE__*/ S.String;
 
 /** A wrapper for the name of the component. */
 export interface GoogleMapsAddressvalidationV1ComponentName {
@@ -481,15 +413,12 @@ export interface GoogleMapsAddressvalidationV1ComponentName {
   /** The BCP-47 language code. This will not be present if the component name is not associated with a language, such as a street number. */
   languageCode?: string;
 }
-export const GoogleMapsAddressvalidationV1ComponentName =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      languageCode: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsAddressvalidationV1ComponentName",
-  }) as any as S.Schema<GoogleMapsAddressvalidationV1ComponentName>;
+export const GoogleMapsAddressvalidationV1ComponentName = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "text": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1ComponentName" }) as any as S.Schema<GoogleMapsAddressvalidationV1ComponentName>;
 
 /** Represents an address component, such as a street, city, or state. */
 export interface GoogleMapsAddressvalidationV1AddressComponent {
@@ -508,29 +437,20 @@ export interface GoogleMapsAddressvalidationV1AddressComponent {
   /** The name for this component. */
   componentName?: GoogleMapsAddressvalidationV1ComponentName;
 }
-export const GoogleMapsAddressvalidationV1AddressComponent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      spellCorrected: S.optional(S.Boolean),
-      inferred: S.optional(S.Boolean),
-      replaced: S.optional(S.Boolean),
-      confirmationLevel: S.optional(
-        GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum,
-      ),
-      unexpected: S.optional(S.Boolean),
-      componentType: S.optional(S.String),
-      componentName: S.optional(GoogleMapsAddressvalidationV1ComponentName),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsAddressvalidationV1AddressComponent",
-  }) as any as S.Schema<GoogleMapsAddressvalidationV1AddressComponent>;
+export const GoogleMapsAddressvalidationV1AddressComponent = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "spellCorrected": S.optional(S.Boolean),
+  "inferred": S.optional(S.Boolean),
+  "replaced": S.optional(S.Boolean),
+  "confirmationLevel": S.optional(GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum),
+  "unexpected": S.optional(S.Boolean),
+  "componentType": S.optional(S.String),
+  "componentName": S.optional(GoogleMapsAddressvalidationV1ComponentName),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1AddressComponent" }) as any as S.Schema<GoogleMapsAddressvalidationV1AddressComponent>;
 
-export type GoogleMapsAddressvalidationV1AddressComponentList =
-  ReadonlyArray<GoogleMapsAddressvalidationV1AddressComponent>;
-export const GoogleMapsAddressvalidationV1AddressComponentList =
-  /*@__PURE__*/ S.Array(
-    GoogleMapsAddressvalidationV1AddressComponent,
-  ) as any as S.Schema<GoogleMapsAddressvalidationV1AddressComponentList>;
+export type GoogleMapsAddressvalidationV1AddressComponentList = ReadonlyArray<GoogleMapsAddressvalidationV1AddressComponent>;
+export const GoogleMapsAddressvalidationV1AddressComponentList = /*@__PURE__*/ S.Array(GoogleMapsAddressvalidationV1AddressComponent) as any as S.Schema<GoogleMapsAddressvalidationV1AddressComponentList>;
 
 /** Details of the post-processed address. Post-processing includes correcting misspelled parts of the address, replacing incorrect parts, and inferring missing parts. */
 export interface GoogleMapsAddressvalidationV1Address {
@@ -547,21 +467,16 @@ export interface GoogleMapsAddressvalidationV1Address {
   /** The types of components that were expected to be present in a correctly formatted mailing address but were not found in the input AND could not be inferred. An example might be `['street_number', 'route']` for an input like "Boulder, Colorado, 80301, USA". The list of possible types can be found [here](https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types). **Note: you might see a missing component type when you think you've already supplied the missing component.** For example, this can happen when the input address contains the building name, but not the premise number. In the address "渋谷区渋谷３丁目 Shibuya Stream", the building name "Shibuya Stream" has the component type `premise`, but the premise number is missing, so `missing_component_types` will contain `premise`. */
   missingComponentTypes?: StringList;
 }
-export const GoogleMapsAddressvalidationV1Address = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      addressComponents: S.optional(
-        GoogleMapsAddressvalidationV1AddressComponentList,
-      ),
-      formattedAddress: S.optional(S.String),
-      postalAddress: S.optional(GoogleTypePostalAddress),
-      unresolvedTokens: S.optional(StringList),
-      unconfirmedComponentTypes: S.optional(StringList),
-      missingComponentTypes: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "GoogleMapsAddressvalidationV1Address",
-}) as any as S.Schema<GoogleMapsAddressvalidationV1Address>;
+export const GoogleMapsAddressvalidationV1Address = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "addressComponents": S.optional(GoogleMapsAddressvalidationV1AddressComponentList),
+  "formattedAddress": S.optional(S.String),
+  "postalAddress": S.optional(GoogleTypePostalAddress),
+  "unresolvedTokens": S.optional(StringList),
+  "unconfirmedComponentTypes": S.optional(StringList),
+  "missingComponentTypes": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1Address" }) as any as S.Schema<GoogleMapsAddressvalidationV1Address>;
 
 /** The metadata for the post-processed address. `metadata` is not guaranteed to be fully populated for every address sent to the Address Validation API. */
 export interface GoogleMapsAddressvalidationV1AddressMetadata {
@@ -572,62 +487,25 @@ export interface GoogleMapsAddressvalidationV1AddressMetadata {
   /** Indicates that this is the address of a residence. If unset, indicates that the value is unknown. */
   residential?: boolean;
 }
-export const GoogleMapsAddressvalidationV1AddressMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      poBox: S.optional(S.Boolean),
-      business: S.optional(S.Boolean),
-      residential: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsAddressvalidationV1AddressMetadata",
-  }) as any as S.Schema<GoogleMapsAddressvalidationV1AddressMetadata>;
+export const GoogleMapsAddressvalidationV1AddressMetadata = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "poBox": S.optional(S.Boolean),
+  "business": S.optional(S.Boolean),
+  "residential": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1AddressMetadata" }) as any as S.Schema<GoogleMapsAddressvalidationV1AddressMetadata>;
 
-export type GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum =
-  | "POSSIBLE_NEXT_ACTION_UNSPECIFIED"
-  | "FIX"
-  | "CONFIRM_ADD_SUBPREMISES"
-  | "CONFIRM"
-  | "ACCEPT"
-  | (string & {});
-export const GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum = "POSSIBLE_NEXT_ACTION_UNSPECIFIED" | "FIX" | "CONFIRM_ADD_SUBPREMISES" | "CONFIRM" | "ACCEPT";
+export const GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum = /*@__PURE__*/ S.String;
 
-export type GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum =
-  | "GRANULARITY_UNSPECIFIED"
-  | "SUB_PREMISE"
-  | "PREMISE"
-  | "PREMISE_PROXIMITY"
-  | "BLOCK"
-  | "ROUTE"
-  | "OTHER"
-  | (string & {});
-export const GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum = "GRANULARITY_UNSPECIFIED" | "SUB_PREMISE" | "PREMISE" | "PREMISE_PROXIMITY" | "BLOCK" | "ROUTE" | "OTHER";
+export const GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum = /*@__PURE__*/ S.String;
 
-export type GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum =
-  | "GRANULARITY_UNSPECIFIED"
-  | "SUB_PREMISE"
-  | "PREMISE"
-  | "PREMISE_PROXIMITY"
-  | "BLOCK"
-  | "ROUTE"
-  | "OTHER"
-  | (string & {});
-export const GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum = "GRANULARITY_UNSPECIFIED" | "SUB_PREMISE" | "PREMISE" | "PREMISE_PROXIMITY" | "BLOCK" | "ROUTE" | "OTHER";
+export const GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum = /*@__PURE__*/ S.String;
 
-export type GoogleMapsAddressvalidationV1VerdictInputGranularityEnum =
-  | "GRANULARITY_UNSPECIFIED"
-  | "SUB_PREMISE"
-  | "PREMISE"
-  | "PREMISE_PROXIMITY"
-  | "BLOCK"
-  | "ROUTE"
-  | "OTHER"
-  | (string & {});
-export const GoogleMapsAddressvalidationV1VerdictInputGranularityEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleMapsAddressvalidationV1VerdictInputGranularityEnum = "GRANULARITY_UNSPECIFIED" | "SUB_PREMISE" | "PREMISE" | "PREMISE_PROXIMITY" | "BLOCK" | "ROUTE" | "OTHER";
+export const GoogleMapsAddressvalidationV1VerdictInputGranularityEnum = /*@__PURE__*/ S.String;
 
 /** High level overview of the address validation result and geocode. */
 export interface GoogleMapsAddressvalidationV1Verdict {
@@ -650,30 +528,19 @@ export interface GoogleMapsAddressvalidationV1Verdict {
   /** The post-processed address is considered complete if there are no unresolved tokens, no unexpected or missing address components. If unset, indicates that the value is `false`. See `missing_component_types`, `unresolved_tokens` or `unexpected` fields for more details. */
   addressComplete?: boolean;
 }
-export const GoogleMapsAddressvalidationV1Verdict = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hasInferredComponents: S.optional(S.Boolean),
-      possibleNextAction: S.optional(
-        GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum,
-      ),
-      hasReplacedComponents: S.optional(S.Boolean),
-      validationGranularity: S.optional(
-        GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum,
-      ),
-      hasUnconfirmedComponents: S.optional(S.Boolean),
-      geocodeGranularity: S.optional(
-        GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum,
-      ),
-      inputGranularity: S.optional(
-        GoogleMapsAddressvalidationV1VerdictInputGranularityEnum,
-      ),
-      hasSpellCorrectedComponents: S.optional(S.Boolean),
-      addressComplete: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "GoogleMapsAddressvalidationV1Verdict",
-}) as any as S.Schema<GoogleMapsAddressvalidationV1Verdict>;
+export const GoogleMapsAddressvalidationV1Verdict = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "hasInferredComponents": S.optional(S.Boolean),
+  "possibleNextAction": S.optional(GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum),
+  "hasReplacedComponents": S.optional(S.Boolean),
+  "validationGranularity": S.optional(GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum),
+  "hasUnconfirmedComponents": S.optional(S.Boolean),
+  "geocodeGranularity": S.optional(GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum),
+  "inputGranularity": S.optional(GoogleMapsAddressvalidationV1VerdictInputGranularityEnum),
+  "hasSpellCorrectedComponents": S.optional(S.Boolean),
+  "addressComplete": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1Verdict" }) as any as S.Schema<GoogleMapsAddressvalidationV1Verdict>;
 
 /** The result of validating an address. */
 export interface GoogleMapsAddressvalidationV1ValidationResult {
@@ -690,19 +557,16 @@ export interface GoogleMapsAddressvalidationV1ValidationResult {
   /** Overall verdict flags */
   verdict?: GoogleMapsAddressvalidationV1Verdict;
 }
-export const GoogleMapsAddressvalidationV1ValidationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      geocode: S.optional(GoogleMapsAddressvalidationV1Geocode),
-      uspsData: S.optional(GoogleMapsAddressvalidationV1UspsData),
-      englishLatinAddress: S.optional(GoogleMapsAddressvalidationV1Address),
-      address: S.optional(GoogleMapsAddressvalidationV1Address),
-      metadata: S.optional(GoogleMapsAddressvalidationV1AddressMetadata),
-      verdict: S.optional(GoogleMapsAddressvalidationV1Verdict),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsAddressvalidationV1ValidationResult",
-  }) as any as S.Schema<GoogleMapsAddressvalidationV1ValidationResult>;
+export const GoogleMapsAddressvalidationV1ValidationResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "geocode": S.optional(GoogleMapsAddressvalidationV1Geocode),
+  "uspsData": S.optional(GoogleMapsAddressvalidationV1UspsData),
+  "englishLatinAddress": S.optional(GoogleMapsAddressvalidationV1Address),
+  "address": S.optional(GoogleMapsAddressvalidationV1Address),
+  "metadata": S.optional(GoogleMapsAddressvalidationV1AddressMetadata),
+  "verdict": S.optional(GoogleMapsAddressvalidationV1Verdict),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1ValidationResult" }) as any as S.Schema<GoogleMapsAddressvalidationV1ValidationResult>;
 
 /** The response to an address validation request. */
 export interface GoogleMapsAddressvalidationV1ValidateAddressResponse {
@@ -711,22 +575,14 @@ export interface GoogleMapsAddressvalidationV1ValidateAddressResponse {
   /** The UUID that identifies this response. If the address needs to be re-validated, this UUID *must* accompany the new request. */
   responseId?: string;
 }
-export const GoogleMapsAddressvalidationV1ValidateAddressResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(GoogleMapsAddressvalidationV1ValidationResult),
-      responseId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsAddressvalidationV1ValidateAddressResponse",
-  }) as any as S.Schema<GoogleMapsAddressvalidationV1ValidateAddressResponse>;
+export const GoogleMapsAddressvalidationV1ValidateAddressResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "result": S.optional(GoogleMapsAddressvalidationV1ValidationResult),
+  "responseId": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleMapsAddressvalidationV1ValidateAddressResponse" }) as any as S.Schema<GoogleMapsAddressvalidationV1ValidateAddressResponse>;
 
-export type ProvideValidationFeedbackV1Error =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ProvideValidationFeedbackV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Feedback about the outcome of the sequence of validation attempts. This should be the last call made after a sequence of validation calls for the same address, and should be called once the transaction is concluded. This should only be sent once for the sequence of `ValidateAddress` requests needed to validate an address fully. */
 export const provideValidationFeedbackV1: API.OperationMethod<
   ProvideValidationFeedbackV1Request,
@@ -741,12 +597,7 @@ export const provideValidationFeedbackV1: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ValidateAddressV1Error =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ValidateAddressV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Validates an address. */
 export const validateAddressV1: API.OperationMethod<
   ValidateAddressV1Request,
@@ -760,3 +611,4 @@ export const validateAddressV1: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

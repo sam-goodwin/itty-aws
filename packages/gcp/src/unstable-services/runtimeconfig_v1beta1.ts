@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** A RuntimeConfig resource is the primary resource in the Cloud RuntimeConfig service. A RuntimeConfig resource consists of metadata and a hierarchy of variables. */
@@ -68,10 +68,10 @@ export interface RuntimeConfig {
   name?: string;
 }
 export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "RuntimeConfig" }) as any as S.Schema<RuntimeConfig>;
 
 export interface CreateProjectsConfigsRequest {
@@ -83,26 +83,14 @@ export interface CreateProjectsConfigsRequest {
   body?: RuntimeConfig;
 }
 export const CreateProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    requestId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(RuntimeConfig.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/configs",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsConfigsRequest",
-}) as any as S.Schema<CreateProjectsConfigsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(RuntimeConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/configs","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsConfigsRequest" }) as any as S.Schema<CreateProjectsConfigsRequest>;
 
-export type VariableStateEnum =
-  | "VARIABLE_STATE_UNSPECIFIED"
-  | "UPDATED"
-  | "DELETED"
-  | (string & {});
+export type VariableStateEnum = "VARIABLE_STATE_UNSPECIFIED" | "UPDATED" | "DELETED";
 export const VariableStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes a single variable within a RuntimeConfig resource. The name denotes the hierarchical variable name. For example, `ports/serving_port` is a valid variable name. The variable value is an opaque string and only leaf variables can have values (that is, variables that do not have any child variables). */
@@ -119,13 +107,13 @@ export interface Variable {
   state?: VariableStateEnum;
 }
 export const Variable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    name: S.optional(S.String),
-    text: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    state: S.optional(VariableStateEnum),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+  "name": S.optional(S.String),
+  "text": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "state": S.optional(VariableStateEnum),
+}),
 ).annotate({ identifier: "Variable" }) as any as S.Schema<Variable>;
 
 export interface CreateProjectsConfigsVariablesRequest {
@@ -136,22 +124,13 @@ export interface CreateProjectsConfigsVariablesRequest {
   /** Request body */
   body?: Variable;
 }
-export const CreateProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Variable.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/variables",
-        baseUrl: "https://runtimeconfig.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsConfigsVariablesRequest",
-}) as any as S.Schema<CreateProjectsConfigsVariablesRequest>;
+export const CreateProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Variable.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/variables","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsConfigsVariablesRequest" }) as any as S.Schema<CreateProjectsConfigsVariablesRequest>;
 
 /** A Cardinality condition for the Waiter resource. A cardinality condition is met when the number of variables under a specified path prefix reaches a predefined number. For example, if you set a Cardinality condition where the `path` is set to `/foo` and the number of paths is set to `2`, the following variables would meet the condition in a RuntimeConfig resource: + `/foo/variable1 = "value1"` + `/foo/variable2 = "value2"` + `/bar/variable3 = "value3"` It would not satisfy the same condition with the `number` set to `3`, however, because there is only 2 paths that start with `/foo`. Cardinality conditions are recursive; all subtrees under the specific path prefix are counted. */
 export interface Cardinality {
@@ -161,10 +140,10 @@ export interface Cardinality {
   number?: number;
 }
 export const Cardinality = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    number: S.optional(S.Number),
-  }),
+S.Struct({
+  "path": S.optional(S.String),
+  "number": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Cardinality" }) as any as S.Schema<Cardinality>;
 
 /** The condition that a Waiter resource is waiting for. */
@@ -173,21 +152,16 @@ export interface EndCondition {
   cardinality?: Cardinality;
 }
 export const EndCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cardinality: S.optional(Cardinality),
-  }),
+S.Struct({
+  "cardinality": S.optional(Cardinality),
+}),
 ).annotate({ identifier: "EndCondition" }) as any as S.Schema<EndCondition>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -199,11 +173,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** A Waiter resource waits for some end condition within a RuntimeConfig resource to be met before it returns. For example, assume you have a distributed system where each node writes to a Variable resource indicating the node's readiness as part of the startup process. You then configure a Waiter resource with the success condition set to wait until some number of nodes have checked in. Afterwards, your application runs some arbitrary code after the condition has been met and the waiter returns successfully. Once created, a Waiter resource is immutable. To learn more about using waiters, read the [Creating a Waiter](/deployment-manager/runtime-configurator/creating-a-waiter) documentation. */
@@ -224,15 +198,15 @@ export interface Waiter {
   error?: Status;
 }
 export const Waiter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    done: S.optional(S.Boolean),
-    createTime: S.optional(S.String),
-    timeout: S.optional(S.String),
-    failure: S.optional(EndCondition),
-    success: S.optional(EndCondition),
-    name: S.optional(S.String),
-    error: S.optional(Status),
-  }),
+S.Struct({
+  "done": S.optional(S.Boolean),
+  "createTime": S.optional(S.String),
+  "timeout": S.optional(S.String),
+  "failure": S.optional(EndCondition),
+  "success": S.optional(EndCondition),
+  "name": S.optional(S.String),
+  "error": S.optional(Status),
+}),
 ).annotate({ identifier: "Waiter" }) as any as S.Schema<Waiter>;
 
 export interface CreateProjectsConfigsWaitersRequest {
@@ -244,20 +218,12 @@ export interface CreateProjectsConfigsWaitersRequest {
   body?: Waiter;
 }
 export const CreateProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Waiter.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+parent}/waiters",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsConfigsWaitersRequest",
-}) as any as S.Schema<CreateProjectsConfigsWaitersRequest>;
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Waiter.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/waiters","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsConfigsWaitersRequest" }) as any as S.Schema<CreateProjectsConfigsWaitersRequest>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
@@ -273,13 +239,13 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    done: S.optional(S.Boolean),
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "done": S.optional(S.Boolean),
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsConfigsRequest {
@@ -287,24 +253,16 @@ export interface DeleteProjectsConfigsRequest {
   name: string;
 }
 export const DeleteProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsConfigsRequest",
-}) as any as S.Schema<DeleteProjectsConfigsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsConfigsRequest" }) as any as S.Schema<DeleteProjectsConfigsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsConfigsVariablesRequest {
   /** Set to `true` to recursively delete multiple variables with the same prefix. */
@@ -312,39 +270,22 @@ export interface DeleteProjectsConfigsVariablesRequest {
   /** The name of the variable to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]` */
   name: string;
 }
-export const DeleteProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      recursive: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://runtimeconfig.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsConfigsVariablesRequest",
-}) as any as S.Schema<DeleteProjectsConfigsVariablesRequest>;
+export const DeleteProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "recursive": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsConfigsVariablesRequest" }) as any as S.Schema<DeleteProjectsConfigsVariablesRequest>;
 
 export interface DeleteProjectsConfigsWaitersRequest {
   /** The Waiter resource to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]` */
   name: string;
 }
 export const DeleteProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsConfigsWaitersRequest",
-}) as any as S.Schema<DeleteProjectsConfigsWaitersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsConfigsWaitersRequest" }) as any as S.Schema<DeleteProjectsConfigsWaitersRequest>;
 
 export interface GetIamPolicyProjectsConfigsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -353,19 +294,11 @@ export interface GetIamPolicyProjectsConfigsRequest {
   "options.requestedPolicyVersion"?: number;
 }
 export const GetIamPolicyProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.String.pipe(T.Label()),
-    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+resource}:getIamPolicy",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetIamPolicyProjectsConfigsRequest",
-}) as any as S.Schema<GetIamPolicyProjectsConfigsRequest>;
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsConfigsRequest" }) as any as S.Schema<GetIamPolicyProjectsConfigsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -379,18 +312,16 @@ export interface Expr {
   description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
+S.Struct({
+  "location": S.optional(S.String),
+  "expression": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -402,17 +333,15 @@ export interface Binding {
   members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(Expr),
-    role: S.optional(S.String),
-    members: S.optional(StringList),
-  }),
+S.Struct({
+  "condition": S.optional(Expr),
+  "role": S.optional(S.String),
+  "members": S.optional(StringList),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -424,11 +353,11 @@ export interface Policy {
   bindings?: BindingList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    version: S.optional(S.Number),
-    bindings: S.optional(BindingList),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "version": S.optional(S.Number),
+  "bindings": S.optional(BindingList),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetProjectsConfigsRequest {
@@ -436,72 +365,40 @@ export interface GetProjectsConfigsRequest {
   name: string;
 }
 export const GetProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsConfigsRequest",
-}) as any as S.Schema<GetProjectsConfigsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsConfigsRequest" }) as any as S.Schema<GetProjectsConfigsRequest>;
 
 export interface GetProjectsConfigsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetProjectsConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsConfigsOperationsRequest",
-}) as any as S.Schema<GetProjectsConfigsOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsConfigsOperationsRequest" }) as any as S.Schema<GetProjectsConfigsOperationsRequest>;
 
 export interface GetProjectsConfigsVariablesRequest {
   /** The name of the variable to return, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]` */
   name: string;
 }
 export const GetProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsConfigsVariablesRequest",
-}) as any as S.Schema<GetProjectsConfigsVariablesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsConfigsVariablesRequest" }) as any as S.Schema<GetProjectsConfigsVariablesRequest>;
 
 export interface GetProjectsConfigsWaitersRequest {
   /** The fully-qualified name of the Waiter resource object to retrieve, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]` */
   name: string;
 }
 export const GetProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsConfigsWaitersRequest",
-}) as any as S.Schema<GetProjectsConfigsWaitersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsConfigsWaitersRequest" }) as any as S.Schema<GetProjectsConfigsWaitersRequest>;
 
 export interface ListProjectsConfigsRequest {
   /** The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848) for this request, in the format `projects/[PROJECT_ID]`. */
@@ -512,25 +409,15 @@ export interface ListProjectsConfigsRequest {
   pageSize?: number;
 }
 export const ListProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/configs",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsConfigsRequest",
-}) as any as S.Schema<ListProjectsConfigsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/configs","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsConfigsRequest" }) as any as S.Schema<ListProjectsConfigsRequest>;
 
 export type RuntimeConfigList = ReadonlyArray<RuntimeConfig>;
-export const RuntimeConfigList = /*@__PURE__*/ S.Array(
-  RuntimeConfig,
-) as any as S.Schema<RuntimeConfigList>;
+export const RuntimeConfigList = /*@__PURE__*/ S.Array(RuntimeConfig) as any as S.Schema<RuntimeConfigList>;
 
 /** `ListConfigs()` returns the following response. The order of returned objects is arbitrary; that is, it is not ordered in any particular way. */
 export interface ListConfigsResponse {
@@ -540,13 +427,11 @@ export interface ListConfigsResponse {
   nextPageToken?: string;
 }
 export const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configs: S.optional(RuntimeConfigList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListConfigsResponse",
-}) as any as S.Schema<ListConfigsResponse>;
+S.Struct({
+  "configs": S.optional(RuntimeConfigList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListConfigsResponse" }) as any as S.Schema<ListConfigsResponse>;
 
 export interface ListProjectsConfigsVariablesRequest {
   /** Specifies the number of results to return per page. If there are fewer elements than the specified number, returns all elements. */
@@ -561,27 +446,17 @@ export interface ListProjectsConfigsVariablesRequest {
   filter?: string;
 }
 export const ListProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    returnValues: S.optional(S.Boolean.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/variables",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsConfigsVariablesRequest",
-}) as any as S.Schema<ListProjectsConfigsVariablesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "returnValues": S.optional(S.Boolean.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/variables","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsConfigsVariablesRequest" }) as any as S.Schema<ListProjectsConfigsVariablesRequest>;
 
 export type VariableList = ReadonlyArray<Variable>;
-export const VariableList = /*@__PURE__*/ S.Array(
-  Variable,
-) as any as S.Schema<VariableList>;
+export const VariableList = /*@__PURE__*/ S.Array(Variable) as any as S.Schema<VariableList>;
 
 /** Response for the `ListVariables()` method. */
 export interface ListVariablesResponse {
@@ -591,13 +466,11 @@ export interface ListVariablesResponse {
   variables?: VariableList;
 }
 export const ListVariablesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    variables: S.optional(VariableList),
-  }),
-).annotate({
-  identifier: "ListVariablesResponse",
-}) as any as S.Schema<ListVariablesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "variables": S.optional(VariableList),
+}),
+).annotate({ identifier: "ListVariablesResponse" }) as any as S.Schema<ListVariablesResponse>;
 
 export interface ListProjectsConfigsWaitersRequest {
   /** Specifies the number of results to return per page. If there are fewer elements than the specified number, returns all elements. */
@@ -608,25 +481,15 @@ export interface ListProjectsConfigsWaitersRequest {
   parent: string;
 }
 export const ListProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+parent}/waiters",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsConfigsWaitersRequest",
-}) as any as S.Schema<ListProjectsConfigsWaitersRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/waiters","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsConfigsWaitersRequest" }) as any as S.Schema<ListProjectsConfigsWaitersRequest>;
 
 export type WaiterList = ReadonlyArray<Waiter>;
-export const WaiterList = /*@__PURE__*/ S.Array(
-  Waiter,
-) as any as S.Schema<WaiterList>;
+export const WaiterList = /*@__PURE__*/ S.Array(Waiter) as any as S.Schema<WaiterList>;
 
 /** Response for the `ListWaiters()` method. Order of returned waiter objects is arbitrary. */
 export interface ListWaitersResponse {
@@ -636,13 +499,11 @@ export interface ListWaitersResponse {
   waiters?: WaiterList;
 }
 export const ListWaitersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    waiters: S.optional(WaiterList),
-  }),
-).annotate({
-  identifier: "ListWaitersResponse",
-}) as any as S.Schema<ListWaitersResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "waiters": S.optional(WaiterList),
+}),
+).annotate({ identifier: "ListWaitersResponse" }) as any as S.Schema<ListWaitersResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -650,12 +511,10 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsConfigsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -664,19 +523,11 @@ export interface SetIamPolicyProjectsConfigsRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.String.pipe(T.Label()),
-    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+resource}:setIamPolicy",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SetIamPolicyProjectsConfigsRequest",
-}) as any as S.Schema<SetIamPolicyProjectsConfigsRequest>;
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsConfigsRequest" }) as any as S.Schema<SetIamPolicyProjectsConfigsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -684,12 +535,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsConfigsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -697,21 +546,12 @@ export interface TestIamPermissionsProjectsConfigsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://runtimeconfig.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "TestIamPermissionsProjectsConfigsRequest",
-}) as any as S.Schema<TestIamPermissionsProjectsConfigsRequest>;
+export const TestIamPermissionsProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsConfigsRequest" }) as any as S.Schema<TestIamPermissionsProjectsConfigsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -719,12 +559,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsConfigsOperationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -732,21 +570,12 @@ export interface TestIamPermissionsProjectsConfigsOperationsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsConfigsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://runtimeconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsConfigsOperationsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsConfigsOperationsRequest>;
+export const TestIamPermissionsProjectsConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsConfigsOperationsRequest" }) as any as S.Schema<TestIamPermissionsProjectsConfigsOperationsRequest>;
 
 export interface TestIamPermissionsProjectsConfigsVariablesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -754,21 +583,12 @@ export interface TestIamPermissionsProjectsConfigsVariablesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://runtimeconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsConfigsVariablesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsConfigsVariablesRequest>;
+export const TestIamPermissionsProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsConfigsVariablesRequest" }) as any as S.Schema<TestIamPermissionsProjectsConfigsVariablesRequest>;
 
 export interface TestIamPermissionsProjectsConfigsWaitersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -776,21 +596,12 @@ export interface TestIamPermissionsProjectsConfigsWaitersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsConfigsWaitersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://runtimeconfig.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsConfigsWaitersRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsConfigsWaitersRequest>;
+export const TestIamPermissionsProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsConfigsWaitersRequest" }) as any as S.Schema<TestIamPermissionsProjectsConfigsWaitersRequest>;
 
 export interface UpdateProjectsConfigsRequest {
   /** The name of the RuntimeConfig resource to update, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
@@ -799,19 +610,11 @@ export interface UpdateProjectsConfigsRequest {
   body?: RuntimeConfig;
 }
 export const UpdateProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(RuntimeConfig.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://runtimeconfig.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateProjectsConfigsRequest",
-}) as any as S.Schema<UpdateProjectsConfigsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RuntimeConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1beta1/{+name}","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsConfigsRequest" }) as any as S.Schema<UpdateProjectsConfigsRequest>;
 
 export interface UpdateProjectsConfigsVariablesRequest {
   /** The name of the variable to update, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]` */
@@ -819,21 +622,12 @@ export interface UpdateProjectsConfigsVariablesRequest {
   /** Request body */
   body?: Variable;
 }
-export const UpdateProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Variable.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://runtimeconfig.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateProjectsConfigsVariablesRequest",
-}) as any as S.Schema<UpdateProjectsConfigsVariablesRequest>;
+export const UpdateProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Variable.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"v1beta1/{+name}","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "UpdateProjectsConfigsVariablesRequest" }) as any as S.Schema<UpdateProjectsConfigsVariablesRequest>;
 
 /** Request for the `WatchVariable()` method. */
 export interface WatchVariableRequest {
@@ -841,12 +635,10 @@ export interface WatchVariableRequest {
   newerThan?: string;
 }
 export const WatchVariableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newerThan: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WatchVariableRequest",
-}) as any as S.Schema<WatchVariableRequest>;
+S.Struct({
+  "newerThan": S.optional(S.String),
+}),
+).annotate({ identifier: "WatchVariableRequest" }) as any as S.Schema<WatchVariableRequest>;
 
 export interface WatchProjectsConfigsVariablesRequest {
   /** The name of the variable to watch, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
@@ -854,28 +646,14 @@ export interface WatchProjectsConfigsVariablesRequest {
   /** Request body */
   body?: WatchVariableRequest;
 }
-export const WatchProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(WatchVariableRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:watch",
-        baseUrl: "https://runtimeconfig.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "WatchProjectsConfigsVariablesRequest",
-}) as any as S.Schema<WatchProjectsConfigsVariablesRequest>;
+export const WatchProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(WatchVariableRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:watch","baseUrl":"https://runtimeconfig.googleapis.com/"})),
+).annotate({ identifier: "WatchProjectsConfigsVariablesRequest" }) as any as S.Schema<WatchProjectsConfigsVariablesRequest>;
 
-export type CreateProjectsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new RuntimeConfig resource. The configuration name must be unique within project. */
 export const createProjectsConfigs: API.OperationMethod<
   CreateProjectsConfigsRequest,
@@ -890,12 +668,7 @@ export const createProjectsConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsConfigsVariablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsConfigsVariablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a variable within the given configuration. You cannot create a variable with a name that is a prefix of an existing variable name, or a name that has an existing variable name as a prefix. To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-get-variables) documentation. */
 export const createProjectsConfigsVariables: API.OperationMethod<
   CreateProjectsConfigsVariablesRequest,
@@ -910,12 +683,7 @@ export const createProjectsConfigsVariables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsConfigsWaitersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsConfigsWaitersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Waiter resource. This operation returns a long-running Operation resource which can be polled for completion. However, a waiter with the given name will exist (and can be retrieved) prior to the operation completing. If the operation fails, the failed Waiter resource will still exist and must be deleted prior to subsequent creation attempts. */
 export const createProjectsConfigsWaiters: API.OperationMethod<
   CreateProjectsConfigsWaitersRequest,
@@ -930,12 +698,7 @@ export const createProjectsConfigsWaiters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a RuntimeConfig resource. */
 export const deleteProjectsConfigs: API.OperationMethod<
   DeleteProjectsConfigsRequest,
@@ -950,12 +713,7 @@ export const deleteProjectsConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsConfigsVariablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsConfigsVariablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a variable or multiple variables. If you specify a variable name, then that variable is deleted. If you specify a prefix and `recursive` is true, then all variables with that prefix are deleted. You must set a `recursive` to true if you delete variables by prefix. */
 export const deleteProjectsConfigsVariables: API.OperationMethod<
   DeleteProjectsConfigsVariablesRequest,
@@ -970,12 +728,7 @@ export const deleteProjectsConfigsVariables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsConfigsWaitersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsConfigsWaitersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the waiter with the specified name. */
 export const deleteProjectsConfigsWaiters: API.OperationMethod<
   DeleteProjectsConfigsWaitersRequest,
@@ -990,10 +743,7 @@ export const deleteProjectsConfigsWaiters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsConfigsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsConfigs: API.OperationMethod<
   GetIamPolicyProjectsConfigsRequest,
@@ -1023,10 +773,7 @@ export const getProjectsConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsConfigsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsConfigsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsConfigsOperations: API.OperationMethod<
   GetProjectsConfigsOperationsRequest,
@@ -1041,10 +788,7 @@ export const getProjectsConfigsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsConfigsVariablesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsConfigsVariablesError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a single variable. */
 export const getProjectsConfigsVariables: API.OperationMethod<
   GetProjectsConfigsVariablesRequest,
@@ -1087,16 +831,10 @@ export const listProjectsConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsConfigsVariablesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsConfigsVariablesError = NotFound | Forbidden | GcpOpError;
 /** Lists variables within given a configuration, matching any provided filters. This only lists variable names, not the values, unless `return_values` is true, in which case only variables that user has IAM permission to GetVariable will be returned. */
 export const listProjectsConfigsVariables: API.PaginatedOperationMethod<
   ListProjectsConfigsVariablesRequest,
@@ -1109,10 +847,7 @@ export const listProjectsConfigsVariables: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListProjectsConfigsWaitersError = NotFound | Forbidden | GcpOpError;
@@ -1128,18 +863,10 @@ export const listProjectsConfigsWaiters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SetIamPolicyProjectsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsConfigs: API.OperationMethod<
   SetIamPolicyProjectsConfigsRequest,
@@ -1154,12 +881,7 @@ export const setIamPolicyProjectsConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsConfigs: API.OperationMethod<
   TestIamPermissionsProjectsConfigsRequest,
@@ -1174,12 +896,7 @@ export const testIamPermissionsProjectsConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsConfigsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsConfigsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsConfigsOperations: API.OperationMethod<
   TestIamPermissionsProjectsConfigsOperationsRequest,
@@ -1194,12 +911,7 @@ export const testIamPermissionsProjectsConfigsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsConfigsVariablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsConfigsVariablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsConfigsVariables: API.OperationMethod<
   TestIamPermissionsProjectsConfigsVariablesRequest,
@@ -1214,12 +926,7 @@ export const testIamPermissionsProjectsConfigsVariables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsConfigsWaitersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsConfigsWaitersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsConfigsWaiters: API.OperationMethod<
   TestIamPermissionsProjectsConfigsWaitersRequest,
@@ -1234,12 +941,7 @@ export const testIamPermissionsProjectsConfigsWaiters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a RuntimeConfig resource. The configuration must exist beforehand. */
 export const updateProjectsConfigs: API.OperationMethod<
   UpdateProjectsConfigsRequest,
@@ -1254,12 +956,7 @@ export const updateProjectsConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsConfigsVariablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateProjectsConfigsVariablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing variable with a new value. */
 export const updateProjectsConfigsVariables: API.OperationMethod<
   UpdateProjectsConfigsVariablesRequest,
@@ -1274,12 +971,7 @@ export const updateProjectsConfigsVariables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WatchProjectsConfigsVariablesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WatchProjectsConfigsVariablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Watches a specific variable and waits for a change in the variable's value. When there is a change, this method returns the new value or times out. If a variable is deleted while being watched, the `variableState` state is set to `DELETED` and the method returns the last known variable `value`. If you set the deadline for watching to a larger value than internal timeout (60 seconds), the current variable value is returned and the `variableState` will be `VARIABLE_STATE_UNSPECIFIED`. To learn more about creating a watcher, read the [Watching a Variable for Changes](/deployment-manager/runtime-configurator/watching-a-variable) documentation. */
 export const watchProjectsConfigsVariables: API.OperationMethod<
   WatchProjectsConfigsVariablesRequest,
@@ -1293,3 +985,4 @@ export const watchProjectsConfigsVariables: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

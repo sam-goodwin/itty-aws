@@ -13,10 +13,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** A role defining the data plane operations that a principal can perform on a Time Series Insights client. */
-export type AccessPolicyResourcePropertiesRolesItem =
-  | "Reader"
-  | "Contributor"
-  | (string & {});
+export type AccessPolicyResourcePropertiesRolesItem = "Reader" | "Contributor";
 export const AccessPolicyResourcePropertiesRolesItem = /*@__PURE__*/ S.String;
 
 /** The list of roles the principal is assigned on the environment. */
@@ -246,15 +243,13 @@ export const AccessPolicyListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessPolicyListResponse>;
 
 /** A role defining the data plane operations that a principal can perform on a Time Series Insights client. */
-export type AccessPolicyMutablePropertiesRolesItem =
-  | "Reader"
-  | "Contributor"
-  | (string & {});
+export type AccessPolicyMutablePropertiesRolesItem = "Reader" | "Contributor";
 export const AccessPolicyMutablePropertiesRolesItem = /*@__PURE__*/ S.String;
 
 /** The list of roles the principal is assigned on the environment. */
-export type AccessPolicyMutablePropertiesRolesList =
-  ReadonlyArray<AccessPolicyMutablePropertiesRolesItem>;
+export type AccessPolicyMutablePropertiesRolesList = ReadonlyArray<
+  AccessPolicyMutablePropertiesRolesItem | (string & {})
+>;
 export const AccessPolicyMutablePropertiesRolesList = /*@__PURE__*/ S.Array(
   AccessPolicyMutablePropertiesRolesItem,
 ) as any as S.Schema<AccessPolicyMutablePropertiesRolesList>;
@@ -335,14 +330,11 @@ export const EnvironmentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EnvironmentsCreateOrUpdateRequestTagsMap>;
 
 /** The kind of the environment. */
-export type EnvironmentsCreateOrUpdateRequestKind =
-  | "Gen1"
-  | "Gen2"
-  | (string & {});
+export type EnvironmentsCreateOrUpdateRequestKind = "Gen1" | "Gen2";
 export const EnvironmentsCreateOrUpdateRequestKind = /*@__PURE__*/ S.String;
 
 /** The name of this SKU. */
-export type SkuName = "S1" | "S2" | "P1" | "L1" | (string & {});
+export type SkuName = "S1" | "S2" | "P1" | "L1";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate. */
@@ -371,7 +363,7 @@ export interface EnvironmentsCreateOrUpdateRequest {
   /** Key-value pairs of additional properties for the resource. */
   tags?: EnvironmentsCreateOrUpdateRequestTagsMap;
   /** The kind of the environment. */
-  kind: EnvironmentsCreateOrUpdateRequestKind;
+  kind: EnvironmentsCreateOrUpdateRequestKind | (string & {});
   /** The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate. */
   sku: Sku;
 }
@@ -406,10 +398,7 @@ export const EnvironmentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EnvironmentsCreateOrUpdateResponseTagsMap>;
 
 /** The kind of the environment. */
-export type EnvironmentsCreateOrUpdateResponseKind =
-  | "Gen1"
-  | "Gen2"
-  | (string & {});
+export type EnvironmentsCreateOrUpdateResponseKind = "Gen1" | "Gen2";
 export const EnvironmentsCreateOrUpdateResponseKind = /*@__PURE__*/ S.String;
 
 export interface EnvironmentsCreateOrUpdateResponse {
@@ -512,7 +501,7 @@ export const EnvironmentsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EnvironmentsGetResponseTagsMap>;
 
 /** The kind of the environment. */
-export type EnvironmentsGetResponseKind = "Gen1" | "Gen2" | (string & {});
+export type EnvironmentsGetResponseKind = "Gen1" | "Gen2";
 export const EnvironmentsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface EnvironmentsGetResponse {
@@ -576,7 +565,7 @@ export const EnvironmentResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EnvironmentResourceTagsMap>;
 
 /** The kind of the environment. */
-export type EnvironmentResourceKind = "Gen1" | "Gen2" | (string & {});
+export type EnvironmentResourceKind = "Gen1" | "Gen2";
 export const EnvironmentResourceKind = /*@__PURE__*/ S.String;
 
 /** An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. */
@@ -651,7 +640,7 @@ export const EnvironmentsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnvironmentsListBySubscriptionRequest>;
 
 /** The kind of the environment. */
-export type EnvironmentsUpdateRequestKind = "Gen1" | "Gen2" | (string & {});
+export type EnvironmentsUpdateRequestKind = "Gen1" | "Gen2";
 export const EnvironmentsUpdateRequestKind = /*@__PURE__*/ S.String;
 
 /** Key-value pairs of additional properties for the environment. */
@@ -671,7 +660,7 @@ export interface EnvironmentsUpdateRequest {
   /** The name of the Time Series Insights environment associated with the specified resource group. */
   environmentName: string;
   /** The kind of the environment. */
-  kind: EnvironmentsUpdateRequestKind;
+  kind: EnvironmentsUpdateRequestKind | (string & {});
   /** Key-value pairs of additional properties for the environment. */
   tags?: EnvironmentsUpdateRequestTagsMap;
 }
@@ -704,7 +693,7 @@ export const EnvironmentsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EnvironmentsUpdateResponseTagsMap>;
 
 /** The kind of the environment. */
-export type EnvironmentsUpdateResponseKind = "Gen1" | "Gen2" | (string & {});
+export type EnvironmentsUpdateResponseKind = "Gen1" | "Gen2";
 export const EnvironmentsUpdateResponseKind = /*@__PURE__*/ S.String;
 
 export interface EnvironmentsUpdateResponse {
@@ -749,12 +738,11 @@ export const EventSourcesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** The kind of the event source. */
 export type EventSourcesCreateOrUpdateRequestKind =
   | "Microsoft.EventHub"
-  | "Microsoft.IoTHub"
-  | (string & {});
+  | "Microsoft.IoTHub";
 export const EventSourcesCreateOrUpdateRequestKind = /*@__PURE__*/ S.String;
 
 /** An enum that represents the format of the local timestamp property that needs to be set. */
-export type LocalTimestampFormat = "Embedded" | (string & {});
+export type LocalTimestampFormat = "Embedded";
 export const LocalTimestampFormat = /*@__PURE__*/ S.String;
 
 /** An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded. */
@@ -773,7 +761,7 @@ export const LocalTimestampTimeZoneOffset = /*@__PURE__*/ S.suspend(() =>
 /** An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events. */
 export interface LocalTimestamp {
   /** An enum that represents the format of the local timestamp property that needs to be set. */
-  format?: LocalTimestampFormat;
+  format?: LocalTimestampFormat | (string & {});
   /** An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded. */
   timeZoneOffset?: LocalTimestampTimeZoneOffset;
 }
@@ -798,7 +786,7 @@ export interface EventSourcesCreateOrUpdateRequest {
   /** Key-value pairs of additional properties for the resource. */
   tags?: EventSourcesCreateOrUpdateRequestTagsMap;
   /** The kind of the event source. */
-  kind: EventSourcesCreateOrUpdateRequestKind;
+  kind: EventSourcesCreateOrUpdateRequestKind | (string & {});
   /** An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events. */
   localTimestamp?: LocalTimestamp;
 }
@@ -836,8 +824,7 @@ export const EventSourcesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 /** The kind of the event source. */
 export type EventSourcesCreateOrUpdateResponseKind =
   | "Microsoft.EventHub"
-  | "Microsoft.IoTHub"
-  | (string & {});
+  | "Microsoft.IoTHub";
 export const EventSourcesCreateOrUpdateResponseKind = /*@__PURE__*/ S.String;
 
 export interface EventSourcesCreateOrUpdateResponse {
@@ -942,8 +929,7 @@ export const EventSourcesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 /** The kind of the event source. */
 export type EventSourcesGetResponseKind =
   | "Microsoft.EventHub"
-  | "Microsoft.IoTHub"
-  | (string & {});
+  | "Microsoft.IoTHub";
 export const EventSourcesGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface EventSourcesGetResponse {
@@ -1007,10 +993,7 @@ export const EventSourceResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EventSourceResourceTagsMap>;
 
 /** The kind of the event source. */
-export type EventSourceResourceKind =
-  | "Microsoft.EventHub"
-  | "Microsoft.IoTHub"
-  | (string & {});
+export type EventSourceResourceKind = "Microsoft.EventHub" | "Microsoft.IoTHub";
 export const EventSourceResourceKind = /*@__PURE__*/ S.String;
 
 /** An environment receives data from one or more event sources. Each event source has associated connection info that allows the Time Series Insights ingress pipeline to connect to and pull data from the event source */
@@ -1064,8 +1047,7 @@ export const EventSourceListResponse = /*@__PURE__*/ S.suspend(() =>
 /** The kind of the event source. */
 export type EventSourcesUpdateRequestKind =
   | "Microsoft.EventHub"
-  | "Microsoft.IoTHub"
-  | (string & {});
+  | "Microsoft.IoTHub";
 export const EventSourcesUpdateRequestKind = /*@__PURE__*/ S.String;
 
 /** Key-value pairs of additional properties for the event source. */
@@ -1087,7 +1069,7 @@ export interface EventSourcesUpdateRequest {
   /** The name of the Time Series Insights event source associated with the specified environment. */
   eventSourceName: string;
   /** The kind of the event source. */
-  kind: EventSourcesUpdateRequestKind;
+  kind: EventSourcesUpdateRequestKind | (string & {});
   /** Key-value pairs of additional properties for the event source. */
   tags?: EventSourcesUpdateRequestTagsMap;
 }
@@ -1123,8 +1105,7 @@ export const EventSourcesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 /** The kind of the event source. */
 export type EventSourcesUpdateResponseKind =
   | "Microsoft.EventHub"
-  | "Microsoft.IoTHub"
-  | (string & {});
+  | "Microsoft.IoTHub";
 export const EventSourcesUpdateResponseKind = /*@__PURE__*/ S.String;
 
 export interface EventSourcesUpdateResponse {
@@ -1385,8 +1366,7 @@ export type ReferenceDataSetKeyPropertyType =
   | "String"
   | "Double"
   | "Bool"
-  | "DateTime"
-  | (string & {});
+  | "DateTime";
 export const ReferenceDataSetKeyPropertyType = /*@__PURE__*/ S.String;
 
 /** A key property for the reference data set. A reference data set can have multiple key properties. */
@@ -1416,8 +1396,7 @@ export const ReferenceDataSetCreationPropertiesKeyPropertiesList =
 /** The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used. */
 export type ReferenceDataSetCreationPropertiesDataStringComparisonBehavior =
   | "Ordinal"
-  | "OrdinalIgnoreCase"
-  | (string & {});
+  | "OrdinalIgnoreCase";
 export const ReferenceDataSetCreationPropertiesDataStringComparisonBehavior =
   /*@__PURE__*/ S.String;
 
@@ -1426,7 +1405,9 @@ export interface ReferenceDataSetCreationProperties {
   /** The list of key properties for the reference data set. */
   keyProperties: ReferenceDataSetCreationPropertiesKeyPropertiesList;
   /** The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used. */
-  dataStringComparisonBehavior?: ReferenceDataSetCreationPropertiesDataStringComparisonBehavior;
+  dataStringComparisonBehavior?:
+    | ReferenceDataSetCreationPropertiesDataStringComparisonBehavior
+    | (string & {});
 }
 export const ReferenceDataSetCreationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1497,8 +1478,7 @@ export const ReferenceDataSetResourcePropertiesKeyPropertiesList =
 /** The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used. */
 export type ReferenceDataSetResourcePropertiesDataStringComparisonBehavior =
   | "Ordinal"
-  | "OrdinalIgnoreCase"
-  | (string & {});
+  | "OrdinalIgnoreCase";
 export const ReferenceDataSetResourcePropertiesDataStringComparisonBehavior =
   /*@__PURE__*/ S.String;
 
@@ -1509,8 +1489,7 @@ export type ProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the reference data set. */

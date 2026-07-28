@@ -59,18 +59,14 @@ export const VisionQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VisionQuota" }) as any as S.Schema<VisionQuota>;
 
 /** * `schedule` - Schedule * `threshold` - Threshold */
-export type VisionActionTriggerTypeEnum =
-  | "schedule"
-  | "threshold"
-  | (string & {});
+export type VisionActionTriggerTypeEnum = "schedule" | "threshold";
 export const VisionActionTriggerTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `group_summary` - Group summary * `alert` - Alert * `per_observation` - Per observation */
 export type VisionActionModeEnum =
   | "group_summary"
   | "alert"
-  | "per_observation"
-  | (string & {});
+  | "per_observation";
 export const VisionActionModeEnum = /*@__PURE__*/ S.String;
 
 /** Schedule trigger parameters. Threshold triggers are reserved and rejected at the API for now. */
@@ -94,7 +90,7 @@ export const SelectionScannerIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SelectionScannerIdsList>;
 
 /** * `yes` - yes * `no` - no * `inconclusive` - inconclusive */
-export type VerdictEnum = "yes" | "no" | "inconclusive" | (string & {});
+export type VerdictEnum = "yes" | "no" | "inconclusive";
 export const VerdictEnum = /*@__PURE__*/ S.String;
 
 /** Only run on monitor observations with one of these verdicts (yes/no/inconclusive). */
@@ -146,22 +142,19 @@ export const SynthesisConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynthesisConfig>;
 
 /** * `every_match` - Every new match * `on_breach` - When a threshold is crossed */
-export type AlertConfigFrequencyEnum =
-  | "every_match"
-  | "on_breach"
-  | (string & {});
+export type AlertConfigFrequencyEnum = "every_match" | "on_breach";
 export const AlertConfigFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** * `count` - Count of matching observations * `avg_score` - Average score */
-export type VisionAlertMetricEnum = "count" | "avg_score" | (string & {});
+export type VisionAlertMetricEnum = "count" | "avg_score";
 export const VisionAlertMetricEnum = /*@__PURE__*/ S.String;
 
 /** * `above` - At or above * `below` - At or below */
-export type VisionAlertDirectionEnum = "above" | "below" | (string & {});
+export type VisionAlertDirectionEnum = "above" | "below";
 export const VisionAlertDirectionEnum = /*@__PURE__*/ S.String;
 
 /** * `1` - 1 day * `3` - 3 days * `7` - 7 days * `14` - 14 days * `30` - 30 days */
-export type WindowDaysEnum = 1 | 3 | 7 | 14 | 30 | (number & {});
+export type WindowDaysEnum = 1 | 3 | 7 | 14 | 30;
 export const WindowDaysEnum = /*@__PURE__*/ S.Number;
 
 /** The alert condition for mode='alert', applied after `selection` targeting. 'every_match' notifies about each new match since the previous check; 'on_breach' compares a metric to a threshold over a rolling window and notifies on the transition into breach. */
@@ -188,7 +181,7 @@ export const AlertConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertConfig" }) as any as S.Schema<AlertConfig>;
 
 /** * `slack` - Slack */
-export type DeliveryTargetTypeEnum = "slack" | (string & {});
+export type DeliveryTargetTypeEnum = "slack";
 export const DeliveryTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single delivery destination. MVP supports Slack only. */
@@ -228,9 +221,9 @@ export interface VisionActionsCreateRequest {
   /** Marks this action as the scanner's built-in daily digest, the one summary surfaced on the scanner overview. At most one digest per scanner. */
   is_scanner_digest?: boolean;
   /** What fires the action. MVP supports 'schedule' only. * `schedule` - Schedule * `threshold` - Threshold */
-  trigger_type?: VisionActionTriggerTypeEnum;
+  trigger_type?: VisionActionTriggerTypeEnum | (string & {});
   /** What the action produces. MVP supports 'group_summary' only. * `group_summary` - Group summary * `alert` - Alert * `per_observation` - Per observation */
-  mode?: VisionActionModeEnum;
+  mode?: VisionActionModeEnum | (string & {});
   /** Trigger parameters. For schedule triggers: {rrule, timezone}. */
   trigger_config?: TriggerConfig;
   /** Targeting predicate: which of the scanner's observations this action runs on. */
@@ -288,11 +281,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -482,9 +474,9 @@ export interface VisionActionsPartialUpdateRequest {
   /** Marks this action as the scanner's built-in daily digest, the one summary surfaced on the scanner overview. At most one digest per scanner. */
   is_scanner_digest?: boolean;
   /** What fires the action. MVP supports 'schedule' only. * `schedule` - Schedule * `threshold` - Threshold */
-  trigger_type?: VisionActionTriggerTypeEnum;
+  trigger_type?: VisionActionTriggerTypeEnum | (string & {});
   /** What the action produces. MVP supports 'group_summary' only. * `group_summary` - Group summary * `alert` - Alert * `per_observation` - Per observation */
-  mode?: VisionActionModeEnum;
+  mode?: VisionActionModeEnum | (string & {});
   /** Trigger parameters. For schedule triggers: {rrule, timezone}. */
   trigger_config?: TriggerConfig;
   /** Targeting predicate: which of the scanner's observations this action runs on. */
@@ -604,8 +596,7 @@ export type VisionActionRunStatusEnum =
   | "running"
   | "completed"
   | "failed"
-  | "skipped"
-  | (string & {});
+  | "skipped";
 export const VisionActionRunStatusEnum = /*@__PURE__*/ S.String;
 
 /** Lightweight run row for the per-action run list (no report body — that's fetched on retrieve). */
@@ -883,8 +874,7 @@ export type VisionObservationsListRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status"
-  | (string & {});
+  | "status";
 export const VisionObservationsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface VisionObservationsListRequest {
@@ -895,7 +885,7 @@ export interface VisionObservationsListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
   /** Sort observations. Plain keys: created_at, started_at, completed_at, status, recording_subject_email. JSONB keys: result_score (scorer), result_verdict (monitor), result_confidence, scanner_version. Prefix with `-` for descending; nullable keys sort nulls last either way. */
-  order_by?: VisionObservationsListRequestOrderBy;
+  order_by?: VisionObservationsListRequestOrderBy | (string & {});
   /** Session recording id to return observations for. */
   session_id: string;
 }
@@ -923,8 +913,7 @@ export type ObservationStatusEnum =
   | "running"
   | "succeeded"
   | "failed"
-  | "ineligible"
-  | (string & {});
+  | "ineligible";
 export const ObservationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `monitor` - Monitor * `classifier` - Classifier * `scorer` - Scorer * `summarizer` - Summarizer */
@@ -932,8 +921,7 @@ export type ScannerTypeEnum =
   | "monitor"
   | "classifier"
   | "scorer"
-  | "summarizer"
-  | (string & {});
+  | "summarizer";
 export const ScannerTypeEnum = /*@__PURE__*/ S.String;
 
 /** Mirrors `temporal.types.ScannerSnapshot` for OpenAPI generation. */
@@ -982,11 +970,7 @@ export const ScannerResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScannerResult" }) as any as S.Schema<ScannerResult>;
 
 /** * `schedule` - Schedule * `on_demand` - On demand * `retry` - Retry */
-export type ObservationTriggerEnum =
-  | "schedule"
-  | "on_demand"
-  | "retry"
-  | (string & {});
+export type ObservationTriggerEnum = "schedule" | "on_demand" | "retry";
 export const ObservationTriggerEnum = /*@__PURE__*/ S.String;
 
 export interface ReplayObservation {
@@ -1091,8 +1075,7 @@ export type VisionObservationsRetrieveRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status"
-  | (string & {});
+  | "status";
 export const VisionObservationsRetrieveRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface VisionObservationsRetrieveRequest {
@@ -1107,7 +1090,7 @@ export interface VisionObservationsRetrieveRequest {
   /** When true, return only observations that have a shared label (thumbs up or down); when false, only unlabeled observations. */
   labeled?: string;
   /** Sort observations. Plain keys: created_at, started_at, completed_at, status, recording_subject_email. JSONB keys: result_score (scorer), result_verdict (monitor), result_confidence, scanner_version. Prefix with `-` for descending; nullable keys sort nulls last either way. */
-  order_by?: VisionObservationsRetrieveRequestOrderBy;
+  order_by?: VisionObservationsRetrieveRequestOrderBy | (string & {});
   /** Filter to observations whose person email contains this value (case-insensitive). */
   recording_subject?: string;
   /** Filter to observations of one or more session recordings. Accepts a comma-separated list. */
@@ -1274,23 +1257,18 @@ export const VisionScannersBulkObserveCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VisionScannersBulkObserveCreateResponse>;
 
 /** * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
-export type SamplingModeEnum =
-  | "focused"
-  | "balanced"
-  | "comprehensive"
-  | (string & {});
+export type SamplingModeEnum = "focused" | "balanced" | "comprehensive";
 export const SamplingModeEnum = /*@__PURE__*/ S.String;
 
 /** * `google` - Google */
-export type ScannerProviderEnum = "google" | (string & {});
+export type ScannerProviderEnum = "google";
 export const ScannerProviderEnum = /*@__PURE__*/ S.String;
 
 /** * `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite * `gemini-3-flash-preview` - Gemini 3 Flash (preview) * `gemini-3.6-flash` - Gemini 3.6 Flash */
 export type ScannerModelEnum =
   | "gemini-3.5-flash-lite"
   | "gemini-3-flash-preview"
-  | "gemini-3.6-flash"
-  | (string & {});
+  | "gemini-3.6-flash";
 export const ScannerModelEnum = /*@__PURE__*/ S.String;
 
 export interface VisionScannersCreateRequest {
@@ -1301,7 +1279,7 @@ export interface VisionScannersCreateRequest {
   /** Free-form description shown in the scanner management UI. */
   description?: string;
   /** What the scanner does: monitor, classifier, scorer, or summarizer. * `monitor` - Monitor * `classifier` - Classifier * `scorer` - Scorer * `summarizer` - Summarizer */
-  scanner_type: ScannerTypeEnum;
+  scanner_type: ScannerTypeEnum | (string & {});
   /** Type-specific configuration. All scanner types require `prompt`; monitors add optional `allow_inconclusive`, classifiers add `tags`, scorers add `scale`, summarizers add optional `length`. */
   scanner_config: unknown;
   /** Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save — the schedule controls time, not the user. */
@@ -1309,11 +1287,11 @@ export interface VisionScannersCreateRequest {
   /** 0..1 random downsample applied after the query matches. Defaults to 1.0 (no downsampling). Use exactly 0 to pause scanning; non-zero rates below 0.0001 (0.01%) are rejected as below the sampling precision. */
   sampling_rate?: number;
   /** Quality pre-filter applied before random sampling. focused = top sessions only, balanced = drops the lowest-quality, comprehensive = no filter (default). * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
-  sampling_mode?: SamplingModeEnum;
+  sampling_mode?: SamplingModeEnum | (string & {});
   /** LLM provider. v1 is Google-only. * `google` - Google */
-  provider?: ScannerProviderEnum;
+  provider?: ScannerProviderEnum | (string & {});
   /** Concrete model to use for this scanner. * `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite * `gemini-3-flash-preview` - Gemini 3 Flash (preview) * `gemini-3.6-flash` - Gemini 3.6 Flash */
-  model: ScannerModelEnum;
+  model: ScannerModelEnum | (string & {});
   /** When false, the reconciler removes the scanner's Temporal schedule. On-demand triggers still work. */
   enabled?: boolean;
   /** When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals. */
@@ -1560,11 +1538,11 @@ export interface VisionScannersEstimateCreateRequest {
   /** 0..1 downsample applied to matched sessions. Defaults to 1.0 (no downsampling). */
   sampling_rate?: number;
   /** Quality pre-filter applied to the matched-session count, mirroring the sweep's candidate query. Defaults to comprehensive (no filter). * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
-  sampling_mode?: SamplingModeEnum;
+  sampling_mode?: SamplingModeEnum | (string & {});
   /** The scanner being edited, excluded from `other_enabled_scanners_monthly_credits` so its stored estimate isn't double-counted in the forecast. Omit (or null) when estimating a brand-new scanner. */
   scanner_id?: string | null;
   /** Proposed model; determines `credits_per_observation` in the response. * `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite * `gemini-3-flash-preview` - Gemini 3 Flash (preview) * `gemini-3.6-flash` - Gemini 3.6 Flash */
-  model?: ScannerModelEnum;
+  model?: ScannerModelEnum | (string & {});
 }
 export const VisionScannersEstimateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1685,8 +1663,7 @@ export type VisionScannersListRequestOrderBy =
   | "name"
   | "sampling_rate"
   | "scanner_type"
-  | "updated_at"
-  | (string & {});
+  | "updated_at";
 export const VisionScannersListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface VisionScannersListRequest {
@@ -1703,7 +1680,7 @@ export interface VisionScannersListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
   /** Sort scanners by name, created_at, updated_at, scanner_type, enabled, sampling_rate, created_by, credits_this_month. Prefix with `-` for descending. */
-  order_by?: VisionScannersListRequestOrderBy;
+  order_by?: VisionScannersListRequestOrderBy | (string & {});
   /** Filter by scanner type (monitor, classifier, scorer, summarizer). Accepts a comma-separated list. */
   scanner_type?: string;
   /** Case-insensitive substring match across name, description, and the prompt in scanner_config. */
@@ -1858,8 +1835,7 @@ export type VisionScannersObservationsListRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status"
-  | (string & {});
+  | "status";
 export const VisionScannersObservationsListRequestOrderBy =
   /*@__PURE__*/ S.String;
 
@@ -1878,7 +1854,7 @@ export interface VisionScannersObservationsListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
   /** Sort observations. Plain keys: created_at, started_at, completed_at, status, recording_subject_email. JSONB keys: result_score (scorer), result_verdict (monitor), result_confidence, scanner_version. Prefix with `-` for descending; nullable keys sort nulls last either way. */
-  order_by?: VisionScannersObservationsListRequestOrderBy;
+  order_by?: VisionScannersObservationsListRequestOrderBy | (string & {});
   /** Filter to observations whose person email contains this value (case-insensitive). */
   recording_subject?: string;
   /** Filter to observations of one or more session recordings. Accepts a comma-separated list. */
@@ -1942,8 +1918,7 @@ export type VisionScannersObservationsRetrieveRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status"
-  | (string & {});
+  | "status";
 export const VisionScannersObservationsRetrieveRequestOrderBy =
   /*@__PURE__*/ S.String;
 
@@ -1960,7 +1935,7 @@ export interface VisionScannersObservationsRetrieveRequest {
   /** When true, return only observations that have a shared label (thumbs up or down); when false, only unlabeled observations. */
   labeled?: string;
   /** Sort observations. Plain keys: created_at, started_at, completed_at, status, recording_subject_email. JSONB keys: result_score (scorer), result_verdict (monitor), result_confidence, scanner_version. Prefix with `-` for descending; nullable keys sort nulls last either way. */
-  order_by?: VisionScannersObservationsRetrieveRequestOrderBy;
+  order_by?: VisionScannersObservationsRetrieveRequestOrderBy | (string & {});
   /** Filter to observations whose person email contains this value (case-insensitive). */
   recording_subject?: string;
   /** Filter to observations of one or more session recordings. Accepts a comma-separated list. */
@@ -2424,7 +2399,7 @@ export interface VisionScannersPartialUpdateRequest {
   /** Free-form description shown in the scanner management UI. */
   description?: string;
   /** What the scanner does: monitor, classifier, scorer, or summarizer. * `monitor` - Monitor * `classifier` - Classifier * `scorer` - Scorer * `summarizer` - Summarizer */
-  scanner_type?: ScannerTypeEnum;
+  scanner_type?: ScannerTypeEnum | (string & {});
   /** Type-specific configuration. All scanner types require `prompt`; monitors add optional `allow_inconclusive`, classifiers add `tags`, scorers add `scale`, summarizers add optional `length`. */
   scanner_config?: unknown;
   /** Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save — the schedule controls time, not the user. */
@@ -2432,11 +2407,11 @@ export interface VisionScannersPartialUpdateRequest {
   /** 0..1 random downsample applied after the query matches. Defaults to 1.0 (no downsampling). Use exactly 0 to pause scanning; non-zero rates below 0.0001 (0.01%) are rejected as below the sampling precision. */
   sampling_rate?: number;
   /** Quality pre-filter applied before random sampling. focused = top sessions only, balanced = drops the lowest-quality, comprehensive = no filter (default). * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
-  sampling_mode?: SamplingModeEnum;
+  sampling_mode?: SamplingModeEnum | (string & {});
   /** LLM provider. v1 is Google-only. * `google` - Google */
-  provider?: ScannerProviderEnum;
+  provider?: ScannerProviderEnum | (string & {});
   /** Concrete model to use for this scanner. * `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite * `gemini-3-flash-preview` - Gemini 3 Flash (preview) * `gemini-3.6-flash` - Gemini 3.6 Flash */
-  model?: ScannerModelEnum;
+  model?: ScannerModelEnum | (string & {});
   /** When false, the reconciler removes the scanner's Temporal schedule. On-demand triggers still work. */
   enabled?: boolean;
   /** When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals. */
@@ -2501,8 +2476,7 @@ export type ReplayScannerPromptSuggestionStatusEnum =
   | "applied"
   | "dismissed"
   | "superseded"
-  | "no_change"
-  | (string & {});
+  | "no_change";
 export const ReplayScannerPromptSuggestionStatusEnum = /*@__PURE__*/ S.String;
 
 export interface PromptEvaluationResult {
@@ -2954,11 +2928,7 @@ export const VisionScannersSuggestTagsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VisionScannersSuggestTagsCreateRequest>;
 
 /** * `observed` - observed * `product` - product * `prompt` - prompt */
-export type TagSuggestionSourceEnum =
-  | "observed"
-  | "product"
-  | "prompt"
-  | (string & {});
+export type TagSuggestionSourceEnum = "observed" | "product" | "prompt";
 export const TagSuggestionSourceEnum = /*@__PURE__*/ S.String;
 
 /** One grounded tag suggestion. */

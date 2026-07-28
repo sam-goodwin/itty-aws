@@ -56,11 +56,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -318,7 +317,7 @@ export const DataCatalogMetricDefinitionMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DataCatalogMetricDefinitionMap>;
 
 /** * `user` - user * `ai_generated` - ai_generated */
-export type CreatedSourceEnum = "user" | "ai_generated" | (string & {});
+export type CreatedSourceEnum = "user" | "ai_generated";
 export const CreatedSourceEnum = /*@__PURE__*/ S.String;
 
 export interface DataCatalogMetric {
@@ -418,7 +417,7 @@ export interface DataCatalogMetricsCreateRequest {
   /** Create the metric from this insight's query (snapshotted server-side). Set to null to unlink. Mutually exclusive with definition. */
   source_insight_short_id?: string | null;
   /** Whether a human ('user') or an agent ('ai_generated') authored this metric. * `user` - user * `ai_generated` - ai_generated */
-  created_source?: CreatedSourceEnum;
+  created_source?: CreatedSourceEnum | (string & {});
   /** Model that generated the metric, if AI-authored. */
   ai_model?: string;
   /** AI author's confidence in the proposal, 0-1. */
@@ -551,7 +550,7 @@ export interface DataCatalogMetricsPartialUpdateRequest {
   /** Create the metric from this insight's query (snapshotted server-side). Set to null to unlink. Mutually exclusive with definition. */
   source_insight_short_id?: string | null;
   /** Whether a human ('user') or an agent ('ai_generated') authored this metric. * `user` - user * `ai_generated` - ai_generated */
-  created_source?: CreatedSourceEnum;
+  created_source?: CreatedSourceEnum | (string & {});
   /** Model that generated the metric, if AI-authored. */
   ai_model?: string;
   /** AI author's confidence in the proposal, 0-1. */
@@ -633,8 +632,7 @@ export type DataCatalogMetricsRunCreateRequestRefresh =
   | "lazy_async"
   | "force_blocking"
   | "force_async"
-  | "force_cache"
-  | (string & {});
+  | "force_cache";
 export const DataCatalogMetricsRunCreateRequestRefresh = /*@__PURE__*/ S.String;
 
 /** * `second` - second * `minute` - minute * `hour` - hour * `day` - day * `week` - week * `month` - month * `quarter` - quarter * `year` - year */
@@ -646,8 +644,7 @@ export type DataCatalogMetricRunRequestIntervalEnum =
   | "week"
   | "month"
   | "quarter"
-  | "year"
-  | (string & {});
+  | "year";
 export const DataCatalogMetricRunRequestIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface DataCatalogMetricsRunCreateRequest {
@@ -655,13 +652,13 @@ export interface DataCatalogMetricsRunCreateRequest {
   project_id: string;
   name: string;
   /** Cache/execution behavior, same semantics as /query/. Omit to serve a fresh cache hit and calculate blocking when stale. * `blocking` - blocking * `async` - async * `lazy_async` - lazy_async * `force_blocking` - force_blocking * `force_async` - force_async * `force_cache` - force_cache */
-  refresh?: DataCatalogMetricsRunCreateRequestRefresh;
+  refresh?: DataCatalogMetricsRunCreateRequestRefresh | (string & {});
   /** Override the start of the query window (e.g. '-7d'). Rejected for HogQLQuery metrics, whose window is fixed in SQL. */
   date_from?: string;
   /** Override the end of the query window. */
   date_to?: string;
   /** Override the bucket interval. Rejected for HogQLQuery metrics. * `second` - second * `minute` - minute * `hour` - hour * `day` - day * `week` - week * `month` - month * `quarter` - quarter * `year` - year */
-  interval?: DataCatalogMetricRunRequestIntervalEnum;
+  interval?: DataCatalogMetricRunRequestIntervalEnum | (string & {});
   /** Client-supplied id to correlate or cancel the run. */
   query_id?: string;
 }
@@ -749,7 +746,7 @@ export interface DataCatalogMetricsUpdateRequest {
   /** Create the metric from this insight's query (snapshotted server-side). Set to null to unlink. Mutually exclusive with definition. */
   source_insight_short_id?: string | null;
   /** Whether a human ('user') or an agent ('ai_generated') authored this metric. * `user` - user * `ai_generated` - ai_generated */
-  created_source?: CreatedSourceEnum;
+  created_source?: CreatedSourceEnum | (string & {});
   /** Model that generated the metric, if AI-authored. */
   ai_model?: string;
   /** AI author's confidence in the proposal, 0-1. */

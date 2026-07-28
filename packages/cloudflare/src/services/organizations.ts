@@ -293,15 +293,13 @@ export const GetBillingUsageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBillingUsageRequest",
 }) as any as S.Schema<GetBillingUsageRequest>;
 
-export type BillingUsageGetResultItemChargeCategory = "Usage" | (string & {});
+export type BillingUsageGetResultItemChargeCategory = "Usage";
 export const BillingUsageGetResultItemChargeCategory = /*@__PURE__*/ S.String;
 
-export type BillingUsageGetResultItemChargeFrequency =
-  | "Usage-Based"
-  | (string & {});
+export type BillingUsageGetResultItemChargeFrequency = "Usage-Based";
 export const BillingUsageGetResultItemChargeFrequency = /*@__PURE__*/ S.String;
 
-export type BillingUsageGetResultItemChargeClass = "Correction" | (string & {});
+export type BillingUsageGetResultItemChargeClass = "Correction";
 export const BillingUsageGetResultItemChargeClass = /*@__PURE__*/ S.String;
 
 export interface BillingUsageGetResultItem {
@@ -587,86 +585,204 @@ export const LogsAuditListRequestIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestIdNotList>;
 
-export type LogsAuditListRequestActionResultNot =
-  | "success"
-  | "failure"
-  | (string & {});
-export const LogsAuditListRequestActionResultNot = /*@__PURE__*/ S.String;
+export interface LogsAuditListRequestId {
+  /** Filters out audit logs by their IDs. */
+  not?: LogsAuditListRequestIdNotList;
+}
+export const LogsAuditListRequestId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestId",
+}) as any as S.Schema<LogsAuditListRequestId>;
 
-export type LogsAuditListRequestActionResultNotList =
-  ReadonlyArray<LogsAuditListRequestActionResultNot>;
+export type LogsAuditListRequestActionResultNotItem = "success" | "failure";
+export const LogsAuditListRequestActionResultNotItem = /*@__PURE__*/ S.String;
+
+export type LogsAuditListRequestActionResultNotList = ReadonlyArray<
+  LogsAuditListRequestActionResultNotItem | (string & {})
+>;
 export const LogsAuditListRequestActionResultNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActionResultNot,
+  LogsAuditListRequestActionResultNotItem,
 ) as any as S.Schema<LogsAuditListRequestActionResultNotList>;
 
-export type LogsAuditListRequestActionTypeNot =
+export interface LogsAuditListRequestActionResult {
+  /** Filters out audit logs by whether the action was successful or not. */
+  not?: LogsAuditListRequestActionResultNotList;
+}
+export const LogsAuditListRequestActionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActionResultNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActionResult",
+}) as any as S.Schema<LogsAuditListRequestActionResult>;
+
+export type LogsAuditListRequestActionTypeNotItem =
   | "create"
   | "delete"
   | "view"
-  | "update"
-  | (string & {});
-export const LogsAuditListRequestActionTypeNot = /*@__PURE__*/ S.String;
+  | "update";
+export const LogsAuditListRequestActionTypeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActionTypeNotList =
-  ReadonlyArray<LogsAuditListRequestActionTypeNot>;
+export type LogsAuditListRequestActionTypeNotList = ReadonlyArray<
+  LogsAuditListRequestActionTypeNotItem | (string & {})
+>;
 export const LogsAuditListRequestActionTypeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActionTypeNot,
+  LogsAuditListRequestActionTypeNotItem,
 ) as any as S.Schema<LogsAuditListRequestActionTypeNotList>;
 
-export type LogsAuditListRequestActorContextNot =
+export interface LogsAuditListRequestActionType {
+  /** Filters out audit logs by the action type. */
+  not?: LogsAuditListRequestActionTypeNotList;
+}
+export const LogsAuditListRequestActionType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActionTypeNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActionType",
+}) as any as S.Schema<LogsAuditListRequestActionType>;
+
+export type LogsAuditListRequestActorContextNotItem =
   | "api_key"
   | "api_token"
   | "dash"
   | "oauth"
-  | "origin_ca_key"
-  | (string & {});
-export const LogsAuditListRequestActorContextNot = /*@__PURE__*/ S.String;
+  | "origin_ca_key";
+export const LogsAuditListRequestActorContextNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActorContextNotList =
-  ReadonlyArray<LogsAuditListRequestActorContextNot>;
+export type LogsAuditListRequestActorContextNotList = ReadonlyArray<
+  LogsAuditListRequestActorContextNotItem | (string & {})
+>;
 export const LogsAuditListRequestActorContextNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActorContextNot,
+  LogsAuditListRequestActorContextNotItem,
 ) as any as S.Schema<LogsAuditListRequestActorContextNotList>;
+
+export interface LogsAuditListRequestActorContext {
+  /** Filters out audit logs by the actor context. */
+  not?: LogsAuditListRequestActorContextNotList;
+}
+export const LogsAuditListRequestActorContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorContextNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorContext",
+}) as any as S.Schema<LogsAuditListRequestActorContext>;
 
 export type LogsAuditListRequestActorEmailNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestActorEmailNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorEmailNotList>;
 
+export interface LogsAuditListRequestActorEmail {
+  /** Filters out audit logs by the actor's email address. */
+  not?: LogsAuditListRequestActorEmailNotList;
+}
+export const LogsAuditListRequestActorEmail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorEmailNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorEmail",
+}) as any as S.Schema<LogsAuditListRequestActorEmail>;
+
 export type LogsAuditListRequestActorIdNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestActorIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorIdNotList>;
+
+export interface LogsAuditListRequestActorId {
+  /** Filters out audit logs by the actor's user ID. */
+  not?: LogsAuditListRequestActorIdNotList;
+}
+export const LogsAuditListRequestActorId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorId",
+}) as any as S.Schema<LogsAuditListRequestActorId>;
 
 export type LogsAuditListRequestActorIpAddressNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestActorIpAddressNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorIpAddressNotList>;
 
+export interface LogsAuditListRequestActorIpAddress {
+  /** Filters out audit logs IP address where the action was initiated. */
+  not?: LogsAuditListRequestActorIpAddressNotList;
+}
+export const LogsAuditListRequestActorIpAddress = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorIpAddressNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorIpAddress",
+}) as any as S.Schema<LogsAuditListRequestActorIpAddress>;
+
 export type LogsAuditListRequestActorTokenIdNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestActorTokenIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorTokenIdNotList>;
+
+export interface LogsAuditListRequestActorTokenId {
+  /** Filters out audit logs by the API token ID when the actor context is an api_token or oauth. */
+  not?: LogsAuditListRequestActorTokenIdNotList;
+}
+export const LogsAuditListRequestActorTokenId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorTokenIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorTokenId",
+}) as any as S.Schema<LogsAuditListRequestActorTokenId>;
 
 export type LogsAuditListRequestActorTokenNameNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestActorTokenNameNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorTokenNameNotList>;
 
-export type LogsAuditListRequestActorTypeNot =
+export interface LogsAuditListRequestActorTokenName {
+  /** Filters out audit logs by the API token name when the actor context is an api_token or oauth. */
+  not?: LogsAuditListRequestActorTokenNameNotList;
+}
+export const LogsAuditListRequestActorTokenName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorTokenNameNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorTokenName",
+}) as any as S.Schema<LogsAuditListRequestActorTokenName>;
+
+export type LogsAuditListRequestActorTypeNotItem =
   | "cloudflare_admin"
   | "system"
-  | "user"
-  | (string & {});
-export const LogsAuditListRequestActorTypeNot = /*@__PURE__*/ S.String;
+  | "user";
+export const LogsAuditListRequestActorTypeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActorTypeNotList =
-  ReadonlyArray<LogsAuditListRequestActorTypeNot>;
+export type LogsAuditListRequestActorTypeNotList = ReadonlyArray<
+  LogsAuditListRequestActorTypeNotItem | (string & {})
+>;
 export const LogsAuditListRequestActorTypeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActorTypeNot,
+  LogsAuditListRequestActorTypeNotItem,
 ) as any as S.Schema<LogsAuditListRequestActorTypeNotList>;
 
-export type LogsAuditListRequestDirection = "desc" | "asc" | (string & {});
+export interface LogsAuditListRequestActorType {
+  /** Filters out audit logs by the actor type. */
+  not?: LogsAuditListRequestActorTypeNotList;
+}
+export const LogsAuditListRequestActorType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestActorTypeNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestActorType",
+}) as any as S.Schema<LogsAuditListRequestActorType>;
+
+export type LogsAuditListRequestDirection = "desc" | "asc";
 export const LogsAuditListRequestDirection = /*@__PURE__*/ S.String;
 
 export type LogsAuditListRequestRawCfRayIdNotList = ReadonlyArray<string>;
@@ -674,46 +790,141 @@ export const LogsAuditListRequestRawCfRayIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawCfRayIdNotList>;
 
+export interface LogsAuditListRequestRawCfRayId {
+  /** Filters out audit logs by the response CF Ray ID. */
+  not?: LogsAuditListRequestRawCfRayIdNotList;
+}
+export const LogsAuditListRequestRawCfRayId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestRawCfRayIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestRawCfRayId",
+}) as any as S.Schema<LogsAuditListRequestRawCfRayId>;
+
 export type LogsAuditListRequestRawMethodNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestRawMethodNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawMethodNotList>;
+
+export interface LogsAuditListRequestRawMethod {
+  /** Filters out audit logs by the HTTP method for the API call. */
+  not?: LogsAuditListRequestRawMethodNotList;
+}
+export const LogsAuditListRequestRawMethod = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestRawMethodNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestRawMethod",
+}) as any as S.Schema<LogsAuditListRequestRawMethod>;
 
 export type LogsAuditListRequestRawStatusCodeNotList = ReadonlyArray<number>;
 export const LogsAuditListRequestRawStatusCodeNotList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<LogsAuditListRequestRawStatusCodeNotList>;
 
+export interface LogsAuditListRequestRawStatusCode {
+  /** Filters out audit logs by the response status code that was returned. */
+  not?: LogsAuditListRequestRawStatusCodeNotList;
+}
+export const LogsAuditListRequestRawStatusCode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestRawStatusCodeNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestRawStatusCode",
+}) as any as S.Schema<LogsAuditListRequestRawStatusCode>;
+
 export type LogsAuditListRequestRawUriNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestRawUriNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawUriNotList>;
+
+export interface LogsAuditListRequestRawUri {
+  /** Filters out audit logs by the request URI. */
+  not?: LogsAuditListRequestRawUriNotList;
+}
+export const LogsAuditListRequestRawUri = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestRawUriNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestRawUri",
+}) as any as S.Schema<LogsAuditListRequestRawUri>;
 
 export type LogsAuditListRequestResourceIdNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestResourceIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceIdNotList>;
 
+export interface LogsAuditListRequestResourceId {
+  /** Filters out audit logs by the resource ID. */
+  not?: LogsAuditListRequestResourceIdNotList;
+}
+export const LogsAuditListRequestResourceId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestResourceIdNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestResourceId",
+}) as any as S.Schema<LogsAuditListRequestResourceId>;
+
 export type LogsAuditListRequestResourceProductNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestResourceProductNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceProductNotList>;
 
-export type LogsAuditListRequestResourceScopeNot =
-  | "organizations"
-  | (string & {});
-export const LogsAuditListRequestResourceScopeNot = /*@__PURE__*/ S.String;
+export interface LogsAuditListRequestResourceProduct {
+  /** Filters out audit logs by the Cloudflare product associated with the changed resource. */
+  not?: LogsAuditListRequestResourceProductNotList;
+}
+export const LogsAuditListRequestResourceProduct = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestResourceProductNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestResourceProduct",
+}) as any as S.Schema<LogsAuditListRequestResourceProduct>;
 
-export type LogsAuditListRequestResourceScopeNotList =
-  ReadonlyArray<LogsAuditListRequestResourceScopeNot>;
+export type LogsAuditListRequestResourceScopeNotItem = "organizations";
+export const LogsAuditListRequestResourceScopeNotItem = /*@__PURE__*/ S.String;
+
+export type LogsAuditListRequestResourceScopeNotList = ReadonlyArray<
+  LogsAuditListRequestResourceScopeNotItem | (string & {})
+>;
 export const LogsAuditListRequestResourceScopeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestResourceScopeNot,
+  LogsAuditListRequestResourceScopeNotItem,
 ) as any as S.Schema<LogsAuditListRequestResourceScopeNotList>;
+
+export interface LogsAuditListRequestResourceScope {
+  /** Filters out audit logs by the resource scope, specifying whether the resource is associated with an organization. */
+  not?: LogsAuditListRequestResourceScopeNotList;
+}
+export const LogsAuditListRequestResourceScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestResourceScopeNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestResourceScope",
+}) as any as S.Schema<LogsAuditListRequestResourceScope>;
 
 export type LogsAuditListRequestResourceTypeNotList = ReadonlyArray<string>;
 export const LogsAuditListRequestResourceTypeNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceTypeNotList>;
+
+export interface LogsAuditListRequestResourceType {
+  /** Filters out audit logs based on the unique type of resource changed by the action. */
+  not?: LogsAuditListRequestResourceTypeNotList;
+}
+export const LogsAuditListRequestResourceType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    not: S.optional(LogsAuditListRequestResourceTypeNotList),
+  }),
+).annotate({
+  identifier: "LogsAuditListRequestResourceType",
+}) as any as S.Schema<LogsAuditListRequestResourceType>;
 
 export interface ListLogAuditsRequest {
   /** The unique id that identifies the organization. */
@@ -722,125 +933,140 @@ export interface ListLogAuditsRequest {
   before: string;
   /** Limits the returned results to logs newer than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339. */
   since: string;
-  /** Filters out audit logs by their IDs. */
-  idNot?: LogsAuditListRequestIdNotList;
-  /** Filters out audit logs by whether the action was successful or not. */
-  actionResultNot?: LogsAuditListRequestActionResultNotList;
-  /** Filters out audit logs by the action type. */
-  actionTypeNot?: LogsAuditListRequestActionTypeNotList;
-  /** Filters out audit logs by the actor context. */
-  actorContextNot?: LogsAuditListRequestActorContextNotList;
-  /** Filters out audit logs by the actor's email address. */
-  actorEmailNot?: LogsAuditListRequestActorEmailNotList;
-  /** Filters out audit logs by the actor's user ID. */
-  actorIdNot?: LogsAuditListRequestActorIdNotList;
-  /** Filters out audit logs IP address where the action was initiated. */
-  actorIpAddressNot?: LogsAuditListRequestActorIpAddressNotList;
-  /** Filters out audit logs by the API token ID when the actor context is an api_token or oauth. */
-  actorTokenIdNot?: LogsAuditListRequestActorTokenIdNotList;
-  /** Filters out audit logs by the API token name when the actor context is an api_token or oauth. */
-  actorTokenNameNot?: LogsAuditListRequestActorTokenNameNotList;
-  /** Filters out audit logs by the actor type. */
-  actorTypeNot?: LogsAuditListRequestActorTypeNotList;
+  id?: LogsAuditListRequestId;
+  actionResult?: LogsAuditListRequestActionResult;
+  actionType?: LogsAuditListRequestActionType;
+  actorContext?: LogsAuditListRequestActorContext;
+  actorEmail?: LogsAuditListRequestActorEmail;
+  actorId?: LogsAuditListRequestActorId;
+  actorIpAddress?: LogsAuditListRequestActorIpAddress;
+  actorTokenId?: LogsAuditListRequestActorTokenId;
+  actorTokenName?: LogsAuditListRequestActorTokenName;
+  actorType?: LogsAuditListRequestActorType;
   /** The cursor is an opaque token used to paginate through large sets of records. It indicates the position from which to continue when requesting the next set of records. A valid cursor value can be obtained from the cursor object in the result_info structure of a previous response. */
   cursor?: string;
   /** Sets sorting order. */
-  direction?: LogsAuditListRequestDirection;
+  direction?: LogsAuditListRequestDirection | (string & {});
   /** The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
-  /** Filters out audit logs by the response CF Ray ID. */
-  rawCfRayIdNot?: LogsAuditListRequestRawCfRayIdNotList;
-  /** Filters out audit logs by the HTTP method for the API call. */
-  rawMethodNot?: LogsAuditListRequestRawMethodNotList;
-  /** Filters out audit logs by the response status code that was returned. */
-  rawStatusCodeNot?: LogsAuditListRequestRawStatusCodeNotList;
-  /** Filters out audit logs by the request URI. */
-  rawUriNot?: LogsAuditListRequestRawUriNotList;
-  /** Filters out audit logs by the resource ID. */
-  resourceIdNot?: LogsAuditListRequestResourceIdNotList;
-  /** Filters out audit logs by the Cloudflare product associated with the changed resource. */
-  resourceProductNot?: LogsAuditListRequestResourceProductNotList;
-  /** Filters out audit logs by the resource scope, specifying whether the resource is associated with an organization. */
-  resourceScopeNot?: LogsAuditListRequestResourceScopeNotList;
-  /** Filters out audit logs based on the unique type of resource changed by the action. */
-  resourceTypeNot?: LogsAuditListRequestResourceTypeNotList;
+  rawCfRayId?: LogsAuditListRequestRawCfRayId;
+  rawMethod?: LogsAuditListRequestRawMethod;
+  rawStatusCode?: LogsAuditListRequestRawStatusCode;
+  rawUri?: LogsAuditListRequestRawUri;
+  resourceId?: LogsAuditListRequestResourceId;
+  resourceProduct?: LogsAuditListRequestResourceProduct;
+  resourceScope?: LogsAuditListRequestResourceScope;
+  resourceType?: LogsAuditListRequestResourceType;
 }
 export const ListLogAuditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     before: S.String.pipe(T.Query()),
     since: S.String.pipe(T.Query()),
-    idNot: S.optional(LogsAuditListRequestIdNotList.pipe(T.Query("id.not"))),
-    actionResultNot: S.optional(
-      LogsAuditListRequestActionResultNotList.pipe(
-        T.Query("action_result.not"),
+    id: S.optional(LogsAuditListRequestId.pipe(T.DeepQuery("id"))),
+    actionResult: S.optional(
+      LogsAuditListRequestActionResult.pipe(
+        T.Body("action_result"),
+        T.DeepQuery("action_result"),
       ),
     ),
-    actionTypeNot: S.optional(
-      LogsAuditListRequestActionTypeNotList.pipe(T.Query("action_type.not")),
-    ),
-    actorContextNot: S.optional(
-      LogsAuditListRequestActorContextNotList.pipe(
-        T.Query("actor_context.not"),
+    actionType: S.optional(
+      LogsAuditListRequestActionType.pipe(
+        T.Body("action_type"),
+        T.DeepQuery("action_type"),
       ),
     ),
-    actorEmailNot: S.optional(
-      LogsAuditListRequestActorEmailNotList.pipe(T.Query("actor_email.not")),
-    ),
-    actorIdNot: S.optional(
-      LogsAuditListRequestActorIdNotList.pipe(T.Query("actor_id.not")),
-    ),
-    actorIpAddressNot: S.optional(
-      LogsAuditListRequestActorIpAddressNotList.pipe(
-        T.Query("actor_ip_address.not"),
+    actorContext: S.optional(
+      LogsAuditListRequestActorContext.pipe(
+        T.Body("actor_context"),
+        T.DeepQuery("actor_context"),
       ),
     ),
-    actorTokenIdNot: S.optional(
-      LogsAuditListRequestActorTokenIdNotList.pipe(
-        T.Query("actor_token_id.not"),
+    actorEmail: S.optional(
+      LogsAuditListRequestActorEmail.pipe(
+        T.Body("actor_email"),
+        T.DeepQuery("actor_email"),
       ),
     ),
-    actorTokenNameNot: S.optional(
-      LogsAuditListRequestActorTokenNameNotList.pipe(
-        T.Query("actor_token_name.not"),
+    actorId: S.optional(
+      LogsAuditListRequestActorId.pipe(
+        T.Body("actor_id"),
+        T.DeepQuery("actor_id"),
       ),
     ),
-    actorTypeNot: S.optional(
-      LogsAuditListRequestActorTypeNotList.pipe(T.Query("actor_type.not")),
+    actorIpAddress: S.optional(
+      LogsAuditListRequestActorIpAddress.pipe(
+        T.Body("actor_ip_address"),
+        T.DeepQuery("actor_ip_address"),
+      ),
+    ),
+    actorTokenId: S.optional(
+      LogsAuditListRequestActorTokenId.pipe(
+        T.Body("actor_token_id"),
+        T.DeepQuery("actor_token_id"),
+      ),
+    ),
+    actorTokenName: S.optional(
+      LogsAuditListRequestActorTokenName.pipe(
+        T.Body("actor_token_name"),
+        T.DeepQuery("actor_token_name"),
+      ),
+    ),
+    actorType: S.optional(
+      LogsAuditListRequestActorType.pipe(
+        T.Body("actor_type"),
+        T.DeepQuery("actor_type"),
+      ),
     ),
     cursor: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(LogsAuditListRequestDirection.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-    rawCfRayIdNot: S.optional(
-      LogsAuditListRequestRawCfRayIdNotList.pipe(T.Query("raw_cf_ray_id.not")),
-    ),
-    rawMethodNot: S.optional(
-      LogsAuditListRequestRawMethodNotList.pipe(T.Query("raw_method.not")),
-    ),
-    rawStatusCodeNot: S.optional(
-      LogsAuditListRequestRawStatusCodeNotList.pipe(
-        T.Query("raw_status_code.not"),
+    rawCfRayId: S.optional(
+      LogsAuditListRequestRawCfRayId.pipe(
+        T.Body("raw_cf_ray_id"),
+        T.DeepQuery("raw_cf_ray_id"),
       ),
     ),
-    rawUriNot: S.optional(
-      LogsAuditListRequestRawUriNotList.pipe(T.Query("raw_uri.not")),
-    ),
-    resourceIdNot: S.optional(
-      LogsAuditListRequestResourceIdNotList.pipe(T.Query("resource_id.not")),
-    ),
-    resourceProductNot: S.optional(
-      LogsAuditListRequestResourceProductNotList.pipe(
-        T.Query("resource_product.not"),
+    rawMethod: S.optional(
+      LogsAuditListRequestRawMethod.pipe(
+        T.Body("raw_method"),
+        T.DeepQuery("raw_method"),
       ),
     ),
-    resourceScopeNot: S.optional(
-      LogsAuditListRequestResourceScopeNotList.pipe(
-        T.Query("resource_scope.not"),
+    rawStatusCode: S.optional(
+      LogsAuditListRequestRawStatusCode.pipe(
+        T.Body("raw_status_code"),
+        T.DeepQuery("raw_status_code"),
       ),
     ),
-    resourceTypeNot: S.optional(
-      LogsAuditListRequestResourceTypeNotList.pipe(
-        T.Query("resource_type.not"),
+    rawUri: S.optional(
+      LogsAuditListRequestRawUri.pipe(
+        T.Body("raw_uri"),
+        T.DeepQuery("raw_uri"),
+      ),
+    ),
+    resourceId: S.optional(
+      LogsAuditListRequestResourceId.pipe(
+        T.Body("resource_id"),
+        T.DeepQuery("resource_id"),
+      ),
+    ),
+    resourceProduct: S.optional(
+      LogsAuditListRequestResourceProduct.pipe(
+        T.Body("resource_product"),
+        T.DeepQuery("resource_product"),
+      ),
+    ),
+    resourceScope: S.optional(
+      LogsAuditListRequestResourceScope.pipe(
+        T.Body("resource_scope"),
+        T.DeepQuery("resource_scope"),
+      ),
+    ),
+    resourceType: S.optional(
+      LogsAuditListRequestResourceType.pipe(
+        T.Body("resource_type"),
+        T.DeepQuery("resource_type"),
       ),
     ),
   })
@@ -882,15 +1108,13 @@ export type LogsAuditListResultItemActorContext =
   | "api_token"
   | "dash"
   | "oauth"
-  | "origin_ca_key"
-  | (string & {});
+  | "origin_ca_key";
 export const LogsAuditListResultItemActorContext = /*@__PURE__*/ S.String;
 
 export type LogsAuditListResultItemActorType =
   | "cloudflare_admin"
   | "system"
-  | "user"
-  | (string & {});
+  | "user";
 export const LogsAuditListResultItemActorType = /*@__PURE__*/ S.String;
 
 export interface LogsAuditListResultItemActor {
@@ -1035,42 +1259,75 @@ export const ListRequestIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListRequestIdList>;
 
+export interface ListRequestContaining {
+  /** Filter the list of organizations to the ones that contain this particular */
+  account?: string;
+  /** Filter the list of organizations to the ones that contain this particular */
+  organization?: string;
+  /** Filter the list of organizations to the ones that contain this particular */
+  user?: string;
+}
+export const ListRequestContaining = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account: S.optional(S.String),
+    organization: S.optional(S.String),
+    user: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRequestContaining",
+}) as any as S.Schema<ListRequestContaining>;
+
+export interface ListRequestName {
+  /** (case-insensitive) Filter the list of organizations to where the name contains a particular */
+  contains?: string;
+  /** (case-insensitive) Filter the list of organizations to where the name ends with a particular */
+  endsWith?: string;
+  /** (case-insensitive) Filter the list of organizations to where the name starts with a */
+  startsWith?: string;
+}
+export const ListRequestName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contains: S.optional(S.String),
+    endsWith: S.optional(S.String),
+    startsWith: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRequestName",
+}) as any as S.Schema<ListRequestName>;
+
+export interface ListRequestParent {
+  /** Filter the list of organizations to the ones that are a sub-organization */
+  id?: string;
+}
+export const ListRequestParent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRequestParent",
+}) as any as S.Schema<ListRequestParent>;
+
 export interface ListOrganizationsRequest {
   /** Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements */
   id?: ListRequestIdList;
-  /** Filter the list of organizations to the ones that contain this particular */
-  containingAccount?: string;
-  /** Filter the list of organizations to the ones that contain this particular */
-  containingOrganization?: string;
-  /** Filter the list of organizations to the ones that contain this particular */
-  containingUser?: string;
-  /** (case-insensitive) Filter the list of organizations to where the name contains a particular */
-  nameContains?: string;
-  /** (case-insensitive) Filter the list of organizations to where the name ends with a particular */
-  nameEndsWith?: string;
-  /** (case-insensitive) Filter the list of organizations to where the name starts with a */
-  nameStartsWith?: string;
+  containing?: ListRequestContaining;
+  name?: ListRequestName;
   /** The amount of items to return. Defaults to 10. */
   pageSize?: number;
   /** An opaque token returned from the last list response that when */
   pageToken?: string;
-  /** Filter the list of organizations to the ones that are a sub-organization */
-  parentId?: string;
+  parent?: ListRequestParent;
 }
 export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(ListRequestIdList.pipe(T.Query())),
-    containingAccount: S.optional(S.String.pipe(T.Query("containing.account"))),
-    containingOrganization: S.optional(
-      S.String.pipe(T.Query("containing.organization")),
+    containing: S.optional(
+      ListRequestContaining.pipe(T.DeepQuery("containing")),
     ),
-    containingUser: S.optional(S.String.pipe(T.Query("containing.user"))),
-    nameContains: S.optional(S.String.pipe(T.Query("name.contains"))),
-    nameEndsWith: S.optional(S.String.pipe(T.Query("name.endsWith"))),
-    nameStartsWith: S.optional(S.String.pipe(T.Query("name.startsWith"))),
+    name: S.optional(ListRequestName.pipe(T.DeepQuery("name"))),
     pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
     pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-    parentId: S.optional(S.String.pipe(T.Query("parent.id"))),
+    parent: S.optional(ListRequestParent.pipe(T.DeepQuery("parent"))),
   })
     .pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1203,15 +1460,12 @@ export const MembersCreateRequestMemberUser = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembersCreateRequestMemberUser",
 }) as any as S.Schema<MembersCreateRequestMemberUser>;
 
-export type MembersCreateRequestMemberStatus =
-  | "active"
-  | "canceled"
-  | (string & {});
+export type MembersCreateRequestMemberStatus = "active" | "canceled";
 export const MembersCreateRequestMemberStatus = /*@__PURE__*/ S.String;
 
 export interface MembersCreateRequestMember {
   user: MembersCreateRequestMemberUser;
-  status?: MembersCreateRequestMemberStatus;
+  status?: MembersCreateRequestMemberStatus | (string & {});
 }
 export const MembersCreateRequestMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1251,7 +1505,7 @@ export const MembersCreateResponseMetaMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<MembersCreateResponseMetaMap>;
 
-export type MembersCreateResponseStatus = "active" | "canceled" | (string & {});
+export type MembersCreateResponseStatus = "active" | "canceled";
 export const MembersCreateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface MembersCreateResponseUser {
@@ -1353,7 +1607,7 @@ export const MembersGetResponseMetaMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<MembersGetResponseMetaMap>;
 
-export type MembersGetResponseStatus = "active" | "canceled" | (string & {});
+export type MembersGetResponseStatus = "active" | "canceled";
 export const MembersGetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface MembersGetResponseUser {
@@ -1398,14 +1652,27 @@ export const MembersGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembersGetResponse",
 }) as any as S.Schema<MembersGetResponse>;
 
-export type MembersListRequestStatus = "active" | "canceled" | (string & {});
+export type MembersListRequestStatus = "active" | "canceled";
 export const MembersListRequestStatus = /*@__PURE__*/ S.String;
 
-export type MembersListRequestStatusList =
-  ReadonlyArray<MembersListRequestStatus>;
+export type MembersListRequestStatusList = ReadonlyArray<
+  MembersListRequestStatus | (string & {})
+>;
 export const MembersListRequestStatusList = /*@__PURE__*/ S.Array(
   MembersListRequestStatus,
 ) as any as S.Schema<MembersListRequestStatusList>;
+
+export interface MembersListRequestUser {
+  /** Filter the list of memberships for a specific email that ends with a substring. */
+  email?: string;
+}
+export const MembersListRequestUser = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MembersListRequestUser",
+}) as any as S.Schema<MembersListRequestUser>;
 
 export interface MembersListRequest {
   organizationId: string;
@@ -1415,8 +1682,7 @@ export interface MembersListRequest {
   pageToken?: string;
   /** Filter the list of memberships by membership status. */
   status?: MembersListRequestStatusList;
-  /** Filter the list of memberships for a specific email that ends with a substring. */
-  userEmail?: string;
+  user?: MembersListRequestUser;
 }
 export const MembersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1424,7 +1690,7 @@ export const MembersListRequest = /*@__PURE__*/ S.suspend(() =>
     pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
     pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
     status: S.optional(MembersListRequestStatusList.pipe(T.Query())),
-    userEmail: S.optional(S.String.pipe(T.Query("user.email"))),
+    user: S.optional(MembersListRequestUser.pipe(T.DeepQuery("user"))),
   })
     .pipe(
       T.Http({
@@ -1446,7 +1712,7 @@ export const MembersListResultItemMetaMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<MembersListResultItemMetaMap>;
 
-export type MembersListResultItemStatus = "active" | "canceled" | (string & {});
+export type MembersListResultItemStatus = "active" | "canceled";
 export const MembersListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface MembersListResultItemUser {
@@ -1502,35 +1768,57 @@ export const MembersListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembersListResponse",
 }) as any as S.Schema<MembersListResponse>;
 
-export type OrganizationAccountsGetRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
+export interface OrganizationAccountsGetRequestAccountPubname {
+  /** (case-insensitive) Filter the list of accounts to where the account_pubname contains */
+  contains?: string;
+  /** (case-insensitive) Filter the list of accounts to where the account_pubname ends with */
+  endsWith?: string;
+  /** (case-insensitive) Filter the list of accounts to where the account_pubname starts with */
+  startsWith?: string;
+}
+export const OrganizationAccountsGetRequestAccountPubname =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      contains: S.optional(S.String),
+      endsWith: S.optional(S.String),
+      startsWith: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "OrganizationAccountsGetRequestAccountPubname",
+  }) as any as S.Schema<OrganizationAccountsGetRequestAccountPubname>;
+
+export type OrganizationAccountsGetRequestDirection = "asc" | "desc";
 export const OrganizationAccountsGetRequestDirection = /*@__PURE__*/ S.String;
 
-export type OrganizationAccountsGetRequestOrderBy =
-  | "account_name"
-  | (string & {});
+export interface OrganizationAccountsGetRequestName {
+  /** (case-insensitive) Filter the list of accounts to where the name contains a particular */
+  contains?: string;
+  /** (case-insensitive) Filter the list of accounts to where the name ends with a particular */
+  endsWith?: string;
+  /** (case-insensitive) Filter the list of accounts to where the name starts with a */
+  startsWith?: string;
+}
+export const OrganizationAccountsGetRequestName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contains: S.optional(S.String),
+    endsWith: S.optional(S.String),
+    startsWith: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OrganizationAccountsGetRequestName",
+}) as any as S.Schema<OrganizationAccountsGetRequestName>;
+
+export type OrganizationAccountsGetRequestOrderBy = "account_name";
 export const OrganizationAccountsGetRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface OrganizationAccountsGetRequest {
   organizationId: string;
-  /** (case-insensitive) Filter the list of accounts to where the account_pubname contains */
-  accountPubnameContains?: string;
-  /** (case-insensitive) Filter the list of accounts to where the account_pubname ends with */
-  accountPubnameEndsWith?: string;
-  /** (case-insensitive) Filter the list of accounts to where the account_pubname starts with */
-  accountPubnameStartsWith?: string;
+  accountPubname?: OrganizationAccountsGetRequestAccountPubname;
   /** Sort direction for the order_by field. Valid values: `asc`, `desc`. */
-  direction?: OrganizationAccountsGetRequestDirection;
-  /** (case-insensitive) Filter the list of accounts to where the name contains a particular */
-  nameContains?: string;
-  /** (case-insensitive) Filter the list of accounts to where the name ends with a particular */
-  nameEndsWith?: string;
-  /** (case-insensitive) Filter the list of accounts to where the name starts with a */
-  nameStartsWith?: string;
+  direction?: OrganizationAccountsGetRequestDirection | (string & {});
+  name?: OrganizationAccountsGetRequestName;
   /** Field to order results by. Currently supported values: `account_name`. */
-  orderBy?: OrganizationAccountsGetRequestOrderBy;
+  orderBy?: OrganizationAccountsGetRequestOrderBy | (string & {});
   /** The amount of items to return. Defaults to 10. */
   pageSize?: number;
   /** An opaque token returned from the last list response that when */
@@ -1539,21 +1827,18 @@ export interface OrganizationAccountsGetRequest {
 export const OrganizationAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
-    accountPubnameContains: S.optional(
-      S.String.pipe(T.Query("account_pubname.contains")),
-    ),
-    accountPubnameEndsWith: S.optional(
-      S.String.pipe(T.Query("account_pubname.endsWith")),
-    ),
-    accountPubnameStartsWith: S.optional(
-      S.String.pipe(T.Query("account_pubname.startsWith")),
+    accountPubname: S.optional(
+      OrganizationAccountsGetRequestAccountPubname.pipe(
+        T.Body("account_pubname"),
+        T.DeepQuery("account_pubname"),
+      ),
     ),
     direction: S.optional(
       OrganizationAccountsGetRequestDirection.pipe(T.Query()),
     ),
-    nameContains: S.optional(S.String.pipe(T.Query("name.contains"))),
-    nameEndsWith: S.optional(S.String.pipe(T.Query("name.endsWith"))),
-    nameStartsWith: S.optional(S.String.pipe(T.Query("name.startsWith"))),
+    name: S.optional(
+      OrganizationAccountsGetRequestName.pipe(T.DeepQuery("name")),
+    ),
     orderBy: S.optional(
       OrganizationAccountsGetRequestOrderBy.pipe(T.Query("order_by")),
     ),
@@ -1598,10 +1883,7 @@ export const OrganizationAccountsGetResultItemSettings =
     identifier: "OrganizationAccountsGetResultItemSettings",
   }) as any as S.Schema<OrganizationAccountsGetResultItemSettings>;
 
-export type OrganizationAccountsGetResultItemType =
-  | "standard"
-  | "enterprise"
-  | (string & {});
+export type OrganizationAccountsGetResultItemType = "standard" | "enterprise";
 export const OrganizationAccountsGetResultItemType = /*@__PURE__*/ S.String;
 
 export interface OrganizationAccountsGetResultItem {

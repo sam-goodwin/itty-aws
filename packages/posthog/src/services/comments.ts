@@ -71,11 +71,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -242,31 +241,23 @@ export const CommentsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentsDestroyResponse",
 }) as any as S.Schema<CommentsDestroyResponse>;
 
-export type CommentsListRequestCompleted =
-  | "any"
-  | "open"
-  | "completed"
-  | (string & {});
+export type CommentsListRequestCompleted = "any" | "open" | "completed";
 export const CommentsListRequestCompleted = /*@__PURE__*/ S.String;
 
-export type CommentsListRequestKind =
-  | "any"
-  | "comment"
-  | "task"
-  | (string & {});
+export type CommentsListRequestKind = "any" | "comment" | "task";
 export const CommentsListRequestKind = /*@__PURE__*/ S.String;
 
 export interface CommentsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** When kind=task, restrict to open (incomplete) or completed tasks. Ignored when kind is not 'task'. Defaults to 'any' (no filter). * `any` - any * `open` - open * `completed` - completed */
-  completed?: CommentsListRequestCompleted;
+  completed?: CommentsListRequestCompleted | (string & {});
   /** The pagination cursor value. */
   cursor?: string;
   /** Filter by the ID of the resource being commented on. */
   item_id?: string;
   /** Filter by comment kind. 'task' returns only items intentionally created as actionable. 'comment' excludes tasks. Defaults to 'any' (no filter). * `any` - any * `comment` - comment * `task` - task */
-  kind?: CommentsListRequestKind;
+  kind?: CommentsListRequestKind | (string & {});
   /** Filter by resource type (e.g. Dashboard, FeatureFlag, Insight, Replay). */
   scope?: string;
   /** Full-text search within comment content. */

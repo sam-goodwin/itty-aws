@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface ClearTasksRequest {
@@ -65,50 +65,30 @@ export interface ClearTasksRequest {
   tasklist: string;
 }
 export const ClearTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasklist: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "tasks/v1/lists/{tasklist}/clear",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ClearTasksRequest",
-}) as any as S.Schema<ClearTasksRequest>;
+S.Struct({
+  "tasklist": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"tasks/v1/lists/{tasklist}/clear","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "ClearTasksRequest" }) as any as S.Schema<ClearTasksRequest>;
 
 export interface ClearTasksResponse {}
 export const ClearTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ClearTasksResponse",
-}) as any as S.Schema<ClearTasksResponse>;
+S.Struct({}),
+).annotate({ identifier: "ClearTasksResponse" }) as any as S.Schema<ClearTasksResponse>;
 
 export interface DeleteTasklistsRequest {
   /** Task list identifier. */
   tasklist: string;
 }
 export const DeleteTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasklist: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "tasks/v1/users/@me/lists/{tasklist}",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteTasklistsRequest",
-}) as any as S.Schema<DeleteTasklistsRequest>;
+S.Struct({
+  "tasklist": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"tasks/v1/users/@me/lists/{tasklist}","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "DeleteTasklistsRequest" }) as any as S.Schema<DeleteTasklistsRequest>;
 
 export interface DeleteTasklistsResponse {}
 export const DeleteTasklistsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTasklistsResponse",
-}) as any as S.Schema<DeleteTasklistsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteTasklistsResponse" }) as any as S.Schema<DeleteTasklistsResponse>;
 
 export interface DeleteTasksRequest {
   /** Task list identifier. */
@@ -117,44 +97,26 @@ export interface DeleteTasksRequest {
   task: string;
 }
 export const DeleteTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasklist: S.String.pipe(T.Label()),
-    task: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "tasks/v1/lists/{tasklist}/tasks/{task}",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteTasksRequest",
-}) as any as S.Schema<DeleteTasksRequest>;
+S.Struct({
+  "tasklist": S.String.pipe(T.Label()),
+  "task": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"tasks/v1/lists/{tasklist}/tasks/{task}","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "DeleteTasksRequest" }) as any as S.Schema<DeleteTasksRequest>;
 
 export interface DeleteTasksResponse {}
 export const DeleteTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTasksResponse",
-}) as any as S.Schema<DeleteTasksResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteTasksResponse" }) as any as S.Schema<DeleteTasksResponse>;
 
 export interface GetTasklistsRequest {
   /** Task list identifier. */
   tasklist: string;
 }
 export const GetTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasklist: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "tasks/v1/users/@me/lists/{tasklist}",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetTasklistsRequest",
-}) as any as S.Schema<GetTasklistsRequest>;
+S.Struct({
+  "tasklist": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"tasks/v1/users/@me/lists/{tasklist}","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "GetTasklistsRequest" }) as any as S.Schema<GetTasklistsRequest>;
 
 export interface TaskList {
   /** Output only. Last modification time of the task list (as a RFC 3339 timestamp). */
@@ -171,14 +133,14 @@ export interface TaskList {
   id?: string;
 }
 export const TaskList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updated: S.optional(S.String),
-    etag: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    kind: S.optional(S.String),
-    title: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "updated": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "selfLink": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "title": S.optional(S.String),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "TaskList" }) as any as S.Schema<TaskList>;
 
 export interface GetTasksRequest {
@@ -188,26 +150,13 @@ export interface GetTasksRequest {
   task: string;
 }
 export const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasklist: S.String.pipe(T.Label()),
-    task: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "tasks/v1/lists/{tasklist}/tasks/{task}",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetTasksRequest",
-}) as any as S.Schema<GetTasksRequest>;
+S.Struct({
+  "tasklist": S.String.pipe(T.Label()),
+  "task": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"tasks/v1/lists/{tasklist}/tasks/{task}","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "GetTasksRequest" }) as any as S.Schema<GetTasksRequest>;
 
-export type AssignmentInfoSurfaceTypeEnum =
-  | "CONTEXT_TYPE_UNSPECIFIED"
-  | "GMAIL"
-  | "DOCUMENT"
-  | "SPACE"
-  | (string & {});
+export type AssignmentInfoSurfaceTypeEnum = "CONTEXT_TYPE_UNSPECIFIED" | "GMAIL" | "DOCUMENT" | "SPACE";
 export const AssignmentInfoSurfaceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the Drive resource where a task was assigned from (the document, sheet, etc.). */
@@ -218,13 +167,11 @@ export interface DriveResourceInfo {
   resourceKey?: string;
 }
 export const DriveResourceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    driveFileId: S.optional(S.String),
-    resourceKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DriveResourceInfo",
-}) as any as S.Schema<DriveResourceInfo>;
+S.Struct({
+  "driveFileId": S.optional(S.String),
+  "resourceKey": S.optional(S.String),
+}),
+).annotate({ identifier: "DriveResourceInfo" }) as any as S.Schema<DriveResourceInfo>;
 
 /** Information about the Chat Space where a task was assigned from. */
 export interface SpaceInfo {
@@ -232,9 +179,9 @@ export interface SpaceInfo {
   space?: string;
 }
 export const SpaceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    space: S.optional(S.String),
-  }),
+S.Struct({
+  "space": S.optional(S.String),
+}),
 ).annotate({ identifier: "SpaceInfo" }) as any as S.Schema<SpaceInfo>;
 
 /** Information about the source of the task assignment (Document, Chat Space). */
@@ -249,12 +196,12 @@ export interface AssignmentInfo {
   spaceInfo?: SpaceInfo;
 }
 export const AssignmentInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    linkToTask: S.optional(S.String),
-    surfaceType: S.optional(AssignmentInfoSurfaceTypeEnum),
-    driveResourceInfo: S.optional(DriveResourceInfo),
-    spaceInfo: S.optional(SpaceInfo),
-  }),
+S.Struct({
+  "linkToTask": S.optional(S.String),
+  "surfaceType": S.optional(AssignmentInfoSurfaceTypeEnum),
+  "driveResourceInfo": S.optional(DriveResourceInfo),
+  "spaceInfo": S.optional(SpaceInfo),
+}),
 ).annotate({ identifier: "AssignmentInfo" }) as any as S.Schema<AssignmentInfo>;
 
 export interface TaskLinksItem {
@@ -266,17 +213,15 @@ export interface TaskLinksItem {
   description?: string;
 }
 export const TaskLinksItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    link: S.optional(S.String),
-    type: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
+S.Struct({
+  "link": S.optional(S.String),
+  "type": S.optional(S.String),
+  "description": S.optional(S.String),
+}),
 ).annotate({ identifier: "TaskLinksItem" }) as any as S.Schema<TaskLinksItem>;
 
 export type TaskLinksItemList = ReadonlyArray<TaskLinksItem>;
-export const TaskLinksItemList = /*@__PURE__*/ S.Array(
-  TaskLinksItem,
-) as any as S.Schema<TaskLinksItemList>;
+export const TaskLinksItemList = /*@__PURE__*/ S.Array(TaskLinksItem) as any as S.Schema<TaskLinksItemList>;
 
 export interface Task {
   /** Completion date of the task (as a RFC 3339 timestamp). This field is omitted if the task has not been completed. */
@@ -315,25 +260,25 @@ export interface Task {
   links?: TaskLinksItemList;
 }
 export const Task = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completed: S.optional(S.String),
-    kind: S.optional(S.String),
-    title: S.optional(S.String),
-    etag: S.optional(S.String),
-    position: S.optional(S.String),
-    notes: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-    assignmentInfo: S.optional(AssignmentInfo),
-    selfLink: S.optional(S.String),
-    webViewLink: S.optional(S.String),
-    status: S.optional(S.String),
-    parent: S.optional(S.String),
-    updated: S.optional(S.String),
-    id: S.optional(S.String),
-    hidden: S.optional(S.Boolean),
-    due: S.optional(S.String),
-    links: S.optional(TaskLinksItemList),
-  }),
+S.Struct({
+  "completed": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "title": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "position": S.optional(S.String),
+  "notes": S.optional(S.String),
+  "deleted": S.optional(S.Boolean),
+  "assignmentInfo": S.optional(AssignmentInfo),
+  "selfLink": S.optional(S.String),
+  "webViewLink": S.optional(S.String),
+  "status": S.optional(S.String),
+  "parent": S.optional(S.String),
+  "updated": S.optional(S.String),
+  "id": S.optional(S.String),
+  "hidden": S.optional(S.Boolean),
+  "due": S.optional(S.String),
+  "links": S.optional(TaskLinksItemList),
+}),
 ).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
 
 export interface InsertTasklistsRequest {
@@ -341,18 +286,10 @@ export interface InsertTasklistsRequest {
   body?: TaskList;
 }
 export const InsertTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(TaskList.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "tasks/v1/users/@me/lists",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertTasklistsRequest",
-}) as any as S.Schema<InsertTasklistsRequest>;
+S.Struct({
+  "body": S.optional(TaskList.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"tasks/v1/users/@me/lists","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "InsertTasklistsRequest" }) as any as S.Schema<InsertTasklistsRequest>;
 
 export interface InsertTasksRequest {
   /** Task list identifier. */
@@ -365,21 +302,13 @@ export interface InsertTasksRequest {
   body?: Task;
 }
 export const InsertTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasklist: S.String.pipe(T.Label()),
-    previous: S.optional(S.String.pipe(T.Query())),
-    parent: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Task.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "tasks/v1/lists/{tasklist}/tasks",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertTasksRequest",
-}) as any as S.Schema<InsertTasksRequest>;
+S.Struct({
+  "tasklist": S.String.pipe(T.Label()),
+  "previous": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Task.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"tasks/v1/lists/{tasklist}/tasks","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "InsertTasksRequest" }) as any as S.Schema<InsertTasksRequest>;
 
 export interface ListTasklistsRequest {
   /** Maximum number of task lists returned on one page. Optional. The default is 1000 (max allowed: 1000). */
@@ -388,24 +317,14 @@ export interface ListTasklistsRequest {
   pageToken?: string;
 }
 export const ListTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "tasks/v1/users/@me/lists",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListTasklistsRequest",
-}) as any as S.Schema<ListTasklistsRequest>;
+S.Struct({
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"tasks/v1/users/@me/lists","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "ListTasklistsRequest" }) as any as S.Schema<ListTasklistsRequest>;
 
 export type TaskListList = ReadonlyArray<TaskList>;
-export const TaskListList = /*@__PURE__*/ S.Array(
-  TaskList,
-) as any as S.Schema<TaskListList>;
+export const TaskListList = /*@__PURE__*/ S.Array(TaskList) as any as S.Schema<TaskListList>;
 
 export interface TaskLists {
   /** Type of the resource. This is always "tasks#taskLists". */
@@ -418,12 +337,12 @@ export interface TaskLists {
   items: TaskListList;
 }
 export const TaskLists = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    items: TaskListList,
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "items": TaskListList,
+}),
 ).annotate({ identifier: "TaskLists" }) as any as S.Schema<TaskLists>;
 
 export interface ListTasksRequest {
@@ -453,34 +372,24 @@ export interface ListTasksRequest {
   showDeleted?: boolean;
 }
 export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    showCompleted: S.optional(S.Boolean.pipe(T.Query())),
-    showHidden: S.optional(S.Boolean.pipe(T.Query())),
-    completedMax: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    updatedMin: S.optional(S.String.pipe(T.Query())),
-    tasklist: S.String.pipe(T.Label()),
-    dueMin: S.optional(S.String.pipe(T.Query())),
-    dueMax: S.optional(S.String.pipe(T.Query())),
-    showAssigned: S.optional(S.Boolean.pipe(T.Query())),
-    completedMin: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "tasks/v1/lists/{tasklist}/tasks",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListTasksRequest",
-}) as any as S.Schema<ListTasksRequest>;
+S.Struct({
+  "showCompleted": S.optional(S.Boolean.pipe(T.Query())),
+  "showHidden": S.optional(S.Boolean.pipe(T.Query())),
+  "completedMax": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "updatedMin": S.optional(S.String.pipe(T.Query())),
+  "tasklist": S.String.pipe(T.Label()),
+  "dueMin": S.optional(S.String.pipe(T.Query())),
+  "dueMax": S.optional(S.String.pipe(T.Query())),
+  "showAssigned": S.optional(S.Boolean.pipe(T.Query())),
+  "completedMin": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"tasks/v1/lists/{tasklist}/tasks","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "ListTasksRequest" }) as any as S.Schema<ListTasksRequest>;
 
 export type TaskList_ = ReadonlyArray<Task>;
-export const TaskList_ = /*@__PURE__*/ S.Array(
-  Task,
-) as any as S.Schema<TaskList_>;
+export const TaskList_ = /*@__PURE__*/ S.Array(Task) as any as S.Schema<TaskList_>;
 
 export interface Tasks {
   /** ETag of the resource. */
@@ -493,12 +402,12 @@ export interface Tasks {
   kind?: string;
 }
 export const Tasks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    items: TaskList_,
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "items": TaskList_,
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Tasks" }) as any as S.Schema<Tasks>;
 
 export interface MoveTasksRequest {
@@ -514,22 +423,14 @@ export interface MoveTasksRequest {
   task: string;
 }
 export const MoveTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    previous: S.optional(S.String.pipe(T.Query())),
-    parent: S.optional(S.String.pipe(T.Query())),
-    destinationTasklist: S.optional(S.String.pipe(T.Query())),
-    tasklist: S.String.pipe(T.Label()),
-    task: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "tasks/v1/lists/{tasklist}/tasks/{task}/move",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "MoveTasksRequest",
-}) as any as S.Schema<MoveTasksRequest>;
+S.Struct({
+  "previous": S.optional(S.String.pipe(T.Query())),
+  "parent": S.optional(S.String.pipe(T.Query())),
+  "destinationTasklist": S.optional(S.String.pipe(T.Query())),
+  "tasklist": S.String.pipe(T.Label()),
+  "task": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"tasks/v1/lists/{tasklist}/tasks/{task}/move","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "MoveTasksRequest" }) as any as S.Schema<MoveTasksRequest>;
 
 export interface PatchTasklistsRequest {
   /** Task list identifier. */
@@ -538,19 +439,11 @@ export interface PatchTasklistsRequest {
   body?: TaskList;
 }
 export const PatchTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasklist: S.String.pipe(T.Label()),
-    body: S.optional(TaskList.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "tasks/v1/users/@me/lists/{tasklist}",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchTasklistsRequest",
-}) as any as S.Schema<PatchTasklistsRequest>;
+S.Struct({
+  "tasklist": S.String.pipe(T.Label()),
+  "body": S.optional(TaskList.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"tasks/v1/users/@me/lists/{tasklist}","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "PatchTasklistsRequest" }) as any as S.Schema<PatchTasklistsRequest>;
 
 export interface PatchTasksRequest {
   /** Task list identifier. */
@@ -561,20 +454,12 @@ export interface PatchTasksRequest {
   body?: Task;
 }
 export const PatchTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasklist: S.String.pipe(T.Label()),
-    task: S.String.pipe(T.Label()),
-    body: S.optional(Task.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "tasks/v1/lists/{tasklist}/tasks/{task}",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchTasksRequest",
-}) as any as S.Schema<PatchTasksRequest>;
+S.Struct({
+  "tasklist": S.String.pipe(T.Label()),
+  "task": S.String.pipe(T.Label()),
+  "body": S.optional(Task.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"tasks/v1/lists/{tasklist}/tasks/{task}","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "PatchTasksRequest" }) as any as S.Schema<PatchTasksRequest>;
 
 export interface UpdateTasklistsRequest {
   /** Task list identifier. */
@@ -583,19 +468,11 @@ export interface UpdateTasklistsRequest {
   body?: TaskList;
 }
 export const UpdateTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasklist: S.String.pipe(T.Label()),
-    body: S.optional(TaskList.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "tasks/v1/users/@me/lists/{tasklist}",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateTasklistsRequest",
-}) as any as S.Schema<UpdateTasklistsRequest>;
+S.Struct({
+  "tasklist": S.String.pipe(T.Label()),
+  "body": S.optional(TaskList.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"tasks/v1/users/@me/lists/{tasklist}","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "UpdateTasklistsRequest" }) as any as S.Schema<UpdateTasklistsRequest>;
 
 export interface UpdateTasksRequest {
   /** Task list identifier. */
@@ -606,27 +483,14 @@ export interface UpdateTasksRequest {
   body?: Task;
 }
 export const UpdateTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tasklist: S.String.pipe(T.Label()),
-    task: S.String.pipe(T.Label()),
-    body: S.optional(Task.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "tasks/v1/lists/{tasklist}/tasks/{task}",
-      baseUrl: "https://tasks.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateTasksRequest",
-}) as any as S.Schema<UpdateTasksRequest>;
+S.Struct({
+  "tasklist": S.String.pipe(T.Label()),
+  "task": S.String.pipe(T.Label()),
+  "body": S.optional(Task.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"tasks/v1/lists/{tasklist}/tasks/{task}","baseUrl":"https://tasks.googleapis.com/"})),
+).annotate({ identifier: "UpdateTasksRequest" }) as any as S.Schema<UpdateTasksRequest>;
 
-export type ClearTasksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ClearTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Clears all completed tasks from the specified task list. The affected tasks will be marked as 'hidden' and no longer be returned by default when retrieving all tasks for a task list. */
 export const clearTasks: API.OperationMethod<
   ClearTasksRequest,
@@ -641,12 +505,7 @@ export const clearTasks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteTasklistsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteTasklistsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the authenticated user's specified task list. If the list contains assigned tasks, both the assigned tasks and the original tasks in the assignment surface (Docs, Chat Spaces) are deleted. */
 export const deleteTasklists: API.OperationMethod<
   DeleteTasklistsRequest,
@@ -661,12 +520,7 @@ export const deleteTasklists: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteTasksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the specified task from the task list. If the task is assigned, both the assigned task and the original task (in Docs, Chat Spaces) are deleted. To delete the assigned task only, navigate to the assignment surface and unassign the task from there. */
 export const deleteTasks: API.OperationMethod<
   DeleteTasksRequest,
@@ -711,12 +565,7 @@ export const getTasks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertTasklistsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertTasklistsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new task list and adds it to the authenticated user's task lists. A user can have up to 2000 lists at a time. */
 export const insertTasklists: API.OperationMethod<
   InsertTasklistsRequest,
@@ -731,12 +580,7 @@ export const insertTasklists: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertTasksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new task on the specified task list. Tasks assigned from Docs or Chat Spaces cannot be inserted from Tasks Public API; they can only be created by assigning them from Docs or Chat Spaces. A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time. */
 export const insertTasks: API.OperationMethod<
   InsertTasksRequest,
@@ -764,11 +608,7 @@ export const listTasklists: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListTasksError = NotFound | Forbidden | GcpOpError;
@@ -784,19 +624,10 @@ export const listTasks: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
-export type MoveTasksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MoveTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Moves the specified task to another position in the destination task list. If the destination list is not specified, the task is moved within its current list. This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks. A user can have up to 2,000 subtasks per task. */
 export const moveTasks: API.OperationMethod<
   MoveTasksRequest,
@@ -811,12 +642,7 @@ export const moveTasks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchTasklistsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchTasklistsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the authenticated user's specified task list. This method supports patch semantics. */
 export const patchTasklists: API.OperationMethod<
   PatchTasklistsRequest,
@@ -831,12 +657,7 @@ export const patchTasklists: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchTasksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the specified task. This method supports patch semantics. */
 export const patchTasks: API.OperationMethod<
   PatchTasksRequest,
@@ -851,12 +672,7 @@ export const patchTasks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateTasklistsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateTasklistsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the authenticated user's specified task list. */
 export const updateTasklists: API.OperationMethod<
   UpdateTasklistsRequest,
@@ -871,12 +687,7 @@ export const updateTasklists: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateTasksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the specified task. */
 export const updateTasks: API.OperationMethod<
   UpdateTasksRequest,
@@ -890,3 +701,4 @@ export const updateTasks: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

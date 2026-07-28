@@ -1706,8 +1706,7 @@ export type ReadersArnList = string[];
 export const ReadersArnList = /*@__PURE__*/ S.Array(S.String);
 export type GlobalClusterMemberSynchronizationStatus =
   | "connected"
-  | "pending-resync"
-  | (string & {});
+  | "pending-resync";
 export const GlobalClusterMemberSynchronizationStatus = /*@__PURE__*/ S.String;
 
 export interface GlobalClusterMember {
@@ -1732,11 +1731,7 @@ export const GlobalClusterMemberList = /*@__PURE__*/ S.Array(
     identifier: "GlobalClusterMember",
   }),
 );
-export type FailoverStatus =
-  | "pending"
-  | "failing-over"
-  | "cancelling"
-  | (string & {});
+export type FailoverStatus = "pending" | "failing-over" | "cancelling";
 export const FailoverStatus = /*@__PURE__*/ S.String;
 
 export interface FailoverState {
@@ -2130,7 +2125,7 @@ export const DescribeDBClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDBClusterParametersMessage",
 }) as any as S.Schema<DescribeDBClusterParametersMessage>;
-export type ApplyMethod = "immediate" | "pending-reboot" | (string & {});
+export type ApplyMethod = "immediate" | "pending-reboot";
 export const ApplyMethod = /*@__PURE__*/ S.String;
 
 export interface Parameter {
@@ -2647,13 +2642,12 @@ export type SourceType =
   | "db-security-group"
   | "db-snapshot"
   | "db-cluster"
-  | "db-cluster-snapshot"
-  | (string & {});
+  | "db-cluster-snapshot";
 export const SourceType = /*@__PURE__*/ S.String;
 
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
-  SourceType?: SourceType;
+  SourceType?: SourceType | (string & {});
   StartTime?: Date;
   EndTime?: Date;
   Duration?: number;

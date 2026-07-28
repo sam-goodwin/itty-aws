@@ -72,8 +72,7 @@ export type ExportFormatEnum =
   | "video/webm"
   | "video/mp4"
   | "image/gif"
-  | "application/json"
-  | (string & {});
+  | "application/json";
 export const ExportFormatEnum = /*@__PURE__*/ S.String;
 
 export interface ExportsCreateRequest {
@@ -81,7 +80,7 @@ export interface ExportsCreateRequest {
   project_id: string;
   dashboard?: number | null;
   insight?: number | null;
-  export_format?: ExportFormatEnum;
+  export_format?: ExportFormatEnum | (string & {});
   export_context?: unknown;
 }
 export const ExportsCreateRequest = /*@__PURE__*/ S.suspend(() =>

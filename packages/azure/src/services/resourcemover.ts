@@ -21,10 +21,7 @@ export const MoveCollectionsBulkRemoveRequestMoveResourcesList =
   ) as any as S.Schema<MoveCollectionsBulkRemoveRequestMoveResourcesList>;
 
 /** Defines the move resource input type. */
-export type MoveResourceInputType =
-  | "MoveResourceId"
-  | "MoveResourceSourceId"
-  | (string & {});
+export type MoveResourceInputType = "MoveResourceId" | "MoveResourceSourceId";
 export const MoveResourceInputType = /*@__PURE__*/ S.String;
 
 export interface MoveCollectionsBulkRemoveRequest {
@@ -36,7 +33,7 @@ export interface MoveCollectionsBulkRemoveRequest {
   validateOnly?: boolean;
   /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
   moveResources?: MoveCollectionsBulkRemoveRequestMoveResourcesList;
-  moveResourceInputType?: MoveResourceInputType;
+  moveResourceInputType?: MoveResourceInputType | (string & {});
 }
 export const MoveCollectionsBulkRemoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -206,7 +203,7 @@ export interface MoveCollectionsCommitRequest {
   validateOnly?: boolean;
   /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
   moveResources: MoveCollectionsCommitRequestMoveResourcesList;
-  moveResourceInputType?: MoveResourceInputType;
+  moveResourceInputType?: MoveResourceInputType | (string & {});
 }
 export const MoveCollectionsCommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -238,11 +235,7 @@ export const MoveCollectionsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MoveCollectionsCreateRequestTagsMap>;
 
 /** The type of identity used for the resource mover service. */
-export type ResourceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
+export type ResourceIdentityType = "None" | "SystemAssigned" | "UserAssigned";
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** Defines the MSI properties of the Move Collection. */
@@ -262,7 +255,7 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
 /** Defines the MoveType. */
-export type MoveType = "RegionToRegion" | "RegionToZone" | (string & {});
+export type MoveType = "RegionToRegion" | "RegionToZone";
 export const MoveType = /*@__PURE__*/ S.String;
 
 /** Defines the move collection properties. */
@@ -275,7 +268,7 @@ export interface MoveCollectionPropertiesInput {
   moveRegion?: string;
   /** Gets or sets the version of move collection. */
   version?: string;
-  moveType?: MoveType;
+  moveType?: MoveType | (string & {});
 }
 export const MoveCollectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -336,8 +329,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Updating"
   | "Creating"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** A list of additional details about the error. */
@@ -416,8 +408,7 @@ export type MoveCollectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MoveCollectionSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -425,8 +416,7 @@ export type MoveCollectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MoveCollectionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -535,7 +525,7 @@ export interface MoveCollectionsDiscardRequest {
   validateOnly?: boolean;
   /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
   moveResources: MoveCollectionsDiscardRequestMoveResourcesList;
-  moveResourceInputType?: MoveResourceInputType;
+  moveResourceInputType?: MoveResourceInputType | (string & {});
 }
 export const MoveCollectionsDiscardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -601,7 +591,7 @@ export interface MoveCollectionsInitiateMoveRequest {
   validateOnly?: boolean;
   /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
   moveResources: MoveCollectionsInitiateMoveRequestMoveResourcesList;
-  moveResourceInputType?: MoveResourceInputType;
+  moveResourceInputType?: MoveResourceInputType | (string & {});
 }
 export const MoveCollectionsInitiateMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -756,7 +746,7 @@ export interface MoveCollectionsPrepareRequest {
   validateOnly?: boolean;
   /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
   moveResources: MoveCollectionsPrepareRequestMoveResourcesList;
-  moveResourceInputType?: MoveResourceInputType;
+  moveResourceInputType?: MoveResourceInputType | (string & {});
 }
 export const MoveCollectionsPrepareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -956,12 +946,11 @@ export type MoveState =
   | "CommitFailed"
   | "Committed"
   | "DeleteSourcePending"
-  | "ResourceMoveCompleted"
-  | (string & {});
+  | "ResourceMoveCompleted";
 export const MoveState = /*@__PURE__*/ S.String;
 
 /** Defines the job name. */
-export type JobName = "InitialSync" | (string & {});
+export type JobName = "InitialSync";
 export const JobName = /*@__PURE__*/ S.String;
 
 /** Defines the job status. */
@@ -994,14 +983,11 @@ export const MoveResourceStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveResourceStatus>;
 
 /** Defines the resolution type. */
-export type ResolutionType = "Manual" | "Automatic" | (string & {});
+export type ResolutionType = "Manual" | "Automatic";
 export const ResolutionType = /*@__PURE__*/ S.String;
 
 /** Defines the dependency type. */
-export type DependencyType =
-  | "RequiredForPrepare"
-  | "RequiredForMove"
-  | (string & {});
+export type DependencyType = "RequiredForPrepare" | "RequiredForMove";
 export const DependencyType = /*@__PURE__*/ S.String;
 
 /** Defines the properties for manual resolution. */
@@ -1121,8 +1107,7 @@ export type MoveResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MoveResourceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1130,8 +1115,7 @@ export type MoveResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MoveResourceSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1414,8 +1398,7 @@ export const OperationsDiscoveryCollection = /*@__PURE__*/ S.suspend(() =>
 
 export type UnresolvedDependenciesGetRequestDependencyLevel =
   | "Direct"
-  | "Descendant"
-  | (string & {});
+  | "Descendant";
 export const UnresolvedDependenciesGetRequestDependencyLevel =
   /*@__PURE__*/ S.String;
 
@@ -1427,7 +1410,9 @@ export interface UnresolvedDependenciesGetRequest {
   /** The Move Collection Name. */
   moveCollectionName: string;
   /** Defines the dependency level. */
-  dependencyLevel?: UnresolvedDependenciesGetRequestDependencyLevel;
+  dependencyLevel?:
+    | UnresolvedDependenciesGetRequestDependencyLevel
+    | (string & {});
   /** OData order by query option. For example, you can use $orderby=Count desc. */
   _orderby?: string;
   /** The filter to apply on the operation. For example, $apply=filter(count eq 2). */

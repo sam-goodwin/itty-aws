@@ -13,68 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
-export type AdUnitStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "ARCHIVED"
-  | (string & {});
+export type AdUnitStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED";
 export const AdUnitStateEnum = /*@__PURE__*/ S.String;
 
-export type ContentAdsSettingsTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "DISPLAY"
-  | "FEED"
-  | "ARTICLE"
-  | "MATCHED_CONTENT"
-  | "LINK"
-  | (string & {});
+export type ContentAdsSettingsTypeEnum = "TYPE_UNSPECIFIED" | "DISPLAY" | "FEED" | "ARTICLE" | "MATCHED_CONTENT" | "LINK";
 export const ContentAdsSettingsTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings specific to content ads (AFC). */
@@ -85,13 +74,11 @@ export interface ContentAdsSettings {
   type?: ContentAdsSettingsTypeEnum;
 }
 export const ContentAdsSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    size: S.optional(S.String),
-    type: S.optional(ContentAdsSettingsTypeEnum),
-  }),
-).annotate({
-  identifier: "ContentAdsSettings",
-}) as any as S.Schema<ContentAdsSettings>;
+S.Struct({
+  "size": S.optional(S.String),
+  "type": S.optional(ContentAdsSettingsTypeEnum),
+}),
+).annotate({ identifier: "ContentAdsSettings" }) as any as S.Schema<ContentAdsSettings>;
 
 /** Representation of an ad unit. An ad unit represents a saved ad unit with a specific set of ad settings that have been customized within an account. */
 export interface AdUnit {
@@ -107,13 +94,13 @@ export interface AdUnit {
   contentAdsSettings?: ContentAdsSettings;
 }
 export const AdUnit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(AdUnitStateEnum),
-    reportingDimensionId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-    contentAdsSettings: S.optional(ContentAdsSettings),
-  }),
+S.Struct({
+  "state": S.optional(AdUnitStateEnum),
+  "reportingDimensionId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+  "contentAdsSettings": S.optional(ContentAdsSettings),
+}),
 ).annotate({ identifier: "AdUnit" }) as any as S.Schema<AdUnit>;
 
 export interface CreateAccountsAdclientsAdunitsRequest {
@@ -122,21 +109,12 @@ export interface CreateAccountsAdclientsAdunitsRequest {
   /** Request body */
   body?: AdUnit;
 }
-export const CreateAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(AdUnit.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/adunits",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateAccountsAdclientsAdunitsRequest",
-}) as any as S.Schema<CreateAccountsAdclientsAdunitsRequest>;
+export const CreateAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(AdUnit.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/adunits","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsAdclientsAdunitsRequest" }) as any as S.Schema<CreateAccountsAdclientsAdunitsRequest>;
 
 /** Representation of a custom channel. */
 export interface CustomChannel {
@@ -150,12 +128,12 @@ export interface CustomChannel {
   active?: boolean;
 }
 export const CustomChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    reportingDimensionId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    active: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "reportingDimensionId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "active": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "CustomChannel" }) as any as S.Schema<CustomChannel>;
 
 export interface CreateAccountsAdclientsCustomchannelsRequest {
@@ -164,185 +142,49 @@ export interface CreateAccountsAdclientsCustomchannelsRequest {
   /** Request body */
   body?: CustomChannel;
 }
-export const CreateAccountsAdclientsCustomchannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CustomChannel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/customchannels",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateAccountsAdclientsCustomchannelsRequest",
-  }) as any as S.Schema<CreateAccountsAdclientsCustomchannelsRequest>;
+export const CreateAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CustomChannel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/customchannels","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "CreateAccountsAdclientsCustomchannelsRequest" }) as any as S.Schema<CreateAccountsAdclientsCustomchannelsRequest>;
 
 export interface DeleteAccountsAdclientsCustomchannelsRequest {
   /** Required. Name of the custom channel to delete. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
   name: string;
 }
-export const DeleteAccountsAdclientsCustomchannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2/{+name}",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteAccountsAdclientsCustomchannelsRequest",
-  }) as any as S.Schema<DeleteAccountsAdclientsCustomchannelsRequest>;
+export const DeleteAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "DeleteAccountsAdclientsCustomchannelsRequest" }) as any as S.Schema<DeleteAccountsAdclientsCustomchannelsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
-export type GenerateAccountsReportsMetricsEnum =
-  | "METRIC_UNSPECIFIED"
-  | "PAGE_VIEWS"
-  | "AD_REQUESTS"
-  | "MATCHED_AD_REQUESTS"
-  | "TOTAL_IMPRESSIONS"
-  | "IMPRESSIONS"
-  | "INDIVIDUAL_AD_IMPRESSIONS"
-  | "CLICKS"
-  | "PAGE_VIEWS_SPAM_RATIO"
-  | "AD_REQUESTS_SPAM_RATIO"
-  | "MATCHED_AD_REQUESTS_SPAM_RATIO"
-  | "IMPRESSIONS_SPAM_RATIO"
-  | "INDIVIDUAL_AD_IMPRESSIONS_SPAM_RATIO"
-  | "CLICKS_SPAM_RATIO"
-  | "AD_REQUESTS_COVERAGE"
-  | "PAGE_VIEWS_CTR"
-  | "AD_REQUESTS_CTR"
-  | "MATCHED_AD_REQUESTS_CTR"
-  | "IMPRESSIONS_CTR"
-  | "INDIVIDUAL_AD_IMPRESSIONS_CTR"
-  | "ACTIVE_VIEW_MEASURABILITY"
-  | "ACTIVE_VIEW_VIEWABILITY"
-  | "ACTIVE_VIEW_TIME"
-  | "ESTIMATED_EARNINGS"
-  | "PAGE_VIEWS_RPM"
-  | "AD_REQUESTS_RPM"
-  | "MATCHED_AD_REQUESTS_RPM"
-  | "IMPRESSIONS_RPM"
-  | "INDIVIDUAL_AD_IMPRESSIONS_RPM"
-  | "COST_PER_CLICK"
-  | "ADS_PER_IMPRESSION"
-  | "TOTAL_EARNINGS"
-  | "WEBSEARCH_RESULT_PAGES"
-  | "FUNNEL_REQUESTS"
-  | "FUNNEL_IMPRESSIONS"
-  | "FUNNEL_CLICKS"
-  | "FUNNEL_RPM"
-  | (string & {});
+export type GenerateAccountsReportsMetricsEnum = "METRIC_UNSPECIFIED" | "PAGE_VIEWS" | "AD_REQUESTS" | "MATCHED_AD_REQUESTS" | "TOTAL_IMPRESSIONS" | "IMPRESSIONS" | "INDIVIDUAL_AD_IMPRESSIONS" | "CLICKS" | "PAGE_VIEWS_SPAM_RATIO" | "AD_REQUESTS_SPAM_RATIO" | "MATCHED_AD_REQUESTS_SPAM_RATIO" | "IMPRESSIONS_SPAM_RATIO" | "INDIVIDUAL_AD_IMPRESSIONS_SPAM_RATIO" | "CLICKS_SPAM_RATIO" | "AD_REQUESTS_COVERAGE" | "PAGE_VIEWS_CTR" | "AD_REQUESTS_CTR" | "MATCHED_AD_REQUESTS_CTR" | "IMPRESSIONS_CTR" | "INDIVIDUAL_AD_IMPRESSIONS_CTR" | "ACTIVE_VIEW_MEASURABILITY" | "ACTIVE_VIEW_VIEWABILITY" | "ACTIVE_VIEW_TIME" | "ESTIMATED_EARNINGS" | "PAGE_VIEWS_RPM" | "AD_REQUESTS_RPM" | "MATCHED_AD_REQUESTS_RPM" | "IMPRESSIONS_RPM" | "INDIVIDUAL_AD_IMPRESSIONS_RPM" | "COST_PER_CLICK" | "ADS_PER_IMPRESSION" | "TOTAL_EARNINGS" | "WEBSEARCH_RESULT_PAGES" | "FUNNEL_REQUESTS" | "FUNNEL_IMPRESSIONS" | "FUNNEL_CLICKS" | "FUNNEL_RPM";
 export const GenerateAccountsReportsMetricsEnum = /*@__PURE__*/ S.String;
 
-export type GenerateAccountsReportsMetricsEnumList =
-  ReadonlyArray<GenerateAccountsReportsMetricsEnum>;
-export const GenerateAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(
-  GenerateAccountsReportsMetricsEnum,
-) as any as S.Schema<GenerateAccountsReportsMetricsEnumList>;
+export type GenerateAccountsReportsMetricsEnumList = ReadonlyArray<GenerateAccountsReportsMetricsEnum | (string & {})>;
+export const GenerateAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(GenerateAccountsReportsMetricsEnum) as any as S.Schema<GenerateAccountsReportsMetricsEnumList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type GenerateAccountsReportsDimensionsEnum =
-  | "DIMENSION_UNSPECIFIED"
-  | "DATE"
-  | "WEEK"
-  | "MONTH"
-  | "ACCOUNT_NAME"
-  | "AD_CLIENT_ID"
-  | "HOSTED_AD_CLIENT_ID"
-  | "PRODUCT_NAME"
-  | "PRODUCT_CODE"
-  | "AD_UNIT_NAME"
-  | "AD_UNIT_ID"
-  | "AD_UNIT_SIZE_NAME"
-  | "AD_UNIT_SIZE_CODE"
-  | "CUSTOM_CHANNEL_NAME"
-  | "CUSTOM_CHANNEL_ID"
-  | "HOSTED_CUSTOM_CHANNEL_ID"
-  | "OWNED_SITE_DOMAIN_NAME"
-  | "OWNED_SITE_ID"
-  | "PAGE_URL"
-  | "URL_CHANNEL_NAME"
-  | "URL_CHANNEL_ID"
-  | "BUYER_NETWORK_NAME"
-  | "BUYER_NETWORK_ID"
-  | "BID_TYPE_NAME"
-  | "BID_TYPE_CODE"
-  | "CREATIVE_SIZE_NAME"
-  | "CREATIVE_SIZE_CODE"
-  | "DOMAIN_NAME"
-  | "DOMAIN_CODE"
-  | "COUNTRY_NAME"
-  | "COUNTRY_CODE"
-  | "PLATFORM_TYPE_NAME"
-  | "PLATFORM_TYPE_CODE"
-  | "TARGETING_TYPE_NAME"
-  | "TARGETING_TYPE_CODE"
-  | "TRAFFIC_SOURCE_NAME"
-  | "TRAFFIC_SOURCE_CODE"
-  | "CONTENT_PLATFORM_NAME"
-  | "CONTENT_PLATFORM_CODE"
-  | "AD_PLACEMENT_NAME"
-  | "AD_PLACEMENT_CODE"
-  | "REQUESTED_AD_TYPE_NAME"
-  | "REQUESTED_AD_TYPE_CODE"
-  | "SERVED_AD_TYPE_NAME"
-  | "SERVED_AD_TYPE_CODE"
-  | "AD_FORMAT_NAME"
-  | "AD_FORMAT_CODE"
-  | "CUSTOM_SEARCH_STYLE_NAME"
-  | "CUSTOM_SEARCH_STYLE_ID"
-  | "DOMAIN_REGISTRANT"
-  | "WEBSEARCH_QUERY_STRING"
-  | "OS_TYPE_NAME"
-  | "OS_TYPE_CODE"
-  | "BROWSER_TYPE_NAME"
-  | "BROWSER_TYPE_CODE"
-  | "WEBVIEW_TYPE_NAME"
-  | "WEBVIEW_TYPE_CODE"
-  | (string & {});
+export type GenerateAccountsReportsDimensionsEnum = "DIMENSION_UNSPECIFIED" | "DATE" | "WEEK" | "MONTH" | "ACCOUNT_NAME" | "AD_CLIENT_ID" | "HOSTED_AD_CLIENT_ID" | "PRODUCT_NAME" | "PRODUCT_CODE" | "AD_UNIT_NAME" | "AD_UNIT_ID" | "AD_UNIT_SIZE_NAME" | "AD_UNIT_SIZE_CODE" | "CUSTOM_CHANNEL_NAME" | "CUSTOM_CHANNEL_ID" | "HOSTED_CUSTOM_CHANNEL_ID" | "OWNED_SITE_DOMAIN_NAME" | "OWNED_SITE_ID" | "PAGE_URL" | "URL_CHANNEL_NAME" | "URL_CHANNEL_ID" | "BUYER_NETWORK_NAME" | "BUYER_NETWORK_ID" | "BID_TYPE_NAME" | "BID_TYPE_CODE" | "CREATIVE_SIZE_NAME" | "CREATIVE_SIZE_CODE" | "DOMAIN_NAME" | "DOMAIN_CODE" | "COUNTRY_NAME" | "COUNTRY_CODE" | "PLATFORM_TYPE_NAME" | "PLATFORM_TYPE_CODE" | "TARGETING_TYPE_NAME" | "TARGETING_TYPE_CODE" | "TRAFFIC_SOURCE_NAME" | "TRAFFIC_SOURCE_CODE" | "CONTENT_PLATFORM_NAME" | "CONTENT_PLATFORM_CODE" | "AD_PLACEMENT_NAME" | "AD_PLACEMENT_CODE" | "REQUESTED_AD_TYPE_NAME" | "REQUESTED_AD_TYPE_CODE" | "SERVED_AD_TYPE_NAME" | "SERVED_AD_TYPE_CODE" | "AD_FORMAT_NAME" | "AD_FORMAT_CODE" | "CUSTOM_SEARCH_STYLE_NAME" | "CUSTOM_SEARCH_STYLE_ID" | "DOMAIN_REGISTRANT" | "WEBSEARCH_QUERY_STRING" | "OS_TYPE_NAME" | "OS_TYPE_CODE" | "BROWSER_TYPE_NAME" | "BROWSER_TYPE_CODE" | "WEBVIEW_TYPE_NAME" | "WEBVIEW_TYPE_CODE";
 export const GenerateAccountsReportsDimensionsEnum = /*@__PURE__*/ S.String;
 
-export type GenerateAccountsReportsDimensionsEnumList =
-  ReadonlyArray<GenerateAccountsReportsDimensionsEnum>;
-export const GenerateAccountsReportsDimensionsEnumList = /*@__PURE__*/ S.Array(
-  GenerateAccountsReportsDimensionsEnum,
-) as any as S.Schema<GenerateAccountsReportsDimensionsEnumList>;
+export type GenerateAccountsReportsDimensionsEnumList = ReadonlyArray<GenerateAccountsReportsDimensionsEnum | (string & {})>;
+export const GenerateAccountsReportsDimensionsEnumList = /*@__PURE__*/ S.Array(GenerateAccountsReportsDimensionsEnum) as any as S.Schema<GenerateAccountsReportsDimensionsEnumList>;
 
-export type GenerateAccountsReportsDateRangeEnum =
-  | "REPORTING_DATE_RANGE_UNSPECIFIED"
-  | "CUSTOM"
-  | "TODAY"
-  | "YESTERDAY"
-  | "MONTH_TO_DATE"
-  | "YEAR_TO_DATE"
-  | "LAST_7_DAYS"
-  | "LAST_30_DAYS"
-  | (string & {});
+export type GenerateAccountsReportsDateRangeEnum = "REPORTING_DATE_RANGE_UNSPECIFIED" | "CUSTOM" | "TODAY" | "YESTERDAY" | "MONTH_TO_DATE" | "YEAR_TO_DATE" | "LAST_7_DAYS" | "LAST_30_DAYS";
 export const GenerateAccountsReportsDateRangeEnum = /*@__PURE__*/ S.String;
 
-export type GenerateAccountsReportsReportingTimeZoneEnum =
-  | "REPORTING_TIME_ZONE_UNSPECIFIED"
-  | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE"
-  | (string & {});
-export const GenerateAccountsReportsReportingTimeZoneEnum =
-  /*@__PURE__*/ S.String;
+export type GenerateAccountsReportsReportingTimeZoneEnum = "REPORTING_TIME_ZONE_UNSPECIFIED" | "ACCOUNT_TIME_ZONE" | "GOOGLE_TIME_ZONE";
+export const GenerateAccountsReportsReportingTimeZoneEnum = /*@__PURE__*/ S.String;
 
 export interface GenerateAccountsReportsRequest {
   /** Required. Reporting metrics. */
@@ -358,7 +200,7 @@ export interface GenerateAccountsReportsRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "endDate.month"?: number;
   /** Date range of the report, if unset the range will be considered CUSTOM. */
-  dateRange?: GenerateAccountsReportsDateRangeEnum;
+  dateRange?: GenerateAccountsReportsDateRangeEnum | (string & {});
   /** The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set. */
   currencyCode?: string;
   /** The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag). */
@@ -376,50 +218,30 @@ export interface GenerateAccountsReportsRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "endDate.day"?: number;
   /** Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725). */
-  reportingTimeZone?: GenerateAccountsReportsReportingTimeZoneEnum;
+  reportingTimeZone?: GenerateAccountsReportsReportingTimeZoneEnum | (string & {});
 }
 export const GenerateAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metrics: S.optional(GenerateAccountsReportsMetricsEnumList.pipe(T.Query())),
-    filters: S.optional(StringList.pipe(T.Query())),
-    account: S.String.pipe(T.Label()),
-    dimensions: S.optional(
-      GenerateAccountsReportsDimensionsEnumList.pipe(T.Query()),
-    ),
-    "startDate.month": S.optional(S.Number.pipe(T.Query())),
-    "endDate.month": S.optional(S.Number.pipe(T.Query())),
-    dateRange: S.optional(GenerateAccountsReportsDateRangeEnum.pipe(T.Query())),
-    currencyCode: S.optional(S.String.pipe(T.Query())),
-    languageCode: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(StringList.pipe(T.Query())),
-    "startDate.day": S.optional(S.Number.pipe(T.Query())),
-    "startDate.year": S.optional(S.Number.pipe(T.Query())),
-    "endDate.year": S.optional(S.Number.pipe(T.Query())),
-    "endDate.day": S.optional(S.Number.pipe(T.Query())),
-    reportingTimeZone: S.optional(
-      GenerateAccountsReportsReportingTimeZoneEnum.pipe(T.Query()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+account}/reports:generate",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GenerateAccountsReportsRequest",
-}) as any as S.Schema<GenerateAccountsReportsRequest>;
+S.Struct({
+  "metrics": S.optional(GenerateAccountsReportsMetricsEnumList.pipe(T.Query())),
+  "filters": S.optional(StringList.pipe(T.Query())),
+  "account": S.String.pipe(T.Label()),
+  "dimensions": S.optional(GenerateAccountsReportsDimensionsEnumList.pipe(T.Query())),
+  "startDate.month": S.optional(S.Number.pipe(T.Query())),
+  "endDate.month": S.optional(S.Number.pipe(T.Query())),
+  "dateRange": S.optional(GenerateAccountsReportsDateRangeEnum.pipe(T.Query())),
+  "currencyCode": S.optional(S.String.pipe(T.Query())),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "limit": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(StringList.pipe(T.Query())),
+  "startDate.day": S.optional(S.Number.pipe(T.Query())),
+  "startDate.year": S.optional(S.Number.pipe(T.Query())),
+  "endDate.year": S.optional(S.Number.pipe(T.Query())),
+  "endDate.day": S.optional(S.Number.pipe(T.Query())),
+  "reportingTimeZone": S.optional(GenerateAccountsReportsReportingTimeZoneEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+account}/reports:generate","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GenerateAccountsReportsRequest" }) as any as S.Schema<GenerateAccountsReportsRequest>;
 
-export type HeaderTypeEnum =
-  | "HEADER_TYPE_UNSPECIFIED"
-  | "DIMENSION"
-  | "METRIC_TALLY"
-  | "METRIC_RATIO"
-  | "METRIC_CURRENCY"
-  | "METRIC_MILLISECONDS"
-  | "METRIC_DECIMAL"
-  | (string & {});
+export type HeaderTypeEnum = "HEADER_TYPE_UNSPECIFIED" | "DIMENSION" | "METRIC_TALLY" | "METRIC_RATIO" | "METRIC_CURRENCY" | "METRIC_MILLISECONDS" | "METRIC_DECIMAL";
 export const HeaderTypeEnum = /*@__PURE__*/ S.String;
 
 /** The header information of the columns requested in the report. */
@@ -432,17 +254,15 @@ export interface Header {
   currencyCode?: string;
 }
 export const Header = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(HeaderTypeEnum),
-    name: S.optional(S.String),
-    currencyCode: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(HeaderTypeEnum),
+  "name": S.optional(S.String),
+  "currencyCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
 export type HeaderList = ReadonlyArray<Header>;
-export const HeaderList = /*@__PURE__*/ S.Array(
-  Header,
-) as any as S.Schema<HeaderList>;
+export const HeaderList = /*@__PURE__*/ S.Array(Header) as any as S.Schema<HeaderList>;
 
 /** Cell representation. */
 export interface Cell {
@@ -450,15 +270,13 @@ export interface Cell {
   value?: string;
 }
 export const Cell = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "Cell" }) as any as S.Schema<Cell>;
 
 export type CellList = ReadonlyArray<Cell>;
-export const CellList = /*@__PURE__*/ S.Array(
-  Cell,
-) as any as S.Schema<CellList>;
+export const CellList = /*@__PURE__*/ S.Array(Cell) as any as S.Schema<CellList>;
 
 /** Row representation. */
 export interface Row {
@@ -466,9 +284,9 @@ export interface Row {
   cells?: CellList;
 }
 export const Row = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cells: S.optional(CellList),
-  }),
+S.Struct({
+  "cells": S.optional(CellList),
+}),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -481,11 +299,11 @@ export interface Adsense_Date {
   month?: number;
 }
 export const Adsense_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    day: S.optional(S.Number),
-    year: S.optional(S.Number),
-    month: S.optional(S.Number),
-  }),
+S.Struct({
+  "day": S.optional(S.Number),
+  "year": S.optional(S.Number),
+  "month": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Adsense_Date" }) as any as S.Schema<Adsense_Date>;
 
 export type RowList = ReadonlyArray<Row>;
@@ -511,37 +329,23 @@ export interface ReportResult {
   warnings?: StringList;
 }
 export const ReportResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.optional(HeaderList),
-    totals: S.optional(Row),
-    totalMatchedRows: S.optional(S.String),
-    averages: S.optional(Row),
-    startDate: S.optional(Adsense_Date),
-    endDate: S.optional(Adsense_Date),
-    rows: S.optional(RowList),
-    warnings: S.optional(StringList),
-  }),
+S.Struct({
+  "headers": S.optional(HeaderList),
+  "totals": S.optional(Row),
+  "totalMatchedRows": S.optional(S.String),
+  "averages": S.optional(Row),
+  "startDate": S.optional(Adsense_Date),
+  "endDate": S.optional(Adsense_Date),
+  "rows": S.optional(RowList),
+  "warnings": S.optional(StringList),
+}),
 ).annotate({ identifier: "ReportResult" }) as any as S.Schema<ReportResult>;
 
-export type GenerateAccountsReportsSavedDateRangeEnum =
-  | "REPORTING_DATE_RANGE_UNSPECIFIED"
-  | "CUSTOM"
-  | "TODAY"
-  | "YESTERDAY"
-  | "MONTH_TO_DATE"
-  | "YEAR_TO_DATE"
-  | "LAST_7_DAYS"
-  | "LAST_30_DAYS"
-  | (string & {});
+export type GenerateAccountsReportsSavedDateRangeEnum = "REPORTING_DATE_RANGE_UNSPECIFIED" | "CUSTOM" | "TODAY" | "YESTERDAY" | "MONTH_TO_DATE" | "YEAR_TO_DATE" | "LAST_7_DAYS" | "LAST_30_DAYS";
 export const GenerateAccountsReportsSavedDateRangeEnum = /*@__PURE__*/ S.String;
 
-export type GenerateAccountsReportsSavedReportingTimeZoneEnum =
-  | "REPORTING_TIME_ZONE_UNSPECIFIED"
-  | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE"
-  | (string & {});
-export const GenerateAccountsReportsSavedReportingTimeZoneEnum =
-  /*@__PURE__*/ S.String;
+export type GenerateAccountsReportsSavedReportingTimeZoneEnum = "REPORTING_TIME_ZONE_UNSPECIFIED" | "ACCOUNT_TIME_ZONE" | "GOOGLE_TIME_ZONE";
+export const GenerateAccountsReportsSavedReportingTimeZoneEnum = /*@__PURE__*/ S.String;
 
 export interface GenerateAccountsReportsSavedRequest {
   /** The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag). */
@@ -555,180 +359,51 @@ export interface GenerateAccountsReportsSavedRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "endDate.month"?: number;
   /** Date range of the report, if unset the range will be considered CUSTOM. */
-  dateRange?: GenerateAccountsReportsSavedDateRangeEnum;
+  dateRange?: GenerateAccountsReportsSavedDateRangeEnum | (string & {});
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "endDate.year"?: number;
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "endDate.day"?: number;
   /** Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725). */
-  reportingTimeZone?: GenerateAccountsReportsSavedReportingTimeZoneEnum;
+  reportingTimeZone?: GenerateAccountsReportsSavedReportingTimeZoneEnum | (string & {});
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "startDate.year"?: number;
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "startDate.day"?: number;
 }
 export const GenerateAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageCode: S.optional(S.String.pipe(T.Query())),
-    currencyCode: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    "startDate.month": S.optional(S.Number.pipe(T.Query())),
-    "endDate.month": S.optional(S.Number.pipe(T.Query())),
-    dateRange: S.optional(
-      GenerateAccountsReportsSavedDateRangeEnum.pipe(T.Query()),
-    ),
-    "endDate.year": S.optional(S.Number.pipe(T.Query())),
-    "endDate.day": S.optional(S.Number.pipe(T.Query())),
-    reportingTimeZone: S.optional(
-      GenerateAccountsReportsSavedReportingTimeZoneEnum.pipe(T.Query()),
-    ),
-    "startDate.year": S.optional(S.Number.pipe(T.Query())),
-    "startDate.day": S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}/saved:generate",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GenerateAccountsReportsSavedRequest",
-}) as any as S.Schema<GenerateAccountsReportsSavedRequest>;
+S.Struct({
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "currencyCode": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "startDate.month": S.optional(S.Number.pipe(T.Query())),
+  "endDate.month": S.optional(S.Number.pipe(T.Query())),
+  "dateRange": S.optional(GenerateAccountsReportsSavedDateRangeEnum.pipe(T.Query())),
+  "endDate.year": S.optional(S.Number.pipe(T.Query())),
+  "endDate.day": S.optional(S.Number.pipe(T.Query())),
+  "reportingTimeZone": S.optional(GenerateAccountsReportsSavedReportingTimeZoneEnum.pipe(T.Query())),
+  "startDate.year": S.optional(S.Number.pipe(T.Query())),
+  "startDate.day": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/saved:generate","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GenerateAccountsReportsSavedRequest" }) as any as S.Schema<GenerateAccountsReportsSavedRequest>;
 
-export type GenerateCsvAccountsReportsDateRangeEnum =
-  | "REPORTING_DATE_RANGE_UNSPECIFIED"
-  | "CUSTOM"
-  | "TODAY"
-  | "YESTERDAY"
-  | "MONTH_TO_DATE"
-  | "YEAR_TO_DATE"
-  | "LAST_7_DAYS"
-  | "LAST_30_DAYS"
-  | (string & {});
+export type GenerateCsvAccountsReportsDateRangeEnum = "REPORTING_DATE_RANGE_UNSPECIFIED" | "CUSTOM" | "TODAY" | "YESTERDAY" | "MONTH_TO_DATE" | "YEAR_TO_DATE" | "LAST_7_DAYS" | "LAST_30_DAYS";
 export const GenerateCsvAccountsReportsDateRangeEnum = /*@__PURE__*/ S.String;
 
-export type GenerateCsvAccountsReportsMetricsEnum =
-  | "METRIC_UNSPECIFIED"
-  | "PAGE_VIEWS"
-  | "AD_REQUESTS"
-  | "MATCHED_AD_REQUESTS"
-  | "TOTAL_IMPRESSIONS"
-  | "IMPRESSIONS"
-  | "INDIVIDUAL_AD_IMPRESSIONS"
-  | "CLICKS"
-  | "PAGE_VIEWS_SPAM_RATIO"
-  | "AD_REQUESTS_SPAM_RATIO"
-  | "MATCHED_AD_REQUESTS_SPAM_RATIO"
-  | "IMPRESSIONS_SPAM_RATIO"
-  | "INDIVIDUAL_AD_IMPRESSIONS_SPAM_RATIO"
-  | "CLICKS_SPAM_RATIO"
-  | "AD_REQUESTS_COVERAGE"
-  | "PAGE_VIEWS_CTR"
-  | "AD_REQUESTS_CTR"
-  | "MATCHED_AD_REQUESTS_CTR"
-  | "IMPRESSIONS_CTR"
-  | "INDIVIDUAL_AD_IMPRESSIONS_CTR"
-  | "ACTIVE_VIEW_MEASURABILITY"
-  | "ACTIVE_VIEW_VIEWABILITY"
-  | "ACTIVE_VIEW_TIME"
-  | "ESTIMATED_EARNINGS"
-  | "PAGE_VIEWS_RPM"
-  | "AD_REQUESTS_RPM"
-  | "MATCHED_AD_REQUESTS_RPM"
-  | "IMPRESSIONS_RPM"
-  | "INDIVIDUAL_AD_IMPRESSIONS_RPM"
-  | "COST_PER_CLICK"
-  | "ADS_PER_IMPRESSION"
-  | "TOTAL_EARNINGS"
-  | "WEBSEARCH_RESULT_PAGES"
-  | "FUNNEL_REQUESTS"
-  | "FUNNEL_IMPRESSIONS"
-  | "FUNNEL_CLICKS"
-  | "FUNNEL_RPM"
-  | (string & {});
+export type GenerateCsvAccountsReportsMetricsEnum = "METRIC_UNSPECIFIED" | "PAGE_VIEWS" | "AD_REQUESTS" | "MATCHED_AD_REQUESTS" | "TOTAL_IMPRESSIONS" | "IMPRESSIONS" | "INDIVIDUAL_AD_IMPRESSIONS" | "CLICKS" | "PAGE_VIEWS_SPAM_RATIO" | "AD_REQUESTS_SPAM_RATIO" | "MATCHED_AD_REQUESTS_SPAM_RATIO" | "IMPRESSIONS_SPAM_RATIO" | "INDIVIDUAL_AD_IMPRESSIONS_SPAM_RATIO" | "CLICKS_SPAM_RATIO" | "AD_REQUESTS_COVERAGE" | "PAGE_VIEWS_CTR" | "AD_REQUESTS_CTR" | "MATCHED_AD_REQUESTS_CTR" | "IMPRESSIONS_CTR" | "INDIVIDUAL_AD_IMPRESSIONS_CTR" | "ACTIVE_VIEW_MEASURABILITY" | "ACTIVE_VIEW_VIEWABILITY" | "ACTIVE_VIEW_TIME" | "ESTIMATED_EARNINGS" | "PAGE_VIEWS_RPM" | "AD_REQUESTS_RPM" | "MATCHED_AD_REQUESTS_RPM" | "IMPRESSIONS_RPM" | "INDIVIDUAL_AD_IMPRESSIONS_RPM" | "COST_PER_CLICK" | "ADS_PER_IMPRESSION" | "TOTAL_EARNINGS" | "WEBSEARCH_RESULT_PAGES" | "FUNNEL_REQUESTS" | "FUNNEL_IMPRESSIONS" | "FUNNEL_CLICKS" | "FUNNEL_RPM";
 export const GenerateCsvAccountsReportsMetricsEnum = /*@__PURE__*/ S.String;
 
-export type GenerateCsvAccountsReportsMetricsEnumList =
-  ReadonlyArray<GenerateCsvAccountsReportsMetricsEnum>;
-export const GenerateCsvAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(
-  GenerateCsvAccountsReportsMetricsEnum,
-) as any as S.Schema<GenerateCsvAccountsReportsMetricsEnumList>;
+export type GenerateCsvAccountsReportsMetricsEnumList = ReadonlyArray<GenerateCsvAccountsReportsMetricsEnum | (string & {})>;
+export const GenerateCsvAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(GenerateCsvAccountsReportsMetricsEnum) as any as S.Schema<GenerateCsvAccountsReportsMetricsEnumList>;
 
-export type GenerateCsvAccountsReportsDimensionsEnum =
-  | "DIMENSION_UNSPECIFIED"
-  | "DATE"
-  | "WEEK"
-  | "MONTH"
-  | "ACCOUNT_NAME"
-  | "AD_CLIENT_ID"
-  | "HOSTED_AD_CLIENT_ID"
-  | "PRODUCT_NAME"
-  | "PRODUCT_CODE"
-  | "AD_UNIT_NAME"
-  | "AD_UNIT_ID"
-  | "AD_UNIT_SIZE_NAME"
-  | "AD_UNIT_SIZE_CODE"
-  | "CUSTOM_CHANNEL_NAME"
-  | "CUSTOM_CHANNEL_ID"
-  | "HOSTED_CUSTOM_CHANNEL_ID"
-  | "OWNED_SITE_DOMAIN_NAME"
-  | "OWNED_SITE_ID"
-  | "PAGE_URL"
-  | "URL_CHANNEL_NAME"
-  | "URL_CHANNEL_ID"
-  | "BUYER_NETWORK_NAME"
-  | "BUYER_NETWORK_ID"
-  | "BID_TYPE_NAME"
-  | "BID_TYPE_CODE"
-  | "CREATIVE_SIZE_NAME"
-  | "CREATIVE_SIZE_CODE"
-  | "DOMAIN_NAME"
-  | "DOMAIN_CODE"
-  | "COUNTRY_NAME"
-  | "COUNTRY_CODE"
-  | "PLATFORM_TYPE_NAME"
-  | "PLATFORM_TYPE_CODE"
-  | "TARGETING_TYPE_NAME"
-  | "TARGETING_TYPE_CODE"
-  | "TRAFFIC_SOURCE_NAME"
-  | "TRAFFIC_SOURCE_CODE"
-  | "CONTENT_PLATFORM_NAME"
-  | "CONTENT_PLATFORM_CODE"
-  | "AD_PLACEMENT_NAME"
-  | "AD_PLACEMENT_CODE"
-  | "REQUESTED_AD_TYPE_NAME"
-  | "REQUESTED_AD_TYPE_CODE"
-  | "SERVED_AD_TYPE_NAME"
-  | "SERVED_AD_TYPE_CODE"
-  | "AD_FORMAT_NAME"
-  | "AD_FORMAT_CODE"
-  | "CUSTOM_SEARCH_STYLE_NAME"
-  | "CUSTOM_SEARCH_STYLE_ID"
-  | "DOMAIN_REGISTRANT"
-  | "WEBSEARCH_QUERY_STRING"
-  | "OS_TYPE_NAME"
-  | "OS_TYPE_CODE"
-  | "BROWSER_TYPE_NAME"
-  | "BROWSER_TYPE_CODE"
-  | "WEBVIEW_TYPE_NAME"
-  | "WEBVIEW_TYPE_CODE"
-  | (string & {});
+export type GenerateCsvAccountsReportsDimensionsEnum = "DIMENSION_UNSPECIFIED" | "DATE" | "WEEK" | "MONTH" | "ACCOUNT_NAME" | "AD_CLIENT_ID" | "HOSTED_AD_CLIENT_ID" | "PRODUCT_NAME" | "PRODUCT_CODE" | "AD_UNIT_NAME" | "AD_UNIT_ID" | "AD_UNIT_SIZE_NAME" | "AD_UNIT_SIZE_CODE" | "CUSTOM_CHANNEL_NAME" | "CUSTOM_CHANNEL_ID" | "HOSTED_CUSTOM_CHANNEL_ID" | "OWNED_SITE_DOMAIN_NAME" | "OWNED_SITE_ID" | "PAGE_URL" | "URL_CHANNEL_NAME" | "URL_CHANNEL_ID" | "BUYER_NETWORK_NAME" | "BUYER_NETWORK_ID" | "BID_TYPE_NAME" | "BID_TYPE_CODE" | "CREATIVE_SIZE_NAME" | "CREATIVE_SIZE_CODE" | "DOMAIN_NAME" | "DOMAIN_CODE" | "COUNTRY_NAME" | "COUNTRY_CODE" | "PLATFORM_TYPE_NAME" | "PLATFORM_TYPE_CODE" | "TARGETING_TYPE_NAME" | "TARGETING_TYPE_CODE" | "TRAFFIC_SOURCE_NAME" | "TRAFFIC_SOURCE_CODE" | "CONTENT_PLATFORM_NAME" | "CONTENT_PLATFORM_CODE" | "AD_PLACEMENT_NAME" | "AD_PLACEMENT_CODE" | "REQUESTED_AD_TYPE_NAME" | "REQUESTED_AD_TYPE_CODE" | "SERVED_AD_TYPE_NAME" | "SERVED_AD_TYPE_CODE" | "AD_FORMAT_NAME" | "AD_FORMAT_CODE" | "CUSTOM_SEARCH_STYLE_NAME" | "CUSTOM_SEARCH_STYLE_ID" | "DOMAIN_REGISTRANT" | "WEBSEARCH_QUERY_STRING" | "OS_TYPE_NAME" | "OS_TYPE_CODE" | "BROWSER_TYPE_NAME" | "BROWSER_TYPE_CODE" | "WEBVIEW_TYPE_NAME" | "WEBVIEW_TYPE_CODE";
 export const GenerateCsvAccountsReportsDimensionsEnum = /*@__PURE__*/ S.String;
 
-export type GenerateCsvAccountsReportsDimensionsEnumList =
-  ReadonlyArray<GenerateCsvAccountsReportsDimensionsEnum>;
-export const GenerateCsvAccountsReportsDimensionsEnumList =
-  /*@__PURE__*/ S.Array(
-    GenerateCsvAccountsReportsDimensionsEnum,
-  ) as any as S.Schema<GenerateCsvAccountsReportsDimensionsEnumList>;
+export type GenerateCsvAccountsReportsDimensionsEnumList = ReadonlyArray<GenerateCsvAccountsReportsDimensionsEnum | (string & {})>;
+export const GenerateCsvAccountsReportsDimensionsEnumList = /*@__PURE__*/ S.Array(GenerateCsvAccountsReportsDimensionsEnum) as any as S.Schema<GenerateCsvAccountsReportsDimensionsEnumList>;
 
-export type GenerateCsvAccountsReportsReportingTimeZoneEnum =
-  | "REPORTING_TIME_ZONE_UNSPECIFIED"
-  | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE"
-  | (string & {});
-export const GenerateCsvAccountsReportsReportingTimeZoneEnum =
-  /*@__PURE__*/ S.String;
+export type GenerateCsvAccountsReportsReportingTimeZoneEnum = "REPORTING_TIME_ZONE_UNSPECIFIED" | "ACCOUNT_TIME_ZONE" | "GOOGLE_TIME_ZONE";
+export const GenerateCsvAccountsReportsReportingTimeZoneEnum = /*@__PURE__*/ S.String;
 
 export interface GenerateCsvAccountsReportsRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -736,7 +411,7 @@ export interface GenerateCsvAccountsReportsRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "endDate.month"?: number;
   /** Date range of the report, if unset the range will be considered CUSTOM. */
-  dateRange?: GenerateCsvAccountsReportsDateRangeEnum;
+  dateRange?: GenerateCsvAccountsReportsDateRangeEnum | (string & {});
   /** Required. Reporting metrics. */
   metrics?: GenerateCsvAccountsReportsMetricsEnumList;
   /** A list of [filters](/adsense/management/reporting/filtering) to apply to the report. All provided filters must match in order for the data to be included in the report. */
@@ -750,7 +425,7 @@ export interface GenerateCsvAccountsReportsRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "endDate.day"?: number;
   /** Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725). */
-  reportingTimeZone?: GenerateCsvAccountsReportsReportingTimeZoneEnum;
+  reportingTimeZone?: GenerateCsvAccountsReportsReportingTimeZoneEnum | (string & {});
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "startDate.year"?: number;
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -765,52 +440,31 @@ export interface GenerateCsvAccountsReportsRequest {
   currencyCode?: string;
 }
 export const GenerateCsvAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "startDate.month": S.optional(S.Number.pipe(T.Query())),
-    "endDate.month": S.optional(S.Number.pipe(T.Query())),
-    dateRange: S.optional(
-      GenerateCsvAccountsReportsDateRangeEnum.pipe(T.Query()),
-    ),
-    metrics: S.optional(
-      GenerateCsvAccountsReportsMetricsEnumList.pipe(T.Query()),
-    ),
-    filters: S.optional(StringList.pipe(T.Query())),
-    dimensions: S.optional(
-      GenerateCsvAccountsReportsDimensionsEnumList.pipe(T.Query()),
-    ),
-    account: S.String.pipe(T.Label()),
-    "endDate.year": S.optional(S.Number.pipe(T.Query())),
-    "endDate.day": S.optional(S.Number.pipe(T.Query())),
-    reportingTimeZone: S.optional(
-      GenerateCsvAccountsReportsReportingTimeZoneEnum.pipe(T.Query()),
-    ),
-    "startDate.year": S.optional(S.Number.pipe(T.Query())),
-    "startDate.day": S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(StringList.pipe(T.Query())),
-    languageCode: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    currencyCode: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+account}/reports:generateCsv",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GenerateCsvAccountsReportsRequest",
-}) as any as S.Schema<GenerateCsvAccountsReportsRequest>;
+S.Struct({
+  "startDate.month": S.optional(S.Number.pipe(T.Query())),
+  "endDate.month": S.optional(S.Number.pipe(T.Query())),
+  "dateRange": S.optional(GenerateCsvAccountsReportsDateRangeEnum.pipe(T.Query())),
+  "metrics": S.optional(GenerateCsvAccountsReportsMetricsEnumList.pipe(T.Query())),
+  "filters": S.optional(StringList.pipe(T.Query())),
+  "dimensions": S.optional(GenerateCsvAccountsReportsDimensionsEnumList.pipe(T.Query())),
+  "account": S.String.pipe(T.Label()),
+  "endDate.year": S.optional(S.Number.pipe(T.Query())),
+  "endDate.day": S.optional(S.Number.pipe(T.Query())),
+  "reportingTimeZone": S.optional(GenerateCsvAccountsReportsReportingTimeZoneEnum.pipe(T.Query())),
+  "startDate.year": S.optional(S.Number.pipe(T.Query())),
+  "startDate.day": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(StringList.pipe(T.Query())),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "limit": S.optional(S.Number.pipe(T.Query())),
+  "currencyCode": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+account}/reports:generateCsv","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GenerateCsvAccountsReportsRequest" }) as any as S.Schema<GenerateCsvAccountsReportsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
@@ -822,33 +476,18 @@ export interface HttpBody {
   extensions?: DocumentMapList;
 }
 export const HttpBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String),
-    data: S.optional(S.String),
-    extensions: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "contentType": S.optional(S.String),
+  "data": S.optional(S.String),
+  "extensions": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "HttpBody" }) as any as S.Schema<HttpBody>;
 
-export type GenerateCsvAccountsReportsSavedDateRangeEnum =
-  | "REPORTING_DATE_RANGE_UNSPECIFIED"
-  | "CUSTOM"
-  | "TODAY"
-  | "YESTERDAY"
-  | "MONTH_TO_DATE"
-  | "YEAR_TO_DATE"
-  | "LAST_7_DAYS"
-  | "LAST_30_DAYS"
-  | (string & {});
-export const GenerateCsvAccountsReportsSavedDateRangeEnum =
-  /*@__PURE__*/ S.String;
+export type GenerateCsvAccountsReportsSavedDateRangeEnum = "REPORTING_DATE_RANGE_UNSPECIFIED" | "CUSTOM" | "TODAY" | "YESTERDAY" | "MONTH_TO_DATE" | "YEAR_TO_DATE" | "LAST_7_DAYS" | "LAST_30_DAYS";
+export const GenerateCsvAccountsReportsSavedDateRangeEnum = /*@__PURE__*/ S.String;
 
-export type GenerateCsvAccountsReportsSavedReportingTimeZoneEnum =
-  | "REPORTING_TIME_ZONE_UNSPECIFIED"
-  | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE"
-  | (string & {});
-export const GenerateCsvAccountsReportsSavedReportingTimeZoneEnum =
-  /*@__PURE__*/ S.String;
+export type GenerateCsvAccountsReportsSavedReportingTimeZoneEnum = "REPORTING_TIME_ZONE_UNSPECIFIED" | "ACCOUNT_TIME_ZONE" | "GOOGLE_TIME_ZONE";
+export const GenerateCsvAccountsReportsSavedReportingTimeZoneEnum = /*@__PURE__*/ S.String;
 
 export interface GenerateCsvAccountsReportsSavedRequest {
   /** The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag). */
@@ -856,13 +495,13 @@ export interface GenerateCsvAccountsReportsSavedRequest {
   /** The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set. */
   currencyCode?: string;
   /** Date range of the report, if unset the range will be considered CUSTOM. */
-  dateRange?: GenerateCsvAccountsReportsSavedDateRangeEnum;
+  dateRange?: GenerateCsvAccountsReportsSavedDateRangeEnum | (string & {});
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "endDate.year"?: number;
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "endDate.day"?: number;
   /** Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725). */
-  reportingTimeZone?: GenerateCsvAccountsReportsSavedReportingTimeZoneEnum;
+  reportingTimeZone?: GenerateCsvAccountsReportsSavedReportingTimeZoneEnum | (string & {});
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "startDate.year"?: number;
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -874,52 +513,31 @@ export interface GenerateCsvAccountsReportsSavedRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "endDate.month"?: number;
 }
-export const GenerateCsvAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      languageCode: S.optional(S.String.pipe(T.Query())),
-      currencyCode: S.optional(S.String.pipe(T.Query())),
-      dateRange: S.optional(
-        GenerateCsvAccountsReportsSavedDateRangeEnum.pipe(T.Query()),
-      ),
-      "endDate.year": S.optional(S.Number.pipe(T.Query())),
-      "endDate.day": S.optional(S.Number.pipe(T.Query())),
-      reportingTimeZone: S.optional(
-        GenerateCsvAccountsReportsSavedReportingTimeZoneEnum.pipe(T.Query()),
-      ),
-      "startDate.year": S.optional(S.Number.pipe(T.Query())),
-      "startDate.day": S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      "startDate.month": S.optional(S.Number.pipe(T.Query())),
-      "endDate.month": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}/saved:generateCsv",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GenerateCsvAccountsReportsSavedRequest",
-}) as any as S.Schema<GenerateCsvAccountsReportsSavedRequest>;
+export const GenerateCsvAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+  "currencyCode": S.optional(S.String.pipe(T.Query())),
+  "dateRange": S.optional(GenerateCsvAccountsReportsSavedDateRangeEnum.pipe(T.Query())),
+  "endDate.year": S.optional(S.Number.pipe(T.Query())),
+  "endDate.day": S.optional(S.Number.pipe(T.Query())),
+  "reportingTimeZone": S.optional(GenerateCsvAccountsReportsSavedReportingTimeZoneEnum.pipe(T.Query())),
+  "startDate.year": S.optional(S.Number.pipe(T.Query())),
+  "startDate.day": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "startDate.month": S.optional(S.Number.pipe(T.Query())),
+  "endDate.month": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/saved:generateCsv","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GenerateCsvAccountsReportsSavedRequest" }) as any as S.Schema<GenerateCsvAccountsReportsSavedRequest>;
 
 export interface GetAccountsRequest {
   /** Required. Account to get information about. Format: accounts/{account} */
   name: string;
 }
 export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsRequest",
-}) as any as S.Schema<GetAccountsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsRequest" }) as any as S.Schema<GetAccountsRequest>;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
@@ -929,18 +547,13 @@ export interface TimeZone {
   id?: string;
 }
 export const TimeZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.String),
+  "id": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 
-export type AccountStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "READY"
-  | "NEEDS_ATTENTION"
-  | "CLOSED"
-  | (string & {});
+export type AccountStateEnum = "STATE_UNSPECIFIED" | "READY" | "NEEDS_ATTENTION" | "CLOSED";
 export const AccountStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an account. */
@@ -961,15 +574,15 @@ export interface Account {
   createTime?: string;
 }
 export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeZone: S.optional(TimeZone),
-    pendingTasks: S.optional(StringList),
-    state: S.optional(AccountStateEnum),
-    displayName: S.optional(S.String),
-    premium: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "timeZone": S.optional(TimeZone),
+  "pendingTasks": S.optional(StringList),
+  "state": S.optional(AccountStateEnum),
+  "displayName": S.optional(S.String),
+  "premium": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 export interface GetAccountsAdclientsRequest {
@@ -977,25 +590,12 @@ export interface GetAccountsAdclientsRequest {
   name: string;
 }
 export const GetAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsAdclientsRequest",
-}) as any as S.Schema<GetAccountsAdclientsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsAdclientsRequest" }) as any as S.Schema<GetAccountsAdclientsRequest>;
 
-export type AdClientStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "READY"
-  | "GETTING_READY"
-  | "REQUIRES_REVIEW"
-  | (string & {});
+export type AdClientStateEnum = "STATE_UNSPECIFIED" | "READY" | "GETTING_READY" | "REQUIRES_REVIEW";
 export const AdClientStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an ad client. An ad client represents a user's subscription with a specific AdSense product. */
@@ -1010,12 +610,12 @@ export interface AdClient {
   state?: AdClientStateEnum;
 }
 export const AdClient = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productCode: S.optional(S.String),
-    name: S.optional(S.String),
-    reportingDimensionId: S.optional(S.String),
-    state: S.optional(AdClientStateEnum),
-  }),
+S.Struct({
+  "productCode": S.optional(S.String),
+  "name": S.optional(S.String),
+  "reportingDimensionId": S.optional(S.String),
+  "state": S.optional(AdClientStateEnum),
+}),
 ).annotate({ identifier: "AdClient" }) as any as S.Schema<AdClient>;
 
 export interface GetAccountsAdclientsAdunitsRequest {
@@ -1023,56 +623,30 @@ export interface GetAccountsAdclientsAdunitsRequest {
   name: string;
 }
 export const GetAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsAdclientsAdunitsRequest",
-}) as any as S.Schema<GetAccountsAdclientsAdunitsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsAdclientsAdunitsRequest" }) as any as S.Schema<GetAccountsAdclientsAdunitsRequest>;
 
 export interface GetAccountsAdclientsCustomchannelsRequest {
   /** Required. Name of the custom channel. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
   name: string;
 }
-export const GetAccountsAdclientsCustomchannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetAccountsAdclientsCustomchannelsRequest",
-  }) as any as S.Schema<GetAccountsAdclientsCustomchannelsRequest>;
+export const GetAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsAdclientsCustomchannelsRequest" }) as any as S.Schema<GetAccountsAdclientsCustomchannelsRequest>;
 
 export interface GetAccountsAdclientsUrlchannelsRequest {
   /** Required. The name of the url channel to retrieve. Format: accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel} */
   name: string;
 }
-export const GetAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetAccountsAdclientsUrlchannelsRequest",
-}) as any as S.Schema<GetAccountsAdclientsUrlchannelsRequest>;
+export const GetAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsAdclientsUrlchannelsRequest" }) as any as S.Schema<GetAccountsAdclientsUrlchannelsRequest>;
 
 /** Representation of a URL channel. URL channels allow you to track the performance of particular pages in your site; see [URL channels](https://support.google.com/adsense/answer/2923836) for more information. */
 export interface UrlChannel {
@@ -1084,11 +658,11 @@ export interface UrlChannel {
   reportingDimensionId?: string;
 }
 export const UrlChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uriPattern: S.optional(S.String),
-    name: S.optional(S.String),
-    reportingDimensionId: S.optional(S.String),
-  }),
+S.Struct({
+  "uriPattern": S.optional(S.String),
+  "name": S.optional(S.String),
+  "reportingDimensionId": S.optional(S.String),
+}),
 ).annotate({ identifier: "UrlChannel" }) as any as S.Schema<UrlChannel>;
 
 export interface GetAccountsPolicyIssuesRequest {
@@ -1096,43 +670,18 @@ export interface GetAccountsPolicyIssuesRequest {
   name: string;
 }
 export const GetAccountsPolicyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsPolicyIssuesRequest",
-}) as any as S.Schema<GetAccountsPolicyIssuesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsPolicyIssuesRequest" }) as any as S.Schema<GetAccountsPolicyIssuesRequest>;
 
-export type PolicyIssueEntityTypeEnum =
-  | "ENTITY_TYPE_UNSPECIFIED"
-  | "SITE"
-  | "SITE_SECTION"
-  | "PAGE"
-  | (string & {});
+export type PolicyIssueEntityTypeEnum = "ENTITY_TYPE_UNSPECIFIED" | "SITE" | "SITE_SECTION" | "PAGE";
 export const PolicyIssueEntityTypeEnum = /*@__PURE__*/ S.String;
 
-export type PolicyIssueActionEnum =
-  | "ENFORCEMENT_ACTION_UNSPECIFIED"
-  | "WARNED"
-  | "AD_SERVING_RESTRICTED"
-  | "AD_SERVING_DISABLED"
-  | "AD_SERVED_WITH_CLICK_CONFIRMATION"
-  | "AD_PERSONALIZATION_RESTRICTED"
-  | (string & {});
+export type PolicyIssueActionEnum = "ENFORCEMENT_ACTION_UNSPECIFIED" | "WARNED" | "AD_SERVING_RESTRICTED" | "AD_SERVING_DISABLED" | "AD_SERVED_WITH_CLICK_CONFIRMATION" | "AD_PERSONALIZATION_RESTRICTED";
 export const PolicyIssueActionEnum = /*@__PURE__*/ S.String;
 
-export type PolicyTopicTypeEnum =
-  | "POLICY_TOPIC_TYPE_UNSPECIFIED"
-  | "POLICY"
-  | "ADVERTISER_PREFERENCE"
-  | "REGULATORY"
-  | (string & {});
+export type PolicyTopicTypeEnum = "POLICY_TOPIC_TYPE_UNSPECIFIED" | "POLICY" | "ADVERTISER_PREFERENCE" | "REGULATORY";
 export const PolicyTopicTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a particular policy topic. A policy topic represents a single class of policy issue that can impact ad serving for your site. For example, sexual content or having ads that obscure your content. A single policy issue can have multiple policy topics for a single entity. */
@@ -1145,17 +694,15 @@ export interface PolicyTopic {
   type?: PolicyTopicTypeEnum;
 }
 export const PolicyTopic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.optional(S.String),
-    mustFix: S.optional(S.Boolean),
-    type: S.optional(PolicyTopicTypeEnum),
-  }),
+S.Struct({
+  "topic": S.optional(S.String),
+  "mustFix": S.optional(S.Boolean),
+  "type": S.optional(PolicyTopicTypeEnum),
+}),
 ).annotate({ identifier: "PolicyTopic" }) as any as S.Schema<PolicyTopic>;
 
 export type PolicyTopicList = ReadonlyArray<PolicyTopic>;
-export const PolicyTopicList = /*@__PURE__*/ S.Array(
-  PolicyTopic,
-) as any as S.Schema<PolicyTopicList>;
+export const PolicyTopicList = /*@__PURE__*/ S.Array(PolicyTopic) as any as S.Schema<PolicyTopicList>;
 
 /** Representation of a policy issue for a single entity (site, site-section, or page). All issues for a single entity are represented by a single PolicyIssue resource, though that PolicyIssue can have multiple causes (or "topics") that can change over time. Policy issues are removed if there are no issues detected recently or if there's a recent successful appeal for the entity. */
 export interface PolicyIssue {
@@ -1185,20 +732,20 @@ export interface PolicyIssue {
   adRequestCount?: string;
 }
 export const PolicyIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    siteSection: S.optional(S.String),
-    site: S.optional(S.String),
-    entityType: S.optional(PolicyIssueEntityTypeEnum),
-    adClients: S.optional(StringList),
-    action: S.optional(PolicyIssueActionEnum),
-    lastDetectedDate: S.optional(Adsense_Date),
-    firstDetectedDate: S.optional(Adsense_Date),
-    warningEscalationDate: S.optional(Adsense_Date),
-    name: S.optional(S.String),
-    policyTopics: S.optional(PolicyTopicList),
-    adRequestCount: S.optional(S.String),
-  }),
+S.Struct({
+  "uri": S.optional(S.String),
+  "siteSection": S.optional(S.String),
+  "site": S.optional(S.String),
+  "entityType": S.optional(PolicyIssueEntityTypeEnum),
+  "adClients": S.optional(StringList),
+  "action": S.optional(PolicyIssueActionEnum),
+  "lastDetectedDate": S.optional(Adsense_Date),
+  "firstDetectedDate": S.optional(Adsense_Date),
+  "warningEscalationDate": S.optional(Adsense_Date),
+  "name": S.optional(S.String),
+  "policyTopics": S.optional(PolicyTopicList),
+  "adRequestCount": S.optional(S.String),
+}),
 ).annotate({ identifier: "PolicyIssue" }) as any as S.Schema<PolicyIssue>;
 
 export interface GetAccountsSitesRequest {
@@ -1206,26 +753,12 @@ export interface GetAccountsSitesRequest {
   name: string;
 }
 export const GetAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountsSitesRequest",
-}) as any as S.Schema<GetAccountsSitesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetAccountsSitesRequest" }) as any as S.Schema<GetAccountsSitesRequest>;
 
-export type SiteStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "REQUIRES_REVIEW"
-  | "GETTING_READY"
-  | "READY"
-  | "NEEDS_ATTENTION"
-  | (string & {});
+export type SiteStateEnum = "STATE_UNSPECIFIED" | "REQUIRES_REVIEW" | "GETTING_READY" | "READY" | "NEEDS_ATTENTION";
 export const SiteStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of a Site. */
@@ -1242,33 +775,24 @@ export interface Site {
   state?: SiteStateEnum;
 }
 export const Site = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    autoAdsEnabled: S.optional(S.Boolean),
-    reportingDimensionId: S.optional(S.String),
-    domain: S.optional(S.String),
-    state: S.optional(SiteStateEnum),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "autoAdsEnabled": S.optional(S.Boolean),
+  "reportingDimensionId": S.optional(S.String),
+  "domain": S.optional(S.String),
+  "state": S.optional(SiteStateEnum),
+}),
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 export interface GetAdBlockingRecoveryTagAccountsRequest {
   /** Required. The name of the account to get the tag for. Format: accounts/{account} */
   name: string;
 }
-export const GetAdBlockingRecoveryTagAccountsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}/adBlockingRecoveryTag",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetAdBlockingRecoveryTagAccountsRequest",
-}) as any as S.Schema<GetAdBlockingRecoveryTagAccountsRequest>;
+export const GetAdBlockingRecoveryTagAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/adBlockingRecoveryTag","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetAdBlockingRecoveryTagAccountsRequest" }) as any as S.Schema<GetAdBlockingRecoveryTagAccountsRequest>;
 
 /** Representation of an ad blocking recovery tag. See https://support.google.com/adsense/answer/11575177. */
 export interface AdBlockingRecoveryTag {
@@ -1278,31 +802,21 @@ export interface AdBlockingRecoveryTag {
   tag?: string;
 }
 export const AdBlockingRecoveryTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorProtectionCode: S.optional(S.String),
-    tag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AdBlockingRecoveryTag",
-}) as any as S.Schema<AdBlockingRecoveryTag>;
+S.Struct({
+  "errorProtectionCode": S.optional(S.String),
+  "tag": S.optional(S.String),
+}),
+).annotate({ identifier: "AdBlockingRecoveryTag" }) as any as S.Schema<AdBlockingRecoveryTag>;
 
 export interface GetAdcodeAccountsAdclientsRequest {
   /** Required. Name of the ad client for which to get the adcode. Format: accounts/{account}/adclients/{adclient} */
   name: string;
 }
 export const GetAdcodeAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}/adcode",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetAdcodeAccountsAdclientsRequest",
-}) as any as S.Schema<GetAdcodeAccountsAdclientsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/adcode","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetAdcodeAccountsAdclientsRequest" }) as any as S.Schema<GetAdcodeAccountsAdclientsRequest>;
 
 /** Representation of the AdSense code for a given ad client. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634). */
 export interface AdClientAdCode {
@@ -1314,31 +828,22 @@ export interface AdClientAdCode {
   adCode?: string;
 }
 export const AdClientAdCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ampBody: S.optional(S.String),
-    ampHead: S.optional(S.String),
-    adCode: S.optional(S.String),
-  }),
+S.Struct({
+  "ampBody": S.optional(S.String),
+  "ampHead": S.optional(S.String),
+  "adCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "AdClientAdCode" }) as any as S.Schema<AdClientAdCode>;
 
 export interface GetAdcodeAccountsAdclientsAdunitsRequest {
   /** Required. Name of the adunit for which to get the adcode. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit} */
   name: string;
 }
-export const GetAdcodeAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}/adcode",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetAdcodeAccountsAdclientsAdunitsRequest",
-}) as any as S.Schema<GetAdcodeAccountsAdclientsAdunitsRequest>;
+export const GetAdcodeAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/adcode","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetAdcodeAccountsAdclientsAdunitsRequest" }) as any as S.Schema<GetAdcodeAccountsAdclientsAdunitsRequest>;
 
 /** Representation of the ad unit code for a given ad unit. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your HTML](https://support.google.com/adsense/answer/9190028). */
 export interface AdUnitAdCode {
@@ -1346,9 +851,9 @@ export interface AdUnitAdCode {
   adCode?: string;
 }
 export const AdUnitAdCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adCode: S.optional(S.String),
-  }),
+S.Struct({
+  "adCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "AdUnitAdCode" }) as any as S.Schema<AdUnitAdCode>;
 
 export interface GetSavedAccountsReportsRequest {
@@ -1356,18 +861,10 @@ export interface GetSavedAccountsReportsRequest {
   name: string;
 }
 export const GetSavedAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+name}/saved",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSavedAccountsReportsRequest",
-}) as any as S.Schema<GetSavedAccountsReportsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/saved","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "GetSavedAccountsReportsRequest" }) as any as S.Schema<GetSavedAccountsReportsRequest>;
 
 /** Representation of a saved report. */
 export interface SavedReport {
@@ -1377,10 +874,10 @@ export interface SavedReport {
   name?: string;
 }
 export const SavedReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "SavedReport" }) as any as S.Schema<SavedReport>;
 
 export interface ListAccountsRequest {
@@ -1390,24 +887,14 @@ export interface ListAccountsRequest {
   pageSize?: number;
 }
 export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/accounts",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsRequest",
-}) as any as S.Schema<ListAccountsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/accounts","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type AccountList = ReadonlyArray<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(
-  Account,
-) as any as S.Schema<AccountList>;
+export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 /** Response definition for the account list rpc. */
 export interface ListAccountsResponse {
@@ -1417,13 +904,11 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accounts: S.optional(AccountList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAccountsResponse",
-}) as any as S.Schema<ListAccountsResponse>;
+S.Struct({
+  "accounts": S.optional(AccountList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListAccountsResponse" }) as any as S.Schema<ListAccountsResponse>;
 
 export interface ListAccountsAdclientsRequest {
   /** Required. The account which owns the collection of ad clients. Format: accounts/{account} */
@@ -1434,25 +919,15 @@ export interface ListAccountsAdclientsRequest {
   pageSize?: number;
 }
 export const ListAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/adclients",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsAdclientsRequest",
-}) as any as S.Schema<ListAccountsAdclientsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/adclients","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsAdclientsRequest" }) as any as S.Schema<ListAccountsAdclientsRequest>;
 
 export type AdClientList = ReadonlyArray<AdClient>;
-export const AdClientList = /*@__PURE__*/ S.Array(
-  AdClient,
-) as any as S.Schema<AdClientList>;
+export const AdClientList = /*@__PURE__*/ S.Array(AdClient) as any as S.Schema<AdClientList>;
 
 /** Response definition for the ad client list rpc. */
 export interface ListAdClientsResponse {
@@ -1462,13 +937,11 @@ export interface ListAdClientsResponse {
   adClients?: AdClientList;
 }
 export const ListAdClientsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    adClients: S.optional(AdClientList),
-  }),
-).annotate({
-  identifier: "ListAdClientsResponse",
-}) as any as S.Schema<ListAdClientsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "adClients": S.optional(AdClientList),
+}),
+).annotate({ identifier: "ListAdClientsResponse" }) as any as S.Schema<ListAdClientsResponse>;
 
 export interface ListAccountsAdclientsAdunitsRequest {
   /** Required. The ad client which owns the collection of ad units. Format: accounts/{account}/adclients/{adclient} */
@@ -1479,25 +952,15 @@ export interface ListAccountsAdclientsAdunitsRequest {
   pageSize?: number;
 }
 export const ListAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/adunits",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsAdclientsAdunitsRequest",
-}) as any as S.Schema<ListAccountsAdclientsAdunitsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/adunits","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsAdclientsAdunitsRequest" }) as any as S.Schema<ListAccountsAdclientsAdunitsRequest>;
 
 export type AdUnitList = ReadonlyArray<AdUnit>;
-export const AdUnitList = /*@__PURE__*/ S.Array(
-  AdUnit,
-) as any as S.Schema<AdUnitList>;
+export const AdUnitList = /*@__PURE__*/ S.Array(AdUnit) as any as S.Schema<AdUnitList>;
 
 /** Response definition for the adunit list rpc. */
 export interface ListAdUnitsResponse {
@@ -1507,13 +970,11 @@ export interface ListAdUnitsResponse {
   adUnits?: AdUnitList;
 }
 export const ListAdUnitsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    adUnits: S.optional(AdUnitList),
-  }),
-).annotate({
-  identifier: "ListAdUnitsResponse",
-}) as any as S.Schema<ListAdUnitsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "adUnits": S.optional(AdUnitList),
+}),
+).annotate({ identifier: "ListAdUnitsResponse" }) as any as S.Schema<ListAdUnitsResponse>;
 
 export interface ListAccountsAdclientsCustomchannelsRequest {
   /** The maximum number of custom channels to include in the response, used for paging. If unspecified, at most 10000 custom channels will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
@@ -1523,27 +984,16 @@ export interface ListAccountsAdclientsCustomchannelsRequest {
   /** Required. The ad client which owns the collection of custom channels. Format: accounts/{account}/adclients/{adclient} */
   parent: string;
 }
-export const ListAccountsAdclientsCustomchannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/customchannels",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAccountsAdclientsCustomchannelsRequest",
-  }) as any as S.Schema<ListAccountsAdclientsCustomchannelsRequest>;
+export const ListAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/customchannels","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsAdclientsCustomchannelsRequest" }) as any as S.Schema<ListAccountsAdclientsCustomchannelsRequest>;
 
 export type CustomChannelList = ReadonlyArray<CustomChannel>;
-export const CustomChannelList = /*@__PURE__*/ S.Array(
-  CustomChannel,
-) as any as S.Schema<CustomChannelList>;
+export const CustomChannelList = /*@__PURE__*/ S.Array(CustomChannel) as any as S.Schema<CustomChannelList>;
 
 /** Response definition for the custom channel list rpc. */
 export interface ListCustomChannelsResponse {
@@ -1553,13 +1003,11 @@ export interface ListCustomChannelsResponse {
   customChannels?: CustomChannelList;
 }
 export const ListCustomChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    customChannels: S.optional(CustomChannelList),
-  }),
-).annotate({
-  identifier: "ListCustomChannelsResponse",
-}) as any as S.Schema<ListCustomChannelsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "customChannels": S.optional(CustomChannelList),
+}),
+).annotate({ identifier: "ListCustomChannelsResponse" }) as any as S.Schema<ListCustomChannelsResponse>;
 
 export interface ListAccountsAdclientsUrlchannelsRequest {
   /** The maximum number of url channels to include in the response, used for paging. If unspecified, at most 10000 url channels will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
@@ -1569,27 +1017,16 @@ export interface ListAccountsAdclientsUrlchannelsRequest {
   /** A page token, received from a previous `ListUrlChannels` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListUrlChannels` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/urlchannels",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListAccountsAdclientsUrlchannelsRequest",
-}) as any as S.Schema<ListAccountsAdclientsUrlchannelsRequest>;
+export const ListAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/urlchannels","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsAdclientsUrlchannelsRequest" }) as any as S.Schema<ListAccountsAdclientsUrlchannelsRequest>;
 
 export type UrlChannelList = ReadonlyArray<UrlChannel>;
-export const UrlChannelList = /*@__PURE__*/ S.Array(
-  UrlChannel,
-) as any as S.Schema<UrlChannelList>;
+export const UrlChannelList = /*@__PURE__*/ S.Array(UrlChannel) as any as S.Schema<UrlChannelList>;
 
 /** Response definition for the url channels list rpc. */
 export interface ListUrlChannelsResponse {
@@ -1599,13 +1036,11 @@ export interface ListUrlChannelsResponse {
   nextPageToken?: string;
 }
 export const ListUrlChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    urlChannels: S.optional(UrlChannelList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListUrlChannelsResponse",
-}) as any as S.Schema<ListUrlChannelsResponse>;
+S.Struct({
+  "urlChannels": S.optional(UrlChannelList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListUrlChannelsResponse" }) as any as S.Schema<ListUrlChannelsResponse>;
 
 export interface ListAccountsAlertsRequest {
   /** Required. The account which owns the collection of alerts. Format: accounts/{account} */
@@ -1614,26 +1049,13 @@ export interface ListAccountsAlertsRequest {
   languageCode?: string;
 }
 export const ListAccountsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    languageCode: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/alerts",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsAlertsRequest",
-}) as any as S.Schema<ListAccountsAlertsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "languageCode": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/alerts","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsAlertsRequest" }) as any as S.Schema<ListAccountsAlertsRequest>;
 
-export type AlertSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "INFO"
-  | "WARNING"
-  | "SEVERE"
-  | (string & {});
+export type AlertSeverityEnum = "SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "SEVERE";
 export const AlertSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an alert. */
@@ -1648,18 +1070,16 @@ export interface Alert {
   severity?: AlertSeverityEnum;
 }
 export const Alert = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    type: S.optional(S.String),
-    name: S.optional(S.String),
-    severity: S.optional(AlertSeverityEnum),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "type": S.optional(S.String),
+  "name": S.optional(S.String),
+  "severity": S.optional(AlertSeverityEnum),
+}),
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 export type AlertList = ReadonlyArray<Alert>;
-export const AlertList = /*@__PURE__*/ S.Array(
-  Alert,
-) as any as S.Schema<AlertList>;
+export const AlertList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertList>;
 
 /** Response definition for the alerts list rpc. */
 export interface ListAlertsResponse {
@@ -1667,30 +1087,20 @@ export interface ListAlertsResponse {
   alerts?: AlertList;
 }
 export const ListAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alerts: S.optional(AlertList),
-  }),
-).annotate({
-  identifier: "ListAlertsResponse",
-}) as any as S.Schema<ListAlertsResponse>;
+S.Struct({
+  "alerts": S.optional(AlertList),
+}),
+).annotate({ identifier: "ListAlertsResponse" }) as any as S.Schema<ListAlertsResponse>;
 
 export interface ListAccountsPaymentsRequest {
   /** Required. The account which owns the collection of payments. Format: accounts/{account} */
   parent: string;
 }
 export const ListAccountsPaymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/payments",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsPaymentsRequest",
-}) as any as S.Schema<ListAccountsPaymentsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/payments","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsPaymentsRequest" }) as any as S.Schema<ListAccountsPaymentsRequest>;
 
 /** Representation of an unpaid or paid payment. See [Payment timelines for AdSense](https://support.google.com/adsense/answer/7164703) for more information about payments and the [YouTube homepage and payments account](https://support.google.com/adsense/answer/11622510) article for information about dedicated payments accounts for YouTube. */
 export interface Payment {
@@ -1702,17 +1112,15 @@ export interface Payment {
   date?: Adsense_Date;
 }
 export const Payment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    amount: S.optional(S.String),
-    date: S.optional(Adsense_Date),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "amount": S.optional(S.String),
+  "date": S.optional(Adsense_Date),
+}),
 ).annotate({ identifier: "Payment" }) as any as S.Schema<Payment>;
 
 export type PaymentList = ReadonlyArray<Payment>;
-export const PaymentList = /*@__PURE__*/ S.Array(
-  Payment,
-) as any as S.Schema<PaymentList>;
+export const PaymentList = /*@__PURE__*/ S.Array(Payment) as any as S.Schema<PaymentList>;
 
 /** Response definition for the payments list rpc. */
 export interface ListPaymentsResponse {
@@ -1720,12 +1128,10 @@ export interface ListPaymentsResponse {
   payments?: PaymentList;
 }
 export const ListPaymentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    payments: S.optional(PaymentList),
-  }),
-).annotate({
-  identifier: "ListPaymentsResponse",
-}) as any as S.Schema<ListPaymentsResponse>;
+S.Struct({
+  "payments": S.optional(PaymentList),
+}),
+).annotate({ identifier: "ListPaymentsResponse" }) as any as S.Schema<ListPaymentsResponse>;
 
 export interface ListAccountsPolicyIssuesRequest {
   /** A page token, received from a previous `ListPolicyIssues` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPolicyIssues` must match the call that provided the page token. */
@@ -1736,25 +1142,15 @@ export interface ListAccountsPolicyIssuesRequest {
   pageSize?: number;
 }
 export const ListAccountsPolicyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/policyIssues",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsPolicyIssuesRequest",
-}) as any as S.Schema<ListAccountsPolicyIssuesRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/policyIssues","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsPolicyIssuesRequest" }) as any as S.Schema<ListAccountsPolicyIssuesRequest>;
 
 export type PolicyIssueList = ReadonlyArray<PolicyIssue>;
-export const PolicyIssueList = /*@__PURE__*/ S.Array(
-  PolicyIssue,
-) as any as S.Schema<PolicyIssueList>;
+export const PolicyIssueList = /*@__PURE__*/ S.Array(PolicyIssue) as any as S.Schema<PolicyIssueList>;
 
 /** Response definition for the policy issues list rpc. Policy issues are reported only if the publisher has at least one AFC ad client in READY or GETTING_READY state. If the publisher has no such AFC ad client, the response will be an empty list. */
 export interface ListPolicyIssuesResponse {
@@ -1764,13 +1160,11 @@ export interface ListPolicyIssuesResponse {
   nextPageToken?: string;
 }
 export const ListPolicyIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyIssues: S.optional(PolicyIssueList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPolicyIssuesResponse",
-}) as any as S.Schema<ListPolicyIssuesResponse>;
+S.Struct({
+  "policyIssues": S.optional(PolicyIssueList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPolicyIssuesResponse" }) as any as S.Schema<ListPolicyIssuesResponse>;
 
 export interface ListAccountsReportsSavedRequest {
   /** A page token, received from a previous `ListSavedReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSavedReports` must match the call that provided the page token. */
@@ -1781,25 +1175,15 @@ export interface ListAccountsReportsSavedRequest {
   pageSize?: number;
 }
 export const ListAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/reports/saved",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsReportsSavedRequest",
-}) as any as S.Schema<ListAccountsReportsSavedRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/reports/saved","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsReportsSavedRequest" }) as any as S.Schema<ListAccountsReportsSavedRequest>;
 
 export type SavedReportList = ReadonlyArray<SavedReport>;
-export const SavedReportList = /*@__PURE__*/ S.Array(
-  SavedReport,
-) as any as S.Schema<SavedReportList>;
+export const SavedReportList = /*@__PURE__*/ S.Array(SavedReport) as any as S.Schema<SavedReportList>;
 
 /** Response definition for the saved reports list rpc. */
 export interface ListSavedReportsResponse {
@@ -1809,13 +1193,11 @@ export interface ListSavedReportsResponse {
   nextPageToken?: string;
 }
 export const ListSavedReportsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savedReports: S.optional(SavedReportList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSavedReportsResponse",
-}) as any as S.Schema<ListSavedReportsResponse>;
+S.Struct({
+  "savedReports": S.optional(SavedReportList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListSavedReportsResponse" }) as any as S.Schema<ListSavedReportsResponse>;
 
 export interface ListAccountsSitesRequest {
   /** The maximum number of sites to include in the response, used for paging. If unspecified, at most 10000 sites will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
@@ -1826,25 +1208,15 @@ export interface ListAccountsSitesRequest {
   parent: string;
 }
 export const ListAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}/sites",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAccountsSitesRequest",
-}) as any as S.Schema<ListAccountsSitesRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/sites","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListAccountsSitesRequest" }) as any as S.Schema<ListAccountsSitesRequest>;
 
 export type SiteList = ReadonlyArray<Site>;
-export const SiteList = /*@__PURE__*/ S.Array(
-  Site,
-) as any as S.Schema<SiteList>;
+export const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
 
 /** Response definition for the sites list rpc. */
 export interface ListSitesResponse {
@@ -1854,13 +1226,11 @@ export interface ListSitesResponse {
   nextPageToken?: string;
 }
 export const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sites: S.optional(SiteList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSitesResponse",
-}) as any as S.Schema<ListSitesResponse>;
+S.Struct({
+  "sites": S.optional(SiteList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListSitesResponse" }) as any as S.Schema<ListSitesResponse>;
 
 export interface ListChildAccountsAccountsRequest {
   /** A page token, received from a previous `ListChildAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListChildAccounts` must match the call that provided the page token. */
@@ -1871,20 +1241,12 @@ export interface ListChildAccountsAccountsRequest {
   pageSize?: number;
 }
 export const ListChildAccountsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v2/{+parent}:listChildAccounts",
-      baseUrl: "https://adsense.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListChildAccountsAccountsRequest",
-}) as any as S.Schema<ListChildAccountsAccountsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}:listChildAccounts","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListChildAccountsAccountsRequest" }) as any as S.Schema<ListChildAccountsAccountsRequest>;
 
 /** Response definition for the child account list rpc. */
 export interface ListChildAccountsResponse {
@@ -1894,13 +1256,11 @@ export interface ListChildAccountsResponse {
   nextPageToken?: string;
 }
 export const ListChildAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accounts: S.optional(AccountList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListChildAccountsResponse",
-}) as any as S.Schema<ListChildAccountsResponse>;
+S.Struct({
+  "accounts": S.optional(AccountList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListChildAccountsResponse" }) as any as S.Schema<ListChildAccountsResponse>;
 
 export interface ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest {
   /** The maximum number of ad units to include in the response, used for paging. If unspecified, at most 10000 ad units will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
@@ -1910,22 +1270,13 @@ export interface ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest {
   /** Required. The custom channel which owns the collection of ad units. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
   parent: string;
 }
-export const ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}:listLinkedAdUnits",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest",
-  }) as any as S.Schema<ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest>;
+export const ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}:listLinkedAdUnits","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest" }) as any as S.Schema<ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest>;
 
 /** Response definition for the ad units linked to a custom channel list rpc. */
 export interface ListLinkedAdUnitsResponse {
@@ -1935,13 +1286,11 @@ export interface ListLinkedAdUnitsResponse {
   nextPageToken?: string;
 }
 export const ListLinkedAdUnitsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adUnits: S.optional(AdUnitList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLinkedAdUnitsResponse",
-}) as any as S.Schema<ListLinkedAdUnitsResponse>;
+S.Struct({
+  "adUnits": S.optional(AdUnitList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLinkedAdUnitsResponse" }) as any as S.Schema<ListLinkedAdUnitsResponse>;
 
 export interface ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest {
   /** Required. The ad unit which owns the collection of custom channels. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit} */
@@ -1951,22 +1300,13 @@ export interface ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest {
   /** The maximum number of custom channels to include in the response, used for paging. If unspecified, at most 10000 custom channels will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
-export const ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}:listLinkedCustomChannels",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest",
-  }) as any as S.Schema<ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest>;
+export const ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}:listLinkedCustomChannels","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest" }) as any as S.Schema<ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest>;
 
 /** Response definition for the custom channels linked to an adunit list rpc. */
 export interface ListLinkedCustomChannelsResponse {
@@ -1976,13 +1316,11 @@ export interface ListLinkedCustomChannelsResponse {
   customChannels?: CustomChannelList;
 }
 export const ListLinkedCustomChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    customChannels: S.optional(CustomChannelList),
-  }),
-).annotate({
-  identifier: "ListLinkedCustomChannelsResponse",
-}) as any as S.Schema<ListLinkedCustomChannelsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "customChannels": S.optional(CustomChannelList),
+}),
+).annotate({ identifier: "ListLinkedCustomChannelsResponse" }) as any as S.Schema<ListLinkedCustomChannelsResponse>;
 
 export interface PatchAccountsAdclientsAdunitsRequest {
   /** Output only. Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit} */
@@ -1992,22 +1330,13 @@ export interface PatchAccountsAdclientsAdunitsRequest {
   /** Request body */
   body?: AdUnit;
 }
-export const PatchAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(AdUnit.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchAccountsAdclientsAdunitsRequest",
-}) as any as S.Schema<PatchAccountsAdclientsAdunitsRequest>;
+export const PatchAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(AdUnit.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsAdclientsAdunitsRequest" }) as any as S.Schema<PatchAccountsAdclientsAdunitsRequest>;
 
 export interface PatchAccountsAdclientsCustomchannelsRequest {
   /** The list of fields to update. If empty, a full update is performed. */
@@ -2017,29 +1346,15 @@ export interface PatchAccountsAdclientsCustomchannelsRequest {
   /** Request body */
   body?: CustomChannel;
 }
-export const PatchAccountsAdclientsCustomchannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CustomChannel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://adsense.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchAccountsAdclientsCustomchannelsRequest",
-  }) as any as S.Schema<PatchAccountsAdclientsCustomchannelsRequest>;
+export const PatchAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CustomChannel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://adsense.googleapis.com/"})),
+).annotate({ identifier: "PatchAccountsAdclientsCustomchannelsRequest" }) as any as S.Schema<PatchAccountsAdclientsCustomchannelsRequest>;
 
-export type CreateAccountsAdclientsAdunitsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsAdclientsAdunitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an ad unit. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. Note that ad units can only be created for ad clients with an "AFC" product code. For more info see the [AdClient resource](/adsense/management/reference/rest/v2/accounts.adclients). For now, this method can only be used to create `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566 */
 export const createAccountsAdclientsAdunits: API.OperationMethod<
   CreateAccountsAdclientsAdunitsRequest,
@@ -2054,12 +1369,7 @@ export const createAccountsAdclientsAdunits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsAdclientsCustomchannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateAccountsAdclientsCustomchannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a custom channel. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. */
 export const createAccountsAdclientsCustomchannels: API.OperationMethod<
   CreateAccountsAdclientsCustomchannelsRequest,
@@ -2074,12 +1384,7 @@ export const createAccountsAdclientsCustomchannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsAdclientsCustomchannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAccountsAdclientsCustomchannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a custom channel. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. */
 export const deleteAccountsAdclientsCustomchannels: API.OperationMethod<
   DeleteAccountsAdclientsCustomchannelsRequest,
@@ -2109,10 +1414,7 @@ export const generateAccountsReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateAccountsReportsSavedError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GenerateAccountsReportsSavedError = NotFound | Forbidden | GcpOpError;
 /** Generates a saved report. */
 export const generateAccountsReportsSaved: API.OperationMethod<
   GenerateAccountsReportsSavedRequest,
@@ -2142,10 +1444,7 @@ export const generateCsvAccountsReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateCsvAccountsReportsSavedError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GenerateCsvAccountsReportsSavedError = NotFound | Forbidden | GcpOpError;
 /** Generates a csv formatted saved report. */
 export const generateCsvAccountsReportsSaved: API.OperationMethod<
   GenerateCsvAccountsReportsSavedRequest,
@@ -2190,10 +1489,7 @@ export const getAccountsAdclients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsAdclientsAdunitsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsAdclientsAdunitsError = NotFound | Forbidden | GcpOpError;
 /** Gets an ad unit from a specified account and ad client. */
 export const getAccountsAdclientsAdunits: API.OperationMethod<
   GetAccountsAdclientsAdunitsRequest,
@@ -2208,10 +1504,7 @@ export const getAccountsAdclientsAdunits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsAdclientsCustomchannelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsAdclientsCustomchannelsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about the selected custom channel. */
 export const getAccountsAdclientsCustomchannels: API.OperationMethod<
   GetAccountsAdclientsCustomchannelsRequest,
@@ -2226,10 +1519,7 @@ export const getAccountsAdclientsCustomchannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsAdclientsUrlchannelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsAdclientsUrlchannelsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about the selected url channel. */
 export const getAccountsAdclientsUrlchannels: API.OperationMethod<
   GetAccountsAdclientsUrlchannelsRequest,
@@ -2274,10 +1564,7 @@ export const getAccountsSites: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAdBlockingRecoveryTagAccountsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAdBlockingRecoveryTagAccountsError = NotFound | Forbidden | GcpOpError;
 /** Gets the ad blocking recovery tag of an account. */
 export const getAdBlockingRecoveryTagAccounts: API.OperationMethod<
   GetAdBlockingRecoveryTagAccountsRequest,
@@ -2307,10 +1594,7 @@ export const getAdcodeAccountsAdclients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAdcodeAccountsAdclientsAdunitsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAdcodeAccountsAdclientsAdunitsError = NotFound | Forbidden | GcpOpError;
 /** Gets the ad unit code for a given ad unit. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your HTML](https://support.google.com/adsense/answer/9190028). */
 export const getAdcodeAccountsAdclientsAdunits: API.OperationMethod<
   GetAdcodeAccountsAdclientsAdunitsRequest,
@@ -2353,10 +1637,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsAdclientsError = NotFound | Forbidden | GcpOpError;
@@ -2372,16 +1653,10 @@ export const listAccountsAdclients: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAccountsAdclientsAdunitsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsAdclientsAdunitsError = NotFound | Forbidden | GcpOpError;
 /** Lists all ad units under a specified account and ad client. */
 export const listAccountsAdclientsAdunits: API.PaginatedOperationMethod<
   ListAccountsAdclientsAdunitsRequest,
@@ -2394,16 +1669,10 @@ export const listAccountsAdclientsAdunits: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAccountsAdclientsCustomchannelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsAdclientsCustomchannelsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the custom channels available in an ad client. */
 export const listAccountsAdclientsCustomchannels: API.PaginatedOperationMethod<
   ListAccountsAdclientsCustomchannelsRequest,
@@ -2416,16 +1685,10 @@ export const listAccountsAdclientsCustomchannels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListAccountsAdclientsUrlchannelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAccountsAdclientsUrlchannelsError = NotFound | Forbidden | GcpOpError;
 /** Lists active url channels. */
 export const listAccountsAdclientsUrlchannels: API.PaginatedOperationMethod<
   ListAccountsAdclientsUrlchannelsRequest,
@@ -2438,10 +1701,7 @@ export const listAccountsAdclientsUrlchannels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsAlertsError = NotFound | Forbidden | GcpOpError;
@@ -2487,10 +1747,7 @@ export const listAccountsPolicyIssues: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsReportsSavedError = NotFound | Forbidden | GcpOpError;
@@ -2506,10 +1763,7 @@ export const listAccountsReportsSaved: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListAccountsSitesError = NotFound | Forbidden | GcpOpError;
@@ -2525,10 +1779,7 @@ export const listAccountsSites: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListChildAccountsAccountsError = NotFound | Forbidden | GcpOpError;
@@ -2544,16 +1795,10 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListLinkedAdUnitsAccountsAdclientsCustomchannelsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListLinkedAdUnitsAccountsAdclientsCustomchannelsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the ad units available for a custom channel. */
 export const listLinkedAdUnitsAccountsAdclientsCustomchannels: API.PaginatedOperationMethod<
   ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest,
@@ -2566,16 +1811,10 @@ export const listLinkedAdUnitsAccountsAdclientsCustomchannels: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListLinkedCustomChannelsAccountsAdclientsAdunitsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListLinkedCustomChannelsAccountsAdclientsAdunitsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the custom channels available for an ad unit. */
 export const listLinkedCustomChannelsAccountsAdclientsAdunits: API.PaginatedOperationMethod<
   ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest,
@@ -2588,18 +1827,10 @@ export const listLinkedCustomChannelsAccountsAdclientsAdunits: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchAccountsAdclientsAdunitsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsAdclientsAdunitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an ad unit. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. For now, this method can only be used to update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566 */
 export const patchAccountsAdclientsAdunits: API.OperationMethod<
   PatchAccountsAdclientsAdunitsRequest,
@@ -2614,12 +1845,7 @@ export const patchAccountsAdclientsAdunits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountsAdclientsCustomchannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchAccountsAdclientsCustomchannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a custom channel. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. */
 export const patchAccountsAdclientsCustomchannels: API.OperationMethod<
   PatchAccountsAdclientsCustomchannelsRequest,
@@ -2633,3 +1859,4 @@ export const patchAccountsAdclientsCustomchannels: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

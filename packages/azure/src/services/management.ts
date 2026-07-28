@@ -14,15 +14,14 @@ export type { AzureOpError, AzureOpContext };
 
 /** fully qualified resource type which includes provider namespace */
 export type CheckNameAvailabilityRequestType =
-  | "Microsoft.Management/managementGroups"
-  | (string & {});
+  "Microsoft.Management/managementGroups";
 export const CheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
 
 export interface CheckNameAvailabilityRequest {
   /** the name to check for availability */
   name?: string;
   /** fully qualified resource type which includes provider namespace */
-  type?: CheckNameAvailabilityRequestType;
+  type?: CheckNameAvailabilityRequestType | (string & {});
 }
 export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41,7 +40,7 @@ export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNameAvailabilityRequest>;
 
 /** Required if nameAvailable == false. Invalid indicates the name provided does not match the resource provider's naming requirements (incorrect length, unsupported characters, etc.) AlreadyExists indicates that the name is already in use and is therefore unavailable. */
-export type Reason = "Invalid" | "AlreadyExists" | (string & {});
+export type Reason = "Invalid" | "AlreadyExists";
 export const Reason = /*@__PURE__*/ S.String;
 
 /** Describes the result of the request to check management group name availability. */
@@ -68,16 +67,14 @@ export type EntitiesListRequestSearch =
   | "AllowedChildren"
   | "ParentAndFirstLevelChildren"
   | "ParentOnly"
-  | "ChildrenOnly"
-  | (string & {});
+  | "ChildrenOnly";
 export const EntitiesListRequestSearch = /*@__PURE__*/ S.String;
 
 export type EntitiesListRequestView =
   | "FullHierarchy"
   | "GroupsOnly"
   | "SubscriptionsOnly"
-  | "Audit"
-  | (string & {});
+  | "Audit";
 export const EntitiesListRequestView = /*@__PURE__*/ S.String;
 
 export interface EntitiesListRequest {
@@ -90,11 +87,11 @@ export interface EntitiesListRequest {
   /** This parameter specifies the fields to include in the response. Can include any combination of Name,DisplayName,Type,ParentDisplayNameChain,ParentChain, e.g. '$select=Name,DisplayName,Type,ParentDisplayNameChain,ParentNameChain'. When specified the $select parameter can override select in $skipToken. */
   _select?: string;
   /** The $search parameter is used in conjunction with the $filter parameter to return three different outputs depending on the parameter passed in. With $search=AllowedParents the API will return the entity info of all groups that the requested entity will be able to reparent to as determined by the user's permissions. With $search=AllowedChildren the API will return the entity info of all entities that can be added as children of the requested entity. With $search=ParentAndFirstLevelChildren the API will return the parent and first level of children that the user has either direct access to or indirect access via one of their descendants. With $search=ParentOnly the API will return only the group if the user has access to at least one of the descendants of the group. With $search=ChildrenOnly the API will return only the first level of children of the group entity info specified in $filter. The user must have direct access to the children entities or one of it's descendants for it to show up in the results. */
-  _search?: EntitiesListRequestSearch;
+  _search?: EntitiesListRequestSearch | (string & {});
   /** The filter parameter allows you to filter on the the name or display name fields. You can check for equality on the name field (e.g. name eq '{entityName}') and you can check for substrings on either the name or display name fields(e.g. contains(name, '{substringToSearch}'), contains(displayName, '{substringToSearch')). Note that the '{entityName}' and '{substringToSearch}' fields are checked case insensitively. */
   _filter?: string;
   /** The view parameter allows clients to filter the type of data that is returned by the getEntities call. */
-  _view?: EntitiesListRequestView;
+  _view?: EntitiesListRequestView | (string & {});
   /** A filter which allows the get entities call to focus on a particular group (i.e. "$filter=name eq 'groupName'") */
   groupName?: string;
 }
@@ -134,12 +131,7 @@ export const EntityParentGroupInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EntityParentGroupInfo>;
 
 /** The users specific permissions to this item. */
-export type Permissions =
-  | "noaccess"
-  | "view"
-  | "edit"
-  | "delete"
-  | (string & {});
+export type Permissions = "noaccess" | "view" | "edit" | "delete";
 export const Permissions = /*@__PURE__*/ S.String;
 
 /** The parent display name chain from the root group to the immediate parent */
@@ -289,8 +281,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -298,8 +289,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -716,8 +706,7 @@ export const ManagementGroupDetails = /*@__PURE__*/ S.suspend(() =>
 /** The type of child resource. */
 export type ManagementGroupChildType =
   | "Microsoft.Management/managementGroups"
-  | "/subscriptions"
-  | (string & {});
+  | "/subscriptions";
 export const ManagementGroupChildType = /*@__PURE__*/ S.String;
 
 /** The list of children. */
@@ -835,15 +824,14 @@ export const ManagementGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 export type ManagementGroupsGetRequestExpand =
   | "children"
   | "path"
-  | "ancestors"
-  | (string & {});
+  | "ancestors";
 export const ManagementGroupsGetRequestExpand = /*@__PURE__*/ S.String;
 
 export interface ManagementGroupsGetRequest {
   /** Management Group ID. */
   groupId: string;
   /** The $expand=children query string parameter allows clients to request inclusion of children in the response payload. $expand=path includes the path from the root group to the current group. $expand=ancestors includes the ancestor Ids of the current group. */
-  _expand?: ManagementGroupsGetRequestExpand;
+  _expand?: ManagementGroupsGetRequestExpand | (string & {});
   /** The $recurse=true query string parameter allows clients to request inclusion of entire hierarchy in the response payload. Note that $expand=children must be passed up if $recurse is set to true. */
   _recurse?: boolean;
   /** A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription') */
@@ -1378,11 +1366,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1450,8 +1438,7 @@ export type Status =
   | "Started"
   | "Failed"
   | "Cancelled"
-  | "Completed"
-  | (string & {});
+  | "Completed";
 export const Status = /*@__PURE__*/ S.String;
 
 /** The tenant backfill status */

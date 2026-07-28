@@ -77,11 +77,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -118,8 +117,7 @@ export type DashboardTemplateScopeEnum =
   | "team"
   | "organization"
   | "global"
-  | "feature_flag"
-  | (string & {});
+  | "feature_flag";
 export const DashboardTemplateScopeEnum = /*@__PURE__*/ S.String;
 
 export type DashboardTemplateScope = DashboardTemplateScopeEnum | BlankEnum;
@@ -293,16 +291,14 @@ export type DashboardTemplatesListRequestOrdering =
   | "-created_at"
   | "-template_name"
   | "created_at"
-  | "template_name"
-  | (string & {});
+  | "template_name";
 export const DashboardTemplatesListRequestOrdering = /*@__PURE__*/ S.String;
 
 export type DashboardTemplatesListRequestScope =
   | "feature_flag"
   | "global"
   | "organization"
-  | "team"
-  | (string & {});
+  | "team";
 export const DashboardTemplatesListRequestScope = /*@__PURE__*/ S.String;
 
 export interface DashboardTemplatesListRequest {
@@ -315,9 +311,9 @@ export interface DashboardTemplatesListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
   /** Optional. When not using `search`, results are sorted with featured templates first (`is_featured=true`), then by `template_name` (case-insensitive A–Z; `-template_name` for Z–A) or by `created_at` (`-created_at` for newest first). When `search` is set, order is featured first, then relevance rank, then case-insensitive name for ties. */
-  ordering?: DashboardTemplatesListRequestOrdering;
+  ordering?: DashboardTemplatesListRequestOrdering | (string & {});
   /** Optional. `global`: official templates only. `team`: this project's saved templates only (`scope=team` rows for the current project). `organization`: templates shared across all projects in this organization. `feature_flag`: feature-flag dashboard templates only. Omit for official, organization, and this project's templates (default dashboard template picker behavior). */
-  scope?: DashboardTemplatesListRequestScope;
+  scope?: DashboardTemplatesListRequestScope | (string & {});
   /** Optional. Full-text search across template name, tags, and description, ranked by relevance. Use it to find templates for a topic (e.g. `retention`, `revenue`, `product analytics`). */
   search?: string;
 }

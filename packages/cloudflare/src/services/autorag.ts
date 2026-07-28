@@ -18,8 +18,7 @@ export type AiSearchRequestFiltersCase0Type =
   | "gt"
   | "gte"
   | "lt"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const AiSearchRequestFiltersCase0Type = /*@__PURE__*/ S.String;
 
 export type AiSearchRequestFiltersCase0Value = string | number | boolean;
@@ -29,7 +28,7 @@ export const AiSearchRequestFiltersCase0Value = /*@__PURE__*/ S.Unknown.pipe(
 
 export interface AiSearchRequestFiltersCase0 {
   key: string;
-  type: AiSearchRequestFiltersCase0Type;
+  type: AiSearchRequestFiltersCase0Type | (string & {});
   value: AiSearchRequestFiltersCase0Value;
 }
 export const AiSearchRequestFiltersCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -48,8 +47,7 @@ export type AiSearchRequestFiltersCase1FiltersItemType =
   | "gt"
   | "gte"
   | "lt"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const AiSearchRequestFiltersCase1FiltersItemType =
   /*@__PURE__*/ S.String;
 
@@ -62,7 +60,7 @@ export const AiSearchRequestFiltersCase1FiltersItemValue =
 
 export interface AiSearchRequestFiltersCase1FiltersItem {
   key: string;
-  type: AiSearchRequestFiltersCase1FiltersItemType;
+  type: AiSearchRequestFiltersCase1FiltersItemType | (string & {});
   value: AiSearchRequestFiltersCase1FiltersItemValue;
 }
 export const AiSearchRequestFiltersCase1FiltersItem = /*@__PURE__*/ S.suspend(
@@ -82,12 +80,12 @@ export const AiSearchRequestFiltersCase1FiltersList = /*@__PURE__*/ S.Array(
   AiSearchRequestFiltersCase1FiltersItem,
 ) as any as S.Schema<AiSearchRequestFiltersCase1FiltersList>;
 
-export type AiSearchRequestFiltersCase1Type = "and" | "or" | (string & {});
+export type AiSearchRequestFiltersCase1Type = "and" | "or";
 export const AiSearchRequestFiltersCase1Type = /*@__PURE__*/ S.String;
 
 export interface AiSearchRequestFiltersCase1 {
   filters: AiSearchRequestFiltersCase1FiltersList;
-  type: AiSearchRequestFiltersCase1Type;
+  type: AiSearchRequestFiltersCase1Type | (string & {});
 }
 export const AiSearchRequestFiltersCase1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -134,8 +132,7 @@ export type AiSearchRequestModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | ""
-  | (string & {});
+  | "";
 export const AiSearchRequestModel = /*@__PURE__*/ S.String;
 
 export interface AiSearchRequestRankingOptions {
@@ -151,15 +148,12 @@ export const AiSearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "AiSearchRequestRankingOptions",
 }) as any as S.Schema<AiSearchRequestRankingOptions>;
 
-export type AiSearchRequestRerankingModel =
-  | "@cf/baai/bge-reranker-base"
-  | ""
-  | (string & {});
+export type AiSearchRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
 export const AiSearchRequestRerankingModel = /*@__PURE__*/ S.String;
 
 export interface AiSearchRequestReranking {
   enabled?: boolean;
-  model?: AiSearchRequestRerankingModel;
+  model?: AiSearchRequestRerankingModel | (string & {});
 }
 export const AiSearchRequestReranking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -177,7 +171,7 @@ export interface AiSearchRequest {
   query: string;
   filters?: AiSearchRequestFilters;
   maxNumResults?: number;
-  model?: AiSearchRequestModel;
+  model?: AiSearchRequestModel | (string & {});
   rankingOptions?: AiSearchRequestRankingOptions;
   reranking?: AiSearchRequestReranking;
   rewriteQuery?: boolean;
@@ -275,12 +269,7 @@ export const AiSearchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AiSearchResponse",
 }) as any as S.Schema<AiSearchResponse>;
 
-export type FilesRequestStatus =
-  | "completed"
-  | "queued"
-  | "running"
-  | "error"
-  | (string & {});
+export type FilesRequestStatus = "completed" | "queued" | "running" | "error";
 export const FilesRequestStatus = /*@__PURE__*/ S.String;
 
 export interface FilesRequest {
@@ -290,7 +279,7 @@ export interface FilesRequest {
   page?: number;
   perPage?: number;
   search?: string;
-  status?: FilesRequestStatus;
+  status?: FilesRequestStatus | (string & {});
 }
 export const FilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -352,7 +341,7 @@ export const JobsGetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "JobsGetRequest" }) as any as S.Schema<JobsGetRequest>;
 
-export type JobsGetResponseSource = "user" | "schedule" | (string & {});
+export type JobsGetResponseSource = "user" | "schedule";
 export const JobsGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -401,7 +390,7 @@ export const JobsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsListRequest",
 }) as any as S.Schema<JobsListRequest>;
 
-export type JobsListResultItemSource = "user" | "schedule" | (string & {});
+export type JobsListResultItemSource = "user" | "schedule";
 export const JobsListResultItemSource = /*@__PURE__*/ S.String;
 
 export interface JobsListResultItem {
@@ -498,8 +487,7 @@ export type SearchRequestFiltersCase0Type =
   | "gt"
   | "gte"
   | "lt"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const SearchRequestFiltersCase0Type = /*@__PURE__*/ S.String;
 
 export type SearchRequestFiltersCase0Value = string | number | boolean;
@@ -509,7 +497,7 @@ export const SearchRequestFiltersCase0Value = /*@__PURE__*/ S.Unknown.pipe(
 
 export interface SearchRequestFiltersCase0 {
   key: string;
-  type: SearchRequestFiltersCase0Type;
+  type: SearchRequestFiltersCase0Type | (string & {});
   value: SearchRequestFiltersCase0Value;
 }
 export const SearchRequestFiltersCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -528,8 +516,7 @@ export type SearchRequestFiltersCase1FiltersItemType =
   | "gt"
   | "gte"
   | "lt"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const SearchRequestFiltersCase1FiltersItemType = /*@__PURE__*/ S.String;
 
 export type SearchRequestFiltersCase1FiltersItemValue =
@@ -541,7 +528,7 @@ export const SearchRequestFiltersCase1FiltersItemValue =
 
 export interface SearchRequestFiltersCase1FiltersItem {
   key: string;
-  type: SearchRequestFiltersCase1FiltersItemType;
+  type: SearchRequestFiltersCase1FiltersItemType | (string & {});
   value: SearchRequestFiltersCase1FiltersItemValue;
 }
 export const SearchRequestFiltersCase1FiltersItem = /*@__PURE__*/ S.suspend(
@@ -561,12 +548,12 @@ export const SearchRequestFiltersCase1FiltersList = /*@__PURE__*/ S.Array(
   SearchRequestFiltersCase1FiltersItem,
 ) as any as S.Schema<SearchRequestFiltersCase1FiltersList>;
 
-export type SearchRequestFiltersCase1Type = "and" | "or" | (string & {});
+export type SearchRequestFiltersCase1Type = "and" | "or";
 export const SearchRequestFiltersCase1Type = /*@__PURE__*/ S.String;
 
 export interface SearchRequestFiltersCase1 {
   filters: SearchRequestFiltersCase1FiltersList;
-  type: SearchRequestFiltersCase1Type;
+  type: SearchRequestFiltersCase1Type | (string & {});
 }
 export const SearchRequestFiltersCase1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -600,15 +587,12 @@ export const SearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchRequestRankingOptions",
 }) as any as S.Schema<SearchRequestRankingOptions>;
 
-export type SearchRequestRerankingModel =
-  | "@cf/baai/bge-reranker-base"
-  | ""
-  | (string & {});
+export type SearchRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
 export const SearchRequestRerankingModel = /*@__PURE__*/ S.String;
 
 export interface SearchRequestReranking {
   enabled?: boolean;
-  model?: SearchRequestRerankingModel;
+  model?: SearchRequestRerankingModel | (string & {});
 }
 export const SearchRequestReranking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

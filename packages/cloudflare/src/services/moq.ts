@@ -259,7 +259,7 @@ export const RelaysGetResponseConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelaysGetResponseConfig",
 }) as any as S.Schema<RelaysGetResponseConfig>;
 
-export type RelaysGetResponseStatus = "connected" | (string & {});
+export type RelaysGetResponseStatus = "connected";
 export const RelaysGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -355,10 +355,7 @@ export const ListRelaysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRelaysResponse",
 }) as any as S.Schema<ListRelaysResponse>;
 
-export type RelaysTokensRotateRequestType =
-  | "publish_subscribe"
-  | "subscribe"
-  | (string & {});
+export type RelaysTokensRotateRequestType = "publish_subscribe" | "subscribe";
 export const RelaysTokensRotateRequestType = /*@__PURE__*/ S.String;
 
 export interface RotateRelayTokenRequest {
@@ -366,7 +363,7 @@ export interface RotateRelayTokenRequest {
   accountId: string;
   relayId: string;
   /** Which token type to rotate. */
-  type: RelaysTokensRotateRequestType;
+  type: RelaysTokensRotateRequestType | (string & {});
 }
 export const RotateRelayTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -386,10 +383,7 @@ export const RotateRelayTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RotateRelayTokenRequest",
 }) as any as S.Schema<RotateRelayTokenRequest>;
 
-export type RelaysTokensRotateResponseType =
-  | "publish_subscribe"
-  | "subscribe"
-  | (string & {});
+export type RelaysTokensRotateResponseType = "publish_subscribe" | "subscribe";
 export const RelaysTokensRotateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -568,7 +562,7 @@ export const RelaysUpdateResponseConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelaysUpdateResponseConfig",
 }) as any as S.Schema<RelaysUpdateResponseConfig>;
 
-export type RelaysUpdateResponseStatus = "connected" | (string & {});
+export type RelaysUpdateResponseStatus = "connected";
 export const RelaysUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

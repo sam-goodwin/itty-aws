@@ -2006,7 +2006,7 @@ export const CancelExportTaskMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelExportTaskMessage>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
-export type ExportSourceType = "SNAPSHOT" | "CLUSTER" | (string & {});
+export type ExportSourceType = "SNAPSHOT" | "CLUSTER";
 export const ExportSourceType = /*@__PURE__*/ S.String;
 
 export interface ExportTask {
@@ -2140,11 +2140,7 @@ export type AvailabilityZones = string[];
 export const AvailabilityZones = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("AvailabilityZone")),
 );
-export type StorageEncryptionType =
-  | "none"
-  | "sse-kms"
-  | "sse-rds"
-  | (string & {});
+export type StorageEncryptionType = "none" | "sse-kms" | "sse-rds";
 export const StorageEncryptionType = /*@__PURE__*/ S.String;
 
 export interface DBClusterSnapshot {
@@ -2997,7 +2993,7 @@ export const ScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScalingConfiguration",
 }) as any as S.Schema<ScalingConfiguration>;
-export type ReplicaMode = "open-read-only" | "mounted" | (string & {});
+export type ReplicaMode = "open-read-only" | "mounted";
 export const ReplicaMode = /*@__PURE__*/ S.String;
 
 export interface RdsCustomClusterConfiguration {
@@ -3029,10 +3025,10 @@ export const ServerlessV2ScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServerlessV2ScalingConfiguration",
 }) as any as S.Schema<ServerlessV2ScalingConfiguration>;
-export type DatabaseInsightsMode = "standard" | "advanced" | (string & {});
+export type DatabaseInsightsMode = "standard" | "advanced";
 export const DatabaseInsightsMode = /*@__PURE__*/ S.String;
 
-export type ClusterScalabilityType = "standard" | "limitless" | (string & {});
+export type ClusterScalabilityType = "standard" | "limitless";
 export const ClusterScalabilityType = /*@__PURE__*/ S.String;
 
 export interface TagSpecification {
@@ -3050,10 +3046,7 @@ export const TagSpecificationList = /*@__PURE__*/ S.Array(
     identifier: "TagSpecification",
   }),
 );
-export type MasterUserAuthenticationType =
-  | "password"
-  | "iam-db-auth"
-  | (string & {});
+export type MasterUserAuthenticationType = "password" | "iam-db-auth";
 export const MasterUserAuthenticationType = /*@__PURE__*/ S.String;
 
 export interface CreateDBClusterMessage {
@@ -3101,12 +3094,12 @@ export interface CreateDBClusterMessage {
   ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfiguration;
   MonitoringInterval?: number;
   MonitoringRoleArn?: string;
-  DatabaseInsightsMode?: DatabaseInsightsMode;
+  DatabaseInsightsMode?: DatabaseInsightsMode | (string & {});
   EnablePerformanceInsights?: boolean;
   PerformanceInsightsKMSKeyId?: string;
   PerformanceInsightsRetentionPeriod?: number;
   EnableLimitlessDatabase?: boolean;
-  ClusterScalabilityType?: ClusterScalabilityType;
+  ClusterScalabilityType?: ClusterScalabilityType | (string & {});
   DBSystemId?: string;
   ManageMasterUserPassword?: boolean;
   EnableLocalWriteForwarding?: boolean;
@@ -3114,7 +3107,7 @@ export interface CreateDBClusterMessage {
   CACertificateIdentifier?: string;
   EngineLifecycleSupport?: string;
   TagSpecifications?: TagSpecification[];
-  MasterUserAuthenticationType?: MasterUserAuthenticationType;
+  MasterUserAuthenticationType?: MasterUserAuthenticationType | (string & {});
   WithExpressConfiguration?: boolean;
 }
 export const CreateDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
@@ -3212,7 +3205,7 @@ export const DBClusterOptionGroupMemberships = /*@__PURE__*/ S.Array(
     identifier: "DBClusterOptionGroupStatus",
   }),
 );
-export type UpgradeRolloutOrder = "first" | "second" | "last" | (string & {});
+export type UpgradeRolloutOrder = "first" | "second" | "last";
 export const UpgradeRolloutOrder = /*@__PURE__*/ S.String;
 
 export type ReadReplicaIdentifierList = string[];
@@ -3357,15 +3350,14 @@ export const ScalingConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScalingConfigurationInfo",
 }) as any as S.Schema<ScalingConfigurationInfo>;
-export type ActivityStreamMode = "sync" | "async" | (string & {});
+export type ActivityStreamMode = "sync" | "async";
 export const ActivityStreamMode = /*@__PURE__*/ S.String;
 
 export type ActivityStreamStatus =
   | "stopped"
   | "starting"
   | "started"
-  | "stopping"
-  | (string & {});
+  | "stopping";
 export const ActivityStreamStatus = /*@__PURE__*/ S.String;
 
 export interface DomainMembership {
@@ -3401,8 +3393,7 @@ export type WriteForwardingStatus =
   | "disabled"
   | "enabling"
   | "disabling"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const WriteForwardingStatus = /*@__PURE__*/ S.String;
 
 export interface ServerlessV2ScalingConfigurationInfo {
@@ -3439,8 +3430,7 @@ export type LocalWriteForwardingStatus =
   | "disabled"
   | "enabling"
   | "disabling"
-  | "requested"
-  | (string & {});
+  | "requested";
 export const LocalWriteForwardingStatus = /*@__PURE__*/ S.String;
 
 export type LimitlessDatabaseStatus =
@@ -3451,8 +3441,7 @@ export type LimitlessDatabaseStatus =
   | "enabling"
   | "disabling"
   | "modifying-max-capacity"
-  | "error"
-  | (string & {});
+  | "error";
 export const LimitlessDatabaseStatus = /*@__PURE__*/ S.String;
 
 export interface LimitlessDatabase {
@@ -3850,7 +3839,7 @@ export interface CreateDBInstanceMessage {
   PromotionTier?: number;
   Timezone?: string;
   EnableIAMDatabaseAuthentication?: boolean;
-  DatabaseInsightsMode?: DatabaseInsightsMode;
+  DatabaseInsightsMode?: DatabaseInsightsMode | (string & {});
   EnablePerformanceInsights?: boolean;
   PerformanceInsightsKMSKeyId?: string;
   PerformanceInsightsRetentionPeriod?: number;
@@ -3871,7 +3860,7 @@ export interface CreateDBInstanceMessage {
   EngineLifecycleSupport?: string;
   AdditionalStorageVolumes?: AdditionalStorageVolume[];
   TagSpecifications?: TagSpecification[];
-  MasterUserAuthenticationType?: MasterUserAuthenticationType;
+  MasterUserAuthenticationType?: MasterUserAuthenticationType | (string & {});
 }
 export const CreateDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4038,7 +4027,7 @@ export const DBSubnetGroup = /*@__PURE__*/ S.suspend(() =>
     SupportedNetworkTypes: S.optional(StringList),
   }),
 ).annotate({ identifier: "DBSubnetGroup" }) as any as S.Schema<DBSubnetGroup>;
-export type AutomationMode = "full" | "all-paused" | (string & {});
+export type AutomationMode = "full" | "all-paused";
 export const AutomationMode = /*@__PURE__*/ S.String;
 
 export interface PendingModifiedValues {
@@ -4182,8 +4171,7 @@ export type ActivityStreamPolicyStatus =
   | "locked"
   | "unlocked"
   | "locking-policy"
-  | "unlocking-policy"
-  | (string & {});
+  | "unlocking-policy";
 export const ActivityStreamPolicyStatus = /*@__PURE__*/ S.String;
 
 export interface AdditionalStorageVolumeOutput {
@@ -4452,7 +4440,7 @@ export interface CreateDBInstanceReadReplicaMessage {
   KmsKeyId?: string;
   PreSignedUrl?: string | redacted.Redacted<string>;
   EnableIAMDatabaseAuthentication?: boolean;
-  DatabaseInsightsMode?: DatabaseInsightsMode;
+  DatabaseInsightsMode?: DatabaseInsightsMode | (string & {});
   EnablePerformanceInsights?: boolean;
   PerformanceInsightsKMSKeyId?: string;
   PerformanceInsightsRetentionPeriod?: number;
@@ -4466,7 +4454,7 @@ export interface CreateDBInstanceReadReplicaMessage {
   DomainOu?: string;
   DomainAuthSecretArn?: string;
   DomainDnsIps?: string[];
-  ReplicaMode?: ReplicaMode;
+  ReplicaMode?: ReplicaMode | (string & {});
   EnableCustomerOwnedIp?: boolean;
   NetworkType?: string;
   MaxAllocatedStorage?: number;
@@ -4594,18 +4582,18 @@ export const CreateDBParameterGroupResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDBParameterGroupResult",
 }) as any as S.Schema<CreateDBParameterGroupResult>;
 export type DBProxyName = string;
-export type EngineFamily = "MYSQL" | "POSTGRESQL" | "SQLSERVER" | (string & {});
+export type EngineFamily = "MYSQL" | "POSTGRESQL" | "SQLSERVER";
 export const EngineFamily = /*@__PURE__*/ S.String;
 
-export type DefaultAuthScheme = "IAM_AUTH" | "NONE" | (string & {});
+export type DefaultAuthScheme = "IAM_AUTH" | "NONE";
 export const DefaultAuthScheme = /*@__PURE__*/ S.String;
 
 export type AuthUserName = string;
-export type AuthScheme = "SECRETS" | (string & {});
+export type AuthScheme = "SECRETS";
 export const AuthScheme = /*@__PURE__*/ S.String;
 
 export type Arn = string;
-export type IAMAuthMode = "DISABLED" | "REQUIRED" | "ENABLED" | (string & {});
+export type IAMAuthMode = "DISABLED" | "REQUIRED" | "ENABLED";
 export const IAMAuthMode = /*@__PURE__*/ S.String;
 
 export type ClientPasswordAuthType =
@@ -4613,17 +4601,16 @@ export type ClientPasswordAuthType =
   | "MYSQL_CACHING_SHA2_PASSWORD"
   | "POSTGRES_SCRAM_SHA_256"
   | "POSTGRES_MD5"
-  | "SQL_SERVER_AUTHENTICATION"
-  | (string & {});
+  | "SQL_SERVER_AUTHENTICATION";
 export const ClientPasswordAuthType = /*@__PURE__*/ S.String;
 
 export interface UserAuthConfig {
   Description?: string;
   UserName?: string;
-  AuthScheme?: AuthScheme;
+  AuthScheme?: AuthScheme | (string & {});
   SecretArn?: string;
-  IAMAuth?: IAMAuthMode;
-  ClientPasswordAuthType?: ClientPasswordAuthType;
+  IAMAuth?: IAMAuthMode | (string & {});
+  ClientPasswordAuthType?: ClientPasswordAuthType | (string & {});
 }
 export const UserAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4637,16 +4624,16 @@ export const UserAuthConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserAuthConfig" }) as any as S.Schema<UserAuthConfig>;
 export type UserAuthConfigList = UserAuthConfig[];
 export const UserAuthConfigList = /*@__PURE__*/ S.Array(UserAuthConfig);
-export type EndpointNetworkType = "IPV4" | "IPV6" | "DUAL" | (string & {});
+export type EndpointNetworkType = "IPV4" | "IPV6" | "DUAL";
 export const EndpointNetworkType = /*@__PURE__*/ S.String;
 
-export type TargetConnectionNetworkType = "IPV4" | "IPV6" | (string & {});
+export type TargetConnectionNetworkType = "IPV4" | "IPV6";
 export const TargetConnectionNetworkType = /*@__PURE__*/ S.String;
 
 export interface CreateDBProxyRequest {
   DBProxyName?: string;
-  EngineFamily?: EngineFamily;
-  DefaultAuthScheme?: DefaultAuthScheme;
+  EngineFamily?: EngineFamily | (string & {});
+  DefaultAuthScheme?: DefaultAuthScheme | (string & {});
   Auth?: UserAuthConfig[];
   RoleArn?: string;
   VpcSubnetIds?: string[];
@@ -4655,8 +4642,8 @@ export interface CreateDBProxyRequest {
   IdleClientTimeout?: number;
   DebugLogging?: boolean;
   Tags?: Tag[];
-  EndpointNetworkType?: EndpointNetworkType;
-  TargetConnectionNetworkType?: TargetConnectionNetworkType;
+  EndpointNetworkType?: EndpointNetworkType | (string & {});
+  TargetConnectionNetworkType?: TargetConnectionNetworkType | (string & {});
 }
 export const CreateDBProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4696,8 +4683,7 @@ export type DBProxyStatus =
   | "deleting"
   | "suspended"
   | "suspending"
-  | "reactivating"
-  | (string & {});
+  | "reactivating";
 export const DBProxyStatus = /*@__PURE__*/ S.String;
 
 export interface UserAuthConfigInfo {
@@ -4777,10 +4763,7 @@ export const CreateDBProxyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDBProxyResponse",
 }) as any as S.Schema<CreateDBProxyResponse>;
 export type DBProxyEndpointName = string;
-export type DBProxyEndpointTargetRole =
-  | "READ_WRITE"
-  | "READ_ONLY"
-  | (string & {});
+export type DBProxyEndpointTargetRole = "READ_WRITE" | "READ_ONLY";
 export const DBProxyEndpointTargetRole = /*@__PURE__*/ S.String;
 
 export interface CreateDBProxyEndpointRequest {
@@ -4788,9 +4771,9 @@ export interface CreateDBProxyEndpointRequest {
   DBProxyEndpointName?: string;
   VpcSubnetIds?: string[];
   VpcSecurityGroupIds?: string[];
-  TargetRole?: DBProxyEndpointTargetRole;
+  TargetRole?: DBProxyEndpointTargetRole | (string & {});
   Tags?: Tag[];
-  EndpointNetworkType?: EndpointNetworkType;
+  EndpointNetworkType?: EndpointNetworkType | (string & {});
 }
 export const CreateDBProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4821,8 +4804,7 @@ export type DBProxyEndpointStatus =
   | "incompatible-network"
   | "insufficient-resource-limits"
   | "creating"
-  | "deleting"
-  | (string & {});
+  | "deleting";
 export const DBProxyEndpointStatus = /*@__PURE__*/ S.String;
 
 export interface DBProxyEndpoint {
@@ -5114,8 +5096,7 @@ export type ReadersArnList = string[];
 export const ReadersArnList = /*@__PURE__*/ S.Array(S.String);
 export type GlobalClusterMemberSynchronizationStatus =
   | "connected"
-  | "pending-resync"
-  | (string & {});
+  | "pending-resync";
 export const GlobalClusterMemberSynchronizationStatus = /*@__PURE__*/ S.String;
 
 export interface GlobalClusterMember {
@@ -5142,11 +5123,7 @@ export const GlobalClusterMemberList = /*@__PURE__*/ S.Array(
     identifier: "GlobalClusterMember",
   }),
 );
-export type FailoverStatus =
-  | "pending"
-  | "failing-over"
-  | "cancelling"
-  | (string & {});
+export type FailoverStatus = "pending" | "failing-over" | "cancelling";
 export const FailoverStatus = /*@__PURE__*/ S.String;
 
 export interface FailoverState {
@@ -5258,8 +5235,7 @@ export type IntegrationStatus =
   | "failed"
   | "deleting"
   | "syncing"
-  | "needs_attention"
-  | (string & {});
+  | "needs_attention";
 export const IntegrationStatus = /*@__PURE__*/ S.String;
 
 export interface IntegrationError {
@@ -6586,7 +6562,7 @@ export const DescribeDBClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDBClusterParametersMessage",
 }) as any as S.Schema<DescribeDBClusterParametersMessage>;
 export type PotentiallySensitiveParameterValue = string;
-export type ApplyMethod = "immediate" | "pending-reboot" | (string & {});
+export type ApplyMethod = "immediate" | "pending-reboot";
 export const ApplyMethod = /*@__PURE__*/ S.String;
 
 export interface Parameter {
@@ -7052,8 +7028,7 @@ export const DescribeDBMajorEngineVersionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeDBMajorEngineVersionsRequest>;
 export type LifecycleSupportName =
   | "open-source-rds-standard-support"
-  | "open-source-rds-extended-support"
-  | (string & {});
+  | "open-source-rds-extended-support";
 export const LifecycleSupportName = /*@__PURE__*/ S.String;
 
 export interface SupportedEngineLifecycle {
@@ -7405,19 +7380,17 @@ export const DescribeDBProxyTargetsRequest = /*@__PURE__*/ S.suspend(() =>
 export type TargetType =
   | "RDS_INSTANCE"
   | "RDS_SERVERLESS_ENDPOINT"
-  | "TRACKED_CLUSTER"
-  | (string & {});
+  | "TRACKED_CLUSTER";
 export const TargetType = /*@__PURE__*/ S.String;
 
-export type TargetRole = "READ_WRITE" | "READ_ONLY" | "UNKNOWN" | (string & {});
+export type TargetRole = "READ_WRITE" | "READ_ONLY" | "UNKNOWN";
 export const TargetRole = /*@__PURE__*/ S.String;
 
 export type TargetState =
   | "REGISTERING"
   | "AVAILABLE"
   | "UNAVAILABLE"
-  | "UNUSED"
-  | (string & {});
+  | "UNUSED";
 export const TargetState = /*@__PURE__*/ S.String;
 
 export type TargetHealthReason =
@@ -7426,8 +7399,7 @@ export type TargetHealthReason =
   | "AUTH_FAILURE"
   | "PENDING_PROXY_CAPACITY"
   | "INVALID_REPLICATION_STATE"
-  | "PROMOTED"
-  | (string & {});
+  | "PROMOTED";
 export const TargetHealthReason = /*@__PURE__*/ S.String;
 
 export interface TargetHealth {
@@ -8223,13 +8195,12 @@ export type SourceType =
   | "db-proxy"
   | "blue-green-deployment"
   | "db-shard-group"
-  | "zero-etl"
-  | (string & {});
+  | "zero-etl";
 export const SourceType = /*@__PURE__*/ S.String;
 
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
-  SourceType?: SourceType;
+  SourceType?: SourceType | (string & {});
   StartTime?: Date;
   EndTime?: Date;
   Duration?: number;
@@ -8347,7 +8318,7 @@ export interface DescribeExportTasksMessage {
   Filters?: Filter[];
   Marker?: string;
   MaxRecords?: number;
-  SourceType?: ExportSourceType;
+  SourceType?: ExportSourceType | (string & {});
 }
 export const DescribeExportTasksMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9640,12 +9611,12 @@ export interface TagListMessage {
 export const TagListMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
 ).annotate({ identifier: "TagListMessage" }) as any as S.Schema<TagListMessage>;
-export type AuditPolicyState = "locked" | "unlocked" | (string & {});
+export type AuditPolicyState = "locked" | "unlocked";
 export const AuditPolicyState = /*@__PURE__*/ S.String;
 
 export interface ModifyActivityStreamRequest {
   ResourceArn?: string;
-  AuditPolicyState?: AuditPolicyState;
+  AuditPolicyState?: AuditPolicyState | (string & {});
 }
 export const ModifyActivityStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9763,15 +9734,14 @@ export const DBClusterCapacityInfo = /*@__PURE__*/ S.suspend(() =>
 export type CustomEngineVersionStatus =
   | "available"
   | "inactive"
-  | "inactive-except-restore"
-  | (string & {});
+  | "inactive-except-restore";
 export const CustomEngineVersionStatus = /*@__PURE__*/ S.String;
 
 export interface ModifyCustomDBEngineVersionMessage {
   Engine?: string;
   EngineVersion?: string;
   Description?: string;
-  Status?: CustomEngineVersionStatus;
+  Status?: CustomEngineVersionStatus | (string & {});
 }
 export const ModifyCustomDBEngineVersionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9840,7 +9810,7 @@ export interface ModifyDBClusterMessage {
   ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfiguration;
   MonitoringInterval?: number;
   MonitoringRoleArn?: string;
-  DatabaseInsightsMode?: DatabaseInsightsMode;
+  DatabaseInsightsMode?: DatabaseInsightsMode | (string & {});
   EnablePerformanceInsights?: boolean;
   PerformanceInsightsKMSKeyId?: string;
   PerformanceInsightsRetentionPeriod?: number;
@@ -9853,7 +9823,7 @@ export interface ModifyDBClusterMessage {
   AwsBackupRecoveryPointArn?: string;
   EnableLimitlessDatabase?: boolean;
   CACertificateIdentifier?: string;
-  MasterUserAuthenticationType?: MasterUserAuthenticationType;
+  MasterUserAuthenticationType?: MasterUserAuthenticationType | (string & {});
 }
 export const ModifyDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10094,7 +10064,7 @@ export interface ModifyDBInstanceMessage {
   DomainIAMRoleName?: string;
   PromotionTier?: number;
   EnableIAMDatabaseAuthentication?: boolean;
-  DatabaseInsightsMode?: DatabaseInsightsMode;
+  DatabaseInsightsMode?: DatabaseInsightsMode | (string & {});
   EnablePerformanceInsights?: boolean;
   PerformanceInsightsKMSKeyId?: string;
   PerformanceInsightsRetentionPeriod?: number;
@@ -10104,8 +10074,8 @@ export interface ModifyDBInstanceMessage {
   DeletionProtection?: boolean;
   MaxAllocatedStorage?: number;
   CertificateRotationRestart?: boolean;
-  ReplicaMode?: ReplicaMode;
-  AutomationMode?: AutomationMode;
+  ReplicaMode?: ReplicaMode | (string & {});
+  AutomationMode?: AutomationMode | (string & {});
   ResumeFullAutomationModeMinutes?: number;
   EnableCustomerOwnedIp?: boolean;
   NetworkType?: string;
@@ -10118,7 +10088,7 @@ export interface ModifyDBInstanceMessage {
   Engine?: string;
   AdditionalStorageVolumes?: ModifyAdditionalStorageVolume[];
   TagSpecifications?: TagSpecification[];
-  MasterUserAuthenticationType?: MasterUserAuthenticationType;
+  MasterUserAuthenticationType?: MasterUserAuthenticationType | (string & {});
 }
 export const ModifyDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10249,7 +10219,7 @@ export const DBParameterGroupNameMessage = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyDBProxyRequest {
   DBProxyName?: string;
   NewDBProxyName?: string;
-  DefaultAuthScheme?: DefaultAuthScheme;
+  DefaultAuthScheme?: DefaultAuthScheme | (string & {});
   Auth?: UserAuthConfig[];
   RequireTLS?: boolean;
   IdleClientTimeout?: number;
@@ -11663,7 +11633,7 @@ export interface RestoreDBInstanceFromS3Message {
   S3BucketName?: string;
   S3Prefix?: string;
   S3IngestionRoleArn?: string;
-  DatabaseInsightsMode?: DatabaseInsightsMode;
+  DatabaseInsightsMode?: DatabaseInsightsMode | (string & {});
   EnablePerformanceInsights?: boolean;
   PerformanceInsightsKMSKeyId?: string;
   PerformanceInsightsRetentionPeriod?: number;
@@ -11942,7 +11912,7 @@ export const RevokeDBSecurityGroupIngressResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeDBSecurityGroupIngressResult>;
 export interface StartActivityStreamRequest {
   ResourceArn?: string;
-  Mode?: ActivityStreamMode;
+  Mode?: ActivityStreamMode | (string & {});
   KmsKeyId?: string;
   ApplyImmediately?: boolean;
   EngineNativeAuditFieldsIncluded?: boolean;

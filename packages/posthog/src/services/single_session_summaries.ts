@@ -17,15 +17,13 @@ export type SingleSessionSummariesListRequestOrder =
   | "-session_start_time"
   | "created_at"
   | "session_duration"
-  | "session_start_time"
-  | (string & {});
+  | "session_start_time";
 export const SingleSessionSummariesListRequestOrder = /*@__PURE__*/ S.String;
 
 export type SingleSessionSummariesListRequestOutcome =
   | "failure"
   | "success"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const SingleSessionSummariesListRequestOutcome = /*@__PURE__*/ S.String;
 
 export interface SingleSessionSummariesListRequest {
@@ -48,9 +46,9 @@ export interface SingleSessionSummariesListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
   /** Ordering field, defaults to `-created_at` (most recent first). Allowed: `created_at`, `session_start_time`, `session_duration` (prefix with `-` for descending). */
-  order?: SingleSessionSummariesListRequestOrder;
+  order?: SingleSessionSummariesListRequestOrder | (string & {});
   /** Filter by the summary's recorded `session_outcome.success` field. `success` for true, `failure` for false, `unknown` for summaries without an outcome. */
-  outcome?: SingleSessionSummariesListRequestOutcome;
+  outcome?: SingleSessionSummariesListRequestOutcome | (string & {});
   /** Comma-separated list of session IDs to restrict the result to (uses the `(team, session_id)` index). */
   session_ids?: string;
 }
@@ -124,11 +122,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

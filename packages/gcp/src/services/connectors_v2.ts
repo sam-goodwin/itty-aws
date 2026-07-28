@@ -13,123 +13,92 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export interface CheckReadinessProjectsLocationsConnectionsRequest {
   name: string;
 }
-export const CheckReadinessProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}:checkReadiness",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CheckReadinessProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<CheckReadinessProjectsLocationsConnectionsRequest>;
+export const CheckReadinessProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}:checkReadiness","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "CheckReadinessProjectsLocationsConnectionsRequest" }) as any as S.Schema<CheckReadinessProjectsLocationsConnectionsRequest>;
 
 /** Response containing status of the connector for readiness prober. */
 export interface CheckReadinessResponse {
   status?: string;
 }
 export const CheckReadinessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckReadinessResponse",
-}) as any as S.Schema<CheckReadinessResponse>;
+S.Struct({
+  "status": S.optional(S.String),
+}),
+).annotate({ identifier: "CheckReadinessResponse" }) as any as S.Schema<CheckReadinessResponse>;
 
 export interface CheckStatusProjectsLocationsConnectionsRequest {
   name: string;
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-export const CheckStatusProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}:checkStatus",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CheckStatusProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<CheckStatusProjectsLocationsConnectionsRequest>;
+export const CheckStatusProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}:checkStatus","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "CheckStatusProjectsLocationsConnectionsRequest" }) as any as S.Schema<CheckStatusProjectsLocationsConnectionsRequest>;
 
-export type CheckStatusResponseStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "ERROR"
-  | "AUTH_ERROR"
-  | (string & {});
+export type CheckStatusResponseStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ERROR" | "AUTH_ERROR";
 export const CheckStatusResponseStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapMap = { [key: string]: DocumentMap | undefined };
-export const DocumentMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DocumentMap,
-) as any as S.Schema<DocumentMapMap>;
+export const DocumentMapMap = /*@__PURE__*/ S.Record(S.String, DocumentMap) as any as S.Schema<DocumentMapMap>;
 
 /** The status of the connector. */
 export interface CheckStatusResponse {
@@ -141,14 +110,12 @@ export interface CheckStatusResponse {
   description?: string;
 }
 export const CheckStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(CheckStatusResponseStateEnum),
-    metadata: S.optional(DocumentMapMap),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckStatusResponse",
-}) as any as S.Schema<CheckStatusResponse>;
+S.Struct({
+  "state": S.optional(CheckStatusResponseStateEnum),
+  "metadata": S.optional(DocumentMapMap),
+  "description": S.optional(S.String),
+}),
+).annotate({ identifier: "CheckStatusResponse" }) as any as S.Schema<CheckStatusResponse>;
 
 /** 'Entity row'/ 'Entity' refers to a single row of an entity type. */
 export interface Entity {
@@ -160,11 +127,11 @@ export interface Entity {
   metadata?: DocumentMapMap;
 }
 export const Entity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    fields: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMapMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "fields": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMapMap),
+}),
 ).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
 
 export interface CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest {
@@ -175,22 +142,13 @@ export interface CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Request body */
   body?: Entity;
 }
-export const CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Entity.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/entities",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+export const CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Entity.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/entities","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest" }) as any as S.Schema<CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
 export interface DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
@@ -200,29 +158,19 @@ export interface DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityT
   /** Required. Conditions to be used when deleting entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. */
   conditions?: string;
 }
-export const DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-      entityType: S.String.pipe(T.Label()),
-      conditions: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+entityType}/entities:deleteEntitiesWithConditions",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-  }) as any as S.Schema<DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+export const DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+  "entityType": S.String.pipe(T.Label()),
+  "conditions": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+entityType}/entities:deleteEntitiesWithConditions","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest" }) as any as S.Schema<DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} */
@@ -230,26 +178,15 @@ export interface DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-export const DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v2/{+name}",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+export const DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest" }) as any as S.Schema<DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** AuthCodeData contains the data the runtime plane will give the connector backend in exchange for access and refresh tokens. */
 export interface AuthCodeData {
@@ -263,12 +200,12 @@ export interface AuthCodeData {
   redirectUri?: string;
 }
 export const AuthCodeData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authCode: S.optional(S.String),
-    scopes: S.optional(StringList),
-    pkceVerifier: S.optional(S.String),
-    redirectUri: S.optional(S.String),
-  }),
+S.Struct({
+  "authCode": S.optional(S.String),
+  "scopes": S.optional(StringList),
+  "pkceVerifier": S.optional(S.String),
+  "redirectUri": S.optional(S.String),
+}),
 ).annotate({ identifier: "AuthCodeData" }) as any as S.Schema<AuthCodeData>;
 
 export interface OAuth2Config {
@@ -280,11 +217,11 @@ export interface OAuth2Config {
   clientSecret?: string;
 }
 export const OAuth2Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authUri: S.optional(S.String),
-    clientId: S.optional(S.String),
-    clientSecret: S.optional(S.String),
-  }),
+S.Struct({
+  "authUri": S.optional(S.String),
+  "clientId": S.optional(S.String),
+  "clientSecret": S.optional(S.String),
+}),
 ).annotate({ identifier: "OAuth2Config" }) as any as S.Schema<OAuth2Config>;
 
 export interface ExecutionConfig {
@@ -292,12 +229,10 @@ export interface ExecutionConfig {
   headers?: string;
 }
 export const ExecutionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecutionConfig",
-}) as any as S.Schema<ExecutionConfig>;
+S.Struct({
+  "headers": S.optional(S.String),
+}),
+).annotate({ identifier: "ExecutionConfig" }) as any as S.Schema<ExecutionConfig>;
 
 /** ExchangeAuthCodeRequest currently includes the auth code data. */
 export interface ExchangeAuthCodeRequest {
@@ -309,35 +244,24 @@ export interface ExchangeAuthCodeRequest {
   executionConfig?: ExecutionConfig;
 }
 export const ExchangeAuthCodeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authCodeData: S.optional(AuthCodeData),
-    oauth2Config: S.optional(OAuth2Config),
-    executionConfig: S.optional(ExecutionConfig),
-  }),
-).annotate({
-  identifier: "ExchangeAuthCodeRequest",
-}) as any as S.Schema<ExchangeAuthCodeRequest>;
+S.Struct({
+  "authCodeData": S.optional(AuthCodeData),
+  "oauth2Config": S.optional(OAuth2Config),
+  "executionConfig": S.optional(ExecutionConfig),
+}),
+).annotate({ identifier: "ExchangeAuthCodeRequest" }) as any as S.Schema<ExchangeAuthCodeRequest>;
 
 export interface ExchangeAuthCodeProjectsLocationsConnectionsRequest {
   name: string;
   /** Request body */
   body?: ExchangeAuthCodeRequest;
 }
-export const ExchangeAuthCodeProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ExchangeAuthCodeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:exchangeAuthCode",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExchangeAuthCodeProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<ExchangeAuthCodeProjectsLocationsConnectionsRequest>;
+export const ExchangeAuthCodeProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ExchangeAuthCodeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:exchangeAuthCode","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ExchangeAuthCodeProjectsLocationsConnectionsRequest" }) as any as S.Schema<ExchangeAuthCodeProjectsLocationsConnectionsRequest>;
 
 /** AccessCredentials includes the OAuth access token, and the other fields returned along with it. */
 export interface AccessCredentials {
@@ -349,14 +273,12 @@ export interface AccessCredentials {
   refreshToken?: string;
 }
 export const AccessCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expiresIn: S.optional(S.String),
-    accessToken: S.optional(S.String),
-    refreshToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccessCredentials",
-}) as any as S.Schema<AccessCredentials>;
+S.Struct({
+  "expiresIn": S.optional(S.String),
+  "accessToken": S.optional(S.String),
+  "refreshToken": S.optional(S.String),
+}),
+).annotate({ identifier: "AccessCredentials" }) as any as S.Schema<AccessCredentials>;
 
 /** ExchangeAuthCodeResponse includes the returned access token and its associated credentials. */
 export interface ExchangeAuthCodeResponse {
@@ -365,24 +287,13 @@ export interface ExchangeAuthCodeResponse {
   accessCredentials?: AccessCredentials;
 }
 export const ExchangeAuthCodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMapMap),
-    accessCredentials: S.optional(AccessCredentials),
-  }),
-).annotate({
-  identifier: "ExchangeAuthCodeResponse",
-}) as any as S.Schema<ExchangeAuthCodeResponse>;
+S.Struct({
+  "metadata": S.optional(DocumentMapMap),
+  "accessCredentials": S.optional(AccessCredentials),
+}),
+).annotate({ identifier: "ExchangeAuthCodeResponse" }) as any as S.Schema<ExchangeAuthCodeResponse>;
 
-export type ExecuteHttpRequestRequestHttpMethodEnum =
-  | "HTTP_METHOD_UNSPECIFIED"
-  | "HTTP_METHOD_GET"
-  | "HTTP_METHOD_POST"
-  | "HTTP_METHOD_PUT"
-  | "HTTP_METHOD_PATCH"
-  | "HTTP_METHOD_DELETE"
-  | "HTTP_METHOD_HEAD"
-  | "HTTP_METHOD_OPTIONS"
-  | (string & {});
+export type ExecuteHttpRequestRequestHttpMethodEnum = "HTTP_METHOD_UNSPECIFIED" | "HTTP_METHOD_GET" | "HTTP_METHOD_POST" | "HTTP_METHOD_PUT" | "HTTP_METHOD_PATCH" | "HTTP_METHOD_DELETE" | "HTTP_METHOD_HEAD" | "HTTP_METHOD_OPTIONS";
 export const ExecuteHttpRequestRequestHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** A single HTTP header. Keys are case-insensitive. Multiple headers with the same key may be present. */
@@ -393,16 +304,14 @@ export interface HttpHeader {
   value?: string;
 }
 export const HttpHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
+S.Struct({
+  "key": S.optional(S.String),
+  "value": S.optional(S.String),
+}),
 ).annotate({ identifier: "HttpHeader" }) as any as S.Schema<HttpHeader>;
 
 export type HttpHeaderList = ReadonlyArray<HttpHeader>;
-export const HttpHeaderList = /*@__PURE__*/ S.Array(
-  HttpHeader,
-) as any as S.Schema<HttpHeaderList>;
+export const HttpHeaderList = /*@__PURE__*/ S.Array(HttpHeader) as any as S.Schema<HttpHeaderList>;
 
 export interface ExecuteHttpRequestRequest {
   /** Required. The fully resolved absolute target URL. Callers must pre-encode any query parameters. */
@@ -410,20 +319,18 @@ export interface ExecuteHttpRequestRequest {
   /** Raw byte payload. Used for all pre-serialized formats including JSON, XML, GraphQL, and Multipart. */
   rawBody?: string;
   /** Required. The HTTP method to use for the request. */
-  httpMethod?: ExecuteHttpRequestRequestHttpMethodEnum;
+  httpMethod?: ExecuteHttpRequestRequestHttpMethodEnum | (string & {});
   /** HTTP headers to send with the request (e.g., Content-Type: application/json). Order is preserved and duplicate keys are allowed. */
   headers?: HttpHeaderList;
 }
 export const ExecuteHttpRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    rawBody: S.optional(S.String),
-    httpMethod: S.optional(ExecuteHttpRequestRequestHttpMethodEnum),
-    headers: S.optional(HttpHeaderList),
-  }),
-).annotate({
-  identifier: "ExecuteHttpRequestRequest",
-}) as any as S.Schema<ExecuteHttpRequestRequest>;
+S.Struct({
+  "url": S.optional(S.String),
+  "rawBody": S.optional(S.String),
+  "httpMethod": S.optional(ExecuteHttpRequestRequestHttpMethodEnum),
+  "headers": S.optional(HttpHeaderList),
+}),
+).annotate({ identifier: "ExecuteHttpRequestRequest" }) as any as S.Schema<ExecuteHttpRequestRequest>;
 
 export interface ExecuteHttpRequestProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
@@ -431,21 +338,12 @@ export interface ExecuteHttpRequestProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: ExecuteHttpRequestRequest;
 }
-export const ExecuteHttpRequestProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteHttpRequestRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:executeHttpRequest",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecuteHttpRequestProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<ExecuteHttpRequestProjectsLocationsConnectionsRequest>;
+export const ExecuteHttpRequestProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ExecuteHttpRequestRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:executeHttpRequest","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ExecuteHttpRequestProjectsLocationsConnectionsRequest" }) as any as S.Schema<ExecuteHttpRequestProjectsLocationsConnectionsRequest>;
 
 export interface ExecuteHttpRequestResponse {
   /** HTTP headers received in the response. Order is preserved and duplicate keys are allowed (e.g., multiple Set-Cookie headers). */
@@ -458,15 +356,13 @@ export interface ExecuteHttpRequestResponse {
   reason?: string;
 }
 export const ExecuteHttpRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.optional(HttpHeaderList),
-    body: S.optional(S.String),
-    statusCode: S.optional(S.Number),
-    reason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecuteHttpRequestResponse",
-}) as any as S.Schema<ExecuteHttpRequestResponse>;
+S.Struct({
+  "headers": S.optional(HttpHeaderList),
+  "body": S.optional(S.String),
+  "statusCode": S.optional(S.Number),
+  "reason": S.optional(S.String),
+}),
+).annotate({ identifier: "ExecuteHttpRequestResponse" }) as any as S.Schema<ExecuteHttpRequestResponse>;
 
 /** Request message for ActionService.ExecuteAction */
 export interface ExecuteActionRequest {
@@ -476,13 +372,11 @@ export interface ExecuteActionRequest {
   parameters?: DocumentMap;
 }
 export const ExecuteActionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionConfig: S.optional(ExecutionConfig),
-    parameters: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "ExecuteActionRequest",
-}) as any as S.Schema<ExecuteActionRequest>;
+S.Struct({
+  "executionConfig": S.optional(ExecutionConfig),
+  "parameters": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "ExecuteActionRequest" }) as any as S.Schema<ExecuteActionRequest>;
 
 export interface ExecuteProjectsLocationsConnectionsActionsRequest {
   /** Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} */
@@ -490,26 +384,15 @@ export interface ExecuteProjectsLocationsConnectionsActionsRequest {
   /** Request body */
   body?: ExecuteActionRequest;
 }
-export const ExecuteProjectsLocationsConnectionsActionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteActionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:execute",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecuteProjectsLocationsConnectionsActionsRequest",
-  }) as any as S.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>;
+export const ExecuteProjectsLocationsConnectionsActionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ExecuteActionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:execute","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ExecuteProjectsLocationsConnectionsActionsRequest" }) as any as S.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** Response message for ActionService.ExecuteAction */
 export interface ExecuteActionResponse {
@@ -519,13 +402,11 @@ export interface ExecuteActionResponse {
   metadata?: DocumentMapMap;
 }
 export const ExecuteActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(DocumentMapList),
-    metadata: S.optional(DocumentMapMap),
-  }),
-).annotate({
-  identifier: "ExecuteActionResponse",
-}) as any as S.Schema<ExecuteActionResponse>;
+S.Struct({
+  "results": S.optional(DocumentMapList),
+  "metadata": S.optional(DocumentMapMap),
+}),
+).annotate({ identifier: "ExecuteActionResponse" }) as any as S.Schema<ExecuteActionResponse>;
 
 /** Request message for ConnectorAgentService.ExecuteTool */
 export interface ExecuteToolRequest {
@@ -537,14 +418,12 @@ export interface ExecuteToolRequest {
   parameters?: DocumentMap;
 }
 export const ExecuteToolRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolDefinition: S.optional(DocumentMap),
-    executionConfig: S.optional(ExecutionConfig),
-    parameters: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "ExecuteToolRequest",
-}) as any as S.Schema<ExecuteToolRequest>;
+S.Struct({
+  "toolDefinition": S.optional(DocumentMap),
+  "executionConfig": S.optional(ExecutionConfig),
+  "parameters": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "ExecuteToolRequest" }) as any as S.Schema<ExecuteToolRequest>;
 
 export interface ExecuteProjectsLocationsConnectionsToolsRequest {
   /** Required. Resource name of the Tool. Format: projects/{project}/locations/{location}/connections/{connection}/tools/{tool} */
@@ -552,21 +431,12 @@ export interface ExecuteProjectsLocationsConnectionsToolsRequest {
   /** Request body */
   body?: ExecuteToolRequest;
 }
-export const ExecuteProjectsLocationsConnectionsToolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteToolRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:execute",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecuteProjectsLocationsConnectionsToolsRequest",
-  }) as any as S.Schema<ExecuteProjectsLocationsConnectionsToolsRequest>;
+export const ExecuteProjectsLocationsConnectionsToolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ExecuteToolRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:execute","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ExecuteProjectsLocationsConnectionsToolsRequest" }) as any as S.Schema<ExecuteProjectsLocationsConnectionsToolsRequest>;
 
 /** Response message for ConnectorAgentService.ExecuteTool */
 export interface ExecuteToolResponse {
@@ -578,80 +448,30 @@ export interface ExecuteToolResponse {
   _meta?: DocumentMap;
 }
 export const ExecuteToolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMapMap),
-    _meta: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "ExecuteToolResponse",
-}) as any as S.Schema<ExecuteToolResponse>;
+S.Struct({
+  "result": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMapMap),
+  "_meta": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "ExecuteToolResponse" }) as any as S.Schema<ExecuteToolResponse>;
 
-export type QueryParameterDataTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
-  | "INT"
-  | "SMALLINT"
-  | "DOUBLE"
-  | "DATE"
-  | "DATETIME"
-  | "TIME"
-  | "STRING"
-  | "LONG"
-  | "BOOLEAN"
-  | "DECIMAL"
-  | "UUID"
-  | "BLOB"
-  | "BIT"
-  | "TINYINT"
-  | "INTEGER"
-  | "BIGINT"
-  | "FLOAT"
-  | "REAL"
-  | "NUMERIC"
-  | "CHAR"
-  | "VARCHAR"
-  | "LONGVARCHAR"
-  | "TIMESTAMP"
-  | "NCHAR"
-  | "NVARCHAR"
-  | "LONGNVARCHAR"
-  | "NULL"
-  | "OTHER"
-  | "JAVA_OBJECT"
-  | "DISTINCT"
-  | "STRUCT"
-  | "ARRAY"
-  | "CLOB"
-  | "REF"
-  | "DATALINK"
-  | "ROWID"
-  | "BINARY"
-  | "VARBINARY"
-  | "LONGVARBINARY"
-  | "NCLOB"
-  | "SQLXML"
-  | "REF_CURSOR"
-  | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE"
-  | (string & {});
+export type QueryParameterDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "INT" | "SMALLINT" | "DOUBLE" | "DATE" | "DATETIME" | "TIME" | "STRING" | "LONG" | "BOOLEAN" | "DECIMAL" | "UUID" | "BLOB" | "BIT" | "TINYINT" | "INTEGER" | "BIGINT" | "FLOAT" | "REAL" | "NUMERIC" | "CHAR" | "VARCHAR" | "LONGVARCHAR" | "TIMESTAMP" | "NCHAR" | "NVARCHAR" | "LONGNVARCHAR" | "NULL" | "OTHER" | "JAVA_OBJECT" | "DISTINCT" | "STRUCT" | "ARRAY" | "CLOB" | "REF" | "DATALINK" | "ROWID" | "BINARY" | "VARBINARY" | "LONGVARBINARY" | "NCLOB" | "SQLXML" | "REF_CURSOR" | "TIME_WITH_TIMEZONE" | "TIMESTAMP_WITH_TIMEZONE";
 export const QueryParameterDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Query parameter definition */
 export interface QueryParameter {
   value?: unknown;
-  dataType?: QueryParameterDataTypeEnum;
+  dataType?: QueryParameterDataTypeEnum | (string & {});
 }
 export const QueryParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Unknown),
-    dataType: S.optional(QueryParameterDataTypeEnum),
-  }),
+S.Struct({
+  "value": S.optional(S.Unknown),
+  "dataType": S.optional(QueryParameterDataTypeEnum),
+}),
 ).annotate({ identifier: "QueryParameter" }) as any as S.Schema<QueryParameter>;
 
 export type QueryParameterList = ReadonlyArray<QueryParameter>;
-export const QueryParameterList = /*@__PURE__*/ S.Array(
-  QueryParameter,
-) as any as S.Schema<QueryParameterList>;
+export const QueryParameterList = /*@__PURE__*/ S.Array(QueryParameter) as any as S.Schema<QueryParameterList>;
 
 /** A wrapper around the SQL query statement. This is needed so that the JSON representation of ExecuteSqlQueryRequest has the following format: `{"query":"select *"}`. */
 export interface Query {
@@ -665,12 +485,12 @@ export interface Query {
   queryParameters?: QueryParameterList;
 }
 export const Query = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeout: S.optional(S.String),
-    maxRows: S.optional(S.String),
-    query: S.optional(S.String),
-    queryParameters: S.optional(QueryParameterList),
-  }),
+S.Struct({
+  "timeout": S.optional(S.String),
+  "maxRows": S.optional(S.String),
+  "query": S.optional(S.String),
+  "queryParameters": S.optional(QueryParameterList),
+}),
 ).annotate({ identifier: "Query" }) as any as S.Schema<Query>;
 
 /** An execute sql query request containing the query and the connection to execute it on. */
@@ -679,12 +499,10 @@ export interface ExecuteSqlQueryRequest {
   query?: Query;
 }
 export const ExecuteSqlQueryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(Query),
-  }),
-).annotate({
-  identifier: "ExecuteSqlQueryRequest",
-}) as any as S.Schema<ExecuteSqlQueryRequest>;
+S.Struct({
+  "query": S.optional(Query),
+}),
+).annotate({ identifier: "ExecuteSqlQueryRequest" }) as any as S.Schema<ExecuteSqlQueryRequest>;
 
 export interface ExecuteSqlQueryProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
@@ -692,21 +510,12 @@ export interface ExecuteSqlQueryProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: ExecuteSqlQueryRequest;
 }
-export const ExecuteSqlQueryProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connection: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteSqlQueryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+connection}:executeSqlQuery",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecuteSqlQueryProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<ExecuteSqlQueryProjectsLocationsConnectionsRequest>;
+export const ExecuteSqlQueryProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "connection": S.String.pipe(T.Label()),
+  "body": S.optional(ExecuteSqlQueryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+connection}:executeSqlQuery","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ExecuteSqlQueryProjectsLocationsConnectionsRequest" }) as any as S.Schema<ExecuteSqlQueryProjectsLocationsConnectionsRequest>;
 
 /** A response returned by the connection after executing the sql query. */
 export interface ExecuteSqlQueryResponse {
@@ -714,21 +523,12 @@ export interface ExecuteSqlQueryResponse {
   results?: DocumentMapList;
 }
 export const ExecuteSqlQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(DocumentMapList),
-  }),
-).annotate({
-  identifier: "ExecuteSqlQueryResponse",
-}) as any as S.Schema<ExecuteSqlQueryResponse>;
+S.Struct({
+  "results": S.optional(DocumentMapList),
+}),
+).annotate({ identifier: "ExecuteSqlQueryResponse" }) as any as S.Schema<ExecuteSqlQueryResponse>;
 
-export type ToolNameOperationEnum =
-  | "OPERATION_UNSPECIFIED"
-  | "LIST"
-  | "GET"
-  | "CREATE"
-  | "UPDATE"
-  | "DELETE"
-  | (string & {});
+export type ToolNameOperationEnum = "OPERATION_UNSPECIFIED" | "LIST" | "GET" | "CREATE" | "UPDATE" | "DELETE";
 export const ToolNameOperationEnum = /*@__PURE__*/ S.String;
 
 export interface ToolName {
@@ -740,29 +540,25 @@ export interface ToolName {
   entityName?: string;
 }
 export const ToolName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    operation: S.optional(ToolNameOperationEnum),
-    entityName: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "operation": S.optional(ToolNameOperationEnum),
+  "entityName": S.optional(S.String),
+}),
 ).annotate({ identifier: "ToolName" }) as any as S.Schema<ToolName>;
 
 export type ToolNameList = ReadonlyArray<ToolName>;
-export const ToolNameList = /*@__PURE__*/ S.Array(
-  ToolName,
-) as any as S.Schema<ToolNameList>;
+export const ToolNameList = /*@__PURE__*/ S.Array(ToolName) as any as S.Schema<ToolNameList>;
 
 export interface GenerateCustomToolspecRequest {
   /** list of tools to be generated. */
   toolNames?: ToolNameList;
 }
 export const GenerateCustomToolspecRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolNames: S.optional(ToolNameList),
-  }),
-).annotate({
-  identifier: "GenerateCustomToolspecRequest",
-}) as any as S.Schema<GenerateCustomToolspecRequest>;
+S.Struct({
+  "toolNames": S.optional(ToolNameList),
+}),
+).annotate({ identifier: "GenerateCustomToolspecRequest" }) as any as S.Schema<GenerateCustomToolspecRequest>;
 
 export interface GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
@@ -770,22 +566,12 @@ export interface GenerateConnectionToolspecOverrideProjectsLocationsConnectionsR
   /** Request body */
   body?: GenerateCustomToolspecRequest;
 }
-export const GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GenerateCustomToolspecRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:generateConnectionToolspecOverride",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest>;
+export const GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GenerateCustomToolspecRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:generateConnectionToolspecOverride","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest" }) as any as S.Schema<GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest>;
 
 export interface ToolSpec {
   /** List of tool definitions. */
@@ -794,10 +580,10 @@ export interface ToolSpec {
   toolSpecVersion?: string;
 }
 export const ToolSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolDefinitions: S.optional(DocumentMapList),
-    toolSpecVersion: S.optional(S.String),
-  }),
+S.Struct({
+  "toolDefinitions": S.optional(DocumentMapList),
+  "toolSpecVersion": S.optional(S.String),
+}),
 ).annotate({ identifier: "ToolSpec" }) as any as S.Schema<ToolSpec>;
 
 export interface GenerateCustomToolspecResponse {
@@ -805,160 +591,43 @@ export interface GenerateCustomToolspecResponse {
   toolSpec?: ToolSpec;
 }
 export const GenerateCustomToolspecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolSpec: S.optional(ToolSpec),
-  }),
-).annotate({
-  identifier: "GenerateCustomToolspecResponse",
-}) as any as S.Schema<GenerateCustomToolspecResponse>;
+S.Struct({
+  "toolSpec": S.optional(ToolSpec),
+}),
+).annotate({ identifier: "GenerateCustomToolspecResponse" }) as any as S.Schema<GenerateCustomToolspecResponse>;
 
-export type GetProjectsLocationsConnectionsActionsViewEnum =
-  | "ACTION_SCHEMA_VIEW_UNSPECIFIED"
-  | "ACTION_SCHEMA_VIEW_BASIC"
-  | "ACTION_SCHEMA_VIEW_ENRICHED"
-  | (string & {});
-export const GetProjectsLocationsConnectionsActionsViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsLocationsConnectionsActionsViewEnum = "ACTION_SCHEMA_VIEW_UNSPECIFIED" | "ACTION_SCHEMA_VIEW_BASIC" | "ACTION_SCHEMA_VIEW_ENRICHED";
+export const GetProjectsLocationsConnectionsActionsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsConnectionsActionsRequest {
   /** Specified view of the action schema. */
-  view?: GetProjectsLocationsConnectionsActionsViewEnum;
+  view?: GetProjectsLocationsConnectionsActionsViewEnum | (string & {});
   /** Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} */
   name: string;
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-export const GetProjectsLocationsConnectionsActionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        GetProjectsLocationsConnectionsActionsViewEnum.pipe(T.Query()),
-      ),
-      name: S.String.pipe(T.Label()),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsConnectionsActionsRequest",
-  }) as any as S.Schema<GetProjectsLocationsConnectionsActionsRequest>;
+export const GetProjectsLocationsConnectionsActionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(GetProjectsLocationsConnectionsActionsViewEnum.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsConnectionsActionsRequest" }) as any as S.Schema<GetProjectsLocationsConnectionsActionsRequest>;
 
-export type InputParameterDataTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
-  | "INT"
-  | "SMALLINT"
-  | "DOUBLE"
-  | "DATE"
-  | "DATETIME"
-  | "TIME"
-  | "STRING"
-  | "LONG"
-  | "BOOLEAN"
-  | "DECIMAL"
-  | "UUID"
-  | "BLOB"
-  | "BIT"
-  | "TINYINT"
-  | "INTEGER"
-  | "BIGINT"
-  | "FLOAT"
-  | "REAL"
-  | "NUMERIC"
-  | "CHAR"
-  | "VARCHAR"
-  | "LONGVARCHAR"
-  | "TIMESTAMP"
-  | "NCHAR"
-  | "NVARCHAR"
-  | "LONGNVARCHAR"
-  | "NULL"
-  | "OTHER"
-  | "JAVA_OBJECT"
-  | "DISTINCT"
-  | "STRUCT"
-  | "ARRAY"
-  | "CLOB"
-  | "REF"
-  | "DATALINK"
-  | "ROWID"
-  | "BINARY"
-  | "VARBINARY"
-  | "LONGVARBINARY"
-  | "NCLOB"
-  | "SQLXML"
-  | "REF_CURSOR"
-  | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE"
-  | (string & {});
+export type InputParameterDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "INT" | "SMALLINT" | "DOUBLE" | "DATE" | "DATETIME" | "TIME" | "STRING" | "LONG" | "BOOLEAN" | "DECIMAL" | "UUID" | "BLOB" | "BIT" | "TINYINT" | "INTEGER" | "BIGINT" | "FLOAT" | "REAL" | "NUMERIC" | "CHAR" | "VARCHAR" | "LONGVARCHAR" | "TIMESTAMP" | "NCHAR" | "NVARCHAR" | "LONGNVARCHAR" | "NULL" | "OTHER" | "JAVA_OBJECT" | "DISTINCT" | "STRUCT" | "ARRAY" | "CLOB" | "REF" | "DATALINK" | "ROWID" | "BINARY" | "VARBINARY" | "LONGVARBINARY" | "NCLOB" | "SQLXML" | "REF_CURSOR" | "TIME_WITH_TIMEZONE" | "TIMESTAMP_WITH_TIMEZONE";
 export const InputParameterDataTypeEnum = /*@__PURE__*/ S.String;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 export type JsonSchemaMap = { [key: string]: JsonSchema | undefined };
-export const JsonSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.suspend(() => JsonSchema),
-) as any as S.Schema<JsonSchemaMap>;
+export const JsonSchemaMap = /*@__PURE__*/ S.Record(S.String, S.suspend(() => JsonSchema)) as any as S.Schema<JsonSchemaMap>;
 
 export type JsonSchemaList = ReadonlyArray<JsonSchema>;
-export const JsonSchemaList = /*@__PURE__*/ S.Array(
-  S.suspend(() => JsonSchema),
-) as any as S.Schema<JsonSchemaList>;
+export const JsonSchemaList = /*@__PURE__*/ S.Array(S.suspend(() => JsonSchema)) as any as S.Schema<JsonSchemaList>;
 
-export type JsonSchemaJdbcTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
-  | "INT"
-  | "SMALLINT"
-  | "DOUBLE"
-  | "DATE"
-  | "DATETIME"
-  | "TIME"
-  | "STRING"
-  | "LONG"
-  | "BOOLEAN"
-  | "DECIMAL"
-  | "UUID"
-  | "BLOB"
-  | "BIT"
-  | "TINYINT"
-  | "INTEGER"
-  | "BIGINT"
-  | "FLOAT"
-  | "REAL"
-  | "NUMERIC"
-  | "CHAR"
-  | "VARCHAR"
-  | "LONGVARCHAR"
-  | "TIMESTAMP"
-  | "NCHAR"
-  | "NVARCHAR"
-  | "LONGNVARCHAR"
-  | "NULL"
-  | "OTHER"
-  | "JAVA_OBJECT"
-  | "DISTINCT"
-  | "STRUCT"
-  | "ARRAY"
-  | "CLOB"
-  | "REF"
-  | "DATALINK"
-  | "ROWID"
-  | "BINARY"
-  | "VARBINARY"
-  | "LONGVARBINARY"
-  | "NCLOB"
-  | "SQLXML"
-  | "REF_CURSOR"
-  | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE"
-  | (string & {});
+export type JsonSchemaJdbcTypeEnum = "DATA_TYPE_UNSPECIFIED" | "INT" | "SMALLINT" | "DOUBLE" | "DATE" | "DATETIME" | "TIME" | "STRING" | "LONG" | "BOOLEAN" | "DECIMAL" | "UUID" | "BLOB" | "BIT" | "TINYINT" | "INTEGER" | "BIGINT" | "FLOAT" | "REAL" | "NUMERIC" | "CHAR" | "VARCHAR" | "LONGVARCHAR" | "TIMESTAMP" | "NCHAR" | "NVARCHAR" | "LONGNVARCHAR" | "NULL" | "OTHER" | "JAVA_OBJECT" | "DISTINCT" | "STRUCT" | "ARRAY" | "CLOB" | "REF" | "DATALINK" | "ROWID" | "BINARY" | "VARBINARY" | "LONGVARBINARY" | "NCLOB" | "SQLXML" | "REF_CURSOR" | "TIME_WITH_TIMEZONE" | "TIMESTAMP_WITH_TIMEZONE";
 export const JsonSchemaJdbcTypeEnum = /*@__PURE__*/ S.String;
 
 /** JsonSchema representation of schema metadata */
@@ -1063,57 +732,57 @@ export interface JsonSchema {
   propertyNames?: JsonSchema;
 }
 export const JsonSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    then: S.optional(JsonSchema),
-    exclusiveMaximum: S.optional(S.Unknown),
-    else: S.optional(JsonSchema),
-    minItems: S.optional(S.Number),
-    examples: S.optional(DocumentList),
-    const: S.optional(S.Unknown),
-    patternProperties: S.optional(JsonSchemaMap),
-    not: S.optional(JsonSchema),
-    pattern: S.optional(S.String),
-    $ref: S.optional(S.String),
-    maxLength: S.optional(S.Number),
-    items: S.optional(JsonSchema),
-    contentMediaType: S.optional(S.String),
-    definitions: S.optional(JsonSchemaMap),
-    additionalProperties: S.optional(JsonSchema),
-    required: S.optional(StringList),
-    minimum: S.optional(S.Unknown),
-    enum: S.optional(DocumentList),
-    contains: S.optional(JsonSchema),
-    properties: S.optional(JsonSchemaMap),
-    $defs: S.optional(JsonSchemaMap),
-    writeOnly: S.optional(S.Boolean),
-    additionalDetails: S.optional(DocumentMap),
-    description: S.optional(S.String),
-    uniqueItems: S.optional(S.Boolean),
-    title: S.optional(S.String),
-    maxProperties: S.optional(S.Number),
-    default: S.optional(S.Unknown),
-    $comment: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    allOf: S.optional(JsonSchemaList),
-    multipleOf: S.optional(S.Number),
-    $id: S.optional(S.String),
-    oneOf: S.optional(JsonSchemaList),
-    additionalItems: S.optional(JsonSchema),
-    $schema: S.optional(S.String),
-    anyOf: S.optional(JsonSchemaList),
-    minProperties: S.optional(S.Number),
-    maxItems: S.optional(S.Number),
-    format: S.optional(S.String),
-    jdbcType: S.optional(JsonSchemaJdbcTypeEnum),
-    maximum: S.optional(S.Unknown),
-    contentEncoding: S.optional(S.String),
-    type: S.optional(StringList),
-    exclusiveMinimum: S.optional(S.Unknown),
-    minLength: S.optional(S.Number),
-    dependencies: S.optional(DocumentMap),
-    if: S.optional(JsonSchema),
-    propertyNames: S.optional(JsonSchema),
-  }),
+S.Struct({
+  "then": S.optional(JsonSchema),
+  "exclusiveMaximum": S.optional(S.Unknown),
+  "else": S.optional(JsonSchema),
+  "minItems": S.optional(S.Number),
+  "examples": S.optional(DocumentList),
+  "const": S.optional(S.Unknown),
+  "patternProperties": S.optional(JsonSchemaMap),
+  "not": S.optional(JsonSchema),
+  "pattern": S.optional(S.String),
+  "$ref": S.optional(S.String),
+  "maxLength": S.optional(S.Number),
+  "items": S.optional(JsonSchema),
+  "contentMediaType": S.optional(S.String),
+  "definitions": S.optional(JsonSchemaMap),
+  "additionalProperties": S.optional(JsonSchema),
+  "required": S.optional(StringList),
+  "minimum": S.optional(S.Unknown),
+  "enum": S.optional(DocumentList),
+  "contains": S.optional(JsonSchema),
+  "properties": S.optional(JsonSchemaMap),
+  "$defs": S.optional(JsonSchemaMap),
+  "writeOnly": S.optional(S.Boolean),
+  "additionalDetails": S.optional(DocumentMap),
+  "description": S.optional(S.String),
+  "uniqueItems": S.optional(S.Boolean),
+  "title": S.optional(S.String),
+  "maxProperties": S.optional(S.Number),
+  "default": S.optional(S.Unknown),
+  "$comment": S.optional(S.String),
+  "readOnly": S.optional(S.Boolean),
+  "allOf": S.optional(JsonSchemaList),
+  "multipleOf": S.optional(S.Number),
+  "$id": S.optional(S.String),
+  "oneOf": S.optional(JsonSchemaList),
+  "additionalItems": S.optional(JsonSchema),
+  "$schema": S.optional(S.String),
+  "anyOf": S.optional(JsonSchemaList),
+  "minProperties": S.optional(S.Number),
+  "maxItems": S.optional(S.Number),
+  "format": S.optional(S.String),
+  "jdbcType": S.optional(JsonSchemaJdbcTypeEnum),
+  "maximum": S.optional(S.Unknown),
+  "contentEncoding": S.optional(S.String),
+  "type": S.optional(StringList),
+  "exclusiveMinimum": S.optional(S.Unknown),
+  "minLength": S.optional(S.Number),
+  "dependencies": S.optional(DocumentMap),
+  "if": S.optional(JsonSchema),
+  "propertyNames": S.optional(JsonSchema),
+}),
 ).annotate({ identifier: "JsonSchema" }) as any as S.Schema<JsonSchema>;
 
 /** Input Parameter message contains metadata about the parameters required for executing an Action. */
@@ -1134,69 +803,21 @@ export interface InputParameter {
   additionalDetails?: DocumentMap;
 }
 export const InputParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    dataType: S.optional(InputParameterDataTypeEnum),
-    nullable: S.optional(S.Boolean),
-    defaultValue: S.optional(S.Unknown),
-    name: S.optional(S.String),
-    jsonSchema: S.optional(JsonSchema),
-    additionalDetails: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "description": S.optional(S.String),
+  "dataType": S.optional(InputParameterDataTypeEnum),
+  "nullable": S.optional(S.Boolean),
+  "defaultValue": S.optional(S.Unknown),
+  "name": S.optional(S.String),
+  "jsonSchema": S.optional(JsonSchema),
+  "additionalDetails": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "InputParameter" }) as any as S.Schema<InputParameter>;
 
 export type InputParameterList = ReadonlyArray<InputParameter>;
-export const InputParameterList = /*@__PURE__*/ S.Array(
-  InputParameter,
-) as any as S.Schema<InputParameterList>;
+export const InputParameterList = /*@__PURE__*/ S.Array(InputParameter) as any as S.Schema<InputParameterList>;
 
-export type ResultMetadataDataTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
-  | "INT"
-  | "SMALLINT"
-  | "DOUBLE"
-  | "DATE"
-  | "DATETIME"
-  | "TIME"
-  | "STRING"
-  | "LONG"
-  | "BOOLEAN"
-  | "DECIMAL"
-  | "UUID"
-  | "BLOB"
-  | "BIT"
-  | "TINYINT"
-  | "INTEGER"
-  | "BIGINT"
-  | "FLOAT"
-  | "REAL"
-  | "NUMERIC"
-  | "CHAR"
-  | "VARCHAR"
-  | "LONGVARCHAR"
-  | "TIMESTAMP"
-  | "NCHAR"
-  | "NVARCHAR"
-  | "LONGNVARCHAR"
-  | "NULL"
-  | "OTHER"
-  | "JAVA_OBJECT"
-  | "DISTINCT"
-  | "STRUCT"
-  | "ARRAY"
-  | "CLOB"
-  | "REF"
-  | "DATALINK"
-  | "ROWID"
-  | "BINARY"
-  | "VARBINARY"
-  | "LONGVARBINARY"
-  | "NCLOB"
-  | "SQLXML"
-  | "REF_CURSOR"
-  | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE"
-  | (string & {});
+export type ResultMetadataDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "INT" | "SMALLINT" | "DOUBLE" | "DATE" | "DATETIME" | "TIME" | "STRING" | "LONG" | "BOOLEAN" | "DECIMAL" | "UUID" | "BLOB" | "BIT" | "TINYINT" | "INTEGER" | "BIGINT" | "FLOAT" | "REAL" | "NUMERIC" | "CHAR" | "VARCHAR" | "LONGVARCHAR" | "TIMESTAMP" | "NCHAR" | "NVARCHAR" | "LONGNVARCHAR" | "NULL" | "OTHER" | "JAVA_OBJECT" | "DISTINCT" | "STRUCT" | "ARRAY" | "CLOB" | "REF" | "DATALINK" | "ROWID" | "BINARY" | "VARBINARY" | "LONGVARBINARY" | "NCLOB" | "SQLXML" | "REF_CURSOR" | "TIME_WITH_TIMEZONE" | "TIMESTAMP_WITH_TIMEZONE";
 export const ResultMetadataDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Result Metadata message contains metadata about the result returned after executing an Action. */
@@ -1215,20 +836,18 @@ export interface ResultMetadata {
   description?: string;
 }
 export const ResultMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jsonSchema: S.optional(JsonSchema),
-    nullable: S.optional(S.Boolean),
-    defaultValue: S.optional(S.Unknown),
-    name: S.optional(S.String),
-    dataType: S.optional(ResultMetadataDataTypeEnum),
-    description: S.optional(S.String),
-  }),
+S.Struct({
+  "jsonSchema": S.optional(JsonSchema),
+  "nullable": S.optional(S.Boolean),
+  "defaultValue": S.optional(S.Unknown),
+  "name": S.optional(S.String),
+  "dataType": S.optional(ResultMetadataDataTypeEnum),
+  "description": S.optional(S.String),
+}),
 ).annotate({ identifier: "ResultMetadata" }) as any as S.Schema<ResultMetadata>;
 
 export type ResultMetadataList = ReadonlyArray<ResultMetadata>;
-export const ResultMetadataList = /*@__PURE__*/ S.Array(
-  ResultMetadata,
-) as any as S.Schema<ResultMetadataList>;
+export const ResultMetadataList = /*@__PURE__*/ S.Array(ResultMetadata) as any as S.Schema<ResultMetadataList>;
 
 /** Action message contains metadata information about a single action present in the external system. */
 export interface Action {
@@ -1250,29 +869,24 @@ export interface Action {
   inputJsonSchema?: JsonSchema;
 }
 export const Action = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputParameters: S.optional(InputParameterList),
-    description: S.optional(S.String),
-    resultJsonSchema: S.optional(JsonSchema),
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-    resultMetadata: S.optional(ResultMetadataList),
-    metadata: S.optional(DocumentMapMap),
-    inputJsonSchema: S.optional(JsonSchema),
-  }),
+S.Struct({
+  "inputParameters": S.optional(InputParameterList),
+  "description": S.optional(S.String),
+  "resultJsonSchema": S.optional(JsonSchema),
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+  "resultMetadata": S.optional(ResultMetadataList),
+  "metadata": S.optional(DocumentMapMap),
+  "inputJsonSchema": S.optional(JsonSchema),
+}),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
-export type GetProjectsLocationsConnectionsEntityTypesViewEnum =
-  | "ENTITY_TYPE_SCHEMA_VIEW_UNSPECIFIED"
-  | "ENTITY_TYPE_SCHEMA_VIEW_BASIC"
-  | "ENTITY_TYPE_SCHEMA_VIEW_ENRICHED"
-  | (string & {});
-export const GetProjectsLocationsConnectionsEntityTypesViewEnum =
-  /*@__PURE__*/ S.String;
+export type GetProjectsLocationsConnectionsEntityTypesViewEnum = "ENTITY_TYPE_SCHEMA_VIEW_UNSPECIFIED" | "ENTITY_TYPE_SCHEMA_VIEW_BASIC" | "ENTITY_TYPE_SCHEMA_VIEW_ENRICHED";
+export const GetProjectsLocationsConnectionsEntityTypesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsConnectionsEntityTypesRequest {
   /** Specifies view for entity type schema. */
-  view?: GetProjectsLocationsConnectionsEntityTypesViewEnum;
+  view?: GetProjectsLocationsConnectionsEntityTypesViewEnum | (string & {});
   /** Context metadata for request could be used to fetch customization of entity type schema. */
   contextMetadata?: string;
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType} */
@@ -1280,25 +894,14 @@ export interface GetProjectsLocationsConnectionsEntityTypesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-export const GetProjectsLocationsConnectionsEntityTypesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      view: S.optional(
-        GetProjectsLocationsConnectionsEntityTypesViewEnum.pipe(T.Query()),
-      ),
-      contextMetadata: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsConnectionsEntityTypesRequest",
-  }) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesRequest>;
+export const GetProjectsLocationsConnectionsEntityTypesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "view": S.optional(GetProjectsLocationsConnectionsEntityTypesViewEnum.pipe(T.Query())),
+  "contextMetadata": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsConnectionsEntityTypesRequest" }) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesRequest>;
 
 export interface Reference {
   /** Name of reference entity type. */
@@ -1307,59 +910,13 @@ export interface Reference {
   name?: string;
 }
 export const Reference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Reference" }) as any as S.Schema<Reference>;
 
-export type FieldDataTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
-  | "INT"
-  | "SMALLINT"
-  | "DOUBLE"
-  | "DATE"
-  | "DATETIME"
-  | "TIME"
-  | "STRING"
-  | "LONG"
-  | "BOOLEAN"
-  | "DECIMAL"
-  | "UUID"
-  | "BLOB"
-  | "BIT"
-  | "TINYINT"
-  | "INTEGER"
-  | "BIGINT"
-  | "FLOAT"
-  | "REAL"
-  | "NUMERIC"
-  | "CHAR"
-  | "VARCHAR"
-  | "LONGVARCHAR"
-  | "TIMESTAMP"
-  | "NCHAR"
-  | "NVARCHAR"
-  | "LONGNVARCHAR"
-  | "NULL"
-  | "OTHER"
-  | "JAVA_OBJECT"
-  | "DISTINCT"
-  | "STRUCT"
-  | "ARRAY"
-  | "CLOB"
-  | "REF"
-  | "DATALINK"
-  | "ROWID"
-  | "BINARY"
-  | "VARBINARY"
-  | "LONGVARBINARY"
-  | "NCLOB"
-  | "SQLXML"
-  | "REF_CURSOR"
-  | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE"
-  | (string & {});
+export type FieldDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "INT" | "SMALLINT" | "DOUBLE" | "DATE" | "DATETIME" | "TIME" | "STRING" | "LONG" | "BOOLEAN" | "DECIMAL" | "UUID" | "BLOB" | "BIT" | "TINYINT" | "INTEGER" | "BIGINT" | "FLOAT" | "REAL" | "NUMERIC" | "CHAR" | "VARCHAR" | "LONGVARCHAR" | "TIMESTAMP" | "NCHAR" | "NVARCHAR" | "LONGNVARCHAR" | "NULL" | "OTHER" | "JAVA_OBJECT" | "DISTINCT" | "STRUCT" | "ARRAY" | "CLOB" | "REF" | "DATALINK" | "ROWID" | "BINARY" | "VARBINARY" | "LONGVARBINARY" | "NCLOB" | "SQLXML" | "REF_CURSOR" | "TIME_WITH_TIMEZONE" | "TIMESTAMP_WITH_TIMEZONE";
 export const FieldDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message contains EntityType's Field metadata. */
@@ -1384,39 +941,27 @@ export interface Field {
   dataType?: FieldDataTypeEnum;
 }
 export const Field = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nullable: S.optional(S.Boolean),
-    defaultValue: S.optional(S.Unknown),
-    additionalDetails: S.optional(DocumentMap),
-    description: S.optional(S.String),
-    reference: S.optional(Reference),
-    name: S.optional(S.String),
-    jsonSchema: S.optional(JsonSchema),
-    key: S.optional(S.Boolean),
-    dataType: S.optional(FieldDataTypeEnum),
-  }),
+S.Struct({
+  "nullable": S.optional(S.Boolean),
+  "defaultValue": S.optional(S.Unknown),
+  "additionalDetails": S.optional(DocumentMap),
+  "description": S.optional(S.String),
+  "reference": S.optional(Reference),
+  "name": S.optional(S.String),
+  "jsonSchema": S.optional(JsonSchema),
+  "key": S.optional(S.Boolean),
+  "dataType": S.optional(FieldDataTypeEnum),
+}),
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
 export type FieldList = ReadonlyArray<Field>;
-export const FieldList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<FieldList>;
+export const FieldList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FieldList>;
 
-export type EntityTypeOperationsItemEnum =
-  | "OPERATION_UNSPECIFIED"
-  | "LIST"
-  | "GET"
-  | "CREATE"
-  | "UPDATE"
-  | "DELETE"
-  | (string & {});
+export type EntityTypeOperationsItemEnum = "OPERATION_UNSPECIFIED" | "LIST" | "GET" | "CREATE" | "UPDATE" | "DELETE";
 export const EntityTypeOperationsItemEnum = /*@__PURE__*/ S.String;
 
-export type EntityTypeOperationsItemEnumList =
-  ReadonlyArray<EntityTypeOperationsItemEnum>;
-export const EntityTypeOperationsItemEnumList = /*@__PURE__*/ S.Array(
-  EntityTypeOperationsItemEnum,
-) as any as S.Schema<EntityTypeOperationsItemEnumList>;
+export type EntityTypeOperationsItemEnumList = ReadonlyArray<EntityTypeOperationsItemEnum>;
+export const EntityTypeOperationsItemEnumList = /*@__PURE__*/ S.Array(EntityTypeOperationsItemEnum) as any as S.Schema<EntityTypeOperationsItemEnumList>;
 
 /** EntityType message contains metadata information about a single entity type present in the external system. */
 export interface EntityType {
@@ -1432,14 +977,14 @@ export interface EntityType {
   jsonSchema?: JsonSchema;
 }
 export const EntityType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(FieldList),
-    defaultSortBy: S.optional(S.String),
-    operations: S.optional(EntityTypeOperationsItemEnumList),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMapMap),
-    jsonSchema: S.optional(JsonSchema),
-  }),
+S.Struct({
+  "fields": S.optional(FieldList),
+  "defaultSortBy": S.optional(S.String),
+  "operations": S.optional(EntityTypeOperationsItemEnumList),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMapMap),
+  "jsonSchema": S.optional(JsonSchema),
+}),
 ).annotate({ identifier: "EntityType" }) as any as S.Schema<EntityType>;
 
 export interface GetProjectsLocationsConnectionsEntityTypesEntitiesRequest {
@@ -1448,21 +993,12 @@ export interface GetProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-export const GetProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-  }) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+export const GetProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsConnectionsEntityTypesEntitiesRequest" }) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
 export interface GetProjectsLocationsConnectionsResourcesRequest {
   /** Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} */
@@ -1470,21 +1006,12 @@ export interface GetProjectsLocationsConnectionsResourcesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-export const GetProjectsLocationsConnectionsResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsConnectionsResourcesRequest",
-  }) as any as S.Schema<GetProjectsLocationsConnectionsResourcesRequest>;
+export const GetProjectsLocationsConnectionsResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsConnectionsResourcesRequest" }) as any as S.Schema<GetProjectsLocationsConnectionsResourcesRequest>;
 
 export interface GetResourceResponse {
   /** Metadata for the resource. */
@@ -1497,15 +1024,13 @@ export interface GetResourceResponse {
   metadata?: DocumentMapMap;
 }
 export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _meta: S.optional(DocumentMap),
-    data: S.optional(S.String),
-    mimeType: S.optional(S.String),
-    metadata: S.optional(DocumentMapMap),
-  }),
-).annotate({
-  identifier: "GetResourceResponse",
-}) as any as S.Schema<GetResourceResponse>;
+S.Struct({
+  "_meta": S.optional(DocumentMap),
+  "data": S.optional(S.String),
+  "mimeType": S.optional(S.String),
+  "metadata": S.optional(DocumentMapMap),
+}),
+).annotate({ identifier: "GetResourceResponse" }) as any as S.Schema<GetResourceResponse>;
 
 /** Request message for ConnectorAgentService.GetResourcePost */
 export interface GetResourcePostRequest {
@@ -1515,13 +1040,11 @@ export interface GetResourcePostRequest {
   toolSpec?: ToolSpec;
 }
 export const GetResourcePostRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionConfig: S.optional(ExecutionConfig),
-    toolSpec: S.optional(ToolSpec),
-  }),
-).annotate({
-  identifier: "GetResourcePostRequest",
-}) as any as S.Schema<GetResourcePostRequest>;
+S.Struct({
+  "executionConfig": S.optional(ExecutionConfig),
+  "toolSpec": S.optional(ToolSpec),
+}),
+).annotate({ identifier: "GetResourcePostRequest" }) as any as S.Schema<GetResourcePostRequest>;
 
 export interface GetResourcePostProjectsLocationsConnectionsResourcesRequest {
   /** Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} */
@@ -1529,66 +1052,41 @@ export interface GetResourcePostProjectsLocationsConnectionsResourcesRequest {
   /** Request body */
   body?: GetResourcePostRequest;
 }
-export const GetResourcePostProjectsLocationsConnectionsResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GetResourcePostRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetResourcePostProjectsLocationsConnectionsResourcesRequest",
-  }) as any as S.Schema<GetResourcePostProjectsLocationsConnectionsResourcesRequest>;
+export const GetResourcePostProjectsLocationsConnectionsResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GetResourcePostRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "GetResourcePostProjectsLocationsConnectionsResourcesRequest" }) as any as S.Schema<GetResourcePostProjectsLocationsConnectionsResourcesRequest>;
 
 export interface ListCustomToolNamesProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
   name: string;
 }
-export const ListCustomToolNamesProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}:listCustomToolNames",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListCustomToolNamesProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<ListCustomToolNamesProjectsLocationsConnectionsRequest>;
+export const ListCustomToolNamesProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+name}:listCustomToolNames","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ListCustomToolNamesProjectsLocationsConnectionsRequest" }) as any as S.Schema<ListCustomToolNamesProjectsLocationsConnectionsRequest>;
 
 export interface ListCustomToolNamesResponse {
   /** List of custom tools. */
   toolNames?: ToolNameList;
 }
 export const ListCustomToolNamesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolNames: S.optional(ToolNameList),
-  }),
-).annotate({
-  identifier: "ListCustomToolNamesResponse",
-}) as any as S.Schema<ListCustomToolNamesResponse>;
+S.Struct({
+  "toolNames": S.optional(ToolNameList),
+}),
+).annotate({ identifier: "ListCustomToolNamesResponse" }) as any as S.Schema<ListCustomToolNamesResponse>;
 
-export type ListProjectsLocationsConnectionsActionsViewEnum =
-  | "ACTION_VIEW_UNSPECIFIED"
-  | "ACTION_VIEW_BASIC"
-  | "ACTION_VIEW_FULL"
-  | (string & {});
-export const ListProjectsLocationsConnectionsActionsViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsConnectionsActionsViewEnum = "ACTION_VIEW_UNSPECIFIED" | "ACTION_VIEW_BASIC" | "ACTION_VIEW_FULL";
+export const ListProjectsLocationsConnectionsActionsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsConnectionsActionsRequest {
   /** Number of Actions to return. Defaults to 25. */
   pageSize?: number;
   /** Specifies which fields of the Action are returned in the response. */
-  view?: ListProjectsLocationsConnectionsActionsViewEnum;
+  view?: ListProjectsLocationsConnectionsActionsViewEnum | (string & {});
   /** Required. Parent resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection} */
   parent: string;
   /** Page token, return from a previous ListActions call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of actions. */
@@ -1596,31 +1094,18 @@ export interface ListProjectsLocationsConnectionsActionsRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-export const ListProjectsLocationsConnectionsActionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      view: S.optional(
-        ListProjectsLocationsConnectionsActionsViewEnum.pipe(T.Query()),
-      ),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/actions",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsConnectionsActionsRequest",
-  }) as any as S.Schema<ListProjectsLocationsConnectionsActionsRequest>;
+export const ListProjectsLocationsConnectionsActionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "view": S.optional(ListProjectsLocationsConnectionsActionsViewEnum.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/actions","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsConnectionsActionsRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsActionsRequest>;
 
 export type ActionList = ReadonlyArray<Action>;
-export const ActionList = /*@__PURE__*/ S.Array(
-  Action,
-) as any as S.Schema<ActionList>;
+export const ActionList = /*@__PURE__*/ S.Array(Action) as any as S.Schema<ActionList>;
 
 /** Response message for ActionService.ListActions */
 export interface ListActionsResponse {
@@ -1634,23 +1119,16 @@ export interface ListActionsResponse {
   unsupportedActionNames?: StringList;
 }
 export const ListActionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMapMap),
-    actions: S.optional(ActionList),
-    nextPageToken: S.optional(S.String),
-    unsupportedActionNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListActionsResponse",
-}) as any as S.Schema<ListActionsResponse>;
+S.Struct({
+  "metadata": S.optional(DocumentMapMap),
+  "actions": S.optional(ActionList),
+  "nextPageToken": S.optional(S.String),
+  "unsupportedActionNames": S.optional(StringList),
+}),
+).annotate({ identifier: "ListActionsResponse" }) as any as S.Schema<ListActionsResponse>;
 
-export type ListProjectsLocationsConnectionsEntityTypesViewEnum =
-  | "ENTITY_TYPE_VIEW_UNSPECIFIED"
-  | "ENTITY_TYPE_VIEW_BASIC"
-  | "ENTITY_TYPE_VIEW_FULL"
-  | (string & {});
-export const ListProjectsLocationsConnectionsEntityTypesViewEnum =
-  /*@__PURE__*/ S.String;
+export type ListProjectsLocationsConnectionsEntityTypesViewEnum = "ENTITY_TYPE_VIEW_UNSPECIFIED" | "ENTITY_TYPE_VIEW_BASIC" | "ENTITY_TYPE_VIEW_FULL";
+export const ListProjectsLocationsConnectionsEntityTypesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsConnectionsEntityTypesRequest {
   /** Page token, return from a previous ListEntityTypes call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of entity types. */
@@ -1660,35 +1138,22 @@ export interface ListProjectsLocationsConnectionsEntityTypesRequest {
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection} */
   parent: string;
   /** Specifies which fields of the Entity Type are returned in the response. */
-  view?: ListProjectsLocationsConnectionsEntityTypesViewEnum;
+  view?: ListProjectsLocationsConnectionsEntityTypesViewEnum | (string & {});
   /** Number of entity types to return. Defaults to 25. */
   pageSize?: number;
 }
-export const ListProjectsLocationsConnectionsEntityTypesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      view: S.optional(
-        ListProjectsLocationsConnectionsEntityTypesViewEnum.pipe(T.Query()),
-      ),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/entityTypes",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsConnectionsEntityTypesRequest",
-  }) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesRequest>;
+export const ListProjectsLocationsConnectionsEntityTypesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "view": S.optional(ListProjectsLocationsConnectionsEntityTypesViewEnum.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/entityTypes","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsConnectionsEntityTypesRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesRequest>;
 
 export type EntityTypeList = ReadonlyArray<EntityType>;
-export const EntityTypeList = /*@__PURE__*/ S.Array(
-  EntityType,
-) as any as S.Schema<EntityTypeList>;
+export const EntityTypeList = /*@__PURE__*/ S.Array(EntityType) as any as S.Schema<EntityTypeList>;
 
 /** Response message for EntityService.ListEntityTypes */
 export interface ListEntityTypesResponse {
@@ -1702,15 +1167,13 @@ export interface ListEntityTypesResponse {
   unsupportedTypeNames?: StringList;
 }
 export const ListEntityTypesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    types: S.optional(EntityTypeList),
-    metadata: S.optional(DocumentMapMap),
-    nextPageToken: S.optional(S.String),
-    unsupportedTypeNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListEntityTypesResponse",
-}) as any as S.Schema<ListEntityTypesResponse>;
+S.Struct({
+  "types": S.optional(EntityTypeList),
+  "metadata": S.optional(DocumentMapMap),
+  "nextPageToken": S.optional(S.String),
+  "unsupportedTypeNames": S.optional(StringList),
+}),
+).annotate({ identifier: "ListEntityTypesResponse" }) as any as S.Schema<ListEntityTypesResponse>;
 
 export interface ListProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Page token value if available from a previous request. */
@@ -1728,31 +1191,20 @@ export interface ListProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} */
   parent: string;
 }
-export const ListProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-      conditions: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      sortBy: S.optional(StringList.pipe(T.Query())),
-      sortOrder: S.optional(StringList.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/entities",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-  }) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+export const ListProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+  "conditions": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "sortBy": S.optional(StringList.pipe(T.Query())),
+  "sortOrder": S.optional(StringList.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/entities","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsConnectionsEntityTypesEntitiesRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
 export type EntityList = ReadonlyArray<Entity>;
-export const EntityList = /*@__PURE__*/ S.Array(
-  Entity,
-) as any as S.Schema<EntityList>;
+export const EntityList = /*@__PURE__*/ S.Array(Entity) as any as S.Schema<EntityList>;
 
 /** Response message for EntityService.ListEntities */
 export interface ListEntitiesResponse {
@@ -1764,14 +1216,12 @@ export interface ListEntitiesResponse {
   nextPageToken?: string;
 }
 export const ListEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entities: S.optional(EntityList),
-    metadata: S.optional(DocumentMapMap),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEntitiesResponse",
-}) as any as S.Schema<ListEntitiesResponse>;
+S.Struct({
+  "entities": S.optional(EntityList),
+  "metadata": S.optional(DocumentMapMap),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListEntitiesResponse" }) as any as S.Schema<ListEntitiesResponse>;
 
 export interface ListProjectsLocationsConnectionsResourcesRequest {
   /** Required. Resource name of the connection. Format: projects/{project}/locations/{location}/connections/{connection} */
@@ -1783,23 +1233,14 @@ export interface ListProjectsLocationsConnectionsResourcesRequest {
   /** Optional. Page size for the request. */
   pageSize?: number;
 }
-export const ListProjectsLocationsConnectionsResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/resources",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsConnectionsResourcesRequest",
-  }) as any as S.Schema<ListProjectsLocationsConnectionsResourcesRequest>;
+export const ListProjectsLocationsConnectionsResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/resources","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsConnectionsResourcesRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsResourcesRequest>;
 
 export interface Resource {
   /** The size of the raw resource content, in bytes, if known. */
@@ -1816,20 +1257,18 @@ export interface Resource {
   name?: string;
 }
 export const Resource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    size: S.optional(S.String),
-    description: S.optional(S.String),
-    mimeType: S.optional(S.String),
-    _meta: S.optional(DocumentMap),
-    uri: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "size": S.optional(S.String),
+  "description": S.optional(S.String),
+  "mimeType": S.optional(S.String),
+  "_meta": S.optional(DocumentMap),
+  "uri": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 export type ResourceList = ReadonlyArray<Resource>;
-export const ResourceList = /*@__PURE__*/ S.Array(
-  Resource,
-) as any as S.Schema<ResourceList>;
+export const ResourceList = /*@__PURE__*/ S.Array(Resource) as any as S.Schema<ResourceList>;
 
 export interface ListResourcesResponse {
   /** List of available resources. */
@@ -1840,14 +1279,12 @@ export interface ListResourcesResponse {
   nextPageToken?: string;
 }
 export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: S.optional(ResourceList),
-    metadata: S.optional(DocumentMapMap),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListResourcesResponse",
-}) as any as S.Schema<ListResourcesResponse>;
+S.Struct({
+  "resources": S.optional(ResourceList),
+  "metadata": S.optional(DocumentMapMap),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListResourcesResponse" }) as any as S.Schema<ListResourcesResponse>;
 
 export interface ListProjectsLocationsConnectionsToolsRequest {
   /** Page token. */
@@ -1861,24 +1298,15 @@ export interface ListProjectsLocationsConnectionsToolsRequest {
   /** Page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsConnectionsToolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      toolNames: S.optional(StringList.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/tools",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsConnectionsToolsRequest",
-  }) as any as S.Schema<ListProjectsLocationsConnectionsToolsRequest>;
+export const ListProjectsLocationsConnectionsToolsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "toolNames": S.optional(StringList.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/tools","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsConnectionsToolsRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsToolsRequest>;
 
 /** ToolAnnotations holds annotations for a tool. */
 export interface ToolAnnotations {
@@ -1894,16 +1322,14 @@ export interface ToolAnnotations {
   openWorldHint?: boolean;
 }
 export const ToolAnnotations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destructiveHint: S.optional(S.Boolean),
-    idempotentHint: S.optional(S.Boolean),
-    title: S.optional(S.String),
-    readOnlyHint: S.optional(S.Boolean),
-    openWorldHint: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ToolAnnotations",
-}) as any as S.Schema<ToolAnnotations>;
+S.Struct({
+  "destructiveHint": S.optional(S.Boolean),
+  "idempotentHint": S.optional(S.Boolean),
+  "title": S.optional(S.String),
+  "readOnlyHint": S.optional(S.Boolean),
+  "openWorldHint": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "ToolAnnotations" }) as any as S.Schema<ToolAnnotations>;
 
 /** Message representing a single tool. */
 export interface Tool {
@@ -1923,21 +1349,19 @@ export interface Tool {
   _meta?: DocumentMap;
 }
 export const Tool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    dependsOn: S.optional(StringList),
-    inputSchema: S.optional(JsonSchema),
-    outputSchema: S.optional(JsonSchema),
-    description: S.optional(S.String),
-    annotations: S.optional(ToolAnnotations),
-    _meta: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "dependsOn": S.optional(StringList),
+  "inputSchema": S.optional(JsonSchema),
+  "outputSchema": S.optional(JsonSchema),
+  "description": S.optional(S.String),
+  "annotations": S.optional(ToolAnnotations),
+  "_meta": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 
 export type ToolList = ReadonlyArray<Tool>;
-export const ToolList = /*@__PURE__*/ S.Array(
-  Tool,
-) as any as S.Schema<ToolList>;
+export const ToolList = /*@__PURE__*/ S.Array(Tool) as any as S.Schema<ToolList>;
 
 /** Response message for ConnectorAgentService.ListTools */
 export interface ListToolsResponse {
@@ -1949,14 +1373,12 @@ export interface ListToolsResponse {
   tools?: ToolList;
 }
 export const ListToolsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    metadata: S.optional(DocumentMapMap),
-    tools: S.optional(ToolList),
-  }),
-).annotate({
-  identifier: "ListToolsResponse",
-}) as any as S.Schema<ListToolsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "metadata": S.optional(DocumentMapMap),
+  "tools": S.optional(ToolList),
+}),
+).annotate({ identifier: "ListToolsResponse" }) as any as S.Schema<ListToolsResponse>;
 
 export interface PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Output only. Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} */
@@ -1966,22 +1388,13 @@ export interface PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Request body */
   body?: Entity;
 }
-export const PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Entity.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+export const PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Entity.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest" }) as any as S.Schema<PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
 /** RefreshAccessTokenRequest includes the refresh token. */
 export interface RefreshAccessTokenRequest {
@@ -1993,35 +1406,24 @@ export interface RefreshAccessTokenRequest {
   executionConfig?: ExecutionConfig;
 }
 export const RefreshAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    refreshToken: S.optional(S.String),
-    oauth2Config: S.optional(OAuth2Config),
-    executionConfig: S.optional(ExecutionConfig),
-  }),
-).annotate({
-  identifier: "RefreshAccessTokenRequest",
-}) as any as S.Schema<RefreshAccessTokenRequest>;
+S.Struct({
+  "refreshToken": S.optional(S.String),
+  "oauth2Config": S.optional(OAuth2Config),
+  "executionConfig": S.optional(ExecutionConfig),
+}),
+).annotate({ identifier: "RefreshAccessTokenRequest" }) as any as S.Schema<RefreshAccessTokenRequest>;
 
 export interface RefreshAccessTokenProjectsLocationsConnectionsRequest {
   name: string;
   /** Request body */
   body?: RefreshAccessTokenRequest;
 }
-export const RefreshAccessTokenProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RefreshAccessTokenRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:refreshAccessToken",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RefreshAccessTokenProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<RefreshAccessTokenProjectsLocationsConnectionsRequest>;
+export const RefreshAccessTokenProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RefreshAccessTokenRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:refreshAccessToken","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "RefreshAccessTokenProjectsLocationsConnectionsRequest" }) as any as S.Schema<RefreshAccessTokenProjectsLocationsConnectionsRequest>;
 
 /** RefreshAccessTokenResponse includes the returned access token and its associated credentials. */
 export interface RefreshAccessTokenResponse {
@@ -2030,13 +1432,11 @@ export interface RefreshAccessTokenResponse {
   accessCredentials?: AccessCredentials;
 }
 export const RefreshAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMapMap),
-    accessCredentials: S.optional(AccessCredentials),
-  }),
-).annotate({
-  identifier: "RefreshAccessTokenResponse",
-}) as any as S.Schema<RefreshAccessTokenResponse>;
+S.Struct({
+  "metadata": S.optional(DocumentMapMap),
+  "accessCredentials": S.optional(AccessCredentials),
+}),
+).annotate({ identifier: "RefreshAccessTokenResponse" }) as any as S.Schema<RefreshAccessTokenResponse>;
 
 /** Request message for ConnectorAgentService.ListToolsPost */
 export interface ListToolsPostRequest {
@@ -2052,16 +1452,14 @@ export interface ListToolsPostRequest {
   pageToken?: string;
 }
 export const ListToolsPostRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number),
-    toolSpec: S.optional(ToolSpec),
-    toolNames: S.optional(StringList),
-    executionConfig: S.optional(ExecutionConfig),
-    pageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListToolsPostRequest",
-}) as any as S.Schema<ListToolsPostRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number),
+  "toolSpec": S.optional(ToolSpec),
+  "toolNames": S.optional(StringList),
+  "executionConfig": S.optional(ExecutionConfig),
+  "pageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListToolsPostRequest" }) as any as S.Schema<ListToolsPostRequest>;
 
 export interface ToolsProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
@@ -2069,21 +1467,12 @@ export interface ToolsProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: ListToolsPostRequest;
 }
-export const ToolsProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ListToolsPostRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/tools",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ToolsProjectsLocationsConnectionsRequest",
-}) as any as S.Schema<ToolsProjectsLocationsConnectionsRequest>;
+export const ToolsProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ListToolsPostRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/tools","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "ToolsProjectsLocationsConnectionsRequest" }) as any as S.Schema<ToolsProjectsLocationsConnectionsRequest>;
 
 export interface UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} */
@@ -2095,24 +1484,14 @@ export interface UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityT
   /** Request body */
   body?: Entity;
 }
-export const UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entityType: S.String.pipe(T.Label()),
-      "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-      conditions: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Entity.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+entityType}/entities:updateEntitiesWithConditions",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-  }) as any as S.Schema<UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+export const UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "entityType": S.String.pipe(T.Label()),
+  "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+  "conditions": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Entity.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v2/{+entityType}/entities:updateEntitiesWithConditions","baseUrl":"https://connectors.googleapis.com/"})),
+).annotate({ identifier: "UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest" }) as any as S.Schema<UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
 /** Response message for EntityService.UpdateEntitiesWithConditions */
 export interface UpdateEntitiesWithConditionsResponse {
@@ -2121,20 +1500,14 @@ export interface UpdateEntitiesWithConditionsResponse {
   /** Metadata like service latency, etc. */
   metadata?: DocumentMapMap;
 }
-export const UpdateEntitiesWithConditionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      response: S.optional(DocumentMap),
-      metadata: S.optional(DocumentMapMap),
-    }),
-).annotate({
-  identifier: "UpdateEntitiesWithConditionsResponse",
-}) as any as S.Schema<UpdateEntitiesWithConditionsResponse>;
+export const UpdateEntitiesWithConditionsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "response": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMapMap),
+}),
+).annotate({ identifier: "UpdateEntitiesWithConditionsResponse" }) as any as S.Schema<UpdateEntitiesWithConditionsResponse>;
 
-export type CheckReadinessProjectsLocationsConnectionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CheckReadinessProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
 /** Reports readiness status of the connector. Similar logic to GetStatus but modified for kubernetes health check to understand. */
 export const checkReadinessProjectsLocationsConnections: API.OperationMethod<
   CheckReadinessProjectsLocationsConnectionsRequest,
@@ -2149,10 +1522,7 @@ export const checkReadinessProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckStatusProjectsLocationsConnectionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CheckStatusProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
 /** Reports the status of the connection. Note that when the connection is in a state that is not ACTIVE, the implementation of this RPC method must return a Status with the corresponding State instead of returning a gRPC status code that is not "OK", which indicates that ConnectionStatus itself, not the connection, failed. */
 export const checkStatusProjectsLocationsConnections: API.OperationMethod<
   CheckStatusProjectsLocationsConnectionsRequest,
@@ -2167,12 +1537,7 @@ export const checkStatusProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsConnectionsEntityTypesEntitiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsConnectionsEntityTypesEntitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new entity row of the specified entity type in the external system. The field values for creating the row are contained in the body of the request. The response message contains a `Entity` message object returned as a response by the external system. */
 export const createProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
   CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest,
@@ -2187,8 +1552,7 @@ export const createProjectsLocationsConnectionsEntityTypesEntities: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes entities based on conditions specified in the request and not on entity id. */
 export const deleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
   DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
@@ -2196,20 +1560,14 @@ export const deleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
   DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
+  input: DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsConnectionsEntityTypesEntitiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsConnectionsEntityTypesEntitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing entity row matching the entity type and entity id specified in the request. */
 export const deleteProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
   DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest,
@@ -2224,12 +1582,7 @@ export const deleteProjectsLocationsConnectionsEntityTypesEntities: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type ExchangeAuthCodeProjectsLocationsConnectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExchangeAuthCodeProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** ExchangeAuthCode exchanges the OAuth authorization code (and other necessary data) for an access token (and associated credentials). */
 export const exchangeAuthCodeProjectsLocationsConnections: API.OperationMethod<
   ExchangeAuthCodeProjectsLocationsConnectionsRequest,
@@ -2244,12 +1597,7 @@ export const exchangeAuthCodeProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExecuteHttpRequestProjectsLocationsConnectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExecuteHttpRequestProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Executes a generic HTTP request. This supports all payload formats including REST/JSON, GraphQL, XML, SOAP, and Multipart by passing the rendered payload as raw bytes. */
 export const executeHttpRequestProjectsLocationsConnections: API.OperationMethod<
   ExecuteHttpRequestProjectsLocationsConnectionsRequest,
@@ -2264,12 +1612,7 @@ export const executeHttpRequestProjectsLocationsConnections: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type ExecuteProjectsLocationsConnectionsActionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExecuteProjectsLocationsConnectionsActionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Executes an action with the name specified in the request. The input parameters for executing the action are passed through the body of the ExecuteAction request. */
 export const executeProjectsLocationsConnectionsActions: API.OperationMethod<
   ExecuteProjectsLocationsConnectionsActionsRequest,
@@ -2284,12 +1627,7 @@ export const executeProjectsLocationsConnectionsActions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExecuteProjectsLocationsConnectionsToolsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExecuteProjectsLocationsConnectionsToolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Executes a specific tool. */
 export const executeProjectsLocationsConnectionsTools: API.OperationMethod<
   ExecuteProjectsLocationsConnectionsToolsRequest,
@@ -2304,12 +1642,7 @@ export const executeProjectsLocationsConnectionsTools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExecuteSqlQueryProjectsLocationsConnectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExecuteSqlQueryProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Executes a SQL statement specified in the body of the request. An example of this SQL statement in the case of Salesforce connector would be 'select * from Account a, Order o where a.Id = o.AccountId'. */
 export const executeSqlQueryProjectsLocationsConnections: API.OperationMethod<
   ExecuteSqlQueryProjectsLocationsConnectionsRequest,
@@ -2324,8 +1657,7 @@ export const executeSqlQueryProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateConnectionToolspecOverrideProjectsLocationsConnectionsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateConnectionToolspecOverrideProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Generate toolspec override for the given list of toolNames. */
 export const generateConnectionToolspecOverrideProjectsLocationsConnections: API.OperationMethod<
   GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest,
@@ -2340,10 +1672,7 @@ export const generateConnectionToolspecOverrideProjectsLocationsConnections: API
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsConnectionsActionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsConnectionsActionsError = NotFound | Forbidden | GcpOpError;
 /** Gets the schema of the given action. */
 export const getProjectsLocationsConnectionsActions: API.OperationMethod<
   GetProjectsLocationsConnectionsActionsRequest,
@@ -2358,10 +1687,7 @@ export const getProjectsLocationsConnectionsActions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsConnectionsEntityTypesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsConnectionsEntityTypesError = NotFound | Forbidden | GcpOpError;
 /** Gets metadata of given entity type */
 export const getProjectsLocationsConnectionsEntityTypes: API.OperationMethod<
   GetProjectsLocationsConnectionsEntityTypesRequest,
@@ -2376,10 +1702,7 @@ export const getProjectsLocationsConnectionsEntityTypes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsConnectionsEntityTypesEntitiesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsConnectionsEntityTypesEntitiesError = NotFound | Forbidden | GcpOpError;
 /** Gets a single entity row matching the entity type and entity id specified in the request. */
 export const getProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
   GetProjectsLocationsConnectionsEntityTypesEntitiesRequest,
@@ -2394,10 +1717,7 @@ export const getProjectsLocationsConnectionsEntityTypesEntities: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsConnectionsResourcesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsConnectionsResourcesError = NotFound | Forbidden | GcpOpError;
 /** Gets a specific resource. */
 export const getProjectsLocationsConnectionsResources: API.OperationMethod<
   GetProjectsLocationsConnectionsResourcesRequest,
@@ -2412,12 +1732,7 @@ export const getProjectsLocationsConnectionsResources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetResourcePostProjectsLocationsConnectionsResourcesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GetResourcePostProjectsLocationsConnectionsResourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets a specific resource with POST. */
 export const getResourcePostProjectsLocationsConnectionsResources: API.OperationMethod<
   GetResourcePostProjectsLocationsConnectionsResourcesRequest,
@@ -2432,10 +1747,7 @@ export const getResourcePostProjectsLocationsConnectionsResources: API.Operation
   retry: Retry.Retry,
 }));
 
-export type ListCustomToolNamesProjectsLocationsConnectionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListCustomToolNamesProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
 /** Lists custom tool names. */
 export const listCustomToolNamesProjectsLocationsConnections: API.OperationMethod<
   ListCustomToolNamesProjectsLocationsConnectionsRequest,
@@ -2450,10 +1762,7 @@ export const listCustomToolNamesProjectsLocationsConnections: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsConnectionsActionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsConnectionsActionsError = NotFound | Forbidden | GcpOpError;
 /** Gets the schema of all the actions supported by the connector. */
 export const listProjectsLocationsConnectionsActions: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsActionsRequest,
@@ -2466,16 +1775,10 @@ export const listProjectsLocationsConnectionsActions: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsConnectionsEntityTypesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsConnectionsEntityTypesError = NotFound | Forbidden | GcpOpError;
 /** Lists metadata related to all entity types present in the external system. */
 export const listProjectsLocationsConnectionsEntityTypes: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsEntityTypesRequest,
@@ -2488,16 +1791,10 @@ export const listProjectsLocationsConnectionsEntityTypes: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsConnectionsEntityTypesEntitiesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsConnectionsEntityTypesEntitiesError = NotFound | Forbidden | GcpOpError;
 /** Lists entity rows of a particular entity type contained in the request. Note: 1. Currently, only max of one 'sort_by' column is supported. 2. If no 'sort_by' column is provided, the primary key of the table is used. If zero or more than one primary key is available, we default to the unpaginated list entities logic which only returns the first page. 3. The values of the 'sort_by' columns must uniquely identify an entity row, otherwise undefined behaviors may be observed during pagination. 4. Since transactions are not supported, any updates, inserts or deletes during pagination can lead to stale data being returned or other unexpected behaviors. */
 export const listProjectsLocationsConnectionsEntityTypesEntities: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsEntityTypesEntitiesRequest,
@@ -2510,16 +1807,10 @@ export const listProjectsLocationsConnectionsEntityTypesEntities: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsConnectionsResourcesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsConnectionsResourcesError = NotFound | Forbidden | GcpOpError;
 /** Lists all available resources. */
 export const listProjectsLocationsConnectionsResources: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsResourcesRequest,
@@ -2532,16 +1823,10 @@ export const listProjectsLocationsConnectionsResources: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsConnectionsToolsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsConnectionsToolsError = NotFound | Forbidden | GcpOpError;
 /** Lists all available tools. */
 export const listProjectsLocationsConnectionsTools: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsToolsRequest,
@@ -2554,18 +1839,10 @@ export const listProjectsLocationsConnectionsTools: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchProjectsLocationsConnectionsEntityTypesEntitiesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsConnectionsEntityTypesEntitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing entity row matching the entity type and entity id specified in the request. The fields in the entity row that need to be modified are contained in the body of the request. All unspecified fields are left unchanged. The response message contains a `Entity` message object returned as a response by the external system. */
 export const patchProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
   PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest,
@@ -2580,12 +1857,7 @@ export const patchProjectsLocationsConnectionsEntityTypesEntities: API.Operation
   retry: Retry.Retry,
 }));
 
-export type RefreshAccessTokenProjectsLocationsConnectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RefreshAccessTokenProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** RefreshAccessToken exchanges the OAuth refresh token (and other necessary data) for a new access token (and new associated credentials). */
 export const refreshAccessTokenProjectsLocationsConnections: API.OperationMethod<
   RefreshAccessTokenProjectsLocationsConnectionsRequest,
@@ -2600,12 +1872,7 @@ export const refreshAccessTokenProjectsLocationsConnections: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type ToolsProjectsLocationsConnectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ToolsProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Lists all available tools with POST. */
 export const toolsProjectsLocationsConnections: API.OperationMethod<
   ToolsProjectsLocationsConnectionsRequest,
@@ -2620,8 +1887,7 @@ export const toolsProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates entities based on conditions specified in the request and not on entity id. */
 export const updateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
   UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
@@ -2629,10 +1895,10 @@ export const updateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
   UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
+  input: UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output: UpdateEntitiesWithConditionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

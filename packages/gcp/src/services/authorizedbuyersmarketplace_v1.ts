@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request to accept a proposal. Accepting a proposal implies acceptance of the publisher terms_and_conditions, if any. */
@@ -66,12 +66,10 @@ export interface AcceptProposalRequest {
   proposalRevision?: string;
 }
 export const AcceptProposalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proposalRevision: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AcceptProposalRequest",
-}) as any as S.Schema<AcceptProposalRequest>;
+S.Struct({
+  "proposalRevision": S.optional(S.String),
+}),
+).annotate({ identifier: "AcceptProposalRequest" }) as any as S.Schema<AcceptProposalRequest>;
 
 export interface AcceptBuyersProposalsRequest {
   /** Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}` */
@@ -80,33 +78,16 @@ export interface AcceptBuyersProposalsRequest {
   body?: AcceptProposalRequest;
 }
 export const AcceptBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(AcceptProposalRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:accept",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AcceptBuyersProposalsRequest",
-}) as any as S.Schema<AcceptBuyersProposalsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(AcceptProposalRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:accept","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "AcceptBuyersProposalsRequest" }) as any as S.Schema<AcceptBuyersProposalsRequest>;
 
-export type ProposalDealTypeEnum =
-  | "DEAL_TYPE_UNSPECIFIED"
-  | "PREFERRED_DEAL"
-  | "PRIVATE_AUCTION"
-  | "PROGRAMMATIC_GUARANTEED"
-  | (string & {});
+export type ProposalDealTypeEnum = "DEAL_TYPE_UNSPECIFIED" | "PREFERRED_DEAL" | "PRIVATE_AUCTION" | "PROGRAMMATIC_GUARANTEED";
 export const ProposalDealTypeEnum = /*@__PURE__*/ S.String;
 
-export type ProposalOriginatorRoleEnum =
-  | "BUYER_SELLER_ROLE_UNSPECIFIED"
-  | "BUYER"
-  | "SELLER"
-  | (string & {});
+export type ProposalOriginatorRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
 export const ProposalOriginatorRoleEnum = /*@__PURE__*/ S.String;
 
 /** Contains information on how a buyer or seller can be reached. */
@@ -117,29 +98,19 @@ export interface Contact {
   displayName?: string;
 }
 export const Contact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "email": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Contact" }) as any as S.Schema<Contact>;
 
 export type ContactList = ReadonlyArray<Contact>;
-export const ContactList = /*@__PURE__*/ S.Array(
-  Contact,
-) as any as S.Schema<ContactList>;
+export const ContactList = /*@__PURE__*/ S.Array(Contact) as any as S.Schema<ContactList>;
 
-export type ProposalLastUpdaterOrCommentorRoleEnum =
-  | "BUYER_SELLER_ROLE_UNSPECIFIED"
-  | "BUYER"
-  | "SELLER"
-  | (string & {});
+export type ProposalLastUpdaterOrCommentorRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
 export const ProposalLastUpdaterOrCommentorRoleEnum = /*@__PURE__*/ S.String;
 
-export type NoteCreatorRoleEnum =
-  | "BUYER_SELLER_ROLE_UNSPECIFIED"
-  | "BUYER"
-  | "SELLER"
-  | (string & {});
+export type NoteCreatorRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
 export const NoteCreatorRoleEnum = /*@__PURE__*/ S.String;
 
 /** A text note attached to the proposal to facilitate the communication between buyers and sellers. */
@@ -152,26 +123,17 @@ export interface Note {
   note?: string;
 }
 export const Note = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creatorRole: S.optional(NoteCreatorRoleEnum),
-    createTime: S.optional(S.String),
-    note: S.optional(S.String),
-  }),
+S.Struct({
+  "creatorRole": S.optional(NoteCreatorRoleEnum),
+  "createTime": S.optional(S.String),
+  "note": S.optional(S.String),
+}),
 ).annotate({ identifier: "Note" }) as any as S.Schema<Note>;
 
 export type NoteList = ReadonlyArray<Note>;
-export const NoteList = /*@__PURE__*/ S.Array(
-  Note,
-) as any as S.Schema<NoteList>;
+export const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
 
-export type ProposalStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "BUYER_REVIEW_REQUESTED"
-  | "SELLER_REVIEW_REQUESTED"
-  | "BUYER_ACCEPTANCE_REQUESTED"
-  | "FINALIZED"
-  | "TERMINATED"
-  | (string & {});
+export type ProposalStateEnum = "STATE_UNSPECIFIED" | "BUYER_REVIEW_REQUESTED" | "SELLER_REVIEW_REQUESTED" | "BUYER_ACCEPTANCE_REQUESTED" | "FINALIZED" | "TERMINATED";
 export const ProposalStateEnum = /*@__PURE__*/ S.String;
 
 /** Buyers are allowed to store certain types of private data in a proposal. */
@@ -180,9 +142,9 @@ export interface PrivateData {
   referenceId?: string;
 }
 export const PrivateData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceId: S.optional(S.String),
-  }),
+S.Struct({
+  "referenceId": S.optional(S.String),
+}),
 ).annotate({ identifier: "PrivateData" }) as any as S.Schema<PrivateData>;
 
 /** Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a seller and a buyer. */
@@ -227,38 +189,34 @@ export interface Proposal {
   sellerContacts?: ContactList;
 }
 export const Proposal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dealType: S.optional(ProposalDealTypeEnum),
-    originatorRole: S.optional(ProposalOriginatorRoleEnum),
-    buyerContacts: S.optional(ContactList),
-    lastUpdaterOrCommentorRole: S.optional(
-      ProposalLastUpdaterOrCommentorRoleEnum,
-    ),
-    notes: S.optional(NoteList),
-    proposalRevision: S.optional(S.String),
-    isRenegotiating: S.optional(S.Boolean),
-    updateTime: S.optional(S.String),
-    billedBuyer: S.optional(S.String),
-    state: S.optional(ProposalStateEnum),
-    pausingConsented: S.optional(S.Boolean),
-    buyer: S.optional(S.String),
-    buyerPrivateData: S.optional(PrivateData),
-    client: S.optional(S.String),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    publisherProfile: S.optional(S.String),
-    termsAndConditions: S.optional(S.String),
-    sellerContacts: S.optional(ContactList),
-  }),
+S.Struct({
+  "dealType": S.optional(ProposalDealTypeEnum),
+  "originatorRole": S.optional(ProposalOriginatorRoleEnum),
+  "buyerContacts": S.optional(ContactList),
+  "lastUpdaterOrCommentorRole": S.optional(ProposalLastUpdaterOrCommentorRoleEnum),
+  "notes": S.optional(NoteList),
+  "proposalRevision": S.optional(S.String),
+  "isRenegotiating": S.optional(S.Boolean),
+  "updateTime": S.optional(S.String),
+  "billedBuyer": S.optional(S.String),
+  "state": S.optional(ProposalStateEnum),
+  "pausingConsented": S.optional(S.Boolean),
+  "buyer": S.optional(S.String),
+  "buyerPrivateData": S.optional(PrivateData),
+  "client": S.optional(S.String),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "publisherProfile": S.optional(S.String),
+  "termsAndConditions": S.optional(S.String),
+  "sellerContacts": S.optional(ContactList),
+}),
 ).annotate({ identifier: "Proposal" }) as any as S.Schema<Proposal>;
 
 /** Request message for activating a client. */
 export interface ActivateClientRequest {}
 export const ActivateClientRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ActivateClientRequest",
-}) as any as S.Schema<ActivateClientRequest>;
+S.Struct({}),
+).annotate({ identifier: "ActivateClientRequest" }) as any as S.Schema<ActivateClientRequest>;
 
 export interface ActivateBuyersClientsRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}` */
@@ -267,33 +225,16 @@ export interface ActivateBuyersClientsRequest {
   body?: ActivateClientRequest;
 }
 export const ActivateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:activate",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ActivateBuyersClientsRequest",
-}) as any as S.Schema<ActivateBuyersClientsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ActivateClientRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:activate","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ActivateBuyersClientsRequest" }) as any as S.Schema<ActivateBuyersClientsRequest>;
 
-export type ClientRoleEnum =
-  | "CLIENT_ROLE_UNSPECIFIED"
-  | "CLIENT_DEAL_VIEWER"
-  | "CLIENT_DEAL_NEGOTIATOR"
-  | "CLIENT_DEAL_APPROVER"
-  | (string & {});
+export type ClientRoleEnum = "CLIENT_ROLE_UNSPECIFIED" | "CLIENT_DEAL_VIEWER" | "CLIENT_DEAL_NEGOTIATOR" | "CLIENT_DEAL_APPROVER";
 export const ClientRoleEnum = /*@__PURE__*/ S.String;
 
-export type ClientStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type ClientStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE";
 export const ClientStateEnum = /*@__PURE__*/ S.String;
 
 /** A client represents an agency, a brand, or an advertiser customer of the buyer. Based on the client's role, its client users will have varying levels of restricted access to the Marketplace and certain other sections of the Authorized Buyers UI. */
@@ -312,23 +253,21 @@ export interface Client {
   partnerClientId?: string;
 }
 export const Client = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(ClientRoleEnum),
-    sellerVisible: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    state: S.optional(ClientStateEnum),
-    displayName: S.optional(S.String),
-    partnerClientId: S.optional(S.String),
-  }),
+S.Struct({
+  "role": S.optional(ClientRoleEnum),
+  "sellerVisible": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "state": S.optional(ClientStateEnum),
+  "displayName": S.optional(S.String),
+  "partnerClientId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Client" }) as any as S.Schema<Client>;
 
 /** Request message for activating a client user. */
 export interface ActivateClientUserRequest {}
 export const ActivateClientUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ActivateClientUserRequest",
-}) as any as S.Schema<ActivateClientUserRequest>;
+S.Struct({}),
+).annotate({ identifier: "ActivateClientUserRequest" }) as any as S.Schema<ActivateClientUserRequest>;
 
 export interface ActivateBuyersClientsUsersRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}/clientUsers/{userId}` */
@@ -337,26 +276,13 @@ export interface ActivateBuyersClientsUsersRequest {
   body?: ActivateClientUserRequest;
 }
 export const ActivateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(ActivateClientUserRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:activate",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ActivateBuyersClientsUsersRequest",
-}) as any as S.Schema<ActivateBuyersClientsUsersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ActivateClientUserRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:activate","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ActivateBuyersClientsUsersRequest" }) as any as S.Schema<ActivateBuyersClientsUsersRequest>;
 
-export type ClientUserStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "INVITED"
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type ClientUserStateEnum = "STATE_UNSPECIFIED" | "INVITED" | "ACTIVE" | "INACTIVE";
 export const ClientUserStateEnum = /*@__PURE__*/ S.String;
 
 /** A user of a client who has restricted access to the Marketplace and certain other sections of the Authorized Buyers UI based on the role granted to the associated client. */
@@ -369,11 +295,11 @@ export interface ClientUser {
   email?: string;
 }
 export const ClientUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    state: S.optional(ClientUserStateEnum),
-    email: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "state": S.optional(ClientUserStateEnum),
+  "email": S.optional(S.String),
+}),
 ).annotate({ identifier: "ClientUser" }) as any as S.Schema<ClientUser>;
 
 /** Request message for adding creative to be used in the bidding process for the finalized deal. */
@@ -382,12 +308,10 @@ export interface AddCreativeRequest {
   creative?: string;
 }
 export const AddCreativeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creative: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddCreativeRequest",
-}) as any as S.Schema<AddCreativeRequest>;
+S.Struct({
+  "creative": S.optional(S.String),
+}),
+).annotate({ identifier: "AddCreativeRequest" }) as any as S.Schema<AddCreativeRequest>;
 
 export interface AddCreativeBuyersFinalizedDealsRequest {
   /** Required. Name of the finalized deal in the format of: `buyers/{accountId}/finalizedDeals/{dealId}` */
@@ -395,21 +319,12 @@ export interface AddCreativeBuyersFinalizedDealsRequest {
   /** Request body */
   body?: AddCreativeRequest;
 }
-export const AddCreativeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      deal: S.String.pipe(T.Label()),
-      body: S.optional(AddCreativeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+deal}:addCreative",
-        baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "AddCreativeBuyersFinalizedDealsRequest",
-}) as any as S.Schema<AddCreativeBuyersFinalizedDealsRequest>;
+export const AddCreativeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "deal": S.String.pipe(T.Label()),
+  "body": S.optional(AddCreativeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+deal}:addCreative","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "AddCreativeBuyersFinalizedDealsRequest" }) as any as S.Schema<AddCreativeBuyersFinalizedDealsRequest>;
 
 /** Real-time bidding metrics. For what each metric means refer to [Report metrics](https://support.google.com/adxbuyer/answer/6115195#report-metrics) */
 export interface RtbMetrics {
@@ -427,17 +342,17 @@ export interface RtbMetrics {
   bidRequests7Days?: string;
 }
 export const RtbMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adImpressions7Days: S.optional(S.String),
-    filteredBidRate7Days: S.optional(S.Number),
-    bids7Days: S.optional(S.String),
-    bidRate7Days: S.optional(S.Number),
-    mustBidRateCurrentMonth: S.optional(S.Number),
-    bidRequests7Days: S.optional(S.String),
-  }),
+S.Struct({
+  "adImpressions7Days": S.optional(S.String),
+  "filteredBidRate7Days": S.optional(S.Number),
+  "bids7Days": S.optional(S.String),
+  "bidRate7Days": S.optional(S.Number),
+  "mustBidRateCurrentMonth": S.optional(S.Number),
+  "bidRequests7Days": S.optional(S.String),
+}),
 ).annotate({ identifier: "RtbMetrics" }) as any as S.Schema<RtbMetrics>;
 
-export type PriceTypeEnum = "TYPE_UNSPECIFIED" | "CPM" | "CPD" | (string & {});
+export type PriceTypeEnum = "TYPE_UNSPECIFIED" | "CPM" | "CPD";
 export const PriceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an amount of money with its currency type. */
@@ -450,11 +365,11 @@ export interface Money {
   nanos?: number;
 }
 export const Money = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyCode: S.optional(S.String),
-    units: S.optional(S.String),
-    nanos: S.optional(S.Number),
-  }),
+S.Struct({
+  "currencyCode": S.optional(S.String),
+  "units": S.optional(S.String),
+  "nanos": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
 /** Represents a price and a pricing type for a deal. */
@@ -465,10 +380,10 @@ export interface Price {
   amount?: Money;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(PriceTypeEnum),
-    amount: S.optional(Money),
-  }),
+S.Struct({
+  "type": S.optional(PriceTypeEnum),
+  "amount": S.optional(Money),
+}),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 /** Pricing terms for Private Auctions. */
@@ -479,20 +394,13 @@ export interface PrivateAuctionTerms {
   openAuctionAllowed?: boolean;
 }
 export const PrivateAuctionTerms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    floorPrice: S.optional(Price),
-    openAuctionAllowed: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PrivateAuctionTerms",
-}) as any as S.Schema<PrivateAuctionTerms>;
+S.Struct({
+  "floorPrice": S.optional(Price),
+  "openAuctionAllowed": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PrivateAuctionTerms" }) as any as S.Schema<PrivateAuctionTerms>;
 
-export type DealDealTypeEnum =
-  | "DEAL_TYPE_UNSPECIFIED"
-  | "PREFERRED_DEAL"
-  | "PRIVATE_AUCTION"
-  | "PROGRAMMATIC_GUARANTEED"
-  | (string & {});
+export type DealDealTypeEnum = "DEAL_TYPE_UNSPECIFIED" | "PREFERRED_DEAL" | "PRIVATE_AUCTION" | "PROGRAMMATIC_GUARANTEED";
 export const DealDealTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
@@ -503,17 +411,13 @@ export interface TimeZone {
   version?: string;
 }
 export const TimeZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 
-export type DealBuyerPermissionTypeEnum =
-  | "BUYER_PERMISSION_TYPE_UNSPECIFIED"
-  | "NEGOTIATOR_ONLY"
-  | "BIDDER"
-  | (string & {});
+export type DealBuyerPermissionTypeEnum = "BUYER_PERMISSION_TYPE_UNSPECIFIED" | "NEGOTIATOR_ONLY" | "BIDDER";
 export const DealBuyerPermissionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Pricing terms for Preferred Deals. */
@@ -522,17 +426,13 @@ export interface PreferredDealTerms {
   fixedPrice?: Price;
 }
 export const PreferredDealTerms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixedPrice: S.optional(Price),
-  }),
-).annotate({
-  identifier: "PreferredDealTerms",
-}) as any as S.Schema<PreferredDealTerms>;
+S.Struct({
+  "fixedPrice": S.optional(Price),
+}),
+).annotate({ identifier: "PreferredDealTerms" }) as any as S.Schema<PreferredDealTerms>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Generic targeting used for targeting dimensions that contains a list of included and excluded numeric IDs. This cannot be filtered using list filter syntax. */
 export interface CriteriaTargeting {
@@ -542,13 +442,11 @@ export interface CriteriaTargeting {
   excludedCriteriaIds?: StringList;
 }
 export const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetedCriteriaIds: S.optional(StringList),
-    excludedCriteriaIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CriteriaTargeting",
-}) as any as S.Schema<CriteriaTargeting>;
+S.Struct({
+  "targetedCriteriaIds": S.optional(StringList),
+  "excludedCriteriaIds": S.optional(StringList),
+}),
+).annotate({ identifier: "CriteriaTargeting" }) as any as S.Schema<CriteriaTargeting>;
 
 /** Represents targeting information for operating systems. */
 export interface OperatingSystemTargeting {
@@ -558,13 +456,11 @@ export interface OperatingSystemTargeting {
   operatingSystemVersionCriteria?: CriteriaTargeting;
 }
 export const OperatingSystemTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatingSystemCriteria: S.optional(CriteriaTargeting),
-    operatingSystemVersionCriteria: S.optional(CriteriaTargeting),
-  }),
-).annotate({
-  identifier: "OperatingSystemTargeting",
-}) as any as S.Schema<OperatingSystemTargeting>;
+S.Struct({
+  "operatingSystemCriteria": S.optional(CriteriaTargeting),
+  "operatingSystemVersionCriteria": S.optional(CriteriaTargeting),
+}),
+).annotate({ identifier: "OperatingSystemTargeting" }) as any as S.Schema<OperatingSystemTargeting>;
 
 /** Represents targeting about various types of technology. */
 export interface TechnologyTargeting {
@@ -576,32 +472,17 @@ export interface TechnologyTargeting {
   operatingSystemTargeting?: OperatingSystemTargeting;
 }
 export const TechnologyTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceCategoryTargeting: S.optional(CriteriaTargeting),
-    deviceCapabilityTargeting: S.optional(CriteriaTargeting),
-    operatingSystemTargeting: S.optional(OperatingSystemTargeting),
-  }),
-).annotate({
-  identifier: "TechnologyTargeting",
-}) as any as S.Schema<TechnologyTargeting>;
+S.Struct({
+  "deviceCategoryTargeting": S.optional(CriteriaTargeting),
+  "deviceCapabilityTargeting": S.optional(CriteriaTargeting),
+  "operatingSystemTargeting": S.optional(OperatingSystemTargeting),
+}),
+).annotate({ identifier: "TechnologyTargeting" }) as any as S.Schema<TechnologyTargeting>;
 
-export type DayPartTargetingTimeZoneTypeEnum =
-  | "TIME_ZONE_TYPE_UNSPECIFIED"
-  | "SELLER"
-  | "USER"
-  | (string & {});
+export type DayPartTargetingTimeZoneTypeEnum = "TIME_ZONE_TYPE_UNSPECIFIED" | "SELLER" | "USER";
 export const DayPartTargetingTimeZoneTypeEnum = /*@__PURE__*/ S.String;
 
-export type DayPartDayOfWeekEnum =
-  | "DAY_OF_WEEK_UNSPECIFIED"
-  | "MONDAY"
-  | "TUESDAY"
-  | "WEDNESDAY"
-  | "THURSDAY"
-  | "FRIDAY"
-  | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+export type DayPartDayOfWeekEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
 export const DayPartDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -616,12 +497,12 @@ export interface TimeOfDay {
   seconds?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hours: S.optional(S.Number),
-    minutes: S.optional(S.Number),
-    nanos: S.optional(S.Number),
-    seconds: S.optional(S.Number),
-  }),
+S.Struct({
+  "hours": S.optional(S.Number),
+  "minutes": S.optional(S.Number),
+  "nanos": S.optional(S.Number),
+  "seconds": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** Defines targeting for a period of time on a specific week day. */
@@ -634,17 +515,15 @@ export interface DayPart {
   endTime?: TimeOfDay;
 }
 export const DayPart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dayOfWeek: S.optional(DayPartDayOfWeekEnum),
-    startTime: S.optional(TimeOfDay),
-    endTime: S.optional(TimeOfDay),
-  }),
+S.Struct({
+  "dayOfWeek": S.optional(DayPartDayOfWeekEnum),
+  "startTime": S.optional(TimeOfDay),
+  "endTime": S.optional(TimeOfDay),
+}),
 ).annotate({ identifier: "DayPart" }) as any as S.Schema<DayPart>;
 
 export type DayPartList = ReadonlyArray<DayPart>;
-export const DayPartList = /*@__PURE__*/ S.Array(
-  DayPart,
-) as any as S.Schema<DayPartList>;
+export const DayPartList = /*@__PURE__*/ S.Array(DayPart) as any as S.Schema<DayPartList>;
 
 /** Represents Daypart targeting. */
 export interface DayPartTargeting {
@@ -654,45 +533,23 @@ export interface DayPartTargeting {
   dayParts?: DayPartList;
 }
 export const DayPartTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeZoneType: S.optional(DayPartTargetingTimeZoneTypeEnum),
-    dayParts: S.optional(DayPartList),
-  }),
-).annotate({
-  identifier: "DayPartTargeting",
-}) as any as S.Schema<DayPartTargeting>;
+S.Struct({
+  "timeZoneType": S.optional(DayPartTargetingTimeZoneTypeEnum),
+  "dayParts": S.optional(DayPartList),
+}),
+).annotate({ identifier: "DayPartTargeting" }) as any as S.Schema<DayPartTargeting>;
 
-export type VideoTargetingTargetedPositionTypesItemEnum =
-  | "POSITION_TYPE_UNSPECIFIED"
-  | "PREROLL"
-  | "MIDROLL"
-  | "POSTROLL"
-  | (string & {});
-export const VideoTargetingTargetedPositionTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type VideoTargetingTargetedPositionTypesItemEnum = "POSITION_TYPE_UNSPECIFIED" | "PREROLL" | "MIDROLL" | "POSTROLL";
+export const VideoTargetingTargetedPositionTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type VideoTargetingTargetedPositionTypesItemEnumList =
-  ReadonlyArray<VideoTargetingTargetedPositionTypesItemEnum>;
-export const VideoTargetingTargetedPositionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    VideoTargetingTargetedPositionTypesItemEnum,
-  ) as any as S.Schema<VideoTargetingTargetedPositionTypesItemEnumList>;
+export type VideoTargetingTargetedPositionTypesItemEnumList = ReadonlyArray<VideoTargetingTargetedPositionTypesItemEnum>;
+export const VideoTargetingTargetedPositionTypesItemEnumList = /*@__PURE__*/ S.Array(VideoTargetingTargetedPositionTypesItemEnum) as any as S.Schema<VideoTargetingTargetedPositionTypesItemEnumList>;
 
-export type VideoTargetingExcludedPositionTypesItemEnum =
-  | "POSITION_TYPE_UNSPECIFIED"
-  | "PREROLL"
-  | "MIDROLL"
-  | "POSTROLL"
-  | (string & {});
-export const VideoTargetingExcludedPositionTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type VideoTargetingExcludedPositionTypesItemEnum = "POSITION_TYPE_UNSPECIFIED" | "PREROLL" | "MIDROLL" | "POSTROLL";
+export const VideoTargetingExcludedPositionTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type VideoTargetingExcludedPositionTypesItemEnumList =
-  ReadonlyArray<VideoTargetingExcludedPositionTypesItemEnum>;
-export const VideoTargetingExcludedPositionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    VideoTargetingExcludedPositionTypesItemEnum,
-  ) as any as S.Schema<VideoTargetingExcludedPositionTypesItemEnumList>;
+export type VideoTargetingExcludedPositionTypesItemEnumList = ReadonlyArray<VideoTargetingExcludedPositionTypesItemEnum>;
+export const VideoTargetingExcludedPositionTypesItemEnumList = /*@__PURE__*/ S.Array(VideoTargetingExcludedPositionTypesItemEnum) as any as S.Schema<VideoTargetingExcludedPositionTypesItemEnumList>;
 
 /** Represents targeting information about video. */
 export interface VideoTargeting {
@@ -702,31 +559,17 @@ export interface VideoTargeting {
   excludedPositionTypes?: VideoTargetingExcludedPositionTypesItemEnumList;
 }
 export const VideoTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetedPositionTypes: S.optional(
-      VideoTargetingTargetedPositionTypesItemEnumList,
-    ),
-    excludedPositionTypes: S.optional(
-      VideoTargetingExcludedPositionTypesItemEnumList,
-    ),
-  }),
+S.Struct({
+  "targetedPositionTypes": S.optional(VideoTargetingTargetedPositionTypesItemEnumList),
+  "excludedPositionTypes": S.optional(VideoTargetingExcludedPositionTypesItemEnumList),
+}),
 ).annotate({ identifier: "VideoTargeting" }) as any as S.Schema<VideoTargeting>;
 
-export type InventoryTypeTargetingInventoryTypesItemEnum =
-  | "INVENTORY_TYPE_UNSPECIFIED"
-  | "BROWSER"
-  | "MOBILE_APP"
-  | "VIDEO_PLAYER"
-  | (string & {});
-export const InventoryTypeTargetingInventoryTypesItemEnum =
-  /*@__PURE__*/ S.String;
+export type InventoryTypeTargetingInventoryTypesItemEnum = "INVENTORY_TYPE_UNSPECIFIED" | "BROWSER" | "MOBILE_APP" | "VIDEO_PLAYER";
+export const InventoryTypeTargetingInventoryTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type InventoryTypeTargetingInventoryTypesItemEnumList =
-  ReadonlyArray<InventoryTypeTargetingInventoryTypesItemEnum>;
-export const InventoryTypeTargetingInventoryTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    InventoryTypeTargetingInventoryTypesItemEnum,
-  ) as any as S.Schema<InventoryTypeTargetingInventoryTypesItemEnumList>;
+export type InventoryTypeTargetingInventoryTypesItemEnumList = ReadonlyArray<InventoryTypeTargetingInventoryTypesItemEnum>;
+export const InventoryTypeTargetingInventoryTypesItemEnumList = /*@__PURE__*/ S.Array(InventoryTypeTargetingInventoryTypesItemEnum) as any as S.Schema<InventoryTypeTargetingInventoryTypesItemEnumList>;
 
 /** Targeting of the inventory types a bid request can originate from. */
 export interface InventoryTypeTargeting {
@@ -734,22 +577,12 @@ export interface InventoryTypeTargeting {
   inventoryTypes?: InventoryTypeTargetingInventoryTypesItemEnumList;
 }
 export const InventoryTypeTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inventoryTypes: S.optional(
-      InventoryTypeTargetingInventoryTypesItemEnumList,
-    ),
-  }),
-).annotate({
-  identifier: "InventoryTypeTargeting",
-}) as any as S.Schema<InventoryTypeTargeting>;
+S.Struct({
+  "inventoryTypes": S.optional(InventoryTypeTargetingInventoryTypesItemEnumList),
+}),
+).annotate({ identifier: "InventoryTypeTargeting" }) as any as S.Schema<InventoryTypeTargeting>;
 
-export type AdSizeTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "PIXEL"
-  | "INTERSTITIAL"
-  | "NATIVE"
-  | "FLUID"
-  | (string & {});
+export type AdSizeTypeEnum = "TYPE_UNSPECIFIED" | "PIXEL" | "INTERSTITIAL" | "NATIVE" | "FLUID";
 export const AdSizeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents size of a single ad slot, or a creative. */
@@ -762,17 +595,15 @@ export interface AdSize {
   type?: AdSizeTypeEnum;
 }
 export const AdSize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(S.String),
-    height: S.optional(S.String),
-    type: S.optional(AdSizeTypeEnum),
-  }),
+S.Struct({
+  "width": S.optional(S.String),
+  "height": S.optional(S.String),
+  "type": S.optional(AdSizeTypeEnum),
+}),
 ).annotate({ identifier: "AdSize" }) as any as S.Schema<AdSize>;
 
 export type AdSizeList = ReadonlyArray<AdSize>;
-export const AdSizeList = /*@__PURE__*/ S.Array(
-  AdSize,
-) as any as S.Schema<AdSizeList>;
+export const AdSizeList = /*@__PURE__*/ S.Array(AdSize) as any as S.Schema<AdSizeList>;
 
 /** Represents the size of an ad unit that can be targeted on a bid request. */
 export interface InventorySizeTargeting {
@@ -782,13 +613,11 @@ export interface InventorySizeTargeting {
   targetedInventorySizes?: AdSizeList;
 }
 export const InventorySizeTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    excludedInventorySizes: S.optional(AdSizeList),
-    targetedInventorySizes: S.optional(AdSizeList),
-  }),
-).annotate({
-  identifier: "InventorySizeTargeting",
-}) as any as S.Schema<InventorySizeTargeting>;
+S.Struct({
+  "excludedInventorySizes": S.optional(AdSizeList),
+  "targetedInventorySizes": S.optional(AdSizeList),
+}),
+).annotate({ identifier: "InventorySizeTargeting" }) as any as S.Schema<InventorySizeTargeting>;
 
 /** Represents a list of targeted and excluded URLs (for example, google.com). For Private Auction Deals, URLs are either included or excluded. For Programmatic Guaranteed and Preferred Deals, this doesn't apply. */
 export interface UriTargeting {
@@ -798,10 +627,10 @@ export interface UriTargeting {
   excludedUris?: StringList;
 }
 export const UriTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetedUris: S.optional(StringList),
-    excludedUris: S.optional(StringList),
-  }),
+S.Struct({
+  "targetedUris": S.optional(StringList),
+  "excludedUris": S.optional(StringList),
+}),
 ).annotate({ identifier: "UriTargeting" }) as any as S.Schema<UriTargeting>;
 
 /** Represents a list of targeted and excluded mobile application IDs that publishers own. Android App ID, for example, com.google.android.apps.maps, can be found in Google Play Store URL. iOS App ID (which is a number) can be found at the end of iTunes store URL. First party mobile applications is either included or excluded. */
@@ -811,15 +640,12 @@ export interface FirstPartyMobileApplicationTargeting {
   /** A list of application IDs to be excluded. */
   excludedAppIds?: StringList;
 }
-export const FirstPartyMobileApplicationTargeting = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetedAppIds: S.optional(StringList),
-      excludedAppIds: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "FirstPartyMobileApplicationTargeting",
-}) as any as S.Schema<FirstPartyMobileApplicationTargeting>;
+export const FirstPartyMobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "targetedAppIds": S.optional(StringList),
+  "excludedAppIds": S.optional(StringList),
+}),
+).annotate({ identifier: "FirstPartyMobileApplicationTargeting" }) as any as S.Schema<FirstPartyMobileApplicationTargeting>;
 
 /** Mobile application targeting settings. */
 export interface MobileApplicationTargeting {
@@ -827,12 +653,10 @@ export interface MobileApplicationTargeting {
   firstPartyTargeting?: FirstPartyMobileApplicationTargeting;
 }
 export const MobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstPartyTargeting: S.optional(FirstPartyMobileApplicationTargeting),
-  }),
-).annotate({
-  identifier: "MobileApplicationTargeting",
-}) as any as S.Schema<MobileApplicationTargeting>;
+S.Struct({
+  "firstPartyTargeting": S.optional(FirstPartyMobileApplicationTargeting),
+}),
+).annotate({ identifier: "MobileApplicationTargeting" }) as any as S.Schema<MobileApplicationTargeting>;
 
 /** Represents targeting about where the ads can appear, for example, certain sites or mobile applications. Different placement targeting types will be logically OR'ed. */
 export interface PlacementTargeting {
@@ -842,13 +666,11 @@ export interface PlacementTargeting {
   mobileApplicationTargeting?: MobileApplicationTargeting;
 }
 export const PlacementTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uriTargeting: S.optional(UriTargeting),
-    mobileApplicationTargeting: S.optional(MobileApplicationTargeting),
-  }),
-).annotate({
-  identifier: "PlacementTargeting",
-}) as any as S.Schema<PlacementTargeting>;
+S.Struct({
+  "uriTargeting": S.optional(UriTargeting),
+  "mobileApplicationTargeting": S.optional(MobileApplicationTargeting),
+}),
+).annotate({ identifier: "PlacementTargeting" }) as any as S.Schema<PlacementTargeting>;
 
 /** Targeting represents different criteria that can be used to target deals or auction packages. For example, they can choose to target inventory only if the user is in the US. Multiple types of targeting are always applied as a logical AND, unless noted otherwise. */
 export interface MarketplaceTargeting {
@@ -874,59 +696,30 @@ export interface MarketplaceTargeting {
   userListTargeting?: CriteriaTargeting;
 }
 export const MarketplaceTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    technologyTargeting: S.optional(TechnologyTargeting),
-    daypartTargeting: S.optional(DayPartTargeting),
-    verticalTargeting: S.optional(CriteriaTargeting),
-    videoTargeting: S.optional(VideoTargeting),
-    excludedSensitiveCategoryIds: S.optional(StringList),
-    inventoryTypeTargeting: S.optional(InventoryTypeTargeting),
-    inventorySizeTargeting: S.optional(InventorySizeTargeting),
-    placementTargeting: S.optional(PlacementTargeting),
-    geoTargeting: S.optional(CriteriaTargeting),
-    userListTargeting: S.optional(CriteriaTargeting),
-  }),
-).annotate({
-  identifier: "MarketplaceTargeting",
-}) as any as S.Schema<MarketplaceTargeting>;
+S.Struct({
+  "technologyTargeting": S.optional(TechnologyTargeting),
+  "daypartTargeting": S.optional(DayPartTargeting),
+  "verticalTargeting": S.optional(CriteriaTargeting),
+  "videoTargeting": S.optional(VideoTargeting),
+  "excludedSensitiveCategoryIds": S.optional(StringList),
+  "inventoryTypeTargeting": S.optional(InventoryTypeTargeting),
+  "inventorySizeTargeting": S.optional(InventorySizeTargeting),
+  "placementTargeting": S.optional(PlacementTargeting),
+  "geoTargeting": S.optional(CriteriaTargeting),
+  "userListTargeting": S.optional(CriteriaTargeting),
+}),
+).annotate({ identifier: "MarketplaceTargeting" }) as any as S.Schema<MarketplaceTargeting>;
 
-export type DeliveryControlDeliveryRateTypeEnum =
-  | "DELIVERY_RATE_TYPE_UNSPECIFIED"
-  | "EVENLY"
-  | "FRONT_LOADED"
-  | "AS_FAST_AS_POSSIBLE"
-  | (string & {});
+export type DeliveryControlDeliveryRateTypeEnum = "DELIVERY_RATE_TYPE_UNSPECIFIED" | "EVENLY" | "FRONT_LOADED" | "AS_FAST_AS_POSSIBLE";
 export const DeliveryControlDeliveryRateTypeEnum = /*@__PURE__*/ S.String;
 
-export type DeliveryControlRoadblockingTypeEnum =
-  | "ROADBLOCKING_TYPE_UNSPECIFIED"
-  | "ONLY_ONE"
-  | "ONE_OR_MORE"
-  | "AS_MANY_AS_POSSIBLE"
-  | "ALL_ROADBLOCK"
-  | "CREATIVE_SET"
-  | (string & {});
+export type DeliveryControlRoadblockingTypeEnum = "ROADBLOCKING_TYPE_UNSPECIFIED" | "ONLY_ONE" | "ONE_OR_MORE" | "AS_MANY_AS_POSSIBLE" | "ALL_ROADBLOCK" | "CREATIVE_SET";
 export const DeliveryControlRoadblockingTypeEnum = /*@__PURE__*/ S.String;
 
-export type DeliveryControlCompanionDeliveryTypeEnum =
-  | "COMPANION_DELIVERY_TYPE_UNSPECIFIED"
-  | "DELIVERY_OPTIONAL"
-  | "DELIVERY_AT_LEAST_ONE"
-  | "DELIVERY_ALL"
-  | (string & {});
+export type DeliveryControlCompanionDeliveryTypeEnum = "COMPANION_DELIVERY_TYPE_UNSPECIFIED" | "DELIVERY_OPTIONAL" | "DELIVERY_AT_LEAST_ONE" | "DELIVERY_ALL";
 export const DeliveryControlCompanionDeliveryTypeEnum = /*@__PURE__*/ S.String;
 
-export type FrequencyCapTimeUnitTypeEnum =
-  | "TIME_UNIT_TYPE_UNSPECIFIED"
-  | "MINUTE"
-  | "HOUR"
-  | "DAY"
-  | "WEEK"
-  | "MONTH"
-  | "LIFETIME"
-  | "POD"
-  | "STREAM"
-  | (string & {});
+export type FrequencyCapTimeUnitTypeEnum = "TIME_UNIT_TYPE_UNSPECIFIED" | "MINUTE" | "HOUR" | "DAY" | "WEEK" | "MONTH" | "LIFETIME" | "POD" | "STREAM";
 export const FrequencyCapTimeUnitTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message contains details about publisher-set frequency caps of the delivery. */
@@ -939,25 +732,17 @@ export interface FrequencyCap {
   timeUnitsCount?: number;
 }
 export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxImpressions: S.optional(S.Number),
-    timeUnitType: S.optional(FrequencyCapTimeUnitTypeEnum),
-    timeUnitsCount: S.optional(S.Number),
-  }),
+S.Struct({
+  "maxImpressions": S.optional(S.Number),
+  "timeUnitType": S.optional(FrequencyCapTimeUnitTypeEnum),
+  "timeUnitsCount": S.optional(S.Number),
+}),
 ).annotate({ identifier: "FrequencyCap" }) as any as S.Schema<FrequencyCap>;
 
 export type FrequencyCapList = ReadonlyArray<FrequencyCap>;
-export const FrequencyCapList = /*@__PURE__*/ S.Array(
-  FrequencyCap,
-) as any as S.Schema<FrequencyCapList>;
+export const FrequencyCapList = /*@__PURE__*/ S.Array(FrequencyCap) as any as S.Schema<FrequencyCapList>;
 
-export type DeliveryControlCreativeRotationTypeEnum =
-  | "CREATIVE_ROTATION_TYPE_UNSPECIFIED"
-  | "ROTATION_EVEN"
-  | "ROTATION_OPTIMIZED"
-  | "ROTATION_MANUAL"
-  | "ROTATION_SEQUENTIAL"
-  | (string & {});
+export type DeliveryControlCreativeRotationTypeEnum = "CREATIVE_ROTATION_TYPE_UNSPECIFIED" | "ROTATION_EVEN" | "ROTATION_OPTIMIZED" | "ROTATION_MANUAL" | "ROTATION_SEQUENTIAL";
 export const DeliveryControlCreativeRotationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message contains details about how the deal will be paced. */
@@ -974,57 +759,29 @@ export interface DeliveryControl {
   creativeRotationType?: DeliveryControlCreativeRotationTypeEnum;
 }
 export const DeliveryControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryRateType: S.optional(DeliveryControlDeliveryRateTypeEnum),
-    roadblockingType: S.optional(DeliveryControlRoadblockingTypeEnum),
-    companionDeliveryType: S.optional(DeliveryControlCompanionDeliveryTypeEnum),
-    frequencyCap: S.optional(FrequencyCapList),
-    creativeRotationType: S.optional(DeliveryControlCreativeRotationTypeEnum),
-  }),
-).annotate({
-  identifier: "DeliveryControl",
-}) as any as S.Schema<DeliveryControl>;
+S.Struct({
+  "deliveryRateType": S.optional(DeliveryControlDeliveryRateTypeEnum),
+  "roadblockingType": S.optional(DeliveryControlRoadblockingTypeEnum),
+  "companionDeliveryType": S.optional(DeliveryControlCompanionDeliveryTypeEnum),
+  "frequencyCap": S.optional(FrequencyCapList),
+  "creativeRotationType": S.optional(DeliveryControlCreativeRotationTypeEnum),
+}),
+).annotate({ identifier: "DeliveryControl" }) as any as S.Schema<DeliveryControl>;
 
-export type CreativeRequirementsCreativeFormatEnum =
-  | "CREATIVE_FORMAT_UNSPECIFIED"
-  | "DISPLAY"
-  | "VIDEO"
-  | "AUDIO"
-  | (string & {});
+export type CreativeRequirementsCreativeFormatEnum = "CREATIVE_FORMAT_UNSPECIFIED" | "DISPLAY" | "VIDEO" | "AUDIO";
 export const CreativeRequirementsCreativeFormatEnum = /*@__PURE__*/ S.String;
 
-export type CreativeRequirementsSkippableAdTypeEnum =
-  | "SKIPPABLE_AD_TYPE_UNSPECIFIED"
-  | "SKIPPABLE"
-  | "INSTREAM_SELECT"
-  | "NOT_SKIPPABLE"
-  | "ANY"
-  | (string & {});
+export type CreativeRequirementsSkippableAdTypeEnum = "SKIPPABLE_AD_TYPE_UNSPECIFIED" | "SKIPPABLE" | "INSTREAM_SELECT" | "NOT_SKIPPABLE" | "ANY";
 export const CreativeRequirementsSkippableAdTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeRequirementsCreativePreApprovalPolicyEnum =
-  | "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED"
-  | "SELLER_PRE_APPROVAL_REQUIRED"
-  | "SELLER_PRE_APPROVAL_NOT_REQUIRED"
-  | (string & {});
-export const CreativeRequirementsCreativePreApprovalPolicyEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeRequirementsCreativePreApprovalPolicyEnum = "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED" | "SELLER_PRE_APPROVAL_REQUIRED" | "SELLER_PRE_APPROVAL_NOT_REQUIRED";
+export const CreativeRequirementsCreativePreApprovalPolicyEnum = /*@__PURE__*/ S.String;
 
-export type CreativeRequirementsProgrammaticCreativeSourceEnum =
-  | "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED"
-  | "ADVERTISER"
-  | "PUBLISHER"
-  | (string & {});
-export const CreativeRequirementsProgrammaticCreativeSourceEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeRequirementsProgrammaticCreativeSourceEnum = "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED" | "ADVERTISER" | "PUBLISHER";
+export const CreativeRequirementsProgrammaticCreativeSourceEnum = /*@__PURE__*/ S.String;
 
-export type CreativeRequirementsCreativeSafeFrameCompatibilityEnum =
-  | "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED"
-  | "COMPATIBLE"
-  | "INCOMPATIBLE"
-  | (string & {});
-export const CreativeRequirementsCreativeSafeFrameCompatibilityEnum =
-  /*@__PURE__*/ S.String;
+export type CreativeRequirementsCreativeSafeFrameCompatibilityEnum = "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED" | "COMPATIBLE" | "INCOMPATIBLE";
+export const CreativeRequirementsCreativeSafeFrameCompatibilityEnum = /*@__PURE__*/ S.String;
 
 /** Message captures data about the creatives in the deal. */
 export interface CreativeRequirements {
@@ -1042,31 +799,18 @@ export interface CreativeRequirements {
   creativeSafeFrameCompatibility?: CreativeRequirementsCreativeSafeFrameCompatibilityEnum;
 }
 export const CreativeRequirements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeFormat: S.optional(CreativeRequirementsCreativeFormatEnum),
-    skippableAdType: S.optional(CreativeRequirementsSkippableAdTypeEnum),
-    creativePreApprovalPolicy: S.optional(
-      CreativeRequirementsCreativePreApprovalPolicyEnum,
-    ),
-    programmaticCreativeSource: S.optional(
-      CreativeRequirementsProgrammaticCreativeSourceEnum,
-    ),
-    maxAdDurationMs: S.optional(S.String),
-    creativeSafeFrameCompatibility: S.optional(
-      CreativeRequirementsCreativeSafeFrameCompatibilityEnum,
-    ),
-  }),
-).annotate({
-  identifier: "CreativeRequirements",
-}) as any as S.Schema<CreativeRequirements>;
+S.Struct({
+  "creativeFormat": S.optional(CreativeRequirementsCreativeFormatEnum),
+  "skippableAdType": S.optional(CreativeRequirementsSkippableAdTypeEnum),
+  "creativePreApprovalPolicy": S.optional(CreativeRequirementsCreativePreApprovalPolicyEnum),
+  "programmaticCreativeSource": S.optional(CreativeRequirementsProgrammaticCreativeSourceEnum),
+  "maxAdDurationMs": S.optional(S.String),
+  "creativeSafeFrameCompatibility": S.optional(CreativeRequirementsCreativeSafeFrameCompatibilityEnum),
+}),
+).annotate({ identifier: "CreativeRequirements" }) as any as S.Schema<CreativeRequirements>;
 
-export type ProgrammaticGuaranteedTermsReservationTypeEnum =
-  | "RESERVATION_TYPE_UNSPECIFIED"
-  | "STANDARD"
-  | "SPONSORSHIP"
-  | (string & {});
-export const ProgrammaticGuaranteedTermsReservationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ProgrammaticGuaranteedTermsReservationTypeEnum = "RESERVATION_TYPE_UNSPECIFIED" | "STANDARD" | "SPONSORSHIP";
+export const ProgrammaticGuaranteedTermsReservationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Pricing terms for Programmatic Guaranteed Deals. */
 export interface ProgrammaticGuaranteedTerms {
@@ -1084,17 +828,15 @@ export interface ProgrammaticGuaranteedTerms {
   impressionCap?: string;
 }
 export const ProgrammaticGuaranteedTerms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixedPrice: S.optional(Price),
-    minimumDailyLooks: S.optional(S.String),
-    guaranteedLooks: S.optional(S.String),
-    reservationType: S.optional(ProgrammaticGuaranteedTermsReservationTypeEnum),
-    percentShareOfVoice: S.optional(S.String),
-    impressionCap: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProgrammaticGuaranteedTerms",
-}) as any as S.Schema<ProgrammaticGuaranteedTerms>;
+S.Struct({
+  "fixedPrice": S.optional(Price),
+  "minimumDailyLooks": S.optional(S.String),
+  "guaranteedLooks": S.optional(S.String),
+  "reservationType": S.optional(ProgrammaticGuaranteedTermsReservationTypeEnum),
+  "percentShareOfVoice": S.optional(S.String),
+  "impressionCap": S.optional(S.String),
+}),
+).annotate({ identifier: "ProgrammaticGuaranteedTerms" }) as any as S.Schema<ProgrammaticGuaranteedTerms>;
 
 /** Represents a media planner account. */
 export interface MediaPlanner {
@@ -1108,12 +850,12 @@ export interface MediaPlanner {
   displayName?: string;
 }
 export const MediaPlanner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    ancestorNames: S.optional(StringList),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "accountId": S.optional(S.String),
+  "ancestorNames": S.optional(StringList),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "MediaPlanner" }) as any as S.Schema<MediaPlanner>;
 
 /** A deal represents a segment of inventory for displaying ads that contains the terms and targeting information that is used for serving as well as the deal stats and status. Note: A proposal may contain multiple deals. */
@@ -1168,39 +910,35 @@ export interface Deal {
   mediaPlanner?: MediaPlanner;
 }
 export const Deal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateAuctionTerms: S.optional(PrivateAuctionTerms),
-    dealType: S.optional(DealDealTypeEnum),
-    sellerTimeZone: S.optional(TimeZone),
-    estimatedGrossSpend: S.optional(Money),
-    buyerPermissionType: S.optional(DealBuyerPermissionTypeEnum),
-    preferredDealTerms: S.optional(PreferredDealTerms),
-    targeting: S.optional(MarketplaceTargeting),
-    deliveryControl: S.optional(DeliveryControl),
-    proposalRevision: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    billedBuyer: S.optional(S.String),
-    flightEndTime: S.optional(S.String),
-    creativeRequirements: S.optional(CreativeRequirements),
-    buyer: S.optional(S.String),
-    createTime: S.optional(S.String),
-    programmaticGuaranteedTerms: S.optional(ProgrammaticGuaranteedTerms),
-    client: S.optional(S.String),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    publisherProfile: S.optional(S.String),
-    flightStartTime: S.optional(S.String),
-    eligibleSeatIds: S.optional(StringList),
-    description: S.optional(S.String),
-    mediaPlanner: S.optional(MediaPlanner),
-  }),
+S.Struct({
+  "privateAuctionTerms": S.optional(PrivateAuctionTerms),
+  "dealType": S.optional(DealDealTypeEnum),
+  "sellerTimeZone": S.optional(TimeZone),
+  "estimatedGrossSpend": S.optional(Money),
+  "buyerPermissionType": S.optional(DealBuyerPermissionTypeEnum),
+  "preferredDealTerms": S.optional(PreferredDealTerms),
+  "targeting": S.optional(MarketplaceTargeting),
+  "deliveryControl": S.optional(DeliveryControl),
+  "proposalRevision": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "billedBuyer": S.optional(S.String),
+  "flightEndTime": S.optional(S.String),
+  "creativeRequirements": S.optional(CreativeRequirements),
+  "buyer": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "programmaticGuaranteedTerms": S.optional(ProgrammaticGuaranteedTerms),
+  "client": S.optional(S.String),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "publisherProfile": S.optional(S.String),
+  "flightStartTime": S.optional(S.String),
+  "eligibleSeatIds": S.optional(StringList),
+  "description": S.optional(S.String),
+  "mediaPlanner": S.optional(MediaPlanner),
+}),
 ).annotate({ identifier: "Deal" }) as any as S.Schema<Deal>;
 
-export type DealPausingInfoPauseRoleEnum =
-  | "BUYER_SELLER_ROLE_UNSPECIFIED"
-  | "BUYER"
-  | "SELLER"
-  | (string & {});
+export type DealPausingInfoPauseRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
 export const DealPausingInfoPauseRoleEnum = /*@__PURE__*/ S.String;
 
 /** Information related to deal pausing. */
@@ -1213,22 +951,14 @@ export interface DealPausingInfo {
   pauseRole?: DealPausingInfoPauseRoleEnum;
 }
 export const DealPausingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pauseReason: S.optional(S.String),
-    pausingConsented: S.optional(S.Boolean),
-    pauseRole: S.optional(DealPausingInfoPauseRoleEnum),
-  }),
-).annotate({
-  identifier: "DealPausingInfo",
-}) as any as S.Schema<DealPausingInfo>;
+S.Struct({
+  "pauseReason": S.optional(S.String),
+  "pausingConsented": S.optional(S.Boolean),
+  "pauseRole": S.optional(DealPausingInfoPauseRoleEnum),
+}),
+).annotate({ identifier: "DealPausingInfo" }) as any as S.Schema<DealPausingInfo>;
 
-export type FinalizedDealDealServingStatusEnum =
-  | "DEAL_SERVING_STATUS_UNSPECIFIED"
-  | "ACTIVE"
-  | "ENDED"
-  | "PAUSED_BY_BUYER"
-  | "PAUSED_BY_SELLER"
-  | (string & {});
+export type FinalizedDealDealServingStatusEnum = "DEAL_SERVING_STATUS_UNSPECIFIED" | "ACTIVE" | "ENDED" | "PAUSED_BY_BUYER" | "PAUSED_BY_SELLER";
 export const FinalizedDealDealServingStatusEnum = /*@__PURE__*/ S.String;
 
 /** A finalized deal is a snapshot of the deal when both buyer and seller accept the deal. The buyer or seller can update the deal after it's been finalized and renegotiate on the deal targeting, terms and other fields, while at the same time the finalized snapshot of the deal can still be retrieved using this API. The finalized deal contains a copy of the deal as it existed when most recently finalized, as well as fields related to deal serving such as pause/resume status, RTB metrics, and more. */
@@ -1247,14 +977,14 @@ export interface FinalizedDeal {
   dealServingStatus?: FinalizedDealDealServingStatusEnum;
 }
 export const FinalizedDeal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rtbMetrics: S.optional(RtbMetrics),
-    readyToServe: S.optional(S.Boolean),
-    deal: S.optional(Deal),
-    name: S.optional(S.String),
-    dealPausingInfo: S.optional(DealPausingInfo),
-    dealServingStatus: S.optional(FinalizedDealDealServingStatusEnum),
-  }),
+S.Struct({
+  "rtbMetrics": S.optional(RtbMetrics),
+  "readyToServe": S.optional(S.Boolean),
+  "deal": S.optional(Deal),
+  "name": S.optional(S.String),
+  "dealPausingInfo": S.optional(DealPausingInfo),
+  "dealServingStatus": S.optional(FinalizedDealDealServingStatusEnum),
+}),
 ).annotate({ identifier: "FinalizedDeal" }) as any as S.Schema<FinalizedDeal>;
 
 /** Request to add a note. */
@@ -1263,9 +993,9 @@ export interface AddNoteRequest {
   note?: Note;
 }
 export const AddNoteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    note: S.optional(Note),
-  }),
+S.Struct({
+  "note": S.optional(Note),
+}),
 ).annotate({ identifier: "AddNoteRequest" }) as any as S.Schema<AddNoteRequest>;
 
 export interface AddNoteBuyersProposalsRequest {
@@ -1275,19 +1005,11 @@ export interface AddNoteBuyersProposalsRequest {
   body?: AddNoteRequest;
 }
 export const AddNoteBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proposal: S.String.pipe(T.Label()),
-    body: S.optional(AddNoteRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+proposal}:addNote",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AddNoteBuyersProposalsRequest",
-}) as any as S.Schema<AddNoteBuyersProposalsRequest>;
+S.Struct({
+  "proposal": S.String.pipe(T.Label()),
+  "body": S.optional(AddNoteRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+proposal}:addNote","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "AddNoteBuyersProposalsRequest" }) as any as S.Schema<AddNoteBuyersProposalsRequest>;
 
 /** Request message for updating the deal at the given revision number. */
 export interface UpdateDealRequest {
@@ -1297,18 +1019,14 @@ export interface UpdateDealRequest {
   updateMask?: string;
 }
 export const UpdateDealRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deal: S.optional(Deal),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDealRequest",
-}) as any as S.Schema<UpdateDealRequest>;
+S.Struct({
+  "deal": S.optional(Deal),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateDealRequest" }) as any as S.Schema<UpdateDealRequest>;
 
 export type UpdateDealRequestList = ReadonlyArray<UpdateDealRequest>;
-export const UpdateDealRequestList = /*@__PURE__*/ S.Array(
-  UpdateDealRequest,
-) as any as S.Schema<UpdateDealRequestList>;
+export const UpdateDealRequestList = /*@__PURE__*/ S.Array(UpdateDealRequest) as any as S.Schema<UpdateDealRequestList>;
 
 /** Request message for batch updating deals. */
 export interface BatchUpdateDealsRequest {
@@ -1316,12 +1034,10 @@ export interface BatchUpdateDealsRequest {
   requests?: UpdateDealRequestList;
 }
 export const BatchUpdateDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(UpdateDealRequestList),
-  }),
-).annotate({
-  identifier: "BatchUpdateDealsRequest",
-}) as any as S.Schema<BatchUpdateDealsRequest>;
+S.Struct({
+  "requests": S.optional(UpdateDealRequestList),
+}),
+).annotate({ identifier: "BatchUpdateDealsRequest" }) as any as S.Schema<BatchUpdateDealsRequest>;
 
 export interface BatchUpdateBuyersProposalsDealsRequest {
   /** Required. The name of the proposal containing the deals to batch update. Format: buyers/{accountId}/proposals/{proposalId} */
@@ -1329,26 +1045,15 @@ export interface BatchUpdateBuyersProposalsDealsRequest {
   /** Request body */
   body?: BatchUpdateDealsRequest;
 }
-export const BatchUpdateBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateDealsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/deals:batchUpdate",
-        baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "BatchUpdateBuyersProposalsDealsRequest",
-}) as any as S.Schema<BatchUpdateBuyersProposalsDealsRequest>;
+export const BatchUpdateBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdateDealsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/deals:batchUpdate","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateBuyersProposalsDealsRequest" }) as any as S.Schema<BatchUpdateBuyersProposalsDealsRequest>;
 
 export type DealList = ReadonlyArray<Deal>;
-export const DealList = /*@__PURE__*/ S.Array(
-  Deal,
-) as any as S.Schema<DealList>;
+export const DealList = /*@__PURE__*/ S.Array(Deal) as any as S.Schema<DealList>;
 
 /** Response message for batch updating deals. */
 export interface BatchUpdateDealsResponse {
@@ -1356,20 +1061,16 @@ export interface BatchUpdateDealsResponse {
   deals?: DealList;
 }
 export const BatchUpdateDealsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deals: S.optional(DealList),
-  }),
-).annotate({
-  identifier: "BatchUpdateDealsResponse",
-}) as any as S.Schema<BatchUpdateDealsResponse>;
+S.Struct({
+  "deals": S.optional(DealList),
+}),
+).annotate({ identifier: "BatchUpdateDealsResponse" }) as any as S.Schema<BatchUpdateDealsResponse>;
 
 /** Request to cancel an ongoing negotiation. */
 export interface CancelNegotiationRequest {}
 export const CancelNegotiationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelNegotiationRequest",
-}) as any as S.Schema<CancelNegotiationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelNegotiationRequest" }) as any as S.Schema<CancelNegotiationRequest>;
 
 export interface CancelNegotiationBuyersProposalsRequest {
   /** Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}` */
@@ -1377,21 +1078,12 @@ export interface CancelNegotiationBuyersProposalsRequest {
   /** Request body */
   body?: CancelNegotiationRequest;
 }
-export const CancelNegotiationBuyersProposalsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      proposal: S.String.pipe(T.Label()),
-      body: S.optional(CancelNegotiationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+proposal}:cancelNegotiation",
-        baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelNegotiationBuyersProposalsRequest",
-}) as any as S.Schema<CancelNegotiationBuyersProposalsRequest>;
+export const CancelNegotiationBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "proposal": S.String.pipe(T.Label()),
+  "body": S.optional(CancelNegotiationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+proposal}:cancelNegotiation","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "CancelNegotiationBuyersProposalsRequest" }) as any as S.Schema<CancelNegotiationBuyersProposalsRequest>;
 
 export interface CreateBuyersClientsRequest {
   /** Required. The name of the buyer. Format: `buyers/{accountId}` */
@@ -1400,19 +1092,11 @@ export interface CreateBuyersClientsRequest {
   body?: Client;
 }
 export const CreateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Client.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/clients",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateBuyersClientsRequest",
-}) as any as S.Schema<CreateBuyersClientsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Client.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/clients","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "CreateBuyersClientsRequest" }) as any as S.Schema<CreateBuyersClientsRequest>;
 
 export interface CreateBuyersClientsUsersRequest {
   /** Required. The name of the client. Format: `buyers/{accountId}/clients/{clientAccountId}` */
@@ -1421,27 +1105,17 @@ export interface CreateBuyersClientsUsersRequest {
   body?: ClientUser;
 }
 export const CreateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(ClientUser.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/users",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateBuyersClientsUsersRequest",
-}) as any as S.Schema<CreateBuyersClientsUsersRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ClientUser.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/users","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "CreateBuyersClientsUsersRequest" }) as any as S.Schema<CreateBuyersClientsUsersRequest>;
 
 /** Request message for disabling a client. */
 export interface DeactivateClientRequest {}
 export const DeactivateClientRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeactivateClientRequest",
-}) as any as S.Schema<DeactivateClientRequest>;
+S.Struct({}),
+).annotate({ identifier: "DeactivateClientRequest" }) as any as S.Schema<DeactivateClientRequest>;
 
 export interface DeactivateBuyersClientsRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}` */
@@ -1450,27 +1124,17 @@ export interface DeactivateBuyersClientsRequest {
   body?: DeactivateClientRequest;
 }
 export const DeactivateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(DeactivateClientRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:deactivate",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeactivateBuyersClientsRequest",
-}) as any as S.Schema<DeactivateBuyersClientsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DeactivateClientRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:deactivate","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "DeactivateBuyersClientsRequest" }) as any as S.Schema<DeactivateBuyersClientsRequest>;
 
 /** Request message for deactivating a client user. */
 export interface DeactivateClientUserRequest {}
 export const DeactivateClientUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeactivateClientUserRequest",
-}) as any as S.Schema<DeactivateClientUserRequest>;
+S.Struct({}),
+).annotate({ identifier: "DeactivateClientUserRequest" }) as any as S.Schema<DeactivateClientUserRequest>;
 
 export interface DeactivateBuyersClientsUsersRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}/clientUsers/{userId}` */
@@ -1479,66 +1143,40 @@ export interface DeactivateBuyersClientsUsersRequest {
   body?: DeactivateClientUserRequest;
 }
 export const DeactivateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(DeactivateClientUserRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:deactivate",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeactivateBuyersClientsUsersRequest",
-}) as any as S.Schema<DeactivateBuyersClientsUsersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DeactivateClientUserRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:deactivate","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "DeactivateBuyersClientsUsersRequest" }) as any as S.Schema<DeactivateBuyersClientsUsersRequest>;
 
 export interface DeleteBuyersClientsUsersRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}/clientUsers/{userId}` */
   name: string;
 }
 export const DeleteBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteBuyersClientsUsersRequest",
-}) as any as S.Schema<DeleteBuyersClientsUsersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "DeleteBuyersClientsUsersRequest" }) as any as S.Schema<DeleteBuyersClientsUsersRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface GetBuyersAuctionPackagesRequest {
   /** Required. Name of auction package to get. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` */
   name: string;
 }
 export const GetBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBuyersAuctionPackagesRequest",
-}) as any as S.Schema<GetBuyersAuctionPackagesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "GetBuyersAuctionPackagesRequest" }) as any as S.Schema<GetBuyersAuctionPackagesRequest>;
 
 export type MediaPlannerList = ReadonlyArray<MediaPlanner>;
-export const MediaPlannerList = /*@__PURE__*/ S.Array(
-  MediaPlanner,
-) as any as S.Schema<MediaPlannerList>;
+export const MediaPlannerList = /*@__PURE__*/ S.Array(MediaPlanner) as any as S.Schema<MediaPlannerList>;
 
 /** Defines a segment of inventory that buyer wants to buy. It's created by buyer and could be shared with multiple buyers. */
 export interface AuctionPackage {
@@ -1568,20 +1206,20 @@ export interface AuctionPackage {
   dealOwnerSeatId?: string;
 }
 export const AuctionPackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    floorPriceCpm: S.optional(Money),
-    subscribedBuyers: S.optional(StringList),
-    createTime: S.optional(S.String),
-    subscribedClients: S.optional(StringList),
-    subscribedMediaPlanners: S.optional(MediaPlannerList),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    eligibleSeatIds: S.optional(StringList),
-    creator: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    description: S.optional(S.String),
-    dealOwnerSeatId: S.optional(S.String),
-  }),
+S.Struct({
+  "floorPriceCpm": S.optional(Money),
+  "subscribedBuyers": S.optional(StringList),
+  "createTime": S.optional(S.String),
+  "subscribedClients": S.optional(StringList),
+  "subscribedMediaPlanners": S.optional(MediaPlannerList),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "eligibleSeatIds": S.optional(StringList),
+  "creator": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "description": S.optional(S.String),
+  "dealOwnerSeatId": S.optional(S.String),
+}),
 ).annotate({ identifier: "AuctionPackage" }) as any as S.Schema<AuctionPackage>;
 
 export interface GetBuyersClientsRequest {
@@ -1589,127 +1227,63 @@ export interface GetBuyersClientsRequest {
   name: string;
 }
 export const GetBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBuyersClientsRequest",
-}) as any as S.Schema<GetBuyersClientsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "GetBuyersClientsRequest" }) as any as S.Schema<GetBuyersClientsRequest>;
 
 export interface GetBuyersClientsUsersRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}/clientUsers/{userId}` */
   name: string;
 }
 export const GetBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBuyersClientsUsersRequest",
-}) as any as S.Schema<GetBuyersClientsUsersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "GetBuyersClientsUsersRequest" }) as any as S.Schema<GetBuyersClientsUsersRequest>;
 
 export interface GetBuyersFinalizedDealsRequest {
   /** Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` */
   name: string;
 }
 export const GetBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBuyersFinalizedDealsRequest",
-}) as any as S.Schema<GetBuyersFinalizedDealsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "GetBuyersFinalizedDealsRequest" }) as any as S.Schema<GetBuyersFinalizedDealsRequest>;
 
 export interface GetBuyersProposalsRequest {
   /** Required. Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}` */
   name: string;
 }
 export const GetBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBuyersProposalsRequest",
-}) as any as S.Schema<GetBuyersProposalsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "GetBuyersProposalsRequest" }) as any as S.Schema<GetBuyersProposalsRequest>;
 
 export interface GetBuyersProposalsDealsRequest {
   /** Required. Format: buyers/{accountId}/proposals/{proposalId}/deals/{dealId} */
   name: string;
 }
 export const GetBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBuyersProposalsDealsRequest",
-}) as any as S.Schema<GetBuyersProposalsDealsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "GetBuyersProposalsDealsRequest" }) as any as S.Schema<GetBuyersProposalsDealsRequest>;
 
 export interface GetBuyersPublisherProfilesRequest {
   /** Required. Name of the publisher profile. Format: `buyers/{buyerId}/publisherProfiles/{publisherProfileId}` */
   name: string;
 }
 export const GetBuyersPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBuyersPublisherProfilesRequest",
-}) as any as S.Schema<GetBuyersPublisherProfilesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "GetBuyersPublisherProfilesRequest" }) as any as S.Schema<GetBuyersPublisherProfilesRequest>;
 
-export type PublisherProfileMobileApplicationAppStoreEnum =
-  | "APP_STORE_TYPE_UNSPECIFIED"
-  | "APPLE_ITUNES"
-  | "GOOGLE_PLAY"
-  | "ROKU"
-  | "AMAZON_FIRE_TV"
-  | "PLAYSTATION"
-  | "XBOX"
-  | "SAMSUNG_TV"
-  | "AMAZON"
-  | "OPPO"
-  | "SAMSUNG"
-  | "VIVO"
-  | "XIAOMI"
-  | "LG_TV"
-  | (string & {});
-export const PublisherProfileMobileApplicationAppStoreEnum =
-  /*@__PURE__*/ S.String;
+export type PublisherProfileMobileApplicationAppStoreEnum = "APP_STORE_TYPE_UNSPECIFIED" | "APPLE_ITUNES" | "GOOGLE_PLAY" | "ROKU" | "AMAZON_FIRE_TV" | "PLAYSTATION" | "XBOX" | "SAMSUNG_TV" | "AMAZON" | "OPPO" | "SAMSUNG" | "VIVO" | "XIAOMI" | "LG_TV";
+export const PublisherProfileMobileApplicationAppStoreEnum = /*@__PURE__*/ S.String;
 
 /** A mobile application that contains a external app ID, name, and app store. */
 export interface PublisherProfileMobileApplication {
@@ -1721,20 +1295,15 @@ export interface PublisherProfileMobileApplication {
   name?: string;
 }
 export const PublisherProfileMobileApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalAppId: S.optional(S.String),
-    appStore: S.optional(PublisherProfileMobileApplicationAppStoreEnum),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublisherProfileMobileApplication",
-}) as any as S.Schema<PublisherProfileMobileApplication>;
+S.Struct({
+  "externalAppId": S.optional(S.String),
+  "appStore": S.optional(PublisherProfileMobileApplicationAppStoreEnum),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "PublisherProfileMobileApplication" }) as any as S.Schema<PublisherProfileMobileApplication>;
 
-export type PublisherProfileMobileApplicationList =
-  ReadonlyArray<PublisherProfileMobileApplication>;
-export const PublisherProfileMobileApplicationList = /*@__PURE__*/ S.Array(
-  PublisherProfileMobileApplication,
-) as any as S.Schema<PublisherProfileMobileApplicationList>;
+export type PublisherProfileMobileApplicationList = ReadonlyArray<PublisherProfileMobileApplication>;
+export const PublisherProfileMobileApplicationList = /*@__PURE__*/ S.Array(PublisherProfileMobileApplication) as any as S.Schema<PublisherProfileMobileApplicationList>;
 
 /** The values in the publisher profile are supplied by the publisher. All fields are not filterable unless stated otherwise. */
 export interface PublisherProfile {
@@ -1770,26 +1339,24 @@ export interface PublisherProfile {
   isParent?: boolean;
 }
 export const PublisherProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    overview: S.optional(S.String),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    logoUrl: S.optional(S.String),
-    domains: S.optional(StringList),
-    pitchStatement: S.optional(S.String),
-    programmaticDealsContact: S.optional(S.String),
-    mobileApps: S.optional(PublisherProfileMobileApplicationList),
-    samplePageUrl: S.optional(S.String),
-    publisherCode: S.optional(S.String),
-    topHeadlines: S.optional(StringList),
-    audienceDescription: S.optional(S.String),
-    directDealsContact: S.optional(S.String),
-    mediaKitUrl: S.optional(S.String),
-    isParent: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PublisherProfile",
-}) as any as S.Schema<PublisherProfile>;
+S.Struct({
+  "overview": S.optional(S.String),
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "logoUrl": S.optional(S.String),
+  "domains": S.optional(StringList),
+  "pitchStatement": S.optional(S.String),
+  "programmaticDealsContact": S.optional(S.String),
+  "mobileApps": S.optional(PublisherProfileMobileApplicationList),
+  "samplePageUrl": S.optional(S.String),
+  "publisherCode": S.optional(S.String),
+  "topHeadlines": S.optional(StringList),
+  "audienceDescription": S.optional(S.String),
+  "directDealsContact": S.optional(S.String),
+  "mediaKitUrl": S.optional(S.String),
+  "isParent": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PublisherProfile" }) as any as S.Schema<PublisherProfile>;
 
 export interface ListBiddersAuctionPackagesRequest {
   /** The page token as returned. ListAuctionPackagesResponse.nextPageToken */
@@ -1804,27 +1371,17 @@ export interface ListBiddersAuctionPackagesRequest {
   pageSize?: number;
 }
 export const ListBiddersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/auctionPackages",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBiddersAuctionPackagesRequest",
-}) as any as S.Schema<ListBiddersAuctionPackagesRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/auctionPackages","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersAuctionPackagesRequest" }) as any as S.Schema<ListBiddersAuctionPackagesRequest>;
 
 export type AuctionPackageList = ReadonlyArray<AuctionPackage>;
-export const AuctionPackageList = /*@__PURE__*/ S.Array(
-  AuctionPackage,
-) as any as S.Schema<AuctionPackageList>;
+export const AuctionPackageList = /*@__PURE__*/ S.Array(AuctionPackage) as any as S.Schema<AuctionPackageList>;
 
 /** Response message for listing auction packages. */
 export interface ListAuctionPackagesResponse {
@@ -1834,13 +1391,11 @@ export interface ListAuctionPackagesResponse {
   auctionPackages?: AuctionPackageList;
 }
 export const ListAuctionPackagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    auctionPackages: S.optional(AuctionPackageList),
-  }),
-).annotate({
-  identifier: "ListAuctionPackagesResponse",
-}) as any as S.Schema<ListAuctionPackagesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "auctionPackages": S.optional(AuctionPackageList),
+}),
+).annotate({ identifier: "ListAuctionPackagesResponse" }) as any as S.Schema<ListAuctionPackagesResponse>;
 
 export interface ListBiddersFinalizedDealsRequest {
   /** Required. The buyer to list the finalized deals for, in the format: `buyers/{accountId}`. When used to list finalized deals for a bidder, its buyers and clients, in the format `bidders/{accountId}`. */
@@ -1855,27 +1410,17 @@ export interface ListBiddersFinalizedDealsRequest {
   filter?: string;
 }
 export const ListBiddersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/finalizedDeals",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBiddersFinalizedDealsRequest",
-}) as any as S.Schema<ListBiddersFinalizedDealsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/finalizedDeals","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ListBiddersFinalizedDealsRequest" }) as any as S.Schema<ListBiddersFinalizedDealsRequest>;
 
 export type FinalizedDealList = ReadonlyArray<FinalizedDeal>;
-export const FinalizedDealList = /*@__PURE__*/ S.Array(
-  FinalizedDeal,
-) as any as S.Schema<FinalizedDealList>;
+export const FinalizedDealList = /*@__PURE__*/ S.Array(FinalizedDeal) as any as S.Schema<FinalizedDealList>;
 
 /** Response message for listing finalized deals. */
 export interface ListFinalizedDealsResponse {
@@ -1885,13 +1430,11 @@ export interface ListFinalizedDealsResponse {
   nextPageToken?: string;
 }
 export const ListFinalizedDealsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    finalizedDeals: S.optional(FinalizedDealList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListFinalizedDealsResponse",
-}) as any as S.Schema<ListFinalizedDealsResponse>;
+S.Struct({
+  "finalizedDeals": S.optional(FinalizedDealList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListFinalizedDealsResponse" }) as any as S.Schema<ListFinalizedDealsResponse>;
 
 export interface ListBuyersAuctionPackagesRequest {
   /** Required. Name of the parent buyer that can access the auction package. Format: `buyers/{accountId}`. When used with a bidder account, the auction packages that the bidder, its media planners, its buyers and clients are subscribed to will be listed, in the format `bidders/{accountId}`. */
@@ -1906,22 +1449,14 @@ export interface ListBuyersAuctionPackagesRequest {
   filter?: string;
 }
 export const ListBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/auctionPackages",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBuyersAuctionPackagesRequest",
-}) as any as S.Schema<ListBuyersAuctionPackagesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/auctionPackages","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersAuctionPackagesRequest" }) as any as S.Schema<ListBuyersAuctionPackagesRequest>;
 
 export interface ListBuyersClientsRequest {
   /** Required. The name of the buyer. Format: `buyers/{accountId}` */
@@ -1934,26 +1469,16 @@ export interface ListBuyersClientsRequest {
   pageSize?: number;
 }
 export const ListBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/clients",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBuyersClientsRequest",
-}) as any as S.Schema<ListBuyersClientsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/clients","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersClientsRequest" }) as any as S.Schema<ListBuyersClientsRequest>;
 
 export type ClientList = ReadonlyArray<Client>;
-export const ClientList = /*@__PURE__*/ S.Array(
-  Client,
-) as any as S.Schema<ClientList>;
+export const ClientList = /*@__PURE__*/ S.Array(Client) as any as S.Schema<ClientList>;
 
 /** Response message for the list method. */
 export interface ListClientsResponse {
@@ -1963,13 +1488,11 @@ export interface ListClientsResponse {
   clients?: ClientList;
 }
 export const ListClientsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    clients: S.optional(ClientList),
-  }),
-).annotate({
-  identifier: "ListClientsResponse",
-}) as any as S.Schema<ListClientsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "clients": S.optional(ClientList),
+}),
+).annotate({ identifier: "ListClientsResponse" }) as any as S.Schema<ListClientsResponse>;
 
 export interface ListBuyersClientsUsersRequest {
   /** Required. The name of the client. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}` */
@@ -1980,25 +1503,15 @@ export interface ListBuyersClientsUsersRequest {
   pageSize?: number;
 }
 export const ListBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/users",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBuyersClientsUsersRequest",
-}) as any as S.Schema<ListBuyersClientsUsersRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/users","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersClientsUsersRequest" }) as any as S.Schema<ListBuyersClientsUsersRequest>;
 
 export type ClientUserList = ReadonlyArray<ClientUser>;
-export const ClientUserList = /*@__PURE__*/ S.Array(
-  ClientUser,
-) as any as S.Schema<ClientUserList>;
+export const ClientUserList = /*@__PURE__*/ S.Array(ClientUser) as any as S.Schema<ClientUserList>;
 
 /** Response message for the list method. */
 export interface ListClientUsersResponse {
@@ -2008,13 +1521,11 @@ export interface ListClientUsersResponse {
   nextPageToken?: string;
 }
 export const ListClientUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientUsers: S.optional(ClientUserList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListClientUsersResponse",
-}) as any as S.Schema<ListClientUsersResponse>;
+S.Struct({
+  "clientUsers": S.optional(ClientUserList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListClientUsersResponse" }) as any as S.Schema<ListClientUsersResponse>;
 
 export interface ListBuyersFinalizedDealsRequest {
   /** An optional query string to sort finalized deals using the [Cloud API sorting syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order). If no sort order is specified, results will be returned in an arbitrary order. Supported columns for sorting are: * deal.displayName * deal.createTime * deal.updateTime * deal.flightStartTime * deal.flightEndTime * rtbMetrics.bidRequests7Days * rtbMetrics.bids7Days * rtbMetrics.adImpressions7Days * rtbMetrics.bidRate7Days * rtbMetrics.filteredBidRate7Days * rtbMetrics.mustBidRateCurrentMonth */
@@ -2029,22 +1540,14 @@ export interface ListBuyersFinalizedDealsRequest {
   pageSize?: number;
 }
 export const ListBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/finalizedDeals",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBuyersFinalizedDealsRequest",
-}) as any as S.Schema<ListBuyersFinalizedDealsRequest>;
+S.Struct({
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/finalizedDeals","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersFinalizedDealsRequest" }) as any as S.Schema<ListBuyersFinalizedDealsRequest>;
 
 export interface ListBuyersProposalsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will put a size of 500. */
@@ -2057,26 +1560,16 @@ export interface ListBuyersProposalsRequest {
   pageToken?: string;
 }
 export const ListBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/proposals",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBuyersProposalsRequest",
-}) as any as S.Schema<ListBuyersProposalsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/proposals","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersProposalsRequest" }) as any as S.Schema<ListBuyersProposalsRequest>;
 
 export type ProposalList = ReadonlyArray<Proposal>;
-export const ProposalList = /*@__PURE__*/ S.Array(
-  Proposal,
-) as any as S.Schema<ProposalList>;
+export const ProposalList = /*@__PURE__*/ S.Array(Proposal) as any as S.Schema<ProposalList>;
 
 /** Response message for listing proposals. */
 export interface ListProposalsResponse {
@@ -2086,13 +1579,11 @@ export interface ListProposalsResponse {
   nextPageToken?: string;
 }
 export const ListProposalsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proposals: S.optional(ProposalList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProposalsResponse",
-}) as any as S.Schema<ListProposalsResponse>;
+S.Struct({
+  "proposals": S.optional(ProposalList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListProposalsResponse" }) as any as S.Schema<ListProposalsResponse>;
 
 export interface ListBuyersProposalsDealsRequest {
   /** Requested page size. The server may return fewer results than requested. If requested more than 500, the server will return 500 results per page. If unspecified, the server will pick a default page size of 100. */
@@ -2103,20 +1594,12 @@ export interface ListBuyersProposalsDealsRequest {
   pageToken?: string;
 }
 export const ListBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/deals",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBuyersProposalsDealsRequest",
-}) as any as S.Schema<ListBuyersProposalsDealsRequest>;
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/deals","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersProposalsDealsRequest" }) as any as S.Schema<ListBuyersProposalsDealsRequest>;
 
 /** Response message for listing deals in a proposal. */
 export interface ListDealsResponse {
@@ -2126,13 +1609,11 @@ export interface ListDealsResponse {
   nextPageToken?: string;
 }
 export const ListDealsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deals: S.optional(DealList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDealsResponse",
-}) as any as S.Schema<ListDealsResponse>;
+S.Struct({
+  "deals": S.optional(DealList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDealsResponse" }) as any as S.Schema<ListDealsResponse>;
 
 export interface ListBuyersPublisherProfilesRequest {
   /** Optional query string using the [Cloud API list filtering] (https://developers.google.com/authorized-buyers/apis/guides/list-filters) syntax. */
@@ -2145,26 +1626,16 @@ export interface ListBuyersPublisherProfilesRequest {
   pageToken?: string;
 }
 export const ListBuyersPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/publisherProfiles",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListBuyersPublisherProfilesRequest",
-}) as any as S.Schema<ListBuyersPublisherProfilesRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/publisherProfiles","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ListBuyersPublisherProfilesRequest" }) as any as S.Schema<ListBuyersPublisherProfilesRequest>;
 
 export type PublisherProfileList = ReadonlyArray<PublisherProfile>;
-export const PublisherProfileList = /*@__PURE__*/ S.Array(
-  PublisherProfile,
-) as any as S.Schema<PublisherProfileList>;
+export const PublisherProfileList = /*@__PURE__*/ S.Array(PublisherProfile) as any as S.Schema<PublisherProfileList>;
 
 /** Response message for profiles visible to the buyer. */
 export interface ListPublisherProfilesResponse {
@@ -2174,13 +1645,11 @@ export interface ListPublisherProfilesResponse {
   publisherProfiles?: PublisherProfileList;
 }
 export const ListPublisherProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    publisherProfiles: S.optional(PublisherProfileList),
-  }),
-).annotate({
-  identifier: "ListPublisherProfilesResponse",
-}) as any as S.Schema<ListPublisherProfilesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "publisherProfiles": S.optional(PublisherProfileList),
+}),
+).annotate({ identifier: "ListPublisherProfilesResponse" }) as any as S.Schema<ListPublisherProfilesResponse>;
 
 export interface PatchBuyersClientsRequest {
   /** List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. */
@@ -2191,20 +1660,12 @@ export interface PatchBuyersClientsRequest {
   body?: Client;
 }
 export const PatchBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    body: S.optional(Client.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchBuyersClientsRequest",
-}) as any as S.Schema<PatchBuyersClientsRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Client.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "PatchBuyersClientsRequest" }) as any as S.Schema<PatchBuyersClientsRequest>;
 
 export interface PatchBuyersProposalsRequest {
   /** List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. */
@@ -2215,20 +1676,12 @@ export interface PatchBuyersProposalsRequest {
   body?: Proposal;
 }
 export const PatchBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    body: S.optional(Proposal.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchBuyersProposalsRequest",
-}) as any as S.Schema<PatchBuyersProposalsRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Proposal.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "PatchBuyersProposalsRequest" }) as any as S.Schema<PatchBuyersProposalsRequest>;
 
 export interface PatchBuyersProposalsDealsRequest {
   /** List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. */
@@ -2239,20 +1692,12 @@ export interface PatchBuyersProposalsDealsRequest {
   body?: Deal;
 }
 export const PatchBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    body: S.optional(Deal.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchBuyersProposalsDealsRequest",
-}) as any as S.Schema<PatchBuyersProposalsDealsRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Deal.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "PatchBuyersProposalsDealsRequest" }) as any as S.Schema<PatchBuyersProposalsDealsRequest>;
 
 /** Request message for pausing a finalized deal. */
 export interface PauseFinalizedDealRequest {
@@ -2260,12 +1705,10 @@ export interface PauseFinalizedDealRequest {
   reason?: string;
 }
 export const PauseFinalizedDealRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PauseFinalizedDealRequest",
-}) as any as S.Schema<PauseFinalizedDealRequest>;
+S.Struct({
+  "reason": S.optional(S.String),
+}),
+).annotate({ identifier: "PauseFinalizedDealRequest" }) as any as S.Schema<PauseFinalizedDealRequest>;
 
 export interface PauseBuyersFinalizedDealsRequest {
   /** Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` */
@@ -2274,27 +1717,17 @@ export interface PauseBuyersFinalizedDealsRequest {
   body?: PauseFinalizedDealRequest;
 }
 export const PauseBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(PauseFinalizedDealRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:pause",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PauseBuyersFinalizedDealsRequest",
-}) as any as S.Schema<PauseBuyersFinalizedDealsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(PauseFinalizedDealRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:pause","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "PauseBuyersFinalizedDealsRequest" }) as any as S.Schema<PauseBuyersFinalizedDealsRequest>;
 
 /** Request message for resuming a finalized deal. */
 export interface ResumeFinalizedDealRequest {}
 export const ResumeFinalizedDealRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResumeFinalizedDealRequest",
-}) as any as S.Schema<ResumeFinalizedDealRequest>;
+S.Struct({}),
+).annotate({ identifier: "ResumeFinalizedDealRequest" }) as any as S.Schema<ResumeFinalizedDealRequest>;
 
 export interface ResumeBuyersFinalizedDealsRequest {
   /** Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` */
@@ -2303,19 +1736,11 @@ export interface ResumeBuyersFinalizedDealsRequest {
   body?: ResumeFinalizedDealRequest;
 }
 export const ResumeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(ResumeFinalizedDealRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:resume",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ResumeBuyersFinalizedDealsRequest",
-}) as any as S.Schema<ResumeBuyersFinalizedDealsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ResumeFinalizedDealRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:resume","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "ResumeBuyersFinalizedDealsRequest" }) as any as S.Schema<ResumeBuyersFinalizedDealsRequest>;
 
 /** Request to send an RFP. All fields in this request are proposed to publisher and subject to changes by publisher during later negotiation. */
 export interface SendRfpRequest {
@@ -2345,20 +1770,20 @@ export interface SendRfpRequest {
   estimatedGrossSpend?: Money;
 }
 export const SendRfpRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    note: S.optional(S.String),
-    displayName: S.optional(S.String),
-    client: S.optional(S.String),
-    publisherProfile: S.optional(S.String),
-    flightStartTime: S.optional(S.String),
-    preferredDealTerms: S.optional(PreferredDealTerms),
-    flightEndTime: S.optional(S.String),
-    inventorySizeTargeting: S.optional(InventorySizeTargeting),
-    buyerContacts: S.optional(ContactList),
-    programmaticGuaranteedTerms: S.optional(ProgrammaticGuaranteedTerms),
-    geoTargeting: S.optional(CriteriaTargeting),
-    estimatedGrossSpend: S.optional(Money),
-  }),
+S.Struct({
+  "note": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "client": S.optional(S.String),
+  "publisherProfile": S.optional(S.String),
+  "flightStartTime": S.optional(S.String),
+  "preferredDealTerms": S.optional(PreferredDealTerms),
+  "flightEndTime": S.optional(S.String),
+  "inventorySizeTargeting": S.optional(InventorySizeTargeting),
+  "buyerContacts": S.optional(ContactList),
+  "programmaticGuaranteedTerms": S.optional(ProgrammaticGuaranteedTerms),
+  "geoTargeting": S.optional(CriteriaTargeting),
+  "estimatedGrossSpend": S.optional(Money),
+}),
 ).annotate({ identifier: "SendRfpRequest" }) as any as S.Schema<SendRfpRequest>;
 
 export interface SendRfpBuyersProposalsRequest {
@@ -2368,27 +1793,17 @@ export interface SendRfpBuyersProposalsRequest {
   body?: SendRfpRequest;
 }
 export const SendRfpBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buyer: S.String.pipe(T.Label()),
-    body: S.optional(SendRfpRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+buyer}/proposals:sendRfp",
-      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SendRfpBuyersProposalsRequest",
-}) as any as S.Schema<SendRfpBuyersProposalsRequest>;
+S.Struct({
+  "buyer": S.String.pipe(T.Label()),
+  "body": S.optional(SendRfpRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+buyer}/proposals:sendRfp","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "SendRfpBuyersProposalsRequest" }) as any as S.Schema<SendRfpBuyersProposalsRequest>;
 
 /** Request message for setting ready to serve for a finalized deal. */
 export interface SetReadyToServeRequest {}
 export const SetReadyToServeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetReadyToServeRequest",
-}) as any as S.Schema<SetReadyToServeRequest>;
+S.Struct({}),
+).annotate({ identifier: "SetReadyToServeRequest" }) as any as S.Schema<SetReadyToServeRequest>;
 
 export interface SetReadyToServeBiddersFinalizedDealsRequest {
   /** Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` or `bidders/{accountId}/finalizedDeals/{dealId}` */
@@ -2396,21 +1811,12 @@ export interface SetReadyToServeBiddersFinalizedDealsRequest {
   /** Request body */
   body?: SetReadyToServeRequest;
 }
-export const SetReadyToServeBiddersFinalizedDealsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deal: S.String.pipe(T.Label()),
-      body: S.optional(SetReadyToServeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+deal}:setReadyToServe",
-        baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetReadyToServeBiddersFinalizedDealsRequest",
-  }) as any as S.Schema<SetReadyToServeBiddersFinalizedDealsRequest>;
+export const SetReadyToServeBiddersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "deal": S.String.pipe(T.Label()),
+  "body": S.optional(SetReadyToServeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+deal}:setReadyToServe","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "SetReadyToServeBiddersFinalizedDealsRequest" }) as any as S.Schema<SetReadyToServeBiddersFinalizedDealsRequest>;
 
 export interface SetReadyToServeBuyersFinalizedDealsRequest {
   /** Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` or `bidders/{accountId}/finalizedDeals/{dealId}` */
@@ -2418,29 +1824,18 @@ export interface SetReadyToServeBuyersFinalizedDealsRequest {
   /** Request body */
   body?: SetReadyToServeRequest;
 }
-export const SetReadyToServeBuyersFinalizedDealsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deal: S.String.pipe(T.Label()),
-      body: S.optional(SetReadyToServeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+deal}:setReadyToServe",
-        baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetReadyToServeBuyersFinalizedDealsRequest",
-  }) as any as S.Schema<SetReadyToServeBuyersFinalizedDealsRequest>;
+export const SetReadyToServeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "deal": S.String.pipe(T.Label()),
+  "body": S.optional(SetReadyToServeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+deal}:setReadyToServe","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "SetReadyToServeBuyersFinalizedDealsRequest" }) as any as S.Schema<SetReadyToServeBuyersFinalizedDealsRequest>;
 
 /** Request message for SubscribeAuctionPackage. */
 export interface SubscribeAuctionPackageRequest {}
 export const SubscribeAuctionPackageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SubscribeAuctionPackageRequest",
-}) as any as S.Schema<SubscribeAuctionPackageRequest>;
+S.Struct({}),
+).annotate({ identifier: "SubscribeAuctionPackageRequest" }) as any as S.Schema<SubscribeAuctionPackageRequest>;
 
 export interface SubscribeBuyersAuctionPackagesRequest {
   /** Required. Name of the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` */
@@ -2448,21 +1843,12 @@ export interface SubscribeBuyersAuctionPackagesRequest {
   /** Request body */
   body?: SubscribeAuctionPackageRequest;
 }
-export const SubscribeBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SubscribeAuctionPackageRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:subscribe",
-        baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SubscribeBuyersAuctionPackagesRequest",
-}) as any as S.Schema<SubscribeBuyersAuctionPackagesRequest>;
+export const SubscribeBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(SubscribeAuctionPackageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:subscribe","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "SubscribeBuyersAuctionPackagesRequest" }) as any as S.Schema<SubscribeBuyersAuctionPackagesRequest>;
 
 /** Request message for SubscribeAuctionPackageClients. */
 export interface SubscribeClientsRequest {
@@ -2470,12 +1856,10 @@ export interface SubscribeClientsRequest {
   clients?: StringList;
 }
 export const SubscribeClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clients: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "SubscribeClientsRequest",
-}) as any as S.Schema<SubscribeClientsRequest>;
+S.Struct({
+  "clients": S.optional(StringList),
+}),
+).annotate({ identifier: "SubscribeClientsRequest" }) as any as S.Schema<SubscribeClientsRequest>;
 
 export interface SubscribeClientsBuyersAuctionPackagesRequest {
   /** Required. Name of the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` */
@@ -2483,29 +1867,18 @@ export interface SubscribeClientsBuyersAuctionPackagesRequest {
   /** Request body */
   body?: SubscribeClientsRequest;
 }
-export const SubscribeClientsBuyersAuctionPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      auctionPackage: S.String.pipe(T.Label()),
-      body: S.optional(SubscribeClientsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+auctionPackage}:subscribeClients",
-        baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SubscribeClientsBuyersAuctionPackagesRequest",
-  }) as any as S.Schema<SubscribeClientsBuyersAuctionPackagesRequest>;
+export const SubscribeClientsBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "auctionPackage": S.String.pipe(T.Label()),
+  "body": S.optional(SubscribeClientsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+auctionPackage}:subscribeClients","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "SubscribeClientsBuyersAuctionPackagesRequest" }) as any as S.Schema<SubscribeClientsBuyersAuctionPackagesRequest>;
 
 /** Request message for UnsubscribeAuctionPackage. */
 export interface UnsubscribeAuctionPackageRequest {}
 export const UnsubscribeAuctionPackageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnsubscribeAuctionPackageRequest",
-}) as any as S.Schema<UnsubscribeAuctionPackageRequest>;
+S.Struct({}),
+).annotate({ identifier: "UnsubscribeAuctionPackageRequest" }) as any as S.Schema<UnsubscribeAuctionPackageRequest>;
 
 export interface UnsubscribeBuyersAuctionPackagesRequest {
   /** Required. Name of the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` */
@@ -2513,21 +1886,12 @@ export interface UnsubscribeBuyersAuctionPackagesRequest {
   /** Request body */
   body?: UnsubscribeAuctionPackageRequest;
 }
-export const UnsubscribeBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UnsubscribeAuctionPackageRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:unsubscribe",
-        baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UnsubscribeBuyersAuctionPackagesRequest",
-}) as any as S.Schema<UnsubscribeBuyersAuctionPackagesRequest>;
+export const UnsubscribeBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(UnsubscribeAuctionPackageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:unsubscribe","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "UnsubscribeBuyersAuctionPackagesRequest" }) as any as S.Schema<UnsubscribeBuyersAuctionPackagesRequest>;
 
 /** Request message for UnsubscribeAuctionPackage. */
 export interface UnsubscribeClientsRequest {
@@ -2535,12 +1899,10 @@ export interface UnsubscribeClientsRequest {
   clients?: StringList;
 }
 export const UnsubscribeClientsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clients: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "UnsubscribeClientsRequest",
-}) as any as S.Schema<UnsubscribeClientsRequest>;
+S.Struct({
+  "clients": S.optional(StringList),
+}),
+).annotate({ identifier: "UnsubscribeClientsRequest" }) as any as S.Schema<UnsubscribeClientsRequest>;
 
 export interface UnsubscribeClientsBuyersAuctionPackagesRequest {
   /** Required. Name of the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` */
@@ -2548,28 +1910,14 @@ export interface UnsubscribeClientsBuyersAuctionPackagesRequest {
   /** Request body */
   body?: UnsubscribeClientsRequest;
 }
-export const UnsubscribeClientsBuyersAuctionPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      auctionPackage: S.String.pipe(T.Label()),
-      body: S.optional(UnsubscribeClientsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+auctionPackage}:unsubscribeClients",
-        baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UnsubscribeClientsBuyersAuctionPackagesRequest",
-  }) as any as S.Schema<UnsubscribeClientsBuyersAuctionPackagesRequest>;
+export const UnsubscribeClientsBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "auctionPackage": S.String.pipe(T.Label()),
+  "body": S.optional(UnsubscribeClientsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+auctionPackage}:unsubscribeClients","baseUrl":"https://authorizedbuyersmarketplace.googleapis.com/"})),
+).annotate({ identifier: "UnsubscribeClientsBuyersAuctionPackagesRequest" }) as any as S.Schema<UnsubscribeClientsBuyersAuctionPackagesRequest>;
 
-export type AcceptBuyersProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AcceptBuyersProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Accepts the proposal at the given revision number. If the revision number in the request is behind the latest from the server, an error message will be returned. This call updates the Proposal.state from `BUYER_ACCEPTANCE_REQUESTED` to `FINALIZED`; it has no side effect if the Proposal.state is already `FINALIZED` and throws exception if the Proposal.state is not either `BUYER_ACCEPTANCE_REQUESTED` or `FINALIZED`. Accepting a proposal means the buyer understands and accepts the Proposal.terms_and_conditions proposed by the seller. */
 export const acceptBuyersProposals: API.OperationMethod<
   AcceptBuyersProposalsRequest,
@@ -2584,12 +1932,7 @@ export const acceptBuyersProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ActivateBuyersClientsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ActivateBuyersClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Activates an existing client. The state of the client will be updated to "ACTIVE". This method has no effect if the client is already in "ACTIVE" state. */
 export const activateBuyersClients: API.OperationMethod<
   ActivateBuyersClientsRequest,
@@ -2604,12 +1947,7 @@ export const activateBuyersClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ActivateBuyersClientsUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ActivateBuyersClientsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Activates an existing client user. The state of the client user will be updated from "INACTIVE" to "ACTIVE". This method has no effect if the client user is already in "ACTIVE" state. An error will be returned if the client user to activate is still in "INVITED" state. */
 export const activateBuyersClientsUsers: API.OperationMethod<
   ActivateBuyersClientsUsersRequest,
@@ -2624,12 +1962,7 @@ export const activateBuyersClientsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddCreativeBuyersFinalizedDealsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddCreativeBuyersFinalizedDealsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Add creative to be used in the bidding process for a finalized deal. For programmatic guaranteed deals, it's recommended that you associate at least one approved creative with the deal before calling SetReadyToServe, to help reduce the number of bid responses filtered because they don't contain approved creatives. Creatives successfully added to a deal can be found in the Realtime-bidding Creatives API creative.deal_ids. This method only applies to programmatic guaranteed deals. Maximum number of 1000 creatives can be added to a finalized deal. */
 export const addCreativeBuyersFinalizedDeals: API.OperationMethod<
   AddCreativeBuyersFinalizedDealsRequest,
@@ -2644,12 +1977,7 @@ export const addCreativeBuyersFinalizedDeals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddNoteBuyersProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddNoteBuyersProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a note for this proposal and sends to the seller. This method is not supported for proposals with DealType set to 'PRIVATE_AUCTION'. */
 export const addNoteBuyersProposals: API.OperationMethod<
   AddNoteBuyersProposalsRequest,
@@ -2664,12 +1992,7 @@ export const addNoteBuyersProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateBuyersProposalsDealsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateBuyersProposalsDealsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Batch updates multiple deals in the same proposal. */
 export const batchUpdateBuyersProposalsDeals: API.OperationMethod<
   BatchUpdateBuyersProposalsDealsRequest,
@@ -2684,12 +2007,7 @@ export const batchUpdateBuyersProposalsDeals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelNegotiationBuyersProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelNegotiationBuyersProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancels an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized. If the proposal has not been finalized before, calling this method will set the Proposal.state to `TERMINATED` and increment the Proposal.proposal_revision. If the proposal has been finalized before and is under renegotiation now, calling this method will reset the Proposal.state to `FINALIZED` and increment the Proposal.proposal_revision. This method does not support private auction proposals whose Proposal.deal_type is 'PRIVATE_AUCTION'. */
 export const cancelNegotiationBuyersProposals: API.OperationMethod<
   CancelNegotiationBuyersProposalsRequest,
@@ -2704,12 +2022,7 @@ export const cancelNegotiationBuyersProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateBuyersClientsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateBuyersClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new client. */
 export const createBuyersClients: API.OperationMethod<
   CreateBuyersClientsRequest,
@@ -2724,12 +2037,7 @@ export const createBuyersClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateBuyersClientsUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateBuyersClientsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new client user in "INVITED" state. An email invitation will be sent to the new user, once accepted the user will become active. */
 export const createBuyersClientsUsers: API.OperationMethod<
   CreateBuyersClientsUsersRequest,
@@ -2744,12 +2052,7 @@ export const createBuyersClientsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeactivateBuyersClientsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeactivateBuyersClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deactivates an existing client. The state of the client will be updated to "INACTIVE". This method has no effect if the client is already in "INACTIVE" state. */
 export const deactivateBuyersClients: API.OperationMethod<
   DeactivateBuyersClientsRequest,
@@ -2764,12 +2067,7 @@ export const deactivateBuyersClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeactivateBuyersClientsUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeactivateBuyersClientsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deactivates an existing client user. The state of the client user will be updated from "ACTIVE" to "INACTIVE". This method has no effect if the client user is already in "INACTIVE" state. An error will be returned if the client user to deactivate is still in "INVITED" state. */
 export const deactivateBuyersClientsUsers: API.OperationMethod<
   DeactivateBuyersClientsUsersRequest,
@@ -2784,12 +2082,7 @@ export const deactivateBuyersClientsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteBuyersClientsUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteBuyersClientsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an existing client user. The client user will lose access to the Authorized Buyers UI. Note that if a client user is deleted, the user's access to the UI can't be restored unless a new client user is created and activated. */
 export const deleteBuyersClientsUsers: API.OperationMethod<
   DeleteBuyersClientsUsersRequest,
@@ -2922,10 +2215,7 @@ export const listBiddersAuctionPackages: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBiddersFinalizedDealsError = NotFound | Forbidden | GcpOpError;
@@ -2941,10 +2231,7 @@ export const listBiddersFinalizedDeals: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBuyersAuctionPackagesError = NotFound | Forbidden | GcpOpError;
@@ -2960,10 +2247,7 @@ export const listBuyersAuctionPackages: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBuyersClientsError = NotFound | Forbidden | GcpOpError;
@@ -2979,10 +2263,7 @@ export const listBuyersClients: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBuyersClientsUsersError = NotFound | Forbidden | GcpOpError;
@@ -2998,10 +2279,7 @@ export const listBuyersClientsUsers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBuyersFinalizedDealsError = NotFound | Forbidden | GcpOpError;
@@ -3017,10 +2295,7 @@ export const listBuyersFinalizedDeals: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBuyersProposalsError = NotFound | Forbidden | GcpOpError;
@@ -3036,10 +2311,7 @@ export const listBuyersProposals: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListBuyersProposalsDealsError = NotFound | Forbidden | GcpOpError;
@@ -3055,16 +2327,10 @@ export const listBuyersProposalsDeals: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListBuyersPublisherProfilesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListBuyersPublisherProfilesError = NotFound | Forbidden | GcpOpError;
 /** Lists publisher profiles. The returned publisher profiles aren't in any defined order. The order of the results might change. A new publisher profile can appear in any place in the list of returned results. */
 export const listBuyersPublisherProfiles: API.PaginatedOperationMethod<
   ListBuyersPublisherProfilesRequest,
@@ -3077,18 +2343,10 @@ export const listBuyersPublisherProfiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type PatchBuyersClientsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchBuyersClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing client. */
 export const patchBuyersClients: API.OperationMethod<
   PatchBuyersClientsRequest,
@@ -3103,12 +2361,7 @@ export const patchBuyersClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchBuyersProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchBuyersProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the proposal at the given revision number. If the revision number in the request is behind the latest one kept in the server, an error message will be returned. See FieldMask for how to use FieldMask. Only fields specified in the UpdateProposalRequest.update_mask will be updated; Fields noted as 'Immutable' or 'Output only' yet specified in the UpdateProposalRequest.update_mask will be ignored and left unchanged. Updating a private auction proposal is only allowed for buyer private data, all other fields are immutable. */
 export const patchBuyersProposals: API.OperationMethod<
   PatchBuyersProposalsRequest,
@@ -3123,12 +2376,7 @@ export const patchBuyersProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchBuyersProposalsDealsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchBuyersProposalsDealsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the given deal at the buyer known revision number. If the server revision has advanced since the passed-in proposal.proposal_revision an ABORTED error message will be returned. The revision number is incremented by the server whenever the proposal or its constituent deals are updated. Note: The revision number is kept at a proposal level. The buyer of the API is expected to keep track of the revision number after the last update operation and send it in as part of the next update request. This way, if there are further changes on the server (for example, seller making new updates), then the server can detect conflicts and reject the proposed changes. */
 export const patchBuyersProposalsDeals: API.OperationMethod<
   PatchBuyersProposalsDealsRequest,
@@ -3143,12 +2391,7 @@ export const patchBuyersProposalsDeals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PauseBuyersFinalizedDealsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PauseBuyersFinalizedDealsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Pauses serving of the given finalized deal. This call only pauses the serving status, and does not affect other fields of the finalized deal. Calling this method for an already paused deal has no effect. This method only applies to programmatic guaranteed deals and preferred deals. */
 export const pauseBuyersFinalizedDeals: API.OperationMethod<
   PauseBuyersFinalizedDealsRequest,
@@ -3163,12 +2406,7 @@ export const pauseBuyersFinalizedDeals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResumeBuyersFinalizedDealsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResumeBuyersFinalizedDealsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resumes serving of the given finalized deal. Calling this method for an running deal has no effect. If a deal is initially paused by the seller, calling this method will not resume serving of the deal until the seller also resumes the deal. This method only applies to programmatic guaranteed deals and preferred deals. */
 export const resumeBuyersFinalizedDeals: API.OperationMethod<
   ResumeBuyersFinalizedDealsRequest,
@@ -3183,12 +2421,7 @@ export const resumeBuyersFinalizedDeals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SendRfpBuyersProposalsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SendRfpBuyersProposalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sends a request for proposal (RFP) to a publisher to initiate the negotiation regarding certain inventory. In the RFP, buyers can specify the deal type, deal terms, start and end dates, targeting, and a message to the publisher. Once the RFP is sent, a proposal in `SELLER_REVIEW_REQUESTED` state will be created and returned in the response. The publisher may review your request and respond with detailed deals in the proposal. */
 export const sendRfpBuyersProposals: API.OperationMethod<
   SendRfpBuyersProposalsRequest,
@@ -3203,12 +2436,7 @@ export const sendRfpBuyersProposals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetReadyToServeBiddersFinalizedDealsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetReadyToServeBiddersFinalizedDealsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the given finalized deal as ready to serve. By default, deals are set as ready to serve as soon as they're finalized. If you want to opt out of the default behavior, and manually indicate that deals are ready to serve, ask your Technical Account Manager to add you to the allowlist. If you choose to use this method, finalized deals belonging to the bidder and its child seats don't start serving until after you call `setReadyToServe`, and after the deals become active. For example, you can use this method to delay receiving bid requests until your creative is ready. In addition, bidders can use the URL path "/v1/bidders/{accountId}/finalizedDeals/{dealId}" to set ready to serve for the finalized deals belong to itself, its child seats and all their clients. This method only applies to programmatic guaranteed deals. */
 export const setReadyToServeBiddersFinalizedDeals: API.OperationMethod<
   SetReadyToServeBiddersFinalizedDealsRequest,
@@ -3223,12 +2451,7 @@ export const setReadyToServeBiddersFinalizedDeals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetReadyToServeBuyersFinalizedDealsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetReadyToServeBuyersFinalizedDealsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the given finalized deal as ready to serve. By default, deals are set as ready to serve as soon as they're finalized. If you want to opt out of the default behavior, and manually indicate that deals are ready to serve, ask your Technical Account Manager to add you to the allowlist. If you choose to use this method, finalized deals belonging to the bidder and its child seats don't start serving until after you call `setReadyToServe`, and after the deals become active. For example, you can use this method to delay receiving bid requests until your creative is ready. In addition, bidders can use the URL path "/v1/bidders/{accountId}/finalizedDeals/{dealId}" to set ready to serve for the finalized deals belong to itself, its child seats and all their clients. This method only applies to programmatic guaranteed deals. */
 export const setReadyToServeBuyersFinalizedDeals: API.OperationMethod<
   SetReadyToServeBuyersFinalizedDealsRequest,
@@ -3243,12 +2466,7 @@ export const setReadyToServeBuyersFinalizedDeals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SubscribeBuyersAuctionPackagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SubscribeBuyersAuctionPackagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Subscribe to the auction package for the specified buyer. Once subscribed, the bidder will receive a call out for inventory matching the auction package targeting criteria with the auction package deal ID and the specified buyer. */
 export const subscribeBuyersAuctionPackages: API.OperationMethod<
   SubscribeBuyersAuctionPackagesRequest,
@@ -3263,12 +2481,7 @@ export const subscribeBuyersAuctionPackages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SubscribeClientsBuyersAuctionPackagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SubscribeClientsBuyersAuctionPackagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Subscribe the specified clients of the buyer to the auction package. If a client in the list does not belong to the buyer, an error response will be returned, and all of the following clients in the list will not be subscribed. Subscribing an already subscribed client will have no effect. */
 export const subscribeClientsBuyersAuctionPackages: API.OperationMethod<
   SubscribeClientsBuyersAuctionPackagesRequest,
@@ -3283,12 +2496,7 @@ export const subscribeClientsBuyersAuctionPackages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnsubscribeBuyersAuctionPackagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnsubscribeBuyersAuctionPackagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unsubscribe from the auction package for the specified buyer. Once unsubscribed, the bidder will no longer receive a call out for the auction package deal ID and the specified buyer. */
 export const unsubscribeBuyersAuctionPackages: API.OperationMethod<
   UnsubscribeBuyersAuctionPackagesRequest,
@@ -3303,12 +2511,7 @@ export const unsubscribeBuyersAuctionPackages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnsubscribeClientsBuyersAuctionPackagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UnsubscribeClientsBuyersAuctionPackagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unsubscribe from the auction package for the specified clients of the buyer. Unsubscribing a client that is not subscribed will have no effect. */
 export const unsubscribeClientsBuyersAuctionPackages: API.OperationMethod<
   UnsubscribeClientsBuyersAuctionPackagesRequest,
@@ -3322,3 +2525,4 @@ export const unsubscribeClientsBuyersAuctionPackages: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

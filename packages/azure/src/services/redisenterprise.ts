@@ -85,8 +85,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The user associated with the access policy. */
@@ -310,8 +309,7 @@ export const AccessPolicyAssignmentList = /*@__PURE__*/ S.suspend(() =>
 /** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
 export type DatabaseCreatePropertiesInputClientProtocol =
   | "Encrypted"
-  | "Plaintext"
-  | (string & {});
+  | "Plaintext";
 export const DatabaseCreatePropertiesInputClientProtocol =
   /*@__PURE__*/ S.String;
 
@@ -319,8 +317,7 @@ export const DatabaseCreatePropertiesInputClientProtocol =
 export type DatabaseCreatePropertiesInputClusteringPolicy =
   | "EnterpriseCluster"
   | "OSSCluster"
-  | "NoCluster"
-  | (string & {});
+  | "NoCluster";
 export const DatabaseCreatePropertiesInputClusteringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -333,17 +330,16 @@ export type DatabaseCreatePropertiesInputEvictionPolicy =
   | "VolatileLFU"
   | "VolatileTTL"
   | "VolatileRandom"
-  | "NoEviction"
-  | (string & {});
+  | "NoEviction";
 export const DatabaseCreatePropertiesInputEvictionPolicy =
   /*@__PURE__*/ S.String;
 
 /** Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact. */
-export type PersistenceAofFrequency = "1s" | "always" | (string & {});
+export type PersistenceAofFrequency = "1s" | "always";
 export const PersistenceAofFrequency = /*@__PURE__*/ S.String;
 
 /** Sets the frequency at which a snapshot of the database is created. */
-export type PersistenceRdbFrequency = "1h" | "6h" | "12h" | (string & {});
+export type PersistenceRdbFrequency = "1h" | "6h" | "12h";
 export const PersistenceRdbFrequency = /*@__PURE__*/ S.String;
 
 /** Persistence-related configuration for the Redis Enterprise database */
@@ -430,28 +426,28 @@ export const DatabaseCreatePropertiesInputGeoReplication =
 /** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
 export type DatabaseCreatePropertiesInputDeferUpgrade =
   | "Deferred"
-  | "NotDeferred"
-  | (string & {});
+  | "NotDeferred";
 export const DatabaseCreatePropertiesInputDeferUpgrade = /*@__PURE__*/ S.String;
 
 /** This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created. */
 export type DatabaseCreatePropertiesInputAccessKeysAuthentication =
   | "Disabled"
-  | "Enabled"
-  | (string & {});
+  | "Enabled";
 export const DatabaseCreatePropertiesInputAccessKeysAuthentication =
   /*@__PURE__*/ S.String;
 
 /** Properties for creating Redis Enterprise databases */
 export interface DatabaseCreatePropertiesInput {
   /** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
-  clientProtocol?: DatabaseCreatePropertiesInputClientProtocol;
+  clientProtocol?: DatabaseCreatePropertiesInputClientProtocol | (string & {});
   /** TCP port of the database endpoint. Specified at create time. Defaults to an available port. */
   port?: number;
   /** Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database. */
-  clusteringPolicy?: DatabaseCreatePropertiesInputClusteringPolicy;
+  clusteringPolicy?:
+    | DatabaseCreatePropertiesInputClusteringPolicy
+    | (string & {});
   /** Redis eviction policy - default is VolatileLRU */
-  evictionPolicy?: DatabaseCreatePropertiesInputEvictionPolicy;
+  evictionPolicy?: DatabaseCreatePropertiesInputEvictionPolicy | (string & {});
   /** Persistence settings */
   persistence?: Persistence;
   /** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
@@ -459,9 +455,11 @@ export interface DatabaseCreatePropertiesInput {
   /** Optional set of properties to configure geo replication for this database. */
   geoReplication?: DatabaseCreatePropertiesInputGeoReplication;
   /** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
-  deferUpgrade?: DatabaseCreatePropertiesInputDeferUpgrade;
+  deferUpgrade?: DatabaseCreatePropertiesInputDeferUpgrade | (string & {});
   /** This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created. */
-  accessKeysAuthentication?: DatabaseCreatePropertiesInputAccessKeysAuthentication;
+  accessKeysAuthentication?:
+    | DatabaseCreatePropertiesInputAccessKeysAuthentication
+    | (string & {});
 }
 export const DatabaseCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -513,10 +511,7 @@ export const DatabasesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesCreateRequest>;
 
 /** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
-export type DatabaseCreatePropertiesClientProtocol =
-  | "Encrypted"
-  | "Plaintext"
-  | (string & {});
+export type DatabaseCreatePropertiesClientProtocol = "Encrypted" | "Plaintext";
 export const DatabaseCreatePropertiesClientProtocol = /*@__PURE__*/ S.String;
 
 /** Current resource status */
@@ -535,16 +530,14 @@ export type ResourceState =
   | "Disabled"
   | "Scaling"
   | "ScalingFailed"
-  | "Moving"
-  | (string & {});
+  | "Moving";
 export const ResourceState = /*@__PURE__*/ S.String;
 
 /** Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database. */
 export type DatabaseCreatePropertiesClusteringPolicy =
   | "EnterpriseCluster"
   | "OSSCluster"
-  | "NoCluster"
-  | (string & {});
+  | "NoCluster";
 export const DatabaseCreatePropertiesClusteringPolicy = /*@__PURE__*/ S.String;
 
 /** Redis eviction policy - default is VolatileLRU */
@@ -556,8 +549,7 @@ export type DatabaseCreatePropertiesEvictionPolicy =
   | "VolatileLFU"
   | "VolatileTTL"
   | "VolatileRandom"
-  | "NoEviction"
-  | (string & {});
+  | "NoEviction";
 export const DatabaseCreatePropertiesEvictionPolicy = /*@__PURE__*/ S.String;
 
 /** Specifies configuration of a redis module */
@@ -589,8 +581,7 @@ export type LinkedDatabaseState =
   | "Linking"
   | "Unlinking"
   | "LinkFailed"
-  | "UnlinkFailed"
-  | (string & {});
+  | "UnlinkFailed";
 export const LinkedDatabaseState = /*@__PURE__*/ S.String;
 
 /** Specifies details of a linked database resource. */
@@ -635,17 +626,13 @@ export const DatabaseCreatePropertiesGeoReplication = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatabaseCreatePropertiesGeoReplication>;
 
 /** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
-export type DatabaseCreatePropertiesDeferUpgrade =
-  | "Deferred"
-  | "NotDeferred"
-  | (string & {});
+export type DatabaseCreatePropertiesDeferUpgrade = "Deferred" | "NotDeferred";
 export const DatabaseCreatePropertiesDeferUpgrade = /*@__PURE__*/ S.String;
 
 /** This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created. */
 export type DatabaseCreatePropertiesAccessKeysAuthentication =
   | "Disabled"
-  | "Enabled"
-  | (string & {});
+  | "Enabled";
 export const DatabaseCreatePropertiesAccessKeysAuthentication =
   /*@__PURE__*/ S.String;
 
@@ -1145,10 +1132,7 @@ export const AccessKeys = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessKeys" }) as any as S.Schema<AccessKeys>;
 
 /** Which access key to regenerate. */
-export type DatabasesRegenerateKeyRequestKeyType =
-  | "Primary"
-  | "Secondary"
-  | (string & {});
+export type DatabasesRegenerateKeyRequestKeyType = "Primary" | "Secondary";
 export const DatabasesRegenerateKeyRequestKeyType = /*@__PURE__*/ S.String;
 
 export interface DatabasesRegenerateKeyRequest {
@@ -1161,7 +1145,7 @@ export interface DatabasesRegenerateKeyRequest {
   /** The name of the Redis Enterprise database. */
   databaseName: string;
   /** Which access key to regenerate. */
-  keyType: DatabasesRegenerateKeyRequestKeyType;
+  keyType: DatabasesRegenerateKeyRequestKeyType | (string & {});
 }
 export const DatabasesRegenerateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1185,8 +1169,7 @@ export const DatabasesRegenerateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 /** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
 export type DatabaseUpdatePropertiesInputClientProtocol =
   | "Encrypted"
-  | "Plaintext"
-  | (string & {});
+  | "Plaintext";
 export const DatabaseUpdatePropertiesInputClientProtocol =
   /*@__PURE__*/ S.String;
 
@@ -1194,8 +1177,7 @@ export const DatabaseUpdatePropertiesInputClientProtocol =
 export type DatabaseUpdatePropertiesInputClusteringPolicy =
   | "EnterpriseCluster"
   | "OSSCluster"
-  | "NoCluster"
-  | (string & {});
+  | "NoCluster";
 export const DatabaseUpdatePropertiesInputClusteringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1208,8 +1190,7 @@ export type DatabaseUpdatePropertiesInputEvictionPolicy =
   | "VolatileLFU"
   | "VolatileTTL"
   | "VolatileRandom"
-  | "NoEviction"
-  | (string & {});
+  | "NoEviction";
 export const DatabaseUpdatePropertiesInputEvictionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1250,28 +1231,28 @@ export const DatabaseUpdatePropertiesInputGeoReplication =
 /** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
 export type DatabaseUpdatePropertiesInputDeferUpgrade =
   | "Deferred"
-  | "NotDeferred"
-  | (string & {});
+  | "NotDeferred";
 export const DatabaseUpdatePropertiesInputDeferUpgrade = /*@__PURE__*/ S.String;
 
 /** This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created. */
 export type DatabaseUpdatePropertiesInputAccessKeysAuthentication =
   | "Disabled"
-  | "Enabled"
-  | (string & {});
+  | "Enabled";
 export const DatabaseUpdatePropertiesInputAccessKeysAuthentication =
   /*@__PURE__*/ S.String;
 
 /** Properties for updating Redis Enterprise databases */
 export interface DatabaseUpdatePropertiesInput {
   /** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
-  clientProtocol?: DatabaseUpdatePropertiesInputClientProtocol;
+  clientProtocol?: DatabaseUpdatePropertiesInputClientProtocol | (string & {});
   /** TCP port of the database endpoint. Specified at create time. Defaults to an available port. */
   port?: number;
   /** Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database. */
-  clusteringPolicy?: DatabaseUpdatePropertiesInputClusteringPolicy;
+  clusteringPolicy?:
+    | DatabaseUpdatePropertiesInputClusteringPolicy
+    | (string & {});
   /** Redis eviction policy - default is VolatileLRU */
-  evictionPolicy?: DatabaseUpdatePropertiesInputEvictionPolicy;
+  evictionPolicy?: DatabaseUpdatePropertiesInputEvictionPolicy | (string & {});
   /** Persistence settings */
   persistence?: Persistence;
   /** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
@@ -1279,9 +1260,11 @@ export interface DatabaseUpdatePropertiesInput {
   /** Optional set of properties to configure geo replication for this database. */
   geoReplication?: DatabaseUpdatePropertiesInputGeoReplication;
   /** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
-  deferUpgrade?: DatabaseUpdatePropertiesInputDeferUpgrade;
+  deferUpgrade?: DatabaseUpdatePropertiesInputDeferUpgrade | (string & {});
   /** This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created. */
-  accessKeysAuthentication?: DatabaseUpdatePropertiesInputAccessKeysAuthentication;
+  accessKeysAuthentication?:
+    | DatabaseUpdatePropertiesInputAccessKeysAuthentication
+    | (string & {});
 }
 export const DatabaseUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1426,11 +1409,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1676,8 +1659,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -1704,8 +1686,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2071,8 +2052,7 @@ export type SkuName =
   | "FlashOptimized_A1000"
   | "FlashOptimized_A1500"
   | "FlashOptimized_A2000"
-  | "FlashOptimized_A4500"
-  | (string & {});
+  | "FlashOptimized_A4500";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** SKU parameters supplied to the create Redis Enterprise cluster operation. */
@@ -2100,8 +2080,7 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
+  | "SystemAssigned, UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -2123,7 +2102,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface RedisEnterpriseCreateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const RedisEnterpriseCreateRequestIdentity = /*@__PURE__*/ S.suspend(
@@ -2139,8 +2118,7 @@ export const RedisEnterpriseCreateRequestIdentity = /*@__PURE__*/ S.suspend(
 /** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
 export type ClusterCreatePropertiesInputHighAvailability =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ClusterCreatePropertiesInputHighAvailability =
   /*@__PURE__*/ S.String;
 
@@ -2148,14 +2126,13 @@ export const ClusterCreatePropertiesInputHighAvailability =
 export type ClusterCreatePropertiesInputMinimumTlsVersion =
   | "1.0"
   | "1.1"
-  | "1.2"
-  | (string & {});
+  | "1.2";
 export const ClusterCreatePropertiesInputMinimumTlsVersion =
   /*@__PURE__*/ S.String;
 
 /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
 export type ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
-  "systemAssignedIdentity" | "userAssignedIdentity" | (string & {});
+  "systemAssignedIdentity" | "userAssignedIdentity";
 export const ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -2164,7 +2141,9 @@ export interface ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncrypt
   /** User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. */
   userAssignedIdentityResourceId?: string;
   /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
-  identityType?: ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType;
+  identityType?:
+    | ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType
+    | (string & {});
 }
 export const ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity =
   /*@__PURE__*/ S.suspend(() =>
@@ -2218,21 +2197,27 @@ export const ClusterCreatePropertiesInputEncryption = /*@__PURE__*/ S.suspend(
 /** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
 export type ClusterCreatePropertiesInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ClusterCreatePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** Properties of Redis Enterprise clusters for create operations */
 export interface ClusterCreatePropertiesInput {
   /** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
-  highAvailability?: ClusterCreatePropertiesInputHighAvailability;
+  highAvailability?:
+    | ClusterCreatePropertiesInputHighAvailability
+    | (string & {});
   /** The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions. */
-  minimumTlsVersion?: ClusterCreatePropertiesInputMinimumTlsVersion;
+  minimumTlsVersion?:
+    | ClusterCreatePropertiesInputMinimumTlsVersion
+    | (string & {});
   /** Encryption-at-rest configuration for the cluster. */
   encryption?: ClusterCreatePropertiesInputEncryption;
   /** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
-  publicNetworkAccess: ClusterCreatePropertiesInputPublicNetworkAccess | null;
+  publicNetworkAccess:
+    | ClusterCreatePropertiesInputPublicNetworkAccess
+    | (string & {})
+    | null;
 }
 export const ClusterCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2302,7 +2287,7 @@ export const RedisEnterpriseCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RedisEnterpriseCreateResponseTagsMap>;
 
 /** Distinguishes the kind of cluster. Read-only. */
-export type Kind = "v1" | "v2" | (string & {});
+export type Kind = "v1" | "v2";
 export const Kind = /*@__PURE__*/ S.String;
 
 /** The Availability Zones where this cluster will be deployed. */
@@ -2358,23 +2343,16 @@ export const RedisEnterpriseCreateResponseIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RedisEnterpriseCreateResponseIdentity>;
 
 /** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
-export type ClusterCreatePropertiesHighAvailability =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type ClusterCreatePropertiesHighAvailability = "Enabled" | "Disabled";
 export const ClusterCreatePropertiesHighAvailability = /*@__PURE__*/ S.String;
 
 /** The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions. */
-export type ClusterCreatePropertiesMinimumTlsVersion =
-  | "1.0"
-  | "1.1"
-  | "1.2"
-  | (string & {});
+export type ClusterCreatePropertiesMinimumTlsVersion = "1.0" | "1.1" | "1.2";
 export const ClusterCreatePropertiesMinimumTlsVersion = /*@__PURE__*/ S.String;
 
 /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
 export type ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
-  "systemAssignedIdentity" | "userAssignedIdentity" | (string & {});
+  "systemAssignedIdentity" | "userAssignedIdentity";
 export const ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -2433,11 +2411,7 @@ export const ClusterCreatePropertiesEncryption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterCreatePropertiesEncryption>;
 
 /** Explains the current redundancy strategy of the cluster, which affects the expected SLA. */
-export type ClusterCreatePropertiesRedundancyMode =
-  | "None"
-  | "LR"
-  | "ZR"
-  | (string & {});
+export type ClusterCreatePropertiesRedundancyMode = "None" | "LR" | "ZR";
 export const ClusterCreatePropertiesRedundancyMode = /*@__PURE__*/ S.String;
 
 /** The Private Endpoint Connection resource. */
@@ -2472,10 +2446,7 @@ export const ClusterCreatePropertiesPrivateEndpointConnectionsList =
   ) as any as S.Schema<ClusterCreatePropertiesPrivateEndpointConnectionsList>;
 
 /** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
-export type ClusterCreatePropertiesPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type ClusterCreatePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const ClusterCreatePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -2881,8 +2852,7 @@ export const SkuDetailsList = /*@__PURE__*/ S.suspend(() =>
 /** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
 export type ClusterUpdatePropertiesInputHighAvailability =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ClusterUpdatePropertiesInputHighAvailability =
   /*@__PURE__*/ S.String;
 
@@ -2890,14 +2860,13 @@ export const ClusterUpdatePropertiesInputHighAvailability =
 export type ClusterUpdatePropertiesInputMinimumTlsVersion =
   | "1.0"
   | "1.1"
-  | "1.2"
-  | (string & {});
+  | "1.2";
 export const ClusterUpdatePropertiesInputMinimumTlsVersion =
   /*@__PURE__*/ S.String;
 
 /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
 export type ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
-  "systemAssignedIdentity" | "userAssignedIdentity" | (string & {});
+  "systemAssignedIdentity" | "userAssignedIdentity";
 export const ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -2906,7 +2875,9 @@ export interface ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncrypt
   /** User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. */
   userAssignedIdentityResourceId?: string;
   /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
-  identityType?: ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType;
+  identityType?:
+    | ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType
+    | (string & {});
 }
 export const ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity =
   /*@__PURE__*/ S.suspend(() =>
@@ -2960,21 +2931,27 @@ export const ClusterUpdatePropertiesInputEncryption = /*@__PURE__*/ S.suspend(
 /** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
 export type ClusterUpdatePropertiesInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ClusterUpdatePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** Properties of Redis Enterprise clusters for update operations */
 export interface ClusterUpdatePropertiesInput {
   /** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
-  highAvailability?: ClusterUpdatePropertiesInputHighAvailability;
+  highAvailability?:
+    | ClusterUpdatePropertiesInputHighAvailability
+    | (string & {});
   /** The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions. */
-  minimumTlsVersion?: ClusterUpdatePropertiesInputMinimumTlsVersion;
+  minimumTlsVersion?:
+    | ClusterUpdatePropertiesInputMinimumTlsVersion
+    | (string & {});
   /** Encryption-at-rest configuration for the cluster. */
   encryption?: ClusterUpdatePropertiesInputEncryption;
   /** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
-  publicNetworkAccess?: ClusterUpdatePropertiesInputPublicNetworkAccess | null;
+  publicNetworkAccess?:
+    | ClusterUpdatePropertiesInputPublicNetworkAccess
+    | (string & {})
+    | null;
 }
 export const ClusterUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2993,7 +2970,7 @@ export const ClusterUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface RedisEnterpriseUpdateRequestIdentity {
-  type: ManagedServiceIdentityType;
+  type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const RedisEnterpriseUpdateRequestIdentity = /*@__PURE__*/ S.suspend(

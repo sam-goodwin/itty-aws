@@ -13,57 +13,55 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A set of field paths on a document. Used to restrict a get or update operation on a document to a subset of its fields. This is different from standard field masks, as this is always scoped to a Document, and takes in account the dynamic nature of Value. */
 export interface DocumentMask {
@@ -71,9 +69,9 @@ export interface DocumentMask {
   fieldPaths?: StringList;
 }
 export const DocumentMask = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldPaths: S.optional(StringList),
-  }),
+S.Struct({
+  "fieldPaths": S.optional(StringList),
+}),
 ).annotate({ identifier: "DocumentMask" }) as any as S.Schema<DocumentMask>;
 
 /** Options for a transaction that can only be used to read documents. */
@@ -82,30 +80,26 @@ export interface ReadOnly {
   readTime?: string;
 }
 export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readTime: S.optional(S.String),
-  }),
+S.Struct({
+  "readTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "ReadOnly" }) as any as S.Schema<ReadOnly>;
 
-export type ReadWriteConcurrencyModeEnum =
-  | "CONCURRENCY_MODE_UNSPECIFIED"
-  | "OPTIMISTIC"
-  | "PESSIMISTIC"
-  | (string & {});
+export type ReadWriteConcurrencyModeEnum = "CONCURRENCY_MODE_UNSPECIFIED" | "OPTIMISTIC" | "PESSIMISTIC";
 export const ReadWriteConcurrencyModeEnum = /*@__PURE__*/ S.String;
 
 /** Options for a transaction that can be used to read and write documents. */
 export interface ReadWrite {
   /** Optional. The concurrency control mode to use for this transaction. A database is able to use different concurrency modes for different transactions simultaneously. 3rd party auth requests are only allowed to create optimistic read-write transactions and must specify that here even if the database-level setting is already configured to optimistic. */
-  concurrencyMode?: ReadWriteConcurrencyModeEnum;
+  concurrencyMode?: ReadWriteConcurrencyModeEnum | (string & {});
   /** An optional transaction to retry. */
   retryTransaction?: string;
 }
 export const ReadWrite = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    concurrencyMode: S.optional(ReadWriteConcurrencyModeEnum),
-    retryTransaction: S.optional(S.String),
-  }),
+S.Struct({
+  "concurrencyMode": S.optional(ReadWriteConcurrencyModeEnum),
+  "retryTransaction": S.optional(S.String),
+}),
 ).annotate({ identifier: "ReadWrite" }) as any as S.Schema<ReadWrite>;
 
 /** Options for creating a new transaction. */
@@ -116,13 +110,11 @@ export interface TransactionOptions {
   readWrite?: ReadWrite;
 }
 export const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readOnly: S.optional(ReadOnly),
-    readWrite: S.optional(ReadWrite),
-  }),
-).annotate({
-  identifier: "TransactionOptions",
-}) as any as S.Schema<TransactionOptions>;
+S.Struct({
+  "readOnly": S.optional(ReadOnly),
+  "readWrite": S.optional(ReadWrite),
+}),
+).annotate({ identifier: "TransactionOptions" }) as any as S.Schema<TransactionOptions>;
 
 /** The request for Firestore.BatchGetDocuments. */
 export interface BatchGetDocumentsRequest {
@@ -138,16 +130,14 @@ export interface BatchGetDocumentsRequest {
   transaction?: string;
 }
 export const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mask: S.optional(DocumentMask),
-    documents: S.optional(StringList),
-    readTime: S.optional(S.String),
-    newTransaction: S.optional(TransactionOptions),
-    transaction: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchGetDocumentsRequest",
-}) as any as S.Schema<BatchGetDocumentsRequest>;
+S.Struct({
+  "mask": S.optional(DocumentMask),
+  "documents": S.optional(StringList),
+  "readTime": S.optional(S.String),
+  "newTransaction": S.optional(TransactionOptions),
+  "transaction": S.optional(S.String),
+}),
+).annotate({ identifier: "BatchGetDocumentsRequest" }) as any as S.Schema<BatchGetDocumentsRequest>;
 
 export interface BatchGetProjectsDatabasesDocumentsRequest {
   /** Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. */
@@ -155,26 +145,15 @@ export interface BatchGetProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: BatchGetDocumentsRequest;
 }
-export const BatchGetProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(BatchGetDocumentsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/documents:batchGet",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchGetProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<BatchGetProjectsDatabasesDocumentsRequest>;
+export const BatchGetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(BatchGetDocumentsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}/documents:batchGet","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "BatchGetProjectsDatabasesDocumentsRequest" }) as any as S.Schema<BatchGetProjectsDatabasesDocumentsRequest>;
 
 export type ValueList = ReadonlyArray<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Value),
-) as any as S.Schema<ValueList>;
+export const ValueList = /*@__PURE__*/ S.Array(S.suspend(() => Value)) as any as S.Schema<ValueList>;
 
 /** Represents an unevaluated scalar expression. For example, the expression `like(user_name, "%alice%")` is represented as: ``` name: "like" args { field_reference: "user_name" } args { string_value: "%alice%" } ``` */
 export interface Firestore_Function {
@@ -186,16 +165,14 @@ export interface Firestore_Function {
   options?: ValueMap;
 }
 export const Firestore_Function = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    args: S.optional(ValueList),
-    name: S.optional(S.String),
-    options: S.optional(S.suspend(() => ValueMap)),
-  }),
-).annotate({
-  identifier: "Firestore_Function",
-}) as any as S.Schema<Firestore_Function>;
+S.Struct({
+  "args": S.optional(ValueList),
+  "name": S.optional(S.String),
+  "options": S.optional(S.suspend(() => ValueMap)),
+}),
+).annotate({ identifier: "Firestore_Function" }) as any as S.Schema<Firestore_Function>;
 
-export type ValueNullValueEnum = "NULL_VALUE" | (string & {});
+export type ValueNullValueEnum = "NULL_VALUE";
 export const ValueNullValueEnum = /*@__PURE__*/ S.String;
 
 /** An array value. */
@@ -204,9 +181,9 @@ export interface ArrayValue {
   values?: ValueList;
 }
 export const ArrayValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(ValueList),
-  }),
+S.Struct({
+  "values": S.optional(ValueList),
+}),
 ).annotate({ identifier: "ArrayValue" }) as any as S.Schema<ArrayValue>;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
@@ -217,10 +194,10 @@ export interface LatLng {
   latitude?: number;
 }
 export const LatLng = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    longitude: S.optional(S.Number),
-    latitude: S.optional(S.Number),
-  }),
+S.Struct({
+  "longitude": S.optional(S.Number),
+  "latitude": S.optional(S.Number),
+}),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
 /** A single operation within a pipeline. A stage is made up of a unique name, and a list of arguments. The exact number of arguments & types is dependent on the stage type. To give an example, the stage `filter(state = "MD")` would be encoded as: ``` name: "filter" args { function_value { name: "eq" args { field_reference_value: "state" } args { string_value: "MD" } } } ``` See public documentation for the full list. */
@@ -233,17 +210,15 @@ export interface Stage {
   args?: ValueList;
 }
 export const Stage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    options: S.optional(S.suspend(() => ValueMap)),
-    args: S.optional(ValueList),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "options": S.optional(S.suspend(() => ValueMap)),
+  "args": S.optional(ValueList),
+}),
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
 export type StageList = ReadonlyArray<Stage>;
-export const StageList = /*@__PURE__*/ S.Array(
-  Stage,
-) as any as S.Schema<StageList>;
+export const StageList = /*@__PURE__*/ S.Array(Stage) as any as S.Schema<StageList>;
 
 /** A Firestore query represented as an ordered list of operations / stages. */
 export interface Pipeline {
@@ -251,9 +226,9 @@ export interface Pipeline {
   stages?: StageList;
 }
 export const Pipeline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stages: S.optional(StageList),
-  }),
+S.Struct({
+  "stages": S.optional(StageList),
+}),
 ).annotate({ identifier: "Pipeline" }) as any as S.Schema<Pipeline>;
 
 /** A map value. */
@@ -262,9 +237,9 @@ export interface MapValue {
   fields?: ValueMap;
 }
 export const MapValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(S.suspend(() => ValueMap)),
-  }),
+S.Struct({
+  "fields": S.optional(S.suspend(() => ValueMap)),
+}),
 ).annotate({ identifier: "MapValue" }) as any as S.Schema<MapValue>;
 
 /** A message that can hold any of the supported value types. */
@@ -301,30 +276,27 @@ export interface Value {
   stringValue?: string;
 }
 export const Value = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    functionValue: S.optional(Firestore_Function),
-    booleanValue: S.optional(S.Boolean),
-    nullValue: S.optional(ValueNullValueEnum),
-    referenceValue: S.optional(S.String),
-    doubleValue: S.optional(S.Number),
-    arrayValue: S.optional(ArrayValue),
-    geoPointValue: S.optional(LatLng),
-    integerValue: S.optional(S.String),
-    fieldReferenceValue: S.optional(S.String),
-    pipelineValue: S.optional(Pipeline),
-    bytesValue: S.optional(S.String),
-    variableReferenceValue: S.optional(S.String),
-    timestampValue: S.optional(S.String),
-    mapValue: S.optional(MapValue),
-    stringValue: S.optional(S.String),
-  }),
+S.Struct({
+  "functionValue": S.optional(Firestore_Function),
+  "booleanValue": S.optional(S.Boolean),
+  "nullValue": S.optional(ValueNullValueEnum),
+  "referenceValue": S.optional(S.String),
+  "doubleValue": S.optional(S.Number),
+  "arrayValue": S.optional(ArrayValue),
+  "geoPointValue": S.optional(LatLng),
+  "integerValue": S.optional(S.String),
+  "fieldReferenceValue": S.optional(S.String),
+  "pipelineValue": S.optional(Pipeline),
+  "bytesValue": S.optional(S.String),
+  "variableReferenceValue": S.optional(S.String),
+  "timestampValue": S.optional(S.String),
+  "mapValue": S.optional(MapValue),
+  "stringValue": S.optional(S.String),
+}),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueMap = { [key: string]: Value | undefined };
-export const ValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Value,
-) as any as S.Schema<ValueMap>;
+export const ValueMap = /*@__PURE__*/ S.Record(S.String, Value) as any as S.Schema<ValueMap>;
 
 /** A Firestore document. Must not exceed 1 MiB - 4 bytes. */
 export interface Document {
@@ -338,12 +310,12 @@ export interface Document {
   updateTime?: string;
 }
 export const Document = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    fields: S.optional(ValueMap),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "fields": S.optional(ValueMap),
+  "createTime": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Document" }) as any as S.Schema<Document>;
 
 /** The streamed response for Firestore.BatchGetDocuments. */
@@ -358,20 +330,15 @@ export interface BatchGetDocumentsResponse {
   transaction?: string;
 }
 export const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readTime: S.optional(S.String),
-    found: S.optional(Document),
-    missing: S.optional(S.String),
-    transaction: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchGetDocumentsResponse",
-}) as any as S.Schema<BatchGetDocumentsResponse>;
+S.Struct({
+  "readTime": S.optional(S.String),
+  "found": S.optional(Document),
+  "missing": S.optional(S.String),
+  "transaction": S.optional(S.String),
+}),
+).annotate({ identifier: "BatchGetDocumentsResponse" }) as any as S.Schema<BatchGetDocumentsResponse>;
 
-export type FieldTransformSetToServerValueEnum =
-  | "SERVER_VALUE_UNSPECIFIED"
-  | "REQUEST_TIME"
-  | (string & {});
+export type FieldTransformSetToServerValueEnum = "SERVER_VALUE_UNSPECIFIED" | "REQUEST_TIME";
 export const FieldTransformSetToServerValueEnum = /*@__PURE__*/ S.String;
 
 /** A transformation of a field of the document. */
@@ -379,7 +346,7 @@ export interface FieldTransform {
   /** The path of the field. See Document.fields for the field path syntax reference. */
   fieldPath?: string;
   /** Sets the field to the given server value. */
-  setToServerValue?: FieldTransformSetToServerValueEnum;
+  setToServerValue?: FieldTransformSetToServerValueEnum | (string & {});
   /** Sets the field to the minimum of its current value and the given value. This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the input value. If a minimum operation is applied where the field and the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is always the stored value. The minimum of any numeric value x and NaN is NaN. */
   minimum?: Value;
   /** Adds the given value to the field's current value. This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the given value. If either of the given value or the current field value are doubles, both values will be interpreted as doubles. Double arithmetic and representation of double values follow IEEE 754 semantics. If there is positive/negative integer overflow, the field is resolved to the largest magnitude positive/negative integer. */
@@ -392,21 +359,19 @@ export interface FieldTransform {
   appendMissingElements?: ArrayValue;
 }
 export const FieldTransform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldPath: S.optional(S.String),
-    setToServerValue: S.optional(FieldTransformSetToServerValueEnum),
-    minimum: S.optional(Value),
-    increment: S.optional(Value),
-    removeAllFromArray: S.optional(ArrayValue),
-    maximum: S.optional(Value),
-    appendMissingElements: S.optional(ArrayValue),
-  }),
+S.Struct({
+  "fieldPath": S.optional(S.String),
+  "setToServerValue": S.optional(FieldTransformSetToServerValueEnum),
+  "minimum": S.optional(Value),
+  "increment": S.optional(Value),
+  "removeAllFromArray": S.optional(ArrayValue),
+  "maximum": S.optional(Value),
+  "appendMissingElements": S.optional(ArrayValue),
+}),
 ).annotate({ identifier: "FieldTransform" }) as any as S.Schema<FieldTransform>;
 
 export type FieldTransformList = ReadonlyArray<FieldTransform>;
-export const FieldTransformList = /*@__PURE__*/ S.Array(
-  FieldTransform,
-) as any as S.Schema<FieldTransformList>;
+export const FieldTransformList = /*@__PURE__*/ S.Array(FieldTransform) as any as S.Schema<FieldTransformList>;
 
 /** A precondition on a document, used for conditional operations. */
 export interface Precondition {
@@ -416,10 +381,10 @@ export interface Precondition {
   updateTime?: string;
 }
 export const Precondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exists: S.optional(S.Boolean),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "exists": S.optional(S.Boolean),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Precondition" }) as any as S.Schema<Precondition>;
 
 /** A transformation of a document. */
@@ -430,13 +395,11 @@ export interface DocumentTransform {
   document?: string;
 }
 export const DocumentTransform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldTransforms: S.optional(FieldTransformList),
-    document: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DocumentTransform",
-}) as any as S.Schema<DocumentTransform>;
+S.Struct({
+  "fieldTransforms": S.optional(FieldTransformList),
+  "document": S.optional(S.String),
+}),
+).annotate({ identifier: "DocumentTransform" }) as any as S.Schema<DocumentTransform>;
 
 /** A write on a document. */
 export interface Write {
@@ -454,26 +417,21 @@ export interface Write {
   updateMask?: DocumentMask;
 }
 export const Write = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTransforms: S.optional(FieldTransformList),
-    update: S.optional(Document),
-    delete: S.optional(S.String),
-    currentDocument: S.optional(Precondition),
-    transform: S.optional(DocumentTransform),
-    updateMask: S.optional(DocumentMask),
-  }),
+S.Struct({
+  "updateTransforms": S.optional(FieldTransformList),
+  "update": S.optional(Document),
+  "delete": S.optional(S.String),
+  "currentDocument": S.optional(Precondition),
+  "transform": S.optional(DocumentTransform),
+  "updateMask": S.optional(DocumentMask),
+}),
 ).annotate({ identifier: "Write" }) as any as S.Schema<Write>;
 
 export type WriteList = ReadonlyArray<Write>;
-export const WriteList = /*@__PURE__*/ S.Array(
-  Write,
-) as any as S.Schema<WriteList>;
+export const WriteList = /*@__PURE__*/ S.Array(Write) as any as S.Schema<WriteList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** The request for Firestore.BatchWrite. */
 export interface BatchWriteRequest {
@@ -483,13 +441,11 @@ export interface BatchWriteRequest {
   labels?: StringMap;
 }
 export const BatchWriteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    writes: S.optional(WriteList),
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "BatchWriteRequest",
-}) as any as S.Schema<BatchWriteRequest>;
+S.Struct({
+  "writes": S.optional(WriteList),
+  "labels": S.optional(StringMap),
+}),
+).annotate({ identifier: "BatchWriteRequest" }) as any as S.Schema<BatchWriteRequest>;
 
 export interface BatchWriteProjectsDatabasesDocumentsRequest {
   /** Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. */
@@ -497,21 +453,12 @@ export interface BatchWriteProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: BatchWriteRequest;
 }
-export const BatchWriteProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(BatchWriteRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/documents:batchWrite",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchWriteProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<BatchWriteProjectsDatabasesDocumentsRequest>;
+export const BatchWriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(BatchWriteRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}/documents:batchWrite","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "BatchWriteProjectsDatabasesDocumentsRequest" }) as any as S.Schema<BatchWriteProjectsDatabasesDocumentsRequest>;
 
 /** The result of applying a write. */
 export interface WriteResult {
@@ -521,27 +468,20 @@ export interface WriteResult {
   transformResults?: ValueList;
 }
 export const WriteResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    transformResults: S.optional(ValueList),
-  }),
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "transformResults": S.optional(ValueList),
+}),
 ).annotate({ identifier: "WriteResult" }) as any as S.Schema<WriteResult>;
 
 export type WriteResultList = ReadonlyArray<WriteResult>;
-export const WriteResultList = /*@__PURE__*/ S.Array(
-  WriteResult,
-) as any as S.Schema<WriteResultList>;
+export const WriteResultList = /*@__PURE__*/ S.Array(WriteResult) as any as S.Schema<WriteResultList>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -553,17 +493,15 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type StatusList = ReadonlyArray<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(
-  Status,
-) as any as S.Schema<StatusList>;
+export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 /** The response from Firestore.BatchWrite. */
 export interface BatchWriteResponse {
@@ -573,13 +511,11 @@ export interface BatchWriteResponse {
   status?: StatusList;
 }
 export const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    writeResults: S.optional(WriteResultList),
-    status: S.optional(StatusList),
-  }),
-).annotate({
-  identifier: "BatchWriteResponse",
-}) as any as S.Schema<BatchWriteResponse>;
+S.Struct({
+  "writeResults": S.optional(WriteResultList),
+  "status": S.optional(StatusList),
+}),
+).annotate({ identifier: "BatchWriteResponse" }) as any as S.Schema<BatchWriteResponse>;
 
 /** The request for Firestore.BeginTransaction. */
 export interface BeginTransactionRequest {
@@ -587,12 +523,10 @@ export interface BeginTransactionRequest {
   options?: TransactionOptions;
 }
 export const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(TransactionOptions),
-  }),
-).annotate({
-  identifier: "BeginTransactionRequest",
-}) as any as S.Schema<BeginTransactionRequest>;
+S.Struct({
+  "options": S.optional(TransactionOptions),
+}),
+).annotate({ identifier: "BeginTransactionRequest" }) as any as S.Schema<BeginTransactionRequest>;
 
 export interface BeginTransactionProjectsDatabasesDocumentsRequest {
   /** Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. */
@@ -600,21 +534,12 @@ export interface BeginTransactionProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: BeginTransactionRequest;
 }
-export const BeginTransactionProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/documents:beginTransaction",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BeginTransactionProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<BeginTransactionProjectsDatabasesDocumentsRequest>;
+export const BeginTransactionProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}/documents:beginTransaction","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "BeginTransactionProjectsDatabasesDocumentsRequest" }) as any as S.Schema<BeginTransactionProjectsDatabasesDocumentsRequest>;
 
 /** The response for Firestore.BeginTransaction. */
 export interface BeginTransactionResponse {
@@ -622,12 +547,10 @@ export interface BeginTransactionResponse {
   transaction?: string;
 }
 export const BeginTransactionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transaction: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BeginTransactionResponse",
-}) as any as S.Schema<BeginTransactionResponse>;
+S.Struct({
+  "transaction": S.optional(S.String),
+}),
+).annotate({ identifier: "BeginTransactionResponse" }) as any as S.Schema<BeginTransactionResponse>;
 
 /** The request for FirestoreAdmin.BulkDeleteDocuments. When both collection_ids and namespace_ids are set, only documents satisfying both conditions will be deleted. Requests with namespace_ids and collection_ids both empty will be rejected. Please use FirestoreAdmin.DeleteDatabase instead. */
 export interface GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
@@ -636,15 +559,12 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
   /** Optional. IDs of the collection groups to delete. Unspecified means all collection groups. Each collection group in this list must be unique. */
   collectionIds?: StringList;
 }
-export const GoogleFirestoreAdminV1BulkDeleteDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceIds: S.optional(StringList),
-      collectionIds: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1BulkDeleteDocumentsRequest",
-  }) as any as S.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsRequest>;
+export const GoogleFirestoreAdminV1BulkDeleteDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "namespaceIds": S.optional(StringList),
+  "collectionIds": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1BulkDeleteDocumentsRequest" }) as any as S.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsRequest>;
 
 export interface BulkDeleteDocumentsProjectsDatabasesRequest {
   /** Required. Database to operate. Should be of the form: `projects/{project_id}/databases/{database_id}`. */
@@ -652,23 +572,12 @@ export interface BulkDeleteDocumentsProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1BulkDeleteDocumentsRequest;
 }
-export const BulkDeleteDocumentsProjectsDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleFirestoreAdminV1BulkDeleteDocumentsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:bulkDeleteDocuments",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BulkDeleteDocumentsProjectsDatabasesRequest",
-  }) as any as S.Schema<BulkDeleteDocumentsProjectsDatabasesRequest>;
+export const BulkDeleteDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleFirestoreAdminV1BulkDeleteDocumentsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:bulkDeleteDocuments","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "BulkDeleteDocumentsProjectsDatabasesRequest" }) as any as S.Schema<BulkDeleteDocumentsProjectsDatabasesRequest>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
@@ -684,24 +593,20 @@ export interface GoogleLongrunningOperation {
   metadata?: DocumentMap;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(Status),
-    done: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "GoogleLongrunningOperation",
-}) as any as S.Schema<GoogleLongrunningOperation>;
+S.Struct({
+  "error": S.optional(Status),
+  "done": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+  "metadata": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "GoogleLongrunningOperation" }) as any as S.Schema<GoogleLongrunningOperation>;
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleLongrunningCancelOperationRequest",
-}) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
+export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleLongrunningCancelOperationRequest" }) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
 
 export interface CancelProjectsDatabasesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -709,57 +614,41 @@ export interface CancelProjectsDatabasesOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsDatabasesOperationsRequest",
-}) as any as S.Schema<CancelProjectsDatabasesOperationsRequest>;
+export const CancelProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsDatabasesOperationsRequest" }) as any as S.Schema<CancelProjectsDatabasesOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** The configuration options for using CMEK (Customer Managed Encryption Key) encryption. */
 export interface GoogleFirestoreAdminV1CustomerManagedEncryptionOptions {
   /** Required. Only keys in the same location as the database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. */
   kmsKeyName?: string;
 }
-export const GoogleFirestoreAdminV1CustomerManagedEncryptionOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kmsKeyName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1CustomerManagedEncryptionOptions",
-  }) as any as S.Schema<GoogleFirestoreAdminV1CustomerManagedEncryptionOptions>;
+export const GoogleFirestoreAdminV1CustomerManagedEncryptionOptions = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "kmsKeyName": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1CustomerManagedEncryptionOptions" }) as any as S.Schema<GoogleFirestoreAdminV1CustomerManagedEncryptionOptions>;
 
 /** The configuration options for using Google default encryption. */
 export interface GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions {}
-export const GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions",
-  }) as any as S.Schema<GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions>;
+export const GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions" }) as any as S.Schema<GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions>;
 
 /** The configuration options for using the same encryption method as the source. */
 export interface GoogleFirestoreAdminV1SourceEncryptionOptions {}
-export const GoogleFirestoreAdminV1SourceEncryptionOptions =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleFirestoreAdminV1SourceEncryptionOptions",
-  }) as any as S.Schema<GoogleFirestoreAdminV1SourceEncryptionOptions>;
+export const GoogleFirestoreAdminV1SourceEncryptionOptions = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleFirestoreAdminV1SourceEncryptionOptions" }) as any as S.Schema<GoogleFirestoreAdminV1SourceEncryptionOptions>;
 
 /** Encryption configuration for a new database being created from another source. The source could be a Backup or a PitrSnapshot. */
 export interface GoogleFirestoreAdminV1EncryptionConfig {
@@ -770,22 +659,13 @@ export interface GoogleFirestoreAdminV1EncryptionConfig {
   /** The database will use the same encryption configuration as the source. */
   useSourceEncryption?: GoogleFirestoreAdminV1SourceEncryptionOptions;
 }
-export const GoogleFirestoreAdminV1EncryptionConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customerManagedEncryption: S.optional(
-        GoogleFirestoreAdminV1CustomerManagedEncryptionOptions,
-      ),
-      googleDefaultEncryption: S.optional(
-        GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions,
-      ),
-      useSourceEncryption: S.optional(
-        GoogleFirestoreAdminV1SourceEncryptionOptions,
-      ),
-    }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1EncryptionConfig",
-}) as any as S.Schema<GoogleFirestoreAdminV1EncryptionConfig>;
+export const GoogleFirestoreAdminV1EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "customerManagedEncryption": S.optional(GoogleFirestoreAdminV1CustomerManagedEncryptionOptions),
+  "googleDefaultEncryption": S.optional(GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions),
+  "useSourceEncryption": S.optional(GoogleFirestoreAdminV1SourceEncryptionOptions),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1EncryptionConfig" }) as any as S.Schema<GoogleFirestoreAdminV1EncryptionConfig>;
 
 /** A consistent snapshot of a database at a specific point in time. A PITR (Point-in-time recovery) snapshot with previous versions of a database's data is available for every minute up to the associated database's data retention period. If the PITR feature is enabled, the retention period is 7 days; otherwise, it is one hour. */
 export interface GoogleFirestoreAdminV1PitrSnapshot {
@@ -797,14 +677,12 @@ export interface GoogleFirestoreAdminV1PitrSnapshot {
   snapshotTime?: string;
 }
 export const GoogleFirestoreAdminV1PitrSnapshot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.optional(S.String),
-    databaseUid: S.optional(S.String),
-    snapshotTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1PitrSnapshot",
-}) as any as S.Schema<GoogleFirestoreAdminV1PitrSnapshot>;
+S.Struct({
+  "database": S.optional(S.String),
+  "databaseUid": S.optional(S.String),
+  "snapshotTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1PitrSnapshot" }) as any as S.Schema<GoogleFirestoreAdminV1PitrSnapshot>;
 
 /** The request message for FirestoreAdmin.CloneDatabase. */
 export interface GoogleFirestoreAdminV1CloneDatabaseRequest {
@@ -817,17 +695,14 @@ export interface GoogleFirestoreAdminV1CloneDatabaseRequest {
   /** Optional. Immutable. Tags to be bound to the cloned database. The tags should be provided in the format of `tagKeys/{tag_key_id} -> tagValues/{tag_value_id}`. */
   tags?: StringMap;
 }
-export const GoogleFirestoreAdminV1CloneDatabaseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      databaseId: S.optional(S.String),
-      encryptionConfig: S.optional(GoogleFirestoreAdminV1EncryptionConfig),
-      pitrSnapshot: S.optional(GoogleFirestoreAdminV1PitrSnapshot),
-      tags: S.optional(StringMap),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1CloneDatabaseRequest",
-  }) as any as S.Schema<GoogleFirestoreAdminV1CloneDatabaseRequest>;
+export const GoogleFirestoreAdminV1CloneDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "databaseId": S.optional(S.String),
+  "encryptionConfig": S.optional(GoogleFirestoreAdminV1EncryptionConfig),
+  "pitrSnapshot": S.optional(GoogleFirestoreAdminV1PitrSnapshot),
+  "tags": S.optional(StringMap),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1CloneDatabaseRequest" }) as any as S.Schema<GoogleFirestoreAdminV1CloneDatabaseRequest>;
 
 export interface CloneProjectsDatabasesRequest {
   /** Required. The project to clone the database in. Format is `projects/{project_id}`. */
@@ -836,21 +711,11 @@ export interface CloneProjectsDatabasesRequest {
   body?: GoogleFirestoreAdminV1CloneDatabaseRequest;
 }
 export const CloneProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleFirestoreAdminV1CloneDatabaseRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/databases:clone",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CloneProjectsDatabasesRequest",
-}) as any as S.Schema<CloneProjectsDatabasesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleFirestoreAdminV1CloneDatabaseRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/databases:clone","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "CloneProjectsDatabasesRequest" }) as any as S.Schema<CloneProjectsDatabasesRequest>;
 
 /** The request for Firestore.Commit. */
 export interface CommitRequest {
@@ -860,10 +725,10 @@ export interface CommitRequest {
   transaction?: string;
 }
 export const CommitRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    writes: S.optional(WriteList),
-    transaction: S.optional(S.String),
-  }),
+S.Struct({
+  "writes": S.optional(WriteList),
+  "transaction": S.optional(S.String),
+}),
 ).annotate({ identifier: "CommitRequest" }) as any as S.Schema<CommitRequest>;
 
 export interface CommitProjectsDatabasesDocumentsRequest {
@@ -872,21 +737,12 @@ export interface CommitProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: CommitRequest;
 }
-export const CommitProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(CommitRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/documents:commit",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CommitProjectsDatabasesDocumentsRequest",
-}) as any as S.Schema<CommitProjectsDatabasesDocumentsRequest>;
+export const CommitProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(CommitRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}/documents:commit","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "CommitProjectsDatabasesDocumentsRequest" }) as any as S.Schema<CommitProjectsDatabasesDocumentsRequest>;
 
 /** The response for Firestore.Commit. */
 export interface CommitResponse {
@@ -896,10 +752,10 @@ export interface CommitResponse {
   writeResults?: WriteResultList;
 }
 export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitTime: S.optional(S.String),
-    writeResults: S.optional(WriteResultList),
-  }),
+S.Struct({
+  "commitTime": S.optional(S.String),
+  "writeResults": S.optional(WriteResultList),
+}),
 ).annotate({ identifier: "CommitResponse" }) as any as S.Schema<CommitResponse>;
 
 export interface CreateDocumentProjectsDatabasesDocumentsRequest {
@@ -914,64 +770,30 @@ export interface CreateDocumentProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: Document;
 }
-export const CreateDocumentProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
-      documentId: S.optional(S.String.pipe(T.Query())),
-      collectionId: S.String.pipe(T.Label()),
-      body: S.optional(Document.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/{collectionId}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateDocumentProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<CreateDocumentProjectsDatabasesDocumentsRequest>;
+export const CreateDocumentProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
+  "documentId": S.optional(S.String.pipe(T.Query())),
+  "collectionId": S.String.pipe(T.Label()),
+  "body": S.optional(Document.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/{collectionId}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "CreateDocumentProjectsDatabasesDocumentsRequest" }) as any as S.Schema<CreateDocumentProjectsDatabasesDocumentsRequest>;
 
-export type GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum =
-  | "REALTIME_UPDATES_MODE_UNSPECIFIED"
-  | "REALTIME_UPDATES_MODE_ENABLED"
-  | "REALTIME_UPDATES_MODE_DISABLED"
-  | (string & {});
-export const GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum = "REALTIME_UPDATES_MODE_UNSPECIFIED" | "REALTIME_UPDATES_MODE_ENABLED" | "REALTIME_UPDATES_MODE_DISABLED";
+export const GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum =
-  | "POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED"
-  | "POINT_IN_TIME_RECOVERY_ENABLED"
-  | "POINT_IN_TIME_RECOVERY_DISABLED"
-  | (string & {});
-export const GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum = "POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED" | "POINT_IN_TIME_RECOVERY_ENABLED" | "POINT_IN_TIME_RECOVERY_DISABLED";
+export const GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum = /*@__PURE__*/ S.String;
 
-export type GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum =
-  | "DATABASE_EDITION_UNSPECIFIED"
-  | "STANDARD"
-  | "ENTERPRISE"
-  | (string & {});
-export const GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum = "DATABASE_EDITION_UNSPECIFIED" | "STANDARD" | "ENTERPRISE";
+export const GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum = /*@__PURE__*/ S.String;
 
-export type GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum =
-  | "DATA_ACCESS_MODE_UNSPECIFIED"
-  | "DATA_ACCESS_MODE_ENABLED"
-  | "DATA_ACCESS_MODE_DISABLED"
-  | (string & {});
-export const GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum = "DATA_ACCESS_MODE_UNSPECIFIED" | "DATA_ACCESS_MODE_ENABLED" | "DATA_ACCESS_MODE_DISABLED";
+export const GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum =
-  | "DATA_ACCESS_MODE_UNSPECIFIED"
-  | "DATA_ACCESS_MODE_ENABLED"
-  | "DATA_ACCESS_MODE_DISABLED"
-  | (string & {});
-export const GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum = "DATA_ACCESS_MODE_UNSPECIFIED" | "DATA_ACCESS_MODE_ENABLED" | "DATA_ACCESS_MODE_DISABLED";
+export const GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a backup that was used to restore a database. */
 export interface GoogleFirestoreAdminV1BackupSource {
@@ -979,12 +801,10 @@ export interface GoogleFirestoreAdminV1BackupSource {
   backup?: string;
 }
 export const GoogleFirestoreAdminV1BackupSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backup: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1BackupSource",
-}) as any as S.Schema<GoogleFirestoreAdminV1BackupSource>;
+S.Struct({
+  "backup": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1BackupSource" }) as any as S.Schema<GoogleFirestoreAdminV1BackupSource>;
 
 /** Information about the provenance of this database. */
 export interface GoogleFirestoreAdminV1SourceInfo {
@@ -994,36 +814,19 @@ export interface GoogleFirestoreAdminV1SourceInfo {
   operation?: string;
 }
 export const GoogleFirestoreAdminV1SourceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backup: S.optional(GoogleFirestoreAdminV1BackupSource),
-    operation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1SourceInfo",
-}) as any as S.Schema<GoogleFirestoreAdminV1SourceInfo>;
+S.Struct({
+  "backup": S.optional(GoogleFirestoreAdminV1BackupSource),
+  "operation": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1SourceInfo" }) as any as S.Schema<GoogleFirestoreAdminV1SourceInfo>;
 
-export type GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum =
-  | "CONCURRENCY_MODE_UNSPECIFIED"
-  | "OPTIMISTIC"
-  | "PESSIMISTIC"
-  | "OPTIMISTIC_WITH_ENTITY_GROUPS"
-  | (string & {});
-export const GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum = "CONCURRENCY_MODE_UNSPECIFIED" | "OPTIMISTIC" | "PESSIMISTIC" | "OPTIMISTIC_WITH_ENTITY_GROUPS";
+export const GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum =
-  | "APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
-export const GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum = "APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED" | "ENABLED" | "DISABLED";
+export const GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleFirestoreAdminV1DatabaseTypeEnum =
-  | "DATABASE_TYPE_UNSPECIFIED"
-  | "FIRESTORE_NATIVE"
-  | "DATASTORE_MODE"
-  | (string & {});
+export type GoogleFirestoreAdminV1DatabaseTypeEnum = "DATABASE_TYPE_UNSPECIFIED" | "FIRESTORE_NATIVE" | "DATASTORE_MODE";
 export const GoogleFirestoreAdminV1DatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key. */
@@ -1034,21 +837,14 @@ export interface GoogleFirestoreAdminV1CmekConfig {
   activeKeyVersion?: StringList;
 }
 export const GoogleFirestoreAdminV1CmekConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyName: S.optional(S.String),
-    activeKeyVersion: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1CmekConfig",
-}) as any as S.Schema<GoogleFirestoreAdminV1CmekConfig>;
+S.Struct({
+  "kmsKeyName": S.optional(S.String),
+  "activeKeyVersion": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1CmekConfig" }) as any as S.Schema<GoogleFirestoreAdminV1CmekConfig>;
 
-export type GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum =
-  | "DELETE_PROTECTION_STATE_UNSPECIFIED"
-  | "DELETE_PROTECTION_DISABLED"
-  | "DELETE_PROTECTION_ENABLED"
-  | (string & {});
-export const GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum = "DELETE_PROTECTION_STATE_UNSPECIFIED" | "DELETE_PROTECTION_DISABLED" | "DELETE_PROTECTION_ENABLED";
+export const GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum = /*@__PURE__*/ S.String;
 
 /** A Cloud Firestore Database. */
 export interface GoogleFirestoreAdminV1Database {
@@ -1102,51 +898,33 @@ export interface GoogleFirestoreAdminV1Database {
   deleteTime?: string;
 }
 export const GoogleFirestoreAdminV1Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uid: S.optional(S.String),
-    realtimeUpdatesMode: S.optional(
-      GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum,
-    ),
-    pointInTimeRecoveryEnablement: S.optional(
-      GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum,
-    ),
-    databaseEdition: S.optional(
-      GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum,
-    ),
-    updateTime: S.optional(S.String),
-    firestoreDataAccessMode: S.optional(
-      GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum,
-    ),
-    earliestVersionTime: S.optional(S.String),
-    keyPrefix: S.optional(S.String),
-    locationId: S.optional(S.String),
-    mongodbCompatibleDataAccessMode: S.optional(
-      GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum,
-    ),
-    tags: S.optional(StringMap),
-    createTime: S.optional(S.String),
-    previousId: S.optional(S.String),
-    freeTier: S.optional(S.Boolean),
-    sourceInfo: S.optional(GoogleFirestoreAdminV1SourceInfo),
-    concurrencyMode: S.optional(
-      GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum,
-    ),
-    appEngineIntegrationMode: S.optional(
-      GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum,
-    ),
-    name: S.optional(S.String),
-    versionRetentionPeriod: S.optional(S.String),
-    type: S.optional(GoogleFirestoreAdminV1DatabaseTypeEnum),
-    cmekConfig: S.optional(GoogleFirestoreAdminV1CmekConfig),
-    etag: S.optional(S.String),
-    deleteProtectionState: S.optional(
-      GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum,
-    ),
-    deleteTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1Database",
-}) as any as S.Schema<GoogleFirestoreAdminV1Database>;
+S.Struct({
+  "uid": S.optional(S.String),
+  "realtimeUpdatesMode": S.optional(GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum),
+  "pointInTimeRecoveryEnablement": S.optional(GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum),
+  "databaseEdition": S.optional(GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum),
+  "updateTime": S.optional(S.String),
+  "firestoreDataAccessMode": S.optional(GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum),
+  "earliestVersionTime": S.optional(S.String),
+  "keyPrefix": S.optional(S.String),
+  "locationId": S.optional(S.String),
+  "mongodbCompatibleDataAccessMode": S.optional(GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum),
+  "tags": S.optional(StringMap),
+  "createTime": S.optional(S.String),
+  "previousId": S.optional(S.String),
+  "freeTier": S.optional(S.Boolean),
+  "sourceInfo": S.optional(GoogleFirestoreAdminV1SourceInfo),
+  "concurrencyMode": S.optional(GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum),
+  "appEngineIntegrationMode": S.optional(GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum),
+  "name": S.optional(S.String),
+  "versionRetentionPeriod": S.optional(S.String),
+  "type": S.optional(GoogleFirestoreAdminV1DatabaseTypeEnum),
+  "cmekConfig": S.optional(GoogleFirestoreAdminV1CmekConfig),
+  "etag": S.optional(S.String),
+  "deleteProtectionState": S.optional(GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum),
+  "deleteTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1Database" }) as any as S.Schema<GoogleFirestoreAdminV1Database>;
 
 export interface CreateProjectsDatabasesRequest {
   /** Required. A parent name of the form `projects/{project_id}` */
@@ -1157,55 +935,32 @@ export interface CreateProjectsDatabasesRequest {
   body?: GoogleFirestoreAdminV1Database;
 }
 export const CreateProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    databaseId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(GoogleFirestoreAdminV1Database.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/databases",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectsDatabasesRequest",
-}) as any as S.Schema<CreateProjectsDatabasesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "databaseId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleFirestoreAdminV1Database.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/databases","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsDatabasesRequest" }) as any as S.Schema<CreateProjectsDatabasesRequest>;
 
-export type GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum =
-  | "DAY_OF_WEEK_UNSPECIFIED"
-  | "MONDAY"
-  | "TUESDAY"
-  | "WEDNESDAY"
-  | "THURSDAY"
-  | "FRIDAY"
-  | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
-export const GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export const GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a recurring schedule that runs on a specified day of the week. The time zone is UTC. */
 export interface GoogleFirestoreAdminV1WeeklyRecurrence {
   /** The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed. */
   day?: GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum;
 }
-export const GoogleFirestoreAdminV1WeeklyRecurrence = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      day: S.optional(GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum),
-    }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1WeeklyRecurrence",
-}) as any as S.Schema<GoogleFirestoreAdminV1WeeklyRecurrence>;
+export const GoogleFirestoreAdminV1WeeklyRecurrence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "day": S.optional(GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1WeeklyRecurrence" }) as any as S.Schema<GoogleFirestoreAdminV1WeeklyRecurrence>;
 
 /** Represents a recurring schedule that runs every day. The time zone is UTC. */
 export interface GoogleFirestoreAdminV1DailyRecurrence {}
-export const GoogleFirestoreAdminV1DailyRecurrence = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1DailyRecurrence",
-}) as any as S.Schema<GoogleFirestoreAdminV1DailyRecurrence>;
+export const GoogleFirestoreAdminV1DailyRecurrence = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleFirestoreAdminV1DailyRecurrence" }) as any as S.Schema<GoogleFirestoreAdminV1DailyRecurrence>;
 
 /** A backup schedule for a Cloud Firestore Database. This resource is owned by the database it is backing up, and is deleted along with the database. The actual backups are not though. */
 export interface GoogleFirestoreAdminV1BackupSchedule {
@@ -1222,19 +977,16 @@ export interface GoogleFirestoreAdminV1BackupSchedule {
   /** Output only. The unique backup schedule identifier across all locations and databases for the given project. This will be auto-assigned. Format is `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}` */
   name?: string;
 }
-export const GoogleFirestoreAdminV1BackupSchedule = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateTime: S.optional(S.String),
-      retention: S.optional(S.String),
-      createTime: S.optional(S.String),
-      weeklyRecurrence: S.optional(GoogleFirestoreAdminV1WeeklyRecurrence),
-      dailyRecurrence: S.optional(GoogleFirestoreAdminV1DailyRecurrence),
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1BackupSchedule",
-}) as any as S.Schema<GoogleFirestoreAdminV1BackupSchedule>;
+export const GoogleFirestoreAdminV1BackupSchedule = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "retention": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "weeklyRecurrence": S.optional(GoogleFirestoreAdminV1WeeklyRecurrence),
+  "dailyRecurrence": S.optional(GoogleFirestoreAdminV1DailyRecurrence),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1BackupSchedule" }) as any as S.Schema<GoogleFirestoreAdminV1BackupSchedule>;
 
 export interface CreateProjectsDatabasesBackupSchedulesRequest {
   /** Required. The parent database. Format `projects/{project}/databases/{database}` */
@@ -1242,36 +994,21 @@ export interface CreateProjectsDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1BackupSchedule;
 }
-export const CreateProjectsDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleFirestoreAdminV1BackupSchedule.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/backupSchedules",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<CreateProjectsDatabasesBackupSchedulesRequest>;
+export const CreateProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleFirestoreAdminV1BackupSchedule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/backupSchedules","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsDatabasesBackupSchedulesRequest" }) as any as S.Schema<CreateProjectsDatabasesBackupSchedulesRequest>;
 
-export type GoogleFirestoreAdminV1IndexFieldArrayConfigEnum =
-  | "ARRAY_CONFIG_UNSPECIFIED"
-  | "CONTAINS"
-  | (string & {});
-export const GoogleFirestoreAdminV1IndexFieldArrayConfigEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1IndexFieldArrayConfigEnum = "ARRAY_CONFIG_UNSPECIFIED" | "CONTAINS";
+export const GoogleFirestoreAdminV1IndexFieldArrayConfigEnum = /*@__PURE__*/ S.String;
 
 /** An index that stores vectors in a flat data structure, and supports exhaustive search. */
 export interface GoogleFirestoreAdminV1FlatIndex {}
 export const GoogleFirestoreAdminV1FlatIndex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1FlatIndex",
-}) as any as S.Schema<GoogleFirestoreAdminV1FlatIndex>;
+S.Struct({}),
+).annotate({ identifier: "GoogleFirestoreAdminV1FlatIndex" }) as any as S.Schema<GoogleFirestoreAdminV1FlatIndex>;
 
 /** The index configuration to support vector search operations */
 export interface GoogleFirestoreAdminV1VectorConfig {
@@ -1281,19 +1018,13 @@ export interface GoogleFirestoreAdminV1VectorConfig {
   flat?: GoogleFirestoreAdminV1FlatIndex;
 }
 export const GoogleFirestoreAdminV1VectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimension: S.optional(S.Number),
-    flat: S.optional(GoogleFirestoreAdminV1FlatIndex),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1VectorConfig",
-}) as any as S.Schema<GoogleFirestoreAdminV1VectorConfig>;
+S.Struct({
+  "dimension": S.optional(S.Number),
+  "flat": S.optional(GoogleFirestoreAdminV1FlatIndex),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1VectorConfig" }) as any as S.Schema<GoogleFirestoreAdminV1VectorConfig>;
 
-export type GoogleFirestoreAdminV1IndexFieldOrderEnum =
-  | "ORDER_UNSPECIFIED"
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type GoogleFirestoreAdminV1IndexFieldOrderEnum = "ORDER_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
 export const GoogleFirestoreAdminV1IndexFieldOrderEnum = /*@__PURE__*/ S.String;
 
 /** The specification for how to build a geo search index for a field. */
@@ -1302,26 +1033,16 @@ export interface GoogleFirestoreAdminV1SearchGeoSpec {
   geoJsonIndexingDisabled?: boolean;
 }
 export const GoogleFirestoreAdminV1SearchGeoSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geoJsonIndexingDisabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1SearchGeoSpec",
-}) as any as S.Schema<GoogleFirestoreAdminV1SearchGeoSpec>;
+S.Struct({
+  "geoJsonIndexingDisabled": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1SearchGeoSpec" }) as any as S.Schema<GoogleFirestoreAdminV1SearchGeoSpec>;
 
-export type GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum =
-  | "TEXT_INDEX_TYPE_UNSPECIFIED"
-  | "TOKENIZED"
-  | (string & {});
-export const GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum = "TEXT_INDEX_TYPE_UNSPECIFIED" | "TOKENIZED";
+export const GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum =
-  | "TEXT_MATCH_TYPE_UNSPECIFIED"
-  | "MATCH_GLOBALLY"
-  | (string & {});
-export const GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum = "TEXT_MATCH_TYPE_UNSPECIFIED" | "MATCH_GLOBALLY";
+export const GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specification of how the field should be indexed for search text indexes. */
 export interface GoogleFirestoreAdminV1SearchTextIndexSpec {
@@ -1330,40 +1051,26 @@ export interface GoogleFirestoreAdminV1SearchTextIndexSpec {
   /** Required. How to match the text field value. */
   matchType?: GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum;
 }
-export const GoogleFirestoreAdminV1SearchTextIndexSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      indexType: S.optional(
-        GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum,
-      ),
-      matchType: S.optional(
-        GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1SearchTextIndexSpec",
-  }) as any as S.Schema<GoogleFirestoreAdminV1SearchTextIndexSpec>;
+export const GoogleFirestoreAdminV1SearchTextIndexSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "indexType": S.optional(GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum),
+  "matchType": S.optional(GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1SearchTextIndexSpec" }) as any as S.Schema<GoogleFirestoreAdminV1SearchTextIndexSpec>;
 
-export type GoogleFirestoreAdminV1SearchTextIndexSpecList =
-  ReadonlyArray<GoogleFirestoreAdminV1SearchTextIndexSpec>;
-export const GoogleFirestoreAdminV1SearchTextIndexSpecList =
-  /*@__PURE__*/ S.Array(
-    GoogleFirestoreAdminV1SearchTextIndexSpec,
-  ) as any as S.Schema<GoogleFirestoreAdminV1SearchTextIndexSpecList>;
+export type GoogleFirestoreAdminV1SearchTextIndexSpecList = ReadonlyArray<GoogleFirestoreAdminV1SearchTextIndexSpec>;
+export const GoogleFirestoreAdminV1SearchTextIndexSpecList = /*@__PURE__*/ S.Array(GoogleFirestoreAdminV1SearchTextIndexSpec) as any as S.Schema<GoogleFirestoreAdminV1SearchTextIndexSpecList>;
 
 /** The specification for how to build a text search index for a field. */
 export interface GoogleFirestoreAdminV1SearchTextSpec {
   /** Required. Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways. */
   indexSpecs?: GoogleFirestoreAdminV1SearchTextIndexSpecList;
 }
-export const GoogleFirestoreAdminV1SearchTextSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      indexSpecs: S.optional(GoogleFirestoreAdminV1SearchTextIndexSpecList),
-    }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1SearchTextSpec",
-}) as any as S.Schema<GoogleFirestoreAdminV1SearchTextSpec>;
+export const GoogleFirestoreAdminV1SearchTextSpec = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "indexSpecs": S.optional(GoogleFirestoreAdminV1SearchTextIndexSpecList),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1SearchTextSpec" }) as any as S.Schema<GoogleFirestoreAdminV1SearchTextSpec>;
 
 /** The configuration for how to index a field for search. */
 export interface GoogleFirestoreAdminV1SearchConfig {
@@ -1373,13 +1080,11 @@ export interface GoogleFirestoreAdminV1SearchConfig {
   textSpec?: GoogleFirestoreAdminV1SearchTextSpec;
 }
 export const GoogleFirestoreAdminV1SearchConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geoSpec: S.optional(GoogleFirestoreAdminV1SearchGeoSpec),
-    textSpec: S.optional(GoogleFirestoreAdminV1SearchTextSpec),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1SearchConfig",
-}) as any as S.Schema<GoogleFirestoreAdminV1SearchConfig>;
+S.Struct({
+  "geoSpec": S.optional(GoogleFirestoreAdminV1SearchGeoSpec),
+  "textSpec": S.optional(GoogleFirestoreAdminV1SearchTextSpec),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1SearchConfig" }) as any as S.Schema<GoogleFirestoreAdminV1SearchConfig>;
 
 /** A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed. */
 export interface GoogleFirestoreAdminV1IndexField {
@@ -1395,52 +1100,28 @@ export interface GoogleFirestoreAdminV1IndexField {
   searchConfig?: GoogleFirestoreAdminV1SearchConfig;
 }
 export const GoogleFirestoreAdminV1IndexField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arrayConfig: S.optional(GoogleFirestoreAdminV1IndexFieldArrayConfigEnum),
-    fieldPath: S.optional(S.String),
-    vectorConfig: S.optional(GoogleFirestoreAdminV1VectorConfig),
-    order: S.optional(GoogleFirestoreAdminV1IndexFieldOrderEnum),
-    searchConfig: S.optional(GoogleFirestoreAdminV1SearchConfig),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1IndexField",
-}) as any as S.Schema<GoogleFirestoreAdminV1IndexField>;
+S.Struct({
+  "arrayConfig": S.optional(GoogleFirestoreAdminV1IndexFieldArrayConfigEnum),
+  "fieldPath": S.optional(S.String),
+  "vectorConfig": S.optional(GoogleFirestoreAdminV1VectorConfig),
+  "order": S.optional(GoogleFirestoreAdminV1IndexFieldOrderEnum),
+  "searchConfig": S.optional(GoogleFirestoreAdminV1SearchConfig),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1IndexField" }) as any as S.Schema<GoogleFirestoreAdminV1IndexField>;
 
-export type GoogleFirestoreAdminV1IndexFieldList =
-  ReadonlyArray<GoogleFirestoreAdminV1IndexField>;
-export const GoogleFirestoreAdminV1IndexFieldList = /*@__PURE__*/ S.Array(
-  GoogleFirestoreAdminV1IndexField,
-) as any as S.Schema<GoogleFirestoreAdminV1IndexFieldList>;
+export type GoogleFirestoreAdminV1IndexFieldList = ReadonlyArray<GoogleFirestoreAdminV1IndexField>;
+export const GoogleFirestoreAdminV1IndexFieldList = /*@__PURE__*/ S.Array(GoogleFirestoreAdminV1IndexField) as any as S.Schema<GoogleFirestoreAdminV1IndexFieldList>;
 
-export type GoogleFirestoreAdminV1IndexQueryScopeEnum =
-  | "QUERY_SCOPE_UNSPECIFIED"
-  | "COLLECTION"
-  | "COLLECTION_GROUP"
-  | "COLLECTION_RECURSIVE"
-  | (string & {});
+export type GoogleFirestoreAdminV1IndexQueryScopeEnum = "QUERY_SCOPE_UNSPECIFIED" | "COLLECTION" | "COLLECTION_GROUP" | "COLLECTION_RECURSIVE";
 export const GoogleFirestoreAdminV1IndexQueryScopeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleFirestoreAdminV1IndexDensityEnum =
-  | "DENSITY_UNSPECIFIED"
-  | "SPARSE_ALL"
-  | "SPARSE_ANY"
-  | "DENSE"
-  | (string & {});
+export type GoogleFirestoreAdminV1IndexDensityEnum = "DENSITY_UNSPECIFIED" | "SPARSE_ALL" | "SPARSE_ANY" | "DENSE";
 export const GoogleFirestoreAdminV1IndexDensityEnum = /*@__PURE__*/ S.String;
 
-export type GoogleFirestoreAdminV1IndexStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | "NEEDS_REPAIR"
-  | (string & {});
+export type GoogleFirestoreAdminV1IndexStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "NEEDS_REPAIR";
 export const GoogleFirestoreAdminV1IndexStateEnum = /*@__PURE__*/ S.String;
 
-export type GoogleFirestoreAdminV1IndexApiScopeEnum =
-  | "ANY_API"
-  | "DATASTORE_MODE_API"
-  | "MONGODB_COMPATIBLE_API"
-  | (string & {});
+export type GoogleFirestoreAdminV1IndexApiScopeEnum = "ANY_API" | "DATASTORE_MODE_API" | "MONGODB_COMPATIBLE_API";
 export const GoogleFirestoreAdminV1IndexApiScopeEnum = /*@__PURE__*/ S.String;
 
 /** Options for search indexes at the definition level. */
@@ -1450,15 +1131,12 @@ export interface GoogleFirestoreAdminV1SearchIndexOptions {
   /** Optional. The field in the document that specifies which language to use for that specific document. For indexes with MONGODB_COMPATIBLE_API ApiScope: if unspecified, the language is taken from the "language" field if it exists or from `text_language` if it does not. */
   textLanguageOverrideFieldPath?: string;
 }
-export const GoogleFirestoreAdminV1SearchIndexOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      textLanguage: S.optional(S.String),
-      textLanguageOverrideFieldPath: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1SearchIndexOptions",
-}) as any as S.Schema<GoogleFirestoreAdminV1SearchIndexOptions>;
+export const GoogleFirestoreAdminV1SearchIndexOptions = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "textLanguage": S.optional(S.String),
+  "textLanguageOverrideFieldPath": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1SearchIndexOptions" }) as any as S.Schema<GoogleFirestoreAdminV1SearchIndexOptions>;
 
 /** Cloud Firestore indexes enable simple and complex queries against documents in a database. */
 export interface GoogleFirestoreAdminV1Index {
@@ -1484,21 +1162,19 @@ export interface GoogleFirestoreAdminV1Index {
   searchIndexOptions?: GoogleFirestoreAdminV1SearchIndexOptions;
 }
 export const GoogleFirestoreAdminV1Index = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(GoogleFirestoreAdminV1IndexFieldList),
-    unique: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    queryScope: S.optional(GoogleFirestoreAdminV1IndexQueryScopeEnum),
-    density: S.optional(GoogleFirestoreAdminV1IndexDensityEnum),
-    multikey: S.optional(S.Boolean),
-    state: S.optional(GoogleFirestoreAdminV1IndexStateEnum),
-    apiScope: S.optional(GoogleFirestoreAdminV1IndexApiScopeEnum),
-    shardCount: S.optional(S.Number),
-    searchIndexOptions: S.optional(GoogleFirestoreAdminV1SearchIndexOptions),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1Index",
-}) as any as S.Schema<GoogleFirestoreAdminV1Index>;
+S.Struct({
+  "fields": S.optional(GoogleFirestoreAdminV1IndexFieldList),
+  "unique": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "queryScope": S.optional(GoogleFirestoreAdminV1IndexQueryScopeEnum),
+  "density": S.optional(GoogleFirestoreAdminV1IndexDensityEnum),
+  "multikey": S.optional(S.Boolean),
+  "state": S.optional(GoogleFirestoreAdminV1IndexStateEnum),
+  "apiScope": S.optional(GoogleFirestoreAdminV1IndexApiScopeEnum),
+  "shardCount": S.optional(S.Number),
+  "searchIndexOptions": S.optional(GoogleFirestoreAdminV1SearchIndexOptions),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1Index" }) as any as S.Schema<GoogleFirestoreAdminV1Index>;
 
 export interface CreateProjectsDatabasesCollectionGroupsIndexesRequest {
   /** Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` */
@@ -1506,27 +1182,14 @@ export interface CreateProjectsDatabasesCollectionGroupsIndexesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1Index;
 }
-export const CreateProjectsDatabasesCollectionGroupsIndexesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleFirestoreAdminV1Index.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/indexes",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsDatabasesCollectionGroupsIndexesRequest",
-  }) as any as S.Schema<CreateProjectsDatabasesCollectionGroupsIndexesRequest>;
+export const CreateProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleFirestoreAdminV1Index.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/indexes","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsDatabasesCollectionGroupsIndexesRequest" }) as any as S.Schema<CreateProjectsDatabasesCollectionGroupsIndexesRequest>;
 
-export type GoogleFirestoreAdminV1UserCredsStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type GoogleFirestoreAdminV1UserCredsStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
 export const GoogleFirestoreAdminV1UserCredsStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes a Resource Identity principal. */
@@ -1534,14 +1197,11 @@ export interface GoogleFirestoreAdminV1ResourceIdentity {
   /** Output only. Principal identifier string. See: https://cloud.google.com/iam/docs/principal-identifiers */
   principal?: string;
 }
-export const GoogleFirestoreAdminV1ResourceIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principal: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1ResourceIdentity",
-}) as any as S.Schema<GoogleFirestoreAdminV1ResourceIdentity>;
+export const GoogleFirestoreAdminV1ResourceIdentity = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "principal": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1ResourceIdentity" }) as any as S.Schema<GoogleFirestoreAdminV1ResourceIdentity>;
 
 /** A Cloud Firestore User Creds. */
 export interface GoogleFirestoreAdminV1UserCreds {
@@ -1559,17 +1219,15 @@ export interface GoogleFirestoreAdminV1UserCreds {
   resourceIdentity?: GoogleFirestoreAdminV1ResourceIdentity;
 }
 export const GoogleFirestoreAdminV1UserCreds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    securePassword: S.optional(S.String),
-    state: S.optional(GoogleFirestoreAdminV1UserCredsStateEnum),
-    name: S.optional(S.String),
-    resourceIdentity: S.optional(GoogleFirestoreAdminV1ResourceIdentity),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1UserCreds",
-}) as any as S.Schema<GoogleFirestoreAdminV1UserCreds>;
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "securePassword": S.optional(S.String),
+  "state": S.optional(GoogleFirestoreAdminV1UserCredsStateEnum),
+  "name": S.optional(S.String),
+  "resourceIdentity": S.optional(GoogleFirestoreAdminV1ResourceIdentity),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1UserCreds" }) as any as S.Schema<GoogleFirestoreAdminV1UserCreds>;
 
 export interface CreateProjectsDatabasesUserCredsRequest {
   /** Required. A parent name of the form `projects/{project_id}/databases/{database_id}` */
@@ -1579,22 +1237,13 @@ export interface CreateProjectsDatabasesUserCredsRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1UserCreds;
 }
-export const CreateProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      userCredsId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleFirestoreAdminV1UserCreds.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/userCreds",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsDatabasesUserCredsRequest",
-}) as any as S.Schema<CreateProjectsDatabasesUserCredsRequest>;
+export const CreateProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "userCredsId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleFirestoreAdminV1UserCreds.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/userCreds","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsDatabasesUserCredsRequest" }) as any as S.Schema<CreateProjectsDatabasesUserCredsRequest>;
 
 export interface DeleteProjectsDatabasesRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}` */
@@ -1603,57 +1252,31 @@ export interface DeleteProjectsDatabasesRequest {
   etag?: string;
 }
 export const DeleteProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    etag: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectsDatabasesRequest",
-}) as any as S.Schema<DeleteProjectsDatabasesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "etag": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsDatabasesRequest" }) as any as S.Schema<DeleteProjectsDatabasesRequest>;
 
 export interface DeleteProjectsDatabasesBackupSchedulesRequest {
   /** Required. The name of the backup schedule. Format `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}` */
   name: string;
 }
-export const DeleteProjectsDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<DeleteProjectsDatabasesBackupSchedulesRequest>;
+export const DeleteProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsDatabasesBackupSchedulesRequest" }) as any as S.Schema<DeleteProjectsDatabasesBackupSchedulesRequest>;
 
 export interface DeleteProjectsDatabasesCollectionGroupsIndexesRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` */
   name: string;
 }
-export const DeleteProjectsDatabasesCollectionGroupsIndexesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsDatabasesCollectionGroupsIndexesRequest",
-  }) as any as S.Schema<DeleteProjectsDatabasesCollectionGroupsIndexesRequest>;
+export const DeleteProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsDatabasesCollectionGroupsIndexesRequest" }) as any as S.Schema<DeleteProjectsDatabasesCollectionGroupsIndexesRequest>;
 
 export interface DeleteProjectsDatabasesDocumentsRequest {
   /** Required. The resource name of the Document to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
@@ -1663,86 +1286,49 @@ export interface DeleteProjectsDatabasesDocumentsRequest {
   /** When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned. */
   "currentDocument.updateTime"?: string;
 }
-export const DeleteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      "currentDocument.exists": S.optional(S.Boolean.pipe(T.Query())),
-      "currentDocument.updateTime": S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsDatabasesDocumentsRequest",
-}) as any as S.Schema<DeleteProjectsDatabasesDocumentsRequest>;
+export const DeleteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "currentDocument.exists": S.optional(S.Boolean.pipe(T.Query())),
+  "currentDocument.updateTime": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsDatabasesDocumentsRequest" }) as any as S.Schema<DeleteProjectsDatabasesDocumentsRequest>;
 
 export interface DeleteProjectsDatabasesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsDatabasesOperationsRequest",
-}) as any as S.Schema<DeleteProjectsDatabasesOperationsRequest>;
+export const DeleteProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsDatabasesOperationsRequest" }) as any as S.Schema<DeleteProjectsDatabasesOperationsRequest>;
 
 export interface DeleteProjectsDatabasesUserCredsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` */
   name: string;
 }
-export const DeleteProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsDatabasesUserCredsRequest",
-}) as any as S.Schema<DeleteProjectsDatabasesUserCredsRequest>;
+export const DeleteProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsDatabasesUserCredsRequest" }) as any as S.Schema<DeleteProjectsDatabasesUserCredsRequest>;
 
 export interface DeleteProjectsLocationsBackupsRequest {
   /** Required. Name of the backup to delete. format is `projects/{project}/locations/{location}/backups/{backup}`. */
   name: string;
 }
-export const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsBackupsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsBackupsRequest>;
+export const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsBackupsRequest" }) as any as S.Schema<DeleteProjectsLocationsBackupsRequest>;
 
 /** The request for FirestoreAdmin.DisableUserCreds. */
 export interface GoogleFirestoreAdminV1DisableUserCredsRequest {}
-export const GoogleFirestoreAdminV1DisableUserCredsRequest =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleFirestoreAdminV1DisableUserCredsRequest",
-  }) as any as S.Schema<GoogleFirestoreAdminV1DisableUserCredsRequest>;
+export const GoogleFirestoreAdminV1DisableUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleFirestoreAdminV1DisableUserCredsRequest" }) as any as S.Schema<GoogleFirestoreAdminV1DisableUserCredsRequest>;
 
 export interface DisableProjectsDatabasesUserCredsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` */
@@ -1750,30 +1336,18 @@ export interface DisableProjectsDatabasesUserCredsRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1DisableUserCredsRequest;
 }
-export const DisableProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleFirestoreAdminV1DisableUserCredsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:disable",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DisableProjectsDatabasesUserCredsRequest",
-}) as any as S.Schema<DisableProjectsDatabasesUserCredsRequest>;
+export const DisableProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleFirestoreAdminV1DisableUserCredsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:disable","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "DisableProjectsDatabasesUserCredsRequest" }) as any as S.Schema<DisableProjectsDatabasesUserCredsRequest>;
 
 /** The request for FirestoreAdmin.EnableUserCreds. */
 export interface GoogleFirestoreAdminV1EnableUserCredsRequest {}
-export const GoogleFirestoreAdminV1EnableUserCredsRequest =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleFirestoreAdminV1EnableUserCredsRequest",
-  }) as any as S.Schema<GoogleFirestoreAdminV1EnableUserCredsRequest>;
+export const GoogleFirestoreAdminV1EnableUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleFirestoreAdminV1EnableUserCredsRequest" }) as any as S.Schema<GoogleFirestoreAdminV1EnableUserCredsRequest>;
 
 export interface EnableProjectsDatabasesUserCredsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` */
@@ -1781,23 +1355,12 @@ export interface EnableProjectsDatabasesUserCredsRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1EnableUserCredsRequest;
 }
-export const EnableProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleFirestoreAdminV1EnableUserCredsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:enable",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "EnableProjectsDatabasesUserCredsRequest",
-}) as any as S.Schema<EnableProjectsDatabasesUserCredsRequest>;
+export const EnableProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleFirestoreAdminV1EnableUserCredsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:enable","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "EnableProjectsDatabasesUserCredsRequest" }) as any as S.Schema<EnableProjectsDatabasesUserCredsRequest>;
 
 /** A Firestore query represented as an ordered list of operations / stages. This is considered the top-level function which plans and executes a query. It is logically equivalent to `query(stages, options)`, but prevents the client from having to build a function wrapper. */
 export interface StructuredPipeline {
@@ -1807,13 +1370,11 @@ export interface StructuredPipeline {
   pipeline?: Pipeline;
 }
 export const StructuredPipeline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(ValueMap),
-    pipeline: S.optional(Pipeline),
-  }),
-).annotate({
-  identifier: "StructuredPipeline",
-}) as any as S.Schema<StructuredPipeline>;
+S.Struct({
+  "options": S.optional(ValueMap),
+  "pipeline": S.optional(Pipeline),
+}),
+).annotate({ identifier: "StructuredPipeline" }) as any as S.Schema<StructuredPipeline>;
 
 /** The request for Firestore.ExecutePipeline. */
 export interface ExecutePipelineRequest {
@@ -1829,16 +1390,14 @@ export interface ExecutePipelineRequest {
   readTime?: string;
 }
 export const ExecutePipelineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    structuredPipeline: S.optional(StructuredPipeline),
-    transaction: S.optional(S.String),
-    autoCommitTransaction: S.optional(S.Boolean),
-    newTransaction: S.optional(TransactionOptions),
-    readTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecutePipelineRequest",
-}) as any as S.Schema<ExecutePipelineRequest>;
+S.Struct({
+  "structuredPipeline": S.optional(StructuredPipeline),
+  "transaction": S.optional(S.String),
+  "autoCommitTransaction": S.optional(S.Boolean),
+  "newTransaction": S.optional(TransactionOptions),
+  "readTime": S.optional(S.String),
+}),
+).annotate({ identifier: "ExecutePipelineRequest" }) as any as S.Schema<ExecutePipelineRequest>;
 
 export interface ExecutePipelineProjectsDatabasesDocumentsRequest {
   /** Required. Database identifier, in the form `projects/{project}/databases/{database}`. */
@@ -1846,26 +1405,15 @@ export interface ExecutePipelineProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: ExecutePipelineRequest;
 }
-export const ExecutePipelineProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(ExecutePipelineRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/documents:executePipeline",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecutePipelineProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<ExecutePipelineProjectsDatabasesDocumentsRequest>;
+export const ExecutePipelineProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(ExecutePipelineRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}/documents:executePipeline","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ExecutePipelineProjectsDatabasesDocumentsRequest" }) as any as S.Schema<ExecutePipelineProjectsDatabasesDocumentsRequest>;
 
 export type DocumentList = ReadonlyArray<Document>;
-export const DocumentList = /*@__PURE__*/ S.Array(
-  Document,
-) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(Document) as any as S.Schema<DocumentList>;
 
 /** Pipeline explain stats. Depending on the explain options in the original request, this can contain the optimized plan and / or execution stats. */
 export interface ExplainStats {
@@ -1873,9 +1421,9 @@ export interface ExplainStats {
   data?: DocumentMap;
 }
 export const ExplainStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "data": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "ExplainStats" }) as any as S.Schema<ExplainStats>;
 
 /** The response for Firestore.Execute. */
@@ -1890,15 +1438,13 @@ export interface ExecutePipelineResponse {
   transaction?: string;
 }
 export const ExecutePipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(DocumentList),
-    executionTime: S.optional(S.String),
-    explainStats: S.optional(ExplainStats),
-    transaction: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecutePipelineResponse",
-}) as any as S.Schema<ExecutePipelineResponse>;
+S.Struct({
+  "results": S.optional(DocumentList),
+  "executionTime": S.optional(S.String),
+  "explainStats": S.optional(ExplainStats),
+  "transaction": S.optional(S.String),
+}),
+).annotate({ identifier: "ExecutePipelineResponse" }) as any as S.Schema<ExecutePipelineResponse>;
 
 /** The request for FirestoreAdmin.ExportDocuments. */
 export interface GoogleFirestoreAdminV1ExportDocumentsRequest {
@@ -1911,17 +1457,14 @@ export interface GoogleFirestoreAdminV1ExportDocumentsRequest {
   /** The timestamp that corresponds to the version of the database to be exported. The timestamp must be in the past, rounded to the minute and not older than earliestVersionTime. If specified, then the exported documents will represent a consistent view of the database at the provided time. Otherwise, there are no guarantees about the consistency of the exported documents. */
   snapshotTime?: string;
 }
-export const GoogleFirestoreAdminV1ExportDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      collectionIds: S.optional(StringList),
-      outputUriPrefix: S.optional(S.String),
-      namespaceIds: S.optional(StringList),
-      snapshotTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ExportDocumentsRequest",
-  }) as any as S.Schema<GoogleFirestoreAdminV1ExportDocumentsRequest>;
+export const GoogleFirestoreAdminV1ExportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "collectionIds": S.optional(StringList),
+  "outputUriPrefix": S.optional(S.String),
+  "namespaceIds": S.optional(StringList),
+  "snapshotTime": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1ExportDocumentsRequest" }) as any as S.Schema<GoogleFirestoreAdminV1ExportDocumentsRequest>;
 
 export interface ExportDocumentsProjectsDatabasesRequest {
   /** Required. Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}`. */
@@ -1929,85 +1472,45 @@ export interface ExportDocumentsProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1ExportDocumentsRequest;
 }
-export const ExportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleFirestoreAdminV1ExportDocumentsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:exportDocuments",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ExportDocumentsProjectsDatabasesRequest",
-}) as any as S.Schema<ExportDocumentsProjectsDatabasesRequest>;
+export const ExportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleFirestoreAdminV1ExportDocumentsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:exportDocuments","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ExportDocumentsProjectsDatabasesRequest" }) as any as S.Schema<ExportDocumentsProjectsDatabasesRequest>;
 
 export interface GetProjectsDatabasesRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}` */
   name: string;
 }
 export const GetProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsDatabasesRequest",
-}) as any as S.Schema<GetProjectsDatabasesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsDatabasesRequest" }) as any as S.Schema<GetProjectsDatabasesRequest>;
 
 export interface GetProjectsDatabasesBackupSchedulesRequest {
   /** Required. The name of the backup schedule. Format `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}` */
   name: string;
 }
-export const GetProjectsDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<GetProjectsDatabasesBackupSchedulesRequest>;
+export const GetProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsDatabasesBackupSchedulesRequest" }) as any as S.Schema<GetProjectsDatabasesBackupSchedulesRequest>;
 
 export interface GetProjectsDatabasesCollectionGroupsFieldsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}` */
   name: string;
 }
-export const GetProjectsDatabasesCollectionGroupsFieldsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsDatabasesCollectionGroupsFieldsRequest",
-  }) as any as S.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
+export const GetProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsDatabasesCollectionGroupsFieldsRequest" }) as any as S.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
 
-export type GoogleFirestoreAdminV1IndexList =
-  ReadonlyArray<GoogleFirestoreAdminV1Index>;
-export const GoogleFirestoreAdminV1IndexList = /*@__PURE__*/ S.Array(
-  GoogleFirestoreAdminV1Index,
-) as any as S.Schema<GoogleFirestoreAdminV1IndexList>;
+export type GoogleFirestoreAdminV1IndexList = ReadonlyArray<GoogleFirestoreAdminV1Index>;
+export const GoogleFirestoreAdminV1IndexList = /*@__PURE__*/ S.Array(GoogleFirestoreAdminV1Index) as any as S.Schema<GoogleFirestoreAdminV1IndexList>;
 
 /** The index configuration for this field. */
 export interface GoogleFirestoreAdminV1IndexConfig {
@@ -2021,22 +1524,15 @@ export interface GoogleFirestoreAdminV1IndexConfig {
   reverting?: boolean;
 }
 export const GoogleFirestoreAdminV1IndexConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ancestorField: S.optional(S.String),
-    indexes: S.optional(GoogleFirestoreAdminV1IndexList),
-    usesAncestorConfig: S.optional(S.Boolean),
-    reverting: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1IndexConfig",
-}) as any as S.Schema<GoogleFirestoreAdminV1IndexConfig>;
+S.Struct({
+  "ancestorField": S.optional(S.String),
+  "indexes": S.optional(GoogleFirestoreAdminV1IndexList),
+  "usesAncestorConfig": S.optional(S.Boolean),
+  "reverting": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1IndexConfig" }) as any as S.Schema<GoogleFirestoreAdminV1IndexConfig>;
 
-export type GoogleFirestoreAdminV1TtlConfigStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "NEEDS_REPAIR"
-  | (string & {});
+export type GoogleFirestoreAdminV1TtlConfigStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "NEEDS_REPAIR";
 export const GoogleFirestoreAdminV1TtlConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** The TTL (time-to-live) configuration for documents that have this `Field` set. A timestamp stored in a TTL-enabled field will be used to determine the expiration time of the document. The expiration time is the sum of the timestamp value and the `expiration_offset`. For Enterprise edition databases, the timestamp value may alternatively be stored in an array value in the TTL-enabled field. An expiration time in the past indicates that the document is eligible for immediate expiration. Using any other data type or leaving the field absent will disable expiration for the individual document. */
@@ -2047,13 +1543,11 @@ export interface GoogleFirestoreAdminV1TtlConfig {
   expirationOffset?: string;
 }
 export const GoogleFirestoreAdminV1TtlConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(GoogleFirestoreAdminV1TtlConfigStateEnum),
-    expirationOffset: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1TtlConfig",
-}) as any as S.Schema<GoogleFirestoreAdminV1TtlConfig>;
+S.Struct({
+  "state": S.optional(GoogleFirestoreAdminV1TtlConfigStateEnum),
+  "expirationOffset": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1TtlConfig" }) as any as S.Schema<GoogleFirestoreAdminV1TtlConfig>;
 
 /** Represents a single field in the database. Fields are grouped by their "Collection Group", which represent all collections in the database with the same ID. */
 export interface GoogleFirestoreAdminV1Field {
@@ -2065,33 +1559,22 @@ export interface GoogleFirestoreAdminV1Field {
   ttlConfig?: GoogleFirestoreAdminV1TtlConfig;
 }
 export const GoogleFirestoreAdminV1Field = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    indexConfig: S.optional(GoogleFirestoreAdminV1IndexConfig),
-    ttlConfig: S.optional(GoogleFirestoreAdminV1TtlConfig),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1Field",
-}) as any as S.Schema<GoogleFirestoreAdminV1Field>;
+S.Struct({
+  "name": S.optional(S.String),
+  "indexConfig": S.optional(GoogleFirestoreAdminV1IndexConfig),
+  "ttlConfig": S.optional(GoogleFirestoreAdminV1TtlConfig),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1Field" }) as any as S.Schema<GoogleFirestoreAdminV1Field>;
 
 export interface GetProjectsDatabasesCollectionGroupsIndexesRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` */
   name: string;
 }
-export const GetProjectsDatabasesCollectionGroupsIndexesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsDatabasesCollectionGroupsIndexesRequest",
-  }) as any as S.Schema<GetProjectsDatabasesCollectionGroupsIndexesRequest>;
+export const GetProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsDatabasesCollectionGroupsIndexesRequest" }) as any as S.Schema<GetProjectsDatabasesCollectionGroupsIndexesRequest>;
 
 export interface GetProjectsDatabasesDocumentsRequest {
   /** Reads the document in a transaction. */
@@ -2103,79 +1586,44 @@ export interface GetProjectsDatabasesDocumentsRequest {
   /** Reads the version of the document at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
-export const GetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      transaction: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
-      readTime: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsDatabasesDocumentsRequest",
-}) as any as S.Schema<GetProjectsDatabasesDocumentsRequest>;
+export const GetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "transaction": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
+  "readTime": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsDatabasesDocumentsRequest" }) as any as S.Schema<GetProjectsDatabasesDocumentsRequest>;
 
 export interface GetProjectsDatabasesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsDatabasesOperationsRequest",
-}) as any as S.Schema<GetProjectsDatabasesOperationsRequest>;
+export const GetProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsDatabasesOperationsRequest" }) as any as S.Schema<GetProjectsDatabasesOperationsRequest>;
 
 export interface GetProjectsDatabasesUserCredsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` */
   name: string;
 }
-export const GetProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsDatabasesUserCredsRequest",
-}) as any as S.Schema<GetProjectsDatabasesUserCredsRequest>;
+export const GetProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsDatabasesUserCredsRequest" }) as any as S.Schema<GetProjectsDatabasesUserCredsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -2191,13 +1639,13 @@ export interface Location {
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    locationId: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "locationId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsBackupsRequest {
@@ -2205,18 +1653,10 @@ export interface GetProjectsLocationsBackupsRequest {
   name: string;
 }
 export const GetProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsBackupsRequest",
-}) as any as S.Schema<GetProjectsLocationsBackupsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsBackupsRequest" }) as any as S.Schema<GetProjectsLocationsBackupsRequest>;
 
 /** Backup specific statistics. */
 export interface GoogleFirestoreAdminV1Stats {
@@ -2228,21 +1668,14 @@ export interface GoogleFirestoreAdminV1Stats {
   sizeBytes?: string;
 }
 export const GoogleFirestoreAdminV1Stats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentCount: S.optional(S.String),
-    indexCount: S.optional(S.String),
-    sizeBytes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1Stats",
-}) as any as S.Schema<GoogleFirestoreAdminV1Stats>;
+S.Struct({
+  "documentCount": S.optional(S.String),
+  "indexCount": S.optional(S.String),
+  "sizeBytes": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1Stats" }) as any as S.Schema<GoogleFirestoreAdminV1Stats>;
 
-export type GoogleFirestoreAdminV1BackupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | "NOT_AVAILABLE"
-  | (string & {});
+export type GoogleFirestoreAdminV1BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "NOT_AVAILABLE";
 export const GoogleFirestoreAdminV1BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** A Backup of a Cloud Firestore Database. The backup contains all documents and index configurations for the given database at a specific point in time. */
@@ -2263,18 +1696,16 @@ export interface GoogleFirestoreAdminV1Backup {
   state?: GoogleFirestoreAdminV1BackupStateEnum;
 }
 export const GoogleFirestoreAdminV1Backup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.optional(S.String),
-    snapshotTime: S.optional(S.String),
-    expireTime: S.optional(S.String),
-    name: S.optional(S.String),
-    databaseUid: S.optional(S.String),
-    stats: S.optional(GoogleFirestoreAdminV1Stats),
-    state: S.optional(GoogleFirestoreAdminV1BackupStateEnum),
-  }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1Backup",
-}) as any as S.Schema<GoogleFirestoreAdminV1Backup>;
+S.Struct({
+  "database": S.optional(S.String),
+  "snapshotTime": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "databaseUid": S.optional(S.String),
+  "stats": S.optional(GoogleFirestoreAdminV1Stats),
+  "state": S.optional(GoogleFirestoreAdminV1BackupStateEnum),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1Backup" }) as any as S.Schema<GoogleFirestoreAdminV1Backup>;
 
 /** The request for FirestoreAdmin.ImportDocuments. */
 export interface GoogleFirestoreAdminV1ImportDocumentsRequest {
@@ -2285,16 +1716,13 @@ export interface GoogleFirestoreAdminV1ImportDocumentsRequest {
   /** An empty list represents all namespaces. This is the preferred usage for databases that don't use namespaces. An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique. */
   namespaceIds?: StringList;
 }
-export const GoogleFirestoreAdminV1ImportDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      collectionIds: S.optional(StringList),
-      inputUriPrefix: S.optional(S.String),
-      namespaceIds: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ImportDocumentsRequest",
-  }) as any as S.Schema<GoogleFirestoreAdminV1ImportDocumentsRequest>;
+export const GoogleFirestoreAdminV1ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "collectionIds": S.optional(StringList),
+  "inputUriPrefix": S.optional(S.String),
+  "namespaceIds": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1ImportDocumentsRequest" }) as any as S.Schema<GoogleFirestoreAdminV1ImportDocumentsRequest>;
 
 export interface ImportDocumentsProjectsDatabasesRequest {
   /** Required. Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}`. */
@@ -2302,23 +1730,12 @@ export interface ImportDocumentsProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1ImportDocumentsRequest;
 }
-export const ImportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleFirestoreAdminV1ImportDocumentsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:importDocuments",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ImportDocumentsProjectsDatabasesRequest",
-}) as any as S.Schema<ImportDocumentsProjectsDatabasesRequest>;
+export const ImportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleFirestoreAdminV1ImportDocumentsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:importDocuments","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ImportDocumentsProjectsDatabasesRequest" }) as any as S.Schema<ImportDocumentsProjectsDatabasesRequest>;
 
 /** The request for Firestore.ListCollectionIds. */
 export interface ListCollectionIdsRequest {
@@ -2330,14 +1747,12 @@ export interface ListCollectionIdsRequest {
   readTime?: string;
 }
 export const ListCollectionIdsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String),
-    pageSize: S.optional(S.Number),
-    readTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCollectionIdsRequest",
-}) as any as S.Schema<ListCollectionIdsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String),
+  "pageSize": S.optional(S.Number),
+  "readTime": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCollectionIdsRequest" }) as any as S.Schema<ListCollectionIdsRequest>;
 
 export interface ListCollectionIdsProjectsDatabasesDocumentsRequest {
   /** Required. The parent document. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` Use `projects/{project_id}/databases/{database_id}/documents` to list top-level collections. */
@@ -2345,21 +1760,12 @@ export interface ListCollectionIdsProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: ListCollectionIdsRequest;
 }
-export const ListCollectionIdsProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ListCollectionIdsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:listCollectionIds",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListCollectionIdsProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<ListCollectionIdsProjectsDatabasesDocumentsRequest>;
+export const ListCollectionIdsProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ListCollectionIdsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:listCollectionIds","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListCollectionIdsProjectsDatabasesDocumentsRequest" }) as any as S.Schema<ListCollectionIdsProjectsDatabasesDocumentsRequest>;
 
 /** The response from Firestore.ListCollectionIds. */
 export interface ListCollectionIdsResponse {
@@ -2369,13 +1775,11 @@ export interface ListCollectionIdsResponse {
   collectionIds?: StringList;
 }
 export const ListCollectionIdsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    collectionIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListCollectionIdsResponse",
-}) as any as S.Schema<ListCollectionIdsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "collectionIds": S.optional(StringList),
+}),
+).annotate({ identifier: "ListCollectionIdsResponse" }) as any as S.Schema<ListCollectionIdsResponse>;
 
 export interface ListDocumentsProjectsDatabasesDocumentsRequest {
   /** If the list should show missing documents. A document is missing if it does not exist, but there are sub-documents nested underneath it. When true, such missing documents will be returned with a key but will not have fields, `create_time`, or `update_time` set. Requests with `show_missing` may not specify `where` or `order_by`. */
@@ -2399,29 +1803,20 @@ export interface ListDocumentsProjectsDatabasesDocumentsRequest {
   /** The list of field paths in the mask. See Document.fields for a field path syntax reference. */
   "mask.fieldPaths"?: StringList;
 }
-export const ListDocumentsProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      showMissing: S.optional(S.Boolean.pipe(T.Query())),
-      recursive: S.optional(S.Boolean.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      readTime: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      transaction: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      collectionId: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/{collectionId}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListDocumentsProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<ListDocumentsProjectsDatabasesDocumentsRequest>;
+export const ListDocumentsProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "showMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "recursive": S.optional(S.Boolean.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "readTime": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "transaction": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "collectionId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/{collectionId}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListDocumentsProjectsDatabasesDocumentsRequest" }) as any as S.Schema<ListDocumentsProjectsDatabasesDocumentsRequest>;
 
 /** The response for Firestore.ListDocuments. */
 export interface ListDocumentsResponse {
@@ -2431,13 +1826,11 @@ export interface ListDocumentsResponse {
   documents?: DocumentList;
 }
 export const ListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    documents: S.optional(DocumentList),
-  }),
-).annotate({
-  identifier: "ListDocumentsResponse",
-}) as any as S.Schema<ListDocumentsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "documents": S.optional(DocumentList),
+}),
+).annotate({ identifier: "ListDocumentsResponse" }) as any as S.Schema<ListDocumentsResponse>;
 
 /** A position in a query result set. */
 export interface Cursor {
@@ -2447,10 +1840,10 @@ export interface Cursor {
   values?: ValueList;
 }
 export const Cursor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.optional(S.Boolean),
-    values: S.optional(ValueList),
-  }),
+S.Struct({
+  "before": S.optional(S.Boolean),
+  "values": S.optional(ValueList),
+}),
 ).annotate({ identifier: "Cursor" }) as any as S.Schema<Cursor>;
 
 /** A selection of a collection, such as `messages as m1`. */
@@ -2461,26 +1854,16 @@ export interface CollectionSelector {
   allDescendants?: boolean;
 }
 export const CollectionSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collectionId: S.optional(S.String),
-    allDescendants: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CollectionSelector",
-}) as any as S.Schema<CollectionSelector>;
+S.Struct({
+  "collectionId": S.optional(S.String),
+  "allDescendants": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CollectionSelector" }) as any as S.Schema<CollectionSelector>;
 
 export type CollectionSelectorList = ReadonlyArray<CollectionSelector>;
-export const CollectionSelectorList = /*@__PURE__*/ S.Array(
-  CollectionSelector,
-) as any as S.Schema<CollectionSelectorList>;
+export const CollectionSelectorList = /*@__PURE__*/ S.Array(CollectionSelector) as any as S.Schema<CollectionSelectorList>;
 
-export type UnaryFilterOpEnum =
-  | "OPERATOR_UNSPECIFIED"
-  | "IS_NAN"
-  | "IS_NULL"
-  | "IS_NOT_NAN"
-  | "IS_NOT_NULL"
-  | (string & {});
+export type UnaryFilterOpEnum = "OPERATOR_UNSPECIFIED" | "IS_NAN" | "IS_NULL" | "IS_NOT_NAN" | "IS_NOT_NULL";
 export const UnaryFilterOpEnum = /*@__PURE__*/ S.String;
 
 /** A reference to a field in a document, ex: `stats.operations`. */
@@ -2489,38 +1872,26 @@ export interface FieldReference {
   fieldPath?: string;
 }
 export const FieldReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldPath: S.optional(S.String),
-  }),
+S.Struct({
+  "fieldPath": S.optional(S.String),
+}),
 ).annotate({ identifier: "FieldReference" }) as any as S.Schema<FieldReference>;
 
 /** A filter with a single operand. */
 export interface UnaryFilter {
   /** The unary operator to apply. */
-  op?: UnaryFilterOpEnum;
+  op?: UnaryFilterOpEnum | (string & {});
   /** The field to which to apply the operator. */
   field?: FieldReference;
 }
 export const UnaryFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    op: S.optional(UnaryFilterOpEnum),
-    field: S.optional(FieldReference),
-  }),
+S.Struct({
+  "op": S.optional(UnaryFilterOpEnum),
+  "field": S.optional(FieldReference),
+}),
 ).annotate({ identifier: "UnaryFilter" }) as any as S.Schema<UnaryFilter>;
 
-export type FieldFilterOpEnum =
-  | "OPERATOR_UNSPECIFIED"
-  | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL"
-  | "GREATER_THAN"
-  | "GREATER_THAN_OR_EQUAL"
-  | "EQUAL"
-  | "NOT_EQUAL"
-  | "ARRAY_CONTAINS"
-  | "IN"
-  | "ARRAY_CONTAINS_ANY"
-  | "NOT_IN"
-  | (string & {});
+export type FieldFilterOpEnum = "OPERATOR_UNSPECIFIED" | "LESS_THAN" | "LESS_THAN_OR_EQUAL" | "GREATER_THAN" | "GREATER_THAN_OR_EQUAL" | "EQUAL" | "NOT_EQUAL" | "ARRAY_CONTAINS" | "IN" | "ARRAY_CONTAINS_ANY" | "NOT_IN";
 export const FieldFilterOpEnum = /*@__PURE__*/ S.String;
 
 /** A filter on a specific field. */
@@ -2530,26 +1901,20 @@ export interface FieldFilter {
   /** The field to filter by. */
   field?: FieldReference;
   /** The operator to filter by. */
-  op?: FieldFilterOpEnum;
+  op?: FieldFilterOpEnum | (string & {});
 }
 export const FieldFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(Value),
-    field: S.optional(FieldReference),
-    op: S.optional(FieldFilterOpEnum),
-  }),
+S.Struct({
+  "value": S.optional(Value),
+  "field": S.optional(FieldReference),
+  "op": S.optional(FieldFilterOpEnum),
+}),
 ).annotate({ identifier: "FieldFilter" }) as any as S.Schema<FieldFilter>;
 
 export type FilterList = ReadonlyArray<Filter>;
-export const FilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Filter),
-) as any as S.Schema<FilterList>;
+export const FilterList = /*@__PURE__*/ S.Array(S.suspend(() => Filter)) as any as S.Schema<FilterList>;
 
-export type CompositeFilterOpEnum =
-  | "OPERATOR_UNSPECIFIED"
-  | "AND"
-  | "OR"
-  | (string & {});
+export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
 export const CompositeFilterOpEnum = /*@__PURE__*/ S.String;
 
 /** A filter that merges multiple other filters using the given operator. */
@@ -2557,16 +1922,14 @@ export interface CompositeFilter {
   /** The list of filters to combine. Requires: * At least one filter is present. */
   filters?: FilterList;
   /** The operator for combining multiple filters. */
-  op?: CompositeFilterOpEnum;
+  op?: CompositeFilterOpEnum | (string & {});
 }
 export const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filters: S.optional(FilterList),
-    op: S.optional(CompositeFilterOpEnum),
-  }),
-).annotate({
-  identifier: "CompositeFilter",
-}) as any as S.Schema<CompositeFilter>;
+S.Struct({
+  "filters": S.optional(FilterList),
+  "op": S.optional(CompositeFilterOpEnum),
+}),
+).annotate({ identifier: "CompositeFilter" }) as any as S.Schema<CompositeFilter>;
 
 /** A filter. */
 export interface Filter {
@@ -2578,18 +1941,14 @@ export interface Filter {
   compositeFilter?: CompositeFilter;
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unaryFilter: S.optional(UnaryFilter),
-    fieldFilter: S.optional(FieldFilter),
-    compositeFilter: S.optional(CompositeFilter),
-  }),
+S.Struct({
+  "unaryFilter": S.optional(UnaryFilter),
+  "fieldFilter": S.optional(FieldFilter),
+  "compositeFilter": S.optional(CompositeFilter),
+}),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
-export type OrderDirectionEnum =
-  | "DIRECTION_UNSPECIFIED"
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type OrderDirectionEnum = "DIRECTION_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
 export const OrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** An order on a field. */
@@ -2597,24 +1956,20 @@ export interface Order {
   /** The field to order by. */
   field?: FieldReference;
   /** The direction to order by. Defaults to `ASCENDING`. */
-  direction?: OrderDirectionEnum;
+  direction?: OrderDirectionEnum | (string & {});
 }
 export const Order = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(FieldReference),
-    direction: S.optional(OrderDirectionEnum),
-  }),
+S.Struct({
+  "field": S.optional(FieldReference),
+  "direction": S.optional(OrderDirectionEnum),
+}),
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
 export type OrderList = ReadonlyArray<Order>;
-export const OrderList = /*@__PURE__*/ S.Array(
-  Order,
-) as any as S.Schema<OrderList>;
+export const OrderList = /*@__PURE__*/ S.Array(Order) as any as S.Schema<OrderList>;
 
 export type FieldReferenceList = ReadonlyArray<FieldReference>;
-export const FieldReferenceList = /*@__PURE__*/ S.Array(
-  FieldReference,
-) as any as S.Schema<FieldReferenceList>;
+export const FieldReferenceList = /*@__PURE__*/ S.Array(FieldReference) as any as S.Schema<FieldReferenceList>;
 
 /** The projection of document's fields to return. */
 export interface Projection {
@@ -2622,17 +1977,12 @@ export interface Projection {
   fields?: FieldReferenceList;
 }
 export const Projection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(FieldReferenceList),
-  }),
+S.Struct({
+  "fields": S.optional(FieldReferenceList),
+}),
 ).annotate({ identifier: "Projection" }) as any as S.Schema<Projection>;
 
-export type FindNearestDistanceMeasureEnum =
-  | "DISTANCE_MEASURE_UNSPECIFIED"
-  | "EUCLIDEAN"
-  | "COSINE"
-  | "DOT_PRODUCT"
-  | (string & {});
+export type FindNearestDistanceMeasureEnum = "DISTANCE_MEASURE_UNSPECIFIED" | "EUCLIDEAN" | "COSINE" | "DOT_PRODUCT";
 export const FindNearestDistanceMeasureEnum = /*@__PURE__*/ S.String;
 
 /** Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple documents have the same vector distance, the returned document order is not guaranteed to be stable between queries. */
@@ -2648,17 +1998,17 @@ export interface FindNearest {
   /** Required. An indexed vector field to search upon. Only documents which contain vectors whose dimensionality match the query_vector can be returned. */
   vectorField?: FieldReference;
   /** Required. The distance measure to use, required. */
-  distanceMeasure?: FindNearestDistanceMeasureEnum;
+  distanceMeasure?: FindNearestDistanceMeasureEnum | (string & {});
 }
 export const FindNearest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    distanceThreshold: S.optional(S.Number),
-    limit: S.optional(S.Number),
-    queryVector: S.optional(Value),
-    distanceResultField: S.optional(S.String),
-    vectorField: S.optional(FieldReference),
-    distanceMeasure: S.optional(FindNearestDistanceMeasureEnum),
-  }),
+S.Struct({
+  "distanceThreshold": S.optional(S.Number),
+  "limit": S.optional(S.Number),
+  "queryVector": S.optional(Value),
+  "distanceResultField": S.optional(S.String),
+  "vectorField": S.optional(FieldReference),
+  "distanceMeasure": S.optional(FindNearestDistanceMeasureEnum),
+}),
 ).annotate({ identifier: "FindNearest" }) as any as S.Schema<FindNearest>;
 
 /** A Firestore query. The query stages are executed in the following order: 1. from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7. find_nearest */
@@ -2683,20 +2033,18 @@ export interface StructuredQuery {
   limit?: number;
 }
 export const StructuredQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startAt: S.optional(Cursor),
-    from: S.optional(CollectionSelectorList),
-    where: S.optional(Filter),
-    orderBy: S.optional(OrderList),
-    select: S.optional(Projection),
-    endAt: S.optional(Cursor),
-    findNearest: S.optional(FindNearest),
-    offset: S.optional(S.Number),
-    limit: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StructuredQuery",
-}) as any as S.Schema<StructuredQuery>;
+S.Struct({
+  "startAt": S.optional(Cursor),
+  "from": S.optional(CollectionSelectorList),
+  "where": S.optional(Filter),
+  "orderBy": S.optional(OrderList),
+  "select": S.optional(Projection),
+  "endAt": S.optional(Cursor),
+  "findNearest": S.optional(FindNearest),
+  "offset": S.optional(S.Number),
+  "limit": S.optional(S.Number),
+}),
+).annotate({ identifier: "StructuredQuery" }) as any as S.Schema<StructuredQuery>;
 
 /** A target specified by a query. */
 export interface QueryTarget {
@@ -2706,10 +2054,10 @@ export interface QueryTarget {
   structuredQuery?: StructuredQuery;
 }
 export const QueryTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(S.String),
-    structuredQuery: S.optional(StructuredQuery),
-  }),
+S.Struct({
+  "parent": S.optional(S.String),
+  "structuredQuery": S.optional(StructuredQuery),
+}),
 ).annotate({ identifier: "QueryTarget" }) as any as S.Schema<QueryTarget>;
 
 /** A target specified by a set of documents names. */
@@ -2718,12 +2066,10 @@ export interface DocumentsTarget {
   documents?: StringList;
 }
 export const DocumentsTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documents: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "DocumentsTarget",
-}) as any as S.Schema<DocumentsTarget>;
+S.Struct({
+  "documents": S.optional(StringList),
+}),
+).annotate({ identifier: "DocumentsTarget" }) as any as S.Schema<DocumentsTarget>;
 
 /** A specification of a set of documents to listen to. */
 export interface Target {
@@ -2743,15 +2089,15 @@ export interface Target {
   readTime?: string;
 }
 export const Target = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(QueryTarget),
-    once: S.optional(S.Boolean),
-    resumeToken: S.optional(S.String),
-    targetId: S.optional(S.Number),
-    documents: S.optional(DocumentsTarget),
-    expectedCount: S.optional(S.Number),
-    readTime: S.optional(S.String),
-  }),
+S.Struct({
+  "query": S.optional(QueryTarget),
+  "once": S.optional(S.Boolean),
+  "resumeToken": S.optional(S.String),
+  "targetId": S.optional(S.Number),
+  "documents": S.optional(DocumentsTarget),
+  "expectedCount": S.optional(S.Number),
+  "readTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
 /** A request for Firestore.Listen */
@@ -2764,11 +2110,11 @@ export interface ListenRequest {
   addTarget?: Target;
 }
 export const ListenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    removeTarget: S.optional(S.Number),
-    labels: S.optional(StringMap),
-    addTarget: S.optional(Target),
-  }),
+S.Struct({
+  "removeTarget": S.optional(S.Number),
+  "labels": S.optional(StringMap),
+  "addTarget": S.optional(Target),
+}),
 ).annotate({ identifier: "ListenRequest" }) as any as S.Schema<ListenRequest>;
 
 export interface ListenProjectsDatabasesDocumentsRequest {
@@ -2777,35 +2123,18 @@ export interface ListenProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: ListenRequest;
 }
-export const ListenProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(ListenRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/documents:listen",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListenProjectsDatabasesDocumentsRequest",
-}) as any as S.Schema<ListenProjectsDatabasesDocumentsRequest>;
+export const ListenProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(ListenRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}/documents:listen","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListenProjectsDatabasesDocumentsRequest" }) as any as S.Schema<ListenProjectsDatabasesDocumentsRequest>;
 
-export type TargetChangeTargetChangeTypeEnum =
-  | "NO_CHANGE"
-  | "ADD"
-  | "REMOVE"
-  | "CURRENT"
-  | "RESET"
-  | (string & {});
+export type TargetChangeTargetChangeTypeEnum = "NO_CHANGE" | "ADD" | "REMOVE" | "CURRENT" | "RESET";
 export const TargetChangeTargetChangeTypeEnum = /*@__PURE__*/ S.String;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Targets being watched have changed. */
 export interface TargetChange {
@@ -2821,13 +2150,13 @@ export interface TargetChange {
   readTime?: string;
 }
 export const TargetChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetChangeType: S.optional(TargetChangeTargetChangeTypeEnum),
-    targetIds: S.optional(IntegerList),
-    resumeToken: S.optional(S.String),
-    cause: S.optional(Status),
-    readTime: S.optional(S.String),
-  }),
+S.Struct({
+  "targetChangeType": S.optional(TargetChangeTargetChangeTypeEnum),
+  "targetIds": S.optional(IntegerList),
+  "resumeToken": S.optional(S.String),
+  "cause": S.optional(Status),
+  "readTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "TargetChange" }) as any as S.Schema<TargetChange>;
 
 /** A Document has been deleted. May be the result of multiple writes, including updates, the last of which deleted the Document. Multiple DocumentDelete messages may be returned for the same logical delete, if multiple targets are affected. */
@@ -2840,11 +2169,11 @@ export interface DocumentDelete {
   document?: string;
 }
 export const DocumentDelete = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readTime: S.optional(S.String),
-    removedTargetIds: S.optional(IntegerList),
-    document: S.optional(S.String),
-  }),
+S.Struct({
+  "readTime": S.optional(S.String),
+  "removedTargetIds": S.optional(IntegerList),
+  "document": S.optional(S.String),
+}),
 ).annotate({ identifier: "DocumentDelete" }) as any as S.Schema<DocumentDelete>;
 
 /** A Document has been removed from the view of the targets. Sent if the document is no longer relevant to a target and is out of view. Can be sent instead of a DocumentDelete or a DocumentChange if the server can not send the new value of the document. Multiple DocumentRemove messages may be returned for the same logical write or delete, if multiple targets are affected. */
@@ -2857,11 +2186,11 @@ export interface DocumentRemove {
   document?: string;
 }
 export const DocumentRemove = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readTime: S.optional(S.String),
-    removedTargetIds: S.optional(IntegerList),
-    document: S.optional(S.String),
-  }),
+S.Struct({
+  "readTime": S.optional(S.String),
+  "removedTargetIds": S.optional(IntegerList),
+  "document": S.optional(S.String),
+}),
 ).annotate({ identifier: "DocumentRemove" }) as any as S.Schema<DocumentRemove>;
 
 /** A sequence of bits, encoded in a byte array. Each byte in the `bitmap` byte array stores 8 bits of the sequence. The only exception is the last byte, which may store 8 _or fewer_ bits. The `padding` defines the number of bits of the last byte to be ignored as "padding". The values of these "padding" bits are unspecified and must be ignored. To retrieve the first bit, bit 0, calculate: `(bitmap[0] & 0x01) != 0`. To retrieve the second bit, bit 1, calculate: `(bitmap[0] & 0x02) != 0`. To retrieve the third bit, bit 2, calculate: `(bitmap[0] & 0x04) != 0`. To retrieve the fourth bit, bit 3, calculate: `(bitmap[0] & 0x08) != 0`. To retrieve bit n, calculate: `(bitmap[n / 8] & (0x01 << (n % 8))) != 0`. The "size" of a `BitSequence` (the number of bits it contains) is calculated by this formula: `(bitmap.length * 8) - padding`. */
@@ -2872,10 +2201,10 @@ export interface BitSequence {
   padding?: number;
 }
 export const BitSequence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bitmap: S.optional(S.String),
-    padding: S.optional(S.Number),
-  }),
+S.Struct({
+  "bitmap": S.optional(S.String),
+  "padding": S.optional(S.Number),
+}),
 ).annotate({ identifier: "BitSequence" }) as any as S.Schema<BitSequence>;
 
 /** A bloom filter (https://en.wikipedia.org/wiki/Bloom_filter). The bloom filter hashes the entries with MD5 and treats the resulting 128-bit hash as 2 distinct 64-bit hash values, interpreted as unsigned integers using 2's complement encoding. These two hash values, named `h1` and `h2`, are then used to compute the `hash_count` hash values using the formula, starting at `i=0`: h(i) = h1 + (i * h2) These resulting values are then taken modulo the number of bits in the bloom filter to get the bits of the bloom filter to test for the given entry. */
@@ -2886,10 +2215,10 @@ export interface BloomFilter {
   hashCount?: number;
 }
 export const BloomFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bits: S.optional(BitSequence),
-    hashCount: S.optional(S.Number),
-  }),
+S.Struct({
+  "bits": S.optional(BitSequence),
+  "hashCount": S.optional(S.Number),
+}),
 ).annotate({ identifier: "BloomFilter" }) as any as S.Schema<BloomFilter>;
 
 /** A digest of all the documents that match a given target. */
@@ -2902,14 +2231,12 @@ export interface ExistenceFilter {
   unchangedNames?: BloomFilter;
 }
 export const ExistenceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    targetId: S.optional(S.Number),
-    unchangedNames: S.optional(BloomFilter),
-  }),
-).annotate({
-  identifier: "ExistenceFilter",
-}) as any as S.Schema<ExistenceFilter>;
+S.Struct({
+  "count": S.optional(S.Number),
+  "targetId": S.optional(S.Number),
+  "unchangedNames": S.optional(BloomFilter),
+}),
+).annotate({ identifier: "ExistenceFilter" }) as any as S.Schema<ExistenceFilter>;
 
 /** A Document has changed. May be the result of multiple writes, including deletes, that ultimately resulted in a new value for the Document. Multiple DocumentChange messages may be returned for the same logical change, if multiple targets are affected. */
 export interface DocumentChange {
@@ -2921,11 +2248,11 @@ export interface DocumentChange {
   document?: Document;
 }
 export const DocumentChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetIds: S.optional(IntegerList),
-    removedTargetIds: S.optional(IntegerList),
-    document: S.optional(Document),
-  }),
+S.Struct({
+  "targetIds": S.optional(IntegerList),
+  "removedTargetIds": S.optional(IntegerList),
+  "document": S.optional(Document),
+}),
 ).annotate({ identifier: "DocumentChange" }) as any as S.Schema<DocumentChange>;
 
 /** The response for Firestore.Listen. */
@@ -2942,13 +2269,13 @@ export interface ListenResponse {
   documentChange?: DocumentChange;
 }
 export const ListenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetChange: S.optional(TargetChange),
-    documentDelete: S.optional(DocumentDelete),
-    documentRemove: S.optional(DocumentRemove),
-    filter: S.optional(ExistenceFilter),
-    documentChange: S.optional(DocumentChange),
-  }),
+S.Struct({
+  "targetChange": S.optional(TargetChange),
+  "documentDelete": S.optional(DocumentDelete),
+  "documentRemove": S.optional(DocumentRemove),
+  "filter": S.optional(ExistenceFilter),
+  "documentChange": S.optional(DocumentChange),
+}),
 ).annotate({ identifier: "ListenResponse" }) as any as S.Schema<ListenResponse>;
 
 export interface ListProjectsDatabasesRequest {
@@ -2958,25 +2285,14 @@ export interface ListProjectsDatabasesRequest {
   parent: string;
 }
 export const ListProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/databases",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsDatabasesRequest",
-}) as any as S.Schema<ListProjectsDatabasesRequest>;
+S.Struct({
+  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/databases","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsDatabasesRequest" }) as any as S.Schema<ListProjectsDatabasesRequest>;
 
-export type GoogleFirestoreAdminV1DatabaseList =
-  ReadonlyArray<GoogleFirestoreAdminV1Database>;
-export const GoogleFirestoreAdminV1DatabaseList = /*@__PURE__*/ S.Array(
-  GoogleFirestoreAdminV1Database,
-) as any as S.Schema<GoogleFirestoreAdminV1DatabaseList>;
+export type GoogleFirestoreAdminV1DatabaseList = ReadonlyArray<GoogleFirestoreAdminV1Database>;
+export const GoogleFirestoreAdminV1DatabaseList = /*@__PURE__*/ S.Array(GoogleFirestoreAdminV1Database) as any as S.Schema<GoogleFirestoreAdminV1DatabaseList>;
 
 /** The list of databases for a project. */
 export interface GoogleFirestoreAdminV1ListDatabasesResponse {
@@ -2985,54 +2301,36 @@ export interface GoogleFirestoreAdminV1ListDatabasesResponse {
   /** In the event that data about individual databases cannot be listed they will be recorded here. An example entry might be: projects/some_project/locations/some_location This can happen if the Cloud Region that the Database resides in is currently unavailable. In this case we can't fetch all the details about the database. You may be able to get a more detailed error message (or possibly fetch the resource) by sending a 'Get' request for the resource or a 'List' request for the specific location. */
   unreachable?: StringList;
 }
-export const GoogleFirestoreAdminV1ListDatabasesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      databases: S.optional(GoogleFirestoreAdminV1DatabaseList),
-      unreachable: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ListDatabasesResponse",
-  }) as any as S.Schema<GoogleFirestoreAdminV1ListDatabasesResponse>;
+export const GoogleFirestoreAdminV1ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "databases": S.optional(GoogleFirestoreAdminV1DatabaseList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1ListDatabasesResponse" }) as any as S.Schema<GoogleFirestoreAdminV1ListDatabasesResponse>;
 
 export interface ListProjectsDatabasesBackupSchedulesRequest {
   /** Required. The parent database. Format is `projects/{project}/databases/{database}`. */
   parent: string;
 }
-export const ListProjectsDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/backupSchedules",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<ListProjectsDatabasesBackupSchedulesRequest>;
+export const ListProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backupSchedules","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsDatabasesBackupSchedulesRequest" }) as any as S.Schema<ListProjectsDatabasesBackupSchedulesRequest>;
 
-export type GoogleFirestoreAdminV1BackupScheduleList =
-  ReadonlyArray<GoogleFirestoreAdminV1BackupSchedule>;
-export const GoogleFirestoreAdminV1BackupScheduleList = /*@__PURE__*/ S.Array(
-  GoogleFirestoreAdminV1BackupSchedule,
-) as any as S.Schema<GoogleFirestoreAdminV1BackupScheduleList>;
+export type GoogleFirestoreAdminV1BackupScheduleList = ReadonlyArray<GoogleFirestoreAdminV1BackupSchedule>;
+export const GoogleFirestoreAdminV1BackupScheduleList = /*@__PURE__*/ S.Array(GoogleFirestoreAdminV1BackupSchedule) as any as S.Schema<GoogleFirestoreAdminV1BackupScheduleList>;
 
 /** The response for FirestoreAdmin.ListBackupSchedules. */
 export interface GoogleFirestoreAdminV1ListBackupSchedulesResponse {
   /** List of all backup schedules. */
   backupSchedules?: GoogleFirestoreAdminV1BackupScheduleList;
 }
-export const GoogleFirestoreAdminV1ListBackupSchedulesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      backupSchedules: S.optional(GoogleFirestoreAdminV1BackupScheduleList),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ListBackupSchedulesResponse",
-  }) as any as S.Schema<GoogleFirestoreAdminV1ListBackupSchedulesResponse>;
+export const GoogleFirestoreAdminV1ListBackupSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "backupSchedules": S.optional(GoogleFirestoreAdminV1BackupScheduleList),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1ListBackupSchedulesResponse" }) as any as S.Schema<GoogleFirestoreAdminV1ListBackupSchedulesResponse>;
 
 export interface ListProjectsDatabasesCollectionGroupsFieldsRequest {
   /** The filter to apply to list results. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with a filter that includes `indexConfig.usesAncestorConfig:false` or `ttlConfig:*`. */
@@ -3044,29 +2342,17 @@ export interface ListProjectsDatabasesCollectionGroupsFieldsRequest {
   /** The number of results to return. */
   pageSize?: number;
 }
-export const ListProjectsDatabasesCollectionGroupsFieldsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/fields",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsDatabasesCollectionGroupsFieldsRequest",
-  }) as any as S.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
+export const ListProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/fields","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsDatabasesCollectionGroupsFieldsRequest" }) as any as S.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 
-export type GoogleFirestoreAdminV1FieldList =
-  ReadonlyArray<GoogleFirestoreAdminV1Field>;
-export const GoogleFirestoreAdminV1FieldList = /*@__PURE__*/ S.Array(
-  GoogleFirestoreAdminV1Field,
-) as any as S.Schema<GoogleFirestoreAdminV1FieldList>;
+export type GoogleFirestoreAdminV1FieldList = ReadonlyArray<GoogleFirestoreAdminV1Field>;
+export const GoogleFirestoreAdminV1FieldList = /*@__PURE__*/ S.Array(GoogleFirestoreAdminV1Field) as any as S.Schema<GoogleFirestoreAdminV1FieldList>;
 
 /** The response for FirestoreAdmin.ListFields. */
 export interface GoogleFirestoreAdminV1ListFieldsResponse {
@@ -3075,15 +2361,12 @@ export interface GoogleFirestoreAdminV1ListFieldsResponse {
   /** A page token that may be used to request another page of results. If blank, this is the last page. */
   nextPageToken?: string;
 }
-export const GoogleFirestoreAdminV1ListFieldsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fields: S.optional(GoogleFirestoreAdminV1FieldList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleFirestoreAdminV1ListFieldsResponse",
-}) as any as S.Schema<GoogleFirestoreAdminV1ListFieldsResponse>;
+export const GoogleFirestoreAdminV1ListFieldsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "fields": S.optional(GoogleFirestoreAdminV1FieldList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1ListFieldsResponse" }) as any as S.Schema<GoogleFirestoreAdminV1ListFieldsResponse>;
 
 export interface ListProjectsDatabasesCollectionGroupsIndexesRequest {
   /** The filter to apply to list results. */
@@ -3095,23 +2378,14 @@ export interface ListProjectsDatabasesCollectionGroupsIndexesRequest {
   /** The number of results to return. */
   pageSize?: number;
 }
-export const ListProjectsDatabasesCollectionGroupsIndexesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/indexes",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsDatabasesCollectionGroupsIndexesRequest",
-  }) as any as S.Schema<ListProjectsDatabasesCollectionGroupsIndexesRequest>;
+export const ListProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/indexes","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsDatabasesCollectionGroupsIndexesRequest" }) as any as S.Schema<ListProjectsDatabasesCollectionGroupsIndexesRequest>;
 
 /** The response for FirestoreAdmin.ListIndexes. */
 export interface GoogleFirestoreAdminV1ListIndexesResponse {
@@ -3120,15 +2394,12 @@ export interface GoogleFirestoreAdminV1ListIndexesResponse {
   /** A page token that may be used to request another page of results. If blank, this is the last page. */
   nextPageToken?: string;
 }
-export const GoogleFirestoreAdminV1ListIndexesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      indexes: S.optional(GoogleFirestoreAdminV1IndexList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ListIndexesResponse",
-  }) as any as S.Schema<GoogleFirestoreAdminV1ListIndexesResponse>;
+export const GoogleFirestoreAdminV1ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "indexes": S.optional(GoogleFirestoreAdminV1IndexList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1ListIndexesResponse" }) as any as S.Schema<GoogleFirestoreAdminV1ListIndexesResponse>;
 
 export interface ListProjectsDatabasesDocumentsRequest {
   /** Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`. This is optional, and when not provided, Firestore will list documents from all collections under the provided `parent`. */
@@ -3152,29 +2423,20 @@ export interface ListProjectsDatabasesDocumentsRequest {
   /** Perform the read at the provided time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
-export const ListProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      collectionId: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
-      transaction: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      showMissing: S.optional(S.Boolean.pipe(T.Query())),
-      recursive: S.optional(S.Boolean.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      readTime: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/{collectionId}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsDatabasesDocumentsRequest",
-}) as any as S.Schema<ListProjectsDatabasesDocumentsRequest>;
+export const ListProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "collectionId": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
+  "transaction": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "showMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "recursive": S.optional(S.Boolean.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "readTime": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/{collectionId}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsDatabasesDocumentsRequest" }) as any as S.Schema<ListProjectsDatabasesDocumentsRequest>;
 
 export interface ListProjectsDatabasesOperationsRequest {
   /** The standard list filter. */
@@ -3188,30 +2450,18 @@ export interface ListProjectsDatabasesOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsDatabasesOperationsRequest",
-}) as any as S.Schema<ListProjectsDatabasesOperationsRequest>;
+export const ListProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsDatabasesOperationsRequest" }) as any as S.Schema<ListProjectsDatabasesOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
-  GoogleLongrunningOperation,
-) as any as S.Schema<GoogleLongrunningOperationList>;
+export type GoogleLongrunningOperationList = ReadonlyArray<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(GoogleLongrunningOperation) as any as S.Schema<GoogleLongrunningOperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
@@ -3222,55 +2472,37 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      unreachable: S.optional(StringList),
-      operations: S.optional(GoogleLongrunningOperationList),
-    }),
-).annotate({
-  identifier: "GoogleLongrunningListOperationsResponse",
-}) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(GoogleLongrunningOperationList),
+}),
+).annotate({ identifier: "GoogleLongrunningListOperationsResponse" }) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
 
 export interface ListProjectsDatabasesUserCredsRequest {
   /** Required. A parent database name of the form `projects/{project_id}/databases/{database_id}` */
   parent: string;
 }
-export const ListProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/userCreds",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsDatabasesUserCredsRequest",
-}) as any as S.Schema<ListProjectsDatabasesUserCredsRequest>;
+export const ListProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/userCreds","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsDatabasesUserCredsRequest" }) as any as S.Schema<ListProjectsDatabasesUserCredsRequest>;
 
-export type GoogleFirestoreAdminV1UserCredsList =
-  ReadonlyArray<GoogleFirestoreAdminV1UserCreds>;
-export const GoogleFirestoreAdminV1UserCredsList = /*@__PURE__*/ S.Array(
-  GoogleFirestoreAdminV1UserCreds,
-) as any as S.Schema<GoogleFirestoreAdminV1UserCredsList>;
+export type GoogleFirestoreAdminV1UserCredsList = ReadonlyArray<GoogleFirestoreAdminV1UserCreds>;
+export const GoogleFirestoreAdminV1UserCredsList = /*@__PURE__*/ S.Array(GoogleFirestoreAdminV1UserCreds) as any as S.Schema<GoogleFirestoreAdminV1UserCredsList>;
 
 /** The response for FirestoreAdmin.ListUserCreds. */
 export interface GoogleFirestoreAdminV1ListUserCredsResponse {
   /** The user creds for the database. */
   userCreds?: GoogleFirestoreAdminV1UserCredsList;
 }
-export const GoogleFirestoreAdminV1ListUserCredsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userCreds: S.optional(GoogleFirestoreAdminV1UserCredsList),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ListUserCredsResponse",
-  }) as any as S.Schema<GoogleFirestoreAdminV1ListUserCredsResponse>;
+export const GoogleFirestoreAdminV1ListUserCredsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "userCreds": S.optional(GoogleFirestoreAdminV1UserCredsList),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1ListUserCredsResponse" }) as any as S.Schema<GoogleFirestoreAdminV1ListUserCredsResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -3285,27 +2517,17 @@ export interface ListProjectsLocationsRequest {
   filter?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -3315,13 +2537,11 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    locations: S.optional(LocationList),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "locations": S.optional(LocationList),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsBackupsRequest {
   /** An expression that filters the list of returned backups. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not case sensitive. The following fields in the Backup are eligible for filtering: * `database_uid` (supports `=` only) */
@@ -3330,25 +2550,14 @@ export interface ListProjectsLocationsBackupsRequest {
   parent: string;
 }
 export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+parent}/backups",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsBackupsRequest",
-}) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/backups","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsBackupsRequest" }) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
 
-export type GoogleFirestoreAdminV1BackupList =
-  ReadonlyArray<GoogleFirestoreAdminV1Backup>;
-export const GoogleFirestoreAdminV1BackupList = /*@__PURE__*/ S.Array(
-  GoogleFirestoreAdminV1Backup,
-) as any as S.Schema<GoogleFirestoreAdminV1BackupList>;
+export type GoogleFirestoreAdminV1BackupList = ReadonlyArray<GoogleFirestoreAdminV1Backup>;
+export const GoogleFirestoreAdminV1BackupList = /*@__PURE__*/ S.Array(GoogleFirestoreAdminV1Backup) as any as S.Schema<GoogleFirestoreAdminV1BackupList>;
 
 /** The response for FirestoreAdmin.ListBackups. */
 export interface GoogleFirestoreAdminV1ListBackupsResponse {
@@ -3357,15 +2566,12 @@ export interface GoogleFirestoreAdminV1ListBackupsResponse {
   /** List of all backups for the project. */
   backups?: GoogleFirestoreAdminV1BackupList;
 }
-export const GoogleFirestoreAdminV1ListBackupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unreachable: S.optional(StringList),
-      backups: S.optional(GoogleFirestoreAdminV1BackupList),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ListBackupsResponse",
-  }) as any as S.Schema<GoogleFirestoreAdminV1ListBackupsResponse>;
+export const GoogleFirestoreAdminV1ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "backups": S.optional(GoogleFirestoreAdminV1BackupList),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1ListBackupsResponse" }) as any as S.Schema<GoogleFirestoreAdminV1ListBackupsResponse>;
 
 /** The request for Firestore.PartitionQuery. */
 export interface PartitionQueryRequest {
@@ -3381,16 +2587,14 @@ export interface PartitionQueryRequest {
   pageSize?: number;
 }
 export const PartitionQueryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readTime: S.optional(S.String),
-    pageToken: S.optional(S.String),
-    structuredQuery: S.optional(StructuredQuery),
-    partitionCount: S.optional(S.String),
-    pageSize: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PartitionQueryRequest",
-}) as any as S.Schema<PartitionQueryRequest>;
+S.Struct({
+  "readTime": S.optional(S.String),
+  "pageToken": S.optional(S.String),
+  "structuredQuery": S.optional(StructuredQuery),
+  "partitionCount": S.optional(S.String),
+  "pageSize": S.optional(S.Number),
+}),
+).annotate({ identifier: "PartitionQueryRequest" }) as any as S.Schema<PartitionQueryRequest>;
 
 export interface PartitionQueryProjectsDatabasesDocumentsRequest {
   /** Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents`. Document resource names are not supported; only database resource names can be specified. */
@@ -3398,26 +2602,15 @@ export interface PartitionQueryProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: PartitionQueryRequest;
 }
-export const PartitionQueryProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(PartitionQueryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:partitionQuery",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PartitionQueryProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<PartitionQueryProjectsDatabasesDocumentsRequest>;
+export const PartitionQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(PartitionQueryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:partitionQuery","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "PartitionQueryProjectsDatabasesDocumentsRequest" }) as any as S.Schema<PartitionQueryProjectsDatabasesDocumentsRequest>;
 
 export type CursorList = ReadonlyArray<Cursor>;
-export const CursorList = /*@__PURE__*/ S.Array(
-  Cursor,
-) as any as S.Schema<CursorList>;
+export const CursorList = /*@__PURE__*/ S.Array(Cursor) as any as S.Schema<CursorList>;
 
 /** The response for Firestore.PartitionQuery. */
 export interface PartitionQueryResponse {
@@ -3427,13 +2620,11 @@ export interface PartitionQueryResponse {
   partitions?: CursorList;
 }
 export const PartitionQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    partitions: S.optional(CursorList),
-  }),
-).annotate({
-  identifier: "PartitionQueryResponse",
-}) as any as S.Schema<PartitionQueryResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "partitions": S.optional(CursorList),
+}),
+).annotate({ identifier: "PartitionQueryResponse" }) as any as S.Schema<PartitionQueryResponse>;
 
 export interface PatchProjectsDatabasesRequest {
   /** The resource name of the Database. Format: `projects/{project}/databases/{database}` */
@@ -3444,20 +2635,12 @@ export interface PatchProjectsDatabasesRequest {
   body?: GoogleFirestoreAdminV1Database;
 }
 export const PatchProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(GoogleFirestoreAdminV1Database.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1/{+name}",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsDatabasesRequest",
-}) as any as S.Schema<PatchProjectsDatabasesRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleFirestoreAdminV1Database.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsDatabasesRequest" }) as any as S.Schema<PatchProjectsDatabasesRequest>;
 
 export interface PatchProjectsDatabasesBackupSchedulesRequest {
   /** Output only. The unique backup schedule identifier across all locations and databases for the given project. This will be auto-assigned. Format is `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}` */
@@ -3467,22 +2650,13 @@ export interface PatchProjectsDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1BackupSchedule;
 }
-export const PatchProjectsDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleFirestoreAdminV1BackupSchedule.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<PatchProjectsDatabasesBackupSchedulesRequest>;
+export const PatchProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleFirestoreAdminV1BackupSchedule.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsDatabasesBackupSchedulesRequest" }) as any as S.Schema<PatchProjectsDatabasesBackupSchedulesRequest>;
 
 export interface PatchProjectsDatabasesCollectionGroupsFieldsRequest {
   /** Required. A field name of the form: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field path can be a simple field name, e.g. `address` or a path to fields within `map_value` , e.g. `address.city`, or a special field path. The only valid special field is `*`, which represents any field. Field paths can be quoted using `` ` `` (backtick). The only character that must be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*`, `.`, `` ` `` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: `` `address.city` `` represents a field named `address.city`, not the map key `city` in the field `address`. `` `*` `` represents a field named `*`, not any field. A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration. */
@@ -3492,22 +2666,13 @@ export interface PatchProjectsDatabasesCollectionGroupsFieldsRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1Field;
 }
-export const PatchProjectsDatabasesCollectionGroupsFieldsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleFirestoreAdminV1Field.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsDatabasesCollectionGroupsFieldsRequest",
-  }) as any as S.Schema<PatchProjectsDatabasesCollectionGroupsFieldsRequest>;
+export const PatchProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(GoogleFirestoreAdminV1Field.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsDatabasesCollectionGroupsFieldsRequest" }) as any as S.Schema<PatchProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export interface PatchProjectsDatabasesDocumentsRequest {
   /** The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
@@ -3523,32 +2688,22 @@ export interface PatchProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: Document;
 }
-export const PatchProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
-      "currentDocument.exists": S.optional(S.Boolean.pipe(T.Query())),
-      "currentDocument.updateTime": S.optional(S.String.pipe(T.Query())),
-      "updateMask.fieldPaths": S.optional(StringList.pipe(T.Query())),
-      body: S.optional(Document.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsDatabasesDocumentsRequest",
-}) as any as S.Schema<PatchProjectsDatabasesDocumentsRequest>;
+export const PatchProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
+  "currentDocument.exists": S.optional(S.Boolean.pipe(T.Query())),
+  "currentDocument.updateTime": S.optional(S.String.pipe(T.Query())),
+  "updateMask.fieldPaths": S.optional(StringList.pipe(T.Query())),
+  "body": S.optional(Document.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsDatabasesDocumentsRequest" }) as any as S.Schema<PatchProjectsDatabasesDocumentsRequest>;
 
 /** The request for FirestoreAdmin.ResetUserPassword. */
 export interface GoogleFirestoreAdminV1ResetUserPasswordRequest {}
-export const GoogleFirestoreAdminV1ResetUserPasswordRequest =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleFirestoreAdminV1ResetUserPasswordRequest",
-  }) as any as S.Schema<GoogleFirestoreAdminV1ResetUserPasswordRequest>;
+export const GoogleFirestoreAdminV1ResetUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "GoogleFirestoreAdminV1ResetUserPasswordRequest" }) as any as S.Schema<GoogleFirestoreAdminV1ResetUserPasswordRequest>;
 
 export interface ResetPasswordProjectsDatabasesUserCredsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` */
@@ -3556,23 +2711,12 @@ export interface ResetPasswordProjectsDatabasesUserCredsRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1ResetUserPasswordRequest;
 }
-export const ResetPasswordProjectsDatabasesUserCredsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleFirestoreAdminV1ResetUserPasswordRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:resetPassword",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ResetPasswordProjectsDatabasesUserCredsRequest",
-  }) as any as S.Schema<ResetPasswordProjectsDatabasesUserCredsRequest>;
+export const ResetPasswordProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleFirestoreAdminV1ResetUserPasswordRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:resetPassword","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "ResetPasswordProjectsDatabasesUserCredsRequest" }) as any as S.Schema<ResetPasswordProjectsDatabasesUserCredsRequest>;
 
 /** The request message for FirestoreAdmin.RestoreDatabase. */
 export interface GoogleFirestoreAdminV1RestoreDatabaseRequest {
@@ -3585,17 +2729,14 @@ export interface GoogleFirestoreAdminV1RestoreDatabaseRequest {
   /** Optional. Immutable. Tags to be bound to the restored database. The tags should be provided in the format of `tagKeys/{tag_key_id} -> tagValues/{tag_value_id}`. */
   tags?: StringMap;
 }
-export const GoogleFirestoreAdminV1RestoreDatabaseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      databaseId: S.optional(S.String),
-      backup: S.optional(S.String),
-      encryptionConfig: S.optional(GoogleFirestoreAdminV1EncryptionConfig),
-      tags: S.optional(StringMap),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1RestoreDatabaseRequest",
-  }) as any as S.Schema<GoogleFirestoreAdminV1RestoreDatabaseRequest>;
+export const GoogleFirestoreAdminV1RestoreDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "databaseId": S.optional(S.String),
+  "backup": S.optional(S.String),
+  "encryptionConfig": S.optional(GoogleFirestoreAdminV1EncryptionConfig),
+  "tags": S.optional(StringMap),
+}),
+).annotate({ identifier: "GoogleFirestoreAdminV1RestoreDatabaseRequest" }) as any as S.Schema<GoogleFirestoreAdminV1RestoreDatabaseRequest>;
 
 export interface RestoreProjectsDatabasesRequest {
   /** Required. The project to restore the database in. Format is `projects/{project_id}`. */
@@ -3604,21 +2745,11 @@ export interface RestoreProjectsDatabasesRequest {
   body?: GoogleFirestoreAdminV1RestoreDatabaseRequest;
 }
 export const RestoreProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleFirestoreAdminV1RestoreDatabaseRequest.pipe(T.HttpBody()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/databases:restore",
-      baseUrl: "https://firestore.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RestoreProjectsDatabasesRequest",
-}) as any as S.Schema<RestoreProjectsDatabasesRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(GoogleFirestoreAdminV1RestoreDatabaseRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/databases:restore","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "RestoreProjectsDatabasesRequest" }) as any as S.Schema<RestoreProjectsDatabasesRequest>;
 
 /** The request for Firestore.Rollback. */
 export interface RollbackRequest {
@@ -3626,12 +2757,10 @@ export interface RollbackRequest {
   transaction?: string;
 }
 export const RollbackRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transaction: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RollbackRequest",
-}) as any as S.Schema<RollbackRequest>;
+S.Struct({
+  "transaction": S.optional(S.String),
+}),
+).annotate({ identifier: "RollbackRequest" }) as any as S.Schema<RollbackRequest>;
 
 export interface RollbackProjectsDatabasesDocumentsRequest {
   /** Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. */
@@ -3639,21 +2768,12 @@ export interface RollbackProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: RollbackRequest;
 }
-export const RollbackProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(RollbackRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/documents:rollback",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RollbackProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<RollbackProjectsDatabasesDocumentsRequest>;
+export const RollbackProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(RollbackRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}/documents:rollback","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "RollbackProjectsDatabasesDocumentsRequest" }) as any as S.Schema<RollbackProjectsDatabasesDocumentsRequest>;
 
 /** Count of documents that match the query. The `COUNT(*)` aggregation function operates on the entire document so it does not require a field reference. */
 export interface Count {
@@ -3661,9 +2781,9 @@ export interface Count {
   upTo?: string;
 }
 export const Count = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upTo: S.optional(S.String),
-  }),
+S.Struct({
+  "upTo": S.optional(S.String),
+}),
 ).annotate({ identifier: "Count" }) as any as S.Schema<Count>;
 
 /** Average of the values of the requested field. * Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754 standards. * If the aggregated value set is empty, returns `NULL`. * Always returns the result as a double. */
@@ -3672,9 +2792,9 @@ export interface Avg {
   field?: FieldReference;
 }
 export const Avg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(FieldReference),
-  }),
+S.Struct({
+  "field": S.optional(FieldReference),
+}),
 ).annotate({ identifier: "Avg" }) as any as S.Schema<Avg>;
 
 /** Sum of the values of the requested field. * Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754 standards. * If the aggregated value set is empty, returns 0. * Returns a 64-bit integer if all aggregated numbers are integers and the sum result does not overflow. Otherwise, the result is returned as a double. Note that even if all the aggregated values are integers, the result is returned as a double if it cannot fit within a 64-bit signed integer. When this occurs, the returned value will lose precision. * When underflow occurs, floating-point aggregation is non-deterministic. This means that running the same query repeatedly without any changes to the underlying values could produce slightly different results each time. In those cases, values should be stored as integers over floating-point numbers. */
@@ -3683,9 +2803,9 @@ export interface Sum {
   field?: FieldReference;
 }
 export const Sum = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(FieldReference),
-  }),
+S.Struct({
+  "field": S.optional(FieldReference),
+}),
 ).annotate({ identifier: "Sum" }) as any as S.Schema<Sum>;
 
 /** Defines an aggregation that produces a single result. */
@@ -3700,18 +2820,16 @@ export interface Aggregation {
   sum?: Sum;
 }
 export const Aggregation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(Count),
-    avg: S.optional(Avg),
-    alias: S.optional(S.String),
-    sum: S.optional(Sum),
-  }),
+S.Struct({
+  "count": S.optional(Count),
+  "avg": S.optional(Avg),
+  "alias": S.optional(S.String),
+  "sum": S.optional(Sum),
+}),
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
 export type AggregationList = ReadonlyArray<Aggregation>;
-export const AggregationList = /*@__PURE__*/ S.Array(
-  Aggregation,
-) as any as S.Schema<AggregationList>;
+export const AggregationList = /*@__PURE__*/ S.Array(Aggregation) as any as S.Schema<AggregationList>;
 
 /** Firestore query for running an aggregation over a StructuredQuery. */
 export interface StructuredAggregationQuery {
@@ -3721,13 +2839,11 @@ export interface StructuredAggregationQuery {
   structuredQuery?: StructuredQuery;
 }
 export const StructuredAggregationQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregations: S.optional(AggregationList),
-    structuredQuery: S.optional(StructuredQuery),
-  }),
-).annotate({
-  identifier: "StructuredAggregationQuery",
-}) as any as S.Schema<StructuredAggregationQuery>;
+S.Struct({
+  "aggregations": S.optional(AggregationList),
+  "structuredQuery": S.optional(StructuredQuery),
+}),
+).annotate({ identifier: "StructuredAggregationQuery" }) as any as S.Schema<StructuredAggregationQuery>;
 
 /** Explain options for the query. */
 export interface ExplainOptions {
@@ -3735,9 +2851,9 @@ export interface ExplainOptions {
   analyze?: boolean;
 }
 export const ExplainOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyze: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "analyze": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "ExplainOptions" }) as any as S.Schema<ExplainOptions>;
 
 /** The request for Firestore.RunAggregationQuery. */
@@ -3754,16 +2870,14 @@ export interface RunAggregationQueryRequest {
   explainOptions?: ExplainOptions;
 }
 export const RunAggregationQueryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    structuredAggregationQuery: S.optional(StructuredAggregationQuery),
-    readTime: S.optional(S.String),
-    newTransaction: S.optional(TransactionOptions),
-    transaction: S.optional(S.String),
-    explainOptions: S.optional(ExplainOptions),
-  }),
-).annotate({
-  identifier: "RunAggregationQueryRequest",
-}) as any as S.Schema<RunAggregationQueryRequest>;
+S.Struct({
+  "structuredAggregationQuery": S.optional(StructuredAggregationQuery),
+  "readTime": S.optional(S.String),
+  "newTransaction": S.optional(TransactionOptions),
+  "transaction": S.optional(S.String),
+  "explainOptions": S.optional(ExplainOptions),
+}),
+).annotate({ identifier: "RunAggregationQueryRequest" }) as any as S.Schema<RunAggregationQueryRequest>;
 
 export interface RunAggregationQueryProjectsDatabasesDocumentsRequest {
   /** Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` */
@@ -3771,21 +2885,12 @@ export interface RunAggregationQueryProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: RunAggregationQueryRequest;
 }
-export const RunAggregationQueryProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(RunAggregationQueryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:runAggregationQuery",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RunAggregationQueryProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<RunAggregationQueryProjectsDatabasesDocumentsRequest>;
+export const RunAggregationQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(RunAggregationQueryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:runAggregationQuery","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "RunAggregationQueryProjectsDatabasesDocumentsRequest" }) as any as S.Schema<RunAggregationQueryProjectsDatabasesDocumentsRequest>;
 
 /** Planning phase information for the query. */
 export interface PlanSummary {
@@ -3793,9 +2898,9 @@ export interface PlanSummary {
   indexesUsed?: DocumentMapList;
 }
 export const PlanSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexesUsed: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "indexesUsed": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "PlanSummary" }) as any as S.Schema<PlanSummary>;
 
 /** Execution statistics for the query. */
@@ -3810,12 +2915,12 @@ export interface ExecutionStats {
   debugStats?: DocumentMap;
 }
 export const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionDuration: S.optional(S.String),
-    resultsReturned: S.optional(S.String),
-    readOperations: S.optional(S.String),
-    debugStats: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "executionDuration": S.optional(S.String),
+  "resultsReturned": S.optional(S.String),
+  "readOperations": S.optional(S.String),
+  "debugStats": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "ExecutionStats" }) as any as S.Schema<ExecutionStats>;
 
 /** Explain metrics for the query. */
@@ -3826,10 +2931,10 @@ export interface ExplainMetrics {
   executionStats?: ExecutionStats;
 }
 export const ExplainMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    planSummary: S.optional(PlanSummary),
-    executionStats: S.optional(ExecutionStats),
-  }),
+S.Struct({
+  "planSummary": S.optional(PlanSummary),
+  "executionStats": S.optional(ExecutionStats),
+}),
 ).annotate({ identifier: "ExplainMetrics" }) as any as S.Schema<ExplainMetrics>;
 
 /** The result of a single bucket from a Firestore aggregation query. The keys of `aggregate_fields` are the same for all results in an aggregation query, unlike document queries which can have different fields present for each result. */
@@ -3838,12 +2943,10 @@ export interface AggregationResult {
   aggregateFields?: ValueMap;
 }
 export const AggregationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregateFields: S.optional(ValueMap),
-  }),
-).annotate({
-  identifier: "AggregationResult",
-}) as any as S.Schema<AggregationResult>;
+S.Struct({
+  "aggregateFields": S.optional(ValueMap),
+}),
+).annotate({ identifier: "AggregationResult" }) as any as S.Schema<AggregationResult>;
 
 /** The response for Firestore.RunAggregationQuery. */
 export interface RunAggregationQueryResponse {
@@ -3857,15 +2960,13 @@ export interface RunAggregationQueryResponse {
   transaction?: string;
 }
 export const RunAggregationQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readTime: S.optional(S.String),
-    explainMetrics: S.optional(ExplainMetrics),
-    result: S.optional(AggregationResult),
-    transaction: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunAggregationQueryResponse",
-}) as any as S.Schema<RunAggregationQueryResponse>;
+S.Struct({
+  "readTime": S.optional(S.String),
+  "explainMetrics": S.optional(ExplainMetrics),
+  "result": S.optional(AggregationResult),
+  "transaction": S.optional(S.String),
+}),
+).annotate({ identifier: "RunAggregationQueryResponse" }) as any as S.Schema<RunAggregationQueryResponse>;
 
 /** The request for Firestore.RunQuery. */
 export interface RunQueryRequest {
@@ -3881,16 +2982,14 @@ export interface RunQueryRequest {
   newTransaction?: TransactionOptions;
 }
 export const RunQueryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    explainOptions: S.optional(ExplainOptions),
-    structuredQuery: S.optional(StructuredQuery),
-    readTime: S.optional(S.String),
-    transaction: S.optional(S.String),
-    newTransaction: S.optional(TransactionOptions),
-  }),
-).annotate({
-  identifier: "RunQueryRequest",
-}) as any as S.Schema<RunQueryRequest>;
+S.Struct({
+  "explainOptions": S.optional(ExplainOptions),
+  "structuredQuery": S.optional(StructuredQuery),
+  "readTime": S.optional(S.String),
+  "transaction": S.optional(S.String),
+  "newTransaction": S.optional(TransactionOptions),
+}),
+).annotate({ identifier: "RunQueryRequest" }) as any as S.Schema<RunQueryRequest>;
 
 export interface RunQueryProjectsDatabasesDocumentsRequest {
   /** Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` */
@@ -3898,21 +2997,12 @@ export interface RunQueryProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: RunQueryRequest;
 }
-export const RunQueryProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(RunQueryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:runQuery",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RunQueryProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<RunQueryProjectsDatabasesDocumentsRequest>;
+export const RunQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(RunQueryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:runQuery","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "RunQueryProjectsDatabasesDocumentsRequest" }) as any as S.Schema<RunQueryProjectsDatabasesDocumentsRequest>;
 
 /** The response for Firestore.RunQuery. */
 export interface RunQueryResponse {
@@ -3930,17 +3020,15 @@ export interface RunQueryResponse {
   skippedResults?: number;
 }
 export const RunQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(Document),
-    transaction: S.optional(S.String),
-    done: S.optional(S.Boolean),
-    readTime: S.optional(S.String),
-    explainMetrics: S.optional(ExplainMetrics),
-    skippedResults: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RunQueryResponse",
-}) as any as S.Schema<RunQueryResponse>;
+S.Struct({
+  "document": S.optional(Document),
+  "transaction": S.optional(S.String),
+  "done": S.optional(S.Boolean),
+  "readTime": S.optional(S.String),
+  "explainMetrics": S.optional(ExplainMetrics),
+  "skippedResults": S.optional(S.Number),
+}),
+).annotate({ identifier: "RunQueryResponse" }) as any as S.Schema<RunQueryResponse>;
 
 /** The request for Firestore.Write. The first request creates a stream, or resumes an existing one from a token. When creating a new stream, the server replies with a response containing only an ID and a token, to use in the next request. When resuming a stream, the server first streams any responses later than the given token, then a response containing only an up-to-date token, to use in the next request. */
 export interface WriteRequest {
@@ -3954,12 +3042,12 @@ export interface WriteRequest {
   writes?: WriteList;
 }
 export const WriteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    streamId: S.optional(S.String),
-    labels: S.optional(StringMap),
-    streamToken: S.optional(S.String),
-    writes: S.optional(WriteList),
-  }),
+S.Struct({
+  "streamId": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "streamToken": S.optional(S.String),
+  "writes": S.optional(WriteList),
+}),
 ).annotate({ identifier: "WriteRequest" }) as any as S.Schema<WriteRequest>;
 
 export interface WriteProjectsDatabasesDocumentsRequest {
@@ -3968,21 +3056,12 @@ export interface WriteProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: WriteRequest;
 }
-export const WriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(WriteRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/documents:write",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "WriteProjectsDatabasesDocumentsRequest",
-}) as any as S.Schema<WriteProjectsDatabasesDocumentsRequest>;
+export const WriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "database": S.String.pipe(T.Label()),
+  "body": S.optional(WriteRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+database}/documents:write","baseUrl":"https://firestore.googleapis.com/"})),
+).annotate({ identifier: "WriteProjectsDatabasesDocumentsRequest" }) as any as S.Schema<WriteProjectsDatabasesDocumentsRequest>;
 
 /** The response for Firestore.Write. */
 export interface WriteResponse {
@@ -3996,20 +3075,15 @@ export interface WriteResponse {
   writeResults?: WriteResultList;
 }
 export const WriteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    streamId: S.optional(S.String),
-    streamToken: S.optional(S.String),
-    commitTime: S.optional(S.String),
-    writeResults: S.optional(WriteResultList),
-  }),
+S.Struct({
+  "streamId": S.optional(S.String),
+  "streamToken": S.optional(S.String),
+  "commitTime": S.optional(S.String),
+  "writeResults": S.optional(WriteResultList),
+}),
 ).annotate({ identifier: "WriteResponse" }) as any as S.Schema<WriteResponse>;
 
-export type BatchGetProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchGetProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested. */
 export const batchGetProjectsDatabasesDocuments: API.OperationMethod<
   BatchGetProjectsDatabasesDocumentsRequest,
@@ -4024,12 +3098,7 @@ export const batchGetProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchWriteProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchWriteProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Applies a batch of write operations. The BatchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the BatchWriteResponse for the success status of each write. If you require an atomically applied set of writes, use Commit instead. */
 export const batchWriteProjectsDatabasesDocuments: API.OperationMethod<
   BatchWriteProjectsDatabasesDocumentsRequest,
@@ -4044,12 +3113,7 @@ export const batchWriteProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BeginTransactionProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BeginTransactionProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts a new transaction. */
 export const beginTransactionProjectsDatabasesDocuments: API.OperationMethod<
   BeginTransactionProjectsDatabasesDocumentsRequest,
@@ -4064,12 +3128,7 @@ export const beginTransactionProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BulkDeleteDocumentsProjectsDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BulkDeleteDocumentsProjectsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the underlying system starts to process the request will not be deleted. The bulk delete occurs in the background and its progress can be monitored and managed via the Operation resource that is created. For more details on bulk delete behavior, refer to: https://cloud.google.com/firestore/docs/manage-data/bulk-delete */
 export const bulkDeleteDocumentsProjectsDatabases: API.OperationMethod<
   BulkDeleteDocumentsProjectsDatabasesRequest,
@@ -4084,12 +3143,7 @@ export const bulkDeleteDocumentsProjectsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsDatabasesOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsDatabasesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsDatabasesOperations: API.OperationMethod<
   CancelProjectsDatabasesOperationsRequest,
@@ -4104,12 +3158,7 @@ export const cancelProjectsDatabasesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CloneProjectsDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CloneProjectsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new database by cloning an existing one. The new database must be in the same cloud region or multi-region location as the existing database. This behaves similar to FirestoreAdmin.CreateDatabase except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing database. The long-running operation can be used to track the progress of the clone, with the Operation's metadata field type being the CloneDatabaseMetadata. The response type is the Database if the clone was successful. The new database is not readable or writeable until the LRO has completed. */
 export const cloneProjectsDatabases: API.OperationMethod<
   CloneProjectsDatabasesRequest,
@@ -4124,12 +3173,7 @@ export const cloneProjectsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CommitProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CommitProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Commits a transaction, while optionally updating documents. */
 export const commitProjectsDatabasesDocuments: API.OperationMethod<
   CommitProjectsDatabasesDocumentsRequest,
@@ -4144,12 +3188,7 @@ export const commitProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateDocumentProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateDocumentProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new document. */
 export const createDocumentProjectsDatabasesDocuments: API.OperationMethod<
   CreateDocumentProjectsDatabasesDocumentsRequest,
@@ -4164,12 +3203,7 @@ export const createDocumentProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a database. */
 export const createProjectsDatabases: API.OperationMethod<
   CreateProjectsDatabasesRequest,
@@ -4184,12 +3218,7 @@ export const createProjectsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsDatabasesBackupSchedulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a backup schedule on a database. At most two backup schedules can be configured on a database, one daily backup schedule and one weekly backup schedule. */
 export const createProjectsDatabasesBackupSchedules: API.OperationMethod<
   CreateProjectsDatabasesBackupSchedulesRequest,
@@ -4204,12 +3233,7 @@ export const createProjectsDatabasesBackupSchedules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsDatabasesCollectionGroupsIndexesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsDatabasesCollectionGroupsIndexesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata. */
 export const createProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod<
   CreateProjectsDatabasesCollectionGroupsIndexesRequest,
@@ -4224,12 +3248,7 @@ export const createProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsDatabasesUserCredsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsDatabasesUserCredsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a user creds. */
 export const createProjectsDatabasesUserCreds: API.OperationMethod<
   CreateProjectsDatabasesUserCredsRequest,
@@ -4244,12 +3263,7 @@ export const createProjectsDatabasesUserCreds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a database. */
 export const deleteProjectsDatabases: API.OperationMethod<
   DeleteProjectsDatabasesRequest,
@@ -4264,12 +3278,7 @@ export const deleteProjectsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsDatabasesBackupSchedulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a backup schedule. */
 export const deleteProjectsDatabasesBackupSchedules: API.OperationMethod<
   DeleteProjectsDatabasesBackupSchedulesRequest,
@@ -4284,12 +3293,7 @@ export const deleteProjectsDatabasesBackupSchedules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsDatabasesCollectionGroupsIndexesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsDatabasesCollectionGroupsIndexesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a composite index. */
 export const deleteProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod<
   DeleteProjectsDatabasesCollectionGroupsIndexesRequest,
@@ -4304,12 +3308,7 @@ export const deleteProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a document. */
 export const deleteProjectsDatabasesDocuments: API.OperationMethod<
   DeleteProjectsDatabasesDocumentsRequest,
@@ -4324,12 +3323,7 @@ export const deleteProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsDatabasesOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsDatabasesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsDatabasesOperations: API.OperationMethod<
   DeleteProjectsDatabasesOperationsRequest,
@@ -4344,12 +3338,7 @@ export const deleteProjectsDatabasesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsDatabasesUserCredsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsDatabasesUserCredsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a user creds. */
 export const deleteProjectsDatabasesUserCreds: API.OperationMethod<
   DeleteProjectsDatabasesUserCredsRequest,
@@ -4364,12 +3353,7 @@ export const deleteProjectsDatabasesUserCreds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBackupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a backup. */
 export const deleteProjectsLocationsBackups: API.OperationMethod<
   DeleteProjectsLocationsBackupsRequest,
@@ -4384,12 +3368,7 @@ export const deleteProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DisableProjectsDatabasesUserCredsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DisableProjectsDatabasesUserCredsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Disables a user creds. No-op if the user creds are already disabled. */
 export const disableProjectsDatabasesUserCreds: API.OperationMethod<
   DisableProjectsDatabasesUserCredsRequest,
@@ -4404,12 +3383,7 @@ export const disableProjectsDatabasesUserCreds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnableProjectsDatabasesUserCredsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type EnableProjectsDatabasesUserCredsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enables a user creds. No-op if the user creds are already enabled. */
 export const enableProjectsDatabasesUserCreds: API.OperationMethod<
   EnableProjectsDatabasesUserCredsRequest,
@@ -4424,12 +3398,7 @@ export const enableProjectsDatabasesUserCreds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExecutePipelineProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExecutePipelineProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Executes a pipeline query. */
 export const executePipelineProjectsDatabasesDocuments: API.OperationMethod<
   ExecutePipelineProjectsDatabasesDocumentsRequest,
@@ -4444,12 +3413,7 @@ export const executePipelineProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExportDocumentsProjectsDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ExportDocumentsProjectsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. For more details on export behavior and output format, refer to: https://cloud.google.com/firestore/docs/manage-data/export-import */
 export const exportDocumentsProjectsDatabases: API.OperationMethod<
   ExportDocumentsProjectsDatabasesRequest,
@@ -4479,10 +3443,7 @@ export const getProjectsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsDatabasesBackupSchedulesError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a backup schedule. */
 export const getProjectsDatabasesBackupSchedules: API.OperationMethod<
   GetProjectsDatabasesBackupSchedulesRequest,
@@ -4497,10 +3458,7 @@ export const getProjectsDatabasesBackupSchedules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsDatabasesCollectionGroupsFieldsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsDatabasesCollectionGroupsFieldsError = NotFound | Forbidden | GcpOpError;
 /** Gets the metadata and configuration for a Field. */
 export const getProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
   GetProjectsDatabasesCollectionGroupsFieldsRequest,
@@ -4515,10 +3473,7 @@ export const getProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsDatabasesCollectionGroupsIndexesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsDatabasesCollectionGroupsIndexesError = NotFound | Forbidden | GcpOpError;
 /** Gets a composite index. */
 export const getProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod<
   GetProjectsDatabasesCollectionGroupsIndexesRequest,
@@ -4533,10 +3488,7 @@ export const getProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsDatabasesDocumentsError = NotFound | Forbidden | GcpOpError;
 /** Gets a single document. */
 export const getProjectsDatabasesDocuments: API.OperationMethod<
   GetProjectsDatabasesDocumentsRequest,
@@ -4551,10 +3503,7 @@ export const getProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsDatabasesOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsDatabasesOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsDatabasesOperations: API.OperationMethod<
   GetProjectsDatabasesOperationsRequest,
@@ -4569,10 +3518,7 @@ export const getProjectsDatabasesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsDatabasesUserCredsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsDatabasesUserCredsError = NotFound | Forbidden | GcpOpError;
 /** Gets a user creds resource. Note that the returned resource does not contain the secret value itself. */
 export const getProjectsDatabasesUserCreds: API.OperationMethod<
   GetProjectsDatabasesUserCredsRequest,
@@ -4602,10 +3548,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsBackupsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a backup. */
 export const getProjectsLocationsBackups: API.OperationMethod<
   GetProjectsLocationsBackupsRequest,
@@ -4620,12 +3563,7 @@ export const getProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportDocumentsProjectsDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ImportDocumentsProjectsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore. */
 export const importDocumentsProjectsDatabases: API.OperationMethod<
   ImportDocumentsProjectsDatabasesRequest,
@@ -4640,12 +3578,7 @@ export const importDocumentsProjectsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListCollectionIdsProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ListCollectionIdsProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Lists all the collection IDs underneath a document. */
 export const listCollectionIdsProjectsDatabasesDocuments: API.OperationMethod<
   ListCollectionIdsProjectsDatabasesDocumentsRequest,
@@ -4660,10 +3593,7 @@ export const listCollectionIdsProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListDocumentsProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListDocumentsProjectsDatabasesDocumentsError = NotFound | Forbidden | GcpOpError;
 /** Lists documents. */
 export const listDocumentsProjectsDatabasesDocuments: API.PaginatedOperationMethod<
   ListDocumentsProjectsDatabasesDocumentsRequest,
@@ -4676,18 +3606,10 @@ export const listDocumentsProjectsDatabasesDocuments: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListenProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ListenProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Listens to changes. This method is only available via gRPC or WebChannel (not REST). */
 export const listenProjectsDatabasesDocuments: API.OperationMethod<
   ListenProjectsDatabasesDocumentsRequest,
@@ -4717,10 +3639,7 @@ export const listProjectsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsDatabasesBackupSchedulesError = NotFound | Forbidden | GcpOpError;
 /** List backup schedules. */
 export const listProjectsDatabasesBackupSchedules: API.OperationMethod<
   ListProjectsDatabasesBackupSchedulesRequest,
@@ -4735,10 +3654,7 @@ export const listProjectsDatabasesBackupSchedules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsDatabasesCollectionGroupsFieldsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsDatabasesCollectionGroupsFieldsError = NotFound | Forbidden | GcpOpError;
 /** Lists the field configuration and metadata for this database. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.usesAncestorConfig:false` or `ttlConfig:*`. */
 export const listProjectsDatabasesCollectionGroupsFields: API.PaginatedOperationMethod<
   ListProjectsDatabasesCollectionGroupsFieldsRequest,
@@ -4751,16 +3667,10 @@ export const listProjectsDatabasesCollectionGroupsFields: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsDatabasesCollectionGroupsIndexesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsDatabasesCollectionGroupsIndexesError = NotFound | Forbidden | GcpOpError;
 /** Lists composite indexes. */
 export const listProjectsDatabasesCollectionGroupsIndexes: API.PaginatedOperationMethod<
   ListProjectsDatabasesCollectionGroupsIndexesRequest,
@@ -4773,16 +3683,10 @@ export const listProjectsDatabasesCollectionGroupsIndexes: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsDatabasesDocumentsError = NotFound | Forbidden | GcpOpError;
 /** Lists documents. */
 export const listProjectsDatabasesDocuments: API.PaginatedOperationMethod<
   ListProjectsDatabasesDocumentsRequest,
@@ -4795,16 +3699,10 @@ export const listProjectsDatabasesDocuments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsDatabasesOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsDatabasesOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsDatabasesOperations: API.PaginatedOperationMethod<
   ListProjectsDatabasesOperationsRequest,
@@ -4817,16 +3715,10 @@ export const listProjectsDatabasesOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsDatabasesUserCredsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsDatabasesUserCredsError = NotFound | Forbidden | GcpOpError;
 /** List all user creds in the database. Note that the returned resource does not contain the secret value itself. */
 export const listProjectsDatabasesUserCreds: API.OperationMethod<
   ListProjectsDatabasesUserCredsRequest,
@@ -4854,16 +3746,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsBackupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsBackupsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the backups. */
 export const listProjectsLocationsBackups: API.OperationMethod<
   ListProjectsLocationsBackupsRequest,
@@ -4878,12 +3764,7 @@ export const listProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PartitionQueryProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PartitionQueryProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results. */
 export const partitionQueryProjectsDatabasesDocuments: API.OperationMethod<
   PartitionQueryProjectsDatabasesDocumentsRequest,
@@ -4898,12 +3779,7 @@ export const partitionQueryProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a database. */
 export const patchProjectsDatabases: API.OperationMethod<
   PatchProjectsDatabasesRequest,
@@ -4918,12 +3794,7 @@ export const patchProjectsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsDatabasesBackupSchedulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsDatabasesBackupSchedulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a backup schedule. */
 export const patchProjectsDatabasesBackupSchedules: API.OperationMethod<
   PatchProjectsDatabasesBackupSchedulesRequest,
@@ -4938,12 +3809,7 @@ export const patchProjectsDatabasesBackupSchedules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsDatabasesCollectionGroupsFieldsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsDatabasesCollectionGroupsFieldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to FirestoreAdmin.UpdateField should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: `{ paths: "index_config" }`. This call returns a google.longrunning.Operation which may be used to track the status of the field update. The metadata for the operation will be the type FieldOperationMetadata. To configure the default field settings for the database, use the special `Field` with resource name: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`. */
 export const patchProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
   PatchProjectsDatabasesCollectionGroupsFieldsRequest,
@@ -4958,12 +3824,7 @@ export const patchProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates or inserts a document. */
 export const patchProjectsDatabasesDocuments: API.OperationMethod<
   PatchProjectsDatabasesDocumentsRequest,
@@ -4978,12 +3839,7 @@ export const patchProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetPasswordProjectsDatabasesUserCredsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetPasswordProjectsDatabasesUserCredsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Resets the password of a user creds. */
 export const resetPasswordProjectsDatabasesUserCreds: API.OperationMethod<
   ResetPasswordProjectsDatabasesUserCredsRequest,
@@ -4998,12 +3854,7 @@ export const resetPasswordProjectsDatabasesUserCreds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreProjectsDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RestoreProjectsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new database by restoring from an existing backup. The new database must be in the same cloud region or multi-region location as the existing backup. This behaves similar to FirestoreAdmin.CreateDatabase except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing backup. The long-running operation can be used to track the progress of the restore, with the Operation's metadata field type being the RestoreDatabaseMetadata. The response type is the Database if the restore was successful. The new database is not readable or writeable until the LRO has completed. */
 export const restoreProjectsDatabases: API.OperationMethod<
   RestoreProjectsDatabasesRequest,
@@ -5018,12 +3869,7 @@ export const restoreProjectsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RollbackProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RollbackProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Rolls back a transaction. */
 export const rollbackProjectsDatabasesDocuments: API.OperationMethod<
   RollbackProjectsDatabasesDocumentsRequest,
@@ -5038,12 +3884,7 @@ export const rollbackProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunAggregationQueryProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RunAggregationQueryProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API allows running an aggregation to produce a series of AggregationResult server-side. High-Level Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM ( SELECT * FROM k where a = true ); ``` */
 export const runAggregationQueryProjectsDatabasesDocuments: API.OperationMethod<
   RunAggregationQueryProjectsDatabasesDocumentsRequest,
@@ -5058,12 +3899,7 @@ export const runAggregationQueryProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunQueryProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RunQueryProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Runs a query. */
 export const runQueryProjectsDatabasesDocuments: API.OperationMethod<
   RunQueryProjectsDatabasesDocumentsRequest,
@@ -5078,12 +3914,7 @@ export const runQueryProjectsDatabasesDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WriteProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WriteProjectsDatabasesDocumentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Streams batches of document updates and deletes, in order. This method is only available via gRPC or WebChannel (not REST). */
 export const writeProjectsDatabasesDocuments: API.OperationMethod<
   WriteProjectsDatabasesDocumentsRequest,
@@ -5097,3 +3928,4 @@ export const writeProjectsDatabasesDocuments: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

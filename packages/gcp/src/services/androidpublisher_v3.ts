@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request for the product.purchases.acknowledge API. */
@@ -66,12 +66,10 @@ export interface ProductPurchasesAcknowledgeRequest {
   developerPayload?: string;
 }
 export const ProductPurchasesAcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    developerPayload: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductPurchasesAcknowledgeRequest",
-}) as any as S.Schema<ProductPurchasesAcknowledgeRequest>;
+S.Struct({
+  "developerPayload": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductPurchasesAcknowledgeRequest" }) as any as S.Schema<ProductPurchasesAcknowledgeRequest>;
 
 export interface AcknowledgePurchasesProductsRequest {
   /** The package name of the application the inapp product was sold in (for example, 'com.some.thing'). */
@@ -84,28 +82,18 @@ export interface AcknowledgePurchasesProductsRequest {
   body?: ProductPurchasesAcknowledgeRequest;
 }
 export const AcknowledgePurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    token: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-    body: S.optional(ProductPurchasesAcknowledgeRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AcknowledgePurchasesProductsRequest",
-}) as any as S.Schema<AcknowledgePurchasesProductsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(ProductPurchasesAcknowledgeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "AcknowledgePurchasesProductsRequest" }) as any as S.Schema<AcknowledgePurchasesProductsRequest>;
 
 export interface AcknowledgePurchasesProductsResponse {}
-export const AcknowledgePurchasesProductsResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "AcknowledgePurchasesProductsResponse",
-}) as any as S.Schema<AcknowledgePurchasesProductsResponse>;
+export const AcknowledgePurchasesProductsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "AcknowledgePurchasesProductsResponse" }) as any as S.Schema<AcknowledgePurchasesProductsResponse>;
 
 /** User account identifier in your app. */
 export interface ExternalAccountIds {
@@ -115,13 +103,11 @@ export interface ExternalAccountIds {
   obfuscatedAccountId?: string;
 }
 export const ExternalAccountIds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    obfuscatedProfileId: S.optional(S.String),
-    obfuscatedAccountId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExternalAccountIds",
-}) as any as S.Schema<ExternalAccountIds>;
+S.Struct({
+  "obfuscatedProfileId": S.optional(S.String),
+  "obfuscatedAccountId": S.optional(S.String),
+}),
+).annotate({ identifier: "ExternalAccountIds" }) as any as S.Schema<ExternalAccountIds>;
 
 /** Request for the purchases.subscriptions.acknowledge API. */
 export interface SubscriptionPurchasesAcknowledgeRequest {
@@ -130,15 +116,12 @@ export interface SubscriptionPurchasesAcknowledgeRequest {
   /** Optional. User account identifier in your app. */
   externalAccountIds?: ExternalAccountIds;
 }
-export const SubscriptionPurchasesAcknowledgeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      developerPayload: S.optional(S.String),
-      externalAccountIds: S.optional(ExternalAccountIds),
-    }),
-).annotate({
-  identifier: "SubscriptionPurchasesAcknowledgeRequest",
-}) as any as S.Schema<SubscriptionPurchasesAcknowledgeRequest>;
+export const SubscriptionPurchasesAcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "developerPayload": S.optional(S.String),
+  "externalAccountIds": S.optional(ExternalAccountIds),
+}),
+).annotate({ identifier: "SubscriptionPurchasesAcknowledgeRequest" }) as any as S.Schema<SubscriptionPurchasesAcknowledgeRequest>;
 
 export interface AcknowledgePurchasesSubscriptionsRequest {
   /** Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with add-ons. The purchased subscription ID (for example, 'monthly001'). */
@@ -150,46 +133,29 @@ export interface AcknowledgePurchasesSubscriptionsRequest {
   /** Request body */
   body?: SubscriptionPurchasesAcknowledgeRequest;
 }
-export const AcknowledgePurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      token: S.String.pipe(T.Label()),
-      body: S.optional(
-        SubscriptionPurchasesAcknowledgeRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "AcknowledgePurchasesSubscriptionsRequest",
-}) as any as S.Schema<AcknowledgePurchasesSubscriptionsRequest>;
+export const AcknowledgePurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "subscriptionId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+  "body": S.optional(SubscriptionPurchasesAcknowledgeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "AcknowledgePurchasesSubscriptionsRequest" }) as any as S.Schema<AcknowledgePurchasesSubscriptionsRequest>;
 
 export interface AcknowledgePurchasesSubscriptionsResponse {}
-export const AcknowledgePurchasesSubscriptionsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AcknowledgePurchasesSubscriptionsResponse",
-  }) as any as S.Schema<AcknowledgePurchasesSubscriptionsResponse>;
+export const AcknowledgePurchasesSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "AcknowledgePurchasesSubscriptionsResponse" }) as any as S.Schema<AcknowledgePurchasesSubscriptionsResponse>;
 
-export type ActivateOneTimeProductOfferRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const ActivateOneTimeProductOfferRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type ActivateOneTimeProductOfferRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const ActivateOneTimeProductOfferRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for ActivateOneTimeProductOffer. */
 export interface ActivateOneTimeProductOfferRequest {
   /** Required. The parent one-time product (ID) of the offer to activate. */
   productId?: string;
   /** Optional. The latency tolerance for the propagation of this update. Defaults to latency-sensitive. */
-  latencyTolerance?: ActivateOneTimeProductOfferRequestLatencyToleranceEnum;
+  latencyTolerance?: ActivateOneTimeProductOfferRequestLatencyToleranceEnum | (string & {});
   /** Required. The parent app (package name) of the offer to activate. */
   packageName?: string;
   /** Required. The offer ID of the offer to activate. */
@@ -198,18 +164,14 @@ export interface ActivateOneTimeProductOfferRequest {
   purchaseOptionId?: string;
 }
 export const ActivateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    latencyTolerance: S.optional(
-      ActivateOneTimeProductOfferRequestLatencyToleranceEnum,
-    ),
-    packageName: S.optional(S.String),
-    offerId: S.optional(S.String),
-    purchaseOptionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ActivateOneTimeProductOfferRequest",
-}) as any as S.Schema<ActivateOneTimeProductOfferRequest>;
+S.Struct({
+  "productId": S.optional(S.String),
+  "latencyTolerance": S.optional(ActivateOneTimeProductOfferRequestLatencyToleranceEnum),
+  "packageName": S.optional(S.String),
+  "offerId": S.optional(S.String),
+  "purchaseOptionId": S.optional(S.String),
+}),
+).annotate({ identifier: "ActivateOneTimeProductOfferRequest" }) as any as S.Schema<ActivateOneTimeProductOfferRequest>;
 
 export interface ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The parent app (package name) of the offer to activate. */
@@ -223,25 +185,15 @@ export interface ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest
   /** Request body */
   body?: ActivateOneTimeProductOfferRequest;
 }
-export const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      offerId: S.String.pipe(T.Label()),
-      purchaseOptionId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(ActivateOneTimeProductOfferRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:activate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+export const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "offerId": S.String.pipe(T.Label()),
+  "purchaseOptionId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(ActivateOneTimeProductOfferRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:activate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest" }) as any as S.Schema<ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 /** The version of the available regions being used for the specified resource. */
 export interface RegionsVersion {
@@ -249,26 +201,19 @@ export interface RegionsVersion {
   version?: string;
 }
 export const RegionsVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-  }),
+S.Struct({
+  "version": S.optional(S.String),
+}),
 ).annotate({ identifier: "RegionsVersion" }) as any as S.Schema<RegionsVersion>;
 
-export type OneTimeProductOfferStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "DRAFT"
-  | "ACTIVE"
-  | "CANCELLED"
-  | "INACTIVE"
-  | (string & {});
+export type OneTimeProductOfferStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "CANCELLED" | "INACTIVE";
 export const OneTimeProductOfferStateEnum = /*@__PURE__*/ S.String;
 
 /** Options for one-time product offers without a regional price override. */
 export interface OneTimeProductOfferNoPriceOverrideOptions {}
-export const OneTimeProductOfferNoPriceOverrideOptions =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "OneTimeProductOfferNoPriceOverrideOptions",
-  }) as any as S.Schema<OneTimeProductOfferNoPriceOverrideOptions>;
+export const OneTimeProductOfferNoPriceOverrideOptions = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "OneTimeProductOfferNoPriceOverrideOptions" }) as any as S.Schema<OneTimeProductOfferNoPriceOverrideOptions>;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -280,20 +225,15 @@ export interface Money {
   nanos?: number;
 }
 export const Money = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyCode: S.optional(S.String),
-    units: S.optional(S.String),
-    nanos: S.optional(S.Number),
-  }),
+S.Struct({
+  "currencyCode": S.optional(S.String),
+  "units": S.optional(S.String),
+  "nanos": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
-export type OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum =
-    | "AVAILABILITY_UNSPECIFIED"
-    | "AVAILABLE"
-    | "NO_LONGER_AVAILABLE"
-    | (string & {});
-export const OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum =
-  /*@__PURE__*/ S.String;
+export type OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum = "AVAILABILITY_UNSPECIFIED" | "AVAILABLE" | "NO_LONGER_AVAILABLE";
+export const OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum = /*@__PURE__*/ S.String;
 
 /** Regional pricing and availability configuration for a one-time product offer. */
 export interface OneTimeProductOfferRegionalPricingAndAvailabilityConfig {
@@ -308,27 +248,18 @@ export interface OneTimeProductOfferRegionalPricingAndAvailabilityConfig {
   /** Required. The availability for this region. */
   availability?: OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum;
 }
-export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      regionCode: S.optional(S.String),
-      noOverride: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
-      absoluteDiscount: S.optional(Money),
-      relativeDiscount: S.optional(S.Number),
-      availability: S.optional(
-        OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "OneTimeProductOfferRegionalPricingAndAvailabilityConfig",
-  }) as any as S.Schema<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
+export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "noOverride": S.optional(OneTimeProductOfferNoPriceOverrideOptions),
+  "absoluteDiscount": S.optional(Money),
+  "relativeDiscount": S.optional(S.Number),
+  "availability": S.optional(OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum),
+}),
+).annotate({ identifier: "OneTimeProductOfferRegionalPricingAndAvailabilityConfig" }) as any as S.Schema<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
 
-export type OneTimeProductOfferRegionalPricingAndAvailabilityConfigList =
-  ReadonlyArray<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
-export const OneTimeProductOfferRegionalPricingAndAvailabilityConfigList =
-  /*@__PURE__*/ S.Array(
-    OneTimeProductOfferRegionalPricingAndAvailabilityConfig,
-  ) as any as S.Schema<OneTimeProductOfferRegionalPricingAndAvailabilityConfigList>;
+export type OneTimeProductOfferRegionalPricingAndAvailabilityConfigList = ReadonlyArray<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
+export const OneTimeProductOfferRegionalPricingAndAvailabilityConfigList = /*@__PURE__*/ S.Array(OneTimeProductOfferRegionalPricingAndAvailabilityConfig) as any as S.Schema<OneTimeProductOfferRegionalPricingAndAvailabilityConfigList>;
 
 /** Represents a custom tag specified for a product offer. */
 export interface OfferTag {
@@ -336,15 +267,13 @@ export interface OfferTag {
   tag?: string;
 }
 export const OfferTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tag: S.optional(S.String),
-  }),
+S.Struct({
+  "tag": S.optional(S.String),
+}),
 ).annotate({ identifier: "OfferTag" }) as any as S.Schema<OfferTag>;
 
 export type OfferTagList = ReadonlyArray<OfferTag>;
-export const OfferTagList = /*@__PURE__*/ S.Array(
-  OfferTag,
-) as any as S.Schema<OfferTagList>;
+export const OfferTagList = /*@__PURE__*/ S.Array(OfferTag) as any as S.Schema<OfferTagList>;
 
 /** Configuration specific to discounted offers. */
 export interface OneTimeProductDiscountedOffer {
@@ -356,22 +285,15 @@ export interface OneTimeProductDiscountedOffer {
   endTime?: string;
 }
 export const OneTimeProductDiscountedOffer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    redemptionLimit: S.optional(S.String),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OneTimeProductDiscountedOffer",
-}) as any as S.Schema<OneTimeProductDiscountedOffer>;
+S.Struct({
+  "redemptionLimit": S.optional(S.String),
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
+).annotate({ identifier: "OneTimeProductDiscountedOffer" }) as any as S.Schema<OneTimeProductDiscountedOffer>;
 
-export type OneTimeProductPreOrderOfferPriceChangeBehaviorEnum =
-  | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_UNSPECIFIED"
-  | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_TWO_POINT_LOWEST"
-  | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_NEW_ORDERS_ONLY"
-  | (string & {});
-export const OneTimeProductPreOrderOfferPriceChangeBehaviorEnum =
-  /*@__PURE__*/ S.String;
+export type OneTimeProductPreOrderOfferPriceChangeBehaviorEnum = "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_UNSPECIFIED" | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_TWO_POINT_LOWEST" | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_NEW_ORDERS_ONLY";
+export const OneTimeProductPreOrderOfferPriceChangeBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** Configuration specific to pre-order offers. */
 export interface OneTimeProductPreOrderOffer {
@@ -385,17 +307,13 @@ export interface OneTimeProductPreOrderOffer {
   endTime?: string;
 }
 export const OneTimeProductPreOrderOffer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priceChangeBehavior: S.optional(
-      OneTimeProductPreOrderOfferPriceChangeBehaviorEnum,
-    ),
-    releaseTime: S.optional(S.String),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OneTimeProductPreOrderOffer",
-}) as any as S.Schema<OneTimeProductPreOrderOffer>;
+S.Struct({
+  "priceChangeBehavior": S.optional(OneTimeProductPreOrderOfferPriceChangeBehaviorEnum),
+  "releaseTime": S.optional(S.String),
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
+).annotate({ identifier: "OneTimeProductPreOrderOffer" }) as any as S.Schema<OneTimeProductPreOrderOffer>;
 
 /** A single offer for a one-time product. */
 export interface OneTimeProductOffer {
@@ -421,31 +339,22 @@ export interface OneTimeProductOffer {
   productId?: string;
 }
 export const OneTimeProductOffer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionsVersion: S.optional(RegionsVersion),
-    state: S.optional(OneTimeProductOfferStateEnum),
-    regionalPricingAndAvailabilityConfigs: S.optional(
-      OneTimeProductOfferRegionalPricingAndAvailabilityConfigList,
-    ),
-    packageName: S.optional(S.String),
-    offerId: S.optional(S.String),
-    purchaseOptionId: S.optional(S.String),
-    offerTags: S.optional(OfferTagList),
-    discountedOffer: S.optional(OneTimeProductDiscountedOffer),
-    preOrderOffer: S.optional(OneTimeProductPreOrderOffer),
-    productId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OneTimeProductOffer",
-}) as any as S.Schema<OneTimeProductOffer>;
+S.Struct({
+  "regionsVersion": S.optional(RegionsVersion),
+  "state": S.optional(OneTimeProductOfferStateEnum),
+  "regionalPricingAndAvailabilityConfigs": S.optional(OneTimeProductOfferRegionalPricingAndAvailabilityConfigList),
+  "packageName": S.optional(S.String),
+  "offerId": S.optional(S.String),
+  "purchaseOptionId": S.optional(S.String),
+  "offerTags": S.optional(OfferTagList),
+  "discountedOffer": S.optional(OneTimeProductDiscountedOffer),
+  "preOrderOffer": S.optional(OneTimeProductPreOrderOffer),
+  "productId": S.optional(S.String),
+}),
+).annotate({ identifier: "OneTimeProductOffer" }) as any as S.Schema<OneTimeProductOffer>;
 
-export type ActivateBasePlanRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const ActivateBasePlanRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type ActivateBasePlanRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const ActivateBasePlanRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for ActivateBasePlan. */
 export interface ActivateBasePlanRequest {
@@ -456,18 +365,16 @@ export interface ActivateBasePlanRequest {
   /** Required. The unique base plan ID of the base plan to activate. */
   basePlanId?: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: ActivateBasePlanRequestLatencyToleranceEnum;
+  latencyTolerance?: ActivateBasePlanRequestLatencyToleranceEnum | (string & {});
 }
 export const ActivateBasePlanRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    packageName: S.optional(S.String),
-    basePlanId: S.optional(S.String),
-    latencyTolerance: S.optional(ActivateBasePlanRequestLatencyToleranceEnum),
-  }),
-).annotate({
-  identifier: "ActivateBasePlanRequest",
-}) as any as S.Schema<ActivateBasePlanRequest>;
+S.Struct({
+  "productId": S.optional(S.String),
+  "packageName": S.optional(S.String),
+  "basePlanId": S.optional(S.String),
+  "latencyTolerance": S.optional(ActivateBasePlanRequestLatencyToleranceEnum),
+}),
+).annotate({ identifier: "ActivateBasePlanRequest" }) as any as S.Schema<ActivateBasePlanRequest>;
 
 export interface ActivateMonetizationSubscriptionsBasePlansRequest {
   /** Required. The unique base plan ID of the base plan to activate. */
@@ -479,33 +386,17 @@ export interface ActivateMonetizationSubscriptionsBasePlansRequest {
   /** Request body */
   body?: ActivateBasePlanRequest;
 }
-export const ActivateMonetizationSubscriptionsBasePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      basePlanId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(ActivateBasePlanRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:activate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ActivateMonetizationSubscriptionsBasePlansRequest",
-  }) as any as S.Schema<ActivateMonetizationSubscriptionsBasePlansRequest>;
+export const ActivateMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "basePlanId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(ActivateBasePlanRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:activate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ActivateMonetizationSubscriptionsBasePlansRequest" }) as any as S.Schema<ActivateMonetizationSubscriptionsBasePlansRequest>;
 
-export type RegionalProductAgeRatingInfoProductAgeRatingTierEnum =
-  | "PRODUCT_AGE_RATING_TIER_UNKNOWN"
-  | "PRODUCT_AGE_RATING_TIER_EVERYONE"
-  | "PRODUCT_AGE_RATING_TIER_THIRTEEN_AND_ABOVE"
-  | "PRODUCT_AGE_RATING_TIER_SIXTEEN_AND_ABOVE"
-  | "PRODUCT_AGE_RATING_TIER_EIGHTEEN_AND_ABOVE"
-  | (string & {});
-export const RegionalProductAgeRatingInfoProductAgeRatingTierEnum =
-  /*@__PURE__*/ S.String;
+export type RegionalProductAgeRatingInfoProductAgeRatingTierEnum = "PRODUCT_AGE_RATING_TIER_UNKNOWN" | "PRODUCT_AGE_RATING_TIER_EVERYONE" | "PRODUCT_AGE_RATING_TIER_THIRTEEN_AND_ABOVE" | "PRODUCT_AGE_RATING_TIER_SIXTEEN_AND_ABOVE" | "PRODUCT_AGE_RATING_TIER_EIGHTEEN_AND_ABOVE";
+export const RegionalProductAgeRatingInfoProductAgeRatingTierEnum = /*@__PURE__*/ S.String;
 
 /** Details about the age rating for a specific geographic region. */
 export interface RegionalProductAgeRatingInfo {
@@ -515,49 +406,22 @@ export interface RegionalProductAgeRatingInfo {
   regionCode?: string;
 }
 export const RegionalProductAgeRatingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productAgeRatingTier: S.optional(
-      RegionalProductAgeRatingInfoProductAgeRatingTierEnum,
-    ),
-    regionCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegionalProductAgeRatingInfo",
-}) as any as S.Schema<RegionalProductAgeRatingInfo>;
+S.Struct({
+  "productAgeRatingTier": S.optional(RegionalProductAgeRatingInfoProductAgeRatingTierEnum),
+  "regionCode": S.optional(S.String),
+}),
+).annotate({ identifier: "RegionalProductAgeRatingInfo" }) as any as S.Schema<RegionalProductAgeRatingInfo>;
 
-export type RegionalProductAgeRatingInfoList =
-  ReadonlyArray<RegionalProductAgeRatingInfo>;
-export const RegionalProductAgeRatingInfoList = /*@__PURE__*/ S.Array(
-  RegionalProductAgeRatingInfo,
-) as any as S.Schema<RegionalProductAgeRatingInfoList>;
+export type RegionalProductAgeRatingInfoList = ReadonlyArray<RegionalProductAgeRatingInfo>;
+export const RegionalProductAgeRatingInfoList = /*@__PURE__*/ S.Array(RegionalProductAgeRatingInfo) as any as S.Schema<RegionalProductAgeRatingInfoList>;
 
-export type SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum =
-  | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
-  | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
-  | "WITHDRAWAL_RIGHT_SERVICE"
-  | (string & {});
-export const SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum =
-  /*@__PURE__*/ S.String;
+export type SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum = "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED" | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT" | "WITHDRAWAL_RIGHT_SERVICE";
+export const SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum = /*@__PURE__*/ S.String;
 
-export type RegionalTaxRateInfoStreamingTaxTypeEnum =
-  | "STREAMING_TAX_TYPE_UNSPECIFIED"
-  | "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL"
-  | "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES"
-  | "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL"
-  | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL"
-  | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES"
-  | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL"
-  | (string & {});
+export type RegionalTaxRateInfoStreamingTaxTypeEnum = "STREAMING_TAX_TYPE_UNSPECIFIED" | "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL" | "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES" | "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL" | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL" | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES" | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL";
 export const RegionalTaxRateInfoStreamingTaxTypeEnum = /*@__PURE__*/ S.String;
 
-export type RegionalTaxRateInfoTaxTierEnum =
-  | "TAX_TIER_UNSPECIFIED"
-  | "TAX_TIER_BOOKS_1"
-  | "TAX_TIER_NEWS_1"
-  | "TAX_TIER_NEWS_2"
-  | "TAX_TIER_MUSIC_OR_AUDIO_1"
-  | "TAX_TIER_LIVE_OR_BROADCAST_1"
-  | (string & {});
+export type RegionalTaxRateInfoTaxTierEnum = "TAX_TIER_UNSPECIFIED" | "TAX_TIER_BOOKS_1" | "TAX_TIER_NEWS_1" | "TAX_TIER_NEWS_2" | "TAX_TIER_MUSIC_OR_AUDIO_1" | "TAX_TIER_LIVE_OR_BROADCAST_1";
 export const RegionalTaxRateInfoTaxTierEnum = /*@__PURE__*/ S.String;
 
 /** Specified details about taxation in a given geographical region. */
@@ -570,22 +434,15 @@ export interface RegionalTaxRateInfo {
   eligibleForStreamingServiceTaxRate?: boolean;
 }
 export const RegionalTaxRateInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    streamingTaxType: S.optional(RegionalTaxRateInfoStreamingTaxTypeEnum),
-    taxTier: S.optional(RegionalTaxRateInfoTaxTierEnum),
-    eligibleForStreamingServiceTaxRate: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RegionalTaxRateInfo",
-}) as any as S.Schema<RegionalTaxRateInfo>;
+S.Struct({
+  "streamingTaxType": S.optional(RegionalTaxRateInfoStreamingTaxTypeEnum),
+  "taxTier": S.optional(RegionalTaxRateInfoTaxTierEnum),
+  "eligibleForStreamingServiceTaxRate": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "RegionalTaxRateInfo" }) as any as S.Schema<RegionalTaxRateInfo>;
 
-export type RegionalTaxRateInfoMap = {
-  [key: string]: RegionalTaxRateInfo | undefined;
-};
-export const RegionalTaxRateInfoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RegionalTaxRateInfo,
-) as any as S.Schema<RegionalTaxRateInfoMap>;
+export type RegionalTaxRateInfoMap = { [key: string]: RegionalTaxRateInfo | undefined };
+export const RegionalTaxRateInfoMap = /*@__PURE__*/ S.Record(S.String, RegionalTaxRateInfo) as any as S.Schema<RegionalTaxRateInfoMap>;
 
 /** Details about taxation, Google Play policy, and legal compliance for subscription products. */
 export interface SubscriptionTaxAndComplianceSettings {
@@ -600,27 +457,18 @@ export interface SubscriptionTaxAndComplianceSettings {
   /** Product tax category code to assign to the subscription. Product tax category determines the transaction tax rates applied to the subscription. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
   productTaxCategoryCode?: string;
 }
-export const SubscriptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      isTokenizedDigitalAsset: S.optional(S.Boolean),
-      regionalProductAgeRatingInfos: S.optional(
-        RegionalProductAgeRatingInfoList,
-      ),
-      eeaWithdrawalRightType: S.optional(
-        SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum,
-      ),
-      taxRateInfoByRegionCode: S.optional(RegionalTaxRateInfoMap),
-      productTaxCategoryCode: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SubscriptionTaxAndComplianceSettings",
-}) as any as S.Schema<SubscriptionTaxAndComplianceSettings>;
+export const SubscriptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "isTokenizedDigitalAsset": S.optional(S.Boolean),
+  "regionalProductAgeRatingInfos": S.optional(RegionalProductAgeRatingInfoList),
+  "eeaWithdrawalRightType": S.optional(SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum),
+  "taxRateInfoByRegionCode": S.optional(RegionalTaxRateInfoMap),
+  "productTaxCategoryCode": S.optional(S.String),
+}),
+).annotate({ identifier: "SubscriptionTaxAndComplianceSettings" }) as any as S.Schema<SubscriptionTaxAndComplianceSettings>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Countries where the purchase of this product is restricted to payment methods registered in the same country. If empty, no payment location restrictions are imposed. */
 export interface RestrictedPaymentCountries {
@@ -628,41 +476,21 @@ export interface RestrictedPaymentCountries {
   regionCodes?: StringList;
 }
 export const RestrictedPaymentCountries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCodes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "RestrictedPaymentCountries",
-}) as any as S.Schema<RestrictedPaymentCountries>;
+S.Struct({
+  "regionCodes": S.optional(StringList),
+}),
+).annotate({ identifier: "RestrictedPaymentCountries" }) as any as S.Schema<RestrictedPaymentCountries>;
 
-export type BasePlanStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "DRAFT"
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type BasePlanStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "INACTIVE";
 export const BasePlanStateEnum = /*@__PURE__*/ S.String;
 
-export type InstallmentsBasePlanTypeResubscribeStateEnum =
-  | "RESUBSCRIBE_STATE_UNSPECIFIED"
-  | "RESUBSCRIBE_STATE_ACTIVE"
-  | "RESUBSCRIBE_STATE_INACTIVE"
-  | (string & {});
-export const InstallmentsBasePlanTypeResubscribeStateEnum =
-  /*@__PURE__*/ S.String;
+export type InstallmentsBasePlanTypeResubscribeStateEnum = "RESUBSCRIBE_STATE_UNSPECIFIED" | "RESUBSCRIBE_STATE_ACTIVE" | "RESUBSCRIBE_STATE_INACTIVE";
+export const InstallmentsBasePlanTypeResubscribeStateEnum = /*@__PURE__*/ S.String;
 
-export type InstallmentsBasePlanTypeRenewalTypeEnum =
-  | "RENEWAL_TYPE_UNSPECIFIED"
-  | "RENEWAL_TYPE_RENEWS_WITHOUT_COMMITMENT"
-  | "RENEWAL_TYPE_RENEWS_WITH_COMMITMENT"
-  | (string & {});
+export type InstallmentsBasePlanTypeRenewalTypeEnum = "RENEWAL_TYPE_UNSPECIFIED" | "RENEWAL_TYPE_RENEWS_WITHOUT_COMMITMENT" | "RENEWAL_TYPE_RENEWS_WITH_COMMITMENT";
 export const InstallmentsBasePlanTypeRenewalTypeEnum = /*@__PURE__*/ S.String;
 
-export type InstallmentsBasePlanTypeProrationModeEnum =
-  | "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED"
-  | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE"
-  | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY"
-  | (string & {});
+export type InstallmentsBasePlanTypeProrationModeEnum = "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED" | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE" | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY";
 export const InstallmentsBasePlanTypeProrationModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an installments base plan where a user commits to a specified number of payments. */
@@ -683,18 +511,16 @@ export interface InstallmentsBasePlanType {
   prorationMode?: InstallmentsBasePlanTypeProrationModeEnum;
 }
 export const InstallmentsBasePlanType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingPeriodDuration: S.optional(S.String),
-    accountHoldDuration: S.optional(S.String),
-    committedPaymentsCount: S.optional(S.Number),
-    gracePeriodDuration: S.optional(S.String),
-    resubscribeState: S.optional(InstallmentsBasePlanTypeResubscribeStateEnum),
-    renewalType: S.optional(InstallmentsBasePlanTypeRenewalTypeEnum),
-    prorationMode: S.optional(InstallmentsBasePlanTypeProrationModeEnum),
-  }),
-).annotate({
-  identifier: "InstallmentsBasePlanType",
-}) as any as S.Schema<InstallmentsBasePlanType>;
+S.Struct({
+  "billingPeriodDuration": S.optional(S.String),
+  "accountHoldDuration": S.optional(S.String),
+  "committedPaymentsCount": S.optional(S.Number),
+  "gracePeriodDuration": S.optional(S.String),
+  "resubscribeState": S.optional(InstallmentsBasePlanTypeResubscribeStateEnum),
+  "renewalType": S.optional(InstallmentsBasePlanTypeRenewalTypeEnum),
+  "prorationMode": S.optional(InstallmentsBasePlanTypeProrationModeEnum),
+}),
+).annotate({ identifier: "InstallmentsBasePlanType" }) as any as S.Schema<InstallmentsBasePlanType>;
 
 /** Pricing information for any new locations Play may launch in. */
 export interface OtherRegionsBasePlanConfig {
@@ -706,20 +532,14 @@ export interface OtherRegionsBasePlanConfig {
   newSubscriberAvailability?: boolean;
 }
 export const OtherRegionsBasePlanConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eurPrice: S.optional(Money),
-    usdPrice: S.optional(Money),
-    newSubscriberAvailability: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "OtherRegionsBasePlanConfig",
-}) as any as S.Schema<OtherRegionsBasePlanConfig>;
+S.Struct({
+  "eurPrice": S.optional(Money),
+  "usdPrice": S.optional(Money),
+  "newSubscriberAvailability": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "OtherRegionsBasePlanConfig" }) as any as S.Schema<OtherRegionsBasePlanConfig>;
 
-export type PrepaidBasePlanTypeTimeExtensionEnum =
-  | "TIME_EXTENSION_UNSPECIFIED"
-  | "TIME_EXTENSION_ACTIVE"
-  | "TIME_EXTENSION_INACTIVE"
-  | (string & {});
+export type PrepaidBasePlanTypeTimeExtensionEnum = "TIME_EXTENSION_UNSPECIFIED" | "TIME_EXTENSION_ACTIVE" | "TIME_EXTENSION_INACTIVE";
 export const PrepaidBasePlanTypeTimeExtensionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a base plan that does not automatically renew at the end of the base plan, and must be manually renewed by the user. */
@@ -730,28 +550,17 @@ export interface PrepaidBasePlanType {
   timeExtension?: PrepaidBasePlanTypeTimeExtensionEnum;
 }
 export const PrepaidBasePlanType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingPeriodDuration: S.optional(S.String),
-    timeExtension: S.optional(PrepaidBasePlanTypeTimeExtensionEnum),
-  }),
-).annotate({
-  identifier: "PrepaidBasePlanType",
-}) as any as S.Schema<PrepaidBasePlanType>;
+S.Struct({
+  "billingPeriodDuration": S.optional(S.String),
+  "timeExtension": S.optional(PrepaidBasePlanTypeTimeExtensionEnum),
+}),
+).annotate({ identifier: "PrepaidBasePlanType" }) as any as S.Schema<PrepaidBasePlanType>;
 
-export type AutoRenewingBasePlanTypeProrationModeEnum =
-  | "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED"
-  | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE"
-  | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY"
-  | (string & {});
+export type AutoRenewingBasePlanTypeProrationModeEnum = "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED" | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE" | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY";
 export const AutoRenewingBasePlanTypeProrationModeEnum = /*@__PURE__*/ S.String;
 
-export type AutoRenewingBasePlanTypeResubscribeStateEnum =
-  | "RESUBSCRIBE_STATE_UNSPECIFIED"
-  | "RESUBSCRIBE_STATE_ACTIVE"
-  | "RESUBSCRIBE_STATE_INACTIVE"
-  | (string & {});
-export const AutoRenewingBasePlanTypeResubscribeStateEnum =
-  /*@__PURE__*/ S.String;
+export type AutoRenewingBasePlanTypeResubscribeStateEnum = "RESUBSCRIBE_STATE_UNSPECIFIED" | "RESUBSCRIBE_STATE_ACTIVE" | "RESUBSCRIBE_STATE_INACTIVE";
+export const AutoRenewingBasePlanTypeResubscribeStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a base plan that automatically renews at the end of its subscription period. */
 export interface AutoRenewingBasePlanType {
@@ -771,18 +580,16 @@ export interface AutoRenewingBasePlanType {
   billingPeriodDuration?: string;
 }
 export const AutoRenewingBasePlanType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legacyCompatibleSubscriptionOfferId: S.optional(S.String),
-    prorationMode: S.optional(AutoRenewingBasePlanTypeProrationModeEnum),
-    legacyCompatible: S.optional(S.Boolean),
-    resubscribeState: S.optional(AutoRenewingBasePlanTypeResubscribeStateEnum),
-    gracePeriodDuration: S.optional(S.String),
-    accountHoldDuration: S.optional(S.String),
-    billingPeriodDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutoRenewingBasePlanType",
-}) as any as S.Schema<AutoRenewingBasePlanType>;
+S.Struct({
+  "legacyCompatibleSubscriptionOfferId": S.optional(S.String),
+  "prorationMode": S.optional(AutoRenewingBasePlanTypeProrationModeEnum),
+  "legacyCompatible": S.optional(S.Boolean),
+  "resubscribeState": S.optional(AutoRenewingBasePlanTypeResubscribeStateEnum),
+  "gracePeriodDuration": S.optional(S.String),
+  "accountHoldDuration": S.optional(S.String),
+  "billingPeriodDuration": S.optional(S.String),
+}),
+).annotate({ identifier: "AutoRenewingBasePlanType" }) as any as S.Schema<AutoRenewingBasePlanType>;
 
 /** Configuration for a base plan specific to a region. */
 export interface RegionalBasePlanConfig {
@@ -794,19 +601,15 @@ export interface RegionalBasePlanConfig {
   price?: Money;
 }
 export const RegionalBasePlanConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newSubscriberAvailability: S.optional(S.Boolean),
-    regionCode: S.optional(S.String),
-    price: S.optional(Money),
-  }),
-).annotate({
-  identifier: "RegionalBasePlanConfig",
-}) as any as S.Schema<RegionalBasePlanConfig>;
+S.Struct({
+  "newSubscriberAvailability": S.optional(S.Boolean),
+  "regionCode": S.optional(S.String),
+  "price": S.optional(Money),
+}),
+).annotate({ identifier: "RegionalBasePlanConfig" }) as any as S.Schema<RegionalBasePlanConfig>;
 
 export type RegionalBasePlanConfigList = ReadonlyArray<RegionalBasePlanConfig>;
-export const RegionalBasePlanConfigList = /*@__PURE__*/ S.Array(
-  RegionalBasePlanConfig,
-) as any as S.Schema<RegionalBasePlanConfigList>;
+export const RegionalBasePlanConfigList = /*@__PURE__*/ S.Array(RegionalBasePlanConfig) as any as S.Schema<RegionalBasePlanConfigList>;
 
 /** A single base plan for a subscription. */
 export interface BasePlan {
@@ -828,22 +631,20 @@ export interface BasePlan {
   regionalConfigs?: RegionalBasePlanConfigList;
 }
 export const BasePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(BasePlanStateEnum),
-    installmentsBasePlanType: S.optional(InstallmentsBasePlanType),
-    otherRegionsConfig: S.optional(OtherRegionsBasePlanConfig),
-    prepaidBasePlanType: S.optional(PrepaidBasePlanType),
-    autoRenewingBasePlanType: S.optional(AutoRenewingBasePlanType),
-    offerTags: S.optional(OfferTagList),
-    basePlanId: S.optional(S.String),
-    regionalConfigs: S.optional(RegionalBasePlanConfigList),
-  }),
+S.Struct({
+  "state": S.optional(BasePlanStateEnum),
+  "installmentsBasePlanType": S.optional(InstallmentsBasePlanType),
+  "otherRegionsConfig": S.optional(OtherRegionsBasePlanConfig),
+  "prepaidBasePlanType": S.optional(PrepaidBasePlanType),
+  "autoRenewingBasePlanType": S.optional(AutoRenewingBasePlanType),
+  "offerTags": S.optional(OfferTagList),
+  "basePlanId": S.optional(S.String),
+  "regionalConfigs": S.optional(RegionalBasePlanConfigList),
+}),
 ).annotate({ identifier: "BasePlan" }) as any as S.Schema<BasePlan>;
 
 export type BasePlanList = ReadonlyArray<BasePlan>;
-export const BasePlanList = /*@__PURE__*/ S.Array(
-  BasePlan,
-) as any as S.Schema<BasePlanList>;
+export const BasePlanList = /*@__PURE__*/ S.Array(BasePlan) as any as S.Schema<BasePlanList>;
 
 /** The consumer-visible metadata of a subscription. */
 export interface SubscriptionListing {
@@ -857,20 +658,16 @@ export interface SubscriptionListing {
   benefits?: StringList;
 }
 export const SubscriptionListing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageCode: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    benefits: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "SubscriptionListing",
-}) as any as S.Schema<SubscriptionListing>;
+S.Struct({
+  "languageCode": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+  "benefits": S.optional(StringList),
+}),
+).annotate({ identifier: "SubscriptionListing" }) as any as S.Schema<SubscriptionListing>;
 
 export type SubscriptionListingList = ReadonlyArray<SubscriptionListing>;
-export const SubscriptionListingList = /*@__PURE__*/ S.Array(
-  SubscriptionListing,
-) as any as S.Schema<SubscriptionListingList>;
+export const SubscriptionListingList = /*@__PURE__*/ S.Array(SubscriptionListing) as any as S.Schema<SubscriptionListingList>;
 
 /** A single subscription for an app. */
 export interface Subscription {
@@ -890,24 +687,19 @@ export interface Subscription {
   packageName?: string;
 }
 export const Subscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    archived: S.optional(S.Boolean),
-    taxAndComplianceSettings: S.optional(SubscriptionTaxAndComplianceSettings),
-    restrictedPaymentCountries: S.optional(RestrictedPaymentCountries),
-    basePlans: S.optional(BasePlanList),
-    productId: S.optional(S.String),
-    listings: S.optional(SubscriptionListingList),
-    packageName: S.optional(S.String),
-  }),
+S.Struct({
+  "archived": S.optional(S.Boolean),
+  "taxAndComplianceSettings": S.optional(SubscriptionTaxAndComplianceSettings),
+  "restrictedPaymentCountries": S.optional(RestrictedPaymentCountries),
+  "basePlans": S.optional(BasePlanList),
+  "productId": S.optional(S.String),
+  "listings": S.optional(SubscriptionListingList),
+  "packageName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
-export type ActivateSubscriptionOfferRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const ActivateSubscriptionOfferRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type ActivateSubscriptionOfferRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const ActivateSubscriptionOfferRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for ActivateSubscriptionOffer. */
 export interface ActivateSubscriptionOfferRequest {
@@ -916,25 +708,21 @@ export interface ActivateSubscriptionOfferRequest {
   /** Required. The parent subscription (ID) of the offer to activate. */
   productId?: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: ActivateSubscriptionOfferRequestLatencyToleranceEnum;
+  latencyTolerance?: ActivateSubscriptionOfferRequestLatencyToleranceEnum | (string & {});
   /** Required. The parent app (package name) of the offer to activate. */
   packageName?: string;
   /** Required. The unique offer ID of the offer to activate. */
   offerId?: string;
 }
 export const ActivateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    basePlanId: S.optional(S.String),
-    productId: S.optional(S.String),
-    latencyTolerance: S.optional(
-      ActivateSubscriptionOfferRequestLatencyToleranceEnum,
-    ),
-    packageName: S.optional(S.String),
-    offerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ActivateSubscriptionOfferRequest",
-}) as any as S.Schema<ActivateSubscriptionOfferRequest>;
+S.Struct({
+  "basePlanId": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "latencyTolerance": S.optional(ActivateSubscriptionOfferRequestLatencyToleranceEnum),
+  "packageName": S.optional(S.String),
+  "offerId": S.optional(S.String),
+}),
+).annotate({ identifier: "ActivateSubscriptionOfferRequest" }) as any as S.Schema<ActivateSubscriptionOfferRequest>;
 
 export interface ActivateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The parent base plan (ID) of the offer to activate. */
@@ -948,48 +736,30 @@ export interface ActivateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: ActivateSubscriptionOfferRequest;
 }
-export const ActivateMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      basePlanId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      offerId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(ActivateSubscriptionOfferRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:activate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ActivateMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<ActivateMonetizationSubscriptionsBasePlansOffersRequest>;
+export const ActivateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "basePlanId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "offerId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(ActivateSubscriptionOfferRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:activate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ActivateMonetizationSubscriptionsBasePlansOffersRequest" }) as any as S.Schema<ActivateMonetizationSubscriptionsBasePlansOffersRequest>;
 
-export type SubscriptionOfferStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "DRAFT"
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type SubscriptionOfferStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "INACTIVE";
 export const SubscriptionOfferStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the targeting rule scope corresponding to the subscriptions in which this offer is defined. */
 export interface TargetingRuleScopeThisSubscription {}
 export const TargetingRuleScopeThisSubscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TargetingRuleScopeThisSubscription",
-}) as any as S.Schema<TargetingRuleScopeThisSubscription>;
+S.Struct({}),
+).annotate({ identifier: "TargetingRuleScopeThisSubscription" }) as any as S.Schema<TargetingRuleScopeThisSubscription>;
 
 /** Represents the targeting rule scope corresponding to any subscription in the parent app. */
 export interface TargetingRuleScopeAnySubscriptionInApp {}
-export const TargetingRuleScopeAnySubscriptionInApp = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "TargetingRuleScopeAnySubscriptionInApp",
-}) as any as S.Schema<TargetingRuleScopeAnySubscriptionInApp>;
+export const TargetingRuleScopeAnySubscriptionInApp = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "TargetingRuleScopeAnySubscriptionInApp" }) as any as S.Schema<TargetingRuleScopeAnySubscriptionInApp>;
 
 /** Defines the scope of subscriptions which a targeting rule can match to target offers to users based on past or current entitlement. */
 export interface TargetingRuleScope {
@@ -1001,14 +771,12 @@ export interface TargetingRuleScope {
   anySubscriptionInApp?: TargetingRuleScopeAnySubscriptionInApp;
 }
 export const TargetingRuleScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    specificSubscriptionInApp: S.optional(S.String),
-    thisSubscription: S.optional(TargetingRuleScopeThisSubscription),
-    anySubscriptionInApp: S.optional(TargetingRuleScopeAnySubscriptionInApp),
-  }),
-).annotate({
-  identifier: "TargetingRuleScope",
-}) as any as S.Schema<TargetingRuleScope>;
+S.Struct({
+  "specificSubscriptionInApp": S.optional(S.String),
+  "thisSubscription": S.optional(TargetingRuleScopeThisSubscription),
+  "anySubscriptionInApp": S.optional(TargetingRuleScopeAnySubscriptionInApp),
+}),
+).annotate({ identifier: "TargetingRuleScope" }) as any as S.Schema<TargetingRuleScope>;
 
 /** Represents a targeting rule of the form: User never had {scope} before. */
 export interface AcquisitionTargetingRule {
@@ -1016,12 +784,10 @@ export interface AcquisitionTargetingRule {
   scope?: TargetingRuleScope;
 }
 export const AcquisitionTargetingRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.optional(TargetingRuleScope),
-  }),
-).annotate({
-  identifier: "AcquisitionTargetingRule",
-}) as any as S.Schema<AcquisitionTargetingRule>;
+S.Struct({
+  "scope": S.optional(TargetingRuleScope),
+}),
+).annotate({ identifier: "AcquisitionTargetingRule" }) as any as S.Schema<AcquisitionTargetingRule>;
 
 /** Represents a targeting rule of the form: User currently has {scope} [with billing period {billing_period}]. */
 export interface UpgradeTargetingRule {
@@ -1033,14 +799,12 @@ export interface UpgradeTargetingRule {
   billingPeriodDuration?: string;
 }
 export const UpgradeTargetingRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oncePerUser: S.optional(S.Boolean),
-    scope: S.optional(TargetingRuleScope),
-    billingPeriodDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpgradeTargetingRule",
-}) as any as S.Schema<UpgradeTargetingRule>;
+S.Struct({
+  "oncePerUser": S.optional(S.Boolean),
+  "scope": S.optional(TargetingRuleScope),
+  "billingPeriodDuration": S.optional(S.String),
+}),
+).annotate({ identifier: "UpgradeTargetingRule" }) as any as S.Schema<UpgradeTargetingRule>;
 
 /** Defines the rule a user needs to satisfy to receive this offer. */
 export interface SubscriptionOfferTargeting {
@@ -1050,13 +814,11 @@ export interface SubscriptionOfferTargeting {
   upgradeRule?: UpgradeTargetingRule;
 }
 export const SubscriptionOfferTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acquisitionRule: S.optional(AcquisitionTargetingRule),
-    upgradeRule: S.optional(UpgradeTargetingRule),
-  }),
-).annotate({
-  identifier: "SubscriptionOfferTargeting",
-}) as any as S.Schema<SubscriptionOfferTargeting>;
+S.Struct({
+  "acquisitionRule": S.optional(AcquisitionTargetingRule),
+  "upgradeRule": S.optional(UpgradeTargetingRule),
+}),
+).annotate({ identifier: "SubscriptionOfferTargeting" }) as any as S.Schema<SubscriptionOfferTargeting>;
 
 /** Configuration for a subscription offer in a single region. */
 export interface RegionalSubscriptionOfferConfig {
@@ -1066,19 +828,14 @@ export interface RegionalSubscriptionOfferConfig {
   newSubscriberAvailability?: boolean;
 }
 export const RegionalSubscriptionOfferConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-    newSubscriberAvailability: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RegionalSubscriptionOfferConfig",
-}) as any as S.Schema<RegionalSubscriptionOfferConfig>;
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "newSubscriberAvailability": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "RegionalSubscriptionOfferConfig" }) as any as S.Schema<RegionalSubscriptionOfferConfig>;
 
-export type RegionalSubscriptionOfferConfigList =
-  ReadonlyArray<RegionalSubscriptionOfferConfig>;
-export const RegionalSubscriptionOfferConfigList = /*@__PURE__*/ S.Array(
-  RegionalSubscriptionOfferConfig,
-) as any as S.Schema<RegionalSubscriptionOfferConfigList>;
+export type RegionalSubscriptionOfferConfigList = ReadonlyArray<RegionalSubscriptionOfferConfig>;
+export const RegionalSubscriptionOfferConfigList = /*@__PURE__*/ S.Array(RegionalSubscriptionOfferConfig) as any as S.Schema<RegionalSubscriptionOfferConfigList>;
 
 /** Configuration for any new locations Play may launch in specified on a subscription offer. */
 export interface OtherRegionsSubscriptionOfferConfig {
@@ -1086,19 +843,16 @@ export interface OtherRegionsSubscriptionOfferConfig {
   otherRegionsNewSubscriberAvailability?: boolean;
 }
 export const OtherRegionsSubscriptionOfferConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    otherRegionsNewSubscriberAvailability: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "OtherRegionsSubscriptionOfferConfig",
-}) as any as S.Schema<OtherRegionsSubscriptionOfferConfig>;
+S.Struct({
+  "otherRegionsNewSubscriberAvailability": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "OtherRegionsSubscriptionOfferConfig" }) as any as S.Schema<OtherRegionsSubscriptionOfferConfig>;
 
 /** Represents the free price override configuration for any new locations Play may launch for a single offer phase. */
 export interface OtherRegionsSubscriptionOfferPhaseFreePriceOverride {}
-export const OtherRegionsSubscriptionOfferPhaseFreePriceOverride =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "OtherRegionsSubscriptionOfferPhaseFreePriceOverride",
-  }) as any as S.Schema<OtherRegionsSubscriptionOfferPhaseFreePriceOverride>;
+export const OtherRegionsSubscriptionOfferPhaseFreePriceOverride = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "OtherRegionsSubscriptionOfferPhaseFreePriceOverride" }) as any as S.Schema<OtherRegionsSubscriptionOfferPhaseFreePriceOverride>;
 
 /** Pricing information for any new locations Play may launch in. */
 export interface OtherRegionsSubscriptionOfferPhasePrices {
@@ -1107,15 +861,12 @@ export interface OtherRegionsSubscriptionOfferPhasePrices {
   /** Required. Price in USD to use for any new locations Play may launch in. */
   usdPrice?: Money;
 }
-export const OtherRegionsSubscriptionOfferPhasePrices = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      eurPrice: S.optional(Money),
-      usdPrice: S.optional(Money),
-    }),
-).annotate({
-  identifier: "OtherRegionsSubscriptionOfferPhasePrices",
-}) as any as S.Schema<OtherRegionsSubscriptionOfferPhasePrices>;
+export const OtherRegionsSubscriptionOfferPhasePrices = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "eurPrice": S.optional(Money),
+  "usdPrice": S.optional(Money),
+}),
+).annotate({ identifier: "OtherRegionsSubscriptionOfferPhasePrices" }) as any as S.Schema<OtherRegionsSubscriptionOfferPhasePrices>;
 
 /** Configuration for any new locations Play may launch in for a single offer phase. */
 export interface OtherRegionsSubscriptionOfferPhaseConfig {
@@ -1128,24 +879,20 @@ export interface OtherRegionsSubscriptionOfferPhaseConfig {
   /** The absolute amount of money subtracted from the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be smaller than the minimum price allowed for any new locations Play may launch in. */
   absoluteDiscounts?: OtherRegionsSubscriptionOfferPhasePrices;
 }
-export const OtherRegionsSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      relativeDiscount: S.optional(S.Number),
-      free: S.optional(OtherRegionsSubscriptionOfferPhaseFreePriceOverride),
-      otherRegionsPrices: S.optional(OtherRegionsSubscriptionOfferPhasePrices),
-      absoluteDiscounts: S.optional(OtherRegionsSubscriptionOfferPhasePrices),
-    }),
-).annotate({
-  identifier: "OtherRegionsSubscriptionOfferPhaseConfig",
-}) as any as S.Schema<OtherRegionsSubscriptionOfferPhaseConfig>;
+export const OtherRegionsSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "relativeDiscount": S.optional(S.Number),
+  "free": S.optional(OtherRegionsSubscriptionOfferPhaseFreePriceOverride),
+  "otherRegionsPrices": S.optional(OtherRegionsSubscriptionOfferPhasePrices),
+  "absoluteDiscounts": S.optional(OtherRegionsSubscriptionOfferPhasePrices),
+}),
+).annotate({ identifier: "OtherRegionsSubscriptionOfferPhaseConfig" }) as any as S.Schema<OtherRegionsSubscriptionOfferPhaseConfig>;
 
 /** Represents the free price override configuration for a single phase of a subscription offer */
 export interface RegionalSubscriptionOfferPhaseFreePriceOverride {}
-export const RegionalSubscriptionOfferPhaseFreePriceOverride =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RegionalSubscriptionOfferPhaseFreePriceOverride",
-  }) as any as S.Schema<RegionalSubscriptionOfferPhaseFreePriceOverride>;
+export const RegionalSubscriptionOfferPhaseFreePriceOverride = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "RegionalSubscriptionOfferPhaseFreePriceOverride" }) as any as S.Schema<RegionalSubscriptionOfferPhaseFreePriceOverride>;
 
 /** Configuration for a single phase of a subscription offer in a single region. */
 export interface RegionalSubscriptionOfferPhaseConfig {
@@ -1160,24 +907,18 @@ export interface RegionalSubscriptionOfferPhaseConfig {
   /** The absolute amount of money subtracted from the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be smaller than the minimum price allowed for this region. */
   absoluteDiscount?: Money;
 }
-export const RegionalSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      price: S.optional(Money),
-      relativeDiscount: S.optional(S.Number),
-      free: S.optional(RegionalSubscriptionOfferPhaseFreePriceOverride),
-      regionCode: S.optional(S.String),
-      absoluteDiscount: S.optional(Money),
-    }),
-).annotate({
-  identifier: "RegionalSubscriptionOfferPhaseConfig",
-}) as any as S.Schema<RegionalSubscriptionOfferPhaseConfig>;
+export const RegionalSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "price": S.optional(Money),
+  "relativeDiscount": S.optional(S.Number),
+  "free": S.optional(RegionalSubscriptionOfferPhaseFreePriceOverride),
+  "regionCode": S.optional(S.String),
+  "absoluteDiscount": S.optional(Money),
+}),
+).annotate({ identifier: "RegionalSubscriptionOfferPhaseConfig" }) as any as S.Schema<RegionalSubscriptionOfferPhaseConfig>;
 
-export type RegionalSubscriptionOfferPhaseConfigList =
-  ReadonlyArray<RegionalSubscriptionOfferPhaseConfig>;
-export const RegionalSubscriptionOfferPhaseConfigList = /*@__PURE__*/ S.Array(
-  RegionalSubscriptionOfferPhaseConfig,
-) as any as S.Schema<RegionalSubscriptionOfferPhaseConfigList>;
+export type RegionalSubscriptionOfferPhaseConfigList = ReadonlyArray<RegionalSubscriptionOfferPhaseConfig>;
+export const RegionalSubscriptionOfferPhaseConfigList = /*@__PURE__*/ S.Array(RegionalSubscriptionOfferPhaseConfig) as any as S.Schema<RegionalSubscriptionOfferPhaseConfigList>;
 
 /** A single phase of a subscription offer. */
 export interface SubscriptionOfferPhase {
@@ -1191,20 +932,16 @@ export interface SubscriptionOfferPhase {
   regionalConfigs?: RegionalSubscriptionOfferPhaseConfigList;
 }
 export const SubscriptionOfferPhase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recurrenceCount: S.optional(S.Number),
-    duration: S.optional(S.String),
-    otherRegionsConfig: S.optional(OtherRegionsSubscriptionOfferPhaseConfig),
-    regionalConfigs: S.optional(RegionalSubscriptionOfferPhaseConfigList),
-  }),
-).annotate({
-  identifier: "SubscriptionOfferPhase",
-}) as any as S.Schema<SubscriptionOfferPhase>;
+S.Struct({
+  "recurrenceCount": S.optional(S.Number),
+  "duration": S.optional(S.String),
+  "otherRegionsConfig": S.optional(OtherRegionsSubscriptionOfferPhaseConfig),
+  "regionalConfigs": S.optional(RegionalSubscriptionOfferPhaseConfigList),
+}),
+).annotate({ identifier: "SubscriptionOfferPhase" }) as any as S.Schema<SubscriptionOfferPhase>;
 
 export type SubscriptionOfferPhaseList = ReadonlyArray<SubscriptionOfferPhase>;
-export const SubscriptionOfferPhaseList = /*@__PURE__*/ S.Array(
-  SubscriptionOfferPhase,
-) as any as S.Schema<SubscriptionOfferPhaseList>;
+export const SubscriptionOfferPhaseList = /*@__PURE__*/ S.Array(SubscriptionOfferPhase) as any as S.Schema<SubscriptionOfferPhaseList>;
 
 /** A single, temporary offer */
 export interface SubscriptionOffer {
@@ -1230,21 +967,19 @@ export interface SubscriptionOffer {
   offerTags?: OfferTagList;
 }
 export const SubscriptionOffer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.optional(S.String),
-    offerId: S.optional(S.String),
-    state: S.optional(SubscriptionOfferStateEnum),
-    basePlanId: S.optional(S.String),
-    targeting: S.optional(SubscriptionOfferTargeting),
-    regionalConfigs: S.optional(RegionalSubscriptionOfferConfigList),
-    otherRegionsConfig: S.optional(OtherRegionsSubscriptionOfferConfig),
-    productId: S.optional(S.String),
-    phases: S.optional(SubscriptionOfferPhaseList),
-    offerTags: S.optional(OfferTagList),
-  }),
-).annotate({
-  identifier: "SubscriptionOffer",
-}) as any as S.Schema<SubscriptionOffer>;
+S.Struct({
+  "packageName": S.optional(S.String),
+  "offerId": S.optional(S.String),
+  "state": S.optional(SubscriptionOfferStateEnum),
+  "basePlanId": S.optional(S.String),
+  "targeting": S.optional(SubscriptionOfferTargeting),
+  "regionalConfigs": S.optional(RegionalSubscriptionOfferConfigList),
+  "otherRegionsConfig": S.optional(OtherRegionsSubscriptionOfferConfig),
+  "productId": S.optional(S.String),
+  "phases": S.optional(SubscriptionOfferPhaseList),
+  "offerTags": S.optional(OfferTagList),
+}),
+).annotate({ identifier: "SubscriptionOffer" }) as any as S.Schema<SubscriptionOffer>;
 
 /** A permission used by this APK. */
 export interface UsesPermission {
@@ -1254,16 +989,14 @@ export interface UsesPermission {
   name?: string;
 }
 export const UsesPermission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxSdkVersion: S.optional(S.Number),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "maxSdkVersion": S.optional(S.Number),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "UsesPermission" }) as any as S.Schema<UsesPermission>;
 
 export type UsesPermissionList = ReadonlyArray<UsesPermission>;
-export const UsesPermissionList = /*@__PURE__*/ S.Array(
-  UsesPermission,
-) as any as S.Schema<UsesPermissionList>;
+export const UsesPermissionList = /*@__PURE__*/ S.Array(UsesPermission) as any as S.Schema<UsesPermissionList>;
 
 /** Defines an APK available for this application that is hosted externally and not uploaded to Google Play. This function is only available to organizations using Managed Play whose application is configured to restrict distribution to the organizations. */
 export interface ExternallyHostedApk {
@@ -1299,26 +1032,24 @@ export interface ExternallyHostedApk {
   fileSize?: string;
 }
 export const ExternallyHostedApk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificateBase64s: S.optional(StringList),
-    fileSha1Base64: S.optional(S.String),
-    packageName: S.optional(S.String),
-    usesFeatures: S.optional(StringList),
-    versionName: S.optional(S.String),
-    nativeCodes: S.optional(StringList),
-    versionCode: S.optional(S.Number),
-    fileSha256Base64: S.optional(S.String),
-    usesPermissions: S.optional(UsesPermissionList),
-    minimumSdk: S.optional(S.Number),
-    maximumSdk: S.optional(S.Number),
-    externallyHostedUrl: S.optional(S.String),
-    applicationLabel: S.optional(S.String),
-    iconBase64: S.optional(S.String),
-    fileSize: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExternallyHostedApk",
-}) as any as S.Schema<ExternallyHostedApk>;
+S.Struct({
+  "certificateBase64s": S.optional(StringList),
+  "fileSha1Base64": S.optional(S.String),
+  "packageName": S.optional(S.String),
+  "usesFeatures": S.optional(StringList),
+  "versionName": S.optional(S.String),
+  "nativeCodes": S.optional(StringList),
+  "versionCode": S.optional(S.Number),
+  "fileSha256Base64": S.optional(S.String),
+  "usesPermissions": S.optional(UsesPermissionList),
+  "minimumSdk": S.optional(S.Number),
+  "maximumSdk": S.optional(S.Number),
+  "externallyHostedUrl": S.optional(S.String),
+  "applicationLabel": S.optional(S.String),
+  "iconBase64": S.optional(S.String),
+  "fileSize": S.optional(S.String),
+}),
+).annotate({ identifier: "ExternallyHostedApk" }) as any as S.Schema<ExternallyHostedApk>;
 
 /** Request to create a new externally hosted APK. */
 export interface ApksAddExternallyHostedRequest {
@@ -1326,12 +1057,10 @@ export interface ApksAddExternallyHostedRequest {
   externallyHostedApk?: ExternallyHostedApk;
 }
 export const ApksAddExternallyHostedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externallyHostedApk: S.optional(ExternallyHostedApk),
-  }),
-).annotate({
-  identifier: "ApksAddExternallyHostedRequest",
-}) as any as S.Schema<ApksAddExternallyHostedRequest>;
+S.Struct({
+  "externallyHostedApk": S.optional(ExternallyHostedApk),
+}),
+).annotate({ identifier: "ApksAddExternallyHostedRequest" }) as any as S.Schema<ApksAddExternallyHostedRequest>;
 
 export interface AddexternallyhostedEditsApksRequest {
   /** Package name of the app. */
@@ -1342,20 +1071,12 @@ export interface AddexternallyhostedEditsApksRequest {
   body?: ApksAddExternallyHostedRequest;
 }
 export const AddexternallyhostedEditsApksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    body: S.optional(ApksAddExternallyHostedRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/externallyHosted",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AddexternallyhostedEditsApksRequest",
-}) as any as S.Schema<AddexternallyhostedEditsApksRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "body": S.optional(ApksAddExternallyHostedRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/externallyHosted","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "AddexternallyhostedEditsApksRequest" }) as any as S.Schema<AddexternallyhostedEditsApksRequest>;
 
 /** Response for creating a new externally hosted APK. */
 export interface ApksAddExternallyHostedResponse {
@@ -1363,12 +1084,10 @@ export interface ApksAddExternallyHostedResponse {
   externallyHostedApk?: ExternallyHostedApk;
 }
 export const ApksAddExternallyHostedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externallyHostedApk: S.optional(ExternallyHostedApk),
-  }),
-).annotate({
-  identifier: "ApksAddExternallyHostedResponse",
-}) as any as S.Schema<ApksAddExternallyHostedResponse>;
+S.Struct({
+  "externallyHostedApk": S.optional(ExternallyHostedApk),
+}),
+).annotate({ identifier: "ApksAddExternallyHostedResponse" }) as any as S.Schema<ApksAddExternallyHostedResponse>;
 
 /** Android api level targeting data for app recovery action targeting. */
 export interface AndroidSdks {
@@ -1376,9 +1095,9 @@ export interface AndroidSdks {
   sdkLevels?: StringList;
 }
 export const AndroidSdks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sdkLevels: S.optional(StringList),
-  }),
+S.Struct({
+  "sdkLevels": S.optional(StringList),
+}),
 ).annotate({ identifier: "AndroidSdks" }) as any as S.Schema<AndroidSdks>;
 
 /** Object representation to describe all set of users. */
@@ -1387,9 +1106,9 @@ export interface AllUsers {
   isAllUsersRequested?: boolean;
 }
 export const AllUsers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isAllUsersRequested: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "isAllUsersRequested": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "AllUsers" }) as any as S.Schema<AllUsers>;
 
 /** Region targeting data for app recovery action targeting. */
@@ -1398,9 +1117,9 @@ export interface Regions {
   regionCode?: StringList;
 }
 export const Regions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(StringList),
-  }),
+S.Struct({
+  "regionCode": S.optional(StringList),
+}),
 ).annotate({ identifier: "Regions" }) as any as S.Schema<Regions>;
 
 /** Update type for targeting. Note it is always a subset Targeting. */
@@ -1413,14 +1132,12 @@ export interface TargetingUpdate {
   regions?: Regions;
 }
 export const TargetingUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    androidSdks: S.optional(AndroidSdks),
-    allUsers: S.optional(AllUsers),
-    regions: S.optional(Regions),
-  }),
-).annotate({
-  identifier: "TargetingUpdate",
-}) as any as S.Schema<TargetingUpdate>;
+S.Struct({
+  "androidSdks": S.optional(AndroidSdks),
+  "allUsers": S.optional(AllUsers),
+  "regions": S.optional(Regions),
+}),
+).annotate({ identifier: "TargetingUpdate" }) as any as S.Schema<TargetingUpdate>;
 
 /** Request message for AddTargeting. */
 export interface AddTargetingRequest {
@@ -1428,12 +1145,10 @@ export interface AddTargetingRequest {
   targetingUpdate?: TargetingUpdate;
 }
 export const AddTargetingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetingUpdate: S.optional(TargetingUpdate),
-  }),
-).annotate({
-  identifier: "AddTargetingRequest",
-}) as any as S.Schema<AddTargetingRequest>;
+S.Struct({
+  "targetingUpdate": S.optional(TargetingUpdate),
+}),
+).annotate({ identifier: "AddTargetingRequest" }) as any as S.Schema<AddTargetingRequest>;
 
 export interface AddTargetingApprecoveryRequest {
   /** Required. Package name of the app for which recovery action is to be updated. */
@@ -1444,36 +1159,24 @@ export interface AddTargetingApprecoveryRequest {
   body?: AddTargetingRequest;
 }
 export const AddTargetingApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    appRecoveryId: S.String.pipe(T.Label()),
-    body: S.optional(AddTargetingRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:addTargeting",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AddTargetingApprecoveryRequest",
-}) as any as S.Schema<AddTargetingApprecoveryRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "appRecoveryId": S.String.pipe(T.Label()),
+  "body": S.optional(AddTargetingRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:addTargeting","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "AddTargetingApprecoveryRequest" }) as any as S.Schema<AddTargetingApprecoveryRequest>;
 
 /** Response message for AddTargeting. */
 export interface AddTargetingResponse {}
 export const AddTargetingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AddTargetingResponse",
-}) as any as S.Schema<AddTargetingResponse>;
+S.Struct({}),
+).annotate({ identifier: "AddTargetingResponse" }) as any as S.Schema<AddTargetingResponse>;
 
 /** Deprecated: subscription archiving is not supported. */
 export interface ArchiveSubscriptionRequest {}
 export const ArchiveSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ArchiveSubscriptionRequest",
-}) as any as S.Schema<ArchiveSubscriptionRequest>;
+S.Struct({}),
+).annotate({ identifier: "ArchiveSubscriptionRequest" }) as any as S.Schema<ArchiveSubscriptionRequest>;
 
 export interface ArchiveMonetizationSubscriptionsRequest {
   /** Required. The parent app (package name) of the app of the subscription to delete. */
@@ -1483,57 +1186,36 @@ export interface ArchiveMonetizationSubscriptionsRequest {
   /** Request body */
   body?: ArchiveSubscriptionRequest;
 }
-export const ArchiveMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(ArchiveSubscriptionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}:archive",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ArchiveMonetizationSubscriptionsRequest",
-}) as any as S.Schema<ArchiveMonetizationSubscriptionsRequest>;
+export const ArchiveMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(ArchiveSubscriptionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}:archive","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ArchiveMonetizationSubscriptionsRequest" }) as any as S.Schema<ArchiveMonetizationSubscriptionsRequest>;
 
-export type InappproductsDeleteRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const InappproductsDeleteRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type InappproductsDeleteRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const InappproductsDeleteRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request to delete an in-app product. */
 export interface InappproductsDeleteRequest {
   /** Package name of the app. */
   packageName?: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: InappproductsDeleteRequestLatencyToleranceEnum;
+  latencyTolerance?: InappproductsDeleteRequestLatencyToleranceEnum | (string & {});
   /** Unique identifier for the in-app product. */
   sku?: string;
 }
 export const InappproductsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.optional(S.String),
-    latencyTolerance: S.optional(
-      InappproductsDeleteRequestLatencyToleranceEnum,
-    ),
-    sku: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InappproductsDeleteRequest",
-}) as any as S.Schema<InappproductsDeleteRequest>;
+S.Struct({
+  "packageName": S.optional(S.String),
+  "latencyTolerance": S.optional(InappproductsDeleteRequestLatencyToleranceEnum),
+  "sku": S.optional(S.String),
+}),
+).annotate({ identifier: "InappproductsDeleteRequest" }) as any as S.Schema<InappproductsDeleteRequest>;
 
-export type InappproductsDeleteRequestList =
-  ReadonlyArray<InappproductsDeleteRequest>;
-export const InappproductsDeleteRequestList = /*@__PURE__*/ S.Array(
-  InappproductsDeleteRequest,
-) as any as S.Schema<InappproductsDeleteRequestList>;
+export type InappproductsDeleteRequestList = ReadonlyArray<InappproductsDeleteRequest>;
+export const InappproductsDeleteRequestList = /*@__PURE__*/ S.Array(InappproductsDeleteRequest) as any as S.Schema<InappproductsDeleteRequestList>;
 
 /** Request to delete multiple in-app products. */
 export interface InappproductsBatchDeleteRequest {
@@ -1541,12 +1223,10 @@ export interface InappproductsBatchDeleteRequest {
   requests?: InappproductsDeleteRequestList;
 }
 export const InappproductsBatchDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(InappproductsDeleteRequestList),
-  }),
-).annotate({
-  identifier: "InappproductsBatchDeleteRequest",
-}) as any as S.Schema<InappproductsBatchDeleteRequest>;
+S.Struct({
+  "requests": S.optional(InappproductsDeleteRequestList),
+}),
+).annotate({ identifier: "InappproductsBatchDeleteRequest" }) as any as S.Schema<InappproductsBatchDeleteRequest>;
 
 export interface BatchDeleteInappproductsRequest {
   /** Package name of the app. */
@@ -1555,61 +1235,39 @@ export interface BatchDeleteInappproductsRequest {
   body?: InappproductsBatchDeleteRequest;
 }
 export const BatchDeleteInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(InappproductsBatchDeleteRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/inappproducts:batchDelete",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchDeleteInappproductsRequest",
-}) as any as S.Schema<BatchDeleteInappproductsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(InappproductsBatchDeleteRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/inappproducts:batchDelete","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchDeleteInappproductsRequest" }) as any as S.Schema<BatchDeleteInappproductsRequest>;
 
 export interface BatchDeleteInappproductsResponse {}
 export const BatchDeleteInappproductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BatchDeleteInappproductsResponse",
-}) as any as S.Schema<BatchDeleteInappproductsResponse>;
+S.Struct({}),
+).annotate({ identifier: "BatchDeleteInappproductsResponse" }) as any as S.Schema<BatchDeleteInappproductsResponse>;
 
-export type DeleteOneTimeProductRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const DeleteOneTimeProductRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type DeleteOneTimeProductRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const DeleteOneTimeProductRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for deleting a one-time product. */
 export interface DeleteOneTimeProductRequest {
   /** Required. The one-time product ID of the one-time product to delete. */
   productId?: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: DeleteOneTimeProductRequestLatencyToleranceEnum;
+  latencyTolerance?: DeleteOneTimeProductRequestLatencyToleranceEnum | (string & {});
   /** Required. The parent app (package name) of the one-time product to delete. */
   packageName?: string;
 }
 export const DeleteOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    latencyTolerance: S.optional(
-      DeleteOneTimeProductRequestLatencyToleranceEnum,
-    ),
-    packageName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteOneTimeProductRequest",
-}) as any as S.Schema<DeleteOneTimeProductRequest>;
+S.Struct({
+  "productId": S.optional(S.String),
+  "latencyTolerance": S.optional(DeleteOneTimeProductRequestLatencyToleranceEnum),
+  "packageName": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteOneTimeProductRequest" }) as any as S.Schema<DeleteOneTimeProductRequest>;
 
-export type DeleteOneTimeProductRequestList =
-  ReadonlyArray<DeleteOneTimeProductRequest>;
-export const DeleteOneTimeProductRequestList = /*@__PURE__*/ S.Array(
-  DeleteOneTimeProductRequest,
-) as any as S.Schema<DeleteOneTimeProductRequestList>;
+export type DeleteOneTimeProductRequestList = ReadonlyArray<DeleteOneTimeProductRequest>;
+export const DeleteOneTimeProductRequestList = /*@__PURE__*/ S.Array(DeleteOneTimeProductRequest) as any as S.Schema<DeleteOneTimeProductRequestList>;
 
 /** Request message for BatchDeleteOneTimeProduct. */
 export interface BatchDeleteOneTimeProductsRequest {
@@ -1617,12 +1275,10 @@ export interface BatchDeleteOneTimeProductsRequest {
   requests?: DeleteOneTimeProductRequestList;
 }
 export const BatchDeleteOneTimeProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(DeleteOneTimeProductRequestList),
-  }),
-).annotate({
-  identifier: "BatchDeleteOneTimeProductsRequest",
-}) as any as S.Schema<BatchDeleteOneTimeProductsRequest>;
+S.Struct({
+  "requests": S.optional(DeleteOneTimeProductRequestList),
+}),
+).annotate({ identifier: "BatchDeleteOneTimeProductsRequest" }) as any as S.Schema<BatchDeleteOneTimeProductsRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsRequest {
   /** Required. The parent app (package name) for which the one-time products should be deleted. Must be equal to the package_name field on all the OneTimeProduct resources. */
@@ -1630,40 +1286,25 @@ export interface BatchDeleteMonetizationOnetimeproductsRequest {
   /** Request body */
   body?: BatchDeleteOneTimeProductsRequest;
 }
-export const BatchDeleteMonetizationOnetimeproductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeleteOneTimeProductsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchDelete",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchDeleteMonetizationOnetimeproductsRequest",
-  }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsRequest>;
+export const BatchDeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(BatchDeleteOneTimeProductsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchDelete","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchDeleteMonetizationOnetimeproductsRequest" }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsResponse {}
-export const BatchDeleteMonetizationOnetimeproductsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchDeleteMonetizationOnetimeproductsResponse",
-  }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsResponse>;
+export const BatchDeleteMonetizationOnetimeproductsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "BatchDeleteMonetizationOnetimeproductsResponse" }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsResponse>;
 
-export type DeletePurchaseOptionRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const DeletePurchaseOptionRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type DeletePurchaseOptionRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const DeletePurchaseOptionRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for deleting a purchase option. */
 export interface DeletePurchaseOptionRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: DeletePurchaseOptionRequestLatencyToleranceEnum;
+  latencyTolerance?: DeletePurchaseOptionRequestLatencyToleranceEnum | (string & {});
   /** Required. The parent app (package name) of the purchase option to delete. */
   packageName?: string;
   /** Optional. This field has no effect for purchase options with no offers under them. For purchase options with associated offers: * If `force` is set to false (default), an error will be returned. * If `force` is set to true, any associated offers under the purchase option will be deleted. */
@@ -1674,24 +1315,17 @@ export interface DeletePurchaseOptionRequest {
   purchaseOptionId?: string;
 }
 export const DeletePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latencyTolerance: S.optional(
-      DeletePurchaseOptionRequestLatencyToleranceEnum,
-    ),
-    packageName: S.optional(S.String),
-    force: S.optional(S.Boolean),
-    productId: S.optional(S.String),
-    purchaseOptionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeletePurchaseOptionRequest",
-}) as any as S.Schema<DeletePurchaseOptionRequest>;
+S.Struct({
+  "latencyTolerance": S.optional(DeletePurchaseOptionRequestLatencyToleranceEnum),
+  "packageName": S.optional(S.String),
+  "force": S.optional(S.Boolean),
+  "productId": S.optional(S.String),
+  "purchaseOptionId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeletePurchaseOptionRequest" }) as any as S.Schema<DeletePurchaseOptionRequest>;
 
-export type DeletePurchaseOptionRequestList =
-  ReadonlyArray<DeletePurchaseOptionRequest>;
-export const DeletePurchaseOptionRequestList = /*@__PURE__*/ S.Array(
-  DeletePurchaseOptionRequest,
-) as any as S.Schema<DeletePurchaseOptionRequestList>;
+export type DeletePurchaseOptionRequestList = ReadonlyArray<DeletePurchaseOptionRequest>;
+export const DeletePurchaseOptionRequestList = /*@__PURE__*/ S.Array(DeletePurchaseOptionRequest) as any as S.Schema<DeletePurchaseOptionRequestList>;
 
 /** Request message for BatchDeletePurchaseOption. */
 export interface BatchDeletePurchaseOptionsRequest {
@@ -1699,12 +1333,10 @@ export interface BatchDeletePurchaseOptionsRequest {
   requests?: DeletePurchaseOptionRequestList;
 }
 export const BatchDeletePurchaseOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(DeletePurchaseOptionRequestList),
-  }),
-).annotate({
-  identifier: "BatchDeletePurchaseOptionsRequest",
-}) as any as S.Schema<BatchDeletePurchaseOptionsRequest>;
+S.Struct({
+  "requests": S.optional(DeletePurchaseOptionRequestList),
+}),
+).annotate({ identifier: "BatchDeletePurchaseOptionsRequest" }) as any as S.Schema<BatchDeletePurchaseOptionsRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest {
   /** Required. The parent app (package name) of the purchase options to delete. */
@@ -1714,41 +1346,26 @@ export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest {
   /** Request body */
   body?: BatchDeletePurchaseOptionsRequest;
 }
-export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeletePurchaseOptionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions:batchDelete",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest",
-  }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest>;
+export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchDeletePurchaseOptionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions:batchDelete","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest" }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse {}
-export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse",
-  }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse>;
+export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse" }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse>;
 
-export type DeleteOneTimeProductOfferRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const DeleteOneTimeProductOfferRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type DeleteOneTimeProductOfferRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const DeleteOneTimeProductOfferRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for deleting an one-time product offer. */
 export interface DeleteOneTimeProductOfferRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: DeleteOneTimeProductOfferRequestLatencyToleranceEnum;
+  latencyTolerance?: DeleteOneTimeProductOfferRequestLatencyToleranceEnum | (string & {});
   /** Required. The parent app (package name) of the offer to delete. */
   packageName?: string;
   /** Required. The unique offer ID of the offer to delete. */
@@ -1759,38 +1376,28 @@ export interface DeleteOneTimeProductOfferRequest {
   purchaseOptionId?: string;
 }
 export const DeleteOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latencyTolerance: S.optional(
-      DeleteOneTimeProductOfferRequestLatencyToleranceEnum,
-    ),
-    packageName: S.optional(S.String),
-    offerId: S.optional(S.String),
-    productId: S.optional(S.String),
-    purchaseOptionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteOneTimeProductOfferRequest",
-}) as any as S.Schema<DeleteOneTimeProductOfferRequest>;
+S.Struct({
+  "latencyTolerance": S.optional(DeleteOneTimeProductOfferRequestLatencyToleranceEnum),
+  "packageName": S.optional(S.String),
+  "offerId": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "purchaseOptionId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteOneTimeProductOfferRequest" }) as any as S.Schema<DeleteOneTimeProductOfferRequest>;
 
-export type DeleteOneTimeProductOfferRequestList =
-  ReadonlyArray<DeleteOneTimeProductOfferRequest>;
-export const DeleteOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
-  DeleteOneTimeProductOfferRequest,
-) as any as S.Schema<DeleteOneTimeProductOfferRequestList>;
+export type DeleteOneTimeProductOfferRequestList = ReadonlyArray<DeleteOneTimeProductOfferRequest>;
+export const DeleteOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(DeleteOneTimeProductOfferRequest) as any as S.Schema<DeleteOneTimeProductOfferRequestList>;
 
 /** Request message for BatchDeleteOneTimeProductOffers. */
 export interface BatchDeleteOneTimeProductOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must correspond to different offers. */
   requests?: DeleteOneTimeProductOfferRequestList;
 }
-export const BatchDeleteOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requests: S.optional(DeleteOneTimeProductOfferRequestList),
-    }),
-).annotate({
-  identifier: "BatchDeleteOneTimeProductOffersRequest",
-}) as any as S.Schema<BatchDeleteOneTimeProductOffersRequest>;
+export const BatchDeleteOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requests": S.optional(DeleteOneTimeProductOfferRequestList),
+}),
+).annotate({ identifier: "BatchDeleteOneTimeProductOffersRequest" }) as any as S.Schema<BatchDeleteOneTimeProductOffersRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The parent app (package name) of the offers to delete. Must be equal to the package_name field on all the OneTimeProductOffer resources. */
@@ -1802,33 +1409,19 @@ export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequ
   /** Request body */
   body?: BatchDeleteOneTimeProductOffersRequest;
 }
-export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      purchaseOptionId: S.String.pipe(T.Label()),
-      body: S.optional(
-        BatchDeleteOneTimeProductOffersRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchDelete",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "purchaseOptionId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchDeleteOneTimeProductOffersRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchDelete","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest" }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse {}
-export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse",
-  }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse>;
+export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse" }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse>;
 
 export interface BatchGetInappproductsRequest {
   /** Package name of the app. */
@@ -1837,25 +1430,13 @@ export interface BatchGetInappproductsRequest {
   sku?: StringList;
 }
 export const BatchGetInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    sku: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/inappproducts:batchGet",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchGetInappproductsRequest",
-}) as any as S.Schema<BatchGetInappproductsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "sku": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/inappproducts:batchGet","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchGetInappproductsRequest" }) as any as S.Schema<BatchGetInappproductsRequest>;
 
-export type InAppProductStatusEnum =
-  | "statusUnspecified"
-  | "active"
-  | "inactive"
-  | (string & {});
+export type InAppProductStatusEnum = "statusUnspecified" | "active" | "inactive";
 export const InAppProductStatusEnum = /*@__PURE__*/ S.String;
 
 /** Definition of a price, i.e. currency and units. */
@@ -1866,25 +1447,17 @@ export interface Price {
   priceMicros?: string;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currency: S.optional(S.String),
-    priceMicros: S.optional(S.String),
-  }),
+S.Struct({
+  "currency": S.optional(S.String),
+  "priceMicros": S.optional(S.String),
+}),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 export type PriceMap = { [key: string]: Price | undefined };
-export const PriceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Price,
-) as any as S.Schema<PriceMap>;
+export const PriceMap = /*@__PURE__*/ S.Record(S.String, Price) as any as S.Schema<PriceMap>;
 
-export type ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum =
-  | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
-  | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
-  | "WITHDRAWAL_RIGHT_SERVICE"
-  | (string & {});
-export const ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum = "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED" | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT" | "WITHDRAWAL_RIGHT_SERVICE";
+export const ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details about taxation and legal compliance for managed products. */
 export interface ManagedProductTaxAndComplianceSettings {
@@ -1899,28 +1472,17 @@ export interface ManagedProductTaxAndComplianceSettings {
   /** A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR". */
   taxRateInfoByRegionCode?: RegionalTaxRateInfoMap;
 }
-export const ManagedProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      regionalProductAgeRatingInfos: S.optional(
-        RegionalProductAgeRatingInfoList,
-      ),
-      eeaWithdrawalRightType: S.optional(
-        ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum,
-      ),
-      isTokenizedDigitalAsset: S.optional(S.Boolean),
-      productTaxCategoryCode: S.optional(S.String),
-      taxRateInfoByRegionCode: S.optional(RegionalTaxRateInfoMap),
-    }),
-).annotate({
-  identifier: "ManagedProductTaxAndComplianceSettings",
-}) as any as S.Schema<ManagedProductTaxAndComplianceSettings>;
+export const ManagedProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "regionalProductAgeRatingInfos": S.optional(RegionalProductAgeRatingInfoList),
+  "eeaWithdrawalRightType": S.optional(ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum),
+  "isTokenizedDigitalAsset": S.optional(S.Boolean),
+  "productTaxCategoryCode": S.optional(S.String),
+  "taxRateInfoByRegionCode": S.optional(RegionalTaxRateInfoMap),
+}),
+).annotate({ identifier: "ManagedProductTaxAndComplianceSettings" }) as any as S.Schema<ManagedProductTaxAndComplianceSettings>;
 
-export type InAppProductPurchaseTypeEnum =
-  | "purchaseTypeUnspecified"
-  | "managedUser"
-  | "subscription"
-  | (string & {});
+export type InAppProductPurchaseTypeEnum = "purchaseTypeUnspecified" | "managedUser" | "subscription";
 export const InAppProductPurchaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** Store listing of a single in-app product. */
@@ -1933,22 +1495,15 @@ export interface InAppProductListing {
   description?: string;
 }
 export const InAppProductListing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    benefits: S.optional(StringList),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InAppProductListing",
-}) as any as S.Schema<InAppProductListing>;
+S.Struct({
+  "benefits": S.optional(StringList),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+}),
+).annotate({ identifier: "InAppProductListing" }) as any as S.Schema<InAppProductListing>;
 
-export type InAppProductListingMap = {
-  [key: string]: InAppProductListing | undefined;
-};
-export const InAppProductListingMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InAppProductListing,
-) as any as S.Schema<InAppProductListingMap>;
+export type InAppProductListingMap = { [key: string]: InAppProductListing | undefined };
+export const InAppProductListingMap = /*@__PURE__*/ S.Record(S.String, InAppProductListing) as any as S.Schema<InAppProductListingMap>;
 
 /** An in-app product. The resource for InappproductsService. */
 export interface InAppProduct {
@@ -1980,31 +1535,25 @@ export interface InAppProduct {
   listings?: InAppProductListingMap;
 }
 export const InAppProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(InAppProductStatusEnum),
-    defaultPrice: S.optional(Price),
-    packageName: S.optional(S.String),
-    prices: S.optional(PriceMap),
-    defaultLanguage: S.optional(S.String),
-    managedProductTaxesAndComplianceSettings: S.optional(
-      ManagedProductTaxAndComplianceSettings,
-    ),
-    subscriptionPeriod: S.optional(S.String),
-    subscriptionTaxesAndComplianceSettings: S.optional(
-      SubscriptionTaxAndComplianceSettings,
-    ),
-    trialPeriod: S.optional(S.String),
-    gracePeriod: S.optional(S.String),
-    purchaseType: S.optional(InAppProductPurchaseTypeEnum),
-    sku: S.optional(S.String),
-    listings: S.optional(InAppProductListingMap),
-  }),
+S.Struct({
+  "status": S.optional(InAppProductStatusEnum),
+  "defaultPrice": S.optional(Price),
+  "packageName": S.optional(S.String),
+  "prices": S.optional(PriceMap),
+  "defaultLanguage": S.optional(S.String),
+  "managedProductTaxesAndComplianceSettings": S.optional(ManagedProductTaxAndComplianceSettings),
+  "subscriptionPeriod": S.optional(S.String),
+  "subscriptionTaxesAndComplianceSettings": S.optional(SubscriptionTaxAndComplianceSettings),
+  "trialPeriod": S.optional(S.String),
+  "gracePeriod": S.optional(S.String),
+  "purchaseType": S.optional(InAppProductPurchaseTypeEnum),
+  "sku": S.optional(S.String),
+  "listings": S.optional(InAppProductListingMap),
+}),
 ).annotate({ identifier: "InAppProduct" }) as any as S.Schema<InAppProduct>;
 
 export type InAppProductList = ReadonlyArray<InAppProduct>;
-export const InAppProductList = /*@__PURE__*/ S.Array(
-  InAppProduct,
-) as any as S.Schema<InAppProductList>;
+export const InAppProductList = /*@__PURE__*/ S.Array(InAppProduct) as any as S.Schema<InAppProductList>;
 
 /** Response message for BatchGetSubscriptions endpoint. */
 export interface InappproductsBatchGetResponse {
@@ -2012,12 +1561,10 @@ export interface InappproductsBatchGetResponse {
   inappproduct?: InAppProductList;
 }
 export const InappproductsBatchGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inappproduct: S.optional(InAppProductList),
-  }),
-).annotate({
-  identifier: "InappproductsBatchGetResponse",
-}) as any as S.Schema<InappproductsBatchGetResponse>;
+S.Struct({
+  "inappproduct": S.optional(InAppProductList),
+}),
+).annotate({ identifier: "InappproductsBatchGetResponse" }) as any as S.Schema<InappproductsBatchGetResponse>;
 
 export interface BatchGetMonetizationOnetimeproductsRequest {
   /** Required. The parent app (package name) for which the products should be retrieved. Must be equal to the package_name field on all requests. */
@@ -2025,41 +1572,17 @@ export interface BatchGetMonetizationOnetimeproductsRequest {
   /** Required. A list of up to 100 product IDs to retrieve. All IDs must be different. */
   productIds?: StringList;
 }
-export const BatchGetMonetizationOnetimeproductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productIds: S.optional(StringList.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchGet",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchGetMonetizationOnetimeproductsRequest",
-  }) as any as S.Schema<BatchGetMonetizationOnetimeproductsRequest>;
+export const BatchGetMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productIds": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchGet","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchGetMonetizationOnetimeproductsRequest" }) as any as S.Schema<BatchGetMonetizationOnetimeproductsRequest>;
 
-export type RegionalTaxConfigStreamingTaxTypeEnum =
-  | "STREAMING_TAX_TYPE_UNSPECIFIED"
-  | "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL"
-  | "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES"
-  | "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL"
-  | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL"
-  | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES"
-  | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL"
-  | (string & {});
+export type RegionalTaxConfigStreamingTaxTypeEnum = "STREAMING_TAX_TYPE_UNSPECIFIED" | "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL" | "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES" | "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL" | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL" | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES" | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL";
 export const RegionalTaxConfigStreamingTaxTypeEnum = /*@__PURE__*/ S.String;
 
-export type RegionalTaxConfigTaxTierEnum =
-  | "TAX_TIER_UNSPECIFIED"
-  | "TAX_TIER_BOOKS_1"
-  | "TAX_TIER_NEWS_1"
-  | "TAX_TIER_NEWS_2"
-  | "TAX_TIER_MUSIC_OR_AUDIO_1"
-  | "TAX_TIER_LIVE_OR_BROADCAST_1"
-  | (string & {});
+export type RegionalTaxConfigTaxTierEnum = "TAX_TIER_UNSPECIFIED" | "TAX_TIER_BOOKS_1" | "TAX_TIER_NEWS_1" | "TAX_TIER_NEWS_2" | "TAX_TIER_MUSIC_OR_AUDIO_1" | "TAX_TIER_LIVE_OR_BROADCAST_1";
 export const RegionalTaxConfigTaxTierEnum = /*@__PURE__*/ S.String;
 
 /** Details about taxation in a given geographical region. */
@@ -2074,20 +1597,16 @@ export interface RegionalTaxConfig {
   eligibleForStreamingServiceTaxRate?: boolean;
 }
 export const RegionalTaxConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    streamingTaxType: S.optional(RegionalTaxConfigStreamingTaxTypeEnum),
-    regionCode: S.optional(S.String),
-    taxTier: S.optional(RegionalTaxConfigTaxTierEnum),
-    eligibleForStreamingServiceTaxRate: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RegionalTaxConfig",
-}) as any as S.Schema<RegionalTaxConfig>;
+S.Struct({
+  "streamingTaxType": S.optional(RegionalTaxConfigStreamingTaxTypeEnum),
+  "regionCode": S.optional(S.String),
+  "taxTier": S.optional(RegionalTaxConfigTaxTierEnum),
+  "eligibleForStreamingServiceTaxRate": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "RegionalTaxConfig" }) as any as S.Schema<RegionalTaxConfig>;
 
 export type RegionalTaxConfigList = ReadonlyArray<RegionalTaxConfig>;
-export const RegionalTaxConfigList = /*@__PURE__*/ S.Array(
-  RegionalTaxConfig,
-) as any as S.Schema<RegionalTaxConfigList>;
+export const RegionalTaxConfigList = /*@__PURE__*/ S.Array(RegionalTaxConfig) as any as S.Schema<RegionalTaxConfigList>;
 
 /** Details about taxation, Google Play policy and legal compliance for one-time products. */
 export interface OneTimeProductTaxAndComplianceSettings {
@@ -2100,27 +1619,17 @@ export interface OneTimeProductTaxAndComplianceSettings {
   /** Regional age rating information. Currently this field is only supported for region code `US`. */
   regionalProductAgeRatingInfos?: RegionalProductAgeRatingInfoList;
 }
-export const OneTimeProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      isTokenizedDigitalAsset: S.optional(S.Boolean),
-      regionalTaxConfigs: S.optional(RegionalTaxConfigList),
-      productTaxCategoryCode: S.optional(S.String),
-      regionalProductAgeRatingInfos: S.optional(
-        RegionalProductAgeRatingInfoList,
-      ),
-    }),
-).annotate({
-  identifier: "OneTimeProductTaxAndComplianceSettings",
-}) as any as S.Schema<OneTimeProductTaxAndComplianceSettings>;
+export const OneTimeProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "isTokenizedDigitalAsset": S.optional(S.Boolean),
+  "regionalTaxConfigs": S.optional(RegionalTaxConfigList),
+  "productTaxCategoryCode": S.optional(S.String),
+  "regionalProductAgeRatingInfos": S.optional(RegionalProductAgeRatingInfoList),
+}),
+).annotate({ identifier: "OneTimeProductTaxAndComplianceSettings" }) as any as S.Schema<OneTimeProductTaxAndComplianceSettings>;
 
-export type OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum =
-  | "AVAILABILITY_UNSPECIFIED"
-  | "AVAILABLE"
-  | "NO_LONGER_AVAILABLE"
-  | (string & {});
-export const OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum =
-  /*@__PURE__*/ S.String;
+export type OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum = "AVAILABILITY_UNSPECIFIED" | "AVAILABLE" | "NO_LONGER_AVAILABLE";
+export const OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum = /*@__PURE__*/ S.String;
 
 /** Pricing information for any new regions Play may launch in the future. */
 export interface OneTimeProductPurchaseOptionNewRegionsConfig {
@@ -2131,42 +1640,27 @@ export interface OneTimeProductPurchaseOptionNewRegionsConfig {
   /** Required. Price in EUR to use for any new regions Play may launch in. */
   eurPrice?: Money;
 }
-export const OneTimeProductPurchaseOptionNewRegionsConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      usdPrice: S.optional(Money),
-      availability: S.optional(
-        OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum,
-      ),
-      eurPrice: S.optional(Money),
-    }),
-  ).annotate({
-    identifier: "OneTimeProductPurchaseOptionNewRegionsConfig",
-  }) as any as S.Schema<OneTimeProductPurchaseOptionNewRegionsConfig>;
+export const OneTimeProductPurchaseOptionNewRegionsConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "usdPrice": S.optional(Money),
+  "availability": S.optional(OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum),
+  "eurPrice": S.optional(Money),
+}),
+).annotate({ identifier: "OneTimeProductPurchaseOptionNewRegionsConfig" }) as any as S.Schema<OneTimeProductPurchaseOptionNewRegionsConfig>;
 
-export type PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum =
-  | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
-  | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
-  | "WITHDRAWAL_RIGHT_SERVICE"
-  | (string & {});
-export const PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum =
-  /*@__PURE__*/ S.String;
+export type PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum = "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED" | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT" | "WITHDRAWAL_RIGHT_SERVICE";
+export const PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details about taxation, Google Play policy and legal compliance for one-time product purchase options. */
 export interface PurchaseOptionTaxAndComplianceSettings {
   /** Optional. Digital content or service classification for products distributed to users in eligible regions. If unset, it defaults to `WITHDRAWAL_RIGHT_DIGITAL_CONTENT`. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information. */
   withdrawalRightType?: PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum;
 }
-export const PurchaseOptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      withdrawalRightType: S.optional(
-        PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum,
-      ),
-    }),
-).annotate({
-  identifier: "PurchaseOptionTaxAndComplianceSettings",
-}) as any as S.Schema<PurchaseOptionTaxAndComplianceSettings>;
+export const PurchaseOptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "withdrawalRightType": S.optional(PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum),
+}),
+).annotate({ identifier: "PurchaseOptionTaxAndComplianceSettings" }) as any as S.Schema<PurchaseOptionTaxAndComplianceSettings>;
 
 /** A purchase option that can be bought. */
 export interface OneTimeProductBuyPurchaseOption {
@@ -2176,13 +1670,11 @@ export interface OneTimeProductBuyPurchaseOption {
   legacyCompatible?: boolean;
 }
 export const OneTimeProductBuyPurchaseOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    multiQuantityEnabled: S.optional(S.Boolean),
-    legacyCompatible: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "OneTimeProductBuyPurchaseOption",
-}) as any as S.Schema<OneTimeProductBuyPurchaseOption>;
+S.Struct({
+  "multiQuantityEnabled": S.optional(S.Boolean),
+  "legacyCompatible": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "OneTimeProductBuyPurchaseOption" }) as any as S.Schema<OneTimeProductBuyPurchaseOption>;
 
 /** A purchase option that can be rented. */
 export interface OneTimeProductRentPurchaseOption {
@@ -2192,32 +1684,17 @@ export interface OneTimeProductRentPurchaseOption {
   rentalPeriod?: string;
 }
 export const OneTimeProductRentPurchaseOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expirationPeriod: S.optional(S.String),
-    rentalPeriod: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OneTimeProductRentPurchaseOption",
-}) as any as S.Schema<OneTimeProductRentPurchaseOption>;
+S.Struct({
+  "expirationPeriod": S.optional(S.String),
+  "rentalPeriod": S.optional(S.String),
+}),
+).annotate({ identifier: "OneTimeProductRentPurchaseOption" }) as any as S.Schema<OneTimeProductRentPurchaseOption>;
 
-export type OneTimeProductPurchaseOptionStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "DRAFT"
-  | "ACTIVE"
-  | "INACTIVE"
-  | "INACTIVE_PUBLISHED"
-  | (string & {});
+export type OneTimeProductPurchaseOptionStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "INACTIVE" | "INACTIVE_PUBLISHED";
 export const OneTimeProductPurchaseOptionStateEnum = /*@__PURE__*/ S.String;
 
-export type OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum =
-    | "AVAILABILITY_UNSPECIFIED"
-    | "AVAILABLE"
-    | "NO_LONGER_AVAILABLE"
-    | "AVAILABLE_IF_RELEASED"
-    | "AVAILABLE_FOR_OFFERS_ONLY"
-    | (string & {});
-export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum =
-  /*@__PURE__*/ S.String;
+export type OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum = "AVAILABILITY_UNSPECIFIED" | "AVAILABLE" | "NO_LONGER_AVAILABLE" | "AVAILABLE_IF_RELEASED" | "AVAILABLE_FOR_OFFERS_ONLY";
+export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum = /*@__PURE__*/ S.String;
 
 /** Regional pricing and availability configuration for a purchase option. */
 export interface OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig {
@@ -2228,26 +1705,16 @@ export interface OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfi
   /** The availability of the purchase option. */
   availability?: OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum;
 }
-export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      regionCode: S.optional(S.String),
-      price: S.optional(Money),
-      availability: S.optional(
-        OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig",
-  }) as any as S.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
+export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "price": S.optional(Money),
+  "availability": S.optional(OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum),
+}),
+).annotate({ identifier: "OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig" }) as any as S.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
 
-export type OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList =
-  ReadonlyArray<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
-export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList =
-  /*@__PURE__*/ S.Array(
-    OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig,
-  ) as any as S.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList>;
+export type OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList = ReadonlyArray<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
+export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList = /*@__PURE__*/ S.Array(OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig) as any as S.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList>;
 
 /** A single purchase option for a one-time product. */
 export interface OneTimeProductPurchaseOption {
@@ -2269,29 +1736,20 @@ export interface OneTimeProductPurchaseOption {
   regionalPricingAndAvailabilityConfigs?: OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList;
 }
 export const OneTimeProductPurchaseOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    purchaseOptionId: S.optional(S.String),
-    newRegionsConfig: S.optional(OneTimeProductPurchaseOptionNewRegionsConfig),
-    offerTags: S.optional(OfferTagList),
-    taxAndComplianceSettings: S.optional(
-      PurchaseOptionTaxAndComplianceSettings,
-    ),
-    buyOption: S.optional(OneTimeProductBuyPurchaseOption),
-    rentOption: S.optional(OneTimeProductRentPurchaseOption),
-    state: S.optional(OneTimeProductPurchaseOptionStateEnum),
-    regionalPricingAndAvailabilityConfigs: S.optional(
-      OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList,
-    ),
-  }),
-).annotate({
-  identifier: "OneTimeProductPurchaseOption",
-}) as any as S.Schema<OneTimeProductPurchaseOption>;
+S.Struct({
+  "purchaseOptionId": S.optional(S.String),
+  "newRegionsConfig": S.optional(OneTimeProductPurchaseOptionNewRegionsConfig),
+  "offerTags": S.optional(OfferTagList),
+  "taxAndComplianceSettings": S.optional(PurchaseOptionTaxAndComplianceSettings),
+  "buyOption": S.optional(OneTimeProductBuyPurchaseOption),
+  "rentOption": S.optional(OneTimeProductRentPurchaseOption),
+  "state": S.optional(OneTimeProductPurchaseOptionStateEnum),
+  "regionalPricingAndAvailabilityConfigs": S.optional(OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList),
+}),
+).annotate({ identifier: "OneTimeProductPurchaseOption" }) as any as S.Schema<OneTimeProductPurchaseOption>;
 
-export type OneTimeProductPurchaseOptionList =
-  ReadonlyArray<OneTimeProductPurchaseOption>;
-export const OneTimeProductPurchaseOptionList = /*@__PURE__*/ S.Array(
-  OneTimeProductPurchaseOption,
-) as any as S.Schema<OneTimeProductPurchaseOptionList>;
+export type OneTimeProductPurchaseOptionList = ReadonlyArray<OneTimeProductPurchaseOption>;
+export const OneTimeProductPurchaseOptionList = /*@__PURE__*/ S.Array(OneTimeProductPurchaseOption) as any as S.Schema<OneTimeProductPurchaseOptionList>;
 
 /** Regional store listing for a one-time product. */
 export interface OneTimeProductListing {
@@ -2303,19 +1761,15 @@ export interface OneTimeProductListing {
   description?: string;
 }
 export const OneTimeProductListing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageCode: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OneTimeProductListing",
-}) as any as S.Schema<OneTimeProductListing>;
+S.Struct({
+  "languageCode": S.optional(S.String),
+  "title": S.optional(S.String),
+  "description": S.optional(S.String),
+}),
+).annotate({ identifier: "OneTimeProductListing" }) as any as S.Schema<OneTimeProductListing>;
 
 export type OneTimeProductListingList = ReadonlyArray<OneTimeProductListing>;
-export const OneTimeProductListingList = /*@__PURE__*/ S.Array(
-  OneTimeProductListing,
-) as any as S.Schema<OneTimeProductListingList>;
+export const OneTimeProductListingList = /*@__PURE__*/ S.Array(OneTimeProductListing) as any as S.Schema<OneTimeProductListingList>;
 
 /** A single one-time product for an app. */
 export interface OneTimeProduct {
@@ -2337,24 +1791,20 @@ export interface OneTimeProduct {
   packageName?: string;
 }
 export const OneTimeProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taxAndComplianceSettings: S.optional(
-      OneTimeProductTaxAndComplianceSettings,
-    ),
-    restrictedPaymentCountries: S.optional(RestrictedPaymentCountries),
-    offerTags: S.optional(OfferTagList),
-    regionsVersion: S.optional(RegionsVersion),
-    productId: S.optional(S.String),
-    purchaseOptions: S.optional(OneTimeProductPurchaseOptionList),
-    listings: S.optional(OneTimeProductListingList),
-    packageName: S.optional(S.String),
-  }),
+S.Struct({
+  "taxAndComplianceSettings": S.optional(OneTimeProductTaxAndComplianceSettings),
+  "restrictedPaymentCountries": S.optional(RestrictedPaymentCountries),
+  "offerTags": S.optional(OfferTagList),
+  "regionsVersion": S.optional(RegionsVersion),
+  "productId": S.optional(S.String),
+  "purchaseOptions": S.optional(OneTimeProductPurchaseOptionList),
+  "listings": S.optional(OneTimeProductListingList),
+  "packageName": S.optional(S.String),
+}),
 ).annotate({ identifier: "OneTimeProduct" }) as any as S.Schema<OneTimeProduct>;
 
 export type OneTimeProductList = ReadonlyArray<OneTimeProduct>;
-export const OneTimeProductList = /*@__PURE__*/ S.Array(
-  OneTimeProduct,
-) as any as S.Schema<OneTimeProductList>;
+export const OneTimeProductList = /*@__PURE__*/ S.Array(OneTimeProduct) as any as S.Schema<OneTimeProductList>;
 
 /** Response message for the BatchGetOneTimeProducts endpoint. */
 export interface BatchGetOneTimeProductsResponse {
@@ -2362,12 +1812,10 @@ export interface BatchGetOneTimeProductsResponse {
   oneTimeProducts?: OneTimeProductList;
 }
 export const BatchGetOneTimeProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeProducts: S.optional(OneTimeProductList),
-  }),
-).annotate({
-  identifier: "BatchGetOneTimeProductsResponse",
-}) as any as S.Schema<BatchGetOneTimeProductsResponse>;
+S.Struct({
+  "oneTimeProducts": S.optional(OneTimeProductList),
+}),
+).annotate({ identifier: "BatchGetOneTimeProductsResponse" }) as any as S.Schema<BatchGetOneTimeProductsResponse>;
 
 /** Request message for GetOneTimeProductOffers. */
 export interface GetOneTimeProductOfferRequest {
@@ -2381,21 +1829,16 @@ export interface GetOneTimeProductOfferRequest {
   offerId?: string;
 }
 export const GetOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    purchaseOptionId: S.optional(S.String),
-    productId: S.optional(S.String),
-    packageName: S.optional(S.String),
-    offerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOneTimeProductOfferRequest",
-}) as any as S.Schema<GetOneTimeProductOfferRequest>;
+S.Struct({
+  "purchaseOptionId": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "packageName": S.optional(S.String),
+  "offerId": S.optional(S.String),
+}),
+).annotate({ identifier: "GetOneTimeProductOfferRequest" }) as any as S.Schema<GetOneTimeProductOfferRequest>;
 
-export type GetOneTimeProductOfferRequestList =
-  ReadonlyArray<GetOneTimeProductOfferRequest>;
-export const GetOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
-  GetOneTimeProductOfferRequest,
-) as any as S.Schema<GetOneTimeProductOfferRequestList>;
+export type GetOneTimeProductOfferRequestList = ReadonlyArray<GetOneTimeProductOfferRequest>;
+export const GetOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(GetOneTimeProductOfferRequest) as any as S.Schema<GetOneTimeProductOfferRequestList>;
 
 /** Request message for the BatchGetOneTimeProductOffers endpoint. */
 export interface BatchGetOneTimeProductOffersRequest {
@@ -2403,12 +1846,10 @@ export interface BatchGetOneTimeProductOffersRequest {
   requests?: GetOneTimeProductOfferRequestList;
 }
 export const BatchGetOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(GetOneTimeProductOfferRequestList),
-  }),
-).annotate({
-  identifier: "BatchGetOneTimeProductOffersRequest",
-}) as any as S.Schema<BatchGetOneTimeProductOffersRequest>;
+S.Struct({
+  "requests": S.optional(GetOneTimeProductOfferRequestList),
+}),
+).annotate({ identifier: "BatchGetOneTimeProductOffersRequest" }) as any as S.Schema<BatchGetOneTimeProductOffersRequest>;
 
 export interface BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The parent app (package name) of the updated offers. Must be equal to the package_name field on all the updated OneTimeProductOffer resources. */
@@ -2420,43 +1861,28 @@ export interface BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest
   /** Request body */
   body?: BatchGetOneTimeProductOffersRequest;
 }
-export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      purchaseOptionId: S.String.pipe(T.Label()),
-      body: S.optional(BatchGetOneTimeProductOffersRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchGet",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "purchaseOptionId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchGetOneTimeProductOffersRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchGet","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest" }) as any as S.Schema<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export type OneTimeProductOfferList = ReadonlyArray<OneTimeProductOffer>;
-export const OneTimeProductOfferList = /*@__PURE__*/ S.Array(
-  OneTimeProductOffer,
-) as any as S.Schema<OneTimeProductOfferList>;
+export const OneTimeProductOfferList = /*@__PURE__*/ S.Array(OneTimeProductOffer) as any as S.Schema<OneTimeProductOfferList>;
 
 /** Response message for the BatchGetOneTimeProductOffers endpoint. */
 export interface BatchGetOneTimeProductOffersResponse {
   /** The list of updated one-time product offers, in the same order as the request. */
   oneTimeProductOffers?: OneTimeProductOfferList;
 }
-export const BatchGetOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      oneTimeProductOffers: S.optional(OneTimeProductOfferList),
-    }),
-).annotate({
-  identifier: "BatchGetOneTimeProductOffersResponse",
-}) as any as S.Schema<BatchGetOneTimeProductOffersResponse>;
+export const BatchGetOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "oneTimeProductOffers": S.optional(OneTimeProductOfferList),
+}),
+).annotate({ identifier: "BatchGetOneTimeProductOffersResponse" }) as any as S.Schema<BatchGetOneTimeProductOffersResponse>;
 
 export interface BatchGetMonetizationSubscriptionsRequest {
   /** Required. The parent app (package name) for which the subscriptions should be retrieved. Must be equal to the package_name field on all the requests. */
@@ -2464,26 +1890,15 @@ export interface BatchGetMonetizationSubscriptionsRequest {
   /** Required. A list of up to 100 subscription product IDs to retrieve. All the IDs must be different. */
   productIds?: StringList;
 }
-export const BatchGetMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productIds: S.optional(StringList.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions:batchGet",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "BatchGetMonetizationSubscriptionsRequest",
-}) as any as S.Schema<BatchGetMonetizationSubscriptionsRequest>;
+export const BatchGetMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productIds": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/subscriptions:batchGet","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchGetMonetizationSubscriptionsRequest" }) as any as S.Schema<BatchGetMonetizationSubscriptionsRequest>;
 
 export type SubscriptionList = ReadonlyArray<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** Response message for BatchGetSubscriptions endpoint. */
 export interface BatchGetSubscriptionsResponse {
@@ -2491,12 +1906,10 @@ export interface BatchGetSubscriptionsResponse {
   subscriptions?: SubscriptionList;
 }
 export const BatchGetSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptions: S.optional(SubscriptionList),
-  }),
-).annotate({
-  identifier: "BatchGetSubscriptionsResponse",
-}) as any as S.Schema<BatchGetSubscriptionsResponse>;
+S.Struct({
+  "subscriptions": S.optional(SubscriptionList),
+}),
+).annotate({ identifier: "BatchGetSubscriptionsResponse" }) as any as S.Schema<BatchGetSubscriptionsResponse>;
 
 /** Request message for GetSubscriptionOffer. */
 export interface GetSubscriptionOfferRequest {
@@ -2510,21 +1923,16 @@ export interface GetSubscriptionOfferRequest {
   productId?: string;
 }
 export const GetSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.optional(S.String),
-    offerId: S.optional(S.String),
-    basePlanId: S.optional(S.String),
-    productId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSubscriptionOfferRequest",
-}) as any as S.Schema<GetSubscriptionOfferRequest>;
+S.Struct({
+  "packageName": S.optional(S.String),
+  "offerId": S.optional(S.String),
+  "basePlanId": S.optional(S.String),
+  "productId": S.optional(S.String),
+}),
+).annotate({ identifier: "GetSubscriptionOfferRequest" }) as any as S.Schema<GetSubscriptionOfferRequest>;
 
-export type GetSubscriptionOfferRequestList =
-  ReadonlyArray<GetSubscriptionOfferRequest>;
-export const GetSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(
-  GetSubscriptionOfferRequest,
-) as any as S.Schema<GetSubscriptionOfferRequestList>;
+export type GetSubscriptionOfferRequestList = ReadonlyArray<GetSubscriptionOfferRequest>;
+export const GetSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(GetSubscriptionOfferRequest) as any as S.Schema<GetSubscriptionOfferRequestList>;
 
 /** Request message for BatchGetSubscriptionOffers endpoint. */
 export interface BatchGetSubscriptionOffersRequest {
@@ -2532,12 +1940,10 @@ export interface BatchGetSubscriptionOffersRequest {
   requests?: GetSubscriptionOfferRequestList;
 }
 export const BatchGetSubscriptionOffersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(GetSubscriptionOfferRequestList),
-  }),
-).annotate({
-  identifier: "BatchGetSubscriptionOffersRequest",
-}) as any as S.Schema<BatchGetSubscriptionOffersRequest>;
+S.Struct({
+  "requests": S.optional(GetSubscriptionOfferRequestList),
+}),
+).annotate({ identifier: "BatchGetSubscriptionOffersRequest" }) as any as S.Schema<BatchGetSubscriptionOffersRequest>;
 
 export interface BatchGetMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this request spans multiple subscriptions, set this field to "-". Must be set. */
@@ -2549,40 +1955,27 @@ export interface BatchGetMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: BatchGetSubscriptionOffersRequest;
 }
-export const BatchGetMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      basePlanId: S.String.pipe(T.Label()),
-      body: S.optional(BatchGetSubscriptionOffersRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchGet",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchGetMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<BatchGetMonetizationSubscriptionsBasePlansOffersRequest>;
+export const BatchGetMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "basePlanId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchGetSubscriptionOffersRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchGet","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchGetMonetizationSubscriptionsBasePlansOffersRequest" }) as any as S.Schema<BatchGetMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type SubscriptionOfferList = ReadonlyArray<SubscriptionOffer>;
-export const SubscriptionOfferList = /*@__PURE__*/ S.Array(
-  SubscriptionOffer,
-) as any as S.Schema<SubscriptionOfferList>;
+export const SubscriptionOfferList = /*@__PURE__*/ S.Array(SubscriptionOffer) as any as S.Schema<SubscriptionOfferList>;
 
 /** Response message for BatchGetSubscriptionOffers endpoint. */
 export interface BatchGetSubscriptionOffersResponse {
   subscriptionOffers?: SubscriptionOfferList;
 }
 export const BatchGetSubscriptionOffersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionOffers: S.optional(SubscriptionOfferList),
-  }),
-).annotate({
-  identifier: "BatchGetSubscriptionOffersResponse",
-}) as any as S.Schema<BatchGetSubscriptionOffersResponse>;
+S.Struct({
+  "subscriptionOffers": S.optional(SubscriptionOfferList),
+}),
+).annotate({ identifier: "BatchGetSubscriptionOffersResponse" }) as any as S.Schema<BatchGetSubscriptionOffersResponse>;
 
 export interface BatchgetOrdersRequest {
   /** Required. The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing'). */
@@ -2591,29 +1984,13 @@ export interface BatchgetOrdersRequest {
   orderIds?: StringList;
 }
 export const BatchgetOrdersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    orderIds: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/orders:batchGet",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchgetOrdersRequest",
-}) as any as S.Schema<BatchgetOrdersRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "orderIds": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/orders:batchGet","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchgetOrdersRequest" }) as any as S.Schema<BatchgetOrdersRequest>;
 
-export type OrderStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "PROCESSED"
-  | "CANCELED"
-  | "PENDING_REFUND"
-  | "PARTIALLY_REFUNDED"
-  | "REFUNDED"
-  | (string & {});
+export type OrderStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "PROCESSED" | "CANCELED" | "PENDING_REFUND" | "PARTIALLY_REFUNDED" | "REFUNDED";
 export const OrderStateEnum = /*@__PURE__*/ S.String;
 
 /** Address information for the customer, for use in tax computation. */
@@ -2626,21 +2003,14 @@ export interface BuyerAddress {
   buyerCountry?: string;
 }
 export const BuyerAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buyerPostcode: S.optional(S.String),
-    buyerState: S.optional(S.String),
-    buyerCountry: S.optional(S.String),
-  }),
+S.Struct({
+  "buyerPostcode": S.optional(S.String),
+  "buyerState": S.optional(S.String),
+  "buyerCountry": S.optional(S.String),
+}),
 ).annotate({ identifier: "BuyerAddress" }) as any as S.Schema<BuyerAddress>;
 
-export type OrderSalesChannelEnum =
-  | "SALES_CHANNEL_UNSPECIFIED"
-  | "IN_APP"
-  | "PC_EMULATOR"
-  | "NATIVE_PC"
-  | "PLAY_STORE"
-  | "OUTSIDE_PLAY_STORE"
-  | (string & {});
+export type OrderSalesChannelEnum = "SALES_CHANNEL_UNSPECIFIED" | "IN_APP" | "PC_EMULATOR" | "NATIVE_PC" | "PLAY_STORE" | "OUTSIDE_PLAY_STORE";
 export const OrderSalesChannelEnum = /*@__PURE__*/ S.String;
 
 /** Details relating to any Play Points applied to an order. */
@@ -2655,12 +2025,12 @@ export interface PointsDetails {
   pointsOfferId?: string;
 }
 export const PointsDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pointsDiscountRateMicros: S.optional(S.String),
-    pointsSpent: S.optional(S.String),
-    pointsCouponValue: S.optional(Money),
-    pointsOfferId: S.optional(S.String),
-  }),
+S.Struct({
+  "pointsDiscountRateMicros": S.optional(S.String),
+  "pointsSpent": S.optional(S.String),
+  "pointsCouponValue": S.optional(Money),
+  "pointsOfferId": S.optional(S.String),
+}),
 ).annotate({ identifier: "PointsDetails" }) as any as S.Schema<PointsDetails>;
 
 /** Detailed information about the order at creation time. */
@@ -2669,9 +2039,9 @@ export interface OrderDetails {
   taxInclusive?: boolean;
 }
 export const OrderDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taxInclusive: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "taxInclusive": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "OrderDetails" }) as any as S.Schema<OrderDetails>;
 
 /** Details of when the order was processed. */
@@ -2680,9 +2050,9 @@ export interface ProcessedEvent {
   eventTime?: string;
 }
 export const ProcessedEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventTime: S.optional(S.String),
-  }),
+S.Struct({
+  "eventTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "ProcessedEvent" }) as any as S.Schema<ProcessedEvent>;
 
 /** Details of when the order was canceled. */
@@ -2691,18 +2061,12 @@ export interface CancellationEvent {
   eventTime?: string;
 }
 export const CancellationEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CancellationEvent",
-}) as any as S.Schema<CancellationEvent>;
+S.Struct({
+  "eventTime": S.optional(S.String),
+}),
+).annotate({ identifier: "CancellationEvent" }) as any as S.Schema<CancellationEvent>;
 
-export type RefundEventRefundReasonEnum =
-  | "REFUND_REASON_UNSPECIFIED"
-  | "OTHER"
-  | "CHARGEBACK"
-  | (string & {});
+export type RefundEventRefundReasonEnum = "REFUND_REASON_UNSPECIFIED" | "OTHER" | "CHARGEBACK";
 export const RefundEventRefundReasonEnum = /*@__PURE__*/ S.String;
 
 /** Details for a partial or full refund. */
@@ -2713,10 +2077,10 @@ export interface RefundDetails {
   tax?: Money;
 }
 export const RefundDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total: S.optional(Money),
-    tax: S.optional(Money),
-  }),
+S.Struct({
+  "total": S.optional(Money),
+  "tax": S.optional(Money),
+}),
 ).annotate({ identifier: "RefundDetails" }) as any as S.Schema<RefundDetails>;
 
 /** Details of when the order was fully refunded. */
@@ -2729,18 +2093,14 @@ export interface RefundEvent {
   refundDetails?: RefundDetails;
 }
 export const RefundEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventTime: S.optional(S.String),
-    refundReason: S.optional(RefundEventRefundReasonEnum),
-    refundDetails: S.optional(RefundDetails),
-  }),
+S.Struct({
+  "eventTime": S.optional(S.String),
+  "refundReason": S.optional(RefundEventRefundReasonEnum),
+  "refundDetails": S.optional(RefundDetails),
+}),
 ).annotate({ identifier: "RefundEvent" }) as any as S.Schema<RefundEvent>;
 
-export type PartialRefundEventStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "PROCESSED_SUCCESSFULLY"
-  | (string & {});
+export type PartialRefundEventStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "PROCESSED_SUCCESSFULLY";
 export const PartialRefundEventStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of the partial refund events for this order. */
@@ -2755,20 +2115,16 @@ export interface PartialRefundEvent {
   refundDetails?: RefundDetails;
 }
 export const PartialRefundEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    processTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    state: S.optional(PartialRefundEventStateEnum),
-    refundDetails: S.optional(RefundDetails),
-  }),
-).annotate({
-  identifier: "PartialRefundEvent",
-}) as any as S.Schema<PartialRefundEvent>;
+S.Struct({
+  "processTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "state": S.optional(PartialRefundEventStateEnum),
+  "refundDetails": S.optional(RefundDetails),
+}),
+).annotate({ identifier: "PartialRefundEvent" }) as any as S.Schema<PartialRefundEvent>;
 
 export type PartialRefundEventList = ReadonlyArray<PartialRefundEvent>;
-export const PartialRefundEventList = /*@__PURE__*/ S.Array(
-  PartialRefundEvent,
-) as any as S.Schema<PartialRefundEventList>;
+export const PartialRefundEventList = /*@__PURE__*/ S.Array(PartialRefundEvent) as any as S.Schema<PartialRefundEventList>;
 
 /** Details about events which modified the order. */
 export interface OrderHistory {
@@ -2782,33 +2138,31 @@ export interface OrderHistory {
   partialRefundEvents?: PartialRefundEventList;
 }
 export const OrderHistory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    processedEvent: S.optional(ProcessedEvent),
-    cancellationEvent: S.optional(CancellationEvent),
-    refundEvent: S.optional(RefundEvent),
-    partialRefundEvents: S.optional(PartialRefundEventList),
-  }),
+S.Struct({
+  "processedEvent": S.optional(ProcessedEvent),
+  "cancellationEvent": S.optional(CancellationEvent),
+  "refundEvent": S.optional(RefundEvent),
+  "partialRefundEvents": S.optional(PartialRefundEventList),
+}),
 ).annotate({ identifier: "OrderHistory" }) as any as S.Schema<OrderHistory>;
 
 /** Details of a paid app purchase. */
 export interface PaidAppDetails {}
 export const PaidAppDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+S.Struct({}),
 ).annotate({ identifier: "PaidAppDetails" }) as any as S.Schema<PaidAppDetails>;
 
 /** Details of a rental purchase. */
 export interface RentalDetails {}
 export const RentalDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+S.Struct({}),
 ).annotate({ identifier: "RentalDetails" }) as any as S.Schema<RentalDetails>;
 
 /** Details of a pre-order purchase. */
 export interface PreorderDetails {}
 export const PreorderDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PreorderDetails",
-}) as any as S.Schema<PreorderDetails>;
+S.Struct({}),
+).annotate({ identifier: "PreorderDetails" }) as any as S.Schema<PreorderDetails>;
 
 /** Details of a one-time purchase. */
 export interface OneTimePurchaseDetails {
@@ -2824,49 +2178,32 @@ export interface OneTimePurchaseDetails {
   offerId?: string;
 }
 export const OneTimePurchaseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    purchaseOptionId: S.optional(S.String),
-    rentalDetails: S.optional(RentalDetails),
-    quantity: S.optional(S.Number),
-    preorderDetails: S.optional(PreorderDetails),
-    offerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OneTimePurchaseDetails",
-}) as any as S.Schema<OneTimePurchaseDetails>;
+S.Struct({
+  "purchaseOptionId": S.optional(S.String),
+  "rentalDetails": S.optional(RentalDetails),
+  "quantity": S.optional(S.Number),
+  "preorderDetails": S.optional(PreorderDetails),
+  "offerId": S.optional(S.String),
+}),
+).annotate({ identifier: "OneTimePurchaseDetails" }) as any as S.Schema<OneTimePurchaseDetails>;
 
-export type SubscriptionDetailsOfferPhaseEnum =
-  | "OFFER_PHASE_UNSPECIFIED"
-  | "BASE"
-  | "INTRODUCTORY"
-  | "FREE_TRIAL"
-  | (string & {});
+export type SubscriptionDetailsOfferPhaseEnum = "OFFER_PHASE_UNSPECIFIED" | "BASE" | "INTRODUCTORY" | "FREE_TRIAL";
 export const SubscriptionDetailsOfferPhaseEnum = /*@__PURE__*/ S.String;
 
 /** Details of a free trial pricing phase. */
 export interface FreeTrialDetails {}
 export const FreeTrialDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FreeTrialDetails",
-}) as any as S.Schema<FreeTrialDetails>;
+S.Struct({}),
+).annotate({ identifier: "FreeTrialDetails" }) as any as S.Schema<FreeTrialDetails>;
 
 /** Details of an introductory price pricing phase. */
 export interface IntroductoryPriceDetails {}
 export const IntroductoryPriceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IntroductoryPriceDetails",
-}) as any as S.Schema<IntroductoryPriceDetails>;
+S.Struct({}),
+).annotate({ identifier: "IntroductoryPriceDetails" }) as any as S.Schema<IntroductoryPriceDetails>;
 
-export type ProrationPeriodDetailsOriginalOfferPhaseEnum =
-  | "OFFER_PHASE_UNSPECIFIED"
-  | "BASE"
-  | "INTRODUCTORY"
-  | "FREE_TRIAL"
-  | (string & {});
-export const ProrationPeriodDetailsOriginalOfferPhaseEnum =
-  /*@__PURE__*/ S.String;
+export type ProrationPeriodDetailsOriginalOfferPhaseEnum = "OFFER_PHASE_UNSPECIFIED" | "BASE" | "INTRODUCTORY" | "FREE_TRIAL";
+export const ProrationPeriodDetailsOriginalOfferPhaseEnum = /*@__PURE__*/ S.String;
 
 /** Details of a proration period. A proration period can be a period calculated during a plan change to cover existing entitlements (For more information, see [Allow users to upgrade, downgrade, or change their subscription](https://developer.android.com/google/play/billing/subscriptions#allow-users-change), or a prorated period to align add-on renewal dates with the base (For more information, see [Rules applicable for items in the purchase](https://developer.android.com/google/play/billing/subscription-with-addons#rules-base-addons)). */
 export interface ProrationPeriodDetails {
@@ -2874,20 +2211,16 @@ export interface ProrationPeriodDetails {
   originalOfferPhase?: ProrationPeriodDetailsOriginalOfferPhaseEnum;
 }
 export const ProrationPeriodDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originalOfferPhase: S.optional(
-      ProrationPeriodDetailsOriginalOfferPhaseEnum,
-    ),
-  }),
-).annotate({
-  identifier: "ProrationPeriodDetails",
-}) as any as S.Schema<ProrationPeriodDetails>;
+S.Struct({
+  "originalOfferPhase": S.optional(ProrationPeriodDetailsOriginalOfferPhaseEnum),
+}),
+).annotate({ identifier: "ProrationPeriodDetails" }) as any as S.Schema<ProrationPeriodDetails>;
 
 /** Details of a base price pricing phase. */
 export interface BaseDetails {}
-export const BaseDetails = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "BaseDetails" },
-) as any as S.Schema<BaseDetails>;
+export const BaseDetails = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "BaseDetails" }) as any as S.Schema<BaseDetails>;
 
 /** Details of a pricing phase for the entitlement period funded by this order. */
 export interface OfferPhaseDetails {
@@ -2901,15 +2234,13 @@ export interface OfferPhaseDetails {
   baseDetails?: BaseDetails;
 }
 export const OfferPhaseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    freeTrialDetails: S.optional(FreeTrialDetails),
-    introductoryPriceDetails: S.optional(IntroductoryPriceDetails),
-    prorationPeriodDetails: S.optional(ProrationPeriodDetails),
-    baseDetails: S.optional(BaseDetails),
-  }),
-).annotate({
-  identifier: "OfferPhaseDetails",
-}) as any as S.Schema<OfferPhaseDetails>;
+S.Struct({
+  "freeTrialDetails": S.optional(FreeTrialDetails),
+  "introductoryPriceDetails": S.optional(IntroductoryPriceDetails),
+  "prorationPeriodDetails": S.optional(ProrationPeriodDetails),
+  "baseDetails": S.optional(BaseDetails),
+}),
+).annotate({ identifier: "OfferPhaseDetails" }) as any as S.Schema<OfferPhaseDetails>;
 
 /** Details of a subscription purchase. */
 export interface SubscriptionDetails {
@@ -2927,17 +2258,15 @@ export interface SubscriptionDetails {
   offerPhaseDetails?: OfferPhaseDetails;
 }
 export const SubscriptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offerPhase: S.optional(SubscriptionDetailsOfferPhaseEnum),
-    offerId: S.optional(S.String),
-    servicePeriodStartTime: S.optional(S.String),
-    basePlanId: S.optional(S.String),
-    servicePeriodEndTime: S.optional(S.String),
-    offerPhaseDetails: S.optional(OfferPhaseDetails),
-  }),
-).annotate({
-  identifier: "SubscriptionDetails",
-}) as any as S.Schema<SubscriptionDetails>;
+S.Struct({
+  "offerPhase": S.optional(SubscriptionDetailsOfferPhaseEnum),
+  "offerId": S.optional(S.String),
+  "servicePeriodStartTime": S.optional(S.String),
+  "basePlanId": S.optional(S.String),
+  "servicePeriodEndTime": S.optional(S.String),
+  "offerPhaseDetails": S.optional(OfferPhaseDetails),
+}),
+).annotate({ identifier: "SubscriptionDetails" }) as any as S.Schema<SubscriptionDetails>;
 
 /** Details of a line item. */
 export interface LineItem {
@@ -2959,22 +2288,20 @@ export interface LineItem {
   total?: Money;
 }
 export const LineItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paidAppDetails: S.optional(PaidAppDetails),
-    tax: S.optional(Money),
-    oneTimePurchaseDetails: S.optional(OneTimePurchaseDetails),
-    listingPrice: S.optional(Money),
-    subscriptionDetails: S.optional(SubscriptionDetails),
-    productTitle: S.optional(S.String),
-    productId: S.optional(S.String),
-    total: S.optional(Money),
-  }),
+S.Struct({
+  "paidAppDetails": S.optional(PaidAppDetails),
+  "tax": S.optional(Money),
+  "oneTimePurchaseDetails": S.optional(OneTimePurchaseDetails),
+  "listingPrice": S.optional(Money),
+  "subscriptionDetails": S.optional(SubscriptionDetails),
+  "productTitle": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "total": S.optional(Money),
+}),
 ).annotate({ identifier: "LineItem" }) as any as S.Schema<LineItem>;
 
 export type LineItemList = ReadonlyArray<LineItem>;
-export const LineItemList = /*@__PURE__*/ S.Array(
-  LineItem,
-) as any as S.Schema<LineItemList>;
+export const LineItemList = /*@__PURE__*/ S.Array(LineItem) as any as S.Schema<LineItemList>;
 
 /** The Order resource encapsulates comprehensive information about a transaction made on Google Play. It includes a variety of attributes that provide details about the order itself, the products purchased, and the history of events related to the order. The Orders APIs provide real-time access to your order data within the Google Play ecosystem. You can retrieve detailed information and metadata for both one-time and recurring orders, including transaction details like charges, taxes, and refunds, as well as metadata such as pricing phases for subscriptions. The Orders APIs let you automate tasks related to order management, reducing the need for manual checks via the Play Developer Console. The following are some of the use cases for this API: + Real-time order data retrieval - Get order details and metadata immediately after a purchase using an order ID. + Order update synchronization - Periodically sync order updates to maintain an up-to-date record of order information. Note: + The Orders API calls count towards your Play Developer API quota, which defaults to 200K daily, and may be insufficient to sync extensive order histories. + A maximum of 1000 orders can be retrieved per call. Using larger page sizes is recommended to minimize quota usage. Check your quota in the Cloud Console and request more if required. */
 export interface Order {
@@ -3008,28 +2335,26 @@ export interface Order {
   lineItems?: LineItemList;
 }
 export const Order = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    developerRevenueInBuyerCurrency: S.optional(Money),
-    state: S.optional(OrderStateEnum),
-    buyerAddress: S.optional(BuyerAddress),
-    salesChannel: S.optional(OrderSalesChannelEnum),
-    pointsDetails: S.optional(PointsDetails),
-    total: S.optional(Money),
-    orderId: S.optional(S.String),
-    orderDetails: S.optional(OrderDetails),
-    createTime: S.optional(S.String),
-    lastEventTime: S.optional(S.String),
-    purchaseToken: S.optional(S.String),
-    tax: S.optional(Money),
-    orderHistory: S.optional(OrderHistory),
-    lineItems: S.optional(LineItemList),
-  }),
+S.Struct({
+  "developerRevenueInBuyerCurrency": S.optional(Money),
+  "state": S.optional(OrderStateEnum),
+  "buyerAddress": S.optional(BuyerAddress),
+  "salesChannel": S.optional(OrderSalesChannelEnum),
+  "pointsDetails": S.optional(PointsDetails),
+  "total": S.optional(Money),
+  "orderId": S.optional(S.String),
+  "orderDetails": S.optional(OrderDetails),
+  "createTime": S.optional(S.String),
+  "lastEventTime": S.optional(S.String),
+  "purchaseToken": S.optional(S.String),
+  "tax": S.optional(Money),
+  "orderHistory": S.optional(OrderHistory),
+  "lineItems": S.optional(LineItemList),
+}),
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
 export type OrderList = ReadonlyArray<Order>;
-export const OrderList = /*@__PURE__*/ S.Array(
-  Order,
-) as any as S.Schema<OrderList>;
+export const OrderList = /*@__PURE__*/ S.Array(Order) as any as S.Schema<OrderList>;
 
 /** Response for the orders.batchGet API. */
 export interface BatchGetOrdersResponse {
@@ -3037,55 +2362,36 @@ export interface BatchGetOrdersResponse {
   orders?: OrderList;
 }
 export const BatchGetOrdersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orders: S.optional(OrderList),
-  }),
-).annotate({
-  identifier: "BatchGetOrdersResponse",
-}) as any as S.Schema<BatchGetOrdersResponse>;
+S.Struct({
+  "orders": S.optional(OrderList),
+}),
+).annotate({ identifier: "BatchGetOrdersResponse" }) as any as S.Schema<BatchGetOrdersResponse>;
 
-export type MigrateBasePlanPricesRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const MigrateBasePlanPricesRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type MigrateBasePlanPricesRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const MigrateBasePlanPricesRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
-export type RegionalPriceMigrationConfigPriceIncreaseTypeEnum =
-  | "PRICE_INCREASE_TYPE_UNSPECIFIED"
-  | "PRICE_INCREASE_TYPE_OPT_IN"
-  | "PRICE_INCREASE_TYPE_OPT_OUT"
-  | (string & {});
-export const RegionalPriceMigrationConfigPriceIncreaseTypeEnum =
-  /*@__PURE__*/ S.String;
+export type RegionalPriceMigrationConfigPriceIncreaseTypeEnum = "PRICE_INCREASE_TYPE_UNSPECIFIED" | "PRICE_INCREASE_TYPE_OPT_IN" | "PRICE_INCREASE_TYPE_OPT_OUT";
+export const RegionalPriceMigrationConfigPriceIncreaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for migration of a legacy price cohort. */
 export interface RegionalPriceMigrationConfig {
   /** Required. Subscribers in all legacy price cohorts before this time will be migrated to the current price. Subscribers in any newer price cohorts are unaffected. Affected subscribers will receive one or more notifications from Google Play about the price change. Price decreases occur at the subscriber's next billing date. Price increases occur at the subscriber's next billing date following a notification period that varies by region and price increase type. */
   oldestAllowedPriceVersionTime?: string;
   /** Optional. The requested type of price increase */
-  priceIncreaseType?: RegionalPriceMigrationConfigPriceIncreaseTypeEnum;
+  priceIncreaseType?: RegionalPriceMigrationConfigPriceIncreaseTypeEnum | (string & {});
   /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
   regionCode?: string;
 }
 export const RegionalPriceMigrationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oldestAllowedPriceVersionTime: S.optional(S.String),
-    priceIncreaseType: S.optional(
-      RegionalPriceMigrationConfigPriceIncreaseTypeEnum,
-    ),
-    regionCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegionalPriceMigrationConfig",
-}) as any as S.Schema<RegionalPriceMigrationConfig>;
+S.Struct({
+  "oldestAllowedPriceVersionTime": S.optional(S.String),
+  "priceIncreaseType": S.optional(RegionalPriceMigrationConfigPriceIncreaseTypeEnum),
+  "regionCode": S.optional(S.String),
+}),
+).annotate({ identifier: "RegionalPriceMigrationConfig" }) as any as S.Schema<RegionalPriceMigrationConfig>;
 
-export type RegionalPriceMigrationConfigList =
-  ReadonlyArray<RegionalPriceMigrationConfig>;
-export const RegionalPriceMigrationConfigList = /*@__PURE__*/ S.Array(
-  RegionalPriceMigrationConfig,
-) as any as S.Schema<RegionalPriceMigrationConfigList>;
+export type RegionalPriceMigrationConfigList = ReadonlyArray<RegionalPriceMigrationConfig>;
+export const RegionalPriceMigrationConfigList = /*@__PURE__*/ S.Array(RegionalPriceMigrationConfig) as any as S.Schema<RegionalPriceMigrationConfigList>;
 
 /** Request message for MigrateBasePlanPrices. */
 export interface MigrateBasePlanPricesRequest {
@@ -3096,32 +2402,25 @@ export interface MigrateBasePlanPricesRequest {
   /** Required. Package name of the parent app. Must be equal to the package_name field on the Subscription resource. */
   packageName?: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: MigrateBasePlanPricesRequestLatencyToleranceEnum;
+  latencyTolerance?: MigrateBasePlanPricesRequestLatencyToleranceEnum | (string & {});
   /** Required. The ID of the subscription to update. Must be equal to the product_id field on the Subscription resource. */
   productId?: string;
   /** Required. The regional prices to update. */
   regionalPriceMigrations?: RegionalPriceMigrationConfigList;
 }
 export const MigrateBasePlanPricesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    basePlanId: S.optional(S.String),
-    regionsVersion: S.optional(RegionsVersion),
-    packageName: S.optional(S.String),
-    latencyTolerance: S.optional(
-      MigrateBasePlanPricesRequestLatencyToleranceEnum,
-    ),
-    productId: S.optional(S.String),
-    regionalPriceMigrations: S.optional(RegionalPriceMigrationConfigList),
-  }),
-).annotate({
-  identifier: "MigrateBasePlanPricesRequest",
-}) as any as S.Schema<MigrateBasePlanPricesRequest>;
+S.Struct({
+  "basePlanId": S.optional(S.String),
+  "regionsVersion": S.optional(RegionsVersion),
+  "packageName": S.optional(S.String),
+  "latencyTolerance": S.optional(MigrateBasePlanPricesRequestLatencyToleranceEnum),
+  "productId": S.optional(S.String),
+  "regionalPriceMigrations": S.optional(RegionalPriceMigrationConfigList),
+}),
+).annotate({ identifier: "MigrateBasePlanPricesRequest" }) as any as S.Schema<MigrateBasePlanPricesRequest>;
 
-export type MigrateBasePlanPricesRequestList =
-  ReadonlyArray<MigrateBasePlanPricesRequest>;
-export const MigrateBasePlanPricesRequestList = /*@__PURE__*/ S.Array(
-  MigrateBasePlanPricesRequest,
-) as any as S.Schema<MigrateBasePlanPricesRequestList>;
+export type MigrateBasePlanPricesRequestList = ReadonlyArray<MigrateBasePlanPricesRequest>;
+export const MigrateBasePlanPricesRequestList = /*@__PURE__*/ S.Array(MigrateBasePlanPricesRequest) as any as S.Schema<MigrateBasePlanPricesRequestList>;
 
 /** Request message for BatchMigrateBasePlanPrices. */
 export interface BatchMigrateBasePlanPricesRequest {
@@ -3129,12 +2428,10 @@ export interface BatchMigrateBasePlanPricesRequest {
   requests?: MigrateBasePlanPricesRequestList;
 }
 export const BatchMigrateBasePlanPricesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(MigrateBasePlanPricesRequestList),
-  }),
-).annotate({
-  identifier: "BatchMigrateBasePlanPricesRequest",
-}) as any as S.Schema<BatchMigrateBasePlanPricesRequest>;
+S.Struct({
+  "requests": S.optional(MigrateBasePlanPricesRequestList),
+}),
+).annotate({ identifier: "BatchMigrateBasePlanPricesRequest" }) as any as S.Schema<BatchMigrateBasePlanPricesRequest>;
 
 export interface BatchMigratePricesMonetizationSubscriptionsBasePlansRequest {
   /** Required. The parent app (package name) for which the subscriptions should be created or updated. Must be equal to the package_name field on all the Subscription resources. */
@@ -3144,36 +2441,22 @@ export interface BatchMigratePricesMonetizationSubscriptionsBasePlansRequest {
   /** Request body */
   body?: BatchMigrateBasePlanPricesRequest;
 }
-export const BatchMigratePricesMonetizationSubscriptionsBasePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(BatchMigrateBasePlanPricesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchMigratePrices",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchMigratePricesMonetizationSubscriptionsBasePlansRequest",
-  }) as any as S.Schema<BatchMigratePricesMonetizationSubscriptionsBasePlansRequest>;
+export const BatchMigratePricesMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchMigrateBasePlanPricesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchMigratePrices","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchMigratePricesMonetizationSubscriptionsBasePlansRequest" }) as any as S.Schema<BatchMigratePricesMonetizationSubscriptionsBasePlansRequest>;
 
 /** Response message for MigrateBasePlanPrices. */
 export interface MigrateBasePlanPricesResponse {}
 export const MigrateBasePlanPricesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MigrateBasePlanPricesResponse",
-}) as any as S.Schema<MigrateBasePlanPricesResponse>;
+S.Struct({}),
+).annotate({ identifier: "MigrateBasePlanPricesResponse" }) as any as S.Schema<MigrateBasePlanPricesResponse>;
 
-export type MigrateBasePlanPricesResponseList =
-  ReadonlyArray<MigrateBasePlanPricesResponse>;
-export const MigrateBasePlanPricesResponseList = /*@__PURE__*/ S.Array(
-  MigrateBasePlanPricesResponse,
-) as any as S.Schema<MigrateBasePlanPricesResponseList>;
+export type MigrateBasePlanPricesResponseList = ReadonlyArray<MigrateBasePlanPricesResponse>;
+export const MigrateBasePlanPricesResponseList = /*@__PURE__*/ S.Array(MigrateBasePlanPricesResponse) as any as S.Schema<MigrateBasePlanPricesResponseList>;
 
 /** Response message for BatchMigrateBasePlanPrices. */
 export interface BatchMigrateBasePlanPricesResponse {
@@ -3181,20 +2464,13 @@ export interface BatchMigrateBasePlanPricesResponse {
   responses?: MigrateBasePlanPricesResponseList;
 }
 export const BatchMigrateBasePlanPricesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responses: S.optional(MigrateBasePlanPricesResponseList),
-  }),
-).annotate({
-  identifier: "BatchMigrateBasePlanPricesResponse",
-}) as any as S.Schema<BatchMigrateBasePlanPricesResponse>;
+S.Struct({
+  "responses": S.optional(MigrateBasePlanPricesResponseList),
+}),
+).annotate({ identifier: "BatchMigrateBasePlanPricesResponse" }) as any as S.Schema<BatchMigrateBasePlanPricesResponse>;
 
-export type InappproductsUpdateRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const InappproductsUpdateRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type InappproductsUpdateRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const InappproductsUpdateRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request to update an in-app product. */
 export interface InappproductsUpdateRequest {
@@ -3207,30 +2483,23 @@ export interface InappproductsUpdateRequest {
   /** The new in-app product. */
   inappproduct?: InAppProduct;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: InappproductsUpdateRequestLatencyToleranceEnum;
+  latencyTolerance?: InappproductsUpdateRequestLatencyToleranceEnum | (string & {});
   /** If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. */
   autoConvertMissingPrices?: boolean;
 }
 export const InappproductsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sku: S.optional(S.String),
-    allowMissing: S.optional(S.Boolean),
-    packageName: S.optional(S.String),
-    inappproduct: S.optional(InAppProduct),
-    latencyTolerance: S.optional(
-      InappproductsUpdateRequestLatencyToleranceEnum,
-    ),
-    autoConvertMissingPrices: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "InappproductsUpdateRequest",
-}) as any as S.Schema<InappproductsUpdateRequest>;
+S.Struct({
+  "sku": S.optional(S.String),
+  "allowMissing": S.optional(S.Boolean),
+  "packageName": S.optional(S.String),
+  "inappproduct": S.optional(InAppProduct),
+  "latencyTolerance": S.optional(InappproductsUpdateRequestLatencyToleranceEnum),
+  "autoConvertMissingPrices": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "InappproductsUpdateRequest" }) as any as S.Schema<InappproductsUpdateRequest>;
 
-export type InappproductsUpdateRequestList =
-  ReadonlyArray<InappproductsUpdateRequest>;
-export const InappproductsUpdateRequestList = /*@__PURE__*/ S.Array(
-  InappproductsUpdateRequest,
-) as any as S.Schema<InappproductsUpdateRequestList>;
+export type InappproductsUpdateRequestList = ReadonlyArray<InappproductsUpdateRequest>;
+export const InappproductsUpdateRequestList = /*@__PURE__*/ S.Array(InappproductsUpdateRequest) as any as S.Schema<InappproductsUpdateRequestList>;
 
 /** Request to update or insert one or more in-app products. */
 export interface InappproductsBatchUpdateRequest {
@@ -3238,12 +2507,10 @@ export interface InappproductsBatchUpdateRequest {
   requests?: InappproductsUpdateRequestList;
 }
 export const InappproductsBatchUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(InappproductsUpdateRequestList),
-  }),
-).annotate({
-  identifier: "InappproductsBatchUpdateRequest",
-}) as any as S.Schema<InappproductsBatchUpdateRequest>;
+S.Struct({
+  "requests": S.optional(InappproductsUpdateRequestList),
+}),
+).annotate({ identifier: "InappproductsBatchUpdateRequest" }) as any as S.Schema<InappproductsBatchUpdateRequest>;
 
 export interface BatchUpdateInappproductsRequest {
   /** Package name of the app. */
@@ -3252,19 +2519,11 @@ export interface BatchUpdateInappproductsRequest {
   body?: InappproductsBatchUpdateRequest;
 }
 export const BatchUpdateInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(InappproductsBatchUpdateRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/inappproducts:batchUpdate",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchUpdateInappproductsRequest",
-}) as any as S.Schema<BatchUpdateInappproductsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(InappproductsBatchUpdateRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/inappproducts:batchUpdate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateInappproductsRequest" }) as any as S.Schema<BatchUpdateInappproductsRequest>;
 
 /** Response for a batch in-app product update. */
 export interface InappproductsBatchUpdateResponse {
@@ -3272,27 +2531,20 @@ export interface InappproductsBatchUpdateResponse {
   inappproducts?: InAppProductList;
 }
 export const InappproductsBatchUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inappproducts: S.optional(InAppProductList),
-  }),
-).annotate({
-  identifier: "InappproductsBatchUpdateResponse",
-}) as any as S.Schema<InappproductsBatchUpdateResponse>;
+S.Struct({
+  "inappproducts": S.optional(InAppProductList),
+}),
+).annotate({ identifier: "InappproductsBatchUpdateResponse" }) as any as S.Schema<InappproductsBatchUpdateResponse>;
 
-export type UpdateOneTimeProductRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const UpdateOneTimeProductRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type UpdateOneTimeProductRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const UpdateOneTimeProductRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for UpdateOneTimeProduct. */
 export interface UpdateOneTimeProductRequest {
   /** Required. The one-time product to upsert. */
   oneTimeProduct?: OneTimeProduct;
   /** Optional. The latency tolerance for the propagation of this product upsert. Defaults to latency-sensitive. */
-  latencyTolerance?: UpdateOneTimeProductRequestLatencyToleranceEnum;
+  latencyTolerance?: UpdateOneTimeProductRequestLatencyToleranceEnum | (string & {});
   /** Required. The list of fields to be updated. */
   updateMask?: string;
   /** Required. The version of the available regions being used for the one-time product. */
@@ -3301,24 +2553,17 @@ export interface UpdateOneTimeProductRequest {
   allowMissing?: boolean;
 }
 export const UpdateOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeProduct: S.optional(OneTimeProduct),
-    latencyTolerance: S.optional(
-      UpdateOneTimeProductRequestLatencyToleranceEnum,
-    ),
-    updateMask: S.optional(S.String),
-    regionsVersion: S.optional(RegionsVersion),
-    allowMissing: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateOneTimeProductRequest",
-}) as any as S.Schema<UpdateOneTimeProductRequest>;
+S.Struct({
+  "oneTimeProduct": S.optional(OneTimeProduct),
+  "latencyTolerance": S.optional(UpdateOneTimeProductRequestLatencyToleranceEnum),
+  "updateMask": S.optional(S.String),
+  "regionsVersion": S.optional(RegionsVersion),
+  "allowMissing": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "UpdateOneTimeProductRequest" }) as any as S.Schema<UpdateOneTimeProductRequest>;
 
-export type UpdateOneTimeProductRequestList =
-  ReadonlyArray<UpdateOneTimeProductRequest>;
-export const UpdateOneTimeProductRequestList = /*@__PURE__*/ S.Array(
-  UpdateOneTimeProductRequest,
-) as any as S.Schema<UpdateOneTimeProductRequestList>;
+export type UpdateOneTimeProductRequestList = ReadonlyArray<UpdateOneTimeProductRequest>;
+export const UpdateOneTimeProductRequestList = /*@__PURE__*/ S.Array(UpdateOneTimeProductRequest) as any as S.Schema<UpdateOneTimeProductRequestList>;
 
 /** Request message for BatchUpdateOneTimeProduct. */
 export interface BatchUpdateOneTimeProductsRequest {
@@ -3326,12 +2571,10 @@ export interface BatchUpdateOneTimeProductsRequest {
   requests?: UpdateOneTimeProductRequestList;
 }
 export const BatchUpdateOneTimeProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(UpdateOneTimeProductRequestList),
-  }),
-).annotate({
-  identifier: "BatchUpdateOneTimeProductsRequest",
-}) as any as S.Schema<BatchUpdateOneTimeProductsRequest>;
+S.Struct({
+  "requests": S.optional(UpdateOneTimeProductRequestList),
+}),
+).annotate({ identifier: "BatchUpdateOneTimeProductsRequest" }) as any as S.Schema<BatchUpdateOneTimeProductsRequest>;
 
 export interface BatchUpdateMonetizationOnetimeproductsRequest {
   /** Required. The parent app (package name) for which the one-time products should be updated. Must be equal to the package_name field on all the OneTimeProduct resources. */
@@ -3339,21 +2582,12 @@ export interface BatchUpdateMonetizationOnetimeproductsRequest {
   /** Request body */
   body?: BatchUpdateOneTimeProductsRequest;
 }
-export const BatchUpdateMonetizationOnetimeproductsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateOneTimeProductsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchUpdate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchUpdateMonetizationOnetimeproductsRequest",
-  }) as any as S.Schema<BatchUpdateMonetizationOnetimeproductsRequest>;
+export const BatchUpdateMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdateOneTimeProductsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchUpdate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateMonetizationOnetimeproductsRequest" }) as any as S.Schema<BatchUpdateMonetizationOnetimeproductsRequest>;
 
 /** Response message for BatchUpdateOneTimeProduct. */
 export interface BatchUpdateOneTimeProductsResponse {
@@ -3361,27 +2595,20 @@ export interface BatchUpdateOneTimeProductsResponse {
   oneTimeProducts?: OneTimeProductList;
 }
 export const BatchUpdateOneTimeProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeProducts: S.optional(OneTimeProductList),
-  }),
-).annotate({
-  identifier: "BatchUpdateOneTimeProductsResponse",
-}) as any as S.Schema<BatchUpdateOneTimeProductsResponse>;
+S.Struct({
+  "oneTimeProducts": S.optional(OneTimeProductList),
+}),
+).annotate({ identifier: "BatchUpdateOneTimeProductsResponse" }) as any as S.Schema<BatchUpdateOneTimeProductsResponse>;
 
-export type UpdateOneTimeProductOfferRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const UpdateOneTimeProductOfferRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type UpdateOneTimeProductOfferRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const UpdateOneTimeProductOfferRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for UpdateOneTimeProductOffer. */
 export interface UpdateOneTimeProductOfferRequest {
   /** Required. The list of fields to be updated. */
   updateMask?: string;
   /** Optional. The latency tolerance for the propagation of this offer update. Defaults to latency-sensitive. */
-  latencyTolerance?: UpdateOneTimeProductOfferRequestLatencyToleranceEnum;
+  latencyTolerance?: UpdateOneTimeProductOfferRequestLatencyToleranceEnum | (string & {});
   /** Optional. If set to true, and the offer with the given package_name, product_id, purchase_option_id and offer_id doesn't exist, an offer will be created. If a new offer is created, the update_mask is ignored. */
   allowMissing?: boolean;
   /** Required. The one-time product offer to update. */
@@ -3390,38 +2617,28 @@ export interface UpdateOneTimeProductOfferRequest {
   regionsVersion?: RegionsVersion;
 }
 export const UpdateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String),
-    latencyTolerance: S.optional(
-      UpdateOneTimeProductOfferRequestLatencyToleranceEnum,
-    ),
-    allowMissing: S.optional(S.Boolean),
-    oneTimeProductOffer: S.optional(OneTimeProductOffer),
-    regionsVersion: S.optional(RegionsVersion),
-  }),
-).annotate({
-  identifier: "UpdateOneTimeProductOfferRequest",
-}) as any as S.Schema<UpdateOneTimeProductOfferRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String),
+  "latencyTolerance": S.optional(UpdateOneTimeProductOfferRequestLatencyToleranceEnum),
+  "allowMissing": S.optional(S.Boolean),
+  "oneTimeProductOffer": S.optional(OneTimeProductOffer),
+  "regionsVersion": S.optional(RegionsVersion),
+}),
+).annotate({ identifier: "UpdateOneTimeProductOfferRequest" }) as any as S.Schema<UpdateOneTimeProductOfferRequest>;
 
-export type UpdateOneTimeProductOfferRequestList =
-  ReadonlyArray<UpdateOneTimeProductOfferRequest>;
-export const UpdateOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
-  UpdateOneTimeProductOfferRequest,
-) as any as S.Schema<UpdateOneTimeProductOfferRequestList>;
+export type UpdateOneTimeProductOfferRequestList = ReadonlyArray<UpdateOneTimeProductOfferRequest>;
+export const UpdateOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(UpdateOneTimeProductOfferRequest) as any as S.Schema<UpdateOneTimeProductOfferRequestList>;
 
 /** Request message for BatchUpdateOneTimeProductOffers. */
 export interface BatchUpdateOneTimeProductOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different offers. */
   requests?: UpdateOneTimeProductOfferRequestList;
 }
-export const BatchUpdateOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requests: S.optional(UpdateOneTimeProductOfferRequestList),
-    }),
-).annotate({
-  identifier: "BatchUpdateOneTimeProductOffersRequest",
-}) as any as S.Schema<BatchUpdateOneTimeProductOffersRequest>;
+export const BatchUpdateOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requests": S.optional(UpdateOneTimeProductOfferRequestList),
+}),
+).annotate({ identifier: "BatchUpdateOneTimeProductOffersRequest" }) as any as S.Schema<BatchUpdateOneTimeProductOffersRequest>;
 
 export interface BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The parent purchase option (ID) for which the offers should be updated. May be specified as '-' to update offers from multiple purchase options. */
@@ -3433,48 +2650,28 @@ export interface BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequ
   /** Request body */
   body?: BatchUpdateOneTimeProductOffersRequest;
 }
-export const BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      purchaseOptionId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      body: S.optional(
-        BatchUpdateOneTimeProductOffersRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchUpdate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+export const BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "purchaseOptionId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdateOneTimeProductOffersRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchUpdate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest" }) as any as S.Schema<BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 /** Response message for BatchUpdateOneTimeProductOffers. */
 export interface BatchUpdateOneTimeProductOffersResponse {
   /** The list of updated one-time product offers, in the same order as the request. */
   oneTimeProductOffers?: OneTimeProductOfferList;
 }
-export const BatchUpdateOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      oneTimeProductOffers: S.optional(OneTimeProductOfferList),
-    }),
-).annotate({
-  identifier: "BatchUpdateOneTimeProductOffersResponse",
-}) as any as S.Schema<BatchUpdateOneTimeProductOffersResponse>;
+export const BatchUpdateOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "oneTimeProductOffers": S.optional(OneTimeProductOfferList),
+}),
+).annotate({ identifier: "BatchUpdateOneTimeProductOffersResponse" }) as any as S.Schema<BatchUpdateOneTimeProductOffersResponse>;
 
-export type UpdateSubscriptionRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const UpdateSubscriptionRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type UpdateSubscriptionRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const UpdateSubscriptionRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for UpdateSubscription. */
 export interface UpdateSubscriptionRequest {
@@ -3487,25 +2684,20 @@ export interface UpdateSubscriptionRequest {
   /** Required. The subscription to update. */
   subscription?: Subscription;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: UpdateSubscriptionRequestLatencyToleranceEnum;
+  latencyTolerance?: UpdateSubscriptionRequestLatencyToleranceEnum | (string & {});
 }
 export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowMissing: S.optional(S.Boolean),
-    regionsVersion: S.optional(RegionsVersion),
-    updateMask: S.optional(S.String),
-    subscription: S.optional(Subscription),
-    latencyTolerance: S.optional(UpdateSubscriptionRequestLatencyToleranceEnum),
-  }),
-).annotate({
-  identifier: "UpdateSubscriptionRequest",
-}) as any as S.Schema<UpdateSubscriptionRequest>;
+S.Struct({
+  "allowMissing": S.optional(S.Boolean),
+  "regionsVersion": S.optional(RegionsVersion),
+  "updateMask": S.optional(S.String),
+  "subscription": S.optional(Subscription),
+  "latencyTolerance": S.optional(UpdateSubscriptionRequestLatencyToleranceEnum),
+}),
+).annotate({ identifier: "UpdateSubscriptionRequest" }) as any as S.Schema<UpdateSubscriptionRequest>;
 
-export type UpdateSubscriptionRequestList =
-  ReadonlyArray<UpdateSubscriptionRequest>;
-export const UpdateSubscriptionRequestList = /*@__PURE__*/ S.Array(
-  UpdateSubscriptionRequest,
-) as any as S.Schema<UpdateSubscriptionRequestList>;
+export type UpdateSubscriptionRequestList = ReadonlyArray<UpdateSubscriptionRequest>;
+export const UpdateSubscriptionRequestList = /*@__PURE__*/ S.Array(UpdateSubscriptionRequest) as any as S.Schema<UpdateSubscriptionRequestList>;
 
 /** Request message for BatchUpdateSubscription. */
 export interface BatchUpdateSubscriptionsRequest {
@@ -3513,12 +2705,10 @@ export interface BatchUpdateSubscriptionsRequest {
   requests?: UpdateSubscriptionRequestList;
 }
 export const BatchUpdateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(UpdateSubscriptionRequestList),
-  }),
-).annotate({
-  identifier: "BatchUpdateSubscriptionsRequest",
-}) as any as S.Schema<BatchUpdateSubscriptionsRequest>;
+S.Struct({
+  "requests": S.optional(UpdateSubscriptionRequestList),
+}),
+).annotate({ identifier: "BatchUpdateSubscriptionsRequest" }) as any as S.Schema<BatchUpdateSubscriptionsRequest>;
 
 export interface BatchUpdateMonetizationSubscriptionsRequest {
   /** Required. The parent app (package name) for which the subscriptions should be updated. Must be equal to the package_name field on all the Subscription resources. */
@@ -3526,21 +2716,12 @@ export interface BatchUpdateMonetizationSubscriptionsRequest {
   /** Request body */
   body?: BatchUpdateSubscriptionsRequest;
 }
-export const BatchUpdateMonetizationSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateSubscriptionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions:batchUpdate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchUpdateMonetizationSubscriptionsRequest",
-  }) as any as S.Schema<BatchUpdateMonetizationSubscriptionsRequest>;
+export const BatchUpdateMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdateSubscriptionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions:batchUpdate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateMonetizationSubscriptionsRequest" }) as any as S.Schema<BatchUpdateMonetizationSubscriptionsRequest>;
 
 /** Response message for BatchUpdateSubscription. */
 export interface BatchUpdateSubscriptionsResponse {
@@ -3548,27 +2729,20 @@ export interface BatchUpdateSubscriptionsResponse {
   subscriptions?: SubscriptionList;
 }
 export const BatchUpdateSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptions: S.optional(SubscriptionList),
-  }),
-).annotate({
-  identifier: "BatchUpdateSubscriptionsResponse",
-}) as any as S.Schema<BatchUpdateSubscriptionsResponse>;
+S.Struct({
+  "subscriptions": S.optional(SubscriptionList),
+}),
+).annotate({ identifier: "BatchUpdateSubscriptionsResponse" }) as any as S.Schema<BatchUpdateSubscriptionsResponse>;
 
-export type UpdateSubscriptionOfferRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const UpdateSubscriptionOfferRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type UpdateSubscriptionOfferRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const UpdateSubscriptionOfferRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for UpdateSubscriptionOffer. */
 export interface UpdateSubscriptionOfferRequest {
   /** Required. The list of fields to be updated. */
   updateMask?: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: UpdateSubscriptionOfferRequestLatencyToleranceEnum;
+  latencyTolerance?: UpdateSubscriptionOfferRequestLatencyToleranceEnum | (string & {});
   /** Required. The subscription offer to update. */
   subscriptionOffer?: SubscriptionOffer;
   /** Optional. If set to true, and the subscription offer with the given package_name, product_id, base_plan_id and offer_id doesn't exist, an offer will be created. If a new offer is created, update_mask is ignored. */
@@ -3577,38 +2751,28 @@ export interface UpdateSubscriptionOfferRequest {
   regionsVersion?: RegionsVersion;
 }
 export const UpdateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String),
-    latencyTolerance: S.optional(
-      UpdateSubscriptionOfferRequestLatencyToleranceEnum,
-    ),
-    subscriptionOffer: S.optional(SubscriptionOffer),
-    allowMissing: S.optional(S.Boolean),
-    regionsVersion: S.optional(RegionsVersion),
-  }),
-).annotate({
-  identifier: "UpdateSubscriptionOfferRequest",
-}) as any as S.Schema<UpdateSubscriptionOfferRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String),
+  "latencyTolerance": S.optional(UpdateSubscriptionOfferRequestLatencyToleranceEnum),
+  "subscriptionOffer": S.optional(SubscriptionOffer),
+  "allowMissing": S.optional(S.Boolean),
+  "regionsVersion": S.optional(RegionsVersion),
+}),
+).annotate({ identifier: "UpdateSubscriptionOfferRequest" }) as any as S.Schema<UpdateSubscriptionOfferRequest>;
 
-export type UpdateSubscriptionOfferRequestList =
-  ReadonlyArray<UpdateSubscriptionOfferRequest>;
-export const UpdateSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(
-  UpdateSubscriptionOfferRequest,
-) as any as S.Schema<UpdateSubscriptionOfferRequestList>;
+export type UpdateSubscriptionOfferRequestList = ReadonlyArray<UpdateSubscriptionOfferRequest>;
+export const UpdateSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(UpdateSubscriptionOfferRequest) as any as S.Schema<UpdateSubscriptionOfferRequestList>;
 
 /** Request message for BatchUpdateSubscriptionOffers. */
 export interface BatchUpdateSubscriptionOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different subscription offers. */
   requests?: UpdateSubscriptionOfferRequestList;
 }
-export const BatchUpdateSubscriptionOffersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requests: S.optional(UpdateSubscriptionOfferRequestList),
-    }),
-).annotate({
-  identifier: "BatchUpdateSubscriptionOffersRequest",
-}) as any as S.Schema<BatchUpdateSubscriptionOffersRequest>;
+export const BatchUpdateSubscriptionOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requests": S.optional(UpdateSubscriptionOfferRequestList),
+}),
+).annotate({ identifier: "BatchUpdateSubscriptionOffersRequest" }) as any as S.Schema<BatchUpdateSubscriptionOffersRequest>;
 
 export interface BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this request spans multiple subscriptions, set this field to "-". Must be set. */
@@ -3620,45 +2784,28 @@ export interface BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: BatchUpdateSubscriptionOffersRequest;
 }
-export const BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      basePlanId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateSubscriptionOffersRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest>;
+export const BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "basePlanId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdateSubscriptionOffersRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest" }) as any as S.Schema<BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest>;
 
 /** Response message for BatchUpdateSubscriptionOffers. */
 export interface BatchUpdateSubscriptionOffersResponse {
   /** The updated subscription offers list. */
   subscriptionOffers?: SubscriptionOfferList;
 }
-export const BatchUpdateSubscriptionOffersResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionOffers: S.optional(SubscriptionOfferList),
-    }),
-).annotate({
-  identifier: "BatchUpdateSubscriptionOffersResponse",
-}) as any as S.Schema<BatchUpdateSubscriptionOffersResponse>;
+export const BatchUpdateSubscriptionOffersResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "subscriptionOffers": S.optional(SubscriptionOfferList),
+}),
+).annotate({ identifier: "BatchUpdateSubscriptionOffersResponse" }) as any as S.Schema<BatchUpdateSubscriptionOffersResponse>;
 
-export type DeactivatePurchaseOptionRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const DeactivatePurchaseOptionRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type DeactivatePurchaseOptionRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const DeactivatePurchaseOptionRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for UpdatePurchaseOptionState. */
 export interface DeactivatePurchaseOptionRequest {
@@ -3669,28 +2816,19 @@ export interface DeactivatePurchaseOptionRequest {
   /** Required. The parent app (package name) of the purchase option to deactivate. */
   packageName?: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: DeactivatePurchaseOptionRequestLatencyToleranceEnum;
+  latencyTolerance?: DeactivatePurchaseOptionRequestLatencyToleranceEnum | (string & {});
 }
 export const DeactivatePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    purchaseOptionId: S.optional(S.String),
-    packageName: S.optional(S.String),
-    latencyTolerance: S.optional(
-      DeactivatePurchaseOptionRequestLatencyToleranceEnum,
-    ),
-  }),
-).annotate({
-  identifier: "DeactivatePurchaseOptionRequest",
-}) as any as S.Schema<DeactivatePurchaseOptionRequest>;
+S.Struct({
+  "productId": S.optional(S.String),
+  "purchaseOptionId": S.optional(S.String),
+  "packageName": S.optional(S.String),
+  "latencyTolerance": S.optional(DeactivatePurchaseOptionRequestLatencyToleranceEnum),
+}),
+).annotate({ identifier: "DeactivatePurchaseOptionRequest" }) as any as S.Schema<DeactivatePurchaseOptionRequest>;
 
-export type ActivatePurchaseOptionRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const ActivatePurchaseOptionRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type ActivatePurchaseOptionRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const ActivatePurchaseOptionRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for UpdatePurchaseOptionState. */
 export interface ActivatePurchaseOptionRequest {
@@ -3701,20 +2839,16 @@ export interface ActivatePurchaseOptionRequest {
   /** Required. The parent app (package name) of the purchase option to activate. */
   packageName?: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: ActivatePurchaseOptionRequestLatencyToleranceEnum;
+  latencyTolerance?: ActivatePurchaseOptionRequestLatencyToleranceEnum | (string & {});
 }
 export const ActivatePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    purchaseOptionId: S.optional(S.String),
-    packageName: S.optional(S.String),
-    latencyTolerance: S.optional(
-      ActivatePurchaseOptionRequestLatencyToleranceEnum,
-    ),
-  }),
-).annotate({
-  identifier: "ActivatePurchaseOptionRequest",
-}) as any as S.Schema<ActivatePurchaseOptionRequest>;
+S.Struct({
+  "productId": S.optional(S.String),
+  "purchaseOptionId": S.optional(S.String),
+  "packageName": S.optional(S.String),
+  "latencyTolerance": S.optional(ActivatePurchaseOptionRequestLatencyToleranceEnum),
+}),
+).annotate({ identifier: "ActivatePurchaseOptionRequest" }) as any as S.Schema<ActivatePurchaseOptionRequest>;
 
 /** Request message to update the state of a one-time product purchase option. */
 export interface UpdatePurchaseOptionStateRequest {
@@ -3724,35 +2858,25 @@ export interface UpdatePurchaseOptionStateRequest {
   activatePurchaseOptionRequest?: ActivatePurchaseOptionRequest;
 }
 export const UpdatePurchaseOptionStateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deactivatePurchaseOptionRequest: S.optional(
-      DeactivatePurchaseOptionRequest,
-    ),
-    activatePurchaseOptionRequest: S.optional(ActivatePurchaseOptionRequest),
-  }),
-).annotate({
-  identifier: "UpdatePurchaseOptionStateRequest",
-}) as any as S.Schema<UpdatePurchaseOptionStateRequest>;
+S.Struct({
+  "deactivatePurchaseOptionRequest": S.optional(DeactivatePurchaseOptionRequest),
+  "activatePurchaseOptionRequest": S.optional(ActivatePurchaseOptionRequest),
+}),
+).annotate({ identifier: "UpdatePurchaseOptionStateRequest" }) as any as S.Schema<UpdatePurchaseOptionStateRequest>;
 
-export type UpdatePurchaseOptionStateRequestList =
-  ReadonlyArray<UpdatePurchaseOptionStateRequest>;
-export const UpdatePurchaseOptionStateRequestList = /*@__PURE__*/ S.Array(
-  UpdatePurchaseOptionStateRequest,
-) as any as S.Schema<UpdatePurchaseOptionStateRequestList>;
+export type UpdatePurchaseOptionStateRequestList = ReadonlyArray<UpdatePurchaseOptionStateRequest>;
+export const UpdatePurchaseOptionStateRequestList = /*@__PURE__*/ S.Array(UpdatePurchaseOptionStateRequest) as any as S.Schema<UpdatePurchaseOptionStateRequestList>;
 
 /** Request message for BatchUpdatePurchaseOptionStates. */
 export interface BatchUpdatePurchaseOptionStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different purchase options. */
   requests?: UpdatePurchaseOptionStateRequestList;
 }
-export const BatchUpdatePurchaseOptionStatesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requests: S.optional(UpdatePurchaseOptionStateRequestList),
-    }),
-).annotate({
-  identifier: "BatchUpdatePurchaseOptionStatesRequest",
-}) as any as S.Schema<BatchUpdatePurchaseOptionStatesRequest>;
+export const BatchUpdatePurchaseOptionStatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requests": S.optional(UpdatePurchaseOptionStateRequestList),
+}),
+).annotate({ identifier: "BatchUpdatePurchaseOptionStatesRequest" }) as any as S.Schema<BatchUpdatePurchaseOptionStatesRequest>;
 
 export interface BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest {
   /** Required. The parent app (package name) of the updated purchase options. */
@@ -3762,47 +2886,27 @@ export interface BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequ
   /** Request body */
   body?: BatchUpdatePurchaseOptionStatesRequest;
 }
-export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(
-        BatchUpdatePurchaseOptionStatesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions:batchUpdateStates",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest",
-  }) as any as S.Schema<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest>;
+export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdatePurchaseOptionStatesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions:batchUpdateStates","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest" }) as any as S.Schema<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest>;
 
 /** Response message for BatchUpdatePurchaseOptionStates. */
 export interface BatchUpdatePurchaseOptionStatesResponse {
   /** The list of updated one-time products. This list will match the requests one to one, in the same order. */
   oneTimeProducts?: OneTimeProductList;
 }
-export const BatchUpdatePurchaseOptionStatesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      oneTimeProducts: S.optional(OneTimeProductList),
-    }),
-).annotate({
-  identifier: "BatchUpdatePurchaseOptionStatesResponse",
-}) as any as S.Schema<BatchUpdatePurchaseOptionStatesResponse>;
+export const BatchUpdatePurchaseOptionStatesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "oneTimeProducts": S.optional(OneTimeProductList),
+}),
+).annotate({ identifier: "BatchUpdatePurchaseOptionStatesResponse" }) as any as S.Schema<BatchUpdatePurchaseOptionStatesResponse>;
 
-export type CancelOneTimeProductOfferRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const CancelOneTimeProductOfferRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type CancelOneTimeProductOfferRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const CancelOneTimeProductOfferRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for CancelOneTimeProductOffer. */
 export interface CancelOneTimeProductOfferRequest {
@@ -3811,33 +2915,24 @@ export interface CancelOneTimeProductOfferRequest {
   /** Required. The offer ID of the offer to cancel. */
   offerId?: string;
   /** Optional. The latency tolerance for the propagation of this update. Defaults to latency-sensitive. */
-  latencyTolerance?: CancelOneTimeProductOfferRequestLatencyToleranceEnum;
+  latencyTolerance?: CancelOneTimeProductOfferRequestLatencyToleranceEnum | (string & {});
   /** Required. The parent one-time product (ID) of the offer to cancel. */
   productId?: string;
   /** Required. The parent purchase option (ID) of the offer to cancel. */
   purchaseOptionId?: string;
 }
 export const CancelOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.optional(S.String),
-    offerId: S.optional(S.String),
-    latencyTolerance: S.optional(
-      CancelOneTimeProductOfferRequestLatencyToleranceEnum,
-    ),
-    productId: S.optional(S.String),
-    purchaseOptionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CancelOneTimeProductOfferRequest",
-}) as any as S.Schema<CancelOneTimeProductOfferRequest>;
+S.Struct({
+  "packageName": S.optional(S.String),
+  "offerId": S.optional(S.String),
+  "latencyTolerance": S.optional(CancelOneTimeProductOfferRequestLatencyToleranceEnum),
+  "productId": S.optional(S.String),
+  "purchaseOptionId": S.optional(S.String),
+}),
+).annotate({ identifier: "CancelOneTimeProductOfferRequest" }) as any as S.Schema<CancelOneTimeProductOfferRequest>;
 
-export type DeactivateOneTimeProductOfferRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const DeactivateOneTimeProductOfferRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type DeactivateOneTimeProductOfferRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const DeactivateOneTimeProductOfferRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for DeactivateOneTimeProductOffer. */
 export interface DeactivateOneTimeProductOfferRequest {
@@ -3850,22 +2945,17 @@ export interface DeactivateOneTimeProductOfferRequest {
   /** Required. The offer ID of the offer to deactivate. */
   offerId?: string;
   /** Optional. The latency tolerance for the propagation of this update. Defaults to latency-sensitive. */
-  latencyTolerance?: DeactivateOneTimeProductOfferRequestLatencyToleranceEnum;
+  latencyTolerance?: DeactivateOneTimeProductOfferRequestLatencyToleranceEnum | (string & {});
 }
-export const DeactivateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      purchaseOptionId: S.optional(S.String),
-      productId: S.optional(S.String),
-      packageName: S.optional(S.String),
-      offerId: S.optional(S.String),
-      latencyTolerance: S.optional(
-        DeactivateOneTimeProductOfferRequestLatencyToleranceEnum,
-      ),
-    }),
-).annotate({
-  identifier: "DeactivateOneTimeProductOfferRequest",
-}) as any as S.Schema<DeactivateOneTimeProductOfferRequest>;
+export const DeactivateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "purchaseOptionId": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "packageName": S.optional(S.String),
+  "offerId": S.optional(S.String),
+  "latencyTolerance": S.optional(DeactivateOneTimeProductOfferRequestLatencyToleranceEnum),
+}),
+).annotate({ identifier: "DeactivateOneTimeProductOfferRequest" }) as any as S.Schema<DeactivateOneTimeProductOfferRequest>;
 
 /** Request message to update the state of a one-time product offer. */
 export interface UpdateOneTimeProductOfferStateRequest {
@@ -3876,42 +2966,27 @@ export interface UpdateOneTimeProductOfferStateRequest {
   /** Deactivates an offer. Once deactivated, the offer is no longer available to users. This state transition is specific to discounted offers. */
   deactivateOneTimeProductOfferRequest?: DeactivateOneTimeProductOfferRequest;
 }
-export const UpdateOneTimeProductOfferStateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      activateOneTimeProductOfferRequest: S.optional(
-        ActivateOneTimeProductOfferRequest,
-      ),
-      cancelOneTimeProductOfferRequest: S.optional(
-        CancelOneTimeProductOfferRequest,
-      ),
-      deactivateOneTimeProductOfferRequest: S.optional(
-        DeactivateOneTimeProductOfferRequest,
-      ),
-    }),
-).annotate({
-  identifier: "UpdateOneTimeProductOfferStateRequest",
-}) as any as S.Schema<UpdateOneTimeProductOfferStateRequest>;
+export const UpdateOneTimeProductOfferStateRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "activateOneTimeProductOfferRequest": S.optional(ActivateOneTimeProductOfferRequest),
+  "cancelOneTimeProductOfferRequest": S.optional(CancelOneTimeProductOfferRequest),
+  "deactivateOneTimeProductOfferRequest": S.optional(DeactivateOneTimeProductOfferRequest),
+}),
+).annotate({ identifier: "UpdateOneTimeProductOfferStateRequest" }) as any as S.Schema<UpdateOneTimeProductOfferStateRequest>;
 
-export type UpdateOneTimeProductOfferStateRequestList =
-  ReadonlyArray<UpdateOneTimeProductOfferStateRequest>;
-export const UpdateOneTimeProductOfferStateRequestList = /*@__PURE__*/ S.Array(
-  UpdateOneTimeProductOfferStateRequest,
-) as any as S.Schema<UpdateOneTimeProductOfferStateRequestList>;
+export type UpdateOneTimeProductOfferStateRequestList = ReadonlyArray<UpdateOneTimeProductOfferStateRequest>;
+export const UpdateOneTimeProductOfferStateRequestList = /*@__PURE__*/ S.Array(UpdateOneTimeProductOfferStateRequest) as any as S.Schema<UpdateOneTimeProductOfferStateRequestList>;
 
 /** Request message for BatchUpdateOneTimeProductOfferStates. */
 export interface BatchUpdateOneTimeProductOfferStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different offers. */
   requests?: UpdateOneTimeProductOfferStateRequestList;
 }
-export const BatchUpdateOneTimeProductOfferStatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(UpdateOneTimeProductOfferStateRequestList),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateOneTimeProductOfferStatesRequest",
-  }) as any as S.Schema<BatchUpdateOneTimeProductOfferStatesRequest>;
+export const BatchUpdateOneTimeProductOfferStatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requests": S.optional(UpdateOneTimeProductOfferStateRequestList),
+}),
+).annotate({ identifier: "BatchUpdateOneTimeProductOfferStatesRequest" }) as any as S.Schema<BatchUpdateOneTimeProductOfferStatesRequest>;
 
 export interface BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The purchase option ID of the parent purchase option, if all updated offers belong to the same purchase option. If this batch update spans multiple purchase options, set this field to "-". */
@@ -3923,48 +2998,28 @@ export interface BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffe
   /** Request body */
   body?: BatchUpdateOneTimeProductOfferStatesRequest;
 }
-export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      purchaseOptionId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      body: S.optional(
-        BatchUpdateOneTimeProductOfferStatesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchUpdateStates",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "purchaseOptionId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdateOneTimeProductOfferStatesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchUpdateStates","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest" }) as any as S.Schema<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 /** Response message for BatchUpdateOneTimeProductOfferStates. */
 export interface BatchUpdateOneTimeProductOfferStatesResponse {
   /** The updated one-time product offers list, in the same order as the request. */
   oneTimeProductOffers?: OneTimeProductOfferList;
 }
-export const BatchUpdateOneTimeProductOfferStatesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      oneTimeProductOffers: S.optional(OneTimeProductOfferList),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateOneTimeProductOfferStatesResponse",
-  }) as any as S.Schema<BatchUpdateOneTimeProductOfferStatesResponse>;
+export const BatchUpdateOneTimeProductOfferStatesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "oneTimeProductOffers": S.optional(OneTimeProductOfferList),
+}),
+).annotate({ identifier: "BatchUpdateOneTimeProductOfferStatesResponse" }) as any as S.Schema<BatchUpdateOneTimeProductOfferStatesResponse>;
 
-export type DeactivateBasePlanRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const DeactivateBasePlanRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type DeactivateBasePlanRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const DeactivateBasePlanRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for DeactivateBasePlan. */
 export interface DeactivateBasePlanRequest {
@@ -3973,20 +3028,18 @@ export interface DeactivateBasePlanRequest {
   /** Required. The unique base plan ID of the base plan to deactivate. */
   basePlanId?: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: DeactivateBasePlanRequestLatencyToleranceEnum;
+  latencyTolerance?: DeactivateBasePlanRequestLatencyToleranceEnum | (string & {});
   /** Required. The parent app (package name) of the base plan to deactivate. */
   packageName?: string;
 }
 export const DeactivateBasePlanRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    basePlanId: S.optional(S.String),
-    latencyTolerance: S.optional(DeactivateBasePlanRequestLatencyToleranceEnum),
-    packageName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeactivateBasePlanRequest",
-}) as any as S.Schema<DeactivateBasePlanRequest>;
+S.Struct({
+  "productId": S.optional(S.String),
+  "basePlanId": S.optional(S.String),
+  "latencyTolerance": S.optional(DeactivateBasePlanRequestLatencyToleranceEnum),
+  "packageName": S.optional(S.String),
+}),
+).annotate({ identifier: "DeactivateBasePlanRequest" }) as any as S.Schema<DeactivateBasePlanRequest>;
 
 /** Request message to update the state of a subscription base plan. */
 export interface UpdateBasePlanStateRequest {
@@ -3996,19 +3049,14 @@ export interface UpdateBasePlanStateRequest {
   activateBasePlanRequest?: ActivateBasePlanRequest;
 }
 export const UpdateBasePlanStateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deactivateBasePlanRequest: S.optional(DeactivateBasePlanRequest),
-    activateBasePlanRequest: S.optional(ActivateBasePlanRequest),
-  }),
-).annotate({
-  identifier: "UpdateBasePlanStateRequest",
-}) as any as S.Schema<UpdateBasePlanStateRequest>;
+S.Struct({
+  "deactivateBasePlanRequest": S.optional(DeactivateBasePlanRequest),
+  "activateBasePlanRequest": S.optional(ActivateBasePlanRequest),
+}),
+).annotate({ identifier: "UpdateBasePlanStateRequest" }) as any as S.Schema<UpdateBasePlanStateRequest>;
 
-export type UpdateBasePlanStateRequestList =
-  ReadonlyArray<UpdateBasePlanStateRequest>;
-export const UpdateBasePlanStateRequestList = /*@__PURE__*/ S.Array(
-  UpdateBasePlanStateRequest,
-) as any as S.Schema<UpdateBasePlanStateRequestList>;
+export type UpdateBasePlanStateRequestList = ReadonlyArray<UpdateBasePlanStateRequest>;
+export const UpdateBasePlanStateRequestList = /*@__PURE__*/ S.Array(UpdateBasePlanStateRequest) as any as S.Schema<UpdateBasePlanStateRequestList>;
 
 /** Request message for BatchUpdateBasePlanStates. */
 export interface BatchUpdateBasePlanStatesRequest {
@@ -4016,12 +3064,10 @@ export interface BatchUpdateBasePlanStatesRequest {
   requests?: UpdateBasePlanStateRequestList;
 }
 export const BatchUpdateBasePlanStatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(UpdateBasePlanStateRequestList),
-  }),
-).annotate({
-  identifier: "BatchUpdateBasePlanStatesRequest",
-}) as any as S.Schema<BatchUpdateBasePlanStatesRequest>;
+S.Struct({
+  "requests": S.optional(UpdateBasePlanStateRequestList),
+}),
+).annotate({ identifier: "BatchUpdateBasePlanStatesRequest" }) as any as S.Schema<BatchUpdateBasePlanStatesRequest>;
 
 export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest {
   /** Required. The parent app (package name) of the updated base plans. */
@@ -4031,22 +3077,13 @@ export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest {
   /** Request body */
   body?: BatchUpdateBasePlanStatesRequest;
 }
-export const BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateBasePlanStatesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchUpdateStates",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest",
-  }) as any as S.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest>;
+export const BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdateBasePlanStatesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchUpdateStates","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest" }) as any as S.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest>;
 
 /** Response message for BatchUpdateBasePlanStates. */
 export interface BatchUpdateBasePlanStatesResponse {
@@ -4054,25 +3091,18 @@ export interface BatchUpdateBasePlanStatesResponse {
   subscriptions?: SubscriptionList;
 }
 export const BatchUpdateBasePlanStatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptions: S.optional(SubscriptionList),
-  }),
-).annotate({
-  identifier: "BatchUpdateBasePlanStatesResponse",
-}) as any as S.Schema<BatchUpdateBasePlanStatesResponse>;
+S.Struct({
+  "subscriptions": S.optional(SubscriptionList),
+}),
+).annotate({ identifier: "BatchUpdateBasePlanStatesResponse" }) as any as S.Schema<BatchUpdateBasePlanStatesResponse>;
 
-export type DeactivateSubscriptionOfferRequestLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const DeactivateSubscriptionOfferRequestLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type DeactivateSubscriptionOfferRequestLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const DeactivateSubscriptionOfferRequestLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 /** Request message for DeactivateSubscriptionOffer. */
 export interface DeactivateSubscriptionOfferRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: DeactivateSubscriptionOfferRequestLatencyToleranceEnum;
+  latencyTolerance?: DeactivateSubscriptionOfferRequestLatencyToleranceEnum | (string & {});
   /** Required. The parent app (package name) of the offer to deactivate. */
   packageName?: string;
   /** Required. The unique offer ID of the offer to deactivate. */
@@ -4083,18 +3113,14 @@ export interface DeactivateSubscriptionOfferRequest {
   basePlanId?: string;
 }
 export const DeactivateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latencyTolerance: S.optional(
-      DeactivateSubscriptionOfferRequestLatencyToleranceEnum,
-    ),
-    packageName: S.optional(S.String),
-    offerId: S.optional(S.String),
-    productId: S.optional(S.String),
-    basePlanId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeactivateSubscriptionOfferRequest",
-}) as any as S.Schema<DeactivateSubscriptionOfferRequest>;
+S.Struct({
+  "latencyTolerance": S.optional(DeactivateSubscriptionOfferRequestLatencyToleranceEnum),
+  "packageName": S.optional(S.String),
+  "offerId": S.optional(S.String),
+  "productId": S.optional(S.String),
+  "basePlanId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeactivateSubscriptionOfferRequest" }) as any as S.Schema<DeactivateSubscriptionOfferRequest>;
 
 /** Request message to update the state of a subscription offer. */
 export interface UpdateSubscriptionOfferStateRequest {
@@ -4104,37 +3130,25 @@ export interface UpdateSubscriptionOfferStateRequest {
   deactivateSubscriptionOfferRequest?: DeactivateSubscriptionOfferRequest;
 }
 export const UpdateSubscriptionOfferStateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activateSubscriptionOfferRequest: S.optional(
-      ActivateSubscriptionOfferRequest,
-    ),
-    deactivateSubscriptionOfferRequest: S.optional(
-      DeactivateSubscriptionOfferRequest,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateSubscriptionOfferStateRequest",
-}) as any as S.Schema<UpdateSubscriptionOfferStateRequest>;
+S.Struct({
+  "activateSubscriptionOfferRequest": S.optional(ActivateSubscriptionOfferRequest),
+  "deactivateSubscriptionOfferRequest": S.optional(DeactivateSubscriptionOfferRequest),
+}),
+).annotate({ identifier: "UpdateSubscriptionOfferStateRequest" }) as any as S.Schema<UpdateSubscriptionOfferStateRequest>;
 
-export type UpdateSubscriptionOfferStateRequestList =
-  ReadonlyArray<UpdateSubscriptionOfferStateRequest>;
-export const UpdateSubscriptionOfferStateRequestList = /*@__PURE__*/ S.Array(
-  UpdateSubscriptionOfferStateRequest,
-) as any as S.Schema<UpdateSubscriptionOfferStateRequestList>;
+export type UpdateSubscriptionOfferStateRequestList = ReadonlyArray<UpdateSubscriptionOfferStateRequest>;
+export const UpdateSubscriptionOfferStateRequestList = /*@__PURE__*/ S.Array(UpdateSubscriptionOfferStateRequest) as any as S.Schema<UpdateSubscriptionOfferStateRequestList>;
 
 /** Request message for BatchUpdateSubscriptionOfferStates. */
 export interface BatchUpdateSubscriptionOfferStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different offers. */
   requests?: UpdateSubscriptionOfferStateRequestList;
 }
-export const BatchUpdateSubscriptionOfferStatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(UpdateSubscriptionOfferStateRequestList),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateSubscriptionOfferStatesRequest",
-  }) as any as S.Schema<BatchUpdateSubscriptionOfferStatesRequest>;
+export const BatchUpdateSubscriptionOfferStatesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requests": S.optional(UpdateSubscriptionOfferStateRequestList),
+}),
+).annotate({ identifier: "BatchUpdateSubscriptionOfferStatesRequest" }) as any as S.Schema<BatchUpdateSubscriptionOfferStatesRequest>;
 
 export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The parent app (package name) of the updated subscription offers. Must be equal to the package_name field on all the updated SubscriptionOffer resources. */
@@ -4146,48 +3160,31 @@ export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersReques
   /** Request body */
   body?: BatchUpdateSubscriptionOfferStatesRequest;
 }
-export const BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      basePlanId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(
-        BatchUpdateSubscriptionOfferStatesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdateStates",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest>;
+export const BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "basePlanId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdateSubscriptionOfferStatesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdateStates","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest" }) as any as S.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest>;
 
 /** Response message for BatchUpdateSubscriptionOfferStates. */
 export interface BatchUpdateSubscriptionOfferStatesResponse {
   /** The updated subscription offers list. */
   subscriptionOffers?: SubscriptionOfferList;
 }
-export const BatchUpdateSubscriptionOfferStatesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionOffers: S.optional(SubscriptionOfferList),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateSubscriptionOfferStatesResponse",
-  }) as any as S.Schema<BatchUpdateSubscriptionOfferStatesResponse>;
+export const BatchUpdateSubscriptionOfferStatesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "subscriptionOffers": S.optional(SubscriptionOfferList),
+}),
+).annotate({ identifier: "BatchUpdateSubscriptionOfferStatesResponse" }) as any as S.Schema<BatchUpdateSubscriptionOfferStatesResponse>;
 
 /** Request message for CancelAppRecovery. */
 export interface CancelAppRecoveryRequest {}
 export const CancelAppRecoveryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelAppRecoveryRequest",
-}) as any as S.Schema<CancelAppRecoveryRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelAppRecoveryRequest" }) as any as S.Schema<CancelAppRecoveryRequest>;
 
 export interface CancelApprecoveryRequest {
   /** Required. ID corresponding to the app recovery action. */
@@ -4198,28 +3195,18 @@ export interface CancelApprecoveryRequest {
   body?: CancelAppRecoveryRequest;
 }
 export const CancelApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appRecoveryId: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(CancelAppRecoveryRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:cancel",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelApprecoveryRequest",
-}) as any as S.Schema<CancelApprecoveryRequest>;
+S.Struct({
+  "appRecoveryId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(CancelAppRecoveryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:cancel","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CancelApprecoveryRequest" }) as any as S.Schema<CancelApprecoveryRequest>;
 
 /** Response message for CancelAppRecovery. */
 export interface CancelAppRecoveryResponse {}
 export const CancelAppRecoveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelAppRecoveryResponse",
-}) as any as S.Schema<CancelAppRecoveryResponse>;
+S.Struct({}),
+).annotate({ identifier: "CancelAppRecoveryResponse" }) as any as S.Schema<CancelAppRecoveryResponse>;
 
 export interface CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The parent app (package name) of the offer to cancel. */
@@ -4233,24 +3220,15 @@ export interface CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Request body */
   body?: CancelOneTimeProductOfferRequest;
 }
-export const CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      offerId: S.String.pipe(T.Label()),
-      purchaseOptionId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(CancelOneTimeProductOfferRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:cancel",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+export const CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "offerId": S.String.pipe(T.Label()),
+  "purchaseOptionId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOneTimeProductOfferRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:cancel","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest" }) as any as S.Schema<CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export interface CancelPurchasesSubscriptionsRequest {
   /** Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with add-ons. The purchased subscription ID (for example, 'monthly001'). */
@@ -4261,47 +3239,31 @@ export interface CancelPurchasesSubscriptionsRequest {
   token: string;
 }
 export const CancelPurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    token: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelPurchasesSubscriptionsRequest",
-}) as any as S.Schema<CancelPurchasesSubscriptionsRequest>;
+S.Struct({
+  "subscriptionId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CancelPurchasesSubscriptionsRequest" }) as any as S.Schema<CancelPurchasesSubscriptionsRequest>;
 
 export interface CancelPurchasesSubscriptionsResponse {}
-export const CancelPurchasesSubscriptionsResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "CancelPurchasesSubscriptionsResponse",
-}) as any as S.Schema<CancelPurchasesSubscriptionsResponse>;
+export const CancelPurchasesSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "CancelPurchasesSubscriptionsResponse" }) as any as S.Schema<CancelPurchasesSubscriptionsResponse>;
 
-export type CancellationContextCancellationTypeEnum =
-  | "CANCELLATION_TYPE_UNSPECIFIED"
-  | "USER_REQUESTED_STOP_RENEWALS"
-  | "DEVELOPER_REQUESTED_STOP_PAYMENTS"
-  | (string & {});
+export type CancellationContextCancellationTypeEnum = "CANCELLATION_TYPE_UNSPECIFIED" | "USER_REQUESTED_STOP_RENEWALS" | "DEVELOPER_REQUESTED_STOP_PAYMENTS";
 export const CancellationContextCancellationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Cancellation context of the purchases.subscriptionsv2.cancel API. */
 export interface CancellationContext {
   /** Required. The type of cancellation for the purchased subscription. */
-  cancellationType?: CancellationContextCancellationTypeEnum;
+  cancellationType?: CancellationContextCancellationTypeEnum | (string & {});
 }
 export const CancellationContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cancellationType: S.optional(CancellationContextCancellationTypeEnum),
-  }),
-).annotate({
-  identifier: "CancellationContext",
-}) as any as S.Schema<CancellationContext>;
+S.Struct({
+  "cancellationType": S.optional(CancellationContextCancellationTypeEnum),
+}),
+).annotate({ identifier: "CancellationContext" }) as any as S.Schema<CancellationContext>;
 
 /** Request for the purchases.subscriptionsv2.cancel API. */
 export interface CancelSubscriptionPurchaseRequest {
@@ -4309,12 +3271,10 @@ export interface CancelSubscriptionPurchaseRequest {
   cancellationContext?: CancellationContext;
 }
 export const CancelSubscriptionPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cancellationContext: S.optional(CancellationContext),
-  }),
-).annotate({
-  identifier: "CancelSubscriptionPurchaseRequest",
-}) as any as S.Schema<CancelSubscriptionPurchaseRequest>;
+S.Struct({
+  "cancellationContext": S.optional(CancellationContext),
+}),
+).annotate({ identifier: "CancelSubscriptionPurchaseRequest" }) as any as S.Schema<CancelSubscriptionPurchaseRequest>;
 
 export interface CancelPurchasesSubscriptionsv2Request {
   /** Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
@@ -4324,36 +3284,21 @@ export interface CancelPurchasesSubscriptionsv2Request {
   /** Request body */
   body?: CancelSubscriptionPurchaseRequest;
 }
-export const CancelPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      token: S.String.pipe(T.Label()),
-      body: S.optional(CancelSubscriptionPurchaseRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:cancel",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelPurchasesSubscriptionsv2Request",
-}) as any as S.Schema<CancelPurchasesSubscriptionsv2Request>;
+export const CancelPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+  "body": S.optional(CancelSubscriptionPurchaseRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:cancel","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CancelPurchasesSubscriptionsv2Request" }) as any as S.Schema<CancelPurchasesSubscriptionsv2Request>;
 
 /** Response for the purchases.subscriptionsv2.cancel API. */
 export interface CancelSubscriptionPurchaseResponse {}
 export const CancelSubscriptionPurchaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelSubscriptionPurchaseResponse",
-}) as any as S.Schema<CancelSubscriptionPurchaseResponse>;
+S.Struct({}),
+).annotate({ identifier: "CancelSubscriptionPurchaseResponse" }) as any as S.Schema<CancelSubscriptionPurchaseResponse>;
 
-export type CommitEditsChangesInReviewBehaviorEnum =
-  | "CHANGES_IN_REVIEW_BEHAVIOR_TYPE_UNSPECIFIED"
-  | "CANCEL_IN_REVIEW_AND_SUBMIT"
-  | "ERROR_IF_IN_REVIEW"
-  | (string & {});
+export type CommitEditsChangesInReviewBehaviorEnum = "CHANGES_IN_REVIEW_BEHAVIOR_TYPE_UNSPECIFIED" | "CANCEL_IN_REVIEW_AND_SUBMIT" | "ERROR_IF_IN_REVIEW";
 export const CommitEditsChangesInReviewBehaviorEnum = /*@__PURE__*/ S.String;
 
 export interface CommitEditsRequest {
@@ -4362,28 +3307,18 @@ export interface CommitEditsRequest {
   /** Identifier of the edit. */
   editId: string;
   /** Optional. Specify how the API should behave if there are changes currently in review. If this value is not set, it will default to "CANCEL_IN_REVIEW_AND_SUBMIT", which will cancel the changes in review and then send all the changes for publishing. */
-  changesInReviewBehavior?: CommitEditsChangesInReviewBehaviorEnum;
+  changesInReviewBehavior?: CommitEditsChangesInReviewBehaviorEnum | (string & {});
   /** When a rejection happens, the parameter will make sure that the changes in this edit won't be reviewed until they are explicitly sent for review from within the Google Play Console UI. These changes will be added to any other changes that are not yet sent for review. */
   changesNotSentForReview?: boolean;
 }
 export const CommitEditsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    changesInReviewBehavior: S.optional(
-      CommitEditsChangesInReviewBehaviorEnum.pipe(T.Query()),
-    ),
-    changesNotSentForReview: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}:commit",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CommitEditsRequest",
-}) as any as S.Schema<CommitEditsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "changesInReviewBehavior": S.optional(CommitEditsChangesInReviewBehaviorEnum.pipe(T.Query())),
+  "changesNotSentForReview": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}:commit","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CommitEditsRequest" }) as any as S.Schema<CommitEditsRequest>;
 
 /** An app edit. The resource for EditsService. */
 export interface AppEdit {
@@ -4393,10 +3328,10 @@ export interface AppEdit {
   expiryTimeSeconds?: string;
 }
 export const AppEdit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    expiryTimeSeconds: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "expiryTimeSeconds": S.optional(S.String),
+}),
 ).annotate({ identifier: "AppEdit" }) as any as S.Schema<AppEdit>;
 
 export interface ConsumePurchasesProductsRequest {
@@ -4408,27 +3343,17 @@ export interface ConsumePurchasesProductsRequest {
   productId: string;
 }
 export const ConsumePurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    token: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:consume",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ConsumePurchasesProductsRequest",
-}) as any as S.Schema<ConsumePurchasesProductsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:consume","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ConsumePurchasesProductsRequest" }) as any as S.Schema<ConsumePurchasesProductsRequest>;
 
 export interface ConsumePurchasesProductsResponse {}
 export const ConsumePurchasesProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConsumePurchasesProductsResponse",
-}) as any as S.Schema<ConsumePurchasesProductsResponse>;
+S.Struct({}),
+).annotate({ identifier: "ConsumePurchasesProductsResponse" }) as any as S.Schema<ConsumePurchasesProductsResponse>;
 
 /** Request message for ConvertRegionPrices. */
 export interface ConvertRegionPricesRequest {
@@ -4438,13 +3363,11 @@ export interface ConvertRegionPricesRequest {
   price?: Money;
 }
 export const ConvertRegionPricesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productTaxCategoryCode: S.optional(S.String),
-    price: S.optional(Money),
-  }),
-).annotate({
-  identifier: "ConvertRegionPricesRequest",
-}) as any as S.Schema<ConvertRegionPricesRequest>;
+S.Struct({
+  "productTaxCategoryCode": S.optional(S.String),
+  "price": S.optional(Money),
+}),
+).annotate({ identifier: "ConvertRegionPricesRequest" }) as any as S.Schema<ConvertRegionPricesRequest>;
 
 export interface ConvertRegionPricesMonetizationRequest {
   /** Required. The app package name. */
@@ -4452,21 +3375,12 @@ export interface ConvertRegionPricesMonetizationRequest {
   /** Request body */
   body?: ConvertRegionPricesRequest;
 }
-export const ConvertRegionPricesMonetizationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      body: S.optional(ConvertRegionPricesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/pricing:convertRegionPrices",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ConvertRegionPricesMonetizationRequest",
-}) as any as S.Schema<ConvertRegionPricesMonetizationRequest>;
+export const ConvertRegionPricesMonetizationRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(ConvertRegionPricesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/pricing:convertRegionPrices","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ConvertRegionPricesMonetizationRequest" }) as any as S.Schema<ConvertRegionPricesMonetizationRequest>;
 
 /** A converted region price. */
 export interface ConvertedRegionPrice {
@@ -4478,22 +3392,15 @@ export interface ConvertedRegionPrice {
   taxAmount?: Money;
 }
 export const ConvertedRegionPrice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-    price: S.optional(Money),
-    taxAmount: S.optional(Money),
-  }),
-).annotate({
-  identifier: "ConvertedRegionPrice",
-}) as any as S.Schema<ConvertedRegionPrice>;
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "price": S.optional(Money),
+  "taxAmount": S.optional(Money),
+}),
+).annotate({ identifier: "ConvertedRegionPrice" }) as any as S.Schema<ConvertedRegionPrice>;
 
-export type ConvertedRegionPriceMap = {
-  [key: string]: ConvertedRegionPrice | undefined;
-};
-export const ConvertedRegionPriceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConvertedRegionPrice,
-) as any as S.Schema<ConvertedRegionPriceMap>;
+export type ConvertedRegionPriceMap = { [key: string]: ConvertedRegionPrice | undefined };
+export const ConvertedRegionPriceMap = /*@__PURE__*/ S.Record(S.String, ConvertedRegionPrice) as any as S.Schema<ConvertedRegionPriceMap>;
 
 /** Converted other regions prices. */
 export interface ConvertedOtherRegionsPrice {
@@ -4503,13 +3410,11 @@ export interface ConvertedOtherRegionsPrice {
   usdPrice?: Money;
 }
 export const ConvertedOtherRegionsPrice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eurPrice: S.optional(Money),
-    usdPrice: S.optional(Money),
-  }),
-).annotate({
-  identifier: "ConvertedOtherRegionsPrice",
-}) as any as S.Schema<ConvertedOtherRegionsPrice>;
+S.Struct({
+  "eurPrice": S.optional(Money),
+  "usdPrice": S.optional(Money),
+}),
+).annotate({ identifier: "ConvertedOtherRegionsPrice" }) as any as S.Schema<ConvertedOtherRegionsPrice>;
 
 /** Response message for ConvertRegionPrices. */
 export interface ConvertRegionPricesResponse {
@@ -4521,14 +3426,12 @@ export interface ConvertRegionPricesResponse {
   convertedOtherRegionsPrice?: ConvertedOtherRegionsPrice;
 }
 export const ConvertRegionPricesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionVersion: S.optional(RegionsVersion),
-    convertedRegionPrices: S.optional(ConvertedRegionPriceMap),
-    convertedOtherRegionsPrice: S.optional(ConvertedOtherRegionsPrice),
-  }),
-).annotate({
-  identifier: "ConvertRegionPricesResponse",
-}) as any as S.Schema<ConvertRegionPricesResponse>;
+S.Struct({
+  "regionVersion": S.optional(RegionsVersion),
+  "convertedRegionPrices": S.optional(ConvertedRegionPriceMap),
+  "convertedOtherRegionsPrice": S.optional(ConvertedOtherRegionsPrice),
+}),
+).annotate({ identifier: "ConvertRegionPricesResponse" }) as any as S.Schema<ConvertRegionPricesResponse>;
 
 /** A set of user countries. A country set determines what variation of app content gets served to a specific location. */
 export interface UserCountrySet {
@@ -4538,16 +3441,14 @@ export interface UserCountrySet {
   countryCodes?: StringList;
 }
 export const UserCountrySet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    countryCodes: S.optional(StringList),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "countryCodes": S.optional(StringList),
+}),
 ).annotate({ identifier: "UserCountrySet" }) as any as S.Schema<UserCountrySet>;
 
 export type UserCountrySetList = ReadonlyArray<UserCountrySet>;
-export const UserCountrySetList = /*@__PURE__*/ S.Array(
-  UserCountrySet,
-) as any as S.Schema<UserCountrySetList>;
+export const UserCountrySetList = /*@__PURE__*/ S.Array(UserCountrySet) as any as S.Schema<UserCountrySetList>;
 
 /** Representation of a System-on-Chip (SoC) of an Android device. Can be used to target S+ devices. */
 export interface SystemOnChip {
@@ -4557,16 +3458,14 @@ export interface SystemOnChip {
   model?: string;
 }
 export const SystemOnChip = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manufacturer: S.optional(S.String),
-    model: S.optional(S.String),
-  }),
+S.Struct({
+  "manufacturer": S.optional(S.String),
+  "model": S.optional(S.String),
+}),
 ).annotate({ identifier: "SystemOnChip" }) as any as S.Schema<SystemOnChip>;
 
 export type SystemOnChipList = ReadonlyArray<SystemOnChip>;
-export const SystemOnChipList = /*@__PURE__*/ S.Array(
-  SystemOnChip,
-) as any as S.Schema<SystemOnChipList>;
+export const SystemOnChipList = /*@__PURE__*/ S.Array(SystemOnChip) as any as S.Schema<SystemOnChipList>;
 
 /** Identifier of a device. */
 export interface DeviceId {
@@ -4576,16 +3475,14 @@ export interface DeviceId {
   buildBrand?: string;
 }
 export const DeviceId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildDevice: S.optional(S.String),
-    buildBrand: S.optional(S.String),
-  }),
+S.Struct({
+  "buildDevice": S.optional(S.String),
+  "buildBrand": S.optional(S.String),
+}),
 ).annotate({ identifier: "DeviceId" }) as any as S.Schema<DeviceId>;
 
 export type DeviceIdList = ReadonlyArray<DeviceId>;
-export const DeviceIdList = /*@__PURE__*/ S.Array(
-  DeviceId,
-) as any as S.Schema<DeviceIdList>;
+export const DeviceIdList = /*@__PURE__*/ S.Array(DeviceId) as any as S.Schema<DeviceIdList>;
 
 /** Representation of a system feature. */
 export interface SystemFeature {
@@ -4593,15 +3490,13 @@ export interface SystemFeature {
   name?: string;
 }
 export const SystemFeature = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "SystemFeature" }) as any as S.Schema<SystemFeature>;
 
 export type SystemFeatureList = ReadonlyArray<SystemFeature>;
-export const SystemFeatureList = /*@__PURE__*/ S.Array(
-  SystemFeature,
-) as any as S.Schema<SystemFeatureList>;
+export const SystemFeatureList = /*@__PURE__*/ S.Array(SystemFeature) as any as S.Schema<SystemFeatureList>;
 
 /** Conditions about a device's RAM capabilities. */
 export interface DeviceRam {
@@ -4611,10 +3506,10 @@ export interface DeviceRam {
   maxBytes?: string;
 }
 export const DeviceRam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minBytes: S.optional(S.String),
-    maxBytes: S.optional(S.String),
-  }),
+S.Struct({
+  "minBytes": S.optional(S.String),
+  "maxBytes": S.optional(S.String),
+}),
 ).annotate({ identifier: "DeviceRam" }) as any as S.Schema<DeviceRam>;
 
 /** Selector for a device group. A selector consists of a set of conditions on the device that should all match (logical AND) to determine a device group eligibility. For instance, if a selector specifies RAM conditions, device model inclusion and device model exclusion, a device is considered to match if: device matches RAM conditions AND device matches one of the included device models AND device doesn't match excluded device models */
@@ -4633,20 +3528,18 @@ export interface DeviceSelector {
   forbiddenSystemFeatures?: SystemFeatureList;
 }
 export const DeviceSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    systemOnChips: S.optional(SystemOnChipList),
-    excludedDeviceIds: S.optional(DeviceIdList),
-    requiredSystemFeatures: S.optional(SystemFeatureList),
-    includedDeviceIds: S.optional(DeviceIdList),
-    deviceRam: S.optional(DeviceRam),
-    forbiddenSystemFeatures: S.optional(SystemFeatureList),
-  }),
+S.Struct({
+  "systemOnChips": S.optional(SystemOnChipList),
+  "excludedDeviceIds": S.optional(DeviceIdList),
+  "requiredSystemFeatures": S.optional(SystemFeatureList),
+  "includedDeviceIds": S.optional(DeviceIdList),
+  "deviceRam": S.optional(DeviceRam),
+  "forbiddenSystemFeatures": S.optional(SystemFeatureList),
+}),
 ).annotate({ identifier: "DeviceSelector" }) as any as S.Schema<DeviceSelector>;
 
 export type DeviceSelectorList = ReadonlyArray<DeviceSelector>;
-export const DeviceSelectorList = /*@__PURE__*/ S.Array(
-  DeviceSelector,
-) as any as S.Schema<DeviceSelectorList>;
+export const DeviceSelectorList = /*@__PURE__*/ S.Array(DeviceSelector) as any as S.Schema<DeviceSelectorList>;
 
 /** A group of devices. A group is defined by a set of device selectors. A device belongs to the group if it matches any selector (logical OR). */
 export interface DeviceGroup {
@@ -4656,16 +3549,14 @@ export interface DeviceGroup {
   deviceSelectors?: DeviceSelectorList;
 }
 export const DeviceGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    deviceSelectors: S.optional(DeviceSelectorList),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "deviceSelectors": S.optional(DeviceSelectorList),
+}),
 ).annotate({ identifier: "DeviceGroup" }) as any as S.Schema<DeviceGroup>;
 
 export type DeviceGroupList = ReadonlyArray<DeviceGroup>;
-export const DeviceGroupList = /*@__PURE__*/ S.Array(
-  DeviceGroup,
-) as any as S.Schema<DeviceGroupList>;
+export const DeviceGroupList = /*@__PURE__*/ S.Array(DeviceGroup) as any as S.Schema<DeviceGroupList>;
 
 /** A single device tier. Devices matching any of the device groups in device_group_names are considered to match the tier. */
 export interface DeviceTier {
@@ -4675,16 +3566,14 @@ export interface DeviceTier {
   level?: number;
 }
 export const DeviceTier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceGroupNames: S.optional(StringList),
-    level: S.optional(S.Number),
-  }),
+S.Struct({
+  "deviceGroupNames": S.optional(StringList),
+  "level": S.optional(S.Number),
+}),
 ).annotate({ identifier: "DeviceTier" }) as any as S.Schema<DeviceTier>;
 
 export type DeviceTierList = ReadonlyArray<DeviceTier>;
-export const DeviceTierList = /*@__PURE__*/ S.Array(
-  DeviceTier,
-) as any as S.Schema<DeviceTierList>;
+export const DeviceTierList = /*@__PURE__*/ S.Array(DeviceTier) as any as S.Schema<DeviceTierList>;
 
 /** A set of device tiers. A tier set determines what variation of app content gets served to a specific device, for device-targeted content. You should assign a priority level to each tier, which determines the ordering by which they are evaluated by Play. See the documentation of DeviceTier.level for more details. */
 export interface DeviceTierSet {
@@ -4692,9 +3581,9 @@ export interface DeviceTierSet {
   deviceTiers?: DeviceTierList;
 }
 export const DeviceTierSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceTiers: S.optional(DeviceTierList),
-  }),
+S.Struct({
+  "deviceTiers": S.optional(DeviceTierList),
+}),
 ).annotate({ identifier: "DeviceTierSet" }) as any as S.Schema<DeviceTierSet>;
 
 /** Configuration describing device targeting criteria for the content of an app. */
@@ -4709,15 +3598,13 @@ export interface DeviceTierConfig {
   deviceTierConfigId?: string;
 }
 export const DeviceTierConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userCountrySets: S.optional(UserCountrySetList),
-    deviceGroups: S.optional(DeviceGroupList),
-    deviceTierSet: S.optional(DeviceTierSet),
-    deviceTierConfigId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeviceTierConfig",
-}) as any as S.Schema<DeviceTierConfig>;
+S.Struct({
+  "userCountrySets": S.optional(UserCountrySetList),
+  "deviceGroups": S.optional(DeviceGroupList),
+  "deviceTierSet": S.optional(DeviceTierSet),
+  "deviceTierConfigId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeviceTierConfig" }) as any as S.Schema<DeviceTierConfig>;
 
 export interface CreateApplicationsDeviceTierConfigsRequest {
   /** Package name of the app. */
@@ -4727,22 +3614,13 @@ export interface CreateApplicationsDeviceTierConfigsRequest {
   /** Request body */
   body?: DeviceTierConfig;
 }
-export const CreateApplicationsDeviceTierConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      allowUnknownDevices: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(DeviceTierConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateApplicationsDeviceTierConfigsRequest",
-  }) as any as S.Schema<CreateApplicationsDeviceTierConfigsRequest>;
+export const CreateApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "allowUnknownDevices": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(DeviceTierConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/deviceTierConfigs","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CreateApplicationsDeviceTierConfigsRequest" }) as any as S.Schema<CreateApplicationsDeviceTierConfigsRequest>;
 
 /** Data format for a list of app versions. */
 export interface AppVersionList {
@@ -4750,9 +3628,9 @@ export interface AppVersionList {
   versionCodes?: StringList;
 }
 export const AppVersionList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionCodes: S.optional(StringList),
-  }),
+S.Struct({
+  "versionCodes": S.optional(StringList),
+}),
 ).annotate({ identifier: "AppVersionList" }) as any as S.Schema<AppVersionList>;
 
 /** Data format for a continuous range of app versions. */
@@ -4763,13 +3641,11 @@ export interface AppVersionRange {
   versionCodeStart?: string;
 }
 export const AppVersionRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionCodeEnd: S.optional(S.String),
-    versionCodeStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppVersionRange",
-}) as any as S.Schema<AppVersionRange>;
+S.Struct({
+  "versionCodeEnd": S.optional(S.String),
+  "versionCodeStart": S.optional(S.String),
+}),
+).annotate({ identifier: "AppVersionRange" }) as any as S.Schema<AppVersionRange>;
 
 /** Targeting details for a recovery action such as regions, android sdk levels, app versions etc. */
 export interface Targeting {
@@ -4785,13 +3661,13 @@ export interface Targeting {
   allUsers?: AllUsers;
 }
 export const Targeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    androidSdks: S.optional(AndroidSdks),
-    versionList: S.optional(AppVersionList),
-    versionRange: S.optional(AppVersionRange),
-    regions: S.optional(Regions),
-    allUsers: S.optional(AllUsers),
-  }),
+S.Struct({
+  "androidSdks": S.optional(AndroidSdks),
+  "versionList": S.optional(AppVersionList),
+  "versionRange": S.optional(AppVersionRange),
+  "regions": S.optional(Regions),
+  "allUsers": S.optional(AllUsers),
+}),
 ).annotate({ identifier: "Targeting" }) as any as S.Schema<Targeting>;
 
 /** Object representation for Remote in-app update action type. */
@@ -4800,12 +3676,10 @@ export interface RemoteInAppUpdate {
   isRemoteInAppUpdateRequested?: boolean;
 }
 export const RemoteInAppUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isRemoteInAppUpdateRequested: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RemoteInAppUpdate",
-}) as any as S.Schema<RemoteInAppUpdate>;
+S.Struct({
+  "isRemoteInAppUpdateRequested": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "RemoteInAppUpdate" }) as any as S.Schema<RemoteInAppUpdate>;
 
 /** Request message for CreateDraftAppRecovery. */
 export interface CreateDraftAppRecoveryRequest {
@@ -4815,13 +3689,11 @@ export interface CreateDraftAppRecoveryRequest {
   remoteInAppUpdate?: RemoteInAppUpdate;
 }
 export const CreateDraftAppRecoveryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targeting: S.optional(Targeting),
-    remoteInAppUpdate: S.optional(RemoteInAppUpdate),
-  }),
-).annotate({
-  identifier: "CreateDraftAppRecoveryRequest",
-}) as any as S.Schema<CreateDraftAppRecoveryRequest>;
+S.Struct({
+  "targeting": S.optional(Targeting),
+  "remoteInAppUpdate": S.optional(RemoteInAppUpdate),
+}),
+).annotate({ identifier: "CreateDraftAppRecoveryRequest" }) as any as S.Schema<CreateDraftAppRecoveryRequest>;
 
 export interface CreateApprecoveryRequest {
   /** Required. Package name of the app on which recovery action is performed. */
@@ -4830,28 +3702,13 @@ export interface CreateApprecoveryRequest {
   body?: CreateDraftAppRecoveryRequest;
 }
 export const CreateApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(CreateDraftAppRecoveryRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/appRecoveries",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateApprecoveryRequest",
-}) as any as S.Schema<CreateApprecoveryRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(CreateDraftAppRecoveryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/appRecoveries","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CreateApprecoveryRequest" }) as any as S.Schema<CreateApprecoveryRequest>;
 
-export type AppRecoveryActionStatusEnum =
-  | "RECOVERY_STATUS_UNSPECIFIED"
-  | "RECOVERY_STATUS_ACTIVE"
-  | "RECOVERY_STATUS_CANCELED"
-  | "RECOVERY_STATUS_DRAFT"
-  | "RECOVERY_STATUS_GENERATION_IN_PROGRESS"
-  | "RECOVERY_STATUS_GENERATION_FAILED"
-  | (string & {});
+export type AppRecoveryActionStatusEnum = "RECOVERY_STATUS_UNSPECIFIED" | "RECOVERY_STATUS_ACTIVE" | "RECOVERY_STATUS_CANCELED" | "RECOVERY_STATUS_DRAFT" | "RECOVERY_STATUS_GENERATION_IN_PROGRESS" | "RECOVERY_STATUS_GENERATION_FAILED";
 export const AppRecoveryActionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Data related to the recovery action at bundle level. */
@@ -4864,20 +3721,15 @@ export interface RemoteInAppUpdateDataPerBundle {
   totalDeviceCount?: string;
 }
 export const RemoteInAppUpdateDataPerBundle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recoveredDeviceCount: S.optional(S.String),
-    versionCode: S.optional(S.String),
-    totalDeviceCount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoteInAppUpdateDataPerBundle",
-}) as any as S.Schema<RemoteInAppUpdateDataPerBundle>;
+S.Struct({
+  "recoveredDeviceCount": S.optional(S.String),
+  "versionCode": S.optional(S.String),
+  "totalDeviceCount": S.optional(S.String),
+}),
+).annotate({ identifier: "RemoteInAppUpdateDataPerBundle" }) as any as S.Schema<RemoteInAppUpdateDataPerBundle>;
 
-export type RemoteInAppUpdateDataPerBundleList =
-  ReadonlyArray<RemoteInAppUpdateDataPerBundle>;
-export const RemoteInAppUpdateDataPerBundleList = /*@__PURE__*/ S.Array(
-  RemoteInAppUpdateDataPerBundle,
-) as any as S.Schema<RemoteInAppUpdateDataPerBundleList>;
+export type RemoteInAppUpdateDataPerBundleList = ReadonlyArray<RemoteInAppUpdateDataPerBundle>;
+export const RemoteInAppUpdateDataPerBundleList = /*@__PURE__*/ S.Array(RemoteInAppUpdateDataPerBundle) as any as S.Schema<RemoteInAppUpdateDataPerBundleList>;
 
 /** Data related to Remote In-App Update action such as recovered user count, affected user count etc. */
 export interface RemoteInAppUpdateData {
@@ -4885,14 +3737,10 @@ export interface RemoteInAppUpdateData {
   remoteAppUpdateDataPerBundle?: RemoteInAppUpdateDataPerBundleList;
 }
 export const RemoteInAppUpdateData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remoteAppUpdateDataPerBundle: S.optional(
-      RemoteInAppUpdateDataPerBundleList,
-    ),
-  }),
-).annotate({
-  identifier: "RemoteInAppUpdateData",
-}) as any as S.Schema<RemoteInAppUpdateData>;
+S.Struct({
+  "remoteAppUpdateDataPerBundle": S.optional(RemoteInAppUpdateDataPerBundleList),
+}),
+).annotate({ identifier: "RemoteInAppUpdateData" }) as any as S.Schema<RemoteInAppUpdateData>;
 
 /** Information about an app recovery action. */
 export interface AppRecoveryAction {
@@ -4914,19 +3762,17 @@ export interface AppRecoveryAction {
   targeting?: Targeting;
 }
 export const AppRecoveryAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastUpdateTime: S.optional(S.String),
-    appRecoveryId: S.optional(S.String),
-    deployTime: S.optional(S.String),
-    status: S.optional(AppRecoveryActionStatusEnum),
-    createTime: S.optional(S.String),
-    remoteInAppUpdateData: S.optional(RemoteInAppUpdateData),
-    cancelTime: S.optional(S.String),
-    targeting: S.optional(Targeting),
-  }),
-).annotate({
-  identifier: "AppRecoveryAction",
-}) as any as S.Schema<AppRecoveryAction>;
+S.Struct({
+  "lastUpdateTime": S.optional(S.String),
+  "appRecoveryId": S.optional(S.String),
+  "deployTime": S.optional(S.String),
+  "status": S.optional(AppRecoveryActionStatusEnum),
+  "createTime": S.optional(S.String),
+  "remoteInAppUpdateData": S.optional(RemoteInAppUpdateData),
+  "cancelTime": S.optional(S.String),
+  "targeting": S.optional(Targeting),
+}),
+).annotate({ identifier: "AppRecoveryAction" }) as any as S.Schema<AppRecoveryAction>;
 
 /** Request to create a new app record for an app store hosted app. */
 export interface CreateAppStoreHostedAppRequest {
@@ -4934,12 +3780,10 @@ export interface CreateAppStoreHostedAppRequest {
   packageName?: string;
 }
 export const CreateAppStoreHostedAppRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateAppStoreHostedAppRequest",
-}) as any as S.Schema<CreateAppStoreHostedAppRequest>;
+S.Struct({
+  "packageName": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateAppStoreHostedAppRequest" }) as any as S.Schema<CreateAppStoreHostedAppRequest>;
 
 export interface CreateappstorehostedappAppstoreappsreviewRequest {
   /** Required. Package name of the third-party app store. */
@@ -4947,59 +3791,40 @@ export interface CreateappstorehostedappAppstoreappsreviewRequest {
   /** Request body */
   body?: CreateAppStoreHostedAppRequest;
 }
-export const CreateappstorehostedappAppstoreappsreviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appStorePackageName: S.String.pipe(T.Label()),
-      body: S.optional(CreateAppStoreHostedAppRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps:create",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateappstorehostedappAppstoreappsreviewRequest",
-  }) as any as S.Schema<CreateappstorehostedappAppstoreappsreviewRequest>;
+export const CreateappstorehostedappAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "appStorePackageName": S.String.pipe(T.Label()),
+  "body": S.optional(CreateAppStoreHostedAppRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/appstore/{appStorePackageName}/apps:create","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CreateappstorehostedappAppstoreappsreviewRequest" }) as any as S.Schema<CreateappstorehostedappAppstoreappsreviewRequest>;
 
 /** Response for creating a new app record for an app store hosted app. */
 export interface CreateAppStoreHostedAppResponse {}
 export const CreateAppStoreHostedAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateAppStoreHostedAppResponse",
-}) as any as S.Schema<CreateAppStoreHostedAppResponse>;
+S.Struct({}),
+).annotate({ identifier: "CreateAppStoreHostedAppResponse" }) as any as S.Schema<CreateAppStoreHostedAppResponse>;
 
-export type TrackConfigTypeEnum =
-  | "TRACK_TYPE_UNSPECIFIED"
-  | "CLOSED_TESTING"
-  | (string & {});
+export type TrackConfigTypeEnum = "TRACK_TYPE_UNSPECIFIED" | "CLOSED_TESTING";
 export const TrackConfigTypeEnum = /*@__PURE__*/ S.String;
 
-export type TrackConfigFormFactorEnum =
-  | "FORM_FACTOR_UNSPECIFIED"
-  | "DEFAULT"
-  | "WEAR"
-  | "AUTOMOTIVE"
-  | (string & {});
+export type TrackConfigFormFactorEnum = "FORM_FACTOR_UNSPECIFIED" | "DEFAULT" | "WEAR" | "AUTOMOTIVE";
 export const TrackConfigFormFactorEnum = /*@__PURE__*/ S.String;
 
 /** Configurations of the new track. */
 export interface TrackConfig {
   /** Required. Type of the new track. Currently, the only supported value is closedTesting. */
-  type?: TrackConfigTypeEnum;
+  type?: TrackConfigTypeEnum | (string & {});
   /** Required. Identifier of the new track. For default tracks, this field consists of the track alias only. Form factor tracks have a special prefix as an identifier, for example `wear:production`, `automotive:production`. This prefix must match the value of the `form_factor` field, if it is not a default track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
   track?: string;
   /** Required. Form factor of the new track. Defaults to the default track. */
-  formFactor?: TrackConfigFormFactorEnum;
+  formFactor?: TrackConfigFormFactorEnum | (string & {});
 }
 export const TrackConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(TrackConfigTypeEnum),
-    track: S.optional(S.String),
-    formFactor: S.optional(TrackConfigFormFactorEnum),
-  }),
+S.Struct({
+  "type": S.optional(TrackConfigTypeEnum),
+  "track": S.optional(S.String),
+  "formFactor": S.optional(TrackConfigFormFactorEnum),
+}),
 ).annotate({ identifier: "TrackConfig" }) as any as S.Schema<TrackConfig>;
 
 export interface CreateEditsTracksRequest {
@@ -5011,20 +3836,12 @@ export interface CreateEditsTracksRequest {
   body?: TrackConfig;
 }
 export const CreateEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    body: S.optional(TrackConfig.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateEditsTracksRequest",
-}) as any as S.Schema<CreateEditsTracksRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "body": S.optional(TrackConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CreateEditsTracksRequest" }) as any as S.Schema<CreateEditsTracksRequest>;
 
 /** Localized text in given language. */
 export interface LocalizedText {
@@ -5034,24 +3851,16 @@ export interface LocalizedText {
   text?: string;
 }
 export const LocalizedText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    language: S.optional(S.String),
-    text: S.optional(S.String),
-  }),
+S.Struct({
+  "language": S.optional(S.String),
+  "text": S.optional(S.String),
+}),
 ).annotate({ identifier: "LocalizedText" }) as any as S.Schema<LocalizedText>;
 
 export type LocalizedTextList = ReadonlyArray<LocalizedText>;
-export const LocalizedTextList = /*@__PURE__*/ S.Array(
-  LocalizedText,
-) as any as S.Schema<LocalizedTextList>;
+export const LocalizedTextList = /*@__PURE__*/ S.Array(LocalizedText) as any as S.Schema<LocalizedTextList>;
 
-export type TrackReleaseStatusEnum =
-  | "statusUnspecified"
-  | "draft"
-  | "inProgress"
-  | "halted"
-  | "completed"
-  | (string & {});
+export type TrackReleaseStatusEnum = "statusUnspecified" | "draft" | "inProgress" | "halted" | "completed";
 export const TrackReleaseStatusEnum = /*@__PURE__*/ S.String;
 
 /** Country targeting specification. */
@@ -5062,13 +3871,11 @@ export interface CountryTargeting {
   includeRestOfWorld?: boolean;
 }
 export const CountryTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countries: S.optional(StringList),
-    includeRestOfWorld: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CountryTargeting",
-}) as any as S.Schema<CountryTargeting>;
+S.Struct({
+  "countries": S.optional(StringList),
+  "includeRestOfWorld": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "CountryTargeting" }) as any as S.Schema<CountryTargeting>;
 
 /** A release within a track. */
 export interface TrackRelease {
@@ -5088,21 +3895,19 @@ export interface TrackRelease {
   inAppUpdatePriority?: number;
 }
 export const TrackRelease = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    releaseNotes: S.optional(LocalizedTextList),
-    userFraction: S.optional(S.Number),
-    versionCodes: S.optional(StringList),
-    status: S.optional(TrackReleaseStatusEnum),
-    countryTargeting: S.optional(CountryTargeting),
-    inAppUpdatePriority: S.optional(S.Number),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "releaseNotes": S.optional(LocalizedTextList),
+  "userFraction": S.optional(S.Number),
+  "versionCodes": S.optional(StringList),
+  "status": S.optional(TrackReleaseStatusEnum),
+  "countryTargeting": S.optional(CountryTargeting),
+  "inAppUpdatePriority": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TrackRelease" }) as any as S.Schema<TrackRelease>;
 
 export type TrackReleaseList = ReadonlyArray<TrackRelease>;
-export const TrackReleaseList = /*@__PURE__*/ S.Array(
-  TrackRelease,
-) as any as S.Schema<TrackReleaseList>;
+export const TrackReleaseList = /*@__PURE__*/ S.Array(TrackRelease) as any as S.Schema<TrackReleaseList>;
 
 /** A track configuration. The resource for TracksService. */
 export interface Track {
@@ -5112,10 +3917,10 @@ export interface Track {
   track?: string;
 }
 export const Track = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    releases: S.optional(TrackReleaseList),
-    track: S.optional(S.String),
-  }),
+S.Struct({
+  "releases": S.optional(TrackReleaseList),
+  "track": S.optional(S.String),
+}),
 ).annotate({ identifier: "Track" }) as any as S.Schema<Track>;
 
 /** Represents a one-time transaction. */
@@ -5124,34 +3929,21 @@ export interface OneTimeExternalTransaction {
   externalTransactionToken?: string;
 }
 export const OneTimeExternalTransaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalTransactionToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OneTimeExternalTransaction",
-}) as any as S.Schema<OneTimeExternalTransaction>;
+S.Struct({
+  "externalTransactionToken": S.optional(S.String),
+}),
+).annotate({ identifier: "OneTimeExternalTransaction" }) as any as S.Schema<OneTimeExternalTransaction>;
 
 /** Details of a recurring external transaction product which doesn't belong to any other more specific category. */
 export interface OtherRecurringProduct {}
 export const OtherRecurringProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OtherRecurringProduct",
-}) as any as S.Schema<OtherRecurringProduct>;
+S.Struct({}),
+).annotate({ identifier: "OtherRecurringProduct" }) as any as S.Schema<OtherRecurringProduct>;
 
-export type RecurringExternalTransactionMigratedTransactionProgramEnum =
-  | "EXTERNAL_TRANSACTION_PROGRAM_UNSPECIFIED"
-  | "USER_CHOICE_BILLING"
-  | "ALTERNATIVE_BILLING_ONLY"
-  | (string & {});
-export const RecurringExternalTransactionMigratedTransactionProgramEnum =
-  /*@__PURE__*/ S.String;
+export type RecurringExternalTransactionMigratedTransactionProgramEnum = "EXTERNAL_TRANSACTION_PROGRAM_UNSPECIFIED" | "USER_CHOICE_BILLING" | "ALTERNATIVE_BILLING_ONLY";
+export const RecurringExternalTransactionMigratedTransactionProgramEnum = /*@__PURE__*/ S.String;
 
-export type ExternalSubscriptionSubscriptionTypeEnum =
-  | "SUBSCRIPTION_TYPE_UNSPECIFIED"
-  | "RECURRING"
-  | "PREPAID"
-  | (string & {});
+export type ExternalSubscriptionSubscriptionTypeEnum = "SUBSCRIPTION_TYPE_UNSPECIFIED" | "RECURRING" | "PREPAID";
 export const ExternalSubscriptionSubscriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of an external subscription. */
@@ -5160,12 +3952,10 @@ export interface ExternalSubscription {
   subscriptionType?: ExternalSubscriptionSubscriptionTypeEnum;
 }
 export const ExternalSubscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionType: S.optional(ExternalSubscriptionSubscriptionTypeEnum),
-  }),
-).annotate({
-  identifier: "ExternalSubscription",
-}) as any as S.Schema<ExternalSubscription>;
+S.Struct({
+  "subscriptionType": S.optional(ExternalSubscriptionSubscriptionTypeEnum),
+}),
+).annotate({ identifier: "ExternalSubscription" }) as any as S.Schema<ExternalSubscription>;
 
 /** Represents a transaction that is part of a recurring series of payments. This can be a subscription or a one-time product with multiple payments (such as preorder). */
 export interface RecurringExternalTransaction {
@@ -5181,18 +3971,14 @@ export interface RecurringExternalTransaction {
   externalSubscription?: ExternalSubscription;
 }
 export const RecurringExternalTransaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalTransactionToken: S.optional(S.String),
-    otherRecurringProduct: S.optional(OtherRecurringProduct),
-    initialExternalTransactionId: S.optional(S.String),
-    migratedTransactionProgram: S.optional(
-      RecurringExternalTransactionMigratedTransactionProgramEnum,
-    ),
-    externalSubscription: S.optional(ExternalSubscription),
-  }),
-).annotate({
-  identifier: "RecurringExternalTransaction",
-}) as any as S.Schema<RecurringExternalTransaction>;
+S.Struct({
+  "externalTransactionToken": S.optional(S.String),
+  "otherRecurringProduct": S.optional(OtherRecurringProduct),
+  "initialExternalTransactionId": S.optional(S.String),
+  "migratedTransactionProgram": S.optional(RecurringExternalTransactionMigratedTransactionProgramEnum),
+  "externalSubscription": S.optional(ExternalSubscription),
+}),
+).annotate({ identifier: "RecurringExternalTransaction" }) as any as S.Schema<RecurringExternalTransaction>;
 
 /** User's address for the external transaction. */
 export interface ExternalTransactionAddress {
@@ -5202,27 +3988,16 @@ export interface ExternalTransactionAddress {
   administrativeArea?: string;
 }
 export const ExternalTransactionAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCode: S.optional(S.String),
-    administrativeArea: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExternalTransactionAddress",
-}) as any as S.Schema<ExternalTransactionAddress>;
+S.Struct({
+  "regionCode": S.optional(S.String),
+  "administrativeArea": S.optional(S.String),
+}),
+).annotate({ identifier: "ExternalTransactionAddress" }) as any as S.Schema<ExternalTransactionAddress>;
 
-export type ExternalOfferDetailsInstalledAppCategoryEnum =
-  | "EXTERNAL_OFFER_APP_CATEGORY_UNSPECIFIED"
-  | "APP"
-  | "GAME"
-  | (string & {});
-export const ExternalOfferDetailsInstalledAppCategoryEnum =
-  /*@__PURE__*/ S.String;
+export type ExternalOfferDetailsInstalledAppCategoryEnum = "EXTERNAL_OFFER_APP_CATEGORY_UNSPECIFIED" | "APP" | "GAME";
+export const ExternalOfferDetailsInstalledAppCategoryEnum = /*@__PURE__*/ S.String;
 
-export type ExternalOfferDetailsLinkTypeEnum =
-  | "EXTERNAL_OFFER_LINK_TYPE_UNSPECIFIED"
-  | "LINK_TO_DIGITAL_CONTENT_OFFER"
-  | "LINK_TO_APP_DOWNLOAD"
-  | (string & {});
+export type ExternalOfferDetailsLinkTypeEnum = "EXTERNAL_OFFER_LINK_TYPE_UNSPECIFIED" | "LINK_TO_DIGITAL_CONTENT_OFFER" | "LINK_TO_APP_DOWNLOAD";
 export const ExternalOfferDetailsLinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Reporting details unique to the external offers program. */
@@ -5237,32 +4012,22 @@ export interface ExternalOfferDetails {
   linkType?: ExternalOfferDetailsLinkTypeEnum;
 }
 export const ExternalOfferDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    installedAppPackage: S.optional(S.String),
-    installedAppCategory: S.optional(
-      ExternalOfferDetailsInstalledAppCategoryEnum,
-    ),
-    appDownloadEventExternalTransactionId: S.optional(S.String),
-    linkType: S.optional(ExternalOfferDetailsLinkTypeEnum),
-  }),
-).annotate({
-  identifier: "ExternalOfferDetails",
-}) as any as S.Schema<ExternalOfferDetails>;
+S.Struct({
+  "installedAppPackage": S.optional(S.String),
+  "installedAppCategory": S.optional(ExternalOfferDetailsInstalledAppCategoryEnum),
+  "appDownloadEventExternalTransactionId": S.optional(S.String),
+  "linkType": S.optional(ExternalOfferDetailsLinkTypeEnum),
+}),
+).annotate({ identifier: "ExternalOfferDetails" }) as any as S.Schema<ExternalOfferDetails>;
 
-export type ExternalTransactionTransactionStateEnum =
-  | "TRANSACTION_STATE_UNSPECIFIED"
-  | "TRANSACTION_REPORTED"
-  | "TRANSACTION_CANCELED"
-  | (string & {});
+export type ExternalTransactionTransactionStateEnum = "TRANSACTION_STATE_UNSPECIFIED" | "TRANSACTION_REPORTED" | "TRANSACTION_CANCELED";
 export const ExternalTransactionTransactionStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a transaction performed using a test account. These transactions will not be charged by Google. */
 export interface ExternalTransactionTestPurchase {}
 export const ExternalTransactionTestPurchase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExternalTransactionTestPurchase",
-}) as any as S.Schema<ExternalTransactionTestPurchase>;
+S.Struct({}),
+).annotate({ identifier: "ExternalTransactionTestPurchase" }) as any as S.Schema<ExternalTransactionTestPurchase>;
 
 /** The details of an external transaction. */
 export interface ExternalTransaction {
@@ -5298,26 +4063,24 @@ export interface ExternalTransaction {
   currentTaxAmount?: Price;
 }
 export const ExternalTransaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeTransaction: S.optional(OneTimeExternalTransaction),
-    recurringTransaction: S.optional(RecurringExternalTransaction),
-    currentPreTaxAmount: S.optional(Price),
-    originalTaxAmount: S.optional(Price),
-    createTime: S.optional(S.String),
-    transactionTime: S.optional(S.String),
-    transactionProgramCode: S.optional(S.Number),
-    userTaxAddress: S.optional(ExternalTransactionAddress),
-    externalOfferDetails: S.optional(ExternalOfferDetails),
-    transactionState: S.optional(ExternalTransactionTransactionStateEnum),
-    testPurchase: S.optional(ExternalTransactionTestPurchase),
-    externalTransactionId: S.optional(S.String),
-    originalPreTaxAmount: S.optional(Price),
-    packageName: S.optional(S.String),
-    currentTaxAmount: S.optional(Price),
-  }),
-).annotate({
-  identifier: "ExternalTransaction",
-}) as any as S.Schema<ExternalTransaction>;
+S.Struct({
+  "oneTimeTransaction": S.optional(OneTimeExternalTransaction),
+  "recurringTransaction": S.optional(RecurringExternalTransaction),
+  "currentPreTaxAmount": S.optional(Price),
+  "originalTaxAmount": S.optional(Price),
+  "createTime": S.optional(S.String),
+  "transactionTime": S.optional(S.String),
+  "transactionProgramCode": S.optional(S.Number),
+  "userTaxAddress": S.optional(ExternalTransactionAddress),
+  "externalOfferDetails": S.optional(ExternalOfferDetails),
+  "transactionState": S.optional(ExternalTransactionTransactionStateEnum),
+  "testPurchase": S.optional(ExternalTransactionTestPurchase),
+  "externalTransactionId": S.optional(S.String),
+  "originalPreTaxAmount": S.optional(Price),
+  "packageName": S.optional(S.String),
+  "currentTaxAmount": S.optional(Price),
+}),
+).annotate({ identifier: "ExternalTransaction" }) as any as S.Schema<ExternalTransaction>;
 
 export interface CreateexternaltransactionExternaltransactionsRequest {
   /** Required. The id to use for the external transaction. Must be unique across all other transactions for the app. This value should be 1-63 characters and valid characters are /a-zA-Z0-9_-/. Do not use this field to store any Personally Identifiable Information (PII) such as emails. Attempting to store PII in this field may result in requests being blocked. */
@@ -5327,47 +4090,19 @@ export interface CreateexternaltransactionExternaltransactionsRequest {
   /** Request body */
   body?: ExternalTransaction;
 }
-export const CreateexternaltransactionExternaltransactionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      externalTransactionId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ExternalTransaction.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/{+parent}/externalTransactions",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateexternaltransactionExternaltransactionsRequest",
-  }) as any as S.Schema<CreateexternaltransactionExternaltransactionsRequest>;
+export const CreateexternaltransactionExternaltransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "externalTransactionId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ExternalTransaction.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/{+parent}/externalTransactions","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CreateexternaltransactionExternaltransactionsRequest" }) as any as S.Schema<CreateexternaltransactionExternaltransactionsRequest>;
 
-export type GrantAppLevelPermissionsItemEnum =
-  | "APP_LEVEL_PERMISSION_UNSPECIFIED"
-  | "CAN_ACCESS_APP"
-  | "CAN_VIEW_FINANCIAL_DATA"
-  | "CAN_MANAGE_PERMISSIONS"
-  | "CAN_REPLY_TO_REVIEWS"
-  | "CAN_MANAGE_PUBLIC_APKS"
-  | "CAN_MANAGE_TRACK_APKS"
-  | "CAN_MANAGE_TRACK_USERS"
-  | "CAN_MANAGE_PUBLIC_LISTING"
-  | "CAN_MANAGE_DRAFT_APPS"
-  | "CAN_MANAGE_ORDERS"
-  | "CAN_MANAGE_APP_CONTENT"
-  | "CAN_VIEW_NON_FINANCIAL_DATA"
-  | "CAN_VIEW_APP_QUALITY"
-  | "CAN_MANAGE_DEEPLINKS"
-  | (string & {});
+export type GrantAppLevelPermissionsItemEnum = "APP_LEVEL_PERMISSION_UNSPECIFIED" | "CAN_ACCESS_APP" | "CAN_VIEW_FINANCIAL_DATA" | "CAN_MANAGE_PERMISSIONS" | "CAN_REPLY_TO_REVIEWS" | "CAN_MANAGE_PUBLIC_APKS" | "CAN_MANAGE_TRACK_APKS" | "CAN_MANAGE_TRACK_USERS" | "CAN_MANAGE_PUBLIC_LISTING" | "CAN_MANAGE_DRAFT_APPS" | "CAN_MANAGE_ORDERS" | "CAN_MANAGE_APP_CONTENT" | "CAN_VIEW_NON_FINANCIAL_DATA" | "CAN_VIEW_APP_QUALITY" | "CAN_MANAGE_DEEPLINKS";
 export const GrantAppLevelPermissionsItemEnum = /*@__PURE__*/ S.String;
 
-export type GrantAppLevelPermissionsItemEnumList =
-  ReadonlyArray<GrantAppLevelPermissionsItemEnum>;
-export const GrantAppLevelPermissionsItemEnumList = /*@__PURE__*/ S.Array(
-  GrantAppLevelPermissionsItemEnum,
-) as any as S.Schema<GrantAppLevelPermissionsItemEnumList>;
+export type GrantAppLevelPermissionsItemEnumList = ReadonlyArray<GrantAppLevelPermissionsItemEnum>;
+export const GrantAppLevelPermissionsItemEnumList = /*@__PURE__*/ S.Array(GrantAppLevelPermissionsItemEnum) as any as S.Schema<GrantAppLevelPermissionsItemEnumList>;
 
 /** An access grant resource. */
 export interface Grant {
@@ -5379,11 +4114,11 @@ export interface Grant {
   name?: string;
 }
 export const Grant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.optional(S.String),
-    appLevelPermissions: S.optional(GrantAppLevelPermissionsItemEnumList),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "packageName": S.optional(S.String),
+  "appLevelPermissions": S.optional(GrantAppLevelPermissionsItemEnumList),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Grant" }) as any as S.Schema<Grant>;
 
 export interface CreateGrantsRequest {
@@ -5393,19 +4128,11 @@ export interface CreateGrantsRequest {
   body?: Grant;
 }
 export const CreateGrantsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(Grant.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/{+parent}/grants",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateGrantsRequest",
-}) as any as S.Schema<CreateGrantsRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Grant.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/{+parent}/grants","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CreateGrantsRequest" }) as any as S.Schema<CreateGrantsRequest>;
 
 export interface CreateMonetizationSubscriptionsRequest {
   /** Required. The parent app (package name) for which the subscription should be created. Must be equal to the package_name field on the Subscription resource. */
@@ -5417,23 +4144,14 @@ export interface CreateMonetizationSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const CreateMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.optional(S.String.pipe(T.Query())),
-      "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Subscription.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateMonetizationSubscriptionsRequest",
-}) as any as S.Schema<CreateMonetizationSubscriptionsRequest>;
+export const CreateMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.optional(S.String.pipe(T.Query())),
+  "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Subscription.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CreateMonetizationSubscriptionsRequest" }) as any as S.Schema<CreateMonetizationSubscriptionsRequest>;
 
 export interface CreateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The parent subscription (ID) for which the offer should be created. Must be equal to the product_id field on the SubscriptionOffer resource. */
@@ -5449,25 +4167,16 @@ export interface CreateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: SubscriptionOffer;
 }
-export const CreateMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      offerId: S.optional(S.String.pipe(T.Query())),
-      "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
-      basePlanId: S.String.pipe(T.Label()),
-      body: S.optional(SubscriptionOffer.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<CreateMonetizationSubscriptionsBasePlansOffersRequest>;
+export const CreateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "offerId": S.optional(S.String.pipe(T.Query())),
+  "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
+  "basePlanId": S.String.pipe(T.Label()),
+  "body": S.optional(SubscriptionOffer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CreateMonetizationSubscriptionsBasePlansOffersRequest" }) as any as S.Schema<CreateMonetizationSubscriptionsBasePlansOffersRequest>;
 
 /** The device spec used to generate a system APK. */
 export interface DeviceSpec {
@@ -5479,11 +4188,11 @@ export interface DeviceSpec {
   supportedLocales?: StringList;
 }
 export const DeviceSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    screenDensity: S.optional(S.Number),
-    supportedAbis: S.optional(StringList),
-    supportedLocales: S.optional(StringList),
-  }),
+S.Struct({
+  "screenDensity": S.optional(S.Number),
+  "supportedAbis": S.optional(StringList),
+  "supportedLocales": S.optional(StringList),
+}),
 ).annotate({ identifier: "DeviceSpec" }) as any as S.Schema<DeviceSpec>;
 
 /** Options for system APKs. */
@@ -5496,14 +4205,12 @@ export interface SystemApkOptions {
   uncompressedDexFiles?: boolean;
 }
 export const SystemApkOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rotated: S.optional(S.Boolean),
-    uncompressedNativeLibraries: S.optional(S.Boolean),
-    uncompressedDexFiles: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SystemApkOptions",
-}) as any as S.Schema<SystemApkOptions>;
+S.Struct({
+  "rotated": S.optional(S.Boolean),
+  "uncompressedNativeLibraries": S.optional(S.Boolean),
+  "uncompressedDexFiles": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SystemApkOptions" }) as any as S.Schema<SystemApkOptions>;
 
 /** APK that is suitable for inclusion in a system image. The resource of SystemApksService. */
 export interface Variant {
@@ -5515,11 +4222,11 @@ export interface Variant {
   variantId?: number;
 }
 export const Variant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceSpec: S.optional(DeviceSpec),
-    options: S.optional(SystemApkOptions),
-    variantId: S.optional(S.Number),
-  }),
+S.Struct({
+  "deviceSpec": S.optional(DeviceSpec),
+  "options": S.optional(SystemApkOptions),
+  "variantId": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Variant" }) as any as S.Schema<Variant>;
 
 export interface CreateSystemapksVariantsRequest {
@@ -5531,66 +4238,24 @@ export interface CreateSystemapksVariantsRequest {
   body?: Variant;
 }
 export const CreateSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    versionCode: S.String.pipe(T.Label()),
-    body: S.optional(Variant.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateSystemapksVariantsRequest",
-}) as any as S.Schema<CreateSystemapksVariantsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "versionCode": S.String.pipe(T.Label()),
+  "body": S.optional(Variant.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CreateSystemapksVariantsRequest" }) as any as S.Schema<CreateSystemapksVariantsRequest>;
 
-export type UserAccessStateEnum =
-  | "ACCESS_STATE_UNSPECIFIED"
-  | "INVITED"
-  | "INVITATION_EXPIRED"
-  | "ACCESS_GRANTED"
-  | "ACCESS_EXPIRED"
-  | (string & {});
+export type UserAccessStateEnum = "ACCESS_STATE_UNSPECIFIED" | "INVITED" | "INVITATION_EXPIRED" | "ACCESS_GRANTED" | "ACCESS_EXPIRED";
 export const UserAccessStateEnum = /*@__PURE__*/ S.String;
 
 export type GrantList = ReadonlyArray<Grant>;
-export const GrantList = /*@__PURE__*/ S.Array(
-  Grant,
-) as any as S.Schema<GrantList>;
+export const GrantList = /*@__PURE__*/ S.Array(Grant) as any as S.Schema<GrantList>;
 
-export type UserDeveloperAccountPermissionsItemEnum =
-  | "DEVELOPER_LEVEL_PERMISSION_UNSPECIFIED"
-  | "CAN_SEE_ALL_APPS"
-  | "CAN_VIEW_FINANCIAL_DATA_GLOBAL"
-  | "CAN_MANAGE_PERMISSIONS_GLOBAL"
-  | "CAN_EDIT_GAMES_GLOBAL"
-  | "CAN_PUBLISH_GAMES_GLOBAL"
-  | "CAN_REPLY_TO_REVIEWS_GLOBAL"
-  | "CAN_MANAGE_PUBLIC_APKS_GLOBAL"
-  | "CAN_MANAGE_TRACK_APKS_GLOBAL"
-  | "CAN_MANAGE_TRACK_USERS_GLOBAL"
-  | "CAN_MANAGE_PUBLIC_LISTING_GLOBAL"
-  | "CAN_MANAGE_DRAFT_APPS_GLOBAL"
-  | "CAN_CREATE_MANAGED_PLAY_APPS_GLOBAL"
-  | "CAN_CHANGE_MANAGED_PLAY_SETTING_GLOBAL"
-  | "CAN_MANAGE_ORDERS_GLOBAL"
-  | "CAN_MANAGE_APP_CONTENT_GLOBAL"
-  | "CAN_VIEW_NON_FINANCIAL_DATA_GLOBAL"
-  | "CAN_VIEW_APP_QUALITY_GLOBAL"
-  | "CAN_MANAGE_DEEPLINKS_GLOBAL"
-  | "CAN_VIEW_CONNECTED_APPS_GLOBAL"
-  | "CAN_EDIT_CONNECTED_APPS_GLOBAL"
-  | (string & {});
+export type UserDeveloperAccountPermissionsItemEnum = "DEVELOPER_LEVEL_PERMISSION_UNSPECIFIED" | "CAN_SEE_ALL_APPS" | "CAN_VIEW_FINANCIAL_DATA_GLOBAL" | "CAN_MANAGE_PERMISSIONS_GLOBAL" | "CAN_EDIT_GAMES_GLOBAL" | "CAN_PUBLISH_GAMES_GLOBAL" | "CAN_REPLY_TO_REVIEWS_GLOBAL" | "CAN_MANAGE_PUBLIC_APKS_GLOBAL" | "CAN_MANAGE_TRACK_APKS_GLOBAL" | "CAN_MANAGE_TRACK_USERS_GLOBAL" | "CAN_MANAGE_PUBLIC_LISTING_GLOBAL" | "CAN_MANAGE_DRAFT_APPS_GLOBAL" | "CAN_CREATE_MANAGED_PLAY_APPS_GLOBAL" | "CAN_CHANGE_MANAGED_PLAY_SETTING_GLOBAL" | "CAN_MANAGE_ORDERS_GLOBAL" | "CAN_MANAGE_APP_CONTENT_GLOBAL" | "CAN_VIEW_NON_FINANCIAL_DATA_GLOBAL" | "CAN_VIEW_APP_QUALITY_GLOBAL" | "CAN_MANAGE_DEEPLINKS_GLOBAL" | "CAN_VIEW_CONNECTED_APPS_GLOBAL" | "CAN_EDIT_CONNECTED_APPS_GLOBAL";
 export const UserDeveloperAccountPermissionsItemEnum = /*@__PURE__*/ S.String;
 
-export type UserDeveloperAccountPermissionsItemEnumList =
-  ReadonlyArray<UserDeveloperAccountPermissionsItemEnum>;
-export const UserDeveloperAccountPermissionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    UserDeveloperAccountPermissionsItemEnum,
-  ) as any as S.Schema<UserDeveloperAccountPermissionsItemEnumList>;
+export type UserDeveloperAccountPermissionsItemEnumList = ReadonlyArray<UserDeveloperAccountPermissionsItemEnum>;
+export const UserDeveloperAccountPermissionsItemEnumList = /*@__PURE__*/ S.Array(UserDeveloperAccountPermissionsItemEnum) as any as S.Schema<UserDeveloperAccountPermissionsItemEnumList>;
 
 /** A user resource. */
 export interface User {
@@ -5610,17 +4275,15 @@ export interface User {
   developerAccountPermissions?: UserDeveloperAccountPermissionsItemEnumList;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessState: S.optional(UserAccessStateEnum),
-    grants: S.optional(GrantList),
-    expirationTime: S.optional(S.String),
-    partial: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    email: S.optional(S.String),
-    developerAccountPermissions: S.optional(
-      UserDeveloperAccountPermissionsItemEnumList,
-    ),
-  }),
+S.Struct({
+  "accessState": S.optional(UserAccessStateEnum),
+  "grants": S.optional(GrantList),
+  "expirationTime": S.optional(S.String),
+  "partial": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+  "email": S.optional(S.String),
+  "developerAccountPermissions": S.optional(UserDeveloperAccountPermissionsItemEnumList),
+}),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export interface CreateUsersRequest {
@@ -5630,19 +4293,11 @@ export interface CreateUsersRequest {
   body?: User;
 }
 export const CreateUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(User.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/{+parent}/users",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateUsersRequest",
-}) as any as S.Schema<CreateUsersRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(User.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/{+parent}/users","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "CreateUsersRequest" }) as any as S.Schema<CreateUsersRequest>;
 
 /** Request to update Safety Labels of an app. */
 export interface SafetyLabelsUpdateRequest {
@@ -5650,12 +4305,10 @@ export interface SafetyLabelsUpdateRequest {
   safetyLabels?: string;
 }
 export const SafetyLabelsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    safetyLabels: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SafetyLabelsUpdateRequest",
-}) as any as S.Schema<SafetyLabelsUpdateRequest>;
+S.Struct({
+  "safetyLabels": S.optional(S.String),
+}),
+).annotate({ identifier: "SafetyLabelsUpdateRequest" }) as any as S.Schema<SafetyLabelsUpdateRequest>;
 
 export interface DataSafetyApplicationsRequest {
   /** Required. Package name of the app. */
@@ -5664,27 +4317,17 @@ export interface DataSafetyApplicationsRequest {
   body?: SafetyLabelsUpdateRequest;
 }
 export const DataSafetyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(SafetyLabelsUpdateRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/dataSafety",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DataSafetyApplicationsRequest",
-}) as any as S.Schema<DataSafetyApplicationsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(SafetyLabelsUpdateRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/dataSafety","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DataSafetyApplicationsRequest" }) as any as S.Schema<DataSafetyApplicationsRequest>;
 
 /** Response for SafetyLabelsUpdate rpc. */
 export interface SafetyLabelsUpdateResponse {}
 export const SafetyLabelsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SafetyLabelsUpdateResponse",
-}) as any as S.Schema<SafetyLabelsUpdateResponse>;
+S.Struct({}),
+).annotate({ identifier: "SafetyLabelsUpdateResponse" }) as any as S.Schema<SafetyLabelsUpdateResponse>;
 
 export interface DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The parent purchase option (ID) of the offer to deactivate. */
@@ -5698,25 +4341,15 @@ export interface DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersReque
   /** Request body */
   body?: DeactivateOneTimeProductOfferRequest;
 }
-export const DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      purchaseOptionId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      offerId: S.String.pipe(T.Label()),
-      body: S.optional(DeactivateOneTimeProductOfferRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:deactivate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+export const DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "purchaseOptionId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "offerId": S.String.pipe(T.Label()),
+  "body": S.optional(DeactivateOneTimeProductOfferRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:deactivate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest" }) as any as S.Schema<DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export interface DeactivateMonetizationSubscriptionsBasePlansRequest {
   /** Required. The parent subscription (ID) of the base plan to deactivate. */
@@ -5728,23 +4361,14 @@ export interface DeactivateMonetizationSubscriptionsBasePlansRequest {
   /** Request body */
   body?: DeactivateBasePlanRequest;
 }
-export const DeactivateMonetizationSubscriptionsBasePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      basePlanId: S.String.pipe(T.Label()),
-      body: S.optional(DeactivateBasePlanRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:deactivate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeactivateMonetizationSubscriptionsBasePlansRequest",
-  }) as any as S.Schema<DeactivateMonetizationSubscriptionsBasePlansRequest>;
+export const DeactivateMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "basePlanId": S.String.pipe(T.Label()),
+  "body": S.optional(DeactivateBasePlanRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:deactivate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeactivateMonetizationSubscriptionsBasePlansRequest" }) as any as S.Schema<DeactivateMonetizationSubscriptionsBasePlansRequest>;
 
 export interface DeactivateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The parent base plan (ID) of the offer to deactivate. */
@@ -5758,24 +4382,15 @@ export interface DeactivateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: DeactivateSubscriptionOfferRequest;
 }
-export const DeactivateMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      basePlanId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      offerId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(DeactivateSubscriptionOfferRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:deactivate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeactivateMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<DeactivateMonetizationSubscriptionsBasePlansOffersRequest>;
+export const DeactivateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "basePlanId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "offerId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(DeactivateSubscriptionOfferRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:deactivate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeactivateMonetizationSubscriptionsBasePlansOffersRequest" }) as any as S.Schema<DeactivateMonetizationSubscriptionsBasePlansOffersRequest>;
 
 /** A SubscriptionDeferralInfo contains the data needed to defer a subscription purchase to a future expiry time. */
 export interface SubscriptionDeferralInfo {
@@ -5785,13 +4400,11 @@ export interface SubscriptionDeferralInfo {
   desiredExpiryTimeMillis?: string;
 }
 export const SubscriptionDeferralInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expectedExpiryTimeMillis: S.optional(S.String),
-    desiredExpiryTimeMillis: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubscriptionDeferralInfo",
-}) as any as S.Schema<SubscriptionDeferralInfo>;
+S.Struct({
+  "expectedExpiryTimeMillis": S.optional(S.String),
+  "desiredExpiryTimeMillis": S.optional(S.String),
+}),
+).annotate({ identifier: "SubscriptionDeferralInfo" }) as any as S.Schema<SubscriptionDeferralInfo>;
 
 /** Request for the purchases.subscriptions.defer API. */
 export interface SubscriptionPurchasesDeferRequest {
@@ -5799,12 +4412,10 @@ export interface SubscriptionPurchasesDeferRequest {
   deferralInfo?: SubscriptionDeferralInfo;
 }
 export const SubscriptionPurchasesDeferRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deferralInfo: S.optional(SubscriptionDeferralInfo),
-  }),
-).annotate({
-  identifier: "SubscriptionPurchasesDeferRequest",
-}) as any as S.Schema<SubscriptionPurchasesDeferRequest>;
+S.Struct({
+  "deferralInfo": S.optional(SubscriptionDeferralInfo),
+}),
+).annotate({ identifier: "SubscriptionPurchasesDeferRequest" }) as any as S.Schema<SubscriptionPurchasesDeferRequest>;
 
 export interface DeferPurchasesSubscriptionsRequest {
   /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
@@ -5817,21 +4428,13 @@ export interface DeferPurchasesSubscriptionsRequest {
   body?: SubscriptionPurchasesDeferRequest;
 }
 export const DeferPurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    token: S.String.pipe(T.Label()),
-    subscriptionId: S.String.pipe(T.Label()),
-    body: S.optional(SubscriptionPurchasesDeferRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeferPurchasesSubscriptionsRequest",
-}) as any as S.Schema<DeferPurchasesSubscriptionsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+  "subscriptionId": S.String.pipe(T.Label()),
+  "body": S.optional(SubscriptionPurchasesDeferRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeferPurchasesSubscriptionsRequest" }) as any as S.Schema<DeferPurchasesSubscriptionsRequest>;
 
 /** Response for the purchases.subscriptions.defer API. */
 export interface SubscriptionPurchasesDeferResponse {
@@ -5839,12 +4442,10 @@ export interface SubscriptionPurchasesDeferResponse {
   newExpiryTimeMillis?: string;
 }
 export const SubscriptionPurchasesDeferResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newExpiryTimeMillis: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubscriptionPurchasesDeferResponse",
-}) as any as S.Schema<SubscriptionPurchasesDeferResponse>;
+S.Struct({
+  "newExpiryTimeMillis": S.optional(S.String),
+}),
+).annotate({ identifier: "SubscriptionPurchasesDeferResponse" }) as any as S.Schema<SubscriptionPurchasesDeferResponse>;
 
 /** Deferral context of the purchases.subscriptionsv2.defer API. */
 export interface DeferralContext {
@@ -5856,14 +4457,12 @@ export interface DeferralContext {
   validateOnly?: boolean;
 }
 export const DeferralContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    deferDuration: S.optional(S.String),
-    validateOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DeferralContext",
-}) as any as S.Schema<DeferralContext>;
+S.Struct({
+  "etag": S.optional(S.String),
+  "deferDuration": S.optional(S.String),
+  "validateOnly": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DeferralContext" }) as any as S.Schema<DeferralContext>;
 
 /** Request for the v2 purchases.subscriptions.defer API. */
 export interface DeferSubscriptionPurchaseRequest {
@@ -5871,12 +4470,10 @@ export interface DeferSubscriptionPurchaseRequest {
   deferralContext?: DeferralContext;
 }
 export const DeferSubscriptionPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deferralContext: S.optional(DeferralContext),
-  }),
-).annotate({
-  identifier: "DeferSubscriptionPurchaseRequest",
-}) as any as S.Schema<DeferSubscriptionPurchaseRequest>;
+S.Struct({
+  "deferralContext": S.optional(DeferralContext),
+}),
+).annotate({ identifier: "DeferSubscriptionPurchaseRequest" }) as any as S.Schema<DeferSubscriptionPurchaseRequest>;
 
 export interface DeferPurchasesSubscriptionsv2Request {
   /** Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
@@ -5886,22 +4483,13 @@ export interface DeferPurchasesSubscriptionsv2Request {
   /** Request body */
   body?: DeferSubscriptionPurchaseRequest;
 }
-export const DeferPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      token: S.String.pipe(T.Label()),
-      body: S.optional(DeferSubscriptionPurchaseRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:defer",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeferPurchasesSubscriptionsv2Request",
-}) as any as S.Schema<DeferPurchasesSubscriptionsv2Request>;
+export const DeferPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+  "body": S.optional(DeferSubscriptionPurchaseRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:defer","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeferPurchasesSubscriptionsv2Request" }) as any as S.Schema<DeferPurchasesSubscriptionsv2Request>;
 
 /** Expiry time details of a subscription item. */
 export interface ItemExpiryTimeDetails {
@@ -5911,18 +4499,14 @@ export interface ItemExpiryTimeDetails {
   expiryTime?: string;
 }
 export const ItemExpiryTimeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    expiryTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ItemExpiryTimeDetails",
-}) as any as S.Schema<ItemExpiryTimeDetails>;
+S.Struct({
+  "productId": S.optional(S.String),
+  "expiryTime": S.optional(S.String),
+}),
+).annotate({ identifier: "ItemExpiryTimeDetails" }) as any as S.Schema<ItemExpiryTimeDetails>;
 
 export type ItemExpiryTimeDetailsList = ReadonlyArray<ItemExpiryTimeDetails>;
-export const ItemExpiryTimeDetailsList = /*@__PURE__*/ S.Array(
-  ItemExpiryTimeDetails,
-) as any as S.Schema<ItemExpiryTimeDetailsList>;
+export const ItemExpiryTimeDetailsList = /*@__PURE__*/ S.Array(ItemExpiryTimeDetails) as any as S.Schema<ItemExpiryTimeDetailsList>;
 
 /** Response for the v2 purchases.subscriptions.defer API. */
 export interface DeferSubscriptionPurchaseResponse {
@@ -5930,24 +4514,12 @@ export interface DeferSubscriptionPurchaseResponse {
   itemExpiryTimeDetails?: ItemExpiryTimeDetailsList;
 }
 export const DeferSubscriptionPurchaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemExpiryTimeDetails: S.optional(ItemExpiryTimeDetailsList),
-  }),
-).annotate({
-  identifier: "DeferSubscriptionPurchaseResponse",
-}) as any as S.Schema<DeferSubscriptionPurchaseResponse>;
+S.Struct({
+  "itemExpiryTimeDetails": S.optional(ItemExpiryTimeDetailsList),
+}),
+).annotate({ identifier: "DeferSubscriptionPurchaseResponse" }) as any as S.Schema<DeferSubscriptionPurchaseResponse>;
 
-export type DeleteallEditsImagesImageTypeEnum =
-  | "appImageTypeUnspecified"
-  | "phoneScreenshots"
-  | "sevenInchScreenshots"
-  | "tenInchScreenshots"
-  | "tvScreenshots"
-  | "wearScreenshots"
-  | "icon"
-  | "featureGraphic"
-  | "tvBanner"
-  | (string & {});
+export type DeleteallEditsImagesImageTypeEnum = "appImageTypeUnspecified" | "phoneScreenshots" | "sevenInchScreenshots" | "tenInchScreenshots" | "tvScreenshots" | "wearScreenshots" | "icon" | "featureGraphic" | "tvBanner";
 export const DeleteallEditsImagesImageTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteallEditsImagesRequest {
@@ -5958,30 +4530,18 @@ export interface DeleteallEditsImagesRequest {
   /** Package name of the app. */
   packageName: string;
   /** Type of the Image. Providing an image type that refers to no images is a no-op. */
-  imageType: DeleteallEditsImagesImageTypeEnum;
+  imageType: DeleteallEditsImagesImageTypeEnum | (string & {});
 }
 export const DeleteallEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    editId: S.String.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    imageType: DeleteallEditsImagesImageTypeEnum.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteallEditsImagesRequest",
-}) as any as S.Schema<DeleteallEditsImagesRequest>;
+S.Struct({
+  "editId": S.String.pipe(T.Label()),
+  "language": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "imageType": DeleteallEditsImagesImageTypeEnum.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteallEditsImagesRequest" }) as any as S.Schema<DeleteallEditsImagesRequest>;
 
-export type ImageAiGeneratedStateEnum =
-  | "aiGeneratedStateUnspecified"
-  | "aiGeneratedStateNotAiGenerated"
-  | "aiGeneratedStateAiGeneratedDeveloperAttested"
-  | (string & {});
+export type ImageAiGeneratedStateEnum = "aiGeneratedStateUnspecified" | "aiGeneratedStateNotAiGenerated" | "aiGeneratedStateAiGeneratedDeveloperAttested";
 export const ImageAiGeneratedStateEnum = /*@__PURE__*/ S.String;
 
 /** An uploaded image. The resource for ImagesService. */
@@ -5998,19 +4558,17 @@ export interface Image {
   aiGeneratedState?: ImageAiGeneratedStateEnum;
 }
 export const Image = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    sha1: S.optional(S.String),
-    id: S.optional(S.String),
-    sha256: S.optional(S.String),
-    aiGeneratedState: S.optional(ImageAiGeneratedStateEnum),
-  }),
+S.Struct({
+  "url": S.optional(S.String),
+  "sha1": S.optional(S.String),
+  "id": S.optional(S.String),
+  "sha256": S.optional(S.String),
+  "aiGeneratedState": S.optional(ImageAiGeneratedStateEnum),
+}),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 export type ImageList = ReadonlyArray<Image>;
-export const ImageList = /*@__PURE__*/ S.Array(
-  Image,
-) as any as S.Schema<ImageList>;
+export const ImageList = /*@__PURE__*/ S.Array(Image) as any as S.Schema<ImageList>;
 
 /** Response for deleting all images. */
 export interface ImagesDeleteAllResponse {
@@ -6018,12 +4576,10 @@ export interface ImagesDeleteAllResponse {
   deleted?: ImageList;
 }
 export const ImagesDeleteAllResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleted: S.optional(ImageList),
-  }),
-).annotate({
-  identifier: "ImagesDeleteAllResponse",
-}) as any as S.Schema<ImagesDeleteAllResponse>;
+S.Struct({
+  "deleted": S.optional(ImageList),
+}),
+).annotate({ identifier: "ImagesDeleteAllResponse" }) as any as S.Schema<ImagesDeleteAllResponse>;
 
 export interface DeleteallEditsListingsRequest {
   /** Package name of the app. */
@@ -6032,26 +4588,16 @@ export interface DeleteallEditsListingsRequest {
   editId: string;
 }
 export const DeleteallEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteallEditsListingsRequest",
-}) as any as S.Schema<DeleteallEditsListingsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/listings","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteallEditsListingsRequest" }) as any as S.Schema<DeleteallEditsListingsRequest>;
 
 export interface DeleteallEditsListingsResponse {}
 export const DeleteallEditsListingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteallEditsListingsResponse",
-}) as any as S.Schema<DeleteallEditsListingsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteallEditsListingsResponse" }) as any as S.Schema<DeleteallEditsListingsResponse>;
 
 export interface DeleteEditsRequest {
   /** Package name of the app. */
@@ -6060,38 +4606,18 @@ export interface DeleteEditsRequest {
   editId: string;
 }
 export const DeleteEditsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteEditsRequest",
-}) as any as S.Schema<DeleteEditsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteEditsRequest" }) as any as S.Schema<DeleteEditsRequest>;
 
 export interface DeleteEditsResponse {}
 export const DeleteEditsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEditsResponse",
-}) as any as S.Schema<DeleteEditsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteEditsResponse" }) as any as S.Schema<DeleteEditsResponse>;
 
-export type DeleteEditsImagesImageTypeEnum =
-  | "appImageTypeUnspecified"
-  | "phoneScreenshots"
-  | "sevenInchScreenshots"
-  | "tenInchScreenshots"
-  | "tvScreenshots"
-  | "wearScreenshots"
-  | "icon"
-  | "featureGraphic"
-  | "tvBanner"
-  | (string & {});
+export type DeleteEditsImagesImageTypeEnum = "appImageTypeUnspecified" | "phoneScreenshots" | "sevenInchScreenshots" | "tenInchScreenshots" | "tvScreenshots" | "wearScreenshots" | "icon" | "featureGraphic" | "tvBanner";
 export const DeleteEditsImagesImageTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteEditsImagesRequest {
@@ -6100,36 +4626,26 @@ export interface DeleteEditsImagesRequest {
   /** Identifier of the edit. */
   editId: string;
   /** Type of the Image. */
-  imageType: DeleteEditsImagesImageTypeEnum;
+  imageType: DeleteEditsImagesImageTypeEnum | (string & {});
   /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
   language: string;
   /** Unique identifier an image within the set of images attached to this edit. */
   imageId: string;
 }
 export const DeleteEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    imageType: DeleteEditsImagesImageTypeEnum.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-    imageId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteEditsImagesRequest",
-}) as any as S.Schema<DeleteEditsImagesRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "imageType": DeleteEditsImagesImageTypeEnum.pipe(T.Label()),
+  "language": S.String.pipe(T.Label()),
+  "imageId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteEditsImagesRequest" }) as any as S.Schema<DeleteEditsImagesRequest>;
 
 export interface DeleteEditsImagesResponse {}
 export const DeleteEditsImagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEditsImagesResponse",
-}) as any as S.Schema<DeleteEditsImagesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteEditsImagesResponse" }) as any as S.Schema<DeleteEditsImagesResponse>;
 
 export interface DeleteEditsListingsRequest {
   /** Package name of the app. */
@@ -6140,133 +4656,80 @@ export interface DeleteEditsListingsRequest {
   editId: string;
 }
 export const DeleteEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteEditsListingsRequest",
-}) as any as S.Schema<DeleteEditsListingsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "language": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteEditsListingsRequest" }) as any as S.Schema<DeleteEditsListingsRequest>;
 
 export interface DeleteEditsListingsResponse {}
 export const DeleteEditsListingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEditsListingsResponse",
-}) as any as S.Schema<DeleteEditsListingsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteEditsListingsResponse" }) as any as S.Schema<DeleteEditsListingsResponse>;
 
 export interface DeleteGrantsRequest {
   /** Required. The name of the grant to delete. Format: developers/{developer}/users/{email}/grants/{package_name} */
   name: string;
 }
 export const DeleteGrantsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "androidpublisher/v3/{+name}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteGrantsRequest",
-}) as any as S.Schema<DeleteGrantsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/{+name}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteGrantsRequest" }) as any as S.Schema<DeleteGrantsRequest>;
 
 export interface DeleteGrantsResponse {}
 export const DeleteGrantsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGrantsResponse",
-}) as any as S.Schema<DeleteGrantsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteGrantsResponse" }) as any as S.Schema<DeleteGrantsResponse>;
 
-export type DeleteInappproductsLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+export type DeleteInappproductsLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const DeleteInappproductsLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteInappproductsRequest {
   /** Unique identifier for the in-app product. */
   sku: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: DeleteInappproductsLatencyToleranceEnum;
+  latencyTolerance?: DeleteInappproductsLatencyToleranceEnum | (string & {});
   /** Package name of the app. */
   packageName: string;
 }
 export const DeleteInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sku: S.String.pipe(T.Label()),
-    latencyTolerance: S.optional(
-      DeleteInappproductsLatencyToleranceEnum.pipe(T.Query()),
-    ),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteInappproductsRequest",
-}) as any as S.Schema<DeleteInappproductsRequest>;
+S.Struct({
+  "sku": S.String.pipe(T.Label()),
+  "latencyTolerance": S.optional(DeleteInappproductsLatencyToleranceEnum.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/applications/{packageName}/inappproducts/{sku}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteInappproductsRequest" }) as any as S.Schema<DeleteInappproductsRequest>;
 
 export interface DeleteInappproductsResponse {}
 export const DeleteInappproductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteInappproductsResponse",
-}) as any as S.Schema<DeleteInappproductsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteInappproductsResponse" }) as any as S.Schema<DeleteInappproductsResponse>;
 
-export type DeleteMonetizationOnetimeproductsLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const DeleteMonetizationOnetimeproductsLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type DeleteMonetizationOnetimeproductsLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const DeleteMonetizationOnetimeproductsLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteMonetizationOnetimeproductsRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: DeleteMonetizationOnetimeproductsLatencyToleranceEnum;
+  latencyTolerance?: DeleteMonetizationOnetimeproductsLatencyToleranceEnum | (string & {});
   /** Required. The parent app (package name) of the one-time product to delete. */
   packageName: string;
   /** Required. The one-time product ID of the one-time product to delete. */
   productId: string;
 }
-export const DeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      latencyTolerance: S.optional(
-        DeleteMonetizationOnetimeproductsLatencyToleranceEnum.pipe(T.Query()),
-      ),
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteMonetizationOnetimeproductsRequest",
-}) as any as S.Schema<DeleteMonetizationOnetimeproductsRequest>;
+export const DeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "latencyTolerance": S.optional(DeleteMonetizationOnetimeproductsLatencyToleranceEnum.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteMonetizationOnetimeproductsRequest" }) as any as S.Schema<DeleteMonetizationOnetimeproductsRequest>;
 
 export interface DeleteMonetizationOnetimeproductsResponse {}
-export const DeleteMonetizationOnetimeproductsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteMonetizationOnetimeproductsResponse",
-  }) as any as S.Schema<DeleteMonetizationOnetimeproductsResponse>;
+export const DeleteMonetizationOnetimeproductsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "DeleteMonetizationOnetimeproductsResponse" }) as any as S.Schema<DeleteMonetizationOnetimeproductsResponse>;
 
 export interface DeleteMonetizationSubscriptionsRequest {
   /** Required. The parent app (package name) of the app of the subscription to delete. */
@@ -6274,28 +4737,17 @@ export interface DeleteMonetizationSubscriptionsRequest {
   /** Required. The unique product ID of the subscription to delete. */
   productId: string;
 }
-export const DeleteMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteMonetizationSubscriptionsRequest",
-}) as any as S.Schema<DeleteMonetizationSubscriptionsRequest>;
+export const DeleteMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteMonetizationSubscriptionsRequest" }) as any as S.Schema<DeleteMonetizationSubscriptionsRequest>;
 
 export interface DeleteMonetizationSubscriptionsResponse {}
-export const DeleteMonetizationSubscriptionsResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteMonetizationSubscriptionsResponse",
-}) as any as S.Schema<DeleteMonetizationSubscriptionsResponse>;
+export const DeleteMonetizationSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "DeleteMonetizationSubscriptionsResponse" }) as any as S.Schema<DeleteMonetizationSubscriptionsResponse>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansRequest {
   /** Required. The parent subscription (ID) of the base plan to delete. */
@@ -6305,28 +4757,18 @@ export interface DeleteMonetizationSubscriptionsBasePlansRequest {
   /** Required. The parent app (package name) of the base plan to delete. */
   packageName: string;
 }
-export const DeleteMonetizationSubscriptionsBasePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      basePlanId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteMonetizationSubscriptionsBasePlansRequest",
-  }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansRequest>;
+export const DeleteMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "basePlanId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteMonetizationSubscriptionsBasePlansRequest" }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansRequest>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansResponse {}
-export const DeleteMonetizationSubscriptionsBasePlansResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteMonetizationSubscriptionsBasePlansResponse",
-  }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansResponse>;
+export const DeleteMonetizationSubscriptionsBasePlansResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "DeleteMonetizationSubscriptionsBasePlansResponse" }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansResponse>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The parent subscription (ID) of the offer to delete. */
@@ -6338,62 +4780,40 @@ export interface DeleteMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The unique offer ID of the offer to delete. */
   offerId: string;
 }
-export const DeleteMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      basePlanId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      offerId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersRequest>;
+export const DeleteMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "basePlanId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "offerId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteMonetizationSubscriptionsBasePlansOffersRequest" }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansOffersResponse {}
-export const DeleteMonetizationSubscriptionsBasePlansOffersResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteMonetizationSubscriptionsBasePlansOffersResponse",
-  }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse>;
+export const DeleteMonetizationSubscriptionsBasePlansOffersResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "DeleteMonetizationSubscriptionsBasePlansOffersResponse" }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse>;
 
 export interface DeleteUsersRequest {
   /** Required. The name of the user to delete. Format: developers/{developer}/users/{email} */
   name: string;
 }
 export const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "androidpublisher/v3/{+name}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteUsersRequest",
-}) as any as S.Schema<DeleteUsersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"androidpublisher/v3/{+name}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeleteUsersRequest" }) as any as S.Schema<DeleteUsersRequest>;
 
 export interface DeleteUsersResponse {}
 export const DeleteUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersResponse",
-}) as any as S.Schema<DeleteUsersResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteUsersResponse" }) as any as S.Schema<DeleteUsersResponse>;
 
 /** Request message for DeployAppRecovery. */
 export interface DeployAppRecoveryRequest {}
 export const DeployAppRecoveryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeployAppRecoveryRequest",
-}) as any as S.Schema<DeployAppRecoveryRequest>;
+S.Struct({}),
+).annotate({ identifier: "DeployAppRecoveryRequest" }) as any as S.Schema<DeployAppRecoveryRequest>;
 
 export interface DeployApprecoveryRequest {
   /** Required. Package name of the app for which recovery action is deployed. */
@@ -6404,28 +4824,18 @@ export interface DeployApprecoveryRequest {
   body?: DeployAppRecoveryRequest;
 }
 export const DeployApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    appRecoveryId: S.String.pipe(T.Label()),
-    body: S.optional(DeployAppRecoveryRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:deploy",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeployApprecoveryRequest",
-}) as any as S.Schema<DeployApprecoveryRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "appRecoveryId": S.String.pipe(T.Label()),
+  "body": S.optional(DeployAppRecoveryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:deploy","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DeployApprecoveryRequest" }) as any as S.Schema<DeployApprecoveryRequest>;
 
 /** Response message for DeployAppRecovery. */
 export interface DeployAppRecoveryResponse {}
 export const DeployAppRecoveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeployAppRecoveryResponse",
-}) as any as S.Schema<DeployAppRecoveryResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeployAppRecoveryResponse" }) as any as S.Schema<DeployAppRecoveryResponse>;
 
 export interface DownloadGeneratedapksRequest {
   /** Package name of the app. */
@@ -6436,27 +4846,17 @@ export interface DownloadGeneratedapksRequest {
   versionCode: number;
 }
 export const DownloadGeneratedapksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    downloadId: S.String.pipe(T.Label()),
-    versionCode: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}/downloads/{downloadId}:download",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DownloadGeneratedapksRequest",
-}) as any as S.Schema<DownloadGeneratedapksRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "downloadId": S.String.pipe(T.Label()),
+  "versionCode": S.Number.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}/downloads/{downloadId}:download","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DownloadGeneratedapksRequest" }) as any as S.Schema<DownloadGeneratedapksRequest>;
 
 export interface DownloadGeneratedapksResponse {}
 export const DownloadGeneratedapksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DownloadGeneratedapksResponse",
-}) as any as S.Schema<DownloadGeneratedapksResponse>;
+S.Struct({}),
+).annotate({ identifier: "DownloadGeneratedapksResponse" }) as any as S.Schema<DownloadGeneratedapksResponse>;
 
 export interface DownloadSystemapksVariantsRequest {
   /** Package name of the app. */
@@ -6467,27 +4867,17 @@ export interface DownloadSystemapksVariantsRequest {
   variantId: number;
 }
 export const DownloadSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    versionCode: S.String.pipe(T.Label()),
-    variantId: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}:download",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DownloadSystemapksVariantsRequest",
-}) as any as S.Schema<DownloadSystemapksVariantsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "versionCode": S.String.pipe(T.Label()),
+  "variantId": S.Number.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}:download","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "DownloadSystemapksVariantsRequest" }) as any as S.Schema<DownloadSystemapksVariantsRequest>;
 
 export interface DownloadSystemapksVariantsResponse {}
 export const DownloadSystemapksVariantsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DownloadSystemapksVariantsResponse",
-}) as any as S.Schema<DownloadSystemapksVariantsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DownloadSystemapksVariantsResponse" }) as any as S.Schema<DownloadSystemapksVariantsResponse>;
 
 export interface GetApplicationsDeviceTierConfigsRequest {
   /** Package name of the app. */
@@ -6495,21 +4885,12 @@ export interface GetApplicationsDeviceTierConfigsRequest {
   /** Required. Id of an existing device tier config. */
   deviceTierConfigId: string;
 }
-export const GetApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      deviceTierConfigId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs/{deviceTierConfigId}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetApplicationsDeviceTierConfigsRequest",
-}) as any as S.Schema<GetApplicationsDeviceTierConfigsRequest>;
+export const GetApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "deviceTierConfigId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/deviceTierConfigs/{deviceTierConfigId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetApplicationsDeviceTierConfigsRequest" }) as any as S.Schema<GetApplicationsDeviceTierConfigsRequest>;
 
 export interface GetAppstorecatalogRecentappviewsRequest {
   /** Required. The package name of the app store on behalf of which the request is made. */
@@ -6517,21 +4898,12 @@ export interface GetAppstorecatalogRecentappviewsRequest {
   /** Required. The package name of the requested Play app. */
   playAppPackageName: string;
 }
-export const GetAppstorecatalogRecentappviewsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appStorePackageName: S.String.pipe(T.Label()),
-      playAppPackageName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/appstorecatalog/{appStorePackageName}/recentAppViews/{playAppPackageName}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetAppstorecatalogRecentappviewsRequest",
-}) as any as S.Schema<GetAppstorecatalogRecentappviewsRequest>;
+export const GetAppstorecatalogRecentappviewsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "appStorePackageName": S.String.pipe(T.Label()),
+  "playAppPackageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/appstorecatalog/{appStorePackageName}/recentAppViews/{playAppPackageName}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetAppstorecatalogRecentappviewsRequest" }) as any as S.Schema<GetAppstorecatalogRecentappviewsRequest>;
 
 /** A video asset. */
 export interface VideoAsset {
@@ -6539,9 +4911,9 @@ export interface VideoAsset {
   videoUrl?: string;
 }
 export const VideoAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    videoUrl: S.optional(S.String),
-  }),
+S.Struct({
+  "videoUrl": S.optional(S.String),
+}),
 ).annotate({ identifier: "VideoAsset" }) as any as S.Schema<VideoAsset>;
 
 /** An image asset. */
@@ -6550,15 +4922,13 @@ export interface ImageAsset {
   imageUrl?: string;
 }
 export const ImageAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageUrl: S.optional(S.String),
-  }),
+S.Struct({
+  "imageUrl": S.optional(S.String),
+}),
 ).annotate({ identifier: "ImageAsset" }) as any as S.Schema<ImageAsset>;
 
 export type ImageAssetList = ReadonlyArray<ImageAsset>;
-export const ImageAssetList = /*@__PURE__*/ S.Array(
-  ImageAsset,
-) as any as S.Schema<ImageAssetList>;
+export const ImageAssetList = /*@__PURE__*/ S.Array(ImageAsset) as any as S.Schema<ImageAssetList>;
 
 /** A set of screenshots. */
 export interface ScreenshotSet {
@@ -6566,9 +4936,9 @@ export interface ScreenshotSet {
   screenshots?: ImageAssetList;
 }
 export const ScreenshotSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    screenshots: S.optional(ImageAssetList),
-  }),
+S.Struct({
+  "screenshots": S.optional(ImageAssetList),
+}),
 ).annotate({ identifier: "ScreenshotSet" }) as any as S.Schema<ScreenshotSet>;
 
 /** A localized store listings of the app. */
@@ -6595,26 +4965,22 @@ export interface LocalizedStoreListing {
   featureGraphic?: ImageAsset;
 }
 export const LocalizedStoreListing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    video: S.optional(VideoAsset),
-    tabletRegularScreenshots: S.optional(ScreenshotSet),
-    languageCode: S.optional(S.String),
-    shortDescription: S.optional(S.String),
-    fullDescription: S.optional(S.String),
-    icon: S.optional(ImageAsset),
-    phoneScreenshots: S.optional(ScreenshotSet),
-    appName: S.optional(S.String),
-    tabletSmallScreenshots: S.optional(ScreenshotSet),
-    featureGraphic: S.optional(ImageAsset),
-  }),
-).annotate({
-  identifier: "LocalizedStoreListing",
-}) as any as S.Schema<LocalizedStoreListing>;
+S.Struct({
+  "video": S.optional(VideoAsset),
+  "tabletRegularScreenshots": S.optional(ScreenshotSet),
+  "languageCode": S.optional(S.String),
+  "shortDescription": S.optional(S.String),
+  "fullDescription": S.optional(S.String),
+  "icon": S.optional(ImageAsset),
+  "phoneScreenshots": S.optional(ScreenshotSet),
+  "appName": S.optional(S.String),
+  "tabletSmallScreenshots": S.optional(ScreenshotSet),
+  "featureGraphic": S.optional(ImageAsset),
+}),
+).annotate({ identifier: "LocalizedStoreListing" }) as any as S.Schema<LocalizedStoreListing>;
 
 export type LocalizedStoreListingList = ReadonlyArray<LocalizedStoreListing>;
-export const LocalizedStoreListingList = /*@__PURE__*/ S.Array(
-  LocalizedStoreListing,
-) as any as S.Schema<LocalizedStoreListingList>;
+export const LocalizedStoreListingList = /*@__PURE__*/ S.Array(LocalizedStoreListing) as any as S.Schema<LocalizedStoreListingList>;
 
 /** The localized store listings of an app. */
 export interface LocalizedStoreListings {
@@ -6623,13 +4989,11 @@ export interface LocalizedStoreListings {
   defaultLanguageCode?: string;
 }
 export const LocalizedStoreListings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localizedStoreListings: S.optional(LocalizedStoreListingList),
-    defaultLanguageCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LocalizedStoreListings",
-}) as any as S.Schema<LocalizedStoreListings>;
+S.Struct({
+  "localizedStoreListings": S.optional(LocalizedStoreListingList),
+  "defaultLanguageCode": S.optional(S.String),
+}),
+).annotate({ identifier: "LocalizedStoreListings" }) as any as S.Schema<LocalizedStoreListings>;
 
 /** A permission declared by an app. */
 export interface CatalogPermission {
@@ -6639,18 +5003,14 @@ export interface CatalogPermission {
   maxSdkVersion?: number;
 }
 export const CatalogPermission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    maxSdkVersion: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CatalogPermission",
-}) as any as S.Schema<CatalogPermission>;
+S.Struct({
+  "name": S.optional(S.String),
+  "maxSdkVersion": S.optional(S.Number),
+}),
+).annotate({ identifier: "CatalogPermission" }) as any as S.Schema<CatalogPermission>;
 
 export type CatalogPermissionList = ReadonlyArray<CatalogPermission>;
-export const CatalogPermissionList = /*@__PURE__*/ S.Array(
-  CatalogPermission,
-) as any as S.Schema<CatalogPermissionList>;
+export const CatalogPermissionList = /*@__PURE__*/ S.Array(CatalogPermission) as any as S.Schema<CatalogPermissionList>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Androidpublisher_Date {
@@ -6662,14 +5022,12 @@ export interface Androidpublisher_Date {
   day?: number;
 }
 export const Androidpublisher_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    year: S.optional(S.Number),
-    month: S.optional(S.Number),
-    day: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "Androidpublisher_Date",
-}) as any as S.Schema<Androidpublisher_Date>;
+S.Struct({
+  "year": S.optional(S.Number),
+  "month": S.optional(S.Number),
+  "day": S.optional(S.Number),
+}),
+).annotate({ identifier: "Androidpublisher_Date" }) as any as S.Schema<Androidpublisher_Date>;
 
 /** Defines a range of SDK versions. A device is considered compatible uf its\ SDK version falls within the min_sdk_version and max_sdk_version range. */
 export interface CatalogSdkVersion {
@@ -6681,44 +5039,21 @@ export interface CatalogSdkVersion {
   targetSdkVersion?: string;
 }
 export const CatalogSdkVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxSdkVersion: S.optional(S.String),
-    minSdkVersion: S.optional(S.String),
-    targetSdkVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CatalogSdkVersion",
-}) as any as S.Schema<CatalogSdkVersion>;
+S.Struct({
+  "maxSdkVersion": S.optional(S.String),
+  "minSdkVersion": S.optional(S.String),
+  "targetSdkVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "CatalogSdkVersion" }) as any as S.Schema<CatalogSdkVersion>;
 
-export type UsesConfigurationRequiredTouchscreenTypeEnum =
-  | "TOUCHSCREEN_TYPE_UNSPECIFIED"
-  | "TOUCHSCREEN_TYPE_UNDEFINED"
-  | "TOUCHSCREEN_TYPE_NO_TOUCHSCREEN"
-  | "TOUCHSCREEN_TYPE_STYLUS"
-  | "TOUCHSCREEN_TYPE_FINGER"
-  | (string & {});
-export const UsesConfigurationRequiredTouchscreenTypeEnum =
-  /*@__PURE__*/ S.String;
+export type UsesConfigurationRequiredTouchscreenTypeEnum = "TOUCHSCREEN_TYPE_UNSPECIFIED" | "TOUCHSCREEN_TYPE_UNDEFINED" | "TOUCHSCREEN_TYPE_NO_TOUCHSCREEN" | "TOUCHSCREEN_TYPE_STYLUS" | "TOUCHSCREEN_TYPE_FINGER";
+export const UsesConfigurationRequiredTouchscreenTypeEnum = /*@__PURE__*/ S.String;
 
-export type UsesConfigurationRequiredKeyboardTypeEnum =
-  | "KEYBOARD_TYPE_UNSPECIFIED"
-  | "KEYBOARD_TYPE_UNDEFINED"
-  | "KEYBOARD_TYPE_NO_KEYS"
-  | "KEYBOARD_TYPE_QWERTY"
-  | "KEYBOARD_TYPE_TWELVE_KEY"
-  | (string & {});
+export type UsesConfigurationRequiredKeyboardTypeEnum = "KEYBOARD_TYPE_UNSPECIFIED" | "KEYBOARD_TYPE_UNDEFINED" | "KEYBOARD_TYPE_NO_KEYS" | "KEYBOARD_TYPE_QWERTY" | "KEYBOARD_TYPE_TWELVE_KEY";
 export const UsesConfigurationRequiredKeyboardTypeEnum = /*@__PURE__*/ S.String;
 
-export type UsesConfigurationRequiredNavigationTypeEnum =
-  | "NAVIGATION_TYPE_UNSPECIFIED"
-  | "NAVIGATION_TYPE_UNDEFINED"
-  | "NAVIGATION_TYPE_NO_NAVIGATION"
-  | "NAVIGATION_TYPE_DPAD"
-  | "NAVIGATION_TYPE_TRACKBALL"
-  | "NAVIGATION_TYPE_WHEEL"
-  | (string & {});
-export const UsesConfigurationRequiredNavigationTypeEnum =
-  /*@__PURE__*/ S.String;
+export type UsesConfigurationRequiredNavigationTypeEnum = "NAVIGATION_TYPE_UNSPECIFIED" | "NAVIGATION_TYPE_UNDEFINED" | "NAVIGATION_TYPE_NO_NAVIGATION" | "NAVIGATION_TYPE_DPAD" | "NAVIGATION_TYPE_TRACKBALL" | "NAVIGATION_TYPE_WHEEL";
+export const UsesConfigurationRequiredNavigationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents all configurations marked as required by use of the uses-configuration manifest tag. */
 export interface UsesConfiguration {
@@ -6734,51 +5069,22 @@ export interface UsesConfiguration {
   requiredNavigationType?: UsesConfigurationRequiredNavigationTypeEnum;
 }
 export const UsesConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requiresHardwareKeyboard: S.optional(S.Boolean),
-    requiresFiveWayNavigation: S.optional(S.Boolean),
-    requiredTouchscreenType: S.optional(
-      UsesConfigurationRequiredTouchscreenTypeEnum,
-    ),
-    requiredKeyboardType: S.optional(UsesConfigurationRequiredKeyboardTypeEnum),
-    requiredNavigationType: S.optional(
-      UsesConfigurationRequiredNavigationTypeEnum,
-    ),
-  }),
-).annotate({
-  identifier: "UsesConfiguration",
-}) as any as S.Schema<UsesConfiguration>;
+S.Struct({
+  "requiresHardwareKeyboard": S.optional(S.Boolean),
+  "requiresFiveWayNavigation": S.optional(S.Boolean),
+  "requiredTouchscreenType": S.optional(UsesConfigurationRequiredTouchscreenTypeEnum),
+  "requiredKeyboardType": S.optional(UsesConfigurationRequiredKeyboardTypeEnum),
+  "requiredNavigationType": S.optional(UsesConfigurationRequiredNavigationTypeEnum),
+}),
+).annotate({ identifier: "UsesConfiguration" }) as any as S.Schema<UsesConfiguration>;
 
 export type UsesConfigurationList = ReadonlyArray<UsesConfiguration>;
-export const UsesConfigurationList = /*@__PURE__*/ S.Array(
-  UsesConfiguration,
-) as any as S.Schema<UsesConfigurationList>;
+export const UsesConfigurationList = /*@__PURE__*/ S.Array(UsesConfiguration) as any as S.Schema<UsesConfigurationList>;
 
-export type CompatibleScreenScreenSizeEnum =
-  | "SCREEN_SIZE_UNSPECIFIED"
-  | "SCREEN_SIZE_SMALL"
-  | "SCREEN_SIZE_NORMAL"
-  | "SCREEN_SIZE_LARGE"
-  | "SCREEN_SIZE_EXTRA_LARGE"
-  | (string & {});
+export type CompatibleScreenScreenSizeEnum = "SCREEN_SIZE_UNSPECIFIED" | "SCREEN_SIZE_SMALL" | "SCREEN_SIZE_NORMAL" | "SCREEN_SIZE_LARGE" | "SCREEN_SIZE_EXTRA_LARGE";
 export const CompatibleScreenScreenSizeEnum = /*@__PURE__*/ S.String;
 
-export type CompatibleScreenDensityEnum =
-  | "DENSITY_UNSPECIFIED"
-  | "DENSITY_NODPI"
-  | "DENSITY_LDPI"
-  | "DENSITY_MDPI"
-  | "DENSITY_TVDPI"
-  | "DENSITY_HDPI"
-  | "DENSITY_280"
-  | "DENSITY_XHDPI"
-  | "DENSITY_360"
-  | "DENSITY_400"
-  | "DENSITY_420"
-  | "DENSITY_XXHDPI"
-  | "DENSITY_560"
-  | "DENSITY_XXXHDPI"
-  | (string & {});
+export type CompatibleScreenDensityEnum = "DENSITY_UNSPECIFIED" | "DENSITY_NODPI" | "DENSITY_LDPI" | "DENSITY_MDPI" | "DENSITY_TVDPI" | "DENSITY_HDPI" | "DENSITY_280" | "DENSITY_XHDPI" | "DENSITY_360" | "DENSITY_400" | "DENSITY_420" | "DENSITY_XXHDPI" | "DENSITY_560" | "DENSITY_XXXHDPI";
 export const CompatibleScreenDensityEnum = /*@__PURE__*/ S.String;
 
 /** Compatible screens as listed in the `compatible-screens` Manifest tag. */
@@ -6789,43 +5095,23 @@ export interface CompatibleScreen {
   density?: CompatibleScreenDensityEnum;
 }
 export const CompatibleScreen = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    screenSize: S.optional(CompatibleScreenScreenSizeEnum),
-    density: S.optional(CompatibleScreenDensityEnum),
-  }),
-).annotate({
-  identifier: "CompatibleScreen",
-}) as any as S.Schema<CompatibleScreen>;
+S.Struct({
+  "screenSize": S.optional(CompatibleScreenScreenSizeEnum),
+  "density": S.optional(CompatibleScreenDensityEnum),
+}),
+).annotate({ identifier: "CompatibleScreen" }) as any as S.Schema<CompatibleScreen>;
 
 export type CompatibleScreenList = ReadonlyArray<CompatibleScreen>;
-export const CompatibleScreenList = /*@__PURE__*/ S.Array(
-  CompatibleScreen,
-) as any as S.Schema<CompatibleScreenList>;
+export const CompatibleScreenList = /*@__PURE__*/ S.Array(CompatibleScreen) as any as S.Schema<CompatibleScreenList>;
 
-export type DeviceCompatibilityRequirementsUse32BitAbiEnum =
-  | "USE_32_BIT_ABI_UNSPECIFIED"
-  | "USE_32_BIT_ABI_TRUE"
-  | "USE_32_BIT_ABI_OTHER"
-  | (string & {});
-export const DeviceCompatibilityRequirementsUse32BitAbiEnum =
-  /*@__PURE__*/ S.String;
+export type DeviceCompatibilityRequirementsUse32BitAbiEnum = "USE_32_BIT_ABI_UNSPECIFIED" | "USE_32_BIT_ABI_TRUE" | "USE_32_BIT_ABI_OTHER";
+export const DeviceCompatibilityRequirementsUse32BitAbiEnum = /*@__PURE__*/ S.String;
 
-export type DeviceCompatibilityRequirementsSupportedScreensItemEnum =
-  | "SCREEN_SIZE_UNSPECIFIED"
-  | "SCREEN_SIZE_SMALL"
-  | "SCREEN_SIZE_NORMAL"
-  | "SCREEN_SIZE_LARGE"
-  | "SCREEN_SIZE_EXTRA_LARGE"
-  | (string & {});
-export const DeviceCompatibilityRequirementsSupportedScreensItemEnum =
-  /*@__PURE__*/ S.String;
+export type DeviceCompatibilityRequirementsSupportedScreensItemEnum = "SCREEN_SIZE_UNSPECIFIED" | "SCREEN_SIZE_SMALL" | "SCREEN_SIZE_NORMAL" | "SCREEN_SIZE_LARGE" | "SCREEN_SIZE_EXTRA_LARGE";
+export const DeviceCompatibilityRequirementsSupportedScreensItemEnum = /*@__PURE__*/ S.String;
 
-export type DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
-  ReadonlyArray<DeviceCompatibilityRequirementsSupportedScreensItemEnum>;
-export const DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
-  /*@__PURE__*/ S.Array(
-    DeviceCompatibilityRequirementsSupportedScreensItemEnum,
-  ) as any as S.Schema<DeviceCompatibilityRequirementsSupportedScreensItemEnumList>;
+export type DeviceCompatibilityRequirementsSupportedScreensItemEnumList = ReadonlyArray<DeviceCompatibilityRequirementsSupportedScreensItemEnum>;
+export const DeviceCompatibilityRequirementsSupportedScreensItemEnumList = /*@__PURE__*/ S.Array(DeviceCompatibilityRequirementsSupportedScreensItemEnum) as any as S.Schema<DeviceCompatibilityRequirementsSupportedScreensItemEnumList>;
 
 /** Defines a set of device compatibility requirements for the app. A device must satisfy all of the requirements in a set to be considered compatible with the app. */
 export interface DeviceCompatibilityRequirements {
@@ -6855,37 +5141,26 @@ export interface DeviceCompatibilityRequirements {
   requiresSmallestWidthDp?: string;
 }
 export const DeviceCompatibilityRequirements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requiredSoftwareLibraries: S.optional(StringList),
-    sdkVersion: S.optional(CatalogSdkVersion),
-    usesConfigurations: S.optional(UsesConfigurationList),
-    supportedGlTextures: S.optional(StringList),
-    compatibleScreens: S.optional(CompatibleScreenList),
-    glEsVersion: S.optional(S.Number),
-    requiredSystemFeatures: S.optional(StringList),
-    nativePlatforms: S.optional(StringList),
-    use32BitAbi: S.optional(DeviceCompatibilityRequirementsUse32BitAbiEnum),
-    isScreenRequired: S.optional(S.Boolean),
-    supportedScreens: S.optional(
-      DeviceCompatibilityRequirementsSupportedScreensItemEnumList,
-    ),
-    requiresSmallestWidthDp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeviceCompatibilityRequirements",
-}) as any as S.Schema<DeviceCompatibilityRequirements>;
+S.Struct({
+  "requiredSoftwareLibraries": S.optional(StringList),
+  "sdkVersion": S.optional(CatalogSdkVersion),
+  "usesConfigurations": S.optional(UsesConfigurationList),
+  "supportedGlTextures": S.optional(StringList),
+  "compatibleScreens": S.optional(CompatibleScreenList),
+  "glEsVersion": S.optional(S.Number),
+  "requiredSystemFeatures": S.optional(StringList),
+  "nativePlatforms": S.optional(StringList),
+  "use32BitAbi": S.optional(DeviceCompatibilityRequirementsUse32BitAbiEnum),
+  "isScreenRequired": S.optional(S.Boolean),
+  "supportedScreens": S.optional(DeviceCompatibilityRequirementsSupportedScreensItemEnumList),
+  "requiresSmallestWidthDp": S.optional(S.String),
+}),
+).annotate({ identifier: "DeviceCompatibilityRequirements" }) as any as S.Schema<DeviceCompatibilityRequirements>;
 
-export type DeviceCompatibilityRequirementsList =
-  ReadonlyArray<DeviceCompatibilityRequirements>;
-export const DeviceCompatibilityRequirementsList = /*@__PURE__*/ S.Array(
-  DeviceCompatibilityRequirements,
-) as any as S.Schema<DeviceCompatibilityRequirementsList>;
+export type DeviceCompatibilityRequirementsList = ReadonlyArray<DeviceCompatibilityRequirements>;
+export const DeviceCompatibilityRequirementsList = /*@__PURE__*/ S.Array(DeviceCompatibilityRequirements) as any as S.Schema<DeviceCompatibilityRequirementsList>;
 
-export type CatalogAppViewAppCategoryEnum =
-  | "APP_CATEGORY_UNSPECIFIED"
-  | "GAME"
-  | "APP"
-  | (string & {});
+export type CatalogAppViewAppCategoryEnum = "APP_CATEGORY_UNSPECIFIED" | "GAME" | "APP";
 export const CatalogAppViewAppCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Defines a RAM selector for a device. */
@@ -6894,9 +5169,9 @@ export interface RamSelector {
   ramMbLessThanOrEqual?: string;
 }
 export const RamSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ramMbLessThanOrEqual: S.optional(S.String),
-  }),
+S.Struct({
+  "ramMbLessThanOrEqual": S.optional(S.String),
+}),
 ).annotate({ identifier: "RamSelector" }) as any as S.Schema<RamSelector>;
 
 /** Defines a SOC selector for a device. This will match any device whose SoC (System on Chip) matches all fields in the selector. */
@@ -6907,23 +5182,17 @@ export interface SocSelector {
   socMake?: string;
 }
 export const SocSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    socModel: S.optional(S.String),
-    socMake: S.optional(S.String),
-  }),
+S.Struct({
+  "socModel": S.optional(S.String),
+  "socMake": S.optional(S.String),
+}),
 ).annotate({ identifier: "SocSelector" }) as any as S.Schema<SocSelector>;
 
 export type SocSelectorList = ReadonlyArray<SocSelector>;
-export const SocSelectorList = /*@__PURE__*/ S.Array(
-  SocSelector,
-) as any as S.Schema<SocSelectorList>;
+export const SocSelectorList = /*@__PURE__*/ S.Array(SocSelector) as any as S.Schema<SocSelectorList>;
 
-export type CatalogDeviceSelectorDeviceTypeSelectorEnum =
-  | "DEVICE_TYPE_SELECTOR_UNSPECIFIED"
-  | "ANDROID_GO"
-  | (string & {});
-export const CatalogDeviceSelectorDeviceTypeSelectorEnum =
-  /*@__PURE__*/ S.String;
+export type CatalogDeviceSelectorDeviceTypeSelectorEnum = "DEVICE_TYPE_SELECTOR_UNSPECIFIED" | "ANDROID_GO";
+export const CatalogDeviceSelectorDeviceTypeSelectorEnum = /*@__PURE__*/ S.String;
 
 /** Defines a device selector for a device. A device is considered matched if it matches any of given the selectors. */
 export interface CatalogDeviceSelector {
@@ -6935,19 +5204,15 @@ export interface CatalogDeviceSelector {
   deviceTypeSelector?: CatalogDeviceSelectorDeviceTypeSelectorEnum;
 }
 export const CatalogDeviceSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ramSelector: S.optional(RamSelector),
-    socSelectors: S.optional(SocSelectorList),
-    deviceTypeSelector: S.optional(CatalogDeviceSelectorDeviceTypeSelectorEnum),
-  }),
-).annotate({
-  identifier: "CatalogDeviceSelector",
-}) as any as S.Schema<CatalogDeviceSelector>;
+S.Struct({
+  "ramSelector": S.optional(RamSelector),
+  "socSelectors": S.optional(SocSelectorList),
+  "deviceTypeSelector": S.optional(CatalogDeviceSelectorDeviceTypeSelectorEnum),
+}),
+).annotate({ identifier: "CatalogDeviceSelector" }) as any as S.Schema<CatalogDeviceSelector>;
 
 export type CatalogDeviceSelectorList = ReadonlyArray<CatalogDeviceSelector>;
-export const CatalogDeviceSelectorList = /*@__PURE__*/ S.Array(
-  CatalogDeviceSelector,
-) as any as S.Schema<CatalogDeviceSelectorList>;
+export const CatalogDeviceSelectorList = /*@__PURE__*/ S.Array(CatalogDeviceSelector) as any as S.Schema<CatalogDeviceSelectorList>;
 
 /** Defines a device identifier for a device. */
 export interface DeviceIdentifier {
@@ -6957,18 +5222,14 @@ export interface DeviceIdentifier {
   deviceBrand?: string;
 }
 export const DeviceIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceModel: S.optional(S.String),
-    deviceBrand: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeviceIdentifier",
-}) as any as S.Schema<DeviceIdentifier>;
+S.Struct({
+  "deviceModel": S.optional(S.String),
+  "deviceBrand": S.optional(S.String),
+}),
+).annotate({ identifier: "DeviceIdentifier" }) as any as S.Schema<DeviceIdentifier>;
 
 export type DeviceIdentifierList = ReadonlyArray<DeviceIdentifier>;
-export const DeviceIdentifierList = /*@__PURE__*/ S.Array(
-  DeviceIdentifier,
-) as any as S.Schema<DeviceIdentifierList>;
+export const DeviceIdentifierList = /*@__PURE__*/ S.Array(DeviceIdentifier) as any as S.Schema<DeviceIdentifierList>;
 
 /** Contact information for the app. */
 export interface AppContactInformation {
@@ -6980,14 +5241,12 @@ export interface AppContactInformation {
   websiteUrl?: string;
 }
 export const AppContactInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contactEmail: S.optional(S.String),
-    phoneNumber: S.optional(S.String),
-    websiteUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppContactInformation",
-}) as any as S.Schema<AppContactInformation>;
+S.Struct({
+  "contactEmail": S.optional(S.String),
+  "phoneNumber": S.optional(S.String),
+  "websiteUrl": S.optional(S.String),
+}),
+).annotate({ identifier: "AppContactInformation" }) as any as S.Schema<AppContactInformation>;
 
 /** The developer details of a Google Play app. */
 export interface DeveloperDetails {
@@ -7003,16 +5262,14 @@ export interface DeveloperDetails {
   contactEmail?: string;
 }
 export const DeveloperDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    developerName: S.optional(S.String),
-    website: S.optional(S.String),
-    address: S.optional(S.String),
-    phoneNumber: S.optional(S.String),
-    contactEmail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeveloperDetails",
-}) as any as S.Schema<DeveloperDetails>;
+S.Struct({
+  "developerName": S.optional(S.String),
+  "website": S.optional(S.String),
+  "address": S.optional(S.String),
+  "phoneNumber": S.optional(S.String),
+  "contactEmail": S.optional(S.String),
+}),
+).annotate({ identifier: "DeveloperDetails" }) as any as S.Schema<DeveloperDetails>;
 
 /** LINT.IfChange A view of a Google Play app within the Catalog Export for app stores. */
 export interface CatalogAppView {
@@ -7062,32 +5319,30 @@ export interface CatalogAppView {
   deliveryToken?: string;
 }
 export const CatalogAppView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priceInTheUnitedStates: S.optional(Money),
-    localizedStoreListings: S.optional(LocalizedStoreListings),
-    permissions: S.optional(CatalogPermissionList),
-    firstReleaseDate: S.optional(Androidpublisher_Date),
-    deviceCompatibilityRequirements: S.optional(
-      DeviceCompatibilityRequirementsList,
-    ),
-    lastPublishTime: S.optional(S.String),
-    appCategory: S.optional(CatalogAppViewAppCategoryEnum),
-    packageName: S.optional(S.String),
-    excludedDevicesBySelector: S.optional(CatalogDeviceSelectorList),
-    hasInAppAds: S.optional(S.Boolean),
-    isAdultOnlyAudience: S.optional(S.Boolean),
-    permissionsSdk23: S.optional(CatalogPermissionList),
-    hasInAppPurchases: S.optional(S.Boolean),
-    excludedDevicesByIdentifier: S.optional(DeviceIdentifierList),
-    privacyPolicyUrl: S.optional(S.String),
-    appSubcategory: S.optional(S.String),
-    appContactInformation: S.optional(AppContactInformation),
-    iarcCertificateId: S.optional(S.String),
-    developerDetails: S.optional(DeveloperDetails),
-    salePriceInTheUnitedStates: S.optional(Money),
-    activeVersionNames: S.optional(StringList),
-    deliveryToken: S.optional(S.String),
-  }),
+S.Struct({
+  "priceInTheUnitedStates": S.optional(Money),
+  "localizedStoreListings": S.optional(LocalizedStoreListings),
+  "permissions": S.optional(CatalogPermissionList),
+  "firstReleaseDate": S.optional(Androidpublisher_Date),
+  "deviceCompatibilityRequirements": S.optional(DeviceCompatibilityRequirementsList),
+  "lastPublishTime": S.optional(S.String),
+  "appCategory": S.optional(CatalogAppViewAppCategoryEnum),
+  "packageName": S.optional(S.String),
+  "excludedDevicesBySelector": S.optional(CatalogDeviceSelectorList),
+  "hasInAppAds": S.optional(S.Boolean),
+  "isAdultOnlyAudience": S.optional(S.Boolean),
+  "permissionsSdk23": S.optional(CatalogPermissionList),
+  "hasInAppPurchases": S.optional(S.Boolean),
+  "excludedDevicesByIdentifier": S.optional(DeviceIdentifierList),
+  "privacyPolicyUrl": S.optional(S.String),
+  "appSubcategory": S.optional(S.String),
+  "appContactInformation": S.optional(AppContactInformation),
+  "iarcCertificateId": S.optional(S.String),
+  "developerDetails": S.optional(DeveloperDetails),
+  "salePriceInTheUnitedStates": S.optional(Money),
+  "activeVersionNames": S.optional(StringList),
+  "deliveryToken": S.optional(S.String),
+}),
 ).annotate({ identifier: "CatalogAppView" }) as any as S.Schema<CatalogAppView>;
 
 /** Metadata about a recently updated app. */
@@ -7096,9 +5351,9 @@ export interface RecentAppView {
   appView?: CatalogAppView;
 }
 export const RecentAppView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appView: S.optional(CatalogAppView),
-  }),
+S.Struct({
+  "appView": S.optional(CatalogAppView),
+}),
 ).annotate({ identifier: "RecentAppView" }) as any as S.Schema<RecentAppView>;
 
 export interface GetEditsRequest {
@@ -7108,19 +5363,11 @@ export interface GetEditsRequest {
   editId: string;
 }
 export const GetEditsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEditsRequest",
-}) as any as S.Schema<GetEditsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetEditsRequest" }) as any as S.Schema<GetEditsRequest>;
 
 export interface GetEditsCountryavailabilityRequest {
   /** Identifier of the edit. */
@@ -7131,20 +5378,12 @@ export interface GetEditsCountryavailabilityRequest {
   packageName: string;
 }
 export const GetEditsCountryavailabilityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    editId: S.String.pipe(T.Label()),
-    track: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/countryAvailability/{track}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEditsCountryavailabilityRequest",
-}) as any as S.Schema<GetEditsCountryavailabilityRequest>;
+S.Struct({
+  "editId": S.String.pipe(T.Label()),
+  "track": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/countryAvailability/{track}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetEditsCountryavailabilityRequest" }) as any as S.Schema<GetEditsCountryavailabilityRequest>;
 
 /** Representation of a single country where the contents of a track can be made available. */
 export interface TrackTargetedCountry {
@@ -7152,17 +5391,13 @@ export interface TrackTargetedCountry {
   countryCode?: string;
 }
 export const TrackTargetedCountry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countryCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TrackTargetedCountry",
-}) as any as S.Schema<TrackTargetedCountry>;
+S.Struct({
+  "countryCode": S.optional(S.String),
+}),
+).annotate({ identifier: "TrackTargetedCountry" }) as any as S.Schema<TrackTargetedCountry>;
 
 export type TrackTargetedCountryList = ReadonlyArray<TrackTargetedCountry>;
-export const TrackTargetedCountryList = /*@__PURE__*/ S.Array(
-  TrackTargetedCountry,
-) as any as S.Schema<TrackTargetedCountryList>;
+export const TrackTargetedCountryList = /*@__PURE__*/ S.Array(TrackTargetedCountry) as any as S.Schema<TrackTargetedCountryList>;
 
 /** Resource for per-track country availability information. */
 export interface TrackCountryAvailability {
@@ -7174,14 +5409,12 @@ export interface TrackCountryAvailability {
   restOfWorld?: boolean;
 }
 export const TrackCountryAvailability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    syncWithProduction: S.optional(S.Boolean),
-    countries: S.optional(TrackTargetedCountryList),
-    restOfWorld: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TrackCountryAvailability",
-}) as any as S.Schema<TrackCountryAvailability>;
+S.Struct({
+  "syncWithProduction": S.optional(S.Boolean),
+  "countries": S.optional(TrackTargetedCountryList),
+  "restOfWorld": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "TrackCountryAvailability" }) as any as S.Schema<TrackCountryAvailability>;
 
 export interface GetEditsDetailsRequest {
   /** Package name of the app. */
@@ -7190,19 +5423,11 @@ export interface GetEditsDetailsRequest {
   editId: string;
 }
 export const GetEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEditsDetailsRequest",
-}) as any as S.Schema<GetEditsDetailsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/details","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetEditsDetailsRequest" }) as any as S.Schema<GetEditsDetailsRequest>;
 
 /** The app details. The resource for DetailsService. */
 export interface AppDetails {
@@ -7216,50 +5441,35 @@ export interface AppDetails {
   contactEmail?: string;
 }
 export const AppDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contactPhone: S.optional(S.String),
-    defaultLanguage: S.optional(S.String),
-    contactWebsite: S.optional(S.String),
-    contactEmail: S.optional(S.String),
-  }),
+S.Struct({
+  "contactPhone": S.optional(S.String),
+  "defaultLanguage": S.optional(S.String),
+  "contactWebsite": S.optional(S.String),
+  "contactEmail": S.optional(S.String),
+}),
 ).annotate({ identifier: "AppDetails" }) as any as S.Schema<AppDetails>;
 
-export type GetEditsExpansionfilesExpansionFileTypeEnum =
-  | "expansionFileTypeUnspecified"
-  | "main"
-  | "patch"
-  | (string & {});
-export const GetEditsExpansionfilesExpansionFileTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GetEditsExpansionfilesExpansionFileTypeEnum = "expansionFileTypeUnspecified" | "main" | "patch";
+export const GetEditsExpansionfilesExpansionFileTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetEditsExpansionfilesRequest {
   /** Package name of the app. */
   packageName: string;
   /** The file type of the file configuration which is being read or modified. */
-  expansionFileType: GetEditsExpansionfilesExpansionFileTypeEnum;
+  expansionFileType: GetEditsExpansionfilesExpansionFileTypeEnum | (string & {});
   /** Identifier of the edit. */
   editId: string;
   /** The version code of the APK whose expansion file configuration is being read or modified. */
   apkVersionCode: number;
 }
 export const GetEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    expansionFileType: GetEditsExpansionfilesExpansionFileTypeEnum.pipe(
-      T.Label(),
-    ),
-    editId: S.String.pipe(T.Label()),
-    apkVersionCode: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEditsExpansionfilesRequest",
-}) as any as S.Schema<GetEditsExpansionfilesRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "expansionFileType": GetEditsExpansionfilesExpansionFileTypeEnum.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "apkVersionCode": S.Number.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetEditsExpansionfilesRequest" }) as any as S.Schema<GetEditsExpansionfilesRequest>;
 
 /** An expansion file. The resource for ExpansionFilesService. */
 export interface ExpansionFile {
@@ -7269,10 +5479,10 @@ export interface ExpansionFile {
   fileSize?: string;
 }
 export const ExpansionFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referencesVersion: S.optional(S.Number),
-    fileSize: S.optional(S.String),
-  }),
+S.Struct({
+  "referencesVersion": S.optional(S.Number),
+  "fileSize": S.optional(S.String),
+}),
 ).annotate({ identifier: "ExpansionFile" }) as any as S.Schema<ExpansionFile>;
 
 export interface GetEditsListingsRequest {
@@ -7284,20 +5494,12 @@ export interface GetEditsListingsRequest {
   packageName: string;
 }
 export const GetEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    editId: S.String.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEditsListingsRequest",
-}) as any as S.Schema<GetEditsListingsRequest>;
+S.Struct({
+  "editId": S.String.pipe(T.Label()),
+  "language": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetEditsListingsRequest" }) as any as S.Schema<GetEditsListingsRequest>;
 
 /** A localized store listing. The resource for ListingsService. */
 export interface Listing {
@@ -7313,13 +5515,13 @@ export interface Listing {
   shortDescription?: string;
 }
 export const Listing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    language: S.optional(S.String),
-    video: S.optional(S.String),
-    title: S.optional(S.String),
-    fullDescription: S.optional(S.String),
-    shortDescription: S.optional(S.String),
-  }),
+S.Struct({
+  "language": S.optional(S.String),
+  "video": S.optional(S.String),
+  "title": S.optional(S.String),
+  "fullDescription": S.optional(S.String),
+  "shortDescription": S.optional(S.String),
+}),
 ).annotate({ identifier: "Listing" }) as any as S.Schema<Listing>;
 
 export interface GetEditsTestersRequest {
@@ -7331,20 +5533,12 @@ export interface GetEditsTestersRequest {
   packageName: string;
 }
 export const GetEditsTestersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    editId: S.String.pipe(T.Label()),
-    track: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEditsTestersRequest",
-}) as any as S.Schema<GetEditsTestersRequest>;
+S.Struct({
+  "editId": S.String.pipe(T.Label()),
+  "track": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetEditsTestersRequest" }) as any as S.Schema<GetEditsTestersRequest>;
 
 /** The testers of an app. The resource for TestersService. Note: while it is possible in the Play Console UI to add testers via email lists, email lists are not supported by this resource. */
 export interface Testers {
@@ -7352,9 +5546,9 @@ export interface Testers {
   googleGroups?: StringList;
 }
 export const Testers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    googleGroups: S.optional(StringList),
-  }),
+S.Struct({
+  "googleGroups": S.optional(StringList),
+}),
 ).annotate({ identifier: "Testers" }) as any as S.Schema<Testers>;
 
 export interface GetEditsTracksRequest {
@@ -7366,39 +5560,22 @@ export interface GetEditsTracksRequest {
   packageName: string;
 }
 export const GetEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    editId: S.String.pipe(T.Label()),
-    track: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetEditsTracksRequest",
-}) as any as S.Schema<GetEditsTracksRequest>;
+S.Struct({
+  "editId": S.String.pipe(T.Label()),
+  "track": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetEditsTracksRequest" }) as any as S.Schema<GetEditsTracksRequest>;
 
 export interface GetexternaltransactionExternaltransactionsRequest {
   /** Required. The name of the external transaction to retrieve. Format: applications/{package_name}/externalTransactions/{external_transaction} */
   name: string;
 }
-export const GetexternaltransactionExternaltransactionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/{+name}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetexternaltransactionExternaltransactionsRequest",
-  }) as any as S.Schema<GetexternaltransactionExternaltransactionsRequest>;
+export const GetexternaltransactionExternaltransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/{+name}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetexternaltransactionExternaltransactionsRequest" }) as any as S.Schema<GetexternaltransactionExternaltransactionsRequest>;
 
 export interface GetInappproductsRequest {
   /** Package name of the app. */
@@ -7407,19 +5584,11 @@ export interface GetInappproductsRequest {
   sku: string;
 }
 export const GetInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    sku: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetInappproductsRequest",
-}) as any as S.Schema<GetInappproductsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "sku": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/inappproducts/{sku}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetInappproductsRequest" }) as any as S.Schema<GetInappproductsRequest>;
 
 export interface GetMonetizationOnetimeproductsRequest {
   /** Required. The parent app (package name) of the product to retrieve. */
@@ -7427,21 +5596,12 @@ export interface GetMonetizationOnetimeproductsRequest {
   /** Required. The product ID of the product to retrieve. */
   productId: string;
 }
-export const GetMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetMonetizationOnetimeproductsRequest",
-}) as any as S.Schema<GetMonetizationOnetimeproductsRequest>;
+export const GetMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetMonetizationOnetimeproductsRequest" }) as any as S.Schema<GetMonetizationOnetimeproductsRequest>;
 
 export interface GetMonetizationSubscriptionsRequest {
   /** Required. The parent app (package name) of the subscription to get. */
@@ -7450,19 +5610,11 @@ export interface GetMonetizationSubscriptionsRequest {
   productId: string;
 }
 export const GetMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    productId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetMonetizationSubscriptionsRequest",
-}) as any as S.Schema<GetMonetizationSubscriptionsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetMonetizationSubscriptionsRequest" }) as any as S.Schema<GetMonetizationSubscriptionsRequest>;
 
 export interface GetMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The parent base plan (ID) of the offer to get. */
@@ -7474,23 +5626,14 @@ export interface GetMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The parent subscription (ID) of the offer to get. */
   productId: string;
 }
-export const GetMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      basePlanId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      offerId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<GetMonetizationSubscriptionsBasePlansOffersRequest>;
+export const GetMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "basePlanId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "offerId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetMonetizationSubscriptionsBasePlansOffersRequest" }) as any as S.Schema<GetMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export interface GetOrdersRequest {
   /** Required. The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing'). */
@@ -7499,19 +5642,11 @@ export interface GetOrdersRequest {
   orderId: string;
 }
 export const GetOrdersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    orderId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/orders/{orderId}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOrdersRequest",
-}) as any as S.Schema<GetOrdersRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "orderId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/orders/{orderId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetOrdersRequest" }) as any as S.Schema<GetOrdersRequest>;
 
 export interface Getproductpurchasev2PurchasesProductsv2Request {
   /** The package name of the application the inapp product was sold in (for example, 'com.some.thing'). */
@@ -7519,28 +5654,14 @@ export interface Getproductpurchasev2PurchasesProductsv2Request {
   /** The token provided to the user's device when the inapp product was purchased. */
   token: string;
 }
-export const Getproductpurchasev2PurchasesProductsv2Request =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      token: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/purchases/productsv2/tokens/{token}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "Getproductpurchasev2PurchasesProductsv2Request",
-  }) as any as S.Schema<Getproductpurchasev2PurchasesProductsv2Request>;
+export const Getproductpurchasev2PurchasesProductsv2Request = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/purchases/productsv2/tokens/{token}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "Getproductpurchasev2PurchasesProductsv2Request" }) as any as S.Schema<Getproductpurchasev2PurchasesProductsv2Request>;
 
-export type PurchaseStateContextPurchaseStateEnum =
-  | "PURCHASE_STATE_UNSPECIFIED"
-  | "PURCHASED"
-  | "CANCELLED"
-  | "PENDING"
-  | (string & {});
+export type PurchaseStateContextPurchaseStateEnum = "PURCHASE_STATE_UNSPECIFIED" | "PURCHASED" | "CANCELLED" | "PENDING";
 export const PurchaseStateContextPurchaseStateEnum = /*@__PURE__*/ S.String;
 
 /** Context about the purchase state. */
@@ -7549,17 +5670,12 @@ export interface PurchaseStateContext {
   purchaseState?: PurchaseStateContextPurchaseStateEnum;
 }
 export const PurchaseStateContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    purchaseState: S.optional(PurchaseStateContextPurchaseStateEnum),
-  }),
-).annotate({
-  identifier: "PurchaseStateContext",
-}) as any as S.Schema<PurchaseStateContext>;
+S.Struct({
+  "purchaseState": S.optional(PurchaseStateContextPurchaseStateEnum),
+}),
+).annotate({ identifier: "PurchaseStateContext" }) as any as S.Schema<PurchaseStateContext>;
 
-export type TestPurchaseContextFopTypeEnum =
-  | "FOP_TYPE_UNSPECIFIED"
-  | "TEST"
-  | (string & {});
+export type TestPurchaseContextFopTypeEnum = "FOP_TYPE_UNSPECIFIED" | "TEST";
 export const TestPurchaseContextFopTypeEnum = /*@__PURE__*/ S.String;
 
 /** Context about a test purchase. */
@@ -7568,34 +5684,22 @@ export interface TestPurchaseContext {
   fopType?: TestPurchaseContextFopTypeEnum;
 }
 export const TestPurchaseContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fopType: S.optional(TestPurchaseContextFopTypeEnum),
-  }),
-).annotate({
-  identifier: "TestPurchaseContext",
-}) as any as S.Schema<TestPurchaseContext>;
+S.Struct({
+  "fopType": S.optional(TestPurchaseContextFopTypeEnum),
+}),
+).annotate({ identifier: "TestPurchaseContext" }) as any as S.Schema<TestPurchaseContext>;
 
-export type ProductPurchaseV2AcknowledgementStateEnum =
-  | "ACKNOWLEDGEMENT_STATE_UNSPECIFIED"
-  | "ACKNOWLEDGEMENT_STATE_PENDING"
-  | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED"
-  | (string & {});
+export type ProductPurchaseV2AcknowledgementStateEnum = "ACKNOWLEDGEMENT_STATE_UNSPECIFIED" | "ACKNOWLEDGEMENT_STATE_PENDING" | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED";
 export const ProductPurchaseV2AcknowledgementStateEnum = /*@__PURE__*/ S.String;
 
-export type ProductOfferDetailsConsumptionStateEnum =
-  | "CONSUMPTION_STATE_UNSPECIFIED"
-  | "CONSUMPTION_STATE_YET_TO_BE_CONSUMED"
-  | "CONSUMPTION_STATE_CONSUMED"
-  | (string & {});
+export type ProductOfferDetailsConsumptionStateEnum = "CONSUMPTION_STATE_UNSPECIFIED" | "CONSUMPTION_STATE_YET_TO_BE_CONSUMED" | "CONSUMPTION_STATE_CONSUMED";
 export const ProductOfferDetailsConsumptionStateEnum = /*@__PURE__*/ S.String;
 
 /** Offer details information related to a rental line item. */
 export interface RentOfferDetails {}
 export const RentOfferDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RentOfferDetails",
-}) as any as S.Schema<RentOfferDetails>;
+S.Struct({}),
+).annotate({ identifier: "RentOfferDetails" }) as any as S.Schema<RentOfferDetails>;
 
 /** Offer details information related to a preorder line item. */
 export interface PreorderOfferDetails {
@@ -7603,12 +5707,10 @@ export interface PreorderOfferDetails {
   preorderReleaseTime?: string;
 }
 export const PreorderOfferDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    preorderReleaseTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PreorderOfferDetails",
-}) as any as S.Schema<PreorderOfferDetails>;
+S.Struct({
+  "preorderReleaseTime": S.optional(S.String),
+}),
+).annotate({ identifier: "PreorderOfferDetails" }) as any as S.Schema<PreorderOfferDetails>;
 
 /** Offer details information related to a purchase line item. */
 export interface ProductOfferDetails {
@@ -7632,20 +5734,18 @@ export interface ProductOfferDetails {
   preorderOfferDetails?: PreorderOfferDetails;
 }
 export const ProductOfferDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumptionState: S.optional(ProductOfferDetailsConsumptionStateEnum),
-    quantity: S.optional(S.Number),
-    rentOfferDetails: S.optional(RentOfferDetails),
-    offerId: S.optional(S.String),
-    refundableQuantity: S.optional(S.Number),
-    offerToken: S.optional(S.String),
-    purchaseOptionId: S.optional(S.String),
-    offerTags: S.optional(StringList),
-    preorderOfferDetails: S.optional(PreorderOfferDetails),
-  }),
-).annotate({
-  identifier: "ProductOfferDetails",
-}) as any as S.Schema<ProductOfferDetails>;
+S.Struct({
+  "consumptionState": S.optional(ProductOfferDetailsConsumptionStateEnum),
+  "quantity": S.optional(S.Number),
+  "rentOfferDetails": S.optional(RentOfferDetails),
+  "offerId": S.optional(S.String),
+  "refundableQuantity": S.optional(S.Number),
+  "offerToken": S.optional(S.String),
+  "purchaseOptionId": S.optional(S.String),
+  "offerTags": S.optional(StringList),
+  "preorderOfferDetails": S.optional(PreorderOfferDetails),
+}),
+).annotate({ identifier: "ProductOfferDetails" }) as any as S.Schema<ProductOfferDetails>;
 
 /** Contains item-level info for a ProductPurchaseV2. */
 export interface ProductLineItem {
@@ -7655,18 +5755,14 @@ export interface ProductLineItem {
   productId?: string;
 }
 export const ProductLineItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productOfferDetails: S.optional(ProductOfferDetails),
-    productId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductLineItem",
-}) as any as S.Schema<ProductLineItem>;
+S.Struct({
+  "productOfferDetails": S.optional(ProductOfferDetails),
+  "productId": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductLineItem" }) as any as S.Schema<ProductLineItem>;
 
 export type ProductLineItemList = ReadonlyArray<ProductLineItem>;
-export const ProductLineItemList = /*@__PURE__*/ S.Array(
-  ProductLineItem,
-) as any as S.Schema<ProductLineItemList>;
+export const ProductLineItemList = /*@__PURE__*/ S.Array(ProductLineItem) as any as S.Schema<ProductLineItemList>;
 
 /** A ProductPurchaseV2 resource indicates the status of a user's inapp product purchase. */
 export interface ProductPurchaseV2 {
@@ -7692,21 +5788,19 @@ export interface ProductPurchaseV2 {
   purchaseCompletionTime?: string;
 }
 export const ProductPurchaseV2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    purchaseStateContext: S.optional(PurchaseStateContext),
-    testPurchaseContext: S.optional(TestPurchaseContext),
-    acknowledgementState: S.optional(ProductPurchaseV2AcknowledgementStateEnum),
-    orderId: S.optional(S.String),
-    obfuscatedExternalProfileId: S.optional(S.String),
-    obfuscatedExternalAccountId: S.optional(S.String),
-    regionCode: S.optional(S.String),
-    productLineItem: S.optional(ProductLineItemList),
-    purchaseCompletionTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductPurchaseV2",
-}) as any as S.Schema<ProductPurchaseV2>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "purchaseStateContext": S.optional(PurchaseStateContext),
+  "testPurchaseContext": S.optional(TestPurchaseContext),
+  "acknowledgementState": S.optional(ProductPurchaseV2AcknowledgementStateEnum),
+  "orderId": S.optional(S.String),
+  "obfuscatedExternalProfileId": S.optional(S.String),
+  "obfuscatedExternalAccountId": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+  "productLineItem": S.optional(ProductLineItemList),
+  "purchaseCompletionTime": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductPurchaseV2" }) as any as S.Schema<ProductPurchaseV2>;
 
 export interface GetPurchasesProductsRequest {
   /** The inapp product SKU (for example, 'com.some.thing.inapp1'). */
@@ -7717,20 +5811,12 @@ export interface GetPurchasesProductsRequest {
   token: string;
 }
 export const GetPurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    token: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPurchasesProductsRequest",
-}) as any as S.Schema<GetPurchasesProductsRequest>;
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetPurchasesProductsRequest" }) as any as S.Schema<GetPurchasesProductsRequest>;
 
 /** A ProductPurchase resource indicates the status of a user's inapp product purchase. */
 export interface ProductPurchase {
@@ -7766,26 +5852,24 @@ export interface ProductPurchase {
   purchaseToken?: string;
 }
 export const ProductPurchase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderId: S.optional(S.String),
-    obfuscatedExternalProfileId: S.optional(S.String),
-    refundableQuantity: S.optional(S.Number),
-    purchaseState: S.optional(S.Number),
-    consumptionState: S.optional(S.Number),
-    purchaseTimeMillis: S.optional(S.String),
-    quantity: S.optional(S.Number),
-    productId: S.optional(S.String),
-    obfuscatedExternalAccountId: S.optional(S.String),
-    regionCode: S.optional(S.String),
-    developerPayload: S.optional(S.String),
-    purchaseType: S.optional(S.Number),
-    kind: S.optional(S.String),
-    acknowledgementState: S.optional(S.Number),
-    purchaseToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductPurchase",
-}) as any as S.Schema<ProductPurchase>;
+S.Struct({
+  "orderId": S.optional(S.String),
+  "obfuscatedExternalProfileId": S.optional(S.String),
+  "refundableQuantity": S.optional(S.Number),
+  "purchaseState": S.optional(S.Number),
+  "consumptionState": S.optional(S.Number),
+  "purchaseTimeMillis": S.optional(S.String),
+  "quantity": S.optional(S.Number),
+  "productId": S.optional(S.String),
+  "obfuscatedExternalAccountId": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+  "developerPayload": S.optional(S.String),
+  "purchaseType": S.optional(S.Number),
+  "kind": S.optional(S.String),
+  "acknowledgementState": S.optional(S.Number),
+  "purchaseToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ProductPurchase" }) as any as S.Schema<ProductPurchase>;
 
 export interface GetPurchasesSubscriptionsv2Request {
   /** The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
@@ -7794,19 +5878,11 @@ export interface GetPurchasesSubscriptionsv2Request {
   token: string;
 }
 export const GetPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    token: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPurchasesSubscriptionsv2Request",
-}) as any as S.Schema<GetPurchasesSubscriptionsv2Request>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetPurchasesSubscriptionsv2Request" }) as any as S.Schema<GetPurchasesSubscriptionsv2Request>;
 
 /** User account identifier in the third-party service. */
 export interface ExternalAccountIdentifiers {
@@ -7818,28 +5894,15 @@ export interface ExternalAccountIdentifiers {
   obfuscatedExternalProfileId?: string;
 }
 export const ExternalAccountIdentifiers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    obfuscatedExternalAccountId: S.optional(S.String),
-    externalAccountId: S.optional(S.String),
-    obfuscatedExternalProfileId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExternalAccountIdentifiers",
-}) as any as S.Schema<ExternalAccountIdentifiers>;
+S.Struct({
+  "obfuscatedExternalAccountId": S.optional(S.String),
+  "externalAccountId": S.optional(S.String),
+  "obfuscatedExternalProfileId": S.optional(S.String),
+}),
+).annotate({ identifier: "ExternalAccountIdentifiers" }) as any as S.Schema<ExternalAccountIdentifiers>;
 
-export type SubscriptionPurchaseV2SubscriptionStateEnum =
-  | "SUBSCRIPTION_STATE_UNSPECIFIED"
-  | "SUBSCRIPTION_STATE_PENDING"
-  | "SUBSCRIPTION_STATE_ACTIVE"
-  | "SUBSCRIPTION_STATE_PAUSED"
-  | "SUBSCRIPTION_STATE_IN_GRACE_PERIOD"
-  | "SUBSCRIPTION_STATE_ON_HOLD"
-  | "SUBSCRIPTION_STATE_CANCELED"
-  | "SUBSCRIPTION_STATE_EXPIRED"
-  | "SUBSCRIPTION_STATE_PENDING_PURCHASE_CANCELED"
-  | (string & {});
-export const SubscriptionPurchaseV2SubscriptionStateEnum =
-  /*@__PURE__*/ S.String;
+export type SubscriptionPurchaseV2SubscriptionStateEnum = "SUBSCRIPTION_STATE_UNSPECIFIED" | "SUBSCRIPTION_STATE_PENDING" | "SUBSCRIPTION_STATE_ACTIVE" | "SUBSCRIPTION_STATE_PAUSED" | "SUBSCRIPTION_STATE_IN_GRACE_PERIOD" | "SUBSCRIPTION_STATE_ON_HOLD" | "SUBSCRIPTION_STATE_CANCELED" | "SUBSCRIPTION_STATE_EXPIRED" | "SUBSCRIPTION_STATE_PENDING_PURCHASE_CANCELED";
+export const SubscriptionPurchaseV2SubscriptionStateEnum = /*@__PURE__*/ S.String;
 
 /** Context related to renewal declined scenario. */
 export interface RenewalDeclinedContext {
@@ -7847,12 +5910,10 @@ export interface RenewalDeclinedContext {
   pendingOrderId?: string;
 }
 export const RenewalDeclinedContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pendingOrderId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RenewalDeclinedContext",
-}) as any as S.Schema<RenewalDeclinedContext>;
+S.Struct({
+  "pendingOrderId": S.optional(S.String),
+}),
+).annotate({ identifier: "RenewalDeclinedContext" }) as any as S.Schema<RenewalDeclinedContext>;
 
 /** Additional context around subscriptions in ON_HOLD state. */
 export interface OnHoldStateContext {
@@ -7860,17 +5921,15 @@ export interface OnHoldStateContext {
   renewalDeclined?: RenewalDeclinedContext;
 }
 export const OnHoldStateContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    renewalDeclined: S.optional(RenewalDeclinedContext),
-  }),
-).annotate({
-  identifier: "OnHoldStateContext",
-}) as any as S.Schema<OnHoldStateContext>;
+S.Struct({
+  "renewalDeclined": S.optional(RenewalDeclinedContext),
+}),
+).annotate({ identifier: "OnHoldStateContext" }) as any as S.Schema<OnHoldStateContext>;
 
 /** Whether this subscription purchase is a test purchase. */
 export interface TestPurchase {}
 export const TestPurchase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+S.Struct({}),
 ).annotate({ identifier: "TestPurchase" }) as any as S.Schema<TestPurchase>;
 
 /** Information associated with purchases made with 'Subscribe with Google'. */
@@ -7887,16 +5946,14 @@ export interface SubscribeWithGoogleInfo {
   familyName?: string;
 }
 export const SubscribeWithGoogleInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    emailAddress: S.optional(S.String),
-    givenName: S.optional(S.String),
-    profileId: S.optional(S.String),
-    profileName: S.optional(S.String),
-    familyName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubscribeWithGoogleInfo",
-}) as any as S.Schema<SubscribeWithGoogleInfo>;
+S.Struct({
+  "emailAddress": S.optional(S.String),
+  "givenName": S.optional(S.String),
+  "profileId": S.optional(S.String),
+  "profileName": S.optional(S.String),
+  "familyName": S.optional(S.String),
+}),
+).annotate({ identifier: "SubscribeWithGoogleInfo" }) as any as S.Schema<SubscribeWithGoogleInfo>;
 
 /** Information specific to a subscription in paused state. */
 export interface PausedStateContext {
@@ -7904,21 +5961,12 @@ export interface PausedStateContext {
   autoResumeTime?: string;
 }
 export const PausedStateContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoResumeTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PausedStateContext",
-}) as any as S.Schema<PausedStateContext>;
+S.Struct({
+  "autoResumeTime": S.optional(S.String),
+}),
+).annotate({ identifier: "PausedStateContext" }) as any as S.Schema<PausedStateContext>;
 
-export type CancelSurveyResultReasonEnum =
-  | "CANCEL_SURVEY_REASON_UNSPECIFIED"
-  | "CANCEL_SURVEY_REASON_NOT_ENOUGH_USAGE"
-  | "CANCEL_SURVEY_REASON_TECHNICAL_ISSUES"
-  | "CANCEL_SURVEY_REASON_COST_RELATED"
-  | "CANCEL_SURVEY_REASON_FOUND_BETTER_APP"
-  | "CANCEL_SURVEY_REASON_OTHERS"
-  | (string & {});
+export type CancelSurveyResultReasonEnum = "CANCEL_SURVEY_REASON_UNSPECIFIED" | "CANCEL_SURVEY_REASON_NOT_ENOUGH_USAGE" | "CANCEL_SURVEY_REASON_TECHNICAL_ISSUES" | "CANCEL_SURVEY_REASON_COST_RELATED" | "CANCEL_SURVEY_REASON_FOUND_BETTER_APP" | "CANCEL_SURVEY_REASON_OTHERS";
 export const CancelSurveyResultReasonEnum = /*@__PURE__*/ S.String;
 
 /** Result of the cancel survey when the subscription was canceled by the user. */
@@ -7929,13 +5977,11 @@ export interface CancelSurveyResult {
   reason?: CancelSurveyResultReasonEnum;
 }
 export const CancelSurveyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reasonUserInput: S.optional(S.String),
-    reason: S.optional(CancelSurveyResultReasonEnum),
-  }),
-).annotate({
-  identifier: "CancelSurveyResult",
-}) as any as S.Schema<CancelSurveyResult>;
+S.Struct({
+  "reasonUserInput": S.optional(S.String),
+  "reason": S.optional(CancelSurveyResultReasonEnum),
+}),
+).annotate({ identifier: "CancelSurveyResult" }) as any as S.Schema<CancelSurveyResult>;
 
 /** Information specific to cancellations initiated by users. */
 export interface UserInitiatedCancellation {
@@ -7945,37 +5991,29 @@ export interface UserInitiatedCancellation {
   cancelTime?: string;
 }
 export const UserInitiatedCancellation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cancelSurveyResult: S.optional(CancelSurveyResult),
-    cancelTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserInitiatedCancellation",
-}) as any as S.Schema<UserInitiatedCancellation>;
+S.Struct({
+  "cancelSurveyResult": S.optional(CancelSurveyResult),
+  "cancelTime": S.optional(S.String),
+}),
+).annotate({ identifier: "UserInitiatedCancellation" }) as any as S.Schema<UserInitiatedCancellation>;
 
 /** Information specific to cancellations caused by subscription replacement. */
 export interface ReplacementCancellation {}
 export const ReplacementCancellation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReplacementCancellation",
-}) as any as S.Schema<ReplacementCancellation>;
+S.Struct({}),
+).annotate({ identifier: "ReplacementCancellation" }) as any as S.Schema<ReplacementCancellation>;
 
 /** Information specific to cancellations initiated by developers. */
 export interface DeveloperInitiatedCancellation {}
 export const DeveloperInitiatedCancellation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeveloperInitiatedCancellation",
-}) as any as S.Schema<DeveloperInitiatedCancellation>;
+S.Struct({}),
+).annotate({ identifier: "DeveloperInitiatedCancellation" }) as any as S.Schema<DeveloperInitiatedCancellation>;
 
 /** Information specific to cancellations initiated by Google system. */
 export interface SystemInitiatedCancellation {}
 export const SystemInitiatedCancellation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SystemInitiatedCancellation",
-}) as any as S.Schema<SystemInitiatedCancellation>;
+S.Struct({}),
+).annotate({ identifier: "SystemInitiatedCancellation" }) as any as S.Schema<SystemInitiatedCancellation>;
 
 /** Information specific to a subscription in the SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED state. */
 export interface CanceledStateContext {
@@ -7989,15 +6027,13 @@ export interface CanceledStateContext {
   systemInitiatedCancellation?: SystemInitiatedCancellation;
 }
 export const CanceledStateContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userInitiatedCancellation: S.optional(UserInitiatedCancellation),
-    replacementCancellation: S.optional(ReplacementCancellation),
-    developerInitiatedCancellation: S.optional(DeveloperInitiatedCancellation),
-    systemInitiatedCancellation: S.optional(SystemInitiatedCancellation),
-  }),
-).annotate({
-  identifier: "CanceledStateContext",
-}) as any as S.Schema<CanceledStateContext>;
+S.Struct({
+  "userInitiatedCancellation": S.optional(UserInitiatedCancellation),
+  "replacementCancellation": S.optional(ReplacementCancellation),
+  "developerInitiatedCancellation": S.optional(DeveloperInitiatedCancellation),
+  "systemInitiatedCancellation": S.optional(SystemInitiatedCancellation),
+}),
+).annotate({ identifier: "CanceledStateContext" }) as any as S.Schema<CanceledStateContext>;
 
 /** Information specific to an out of app purchase. */
 export interface OutOfAppPurchaseContext {
@@ -8007,21 +6043,14 @@ export interface OutOfAppPurchaseContext {
   expiredPurchaseToken?: string;
 }
 export const OutOfAppPurchaseContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expiredExternalAccountIdentifiers: S.optional(ExternalAccountIdentifiers),
-    expiredPurchaseToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OutOfAppPurchaseContext",
-}) as any as S.Schema<OutOfAppPurchaseContext>;
+S.Struct({
+  "expiredExternalAccountIdentifiers": S.optional(ExternalAccountIdentifiers),
+  "expiredPurchaseToken": S.optional(S.String),
+}),
+).annotate({ identifier: "OutOfAppPurchaseContext" }) as any as S.Schema<OutOfAppPurchaseContext>;
 
-export type SubscriptionPurchaseV2AcknowledgementStateEnum =
-  | "ACKNOWLEDGEMENT_STATE_UNSPECIFIED"
-  | "ACKNOWLEDGEMENT_STATE_PENDING"
-  | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED"
-  | (string & {});
-export const SubscriptionPurchaseV2AcknowledgementStateEnum =
-  /*@__PURE__*/ S.String;
+export type SubscriptionPurchaseV2AcknowledgementStateEnum = "ACKNOWLEDGEMENT_STATE_UNSPECIFIED" | "ACKNOWLEDGEMENT_STATE_PENDING" | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED";
+export const SubscriptionPurchaseV2AcknowledgementStateEnum = /*@__PURE__*/ S.String;
 
 /** Additional context around subscriptions in IN_GRACE_PERIOD state. */
 export interface InGracePeriodStateContext {
@@ -8029,12 +6058,10 @@ export interface InGracePeriodStateContext {
   renewalDeclined?: RenewalDeclinedContext;
 }
 export const InGracePeriodStateContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    renewalDeclined: S.optional(RenewalDeclinedContext),
-  }),
-).annotate({
-  identifier: "InGracePeriodStateContext",
-}) as any as S.Schema<InGracePeriodStateContext>;
+S.Struct({
+  "renewalDeclined": S.optional(RenewalDeclinedContext),
+}),
+).annotate({ identifier: "InGracePeriodStateContext" }) as any as S.Schema<InGracePeriodStateContext>;
 
 /** Information related to deferred item replacement. */
 export interface DeferredItemReplacement {
@@ -8042,21 +6069,13 @@ export interface DeferredItemReplacement {
   productId?: string;
 }
 export const DeferredItemReplacement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeferredItemReplacement",
-}) as any as S.Schema<DeferredItemReplacement>;
+S.Struct({
+  "productId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeferredItemReplacement" }) as any as S.Schema<DeferredItemReplacement>;
 
-export type ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum =
-  | "ORIGINAL_OFFER_PHASE_TYPE_UNSPECIFIED"
-  | "BASE"
-  | "INTRODUCTORY"
-  | "FREE_TRIAL"
-  | (string & {});
-export const ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum =
-  /*@__PURE__*/ S.String;
+export type ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum = "ORIGINAL_OFFER_PHASE_TYPE_UNSPECIFIED" | "BASE" | "INTRODUCTORY" | "FREE_TRIAL";
+export const ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details about proration period offer phase. */
 export interface ProrationPeriodOfferPhase {
@@ -8064,38 +6083,28 @@ export interface ProrationPeriodOfferPhase {
   originalOfferPhaseType?: ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum;
 }
 export const ProrationPeriodOfferPhase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originalOfferPhaseType: S.optional(
-      ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum,
-    ),
-  }),
-).annotate({
-  identifier: "ProrationPeriodOfferPhase",
-}) as any as S.Schema<ProrationPeriodOfferPhase>;
+S.Struct({
+  "originalOfferPhaseType": S.optional(ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum),
+}),
+).annotate({ identifier: "ProrationPeriodOfferPhase" }) as any as S.Schema<ProrationPeriodOfferPhase>;
 
 /** Details about base price offer phase. */
 export interface BasePriceOfferPhase {}
 export const BasePriceOfferPhase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BasePriceOfferPhase",
-}) as any as S.Schema<BasePriceOfferPhase>;
+S.Struct({}),
+).annotate({ identifier: "BasePriceOfferPhase" }) as any as S.Schema<BasePriceOfferPhase>;
 
 /** Details about introductory price offer phase. */
 export interface IntroductoryPriceOfferPhase {}
 export const IntroductoryPriceOfferPhase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IntroductoryPriceOfferPhase",
-}) as any as S.Schema<IntroductoryPriceOfferPhase>;
+S.Struct({}),
+).annotate({ identifier: "IntroductoryPriceOfferPhase" }) as any as S.Schema<IntroductoryPriceOfferPhase>;
 
 /** Details about free trial offer phase. */
 export interface FreeTrialOfferPhase {}
 export const FreeTrialOfferPhase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FreeTrialOfferPhase",
-}) as any as S.Schema<FreeTrialOfferPhase>;
+S.Struct({}),
+).annotate({ identifier: "FreeTrialOfferPhase" }) as any as S.Schema<FreeTrialOfferPhase>;
 
 /** Offer phase details. */
 export interface OfferPhase {
@@ -8109,12 +6118,12 @@ export interface OfferPhase {
   freeTrial?: FreeTrialOfferPhase;
 }
 export const OfferPhase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prorationPeriod: S.optional(ProrationPeriodOfferPhase),
-    basePrice: S.optional(BasePriceOfferPhase),
-    introductoryPrice: S.optional(IntroductoryPriceOfferPhase),
-    freeTrial: S.optional(FreeTrialOfferPhase),
-  }),
+S.Struct({
+  "prorationPeriod": S.optional(ProrationPeriodOfferPhase),
+  "basePrice": S.optional(BasePriceOfferPhase),
+  "introductoryPrice": S.optional(IntroductoryPriceOfferPhase),
+  "freeTrial": S.optional(FreeTrialOfferPhase),
+}),
 ).annotate({ identifier: "OfferPhase" }) as any as S.Schema<OfferPhase>;
 
 /** Information related to a prepaid plan. */
@@ -8123,29 +6132,16 @@ export interface PrepaidPlan {
   allowExtendAfterTime?: string;
 }
 export const PrepaidPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowExtendAfterTime: S.optional(S.String),
-  }),
+S.Struct({
+  "allowExtendAfterTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "PrepaidPlan" }) as any as S.Schema<PrepaidPlan>;
 
-export type SubscriptionItemPriceChangeDetailsPriceChangeStateEnum =
-  | "PRICE_CHANGE_STATE_UNSPECIFIED"
-  | "OUTSTANDING"
-  | "CONFIRMED"
-  | "APPLIED"
-  | "CANCELED"
-  | (string & {});
-export const SubscriptionItemPriceChangeDetailsPriceChangeStateEnum =
-  /*@__PURE__*/ S.String;
+export type SubscriptionItemPriceChangeDetailsPriceChangeStateEnum = "PRICE_CHANGE_STATE_UNSPECIFIED" | "OUTSTANDING" | "CONFIRMED" | "APPLIED" | "CANCELED";
+export const SubscriptionItemPriceChangeDetailsPriceChangeStateEnum = /*@__PURE__*/ S.String;
 
-export type SubscriptionItemPriceChangeDetailsPriceChangeModeEnum =
-  | "PRICE_CHANGE_MODE_UNSPECIFIED"
-  | "PRICE_DECREASE"
-  | "PRICE_INCREASE"
-  | "OPT_OUT_PRICE_INCREASE"
-  | (string & {});
-export const SubscriptionItemPriceChangeDetailsPriceChangeModeEnum =
-  /*@__PURE__*/ S.String;
+export type SubscriptionItemPriceChangeDetailsPriceChangeModeEnum = "PRICE_CHANGE_MODE_UNSPECIFIED" | "PRICE_DECREASE" | "PRICE_INCREASE" | "OPT_OUT_PRICE_INCREASE";
+export const SubscriptionItemPriceChangeDetailsPriceChangeModeEnum = /*@__PURE__*/ S.String;
 
 /** Price change related information of a subscription item. */
 export interface SubscriptionItemPriceChangeDetails {
@@ -8159,26 +6155,15 @@ export interface SubscriptionItemPriceChangeDetails {
   newPrice?: Money;
 }
 export const SubscriptionItemPriceChangeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priceChangeState: S.optional(
-      SubscriptionItemPriceChangeDetailsPriceChangeStateEnum,
-    ),
-    priceChangeMode: S.optional(
-      SubscriptionItemPriceChangeDetailsPriceChangeModeEnum,
-    ),
-    expectedNewPriceChargeTime: S.optional(S.String),
-    newPrice: S.optional(Money),
-  }),
-).annotate({
-  identifier: "SubscriptionItemPriceChangeDetails",
-}) as any as S.Schema<SubscriptionItemPriceChangeDetails>;
+S.Struct({
+  "priceChangeState": S.optional(SubscriptionItemPriceChangeDetailsPriceChangeStateEnum),
+  "priceChangeMode": S.optional(SubscriptionItemPriceChangeDetailsPriceChangeModeEnum),
+  "expectedNewPriceChargeTime": S.optional(S.String),
+  "newPrice": S.optional(Money),
+}),
+).annotate({ identifier: "SubscriptionItemPriceChangeDetails" }) as any as S.Schema<SubscriptionItemPriceChangeDetails>;
 
-export type PriceStepUpConsentDetailsStateEnum =
-  | "CONSENT_STATE_UNSPECIFIED"
-  | "PENDING"
-  | "CONFIRMED"
-  | "COMPLETED"
-  | (string & {});
+export type PriceStepUpConsentDetailsStateEnum = "CONSENT_STATE_UNSPECIFIED" | "PENDING" | "CONFIRMED" | "COMPLETED";
 export const PriceStepUpConsentDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** Information related to a price step-up that requires user consent. */
@@ -8191,22 +6176,18 @@ export interface PriceStepUpConsentDetails {
   consentDeadlineTime?: string;
 }
 export const PriceStepUpConsentDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newPrice: S.optional(Money),
-    state: S.optional(PriceStepUpConsentDetailsStateEnum),
-    consentDeadlineTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PriceStepUpConsentDetails",
-}) as any as S.Schema<PriceStepUpConsentDetails>;
+S.Struct({
+  "newPrice": S.optional(Money),
+  "state": S.optional(PriceStepUpConsentDetailsStateEnum),
+  "consentDeadlineTime": S.optional(S.String),
+}),
+).annotate({ identifier: "PriceStepUpConsentDetails" }) as any as S.Schema<PriceStepUpConsentDetails>;
 
 /** This is an indicator of whether there is a pending cancellation on the virtual installment plan. The cancellation will happen only after the user finished all committed payments. */
 export interface PendingCancellation {}
 export const PendingCancellation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PendingCancellation",
-}) as any as S.Schema<PendingCancellation>;
+S.Struct({}),
+).annotate({ identifier: "PendingCancellation" }) as any as S.Schema<PendingCancellation>;
 
 /** Information to a installment plan. */
 export interface InstallmentPlan {
@@ -8220,15 +6201,13 @@ export interface InstallmentPlan {
   pendingCancellation?: PendingCancellation;
 }
 export const InstallmentPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    initialCommittedPaymentsCount: S.optional(S.Number),
-    remainingCommittedPaymentsCount: S.optional(S.Number),
-    subsequentCommittedPaymentsCount: S.optional(S.Number),
-    pendingCancellation: S.optional(PendingCancellation),
-  }),
-).annotate({
-  identifier: "InstallmentPlan",
-}) as any as S.Schema<InstallmentPlan>;
+S.Struct({
+  "initialCommittedPaymentsCount": S.optional(S.Number),
+  "remainingCommittedPaymentsCount": S.optional(S.Number),
+  "subsequentCommittedPaymentsCount": S.optional(S.Number),
+  "pendingCancellation": S.optional(PendingCancellation),
+}),
+).annotate({ identifier: "InstallmentPlan" }) as any as S.Schema<InstallmentPlan>;
 
 /** Information related to an auto renewing plan. */
 export interface AutoRenewingPlan {
@@ -8244,16 +6223,14 @@ export interface AutoRenewingPlan {
   installmentDetails?: InstallmentPlan;
 }
 export const AutoRenewingPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoRenewEnabled: S.optional(S.Boolean),
-    priceChangeDetails: S.optional(SubscriptionItemPriceChangeDetails),
-    recurringPrice: S.optional(Money),
-    priceStepUpConsentDetails: S.optional(PriceStepUpConsentDetails),
-    installmentDetails: S.optional(InstallmentPlan),
-  }),
-).annotate({
-  identifier: "AutoRenewingPlan",
-}) as any as S.Schema<AutoRenewingPlan>;
+S.Struct({
+  "autoRenewEnabled": S.optional(S.Boolean),
+  "priceChangeDetails": S.optional(SubscriptionItemPriceChangeDetails),
+  "recurringPrice": S.optional(Money),
+  "priceStepUpConsentDetails": S.optional(PriceStepUpConsentDetails),
+  "installmentDetails": S.optional(InstallmentPlan),
+}),
+).annotate({ identifier: "AutoRenewingPlan" }) as any as S.Schema<AutoRenewingPlan>;
 
 /** Offer details information related to a purchase line item. */
 export interface OfferDetails {
@@ -8265,22 +6242,14 @@ export interface OfferDetails {
   offerId?: string;
 }
 export const OfferDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offerTags: S.optional(StringList),
-    basePlanId: S.optional(S.String),
-    offerId: S.optional(S.String),
-  }),
+S.Struct({
+  "offerTags": S.optional(StringList),
+  "basePlanId": S.optional(S.String),
+  "offerId": S.optional(S.String),
+}),
 ).annotate({ identifier: "OfferDetails" }) as any as S.Schema<OfferDetails>;
 
-export type ItemReplacementReplacementModeEnum =
-  | "REPLACEMENT_MODE_UNSPECIFIED"
-  | "WITH_TIME_PRORATION"
-  | "CHARGE_PRORATED_PRICE"
-  | "WITHOUT_PRORATION"
-  | "CHARGE_FULL_PRICE"
-  | "DEFERRED"
-  | "KEEP_EXISTING"
-  | (string & {});
+export type ItemReplacementReplacementModeEnum = "REPLACEMENT_MODE_UNSPECIFIED" | "WITH_TIME_PRORATION" | "CHARGE_PRORATED_PRICE" | "WITHOUT_PRORATION" | "CHARGE_FULL_PRICE" | "DEFERRED" | "KEEP_EXISTING";
 export const ItemReplacementReplacementModeEnum = /*@__PURE__*/ S.String;
 
 /** Details about a subscription line item that is being replaced. */
@@ -8295,21 +6264,19 @@ export interface ItemReplacement {
   offerId?: string;
 }
 export const ItemReplacement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    basePlanId: S.optional(S.String),
-    replacementMode: S.optional(ItemReplacementReplacementModeEnum),
-    offerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ItemReplacement",
-}) as any as S.Schema<ItemReplacement>;
+S.Struct({
+  "productId": S.optional(S.String),
+  "basePlanId": S.optional(S.String),
+  "replacementMode": S.optional(ItemReplacementReplacementModeEnum),
+  "offerId": S.optional(S.String),
+}),
+).annotate({ identifier: "ItemReplacement" }) as any as S.Schema<ItemReplacement>;
 
 /** A single use promotion code. */
 export interface OneTimeCode {}
-export const OneTimeCode = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "OneTimeCode" },
-) as any as S.Schema<OneTimeCode>;
+export const OneTimeCode = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "OneTimeCode" }) as any as S.Schema<OneTimeCode>;
 
 /** A multiple use, predefined promotion code. */
 export interface VanityCode {
@@ -8317,9 +6284,9 @@ export interface VanityCode {
   promotionCode?: string;
 }
 export const VanityCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    promotionCode: S.optional(S.String),
-  }),
+S.Struct({
+  "promotionCode": S.optional(S.String),
+}),
 ).annotate({ identifier: "VanityCode" }) as any as S.Schema<VanityCode>;
 
 /** The promotion applied on this item when purchased. */
@@ -8330,21 +6297,17 @@ export interface SignupPromotion {
   vanityCode?: VanityCode;
 }
 export const SignupPromotion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeCode: S.optional(OneTimeCode),
-    vanityCode: S.optional(VanityCode),
-  }),
-).annotate({
-  identifier: "SignupPromotion",
-}) as any as S.Schema<SignupPromotion>;
+S.Struct({
+  "oneTimeCode": S.optional(OneTimeCode),
+  "vanityCode": S.optional(VanityCode),
+}),
+).annotate({ identifier: "SignupPromotion" }) as any as S.Schema<SignupPromotion>;
 
 /** Information related to deferred item replacement. */
 export interface DeferredItemRemoval {}
 export const DeferredItemRemoval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeferredItemRemoval",
-}) as any as S.Schema<DeferredItemRemoval>;
+S.Struct({}),
+).annotate({ identifier: "DeferredItemRemoval" }) as any as S.Schema<DeferredItemRemoval>;
 
 /** Item-level info for a subscription purchase. */
 export interface SubscriptionPurchaseLineItem {
@@ -8372,28 +6335,23 @@ export interface SubscriptionPurchaseLineItem {
   deferredItemRemoval?: DeferredItemRemoval;
 }
 export const SubscriptionPurchaseLineItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    deferredItemReplacement: S.optional(DeferredItemReplacement),
-    offerPhase: S.optional(OfferPhase),
-    prepaidPlan: S.optional(PrepaidPlan),
-    expiryTime: S.optional(S.String),
-    latestSuccessfulOrderId: S.optional(S.String),
-    autoRenewingPlan: S.optional(AutoRenewingPlan),
-    offerDetails: S.optional(OfferDetails),
-    itemReplacement: S.optional(ItemReplacement),
-    signupPromotion: S.optional(SignupPromotion),
-    deferredItemRemoval: S.optional(DeferredItemRemoval),
-  }),
-).annotate({
-  identifier: "SubscriptionPurchaseLineItem",
-}) as any as S.Schema<SubscriptionPurchaseLineItem>;
+S.Struct({
+  "productId": S.optional(S.String),
+  "deferredItemReplacement": S.optional(DeferredItemReplacement),
+  "offerPhase": S.optional(OfferPhase),
+  "prepaidPlan": S.optional(PrepaidPlan),
+  "expiryTime": S.optional(S.String),
+  "latestSuccessfulOrderId": S.optional(S.String),
+  "autoRenewingPlan": S.optional(AutoRenewingPlan),
+  "offerDetails": S.optional(OfferDetails),
+  "itemReplacement": S.optional(ItemReplacement),
+  "signupPromotion": S.optional(SignupPromotion),
+  "deferredItemRemoval": S.optional(DeferredItemRemoval),
+}),
+).annotate({ identifier: "SubscriptionPurchaseLineItem" }) as any as S.Schema<SubscriptionPurchaseLineItem>;
 
-export type SubscriptionPurchaseLineItemList =
-  ReadonlyArray<SubscriptionPurchaseLineItem>;
-export const SubscriptionPurchaseLineItemList = /*@__PURE__*/ S.Array(
-  SubscriptionPurchaseLineItem,
-) as any as S.Schema<SubscriptionPurchaseLineItemList>;
+export type SubscriptionPurchaseLineItemList = ReadonlyArray<SubscriptionPurchaseLineItem>;
+export const SubscriptionPurchaseLineItemList = /*@__PURE__*/ S.Array(SubscriptionPurchaseLineItem) as any as S.Schema<SubscriptionPurchaseLineItemList>;
 
 /** Indicates the status of a user's subscription purchase. */
 export interface SubscriptionPurchaseV2 {
@@ -8431,29 +6389,25 @@ export interface SubscriptionPurchaseV2 {
   lineItems?: SubscriptionPurchaseLineItemList;
 }
 export const SubscriptionPurchaseV2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalAccountIdentifiers: S.optional(ExternalAccountIdentifiers),
-    subscriptionState: S.optional(SubscriptionPurchaseV2SubscriptionStateEnum),
-    onHoldStateContext: S.optional(OnHoldStateContext),
-    testPurchase: S.optional(TestPurchase),
-    subscribeWithGoogleInfo: S.optional(SubscribeWithGoogleInfo),
-    startTime: S.optional(S.String),
-    pausedStateContext: S.optional(PausedStateContext),
-    canceledStateContext: S.optional(CanceledStateContext),
-    outOfAppPurchaseContext: S.optional(OutOfAppPurchaseContext),
-    linkedPurchaseToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    acknowledgementState: S.optional(
-      SubscriptionPurchaseV2AcknowledgementStateEnum,
-    ),
-    inGracePeriodStateContext: S.optional(InGracePeriodStateContext),
-    regionCode: S.optional(S.String),
-    etag: S.optional(S.String),
-    lineItems: S.optional(SubscriptionPurchaseLineItemList),
-  }),
-).annotate({
-  identifier: "SubscriptionPurchaseV2",
-}) as any as S.Schema<SubscriptionPurchaseV2>;
+S.Struct({
+  "externalAccountIdentifiers": S.optional(ExternalAccountIdentifiers),
+  "subscriptionState": S.optional(SubscriptionPurchaseV2SubscriptionStateEnum),
+  "onHoldStateContext": S.optional(OnHoldStateContext),
+  "testPurchase": S.optional(TestPurchase),
+  "subscribeWithGoogleInfo": S.optional(SubscribeWithGoogleInfo),
+  "startTime": S.optional(S.String),
+  "pausedStateContext": S.optional(PausedStateContext),
+  "canceledStateContext": S.optional(CanceledStateContext),
+  "outOfAppPurchaseContext": S.optional(OutOfAppPurchaseContext),
+  "linkedPurchaseToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "acknowledgementState": S.optional(SubscriptionPurchaseV2AcknowledgementStateEnum),
+  "inGracePeriodStateContext": S.optional(InGracePeriodStateContext),
+  "regionCode": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "lineItems": S.optional(SubscriptionPurchaseLineItemList),
+}),
+).annotate({ identifier: "SubscriptionPurchaseV2" }) as any as S.Schema<SubscriptionPurchaseV2>;
 
 export interface GetReviewsRequest {
   /** Package name of the app. */
@@ -8464,20 +6418,12 @@ export interface GetReviewsRequest {
   reviewId: string;
 }
 export const GetReviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    translationLanguage: S.optional(S.String.pipe(T.Query())),
-    reviewId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetReviewsRequest",
-}) as any as S.Schema<GetReviewsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "translationLanguage": S.optional(S.String.pipe(T.Query())),
+  "reviewId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/reviews/{reviewId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetReviewsRequest" }) as any as S.Schema<GetReviewsRequest>;
 
 /** Characteristics of the user's device. */
 export interface DeviceMetadata {
@@ -8505,19 +6451,19 @@ export interface DeviceMetadata {
   cpuModel?: string;
 }
 export const DeviceMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    screenHeightPx: S.optional(S.Number),
-    screenWidthPx: S.optional(S.Number),
-    nativePlatform: S.optional(S.String),
-    productName: S.optional(S.String),
-    deviceClass: S.optional(S.String),
-    screenDensityDpi: S.optional(S.Number),
-    cpuMake: S.optional(S.String),
-    ramMb: S.optional(S.Number),
-    manufacturer: S.optional(S.String),
-    glEsVersion: S.optional(S.Number),
-    cpuModel: S.optional(S.String),
-  }),
+S.Struct({
+  "screenHeightPx": S.optional(S.Number),
+  "screenWidthPx": S.optional(S.Number),
+  "nativePlatform": S.optional(S.String),
+  "productName": S.optional(S.String),
+  "deviceClass": S.optional(S.String),
+  "screenDensityDpi": S.optional(S.Number),
+  "cpuMake": S.optional(S.String),
+  "ramMb": S.optional(S.Number),
+  "manufacturer": S.optional(S.String),
+  "glEsVersion": S.optional(S.Number),
+  "cpuModel": S.optional(S.String),
+}),
 ).annotate({ identifier: "DeviceMetadata" }) as any as S.Schema<DeviceMetadata>;
 
 /** A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC midnight on January 1, 1970. */
@@ -8528,10 +6474,10 @@ export interface Timestamp {
   nanos?: number;
 }
 export const Timestamp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    seconds: S.optional(S.String),
-    nanos: S.optional(S.Number),
-  }),
+S.Struct({
+  "seconds": S.optional(S.String),
+  "nanos": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Timestamp" }) as any as S.Schema<Timestamp>;
 
 /** User entry from conversation between user and developer. */
@@ -8562,20 +6508,20 @@ export interface UserComment {
   text?: string;
 }
 export const UserComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thumbsDownCount: S.optional(S.Number),
-    thumbsUpCount: S.optional(S.Number),
-    starRating: S.optional(S.Number),
-    reviewerLanguage: S.optional(S.String),
-    device: S.optional(S.String),
-    appVersionName: S.optional(S.String),
-    deviceMetadata: S.optional(DeviceMetadata),
-    androidOsVersion: S.optional(S.Number),
-    lastModified: S.optional(Timestamp),
-    appVersionCode: S.optional(S.Number),
-    originalText: S.optional(S.String),
-    text: S.optional(S.String),
-  }),
+S.Struct({
+  "thumbsDownCount": S.optional(S.Number),
+  "thumbsUpCount": S.optional(S.Number),
+  "starRating": S.optional(S.Number),
+  "reviewerLanguage": S.optional(S.String),
+  "device": S.optional(S.String),
+  "appVersionName": S.optional(S.String),
+  "deviceMetadata": S.optional(DeviceMetadata),
+  "androidOsVersion": S.optional(S.Number),
+  "lastModified": S.optional(Timestamp),
+  "appVersionCode": S.optional(S.Number),
+  "originalText": S.optional(S.String),
+  "text": S.optional(S.String),
+}),
 ).annotate({ identifier: "UserComment" }) as any as S.Schema<UserComment>;
 
 /** Developer entry from conversation between user and developer. */
@@ -8586,13 +6532,11 @@ export interface DeveloperComment {
   text?: string;
 }
 export const DeveloperComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastModified: S.optional(Timestamp),
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeveloperComment",
-}) as any as S.Schema<DeveloperComment>;
+S.Struct({
+  "lastModified": S.optional(Timestamp),
+  "text": S.optional(S.String),
+}),
+).annotate({ identifier: "DeveloperComment" }) as any as S.Schema<DeveloperComment>;
 
 /** An entry of conversation between user and developer. */
 export interface Comment {
@@ -8602,16 +6546,14 @@ export interface Comment {
   developerComment?: DeveloperComment;
 }
 export const Comment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userComment: S.optional(UserComment),
-    developerComment: S.optional(DeveloperComment),
-  }),
+S.Struct({
+  "userComment": S.optional(UserComment),
+  "developerComment": S.optional(DeveloperComment),
+}),
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
 
 export type CommentList = ReadonlyArray<Comment>;
-export const CommentList = /*@__PURE__*/ S.Array(
-  Comment,
-) as any as S.Schema<CommentList>;
+export const CommentList = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList>;
 
 /** An Android app review. */
 export interface Review {
@@ -8623,11 +6565,11 @@ export interface Review {
   comments?: CommentList;
 }
 export const Review = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reviewId: S.optional(S.String),
-    authorName: S.optional(S.String),
-    comments: S.optional(CommentList),
-  }),
+S.Struct({
+  "reviewId": S.optional(S.String),
+  "authorName": S.optional(S.String),
+  "comments": S.optional(CommentList),
+}),
 ).annotate({ identifier: "Review" }) as any as S.Schema<Review>;
 
 export interface GetSystemapksVariantsRequest {
@@ -8639,20 +6581,12 @@ export interface GetSystemapksVariantsRequest {
   variantId: number;
 }
 export const GetSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionCode: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    variantId: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSystemapksVariantsRequest",
-}) as any as S.Schema<GetSystemapksVariantsRequest>;
+S.Struct({
+  "versionCode": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "variantId": S.Number.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "GetSystemapksVariantsRequest" }) as any as S.Schema<GetSystemapksVariantsRequest>;
 
 export interface InsertEditsRequest {
   /** Package name of the app. */
@@ -8661,19 +6595,11 @@ export interface InsertEditsRequest {
   body?: AppEdit;
 }
 export const InsertEditsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(AppEdit.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/edits",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertEditsRequest",
-}) as any as S.Schema<InsertEditsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(AppEdit.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/edits","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "InsertEditsRequest" }) as any as S.Schema<InsertEditsRequest>;
 
 export interface InsertInappproductsRequest {
   /** If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. */
@@ -8684,20 +6610,12 @@ export interface InsertInappproductsRequest {
   body?: InAppProduct;
 }
 export const InsertInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoConvertMissingPrices: S.optional(S.Boolean.pipe(T.Query())),
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(InAppProduct.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/inappproducts",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertInappproductsRequest",
-}) as any as S.Schema<InsertInappproductsRequest>;
+S.Struct({
+  "autoConvertMissingPrices": S.optional(S.Boolean.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(InAppProduct.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/inappproducts","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "InsertInappproductsRequest" }) as any as S.Schema<InsertInappproductsRequest>;
 
 export interface ListApplicationsDeviceTierConfigsRequest {
   /** Package name of the app. */
@@ -8707,27 +6625,16 @@ export interface ListApplicationsDeviceTierConfigsRequest {
   /** A page token, received from a previous `ListDeviceTierConfigs` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListApplicationsDeviceTierConfigsRequest",
-}) as any as S.Schema<ListApplicationsDeviceTierConfigsRequest>;
+export const ListApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/deviceTierConfigs","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListApplicationsDeviceTierConfigsRequest" }) as any as S.Schema<ListApplicationsDeviceTierConfigsRequest>;
 
 export type DeviceTierConfigList = ReadonlyArray<DeviceTierConfig>;
-export const DeviceTierConfigList = /*@__PURE__*/ S.Array(
-  DeviceTierConfig,
-) as any as S.Schema<DeviceTierConfigList>;
+export const DeviceTierConfigList = /*@__PURE__*/ S.Array(DeviceTierConfig) as any as S.Schema<DeviceTierConfigList>;
 
 /** Response listing existing device tier configs. */
 export interface ListDeviceTierConfigsResponse {
@@ -8737,32 +6644,21 @@ export interface ListDeviceTierConfigsResponse {
   nextPageToken?: string;
 }
 export const ListDeviceTierConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceTierConfigs: S.optional(DeviceTierConfigList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDeviceTierConfigsResponse",
-}) as any as S.Schema<ListDeviceTierConfigsResponse>;
+S.Struct({
+  "deviceTierConfigs": S.optional(DeviceTierConfigList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListDeviceTierConfigsResponse" }) as any as S.Schema<ListDeviceTierConfigsResponse>;
 
 export interface ListApplicationsTracksReleasesRequest {
   /** Required. The parent track, which owns this collection of releases. Format: applications/{package_name}/tracks/{track} */
   parent: string;
 }
-export const ListApplicationsTracksReleasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/{+parent}/releases",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListApplicationsTracksReleasesRequest",
-}) as any as S.Schema<ListApplicationsTracksReleasesRequest>;
+export const ListApplicationsTracksReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/{+parent}/releases","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListApplicationsTracksReleasesRequest" }) as any as S.Schema<ListApplicationsTracksReleasesRequest>;
 
 /** Summary of an artifact. */
 export interface ArtifactSummary {
@@ -8770,27 +6666,15 @@ export interface ArtifactSummary {
   versionCode?: number;
 }
 export const ArtifactSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionCode: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ArtifactSummary",
-}) as any as S.Schema<ArtifactSummary>;
+S.Struct({
+  "versionCode": S.optional(S.Number),
+}),
+).annotate({ identifier: "ArtifactSummary" }) as any as S.Schema<ArtifactSummary>;
 
 export type ArtifactSummaryList = ReadonlyArray<ArtifactSummary>;
-export const ArtifactSummaryList = /*@__PURE__*/ S.Array(
-  ArtifactSummary,
-) as any as S.Schema<ArtifactSummaryList>;
+export const ArtifactSummaryList = /*@__PURE__*/ S.Array(ArtifactSummary) as any as S.Schema<ArtifactSummaryList>;
 
-export type ReleaseSummaryReleaseLifecycleStateEnum =
-  | "RELEASE_LIFECYCLE_STATE_UNSPECIFIED"
-  | "RELEASE_LIFECYCLE_STATE_DRAFT"
-  | "RELEASE_LIFECYCLE_STATE_NOT_SENT_FOR_REVIEW"
-  | "RELEASE_LIFECYCLE_STATE_IN_REVIEW"
-  | "RELEASE_LIFECYCLE_STATE_APPROVED_NOT_PUBLISHED"
-  | "RELEASE_LIFECYCLE_STATE_NOT_APPROVED"
-  | "RELEASE_LIFECYCLE_STATE_PUBLISHED"
-  | (string & {});
+export type ReleaseSummaryReleaseLifecycleStateEnum = "RELEASE_LIFECYCLE_STATE_UNSPECIFIED" | "RELEASE_LIFECYCLE_STATE_DRAFT" | "RELEASE_LIFECYCLE_STATE_NOT_SENT_FOR_REVIEW" | "RELEASE_LIFECYCLE_STATE_IN_REVIEW" | "RELEASE_LIFECYCLE_STATE_APPROVED_NOT_PUBLISHED" | "RELEASE_LIFECYCLE_STATE_NOT_APPROVED" | "RELEASE_LIFECYCLE_STATE_PUBLISHED";
 export const ReleaseSummaryReleaseLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 /** Summary of a release. */
@@ -8805,18 +6689,16 @@ export interface ReleaseSummary {
   releaseLifecycleState?: ReleaseSummaryReleaseLifecycleStateEnum;
 }
 export const ReleaseSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    releaseName: S.optional(S.String),
-    track: S.optional(S.String),
-    activeArtifacts: S.optional(ArtifactSummaryList),
-    releaseLifecycleState: S.optional(ReleaseSummaryReleaseLifecycleStateEnum),
-  }),
+S.Struct({
+  "releaseName": S.optional(S.String),
+  "track": S.optional(S.String),
+  "activeArtifacts": S.optional(ArtifactSummaryList),
+  "releaseLifecycleState": S.optional(ReleaseSummaryReleaseLifecycleStateEnum),
+}),
 ).annotate({ identifier: "ReleaseSummary" }) as any as S.Schema<ReleaseSummary>;
 
 export type ReleaseSummaryList = ReadonlyArray<ReleaseSummary>;
-export const ReleaseSummaryList = /*@__PURE__*/ S.Array(
-  ReleaseSummary,
-) as any as S.Schema<ReleaseSummaryList>;
+export const ReleaseSummaryList = /*@__PURE__*/ S.Array(ReleaseSummary) as any as S.Schema<ReleaseSummaryList>;
 
 /** Response listing all releases for a given track that are either ready to be sent for review, in review, approved, not approved or available. */
 export interface ListReleaseSummariesResponse {
@@ -8824,12 +6706,10 @@ export interface ListReleaseSummariesResponse {
   releases?: ReleaseSummaryList;
 }
 export const ListReleaseSummariesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    releases: S.optional(ReleaseSummaryList),
-  }),
-).annotate({
-  identifier: "ListReleaseSummariesResponse",
-}) as any as S.Schema<ListReleaseSummariesResponse>;
+S.Struct({
+  "releases": S.optional(ReleaseSummaryList),
+}),
+).annotate({ identifier: "ListReleaseSummariesResponse" }) as any as S.Schema<ListReleaseSummariesResponse>;
 
 export interface ListApprecoveryRequest {
   /** Required. Package name of the app for which list of recovery actions is requested. */
@@ -8838,24 +6718,14 @@ export interface ListApprecoveryRequest {
   versionCode?: string;
 }
 export const ListApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    versionCode: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/appRecoveries",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListApprecoveryRequest",
-}) as any as S.Schema<ListApprecoveryRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "versionCode": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/appRecoveries","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListApprecoveryRequest" }) as any as S.Schema<ListApprecoveryRequest>;
 
 export type AppRecoveryActionList = ReadonlyArray<AppRecoveryAction>;
-export const AppRecoveryActionList = /*@__PURE__*/ S.Array(
-  AppRecoveryAction,
-) as any as S.Schema<AppRecoveryActionList>;
+export const AppRecoveryActionList = /*@__PURE__*/ S.Array(AppRecoveryAction) as any as S.Schema<AppRecoveryActionList>;
 
 /** Response message for ListAppRecoveries. -- api-linter: core::0158::response-next-page-token-field=disabled */
 export interface ListAppRecoveriesResponse {
@@ -8863,12 +6733,10 @@ export interface ListAppRecoveriesResponse {
   recoveryActions?: AppRecoveryActionList;
 }
 export const ListAppRecoveriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recoveryActions: S.optional(AppRecoveryActionList),
-  }),
-).annotate({
-  identifier: "ListAppRecoveriesResponse",
-}) as any as S.Schema<ListAppRecoveriesResponse>;
+S.Struct({
+  "recoveryActions": S.optional(AppRecoveryActionList),
+}),
+).annotate({ identifier: "ListAppRecoveriesResponse" }) as any as S.Schema<ListAppRecoveriesResponse>;
 
 export interface ListAppstorecatalogRecentupdateeventsRequest {
   /** Required. The start time of the range (inclusive). */
@@ -8882,30 +6750,17 @@ export interface ListAppstorecatalogRecentupdateeventsRequest {
   /** Optional. A page token, received from a previous `ListRecentUpdateEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRecentUpdateEvents` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAppstorecatalogRecentupdateeventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      startTime: S.optional(S.String.pipe(T.Query())),
-      appStorePackageName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      endTime: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/appstorecatalog/{appStorePackageName}/recentUpdateEvents",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAppstorecatalogRecentupdateeventsRequest",
-  }) as any as S.Schema<ListAppstorecatalogRecentupdateeventsRequest>;
+export const ListAppstorecatalogRecentupdateeventsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "startTime": S.optional(S.String.pipe(T.Query())),
+  "appStorePackageName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "endTime": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/appstorecatalog/{appStorePackageName}/recentUpdateEvents","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListAppstorecatalogRecentupdateeventsRequest" }) as any as S.Schema<ListAppstorecatalogRecentupdateeventsRequest>;
 
-export type RecentUpdateEventUpdateTypeEnum =
-  | "UPDATE_TYPE_UNSPECIFIED"
-  | "MODIFICATION"
-  | "DELETION"
-  | (string & {});
+export type RecentUpdateEventUpdateTypeEnum = "UPDATE_TYPE_UNSPECIFIED" | "MODIFICATION" | "DELETION";
 export const RecentUpdateEventUpdateTypeEnum = /*@__PURE__*/ S.String;
 
 /** A recent update event. */
@@ -8918,19 +6773,15 @@ export interface RecentUpdateEvent {
   playAppPackageName?: string;
 }
 export const RecentUpdateEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventTime: S.optional(S.String),
-    updateType: S.optional(RecentUpdateEventUpdateTypeEnum),
-    playAppPackageName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecentUpdateEvent",
-}) as any as S.Schema<RecentUpdateEvent>;
+S.Struct({
+  "eventTime": S.optional(S.String),
+  "updateType": S.optional(RecentUpdateEventUpdateTypeEnum),
+  "playAppPackageName": S.optional(S.String),
+}),
+).annotate({ identifier: "RecentUpdateEvent" }) as any as S.Schema<RecentUpdateEvent>;
 
 export type RecentUpdateEventList = ReadonlyArray<RecentUpdateEvent>;
-export const RecentUpdateEventList = /*@__PURE__*/ S.Array(
-  RecentUpdateEvent,
-) as any as S.Schema<RecentUpdateEventList>;
+export const RecentUpdateEventList = /*@__PURE__*/ S.Array(RecentUpdateEvent) as any as S.Schema<RecentUpdateEventList>;
 
 /** Response message for ListRecentUpdateEvents. */
 export interface ListRecentUpdateEventsResponse {
@@ -8940,13 +6791,11 @@ export interface ListRecentUpdateEventsResponse {
   nextPageToken?: string;
 }
 export const ListRecentUpdateEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recentUpdateEvents: S.optional(RecentUpdateEventList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRecentUpdateEventsResponse",
-}) as any as S.Schema<ListRecentUpdateEventsResponse>;
+S.Struct({
+  "recentUpdateEvents": S.optional(RecentUpdateEventList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListRecentUpdateEventsResponse" }) as any as S.Schema<ListRecentUpdateEventsResponse>;
 
 export interface ListEditsApksRequest {
   /** Package name of the app. */
@@ -8955,19 +6804,11 @@ export interface ListEditsApksRequest {
   editId: string;
 }
 export const ListEditsApksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListEditsApksRequest",
-}) as any as S.Schema<ListEditsApksRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/apks","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListEditsApksRequest" }) as any as S.Schema<ListEditsApksRequest>;
 
 /** Represents the binary payload of an APK. */
 export interface ApkBinary {
@@ -8977,10 +6818,10 @@ export interface ApkBinary {
   sha256?: string;
 }
 export const ApkBinary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sha1: S.optional(S.String),
-    sha256: S.optional(S.String),
-  }),
+S.Struct({
+  "sha1": S.optional(S.String),
+  "sha256": S.optional(S.String),
+}),
 ).annotate({ identifier: "ApkBinary" }) as any as S.Schema<ApkBinary>;
 
 /** Information about an APK. The resource for ApksService. */
@@ -8991,10 +6832,10 @@ export interface Apk {
   versionCode?: number;
 }
 export const Apk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binary: S.optional(ApkBinary),
-    versionCode: S.optional(S.Number),
-  }),
+S.Struct({
+  "binary": S.optional(ApkBinary),
+  "versionCode": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Apk" }) as any as S.Schema<Apk>;
 
 export type ApkList = ReadonlyArray<Apk>;
@@ -9008,13 +6849,11 @@ export interface ApksListResponse {
   apks?: ApkList;
 }
 export const ApksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    apks: S.optional(ApkList),
-  }),
-).annotate({
-  identifier: "ApksListResponse",
-}) as any as S.Schema<ApksListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "apks": S.optional(ApkList),
+}),
+).annotate({ identifier: "ApksListResponse" }) as any as S.Schema<ApksListResponse>;
 
 export interface ListEditsBundlesRequest {
   /** Package name of the app. */
@@ -9023,19 +6862,11 @@ export interface ListEditsBundlesRequest {
   editId: string;
 }
 export const ListEditsBundlesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListEditsBundlesRequest",
-}) as any as S.Schema<ListEditsBundlesRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListEditsBundlesRequest" }) as any as S.Schema<ListEditsBundlesRequest>;
 
 /** Information about an app bundle. The resource for BundlesService. */
 export interface Bundle {
@@ -9047,17 +6878,15 @@ export interface Bundle {
   versionCode?: number;
 }
 export const Bundle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sha256: S.optional(S.String),
-    sha1: S.optional(S.String),
-    versionCode: S.optional(S.Number),
-  }),
+S.Struct({
+  "sha256": S.optional(S.String),
+  "sha1": S.optional(S.String),
+  "versionCode": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Bundle" }) as any as S.Schema<Bundle>;
 
 export type BundleList = ReadonlyArray<Bundle>;
-export const BundleList = /*@__PURE__*/ S.Array(
-  Bundle,
-) as any as S.Schema<BundleList>;
+export const BundleList = /*@__PURE__*/ S.Array(Bundle) as any as S.Schema<BundleList>;
 
 /** Response listing all app bundles. */
 export interface BundlesListResponse {
@@ -9067,25 +6896,13 @@ export interface BundlesListResponse {
   bundles?: BundleList;
 }
 export const BundlesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    bundles: S.optional(BundleList),
-  }),
-).annotate({
-  identifier: "BundlesListResponse",
-}) as any as S.Schema<BundlesListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "bundles": S.optional(BundleList),
+}),
+).annotate({ identifier: "BundlesListResponse" }) as any as S.Schema<BundlesListResponse>;
 
-export type ListEditsImagesImageTypeEnum =
-  | "appImageTypeUnspecified"
-  | "phoneScreenshots"
-  | "sevenInchScreenshots"
-  | "tenInchScreenshots"
-  | "tvScreenshots"
-  | "wearScreenshots"
-  | "icon"
-  | "featureGraphic"
-  | "tvBanner"
-  | (string & {});
+export type ListEditsImagesImageTypeEnum = "appImageTypeUnspecified" | "phoneScreenshots" | "sevenInchScreenshots" | "tenInchScreenshots" | "tvScreenshots" | "wearScreenshots" | "icon" | "featureGraphic" | "tvBanner";
 export const ListEditsImagesImageTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListEditsImagesRequest {
@@ -9094,26 +6911,18 @@ export interface ListEditsImagesRequest {
   /** Package name of the app. */
   packageName: string;
   /** Type of the Image. Providing an image type that refers to no images will return an empty response. */
-  imageType: ListEditsImagesImageTypeEnum;
+  imageType: ListEditsImagesImageTypeEnum | (string & {});
   /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). There must be a store listing for the specified language. */
   language: string;
 }
 export const ListEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    editId: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    imageType: ListEditsImagesImageTypeEnum.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListEditsImagesRequest",
-}) as any as S.Schema<ListEditsImagesRequest>;
+S.Struct({
+  "editId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "imageType": ListEditsImagesImageTypeEnum.pipe(T.Label()),
+  "language": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListEditsImagesRequest" }) as any as S.Schema<ListEditsImagesRequest>;
 
 /** Response listing all images. */
 export interface ImagesListResponse {
@@ -9121,12 +6930,10 @@ export interface ImagesListResponse {
   images?: ImageList;
 }
 export const ImagesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    images: S.optional(ImageList),
-  }),
-).annotate({
-  identifier: "ImagesListResponse",
-}) as any as S.Schema<ImagesListResponse>;
+S.Struct({
+  "images": S.optional(ImageList),
+}),
+).annotate({ identifier: "ImagesListResponse" }) as any as S.Schema<ImagesListResponse>;
 
 export interface ListEditsListingsRequest {
   /** Package name of the app. */
@@ -9135,24 +6942,14 @@ export interface ListEditsListingsRequest {
   editId: string;
 }
 export const ListEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListEditsListingsRequest",
-}) as any as S.Schema<ListEditsListingsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/listings","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListEditsListingsRequest" }) as any as S.Schema<ListEditsListingsRequest>;
 
 export type ListingList = ReadonlyArray<Listing>;
-export const ListingList = /*@__PURE__*/ S.Array(
-  Listing,
-) as any as S.Schema<ListingList>;
+export const ListingList = /*@__PURE__*/ S.Array(Listing) as any as S.Schema<ListingList>;
 
 /** Response listing all localized listings. */
 export interface ListingsListResponse {
@@ -9162,13 +6959,11 @@ export interface ListingsListResponse {
   kind?: string;
 }
 export const ListingsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listings: S.optional(ListingList),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListingsListResponse",
-}) as any as S.Schema<ListingsListResponse>;
+S.Struct({
+  "listings": S.optional(ListingList),
+  "kind": S.optional(S.String),
+}),
+).annotate({ identifier: "ListingsListResponse" }) as any as S.Schema<ListingsListResponse>;
 
 export interface ListEditsTracksRequest {
   /** Package name of the app. */
@@ -9177,24 +6972,14 @@ export interface ListEditsTracksRequest {
   editId: string;
 }
 export const ListEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListEditsTracksRequest",
-}) as any as S.Schema<ListEditsTracksRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListEditsTracksRequest" }) as any as S.Schema<ListEditsTracksRequest>;
 
 export type TrackList = ReadonlyArray<Track>;
-export const TrackList = /*@__PURE__*/ S.Array(
-  Track,
-) as any as S.Schema<TrackList>;
+export const TrackList = /*@__PURE__*/ S.Array(Track) as any as S.Schema<TrackList>;
 
 /** Response listing all tracks. */
 export interface TracksListResponse {
@@ -9204,13 +6989,11 @@ export interface TracksListResponse {
   tracks?: TrackList;
 }
 export const TracksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    tracks: S.optional(TrackList),
-  }),
-).annotate({
-  identifier: "TracksListResponse",
-}) as any as S.Schema<TracksListResponse>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "tracks": S.optional(TrackList),
+}),
+).annotate({ identifier: "TracksListResponse" }) as any as S.Schema<TracksListResponse>;
 
 export interface ListGeneratedapksRequest {
   /** Version code of the app bundle. */
@@ -9219,19 +7002,11 @@ export interface ListGeneratedapksRequest {
   packageName: string;
 }
 export const ListGeneratedapksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionCode: S.Number.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListGeneratedapksRequest",
-}) as any as S.Schema<ListGeneratedapksRequest>;
+S.Struct({
+  "versionCode": S.Number.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListGeneratedapksRequest" }) as any as S.Schema<ListGeneratedapksRequest>;
 
 /** Download metadata for a split APK. */
 export interface GeneratedSplitApk {
@@ -9245,29 +7020,18 @@ export interface GeneratedSplitApk {
   variantId?: number;
 }
 export const GeneratedSplitApk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    moduleName: S.optional(S.String),
-    downloadId: S.optional(S.String),
-    splitId: S.optional(S.String),
-    variantId: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GeneratedSplitApk",
-}) as any as S.Schema<GeneratedSplitApk>;
+S.Struct({
+  "moduleName": S.optional(S.String),
+  "downloadId": S.optional(S.String),
+  "splitId": S.optional(S.String),
+  "variantId": S.optional(S.Number),
+}),
+).annotate({ identifier: "GeneratedSplitApk" }) as any as S.Schema<GeneratedSplitApk>;
 
 export type GeneratedSplitApkList = ReadonlyArray<GeneratedSplitApk>;
-export const GeneratedSplitApkList = /*@__PURE__*/ S.Array(
-  GeneratedSplitApk,
-) as any as S.Schema<GeneratedSplitApkList>;
+export const GeneratedSplitApkList = /*@__PURE__*/ S.Array(GeneratedSplitApk) as any as S.Schema<GeneratedSplitApkList>;
 
-export type GeneratedRecoveryApkRecoveryStatusEnum =
-  | "RECOVERY_STATUS_UNSPECIFIED"
-  | "RECOVERY_STATUS_ACTIVE"
-  | "RECOVERY_STATUS_CANCELED"
-  | "RECOVERY_STATUS_DRAFT"
-  | "RECOVERY_STATUS_GENERATION_IN_PROGRESS"
-  | "RECOVERY_STATUS_GENERATION_FAILED"
-  | (string & {});
+export type GeneratedRecoveryApkRecoveryStatusEnum = "RECOVERY_STATUS_UNSPECIFIED" | "RECOVERY_STATUS_ACTIVE" | "RECOVERY_STATUS_CANCELED" | "RECOVERY_STATUS_DRAFT" | "RECOVERY_STATUS_GENERATION_IN_PROGRESS" | "RECOVERY_STATUS_GENERATION_FAILED";
 export const GeneratedRecoveryApkRecoveryStatusEnum = /*@__PURE__*/ S.String;
 
 /** Download metadata for an app recovery module. */
@@ -9282,20 +7046,16 @@ export interface GeneratedRecoveryApk {
   moduleName?: string;
 }
 export const GeneratedRecoveryApk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recoveryId: S.optional(S.String),
-    downloadId: S.optional(S.String),
-    recoveryStatus: S.optional(GeneratedRecoveryApkRecoveryStatusEnum),
-    moduleName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GeneratedRecoveryApk",
-}) as any as S.Schema<GeneratedRecoveryApk>;
+S.Struct({
+  "recoveryId": S.optional(S.String),
+  "downloadId": S.optional(S.String),
+  "recoveryStatus": S.optional(GeneratedRecoveryApkRecoveryStatusEnum),
+  "moduleName": S.optional(S.String),
+}),
+).annotate({ identifier: "GeneratedRecoveryApk" }) as any as S.Schema<GeneratedRecoveryApk>;
 
 export type GeneratedRecoveryApkList = ReadonlyArray<GeneratedRecoveryApk>;
-export const GeneratedRecoveryApkList = /*@__PURE__*/ S.Array(
-  GeneratedRecoveryApk,
-) as any as S.Schema<GeneratedRecoveryApkList>;
+export const GeneratedRecoveryApkList = /*@__PURE__*/ S.Array(GeneratedRecoveryApk) as any as S.Schema<GeneratedRecoveryApkList>;
 
 /** Download metadata for a standalone APK. */
 export interface GeneratedStandaloneApk {
@@ -9305,18 +7065,14 @@ export interface GeneratedStandaloneApk {
   variantId?: number;
 }
 export const GeneratedStandaloneApk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    downloadId: S.optional(S.String),
-    variantId: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GeneratedStandaloneApk",
-}) as any as S.Schema<GeneratedStandaloneApk>;
+S.Struct({
+  "downloadId": S.optional(S.String),
+  "variantId": S.optional(S.Number),
+}),
+).annotate({ identifier: "GeneratedStandaloneApk" }) as any as S.Schema<GeneratedStandaloneApk>;
 
 export type GeneratedStandaloneApkList = ReadonlyArray<GeneratedStandaloneApk>;
-export const GeneratedStandaloneApkList = /*@__PURE__*/ S.Array(
-  GeneratedStandaloneApk,
-) as any as S.Schema<GeneratedStandaloneApkList>;
+export const GeneratedStandaloneApkList = /*@__PURE__*/ S.Array(GeneratedStandaloneApk) as any as S.Schema<GeneratedStandaloneApkList>;
 
 /** Download metadata for a universal APK. */
 export interface GeneratedUniversalApk {
@@ -9324,19 +7080,12 @@ export interface GeneratedUniversalApk {
   downloadId?: string;
 }
 export const GeneratedUniversalApk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    downloadId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GeneratedUniversalApk",
-}) as any as S.Schema<GeneratedUniversalApk>;
+S.Struct({
+  "downloadId": S.optional(S.String),
+}),
+).annotate({ identifier: "GeneratedUniversalApk" }) as any as S.Schema<GeneratedUniversalApk>;
 
-export type AssetModuleMetadataDeliveryTypeEnum =
-  | "UNKNOWN_DELIVERY_TYPE"
-  | "INSTALL_TIME"
-  | "ON_DEMAND"
-  | "FAST_FOLLOW"
-  | (string & {});
+export type AssetModuleMetadataDeliveryTypeEnum = "UNKNOWN_DELIVERY_TYPE" | "INSTALL_TIME" | "ON_DEMAND" | "FAST_FOLLOW";
 export const AssetModuleMetadataDeliveryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of an asset module. */
@@ -9347,13 +7096,11 @@ export interface AssetModuleMetadata {
   name?: string;
 }
 export const AssetModuleMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryType: S.optional(AssetModuleMetadataDeliveryTypeEnum),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AssetModuleMetadata",
-}) as any as S.Schema<AssetModuleMetadata>;
+S.Struct({
+  "deliveryType": S.optional(AssetModuleMetadataDeliveryTypeEnum),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "AssetModuleMetadata" }) as any as S.Schema<AssetModuleMetadata>;
 
 /** Holds data specific to Split APKs. */
 export interface SplitApkMetadata {
@@ -9363,13 +7110,11 @@ export interface SplitApkMetadata {
   splitId?: string;
 }
 export const SplitApkMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isMasterSplit: S.optional(S.Boolean),
-    splitId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SplitApkMetadata",
-}) as any as S.Schema<SplitApkMetadata>;
+S.Struct({
+  "isMasterSplit": S.optional(S.Boolean),
+  "splitId": S.optional(S.String),
+}),
+).annotate({ identifier: "SplitApkMetadata" }) as any as S.Schema<SplitApkMetadata>;
 
 /** Targeting based on language. */
 export interface LanguageTargeting {
@@ -9379,13 +7124,11 @@ export interface LanguageTargeting {
   alternatives?: StringList;
 }
 export const LanguageTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(StringList),
-    alternatives: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "LanguageTargeting",
-}) as any as S.Schema<LanguageTargeting>;
+S.Struct({
+  "value": S.optional(StringList),
+  "alternatives": S.optional(StringList),
+}),
+).annotate({ identifier: "LanguageTargeting" }) as any as S.Schema<LanguageTargeting>;
 
 /** Represents an sdk version. */
 export interface SdkVersion {
@@ -9393,15 +7136,13 @@ export interface SdkVersion {
   min?: number;
 }
 export const SdkVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    min: S.optional(S.Number),
-  }),
+S.Struct({
+  "min": S.optional(S.Number),
+}),
 ).annotate({ identifier: "SdkVersion" }) as any as S.Schema<SdkVersion>;
 
 export type SdkVersionList = ReadonlyArray<SdkVersion>;
-export const SdkVersionList = /*@__PURE__*/ S.Array(
-  SdkVersion,
-) as any as S.Schema<SdkVersionList>;
+export const SdkVersionList = /*@__PURE__*/ S.Array(SdkVersion) as any as S.Schema<SdkVersionList>;
 
 /** Targeting based on sdk version. */
 export interface SdkVersionTargeting {
@@ -9411,23 +7152,13 @@ export interface SdkVersionTargeting {
   alternatives?: SdkVersionList;
 }
 export const SdkVersionTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SdkVersionList),
-    alternatives: S.optional(SdkVersionList),
-  }),
-).annotate({
-  identifier: "SdkVersionTargeting",
-}) as any as S.Schema<SdkVersionTargeting>;
+S.Struct({
+  "value": S.optional(SdkVersionList),
+  "alternatives": S.optional(SdkVersionList),
+}),
+).annotate({ identifier: "SdkVersionTargeting" }) as any as S.Schema<SdkVersionTargeting>;
 
-export type AbiAliasEnum =
-  | "UNSPECIFIED_CPU_ARCHITECTURE"
-  | "ARMEABI"
-  | "ARMEABI_V7A"
-  | "ARM64_V8A"
-  | "X86"
-  | "X86_64"
-  | "RISCV64"
-  | (string & {});
+export type AbiAliasEnum = "UNSPECIFIED_CPU_ARCHITECTURE" | "ARMEABI" | "ARMEABI_V7A" | "ARM64_V8A" | "X86" | "X86_64" | "RISCV64";
 export const AbiAliasEnum = /*@__PURE__*/ S.String;
 
 /** Represents an Abi. */
@@ -9436,9 +7167,9 @@ export interface Abi {
   alias?: AbiAliasEnum;
 }
 export const Abi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(AbiAliasEnum),
-  }),
+S.Struct({
+  "alias": S.optional(AbiAliasEnum),
+}),
 ).annotate({ identifier: "Abi" }) as any as S.Schema<Abi>;
 
 export type AbiList = ReadonlyArray<Abi>;
@@ -9452,10 +7183,10 @@ export interface AbiTargeting {
   alternatives?: AbiList;
 }
 export const AbiTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AbiList),
-    alternatives: S.optional(AbiList),
-  }),
+S.Struct({
+  "value": S.optional(AbiList),
+  "alternatives": S.optional(AbiList),
+}),
 ).annotate({ identifier: "AbiTargeting" }) as any as S.Schema<AbiTargeting>;
 
 /** Represents a list of ABIs. */
@@ -9464,15 +7195,13 @@ export interface MultiAbi {
   abi?: AbiList;
 }
 export const MultiAbi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    abi: S.optional(AbiList),
-  }),
+S.Struct({
+  "abi": S.optional(AbiList),
+}),
 ).annotate({ identifier: "MultiAbi" }) as any as S.Schema<MultiAbi>;
 
 export type MultiAbiList = ReadonlyArray<MultiAbi>;
-export const MultiAbiList = /*@__PURE__*/ S.Array(
-  MultiAbi,
-) as any as S.Schema<MultiAbiList>;
+export const MultiAbiList = /*@__PURE__*/ S.Array(MultiAbi) as any as S.Schema<MultiAbiList>;
 
 /** Targeting based on multiple abis. */
 export interface MultiAbiTargeting {
@@ -9482,25 +7211,13 @@ export interface MultiAbiTargeting {
   alternatives?: MultiAbiList;
 }
 export const MultiAbiTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(MultiAbiList),
-    alternatives: S.optional(MultiAbiList),
-  }),
-).annotate({
-  identifier: "MultiAbiTargeting",
-}) as any as S.Schema<MultiAbiTargeting>;
+S.Struct({
+  "value": S.optional(MultiAbiList),
+  "alternatives": S.optional(MultiAbiList),
+}),
+).annotate({ identifier: "MultiAbiTargeting" }) as any as S.Schema<MultiAbiTargeting>;
 
-export type ScreenDensityDensityAliasEnum =
-  | "DENSITY_UNSPECIFIED"
-  | "NODPI"
-  | "LDPI"
-  | "MDPI"
-  | "TVDPI"
-  | "HDPI"
-  | "XHDPI"
-  | "XXHDPI"
-  | "XXXHDPI"
-  | (string & {});
+export type ScreenDensityDensityAliasEnum = "DENSITY_UNSPECIFIED" | "NODPI" | "LDPI" | "MDPI" | "TVDPI" | "HDPI" | "XHDPI" | "XXHDPI" | "XXXHDPI";
 export const ScreenDensityDensityAliasEnum = /*@__PURE__*/ S.String;
 
 /** Represents a screen density. */
@@ -9511,16 +7228,14 @@ export interface ScreenDensity {
   densityDpi?: number;
 }
 export const ScreenDensity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    densityAlias: S.optional(ScreenDensityDensityAliasEnum),
-    densityDpi: S.optional(S.Number),
-  }),
+S.Struct({
+  "densityAlias": S.optional(ScreenDensityDensityAliasEnum),
+  "densityDpi": S.optional(S.Number),
+}),
 ).annotate({ identifier: "ScreenDensity" }) as any as S.Schema<ScreenDensity>;
 
 export type ScreenDensityList = ReadonlyArray<ScreenDensity>;
-export const ScreenDensityList = /*@__PURE__*/ S.Array(
-  ScreenDensity,
-) as any as S.Schema<ScreenDensityList>;
+export const ScreenDensityList = /*@__PURE__*/ S.Array(ScreenDensity) as any as S.Schema<ScreenDensityList>;
 
 /** Targeting based on screen density. */
 export interface ScreenDensityTargeting {
@@ -9530,27 +7245,13 @@ export interface ScreenDensityTargeting {
   alternatives?: ScreenDensityList;
 }
 export const ScreenDensityTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ScreenDensityList),
-    alternatives: S.optional(ScreenDensityList),
-  }),
-).annotate({
-  identifier: "ScreenDensityTargeting",
-}) as any as S.Schema<ScreenDensityTargeting>;
+S.Struct({
+  "value": S.optional(ScreenDensityList),
+  "alternatives": S.optional(ScreenDensityList),
+}),
+).annotate({ identifier: "ScreenDensityTargeting" }) as any as S.Schema<ScreenDensityTargeting>;
 
-export type TextureCompressionFormatAliasEnum =
-  | "UNSPECIFIED_TEXTURE_COMPRESSION_FORMAT"
-  | "ETC1_RGB8"
-  | "PALETTED"
-  | "THREE_DC"
-  | "ATC"
-  | "LATC"
-  | "DXT1"
-  | "S3TC"
-  | "PVRTC"
-  | "ASTC"
-  | "ETC2"
-  | (string & {});
+export type TextureCompressionFormatAliasEnum = "UNSPECIFIED_TEXTURE_COMPRESSION_FORMAT" | "ETC1_RGB8" | "PALETTED" | "THREE_DC" | "ATC" | "LATC" | "DXT1" | "S3TC" | "PVRTC" | "ASTC" | "ETC2";
 export const TextureCompressionFormatAliasEnum = /*@__PURE__*/ S.String;
 
 /** Represents texture compression format. */
@@ -9559,18 +7260,13 @@ export interface TextureCompressionFormat {
   alias?: TextureCompressionFormatAliasEnum;
 }
 export const TextureCompressionFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(TextureCompressionFormatAliasEnum),
-  }),
-).annotate({
-  identifier: "TextureCompressionFormat",
-}) as any as S.Schema<TextureCompressionFormat>;
+S.Struct({
+  "alias": S.optional(TextureCompressionFormatAliasEnum),
+}),
+).annotate({ identifier: "TextureCompressionFormat" }) as any as S.Schema<TextureCompressionFormat>;
 
-export type TextureCompressionFormatList =
-  ReadonlyArray<TextureCompressionFormat>;
-export const TextureCompressionFormatList = /*@__PURE__*/ S.Array(
-  TextureCompressionFormat,
-) as any as S.Schema<TextureCompressionFormatList>;
+export type TextureCompressionFormatList = ReadonlyArray<TextureCompressionFormat>;
+export const TextureCompressionFormatList = /*@__PURE__*/ S.Array(TextureCompressionFormat) as any as S.Schema<TextureCompressionFormatList>;
 
 /** Targeting by a texture compression format. */
 export interface TextureCompressionFormatTargeting {
@@ -9580,13 +7276,11 @@ export interface TextureCompressionFormatTargeting {
   alternatives?: TextureCompressionFormatList;
 }
 export const TextureCompressionFormatTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(TextureCompressionFormatList),
-    alternatives: S.optional(TextureCompressionFormatList),
-  }),
-).annotate({
-  identifier: "TextureCompressionFormatTargeting",
-}) as any as S.Schema<TextureCompressionFormatTargeting>;
+S.Struct({
+  "value": S.optional(TextureCompressionFormatList),
+  "alternatives": S.optional(TextureCompressionFormatList),
+}),
+).annotate({ identifier: "TextureCompressionFormatTargeting" }) as any as S.Schema<TextureCompressionFormatTargeting>;
 
 /** Represents a set of apk-level targetings. */
 export interface ApkTargeting {
@@ -9604,16 +7298,14 @@ export interface ApkTargeting {
   textureCompressionFormatTargeting?: TextureCompressionFormatTargeting;
 }
 export const ApkTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageTargeting: S.optional(LanguageTargeting),
-    sdkVersionTargeting: S.optional(SdkVersionTargeting),
-    abiTargeting: S.optional(AbiTargeting),
-    multiAbiTargeting: S.optional(MultiAbiTargeting),
-    screenDensityTargeting: S.optional(ScreenDensityTargeting),
-    textureCompressionFormatTargeting: S.optional(
-      TextureCompressionFormatTargeting,
-    ),
-  }),
+S.Struct({
+  "languageTargeting": S.optional(LanguageTargeting),
+  "sdkVersionTargeting": S.optional(SdkVersionTargeting),
+  "abiTargeting": S.optional(AbiTargeting),
+  "multiAbiTargeting": S.optional(MultiAbiTargeting),
+  "screenDensityTargeting": S.optional(ScreenDensityTargeting),
+  "textureCompressionFormatTargeting": S.optional(TextureCompressionFormatTargeting),
+}),
 ).annotate({ identifier: "ApkTargeting" }) as any as S.Schema<ApkTargeting>;
 
 /** Holds data specific to Standalone APKs. */
@@ -9622,12 +7314,10 @@ export interface StandaloneApkMetadata {
   fusedModuleName?: StringList;
 }
 export const StandaloneApkMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fusedModuleName: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "StandaloneApkMetadata",
-}) as any as S.Schema<StandaloneApkMetadata>;
+S.Struct({
+  "fusedModuleName": S.optional(StringList),
+}),
+).annotate({ identifier: "StandaloneApkMetadata" }) as any as S.Schema<StandaloneApkMetadata>;
 
 /** Description of the created apks. */
 export interface ApkDescription {
@@ -9645,20 +7335,18 @@ export interface ApkDescription {
   assetSliceMetadata?: SplitApkMetadata;
 }
 export const ApkDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    splitApkMetadata: S.optional(SplitApkMetadata),
-    targeting: S.optional(ApkTargeting),
-    path: S.optional(S.String),
-    instantApkMetadata: S.optional(SplitApkMetadata),
-    standaloneApkMetadata: S.optional(StandaloneApkMetadata),
-    assetSliceMetadata: S.optional(SplitApkMetadata),
-  }),
+S.Struct({
+  "splitApkMetadata": S.optional(SplitApkMetadata),
+  "targeting": S.optional(ApkTargeting),
+  "path": S.optional(S.String),
+  "instantApkMetadata": S.optional(SplitApkMetadata),
+  "standaloneApkMetadata": S.optional(StandaloneApkMetadata),
+  "assetSliceMetadata": S.optional(SplitApkMetadata),
+}),
 ).annotate({ identifier: "ApkDescription" }) as any as S.Schema<ApkDescription>;
 
 export type ApkDescriptionList = ReadonlyArray<ApkDescription>;
-export const ApkDescriptionList = /*@__PURE__*/ S.Array(
-  ApkDescription,
-) as any as S.Schema<ApkDescriptionList>;
+export const ApkDescriptionList = /*@__PURE__*/ S.Array(ApkDescription) as any as S.Schema<ApkDescriptionList>;
 
 /** Set of asset slices belonging to a single asset module. */
 export interface AssetSliceSet {
@@ -9668,16 +7356,14 @@ export interface AssetSliceSet {
   apkDescription?: ApkDescriptionList;
 }
 export const AssetSliceSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assetModuleMetadata: S.optional(AssetModuleMetadata),
-    apkDescription: S.optional(ApkDescriptionList),
-  }),
+S.Struct({
+  "assetModuleMetadata": S.optional(AssetModuleMetadata),
+  "apkDescription": S.optional(ApkDescriptionList),
+}),
 ).annotate({ identifier: "AssetSliceSet" }) as any as S.Schema<AssetSliceSet>;
 
 export type AssetSliceSetList = ReadonlyArray<AssetSliceSet>;
-export const AssetSliceSetList = /*@__PURE__*/ S.Array(
-  AssetSliceSet,
-) as any as S.Schema<AssetSliceSetList>;
+export const AssetSliceSetList = /*@__PURE__*/ S.Array(AssetSliceSet) as any as S.Schema<AssetSliceSetList>;
 
 /** Targeting on the level of variants. */
 export interface VariantTargeting {
@@ -9693,31 +7379,19 @@ export interface VariantTargeting {
   textureCompressionFormatTargeting?: TextureCompressionFormatTargeting;
 }
 export const VariantTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sdkVersionTargeting: S.optional(SdkVersionTargeting),
-    abiTargeting: S.optional(AbiTargeting),
-    multiAbiTargeting: S.optional(MultiAbiTargeting),
-    screenDensityTargeting: S.optional(ScreenDensityTargeting),
-    textureCompressionFormatTargeting: S.optional(
-      TextureCompressionFormatTargeting,
-    ),
-  }),
-).annotate({
-  identifier: "VariantTargeting",
-}) as any as S.Schema<VariantTargeting>;
+S.Struct({
+  "sdkVersionTargeting": S.optional(SdkVersionTargeting),
+  "abiTargeting": S.optional(AbiTargeting),
+  "multiAbiTargeting": S.optional(MultiAbiTargeting),
+  "screenDensityTargeting": S.optional(ScreenDensityTargeting),
+  "textureCompressionFormatTargeting": S.optional(TextureCompressionFormatTargeting),
+}),
+).annotate({ identifier: "VariantTargeting" }) as any as S.Schema<VariantTargeting>;
 
-export type ModuleMetadataModuleTypeEnum =
-  | "UNKNOWN_MODULE_TYPE"
-  | "FEATURE_MODULE"
-  | (string & {});
+export type ModuleMetadataModuleTypeEnum = "UNKNOWN_MODULE_TYPE" | "FEATURE_MODULE";
 export const ModuleMetadataModuleTypeEnum = /*@__PURE__*/ S.String;
 
-export type ModuleMetadataDeliveryTypeEnum =
-  | "UNKNOWN_DELIVERY_TYPE"
-  | "INSTALL_TIME"
-  | "ON_DEMAND"
-  | "FAST_FOLLOW"
-  | (string & {});
+export type ModuleMetadataDeliveryTypeEnum = "UNKNOWN_DELIVERY_TYPE" | "INSTALL_TIME" | "ON_DEMAND" | "FAST_FOLLOW";
 export const ModuleMetadataDeliveryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a device feature. */
@@ -9728,10 +7402,10 @@ export interface DeviceFeature {
   featureName?: string;
 }
 export const DeviceFeature = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    featureVersion: S.optional(S.Number),
-    featureName: S.optional(S.String),
-  }),
+S.Struct({
+  "featureVersion": S.optional(S.Number),
+  "featureName": S.optional(S.String),
+}),
 ).annotate({ identifier: "DeviceFeature" }) as any as S.Schema<DeviceFeature>;
 
 /** Targeting for a device feature. */
@@ -9740,17 +7414,13 @@ export interface DeviceFeatureTargeting {
   requiredFeature?: DeviceFeature;
 }
 export const DeviceFeatureTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requiredFeature: S.optional(DeviceFeature),
-  }),
-).annotate({
-  identifier: "DeviceFeatureTargeting",
-}) as any as S.Schema<DeviceFeatureTargeting>;
+S.Struct({
+  "requiredFeature": S.optional(DeviceFeature),
+}),
+).annotate({ identifier: "DeviceFeatureTargeting" }) as any as S.Schema<DeviceFeatureTargeting>;
 
 export type DeviceFeatureTargetingList = ReadonlyArray<DeviceFeatureTargeting>;
-export const DeviceFeatureTargetingList = /*@__PURE__*/ S.Array(
-  DeviceFeatureTargeting,
-) as any as S.Schema<DeviceFeatureTargetingList>;
+export const DeviceFeatureTargetingList = /*@__PURE__*/ S.Array(DeviceFeatureTargeting) as any as S.Schema<DeviceFeatureTargetingList>;
 
 /** Describes an inclusive/exclusive list of country codes that module targets. */
 export interface UserCountriesTargeting {
@@ -9760,13 +7430,11 @@ export interface UserCountriesTargeting {
   countryCodes?: StringList;
 }
 export const UserCountriesTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exclude: S.optional(S.Boolean),
-    countryCodes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "UserCountriesTargeting",
-}) as any as S.Schema<UserCountriesTargeting>;
+S.Struct({
+  "exclude": S.optional(S.Boolean),
+  "countryCodes": S.optional(StringList),
+}),
+).annotate({ identifier: "UserCountriesTargeting" }) as any as S.Schema<UserCountriesTargeting>;
 
 /** Targeting on the module level. */
 export interface ModuleTargeting {
@@ -9778,14 +7446,12 @@ export interface ModuleTargeting {
   userCountriesTargeting?: UserCountriesTargeting;
 }
 export const ModuleTargeting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceFeatureTargeting: S.optional(DeviceFeatureTargetingList),
-    sdkVersionTargeting: S.optional(SdkVersionTargeting),
-    userCountriesTargeting: S.optional(UserCountriesTargeting),
-  }),
-).annotate({
-  identifier: "ModuleTargeting",
-}) as any as S.Schema<ModuleTargeting>;
+S.Struct({
+  "deviceFeatureTargeting": S.optional(DeviceFeatureTargetingList),
+  "sdkVersionTargeting": S.optional(SdkVersionTargeting),
+  "userCountriesTargeting": S.optional(UserCountriesTargeting),
+}),
+).annotate({ identifier: "ModuleTargeting" }) as any as S.Schema<ModuleTargeting>;
 
 /** Metadata of a module. */
 export interface ModuleMetadata {
@@ -9801,13 +7467,13 @@ export interface ModuleMetadata {
   targeting?: ModuleTargeting;
 }
 export const ModuleMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dependencies: S.optional(StringList),
-    name: S.optional(S.String),
-    moduleType: S.optional(ModuleMetadataModuleTypeEnum),
-    deliveryType: S.optional(ModuleMetadataDeliveryTypeEnum),
-    targeting: S.optional(ModuleTargeting),
-  }),
+S.Struct({
+  "dependencies": S.optional(StringList),
+  "name": S.optional(S.String),
+  "moduleType": S.optional(ModuleMetadataModuleTypeEnum),
+  "deliveryType": S.optional(ModuleMetadataDeliveryTypeEnum),
+  "targeting": S.optional(ModuleTargeting),
+}),
 ).annotate({ identifier: "ModuleMetadata" }) as any as S.Schema<ModuleMetadata>;
 
 /** A set of apks representing a module. */
@@ -9818,16 +7484,14 @@ export interface ApkSet {
   apkDescription?: ApkDescriptionList;
 }
 export const ApkSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    moduleMetadata: S.optional(ModuleMetadata),
-    apkDescription: S.optional(ApkDescriptionList),
-  }),
+S.Struct({
+  "moduleMetadata": S.optional(ModuleMetadata),
+  "apkDescription": S.optional(ApkDescriptionList),
+}),
 ).annotate({ identifier: "ApkSet" }) as any as S.Schema<ApkSet>;
 
 export type ApkSetList = ReadonlyArray<ApkSet>;
-export const ApkSetList = /*@__PURE__*/ S.Array(
-  ApkSet,
-) as any as S.Schema<ApkSetList>;
+export const ApkSetList = /*@__PURE__*/ S.Array(ApkSet) as any as S.Schema<ApkSetList>;
 
 /** Variant is a group of APKs that covers a part of the device configuration space. APKs from multiple variants are never combined on one device. */
 export interface SplitApkVariant {
@@ -9839,19 +7503,15 @@ export interface SplitApkVariant {
   variantNumber?: number;
 }
 export const SplitApkVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targeting: S.optional(VariantTargeting),
-    apkSet: S.optional(ApkSetList),
-    variantNumber: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SplitApkVariant",
-}) as any as S.Schema<SplitApkVariant>;
+S.Struct({
+  "targeting": S.optional(VariantTargeting),
+  "apkSet": S.optional(ApkSetList),
+  "variantNumber": S.optional(S.Number),
+}),
+).annotate({ identifier: "SplitApkVariant" }) as any as S.Schema<SplitApkVariant>;
 
 export type SplitApkVariantList = ReadonlyArray<SplitApkVariant>;
-export const SplitApkVariantList = /*@__PURE__*/ S.Array(
-  SplitApkVariant,
-) as any as S.Schema<SplitApkVariantList>;
+export const SplitApkVariantList = /*@__PURE__*/ S.Array(SplitApkVariant) as any as S.Schema<SplitApkVariantList>;
 
 /** Targeting information about the generated apks. */
 export interface TargetingInfo {
@@ -9863,11 +7523,11 @@ export interface TargetingInfo {
   variant?: SplitApkVariantList;
 }
 export const TargetingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.optional(S.String),
-    assetSliceSet: S.optional(AssetSliceSetList),
-    variant: S.optional(SplitApkVariantList),
-  }),
+S.Struct({
+  "packageName": S.optional(S.String),
+  "assetSliceSet": S.optional(AssetSliceSetList),
+  "variant": S.optional(SplitApkVariantList),
+}),
 ).annotate({ identifier: "TargetingInfo" }) as any as S.Schema<TargetingInfo>;
 
 /** Download metadata for an asset pack slice. */
@@ -9882,21 +7542,16 @@ export interface GeneratedAssetPackSlice {
   sliceId?: string;
 }
 export const GeneratedAssetPackSlice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    downloadId: S.optional(S.String),
-    version: S.optional(S.String),
-    moduleName: S.optional(S.String),
-    sliceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GeneratedAssetPackSlice",
-}) as any as S.Schema<GeneratedAssetPackSlice>;
+S.Struct({
+  "downloadId": S.optional(S.String),
+  "version": S.optional(S.String),
+  "moduleName": S.optional(S.String),
+  "sliceId": S.optional(S.String),
+}),
+).annotate({ identifier: "GeneratedAssetPackSlice" }) as any as S.Schema<GeneratedAssetPackSlice>;
 
-export type GeneratedAssetPackSliceList =
-  ReadonlyArray<GeneratedAssetPackSlice>;
-export const GeneratedAssetPackSliceList = /*@__PURE__*/ S.Array(
-  GeneratedAssetPackSlice,
-) as any as S.Schema<GeneratedAssetPackSliceList>;
+export type GeneratedAssetPackSliceList = ReadonlyArray<GeneratedAssetPackSlice>;
+export const GeneratedAssetPackSliceList = /*@__PURE__*/ S.Array(GeneratedAssetPackSlice) as any as S.Schema<GeneratedAssetPackSliceList>;
 
 /** Download metadata for split, standalone and universal APKs, as well as asset pack slices, signed with a given key. */
 export interface GeneratedApksPerSigningKey {
@@ -9920,26 +7575,21 @@ export interface GeneratedApksPerSigningKey {
   generatedAssetPackSlices?: GeneratedAssetPackSliceList;
 }
 export const GeneratedApksPerSigningKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generatedSplitApks: S.optional(GeneratedSplitApkList),
-    generatedRecoveryModules: S.optional(GeneratedRecoveryApkList),
-    unprotectedGeneratedSplitApks: S.optional(GeneratedSplitApkList),
-    certificateSha256Hash: S.optional(S.String),
-    generatedStandaloneApks: S.optional(GeneratedStandaloneApkList),
-    generatedUniversalApk: S.optional(GeneratedUniversalApk),
-    unprotectedGeneratedStandaloneApks: S.optional(GeneratedStandaloneApkList),
-    targetingInfo: S.optional(TargetingInfo),
-    generatedAssetPackSlices: S.optional(GeneratedAssetPackSliceList),
-  }),
-).annotate({
-  identifier: "GeneratedApksPerSigningKey",
-}) as any as S.Schema<GeneratedApksPerSigningKey>;
+S.Struct({
+  "generatedSplitApks": S.optional(GeneratedSplitApkList),
+  "generatedRecoveryModules": S.optional(GeneratedRecoveryApkList),
+  "unprotectedGeneratedSplitApks": S.optional(GeneratedSplitApkList),
+  "certificateSha256Hash": S.optional(S.String),
+  "generatedStandaloneApks": S.optional(GeneratedStandaloneApkList),
+  "generatedUniversalApk": S.optional(GeneratedUniversalApk),
+  "unprotectedGeneratedStandaloneApks": S.optional(GeneratedStandaloneApkList),
+  "targetingInfo": S.optional(TargetingInfo),
+  "generatedAssetPackSlices": S.optional(GeneratedAssetPackSliceList),
+}),
+).annotate({ identifier: "GeneratedApksPerSigningKey" }) as any as S.Schema<GeneratedApksPerSigningKey>;
 
-export type GeneratedApksPerSigningKeyList =
-  ReadonlyArray<GeneratedApksPerSigningKey>;
-export const GeneratedApksPerSigningKeyList = /*@__PURE__*/ S.Array(
-  GeneratedApksPerSigningKey,
-) as any as S.Schema<GeneratedApksPerSigningKeyList>;
+export type GeneratedApksPerSigningKeyList = ReadonlyArray<GeneratedApksPerSigningKey>;
+export const GeneratedApksPerSigningKeyList = /*@__PURE__*/ S.Array(GeneratedApksPerSigningKey) as any as S.Schema<GeneratedApksPerSigningKeyList>;
 
 /** Response to list generated APKs. */
 export interface GeneratedApksListResponse {
@@ -9947,12 +7597,10 @@ export interface GeneratedApksListResponse {
   generatedApks?: GeneratedApksPerSigningKeyList;
 }
 export const GeneratedApksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generatedApks: S.optional(GeneratedApksPerSigningKeyList),
-  }),
-).annotate({
-  identifier: "GeneratedApksListResponse",
-}) as any as S.Schema<GeneratedApksListResponse>;
+S.Struct({
+  "generatedApks": S.optional(GeneratedApksPerSigningKeyList),
+}),
+).annotate({ identifier: "GeneratedApksListResponse" }) as any as S.Schema<GeneratedApksListResponse>;
 
 export interface ListInappproductsRequest {
   /** Deprecated and ignored. The page size is determined by the server. */
@@ -9965,21 +7613,13 @@ export interface ListInappproductsRequest {
   startIndex?: number;
 }
 export const ListInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    packageName: S.String.pipe(T.Label()),
-    token: S.optional(S.String.pipe(T.Query())),
-    startIndex: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/inappproducts",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListInappproductsRequest",
-}) as any as S.Schema<ListInappproductsRequest>;
+S.Struct({
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.optional(S.String.pipe(T.Query())),
+  "startIndex": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/inappproducts","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListInappproductsRequest" }) as any as S.Schema<ListInappproductsRequest>;
 
 /** Pagination information returned by a List operation when token pagination is enabled. List operations that supports paging return only one "page" of results. This protocol buffer message describes the page that has been returned. When using token pagination, clients should use the next/previous token to get another page of the result. The presence or absence of next/previous token indicates whether a next/previous page is available and provides a mean of accessing this page. ListRequest.page_token should be set to either next_page_token or previous_page_token to access another page. */
 export interface TokenPagination {
@@ -9988,13 +7628,11 @@ export interface TokenPagination {
   previousPageToken?: string;
 }
 export const TokenPagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    previousPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TokenPagination",
-}) as any as S.Schema<TokenPagination>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "previousPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "TokenPagination" }) as any as S.Schema<TokenPagination>;
 
 /** Information about the current page. List operations that supports paging return only one "page" of results. This protocol buffer message describes the page that has been returned. */
 export interface PageInfo {
@@ -10006,11 +7644,11 @@ export interface PageInfo {
   startIndex?: number;
 }
 export const PageInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resultPerPage: S.optional(S.Number),
-    totalResults: S.optional(S.Number),
-    startIndex: S.optional(S.Number),
-  }),
+S.Struct({
+  "resultPerPage": S.optional(S.Number),
+  "totalResults": S.optional(S.Number),
+  "startIndex": S.optional(S.Number),
+}),
 ).annotate({ identifier: "PageInfo" }) as any as S.Schema<PageInfo>;
 
 /** Response listing all in-app products. */
@@ -10025,15 +7663,13 @@ export interface InappproductsListResponse {
   pageInfo?: PageInfo;
 }
 export const InappproductsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inappproduct: S.optional(InAppProductList),
-    tokenPagination: S.optional(TokenPagination),
-    kind: S.optional(S.String),
-    pageInfo: S.optional(PageInfo),
-  }),
-).annotate({
-  identifier: "InappproductsListResponse",
-}) as any as S.Schema<InappproductsListResponse>;
+S.Struct({
+  "inappproduct": S.optional(InAppProductList),
+  "tokenPagination": S.optional(TokenPagination),
+  "kind": S.optional(S.String),
+  "pageInfo": S.optional(PageInfo),
+}),
+).annotate({ identifier: "InappproductsListResponse" }) as any as S.Schema<InappproductsListResponse>;
 
 export interface ListMonetizationOnetimeproductsRequest {
   /** Required. The parent app (package name) for which the one-time product should be read. */
@@ -10043,22 +7679,13 @@ export interface ListMonetizationOnetimeproductsRequest {
   /** Optional. A page token, received from a previous `ListOneTimeProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListOneTimeProducts` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListMonetizationOnetimeproductsRequest",
-}) as any as S.Schema<ListMonetizationOnetimeproductsRequest>;
+export const ListMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListMonetizationOnetimeproductsRequest" }) as any as S.Schema<ListMonetizationOnetimeproductsRequest>;
 
 /** Response message for ListOneTimeProducts. */
 export interface ListOneTimeProductsResponse {
@@ -10068,13 +7695,11 @@ export interface ListOneTimeProductsResponse {
   nextPageToken?: string;
 }
 export const ListOneTimeProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeProducts: S.optional(OneTimeProductList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOneTimeProductsResponse",
-}) as any as S.Schema<ListOneTimeProductsResponse>;
+S.Struct({
+  "oneTimeProducts": S.optional(OneTimeProductList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOneTimeProductsResponse" }) as any as S.Schema<ListOneTimeProductsResponse>;
 
 export interface ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The parent one-time product (ID) for which the offers should be read. May be specified as '-' to read all offers under an app. */
@@ -10088,24 +7713,15 @@ export interface ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Optional. The maximum number of offers to return. The service may return fewer than this value. If unspecified, at most 50 offers will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      purchaseOptionId: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+export const ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "purchaseOptionId": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest" }) as any as S.Schema<ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 /** Response message for ListOneTimeProductOffers. */
 export interface ListOneTimeProductOffersResponse {
@@ -10115,13 +7731,11 @@ export interface ListOneTimeProductOffersResponse {
   nextPageToken?: string;
 }
 export const ListOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeProductOffers: S.optional(OneTimeProductOfferList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOneTimeProductOffersResponse",
-}) as any as S.Schema<ListOneTimeProductOffersResponse>;
+S.Struct({
+  "oneTimeProductOffers": S.optional(OneTimeProductOfferList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOneTimeProductOffersResponse" }) as any as S.Schema<ListOneTimeProductOffersResponse>;
 
 export interface ListMonetizationSubscriptionsRequest {
   /** Required. The parent app (package name) for which the subscriptions should be read. */
@@ -10133,23 +7747,14 @@ export interface ListMonetizationSubscriptionsRequest {
   /** Deprecated: subscription archiving is not supported. */
   showArchived?: boolean;
 }
-export const ListMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      showArchived: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListMonetizationSubscriptionsRequest",
-}) as any as S.Schema<ListMonetizationSubscriptionsRequest>;
+export const ListMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "showArchived": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/subscriptions","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListMonetizationSubscriptionsRequest" }) as any as S.Schema<ListMonetizationSubscriptionsRequest>;
 
 /** Response message for ListSubscriptions. */
 export interface ListSubscriptionsResponse {
@@ -10159,13 +7764,11 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptions: S.optional(SubscriptionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSubscriptionsResponse",
-}) as any as S.Schema<ListSubscriptionsResponse>;
+S.Struct({
+  "subscriptions": S.optional(SubscriptionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListSubscriptionsResponse" }) as any as S.Schema<ListSubscriptionsResponse>;
 
 export interface ListMonetizationSubscriptionsBasePlansOffersRequest {
   /** The maximum number of subscriptions to return. The service may return fewer than this value. If unspecified, at most 50 subscriptions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -10179,24 +7782,15 @@ export interface ListMonetizationSubscriptionsBasePlansOffersRequest {
   /** A page token, received from a previous `ListSubscriptionsOffers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptionOffers` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      basePlanId: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<ListMonetizationSubscriptionsBasePlansOffersRequest>;
+export const ListMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "basePlanId": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListMonetizationSubscriptionsBasePlansOffersRequest" }) as any as S.Schema<ListMonetizationSubscriptionsBasePlansOffersRequest>;
 
 /** Response message for ListSubscriptionOffers. */
 export interface ListSubscriptionOffersResponse {
@@ -10206,13 +7800,11 @@ export interface ListSubscriptionOffersResponse {
   nextPageToken?: string;
 }
 export const ListSubscriptionOffersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionOffers: S.optional(SubscriptionOfferList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSubscriptionOffersResponse",
-}) as any as S.Schema<ListSubscriptionOffersResponse>;
+S.Struct({
+  "subscriptionOffers": S.optional(SubscriptionOfferList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListSubscriptionOffersResponse" }) as any as S.Schema<ListSubscriptionOffersResponse>;
 
 export interface ListPurchasesVoidedpurchasesRequest {
   /** Defines the token of the page to return, usually taken from TokenPagination. This can only be used if token paging is enabled. */
@@ -10233,25 +7825,17 @@ export interface ListPurchasesVoidedpurchasesRequest {
   endTime?: string;
 }
 export const ListPurchasesVoidedpurchasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    startTime: S.optional(S.String.pipe(T.Query())),
-    type: S.optional(S.Number.pipe(T.Query())),
-    packageName: S.String.pipe(T.Label()),
-    startIndex: S.optional(S.Number.pipe(T.Query())),
-    includeQuantityBasedPartialRefund: S.optional(S.Boolean.pipe(T.Query())),
-    endTime: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListPurchasesVoidedpurchasesRequest",
-}) as any as S.Schema<ListPurchasesVoidedpurchasesRequest>;
+S.Struct({
+  "token": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "startTime": S.optional(S.String.pipe(T.Query())),
+  "type": S.optional(S.Number.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+  "startIndex": S.optional(S.Number.pipe(T.Query())),
+  "includeQuantityBasedPartialRefund": S.optional(S.Boolean.pipe(T.Query())),
+  "endTime": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListPurchasesVoidedpurchasesRequest" }) as any as S.Schema<ListPurchasesVoidedpurchasesRequest>;
 
 /** A VoidedPurchase resource indicates a purchase that was either canceled/refunded/charged-back. */
 export interface VoidedPurchase {
@@ -10273,22 +7857,20 @@ export interface VoidedPurchase {
   kind?: string;
 }
 export const VoidedPurchase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderId: S.optional(S.String),
-    voidedReason: S.optional(S.Number),
-    voidedTimeMillis: S.optional(S.String),
-    voidedSource: S.optional(S.Number),
-    voidedQuantity: S.optional(S.Number),
-    purchaseToken: S.optional(S.String),
-    purchaseTimeMillis: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "orderId": S.optional(S.String),
+  "voidedReason": S.optional(S.Number),
+  "voidedTimeMillis": S.optional(S.String),
+  "voidedSource": S.optional(S.Number),
+  "voidedQuantity": S.optional(S.Number),
+  "purchaseToken": S.optional(S.String),
+  "purchaseTimeMillis": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "VoidedPurchase" }) as any as S.Schema<VoidedPurchase>;
 
 export type VoidedPurchaseList = ReadonlyArray<VoidedPurchase>;
-export const VoidedPurchaseList = /*@__PURE__*/ S.Array(
-  VoidedPurchase,
-) as any as S.Schema<VoidedPurchaseList>;
+export const VoidedPurchaseList = /*@__PURE__*/ S.Array(VoidedPurchase) as any as S.Schema<VoidedPurchaseList>;
 
 /** Response for the voidedpurchases.list API. */
 export interface VoidedPurchasesListResponse {
@@ -10299,14 +7881,12 @@ export interface VoidedPurchasesListResponse {
   voidedPurchases?: VoidedPurchaseList;
 }
 export const VoidedPurchasesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenPagination: S.optional(TokenPagination),
-    pageInfo: S.optional(PageInfo),
-    voidedPurchases: S.optional(VoidedPurchaseList),
-  }),
-).annotate({
-  identifier: "VoidedPurchasesListResponse",
-}) as any as S.Schema<VoidedPurchasesListResponse>;
+S.Struct({
+  "tokenPagination": S.optional(TokenPagination),
+  "pageInfo": S.optional(PageInfo),
+  "voidedPurchases": S.optional(VoidedPurchaseList),
+}),
+).annotate({ identifier: "VoidedPurchasesListResponse" }) as any as S.Schema<VoidedPurchasesListResponse>;
 
 export interface ListReviewsRequest {
   /** Language localization code. */
@@ -10321,27 +7901,17 @@ export interface ListReviewsRequest {
   packageName: string;
 }
 export const ListReviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    translationLanguage: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    token: S.optional(S.String.pipe(T.Query())),
-    startIndex: S.optional(S.Number.pipe(T.Query())),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/reviews",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListReviewsRequest",
-}) as any as S.Schema<ListReviewsRequest>;
+S.Struct({
+  "translationLanguage": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "token": S.optional(S.String.pipe(T.Query())),
+  "startIndex": S.optional(S.Number.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/reviews","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListReviewsRequest" }) as any as S.Schema<ListReviewsRequest>;
 
 export type ReviewList = ReadonlyArray<Review>;
-export const ReviewList = /*@__PURE__*/ S.Array(
-  Review,
-) as any as S.Schema<ReviewList>;
+export const ReviewList = /*@__PURE__*/ S.Array(Review) as any as S.Schema<ReviewList>;
 
 /** Response listing reviews. */
 export interface ReviewsListResponse {
@@ -10353,14 +7923,12 @@ export interface ReviewsListResponse {
   reviews?: ReviewList;
 }
 export const ReviewsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenPagination: S.optional(TokenPagination),
-    pageInfo: S.optional(PageInfo),
-    reviews: S.optional(ReviewList),
-  }),
-).annotate({
-  identifier: "ReviewsListResponse",
-}) as any as S.Schema<ReviewsListResponse>;
+S.Struct({
+  "tokenPagination": S.optional(TokenPagination),
+  "pageInfo": S.optional(PageInfo),
+  "reviews": S.optional(ReviewList),
+}),
+).annotate({ identifier: "ReviewsListResponse" }) as any as S.Schema<ReviewsListResponse>;
 
 export interface ListSystemapksVariantsRequest {
   /** The version code of the App Bundle. */
@@ -10369,24 +7937,14 @@ export interface ListSystemapksVariantsRequest {
   packageName: string;
 }
 export const ListSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionCode: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSystemapksVariantsRequest",
-}) as any as S.Schema<ListSystemapksVariantsRequest>;
+S.Struct({
+  "versionCode": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListSystemapksVariantsRequest" }) as any as S.Schema<ListSystemapksVariantsRequest>;
 
 export type VariantList = ReadonlyArray<Variant>;
-export const VariantList = /*@__PURE__*/ S.Array(
-  Variant,
-) as any as S.Schema<VariantList>;
+export const VariantList = /*@__PURE__*/ S.Array(Variant) as any as S.Schema<VariantList>;
 
 /** Response to list previously created system APK variants. */
 export interface SystemApksListResponse {
@@ -10394,12 +7952,10 @@ export interface SystemApksListResponse {
   variants?: VariantList;
 }
 export const SystemApksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variants: S.optional(VariantList),
-  }),
-).annotate({
-  identifier: "SystemApksListResponse",
-}) as any as S.Schema<SystemApksListResponse>;
+S.Struct({
+  "variants": S.optional(VariantList),
+}),
+).annotate({ identifier: "SystemApksListResponse" }) as any as S.Schema<SystemApksListResponse>;
 
 export interface ListUsersRequest {
   /** Required. The developer account to fetch users from. Format: developers/{developer} */
@@ -10410,25 +7966,15 @@ export interface ListUsersRequest {
   pageToken?: string;
 }
 export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "androidpublisher/v3/{+parent}/users",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListUsersRequest",
-}) as any as S.Schema<ListUsersRequest>;
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"androidpublisher/v3/{+parent}/users","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type UserList = ReadonlyArray<User>;
-export const UserList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<UserList>;
+export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
 
 /** A response containing one or more users with access to an account. */
 export interface ListUsersResponse {
@@ -10438,13 +7984,11 @@ export interface ListUsersResponse {
   users?: UserList;
 }
 export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    users: S.optional(UserList),
-  }),
-).annotate({
-  identifier: "ListUsersResponse",
-}) as any as S.Schema<ListUsersResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "users": S.optional(UserList),
+}),
+).annotate({ identifier: "ListUsersResponse" }) as any as S.Schema<ListUsersResponse>;
 
 export interface MigratePricesMonetizationSubscriptionsBasePlansRequest {
   /** Required. The unique base plan ID of the base plan to update prices on. */
@@ -10456,23 +8000,14 @@ export interface MigratePricesMonetizationSubscriptionsBasePlansRequest {
   /** Request body */
   body?: MigrateBasePlanPricesRequest;
 }
-export const MigratePricesMonetizationSubscriptionsBasePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      basePlanId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(MigrateBasePlanPricesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:migratePrices",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "MigratePricesMonetizationSubscriptionsBasePlansRequest",
-  }) as any as S.Schema<MigratePricesMonetizationSubscriptionsBasePlansRequest>;
+export const MigratePricesMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "basePlanId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "body": S.optional(MigrateBasePlanPricesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:migratePrices","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "MigratePricesMonetizationSubscriptionsBasePlansRequest" }) as any as S.Schema<MigratePricesMonetizationSubscriptionsBasePlansRequest>;
 
 export interface PatchEditsDetailsRequest {
   /** Package name of the app. */
@@ -10483,34 +8018,21 @@ export interface PatchEditsDetailsRequest {
   body?: AppDetails;
 }
 export const PatchEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    body: S.optional(AppDetails.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchEditsDetailsRequest",
-}) as any as S.Schema<PatchEditsDetailsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "body": S.optional(AppDetails.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/details","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchEditsDetailsRequest" }) as any as S.Schema<PatchEditsDetailsRequest>;
 
-export type PatchEditsExpansionfilesExpansionFileTypeEnum =
-  | "expansionFileTypeUnspecified"
-  | "main"
-  | "patch"
-  | (string & {});
-export const PatchEditsExpansionfilesExpansionFileTypeEnum =
-  /*@__PURE__*/ S.String;
+export type PatchEditsExpansionfilesExpansionFileTypeEnum = "expansionFileTypeUnspecified" | "main" | "patch";
+export const PatchEditsExpansionfilesExpansionFileTypeEnum = /*@__PURE__*/ S.String;
 
 export interface PatchEditsExpansionfilesRequest {
   /** Package name of the app. */
   packageName: string;
   /** The file type of the expansion file configuration which is being updated. */
-  expansionFileType: PatchEditsExpansionfilesExpansionFileTypeEnum;
+  expansionFileType: PatchEditsExpansionfilesExpansionFileTypeEnum | (string & {});
   /** Identifier of the edit. */
   editId: string;
   /** The version code of the APK whose expansion file configuration is being read or modified. */
@@ -10519,24 +8041,14 @@ export interface PatchEditsExpansionfilesRequest {
   body?: ExpansionFile;
 }
 export const PatchEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    expansionFileType: PatchEditsExpansionfilesExpansionFileTypeEnum.pipe(
-      T.Label(),
-    ),
-    editId: S.String.pipe(T.Label()),
-    apkVersionCode: S.Number.pipe(T.Label()),
-    body: S.optional(ExpansionFile.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchEditsExpansionfilesRequest",
-}) as any as S.Schema<PatchEditsExpansionfilesRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "expansionFileType": PatchEditsExpansionfilesExpansionFileTypeEnum.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "apkVersionCode": S.Number.pipe(T.Label()),
+  "body": S.optional(ExpansionFile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchEditsExpansionfilesRequest" }) as any as S.Schema<PatchEditsExpansionfilesRequest>;
 
 export interface PatchEditsListingsRequest {
   /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
@@ -10549,21 +8061,13 @@ export interface PatchEditsListingsRequest {
   body?: Listing;
 }
 export const PatchEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    language: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    body: S.optional(Listing.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchEditsListingsRequest",
-}) as any as S.Schema<PatchEditsListingsRequest>;
+S.Struct({
+  "language": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "body": S.optional(Listing.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchEditsListingsRequest" }) as any as S.Schema<PatchEditsListingsRequest>;
 
 export interface PatchEditsTestersRequest {
   /** Package name of the app. */
@@ -10576,21 +8080,13 @@ export interface PatchEditsTestersRequest {
   body?: Testers;
 }
 export const PatchEditsTestersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    track: S.String.pipe(T.Label()),
-    body: S.optional(Testers.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchEditsTestersRequest",
-}) as any as S.Schema<PatchEditsTestersRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "track": S.String.pipe(T.Label()),
+  "body": S.optional(Testers.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchEditsTestersRequest" }) as any as S.Schema<PatchEditsTestersRequest>;
 
 export interface PatchEditsTracksRequest {
   /** Package name of the app. */
@@ -10603,21 +8099,13 @@ export interface PatchEditsTracksRequest {
   body?: Track;
 }
 export const PatchEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    track: S.String.pipe(T.Label()),
-    body: S.optional(Track.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchEditsTracksRequest",
-}) as any as S.Schema<PatchEditsTracksRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "track": S.String.pipe(T.Label()),
+  "body": S.optional(Track.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchEditsTracksRequest" }) as any as S.Schema<PatchEditsTracksRequest>;
 
 export interface PatchGrantsRequest {
   /** Required. Resource name for this grant, following the pattern "developers/{developer}/users/{email}/grants/{package_name}". If this grant is for a draft app, the app ID will be used in this resource name instead of the package name. */
@@ -10628,31 +8116,19 @@ export interface PatchGrantsRequest {
   body?: Grant;
 }
 export const PatchGrantsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Grant.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "androidpublisher/v3/{+name}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchGrantsRequest",
-}) as any as S.Schema<PatchGrantsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Grant.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/{+name}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchGrantsRequest" }) as any as S.Schema<PatchGrantsRequest>;
 
-export type PatchInappproductsLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+export type PatchInappproductsLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const PatchInappproductsLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 export interface PatchInappproductsRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: PatchInappproductsLatencyToleranceEnum;
+  latencyTolerance?: PatchInappproductsLatencyToleranceEnum | (string & {});
   /** Package name of the app. */
   packageName: string;
   /** Unique identifier for the in-app product. */
@@ -10663,36 +8139,21 @@ export interface PatchInappproductsRequest {
   body?: InAppProduct;
 }
 export const PatchInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latencyTolerance: S.optional(
-      PatchInappproductsLatencyToleranceEnum.pipe(T.Query()),
-    ),
-    packageName: S.String.pipe(T.Label()),
-    sku: S.String.pipe(T.Label()),
-    autoConvertMissingPrices: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(InAppProduct.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchInappproductsRequest",
-}) as any as S.Schema<PatchInappproductsRequest>;
+S.Struct({
+  "latencyTolerance": S.optional(PatchInappproductsLatencyToleranceEnum.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+  "sku": S.String.pipe(T.Label()),
+  "autoConvertMissingPrices": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(InAppProduct.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/applications/{packageName}/inappproducts/{sku}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchInappproductsRequest" }) as any as S.Schema<PatchInappproductsRequest>;
 
-export type PatchMonetizationOnetimeproductsLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const PatchMonetizationOnetimeproductsLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type PatchMonetizationOnetimeproductsLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const PatchMonetizationOnetimeproductsLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 export interface PatchMonetizationOnetimeproductsRequest {
   /** Optional. The latency tolerance for the propagation of this product upsert. Defaults to latency-sensitive. */
-  latencyTolerance?: PatchMonetizationOnetimeproductsLatencyToleranceEnum;
+  latencyTolerance?: PatchMonetizationOnetimeproductsLatencyToleranceEnum | (string & {});
   /** Required. Immutable. Package name of the parent app. */
   packageName: string;
   /** Required. Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must start with a number or lowercase letter, and can contain numbers (0-9), lowercase letters (a-z), underscores (_), and periods (.). */
@@ -10706,36 +8167,20 @@ export interface PatchMonetizationOnetimeproductsRequest {
   /** Request body */
   body?: OneTimeProduct;
 }
-export const PatchMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      latencyTolerance: S.optional(
-        PatchMonetizationOnetimeproductsLatencyToleranceEnum.pipe(T.Query()),
-      ),
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(OneTimeProduct.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "androidpublisher/v3/applications/{packageName}/onetimeproducts/{productId}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchMonetizationOnetimeproductsRequest",
-}) as any as S.Schema<PatchMonetizationOnetimeproductsRequest>;
+export const PatchMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "latencyTolerance": S.optional(PatchMonetizationOnetimeproductsLatencyToleranceEnum.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+  "productId": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(OneTimeProduct.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/applications/{packageName}/onetimeproducts/{productId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchMonetizationOnetimeproductsRequest" }) as any as S.Schema<PatchMonetizationOnetimeproductsRequest>;
 
-export type PatchMonetizationSubscriptionsLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const PatchMonetizationSubscriptionsLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type PatchMonetizationSubscriptionsLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const PatchMonetizationSubscriptionsLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 export interface PatchMonetizationSubscriptionsRequest {
   /** Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must be composed of lower-case letters (a-z), numbers (0-9), underscores (_) and dots (.). It must start with a lower-case letter or number, and be between 1 and 40 (inclusive) characters in length. */
@@ -10743,7 +8188,7 @@ export interface PatchMonetizationSubscriptionsRequest {
   /** Required. The list of fields to be updated. */
   updateMask?: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: PatchMonetizationSubscriptionsLatencyToleranceEnum;
+  latencyTolerance?: PatchMonetizationSubscriptionsLatencyToleranceEnum | (string & {});
   /** Immutable. Package name of the parent app. */
   packageName: string;
   /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
@@ -10753,36 +8198,20 @@ export interface PatchMonetizationSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const PatchMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      latencyTolerance: S.optional(
-        PatchMonetizationSubscriptionsLatencyToleranceEnum.pipe(T.Query()),
-      ),
-      packageName: S.String.pipe(T.Label()),
-      "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(Subscription.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchMonetizationSubscriptionsRequest",
-}) as any as S.Schema<PatchMonetizationSubscriptionsRequest>;
+export const PatchMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "productId": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "latencyTolerance": S.optional(PatchMonetizationSubscriptionsLatencyToleranceEnum.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+  "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(Subscription.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchMonetizationSubscriptionsRequest" }) as any as S.Schema<PatchMonetizationSubscriptionsRequest>;
 
-export type PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
-export const PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum =
-  /*@__PURE__*/ S.String;
+export type PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
+export const PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 export interface PatchMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. Immutable. The ID of the base plan to which this offer is an extension. */
@@ -10796,7 +8225,7 @@ export interface PatchMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. Immutable. Unique ID of this subscription offer. Must be unique within the base plan. */
   offerId: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum;
+  latencyTolerance?: PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum | (string & {});
   /** Required. Immutable. The ID of the parent subscription this offer belongs to. */
   productId: string;
   /** Required. The list of fields to be updated. */
@@ -10804,32 +8233,19 @@ export interface PatchMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: SubscriptionOffer;
 }
-export const PatchMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      basePlanId: S.String.pipe(T.Label()),
-      "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      packageName: S.String.pipe(T.Label()),
-      offerId: S.String.pipe(T.Label()),
-      latencyTolerance: S.optional(
-        PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      productId: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(SubscriptionOffer.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<PatchMonetizationSubscriptionsBasePlansOffersRequest>;
+export const PatchMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "basePlanId": S.String.pipe(T.Label()),
+  "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+  "offerId": S.String.pipe(T.Label()),
+  "latencyTolerance": S.optional(PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum.pipe(T.Query())),
+  "productId": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(SubscriptionOffer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchMonetizationSubscriptionsBasePlansOffersRequest" }) as any as S.Schema<PatchMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export interface PatchUsersRequest {
   /** Required. Resource name for this user, following the pattern "developers/{developer}/users/{email}". */
@@ -10840,20 +8256,12 @@ export interface PatchUsersRequest {
   body?: User;
 }
 export const PatchUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(User.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "androidpublisher/v3/{+name}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchUsersRequest",
-}) as any as S.Schema<PatchUsersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(User.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"androidpublisher/v3/{+name}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "PatchUsersRequest" }) as any as S.Schema<PatchUsersRequest>;
 
 /** A partial refund of a transaction. */
 export interface PartialRefund {
@@ -10863,17 +8271,17 @@ export interface PartialRefund {
   refundPreTaxAmount?: Price;
 }
 export const PartialRefund = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    refundId: S.optional(S.String),
-    refundPreTaxAmount: S.optional(Price),
-  }),
+S.Struct({
+  "refundId": S.optional(S.String),
+  "refundPreTaxAmount": S.optional(Price),
+}),
 ).annotate({ identifier: "PartialRefund" }) as any as S.Schema<PartialRefund>;
 
 /** A full refund of the remaining amount of a transaction. */
 export interface FullRefund {}
-export const FullRefund = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FullRefund",
-}) as any as S.Schema<FullRefund>;
+export const FullRefund = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "FullRefund" }) as any as S.Schema<FullRefund>;
 
 /** A request to refund an existing external transaction. */
 export interface RefundExternalTransactionRequest {
@@ -10885,14 +8293,12 @@ export interface RefundExternalTransactionRequest {
   refundTime?: string;
 }
 export const RefundExternalTransactionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partialRefund: S.optional(PartialRefund),
-    fullRefund: S.optional(FullRefund),
-    refundTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RefundExternalTransactionRequest",
-}) as any as S.Schema<RefundExternalTransactionRequest>;
+S.Struct({
+  "partialRefund": S.optional(PartialRefund),
+  "fullRefund": S.optional(FullRefund),
+  "refundTime": S.optional(S.String),
+}),
+).annotate({ identifier: "RefundExternalTransactionRequest" }) as any as S.Schema<RefundExternalTransactionRequest>;
 
 export interface RefundexternaltransactionExternaltransactionsRequest {
   /** Required. The name of the external transaction that will be refunded. Format: applications/{package_name}/externalTransactions/{external_transaction} */
@@ -10900,21 +8306,12 @@ export interface RefundexternaltransactionExternaltransactionsRequest {
   /** Request body */
   body?: RefundExternalTransactionRequest;
 }
-export const RefundexternaltransactionExternaltransactionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RefundExternalTransactionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/{+name}:refund",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RefundexternaltransactionExternaltransactionsRequest",
-  }) as any as S.Schema<RefundexternaltransactionExternaltransactionsRequest>;
+export const RefundexternaltransactionExternaltransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(RefundExternalTransactionRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/{+name}:refund","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "RefundexternaltransactionExternaltransactionsRequest" }) as any as S.Schema<RefundexternaltransactionExternaltransactionsRequest>;
 
 export interface RefundOrdersRequest {
   /** The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing'). */
@@ -10925,27 +8322,17 @@ export interface RefundOrdersRequest {
   revoke?: boolean;
 }
 export const RefundOrdersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    orderId: S.String.pipe(T.Label()),
-    revoke: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/orders/{orderId}:refund",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RefundOrdersRequest",
-}) as any as S.Schema<RefundOrdersRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "orderId": S.String.pipe(T.Label()),
+  "revoke": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/orders/{orderId}:refund","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "RefundOrdersRequest" }) as any as S.Schema<RefundOrdersRequest>;
 
 export interface RefundOrdersResponse {}
 export const RefundOrdersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RefundOrdersResponse",
-}) as any as S.Schema<RefundOrdersResponse>;
+S.Struct({}),
+).annotate({ identifier: "RefundOrdersResponse" }) as any as S.Schema<RefundOrdersResponse>;
 
 /** Request to reply to review or update existing reply. */
 export interface ReviewsReplyRequest {
@@ -10953,12 +8340,10 @@ export interface ReviewsReplyRequest {
   replyText?: string;
 }
 export const ReviewsReplyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replyText: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReviewsReplyRequest",
-}) as any as S.Schema<ReviewsReplyRequest>;
+S.Struct({
+  "replyText": S.optional(S.String),
+}),
+).annotate({ identifier: "ReviewsReplyRequest" }) as any as S.Schema<ReviewsReplyRequest>;
 
 export interface ReplyReviewsRequest {
   /** Package name of the app. */
@@ -10969,20 +8354,12 @@ export interface ReplyReviewsRequest {
   body?: ReviewsReplyRequest;
 }
 export const ReplyReviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    reviewId: S.String.pipe(T.Label()),
-    body: S.optional(ReviewsReplyRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}:reply",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ReplyReviewsRequest",
-}) as any as S.Schema<ReplyReviewsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "reviewId": S.String.pipe(T.Label()),
+  "body": S.optional(ReviewsReplyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/reviews/{reviewId}:reply","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ReplyReviewsRequest" }) as any as S.Schema<ReplyReviewsRequest>;
 
 /** The result of replying/updating a reply to review. */
 export interface ReviewReplyResult {
@@ -10992,13 +8369,11 @@ export interface ReviewReplyResult {
   lastEdited?: Timestamp;
 }
 export const ReviewReplyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replyText: S.optional(S.String),
-    lastEdited: S.optional(Timestamp),
-  }),
-).annotate({
-  identifier: "ReviewReplyResult",
-}) as any as S.Schema<ReviewReplyResult>;
+S.Struct({
+  "replyText": S.optional(S.String),
+  "lastEdited": S.optional(Timestamp),
+}),
+).annotate({ identifier: "ReviewReplyResult" }) as any as S.Schema<ReviewReplyResult>;
 
 /** Response on status of replying to a review. */
 export interface ReviewsReplyResponse {
@@ -11006,21 +8381,13 @@ export interface ReviewsReplyResponse {
   result?: ReviewReplyResult;
 }
 export const ReviewsReplyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ReviewReplyResult),
-  }),
-).annotate({
-  identifier: "ReviewsReplyResponse",
-}) as any as S.Schema<ReviewsReplyResponse>;
+S.Struct({
+  "result": S.optional(ReviewReplyResult),
+}),
+).annotate({ identifier: "ReviewsReplyResponse" }) as any as S.Schema<ReviewsReplyResponse>;
 
-export type OrdersReviewRefundRequestRefundPreferenceEnum =
-  | "REFUND_PREFERENCE_UNSPECIFIED"
-  | "DECLINE"
-  | "APPROVE"
-  | "NEUTRAL"
-  | (string & {});
-export const OrdersReviewRefundRequestRefundPreferenceEnum =
-  /*@__PURE__*/ S.String;
+export type OrdersReviewRefundRequestRefundPreferenceEnum = "REFUND_PREFERENCE_UNSPECIFIED" | "DECLINE" | "APPROVE" | "NEUTRAL";
+export const OrdersReviewRefundRequestRefundPreferenceEnum = /*@__PURE__*/ S.String;
 
 /** Coarse Geographic location details for where the consumption happened. */
 export interface CoarseLocation {
@@ -11034,12 +8401,12 @@ export interface CoarseLocation {
   administrativeArea?: string;
 }
 export const CoarseLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locality: S.optional(S.String),
-    regionCode: S.optional(S.String),
-    sublocality: S.optional(S.String),
-    administrativeArea: S.optional(S.String),
-  }),
+S.Struct({
+  "locality": S.optional(S.String),
+  "regionCode": S.optional(S.String),
+  "sublocality": S.optional(S.String),
+  "administrativeArea": S.optional(S.String),
+}),
 ).annotate({ identifier: "CoarseLocation" }) as any as S.Schema<CoarseLocation>;
 
 /** List of events, each representing an instance where the user consumed or used the purchased item or service. */
@@ -11058,22 +8425,18 @@ export interface ConsumptionUsageEvent {
   consumptionItemDescription?: string;
 }
 export const ConsumptionUsageEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    obfuscatedAccountId: S.optional(S.String),
-    consumptionTime: S.optional(S.String),
-    location: S.optional(CoarseLocation),
-    ipAddress: S.optional(S.String),
-    obfuscatedProfileId: S.optional(S.String),
-    consumptionItemDescription: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConsumptionUsageEvent",
-}) as any as S.Schema<ConsumptionUsageEvent>;
+S.Struct({
+  "obfuscatedAccountId": S.optional(S.String),
+  "consumptionTime": S.optional(S.String),
+  "location": S.optional(CoarseLocation),
+  "ipAddress": S.optional(S.String),
+  "obfuscatedProfileId": S.optional(S.String),
+  "consumptionItemDescription": S.optional(S.String),
+}),
+).annotate({ identifier: "ConsumptionUsageEvent" }) as any as S.Schema<ConsumptionUsageEvent>;
 
 export type ConsumptionUsageEventList = ReadonlyArray<ConsumptionUsageEvent>;
-export const ConsumptionUsageEventList = /*@__PURE__*/ S.Array(
-  ConsumptionUsageEvent,
-) as any as S.Schema<ConsumptionUsageEventList>;
+export const ConsumptionUsageEventList = /*@__PURE__*/ S.Array(ConsumptionUsageEvent) as any as S.Schema<ConsumptionUsageEventList>;
 
 /** Request for the orders.reviewrefund API. */
 export interface OrdersReviewRefundRequest {
@@ -11082,23 +8445,21 @@ export interface OrdersReviewRefundRequest {
   /** Required. Indicates whether you provided a free sample, trial, or information about the functionality prior to the purchase. */
   sampleContentProvided?: boolean;
   /** Required. Indicates your preference, based on your operational logic, as to whether the Play Store should grant the refund. */
-  refundPreference?: OrdersReviewRefundRequestRefundPreferenceEnum;
+  refundPreference?: OrdersReviewRefundRequestRefundPreferenceEnum | (string & {});
   /** Optional. List of events, each representing an instance where the user consumed or used the purchased item or service. Lists with over 1000 items will be rejected. */
   consumptionUsageEvents?: ConsumptionUsageEventList;
   /** Optional. Percentage of the In-App purchase the customer consumed, in milliunits. Minimum: 0 Maximum: 100,000. For paid apps, this can be omitted. Example : 45200 represents 45.2%. */
   consumptionPercentageMilliunits?: number;
 }
 export const OrdersReviewRefundRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pendingRefundToken: S.optional(S.String),
-    sampleContentProvided: S.optional(S.Boolean),
-    refundPreference: S.optional(OrdersReviewRefundRequestRefundPreferenceEnum),
-    consumptionUsageEvents: S.optional(ConsumptionUsageEventList),
-    consumptionPercentageMilliunits: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "OrdersReviewRefundRequest",
-}) as any as S.Schema<OrdersReviewRefundRequest>;
+S.Struct({
+  "pendingRefundToken": S.optional(S.String),
+  "sampleContentProvided": S.optional(S.Boolean),
+  "refundPreference": S.optional(OrdersReviewRefundRequestRefundPreferenceEnum),
+  "consumptionUsageEvents": S.optional(ConsumptionUsageEventList),
+  "consumptionPercentageMilliunits": S.optional(S.Number),
+}),
+).annotate({ identifier: "OrdersReviewRefundRequest" }) as any as S.Schema<OrdersReviewRefundRequest>;
 
 export interface ReviewrefundOrdersRequest {
   /** Required. The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing'). */
@@ -11109,35 +8470,23 @@ export interface ReviewrefundOrdersRequest {
   body?: OrdersReviewRefundRequest;
 }
 export const ReviewrefundOrdersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    orderId: S.String.pipe(T.Label()),
-    body: S.optional(OrdersReviewRefundRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/orders/{orderId}:reviewrefund",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ReviewrefundOrdersRequest",
-}) as any as S.Schema<ReviewrefundOrdersRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "orderId": S.String.pipe(T.Label()),
+  "body": S.optional(OrdersReviewRefundRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/orders/{orderId}:reviewrefund","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ReviewrefundOrdersRequest" }) as any as S.Schema<ReviewrefundOrdersRequest>;
 
 export interface ReviewrefundOrdersResponse {}
 export const ReviewrefundOrdersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReviewrefundOrdersResponse",
-}) as any as S.Schema<ReviewrefundOrdersResponse>;
+S.Struct({}),
+).annotate({ identifier: "ReviewrefundOrdersResponse" }) as any as S.Schema<ReviewrefundOrdersResponse>;
 
 /** Used to determine if the refund type in the RevocationContext is a prorated refund. */
 export interface RevocationContextProratedRefund {}
 export const RevocationContextProratedRefund = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevocationContextProratedRefund",
-}) as any as S.Schema<RevocationContextProratedRefund>;
+S.Struct({}),
+).annotate({ identifier: "RevocationContextProratedRefund" }) as any as S.Schema<RevocationContextProratedRefund>;
 
 /** Used to determine what specific item to revoke in a subscription with multiple items. */
 export interface RevocationContextItemBasedRefund {
@@ -11145,20 +8494,16 @@ export interface RevocationContextItemBasedRefund {
   productId?: string;
 }
 export const RevocationContextItemBasedRefund = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RevocationContextItemBasedRefund",
-}) as any as S.Schema<RevocationContextItemBasedRefund>;
+S.Struct({
+  "productId": S.optional(S.String),
+}),
+).annotate({ identifier: "RevocationContextItemBasedRefund" }) as any as S.Schema<RevocationContextItemBasedRefund>;
 
 /** Used to determine if the refund type in the RevocationContext is a full refund. */
 export interface RevocationContextFullRefund {}
 export const RevocationContextFullRefund = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevocationContextFullRefund",
-}) as any as S.Schema<RevocationContextFullRefund>;
+S.Struct({}),
+).annotate({ identifier: "RevocationContextFullRefund" }) as any as S.Schema<RevocationContextFullRefund>;
 
 /** Revocation context of the purchases.subscriptionsv2.revoke API. */
 export interface RevocationContext {
@@ -11170,14 +8515,12 @@ export interface RevocationContext {
   fullRefund?: RevocationContextFullRefund;
 }
 export const RevocationContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proratedRefund: S.optional(RevocationContextProratedRefund),
-    itemBasedRefund: S.optional(RevocationContextItemBasedRefund),
-    fullRefund: S.optional(RevocationContextFullRefund),
-  }),
-).annotate({
-  identifier: "RevocationContext",
-}) as any as S.Schema<RevocationContext>;
+S.Struct({
+  "proratedRefund": S.optional(RevocationContextProratedRefund),
+  "itemBasedRefund": S.optional(RevocationContextItemBasedRefund),
+  "fullRefund": S.optional(RevocationContextFullRefund),
+}),
+).annotate({ identifier: "RevocationContext" }) as any as S.Schema<RevocationContext>;
 
 /** Request for the purchases.subscriptionsv2.revoke API. */
 export interface RevokeSubscriptionPurchaseRequest {
@@ -11185,12 +8528,10 @@ export interface RevokeSubscriptionPurchaseRequest {
   revocationContext?: RevocationContext;
 }
 export const RevokeSubscriptionPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revocationContext: S.optional(RevocationContext),
-  }),
-).annotate({
-  identifier: "RevokeSubscriptionPurchaseRequest",
-}) as any as S.Schema<RevokeSubscriptionPurchaseRequest>;
+S.Struct({
+  "revocationContext": S.optional(RevocationContext),
+}),
+).annotate({ identifier: "RevokeSubscriptionPurchaseRequest" }) as any as S.Schema<RevokeSubscriptionPurchaseRequest>;
 
 export interface RevokePurchasesSubscriptionsv2Request {
   /** Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
@@ -11200,30 +8541,19 @@ export interface RevokePurchasesSubscriptionsv2Request {
   /** Request body */
   body?: RevokeSubscriptionPurchaseRequest;
 }
-export const RevokePurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      token: S.String.pipe(T.Label()),
-      body: S.optional(RevokeSubscriptionPurchaseRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:revoke",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "RevokePurchasesSubscriptionsv2Request",
-}) as any as S.Schema<RevokePurchasesSubscriptionsv2Request>;
+export const RevokePurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "token": S.String.pipe(T.Label()),
+  "body": S.optional(RevokeSubscriptionPurchaseRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:revoke","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "RevokePurchasesSubscriptionsv2Request" }) as any as S.Schema<RevokePurchasesSubscriptionsv2Request>;
 
 /** Response for the purchases.subscriptionsv2.revoke API. */
 export interface RevokeSubscriptionPurchaseResponse {}
 export const RevokeSubscriptionPurchaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeSubscriptionPurchaseResponse",
-}) as any as S.Schema<RevokeSubscriptionPurchaseResponse>;
+S.Struct({}),
+).annotate({ identifier: "RevokeSubscriptionPurchaseResponse" }) as any as S.Schema<RevokeSubscriptionPurchaseResponse>;
 
 /** Details about the app. */
 export interface AppStoreAppDetails {
@@ -11235,14 +8565,12 @@ export interface AppStoreAppDetails {
   contactEmail?: string;
 }
 export const AppStoreAppDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    developerName: S.optional(S.String),
-    developerWebsite: S.optional(S.String),
-    contactEmail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppStoreAppDetails",
-}) as any as S.Schema<AppStoreAppDetails>;
+S.Struct({
+  "developerName": S.optional(S.String),
+  "developerWebsite": S.optional(S.String),
+  "contactEmail": S.optional(S.String),
+}),
+).annotate({ identifier: "AppStoreAppDetails" }) as any as S.Schema<AppStoreAppDetails>;
 
 /** An installable set of active APKs. A set of APKs might only contain 1 APK if the app in question publishes using APKs. If the app uses app bundles (or a similar technology), this set should contain all APKs (even optional ones) that might be installed for this app. A set of APKs should be installable together. If certain APKs are exclusive to one another and cannot be installed together, then a separate AppStoreAppActiveApkSet should be created. */
 export interface AppStoreAppActiveApkSet {
@@ -11252,19 +8580,14 @@ export interface AppStoreAppActiveApkSet {
   baseApkId?: string;
 }
 export const AppStoreAppActiveApkSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    splitApkId: S.optional(StringList),
-    baseApkId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppStoreAppActiveApkSet",
-}) as any as S.Schema<AppStoreAppActiveApkSet>;
+S.Struct({
+  "splitApkId": S.optional(StringList),
+  "baseApkId": S.optional(S.String),
+}),
+).annotate({ identifier: "AppStoreAppActiveApkSet" }) as any as S.Schema<AppStoreAppActiveApkSet>;
 
-export type AppStoreAppActiveApkSetList =
-  ReadonlyArray<AppStoreAppActiveApkSet>;
-export const AppStoreAppActiveApkSetList = /*@__PURE__*/ S.Array(
-  AppStoreAppActiveApkSet,
-) as any as S.Schema<AppStoreAppActiveApkSetList>;
+export type AppStoreAppActiveApkSetList = ReadonlyArray<AppStoreAppActiveApkSet>;
+export const AppStoreAppActiveApkSetList = /*@__PURE__*/ S.Array(AppStoreAppActiveApkSet) as any as S.Schema<AppStoreAppActiveApkSetList>;
 
 /** Information about active APKs of an app store hosted app. */
 export interface AppStoreAppActiveApks {
@@ -11272,12 +8595,10 @@ export interface AppStoreAppActiveApks {
   activeApkSets?: AppStoreAppActiveApkSetList;
 }
 export const AppStoreAppActiveApks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activeApkSets: S.optional(AppStoreAppActiveApkSetList),
-  }),
-).annotate({
-  identifier: "AppStoreAppActiveApks",
-}) as any as S.Schema<AppStoreAppActiveApks>;
+S.Struct({
+  "activeApkSets": S.optional(AppStoreAppActiveApkSetList),
+}),
+).annotate({ identifier: "AppStoreAppActiveApks" }) as any as S.Schema<AppStoreAppActiveApks>;
 
 /** A localized store listing. These are the details about the app as shown in your app store. */
 export interface AppStoreAppStoreListing {
@@ -11297,24 +8618,19 @@ export interface AppStoreAppStoreListing {
   screenshotId?: StringList;
 }
 export const AppStoreAppStoreListing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    videoLink: S.optional(S.String),
-    fullDescription: S.optional(S.String),
-    shortDescription: S.optional(S.String),
-    languageCode: S.optional(S.String),
-    appName: S.optional(S.String),
-    appIconId: S.optional(S.String),
-    screenshotId: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "AppStoreAppStoreListing",
-}) as any as S.Schema<AppStoreAppStoreListing>;
+S.Struct({
+  "videoLink": S.optional(S.String),
+  "fullDescription": S.optional(S.String),
+  "shortDescription": S.optional(S.String),
+  "languageCode": S.optional(S.String),
+  "appName": S.optional(S.String),
+  "appIconId": S.optional(S.String),
+  "screenshotId": S.optional(StringList),
+}),
+).annotate({ identifier: "AppStoreAppStoreListing" }) as any as S.Schema<AppStoreAppStoreListing>;
 
-export type AppStoreAppStoreListingList =
-  ReadonlyArray<AppStoreAppStoreListing>;
-export const AppStoreAppStoreListingList = /*@__PURE__*/ S.Array(
-  AppStoreAppStoreListing,
-) as any as S.Schema<AppStoreAppStoreListingList>;
+export type AppStoreAppStoreListingList = ReadonlyArray<AppStoreAppStoreListing>;
+export const AppStoreAppStoreListingList = /*@__PURE__*/ S.Array(AppStoreAppStoreListing) as any as S.Schema<AppStoreAppStoreListingList>;
 
 /** Responses that will only ever be a boolean. */
 export interface PolicyBooleanResponse {
@@ -11322,12 +8638,10 @@ export interface PolicyBooleanResponse {
   value?: boolean;
 }
 export const PolicyBooleanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PolicyBooleanResponse",
-}) as any as S.Schema<PolicyBooleanResponse>;
+S.Struct({
+  "value": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PolicyBooleanResponse" }) as any as S.Schema<PolicyBooleanResponse>;
 
 /** Any response where a single option is chosen from several possibilities. */
 export interface PolicySingleChoiceResponse {
@@ -11335,12 +8649,10 @@ export interface PolicySingleChoiceResponse {
   value?: string;
 }
 export const PolicySingleChoiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PolicySingleChoiceResponse",
-}) as any as S.Schema<PolicySingleChoiceResponse>;
+S.Struct({
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "PolicySingleChoiceResponse" }) as any as S.Schema<PolicySingleChoiceResponse>;
 
 /** Any response where multiple options can be chosen from several possibilities. */
 export interface PolicyMultipleChoiceResponse {
@@ -11348,12 +8660,10 @@ export interface PolicyMultipleChoiceResponse {
   values?: StringList;
 }
 export const PolicyMultipleChoiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "PolicyMultipleChoiceResponse",
-}) as any as S.Schema<PolicyMultipleChoiceResponse>;
+S.Struct({
+  "values": S.optional(StringList),
+}),
+).annotate({ identifier: "PolicyMultipleChoiceResponse" }) as any as S.Schema<PolicyMultipleChoiceResponse>;
 
 /** An uploaded document. Must be a single logical document (e.g. a financial license). */
 export interface PolicyDocumentResponse {
@@ -11365,14 +8675,12 @@ export interface PolicyDocumentResponse {
   expiryDate?: Androidpublisher_Date;
 }
 export const PolicyDocumentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nonExpiring: S.optional(S.Boolean),
-    documentId: S.optional(S.String),
-    expiryDate: S.optional(Androidpublisher_Date),
-  }),
-).annotate({
-  identifier: "PolicyDocumentResponse",
-}) as any as S.Schema<PolicyDocumentResponse>;
+S.Struct({
+  "nonExpiring": S.optional(S.Boolean),
+  "documentId": S.optional(S.String),
+  "expiryDate": S.optional(Androidpublisher_Date),
+}),
+).annotate({ identifier: "PolicyDocumentResponse" }) as any as S.Schema<PolicyDocumentResponse>;
 
 /** Any response best encoded as a string. Includes URLs and multiline text fields. */
 export interface PolicyStringResponse {
@@ -11380,12 +8688,10 @@ export interface PolicyStringResponse {
   value?: string;
 }
 export const PolicyStringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PolicyStringResponse",
-}) as any as S.Schema<PolicyStringResponse>;
+S.Struct({
+  "value": S.optional(S.String),
+}),
+).annotate({ identifier: "PolicyStringResponse" }) as any as S.Schema<PolicyStringResponse>;
 
 /** An individual nested response to a policy question about an app. Nested responses are like regular responses but without groups. */
 export interface NestedPolicyResponse {
@@ -11403,22 +8709,18 @@ export interface NestedPolicyResponse {
   stringResponse?: PolicyStringResponse;
 }
 export const NestedPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    multipleChoiceResponse: S.optional(PolicyMultipleChoiceResponse),
-    documentResponse: S.optional(PolicyDocumentResponse),
-    booleanResponse: S.optional(PolicyBooleanResponse),
-    questionId: S.optional(S.String),
-    singleChoiceResponse: S.optional(PolicySingleChoiceResponse),
-    stringResponse: S.optional(PolicyStringResponse),
-  }),
-).annotate({
-  identifier: "NestedPolicyResponse",
-}) as any as S.Schema<NestedPolicyResponse>;
+S.Struct({
+  "multipleChoiceResponse": S.optional(PolicyMultipleChoiceResponse),
+  "documentResponse": S.optional(PolicyDocumentResponse),
+  "booleanResponse": S.optional(PolicyBooleanResponse),
+  "questionId": S.optional(S.String),
+  "singleChoiceResponse": S.optional(PolicySingleChoiceResponse),
+  "stringResponse": S.optional(PolicyStringResponse),
+}),
+).annotate({ identifier: "NestedPolicyResponse" }) as any as S.Schema<NestedPolicyResponse>;
 
 export type NestedPolicyResponseList = ReadonlyArray<NestedPolicyResponse>;
-export const NestedPolicyResponseList = /*@__PURE__*/ S.Array(
-  NestedPolicyResponse,
-) as any as S.Schema<NestedPolicyResponseList>;
+export const NestedPolicyResponseList = /*@__PURE__*/ S.Array(NestedPolicyResponse) as any as S.Schema<NestedPolicyResponseList>;
 
 /** A group of responses, with a key. */
 export interface KeyedGroup {
@@ -11428,16 +8730,14 @@ export interface KeyedGroup {
   responses?: NestedPolicyResponseList;
 }
 export const KeyedGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    responses: S.optional(NestedPolicyResponseList),
-  }),
+S.Struct({
+  "key": S.optional(S.String),
+  "responses": S.optional(NestedPolicyResponseList),
+}),
 ).annotate({ identifier: "KeyedGroup" }) as any as S.Schema<KeyedGroup>;
 
 export type KeyedGroupList = ReadonlyArray<KeyedGroup>;
-export const KeyedGroupList = /*@__PURE__*/ S.Array(
-  KeyedGroup,
-) as any as S.Schema<KeyedGroupList>;
+export const KeyedGroupList = /*@__PURE__*/ S.Array(KeyedGroup) as any as S.Schema<KeyedGroupList>;
 
 /** A group of responses each identified by a distinct key within an allowed set. */
 export interface PolicyKeyedGroupResponse {
@@ -11445,12 +8745,10 @@ export interface PolicyKeyedGroupResponse {
   groups?: KeyedGroupList;
 }
 export const PolicyKeyedGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groups: S.optional(KeyedGroupList),
-  }),
-).annotate({
-  identifier: "PolicyKeyedGroupResponse",
-}) as any as S.Schema<PolicyKeyedGroupResponse>;
+S.Struct({
+  "groups": S.optional(KeyedGroupList),
+}),
+).annotate({ identifier: "PolicyKeyedGroupResponse" }) as any as S.Schema<PolicyKeyedGroupResponse>;
 
 /** A group of responses. */
 export interface Group {
@@ -11458,15 +8756,13 @@ export interface Group {
   responses?: NestedPolicyResponseList;
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responses: S.optional(NestedPolicyResponseList),
-  }),
+S.Struct({
+  "responses": S.optional(NestedPolicyResponseList),
+}),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 export type GroupList = ReadonlyArray<Group>;
-export const GroupList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<GroupList>;
+export const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
 
 /** A repeated group of responses. */
 export interface PolicyGroupResponse {
@@ -11474,12 +8770,10 @@ export interface PolicyGroupResponse {
   groups?: GroupList;
 }
 export const PolicyGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groups: S.optional(GroupList),
-  }),
-).annotate({
-  identifier: "PolicyGroupResponse",
-}) as any as S.Schema<PolicyGroupResponse>;
+S.Struct({
+  "groups": S.optional(GroupList),
+}),
+).annotate({ identifier: "PolicyGroupResponse" }) as any as S.Schema<PolicyGroupResponse>;
 
 /** An individual response to a policy question about an app. */
 export interface PolicyResponse {
@@ -11501,22 +8795,20 @@ export interface PolicyResponse {
   stringResponse?: PolicyStringResponse;
 }
 export const PolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    booleanResponse: S.optional(PolicyBooleanResponse),
-    questionId: S.optional(S.String),
-    singleChoiceResponse: S.optional(PolicySingleChoiceResponse),
-    multipleChoiceResponse: S.optional(PolicyMultipleChoiceResponse),
-    documentResponse: S.optional(PolicyDocumentResponse),
-    keyedGroupResponse: S.optional(PolicyKeyedGroupResponse),
-    groupResponse: S.optional(PolicyGroupResponse),
-    stringResponse: S.optional(PolicyStringResponse),
-  }),
+S.Struct({
+  "booleanResponse": S.optional(PolicyBooleanResponse),
+  "questionId": S.optional(S.String),
+  "singleChoiceResponse": S.optional(PolicySingleChoiceResponse),
+  "multipleChoiceResponse": S.optional(PolicyMultipleChoiceResponse),
+  "documentResponse": S.optional(PolicyDocumentResponse),
+  "keyedGroupResponse": S.optional(PolicyKeyedGroupResponse),
+  "groupResponse": S.optional(PolicyGroupResponse),
+  "stringResponse": S.optional(PolicyStringResponse),
+}),
 ).annotate({ identifier: "PolicyResponse" }) as any as S.Schema<PolicyResponse>;
 
 export type PolicyResponseList = ReadonlyArray<PolicyResponse>;
-export const PolicyResponseList = /*@__PURE__*/ S.Array(
-  PolicyResponse,
-) as any as S.Schema<PolicyResponseList>;
+export const PolicyResponseList = /*@__PURE__*/ S.Array(PolicyResponse) as any as S.Schema<PolicyResponseList>;
 
 /** A policy declaration with its responses. */
 export interface AppStoreAppPolicyDeclaration {
@@ -11526,19 +8818,14 @@ export interface AppStoreAppPolicyDeclaration {
   declarationId?: string;
 }
 export const AppStoreAppPolicyDeclaration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responses: S.optional(PolicyResponseList),
-    declarationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppStoreAppPolicyDeclaration",
-}) as any as S.Schema<AppStoreAppPolicyDeclaration>;
+S.Struct({
+  "responses": S.optional(PolicyResponseList),
+  "declarationId": S.optional(S.String),
+}),
+).annotate({ identifier: "AppStoreAppPolicyDeclaration" }) as any as S.Schema<AppStoreAppPolicyDeclaration>;
 
-export type AppStoreAppPolicyDeclarationList =
-  ReadonlyArray<AppStoreAppPolicyDeclaration>;
-export const AppStoreAppPolicyDeclarationList = /*@__PURE__*/ S.Array(
-  AppStoreAppPolicyDeclaration,
-) as any as S.Schema<AppStoreAppPolicyDeclarationList>;
+export type AppStoreAppPolicyDeclarationList = ReadonlyArray<AppStoreAppPolicyDeclaration>;
+export const AppStoreAppPolicyDeclarationList = /*@__PURE__*/ S.Array(AppStoreAppPolicyDeclaration) as any as S.Schema<AppStoreAppPolicyDeclarationList>;
 
 /** Request to update an app record for an app store hosted app. */
 export interface UpdateAppStoreHostedAppRequest {
@@ -11554,16 +8841,14 @@ export interface UpdateAppStoreHostedAppRequest {
   policyDeclarations?: AppStoreAppPolicyDeclarationList;
 }
 export const UpdateAppStoreHostedAppRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appDetails: S.optional(AppStoreAppDetails),
-    packageName: S.optional(S.String),
-    activeApks: S.optional(AppStoreAppActiveApks),
-    activeLocalizedStoreListings: S.optional(AppStoreAppStoreListingList),
-    policyDeclarations: S.optional(AppStoreAppPolicyDeclarationList),
-  }),
-).annotate({
-  identifier: "UpdateAppStoreHostedAppRequest",
-}) as any as S.Schema<UpdateAppStoreHostedAppRequest>;
+S.Struct({
+  "appDetails": S.optional(AppStoreAppDetails),
+  "packageName": S.optional(S.String),
+  "activeApks": S.optional(AppStoreAppActiveApks),
+  "activeLocalizedStoreListings": S.optional(AppStoreAppStoreListingList),
+  "policyDeclarations": S.optional(AppStoreAppPolicyDeclarationList),
+}),
+).annotate({ identifier: "UpdateAppStoreHostedAppRequest" }) as any as S.Schema<UpdateAppStoreHostedAppRequest>;
 
 export interface UpdateappstorehostedappAppstoreappsreviewRequest {
   /** Required. Package name of the third-party app store. */
@@ -11571,53 +8856,32 @@ export interface UpdateappstorehostedappAppstoreappsreviewRequest {
   /** Request body */
   body?: UpdateAppStoreHostedAppRequest;
 }
-export const UpdateappstorehostedappAppstoreappsreviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appStorePackageName: S.String.pipe(T.Label()),
-      body: S.optional(UpdateAppStoreHostedAppRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps:update",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateappstorehostedappAppstoreappsreviewRequest",
-  }) as any as S.Schema<UpdateappstorehostedappAppstoreappsreviewRequest>;
+export const UpdateappstorehostedappAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "appStorePackageName": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateAppStoreHostedAppRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/appstore/{appStorePackageName}/apps:update","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UpdateappstorehostedappAppstoreappsreviewRequest" }) as any as S.Schema<UpdateappstorehostedappAppstoreappsreviewRequest>;
 
 /** Response for updating an app record for an app store hosted app. */
 export interface UpdateAppStoreHostedAppResponse {}
 export const UpdateAppStoreHostedAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateAppStoreHostedAppResponse",
-}) as any as S.Schema<UpdateAppStoreHostedAppResponse>;
+S.Struct({}),
+).annotate({ identifier: "UpdateAppStoreHostedAppResponse" }) as any as S.Schema<UpdateAppStoreHostedAppResponse>;
 
-export type UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum =
-  | "APP_STORE_APP_PUBLISH_STATE_UNSPECIFIED"
-  | "APP_STORE_APP_PUBLISH_STATE_PUBLISHED"
-  | "APP_STORE_APP_PUBLISH_STATE_UNPUBLISHED"
-  | (string & {});
-export const UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum =
-  /*@__PURE__*/ S.String;
+export type UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum = "APP_STORE_APP_PUBLISH_STATE_UNSPECIFIED" | "APP_STORE_APP_PUBLISH_STATE_PUBLISHED" | "APP_STORE_APP_PUBLISH_STATE_UNPUBLISHED";
+export const UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum = /*@__PURE__*/ S.String;
 
 /** Request to update the publish status of an app store hosted app. The default state for any app with an update is PUBLISHED. It is not necessary to call this RPC explicitly to set an app to PUBLISHED. */
 export interface UpdateAppStoreHostedAppPublishStatusRequest {
   /** Required. The new publish state for the hosted app. */
-  publishState?: UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum;
+  publishState?: UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum | (string & {});
 }
-export const UpdateAppStoreHostedAppPublishStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      publishState: S.optional(
-        UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateAppStoreHostedAppPublishStatusRequest",
-  }) as any as S.Schema<UpdateAppStoreHostedAppPublishStatusRequest>;
+export const UpdateAppStoreHostedAppPublishStatusRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "publishState": S.optional(UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum),
+}),
+).annotate({ identifier: "UpdateAppStoreHostedAppPublishStatusRequest" }) as any as S.Schema<UpdateAppStoreHostedAppPublishStatusRequest>;
 
 export interface UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest {
   /** Required. Package name of the third-party app store. */
@@ -11627,31 +8891,19 @@ export interface UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest {
   /** Request body */
   body?: UpdateAppStoreHostedAppPublishStatusRequest;
 }
-export const UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appStorePackageName: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      body: S.optional(
-        UpdateAppStoreHostedAppPublishStatusRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}:updateAppStoreHostedAppPublishStatus",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest",
-  }) as any as S.Schema<UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest>;
+export const UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "appStorePackageName": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(UpdateAppStoreHostedAppPublishStatusRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}:updateAppStoreHostedAppPublishStatus","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest" }) as any as S.Schema<UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest>;
 
 /** Response for updating the publish status of an app store hosted app. */
 export interface UpdateAppStoreHostedAppPublishStatusResponse {}
-export const UpdateAppStoreHostedAppPublishStatusResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateAppStoreHostedAppPublishStatusResponse",
-  }) as any as S.Schema<UpdateAppStoreHostedAppPublishStatusResponse>;
+export const UpdateAppStoreHostedAppPublishStatusResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "UpdateAppStoreHostedAppPublishStatusResponse" }) as any as S.Schema<UpdateAppStoreHostedAppPublishStatusResponse>;
 
 export interface UpdateEditsDetailsRequest {
   /** Package name of the app. */
@@ -11662,34 +8914,21 @@ export interface UpdateEditsDetailsRequest {
   body?: AppDetails;
 }
 export const UpdateEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    body: S.optional(AppDetails.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateEditsDetailsRequest",
-}) as any as S.Schema<UpdateEditsDetailsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "body": S.optional(AppDetails.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/details","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UpdateEditsDetailsRequest" }) as any as S.Schema<UpdateEditsDetailsRequest>;
 
-export type UpdateEditsExpansionfilesExpansionFileTypeEnum =
-  | "expansionFileTypeUnspecified"
-  | "main"
-  | "patch"
-  | (string & {});
-export const UpdateEditsExpansionfilesExpansionFileTypeEnum =
-  /*@__PURE__*/ S.String;
+export type UpdateEditsExpansionfilesExpansionFileTypeEnum = "expansionFileTypeUnspecified" | "main" | "patch";
+export const UpdateEditsExpansionfilesExpansionFileTypeEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateEditsExpansionfilesRequest {
   /** Package name of the app. */
   packageName: string;
   /** The file type of the file configuration which is being read or modified. */
-  expansionFileType: UpdateEditsExpansionfilesExpansionFileTypeEnum;
+  expansionFileType: UpdateEditsExpansionfilesExpansionFileTypeEnum | (string & {});
   /** Identifier of the edit. */
   editId: string;
   /** The version code of the APK whose expansion file configuration is being read or modified. */
@@ -11698,24 +8937,14 @@ export interface UpdateEditsExpansionfilesRequest {
   body?: ExpansionFile;
 }
 export const UpdateEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    expansionFileType: UpdateEditsExpansionfilesExpansionFileTypeEnum.pipe(
-      T.Label(),
-    ),
-    editId: S.String.pipe(T.Label()),
-    apkVersionCode: S.Number.pipe(T.Label()),
-    body: S.optional(ExpansionFile.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateEditsExpansionfilesRequest",
-}) as any as S.Schema<UpdateEditsExpansionfilesRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "expansionFileType": UpdateEditsExpansionfilesExpansionFileTypeEnum.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "apkVersionCode": S.Number.pipe(T.Label()),
+  "body": S.optional(ExpansionFile.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UpdateEditsExpansionfilesRequest" }) as any as S.Schema<UpdateEditsExpansionfilesRequest>;
 
 export interface UpdateEditsListingsRequest {
   /** Identifier of the edit. */
@@ -11728,21 +8957,13 @@ export interface UpdateEditsListingsRequest {
   body?: Listing;
 }
 export const UpdateEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    editId: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-    body: S.optional(Listing.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateEditsListingsRequest",
-}) as any as S.Schema<UpdateEditsListingsRequest>;
+S.Struct({
+  "editId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "language": S.String.pipe(T.Label()),
+  "body": S.optional(Listing.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UpdateEditsListingsRequest" }) as any as S.Schema<UpdateEditsListingsRequest>;
 
 export interface UpdateEditsTestersRequest {
   /** Identifier of the edit. */
@@ -11755,21 +8976,13 @@ export interface UpdateEditsTestersRequest {
   body?: Testers;
 }
 export const UpdateEditsTestersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    editId: S.String.pipe(T.Label()),
-    track: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(Testers.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateEditsTestersRequest",
-}) as any as S.Schema<UpdateEditsTestersRequest>;
+S.Struct({
+  "editId": S.String.pipe(T.Label()),
+  "track": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(Testers.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UpdateEditsTestersRequest" }) as any as S.Schema<UpdateEditsTestersRequest>;
 
 export interface UpdateEditsTracksRequest {
   /** Package name of the app. */
@@ -11782,27 +8995,15 @@ export interface UpdateEditsTracksRequest {
   body?: Track;
 }
 export const UpdateEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    track: S.String.pipe(T.Label()),
-    body: S.optional(Track.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateEditsTracksRequest",
-}) as any as S.Schema<UpdateEditsTracksRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "track": S.String.pipe(T.Label()),
+  "body": S.optional(Track.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UpdateEditsTracksRequest" }) as any as S.Schema<UpdateEditsTracksRequest>;
 
-export type UpdateInappproductsLatencyToleranceEnum =
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+export type UpdateInappproductsLatencyToleranceEnum = "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const UpdateInappproductsLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateInappproductsRequest {
@@ -11811,7 +9012,7 @@ export interface UpdateInappproductsRequest {
   /** Package name of the app. */
   packageName: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?: UpdateInappproductsLatencyToleranceEnum;
+  latencyTolerance?: UpdateInappproductsLatencyToleranceEnum | (string & {});
   /** Unique identifier for the in-app product. */
   sku: string;
   /** If set to true, and the in-app product with the given package_name and sku doesn't exist, the in-app product will be created. */
@@ -11820,33 +9021,21 @@ export interface UpdateInappproductsRequest {
   body?: InAppProduct;
 }
 export const UpdateInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoConvertMissingPrices: S.optional(S.Boolean.pipe(T.Query())),
-    packageName: S.String.pipe(T.Label()),
-    latencyTolerance: S.optional(
-      UpdateInappproductsLatencyToleranceEnum.pipe(T.Query()),
-    ),
-    sku: S.String.pipe(T.Label()),
-    allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(InAppProduct.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateInappproductsRequest",
-}) as any as S.Schema<UpdateInappproductsRequest>;
+S.Struct({
+  "autoConvertMissingPrices": S.optional(S.Boolean.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+  "latencyTolerance": S.optional(UpdateInappproductsLatencyToleranceEnum.pipe(T.Query())),
+  "sku": S.String.pipe(T.Label()),
+  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(InAppProduct.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"androidpublisher/v3/applications/{packageName}/inappproducts/{sku}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UpdateInappproductsRequest" }) as any as S.Schema<UpdateInappproductsRequest>;
 
 /** Request to upload an APK. */
 export interface UploadApkRequest {}
 export const UploadApkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadApkRequest",
-}) as any as S.Schema<UploadApkRequest>;
+S.Struct({}),
+).annotate({ identifier: "UploadApkRequest" }) as any as S.Schema<UploadApkRequest>;
 
 export interface UploadapkAppstoreappsreviewRequest {
   /** Required. Package name of the third-party app store. */
@@ -11857,20 +9046,12 @@ export interface UploadapkAppstoreappsreviewRequest {
   body?: UploadApkRequest;
 }
 export const UploadapkAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appStorePackageName: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    body: S.optional(UploadApkRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/apks:upload",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UploadapkAppstoreappsreviewRequest",
-}) as any as S.Schema<UploadapkAppstoreappsreviewRequest>;
+S.Struct({
+  "appStorePackageName": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(UploadApkRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/apks:upload","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UploadapkAppstoreappsreviewRequest" }) as any as S.Schema<UploadapkAppstoreappsreviewRequest>;
 
 /** Response for uploading an APK. */
 export interface UploadApkResponse {
@@ -11878,31 +9059,20 @@ export interface UploadApkResponse {
   apkId?: string;
 }
 export const UploadApkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apkId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UploadApkResponse",
-}) as any as S.Schema<UploadApkResponse>;
+S.Struct({
+  "apkId": S.optional(S.String),
+}),
+).annotate({ identifier: "UploadApkResponse" }) as any as S.Schema<UploadApkResponse>;
 
 export interface UploadapkInternalappsharingartifactsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const UploadapkInternalappsharingartifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UploadapkInternalappsharingartifactsRequest",
-  }) as any as S.Schema<UploadapkInternalappsharingartifactsRequest>;
+export const UploadapkInternalappsharingartifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UploadapkInternalappsharingartifactsRequest" }) as any as S.Schema<UploadapkInternalappsharingartifactsRequest>;
 
 /** An artifact resource which gets created when uploading an APK or Android App Bundle through internal app sharing. */
 export interface InternalAppSharingArtifact {
@@ -11914,37 +9084,26 @@ export interface InternalAppSharingArtifact {
   downloadUrl?: string;
 }
 export const InternalAppSharingArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sha256: S.optional(S.String),
-    certificateFingerprint: S.optional(S.String),
-    downloadUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InternalAppSharingArtifact",
-}) as any as S.Schema<InternalAppSharingArtifact>;
+S.Struct({
+  "sha256": S.optional(S.String),
+  "certificateFingerprint": S.optional(S.String),
+  "downloadUrl": S.optional(S.String),
+}),
+).annotate({ identifier: "InternalAppSharingArtifact" }) as any as S.Schema<InternalAppSharingArtifact>;
 
-export type UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum =
-  | "DECLARATION_FILE_TYPE_UNSPECIFIED"
-  | "DECLARATION_FILE_TYPE_DOCUMENT"
-  | (string & {});
-export const UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum =
-  /*@__PURE__*/ S.String;
+export type UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum = "DECLARATION_FILE_TYPE_UNSPECIFIED" | "DECLARATION_FILE_TYPE_DOCUMENT";
+export const UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request to upload a policy declaration file. */
 export interface UploadAppStoreAppPolicyDeclarationFileRequest {
   /** Required. Type of the policy declaration file. */
-  fileType?: UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum;
+  fileType?: UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum | (string & {});
 }
-export const UploadAppStoreAppPolicyDeclarationFileRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fileType: S.optional(
-        UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "UploadAppStoreAppPolicyDeclarationFileRequest",
-  }) as any as S.Schema<UploadAppStoreAppPolicyDeclarationFileRequest>;
+export const UploadAppStoreAppPolicyDeclarationFileRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "fileType": S.optional(UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum),
+}),
+).annotate({ identifier: "UploadAppStoreAppPolicyDeclarationFileRequest" }) as any as S.Schema<UploadAppStoreAppPolicyDeclarationFileRequest>;
 
 export interface UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest {
   /** Required. Package name of the third-party app store. */
@@ -11954,58 +9113,34 @@ export interface UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest
   /** Request body */
   body?: UploadAppStoreAppPolicyDeclarationFileRequest;
 }
-export const UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appStorePackageName: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      body: S.optional(
-        UploadAppStoreAppPolicyDeclarationFileRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/policyDeclarationFiles:upload",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest",
-  }) as any as S.Schema<UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest>;
+export const UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "appStorePackageName": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(UploadAppStoreAppPolicyDeclarationFileRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/policyDeclarationFiles:upload","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest" }) as any as S.Schema<UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest>;
 
 /** Response for uploading a policy declaration file. */
 export interface UploadAppStoreAppPolicyDeclarationFileResponse {
   /** The unique ID of the uploaded file. */
   fileId?: string;
 }
-export const UploadAppStoreAppPolicyDeclarationFileResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fileId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UploadAppStoreAppPolicyDeclarationFileResponse",
-  }) as any as S.Schema<UploadAppStoreAppPolicyDeclarationFileResponse>;
+export const UploadAppStoreAppPolicyDeclarationFileResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "fileId": S.optional(S.String),
+}),
+).annotate({ identifier: "UploadAppStoreAppPolicyDeclarationFileResponse" }) as any as S.Schema<UploadAppStoreAppPolicyDeclarationFileResponse>;
 
 export interface UploadbundleInternalappsharingartifactsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const UploadbundleInternalappsharingartifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UploadbundleInternalappsharingartifactsRequest",
-  }) as any as S.Schema<UploadbundleInternalappsharingartifactsRequest>;
+export const UploadbundleInternalappsharingartifactsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UploadbundleInternalappsharingartifactsRequest" }) as any as S.Schema<UploadbundleInternalappsharingartifactsRequest>;
 
 export interface UploadEditsApksRequest {
   /** Package name of the app. */
@@ -12014,19 +9149,11 @@ export interface UploadEditsApksRequest {
   editId: string;
 }
 export const UploadEditsApksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UploadEditsApksRequest",
-}) as any as S.Schema<UploadEditsApksRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/apks","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UploadEditsApksRequest" }) as any as S.Schema<UploadEditsApksRequest>;
 
 export interface UploadEditsBundlesRequest {
   /** Deprecated. The installation warning has been removed, it's not necessary to set this field anymore. */
@@ -12039,29 +9166,16 @@ export interface UploadEditsBundlesRequest {
   editId: string;
 }
 export const UploadEditsBundlesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ackBundleInstallationWarning: S.optional(S.Boolean.pipe(T.Query())),
-    deviceTierConfigId: S.optional(S.String.pipe(T.Query())),
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UploadEditsBundlesRequest",
-}) as any as S.Schema<UploadEditsBundlesRequest>;
+S.Struct({
+  "ackBundleInstallationWarning": S.optional(S.Boolean.pipe(T.Query())),
+  "deviceTierConfigId": S.optional(S.String.pipe(T.Query())),
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UploadEditsBundlesRequest" }) as any as S.Schema<UploadEditsBundlesRequest>;
 
-export type UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum =
-  | "deobfuscationFileTypeUnspecified"
-  | "proguard"
-  | "nativeCode"
-  | (string & {});
-export const UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum =
-  /*@__PURE__*/ S.String;
+export type UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum = "deobfuscationFileTypeUnspecified" | "proguard" | "nativeCode";
+export const UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum = /*@__PURE__*/ S.String;
 
 export interface UploadEditsDeobfuscationfilesRequest {
   /** The version code of the APK whose Deobfuscation File is being uploaded. */
@@ -12071,32 +9185,18 @@ export interface UploadEditsDeobfuscationfilesRequest {
   /** Unique identifier for the Android app. */
   packageName: string;
   /** The type of the deobfuscation file. */
-  deobfuscationFileType: UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum;
+  deobfuscationFileType: UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum | (string & {});
 }
-export const UploadEditsDeobfuscationfilesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apkVersionCode: S.Number.pipe(T.Label()),
-      editId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      deobfuscationFileType:
-        UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UploadEditsDeobfuscationfilesRequest",
-}) as any as S.Schema<UploadEditsDeobfuscationfilesRequest>;
+export const UploadEditsDeobfuscationfilesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "apkVersionCode": S.Number.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "deobfuscationFileType": UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UploadEditsDeobfuscationfilesRequest" }) as any as S.Schema<UploadEditsDeobfuscationfilesRequest>;
 
-export type DeobfuscationFileSymbolTypeEnum =
-  | "deobfuscationFileTypeUnspecified"
-  | "proguard"
-  | "nativeCode"
-  | (string & {});
+export type DeobfuscationFileSymbolTypeEnum = "deobfuscationFileTypeUnspecified" | "proguard" | "nativeCode";
 export const DeobfuscationFileSymbolTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a deobfuscation file. */
@@ -12105,12 +9205,10 @@ export interface DeobfuscationFile {
   symbolType?: DeobfuscationFileSymbolTypeEnum;
 }
 export const DeobfuscationFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    symbolType: S.optional(DeobfuscationFileSymbolTypeEnum),
-  }),
-).annotate({
-  identifier: "DeobfuscationFile",
-}) as any as S.Schema<DeobfuscationFile>;
+S.Struct({
+  "symbolType": S.optional(DeobfuscationFileSymbolTypeEnum),
+}),
+).annotate({ identifier: "DeobfuscationFile" }) as any as S.Schema<DeobfuscationFile>;
 
 /** Responses for the upload. */
 export interface DeobfuscationFilesUploadResponse {
@@ -12118,49 +9216,32 @@ export interface DeobfuscationFilesUploadResponse {
   deobfuscationFile?: DeobfuscationFile;
 }
 export const DeobfuscationFilesUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deobfuscationFile: S.optional(DeobfuscationFile),
-  }),
-).annotate({
-  identifier: "DeobfuscationFilesUploadResponse",
-}) as any as S.Schema<DeobfuscationFilesUploadResponse>;
+S.Struct({
+  "deobfuscationFile": S.optional(DeobfuscationFile),
+}),
+).annotate({ identifier: "DeobfuscationFilesUploadResponse" }) as any as S.Schema<DeobfuscationFilesUploadResponse>;
 
-export type UploadEditsExpansionfilesExpansionFileTypeEnum =
-  | "expansionFileTypeUnspecified"
-  | "main"
-  | "patch"
-  | (string & {});
-export const UploadEditsExpansionfilesExpansionFileTypeEnum =
-  /*@__PURE__*/ S.String;
+export type UploadEditsExpansionfilesExpansionFileTypeEnum = "expansionFileTypeUnspecified" | "main" | "patch";
+export const UploadEditsExpansionfilesExpansionFileTypeEnum = /*@__PURE__*/ S.String;
 
 export interface UploadEditsExpansionfilesRequest {
   /** Package name of the app. */
   packageName: string;
   /** The file type of the expansion file configuration which is being updated. */
-  expansionFileType: UploadEditsExpansionfilesExpansionFileTypeEnum;
+  expansionFileType: UploadEditsExpansionfilesExpansionFileTypeEnum | (string & {});
   /** Identifier of the edit. */
   editId: string;
   /** The version code of the APK whose expansion file configuration is being read or modified. */
   apkVersionCode: number;
 }
 export const UploadEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    expansionFileType: UploadEditsExpansionfilesExpansionFileTypeEnum.pipe(
-      T.Label(),
-    ),
-    editId: S.String.pipe(T.Label()),
-    apkVersionCode: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UploadEditsExpansionfilesRequest",
-}) as any as S.Schema<UploadEditsExpansionfilesRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "expansionFileType": UploadEditsExpansionfilesExpansionFileTypeEnum.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "apkVersionCode": S.Number.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UploadEditsExpansionfilesRequest" }) as any as S.Schema<UploadEditsExpansionfilesRequest>;
 
 /** Response for uploading an expansion file. */
 export interface ExpansionFilesUploadResponse {
@@ -12168,31 +9249,15 @@ export interface ExpansionFilesUploadResponse {
   expansionFile?: ExpansionFile;
 }
 export const ExpansionFilesUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expansionFile: S.optional(ExpansionFile),
-  }),
-).annotate({
-  identifier: "ExpansionFilesUploadResponse",
-}) as any as S.Schema<ExpansionFilesUploadResponse>;
+S.Struct({
+  "expansionFile": S.optional(ExpansionFile),
+}),
+).annotate({ identifier: "ExpansionFilesUploadResponse" }) as any as S.Schema<ExpansionFilesUploadResponse>;
 
-export type UploadEditsImagesAiGeneratedStateEnum =
-  | "aiGeneratedStateUnspecified"
-  | "aiGeneratedStateNotAiGenerated"
-  | "aiGeneratedStateAiGeneratedDeveloperAttested"
-  | (string & {});
+export type UploadEditsImagesAiGeneratedStateEnum = "aiGeneratedStateUnspecified" | "aiGeneratedStateNotAiGenerated" | "aiGeneratedStateAiGeneratedDeveloperAttested";
 export const UploadEditsImagesAiGeneratedStateEnum = /*@__PURE__*/ S.String;
 
-export type UploadEditsImagesImageTypeEnum =
-  | "appImageTypeUnspecified"
-  | "phoneScreenshots"
-  | "sevenInchScreenshots"
-  | "tenInchScreenshots"
-  | "tvScreenshots"
-  | "wearScreenshots"
-  | "icon"
-  | "featureGraphic"
-  | "tvBanner"
-  | (string & {});
+export type UploadEditsImagesImageTypeEnum = "appImageTypeUnspecified" | "phoneScreenshots" | "sevenInchScreenshots" | "tenInchScreenshots" | "tvScreenshots" | "wearScreenshots" | "icon" | "featureGraphic" | "tvBanner";
 export const UploadEditsImagesImageTypeEnum = /*@__PURE__*/ S.String;
 
 export interface UploadEditsImagesRequest {
@@ -12201,31 +9266,21 @@ export interface UploadEditsImagesRequest {
   /** Identifier of the edit. */
   editId: string;
   /** Optional. Whether the image was generated by AI. Attested by the developer. */
-  aiGeneratedState?: UploadEditsImagesAiGeneratedStateEnum;
+  aiGeneratedState?: UploadEditsImagesAiGeneratedStateEnum | (string & {});
   /** Type of the Image. */
-  imageType: UploadEditsImagesImageTypeEnum;
+  imageType: UploadEditsImagesImageTypeEnum | (string & {});
   /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). Providing a language that is not supported by the App is a no-op. */
   language: string;
 }
 export const UploadEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-    aiGeneratedState: S.optional(
-      UploadEditsImagesAiGeneratedStateEnum.pipe(T.Query()),
-    ),
-    imageType: UploadEditsImagesImageTypeEnum.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UploadEditsImagesRequest",
-}) as any as S.Schema<UploadEditsImagesRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+  "aiGeneratedState": S.optional(UploadEditsImagesAiGeneratedStateEnum.pipe(T.Query())),
+  "imageType": UploadEditsImagesImageTypeEnum.pipe(T.Label()),
+  "language": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UploadEditsImagesRequest" }) as any as S.Schema<UploadEditsImagesRequest>;
 
 /** Response for uploading an image. */
 export interface ImagesUploadResponse {
@@ -12233,20 +9288,16 @@ export interface ImagesUploadResponse {
   image?: Image;
 }
 export const ImagesUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(Image),
-  }),
-).annotate({
-  identifier: "ImagesUploadResponse",
-}) as any as S.Schema<ImagesUploadResponse>;
+S.Struct({
+  "image": S.optional(Image),
+}),
+).annotate({ identifier: "ImagesUploadResponse" }) as any as S.Schema<ImagesUploadResponse>;
 
 /** Request to upload an image. */
 export interface UploadImageRequest {}
 export const UploadImageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadImageRequest",
-}) as any as S.Schema<UploadImageRequest>;
+S.Struct({}),
+).annotate({ identifier: "UploadImageRequest" }) as any as S.Schema<UploadImageRequest>;
 
 export interface UploadimageAppstoreappsreviewRequest {
   /** Required. Package name of the third-party app store. */
@@ -12256,22 +9307,13 @@ export interface UploadimageAppstoreappsreviewRequest {
   /** Request body */
   body?: UploadImageRequest;
 }
-export const UploadimageAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appStorePackageName: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      body: S.optional(UploadImageRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/images:upload",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UploadimageAppstoreappsreviewRequest",
-}) as any as S.Schema<UploadimageAppstoreappsreviewRequest>;
+export const UploadimageAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "appStorePackageName": S.String.pipe(T.Label()),
+  "packageName": S.String.pipe(T.Label()),
+  "body": S.optional(UploadImageRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/images:upload","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "UploadimageAppstoreappsreviewRequest" }) as any as S.Schema<UploadimageAppstoreappsreviewRequest>;
 
 /** Response for uploading an image. */
 export interface UploadImageResponse {
@@ -12279,12 +9321,10 @@ export interface UploadImageResponse {
   imageId?: string;
 }
 export const UploadImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UploadImageResponse",
-}) as any as S.Schema<UploadImageResponse>;
+S.Struct({
+  "imageId": S.optional(S.String),
+}),
+).annotate({ identifier: "UploadImageResponse" }) as any as S.Schema<UploadImageResponse>;
 
 export interface ValidateEditsRequest {
   /** Package name of the app. */
@@ -12293,26 +9333,13 @@ export interface ValidateEditsRequest {
   editId: string;
 }
 export const ValidateEditsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.String.pipe(T.Label()),
-    editId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}:validate",
-      baseUrl: "https://androidpublisher.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ValidateEditsRequest",
-}) as any as S.Schema<ValidateEditsRequest>;
+S.Struct({
+  "packageName": S.String.pipe(T.Label()),
+  "editId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"androidpublisher/v3/applications/{packageName}/edits/{editId}:validate","baseUrl":"https://androidpublisher.googleapis.com/"})),
+).annotate({ identifier: "ValidateEditsRequest" }) as any as S.Schema<ValidateEditsRequest>;
 
-export type AcknowledgePurchasesProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AcknowledgePurchasesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Acknowledges a purchase of an inapp item. */
 export const acknowledgePurchasesProducts: API.OperationMethod<
   AcknowledgePurchasesProductsRequest,
@@ -12327,12 +9354,7 @@ export const acknowledgePurchasesProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AcknowledgePurchasesSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AcknowledgePurchasesSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Acknowledges a subscription purchase. */
 export const acknowledgePurchasesSubscriptions: API.OperationMethod<
   AcknowledgePurchasesSubscriptionsRequest,
@@ -12347,12 +9369,7 @@ export const acknowledgePurchasesSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ActivateMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ActivateMonetizationOnetimeproductsPurchaseOptionsOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Activates a one-time product offer. */
 export const activateMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
   ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
@@ -12367,12 +9384,7 @@ export const activateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Opera
   retry: Retry.Retry,
 }));
 
-export type ActivateMonetizationSubscriptionsBasePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ActivateMonetizationSubscriptionsBasePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Activates a base plan. Once activated, base plans will be available to new subscribers. */
 export const activateMonetizationSubscriptionsBasePlans: API.OperationMethod<
   ActivateMonetizationSubscriptionsBasePlansRequest,
@@ -12387,12 +9399,7 @@ export const activateMonetizationSubscriptionsBasePlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ActivateMonetizationSubscriptionsBasePlansOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ActivateMonetizationSubscriptionsBasePlansOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Activates a subscription offer. Once activated, subscription offers will be available to new subscribers. */
 export const activateMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   ActivateMonetizationSubscriptionsBasePlansOffersRequest,
@@ -12407,12 +9414,7 @@ export const activateMonetizationSubscriptionsBasePlansOffers: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type AddexternallyhostedEditsApksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddexternallyhostedEditsApksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to organizations using Managed Play whose application is configured to restrict distribution to the organizations. */
 export const addexternallyhostedEditsApks: API.OperationMethod<
   AddexternallyhostedEditsApksRequest,
@@ -12427,12 +9429,7 @@ export const addexternallyhostedEditsApks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddTargetingApprecoveryError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddTargetingApprecoveryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Incrementally update targeting for a recovery action. Note that only the criteria selected during the creation of recovery action can be expanded. */
 export const addTargetingApprecovery: API.OperationMethod<
   AddTargetingApprecoveryRequest,
@@ -12447,12 +9444,7 @@ export const addTargetingApprecovery: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ArchiveMonetizationSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ArchiveMonetizationSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deprecated: subscription archiving is not supported. */
 export const archiveMonetizationSubscriptions: API.OperationMethod<
   ArchiveMonetizationSubscriptionsRequest,
@@ -12467,12 +9459,7 @@ export const archiveMonetizationSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchDeleteInappproductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchDeleteInappproductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes in-app products (managed products or subscriptions). Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. This method should not be used to delete subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const batchDeleteInappproducts: API.OperationMethod<
   BatchDeleteInappproductsRequest,
@@ -12487,12 +9474,7 @@ export const batchDeleteInappproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchDeleteMonetizationOnetimeproductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchDeleteMonetizationOnetimeproductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes one or more one-time products. */
 export const batchDeleteMonetizationOnetimeproducts: API.OperationMethod<
   BatchDeleteMonetizationOnetimeproductsRequest,
@@ -12507,12 +9489,7 @@ export const batchDeleteMonetizationOnetimeproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchDeleteMonetizationOnetimeproductsPurchaseOptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchDeleteMonetizationOnetimeproductsPurchaseOptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes purchase options across one or multiple one-time products. By default this operation will fail if there are any existing offers under the deleted purchase options. Use the force parameter to override the default behavior. */
 export const batchDeleteMonetizationOnetimeproductsPurchaseOptions: API.OperationMethod<
   BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest,
@@ -12527,12 +9504,7 @@ export const batchDeleteMonetizationOnetimeproductsPurchaseOptions: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes one or more one-time product offers. */
 export const batchDeleteMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
   BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
@@ -12562,10 +9534,7 @@ export const batchGetInappproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchGetMonetizationOnetimeproductsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type BatchGetMonetizationOnetimeproductsError = NotFound | Forbidden | GcpOpError;
 /** Reads one or more one-time products. */
 export const batchGetMonetizationOnetimeproducts: API.OperationMethod<
   BatchGetMonetizationOnetimeproductsRequest,
@@ -12580,12 +9549,7 @@ export const batchGetMonetizationOnetimeproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Reads one or more one-time product offers. */
 export const batchGetMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
   BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
@@ -12600,10 +9564,7 @@ export const batchGetMonetizationOnetimeproductsPurchaseOptionsOffers: API.Opera
   retry: Retry.Retry,
 }));
 
-export type BatchGetMonetizationSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type BatchGetMonetizationSubscriptionsError = NotFound | Forbidden | GcpOpError;
 /** Reads one or more subscriptions. */
 export const batchGetMonetizationSubscriptions: API.OperationMethod<
   BatchGetMonetizationSubscriptionsRequest,
@@ -12618,12 +9579,7 @@ export const batchGetMonetizationSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchGetMonetizationSubscriptionsBasePlansOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchGetMonetizationSubscriptionsBasePlansOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Reads one or more subscription offers. */
 export const batchGetMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   BatchGetMonetizationSubscriptionsBasePlansOffersRequest,
@@ -12653,12 +9609,7 @@ export const batchgetOrders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchMigratePricesMonetizationSubscriptionsBasePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchMigratePricesMonetizationSubscriptionsBasePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Batch variant of the MigrateBasePlanPrices endpoint. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
 export const batchMigratePricesMonetizationSubscriptionsBasePlans: API.OperationMethod<
   BatchMigratePricesMonetizationSubscriptionsBasePlansRequest,
@@ -12673,12 +9624,7 @@ export const batchMigratePricesMonetizationSubscriptionsBasePlans: API.Operation
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateInappproductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateInappproductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates or inserts one or more in-app products (managed products or subscriptions). Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const batchUpdateInappproducts: API.OperationMethod<
   BatchUpdateInappproductsRequest,
@@ -12693,12 +9639,7 @@ export const batchUpdateInappproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateMonetizationOnetimeproductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateMonetizationOnetimeproductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates or updates one or more one-time products. */
 export const batchUpdateMonetizationOnetimeproducts: API.OperationMethod<
   BatchUpdateMonetizationOnetimeproductsRequest,
@@ -12713,12 +9654,7 @@ export const batchUpdateMonetizationOnetimeproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates or updates one or more one-time product offers. */
 export const batchUpdateMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
   BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
@@ -12733,12 +9669,7 @@ export const batchUpdateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Op
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateMonetizationSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateMonetizationSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a batch of subscriptions. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
 export const batchUpdateMonetizationSubscriptions: API.OperationMethod<
   BatchUpdateMonetizationSubscriptionsRequest,
@@ -12753,12 +9684,7 @@ export const batchUpdateMonetizationSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateMonetizationSubscriptionsBasePlansOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateMonetizationSubscriptionsBasePlansOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a batch of subscription offers. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
 export const batchUpdateMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest,
@@ -12773,12 +9699,7 @@ export const batchUpdateMonetizationSubscriptionsBasePlansOffers: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Activates or deactivates purchase options across one or multiple one-time products. */
 export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptions: API.OperationMethod<
   BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest,
@@ -12793,8 +9714,7 @@ export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptions: API.Op
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a batch of one-time product offer states. */
 export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
   BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
@@ -12802,20 +9722,14 @@ export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffers: 
   BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
+  input: BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output: BatchUpdateOneTimeProductOfferStatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateStatesMonetizationSubscriptionsBasePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateStatesMonetizationSubscriptionsBasePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Activates or deactivates base plans across one or multiple subscriptions. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
 export const batchUpdateStatesMonetizationSubscriptionsBasePlans: API.OperationMethod<
   BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest,
@@ -12830,12 +9744,7 @@ export const batchUpdateStatesMonetizationSubscriptionsBasePlans: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a batch of subscription offer states. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
 export const batchUpdateStatesMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest,
@@ -12850,12 +9759,7 @@ export const batchUpdateStatesMonetizationSubscriptionsBasePlansOffers: API.Oper
   retry: Retry.Retry,
 }));
 
-export type CancelApprecoveryError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelApprecoveryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancel an already executing app recovery action. Note that this action changes status of the recovery action to CANCELED. */
 export const cancelApprecovery: API.OperationMethod<
   CancelApprecoveryRequest,
@@ -12870,12 +9774,7 @@ export const cancelApprecovery: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelMonetizationOnetimeproductsPurchaseOptionsOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancels a one-time product offer. */
 export const cancelMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
   CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
@@ -12890,12 +9789,7 @@ export const cancelMonetizationOnetimeproductsPurchaseOptionsOffers: API.Operati
   retry: Retry.Retry,
 }));
 
-export type CancelPurchasesSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelPurchasesSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deprecated: Use purchases.subscriptionsv2.cancel instead. Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support. */
 export const cancelPurchasesSubscriptions: API.OperationMethod<
   CancelPurchasesSubscriptionsRequest,
@@ -12910,12 +9804,7 @@ export const cancelPurchasesSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelPurchasesSubscriptionsv2Error =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelPurchasesSubscriptionsv2Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancel a subscription purchase for the user. */
 export const cancelPurchasesSubscriptionsv2: API.OperationMethod<
   CancelPurchasesSubscriptionsv2Request,
@@ -12930,12 +9819,7 @@ export const cancelPurchasesSubscriptionsv2: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CommitEditsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CommitEditsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Commits an app edit. */
 export const commitEdits: API.OperationMethod<
   CommitEditsRequest,
@@ -12950,12 +9834,7 @@ export const commitEdits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConsumePurchasesProductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ConsumePurchasesProductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Consumes a purchase for an inapp item. */
 export const consumePurchasesProducts: API.OperationMethod<
   ConsumePurchasesProductsRequest,
@@ -12970,12 +9849,7 @@ export const consumePurchasesProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConvertRegionPricesMonetizationError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ConvertRegionPricesMonetizationError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Calculates the region prices, using today's exchange rate and country-specific pricing patterns, based on the price in the request for a set of regions. */
 export const convertRegionPricesMonetization: API.OperationMethod<
   ConvertRegionPricesMonetizationRequest,
@@ -12990,12 +9864,7 @@ export const convertRegionPricesMonetization: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateApplicationsDeviceTierConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateApplicationsDeviceTierConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new device tier config for an app. */
 export const createApplicationsDeviceTierConfigs: API.OperationMethod<
   CreateApplicationsDeviceTierConfigsRequest,
@@ -13010,12 +9879,7 @@ export const createApplicationsDeviceTierConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateApprecoveryError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateApprecoveryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create an app recovery action with recovery status as DRAFT. Note that this action does not execute the recovery action. */
 export const createApprecovery: API.OperationMethod<
   CreateApprecoveryRequest,
@@ -13030,12 +9894,7 @@ export const createApprecovery: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateappstorehostedappAppstoreappsreviewError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateappstorehostedappAppstoreappsreviewError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an app store hosted app. This must be called before any other RPCs for this hosted app. */
 export const createappstorehostedappAppstoreappsreview: API.OperationMethod<
   CreateappstorehostedappAppstoreappsreviewRequest,
@@ -13050,12 +9909,7 @@ export const createappstorehostedappAppstoreappsreview: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateEditsTracksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateEditsTracksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new track. */
 export const createEditsTracks: API.OperationMethod<
   CreateEditsTracksRequest,
@@ -13070,12 +9924,7 @@ export const createEditsTracks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateexternaltransactionExternaltransactionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateexternaltransactionExternaltransactionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new external transaction. */
 export const createexternaltransactionExternaltransactions: API.OperationMethod<
   CreateexternaltransactionExternaltransactionsRequest,
@@ -13090,12 +9939,7 @@ export const createexternaltransactionExternaltransactions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateGrantsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateGrantsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Grant access for a user to the given package. */
 export const createGrants: API.OperationMethod<
   CreateGrantsRequest,
@@ -13110,12 +9954,7 @@ export const createGrants: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateMonetizationSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateMonetizationSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new subscription. Newly added base plans will remain in draft state until activated. */
 export const createMonetizationSubscriptions: API.OperationMethod<
   CreateMonetizationSubscriptionsRequest,
@@ -13130,12 +9969,7 @@ export const createMonetizationSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateMonetizationSubscriptionsBasePlansOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateMonetizationSubscriptionsBasePlansOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new subscription offer. Only auto-renewing base plans can have subscription offers. The offer state will be DRAFT until it is activated. */
 export const createMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   CreateMonetizationSubscriptionsBasePlansOffersRequest,
@@ -13150,12 +9984,7 @@ export const createMonetizationSubscriptionsBasePlansOffers: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type CreateSystemapksVariantsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateSystemapksVariantsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an APK which is suitable for inclusion in a system image from an already uploaded Android App Bundle. */
 export const createSystemapksVariants: API.OperationMethod<
   CreateSystemapksVariantsRequest,
@@ -13170,12 +9999,7 @@ export const createSystemapksVariants: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Grant access for a user to the given developer account. */
 export const createUsers: API.OperationMethod<
   CreateUsersRequest,
@@ -13190,12 +10014,7 @@ export const createUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DataSafetyApplicationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DataSafetyApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Writes the Safety Labels declaration of an app. */
 export const dataSafetyApplications: API.OperationMethod<
   DataSafetyApplicationsRequest,
@@ -13210,12 +10029,7 @@ export const dataSafetyApplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deactivates a one-time product offer. */
 export const deactivateMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
   DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
@@ -13230,12 +10044,7 @@ export const deactivateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Ope
   retry: Retry.Retry,
 }));
 
-export type DeactivateMonetizationSubscriptionsBasePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeactivateMonetizationSubscriptionsBasePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deactivates a base plan. Once deactivated, the base plan will become unavailable to new subscribers, but existing subscribers will maintain their subscription */
 export const deactivateMonetizationSubscriptionsBasePlans: API.OperationMethod<
   DeactivateMonetizationSubscriptionsBasePlansRequest,
@@ -13250,12 +10059,7 @@ export const deactivateMonetizationSubscriptionsBasePlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeactivateMonetizationSubscriptionsBasePlansOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeactivateMonetizationSubscriptionsBasePlansOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deactivates a subscription offer. Once deactivated, existing subscribers will maintain their subscription, but the offer will become unavailable to new subscribers. */
 export const deactivateMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   DeactivateMonetizationSubscriptionsBasePlansOffersRequest,
@@ -13270,12 +10074,7 @@ export const deactivateMonetizationSubscriptionsBasePlansOffers: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type DeferPurchasesSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeferPurchasesSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deprecated: Use purchases.subscriptionsv2.defer instead. Defers a user's subscription purchase until a specified future expiration time. */
 export const deferPurchasesSubscriptions: API.OperationMethod<
   DeferPurchasesSubscriptionsRequest,
@@ -13290,12 +10089,7 @@ export const deferPurchasesSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeferPurchasesSubscriptionsv2Error =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeferPurchasesSubscriptionsv2Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Defers the renewal of a subscription. */
 export const deferPurchasesSubscriptionsv2: API.OperationMethod<
   DeferPurchasesSubscriptionsv2Request,
@@ -13310,12 +10104,7 @@ export const deferPurchasesSubscriptionsv2: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteallEditsImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteallEditsImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes all images for the specified language and image type. Returns an empty response if no images are found. */
 export const deleteallEditsImages: API.OperationMethod<
   DeleteallEditsImagesRequest,
@@ -13330,12 +10119,7 @@ export const deleteallEditsImages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteallEditsListingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteallEditsListingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes all store listings. */
 export const deleteallEditsListings: API.OperationMethod<
   DeleteallEditsListingsRequest,
@@ -13350,12 +10134,7 @@ export const deleteallEditsListings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteEditsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteEditsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an app edit. */
 export const deleteEdits: API.OperationMethod<
   DeleteEditsRequest,
@@ -13370,12 +10149,7 @@ export const deleteEdits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteEditsImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteEditsImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes the image (specified by id) from the edit. */
 export const deleteEditsImages: API.OperationMethod<
   DeleteEditsImagesRequest,
@@ -13390,12 +10164,7 @@ export const deleteEditsImages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteEditsListingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteEditsListingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a localized store listing. */
 export const deleteEditsListings: API.OperationMethod<
   DeleteEditsListingsRequest,
@@ -13410,12 +10179,7 @@ export const deleteEditsListings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteGrantsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteGrantsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes all access for the user to the given package or developer account. */
 export const deleteGrants: API.OperationMethod<
   DeleteGrantsRequest,
@@ -13430,12 +10194,7 @@ export const deleteGrants: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteInappproductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteInappproductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an in-app product (a managed product or a subscription). This method should no longer be used to delete subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const deleteInappproducts: API.OperationMethod<
   DeleteInappproductsRequest,
@@ -13450,12 +10209,7 @@ export const deleteInappproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMonetizationOnetimeproductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteMonetizationOnetimeproductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a one-time product. */
 export const deleteMonetizationOnetimeproducts: API.OperationMethod<
   DeleteMonetizationOnetimeproductsRequest,
@@ -13470,12 +10224,7 @@ export const deleteMonetizationOnetimeproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMonetizationSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteMonetizationSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a subscription. A subscription can only be deleted if it has never had a base plan published. */
 export const deleteMonetizationSubscriptions: API.OperationMethod<
   DeleteMonetizationSubscriptionsRequest,
@@ -13490,12 +10239,7 @@ export const deleteMonetizationSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMonetizationSubscriptionsBasePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteMonetizationSubscriptionsBasePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a base plan. Can only be done for draft base plans. This action is irreversible. */
 export const deleteMonetizationSubscriptionsBasePlans: API.OperationMethod<
   DeleteMonetizationSubscriptionsBasePlansRequest,
@@ -13510,12 +10254,7 @@ export const deleteMonetizationSubscriptionsBasePlans: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMonetizationSubscriptionsBasePlansOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteMonetizationSubscriptionsBasePlansOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a subscription offer. Can only be done for draft offers. This action is irreversible. */
 export const deleteMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   DeleteMonetizationSubscriptionsBasePlansOffersRequest,
@@ -13530,12 +10269,7 @@ export const deleteMonetizationSubscriptionsBasePlansOffers: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes all access for the user to the given developer account. */
 export const deleteUsers: API.OperationMethod<
   DeleteUsersRequest,
@@ -13550,12 +10284,7 @@ export const deleteUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeployApprecoveryError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeployApprecoveryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deploy an already created app recovery action with recovery status DRAFT. Note that this action activates the recovery action for all targeted users and changes its status to ACTIVE. */
 export const deployApprecovery: API.OperationMethod<
   DeployApprecoveryRequest,
@@ -13600,10 +10329,7 @@ export const downloadSystemapksVariants: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetApplicationsDeviceTierConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetApplicationsDeviceTierConfigsError = NotFound | Forbidden | GcpOpError;
 /** Returns a particular device tier config. */
 export const getApplicationsDeviceTierConfigs: API.OperationMethod<
   GetApplicationsDeviceTierConfigsRequest,
@@ -13618,10 +10344,7 @@ export const getApplicationsDeviceTierConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAppstorecatalogRecentappviewsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAppstorecatalogRecentappviewsError = NotFound | Forbidden | GcpOpError;
 /** Returns metadata about a recently updated app. */
 export const getAppstorecatalogRecentappviews: API.OperationMethod<
   GetAppstorecatalogRecentappviewsRequest,
@@ -13651,10 +10374,7 @@ export const getEdits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetEditsCountryavailabilityError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetEditsCountryavailabilityError = NotFound | Forbidden | GcpOpError;
 /** Gets country availability. */
 export const getEditsCountryavailability: API.OperationMethod<
   GetEditsCountryavailabilityRequest,
@@ -13744,10 +10464,7 @@ export const getEditsTracks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetexternaltransactionExternaltransactionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetexternaltransactionExternaltransactionsError = NotFound | Forbidden | GcpOpError;
 /** Gets an existing external transaction. */
 export const getexternaltransactionExternaltransactions: API.OperationMethod<
   GetexternaltransactionExternaltransactionsRequest,
@@ -13777,10 +10494,7 @@ export const getInappproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetMonetizationOnetimeproductsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetMonetizationOnetimeproductsError = NotFound | Forbidden | GcpOpError;
 /** Reads a single one-time product. */
 export const getMonetizationOnetimeproducts: API.OperationMethod<
   GetMonetizationOnetimeproductsRequest,
@@ -13795,10 +10509,7 @@ export const getMonetizationOnetimeproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetMonetizationSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetMonetizationSubscriptionsError = NotFound | Forbidden | GcpOpError;
 /** Reads a single subscription. */
 export const getMonetizationSubscriptions: API.OperationMethod<
   GetMonetizationSubscriptionsRequest,
@@ -13813,10 +10524,7 @@ export const getMonetizationSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetMonetizationSubscriptionsBasePlansOffersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetMonetizationSubscriptionsBasePlansOffersError = NotFound | Forbidden | GcpOpError;
 /** Reads a single offer */
 export const getMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   GetMonetizationSubscriptionsBasePlansOffersRequest,
@@ -13846,10 +10554,7 @@ export const getOrders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Getproductpurchasev2PurchasesProductsv2Error =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type Getproductpurchasev2PurchasesProductsv2Error = NotFound | Forbidden | GcpOpError;
 /** Checks the purchase and consumption status of an inapp item. */
 export const getproductpurchasev2PurchasesProductsv2: API.OperationMethod<
   Getproductpurchasev2PurchasesProductsv2Request,
@@ -13879,10 +10584,7 @@ export const getPurchasesProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetPurchasesSubscriptionsv2Error =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetPurchasesSubscriptionsv2Error = NotFound | Forbidden | GcpOpError;
 /** Get metadata about a subscription */
 export const getPurchasesSubscriptionsv2: API.OperationMethod<
   GetPurchasesSubscriptionsv2Request,
@@ -13927,12 +10629,7 @@ export const getSystemapksVariants: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertEditsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertEditsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new edit for an app. */
 export const insertEdits: API.OperationMethod<
   InsertEditsRequest,
@@ -13947,12 +10644,7 @@ export const insertEdits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertInappproductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertInappproductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an in-app product (a managed product or a subscription). This method should no longer be used to create subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const insertInappproducts: API.OperationMethod<
   InsertInappproductsRequest,
@@ -13967,10 +10659,7 @@ export const insertInappproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListApplicationsDeviceTierConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListApplicationsDeviceTierConfigsError = NotFound | Forbidden | GcpOpError;
 /** Returns created device tier configs, ordered by descending creation time. */
 export const listApplicationsDeviceTierConfigs: API.PaginatedOperationMethod<
   ListApplicationsDeviceTierConfigsRequest,
@@ -13983,16 +10672,10 @@ export const listApplicationsDeviceTierConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListApplicationsTracksReleasesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListApplicationsTracksReleasesError = NotFound | Forbidden | GcpOpError;
 /** Returns the list of all releases for a given track. This excludes any releases that are obsolete. */
 export const listApplicationsTracksReleases: API.OperationMethod<
   ListApplicationsTracksReleasesRequest,
@@ -14022,10 +10705,7 @@ export const listApprecovery: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAppstorecatalogRecentupdateeventsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListAppstorecatalogRecentupdateeventsError = NotFound | Forbidden | GcpOpError;
 /** Lists update events for eligible apps in the given time range. */
 export const listAppstorecatalogRecentupdateevents: API.PaginatedOperationMethod<
   ListAppstorecatalogRecentupdateeventsRequest,
@@ -14038,10 +10718,7 @@ export const listAppstorecatalogRecentupdateevents: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListEditsApksError = NotFound | Forbidden | GcpOpError;
@@ -14149,10 +10826,7 @@ export const listInappproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListMonetizationOnetimeproductsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListMonetizationOnetimeproductsError = NotFound | Forbidden | GcpOpError;
 /** Lists all one-time products under a given app. */
 export const listMonetizationOnetimeproducts: API.PaginatedOperationMethod<
   ListMonetizationOnetimeproductsRequest,
@@ -14165,16 +10839,10 @@ export const listMonetizationOnetimeproducts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListMonetizationOnetimeproductsPurchaseOptionsOffersError = NotFound | Forbidden | GcpOpError;
 /** Lists all offers under a given app, product, or purchase option. */
 export const listMonetizationOnetimeproductsPurchaseOptionsOffers: API.PaginatedOperationMethod<
   ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
@@ -14187,16 +10855,10 @@ export const listMonetizationOnetimeproductsPurchaseOptionsOffers: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListMonetizationSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListMonetizationSubscriptionsError = NotFound | Forbidden | GcpOpError;
 /** Lists all subscriptions under a given app. */
 export const listMonetizationSubscriptions: API.PaginatedOperationMethod<
   ListMonetizationSubscriptionsRequest,
@@ -14209,16 +10871,10 @@ export const listMonetizationSubscriptions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListMonetizationSubscriptionsBasePlansOffersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListMonetizationSubscriptionsBasePlansOffersError = NotFound | Forbidden | GcpOpError;
 /** Lists all offers under a given subscription. */
 export const listMonetizationSubscriptionsBasePlansOffers: API.PaginatedOperationMethod<
   ListMonetizationSubscriptionsBasePlansOffersRequest,
@@ -14231,16 +10887,10 @@ export const listMonetizationSubscriptionsBasePlansOffers: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListPurchasesVoidedpurchasesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListPurchasesVoidedpurchasesError = NotFound | Forbidden | GcpOpError;
 /** Lists the purchases that were canceled, refunded or charged-back. */
 export const listPurchasesVoidedpurchases: API.OperationMethod<
   ListPurchasesVoidedpurchasesRequest,
@@ -14298,18 +10948,10 @@ export const listUsers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type MigratePricesMonetizationSubscriptionsBasePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MigratePricesMonetizationSubscriptionsBasePlansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Migrates subscribers from one or more legacy price cohorts to the current price. Requests result in Google Play notifying affected subscribers. Only up to 250 simultaneous legacy price cohorts are supported. */
 export const migratePricesMonetizationSubscriptionsBasePlans: API.OperationMethod<
   MigratePricesMonetizationSubscriptionsBasePlansRequest,
@@ -14324,12 +10966,7 @@ export const migratePricesMonetizationSubscriptionsBasePlans: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type PatchEditsDetailsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchEditsDetailsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches details of an app. */
 export const patchEditsDetails: API.OperationMethod<
   PatchEditsDetailsRequest,
@@ -14344,12 +10981,7 @@ export const patchEditsDetails: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchEditsExpansionfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchEditsExpansionfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method. */
 export const patchEditsExpansionfiles: API.OperationMethod<
   PatchEditsExpansionfilesRequest,
@@ -14364,12 +10996,7 @@ export const patchEditsExpansionfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchEditsListingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchEditsListingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches a localized store listing. */
 export const patchEditsListings: API.OperationMethod<
   PatchEditsListingsRequest,
@@ -14384,12 +11011,7 @@ export const patchEditsListings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchEditsTestersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchEditsTestersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches testers. Note: Testers resource does not support email lists. */
 export const patchEditsTesters: API.OperationMethod<
   PatchEditsTestersRequest,
@@ -14404,12 +11026,7 @@ export const patchEditsTesters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchEditsTracksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchEditsTracksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches a track. */
 export const patchEditsTracks: API.OperationMethod<
   PatchEditsTracksRequest,
@@ -14424,12 +11041,7 @@ export const patchEditsTracks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchGrantsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchGrantsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates access for the user to the given package. */
 export const patchGrants: API.OperationMethod<
   PatchGrantsRequest,
@@ -14444,12 +11056,7 @@ export const patchGrants: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchInappproductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchInappproductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches an in-app product (a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const patchInappproducts: API.OperationMethod<
   PatchInappproductsRequest,
@@ -14464,12 +11071,7 @@ export const patchInappproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchMonetizationOnetimeproductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchMonetizationOnetimeproductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates or updates a one-time product. */
 export const patchMonetizationOnetimeproducts: API.OperationMethod<
   PatchMonetizationOnetimeproductsRequest,
@@ -14484,12 +11086,7 @@ export const patchMonetizationOnetimeproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchMonetizationSubscriptionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchMonetizationSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing subscription. */
 export const patchMonetizationSubscriptions: API.OperationMethod<
   PatchMonetizationSubscriptionsRequest,
@@ -14504,12 +11101,7 @@ export const patchMonetizationSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchMonetizationSubscriptionsBasePlansOffersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchMonetizationSubscriptionsBasePlansOffersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an existing subscription offer. */
 export const patchMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   PatchMonetizationSubscriptionsBasePlansOffersRequest,
@@ -14524,12 +11116,7 @@ export const patchMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates access for the user to the developer account. */
 export const patchUsers: API.OperationMethod<
   PatchUsersRequest,
@@ -14544,12 +11131,7 @@ export const patchUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RefundexternaltransactionExternaltransactionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RefundexternaltransactionExternaltransactionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Refunds or partially refunds an existing external transaction. */
 export const refundexternaltransactionExternaltransactions: API.OperationMethod<
   RefundexternaltransactionExternaltransactionsRequest,
@@ -14564,12 +11146,7 @@ export const refundexternaltransactionExternaltransactions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RefundOrdersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RefundOrdersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Refunds a user's subscription or in-app purchase order. Orders older than 3 years cannot be refunded. */
 export const refundOrders: API.OperationMethod<
   RefundOrdersRequest,
@@ -14584,12 +11161,7 @@ export const refundOrders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReplyReviewsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ReplyReviewsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Replies to a single review, or updates an existing reply. */
 export const replyReviews: API.OperationMethod<
   ReplyReviewsRequest,
@@ -14604,12 +11176,7 @@ export const replyReviews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReviewrefundOrdersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ReviewrefundOrdersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Provide refund preference and purchase usage for a chargeback request */
 export const reviewrefundOrders: API.OperationMethod<
   ReviewrefundOrdersRequest,
@@ -14624,12 +11191,7 @@ export const reviewrefundOrders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevokePurchasesSubscriptionsv2Error =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RevokePurchasesSubscriptionsv2Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Revoke a subscription purchase for the user. */
 export const revokePurchasesSubscriptionsv2: API.OperationMethod<
   RevokePurchasesSubscriptionsv2Request,
@@ -14644,12 +11206,7 @@ export const revokePurchasesSubscriptionsv2: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateappstorehostedappAppstoreappsreviewError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateappstorehostedappAppstoreappsreviewError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates details for an app hosted on an app store. Use this to provide details for a new app, or to update details for an existing app. The update will be sent for review immediately after creation. */
 export const updateappstorehostedappAppstoreappsreview: API.OperationMethod<
   UpdateappstorehostedappAppstoreappsreviewRequest,
@@ -14664,12 +11221,7 @@ export const updateappstorehostedappAppstoreappsreview: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateappstorehostedapppublishstatusAppstoreappsreviewError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateappstorehostedapppublishstatusAppstoreappsreviewError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the publish status of an app store hosted app. The default state after calling UpdateAppStoreHostedApp is PUBLISHED. It is not necessary to call this RPC explicitly to set an app to PUBLISHED. */
 export const updateappstorehostedapppublishstatusAppstoreappsreview: API.OperationMethod<
   UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest,
@@ -14684,12 +11236,7 @@ export const updateappstorehostedapppublishstatusAppstoreappsreview: API.Operati
   retry: Retry.Retry,
 }));
 
-export type UpdateEditsDetailsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEditsDetailsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates details of an app. */
 export const updateEditsDetails: API.OperationMethod<
   UpdateEditsDetailsRequest,
@@ -14704,12 +11251,7 @@ export const updateEditsDetails: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateEditsExpansionfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEditsExpansionfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method. */
 export const updateEditsExpansionfiles: API.OperationMethod<
   UpdateEditsExpansionfilesRequest,
@@ -14724,12 +11266,7 @@ export const updateEditsExpansionfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateEditsListingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEditsListingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates or updates a localized store listing. */
 export const updateEditsListings: API.OperationMethod<
   UpdateEditsListingsRequest,
@@ -14744,12 +11281,7 @@ export const updateEditsListings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateEditsTestersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEditsTestersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates testers. Note: Testers resource does not support email lists. */
 export const updateEditsTesters: API.OperationMethod<
   UpdateEditsTestersRequest,
@@ -14764,12 +11296,7 @@ export const updateEditsTesters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateEditsTracksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateEditsTracksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a track. */
 export const updateEditsTracks: API.OperationMethod<
   UpdateEditsTracksRequest,
@@ -14784,12 +11311,7 @@ export const updateEditsTracks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateInappproductsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateInappproductsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an in-app product (a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const updateInappproducts: API.OperationMethod<
   UpdateInappproductsRequest,
@@ -14804,12 +11326,7 @@ export const updateInappproducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadapkAppstoreappsreviewError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadapkAppstoreappsreviewError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Upload an APK file for the hosted app. Returns an ID to track this APK. */
 export const uploadapkAppstoreappsreview: API.OperationMethod<
   UploadapkAppstoreappsreviewRequest,
@@ -14824,12 +11341,7 @@ export const uploadapkAppstoreappsreview: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadapkInternalappsharingartifactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadapkInternalappsharingartifactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
 export const uploadapkInternalappsharingartifacts: API.OperationMethod<
   UploadapkInternalappsharingartifactsRequest,
@@ -14844,12 +11356,7 @@ export const uploadapkInternalappsharingartifacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadappstoreapppolicydeclarationfileAppstoreappsreviewError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadappstoreapppolicydeclarationfileAppstoreappsreviewError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Upload a policy declaration file for the hosted app. Returns an ID to track the file. */
 export const uploadappstoreapppolicydeclarationfileAppstoreappsreview: API.OperationMethod<
   UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest,
@@ -14864,12 +11371,7 @@ export const uploadappstoreapppolicydeclarationfileAppstoreappsreview: API.Opera
   retry: Retry.Retry,
 }));
 
-export type UploadbundleInternalappsharingartifactsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadbundleInternalappsharingartifactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
 export const uploadbundleInternalappsharingartifacts: API.OperationMethod<
   UploadbundleInternalappsharingartifactsRequest,
@@ -14884,12 +11386,7 @@ export const uploadbundleInternalappsharingartifacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadEditsApksError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadEditsApksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads an APK and adds to the current edit. */
 export const uploadEditsApks: API.OperationMethod<
   UploadEditsApksRequest,
@@ -14904,12 +11401,7 @@ export const uploadEditsApks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadEditsBundlesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadEditsBundlesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
 export const uploadEditsBundles: API.OperationMethod<
   UploadEditsBundlesRequest,
@@ -14924,12 +11416,7 @@ export const uploadEditsBundles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadEditsDeobfuscationfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadEditsDeobfuscationfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads a new deobfuscation file and attaches to the specified APK. */
 export const uploadEditsDeobfuscationfiles: API.OperationMethod<
   UploadEditsDeobfuscationfilesRequest,
@@ -14944,12 +11431,7 @@ export const uploadEditsDeobfuscationfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadEditsExpansionfilesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadEditsExpansionfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads a new expansion file and attaches to the specified APK. */
 export const uploadEditsExpansionfiles: API.OperationMethod<
   UploadEditsExpansionfilesRequest,
@@ -14964,12 +11446,7 @@ export const uploadEditsExpansionfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadEditsImagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadEditsImagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Uploads an image of the specified language and image type, and adds to the edit. */
 export const uploadEditsImages: API.OperationMethod<
   UploadEditsImagesRequest,
@@ -14984,12 +11461,7 @@ export const uploadEditsImages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadimageAppstoreappsreviewError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UploadimageAppstoreappsreviewError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Upload a screenshot or app icon for the hosted app. Returns an ID to track the image. */
 export const uploadimageAppstoreappsreview: API.OperationMethod<
   UploadimageAppstoreappsreviewRequest,
@@ -15004,12 +11476,7 @@ export const uploadimageAppstoreappsreview: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ValidateEditsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ValidateEditsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Validates an app edit. */
 export const validateEdits: API.OperationMethod<
   ValidateEditsRequest,
@@ -15023,3 +11490,4 @@ export const validateEdits: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

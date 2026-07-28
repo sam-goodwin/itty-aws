@@ -277,7 +277,7 @@ export const InputParallelism = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputParallelism",
 }) as any as S.Schema<InputParallelism>;
-export type RecordFormatType = "JSON" | "CSV" | (string & {});
+export type RecordFormatType = "JSON" | "CSV";
 export const RecordFormatType = /*@__PURE__*/ S.String;
 
 export type RecordRowPath = string;
@@ -439,8 +439,7 @@ export const KinesisFirehoseInputDescription = /*@__PURE__*/ S.suspend(() =>
 export type InputStartingPosition =
   | "NOW"
   | "TRIM_HORIZON"
-  | "LAST_STOPPED_POINT"
-  | (string & {});
+  | "LAST_STOPPED_POINT";
 export const InputStartingPosition = /*@__PURE__*/ S.String;
 
 export interface InputStartingPositionConfiguration {
@@ -874,8 +873,7 @@ export type RuntimeEnvironment =
   | "FLINK-1_18"
   | "FLINK-1_19"
   | "FLINK-1_20"
-  | "FLINK-2_2"
-  | (string & {});
+  | "FLINK-2_2";
 export const RuntimeEnvironment = /*@__PURE__*/ S.String;
 
 export type Inputs = Input[];
@@ -898,13 +896,13 @@ export const SqlApplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SqlApplicationConfiguration",
 }) as any as S.Schema<SqlApplicationConfiguration>;
-export type ConfigurationType = "DEFAULT" | "CUSTOM" | (string & {});
+export type ConfigurationType = "DEFAULT" | "CUSTOM";
 export const ConfigurationType = /*@__PURE__*/ S.String;
 
 export type CheckpointInterval = number;
 export type MinPauseBetweenCheckpoints = number;
 export interface CheckpointConfiguration {
-  ConfigurationType: ConfigurationType;
+  ConfigurationType: ConfigurationType | (string & {});
   CheckpointingEnabled?: boolean;
   CheckpointInterval?: number;
   MinPauseBetweenCheckpoints?: number;
@@ -919,21 +917,16 @@ export const CheckpointConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckpointConfiguration",
 }) as any as S.Schema<CheckpointConfiguration>;
-export type MetricsLevel =
-  | "APPLICATION"
-  | "TASK"
-  | "OPERATOR"
-  | "PARALLELISM"
-  | (string & {});
+export type MetricsLevel = "APPLICATION" | "TASK" | "OPERATOR" | "PARALLELISM";
 export const MetricsLevel = /*@__PURE__*/ S.String;
 
-export type LogLevel = "INFO" | "WARN" | "ERROR" | "DEBUG" | (string & {});
+export type LogLevel = "INFO" | "WARN" | "ERROR" | "DEBUG";
 export const LogLevel = /*@__PURE__*/ S.String;
 
 export interface MonitoringConfiguration {
-  ConfigurationType: ConfigurationType;
-  MetricsLevel?: MetricsLevel;
-  LogLevel?: LogLevel;
+  ConfigurationType: ConfigurationType | (string & {});
+  MetricsLevel?: MetricsLevel | (string & {});
+  LogLevel?: LogLevel | (string & {});
 }
 export const MonitoringConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -947,7 +940,7 @@ export const MonitoringConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type Parallelism = number;
 export type ParallelismPerKPU = number;
 export interface ParallelismConfiguration {
-  ConfigurationType: ConfigurationType;
+  ConfigurationType: ConfigurationType | (string & {});
   Parallelism?: number;
   ParallelismPerKPU?: number;
   AutoScalingEnabled?: boolean;
@@ -1029,12 +1022,12 @@ export const CodeContent = /*@__PURE__*/ S.suspend(() =>
     S3ContentLocation: S.optional(S3ContentLocation),
   }),
 ).annotate({ identifier: "CodeContent" }) as any as S.Schema<CodeContent>;
-export type CodeContentType = "PLAINTEXT" | "ZIPFILE" | (string & {});
+export type CodeContentType = "PLAINTEXT" | "ZIPFILE";
 export const CodeContentType = /*@__PURE__*/ S.String;
 
 export interface ApplicationCodeConfiguration {
   CodeContent?: CodeContent;
-  CodeContentType: CodeContentType;
+  CodeContentType: CodeContentType | (string & {});
 }
 export const ApplicationCodeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1063,7 +1056,7 @@ export const ApplicationSystemRollbackConfiguration = /*@__PURE__*/ S.suspend(
 export type VpcConfigurations = VpcConfiguration[];
 export const VpcConfigurations = /*@__PURE__*/ S.Array(VpcConfiguration);
 export interface ZeppelinMonitoringConfiguration {
-  LogLevel: LogLevel;
+  LogLevel: LogLevel | (string & {});
 }
 export const ZeppelinMonitoringConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LogLevel: LogLevel }),
@@ -1105,7 +1098,7 @@ export const DeployAsApplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeployAsApplicationConfiguration",
 }) as any as S.Schema<DeployAsApplicationConfiguration>;
-export type ArtifactType = "UDF" | "DEPENDENCY_JAR" | (string & {});
+export type ArtifactType = "UDF" | "DEPENDENCY_JAR";
 export const ArtifactType = /*@__PURE__*/ S.String;
 
 export type MavenGroupId = string;
@@ -1120,7 +1113,7 @@ export const MavenReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GroupId: S.String, ArtifactId: S.String, Version: S.String }),
 ).annotate({ identifier: "MavenReference" }) as any as S.Schema<MavenReference>;
 export interface CustomArtifactConfiguration {
-  ArtifactType: ArtifactType;
+  ArtifactType: ArtifactType | (string & {});
   S3ContentLocation?: S3ContentLocation;
   MavenReference?: MavenReference;
 }
@@ -1156,12 +1149,12 @@ export const ZeppelinApplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZeppelinApplicationConfiguration",
 }) as any as S.Schema<ZeppelinApplicationConfiguration>;
 export type KeyId = string;
-export type KeyType = "AWS_OWNED_KEY" | "CUSTOMER_MANAGED_KEY" | (string & {});
+export type KeyType = "AWS_OWNED_KEY" | "CUSTOMER_MANAGED_KEY";
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface ApplicationEncryptionConfiguration {
   KeyId?: string;
-  KeyType: KeyType;
+  KeyType: KeyType | (string & {});
 }
 export const ApplicationEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ KeyId: S.optional(S.String), KeyType: KeyType }),
@@ -1217,18 +1210,18 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
-export type ApplicationMode = "STREAMING" | "INTERACTIVE" | (string & {});
+export type ApplicationMode = "STREAMING" | "INTERACTIVE";
 export const ApplicationMode = /*@__PURE__*/ S.String;
 
 export interface CreateApplicationRequest {
   ApplicationName: string;
   ApplicationDescription?: string;
-  RuntimeEnvironment: RuntimeEnvironment;
+  RuntimeEnvironment: RuntimeEnvironment | (string & {});
   ServiceExecutionRole: string;
   ApplicationConfiguration?: ApplicationConfiguration;
   CloudWatchLoggingOptions?: CloudWatchLoggingOption[];
   Tags?: Tag[];
-  ApplicationMode?: ApplicationMode;
+  ApplicationMode?: ApplicationMode | (string & {});
 }
 export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1265,8 +1258,7 @@ export type ApplicationStatus =
   | "FORCE_STOPPING"
   | "ROLLING_BACK"
   | "MAINTENANCE"
-  | "ROLLED_BACK"
-  | (string & {});
+  | "ROLLED_BACK";
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export interface SqlApplicationConfigurationDescription {
@@ -1337,8 +1329,7 @@ export const ApplicationCodeConfigurationDescription = /*@__PURE__*/ S.suspend(
 export type ApplicationRestoreType =
   | "SKIP_RESTORE_FROM_SNAPSHOT"
   | "RESTORE_FROM_LATEST_SNAPSHOT"
-  | "RESTORE_FROM_CUSTOM_SNAPSHOT"
-  | (string & {});
+  | "RESTORE_FROM_CUSTOM_SNAPSHOT";
 export const ApplicationRestoreType = /*@__PURE__*/ S.String;
 
 export type SnapshotName = string;
@@ -1702,13 +1693,13 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
-export type UrlType = "FLINK_DASHBOARD_URL" | "ZEPPELIN_UI_URL" | (string & {});
+export type UrlType = "FLINK_DASHBOARD_URL" | "ZEPPELIN_UI_URL";
 export const UrlType = /*@__PURE__*/ S.String;
 
 export type SessionExpirationDurationInSeconds = number;
 export interface CreateApplicationPresignedUrlRequest {
   ApplicationName: string;
-  UrlType: UrlType;
+  UrlType: UrlType | (string & {});
   SessionExpirationDurationInSeconds?: number;
 }
 export const CreateApplicationPresignedUrlRequest = /*@__PURE__*/ S.suspend(
@@ -2077,8 +2068,7 @@ export type OperationStatus =
   | "IN_PROGRESS"
   | "CANCELLED"
   | "SUCCESSFUL"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export interface ApplicationVersionChangeDetails {
@@ -2166,12 +2156,7 @@ export const DescribeApplicationSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeApplicationSnapshotRequest",
 }) as any as S.Schema<DescribeApplicationSnapshotRequest>;
-export type SnapshotStatus =
-  | "CREATING"
-  | "READY"
-  | "DELETING"
-  | "FAILED"
-  | (string & {});
+export type SnapshotStatus = "CREATING" | "READY" | "DELETING" | "FAILED";
 export const SnapshotStatus = /*@__PURE__*/ S.String;
 
 export interface SnapshotDetails {
@@ -2308,7 +2293,7 @@ export interface ListApplicationOperationsRequest {
   Limit?: number;
   NextToken?: string;
   Operation?: string;
-  OperationStatus?: OperationStatus;
+  OperationStatus?: OperationStatus | (string & {});
 }
 export const ListApplicationOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2911,7 +2896,7 @@ export const CodeContentUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "CodeContentUpdate",
 }) as any as S.Schema<CodeContentUpdate>;
 export interface ApplicationCodeConfigurationUpdate {
-  CodeContentTypeUpdate?: CodeContentType;
+  CodeContentTypeUpdate?: CodeContentType | (string & {});
   CodeContentUpdate?: CodeContentUpdate;
 }
 export const ApplicationCodeConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
@@ -2923,7 +2908,7 @@ export const ApplicationCodeConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationCodeConfigurationUpdate",
 }) as any as S.Schema<ApplicationCodeConfigurationUpdate>;
 export interface CheckpointConfigurationUpdate {
-  ConfigurationTypeUpdate?: ConfigurationType;
+  ConfigurationTypeUpdate?: ConfigurationType | (string & {});
   CheckpointingEnabledUpdate?: boolean;
   CheckpointIntervalUpdate?: number;
   MinPauseBetweenCheckpointsUpdate?: number;
@@ -2939,9 +2924,9 @@ export const CheckpointConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckpointConfigurationUpdate",
 }) as any as S.Schema<CheckpointConfigurationUpdate>;
 export interface MonitoringConfigurationUpdate {
-  ConfigurationTypeUpdate?: ConfigurationType;
-  MetricsLevelUpdate?: MetricsLevel;
-  LogLevelUpdate?: LogLevel;
+  ConfigurationTypeUpdate?: ConfigurationType | (string & {});
+  MetricsLevelUpdate?: MetricsLevel | (string & {});
+  LogLevelUpdate?: LogLevel | (string & {});
 }
 export const MonitoringConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2953,7 +2938,7 @@ export const MonitoringConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoringConfigurationUpdate",
 }) as any as S.Schema<MonitoringConfigurationUpdate>;
 export interface ParallelismConfigurationUpdate {
-  ConfigurationTypeUpdate?: ConfigurationType;
+  ConfigurationTypeUpdate?: ConfigurationType | (string & {});
   ParallelismUpdate?: number;
   ParallelismPerKPUUpdate?: number;
   AutoScalingEnabledUpdate?: boolean;
@@ -3026,7 +3011,7 @@ export const VpcConfigurationUpdates = /*@__PURE__*/ S.Array(
   VpcConfigurationUpdate,
 );
 export interface ZeppelinMonitoringConfigurationUpdate {
-  LogLevelUpdate: LogLevel;
+  LogLevelUpdate: LogLevel | (string & {});
 }
 export const ZeppelinMonitoringConfigurationUpdate = /*@__PURE__*/ S.suspend(
   () => S.Struct({ LogLevelUpdate: LogLevel }),
@@ -3099,7 +3084,7 @@ export const ZeppelinApplicationConfigurationUpdate = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ZeppelinApplicationConfigurationUpdate>;
 export interface ApplicationEncryptionConfigurationUpdate {
   KeyIdUpdate?: string;
-  KeyTypeUpdate: KeyType;
+  KeyTypeUpdate: KeyType | (string & {});
 }
 export const ApplicationEncryptionConfigurationUpdate = /*@__PURE__*/ S.suspend(
   () => S.Struct({ KeyIdUpdate: S.optional(S.String), KeyTypeUpdate: KeyType }),
@@ -3184,7 +3169,7 @@ export interface UpdateApplicationRequest {
   RunConfigurationUpdate?: RunConfigurationUpdate;
   CloudWatchLoggingOptionUpdates?: CloudWatchLoggingOptionUpdate[];
   ConditionalToken?: string;
-  RuntimeEnvironmentUpdate?: RuntimeEnvironment;
+  RuntimeEnvironmentUpdate?: RuntimeEnvironment | (string & {});
 }
 export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

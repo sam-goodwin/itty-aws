@@ -192,8 +192,7 @@ export type ServiceNamespace =
   | "kafka"
   | "elasticache"
   | "neptune"
-  | "workspaces"
-  | (string & {});
+  | "workspaces";
 export const ServiceNamespace = /*@__PURE__*/ S.String;
 
 export type ScalableDimension =
@@ -220,15 +219,14 @@ export type ScalableDimension =
   | "neptune:cluster:ReadReplicaCount"
   | "sagemaker:variant:DesiredProvisionedConcurrency"
   | "sagemaker:inference-component:DesiredCopyCount"
-  | "workspaces:workspacespool:DesiredUserSessions"
-  | (string & {});
+  | "workspaces:workspacespool:DesiredUserSessions";
 export const ScalableDimension = /*@__PURE__*/ S.String;
 
 export interface DeleteScalingPolicyRequest {
   PolicyName: string;
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ResourceId: string;
-  ScalableDimension: ScalableDimension;
+  ScalableDimension: ScalableDimension | (string & {});
 }
 export const DeleteScalingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -249,10 +247,10 @@ export const DeleteScalingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteScalingPolicyResponse",
 }) as any as S.Schema<DeleteScalingPolicyResponse>;
 export interface DeleteScheduledActionRequest {
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ScheduledActionName: string;
   ResourceId: string;
-  ScalableDimension: ScalableDimension;
+  ScalableDimension: ScalableDimension | (string & {});
 }
 export const DeleteScheduledActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -273,9 +271,9 @@ export const DeleteScheduledActionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteScheduledActionResponse",
 }) as any as S.Schema<DeleteScheduledActionResponse>;
 export interface DeregisterScalableTargetRequest {
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ResourceId: string;
-  ScalableDimension: ScalableDimension;
+  ScalableDimension: ScalableDimension | (string & {});
 }
 export const DeregisterScalableTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -299,9 +297,9 @@ export const ResourceIdsMaxLen1600 = /*@__PURE__*/ S.Array(S.String);
 export type MaxResults = number;
 export type XmlString = string;
 export interface DescribeScalableTargetsRequest {
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ResourceIds?: string[];
-  ScalableDimension?: ScalableDimension;
+  ScalableDimension?: ScalableDimension | (string & {});
   MaxResults?: number;
   NextToken?: string;
 }
@@ -374,9 +372,9 @@ export const DescribeScalableTargetsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeScalableTargetsResponse>;
 export type IncludeNotScaledActivities = boolean;
 export interface DescribeScalingActivitiesRequest {
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ResourceId?: string;
-  ScalableDimension?: ScalableDimension;
+  ScalableDimension?: ScalableDimension | (string & {});
   MaxResults?: number;
   NextToken?: string;
   IncludeNotScaledActivities?: boolean;
@@ -402,8 +400,7 @@ export type ScalingActivityStatusCode =
   | "Successful"
   | "Overridden"
   | "Unfulfilled"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ScalingActivityStatusCode = /*@__PURE__*/ S.String;
 
 export interface NotScaledReason {
@@ -472,9 +469,9 @@ export const DescribeScalingActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeScalingActivitiesResponse>;
 export interface DescribeScalingPoliciesRequest {
   PolicyNames?: string[];
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ResourceId?: string;
-  ScalableDimension?: ScalableDimension;
+  ScalableDimension?: ScalableDimension | (string & {});
   MaxResults?: number;
   NextToken?: string;
 }
@@ -496,15 +493,13 @@ export type PolicyName = string;
 export type PolicyType =
   | "StepScaling"
   | "TargetTrackingScaling"
-  | "PredictiveScaling"
-  | (string & {});
+  | "PredictiveScaling";
 export const PolicyType = /*@__PURE__*/ S.String;
 
 export type AdjustmentType =
   | "ChangeInCapacity"
   | "PercentChangeInCapacity"
-  | "ExactCapacity"
-  | (string & {});
+  | "ExactCapacity";
 export const AdjustmentType = /*@__PURE__*/ S.String;
 
 export type MetricScale = number;
@@ -525,11 +520,7 @@ export type StepAdjustments = StepAdjustment[];
 export const StepAdjustments = /*@__PURE__*/ S.Array(StepAdjustment);
 export type MinAdjustmentMagnitude = number;
 export type Cooldown = number;
-export type MetricAggregationType =
-  | "Average"
-  | "Minimum"
-  | "Maximum"
-  | (string & {});
+export type MetricAggregationType = "Average" | "Minimum" | "Maximum";
 export const MetricAggregationType = /*@__PURE__*/ S.String;
 
 export interface StepScalingPolicyConfiguration {
@@ -581,8 +572,7 @@ export type MetricType =
   | "SageMakerInferenceComponentConcurrentRequestsPerCopyHighResolution"
   | "SageMakerVariantConcurrentRequestsPerModelHighResolution"
   | "ECSServiceAverageCPUUtilizationHighResolution"
-  | "ECSServiceAverageMemoryUtilizationHighResolution"
-  | (string & {});
+  | "ECSServiceAverageMemoryUtilizationHighResolution";
 export const MetricType = /*@__PURE__*/ S.String;
 
 export type ResourceLabel = string;
@@ -618,8 +608,7 @@ export type MetricStatistic =
   | "Minimum"
   | "Maximum"
   | "SampleCount"
-  | "Sum"
-  | (string & {});
+  | "Sum";
 export const MetricStatistic = /*@__PURE__*/ S.String;
 
 export type MetricUnit = string;
@@ -895,17 +884,13 @@ export type PredictiveScalingMetricSpecifications =
 export const PredictiveScalingMetricSpecifications = /*@__PURE__*/ S.Array(
   PredictiveScalingMetricSpecification,
 );
-export type PredictiveScalingMode =
-  | "ForecastOnly"
-  | "ForecastAndScale"
-  | (string & {});
+export type PredictiveScalingMode = "ForecastOnly" | "ForecastAndScale";
 export const PredictiveScalingMode = /*@__PURE__*/ S.String;
 
 export type PredictiveScalingSchedulingBufferTime = number;
 export type PredictiveScalingMaxCapacityBreachBehavior =
   | "HonorMaxCapacity"
-  | "IncreaseMaxCapacity"
-  | (string & {});
+  | "IncreaseMaxCapacity";
 export const PredictiveScalingMaxCapacityBreachBehavior =
   /*@__PURE__*/ S.String;
 
@@ -988,9 +973,9 @@ export const DescribeScalingPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeScalingPoliciesResponse>;
 export interface DescribeScheduledActionsRequest {
   ScheduledActionNames?: string[];
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ResourceId?: string;
-  ScalableDimension?: ScalableDimension;
+  ScalableDimension?: ScalableDimension | (string & {});
   MaxResults?: number;
   NextToken?: string;
 }
@@ -1066,9 +1051,9 @@ export const DescribeScheduledActionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeScheduledActionsResponse",
 }) as any as S.Schema<DescribeScheduledActionsResponse>;
 export interface GetPredictiveScalingForecastRequest {
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ResourceId: string;
-  ScalableDimension: ScalableDimension;
+  ScalableDimension: ScalableDimension | (string & {});
   PolicyName: string;
   StartTime: Date;
   EndTime: Date;
@@ -1162,10 +1147,10 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutScalingPolicyRequest {
   PolicyName: string;
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ResourceId: string;
-  ScalableDimension: ScalableDimension;
-  PolicyType?: PolicyType;
+  ScalableDimension: ScalableDimension | (string & {});
+  PolicyType?: PolicyType | (string & {});
   StepScalingPolicyConfiguration?: StepScalingPolicyConfiguration;
   TargetTrackingScalingPolicyConfiguration?: TargetTrackingScalingPolicyConfiguration;
   PredictiveScalingPolicyConfiguration?: PredictiveScalingPolicyConfiguration;
@@ -1200,12 +1185,12 @@ export const PutScalingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutScalingPolicyResponse",
 }) as any as S.Schema<PutScalingPolicyResponse>;
 export interface PutScheduledActionRequest {
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   Schedule?: string;
   Timezone?: string;
   ScheduledActionName: string;
   ResourceId: string;
-  ScalableDimension: ScalableDimension;
+  ScalableDimension: ScalableDimension | (string & {});
   StartTime?: Date;
   EndTime?: Date;
   ScalableTargetAction?: ScalableTargetAction;
@@ -1234,9 +1219,9 @@ export const PutScheduledActionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutScheduledActionResponse",
 }) as any as S.Schema<PutScheduledActionResponse>;
 export interface RegisterScalableTargetRequest {
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ResourceId: string;
-  ScalableDimension: ScalableDimension;
+  ScalableDimension: ScalableDimension | (string & {});
   MinCapacity?: number;
   MaxCapacity?: number;
   RoleARN?: string;

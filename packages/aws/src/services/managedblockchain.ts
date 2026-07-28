@@ -138,7 +138,7 @@ export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsExceptio
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export type ClientRequestTokenString = string;
-export type AccessorType = "BILLING_TOKEN" | (string & {});
+export type AccessorType = "BILLING_TOKEN";
 export const AccessorType = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -153,15 +153,14 @@ export type AccessorNetworkType =
   | "ETHEREUM_MAINNET"
   | "ETHEREUM_MAINNET_AND_GOERLI"
   | "POLYGON_MAINNET"
-  | "POLYGON_MUMBAI"
-  | (string & {});
+  | "POLYGON_MUMBAI";
 export const AccessorNetworkType = /*@__PURE__*/ S.String;
 
 export interface CreateAccessorInput {
   ClientRequestToken: string;
-  AccessorType: AccessorType;
+  AccessorType: AccessorType | (string & {});
   Tags?: { [key: string]: string | undefined };
-  NetworkType?: AccessorNetworkType;
+  NetworkType?: AccessorNetworkType | (string & {});
 }
 export const CreateAccessorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -307,15 +306,15 @@ export const CreateMemberOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMemberOutput",
 }) as any as S.Schema<CreateMemberOutput>;
 export type NameString = string;
-export type Framework = "HYPERLEDGER_FABRIC" | "ETHEREUM" | (string & {});
+export type Framework = "HYPERLEDGER_FABRIC" | "ETHEREUM";
 export const Framework = /*@__PURE__*/ S.String;
 
 export type FrameworkVersionString = string;
-export type Edition = "STARTER" | "STANDARD" | (string & {});
+export type Edition = "STARTER" | "STANDARD";
 export const Edition = /*@__PURE__*/ S.String;
 
 export interface NetworkFabricConfiguration {
-  Edition: Edition;
+  Edition: Edition | (string & {});
 }
 export const NetworkFabricConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Edition: Edition }),
@@ -332,10 +331,7 @@ export const NetworkFrameworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFrameworkConfiguration>;
 export type ThresholdPercentageInt = number;
 export type ProposalDurationInt = number;
-export type ThresholdComparator =
-  | "GREATER_THAN"
-  | "GREATER_THAN_OR_EQUAL_TO"
-  | (string & {});
+export type ThresholdComparator = "GREATER_THAN" | "GREATER_THAN_OR_EQUAL_TO";
 export const ThresholdComparator = /*@__PURE__*/ S.String;
 
 export interface ApprovalThresholdPolicy {
@@ -362,7 +358,7 @@ export interface CreateNetworkInput {
   ClientRequestToken: string;
   Name: string;
   Description?: string;
-  Framework: Framework;
+  Framework: Framework | (string & {});
   FrameworkVersion: string;
   FrameworkConfiguration?: NetworkFrameworkConfiguration;
   VotingPolicy: VotingPolicy;
@@ -425,14 +421,14 @@ export const NodeLogPublishingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NodeLogPublishingConfiguration",
 }) as any as S.Schema<NodeLogPublishingConfiguration>;
-export type StateDBType = "LevelDB" | "CouchDB" | (string & {});
+export type StateDBType = "LevelDB" | "CouchDB";
 export const StateDBType = /*@__PURE__*/ S.String;
 
 export interface NodeConfiguration {
   InstanceType: string;
   AvailabilityZone?: string;
   LogPublishingConfiguration?: NodeLogPublishingConfiguration;
-  StateDB?: StateDBType;
+  StateDB?: StateDBType | (string & {});
 }
 export const NodeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -644,11 +640,7 @@ export const GetAccessorInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccessorInput",
 }) as any as S.Schema<GetAccessorInput>;
-export type AccessorStatus =
-  | "AVAILABLE"
-  | "PENDING_DELETION"
-  | "DELETED"
-  | (string & {});
+export type AccessorStatus = "AVAILABLE" | "PENDING_DELETION" | "DELETED";
 export const AccessorStatus = /*@__PURE__*/ S.String;
 
 export type OutputTagMap = { [key: string]: string | undefined };
@@ -737,8 +729,7 @@ export type MemberStatus =
   | "UPDATING"
   | "DELETING"
   | "DELETED"
-  | "INACCESSIBLE_ENCRYPTION_KEY"
-  | (string & {});
+  | "INACCESSIBLE_ENCRYPTION_KEY";
 export const MemberStatus = /*@__PURE__*/ S.String;
 
 export interface Member {
@@ -833,8 +824,7 @@ export type NetworkStatus =
   | "AVAILABLE"
   | "CREATE_FAILED"
   | "DELETING"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const NetworkStatus = /*@__PURE__*/ S.String;
 
 export interface Network {
@@ -943,8 +933,7 @@ export type NodeStatus =
   | "DELETING"
   | "DELETED"
   | "FAILED"
-  | "INACCESSIBLE_ENCRYPTION_KEY"
-  | (string & {});
+  | "INACCESSIBLE_ENCRYPTION_KEY";
 export const NodeStatus = /*@__PURE__*/ S.String;
 
 export interface Node {
@@ -1016,8 +1005,7 @@ export type ProposalStatus =
   | "APPROVED"
   | "REJECTED"
   | "EXPIRED"
-  | "ACTION_FAILED"
-  | (string & {});
+  | "ACTION_FAILED";
 export const ProposalStatus = /*@__PURE__*/ S.String;
 
 export type VoteCount = number;
@@ -1072,7 +1060,7 @@ export type PaginationToken = string;
 export interface ListAccessorsInput {
   MaxResults?: number;
   NextToken?: string;
-  NetworkType?: AccessorNetworkType;
+  NetworkType?: AccessorNetworkType | (string & {});
 }
 export const ListAccessorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1157,8 +1145,7 @@ export type InvitationStatus =
   | "ACCEPTED"
   | "ACCEPTING"
   | "REJECTED"
-  | "EXPIRED"
-  | (string & {});
+  | "EXPIRED";
 export const InvitationStatus = /*@__PURE__*/ S.String;
 
 export interface NetworkSummary {
@@ -1226,7 +1213,7 @@ export type MemberListMaxResults = number;
 export interface ListMembersInput {
   NetworkId: string;
   Name?: string;
-  Status?: MemberStatus;
+  Status?: MemberStatus | (string & {});
   IsOwned?: boolean;
   MaxResults?: number;
   NextToken?: string;
@@ -1291,8 +1278,8 @@ export const ListMembersOutput = /*@__PURE__*/ S.suspend(() =>
 export type NetworkListMaxResults = number;
 export interface ListNetworksInput {
   Name?: string;
-  Framework?: Framework;
-  Status?: NetworkStatus;
+  Framework?: Framework | (string & {});
+  Status?: NetworkStatus | (string & {});
   MaxResults?: number;
   NextToken?: string;
 }
@@ -1334,7 +1321,7 @@ export type NodeListMaxResults = number;
 export interface ListNodesInput {
   NetworkId: string;
   MemberId?: string;
-  Status?: NodeStatus;
+  Status?: NodeStatus | (string & {});
   MaxResults?: number;
   NextToken?: string;
 }
@@ -1483,7 +1470,7 @@ export const ListProposalVotesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProposalVotesInput",
 }) as any as S.Schema<ListProposalVotesInput>;
-export type VoteValue = "YES" | "NO" | (string & {});
+export type VoteValue = "YES" | "NO";
 export const VoteValue = /*@__PURE__*/ S.String;
 
 export interface VoteSummary {
@@ -1683,7 +1670,7 @@ export interface VoteOnProposalInput {
   NetworkId: string;
   ProposalId: string;
   VoterMemberId: string;
-  Vote: VoteValue;
+  Vote: VoteValue | (string & {});
 }
 export const VoteOnProposalInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

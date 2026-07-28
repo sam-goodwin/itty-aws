@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Request message for AddPublicKey. */
@@ -66,12 +66,10 @@ export interface AddPublicKeyRequest {
   key?: string;
 }
 export const AddPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddPublicKeyRequest",
-}) as any as S.Schema<AddPublicKeyRequest>;
+S.Struct({
+  "key": S.optional(S.String),
+}),
+).annotate({ identifier: "AddPublicKeyRequest" }) as any as S.Schema<AddPublicKeyRequest>;
 
 export interface AddPublicKeyUsersEnvironmentsRequest {
   /** Environment this key should be added to, e.g. `users/me/environments/default`. */
@@ -79,32 +77,18 @@ export interface AddPublicKeyUsersEnvironmentsRequest {
   /** Request body */
   body?: AddPublicKeyRequest;
 }
-export const AddPublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environment: S.String.pipe(T.Label()),
-      body: S.optional(AddPublicKeyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+environment}:addPublicKey",
-        baseUrl: "https://cloudshell.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "AddPublicKeyUsersEnvironmentsRequest",
-}) as any as S.Schema<AddPublicKeyUsersEnvironmentsRequest>;
+export const AddPublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "environment": S.String.pipe(T.Label()),
+  "body": S.optional(AddPublicKeyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+environment}:addPublicKey","baseUrl":"https://cloudshell.googleapis.com/"})),
+).annotate({ identifier: "AddPublicKeyUsersEnvironmentsRequest" }) as any as S.Schema<AddPublicKeyUsersEnvironmentsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -116,11 +100,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(DocumentMapList),
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "details": S.optional(DocumentMapList),
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -137,13 +121,13 @@ export interface Operation {
   name?: string;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-    response: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "metadata": S.optional(DocumentMap),
+  "error": S.optional(Status),
+  "response": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Request message for AuthorizeEnvironment. */
@@ -156,14 +140,12 @@ export interface AuthorizeEnvironmentRequest {
   expireTime?: string;
 }
 export const AuthorizeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idToken: S.optional(S.String),
-    accessToken: S.optional(S.String),
-    expireTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthorizeEnvironmentRequest",
-}) as any as S.Schema<AuthorizeEnvironmentRequest>;
+S.Struct({
+  "idToken": S.optional(S.String),
+  "accessToken": S.optional(S.String),
+  "expireTime": S.optional(S.String),
+}),
+).annotate({ identifier: "AuthorizeEnvironmentRequest" }) as any as S.Schema<AuthorizeEnvironmentRequest>;
 
 export interface AuthorizeUsersEnvironmentsRequest {
   /** Name of the resource that should receive the credentials, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. */
@@ -172,27 +154,17 @@ export interface AuthorizeUsersEnvironmentsRequest {
   body?: AuthorizeEnvironmentRequest;
 }
 export const AuthorizeUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(AuthorizeEnvironmentRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:authorize",
-      baseUrl: "https://cloudshell.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "AuthorizeUsersEnvironmentsRequest",
-}) as any as S.Schema<AuthorizeUsersEnvironmentsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(AuthorizeEnvironmentRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:authorize","baseUrl":"https://cloudshell.googleapis.com/"})),
+).annotate({ identifier: "AuthorizeUsersEnvironmentsRequest" }) as any as S.Schema<AuthorizeUsersEnvironmentsRequest>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -201,43 +173,27 @@ export interface CancelOperationsRequest {
   body?: CancelOperationRequest;
 }
 export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:cancel",
-      baseUrl: "https://cloudshell.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelOperationsRequest",
-}) as any as S.Schema<CancelOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://cloudshell.googleapis.com/"})),
+).annotate({ identifier: "CancelOperationsRequest" }) as any as S.Schema<CancelOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
 export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudshell.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteOperationsRequest",
-}) as any as S.Schema<DeleteOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudshell.googleapis.com/"})),
+).annotate({ identifier: "DeleteOperationsRequest" }) as any as S.Schema<DeleteOperationsRequest>;
 
 export interface GenerateAccessTokenUsersEnvironmentsRequest {
   /** Desired expiration time of the access token. This value must be at most 24 hours in the future. If a value is not specified, the token's expiration time will be set to a default value of 1 hour in the future. */
@@ -247,22 +203,13 @@ export interface GenerateAccessTokenUsersEnvironmentsRequest {
   /** Desired lifetime duration of the access token. This value must be at most 24 hours. If a value is not specified, the token's lifetime will be set to a default value of 1 hour. */
   ttl?: string;
 }
-export const GenerateAccessTokenUsersEnvironmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expireTime: S.optional(S.String.pipe(T.Query())),
-      environment: S.String.pipe(T.Label()),
-      ttl: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+environment}:generateAccessToken",
-        baseUrl: "https://cloudshell.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GenerateAccessTokenUsersEnvironmentsRequest",
-  }) as any as S.Schema<GenerateAccessTokenUsersEnvironmentsRequest>;
+export const GenerateAccessTokenUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "expireTime": S.optional(S.String.pipe(T.Query())),
+  "environment": S.String.pipe(T.Label()),
+  "ttl": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+environment}:generateAccessToken","baseUrl":"https://cloudshell.googleapis.com/"})),
+).annotate({ identifier: "GenerateAccessTokenUsersEnvironmentsRequest" }) as any as S.Schema<GenerateAccessTokenUsersEnvironmentsRequest>;
 
 /** Response message for GenerateAccessToken. */
 export interface GenerateAccessTokenResponse {
@@ -270,62 +217,36 @@ export interface GenerateAccessTokenResponse {
   accessToken?: string;
 }
 export const GenerateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenerateAccessTokenResponse",
-}) as any as S.Schema<GenerateAccessTokenResponse>;
+S.Struct({
+  "accessToken": S.optional(S.String),
+}),
+).annotate({ identifier: "GenerateAccessTokenResponse" }) as any as S.Schema<GenerateAccessTokenResponse>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudshell.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOperationsRequest",
-}) as any as S.Schema<GetOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudshell.googleapis.com/"})),
+).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetUsersEnvironmentsRequest {
   /** Required. Name of the requested resource, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. */
   name: string;
 }
 export const GetUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudshell.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetUsersEnvironmentsRequest",
-}) as any as S.Schema<GetUsersEnvironmentsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudshell.googleapis.com/"})),
+).annotate({ identifier: "GetUsersEnvironmentsRequest" }) as any as S.Schema<GetUsersEnvironmentsRequest>;
 
-export type EnvironmentStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "SUSPENDED"
-  | "PENDING"
-  | "RUNNING"
-  | "DELETING"
-  | (string & {});
+export type EnvironmentStateEnum = "STATE_UNSPECIFIED" | "SUSPENDED" | "PENDING" | "RUNNING" | "DELETING";
 export const EnvironmentStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A Cloud Shell environment, which is defined as the combination of a Docker image specifying what is installed on the environment and a home directory containing the user's data that will remain across sessions. Each user has at least an environment with the ID "default". */
 export interface Environment {
@@ -349,17 +270,17 @@ export interface Environment {
   sshPort?: number;
 }
 export const Environment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    webHost: S.optional(S.String),
-    sshHost: S.optional(S.String),
-    id: S.optional(S.String),
-    sshUsername: S.optional(S.String),
-    name: S.optional(S.String),
-    dockerImage: S.optional(S.String),
-    state: S.optional(EnvironmentStateEnum),
-    publicKeys: S.optional(StringList),
-    sshPort: S.optional(S.Number),
-  }),
+S.Struct({
+  "webHost": S.optional(S.String),
+  "sshHost": S.optional(S.String),
+  "id": S.optional(S.String),
+  "sshUsername": S.optional(S.String),
+  "name": S.optional(S.String),
+  "dockerImage": S.optional(S.String),
+  "state": S.optional(EnvironmentStateEnum),
+  "publicKeys": S.optional(StringList),
+  "sshPort": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
 export interface ListOperationsRequest {
@@ -375,27 +296,17 @@ export interface ListOperationsRequest {
   returnPartialSuccess?: boolean;
 }
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudshell.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListOperationsRequest",
-}) as any as S.Schema<ListOperationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudshell.googleapis.com/"})),
+).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -407,14 +318,12 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 /** Request message for RemovePublicKey. */
 export interface RemovePublicKeyRequest {
@@ -422,12 +331,10 @@ export interface RemovePublicKeyRequest {
   key?: string;
 }
 export const RemovePublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemovePublicKeyRequest",
-}) as any as S.Schema<RemovePublicKeyRequest>;
+S.Struct({
+  "key": S.optional(S.String),
+}),
+).annotate({ identifier: "RemovePublicKeyRequest" }) as any as S.Schema<RemovePublicKeyRequest>;
 
 export interface RemovePublicKeyUsersEnvironmentsRequest {
   /** Environment this key should be removed from, e.g. `users/me/environments/default`. */
@@ -435,21 +342,12 @@ export interface RemovePublicKeyUsersEnvironmentsRequest {
   /** Request body */
   body?: RemovePublicKeyRequest;
 }
-export const RemovePublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environment: S.String.pipe(T.Label()),
-      body: S.optional(RemovePublicKeyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+environment}:removePublicKey",
-        baseUrl: "https://cloudshell.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "RemovePublicKeyUsersEnvironmentsRequest",
-}) as any as S.Schema<RemovePublicKeyUsersEnvironmentsRequest>;
+export const RemovePublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "environment": S.String.pipe(T.Label()),
+  "body": S.optional(RemovePublicKeyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+environment}:removePublicKey","baseUrl":"https://cloudshell.googleapis.com/"})),
+).annotate({ identifier: "RemovePublicKeyUsersEnvironmentsRequest" }) as any as S.Schema<RemovePublicKeyUsersEnvironmentsRequest>;
 
 /** Request message for StartEnvironment. */
 export interface StartEnvironmentRequest {
@@ -459,13 +357,11 @@ export interface StartEnvironmentRequest {
   accessToken?: string;
 }
 export const StartEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicKeys: S.optional(StringList),
-    accessToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartEnvironmentRequest",
-}) as any as S.Schema<StartEnvironmentRequest>;
+S.Struct({
+  "publicKeys": S.optional(StringList),
+  "accessToken": S.optional(S.String),
+}),
+).annotate({ identifier: "StartEnvironmentRequest" }) as any as S.Schema<StartEnvironmentRequest>;
 
 export interface StartUsersEnvironmentsRequest {
   /** Name of the resource that should be started, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. */
@@ -474,26 +370,13 @@ export interface StartUsersEnvironmentsRequest {
   body?: StartEnvironmentRequest;
 }
 export const StartUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(StartEnvironmentRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:start",
-      baseUrl: "https://cloudshell.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "StartUsersEnvironmentsRequest",
-}) as any as S.Schema<StartUsersEnvironmentsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(StartEnvironmentRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:start","baseUrl":"https://cloudshell.googleapis.com/"})),
+).annotate({ identifier: "StartUsersEnvironmentsRequest" }) as any as S.Schema<StartUsersEnvironmentsRequest>;
 
-export type AddPublicKeyUsersEnvironmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AddPublicKeyUsersEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds a public SSH key to an environment, allowing clients with the corresponding private key to connect to that environment via SSH. If a key with the same content already exists, this will error with ALREADY_EXISTS. */
 export const addPublicKeyUsersEnvironments: API.OperationMethod<
   AddPublicKeyUsersEnvironmentsRequest,
@@ -508,12 +391,7 @@ export const addPublicKeyUsersEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AuthorizeUsersEnvironmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type AuthorizeUsersEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sends OAuth credentials to a running environment on behalf of a user. When this completes, the environment will be authorized to run various Google Cloud command line tools without requiring the user to manually authenticate. */
 export const authorizeUsersEnvironments: API.OperationMethod<
   AuthorizeUsersEnvironmentsRequest,
@@ -528,12 +406,7 @@ export const authorizeUsersEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
   CancelOperationsRequest,
@@ -548,12 +421,7 @@ export const cancelOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
   DeleteOperationsRequest,
@@ -568,10 +436,7 @@ export const deleteOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateAccessTokenUsersEnvironmentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GenerateAccessTokenUsersEnvironmentsError = NotFound | Forbidden | GcpOpError;
 /** Generates an access token for the user's environment. */
 export const generateAccessTokenUsersEnvironments: API.OperationMethod<
   GenerateAccessTokenUsersEnvironmentsRequest,
@@ -629,18 +494,10 @@ export const listOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type RemovePublicKeyUsersEnvironmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemovePublicKeyUsersEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes a public SSH key from an environment. Clients will no longer be able to connect to the environment using the corresponding private key. If a key with the same content is not present, this will error with NOT_FOUND. */
 export const removePublicKeyUsersEnvironments: API.OperationMethod<
   RemovePublicKeyUsersEnvironmentsRequest,
@@ -655,12 +512,7 @@ export const removePublicKeyUsersEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartUsersEnvironmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StartUsersEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts an existing environment, allowing clients to connect to it. The returned operation will contain an instance of StartEnvironmentMetadata in its metadata field. Users can wait for the environment to start by polling this operation via GetOperation. Once the environment has finished starting and is ready to accept connections, the operation will contain a StartEnvironmentResponse in its response field. */
 export const startUsersEnvironments: API.OperationMethod<
   StartUsersEnvironmentsRequest,
@@ -674,3 +526,4 @@ export const startUsersEnvironments: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

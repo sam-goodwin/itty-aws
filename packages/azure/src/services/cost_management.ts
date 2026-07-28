@@ -20,17 +20,11 @@ export type AlertType =
   | "Quota"
   | "General"
   | "xCloud"
-  | "BudgetForecast"
-  | (string & {});
+  | "BudgetForecast";
 export const AlertType = /*@__PURE__*/ S.String;
 
 /** Alert category */
-export type AlertCategory =
-  | "Cost"
-  | "Usage"
-  | "Billing"
-  | "System"
-  | (string & {});
+export type AlertCategory = "Cost" | "Usage" | "Billing" | "System";
 export const AlertCategory = /*@__PURE__*/ S.String;
 
 /** Criteria that triggered alert */
@@ -48,8 +42,7 @@ export type AlertCriteria =
   | "InvoiceDueDateReached"
   | "CrossCloudNewDataAvailable"
   | "CrossCloudCollectionError"
-  | "GeneralThresholdError"
-  | (string & {});
+  | "GeneralThresholdError";
 export const AlertCriteria = /*@__PURE__*/ S.String;
 
 /** defines the type of alert */
@@ -72,7 +65,7 @@ export const AlertPropertiesDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertPropertiesDefinition>;
 
 /** Source of alert */
-export type AlertSource = "Preset" | "User" | (string & {});
+export type AlertSource = "Preset" | "User";
 export const AlertSource = /*@__PURE__*/ S.String;
 
 /** Type of timegrain cadence */
@@ -83,8 +76,7 @@ export type AlertTimeGrainType =
   | "Annually"
   | "BillingMonth"
   | "BillingQuarter"
-  | "BillingAnnual"
-  | (string & {});
+  | "BillingAnnual";
 export const AlertTimeGrainType = /*@__PURE__*/ S.String;
 
 /** array of resourceGroups to filter by */
@@ -114,8 +106,7 @@ export type AlertOperator =
   | "GreaterThan"
   | "GreaterThanOrEqualTo"
   | "LessThan"
-  | "LessThanOrEqualTo"
-  | (string & {});
+  | "LessThanOrEqualTo";
 export const AlertOperator = /*@__PURE__*/ S.String;
 
 /** list of emails to contact */
@@ -220,8 +211,7 @@ export type AlertStatus =
   | "Active"
   | "Overridden"
   | "Resolved"
-  | "Dismissed"
-  | (string & {});
+  | "Dismissed";
 export const AlertStatus = /*@__PURE__*/ S.String;
 
 /** Alert properties. */
@@ -297,8 +287,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -306,8 +295,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -479,14 +467,15 @@ export const AlertsResult = /*@__PURE__*/ S.suspend(() =>
 
 export type AlertsListExternalRequestExternalCloudProviderType =
   | "externalSubscriptions"
-  | "externalBillingAccounts"
-  | (string & {});
+  | "externalBillingAccounts";
 export const AlertsListExternalRequestExternalCloudProviderType =
   /*@__PURE__*/ S.String;
 
 export interface AlertsListExternalRequest {
   /** The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account. */
-  externalCloudProviderType: AlertsListExternalRequestExternalCloudProviderType;
+  externalCloudProviderType:
+    | AlertsListExternalRequestExternalCloudProviderType
+    | (string & {});
   /** This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations. */
   externalCloudProviderId: string;
 }
@@ -536,23 +525,15 @@ export const BenefitRecommendationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BenefitRecommendationsListRequest>;
 
 /** Kind/type of the benefit. */
-export type BenefitKind =
-  | "IncludedQuantity"
-  | "Reservation"
-  | "SavingsPlan"
-  | (string & {});
+export type BenefitKind = "IncludedQuantity" | "Reservation" | "SavingsPlan";
 export const BenefitKind = /*@__PURE__*/ S.String;
 
 /** The number of days used to look back. */
-export type LookBackPeriod =
-  | "Last7Days"
-  | "Last30Days"
-  | "Last60Days"
-  | (string & {});
+export type LookBackPeriod = "Last7Days" | "Last30Days" | "Last60Days";
 export const LookBackPeriod = /*@__PURE__*/ S.String;
 
 /** Grain which corresponds to value. */
-export type Grain = "Hourly" | "Daily" | "Monthly" | (string & {});
+export type Grain = "Hourly" | "Daily" | "Monthly";
 export const Grain = /*@__PURE__*/ S.String;
 
 /** On-demand charges for each hour between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
@@ -578,7 +559,7 @@ export const RecommendationUsageDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationUsageDetails>;
 
 /** Grain which corresponds to value. */
-export type Term = "P1Y" | "P3Y" | (string & {});
+export type Term = "P1Y" | "P3Y";
 export const Term = /*@__PURE__*/ S.String;
 
 /** Benefit recommendation details. */
@@ -639,7 +620,7 @@ export const AllSavingsList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllSavingsList" }) as any as S.Schema<AllSavingsList>;
 
 /** Kind of the recommendation scope. */
-export type Scope = "Single" | "Shared" | (string & {});
+export type Scope = "Single" | "Shared";
 export const Scope = /*@__PURE__*/ S.String;
 
 /** The properties of the benefit recommendations. */
@@ -743,7 +724,7 @@ export const BenefitRecommendationsListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BenefitRecommendationsListResult>;
 
 export type BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter =
-  "Hourly" | "Daily" | "Monthly" | (string & {});
+  "Hourly" | "Daily" | "Monthly";
 export const BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter =
   /*@__PURE__*/ S.String;
 
@@ -751,7 +732,9 @@ export interface BenefitUtilizationSummariesListByBillingAccountIdRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Grain. */
-  grainParameter?: BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter;
+  grainParameter?:
+    | BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter
+    | (string & {});
   /** Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate. */
   filter?: string;
 }
@@ -828,7 +811,7 @@ export const BenefitUtilizationSummariesListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BenefitUtilizationSummariesListResult>;
 
 export type BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter =
-  "Hourly" | "Daily" | "Monthly" | (string & {});
+  "Hourly" | "Daily" | "Monthly";
 export const BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter =
   /*@__PURE__*/ S.String;
 
@@ -838,7 +821,9 @@ export interface BenefitUtilizationSummariesListByBillingProfileIdRequest {
   /** Billing Profile ID. */
   billingProfileId: string;
   /** Grain. */
-  grainParameter?: BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter;
+  grainParameter?:
+    | BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter
+    | (string & {});
   /** Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate. */
   filter?: string;
 }
@@ -866,7 +851,7 @@ export const BenefitUtilizationSummariesListByBillingProfileIdRequest =
   }) as any as S.Schema<BenefitUtilizationSummariesListByBillingProfileIdRequest>;
 
 export type BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter =
-  "Hourly" | "Daily" | "Monthly" | (string & {});
+  "Hourly" | "Daily" | "Monthly";
 export const BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter =
   /*@__PURE__*/ S.String;
 
@@ -878,7 +863,9 @@ export interface BenefitUtilizationSummariesListBySavingsPlanIdRequest {
   /** Supports filtering by properties/usageDate. */
   _filter?: string;
   /** Grain. */
-  grainParameter?: BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter;
+  grainParameter?:
+    | BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter
+    | (string & {});
 }
 export const BenefitUtilizationSummariesListBySavingsPlanIdRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -904,7 +891,7 @@ export const BenefitUtilizationSummariesListBySavingsPlanIdRequest =
   }) as any as S.Schema<BenefitUtilizationSummariesListBySavingsPlanIdRequest>;
 
 export type BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter =
-  "Hourly" | "Daily" | "Monthly" | (string & {});
+  "Hourly" | "Daily" | "Monthly";
 export const BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter =
   /*@__PURE__*/ S.String;
 
@@ -914,7 +901,9 @@ export interface BenefitUtilizationSummariesListBySavingsPlanOrderRequest {
   /** Supports filtering by properties/usageDate. */
   _filter?: string;
   /** Grain. */
-  grainParameter?: BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter;
+  grainParameter?:
+    | BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter
+    | (string & {});
 }
 export const BenefitUtilizationSummariesListBySavingsPlanOrderRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -939,7 +928,7 @@ export const BenefitUtilizationSummariesListBySavingsPlanOrderRequest =
   }) as any as S.Schema<BenefitUtilizationSummariesListBySavingsPlanOrderRequest>;
 
 /** The category of the budget. - 'Cost' defines a Budget. - 'ReservationUtilization' defines a Reservation Utilization Alert Rule. */
-export type CategoryType = "Cost" | "ReservationUtilization" | (string & {});
+export type CategoryType = "Cost" | "ReservationUtilization";
 export const CategoryType = /*@__PURE__*/ S.String;
 
 /** The time covered by a budget. Tracking of the amount will be reset based on the time grain. Supported for CategoryType(s): Cost, ReservationUtilization. Supported timeGrainTypes for **CategoryType: Cost** - Monthly - Quarterly - Annually - BillingMonth* - BillingQuarter* - BillingAnnual* *only supported for Web Direct customers. Supported timeGrainTypes for **CategoryType: ReservationUtilization** - Last7Days - Last30Days Required for CategoryType(s): Cost, ReservationUtilization. */
@@ -951,8 +940,7 @@ export type TimeGrainType =
   | "BillingQuarter"
   | "BillingAnnual"
   | "Last7Days"
-  | "Last30Days"
-  | (string & {});
+  | "Last30Days";
 export const TimeGrainType = /*@__PURE__*/ S.String;
 
 /** The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate. Supported for CategoryType(s): Cost, ReservationUtilization. Required for CategoryType(s): Cost, ReservationUtilization. */
@@ -972,7 +960,7 @@ export const BudgetTimePeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BudgetTimePeriod>;
 
 /** The operator to use for comparison. */
-export type BudgetOperatorType = "In" | (string & {});
+export type BudgetOperatorType = "In";
 export const BudgetOperatorType = /*@__PURE__*/ S.String;
 
 /** Array of values to use for comparison */
@@ -1044,12 +1032,11 @@ export type BudgetNotificationOperatorType =
   | "EqualTo"
   | "GreaterThan"
   | "GreaterThanOrEqualTo"
-  | "LessThan"
-  | (string & {});
+  | "LessThan";
 export const BudgetNotificationOperatorType = /*@__PURE__*/ S.String;
 
 /** Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days). Supported for CategoryType(s): ReservationUtilization. */
-export type Frequency = "Daily" | "Weekly" | "Monthly" | (string & {});
+export type Frequency = "Daily" | "Weekly" | "Monthly";
 export const Frequency = /*@__PURE__*/ S.String;
 
 /** Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified. Supported for CategoryType(s): Cost, ReservationUtilization. */
@@ -1071,7 +1058,7 @@ export const NotificationContactGroupsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NotificationContactGroupsList>;
 
 /** The type of threshold. Supported for CategoryType(s): Cost. */
-export type NotificationThresholdType = "Actual" | "Forecasted" | (string & {});
+export type NotificationThresholdType = "Actual" | "Forecasted";
 export const NotificationThresholdType = /*@__PURE__*/ S.String;
 
 /** Language in which the recipient will receive the notification, Supported for CategoryType(s): Cost, ReservationUtilization. */
@@ -1096,8 +1083,7 @@ export type CultureCode =
   | "nb-no"
   | "nl-nl"
   | "pt-pt"
-  | "sv-se"
-  | (string & {});
+  | "sv-se";
 export const CultureCode = /*@__PURE__*/ S.String;
 
 /** The notification associated with a budget. Supported for CategoryType(s): Cost, ReservationUtilization. */
@@ -1147,11 +1133,11 @@ export const BudgetPropertiesInputNotificationsMap = /*@__PURE__*/ S.Record(
 /** The properties of the budget. */
 export interface BudgetPropertiesInput {
   /** The category of the budget. - 'Cost' defines a Budget. - 'ReservationUtilization' defines a Reservation Utilization Alert Rule. */
-  category: CategoryType;
+  category: CategoryType | (string & {});
   /** The total amount of cost to track with the budget. Supported for CategoryType(s): Cost. Required for CategoryType(s): Cost. */
   amount?: number;
   /** The time covered by a budget. Tracking of the amount will be reset based on the time grain. Supported for CategoryType(s): Cost, ReservationUtilization. Supported timeGrainTypes for **CategoryType: Cost** - Monthly - Quarterly - Annually - BillingMonth* - BillingQuarter* - BillingAnnual* *only supported for Web Direct customers. Supported timeGrainTypes for **CategoryType: ReservationUtilization** - Last7Days - Last30Days Required for CategoryType(s): Cost, ReservationUtilization. */
-  timeGrain: TimeGrainType;
+  timeGrain: TimeGrainType | (string & {});
   /** The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate. Supported for CategoryType(s): Cost, ReservationUtilization. Required for CategoryType(s): Cost, ReservationUtilization. */
   timePeriod: BudgetTimePeriod;
   /** May be used to filter budgets by user-specified dimensions and/or tags. Supported for CategoryType(s): Cost, ReservationUtilization. */
@@ -1473,7 +1459,7 @@ export const CostAllocationRulesCheckNameAvailabilityRequest =
   }) as any as S.Schema<CostAllocationRulesCheckNameAvailabilityRequest>;
 
 /** The reason this name is not available. */
-export type Reason = "Invalid" | "AlreadyExists" | "Valid" | (string & {});
+export type Reason = "Invalid" | "AlreadyExists" | "Valid";
 export const Reason = /*@__PURE__*/ S.String;
 
 /** The cost allocation rule check name availability response */
@@ -1497,7 +1483,7 @@ export const CostAllocationRuleCheckNameAvailabilityResponse =
   }) as any as S.Schema<CostAllocationRuleCheckNameAvailabilityResponse>;
 
 /** Category of resource to use for allocation. */
-export type CostAllocationResourceType = "Dimension" | "Tag" | (string & {});
+export type CostAllocationResourceType = "Dimension" | "Tag";
 export const CostAllocationResourceType = /*@__PURE__*/ S.String;
 
 /** Source Resources for cost allocation. This list cannot contain more than 25 values. */
@@ -1557,7 +1543,7 @@ export const TargetCostAllocationResourceValuesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TargetCostAllocationResourceValuesList>;
 
 /** Method to use for allocating cost. FixedProportion indicates that cost will be split based on specified percentage values. */
-export type CostAllocationPolicyType = "FixedProportion" | (string & {});
+export type CostAllocationPolicyType = "FixedProportion";
 export const CostAllocationPolicyType = /*@__PURE__*/ S.String;
 
 /** Target resources for cost allocation. */
@@ -1607,7 +1593,7 @@ export const CostAllocationRuleDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CostAllocationRuleDetails>;
 
 /** Current status of the rule. */
-export type RuleStatus = "NotActive" | "Active" | "Processing" | (string & {});
+export type RuleStatus = "NotActive" | "Active" | "Processing";
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 /** The properties of a cost allocation rule */
@@ -1617,7 +1603,7 @@ export interface CostAllocationRulePropertiesInput {
   /** Resource information for the cost allocation rule */
   details: CostAllocationRuleDetails;
   /** Status of the rule */
-  status: RuleStatus;
+  status: RuleStatus | (string & {});
 }
 export const CostAllocationRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1848,13 +1834,15 @@ export const CostAllocationRuleList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CostAllocationRuleList>;
 
 export type DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType =
-  "externalSubscriptions" | "externalBillingAccounts" | (string & {});
+  "externalSubscriptions" | "externalBillingAccounts";
 export const DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType =
   /*@__PURE__*/ S.String;
 
 export interface DimensionsByExternalCloudProviderTypeRequest {
   /** The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account. */
-  externalCloudProviderType: DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType;
+  externalCloudProviderType:
+    | DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType
+    | (string & {});
   /** This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations. */
   externalCloudProviderId: string;
   /** May be used to filter dimensions by properties/category, properties/usageStart, properties/usageEnd. Supported operators are 'eq','lt', 'gt', 'le', 'ge'. */
@@ -2026,11 +2014,11 @@ export const DimensionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DimensionsListRequest>;
 
 /** The format of the export being delivered. */
-export type FormatType = "Csv" | "Parquet" | (string & {});
+export type FormatType = "Csv" | "Parquet";
 export const FormatType = /*@__PURE__*/ S.String;
 
 /** The export delivery destination type. Currently only 'AzureBlob' is supported. */
-export type DestinationType = "AzureBlob" | (string & {});
+export type DestinationType = "AzureBlob";
 export const DestinationType = /*@__PURE__*/ S.String;
 
 /** This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ). */
@@ -2083,8 +2071,7 @@ export type ExportType =
   | "PriceSheet"
   | "ReservationTransactions"
   | "ReservationRecommendations"
-  | "ReservationDetails"
-  | (string & {});
+  | "ReservationDetails";
 export const ExportType = /*@__PURE__*/ S.String;
 
 /** The time frame for pulling data for the export. If custom, then a specific time period must be provided. */
@@ -2095,8 +2082,7 @@ export type TimeframeType =
   | "TheLastBillingMonth"
   | "WeekToDate"
   | "Custom"
-  | "TheCurrentMonth"
-  | (string & {});
+  | "TheCurrentMonth";
 export const TimeframeType = /*@__PURE__*/ S.String;
 
 /** The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 1 calendar month. */
@@ -2116,7 +2102,7 @@ export const ExportTimePeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportTimePeriod>;
 
 /** The granularity of rows in the export. Currently 'Daily' is supported for most cases. */
-export type GranularityType = "Daily" | "Monthly" | (string & {});
+export type GranularityType = "Daily" | "Monthly";
 export const GranularityType = /*@__PURE__*/ S.String;
 
 /** Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples). */
@@ -2129,8 +2115,7 @@ export const ExportDatasetConfigurationColumnsList = /*@__PURE__*/ S.Array(
 export type FilterItemNames =
   | "ReservationScope"
   | "ResourceType"
-  | "LookBackPeriod"
-  | (string & {});
+  | "LookBackPeriod";
 export const FilterItemNames = /*@__PURE__*/ S.String;
 
 /** Will contain the filter name and value to operate on. This is currently only supported for Export Definition type of ReservationRecommendations. */
@@ -2219,25 +2204,19 @@ export const ExportExecutionListResultInput = /*@__PURE__*/ S.suspend(() =>
 /** Allow customers to select overwrite data(OverwritePreviousReport) for exports. This setting will enable overwrite data for the same month in customer storage account. By default set to CreateNewReport. */
 export type DataOverwriteBehaviorType =
   | "OverwritePreviousReport"
-  | "CreateNewReport"
-  | (string & {});
+  | "CreateNewReport";
 export const DataOverwriteBehaviorType = /*@__PURE__*/ S.String;
 
 /** Allow customers to select compress data for exports. This setting will enable destination file compression scheme at runtime. By default set to None. Gzip is for csv and snappy for parquet. */
-export type CompressionModeType = "gzip" | "snappy" | "none" | (string & {});
+export type CompressionModeType = "gzip" | "snappy" | "none";
 export const CompressionModeType = /*@__PURE__*/ S.String;
 
 /** The status of the export's schedule. If 'Inactive', the export's schedule is paused. To enable export set the status to be Active and then make a PUT request. */
-export type StatusType = "Active" | "Inactive" | (string & {});
+export type StatusType = "Active" | "Inactive";
 export const StatusType = /*@__PURE__*/ S.String;
 
 /** The schedule recurrence. */
-export type RecurrenceType =
-  | "Daily"
-  | "Weekly"
-  | "Monthly"
-  | "Annually"
-  | (string & {});
+export type RecurrenceType = "Daily" | "Weekly" | "Monthly" | "Annually";
 export const RecurrenceType = /*@__PURE__*/ S.String;
 
 /** The start and end date for recurrence schedule. */
@@ -2276,7 +2255,7 @@ export const ExportSchedule = /*@__PURE__*/ S.suspend(() =>
 /** The properties of the export. */
 export interface ExportPropertiesInput {
   /** The format of the export being delivered. */
-  format?: FormatType;
+  format?: FormatType | (string & {});
   /** Has delivery information for the export. */
   deliveryInfo: ExportDeliveryInfo;
   /** Has the definition for the export. */
@@ -2286,9 +2265,9 @@ export interface ExportPropertiesInput {
   /** If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. */
   partitionData?: boolean;
   /** Allow customers to select overwrite data(OverwritePreviousReport) for exports. This setting will enable overwrite data for the same month in customer storage account. By default set to CreateNewReport. */
-  dataOverwriteBehavior?: DataOverwriteBehaviorType;
+  dataOverwriteBehavior?: DataOverwriteBehaviorType | (string & {});
   /** Allow customers to select compress data for exports. This setting will enable destination file compression scheme at runtime. By default set to None. Gzip is for csv and snappy for parquet. */
-  compressionMode?: CompressionModeType;
+  compressionMode?: CompressionModeType | (string & {});
   /** The export description set by customer at time of export creation/update. */
   exportDescription?: string;
   /** Has schedule information for the export. */
@@ -2311,15 +2290,12 @@ export const ExportPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportPropertiesInput>;
 
 /** Type of managed service identity (either system assigned, or none). */
-export type SystemAssignedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | (string & {});
+export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
 export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface ExportsCreateOrUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType;
+  type: SystemAssignedServiceIdentityType | (string & {});
 }
 export const ExportsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
   () =>
@@ -2365,7 +2341,7 @@ export const ExportsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportsCreateOrUpdateRequest>;
 
 /** The type of the export run. */
-export type ExecutionType = "OnDemand" | "Scheduled" | (string & {});
+export type ExecutionType = "OnDemand" | "Scheduled";
 export const ExecutionType = /*@__PURE__*/ S.String;
 
 /** The last known status of the export run. */
@@ -2376,8 +2352,7 @@ export type ExecutionStatus =
   | "Failed"
   | "Timeout"
   | "NewDataNotAvailable"
-  | "DataNotAvailable"
-  | (string & {});
+  | "DataNotAvailable";
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 /** The properties of the export run. This is not populated currently. */
@@ -2885,20 +2860,16 @@ export const ExportListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportListResult>;
 
 export type ForecastExternalCloudProviderUsageRequestExternalCloudProviderType =
-  "externalSubscriptions" | "externalBillingAccounts" | (string & {});
+  "externalSubscriptions" | "externalBillingAccounts";
 export const ForecastExternalCloudProviderUsageRequestExternalCloudProviderType =
   /*@__PURE__*/ S.String;
 
 /** The type of the forecast. */
-export type ForecastType =
-  | "Usage"
-  | "ActualCost"
-  | "AmortizedCost"
-  | (string & {});
+export type ForecastType = "Usage" | "ActualCost" | "AmortizedCost";
 export const ForecastType = /*@__PURE__*/ S.String;
 
 /** The time frame for pulling data for the forecast. */
-export type ForecastTimeframe = "Custom" | (string & {});
+export type ForecastTimeframe = "Custom";
 export const ForecastTimeframe = /*@__PURE__*/ S.String;
 
 /** Has time period for pulling data for the forecast. */
@@ -2937,24 +2908,19 @@ export const ForecastDatasetConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ForecastDatasetConfiguration>;
 
 /** The name of the column to aggregate. */
-export type FunctionName =
-  | "PreTaxCostUSD"
-  | "Cost"
-  | "CostUSD"
-  | "PreTaxCost"
-  | (string & {});
+export type FunctionName = "PreTaxCostUSD" | "Cost" | "CostUSD" | "PreTaxCost";
 export const FunctionName = /*@__PURE__*/ S.String;
 
 /** The name of the aggregation function to use. */
-export type FunctionType = "Sum" | (string & {});
+export type FunctionType = "Sum";
 export const FunctionType = /*@__PURE__*/ S.String;
 
 /** The aggregation expression to be used in the forecast. */
 export interface ForecastAggregation {
   /** The name of the column to aggregate. */
-  name: FunctionName;
+  name: FunctionName | (string & {});
   /** The name of the aggregation function to use. */
-  function: FunctionType;
+  function: FunctionType | (string & {});
 }
 export const ForecastAggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2987,7 +2953,7 @@ export const ForecastFilterOrList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ForecastFilterOrList>;
 
 /** The operator to use for comparison. */
-export type ForecastOperatorType = "In" | (string & {});
+export type ForecastOperatorType = "In";
 export const ForecastOperatorType = /*@__PURE__*/ S.String;
 
 /** Array of values to use for comparison */
@@ -3001,7 +2967,7 @@ export interface ForecastComparisonExpression {
   /** The name of the column to use in comparison. */
   name: string;
   /** The operator to use for comparison. */
-  operator: ForecastOperatorType;
+  operator: ForecastOperatorType | (string & {});
   /** Array of values to use for comparison */
   values: ForecastComparisonExpressionValuesList;
 }
@@ -3038,7 +3004,7 @@ export const ForecastFilter = /*@__PURE__*/ S.suspend(() =>
 /** The definition of data present in the forecast. */
 export interface ForecastDataset {
   /** The granularity of rows in the forecast. */
-  granularity?: GranularityType;
+  granularity?: GranularityType | (string & {});
   /** Has configuration information for the data in the export. The configuration will be ignored if aggregation and grouping are provided. */
   configuration?: ForecastDatasetConfiguration;
   /** Dictionary of aggregation expression to use in the forecast. The key of each item in the dictionary is the alias for the aggregated column. forecast can have up to 2 aggregation clauses. */
@@ -3059,15 +3025,17 @@ export const ForecastDataset = /*@__PURE__*/ S.suspend(() =>
 
 export interface ForecastExternalCloudProviderUsageRequest {
   /** The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account. */
-  externalCloudProviderType: ForecastExternalCloudProviderUsageRequestExternalCloudProviderType;
+  externalCloudProviderType:
+    | ForecastExternalCloudProviderUsageRequestExternalCloudProviderType
+    | (string & {});
   /** This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations. */
   externalCloudProviderId: string;
   /** May be used to filter forecasts by properties/usageDate (Utc time), properties/chargeType or properties/grain. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. */
   _filter?: string;
   /** The type of the forecast. */
-  type: ForecastType;
+  type: ForecastType | (string & {});
   /** The time frame for pulling data for the forecast. If custom, then a specific time period must be provided. */
-  timeframe: ForecastTimeframe;
+  timeframe: ForecastTimeframe | (string & {});
   /** Has time period for pulling data for the forecast. */
   timePeriod?: ForecastTimePeriod;
   /** Has definition for data in this forecast. */
@@ -3205,9 +3173,9 @@ export interface ForecastUsageRequest {
   /** May be used to filter forecasts by properties/usageDate (Utc time), properties/chargeType or properties/grain. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. */
   _filter?: string;
   /** The type of the forecast. */
-  type: ForecastType;
+  type: ForecastType | (string & {});
   /** The time frame for pulling data for the forecast. If custom, then a specific time period must be provided. */
-  timeframe: ForecastTimeframe;
+  timeframe: ForecastTimeframe | (string & {});
   /** Has time period for pulling data for the forecast. */
   timePeriod?: ForecastTimePeriod;
   /** Has definition for data in this forecast. */
@@ -3291,13 +3259,13 @@ export interface GenerateBenefitUtilizationSummariesReportGenerateByBillingAccou
   /** Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes. */
   benefitId?: string;
   /** The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'. */
-  grain: Grain;
+  grain: Grain | (string & {});
   /** The start date of the summaries data that will be served in the report. */
   startDate: string;
   /** The end date of the summaries data that will be served in the report. */
   endDate: string;
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
-  kind?: BenefitKind;
+  kind?: BenefitKind | (string & {});
 }
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3358,11 +3326,7 @@ export const BenefitUtilizationSummariesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BenefitUtilizationSummariesRequest>;
 
 /** Enum representing the status of an async operation. */
-export type OperationStatusType =
-  | "Running"
-  | "Completed"
-  | "Failed"
-  | (string & {});
+export type OperationStatusType = "Running" | "Completed" | "Failed";
 export const OperationStatusType = /*@__PURE__*/ S.String;
 
 /** The CSV file from the reportUrl and secondaryReportUrl blob link will consist of the following columns of benefit utilization data. UtilizedPercentage will be 0 for savings plans reports and non data bricks reservations. Utilization percentages will be 0 for data bricks reservations. */
@@ -3375,8 +3339,7 @@ export type BenefitUtilizationSummaryReportSchema =
   | "MaxUtilizationPercentage"
   | "MinUtilizationPercentage"
   | "UsageDate"
-  | "UtilizedPercentage"
-  | (string & {});
+  | "UtilizedPercentage";
 export const BenefitUtilizationSummaryReportSchema = /*@__PURE__*/ S.String;
 
 /** Object representing the report url and valid until date of the async report generated. */
@@ -3428,13 +3391,13 @@ export interface GenerateBenefitUtilizationSummariesReportGenerateByBillingProfi
   /** Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes. */
   benefitId?: string;
   /** The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'. */
-  grain: Grain;
+  grain: Grain | (string & {});
   /** The start date of the summaries data that will be served in the report. */
   startDate: string;
   /** The end date of the summaries data that will be served in the report. */
   endDate: string;
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
-  kind?: BenefitKind;
+  kind?: BenefitKind | (string & {});
 }
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3474,13 +3437,13 @@ export interface GenerateBenefitUtilizationSummariesReportGenerateByReservationI
   /** Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes. */
   benefitId?: string;
   /** The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'. */
-  grain: Grain;
+  grain: Grain | (string & {});
   /** The start date of the summaries data that will be served in the report. */
   startDate: string;
   /** The end date of the summaries data that will be served in the report. */
   endDate: string;
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
-  kind?: BenefitKind;
+  kind?: BenefitKind | (string & {});
 }
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationIdRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3520,13 +3483,13 @@ export interface GenerateBenefitUtilizationSummariesReportGenerateByReservationO
   /** Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes. */
   benefitId?: string;
   /** The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'. */
-  grain: Grain;
+  grain: Grain | (string & {});
   /** The start date of the summaries data that will be served in the report. */
   startDate: string;
   /** The end date of the summaries data that will be served in the report. */
   endDate: string;
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
-  kind?: BenefitKind;
+  kind?: BenefitKind | (string & {});
 }
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderIdRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3567,13 +3530,13 @@ export interface GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanI
   /** Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes. */
   benefitId?: string;
   /** The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'. */
-  grain: Grain;
+  grain: Grain | (string & {});
   /** The start date of the summaries data that will be served in the report. */
   startDate: string;
   /** The end date of the summaries data that will be served in the report. */
   endDate: string;
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
-  kind?: BenefitKind;
+  kind?: BenefitKind | (string & {});
 }
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3613,13 +3576,13 @@ export interface GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanO
   /** Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes. */
   benefitId?: string;
   /** The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'. */
-  grain: Grain;
+  grain: Grain | (string & {});
   /** The start date of the summaries data that will be served in the report. */
   startDate: string;
   /** The end date of the summaries data that will be served in the report. */
   endDate: string;
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
-  kind?: BenefitKind;
+  kind?: BenefitKind | (string & {});
 }
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3647,10 +3610,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrder
   }) as any as S.Schema<GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdRequest>;
 
 /** The type of the detailed report. By default ActualCost is provided */
-export type CostDetailsMetricType =
-  | "ActualCost"
-  | "AmortizedCost"
-  | (string & {});
+export type CostDetailsMetricType = "ActualCost" | "AmortizedCost";
 export const CostDetailsMetricType = /*@__PURE__*/ S.String;
 
 /** The start and end date for pulling data for the cost detailed report. API only allows data to be pulled for 1 month or less and no older than 13 months. */
@@ -3673,7 +3633,7 @@ export interface GenerateCostDetailsReportCreateOperationRequest {
   /** The ARM Resource ID for subscription, billing account, or other billing scopes.Currently Resource Group and Management Group are not supported. For details, see https://aka.ms/costmgmt/scopes. */
   scope: string;
   /** The type of the detailed report. By default ActualCost is provided */
-  metric?: CostDetailsMetricType;
+  metric?: CostDetailsMetricType | (string & {});
   /** The specific date range of cost details requested for the report. This parameter cannot be used alongside either the invoiceId or billingPeriod parameters. If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost. API only allows data to be pulled for 1 month or less and no older than 13 months. If no timePeriod or billingPeriod or invoiceId is provided the API defaults to the open month time period */
   timePeriod?: CostDetailsTimePeriod;
   /** This parameter can be used only by Enterprise Agreement customers. Use the YearMonth(e.g. 202008) format. This parameter cannot be used alongside either the invoiceId or timePeriod parameters. If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost. */
@@ -3702,15 +3662,11 @@ export const GenerateCostDetailsReportCreateOperationRequest =
   }) as any as S.Schema<GenerateCostDetailsReportCreateOperationRequest>;
 
 /** The status of the cost details operation */
-export type CostDetailsStatusType =
-  | "Completed"
-  | "NoDataFound"
-  | "Failed"
-  | (string & {});
+export type CostDetailsStatusType = "Completed" | "NoDataFound" | "Failed";
 export const CostDetailsStatusType = /*@__PURE__*/ S.String;
 
 /** The data format of the report */
-export type CostDetailsDataFormat = "Csv" | (string & {});
+export type CostDetailsDataFormat = "Csv";
 export const CostDetailsDataFormat = /*@__PURE__*/ S.String;
 
 /** The definition of a cost detailed report. */
@@ -3856,8 +3812,7 @@ export const GenerateCostDetailsReportGetOperationResultsRequest =
 /** The type of the detailed report. By default ActualCost is provided */
 export type GenerateDetailedCostReportMetricType =
   | "ActualCost"
-  | "AmortizedCost"
-  | (string & {});
+  | "AmortizedCost";
 export const GenerateDetailedCostReportMetricType = /*@__PURE__*/ S.String;
 
 /** The start and end date for pulling data for the cost detailed report. */
@@ -3881,7 +3836,7 @@ export interface GenerateDetailedCostReportCreateOperationRequest {
   /** The ARM Resource ID for subscription, resource group, billing account, or other billing scopes. For details, see https://aka.ms/costmgmt/scopes. */
   scope: string;
   /** The type of the detailed report. By default ActualCost is provided */
-  metric?: GenerateDetailedCostReportMetricType;
+  metric?: GenerateDetailedCostReportMetricType | (string & {});
   /** Has time period for pulling data for the cost detailed report. Can only have one of either timePeriod or invoiceId or billingPeriod parameters. If none provided current month cost is provided. */
   timePeriod?: GenerateDetailedCostReportTimePeriod;
   /** Billing period in YearMonth(e.g. 202008) format. Only for legacy enterprise customers can use this. Can only have one of either timePeriod or invoiceId or billingPeriod parameters. If none provided current month cost is provided. */
@@ -4033,8 +3988,7 @@ export type ReportOperationStatusType =
   | "Queued"
   | "NoDataFound"
   | "ReadyToDownload"
-  | "TimedOut"
-  | (string & {});
+  | "TimedOut";
 export const ReportOperationStatusType = /*@__PURE__*/ S.String;
 
 /** The status of the long running operation. */
@@ -4123,8 +4077,7 @@ export type ReservationReportSchema =
   | "SkuName"
   | "TotalReservedQuantity"
   | "UsageDate"
-  | "UsedHours"
-  | (string & {});
+  | "UsedHours";
 export const ReservationReportSchema = /*@__PURE__*/ S.String;
 
 /** The URL to download the generated report. */
@@ -4223,15 +4176,11 @@ export const CostManagementOperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CostManagementOperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type CostManagementOperationOrigin =
-  | "user"
-  | "system"
-  | "user,system"
-  | (string & {});
+export type CostManagementOperationOrigin = "user" | "system" | "user,system";
 export const CostManagementOperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type CostManagementOperationActionType = "Internal" | (string & {});
+export type CostManagementOperationActionType = "Internal";
 export const CostManagementOperationActionType = /*@__PURE__*/ S.String;
 
 /** A Cost management REST API operation. */
@@ -4503,7 +4452,7 @@ export interface QueryAggregation {
   /** The name of the column to aggregate. */
   name: string;
   /** The name of the aggregation function to use. */
-  function: FunctionType;
+  function: FunctionType | (string & {});
 }
 export const QueryAggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4524,13 +4473,13 @@ export const QueryDatasetAggregationMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QueryDatasetAggregationMap>;
 
 /** The type of the column in the report. */
-export type QueryColumnType = "TagKey" | "Dimension" | (string & {});
+export type QueryColumnType = "TagKey" | "Dimension";
 export const QueryColumnType = /*@__PURE__*/ S.String;
 
 /** The group by expression to be used in the query. */
 export interface QueryGrouping {
   /** Has type of the column to group. */
-  type: QueryColumnType;
+  type: QueryColumnType | (string & {});
   /** The name of the column to group. */
   name: string;
 }
@@ -4560,7 +4509,7 @@ export const QueryFilterOrList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<QueryFilterOrList>;
 
 /** The operator to use for comparison. */
-export type QueryOperatorType = "In" | (string & {});
+export type QueryOperatorType = "In";
 export const QueryOperatorType = /*@__PURE__*/ S.String;
 
 /** Array of values to use for comparison */
@@ -4574,7 +4523,7 @@ export interface QueryComparisonExpression {
   /** The name of the column to use in comparison. */
   name: string;
   /** The operator to use for comparison. */
-  operator: QueryOperatorType;
+  operator: QueryOperatorType | (string & {});
   /** Array of values to use for comparison */
   values: QueryComparisonExpressionValuesList;
 }
@@ -4611,7 +4560,7 @@ export const QueryFilter = /*@__PURE__*/ S.suspend(() =>
 /** The definition of data present in the query. */
 export interface QueryDataset {
   /** The granularity of rows in the query. */
-  granularity?: GranularityType;
+  granularity?: GranularityType | (string & {});
   /** Has configuration information for the data in the export. The configuration will be ignored if aggregation and grouping are provided. */
   configuration?: QueryDatasetConfiguration;
   /** Dictionary of aggregation expression to use in the query. The key of each item in the dictionary is the alias for the aggregated column. Query can have up to 2 aggregation clauses. */
@@ -4635,9 +4584,9 @@ export interface QueryUsageRequest {
   /** The scope associated with query and export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
   scope: string;
   /** The type of the query. */
-  type: ExportType;
+  type: ExportType | (string & {});
   /** The time frame for pulling data for the query. If custom, then a specific time period must be provided. */
-  timeframe: TimeframeType;
+  timeframe: TimeframeType | (string & {});
   /** Has time period for pulling data for the query. */
   timePeriod?: QueryTimePeriod;
   /** Has definition for data in this query. */
@@ -4754,19 +4703,21 @@ export const QueryUsageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryUsageResponse>;
 
 export type QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType =
-  "externalSubscriptions" | "externalBillingAccounts" | (string & {});
+  "externalSubscriptions" | "externalBillingAccounts";
 export const QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType =
   /*@__PURE__*/ S.String;
 
 export interface QueryUsageByExternalCloudProviderTypeRequest {
   /** The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account. */
-  externalCloudProviderType: QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType;
+  externalCloudProviderType:
+    | QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType
+    | (string & {});
   /** This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations. */
   externalCloudProviderId: string;
   /** The type of the query. */
-  type: ExportType;
+  type: ExportType | (string & {});
   /** The time frame for pulling data for the query. If custom, then a specific time period must be provided. */
-  timeframe: TimeframeType;
+  timeframe: TimeframeType | (string & {});
   /** Has time period for pulling data for the query. */
   timePeriod?: QueryTimePeriod;
   /** Has definition for data in this query. */
@@ -4866,8 +4817,7 @@ export const ScheduledActionsCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type ScheduledActionsCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const ScheduledActionsCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -4919,8 +4869,7 @@ export const ScheduledActionsCheckNameAvailabilityByScopeRequest =
 /** The reason why the given name is not available. */
 export type ScheduledActionsCheckNameAvailabilityByScopeResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const ScheduledActionsCheckNameAvailabilityByScopeResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -4946,7 +4895,7 @@ export const ScheduledActionsCheckNameAvailabilityByScopeResponse =
   }) as any as S.Schema<ScheduledActionsCheckNameAvailabilityByScopeResponse>;
 
 /** Destination of the view data. Currently only CSV format is supported. */
-export type FileFormat = "Csv" | (string & {});
+export type FileFormat = "Csv";
 export const FileFormat = /*@__PURE__*/ S.String;
 
 /** Destination of the view data. Currently only CSV format is supported. */
@@ -5000,7 +4949,7 @@ export const NotificationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationProperties>;
 
 /** Frequency of the schedule. */
-export type ScheduleFrequency = "Daily" | "Weekly" | "Monthly" | (string & {});
+export type ScheduleFrequency = "Daily" | "Weekly" | "Monthly";
 export const ScheduleFrequency = /*@__PURE__*/ S.String;
 
 /** Days of Week. */
@@ -5011,8 +4960,7 @@ export type DaysOfWeek =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday"
-  | (string & {});
+  | "Sunday";
 export const DaysOfWeek = /*@__PURE__*/ S.String;
 
 /** Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly. */
@@ -5022,13 +4970,7 @@ export const SchedulePropertiesDaysOfWeekList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SchedulePropertiesDaysOfWeekList>;
 
 /** Weeks of month. */
-export type WeeksOfMonth =
-  | "First"
-  | "Second"
-  | "Third"
-  | "Fourth"
-  | "Last"
-  | (string & {});
+export type WeeksOfMonth = "First" | "Second" | "Third" | "Fourth" | "Last";
 export const WeeksOfMonth = /*@__PURE__*/ S.String;
 
 /** Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek. */
@@ -5069,11 +5011,7 @@ export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScheduleProperties>;
 
 /** Status of the scheduled action. */
-export type ScheduledActionStatus =
-  | "Enabled"
-  | "Expired"
-  | "Disabled"
-  | (string & {});
+export type ScheduledActionStatus = "Enabled" | "Expired" | "Disabled";
 export const ScheduledActionStatus = /*@__PURE__*/ S.String;
 
 /** The properties of the scheduled action. */
@@ -5111,7 +5049,7 @@ export const ScheduledActionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScheduledActionProperties>;
 
 /** Kind of the scheduled action. */
-export type ScheduledActionKind = "Email" | "InsightAlert" | (string & {});
+export type ScheduledActionKind = "Email" | "InsightAlert";
 export const ScheduledActionKind = /*@__PURE__*/ S.String;
 
 export interface ScheduledActionsCreateOrUpdateRequest {
@@ -5122,7 +5060,7 @@ export interface ScheduledActionsCreateOrUpdateRequest {
   /** Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required. */
   eTag?: string;
   /** Kind of the scheduled action. */
-  kind?: ScheduledActionKind;
+  kind?: ScheduledActionKind | (string & {});
 }
 export const ScheduledActionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5184,7 +5122,7 @@ export interface ScheduledActionsCreateOrUpdateByScopeRequest {
   /** Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required. */
   eTag?: string;
   /** Kind of the scheduled action. */
-  kind?: ScheduledActionKind;
+  kind?: ScheduledActionKind | (string & {});
 }
 export const ScheduledActionsCreateOrUpdateByScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5543,22 +5481,20 @@ export const ScheduledActionsRunByScopeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduledActionsRunByScopeResponse",
 }) as any as S.Schema<ScheduledActionsRunByScopeResponse>;
 
-export type SettingsCreateOrUpdateByScopeRequestType =
-  | "taginheritance"
-  | (string & {});
+export type SettingsCreateOrUpdateByScopeRequestType = "taginheritance";
 export const SettingsCreateOrUpdateByScopeRequestType = /*@__PURE__*/ S.String;
 
 /** Specifies the kind of settings. */
-export type SettingsKind = "taginheritance" | (string & {});
+export type SettingsKind = "taginheritance";
 export const SettingsKind = /*@__PURE__*/ S.String;
 
 export interface SettingsCreateOrUpdateByScopeRequest {
   /** undefined */
   scope: string;
   /** Setting type. */
-  type: SettingsCreateOrUpdateByScopeRequestType;
+  type: SettingsCreateOrUpdateByScopeRequestType | (string & {});
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: SettingsKind;
+  kind: SettingsKind | (string & {});
 }
 export const SettingsCreateOrUpdateByScopeRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5603,14 +5539,14 @@ export const SettingsCreateOrUpdateByScopeResponse = /*@__PURE__*/ S.suspend(
   identifier: "SettingsCreateOrUpdateByScopeResponse",
 }) as any as S.Schema<SettingsCreateOrUpdateByScopeResponse>;
 
-export type SettingsDeleteByScopeRequestType = "taginheritance" | (string & {});
+export type SettingsDeleteByScopeRequestType = "taginheritance";
 export const SettingsDeleteByScopeRequestType = /*@__PURE__*/ S.String;
 
 export interface SettingsDeleteByScopeRequest {
   /** undefined */
   scope: string;
   /** Setting type. */
-  type: SettingsDeleteByScopeRequestType;
+  type: SettingsDeleteByScopeRequestType | (string & {});
 }
 export const SettingsDeleteByScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5635,14 +5571,14 @@ export const SettingsDeleteByScopeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsDeleteByScopeResponse",
 }) as any as S.Schema<SettingsDeleteByScopeResponse>;
 
-export type SettingsGetByScopeRequestType = "taginheritance" | (string & {});
+export type SettingsGetByScopeRequestType = "taginheritance";
 export const SettingsGetByScopeRequestType = /*@__PURE__*/ S.String;
 
 export interface SettingsGetByScopeRequest {
   /** undefined */
   scope: string;
   /** Setting type. */
-  type: SettingsGetByScopeRequestType;
+  type: SettingsGetByScopeRequestType | (string & {});
 }
 export const SettingsGetByScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5746,7 +5682,7 @@ export const SettingsListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsListResult>;
 
 /** The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates. */
-export type ReportType = "Usage" | (string & {});
+export type ReportType = "Usage";
 export const ReportType = /*@__PURE__*/ S.String;
 
 /** The time frame for pulling data for the report. If custom, then a specific time period must be provided. */
@@ -5754,8 +5690,7 @@ export type ReportTimeframeType =
   | "WeekToDate"
   | "MonthToDate"
   | "YearToDate"
-  | "Custom"
-  | (string & {});
+  | "Custom";
 export const ReportTimeframeType = /*@__PURE__*/ S.String;
 
 /** The start and end date for pulling data for the report. */
@@ -5775,7 +5710,7 @@ export const ReportConfigTimePeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportConfigTimePeriod>;
 
 /** The granularity of rows in the report. */
-export type ReportGranularityType = "Daily" | "Monthly" | (string & {});
+export type ReportGranularityType = "Daily" | "Monthly";
 export const ReportGranularityType = /*@__PURE__*/ S.String;
 
 /** Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns. */
@@ -5847,10 +5782,7 @@ export const ReportConfigDatasetGroupingList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ReportConfigDatasetGroupingList>;
 
 /** Direction of sort. */
-export type ReportConfigSortingType =
-  | "Ascending"
-  | "Descending"
-  | (string & {});
+export type ReportConfigSortingType = "Ascending" | "Descending";
 export const ReportConfigSortingType = /*@__PURE__*/ S.String;
 
 /** The order by expression to be used in the report. */
@@ -5888,7 +5820,7 @@ export const ReportConfigFilterOrList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ReportConfigFilterOrList>;
 
 /** The operator to use for comparison. */
-export type OperatorType = "In" | "Contains" | (string & {});
+export type OperatorType = "In" | "Contains";
 export const OperatorType = /*@__PURE__*/ S.String;
 
 /** Array of values to use for comparison */
@@ -5997,24 +5929,19 @@ export type ChartType =
   | "Line"
   | "StackedColumn"
   | "GroupedColumn"
-  | "Table"
-  | (string & {});
+  | "Table";
 export const ChartType = /*@__PURE__*/ S.String;
 
 /** Show costs accumulated over time. */
-export type AccumulatedType = "true" | "false" | (string & {});
+export type AccumulatedType = "true" | "false";
 export const AccumulatedType = /*@__PURE__*/ S.String;
 
 /** Metric to use when displaying costs. */
-export type MetricType =
-  | "ActualCost"
-  | "AmortizedCost"
-  | "AHUB"
-  | (string & {});
+export type MetricType = "ActualCost" | "AmortizedCost" | "AHUB";
 export const MetricType = /*@__PURE__*/ S.String;
 
 /** KPI type (Forecast, Budget). */
-export type KpiTypeType = "Forecast" | "Budget" | (string & {});
+export type KpiTypeType = "Forecast" | "Budget";
 export const KpiTypeType = /*@__PURE__*/ S.String;
 
 /** Each KPI must contain a 'type' and 'enabled' key. */
@@ -6041,7 +5968,7 @@ export const ViewPropertiesInputKpisList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ViewPropertiesInputKpisList>;
 
 /** Data type to show in view. */
-export type PivotTypeType = "Dimension" | "TagKey" | (string & {});
+export type PivotTypeType = "Dimension" | "TagKey";
 export const PivotTypeType = /*@__PURE__*/ S.String;
 
 /** Each pivot must contain a 'type' and 'name'. */
@@ -6079,11 +6006,11 @@ export interface ViewPropertiesInput {
   /** Query body configuration. Required. */
   query?: ReportConfigDefinition;
   /** Chart type of the main view in Cost Analysis. Required. */
-  chart?: ChartType;
+  chart?: ChartType | (string & {});
   /** Show costs accumulated over time. */
-  accumulated?: AccumulatedType;
+  accumulated?: AccumulatedType | (string & {});
   /** Metric to use when displaying costs. */
-  metric?: MetricType;
+  metric?: MetricType | (string & {});
   /** List of KPIs to show in Cost Analysis UI. */
   kpis?: ViewPropertiesInputKpisList;
   /** Configuration of 3 sub-views in the Cost Analysis UI. */

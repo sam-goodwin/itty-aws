@@ -83,8 +83,7 @@ export type UnavailableReason =
   | "SubscriptionIsDisabled"
   | "NameInUse"
   | "NameInLockdown"
-  | "TooManyNamespaceInCurrentSubscription"
-  | (string & {});
+  | "TooManyNamespaceInCurrentSubscription";
 export const UnavailableReason = /*@__PURE__*/ S.String;
 
 /** Description of a Check Name availability request properties. */
@@ -159,8 +158,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -168,8 +166,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -199,19 +196,14 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Provisioning state of the Alias(Disaster Recovery configuration) - possible values 'Accepted' or 'Succeeded' or 'Failed' */
-export type ProvisioningStateDR =
-  | "Accepted"
-  | "Succeeded"
-  | "Failed"
-  | (string & {});
+export type ProvisioningStateDR = "Accepted" | "Succeeded" | "Failed";
 export const ProvisioningStateDR = /*@__PURE__*/ S.String;
 
 /** role of namespace in GEO DR - possible values 'Primary' or 'PrimaryNotReplicating' or 'Secondary' */
 export type RoleDisasterRecovery =
   | "Primary"
   | "PrimaryNotReplicating"
-  | "Secondary"
-  | (string & {});
+  | "Secondary";
 export const RoleDisasterRecovery = /*@__PURE__*/ S.String;
 
 /** Properties required to the Create Or Update Alias(Disaster Recovery configurations) */
@@ -442,7 +434,7 @@ export const DisasterRecoveryConfigsGetAuthorizationRuleRequest =
     identifier: "DisasterRecoveryConfigsGetAuthorizationRuleRequest",
   }) as any as S.Schema<DisasterRecoveryConfigsGetAuthorizationRuleRequest>;
 
-export type AccessRights = "Manage" | "Send" | "Listen" | (string & {});
+export type AccessRights = "Manage" | "Send" | "Listen";
 export const AccessRights = /*@__PURE__*/ S.String;
 
 /** The rights associated with the rule. */
@@ -710,9 +702,7 @@ export const AccessKeys = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessKeys" }) as any as S.Schema<AccessKeys>;
 
-export type MigrationConfigsCompleteMigrationRequestConfigName =
-  | "$default"
-  | (string & {});
+export type MigrationConfigsCompleteMigrationRequestConfigName = "$default";
 export const MigrationConfigsCompleteMigrationRequestConfigName =
   /*@__PURE__*/ S.String;
 
@@ -724,7 +714,9 @@ export interface MigrationConfigsCompleteMigrationRequest {
   /** The namespace name */
   namespaceName: string;
   /** The configuration name. Should always be $default. */
-  configName: MigrationConfigsCompleteMigrationRequestConfigName;
+  configName:
+    | MigrationConfigsCompleteMigrationRequestConfigName
+    | (string & {});
 }
 export const MigrationConfigsCompleteMigrationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -754,8 +746,7 @@ export const MigrationConfigsCompleteMigrationResponse =
   }) as any as S.Schema<MigrationConfigsCompleteMigrationResponse>;
 
 export type MigrationConfigsCreateAndStartMigrationRequestConfigName =
-  | "$default"
-  | (string & {});
+  "$default";
 export const MigrationConfigsCreateAndStartMigrationRequestConfigName =
   /*@__PURE__*/ S.String;
 
@@ -784,7 +775,9 @@ export interface MigrationConfigsCreateAndStartMigrationRequest {
   /** The namespace name */
   namespaceName: string;
   /** The configuration name. Should always be $default. */
-  configName: MigrationConfigsCreateAndStartMigrationRequestConfigName;
+  configName:
+    | MigrationConfigsCreateAndStartMigrationRequestConfigName
+    | (string & {});
   /** Properties required to the Create Migration Configuration */
   properties?: MigrationConfigPropertiesPropertiesInput;
 }
@@ -863,9 +856,7 @@ export const MigrationConfigsCreateAndStartMigrationResponse =
     identifier: "MigrationConfigsCreateAndStartMigrationResponse",
   }) as any as S.Schema<MigrationConfigsCreateAndStartMigrationResponse>;
 
-export type MigrationConfigsDeleteRequestConfigName =
-  | "$default"
-  | (string & {});
+export type MigrationConfigsDeleteRequestConfigName = "$default";
 export const MigrationConfigsDeleteRequestConfigName = /*@__PURE__*/ S.String;
 
 export interface MigrationConfigsDeleteRequest {
@@ -876,7 +867,7 @@ export interface MigrationConfigsDeleteRequest {
   /** The namespace name */
   namespaceName: string;
   /** The configuration name. Should always be $default. */
-  configName: MigrationConfigsDeleteRequestConfigName;
+  configName: MigrationConfigsDeleteRequestConfigName | (string & {});
 }
 export const MigrationConfigsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -903,7 +894,7 @@ export const MigrationConfigsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrationConfigsDeleteResponse",
 }) as any as S.Schema<MigrationConfigsDeleteResponse>;
 
-export type MigrationConfigsGetRequestConfigName = "$default" | (string & {});
+export type MigrationConfigsGetRequestConfigName = "$default";
 export const MigrationConfigsGetRequestConfigName = /*@__PURE__*/ S.String;
 
 export interface MigrationConfigsGetRequest {
@@ -914,7 +905,7 @@ export interface MigrationConfigsGetRequest {
   /** The namespace name */
   namespaceName: string;
   /** The configuration name. Should always be $default. */
-  configName: MigrationConfigsGetRequestConfigName;
+  configName: MigrationConfigsGetRequestConfigName | (string & {});
 }
 export const MigrationConfigsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1037,9 +1028,7 @@ export const MigrationConfigListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrationConfigListResult",
 }) as any as S.Schema<MigrationConfigListResult>;
 
-export type MigrationConfigsRevertRequestConfigName =
-  | "$default"
-  | (string & {});
+export type MigrationConfigsRevertRequestConfigName = "$default";
 export const MigrationConfigsRevertRequestConfigName = /*@__PURE__*/ S.String;
 
 export interface MigrationConfigsRevertRequest {
@@ -1050,7 +1039,7 @@ export interface MigrationConfigsRevertRequest {
   /** The namespace name */
   namespaceName: string;
   /** The configuration name. Should always be $default. */
-  configName: MigrationConfigsRevertRequestConfigName;
+  configName: MigrationConfigsRevertRequestConfigName | (string & {});
 }
 export const MigrationConfigsRevertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1110,7 +1099,7 @@ export const NamespacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
 
 /** The minimum TLS version for the cluster to support, e.g. '1.3' */
-export type TlsVersion = "1.0" | "1.1" | "1.2" | "1.3" | (string & {});
+export type TlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
 export const TlsVersion = /*@__PURE__*/ S.String;
 
 export interface UserAssignedIdentityProperties {
@@ -1154,7 +1143,7 @@ export const EncryptionKeyVaultPropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EncryptionKeyVaultPropertiesList>;
 
 /** Enumerates the possible value of keySource for Encryption */
-export type EncryptionKeySource = "Microsoft.KeyVault" | (string & {});
+export type EncryptionKeySource = "Microsoft.KeyVault";
 export const EncryptionKeySource = /*@__PURE__*/ S.String;
 
 /** Properties to configure Encryption */
@@ -1192,8 +1181,7 @@ export type PrivateLinkConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const PrivateLinkConnectionStatus = /*@__PURE__*/ S.String;
 
 /** ConnectionState information. */
@@ -1219,8 +1207,7 @@ export type EndPointProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Canceled"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const EndPointProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the private endpoint connection resource. */
@@ -1267,13 +1254,12 @@ export const SBNamespacePropertiesInputPrivateEndpointConnectionsList =
 export type SBNamespacePropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const SBNamespacePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** Setting to Enable or Disable Confidential Compute */
-export type Mode = "Disabled" | "Enabled" | (string & {});
+export type Mode = "Disabled" | "Enabled";
 export const Mode = /*@__PURE__*/ S.String;
 
 export interface ConfidentialCompute {
@@ -1300,7 +1286,7 @@ export const PlatformCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlatformCapabilities>;
 
 /** GeoDR Role Types */
-export type GeoDRRoleType = "Primary" | "Secondary" | (string & {});
+export type GeoDRRoleType = "Primary" | "Secondary";
 export const GeoDRRoleType = /*@__PURE__*/ S.String;
 
 /** Namespace replication properties */
@@ -1343,13 +1329,13 @@ export const GeoDataReplicationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeoDataReplicationProperties>;
 
 /** The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack). */
-export type IpAddressType = "IPv4" | "DualStack" | (string & {});
+export type IpAddressType = "IPv4" | "DualStack";
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 /** Properties of the namespace. */
 export interface SBNamespacePropertiesInput {
   /** The minimum TLS version for the cluster to support, e.g. '1.2' */
-  minimumTlsVersion?: TlsVersion;
+  minimumTlsVersion?: TlsVersion | (string & {});
   /** Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones. */
   zoneRedundant?: boolean;
   /** Properties of BYOK Encryption description */
@@ -1361,14 +1347,16 @@ export interface SBNamespacePropertiesInput {
   /** Alternate name for namespace */
   alternateName?: string;
   /** This determines if traffic is allowed over public network. By default it is enabled. */
-  publicNetworkAccess?: SBNamespacePropertiesInputPublicNetworkAccess;
+  publicNetworkAccess?:
+    | SBNamespacePropertiesInputPublicNetworkAccess
+    | (string & {});
   /** The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4 */
   premiumMessagingPartitions?: number;
   platformCapabilities?: PlatformCapabilities;
   /** Geo Data Replication settings for the namespace */
   geoDataReplication?: GeoDataReplicationProperties;
   /** The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack). */
-  ipAddressType?: IpAddressType;
+  ipAddressType?: IpAddressType | (string & {});
 }
 export const SBNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1393,11 +1381,11 @@ export const SBNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SBNamespacePropertiesInput>;
 
 /** Name of this SKU. */
-export type SkuName = "Basic" | "Standard" | "Premium" | (string & {});
+export type SkuName = "Basic" | "Standard" | "Premium";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The billing tier of this particular SKU. */
-export type SkuTier = "Basic" | "Standard" | "Premium" | (string & {});
+export type SkuTier = "Basic" | "Standard" | "Premium";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** SKU of the namespace. */
@@ -1422,8 +1410,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Recognized Dictionary value. */
@@ -1446,7 +1433,7 @@ export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
 /** Properties to configure User Assigned Identities for Bring your Own Keys */
 export interface IdentityInput {
   /** Type of managed service identity. */
-  type?: ManagedServiceIdentityType;
+  type?: ManagedServiceIdentityType | (string & {});
   /** Properties for User Assigned Identities */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
@@ -1546,8 +1533,7 @@ export const SBNamespacePropertiesPrivateEndpointConnectionsList =
 export type SBNamespacePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const SBNamespacePropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Properties of the namespace. */
@@ -1754,7 +1740,7 @@ export const NamespacesCreateOrUpdateAuthorizationRuleResponse =
   }) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
 
 /** Default Action for Network Rule Set */
-export type DefaultAction = "Allow" | "Deny" | (string & {});
+export type DefaultAction = "Allow" | "Deny";
 export const DefaultAction = /*@__PURE__*/ S.String;
 
 /** Properties supplied for Subnet */
@@ -1793,7 +1779,7 @@ export const NetworkRuleSetPropertiesVirtualNetworkRulesList =
   ) as any as S.Schema<NetworkRuleSetPropertiesVirtualNetworkRulesList>;
 
 /** The IP Filter Action */
-export type NWRuleSetIpRulesAction = "Allow" | (string & {});
+export type NWRuleSetIpRulesAction = "Allow";
 export const NWRuleSetIpRulesAction = /*@__PURE__*/ S.String;
 
 /** Description of NetWorkRuleSet - IpRules resource. */
@@ -1822,8 +1808,7 @@ export const NetworkRuleSetPropertiesIpRulesList = /*@__PURE__*/ S.Array(
 /** This determines if traffic is allowed over public network. By default it is enabled. */
 export type NetworkRuleSetPropertiesPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const NetworkRuleSetPropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -2443,7 +2428,7 @@ export const NetworkRuleSetListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkRuleSetListResult>;
 
 /** The access key to regenerate. */
-export type KeyType = "PrimaryKey" | "SecondaryKey" | (string & {});
+export type KeyType = "PrimaryKey" | "SecondaryKey";
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface NamespacesRegenerateKeysRequest {
@@ -2456,7 +2441,7 @@ export interface NamespacesRegenerateKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
   /** The access key to regenerate. */
-  keyType: KeyType;
+  keyType: KeyType | (string & {});
   /** Optional, if the key value provided, is reset for KeyType value or autogenerate Key value set for keyType */
   key?: string;
 }
@@ -2644,8 +2629,7 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Failed"
   | "Deleting"
   | "Deleted"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const NetworkSecurityPerimeterConfigurationProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2714,8 +2698,7 @@ export type ResourceAssociationAccessMode =
   | "EnforcedMode"
   | "LearningMode"
   | "AuditMode"
-  | "UnspecifiedMode"
-  | (string & {});
+  | "UnspecifiedMode";
 export const ResourceAssociationAccessMode = /*@__PURE__*/ S.String;
 
 /** Information about resource association */
@@ -2737,7 +2720,7 @@ export const NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation 
   }) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation>;
 
 /** Direction of Access Rule */
-export type NspAccessRuleDirection = "Inbound" | "Outbound" | (string & {});
+export type NspAccessRuleDirection = "Inbound" | "Outbound";
 export const NspAccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
@@ -3468,8 +3451,7 @@ export type EntityStatus =
   | "Creating"
   | "Deleting"
   | "Renaming"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const EntityStatus = /*@__PURE__*/ S.String;
 
 /** The Queue Properties definition. */
@@ -3493,7 +3475,7 @@ export interface SBQueuePropertiesInput {
   /** The maximum delivery count. A message is automatically deadlettered after this number of deliveries. default value is 10. */
   maxDeliveryCount?: number;
   /** Enumerates the possible values for the status of a messaging entity. */
-  status?: EntityStatus;
+  status?: EntityStatus | (string & {});
   /** Value that indicates whether server-side batched operations are enabled. */
   enableBatchedOperations?: boolean;
   /** ISO 8061 timeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes. */
@@ -4095,7 +4077,7 @@ export interface QueuesRegenerateKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
   /** The access key to regenerate. */
-  keyType: KeyType;
+  keyType: KeyType | (string & {});
   /** Optional, if the key value provided, is reset for KeyType value or autogenerate Key value set for keyType */
   key?: string;
 }
@@ -4138,7 +4120,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
 /** Rule filter types */
-export type FilterType = "SqlFilter" | "CorrelationFilter" | (string & {});
+export type FilterType = "SqlFilter" | "CorrelationFilter";
 export const FilterType = /*@__PURE__*/ S.String;
 
 /** Represents a filter which is a composition of an expression and an action that is executed in the pub/sub pipeline. */
@@ -4512,7 +4494,7 @@ export interface SBSubscriptionPropertiesInput {
   /** Number of maximum deliveries. */
   maxDeliveryCount?: number;
   /** Enumerates the possible values for the status of a messaging entity. */
-  status?: EntityStatus;
+  status?: EntityStatus | (string & {});
   /** Value that indicates whether server-side batched operations are enabled. */
   enableBatchedOperations?: boolean;
   /** ISO 8061 timeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes. */
@@ -4874,7 +4856,7 @@ export interface SBTopicPropertiesInput {
   /** Value that indicates whether server-side batched operations are enabled. */
   enableBatchedOperations?: boolean;
   /** Enumerates the possible values for the status of a messaging entity. */
-  status?: EntityStatus;
+  status?: EntityStatus | (string & {});
   /** Value that indicates whether the topic supports ordering. */
   supportOrdering?: boolean;
   /** ISO 8601 timespan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes. */
@@ -5427,7 +5409,7 @@ export interface TopicsRegenerateKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
   /** The access key to regenerate. */
-  keyType: KeyType;
+  keyType: KeyType | (string & {});
   /** Optional, if the key value provided, is reset for KeyType value or autogenerate Key value set for keyType */
   key?: string;
 }

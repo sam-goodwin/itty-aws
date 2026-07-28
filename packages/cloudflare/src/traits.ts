@@ -5,7 +5,7 @@
  * import everything from one place) and adds the Cloudflare-specific traits
  * tied to the v4 response envelope.
  *
- * Generic traits (Body / Header / Query / Label / Http / ResponseCode /
+ * Generic traits (Body / Header / Query / DeepQuery / Label / Http / ResponseCode /
  * HttpBody / FormDataFile / KeyDictionary / UnionCases / error matchers)
  * live in `@distilled.cloud/core/trait` because any REST protocol reuses
  * them. Anything tied to Cloudflare's response envelope lives here.
@@ -16,6 +16,7 @@ export {
   Body,
   Header,
   Query,
+  DeepQuery,
   Label,
   Http,
   ResponseCode,
@@ -30,6 +31,7 @@ export {
   bodySymbol,
   headerSymbol,
   querySymbol,
+  deepQuerySymbol,
   labelSymbol,
   httpSymbol,
   responseCodeSymbol,

@@ -687,14 +687,14 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRulesResponse",
 }) as any as S.Schema<ListRulesResponse>;
 
-export type SiteInfoListRequestOrderBy = "host" | "created" | (string & {});
+export type SiteInfoListRequestOrderBy = "host" | "created";
 export const SiteInfoListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListSiteInfosRequest {
   /** Identifier. */
   accountId: string;
   /** The property used to sort the list of results. */
-  orderBy?: SiteInfoListRequestOrderBy;
+  orderBy?: SiteInfoListRequestOrderBy | (string & {});
   /** Current page within the paginated list of results. */
   page?: number;
   /** Number of items to return per page of results. */

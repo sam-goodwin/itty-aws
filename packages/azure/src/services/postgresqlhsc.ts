@@ -15,8 +15,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource type used for verification. */
 export type ClustersCheckNameAvailabilityRequestType =
-  | "Microsoft.DBforPostgreSQL/serverGroupsv2"
-  | (string & {});
+  "Microsoft.DBforPostgreSQL/serverGroupsv2";
 export const ClustersCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
 
 export interface ClustersCheckNameAvailabilityRequest {
@@ -25,7 +24,7 @@ export interface ClustersCheckNameAvailabilityRequest {
   /** Cluster name to verify. */
   name: string;
   /** Resource type used for verification. */
-  type: ClustersCheckNameAvailabilityRequestType;
+  type: ClustersCheckNameAvailabilityRequestType | (string & {});
 }
 export const ClustersCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -204,8 +203,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -213,8 +211,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -303,8 +300,7 @@ export const PrivateEndpointConnectionSimplePropertiesGroupIdsList =
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -993,12 +989,11 @@ export type ConfigurationPropertiesDataType =
   | "Boolean"
   | "Numeric"
   | "Integer"
-  | "Enumeration"
-  | (string & {});
+  | "Enumeration";
 export const ConfigurationPropertiesDataType = /*@__PURE__*/ S.String;
 
 /** The role of a server. */
-export type ServerRole = "Coordinator" | "Worker" | (string & {});
+export type ServerRole = "Coordinator" | "Worker";
 export const ServerRole = /*@__PURE__*/ S.String;
 
 /** Represents server role group configuration value. */
@@ -1036,8 +1031,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "InProgress"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of configuration. */
@@ -1126,8 +1120,7 @@ export type ServerConfigurationPropertiesDataType =
   | "Boolean"
   | "Numeric"
   | "Integer"
-  | "Enumeration"
-  | (string & {});
+  | "Enumeration";
 export const ServerConfigurationPropertiesDataType = /*@__PURE__*/ S.String;
 
 /** The properties of a configuration. */
@@ -1794,11 +1787,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation. */
-export type OperationOrigin =
-  | "NotSpecified"
-  | "user"
-  | "system"
-  | (string & {});
+export type OperationOrigin = "NotSpecified" | "user" | "system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Additional descriptions for the operation. */
@@ -1955,8 +1944,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 

@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,35 +72,24 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:cancel",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:cancel","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 /** `CancelWorkflowInvocation` request message. */
 export interface CancelWorkflowInvocationRequest {}
 export const CancelWorkflowInvocationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelWorkflowInvocationRequest",
-}) as any as S.Schema<CancelWorkflowInvocationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelWorkflowInvocationRequest" }) as any as S.Schema<CancelWorkflowInvocationRequest>;
 
 export interface CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The workflow invocation resource's name. */
@@ -110,29 +97,18 @@ export interface CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Request body */
   body?: CancelWorkflowInvocationRequest;
 }
-export const CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelWorkflowInvocationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:cancel",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest",
-  }) as any as S.Schema<CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+export const CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelWorkflowInvocationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:cancel","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest" }) as any as S.Schema<CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 /** `CancelWorkflowInvocation` response message. */
 export interface CancelWorkflowInvocationResponse {}
 export const CancelWorkflowInvocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelWorkflowInvocationResponse",
-}) as any as S.Schema<CancelWorkflowInvocationResponse>;
+S.Struct({}),
+).annotate({ identifier: "CancelWorkflowInvocationResponse" }) as any as S.Schema<CancelWorkflowInvocationResponse>;
 
 /** Represents the author of a Git commit. */
 export interface CommitAuthor {
@@ -142,10 +118,10 @@ export interface CommitAuthor {
   emailAddress?: string;
 }
 export const CommitAuthor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    emailAddress: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "emailAddress": S.optional(S.String),
+}),
 ).annotate({ identifier: "CommitAuthor" }) as any as S.Schema<CommitAuthor>;
 
 /** Represents a Dataform Git commit. */
@@ -156,10 +132,10 @@ export interface CommitMetadata {
   commitMessage?: string;
 }
 export const CommitMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    author: S.optional(CommitAuthor),
-    commitMessage: S.optional(S.String),
-  }),
+S.Struct({
+  "author": S.optional(CommitAuthor),
+  "commitMessage": S.optional(S.String),
+}),
 ).annotate({ identifier: "CommitMetadata" }) as any as S.Schema<CommitMetadata>;
 
 /** Represents the write file operation (for files added or modified). */
@@ -168,16 +144,16 @@ export interface WriteFile {
   contents?: string;
 }
 export const WriteFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contents: S.optional(S.String),
-  }),
+S.Struct({
+  "contents": S.optional(S.String),
+}),
 ).annotate({ identifier: "WriteFile" }) as any as S.Schema<WriteFile>;
 
 /** Represents the delete file operation. */
 export interface DeleteFile {}
-export const DeleteFile = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFile",
-}) as any as S.Schema<DeleteFile>;
+export const DeleteFile = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "DeleteFile" }) as any as S.Schema<DeleteFile>;
 
 /** Represents a single file operation to the repository. */
 export interface FileOperation {
@@ -187,17 +163,14 @@ export interface FileOperation {
   deleteFile?: DeleteFile;
 }
 export const FileOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    writeFile: S.optional(WriteFile),
-    deleteFile: S.optional(DeleteFile),
-  }),
+S.Struct({
+  "writeFile": S.optional(WriteFile),
+  "deleteFile": S.optional(DeleteFile),
+}),
 ).annotate({ identifier: "FileOperation" }) as any as S.Schema<FileOperation>;
 
 export type FileOperationMap = { [key: string]: FileOperation | undefined };
-export const FileOperationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  FileOperation,
-) as any as S.Schema<FileOperationMap>;
+export const FileOperationMap = /*@__PURE__*/ S.Record(S.String, FileOperation) as any as S.Schema<FileOperationMap>;
 
 /** `CommitRepositoryChanges` request message. */
 export interface CommitRepositoryChangesRequest {
@@ -209,14 +182,12 @@ export interface CommitRepositoryChangesRequest {
   requiredHeadCommitSha?: string;
 }
 export const CommitRepositoryChangesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMetadata: S.optional(CommitMetadata),
-    fileOperations: S.optional(FileOperationMap),
-    requiredHeadCommitSha: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CommitRepositoryChangesRequest",
-}) as any as S.Schema<CommitRepositoryChangesRequest>;
+S.Struct({
+  "commitMetadata": S.optional(CommitMetadata),
+  "fileOperations": S.optional(FileOperationMap),
+  "requiredHeadCommitSha": S.optional(S.String),
+}),
+).annotate({ identifier: "CommitRepositoryChangesRequest" }) as any as S.Schema<CommitRepositoryChangesRequest>;
 
 export interface CommitProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
@@ -224,21 +195,12 @@ export interface CommitProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: CommitRepositoryChangesRequest;
 }
-export const CommitProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CommitRepositoryChangesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:commit",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CommitProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<CommitProjectsLocationsRepositoriesRequest>;
+export const CommitProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CommitRepositoryChangesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:commit","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CommitProjectsLocationsRepositoriesRequest" }) as any as S.Schema<CommitProjectsLocationsRepositoriesRequest>;
 
 /** `CommitRepositoryChanges` response message. */
 export interface CommitRepositoryChangesResponse {
@@ -246,17 +208,13 @@ export interface CommitRepositoryChangesResponse {
   commitSha?: string;
 }
 export const CommitRepositoryChangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitSha: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CommitRepositoryChangesResponse",
-}) as any as S.Schema<CommitRepositoryChangesResponse>;
+S.Struct({
+  "commitSha": S.optional(S.String),
+}),
+).annotate({ identifier: "CommitRepositoryChangesResponse" }) as any as S.Schema<CommitRepositoryChangesResponse>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** `CommitWorkspaceChanges` request message. */
 export interface CommitWorkspaceChangesRequest {
@@ -268,14 +226,12 @@ export interface CommitWorkspaceChangesRequest {
   commitMessage?: string;
 }
 export const CommitWorkspaceChangesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paths: S.optional(StringList),
-    author: S.optional(CommitAuthor),
-    commitMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CommitWorkspaceChangesRequest",
-}) as any as S.Schema<CommitWorkspaceChangesRequest>;
+S.Struct({
+  "paths": S.optional(StringList),
+  "author": S.optional(CommitAuthor),
+  "commitMessage": S.optional(S.String),
+}),
+).annotate({ identifier: "CommitWorkspaceChangesRequest" }) as any as S.Schema<CommitWorkspaceChangesRequest>;
 
 export interface CommitProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -283,74 +239,42 @@ export interface CommitProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: CommitWorkspaceChangesRequest;
 }
-export const CommitProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CommitWorkspaceChangesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:commit",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CommitProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<CommitProjectsLocationsRepositoriesWorkspacesRequest>;
+export const CommitProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CommitWorkspaceChangesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:commit","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CommitProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<CommitProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `CommitWorkspaceChanges` response message. */
 export interface CommitWorkspaceChangesResponse {}
 export const CommitWorkspaceChangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CommitWorkspaceChangesResponse",
-}) as any as S.Schema<CommitWorkspaceChangesResponse>;
+S.Struct({}),
+).annotate({ identifier: "CommitWorkspaceChangesResponse" }) as any as S.Schema<CommitWorkspaceChangesResponse>;
 
 export interface ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-export const ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:computeAccessTokenStatus",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest>;
+export const ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:computeAccessTokenStatus","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest" }) as any as S.Schema<ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest>;
 
-export type ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum =
-  | "TOKEN_STATUS_UNSPECIFIED"
-  | "NOT_FOUND"
-  | "INVALID"
-  | "VALID"
-  | "PERMISSION_DENIED"
-  | (string & {});
-export const ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum =
-  /*@__PURE__*/ S.String;
+export type ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum = "TOKEN_STATUS_UNSPECIFIED" | "NOT_FOUND" | "INVALID" | "VALID" | "PERMISSION_DENIED";
+export const ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum = /*@__PURE__*/ S.String;
 
 /** `ComputeRepositoryAccessTokenStatus` response message. */
 export interface ComputeRepositoryAccessTokenStatusResponse {
   /** Indicates the status of the Git access token. */
   tokenStatus?: ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum;
 }
-export const ComputeRepositoryAccessTokenStatusResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tokenStatus: S.optional(
-        ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "ComputeRepositoryAccessTokenStatusResponse",
-  }) as any as S.Schema<ComputeRepositoryAccessTokenStatusResponse>;
+export const ComputeRepositoryAccessTokenStatusResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "tokenStatus": S.optional(ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum),
+}),
+).annotate({ identifier: "ComputeRepositoryAccessTokenStatusResponse" }) as any as S.Schema<ComputeRepositoryAccessTokenStatusResponse>;
 
 /** Represents a Dataform Folder. This is a resource that is used to organize Files and other Folders and provide hierarchical access controls. */
 export interface Folder {
@@ -372,16 +296,16 @@ export interface Folder {
   containingFolder?: string;
 }
 export const Folder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    createTime: S.optional(S.String),
-    teamFolderName: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    creatorIamPrincipal: S.optional(S.String),
-    internalMetadata: S.optional(S.String),
-    containingFolder: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "teamFolderName": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "creatorIamPrincipal": S.optional(S.String),
+  "internalMetadata": S.optional(S.String),
+  "containingFolder": S.optional(S.String),
+}),
 ).annotate({ identifier: "Folder" }) as any as S.Schema<Folder>;
 
 export interface CreateProjectsLocationsFoldersRequest {
@@ -392,22 +316,13 @@ export interface CreateProjectsLocationsFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const CreateProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      folderId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Folder.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/folders",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsFoldersRequest",
-}) as any as S.Schema<CreateProjectsLocationsFoldersRequest>;
+export const CreateProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "folderId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Folder.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/folders","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsFoldersRequest" }) as any as S.Schema<CreateProjectsLocationsFoldersRequest>;
 
 /** Describes encryption state of a resource. */
 export interface DataEncryptionState {
@@ -415,12 +330,10 @@ export interface DataEncryptionState {
   kmsKeyVersionName?: string;
 }
 export const DataEncryptionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyVersionName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DataEncryptionState",
-}) as any as S.Schema<DataEncryptionState>;
+S.Struct({
+  "kmsKeyVersionName": S.optional(S.String),
+}),
+).annotate({ identifier: "DataEncryptionState" }) as any as S.Schema<DataEncryptionState>;
 
 /** Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results. */
 export interface WorkspaceCompilationOverrides {
@@ -432,20 +345,15 @@ export interface WorkspaceCompilationOverrides {
   schemaSuffix?: string;
 }
 export const WorkspaceCompilationOverrides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultDatabase: S.optional(S.String),
-    tablePrefix: S.optional(S.String),
-    schemaSuffix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkspaceCompilationOverrides",
-}) as any as S.Schema<WorkspaceCompilationOverrides>;
+S.Struct({
+  "defaultDatabase": S.optional(S.String),
+  "tablePrefix": S.optional(S.String),
+  "schemaSuffix": S.optional(S.String),
+}),
+).annotate({ identifier: "WorkspaceCompilationOverrides" }) as any as S.Schema<WorkspaceCompilationOverrides>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Configures fields for performing SSH authentication. */
 export interface SshAuthenticationConfig {
@@ -455,20 +363,13 @@ export interface SshAuthenticationConfig {
   userPrivateKeySecretVersion?: string;
 }
 export const SshAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostPublicKey: S.optional(S.String),
-    userPrivateKeySecretVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SshAuthenticationConfig",
-}) as any as S.Schema<SshAuthenticationConfig>;
+S.Struct({
+  "hostPublicKey": S.optional(S.String),
+  "userPrivateKeySecretVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "SshAuthenticationConfig" }) as any as S.Schema<SshAuthenticationConfig>;
 
-export type GitRemoteSettingsTokenStatusEnum =
-  | "TOKEN_STATUS_UNSPECIFIED"
-  | "NOT_FOUND"
-  | "INVALID"
-  | "VALID"
-  | (string & {});
+export type GitRemoteSettingsTokenStatusEnum = "TOKEN_STATUS_UNSPECIFIED" | "NOT_FOUND" | "INVALID" | "VALID";
 export const GitRemoteSettingsTokenStatusEnum = /*@__PURE__*/ S.String;
 
 /** Controls Git remote configuration for a repository. */
@@ -489,18 +390,16 @@ export interface GitRemoteSettings {
   tokenStatus?: GitRemoteSettingsTokenStatusEnum;
 }
 export const GitRemoteSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    effectiveDefaultBranch: S.optional(S.String),
-    authenticationTokenSecretVersion: S.optional(S.String),
-    gitRepositoryLink: S.optional(S.String),
-    defaultBranch: S.optional(S.String),
-    url: S.optional(S.String),
-    sshAuthenticationConfig: S.optional(SshAuthenticationConfig),
-    tokenStatus: S.optional(GitRemoteSettingsTokenStatusEnum),
-  }),
-).annotate({
-  identifier: "GitRemoteSettings",
-}) as any as S.Schema<GitRemoteSettings>;
+S.Struct({
+  "effectiveDefaultBranch": S.optional(S.String),
+  "authenticationTokenSecretVersion": S.optional(S.String),
+  "gitRepositoryLink": S.optional(S.String),
+  "defaultBranch": S.optional(S.String),
+  "url": S.optional(S.String),
+  "sshAuthenticationConfig": S.optional(SshAuthenticationConfig),
+  "tokenStatus": S.optional(GitRemoteSettingsTokenStatusEnum),
+}),
+).annotate({ identifier: "GitRemoteSettings" }) as any as S.Schema<GitRemoteSettings>;
 
 /** Represents a Dataform Git repository. */
 export interface Repository {
@@ -534,22 +433,22 @@ export interface Repository {
   name?: string;
 }
 export const Repository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataEncryptionState: S.optional(DataEncryptionState),
-    containingFolder: S.optional(S.String),
-    workspaceCompilationOverrides: S.optional(WorkspaceCompilationOverrides),
-    displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
-    npmrcEnvironmentVariablesSecretVersion: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    createTime: S.optional(S.String),
-    gitRemoteSettings: S.optional(GitRemoteSettings),
-    internalMetadata: S.optional(S.String),
-    kmsKeyName: S.optional(S.String),
-    teamFolderName: S.optional(S.String),
-    setAuthenticatedUserAdmin: S.optional(S.Boolean),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "dataEncryptionState": S.optional(DataEncryptionState),
+  "containingFolder": S.optional(S.String),
+  "workspaceCompilationOverrides": S.optional(WorkspaceCompilationOverrides),
+  "displayName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "npmrcEnvironmentVariablesSecretVersion": S.optional(S.String),
+  "serviceAccount": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "gitRemoteSettings": S.optional(GitRemoteSettings),
+  "internalMetadata": S.optional(S.String),
+  "kmsKeyName": S.optional(S.String),
+  "teamFolderName": S.optional(S.String),
+  "setAuthenticatedUserAdmin": S.optional(S.Boolean),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Repository" }) as any as S.Schema<Repository>;
 
 export interface CreateProjectsLocationsRepositoriesRequest {
@@ -560,22 +459,13 @@ export interface CreateProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const CreateProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repositoryId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Repository.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/repositories",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>;
+export const CreateProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "repositoryId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Repository.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/repositories","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>;
 
 /** Metadata used to identify if a resource is user scoped. */
 export interface PrivateResourceMetadata {
@@ -583,12 +473,10 @@ export interface PrivateResourceMetadata {
   userScoped?: boolean;
 }
 export const PrivateResourceMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userScoped: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PrivateResourceMetadata",
-}) as any as S.Schema<PrivateResourceMetadata>;
+S.Struct({
+  "userScoped": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "PrivateResourceMetadata" }) as any as S.Schema<PrivateResourceMetadata>;
 
 /** Represents an action identifier. If the action writes output, the output will be written to the referenced database object. */
 export interface Target {
@@ -600,11 +488,11 @@ export interface Target {
   name?: string;
 }
 export const Target = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schema: S.optional(S.String),
-    database: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "schema": S.optional(S.String),
+  "database": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
 /** An error encountered when attempting to compile a Dataform project. */
@@ -619,20 +507,16 @@ export interface CompilationError {
   path?: string;
 }
 export const CompilationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    actionTarget: S.optional(Target),
-    stack: S.optional(S.String),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CompilationError",
-}) as any as S.Schema<CompilationError>;
+S.Struct({
+  "message": S.optional(S.String),
+  "actionTarget": S.optional(Target),
+  "stack": S.optional(S.String),
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "CompilationError" }) as any as S.Schema<CompilationError>;
 
 export type CompilationErrorList = ReadonlyArray<CompilationError>;
-export const CompilationErrorList = /*@__PURE__*/ S.Array(
-  CompilationError,
-) as any as S.Schema<CompilationErrorList>;
+export const CompilationErrorList = /*@__PURE__*/ S.Array(CompilationError) as any as S.Schema<CompilationErrorList>;
 
 /** Configures various aspects of Dataform notebook runtime. */
 export interface NotebookRuntimeOptions {
@@ -642,13 +526,11 @@ export interface NotebookRuntimeOptions {
   aiPlatformNotebookRuntimeTemplate?: string;
 }
 export const NotebookRuntimeOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsOutputBucket: S.optional(S.String),
-    aiPlatformNotebookRuntimeTemplate: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NotebookRuntimeOptions",
-}) as any as S.Schema<NotebookRuntimeOptions>;
+S.Struct({
+  "gcsOutputBucket": S.optional(S.String),
+  "aiPlatformNotebookRuntimeTemplate": S.optional(S.String),
+}),
+).annotate({ identifier: "NotebookRuntimeOptions" }) as any as S.Schema<NotebookRuntimeOptions>;
 
 /** Configures various aspects of Dataform code compilation. */
 export interface CodeCompilationConfig {
@@ -674,21 +556,19 @@ export interface CodeCompilationConfig {
   assertionSchema?: string;
 }
 export const CodeCompilationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    builtinAssertionNamePrefix: S.optional(S.String),
-    vars: S.optional(StringMap),
-    databaseSuffix: S.optional(S.String),
-    tablePrefix: S.optional(S.String),
-    defaultSchema: S.optional(S.String),
-    defaultNotebookRuntimeOptions: S.optional(NotebookRuntimeOptions),
-    defaultLocation: S.optional(S.String),
-    schemaSuffix: S.optional(S.String),
-    defaultDatabase: S.optional(S.String),
-    assertionSchema: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CodeCompilationConfig",
-}) as any as S.Schema<CodeCompilationConfig>;
+S.Struct({
+  "builtinAssertionNamePrefix": S.optional(S.String),
+  "vars": S.optional(StringMap),
+  "databaseSuffix": S.optional(S.String),
+  "tablePrefix": S.optional(S.String),
+  "defaultSchema": S.optional(S.String),
+  "defaultNotebookRuntimeOptions": S.optional(NotebookRuntimeOptions),
+  "defaultLocation": S.optional(S.String),
+  "schemaSuffix": S.optional(S.String),
+  "defaultDatabase": S.optional(S.String),
+  "assertionSchema": S.optional(S.String),
+}),
+).annotate({ identifier: "CodeCompilationConfig" }) as any as S.Schema<CodeCompilationConfig>;
 
 /** Represents the result of compiling a Dataform project. */
 export interface CompilationResult {
@@ -718,23 +598,21 @@ export interface CompilationResult {
   codeCompilationConfig?: CodeCompilationConfig;
 }
 export const CompilationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateResourceMetadata: S.optional(PrivateResourceMetadata),
-    workspace: S.optional(S.String),
-    internalMetadata: S.optional(S.String),
-    gitCommitish: S.optional(S.String),
-    name: S.optional(S.String),
-    releaseConfig: S.optional(S.String),
-    dataEncryptionState: S.optional(DataEncryptionState),
-    resolvedGitCommitSha: S.optional(S.String),
-    compilationErrors: S.optional(CompilationErrorList),
-    dataformCoreVersion: S.optional(S.String),
-    createTime: S.optional(S.String),
-    codeCompilationConfig: S.optional(CodeCompilationConfig),
-  }),
-).annotate({
-  identifier: "CompilationResult",
-}) as any as S.Schema<CompilationResult>;
+S.Struct({
+  "privateResourceMetadata": S.optional(PrivateResourceMetadata),
+  "workspace": S.optional(S.String),
+  "internalMetadata": S.optional(S.String),
+  "gitCommitish": S.optional(S.String),
+  "name": S.optional(S.String),
+  "releaseConfig": S.optional(S.String),
+  "dataEncryptionState": S.optional(DataEncryptionState),
+  "resolvedGitCommitSha": S.optional(S.String),
+  "compilationErrors": S.optional(CompilationErrorList),
+  "dataformCoreVersion": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "codeCompilationConfig": S.optional(CodeCompilationConfig),
+}),
+).annotate({ identifier: "CompilationResult" }) as any as S.Schema<CompilationResult>;
 
 export interface CreateProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Required. The repository in which to create the compilation result. Must be in the format `projects/*\/locations/*\/repositories/*`. */
@@ -742,32 +620,18 @@ export interface CreateProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Request body */
   body?: CompilationResult;
 }
-export const CreateProjectsLocationsRepositoriesCompilationResultsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CompilationResult.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/compilationResults",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesCompilationResultsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesCompilationResultsRequest>;
+export const CreateProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(CompilationResult.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/compilationResults","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesCompilationResultsRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesCompilationResultsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -779,11 +643,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+  "message": S.optional(S.String),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** A record of an attempt to create a compilation result for this release config. */
@@ -796,19 +660,15 @@ export interface ScheduledReleaseRecord {
   compilationResult?: string;
 }
 export const ScheduledReleaseRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    releaseTime: S.optional(S.String),
-    errorStatus: S.optional(Status),
-    compilationResult: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScheduledReleaseRecord",
-}) as any as S.Schema<ScheduledReleaseRecord>;
+S.Struct({
+  "releaseTime": S.optional(S.String),
+  "errorStatus": S.optional(Status),
+  "compilationResult": S.optional(S.String),
+}),
+).annotate({ identifier: "ScheduledReleaseRecord" }) as any as S.Schema<ScheduledReleaseRecord>;
 
 export type ScheduledReleaseRecordList = ReadonlyArray<ScheduledReleaseRecord>;
-export const ScheduledReleaseRecordList = /*@__PURE__*/ S.Array(
-  ScheduledReleaseRecord,
-) as any as S.Schema<ScheduledReleaseRecordList>;
+export const ScheduledReleaseRecordList = /*@__PURE__*/ S.Array(ScheduledReleaseRecord) as any as S.Schema<ScheduledReleaseRecordList>;
 
 /** Represents a Dataform release configuration. */
 export interface ReleaseConfig {
@@ -832,17 +692,17 @@ export interface ReleaseConfig {
   recentScheduledReleaseRecords?: ScheduledReleaseRecordList;
 }
 export const ReleaseConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-    codeCompilationConfig: S.optional(CodeCompilationConfig),
-    cronSchedule: S.optional(S.String),
-    name: S.optional(S.String),
-    gitCommitish: S.optional(S.String),
-    releaseCompilationResult: S.optional(S.String),
-    timeZone: S.optional(S.String),
-    internalMetadata: S.optional(S.String),
-    recentScheduledReleaseRecords: S.optional(ScheduledReleaseRecordList),
-  }),
+S.Struct({
+  "disabled": S.optional(S.Boolean),
+  "codeCompilationConfig": S.optional(CodeCompilationConfig),
+  "cronSchedule": S.optional(S.String),
+  "name": S.optional(S.String),
+  "gitCommitish": S.optional(S.String),
+  "releaseCompilationResult": S.optional(S.String),
+  "timeZone": S.optional(S.String),
+  "internalMetadata": S.optional(S.String),
+  "recentScheduledReleaseRecords": S.optional(ScheduledReleaseRecordList),
+}),
 ).annotate({ identifier: "ReleaseConfig" }) as any as S.Schema<ReleaseConfig>;
 
 export interface CreateProjectsLocationsRepositoriesReleaseConfigsRequest {
@@ -853,22 +713,13 @@ export interface CreateProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Request body */
   body?: ReleaseConfig;
 }
-export const CreateProjectsLocationsRepositoriesReleaseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      releaseConfigId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ReleaseConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/releaseConfigs",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesReleaseConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesReleaseConfigsRequest>;
+export const CreateProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "releaseConfigId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ReleaseConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/releaseConfigs","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesReleaseConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 /** A record of an attempt to create a workflow invocation for this workflow config. */
 export interface ScheduledExecutionRecord {
@@ -880,26 +731,17 @@ export interface ScheduledExecutionRecord {
   executionTime?: string;
 }
 export const ScheduledExecutionRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorStatus: S.optional(Status),
-    workflowInvocation: S.optional(S.String),
-    executionTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScheduledExecutionRecord",
-}) as any as S.Schema<ScheduledExecutionRecord>;
+S.Struct({
+  "errorStatus": S.optional(Status),
+  "workflowInvocation": S.optional(S.String),
+  "executionTime": S.optional(S.String),
+}),
+).annotate({ identifier: "ScheduledExecutionRecord" }) as any as S.Schema<ScheduledExecutionRecord>;
 
-export type ScheduledExecutionRecordList =
-  ReadonlyArray<ScheduledExecutionRecord>;
-export const ScheduledExecutionRecordList = /*@__PURE__*/ S.Array(
-  ScheduledExecutionRecord,
-) as any as S.Schema<ScheduledExecutionRecordList>;
+export type ScheduledExecutionRecordList = ReadonlyArray<ScheduledExecutionRecord>;
+export const ScheduledExecutionRecordList = /*@__PURE__*/ S.Array(ScheduledExecutionRecord) as any as S.Schema<ScheduledExecutionRecordList>;
 
-export type WorkflowTriggerConfigConditionEnum =
-  | "CONDITION_UNSPECIFIED"
-  | "ALL"
-  | "ANY"
-  | (string & {});
+export type WorkflowTriggerConfigConditionEnum = "CONDITION_UNSPECIFIED" | "ALL" | "ANY";
 export const WorkflowTriggerConfigConditionEnum = /*@__PURE__*/ S.String;
 
 /** A record of an attempt to evaluate trigger conditions. */
@@ -910,19 +752,14 @@ export interface TriggerEvaluationRecord {
   status?: Status;
 }
 export const TriggerEvaluationRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluationTime: S.optional(S.String),
-    status: S.optional(Status),
-  }),
-).annotate({
-  identifier: "TriggerEvaluationRecord",
-}) as any as S.Schema<TriggerEvaluationRecord>;
+S.Struct({
+  "evaluationTime": S.optional(S.String),
+  "status": S.optional(Status),
+}),
+).annotate({ identifier: "TriggerEvaluationRecord" }) as any as S.Schema<TriggerEvaluationRecord>;
 
-export type TriggerEvaluationRecordList =
-  ReadonlyArray<TriggerEvaluationRecord>;
-export const TriggerEvaluationRecordList = /*@__PURE__*/ S.Array(
-  TriggerEvaluationRecord,
-) as any as S.Schema<TriggerEvaluationRecordList>;
+export type TriggerEvaluationRecordList = ReadonlyArray<TriggerEvaluationRecord>;
+export const TriggerEvaluationRecordList = /*@__PURE__*/ S.Array(TriggerEvaluationRecord) as any as S.Schema<TriggerEvaluationRecordList>;
 
 /** Represents a table update trigger configuration. */
 export interface TableUpdateTrigger {
@@ -932,13 +769,11 @@ export interface TableUpdateTrigger {
   triggerUpdateTime?: string;
 }
 export const TableUpdateTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    table: S.optional(Target),
-    triggerUpdateTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TableUpdateTrigger",
-}) as any as S.Schema<TableUpdateTrigger>;
+S.Struct({
+  "table": S.optional(Target),
+  "triggerUpdateTime": S.optional(S.String),
+}),
+).annotate({ identifier: "TableUpdateTrigger" }) as any as S.Schema<TableUpdateTrigger>;
 
 /** The trigger definition to invoke a workflow. */
 export interface WorkflowTrigger {
@@ -946,17 +781,13 @@ export interface WorkflowTrigger {
   tableUpdateTrigger?: TableUpdateTrigger;
 }
 export const WorkflowTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableUpdateTrigger: S.optional(TableUpdateTrigger),
-  }),
-).annotate({
-  identifier: "WorkflowTrigger",
-}) as any as S.Schema<WorkflowTrigger>;
+S.Struct({
+  "tableUpdateTrigger": S.optional(TableUpdateTrigger),
+}),
+).annotate({ identifier: "WorkflowTrigger" }) as any as S.Schema<WorkflowTrigger>;
 
 export type WorkflowTriggerList = ReadonlyArray<WorkflowTrigger>;
-export const WorkflowTriggerList = /*@__PURE__*/ S.Array(
-  WorkflowTrigger,
-) as any as S.Schema<WorkflowTriggerList>;
+export const WorkflowTriggerList = /*@__PURE__*/ S.Array(WorkflowTrigger) as any as S.Schema<WorkflowTriggerList>;
 
 /** Represents a trigger configuration for a workflow. */
 export interface WorkflowTriggerConfig {
@@ -974,29 +805,21 @@ export interface WorkflowTriggerConfig {
   workflowTriggers?: WorkflowTriggerList;
 }
 export const WorkflowTriggerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(WorkflowTriggerConfigConditionEnum),
-    maxWaitDuration: S.optional(S.String),
-    minExecutionDuration: S.optional(S.String),
-    recentTriggerEvaluationRecords: S.optional(TriggerEvaluationRecordList),
-    lastSuccessfulEvaluationTime: S.optional(S.String),
-    workflowTriggers: S.optional(WorkflowTriggerList),
-  }),
-).annotate({
-  identifier: "WorkflowTriggerConfig",
-}) as any as S.Schema<WorkflowTriggerConfig>;
+S.Struct({
+  "condition": S.optional(WorkflowTriggerConfigConditionEnum),
+  "maxWaitDuration": S.optional(S.String),
+  "minExecutionDuration": S.optional(S.String),
+  "recentTriggerEvaluationRecords": S.optional(TriggerEvaluationRecordList),
+  "lastSuccessfulEvaluationTime": S.optional(S.String),
+  "workflowTriggers": S.optional(WorkflowTriggerList),
+}),
+).annotate({ identifier: "WorkflowTriggerConfig" }) as any as S.Schema<WorkflowTriggerConfig>;
 
-export type InvocationConfigQueryPriorityEnum =
-  | "QUERY_PRIORITY_UNSPECIFIED"
-  | "INTERACTIVE"
-  | "BATCH"
-  | (string & {});
+export type InvocationConfigQueryPriorityEnum = "QUERY_PRIORITY_UNSPECIFIED" | "INTERACTIVE" | "BATCH";
 export const InvocationConfigQueryPriorityEnum = /*@__PURE__*/ S.String;
 
 export type TargetList = ReadonlyArray<Target>;
-export const TargetList = /*@__PURE__*/ S.Array(
-  Target,
-) as any as S.Schema<TargetList>;
+export const TargetList = /*@__PURE__*/ S.Array(Target) as any as S.Schema<TargetList>;
 
 /** Includes various configuration options for a workflow invocation. If both `included_targets` and `included_tags` are unset, all actions will be included. */
 export interface InvocationConfig {
@@ -1016,18 +839,16 @@ export interface InvocationConfig {
   serviceAccount?: string;
 }
 export const InvocationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transitiveDependentsIncluded: S.optional(S.Boolean),
-    fullyRefreshIncrementalTablesEnabled: S.optional(S.Boolean),
-    queryPriority: S.optional(InvocationConfigQueryPriorityEnum),
-    transitiveDependenciesIncluded: S.optional(S.Boolean),
-    includedTargets: S.optional(TargetList),
-    includedTags: S.optional(StringList),
-    serviceAccount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InvocationConfig",
-}) as any as S.Schema<InvocationConfig>;
+S.Struct({
+  "transitiveDependentsIncluded": S.optional(S.Boolean),
+  "fullyRefreshIncrementalTablesEnabled": S.optional(S.Boolean),
+  "queryPriority": S.optional(InvocationConfigQueryPriorityEnum),
+  "transitiveDependenciesIncluded": S.optional(S.Boolean),
+  "includedTargets": S.optional(TargetList),
+  "includedTags": S.optional(StringList),
+  "serviceAccount": S.optional(S.String),
+}),
+).annotate({ identifier: "InvocationConfig" }) as any as S.Schema<InvocationConfig>;
 
 /** Represents a Dataform workflow configuration. */
 export interface WorkflowConfig {
@@ -1055,19 +876,19 @@ export interface WorkflowConfig {
   updateTime?: string;
 }
 export const WorkflowConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    internalMetadata: S.optional(S.String),
-    name: S.optional(S.String),
-    timeZone: S.optional(S.String),
-    recentScheduledExecutionRecords: S.optional(ScheduledExecutionRecordList),
-    workflowTriggerConfig: S.optional(WorkflowTriggerConfig),
-    releaseConfig: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    createTime: S.optional(S.String),
-    invocationConfig: S.optional(InvocationConfig),
-    cronSchedule: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
+S.Struct({
+  "internalMetadata": S.optional(S.String),
+  "name": S.optional(S.String),
+  "timeZone": S.optional(S.String),
+  "recentScheduledExecutionRecords": S.optional(ScheduledExecutionRecordList),
+  "workflowTriggerConfig": S.optional(WorkflowTriggerConfig),
+  "releaseConfig": S.optional(S.String),
+  "disabled": S.optional(S.Boolean),
+  "createTime": S.optional(S.String),
+  "invocationConfig": S.optional(InvocationConfig),
+  "cronSchedule": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "WorkflowConfig" }) as any as S.Schema<WorkflowConfig>;
 
 export interface CreateProjectsLocationsRepositoriesWorkflowConfigsRequest {
@@ -1078,22 +899,13 @@ export interface CreateProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Request body */
   body?: WorkflowConfig;
 }
-export const CreateProjectsLocationsRepositoriesWorkflowConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      workflowConfigId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WorkflowConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/workflowConfigs",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesWorkflowConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowConfigsRequest>;
+export const CreateProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "workflowConfigId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(WorkflowConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/workflowConfigs","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesWorkflowConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -1103,20 +915,13 @@ export interface Interval {
   endTime?: string;
 }
 export const Interval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
+S.Struct({
+  "startTime": S.optional(S.String),
+  "endTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
-export type WorkflowInvocationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "RUNNING"
-  | "SUCCEEDED"
-  | "CANCELLED"
-  | "FAILED"
-  | "CANCELING"
-  | (string & {});
+export type WorkflowInvocationStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "SUCCEEDED" | "CANCELLED" | "FAILED" | "CANCELING";
 export const WorkflowInvocationStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single invocation of a compilation result. */
@@ -1143,21 +948,19 @@ export interface WorkflowInvocation {
   name?: string;
 }
 export const WorkflowInvocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invocationTiming: S.optional(Interval),
-    dataEncryptionState: S.optional(DataEncryptionState),
-    compilationResult: S.optional(S.String),
-    workflowConfig: S.optional(S.String),
-    resolvedCompilationResult: S.optional(S.String),
-    state: S.optional(WorkflowInvocationStateEnum),
-    invocationConfig: S.optional(InvocationConfig),
-    internalMetadata: S.optional(S.String),
-    privateResourceMetadata: S.optional(PrivateResourceMetadata),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkflowInvocation",
-}) as any as S.Schema<WorkflowInvocation>;
+S.Struct({
+  "invocationTiming": S.optional(Interval),
+  "dataEncryptionState": S.optional(DataEncryptionState),
+  "compilationResult": S.optional(S.String),
+  "workflowConfig": S.optional(S.String),
+  "resolvedCompilationResult": S.optional(S.String),
+  "state": S.optional(WorkflowInvocationStateEnum),
+  "invocationConfig": S.optional(InvocationConfig),
+  "internalMetadata": S.optional(S.String),
+  "privateResourceMetadata": S.optional(PrivateResourceMetadata),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "WorkflowInvocation" }) as any as S.Schema<WorkflowInvocation>;
 
 export interface CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The repository in which to create the workflow invocation. Must be in the format `projects/*\/locations/*\/repositories/*`. */
@@ -1165,21 +968,12 @@ export interface CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Request body */
   body?: WorkflowInvocation;
 }
-export const CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(WorkflowInvocation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/workflowInvocations",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+export const CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(WorkflowInvocation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/workflowInvocations","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 /** Represents a Dataform Git workspace. */
 export interface Workspace {
@@ -1197,14 +991,14 @@ export interface Workspace {
   privateResourceMetadata?: PrivateResourceMetadata;
 }
 export const Workspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-    disableMoves: S.optional(S.Boolean),
-    dataEncryptionState: S.optional(DataEncryptionState),
-    internalMetadata: S.optional(S.String),
-    privateResourceMetadata: S.optional(PrivateResourceMetadata),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "disableMoves": S.optional(S.Boolean),
+  "dataEncryptionState": S.optional(DataEncryptionState),
+  "internalMetadata": S.optional(S.String),
+  "privateResourceMetadata": S.optional(PrivateResourceMetadata),
+}),
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 export interface CreateProjectsLocationsRepositoriesWorkspacesRequest {
@@ -1215,22 +1009,13 @@ export interface CreateProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: Workspace;
 }
-export const CreateProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      workspaceId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Workspace.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/workspaces",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkspacesRequest>;
+export const CreateProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "workspaceId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Workspace.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/workspaces","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** Represents a Dataform TeamFolder. This is a resource that sits at the project level and is used to organize Repositories and Folders with hierarchical access controls. They provide a team context and stricter access controls. */
 export interface TeamFolder {
@@ -1248,14 +1033,14 @@ export interface TeamFolder {
   creatorIamPrincipal?: string;
 }
 export const TeamFolder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    internalMetadata: S.optional(S.String),
-    creatorIamPrincipal: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "internalMetadata": S.optional(S.String),
+  "creatorIamPrincipal": S.optional(S.String),
+}),
 ).annotate({ identifier: "TeamFolder" }) as any as S.Schema<TeamFolder>;
 
 export interface CreateProjectsLocationsTeamFoldersRequest {
@@ -1266,22 +1051,13 @@ export interface CreateProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: TeamFolder;
 }
-export const CreateProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      teamFolderId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(TeamFolder.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/teamFolders",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsTeamFoldersRequest",
-  }) as any as S.Schema<CreateProjectsLocationsTeamFoldersRequest>;
+export const CreateProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "teamFolderId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(TeamFolder.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/teamFolders","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsTeamFoldersRequest" }) as any as S.Schema<CreateProjectsLocationsTeamFoldersRequest>;
 
 /** `DeleteRepositoryLongRunning` request message. */
 export interface DeleteRepositoryLongRunningRequest {
@@ -1289,12 +1065,10 @@ export interface DeleteRepositoryLongRunningRequest {
   force?: boolean;
 }
 export const DeleteRepositoryLongRunningRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    force: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DeleteRepositoryLongRunningRequest",
-}) as any as S.Schema<DeleteRepositoryLongRunningRequest>;
+S.Struct({
+  "force": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DeleteRepositoryLongRunningRequest" }) as any as S.Schema<DeleteRepositoryLongRunningRequest>;
 
 export interface DeleteLongRunningProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
@@ -1302,21 +1076,12 @@ export interface DeleteLongRunningProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: DeleteRepositoryLongRunningRequest;
 }
-export const DeleteLongRunningProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(DeleteRepositoryLongRunningRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:deleteLongRunning",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteLongRunningProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<DeleteLongRunningProjectsLocationsRepositoriesRequest>;
+export const DeleteLongRunningProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DeleteRepositoryLongRunningRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:deleteLongRunning","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteLongRunningProjectsLocationsRepositoriesRequest" }) as any as S.Schema<DeleteLongRunningProjectsLocationsRepositoriesRequest>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
@@ -1332,52 +1097,34 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(Status),
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "error": S.optional(Status),
+  "response": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "done": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsFoldersRequest {
   /** Required. The Folder's name. */
   name: string;
 }
-export const DeleteProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsFoldersRequest",
-}) as any as S.Schema<DeleteProjectsLocationsFoldersRequest>;
+export const DeleteProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsFoldersRequest" }) as any as S.Schema<DeleteProjectsLocationsFoldersRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesRequest {
   /** Optional. If set to true, child resources of this repository (compilation results and workflow invocations) will also be deleted. Otherwise, the request will only succeed if the repository has no child resources. **Note:** *This flag doesn't support deletion of workspaces, release configs or workflow configs. If any of such resources exists in the repository, the request will fail.*. */
@@ -1385,116 +1132,62 @@ export interface DeleteProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      force: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>;
+export const DeleteProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "force": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Required. The release config's name. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesReleaseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesReleaseConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesReleaseConfigsRequest>;
+export const DeleteProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesReleaseConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Required. The workflow config's name. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest>;
+export const DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The workflow invocation resource's name. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+export const DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace resource's name. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkspacesRequest>;
+export const DeleteProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export interface DeleteProjectsLocationsTeamFoldersRequest {
   /** Required. The TeamFolder's name. */
   name: string;
 }
-export const DeleteProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsTeamFoldersRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsTeamFoldersRequest>;
+export const DeleteProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsTeamFoldersRequest" }) as any as S.Schema<DeleteProjectsLocationsTeamFoldersRequest>;
 
 /** `DeleteFolderTree` request message. */
 export interface DeleteFolderTreeRequest {
@@ -1502,12 +1195,10 @@ export interface DeleteFolderTreeRequest {
   force?: boolean;
 }
 export const DeleteFolderTreeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    force: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DeleteFolderTreeRequest",
-}) as any as S.Schema<DeleteFolderTreeRequest>;
+S.Struct({
+  "force": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DeleteFolderTreeRequest" }) as any as S.Schema<DeleteFolderTreeRequest>;
 
 export interface DeleteTreeProjectsLocationsFoldersRequest {
   /** Required. The Folder's name. Format: projects/{project}/locations/{location}/folders/{folder} */
@@ -1515,21 +1206,12 @@ export interface DeleteTreeProjectsLocationsFoldersRequest {
   /** Request body */
   body?: DeleteFolderTreeRequest;
 }
-export const DeleteTreeProjectsLocationsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(DeleteFolderTreeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:deleteTree",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteTreeProjectsLocationsFoldersRequest",
-  }) as any as S.Schema<DeleteTreeProjectsLocationsFoldersRequest>;
+export const DeleteTreeProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DeleteFolderTreeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:deleteTree","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteTreeProjectsLocationsFoldersRequest" }) as any as S.Schema<DeleteTreeProjectsLocationsFoldersRequest>;
 
 /** `DeleteTeamFolderTree` request message. */
 export interface DeleteTeamFolderTreeRequest {
@@ -1537,12 +1219,10 @@ export interface DeleteTeamFolderTreeRequest {
   force?: boolean;
 }
 export const DeleteTeamFolderTreeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    force: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DeleteTeamFolderTreeRequest",
-}) as any as S.Schema<DeleteTeamFolderTreeRequest>;
+S.Struct({
+  "force": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "DeleteTeamFolderTreeRequest" }) as any as S.Schema<DeleteTeamFolderTreeRequest>;
 
 export interface DeleteTreeProjectsLocationsTeamFoldersRequest {
   /** Required. The TeamFolder's name. Format: projects/{project}/locations/{location}/teamFolders/{team_folder} */
@@ -1550,21 +1230,12 @@ export interface DeleteTreeProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: DeleteTeamFolderTreeRequest;
 }
-export const DeleteTreeProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(DeleteTeamFolderTreeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:deleteTree",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteTreeProjectsLocationsTeamFoldersRequest",
-  }) as any as S.Schema<DeleteTreeProjectsLocationsTeamFoldersRequest>;
+export const DeleteTreeProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DeleteTeamFolderTreeRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:deleteTree","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "DeleteTreeProjectsLocationsTeamFoldersRequest" }) as any as S.Schema<DeleteTreeProjectsLocationsTeamFoldersRequest>;
 
 export interface FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -1572,21 +1243,12 @@ export interface FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
   path?: string;
 }
-export const FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      path: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+workspace}:fetchFileDiff",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest>;
+export const FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "workspace": S.String.pipe(T.Label()),
+  "path": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+workspace}:fetchFileDiff","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `FetchFileDiff` response message. */
 export interface FetchFileDiffResponse {
@@ -1594,40 +1256,22 @@ export interface FetchFileDiffResponse {
   formattedDiff?: string;
 }
 export const FetchFileDiffResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formattedDiff: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FetchFileDiffResponse",
-}) as any as S.Schema<FetchFileDiffResponse>;
+S.Struct({
+  "formattedDiff": S.optional(S.String),
+}),
+).annotate({ identifier: "FetchFileDiffResponse" }) as any as S.Schema<FetchFileDiffResponse>;
 
 export interface FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   name: string;
 }
-export const FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:fetchFileGitStatuses",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest>;
+export const FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:fetchFileGitStatuses","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest>;
 
-export type UncommittedFileChangeStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ADDED"
-  | "DELETED"
-  | "MODIFIED"
-  | "HAS_CONFLICTS"
-  | (string & {});
+export type UncommittedFileChangeStateEnum = "STATE_UNSPECIFIED" | "ADDED" | "DELETED" | "MODIFIED" | "HAS_CONFLICTS";
 export const UncommittedFileChangeStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the Git state of a file with uncommitted changes. */
@@ -1638,18 +1282,14 @@ export interface UncommittedFileChange {
   state?: UncommittedFileChangeStateEnum;
 }
 export const UncommittedFileChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    state: S.optional(UncommittedFileChangeStateEnum),
-  }),
-).annotate({
-  identifier: "UncommittedFileChange",
-}) as any as S.Schema<UncommittedFileChange>;
+S.Struct({
+  "path": S.optional(S.String),
+  "state": S.optional(UncommittedFileChangeStateEnum),
+}),
+).annotate({ identifier: "UncommittedFileChange" }) as any as S.Schema<UncommittedFileChange>;
 
 export type UncommittedFileChangeList = ReadonlyArray<UncommittedFileChange>;
-export const UncommittedFileChangeList = /*@__PURE__*/ S.Array(
-  UncommittedFileChange,
-) as any as S.Schema<UncommittedFileChangeList>;
+export const UncommittedFileChangeList = /*@__PURE__*/ S.Array(UncommittedFileChange) as any as S.Schema<UncommittedFileChangeList>;
 
 /** `FetchFileGitStatuses` response message. */
 export interface FetchFileGitStatusesResponse {
@@ -1657,12 +1297,10 @@ export interface FetchFileGitStatusesResponse {
   uncommittedFileChanges?: UncommittedFileChangeList;
 }
 export const FetchFileGitStatusesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uncommittedFileChanges: S.optional(UncommittedFileChangeList),
-  }),
-).annotate({
-  identifier: "FetchFileGitStatusesResponse",
-}) as any as S.Schema<FetchFileGitStatusesResponse>;
+S.Struct({
+  "uncommittedFileChanges": S.optional(UncommittedFileChangeList),
+}),
+).annotate({ identifier: "FetchFileGitStatusesResponse" }) as any as S.Schema<FetchFileGitStatusesResponse>;
 
 export interface FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. The name of the branch in the Git remote against which this workspace should be compared. If left unset, the repository's default branch name will be used. */
@@ -1670,22 +1308,12 @@ export interface FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesReque
   /** Required. The workspace's name. */
   name: string;
 }
-export const FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      remoteBranch: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:fetchGitAheadBehind",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest>;
+export const FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "remoteBranch": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:fetchGitAheadBehind","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `FetchGitAheadBehind` response message. */
 export interface FetchGitAheadBehindResponse {
@@ -1695,13 +1323,11 @@ export interface FetchGitAheadBehindResponse {
   commitsBehind?: number;
 }
 export const FetchGitAheadBehindResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitsAhead: S.optional(S.Number),
-    commitsBehind: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FetchGitAheadBehindResponse",
-}) as any as S.Schema<FetchGitAheadBehindResponse>;
+S.Struct({
+  "commitsAhead": S.optional(S.Number),
+  "commitsBehind": S.optional(S.Number),
+}),
+).annotate({ identifier: "FetchGitAheadBehindResponse" }) as any as S.Schema<FetchGitAheadBehindResponse>;
 
 export interface FetchHistoryProjectsLocationsRepositoriesRequest {
   /** Optional. Page token received from a previous `FetchRepositoryHistory` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchRepositoryHistory`, with the exception of `page_size`, must match the call that provided the page token. */
@@ -1711,22 +1337,13 @@ export interface FetchHistoryProjectsLocationsRepositoriesRequest {
   /** Optional. Maximum number of commits to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const FetchHistoryProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:fetchHistory",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchHistoryProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<FetchHistoryProjectsLocationsRepositoriesRequest>;
+export const FetchHistoryProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:fetchHistory","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "FetchHistoryProjectsLocationsRepositoriesRequest" }) as any as S.Schema<FetchHistoryProjectsLocationsRepositoriesRequest>;
 
 /** Represents a single commit log. */
 export interface CommitLogEntry {
@@ -1740,18 +1357,16 @@ export interface CommitLogEntry {
   commitTime?: string;
 }
 export const CommitLogEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    author: S.optional(CommitAuthor),
-    commitMessage: S.optional(S.String),
-    commitSha: S.optional(S.String),
-    commitTime: S.optional(S.String),
-  }),
+S.Struct({
+  "author": S.optional(CommitAuthor),
+  "commitMessage": S.optional(S.String),
+  "commitSha": S.optional(S.String),
+  "commitTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "CommitLogEntry" }) as any as S.Schema<CommitLogEntry>;
 
 export type CommitLogEntryList = ReadonlyArray<CommitLogEntry>;
-export const CommitLogEntryList = /*@__PURE__*/ S.Array(
-  CommitLogEntry,
-) as any as S.Schema<CommitLogEntryList>;
+export const CommitLogEntryList = /*@__PURE__*/ S.Array(CommitLogEntry) as any as S.Schema<CommitLogEntryList>;
 
 /** `FetchRepositoryHistory` response message. */
 export interface FetchRepositoryHistoryResponse {
@@ -1761,32 +1376,21 @@ export interface FetchRepositoryHistoryResponse {
   nextPageToken?: string;
 }
 export const FetchRepositoryHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commits: S.optional(CommitLogEntryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FetchRepositoryHistoryResponse",
-}) as any as S.Schema<FetchRepositoryHistoryResponse>;
+S.Struct({
+  "commits": S.optional(CommitLogEntryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "FetchRepositoryHistoryResponse" }) as any as S.Schema<FetchRepositoryHistoryResponse>;
 
 export interface FetchRemoteBranchesProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-export const FetchRemoteBranchesProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:fetchRemoteBranches",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchRemoteBranchesProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<FetchRemoteBranchesProjectsLocationsRepositoriesRequest>;
+export const FetchRemoteBranchesProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:fetchRemoteBranches","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "FetchRemoteBranchesProjectsLocationsRepositoriesRequest" }) as any as S.Schema<FetchRemoteBranchesProjectsLocationsRepositoriesRequest>;
 
 /** `FetchRemoteBranches` response message. */
 export interface FetchRemoteBranchesResponse {
@@ -1794,30 +1398,20 @@ export interface FetchRemoteBranchesResponse {
   branches?: StringList;
 }
 export const FetchRemoteBranchesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branches: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "FetchRemoteBranchesResponse",
-}) as any as S.Schema<FetchRemoteBranchesResponse>;
+S.Struct({
+  "branches": S.optional(StringList),
+}),
+).annotate({ identifier: "FetchRemoteBranchesResponse" }) as any as S.Schema<FetchRemoteBranchesResponse>;
 
 export interface GetConfigProjectsLocationsRequest {
   /** Required. The config name. */
   name: string;
 }
 export const GetConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://dataform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetConfigProjectsLocationsRequest",
-}) as any as S.Schema<GetConfigProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetConfigProjectsLocationsRequest" }) as any as S.Schema<GetConfigProjectsLocationsRequest>;
 
 /** Config for all repositories in a given project and location. */
 export interface Config {
@@ -1829,11 +1423,11 @@ export interface Config {
   defaultKmsKeyName?: string;
 }
 export const Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    internalMetadata: S.optional(S.String),
-    defaultKmsKeyName: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "internalMetadata": S.optional(S.String),
+  "defaultKmsKeyName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Config" }) as any as S.Schema<Config>;
 
 export interface GetIamPolicyProjectsLocationsFoldersRequest {
@@ -1842,21 +1436,12 @@ export interface GetIamPolicyProjectsLocationsFoldersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsFoldersRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsFoldersRequest>;
+export const GetIamPolicyProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsFoldersRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsFoldersRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -1870,12 +1455,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-    description: S.optional(S.String),
-    title: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "expression": S.optional(S.String),
+  "description": S.optional(S.String),
+  "title": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -1888,17 +1473,15 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    members: S.optional(StringList),
-    condition: S.optional(Expr),
-  }),
+S.Struct({
+  "role": S.optional(S.String),
+  "members": S.optional(StringList),
+  "condition": S.optional(Expr),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1910,11 +1493,11 @@ export interface Policy {
   version?: number;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    bindings: S.optional(BindingList),
-    version: S.optional(S.Number),
-  }),
+S.Struct({
+  "etag": S.optional(S.String),
+  "bindings": S.optional(BindingList),
+  "version": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
@@ -1923,21 +1506,12 @@ export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
+export const GetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsRepositoriesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 export interface GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1945,21 +1519,12 @@ export interface GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
+export const GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  "resource": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export interface GetIamPolicyProjectsLocationsTeamFoldersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1967,39 +1532,22 @@ export interface GetIamPolicyProjectsLocationsTeamFoldersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsTeamFoldersRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsTeamFoldersRequest>;
+export const GetIamPolicyProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  "resource": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsTeamFoldersRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsTeamFoldersRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://dataform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -2015,13 +1563,13 @@ export interface Location {
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
-    locationId: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "displayName": S.optional(S.String),
+  "labels": S.optional(StringMap),
+  "locationId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsFoldersRequest {
@@ -2029,178 +1577,96 @@ export interface GetProjectsLocationsFoldersRequest {
   name: string;
 }
 export const GetProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}",
-      baseUrl: "https://dataform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsFoldersRequest",
-}) as any as S.Schema<GetProjectsLocationsFoldersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsFoldersRequest" }) as any as S.Schema<GetProjectsLocationsFoldersRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsRepositoriesRequest",
-}) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>;
+export const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>;
 
 export interface GetProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Required. The compilation result's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesCompilationResultsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesCompilationResultsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesCompilationResultsRequest>;
+export const GetProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesCompilationResultsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesCompilationResultsRequest>;
 
 export interface GetProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Required. The release config's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesReleaseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesReleaseConfigsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesReleaseConfigsRequest>;
+export const GetProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesReleaseConfigsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 export interface GetProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Required. The workflow config's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesWorkflowConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesWorkflowConfigsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesWorkflowConfigsRequest>;
+export const GetProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesWorkflowConfigsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 export interface GetProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The workflow invocation resource's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesWorkflowInvocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesWorkflowInvocationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+export const GetProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesWorkflowInvocationsRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export interface GetProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<GetProjectsLocationsRepositoriesWorkspacesRequest>;
+export const GetProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<GetProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export interface GetProjectsLocationsTeamFoldersRequest {
   /** Required. The TeamFolder's name. */
   name: string;
 }
-export const GetProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsTeamFoldersRequest",
-}) as any as S.Schema<GetProjectsLocationsTeamFoldersRequest>;
+export const GetProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsTeamFoldersRequest" }) as any as S.Schema<GetProjectsLocationsTeamFoldersRequest>;
 
 /** `InstallNpmPackages` request message. */
 export interface InstallNpmPackagesRequest {}
 export const InstallNpmPackagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InstallNpmPackagesRequest",
-}) as any as S.Schema<InstallNpmPackagesRequest>;
+S.Struct({}),
+).annotate({ identifier: "InstallNpmPackagesRequest" }) as any as S.Schema<InstallNpmPackagesRequest>;
 
 export interface InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -2208,30 +1674,18 @@ export interface InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesReques
   /** Request body */
   body?: InstallNpmPackagesRequest;
 }
-export const InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(InstallNpmPackagesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+workspace}:installNpmPackages",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest>;
+export const InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "workspace": S.String.pipe(T.Label()),
+  "body": S.optional(InstallNpmPackagesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+workspace}:installNpmPackages","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `InstallNpmPackages` response message. */
 export interface InstallNpmPackagesResponse {}
 export const InstallNpmPackagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InstallNpmPackagesResponse",
-}) as any as S.Schema<InstallNpmPackagesResponse>;
+S.Struct({}),
+).annotate({ identifier: "InstallNpmPackagesResponse" }) as any as S.Schema<InstallNpmPackagesResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -2246,27 +1700,17 @@ export interface ListProjectsLocationsRequest {
   filter?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta1/{+name}/locations",
-      baseUrl: "https://dataform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2276,13 +1720,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -2296,29 +1738,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}/operations",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/operations","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2330,14 +1761,12 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: S.optional(OperationList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "operations": S.optional(OperationList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsRepositoriesRequest {
   /** Optional. Page token received from a previous `ListRepositories` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRepositories`, with the exception of `page_size`, must match the call that provided the page token. */
@@ -2351,29 +1780,18 @@ export interface ListProjectsLocationsRepositoriesRequest {
   /** Optional. Maximum number of repositories to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/repositories",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsRepositoriesRequest",
-}) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
+export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/repositories","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
 
 export type RepositoryList = ReadonlyArray<Repository>;
-export const RepositoryList = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<RepositoryList>;
+export const RepositoryList = /*@__PURE__*/ S.Array(Repository) as any as S.Schema<RepositoryList>;
 
 /** `ListRepositories` response message. */
 export interface ListRepositoriesResponse {
@@ -2385,14 +1803,12 @@ export interface ListRepositoriesResponse {
   unreachable?: StringList;
 }
 export const ListRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    repositories: S.optional(RepositoryList),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListRepositoriesResponse",
-}) as any as S.Schema<ListRepositoriesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "repositories": S.optional(RepositoryList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListRepositoriesResponse" }) as any as S.Schema<ListRepositoriesResponse>;
 
 export interface ListProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Optional. Page token received from a previous `ListCompilationResults` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCompilationResults`, with the exception of `page_size`, must match the call that provided the page token. */
@@ -2406,29 +1822,18 @@ export interface ListProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Optional. Maximum number of compilation results to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesCompilationResultsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/compilationResults",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesCompilationResultsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesCompilationResultsRequest>;
+export const ListProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/compilationResults","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesCompilationResultsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesCompilationResultsRequest>;
 
 export type CompilationResultList = ReadonlyArray<CompilationResult>;
-export const CompilationResultList = /*@__PURE__*/ S.Array(
-  CompilationResult,
-) as any as S.Schema<CompilationResultList>;
+export const CompilationResultList = /*@__PURE__*/ S.Array(CompilationResult) as any as S.Schema<CompilationResultList>;
 
 /** `ListCompilationResults` response message. */
 export interface ListCompilationResultsResponse {
@@ -2440,14 +1845,12 @@ export interface ListCompilationResultsResponse {
   nextPageToken?: string;
 }
 export const ListCompilationResultsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    compilationResults: S.optional(CompilationResultList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCompilationResultsResponse",
-}) as any as S.Schema<ListCompilationResultsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "compilationResults": S.optional(CompilationResultList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListCompilationResultsResponse" }) as any as S.Schema<ListCompilationResultsResponse>;
 
 export interface ListProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Optional. Page token received from a previous `ListReleaseConfigs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReleaseConfigs`, with the exception of `page_size`, must match the call that provided the page token. */
@@ -2457,27 +1860,16 @@ export interface ListProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Optional. Maximum number of release configs to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesReleaseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/releaseConfigs",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesReleaseConfigsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesReleaseConfigsRequest>;
+export const ListProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/releaseConfigs","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesReleaseConfigsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 export type ReleaseConfigList = ReadonlyArray<ReleaseConfig>;
-export const ReleaseConfigList = /*@__PURE__*/ S.Array(
-  ReleaseConfig,
-) as any as S.Schema<ReleaseConfigList>;
+export const ReleaseConfigList = /*@__PURE__*/ S.Array(ReleaseConfig) as any as S.Schema<ReleaseConfigList>;
 
 /** `ListReleaseConfigs` response message. */
 export interface ListReleaseConfigsResponse {
@@ -2489,14 +1881,12 @@ export interface ListReleaseConfigsResponse {
   nextPageToken?: string;
 }
 export const ListReleaseConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    releaseConfigs: S.optional(ReleaseConfigList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListReleaseConfigsResponse",
-}) as any as S.Schema<ListReleaseConfigsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "releaseConfigs": S.optional(ReleaseConfigList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListReleaseConfigsResponse" }) as any as S.Schema<ListReleaseConfigsResponse>;
 
 export interface ListProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Required. The repository in which to list workflow configs. Must be in the format `projects/*\/locations/*\/repositories/*`. */
@@ -2506,27 +1896,16 @@ export interface ListProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Optional. Page token received from a previous `ListWorkflowConfigs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkflowConfigs`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRepositoriesWorkflowConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/workflowConfigs",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesWorkflowConfigsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowConfigsRequest>;
+export const ListProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/workflowConfigs","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesWorkflowConfigsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 export type WorkflowConfigList = ReadonlyArray<WorkflowConfig>;
-export const WorkflowConfigList = /*@__PURE__*/ S.Array(
-  WorkflowConfig,
-) as any as S.Schema<WorkflowConfigList>;
+export const WorkflowConfigList = /*@__PURE__*/ S.Array(WorkflowConfig) as any as S.Schema<WorkflowConfigList>;
 
 /** `ListWorkflowConfigs` response message. */
 export interface ListWorkflowConfigsResponse {
@@ -2538,14 +1917,12 @@ export interface ListWorkflowConfigsResponse {
   workflowConfigs?: WorkflowConfigList;
 }
 export const ListWorkflowConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    workflowConfigs: S.optional(WorkflowConfigList),
-  }),
-).annotate({
-  identifier: "ListWorkflowConfigsResponse",
-}) as any as S.Schema<ListWorkflowConfigsResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+  "workflowConfigs": S.optional(WorkflowConfigList),
+}),
+).annotate({ identifier: "ListWorkflowConfigsResponse" }) as any as S.Schema<ListWorkflowConfigsResponse>;
 
 export interface ListProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The parent resource of the WorkflowInvocation type. Must be in the format `projects/*\/locations/*\/repositories/*`. */
@@ -2559,29 +1936,18 @@ export interface ListProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Optional. Filter for the returned list. */
   filter?: string;
 }
-export const ListProjectsLocationsRepositoriesWorkflowInvocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/workflowInvocations",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesWorkflowInvocationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+export const ListProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/workflowInvocations","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesWorkflowInvocationsRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export type WorkflowInvocationList = ReadonlyArray<WorkflowInvocation>;
-export const WorkflowInvocationList = /*@__PURE__*/ S.Array(
-  WorkflowInvocation,
-) as any as S.Schema<WorkflowInvocationList>;
+export const WorkflowInvocationList = /*@__PURE__*/ S.Array(WorkflowInvocation) as any as S.Schema<WorkflowInvocationList>;
 
 /** `ListWorkflowInvocations` response message. */
 export interface ListWorkflowInvocationsResponse {
@@ -2593,14 +1959,12 @@ export interface ListWorkflowInvocationsResponse {
   workflowInvocations?: WorkflowInvocationList;
 }
 export const ListWorkflowInvocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-    workflowInvocations: S.optional(WorkflowInvocationList),
-  }),
-).annotate({
-  identifier: "ListWorkflowInvocationsResponse",
-}) as any as S.Schema<ListWorkflowInvocationsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+  "workflowInvocations": S.optional(WorkflowInvocationList),
+}),
+).annotate({ identifier: "ListWorkflowInvocationsResponse" }) as any as S.Schema<ListWorkflowInvocationsResponse>;
 
 export interface ListProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Maximum number of workspaces to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
@@ -2614,29 +1978,18 @@ export interface ListProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Page token received from a previous `ListWorkspaces` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkspaces`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/workspaces",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkspacesRequest>;
+export const ListProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/workspaces","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type WorkspaceList = ReadonlyArray<Workspace>;
-export const WorkspaceList = /*@__PURE__*/ S.Array(
-  Workspace,
-) as any as S.Schema<WorkspaceList>;
+export const WorkspaceList = /*@__PURE__*/ S.Array(Workspace) as any as S.Schema<WorkspaceList>;
 
 /** `ListWorkspaces` response message. */
 export interface ListWorkspacesResponse {
@@ -2648,14 +2001,12 @@ export interface ListWorkspacesResponse {
   unreachable?: StringList;
 }
 export const ListWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    workspaces: S.optional(WorkspaceList),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListWorkspacesResponse",
-}) as any as S.Schema<ListWorkspacesResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "workspaces": S.optional(WorkspaceList),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListWorkspacesResponse" }) as any as S.Schema<ListWorkspacesResponse>;
 
 /** `MakeDirectory` request message. */
 export interface MakeDirectoryRequest {
@@ -2663,12 +2014,10 @@ export interface MakeDirectoryRequest {
   path?: string;
 }
 export const MakeDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MakeDirectoryRequest",
-}) as any as S.Schema<MakeDirectoryRequest>;
+S.Struct({
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "MakeDirectoryRequest" }) as any as S.Schema<MakeDirectoryRequest>;
 
 export interface MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -2676,29 +2025,18 @@ export interface MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: MakeDirectoryRequest;
 }
-export const MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(MakeDirectoryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+workspace}:makeDirectory",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
+export const MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "workspace": S.String.pipe(T.Label()),
+  "body": S.optional(MakeDirectoryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+workspace}:makeDirectory","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `MakeDirectory` response message. */
 export interface MakeDirectoryResponse {}
 export const MakeDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MakeDirectoryResponse",
-}) as any as S.Schema<MakeDirectoryResponse>;
+S.Struct({}),
+).annotate({ identifier: "MakeDirectoryResponse" }) as any as S.Schema<MakeDirectoryResponse>;
 
 /** `MoveDirectory` request message. */
 export interface MoveDirectoryRequest {
@@ -2708,13 +2046,11 @@ export interface MoveDirectoryRequest {
   newPath?: string;
 }
 export const MoveDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    newPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MoveDirectoryRequest",
-}) as any as S.Schema<MoveDirectoryRequest>;
+S.Struct({
+  "path": S.optional(S.String),
+  "newPath": S.optional(S.String),
+}),
+).annotate({ identifier: "MoveDirectoryRequest" }) as any as S.Schema<MoveDirectoryRequest>;
 
 export interface MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -2722,29 +2058,18 @@ export interface MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: MoveDirectoryRequest;
 }
-export const MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(MoveDirectoryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+workspace}:moveDirectory",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
+export const MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "workspace": S.String.pipe(T.Label()),
+  "body": S.optional(MoveDirectoryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+workspace}:moveDirectory","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `MoveDirectory` response message. */
 export interface MoveDirectoryResponse {}
 export const MoveDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MoveDirectoryResponse",
-}) as any as S.Schema<MoveDirectoryResponse>;
+S.Struct({}),
+).annotate({ identifier: "MoveDirectoryResponse" }) as any as S.Schema<MoveDirectoryResponse>;
 
 /** `MoveFile` request message. */
 export interface MoveFileRequest {
@@ -2754,13 +2079,11 @@ export interface MoveFileRequest {
   newPath?: string;
 }
 export const MoveFileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    newPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MoveFileRequest",
-}) as any as S.Schema<MoveFileRequest>;
+S.Struct({
+  "path": S.optional(S.String),
+  "newPath": S.optional(S.String),
+}),
+).annotate({ identifier: "MoveFileRequest" }) as any as S.Schema<MoveFileRequest>;
 
 export interface MoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -2768,29 +2091,18 @@ export interface MoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: MoveFileRequest;
 }
-export const MoveFileProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(MoveFileRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+workspace}:moveFile",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "MoveFileProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<MoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
+export const MoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "workspace": S.String.pipe(T.Label()),
+  "body": S.optional(MoveFileRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+workspace}:moveFile","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "MoveFileProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<MoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `MoveFile` response message. */
 export interface MoveFileResponse {}
 export const MoveFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MoveFileResponse",
-}) as any as S.Schema<MoveFileResponse>;
+S.Struct({}),
+).annotate({ identifier: "MoveFileResponse" }) as any as S.Schema<MoveFileResponse>;
 
 /** `MoveFolder` request message. */
 export interface MoveFolderRequest {
@@ -2798,12 +2110,10 @@ export interface MoveFolderRequest {
   destinationContainingFolder?: string;
 }
 export const MoveFolderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationContainingFolder: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MoveFolderRequest",
-}) as any as S.Schema<MoveFolderRequest>;
+S.Struct({
+  "destinationContainingFolder": S.optional(S.String),
+}),
+).annotate({ identifier: "MoveFolderRequest" }) as any as S.Schema<MoveFolderRequest>;
 
 export interface MoveProjectsLocationsFoldersRequest {
   /** Required. The full resource name of the Folder to move. */
@@ -2812,19 +2122,11 @@ export interface MoveProjectsLocationsFoldersRequest {
   body?: MoveFolderRequest;
 }
 export const MoveProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(MoveFolderRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/{+name}:move",
-      baseUrl: "https://dataform.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "MoveProjectsLocationsFoldersRequest",
-}) as any as S.Schema<MoveProjectsLocationsFoldersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MoveFolderRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:move","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "MoveProjectsLocationsFoldersRequest" }) as any as S.Schema<MoveProjectsLocationsFoldersRequest>;
 
 /** `MoveRepository` request message. */
 export interface MoveRepositoryRequest {
@@ -2832,12 +2134,10 @@ export interface MoveRepositoryRequest {
   destinationContainingFolder?: string;
 }
 export const MoveRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationContainingFolder: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MoveRepositoryRequest",
-}) as any as S.Schema<MoveRepositoryRequest>;
+S.Struct({
+  "destinationContainingFolder": S.optional(S.String),
+}),
+).annotate({ identifier: "MoveRepositoryRequest" }) as any as S.Schema<MoveRepositoryRequest>;
 
 export interface MoveProjectsLocationsRepositoriesRequest {
   /** Required. The full resource name of the repository to move. */
@@ -2845,21 +2145,12 @@ export interface MoveProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: MoveRepositoryRequest;
 }
-export const MoveProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(MoveRepositoryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:move",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "MoveProjectsLocationsRepositoriesRequest",
-}) as any as S.Schema<MoveProjectsLocationsRepositoriesRequest>;
+export const MoveProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(MoveRepositoryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:move","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "MoveProjectsLocationsRepositoriesRequest" }) as any as S.Schema<MoveProjectsLocationsRepositoriesRequest>;
 
 export interface PatchProjectsLocationsFoldersRequest {
   /** Identifier. The Folder's name. */
@@ -2869,22 +2160,13 @@ export interface PatchProjectsLocationsFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const PatchProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Folder.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsFoldersRequest",
-}) as any as S.Schema<PatchProjectsLocationsFoldersRequest>;
+export const PatchProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Folder.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsFoldersRequest" }) as any as S.Schema<PatchProjectsLocationsFoldersRequest>;
 
 export interface PatchProjectsLocationsRepositoriesRequest {
   /** Identifier. The repository's name. */
@@ -2894,22 +2176,13 @@ export interface PatchProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const PatchProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Repository.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>;
+export const PatchProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Repository.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>;
 
 export interface PatchProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Identifier. The release config's name. */
@@ -2919,22 +2192,13 @@ export interface PatchProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Request body */
   body?: ReleaseConfig;
 }
-export const PatchProjectsLocationsRepositoriesReleaseConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ReleaseConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesReleaseConfigsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesReleaseConfigsRequest>;
+export const PatchProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(ReleaseConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesReleaseConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 export interface PatchProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Identifier. The workflow config's name. */
@@ -2944,22 +2208,13 @@ export interface PatchProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Request body */
   body?: WorkflowConfig;
 }
-export const PatchProjectsLocationsRepositoriesWorkflowConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WorkflowConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsRepositoriesWorkflowConfigsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsRepositoriesWorkflowConfigsRequest>;
+export const PatchProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(WorkflowConfig.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsRepositoriesWorkflowConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 export interface PatchProjectsLocationsTeamFoldersRequest {
   /** Identifier. The TeamFolder's name. */
@@ -2969,22 +2224,13 @@ export interface PatchProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: TeamFolder;
 }
-export const PatchProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(TeamFolder.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchProjectsLocationsTeamFoldersRequest",
-}) as any as S.Schema<PatchProjectsLocationsTeamFoldersRequest>;
+export const PatchProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(TeamFolder.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsTeamFoldersRequest" }) as any as S.Schema<PatchProjectsLocationsTeamFoldersRequest>;
 
 /** `PullGitCommits` request message. */
 export interface PullGitCommitsRequest {
@@ -2994,13 +2240,11 @@ export interface PullGitCommitsRequest {
   author?: CommitAuthor;
 }
 export const PullGitCommitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remoteBranch: S.optional(S.String),
-    author: S.optional(CommitAuthor),
-  }),
-).annotate({
-  identifier: "PullGitCommitsRequest",
-}) as any as S.Schema<PullGitCommitsRequest>;
+S.Struct({
+  "remoteBranch": S.optional(S.String),
+  "author": S.optional(CommitAuthor),
+}),
+).annotate({ identifier: "PullGitCommitsRequest" }) as any as S.Schema<PullGitCommitsRequest>;
 
 export interface PullProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -3008,29 +2252,18 @@ export interface PullProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: PullGitCommitsRequest;
 }
-export const PullProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(PullGitCommitsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:pull",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PullProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<PullProjectsLocationsRepositoriesWorkspacesRequest>;
+export const PullProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(PullGitCommitsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:pull","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "PullProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<PullProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `PullGitCommits` response message. */
 export interface PullGitCommitsResponse {}
 export const PullGitCommitsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PullGitCommitsResponse",
-}) as any as S.Schema<PullGitCommitsResponse>;
+S.Struct({}),
+).annotate({ identifier: "PullGitCommitsResponse" }) as any as S.Schema<PullGitCommitsResponse>;
 
 /** `PushGitCommits` request message. */
 export interface PushGitCommitsRequest {
@@ -3038,12 +2271,10 @@ export interface PushGitCommitsRequest {
   remoteBranch?: string;
 }
 export const PushGitCommitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remoteBranch: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PushGitCommitsRequest",
-}) as any as S.Schema<PushGitCommitsRequest>;
+S.Struct({
+  "remoteBranch": S.optional(S.String),
+}),
+).annotate({ identifier: "PushGitCommitsRequest" }) as any as S.Schema<PushGitCommitsRequest>;
 
 export interface PushProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -3051,29 +2282,18 @@ export interface PushProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: PushGitCommitsRequest;
 }
-export const PushProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(PushGitCommitsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:push",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PushProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<PushProjectsLocationsRepositoriesWorkspacesRequest>;
+export const PushProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(PushGitCommitsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:push","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "PushProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<PushProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `PushGitCommits` response message. */
 export interface PushGitCommitsResponse {}
 export const PushGitCommitsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PushGitCommitsResponse",
-}) as any as S.Schema<PushGitCommitsResponse>;
+S.Struct({}),
+).annotate({ identifier: "PushGitCommitsResponse" }) as any as S.Schema<PushGitCommitsResponse>;
 
 export interface QueryContentsProjectsLocationsTeamFoldersRequest {
   /** Optional. Page token received from a previous `QueryTeamFolderContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryTeamFolderContents`, with the exception of `page_size`, must match the call that provided the page token. */
@@ -3087,24 +2307,15 @@ export interface QueryContentsProjectsLocationsTeamFoldersRequest {
   /** Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const QueryContentsProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      teamFolder: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+teamFolder}:queryContents",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "QueryContentsProjectsLocationsTeamFoldersRequest",
-  }) as any as S.Schema<QueryContentsProjectsLocationsTeamFoldersRequest>;
+export const QueryContentsProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "teamFolder": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+teamFolder}:queryContents","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "QueryContentsProjectsLocationsTeamFoldersRequest" }) as any as S.Schema<QueryContentsProjectsLocationsTeamFoldersRequest>;
 
 /** Represents a single content entry. */
 export interface TeamFolderContentsEntry {
@@ -3114,19 +2325,14 @@ export interface TeamFolderContentsEntry {
   repository?: Repository;
 }
 export const TeamFolderContentsEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    folder: S.optional(Folder),
-    repository: S.optional(Repository),
-  }),
-).annotate({
-  identifier: "TeamFolderContentsEntry",
-}) as any as S.Schema<TeamFolderContentsEntry>;
+S.Struct({
+  "folder": S.optional(Folder),
+  "repository": S.optional(Repository),
+}),
+).annotate({ identifier: "TeamFolderContentsEntry" }) as any as S.Schema<TeamFolderContentsEntry>;
 
-export type TeamFolderContentsEntryList =
-  ReadonlyArray<TeamFolderContentsEntry>;
-export const TeamFolderContentsEntryList = /*@__PURE__*/ S.Array(
-  TeamFolderContentsEntry,
-) as any as S.Schema<TeamFolderContentsEntryList>;
+export type TeamFolderContentsEntryList = ReadonlyArray<TeamFolderContentsEntry>;
+export const TeamFolderContentsEntryList = /*@__PURE__*/ S.Array(TeamFolderContentsEntry) as any as S.Schema<TeamFolderContentsEntryList>;
 
 /** `QueryTeamFolderContents` response message. */
 export interface QueryTeamFolderContentsResponse {
@@ -3136,13 +2342,11 @@ export interface QueryTeamFolderContentsResponse {
   nextPageToken?: string;
 }
 export const QueryTeamFolderContentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(TeamFolderContentsEntryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "QueryTeamFolderContentsResponse",
-}) as any as S.Schema<QueryTeamFolderContentsResponse>;
+S.Struct({
+  "entries": S.optional(TeamFolderContentsEntryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "QueryTeamFolderContentsResponse" }) as any as S.Schema<QueryTeamFolderContentsResponse>;
 
 export interface QueryDirectoryContentsProjectsLocationsRepositoriesRequest {
   /** Optional. Page token received from a previous `QueryRepositoryDirectoryContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryRepositoryDirectoryContents`, with the exception of `page_size`, must match the call that provided the page token. */
@@ -3156,24 +2360,15 @@ export interface QueryDirectoryContentsProjectsLocationsRepositoriesRequest {
   /** Optional. The directory's full path including directory name, relative to root. If left unset, the root is used. */
   path?: string;
 }
-export const QueryDirectoryContentsProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      commitSha: S.optional(S.String.pipe(T.Query())),
-      path: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:queryDirectoryContents",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "QueryDirectoryContentsProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesRequest>;
+export const QueryDirectoryContentsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "commitSha": S.optional(S.String.pipe(T.Query())),
+  "path": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:queryDirectoryContents","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "QueryDirectoryContentsProjectsLocationsRepositoriesRequest" }) as any as S.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesRequest>;
 
 /** Represents metadata for a single entry in a filesystem. */
 export interface FilesystemEntryMetadata {
@@ -3183,13 +2378,11 @@ export interface FilesystemEntryMetadata {
   updateTime?: string;
 }
 export const FilesystemEntryMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sizeBytes: S.optional(S.String),
-    updateTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FilesystemEntryMetadata",
-}) as any as S.Schema<FilesystemEntryMetadata>;
+S.Struct({
+  "sizeBytes": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+}),
+).annotate({ identifier: "FilesystemEntryMetadata" }) as any as S.Schema<FilesystemEntryMetadata>;
 
 /** Represents a single entry in a directory. */
 export interface DirectoryEntry {
@@ -3201,17 +2394,15 @@ export interface DirectoryEntry {
   metadata?: FilesystemEntryMetadata;
 }
 export const DirectoryEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file: S.optional(S.String),
-    directory: S.optional(S.String),
-    metadata: S.optional(FilesystemEntryMetadata),
-  }),
+S.Struct({
+  "file": S.optional(S.String),
+  "directory": S.optional(S.String),
+  "metadata": S.optional(FilesystemEntryMetadata),
+}),
 ).annotate({ identifier: "DirectoryEntry" }) as any as S.Schema<DirectoryEntry>;
 
 export type DirectoryEntryList = ReadonlyArray<DirectoryEntry>;
-export const DirectoryEntryList = /*@__PURE__*/ S.Array(
-  DirectoryEntry,
-) as any as S.Schema<DirectoryEntryList>;
+export const DirectoryEntryList = /*@__PURE__*/ S.Array(DirectoryEntry) as any as S.Schema<DirectoryEntryList>;
 
 /** `QueryRepositoryDirectoryContents` response message. */
 export interface QueryRepositoryDirectoryContentsResponse {
@@ -3220,29 +2411,21 @@ export interface QueryRepositoryDirectoryContentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const QueryRepositoryDirectoryContentsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      directoryEntries: S.optional(DirectoryEntryList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "QueryRepositoryDirectoryContentsResponse",
-}) as any as S.Schema<QueryRepositoryDirectoryContentsResponse>;
+export const QueryRepositoryDirectoryContentsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "directoryEntries": S.optional(DirectoryEntryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "QueryRepositoryDirectoryContentsResponse" }) as any as S.Schema<QueryRepositoryDirectoryContentsResponse>;
 
-export type QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum =
-    | "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED"
-    | "DIRECTORY_CONTENTS_VIEW_BASIC"
-    | "DIRECTORY_CONTENTS_VIEW_METADATA"
-    | (string & {});
-export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum =
-  /*@__PURE__*/ S.String;
+export type QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum = "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED" | "DIRECTORY_CONTENTS_VIEW_BASIC" | "DIRECTORY_CONTENTS_VIEW_METADATA";
+export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum = /*@__PURE__*/ S.String;
 
 export interface QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Page token received from a previous `QueryDirectoryContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryDirectoryContents`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
   /** Optional. Specifies the metadata to return for each directory entry. If unspecified, the default is `DIRECTORY_CONTENTS_VIEW_BASIC`. Currently the `DIRECTORY_CONTENTS_VIEW_METADATA` view is not supported by CMEK-protected workspaces. */
-  view?: QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum;
+  view?: QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum | (string & {});
   /** Optional. The directory's full path including directory name, relative to the workspace root. If left unset, the workspace root is used. */
   path?: string;
   /** Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
@@ -3250,29 +2433,15 @@ export interface QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRe
   /** Required. The workspace's name. */
   workspace: string;
 }
-export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      view: S.optional(
-        QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      path: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      workspace: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+workspace}:queryDirectoryContents",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest>;
+export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "view": S.optional(QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum.pipe(T.Query())),
+  "path": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "workspace": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+workspace}:queryDirectoryContents","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `QueryDirectoryContents` response message. */
 export interface QueryDirectoryContentsResponse {
@@ -3282,13 +2451,11 @@ export interface QueryDirectoryContentsResponse {
   nextPageToken?: string;
 }
 export const QueryDirectoryContentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    directoryEntries: S.optional(DirectoryEntryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "QueryDirectoryContentsResponse",
-}) as any as S.Schema<QueryDirectoryContentsResponse>;
+S.Struct({
+  "directoryEntries": S.optional(DirectoryEntryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "QueryDirectoryContentsResponse" }) as any as S.Schema<QueryDirectoryContentsResponse>;
 
 export interface QueryFolderContentsProjectsLocationsFoldersRequest {
   /** Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: * `filter="display_name="MyFolder""` */
@@ -3302,24 +2469,15 @@ export interface QueryFolderContentsProjectsLocationsFoldersRequest {
   /** Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by `order_by` in ascending order. Supported keywords: display_name (default), create_time, last_modified_time. Examples: * `orderBy="display_name"` * `orderBy="display_name desc"` */
   orderBy?: string;
 }
-export const QueryFolderContentsProjectsLocationsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      folder: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+folder}:queryFolderContents",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "QueryFolderContentsProjectsLocationsFoldersRequest",
-  }) as any as S.Schema<QueryFolderContentsProjectsLocationsFoldersRequest>;
+export const QueryFolderContentsProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "folder": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+folder}:queryFolderContents","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "QueryFolderContentsProjectsLocationsFoldersRequest" }) as any as S.Schema<QueryFolderContentsProjectsLocationsFoldersRequest>;
 
 /** Represents a single content entry. */
 export interface FolderContentsEntry {
@@ -3329,18 +2487,14 @@ export interface FolderContentsEntry {
   repository?: Repository;
 }
 export const FolderContentsEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    folder: S.optional(Folder),
-    repository: S.optional(Repository),
-  }),
-).annotate({
-  identifier: "FolderContentsEntry",
-}) as any as S.Schema<FolderContentsEntry>;
+S.Struct({
+  "folder": S.optional(Folder),
+  "repository": S.optional(Repository),
+}),
+).annotate({ identifier: "FolderContentsEntry" }) as any as S.Schema<FolderContentsEntry>;
 
 export type FolderContentsEntryList = ReadonlyArray<FolderContentsEntry>;
-export const FolderContentsEntryList = /*@__PURE__*/ S.Array(
-  FolderContentsEntry,
-) as any as S.Schema<FolderContentsEntryList>;
+export const FolderContentsEntryList = /*@__PURE__*/ S.Array(FolderContentsEntry) as any as S.Schema<FolderContentsEntryList>;
 
 /** `QueryFolderContents` response message. */
 export interface QueryFolderContentsResponse {
@@ -3350,13 +2504,11 @@ export interface QueryFolderContentsResponse {
   nextPageToken?: string;
 }
 export const QueryFolderContentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(FolderContentsEntryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "QueryFolderContentsResponse",
-}) as any as S.Schema<QueryFolderContentsResponse>;
+S.Struct({
+  "entries": S.optional(FolderContentsEntryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "QueryFolderContentsResponse" }) as any as S.Schema<QueryFolderContentsResponse>;
 
 export interface QueryProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Required. The compilation result's name. */
@@ -3368,23 +2520,14 @@ export interface QueryProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Optional. Maximum number of compilation results to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const QueryProjectsLocationsRepositoriesCompilationResultsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:query",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "QueryProjectsLocationsRepositoriesCompilationResultsRequest",
-  }) as any as S.Schema<QueryProjectsLocationsRepositoriesCompilationResultsRequest>;
+export const QueryProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:query","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "QueryProjectsLocationsRepositoriesCompilationResultsRequest" }) as any as S.Schema<QueryProjectsLocationsRepositoriesCompilationResultsRequest>;
 
 /** Contains settings for relations of type `INCREMENTAL_TABLE`. */
 export interface IncrementalTableConfig {
@@ -3402,17 +2545,15 @@ export interface IncrementalTableConfig {
   updatePartitionFilter?: string;
 }
 export const IncrementalTableConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    refreshDisabled: S.optional(S.Boolean),
-    incrementalPreOperations: S.optional(StringList),
-    incrementalSelectQuery: S.optional(S.String),
-    uniqueKeyParts: S.optional(StringList),
-    incrementalPostOperations: S.optional(StringList),
-    updatePartitionFilter: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IncrementalTableConfig",
-}) as any as S.Schema<IncrementalTableConfig>;
+S.Struct({
+  "refreshDisabled": S.optional(S.Boolean),
+  "incrementalPreOperations": S.optional(StringList),
+  "incrementalSelectQuery": S.optional(S.String),
+  "uniqueKeyParts": S.optional(StringList),
+  "incrementalPostOperations": S.optional(StringList),
+  "updatePartitionFilter": S.optional(S.String),
+}),
+).annotate({ identifier: "IncrementalTableConfig" }) as any as S.Schema<IncrementalTableConfig>;
 
 /** Describes a column. */
 export interface ColumnDescriptor {
@@ -3424,19 +2565,15 @@ export interface ColumnDescriptor {
   bigqueryPolicyTags?: StringList;
 }
 export const ColumnDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(StringList),
-    description: S.optional(S.String),
-    bigqueryPolicyTags: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ColumnDescriptor",
-}) as any as S.Schema<ColumnDescriptor>;
+S.Struct({
+  "path": S.optional(StringList),
+  "description": S.optional(S.String),
+  "bigqueryPolicyTags": S.optional(StringList),
+}),
+).annotate({ identifier: "ColumnDescriptor" }) as any as S.Schema<ColumnDescriptor>;
 
 export type ColumnDescriptorList = ReadonlyArray<ColumnDescriptor>;
-export const ColumnDescriptorList = /*@__PURE__*/ S.Array(
-  ColumnDescriptor,
-) as any as S.Schema<ColumnDescriptorList>;
+export const ColumnDescriptorList = /*@__PURE__*/ S.Array(ColumnDescriptor) as any as S.Schema<ColumnDescriptorList>;
 
 /** Describes a relation and its columns. */
 export interface RelationDescriptor {
@@ -3448,34 +2585,20 @@ export interface RelationDescriptor {
   description?: string;
 }
 export const RelationDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(ColumnDescriptorList),
-    bigqueryLabels: S.optional(StringMap),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RelationDescriptor",
-}) as any as S.Schema<RelationDescriptor>;
+S.Struct({
+  "columns": S.optional(ColumnDescriptorList),
+  "bigqueryLabels": S.optional(StringMap),
+  "description": S.optional(S.String),
+}),
+).annotate({ identifier: "RelationDescriptor" }) as any as S.Schema<RelationDescriptor>;
 
-export type RelationRelationTypeEnum =
-  | "RELATION_TYPE_UNSPECIFIED"
-  | "TABLE"
-  | "VIEW"
-  | "INCREMENTAL_TABLE"
-  | "MATERIALIZED_VIEW"
-  | (string & {});
+export type RelationRelationTypeEnum = "RELATION_TYPE_UNSPECIFIED" | "TABLE" | "VIEW" | "INCREMENTAL_TABLE" | "MATERIALIZED_VIEW";
 export const RelationRelationTypeEnum = /*@__PURE__*/ S.String;
 
-export type RelationFileFormatEnum =
-  | "FILE_FORMAT_UNSPECIFIED"
-  | "PARQUET"
-  | (string & {});
+export type RelationFileFormatEnum = "FILE_FORMAT_UNSPECIFIED" | "PARQUET";
 export const RelationFileFormatEnum = /*@__PURE__*/ S.String;
 
-export type RelationTableFormatEnum =
-  | "TABLE_FORMAT_UNSPECIFIED"
-  | "ICEBERG"
-  | (string & {});
+export type RelationTableFormatEnum = "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG";
 export const RelationTableFormatEnum = /*@__PURE__*/ S.String;
 
 /** Represents a database relation. */
@@ -3518,26 +2641,26 @@ export interface Relation {
   additionalOptions?: StringMap;
 }
 export const Relation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    incrementalTableConfig: S.optional(IncrementalTableConfig),
-    dependencyTargets: S.optional(TargetList),
-    preOperations: S.optional(StringList),
-    storageUri: S.optional(S.String),
-    partitionExpression: S.optional(S.String),
-    requirePartitionFilter: S.optional(S.Boolean),
-    clusterExpressions: S.optional(StringList),
-    relationDescriptor: S.optional(RelationDescriptor),
-    partitionExpirationDays: S.optional(S.Number),
-    relationType: S.optional(RelationRelationTypeEnum),
-    fileFormat: S.optional(RelationFileFormatEnum),
-    disabled: S.optional(S.Boolean),
-    selectQuery: S.optional(S.String),
-    postOperations: S.optional(StringList),
-    tags: S.optional(StringList),
-    connection: S.optional(S.String),
-    tableFormat: S.optional(RelationTableFormatEnum),
-    additionalOptions: S.optional(StringMap),
-  }),
+S.Struct({
+  "incrementalTableConfig": S.optional(IncrementalTableConfig),
+  "dependencyTargets": S.optional(TargetList),
+  "preOperations": S.optional(StringList),
+  "storageUri": S.optional(S.String),
+  "partitionExpression": S.optional(S.String),
+  "requirePartitionFilter": S.optional(S.Boolean),
+  "clusterExpressions": S.optional(StringList),
+  "relationDescriptor": S.optional(RelationDescriptor),
+  "partitionExpirationDays": S.optional(S.Number),
+  "relationType": S.optional(RelationRelationTypeEnum),
+  "fileFormat": S.optional(RelationFileFormatEnum),
+  "disabled": S.optional(S.Boolean),
+  "selectQuery": S.optional(S.String),
+  "postOperations": S.optional(StringList),
+  "tags": S.optional(StringList),
+  "connection": S.optional(S.String),
+  "tableFormat": S.optional(RelationTableFormatEnum),
+  "additionalOptions": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Relation" }) as any as S.Schema<Relation>;
 
 /** Represents a list of arbitrary database operations. */
@@ -3556,14 +2679,14 @@ export interface Operations {
   disabled?: boolean;
 }
 export const Operations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relationDescriptor: S.optional(RelationDescriptor),
-    dependencyTargets: S.optional(TargetList),
-    tags: S.optional(StringList),
-    queries: S.optional(StringList),
-    hasOutput: S.optional(S.Boolean),
-    disabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "relationDescriptor": S.optional(RelationDescriptor),
+  "dependencyTargets": S.optional(TargetList),
+  "tags": S.optional(StringList),
+  "queries": S.optional(StringList),
+  "hasOutput": S.optional(S.Boolean),
+  "disabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Operations" }) as any as S.Schema<Operations>;
 
 /** Error table information, used to write error data into a BigQuery table. */
@@ -3574,16 +2697,16 @@ export interface ErrorTable {
   target?: Target;
 }
 export const ErrorTable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retentionDays: S.optional(S.Number),
-    target: S.optional(Target),
-  }),
+S.Struct({
+  "retentionDays": S.optional(S.Number),
+  "target": S.optional(Target),
+}),
 ).annotate({ identifier: "ErrorTable" }) as any as S.Schema<ErrorTable>;
 
 /** Simple load definition */
 export interface SimpleLoadMode {}
 export const SimpleLoadMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+S.Struct({}),
 ).annotate({ identifier: "SimpleLoadMode" }) as any as S.Schema<SimpleLoadMode>;
 
 /** Load definition for incremental load modes */
@@ -3592,12 +2715,10 @@ export interface IncrementalLoadMode {
   column?: string;
 }
 export const IncrementalLoadMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IncrementalLoadMode",
-}) as any as S.Schema<IncrementalLoadMode>;
+S.Struct({
+  "column": S.optional(S.String),
+}),
+).annotate({ identifier: "IncrementalLoadMode" }) as any as S.Schema<IncrementalLoadMode>;
 
 /** Simplified load configuration for actions */
 export interface LoadConfig {
@@ -3611,12 +2732,12 @@ export interface LoadConfig {
   replace?: SimpleLoadMode;
 }
 export const LoadConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    append: S.optional(SimpleLoadMode),
-    maximum: S.optional(IncrementalLoadMode),
-    unique: S.optional(IncrementalLoadMode),
-    replace: S.optional(SimpleLoadMode),
-  }),
+S.Struct({
+  "append": S.optional(SimpleLoadMode),
+  "maximum": S.optional(IncrementalLoadMode),
+  "unique": S.optional(IncrementalLoadMode),
+  "replace": S.optional(SimpleLoadMode),
+}),
 ).annotate({ identifier: "LoadConfig" }) as any as S.Schema<LoadConfig>;
 
 /** Definition of a SQL Data Preparation */
@@ -3629,11 +2750,11 @@ export interface SqlDefinition {
   load?: LoadConfig;
 }
 export const SqlDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(S.String),
-    errorTable: S.optional(ErrorTable),
-    load: S.optional(LoadConfig),
-  }),
+S.Struct({
+  "query": S.optional(S.String),
+  "errorTable": S.optional(ErrorTable),
+  "load": S.optional(LoadConfig),
+}),
 ).annotate({ identifier: "SqlDefinition" }) as any as S.Schema<SqlDefinition>;
 
 /** Defines a compiled Data Preparation entity */
@@ -3650,16 +2771,14 @@ export interface DataPreparation {
   contentsYaml?: string;
 }
 export const DataPreparation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dependencyTargets: S.optional(TargetList),
-    tags: S.optional(StringList),
-    contentsSql: S.optional(SqlDefinition),
-    disabled: S.optional(S.Boolean),
-    contentsYaml: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DataPreparation",
-}) as any as S.Schema<DataPreparation>;
+S.Struct({
+  "dependencyTargets": S.optional(TargetList),
+  "tags": S.optional(StringList),
+  "contentsSql": S.optional(SqlDefinition),
+  "disabled": S.optional(S.Boolean),
+  "contentsYaml": S.optional(S.String),
+}),
+).annotate({ identifier: "DataPreparation" }) as any as S.Schema<DataPreparation>;
 
 /** Represents an assertion upon a SQL query which is required return zero rows. */
 export interface Assertion {
@@ -3677,14 +2796,14 @@ export interface Assertion {
   disabled?: boolean;
 }
 export const Assertion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dependencyTargets: S.optional(TargetList),
-    tags: S.optional(StringList),
-    selectQuery: S.optional(S.String),
-    relationDescriptor: S.optional(RelationDescriptor),
-    parentAction: S.optional(Target),
-    disabled: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "dependencyTargets": S.optional(TargetList),
+  "tags": S.optional(StringList),
+  "selectQuery": S.optional(S.String),
+  "relationDescriptor": S.optional(RelationDescriptor),
+  "parentAction": S.optional(Target),
+  "disabled": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Assertion" }) as any as S.Schema<Assertion>;
 
 /** Represents a relation which is not managed by Dataform but which may be referenced by Dataform actions. */
@@ -3693,9 +2812,9 @@ export interface Declaration {
   relationDescriptor?: RelationDescriptor;
 }
 export const Declaration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relationDescriptor: S.optional(RelationDescriptor),
-  }),
+S.Struct({
+  "relationDescriptor": S.optional(RelationDescriptor),
+}),
 ).annotate({ identifier: "Declaration" }) as any as S.Schema<Declaration>;
 
 /** Represents a notebook. */
@@ -3710,12 +2829,12 @@ export interface Notebook {
   tags?: StringList;
 }
 export const Notebook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contents: S.optional(S.String),
-    dependencyTargets: S.optional(TargetList),
-    disabled: S.optional(S.Boolean),
-    tags: S.optional(StringList),
-  }),
+S.Struct({
+  "contents": S.optional(S.String),
+  "dependencyTargets": S.optional(TargetList),
+  "disabled": S.optional(S.Boolean),
+  "tags": S.optional(StringList),
+}),
 ).annotate({ identifier: "Notebook" }) as any as S.Schema<Notebook>;
 
 /** Represents a single Dataform action in a compilation result. */
@@ -3742,27 +2861,22 @@ export interface CompilationResultAction {
   target?: Target;
 }
 export const CompilationResultAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relation: S.optional(Relation),
-    operations: S.optional(Operations),
-    dataPreparation: S.optional(DataPreparation),
-    filePath: S.optional(S.String),
-    assertion: S.optional(Assertion),
-    internalMetadata: S.optional(S.String),
-    canonicalTarget: S.optional(Target),
-    declaration: S.optional(Declaration),
-    notebook: S.optional(Notebook),
-    target: S.optional(Target),
-  }),
-).annotate({
-  identifier: "CompilationResultAction",
-}) as any as S.Schema<CompilationResultAction>;
+S.Struct({
+  "relation": S.optional(Relation),
+  "operations": S.optional(Operations),
+  "dataPreparation": S.optional(DataPreparation),
+  "filePath": S.optional(S.String),
+  "assertion": S.optional(Assertion),
+  "internalMetadata": S.optional(S.String),
+  "canonicalTarget": S.optional(Target),
+  "declaration": S.optional(Declaration),
+  "notebook": S.optional(Notebook),
+  "target": S.optional(Target),
+}),
+).annotate({ identifier: "CompilationResultAction" }) as any as S.Schema<CompilationResultAction>;
 
-export type CompilationResultActionList =
-  ReadonlyArray<CompilationResultAction>;
-export const CompilationResultActionList = /*@__PURE__*/ S.Array(
-  CompilationResultAction,
-) as any as S.Schema<CompilationResultActionList>;
+export type CompilationResultActionList = ReadonlyArray<CompilationResultAction>;
+export const CompilationResultActionList = /*@__PURE__*/ S.Array(CompilationResultAction) as any as S.Schema<CompilationResultActionList>;
 
 /** `QueryCompilationResultActions` response message. */
 export interface QueryCompilationResultActionsResponse {
@@ -3771,15 +2885,12 @@ export interface QueryCompilationResultActionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const QueryCompilationResultActionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      compilationResultActions: S.optional(CompilationResultActionList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "QueryCompilationResultActionsResponse",
-}) as any as S.Schema<QueryCompilationResultActionsResponse>;
+export const QueryCompilationResultActionsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "compilationResultActions": S.optional(CompilationResultActionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "QueryCompilationResultActionsResponse" }) as any as S.Schema<QueryCompilationResultActionsResponse>;
 
 export interface QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Optional. Maximum number of workflow invocations to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
@@ -3789,22 +2900,13 @@ export interface QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Optional. Page token received from a previous `QueryWorkflowInvocationActions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryWorkflowInvocationActions`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-export const QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:query",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest",
-  }) as any as S.Schema<QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+export const QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:query","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest" }) as any as S.Schema<QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 /** Represents a workflow action that will run against a Notebook runtime. */
 export interface NotebookAction {
@@ -3814,21 +2916,13 @@ export interface NotebookAction {
   jobId?: string;
 }
 export const NotebookAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contents: S.optional(S.String),
-    jobId: S.optional(S.String),
-  }),
+S.Struct({
+  "contents": S.optional(S.String),
+  "jobId": S.optional(S.String),
+}),
 ).annotate({ identifier: "NotebookAction" }) as any as S.Schema<NotebookAction>;
 
-export type WorkflowInvocationActionStateEnum =
-  | "PENDING"
-  | "RUNNING"
-  | "SKIPPED"
-  | "DISABLED"
-  | "SUCCEEDED"
-  | "CANCELLED"
-  | "FAILED"
-  | (string & {});
+export type WorkflowInvocationActionStateEnum = "PENDING" | "RUNNING" | "SKIPPED" | "DISABLED" | "SUCCEEDED" | "CANCELLED" | "FAILED";
 export const WorkflowInvocationActionStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a workflow action that will run against BigQuery. */
@@ -3839,19 +2933,17 @@ export interface BigQueryAction {
   sqlScript?: string;
 }
 export const BigQueryAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.optional(S.String),
-    sqlScript: S.optional(S.String),
-  }),
+S.Struct({
+  "jobId": S.optional(S.String),
+  "sqlScript": S.optional(S.String),
+}),
 ).annotate({ identifier: "BigQueryAction" }) as any as S.Schema<BigQueryAction>;
 
 /** Simple load definition */
 export interface ActionSimpleLoadMode {}
 export const ActionSimpleLoadMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ActionSimpleLoadMode",
-}) as any as S.Schema<ActionSimpleLoadMode>;
+S.Struct({}),
+).annotate({ identifier: "ActionSimpleLoadMode" }) as any as S.Schema<ActionSimpleLoadMode>;
 
 /** Load definition for incremental load modes */
 export interface ActionIncrementalLoadMode {
@@ -3859,12 +2951,10 @@ export interface ActionIncrementalLoadMode {
   column?: string;
 }
 export const ActionIncrementalLoadMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ActionIncrementalLoadMode",
-}) as any as S.Schema<ActionIncrementalLoadMode>;
+S.Struct({
+  "column": S.optional(S.String),
+}),
+).annotate({ identifier: "ActionIncrementalLoadMode" }) as any as S.Schema<ActionIncrementalLoadMode>;
 
 /** Simplified load configuration for actions */
 export interface ActionLoadConfig {
@@ -3878,15 +2968,13 @@ export interface ActionLoadConfig {
   unique?: ActionIncrementalLoadMode;
 }
 export const ActionLoadConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    append: S.optional(ActionSimpleLoadMode),
-    maximum: S.optional(ActionIncrementalLoadMode),
-    replace: S.optional(ActionSimpleLoadMode),
-    unique: S.optional(ActionIncrementalLoadMode),
-  }),
-).annotate({
-  identifier: "ActionLoadConfig",
-}) as any as S.Schema<ActionLoadConfig>;
+S.Struct({
+  "append": S.optional(ActionSimpleLoadMode),
+  "maximum": S.optional(ActionIncrementalLoadMode),
+  "replace": S.optional(ActionSimpleLoadMode),
+  "unique": S.optional(ActionIncrementalLoadMode),
+}),
+).annotate({ identifier: "ActionLoadConfig" }) as any as S.Schema<ActionLoadConfig>;
 
 /** Error table information, used to write error data into a BigQuery table. */
 export interface ActionErrorTable {
@@ -3896,13 +2984,11 @@ export interface ActionErrorTable {
   retentionDays?: number;
 }
 export const ActionErrorTable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(Target),
-    retentionDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ActionErrorTable",
-}) as any as S.Schema<ActionErrorTable>;
+S.Struct({
+  "target": S.optional(Target),
+  "retentionDays": S.optional(S.Number),
+}),
+).annotate({ identifier: "ActionErrorTable" }) as any as S.Schema<ActionErrorTable>;
 
 /** Definition of a SQL Data Preparation */
 export interface ActionSqlDefinition {
@@ -3914,14 +3000,12 @@ export interface ActionSqlDefinition {
   errorTable?: ActionErrorTable;
 }
 export const ActionSqlDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(S.String),
-    loadConfig: S.optional(ActionLoadConfig),
-    errorTable: S.optional(ActionErrorTable),
-  }),
-).annotate({
-  identifier: "ActionSqlDefinition",
-}) as any as S.Schema<ActionSqlDefinition>;
+S.Struct({
+  "query": S.optional(S.String),
+  "loadConfig": S.optional(ActionLoadConfig),
+  "errorTable": S.optional(ActionErrorTable),
+}),
+).annotate({ identifier: "ActionSqlDefinition" }) as any as S.Schema<ActionSqlDefinition>;
 
 /** Represents a workflow action that will run a Data Preparation. */
 export interface DataPreparationAction {
@@ -3935,15 +3019,13 @@ export interface DataPreparationAction {
   jobId?: string;
 }
 export const DataPreparationAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentsYaml: S.optional(S.String),
-    generatedSql: S.optional(S.String),
-    contentsSql: S.optional(ActionSqlDefinition),
-    jobId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DataPreparationAction",
-}) as any as S.Schema<DataPreparationAction>;
+S.Struct({
+  "contentsYaml": S.optional(S.String),
+  "generatedSql": S.optional(S.String),
+  "contentsSql": S.optional(ActionSqlDefinition),
+  "jobId": S.optional(S.String),
+}),
+).annotate({ identifier: "DataPreparationAction" }) as any as S.Schema<DataPreparationAction>;
 
 /** Represents a single action in a workflow invocation. */
 export interface WorkflowInvocationAction {
@@ -3967,26 +3049,21 @@ export interface WorkflowInvocationAction {
   internalMetadata?: string;
 }
 export const WorkflowInvocationAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notebookAction: S.optional(NotebookAction),
-    state: S.optional(WorkflowInvocationActionStateEnum),
-    failureReason: S.optional(S.String),
-    invocationTiming: S.optional(Interval),
-    target: S.optional(Target),
-    bigqueryAction: S.optional(BigQueryAction),
-    canonicalTarget: S.optional(Target),
-    dataPreparationAction: S.optional(DataPreparationAction),
-    internalMetadata: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkflowInvocationAction",
-}) as any as S.Schema<WorkflowInvocationAction>;
+S.Struct({
+  "notebookAction": S.optional(NotebookAction),
+  "state": S.optional(WorkflowInvocationActionStateEnum),
+  "failureReason": S.optional(S.String),
+  "invocationTiming": S.optional(Interval),
+  "target": S.optional(Target),
+  "bigqueryAction": S.optional(BigQueryAction),
+  "canonicalTarget": S.optional(Target),
+  "dataPreparationAction": S.optional(DataPreparationAction),
+  "internalMetadata": S.optional(S.String),
+}),
+).annotate({ identifier: "WorkflowInvocationAction" }) as any as S.Schema<WorkflowInvocationAction>;
 
-export type WorkflowInvocationActionList =
-  ReadonlyArray<WorkflowInvocationAction>;
-export const WorkflowInvocationActionList = /*@__PURE__*/ S.Array(
-  WorkflowInvocationAction,
-) as any as S.Schema<WorkflowInvocationActionList>;
+export type WorkflowInvocationActionList = ReadonlyArray<WorkflowInvocationAction>;
+export const WorkflowInvocationActionList = /*@__PURE__*/ S.Array(WorkflowInvocationAction) as any as S.Schema<WorkflowInvocationActionList>;
 
 /** `QueryWorkflowInvocationActions` response message. */
 export interface QueryWorkflowInvocationActionsResponse {
@@ -3995,15 +3072,12 @@ export interface QueryWorkflowInvocationActionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const QueryWorkflowInvocationActionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      workflowInvocationActions: S.optional(WorkflowInvocationActionList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "QueryWorkflowInvocationActionsResponse",
-}) as any as S.Schema<QueryWorkflowInvocationActionsResponse>;
+export const QueryWorkflowInvocationActionsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "workflowInvocationActions": S.optional(WorkflowInvocationActionList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "QueryWorkflowInvocationActionsResponse" }) as any as S.Schema<QueryWorkflowInvocationActionsResponse>;
 
 export interface QueryUserRootContentsProjectsLocationsRequest {
   /** Optional. Page token received from a previous `QueryUserRootContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryUserRootFolderContents`, with the exception of `page_size`, must match the call that provided the page token. */
@@ -4017,24 +3091,15 @@ export interface QueryUserRootContentsProjectsLocationsRequest {
   /** Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const QueryUserRootContentsProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      location: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+location}:queryUserRootContents",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "QueryUserRootContentsProjectsLocationsRequest",
-  }) as any as S.Schema<QueryUserRootContentsProjectsLocationsRequest>;
+export const QueryUserRootContentsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "location": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+location}:queryUserRootContents","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "QueryUserRootContentsProjectsLocationsRequest" }) as any as S.Schema<QueryUserRootContentsProjectsLocationsRequest>;
 
 /** Represents a single content entry. */
 export interface RootContentsEntry {
@@ -4044,18 +3109,14 @@ export interface RootContentsEntry {
   repository?: Repository;
 }
 export const RootContentsEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    folder: S.optional(Folder),
-    repository: S.optional(Repository),
-  }),
-).annotate({
-  identifier: "RootContentsEntry",
-}) as any as S.Schema<RootContentsEntry>;
+S.Struct({
+  "folder": S.optional(Folder),
+  "repository": S.optional(Repository),
+}),
+).annotate({ identifier: "RootContentsEntry" }) as any as S.Schema<RootContentsEntry>;
 
 export type RootContentsEntryList = ReadonlyArray<RootContentsEntry>;
-export const RootContentsEntryList = /*@__PURE__*/ S.Array(
-  RootContentsEntry,
-) as any as S.Schema<RootContentsEntryList>;
+export const RootContentsEntryList = /*@__PURE__*/ S.Array(RootContentsEntry) as any as S.Schema<RootContentsEntryList>;
 
 /** `QueryUserRootContents` response message. */
 export interface QueryUserRootContentsResponse {
@@ -4065,13 +3126,11 @@ export interface QueryUserRootContentsResponse {
   nextPageToken?: string;
 }
 export const QueryUserRootContentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(RootContentsEntryList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "QueryUserRootContentsResponse",
-}) as any as S.Schema<QueryUserRootContentsResponse>;
+S.Struct({
+  "entries": S.optional(RootContentsEntryList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "QueryUserRootContentsResponse" }) as any as S.Schema<QueryUserRootContentsResponse>;
 
 export interface ReadFileProjectsLocationsRepositoriesRequest {
   /** Optional. The commit SHA for the commit to read from. If unset, the file will be read from HEAD. */
@@ -4081,22 +3140,13 @@ export interface ReadFileProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-export const ReadFileProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      commitSha: S.optional(S.String.pipe(T.Query())),
-      path: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:readFile",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ReadFileProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<ReadFileProjectsLocationsRepositoriesRequest>;
+export const ReadFileProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "commitSha": S.optional(S.String.pipe(T.Query())),
+  "path": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:readFile","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ReadFileProjectsLocationsRepositoriesRequest" }) as any as S.Schema<ReadFileProjectsLocationsRepositoriesRequest>;
 
 /** `ReadRepositoryFile` response message. */
 export interface ReadRepositoryFileResponse {
@@ -4104,12 +3154,10 @@ export interface ReadRepositoryFileResponse {
   contents?: string;
 }
 export const ReadRepositoryFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contents: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReadRepositoryFileResponse",
-}) as any as S.Schema<ReadRepositoryFileResponse>;
+S.Struct({
+  "contents": S.optional(S.String),
+}),
+).annotate({ identifier: "ReadRepositoryFileResponse" }) as any as S.Schema<ReadRepositoryFileResponse>;
 
 export interface ReadFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
@@ -4119,22 +3167,13 @@ export interface ReadFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
 }
-export const ReadFileProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String.pipe(T.Query())),
-      revision: S.optional(S.String.pipe(T.Query())),
-      workspace: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+workspace}:readFile",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ReadFileProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<ReadFileProjectsLocationsRepositoriesWorkspacesRequest>;
+export const ReadFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "path": S.optional(S.String.pipe(T.Query())),
+  "revision": S.optional(S.String.pipe(T.Query())),
+  "workspace": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+workspace}:readFile","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ReadFileProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<ReadFileProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `ReadFile` response message. */
 export interface ReadFileResponse {
@@ -4142,12 +3181,10 @@ export interface ReadFileResponse {
   fileContents?: string;
 }
 export const ReadFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileContents: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReadFileResponse",
-}) as any as S.Schema<ReadFileResponse>;
+S.Struct({
+  "fileContents": S.optional(S.String),
+}),
+).annotate({ identifier: "ReadFileResponse" }) as any as S.Schema<ReadFileResponse>;
 
 /** `RemoveDirectory` request message. */
 export interface RemoveDirectoryRequest {
@@ -4155,12 +3192,10 @@ export interface RemoveDirectoryRequest {
   path?: string;
 }
 export const RemoveDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveDirectoryRequest",
-}) as any as S.Schema<RemoveDirectoryRequest>;
+S.Struct({
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "RemoveDirectoryRequest" }) as any as S.Schema<RemoveDirectoryRequest>;
 
 export interface RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -4168,29 +3203,18 @@ export interface RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: RemoveDirectoryRequest;
 }
-export const RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(RemoveDirectoryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+workspace}:removeDirectory",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
+export const RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "workspace": S.String.pipe(T.Label()),
+  "body": S.optional(RemoveDirectoryRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+workspace}:removeDirectory","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `RemoveDirectory` response message. */
 export interface RemoveDirectoryResponse {}
 export const RemoveDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveDirectoryResponse",
-}) as any as S.Schema<RemoveDirectoryResponse>;
+S.Struct({}),
+).annotate({ identifier: "RemoveDirectoryResponse" }) as any as S.Schema<RemoveDirectoryResponse>;
 
 /** `RemoveFile` request message. */
 export interface RemoveFileRequest {
@@ -4198,12 +3222,10 @@ export interface RemoveFileRequest {
   path?: string;
 }
 export const RemoveFileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveFileRequest",
-}) as any as S.Schema<RemoveFileRequest>;
+S.Struct({
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "RemoveFileRequest" }) as any as S.Schema<RemoveFileRequest>;
 
 export interface RemoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -4211,29 +3233,18 @@ export interface RemoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: RemoveFileRequest;
 }
-export const RemoveFileProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(RemoveFileRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+workspace}:removeFile",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemoveFileProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<RemoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
+export const RemoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "workspace": S.String.pipe(T.Label()),
+  "body": S.optional(RemoveFileRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+workspace}:removeFile","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "RemoveFileProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<RemoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `RemoveFile` response message. */
 export interface RemoveFileResponse {}
 export const RemoveFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveFileResponse",
-}) as any as S.Schema<RemoveFileResponse>;
+S.Struct({}),
+).annotate({ identifier: "RemoveFileResponse" }) as any as S.Schema<RemoveFileResponse>;
 
 /** `ResetWorkspaceChanges` request message. */
 export interface ResetWorkspaceChangesRequest {
@@ -4243,13 +3254,11 @@ export interface ResetWorkspaceChangesRequest {
   paths?: StringList;
 }
 export const ResetWorkspaceChangesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clean: S.optional(S.Boolean),
-    paths: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ResetWorkspaceChangesRequest",
-}) as any as S.Schema<ResetWorkspaceChangesRequest>;
+S.Struct({
+  "clean": S.optional(S.Boolean),
+  "paths": S.optional(StringList),
+}),
+).annotate({ identifier: "ResetWorkspaceChangesRequest" }) as any as S.Schema<ResetWorkspaceChangesRequest>;
 
 export interface ResetProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -4257,29 +3266,18 @@ export interface ResetProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: ResetWorkspaceChangesRequest;
 }
-export const ResetProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ResetWorkspaceChangesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:reset",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ResetProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<ResetProjectsLocationsRepositoriesWorkspacesRequest>;
+export const ResetProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(ResetWorkspaceChangesRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:reset","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "ResetProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<ResetProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `ResetWorkspaceChanges` response message. */
 export interface ResetWorkspaceChangesResponse {}
 export const ResetWorkspaceChangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetWorkspaceChangesResponse",
-}) as any as S.Schema<ResetWorkspaceChangesResponse>;
+S.Struct({}),
+).annotate({ identifier: "ResetWorkspaceChangesResponse" }) as any as S.Schema<ResetWorkspaceChangesResponse>;
 
 export interface SearchFilesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Maximum number of search results to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
@@ -4291,23 +3289,14 @@ export interface SearchFilesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Optional filter for the returned list in filtering format. Filtering is only currently supported on the `path` field. See https://google.aip.dev/160 for details. */
   filter?: string;
 }
-export const SearchFilesProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      workspace: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+workspace}:searchFiles",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchFilesProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<SearchFilesProjectsLocationsRepositoriesWorkspacesRequest>;
+export const SearchFilesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "workspace": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+workspace}:searchFiles","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "SearchFilesProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<SearchFilesProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** Client-facing representation of a directory entry in search results. */
 export interface DirectorySearchResult {
@@ -4315,12 +3304,10 @@ export interface DirectorySearchResult {
   path?: string;
 }
 export const DirectorySearchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DirectorySearchResult",
-}) as any as S.Schema<DirectorySearchResult>;
+S.Struct({
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "DirectorySearchResult" }) as any as S.Schema<DirectorySearchResult>;
 
 /** Client-facing representation of a file entry in search results. */
 export interface FileSearchResult {
@@ -4328,12 +3315,10 @@ export interface FileSearchResult {
   path?: string;
 }
 export const FileSearchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FileSearchResult",
-}) as any as S.Schema<FileSearchResult>;
+S.Struct({
+  "path": S.optional(S.String),
+}),
+).annotate({ identifier: "FileSearchResult" }) as any as S.Schema<FileSearchResult>;
 
 /** Client-facing representation of a search result entry. */
 export interface SearchResult {
@@ -4343,16 +3328,14 @@ export interface SearchResult {
   file?: FileSearchResult;
 }
 export const SearchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    directory: S.optional(DirectorySearchResult),
-    file: S.optional(FileSearchResult),
-  }),
+S.Struct({
+  "directory": S.optional(DirectorySearchResult),
+  "file": S.optional(FileSearchResult),
+}),
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
 export type SearchResultList = ReadonlyArray<SearchResult>;
-export const SearchResultList = /*@__PURE__*/ S.Array(
-  SearchResult,
-) as any as S.Schema<SearchResultList>;
+export const SearchResultList = /*@__PURE__*/ S.Array(SearchResult) as any as S.Schema<SearchResultList>;
 
 /** Client-facing representation of a file search response. */
 export interface SearchFilesResponse {
@@ -4362,13 +3345,11 @@ export interface SearchFilesResponse {
   nextPageToken?: string;
 }
 export const SearchFilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    searchResults: S.optional(SearchResultList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchFilesResponse",
-}) as any as S.Schema<SearchFilesResponse>;
+S.Struct({
+  "searchResults": S.optional(SearchResultList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "SearchFilesResponse" }) as any as S.Schema<SearchFilesResponse>;
 
 export interface SearchProjectsLocationsTeamFoldersRequest {
   /** Optional. Field to additionally sort results by. Supported keywords: `display_name` (default), `create_time`, `last_modified_time`. Examples: * `orderBy="display_name"` * `orderBy="display_name desc"` */
@@ -4382,24 +3363,15 @@ export interface SearchProjectsLocationsTeamFoldersRequest {
   /** Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: * `filter="display_name="MyFolder""` */
   filter?: string;
 }
-export const SearchProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      location: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+location}/teamFolders:search",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchProjectsLocationsTeamFoldersRequest",
-  }) as any as S.Schema<SearchProjectsLocationsTeamFoldersRequest>;
+export const SearchProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "location": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+location}/teamFolders:search","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "SearchProjectsLocationsTeamFoldersRequest" }) as any as S.Schema<SearchProjectsLocationsTeamFoldersRequest>;
 
 /** Represents a single content entry. */
 export interface TeamFolderSearchResult {
@@ -4407,17 +3379,13 @@ export interface TeamFolderSearchResult {
   teamFolder?: TeamFolder;
 }
 export const TeamFolderSearchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    teamFolder: S.optional(TeamFolder),
-  }),
-).annotate({
-  identifier: "TeamFolderSearchResult",
-}) as any as S.Schema<TeamFolderSearchResult>;
+S.Struct({
+  "teamFolder": S.optional(TeamFolder),
+}),
+).annotate({ identifier: "TeamFolderSearchResult" }) as any as S.Schema<TeamFolderSearchResult>;
 
 export type TeamFolderSearchResultList = ReadonlyArray<TeamFolderSearchResult>;
-export const TeamFolderSearchResultList = /*@__PURE__*/ S.Array(
-  TeamFolderSearchResult,
-) as any as S.Schema<TeamFolderSearchResultList>;
+export const TeamFolderSearchResultList = /*@__PURE__*/ S.Array(TeamFolderSearchResult) as any as S.Schema<TeamFolderSearchResultList>;
 
 /** `SearchTeamFolders` response message. */
 export interface SearchTeamFoldersResponse {
@@ -4427,13 +3395,11 @@ export interface SearchTeamFoldersResponse {
   results?: TeamFolderSearchResultList;
 }
 export const SearchTeamFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    results: S.optional(TeamFolderSearchResultList),
-  }),
-).annotate({
-  identifier: "SearchTeamFoldersResponse",
-}) as any as S.Schema<SearchTeamFoldersResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "results": S.optional(TeamFolderSearchResultList),
+}),
+).annotate({ identifier: "SearchTeamFoldersResponse" }) as any as S.Schema<SearchTeamFoldersResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -4441,12 +3407,10 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsFoldersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4454,21 +3418,12 @@ export interface SetIamPolicyProjectsLocationsFoldersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsFoldersRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsFoldersRequest>;
+export const SetIamPolicyProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsFoldersRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsFoldersRequest>;
 
 export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4476,21 +3431,12 @@ export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
+export const SetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsRepositoriesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 export interface SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4498,21 +3444,12 @@ export interface SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
+export const SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export interface SetIamPolicyProjectsLocationsTeamFoldersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4520,21 +3457,12 @@ export interface SetIamPolicyProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsTeamFoldersRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsTeamFoldersRequest>;
+export const SetIamPolicyProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsTeamFoldersRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsTeamFoldersRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -4542,12 +3470,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsFoldersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4555,21 +3481,12 @@ export interface TestIamPermissionsProjectsLocationsFoldersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsFoldersRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsFoldersRequest>;
+export const TestIamPermissionsProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsFoldersRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsFoldersRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -4577,12 +3494,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4590,21 +3505,12 @@ export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsRepositoriesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
+export const TestIamPermissionsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsRepositoriesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
 
 export interface TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4612,22 +3518,12 @@ export interface TestIamPermissionsProjectsLocationsRepositoriesWorkspacesReques
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest>;
+export const TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export interface TestIamPermissionsProjectsLocationsTeamFoldersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4635,21 +3531,12 @@ export interface TestIamPermissionsProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsTeamFoldersRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsTeamFoldersRequest>;
+export const TestIamPermissionsProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsTeamFoldersRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsTeamFoldersRequest>;
 
 export interface UpdateConfigProjectsLocationsRequest {
   /** Identifier. The config name. */
@@ -4659,22 +3546,13 @@ export interface UpdateConfigProjectsLocationsRequest {
   /** Request body */
   body?: Config;
 }
-export const UpdateConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Config.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateConfigProjectsLocationsRequest",
-}) as any as S.Schema<UpdateConfigProjectsLocationsRequest>;
+export const UpdateConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Config.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "UpdateConfigProjectsLocationsRequest" }) as any as S.Schema<UpdateConfigProjectsLocationsRequest>;
 
 /** `WriteFile` request message. */
 export interface WriteFileRequest {
@@ -4684,13 +3562,11 @@ export interface WriteFileRequest {
   contents?: string;
 }
 export const WriteFileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    contents: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WriteFileRequest",
-}) as any as S.Schema<WriteFileRequest>;
+S.Struct({
+  "path": S.optional(S.String),
+  "contents": S.optional(S.String),
+}),
+).annotate({ identifier: "WriteFileRequest" }) as any as S.Schema<WriteFileRequest>;
 
 export interface WriteFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -4698,36 +3574,20 @@ export interface WriteFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: WriteFileRequest;
 }
-export const WriteFileProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(WriteFileRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+workspace}:writeFile",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "WriteFileProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<WriteFileProjectsLocationsRepositoriesWorkspacesRequest>;
+export const WriteFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "workspace": S.String.pipe(T.Label()),
+  "body": S.optional(WriteFileRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+workspace}:writeFile","baseUrl":"https://dataform.googleapis.com/"})),
+).annotate({ identifier: "WriteFileProjectsLocationsRepositoriesWorkspacesRequest" }) as any as S.Schema<WriteFileProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `WriteFile` response message. */
 export interface WriteFileResponse {}
 export const WriteFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WriteFileResponse",
-}) as any as S.Schema<WriteFileResponse>;
+S.Struct({}),
+).annotate({ identifier: "WriteFileResponse" }) as any as S.Schema<WriteFileResponse>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -4742,12 +3602,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsRepositoriesWorkflowInvocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsRepositoriesWorkflowInvocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Requests cancellation of a running WorkflowInvocation. */
 export const cancelProjectsLocationsRepositoriesWorkflowInvocations: API.OperationMethod<
   CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest,
@@ -4762,12 +3617,7 @@ export const cancelProjectsLocationsRepositoriesWorkflowInvocations: API.Operati
   retry: Retry.Retry,
 }));
 
-export type CommitProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CommitProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Applies a Git commit to a Repository. The Repository must not have a value for `git_remote_settings.url`. */
 export const commitProjectsLocationsRepositories: API.OperationMethod<
   CommitProjectsLocationsRepositoriesRequest,
@@ -4782,12 +3632,7 @@ export const commitProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CommitProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CommitProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Applies a Git commit for uncommitted files in a Workspace. */
 export const commitProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   CommitProjectsLocationsRepositoriesWorkspacesRequest,
@@ -4802,10 +3647,7 @@ export const commitProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ComputeAccessTokenStatusProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ComputeAccessTokenStatusProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Computes a Repository's Git access token status. */
 export const computeAccessTokenStatusProjectsLocationsRepositories: API.OperationMethod<
   ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest,
@@ -4820,12 +3662,7 @@ export const computeAccessTokenStatusProjectsLocationsRepositories: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Folder in a given project and location. */
 export const createProjectsLocationsFolders: API.OperationMethod<
   CreateProjectsLocationsFoldersRequest,
@@ -4840,12 +3677,7 @@ export const createProjectsLocationsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Repository in a given project and location. */
 export const createProjectsLocationsRepositories: API.OperationMethod<
   CreateProjectsLocationsRepositoriesRequest,
@@ -4860,12 +3692,7 @@ export const createProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesCompilationResultsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesCompilationResultsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new CompilationResult in a given project and location. */
 export const createProjectsLocationsRepositoriesCompilationResults: API.OperationMethod<
   CreateProjectsLocationsRepositoriesCompilationResultsRequest,
@@ -4880,12 +3707,7 @@ export const createProjectsLocationsRepositoriesCompilationResults: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesReleaseConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesReleaseConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new ReleaseConfig in a given Repository. */
 export const createProjectsLocationsRepositoriesReleaseConfigs: API.OperationMethod<
   CreateProjectsLocationsRepositoriesReleaseConfigsRequest,
@@ -4900,12 +3722,7 @@ export const createProjectsLocationsRepositoriesReleaseConfigs: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesWorkflowConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesWorkflowConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new WorkflowConfig in a given Repository. */
 export const createProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMethod<
   CreateProjectsLocationsRepositoriesWorkflowConfigsRequest,
@@ -4920,12 +3737,7 @@ export const createProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesWorkflowInvocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesWorkflowInvocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new WorkflowInvocation in a given Repository. */
 export const createProjectsLocationsRepositoriesWorkflowInvocations: API.OperationMethod<
   CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest,
@@ -4940,12 +3752,7 @@ export const createProjectsLocationsRepositoriesWorkflowInvocations: API.Operati
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new Workspace in a given Repository. */
 export const createProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   CreateProjectsLocationsRepositoriesWorkspacesRequest,
@@ -4960,12 +3767,7 @@ export const createProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsTeamFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsTeamFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new TeamFolder in a given project and location. */
 export const createProjectsLocationsTeamFolders: API.OperationMethod<
   CreateProjectsLocationsTeamFoldersRequest,
@@ -4980,12 +3782,7 @@ export const createProjectsLocationsTeamFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLongRunningProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteLongRunningProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single repository asynchronously. */
 export const deleteLongRunningProjectsLocationsRepositories: API.OperationMethod<
   DeleteLongRunningProjectsLocationsRepositoriesRequest,
@@ -5000,12 +3797,7 @@ export const deleteLongRunningProjectsLocationsRepositories: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Folder. */
 export const deleteProjectsLocationsFolders: API.OperationMethod<
   DeleteProjectsLocationsFoldersRequest,
@@ -5020,12 +3812,7 @@ export const deleteProjectsLocationsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -5040,12 +3827,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Repository. */
 export const deleteProjectsLocationsRepositories: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesRequest,
@@ -5060,12 +3842,7 @@ export const deleteProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesReleaseConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesReleaseConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single ReleaseConfig. */
 export const deleteProjectsLocationsRepositoriesReleaseConfigs: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesReleaseConfigsRequest,
@@ -5080,12 +3857,7 @@ export const deleteProjectsLocationsRepositoriesReleaseConfigs: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesWorkflowConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesWorkflowConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single WorkflowConfig. */
 export const deleteProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest,
@@ -5100,12 +3872,7 @@ export const deleteProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesWorkflowInvocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesWorkflowInvocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single WorkflowInvocation. */
 export const deleteProjectsLocationsRepositoriesWorkflowInvocations: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest,
@@ -5120,12 +3887,7 @@ export const deleteProjectsLocationsRepositoriesWorkflowInvocations: API.Operati
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single Workspace. */
 export const deleteProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5140,12 +3902,7 @@ export const deleteProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTeamFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsTeamFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single TeamFolder. */
 export const deleteProjectsLocationsTeamFolders: API.OperationMethod<
   DeleteProjectsLocationsTeamFoldersRequest,
@@ -5160,12 +3917,7 @@ export const deleteProjectsLocationsTeamFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteTreeProjectsLocationsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteTreeProjectsLocationsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a Folder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs). */
 export const deleteTreeProjectsLocationsFolders: API.OperationMethod<
   DeleteTreeProjectsLocationsFoldersRequest,
@@ -5180,12 +3932,7 @@ export const deleteTreeProjectsLocationsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteTreeProjectsLocationsTeamFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteTreeProjectsLocationsTeamFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a TeamFolder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs). */
 export const deleteTreeProjectsLocationsTeamFolders: API.OperationMethod<
   DeleteTreeProjectsLocationsTeamFoldersRequest,
@@ -5200,10 +3947,7 @@ export const deleteTreeProjectsLocationsTeamFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FetchFileDiffProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchFileDiffProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | GcpOpError;
 /** Fetches Git diff for an uncommitted file in a Workspace. */
 export const fetchFileDiffProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5218,10 +3962,7 @@ export const fetchFileDiffProjectsLocationsRepositoriesWorkspaces: API.Operation
   retry: Retry.Retry,
 }));
 
-export type FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | GcpOpError;
 /** Fetches Git statuses for the files in a Workspace. */
 export const fetchFileGitStatusesProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5236,10 +3977,7 @@ export const fetchFileGitStatusesProjectsLocationsRepositoriesWorkspaces: API.Op
   retry: Retry.Retry,
 }));
 
-export type FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | GcpOpError;
 /** Fetches Git ahead/behind against a remote branch. */
 export const fetchGitAheadBehindProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5254,10 +3992,7 @@ export const fetchGitAheadBehindProjectsLocationsRepositoriesWorkspaces: API.Ope
   retry: Retry.Retry,
 }));
 
-export type FetchHistoryProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchHistoryProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Fetches a Repository's history of commits. The Repository must not have a value for `git_remote_settings.url`. */
 export const fetchHistoryProjectsLocationsRepositories: API.PaginatedOperationMethod<
   FetchHistoryProjectsLocationsRepositoriesRequest,
@@ -5270,16 +4005,10 @@ export const fetchHistoryProjectsLocationsRepositories: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type FetchRemoteBranchesProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type FetchRemoteBranchesProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Fetches a Repository's remote branches. */
 export const fetchRemoteBranchesProjectsLocationsRepositories: API.OperationMethod<
   FetchRemoteBranchesProjectsLocationsRepositoriesRequest,
@@ -5309,10 +4038,7 @@ export const getConfigProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsFoldersError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsFolders: API.OperationMethod<
   GetIamPolicyProjectsLocationsFoldersRequest,
@@ -5327,10 +4053,7 @@ export const getIamPolicyProjectsLocationsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   GetIamPolicyProjectsLocationsRepositoriesRequest,
@@ -5345,10 +4068,7 @@ export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5363,10 +4083,7 @@ export const getIamPolicyProjectsLocationsRepositoriesWorkspaces: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsTeamFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsTeamFoldersError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsTeamFolders: API.OperationMethod<
   GetIamPolicyProjectsLocationsTeamFoldersRequest,
@@ -5396,10 +4113,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsFoldersError = NotFound | Forbidden | GcpOpError;
 /** Fetches a single Folder. */
 export const getProjectsLocationsFolders: API.OperationMethod<
   GetProjectsLocationsFoldersRequest,
@@ -5414,10 +4128,7 @@ export const getProjectsLocationsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -5432,10 +4143,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Fetches a single Repository. */
 export const getProjectsLocationsRepositories: API.OperationMethod<
   GetProjectsLocationsRepositoriesRequest,
@@ -5450,10 +4158,7 @@ export const getProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesCompilationResultsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesCompilationResultsError = NotFound | Forbidden | GcpOpError;
 /** Fetches a single CompilationResult. */
 export const getProjectsLocationsRepositoriesCompilationResults: API.OperationMethod<
   GetProjectsLocationsRepositoriesCompilationResultsRequest,
@@ -5468,10 +4173,7 @@ export const getProjectsLocationsRepositoriesCompilationResults: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesReleaseConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesReleaseConfigsError = NotFound | Forbidden | GcpOpError;
 /** Fetches a single ReleaseConfig. */
 export const getProjectsLocationsRepositoriesReleaseConfigs: API.OperationMethod<
   GetProjectsLocationsRepositoriesReleaseConfigsRequest,
@@ -5486,10 +4188,7 @@ export const getProjectsLocationsRepositoriesReleaseConfigs: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesWorkflowConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesWorkflowConfigsError = NotFound | Forbidden | GcpOpError;
 /** Fetches a single WorkflowConfig. */
 export const getProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMethod<
   GetProjectsLocationsRepositoriesWorkflowConfigsRequest,
@@ -5504,10 +4203,7 @@ export const getProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesWorkflowInvocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesWorkflowInvocationsError = NotFound | Forbidden | GcpOpError;
 /** Fetches a single WorkflowInvocation. */
 export const getProjectsLocationsRepositoriesWorkflowInvocations: API.OperationMethod<
   GetProjectsLocationsRepositoriesWorkflowInvocationsRequest,
@@ -5522,10 +4218,7 @@ export const getProjectsLocationsRepositoriesWorkflowInvocations: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | GcpOpError;
 /** Fetches a single Workspace. */
 export const getProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   GetProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5540,10 +4233,7 @@ export const getProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTeamFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsTeamFoldersError = NotFound | Forbidden | GcpOpError;
 /** Fetches a single TeamFolder. */
 export const getProjectsLocationsTeamFolders: API.OperationMethod<
   GetProjectsLocationsTeamFoldersRequest,
@@ -5558,12 +4248,7 @@ export const getProjectsLocationsTeamFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Installs dependency NPM packages (inside a Workspace). */
 export const installNpmPackagesProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5591,16 +4276,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -5613,16 +4292,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Lists Repositories in a given project and location. **Note:** *This method can return repositories not shown in the [Dataform UI](https://console.cloud.google.com/bigquery/dataform)*. */
 export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesRequest,
@@ -5635,16 +4308,10 @@ export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesCompilationResultsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesCompilationResultsError = NotFound | Forbidden | GcpOpError;
 /** Lists CompilationResults in a given Repository. */
 export const listProjectsLocationsRepositoriesCompilationResults: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesCompilationResultsRequest,
@@ -5657,16 +4324,10 @@ export const listProjectsLocationsRepositoriesCompilationResults: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesReleaseConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesReleaseConfigsError = NotFound | Forbidden | GcpOpError;
 /** Lists ReleaseConfigs in a given Repository. */
 export const listProjectsLocationsRepositoriesReleaseConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesReleaseConfigsRequest,
@@ -5679,16 +4340,10 @@ export const listProjectsLocationsRepositoriesReleaseConfigs: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesWorkflowConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesWorkflowConfigsError = NotFound | Forbidden | GcpOpError;
 /** Lists WorkflowConfigs in a given Repository. */
 export const listProjectsLocationsRepositoriesWorkflowConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesWorkflowConfigsRequest,
@@ -5701,16 +4356,10 @@ export const listProjectsLocationsRepositoriesWorkflowConfigs: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesWorkflowInvocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesWorkflowInvocationsError = NotFound | Forbidden | GcpOpError;
 /** Lists WorkflowInvocations in a given Repository. */
 export const listProjectsLocationsRepositoriesWorkflowInvocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesWorkflowInvocationsRequest,
@@ -5723,16 +4372,10 @@ export const listProjectsLocationsRepositoriesWorkflowInvocations: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | GcpOpError;
 /** Lists Workspaces in a given Repository. */
 export const listProjectsLocationsRepositoriesWorkspaces: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5745,18 +4388,10 @@ export const listProjectsLocationsRepositoriesWorkspaces: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type MakeDirectoryProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MakeDirectoryProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a directory inside a Workspace. */
 export const makeDirectoryProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5771,12 +4406,7 @@ export const makeDirectoryProjectsLocationsRepositoriesWorkspaces: API.Operation
   retry: Retry.Retry,
 }));
 
-export type MoveDirectoryProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MoveDirectoryProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Moves a directory (inside a Workspace), and all of its contents, to a new location. */
 export const moveDirectoryProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5791,12 +4421,7 @@ export const moveDirectoryProjectsLocationsRepositoriesWorkspaces: API.Operation
   retry: Retry.Retry,
 }));
 
-export type MoveFileProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MoveFileProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Moves a file (inside a Workspace) to a new location. */
 export const moveFileProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   MoveFileProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5811,12 +4436,7 @@ export const moveFileProjectsLocationsRepositoriesWorkspaces: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type MoveProjectsLocationsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MoveProjectsLocationsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Moves a Folder to a new Folder, TeamFolder, or the root location. */
 export const moveProjectsLocationsFolders: API.OperationMethod<
   MoveProjectsLocationsFoldersRequest,
@@ -5831,12 +4451,7 @@ export const moveProjectsLocationsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MoveProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Moves a Repository to a new location. */
 export const moveProjectsLocationsRepositories: API.OperationMethod<
   MoveProjectsLocationsRepositoriesRequest,
@@ -5851,12 +4466,7 @@ export const moveProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a single Folder. */
 export const patchProjectsLocationsFolders: API.OperationMethod<
   PatchProjectsLocationsFoldersRequest,
@@ -5871,12 +4481,7 @@ export const patchProjectsLocationsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a single Repository. **Note:** *This method does not fully implement [AIP/134](https://google.aip.dev/134). The wildcard entry (\*) is treated as a bad request, and when the `field_mask` is omitted, the request is treated as a full update on all modifiable fields.* */
 export const patchProjectsLocationsRepositories: API.OperationMethod<
   PatchProjectsLocationsRepositoriesRequest,
@@ -5891,12 +4496,7 @@ export const patchProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesReleaseConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesReleaseConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a single ReleaseConfig. **Note:** *This method does not fully implement [AIP/134](https://google.aip.dev/134). The wildcard entry (\*) is treated as a bad request, and when the `field_mask` is omitted, the request is treated as a full update on all modifiable fields.* */
 export const patchProjectsLocationsRepositoriesReleaseConfigs: API.OperationMethod<
   PatchProjectsLocationsRepositoriesReleaseConfigsRequest,
@@ -5911,12 +4511,7 @@ export const patchProjectsLocationsRepositoriesReleaseConfigs: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRepositoriesWorkflowConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsRepositoriesWorkflowConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a single WorkflowConfig. **Note:** *This method does not fully implement [AIP/134](https://google.aip.dev/134). The wildcard entry (\*) is treated as a bad request, and when the `field_mask` is omitted, the request is treated as a full update on all modifiable fields.* */
 export const patchProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMethod<
   PatchProjectsLocationsRepositoriesWorkflowConfigsRequest,
@@ -5931,12 +4526,7 @@ export const patchProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsTeamFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsTeamFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a single TeamFolder. */
 export const patchProjectsLocationsTeamFolders: API.OperationMethod<
   PatchProjectsLocationsTeamFoldersRequest,
@@ -5951,12 +4541,7 @@ export const patchProjectsLocationsTeamFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PullProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PullProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Pulls Git commits from the Repository's remote into a Workspace. */
 export const pullProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   PullProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5971,12 +4556,7 @@ export const pullProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PushProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PushProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Pushes Git commits from a Workspace to the Repository's remote. */
 export const pushProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   PushProjectsLocationsRepositoriesWorkspacesRequest,
@@ -5991,10 +4571,7 @@ export const pushProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryContentsProjectsLocationsTeamFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type QueryContentsProjectsLocationsTeamFoldersError = NotFound | Forbidden | GcpOpError;
 /** Returns the contents of a given TeamFolder. */
 export const queryContentsProjectsLocationsTeamFolders: API.PaginatedOperationMethod<
   QueryContentsProjectsLocationsTeamFoldersRequest,
@@ -6007,16 +4584,10 @@ export const queryContentsProjectsLocationsTeamFolders: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type QueryDirectoryContentsProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type QueryDirectoryContentsProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Returns the contents of a given Repository directory. The Repository must not have a value for `git_remote_settings.url`. */
 export const queryDirectoryContentsProjectsLocationsRepositories: API.PaginatedOperationMethod<
   QueryDirectoryContentsProjectsLocationsRepositoriesRequest,
@@ -6029,14 +4600,10 @@ export const queryDirectoryContentsProjectsLocationsRepositories: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesError =
-  NotFound | Forbidden | GcpOpError;
+export type QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | GcpOpError;
 /** Returns the contents of a given Workspace directory. */
 export const queryDirectoryContentsProjectsLocationsRepositoriesWorkspaces: API.PaginatedOperationMethod<
   QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest,
@@ -6049,16 +4616,10 @@ export const queryDirectoryContentsProjectsLocationsRepositoriesWorkspaces: API.
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type QueryFolderContentsProjectsLocationsFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type QueryFolderContentsProjectsLocationsFoldersError = NotFound | Forbidden | GcpOpError;
 /** Returns the contents of a given Folder. */
 export const queryFolderContentsProjectsLocationsFolders: API.PaginatedOperationMethod<
   QueryFolderContentsProjectsLocationsFoldersRequest,
@@ -6071,16 +4632,10 @@ export const queryFolderContentsProjectsLocationsFolders: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type QueryProjectsLocationsRepositoriesCompilationResultsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type QueryProjectsLocationsRepositoriesCompilationResultsError = NotFound | Forbidden | GcpOpError;
 /** Returns CompilationResultActions in a given CompilationResult. */
 export const queryProjectsLocationsRepositoriesCompilationResults: API.PaginatedOperationMethod<
   QueryProjectsLocationsRepositoriesCompilationResultsRequest,
@@ -6093,16 +4648,10 @@ export const queryProjectsLocationsRepositoriesCompilationResults: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type QueryProjectsLocationsRepositoriesWorkflowInvocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type QueryProjectsLocationsRepositoriesWorkflowInvocationsError = NotFound | Forbidden | GcpOpError;
 /** Returns WorkflowInvocationActions in a given WorkflowInvocation. */
 export const queryProjectsLocationsRepositoriesWorkflowInvocations: API.PaginatedOperationMethod<
   QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest,
@@ -6115,16 +4664,10 @@ export const queryProjectsLocationsRepositoriesWorkflowInvocations: API.Paginate
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type QueryUserRootContentsProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type QueryUserRootContentsProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Returns the contents of a caller's root folder in a given location. The root folder contains all resources that are created by the user and not contained in any other folder. */
 export const queryUserRootContentsProjectsLocations: API.PaginatedOperationMethod<
   QueryUserRootContentsProjectsLocationsRequest,
@@ -6137,16 +4680,10 @@ export const queryUserRootContentsProjectsLocations: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ReadFileProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ReadFileProjectsLocationsRepositoriesError = NotFound | Forbidden | GcpOpError;
 /** Returns the contents of a file (inside a Repository). The Repository must not have a value for `git_remote_settings.url`. */
 export const readFileProjectsLocationsRepositories: API.OperationMethod<
   ReadFileProjectsLocationsRepositoriesRequest,
@@ -6161,10 +4698,7 @@ export const readFileProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReadFileProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ReadFileProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | GcpOpError;
 /** Returns the contents of a file (inside a Workspace). */
 export const readFileProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   ReadFileProjectsLocationsRepositoriesWorkspacesRequest,
@@ -6179,12 +4713,7 @@ export const readFileProjectsLocationsRepositoriesWorkspaces: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type RemoveDirectoryProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemoveDirectoryProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a directory (inside a Workspace) and all of its contents. */
 export const removeDirectoryProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest,
@@ -6199,12 +4728,7 @@ export const removeDirectoryProjectsLocationsRepositoriesWorkspaces: API.Operati
   retry: Retry.Retry,
 }));
 
-export type RemoveFileProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RemoveFileProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a file (inside a Workspace). */
 export const removeFileProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   RemoveFileProjectsLocationsRepositoriesWorkspacesRequest,
@@ -6219,12 +4743,7 @@ export const removeFileProjectsLocationsRepositoriesWorkspaces: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type ResetProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ResetProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Performs a Git reset for uncommitted files in a Workspace. */
 export const resetProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   ResetProjectsLocationsRepositoriesWorkspacesRequest,
@@ -6239,10 +4758,7 @@ export const resetProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchFilesProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchFilesProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | GcpOpError;
 /** Finds the contents of a given Workspace directory by filter. */
 export const searchFilesProjectsLocationsRepositoriesWorkspaces: API.PaginatedOperationMethod<
   SearchFilesProjectsLocationsRepositoriesWorkspacesRequest,
@@ -6255,16 +4771,10 @@ export const searchFilesProjectsLocationsRepositoriesWorkspaces: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SearchProjectsLocationsTeamFoldersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type SearchProjectsLocationsTeamFoldersError = NotFound | Forbidden | GcpOpError;
 /** Returns all TeamFolders in a given location that the caller has access to and match the provided filter. */
 export const searchProjectsLocationsTeamFolders: API.PaginatedOperationMethod<
   SearchProjectsLocationsTeamFoldersRequest,
@@ -6277,18 +4787,10 @@ export const searchProjectsLocationsTeamFolders: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type SetIamPolicyProjectsLocationsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsFolders: API.OperationMethod<
   SetIamPolicyProjectsLocationsFoldersRequest,
@@ -6303,12 +4805,7 @@ export const setIamPolicyProjectsLocationsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   SetIamPolicyProjectsLocationsRepositoriesRequest,
@@ -6323,12 +4820,7 @@ export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest,
@@ -6343,12 +4835,7 @@ export const setIamPolicyProjectsLocationsRepositoriesWorkspaces: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsTeamFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsTeamFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsTeamFolders: API.OperationMethod<
   SetIamPolicyProjectsLocationsTeamFoldersRequest,
@@ -6363,12 +4850,7 @@ export const setIamPolicyProjectsLocationsTeamFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsFolders: API.OperationMethod<
   TestIamPermissionsProjectsLocationsFoldersRequest,
@@ -6383,12 +4865,7 @@ export const testIamPermissionsProjectsLocationsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsRepositoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsRepositories: API.OperationMethod<
   TestIamPermissionsProjectsLocationsRepositoriesRequest,
@@ -6403,12 +4880,7 @@ export const testIamPermissionsProjectsLocationsRepositories: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest,
@@ -6423,12 +4895,7 @@ export const testIamPermissionsProjectsLocationsRepositoriesWorkspaces: API.Oper
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsTeamFoldersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsTeamFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsTeamFolders: API.OperationMethod<
   TestIamPermissionsProjectsLocationsTeamFoldersRequest,
@@ -6443,12 +4910,7 @@ export const testIamPermissionsProjectsLocationsTeamFolders: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type UpdateConfigProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateConfigProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Update default config for a given project and location. **Note:** *This method does not fully implement [AIP/134](https://google.aip.dev/134). The wildcard entry (\*) is treated as a bad request, and when the `field_mask` is omitted, the request is treated as a full update on all modifiable fields.* */
 export const updateConfigProjectsLocations: API.OperationMethod<
   UpdateConfigProjectsLocationsRequest,
@@ -6463,12 +4925,7 @@ export const updateConfigProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WriteFileProjectsLocationsRepositoriesWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WriteFileProjectsLocationsRepositoriesWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Writes to a file (inside a Workspace). */
 export const writeFileProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   WriteFileProjectsLocationsRepositoriesWorkspacesRequest,
@@ -6482,3 +4939,4 @@ export const writeFileProjectsLocationsRepositoriesWorkspaces: API.OperationMeth
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

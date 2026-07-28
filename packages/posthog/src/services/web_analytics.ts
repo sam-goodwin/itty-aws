@@ -36,7 +36,7 @@ export const WebAnalyticsRecapRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAnalyticsRecapRequest>;
 
 /** * `Up` - Up * `Down` - Down */
-export type WoWChangeDirectionEnum = "Up" | "Down" | (string & {});
+export type WoWChangeDirectionEnum = "Up" | "Down";
 export const WoWChangeDirectionEnum = /*@__PURE__*/ S.String;
 
 export interface WoWChange {

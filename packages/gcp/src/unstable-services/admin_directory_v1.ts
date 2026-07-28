@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Data about an update to the status of a Chrome OS device. */
@@ -68,13 +68,11 @@ export interface ChromeOsDeviceAction {
   deprovisionReason?: string;
 }
 export const ChromeOsDeviceAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(S.String),
-    deprovisionReason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChromeOsDeviceAction",
-}) as any as S.Schema<ChromeOsDeviceAction>;
+S.Struct({
+  "action": S.optional(S.String),
+  "deprovisionReason": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceAction" }) as any as S.Schema<ChromeOsDeviceAction>;
 
 export interface ActionChromeosdevicesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
@@ -85,39 +83,27 @@ export interface ActionChromeosdevicesRequest {
   body?: ChromeOsDeviceAction;
 }
 export const ActionChromeosdevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    resourceId: S.String.pipe(T.Label()),
-    body: S.optional(ChromeOsDeviceAction.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/{resourceId}/action",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ActionChromeosdevicesRequest",
-}) as any as S.Schema<ActionChromeosdevicesRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "resourceId": S.String.pipe(T.Label()),
+  "body": S.optional(ChromeOsDeviceAction.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customerId}/devices/chromeos/{resourceId}/action","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ActionChromeosdevicesRequest" }) as any as S.Schema<ActionChromeosdevicesRequest>;
 
 export interface ActionChromeosdevicesResponse {}
 export const ActionChromeosdevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ActionChromeosdevicesResponse",
-}) as any as S.Schema<ActionChromeosdevicesResponse>;
+S.Struct({}),
+).annotate({ identifier: "ActionChromeosdevicesResponse" }) as any as S.Schema<ActionChromeosdevicesResponse>;
 
 export interface MobileDeviceAction {
   /** The action to be performed on the device. */
   action?: string;
 }
 export const MobileDeviceAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MobileDeviceAction",
-}) as any as S.Schema<MobileDeviceAction>;
+S.Struct({
+  "action": S.optional(S.String),
+}),
+).annotate({ identifier: "MobileDeviceAction" }) as any as S.Schema<MobileDeviceAction>;
 
 export interface ActionMobiledevicesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
@@ -128,81 +114,43 @@ export interface ActionMobiledevicesRequest {
   body?: MobileDeviceAction;
 }
 export const ActionMobiledevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    resourceId: S.String.pipe(T.Label()),
-    body: S.optional(MobileDeviceAction.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}/action",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ActionMobiledevicesRequest",
-}) as any as S.Schema<ActionMobiledevicesRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "resourceId": S.String.pipe(T.Label()),
+  "body": S.optional(MobileDeviceAction.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}/action","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ActionMobiledevicesRequest" }) as any as S.Schema<ActionMobiledevicesRequest>;
 
 export interface ActionMobiledevicesResponse {}
 export const ActionMobiledevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ActionMobiledevicesResponse",
-}) as any as S.Schema<ActionMobiledevicesResponse>;
+S.Struct({}),
+).annotate({ identifier: "ActionMobiledevicesResponse" }) as any as S.Schema<ActionMobiledevicesResponse>;
 
-export type BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum =
-  | "DEPROVISION_REASON_UNSPECIFIED"
-  | "DEPROVISION_REASON_SAME_MODEL_REPLACEMENT"
-  | "DEPROVISION_REASON_UPGRADE"
-  | "DEPROVISION_REASON_DOMAIN_MOVE"
-  | "DEPROVISION_REASON_SERVICE_EXPIRATION"
-  | "DEPROVISION_REASON_OTHER"
-  | "DEPROVISION_REASON_DIFFERENT_MODEL_REPLACEMENT"
-  | "DEPROVISION_REASON_RETIRING_DEVICE"
-  | "DEPROVISION_REASON_UPGRADE_TRANSFER"
-  | "DEPROVISION_REASON_NOT_REQUIRED"
-  | "DEPROVISION_REASON_REPAIR_CENTER"
-  | (string & {});
-export const BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum =
-  /*@__PURE__*/ S.String;
+export type BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum = "DEPROVISION_REASON_UNSPECIFIED" | "DEPROVISION_REASON_SAME_MODEL_REPLACEMENT" | "DEPROVISION_REASON_UPGRADE" | "DEPROVISION_REASON_DOMAIN_MOVE" | "DEPROVISION_REASON_SERVICE_EXPIRATION" | "DEPROVISION_REASON_OTHER" | "DEPROVISION_REASON_DIFFERENT_MODEL_REPLACEMENT" | "DEPROVISION_REASON_RETIRING_DEVICE" | "DEPROVISION_REASON_UPGRADE_TRANSFER" | "DEPROVISION_REASON_NOT_REQUIRED" | "DEPROVISION_REASON_REPAIR_CENTER";
+export const BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
-export type BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum =
-    | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_UNSPECIFIED"
-    | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DEPROVISION"
-    | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DISABLE"
-    | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_REENABLE"
-    | (string & {});
-export const BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum =
-  /*@__PURE__*/ S.String;
+export type BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum = "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_UNSPECIFIED" | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DEPROVISION" | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DISABLE" | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_REENABLE";
+export const BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum = /*@__PURE__*/ S.String;
 
 /** A request for changing the status of a batch of ChromeOS devices. */
 export interface BatchChangeChromeOsDeviceStatusRequest {
   /** Optional. The reason behind a device deprovision. Must be provided if 'changeChromeOsDeviceStatusAction' is set to 'CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DEPROVISION'. Otherwise, omit this field. */
-  deprovisionReason?: BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum;
+  deprovisionReason?: BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum | (string & {});
   /** Required. List of the IDs of the ChromeOS devices to change. Maximum 50. */
   deviceIds?: StringList;
   /** Required. The action to take on the ChromeOS device in order to change its status. */
-  changeChromeOsDeviceStatusAction?: BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum;
+  changeChromeOsDeviceStatusAction?: BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum | (string & {});
 }
-export const BatchChangeChromeOsDeviceStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      deprovisionReason: S.optional(
-        BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum,
-      ),
-      deviceIds: S.optional(StringList),
-      changeChromeOsDeviceStatusAction: S.optional(
-        BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum,
-      ),
-    }),
-).annotate({
-  identifier: "BatchChangeChromeOsDeviceStatusRequest",
-}) as any as S.Schema<BatchChangeChromeOsDeviceStatusRequest>;
+export const BatchChangeChromeOsDeviceStatusRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "deprovisionReason": S.optional(BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum),
+  "deviceIds": S.optional(StringList),
+  "changeChromeOsDeviceStatusAction": S.optional(BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum),
+}),
+).annotate({ identifier: "BatchChangeChromeOsDeviceStatusRequest" }) as any as S.Schema<BatchChangeChromeOsDeviceStatusRequest>;
 
 export interface BatchChangeStatusCustomerDevicesChromeosRequest {
   /** Required. Immutable ID of the Google Workspace account. */
@@ -210,34 +158,18 @@ export interface BatchChangeStatusCustomerDevicesChromeosRequest {
   /** Request body */
   body?: BatchChangeChromeOsDeviceStatusRequest;
 }
-export const BatchChangeStatusCustomerDevicesChromeosRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerId: S.String.pipe(T.Label()),
-      body: S.optional(
-        BatchChangeChromeOsDeviceStatusRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "admin/directory/v1/customer/{customerId}/devices/chromeos:batchChangeStatus",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchChangeStatusCustomerDevicesChromeosRequest",
-  }) as any as S.Schema<BatchChangeStatusCustomerDevicesChromeosRequest>;
+export const BatchChangeStatusCustomerDevicesChromeosRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchChangeChromeOsDeviceStatusRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customerId}/devices/chromeos:batchChangeStatus","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "BatchChangeStatusCustomerDevicesChromeosRequest" }) as any as S.Schema<BatchChangeStatusCustomerDevicesChromeosRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -249,20 +181,18 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "code": S.optional(S.Number),
+  "message": S.optional(S.String),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** Response for a successful ChromeOS device status change. */
 export interface ChangeChromeOsDeviceStatusSucceeded {}
 export const ChangeChromeOsDeviceStatusSucceeded = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ChangeChromeOsDeviceStatusSucceeded",
-}) as any as S.Schema<ChangeChromeOsDeviceStatusSucceeded>;
+S.Struct({}),
+).annotate({ identifier: "ChangeChromeOsDeviceStatusSucceeded" }) as any as S.Schema<ChangeChromeOsDeviceStatusSucceeded>;
 
 /** The result of a single ChromeOS device for a Change state operation. */
 export interface ChangeChromeOsDeviceStatusResult {
@@ -274,43 +204,28 @@ export interface ChangeChromeOsDeviceStatusResult {
   response?: ChangeChromeOsDeviceStatusSucceeded;
 }
 export const ChangeChromeOsDeviceStatusResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceId: S.optional(S.String),
-    error: S.optional(Status),
-    response: S.optional(ChangeChromeOsDeviceStatusSucceeded),
-  }),
-).annotate({
-  identifier: "ChangeChromeOsDeviceStatusResult",
-}) as any as S.Schema<ChangeChromeOsDeviceStatusResult>;
+S.Struct({
+  "deviceId": S.optional(S.String),
+  "error": S.optional(Status),
+  "response": S.optional(ChangeChromeOsDeviceStatusSucceeded),
+}),
+).annotate({ identifier: "ChangeChromeOsDeviceStatusResult" }) as any as S.Schema<ChangeChromeOsDeviceStatusResult>;
 
-export type ChangeChromeOsDeviceStatusResultList =
-  ReadonlyArray<ChangeChromeOsDeviceStatusResult>;
-export const ChangeChromeOsDeviceStatusResultList = /*@__PURE__*/ S.Array(
-  ChangeChromeOsDeviceStatusResult,
-) as any as S.Schema<ChangeChromeOsDeviceStatusResultList>;
+export type ChangeChromeOsDeviceStatusResultList = ReadonlyArray<ChangeChromeOsDeviceStatusResult>;
+export const ChangeChromeOsDeviceStatusResultList = /*@__PURE__*/ S.Array(ChangeChromeOsDeviceStatusResult) as any as S.Schema<ChangeChromeOsDeviceStatusResultList>;
 
 /** The response of changing the status of a batch of ChromeOS devices. */
 export interface BatchChangeChromeOsDeviceStatusResponse {
   /** The results for each of the ChromeOS devices provided in the request. */
   changeChromeOsDeviceStatusResults?: ChangeChromeOsDeviceStatusResultList;
 }
-export const BatchChangeChromeOsDeviceStatusResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      changeChromeOsDeviceStatusResults: S.optional(
-        ChangeChromeOsDeviceStatusResultList,
-      ),
-    }),
-).annotate({
-  identifier: "BatchChangeChromeOsDeviceStatusResponse",
-}) as any as S.Schema<BatchChangeChromeOsDeviceStatusResponse>;
+export const BatchChangeChromeOsDeviceStatusResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "changeChromeOsDeviceStatusResults": S.optional(ChangeChromeOsDeviceStatusResultList),
+}),
+).annotate({ identifier: "BatchChangeChromeOsDeviceStatusResponse" }) as any as S.Schema<BatchChangeChromeOsDeviceStatusResponse>;
 
-export type AuxiliaryMessageSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "SEVERITY_INFO"
-  | "SEVERITY_WARNING"
-  | "SEVERITY_ERROR"
-  | (string & {});
+export type AuxiliaryMessageSeverityEnum = "SEVERITY_UNSPECIFIED" | "SEVERITY_INFO" | "SEVERITY_WARNING" | "SEVERITY_ERROR";
 export const AuxiliaryMessageSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Auxiliary message about issues with printers or settings. Example: {message_type:AUXILIARY_MESSAGE_WARNING, field_mask:make_and_model, message:"Given printer is invalid or no longer supported."} */
@@ -323,19 +238,15 @@ export interface AuxiliaryMessage {
   fieldMask?: string;
 }
 export const AuxiliaryMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auxiliaryMessage: S.optional(S.String),
-    severity: S.optional(AuxiliaryMessageSeverityEnum),
-    fieldMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuxiliaryMessage",
-}) as any as S.Schema<AuxiliaryMessage>;
+S.Struct({
+  "auxiliaryMessage": S.optional(S.String),
+  "severity": S.optional(AuxiliaryMessageSeverityEnum),
+  "fieldMask": S.optional(S.String),
+}),
+).annotate({ identifier: "AuxiliaryMessage" }) as any as S.Schema<AuxiliaryMessage>;
 
 export type AuxiliaryMessageList = ReadonlyArray<AuxiliaryMessage>;
-export const AuxiliaryMessageList = /*@__PURE__*/ S.Array(
-  AuxiliaryMessage,
-) as any as S.Schema<AuxiliaryMessageList>;
+export const AuxiliaryMessageList = /*@__PURE__*/ S.Array(AuxiliaryMessage) as any as S.Schema<AuxiliaryMessageList>;
 
 /** Printer configuration. */
 export interface Printer {
@@ -361,18 +272,18 @@ export interface Printer {
   createTime?: string;
 }
 export const Printer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orgUnitId: S.optional(S.String),
-    name: S.optional(S.String),
-    auxiliaryMessages: S.optional(AuxiliaryMessageList),
-    description: S.optional(S.String),
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    useDriverlessConfig: S.optional(S.Boolean),
-    makeAndModel: S.optional(S.String),
-    id: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "orgUnitId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "auxiliaryMessages": S.optional(AuxiliaryMessageList),
+  "description": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "useDriverlessConfig": S.optional(S.Boolean),
+  "makeAndModel": S.optional(S.String),
+  "id": S.optional(S.String),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Printer" }) as any as S.Schema<Printer>;
 
 /** Request for adding a new printer. */
@@ -383,18 +294,14 @@ export interface CreatePrinterRequest {
   printer?: Printer;
 }
 export const CreatePrinterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(S.String),
-    printer: S.optional(Printer),
-  }),
-).annotate({
-  identifier: "CreatePrinterRequest",
-}) as any as S.Schema<CreatePrinterRequest>;
+S.Struct({
+  "parent": S.optional(S.String),
+  "printer": S.optional(Printer),
+}),
+).annotate({ identifier: "CreatePrinterRequest" }) as any as S.Schema<CreatePrinterRequest>;
 
 export type CreatePrinterRequestList = ReadonlyArray<CreatePrinterRequest>;
-export const CreatePrinterRequestList = /*@__PURE__*/ S.Array(
-  CreatePrinterRequest,
-) as any as S.Schema<CreatePrinterRequestList>;
+export const CreatePrinterRequestList = /*@__PURE__*/ S.Array(CreatePrinterRequest) as any as S.Schema<CreatePrinterRequestList>;
 
 /** Request for adding new printers in batch. */
 export interface BatchCreatePrintersRequest {
@@ -402,12 +309,10 @@ export interface BatchCreatePrintersRequest {
   requests?: CreatePrinterRequestList;
 }
 export const BatchCreatePrintersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(CreatePrinterRequestList),
-  }),
-).annotate({
-  identifier: "BatchCreatePrintersRequest",
-}) as any as S.Schema<BatchCreatePrintersRequest>;
+S.Struct({
+  "requests": S.optional(CreatePrinterRequestList),
+}),
+).annotate({ identifier: "BatchCreatePrintersRequest" }) as any as S.Schema<BatchCreatePrintersRequest>;
 
 export interface BatchCreatePrintersCustomersChromePrintersRequest {
   /** Required. The name of the customer. Format: customers/{customer_id} */
@@ -415,46 +320,17 @@ export interface BatchCreatePrintersCustomersChromePrintersRequest {
   /** Request body */
   body?: BatchCreatePrintersRequest;
 }
-export const BatchCreatePrintersCustomersChromePrintersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchCreatePrintersRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "admin/directory/v1/{+parent}/chrome/printers:batchCreatePrinters",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchCreatePrintersCustomersChromePrintersRequest",
-  }) as any as S.Schema<BatchCreatePrintersCustomersChromePrintersRequest>;
+export const BatchCreatePrintersCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchCreatePrintersRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/{+parent}/chrome/printers:batchCreatePrinters","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "BatchCreatePrintersCustomersChromePrintersRequest" }) as any as S.Schema<BatchCreatePrintersCustomersChromePrintersRequest>;
 
 export type PrinterList = ReadonlyArray<Printer>;
-export const PrinterList = /*@__PURE__*/ S.Array(
-  Printer,
-) as any as S.Schema<PrinterList>;
+export const PrinterList = /*@__PURE__*/ S.Array(Printer) as any as S.Schema<PrinterList>;
 
-export type FailureInfoErrorCodeEnum =
-  | "OK"
-  | "CANCELLED"
-  | "UNKNOWN"
-  | "INVALID_ARGUMENT"
-  | "DEADLINE_EXCEEDED"
-  | "NOT_FOUND"
-  | "ALREADY_EXISTS"
-  | "PERMISSION_DENIED"
-  | "UNAUTHENTICATED"
-  | "RESOURCE_EXHAUSTED"
-  | "FAILED_PRECONDITION"
-  | "ABORTED"
-  | "OUT_OF_RANGE"
-  | "UNIMPLEMENTED"
-  | "INTERNAL"
-  | "UNAVAILABLE"
-  | "DATA_LOSS"
-  | (string & {});
+export type FailureInfoErrorCodeEnum = "OK" | "CANCELLED" | "UNKNOWN" | "INVALID_ARGUMENT" | "DEADLINE_EXCEEDED" | "NOT_FOUND" | "ALREADY_EXISTS" | "PERMISSION_DENIED" | "UNAUTHENTICATED" | "RESOURCE_EXHAUSTED" | "FAILED_PRECONDITION" | "ABORTED" | "OUT_OF_RANGE" | "UNIMPLEMENTED" | "INTERNAL" | "UNAVAILABLE" | "DATA_LOSS";
 export const FailureInfoErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Info about failures */
@@ -469,18 +345,16 @@ export interface FailureInfo {
   errorMessage?: string;
 }
 export const FailureInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    printerId: S.optional(S.String),
-    printer: S.optional(Printer),
-    errorCode: S.optional(FailureInfoErrorCodeEnum),
-    errorMessage: S.optional(S.String),
-  }),
+S.Struct({
+  "printerId": S.optional(S.String),
+  "printer": S.optional(Printer),
+  "errorCode": S.optional(FailureInfoErrorCodeEnum),
+  "errorMessage": S.optional(S.String),
+}),
 ).annotate({ identifier: "FailureInfo" }) as any as S.Schema<FailureInfo>;
 
 export type FailureInfoList = ReadonlyArray<FailureInfo>;
-export const FailureInfoList = /*@__PURE__*/ S.Array(
-  FailureInfo,
-) as any as S.Schema<FailureInfoList>;
+export const FailureInfoList = /*@__PURE__*/ S.Array(FailureInfo) as any as S.Schema<FailureInfoList>;
 
 /** Response for adding new printers in batch. */
 export interface BatchCreatePrintersResponse {
@@ -490,13 +364,11 @@ export interface BatchCreatePrintersResponse {
   failures?: FailureInfoList;
 }
 export const BatchCreatePrintersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    printers: S.optional(PrinterList),
-    failures: S.optional(FailureInfoList),
-  }),
-).annotate({
-  identifier: "BatchCreatePrintersResponse",
-}) as any as S.Schema<BatchCreatePrintersResponse>;
+S.Struct({
+  "printers": S.optional(PrinterList),
+  "failures": S.optional(FailureInfoList),
+}),
+).annotate({ identifier: "BatchCreatePrintersResponse" }) as any as S.Schema<BatchCreatePrintersResponse>;
 
 /** Configuration for a print server. */
 export interface PrintServer {
@@ -516,15 +388,15 @@ export interface PrintServer {
   orgUnitId?: string;
 }
 export const PrintServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    uri: S.optional(S.String),
-    createTime: S.optional(S.String),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    id: S.optional(S.String),
-    orgUnitId: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "uri": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "description": S.optional(S.String),
+  "name": S.optional(S.String),
+  "id": S.optional(S.String),
+  "orgUnitId": S.optional(S.String),
+}),
 ).annotate({ identifier: "PrintServer" }) as any as S.Schema<PrintServer>;
 
 /** Request for adding a new print server. */
@@ -535,19 +407,14 @@ export interface CreatePrintServerRequest {
   parent?: string;
 }
 export const CreatePrintServerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    printServer: S.optional(PrintServer),
-    parent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreatePrintServerRequest",
-}) as any as S.Schema<CreatePrintServerRequest>;
+S.Struct({
+  "printServer": S.optional(PrintServer),
+  "parent": S.optional(S.String),
+}),
+).annotate({ identifier: "CreatePrintServerRequest" }) as any as S.Schema<CreatePrintServerRequest>;
 
-export type CreatePrintServerRequestList =
-  ReadonlyArray<CreatePrintServerRequest>;
-export const CreatePrintServerRequestList = /*@__PURE__*/ S.Array(
-  CreatePrintServerRequest,
-) as any as S.Schema<CreatePrintServerRequestList>;
+export type CreatePrintServerRequestList = ReadonlyArray<CreatePrintServerRequest>;
+export const CreatePrintServerRequestList = /*@__PURE__*/ S.Array(CreatePrintServerRequest) as any as S.Schema<CreatePrintServerRequestList>;
 
 /** Request to add multiple new print servers in a batch. */
 export interface BatchCreatePrintServersRequest {
@@ -555,12 +422,10 @@ export interface BatchCreatePrintServersRequest {
   requests?: CreatePrintServerRequestList;
 }
 export const BatchCreatePrintServersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(CreatePrintServerRequestList),
-  }),
-).annotate({
-  identifier: "BatchCreatePrintServersRequest",
-}) as any as S.Schema<BatchCreatePrintServersRequest>;
+S.Struct({
+  "requests": S.optional(CreatePrintServerRequestList),
+}),
+).annotate({ identifier: "BatchCreatePrintServersRequest" }) as any as S.Schema<BatchCreatePrintServersRequest>;
 
 export interface BatchCreatePrintServersCustomersChromePrintServersRequest {
   /** Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{id}` */
@@ -568,41 +433,14 @@ export interface BatchCreatePrintServersCustomersChromePrintServersRequest {
   /** Request body */
   body?: BatchCreatePrintServersRequest;
 }
-export const BatchCreatePrintServersCustomersChromePrintServersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchCreatePrintServersRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "admin/directory/v1/{+parent}/chrome/printServers:batchCreatePrintServers",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchCreatePrintServersCustomersChromePrintServersRequest",
-  }) as any as S.Schema<BatchCreatePrintServersCustomersChromePrintServersRequest>;
+export const BatchCreatePrintServersCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchCreatePrintServersRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/{+parent}/chrome/printServers:batchCreatePrintServers","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "BatchCreatePrintServersCustomersChromePrintServersRequest" }) as any as S.Schema<BatchCreatePrintServersCustomersChromePrintServersRequest>;
 
-export type PrintServerFailureInfoErrorCodeEnum =
-  | "OK"
-  | "CANCELLED"
-  | "UNKNOWN"
-  | "INVALID_ARGUMENT"
-  | "DEADLINE_EXCEEDED"
-  | "NOT_FOUND"
-  | "ALREADY_EXISTS"
-  | "PERMISSION_DENIED"
-  | "UNAUTHENTICATED"
-  | "RESOURCE_EXHAUSTED"
-  | "FAILED_PRECONDITION"
-  | "ABORTED"
-  | "OUT_OF_RANGE"
-  | "UNIMPLEMENTED"
-  | "INTERNAL"
-  | "UNAVAILABLE"
-  | "DATA_LOSS"
-  | (string & {});
+export type PrintServerFailureInfoErrorCodeEnum = "OK" | "CANCELLED" | "UNKNOWN" | "INVALID_ARGUMENT" | "DEADLINE_EXCEEDED" | "NOT_FOUND" | "ALREADY_EXISTS" | "PERMISSION_DENIED" | "UNAUTHENTICATED" | "RESOURCE_EXHAUSTED" | "FAILED_PRECONDITION" | "ABORTED" | "OUT_OF_RANGE" | "UNIMPLEMENTED" | "INTERNAL" | "UNAVAILABLE" | "DATA_LOSS";
 export const PrintServerFailureInfoErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Info about failures */
@@ -617,25 +455,19 @@ export interface PrintServerFailureInfo {
   errorCode?: PrintServerFailureInfoErrorCodeEnum;
 }
 export const PrintServerFailureInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    printServer: S.optional(PrintServer),
-    errorMessage: S.optional(S.String),
-    printServerId: S.optional(S.String),
-    errorCode: S.optional(PrintServerFailureInfoErrorCodeEnum),
-  }),
-).annotate({
-  identifier: "PrintServerFailureInfo",
-}) as any as S.Schema<PrintServerFailureInfo>;
+S.Struct({
+  "printServer": S.optional(PrintServer),
+  "errorMessage": S.optional(S.String),
+  "printServerId": S.optional(S.String),
+  "errorCode": S.optional(PrintServerFailureInfoErrorCodeEnum),
+}),
+).annotate({ identifier: "PrintServerFailureInfo" }) as any as S.Schema<PrintServerFailureInfo>;
 
 export type PrintServerFailureInfoList = ReadonlyArray<PrintServerFailureInfo>;
-export const PrintServerFailureInfoList = /*@__PURE__*/ S.Array(
-  PrintServerFailureInfo,
-) as any as S.Schema<PrintServerFailureInfoList>;
+export const PrintServerFailureInfoList = /*@__PURE__*/ S.Array(PrintServerFailureInfo) as any as S.Schema<PrintServerFailureInfoList>;
 
 export type PrintServerList = ReadonlyArray<PrintServer>;
-export const PrintServerList = /*@__PURE__*/ S.Array(
-  PrintServer,
-) as any as S.Schema<PrintServerList>;
+export const PrintServerList = /*@__PURE__*/ S.Array(PrintServer) as any as S.Schema<PrintServerList>;
 
 export interface BatchCreatePrintServersResponse {
   /** A list of create failures. `PrintServer` IDs are not populated, as print servers were not created. */
@@ -644,13 +476,11 @@ export interface BatchCreatePrintServersResponse {
   printServers?: PrintServerList;
 }
 export const BatchCreatePrintServersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failures: S.optional(PrintServerFailureInfoList),
-    printServers: S.optional(PrintServerList),
-  }),
-).annotate({
-  identifier: "BatchCreatePrintServersResponse",
-}) as any as S.Schema<BatchCreatePrintServersResponse>;
+S.Struct({
+  "failures": S.optional(PrintServerFailureInfoList),
+  "printServers": S.optional(PrintServerList),
+}),
+).annotate({ identifier: "BatchCreatePrintServersResponse" }) as any as S.Schema<BatchCreatePrintServersResponse>;
 
 /** Request for deleting existing printers in batch. */
 export interface BatchDeletePrintersRequest {
@@ -658,12 +488,10 @@ export interface BatchDeletePrintersRequest {
   printerIds?: StringList;
 }
 export const BatchDeletePrintersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    printerIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeletePrintersRequest",
-}) as any as S.Schema<BatchDeletePrintersRequest>;
+S.Struct({
+  "printerIds": S.optional(StringList),
+}),
+).annotate({ identifier: "BatchDeletePrintersRequest" }) as any as S.Schema<BatchDeletePrintersRequest>;
 
 export interface BatchDeletePrintersCustomersChromePrintersRequest {
   /** Required. The name of the customer. Format: customers/{customer_id} */
@@ -671,21 +499,12 @@ export interface BatchDeletePrintersCustomersChromePrintersRequest {
   /** Request body */
   body?: BatchDeletePrintersRequest;
 }
-export const BatchDeletePrintersCustomersChromePrintersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeletePrintersRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "admin/directory/v1/{+parent}/chrome/printers:batchDeletePrinters",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchDeletePrintersCustomersChromePrintersRequest",
-  }) as any as S.Schema<BatchDeletePrintersCustomersChromePrintersRequest>;
+export const BatchDeletePrintersCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchDeletePrintersRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/{+parent}/chrome/printers:batchDeletePrinters","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "BatchDeletePrintersCustomersChromePrintersRequest" }) as any as S.Schema<BatchDeletePrintersCustomersChromePrintersRequest>;
 
 /** Response for deleting existing printers in batch. */
 export interface BatchDeletePrintersResponse {
@@ -695,13 +514,11 @@ export interface BatchDeletePrintersResponse {
   failedPrinters?: FailureInfoList;
 }
 export const BatchDeletePrintersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    printerIds: S.optional(StringList),
-    failedPrinters: S.optional(FailureInfoList),
-  }),
-).annotate({
-  identifier: "BatchDeletePrintersResponse",
-}) as any as S.Schema<BatchDeletePrintersResponse>;
+S.Struct({
+  "printerIds": S.optional(StringList),
+  "failedPrinters": S.optional(FailureInfoList),
+}),
+).annotate({ identifier: "BatchDeletePrintersResponse" }) as any as S.Schema<BatchDeletePrintersResponse>;
 
 /** Request to delete multiple existing print servers in a batch. */
 export interface BatchDeletePrintServersRequest {
@@ -709,12 +526,10 @@ export interface BatchDeletePrintServersRequest {
   printServerIds?: StringList;
 }
 export const BatchDeletePrintServersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    printServerIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeletePrintServersRequest",
-}) as any as S.Schema<BatchDeletePrintServersRequest>;
+S.Struct({
+  "printServerIds": S.optional(StringList),
+}),
+).annotate({ identifier: "BatchDeletePrintServersRequest" }) as any as S.Schema<BatchDeletePrintServersRequest>;
 
 export interface BatchDeletePrintServersCustomersChromePrintServersRequest {
   /** Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{customer.id}` */
@@ -722,21 +537,12 @@ export interface BatchDeletePrintServersCustomersChromePrintServersRequest {
   /** Request body */
   body?: BatchDeletePrintServersRequest;
 }
-export const BatchDeletePrintServersCustomersChromePrintServersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeletePrintServersRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "admin/directory/v1/{+parent}/chrome/printServers:batchDeletePrintServers",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchDeletePrintServersCustomersChromePrintServersRequest",
-  }) as any as S.Schema<BatchDeletePrintServersCustomersChromePrintServersRequest>;
+export const BatchDeletePrintServersCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(BatchDeletePrintServersRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/{+parent}/chrome/printServers:batchDeletePrintServers","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "BatchDeletePrintServersCustomersChromePrintServersRequest" }) as any as S.Schema<BatchDeletePrintServersCustomersChromePrintServersRequest>;
 
 export interface BatchDeletePrintServersResponse {
   /** A list of print server IDs that were successfully deleted. */
@@ -745,13 +551,11 @@ export interface BatchDeletePrintServersResponse {
   failedPrintServers?: PrintServerFailureInfoList;
 }
 export const BatchDeletePrintServersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    printServerIds: S.optional(StringList),
-    failedPrintServers: S.optional(PrintServerFailureInfoList),
-  }),
-).annotate({
-  identifier: "BatchDeletePrintServersResponse",
-}) as any as S.Schema<BatchDeletePrintServersResponse>;
+S.Struct({
+  "printServerIds": S.optional(StringList),
+  "failedPrintServers": S.optional(PrintServerFailureInfoList),
+}),
+).annotate({ identifier: "BatchDeletePrintServersResponse" }) as any as S.Schema<BatchDeletePrintServersResponse>;
 
 export interface CountChromeOsDevicesCustomerDevicesChromeosRequest {
   /** Optional. The full path of the organizational unit (minus the leading `/`) or its unique ID. */
@@ -763,23 +567,14 @@ export interface CountChromeOsDevicesCustomerDevicesChromeosRequest {
   /** Optional. Return devices from all child orgunits, as well as the specified org unit. If this is set to true, 'orgUnitPath' must be provided. */
   includeChildOrgunits?: boolean;
 }
-export const CountChromeOsDevicesCustomerDevicesChromeosRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      orgUnitPath: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      customerId: S.String.pipe(T.Label()),
-      includeChildOrgunits: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "admin/directory/v1/customer/{customerId}/devices/chromeos:countChromeOsDevices",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CountChromeOsDevicesCustomerDevicesChromeosRequest",
-  }) as any as S.Schema<CountChromeOsDevicesCustomerDevicesChromeosRequest>;
+export const CountChromeOsDevicesCustomerDevicesChromeosRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orgUnitPath": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "customerId": S.String.pipe(T.Label()),
+  "includeChildOrgunits": S.optional(S.Boolean.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customerId}/devices/chromeos:countChromeOsDevices","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "CountChromeOsDevicesCustomerDevicesChromeosRequest" }) as any as S.Schema<CountChromeOsDevicesCustomerDevicesChromeosRequest>;
 
 /** A response for counting ChromeOS devices. */
 export interface CountChromeOsDevicesResponse {
@@ -787,12 +582,10 @@ export interface CountChromeOsDevicesResponse {
   count?: string;
 }
 export const CountChromeOsDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CountChromeOsDevicesResponse",
-}) as any as S.Schema<CountChromeOsDevicesResponse>;
+S.Struct({
+  "count": S.optional(S.String),
+}),
+).annotate({ identifier: "CountChromeOsDevicesResponse" }) as any as S.Schema<CountChromeOsDevicesResponse>;
 
 export interface CreateCustomersChromePrintersRequest {
   /** Required. The name of the customer. Format: customers/{customer_id} */
@@ -800,21 +593,12 @@ export interface CreateCustomersChromePrintersRequest {
   /** Request body */
   body?: Printer;
 }
-export const CreateCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Printer.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "admin/directory/v1/{+parent}/chrome/printers",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateCustomersChromePrintersRequest",
-}) as any as S.Schema<CreateCustomersChromePrintersRequest>;
+export const CreateCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Printer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/{+parent}/chrome/printers","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "CreateCustomersChromePrintersRequest" }) as any as S.Schema<CreateCustomersChromePrintersRequest>;
 
 export interface CreateCustomersChromePrintServersRequest {
   /** Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{id}` */
@@ -822,21 +606,12 @@ export interface CreateCustomersChromePrintServersRequest {
   /** Request body */
   body?: PrintServer;
 }
-export const CreateCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(PrintServer.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "admin/directory/v1/{+parent}/chrome/printServers",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateCustomersChromePrintServersRequest",
-}) as any as S.Schema<CreateCustomersChromePrintServersRequest>;
+export const CreateCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(PrintServer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/{+parent}/chrome/printServers","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "CreateCustomersChromePrintServersRequest" }) as any as S.Schema<CreateCustomersChromePrintServersRequest>;
 
 /** Directory users guest creation request message. */
 export interface DirectoryUsersCreateGuestRequest {
@@ -846,46 +621,28 @@ export interface DirectoryUsersCreateGuestRequest {
   customer?: string;
 }
 export const DirectoryUsersCreateGuestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    primaryGuestEmail: S.optional(S.String),
-    customer: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DirectoryUsersCreateGuestRequest",
-}) as any as S.Schema<DirectoryUsersCreateGuestRequest>;
+S.Struct({
+  "primaryGuestEmail": S.optional(S.String),
+  "customer": S.optional(S.String),
+}),
+).annotate({ identifier: "DirectoryUsersCreateGuestRequest" }) as any as S.Schema<DirectoryUsersCreateGuestRequest>;
 
 export interface CreateGuestUsersRequest {
   /** Request body */
   body?: DirectoryUsersCreateGuestRequest;
 }
 export const CreateGuestUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DirectoryUsersCreateGuestRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users:createGuest",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateGuestUsersRequest",
-}) as any as S.Schema<CreateGuestUsersRequest>;
+S.Struct({
+  "body": S.optional(DirectoryUsersCreateGuestRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users:createGuest","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "CreateGuestUsersRequest" }) as any as S.Schema<CreateGuestUsersRequest>;
 
 /** JSON template for a set of custom properties (i.e. all fields in a particular schema) */
 export type UserCustomProperties = { [key: string]: unknown | undefined };
-export const UserCustomProperties = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserCustomProperties>;
+export const UserCustomProperties = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<UserCustomProperties>;
 
-export type UserCustomPropertiesMap = {
-  [key: string]: UserCustomProperties | undefined;
-};
-export const UserCustomPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UserCustomProperties,
-) as any as S.Schema<UserCustomPropertiesMap>;
+export type UserCustomPropertiesMap = { [key: string]: UserCustomProperties | undefined };
+export const UserCustomPropertiesMap = /*@__PURE__*/ S.Record(S.String, UserCustomProperties) as any as S.Schema<UserCustomPropertiesMap>;
 
 /** Account info specific to Guest users. */
 export interface GuestAccountInfo {
@@ -893,12 +650,10 @@ export interface GuestAccountInfo {
   primaryGuestEmail?: string;
 }
 export const GuestAccountInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    primaryGuestEmail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GuestAccountInfo",
-}) as any as S.Schema<GuestAccountInfo>;
+S.Struct({
+  "primaryGuestEmail": S.optional(S.String),
+}),
+).annotate({ identifier: "GuestAccountInfo" }) as any as S.Schema<GuestAccountInfo>;
 
 export interface UserName {
   /** The user's full name formed by concatenating the first and last name values. */
@@ -911,12 +666,12 @@ export interface UserName {
   givenName?: string;
 }
 export const UserName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fullName: S.optional(S.String),
-    familyName: S.optional(S.String),
-    displayName: S.optional(S.String),
-    givenName: S.optional(S.String),
-  }),
+S.Struct({
+  "fullName": S.optional(S.String),
+  "familyName": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "givenName": S.optional(S.String),
+}),
 ).annotate({ identifier: "UserName" }) as any as S.Schema<UserName>;
 
 /** The Directory API allows you to create and manage your account's users, user aliases, and user Google profile photos. For more information about common tasks, see the [User Accounts Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html) and the [User Aliases Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-user-aliases.html). */
@@ -1022,58 +777,58 @@ export interface User {
   websites?: unknown;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    password: S.optional(S.String),
-    deletionTime: S.optional(S.String),
-    archived: S.optional(S.Boolean),
-    isEnrolledIn2Sv: S.optional(S.Boolean),
-    aliases: S.optional(StringList),
-    customSchemas: S.optional(UserCustomPropertiesMap),
-    addresses: S.optional(S.Unknown),
-    recoveryPhone: S.optional(S.String),
-    archivalTime: S.optional(S.String),
-    primaryEmail: S.optional(S.String),
-    emails: S.optional(S.Unknown),
-    gender: S.optional(S.Unknown),
-    isEnforcedIn2Sv: S.optional(S.Boolean),
-    isDelegatedAdmin: S.optional(S.Boolean),
-    ims: S.optional(S.Unknown),
-    sshPublicKeys: S.optional(S.Unknown),
-    kind: S.optional(S.String),
-    externalIds: S.optional(S.Unknown),
-    ipWhitelisted: S.optional(S.Boolean),
-    posixAccounts: S.optional(S.Unknown),
-    guestAccountInfo: S.optional(GuestAccountInfo),
-    lastLoginTime: S.optional(S.String),
-    thumbnailPhotoUrl: S.optional(S.String),
-    customerId: S.optional(S.String),
-    agreedToTerms: S.optional(S.Boolean),
-    orgUnitPath: S.optional(S.String),
-    isMailboxSetup: S.optional(S.Boolean),
-    etag: S.optional(S.String),
-    suspensionReason: S.optional(S.String),
-    relations: S.optional(S.Unknown),
-    keywords: S.optional(S.Unknown),
-    isAdmin: S.optional(S.Boolean),
-    name: S.optional(UserName),
-    organizations: S.optional(S.Unknown),
-    suspended: S.optional(S.Boolean),
-    includeInGlobalAddressList: S.optional(S.Boolean),
-    id: S.optional(S.String),
-    languages: S.optional(S.Unknown),
-    hashFunction: S.optional(S.String),
-    notes: S.optional(S.Unknown),
-    recoveryEmail: S.optional(S.String),
-    phones: S.optional(S.Unknown),
-    changePasswordAtNextLogin: S.optional(S.Boolean),
-    creationTime: S.optional(S.String),
-    nonEditableAliases: S.optional(StringList),
-    locations: S.optional(S.Unknown),
-    thumbnailPhotoEtag: S.optional(S.String),
-    suspensionTime: S.optional(S.String),
-    isGuestUser: S.optional(S.Boolean),
-    websites: S.optional(S.Unknown),
-  }),
+S.Struct({
+  "password": S.optional(S.String),
+  "deletionTime": S.optional(S.String),
+  "archived": S.optional(S.Boolean),
+  "isEnrolledIn2Sv": S.optional(S.Boolean),
+  "aliases": S.optional(StringList),
+  "customSchemas": S.optional(UserCustomPropertiesMap),
+  "addresses": S.optional(S.Unknown),
+  "recoveryPhone": S.optional(S.String),
+  "archivalTime": S.optional(S.String),
+  "primaryEmail": S.optional(S.String),
+  "emails": S.optional(S.Unknown),
+  "gender": S.optional(S.Unknown),
+  "isEnforcedIn2Sv": S.optional(S.Boolean),
+  "isDelegatedAdmin": S.optional(S.Boolean),
+  "ims": S.optional(S.Unknown),
+  "sshPublicKeys": S.optional(S.Unknown),
+  "kind": S.optional(S.String),
+  "externalIds": S.optional(S.Unknown),
+  "ipWhitelisted": S.optional(S.Boolean),
+  "posixAccounts": S.optional(S.Unknown),
+  "guestAccountInfo": S.optional(GuestAccountInfo),
+  "lastLoginTime": S.optional(S.String),
+  "thumbnailPhotoUrl": S.optional(S.String),
+  "customerId": S.optional(S.String),
+  "agreedToTerms": S.optional(S.Boolean),
+  "orgUnitPath": S.optional(S.String),
+  "isMailboxSetup": S.optional(S.Boolean),
+  "etag": S.optional(S.String),
+  "suspensionReason": S.optional(S.String),
+  "relations": S.optional(S.Unknown),
+  "keywords": S.optional(S.Unknown),
+  "isAdmin": S.optional(S.Boolean),
+  "name": S.optional(UserName),
+  "organizations": S.optional(S.Unknown),
+  "suspended": S.optional(S.Boolean),
+  "includeInGlobalAddressList": S.optional(S.Boolean),
+  "id": S.optional(S.String),
+  "languages": S.optional(S.Unknown),
+  "hashFunction": S.optional(S.String),
+  "notes": S.optional(S.Unknown),
+  "recoveryEmail": S.optional(S.String),
+  "phones": S.optional(S.Unknown),
+  "changePasswordAtNextLogin": S.optional(S.Boolean),
+  "creationTime": S.optional(S.String),
+  "nonEditableAliases": S.optional(StringList),
+  "locations": S.optional(S.Unknown),
+  "thumbnailPhotoEtag": S.optional(S.String),
+  "suspensionTime": S.optional(S.String),
+  "isGuestUser": S.optional(S.Boolean),
+  "websites": S.optional(S.Unknown),
+}),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export interface DeleteAspsRequest {
@@ -1083,70 +838,42 @@ export interface DeleteAspsRequest {
   userKey: string;
 }
 export const DeleteAspsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeId: S.Number.pipe(T.Label()),
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/users/{userKey}/asps/{codeId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteAspsRequest",
-}) as any as S.Schema<DeleteAspsRequest>;
+S.Struct({
+  "codeId": S.Number.pipe(T.Label()),
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/users/{userKey}/asps/{codeId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteAspsRequest" }) as any as S.Schema<DeleteAspsRequest>;
 
 export interface DeleteAspsResponse {}
 export const DeleteAspsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAspsResponse",
-}) as any as S.Schema<DeleteAspsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteAspsResponse" }) as any as S.Schema<DeleteAspsResponse>;
 
 export interface DeleteCustomersChromePrintersRequest {
   /** Required. The name of the printer to be updated. Format: customers/{customer_id}/chrome/printers/{printer_id} */
   name: string;
 }
-export const DeleteCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "admin/directory/v1/{+name}",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteCustomersChromePrintersRequest",
-}) as any as S.Schema<DeleteCustomersChromePrintersRequest>;
+export const DeleteCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/{+name}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteCustomersChromePrintersRequest" }) as any as S.Schema<DeleteCustomersChromePrintersRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
 export interface DeleteCustomersChromePrintServersRequest {
   /** Required. The name of the print server to be deleted. Format: `customers/{customer.id}/chrome/printServers/{print_server.id}` */
   name: string;
 }
-export const DeleteCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "admin/directory/v1/{+name}",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteCustomersChromePrintServersRequest",
-}) as any as S.Schema<DeleteCustomersChromePrintServersRequest>;
+export const DeleteCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/{+name}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteCustomersChromePrintServersRequest" }) as any as S.Schema<DeleteCustomersChromePrintServersRequest>;
 
 export interface DeleteDomainAliasesRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -1155,26 +882,16 @@ export interface DeleteDomainAliasesRequest {
   domainAliasName: string;
 }
 export const DeleteDomainAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    domainAliasName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/customer/{customer}/domainaliases/{domainAliasName}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteDomainAliasesRequest",
-}) as any as S.Schema<DeleteDomainAliasesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "domainAliasName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/customer/{customer}/domainaliases/{domainAliasName}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteDomainAliasesRequest" }) as any as S.Schema<DeleteDomainAliasesRequest>;
 
 export interface DeleteDomainAliasesResponse {}
 export const DeleteDomainAliasesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDomainAliasesResponse",
-}) as any as S.Schema<DeleteDomainAliasesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteDomainAliasesResponse" }) as any as S.Schema<DeleteDomainAliasesResponse>;
 
 export interface DeleteDomainsRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -1183,51 +900,31 @@ export interface DeleteDomainsRequest {
   domainName: string;
 }
 export const DeleteDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    domainName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/customer/{customer}/domains/{domainName}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteDomainsRequest",
-}) as any as S.Schema<DeleteDomainsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "domainName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/customer/{customer}/domains/{domainName}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteDomainsRequest" }) as any as S.Schema<DeleteDomainsRequest>;
 
 export interface DeleteDomainsResponse {}
 export const DeleteDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDomainsResponse",
-}) as any as S.Schema<DeleteDomainsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteDomainsResponse" }) as any as S.Schema<DeleteDomainsResponse>;
 
 export interface DeleteGroupsRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
 }
 export const DeleteGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/groups/{groupKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteGroupsRequest",
-}) as any as S.Schema<DeleteGroupsRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/groups/{groupKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteGroupsRequest" }) as any as S.Schema<DeleteGroupsRequest>;
 
 export interface DeleteGroupsResponse {}
 export const DeleteGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupsResponse",
-}) as any as S.Schema<DeleteGroupsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteGroupsResponse" }) as any as S.Schema<DeleteGroupsResponse>;
 
 export interface DeleteGroupsAliasesRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
@@ -1236,26 +933,16 @@ export interface DeleteGroupsAliasesRequest {
   alias: string;
 }
 export const DeleteGroupsAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    alias: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/groups/{groupKey}/aliases/{alias}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteGroupsAliasesRequest",
-}) as any as S.Schema<DeleteGroupsAliasesRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "alias": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/groups/{groupKey}/aliases/{alias}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteGroupsAliasesRequest" }) as any as S.Schema<DeleteGroupsAliasesRequest>;
 
 export interface DeleteGroupsAliasesResponse {}
 export const DeleteGroupsAliasesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupsAliasesResponse",
-}) as any as S.Schema<DeleteGroupsAliasesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteGroupsAliasesResponse" }) as any as S.Schema<DeleteGroupsAliasesResponse>;
 
 export interface DeleteMembersRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
@@ -1264,26 +951,16 @@ export interface DeleteMembersRequest {
   memberKey: string;
 }
 export const DeleteMembersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    memberKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/groups/{groupKey}/members/{memberKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteMembersRequest",
-}) as any as S.Schema<DeleteMembersRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "memberKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/groups/{groupKey}/members/{memberKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteMembersRequest" }) as any as S.Schema<DeleteMembersRequest>;
 
 export interface DeleteMembersResponse {}
 export const DeleteMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMembersResponse",
-}) as any as S.Schema<DeleteMembersResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteMembersResponse" }) as any as S.Schema<DeleteMembersResponse>;
 
 export interface DeleteMobiledevicesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
@@ -1292,26 +969,16 @@ export interface DeleteMobiledevicesRequest {
   resourceId: string;
 }
 export const DeleteMobiledevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    resourceId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteMobiledevicesRequest",
-}) as any as S.Schema<DeleteMobiledevicesRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "resourceId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteMobiledevicesRequest" }) as any as S.Schema<DeleteMobiledevicesRequest>;
 
 export interface DeleteMobiledevicesResponse {}
 export const DeleteMobiledevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMobiledevicesResponse",
-}) as any as S.Schema<DeleteMobiledevicesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteMobiledevicesResponse" }) as any as S.Schema<DeleteMobiledevicesResponse>;
 
 export interface DeleteOrgunitsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
@@ -1320,26 +987,16 @@ export interface DeleteOrgunitsRequest {
   orgUnitPath: string;
 }
 export const DeleteOrgunitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    orgUnitPath: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteOrgunitsRequest",
-}) as any as S.Schema<DeleteOrgunitsRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "orgUnitPath": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteOrgunitsRequest" }) as any as S.Schema<DeleteOrgunitsRequest>;
 
 export interface DeleteOrgunitsResponse {}
 export const DeleteOrgunitsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrgunitsResponse",
-}) as any as S.Schema<DeleteOrgunitsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteOrgunitsResponse" }) as any as S.Schema<DeleteOrgunitsResponse>;
 
 export interface DeleteResourcesBuildingsRequest {
   /** The id of the building to delete. */
@@ -1348,26 +1005,16 @@ export interface DeleteResourcesBuildingsRequest {
   customer: string;
 }
 export const DeleteResourcesBuildingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildingId: S.String.pipe(T.Label()),
-    customer: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteResourcesBuildingsRequest",
-}) as any as S.Schema<DeleteResourcesBuildingsRequest>;
+S.Struct({
+  "buildingId": S.String.pipe(T.Label()),
+  "customer": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteResourcesBuildingsRequest" }) as any as S.Schema<DeleteResourcesBuildingsRequest>;
 
 export interface DeleteResourcesBuildingsResponse {}
 export const DeleteResourcesBuildingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourcesBuildingsResponse",
-}) as any as S.Schema<DeleteResourcesBuildingsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteResourcesBuildingsResponse" }) as any as S.Schema<DeleteResourcesBuildingsResponse>;
 
 export interface DeleteResourcesCalendarsRequest {
   /** The unique ID of the calendar resource to delete. */
@@ -1376,26 +1023,16 @@ export interface DeleteResourcesCalendarsRequest {
   customer: string;
 }
 export const DeleteResourcesCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    calendarResourceId: S.String.pipe(T.Label()),
-    customer: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteResourcesCalendarsRequest",
-}) as any as S.Schema<DeleteResourcesCalendarsRequest>;
+S.Struct({
+  "calendarResourceId": S.String.pipe(T.Label()),
+  "customer": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteResourcesCalendarsRequest" }) as any as S.Schema<DeleteResourcesCalendarsRequest>;
 
 export interface DeleteResourcesCalendarsResponse {}
 export const DeleteResourcesCalendarsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourcesCalendarsResponse",
-}) as any as S.Schema<DeleteResourcesCalendarsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteResourcesCalendarsResponse" }) as any as S.Schema<DeleteResourcesCalendarsResponse>;
 
 export interface DeleteResourcesFeaturesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -1404,26 +1041,16 @@ export interface DeleteResourcesFeaturesRequest {
   featureKey: string;
 }
 export const DeleteResourcesFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    featureKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteResourcesFeaturesRequest",
-}) as any as S.Schema<DeleteResourcesFeaturesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "featureKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/customer/{customer}/resources/features/{featureKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteResourcesFeaturesRequest" }) as any as S.Schema<DeleteResourcesFeaturesRequest>;
 
 export interface DeleteResourcesFeaturesResponse {}
 export const DeleteResourcesFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourcesFeaturesResponse",
-}) as any as S.Schema<DeleteResourcesFeaturesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteResourcesFeaturesResponse" }) as any as S.Schema<DeleteResourcesFeaturesResponse>;
 
 export interface DeleteRoleAssignmentsRequest {
   /** Immutable ID of the role assignment. */
@@ -1432,26 +1059,16 @@ export interface DeleteRoleAssignmentsRequest {
   customer: string;
 }
 export const DeleteRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    roleAssignmentId: S.String.pipe(T.Label()),
-    customer: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/customer/{customer}/roleassignments/{roleAssignmentId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteRoleAssignmentsRequest",
-}) as any as S.Schema<DeleteRoleAssignmentsRequest>;
+S.Struct({
+  "roleAssignmentId": S.String.pipe(T.Label()),
+  "customer": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/customer/{customer}/roleassignments/{roleAssignmentId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteRoleAssignmentsRequest" }) as any as S.Schema<DeleteRoleAssignmentsRequest>;
 
 export interface DeleteRoleAssignmentsResponse {}
 export const DeleteRoleAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRoleAssignmentsResponse",
-}) as any as S.Schema<DeleteRoleAssignmentsResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteRoleAssignmentsResponse" }) as any as S.Schema<DeleteRoleAssignmentsResponse>;
 
 export interface DeleteRolesRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -1460,26 +1077,16 @@ export interface DeleteRolesRequest {
   roleId: string;
 }
 export const DeleteRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    roleId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/customer/{customer}/roles/{roleId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteRolesRequest",
-}) as any as S.Schema<DeleteRolesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "roleId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/customer/{customer}/roles/{roleId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteRolesRequest" }) as any as S.Schema<DeleteRolesRequest>;
 
 export interface DeleteRolesResponse {}
 export const DeleteRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRolesResponse",
-}) as any as S.Schema<DeleteRolesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteRolesResponse" }) as any as S.Schema<DeleteRolesResponse>;
 
 export interface DeleteSchemasRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -1488,26 +1095,16 @@ export interface DeleteSchemasRequest {
   schemaKey: string;
 }
 export const DeleteSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    schemaKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteSchemasRequest",
-}) as any as S.Schema<DeleteSchemasRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "schemaKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/customer/{customerId}/schemas/{schemaKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteSchemasRequest" }) as any as S.Schema<DeleteSchemasRequest>;
 
 export interface DeleteSchemasResponse {}
 export const DeleteSchemasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSchemasResponse",
-}) as any as S.Schema<DeleteSchemasResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteSchemasResponse" }) as any as S.Schema<DeleteSchemasResponse>;
 
 export interface DeleteTokensRequest {
   /** The Client ID of the application the token is issued to. */
@@ -1516,51 +1113,31 @@ export interface DeleteTokensRequest {
   userKey: string;
 }
 export const DeleteTokensRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String.pipe(T.Label()),
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/users/{userKey}/tokens/{clientId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteTokensRequest",
-}) as any as S.Schema<DeleteTokensRequest>;
+S.Struct({
+  "clientId": S.String.pipe(T.Label()),
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/users/{userKey}/tokens/{clientId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteTokensRequest" }) as any as S.Schema<DeleteTokensRequest>;
 
 export interface DeleteTokensResponse {}
 export const DeleteTokensResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTokensResponse",
-}) as any as S.Schema<DeleteTokensResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteTokensResponse" }) as any as S.Schema<DeleteTokensResponse>;
 
 export interface DeleteUsersRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
 export const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/users/{userKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteUsersRequest",
-}) as any as S.Schema<DeleteUsersRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/users/{userKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteUsersRequest" }) as any as S.Schema<DeleteUsersRequest>;
 
 export interface DeleteUsersResponse {}
 export const DeleteUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersResponse",
-}) as any as S.Schema<DeleteUsersResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteUsersResponse" }) as any as S.Schema<DeleteUsersResponse>;
 
 export interface DeleteUsersAliasesRequest {
   /** The alias to be removed. */
@@ -1569,76 +1146,46 @@ export interface DeleteUsersAliasesRequest {
   userKey: string;
 }
 export const DeleteUsersAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.String.pipe(T.Label()),
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/users/{userKey}/aliases/{alias}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteUsersAliasesRequest",
-}) as any as S.Schema<DeleteUsersAliasesRequest>;
+S.Struct({
+  "alias": S.String.pipe(T.Label()),
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/users/{userKey}/aliases/{alias}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteUsersAliasesRequest" }) as any as S.Schema<DeleteUsersAliasesRequest>;
 
 export interface DeleteUsersAliasesResponse {}
 export const DeleteUsersAliasesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersAliasesResponse",
-}) as any as S.Schema<DeleteUsersAliasesResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteUsersAliasesResponse" }) as any as S.Schema<DeleteUsersAliasesResponse>;
 
 export interface DeleteUsersPhotosRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
 export const DeleteUsersPhotosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "admin/directory/v1/users/{userKey}/photos/thumbnail",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteUsersPhotosRequest",
-}) as any as S.Schema<DeleteUsersPhotosRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"admin/directory/v1/users/{userKey}/photos/thumbnail","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "DeleteUsersPhotosRequest" }) as any as S.Schema<DeleteUsersPhotosRequest>;
 
 export interface DeleteUsersPhotosResponse {}
 export const DeleteUsersPhotosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersPhotosResponse",
-}) as any as S.Schema<DeleteUsersPhotosResponse>;
+S.Struct({}),
+).annotate({ identifier: "DeleteUsersPhotosResponse" }) as any as S.Schema<DeleteUsersPhotosResponse>;
 
 export interface GenerateVerificationCodesRequest {
   /** Email or immutable ID of the user */
   userKey: string;
 }
 export const GenerateVerificationCodesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users/{userKey}/verificationCodes/generate",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GenerateVerificationCodesRequest",
-}) as any as S.Schema<GenerateVerificationCodesRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users/{userKey}/verificationCodes/generate","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GenerateVerificationCodesRequest" }) as any as S.Schema<GenerateVerificationCodesRequest>;
 
 export interface GenerateVerificationCodesResponse {}
 export const GenerateVerificationCodesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GenerateVerificationCodesResponse",
-}) as any as S.Schema<GenerateVerificationCodesResponse>;
+S.Struct({}),
+).annotate({ identifier: "GenerateVerificationCodesResponse" }) as any as S.Schema<GenerateVerificationCodesResponse>;
 
 export interface GetAspsRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -1647,16 +1194,10 @@ export interface GetAspsRequest {
   codeId: number;
 }
 export const GetAspsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-    codeId: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/users/{userKey}/asps/{codeId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+  "codeId": S.Number.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/users/{userKey}/asps/{codeId}","baseUrl":"https://admin.googleapis.com/"})),
 ).annotate({ identifier: "GetAspsRequest" }) as any as S.Schema<GetAspsRequest>;
 
 /** An application-specific password (ASP) is used with applications that do not accept a verification code when logging into the application on certain devices. The ASP access code is used instead of the login and password you commonly use when accessing an application through a browser. For more information about ASPs and how to create one, see the [help center](https://support.google.com/a/answer/2537800#asp). */
@@ -1677,18 +1218,18 @@ export interface Asp {
   name?: string;
 }
 export const Asp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeId: S.optional(S.Number),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    userKey: S.optional(S.String),
-    lastTimeUsed: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "codeId": S.optional(S.Number),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "creationTime": S.optional(S.String),
+  "userKey": S.optional(S.String),
+  "lastTimeUsed": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Asp" }) as any as S.Schema<Asp>;
 
-export type GetChromeosdevicesProjectionEnum = "BASIC" | "FULL" | (string & {});
+export type GetChromeosdevicesProjectionEnum = "BASIC" | "FULL";
 export const GetChromeosdevicesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetChromeosdevicesRequest {
@@ -1697,23 +1238,15 @@ export interface GetChromeosdevicesRequest {
   /** The unique ID of the device. The `deviceId`s are returned in the response from the [chromeosdevices.list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list) method. */
   deviceId: string;
   /** Determines whether the response contains the full list of properties or only a subset. */
-  projection?: GetChromeosdevicesProjectionEnum;
+  projection?: GetChromeosdevicesProjectionEnum | (string & {});
 }
 export const GetChromeosdevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    deviceId: S.String.pipe(T.Label()),
-    projection: S.optional(GetChromeosdevicesProjectionEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetChromeosdevicesRequest",
-}) as any as S.Schema<GetChromeosdevicesRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "deviceId": S.String.pipe(T.Label()),
+  "projection": S.optional(GetChromeosdevicesProjectionEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetChromeosdevicesRequest" }) as any as S.Schema<GetChromeosdevicesRequest>;
 
 /** Information about the device's fan. */
 export interface FanInfo {
@@ -1721,15 +1254,13 @@ export interface FanInfo {
   speedRpm?: number;
 }
 export const FanInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    speedRpm: S.optional(S.Number),
-  }),
+S.Struct({
+  "speedRpm": S.optional(S.Number),
+}),
 ).annotate({ identifier: "FanInfo" }) as any as S.Schema<FanInfo>;
 
 export type FanInfoList = ReadonlyArray<FanInfo>;
-export const FanInfoList = /*@__PURE__*/ S.Array(
-  FanInfo,
-) as any as S.Schema<FanInfoList>;
+export const FanInfoList = /*@__PURE__*/ S.Array(FanInfo) as any as S.Schema<FanInfoList>;
 
 export interface ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem {
   /** Time spent in the state since the last reboot. */
@@ -1737,22 +1268,15 @@ export interface ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem {
   /** Name of the state. */
   displayName?: string;
 }
-export const ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sessionDuration: S.optional(S.String),
-      displayName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem",
-  }) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem>;
+export const ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "sessionDuration": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem" }) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem>;
 
-export type ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList =
-  ReadonlyArray<ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem>;
-export const ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList =
-  /*@__PURE__*/ S.Array(
-    ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem,
-  ) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList>;
+export type ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList = ReadonlyArray<ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem>;
+export const ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList>;
 
 export interface ChromeOsDeviceCpuInfoItemLogicalCpusItem {
   /** Maximum frequency the CPU is allowed to run at, by policy. */
@@ -1764,26 +1288,17 @@ export interface ChromeOsDeviceCpuInfoItemLogicalCpusItem {
   /** Idle time since last boot. */
   idleDuration?: string;
 }
-export const ChromeOsDeviceCpuInfoItemLogicalCpusItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxScalingFrequencyKhz: S.optional(S.Number),
-      currentScalingFrequencyKhz: S.optional(S.Number),
-      cStates: S.optional(
-        ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList,
-      ),
-      idleDuration: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ChromeOsDeviceCpuInfoItemLogicalCpusItem",
-}) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItem>;
+export const ChromeOsDeviceCpuInfoItemLogicalCpusItem = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "maxScalingFrequencyKhz": S.optional(S.Number),
+  "currentScalingFrequencyKhz": S.optional(S.Number),
+  "cStates": S.optional(ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList),
+  "idleDuration": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceCpuInfoItemLogicalCpusItem" }) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItem>;
 
-export type ChromeOsDeviceCpuInfoItemLogicalCpusItemList =
-  ReadonlyArray<ChromeOsDeviceCpuInfoItemLogicalCpusItem>;
-export const ChromeOsDeviceCpuInfoItemLogicalCpusItemList =
-  /*@__PURE__*/ S.Array(
-    ChromeOsDeviceCpuInfoItemLogicalCpusItem,
-  ) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItemList>;
+export type ChromeOsDeviceCpuInfoItemLogicalCpusItemList = ReadonlyArray<ChromeOsDeviceCpuInfoItemLogicalCpusItem>;
+export const ChromeOsDeviceCpuInfoItemLogicalCpusItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceCpuInfoItemLogicalCpusItem) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItemList>;
 
 export interface ChromeOsDeviceCpuInfoItem {
   /** The max CPU clock speed in kHz. */
@@ -1796,35 +1311,18 @@ export interface ChromeOsDeviceCpuInfoItem {
   logicalCpus?: ChromeOsDeviceCpuInfoItemLogicalCpusItemList;
 }
 export const ChromeOsDeviceCpuInfoItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxClockSpeedKhz: S.optional(S.Number),
-    model: S.optional(S.String),
-    architecture: S.optional(S.String),
-    logicalCpus: S.optional(ChromeOsDeviceCpuInfoItemLogicalCpusItemList),
-  }),
-).annotate({
-  identifier: "ChromeOsDeviceCpuInfoItem",
-}) as any as S.Schema<ChromeOsDeviceCpuInfoItem>;
+S.Struct({
+  "maxClockSpeedKhz": S.optional(S.Number),
+  "model": S.optional(S.String),
+  "architecture": S.optional(S.String),
+  "logicalCpus": S.optional(ChromeOsDeviceCpuInfoItemLogicalCpusItemList),
+}),
+).annotate({ identifier: "ChromeOsDeviceCpuInfoItem" }) as any as S.Schema<ChromeOsDeviceCpuInfoItem>;
 
-export type ChromeOsDeviceCpuInfoItemList =
-  ReadonlyArray<ChromeOsDeviceCpuInfoItem>;
-export const ChromeOsDeviceCpuInfoItemList = /*@__PURE__*/ S.Array(
-  ChromeOsDeviceCpuInfoItem,
-) as any as S.Schema<ChromeOsDeviceCpuInfoItemList>;
+export type ChromeOsDeviceCpuInfoItemList = ReadonlyArray<ChromeOsDeviceCpuInfoItem>;
+export const ChromeOsDeviceCpuInfoItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceCpuInfoItem) as any as S.Schema<ChromeOsDeviceCpuInfoItemList>;
 
-export type ChromeOsDeviceDeprovisionReasonEnum =
-  | "DEPROVISION_REASON_UNSPECIFIED"
-  | "DEPROVISION_REASON_SAME_MODEL_REPLACEMENT"
-  | "DEPROVISION_REASON_UPGRADE"
-  | "DEPROVISION_REASON_DOMAIN_MOVE"
-  | "DEPROVISION_REASON_SERVICE_EXPIRATION"
-  | "DEPROVISION_REASON_OTHER"
-  | "DEPROVISION_REASON_DIFFERENT_MODEL_REPLACEMENT"
-  | "DEPROVISION_REASON_RETIRING_DEVICE"
-  | "DEPROVISION_REASON_UPGRADE_TRANSFER"
-  | "DEPROVISION_REASON_NOT_REQUIRED"
-  | "DEPROVISION_REASON_REPAIR_CENTER"
-  | (string & {});
+export type ChromeOsDeviceDeprovisionReasonEnum = "DEPROVISION_REASON_UNSPECIFIED" | "DEPROVISION_REASON_SAME_MODEL_REPLACEMENT" | "DEPROVISION_REASON_UPGRADE" | "DEPROVISION_REASON_DOMAIN_MOVE" | "DEPROVISION_REASON_SERVICE_EXPIRATION" | "DEPROVISION_REASON_OTHER" | "DEPROVISION_REASON_DIFFERENT_MODEL_REPLACEMENT" | "DEPROVISION_REASON_RETIRING_DEVICE" | "DEPROVISION_REASON_UPGRADE_TRANSFER" | "DEPROVISION_REASON_NOT_REQUIRED" | "DEPROVISION_REASON_REPAIR_CENTER";
 export const ChromeOsDeviceDeprovisionReasonEnum = /*@__PURE__*/ S.String;
 
 export interface ChromeOsDeviceRecentUsersItem {
@@ -1834,39 +1332,19 @@ export interface ChromeOsDeviceRecentUsersItem {
   email?: string;
 }
 export const ChromeOsDeviceRecentUsersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChromeOsDeviceRecentUsersItem",
-}) as any as S.Schema<ChromeOsDeviceRecentUsersItem>;
+S.Struct({
+  "type": S.optional(S.String),
+  "email": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceRecentUsersItem" }) as any as S.Schema<ChromeOsDeviceRecentUsersItem>;
 
-export type ChromeOsDeviceRecentUsersItemList =
-  ReadonlyArray<ChromeOsDeviceRecentUsersItem>;
-export const ChromeOsDeviceRecentUsersItemList = /*@__PURE__*/ S.Array(
-  ChromeOsDeviceRecentUsersItem,
-) as any as S.Schema<ChromeOsDeviceRecentUsersItemList>;
+export type ChromeOsDeviceRecentUsersItemList = ReadonlyArray<ChromeOsDeviceRecentUsersItem>;
+export const ChromeOsDeviceRecentUsersItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceRecentUsersItem) as any as S.Schema<ChromeOsDeviceRecentUsersItemList>;
 
-export type ChromeOsDeviceChromeOsTypeEnum =
-  | "chromeOsTypeUnspecified"
-  | "chromeOsFlex"
-  | "chromeOs"
-  | (string & {});
+export type ChromeOsDeviceChromeOsTypeEnum = "chromeOsTypeUnspecified" | "chromeOsFlex" | "chromeOs";
 export const ChromeOsDeviceChromeOsTypeEnum = /*@__PURE__*/ S.String;
 
-export type ChromeOsDeviceDeviceLicenseTypeEnum =
-  | "deviceLicenseTypeUnspecified"
-  | "enterprise"
-  | "enterpriseUpgrade"
-  | "educationUpgrade"
-  | "education"
-  | "kioskUpgrade"
-  | "enterpriseUpgradePerpetual"
-  | "enterpriseUpgradeFixedTerm"
-  | "educationUpgradePerpetual"
-  | "educationUpgradeFixedTerm"
-  | (string & {});
+export type ChromeOsDeviceDeviceLicenseTypeEnum = "deviceLicenseTypeUnspecified" | "enterprise" | "enterpriseUpgrade" | "educationUpgrade" | "education" | "kioskUpgrade" | "enterpriseUpgradePerpetual" | "enterpriseUpgradeFixedTerm" | "educationUpgradePerpetual" | "educationUpgradeFixedTerm";
 export const ChromeOsDeviceDeviceLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ChromeOsDeviceDeviceFilesItem {
@@ -1880,21 +1358,16 @@ export interface ChromeOsDeviceDeviceFilesItem {
   type?: string;
 }
 export const ChromeOsDeviceDeviceFilesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    downloadUrl: S.optional(S.String),
-    createTime: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChromeOsDeviceDeviceFilesItem",
-}) as any as S.Schema<ChromeOsDeviceDeviceFilesItem>;
+S.Struct({
+  "name": S.optional(S.String),
+  "downloadUrl": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "type": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceDeviceFilesItem" }) as any as S.Schema<ChromeOsDeviceDeviceFilesItem>;
 
-export type ChromeOsDeviceDeviceFilesItemList =
-  ReadonlyArray<ChromeOsDeviceDeviceFilesItem>;
-export const ChromeOsDeviceDeviceFilesItemList = /*@__PURE__*/ S.Array(
-  ChromeOsDeviceDeviceFilesItem,
-) as any as S.Schema<ChromeOsDeviceDeviceFilesItemList>;
+export type ChromeOsDeviceDeviceFilesItemList = ReadonlyArray<ChromeOsDeviceDeviceFilesItem>;
+export const ChromeOsDeviceDeviceFilesItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceDeviceFilesItem) as any as S.Schema<ChromeOsDeviceDeviceFilesItemList>;
 
 export interface ChromeOsDeviceActiveTimeRangesItem {
   /** Duration of usage in milliseconds. */
@@ -1903,19 +1376,14 @@ export interface ChromeOsDeviceActiveTimeRangesItem {
   date?: string;
 }
 export const ChromeOsDeviceActiveTimeRangesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activeTime: S.optional(S.Number),
-    date: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChromeOsDeviceActiveTimeRangesItem",
-}) as any as S.Schema<ChromeOsDeviceActiveTimeRangesItem>;
+S.Struct({
+  "activeTime": S.optional(S.Number),
+  "date": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceActiveTimeRangesItem" }) as any as S.Schema<ChromeOsDeviceActiveTimeRangesItem>;
 
-export type ChromeOsDeviceActiveTimeRangesItemList =
-  ReadonlyArray<ChromeOsDeviceActiveTimeRangesItem>;
-export const ChromeOsDeviceActiveTimeRangesItemList = /*@__PURE__*/ S.Array(
-  ChromeOsDeviceActiveTimeRangesItem,
-) as any as S.Schema<ChromeOsDeviceActiveTimeRangesItemList>;
+export type ChromeOsDeviceActiveTimeRangesItemList = ReadonlyArray<ChromeOsDeviceActiveTimeRangesItem>;
+export const ChromeOsDeviceActiveTimeRangesItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceActiveTimeRangesItem) as any as S.Schema<ChromeOsDeviceActiveTimeRangesItemList>;
 
 export interface ChromeOsDeviceScreenshotFilesItem {
   /** File type */
@@ -1928,34 +1396,22 @@ export interface ChromeOsDeviceScreenshotFilesItem {
   name?: string;
 }
 export const ChromeOsDeviceScreenshotFilesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    downloadUrl: S.optional(S.String),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChromeOsDeviceScreenshotFilesItem",
-}) as any as S.Schema<ChromeOsDeviceScreenshotFilesItem>;
+S.Struct({
+  "type": S.optional(S.String),
+  "downloadUrl": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceScreenshotFilesItem" }) as any as S.Schema<ChromeOsDeviceScreenshotFilesItem>;
 
-export type ChromeOsDeviceScreenshotFilesItemList =
-  ReadonlyArray<ChromeOsDeviceScreenshotFilesItem>;
-export const ChromeOsDeviceScreenshotFilesItemList = /*@__PURE__*/ S.Array(
-  ChromeOsDeviceScreenshotFilesItem,
-) as any as S.Schema<ChromeOsDeviceScreenshotFilesItemList>;
+export type ChromeOsDeviceScreenshotFilesItemList = ReadonlyArray<ChromeOsDeviceScreenshotFilesItem>;
+export const ChromeOsDeviceScreenshotFilesItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceScreenshotFilesItem) as any as S.Schema<ChromeOsDeviceScreenshotFilesItemList>;
 
-export type ChromeOsDeviceOsVersionComplianceEnum =
-  | "complianceUnspecified"
-  | "compliant"
-  | "pending"
-  | "notCompliant"
-  | (string & {});
+export type ChromeOsDeviceOsVersionComplianceEnum = "complianceUnspecified" | "compliant" | "pending" | "notCompliant";
 export const ChromeOsDeviceOsVersionComplianceEnum = /*@__PURE__*/ S.String;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 export interface ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem {
   /** Temperature in Celsius degrees. */
@@ -1963,22 +1419,15 @@ export interface ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem {
   /** CPU label */
   label?: string;
 }
-export const ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      temperature: S.optional(S.Number),
-      label: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem",
-  }) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem>;
+export const ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "temperature": S.optional(S.Number),
+  "label": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem" }) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem>;
 
-export type ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList =
-  ReadonlyArray<ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem>;
-export const ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList =
-  /*@__PURE__*/ S.Array(
-    ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem,
-  ) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList>;
+export type ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList = ReadonlyArray<ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem>;
+export const ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList>;
 
 export interface ChromeOsDeviceCpuStatusReportsItem {
   /** Date and time the report was received. */
@@ -1988,22 +1437,15 @@ export interface ChromeOsDeviceCpuStatusReportsItem {
   cpuTemperatureInfo?: ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList;
 }
 export const ChromeOsDeviceCpuStatusReportsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportTime: S.optional(S.String),
-    cpuUtilizationPercentageInfo: S.optional(IntegerList),
-    cpuTemperatureInfo: S.optional(
-      ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList,
-    ),
-  }),
-).annotate({
-  identifier: "ChromeOsDeviceCpuStatusReportsItem",
-}) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItem>;
+S.Struct({
+  "reportTime": S.optional(S.String),
+  "cpuUtilizationPercentageInfo": S.optional(IntegerList),
+  "cpuTemperatureInfo": S.optional(ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList),
+}),
+).annotate({ identifier: "ChromeOsDeviceCpuStatusReportsItem" }) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItem>;
 
-export type ChromeOsDeviceCpuStatusReportsItemList =
-  ReadonlyArray<ChromeOsDeviceCpuStatusReportsItem>;
-export const ChromeOsDeviceCpuStatusReportsItemList = /*@__PURE__*/ S.Array(
-  ChromeOsDeviceCpuStatusReportsItem,
-) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItemList>;
+export type ChromeOsDeviceCpuStatusReportsItemList = ReadonlyArray<ChromeOsDeviceCpuStatusReportsItem>;
+export const ChromeOsDeviceCpuStatusReportsItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceCpuStatusReportsItem) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItemList>;
 
 /** Information about a device's Bluetooth adapter. */
 export interface BluetoothAdapterInfo {
@@ -2013,18 +1455,14 @@ export interface BluetoothAdapterInfo {
   numConnectedDevices?: number;
 }
 export const BluetoothAdapterInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    numConnectedDevices: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BluetoothAdapterInfo",
-}) as any as S.Schema<BluetoothAdapterInfo>;
+S.Struct({
+  "address": S.optional(S.String),
+  "numConnectedDevices": S.optional(S.Number),
+}),
+).annotate({ identifier: "BluetoothAdapterInfo" }) as any as S.Schema<BluetoothAdapterInfo>;
 
 export type BluetoothAdapterInfoList = ReadonlyArray<BluetoothAdapterInfo>;
-export const BluetoothAdapterInfoList = /*@__PURE__*/ S.Array(
-  BluetoothAdapterInfo,
-) as any as S.Schema<BluetoothAdapterInfoList>;
+export const BluetoothAdapterInfoList = /*@__PURE__*/ S.Array(BluetoothAdapterInfo) as any as S.Schema<BluetoothAdapterInfoList>;
 
 export interface ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem {
   /** Volume id */
@@ -2034,43 +1472,29 @@ export interface ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem {
   /** Free disk space [in bytes] */
   storageFree?: string;
 }
-export const ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      volumeId: S.optional(S.String),
-      storageTotal: S.optional(S.String),
-      storageFree: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem",
-  }) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem>;
+export const ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "volumeId": S.optional(S.String),
+  "storageTotal": S.optional(S.String),
+  "storageFree": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem" }) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem>;
 
-export type ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList =
-  ReadonlyArray<ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem>;
-export const ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList =
-  /*@__PURE__*/ S.Array(
-    ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem,
-  ) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList>;
+export type ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList = ReadonlyArray<ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem>;
+export const ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList>;
 
 export interface ChromeOsDeviceDiskVolumeReportsItem {
   /** Disk volumes */
   volumeInfo?: ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList;
 }
 export const ChromeOsDeviceDiskVolumeReportsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    volumeInfo: S.optional(
-      ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList,
-    ),
-  }),
-).annotate({
-  identifier: "ChromeOsDeviceDiskVolumeReportsItem",
-}) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItem>;
+S.Struct({
+  "volumeInfo": S.optional(ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList),
+}),
+).annotate({ identifier: "ChromeOsDeviceDiskVolumeReportsItem" }) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItem>;
 
-export type ChromeOsDeviceDiskVolumeReportsItemList =
-  ReadonlyArray<ChromeOsDeviceDiskVolumeReportsItem>;
-export const ChromeOsDeviceDiskVolumeReportsItemList = /*@__PURE__*/ S.Array(
-  ChromeOsDeviceDiskVolumeReportsItem,
-) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItemList>;
+export type ChromeOsDeviceDiskVolumeReportsItemList = ReadonlyArray<ChromeOsDeviceDiskVolumeReportsItem>;
+export const ChromeOsDeviceDiskVolumeReportsItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceDiskVolumeReportsItem) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItemList>;
 
 /** Represents a data capacity with some amount of current usage in bytes. */
 export interface ByteUsage {
@@ -2080,10 +1504,10 @@ export interface ByteUsage {
   usedBytes?: string;
 }
 export const ByteUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacityBytes: S.optional(S.String),
-    usedBytes: S.optional(S.String),
-  }),
+S.Struct({
+  "capacityBytes": S.optional(S.String),
+  "usedBytes": S.optional(S.String),
+}),
 ).annotate({ identifier: "ByteUsage" }) as any as S.Schema<ByteUsage>;
 
 export interface ChromeOsDeviceSystemRamFreeReportsItem {
@@ -2091,21 +1515,15 @@ export interface ChromeOsDeviceSystemRamFreeReportsItem {
   reportTime?: string;
   systemRamFreeInfo?: StringList;
 }
-export const ChromeOsDeviceSystemRamFreeReportsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      reportTime: S.optional(S.String),
-      systemRamFreeInfo: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "ChromeOsDeviceSystemRamFreeReportsItem",
-}) as any as S.Schema<ChromeOsDeviceSystemRamFreeReportsItem>;
+export const ChromeOsDeviceSystemRamFreeReportsItem = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "reportTime": S.optional(S.String),
+  "systemRamFreeInfo": S.optional(StringList),
+}),
+).annotate({ identifier: "ChromeOsDeviceSystemRamFreeReportsItem" }) as any as S.Schema<ChromeOsDeviceSystemRamFreeReportsItem>;
 
-export type ChromeOsDeviceSystemRamFreeReportsItemList =
-  ReadonlyArray<ChromeOsDeviceSystemRamFreeReportsItem>;
-export const ChromeOsDeviceSystemRamFreeReportsItemList = /*@__PURE__*/ S.Array(
-  ChromeOsDeviceSystemRamFreeReportsItem,
-) as any as S.Schema<ChromeOsDeviceSystemRamFreeReportsItemList>;
+export type ChromeOsDeviceSystemRamFreeReportsItemList = ReadonlyArray<ChromeOsDeviceSystemRamFreeReportsItem>;
+export const ChromeOsDeviceSystemRamFreeReportsItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceSystemRamFreeReportsItem) as any as S.Schema<ChromeOsDeviceSystemRamFreeReportsItemList>;
 
 export interface ChromeOsDeviceLastKnownNetworkItem {
   /** The IP address. */
@@ -2114,19 +1532,14 @@ export interface ChromeOsDeviceLastKnownNetworkItem {
   wanIpAddress?: string;
 }
 export const ChromeOsDeviceLastKnownNetworkItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipAddress: S.optional(S.String),
-    wanIpAddress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChromeOsDeviceLastKnownNetworkItem",
-}) as any as S.Schema<ChromeOsDeviceLastKnownNetworkItem>;
+S.Struct({
+  "ipAddress": S.optional(S.String),
+  "wanIpAddress": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceLastKnownNetworkItem" }) as any as S.Schema<ChromeOsDeviceLastKnownNetworkItem>;
 
-export type ChromeOsDeviceLastKnownNetworkItemList =
-  ReadonlyArray<ChromeOsDeviceLastKnownNetworkItem>;
-export const ChromeOsDeviceLastKnownNetworkItemList = /*@__PURE__*/ S.Array(
-  ChromeOsDeviceLastKnownNetworkItem,
-) as any as S.Schema<ChromeOsDeviceLastKnownNetworkItemList>;
+export type ChromeOsDeviceLastKnownNetworkItemList = ReadonlyArray<ChromeOsDeviceLastKnownNetworkItem>;
+export const ChromeOsDeviceLastKnownNetworkItemList = /*@__PURE__*/ S.Array(ChromeOsDeviceLastKnownNetworkItem) as any as S.Schema<ChromeOsDeviceLastKnownNetworkItemList>;
 
 /** Information about the device's backlights. */
 export interface BacklightInfo {
@@ -2138,24 +1551,17 @@ export interface BacklightInfo {
   brightness?: number;
 }
 export const BacklightInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxBrightness: S.optional(S.Number),
-    path: S.optional(S.String),
-    brightness: S.optional(S.Number),
-  }),
+S.Struct({
+  "maxBrightness": S.optional(S.Number),
+  "path": S.optional(S.String),
+  "brightness": S.optional(S.Number),
+}),
 ).annotate({ identifier: "BacklightInfo" }) as any as S.Schema<BacklightInfo>;
 
 export type BacklightInfoList = ReadonlyArray<BacklightInfo>;
-export const BacklightInfoList = /*@__PURE__*/ S.Array(
-  BacklightInfo,
-) as any as S.Schema<BacklightInfoList>;
+export const BacklightInfoList = /*@__PURE__*/ S.Array(BacklightInfo) as any as S.Schema<BacklightInfoList>;
 
-export type OsUpdateStatusStateEnum =
-  | "updateStateUnspecified"
-  | "updateStateNotStarted"
-  | "updateStateDownloadInProgress"
-  | "updateStateNeedReboot"
-  | (string & {});
+export type OsUpdateStatusStateEnum = "updateStateUnspecified" | "updateStateNotStarted" | "updateStateDownloadInProgress" | "updateStateNeedReboot";
 export const OsUpdateStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains information regarding the current OS update status. */
@@ -2174,14 +1580,14 @@ export interface OsUpdateStatus {
   rebootTime?: string;
 }
 export const OsUpdateStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateTime: S.optional(S.String),
-    updateCheckTime: S.optional(S.String),
-    state: S.optional(OsUpdateStatusStateEnum),
-    targetOsVersion: S.optional(S.String),
-    targetKioskAppVersion: S.optional(S.String),
-    rebootTime: S.optional(S.String),
-  }),
+S.Struct({
+  "updateTime": S.optional(S.String),
+  "updateCheckTime": S.optional(S.String),
+  "state": S.optional(OsUpdateStatusStateEnum),
+  "targetOsVersion": S.optional(S.String),
+  "targetKioskAppVersion": S.optional(S.String),
+  "rebootTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "OsUpdateStatus" }) as any as S.Schema<OsUpdateStatus>;
 
 export interface ChromeOsDeviceTpmVersionInfo {
@@ -2199,17 +1605,15 @@ export interface ChromeOsDeviceTpmVersionInfo {
   firmwareVersion?: string;
 }
 export const ChromeOsDeviceTpmVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    family: S.optional(S.String),
-    specLevel: S.optional(S.String),
-    manufacturer: S.optional(S.String),
-    vendorSpecific: S.optional(S.String),
-    tpmModel: S.optional(S.String),
-    firmwareVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChromeOsDeviceTpmVersionInfo",
-}) as any as S.Schema<ChromeOsDeviceTpmVersionInfo>;
+S.Struct({
+  "family": S.optional(S.String),
+  "specLevel": S.optional(S.String),
+  "manufacturer": S.optional(S.String),
+  "vendorSpecific": S.optional(S.String),
+  "tpmModel": S.optional(S.String),
+  "firmwareVersion": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDeviceTpmVersionInfo" }) as any as S.Schema<ChromeOsDeviceTpmVersionInfo>;
 
 /** Google Chrome devices run on the [Chrome OS](https://support.google.com/chromeos). For more information about common API tasks, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices). */
 export interface ChromeOsDevice {
@@ -2323,64 +1727,62 @@ export interface ChromeOsDevice {
   willAutoRenew?: boolean;
 }
 export const ChromeOsDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notes: S.optional(S.String),
-    lastSync: S.optional(S.String),
-    status: S.optional(S.String),
-    macAddress: S.optional(S.String),
-    fanInfo: S.optional(FanInfoList),
-    extendedSupportEnabled: S.optional(S.Boolean),
-    bootMode: S.optional(S.String),
-    cpuInfo: S.optional(ChromeOsDeviceCpuInfoItemList),
-    orderNumber: S.optional(S.String),
-    deprovisionReason: S.optional(ChromeOsDeviceDeprovisionReasonEnum),
-    recentUsers: S.optional(ChromeOsDeviceRecentUsersItemList),
-    dockMacAddress: S.optional(S.String),
-    chromeOsType: S.optional(ChromeOsDeviceChromeOsTypeEnum),
-    deviceLicenseType: S.optional(ChromeOsDeviceDeviceLicenseTypeEnum),
-    deviceId: S.optional(S.String),
-    serialNumber: S.optional(S.String),
-    deviceFiles: S.optional(ChromeOsDeviceDeviceFilesItemList),
-    activeTimeRanges: S.optional(ChromeOsDeviceActiveTimeRangesItemList),
-    screenshotFiles: S.optional(ChromeOsDeviceScreenshotFilesItemList),
-    osVersionCompliance: S.optional(ChromeOsDeviceOsVersionComplianceEnum),
-    etag: S.optional(S.String),
-    systemRamTotal: S.optional(S.String),
-    extendedSupportEligible: S.optional(S.Boolean),
-    extendedSupportStart: S.optional(S.String),
-    osVersion: S.optional(S.String),
-    autoUpdateExpiration: S.optional(S.String),
-    firmwareVersion: S.optional(S.String),
-    autoUpdateThrough: S.optional(S.String),
-    cpuStatusReports: S.optional(ChromeOsDeviceCpuStatusReportsItemList),
-    firstEnrollmentTime: S.optional(S.String),
-    model: S.optional(S.String),
-    annotatedUser: S.optional(S.String),
-    lastEnrollmentTime: S.optional(S.String),
-    bluetoothAdapterInfo: S.optional(BluetoothAdapterInfoList),
-    kind: S.optional(S.String),
-    ethernetMacAddress: S.optional(S.String),
-    diskVolumeReports: S.optional(ChromeOsDeviceDiskVolumeReportsItemList),
-    manufactureDate: S.optional(S.String),
-    diskSpaceUsage: S.optional(ByteUsage),
-    annotatedAssetId: S.optional(S.String),
-    orgUnitPath: S.optional(S.String),
-    meid: S.optional(S.String),
-    systemRamFreeReports: S.optional(
-      ChromeOsDeviceSystemRamFreeReportsItemList,
-    ),
-    supportEndDate: S.optional(S.String),
-    lastKnownNetwork: S.optional(ChromeOsDeviceLastKnownNetworkItemList),
-    ethernetMacAddress0: S.optional(S.String),
-    orgUnitId: S.optional(S.String),
-    platformVersion: S.optional(S.String),
-    backlightInfo: S.optional(BacklightInfoList),
-    osUpdateStatus: S.optional(OsUpdateStatus),
-    lastDeprovisionTimestamp: S.optional(S.String),
-    tpmVersionInfo: S.optional(ChromeOsDeviceTpmVersionInfo),
-    annotatedLocation: S.optional(S.String),
-    willAutoRenew: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "notes": S.optional(S.String),
+  "lastSync": S.optional(S.String),
+  "status": S.optional(S.String),
+  "macAddress": S.optional(S.String),
+  "fanInfo": S.optional(FanInfoList),
+  "extendedSupportEnabled": S.optional(S.Boolean),
+  "bootMode": S.optional(S.String),
+  "cpuInfo": S.optional(ChromeOsDeviceCpuInfoItemList),
+  "orderNumber": S.optional(S.String),
+  "deprovisionReason": S.optional(ChromeOsDeviceDeprovisionReasonEnum),
+  "recentUsers": S.optional(ChromeOsDeviceRecentUsersItemList),
+  "dockMacAddress": S.optional(S.String),
+  "chromeOsType": S.optional(ChromeOsDeviceChromeOsTypeEnum),
+  "deviceLicenseType": S.optional(ChromeOsDeviceDeviceLicenseTypeEnum),
+  "deviceId": S.optional(S.String),
+  "serialNumber": S.optional(S.String),
+  "deviceFiles": S.optional(ChromeOsDeviceDeviceFilesItemList),
+  "activeTimeRanges": S.optional(ChromeOsDeviceActiveTimeRangesItemList),
+  "screenshotFiles": S.optional(ChromeOsDeviceScreenshotFilesItemList),
+  "osVersionCompliance": S.optional(ChromeOsDeviceOsVersionComplianceEnum),
+  "etag": S.optional(S.String),
+  "systemRamTotal": S.optional(S.String),
+  "extendedSupportEligible": S.optional(S.Boolean),
+  "extendedSupportStart": S.optional(S.String),
+  "osVersion": S.optional(S.String),
+  "autoUpdateExpiration": S.optional(S.String),
+  "firmwareVersion": S.optional(S.String),
+  "autoUpdateThrough": S.optional(S.String),
+  "cpuStatusReports": S.optional(ChromeOsDeviceCpuStatusReportsItemList),
+  "firstEnrollmentTime": S.optional(S.String),
+  "model": S.optional(S.String),
+  "annotatedUser": S.optional(S.String),
+  "lastEnrollmentTime": S.optional(S.String),
+  "bluetoothAdapterInfo": S.optional(BluetoothAdapterInfoList),
+  "kind": S.optional(S.String),
+  "ethernetMacAddress": S.optional(S.String),
+  "diskVolumeReports": S.optional(ChromeOsDeviceDiskVolumeReportsItemList),
+  "manufactureDate": S.optional(S.String),
+  "diskSpaceUsage": S.optional(ByteUsage),
+  "annotatedAssetId": S.optional(S.String),
+  "orgUnitPath": S.optional(S.String),
+  "meid": S.optional(S.String),
+  "systemRamFreeReports": S.optional(ChromeOsDeviceSystemRamFreeReportsItemList),
+  "supportEndDate": S.optional(S.String),
+  "lastKnownNetwork": S.optional(ChromeOsDeviceLastKnownNetworkItemList),
+  "ethernetMacAddress0": S.optional(S.String),
+  "orgUnitId": S.optional(S.String),
+  "platformVersion": S.optional(S.String),
+  "backlightInfo": S.optional(BacklightInfoList),
+  "osUpdateStatus": S.optional(OsUpdateStatus),
+  "lastDeprovisionTimestamp": S.optional(S.String),
+  "tpmVersionInfo": S.optional(ChromeOsDeviceTpmVersionInfo),
+  "annotatedLocation": S.optional(S.String),
+  "willAutoRenew": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "ChromeOsDevice" }) as any as S.Schema<ChromeOsDevice>;
 
 export interface GetCustomerDevicesChromeosCommandsRequest {
@@ -2391,56 +1793,22 @@ export interface GetCustomerDevicesChromeosCommandsRequest {
   /** Immutable. ID of the Google Workspace account. */
   customerId: string;
 }
-export const GetCustomerDevicesChromeosCommandsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deviceId: S.String.pipe(T.Label()),
-      commandId: S.String.pipe(T.Label()),
-      customerId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}/commands/{commandId}",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetCustomerDevicesChromeosCommandsRequest",
-  }) as any as S.Schema<GetCustomerDevicesChromeosCommandsRequest>;
+export const GetCustomerDevicesChromeosCommandsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "deviceId": S.String.pipe(T.Label()),
+  "commandId": S.String.pipe(T.Label()),
+  "customerId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}/commands/{commandId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetCustomerDevicesChromeosCommandsRequest" }) as any as S.Schema<GetCustomerDevicesChromeosCommandsRequest>;
 
-export type DirectoryChromeosdevicesCommandTypeEnum =
-  | "COMMAND_TYPE_UNSPECIFIED"
-  | "REBOOT"
-  | "TAKE_A_SCREENSHOT"
-  | "SET_VOLUME"
-  | "WIPE_USERS"
-  | "REMOTE_POWERWASH"
-  | "DEVICE_START_CRD_SESSION"
-  | "CAPTURE_LOGS"
-  | "FETCH_CRD_AVAILABILITY_INFO"
-  | "FETCH_SUPPORT_PACKET"
-  | (string & {});
+export type DirectoryChromeosdevicesCommandTypeEnum = "COMMAND_TYPE_UNSPECIFIED" | "REBOOT" | "TAKE_A_SCREENSHOT" | "SET_VOLUME" | "WIPE_USERS" | "REMOTE_POWERWASH" | "DEVICE_START_CRD_SESSION" | "CAPTURE_LOGS" | "FETCH_CRD_AVAILABILITY_INFO" | "FETCH_SUPPORT_PACKET";
 export const DirectoryChromeosdevicesCommandTypeEnum = /*@__PURE__*/ S.String;
 
-export type DirectoryChromeosdevicesCommandStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "EXPIRED"
-  | "CANCELLED"
-  | "SENT_TO_CLIENT"
-  | "ACKED_BY_CLIENT"
-  | "EXECUTED_BY_CLIENT"
-  | (string & {});
+export type DirectoryChromeosdevicesCommandStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "EXPIRED" | "CANCELLED" | "SENT_TO_CLIENT" | "ACKED_BY_CLIENT" | "EXECUTED_BY_CLIENT";
 export const DirectoryChromeosdevicesCommandStateEnum = /*@__PURE__*/ S.String;
 
-export type DirectoryChromeosdevicesCommandResultResultEnum =
-  | "COMMAND_RESULT_TYPE_UNSPECIFIED"
-  | "IGNORED"
-  | "FAILURE"
-  | "SUCCESS"
-  | (string & {});
-export const DirectoryChromeosdevicesCommandResultResultEnum =
-  /*@__PURE__*/ S.String;
+export type DirectoryChromeosdevicesCommandResultResultEnum = "COMMAND_RESULT_TYPE_UNSPECIFIED" | "IGNORED" | "FAILURE" | "SUCCESS";
+export const DirectoryChromeosdevicesCommandResultResultEnum = /*@__PURE__*/ S.String;
 
 /** The result of executing a command. */
 export interface DirectoryChromeosdevicesCommandResult {
@@ -2453,17 +1821,14 @@ export interface DirectoryChromeosdevicesCommandResult {
   /** The error message with a short explanation as to why the command failed. Only present if the command failed. */
   errorMessage?: string;
 }
-export const DirectoryChromeosdevicesCommandResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(DirectoryChromeosdevicesCommandResultResultEnum),
-      commandResultPayload: S.optional(S.String),
-      executeTime: S.optional(S.String),
-      errorMessage: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "DirectoryChromeosdevicesCommandResult",
-}) as any as S.Schema<DirectoryChromeosdevicesCommandResult>;
+export const DirectoryChromeosdevicesCommandResult = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "result": S.optional(DirectoryChromeosdevicesCommandResultResultEnum),
+  "commandResultPayload": S.optional(S.String),
+  "executeTime": S.optional(S.String),
+  "errorMessage": S.optional(S.String),
+}),
+).annotate({ identifier: "DirectoryChromeosdevicesCommandResult" }) as any as S.Schema<DirectoryChromeosdevicesCommandResult>;
 
 /** Information regarding a command that was issued to a device. */
 export interface DirectoryChromeosdevicesCommand {
@@ -2483,36 +1848,26 @@ export interface DirectoryChromeosdevicesCommand {
   commandResult?: DirectoryChromeosdevicesCommandResult;
 }
 export const DirectoryChromeosdevicesCommand = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(DirectoryChromeosdevicesCommandTypeEnum),
-    commandId: S.optional(S.String),
-    issueTime: S.optional(S.String),
-    payload: S.optional(S.String),
-    commandExpireTime: S.optional(S.String),
-    state: S.optional(DirectoryChromeosdevicesCommandStateEnum),
-    commandResult: S.optional(DirectoryChromeosdevicesCommandResult),
-  }),
-).annotate({
-  identifier: "DirectoryChromeosdevicesCommand",
-}) as any as S.Schema<DirectoryChromeosdevicesCommand>;
+S.Struct({
+  "type": S.optional(DirectoryChromeosdevicesCommandTypeEnum),
+  "commandId": S.optional(S.String),
+  "issueTime": S.optional(S.String),
+  "payload": S.optional(S.String),
+  "commandExpireTime": S.optional(S.String),
+  "state": S.optional(DirectoryChromeosdevicesCommandStateEnum),
+  "commandResult": S.optional(DirectoryChromeosdevicesCommandResult),
+}),
+).annotate({ identifier: "DirectoryChromeosdevicesCommand" }) as any as S.Schema<DirectoryChromeosdevicesCommand>;
 
 export interface GetCustomersRequest {
   /** Id of the customer to be retrieved */
   customerKey: string;
 }
 export const GetCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customers/{customerKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCustomersRequest",
-}) as any as S.Schema<GetCustomersRequest>;
+S.Struct({
+  "customerKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customers/{customerKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetCustomersRequest" }) as any as S.Schema<GetCustomersRequest>;
 
 export interface CustomerPostalAddress {
   /** The postal code. A postalCode example is a postal zip code such as `10009`. This is in accordance with - http: //portablecontacts.net/draft-spec.html#address_element. */
@@ -2535,20 +1890,18 @@ export interface CustomerPostalAddress {
   addressLine2?: string;
 }
 export const CustomerPostalAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    postalCode: S.optional(S.String),
-    addressLine1: S.optional(S.String),
-    addressLine3: S.optional(S.String),
-    contactName: S.optional(S.String),
-    countryCode: S.optional(S.String),
-    organizationName: S.optional(S.String),
-    locality: S.optional(S.String),
-    region: S.optional(S.String),
-    addressLine2: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerPostalAddress",
-}) as any as S.Schema<CustomerPostalAddress>;
+S.Struct({
+  "postalCode": S.optional(S.String),
+  "addressLine1": S.optional(S.String),
+  "addressLine3": S.optional(S.String),
+  "contactName": S.optional(S.String),
+  "countryCode": S.optional(S.String),
+  "organizationName": S.optional(S.String),
+  "locality": S.optional(S.String),
+  "region": S.optional(S.String),
+  "addressLine2": S.optional(S.String),
+}),
+).annotate({ identifier: "CustomerPostalAddress" }) as any as S.Schema<CustomerPostalAddress>;
 
 export interface Customer {
   /** The unique ID for the customer's Google Workspace account. (Readonly) */
@@ -2571,17 +1924,17 @@ export interface Customer {
   language?: string;
 }
 export const Customer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    phoneNumber: S.optional(S.String),
-    customerDomain: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    alternateEmail: S.optional(S.String),
-    postalAddress: S.optional(CustomerPostalAddress),
-    customerCreationTime: S.optional(S.String),
-    language: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "phoneNumber": S.optional(S.String),
+  "customerDomain": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "alternateEmail": S.optional(S.String),
+  "postalAddress": S.optional(CustomerPostalAddress),
+  "customerCreationTime": S.optional(S.String),
+  "language": S.optional(S.String),
+}),
 ).annotate({ identifier: "Customer" }) as any as S.Schema<Customer>;
 
 export interface GetCustomersChromePrintersRequest {
@@ -2589,37 +1942,20 @@ export interface GetCustomersChromePrintersRequest {
   name: string;
 }
 export const GetCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/{+name}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetCustomersChromePrintersRequest",
-}) as any as S.Schema<GetCustomersChromePrintersRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/{+name}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetCustomersChromePrintersRequest" }) as any as S.Schema<GetCustomersChromePrintersRequest>;
 
 export interface GetCustomersChromePrintServersRequest {
   /** Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{id}` */
   name: string;
 }
-export const GetCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "admin/directory/v1/{+name}",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetCustomersChromePrintServersRequest",
-}) as any as S.Schema<GetCustomersChromePrintServersRequest>;
+export const GetCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/{+name}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetCustomersChromePrintServersRequest" }) as any as S.Schema<GetCustomersChromePrintServersRequest>;
 
 export interface GetDomainAliasesRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
@@ -2628,19 +1964,11 @@ export interface GetDomainAliasesRequest {
   domainAliasName: string;
 }
 export const GetDomainAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    domainAliasName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/domainaliases/{domainAliasName}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetDomainAliasesRequest",
-}) as any as S.Schema<GetDomainAliasesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "domainAliasName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/domainaliases/{domainAliasName}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetDomainAliasesRequest" }) as any as S.Schema<GetDomainAliasesRequest>;
 
 export interface DomainAlias {
   /** Indicates the verification state of a domain alias. (Read-only) */
@@ -2657,14 +1985,14 @@ export interface DomainAlias {
   etag?: string;
 }
 export const DomainAlias = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verified: S.optional(S.Boolean),
-    parentDomainName: S.optional(S.String),
-    domainAliasName: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "verified": S.optional(S.Boolean),
+  "parentDomainName": S.optional(S.String),
+  "domainAliasName": S.optional(S.String),
+  "creationTime": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "DomainAlias" }) as any as S.Schema<DomainAlias>;
 
 export interface GetDomainsRequest {
@@ -2674,24 +2002,14 @@ export interface GetDomainsRequest {
   domainName: string;
 }
 export const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    domainName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/domains/{domainName}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetDomainsRequest",
-}) as any as S.Schema<GetDomainsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "domainName": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/domains/{domainName}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetDomainsRequest" }) as any as S.Schema<GetDomainsRequest>;
 
 export type DomainAliasList = ReadonlyArray<DomainAlias>;
-export const DomainAliasList = /*@__PURE__*/ S.Array(
-  DomainAlias,
-) as any as S.Schema<DomainAliasList>;
+export const DomainAliasList = /*@__PURE__*/ S.Array(DomainAlias) as any as S.Schema<DomainAliasList>;
 
 export interface Domains {
   /** Indicates if the domain is a primary domain (Read-only). */
@@ -2710,15 +2028,15 @@ export interface Domains {
   domainName?: string;
 }
 export const Domains = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isPrimary: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-    domainAliases: S.optional(DomainAliasList),
-    etag: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    verified: S.optional(S.Boolean),
-    domainName: S.optional(S.String),
-  }),
+S.Struct({
+  "isPrimary": S.optional(S.Boolean),
+  "kind": S.optional(S.String),
+  "domainAliases": S.optional(DomainAliasList),
+  "etag": S.optional(S.String),
+  "creationTime": S.optional(S.String),
+  "verified": S.optional(S.Boolean),
+  "domainName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Domains" }) as any as S.Schema<Domains>;
 
 export interface GetGroupsRequest {
@@ -2726,18 +2044,10 @@ export interface GetGroupsRequest {
   groupKey: string;
 }
 export const GetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/groups/{groupKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetGroupsRequest",
-}) as any as S.Schema<GetGroupsRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/groups/{groupKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetGroupsRequest" }) as any as S.Schema<GetGroupsRequest>;
 
 /** Google Groups provide your users the ability to send messages to groups of people using the group's email address. For more information about common tasks, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-groups). For information about other types of groups, see the [Cloud Identity Groups API documentation](https://cloud.google.com/identity/docs/groups). Note: The user calling the API (or being impersonated by a service account) must have an assigned [role](https://developers.google.com/workspace/admin/directory/v1/guides/manage-roles) that includes Admin API Groups permissions, such as Super Admin or Groups Admin. */
 export interface Group {
@@ -2763,18 +2073,18 @@ export interface Group {
   directMembersCount?: string;
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    email: S.optional(S.String),
-    description: S.optional(S.String),
-    adminCreated: S.optional(S.Boolean),
-    aliases: S.optional(StringList),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    nonEditableAliases: S.optional(StringList),
-    id: S.optional(S.String),
-    directMembersCount: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "email": S.optional(S.String),
+  "description": S.optional(S.String),
+  "adminCreated": S.optional(S.Boolean),
+  "aliases": S.optional(StringList),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "nonEditableAliases": S.optional(StringList),
+  "id": S.optional(S.String),
+  "directMembersCount": S.optional(S.String),
+}),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 export interface GetMembersRequest {
@@ -2784,19 +2094,11 @@ export interface GetMembersRequest {
   memberKey: string;
 }
 export const GetMembersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    memberKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/groups/{groupKey}/members/{memberKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetMembersRequest",
-}) as any as S.Schema<GetMembersRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "memberKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/groups/{groupKey}/members/{memberKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetMembersRequest" }) as any as S.Schema<GetMembersRequest>;
 
 /** A Google Groups member can be a user or another group. This member can be inside or outside of your account's domains. For more information about common group member tasks, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-group-members). */
 export interface Member {
@@ -2818,19 +2120,19 @@ export interface Member {
   type?: string;
 }
 export const Member = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    role: S.optional(S.String),
-    id: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    delivery_settings: S.optional(S.String),
-    status: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
+S.Struct({
+  "email": S.optional(S.String),
+  "role": S.optional(S.String),
+  "id": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "delivery_settings": S.optional(S.String),
+  "status": S.optional(S.String),
+  "type": S.optional(S.String),
+}),
 ).annotate({ identifier: "Member" }) as any as S.Schema<Member>;
 
-export type GetMobiledevicesProjectionEnum = "BASIC" | "FULL" | (string & {});
+export type GetMobiledevicesProjectionEnum = "BASIC" | "FULL";
 export const GetMobiledevicesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetMobiledevicesRequest {
@@ -2839,23 +2141,15 @@ export interface GetMobiledevicesRequest {
   /** The unique ID the API service uses to identify the mobile device. */
   resourceId: string;
   /** Restrict information returned to a set of selected fields. */
-  projection?: GetMobiledevicesProjectionEnum;
+  projection?: GetMobiledevicesProjectionEnum | (string & {});
 }
 export const GetMobiledevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    resourceId: S.String.pipe(T.Label()),
-    projection: S.optional(GetMobiledevicesProjectionEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetMobiledevicesRequest",
-}) as any as S.Schema<GetMobiledevicesRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "resourceId": S.String.pipe(T.Label()),
+  "projection": S.optional(GetMobiledevicesProjectionEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetMobiledevicesRequest" }) as any as S.Schema<GetMobiledevicesRequest>;
 
 export interface MobileDeviceApplicationsItem {
   /** The application's version name. An example is `3.2-140714`. */
@@ -2870,22 +2164,17 @@ export interface MobileDeviceApplicationsItem {
   permission?: StringList;
 }
 export const MobileDeviceApplicationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionName: S.optional(S.String),
-    versionCode: S.optional(S.Number),
-    displayName: S.optional(S.String),
-    packageName: S.optional(S.String),
-    permission: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "MobileDeviceApplicationsItem",
-}) as any as S.Schema<MobileDeviceApplicationsItem>;
+S.Struct({
+  "versionName": S.optional(S.String),
+  "versionCode": S.optional(S.Number),
+  "displayName": S.optional(S.String),
+  "packageName": S.optional(S.String),
+  "permission": S.optional(StringList),
+}),
+).annotate({ identifier: "MobileDeviceApplicationsItem" }) as any as S.Schema<MobileDeviceApplicationsItem>;
 
-export type MobileDeviceApplicationsItemList =
-  ReadonlyArray<MobileDeviceApplicationsItem>;
-export const MobileDeviceApplicationsItemList = /*@__PURE__*/ S.Array(
-  MobileDeviceApplicationsItem,
-) as any as S.Schema<MobileDeviceApplicationsItemList>;
+export type MobileDeviceApplicationsItemList = ReadonlyArray<MobileDeviceApplicationsItem>;
+export const MobileDeviceApplicationsItemList = /*@__PURE__*/ S.Array(MobileDeviceApplicationsItem) as any as S.Schema<MobileDeviceApplicationsItemList>;
 
 /** Google Workspace Mobile Management includes Android, [Google Sync](https://support.google.com/a/answer/135937), and iOS devices. For more information about common group mobile device API tasks, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-devices.html). */
 export interface MobileDevice {
@@ -2971,48 +2260,48 @@ export interface MobileDevice {
   basebandVersion?: string;
 }
 export const MobileDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    otherAccountsInfo: S.optional(StringList),
-    networkOperator: S.optional(S.String),
-    meid: S.optional(S.String),
-    encryptionStatus: S.optional(S.String),
-    securityPatchLevel: S.optional(S.String),
-    hardware: S.optional(S.String),
-    devicePasswordStatus: S.optional(S.String),
-    bootloaderVersion: S.optional(S.String),
-    userAgent: S.optional(S.String),
-    lastSync: S.optional(S.String),
-    releaseVersion: S.optional(S.String),
-    status: S.optional(S.String),
-    managedAccountIsOnOwnerProfile: S.optional(S.Boolean),
-    brand: S.optional(S.String),
-    model: S.optional(S.String),
-    os: S.optional(S.String),
-    adbStatus: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-    supportsWorkProfile: S.optional(S.Boolean),
-    deviceCompromisedStatus: S.optional(S.String),
-    privilege: S.optional(S.String),
-    name: S.optional(StringList),
-    buildNumber: S.optional(S.String),
-    firstSync: S.optional(S.String),
-    applications: S.optional(MobileDeviceApplicationsItemList),
-    serialNumber: S.optional(S.String),
-    defaultLanguage: S.optional(S.String),
-    unknownSourcesStatus: S.optional(S.Boolean),
-    manufacturer: S.optional(S.String),
-    imei: S.optional(S.String),
-    developerOptionsStatus: S.optional(S.Boolean),
-    deviceId: S.optional(S.String),
-    email: S.optional(StringList),
-    wifiMacAddress: S.optional(S.String),
-    kernelVersion: S.optional(S.String),
-    hardwareId: S.optional(S.String),
-    etag: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    basebandVersion: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(S.String),
+  "otherAccountsInfo": S.optional(StringList),
+  "networkOperator": S.optional(S.String),
+  "meid": S.optional(S.String),
+  "encryptionStatus": S.optional(S.String),
+  "securityPatchLevel": S.optional(S.String),
+  "hardware": S.optional(S.String),
+  "devicePasswordStatus": S.optional(S.String),
+  "bootloaderVersion": S.optional(S.String),
+  "userAgent": S.optional(S.String),
+  "lastSync": S.optional(S.String),
+  "releaseVersion": S.optional(S.String),
+  "status": S.optional(S.String),
+  "managedAccountIsOnOwnerProfile": S.optional(S.Boolean),
+  "brand": S.optional(S.String),
+  "model": S.optional(S.String),
+  "os": S.optional(S.String),
+  "adbStatus": S.optional(S.Boolean),
+  "kind": S.optional(S.String),
+  "supportsWorkProfile": S.optional(S.Boolean),
+  "deviceCompromisedStatus": S.optional(S.String),
+  "privilege": S.optional(S.String),
+  "name": S.optional(StringList),
+  "buildNumber": S.optional(S.String),
+  "firstSync": S.optional(S.String),
+  "applications": S.optional(MobileDeviceApplicationsItemList),
+  "serialNumber": S.optional(S.String),
+  "defaultLanguage": S.optional(S.String),
+  "unknownSourcesStatus": S.optional(S.Boolean),
+  "manufacturer": S.optional(S.String),
+  "imei": S.optional(S.String),
+  "developerOptionsStatus": S.optional(S.Boolean),
+  "deviceId": S.optional(S.String),
+  "email": S.optional(StringList),
+  "wifiMacAddress": S.optional(S.String),
+  "kernelVersion": S.optional(S.String),
+  "hardwareId": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "resourceId": S.optional(S.String),
+  "basebandVersion": S.optional(S.String),
+}),
 ).annotate({ identifier: "MobileDevice" }) as any as S.Schema<MobileDevice>;
 
 export interface GetOrgunitsRequest {
@@ -3022,19 +2311,11 @@ export interface GetOrgunitsRequest {
   orgUnitPath: string;
 }
 export const GetOrgunitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    orgUnitPath: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetOrgunitsRequest",
-}) as any as S.Schema<GetOrgunitsRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "orgUnitPath": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetOrgunitsRequest" }) as any as S.Schema<GetOrgunitsRequest>;
 
 /** Managing your account's organizational units allows you to configure your users' access to services and custom settings. For more information about common organizational unit tasks, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-org-units.html). The customer's organizational unit hierarchy is limited to 35 levels of depth. */
 export interface OrgUnit {
@@ -3058,17 +2339,17 @@ export interface OrgUnit {
   orgUnitPath?: string;
 }
 export const OrgUnit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    blockInheritance: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    parentOrgUnitId: S.optional(S.String),
-    orgUnitId: S.optional(S.String),
-    name: S.optional(S.String),
-    parentOrgUnitPath: S.optional(S.String),
-    orgUnitPath: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "blockInheritance": S.optional(S.Boolean),
+  "description": S.optional(S.String),
+  "parentOrgUnitId": S.optional(S.String),
+  "orgUnitId": S.optional(S.String),
+  "name": S.optional(S.String),
+  "parentOrgUnitPath": S.optional(S.String),
+  "orgUnitPath": S.optional(S.String),
+}),
 ).annotate({ identifier: "OrgUnit" }) as any as S.Schema<OrgUnit>;
 
 export interface GetResourcesBuildingsRequest {
@@ -3078,19 +2359,11 @@ export interface GetResourcesBuildingsRequest {
   customer: string;
 }
 export const GetResourcesBuildingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildingId: S.String.pipe(T.Label()),
-    customer: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetResourcesBuildingsRequest",
-}) as any as S.Schema<GetResourcesBuildingsRequest>;
+S.Struct({
+  "buildingId": S.String.pipe(T.Label()),
+  "customer": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetResourcesBuildingsRequest" }) as any as S.Schema<GetResourcesBuildingsRequest>;
 
 /** Public API: Resources.buildings */
 export interface BuildingCoordinates {
@@ -3100,13 +2373,11 @@ export interface BuildingCoordinates {
   latitude?: number;
 }
 export const BuildingCoordinates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    longitude: S.optional(S.Number),
-    latitude: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BuildingCoordinates",
-}) as any as S.Schema<BuildingCoordinates>;
+S.Struct({
+  "longitude": S.optional(S.Number),
+  "latitude": S.optional(S.Number),
+}),
+).annotate({ identifier: "BuildingCoordinates" }) as any as S.Schema<BuildingCoordinates>;
 
 /** Public API: Resources.buildings */
 export interface BuildingAddress {
@@ -3126,18 +2397,16 @@ export interface BuildingAddress {
   sublocality?: string;
 }
 export const BuildingAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageCode: S.optional(S.String),
-    postalCode: S.optional(S.String),
-    locality: S.optional(S.String),
-    administrativeArea: S.optional(S.String),
-    addressLines: S.optional(StringList),
-    regionCode: S.optional(S.String),
-    sublocality: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BuildingAddress",
-}) as any as S.Schema<BuildingAddress>;
+S.Struct({
+  "languageCode": S.optional(S.String),
+  "postalCode": S.optional(S.String),
+  "locality": S.optional(S.String),
+  "administrativeArea": S.optional(S.String),
+  "addressLines": S.optional(StringList),
+  "regionCode": S.optional(S.String),
+  "sublocality": S.optional(S.String),
+}),
+).annotate({ identifier: "BuildingAddress" }) as any as S.Schema<BuildingAddress>;
 
 /** Public API: Resources.buildings */
 export interface Building {
@@ -3159,16 +2428,16 @@ export interface Building {
   etags?: string;
 }
 export const Building = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coordinates: S.optional(BuildingCoordinates),
-    description: S.optional(S.String),
-    floorNames: S.optional(StringList),
-    buildingId: S.optional(S.String),
-    buildingName: S.optional(S.String),
-    kind: S.optional(S.String),
-    address: S.optional(BuildingAddress),
-    etags: S.optional(S.String),
-  }),
+S.Struct({
+  "coordinates": S.optional(BuildingCoordinates),
+  "description": S.optional(S.String),
+  "floorNames": S.optional(StringList),
+  "buildingId": S.optional(S.String),
+  "buildingName": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "address": S.optional(BuildingAddress),
+  "etags": S.optional(S.String),
+}),
 ).annotate({ identifier: "Building" }) as any as S.Schema<Building>;
 
 export interface GetResourcesCalendarsRequest {
@@ -3178,19 +2447,11 @@ export interface GetResourcesCalendarsRequest {
   calendarResourceId: string;
 }
 export const GetResourcesCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    calendarResourceId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetResourcesCalendarsRequest",
-}) as any as S.Schema<GetResourcesCalendarsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "calendarResourceId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetResourcesCalendarsRequest" }) as any as S.Schema<GetResourcesCalendarsRequest>;
 
 /** Public API: Resources.calendars */
 export interface CalendarResource {
@@ -3226,26 +2487,24 @@ export interface CalendarResource {
   featureInstances?: unknown;
 }
 export const CalendarResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceCategory: S.optional(S.String),
-    kind: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    floorSection: S.optional(S.String),
-    resourceName: S.optional(S.String),
-    etags: S.optional(S.String),
-    resourceEmail: S.optional(S.String),
-    floorName: S.optional(S.String),
-    buildingId: S.optional(S.String),
-    resourceDescription: S.optional(S.String),
-    capacity: S.optional(S.Number),
-    generatedResourceName: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    userVisibleDescription: S.optional(S.String),
-    featureInstances: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "CalendarResource",
-}) as any as S.Schema<CalendarResource>;
+S.Struct({
+  "resourceCategory": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "resourceId": S.optional(S.String),
+  "floorSection": S.optional(S.String),
+  "resourceName": S.optional(S.String),
+  "etags": S.optional(S.String),
+  "resourceEmail": S.optional(S.String),
+  "floorName": S.optional(S.String),
+  "buildingId": S.optional(S.String),
+  "resourceDescription": S.optional(S.String),
+  "capacity": S.optional(S.Number),
+  "generatedResourceName": S.optional(S.String),
+  "resourceType": S.optional(S.String),
+  "userVisibleDescription": S.optional(S.String),
+  "featureInstances": S.optional(S.Unknown),
+}),
+).annotate({ identifier: "CalendarResource" }) as any as S.Schema<CalendarResource>;
 
 export interface GetResourcesFeaturesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -3254,19 +2513,11 @@ export interface GetResourcesFeaturesRequest {
   featureKey: string;
 }
 export const GetResourcesFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    featureKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetResourcesFeaturesRequest",
-}) as any as S.Schema<GetResourcesFeaturesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "featureKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/resources/features/{featureKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetResourcesFeaturesRequest" }) as any as S.Schema<GetResourcesFeaturesRequest>;
 
 /** JSON template for Feature object in Directory API. */
 export interface Feature {
@@ -3278,11 +2529,11 @@ export interface Feature {
   kind?: string;
 }
 export const Feature = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etags: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "etags": S.optional(S.String),
+  "name": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Feature" }) as any as S.Schema<Feature>;
 
 export interface GetRoleAssignmentsRequest {
@@ -3292,21 +2543,13 @@ export interface GetRoleAssignmentsRequest {
   customer: string;
 }
 export const GetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    roleAssignmentId: S.String.pipe(T.Label()),
-    customer: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/roleassignments/{roleAssignmentId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetRoleAssignmentsRequest",
-}) as any as S.Schema<GetRoleAssignmentsRequest>;
+S.Struct({
+  "roleAssignmentId": S.String.pipe(T.Label()),
+  "customer": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/roleassignments/{roleAssignmentId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetRoleAssignmentsRequest" }) as any as S.Schema<GetRoleAssignmentsRequest>;
 
-export type RoleAssignmentAssigneeTypeEnum = "user" | "group" | (string & {});
+export type RoleAssignmentAssigneeTypeEnum = "user" | "group";
 export const RoleAssignmentAssigneeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines an assignment of a role. */
@@ -3331,17 +2574,17 @@ export interface RoleAssignment {
   assignedTo?: string;
 }
 export const RoleAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orgUnitId: S.optional(S.String),
-    condition: S.optional(S.String),
-    roleAssignmentId: S.optional(S.String),
-    scopeType: S.optional(S.String),
-    roleId: S.optional(S.String),
-    assigneeType: S.optional(RoleAssignmentAssigneeTypeEnum),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    assignedTo: S.optional(S.String),
-  }),
+S.Struct({
+  "orgUnitId": S.optional(S.String),
+  "condition": S.optional(S.String),
+  "roleAssignmentId": S.optional(S.String),
+  "scopeType": S.optional(S.String),
+  "roleId": S.optional(S.String),
+  "assigneeType": S.optional(RoleAssignmentAssigneeTypeEnum),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "assignedTo": S.optional(S.String),
+}),
 ).annotate({ identifier: "RoleAssignment" }) as any as S.Schema<RoleAssignment>;
 
 export interface GetRolesRequest {
@@ -3351,19 +2594,11 @@ export interface GetRolesRequest {
   roleId: string;
 }
 export const GetRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    roleId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/roles/{roleId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetRolesRequest",
-}) as any as S.Schema<GetRolesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "roleId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/roles/{roleId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetRolesRequest" }) as any as S.Schema<GetRolesRequest>;
 
 export interface RoleRolePrivilegesItem {
   /** The obfuscated ID of the service this privilege is for. This value is returned with [`Privileges.list()`](https://developers.google.com/workspace/admin/directory/v1/reference/privileges/list). */
@@ -3372,18 +2607,14 @@ export interface RoleRolePrivilegesItem {
   privilegeName?: string;
 }
 export const RoleRolePrivilegesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceId: S.optional(S.String),
-    privilegeName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RoleRolePrivilegesItem",
-}) as any as S.Schema<RoleRolePrivilegesItem>;
+S.Struct({
+  "serviceId": S.optional(S.String),
+  "privilegeName": S.optional(S.String),
+}),
+).annotate({ identifier: "RoleRolePrivilegesItem" }) as any as S.Schema<RoleRolePrivilegesItem>;
 
 export type RoleRolePrivilegesItemList = ReadonlyArray<RoleRolePrivilegesItem>;
-export const RoleRolePrivilegesItemList = /*@__PURE__*/ S.Array(
-  RoleRolePrivilegesItem,
-) as any as S.Schema<RoleRolePrivilegesItemList>;
+export const RoleRolePrivilegesItemList = /*@__PURE__*/ S.Array(RoleRolePrivilegesItem) as any as S.Schema<RoleRolePrivilegesItemList>;
 
 export interface Role {
   /** The type of the API resource. This is always `admin#directory#role`. */
@@ -3404,16 +2635,16 @@ export interface Role {
   isSystemRole?: boolean;
 }
 export const Role = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    rolePrivileges: S.optional(RoleRolePrivilegesItemList),
-    isSuperAdminRole: S.optional(S.Boolean),
-    roleDescription: S.optional(S.String),
-    roleId: S.optional(S.String),
-    roleName: S.optional(S.String),
-    isSystemRole: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "rolePrivileges": S.optional(RoleRolePrivilegesItemList),
+  "isSuperAdminRole": S.optional(S.Boolean),
+  "roleDescription": S.optional(S.String),
+  "roleId": S.optional(S.String),
+  "roleName": S.optional(S.String),
+  "isSystemRole": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
 export interface GetSchemasRequest {
@@ -3423,19 +2654,11 @@ export interface GetSchemasRequest {
   schemaKey: string;
 }
 export const GetSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    schemaKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetSchemasRequest",
-}) as any as S.Schema<GetSchemasRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "schemaKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customerId}/schemas/{schemaKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetSchemasRequest" }) as any as S.Schema<GetSchemasRequest>;
 
 export interface SchemaFieldSpecNumericIndexingSpec {
   /** Minimum value of this field. This is meant to be indicative rather than enforced. Values outside this range will still be indexed, but search may not be as performant. */
@@ -3444,13 +2667,11 @@ export interface SchemaFieldSpecNumericIndexingSpec {
   maxValue?: number;
 }
 export const SchemaFieldSpecNumericIndexingSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minValue: S.optional(S.Number),
-    maxValue: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SchemaFieldSpecNumericIndexingSpec",
-}) as any as S.Schema<SchemaFieldSpecNumericIndexingSpec>;
+S.Struct({
+  "minValue": S.optional(S.Number),
+  "maxValue": S.optional(S.Number),
+}),
+).annotate({ identifier: "SchemaFieldSpecNumericIndexingSpec" }) as any as S.Schema<SchemaFieldSpecNumericIndexingSpec>;
 
 /** You can use schemas to add custom fields to user profiles. You can use these fields to store information such as the projects your users work on, their physical locations, their hire dates, or whatever else fits your business needs. For more information, see [Custom User Fields](https://developers.google.com/workspace/admin/directory/v1/guides/manage-schemas). */
 export interface SchemaFieldSpec {
@@ -3476,26 +2697,22 @@ export interface SchemaFieldSpec {
   fieldName?: string;
 }
 export const SchemaFieldSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    multiValued: S.optional(S.Boolean),
-    indexed: S.optional(S.Boolean),
-    numericIndexingSpec: S.optional(SchemaFieldSpecNumericIndexingSpec),
-    displayName: S.optional(S.String),
-    fieldId: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    readAccessType: S.optional(S.String),
-    fieldType: S.optional(S.String),
-    fieldName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SchemaFieldSpec",
-}) as any as S.Schema<SchemaFieldSpec>;
+S.Struct({
+  "multiValued": S.optional(S.Boolean),
+  "indexed": S.optional(S.Boolean),
+  "numericIndexingSpec": S.optional(SchemaFieldSpecNumericIndexingSpec),
+  "displayName": S.optional(S.String),
+  "fieldId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "readAccessType": S.optional(S.String),
+  "fieldType": S.optional(S.String),
+  "fieldName": S.optional(S.String),
+}),
+).annotate({ identifier: "SchemaFieldSpec" }) as any as S.Schema<SchemaFieldSpec>;
 
 export type SchemaFieldSpecList = ReadonlyArray<SchemaFieldSpec>;
-export const SchemaFieldSpecList = /*@__PURE__*/ S.Array(
-  SchemaFieldSpec,
-) as any as S.Schema<SchemaFieldSpecList>;
+export const SchemaFieldSpecList = /*@__PURE__*/ S.Array(SchemaFieldSpec) as any as S.Schema<SchemaFieldSpecList>;
 
 /** The type of API resource. For Schema resources, this is always `admin#directory#schema`. */
 export interface Admin_Schema {
@@ -3513,14 +2730,14 @@ export interface Admin_Schema {
   etag?: string;
 }
 export const Admin_Schema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    schemaName: S.optional(S.String),
-    schemaId: S.optional(S.String),
-    fields: S.optional(SchemaFieldSpecList),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "schemaName": S.optional(S.String),
+  "schemaId": S.optional(S.String),
+  "fields": S.optional(SchemaFieldSpecList),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Admin_Schema" }) as any as S.Schema<Admin_Schema>;
 
 export interface GetTokensRequest {
@@ -3530,19 +2747,11 @@ export interface GetTokensRequest {
   userKey: string;
 }
 export const GetTokensRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String.pipe(T.Label()),
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/users/{userKey}/tokens/{clientId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetTokensRequest",
-}) as any as S.Schema<GetTokensRequest>;
+S.Struct({
+  "clientId": S.String.pipe(T.Label()),
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/users/{userKey}/tokens/{clientId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetTokensRequest" }) as any as S.Schema<GetTokensRequest>;
 
 /** JSON template for token resource in Directory API. */
 export interface Token {
@@ -3564,75 +2773,52 @@ export interface Token {
   scopes?: StringList;
 }
 export const Token = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    anonymous: S.optional(S.Boolean),
-    displayText: S.optional(S.String),
-    nativeApp: S.optional(S.Boolean),
-    clientId: S.optional(S.String),
-    scopes: S.optional(StringList),
-  }),
+S.Struct({
+  "userKey": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "anonymous": S.optional(S.Boolean),
+  "displayText": S.optional(S.String),
+  "nativeApp": S.optional(S.Boolean),
+  "clientId": S.optional(S.String),
+  "scopes": S.optional(StringList),
+}),
 ).annotate({ identifier: "Token" }) as any as S.Schema<Token>;
 
-export type GetUsersProjectionEnum =
-  | "basic"
-  | "custom"
-  | "full"
-  | (string & {});
+export type GetUsersProjectionEnum = "basic" | "custom" | "full";
 export const GetUsersProjectionEnum = /*@__PURE__*/ S.String;
 
-export type GetUsersViewTypeEnum =
-  | "admin_view"
-  | "domain_public"
-  | (string & {});
+export type GetUsersViewTypeEnum = "admin_view" | "domain_public";
 export const GetUsersViewTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetUsersRequest {
   /** A comma-separated list of schema names. All fields from these schemas are fetched. This should only be set when `projection=custom`. */
   customFieldMask?: string;
   /** What subset of fields to fetch for this user. */
-  projection?: GetUsersProjectionEnum;
+  projection?: GetUsersProjectionEnum | (string & {});
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** Whether to fetch the administrator-only or domain-wide public view of the user. For more information, see [Retrieve a user as a non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin). */
-  viewType?: GetUsersViewTypeEnum;
+  viewType?: GetUsersViewTypeEnum | (string & {});
 }
 export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customFieldMask: S.optional(S.String.pipe(T.Query())),
-    projection: S.optional(GetUsersProjectionEnum.pipe(T.Query())),
-    userKey: S.String.pipe(T.Label()),
-    viewType: S.optional(GetUsersViewTypeEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/users/{userKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetUsersRequest",
-}) as any as S.Schema<GetUsersRequest>;
+S.Struct({
+  "customFieldMask": S.optional(S.String.pipe(T.Query())),
+  "projection": S.optional(GetUsersProjectionEnum.pipe(T.Query())),
+  "userKey": S.String.pipe(T.Label()),
+  "viewType": S.optional(GetUsersViewTypeEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/users/{userKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetUsersRequest" }) as any as S.Schema<GetUsersRequest>;
 
 export interface GetUsersPhotosRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
 export const GetUsersPhotosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/users/{userKey}/photos/thumbnail",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetUsersPhotosRequest",
-}) as any as S.Schema<GetUsersPhotosRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/users/{userKey}/photos/thumbnail","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "GetUsersPhotosRequest" }) as any as S.Schema<GetUsersPhotosRequest>;
 
 export interface UserPhoto {
   /** The ID the API uses to uniquely identify the user. */
@@ -3653,16 +2839,16 @@ export interface UserPhoto {
   primaryEmail?: string;
 }
 export const UserPhoto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    photoData: S.optional(S.String),
-    mimeType: S.optional(S.String),
-    width: S.optional(S.Number),
-    height: S.optional(S.Number),
-    primaryEmail: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "photoData": S.optional(S.String),
+  "mimeType": S.optional(S.String),
+  "width": S.optional(S.Number),
+  "height": S.optional(S.Number),
+  "primaryEmail": S.optional(S.String),
+}),
 ).annotate({ identifier: "UserPhoto" }) as any as S.Schema<UserPhoto>;
 
 export interface HasMemberMembersRequest {
@@ -3672,19 +2858,11 @@ export interface HasMemberMembersRequest {
   memberKey: string;
 }
 export const HasMemberMembersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    memberKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/groups/{groupKey}/hasMember/{memberKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "HasMemberMembersRequest",
-}) as any as S.Schema<HasMemberMembersRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "memberKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/groups/{groupKey}/hasMember/{memberKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "HasMemberMembersRequest" }) as any as S.Schema<HasMemberMembersRequest>;
 
 /** JSON template for Has Member response in Directory API. */
 export interface MembersHasMember {
@@ -3692,12 +2870,10 @@ export interface MembersHasMember {
   isMember?: boolean;
 }
 export const MembersHasMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isMember: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "MembersHasMember",
-}) as any as S.Schema<MembersHasMember>;
+S.Struct({
+  "isMember": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "MembersHasMember" }) as any as S.Schema<MembersHasMember>;
 
 export interface InsertDomainAliasesRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -3706,19 +2882,11 @@ export interface InsertDomainAliasesRequest {
   body?: DomainAlias;
 }
 export const InsertDomainAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    body: S.optional(DomainAlias.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customer}/domainaliases",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertDomainAliasesRequest",
-}) as any as S.Schema<InsertDomainAliasesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "body": S.optional(DomainAlias.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customer}/domainaliases","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertDomainAliasesRequest" }) as any as S.Schema<InsertDomainAliasesRequest>;
 
 export interface InsertDomainsRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -3727,37 +2895,21 @@ export interface InsertDomainsRequest {
   body?: Domains;
 }
 export const InsertDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    body: S.optional(Domains.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customer}/domains",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertDomainsRequest",
-}) as any as S.Schema<InsertDomainsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "body": S.optional(Domains.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customer}/domains","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertDomainsRequest" }) as any as S.Schema<InsertDomainsRequest>;
 
 export interface InsertGroupsRequest {
   /** Request body */
   body?: Group;
 }
 export const InsertGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(Group.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/groups",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertGroupsRequest",
-}) as any as S.Schema<InsertGroupsRequest>;
+S.Struct({
+  "body": S.optional(Group.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/groups","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertGroupsRequest" }) as any as S.Schema<InsertGroupsRequest>;
 
 /** JSON template for Alias object in Directory API. */
 export interface Alias {
@@ -3768,13 +2920,13 @@ export interface Alias {
   primaryEmail?: string;
 }
 export const Alias = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    alias: S.optional(S.String),
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    primaryEmail: S.optional(S.String),
-  }),
+S.Struct({
+  "id": S.optional(S.String),
+  "alias": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "primaryEmail": S.optional(S.String),
+}),
 ).annotate({ identifier: "Alias" }) as any as S.Schema<Alias>;
 
 export interface InsertGroupsAliasesRequest {
@@ -3784,19 +2936,11 @@ export interface InsertGroupsAliasesRequest {
   body?: Alias;
 }
 export const InsertGroupsAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    body: S.optional(Alias.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/groups/{groupKey}/aliases",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertGroupsAliasesRequest",
-}) as any as S.Schema<InsertGroupsAliasesRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "body": S.optional(Alias.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/groups/{groupKey}/aliases","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertGroupsAliasesRequest" }) as any as S.Schema<InsertGroupsAliasesRequest>;
 
 export interface InsertMembersRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
@@ -3805,19 +2949,11 @@ export interface InsertMembersRequest {
   body?: Member;
 }
 export const InsertMembersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    body: S.optional(Member.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/groups/{groupKey}/members",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertMembersRequest",
-}) as any as S.Schema<InsertMembersRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "body": S.optional(Member.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/groups/{groupKey}/members","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertMembersRequest" }) as any as S.Schema<InsertMembersRequest>;
 
 export interface InsertOrgunitsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
@@ -3826,53 +2962,30 @@ export interface InsertOrgunitsRequest {
   body?: OrgUnit;
 }
 export const InsertOrgunitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    body: S.optional(OrgUnit.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customerId}/orgunits",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertOrgunitsRequest",
-}) as any as S.Schema<InsertOrgunitsRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "body": S.optional(OrgUnit.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customerId}/orgunits","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertOrgunitsRequest" }) as any as S.Schema<InsertOrgunitsRequest>;
 
-export type InsertResourcesBuildingsCoordinatesSourceEnum =
-  | "CLIENT_SPECIFIED"
-  | "RESOLVED_FROM_ADDRESS"
-  | "SOURCE_UNSPECIFIED"
-  | (string & {});
-export const InsertResourcesBuildingsCoordinatesSourceEnum =
-  /*@__PURE__*/ S.String;
+export type InsertResourcesBuildingsCoordinatesSourceEnum = "CLIENT_SPECIFIED" | "RESOLVED_FROM_ADDRESS" | "SOURCE_UNSPECIFIED";
+export const InsertResourcesBuildingsCoordinatesSourceEnum = /*@__PURE__*/ S.String;
 
 export interface InsertResourcesBuildingsRequest {
   /** Source from which Building.coordinates are derived. */
-  coordinatesSource?: InsertResourcesBuildingsCoordinatesSourceEnum;
+  coordinatesSource?: InsertResourcesBuildingsCoordinatesSourceEnum | (string & {});
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
   /** Request body */
   body?: Building;
 }
 export const InsertResourcesBuildingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coordinatesSource: S.optional(
-      InsertResourcesBuildingsCoordinatesSourceEnum.pipe(T.Query()),
-    ),
-    customer: S.String.pipe(T.Label()),
-    body: S.optional(Building.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customer}/resources/buildings",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertResourcesBuildingsRequest",
-}) as any as S.Schema<InsertResourcesBuildingsRequest>;
+S.Struct({
+  "coordinatesSource": S.optional(InsertResourcesBuildingsCoordinatesSourceEnum.pipe(T.Query())),
+  "customer": S.String.pipe(T.Label()),
+  "body": S.optional(Building.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customer}/resources/buildings","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertResourcesBuildingsRequest" }) as any as S.Schema<InsertResourcesBuildingsRequest>;
 
 export interface InsertResourcesCalendarsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -3881,19 +2994,11 @@ export interface InsertResourcesCalendarsRequest {
   body?: CalendarResource;
 }
 export const InsertResourcesCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    body: S.optional(CalendarResource.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customer}/resources/calendars",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertResourcesCalendarsRequest",
-}) as any as S.Schema<InsertResourcesCalendarsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "body": S.optional(CalendarResource.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customer}/resources/calendars","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertResourcesCalendarsRequest" }) as any as S.Schema<InsertResourcesCalendarsRequest>;
 
 export interface InsertResourcesFeaturesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -3902,19 +3007,11 @@ export interface InsertResourcesFeaturesRequest {
   body?: Feature;
 }
 export const InsertResourcesFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    body: S.optional(Feature.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customer}/resources/features",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertResourcesFeaturesRequest",
-}) as any as S.Schema<InsertResourcesFeaturesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "body": S.optional(Feature.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customer}/resources/features","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertResourcesFeaturesRequest" }) as any as S.Schema<InsertResourcesFeaturesRequest>;
 
 export interface InsertRoleAssignmentsRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -3923,19 +3020,11 @@ export interface InsertRoleAssignmentsRequest {
   body?: RoleAssignment;
 }
 export const InsertRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    body: S.optional(RoleAssignment.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customer}/roleassignments",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertRoleAssignmentsRequest",
-}) as any as S.Schema<InsertRoleAssignmentsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "body": S.optional(RoleAssignment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customer}/roleassignments","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertRoleAssignmentsRequest" }) as any as S.Schema<InsertRoleAssignmentsRequest>;
 
 export interface InsertRolesRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -3944,19 +3033,11 @@ export interface InsertRolesRequest {
   body?: Role;
 }
 export const InsertRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    body: S.optional(Role.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customer}/roles",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertRolesRequest",
-}) as any as S.Schema<InsertRolesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "body": S.optional(Role.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customer}/roles","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertRolesRequest" }) as any as S.Schema<InsertRolesRequest>;
 
 export interface InsertSchemasRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -3965,19 +3046,11 @@ export interface InsertSchemasRequest {
   body?: Admin_Schema;
 }
 export const InsertSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    body: S.optional(Admin_Schema.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customerId}/schemas",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertSchemasRequest",
-}) as any as S.Schema<InsertSchemasRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "body": S.optional(Admin_Schema.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customerId}/schemas","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertSchemasRequest" }) as any as S.Schema<InsertSchemasRequest>;
 
 export interface InsertUsersRequest {
   /** Optional. If set to `true`, the option selected for [handling unmanaged user accounts](https://support.google.com/a/answer/11112794) will apply. Default: `false` */
@@ -3986,19 +3059,11 @@ export interface InsertUsersRequest {
   body?: User;
 }
 export const InsertUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resolveConflictAccount: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(User.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertUsersRequest",
-}) as any as S.Schema<InsertUsersRequest>;
+S.Struct({
+  "resolveConflictAccount": S.optional(S.Boolean.pipe(T.Query())),
+  "body": S.optional(User.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertUsersRequest" }) as any as S.Schema<InsertUsersRequest>;
 
 export interface InsertUsersAliasesRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -4007,78 +3072,43 @@ export interface InsertUsersAliasesRequest {
   body?: Alias;
 }
 export const InsertUsersAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-    body: S.optional(Alias.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users/{userKey}/aliases",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertUsersAliasesRequest",
-}) as any as S.Schema<InsertUsersAliasesRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+  "body": S.optional(Alias.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users/{userKey}/aliases","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InsertUsersAliasesRequest" }) as any as S.Schema<InsertUsersAliasesRequest>;
 
 export interface InvalidateVerificationCodesRequest {
   /** Email or immutable ID of the user */
   userKey: string;
 }
 export const InvalidateVerificationCodesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users/{userKey}/verificationCodes/invalidate",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "InvalidateVerificationCodesRequest",
-}) as any as S.Schema<InvalidateVerificationCodesRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users/{userKey}/verificationCodes/invalidate","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "InvalidateVerificationCodesRequest" }) as any as S.Schema<InvalidateVerificationCodesRequest>;
 
 export interface InvalidateVerificationCodesResponse {}
 export const InvalidateVerificationCodesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InvalidateVerificationCodesResponse",
-}) as any as S.Schema<InvalidateVerificationCodesResponse>;
+S.Struct({}),
+).annotate({ identifier: "InvalidateVerificationCodesResponse" }) as any as S.Schema<InvalidateVerificationCodesResponse>;
 
-export type DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum =
-  | "COMMAND_TYPE_UNSPECIFIED"
-  | "REBOOT"
-  | "TAKE_A_SCREENSHOT"
-  | "SET_VOLUME"
-  | "WIPE_USERS"
-  | "REMOTE_POWERWASH"
-  | "DEVICE_START_CRD_SESSION"
-  | "CAPTURE_LOGS"
-  | "FETCH_CRD_AVAILABILITY_INFO"
-  | "FETCH_SUPPORT_PACKET"
-  | (string & {});
-export const DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum =
-  /*@__PURE__*/ S.String;
+export type DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum = "COMMAND_TYPE_UNSPECIFIED" | "REBOOT" | "TAKE_A_SCREENSHOT" | "SET_VOLUME" | "WIPE_USERS" | "REMOTE_POWERWASH" | "DEVICE_START_CRD_SESSION" | "CAPTURE_LOGS" | "FETCH_CRD_AVAILABILITY_INFO" | "FETCH_SUPPORT_PACKET";
+export const DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum = /*@__PURE__*/ S.String;
 
 /** A request for issuing a command. */
 export interface DirectoryChromeosdevicesIssueCommandRequest {
   /** The type of command. */
-  commandType?: DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum;
+  commandType?: DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum | (string & {});
   /** The payload for the command, provide it only if command supports it. The following commands support adding payload: * `SET_VOLUME`: Payload is a stringified JSON object in the form: { "volume": 50 }. The volume has to be an integer in the range [0,100]. * `DEVICE_START_CRD_SESSION`: Payload is optionally a stringified JSON object in the form: { "ackedUserPresence": true, "crdSessionType": string }. `ackedUserPresence` is a boolean. By default, `ackedUserPresence` is set to `false`. To start a Chrome Remote Desktop session for an active device, set `ackedUserPresence` to `true`. `crdSessionType` can only select from values `private` (which grants the remote admin exclusive control of the ChromeOS device) or `shared` (which allows the admin and the local user to share control of the ChromeOS device). If not set, `crdSessionType` defaults to `shared`. The `FETCH_CRD_AVAILABILITY_INFO` command can be used to determine available session types on the device. * `REBOOT`: Payload is a stringified JSON object in the form: { "user_session_delay_seconds": 300 }. The `user_session_delay_seconds` is the amount of seconds to wait before rebooting the device if a user is logged in. It has to be an integer in the range [0,300]. When payload is not present for reboot, 0 delay is the default. Note: This only applies if an actual user is logged in, including a Guest. If the device is in the login screen or in Kiosk mode the value is not respected and the device immediately reboots. * `FETCH_SUPPORT_PACKET`: Payload is optionally a stringified JSON object in the form: {"supportPacketDetails":{ "issueCaseId": optional_support_case_id_string, "issueDescription": optional_issue_description_string, "requestedDataCollectors": []}} The list of available `data_collector_enums` are as following: Chrome System Information (1), Crash IDs (2), Memory Details (3), UI Hierarchy (4), Additional ChromeOS Platform Logs (5), Device Event (6), Intel WiFi NICs Debug Dump (7), Touch Events (8), Lacros (9), Lacros System Information (10), ChromeOS Flex Logs (11), DBus Details (12), ChromeOS Network Routes (13), ChromeOS Shill (Connection Manager) Logs (14), Policies (15), ChromeOS System State and Logs (16), ChromeOS System Logs (17), ChromeOS Chrome User Logs (18), ChromeOS Bluetooth (19), ChromeOS Connected Input Devices (20), ChromeOS Traffic Counters (21), ChromeOS Virtual Keyboard (22), ChromeOS Network Health (23). See more details in [help article](https://support.google.com/chrome/a?p=remote-log). */
   payload?: string;
 }
-export const DirectoryChromeosdevicesIssueCommandRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      commandType: S.optional(
-        DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum,
-      ),
-      payload: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DirectoryChromeosdevicesIssueCommandRequest",
-  }) as any as S.Schema<DirectoryChromeosdevicesIssueCommandRequest>;
+export const DirectoryChromeosdevicesIssueCommandRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "commandType": S.optional(DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum),
+  "payload": S.optional(S.String),
+}),
+).annotate({ identifier: "DirectoryChromeosdevicesIssueCommandRequest" }) as any as S.Schema<DirectoryChromeosdevicesIssueCommandRequest>;
 
 export interface IssueCommandCustomerDevicesChromeosRequest {
   /** Immutable. ID of the Google Workspace account. */
@@ -4088,56 +3118,34 @@ export interface IssueCommandCustomerDevicesChromeosRequest {
   /** Request body */
   body?: DirectoryChromeosdevicesIssueCommandRequest;
 }
-export const IssueCommandCustomerDevicesChromeosRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerId: S.String.pipe(T.Label()),
-      deviceId: S.String.pipe(T.Label()),
-      body: S.optional(
-        DirectoryChromeosdevicesIssueCommandRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}:issueCommand",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "IssueCommandCustomerDevicesChromeosRequest",
-  }) as any as S.Schema<IssueCommandCustomerDevicesChromeosRequest>;
+export const IssueCommandCustomerDevicesChromeosRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "deviceId": S.String.pipe(T.Label()),
+  "body": S.optional(DirectoryChromeosdevicesIssueCommandRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}:issueCommand","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "IssueCommandCustomerDevicesChromeosRequest" }) as any as S.Schema<IssueCommandCustomerDevicesChromeosRequest>;
 
 /** A response for issuing a command. */
 export interface DirectoryChromeosdevicesIssueCommandResponse {
   /** The unique ID of the issued command, used to retrieve the command status. */
   commandId?: string;
 }
-export const DirectoryChromeosdevicesIssueCommandResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      commandId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DirectoryChromeosdevicesIssueCommandResponse",
-  }) as any as S.Schema<DirectoryChromeosdevicesIssueCommandResponse>;
+export const DirectoryChromeosdevicesIssueCommandResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "commandId": S.optional(S.String),
+}),
+).annotate({ identifier: "DirectoryChromeosdevicesIssueCommandResponse" }) as any as S.Schema<DirectoryChromeosdevicesIssueCommandResponse>;
 
 export interface ListAspsRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
 export const ListAspsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/users/{userKey}/asps",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListAspsRequest",
-}) as any as S.Schema<ListAspsRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/users/{userKey}/asps","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListAspsRequest" }) as any as S.Schema<ListAspsRequest>;
 
 export type AspList = ReadonlyArray<Asp>;
 export const AspList = /*@__PURE__*/ S.Array(Asp) as any as S.Schema<AspList>;
@@ -4151,33 +3159,20 @@ export interface Asps {
   etag?: string;
 }
 export const Asps = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(AspList),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "items": S.optional(AspList),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Asps" }) as any as S.Schema<Asps>;
 
-export type ListChromeosdevicesOrderByEnum =
-  | "annotatedLocation"
-  | "annotatedUser"
-  | "lastSync"
-  | "notes"
-  | "serialNumber"
-  | "status"
-  | (string & {});
+export type ListChromeosdevicesOrderByEnum = "annotatedLocation" | "annotatedUser" | "lastSync" | "notes" | "serialNumber" | "status";
 export const ListChromeosdevicesOrderByEnum = /*@__PURE__*/ S.String;
 
-export type ListChromeosdevicesProjectionEnum =
-  | "BASIC"
-  | "FULL"
-  | (string & {});
+export type ListChromeosdevicesProjectionEnum = "BASIC" | "FULL";
 export const ListChromeosdevicesProjectionEnum = /*@__PURE__*/ S.String;
 
-export type ListChromeosdevicesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListChromeosdevicesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListChromeosdevicesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListChromeosdevicesRequest {
@@ -4190,42 +3185,32 @@ export interface ListChromeosdevicesRequest {
   /** Maximum number of results to return. Value should not exceed 300. */
   maxResults?: number;
   /** Device property to use for sorting results. */
-  orderBy?: ListChromeosdevicesOrderByEnum;
+  orderBy?: ListChromeosdevicesOrderByEnum | (string & {});
   /** The `pageToken` query parameter is used to request the next page of query results. The follow-on request's `pageToken` query parameter is the `nextPageToken` from your previous response. */
   pageToken?: string;
   /** Determines whether the response contains the full list of properties or only a subset. */
-  projection?: ListChromeosdevicesProjectionEnum;
+  projection?: ListChromeosdevicesProjectionEnum | (string & {});
   /** Whether to return results in ascending or descending order. Must be used with the `orderBy` parameter. */
-  sortOrder?: ListChromeosdevicesSortOrderEnum;
+  sortOrder?: ListChromeosdevicesSortOrderEnum | (string & {});
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
   customerId: string;
 }
 export const ListChromeosdevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeChildOrgunits: S.optional(S.Boolean.pipe(T.Query())),
-    orgUnitPath: S.optional(S.String.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(ListChromeosdevicesOrderByEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    projection: S.optional(ListChromeosdevicesProjectionEnum.pipe(T.Query())),
-    sortOrder: S.optional(ListChromeosdevicesSortOrderEnum.pipe(T.Query())),
-    customerId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customerId}/devices/chromeos",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListChromeosdevicesRequest",
-}) as any as S.Schema<ListChromeosdevicesRequest>;
+S.Struct({
+  "includeChildOrgunits": S.optional(S.Boolean.pipe(T.Query())),
+  "orgUnitPath": S.optional(S.String.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(ListChromeosdevicesOrderByEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "projection": S.optional(ListChromeosdevicesProjectionEnum.pipe(T.Query())),
+  "sortOrder": S.optional(ListChromeosdevicesSortOrderEnum.pipe(T.Query())),
+  "customerId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customerId}/devices/chromeos","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListChromeosdevicesRequest" }) as any as S.Schema<ListChromeosdevicesRequest>;
 
 export type ChromeOsDeviceList = ReadonlyArray<ChromeOsDevice>;
-export const ChromeOsDeviceList = /*@__PURE__*/ S.Array(
-  ChromeOsDevice,
-) as any as S.Schema<ChromeOsDeviceList>;
+export const ChromeOsDeviceList = /*@__PURE__*/ S.Array(ChromeOsDevice) as any as S.Schema<ChromeOsDeviceList>;
 
 export interface ChromeOsDevices {
   /** Kind of resource this is. */
@@ -4238,15 +3223,13 @@ export interface ChromeOsDevices {
   nextPageToken?: string;
 }
 export const ChromeOsDevices = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    chromeosdevices: S.optional(ChromeOsDeviceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChromeOsDevices",
-}) as any as S.Schema<ChromeOsDevices>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "chromeosdevices": S.optional(ChromeOsDeviceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ChromeOsDevices" }) as any as S.Schema<ChromeOsDevices>;
 
 export interface ListCustomersChromePrintersRequest {
   /** Organization Unit that we want to list the printers for. When org_unit is not present in the request then all printers of the customer are returned (or filtered). When org_unit is present in the request then only printers available to this OU will be returned (owned or inherited). You may see if printer is owned or inherited for this OU by looking at Printer.org_unit_id. */
@@ -4263,23 +3246,15 @@ export interface ListCustomersChromePrintersRequest {
   filter?: string;
 }
 export const ListCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orgUnitId: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/{+parent}/chrome/printers",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListCustomersChromePrintersRequest",
-}) as any as S.Schema<ListCustomersChromePrintersRequest>;
+S.Struct({
+  "orgUnitId": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/{+parent}/chrome/printers","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListCustomersChromePrintersRequest" }) as any as S.Schema<ListCustomersChromePrintersRequest>;
 
 /** Response for listing printers. */
 export interface ListPrintersResponse {
@@ -4289,13 +3264,11 @@ export interface ListPrintersResponse {
   nextPageToken?: string;
 }
 export const ListPrintersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    printers: S.optional(PrinterList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPrintersResponse",
-}) as any as S.Schema<ListPrintersResponse>;
+S.Struct({
+  "printers": S.optional(PrinterList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPrintersResponse" }) as any as S.Schema<ListPrintersResponse>;
 
 export interface ListCustomersChromePrintServersRequest {
   /** If `org_unit_id` is present in the request, only print servers owned or inherited by the organizational unit (OU) are returned. If the `PrintServer` resource's `org_unit_id` matches the one in the request, the OU owns the server. If `org_unit_id` is not specified in the request, all print servers are returned or filtered against. */
@@ -4311,25 +3284,16 @@ export interface ListCustomersChromePrintServersRequest {
   /** Search query in [Common Expression Language syntax](https://github.com/google/cel-spec). Supported filters are `display_name`, `description`, and `uri`. Example: `printServer.displayName=='marketing-queue'`. */
   filter?: string;
 }
-export const ListCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      orgUnitId: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "admin/directory/v1/{+parent}/chrome/printServers",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListCustomersChromePrintServersRequest",
-}) as any as S.Schema<ListCustomersChromePrintServersRequest>;
+export const ListCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "orgUnitId": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/{+parent}/chrome/printServers","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListCustomersChromePrintServersRequest" }) as any as S.Schema<ListCustomersChromePrintServersRequest>;
 
 export interface ListPrintServersResponse {
   /** A token that can be sent as `page_token` in a request to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -4338,13 +3302,11 @@ export interface ListPrintServersResponse {
   printServers?: PrintServerList;
 }
 export const ListPrintServersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    printServers: S.optional(PrintServerList),
-  }),
-).annotate({
-  identifier: "ListPrintServersResponse",
-}) as any as S.Schema<ListPrintServersResponse>;
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "printServers": S.optional(PrintServerList),
+}),
+).annotate({ identifier: "ListPrintServersResponse" }) as any as S.Schema<ListPrintServersResponse>;
 
 export interface ListDomainAliasesRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
@@ -4353,19 +3315,11 @@ export interface ListDomainAliasesRequest {
   parentDomainName?: string;
 }
 export const ListDomainAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    parentDomainName: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/domainaliases",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListDomainAliasesRequest",
-}) as any as S.Schema<ListDomainAliasesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "parentDomainName": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/domainaliases","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListDomainAliasesRequest" }) as any as S.Schema<ListDomainAliasesRequest>;
 
 export interface DomainAliases {
   /** Kind of resource this is. */
@@ -4376,11 +3330,11 @@ export interface DomainAliases {
   domainAliases?: DomainAliasList;
 }
 export const DomainAliases = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    domainAliases: S.optional(DomainAliasList),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "domainAliases": S.optional(DomainAliasList),
+}),
 ).annotate({ identifier: "DomainAliases" }) as any as S.Schema<DomainAliases>;
 
 export interface ListDomainsRequest {
@@ -4388,23 +3342,13 @@ export interface ListDomainsRequest {
   customer: string;
 }
 export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/domains",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListDomainsRequest",
-}) as any as S.Schema<ListDomainsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/domains","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListDomainsRequest" }) as any as S.Schema<ListDomainsRequest>;
 
 export type DomainsList = ReadonlyArray<Domains>;
-export const DomainsList = /*@__PURE__*/ S.Array(
-  Domains,
-) as any as S.Schema<DomainsList>;
+export const DomainsList = /*@__PURE__*/ S.Array(Domains) as any as S.Schema<DomainsList>;
 
 export interface Domains2 {
   /** A list of domain objects. */
@@ -4415,20 +3359,17 @@ export interface Domains2 {
   etag?: string;
 }
 export const Domains2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domains: S.optional(DomainsList),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "domains": S.optional(DomainsList),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Domains2" }) as any as S.Schema<Domains2>;
 
-export type ListGroupsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListGroupsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListGroupsOrderByEnum = "email" | (string & {});
+export type ListGroupsOrderByEnum = "email";
 export const ListGroupsOrderByEnum = /*@__PURE__*/ S.String;
 
 export interface ListGroupsRequest {
@@ -4443,37 +3384,27 @@ export interface ListGroupsRequest {
   /** Email or immutable ID of the user if only those groups are to be listed, the given user is a member of. If it's an ID, it should match with the ID of the user object. Cannot be used with the `customer` parameter. */
   userKey?: string;
   /** Whether to return results in ascending or descending order. Only of use when orderBy is also used */
-  sortOrder?: ListGroupsSortOrderEnum;
+  sortOrder?: ListGroupsSortOrderEnum | (string & {});
   /** Column to use for sorting results */
-  orderBy?: ListGroupsOrderByEnum;
+  orderBy?: ListGroupsOrderByEnum | (string & {});
   /** Token to specify next page in the list */
   pageToken?: string;
 }
 export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.optional(S.String.pipe(T.Query())),
-    domain: S.optional(S.String.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    userKey: S.optional(S.String.pipe(T.Query())),
-    sortOrder: S.optional(ListGroupsSortOrderEnum.pipe(T.Query())),
-    orderBy: S.optional(ListGroupsOrderByEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/groups",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListGroupsRequest",
-}) as any as S.Schema<ListGroupsRequest>;
+S.Struct({
+  "customer": S.optional(S.String.pipe(T.Query())),
+  "domain": S.optional(S.String.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "userKey": S.optional(S.String.pipe(T.Query())),
+  "sortOrder": S.optional(ListGroupsSortOrderEnum.pipe(T.Query())),
+  "orderBy": S.optional(ListGroupsOrderByEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/groups","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListGroupsRequest" }) as any as S.Schema<ListGroupsRequest>;
 
 export type GroupList = ReadonlyArray<Group>;
-export const GroupList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<GroupList>;
+export const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
 
 export interface Groups {
   /** Token used to access next page of this result. */
@@ -4486,12 +3417,12 @@ export interface Groups {
   groups?: GroupList;
 }
 export const Groups = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    groups: S.optional(GroupList),
-  }),
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "groups": S.optional(GroupList),
+}),
 ).annotate({ identifier: "Groups" }) as any as S.Schema<Groups>;
 
 export interface ListGroupsAliasesRequest {
@@ -4499,23 +3430,13 @@ export interface ListGroupsAliasesRequest {
   groupKey: string;
 }
 export const ListGroupsAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/groups/{groupKey}/aliases",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListGroupsAliasesRequest",
-}) as any as S.Schema<ListGroupsAliasesRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/groups/{groupKey}/aliases","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListGroupsAliasesRequest" }) as any as S.Schema<ListGroupsAliasesRequest>;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 /** JSON response template to list aliases in Directory API. */
 export interface Aliases {
@@ -4524,11 +3445,11 @@ export interface Aliases {
   kind?: string;
 }
 export const Aliases = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aliases: S.optional(DocumentList),
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
+S.Struct({
+  "aliases": S.optional(DocumentList),
+  "etag": S.optional(S.String),
+  "kind": S.optional(S.String),
+}),
 ).annotate({ identifier: "Aliases" }) as any as S.Schema<Aliases>;
 
 export interface ListMembersRequest {
@@ -4544,27 +3465,17 @@ export interface ListMembersRequest {
   pageToken?: string;
 }
 export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    roles: S.optional(S.String.pipe(T.Query())),
-    includeDerivedMembership: S.optional(S.Boolean.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/groups/{groupKey}/members",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListMembersRequest",
-}) as any as S.Schema<ListMembersRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "roles": S.optional(S.String.pipe(T.Query())),
+  "includeDerivedMembership": S.optional(S.Boolean.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/groups/{groupKey}/members","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListMembersRequest" }) as any as S.Schema<ListMembersRequest>;
 
 export type MemberList = ReadonlyArray<Member>;
-export const MemberList = /*@__PURE__*/ S.Array(
-  Member,
-) as any as S.Schema<MemberList>;
+export const MemberList = /*@__PURE__*/ S.Array(Member) as any as S.Schema<MemberList>;
 
 export interface Members {
   /** Token used to access next page of this result. */
@@ -4577,44 +3488,32 @@ export interface Members {
   etag?: string;
 }
 export const Members = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    members: S.optional(MemberList),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "members": S.optional(MemberList),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Members" }) as any as S.Schema<Members>;
 
-export type ListMobiledevicesOrderByEnum =
-  | "deviceId"
-  | "email"
-  | "lastSync"
-  | "model"
-  | "name"
-  | "os"
-  | "status"
-  | "type"
-  | (string & {});
+export type ListMobiledevicesOrderByEnum = "deviceId" | "email" | "lastSync" | "model" | "name" | "os" | "status" | "type";
 export const ListMobiledevicesOrderByEnum = /*@__PURE__*/ S.String;
 
-export type ListMobiledevicesProjectionEnum = "BASIC" | "FULL" | (string & {});
+export type ListMobiledevicesProjectionEnum = "BASIC" | "FULL";
 export const ListMobiledevicesProjectionEnum = /*@__PURE__*/ S.String;
 
-export type ListMobiledevicesSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type ListMobiledevicesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListMobiledevicesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListMobiledevicesRequest {
   /** Device property to use for sorting results. */
-  orderBy?: ListMobiledevicesOrderByEnum;
+  orderBy?: ListMobiledevicesOrderByEnum | (string & {});
   /** Token to specify next page in the list */
   pageToken?: string;
   /** Restrict information returned to a set of selected fields. */
-  projection?: ListMobiledevicesProjectionEnum;
+  projection?: ListMobiledevicesProjectionEnum | (string & {});
   /** Whether to return results in ascending or descending order. Must be used with the `orderBy` parameter. */
-  sortOrder?: ListMobiledevicesSortOrderEnum;
+  sortOrder?: ListMobiledevicesSortOrderEnum | (string & {});
   /** Maximum number of results to return. Max allowed value is 100. */
   maxResults?: number;
   /** Search string in the format given at https://developers.google.com/workspace/admin/directory/v1/search-operators */
@@ -4623,29 +3522,19 @@ export interface ListMobiledevicesRequest {
   customerId: string;
 }
 export const ListMobiledevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderBy: S.optional(ListMobiledevicesOrderByEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    projection: S.optional(ListMobiledevicesProjectionEnum.pipe(T.Query())),
-    sortOrder: S.optional(ListMobiledevicesSortOrderEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
-    customerId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customerId}/devices/mobile",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListMobiledevicesRequest",
-}) as any as S.Schema<ListMobiledevicesRequest>;
+S.Struct({
+  "orderBy": S.optional(ListMobiledevicesOrderByEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "projection": S.optional(ListMobiledevicesProjectionEnum.pipe(T.Query())),
+  "sortOrder": S.optional(ListMobiledevicesSortOrderEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+  "customerId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customerId}/devices/mobile","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListMobiledevicesRequest" }) as any as S.Schema<ListMobiledevicesRequest>;
 
 export type MobileDeviceList = ReadonlyArray<MobileDevice>;
-export const MobileDeviceList = /*@__PURE__*/ S.Array(
-  MobileDevice,
-) as any as S.Schema<MobileDeviceList>;
+export const MobileDeviceList = /*@__PURE__*/ S.Array(MobileDevice) as any as S.Schema<MobileDeviceList>;
 
 export interface MobileDevices {
   /** Token used to access next page of this result. */
@@ -4658,19 +3547,15 @@ export interface MobileDevices {
   mobiledevices?: MobileDeviceList;
 }
 export const MobileDevices = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    mobiledevices: S.optional(MobileDeviceList),
-  }),
+S.Struct({
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "mobiledevices": S.optional(MobileDeviceList),
+}),
 ).annotate({ identifier: "MobileDevices" }) as any as S.Schema<MobileDevices>;
 
-export type ListOrgunitsTypeEnum =
-  | "all"
-  | "children"
-  | "allIncludingParent"
-  | (string & {});
+export type ListOrgunitsTypeEnum = "all" | "children" | "allIncludingParent";
 export const ListOrgunitsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListOrgunitsRequest {
@@ -4679,28 +3564,18 @@ export interface ListOrgunitsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
   customerId: string;
   /** Whether to return all sub-organizations or just immediate children. */
-  type?: ListOrgunitsTypeEnum;
+  type?: ListOrgunitsTypeEnum | (string & {});
 }
 export const ListOrgunitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orgUnitPath: S.optional(S.String.pipe(T.Query())),
-    customerId: S.String.pipe(T.Label()),
-    type: S.optional(ListOrgunitsTypeEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customerId}/orgunits",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListOrgunitsRequest",
-}) as any as S.Schema<ListOrgunitsRequest>;
+S.Struct({
+  "orgUnitPath": S.optional(S.String.pipe(T.Query())),
+  "customerId": S.String.pipe(T.Label()),
+  "type": S.optional(ListOrgunitsTypeEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customerId}/orgunits","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListOrgunitsRequest" }) as any as S.Schema<ListOrgunitsRequest>;
 
 export type OrgUnitList = ReadonlyArray<OrgUnit>;
-export const OrgUnitList = /*@__PURE__*/ S.Array(
-  OrgUnit,
-) as any as S.Schema<OrgUnitList>;
+export const OrgUnitList = /*@__PURE__*/ S.Array(OrgUnit) as any as S.Schema<OrgUnitList>;
 
 export interface OrgUnits {
   /** The type of the API resource. For Org Unit resources, the type is `admin#directory#orgUnits`. */
@@ -4711,11 +3586,11 @@ export interface OrgUnits {
   organizationUnits?: OrgUnitList;
 }
 export const OrgUnits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    organizationUnits: S.optional(OrgUnitList),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "organizationUnits": S.optional(OrgUnitList),
+}),
 ).annotate({ identifier: "OrgUnits" }) as any as S.Schema<OrgUnits>;
 
 export interface ListPrinterModelsCustomersChromePrintersRequest {
@@ -4728,23 +3603,14 @@ export interface ListPrinterModelsCustomersChromePrintersRequest {
   /** Required. The name of the customer who owns this collection of printers. Format: customers/{customer_id} */
   parent: string;
 }
-export const ListPrinterModelsCustomersChromePrintersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "admin/directory/v1/{+parent}/chrome/printers:listPrinterModels",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListPrinterModelsCustomersChromePrintersRequest",
-  }) as any as S.Schema<ListPrinterModelsCustomersChromePrintersRequest>;
+export const ListPrinterModelsCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/{+parent}/chrome/printers:listPrinterModels","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListPrinterModelsCustomersChromePrintersRequest" }) as any as S.Schema<ListPrinterModelsCustomersChromePrintersRequest>;
 
 /** Printer manufacturer and model */
 export interface PrinterModel {
@@ -4756,17 +3622,15 @@ export interface PrinterModel {
   makeAndModel?: string;
 }
 export const PrinterModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manufacturer: S.optional(S.String),
-    displayName: S.optional(S.String),
-    makeAndModel: S.optional(S.String),
-  }),
+S.Struct({
+  "manufacturer": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "makeAndModel": S.optional(S.String),
+}),
 ).annotate({ identifier: "PrinterModel" }) as any as S.Schema<PrinterModel>;
 
 export type PrinterModelList = ReadonlyArray<PrinterModel>;
-export const PrinterModelList = /*@__PURE__*/ S.Array(
-  PrinterModel,
-) as any as S.Schema<PrinterModelList>;
+export const PrinterModelList = /*@__PURE__*/ S.Array(PrinterModel) as any as S.Schema<PrinterModelList>;
 
 /** Response for listing allowed printer models. */
 export interface ListPrinterModelsResponse {
@@ -4776,31 +3640,21 @@ export interface ListPrinterModelsResponse {
   nextPageToken?: string;
 }
 export const ListPrinterModelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    printerModels: S.optional(PrinterModelList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPrinterModelsResponse",
-}) as any as S.Schema<ListPrinterModelsResponse>;
+S.Struct({
+  "printerModels": S.optional(PrinterModelList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListPrinterModelsResponse" }) as any as S.Schema<ListPrinterModelsResponse>;
 
 export interface ListPrivilegesRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customer: string;
 }
 export const ListPrivilegesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/roles/ALL/privileges",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListPrivilegesRequest",
-}) as any as S.Schema<ListPrivilegesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/roles/ALL/privileges","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListPrivilegesRequest" }) as any as S.Schema<ListPrivilegesRequest>;
 
 export interface Privilege {
   /** The name of the privilege. */
@@ -4819,21 +3673,19 @@ export interface Privilege {
   serviceName?: string;
 }
 export const Privilege = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privilegeName: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    isOuScopable: S.optional(S.Boolean),
-    serviceId: S.optional(S.String),
-    childPrivileges: S.optional(S.suspend(() => PrivilegeList)),
-    serviceName: S.optional(S.String),
-  }),
+S.Struct({
+  "privilegeName": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "isOuScopable": S.optional(S.Boolean),
+  "serviceId": S.optional(S.String),
+  "childPrivileges": S.optional(S.suspend(() => PrivilegeList)),
+  "serviceName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Privilege" }) as any as S.Schema<Privilege>;
 
 export type PrivilegeList = ReadonlyArray<Privilege>;
-export const PrivilegeList = /*@__PURE__*/ S.Array(
-  Privilege,
-) as any as S.Schema<PrivilegeList>;
+export const PrivilegeList = /*@__PURE__*/ S.Array(Privilege) as any as S.Schema<PrivilegeList>;
 
 export interface Privileges {
   /** A list of Privilege resources. */
@@ -4844,11 +3696,11 @@ export interface Privileges {
   etag?: string;
 }
 export const Privileges = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(PrivilegeList),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "items": S.optional(PrivilegeList),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Privileges" }) as any as S.Schema<Privileges>;
 
 export interface ListResourcesBuildingsRequest {
@@ -4860,25 +3712,15 @@ export interface ListResourcesBuildingsRequest {
   maxResults?: number;
 }
 export const ListResourcesBuildingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    customer: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/resources/buildings",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListResourcesBuildingsRequest",
-}) as any as S.Schema<ListResourcesBuildingsRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "customer": S.String.pipe(T.Label()),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/resources/buildings","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListResourcesBuildingsRequest" }) as any as S.Schema<ListResourcesBuildingsRequest>;
 
 export type BuildingList = ReadonlyArray<Building>;
-export const BuildingList = /*@__PURE__*/ S.Array(
-  Building,
-) as any as S.Schema<BuildingList>;
+export const BuildingList = /*@__PURE__*/ S.Array(Building) as any as S.Schema<BuildingList>;
 
 /** Public API: Resources.buildings */
 export interface Buildings {
@@ -4892,12 +3734,12 @@ export interface Buildings {
   etag?: string;
 }
 export const Buildings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildings: S.optional(BuildingList),
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "buildings": S.optional(BuildingList),
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Buildings" }) as any as S.Schema<Buildings>;
 
 export interface ListResourcesCalendarsRequest {
@@ -4913,27 +3755,17 @@ export interface ListResourcesCalendarsRequest {
   maxResults?: number;
 }
 export const ListResourcesCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(S.String.pipe(T.Query())),
-    customer: S.String.pipe(T.Label()),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/resources/calendars",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListResourcesCalendarsRequest",
-}) as any as S.Schema<ListResourcesCalendarsRequest>;
+S.Struct({
+  "query": S.optional(S.String.pipe(T.Query())),
+  "customer": S.String.pipe(T.Label()),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/resources/calendars","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListResourcesCalendarsRequest" }) as any as S.Schema<ListResourcesCalendarsRequest>;
 
 export type CalendarResourceList = ReadonlyArray<CalendarResource>;
-export const CalendarResourceList = /*@__PURE__*/ S.Array(
-  CalendarResource,
-) as any as S.Schema<CalendarResourceList>;
+export const CalendarResourceList = /*@__PURE__*/ S.Array(CalendarResource) as any as S.Schema<CalendarResourceList>;
 
 /** Public API: Resources.calendars */
 export interface CalendarResources {
@@ -4947,15 +3779,13 @@ export interface CalendarResources {
   items: CalendarResourceList;
 }
 export const CalendarResources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    items: CalendarResourceList,
-  }),
-).annotate({
-  identifier: "CalendarResources",
-}) as any as S.Schema<CalendarResources>;
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "nextPageToken": S.optional(S.String),
+  "items": CalendarResourceList,
+}),
+).annotate({ identifier: "CalendarResources" }) as any as S.Schema<CalendarResources>;
 
 export interface ListResourcesFeaturesRequest {
   /** Token to specify the next page in the list. */
@@ -4966,25 +3796,15 @@ export interface ListResourcesFeaturesRequest {
   customer: string;
 }
 export const ListResourcesFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    customer: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/resources/features",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListResourcesFeaturesRequest",
-}) as any as S.Schema<ListResourcesFeaturesRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "customer": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/resources/features","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListResourcesFeaturesRequest" }) as any as S.Schema<ListResourcesFeaturesRequest>;
 
 export type FeatureList = ReadonlyArray<Feature>;
-export const FeatureList = /*@__PURE__*/ S.Array(
-  Feature,
-) as any as S.Schema<FeatureList>;
+export const FeatureList = /*@__PURE__*/ S.Array(Feature) as any as S.Schema<FeatureList>;
 
 /** Public API: Resources.features */
 export interface Features {
@@ -4998,12 +3818,12 @@ export interface Features {
   nextPageToken?: string;
 }
 export const Features = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    features: S.optional(FeatureList),
-    nextPageToken: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "features": S.optional(FeatureList),
+  "nextPageToken": S.optional(S.String),
+}),
 ).annotate({ identifier: "Features" }) as any as S.Schema<Features>;
 
 export interface ListRoleAssignmentsRequest {
@@ -5021,28 +3841,18 @@ export interface ListRoleAssignmentsRequest {
   pageToken?: string;
 }
 export const ListRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    roleId: S.optional(S.String.pipe(T.Query())),
-    userKey: S.optional(S.String.pipe(T.Query())),
-    includeIndirectRoleAssignments: S.optional(S.Boolean.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/roleassignments",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListRoleAssignmentsRequest",
-}) as any as S.Schema<ListRoleAssignmentsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "roleId": S.optional(S.String.pipe(T.Query())),
+  "userKey": S.optional(S.String.pipe(T.Query())),
+  "includeIndirectRoleAssignments": S.optional(S.Boolean.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/roleassignments","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListRoleAssignmentsRequest" }) as any as S.Schema<ListRoleAssignmentsRequest>;
 
 export type RoleAssignmentList = ReadonlyArray<RoleAssignment>;
-export const RoleAssignmentList = /*@__PURE__*/ S.Array(
-  RoleAssignment,
-) as any as S.Schema<RoleAssignmentList>;
+export const RoleAssignmentList = /*@__PURE__*/ S.Array(RoleAssignment) as any as S.Schema<RoleAssignmentList>;
 
 export interface RoleAssignments {
   /** A list of RoleAssignment resources. */
@@ -5054,15 +3864,13 @@ export interface RoleAssignments {
   etag?: string;
 }
 export const RoleAssignments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: RoleAssignmentList,
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RoleAssignments",
-}) as any as S.Schema<RoleAssignments>;
+S.Struct({
+  "items": RoleAssignmentList,
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
+).annotate({ identifier: "RoleAssignments" }) as any as S.Schema<RoleAssignments>;
 
 export interface ListRolesRequest {
   /** Token to specify the next page in the list. */
@@ -5073,25 +3881,15 @@ export interface ListRolesRequest {
   customer: string;
 }
 export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    customer: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customer}/roles",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListRolesRequest",
-}) as any as S.Schema<ListRolesRequest>;
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "customer": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customer}/roles","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListRolesRequest" }) as any as S.Schema<ListRolesRequest>;
 
 export type RoleList = ReadonlyArray<Role>;
-export const RoleList = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<RoleList>;
+export const RoleList = /*@__PURE__*/ S.Array(Role) as any as S.Schema<RoleList>;
 
 export interface Roles {
   /** The type of the API resource. This is always `admin#directory#roles`. */
@@ -5103,12 +3901,12 @@ export interface Roles {
   nextPageToken?: string;
 }
 export const Roles = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    items: RoleList,
-    nextPageToken: S.optional(S.String),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "items": RoleList,
+  "nextPageToken": S.optional(S.String),
+}),
 ).annotate({ identifier: "Roles" }) as any as S.Schema<Roles>;
 
 export interface ListSchemasRequest {
@@ -5116,23 +3914,13 @@ export interface ListSchemasRequest {
   customerId: string;
 }
 export const ListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/customer/{customerId}/schemas",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListSchemasRequest",
-}) as any as S.Schema<ListSchemasRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/customer/{customerId}/schemas","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListSchemasRequest" }) as any as S.Schema<ListSchemasRequest>;
 
 export type Admin_SchemaList = ReadonlyArray<Admin_Schema>;
-export const Admin_SchemaList = /*@__PURE__*/ S.Array(
-  Admin_Schema,
-) as any as S.Schema<Admin_SchemaList>;
+export const Admin_SchemaList = /*@__PURE__*/ S.Array(Admin_Schema) as any as S.Schema<Admin_SchemaList>;
 
 /** JSON response template for List Schema operation in Directory API. */
 export interface Schemas {
@@ -5144,11 +3932,11 @@ export interface Schemas {
   schemas?: Admin_SchemaList;
 }
 export const Schemas = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    schemas: S.optional(Admin_SchemaList),
-  }),
+S.Struct({
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "schemas": S.optional(Admin_SchemaList),
+}),
 ).annotate({ identifier: "Schemas" }) as any as S.Schema<Schemas>;
 
 export interface ListTokensRequest {
@@ -5156,23 +3944,13 @@ export interface ListTokensRequest {
   userKey: string;
 }
 export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/users/{userKey}/tokens",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListTokensRequest",
-}) as any as S.Schema<ListTokensRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/users/{userKey}/tokens","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListTokensRequest" }) as any as S.Schema<ListTokensRequest>;
 
 export type TokenList = ReadonlyArray<Token>;
-export const TokenList = /*@__PURE__*/ S.Array(
-  Token,
-) as any as S.Schema<TokenList>;
+export const TokenList = /*@__PURE__*/ S.Array(Token) as any as S.Schema<TokenList>;
 
 /** JSON response template for List tokens operation in Directory API. */
 export interface Tokens {
@@ -5184,50 +3962,33 @@ export interface Tokens {
   etag?: string;
 }
 export const Tokens = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(TokenList),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "items": S.optional(TokenList),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Tokens" }) as any as S.Schema<Tokens>;
 
-export type ListUsersEventEnum =
-  | "add"
-  | "delete"
-  | "makeAdmin"
-  | "undelete"
-  | "update"
-  | (string & {});
+export type ListUsersEventEnum = "add" | "delete" | "makeAdmin" | "undelete" | "update";
 export const ListUsersEventEnum = /*@__PURE__*/ S.String;
 
-export type ListUsersViewTypeEnum =
-  | "admin_view"
-  | "domain_public"
-  | (string & {});
+export type ListUsersViewTypeEnum = "admin_view" | "domain_public";
 export const ListUsersViewTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListUsersOrderByEnum =
-  | "email"
-  | "familyName"
-  | "givenName"
-  | (string & {});
+export type ListUsersOrderByEnum = "email" | "familyName" | "givenName";
 export const ListUsersOrderByEnum = /*@__PURE__*/ S.String;
 
-export type ListUsersProjectionEnum =
-  | "basic"
-  | "custom"
-  | "full"
-  | (string & {});
+export type ListUsersProjectionEnum = "basic" | "custom" | "full";
 export const ListUsersProjectionEnum = /*@__PURE__*/ S.String;
 
-export type ListUsersSortOrderEnum = "ASCENDING" | "DESCENDING" | (string & {});
+export type ListUsersSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListUsersSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListUsersRequest {
   /** A comma-separated list of schema names. All fields from these schemas are fetched. This should only be set when `projection=custom`. */
   customFieldMask?: string;
   /** Event on which subscription is intended (if subscribing) */
-  event?: ListUsersEventEnum;
+  event?: ListUsersEventEnum | (string & {});
   /** Query string for searching user fields. For more information on constructing user queries, see [Search for Users](https://developers.google.com/workspace/admin/directory/v1/guides/search-users). */
   query?: string;
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all users for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
@@ -5235,49 +3996,39 @@ export interface ListUsersRequest {
   /** The domain name. Use this field to get users from only one domain. To return all domains for a customer account, use the `customer` query parameter instead. Either the `customer` or the `domain` parameter must be provided. */
   domain?: string;
   /** Whether to fetch the administrator-only or domain-wide public view of the user. For more information, see [Retrieve a user as a non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin). */
-  viewType?: ListUsersViewTypeEnum;
+  viewType?: ListUsersViewTypeEnum | (string & {});
   /** Maximum number of results to return. */
   maxResults?: number;
   /** Property to use for sorting results. */
-  orderBy?: ListUsersOrderByEnum;
+  orderBy?: ListUsersOrderByEnum | (string & {});
   /** Token to specify next page in the list. The page token is only valid for three days. */
   pageToken?: string;
   /** What subset of fields to fetch for this user. */
-  projection?: ListUsersProjectionEnum;
+  projection?: ListUsersProjectionEnum | (string & {});
   /** If set to `true`, retrieves the list of deleted users. (Default: `false`) */
   showDeleted?: string;
   /** Whether to return results in ascending or descending order, ignoring case. */
-  sortOrder?: ListUsersSortOrderEnum;
+  sortOrder?: ListUsersSortOrderEnum | (string & {});
 }
 export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customFieldMask: S.optional(S.String.pipe(T.Query())),
-    event: S.optional(ListUsersEventEnum.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
-    customer: S.optional(S.String.pipe(T.Query())),
-    domain: S.optional(S.String.pipe(T.Query())),
-    viewType: S.optional(ListUsersViewTypeEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(ListUsersOrderByEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    projection: S.optional(ListUsersProjectionEnum.pipe(T.Query())),
-    showDeleted: S.optional(S.String.pipe(T.Query())),
-    sortOrder: S.optional(ListUsersSortOrderEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/users",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListUsersRequest",
-}) as any as S.Schema<ListUsersRequest>;
+S.Struct({
+  "customFieldMask": S.optional(S.String.pipe(T.Query())),
+  "event": S.optional(ListUsersEventEnum.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+  "customer": S.optional(S.String.pipe(T.Query())),
+  "domain": S.optional(S.String.pipe(T.Query())),
+  "viewType": S.optional(ListUsersViewTypeEnum.pipe(T.Query())),
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "orderBy": S.optional(ListUsersOrderByEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "projection": S.optional(ListUsersProjectionEnum.pipe(T.Query())),
+  "showDeleted": S.optional(S.String.pipe(T.Query())),
+  "sortOrder": S.optional(ListUsersSortOrderEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/users","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type UserList = ReadonlyArray<User>;
-export const UserList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<UserList>;
+export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
 
 export interface Users {
   /** Event that triggered this response (only used in case of Push Response) */
@@ -5292,56 +4043,40 @@ export interface Users {
   etag?: string;
 }
 export const Users = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trigger_event: S.optional(S.String),
-    users: S.optional(UserList),
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "trigger_event": S.optional(S.String),
+  "users": S.optional(UserList),
+  "nextPageToken": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Users" }) as any as S.Schema<Users>;
 
-export type ListUsersAliasesEventEnum = "add" | "delete" | (string & {});
+export type ListUsersAliasesEventEnum = "add" | "delete";
 export const ListUsersAliasesEventEnum = /*@__PURE__*/ S.String;
 
 export interface ListUsersAliasesRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** Events to watch for. */
-  event?: ListUsersAliasesEventEnum;
+  event?: ListUsersAliasesEventEnum | (string & {});
 }
 export const ListUsersAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-    event: S.optional(ListUsersAliasesEventEnum.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/users/{userKey}/aliases",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListUsersAliasesRequest",
-}) as any as S.Schema<ListUsersAliasesRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+  "event": S.optional(ListUsersAliasesEventEnum.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/users/{userKey}/aliases","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListUsersAliasesRequest" }) as any as S.Schema<ListUsersAliasesRequest>;
 
 export interface ListVerificationCodesRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
 export const ListVerificationCodesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "admin/directory/v1/users/{userKey}/verificationCodes",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListVerificationCodesRequest",
-}) as any as S.Schema<ListVerificationCodesRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"admin/directory/v1/users/{userKey}/verificationCodes","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "ListVerificationCodesRequest" }) as any as S.Schema<ListVerificationCodesRequest>;
 
 /** The Directory API allows you to view, generate, and invalidate backup verification codes for a user. */
 export interface VerificationCode {
@@ -5355,20 +4090,16 @@ export interface VerificationCode {
   verificationCode?: string;
 }
 export const VerificationCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    verificationCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VerificationCode",
-}) as any as S.Schema<VerificationCode>;
+S.Struct({
+  "userId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+  "verificationCode": S.optional(S.String),
+}),
+).annotate({ identifier: "VerificationCode" }) as any as S.Schema<VerificationCode>;
 
 export type VerificationCodeList = ReadonlyArray<VerificationCode>;
-export const VerificationCodeList = /*@__PURE__*/ S.Array(
-  VerificationCode,
-) as any as S.Schema<VerificationCodeList>;
+export const VerificationCodeList = /*@__PURE__*/ S.Array(VerificationCode) as any as S.Schema<VerificationCodeList>;
 
 /** JSON response template for list verification codes operation in Directory API. */
 export interface VerificationCodes {
@@ -5380,23 +4111,21 @@ export interface VerificationCodes {
   etag?: string;
 }
 export const VerificationCodes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(VerificationCodeList),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VerificationCodes",
-}) as any as S.Schema<VerificationCodes>;
+S.Struct({
+  "items": S.optional(VerificationCodeList),
+  "kind": S.optional(S.String),
+  "etag": S.optional(S.String),
+}),
+).annotate({ identifier: "VerificationCodes" }) as any as S.Schema<VerificationCodes>;
 
 export interface UserMakeAdmin {
   /** Indicates the administrator status of the user. */
   status?: boolean;
 }
 export const UserMakeAdmin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.Boolean),
-  }),
+S.Struct({
+  "status": S.optional(S.Boolean),
+}),
 ).annotate({ identifier: "UserMakeAdmin" }) as any as S.Schema<UserMakeAdmin>;
 
 export interface MakeAdminUsersRequest {
@@ -5406,38 +4135,26 @@ export interface MakeAdminUsersRequest {
   body?: UserMakeAdmin;
 }
 export const MakeAdminUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-    body: S.optional(UserMakeAdmin.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users/{userKey}/makeAdmin",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "MakeAdminUsersRequest",
-}) as any as S.Schema<MakeAdminUsersRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+  "body": S.optional(UserMakeAdmin.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users/{userKey}/makeAdmin","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "MakeAdminUsersRequest" }) as any as S.Schema<MakeAdminUsersRequest>;
 
 export interface MakeAdminUsersResponse {}
 export const MakeAdminUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MakeAdminUsersResponse",
-}) as any as S.Schema<MakeAdminUsersResponse>;
+S.Struct({}),
+).annotate({ identifier: "MakeAdminUsersResponse" }) as any as S.Schema<MakeAdminUsersResponse>;
 
 export interface ChromeOsMoveDevicesToOu {
   /** Chrome OS devices to be moved to OU */
   deviceIds?: StringList;
 }
 export const ChromeOsMoveDevicesToOu = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ChromeOsMoveDevicesToOu",
-}) as any as S.Schema<ChromeOsMoveDevicesToOu>;
+S.Struct({
+  "deviceIds": S.optional(StringList),
+}),
+).annotate({ identifier: "ChromeOsMoveDevicesToOu" }) as any as S.Schema<ChromeOsMoveDevicesToOu>;
 
 export interface MoveDevicesToOuChromeosdevicesRequest {
   /** Immutable. ID of the Google Workspace account */
@@ -5447,34 +4164,20 @@ export interface MoveDevicesToOuChromeosdevicesRequest {
   /** Request body */
   body?: ChromeOsMoveDevicesToOu;
 }
-export const MoveDevicesToOuChromeosdevicesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customerId: S.String.pipe(T.Label()),
-      orgUnitPath: S.String.pipe(T.Query()),
-      body: S.optional(ChromeOsMoveDevicesToOu.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/moveDevicesToOu",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "MoveDevicesToOuChromeosdevicesRequest",
-}) as any as S.Schema<MoveDevicesToOuChromeosdevicesRequest>;
+export const MoveDevicesToOuChromeosdevicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "orgUnitPath": S.String.pipe(T.Query()),
+  "body": S.optional(ChromeOsMoveDevicesToOu.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customerId}/devices/chromeos/moveDevicesToOu","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "MoveDevicesToOuChromeosdevicesRequest" }) as any as S.Schema<MoveDevicesToOuChromeosdevicesRequest>;
 
 export interface MoveDevicesToOuChromeosdevicesResponse {}
-export const MoveDevicesToOuChromeosdevicesResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "MoveDevicesToOuChromeosdevicesResponse",
-}) as any as S.Schema<MoveDevicesToOuChromeosdevicesResponse>;
+export const MoveDevicesToOuChromeosdevicesResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "MoveDevicesToOuChromeosdevicesResponse" }) as any as S.Schema<MoveDevicesToOuChromeosdevicesResponse>;
 
-export type PatchChromeosdevicesProjectionEnum =
-  | "BASIC"
-  | "FULL"
-  | (string & {});
+export type PatchChromeosdevicesProjectionEnum = "BASIC" | "FULL";
 export const PatchChromeosdevicesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface PatchChromeosdevicesRequest {
@@ -5483,26 +4186,18 @@ export interface PatchChromeosdevicesRequest {
   /** The unique ID of the device. The `deviceId`s are returned in the response from the [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/reference/chromeosdevices/list) method. */
   deviceId: string;
   /** Determines whether the response contains the full list of properties or only a subset. */
-  projection?: PatchChromeosdevicesProjectionEnum;
+  projection?: PatchChromeosdevicesProjectionEnum | (string & {});
   /** Request body */
   body?: ChromeOsDevice;
 }
 export const PatchChromeosdevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    deviceId: S.String.pipe(T.Label()),
-    projection: S.optional(PatchChromeosdevicesProjectionEnum.pipe(T.Query())),
-    body: S.optional(ChromeOsDevice.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchChromeosdevicesRequest",
-}) as any as S.Schema<PatchChromeosdevicesRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "deviceId": S.String.pipe(T.Label()),
+  "projection": S.optional(PatchChromeosdevicesProjectionEnum.pipe(T.Query())),
+  "body": S.optional(ChromeOsDevice.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchChromeosdevicesRequest" }) as any as S.Schema<PatchChromeosdevicesRequest>;
 
 export interface PatchCustomersRequest {
   /** Id of the customer to be updated */
@@ -5511,19 +4206,11 @@ export interface PatchCustomersRequest {
   body?: Customer;
 }
 export const PatchCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerKey: S.String.pipe(T.Label()),
-    body: S.optional(Customer.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/customers/{customerKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchCustomersRequest",
-}) as any as S.Schema<PatchCustomersRequest>;
+S.Struct({
+  "customerKey": S.String.pipe(T.Label()),
+  "body": S.optional(Customer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/customers/{customerKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchCustomersRequest" }) as any as S.Schema<PatchCustomersRequest>;
 
 export interface PatchCustomersChromePrintersRequest {
   /** The list of fields to be updated. Note, some of the fields are read only and cannot be updated. Values for not specified fields will be patched. */
@@ -5536,21 +4223,13 @@ export interface PatchCustomersChromePrintersRequest {
   body?: Printer;
 }
 export const PatchCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    clearMask: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    body: S.optional(Printer.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/{+name}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchCustomersChromePrintersRequest",
-}) as any as S.Schema<PatchCustomersChromePrintersRequest>;
+S.Struct({
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "clearMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Printer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/{+name}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchCustomersChromePrintersRequest" }) as any as S.Schema<PatchCustomersChromePrintersRequest>;
 
 export interface PatchCustomersChromePrintServersRequest {
   /** Identifier. Resource name of the print server. Leave empty when creating. Format: `customers/{customer.id}/printServers/{print_server.id}` */
@@ -5560,22 +4239,13 @@ export interface PatchCustomersChromePrintServersRequest {
   /** Request body */
   body?: PrintServer;
 }
-export const PatchCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(PrintServer.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "admin/directory/v1/{+name}",
-        baseUrl: "https://admin.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "PatchCustomersChromePrintServersRequest",
-}) as any as S.Schema<PatchCustomersChromePrintServersRequest>;
+export const PatchCustomersChromePrintServersRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(PrintServer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/{+name}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchCustomersChromePrintServersRequest" }) as any as S.Schema<PatchCustomersChromePrintServersRequest>;
 
 export interface PatchGroupsRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
@@ -5584,19 +4254,11 @@ export interface PatchGroupsRequest {
   body?: Group;
 }
 export const PatchGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    body: S.optional(Group.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/groups/{groupKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchGroupsRequest",
-}) as any as S.Schema<PatchGroupsRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "body": S.optional(Group.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/groups/{groupKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchGroupsRequest" }) as any as S.Schema<PatchGroupsRequest>;
 
 export interface PatchMembersRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
@@ -5607,20 +4269,12 @@ export interface PatchMembersRequest {
   body?: Member;
 }
 export const PatchMembersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    memberKey: S.String.pipe(T.Label()),
-    body: S.optional(Member.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/groups/{groupKey}/members/{memberKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchMembersRequest",
-}) as any as S.Schema<PatchMembersRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "memberKey": S.String.pipe(T.Label()),
+  "body": S.optional(Member.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/groups/{groupKey}/members/{memberKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchMembersRequest" }) as any as S.Schema<PatchMembersRequest>;
 
 export interface PatchOrgunitsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
@@ -5631,57 +4285,34 @@ export interface PatchOrgunitsRequest {
   body?: OrgUnit;
 }
 export const PatchOrgunitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    orgUnitPath: S.String.pipe(T.Label()),
-    body: S.optional(OrgUnit.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchOrgunitsRequest",
-}) as any as S.Schema<PatchOrgunitsRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "orgUnitPath": S.String.pipe(T.Label()),
+  "body": S.optional(OrgUnit.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchOrgunitsRequest" }) as any as S.Schema<PatchOrgunitsRequest>;
 
-export type PatchResourcesBuildingsCoordinatesSourceEnum =
-  | "CLIENT_SPECIFIED"
-  | "RESOLVED_FROM_ADDRESS"
-  | "SOURCE_UNSPECIFIED"
-  | (string & {});
-export const PatchResourcesBuildingsCoordinatesSourceEnum =
-  /*@__PURE__*/ S.String;
+export type PatchResourcesBuildingsCoordinatesSourceEnum = "CLIENT_SPECIFIED" | "RESOLVED_FROM_ADDRESS" | "SOURCE_UNSPECIFIED";
+export const PatchResourcesBuildingsCoordinatesSourceEnum = /*@__PURE__*/ S.String;
 
 export interface PatchResourcesBuildingsRequest {
   /** The id of the building to update. */
   buildingId: string;
   /** Source from which Building.coordinates are derived. */
-  coordinatesSource?: PatchResourcesBuildingsCoordinatesSourceEnum;
+  coordinatesSource?: PatchResourcesBuildingsCoordinatesSourceEnum | (string & {});
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
   /** Request body */
   body?: Building;
 }
 export const PatchResourcesBuildingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildingId: S.String.pipe(T.Label()),
-    coordinatesSource: S.optional(
-      PatchResourcesBuildingsCoordinatesSourceEnum.pipe(T.Query()),
-    ),
-    customer: S.String.pipe(T.Label()),
-    body: S.optional(Building.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchResourcesBuildingsRequest",
-}) as any as S.Schema<PatchResourcesBuildingsRequest>;
+S.Struct({
+  "buildingId": S.String.pipe(T.Label()),
+  "coordinatesSource": S.optional(PatchResourcesBuildingsCoordinatesSourceEnum.pipe(T.Query())),
+  "customer": S.String.pipe(T.Label()),
+  "body": S.optional(Building.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchResourcesBuildingsRequest" }) as any as S.Schema<PatchResourcesBuildingsRequest>;
 
 export interface PatchResourcesCalendarsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -5692,20 +4323,12 @@ export interface PatchResourcesCalendarsRequest {
   body?: CalendarResource;
 }
 export const PatchResourcesCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    calendarResourceId: S.String.pipe(T.Label()),
-    body: S.optional(CalendarResource.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchResourcesCalendarsRequest",
-}) as any as S.Schema<PatchResourcesCalendarsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "calendarResourceId": S.String.pipe(T.Label()),
+  "body": S.optional(CalendarResource.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchResourcesCalendarsRequest" }) as any as S.Schema<PatchResourcesCalendarsRequest>;
 
 export interface PatchResourcesFeaturesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -5716,20 +4339,12 @@ export interface PatchResourcesFeaturesRequest {
   body?: Feature;
 }
 export const PatchResourcesFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    featureKey: S.String.pipe(T.Label()),
-    body: S.optional(Feature.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchResourcesFeaturesRequest",
-}) as any as S.Schema<PatchResourcesFeaturesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "featureKey": S.String.pipe(T.Label()),
+  "body": S.optional(Feature.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/customer/{customer}/resources/features/{featureKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchResourcesFeaturesRequest" }) as any as S.Schema<PatchResourcesFeaturesRequest>;
 
 export interface PatchRolesRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -5740,20 +4355,12 @@ export interface PatchRolesRequest {
   body?: Role;
 }
 export const PatchRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    roleId: S.String.pipe(T.Label()),
-    body: S.optional(Role.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/customer/{customer}/roles/{roleId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchRolesRequest",
-}) as any as S.Schema<PatchRolesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "roleId": S.String.pipe(T.Label()),
+  "body": S.optional(Role.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/customer/{customer}/roles/{roleId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchRolesRequest" }) as any as S.Schema<PatchRolesRequest>;
 
 export interface PatchSchemasRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -5764,20 +4371,12 @@ export interface PatchSchemasRequest {
   body?: Admin_Schema;
 }
 export const PatchSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    schemaKey: S.String.pipe(T.Label()),
-    body: S.optional(Admin_Schema.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchSchemasRequest",
-}) as any as S.Schema<PatchSchemasRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "schemaKey": S.String.pipe(T.Label()),
+  "body": S.optional(Admin_Schema.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/customer/{customerId}/schemas/{schemaKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchSchemasRequest" }) as any as S.Schema<PatchSchemasRequest>;
 
 export interface PatchUsersRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -5786,19 +4385,11 @@ export interface PatchUsersRequest {
   body?: User;
 }
 export const PatchUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-    body: S.optional(User.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/users/{userKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchUsersRequest",
-}) as any as S.Schema<PatchUsersRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+  "body": S.optional(User.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/users/{userKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchUsersRequest" }) as any as S.Schema<PatchUsersRequest>;
 
 export interface PatchUsersPhotosRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -5807,28 +4398,20 @@ export interface PatchUsersPhotosRequest {
   body?: UserPhoto;
 }
 export const PatchUsersPhotosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-    body: S.optional(UserPhoto.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "admin/directory/v1/users/{userKey}/photos/thumbnail",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchUsersPhotosRequest",
-}) as any as S.Schema<PatchUsersPhotosRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+  "body": S.optional(UserPhoto.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"admin/directory/v1/users/{userKey}/photos/thumbnail","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "PatchUsersPhotosRequest" }) as any as S.Schema<PatchUsersPhotosRequest>;
 
 export interface FeatureRename {
   /** New name of the feature. */
   newName?: string;
 }
 export const FeatureRename = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newName: S.optional(S.String),
-  }),
+S.Struct({
+  "newName": S.optional(S.String),
+}),
 ).annotate({ identifier: "FeatureRename" }) as any as S.Schema<FeatureRename>;
 
 export interface RenameResourcesFeaturesRequest {
@@ -5840,58 +4423,35 @@ export interface RenameResourcesFeaturesRequest {
   body?: FeatureRename;
 }
 export const RenameResourcesFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    oldName: S.String.pipe(T.Label()),
-    body: S.optional(FeatureRename.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/customer/{customer}/resources/features/{oldName}/rename",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RenameResourcesFeaturesRequest",
-}) as any as S.Schema<RenameResourcesFeaturesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "oldName": S.String.pipe(T.Label()),
+  "body": S.optional(FeatureRename.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/customer/{customer}/resources/features/{oldName}/rename","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "RenameResourcesFeaturesRequest" }) as any as S.Schema<RenameResourcesFeaturesRequest>;
 
 export interface RenameResourcesFeaturesResponse {}
 export const RenameResourcesFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RenameResourcesFeaturesResponse",
-}) as any as S.Schema<RenameResourcesFeaturesResponse>;
+S.Struct({}),
+).annotate({ identifier: "RenameResourcesFeaturesResponse" }) as any as S.Schema<RenameResourcesFeaturesResponse>;
 
 export interface SignOutUsersRequest {
   /** Identifies the target user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
 export const SignOutUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users/{userKey}/signOut",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SignOutUsersRequest",
-}) as any as S.Schema<SignOutUsersRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users/{userKey}/signOut","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "SignOutUsersRequest" }) as any as S.Schema<SignOutUsersRequest>;
 
 export interface SignOutUsersResponse {}
 export const SignOutUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SignOutUsersResponse",
-}) as any as S.Schema<SignOutUsersResponse>;
+S.Struct({}),
+).annotate({ identifier: "SignOutUsersResponse" }) as any as S.Schema<SignOutUsersResponse>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** An notification channel used to watch for resource changes. */
 export interface Channel {
@@ -5917,18 +4477,18 @@ export interface Channel {
   type?: string;
 }
 export const Channel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    payload: S.optional(S.Boolean),
-    resourceId: S.optional(S.String),
-    kind: S.optional(S.String),
-    params: S.optional(StringMap),
-    id: S.optional(S.String),
-    resourceUri: S.optional(S.String),
-    expiration: S.optional(S.String),
-    address: S.optional(S.String),
-    token: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
+S.Struct({
+  "payload": S.optional(S.Boolean),
+  "resourceId": S.optional(S.String),
+  "kind": S.optional(S.String),
+  "params": S.optional(StringMap),
+  "id": S.optional(S.String),
+  "resourceUri": S.optional(S.String),
+  "expiration": S.optional(S.String),
+  "address": S.optional(S.String),
+  "token": S.optional(S.String),
+  "type": S.optional(S.String),
+}),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
 export interface StopChannelsRequest {
@@ -5936,59 +4496,39 @@ export interface StopChannelsRequest {
   body?: Channel;
 }
 export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory_v1/channels/stop",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "StopChannelsRequest",
-}) as any as S.Schema<StopChannelsRequest>;
+S.Struct({
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory_v1/channels/stop","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
 export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopChannelsResponse",
-}) as any as S.Schema<StopChannelsResponse>;
+S.Struct({}),
+).annotate({ identifier: "StopChannelsResponse" }) as any as S.Schema<StopChannelsResponse>;
 
 export interface TurnOffTwoStepVerificationRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
 export const TurnOffTwoStepVerificationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users/{userKey}/twoStepVerification/turnOff",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "TurnOffTwoStepVerificationRequest",
-}) as any as S.Schema<TurnOffTwoStepVerificationRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users/{userKey}/twoStepVerification/turnOff","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "TurnOffTwoStepVerificationRequest" }) as any as S.Schema<TurnOffTwoStepVerificationRequest>;
 
 export interface TurnOffTwoStepVerificationResponse {}
 export const TurnOffTwoStepVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TurnOffTwoStepVerificationResponse",
-}) as any as S.Schema<TurnOffTwoStepVerificationResponse>;
+S.Struct({}),
+).annotate({ identifier: "TurnOffTwoStepVerificationResponse" }) as any as S.Schema<TurnOffTwoStepVerificationResponse>;
 
 export interface UserUndelete {
   /** OrgUnit of User */
   orgUnitPath?: string;
 }
 export const UserUndelete = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orgUnitPath: S.optional(S.String),
-  }),
+S.Struct({
+  "orgUnitPath": S.optional(S.String),
+}),
 ).annotate({ identifier: "UserUndelete" }) as any as S.Schema<UserUndelete>;
 
 export interface UndeleteUsersRequest {
@@ -5998,36 +4538,23 @@ export interface UndeleteUsersRequest {
   body?: UserUndelete;
 }
 export const UndeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-    body: S.optional(UserUndelete.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users/{userKey}/undelete",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UndeleteUsersRequest",
-}) as any as S.Schema<UndeleteUsersRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+  "body": S.optional(UserUndelete.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users/{userKey}/undelete","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UndeleteUsersRequest" }) as any as S.Schema<UndeleteUsersRequest>;
 
 export interface UndeleteUsersResponse {}
 export const UndeleteUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UndeleteUsersResponse",
-}) as any as S.Schema<UndeleteUsersResponse>;
+S.Struct({}),
+).annotate({ identifier: "UndeleteUsersResponse" }) as any as S.Schema<UndeleteUsersResponse>;
 
-export type UpdateChromeosdevicesProjectionEnum =
-  | "BASIC"
-  | "FULL"
-  | (string & {});
+export type UpdateChromeosdevicesProjectionEnum = "BASIC" | "FULL";
 export const UpdateChromeosdevicesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateChromeosdevicesRequest {
   /** Determines whether the response contains the full list of properties or only a subset. */
-  projection?: UpdateChromeosdevicesProjectionEnum;
+  projection?: UpdateChromeosdevicesProjectionEnum | (string & {});
   /** The unique ID of the device. The `deviceId`s are returned in the response from the [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/reference/chromeosdevices/list) method. */
   deviceId: string;
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
@@ -6036,21 +4563,13 @@ export interface UpdateChromeosdevicesRequest {
   body?: ChromeOsDevice;
 }
 export const UpdateChromeosdevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projection: S.optional(UpdateChromeosdevicesProjectionEnum.pipe(T.Query())),
-    deviceId: S.String.pipe(T.Label()),
-    customerId: S.String.pipe(T.Label()),
-    body: S.optional(ChromeOsDevice.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateChromeosdevicesRequest",
-}) as any as S.Schema<UpdateChromeosdevicesRequest>;
+S.Struct({
+  "projection": S.optional(UpdateChromeosdevicesProjectionEnum.pipe(T.Query())),
+  "deviceId": S.String.pipe(T.Label()),
+  "customerId": S.String.pipe(T.Label()),
+  "body": S.optional(ChromeOsDevice.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateChromeosdevicesRequest" }) as any as S.Schema<UpdateChromeosdevicesRequest>;
 
 export interface UpdateCustomersRequest {
   /** Id of the customer to be updated */
@@ -6059,19 +4578,11 @@ export interface UpdateCustomersRequest {
   body?: Customer;
 }
 export const UpdateCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerKey: S.String.pipe(T.Label()),
-    body: S.optional(Customer.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/customers/{customerKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateCustomersRequest",
-}) as any as S.Schema<UpdateCustomersRequest>;
+S.Struct({
+  "customerKey": S.String.pipe(T.Label()),
+  "body": S.optional(Customer.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/customers/{customerKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateCustomersRequest" }) as any as S.Schema<UpdateCustomersRequest>;
 
 export interface UpdateGroupsRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
@@ -6080,19 +4591,11 @@ export interface UpdateGroupsRequest {
   body?: Group;
 }
 export const UpdateGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    body: S.optional(Group.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/groups/{groupKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateGroupsRequest",
-}) as any as S.Schema<UpdateGroupsRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "body": S.optional(Group.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/groups/{groupKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateGroupsRequest" }) as any as S.Schema<UpdateGroupsRequest>;
 
 export interface UpdateMembersRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
@@ -6103,20 +4606,12 @@ export interface UpdateMembersRequest {
   body?: Member;
 }
 export const UpdateMembersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupKey: S.String.pipe(T.Label()),
-    memberKey: S.String.pipe(T.Label()),
-    body: S.optional(Member.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/groups/{groupKey}/members/{memberKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateMembersRequest",
-}) as any as S.Schema<UpdateMembersRequest>;
+S.Struct({
+  "groupKey": S.String.pipe(T.Label()),
+  "memberKey": S.String.pipe(T.Label()),
+  "body": S.optional(Member.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/groups/{groupKey}/members/{memberKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateMembersRequest" }) as any as S.Schema<UpdateMembersRequest>;
 
 export interface UpdateOrgunitsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
@@ -6127,28 +4622,15 @@ export interface UpdateOrgunitsRequest {
   body?: OrgUnit;
 }
 export const UpdateOrgunitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    orgUnitPath: S.String.pipe(T.Label()),
-    body: S.optional(OrgUnit.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateOrgunitsRequest",
-}) as any as S.Schema<UpdateOrgunitsRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "orgUnitPath": S.String.pipe(T.Label()),
+  "body": S.optional(OrgUnit.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateOrgunitsRequest" }) as any as S.Schema<UpdateOrgunitsRequest>;
 
-export type UpdateResourcesBuildingsCoordinatesSourceEnum =
-  | "CLIENT_SPECIFIED"
-  | "RESOLVED_FROM_ADDRESS"
-  | "SOURCE_UNSPECIFIED"
-  | (string & {});
-export const UpdateResourcesBuildingsCoordinatesSourceEnum =
-  /*@__PURE__*/ S.String;
+export type UpdateResourcesBuildingsCoordinatesSourceEnum = "CLIENT_SPECIFIED" | "RESOLVED_FROM_ADDRESS" | "SOURCE_UNSPECIFIED";
+export const UpdateResourcesBuildingsCoordinatesSourceEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateResourcesBuildingsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -6156,28 +4638,18 @@ export interface UpdateResourcesBuildingsRequest {
   /** The id of the building to update. */
   buildingId: string;
   /** Source from which Building.coordinates are derived. */
-  coordinatesSource?: UpdateResourcesBuildingsCoordinatesSourceEnum;
+  coordinatesSource?: UpdateResourcesBuildingsCoordinatesSourceEnum | (string & {});
   /** Request body */
   body?: Building;
 }
 export const UpdateResourcesBuildingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    buildingId: S.String.pipe(T.Label()),
-    coordinatesSource: S.optional(
-      UpdateResourcesBuildingsCoordinatesSourceEnum.pipe(T.Query()),
-    ),
-    body: S.optional(Building.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateResourcesBuildingsRequest",
-}) as any as S.Schema<UpdateResourcesBuildingsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "buildingId": S.String.pipe(T.Label()),
+  "coordinatesSource": S.optional(UpdateResourcesBuildingsCoordinatesSourceEnum.pipe(T.Query())),
+  "body": S.optional(Building.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateResourcesBuildingsRequest" }) as any as S.Schema<UpdateResourcesBuildingsRequest>;
 
 export interface UpdateResourcesCalendarsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -6188,20 +4660,12 @@ export interface UpdateResourcesCalendarsRequest {
   body?: CalendarResource;
 }
 export const UpdateResourcesCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    calendarResourceId: S.String.pipe(T.Label()),
-    body: S.optional(CalendarResource.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateResourcesCalendarsRequest",
-}) as any as S.Schema<UpdateResourcesCalendarsRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "calendarResourceId": S.String.pipe(T.Label()),
+  "body": S.optional(CalendarResource.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateResourcesCalendarsRequest" }) as any as S.Schema<UpdateResourcesCalendarsRequest>;
 
 export interface UpdateResourcesFeaturesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -6212,20 +4676,12 @@ export interface UpdateResourcesFeaturesRequest {
   body?: Feature;
 }
 export const UpdateResourcesFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    featureKey: S.String.pipe(T.Label()),
-    body: S.optional(Feature.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateResourcesFeaturesRequest",
-}) as any as S.Schema<UpdateResourcesFeaturesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "featureKey": S.String.pipe(T.Label()),
+  "body": S.optional(Feature.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/customer/{customer}/resources/features/{featureKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateResourcesFeaturesRequest" }) as any as S.Schema<UpdateResourcesFeaturesRequest>;
 
 export interface UpdateRolesRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -6236,20 +4692,12 @@ export interface UpdateRolesRequest {
   body?: Role;
 }
 export const UpdateRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.String.pipe(T.Label()),
-    roleId: S.String.pipe(T.Label()),
-    body: S.optional(Role.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/customer/{customer}/roles/{roleId}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateRolesRequest",
-}) as any as S.Schema<UpdateRolesRequest>;
+S.Struct({
+  "customer": S.String.pipe(T.Label()),
+  "roleId": S.String.pipe(T.Label()),
+  "body": S.optional(Role.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/customer/{customer}/roles/{roleId}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateRolesRequest" }) as any as S.Schema<UpdateRolesRequest>;
 
 export interface UpdateSchemasRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -6260,20 +4708,12 @@ export interface UpdateSchemasRequest {
   body?: Admin_Schema;
 }
 export const UpdateSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String.pipe(T.Label()),
-    schemaKey: S.String.pipe(T.Label()),
-    body: S.optional(Admin_Schema.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateSchemasRequest",
-}) as any as S.Schema<UpdateSchemasRequest>;
+S.Struct({
+  "customerId": S.String.pipe(T.Label()),
+  "schemaKey": S.String.pipe(T.Label()),
+  "body": S.optional(Admin_Schema.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/customer/{customerId}/schemas/{schemaKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateSchemasRequest" }) as any as S.Schema<UpdateSchemasRequest>;
 
 export interface UpdateUsersRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -6282,19 +4722,11 @@ export interface UpdateUsersRequest {
   body?: User;
 }
 export const UpdateUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-    body: S.optional(User.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/users/{userKey}",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateUsersRequest",
-}) as any as S.Schema<UpdateUsersRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+  "body": S.optional(User.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/users/{userKey}","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateUsersRequest" }) as any as S.Schema<UpdateUsersRequest>;
 
 export interface UpdateUsersPhotosRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -6303,53 +4735,25 @@ export interface UpdateUsersPhotosRequest {
   body?: UserPhoto;
 }
 export const UpdateUsersPhotosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-    body: S.optional(UserPhoto.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "admin/directory/v1/users/{userKey}/photos/thumbnail",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateUsersPhotosRequest",
-}) as any as S.Schema<UpdateUsersPhotosRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+  "body": S.optional(UserPhoto.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PUT","uri":"admin/directory/v1/users/{userKey}/photos/thumbnail","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "UpdateUsersPhotosRequest" }) as any as S.Schema<UpdateUsersPhotosRequest>;
 
-export type WatchUsersSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type WatchUsersSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const WatchUsersSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type WatchUsersOrderByEnum =
-  | "email"
-  | "familyName"
-  | "givenName"
-  | (string & {});
+export type WatchUsersOrderByEnum = "email" | "familyName" | "givenName";
 export const WatchUsersOrderByEnum = /*@__PURE__*/ S.String;
 
-export type WatchUsersProjectionEnum =
-  | "basic"
-  | "custom"
-  | "full"
-  | (string & {});
+export type WatchUsersProjectionEnum = "basic" | "custom" | "full";
 export const WatchUsersProjectionEnum = /*@__PURE__*/ S.String;
 
-export type WatchUsersViewTypeEnum =
-  | "admin_view"
-  | "domain_public"
-  | (string & {});
+export type WatchUsersViewTypeEnum = "admin_view" | "domain_public";
 export const WatchUsersViewTypeEnum = /*@__PURE__*/ S.String;
 
-export type WatchUsersEventEnum =
-  | "add"
-  | "delete"
-  | "makeAdmin"
-  | "undelete"
-  | "update"
-  | (string & {});
+export type WatchUsersEventEnum = "add" | "delete" | "makeAdmin" | "undelete" | "update";
 export const WatchUsersEventEnum = /*@__PURE__*/ S.String;
 
 export interface WatchUsersRequest {
@@ -6358,15 +4762,15 @@ export interface WatchUsersRequest {
   /** If set to true, retrieves the list of deleted users. (Default: false) */
   showDeleted?: string;
   /** Whether to return results in ascending or descending order. */
-  sortOrder?: WatchUsersSortOrderEnum;
+  sortOrder?: WatchUsersSortOrderEnum | (string & {});
   /** Column to use for sorting results */
-  orderBy?: WatchUsersOrderByEnum;
+  orderBy?: WatchUsersOrderByEnum | (string & {});
   /** Token to specify next page in the list */
   pageToken?: string;
   /** What subset of fields to fetch for this user. */
-  projection?: WatchUsersProjectionEnum;
+  projection?: WatchUsersProjectionEnum | (string & {});
   /** Whether to fetch the administrator-only or domain-wide public view of the user. For more information, see [Retrieve a user as a non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin). */
-  viewType?: WatchUsersViewTypeEnum;
+  viewType?: WatchUsersViewTypeEnum | (string & {});
   /** Name of the domain. Fill this field to get users from only this domain. To return all users in a multi-domain fill customer field instead." */
   domain?: string;
   /** Immutable ID of the Google Workspace account. In case of multi-domain, to fetch all users for a customer, fill this field instead of domain. */
@@ -6374,71 +4778,50 @@ export interface WatchUsersRequest {
   /** Query string search. Contains one or more search clauses, each with a field, operator, and value. For complete documentation, go to [Search for users](https://developers.google.com/workspace/admin/directory/v1/guides/search-users). */
   query?: string;
   /** Events to watch for. */
-  event?: WatchUsersEventEnum;
+  event?: WatchUsersEventEnum | (string & {});
   /** Comma-separated list of schema names. All fields from these schemas are fetched. This should only be set when projection=custom. */
   customFieldMask?: string;
   /** Request body */
   body?: Channel;
 }
 export const WatchUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    showDeleted: S.optional(S.String.pipe(T.Query())),
-    sortOrder: S.optional(WatchUsersSortOrderEnum.pipe(T.Query())),
-    orderBy: S.optional(WatchUsersOrderByEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    projection: S.optional(WatchUsersProjectionEnum.pipe(T.Query())),
-    viewType: S.optional(WatchUsersViewTypeEnum.pipe(T.Query())),
-    domain: S.optional(S.String.pipe(T.Query())),
-    customer: S.optional(S.String.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
-    event: S.optional(WatchUsersEventEnum.pipe(T.Query())),
-    customFieldMask: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users/watch",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "WatchUsersRequest",
-}) as any as S.Schema<WatchUsersRequest>;
+S.Struct({
+  "maxResults": S.optional(S.Number.pipe(T.Query())),
+  "showDeleted": S.optional(S.String.pipe(T.Query())),
+  "sortOrder": S.optional(WatchUsersSortOrderEnum.pipe(T.Query())),
+  "orderBy": S.optional(WatchUsersOrderByEnum.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "projection": S.optional(WatchUsersProjectionEnum.pipe(T.Query())),
+  "viewType": S.optional(WatchUsersViewTypeEnum.pipe(T.Query())),
+  "domain": S.optional(S.String.pipe(T.Query())),
+  "customer": S.optional(S.String.pipe(T.Query())),
+  "query": S.optional(S.String.pipe(T.Query())),
+  "event": S.optional(WatchUsersEventEnum.pipe(T.Query())),
+  "customFieldMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users/watch","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "WatchUsersRequest" }) as any as S.Schema<WatchUsersRequest>;
 
-export type WatchUsersAliasesEventEnum = "add" | "delete" | (string & {});
+export type WatchUsersAliasesEventEnum = "add" | "delete";
 export const WatchUsersAliasesEventEnum = /*@__PURE__*/ S.String;
 
 export interface WatchUsersAliasesRequest {
   /** Email or immutable ID of the user */
   userKey: string;
   /** Events to watch for. */
-  event?: WatchUsersAliasesEventEnum;
+  event?: WatchUsersAliasesEventEnum | (string & {});
   /** Request body */
   body?: Channel;
 }
 export const WatchUsersAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userKey: S.String.pipe(T.Label()),
-    event: S.optional(WatchUsersAliasesEventEnum.pipe(T.Query())),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "admin/directory/v1/users/{userKey}/aliases/watch",
-      baseUrl: "https://admin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "WatchUsersAliasesRequest",
-}) as any as S.Schema<WatchUsersAliasesRequest>;
+S.Struct({
+  "userKey": S.String.pipe(T.Label()),
+  "event": S.optional(WatchUsersAliasesEventEnum.pipe(T.Query())),
+  "body": S.optional(Channel.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"admin/directory/v1/users/{userKey}/aliases/watch","baseUrl":"https://admin.googleapis.com/"})),
+).annotate({ identifier: "WatchUsersAliasesRequest" }) as any as S.Schema<WatchUsersAliasesRequest>;
 
-export type ActionChromeosdevicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ActionChromeosdevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Use [BatchChangeChromeOsDeviceStatus](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus) instead. Takes an action that affects a Chrome OS Device. This includes deprovisioning, disabling, and re-enabling devices. *Warning:* * Deprovisioning a device will stop device policy syncing and remove device-level printers. After a device is deprovisioned, it must be wiped before it can be re-enrolled. * Lost or stolen devices should use the disable action. * Re-enabling a disabled device will consume a device license. If you do not have sufficient licenses available when completing the re-enable action, you will receive an error. For more information about deprovisioning and disabling devices, visit the [help center](https://support.google.com/chrome/a/answer/3523633). */
 export const actionChromeosdevices: API.OperationMethod<
   ActionChromeosdevicesRequest,
@@ -6453,12 +4836,7 @@ export const actionChromeosdevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ActionMobiledevicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type ActionMobiledevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Takes an action that affects a mobile device. For example, remotely wiping a device. */
 export const actionMobiledevices: API.OperationMethod<
   ActionMobiledevicesRequest,
@@ -6473,12 +4851,7 @@ export const actionMobiledevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchChangeStatusCustomerDevicesChromeosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchChangeStatusCustomerDevicesChromeosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Changes the status of a batch of ChromeOS devices. For more information about changing a ChromeOS device state [Repair, repurpose, or retire ChromeOS devices](https://support.google.com/chrome/a/answer/3523633). */
 export const batchChangeStatusCustomerDevicesChromeos: API.OperationMethod<
   BatchChangeStatusCustomerDevicesChromeosRequest,
@@ -6493,12 +4866,7 @@ export const batchChangeStatusCustomerDevicesChromeos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchCreatePrintersCustomersChromePrintersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchCreatePrintersCustomersChromePrintersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates printers under given Organization Unit. */
 export const batchCreatePrintersCustomersChromePrinters: API.OperationMethod<
   BatchCreatePrintersCustomersChromePrintersRequest,
@@ -6513,12 +4881,7 @@ export const batchCreatePrintersCustomersChromePrinters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchCreatePrintServersCustomersChromePrintServersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchCreatePrintServersCustomersChromePrintServersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates multiple print servers. */
 export const batchCreatePrintServersCustomersChromePrintServers: API.OperationMethod<
   BatchCreatePrintServersCustomersChromePrintServersRequest,
@@ -6533,12 +4896,7 @@ export const batchCreatePrintServersCustomersChromePrintServers: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type BatchDeletePrintersCustomersChromePrintersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchDeletePrintersCustomersChromePrintersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes printers in batch. */
 export const batchDeletePrintersCustomersChromePrinters: API.OperationMethod<
   BatchDeletePrintersCustomersChromePrintersRequest,
@@ -6553,12 +4911,7 @@ export const batchDeletePrintersCustomersChromePrinters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchDeletePrintServersCustomersChromePrintServersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchDeletePrintServersCustomersChromePrintServersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes multiple print servers. */
 export const batchDeletePrintServersCustomersChromePrintServers: API.OperationMethod<
   BatchDeletePrintServersCustomersChromePrintServersRequest,
@@ -6573,10 +4926,7 @@ export const batchDeletePrintServersCustomersChromePrintServers: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type CountChromeOsDevicesCustomerDevicesChromeosError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type CountChromeOsDevicesCustomerDevicesChromeosError = NotFound | Forbidden | GcpOpError;
 /** Counts ChromeOS devices matching the request. */
 export const countChromeOsDevicesCustomerDevicesChromeos: API.OperationMethod<
   CountChromeOsDevicesCustomerDevicesChromeosRequest,
@@ -6591,12 +4941,7 @@ export const countChromeOsDevicesCustomerDevicesChromeos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCustomersChromePrintersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateCustomersChromePrintersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a printer under given Organization Unit. */
 export const createCustomersChromePrinters: API.OperationMethod<
   CreateCustomersChromePrintersRequest,
@@ -6611,12 +4956,7 @@ export const createCustomersChromePrinters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCustomersChromePrintServersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateCustomersChromePrintServersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a print server. */
 export const createCustomersChromePrintServers: API.OperationMethod<
   CreateCustomersChromePrintServersRequest,
@@ -6631,12 +4971,7 @@ export const createCustomersChromePrintServers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateGuestUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateGuestUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a guest user with access to a [subset of Workspace capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Open Beta. */
 export const createGuestUsers: API.OperationMethod<
   CreateGuestUsersRequest,
@@ -6651,12 +4986,7 @@ export const createGuestUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAspsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteAspsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an ASP issued by a user. */
 export const deleteAsps: API.OperationMethod<
   DeleteAspsRequest,
@@ -6671,12 +5001,7 @@ export const deleteAsps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCustomersChromePrintersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteCustomersChromePrintersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a `Printer`. */
 export const deleteCustomersChromePrinters: API.OperationMethod<
   DeleteCustomersChromePrintersRequest,
@@ -6691,12 +5016,7 @@ export const deleteCustomersChromePrinters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCustomersChromePrintServersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteCustomersChromePrintServersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a print server. */
 export const deleteCustomersChromePrintServers: API.OperationMethod<
   DeleteCustomersChromePrintServersRequest,
@@ -6711,12 +5031,7 @@ export const deleteCustomersChromePrintServers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDomainAliasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteDomainAliasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a domain Alias of the customer. */
 export const deleteDomainAliases: API.OperationMethod<
   DeleteDomainAliasesRequest,
@@ -6731,12 +5046,7 @@ export const deleteDomainAliases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a domain of the customer. */
 export const deleteDomains: API.OperationMethod<
   DeleteDomainsRequest,
@@ -6751,12 +5061,7 @@ export const deleteDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a group. */
 export const deleteGroups: API.OperationMethod<
   DeleteGroupsRequest,
@@ -6771,12 +5076,7 @@ export const deleteGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteGroupsAliasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteGroupsAliasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes an alias. */
 export const deleteGroupsAliases: API.OperationMethod<
   DeleteGroupsAliasesRequest,
@@ -6791,12 +5091,7 @@ export const deleteGroupsAliases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMembersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteMembersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes a member from a group. */
 export const deleteMembers: API.OperationMethod<
   DeleteMembersRequest,
@@ -6811,12 +5106,7 @@ export const deleteMembers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMobiledevicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteMobiledevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes a mobile device. */
 export const deleteMobiledevices: API.OperationMethod<
   DeleteMobiledevicesRequest,
@@ -6831,12 +5121,7 @@ export const deleteMobiledevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOrgunitsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteOrgunitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes an organizational unit. */
 export const deleteOrgunits: API.OperationMethod<
   DeleteOrgunitsRequest,
@@ -6851,12 +5136,7 @@ export const deleteOrgunits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteResourcesBuildingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteResourcesBuildingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a building. */
 export const deleteResourcesBuildings: API.OperationMethod<
   DeleteResourcesBuildingsRequest,
@@ -6871,12 +5151,7 @@ export const deleteResourcesBuildings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteResourcesCalendarsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteResourcesCalendarsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a calendar resource. */
 export const deleteResourcesCalendars: API.OperationMethod<
   DeleteResourcesCalendarsRequest,
@@ -6891,12 +5166,7 @@ export const deleteResourcesCalendars: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteResourcesFeaturesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteResourcesFeaturesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a feature. */
 export const deleteResourcesFeatures: API.OperationMethod<
   DeleteResourcesFeaturesRequest,
@@ -6911,12 +5181,7 @@ export const deleteResourcesFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteRoleAssignmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteRoleAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a role assignment. */
 export const deleteRoleAssignments: API.OperationMethod<
   DeleteRoleAssignmentsRequest,
@@ -6931,12 +5196,7 @@ export const deleteRoleAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteRolesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteRolesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a role. */
 export const deleteRoles: API.OperationMethod<
   DeleteRolesRequest,
@@ -6951,12 +5211,7 @@ export const deleteRoles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSchemasError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a schema. */
 export const deleteSchemas: API.OperationMethod<
   DeleteSchemasRequest,
@@ -6971,12 +5226,7 @@ export const deleteSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteTokensError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteTokensError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes all access tokens issued by a user for an application. */
 export const deleteTokens: API.OperationMethod<
   DeleteTokensRequest,
@@ -6991,12 +5241,7 @@ export const deleteTokens: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a user. */
 export const deleteUsers: API.OperationMethod<
   DeleteUsersRequest,
@@ -7011,12 +5256,7 @@ export const deleteUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteUsersAliasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteUsersAliasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes an alias. */
 export const deleteUsersAliases: API.OperationMethod<
   DeleteUsersAliasesRequest,
@@ -7031,12 +5271,7 @@ export const deleteUsersAliases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteUsersPhotosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteUsersPhotosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes the user's photo. */
 export const deleteUsersPhotos: API.OperationMethod<
   DeleteUsersPhotosRequest,
@@ -7051,12 +5286,7 @@ export const deleteUsersPhotos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateVerificationCodesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type GenerateVerificationCodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Generates new backup verification codes for the user. */
 export const generateVerificationCodes: API.OperationMethod<
   GenerateVerificationCodesRequest,
@@ -7101,10 +5331,7 @@ export const getChromeosdevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCustomerDevicesChromeosCommandsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetCustomerDevicesChromeosCommandsError = NotFound | Forbidden | GcpOpError;
 /** Gets command data a specific command issued to the device. */
 export const getCustomerDevicesChromeosCommands: API.OperationMethod<
   GetCustomerDevicesChromeosCommandsRequest,
@@ -7149,10 +5376,7 @@ export const getCustomersChromePrinters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCustomersChromePrintServersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetCustomersChromePrintServersError = NotFound | Forbidden | GcpOpError;
 /** Returns a print server's configuration. */
 export const getCustomersChromePrintServers: API.OperationMethod<
   GetCustomersChromePrintServersRequest,
@@ -7407,12 +5631,7 @@ export const hasMemberMembers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertDomainAliasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertDomainAliasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a domain alias of the customer. */
 export const insertDomainAliases: API.OperationMethod<
   InsertDomainAliasesRequest,
@@ -7427,12 +5646,7 @@ export const insertDomainAliases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertDomainsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a domain of the customer. */
 export const insertDomains: API.OperationMethod<
   InsertDomainsRequest,
@@ -7447,12 +5661,7 @@ export const insertDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a group. */
 export const insertGroups: API.OperationMethod<
   InsertGroupsRequest,
@@ -7467,12 +5676,7 @@ export const insertGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertGroupsAliasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertGroupsAliasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds an alias for the group. */
 export const insertGroupsAliases: API.OperationMethod<
   InsertGroupsAliasesRequest,
@@ -7487,12 +5691,7 @@ export const insertGroupsAliases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertMembersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertMembersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds a user to the specified group. */
 export const insertMembers: API.OperationMethod<
   InsertMembersRequest,
@@ -7507,12 +5706,7 @@ export const insertMembers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertOrgunitsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertOrgunitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds an organizational unit. */
 export const insertOrgunits: API.OperationMethod<
   InsertOrgunitsRequest,
@@ -7527,12 +5721,7 @@ export const insertOrgunits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertResourcesBuildingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertResourcesBuildingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a building. */
 export const insertResourcesBuildings: API.OperationMethod<
   InsertResourcesBuildingsRequest,
@@ -7547,12 +5736,7 @@ export const insertResourcesBuildings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertResourcesCalendarsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertResourcesCalendarsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a calendar resource. */
 export const insertResourcesCalendars: API.OperationMethod<
   InsertResourcesCalendarsRequest,
@@ -7567,12 +5751,7 @@ export const insertResourcesCalendars: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertResourcesFeaturesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertResourcesFeaturesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a feature. */
 export const insertResourcesFeatures: API.OperationMethod<
   InsertResourcesFeaturesRequest,
@@ -7587,12 +5766,7 @@ export const insertResourcesFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertRoleAssignmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertRoleAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a role assignment. */
 export const insertRoleAssignments: API.OperationMethod<
   InsertRoleAssignmentsRequest,
@@ -7607,12 +5781,7 @@ export const insertRoleAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertRolesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertRolesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a role. */
 export const insertRoles: API.OperationMethod<
   InsertRolesRequest,
@@ -7627,12 +5796,7 @@ export const insertRoles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertSchemasError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a schema. */
 export const insertSchemas: API.OperationMethod<
   InsertSchemasRequest,
@@ -7647,12 +5811,7 @@ export const insertSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a user. Mutate calls immediately following user creation might sometimes fail as the user isn't fully created due to propagation delay in our backends. Check the error details for the "User creation is not complete" message to see if this is the case. Retrying the calls after some time can help in this case. If `resolveConflictAccount` is set to `true`, a `202` response code means that a conflicting unmanaged account exists and was invited to join the organization. A `409` response code means that a conflicting account exists so the user wasn't created based on the [handling unmanaged user accounts](https://support.google.com/a/answer/11112794) option selected. */
 export const insertUsers: API.OperationMethod<
   InsertUsersRequest,
@@ -7667,12 +5826,7 @@ export const insertUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertUsersAliasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InsertUsersAliasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds an alias. */
 export const insertUsersAliases: API.OperationMethod<
   InsertUsersAliasesRequest,
@@ -7687,12 +5841,7 @@ export const insertUsersAliases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InvalidateVerificationCodesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type InvalidateVerificationCodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Invalidates the current backup verification codes for the user. */
 export const invalidateVerificationCodes: API.OperationMethod<
   InvalidateVerificationCodesRequest,
@@ -7707,12 +5856,7 @@ export const invalidateVerificationCodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type IssueCommandCustomerDevicesChromeosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type IssueCommandCustomerDevicesChromeosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Issues a command for the device to execute. */
 export const issueCommandCustomerDevicesChromeos: API.OperationMethod<
   IssueCommandCustomerDevicesChromeosRequest,
@@ -7755,16 +5899,10 @@ export const listChromeosdevices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListCustomersChromePrintersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListCustomersChromePrintersError = NotFound | Forbidden | GcpOpError;
 /** List printers configs. */
 export const listCustomersChromePrinters: API.PaginatedOperationMethod<
   ListCustomersChromePrintersRequest,
@@ -7777,16 +5915,10 @@ export const listCustomersChromePrinters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListCustomersChromePrintServersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListCustomersChromePrintServersError = NotFound | Forbidden | GcpOpError;
 /** Lists print server configurations. */
 export const listCustomersChromePrintServers: API.PaginatedOperationMethod<
   ListCustomersChromePrintServersRequest,
@@ -7799,10 +5931,7 @@ export const listCustomersChromePrintServers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListDomainAliasesError = NotFound | Forbidden | GcpOpError;
@@ -7848,10 +5977,7 @@ export const listGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListGroupsAliasesError = NotFound | Forbidden | GcpOpError;
@@ -7882,10 +6008,7 @@ export const listMembers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListMobiledevicesError = NotFound | Forbidden | GcpOpError;
@@ -7901,10 +6024,7 @@ export const listMobiledevices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListOrgunitsError = NotFound | Forbidden | GcpOpError;
@@ -7922,10 +6042,7 @@ export const listOrgunits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListPrinterModelsCustomersChromePrintersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListPrinterModelsCustomersChromePrintersError = NotFound | Forbidden | GcpOpError;
 /** Lists the supported printer models. */
 export const listPrinterModelsCustomersChromePrinters: API.PaginatedOperationMethod<
   ListPrinterModelsCustomersChromePrintersRequest,
@@ -7938,10 +6055,7 @@ export const listPrinterModelsCustomersChromePrinters: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListPrivilegesError = NotFound | Forbidden | GcpOpError;
@@ -7972,10 +6086,7 @@ export const listResourcesBuildings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListResourcesCalendarsError = NotFound | Forbidden | GcpOpError;
@@ -7991,11 +6102,7 @@ export const listResourcesCalendars: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListResourcesFeaturesError = NotFound | Forbidden | GcpOpError;
@@ -8011,10 +6118,7 @@ export const listResourcesFeatures: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListRoleAssignmentsError = NotFound | Forbidden | GcpOpError;
@@ -8030,11 +6134,7 @@ export const listRoleAssignments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListRolesError = NotFound | Forbidden | GcpOpError;
@@ -8050,11 +6150,7 @@ export const listRoles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-    items: "items",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
 }));
 
 export type ListSchemasError = NotFound | Forbidden | GcpOpError;
@@ -8100,10 +6196,7 @@ export const listUsers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
 export type ListUsersAliasesError = NotFound | Forbidden | GcpOpError;
@@ -8136,12 +6229,7 @@ export const listVerificationCodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MakeAdminUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MakeAdminUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Makes a user a super administrator. */
 export const makeAdminUsers: API.OperationMethod<
   MakeAdminUsersRequest,
@@ -8156,12 +6244,7 @@ export const makeAdminUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveDevicesToOuChromeosdevicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type MoveDevicesToOuChromeosdevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Moves or inserts multiple Chrome OS devices to an organizational unit. You can move up to 50 devices at once. */
 export const moveDevicesToOuChromeosdevices: API.OperationMethod<
   MoveDevicesToOuChromeosdevicesRequest,
@@ -8176,12 +6259,7 @@ export const moveDevicesToOuChromeosdevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchChromeosdevicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchChromeosdevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a device's updatable properties, such as `annotatedUser`, `annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`. This method supports [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch). */
 export const patchChromeosdevices: API.OperationMethod<
   PatchChromeosdevicesRequest,
@@ -8196,12 +6274,7 @@ export const patchChromeosdevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCustomersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches a customer. */
 export const patchCustomers: API.OperationMethod<
   PatchCustomersRequest,
@@ -8216,12 +6289,7 @@ export const patchCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCustomersChromePrintersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchCustomersChromePrintersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a `Printer` resource. */
 export const patchCustomersChromePrinters: API.OperationMethod<
   PatchCustomersChromePrintersRequest,
@@ -8236,12 +6304,7 @@ export const patchCustomersChromePrinters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCustomersChromePrintServersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchCustomersChromePrintServersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a print server's configuration. */
 export const patchCustomersChromePrintServers: API.OperationMethod<
   PatchCustomersChromePrintServersRequest,
@@ -8256,12 +6319,7 @@ export const patchCustomersChromePrintServers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a group's properties. This method supports [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch). */
 export const patchGroups: API.OperationMethod<
   PatchGroupsRequest,
@@ -8276,12 +6334,7 @@ export const patchGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchMembersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchMembersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the membership properties of a user in the specified group. This method supports [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch). */
 export const patchMembers: API.OperationMethod<
   PatchMembersRequest,
@@ -8296,12 +6349,7 @@ export const patchMembers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchOrgunitsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchOrgunitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an organizational unit. This method supports [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch) */
 export const patchOrgunits: API.OperationMethod<
   PatchOrgunitsRequest,
@@ -8316,12 +6364,7 @@ export const patchOrgunits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchResourcesBuildingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchResourcesBuildingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches a building. */
 export const patchResourcesBuildings: API.OperationMethod<
   PatchResourcesBuildingsRequest,
@@ -8336,12 +6379,7 @@ export const patchResourcesBuildings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchResourcesCalendarsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchResourcesCalendarsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches a calendar resource. */
 export const patchResourcesCalendars: API.OperationMethod<
   PatchResourcesCalendarsRequest,
@@ -8356,12 +6394,7 @@ export const patchResourcesCalendars: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchResourcesFeaturesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchResourcesFeaturesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches a feature. */
 export const patchResourcesFeatures: API.OperationMethod<
   PatchResourcesFeaturesRequest,
@@ -8376,12 +6409,7 @@ export const patchResourcesFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchRolesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchRolesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches a role. */
 export const patchRoles: API.OperationMethod<
   PatchRolesRequest,
@@ -8396,12 +6424,7 @@ export const patchRoles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchSchemasError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Patches a schema. */
 export const patchSchemas: API.OperationMethod<
   PatchSchemasRequest,
@@ -8416,12 +6439,7 @@ export const patchSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a user using patch semantics. The update method should be used instead, because it also supports patch semantics and has better performance. If you're mapping an external identity to a Google identity, use the [`update`](https://developers.google.com/workspace/admin/directory/v1/reference/users/update) method instead of the `patch` method. This method is unable to clear fields that contain repeated objects (`addresses`, `phones`, etc). Use the update method instead. */
 export const patchUsers: API.OperationMethod<
   PatchUsersRequest,
@@ -8436,12 +6454,7 @@ export const patchUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchUsersPhotosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchUsersPhotosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds a photo for the user. This method supports [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch). */
 export const patchUsersPhotos: API.OperationMethod<
   PatchUsersPhotosRequest,
@@ -8456,12 +6469,7 @@ export const patchUsersPhotos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RenameResourcesFeaturesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type RenameResourcesFeaturesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Renames a feature. */
 export const renameResourcesFeatures: API.OperationMethod<
   RenameResourcesFeaturesRequest,
@@ -8476,12 +6484,7 @@ export const renameResourcesFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignOutUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SignOutUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Signs a user out of all web and device sessions and reset their sign-in cookies. User will have to sign in by authenticating again. */
 export const signOutUsers: API.OperationMethod<
   SignOutUsersRequest,
@@ -8496,12 +6499,7 @@ export const signOutUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopChannelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type StopChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Stops watching resources through this channel. */
 export const stopChannels: API.OperationMethod<
   StopChannelsRequest,
@@ -8516,12 +6514,7 @@ export const stopChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TurnOffTwoStepVerificationError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TurnOffTwoStepVerificationError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Turns off 2-Step Verification for user. */
 export const turnOffTwoStepVerification: API.OperationMethod<
   TurnOffTwoStepVerificationRequest,
@@ -8536,12 +6529,7 @@ export const turnOffTwoStepVerification: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UndeleteUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Undeletes a deleted user. */
 export const undeleteUsers: API.OperationMethod<
   UndeleteUsersRequest,
@@ -8556,12 +6544,7 @@ export const undeleteUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateChromeosdevicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateChromeosdevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a device's updatable properties, such as `annotatedUser`, `annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`. */
 export const updateChromeosdevices: API.OperationMethod<
   UpdateChromeosdevicesRequest,
@@ -8576,12 +6559,7 @@ export const updateChromeosdevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCustomersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a customer. */
 export const updateCustomers: API.OperationMethod<
   UpdateCustomersRequest,
@@ -8596,12 +6574,7 @@ export const updateCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a group's properties. */
 export const updateGroups: API.OperationMethod<
   UpdateGroupsRequest,
@@ -8616,12 +6589,7 @@ export const updateGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateMembersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateMembersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates the membership of a user in the specified group. */
 export const updateMembers: API.OperationMethod<
   UpdateMembersRequest,
@@ -8636,12 +6604,7 @@ export const updateMembers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateOrgunitsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateOrgunitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an organizational unit. */
 export const updateOrgunits: API.OperationMethod<
   UpdateOrgunitsRequest,
@@ -8656,12 +6619,7 @@ export const updateOrgunits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateResourcesBuildingsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateResourcesBuildingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a building. */
 export const updateResourcesBuildings: API.OperationMethod<
   UpdateResourcesBuildingsRequest,
@@ -8676,12 +6634,7 @@ export const updateResourcesBuildings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateResourcesCalendarsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateResourcesCalendarsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a calendar resource. This method supports patch semantics, meaning you only need to include the fields you wish to update. Fields that are not present in the request will be preserved. */
 export const updateResourcesCalendars: API.OperationMethod<
   UpdateResourcesCalendarsRequest,
@@ -8696,12 +6649,7 @@ export const updateResourcesCalendars: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateResourcesFeaturesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateResourcesFeaturesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a feature. */
 export const updateResourcesFeatures: API.OperationMethod<
   UpdateResourcesFeaturesRequest,
@@ -8716,12 +6664,7 @@ export const updateResourcesFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateRolesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateRolesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a role. */
 export const updateRoles: API.OperationMethod<
   UpdateRolesRequest,
@@ -8736,12 +6679,7 @@ export const updateRoles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSchemasError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a schema. */
 export const updateSchemas: API.OperationMethod<
   UpdateSchemasRequest,
@@ -8756,12 +6694,7 @@ export const updateSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a user. This method supports patch semantics, meaning that you only need to include the fields you wish to update. Fields that are not present in the request will be preserved, and fields set to `null` will be cleared. For repeating fields that contain arrays, individual items in the array can't be patched piecemeal; they must be supplied in the request body with the desired values for all items. See the [user accounts guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#update_user) for more information. */
 export const updateUsers: API.OperationMethod<
   UpdateUsersRequest,
@@ -8776,12 +6709,7 @@ export const updateUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateUsersPhotosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateUsersPhotosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds a photo for the user. */
 export const updateUsersPhotos: API.OperationMethod<
   UpdateUsersPhotosRequest,
@@ -8796,12 +6724,7 @@ export const updateUsersPhotos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WatchUsersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WatchUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Watches for changes in users list. */
 export const watchUsers: API.OperationMethod<
   WatchUsersRequest,
@@ -8816,12 +6739,7 @@ export const watchUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WatchUsersAliasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type WatchUsersAliasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Watches for changes in users list. */
 export const watchUsersAliases: API.OperationMethod<
   WatchUsersAliasesRequest,
@@ -8835,3 +6753,4 @@ export const watchUsersAliases: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

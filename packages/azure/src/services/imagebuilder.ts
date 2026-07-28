@@ -142,8 +142,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -151,8 +150,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -205,8 +203,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a trigger */
@@ -488,7 +485,7 @@ export const ImageTemplatePropertiesInputCustomizeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ImageTemplatePropertiesInputCustomizeList>;
 
 /** Enabling this field will improve VM boot time by optimizing the final customized image output. */
-export type VMBootOptimizationState = "Enabled" | "Disabled" | (string & {});
+export type VMBootOptimizationState = "Enabled" | "Disabled";
 export const VMBootOptimizationState = /*@__PURE__*/ S.String;
 
 /** Optimization is applied on the image for a faster VM boot. */
@@ -506,7 +503,7 @@ export const ImageTemplatePropertiesOptimizeVmBoot = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImageTemplatePropertiesOptimizeVmBoot>;
 
 /** Enabling this field will optimize vm images for specific workloads. */
-export type WorkloadOptimizationState = "Enabled" | "Disabled" | (string & {});
+export type WorkloadOptimizationState = "Enabled" | "Disabled";
 export const WorkloadOptimizationState = /*@__PURE__*/ S.String;
 
 /** Optimization is applied on the image for specific workloads. */
@@ -628,16 +625,14 @@ export const ImageTemplatePropertiesInputDistributeList = /*@__PURE__*/ S.Array(
 /** If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved. */
 export type ImageTemplatePropertiesErrorHandlingOnCustomizerError =
   | "cleanup"
-  | "abort"
-  | (string & {});
+  | "abort";
 export const ImageTemplatePropertiesErrorHandlingOnCustomizerError =
   /*@__PURE__*/ S.String;
 
 /** If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved. */
 export type ImageTemplatePropertiesErrorHandlingOnValidationError =
   | "cleanup"
-  | "abort"
-  | (string & {});
+  | "abort";
 export const ImageTemplatePropertiesErrorHandlingOnValidationError =
   /*@__PURE__*/ S.String;
 
@@ -733,7 +728,7 @@ export const ImageTemplatePropertiesInputAdditionalDataDisksList =
   ) as any as S.Schema<ImageTemplatePropertiesInputAdditionalDataDisksList>;
 
 /** Enabling this field will trigger an automatic build on image template creation or update. */
-export type AutoRunState = "Enabled" | "Disabled" | (string & {});
+export type AutoRunState = "Enabled" | "Disabled";
 export const AutoRunState = /*@__PURE__*/ S.String;
 
 /** Indicates if the image template needs to be built on create/update */
@@ -810,7 +805,7 @@ export const ImageTemplatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageTemplatePropertiesInput>;
 
 /** The type of identity used for the image template. The type 'None' will remove any identities from the image template. */
-export type ResourceIdentityType = "UserAssigned" | "None" | (string & {});
+export type ResourceIdentityType = "UserAssigned" | "None";
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -834,7 +829,7 @@ export const ImageTemplateIdentityInputUserAssignedIdentitiesMap =
 /** Identity for the image template. */
 export interface ImageTemplateIdentityInput {
   /** The type of identity used for the image template. The type 'None' will remove any identities from the image template. */
-  type?: ResourceIdentityType;
+  type?: ResourceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ImageTemplateIdentityInputUserAssignedIdentitiesMap;
 }
@@ -929,8 +924,7 @@ export type ProvisioningErrorCode =
   | "BadSharedImageDistribute"
   | "BadStagingResourceGroup"
   | "ServerError"
-  | "Other"
-  | (string & {});
+  | "Other";
 export const ProvisioningErrorCode = /*@__PURE__*/ S.String;
 
 /** Describes the error happened when create or update an image template */
@@ -956,8 +950,7 @@ export type RunState =
   | "Succeeded"
   | "PartiallySucceeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const RunState = /*@__PURE__*/ S.String;
 
 /** Sub-state of the last run */
@@ -967,8 +960,7 @@ export type RunSubState =
   | "Customizing"
   | "Optimizing"
   | "Validating"
-  | "Distributing"
-  | (string & {});
+  | "Distributing";
 export const RunSubState = /*@__PURE__*/ S.String;
 
 /** Describes the latest status of running an image template */

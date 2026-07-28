@@ -13,60 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+S.Struct({}),
+).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -74,33 +72,20 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
 
-export type ScopeTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "REGIONAL"
-  | "GLOBAL"
-  | (string & {});
+export type ScopeTypeEnum = "TYPE_UNSPECIFIED" | "REGIONAL" | "GLOBAL";
 export const ScopeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Scope of an application. */
@@ -109,18 +94,12 @@ export interface Scope {
   type?: ScopeTypeEnum;
 }
 export const Scope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ScopeTypeEnum),
-  }),
+S.Struct({
+  "type": S.optional(ScopeTypeEnum),
+}),
 ).annotate({ identifier: "Scope" }) as any as S.Schema<Scope>;
 
-export type EnvironmentTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "PRODUCTION"
-  | "STAGING"
-  | "TEST"
-  | "DEVELOPMENT"
-  | (string & {});
+export type EnvironmentTypeEnum = "TYPE_UNSPECIFIED" | "PRODUCTION" | "STAGING" | "TEST" | "DEVELOPMENT";
 export const EnvironmentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Environment of the Application, Service, or Workload */
@@ -129,9 +108,9 @@ export interface Environment {
   type?: EnvironmentTypeEnum;
 }
 export const Environment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(EnvironmentTypeEnum),
-  }),
+S.Struct({
+  "type": S.optional(EnvironmentTypeEnum),
+}),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
 /** Contact information of stakeholders. */
@@ -142,24 +121,16 @@ export interface ContactInfo {
   email?: string;
 }
 export const ContactInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    email: S.optional(S.String),
-  }),
+S.Struct({
+  "displayName": S.optional(S.String),
+  "email": S.optional(S.String),
+}),
 ).annotate({ identifier: "ContactInfo" }) as any as S.Schema<ContactInfo>;
 
 export type ContactInfoList = ReadonlyArray<ContactInfo>;
-export const ContactInfoList = /*@__PURE__*/ S.Array(
-  ContactInfo,
-) as any as S.Schema<ContactInfoList>;
+export const ContactInfoList = /*@__PURE__*/ S.Array(ContactInfo) as any as S.Schema<ContactInfoList>;
 
-export type CriticalityTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "MISSION_CRITICAL"
-  | "HIGH"
-  | "MEDIUM"
-  | "LOW"
-  | (string & {});
+export type CriticalityTypeEnum = "TYPE_UNSPECIFIED" | "MISSION_CRITICAL" | "HIGH" | "MEDIUM" | "LOW";
 export const CriticalityTypeEnum = /*@__PURE__*/ S.String;
 
 /** Criticality of the Application, Service, or Workload */
@@ -168,9 +139,9 @@ export interface Criticality {
   type?: CriticalityTypeEnum;
 }
 export const Criticality = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CriticalityTypeEnum),
-  }),
+S.Struct({
+  "type": S.optional(CriticalityTypeEnum),
+}),
 ).annotate({ identifier: "Criticality" }) as any as S.Schema<Criticality>;
 
 /** Consumer provided attributes. */
@@ -187,21 +158,16 @@ export interface Attributes {
   operatorOwners?: ContactInfoList;
 }
 export const Attributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environment: S.optional(Environment),
-    businessOwners: S.optional(ContactInfoList),
-    criticality: S.optional(Criticality),
-    developerOwners: S.optional(ContactInfoList),
-    operatorOwners: S.optional(ContactInfoList),
-  }),
+S.Struct({
+  "environment": S.optional(Environment),
+  "businessOwners": S.optional(ContactInfoList),
+  "criticality": S.optional(Criticality),
+  "developerOwners": S.optional(ContactInfoList),
+  "operatorOwners": S.optional(ContactInfoList),
+}),
 ).annotate({ identifier: "Attributes" }) as any as S.Schema<Attributes>;
 
-export type ApplicationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | (string & {});
+export type ApplicationStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING";
 export const ApplicationStateEnum = /*@__PURE__*/ S.String;
 
 /** Application defines the governance boundary for App Hub entities that perform a logical end-to-end business function. App Hub supports application level IAM permission to align with governance requirements. */
@@ -226,17 +192,17 @@ export interface Application {
   displayName?: string;
 }
 export const Application = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    scope: S.optional(Scope),
-    updateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    attributes: S.optional(Attributes),
-    description: S.optional(S.String),
-    state: S.optional(ApplicationStateEnum),
-    uid: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
+S.Struct({
+  "name": S.optional(S.String),
+  "scope": S.optional(Scope),
+  "updateTime": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "attributes": S.optional(Attributes),
+  "description": S.optional(S.String),
+  "state": S.optional(ApplicationStateEnum),
+  "uid": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 export interface CreateProjectsLocationsApplicationsRequest {
@@ -249,34 +215,20 @@ export interface CreateProjectsLocationsApplicationsRequest {
   /** Request body */
   body?: Application;
 }
-export const CreateProjectsLocationsApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Application.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/applications",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsApplicationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsApplicationsRequest>;
+export const CreateProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "applicationId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(Application.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/applications","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsApplicationsRequest" }) as any as S.Schema<CreateProjectsLocationsApplicationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -288,11 +240,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-  }),
+S.Struct({
+  "message": S.optional(S.String),
+  "code": S.optional(S.Number),
+  "details": S.optional(DocumentMapList),
+}),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -309,13 +261,13 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(Status),
-    done: S.optional(S.Boolean),
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-  }),
+S.Struct({
+  "error": S.optional(Status),
+  "done": S.optional(S.Boolean),
+  "metadata": S.optional(DocumentMap),
+  "name": S.optional(S.String),
+  "response": S.optional(DocumentMap),
+}),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Additional metadata for a Service or Workload. */
@@ -324,20 +276,13 @@ export interface ExtendedMetadata {
   metadataStruct?: DocumentMap;
 }
 export const ExtendedMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadataStruct: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "ExtendedMetadata",
-}) as any as S.Schema<ExtendedMetadata>;
+S.Struct({
+  "metadataStruct": S.optional(DocumentMap),
+}),
+).annotate({ identifier: "ExtendedMetadata" }) as any as S.Schema<ExtendedMetadata>;
 
-export type ExtendedMetadataMap = {
-  [key: string]: ExtendedMetadata | undefined;
-};
-export const ExtendedMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ExtendedMetadata,
-) as any as S.Schema<ExtendedMetadataMap>;
+export type ExtendedMetadataMap = { [key: string]: ExtendedMetadata | undefined };
+export const ExtendedMetadataMap = /*@__PURE__*/ S.Record(S.String, ExtendedMetadata) as any as S.Schema<ExtendedMetadataMap>;
 
 /** The identity associated with a service or workload. */
 export interface Identity {
@@ -345,16 +290,12 @@ export interface Identity {
   principal?: string;
 }
 export const Identity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principal: S.optional(S.String),
-  }),
+S.Struct({
+  "principal": S.optional(S.String),
+}),
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
-export type RegistrationTypeTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "EXCLUSIVE"
-  | "SHARED"
-  | (string & {});
+export type RegistrationTypeTypeEnum = "TYPE_UNSPECIFIED" | "EXCLUSIVE" | "SHARED";
 export const RegistrationTypeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The registration type of a service. */
@@ -363,19 +304,12 @@ export interface RegistrationType {
   type?: RegistrationTypeTypeEnum;
 }
 export const RegistrationType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(RegistrationTypeTypeEnum),
-  }),
-).annotate({
-  identifier: "RegistrationType",
-}) as any as S.Schema<RegistrationType>;
+S.Struct({
+  "type": S.optional(RegistrationTypeTypeEnum),
+}),
+).annotate({ identifier: "RegistrationType" }) as any as S.Schema<RegistrationType>;
 
-export type FunctionalTypeTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "AGENT"
-  | "MCP_SERVER"
-  | "ENDPOINT"
-  | (string & {});
+export type FunctionalTypeTypeEnum = "TYPE_UNSPECIFIED" | "AGENT" | "MCP_SERVER" | "ENDPOINT";
 export const FunctionalTypeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The functional type of a service or workload. */
@@ -384,9 +318,9 @@ export interface FunctionalType {
   type?: FunctionalTypeTypeEnum;
 }
 export const FunctionalType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(FunctionalTypeTypeEnum),
-  }),
+S.Struct({
+  "type": S.optional(FunctionalTypeTypeEnum),
+}),
 ).annotate({ identifier: "FunctionalType" }) as any as S.Schema<FunctionalType>;
 
 /** Properties of an underlying cloud resource that can comprise a Service. */
@@ -407,18 +341,16 @@ export interface ServiceProperties {
   functionalType?: FunctionalType;
 }
 export const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extendedMetadata: S.optional(ExtendedMetadataMap),
-    identity: S.optional(Identity),
-    location: S.optional(S.String),
-    registrationType: S.optional(RegistrationType),
-    zone: S.optional(S.String),
-    gcpProject: S.optional(S.String),
-    functionalType: S.optional(FunctionalType),
-  }),
-).annotate({
-  identifier: "ServiceProperties",
-}) as any as S.Schema<ServiceProperties>;
+S.Struct({
+  "extendedMetadata": S.optional(ExtendedMetadataMap),
+  "identity": S.optional(Identity),
+  "location": S.optional(S.String),
+  "registrationType": S.optional(RegistrationType),
+  "zone": S.optional(S.String),
+  "gcpProject": S.optional(S.String),
+  "functionalType": S.optional(FunctionalType),
+}),
+).annotate({ identifier: "ServiceProperties" }) as any as S.Schema<ServiceProperties>;
 
 /** Reference to an underlying networking resource that can comprise a Service. */
 export interface ServiceReference {
@@ -426,20 +358,12 @@ export interface ServiceReference {
   uri?: string;
 }
 export const ServiceReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceReference",
-}) as any as S.Schema<ServiceReference>;
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "ServiceReference" }) as any as S.Schema<ServiceReference>;
 
-export type ServiceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | "DETACHED"
-  | (string & {});
+export type ServiceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING" | "DETACHED";
 export const ServiceStateEnum = /*@__PURE__*/ S.String;
 
 /** Service is an App Hub data model that contains a discovered service, which represents a network or API interface that exposes some functionality to clients for consumption over the network. */
@@ -468,19 +392,19 @@ export interface Service {
   state?: ServiceStateEnum;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    attributes: S.optional(Attributes),
-    name: S.optional(S.String),
-    serviceProperties: S.optional(ServiceProperties),
-    serviceReference: S.optional(ServiceReference),
-    updateTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    displayName: S.optional(S.String),
-    discoveredService: S.optional(S.String),
-    description: S.optional(S.String),
-    state: S.optional(ServiceStateEnum),
-  }),
+S.Struct({
+  "createTime": S.optional(S.String),
+  "attributes": S.optional(Attributes),
+  "name": S.optional(S.String),
+  "serviceProperties": S.optional(ServiceProperties),
+  "serviceReference": S.optional(ServiceReference),
+  "updateTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "discoveredService": S.optional(S.String),
+  "description": S.optional(S.String),
+  "state": S.optional(ServiceStateEnum),
+}),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export interface CreateProjectsLocationsApplicationsServicesRequest {
@@ -493,23 +417,14 @@ export interface CreateProjectsLocationsApplicationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const CreateProjectsLocationsApplicationsServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Service.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/services",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsApplicationsServicesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsApplicationsServicesRequest>;
+export const CreateProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "serviceId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Service.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/services","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsApplicationsServicesRequest" }) as any as S.Schema<CreateProjectsLocationsApplicationsServicesRequest>;
 
 /** Properties of an underlying compute resource represented by the Workload. */
 export interface WorkloadProperties {
@@ -527,25 +442,17 @@ export interface WorkloadProperties {
   location?: string;
 }
 export const WorkloadProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identity: S.optional(Identity),
-    extendedMetadata: S.optional(ExtendedMetadataMap),
-    gcpProject: S.optional(S.String),
-    functionalType: S.optional(FunctionalType),
-    zone: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkloadProperties",
-}) as any as S.Schema<WorkloadProperties>;
+S.Struct({
+  "identity": S.optional(Identity),
+  "extendedMetadata": S.optional(ExtendedMetadataMap),
+  "gcpProject": S.optional(S.String),
+  "functionalType": S.optional(FunctionalType),
+  "zone": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
+).annotate({ identifier: "WorkloadProperties" }) as any as S.Schema<WorkloadProperties>;
 
-export type WorkloadStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | "DETACHED"
-  | (string & {});
+export type WorkloadStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING" | "DETACHED";
 export const WorkloadStateEnum = /*@__PURE__*/ S.String;
 
 /** Reference of an underlying compute resource represented by the Workload. */
@@ -554,12 +461,10 @@ export interface WorkloadReference {
   uri?: string;
 }
 export const WorkloadReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkloadReference",
-}) as any as S.Schema<WorkloadReference>;
+S.Struct({
+  "uri": S.optional(S.String),
+}),
+).annotate({ identifier: "WorkloadReference" }) as any as S.Schema<WorkloadReference>;
 
 /** Workload is an App Hub data model that contains a discovered workload, which represents a binary deployment (such as managed instance groups (MIGs) and GKE deployments) that performs the smallest logical subset of business functionality. */
 export interface Workload {
@@ -587,19 +492,19 @@ export interface Workload {
   createTime?: string;
 }
 export const Workload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workloadProperties: S.optional(WorkloadProperties),
-    discoveredWorkload: S.optional(S.String),
-    description: S.optional(S.String),
-    state: S.optional(WorkloadStateEnum),
-    displayName: S.optional(S.String),
-    uid: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    workloadReference: S.optional(WorkloadReference),
-    attributes: S.optional(Attributes),
-    createTime: S.optional(S.String),
-  }),
+S.Struct({
+  "workloadProperties": S.optional(WorkloadProperties),
+  "discoveredWorkload": S.optional(S.String),
+  "description": S.optional(S.String),
+  "state": S.optional(WorkloadStateEnum),
+  "displayName": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+  "workloadReference": S.optional(WorkloadReference),
+  "attributes": S.optional(Attributes),
+  "createTime": S.optional(S.String),
+}),
 ).annotate({ identifier: "Workload" }) as any as S.Schema<Workload>;
 
 export interface CreateProjectsLocationsApplicationsWorkloadsRequest {
@@ -612,30 +517,16 @@ export interface CreateProjectsLocationsApplicationsWorkloadsRequest {
   /** Request body */
   body?: Workload;
 }
-export const CreateProjectsLocationsApplicationsWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      workloadId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Workload.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workloads",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsApplicationsWorkloadsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsApplicationsWorkloadsRequest>;
+export const CreateProjectsLocationsApplicationsWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "workloadId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Workload.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/workloads","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsApplicationsWorkloadsRequest" }) as any as S.Schema<CreateProjectsLocationsApplicationsWorkloadsRequest>;
 
-export type ServiceProjectAttachmentStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | (string & {});
+export type ServiceProjectAttachmentStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING";
 export const ServiceProjectAttachmentStateEnum = /*@__PURE__*/ S.String;
 
 /** ServiceProjectAttachment represents an attachment from a service project to a host project. Service projects contain the underlying cloud infrastructure resources, and expose these resources to the host project through a ServiceProjectAttachment. With the attachments, the host project can provide an aggregated view of resources across all service projects. */
@@ -652,16 +543,14 @@ export interface ServiceProjectAttachment {
   state?: ServiceProjectAttachmentStateEnum;
 }
 export const ServiceProjectAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceProject: S.optional(S.String),
-    createTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    name: S.optional(S.String),
-    state: S.optional(ServiceProjectAttachmentStateEnum),
-  }),
-).annotate({
-  identifier: "ServiceProjectAttachment",
-}) as any as S.Schema<ServiceProjectAttachment>;
+S.Struct({
+  "serviceProject": S.optional(S.String),
+  "createTime": S.optional(S.String),
+  "uid": S.optional(S.String),
+  "name": S.optional(S.String),
+  "state": S.optional(ServiceProjectAttachmentStateEnum),
+}),
+).annotate({ identifier: "ServiceProjectAttachment" }) as any as S.Schema<ServiceProjectAttachment>;
 
 export interface CreateProjectsLocationsServiceProjectAttachmentsRequest {
   /** Required. The service project attachment identifier must contain the project id of the service project specified in the service_project_attachment.service_project field. */
@@ -673,23 +562,14 @@ export interface CreateProjectsLocationsServiceProjectAttachmentsRequest {
   /** Request body */
   body?: ServiceProjectAttachment;
 }
-export const CreateProjectsLocationsServiceProjectAttachmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceProjectAttachmentId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ServiceProjectAttachment.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/serviceProjectAttachments",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsServiceProjectAttachmentsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsServiceProjectAttachmentsRequest>;
+export const CreateProjectsLocationsServiceProjectAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "serviceProjectAttachmentId": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+  "body": S.optional(ServiceProjectAttachment.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/serviceProjectAttachments","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "CreateProjectsLocationsServiceProjectAttachmentsRequest" }) as any as S.Schema<CreateProjectsLocationsServiceProjectAttachmentsRequest>;
 
 export interface DeleteProjectsLocationsApplicationsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -697,21 +577,12 @@ export interface DeleteProjectsLocationsApplicationsRequest {
   /** Required. Fully qualified name of the Application to delete. Expected format: `projects/{project}/locations/{location}/applications/{application}`. */
   name: string;
 }
-export const DeleteProjectsLocationsApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsApplicationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsApplicationsRequest>;
+export const DeleteProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsApplicationsRequest" }) as any as S.Schema<DeleteProjectsLocationsApplicationsRequest>;
 
 export interface DeleteProjectsLocationsApplicationsServicesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -719,21 +590,12 @@ export interface DeleteProjectsLocationsApplicationsServicesRequest {
   /** Required. Fully qualified name of the Service to delete from an Application. Expected format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`. */
   name: string;
 }
-export const DeleteProjectsLocationsApplicationsServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsApplicationsServicesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesRequest>;
+export const DeleteProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsApplicationsServicesRequest" }) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesRequest>;
 
 export interface DeleteProjectsLocationsApplicationsWorkloadsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -741,40 +603,22 @@ export interface DeleteProjectsLocationsApplicationsWorkloadsRequest {
   /** Required. Fully qualified name of the Workload to delete from an Application. Expected format: `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`. */
   name: string;
 }
-export const DeleteProjectsLocationsApplicationsWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsApplicationsWorkloadsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsApplicationsWorkloadsRequest>;
+export const DeleteProjectsLocationsApplicationsWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsApplicationsWorkloadsRequest" }) as any as S.Schema<DeleteProjectsLocationsApplicationsWorkloadsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsOperationsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsServiceProjectAttachmentsRequest {
   /** Required. Fully qualified name of the service project attachment to delete. Expected format: `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`. */
@@ -782,29 +626,18 @@ export interface DeleteProjectsLocationsServiceProjectAttachmentsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsServiceProjectAttachmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsServiceProjectAttachmentsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsServiceProjectAttachmentsRequest>;
+export const DeleteProjectsLocationsServiceProjectAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "DeleteProjectsLocationsServiceProjectAttachmentsRequest" }) as any as S.Schema<DeleteProjectsLocationsServiceProjectAttachmentsRequest>;
 
 /** Request for DetachServiceProjectAttachment. */
 export interface DetachServiceProjectAttachmentRequest {}
-export const DetachServiceProjectAttachmentRequest = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DetachServiceProjectAttachmentRequest",
-}) as any as S.Schema<DetachServiceProjectAttachmentRequest>;
+export const DetachServiceProjectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "DetachServiceProjectAttachmentRequest" }) as any as S.Schema<DetachServiceProjectAttachmentRequest>;
 
 export interface DetachServiceProjectAttachmentProjectsLocationsRequest {
   /** Required. Service project id and location to detach from a host project. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. */
@@ -812,56 +645,30 @@ export interface DetachServiceProjectAttachmentProjectsLocationsRequest {
   /** Request body */
   body?: DetachServiceProjectAttachmentRequest;
 }
-export const DetachServiceProjectAttachmentProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        DetachServiceProjectAttachmentRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:detachServiceProjectAttachment",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DetachServiceProjectAttachmentProjectsLocationsRequest",
-  }) as any as S.Schema<DetachServiceProjectAttachmentProjectsLocationsRequest>;
+export const DetachServiceProjectAttachmentProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(DetachServiceProjectAttachmentRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:detachServiceProjectAttachment","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "DetachServiceProjectAttachmentProjectsLocationsRequest" }) as any as S.Schema<DetachServiceProjectAttachmentProjectsLocationsRequest>;
 
 /** Response for DetachServiceProjectAttachment. */
 export interface DetachServiceProjectAttachmentResponse {}
-export const DetachServiceProjectAttachmentResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DetachServiceProjectAttachmentResponse",
-}) as any as S.Schema<DetachServiceProjectAttachmentResponse>;
+export const DetachServiceProjectAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({}),
+).annotate({ identifier: "DetachServiceProjectAttachmentResponse" }) as any as S.Schema<DetachServiceProjectAttachmentResponse>;
 
 export interface GetBoundaryProjectsLocationsRequest {
   /** Required. The name of the boundary to retrieve. Format: `projects/{project}/locations/{location}/boundary`. */
   name: string;
 }
 export const GetBoundaryProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://apphub.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetBoundaryProjectsLocationsRequest",
-}) as any as S.Schema<GetBoundaryProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetBoundaryProjectsLocationsRequest" }) as any as S.Schema<GetBoundaryProjectsLocationsRequest>;
 
-export type BoundaryTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "AUTOMATIC"
-  | "MANUAL"
-  | "MANAGED_AUTOMATIC"
-  | (string & {});
+export type BoundaryTypeEnum = "TYPE_UNSPECIFIED" | "AUTOMATIC" | "MANUAL" | "MANAGED_AUTOMATIC";
 export const BoundaryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Application management boundary. */
@@ -878,13 +685,13 @@ export interface Boundary {
   name?: string;
 }
 export const Boundary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(BoundaryTypeEnum),
-    createTime: S.optional(S.String),
-    crmNode: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
+S.Struct({
+  "type": S.optional(BoundaryTypeEnum),
+  "createTime": S.optional(S.String),
+  "crmNode": S.optional(S.String),
+  "updateTime": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
 ).annotate({ identifier: "Boundary" }) as any as S.Schema<Boundary>;
 
 export interface GetIamPolicyProjectsLocationsApplicationsRequest {
@@ -893,21 +700,12 @@ export interface GetIamPolicyProjectsLocationsApplicationsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsApplicationsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsApplicationsRequest>;
+export const GetIamPolicyProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetIamPolicyProjectsLocationsApplicationsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsApplicationsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -921,18 +719,16 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-    description: S.optional(S.String),
-    title: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+S.Struct({
+  "expression": S.optional(S.String),
+  "description": S.optional(S.String),
+  "title": S.optional(S.String),
+  "location": S.optional(S.String),
+}),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -944,24 +740,17 @@ export interface Binding {
   role?: string;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(Expr),
-    members: S.optional(StringList),
-    role: S.optional(S.String),
-  }),
+S.Struct({
+  "condition": S.optional(Expr),
+  "members": S.optional(StringList),
+  "role": S.optional(S.String),
+}),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum =
-  | "LOG_TYPE_UNSPECIFIED"
-  | "ADMIN_READ"
-  | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -972,16 +761,14 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logType: S.optional(AuditLogConfigLogTypeEnum),
-    exemptedMembers: S.optional(StringList),
-  }),
+S.Struct({
+  "logType": S.optional(AuditLogConfigLogTypeEnum),
+  "exemptedMembers": S.optional(StringList),
+}),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
-  AuditLogConfig,
-) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -991,16 +778,14 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    auditLogConfigs: S.optional(AuditLogConfigList),
-  }),
+S.Struct({
+  "service": S.optional(S.String),
+  "auditLogConfigs": S.optional(AuditLogConfigList),
+}),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1014,12 +799,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bindings: S.optional(BindingList),
-    version: S.optional(S.Number),
-    auditConfigs: S.optional(AuditConfigList),
-    etag: S.optional(S.String),
-  }),
+S.Struct({
+  "bindings": S.optional(BindingList),
+  "version": S.optional(S.Number),
+  "auditConfigs": S.optional(AuditConfigList),
+  "etag": S.optional(S.String),
+}),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetProjectsLocationsRequest {
@@ -1027,24 +812,13 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}",
-      baseUrl: "https://apphub.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsRequest",
-}) as any as S.Schema<GetProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1060,90 +834,54 @@ export interface Location {
   labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    labels: S.optional(StringMap),
-  }),
+S.Struct({
+  "locationId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+  "name": S.optional(S.String),
+  "metadata": S.optional(DocumentMap),
+  "labels": S.optional(StringMap),
+}),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsApplicationsRequest {
   /** Required. Fully qualified name of the Application to fetch. Expected format: `projects/{project}/locations/{location}/applications/{application}`. */
   name: string;
 }
-export const GetProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsApplicationsRequest",
-}) as any as S.Schema<GetProjectsLocationsApplicationsRequest>;
+export const GetProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsApplicationsRequest" }) as any as S.Schema<GetProjectsLocationsApplicationsRequest>;
 
 export interface GetProjectsLocationsApplicationsServicesRequest {
   /** Required. Fully qualified name of the Service to fetch. Expected format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`. */
   name: string;
 }
-export const GetProjectsLocationsApplicationsServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsApplicationsServicesRequest",
-  }) as any as S.Schema<GetProjectsLocationsApplicationsServicesRequest>;
+export const GetProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsApplicationsServicesRequest" }) as any as S.Schema<GetProjectsLocationsApplicationsServicesRequest>;
 
 export interface GetProjectsLocationsApplicationsWorkloadsRequest {
   /** Required. Fully qualified name of the Workload to fetch. Expected format: `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`. */
   name: string;
 }
-export const GetProjectsLocationsApplicationsWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsApplicationsWorkloadsRequest",
-  }) as any as S.Schema<GetProjectsLocationsApplicationsWorkloadsRequest>;
+export const GetProjectsLocationsApplicationsWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsApplicationsWorkloadsRequest" }) as any as S.Schema<GetProjectsLocationsApplicationsWorkloadsRequest>;
 
 export interface GetProjectsLocationsDiscoveredServicesRequest {
   /** Required. Fully qualified name of the Discovered Service to fetch. Expected format: `projects/{project}/locations/{location}/discoveredServices/{discoveredService}`. */
   name: string;
 }
-export const GetProjectsLocationsDiscoveredServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDiscoveredServicesRequest",
-  }) as any as S.Schema<GetProjectsLocationsDiscoveredServicesRequest>;
+export const GetProjectsLocationsDiscoveredServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsDiscoveredServicesRequest" }) as any as S.Schema<GetProjectsLocationsDiscoveredServicesRequest>;
 
 /** DiscoveredService is a network or API interface that exposes some functionality to clients for consumption over the network. A discovered service can be registered to a App Hub service. */
 export interface DiscoveredService {
@@ -1155,33 +893,22 @@ export interface DiscoveredService {
   serviceReference?: ServiceReference;
 }
 export const DiscoveredService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    serviceProperties: S.optional(ServiceProperties),
-    serviceReference: S.optional(ServiceReference),
-  }),
-).annotate({
-  identifier: "DiscoveredService",
-}) as any as S.Schema<DiscoveredService>;
+S.Struct({
+  "name": S.optional(S.String),
+  "serviceProperties": S.optional(ServiceProperties),
+  "serviceReference": S.optional(ServiceReference),
+}),
+).annotate({ identifier: "DiscoveredService" }) as any as S.Schema<DiscoveredService>;
 
 export interface GetProjectsLocationsDiscoveredWorkloadsRequest {
   /** Required. Fully qualified name of the Discovered Workload to fetch. Expected format: `projects/{project}/locations/{location}/discoveredWorkloads/{discoveredWorkload}`. */
   name: string;
 }
-export const GetProjectsLocationsDiscoveredWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDiscoveredWorkloadsRequest",
-  }) as any as S.Schema<GetProjectsLocationsDiscoveredWorkloadsRequest>;
+export const GetProjectsLocationsDiscoveredWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsDiscoveredWorkloadsRequest" }) as any as S.Schema<GetProjectsLocationsDiscoveredWorkloadsRequest>;
 
 /** DiscoveredWorkload is a binary deployment (such as managed instance groups (MIGs) and GKE deployments) that performs the smallest logical subset of business functionality. A discovered workload can be registered to an App Hub Workload. */
 export interface DiscoveredWorkload {
@@ -1193,33 +920,22 @@ export interface DiscoveredWorkload {
   workloadProperties?: WorkloadProperties;
 }
 export const DiscoveredWorkload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    workloadReference: S.optional(WorkloadReference),
-    workloadProperties: S.optional(WorkloadProperties),
-  }),
-).annotate({
-  identifier: "DiscoveredWorkload",
-}) as any as S.Schema<DiscoveredWorkload>;
+S.Struct({
+  "name": S.optional(S.String),
+  "workloadReference": S.optional(WorkloadReference),
+  "workloadProperties": S.optional(WorkloadProperties),
+}),
+).annotate({ identifier: "DiscoveredWorkload" }) as any as S.Schema<DiscoveredWorkload>;
 
 export interface GetProjectsLocationsExtendedMetadataSchemasRequest {
   /** Required. Schema resource name. Format: `projects/{project}/locations/{location}/extendedMetadataSchemas/{extended_metadata_schema}`. `{extended_metadata_schema}` has the format `"apphub.googleapis.com/{SchemaName}"`. */
   name: string;
 }
-export const GetProjectsLocationsExtendedMetadataSchemasRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsExtendedMetadataSchemasRequest",
-  }) as any as S.Schema<GetProjectsLocationsExtendedMetadataSchemasRequest>;
+export const GetProjectsLocationsExtendedMetadataSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsExtendedMetadataSchemasRequest" }) as any as S.Schema<GetProjectsLocationsExtendedMetadataSchemasRequest>;
 
 /** ExtendedMetadataSchema represents a schema for extended metadata of a service or workload. */
 export interface ExtendedMetadataSchema {
@@ -1231,52 +947,32 @@ export interface ExtendedMetadataSchema {
   name?: string;
 }
 export const ExtendedMetadataSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jsonSchema: S.optional(S.String),
-    schemaVersion: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExtendedMetadataSchema",
-}) as any as S.Schema<ExtendedMetadataSchema>;
+S.Struct({
+  "jsonSchema": S.optional(S.String),
+  "schemaVersion": S.optional(S.String),
+  "name": S.optional(S.String),
+}),
+).annotate({ identifier: "ExtendedMetadataSchema" }) as any as S.Schema<ExtendedMetadataSchema>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsServiceProjectAttachmentsRequest {
   /** Required. Fully qualified name of the service project attachment to retrieve. Expected format: `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`. */
   name: string;
 }
-export const GetProjectsLocationsServiceProjectAttachmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsServiceProjectAttachmentsRequest",
-  }) as any as S.Schema<GetProjectsLocationsServiceProjectAttachmentsRequest>;
+export const GetProjectsLocationsServiceProjectAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "GetProjectsLocationsServiceProjectAttachmentsRequest" }) as any as S.Schema<GetProjectsLocationsServiceProjectAttachmentsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -1291,27 +987,17 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/{+name}/locations",
-      baseUrl: "https://apphub.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsRequest",
-}) as any as S.Schema<ListProjectsLocationsRequest>;
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(
-  Location,
-) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1321,13 +1007,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(LocationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLocationsResponse",
-}) as any as S.Schema<ListLocationsResponse>;
+S.Struct({
+  "locations": S.optional(LocationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsApplicationsRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -1341,29 +1025,18 @@ export interface ListProjectsLocationsApplicationsRequest {
   /** Required. Project and location to list Applications on. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/applications",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsApplicationsRequest",
-}) as any as S.Schema<ListProjectsLocationsApplicationsRequest>;
+export const ListProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/applications","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsApplicationsRequest" }) as any as S.Schema<ListProjectsLocationsApplicationsRequest>;
 
 export type ApplicationList = ReadonlyArray<Application>;
-export const ApplicationList = /*@__PURE__*/ S.Array(
-  Application,
-) as any as S.Schema<ApplicationList>;
+export const ApplicationList = /*@__PURE__*/ S.Array(Application) as any as S.Schema<ApplicationList>;
 
 /** Response for ListApplications. */
 export interface ListApplicationsResponse {
@@ -1375,14 +1048,12 @@ export interface ListApplicationsResponse {
   unreachable?: StringList;
 }
 export const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applications: S.optional(ApplicationList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListApplicationsResponse",
-}) as any as S.Schema<ListApplicationsResponse>;
+S.Struct({
+  "applications": S.optional(ApplicationList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListApplicationsResponse" }) as any as S.Schema<ListApplicationsResponse>;
 
 export interface ListProjectsLocationsApplicationsServicesRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -1396,29 +1067,18 @@ export interface ListProjectsLocationsApplicationsServicesRequest {
   /** Required. Fully qualified name of the parent Application to list Services for. Expected format: `projects/{project}/locations/{location}/applications/{application}`. */
   parent: string;
 }
-export const ListProjectsLocationsApplicationsServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/services",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsApplicationsServicesRequest",
-  }) as any as S.Schema<ListProjectsLocationsApplicationsServicesRequest>;
+export const ListProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/services","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsApplicationsServicesRequest" }) as any as S.Schema<ListProjectsLocationsApplicationsServicesRequest>;
 
 export type ServiceList = ReadonlyArray<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(
-  Service,
-) as any as S.Schema<ServiceList>;
+export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** Response for ListServices. */
 export interface ListServicesResponse {
@@ -1430,14 +1090,12 @@ export interface ListServicesResponse {
   nextPageToken?: string;
 }
 export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    services: S.optional(ServiceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListServicesResponse",
-}) as any as S.Schema<ListServicesResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "services": S.optional(ServiceList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListServicesResponse" }) as any as S.Schema<ListServicesResponse>;
 
 export interface ListProjectsLocationsApplicationsWorkloadsRequest {
   /** Required. Fully qualified name of the parent Application to list Workloads for. Expected format: `projects/{project}/locations/{location}/applications/{application}`. */
@@ -1451,29 +1109,18 @@ export interface ListProjectsLocationsApplicationsWorkloadsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsApplicationsWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workloads",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsApplicationsWorkloadsRequest",
-  }) as any as S.Schema<ListProjectsLocationsApplicationsWorkloadsRequest>;
+export const ListProjectsLocationsApplicationsWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workloads","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsApplicationsWorkloadsRequest" }) as any as S.Schema<ListProjectsLocationsApplicationsWorkloadsRequest>;
 
 export type WorkloadList = ReadonlyArray<Workload>;
-export const WorkloadList = /*@__PURE__*/ S.Array(
-  Workload,
-) as any as S.Schema<WorkloadList>;
+export const WorkloadList = /*@__PURE__*/ S.Array(Workload) as any as S.Schema<WorkloadList>;
 
 /** Response for ListWorkloads. */
 export interface ListWorkloadsResponse {
@@ -1485,14 +1132,12 @@ export interface ListWorkloadsResponse {
   nextPageToken?: string;
 }
 export const ListWorkloadsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    workloads: S.optional(WorkloadList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkloadsResponse",
-}) as any as S.Schema<ListWorkloadsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "workloads": S.optional(WorkloadList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListWorkloadsResponse" }) as any as S.Schema<ListWorkloadsResponse>;
 
 export interface ListProjectsLocationsDiscoveredServicesRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -1506,29 +1151,18 @@ export interface ListProjectsLocationsDiscoveredServicesRequest {
   /** Required. Project and location to list Discovered Services on. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsDiscoveredServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/discoveredServices",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsDiscoveredServicesRequest",
-  }) as any as S.Schema<ListProjectsLocationsDiscoveredServicesRequest>;
+export const ListProjectsLocationsDiscoveredServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/discoveredServices","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsDiscoveredServicesRequest" }) as any as S.Schema<ListProjectsLocationsDiscoveredServicesRequest>;
 
 export type DiscoveredServiceList = ReadonlyArray<DiscoveredService>;
-export const DiscoveredServiceList = /*@__PURE__*/ S.Array(
-  DiscoveredService,
-) as any as S.Schema<DiscoveredServiceList>;
+export const DiscoveredServiceList = /*@__PURE__*/ S.Array(DiscoveredService) as any as S.Schema<DiscoveredServiceList>;
 
 /** Response for ListDiscoveredServices. */
 export interface ListDiscoveredServicesResponse {
@@ -1540,14 +1174,12 @@ export interface ListDiscoveredServicesResponse {
   unreachable?: StringList;
 }
 export const ListDiscoveredServicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoveredServices: S.optional(DiscoveredServiceList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListDiscoveredServicesResponse",
-}) as any as S.Schema<ListDiscoveredServicesResponse>;
+S.Struct({
+  "discoveredServices": S.optional(DiscoveredServiceList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListDiscoveredServicesResponse" }) as any as S.Schema<ListDiscoveredServicesResponse>;
 
 export interface ListProjectsLocationsDiscoveredWorkloadsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
@@ -1561,29 +1193,18 @@ export interface ListProjectsLocationsDiscoveredWorkloadsRequest {
   /** Required. Project and location to list Discovered Workloads on. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsDiscoveredWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/discoveredWorkloads",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsDiscoveredWorkloadsRequest",
-  }) as any as S.Schema<ListProjectsLocationsDiscoveredWorkloadsRequest>;
+export const ListProjectsLocationsDiscoveredWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "parent": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/discoveredWorkloads","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsDiscoveredWorkloadsRequest" }) as any as S.Schema<ListProjectsLocationsDiscoveredWorkloadsRequest>;
 
 export type DiscoveredWorkloadList = ReadonlyArray<DiscoveredWorkload>;
-export const DiscoveredWorkloadList = /*@__PURE__*/ S.Array(
-  DiscoveredWorkload,
-) as any as S.Schema<DiscoveredWorkloadList>;
+export const DiscoveredWorkloadList = /*@__PURE__*/ S.Array(DiscoveredWorkload) as any as S.Schema<DiscoveredWorkloadList>;
 
 /** Response for ListDiscoveredWorkloads. */
 export interface ListDiscoveredWorkloadsResponse {
@@ -1595,14 +1216,12 @@ export interface ListDiscoveredWorkloadsResponse {
   unreachable?: StringList;
 }
 export const ListDiscoveredWorkloadsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoveredWorkloads: S.optional(DiscoveredWorkloadList),
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ListDiscoveredWorkloadsResponse",
-}) as any as S.Schema<ListDiscoveredWorkloadsResponse>;
+S.Struct({
+  "discoveredWorkloads": S.optional(DiscoveredWorkloadList),
+  "nextPageToken": S.optional(S.String),
+  "unreachable": S.optional(StringList),
+}),
+).annotate({ identifier: "ListDiscoveredWorkloadsResponse" }) as any as S.Schema<ListDiscoveredWorkloadsResponse>;
 
 export interface ListProjectsLocationsExtendedMetadataSchemasRequest {
   /** Required. Project and location to list Extended Metadata Schemas on. Expected format: `projects/{project}/locations/{location}`. */
@@ -1612,27 +1231,16 @@ export interface ListProjectsLocationsExtendedMetadataSchemasRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsExtendedMetadataSchemasRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/extendedMetadataSchemas",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsExtendedMetadataSchemasRequest",
-  }) as any as S.Schema<ListProjectsLocationsExtendedMetadataSchemasRequest>;
+export const ListProjectsLocationsExtendedMetadataSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/extendedMetadataSchemas","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsExtendedMetadataSchemasRequest" }) as any as S.Schema<ListProjectsLocationsExtendedMetadataSchemasRequest>;
 
 export type ExtendedMetadataSchemaList = ReadonlyArray<ExtendedMetadataSchema>;
-export const ExtendedMetadataSchemaList = /*@__PURE__*/ S.Array(
-  ExtendedMetadataSchema,
-) as any as S.Schema<ExtendedMetadataSchemaList>;
+export const ExtendedMetadataSchemaList = /*@__PURE__*/ S.Array(ExtendedMetadataSchema) as any as S.Schema<ExtendedMetadataSchemaList>;
 
 /** Response for ListExtendedMetadataSchemas. */
 export interface ListExtendedMetadataSchemasResponse {
@@ -1642,13 +1250,11 @@ export interface ListExtendedMetadataSchemasResponse {
   nextPageToken?: string;
 }
 export const ListExtendedMetadataSchemasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extendedMetadataSchemas: S.optional(ExtendedMetadataSchemaList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListExtendedMetadataSchemasResponse",
-}) as any as S.Schema<ListExtendedMetadataSchemasResponse>;
+S.Struct({
+  "extendedMetadataSchemas": S.optional(ExtendedMetadataSchemaList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListExtendedMetadataSchemasResponse" }) as any as S.Schema<ListExtendedMetadataSchemasResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -1662,29 +1268,18 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/operations",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsOperationsRequest",
-}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1696,14 +1291,12 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unreachable: S.optional(StringList),
-    operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOperationsResponse",
-}) as any as S.Schema<ListOperationsResponse>;
+S.Struct({
+  "unreachable": S.optional(StringList),
+  "operations": S.optional(OperationList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsServiceProjectAttachmentsRequest {
   /** Required. Host project ID and location to list service project attachments. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. */
@@ -1717,30 +1310,18 @@ export interface ListProjectsLocationsServiceProjectAttachmentsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsServiceProjectAttachmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/serviceProjectAttachments",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsServiceProjectAttachmentsRequest",
-  }) as any as S.Schema<ListProjectsLocationsServiceProjectAttachmentsRequest>;
+export const ListProjectsLocationsServiceProjectAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "filter": S.optional(S.String.pipe(T.Query())),
+  "orderBy": S.optional(S.String.pipe(T.Query())),
+  "pageToken": S.optional(S.String.pipe(T.Query())),
+  "pageSize": S.optional(S.Number.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/serviceProjectAttachments","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "ListProjectsLocationsServiceProjectAttachmentsRequest" }) as any as S.Schema<ListProjectsLocationsServiceProjectAttachmentsRequest>;
 
-export type ServiceProjectAttachmentList =
-  ReadonlyArray<ServiceProjectAttachment>;
-export const ServiceProjectAttachmentList = /*@__PURE__*/ S.Array(
-  ServiceProjectAttachment,
-) as any as S.Schema<ServiceProjectAttachmentList>;
+export type ServiceProjectAttachmentList = ReadonlyArray<ServiceProjectAttachment>;
+export const ServiceProjectAttachmentList = /*@__PURE__*/ S.Array(ServiceProjectAttachment) as any as S.Schema<ServiceProjectAttachmentList>;
 
 /** Response for ListServiceProjectAttachments. */
 export interface ListServiceProjectAttachmentsResponse {
@@ -1751,16 +1332,13 @@ export interface ListServiceProjectAttachmentsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListServiceProjectAttachmentsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceProjectAttachments: S.optional(ServiceProjectAttachmentList),
-      unreachable: S.optional(StringList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListServiceProjectAttachmentsResponse",
-}) as any as S.Schema<ListServiceProjectAttachmentsResponse>;
+export const ListServiceProjectAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "serviceProjectAttachments": S.optional(ServiceProjectAttachmentList),
+  "unreachable": S.optional(StringList),
+  "nextPageToken": S.optional(S.String),
+}),
+).annotate({ identifier: "ListServiceProjectAttachmentsResponse" }) as any as S.Schema<ListServiceProjectAttachmentsResponse>;
 
 export interface LookupProjectsLocationsDiscoveredServicesRequest {
   /** Required. Host project ID and location to lookup Discovered Service in. Expected format: `projects/{project}/locations/{location}`. */
@@ -1768,21 +1346,12 @@ export interface LookupProjectsLocationsDiscoveredServicesRequest {
   /** Required. Resource URI to find DiscoveredService for. Accepts both project number and project ID and does translation when needed. */
   uri?: string;
 }
-export const LookupProjectsLocationsDiscoveredServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      uri: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/discoveredServices:lookup",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "LookupProjectsLocationsDiscoveredServicesRequest",
-  }) as any as S.Schema<LookupProjectsLocationsDiscoveredServicesRequest>;
+export const LookupProjectsLocationsDiscoveredServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "uri": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/discoveredServices:lookup","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "LookupProjectsLocationsDiscoveredServicesRequest" }) as any as S.Schema<LookupProjectsLocationsDiscoveredServicesRequest>;
 
 /** Response for LookupDiscoveredService. */
 export interface LookupDiscoveredServiceResponse {
@@ -1790,12 +1359,10 @@ export interface LookupDiscoveredServiceResponse {
   discoveredService?: DiscoveredService;
 }
 export const LookupDiscoveredServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoveredService: S.optional(DiscoveredService),
-  }),
-).annotate({
-  identifier: "LookupDiscoveredServiceResponse",
-}) as any as S.Schema<LookupDiscoveredServiceResponse>;
+S.Struct({
+  "discoveredService": S.optional(DiscoveredService),
+}),
+).annotate({ identifier: "LookupDiscoveredServiceResponse" }) as any as S.Schema<LookupDiscoveredServiceResponse>;
 
 export interface LookupProjectsLocationsDiscoveredWorkloadsRequest {
   /** Required. Host project ID and location to lookup Discovered Workload in. Expected format: `projects/{project}/locations/{location}`. */
@@ -1803,21 +1370,12 @@ export interface LookupProjectsLocationsDiscoveredWorkloadsRequest {
   /** Required. Resource URI to find Discovered Workload for. Accepts both project number and project ID and does translation when needed. */
   uri?: string;
 }
-export const LookupProjectsLocationsDiscoveredWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      uri: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/discoveredWorkloads:lookup",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "LookupProjectsLocationsDiscoveredWorkloadsRequest",
-  }) as any as S.Schema<LookupProjectsLocationsDiscoveredWorkloadsRequest>;
+export const LookupProjectsLocationsDiscoveredWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "parent": S.String.pipe(T.Label()),
+  "uri": S.optional(S.String.pipe(T.Query())),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/discoveredWorkloads:lookup","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "LookupProjectsLocationsDiscoveredWorkloadsRequest" }) as any as S.Schema<LookupProjectsLocationsDiscoveredWorkloadsRequest>;
 
 /** Response for LookupDiscoveredWorkload. */
 export interface LookupDiscoveredWorkloadResponse {
@@ -1825,45 +1383,31 @@ export interface LookupDiscoveredWorkloadResponse {
   discoveredWorkload?: DiscoveredWorkload;
 }
 export const LookupDiscoveredWorkloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoveredWorkload: S.optional(DiscoveredWorkload),
-  }),
-).annotate({
-  identifier: "LookupDiscoveredWorkloadResponse",
-}) as any as S.Schema<LookupDiscoveredWorkloadResponse>;
+S.Struct({
+  "discoveredWorkload": S.optional(DiscoveredWorkload),
+}),
+).annotate({ identifier: "LookupDiscoveredWorkloadResponse" }) as any as S.Schema<LookupDiscoveredWorkloadResponse>;
 
 export interface LookupServiceProjectAttachmentProjectsLocationsRequest {
   /** Required. Service project ID and location to lookup service project attachment for. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. */
   name: string;
 }
-export const LookupServiceProjectAttachmentProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:lookupServiceProjectAttachment",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "LookupServiceProjectAttachmentProjectsLocationsRequest",
-  }) as any as S.Schema<LookupServiceProjectAttachmentProjectsLocationsRequest>;
+export const LookupServiceProjectAttachmentProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:lookupServiceProjectAttachment","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "LookupServiceProjectAttachmentProjectsLocationsRequest" }) as any as S.Schema<LookupServiceProjectAttachmentProjectsLocationsRequest>;
 
 /** Response for LookupServiceProjectAttachment. */
 export interface LookupServiceProjectAttachmentResponse {
   /** Service project attachment for a project if exists, empty otherwise. */
   serviceProjectAttachment?: ServiceProjectAttachment;
 }
-export const LookupServiceProjectAttachmentResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceProjectAttachment: S.optional(ServiceProjectAttachment),
-    }),
-).annotate({
-  identifier: "LookupServiceProjectAttachmentResponse",
-}) as any as S.Schema<LookupServiceProjectAttachmentResponse>;
+export const LookupServiceProjectAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "serviceProjectAttachment": S.optional(ServiceProjectAttachment),
+}),
+).annotate({ identifier: "LookupServiceProjectAttachmentResponse" }) as any as S.Schema<LookupServiceProjectAttachmentResponse>;
 
 export interface PatchProjectsLocationsApplicationsRequest {
   /** Identifier. The resource name of an Application. Format: `"projects/{host-project-id}/locations/{location}/applications/{application-id}"` */
@@ -1875,23 +1419,14 @@ export interface PatchProjectsLocationsApplicationsRequest {
   /** Request body */
   body?: Application;
 }
-export const PatchProjectsLocationsApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Application.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsApplicationsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsApplicationsRequest>;
+export const PatchProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Application.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsApplicationsRequest" }) as any as S.Schema<PatchProjectsLocationsApplicationsRequest>;
 
 export interface PatchProjectsLocationsApplicationsServicesRequest {
   /** Identifier. The resource name of a Service. Format: `"projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"` */
@@ -1903,23 +1438,14 @@ export interface PatchProjectsLocationsApplicationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const PatchProjectsLocationsApplicationsServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Service.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsApplicationsServicesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsApplicationsServicesRequest>;
+export const PatchProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Service.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsApplicationsServicesRequest" }) as any as S.Schema<PatchProjectsLocationsApplicationsServicesRequest>;
 
 export interface PatchProjectsLocationsApplicationsWorkloadsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1931,23 +1457,14 @@ export interface PatchProjectsLocationsApplicationsWorkloadsRequest {
   /** Request body */
   body?: Workload;
 }
-export const PatchProjectsLocationsApplicationsWorkloadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Workload.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsApplicationsWorkloadsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsApplicationsWorkloadsRequest>;
+export const PatchProjectsLocationsApplicationsWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "body": S.optional(Workload.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "PatchProjectsLocationsApplicationsWorkloadsRequest" }) as any as S.Schema<PatchProjectsLocationsApplicationsWorkloadsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -1957,13 +1474,11 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetIamPolicyRequest",
-}) as any as S.Schema<SetIamPolicyRequest>;
+S.Struct({
+  "policy": S.optional(Policy),
+  "updateMask": S.optional(S.String),
+}),
+).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsApplicationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1971,21 +1486,12 @@ export interface SetIamPolicyProjectsLocationsApplicationsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsApplicationsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsApplicationsRequest>;
+export const SetIamPolicyProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "SetIamPolicyProjectsLocationsApplicationsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsApplicationsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -1993,12 +1499,10 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsApplicationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2006,21 +1510,12 @@ export interface TestIamPermissionsProjectsLocationsApplicationsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsApplicationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsApplicationsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsApplicationsRequest>;
+export const TestIamPermissionsProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "resource": S.String.pipe(T.Label()),
+  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "TestIamPermissionsProjectsLocationsApplicationsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsApplicationsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -2028,12 +1523,10 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+S.Struct({
+  "permissions": S.optional(StringList),
+}),
+).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateBoundaryProjectsLocationsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2045,30 +1538,16 @@ export interface UpdateBoundaryProjectsLocationsRequest {
   /** Request body */
   body?: Boundary;
 }
-export const UpdateBoundaryProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Boundary.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://apphub.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateBoundaryProjectsLocationsRequest",
-}) as any as S.Schema<UpdateBoundaryProjectsLocationsRequest>;
+export const UpdateBoundaryProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "requestId": S.optional(S.String.pipe(T.Query())),
+  "updateMask": S.optional(S.String.pipe(T.Query())),
+  "name": S.String.pipe(T.Label()),
+  "body": S.optional(Boundary.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://apphub.googleapis.com/"})),
+).annotate({ identifier: "UpdateBoundaryProjectsLocationsRequest" }) as any as S.Schema<UpdateBoundaryProjectsLocationsRequest>;
 
-export type CancelProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -2083,12 +1562,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsApplicationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates an Application in a host project and location. */
 export const createProjectsLocationsApplications: API.OperationMethod<
   CreateProjectsLocationsApplicationsRequest,
@@ -2103,12 +1577,7 @@ export const createProjectsLocationsApplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsApplicationsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsApplicationsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Service in an Application. */
 export const createProjectsLocationsApplicationsServices: API.OperationMethod<
   CreateProjectsLocationsApplicationsServicesRequest,
@@ -2123,12 +1592,7 @@ export const createProjectsLocationsApplicationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsApplicationsWorkloadsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsApplicationsWorkloadsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a Workload in an Application. */
 export const createProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   CreateProjectsLocationsApplicationsWorkloadsRequest,
@@ -2143,12 +1607,7 @@ export const createProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsServiceProjectAttachmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreateProjectsLocationsServiceProjectAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Attaches a service project to the host project. */
 export const createProjectsLocationsServiceProjectAttachments: API.OperationMethod<
   CreateProjectsLocationsServiceProjectAttachmentsRequest,
@@ -2163,12 +1622,7 @@ export const createProjectsLocationsServiceProjectAttachments: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApplicationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes an Application in a host project and location. */
 export const deleteProjectsLocationsApplications: API.OperationMethod<
   DeleteProjectsLocationsApplicationsRequest,
@@ -2183,12 +1637,7 @@ export const deleteProjectsLocationsApplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApplicationsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsApplicationsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a Service from an Application. */
 export const deleteProjectsLocationsApplicationsServices: API.OperationMethod<
   DeleteProjectsLocationsApplicationsServicesRequest,
@@ -2203,12 +1652,7 @@ export const deleteProjectsLocationsApplicationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApplicationsWorkloadsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsApplicationsWorkloadsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a Workload from an Application. */
 export const deleteProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   DeleteProjectsLocationsApplicationsWorkloadsRequest,
@@ -2223,12 +1667,7 @@ export const deleteProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -2243,12 +1682,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsServiceProjectAttachmentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DeleteProjectsLocationsServiceProjectAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a service project attachment. */
 export const deleteProjectsLocationsServiceProjectAttachments: API.OperationMethod<
   DeleteProjectsLocationsServiceProjectAttachmentsRequest,
@@ -2263,12 +1697,7 @@ export const deleteProjectsLocationsServiceProjectAttachments: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type DetachServiceProjectAttachmentProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type DetachServiceProjectAttachmentProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Detaches a service project from a host project. You can call this API from any service project without needing access to the host project that it is attached to. */
 export const detachServiceProjectAttachmentProjectsLocations: API.OperationMethod<
   DetachServiceProjectAttachmentProjectsLocationsRequest,
@@ -2283,10 +1712,7 @@ export const detachServiceProjectAttachmentProjectsLocations: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetBoundaryProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetBoundaryProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Gets a Boundary. */
 export const getBoundaryProjectsLocations: API.OperationMethod<
   GetBoundaryProjectsLocationsRequest,
@@ -2301,10 +1727,7 @@ export const getBoundaryProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetIamPolicyProjectsLocationsApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsApplications: API.OperationMethod<
   GetIamPolicyProjectsLocationsApplicationsRequest,
@@ -2334,10 +1757,7 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Gets an Application in a host project and location. */
 export const getProjectsLocationsApplications: API.OperationMethod<
   GetProjectsLocationsApplicationsRequest,
@@ -2352,10 +1772,7 @@ export const getProjectsLocationsApplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsApplicationsServicesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsApplicationsServicesError = NotFound | Forbidden | GcpOpError;
 /** Gets a Service in an Application. */
 export const getProjectsLocationsApplicationsServices: API.OperationMethod<
   GetProjectsLocationsApplicationsServicesRequest,
@@ -2370,10 +1787,7 @@ export const getProjectsLocationsApplicationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsApplicationsWorkloadsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsApplicationsWorkloadsError = NotFound | Forbidden | GcpOpError;
 /** Gets a Workload in an Application. */
 export const getProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   GetProjectsLocationsApplicationsWorkloadsRequest,
@@ -2388,10 +1802,7 @@ export const getProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDiscoveredServicesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsDiscoveredServicesError = NotFound | Forbidden | GcpOpError;
 /** Gets a Discovered Service in a host project and location. */
 export const getProjectsLocationsDiscoveredServices: API.OperationMethod<
   GetProjectsLocationsDiscoveredServicesRequest,
@@ -2406,10 +1817,7 @@ export const getProjectsLocationsDiscoveredServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDiscoveredWorkloadsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsDiscoveredWorkloadsError = NotFound | Forbidden | GcpOpError;
 /** Gets a Discovered Workload in a host project and location. */
 export const getProjectsLocationsDiscoveredWorkloads: API.OperationMethod<
   GetProjectsLocationsDiscoveredWorkloadsRequest,
@@ -2424,10 +1832,7 @@ export const getProjectsLocationsDiscoveredWorkloads: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsExtendedMetadataSchemasError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsExtendedMetadataSchemasError = NotFound | Forbidden | GcpOpError;
 /** Gets an Extended Metadata Schema. */
 export const getProjectsLocationsExtendedMetadataSchemas: API.OperationMethod<
   GetProjectsLocationsExtendedMetadataSchemasRequest,
@@ -2442,10 +1847,7 @@ export const getProjectsLocationsExtendedMetadataSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -2460,10 +1862,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsServiceProjectAttachmentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetProjectsLocationsServiceProjectAttachmentsError = NotFound | Forbidden | GcpOpError;
 /** Gets a service project attachment. */
 export const getProjectsLocationsServiceProjectAttachments: API.OperationMethod<
   GetProjectsLocationsServiceProjectAttachmentsRequest,
@@ -2491,16 +1890,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsApplicationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsApplicationsError = NotFound | Forbidden | GcpOpError;
 /** Lists Applications in a host project and location. */
 export const listProjectsLocationsApplications: API.PaginatedOperationMethod<
   ListProjectsLocationsApplicationsRequest,
@@ -2513,16 +1906,10 @@ export const listProjectsLocationsApplications: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsApplicationsServicesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsApplicationsServicesError = NotFound | Forbidden | GcpOpError;
 /** Lists Services in an Application. */
 export const listProjectsLocationsApplicationsServices: API.PaginatedOperationMethod<
   ListProjectsLocationsApplicationsServicesRequest,
@@ -2535,16 +1922,10 @@ export const listProjectsLocationsApplicationsServices: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsApplicationsWorkloadsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsApplicationsWorkloadsError = NotFound | Forbidden | GcpOpError;
 /** Lists Workloads in an Application. */
 export const listProjectsLocationsApplicationsWorkloads: API.PaginatedOperationMethod<
   ListProjectsLocationsApplicationsWorkloadsRequest,
@@ -2557,16 +1938,10 @@ export const listProjectsLocationsApplicationsWorkloads: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsDiscoveredServicesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsDiscoveredServicesError = NotFound | Forbidden | GcpOpError;
 /** Lists Discovered Services that can be added to an Application in a host project and location. */
 export const listProjectsLocationsDiscoveredServices: API.PaginatedOperationMethod<
   ListProjectsLocationsDiscoveredServicesRequest,
@@ -2579,16 +1954,10 @@ export const listProjectsLocationsDiscoveredServices: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsDiscoveredWorkloadsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsDiscoveredWorkloadsError = NotFound | Forbidden | GcpOpError;
 /** Lists Discovered Workloads that can be added to an Application in a host project and location. */
 export const listProjectsLocationsDiscoveredWorkloads: API.PaginatedOperationMethod<
   ListProjectsLocationsDiscoveredWorkloadsRequest,
@@ -2601,16 +1970,10 @@ export const listProjectsLocationsDiscoveredWorkloads: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsExtendedMetadataSchemasError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsExtendedMetadataSchemasError = NotFound | Forbidden | GcpOpError;
 /** Lists Extended Metadata Schemas available in a host project and location. */
 export const listProjectsLocationsExtendedMetadataSchemas: API.PaginatedOperationMethod<
   ListProjectsLocationsExtendedMetadataSchemasRequest,
@@ -2623,16 +1986,10 @@ export const listProjectsLocationsExtendedMetadataSchemas: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -2645,16 +2002,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type ListProjectsLocationsServiceProjectAttachmentsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type ListProjectsLocationsServiceProjectAttachmentsError = NotFound | Forbidden | GcpOpError;
 /** Lists service projects attached to the host project. */
 export const listProjectsLocationsServiceProjectAttachments: API.PaginatedOperationMethod<
   ListProjectsLocationsServiceProjectAttachmentsRequest,
@@ -2667,16 +2018,10 @@ export const listProjectsLocationsServiceProjectAttachments: API.PaginatedOperat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
+  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
 }));
 
-export type LookupProjectsLocationsDiscoveredServicesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type LookupProjectsLocationsDiscoveredServicesError = NotFound | Forbidden | GcpOpError;
 /** Lists a Discovered Service in a host project and location, with a given resource URI. */
 export const lookupProjectsLocationsDiscoveredServices: API.OperationMethod<
   LookupProjectsLocationsDiscoveredServicesRequest,
@@ -2691,10 +2036,7 @@ export const lookupProjectsLocationsDiscoveredServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LookupProjectsLocationsDiscoveredWorkloadsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type LookupProjectsLocationsDiscoveredWorkloadsError = NotFound | Forbidden | GcpOpError;
 /** Lists a Discovered Workload in a host project and location, with a given resource URI. */
 export const lookupProjectsLocationsDiscoveredWorkloads: API.OperationMethod<
   LookupProjectsLocationsDiscoveredWorkloadsRequest,
@@ -2709,10 +2051,7 @@ export const lookupProjectsLocationsDiscoveredWorkloads: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LookupServiceProjectAttachmentProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type LookupServiceProjectAttachmentProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Lists a service project attachment for a given service project. You can call this API from any project to find if it is attached to a host project. */
 export const lookupServiceProjectAttachmentProjectsLocations: API.OperationMethod<
   LookupServiceProjectAttachmentProjectsLocationsRequest,
@@ -2727,12 +2066,7 @@ export const lookupServiceProjectAttachmentProjectsLocations: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApplicationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates an Application in a host project and location. */
 export const patchProjectsLocationsApplications: API.OperationMethod<
   PatchProjectsLocationsApplicationsRequest,
@@ -2747,12 +2081,7 @@ export const patchProjectsLocationsApplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApplicationsServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsApplicationsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a Service in an Application. */
 export const patchProjectsLocationsApplicationsServices: API.OperationMethod<
   PatchProjectsLocationsApplicationsServicesRequest,
@@ -2767,12 +2096,7 @@ export const patchProjectsLocationsApplicationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApplicationsWorkloadsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type PatchProjectsLocationsApplicationsWorkloadsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a Workload in an Application. */
 export const patchProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   PatchProjectsLocationsApplicationsWorkloadsRequest,
@@ -2787,12 +2111,7 @@ export const patchProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsApplicationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type SetIamPolicyProjectsLocationsApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsApplications: API.OperationMethod<
   SetIamPolicyProjectsLocationsApplicationsRequest,
@@ -2807,12 +2126,7 @@ export const setIamPolicyProjectsLocationsApplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsApplicationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type TestIamPermissionsProjectsLocationsApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsApplications: API.OperationMethod<
   TestIamPermissionsProjectsLocationsApplicationsRequest,
@@ -2827,12 +2141,7 @@ export const testIamPermissionsProjectsLocationsApplications: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UpdateBoundaryProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type UpdateBoundaryProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Updates a Boundary. */
 export const updateBoundaryProjectsLocations: API.OperationMethod<
   UpdateBoundaryProjectsLocationsRequest,
@@ -2846,3 +2155,4 @@ export const updateBoundaryProjectsLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

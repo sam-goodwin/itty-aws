@@ -13,7 +13,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** The workload type of the subscription. It can be either Production or DevTest. */
-export type Workload = "Production" | "DevTest" | (string & {});
+export type Workload = "Production" | "DevTest";
 export const Workload = /*@__PURE__*/ S.String;
 
 /** Tags for the subscription */
@@ -52,7 +52,7 @@ export const PutAliasRequestAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
 export interface PutAliasRequestProperties {
   /** The friendly name of the subscription. */
   displayName?: string;
-  workload?: Workload;
+  workload?: Workload | (string & {});
   billingScope?: string;
   /** This parameter can be used to create alias for existing subscription Id */
   subscriptionId?: string;
@@ -100,17 +100,12 @@ export const AliasCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export type SubscriptionAliasResponsePropertiesProvisioningState =
   | "Accepted"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SubscriptionAliasResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The accept ownership state of the resource. */
-export type AcceptOwnershipState =
-  | "Pending"
-  | "Completed"
-  | "Expired"
-  | (string & {});
+export type AcceptOwnershipState = "Pending" | "Completed" | "Expired";
 export const AcceptOwnershipState = /*@__PURE__*/ S.String;
 
 /** Tags for the subscription */
@@ -173,8 +168,7 @@ export type SubscriptionAliasResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SubscriptionAliasResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -183,8 +177,7 @@ export type SubscriptionAliasResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SubscriptionAliasResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -392,8 +385,7 @@ export type BillingAccountPoliciesResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const BillingAccountPoliciesResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -402,8 +394,7 @@ export type BillingAccountPoliciesResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const BillingAccountPoliciesResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -618,11 +609,7 @@ export const SubscriptionAcceptOwnershipStatusRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SubscriptionAcceptOwnershipStatusRequest>;
 
 /** The provisioning state of the resource. */
-export type ProvisioningState =
-  | "Pending"
-  | "Accepted"
-  | "Succeeded"
-  | (string & {});
+export type ProvisioningState = "Pending" | "Accepted" | "Succeeded";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Tags for the subscription */
@@ -826,8 +813,7 @@ export type GetTenantPolicyResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const GetTenantPolicyResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -836,8 +822,7 @@ export type GetTenantPolicyResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const GetTenantPolicyResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

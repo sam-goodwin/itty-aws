@@ -40,6 +40,13 @@ export interface GeneratorCliOptions {
   readonly manualSpecsDir?: string;
   /** RFC-6902 patch chain root. Default `patches`; `false` disables. */
   readonly patchesDir?: string | false;
+  /**
+   * Model transform applied AFTER the patch chain, before generation —
+   * for whole-model rewrites that must see post-patch shape names (e.g.
+   * cloudflare's scope-twin structural dedup). May mutate the model;
+   * a returned log line is printed.
+   */
+  readonly transformModel?: (model: any, resource: string) => string | void;
   /** The provider spec — built per model (metadata may vary per model). */
   readonly spec: (model: any) => SdkSpec;
 }
@@ -182,6 +189,11 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
               }
               totalPatches++;
             }
+          }
+
+          if (options.transformModel) {
+            const note = options.transformModel(model, resource);
+            if (note) yield* Console.log(`   ${note}`);
           }
 
           const { code, operations } = generateService(

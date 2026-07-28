@@ -212,7 +212,7 @@ export const FeatureFlagsAllActivityRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FeatureFlagsAllActivityRetrieveRequest>;
 
 /** * `true` - true * `false` - false * `STALE` - STALE */
-export type ActiveEnum = "true" | "false" | "STALE" | (string & {});
+export type ActiveEnum = "true" | "false" | "STALE";
 export const ActiveEnum = /*@__PURE__*/ S.String;
 
 /** * `boolean` - boolean * `multivariant` - multivariant * `experiment` - experiment * `remote_config` - remote_config */
@@ -220,12 +220,11 @@ export type BulkDeleteFiltersTypeEnum =
   | "boolean"
   | "multivariant"
   | "experiment"
-  | "remote_config"
-  | (string & {});
+  | "remote_config";
 export const BulkDeleteFiltersTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `server` - Server * `client` - Client * `all` - All */
-export type EvaluationRuntimeEnum = "server" | "client" | "all" | (string & {});
+export type EvaluationRuntimeEnum = "server" | "client" | "all";
 export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to filter by. Flags carrying at least one of these tags match. */
@@ -243,15 +242,15 @@ export const BulkDeleteFiltersExcludedTagsList = /*@__PURE__*/ S.Array(
 /** Allowed filter keys for bulk_delete — same shape as the list endpoint's query params. */
 export interface BulkDeleteFilters {
   /** Filter by active state. * `true` - true * `false` - false * `STALE` - STALE */
-  active?: ActiveEnum;
+  active?: ActiveEnum | (string & {});
   /** Filter to flags created by a specific user ID. */
   created_by_id?: number;
   /** Search by feature flag key or name (case-insensitive). */
   search?: string;
   /** Filter by flag type. * `boolean` - boolean * `multivariant` - multivariant * `experiment` - experiment * `remote_config` - remote_config */
-  type?: BulkDeleteFiltersTypeEnum;
+  type?: BulkDeleteFiltersTypeEnum | (string & {});
   /** Filter by evaluation runtime. * `server` - Server * `client` - Client * `all` - All */
-  evaluation_runtime?: EvaluationRuntimeEnum;
+  evaluation_runtime?: EvaluationRuntimeEnum | (string & {});
   /** JSON-encoded property filter to exclude. Same shape as the list endpoint. */
   excluded_properties?: string;
   /** Tag names to filter by. Flags carrying at least one of these tags match. */
@@ -314,8 +313,7 @@ export const FeatureFlagsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export type RolloutStateEnum =
   | "fully_rolled_out"
   | "not_rolled_out"
-  | "partial"
-  | (string & {});
+  | "partial";
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 export interface BulkDeleteDeletedItem {
@@ -444,7 +442,7 @@ export const FeatureFlagsBulkUpdateTagsCreateRequestIdsList =
   ) as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set" | (string & {});
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
 export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
@@ -461,7 +459,7 @@ export interface FeatureFlagsBulkUpdateTagsCreateRequest {
   /** List of object IDs to update tags on. */
   ids?: FeatureFlagsBulkUpdateTagsCreateRequestIdsList;
   /** 'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags. * `add` - add * `remove` - remove * `set` - set */
-  action?: BulkUpdateTagsActionEnum;
+  action?: BulkUpdateTagsActionEnum | (string & {});
   /** Tag names to add, remove, or set. */
   tags?: FeatureFlagsBulkUpdateTagsCreateRequestTagsList;
 }
@@ -540,11 +538,7 @@ export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkUpdateTagsResponse>;
 
 /** * `cohort` - cohort * `person` - person * `group` - group */
-export type PropertyGroupTypeEnum =
-  | "cohort"
-  | "person"
-  | "group"
-  | (string & {});
+export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
 export const PropertyGroupTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
@@ -558,8 +552,7 @@ export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "gt"
   | "gte"
   | "lt"
-  | "lte"
-  | (string & {});
+  | "lte";
 export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -567,7 +560,7 @@ export interface FeatureFlagFilterPropertyGenericSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
+  type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
@@ -575,7 +568,7 @@ export interface FeatureFlagFilterPropertyGenericSchema {
   /** Comparison value for the property filter. Supports strings, numbers, booleans, and arrays. */
   value?: unknown;
   /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
-  operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum;
+  operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum | (string & {});
 }
 export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
   () =>
@@ -592,20 +585,20 @@ export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FeatureFlagFilterPropertyGenericSchema>;
 
 /** * `is_set` - is_set * `is_not_set` - is_not_set */
-export type ExistenceOperatorEnum = "is_set" | "is_not_set" | (string & {});
+export type ExistenceOperatorEnum = "is_set" | "is_not_set";
 export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface FeatureFlagFilterPropertyExistsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
+  type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Existence operator. * `is_set` - is_set * `is_not_set` - is_not_set */
-  operator?: ExistenceOperatorEnum;
+  operator?: ExistenceOperatorEnum | (string & {});
   /** Optional value. Runtime behavior determines whether this is ignored. */
   value?: unknown;
 }
@@ -627,21 +620,20 @@ export const FeatureFlagFilterPropertyExistsSchema = /*@__PURE__*/ S.suspend(
 export type DateOperatorEnum =
   | "is_date_exact"
   | "is_date_before"
-  | "is_date_after"
-  | (string & {});
+  | "is_date_after";
 export const DateOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface FeatureFlagFilterPropertyDateSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
+  type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Date comparison operator. * `is_date_exact` - is_date_exact * `is_date_after` - is_date_after * `is_date_before` - is_date_before */
-  operator?: DateOperatorEnum;
+  operator?: DateOperatorEnum | (string & {});
   /** Date value in ISO format or relative date expression. */
   value?: string;
 }
@@ -668,8 +660,7 @@ export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   | "semver_neq"
   | "semver_tilde"
   | "semver_caret"
-  | "semver_wildcard"
-  | (string & {});
+  | "semver_wildcard";
 export const FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -677,13 +668,13 @@ export interface FeatureFlagFilterPropertySemverSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
+  type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Semantic version comparison operator. * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
-  operator?: FeatureFlagFilterPropertySemverSchemaOperatorEnum;
+  operator?: FeatureFlagFilterPropertySemverSchemaOperatorEnum | (string & {});
   /** Semantic version string. */
   value?: string;
 }
@@ -704,8 +695,7 @@ export const FeatureFlagFilterPropertySemverSchema = /*@__PURE__*/ S.suspend(
 /** * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
 export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   | "icontains_multi"
-  | "not_icontains_multi"
-  | (string & {});
+  | "not_icontains_multi";
 export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -721,13 +711,15 @@ export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
+  type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Multi-contains operator. * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
-  operator?: FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum;
+  operator?:
+    | FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum
+    | (string & {});
   /** List of strings to evaluate against. */
   value?: FeatureFlagFilterPropertyMultiContainsSchemaValueList;
 }
@@ -748,17 +740,14 @@ export const FeatureFlagFilterPropertyMultiContainsSchema =
   }) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchema>;
 
 /** * `cohort` - cohort */
-export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum =
-  | "cohort"
-  | (string & {});
+export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum = "cohort";
 export const FeatureFlagFilterPropertyCohortInSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** * `in` - in * `not_in` - not_in */
 export type FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -766,13 +755,15 @@ export interface FeatureFlagFilterPropertyCohortInSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Cohort property type required for in/not_in operators. * `cohort` - cohort */
-  type?: FeatureFlagFilterPropertyCohortInSchemaTypeEnum;
+  type?: FeatureFlagFilterPropertyCohortInSchemaTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Membership operator for cohort properties. * `in` - in * `not_in` - not_in */
-  operator?: FeatureFlagFilterPropertyCohortInSchemaOperatorEnum;
+  operator?:
+    | FeatureFlagFilterPropertyCohortInSchemaOperatorEnum
+    | (string & {});
   /** Cohort comparison value (single or list, depending on usage). */
   value?: unknown;
 }
@@ -791,16 +782,13 @@ export const FeatureFlagFilterPropertyCohortInSchema = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
 
 /** * `flag` - flag */
-export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum =
-  | "flag"
-  | (string & {});
+export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = "flag";
 export const FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** * `flag_evaluates_to` - flag_evaluates_to */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
-  | "flag_evaluates_to"
-  | (string & {});
+  "flag_evaluates_to";
 export const FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -808,13 +796,15 @@ export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
   /** Flag property type required for flag dependency checks. * `flag` - flag */
-  type?: FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum;
+  type?: FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
   /** Group type index when using group-based filters. */
   group_type_index?: number | null;
   /** Operator for feature flag dependency evaluation. * `flag_evaluates_to` - flag_evaluates_to */
-  operator?: FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum;
+  operator?:
+    | FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum
+    | (string & {});
   /** Value to compare flag evaluation against. */
   value?: unknown;
 }
@@ -970,10 +960,7 @@ export const FeatureFlagsCreateRequestEvaluationContextsList =
   ) as any as S.Schema<FeatureFlagsCreateRequestEvaluationContextsList>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type BucketingIdentifierEnum =
-  | "distinct_id"
-  | "device_id"
-  | (string & {});
+export type BucketingIdentifierEnum = "distinct_id" | "device_id";
 export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
 
 export interface FeatureFlagsCreateRequest {
@@ -998,9 +985,9 @@ export interface FeatureFlagsCreateRequest {
   /** Whether to persist a user's flag value across the anonymous-to-identified transition (the 'persist across authentication steps' option). Incompatible with device_id bucketing. */
   ensure_experience_continuity?: boolean | null;
   /** Where this flag is allowed to evaluate: 'server' (server-side SDKs only), 'client' (client-side SDKs only), or 'all' (both). Defaults to 'all'. * `server` - Server * `client` - Client * `all` - All */
-  evaluation_runtime?: EvaluationRuntimeEnum | null;
+  evaluation_runtime?: EvaluationRuntimeEnum | (string & {}) | null;
   /** Identifier used to bucket users into rollout percentages and variants: 'distinct_id' (user ID, the default) or 'device_id'. Using 'device_id' is incompatible with ensure_experience_continuity=True. * `distinct_id` - User ID (default) * `device_id` - Device ID */
-  bucketing_identifier?: BucketingIdentifierEnum | null;
+  bucketing_identifier?: BucketingIdentifierEnum | (string & {}) | null;
 }
 export const FeatureFlagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1052,11 +1039,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -1280,8 +1266,7 @@ export type FeatureFlagCreationContextEnum =
   | "surveys"
   | "early_access_features"
   | "web_experiments"
-  | "product_tours"
-  | (string & {});
+  | "product_tours";
 export const FeatureFlagCreationContextEnum = /*@__PURE__*/ S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -1317,7 +1302,7 @@ export interface FeatureFlagsCreateStaticCohortForFlagCreateRequest {
   analytics_dashboards?: FeatureFlagsCreateStaticCohortForFlagCreateRequestAnalyticsDashboardsList;
   has_enriched_analytics?: boolean | null;
   /** Indicates the origin product of the feature flag. Choices: 'feature_flags', 'experiments', 'surveys', 'early_access_features', 'web_experiments', 'product_tours'. * `feature_flags` - feature_flags * `experiments` - experiments * `surveys` - surveys * `early_access_features` - early_access_features * `web_experiments` - web_experiments * `product_tours` - product_tours */
-  creation_context?: FeatureFlagCreationContextEnum;
+  creation_context?: FeatureFlagCreationContextEnum | (string & {});
   is_remote_configuration?: boolean | null;
   has_encrypted_payloads?: boolean | null;
   /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -1451,7 +1436,7 @@ export interface FeatureFlagsDashboardCreateRequest {
   analytics_dashboards?: FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList;
   has_enriched_analytics?: boolean | null;
   /** Indicates the origin product of the feature flag. Choices: 'feature_flags', 'experiments', 'surveys', 'early_access_features', 'web_experiments', 'product_tours'. * `feature_flags` - feature_flags * `experiments` - experiments * `surveys` - surveys * `early_access_features` - early_access_features * `web_experiments` - web_experiments * `product_tours` - product_tours */
-  creation_context?: FeatureFlagCreationContextEnum;
+  creation_context?: FeatureFlagCreationContextEnum | (string & {});
   is_remote_configuration?: boolean | null;
   has_encrypted_payloads?: boolean | null;
   /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -1661,7 +1646,7 @@ export interface FeatureFlagsEnrichUsageDashboardCreateRequest {
   analytics_dashboards?: FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList;
   has_enriched_analytics?: boolean | null;
   /** Indicates the origin product of the feature flag. Choices: 'feature_flags', 'experiments', 'surveys', 'early_access_features', 'web_experiments', 'product_tours'. * `feature_flags` - feature_flags * `experiments` - experiments * `surveys` - surveys * `early_access_features` - early_access_features * `web_experiments` - web_experiments * `product_tours` - product_tours */
-  creation_context?: FeatureFlagCreationContextEnum;
+  creation_context?: FeatureFlagCreationContextEnum | (string & {});
   is_remote_configuration?: boolean | null;
   has_encrypted_payloads?: boolean | null;
   /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -1775,33 +1760,23 @@ export const FeatureFlagsEvaluationReasonsRetrieveResponse =
     identifier: "FeatureFlagsEvaluationReasonsRetrieveResponse",
   }) as any as S.Schema<FeatureFlagsEvaluationReasonsRetrieveResponse>;
 
-export type FeatureFlagsListRequestActive =
-  | "STALE"
-  | "false"
-  | "true"
-  | (string & {});
+export type FeatureFlagsListRequestActive = "STALE" | "false" | "true";
 export const FeatureFlagsListRequestActive = /*@__PURE__*/ S.String;
 
-export type FeatureFlagsListRequestArchived = "false" | "true" | (string & {});
+export type FeatureFlagsListRequestArchived = "false" | "true";
 export const FeatureFlagsListRequestArchived = /*@__PURE__*/ S.String;
 
-export type FeatureFlagsListRequestEligibleForExperiment =
-  | "true"
-  | (string & {});
+export type FeatureFlagsListRequestEligibleForExperiment = "true";
 export const FeatureFlagsListRequestEligibleForExperiment =
   /*@__PURE__*/ S.String;
 
 export type FeatureFlagsListRequestEvaluationRuntime =
   | "all"
   | "client"
-  | "server"
-  | (string & {});
+  | "server";
 export const FeatureFlagsListRequestEvaluationRuntime = /*@__PURE__*/ S.String;
 
-export type FeatureFlagsListRequestHasEvaluationContexts =
-  | "false"
-  | "true"
-  | (string & {});
+export type FeatureFlagsListRequestHasEvaluationContexts = "false" | "true";
 export const FeatureFlagsListRequestHasEvaluationContexts =
   /*@__PURE__*/ S.String;
 
@@ -1809,28 +1784,31 @@ export type FeatureFlagsListRequestType =
   | "boolean"
   | "experiment"
   | "multivariant"
-  | "remote_config"
-  | (string & {});
+  | "remote_config";
 export const FeatureFlagsListRequestType = /*@__PURE__*/ S.String;
 
 export interface FeatureFlagsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  active?: FeatureFlagsListRequestActive;
+  active?: FeatureFlagsListRequestActive | (string & {});
   /** Filter by archived state. When omitted, archived flags are excluded. */
-  archived?: FeatureFlagsListRequestArchived;
+  archived?: FeatureFlagsListRequestArchived | (string & {});
   /** Filter by the user(s) who created the feature flag. Accepts a single user ID, or a JSON-encoded / comma-separated list of user IDs to match any of them. */
   created_by_id?: string;
   /** When 'true', only return flags that can back an experiment: multivariate with 2-20 variants. Any other value is ignored. */
-  eligible_for_experiment?: FeatureFlagsListRequestEligibleForExperiment;
+  eligible_for_experiment?:
+    | FeatureFlagsListRequestEligibleForExperiment
+    | (string & {});
   /** Filter feature flags by their evaluation runtime. */
-  evaluation_runtime?: FeatureFlagsListRequestEvaluationRuntime;
+  evaluation_runtime?: FeatureFlagsListRequestEvaluationRuntime | (string & {});
   /** JSON-encoded list of feature flag keys to exclude from the results. */
   excluded_properties?: string;
   /** JSON-encoded list of tag names to exclude. Flags carrying any of these tags are filtered out. */
   excluded_tags?: string;
   /** Filter feature flags by presence of evaluation contexts. 'true' returns only flags with at least one evaluation context, 'false' returns only flags without. */
-  has_evaluation_contexts?: FeatureFlagsListRequestHasEvaluationContexts;
+  has_evaluation_contexts?:
+    | FeatureFlagsListRequestHasEvaluationContexts
+    | (string & {});
   /** Filter by exact feature flag key match. Case insensitive. */
   key?: string;
   /** Number of results to return per page. */
@@ -1841,7 +1819,7 @@ export interface FeatureFlagsListRequest {
   search?: string;
   /** JSON-encoded list of tag names to filter feature flags by. */
   tags?: string;
-  type?: FeatureFlagsListRequestType;
+  type?: FeatureFlagsListRequestType | (string & {});
 }
 export const FeatureFlagsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2079,9 +2057,9 @@ export interface FeatureFlagsPartialUpdateRequest {
   /** Whether to persist a user's flag value across the anonymous-to-identified transition (the 'persist across authentication steps' option). Incompatible with device_id bucketing. */
   ensure_experience_continuity?: boolean | null;
   /** Where this flag is allowed to evaluate: 'server' (server-side SDKs only), 'client' (client-side SDKs only), or 'all' (both). Defaults to 'all'. * `server` - Server * `client` - Client * `all` - All */
-  evaluation_runtime?: EvaluationRuntimeEnum | null;
+  evaluation_runtime?: EvaluationRuntimeEnum | (string & {}) | null;
   /** Identifier used to bucket users into rollout percentages and variants: 'distinct_id' (user ID, the default) or 'device_id'. Using 'device_id' is incompatible with ensure_experience_continuity=True. * `distinct_id` - User ID (default) * `device_id` - Device ID */
-  bucketing_identifier?: BucketingIdentifierEnum | null;
+  bucketing_identifier?: BucketingIdentifierEnum | (string & {}) | null;
 }
 export const FeatureFlagsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2439,7 +2417,7 @@ export interface FeatureFlagsUpdateRequest {
   analytics_dashboards?: FeatureFlagsUpdateRequestAnalyticsDashboardsList;
   has_enriched_analytics?: boolean | null;
   /** Indicates the origin product of the feature flag. Choices: 'feature_flags', 'experiments', 'surveys', 'early_access_features', 'web_experiments', 'product_tours'. * `feature_flags` - feature_flags * `experiments` - experiments * `surveys` - surveys * `early_access_features` - early_access_features * `web_experiments` - web_experiments * `product_tours` - product_tours */
-  creation_context?: FeatureFlagCreationContextEnum;
+  creation_context?: FeatureFlagCreationContextEnum | (string & {});
   is_remote_configuration?: boolean | null;
   has_encrypted_payloads?: boolean | null;
   /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */

@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
+S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":400}],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
+S.TaggedErrorClass<Conflict>()("Conflict", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":409}],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
+S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":403}],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
+S.TaggedErrorClass<NotFound>()("NotFound", {
+  code: S.optional(S.Number),
+  message: S.String,
+  status: S.optional(S.String),
+  reason: S.optional(S.String),
+  domain: S.optional(S.String),
+  details: S.optional(S.Array(S.Unknown)),
+}),
+[{"status":404}],
 ) {}
 
 /** Provides control over how write requests are executed. */
@@ -66,16 +66,13 @@ export interface WriteControl {
   requiredRevisionId?: string;
 }
 export const WriteControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requiredRevisionId: S.optional(S.String),
-  }),
+S.Struct({
+  "requiredRevisionId": S.optional(S.String),
+}),
 ).annotate({ identifier: "WriteControl" }) as any as S.Schema<WriteControl>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Duplicates a slide or page element. When duplicating a slide, the duplicate slide will be created immediately following the specified slide. When duplicating a page element, the duplicate will be placed on the same page at the same position as the original. */
 export interface DuplicateObjectRequest {
@@ -85,27 +82,16 @@ export interface DuplicateObjectRequest {
   objectIds?: StringMap;
 }
 export const DuplicateObjectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    objectIds: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "DuplicateObjectRequest",
-}) as any as S.Schema<DuplicateObjectRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "objectIds": S.optional(StringMap),
+}),
+).annotate({ identifier: "DuplicateObjectRequest" }) as any as S.Schema<DuplicateObjectRequest>;
 
-export type UpdatePageElementTransformRequestApplyModeEnum =
-  | "APPLY_MODE_UNSPECIFIED"
-  | "RELATIVE"
-  | "ABSOLUTE"
-  | (string & {});
-export const UpdatePageElementTransformRequestApplyModeEnum =
-  /*@__PURE__*/ S.String;
+export type UpdatePageElementTransformRequestApplyModeEnum = "APPLY_MODE_UNSPECIFIED" | "RELATIVE" | "ABSOLUTE";
+export const UpdatePageElementTransformRequestApplyModeEnum = /*@__PURE__*/ S.String;
 
-export type AffineTransformUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "EMU"
-  | "PT"
-  | (string & {});
+export type AffineTransformUnitEnum = "UNIT_UNSPECIFIED" | "EMU" | "PT";
 export const AffineTransformUnitEnum = /*@__PURE__*/ S.String;
 
 /** AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to transform source coordinates (x,y) into destination coordinates (x', y') according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After transformation, x' = scale_x * x + shear_x * y + translate_x; y' = scale_y * y + shear_y * x + translate_y; This message is therefore composed of these six matrix elements. */
@@ -126,43 +112,35 @@ export interface AffineTransform {
   shearY?: number;
 }
 export const AffineTransform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scaleX: S.optional(S.Number),
-    translateY: S.optional(S.Number),
-    scaleY: S.optional(S.Number),
-    translateX: S.optional(S.Number),
-    unit: S.optional(AffineTransformUnitEnum),
-    shearX: S.optional(S.Number),
-    shearY: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AffineTransform",
-}) as any as S.Schema<AffineTransform>;
+S.Struct({
+  "scaleX": S.optional(S.Number),
+  "translateY": S.optional(S.Number),
+  "scaleY": S.optional(S.Number),
+  "translateX": S.optional(S.Number),
+  "unit": S.optional(AffineTransformUnitEnum),
+  "shearX": S.optional(S.Number),
+  "shearY": S.optional(S.Number),
+}),
+).annotate({ identifier: "AffineTransform" }) as any as S.Schema<AffineTransform>;
 
 /** Updates the transform of a page element. Updating the transform of a group will change the absolute transform of the page elements in that group, which can change their visual appearance. See the documentation for PageElement.transform for more details. */
 export interface UpdatePageElementTransformRequest {
   /** The apply mode of the transform update. */
-  applyMode?: UpdatePageElementTransformRequestApplyModeEnum;
+  applyMode?: UpdatePageElementTransformRequestApplyModeEnum | (string & {});
   /** The input transform matrix used to update the page element. */
   transform?: AffineTransform;
   /** The object ID of the page element to update. */
   objectId?: string;
 }
 export const UpdatePageElementTransformRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applyMode: S.optional(UpdatePageElementTransformRequestApplyModeEnum),
-    transform: S.optional(AffineTransform),
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePageElementTransformRequest",
-}) as any as S.Schema<UpdatePageElementTransformRequest>;
+S.Struct({
+  "applyMode": S.optional(UpdatePageElementTransformRequestApplyModeEnum),
+  "transform": S.optional(AffineTransform),
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdatePageElementTransformRequest" }) as any as S.Schema<UpdatePageElementTransformRequest>;
 
-export type DimensionUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "EMU"
-  | "PT"
-  | (string & {});
+export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "EMU" | "PT";
 export const DimensionUnitEnum = /*@__PURE__*/ S.String;
 
 /** A magnitude in a single direction in the specified units. */
@@ -173,10 +151,10 @@ export interface Dimension {
   unit?: DimensionUnitEnum;
 }
 export const Dimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    magnitude: S.optional(S.Number),
-    unit: S.optional(DimensionUnitEnum),
-  }),
+S.Struct({
+  "magnitude": S.optional(S.Number),
+  "unit": S.optional(DimensionUnitEnum),
+}),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** A width and height. */
@@ -187,10 +165,10 @@ export interface Size {
   height?: Dimension;
 }
 export const Size = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(Dimension),
-    height: S.optional(Dimension),
-  }),
+S.Struct({
+  "width": S.optional(Dimension),
+  "height": S.optional(Dimension),
+}),
 ).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
 
 /** Common properties for a page element. Note: When you initially create a PageElement, the API may modify the values of both `size` and `transform`, but the visual size will be unchanged. */
@@ -203,19 +181,14 @@ export interface PageElementProperties {
   transform?: AffineTransform;
 }
 export const PageElementProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    size: S.optional(Size),
-    pageObjectId: S.optional(S.String),
-    transform: S.optional(AffineTransform),
-  }),
-).annotate({
-  identifier: "PageElementProperties",
-}) as any as S.Schema<PageElementProperties>;
+S.Struct({
+  "size": S.optional(Size),
+  "pageObjectId": S.optional(S.String),
+  "transform": S.optional(AffineTransform),
+}),
+).annotate({ identifier: "PageElementProperties" }) as any as S.Schema<PageElementProperties>;
 
-export type CreateSheetsChartRequestLinkingModeEnum =
-  | "NOT_LINKED_IMAGE"
-  | "LINKED"
-  | (string & {});
+export type CreateSheetsChartRequestLinkingModeEnum = "NOT_LINKED_IMAGE" | "LINKED";
 export const CreateSheetsChartRequestLinkingModeEnum = /*@__PURE__*/ S.String;
 
 /** Creates an embedded Google Sheets chart. NOTE: Chart creation requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, drive.file, or drive OAuth scopes. */
@@ -229,46 +202,22 @@ export interface CreateSheetsChartRequest {
   /** The element properties for the chart. When the aspect ratio of the provided size does not match the chart aspect ratio, the chart is scaled and centered with respect to the size in order to maintain aspect ratio. The provided transform is applied after this operation. */
   elementProperties?: PageElementProperties;
   /** The mode with which the chart is linked to the source spreadsheet. When not specified, the chart will be an image that is not linked. */
-  linkingMode?: CreateSheetsChartRequestLinkingModeEnum;
+  linkingMode?: CreateSheetsChartRequestLinkingModeEnum | (string & {});
 }
 export const CreateSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    chartId: S.optional(S.Number),
-    spreadsheetId: S.optional(S.String),
-    elementProperties: S.optional(PageElementProperties),
-    linkingMode: S.optional(CreateSheetsChartRequestLinkingModeEnum),
-  }),
-).annotate({
-  identifier: "CreateSheetsChartRequest",
-}) as any as S.Schema<CreateSheetsChartRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "chartId": S.optional(S.Number),
+  "spreadsheetId": S.optional(S.String),
+  "elementProperties": S.optional(PageElementProperties),
+  "linkingMode": S.optional(CreateSheetsChartRequestLinkingModeEnum),
+}),
+).annotate({ identifier: "CreateSheetsChartRequest" }) as any as S.Schema<CreateSheetsChartRequest>;
 
-export type TableCellBackgroundFillPropertyStateEnum =
-  | "RENDERED"
-  | "NOT_RENDERED"
-  | "INHERIT"
-  | (string & {});
+export type TableCellBackgroundFillPropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
 export const TableCellBackgroundFillPropertyStateEnum = /*@__PURE__*/ S.String;
 
-export type OpaqueColorThemeColorEnum =
-  | "THEME_COLOR_TYPE_UNSPECIFIED"
-  | "DARK1"
-  | "LIGHT1"
-  | "DARK2"
-  | "LIGHT2"
-  | "ACCENT1"
-  | "ACCENT2"
-  | "ACCENT3"
-  | "ACCENT4"
-  | "ACCENT5"
-  | "ACCENT6"
-  | "HYPERLINK"
-  | "FOLLOWED_HYPERLINK"
-  | "TEXT1"
-  | "BACKGROUND1"
-  | "TEXT2"
-  | "BACKGROUND2"
-  | (string & {});
+export type OpaqueColorThemeColorEnum = "THEME_COLOR_TYPE_UNSPECIFIED" | "DARK1" | "LIGHT1" | "DARK2" | "LIGHT2" | "ACCENT1" | "ACCENT2" | "ACCENT3" | "ACCENT4" | "ACCENT5" | "ACCENT6" | "HYPERLINK" | "FOLLOWED_HYPERLINK" | "TEXT1" | "BACKGROUND1" | "TEXT2" | "BACKGROUND2";
 export const OpaqueColorThemeColorEnum = /*@__PURE__*/ S.String;
 
 /** An RGB color. */
@@ -281,11 +230,11 @@ export interface RgbColor {
   green?: number;
 }
 export const RgbColor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blue: S.optional(S.Number),
-    red: S.optional(S.Number),
-    green: S.optional(S.Number),
-  }),
+S.Struct({
+  "blue": S.optional(S.Number),
+  "red": S.optional(S.Number),
+  "green": S.optional(S.Number),
+}),
 ).annotate({ identifier: "RgbColor" }) as any as S.Schema<RgbColor>;
 
 /** A themeable solid color value. */
@@ -296,10 +245,10 @@ export interface OpaqueColor {
   rgbColor?: RgbColor;
 }
 export const OpaqueColor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    themeColor: S.optional(OpaqueColorThemeColorEnum),
-    rgbColor: S.optional(RgbColor),
-  }),
+S.Struct({
+  "themeColor": S.optional(OpaqueColorThemeColorEnum),
+  "rgbColor": S.optional(RgbColor),
+}),
 ).annotate({ identifier: "OpaqueColor" }) as any as S.Schema<OpaqueColor>;
 
 /** A solid color fill. The page or page element is filled entirely with the specified color value. If any field is unset, its value may be inherited from a parent placeholder if it exists. */
@@ -310,10 +259,10 @@ export interface SolidFill {
   alpha?: number;
 }
 export const SolidFill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color: S.optional(OpaqueColor),
-    alpha: S.optional(S.Number),
-  }),
+S.Struct({
+  "color": S.optional(OpaqueColor),
+  "alpha": S.optional(S.Number),
+}),
 ).annotate({ identifier: "SolidFill" }) as any as S.Schema<SolidFill>;
 
 /** The table cell background fill. */
@@ -324,21 +273,13 @@ export interface TableCellBackgroundFill {
   solidFill?: SolidFill;
 }
 export const TableCellBackgroundFill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    propertyState: S.optional(TableCellBackgroundFillPropertyStateEnum),
-    solidFill: S.optional(SolidFill),
-  }),
-).annotate({
-  identifier: "TableCellBackgroundFill",
-}) as any as S.Schema<TableCellBackgroundFill>;
+S.Struct({
+  "propertyState": S.optional(TableCellBackgroundFillPropertyStateEnum),
+  "solidFill": S.optional(SolidFill),
+}),
+).annotate({ identifier: "TableCellBackgroundFill" }) as any as S.Schema<TableCellBackgroundFill>;
 
-export type TableCellPropertiesContentAlignmentEnum =
-  | "CONTENT_ALIGNMENT_UNSPECIFIED"
-  | "CONTENT_ALIGNMENT_UNSUPPORTED"
-  | "TOP"
-  | "MIDDLE"
-  | "BOTTOM"
-  | (string & {});
+export type TableCellPropertiesContentAlignmentEnum = "CONTENT_ALIGNMENT_UNSPECIFIED" | "CONTENT_ALIGNMENT_UNSUPPORTED" | "TOP" | "MIDDLE" | "BOTTOM";
 export const TableCellPropertiesContentAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** The properties of the TableCell. */
@@ -349,13 +290,11 @@ export interface TableCellProperties {
   contentAlignment?: TableCellPropertiesContentAlignmentEnum;
 }
 export const TableCellProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellBackgroundFill: S.optional(TableCellBackgroundFill),
-    contentAlignment: S.optional(TableCellPropertiesContentAlignmentEnum),
-  }),
-).annotate({
-  identifier: "TableCellProperties",
-}) as any as S.Schema<TableCellProperties>;
+S.Struct({
+  "tableCellBackgroundFill": S.optional(TableCellBackgroundFill),
+  "contentAlignment": S.optional(TableCellPropertiesContentAlignmentEnum),
+}),
+).annotate({ identifier: "TableCellProperties" }) as any as S.Schema<TableCellProperties>;
 
 /** A location of a single table cell within a table. */
 export interface TableCellLocation {
@@ -365,13 +304,11 @@ export interface TableCellLocation {
   columnIndex?: number;
 }
 export const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowIndex: S.optional(S.Number),
-    columnIndex: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TableCellLocation",
-}) as any as S.Schema<TableCellLocation>;
+S.Struct({
+  "rowIndex": S.optional(S.Number),
+  "columnIndex": S.optional(S.Number),
+}),
+).annotate({ identifier: "TableCellLocation" }) as any as S.Schema<TableCellLocation>;
 
 /** A table range represents a reference to a subset of a table. It's important to note that the cells specified by a table range do not necessarily form a rectangle. For example, let's say we have a 3 x 3 table where all the cells of the last row are merged together. The table looks like this: [ ] A table range with location = (0, 0), row span = 3 and column span = 2 specifies the following cells: x x [ x x x ] */
 export interface TableRange {
@@ -383,11 +320,11 @@ export interface TableRange {
   columnSpan?: number;
 }
 export const TableRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(TableCellLocation),
-    rowSpan: S.optional(S.Number),
-    columnSpan: S.optional(S.Number),
-  }),
+S.Struct({
+  "location": S.optional(TableCellLocation),
+  "rowSpan": S.optional(S.Number),
+  "columnSpan": S.optional(S.Number),
+}),
 ).annotate({ identifier: "TableRange" }) as any as S.Schema<TableRange>;
 
 /** Update the properties of a TableCell. */
@@ -402,21 +339,15 @@ export interface UpdateTableCellPropertiesRequest {
   tableRange?: TableRange;
 }
 export const UpdateTableCellPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellProperties: S.optional(TableCellProperties),
-    objectId: S.optional(S.String),
-    fields: S.optional(S.String),
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({
-  identifier: "UpdateTableCellPropertiesRequest",
-}) as any as S.Schema<UpdateTableCellPropertiesRequest>;
+S.Struct({
+  "tableCellProperties": S.optional(TableCellProperties),
+  "objectId": S.optional(S.String),
+  "fields": S.optional(S.String),
+  "tableRange": S.optional(TableRange),
+}),
+).annotate({ identifier: "UpdateTableCellPropertiesRequest" }) as any as S.Schema<UpdateTableCellPropertiesRequest>;
 
-export type ReplaceImageRequestImageReplaceMethodEnum =
-  | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
-  | "CENTER_INSIDE"
-  | "CENTER_CROP"
-  | (string & {});
+export type ReplaceImageRequestImageReplaceMethodEnum = "IMAGE_REPLACE_METHOD_UNSPECIFIED" | "CENTER_INSIDE" | "CENTER_CROP";
 export const ReplaceImageRequestImageReplaceMethodEnum = /*@__PURE__*/ S.String;
 
 /** Replaces an existing image with a new image. Replacing an image removes some image effects from the existing image. */
@@ -424,24 +355,20 @@ export interface ReplaceImageRequest {
   /** The image URL. The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images must be less than 50MB, cannot exceed 25 megapixels, and must be in PNG, JPEG, or GIF format. The provided URL can't surpass 2 KB in length. The URL is saved with the image, and exposed through the Image.source_url field. */
   url?: string;
   /** The replacement method. */
-  imageReplaceMethod?: ReplaceImageRequestImageReplaceMethodEnum;
+  imageReplaceMethod?: ReplaceImageRequestImageReplaceMethodEnum | (string & {});
   /** The ID of the existing image that will be replaced. The ID can be retrieved from the response of a get request. */
   imageObjectId?: string;
 }
 export const ReplaceImageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    imageReplaceMethod: S.optional(ReplaceImageRequestImageReplaceMethodEnum),
-    imageObjectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplaceImageRequest",
-}) as any as S.Schema<ReplaceImageRequest>;
+S.Struct({
+  "url": S.optional(S.String),
+  "imageReplaceMethod": S.optional(ReplaceImageRequestImageReplaceMethodEnum),
+  "imageObjectId": S.optional(S.String),
+}),
+).annotate({ identifier: "ReplaceImageRequest" }) as any as S.Schema<ReplaceImageRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Updates the position of slides in the presentation. */
 export interface UpdateSlidesPositionRequest {
@@ -451,13 +378,11 @@ export interface UpdateSlidesPositionRequest {
   slideObjectIds?: StringList;
 }
 export const UpdateSlidesPositionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insertionIndex: S.optional(S.Number),
-    slideObjectIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "UpdateSlidesPositionRequest",
-}) as any as S.Schema<UpdateSlidesPositionRequest>;
+S.Struct({
+  "insertionIndex": S.optional(S.Number),
+  "slideObjectIds": S.optional(StringList),
+}),
+).annotate({ identifier: "UpdateSlidesPositionRequest" }) as any as S.Schema<UpdateSlidesPositionRequest>;
 
 /** A color and position in a gradient band. */
 export interface ColorStop {
@@ -469,45 +394,17 @@ export interface ColorStop {
   position?: number;
 }
 export const ColorStop = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color: S.optional(OpaqueColor),
-    alpha: S.optional(S.Number),
-    position: S.optional(S.Number),
-  }),
+S.Struct({
+  "color": S.optional(OpaqueColor),
+  "alpha": S.optional(S.Number),
+  "position": S.optional(S.Number),
+}),
 ).annotate({ identifier: "ColorStop" }) as any as S.Schema<ColorStop>;
 
 export type ColorStopList = ReadonlyArray<ColorStop>;
-export const ColorStopList = /*@__PURE__*/ S.Array(
-  ColorStop,
-) as any as S.Schema<ColorStopList>;
+export const ColorStopList = /*@__PURE__*/ S.Array(ColorStop) as any as S.Schema<ColorStopList>;
 
-export type RecolorNameEnum =
-  | "NONE"
-  | "LIGHT1"
-  | "LIGHT2"
-  | "LIGHT3"
-  | "LIGHT4"
-  | "LIGHT5"
-  | "LIGHT6"
-  | "LIGHT7"
-  | "LIGHT8"
-  | "LIGHT9"
-  | "LIGHT10"
-  | "DARK1"
-  | "DARK2"
-  | "DARK3"
-  | "DARK4"
-  | "DARK5"
-  | "DARK6"
-  | "DARK7"
-  | "DARK8"
-  | "DARK9"
-  | "DARK10"
-  | "GRAYSCALE"
-  | "NEGATIVE"
-  | "SEPIA"
-  | "CUSTOM"
-  | (string & {});
+export type RecolorNameEnum = "NONE" | "LIGHT1" | "LIGHT2" | "LIGHT3" | "LIGHT4" | "LIGHT5" | "LIGHT6" | "LIGHT7" | "LIGHT8" | "LIGHT9" | "LIGHT10" | "DARK1" | "DARK2" | "DARK3" | "DARK4" | "DARK5" | "DARK6" | "DARK7" | "DARK8" | "DARK9" | "DARK10" | "GRAYSCALE" | "NEGATIVE" | "SEPIA" | "CUSTOM";
 export const RecolorNameEnum = /*@__PURE__*/ S.String;
 
 /** A recolor effect applied on an image. */
@@ -518,37 +415,19 @@ export interface Recolor {
   name?: RecolorNameEnum;
 }
 export const Recolor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recolorStops: S.optional(ColorStopList),
-    name: S.optional(RecolorNameEnum),
-  }),
+S.Struct({
+  "recolorStops": S.optional(ColorStopList),
+  "name": S.optional(RecolorNameEnum),
+}),
 ).annotate({ identifier: "Recolor" }) as any as S.Schema<Recolor>;
 
-export type ShadowTypeEnum =
-  | "SHADOW_TYPE_UNSPECIFIED"
-  | "OUTER"
-  | (string & {});
+export type ShadowTypeEnum = "SHADOW_TYPE_UNSPECIFIED" | "OUTER";
 export const ShadowTypeEnum = /*@__PURE__*/ S.String;
 
-export type ShadowAlignmentEnum =
-  | "RECTANGLE_POSITION_UNSPECIFIED"
-  | "TOP_LEFT"
-  | "TOP_CENTER"
-  | "TOP_RIGHT"
-  | "LEFT_CENTER"
-  | "CENTER"
-  | "RIGHT_CENTER"
-  | "BOTTOM_LEFT"
-  | "BOTTOM_CENTER"
-  | "BOTTOM_RIGHT"
-  | (string & {});
+export type ShadowAlignmentEnum = "RECTANGLE_POSITION_UNSPECIFIED" | "TOP_LEFT" | "TOP_CENTER" | "TOP_RIGHT" | "LEFT_CENTER" | "CENTER" | "RIGHT_CENTER" | "BOTTOM_LEFT" | "BOTTOM_CENTER" | "BOTTOM_RIGHT";
 export const ShadowAlignmentEnum = /*@__PURE__*/ S.String;
 
-export type ShadowPropertyStateEnum =
-  | "RENDERED"
-  | "NOT_RENDERED"
-  | "INHERIT"
-  | (string & {});
+export type ShadowPropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
 export const ShadowPropertyStateEnum = /*@__PURE__*/ S.String;
 
 /** The shadow properties of a page element. If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements created in the Slides editor, which may depend on the page element kind. */
@@ -571,16 +450,16 @@ export interface Shadow {
   propertyState?: ShadowPropertyStateEnum;
 }
 export const Shadow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alpha: S.optional(S.Number),
-    type: S.optional(ShadowTypeEnum),
-    transform: S.optional(AffineTransform),
-    color: S.optional(OpaqueColor),
-    rotateWithShape: S.optional(S.Boolean),
-    alignment: S.optional(ShadowAlignmentEnum),
-    blurRadius: S.optional(Dimension),
-    propertyState: S.optional(ShadowPropertyStateEnum),
-  }),
+S.Struct({
+  "alpha": S.optional(S.Number),
+  "type": S.optional(ShadowTypeEnum),
+  "transform": S.optional(AffineTransform),
+  "color": S.optional(OpaqueColor),
+  "rotateWithShape": S.optional(S.Boolean),
+  "alignment": S.optional(ShadowAlignmentEnum),
+  "blurRadius": S.optional(Dimension),
+  "propertyState": S.optional(ShadowPropertyStateEnum),
+}),
 ).annotate({ identifier: "Shadow" }) as any as S.Schema<Shadow>;
 
 /** The crop properties of an object enclosed in a container. For example, an Image. The crop properties is represented by the offsets of four edges which define a crop rectangle. The offsets are measured in percentage from the corresponding edges of the object's original bounding rectangle towards inside, relative to the object's original dimensions. - If the offset is in the interval (0, 1), the corresponding edge of crop rectangle is positioned inside of the object's original bounding rectangle. - If the offset is negative or greater than 1, the corresponding edge of crop rectangle is positioned outside of the object's original bounding rectangle. - If the left edge of the crop rectangle is on the right side of its right edge, the object will be flipped horizontally. - If the top edge of the crop rectangle is below its bottom edge, the object will be flipped vertically. - If all offsets and rotation angle is 0, the object is not cropped. After cropping, the content in the crop rectangle will be stretched to fit its container. */
@@ -597,13 +476,13 @@ export interface CropProperties {
   topOffset?: number;
 }
 export const CropProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    angle: S.optional(S.Number),
-    leftOffset: S.optional(S.Number),
-    bottomOffset: S.optional(S.Number),
-    rightOffset: S.optional(S.Number),
-    topOffset: S.optional(S.Number),
-  }),
+S.Struct({
+  "angle": S.optional(S.Number),
+  "leftOffset": S.optional(S.Number),
+  "bottomOffset": S.optional(S.Number),
+  "rightOffset": S.optional(S.Number),
+  "topOffset": S.optional(S.Number),
+}),
 ).annotate({ identifier: "CropProperties" }) as any as S.Schema<CropProperties>;
 
 /** The fill of the outline. */
@@ -612,27 +491,15 @@ export interface OutlineFill {
   solidFill?: SolidFill;
 }
 export const OutlineFill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solidFill: S.optional(SolidFill),
-  }),
+S.Struct({
+  "solidFill": S.optional(SolidFill),
+}),
 ).annotate({ identifier: "OutlineFill" }) as any as S.Schema<OutlineFill>;
 
-export type OutlineDashStyleEnum =
-  | "DASH_STYLE_UNSPECIFIED"
-  | "SOLID"
-  | "DOT"
-  | "DASH"
-  | "DASH_DOT"
-  | "LONG_DASH"
-  | "LONG_DASH_DOT"
-  | (string & {});
+export type OutlineDashStyleEnum = "DASH_STYLE_UNSPECIFIED" | "SOLID" | "DOT" | "DASH" | "DASH_DOT" | "LONG_DASH" | "LONG_DASH_DOT";
 export const OutlineDashStyleEnum = /*@__PURE__*/ S.String;
 
-export type OutlinePropertyStateEnum =
-  | "RENDERED"
-  | "NOT_RENDERED"
-  | "INHERIT"
-  | (string & {});
+export type OutlinePropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
 export const OutlinePropertyStateEnum = /*@__PURE__*/ S.String;
 
 /** The outline of a PageElement. If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements created in the Slides editor, which may depend on the page element kind. */
@@ -647,21 +514,15 @@ export interface Outline {
   propertyState?: OutlinePropertyStateEnum;
 }
 export const Outline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outlineFill: S.optional(OutlineFill),
-    dashStyle: S.optional(OutlineDashStyleEnum),
-    weight: S.optional(Dimension),
-    propertyState: S.optional(OutlinePropertyStateEnum),
-  }),
+S.Struct({
+  "outlineFill": S.optional(OutlineFill),
+  "dashStyle": S.optional(OutlineDashStyleEnum),
+  "weight": S.optional(Dimension),
+  "propertyState": S.optional(OutlinePropertyStateEnum),
+}),
 ).annotate({ identifier: "Outline" }) as any as S.Schema<Outline>;
 
-export type LinkRelativeLinkEnum =
-  | "RELATIVE_SLIDE_LINK_UNSPECIFIED"
-  | "NEXT_SLIDE"
-  | "PREVIOUS_SLIDE"
-  | "FIRST_SLIDE"
-  | "LAST_SLIDE"
-  | (string & {});
+export type LinkRelativeLinkEnum = "RELATIVE_SLIDE_LINK_UNSPECIFIED" | "NEXT_SLIDE" | "PREVIOUS_SLIDE" | "FIRST_SLIDE" | "LAST_SLIDE";
 export const LinkRelativeLinkEnum = /*@__PURE__*/ S.String;
 
 /** A hypertext link. */
@@ -676,12 +537,12 @@ export interface Link {
   pageObjectId?: string;
 }
 export const Link = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slideIndex: S.optional(S.Number),
-    url: S.optional(S.String),
-    relativeLink: S.optional(LinkRelativeLinkEnum),
-    pageObjectId: S.optional(S.String),
-  }),
+S.Struct({
+  "slideIndex": S.optional(S.Number),
+  "url": S.optional(S.String),
+  "relativeLink": S.optional(LinkRelativeLinkEnum),
+  "pageObjectId": S.optional(S.String),
+}),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 /** The properties of the Image. */
@@ -704,19 +565,17 @@ export interface ImageProperties {
   transparency?: number;
 }
 export const ImageProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recolor: S.optional(Recolor),
-    brightness: S.optional(S.Number),
-    shadow: S.optional(Shadow),
-    cropProperties: S.optional(CropProperties),
-    outline: S.optional(Outline),
-    contrast: S.optional(S.Number),
-    link: S.optional(Link),
-    transparency: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ImageProperties",
-}) as any as S.Schema<ImageProperties>;
+S.Struct({
+  "recolor": S.optional(Recolor),
+  "brightness": S.optional(S.Number),
+  "shadow": S.optional(Shadow),
+  "cropProperties": S.optional(CropProperties),
+  "outline": S.optional(Outline),
+  "contrast": S.optional(S.Number),
+  "link": S.optional(Link),
+  "transparency": S.optional(S.Number),
+}),
+).annotate({ identifier: "ImageProperties" }) as any as S.Schema<ImageProperties>;
 
 /** Update the properties of an Image. */
 export interface UpdateImagePropertiesRequest {
@@ -728,14 +587,12 @@ export interface UpdateImagePropertiesRequest {
   fields?: string;
 }
 export const UpdateImagePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageProperties: S.optional(ImageProperties),
-    objectId: S.optional(S.String),
-    fields: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateImagePropertiesRequest",
-}) as any as S.Schema<UpdateImagePropertiesRequest>;
+S.Struct({
+  "imageProperties": S.optional(ImageProperties),
+  "objectId": S.optional(S.String),
+  "fields": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateImagePropertiesRequest" }) as any as S.Schema<UpdateImagePropertiesRequest>;
 
 /** Inserts text into a shape or a table cell. */
 export interface InsertTextRequest {
@@ -749,15 +606,13 @@ export interface InsertTextRequest {
   objectId?: string;
 }
 export const InsertTextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insertionIndex: S.optional(S.Number),
-    cellLocation: S.optional(TableCellLocation),
-    text: S.optional(S.String),
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsertTextRequest",
-}) as any as S.Schema<InsertTextRequest>;
+S.Struct({
+  "insertionIndex": S.optional(S.Number),
+  "cellLocation": S.optional(TableCellLocation),
+  "text": S.optional(S.String),
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "InsertTextRequest" }) as any as S.Schema<InsertTextRequest>;
 
 /** Updates the alt text title and/or description of a page element. */
 export interface UpdatePageElementAltTextRequest {
@@ -769,41 +624,17 @@ export interface UpdatePageElementAltTextRequest {
   title?: string;
 }
 export const UpdatePageElementAltTextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    objectId: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePageElementAltTextRequest",
-}) as any as S.Schema<UpdatePageElementAltTextRequest>;
+S.Struct({
+  "description": S.optional(S.String),
+  "objectId": S.optional(S.String),
+  "title": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdatePageElementAltTextRequest" }) as any as S.Schema<UpdatePageElementAltTextRequest>;
 
-export type CreateParagraphBulletsRequestBulletPresetEnum =
-  | "BULLET_DISC_CIRCLE_SQUARE"
-  | "BULLET_DIAMONDX_ARROW3D_SQUARE"
-  | "BULLET_CHECKBOX"
-  | "BULLET_ARROW_DIAMOND_DISC"
-  | "BULLET_STAR_CIRCLE_SQUARE"
-  | "BULLET_ARROW3D_CIRCLE_SQUARE"
-  | "BULLET_LEFTTRIANGLE_DIAMOND_DISC"
-  | "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE"
-  | "BULLET_DIAMOND_CIRCLE_SQUARE"
-  | "NUMBERED_DIGIT_ALPHA_ROMAN"
-  | "NUMBERED_DIGIT_ALPHA_ROMAN_PARENS"
-  | "NUMBERED_DIGIT_NESTED"
-  | "NUMBERED_UPPERALPHA_ALPHA_ROMAN"
-  | "NUMBERED_UPPERROMAN_UPPERALPHA_DIGIT"
-  | "NUMBERED_ZERODIGIT_ALPHA_ROMAN"
-  | (string & {});
-export const CreateParagraphBulletsRequestBulletPresetEnum =
-  /*@__PURE__*/ S.String;
+export type CreateParagraphBulletsRequestBulletPresetEnum = "BULLET_DISC_CIRCLE_SQUARE" | "BULLET_DIAMONDX_ARROW3D_SQUARE" | "BULLET_CHECKBOX" | "BULLET_ARROW_DIAMOND_DISC" | "BULLET_STAR_CIRCLE_SQUARE" | "BULLET_ARROW3D_CIRCLE_SQUARE" | "BULLET_LEFTTRIANGLE_DIAMOND_DISC" | "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE" | "BULLET_DIAMOND_CIRCLE_SQUARE" | "NUMBERED_DIGIT_ALPHA_ROMAN" | "NUMBERED_DIGIT_ALPHA_ROMAN_PARENS" | "NUMBERED_DIGIT_NESTED" | "NUMBERED_UPPERALPHA_ALPHA_ROMAN" | "NUMBERED_UPPERROMAN_UPPERALPHA_DIGIT" | "NUMBERED_ZERODIGIT_ALPHA_ROMAN";
+export const CreateParagraphBulletsRequestBulletPresetEnum = /*@__PURE__*/ S.String;
 
-export type RangeTypeEnum =
-  | "RANGE_TYPE_UNSPECIFIED"
-  | "FIXED_RANGE"
-  | "FROM_START_INDEX"
-  | "ALL"
-  | (string & {});
+export type RangeTypeEnum = "RANGE_TYPE_UNSPECIFIED" | "FIXED_RANGE" | "FROM_START_INDEX" | "ALL";
 export const RangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies a contiguous range of an indexed collection, such as characters in text. */
@@ -813,14 +644,14 @@ export interface Range {
   /** The optional zero-based index of the beginning of the collection. Required for `FIXED_RANGE` and `FROM_START_INDEX` ranges. */
   startIndex?: number;
   /** The type of range. */
-  type?: RangeTypeEnum;
+  type?: RangeTypeEnum | (string & {});
 }
 export const Range = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endIndex: S.optional(S.Number),
-    startIndex: S.optional(S.Number),
-    type: S.optional(RangeTypeEnum),
-  }),
+S.Struct({
+  "endIndex": S.optional(S.Number),
+  "startIndex": S.optional(S.Number),
+  "type": S.optional(RangeTypeEnum),
+}),
 ).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
 
 /** Creates bullets for all of the paragraphs that overlap with the given text index range. The nesting level of each paragraph will be determined by counting leading tabs in front of each paragraph. To avoid excess space between the bullet and the corresponding paragraph, these leading tabs are removed by this request. This may change the indices of parts of the text. If the paragraph immediately before paragraphs being updated is in a list with a matching preset, the paragraphs being updated are added to that preceding list. */
@@ -828,22 +659,20 @@ export interface CreateParagraphBulletsRequest {
   /** The object ID of the shape or table containing the text to add bullets to. */
   objectId?: string;
   /** The kinds of bullet glyphs to be used. Defaults to the `BULLET_DISC_CIRCLE_SQUARE` preset. */
-  bulletPreset?: CreateParagraphBulletsRequestBulletPresetEnum;
+  bulletPreset?: CreateParagraphBulletsRequestBulletPresetEnum | (string & {});
   /** The range of text to apply the bullet presets to, based on TextElement indexes. */
   textRange?: Range;
   /** The optional table cell location if the text to be modified is in a table cell. If present, the object_id must refer to a table. */
   cellLocation?: TableCellLocation;
 }
 export const CreateParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    bulletPreset: S.optional(CreateParagraphBulletsRequestBulletPresetEnum),
-    textRange: S.optional(Range),
-    cellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "CreateParagraphBulletsRequest",
-}) as any as S.Schema<CreateParagraphBulletsRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "bulletPreset": S.optional(CreateParagraphBulletsRequestBulletPresetEnum),
+  "textRange": S.optional(Range),
+  "cellLocation": S.optional(TableCellLocation),
+}),
+).annotate({ identifier: "CreateParagraphBulletsRequest" }) as any as S.Schema<CreateParagraphBulletsRequest>;
 
 /** A criteria that matches a specific string of text in a shape or table. */
 export interface SubstringMatchCriteria {
@@ -855,14 +684,12 @@ export interface SubstringMatchCriteria {
   searchByRegex?: boolean;
 }
 export const SubstringMatchCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-    matchCase: S.optional(S.Boolean),
-    searchByRegex: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SubstringMatchCriteria",
-}) as any as S.Schema<SubstringMatchCriteria>;
+S.Struct({
+  "text": S.optional(S.String),
+  "matchCase": S.optional(S.Boolean),
+  "searchByRegex": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SubstringMatchCriteria" }) as any as S.Schema<SubstringMatchCriteria>;
 
 /** Replaces all instances of text matching a criteria with replace text. */
 export interface ReplaceAllTextRequest {
@@ -874,14 +701,12 @@ export interface ReplaceAllTextRequest {
   pageObjectIds?: StringList;
 }
 export const ReplaceAllTextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replaceText: S.optional(S.String),
-    containsText: S.optional(SubstringMatchCriteria),
-    pageObjectIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ReplaceAllTextRequest",
-}) as any as S.Schema<ReplaceAllTextRequest>;
+S.Struct({
+  "replaceText": S.optional(S.String),
+  "containsText": S.optional(SubstringMatchCriteria),
+  "pageObjectIds": S.optional(StringList),
+}),
+).annotate({ identifier: "ReplaceAllTextRequest" }) as any as S.Schema<ReplaceAllTextRequest>;
 
 /** Deletes an object, either pages or page elements, from the presentation. */
 export interface DeleteObjectRequest {
@@ -889,19 +714,12 @@ export interface DeleteObjectRequest {
   objectId?: string;
 }
 export const DeleteObjectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteObjectRequest",
-}) as any as S.Schema<DeleteObjectRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteObjectRequest" }) as any as S.Schema<DeleteObjectRequest>;
 
-export type TextStyleBaselineOffsetEnum =
-  | "BASELINE_OFFSET_UNSPECIFIED"
-  | "NONE"
-  | "SUPERSCRIPT"
-  | "SUBSCRIPT"
-  | (string & {});
+export type TextStyleBaselineOffsetEnum = "BASELINE_OFFSET_UNSPECIFIED" | "NONE" | "SUPERSCRIPT" | "SUBSCRIPT";
 export const TextStyleBaselineOffsetEnum = /*@__PURE__*/ S.String;
 
 /** Represents a font family and weight used to style a TextRun. */
@@ -912,13 +730,11 @@ export interface WeightedFontFamily {
   weight?: number;
 }
 export const WeightedFontFamily = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fontFamily: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WeightedFontFamily",
-}) as any as S.Schema<WeightedFontFamily>;
+S.Struct({
+  "fontFamily": S.optional(S.String),
+  "weight": S.optional(S.Number),
+}),
+).annotate({ identifier: "WeightedFontFamily" }) as any as S.Schema<WeightedFontFamily>;
 
 /** A color that can either be fully opaque or fully transparent. */
 export interface OptionalColor {
@@ -926,9 +742,9 @@ export interface OptionalColor {
   opaqueColor?: OpaqueColor;
 }
 export const OptionalColor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    opaqueColor: S.optional(OpaqueColor),
-  }),
+S.Struct({
+  "opaqueColor": S.optional(OpaqueColor),
+}),
 ).annotate({ identifier: "OptionalColor" }) as any as S.Schema<OptionalColor>;
 
 /** Represents the styling that can be applied to a TextRun. If this text is contained in a shape with a parent placeholder, then these text styles may be inherited from the parent. Which text styles are inherited depend on the nesting level of lists: * A text run in a paragraph that is not in a list will inherit its text style from the the newline character in the paragraph at the 0 nesting level of the list inside the parent placeholder. * A text run in a paragraph that is in a list will inherit its text style from the newline character in the paragraph at its corresponding nesting level of the list inside the parent placeholder. Inherited text styles are represented as unset fields in this message. If text is contained in a shape without a parent placeholder, unsetting these fields will revert the style to a value matching the defaults in the Slides editor. */
@@ -959,20 +775,20 @@ export interface TextStyle {
   backgroundColor?: OptionalColor;
 }
 export const TextStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fontFamily: S.optional(S.String),
-    underline: S.optional(S.Boolean),
-    bold: S.optional(S.Boolean),
-    baselineOffset: S.optional(TextStyleBaselineOffsetEnum),
-    italic: S.optional(S.Boolean),
-    fontSize: S.optional(Dimension),
-    weightedFontFamily: S.optional(WeightedFontFamily),
-    link: S.optional(Link),
-    foregroundColor: S.optional(OptionalColor),
-    smallCaps: S.optional(S.Boolean),
-    strikethrough: S.optional(S.Boolean),
-    backgroundColor: S.optional(OptionalColor),
-  }),
+S.Struct({
+  "fontFamily": S.optional(S.String),
+  "underline": S.optional(S.Boolean),
+  "bold": S.optional(S.Boolean),
+  "baselineOffset": S.optional(TextStyleBaselineOffsetEnum),
+  "italic": S.optional(S.Boolean),
+  "fontSize": S.optional(Dimension),
+  "weightedFontFamily": S.optional(WeightedFontFamily),
+  "link": S.optional(Link),
+  "foregroundColor": S.optional(OptionalColor),
+  "smallCaps": S.optional(S.Boolean),
+  "strikethrough": S.optional(S.Boolean),
+  "backgroundColor": S.optional(OptionalColor),
+}),
 ).annotate({ identifier: "TextStyle" }) as any as S.Schema<TextStyle>;
 
 /** Update the styling of text in a Shape or Table. */
@@ -989,22 +805,16 @@ export interface UpdateTextStyleRequest {
   cellLocation?: TableCellLocation;
 }
 export const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textRange: S.optional(Range),
-    objectId: S.optional(S.String),
-    fields: S.optional(S.String),
-    style: S.optional(TextStyle),
-    cellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "UpdateTextStyleRequest",
-}) as any as S.Schema<UpdateTextStyleRequest>;
+S.Struct({
+  "textRange": S.optional(Range),
+  "objectId": S.optional(S.String),
+  "fields": S.optional(S.String),
+  "style": S.optional(TextStyle),
+  "cellLocation": S.optional(TableCellLocation),
+}),
+).annotate({ identifier: "UpdateTextStyleRequest" }) as any as S.Schema<UpdateTextStyleRequest>;
 
-export type PageBackgroundFillPropertyStateEnum =
-  | "RENDERED"
-  | "NOT_RENDERED"
-  | "INHERIT"
-  | (string & {});
+export type PageBackgroundFillPropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
 export const PageBackgroundFillPropertyStateEnum = /*@__PURE__*/ S.String;
 
 /** The stretched picture fill. The page or page element is filled entirely with the specified picture. The picture is stretched to fit its container. */
@@ -1015,13 +825,11 @@ export interface StretchedPictureFill {
   size?: Size;
 }
 export const StretchedPictureFill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentUrl: S.optional(S.String),
-    size: S.optional(Size),
-  }),
-).annotate({
-  identifier: "StretchedPictureFill",
-}) as any as S.Schema<StretchedPictureFill>;
+S.Struct({
+  "contentUrl": S.optional(S.String),
+  "size": S.optional(Size),
+}),
+).annotate({ identifier: "StretchedPictureFill" }) as any as S.Schema<StretchedPictureFill>;
 
 /** The page background fill. */
 export interface PageBackgroundFill {
@@ -1033,34 +841,14 @@ export interface PageBackgroundFill {
   stretchedPictureFill?: StretchedPictureFill;
 }
 export const PageBackgroundFill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solidFill: S.optional(SolidFill),
-    propertyState: S.optional(PageBackgroundFillPropertyStateEnum),
-    stretchedPictureFill: S.optional(StretchedPictureFill),
-  }),
-).annotate({
-  identifier: "PageBackgroundFill",
-}) as any as S.Schema<PageBackgroundFill>;
+S.Struct({
+  "solidFill": S.optional(SolidFill),
+  "propertyState": S.optional(PageBackgroundFillPropertyStateEnum),
+  "stretchedPictureFill": S.optional(StretchedPictureFill),
+}),
+).annotate({ identifier: "PageBackgroundFill" }) as any as S.Schema<PageBackgroundFill>;
 
-export type ThemeColorPairTypeEnum =
-  | "THEME_COLOR_TYPE_UNSPECIFIED"
-  | "DARK1"
-  | "LIGHT1"
-  | "DARK2"
-  | "LIGHT2"
-  | "ACCENT1"
-  | "ACCENT2"
-  | "ACCENT3"
-  | "ACCENT4"
-  | "ACCENT5"
-  | "ACCENT6"
-  | "HYPERLINK"
-  | "FOLLOWED_HYPERLINK"
-  | "TEXT1"
-  | "BACKGROUND1"
-  | "TEXT2"
-  | "BACKGROUND2"
-  | (string & {});
+export type ThemeColorPairTypeEnum = "THEME_COLOR_TYPE_UNSPECIFIED" | "DARK1" | "LIGHT1" | "DARK2" | "LIGHT2" | "ACCENT1" | "ACCENT2" | "ACCENT3" | "ACCENT4" | "ACCENT5" | "ACCENT6" | "HYPERLINK" | "FOLLOWED_HYPERLINK" | "TEXT1" | "BACKGROUND1" | "TEXT2" | "BACKGROUND2";
 export const ThemeColorPairTypeEnum = /*@__PURE__*/ S.String;
 
 /** A pair mapping a theme color type to the concrete color it represents. */
@@ -1071,16 +859,14 @@ export interface ThemeColorPair {
   type?: ThemeColorPairTypeEnum;
 }
 export const ThemeColorPair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color: S.optional(RgbColor),
-    type: S.optional(ThemeColorPairTypeEnum),
-  }),
+S.Struct({
+  "color": S.optional(RgbColor),
+  "type": S.optional(ThemeColorPairTypeEnum),
+}),
 ).annotate({ identifier: "ThemeColorPair" }) as any as S.Schema<ThemeColorPair>;
 
 export type ThemeColorPairList = ReadonlyArray<ThemeColorPair>;
-export const ThemeColorPairList = /*@__PURE__*/ S.Array(
-  ThemeColorPair,
-) as any as S.Schema<ThemeColorPairList>;
+export const ThemeColorPairList = /*@__PURE__*/ S.Array(ThemeColorPair) as any as S.Schema<ThemeColorPairList>;
 
 /** The palette of predefined colors for a page. */
 export interface ColorScheme {
@@ -1088,9 +874,9 @@ export interface ColorScheme {
   colors?: ThemeColorPairList;
 }
 export const ColorScheme = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    colors: S.optional(ThemeColorPairList),
-  }),
+S.Struct({
+  "colors": S.optional(ThemeColorPairList),
+}),
 ).annotate({ identifier: "ColorScheme" }) as any as S.Schema<ColorScheme>;
 
 /** The properties of the Page. The page will inherit properties from the parent page. Depending on the page type the hierarchy is defined in either SlideProperties or LayoutProperties. */
@@ -1101,10 +887,10 @@ export interface PageProperties {
   colorScheme?: ColorScheme;
 }
 export const PageProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageBackgroundFill: S.optional(PageBackgroundFill),
-    colorScheme: S.optional(ColorScheme),
-  }),
+S.Struct({
+  "pageBackgroundFill": S.optional(PageBackgroundFill),
+  "colorScheme": S.optional(ColorScheme),
+}),
 ).annotate({ identifier: "PageProperties" }) as any as S.Schema<PageProperties>;
 
 /** Updates the properties of a Page. */
@@ -1117,14 +903,12 @@ export interface UpdatePagePropertiesRequest {
   fields?: string;
 }
 export const UpdatePagePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageProperties: S.optional(PageProperties),
-    objectId: S.optional(S.String),
-    fields: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePagePropertiesRequest",
-}) as any as S.Schema<UpdatePagePropertiesRequest>;
+S.Struct({
+  "pageProperties": S.optional(PageProperties),
+  "objectId": S.optional(S.String),
+  "fields": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdatePagePropertiesRequest" }) as any as S.Schema<UpdatePagePropertiesRequest>;
 
 /** Deletes a row from a table. */
 export interface DeleteTableRowRequest {
@@ -1134,13 +918,11 @@ export interface DeleteTableRowRequest {
   tableObjectId?: string;
 }
 export const DeleteTableRowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cellLocation: S.optional(TableCellLocation),
-    tableObjectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteTableRowRequest",
-}) as any as S.Schema<DeleteTableRowRequest>;
+S.Struct({
+  "cellLocation": S.optional(TableCellLocation),
+  "tableObjectId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteTableRowRequest" }) as any as S.Schema<DeleteTableRowRequest>;
 
 /** Reroutes a line such that it's connected at the two closest connection sites on the connected page elements. */
 export interface RerouteLineRequest {
@@ -1148,12 +930,10 @@ export interface RerouteLineRequest {
   objectId?: string;
 }
 export const RerouteLineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RerouteLineRequest",
-}) as any as S.Schema<RerouteLineRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "RerouteLineRequest" }) as any as S.Schema<RerouteLineRequest>;
 
 /** Refreshes an embedded Google Sheets chart by replacing it with the latest version of the chart from Google Sheets. NOTE: Refreshing charts requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, or drive OAuth scopes. */
 export interface RefreshSheetsChartRequest {
@@ -1161,12 +941,10 @@ export interface RefreshSheetsChartRequest {
   objectId?: string;
 }
 export const RefreshSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RefreshSheetsChartRequest",
-}) as any as S.Schema<RefreshSheetsChartRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "RefreshSheetsChartRequest" }) as any as S.Schema<RefreshSheetsChartRequest>;
 
 /** Merges cells in a Table. */
 export interface MergeTableCellsRequest {
@@ -1176,13 +954,11 @@ export interface MergeTableCellsRequest {
   tableRange?: TableRange;
 }
 export const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({
-  identifier: "MergeTableCellsRequest",
-}) as any as S.Schema<MergeTableCellsRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "tableRange": S.optional(TableRange),
+}),
+).annotate({ identifier: "MergeTableCellsRequest" }) as any as S.Schema<MergeTableCellsRequest>;
 
 /** Groups objects to create an object group. For example, groups PageElements to create a Group on the same page as all the children. */
 export interface GroupObjectsRequest {
@@ -1192,35 +968,19 @@ export interface GroupObjectsRequest {
   childrenObjectIds?: StringList;
 }
 export const GroupObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupObjectId: S.optional(S.String),
-    childrenObjectIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GroupObjectsRequest",
-}) as any as S.Schema<GroupObjectsRequest>;
+S.Struct({
+  "groupObjectId": S.optional(S.String),
+  "childrenObjectIds": S.optional(StringList),
+}),
+).annotate({ identifier: "GroupObjectsRequest" }) as any as S.Schema<GroupObjectsRequest>;
 
-export type ParagraphStyleDirectionEnum =
-  | "TEXT_DIRECTION_UNSPECIFIED"
-  | "LEFT_TO_RIGHT"
-  | "RIGHT_TO_LEFT"
-  | (string & {});
+export type ParagraphStyleDirectionEnum = "TEXT_DIRECTION_UNSPECIFIED" | "LEFT_TO_RIGHT" | "RIGHT_TO_LEFT";
 export const ParagraphStyleDirectionEnum = /*@__PURE__*/ S.String;
 
-export type ParagraphStyleAlignmentEnum =
-  | "ALIGNMENT_UNSPECIFIED"
-  | "START"
-  | "CENTER"
-  | "END"
-  | "JUSTIFIED"
-  | (string & {});
+export type ParagraphStyleAlignmentEnum = "ALIGNMENT_UNSPECIFIED" | "START" | "CENTER" | "END" | "JUSTIFIED";
 export const ParagraphStyleAlignmentEnum = /*@__PURE__*/ S.String;
 
-export type ParagraphStyleSpacingModeEnum =
-  | "SPACING_MODE_UNSPECIFIED"
-  | "NEVER_COLLAPSE"
-  | "COLLAPSE_LISTS"
-  | (string & {});
+export type ParagraphStyleSpacingModeEnum = "SPACING_MODE_UNSPECIFIED" | "NEVER_COLLAPSE" | "COLLAPSE_LISTS";
 export const ParagraphStyleSpacingModeEnum = /*@__PURE__*/ S.String;
 
 /** Styles that apply to a whole paragraph. If this text is contained in a shape with a parent placeholder, then these paragraph styles may be inherited from the parent. Which paragraph styles are inherited depend on the nesting level of lists: * A paragraph not in a list will inherit its paragraph style from the paragraph at the 0 nesting level of the list inside the parent placeholder. * A paragraph in a list will inherit its paragraph style from the paragraph at its corresponding nesting level of the list inside the parent placeholder. Inherited paragraph styles are represented as unset fields in this message. */
@@ -1245,17 +1005,17 @@ export interface ParagraphStyle {
   spacingMode?: ParagraphStyleSpacingModeEnum;
 }
 export const ParagraphStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direction: S.optional(ParagraphStyleDirectionEnum),
-    indentFirstLine: S.optional(Dimension),
-    alignment: S.optional(ParagraphStyleAlignmentEnum),
-    indentEnd: S.optional(Dimension),
-    spaceBelow: S.optional(Dimension),
-    indentStart: S.optional(Dimension),
-    lineSpacing: S.optional(S.Number),
-    spaceAbove: S.optional(Dimension),
-    spacingMode: S.optional(ParagraphStyleSpacingModeEnum),
-  }),
+S.Struct({
+  "direction": S.optional(ParagraphStyleDirectionEnum),
+  "indentFirstLine": S.optional(Dimension),
+  "alignment": S.optional(ParagraphStyleAlignmentEnum),
+  "indentEnd": S.optional(Dimension),
+  "spaceBelow": S.optional(Dimension),
+  "indentStart": S.optional(Dimension),
+  "lineSpacing": S.optional(S.Number),
+  "spaceAbove": S.optional(Dimension),
+  "spacingMode": S.optional(ParagraphStyleSpacingModeEnum),
+}),
 ).annotate({ identifier: "ParagraphStyle" }) as any as S.Schema<ParagraphStyle>;
 
 /** Updates the styling for all of the paragraphs within a Shape or Table that overlap with the given text index range. */
@@ -1272,16 +1032,14 @@ export interface UpdateParagraphStyleRequest {
   fields?: string;
 }
 export const UpdateParagraphStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cellLocation: S.optional(TableCellLocation),
-    style: S.optional(ParagraphStyle),
-    textRange: S.optional(Range),
-    objectId: S.optional(S.String),
-    fields: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateParagraphStyleRequest",
-}) as any as S.Schema<UpdateParagraphStyleRequest>;
+S.Struct({
+  "cellLocation": S.optional(TableCellLocation),
+  "style": S.optional(ParagraphStyle),
+  "textRange": S.optional(Range),
+  "objectId": S.optional(S.String),
+  "fields": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateParagraphStyleRequest" }) as any as S.Schema<UpdateParagraphStyleRequest>;
 
 /** Unmerges cells in a Table. */
 export interface UnmergeTableCellsRequest {
@@ -1291,13 +1049,11 @@ export interface UnmergeTableCellsRequest {
   objectId?: string;
 }
 export const UnmergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableRange: S.optional(TableRange),
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UnmergeTableCellsRequest",
-}) as any as S.Schema<UnmergeTableCellsRequest>;
+S.Struct({
+  "tableRange": S.optional(TableRange),
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "UnmergeTableCellsRequest" }) as any as S.Schema<UnmergeTableCellsRequest>;
 
 /** Deletes a column from a table. */
 export interface DeleteTableColumnRequest {
@@ -1307,13 +1063,11 @@ export interface DeleteTableColumnRequest {
   tableObjectId?: string;
 }
 export const DeleteTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cellLocation: S.optional(TableCellLocation),
-    tableObjectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteTableColumnRequest",
-}) as any as S.Schema<DeleteTableColumnRequest>;
+S.Struct({
+  "cellLocation": S.optional(TableCellLocation),
+  "tableObjectId": S.optional(S.String),
+}),
+).annotate({ identifier: "DeleteTableColumnRequest" }) as any as S.Schema<DeleteTableColumnRequest>;
 
 /** The properties of the Video. */
 export interface VideoProperties {
@@ -1329,16 +1083,14 @@ export interface VideoProperties {
   outline?: Outline;
 }
 export const VideoProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mute: S.optional(S.Boolean),
-    start: S.optional(S.Number),
-    autoPlay: S.optional(S.Boolean),
-    end: S.optional(S.Number),
-    outline: S.optional(Outline),
-  }),
-).annotate({
-  identifier: "VideoProperties",
-}) as any as S.Schema<VideoProperties>;
+S.Struct({
+  "mute": S.optional(S.Boolean),
+  "start": S.optional(S.Number),
+  "autoPlay": S.optional(S.Boolean),
+  "end": S.optional(S.Number),
+  "outline": S.optional(Outline),
+}),
+).annotate({ identifier: "VideoProperties" }) as any as S.Schema<VideoProperties>;
 
 /** Update the properties of a Video. */
 export interface UpdateVideoPropertiesRequest {
@@ -1350,14 +1102,12 @@ export interface UpdateVideoPropertiesRequest {
   videoProperties?: VideoProperties;
 }
 export const UpdateVideoPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    fields: S.optional(S.String),
-    videoProperties: S.optional(VideoProperties),
-  }),
-).annotate({
-  identifier: "UpdateVideoPropertiesRequest",
-}) as any as S.Schema<UpdateVideoPropertiesRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "fields": S.optional(S.String),
+  "videoProperties": S.optional(VideoProperties),
+}),
+).annotate({ identifier: "UpdateVideoPropertiesRequest" }) as any as S.Schema<UpdateVideoPropertiesRequest>;
 
 /** Ungroups objects, such as groups. */
 export interface UngroupObjectsRequest {
@@ -1365,27 +1115,15 @@ export interface UngroupObjectsRequest {
   objectIds?: StringList;
 }
 export const UngroupObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "UngroupObjectsRequest",
-}) as any as S.Schema<UngroupObjectsRequest>;
+S.Struct({
+  "objectIds": S.optional(StringList),
+}),
+).annotate({ identifier: "UngroupObjectsRequest" }) as any as S.Schema<UngroupObjectsRequest>;
 
-export type ShapePropertiesContentAlignmentEnum =
-  | "CONTENT_ALIGNMENT_UNSPECIFIED"
-  | "CONTENT_ALIGNMENT_UNSUPPORTED"
-  | "TOP"
-  | "MIDDLE"
-  | "BOTTOM"
-  | (string & {});
+export type ShapePropertiesContentAlignmentEnum = "CONTENT_ALIGNMENT_UNSPECIFIED" | "CONTENT_ALIGNMENT_UNSUPPORTED" | "TOP" | "MIDDLE" | "BOTTOM";
 export const ShapePropertiesContentAlignmentEnum = /*@__PURE__*/ S.String;
 
-export type ShapeBackgroundFillPropertyStateEnum =
-  | "RENDERED"
-  | "NOT_RENDERED"
-  | "INHERIT"
-  | (string & {});
+export type ShapeBackgroundFillPropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
 export const ShapeBackgroundFillPropertyStateEnum = /*@__PURE__*/ S.String;
 
 /** The shape background fill. */
@@ -1396,20 +1134,13 @@ export interface ShapeBackgroundFill {
   propertyState?: ShapeBackgroundFillPropertyStateEnum;
 }
 export const ShapeBackgroundFill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solidFill: S.optional(SolidFill),
-    propertyState: S.optional(ShapeBackgroundFillPropertyStateEnum),
-  }),
-).annotate({
-  identifier: "ShapeBackgroundFill",
-}) as any as S.Schema<ShapeBackgroundFill>;
+S.Struct({
+  "solidFill": S.optional(SolidFill),
+  "propertyState": S.optional(ShapeBackgroundFillPropertyStateEnum),
+}),
+).annotate({ identifier: "ShapeBackgroundFill" }) as any as S.Schema<ShapeBackgroundFill>;
 
-export type AutofitAutofitTypeEnum =
-  | "AUTOFIT_TYPE_UNSPECIFIED"
-  | "NONE"
-  | "TEXT_AUTOFIT"
-  | "SHAPE_AUTOFIT"
-  | (string & {});
+export type AutofitAutofitTypeEnum = "AUTOFIT_TYPE_UNSPECIFIED" | "NONE" | "TEXT_AUTOFIT" | "SHAPE_AUTOFIT";
 export const AutofitAutofitTypeEnum = /*@__PURE__*/ S.String;
 
 /** The autofit properties of a Shape. This property is only set for shapes that allow text. */
@@ -1422,11 +1153,11 @@ export interface Autofit {
   lineSpacingReduction?: number;
 }
 export const Autofit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autofitType: S.optional(AutofitAutofitTypeEnum),
-    fontScale: S.optional(S.Number),
-    lineSpacingReduction: S.optional(S.Number),
-  }),
+S.Struct({
+  "autofitType": S.optional(AutofitAutofitTypeEnum),
+  "fontScale": S.optional(S.Number),
+  "lineSpacingReduction": S.optional(S.Number),
+}),
 ).annotate({ identifier: "Autofit" }) as any as S.Schema<Autofit>;
 
 /** The properties of a Shape. If the shape is a placeholder shape as determined by the placeholder field, then these properties may be inherited from a parent placeholder shape. Determining the rendered value of the property depends on the corresponding property_state field value. Any text autofit settings on the shape are automatically deactivated by requests that can impact how text fits in the shape. */
@@ -1445,17 +1176,15 @@ export interface ShapeProperties {
   outline?: Outline;
 }
 export const ShapeProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    link: S.optional(Link),
-    contentAlignment: S.optional(ShapePropertiesContentAlignmentEnum),
-    shapeBackgroundFill: S.optional(ShapeBackgroundFill),
-    shadow: S.optional(Shadow),
-    autofit: S.optional(Autofit),
-    outline: S.optional(Outline),
-  }),
-).annotate({
-  identifier: "ShapeProperties",
-}) as any as S.Schema<ShapeProperties>;
+S.Struct({
+  "link": S.optional(Link),
+  "contentAlignment": S.optional(ShapePropertiesContentAlignmentEnum),
+  "shapeBackgroundFill": S.optional(ShapeBackgroundFill),
+  "shadow": S.optional(Shadow),
+  "autofit": S.optional(Autofit),
+  "outline": S.optional(Outline),
+}),
+).annotate({ identifier: "ShapeProperties" }) as any as S.Schema<ShapeProperties>;
 
 /** Update the properties of a Shape. */
 export interface UpdateShapePropertiesRequest {
@@ -1467,14 +1196,12 @@ export interface UpdateShapePropertiesRequest {
   fields?: string;
 }
 export const UpdateShapePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    shapeProperties: S.optional(ShapeProperties),
-    fields: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateShapePropertiesRequest",
-}) as any as S.Schema<UpdateShapePropertiesRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "shapeProperties": S.optional(ShapeProperties),
+  "fields": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateShapePropertiesRequest" }) as any as S.Schema<UpdateShapePropertiesRequest>;
 
 /** Creates an image. */
 export interface CreateImageRequest {
@@ -1486,19 +1213,15 @@ export interface CreateImageRequest {
   url?: string;
 }
 export const CreateImageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    elementProperties: S.optional(PageElementProperties),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateImageRequest",
-}) as any as S.Schema<CreateImageRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "elementProperties": S.optional(PageElementProperties),
+  "url": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateImageRequest" }) as any as S.Schema<CreateImageRequest>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Properties of each row in a table. */
 export interface TableRowProperties {
@@ -1506,12 +1229,10 @@ export interface TableRowProperties {
   minRowHeight?: Dimension;
 }
 export const TableRowProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minRowHeight: S.optional(Dimension),
-  }),
-).annotate({
-  identifier: "TableRowProperties",
-}) as any as S.Schema<TableRowProperties>;
+S.Struct({
+  "minRowHeight": S.optional(Dimension),
+}),
+).annotate({ identifier: "TableRowProperties" }) as any as S.Schema<TableRowProperties>;
 
 /** Updates the properties of a Table row. */
 export interface UpdateTableRowPropertiesRequest {
@@ -1525,52 +1246,39 @@ export interface UpdateTableRowPropertiesRequest {
   fields?: string;
 }
 export const UpdateTableRowPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowIndices: S.optional(IntegerList),
-    tableRowProperties: S.optional(TableRowProperties),
-    objectId: S.optional(S.String),
-    fields: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateTableRowPropertiesRequest",
-}) as any as S.Schema<UpdateTableRowPropertiesRequest>;
+S.Struct({
+  "rowIndices": S.optional(IntegerList),
+  "tableRowProperties": S.optional(TableRowProperties),
+  "objectId": S.optional(S.String),
+  "fields": S.optional(S.String),
+}),
+).annotate({ identifier: "UpdateTableRowPropertiesRequest" }) as any as S.Schema<UpdateTableRowPropertiesRequest>;
 
-export type CreateLineRequestLineCategoryEnum =
-  | "STRAIGHT"
-  | "BENT"
-  | "CURVED"
-  | (string & {});
+export type CreateLineRequestLineCategoryEnum = "STRAIGHT" | "BENT" | "CURVED";
 export const CreateLineRequestLineCategoryEnum = /*@__PURE__*/ S.String;
 
-export type CreateLineRequestCategoryEnum =
-  | "LINE_CATEGORY_UNSPECIFIED"
-  | "STRAIGHT"
-  | "BENT"
-  | "CURVED"
-  | (string & {});
+export type CreateLineRequestCategoryEnum = "LINE_CATEGORY_UNSPECIFIED" | "STRAIGHT" | "BENT" | "CURVED";
 export const CreateLineRequestCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Creates a line. */
 export interface CreateLineRequest {
   /** The category of the line to be created. *Deprecated*: use `category` instead. The exact line type created is determined based on the category and how it's routed to connect to other page elements. If you specify both a `category` and a `line_category`, the `category` takes precedence. */
-  lineCategory?: CreateLineRequestLineCategoryEnum;
+  lineCategory?: CreateLineRequestLineCategoryEnum | (string & {});
   /** A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
   objectId?: string;
   /** The element properties for the line. */
   elementProperties?: PageElementProperties;
   /** The category of the line to be created. The exact line type created is determined based on the category and how it's routed to connect to other page elements. If you specify both a `category` and a `line_category`, the `category` takes precedence. If you do not specify a value for `category`, but specify a value for `line_category`, then the specified `line_category` value is used. If you do not specify either, then STRAIGHT is used. */
-  category?: CreateLineRequestCategoryEnum;
+  category?: CreateLineRequestCategoryEnum | (string & {});
 }
 export const CreateLineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lineCategory: S.optional(CreateLineRequestLineCategoryEnum),
-    objectId: S.optional(S.String),
-    elementProperties: S.optional(PageElementProperties),
-    category: S.optional(CreateLineRequestCategoryEnum),
-  }),
-).annotate({
-  identifier: "CreateLineRequest",
-}) as any as S.Schema<CreateLineRequest>;
+S.Struct({
+  "lineCategory": S.optional(CreateLineRequestLineCategoryEnum),
+  "objectId": S.optional(S.String),
+  "elementProperties": S.optional(PageElementProperties),
+  "category": S.optional(CreateLineRequestCategoryEnum),
+}),
+).annotate({ identifier: "CreateLineRequest" }) as any as S.Schema<CreateLineRequest>;
 
 /** Inserts columns into a table. Other columns in the table will be resized to fit the new column. */
 export interface InsertTableColumnsRequest {
@@ -1584,25 +1292,15 @@ export interface InsertTableColumnsRequest {
   cellLocation?: TableCellLocation;
 }
 export const InsertTableColumnsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableObjectId: S.optional(S.String),
-    insertRight: S.optional(S.Boolean),
-    number: S.optional(S.Number),
-    cellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "InsertTableColumnsRequest",
-}) as any as S.Schema<InsertTableColumnsRequest>;
+S.Struct({
+  "tableObjectId": S.optional(S.String),
+  "insertRight": S.optional(S.Boolean),
+  "number": S.optional(S.Number),
+  "cellLocation": S.optional(TableCellLocation),
+}),
+).annotate({ identifier: "InsertTableColumnsRequest" }) as any as S.Schema<InsertTableColumnsRequest>;
 
-export type LinePropertiesDashStyleEnum =
-  | "DASH_STYLE_UNSPECIFIED"
-  | "SOLID"
-  | "DOT"
-  | "DASH"
-  | "DASH_DOT"
-  | "LONG_DASH"
-  | "LONG_DASH_DOT"
-  | (string & {});
+export type LinePropertiesDashStyleEnum = "DASH_STYLE_UNSPECIFIED" | "SOLID" | "DOT" | "DASH" | "DASH_DOT" | "LONG_DASH" | "LONG_DASH_DOT";
 export const LinePropertiesDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** The properties for one end of a Line connection. */
@@ -1613,40 +1311,16 @@ export interface LineConnection {
   connectedObjectId?: string;
 }
 export const LineConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionSiteIndex: S.optional(S.Number),
-    connectedObjectId: S.optional(S.String),
-  }),
+S.Struct({
+  "connectionSiteIndex": S.optional(S.Number),
+  "connectedObjectId": S.optional(S.String),
+}),
 ).annotate({ identifier: "LineConnection" }) as any as S.Schema<LineConnection>;
 
-export type LinePropertiesStartArrowEnum =
-  | "ARROW_STYLE_UNSPECIFIED"
-  | "NONE"
-  | "STEALTH_ARROW"
-  | "FILL_ARROW"
-  | "FILL_CIRCLE"
-  | "FILL_SQUARE"
-  | "FILL_DIAMOND"
-  | "OPEN_ARROW"
-  | "OPEN_CIRCLE"
-  | "OPEN_SQUARE"
-  | "OPEN_DIAMOND"
-  | (string & {});
+export type LinePropertiesStartArrowEnum = "ARROW_STYLE_UNSPECIFIED" | "NONE" | "STEALTH_ARROW" | "FILL_ARROW" | "FILL_CIRCLE" | "FILL_SQUARE" | "FILL_DIAMOND" | "OPEN_ARROW" | "OPEN_CIRCLE" | "OPEN_SQUARE" | "OPEN_DIAMOND";
 export const LinePropertiesStartArrowEnum = /*@__PURE__*/ S.String;
 
-export type LinePropertiesEndArrowEnum =
-  | "ARROW_STYLE_UNSPECIFIED"
-  | "NONE"
-  | "STEALTH_ARROW"
-  | "FILL_ARROW"
-  | "FILL_CIRCLE"
-  | "FILL_SQUARE"
-  | "FILL_DIAMOND"
-  | "OPEN_ARROW"
-  | "OPEN_CIRCLE"
-  | "OPEN_SQUARE"
-  | "OPEN_DIAMOND"
-  | (string & {});
+export type LinePropertiesEndArrowEnum = "ARROW_STYLE_UNSPECIFIED" | "NONE" | "STEALTH_ARROW" | "FILL_ARROW" | "FILL_CIRCLE" | "FILL_SQUARE" | "FILL_DIAMOND" | "OPEN_ARROW" | "OPEN_CIRCLE" | "OPEN_SQUARE" | "OPEN_DIAMOND";
 export const LinePropertiesEndArrowEnum = /*@__PURE__*/ S.String;
 
 /** The fill of the line. */
@@ -1655,9 +1329,9 @@ export interface LineFill {
   solidFill?: SolidFill;
 }
 export const LineFill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solidFill: S.optional(SolidFill),
-  }),
+S.Struct({
+  "solidFill": S.optional(SolidFill),
+}),
 ).annotate({ identifier: "LineFill" }) as any as S.Schema<LineFill>;
 
 /** The properties of the Line. When unset, these fields default to values that match the appearance of new lines created in the Slides editor. */
@@ -1680,16 +1354,16 @@ export interface LineProperties {
   lineFill?: LineFill;
 }
 export const LineProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dashStyle: S.optional(LinePropertiesDashStyleEnum),
-    endConnection: S.optional(LineConnection),
-    link: S.optional(Link),
-    startConnection: S.optional(LineConnection),
-    startArrow: S.optional(LinePropertiesStartArrowEnum),
-    weight: S.optional(Dimension),
-    endArrow: S.optional(LinePropertiesEndArrowEnum),
-    lineFill: S.optional(LineFill),
-  }),
+S.Struct({
+  "dashStyle": S.optional(LinePropertiesDashStyleEnum),
+  "endConnection": S.optional(LineConnection),
+  "link": S.optional(Link),
+  "startConnection": S.optional(LineConnection),
+  "startArrow": S.optional(LinePropertiesStartArrowEnum),
+  "weight": S.optional(Dimension),
+  "endArrow": S.optional(LinePropertiesEndArrowEnum),
+  "lineFill": S.optional(LineFill),
+}),
 ).annotate({ identifier: "LineProperties" }) as any as S.Schema<LineProperties>;
 
 /** Updates the properties of a Line. */
@@ -1702,38 +1376,17 @@ export interface UpdateLinePropertiesRequest {
   lineProperties?: LineProperties;
 }
 export const UpdateLinePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    fields: S.optional(S.String),
-    lineProperties: S.optional(LineProperties),
-  }),
-).annotate({
-  identifier: "UpdateLinePropertiesRequest",
-}) as any as S.Schema<UpdateLinePropertiesRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "fields": S.optional(S.String),
+  "lineProperties": S.optional(LineProperties),
+}),
+).annotate({ identifier: "UpdateLinePropertiesRequest" }) as any as S.Schema<UpdateLinePropertiesRequest>;
 
-export type UpdateTableBorderPropertiesRequestBorderPositionEnum =
-  | "ALL"
-  | "BOTTOM"
-  | "INNER"
-  | "INNER_HORIZONTAL"
-  | "INNER_VERTICAL"
-  | "LEFT"
-  | "OUTER"
-  | "RIGHT"
-  | "TOP"
-  | (string & {});
-export const UpdateTableBorderPropertiesRequestBorderPositionEnum =
-  /*@__PURE__*/ S.String;
+export type UpdateTableBorderPropertiesRequestBorderPositionEnum = "ALL" | "BOTTOM" | "INNER" | "INNER_HORIZONTAL" | "INNER_VERTICAL" | "LEFT" | "OUTER" | "RIGHT" | "TOP";
+export const UpdateTableBorderPropertiesRequestBorderPositionEnum = /*@__PURE__*/ S.String;
 
-export type TableBorderPropertiesDashStyleEnum =
-  | "DASH_STYLE_UNSPECIFIED"
-  | "SOLID"
-  | "DOT"
-  | "DASH"
-  | "DASH_DOT"
-  | "LONG_DASH"
-  | "LONG_DASH_DOT"
-  | (string & {});
+export type TableBorderPropertiesDashStyleEnum = "DASH_STYLE_UNSPECIFIED" | "SOLID" | "DOT" | "DASH" | "DASH_DOT" | "LONG_DASH" | "LONG_DASH_DOT";
 export const TableBorderPropertiesDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** The fill of the border. */
@@ -1742,12 +1395,10 @@ export interface TableBorderFill {
   solidFill?: SolidFill;
 }
 export const TableBorderFill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solidFill: S.optional(SolidFill),
-  }),
-).annotate({
-  identifier: "TableBorderFill",
-}) as any as S.Schema<TableBorderFill>;
+S.Struct({
+  "solidFill": S.optional(SolidFill),
+}),
+).annotate({ identifier: "TableBorderFill" }) as any as S.Schema<TableBorderFill>;
 
 /** The border styling properties of the TableBorderCell. */
 export interface TableBorderProperties {
@@ -1759,21 +1410,19 @@ export interface TableBorderProperties {
   tableBorderFill?: TableBorderFill;
 }
 export const TableBorderProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dashStyle: S.optional(TableBorderPropertiesDashStyleEnum),
-    weight: S.optional(Dimension),
-    tableBorderFill: S.optional(TableBorderFill),
-  }),
-).annotate({
-  identifier: "TableBorderProperties",
-}) as any as S.Schema<TableBorderProperties>;
+S.Struct({
+  "dashStyle": S.optional(TableBorderPropertiesDashStyleEnum),
+  "weight": S.optional(Dimension),
+  "tableBorderFill": S.optional(TableBorderFill),
+}),
+).annotate({ identifier: "TableBorderProperties" }) as any as S.Schema<TableBorderProperties>;
 
 /** Updates the properties of the table borders in a Table. */
 export interface UpdateTableBorderPropertiesRequest {
   /** The object ID of the table. */
   objectId?: string;
   /** The border position in the table range the updates should apply to. If a border position is not specified, the updates will apply to all borders in the table range. */
-  borderPosition?: UpdateTableBorderPropertiesRequestBorderPositionEnum;
+  borderPosition?: UpdateTableBorderPropertiesRequestBorderPositionEnum | (string & {});
   /** The fields that should be updated. At least one field must be specified. The root `tableBorderProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the table border solid fill color, set `fields` to `"tableBorderFill.solidFill.color"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
   fields?: string;
   /** The table range representing the subset of the table to which the updates are applied. If a table range is not specified, the updates will apply to the entire table. */
@@ -1782,26 +1431,16 @@ export interface UpdateTableBorderPropertiesRequest {
   tableBorderProperties?: TableBorderProperties;
 }
 export const UpdateTableBorderPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    borderPosition: S.optional(
-      UpdateTableBorderPropertiesRequestBorderPositionEnum,
-    ),
-    fields: S.optional(S.String),
-    tableRange: S.optional(TableRange),
-    tableBorderProperties: S.optional(TableBorderProperties),
-  }),
-).annotate({
-  identifier: "UpdateTableBorderPropertiesRequest",
-}) as any as S.Schema<UpdateTableBorderPropertiesRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "borderPosition": S.optional(UpdateTableBorderPropertiesRequestBorderPositionEnum),
+  "fields": S.optional(S.String),
+  "tableRange": S.optional(TableRange),
+  "tableBorderProperties": S.optional(TableBorderProperties),
+}),
+).annotate({ identifier: "UpdateTableBorderPropertiesRequest" }) as any as S.Schema<UpdateTableBorderPropertiesRequest>;
 
-export type PagePageTypeEnum =
-  | "SLIDE"
-  | "MASTER"
-  | "LAYOUT"
-  | "NOTES"
-  | "NOTES_MASTER"
-  | (string & {});
+export type PagePageTypeEnum = "SLIDE" | "MASTER" | "LAYOUT" | "NOTES" | "NOTES_MASTER";
 export const PagePageTypeEnum = /*@__PURE__*/ S.String;
 
 /** The properties of Page are only relevant for pages with page_type LAYOUT. */
@@ -1814,14 +1453,12 @@ export interface LayoutProperties {
   displayName?: string;
 }
 export const LayoutProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    masterObjectId: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LayoutProperties",
-}) as any as S.Schema<LayoutProperties>;
+S.Struct({
+  "name": S.optional(S.String),
+  "masterObjectId": S.optional(S.String),
+  "displayName": S.optional(S.String),
+}),
+).annotate({ identifier: "LayoutProperties" }) as any as S.Schema<LayoutProperties>;
 
 /** The properties of Page that are only relevant for pages with page_type MASTER. */
 export interface MasterProperties {
@@ -1829,12 +1466,10 @@ export interface MasterProperties {
   displayName?: string;
 }
 export const MasterProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MasterProperties",
-}) as any as S.Schema<MasterProperties>;
+S.Struct({
+  "displayName": S.optional(S.String),
+}),
+).annotate({ identifier: "MasterProperties" }) as any as S.Schema<MasterProperties>;
 
 /** The properties of Page that are only relevant for pages with page_type NOTES. */
 export interface NotesProperties {
@@ -1842,18 +1477,12 @@ export interface NotesProperties {
   speakerNotesObjectId?: string;
 }
 export const NotesProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    speakerNotesObjectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NotesProperties",
-}) as any as S.Schema<NotesProperties>;
+S.Struct({
+  "speakerNotesObjectId": S.optional(S.String),
+}),
+).annotate({ identifier: "NotesProperties" }) as any as S.Schema<NotesProperties>;
 
-export type VideoSourceEnum =
-  | "SOURCE_UNSPECIFIED"
-  | "YOUTUBE"
-  | "DRIVE"
-  | (string & {});
+export type VideoSourceEnum = "SOURCE_UNSPECIFIED" | "YOUTUBE" | "DRIVE";
 export const VideoSourceEnum = /*@__PURE__*/ S.String;
 
 /** A PageElement kind representing a video. */
@@ -1868,35 +1497,18 @@ export interface Video {
   videoProperties?: VideoProperties;
 }
 export const Video = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    source: S.optional(VideoSourceEnum),
-    id: S.optional(S.String),
-    videoProperties: S.optional(VideoProperties),
-  }),
+S.Struct({
+  "url": S.optional(S.String),
+  "source": S.optional(VideoSourceEnum),
+  "id": S.optional(S.String),
+  "videoProperties": S.optional(VideoProperties),
+}),
 ).annotate({ identifier: "Video" }) as any as S.Schema<Video>;
 
-export type LineLineTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "STRAIGHT_CONNECTOR_1"
-  | "BENT_CONNECTOR_2"
-  | "BENT_CONNECTOR_3"
-  | "BENT_CONNECTOR_4"
-  | "BENT_CONNECTOR_5"
-  | "CURVED_CONNECTOR_2"
-  | "CURVED_CONNECTOR_3"
-  | "CURVED_CONNECTOR_4"
-  | "CURVED_CONNECTOR_5"
-  | "STRAIGHT_LINE"
-  | (string & {});
+export type LineLineTypeEnum = "TYPE_UNSPECIFIED" | "STRAIGHT_CONNECTOR_1" | "BENT_CONNECTOR_2" | "BENT_CONNECTOR_3" | "BENT_CONNECTOR_4" | "BENT_CONNECTOR_5" | "CURVED_CONNECTOR_2" | "CURVED_CONNECTOR_3" | "CURVED_CONNECTOR_4" | "CURVED_CONNECTOR_5" | "STRAIGHT_LINE";
 export const LineLineTypeEnum = /*@__PURE__*/ S.String;
 
-export type LineLineCategoryEnum =
-  | "LINE_CATEGORY_UNSPECIFIED"
-  | "STRAIGHT"
-  | "BENT"
-  | "CURVED"
-  | (string & {});
+export type LineLineCategoryEnum = "LINE_CATEGORY_UNSPECIFIED" | "STRAIGHT" | "BENT" | "CURVED";
 export const LineLineCategoryEnum = /*@__PURE__*/ S.String;
 
 /** A PageElement kind representing a non-connector line, straight connector, curved connector, or bent connector. */
@@ -1909,32 +1521,14 @@ export interface Line {
   lineProperties?: LineProperties;
 }
 export const Line = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lineType: S.optional(LineLineTypeEnum),
-    lineCategory: S.optional(LineLineCategoryEnum),
-    lineProperties: S.optional(LineProperties),
-  }),
+S.Struct({
+  "lineType": S.optional(LineLineTypeEnum),
+  "lineCategory": S.optional(LineLineCategoryEnum),
+  "lineProperties": S.optional(LineProperties),
+}),
 ).annotate({ identifier: "Line" }) as any as S.Schema<Line>;
 
-export type PlaceholderTypeEnum =
-  | "NONE"
-  | "BODY"
-  | "CHART"
-  | "CLIP_ART"
-  | "CENTERED_TITLE"
-  | "DIAGRAM"
-  | "DATE_AND_TIME"
-  | "FOOTER"
-  | "HEADER"
-  | "MEDIA"
-  | "OBJECT"
-  | "PICTURE"
-  | "SLIDE_NUMBER"
-  | "SUBTITLE"
-  | "TABLE"
-  | "TITLE"
-  | "SLIDE_IMAGE"
-  | (string & {});
+export type PlaceholderTypeEnum = "NONE" | "BODY" | "CHART" | "CLIP_ART" | "CENTERED_TITLE" | "DIAGRAM" | "DATE_AND_TIME" | "FOOTER" | "HEADER" | "MEDIA" | "OBJECT" | "PICTURE" | "SLIDE_NUMBER" | "SUBTITLE" | "TABLE" | "TITLE" | "SLIDE_IMAGE";
 export const PlaceholderTypeEnum = /*@__PURE__*/ S.String;
 
 /** The placeholder information that uniquely identifies a placeholder shape. */
@@ -1947,11 +1541,11 @@ export interface Placeholder {
   type?: PlaceholderTypeEnum;
 }
 export const Placeholder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    index: S.optional(S.Number),
-    parentObjectId: S.optional(S.String),
-    type: S.optional(PlaceholderTypeEnum),
-  }),
+S.Struct({
+  "index": S.optional(S.Number),
+  "parentObjectId": S.optional(S.String),
+  "type": S.optional(PlaceholderTypeEnum),
+}),
 ).annotate({ identifier: "Placeholder" }) as any as S.Schema<Placeholder>;
 
 /** A PageElement kind representing an image. */
@@ -1966,18 +1560,15 @@ export interface Image {
   imageProperties?: ImageProperties;
 }
 export const Image = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentUrl: S.optional(S.String),
-    sourceUrl: S.optional(S.String),
-    placeholder: S.optional(Placeholder),
-    imageProperties: S.optional(ImageProperties),
-  }),
+S.Struct({
+  "contentUrl": S.optional(S.String),
+  "sourceUrl": S.optional(S.String),
+  "placeholder": S.optional(Placeholder),
+  "imageProperties": S.optional(ImageProperties),
+}),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
-export type AutoTextTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "SLIDE_NUMBER"
-  | (string & {});
+export type AutoTextTypeEnum = "TYPE_UNSPECIFIED" | "SLIDE_NUMBER";
 export const AutoTextTypeEnum = /*@__PURE__*/ S.String;
 
 /** A TextElement kind that represents auto text. */
@@ -1990,11 +1581,11 @@ export interface AutoText {
   style?: TextStyle;
 }
 export const AutoText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AutoTextTypeEnum),
-    content: S.optional(S.String),
-    style: S.optional(TextStyle),
-  }),
+S.Struct({
+  "type": S.optional(AutoTextTypeEnum),
+  "content": S.optional(S.String),
+  "style": S.optional(TextStyle),
+}),
 ).annotate({ identifier: "AutoText" }) as any as S.Schema<AutoText>;
 
 /** A TextElement kind that represents a run of text that all has the same styling. */
@@ -2005,10 +1596,10 @@ export interface TextRun {
   style?: TextStyle;
 }
 export const TextRun = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    style: S.optional(TextStyle),
-  }),
+S.Struct({
+  "content": S.optional(S.String),
+  "style": S.optional(TextStyle),
+}),
 ).annotate({ identifier: "TextRun" }) as any as S.Schema<TextRun>;
 
 /** Describes the bullet of a paragraph. */
@@ -2023,12 +1614,12 @@ export interface Bullet {
   bulletStyle?: TextStyle;
 }
 export const Bullet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listId: S.optional(S.String),
-    glyph: S.optional(S.String),
-    nestingLevel: S.optional(S.Number),
-    bulletStyle: S.optional(TextStyle),
-  }),
+S.Struct({
+  "listId": S.optional(S.String),
+  "glyph": S.optional(S.String),
+  "nestingLevel": S.optional(S.Number),
+  "bulletStyle": S.optional(TextStyle),
+}),
 ).annotate({ identifier: "Bullet" }) as any as S.Schema<Bullet>;
 
 /** A TextElement kind that represents the beginning of a new paragraph. */
@@ -2039,13 +1630,11 @@ export interface ParagraphMarker {
   style?: ParagraphStyle;
 }
 export const ParagraphMarker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bullet: S.optional(Bullet),
-    style: S.optional(ParagraphStyle),
-  }),
-).annotate({
-  identifier: "ParagraphMarker",
-}) as any as S.Schema<ParagraphMarker>;
+S.Struct({
+  "bullet": S.optional(Bullet),
+  "style": S.optional(ParagraphStyle),
+}),
+).annotate({ identifier: "ParagraphMarker" }) as any as S.Schema<ParagraphMarker>;
 
 /** A TextElement describes the content of a range of indices in the text content of a Shape or TableCell. */
 export interface TextElement {
@@ -2061,19 +1650,17 @@ export interface TextElement {
   paragraphMarker?: ParagraphMarker;
 }
 export const TextElement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endIndex: S.optional(S.Number),
-    autoText: S.optional(AutoText),
-    startIndex: S.optional(S.Number),
-    textRun: S.optional(TextRun),
-    paragraphMarker: S.optional(ParagraphMarker),
-  }),
+S.Struct({
+  "endIndex": S.optional(S.Number),
+  "autoText": S.optional(AutoText),
+  "startIndex": S.optional(S.Number),
+  "textRun": S.optional(TextRun),
+  "paragraphMarker": S.optional(ParagraphMarker),
+}),
 ).annotate({ identifier: "TextElement" }) as any as S.Schema<TextElement>;
 
 export type TextElementList = ReadonlyArray<TextElement>;
-export const TextElementList = /*@__PURE__*/ S.Array(
-  TextElement,
-) as any as S.Schema<TextElementList>;
+export const TextElementList = /*@__PURE__*/ S.Array(TextElement) as any as S.Schema<TextElementList>;
 
 /** Contains properties describing the look and feel of a list bullet at a given level of nesting. */
 export interface NestingLevel {
@@ -2081,16 +1668,13 @@ export interface NestingLevel {
   bulletStyle?: TextStyle;
 }
 export const NestingLevel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bulletStyle: S.optional(TextStyle),
-  }),
+S.Struct({
+  "bulletStyle": S.optional(TextStyle),
+}),
 ).annotate({ identifier: "NestingLevel" }) as any as S.Schema<NestingLevel>;
 
 export type NestingLevelMap = { [key: string]: NestingLevel | undefined };
-export const NestingLevelMap = /*@__PURE__*/ S.Record(
-  S.String,
-  NestingLevel,
-) as any as S.Schema<NestingLevelMap>;
+export const NestingLevelMap = /*@__PURE__*/ S.Record(S.String, NestingLevel) as any as S.Schema<NestingLevelMap>;
 
 /** A List describes the look and feel of bullets belonging to paragraphs associated with a list. A paragraph that is part of a list has an implicit reference to that list's ID. */
 export interface List {
@@ -2100,17 +1684,14 @@ export interface List {
   nestingLevel?: NestingLevelMap;
 }
 export const List = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listId: S.optional(S.String),
-    nestingLevel: S.optional(NestingLevelMap),
-  }),
+S.Struct({
+  "listId": S.optional(S.String),
+  "nestingLevel": S.optional(NestingLevelMap),
+}),
 ).annotate({ identifier: "List" }) as any as S.Schema<List>;
 
 export type ListMap = { [key: string]: List | undefined };
-export const ListMap = /*@__PURE__*/ S.Record(
-  S.String,
-  List,
-) as any as S.Schema<ListMap>;
+export const ListMap = /*@__PURE__*/ S.Record(S.String, List) as any as S.Schema<ListMap>;
 
 /** The general text content. The text must reside in a compatible shape (e.g. text box or rectangle) or a table cell in a page. */
 export interface TextContent {
@@ -2120,157 +1701,13 @@ export interface TextContent {
   lists?: ListMap;
 }
 export const TextContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textElements: S.optional(TextElementList),
-    lists: S.optional(ListMap),
-  }),
+S.Struct({
+  "textElements": S.optional(TextElementList),
+  "lists": S.optional(ListMap),
+}),
 ).annotate({ identifier: "TextContent" }) as any as S.Schema<TextContent>;
 
-export type ShapeShapeTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "TEXT_BOX"
-  | "RECTANGLE"
-  | "ROUND_RECTANGLE"
-  | "ELLIPSE"
-  | "ARC"
-  | "BENT_ARROW"
-  | "BENT_UP_ARROW"
-  | "BEVEL"
-  | "BLOCK_ARC"
-  | "BRACE_PAIR"
-  | "BRACKET_PAIR"
-  | "CAN"
-  | "CHEVRON"
-  | "CHORD"
-  | "CLOUD"
-  | "CORNER"
-  | "CUBE"
-  | "CURVED_DOWN_ARROW"
-  | "CURVED_LEFT_ARROW"
-  | "CURVED_RIGHT_ARROW"
-  | "CURVED_UP_ARROW"
-  | "DECAGON"
-  | "DIAGONAL_STRIPE"
-  | "DIAMOND"
-  | "DODECAGON"
-  | "DONUT"
-  | "DOUBLE_WAVE"
-  | "DOWN_ARROW"
-  | "DOWN_ARROW_CALLOUT"
-  | "FOLDED_CORNER"
-  | "FRAME"
-  | "HALF_FRAME"
-  | "HEART"
-  | "HEPTAGON"
-  | "HEXAGON"
-  | "HOME_PLATE"
-  | "HORIZONTAL_SCROLL"
-  | "IRREGULAR_SEAL_1"
-  | "IRREGULAR_SEAL_2"
-  | "LEFT_ARROW"
-  | "LEFT_ARROW_CALLOUT"
-  | "LEFT_BRACE"
-  | "LEFT_BRACKET"
-  | "LEFT_RIGHT_ARROW"
-  | "LEFT_RIGHT_ARROW_CALLOUT"
-  | "LEFT_RIGHT_UP_ARROW"
-  | "LEFT_UP_ARROW"
-  | "LIGHTNING_BOLT"
-  | "MATH_DIVIDE"
-  | "MATH_EQUAL"
-  | "MATH_MINUS"
-  | "MATH_MULTIPLY"
-  | "MATH_NOT_EQUAL"
-  | "MATH_PLUS"
-  | "MOON"
-  | "NO_SMOKING"
-  | "NOTCHED_RIGHT_ARROW"
-  | "OCTAGON"
-  | "PARALLELOGRAM"
-  | "PENTAGON"
-  | "PIE"
-  | "PLAQUE"
-  | "PLUS"
-  | "QUAD_ARROW"
-  | "QUAD_ARROW_CALLOUT"
-  | "RIBBON"
-  | "RIBBON_2"
-  | "RIGHT_ARROW"
-  | "RIGHT_ARROW_CALLOUT"
-  | "RIGHT_BRACE"
-  | "RIGHT_BRACKET"
-  | "ROUND_1_RECTANGLE"
-  | "ROUND_2_DIAGONAL_RECTANGLE"
-  | "ROUND_2_SAME_RECTANGLE"
-  | "RIGHT_TRIANGLE"
-  | "SMILEY_FACE"
-  | "SNIP_1_RECTANGLE"
-  | "SNIP_2_DIAGONAL_RECTANGLE"
-  | "SNIP_2_SAME_RECTANGLE"
-  | "SNIP_ROUND_RECTANGLE"
-  | "STAR_10"
-  | "STAR_12"
-  | "STAR_16"
-  | "STAR_24"
-  | "STAR_32"
-  | "STAR_4"
-  | "STAR_5"
-  | "STAR_6"
-  | "STAR_7"
-  | "STAR_8"
-  | "STRIPED_RIGHT_ARROW"
-  | "SUN"
-  | "TRAPEZOID"
-  | "TRIANGLE"
-  | "UP_ARROW"
-  | "UP_ARROW_CALLOUT"
-  | "UP_DOWN_ARROW"
-  | "UTURN_ARROW"
-  | "VERTICAL_SCROLL"
-  | "WAVE"
-  | "WEDGE_ELLIPSE_CALLOUT"
-  | "WEDGE_RECTANGLE_CALLOUT"
-  | "WEDGE_ROUND_RECTANGLE_CALLOUT"
-  | "FLOW_CHART_ALTERNATE_PROCESS"
-  | "FLOW_CHART_COLLATE"
-  | "FLOW_CHART_CONNECTOR"
-  | "FLOW_CHART_DECISION"
-  | "FLOW_CHART_DELAY"
-  | "FLOW_CHART_DISPLAY"
-  | "FLOW_CHART_DOCUMENT"
-  | "FLOW_CHART_EXTRACT"
-  | "FLOW_CHART_INPUT_OUTPUT"
-  | "FLOW_CHART_INTERNAL_STORAGE"
-  | "FLOW_CHART_MAGNETIC_DISK"
-  | "FLOW_CHART_MAGNETIC_DRUM"
-  | "FLOW_CHART_MAGNETIC_TAPE"
-  | "FLOW_CHART_MANUAL_INPUT"
-  | "FLOW_CHART_MANUAL_OPERATION"
-  | "FLOW_CHART_MERGE"
-  | "FLOW_CHART_MULTIDOCUMENT"
-  | "FLOW_CHART_OFFLINE_STORAGE"
-  | "FLOW_CHART_OFFPAGE_CONNECTOR"
-  | "FLOW_CHART_ONLINE_STORAGE"
-  | "FLOW_CHART_OR"
-  | "FLOW_CHART_PREDEFINED_PROCESS"
-  | "FLOW_CHART_PREPARATION"
-  | "FLOW_CHART_PROCESS"
-  | "FLOW_CHART_PUNCHED_CARD"
-  | "FLOW_CHART_PUNCHED_TAPE"
-  | "FLOW_CHART_SORT"
-  | "FLOW_CHART_SUMMING_JUNCTION"
-  | "FLOW_CHART_TERMINATOR"
-  | "ARROW_EAST"
-  | "ARROW_NORTH_EAST"
-  | "ARROW_NORTH"
-  | "SPEECH"
-  | "STARBURST"
-  | "TEARDROP"
-  | "ELLIPSE_RIBBON"
-  | "ELLIPSE_RIBBON_2"
-  | "CLOUD_CALLOUT"
-  | "CUSTOM"
-  | (string & {});
+export type ShapeShapeTypeEnum = "TYPE_UNSPECIFIED" | "TEXT_BOX" | "RECTANGLE" | "ROUND_RECTANGLE" | "ELLIPSE" | "ARC" | "BENT_ARROW" | "BENT_UP_ARROW" | "BEVEL" | "BLOCK_ARC" | "BRACE_PAIR" | "BRACKET_PAIR" | "CAN" | "CHEVRON" | "CHORD" | "CLOUD" | "CORNER" | "CUBE" | "CURVED_DOWN_ARROW" | "CURVED_LEFT_ARROW" | "CURVED_RIGHT_ARROW" | "CURVED_UP_ARROW" | "DECAGON" | "DIAGONAL_STRIPE" | "DIAMOND" | "DODECAGON" | "DONUT" | "DOUBLE_WAVE" | "DOWN_ARROW" | "DOWN_ARROW_CALLOUT" | "FOLDED_CORNER" | "FRAME" | "HALF_FRAME" | "HEART" | "HEPTAGON" | "HEXAGON" | "HOME_PLATE" | "HORIZONTAL_SCROLL" | "IRREGULAR_SEAL_1" | "IRREGULAR_SEAL_2" | "LEFT_ARROW" | "LEFT_ARROW_CALLOUT" | "LEFT_BRACE" | "LEFT_BRACKET" | "LEFT_RIGHT_ARROW" | "LEFT_RIGHT_ARROW_CALLOUT" | "LEFT_RIGHT_UP_ARROW" | "LEFT_UP_ARROW" | "LIGHTNING_BOLT" | "MATH_DIVIDE" | "MATH_EQUAL" | "MATH_MINUS" | "MATH_MULTIPLY" | "MATH_NOT_EQUAL" | "MATH_PLUS" | "MOON" | "NO_SMOKING" | "NOTCHED_RIGHT_ARROW" | "OCTAGON" | "PARALLELOGRAM" | "PENTAGON" | "PIE" | "PLAQUE" | "PLUS" | "QUAD_ARROW" | "QUAD_ARROW_CALLOUT" | "RIBBON" | "RIBBON_2" | "RIGHT_ARROW" | "RIGHT_ARROW_CALLOUT" | "RIGHT_BRACE" | "RIGHT_BRACKET" | "ROUND_1_RECTANGLE" | "ROUND_2_DIAGONAL_RECTANGLE" | "ROUND_2_SAME_RECTANGLE" | "RIGHT_TRIANGLE" | "SMILEY_FACE" | "SNIP_1_RECTANGLE" | "SNIP_2_DIAGONAL_RECTANGLE" | "SNIP_2_SAME_RECTANGLE" | "SNIP_ROUND_RECTANGLE" | "STAR_10" | "STAR_12" | "STAR_16" | "STAR_24" | "STAR_32" | "STAR_4" | "STAR_5" | "STAR_6" | "STAR_7" | "STAR_8" | "STRIPED_RIGHT_ARROW" | "SUN" | "TRAPEZOID" | "TRIANGLE" | "UP_ARROW" | "UP_ARROW_CALLOUT" | "UP_DOWN_ARROW" | "UTURN_ARROW" | "VERTICAL_SCROLL" | "WAVE" | "WEDGE_ELLIPSE_CALLOUT" | "WEDGE_RECTANGLE_CALLOUT" | "WEDGE_ROUND_RECTANGLE_CALLOUT" | "FLOW_CHART_ALTERNATE_PROCESS" | "FLOW_CHART_COLLATE" | "FLOW_CHART_CONNECTOR" | "FLOW_CHART_DECISION" | "FLOW_CHART_DELAY" | "FLOW_CHART_DISPLAY" | "FLOW_CHART_DOCUMENT" | "FLOW_CHART_EXTRACT" | "FLOW_CHART_INPUT_OUTPUT" | "FLOW_CHART_INTERNAL_STORAGE" | "FLOW_CHART_MAGNETIC_DISK" | "FLOW_CHART_MAGNETIC_DRUM" | "FLOW_CHART_MAGNETIC_TAPE" | "FLOW_CHART_MANUAL_INPUT" | "FLOW_CHART_MANUAL_OPERATION" | "FLOW_CHART_MERGE" | "FLOW_CHART_MULTIDOCUMENT" | "FLOW_CHART_OFFLINE_STORAGE" | "FLOW_CHART_OFFPAGE_CONNECTOR" | "FLOW_CHART_ONLINE_STORAGE" | "FLOW_CHART_OR" | "FLOW_CHART_PREDEFINED_PROCESS" | "FLOW_CHART_PREPARATION" | "FLOW_CHART_PROCESS" | "FLOW_CHART_PUNCHED_CARD" | "FLOW_CHART_PUNCHED_TAPE" | "FLOW_CHART_SORT" | "FLOW_CHART_SUMMING_JUNCTION" | "FLOW_CHART_TERMINATOR" | "ARROW_EAST" | "ARROW_NORTH_EAST" | "ARROW_NORTH" | "SPEECH" | "STARBURST" | "TEARDROP" | "ELLIPSE_RIBBON" | "ELLIPSE_RIBBON_2" | "CLOUD_CALLOUT" | "CUSTOM";
 export const ShapeShapeTypeEnum = /*@__PURE__*/ S.String;
 
 /** A PageElement kind representing a generic shape that doesn't have a more specific classification. For more information, see [Size and position page elements](https://developers.google.com/workspace/slides/api/guides/transform). */
@@ -2285,12 +1722,12 @@ export interface Shape {
   shapeType?: ShapeShapeTypeEnum;
 }
 export const Shape = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shapeProperties: S.optional(ShapeProperties),
-    placeholder: S.optional(Placeholder),
-    text: S.optional(TextContent),
-    shapeType: S.optional(ShapeShapeTypeEnum),
-  }),
+S.Struct({
+  "shapeProperties": S.optional(ShapeProperties),
+  "placeholder": S.optional(Placeholder),
+  "text": S.optional(TextContent),
+  "shapeType": S.optional(ShapeShapeTypeEnum),
+}),
 ).annotate({ identifier: "Shape" }) as any as S.Schema<Shape>;
 
 /** A PageElement kind representing word art. */
@@ -2299,9 +1736,9 @@ export interface WordArt {
   renderedText?: string;
 }
 export const WordArt = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    renderedText: S.optional(S.String),
-  }),
+S.Struct({
+  "renderedText": S.optional(S.String),
+}),
 ).annotate({ identifier: "WordArt" }) as any as S.Schema<WordArt>;
 
 /** A PageElement kind representing a joined collection of PageElements. */
@@ -2310,9 +1747,9 @@ export interface Group {
   children?: PageElementList;
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    children: S.optional(S.suspend(() => PageElementList)),
-  }),
+S.Struct({
+  "children": S.optional(S.suspend(() => PageElementList)),
+}),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 /** The properties of the SheetsChart. */
@@ -2321,12 +1758,10 @@ export interface SheetsChartProperties {
   chartImageProperties?: ImageProperties;
 }
 export const SheetsChartProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chartImageProperties: S.optional(ImageProperties),
-  }),
-).annotate({
-  identifier: "SheetsChartProperties",
-}) as any as S.Schema<SheetsChartProperties>;
+S.Struct({
+  "chartImageProperties": S.optional(ImageProperties),
+}),
+).annotate({ identifier: "SheetsChartProperties" }) as any as S.Schema<SheetsChartProperties>;
 
 /** A PageElement kind representing a linked chart embedded from Google Sheets. */
 export interface SheetsChart {
@@ -2340,12 +1775,12 @@ export interface SheetsChart {
   contentUrl?: string;
 }
 export const SheetsChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chartId: S.optional(S.Number),
-    sheetsChartProperties: S.optional(SheetsChartProperties),
-    spreadsheetId: S.optional(S.String),
-    contentUrl: S.optional(S.String),
-  }),
+S.Struct({
+  "chartId": S.optional(S.Number),
+  "sheetsChartProperties": S.optional(SheetsChartProperties),
+  "spreadsheetId": S.optional(S.String),
+  "contentUrl": S.optional(S.String),
+}),
 ).annotate({ identifier: "SheetsChart" }) as any as S.Schema<SheetsChart>;
 
 /** The properties of the SpeakerSpotlight. */
@@ -2356,13 +1791,11 @@ export interface SpeakerSpotlightProperties {
   shadow?: Shadow;
 }
 export const SpeakerSpotlightProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outline: S.optional(Outline),
-    shadow: S.optional(Shadow),
-  }),
-).annotate({
-  identifier: "SpeakerSpotlightProperties",
-}) as any as S.Schema<SpeakerSpotlightProperties>;
+S.Struct({
+  "outline": S.optional(Outline),
+  "shadow": S.optional(Shadow),
+}),
+).annotate({ identifier: "SpeakerSpotlightProperties" }) as any as S.Schema<SpeakerSpotlightProperties>;
 
 /** A PageElement kind representing a Speaker Spotlight. */
 export interface SpeakerSpotlight {
@@ -2370,12 +1803,10 @@ export interface SpeakerSpotlight {
   speakerSpotlightProperties?: SpeakerSpotlightProperties;
 }
 export const SpeakerSpotlight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    speakerSpotlightProperties: S.optional(SpeakerSpotlightProperties),
-  }),
-).annotate({
-  identifier: "SpeakerSpotlight",
-}) as any as S.Schema<SpeakerSpotlight>;
+S.Struct({
+  "speakerSpotlightProperties": S.optional(SpeakerSpotlightProperties),
+}),
+).annotate({ identifier: "SpeakerSpotlight" }) as any as S.Schema<SpeakerSpotlight>;
 
 /** Properties of each column in a table. */
 export interface TableColumnProperties {
@@ -2383,17 +1814,13 @@ export interface TableColumnProperties {
   columnWidth?: Dimension;
 }
 export const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columnWidth: S.optional(Dimension),
-  }),
-).annotate({
-  identifier: "TableColumnProperties",
-}) as any as S.Schema<TableColumnProperties>;
+S.Struct({
+  "columnWidth": S.optional(Dimension),
+}),
+).annotate({ identifier: "TableColumnProperties" }) as any as S.Schema<TableColumnProperties>;
 
 export type TableColumnPropertiesList = ReadonlyArray<TableColumnProperties>;
-export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
-  TableColumnProperties,
-) as any as S.Schema<TableColumnPropertiesList>;
+export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(TableColumnProperties) as any as S.Schema<TableColumnPropertiesList>;
 
 /** The properties of each border cell. */
 export interface TableBorderCell {
@@ -2403,18 +1830,14 @@ export interface TableBorderCell {
   tableBorderProperties?: TableBorderProperties;
 }
 export const TableBorderCell = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(TableCellLocation),
-    tableBorderProperties: S.optional(TableBorderProperties),
-  }),
-).annotate({
-  identifier: "TableBorderCell",
-}) as any as S.Schema<TableBorderCell>;
+S.Struct({
+  "location": S.optional(TableCellLocation),
+  "tableBorderProperties": S.optional(TableBorderProperties),
+}),
+).annotate({ identifier: "TableBorderCell" }) as any as S.Schema<TableBorderCell>;
 
 export type TableBorderCellList = ReadonlyArray<TableBorderCell>;
-export const TableBorderCellList = /*@__PURE__*/ S.Array(
-  TableBorderCell,
-) as any as S.Schema<TableBorderCellList>;
+export const TableBorderCellList = /*@__PURE__*/ S.Array(TableBorderCell) as any as S.Schema<TableBorderCellList>;
 
 /** Contents of each border row in a table. */
 export interface TableBorderRow {
@@ -2422,15 +1845,13 @@ export interface TableBorderRow {
   tableBorderCells?: TableBorderCellList;
 }
 export const TableBorderRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableBorderCells: S.optional(TableBorderCellList),
-  }),
+S.Struct({
+  "tableBorderCells": S.optional(TableBorderCellList),
+}),
 ).annotate({ identifier: "TableBorderRow" }) as any as S.Schema<TableBorderRow>;
 
 export type TableBorderRowList = ReadonlyArray<TableBorderRow>;
-export const TableBorderRowList = /*@__PURE__*/ S.Array(
-  TableBorderRow,
-) as any as S.Schema<TableBorderRowList>;
+export const TableBorderRowList = /*@__PURE__*/ S.Array(TableBorderRow) as any as S.Schema<TableBorderRowList>;
 
 /** Properties and contents of each table cell. */
 export interface TableCell {
@@ -2446,19 +1867,17 @@ export interface TableCell {
   text?: TextContent;
 }
 export const TableCell = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(TableCellLocation),
-    tableCellProperties: S.optional(TableCellProperties),
-    rowSpan: S.optional(S.Number),
-    columnSpan: S.optional(S.Number),
-    text: S.optional(TextContent),
-  }),
+S.Struct({
+  "location": S.optional(TableCellLocation),
+  "tableCellProperties": S.optional(TableCellProperties),
+  "rowSpan": S.optional(S.Number),
+  "columnSpan": S.optional(S.Number),
+  "text": S.optional(TextContent),
+}),
 ).annotate({ identifier: "TableCell" }) as any as S.Schema<TableCell>;
 
 export type TableCellList = ReadonlyArray<TableCell>;
-export const TableCellList = /*@__PURE__*/ S.Array(
-  TableCell,
-) as any as S.Schema<TableCellList>;
+export const TableCellList = /*@__PURE__*/ S.Array(TableCell) as any as S.Schema<TableCellList>;
 
 /** Properties and contents of each row in a table. */
 export interface TableRow {
@@ -2470,17 +1889,15 @@ export interface TableRow {
   tableRowProperties?: TableRowProperties;
 }
 export const TableRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowHeight: S.optional(Dimension),
-    tableCells: S.optional(TableCellList),
-    tableRowProperties: S.optional(TableRowProperties),
-  }),
+S.Struct({
+  "rowHeight": S.optional(Dimension),
+  "tableCells": S.optional(TableCellList),
+  "tableRowProperties": S.optional(TableRowProperties),
+}),
 ).annotate({ identifier: "TableRow" }) as any as S.Schema<TableRow>;
 
 export type TableRowList = ReadonlyArray<TableRow>;
-export const TableRowList = /*@__PURE__*/ S.Array(
-  TableRow,
-) as any as S.Schema<TableRowList>;
+export const TableRowList = /*@__PURE__*/ S.Array(TableRow) as any as S.Schema<TableRowList>;
 
 /** A PageElement kind representing a table. */
 export interface Table {
@@ -2498,14 +1915,14 @@ export interface Table {
   tableRows?: TableRowList;
 }
 export const Table = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableColumns: S.optional(TableColumnPropertiesList),
-    verticalBorderRows: S.optional(TableBorderRowList),
-    rows: S.optional(S.Number),
-    horizontalBorderRows: S.optional(TableBorderRowList),
-    columns: S.optional(S.Number),
-    tableRows: S.optional(TableRowList),
-  }),
+S.Struct({
+  "tableColumns": S.optional(TableColumnPropertiesList),
+  "verticalBorderRows": S.optional(TableBorderRowList),
+  "rows": S.optional(S.Number),
+  "horizontalBorderRows": S.optional(TableBorderRowList),
+  "columns": S.optional(S.Number),
+  "tableRows": S.optional(TableRowList),
+}),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 /** A visual element rendered on a page. */
@@ -2540,28 +1957,26 @@ export interface PageElement {
   table?: Table;
 }
 export const PageElement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    video: S.optional(Video),
-    line: S.optional(Line),
-    image: S.optional(Image),
-    shape: S.optional(Shape),
-    description: S.optional(S.String),
-    wordArt: S.optional(WordArt),
-    transform: S.optional(AffineTransform),
-    objectId: S.optional(S.String),
-    elementGroup: S.optional(Group),
-    size: S.optional(Size),
-    sheetsChart: S.optional(SheetsChart),
-    title: S.optional(S.String),
-    speakerSpotlight: S.optional(SpeakerSpotlight),
-    table: S.optional(Table),
-  }),
+S.Struct({
+  "video": S.optional(Video),
+  "line": S.optional(Line),
+  "image": S.optional(Image),
+  "shape": S.optional(Shape),
+  "description": S.optional(S.String),
+  "wordArt": S.optional(WordArt),
+  "transform": S.optional(AffineTransform),
+  "objectId": S.optional(S.String),
+  "elementGroup": S.optional(Group),
+  "size": S.optional(Size),
+  "sheetsChart": S.optional(SheetsChart),
+  "title": S.optional(S.String),
+  "speakerSpotlight": S.optional(SpeakerSpotlight),
+  "table": S.optional(Table),
+}),
 ).annotate({ identifier: "PageElement" }) as any as S.Schema<PageElement>;
 
 export type PageElementList = ReadonlyArray<PageElement>;
-export const PageElementList = /*@__PURE__*/ S.Array(
-  PageElement,
-) as any as S.Schema<PageElementList>;
+export const PageElementList = /*@__PURE__*/ S.Array(PageElement) as any as S.Schema<PageElementList>;
 
 /** A page in a presentation. */
 export interface Page {
@@ -2585,17 +2000,17 @@ export interface Page {
   slideProperties?: SlideProperties;
 }
 export const Page = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageProperties: S.optional(PageProperties),
-    pageType: S.optional(PagePageTypeEnum),
-    layoutProperties: S.optional(LayoutProperties),
-    objectId: S.optional(S.String),
-    masterProperties: S.optional(MasterProperties),
-    notesProperties: S.optional(NotesProperties),
-    revisionId: S.optional(S.String),
-    pageElements: S.optional(PageElementList),
-    slideProperties: S.optional(S.suspend(() => SlideProperties)),
-  }),
+S.Struct({
+  "pageProperties": S.optional(PageProperties),
+  "pageType": S.optional(PagePageTypeEnum),
+  "layoutProperties": S.optional(LayoutProperties),
+  "objectId": S.optional(S.String),
+  "masterProperties": S.optional(MasterProperties),
+  "notesProperties": S.optional(NotesProperties),
+  "revisionId": S.optional(S.String),
+  "pageElements": S.optional(PageElementList),
+  "slideProperties": S.optional(S.suspend(() => SlideProperties)),
+}),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
 /** The properties of Page that are only relevant for pages with page_type SLIDE. */
@@ -2610,15 +2025,13 @@ export interface SlideProperties {
   isSkipped?: boolean;
 }
 export const SlideProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    layoutObjectId: S.optional(S.String),
-    masterObjectId: S.optional(S.String),
-    notesPage: S.optional(Page),
-    isSkipped: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SlideProperties",
-}) as any as S.Schema<SlideProperties>;
+S.Struct({
+  "layoutObjectId": S.optional(S.String),
+  "masterObjectId": S.optional(S.String),
+  "notesPage": S.optional(Page),
+  "isSkipped": S.optional(S.Boolean),
+}),
+).annotate({ identifier: "SlideProperties" }) as any as S.Schema<SlideProperties>;
 
 /** Updates the properties of a Slide. */
 export interface UpdateSlidePropertiesRequest {
@@ -2630,29 +2043,18 @@ export interface UpdateSlidePropertiesRequest {
   slideProperties?: SlideProperties;
 }
 export const UpdateSlidePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    fields: S.optional(S.String),
-    slideProperties: S.optional(SlideProperties),
-  }),
-).annotate({
-  identifier: "UpdateSlidePropertiesRequest",
-}) as any as S.Schema<UpdateSlidePropertiesRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "fields": S.optional(S.String),
+  "slideProperties": S.optional(SlideProperties),
+}),
+).annotate({ identifier: "UpdateSlidePropertiesRequest" }) as any as S.Schema<UpdateSlidePropertiesRequest>;
 
-export type ReplaceAllShapesWithImageRequestReplaceMethodEnum =
-  | "CENTER_INSIDE"
-  | "CENTER_CROP"
-  | (string & {});
-export const ReplaceAllShapesWithImageRequestReplaceMethodEnum =
-  /*@__PURE__*/ S.String;
+export type ReplaceAllShapesWithImageRequestReplaceMethodEnum = "CENTER_INSIDE" | "CENTER_CROP";
+export const ReplaceAllShapesWithImageRequestReplaceMethodEnum = /*@__PURE__*/ S.String;
 
-export type ReplaceAllShapesWithImageRequestImageReplaceMethodEnum =
-  | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
-  | "CENTER_INSIDE"
-  | "CENTER_CROP"
-  | (string & {});
-export const ReplaceAllShapesWithImageRequestImageReplaceMethodEnum =
-  /*@__PURE__*/ S.String;
+export type ReplaceAllShapesWithImageRequestImageReplaceMethodEnum = "IMAGE_REPLACE_METHOD_UNSPECIFIED" | "CENTER_INSIDE" | "CENTER_CROP";
+export const ReplaceAllShapesWithImageRequestImageReplaceMethodEnum = /*@__PURE__*/ S.String;
 
 /** Replaces all shapes that match the given criteria with the provided image. The images replacing the shapes are rectangular after being inserted into the presentation and do not take on the forms of the shapes. */
 export interface ReplaceAllShapesWithImageRequest {
@@ -2663,39 +2065,29 @@ export interface ReplaceAllShapesWithImageRequest {
   /** If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad request error if given the page object ID of a notes page or a notes master, or if a page with that object ID doesn't exist in the presentation. */
   pageObjectIds?: StringList;
   /** The replace method. *Deprecated*: use `image_replace_method` instead. If you specify both a `replace_method` and an `image_replace_method`, the `image_replace_method` takes precedence. */
-  replaceMethod?: ReplaceAllShapesWithImageRequestReplaceMethodEnum;
+  replaceMethod?: ReplaceAllShapesWithImageRequestReplaceMethodEnum | (string & {});
   /** The image replace method. If you specify both a `replace_method` and an `image_replace_method`, the `image_replace_method` takes precedence. If you do not specify a value for `image_replace_method`, but specify a value for `replace_method`, then the specified `replace_method` value is used. If you do not specify either, then CENTER_INSIDE is used. */
-  imageReplaceMethod?: ReplaceAllShapesWithImageRequestImageReplaceMethodEnum;
+  imageReplaceMethod?: ReplaceAllShapesWithImageRequestImageReplaceMethodEnum | (string & {});
 }
 export const ReplaceAllShapesWithImageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageUrl: S.optional(S.String),
-    containsText: S.optional(SubstringMatchCriteria),
-    pageObjectIds: S.optional(StringList),
-    replaceMethod: S.optional(
-      ReplaceAllShapesWithImageRequestReplaceMethodEnum,
-    ),
-    imageReplaceMethod: S.optional(
-      ReplaceAllShapesWithImageRequestImageReplaceMethodEnum,
-    ),
-  }),
-).annotate({
-  identifier: "ReplaceAllShapesWithImageRequest",
-}) as any as S.Schema<ReplaceAllShapesWithImageRequest>;
+S.Struct({
+  "imageUrl": S.optional(S.String),
+  "containsText": S.optional(SubstringMatchCriteria),
+  "pageObjectIds": S.optional(StringList),
+  "replaceMethod": S.optional(ReplaceAllShapesWithImageRequestReplaceMethodEnum),
+  "imageReplaceMethod": S.optional(ReplaceAllShapesWithImageRequestImageReplaceMethodEnum),
+}),
+).annotate({ identifier: "ReplaceAllShapesWithImageRequest" }) as any as S.Schema<ReplaceAllShapesWithImageRequest>;
 
-export type ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum =
-  | "NOT_LINKED_IMAGE"
-  | "LINKED"
-  | (string & {});
-export const ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum =
-  /*@__PURE__*/ S.String;
+export type ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum = "NOT_LINKED_IMAGE" | "LINKED";
+export const ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum = /*@__PURE__*/ S.String;
 
 /** Replaces all shapes that match the given criteria with the provided Google Sheets chart. The chart will be scaled and centered to fit within the bounds of the original shape. NOTE: Replacing shapes with a chart requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, or drive OAuth scopes. */
 export interface ReplaceAllShapesWithSheetsChartRequest {
   /** The criteria that the shapes must match in order to be replaced. The request will replace all of the shapes that contain the given text. */
   containsText?: SubstringMatchCriteria;
   /** The mode with which the chart is linked to the source spreadsheet. When not specified, the chart will be an image that is not linked. */
-  linkingMode?: ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum;
+  linkingMode?: ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum | (string & {});
   /** If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad request error if given the page object ID of a notes page or a notes master, or if a page with that object ID doesn't exist in the presentation. */
   pageObjectIds?: StringList;
   /** The ID of the Google Sheets spreadsheet that contains the chart. */
@@ -2703,27 +2095,17 @@ export interface ReplaceAllShapesWithSheetsChartRequest {
   /** The ID of the specific chart in the Google Sheets spreadsheet. */
   chartId?: number;
 }
-export const ReplaceAllShapesWithSheetsChartRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      containsText: S.optional(SubstringMatchCriteria),
-      linkingMode: S.optional(
-        ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum,
-      ),
-      pageObjectIds: S.optional(StringList),
-      spreadsheetId: S.optional(S.String),
-      chartId: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "ReplaceAllShapesWithSheetsChartRequest",
-}) as any as S.Schema<ReplaceAllShapesWithSheetsChartRequest>;
+export const ReplaceAllShapesWithSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "containsText": S.optional(SubstringMatchCriteria),
+  "linkingMode": S.optional(ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum),
+  "pageObjectIds": S.optional(StringList),
+  "spreadsheetId": S.optional(S.String),
+  "chartId": S.optional(S.Number),
+}),
+).annotate({ identifier: "ReplaceAllShapesWithSheetsChartRequest" }) as any as S.Schema<ReplaceAllShapesWithSheetsChartRequest>;
 
-export type UpdateLineCategoryRequestLineCategoryEnum =
-  | "LINE_CATEGORY_UNSPECIFIED"
-  | "STRAIGHT"
-  | "BENT"
-  | "CURVED"
-  | (string & {});
+export type UpdateLineCategoryRequestLineCategoryEnum = "LINE_CATEGORY_UNSPECIFIED" | "STRAIGHT" | "BENT" | "CURVED";
 export const UpdateLineCategoryRequestLineCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Updates the category of a line. */
@@ -2731,28 +2113,22 @@ export interface UpdateLineCategoryRequest {
   /** The object ID of the line the update is applied to. Only a line with a category indicating it is a "connector" can be updated. The line may be rerouted after updating its category. */
   objectId?: string;
   /** The line category to update to. The exact line type is determined based on the category to update to and how it's routed to connect to other page elements. */
-  lineCategory?: UpdateLineCategoryRequestLineCategoryEnum;
+  lineCategory?: UpdateLineCategoryRequestLineCategoryEnum | (string & {});
 }
 export const UpdateLineCategoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    lineCategory: S.optional(UpdateLineCategoryRequestLineCategoryEnum),
-  }),
-).annotate({
-  identifier: "UpdateLineCategoryRequest",
-}) as any as S.Schema<UpdateLineCategoryRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "lineCategory": S.optional(UpdateLineCategoryRequestLineCategoryEnum),
+}),
+).annotate({ identifier: "UpdateLineCategoryRequest" }) as any as S.Schema<UpdateLineCategoryRequest>;
 
-export type CreateVideoRequestSourceEnum =
-  | "SOURCE_UNSPECIFIED"
-  | "YOUTUBE"
-  | "DRIVE"
-  | (string & {});
+export type CreateVideoRequestSourceEnum = "SOURCE_UNSPECIFIED" | "YOUTUBE" | "DRIVE";
 export const CreateVideoRequestSourceEnum = /*@__PURE__*/ S.String;
 
 /** Creates a video. NOTE: Creating a video from Google Drive requires that the requesting app have at least one of the drive, drive.readonly, or drive.file OAuth scopes. */
 export interface CreateVideoRequest {
   /** The video source. */
-  source?: CreateVideoRequestSourceEnum;
+  source?: CreateVideoRequestSourceEnum | (string & {});
   /** The video source's unique identifier for this video. e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0, the ID is 7U3axjORYZ0. For a Google Drive video https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q. To access a Google Drive video file, you might need to add a resource key to the HTTP header for a subset of old files. For more information, see [Access link-shared files using resource keys](https://developers.google.com/drive/api/v3/resource-keys). */
   id?: string;
   /** A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
@@ -2761,30 +2137,15 @@ export interface CreateVideoRequest {
   elementProperties?: PageElementProperties;
 }
 export const CreateVideoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(CreateVideoRequestSourceEnum),
-    id: S.optional(S.String),
-    objectId: S.optional(S.String),
-    elementProperties: S.optional(PageElementProperties),
-  }),
-).annotate({
-  identifier: "CreateVideoRequest",
-}) as any as S.Schema<CreateVideoRequest>;
+S.Struct({
+  "source": S.optional(CreateVideoRequestSourceEnum),
+  "id": S.optional(S.String),
+  "objectId": S.optional(S.String),
+  "elementProperties": S.optional(PageElementProperties),
+}),
+).annotate({ identifier: "CreateVideoRequest" }) as any as S.Schema<CreateVideoRequest>;
 
-export type LayoutReferencePredefinedLayoutEnum =
-  | "PREDEFINED_LAYOUT_UNSPECIFIED"
-  | "BLANK"
-  | "CAPTION_ONLY"
-  | "TITLE"
-  | "TITLE_AND_BODY"
-  | "TITLE_AND_TWO_COLUMNS"
-  | "TITLE_ONLY"
-  | "SECTION_HEADER"
-  | "SECTION_TITLE_AND_DESCRIPTION"
-  | "ONE_COLUMN_TEXT"
-  | "MAIN_POINT"
-  | "BIG_NUMBER"
-  | (string & {});
+export type LayoutReferencePredefinedLayoutEnum = "PREDEFINED_LAYOUT_UNSPECIFIED" | "BLANK" | "CAPTION_ONLY" | "TITLE" | "TITLE_AND_BODY" | "TITLE_AND_TWO_COLUMNS" | "TITLE_ONLY" | "SECTION_HEADER" | "SECTION_TITLE_AND_DESCRIPTION" | "ONE_COLUMN_TEXT" | "MAIN_POINT" | "BIG_NUMBER";
 export const LayoutReferencePredefinedLayoutEnum = /*@__PURE__*/ S.String;
 
 /** Slide layout reference. This may reference either: - A predefined layout - One of the layouts in the presentation. */
@@ -2792,16 +2153,14 @@ export interface LayoutReference {
   /** Layout ID: the object ID of one of the layouts in the presentation. */
   layoutId?: string;
   /** Predefined layout. */
-  predefinedLayout?: LayoutReferencePredefinedLayoutEnum;
+  predefinedLayout?: LayoutReferencePredefinedLayoutEnum | (string & {});
 }
 export const LayoutReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    layoutId: S.optional(S.String),
-    predefinedLayout: S.optional(LayoutReferencePredefinedLayoutEnum),
-  }),
-).annotate({
-  identifier: "LayoutReference",
-}) as any as S.Schema<LayoutReference>;
+S.Struct({
+  "layoutId": S.optional(S.String),
+  "predefinedLayout": S.optional(LayoutReferencePredefinedLayoutEnum),
+}),
+).annotate({ identifier: "LayoutReference" }) as any as S.Schema<LayoutReference>;
 
 /** The user-specified ID mapping for a placeholder that will be created on a slide from a specified layout. */
 export interface LayoutPlaceholderIdMapping {
@@ -2813,20 +2172,15 @@ export interface LayoutPlaceholderIdMapping {
   layoutPlaceholder?: Placeholder;
 }
 export const LayoutPlaceholderIdMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    layoutPlaceholderObjectId: S.optional(S.String),
-    objectId: S.optional(S.String),
-    layoutPlaceholder: S.optional(Placeholder),
-  }),
-).annotate({
-  identifier: "LayoutPlaceholderIdMapping",
-}) as any as S.Schema<LayoutPlaceholderIdMapping>;
+S.Struct({
+  "layoutPlaceholderObjectId": S.optional(S.String),
+  "objectId": S.optional(S.String),
+  "layoutPlaceholder": S.optional(Placeholder),
+}),
+).annotate({ identifier: "LayoutPlaceholderIdMapping" }) as any as S.Schema<LayoutPlaceholderIdMapping>;
 
-export type LayoutPlaceholderIdMappingList =
-  ReadonlyArray<LayoutPlaceholderIdMapping>;
-export const LayoutPlaceholderIdMappingList = /*@__PURE__*/ S.Array(
-  LayoutPlaceholderIdMapping,
-) as any as S.Schema<LayoutPlaceholderIdMappingList>;
+export type LayoutPlaceholderIdMappingList = ReadonlyArray<LayoutPlaceholderIdMapping>;
+export const LayoutPlaceholderIdMappingList = /*@__PURE__*/ S.Array(LayoutPlaceholderIdMapping) as any as S.Schema<LayoutPlaceholderIdMappingList>;
 
 /** Creates a slide. */
 export interface CreateSlideRequest {
@@ -2840,15 +2194,13 @@ export interface CreateSlideRequest {
   insertionIndex?: number;
 }
 export const CreateSlideRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    slideLayoutReference: S.optional(LayoutReference),
-    placeholderIdMappings: S.optional(LayoutPlaceholderIdMappingList),
-    insertionIndex: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateSlideRequest",
-}) as any as S.Schema<CreateSlideRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "slideLayoutReference": S.optional(LayoutReference),
+  "placeholderIdMappings": S.optional(LayoutPlaceholderIdMappingList),
+  "insertionIndex": S.optional(S.Number),
+}),
+).annotate({ identifier: "CreateSlideRequest" }) as any as S.Schema<CreateSlideRequest>;
 
 /** Creates a new table. */
 export interface CreateTableRequest {
@@ -2862,15 +2214,13 @@ export interface CreateTableRequest {
   rows?: number;
 }
 export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    elementProperties: S.optional(PageElementProperties),
-    columns: S.optional(S.Number),
-    rows: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateTableRequest",
-}) as any as S.Schema<CreateTableRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "elementProperties": S.optional(PageElementProperties),
+  "columns": S.optional(S.Number),
+  "rows": S.optional(S.Number),
+}),
+).annotate({ identifier: "CreateTableRequest" }) as any as S.Schema<CreateTableRequest>;
 
 /** Deletes text from a shape or a table cell. */
 export interface DeleteTextRequest {
@@ -2882,14 +2232,12 @@ export interface DeleteTextRequest {
   cellLocation?: TableCellLocation;
 }
 export const DeleteTextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    textRange: S.optional(Range),
-    cellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "DeleteTextRequest",
-}) as any as S.Schema<DeleteTextRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "textRange": S.optional(Range),
+  "cellLocation": S.optional(TableCellLocation),
+}),
+).annotate({ identifier: "DeleteTextRequest" }) as any as S.Schema<DeleteTextRequest>;
 
 /** Inserts rows into a table. */
 export interface InsertTableRowsRequest {
@@ -2903,187 +2251,32 @@ export interface InsertTableRowsRequest {
   number?: number;
 }
 export const InsertTableRowsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableObjectId: S.optional(S.String),
-    cellLocation: S.optional(TableCellLocation),
-    insertBelow: S.optional(S.Boolean),
-    number: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InsertTableRowsRequest",
-}) as any as S.Schema<InsertTableRowsRequest>;
+S.Struct({
+  "tableObjectId": S.optional(S.String),
+  "cellLocation": S.optional(TableCellLocation),
+  "insertBelow": S.optional(S.Boolean),
+  "number": S.optional(S.Number),
+}),
+).annotate({ identifier: "InsertTableRowsRequest" }) as any as S.Schema<InsertTableRowsRequest>;
 
-export type UpdatePageElementsZOrderRequestOperationEnum =
-  | "Z_ORDER_OPERATION_UNSPECIFIED"
-  | "BRING_TO_FRONT"
-  | "BRING_FORWARD"
-  | "SEND_BACKWARD"
-  | "SEND_TO_BACK"
-  | (string & {});
-export const UpdatePageElementsZOrderRequestOperationEnum =
-  /*@__PURE__*/ S.String;
+export type UpdatePageElementsZOrderRequestOperationEnum = "Z_ORDER_OPERATION_UNSPECIFIED" | "BRING_TO_FRONT" | "BRING_FORWARD" | "SEND_BACKWARD" | "SEND_TO_BACK";
+export const UpdatePageElementsZOrderRequestOperationEnum = /*@__PURE__*/ S.String;
 
 /** Updates the Z-order of page elements. Z-order is an ordering of the elements on the page from back to front. The page element in the front may cover the elements that are behind it. */
 export interface UpdatePageElementsZOrderRequest {
   /** The object IDs of the page elements to update. All the page elements must be on the same page and must not be grouped. */
   pageElementObjectIds?: StringList;
   /** The Z-order operation to apply on the page elements. When applying the operation on multiple page elements, the relative Z-orders within these page elements before the operation is maintained. */
-  operation?: UpdatePageElementsZOrderRequestOperationEnum;
+  operation?: UpdatePageElementsZOrderRequestOperationEnum | (string & {});
 }
 export const UpdatePageElementsZOrderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageElementObjectIds: S.optional(StringList),
-    operation: S.optional(UpdatePageElementsZOrderRequestOperationEnum),
-  }),
-).annotate({
-  identifier: "UpdatePageElementsZOrderRequest",
-}) as any as S.Schema<UpdatePageElementsZOrderRequest>;
+S.Struct({
+  "pageElementObjectIds": S.optional(StringList),
+  "operation": S.optional(UpdatePageElementsZOrderRequestOperationEnum),
+}),
+).annotate({ identifier: "UpdatePageElementsZOrderRequest" }) as any as S.Schema<UpdatePageElementsZOrderRequest>;
 
-export type CreateShapeRequestShapeTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "TEXT_BOX"
-  | "RECTANGLE"
-  | "ROUND_RECTANGLE"
-  | "ELLIPSE"
-  | "ARC"
-  | "BENT_ARROW"
-  | "BENT_UP_ARROW"
-  | "BEVEL"
-  | "BLOCK_ARC"
-  | "BRACE_PAIR"
-  | "BRACKET_PAIR"
-  | "CAN"
-  | "CHEVRON"
-  | "CHORD"
-  | "CLOUD"
-  | "CORNER"
-  | "CUBE"
-  | "CURVED_DOWN_ARROW"
-  | "CURVED_LEFT_ARROW"
-  | "CURVED_RIGHT_ARROW"
-  | "CURVED_UP_ARROW"
-  | "DECAGON"
-  | "DIAGONAL_STRIPE"
-  | "DIAMOND"
-  | "DODECAGON"
-  | "DONUT"
-  | "DOUBLE_WAVE"
-  | "DOWN_ARROW"
-  | "DOWN_ARROW_CALLOUT"
-  | "FOLDED_CORNER"
-  | "FRAME"
-  | "HALF_FRAME"
-  | "HEART"
-  | "HEPTAGON"
-  | "HEXAGON"
-  | "HOME_PLATE"
-  | "HORIZONTAL_SCROLL"
-  | "IRREGULAR_SEAL_1"
-  | "IRREGULAR_SEAL_2"
-  | "LEFT_ARROW"
-  | "LEFT_ARROW_CALLOUT"
-  | "LEFT_BRACE"
-  | "LEFT_BRACKET"
-  | "LEFT_RIGHT_ARROW"
-  | "LEFT_RIGHT_ARROW_CALLOUT"
-  | "LEFT_RIGHT_UP_ARROW"
-  | "LEFT_UP_ARROW"
-  | "LIGHTNING_BOLT"
-  | "MATH_DIVIDE"
-  | "MATH_EQUAL"
-  | "MATH_MINUS"
-  | "MATH_MULTIPLY"
-  | "MATH_NOT_EQUAL"
-  | "MATH_PLUS"
-  | "MOON"
-  | "NO_SMOKING"
-  | "NOTCHED_RIGHT_ARROW"
-  | "OCTAGON"
-  | "PARALLELOGRAM"
-  | "PENTAGON"
-  | "PIE"
-  | "PLAQUE"
-  | "PLUS"
-  | "QUAD_ARROW"
-  | "QUAD_ARROW_CALLOUT"
-  | "RIBBON"
-  | "RIBBON_2"
-  | "RIGHT_ARROW"
-  | "RIGHT_ARROW_CALLOUT"
-  | "RIGHT_BRACE"
-  | "RIGHT_BRACKET"
-  | "ROUND_1_RECTANGLE"
-  | "ROUND_2_DIAGONAL_RECTANGLE"
-  | "ROUND_2_SAME_RECTANGLE"
-  | "RIGHT_TRIANGLE"
-  | "SMILEY_FACE"
-  | "SNIP_1_RECTANGLE"
-  | "SNIP_2_DIAGONAL_RECTANGLE"
-  | "SNIP_2_SAME_RECTANGLE"
-  | "SNIP_ROUND_RECTANGLE"
-  | "STAR_10"
-  | "STAR_12"
-  | "STAR_16"
-  | "STAR_24"
-  | "STAR_32"
-  | "STAR_4"
-  | "STAR_5"
-  | "STAR_6"
-  | "STAR_7"
-  | "STAR_8"
-  | "STRIPED_RIGHT_ARROW"
-  | "SUN"
-  | "TRAPEZOID"
-  | "TRIANGLE"
-  | "UP_ARROW"
-  | "UP_ARROW_CALLOUT"
-  | "UP_DOWN_ARROW"
-  | "UTURN_ARROW"
-  | "VERTICAL_SCROLL"
-  | "WAVE"
-  | "WEDGE_ELLIPSE_CALLOUT"
-  | "WEDGE_RECTANGLE_CALLOUT"
-  | "WEDGE_ROUND_RECTANGLE_CALLOUT"
-  | "FLOW_CHART_ALTERNATE_PROCESS"
-  | "FLOW_CHART_COLLATE"
-  | "FLOW_CHART_CONNECTOR"
-  | "FLOW_CHART_DECISION"
-  | "FLOW_CHART_DELAY"
-  | "FLOW_CHART_DISPLAY"
-  | "FLOW_CHART_DOCUMENT"
-  | "FLOW_CHART_EXTRACT"
-  | "FLOW_CHART_INPUT_OUTPUT"
-  | "FLOW_CHART_INTERNAL_STORAGE"
-  | "FLOW_CHART_MAGNETIC_DISK"
-  | "FLOW_CHART_MAGNETIC_DRUM"
-  | "FLOW_CHART_MAGNETIC_TAPE"
-  | "FLOW_CHART_MANUAL_INPUT"
-  | "FLOW_CHART_MANUAL_OPERATION"
-  | "FLOW_CHART_MERGE"
-  | "FLOW_CHART_MULTIDOCUMENT"
-  | "FLOW_CHART_OFFLINE_STORAGE"
-  | "FLOW_CHART_OFFPAGE_CONNECTOR"
-  | "FLOW_CHART_ONLINE_STORAGE"
-  | "FLOW_CHART_OR"
-  | "FLOW_CHART_PREDEFINED_PROCESS"
-  | "FLOW_CHART_PREPARATION"
-  | "FLOW_CHART_PROCESS"
-  | "FLOW_CHART_PUNCHED_CARD"
-  | "FLOW_CHART_PUNCHED_TAPE"
-  | "FLOW_CHART_SORT"
-  | "FLOW_CHART_SUMMING_JUNCTION"
-  | "FLOW_CHART_TERMINATOR"
-  | "ARROW_EAST"
-  | "ARROW_NORTH_EAST"
-  | "ARROW_NORTH"
-  | "SPEECH"
-  | "STARBURST"
-  | "TEARDROP"
-  | "ELLIPSE_RIBBON"
-  | "ELLIPSE_RIBBON_2"
-  | "CLOUD_CALLOUT"
-  | "CUSTOM"
-  | (string & {});
+export type CreateShapeRequestShapeTypeEnum = "TYPE_UNSPECIFIED" | "TEXT_BOX" | "RECTANGLE" | "ROUND_RECTANGLE" | "ELLIPSE" | "ARC" | "BENT_ARROW" | "BENT_UP_ARROW" | "BEVEL" | "BLOCK_ARC" | "BRACE_PAIR" | "BRACKET_PAIR" | "CAN" | "CHEVRON" | "CHORD" | "CLOUD" | "CORNER" | "CUBE" | "CURVED_DOWN_ARROW" | "CURVED_LEFT_ARROW" | "CURVED_RIGHT_ARROW" | "CURVED_UP_ARROW" | "DECAGON" | "DIAGONAL_STRIPE" | "DIAMOND" | "DODECAGON" | "DONUT" | "DOUBLE_WAVE" | "DOWN_ARROW" | "DOWN_ARROW_CALLOUT" | "FOLDED_CORNER" | "FRAME" | "HALF_FRAME" | "HEART" | "HEPTAGON" | "HEXAGON" | "HOME_PLATE" | "HORIZONTAL_SCROLL" | "IRREGULAR_SEAL_1" | "IRREGULAR_SEAL_2" | "LEFT_ARROW" | "LEFT_ARROW_CALLOUT" | "LEFT_BRACE" | "LEFT_BRACKET" | "LEFT_RIGHT_ARROW" | "LEFT_RIGHT_ARROW_CALLOUT" | "LEFT_RIGHT_UP_ARROW" | "LEFT_UP_ARROW" | "LIGHTNING_BOLT" | "MATH_DIVIDE" | "MATH_EQUAL" | "MATH_MINUS" | "MATH_MULTIPLY" | "MATH_NOT_EQUAL" | "MATH_PLUS" | "MOON" | "NO_SMOKING" | "NOTCHED_RIGHT_ARROW" | "OCTAGON" | "PARALLELOGRAM" | "PENTAGON" | "PIE" | "PLAQUE" | "PLUS" | "QUAD_ARROW" | "QUAD_ARROW_CALLOUT" | "RIBBON" | "RIBBON_2" | "RIGHT_ARROW" | "RIGHT_ARROW_CALLOUT" | "RIGHT_BRACE" | "RIGHT_BRACKET" | "ROUND_1_RECTANGLE" | "ROUND_2_DIAGONAL_RECTANGLE" | "ROUND_2_SAME_RECTANGLE" | "RIGHT_TRIANGLE" | "SMILEY_FACE" | "SNIP_1_RECTANGLE" | "SNIP_2_DIAGONAL_RECTANGLE" | "SNIP_2_SAME_RECTANGLE" | "SNIP_ROUND_RECTANGLE" | "STAR_10" | "STAR_12" | "STAR_16" | "STAR_24" | "STAR_32" | "STAR_4" | "STAR_5" | "STAR_6" | "STAR_7" | "STAR_8" | "STRIPED_RIGHT_ARROW" | "SUN" | "TRAPEZOID" | "TRIANGLE" | "UP_ARROW" | "UP_ARROW_CALLOUT" | "UP_DOWN_ARROW" | "UTURN_ARROW" | "VERTICAL_SCROLL" | "WAVE" | "WEDGE_ELLIPSE_CALLOUT" | "WEDGE_RECTANGLE_CALLOUT" | "WEDGE_ROUND_RECTANGLE_CALLOUT" | "FLOW_CHART_ALTERNATE_PROCESS" | "FLOW_CHART_COLLATE" | "FLOW_CHART_CONNECTOR" | "FLOW_CHART_DECISION" | "FLOW_CHART_DELAY" | "FLOW_CHART_DISPLAY" | "FLOW_CHART_DOCUMENT" | "FLOW_CHART_EXTRACT" | "FLOW_CHART_INPUT_OUTPUT" | "FLOW_CHART_INTERNAL_STORAGE" | "FLOW_CHART_MAGNETIC_DISK" | "FLOW_CHART_MAGNETIC_DRUM" | "FLOW_CHART_MAGNETIC_TAPE" | "FLOW_CHART_MANUAL_INPUT" | "FLOW_CHART_MANUAL_OPERATION" | "FLOW_CHART_MERGE" | "FLOW_CHART_MULTIDOCUMENT" | "FLOW_CHART_OFFLINE_STORAGE" | "FLOW_CHART_OFFPAGE_CONNECTOR" | "FLOW_CHART_ONLINE_STORAGE" | "FLOW_CHART_OR" | "FLOW_CHART_PREDEFINED_PROCESS" | "FLOW_CHART_PREPARATION" | "FLOW_CHART_PROCESS" | "FLOW_CHART_PUNCHED_CARD" | "FLOW_CHART_PUNCHED_TAPE" | "FLOW_CHART_SORT" | "FLOW_CHART_SUMMING_JUNCTION" | "FLOW_CHART_TERMINATOR" | "ARROW_EAST" | "ARROW_NORTH_EAST" | "ARROW_NORTH" | "SPEECH" | "STARBURST" | "TEARDROP" | "ELLIPSE_RIBBON" | "ELLIPSE_RIBBON_2" | "CLOUD_CALLOUT" | "CUSTOM";
 export const CreateShapeRequestShapeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creates a new shape. */
@@ -3093,17 +2286,15 @@ export interface CreateShapeRequest {
   /** The element properties for the shape. */
   elementProperties?: PageElementProperties;
   /** The shape type. */
-  shapeType?: CreateShapeRequestShapeTypeEnum;
+  shapeType?: CreateShapeRequestShapeTypeEnum | (string & {});
 }
 export const CreateShapeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    elementProperties: S.optional(PageElementProperties),
-    shapeType: S.optional(CreateShapeRequestShapeTypeEnum),
-  }),
-).annotate({
-  identifier: "CreateShapeRequest",
-}) as any as S.Schema<CreateShapeRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "elementProperties": S.optional(PageElementProperties),
+  "shapeType": S.optional(CreateShapeRequestShapeTypeEnum),
+}),
+).annotate({ identifier: "CreateShapeRequest" }) as any as S.Schema<CreateShapeRequest>;
 
 /** Deletes bullets from all of the paragraphs that overlap with the given text index range. The nesting level of each paragraph will be visually preserved by adding indent to the start of the corresponding paragraph. */
 export interface DeleteParagraphBulletsRequest {
@@ -3115,14 +2306,12 @@ export interface DeleteParagraphBulletsRequest {
   cellLocation?: TableCellLocation;
 }
 export const DeleteParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    textRange: S.optional(Range),
-    cellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "DeleteParagraphBulletsRequest",
-}) as any as S.Schema<DeleteParagraphBulletsRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "textRange": S.optional(Range),
+  "cellLocation": S.optional(TableCellLocation),
+}),
+).annotate({ identifier: "DeleteParagraphBulletsRequest" }) as any as S.Schema<DeleteParagraphBulletsRequest>;
 
 /** Updates the properties of a Table column. */
 export interface UpdateTableColumnPropertiesRequest {
@@ -3136,15 +2325,13 @@ export interface UpdateTableColumnPropertiesRequest {
   columnIndices?: IntegerList;
 }
 export const UpdateTableColumnPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    fields: S.optional(S.String),
-    tableColumnProperties: S.optional(TableColumnProperties),
-    columnIndices: S.optional(IntegerList),
-  }),
-).annotate({
-  identifier: "UpdateTableColumnPropertiesRequest",
-}) as any as S.Schema<UpdateTableColumnPropertiesRequest>;
+S.Struct({
+  "objectId": S.optional(S.String),
+  "fields": S.optional(S.String),
+  "tableColumnProperties": S.optional(TableColumnProperties),
+  "columnIndices": S.optional(IntegerList),
+}),
+).annotate({ identifier: "UpdateTableColumnPropertiesRequest" }) as any as S.Schema<UpdateTableColumnPropertiesRequest>;
 
 /** A single kind of update to apply to a presentation. */
 export interface Request {
@@ -3238,60 +2425,56 @@ export interface Request {
   updateTableColumnProperties?: UpdateTableColumnPropertiesRequest;
 }
 export const Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    duplicateObject: S.optional(DuplicateObjectRequest),
-    updatePageElementTransform: S.optional(UpdatePageElementTransformRequest),
-    createSheetsChart: S.optional(CreateSheetsChartRequest),
-    updateTableCellProperties: S.optional(UpdateTableCellPropertiesRequest),
-    replaceImage: S.optional(ReplaceImageRequest),
-    updateSlidesPosition: S.optional(UpdateSlidesPositionRequest),
-    updateImageProperties: S.optional(UpdateImagePropertiesRequest),
-    insertText: S.optional(InsertTextRequest),
-    updatePageElementAltText: S.optional(UpdatePageElementAltTextRequest),
-    createParagraphBullets: S.optional(CreateParagraphBulletsRequest),
-    replaceAllText: S.optional(ReplaceAllTextRequest),
-    deleteObject: S.optional(DeleteObjectRequest),
-    updateTextStyle: S.optional(UpdateTextStyleRequest),
-    updatePageProperties: S.optional(UpdatePagePropertiesRequest),
-    deleteTableRow: S.optional(DeleteTableRowRequest),
-    rerouteLine: S.optional(RerouteLineRequest),
-    refreshSheetsChart: S.optional(RefreshSheetsChartRequest),
-    mergeTableCells: S.optional(MergeTableCellsRequest),
-    groupObjects: S.optional(GroupObjectsRequest),
-    updateParagraphStyle: S.optional(UpdateParagraphStyleRequest),
-    unmergeTableCells: S.optional(UnmergeTableCellsRequest),
-    deleteTableColumn: S.optional(DeleteTableColumnRequest),
-    updateVideoProperties: S.optional(UpdateVideoPropertiesRequest),
-    ungroupObjects: S.optional(UngroupObjectsRequest),
-    updateShapeProperties: S.optional(UpdateShapePropertiesRequest),
-    createImage: S.optional(CreateImageRequest),
-    updateTableRowProperties: S.optional(UpdateTableRowPropertiesRequest),
-    createLine: S.optional(CreateLineRequest),
-    insertTableColumns: S.optional(InsertTableColumnsRequest),
-    updateLineProperties: S.optional(UpdateLinePropertiesRequest),
-    updateTableBorderProperties: S.optional(UpdateTableBorderPropertiesRequest),
-    updateSlideProperties: S.optional(UpdateSlidePropertiesRequest),
-    replaceAllShapesWithImage: S.optional(ReplaceAllShapesWithImageRequest),
-    replaceAllShapesWithSheetsChart: S.optional(
-      ReplaceAllShapesWithSheetsChartRequest,
-    ),
-    updateLineCategory: S.optional(UpdateLineCategoryRequest),
-    createVideo: S.optional(CreateVideoRequest),
-    createSlide: S.optional(CreateSlideRequest),
-    createTable: S.optional(CreateTableRequest),
-    deleteText: S.optional(DeleteTextRequest),
-    insertTableRows: S.optional(InsertTableRowsRequest),
-    updatePageElementsZOrder: S.optional(UpdatePageElementsZOrderRequest),
-    createShape: S.optional(CreateShapeRequest),
-    deleteParagraphBullets: S.optional(DeleteParagraphBulletsRequest),
-    updateTableColumnProperties: S.optional(UpdateTableColumnPropertiesRequest),
-  }),
+S.Struct({
+  "duplicateObject": S.optional(DuplicateObjectRequest),
+  "updatePageElementTransform": S.optional(UpdatePageElementTransformRequest),
+  "createSheetsChart": S.optional(CreateSheetsChartRequest),
+  "updateTableCellProperties": S.optional(UpdateTableCellPropertiesRequest),
+  "replaceImage": S.optional(ReplaceImageRequest),
+  "updateSlidesPosition": S.optional(UpdateSlidesPositionRequest),
+  "updateImageProperties": S.optional(UpdateImagePropertiesRequest),
+  "insertText": S.optional(InsertTextRequest),
+  "updatePageElementAltText": S.optional(UpdatePageElementAltTextRequest),
+  "createParagraphBullets": S.optional(CreateParagraphBulletsRequest),
+  "replaceAllText": S.optional(ReplaceAllTextRequest),
+  "deleteObject": S.optional(DeleteObjectRequest),
+  "updateTextStyle": S.optional(UpdateTextStyleRequest),
+  "updatePageProperties": S.optional(UpdatePagePropertiesRequest),
+  "deleteTableRow": S.optional(DeleteTableRowRequest),
+  "rerouteLine": S.optional(RerouteLineRequest),
+  "refreshSheetsChart": S.optional(RefreshSheetsChartRequest),
+  "mergeTableCells": S.optional(MergeTableCellsRequest),
+  "groupObjects": S.optional(GroupObjectsRequest),
+  "updateParagraphStyle": S.optional(UpdateParagraphStyleRequest),
+  "unmergeTableCells": S.optional(UnmergeTableCellsRequest),
+  "deleteTableColumn": S.optional(DeleteTableColumnRequest),
+  "updateVideoProperties": S.optional(UpdateVideoPropertiesRequest),
+  "ungroupObjects": S.optional(UngroupObjectsRequest),
+  "updateShapeProperties": S.optional(UpdateShapePropertiesRequest),
+  "createImage": S.optional(CreateImageRequest),
+  "updateTableRowProperties": S.optional(UpdateTableRowPropertiesRequest),
+  "createLine": S.optional(CreateLineRequest),
+  "insertTableColumns": S.optional(InsertTableColumnsRequest),
+  "updateLineProperties": S.optional(UpdateLinePropertiesRequest),
+  "updateTableBorderProperties": S.optional(UpdateTableBorderPropertiesRequest),
+  "updateSlideProperties": S.optional(UpdateSlidePropertiesRequest),
+  "replaceAllShapesWithImage": S.optional(ReplaceAllShapesWithImageRequest),
+  "replaceAllShapesWithSheetsChart": S.optional(ReplaceAllShapesWithSheetsChartRequest),
+  "updateLineCategory": S.optional(UpdateLineCategoryRequest),
+  "createVideo": S.optional(CreateVideoRequest),
+  "createSlide": S.optional(CreateSlideRequest),
+  "createTable": S.optional(CreateTableRequest),
+  "deleteText": S.optional(DeleteTextRequest),
+  "insertTableRows": S.optional(InsertTableRowsRequest),
+  "updatePageElementsZOrder": S.optional(UpdatePageElementsZOrderRequest),
+  "createShape": S.optional(CreateShapeRequest),
+  "deleteParagraphBullets": S.optional(DeleteParagraphBulletsRequest),
+  "updateTableColumnProperties": S.optional(UpdateTableColumnPropertiesRequest),
+}),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
 export type RequestList = ReadonlyArray<Request>;
-export const RequestList = /*@__PURE__*/ S.Array(
-  Request,
-) as any as S.Schema<RequestList>;
+export const RequestList = /*@__PURE__*/ S.Array(Request) as any as S.Schema<RequestList>;
 
 /** Request message for PresentationsService.BatchUpdatePresentation. */
 export interface BatchUpdatePresentationRequest {
@@ -3301,13 +2484,11 @@ export interface BatchUpdatePresentationRequest {
   requests?: RequestList;
 }
 export const BatchUpdatePresentationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    writeControl: S.optional(WriteControl),
-    requests: S.optional(RequestList),
-  }),
-).annotate({
-  identifier: "BatchUpdatePresentationRequest",
-}) as any as S.Schema<BatchUpdatePresentationRequest>;
+S.Struct({
+  "writeControl": S.optional(WriteControl),
+  "requests": S.optional(RequestList),
+}),
+).annotate({ identifier: "BatchUpdatePresentationRequest" }) as any as S.Schema<BatchUpdatePresentationRequest>;
 
 export interface BatchUpdatePresentationsRequest {
   /** The presentation to apply the updates to. */
@@ -3316,19 +2497,11 @@ export interface BatchUpdatePresentationsRequest {
   body?: BatchUpdatePresentationRequest;
 }
 export const BatchUpdatePresentationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    presentationId: S.String.pipe(T.Label()),
-    body: S.optional(BatchUpdatePresentationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/presentations/{presentationId}:batchUpdate",
-      baseUrl: "https://slides.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchUpdatePresentationsRequest",
-}) as any as S.Schema<BatchUpdatePresentationsRequest>;
+S.Struct({
+  "presentationId": S.String.pipe(T.Label()),
+  "body": S.optional(BatchUpdatePresentationRequest.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/presentations/{presentationId}:batchUpdate","baseUrl":"https://slides.googleapis.com/"})),
+).annotate({ identifier: "BatchUpdatePresentationsRequest" }) as any as S.Schema<BatchUpdatePresentationsRequest>;
 
 /** The result of creating a shape. */
 export interface CreateShapeResponse {
@@ -3336,12 +2509,10 @@ export interface CreateShapeResponse {
   objectId?: string;
 }
 export const CreateShapeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateShapeResponse",
-}) as any as S.Schema<CreateShapeResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateShapeResponse" }) as any as S.Schema<CreateShapeResponse>;
 
 /** The result of creating a line. */
 export interface CreateLineResponse {
@@ -3349,12 +2520,10 @@ export interface CreateLineResponse {
   objectId?: string;
 }
 export const CreateLineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateLineResponse",
-}) as any as S.Schema<CreateLineResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateLineResponse" }) as any as S.Schema<CreateLineResponse>;
 
 /** The result of grouping objects. */
 export interface GroupObjectsResponse {
@@ -3362,12 +2531,10 @@ export interface GroupObjectsResponse {
   objectId?: string;
 }
 export const GroupObjectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GroupObjectsResponse",
-}) as any as S.Schema<GroupObjectsResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "GroupObjectsResponse" }) as any as S.Schema<GroupObjectsResponse>;
 
 /** The result of replacing text. */
 export interface ReplaceAllTextResponse {
@@ -3375,12 +2542,10 @@ export interface ReplaceAllTextResponse {
   occurrencesChanged?: number;
 }
 export const ReplaceAllTextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    occurrencesChanged: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ReplaceAllTextResponse",
-}) as any as S.Schema<ReplaceAllTextResponse>;
+S.Struct({
+  "occurrencesChanged": S.optional(S.Number),
+}),
+).annotate({ identifier: "ReplaceAllTextResponse" }) as any as S.Schema<ReplaceAllTextResponse>;
 
 /** The result of creating an image. */
 export interface CreateImageResponse {
@@ -3388,12 +2553,10 @@ export interface CreateImageResponse {
   objectId?: string;
 }
 export const CreateImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateImageResponse",
-}) as any as S.Schema<CreateImageResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateImageResponse" }) as any as S.Schema<CreateImageResponse>;
 
 /** The result of creating a video. */
 export interface CreateVideoResponse {
@@ -3401,12 +2564,10 @@ export interface CreateVideoResponse {
   objectId?: string;
 }
 export const CreateVideoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateVideoResponse",
-}) as any as S.Schema<CreateVideoResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateVideoResponse" }) as any as S.Schema<CreateVideoResponse>;
 
 /** The result of creating a slide. */
 export interface CreateSlideResponse {
@@ -3414,12 +2575,10 @@ export interface CreateSlideResponse {
   objectId?: string;
 }
 export const CreateSlideResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSlideResponse",
-}) as any as S.Schema<CreateSlideResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateSlideResponse" }) as any as S.Schema<CreateSlideResponse>;
 
 /** The result of creating a table. */
 export interface CreateTableResponse {
@@ -3427,12 +2586,10 @@ export interface CreateTableResponse {
   objectId?: string;
 }
 export const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateTableResponse",
-}) as any as S.Schema<CreateTableResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateTableResponse" }) as any as S.Schema<CreateTableResponse>;
 
 /** The result of creating an embedded Google Sheets chart. */
 export interface CreateSheetsChartResponse {
@@ -3440,12 +2597,10 @@ export interface CreateSheetsChartResponse {
   objectId?: string;
 }
 export const CreateSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSheetsChartResponse",
-}) as any as S.Schema<CreateSheetsChartResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "CreateSheetsChartResponse" }) as any as S.Schema<CreateSheetsChartResponse>;
 
 /** The result of replacing shapes with an image. */
 export interface ReplaceAllShapesWithImageResponse {
@@ -3453,12 +2608,10 @@ export interface ReplaceAllShapesWithImageResponse {
   occurrencesChanged?: number;
 }
 export const ReplaceAllShapesWithImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    occurrencesChanged: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ReplaceAllShapesWithImageResponse",
-}) as any as S.Schema<ReplaceAllShapesWithImageResponse>;
+S.Struct({
+  "occurrencesChanged": S.optional(S.Number),
+}),
+).annotate({ identifier: "ReplaceAllShapesWithImageResponse" }) as any as S.Schema<ReplaceAllShapesWithImageResponse>;
 
 /** The response of duplicating an object. */
 export interface DuplicateObjectResponse {
@@ -3466,26 +2619,21 @@ export interface DuplicateObjectResponse {
   objectId?: string;
 }
 export const DuplicateObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DuplicateObjectResponse",
-}) as any as S.Schema<DuplicateObjectResponse>;
+S.Struct({
+  "objectId": S.optional(S.String),
+}),
+).annotate({ identifier: "DuplicateObjectResponse" }) as any as S.Schema<DuplicateObjectResponse>;
 
 /** The result of replacing shapes with a Google Sheets chart. */
 export interface ReplaceAllShapesWithSheetsChartResponse {
   /** The number of shapes replaced with charts. */
   occurrencesChanged?: number;
 }
-export const ReplaceAllShapesWithSheetsChartResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      occurrencesChanged: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "ReplaceAllShapesWithSheetsChartResponse",
-}) as any as S.Schema<ReplaceAllShapesWithSheetsChartResponse>;
+export const ReplaceAllShapesWithSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "occurrencesChanged": S.optional(S.Number),
+}),
+).annotate({ identifier: "ReplaceAllShapesWithSheetsChartResponse" }) as any as S.Schema<ReplaceAllShapesWithSheetsChartResponse>;
 
 /** A single response from an update. */
 export interface Response {
@@ -3515,28 +2663,24 @@ export interface Response {
   replaceAllShapesWithSheetsChart?: ReplaceAllShapesWithSheetsChartResponse;
 }
 export const Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createShape: S.optional(CreateShapeResponse),
-    createLine: S.optional(CreateLineResponse),
-    groupObjects: S.optional(GroupObjectsResponse),
-    replaceAllText: S.optional(ReplaceAllTextResponse),
-    createImage: S.optional(CreateImageResponse),
-    createVideo: S.optional(CreateVideoResponse),
-    createSlide: S.optional(CreateSlideResponse),
-    createTable: S.optional(CreateTableResponse),
-    createSheetsChart: S.optional(CreateSheetsChartResponse),
-    replaceAllShapesWithImage: S.optional(ReplaceAllShapesWithImageResponse),
-    duplicateObject: S.optional(DuplicateObjectResponse),
-    replaceAllShapesWithSheetsChart: S.optional(
-      ReplaceAllShapesWithSheetsChartResponse,
-    ),
-  }),
+S.Struct({
+  "createShape": S.optional(CreateShapeResponse),
+  "createLine": S.optional(CreateLineResponse),
+  "groupObjects": S.optional(GroupObjectsResponse),
+  "replaceAllText": S.optional(ReplaceAllTextResponse),
+  "createImage": S.optional(CreateImageResponse),
+  "createVideo": S.optional(CreateVideoResponse),
+  "createSlide": S.optional(CreateSlideResponse),
+  "createTable": S.optional(CreateTableResponse),
+  "createSheetsChart": S.optional(CreateSheetsChartResponse),
+  "replaceAllShapesWithImage": S.optional(ReplaceAllShapesWithImageResponse),
+  "duplicateObject": S.optional(DuplicateObjectResponse),
+  "replaceAllShapesWithSheetsChart": S.optional(ReplaceAllShapesWithSheetsChartResponse),
+}),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
 export type ResponseList = ReadonlyArray<Response>;
-export const ResponseList = /*@__PURE__*/ S.Array(
-  Response,
-) as any as S.Schema<ResponseList>;
+export const ResponseList = /*@__PURE__*/ S.Array(Response) as any as S.Schema<ResponseList>;
 
 /** Response message from a batch update. */
 export interface BatchUpdatePresentationResponse {
@@ -3548,19 +2692,15 @@ export interface BatchUpdatePresentationResponse {
   writeControl?: WriteControl;
 }
 export const BatchUpdatePresentationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replies: S.optional(ResponseList),
-    presentationId: S.optional(S.String),
-    writeControl: S.optional(WriteControl),
-  }),
-).annotate({
-  identifier: "BatchUpdatePresentationResponse",
-}) as any as S.Schema<BatchUpdatePresentationResponse>;
+S.Struct({
+  "replies": S.optional(ResponseList),
+  "presentationId": S.optional(S.String),
+  "writeControl": S.optional(WriteControl),
+}),
+).annotate({ identifier: "BatchUpdatePresentationResponse" }) as any as S.Schema<BatchUpdatePresentationResponse>;
 
 export type PageList = ReadonlyArray<Page>;
-export const PageList = /*@__PURE__*/ S.Array(
-  Page,
-) as any as S.Schema<PageList>;
+export const PageList = /*@__PURE__*/ S.Array(Page) as any as S.Schema<PageList>;
 
 /** A Google Slides presentation. */
 export interface Presentation {
@@ -3584,17 +2724,17 @@ export interface Presentation {
   pageSize?: Size;
 }
 export const Presentation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    locale: S.optional(S.String),
-    layouts: S.optional(PageList),
-    slides: S.optional(PageList),
-    presentationId: S.optional(S.String),
-    notesMaster: S.optional(Page),
-    revisionId: S.optional(S.String),
-    masters: S.optional(PageList),
-    pageSize: S.optional(Size),
-  }),
+S.Struct({
+  "title": S.optional(S.String),
+  "locale": S.optional(S.String),
+  "layouts": S.optional(PageList),
+  "slides": S.optional(PageList),
+  "presentationId": S.optional(S.String),
+  "notesMaster": S.optional(Page),
+  "revisionId": S.optional(S.String),
+  "masters": S.optional(PageList),
+  "pageSize": S.optional(Size),
+}),
 ).annotate({ identifier: "Presentation" }) as any as S.Schema<Presentation>;
 
 export interface CreatePresentationsRequest {
@@ -3602,36 +2742,20 @@ export interface CreatePresentationsRequest {
   body?: Presentation;
 }
 export const CreatePresentationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(Presentation.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/presentations",
-      baseUrl: "https://slides.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreatePresentationsRequest",
-}) as any as S.Schema<CreatePresentationsRequest>;
+S.Struct({
+  "body": S.optional(Presentation.pipe(T.HttpBody())),
+}).pipe(T.Http({"method":"POST","uri":"v1/presentations","baseUrl":"https://slides.googleapis.com/"})),
+).annotate({ identifier: "CreatePresentationsRequest" }) as any as S.Schema<CreatePresentationsRequest>;
 
 export interface GetPresentationsRequest {
   /** The ID of the presentation to retrieve. */
   presentationId: string;
 }
 export const GetPresentationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    presentationId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/presentations/{+presentationId}",
-      baseUrl: "https://slides.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPresentationsRequest",
-}) as any as S.Schema<GetPresentationsRequest>;
+S.Struct({
+  "presentationId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/presentations/{+presentationId}","baseUrl":"https://slides.googleapis.com/"})),
+).annotate({ identifier: "GetPresentationsRequest" }) as any as S.Schema<GetPresentationsRequest>;
 
 export interface GetPresentationsPagesRequest {
   /** The ID of the presentation to retrieve. */
@@ -3640,71 +2764,36 @@ export interface GetPresentationsPagesRequest {
   pageObjectId: string;
 }
 export const GetPresentationsPagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    presentationId: S.String.pipe(T.Label()),
-    pageObjectId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/presentations/{presentationId}/pages/{pageObjectId}",
-      baseUrl: "https://slides.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPresentationsPagesRequest",
-}) as any as S.Schema<GetPresentationsPagesRequest>;
+S.Struct({
+  "presentationId": S.String.pipe(T.Label()),
+  "pageObjectId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/presentations/{presentationId}/pages/{pageObjectId}","baseUrl":"https://slides.googleapis.com/"})),
+).annotate({ identifier: "GetPresentationsPagesRequest" }) as any as S.Schema<GetPresentationsPagesRequest>;
 
-export type GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum =
-  | "PNG"
-  | (string & {});
-export const GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum =
-  /*@__PURE__*/ S.String;
+export type GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum = "PNG";
+export const GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum = /*@__PURE__*/ S.String;
 
-export type GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum =
-    | "THUMBNAIL_SIZE_UNSPECIFIED"
-    | "LARGE"
-    | "MEDIUM"
-    | "SMALL"
-    | "WIDTH2000_PX"
-    | (string & {});
-export const GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum =
-  /*@__PURE__*/ S.String;
+export type GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum = "THUMBNAIL_SIZE_UNSPECIFIED" | "LARGE" | "MEDIUM" | "SMALL" | "WIDTH2000_PX";
+export const GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum = /*@__PURE__*/ S.String;
 
 export interface GetThumbnailPresentationsPagesRequest {
   /** The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG. */
-  "thumbnailProperties.mimeType"?: GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum;
+  "thumbnailProperties.mimeType"?: GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum | (string & {});
   /** The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image. */
-  "thumbnailProperties.thumbnailSize"?: GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum;
+  "thumbnailProperties.thumbnailSize"?: GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum | (string & {});
   /** The ID of the presentation to retrieve. */
   presentationId: string;
   /** The object ID of the page whose thumbnail to retrieve. */
   pageObjectId: string;
 }
-export const GetThumbnailPresentationsPagesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "thumbnailProperties.mimeType": S.optional(
-        GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      "thumbnailProperties.thumbnailSize": S.optional(
-        GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      presentationId: S.String.pipe(T.Label()),
-      pageObjectId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail",
-        baseUrl: "https://slides.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetThumbnailPresentationsPagesRequest",
-}) as any as S.Schema<GetThumbnailPresentationsPagesRequest>;
+export const GetThumbnailPresentationsPagesRequest = /*@__PURE__*/ S.suspend(() =>
+S.Struct({
+  "thumbnailProperties.mimeType": S.optional(GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum.pipe(T.Query())),
+  "thumbnailProperties.thumbnailSize": S.optional(GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum.pipe(T.Query())),
+  "presentationId": S.String.pipe(T.Label()),
+  "pageObjectId": S.String.pipe(T.Label()),
+}).pipe(T.Http({"method":"GET","uri":"v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail","baseUrl":"https://slides.googleapis.com/"})),
+).annotate({ identifier: "GetThumbnailPresentationsPagesRequest" }) as any as S.Schema<GetThumbnailPresentationsPagesRequest>;
 
 /** The thumbnail of a page. */
 export interface Thumbnail {
@@ -3716,19 +2805,14 @@ export interface Thumbnail {
   contentUrl?: string;
 }
 export const Thumbnail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(S.Number),
-    height: S.optional(S.Number),
-    contentUrl: S.optional(S.String),
-  }),
+S.Struct({
+  "width": S.optional(S.Number),
+  "height": S.optional(S.Number),
+  "contentUrl": S.optional(S.String),
+}),
 ).annotate({ identifier: "Thumbnail" }) as any as S.Schema<Thumbnail>;
 
-export type BatchUpdatePresentationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type BatchUpdatePresentationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests. For example, suppose you call batchUpdate with four updates, and only the third one returns information. The response would have two empty replies: the reply to the third request, and another empty reply, in that order. Because other users may be editing the presentation, the presentation might not exactly reflect your changes: your changes may be altered with respect to collaborator changes. If there are no collaborators, the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be applied together atomically. */
 export const batchUpdatePresentations: API.OperationMethod<
   BatchUpdatePresentationsRequest,
@@ -3743,12 +2827,7 @@ export const batchUpdatePresentations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreatePresentationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
+export type CreatePresentationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a blank presentation using the title given in the request. If a `presentationId` is provided, it is used as the ID of the new presentation. Otherwise, a new ID is generated. Other fields in the request, including any provided content, are ignored. Returns the created presentation. */
 export const createPresentations: API.OperationMethod<
   CreatePresentationsRequest,
@@ -3793,10 +2872,7 @@ export const getPresentationsPages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetThumbnailPresentationsPagesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetThumbnailPresentationsPagesError = NotFound | Forbidden | GcpOpError;
 /** Generates a thumbnail of the latest version of the specified page in the presentation and returns a URL to the thumbnail image. This request counts as an [expensive read request](https://developers.google.com/workspace/slides/limits) for quota purposes. */
 export const getThumbnailPresentationsPages: API.OperationMethod<
   GetThumbnailPresentationsPagesRequest,
@@ -3810,3 +2886,4 @@ export const getThumbnailPresentationsPages: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+

@@ -114,10 +114,7 @@ export const TaskChannelsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskChannelsDestroyResponse>;
 
 /** * `context_created` - context_created * `context_md_building` - context_md_building */
-export type EventEnum =
-  | "context_created"
-  | "context_md_building"
-  | (string & {});
+export type EventEnum = "context_created" | "context_md_building";
 export const EventEnum = /*@__PURE__*/ S.String;
 
 export interface TaskChannelsFeedCreateRequest {
@@ -125,7 +122,7 @@ export interface TaskChannelsFeedCreateRequest {
   project_id: string;
   channel_id: string;
   /** Lifecycle event key. * `context_created` - context_created * `context_md_building` - context_md_building */
-  event: EventEnum;
+  event: EventEnum | (string & {});
   /** Structured event data, e.g. {"context_name": "mobile"}. At most 8 KB of JSON. */
   payload?: unknown;
   /** Optional explicit timestamp (within 10 minutes of now), so a client can order a burst of announcements. */
